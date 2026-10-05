@@ -36,6 +36,9 @@ import { socialService } from '../social/service.ts';
 import { presenceAudience } from '../social/founder.ts';
 import type { Db, IncomingFrame, RouteContext, SessionRecord, WsConnection, WsHandlers } from '../types.ts';
 
+/** The longest pause between two reads of the store that tell friends who connected or dropped (announce below). */
+export const ANNOUNCE_PAUSE_MS = 200;
+
 export default function socialSocket(ctx: RouteContext): WsHandlers {
   const service = socialService(ctx);
   const { presence } = service;
@@ -51,11 +54,33 @@ export default function socialSocket(ctx: RouteContext): WsHandlers {
   }
   /** A change the sender made to their own friends or visits: their other open sockets read the overview again (as the HTTP routes do). */
   const changed = (ws: WsConnection, result: { ok: boolean }): void => { if (result.ok) ctx.push(ws.session.id, { type: 'social-changed' }); };
-  /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
+  /**
+   * Tell a player's friends that they connected or dropped. Best effort; never blocks the socket.
+   * Finding a player's friends reads the social collection, so ONE read serves everyone who connected or dropped while
+   * the read before it was on its way: a read per socket was time in proportion to everyone who ever played, for every
+   * page that opened or closed, and a wave of reconnecting pages could keep the host from doing anything else. On a
+   * quiet host the read starts at once, as it always did. When reads take long, the next one waits a little (at most
+   * ANNOUNCE_PAUSE_MS), so announcing stays a small share of the host's time. A player who came and went meanwhile is
+   * announced once, as they are now.
+   */
+  const announcing = new Map<string, 'online' | 'reconnecting'>();
+  let announcingNow = false;
+  async function announcePending(): Promise<void> {
+    announcingNow = true;
+    try {
+      while (announcing.size) {
+        const batch = [...announcing], began = ctx.now();
+        announcing.clear();
+        const audiences = await ctx.store.read((db) => batch.map(([id]) => presenceAudience(db.social?.players, id))).catch(() => null);
+        batch.forEach(([id, status], index) => { for (const friend of audiences?.[index] ?? []) ctx.push(friend, { type: 'people-presence', id, status }); });
+        const took = ctx.now() - began;
+        if (announcing.size && took > 0) await new Promise<void>((done) => { setTimeout(done, Math.min(ANNOUNCE_PAUSE_MS, took * 4)); });
+      }
+    } finally { announcingNow = false; }
+  }
   function announce(id: string, status: 'online' | 'reconnecting'): void {
-    ctx.store.read((db) => presenceAudience(db.social?.players, id))
-      .then((friends) => { for (const friend of friends) ctx.push(friend, { type: 'people-presence', id, status }); })
-      .catch(() => {});
+    announcing.set(id, status);
+    if (!announcingNow) ctx.waitUntil?.(announcePending().catch(() => {}));
   }
   // The foundation announces room changes in-process; pass a nudge to the members' watching sockets.
   ctx.on?.('room-changed', ({ room, cityId, venueId, members, cause }) => {

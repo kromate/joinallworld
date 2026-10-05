@@ -41,10 +41,22 @@ export function isSharedAddress(ip: unknown): boolean {
   // (the Worker) must not have one that happens to begin with these letters read as a private network.
   return text === '' || text === 'unknown' || text === '::1' || /^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(text) || /^(f[cd][0-9a-f]{0,2}|fe80):/.test(text);
 }
-/** Open sockets one network address may hold on a host, out of the 1,024 it holds in all. */
+/** Open sockets one network address may hold on a host by default (SOCKETS_PER_ADDRESS; server/host-context.ts capacityConfig). */
 export const SOCKETS_PER_ADDRESS = 32;
-/** Sessions one network address may create in an hour (routes/core.ts): a visitor makes one. */
-export const NEW_SESSIONS_PER_ADDRESS = 60;
+/** Open sockets one session may hold (a page opens two). */
+export const SOCKETS_PER_PLAYER = 8;
+/**
+ * The close code of a socket that was opened while every place was taken ("try again later", RFC 6455): the page says
+ * the world is busy and tries again with a growing pause. Its reason is 'socket_capacity'.
+ */
+export const SOCKET_BUSY_CODE = 1013;
+/**
+ * Sessions one network address may create in an hour by default (routes/core.ts; NEW_SESSIONS_PER_ADDRESS, server/host-context.ts
+ * capacityConfig). A visitor makes one — but one address is often many visitors: a campus network, or a mobile carrier
+ * that puts thousands of subscribers behind one address. The default leaves room for a lecture hall arriving together
+ * and still means one address needs more than a day to take every place.
+ */
+export const NEW_SESSIONS_PER_ADDRESS = 300;
 /**
  * A nickname: 3–24 characters, no control characters, and — because every other player can see
  * it — nothing the text filter refuses, no link and no contact detail. A refused name throws

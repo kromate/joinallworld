@@ -42,7 +42,7 @@ export interface LifeHint { rev: number; by?: readonly string[] }
 /** Outcome of command() and switchCity(). `ok: false` with `code: 'offline' | 'busy'` means nothing was sent. */
 export interface CommandResult { ok: boolean; code: string | undefined; reason?: string }
 /** What api() rejects with. A network failure has neither status nor code. */
-export interface ApiError extends Error { status?: number; code?: string; reason?: string; city?: string }
+export interface ApiError extends Error { status?: number; code?: string; reason?: string; city?: string; /** Seconds after which the server said trying again can succeed. */ retryAfter?: number }
 /** Options of api(): fetch's, except that `body` may be an object (sent as JSON). */
 export type ApiOptions = Omit<RequestInit, 'body' | 'headers'> & { body?: unknown; headers?: Record<string, string> }
 
@@ -86,6 +86,14 @@ export interface Client {
   busy: boolean
   serverTimeOffset: number
   link: LinkState
+  /**
+   * Why the last START was turned away by a server that IS answering; null after any other outcome.
+   *   'full'   every place is taken (503 device_capacity)
+   *   'limit'  too many new players started from this network address in the last hour (429 on a new session)
+   * `retryAfter` is the number of seconds the server said to wait, when it said.
+   */
+  refusal: 'full' | 'limit' | null
+  retryAfter: number | null
   serverNow(): number
   newId(): TimedId
   storage: StorageProblem | null
@@ -110,7 +118,7 @@ export interface Client {
 export type Api = <T extends object = Record<string, unknown>>(path: string, options?: ApiOptions) => Promise<T & ApiEnvelope>
 
 /** What any answer body may carry, success or error. */
-interface Payload extends Partial<ApiEnvelope> { error?: string; code?: string; message?: string; reason?: unknown }
+interface Payload extends Partial<ApiEnvelope> { error?: string; code?: string; message?: string; reason?: unknown; retryAfter?: unknown }
 /** What the browser cache holds (nothing in it is trusted). */
 interface SavedClient { state?: unknown; identity?: { name?: string }; cityId?: unknown }
 export { STORAGE_KEY } from './storage-key.ts';
@@ -126,6 +134,8 @@ export const TEXT = Object.freeze({
     connecting: 'Still connecting. Try again in a moment.',
   }) as Readonly<Record<Exclude<LinkState, 'online'>, string> & { online?: undefined }>, // no sentence for 'online': it is playable, nothing is paused
   outOfSync: 'Your action time was out of sync. Reconnect and try again.',
+  worldFull: 'The world is full right now · trying again shortly',
+  networkLimit: 'Too many new players from this network · try again later',
   notSaving: 'The server cannot save right now. What you see is the last saved state; nothing new is being kept.',
   cityNote: (cityName: string) => `More places and activities are coming to ${cityName}.`,
 });
@@ -211,7 +221,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     cityId,
     identity: { name: saved?.identity?.name || cityDefaultName(cityId) },
     hasSavedIdentity: Boolean(saved?.identity),
-    session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting',
+    session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting', refusal: null, retryAfter: null,
     serverNow: () => Math.round(now() + client.serverTimeOffset),
     /**
      * A retry key the server accepts for exactly-once writes: `<server ms>:<uuid>`, the same form as
@@ -264,6 +274,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       error.status = response.status; error.code = payload.code || payload.error;
       if (typeof Reflect.get(payload, 'city') === 'string') error.city = String(Reflect.get(payload, 'city'));
       if (typeof payload.reason === 'string' && payload.reason) error.reason = payload.reason; // the sentence the server wrote for the player
+      if (typeof payload.retryAfter === 'number' && Number.isFinite(payload.retryAfter) && payload.retryAfter > 0) error.retryAfter = payload.retryAfter;
       throw error;
     }
     return payload as T & ApiEnvelope;
@@ -400,7 +411,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   }
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
-    client.link = 'connecting';
+    client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
     status('Connecting…');
     try {
       if (createNew && startCity !== undefined) {
@@ -448,7 +459,12 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
         return false;
       }
       client.link = error.status === 401 ? 'expired' : down();
-      status(error.status === 401 ? 'Session expired · reconnect to review your options' : 'Connection unavailable · changes paused', true);
+      // Every place is taken: the server is up and said so. The shell tells the visitor and tries again by itself.
+      // The same for the limit on new players from one network address (429 when a session was being made).
+      if (error.status === 503 && error.code === 'device_capacity') client.refusal = 'full';
+      else if (createNew && error.status === 429) client.refusal = 'limit';
+      if (client.refusal) client.retryAfter = error.retryAfter ?? null;
+      status(error.status === 401 ? 'Session expired · reconnect to review your options' : client.refusal === 'full' ? TEXT.worldFull : client.refusal === 'limit' ? TEXT.networkLimit : 'Connection unavailable · changes paused', true);
       onChange(client.state, client.state);
       return false;
     }

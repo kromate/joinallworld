@@ -282,3 +282,38 @@ test('a JSON null response body is the unreadable-response error, not a TypeErro
   const client = createClient({ fetch: async () => json(200, null), setTimeout: () => 0, clearTimeout: () => {} });
   await assert.rejects(() => client.api('/api/anything'), (error: Error) => error.message === 'Server returned an unreadable response' && !(error instanceof TypeError));
 });
+
+test('a full world is not an unreachable server: a new start refused with 503 device_capacity is remembered as "full" until the next attempt', async () => {
+  const full = { ok: false, status: 503, json: async () => ({ error: 'device_capacity', reason: 'The world is full right now. Your place is not lost: try again in a moment.' }) };
+  const session = { ok: true, status: 200, json: async () => ({ session: { id: 'p1', name: 'Ada' }, serverTime: 1000 }) };
+  const life = { ok: true, status: 200, json: async () => ({ state: {}, serverTime: 1000 }) };
+  let places = 0;
+  const statuses: string[] = [];
+  const client = createClient({ fetch: async (path) => (String(path).startsWith('/api/session') ? (places > 0 ? session : full) : life), storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {}, onStatus: (text) => { statuses.push(text); } });
+  assert.equal(client.refusal, null);
+  assert.equal(await client.connect(true), false);
+  assert.equal(client.refusal, 'full');
+  assert.equal(statuses.at(-1), TEXT.worldFull);
+  assert.equal(client.online, false);
+  // A place opened: the same start succeeds and nothing of the refusal is left.
+  places = 1;
+  assert.equal(await client.connect(true), true);
+  assert.equal(client.refusal, null); assert.equal(client.link, 'online');
+  // A server that does not answer at all is something else.
+  const down = createClient({ fetch: async () => { throw new Error('fetch failed'); }, storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+  assert.equal(await down.connect(true), false);
+  assert.equal(down.refusal, null); assert.equal(down.link, 'unreachable');
+});
+
+test('a new start refused for too many new players from one network address is remembered as "limit", with the wait the server gave', async () => {
+  const limited = { ok: false, status: 429, json: async () => ({ error: 'rate_limited', retryAfter: 1380, reason: 'Too many new players have started from your network in the last hour.' }) };
+  const statuses: string[] = [];
+  const client = createClient({ fetch: async () => limited, storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {}, onStatus: (text) => { statuses.push(text); } });
+  assert.equal(await client.connect(true), false);
+  assert.deepEqual([client.refusal, client.retryAfter], ['limit', 1380]);
+  assert.equal(statuses.at(-1), TEXT.networkLimit);
+  // A 429 on anything but a new start is the ordinary rate limit, not this.
+  const returning = createClient({ fetch: async () => limited, storage: { getItem: () => JSON.stringify({ identity: { name: 'Ada' }, cityId: 'lagos', state: {} }), setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+  assert.equal(await returning.connect(), false);
+  assert.deepEqual([returning.refusal, returning.retryAfter], [null, null]);
+});

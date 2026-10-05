@@ -122,6 +122,8 @@ const isChatFrame = (value: unknown): value is ChatFrame => typeof value === 'ob
 
 export default function roomSocket(ctx: RouteContext): WsHandlers {
   const { store, now, allow, settle, send, core } = ctx;
+  /** One frame to several sockets, as text made once where the host can (ctx.broadcast). */
+  const sendAll = (list: Iterable<WsConnection>, message: Parameters<typeof send>[1]): void => { if (ctx.broadcast) ctx.broadcast(list, message); else for (const ws of list) send(ws, message); };
   const rooms = new Map<string, Set<WsConnection>>();
   const chatHistory = new Map<string, ChatHistory>();
   /** Retry histories kept in memory (each at most 100 lines of one player in one room). */
@@ -143,6 +145,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
     const everyone = [...members.values()];
     // Only filter when somebody has blocked somebody: the common case sends one shared list.
     const hide = ctx.checks?.anyBlocks?.() === true ? ctx.checks.blocked : null;
+    if (!hide) { sendAll(rooms.get(room) || [], { type: 'presence', members: everyone }); return; }
     for (const ws of rooms.get(room) || []) {
       if (hide && cause && cause !== ws.session.id && hide(ws.session.id, cause)) continue;
       send(ws, { type: 'presence', members: hide ? everyone.filter(member => member.id === ws.session.id || !hide(ws.session.id, member.id)) : everyone });
@@ -152,7 +155,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   // A block or unblock changes who each of the two can see: re-send presence where either is.
   ctx.on?.('blocks-changed', ({ a, b }) => {
     const touched = new Set<string>();
-    for (const ws of core.sockets()) if (ws.room && (ws.session?.id === a || ws.session?.id === b)) touched.add(ws.room);
+    for (const id of [a, b]) for (const ws of inRooms.get(id) ?? []) if (ws.room) touched.add(ws.room);
     for (const room of touched) presence(room);
   });
   /** Announce (inside the server only) that who is in `room` changed. `also` is someone who just left. */
@@ -277,7 +280,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   /** Everything that depends on one player's lives: their own sockets in rooms, and the guests in their Home rooms. */
   function dependants(publicId: string): WsConnection[] {
     const list = [...(inRooms.get(publicId) || [])];
-    for (const [room, members] of rooms) if (homeOwner(room) === publicId) for (const ws of members) if (ws.session.id !== publicId) list.push(ws);
+    // A player's Home room has one key per city: looked up, not searched for among every room.
+    for (const city of ctx.cityIds) for (const ws of rooms.get(venueRoomKey(city, 'home', publicId)) ?? []) if (ws.session.id !== publicId) list.push(ws);
     return list;
   }
   const revalidate = (publicId: unknown): Promise<void> => (typeof publicId === 'string' ? verify(dependants(publicId)) : Promise.resolve());
@@ -337,7 +341,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   ctx.on?.('heartbeat', () => { sweep().catch(() => {}); });
   // A visit the social module ended (left, removed, blocked): that guest leaves the host's Home room at once.
   ctx.on?.('visit-ended', ({ hostId, guestId }) => {
-    for (const ws of core.sockets()) if (ws.session?.id === guestId && ws.room?.endsWith(`:home:${hostId}`)) drop(ws, 'visit_ended');
+    for (const ws of [...(inRooms.get(guestId) ?? [])]) if (ws.room?.endsWith(`:home:${hostId}`)) drop(ws, 'visit_ended');
   });
 
   const messages: Record<string, WsMessageEntry> = {
@@ -432,7 +436,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
           if (chatHistory.size > CHAT_HISTORIES) { const first = chatHistory.keys().next(); if (!first.done) chatHistory.delete(first.value); }
         }
       }
-      for (const peer of rooms.get(room) ?? []) if (!hidden(ws.session.id, peer.session.id)) send(peer, chat);
+      sendAll([...(rooms.get(room) ?? [])].filter(peer => !hidden(ws.session.id, peer.session.id)), chat);
     }),
   };
 
@@ -462,7 +466,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
        */
       async validateMemberships(secret, city, state, publicId) {
         const visiting: WsConnection[] = [];
-        for (const ws of core.sockets()) {
+        // The player's own sockets in rooms are indexed by public id; without one, every socket is looked at.
+        for (const ws of typeof publicId === 'string' ? [...(inRooms.get(publicId) ?? [])] : core.sockets()) {
           if (ws.secret !== secret || !ws.room?.startsWith(`${city}:`)) continue;
           if (visitedHost(ws, city)) { visiting.push(ws); continue; }
           if (!occupies(ws, city, state)) drop(ws, 'venue_mismatch'); else ws.stale = false;

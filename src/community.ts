@@ -53,6 +53,8 @@ export interface CommunityOptions {
 }
 
 const VOICE_RADIUS = 12
+/** The close code of a socket opened while every connection was taken (server/protocol.ts SOCKET_BUSY_CODE). */
+const SOCKET_BUSY_CODE = 1013
 const SPACE_BOUND = 20
 
 /** A frame from the room socket, as far as this module reads it. */
@@ -99,7 +101,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   let stream: MediaStream | null = null
   let destroyed = false, connected = false, roomReady = false, roomRevoked = false, voice = false, muted = false, joiningVoice = false
   let reconnectTimer: ReturnType<typeof setTimeout> | null = null
-  let attempts = 0, voiceGeneration = 0, selectedDevice = ''
+  let attempts = 0, busyTries = 0, voiceGeneration = 0, selectedDevice = ''
   let diagnosticsTimer: ReturnType<typeof setInterval> | null = null
   let iceConfig: IceConfig | null = null
   let iceConfigRequest: Promise<IceConfig> | null = null
@@ -476,13 +478,17 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     const current = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/socket`)
     socket = current
     current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room }) }
-    current.onmessage = (event) => { if (!destroyed && socket === current) receive(event) }
-    current.onclose = () => {
+    current.onmessage = (event) => { if (!destroyed && socket === current) { busyTries = 0; receive(event) } }
+    current.onclose = (event?: { code?: number }) => {
       if (destroyed || socket !== current) return
       socket = null; connected = false; roomReady = false; members = []; renderMembers(); leaveVoice(false)
       for (const message of pending.values()) { message.sent = false; if (!message.failed) message.line.delivery = 'Pending reconnection' }
       report('Disconnected')
       if (roomRevoked) { canReconnect = false; feedback('You moved to another place. Return to the game to reconnect here.'); return }
+      // Every connection the server has is taken (close code 1013, "try again later"): the game itself goes on, and the room
+      // keeps trying for as long as it takes — a place opens when somebody leaves. The pause grows from about 5 to 30 seconds
+      // (such a socket opens before it is closed, so it is the first frame received that ends the count, not the opening).
+      if (event?.code === SOCKET_BUSY_CODE) { feedback('The world is very busy right now, so this room is not connected yet. Trying again shortly — your game is not affected.'); reconnectTimer = setTimeout(connect, Math.min(5000 * 2 ** Math.min(busyTries, 3), 30000) * (0.8 + 0.4 * Math.random())); busyTries++; return }
       if (attempts < 5) { const delay = Math.min(1000 * 2 ** attempts, 15000); attempts++; reconnectTimer = setTimeout(connect, delay) }
       else { canReconnect = true; feedback('The room is offline. Reconnect when the server is available.') }
     }

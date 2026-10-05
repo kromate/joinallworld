@@ -16,7 +16,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
+import { capacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -27,7 +27,7 @@ import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigi
 import { siteFile } from './site-files.ts';
 import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
-import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, isSharedAddress, SOCKETS_PER_ADDRESS } from './protocol.ts';
+import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, isSharedAddress, SOCKET_BUSY_CODE } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ActionRequest, CityId, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
@@ -56,6 +56,8 @@ export interface ServerOptions {
   sessionTtlMs?: number
   actionWindowMs?: number
   maxActiveSessions?: number
+  maxSockets?: number
+  socketsPerAddress?: number
   voiceConfigProvider?: ServerConfig['voiceConfigProvider']
   store?: Store
   routes?: RouteModule[]
@@ -126,7 +128,7 @@ async function jsonBody(req: IncomingMessage): Promise<Record<string, unknown>> 
   try { const value: unknown = JSON.parse(body); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions = 10000, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -143,6 +145,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) }: ServerOptions = {}): Promise<AllworldServer> {
   const configuredOrigin = cleanOrigin(givenOrigin);
+  // How many players this host takes: MAX_ACTIVE_SESSIONS, MAX_SOCKETS and SOCKETS_PER_ADDRESS, or what a caller passed (host-context.ts capacityConfig).
+  const caps = capacityConfig(env, log);
+  const maxActiveSessions = givenSessions ?? caps.maxActiveSessions, maxSockets = givenSockets ?? caps.maxSockets, socketsPerAddress = givenPerAddress ?? caps.socketsPerAddress;
   // The ingest hosts the browser may talk to: none unless telemetry is configured (the same reading the client's config comes from).
   const accountsHeaderConfig = accountsConfig(env);
   const telemetryHosts = telemetryOrigins(readTelemetryConfig(env, { buildId }));
@@ -191,7 +196,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     return keyFiles.get(name) as Promise<T>;
   }
   // The rate limiter (server/limiter.ts): bounded per class of key, and a full table makes room instead of refusing newcomers.
-  const { allow, peek } = createMemoryLimiter({ now });
+  const { allow, peek, wait: retryIn } = createMemoryLimiter({ now });
   // Whose session a cookie is — a guest's own record, or the character of the account a signed-in browser is bound to: protocol.ts sessionOfCookie.
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
     const found = sessionOfCookie(db, cookieId(req), now(), bindingOf(req) !== undefined);
@@ -220,7 +225,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   }
   /** `key`: the stored session's key (its sockets are renewed with it). The cookie sent back is always the one the browser presented. */
   function renewedHeaders(req: IncomingMessage, key: string | undefined): Record<string, string | string[]> {
-    for (const ws of connections()) if (ws.secret === key) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
+    for (const ws of held.bySecret.get(key ?? '') ?? []) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
     return { 'Set-Cookie': cookieHeader(req, cookieId(req)) };
   }
   const addressOf = (req: IncomingMessage): string => clientAddress(req, trustProxy);
@@ -336,7 +341,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         let returned: RouteResult | void;
         at = { key: route.key, request, began: performance.now() };
         try { returned = await route.handler(request); }
-        finally { for (const publicId of new Set(connections().filter(ws => ws.secret === request.secret && ws.room).map(ws => ws.session.id))) await ctx.core.revalidate(publicId); }
+        finally { for (const publicId of new Set([...held.bySecret.get(request.secret ?? '') ?? []].filter(ws => ws.room).map(ws => ws.session.id))) await ctx.core.revalidate(publicId); }
         const result: RouteResult = returned && typeof returned === 'object' ? returned : {};
         const status = result.status || 200;
         // While the data file cannot be written, every success says so: what the player sees is what
@@ -414,8 +419,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const known = typeof errorStatus === 'number' && Number.isInteger(errorStatus) && typeof errorCode === 'string';
       if (!known && errorCode !== 'ENOENT') log(`Request failed: ${firstLine(error)}`);
       telemetry.httpFailed(thrown, { method, route: at?.key, status: known ? errorStatus : errorCode === 'ENOENT' ? 404 : 500, code: known ? errorCode : undefined, body: at?.request.body, publicId: at?.request.publicId });
+      // A refusal that says when to come back says it twice: the standard header, and a field the page reads.
+      const retryAfter = known && typeof error.retryAfter === 'number' && Number.isFinite(error.retryAfter) && error.retryAfter > 0 ? Math.ceil(error.retryAfter) : null;
       reply(res, known ? errorStatus : errorCode === 'ENOENT' ? 404 : 500, { error: known ? errorCode : errorCode === 'ENOENT' ? 'build_required' : 'internal_error',
-        ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) });
+        ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(retryAfter !== null ? { retryAfter } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) },
+        retryAfter !== null ? { 'Retry-After': String(retryAfter) } : {});
     }
   }
   // A client that goes away mid-request must never take the process with it.
@@ -423,10 +431,23 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16384 });
   /** Every socket the server holds. Each one was given its WsConnection fields on upgrade, before it was added. */
   const connections = (): Connection[] => [...wss.clients] as Connection[];
+  /** The same sockets by stored session, by player and by address, so a request finds its own without walking everyone's. Kept on upgrade and on close. */
+  const held = { bySecret: new Map<string, Set<Connection>>(), byPlayer: new Map<string, Set<Connection>>(), byAddress: new Map<string, Set<Connection>>() };
+  const indexesOf = (ws: Connection) => [[held.bySecret, ws.secret], [held.byPlayer, ws.session.id], [held.byAddress, ws.ip]] as const;
+  const hold = (ws: Connection): void => { for (const [index, key] of indexesOf(ws)) { let set = index.get(key); if (!set) index.set(key, set = new Set()); set.add(ws); } };
+  const letGo = (ws: Connection): void => { for (const [index, key] of indexesOf(ws)) { const set = index.get(key); if (set) { set.delete(ws); if (!set.size) index.delete(key); } } };
+  const socketsOf = (publicId: string): Connection[] => [...held.byPlayer.get(publicId) ?? []].filter(ws => ws.readyState === WebSocket.OPEN);
+  /** Answers an upgrade only to say "try again later": its sockets are never among the server's. */
+  const turnedAway = new WebSocketServer({ noServer: true, clientTracking: false, maxPayload: 1024 });
   const PONG_GRACE_MS = Math.min(5000, Math.floor(heartbeatMs / 2));
   const unresponsive = (ws: WsConnection): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= PONG_GRACE_MS;
   // A WsConnection is always the ws WebSocket the host authenticated (see WsConnection in types.ts).
   const send = (ws: WsConnection, message: ServerFrame): void => { const socket = ws as Connection; if (socket.readyState === WebSocket.OPEN) { socket.send(JSON.stringify(message)); telemetry.socketOut(socket, message); } };
+  /** One frame to many sockets: its text is made once, however many receive it. */
+  const broadcast = (list: Iterable<WsConnection>, message: ServerFrame): void => {
+    let text: string | undefined;
+    for (const ws of list) { const socket = ws as Connection; if (socket.readyState !== WebSocket.OPEN) continue; socket.send(text ??= JSON.stringify(message)); telemetry.socketOut(socket, message); }
+  };
   /**
    * The server context handed to every route and ws module. Documented in routes/index.js.
    * `core` holds foundation internals (cookies, sockets, room checks); feature modules use the rest.
@@ -439,7 +460,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, shards: shards as ShardStore, now, fail, allow, peek, collection, send, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },
@@ -452,11 +473,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     onceId: receipts.onceId,
     push(publicId, message) {
       let sent = 0;
-      for (const ws of connections()) if (ws.session?.id === publicId && ws.readyState === WebSocket.OPEN) { send(ws, message); sent += 1; }
+      for (const ws of socketsOf(publicId)) { send(ws, message); sent += 1; }
       return sent;
     },
     // A socket whose last ping has gone unanswered for PONG_GRACE_MS is not counted: see the heartbeat below.
-    online: (publicId) => connections().some(ws => ws.session?.id === publicId && ws.readyState === WebSocket.OPEN && !unresponsive(ws)),
+    online: (publicId) => socketsOf(publicId).some(ws => !unresponsive(ws)),
     /**
      * Whether a player's stored life in a city is at Home (same rule as joining the Home room).
      * Read-only: nothing is settled, so a trip that has ended but not been settled yet reads as "not home".
@@ -488,7 +509,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
     waitUntil() {},
     keyFile,
-    config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, maxSockets, socketsPerAddress, socketsPerPlayer: caps.socketsPerPlayer, newSessionsPerAddress: caps.newSessionsPerAddress, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup,
     // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order
@@ -499,13 +520,14 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       expiredSessionKeys: (db) => sessionKeys(db, record => record.expiresAt <= now()),
       sessionByPublicId,
       unresponsive: (ws) => unresponsive(ws),
-      storeStats: () => (typeof store.stats === 'function' ? store.stats() : null),
+      storeStats: () => (typeof store.stats === 'function' ? { ...store.stats(), ...(typeof store.sizes === 'function' ? { collections: store.sizes() } : {}) } : null),
       newIdentity: () => ({ secret: randomUUID(), publicId: randomUUID() }),
       newId: () => randomUUID(),
       cookieHeader: (request, secret) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, secret); },
       clearCookieHeader: (request) => { if (!isNodeRequest(request.raw)) throw new TypeError('The request has no raw Node request'); return cookieHeader(request.raw, ''); },
       closeSocket: (ws, code, reason) => { try { (ws as Connection).close(code, reason); } catch { /* already closing */ } },
       sockets: () => connections(),
+      socketsOf,
       isOpen: (ws) => ws.readyState === WebSocket.OPEN,
       sessionOf: (ws, db) => db.sessions[ws.secret],
       // What POST /api/action runs: a player's own request, with no server authority.
@@ -539,11 +561,14 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const session = await store.transact(db => sessionFor(req, db, true))
         .catch(error => { if (fieldOf(error, 'code') !== 'storage_unavailable') throw error; return store.read(db => sessionFor(req, db, false)); });
       if (!session) throw Error('Unauthorized');
-      // One address holds at most SOCKETS_PER_ADDRESS of the server's sockets (as on the Worker host), so one visitor with many
+      // One address holds at most `socketsPerAddress` of the server's sockets (as on the Worker host), so one visitor with many
       // sessions cannot take every place. An address many people share (a proxy without TRUST_PROXY, a LAN) is not counted.
       const address = addressOf(req);
-      if (wss.clients.size >= 1024 || connections().filter(ws => ws.session.id === session.publicId).length >= 8
-        || (!isSharedAddress(address) && connections().filter(ws => ws.ip === address).length >= SOCKETS_PER_ADDRESS)) throw Error('Connection capacity');
+      if ((held.byPlayer.get(session.publicId)?.size ?? 0) >= caps.socketsPerPlayer
+        || (!isSharedAddress(address) && (held.byAddress.get(address)?.size ?? 0) >= socketsPerAddress)) throw Error('Connection capacity');
+      // Every place is taken, and this visitor did nothing wrong: the socket is opened and closed at once with a code the page can
+      // read (a browser cannot read the status of a refused upgrade), so it says the world is busy and tries again. Nobody is dropped to make room.
+      if (wss.clients.size >= maxSockets) { turnedAway.handleUpgrade(req, socket, head, refused => { refused.on('error', () => {}); refused.close(SOCKET_BUSY_CODE, 'socket_capacity'); }); return; }
       // The cookie renewed on the 101 answer is the one the browser presented — never the stored record's key, which a signed-in browser must not learn.
       renewedCookies.set(req, cookieHeader(req, cookieId(req)));
       wss.handleUpgrade(req, socket, head, socketOfUpgrade => {
@@ -554,6 +579,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         ws.expiresAt = session.expiresAt;
         ws.lastSessionRenewedAt = now();
         ws.ip = address;
+        hold(ws);
         sockets.open(ws);
         wss.emit('connection', ws);
       });
@@ -575,7 +601,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     }
     try {
       const expiration = await pending;
-      for (const peer of connections()) if (peer.secret === ws.secret) {
+      for (const peer of held.bySecret.get(ws.secret) ?? []) {
         peer.expiresAt = expiration; peer.lastSessionRenewedAt = now();
       }
     } catch (error) {
@@ -591,7 +617,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     ws.alive = true; ws.pingedAt = 0; ws.seenAt = now();
     ws.on('pong', () => { ws.alive = true; ws.seenAt = Math.max(now(), ws.pingedAt); });
     ws.on('error', () => {});
-    ws.on('close', () => { telemetry.socketClosed(ws); sockets.close(ws); });
+    ws.on('close', () => { letGo(ws); telemetry.socketClosed(ws); sockets.close(ws); });
     let messages = Promise.resolve();
     ws.on('message', (raw, binary) => {
       if (binary || !allow(`ws:${ws.session.id}`, 600)) {

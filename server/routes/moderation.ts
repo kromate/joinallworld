@@ -21,7 +21,8 @@
  *   - A device session gives no access here, and nothing here reads or returns a session secret.
  *
  * READ (GET)
- *   /api/mod/overview                       counts of open reports, problems, mutes; store counters
+ *   /api/mod/overview                       counts of open reports, problems, mutes; store counters; how full the host is
+ *                                           (`capacity`: sessions held and sockets open beside their caps — docs/CAPACITY.md)
  *   /api/mod/reports?status=open|all|…      player reports (reason, text, up to five quoted messages)
  *   /api/mod/problems?status=open|all|…     problem reports with their automatic context
  *   /api/mod/mutes                          active mutes
@@ -108,6 +109,9 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
     'GET /api/mod/overview': guarded((db) => ({
       reports: social.modReportCounts(db), problems: support.counts(db), mutes: moderation.mutes(db).length,
       sessions: Object.keys(db.sessions).length, archivedLives: Object.keys(db.archivedLives ?? {}).length,
+      // How full the host is: what it holds beside what it takes (server/host-context.ts capacityConfig).
+      capacity: { sessions: { held: Object.keys(db.sessions).length, most: ctx.config.maxActiveSessions },
+        sockets: { open: ctx.core.sockets().length, most: ctx.config.maxSockets, perAddress: ctx.config.socketsPerAddress, perPlayer: ctx.config.socketsPerPlayer } },
       store: ctx.core.storeStats?.() ?? null, build: ctx.config.buildId,
     })),
     'GET /api/mod/reports': guarded((db, request) => ({ reports: social.modReports(db, statusParam(request, ['received', 'dismissed', 'actioned'])) })),

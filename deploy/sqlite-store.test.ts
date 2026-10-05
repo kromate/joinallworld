@@ -346,3 +346,22 @@ test('SQLite: walking a player\'s receipts is one statement however many there a
  assert.equal(count(db,'SELECT COUNT(*) AS n FROM action_receipts'),401);assert.equal(count(db,'SELECT COUNT(*) AS n FROM once_receipts'),500);
  assert.deepEqual(await store.read(d=>[life(d).actions['a7'],life(d).actions['a99'],life(d).actions['a100']?.code,life(d).actions['fresh']?.code]),[undefined,undefined,'done','refused']);
 });
+test('SQLite: counting or listing the sessions reads their keys and no record — only the one that is then asked for',async t=>{
+ const db=new DatabaseSync(':memory:');
+ const inner=storageOn(db),queries: string[]=[];
+ const storage: SqliteStorage={...inner,sql:{exec<Row extends SqlRow>(query: string,...params: SqlBinding[]): SqlCursor<Row>{queries.push(query);return inner.sql.exec<Row>(query,...params);}}};
+ const store=createSqliteStore(storage),loose=store as unknown as LooseStore;
+ t.after(async()=>{await store.close();db.close();});
+ await loose.transact(d=>{for(let i=0;i<50;i++)put(d,`key-${i}`,{...session(),secret:`key-${i}`,publicId:`public-${i}`});});
+ queries.length=0;
+ // What a new session asks before it is made (server/routes/core.ts): how many are there?
+ assert.equal(await loose.read(d=>Object.keys(d.sessions).length),50);
+ assert.equal(queries.filter(query=>/SELECT value FROM sessions WHERE secret/.test(query)).length,0,'no record was read to count them');
+ queries.length=0;
+ // Listing the keys and then reading one reads that one; the values are still there for whoever walks them.
+ const seen=await loose.transact(d=>{const keys=Object.keys(d.sessions);put(d,'new',{...session(),secret:'new',publicId:'public-new'});const gone=d.sessions['key-0'];if(gone)delete d.sessions['key-0'];return {keys:keys.length,after:Object.keys(d.sessions).length,one:(d.sessions['key-7'] as SessionRecord).publicId,has:'key-3' in d.sessions,gone:'key-0' in d.sessions};});
+ assert.deepEqual(seen,{keys:50,after:50,one:'public-7',has:true,gone:false});
+ assert.equal(queries.filter(query=>/SELECT value FROM sessions WHERE secret/.test(query)).length,2,'the one that was removed and the one that was asked for');
+ assert.deepEqual(await loose.read(d=>Object.values(d.sessions).map(item=>(item as SessionRecord).publicId).sort().slice(0,3)),['public-1','public-10','public-11']);
+ assert.deepEqual(await loose.read(d=>Object.entries(d.sessions).filter(([key])=>key==='new').map(([,item])=>(item as SessionRecord).secret)),['new']);
+});

@@ -170,7 +170,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         set(_, key, value: T | undefined) { if (typeof key !== 'string') throw Error('invalid_store_key'); cache.set(key, value); return true; },
         deleteProperty(_, key) { cache.set(key as string, undefined); return true; },
         ownKeys() { return [...new Set([...storedKeys(), ...cache.keys()])].filter(key => !cache.has(key) || cache.get(key) !== undefined); },
-        getOwnPropertyDescriptor(target, key) { if ((cache.has(key as string) && cache.get(key as string) !== undefined) || (!cache.has(key as string) && storedKeys().has(key as string))) return { enumerable: true, configurable: true, writable: true, value: handler.get?.(target, key, target) }; return undefined; },
+        // The descriptor READS NOTHING: its value is fetched when somebody asks for it. Listing or counting the keys of a table
+        // (`Object.keys(db.sessions).length`) asks for every key's descriptor, and must not read and parse every record to answer.
+        getOwnPropertyDescriptor(target, key) { if ((cache.has(key as string) && cache.get(key as string) !== undefined) || (!cache.has(key as string) && storedKeys().has(key as string))) return { enumerable: true, configurable: true, get: () => handler.get?.(target, key, target) as T | undefined, set: (value: T | undefined) => { cache.set(key as string, value); } }; return undefined; },
         has(_, key) { return cache.has(key as string) ? cache.get(key as string) !== undefined : storedKeys().has(key as string); },
       };
       return new Proxy(Object.create(null) as Record<string, T | undefined>, handler);

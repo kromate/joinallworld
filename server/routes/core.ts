@@ -17,7 +17,7 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../../src/types/protocol.ts';
 import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { hasAction } from '../../src/game/registry.ts';
-import { validateName, validateActionPayload, publicSession, isSharedAddress, NEW_SESSIONS_PER_ADDRESS, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
+import { validateName, validateActionPayload, publicSession, isSharedAddress, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
@@ -119,10 +119,16 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
         for (const secret of core.expiredSessionKeys(db, !current)) { const stale = db.sessions[secret]; if (stale) core.archiveSession(db, secret, stale); }
         if (!current) {
           // A NEW SESSION COSTS ITS MAKER NOTHING and takes one of the places every player shares, for as long as a session
-          // lasts. One network address may make NEW_SESSIONS_PER_ADDRESS an hour; an address many people are behind without the
-          // server being able to tell them apart (a proxy without TRUST_PROXY, a LAN) is not counted.
-          if (!isSharedAddress(request.ip) && !allow(`session:new:${request.ip}`, NEW_SESSIONS_PER_ADDRESS, 3600000)) throw fail(429, 'rate_limited');
-          if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw fail(503, 'device_capacity');
+          // lasts. One network address may make config.newSessionsPerAddress an hour; an address many people are behind without the
+          // server being able to tell them apart (a proxy without TRUST_PROXY, a LAN) is not counted. A visitor who is turned
+          // away is told why and when to come back: the address may be a whole campus or a mobile network, not one person.
+          if (!isSharedAddress(request.ip) && !allow(`session:new:${request.ip}`, config.newSessionsPerAddress, 3600000)) {
+            const seconds = Math.min(3600, Math.max(60, Math.ceil((ctx.retryIn?.(`session:new:${request.ip}`) || 3600000) / 1000)));
+            throw Object.assign(fail(429, 'rate_limited'), { retryAfter: seconds,
+              reason: `Too many new players have started from your network in the last hour (a shared Wi-Fi or mobile network counts as one). Nothing is lost: try again in about ${Math.ceil(seconds / 60)} minute${seconds > 60 ? 's' : ''}.` });
+          }
+          // EVERY PLACE IS TAKEN: the visitor is asked to wait (the page says so and tries again). Nobody who has a session is affected.
+          if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw Object.assign(fail(503, 'device_capacity'), { retryAfter: 30, reason: 'The world is full right now. Your place is not lost: try again in a moment.' });
           const { secret, publicId } = core.newIdentity();
           current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true as const } : {}) };
           // A browser signed in to an account that has no character yet: this new session is that character (server/accounts/service.ts).

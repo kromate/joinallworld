@@ -95,6 +95,10 @@ export interface GameClient {
   busy: boolean
   serverTimeOffset: number
   link: LinkState
+  /** Why the last start was turned away by a server that is answering: every place taken ('full'), or too many new players from this network address ('limit'). */
+  refusal: 'full' | 'limit' | null
+  /** Seconds the server said to wait, when it said. */
+  retryAfter: number | null
   storage: StorageProblem | null
   readonly online: boolean
   serverNow(): number

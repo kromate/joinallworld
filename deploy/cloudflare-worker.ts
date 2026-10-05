@@ -57,8 +57,8 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
-import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKETS_PER_ADDRESS } from '../server/protocol.ts';
+import { capacityConfig, type CapacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
+import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKET_BUSY_CODE } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
@@ -71,6 +71,8 @@ const LAZY_FLUSH_MS = 600000;
 const RENEW_SLACK_MS = 86400000;
 /** How often the limiter's stored rows and the day-old chat receipts are swept. A sweep that finds nothing writes nothing. */
 const SWEEP_MS = 600000;
+/** The longest a socket that only answers heartbeats goes without its stored session being looked up (message() below). */
+const ACK_CHECK_MS = 60000;
 /** How often expired sessions are looked for after start-up (expiredSessions below). */
 const EXPIRY_SWEEP_MS = 60000;
 /** Path prefixes outside /api/ that a module may serve as an HTML page (ctx.pages). The Worker sends these to the object. */
@@ -206,6 +208,11 @@ export interface WorkerEnv {
   MODERATOR_TOKEN?: string
   VOTES_PER_ADDRESS?: string
   VOTE_CAP_MODE?: string
+  /** How many players the object takes (server/host-context.ts capacityConfig, docs/CAPACITY.md). Unset: the defaults. */
+  MAX_ACTIVE_SESSIONS?: string
+  MAX_SOCKETS?: string
+  SOCKETS_PER_ADDRESS?: string
+  NEW_SESSIONS_PER_ADDRESS?: string
   TURN_KEY_ID?: string
   TURN_API_TOKEN?: string
   TURN_TEST_PUBLIC_IDS?: string
@@ -232,6 +239,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   sql: SqlStorageLike;
   meter: WriteMeter;
   peers: Map<WebSocket, HostSocket>;
+  /** The sockets nobody has released yet, by the stored session they were opened under, by player and by address: a request finds its own sockets without walking everyone's. */
+  held: { all: Set<HostSocket>; bySecret: Map<string, Set<HostSocket>>; byPlayer: Map<string, Set<HostSocket>>; byAddress: Map<string, Set<HostSocket>> };
+  /** Sockets whose attachment no longer says what they carry (saveSockets). */
+  unsaved: Set<WebSocket>;
+  /** When each socket's stored session was last looked up for a frame (in memory only: after a sleep the next frame looks again). */
+  checked: WeakMap<HostSocket, number>;
+  caps: CapacityConfig;
   inflight: Map<WebSocket, Promise<void>>;
   telemetry: ReturnType<typeof createServerTelemetry>;
   booted: boolean;
@@ -249,9 +263,11 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   ready: Promise<void>;
   constructor(ctx: DurableObjectState, env: WorkerEnv) {
     super(ctx, env); this.env = env; this.meter = createWriteMeter(ctx.storage.sql); this.sql = this.meter.sql; this.peers = new Map(); this.inflight = new Map();
+    this.held = { all: new Set(), bySecret: new Map(), byPlayer: new Map(), byAddress: new Map() }; this.unsaved = new Set(); this.checked = new WeakMap();
     const now = () => Date.now();
     const log = (line: unknown): void => { try { console.error(String(line).slice(0, 500)); } catch { /* a failing logger changes nothing */ } };
     const buildId = String(env.BUILD_ID || 'unreleased').slice(0, 40);
+    this.caps = capacityConfig(env, log);
     this.telemetry = createServerTelemetry({ env, buildId });
     this.booted = false;
     // THE DURABILITY BARRIER: every acknowledged write has passed storage.sync(). While the object is starting nothing can
@@ -295,21 +311,25 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
     const keys = new Map<string, Promise<object>>();
     const unresponsive = (ws: HostSocket): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= HEARTBEAT_MS / 2;
-    const open = (): HostSocket[] => [...this.peers.values()].filter(ws => ws.readyState === 1);
+    const open = (): HostSocket[] => [...this.held.all].filter(ws => ws.readyState === 1);
+    const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
       store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
       peek: (key: string, count = 120) => this.peek(key, count),
+      retryIn: (key: string) => this.retryIn(key),
       send: (ws, message) => this.sendFrame(ws as HostSocket, message),
+      // One frame to many sockets: its text is made once, however many receive it.
+      broadcast: (list, message) => { let text: string | undefined; for (const peer of list) { const ws = peer as HostSocket; if (ws.readyState !== 1) continue; try { ws.send(text ??= JSON.stringify(message)); this.telemetry.socketOut(ws, message); } catch { /* the socket went away */ } } },
       on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
       emit(event, value) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch (error) { log(`Listener for ${event} failed: ${firstLine(error)}`); } } },
       settle, act,
       // One game action for the caller, exactly once, with everything it changed saved together (routes/core.ts).
       command: (request, body, options) => executeCommand(context, request, body, options),
       once: receipts.once, onceId: receipts.onceId,
-      push: (id, message) => { let count = 0; for (const ws of open()) if (ws.session.id === id) { context.send(ws, message); count++; } return count; },
-      online: (id) => open().some(ws => ws.session.id === id && !unresponsive(ws)),
+      push: (id, message) => { let count = 0; for (const ws of openOf(id)) { context.send(ws, message); count++; } return count; },
+      online: (id) => openOf(id).some(ws => !unresponsive(ws)),
       atHome(db, id, city) {
         if (!registeredCityIds().includes(city)) return false;
         const found = context.core.sessionByPublicId(db, id), state = found && found.expiresAt > now() ? found.cities?.[city as CityId]?.state : undefined;
@@ -335,7 +355,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       },
       // Work that outlives the request that started it: the object stays up until it has finished.
       waitUntil: (promise) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
-      config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
+      config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, ...this.caps, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
       startup: registeredCityIds().map(loadCityContent),
       // Nothing stops a Durable Object in an orderly way: every write is durable when it is acknowledged, and work in
       // flight is covered by waitUntil. The list exists so a module can register without asking which host it is on.
@@ -345,13 +365,14 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         expiredSessionKeys: (db: Db, always?: boolean) => this.expiredSessions(db, now(), always === true),
         sessionByPublicId: (db: Db, id: string) => { const key = db.$store!.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
         unresponsive,
-        storeStats: () => ({ ...this.store.stats(), rows: this.meter.snapshot(), limits: this.limits() }),
+        storeStats: () => ({ ...this.store.stats(), rows: this.meter.snapshot(), limits: this.limits(), collections: this.sizes() }),
         newIdentity: () => ({ secret: crypto.randomUUID(), publicId: crypto.randomUUID() }),
         newId: () => crypto.randomUUID(),
         cookieHeader: (request, secret: string) => cookie(secret, request.raw as Request),
         clearCookieHeader: (request) => cookie('', request.raw as Request),
         closeSocket: (ws, code, reason) => { const peer = ws as HostSocket; peer.close(code, reason); this.release(peer); },
         sockets: open,
+        socketsOf: openOf,
         isOpen: (ws: HostSocket) => ws.readyState === 1,
         sessionOf: (ws: HostSocket, db: Db) => db.sessions[ws.secret],
         playerAct,
@@ -419,6 +440,16 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     }
     return true;
   }
+  /** ctx.retryIn: milliseconds until the window of a limiter key ends, wherever it is counted; 0 when none is running. Writes nothing. */
+  retryIn(key: string): number {
+    const short = this.shortLimits.wait(key);
+    if (short > 0) return short;
+    for (const table of Object.values(RATE_TABLES)) {
+      const row = this.sql.exec<{ expires_at: number }>(`SELECT expires_at FROM ${table} WHERE key = ?`, key).toArray()[0];
+      if (row) return Math.max(0, Number(row.expires_at) - Date.now());
+    }
+    return 0;
+  }
   /** Keys the limiter holds per class, for the operator's overview: short in memory, long and protected stored. */
   limits(): Record<LimiterClass, number> {
     const stored = (table: string): number => this.sql.exec<{ count: number }>(`SELECT COUNT(*) AS count FROM ${table}`).one().count;
@@ -433,26 +464,62 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.shortLimits.sweep();
   }
   /**
-   * The sessions to archive now. At start-up every record is read once (records of builds that kept no public id or no
-   * expiry are rotated then). After that a request must not be able to make the object read every session: expired
-   * ones are found by their stored expiry, and looked for when a session is about to be made (`always`: a request that
-   * is itself limited per address) and otherwise at most once every EXPIRY_SWEEP_MS, however often it is asked.
+   * The sessions to archive now, found by their stored expiry: no other record is read, at start-up or later (reading
+   * every record once per start was time and memory in proportion to everyone who ever played; a row of this table
+   * cannot lack a public id or an expiry, which is what that reading looked for). They are looked for at start-up, when
+   * a session is about to be made (`always`: a request that is itself limited per address) and otherwise at most once
+   * every EXPIRY_SWEEP_MS, however often it is asked.
    * A session that has run out is refused from that moment whether or not it has been archived yet (protocol.ts sessionOfCookie).
    */
   expiredSessions(db: Db, now: number, always = false): string[] {
     const helpers = db.$store!;
-    if (!this.booted || !helpers.expiredSessionKeys) return helpers.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now);
-    if (!always && now < this.expirySweepAt) return [];
+    if (!helpers.expiredSessionKeys) return helpers.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now);
+    if (this.booted && !always && now < this.expirySweepAt) return [];
     this.expirySweepAt = now + EXPIRY_SWEEP_MS;
     return helpers.expiredSessionKeys(now);
   }
   /** Set the alarm. Setting it is a write, and is counted as one. */
   async arm(at: number): Promise<void> { await this.ctx.storage.setAlarm(at); this.meter.add(ALARM_TABLE, 1); }
+  /**
+   * A socket as the modules hold it. WHAT IT CARRIES IS WRITTEN TO ITS ATTACHMENT ONLY WHEN IT CHANGED: assigning a field
+   * marks the socket (`unsaved`), and saveSockets writes the marked ones. Writing every socket's attachment after every
+   * request and frame cost time in proportion to everyone connected. So a module ASSIGNS what a socket carries
+   * (`ws.position = { x, z }`) and never changes it in place (`ws.position.x = …` would not be seen until the next beat,
+   * which marks every socket).
+   */
   wrap(socket: WebSocket, info: SocketInfo): HostSocket {
-    const ws: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [], look: info.look ?? null, stale: false, guestUntil: 0,
+    const fields: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [], look: info.look ?? null, stale: false, guestUntil: 0,
       get readyState() { return this.closed ? 3 : socket.readyState; },
       send: (data: string) => socket.send(data), close: (code = 1000, reason = '') => { ws.closed = true; try { socket.close(code, reason); } catch { /* already closed */ } }, socket };
-    this.peers.set(socket, ws); return ws;
+    const ws = new Proxy(fields, {
+      set: (target, key, value: unknown) => { if (Reflect.get(target, key) !== value) { Reflect.set(target, key, value); this.unsaved.add(socket); } return true; },
+      deleteProperty: (target, key) => { if (Reflect.has(target, key)) this.unsaved.add(socket); return Reflect.deleteProperty(target, key); },
+    });
+    this.peers.set(socket, ws);
+    if (!info.closed) {
+      this.held.all.add(ws);
+      for (const [index, key] of [[this.held.bySecret, ws.secret], [this.held.byPlayer, ws.session.id], [this.held.byAddress, ws.ip]] as const) { let set = index.get(key); if (!set) index.set(key, set = new Set()); set.add(ws); }
+    }
+    return ws;
+  }
+  /** Take a socket out of the indexes (it stays in `peers` until the runtime reports it closed). */
+  forget(ws: HostSocket): void {
+    this.held.all.delete(ws);
+    for (const [index, key] of [[this.held.bySecret, ws.secret], [this.held.byPlayer, ws.session.id], [this.held.byAddress, ws.ip]] as const) { const set = index.get(key); if (set) { set.delete(ws); if (!set.size) index.delete(key); } }
+  }
+  /** Is any socket open? */
+  anyOpen(): boolean { for (const ws of this.held.all) if (ws.readyState === 1) return true; return false; }
+  /** The open sockets of one stored session. */
+  socketsOfSecret(secret: string | undefined): HostSocket[] { return secret === undefined ? [] : [...this.held.bySecret.get(secret) ?? []].filter(ws => ws.readyState === 1); }
+  /**
+   * JSON characters stored per feature collection, for the operator's overview (reads only). The tables that hold a row per
+   * session or receipt are not measured: that would read every row.
+   */
+  sizes(): Record<string, number> {
+    const sizes: Record<string, number> = {};
+    for (const row of this.sql.exec<{ name: string; size: number }>('SELECT name, LENGTH(value) AS size FROM collections').toArray()) sizes[row.name] = Number(row.size);
+    for (const row of this.sql.exec<{ name: string; size: number }>('SELECT name, SUM(LENGTH(value)) AS size FROM collection_parts GROUP BY name').toArray()) sizes[row.name] = Number(row.size);
+    return sizes;
   }
   /** To one socket, if it is open: the frames the shared modules send, plus the Worker's own application heartbeat. */
   sendFrame(ws: HostSocket, message: ServerFrame | HeartbeatFrame): void {
@@ -461,16 +528,19 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   }
   /** Write what each socket carries into its attachment, so it survives a sleep. Too large (a long look): the look is what goes. */
   saveSockets(): void {
-    for (const [socket, ws] of this.peers) {
+    for (const socket of this.unsaved) {
+      const ws = this.peers.get(socket);
+      if (!ws) continue;
       const { socket: ignored, send: ignoredSend, close: ignoredClose, readyState: ignoredReady, released: ignoredReleased, ...info } = ws;
       try {
         if (JSON.stringify(info).length > ATTACHMENT_BYTES) { info.look = null; info.lastMoves = []; }
         socket.serializeAttachment(info);
       } catch { try { socket.serializeAttachment({ secret: ws.secret, ...(ws.device !== undefined ? { device: ws.device } : {}), session: ws.session, expiresAt: ws.expiresAt, ip: ws.ip, room: ws.room ?? null, closed: ws.closed === true, alive: ws.alive, pingedAt: ws.pingedAt, seenAt: ws.seenAt, lastSessionRenewedAt: ws.lastSessionRenewedAt, position: ws.position, voice: ws.voice }); } catch { /* the socket is gone */ } }
     }
+    this.unsaved.clear();
   }
   /** Tell the modules a socket is gone — once, however many ways its end was noticed (an expiry, an alarm, the close event). */
-  release(ws: HostSocket): void { if (ws.released) return; ws.released = true; ws.closed = true; this.telemetry.socketClosed(ws); this.handlers.close(ws); }
+  release(ws: HostSocket): void { if (ws.released) return; ws.released = true; ws.closed = true; this.forget(ws); this.telemetry.socketClosed(ws); this.handlers.close(ws); }
   /** Whose session the presented cookie is — a guest's own record, or the character of the account a signed-in browser is bound to (protocol.ts sessionOfCookie). */
   session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
     const found = sessionOfCookie(db, request.cookie, Date.now(), request.binding !== undefined);
@@ -519,13 +589,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // the caller's sockets are in is re-checked against the STORED lives.
       let returned: RouteResult | void;
       try { returned = await route.handler(request); }
-      finally { for (const publicId of new Set([...this.peers.values()].filter(ws => ws.secret === request.secret && ws.room && ws.readyState === 1).map(ws => ws.session.id))) await this.context.core.revalidate(publicId); }
+      finally { for (const publicId of new Set(this.socketsOfSecret(request.secret).filter(ws => ws.room).map(ws => ws.session.id))) await this.context.core.revalidate(publicId); }
       const result: RouteResult = returned && typeof returned === 'object' ? returned : {}, status = result.status || 200;
       this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.['type'], code: (result.body as { code?: unknown } | undefined)?.code } });
       const plain = result.body && typeof result.body === 'object' && !Array.isArray(result.body);
       const body: Record<string, unknown> = status < 300 && (plain || result.body === undefined) ? { ...(result.body as object || {}), serverTime: Date.now(), ...(this.context.core.storageFailing() ? { storage: 'failing' } : {}) } : (result.body ?? {}) as Record<string, unknown>;
       if (url.pathname === '/api/health') Object.assign(body, { transport: 'cloudflare', buildId: this.context.config.buildId });
-      if (result.renew === true) for (const ws of this.peers.values()) if (ws.secret === request.secret) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
+      if (result.renew === true) for (const ws of this.held.bySecret.get(request.secret ?? '') ?? []) { ws.expiresAt = now + SESSION_TTL_MS; ws.lastSessionRenewedAt = now; }
       this.saveSockets();
       // `after` runs once the answer is on its way. Whatever it does, the request is already answered.
       const after = result.after;
@@ -540,7 +610,10 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (!known) this.context.core.log(`Request failed: ${firstLine(error)}`);
       this.telemetry.httpFailed(thrown, { method: raw.method, route: at?.key, status: known ? error.status as number : 500, code: known ? error.code : undefined, body: at?.request.body, publicId: at?.request.publicId });
       this.saveSockets();
-      return json(known ? error.status as number : 500, { error: known ? error.code : 'internal_error', ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) });
+      // A refusal that says when to come back says it twice: the standard header, and a field the page reads.
+      const retryAfter = known && typeof error.retryAfter === 'number' && Number.isFinite(error.retryAfter) && error.retryAfter > 0 ? Math.ceil(error.retryAfter) : null;
+      return json(known ? error.status as number : 500, { error: known ? error.code : 'internal_error', ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(retryAfter !== null ? { retryAfter } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) },
+        retryAfter !== null ? { 'Retry-After': String(retryAfter) } : {});
     } finally { this.ctx.waitUntil(this.telemetry.flush()); }
   }
   /**
@@ -589,7 +662,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.cookie as string, request.raw) });
   }
   liveRoom(session: SessionRecord, db: Db): boolean {
-    return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as CityId)));
+    return [...this.held.byPlayer.get(session.publicId) ?? []].some(ws => ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as CityId)));
   }
   async upgrade(raw: Request, request: WorkerRequest): Promise<Response> {
     if (raw.headers.get('upgrade')?.toLowerCase() !== 'websocket' || raw.method !== 'GET') throw protocolError(403, 'websocket_required');
@@ -597,10 +670,19 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     if (!this.allow(`upgrade:${request.ip}`, 60)) throw protocolError(429, 'rate_limited');
     // `secret` is the stored record's key; `device` is the cookie the browser presented, the only value ever sent back to it.
     const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, device: request.cookie as string, session: publicSession(s), expiresAt: s.expiresAt }; });
-    const peers = [...this.peers.values()].filter(ws => ws.readyState === 1);
-    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= SOCKETS_PER_ADDRESS) throw protocolError(503, 'socket_capacity');
+    // One session and one address hold a bounded share of the sockets: more is refused outright (503). When EVERY place is
+    // taken the visitor did nothing wrong: the socket is opened and closed at once with SOCKET_BUSY_CODE, which a browser can
+    // read (it cannot read the status of a refused upgrade) — the page says the world is busy and tries again. Nobody connected is dropped to make room.
+    if ((this.held.bySecret.get(info.secret)?.size ?? 0) >= this.caps.socketsPerPlayer || (this.held.byAddress.get(request.ip)?.size ?? 0) >= this.caps.socketsPerAddress) throw protocolError(503, 'socket_capacity');
+    if (this.held.all.size >= this.caps.maxSockets) {
+      const busy = new WebSocketPair();
+      busy[1].accept(); busy[1].close(SOCKET_BUSY_CODE, 'socket_capacity');
+      return new Response(null, { status: 101, webSocket: busy[0] });
+    }
     const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
     const ws = this.wrap(socket, { ...info, ip: request.ip, room: null, closed: false, alive: true, pingedAt: 0, seenAt: Date.now(), lastSessionRenewedAt: Date.now() });
+    // A new socket has no attachment yet: it is written now whatever the modules set on it.
+    this.unsaved.add(socket);
     this.handlers.open(ws); this.saveSockets();
     // Somebody is connected: the beat runs (a beat that is already due is never postponed by a newer socket).
     this.keepBeating();
@@ -635,14 +717,19 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try { message = JSON.parse(raw) as IncomingFrame; } catch { throw Error('invalid_message'); }
       if (!message || typeof message !== 'object') throw Error('invalid_message');
       this.meter.from(`socket ${typeof message.type === 'string' && this.handlers.messages.has(message.type) ? message.type : message.type === 'heartbeat-ack' ? 'heartbeat-ack' : '(unknown)'}`);
-      const authenticated = await this.store.read(db => Boolean(this.socketSession(db, ws)));
+      // Every frame is checked against the stored session before it is handled. The answer to a heartbeat asks for nothing and is
+      // most of what an open page sends, so its check is made once in ACK_CHECK_MS rather than six times a minute: a socket whose
+      // session is gone is closed by whatever removed the session, at its expiry by the beat, and at the latest by this check.
+      const checkedLately = message.type === 'heartbeat-ack' && Date.now() - (this.checked.get(ws) ?? 0) < ACK_CHECK_MS;
+      const authenticated = checkedLately || await this.store.read(db => Boolean(this.socketSession(db, ws)));
+      if (authenticated && !checkedLately) this.checked.set(ws, Date.now());
       if (!authenticated || ws.expiresAt <= Date.now()) { this.context.send(ws, { type: 'error', code: 'device_session_required', error: 'device_session_required' }); ws.close(1008, 'Device session expired'); this.release(ws); return; }
       ws.alive = true; ws.seenAt = Date.now(); // any frame proves the connection is alive
       if (message.type === 'heartbeat-ack') return;
       if (Date.now() - ws.lastSessionRenewedAt >= 60000) {
         // The renewal could not be saved, so it did not happen: the socket keeps its expiry and the message is still handled.
         const expiration = await this.store.transact(db => { const found = this.socketSession(db, ws); if (!found || !renewSession(found.session, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS)) throw Error('device_session_required'); renewResolved(found, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS); return found.session.expiresAt; }, { durable: false }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
-        if (expiration !== null) for (const peer of this.peers.values()) if (peer.secret === ws.secret) { peer.expiresAt = expiration; peer.lastSessionRenewedAt = Date.now(); }
+        if (expiration !== null) for (const peer of this.held.bySecret.get(ws.secret) ?? []) { peer.expiresAt = expiration; peer.lastSessionRenewedAt = Date.now(); }
       }
       const entry = typeof message.type === 'string' ? this.handlers.messages.get(message.type) : undefined;
       // Unknown types keep their historical replies: join_required outside a room, invalid_message inside one.
@@ -665,7 +752,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     }
     finally { this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); }
   }
-  override async webSocketClose(socket: WebSocket): Promise<void> { await this.ready; const ws = this.peers.get(socket); if (ws) { this.meter.from('socket close'); this.release(ws); this.peers.delete(socket); this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); } }
+  override async webSocketClose(socket: WebSocket): Promise<void> { await this.ready; const ws = this.peers.get(socket); if (ws) { this.meter.from('socket close'); this.release(ws); this.peers.delete(socket); this.unsaved.delete(socket); this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); } }
   override async webSocketError(socket: WebSocket): Promise<void> { await this.webSocketClose(socket); }
   /**
    * THE BEAT, every HEARTBEAT_MS while a socket is open: a socket that did not answer the last one is closed, the others are
@@ -675,7 +762,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
    */
   beat(): void {
     this.meter.from('beat');
-    for (const ws of [...this.peers.values()]) {
+    for (const ws of [...this.held.all]) {
       if (ws.readyState !== 1) continue;
       if (!ws.alive || ws.expiresAt <= Date.now()) { ws.close(1008, 'Session inactive'); this.release(ws); continue; }
       ws.alive = false; ws.pingedAt = Date.now(); this.sendFrame(ws, { type: 'heartbeat' });
@@ -686,7 +773,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   }
   /** Keep the beat going while a socket is open. One timer at a time: asking again never moves a beat that is already due. */
   keepBeating(): void {
-    if (this.sleeps || this.beatTimer !== null || ![...this.peers.values()].some(ws => ws.readyState === 1)) return;
+    if (this.sleeps || this.beatTimer !== null || !this.anyOpen()) return;
     this.beatTimer = setTimeout(() => {
       this.beatTimer = null;
       try { this.beat(); } catch (error) { this.context.core.log(`Beat failed: ${firstLine(error)}`); }
@@ -703,6 +790,6 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     await this.ready;
     this.meter.from('alarm');
     try { if (this.beatTimer === null) this.beat(); }
-    finally { await this.arm(Date.now() + (this.sleeps && [...this.peers.values()].some(ws => ws.readyState === 1) ? HEARTBEAT_MS : IDLE_BEAT_MS)); this.keepBeating(); }
+    finally { await this.arm(Date.now() + (this.sleeps && this.anyOpen() ? HEARTBEAT_MS : IDLE_BEAT_MS)); this.keepBeating(); }
   }
 }

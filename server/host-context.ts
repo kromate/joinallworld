@@ -7,7 +7,7 @@
  * are here, once, so the two hosts cannot drift apart. Portable: no Node imports.
  */
 import { settleCity, applyLifeAction } from './life-service.ts';
-import { archivedLife } from './protocol.ts';
+import { archivedLife, NEW_SESSIONS_PER_ADDRESS, SOCKETS_PER_ADDRESS, SOCKETS_PER_PLAYER } from './protocol.ts';
 import { outcomeKey } from './routes/core.ts';
 import type { ActionRequest, CityId, LifeChangedFrame } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
@@ -49,6 +49,40 @@ export function founderEmailHash(env: Readonly<Record<string, unknown>> | null |
   const text = typeof value === 'string' ? value.trim().toLowerCase() : '';
   return /^[0-9a-f]{64}$/.test(text) ? text : '';
 }
+/**
+ * HOW MANY PLAYERS A HOST TAKES. Five numbers, the same on both hosts, each replaceable by a setting of the same name
+ * (docs/CAPACITY.md says where the defaults come from and what a player sees at each):
+ *   MAX_ACTIVE_SESSIONS   stored device sessions — every device that played in the last session lifetime, connected or not.
+ *                         At the cap a NEW visitor is asked to wait (503 device_capacity); nobody who has a session is affected.
+ *                         Its default is what the collections that grow with it can carry while each is one stored value.
+ *   MAX_SOCKETS           open sockets in all (a page holds two). At the cap a new socket is closed with SOCKET_BUSY_CODE
+ *                         and the page tries again; nobody connected is dropped.
+ *   SOCKETS_PER_ADDRESS   open sockets one network address may hold, so one visitor cannot take every place.
+ *   NEW_SESSIONS_PER_ADDRESS   new sessions one network address may make in an hour. Beyond it a new visitor from that address
+ *                         is told so, and when to try again (429 with Retry-After); nobody who has a session is affected.
+ *   SOCKETS_PER_PLAYER    not a setting: open sockets one session may hold.
+ * A value that is not a whole number inside its bounds is ignored with one log line, and the default applies: a typing
+ * mistake in a setting must not stop the game.
+ */
+export interface CapacityConfig { maxActiveSessions: number; maxSockets: number; socketsPerAddress: number; socketsPerPlayer: number; newSessionsPerAddress: number }
+export const CAPACITY_DEFAULTS: Readonly<CapacityConfig> = Object.freeze({ maxActiveSessions: 10000, maxSockets: 4000, socketsPerAddress: SOCKETS_PER_ADDRESS, socketsPerPlayer: SOCKETS_PER_PLAYER, newSessionsPerAddress: NEW_SESSIONS_PER_ADDRESS });
+/** [setting, field, least, most]. The most a host can be told to take is what the platform itself allows (docs/CAPACITY.md). */
+export const CAPACITY_ENV: readonly (readonly [string, keyof CapacityConfig, number, number])[] = Object.freeze([
+  ['MAX_ACTIVE_SESSIONS', 'maxActiveSessions', 1, 5000000], ['MAX_SOCKETS', 'maxSockets', 2, 32000], ['SOCKETS_PER_ADDRESS', 'socketsPerAddress', 2, 32000],
+  ['NEW_SESSIONS_PER_ADDRESS', 'newSessionsPerAddress', 1, 100000],
+] as const);
+export function capacityConfig(env: Readonly<Record<string, unknown>> | null | undefined, log: (line: string) => void = () => {}): CapacityConfig {
+  const config: CapacityConfig = { ...CAPACITY_DEFAULTS };
+  for (const [name, field, least, most] of CAPACITY_ENV) {
+    const given = env?.[name];
+    if (given === undefined || given === null || given === '') continue;
+    const value = typeof given === 'number' ? given : typeof given === 'string' && /^\d{1,9}$/.test(given.trim()) ? Number(given.trim()) : NaN;
+    if (Number.isSafeInteger(value) && value >= least && value <= most) config[field] = value;
+    else log(`${name} must be a whole number from ${least} to ${most}: the default (${config[field]}) is used.`);
+  }
+  return config;
+}
+
 /**
  * THE SESSION COOKIE. Over HTTPS it is `__Host-sid`: a name a browser only accepts with Secure, Path=/ and NO Domain, so
  * a page on a sibling host (another subdomain of the same site) cannot set or overwrite it. Before that name it was

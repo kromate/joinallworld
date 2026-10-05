@@ -91,7 +91,7 @@ test('finding a local government from a position happens in this module alone, f
   assert.match(cardView, /command\('estate\.set-lga', \{ lga, via \}\)/, 'the action carries the id and how it was found — nothing else');
   // Analytics is told how it was chosen and which local government (an id from the fixed list of twenty) — never the position.
   assert.match(cardView, /track\('lga_chosen', \{ method: via === 'device' \? 'device' : 'manual', lga \}\)/);
-  assert.match(readFileSync(new URL('../app/features/start/OnboardingApp.vue', import.meta.url), 'utf8'), /worldTrack\('lga_chosen', \{ method: d\.extra\.area\.via === 'device' \? 'device' : 'manual', lga: d\.extra\.area\.lga/, 'the settle-in card says the same two things');
+  assert.match(readFileSync(new URL('../app/features/start/CreatorApp.vue', import.meta.url), 'utf8'), /worldTrack\('lga_chosen', \{ method: draftNow\.area\.via === 'device' \? 'device' : 'manual', lga: draftNow\.area\.lga/, 'the settle-in card says the same two things');
   assert.equal((cardView.match(/track\('/g) || []).length, 1, 'one report here (the settle-in card reports its own, asserted above)');
   assert.match(readFileSync(new URL('../app/features/start/onboardingModel.ts', import.meta.url), 'utf8'), /homePayload/, 'at settle-in the move-in payload is built by one function (tested with the model)');
 });

@@ -46,7 +46,7 @@ import { createShardStoreOn } from '../server/world/shard-core.ts';
 import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin } from '../server/host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
 import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
@@ -59,10 +59,19 @@ const PAGE_PREFIXES = ['/s/', '/e/'];
 /** A socket's attachment may hold 2,048 bytes. */
 const ATTACHMENT_BYTES = 2000;
 
-const json = (status: number, value: unknown, headers: Record<string, string> = {}): Response => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers } });
-const cookieId = (request: Request): string | undefined => (request.headers.get('cookie') || '').split(';').map(x => x.trim()).find(x => x.startsWith('sid='))?.slice(4);
-/** The session cookie (host-context.ts sessionCookie): always Secure here. An empty value removes it. */
-const cookie = (secret: string): string => sessionCookie(secret, SESSION_TTL_MS / 1000, true);
+/** Response headers from a plain record; a header given as a list (two Set-Cookie lines) is sent as that many headers. */
+function headersOf(headers: Record<string, string | string[]>): Headers {
+  const out = new Headers();
+  for (const [name, value] of Object.entries(headers)) for (const line of [value].flat()) out.append(name, line);
+  return out;
+}
+const json = (status: number, value: unknown, headers: Record<string, string | string[]> = {}): Response => new Response(JSON.stringify(value), { status, headers: headersOf({ 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...headers }) });
+/** The session cookie the request presented (host-context.ts: `__Host-sid`, or a lone legacy `sid`). */
+const cookieId = (request: Request): string | undefined => presentedSession(request.headers.get('cookie')).value;
+/** The session cookie (host-context.ts sessionCookie): `__Host-sid`, always Secure here. An empty value removes it. `request`: a cookie it carried under the old name is removed with it. */
+const cookie = (secret: string, request?: Request): string | string[] => sessionCookie(secret, SESSION_TTL_MS / 1000, true, request ? presentedSession(request.headers.get('cookie')).hadLegacy : false);
+/** Reached over https (always, when deployed): an Origin naming this host must then be https too. */
+const overHttps = (url: URL): boolean => url.protocol === 'https:';
 const digest = async (value: string): Promise<string> => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)))].map(byte => byte.toString(16).padStart(2, '0')).join('');
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
@@ -111,7 +120,7 @@ export default {
       // Operator routes authenticate with a bearer token in a header, which a browser never attaches by itself, so
       // they are not tied to the page's origin. Every other route keeps the origin check.
       const operator = url.pathname.startsWith('/api/mod/');
-      if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) return json(403, { error: 'origin_rejected' });
+      if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket', secure: overHttps(url) })) return json(403, { error: 'origin_rejected' });
       return state().fetch(request);
     }
     const paged = PAGE_PREFIXES.some(prefix => url.pathname.startsWith(prefix));
@@ -283,8 +292,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         storeStats: () => this.store.stats(),
         newIdentity: () => ({ secret: crypto.randomUUID(), publicId: crypto.randomUUID() }),
         newId: () => crypto.randomUUID(),
-        cookieHeader: (_: unknown, secret: string) => cookie(secret),
-        clearCookieHeader: () => cookie(''),
+        cookieHeader: (request, secret: string) => cookie(secret, request.raw as Request),
+        clearCookieHeader: (request) => cookie('', request.raw as Request),
         closeSocket: (ws, code, reason) => { const peer = ws as HostSocket; peer.close(code, reason); this.release(peer); },
         sockets: open,
         isOpen: (ws: HostSocket) => ws.readyState === 1,
@@ -360,7 +369,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   release(ws: HostSocket): void { if (ws.released) return; ws.released = true; ws.closed = true; this.telemetry.socketClosed(ws); this.handlers.close(ws); }
   /** Whose session the presented cookie is — a guest's own record, or the character of the account a signed-in browser is bound to (protocol.ts sessionOfCookie). */
   session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
-    const found = sessionOfCookie(db, request.cookie, Date.now());
+    const found = sessionOfCookie(db, request.cookie, Date.now(), request.binding !== undefined);
     if (!found) return undefined;
     if (renew) renewResolved(found, Date.now());
     request.secret = found.session.secret;
@@ -381,13 +390,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       const secret = cookieId(raw), now = Date.now();
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
       const operator = url.pathname.startsWith('/api/mod/');
-      if (!operator && !isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) throw protocolError(403, 'origin_rejected');
+      if (!operator && !isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket', secure: overHttps(url) })) throw protocolError(403, 'origin_rejected');
       // True only for a request carrying the operator's bearer token (never a cookie or a query value).
       const bearer = this.operatorDigest ? bearerToken(raw.headers.get('authorization')) : null;
       const moderator = bearer !== null && sameDigest(await digest(bearer), await this.operatorDigest);
       // `secret` becomes the stored session's key once session() resolves it; `cookie` stays what the browser presented.
-      const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, cookie: secret, params: {}, raw,
-        strictOrigin: isStrictOrigin(raw.headers.get('origin'), url.host, raw.headers.get('sec-fetch-site')),
+      const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, cookie: secret, binding: mayBind(presentedSession(raw.headers.get('cookie')), true), params: {}, raw,
+        strictOrigin: isStrictOrigin(raw.headers.get('origin'), url.host, raw.headers.get('sec-fetch-site'), overHttps(url)),
         moderator: () => moderator, json: () => bodyOf(raw).then(body => (request.body = body)),
         session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
         requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
@@ -416,7 +425,9 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // `after` runs once the answer is on its way. Whatever it does, the request is already answered.
       const after = result.after;
       if (typeof after === 'function') this.ctx.waitUntil(Promise.resolve().then(() => after()).then(() => this.saveSockets()).catch(error => this.context.core.log(`After-response step of ${raw.method} ${route.key} failed: ${firstLine(error)}`)));
-      return json(status, body, { ...(result.renew === true ? { 'Set-Cookie': cookie(secret as string) } : {}), ...routeHeaders(result.headers) });
+      // A guest whose session arrived under the old cookie name gets it back under the new one with this answer.
+      const upgrade = request.publicId !== undefined && presentedSession(raw.headers.get('cookie')).legacy;
+      return json(status, body, { ...(result.renew === true || upgrade ? { 'Set-Cookie': cookie(secret as string, raw) } : {}), ...routeHeaders(result.headers) });
     } catch (thrown) {
       const error = (thrown && typeof thrown === 'object' ? thrown : { message: thrown }) as Partial<HttpError>;
       const known = Number.isInteger(error.status) && typeof error.code === 'string';
@@ -469,7 +480,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try { config = validateVoiceConfig(await mintCloudflareIce(this.env), Date.now()); } catch { throw protocolError(503, 'voice_config_unavailable'); }
       await this.store.read(db => { const s = request.requireSession(db); if (!this.liveRoom(s, db)) throw protocolError(403, 'room_membership_required'); });
     }
-    return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.cookie as string) });
+    return json(200, { ...config, radius: 12, serverTime: Date.now() }, { 'Set-Cookie': cookie(request.cookie as string, request.raw) });
   }
   liveRoom(session: SessionRecord, db: Db): boolean {
     return [...this.peers.values()].some(ws => ws.session.id === session.publicId && ws.readyState === 1 && ws.room && ws.expiresAt > Date.now() && !this.context.core.unresponsive(ws) && this.context.core.roomStillValid(ws, db, session, ws.room.split(':')[0] as string, this.context.settle(session, ws.room.split(':')[0] as CityId)));
@@ -487,7 +498,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // Never postpone a beat that is already due; bring an idle one forward now that somebody is connected.
     const due = await this.ctx.storage.getAlarm();
     if (due === null || due > Date.now() + HEARTBEAT_MS) await this.ctx.storage.setAlarm(Date.now() + HEARTBEAT_MS);
-    return new Response(null, { status: 101, webSocket: pair[0], headers: { 'Set-Cookie': cookie(info.device) } });
+    return new Response(null, { status: 101, webSocket: pair[0], headers: headersOf({ 'Set-Cookie': cookie(info.device, raw) }) });
   }
   chatHistory(ws: HostSocket, body: unknown) {
     this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now() - 86400000);

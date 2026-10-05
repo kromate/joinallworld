@@ -482,7 +482,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/account/sign-out',
   'POST /api/account/sign-out-everywhere',
   'POST /api/account/delete',
-  'GET /api/account/export',
+  'POST /api/account/export',
   'POST /api/account/password-reset',
 ] as const satisfies readonly HttpRouteKey[]
 

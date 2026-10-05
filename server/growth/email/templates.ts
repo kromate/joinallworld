@@ -58,6 +58,23 @@ export function welcomeMail({ name, playUrl, unsubscribeUrl, contact }: { name: 
     button: { label: `Open ${BRAND}`, url: playUrl }, ...footer({ unsubscribeUrl, contact }) });
 }
 
+/**
+ * "Welcome to Allworld": sent once to the verified address of a NEW account (server/accounts/welcome.ts). It is about the
+ * account the person has just made, not a subscription: one message, no unsubscribe link because nothing follows it, no
+ * image and nothing that reports back whether it was opened. `name` is the character's name when there is one.
+ */
+export function accountWelcomeMail({ name, playUrl, contact }: { name?: string; playUrl: string; contact?: string }): Mail {
+  const who = String(name ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 40);
+  const why = `You got this because you created an ${BRAND} account with this address. It is sent once. Need help? In the game, open your Phone and choose "Report a problem".`;
+  return build(`Welcome to ${BRAND}`, {
+    heading: who ? `Welcome to ${BRAND}, ${who}` : `Welcome to ${BRAND}`,
+    intro: `${BRAND} is a digital world you can live in. ${who ? `${who} is` : 'Your character is'} saved to this account — sign in on any device to continue.`,
+    lines: ['Finish your character: choose your look, your personality and your dream.', 'Find your home: pick where you live and make it yours.', 'Invite a friend with your link: it is in your Phone, under Invite.'],
+    button: { label: `Open ${BRAND}`, url: playUrl },
+    foot: `${esc(why)}${contact ? `<br>${esc(contact)}` : ''}`, footText: `${why}${contact ? `\n${contact}` : ''}`,
+  });
+}
+
 /** `digest` is src/game/digest.ts composeDigest(): lines (at most five) and one to three tasks. */
 export function awayMail({ digest, playUrl, unsubscribeUrl, contact }: { digest: DigestParts; playUrl: string; unsubscribeUrl: string; contact?: string }): Mail {
   return build(digest.subject.replace(/^Your week in/, 'While you were away in'), { heading: 'While you were away', intro: `${digest.greeting} Nothing was taken from you.`, lines: digest.lines, tasks: digest.tasks.map((task) => task.text),

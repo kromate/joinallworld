@@ -114,6 +114,9 @@ export interface ArchivedLife {
   character?: SessionRecord['character']
   legacyLives?: SessionRecord['legacyLives']
   onboarding?: true
+  /** NODE: the exactly-once receipts of a character an account set aside (the Worker keeps receipts in rows keyed by public id, which stay where they are). */
+  actions?: SessionRecord['actions']
+  once?: SessionRecord['once']
 }
 
 // ---- accounts (db.accounts, db.accountDevices, db.accountLog — server/accounts/service.ts) ----------
@@ -144,6 +147,12 @@ export interface AccountRecord {
   devices: string[]
   /** Characters set aside when a device that already had a played life signed in. At most MAX_PARKED. */
   parked: ParkedLife[]
+  /**
+   * The welcome message of a NEW account (server/accounts/welcome.ts). Absent: none is owed (the mailer was not configured
+   * when the account was made, or the account predates it). 'pending': owed. A number: when it was sent. 'failed' /
+   * 'skipped': it will not be sent. Set in the transaction that creates the account, so it is owed exactly once.
+   */
+  welcome?: 'pending' | 'failed' | 'skipped' | number
 }
 /** One signed-in browser. The key in `accountDevices` is that browser's `sid` cookie value. */
 export interface AccountDeviceRecord { account: string; createdAt: number; seenAt: number; expiresAt: number }
@@ -158,6 +167,11 @@ export interface AccountLogCollection {
   audit: AccountAuditRecord[]
   /** Digest of every ID token already used → when it stops being acceptable anyway (server ms). */
   used: Record<string, number>
+  /** Last housekeeping sweep, and how many accounts it left (kept current as accounts are made and deleted). */
+  sweptAt?: number
+  accounts?: number
+  /** Welcome messages owed: when queued, attempts made, when the next may be made, and — while one is being sent — when it was claimed. At most 500. */
+  welcome?: { id: string; at: number; tries: number; nextAt: number; claimedAt?: number }[]
 }
 /** The public client configuration of the sign-in provider (server/host-context.ts accountsConfig); null = accounts are off. */
 export interface AccountsConfig { projectId: string; apiKey: string; googleClientId: string }
@@ -550,6 +564,8 @@ export interface RouteRequest {
    */
   secret: string | undefined
   cookie?: string | undefined
+  /** The same value, only when it may name an account's device binding (host-context.ts mayBind): undefined for a cookie that arrived under the old name over HTTPS. */
+  binding?: string | undefined
   /** True only when the request carried an Origin header naming this host (and, when present, Sec-Fetch-Site: same-origin). The account routes require it. */
   strictOrigin?: boolean
   raw: unknown
@@ -634,7 +650,7 @@ export interface ContextChecks {
    * Accounts: a session POST /api/session has just created. When the presented cookie is a device binding of an account
    * that has no character yet, the new record becomes that account's character (and is returned re-keyed).
    */
-  adoptSession?: (db: Db, cookie: string | undefined, session: SessionRecord) => SessionRecord
+  adoptSession?: (db: Db, binding: string | undefined, session: SessionRecord) => SessionRecord
 }
 
 export interface ServerConfig {
@@ -713,9 +729,10 @@ export interface ContextCore {
   storeStats(): StoreStats | null
   newIdentity(): { secret: string; publicId: string }
   newId(): string
-  cookieHeader(request: RouteRequest, secret: string): string
-  /** The Set-Cookie value that removes the session cookie, with the same attributes it was set with. */
-  clearCookieHeader?(request: RouteRequest): string
+  /** The Set-Cookie value(s) for a session cookie (two when a cookie under the old name is removed with it). */
+  cookieHeader(request: RouteRequest, secret: string): string | string[]
+  /** The Set-Cookie value(s) that remove the session cookie, with the same attributes it was set with. */
+  clearCookieHeader?(request: RouteRequest): string | string[]
   /** Close one socket now (a device that signed out, a session that was re-keyed). */
   closeSocket?(ws: WsConnection, code: number, reason: string): void
   sockets(): WsConnection[]

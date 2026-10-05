@@ -7,7 +7,9 @@
  * sent beside the token is never read. Portable: Web Crypto and the host's outbound fetch only, so both hosts run it.
  *
  * WHAT IS CHECKED, in this order
- *   shape        three base64url parts, at most 4,096 characters
+ *   shape        three base64url parts, at most 4,096 characters, each in its ONE canonical spelling: no padding, no
+ *                whitespace, and trailing bits that are zero. (A forgiving decoder gives one token many spellings that
+ *                all verify; a token must have exactly one, or "used once" could be got around by respelling it.)
  *   header       alg is exactly RS256 (never taken from the key or negotiated), kid names a published key
  *   signature    RSASSA-PKCS1-v1_5 / SHA-256 over `header.payload`
  *   aud, iss     the configured project, and the token service's issuer for that project
@@ -15,13 +17,18 @@
  *   iat          not in the future, and at most `maxAgeMs` old (5 minutes): a token is for signing in now
  *   auth_time    not in the future, and at most `maxAuthAgeMs` old (1 hour): the person proved who they are recently
  *   sub          the account's subject id
- *   provider     Google or e-mail and password; anything else (anonymous, custom) is refused
+ *   provider     Google or e-mail and password; anything else (anonymous, custom) is refused, and so is a token of a
+ *                tenant of the project (`firebase.tenant`): tenants have their own users, who are not this game's
  *   email        present; `emailVerified` is reported and the caller refuses an unverified address
  * A small clock allowance (`skewMs`, 60 s) applies to the "not in the future" checks only.
  *
  * KEYS are fetched from the provider over HTTPS, kept for the lifetime its Cache-Control gives (between one minute and
  * one day), and fetched again — at most once a minute — when a token names a key that is not known (key rotation).
- * A key set that cannot be fetched is `KeysUnavailable`, which is not a verdict about the token.
+ * A key set that cannot be fetched is `KeysUnavailable`, which is not a verdict about the token; after a failed fetch
+ * the provider is not asked again for 15 seconds, however many tokens arrive.
+ *
+ * `digest` is what "used once" is keyed on: a SHA-256 over the subject, the issue time and the signature's BYTES — the
+ * signed content itself, never the text it arrived as.
  *
  * Nothing here logs, and no error carries the token, a claim or a reply.
  */
@@ -42,7 +49,7 @@ export class KeysUnavailable extends Error {
   constructor() { super('The sign-in keys could not be fetched'); this.name = 'KeysUnavailable'; }
 }
 /** What a verified token proves. Times are server milliseconds. */
-export interface VerifiedIdentity { subject: string; email: string; emailVerified: boolean; provider: AccountProviderId; issuedAt: number; authAt: number; expiresAt: number }
+export interface VerifiedIdentity { subject: string; email: string; emailVerified: boolean; provider: AccountProviderId; issuedAt: number; authAt: number; expiresAt: number; /** What a used token is remembered by (see above). */ digest: string }
 
 export interface TokenVerifierOptions {
   projectId: string
@@ -56,15 +63,23 @@ export interface TokenVerifierOptions {
 export const TOKEN_MAX_AGE_MS = 5 * 60000;
 export const TOKEN_MAX_AUTH_AGE_MS = 60 * 60000;
 const MIN_KEY_LIFE_MS = 60000, MAX_KEY_LIFE_MS = 86400000, REFETCH_AFTER_MS = 60000, KEY_REPLY_LIMIT = 32768, MAX_KEYS = 16;
+/** After a key fetch failed, how long the provider is left alone. */
+export const KEY_RETRY_AFTER_MS = 15000;
 
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const B64URL = /^[A-Za-z0-9_-]+$/;
+const encodeBytes = (bytes: Uint8Array): string => { let text = ''; for (const byte of bytes) text += String.fromCharCode(byte); return btoa(text).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+/**
+ * STRICT base64url. The decoded bytes must encode back to exactly the text that was given: that rules out padding,
+ * the standard alphabet, whitespace and non-zero trailing bits in one comparison, so every byte string has ONE spelling.
+ */
 function decodeBytes(part: string): Uint8Array<ArrayBuffer> {
   if (!B64URL.test(part)) throw new TokenError('malformed');
   let text: string;
   try { text = atob(part.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (part.length % 4)) % 4)); } catch { throw new TokenError('malformed'); }
   const bytes = new Uint8Array(text.length);
   for (let i = 0; i < text.length; i++) bytes[i] = text.charCodeAt(i);
+  if (encodeBytes(bytes) !== part) throw new TokenError('malformed');
   return bytes;
 }
 function decodeJson(part: string): Record<string, unknown> {
@@ -87,10 +102,12 @@ interface KeyReply { ok?: unknown; status?: unknown; headers?: { get(name: strin
 export function createTokenVerifier({ projectId, fetch, now, maxAgeMs = TOKEN_MAX_AGE_MS, maxAuthAgeMs = TOKEN_MAX_AUTH_AGE_MS, skewMs = 60000 }: TokenVerifierOptions) {
   const subtle = (): Subtle => globalThis.crypto.subtle;
   let keys = new Map<string, VerifyKey>(), fetchedAt = Number.NEGATIVE_INFINITY, expiresAt = Number.NEGATIVE_INFINITY;
-  let loading: Promise<void> | null = null;
+  let loading: Promise<void> | null = null, retryAt = Number.NEGATIVE_INFINITY;
 
   /** One request at a time, shared by every verification that arrives while it is out. */
   function load(): Promise<void> {
+    // A fetch that has just failed is not repeated for every token that arrives meanwhile.
+    if (!loading && now() < retryAt && now() >= retryAt - KEY_RETRY_AFTER_MS) return Promise.reject(new KeysUnavailable());
     loading ??= (async () => {
       try {
         let reply: KeyReply;
@@ -110,8 +127,9 @@ export function createTokenVerifier({ projectId, fetch, now, maxAgeMs = TOKEN_MA
         if (!next.size) throw new KeysUnavailable();
         const maxAge = /(?:^|,)\s*max-age=(\d{1,9})/i.exec(reply.headers?.get('cache-control') ?? '');
         const life = Math.min(MAX_KEY_LIFE_MS, Math.max(MIN_KEY_LIFE_MS, maxAge ? Number(maxAge[1]) * 1000 : MIN_KEY_LIFE_MS));
-        keys = next; fetchedAt = now(); expiresAt = fetchedAt + life;
-      } finally { loading = null; }
+        keys = next; fetchedAt = now(); expiresAt = fetchedAt + life; retryAt = Number.NEGATIVE_INFINITY;
+      } catch (error) { retryAt = now() + KEY_RETRY_AFTER_MS; throw error; }
+      finally { loading = null; }
     })();
     return loading;
   }
@@ -150,11 +168,12 @@ export function createTokenVerifier({ projectId, fetch, now, maxAgeMs = TOKEN_MA
       if (iat > time + skewMs || auth > time + skewMs) throw new TokenError('not_yet_valid');
       if (time - iat > maxAgeMs || time - auth > maxAuthAgeMs) throw new TokenError('stale');
       if (typeof claims.sub !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(claims.sub)) throw new TokenError('subject');
+      if (isRecord(claims.firebase) && claims.firebase.tenant !== undefined) throw new TokenError('provider');
       const via = isRecord(claims.firebase) ? claims.firebase.sign_in_provider : undefined;
       const provider: AccountProviderId | null = via === 'google.com' ? 'google' : via === 'password' ? 'password' : null;
       if (!provider) throw new TokenError('provider');
       if (!isAddress(claims.email)) throw new TokenError('email');
-      return { subject: claims.sub, email: claims.email, emailVerified: claims.email_verified === true, provider, issuedAt: iat, authAt: auth, expiresAt: exp };
+      return { subject: claims.sub, email: claims.email, emailVerified: claims.email_verified === true, provider, issuedAt: iat, authAt: auth, expiresAt: exp, digest: await tokenDigest(claims.sub, iat, signed) };
     },
     /** For tests: how many keys are held and until when. */
     cache: (): { keys: number; expiresAt: number } => ({ keys: keys.size, expiresAt }),
@@ -162,10 +181,12 @@ export function createTokenVerifier({ projectId, fetch, now, maxAgeMs = TOKEN_MA
 }
 export type TokenVerifier = ReturnType<typeof createTokenVerifier>;
 
-/** A token's digest (base64url SHA-256): what is remembered of a used token so that it cannot be used twice. */
-export async function tokenDigest(token: string): Promise<string> {
-  const bytes = new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(token)));
-  let text = '';
-  for (const byte of bytes) text += String.fromCharCode(byte);
-  return btoa(text).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+/**
+ * What a used token is remembered by: SHA-256 over its subject, its issue time and its signature's bytes. Taken from the
+ * verified content, so no respelling of the same token can have another digest.
+ */
+export async function tokenDigest(subject: string, issuedAt: number, signature: Uint8Array): Promise<string> {
+  const head = new TextEncoder().encode(`${subject}\n${issuedAt}\n`), all = new Uint8Array(head.length + signature.length);
+  all.set(head, 0); all.set(signature, head.length);
+  return encodeBytes(new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256', all)));
 }

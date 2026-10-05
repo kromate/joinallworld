@@ -118,7 +118,7 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
           // A browser signed in to an account that has no character yet: this new session is that character (server/accounts/service.ts).
           // (If that account's own character came back from the archive instead, the caller is an existing player: `created` stays false.)
           const fresh = current.publicId;
-          current = ctx.checks?.adoptSession?.(db, request.cookie, current) ?? current;
+          current = ctx.checks?.adoptSession?.(db, request.binding, current) ?? current;
           created = current.publicId === fresh;
         }
         current.expiresAt = now() + config.sessionTtlMs;

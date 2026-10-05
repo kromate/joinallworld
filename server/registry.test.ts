@@ -139,12 +139,15 @@ test('accounts are off unless configured: one disabled answer, every other accou
   const f = await fixture(t);
   const state = await f.request('/api/account'); assert.equal(state.status, 200); assert.equal(state.headers.get('set-cookie'), null);
   assert.deepEqual(Object.keys(await state.json() as object).sort(), ['enabled', 'serverTime']);
-  const attempts: [string, unknown][] = [['/api/account/sign-in', { idToken: 'x' }], ['/api/account/sign-out', {}], ['/api/account/sign-out-everywhere', {}], ['/api/account/delete', { confirm: 'delete' }],
-    ['/api/account/character', { use: 'x' }], ['/api/account/password-reset', { email: 'ada@example.com' }], ['/api/account/export', null], ['/api/auth/login', { username: 'ada', password: 'secret12' }]];
+  const attempts: [string, unknown][] = [['/api/account/sign-in', { idToken: 'x' }], ['/api/account/sign-out-everywhere', {}], ['/api/account/delete', { confirm: 'delete' }],
+    ['/api/account/character', { use: 'x' }], ['/api/account/password-reset', { email: 'ada@example.com' }], ['/api/account/export', { idToken: 'x' }], ['/api/auth/login', { username: 'ada', password: 'secret12' }]];
   for (const [path, body] of attempts) {
     const response = await fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Origin: f.base, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined });
     assert.equal(response.status, 404, path); assert.equal(response.headers.get('set-cookie'), null);
   }
+  // Signing out is the one account route that outlives the configuration (a browser signed in earlier must not be stuck); with nobody signed in it finds nothing.
+  const out = await fetch(f.base + '/api/account/sign-out', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json' }, body: '{}' });
+  assert.equal(out.status, 409); assert.equal(out.headers.get('set-cookie'), null);
   const a = await f.device('Ada'); assert.match(a.cookie, /^sid=[0-9a-f-]{36}$/); assert.notEqual(a.id, a.cookie.slice(4));
   assert.deepEqual(Object.keys(sessionOf(await database(f), a.cookie)).sort(), ['actions', 'cities', 'expiresAt', 'name', 'publicId', 'secret']);
   assert.deepEqual(Object.keys(await database(f)).filter(key => key.startsWith('account')), [], 'nothing about accounts is stored');

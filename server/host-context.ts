@@ -35,12 +35,51 @@ export function accountsConfig(env: Readonly<Record<string, unknown>> | null | u
   if (!/^[a-z][a-z0-9-]{4,29}$/.test(projectId) || !/^[A-Za-z0-9_-]{20,80}$/.test(apiKey)) return null;
   return { projectId, apiKey, googleClientId: /^[0-9]+-[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(client) ? client : '' };
 }
-/** The Set-Cookie attributes of the session cookie; `secret` '' removes it. One place, so setting and clearing can never differ. */
-export const sessionCookie = (secret: string, maxAgeSeconds: number, secure: boolean): string => `sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${secret ? Math.floor(maxAgeSeconds) : 0}${secure ? '; Secure' : ''}`;
-/** Whether a request may change account state: it named this host as its Origin, and did not say it came from another site. */
-export const isStrictOrigin = (origin: string | null | undefined, host: string | null | undefined, fetchSite: string | null | undefined): boolean => {
+/**
+ * THE SESSION COOKIE. Over HTTPS it is `__Host-sid`: a name a browser only accepts with Secure, Path=/ and NO Domain, so
+ * a page on a sibling host (another subdomain of the same site) cannot set or overwrite it. Before that name it was
+ * `sid`, which a sibling host CAN set for the whole site; it is still read, so nobody is signed out by the change:
+ *   - `__Host-sid`, when present, is the session cookie and `sid` is ignored;
+ *   - a lone `sid` is honoured for a GUEST's own session record only (never as an account's device binding), and the
+ *     next answer re-issues it as `__Host-sid` and removes `sid`;
+ *   - two different values under one name are nobody's session: which of them the browser really holds cannot be told.
+ * Without HTTPS (development on plain http) a browser refuses a `__Host-` cookie, so the name stays `sid` there and is
+ * honoured for everything.
+ */
+export const SESSION_COOKIE = '__Host-sid', LEGACY_SESSION_COOKIE = 'sid';
+export interface PresentedSession {
+  /** The session cookie's value, or undefined (none, or ambiguous). */
+  value: string | undefined
+  /** It arrived under the old name. */
+  legacy: boolean
+  /** The request carried a cookie under the old name at all (it is removed with the next cookie this server sets). */
+  hadLegacy: boolean
+}
+export function presentedSession(header: string | null | undefined): PresentedSession {
+  const named = (name: string): string[] => [...new Set(String(header || '').split(';').map(part => part.trim()).filter(part => part.startsWith(`${name}=`)).map(part => part.slice(name.length + 1)))];
+  const current = named(SESSION_COOKIE), old = named(LEGACY_SESSION_COOKIE);
+  if (current.length) return { value: current.length === 1 ? current[0] : undefined, legacy: false, hadLegacy: old.length > 0 };
+  return { value: old.length === 1 ? old[0] : undefined, legacy: old.length === 1, hadLegacy: old.length > 0 };
+}
+/** May this presented cookie name an account's device binding? Only under the name a sibling host cannot set — or where that name cannot be used at all. */
+export const mayBind = (presented: PresentedSession, secure: boolean): string | undefined => (presented.value !== undefined && (!presented.legacy || !secure) ? presented.value : undefined);
+const cookieLine = (name: string, secret: string, maxAgeSeconds: number, secure: boolean): string => `${name}=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${secret ? Math.floor(maxAgeSeconds) : 0}${secure ? '; Secure' : ''}`;
+/**
+ * The Set-Cookie value(s) that set the session cookie — or, with `secret` '', remove it. One place, so setting and
+ * clearing can never differ. `dropLegacy`: also remove a cookie under the old name (the request carried one).
+ */
+export function sessionCookie(secret: string, maxAgeSeconds: number, secure: boolean, dropLegacy = false): string | string[] {
+  if (!secure) return cookieLine(LEGACY_SESSION_COOKIE, secret, maxAgeSeconds, false);
+  const current = cookieLine(SESSION_COOKIE, secret, maxAgeSeconds, true);
+  return dropLegacy ? [current, cookieLine(LEGACY_SESSION_COOKIE, '', 0, true)] : current;
+}
+/**
+ * Whether a request may change account state: it named this host as its Origin — with https when this host is reached
+ * over https — and did not say it came from another site.
+ */
+export const isStrictOrigin = (origin: string | null | undefined, host: string | null | undefined, fetchSite: string | null | undefined, secure = false): boolean => {
   if (!origin || (fetchSite && fetchSite !== 'same-origin')) return false;
-  try { const url = new URL(origin); return url.host === host && ['http:', 'https:'].includes(url.protocol); } catch { return false; }
+  try { const url = new URL(origin); return url.host === host && (secure ? url.protocol === 'https:' : ['http:', 'https:'].includes(url.protocol)); } catch { return false; }
 };
 
 /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */

@@ -22,12 +22,19 @@
  * in `account.parked`. Only a session that never had a life — the same rule the expiry archive uses (host-context.ts
  * hasLife) — is dropped.
  *
+ * WHAT A BINDING IS WORTH. A binding lets its browser play the character and sign itself out. Everything that reaches
+ * further — ending other browsers' sign-ins, reading the account's address, changing which character is in play,
+ * deleting the account — also needs PROOF: a fresh verified ID token for the same account (`prove`), used once.
+ * A binding lives 30 days from its last use and never longer than 90 days from when it was made (protocol.ts).
+ * WHEN THE REAL OWNER ARRIVES, earlier bindings go: a sign-in that links a character into an account that already
+ * existed, or that uses another way of signing in than the account last did, removes every other binding.
+ *
  * Every function here runs INSIDE one store transaction and either returns or throws: a throw leaves nothing behind.
  * Each returns what the route must do once the change is saved (which sockets to close, which cookie to send).
  * Portable: no Node imports, no clock of its own.
  */
 import { hasLife } from '../host-context.ts';
-import { UUID_PATTERN, hash53 } from '../protocol.ts';
+import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
 
@@ -36,18 +43,28 @@ export const MAX_DEVICES = 10;
 /** Characters one account may have set aside. A sign-in that would need another is refused, and nothing changes. */
 export const MAX_PARKED = 5;
 export const MAX_AUDIT = 2000;
+/** Accounts the store holds at most (provisional). At the bound, accounts with no character and no live binding are swept; if none can go, a NEW account is refused. */
+export const MAX_ACCOUNTS = 20000;
+/** How often a sign-in also sweeps expired bindings and empty accounts. */
+export const SWEEP_EVERY_MS = 3600000;
 /** Used-token digests kept at most (they expire within minutes; the cap only bounds a flood). */
 const MAX_USED = 5000;
+/** Welcome messages waiting to be sent or retried, at most. */
+export const MAX_WELCOME_QUEUE = 500;
 
 export interface AccountDeps {
   now(): number
   ttlMs: number
+  /** How long after its issue time a token stops being acceptable anyway (its digest is kept until then). */
+  tokenMaxAgeMs: number
   /** A random id for a record key that no browser will hold. */
   newId(): string
   /** A random value fit to be a session cookie. */
   newSecret(): string
   archive: ContextCore['archiveSession']
   fail(status: number, code: string): HttpError
+  /** Whether a welcome message can be sent at all (the mailer is configured). When false nothing is queued. */
+  welcome?(): boolean
 }
 /** What a route does after the transaction is saved. */
 export interface AfterChange {
@@ -67,6 +84,12 @@ export interface SignInResult extends AfterChange {
   character: CharacterView | null
   /** The life of this browser that was set aside, when `outcome` is 'parked'. */
   parked: ParkedLife | null
+  /** Browsers signed in to the account now, this one included. */
+  devices: number
+  /** Other browsers this sign-in signed out (the owner arrived: see the header). */
+  ended: number
+  /** A welcome message was queued for this new account (the route sends it once the change is saved). */
+  welcome: string | null
 }
 /** What GET /api/account says about the caller. No token, cookie or subject id. */
 export interface AccountView {
@@ -74,6 +97,8 @@ export interface AccountView {
   character: CharacterView | null
   parked: ParkedLife[]
 }
+/** Who is asking, as the host resolved the request's cookies. `binding` is set only for a cookie that may name a device binding. */
+export interface Caller { cookie: string | undefined; binding: string | undefined }
 
 export const accountId = (subject: string): string => `fb:${subject}`;
 /**
@@ -100,16 +125,18 @@ function audit(db: Db, deps: AccountDeps, event: AccountEvent, account: AccountR
   if (log.audit.length > MAX_AUDIT) log.audit.splice(0, log.audit.length - MAX_AUDIT);
 }
 const viewOf = (record: SessionRecord | undefined): CharacterView | null => (record ? { id: record.publicId, name: record.name } : null);
+/** On a host whose store keeps receipts in rows of their own, keyed by public id (the Worker), they stay there; elsewhere they travel with the record. */
+const receiptsInline = (db: Db): boolean => !db.$store?.onceCounts;
 
 /**
- * An ID token is good for one use. Its digest is remembered until the token would be refused as stale anyway
- * (`until`); a second presentation is refused exactly like any other bad token.
+ * An ID token is good for one use. Its digest (token.ts: over the signed content, not its spelling) is remembered until
+ * the token would be refused as stale anyway; a second presentation is refused exactly like any other bad token.
  */
-function consumeToken(db: Db, deps: AccountDeps, digest: string, until: number): void {
+function consumeToken(db: Db, deps: AccountDeps, identity: VerifiedIdentity): void {
   const log = logOf(db, deps), now = deps.now();
   for (const [key, expires] of Object.entries(log.used)) if (!(expires > now)) delete log.used[key];
-  if (Object.hasOwn(log.used, digest) || Object.keys(log.used).length >= MAX_USED) throw deps.fail(401, 'invalid_token');
-  log.used[digest] = until;
+  if (Object.hasOwn(log.used, identity.digest) || Object.keys(log.used).length >= MAX_USED) throw deps.fail(401, 'invalid_token');
+  log.used[identity.digest] = identity.issuedAt + deps.tokenMaxAgeMs + 60000;
 }
 
 /** Remove one device binding. Returns whether there was one. */
@@ -126,22 +153,36 @@ function pruneDevices(db: Db, account: AccountRecord, now: number): void {
   const devices = devicesOf(db);
   account.devices = account.devices.filter((key) => {
     const device = own(devices, key);
-    if (device && device.account === account.id && device.expiresAt > now) return true;
+    if (device && device.account === account.id && bindingLive(device, now)) return true;
     if (device && device.account === account.id) delete devices[key];
     return false;
   });
+}
+/** Remove every binding of the account but `keep`. Returns the removed keys. */
+function endOthers(db: Db, account: AccountRecord, keep: string | null): string[] {
+  const devices = devicesOf(db), others = account.devices.filter(key => key !== keep);
+  for (const key of others) delete devices[key];
+  account.devices = account.devices.filter(key => key === keep);
+  return others;
 }
 /** The account a cookie is signed in to, or undefined. */
 function boundAccount(db: Db, cookie: string | undefined, now: number): { account: AccountRecord; device: AccountDeviceRecord; cookie: string } | undefined {
   if (!cookie || !UUID_PATTERN.test(cookie)) return undefined;
   const device = own(db.accountDevices, cookie);
-  if (!device || !(device.expiresAt > now)) return undefined;
+  if (!device || !bindingLive(device, now)) return undefined;
   const account = own(db.accounts, device.account);
   return account ? { account, device, cookie } : undefined;
 }
-function requireAccount(db: Db, deps: AccountDeps, cookie: string | undefined) {
-  const bound = boundAccount(db, cookie, deps.now());
+function requireAccount(db: Db, deps: AccountDeps, caller: Caller) {
+  const bound = boundAccount(db, caller.binding, deps.now());
   if (!bound) throw deps.fail(409, 'account_required');
+  return bound;
+}
+/** PROOF: the caller is signed in AND has just shown a fresh token for that same account. The token is spent. */
+function prove(db: Db, deps: AccountDeps, caller: Caller, identity: VerifiedIdentity) {
+  const bound = requireAccount(db, deps, caller);
+  if (bound.account.subject !== identity.subject) throw deps.fail(403, 'account_mismatch');
+  consumeToken(db, deps, identity);
   return bound;
 }
 
@@ -151,7 +192,8 @@ function fromArchive(db: Db, deps: AccountDeps, account: AccountRecord, publicId
   // An entry another account set aside is not this account's to take. One with no owner is taken only as the account's own expired character.
   if (!archive || !entry || (entry.account !== undefined ? entry.account !== account.id : account.publicId !== publicId)) return undefined;
   const key = deps.newId();
-  const record: SessionRecord = { secret: key, publicId, name: entry.name, expiresAt: deps.now() + deps.ttlMs, cities: structuredClone(entry.cities || {}), actions: {}, account: account.id,
+  const record: SessionRecord = { secret: key, publicId, name: entry.name, expiresAt: deps.now() + deps.ttlMs, cities: structuredClone(entry.cities || {}), actions: entry.actions ? structuredClone(entry.actions) : {}, account: account.id,
+    ...(entry.once ? { once: structuredClone(entry.once) } : {}),
     ...(entry.character ? { character: structuredClone(entry.character) } : {}), ...(entry.legacyLives ? { legacyLives: structuredClone(entry.legacyLives) } : {}), ...(entry.onboarding === true ? { onboarding: true as const } : {}) };
   db.sessions[key] = record;
   delete archive[publicId];
@@ -176,10 +218,11 @@ function adopt(db: Db, deps: AccountDeps, account: AccountRecord, record: Sessio
   account.sessionKey = key; account.publicId = record.publicId;
   return record;
 }
-/** Set a played life aside: into the archive, marked as this account's, with everything a session record carries beside its receipts. */
+/** Set a played life aside: into the archive, marked as this account's, with everything a session record carries — its exactly-once receipts included. */
 function park(db: Db, deps: AccountDeps, account: AccountRecord, record: SessionRecord): ParkedLife {
   db.archivedLives ||= {};
   const entry: ArchivedLife = { publicId: record.publicId, name: record.name, cities: structuredClone(record.cities || {}), archivedAt: deps.now(), account: account.id,
+    ...(receiptsInline(db) ? { actions: structuredClone({ ...record.actions }), ...(record.once ? { once: structuredClone({ ...record.once }) } : {}) } : {}),
     ...(record.character ? { character: structuredClone(record.character) } : {}), ...(record.legacyLives ? { legacyLives: structuredClone(record.legacyLives) } : {}), ...(record.onboarding === true ? { onboarding: true as const } : {}) };
   db.archivedLives[record.publicId] = entry;
   delete db.sessions[record.secret];
@@ -190,8 +233,28 @@ function park(db: Db, deps: AccountDeps, account: AccountRecord, record: Session
 }
 
 /**
+ * Housekeeping, at most hourly, inside a sign-in's transaction: bindings that have expired go, and so does an account
+ * that has no live binding, no character (active, archived or set aside) — nothing anyone could come back to.
+ */
+export function sweepAccounts(db: Db, deps: AccountDeps): { devices: number; accounts: number } {
+  const now = deps.now(), devices = devicesOf(db), accounts = accountsOf(db), log = logOf(db, deps);
+  let endedDevices = 0, endedAccounts = 0, kept = 0;
+  for (const key of Object.keys(devices)) { const device = own(devices, key); if (!device || !bindingLive(device, now) || !own(accounts, device.account)) { delete devices[key]; endedDevices += 1; } }
+  for (const id of Object.keys(accounts)) {
+    const account = own(accounts, id);
+    if (!account) continue;
+    account.devices = account.devices.filter(key => own(devices, key) !== undefined);
+    const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
+    const hasCharacter = (record !== undefined && record.account === id) || (account.publicId !== null && own(db.archivedLives, account.publicId) !== undefined) || account.parked.length > 0;
+    if (!account.devices.length && !hasCharacter) { delete accounts[id]; endedAccounts += 1; } else kept += 1;
+  }
+  log.sweptAt = now; log.accounts = kept;
+  return { devices: endedDevices, accounts: endedAccounts };
+}
+
+/**
  * SIGN IN — and with it "save your character" and "restore your character", which are the same request.
- * `identity` is what a verified ID token proved; `cookie` is whatever the browser presented and is never reused.
+ * `identity` is what a verified ID token proved; whatever cookie the browser presented is never reused.
  *
  *   this browser            the account             what happens                                        outcome
  *   a guest session         no played character     the guest's record becomes the account's character  linked
@@ -202,26 +265,36 @@ function park(db: Db, deps: AccountDeps, account: AccountRecord, record: Session
  *                                                   account's character (adoptNewSession)
  *
  * In every case the browser gets a NEW cookie (a binding made here), a binding it presented is removed, and the token
- * is spent. Refused with nothing changed: a token already used (401), or a sixth life to set aside (409 parked_full).
+ * is spent. Refused with nothing changed: a token already used (401), a sixth life to set aside (409 parked_full), or
+ * a new account when the store holds as many as it may (503 account_capacity).
  */
-export function signIn(db: Db, deps: AccountDeps, input: { cookie: string | undefined; identity: VerifiedIdentity; digest: string; tokenMaxAgeMs: number }): SignInResult {
+export function signIn(db: Db, deps: AccountDeps, input: Caller & { identity: VerifiedIdentity }): SignInResult {
   const now = deps.now(), { identity } = input;
-  consumeToken(db, deps, input.digest, identity.issuedAt + input.tokenMaxAgeMs + 60000);
+  consumeToken(db, deps, identity);
+  const log = logOf(db, deps);
+  if (now - (log.sweptAt ?? 0) >= SWEEP_EVERY_MS || now < (log.sweptAt ?? 0)) sweepAccounts(db, deps);
   const accounts = accountsOf(db), devices = devicesOf(db), id = accountId(identity.subject);
   const after: AfterChange = { closeKeys: [], closeDevices: [] };
   // What the browser presented: a binding (removed — a sign-in never keeps a cookie), or a guest session.
   let guest: SessionRecord | undefined;
-  if (input.cookie && UUID_PATTERN.test(input.cookie)) {
-    if (unbind(db, input.cookie)) after.closeDevices.push(input.cookie);
-    else { const direct = db.sessions[input.cookie]; if (direct && direct.account === undefined && direct.expiresAt > now) guest = direct; }
-  }
-  let account = own(accounts, id);
+  if (input.binding && UUID_PATTERN.test(input.binding) && unbind(db, input.binding)) after.closeDevices.push(input.binding);
+  else if (input.cookie && UUID_PATTERN.test(input.cookie)) { const direct = db.sessions[input.cookie]; if (direct && direct.account === undefined && direct.expiresAt > now) guest = direct; }
+  let account = own(accounts, id), welcome: string | null = null;
   const created = !account;
   if (!account) {
+    if ((log.accounts ?? 0) >= MAX_ACCOUNTS) { sweepAccounts(db, deps); if ((log.accounts ?? 0) >= MAX_ACCOUNTS) throw deps.fail(503, 'account_capacity'); }
     account = accounts[id] = { v: 1, id, provider: identity.provider, subject: identity.subject, email: identity.email, createdAt: now, lastSeenAt: now, sessionKey: null, publicId: null, devices: [], parked: [] };
+    log.accounts = (log.accounts ?? 0) + 1;
     audit(db, deps, 'created', account);
+    // The welcome message belongs to the creation of the account: it is owed from this transaction on, and only if it can be sent at all.
+    if (deps.welcome?.() === true) {
+      account.welcome = 'pending';
+      const queue = (log.welcome ||= []);
+      if (queue.length < MAX_WELCOME_QUEUE) { queue.push({ id, at: now, tries: 0, nextAt: now }); welcome = id; } else account.welcome = 'skipped';
+    }
   }
   pruneDevices(db, account, now);
+  const providerChanged = !created && account.provider !== identity.provider;
   let mine = activeCharacter(db, deps, account), outcome: SignInOutcome, parked: ParkedLife | null = null;
   if (guest && mine && hasLife(guest) && hasLife(mine)) {
     if (account.parked.length >= MAX_PARKED) throw deps.fail(409, 'parked_full');
@@ -238,6 +311,9 @@ export function signIn(db: Db, deps: AccountDeps, input: { cookie: string | unde
     if (guest) { after.closeKeys.push(guest.secret); delete db.sessions[guest.secret]; }
     outcome = 'restored';
   } else outcome = 'signed_in';
+  // THE OWNER ARRIVED. Whoever was signed in before did not bring this character, or signed in another way: their bindings end.
+  let ended = 0;
+  if ((outcome === 'linked' && !created) || providerChanged) { const others = endOthers(db, account, null); ended = others.length; after.closeDevices.push(...others); if (ended) audit(db, deps, 'signed_out_everywhere', account); }
   if (mine) mine.expiresAt = now + deps.ttlMs;
   account.provider = identity.provider; account.email = identity.email; account.lastSeenAt = now;
   const cookie = deps.newSecret();
@@ -245,15 +321,15 @@ export function signIn(db: Db, deps: AccountDeps, input: { cookie: string | unde
   account.devices.push(cookie);
   while (account.devices.length > MAX_DEVICES) { const oldest = account.devices.shift(); if (oldest !== undefined) { delete devices[oldest]; after.closeDevices.push(oldest); } }
   if (outcome !== 'parked') audit(db, deps, outcome, account, mine?.publicId);
-  return { ...after, cookie, outcome, created, character: viewOf(mine), parked };
+  return { ...after, cookie, outcome, created, character: viewOf(mine), parked, devices: account.devices.length, ended, welcome };
 }
 
 /**
  * POST /api/session has just created `session` for a browser that is signed in to an account with no character
  * (ctx.checks.adoptSession): that record becomes the account's character. Any other caller gets its record back unchanged.
  */
-export function adoptNewSession(db: Db, deps: AccountDeps, cookie: string | undefined, session: SessionRecord): SessionRecord {
-  const bound = boundAccount(db, cookie, deps.now());
+export function adoptNewSession(db: Db, deps: AccountDeps, binding: string | undefined, session: SessionRecord): SessionRecord {
+  const bound = boundAccount(db, binding, deps.now());
   if (!bound) return session;
   // The account's character expired between requests and is back from the archive: that is the character; the new record held nothing.
   const existing = activeCharacter(db, deps, bound.account);
@@ -263,9 +339,9 @@ export function adoptNewSession(db: Db, deps: AccountDeps, cookie: string | unde
   return record;
 }
 
-/** Make a set-aside character the active one; the one that was active is set aside in its place (or dropped, if it never had a life). */
-export function switchCharacter(db: Db, deps: AccountDeps, cookie: string | undefined, target: unknown): AfterChange & { character: CharacterView; parked: ParkedLife[] } {
-  const { account } = requireAccount(db, deps, cookie);
+/** With PROOF: make a set-aside character the active one; the one that was active is set aside in its place (or dropped, if it never had a life). */
+export function switchCharacter(db: Db, deps: AccountDeps, caller: Caller, identity: VerifiedIdentity, target: unknown): AfterChange & { character: CharacterView; parked: ParkedLife[] } {
+  const { account } = prove(db, deps, caller, identity);
   const index = account.parked.findIndex(item => item.id === target);
   const wanted = account.parked[index];
   if (!wanted) throw deps.fail(404, 'character_not_found');
@@ -283,32 +359,28 @@ export function switchCharacter(db: Db, deps: AccountDeps, cookie: string | unde
   return { ...after, character: { id: record.publicId, name: record.name }, parked: [...account.parked] };
 }
 
-/** This browser only. The character stays with the account. */
-export function signOut(db: Db, deps: AccountDeps, cookie: string | undefined): AfterChange {
-  const bound = requireAccount(db, deps, cookie);
+/** This browser only; a binding is enough for that. The character stays with the account. */
+export function signOut(db: Db, deps: AccountDeps, caller: Caller): AfterChange {
+  const bound = requireAccount(db, deps, caller);
   unbind(db, bound.cookie);
   audit(db, deps, 'signed_out', bound.account);
   return { closeKeys: [], closeDevices: [bound.cookie] };
 }
-/** Every OTHER browser of the account. This one stays signed in. */
-export function signOutEverywhere(db: Db, deps: AccountDeps, cookie: string | undefined): AfterChange & { ended: number } {
-  const bound = requireAccount(db, deps, cookie), devices = devicesOf(db);
-  const others = bound.account.devices.filter(key => key !== bound.cookie);
-  for (const key of others) delete devices[key];
-  bound.account.devices = [bound.cookie];
+/** With PROOF: every OTHER browser of the account. This one stays signed in. */
+export function signOutEverywhere(db: Db, deps: AccountDeps, caller: Caller, identity: VerifiedIdentity): AfterChange & { ended: number } {
+  const bound = prove(db, deps, caller, identity);
+  const others = endOthers(db, bound.account, bound.cookie);
   audit(db, deps, 'signed_out_everywhere', bound.account);
   return { closeKeys: [], closeDevices: others, ended: others.length };
 }
 
 /**
- * Delete the account: its record, every device binding and every set-aside character. `identity` is a FRESH verified
- * token for the same account — a cookie alone cannot delete an account. The active character is the player's choice:
- * `erase: false` hands it back to this browser as a guest session (a new cookie, no account), `erase: true` removes it.
+ * With PROOF: delete the account — its record, every device binding and every set-aside character. The active character
+ * is the player's choice: `erase: false` hands it back to this browser as a guest session (a new cookie, no account),
+ * `erase: true` removes its record. (What other features keep under a character's public id is theirs: docs/ACCOUNTS.md.)
  */
-export function deleteAccount(db: Db, deps: AccountDeps, input: { cookie: string | undefined; identity: VerifiedIdentity; digest: string; tokenMaxAgeMs: number; erase: boolean }): AfterChange & { cookie: string | null } {
-  const { account } = requireAccount(db, deps, input.cookie);
-  if (account.subject !== input.identity.subject) throw deps.fail(403, 'account_mismatch');
-  consumeToken(db, deps, input.digest, input.identity.issuedAt + input.tokenMaxAgeMs + 60000);
+export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { identity: VerifiedIdentity; erase: boolean }): AfterChange & { cookie: string | null } {
+  const { account } = prove(db, deps, input, input.identity);
   const devices = devicesOf(db), after: AfterChange = { closeKeys: [], closeDevices: [...account.devices] };
   const mine = activeCharacter(db, deps, account);
   for (const key of account.devices) delete devices[key];
@@ -324,25 +396,28 @@ export function deleteAccount(db: Db, deps: AccountDeps, input: { cookie: string
     }
   }
   audit(db, deps, 'deleted', account);
+  const log = logOf(db, deps);
+  if (log.welcome) log.welcome = log.welcome.filter(item => item.id !== account.id);
+  log.accounts = Math.max(0, (log.accounts ?? 1) - 1);
   delete accountsOf(db)[account.id];
   return { ...after, cookie };
 }
 
 /** What the caller's session is, account-wise. Read-only. */
-export function accountView(db: Db, cookie: string | undefined, now: number): AccountView {
-  const bound = boundAccount(db, cookie, now);
+export function accountView(db: Db, binding: string | undefined, now: number): AccountView {
+  const bound = boundAccount(db, binding, now);
   if (!bound) return { account: null, character: null, parked: [] };
   const { account } = bound;
   const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
   return {
-    account: { email: account.email, provider: account.provider, createdAt: account.createdAt, devices: account.devices.length },
+    account: { email: account.email, provider: account.provider, createdAt: account.createdAt, devices: account.devices.filter(key => { const device = own(db.accountDevices, key); return device !== undefined && bindingLive(device, now); }).length },
     character: record && record.account === account.id && record.expiresAt > now ? viewOf(record) : null,
     parked: account.parked.map(item => ({ ...item })),
   };
 }
-/** Everything stored about the caller's account, for its owner. Read-only. No cookie, token or subject id. */
-export function exportAccount(db: Db, deps: AccountDeps, cookie: string | undefined): Record<string, unknown> {
-  const bound = requireAccount(db, deps, cookie), { account } = bound, now = deps.now();
+/** With PROOF: everything stored about the caller's account, for its owner. No cookie, token or subject id. */
+export function exportAccount(db: Db, deps: AccountDeps, caller: Caller, identity: VerifiedIdentity): Record<string, unknown> {
+  const bound = prove(db, deps, caller, identity), { account } = bound, now = deps.now();
   const log = db.accountLog, ref = log ? refOf(log, account.id) : '';
   const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
   return {
@@ -352,4 +427,40 @@ export function exportAccount(db: Db, deps: AccountDeps, cookie: string | undefi
     setAside: account.parked.map(item => ({ ...item })),
     history: (log?.audit ?? []).filter(line => line.ref === ref).map(line => ({ at: line.at, event: line.event, ...(line.life ? { character: line.life } : {}) })),
   };
+}
+
+// ---- the welcome message's bookkeeping (the message itself: server/accounts/welcome.ts) ----
+
+/** How long after a failed attempt the next one may be made: 5 minutes, then 20, 80, … at most a day. */
+export const welcomeBackoff = (tries: number): number => Math.min(86400000, 300000 * 4 ** Math.max(0, tries - 1));
+export const WELCOME_TRIES = 5;
+/**
+ * CLAIM one owed welcome message before it is attempted. Only a claimed message is sent, and a claim is made at most
+ * once at a time: two requests (or a request and the retry tick) can never both send it. Returns what the message
+ * needs, or null when there is nothing to send (not owed, already claimed, already sent, not due yet).
+ */
+export function claimWelcome(db: Db, deps: AccountDeps, id: string): { email: string; name: string } | null {
+  const log = db.accountLog, account = own(db.accounts, id), now = deps.now();
+  const entry = log?.welcome?.find(item => item.id === id);
+  if (!log || !entry) return null;
+  if (!account || account.welcome !== 'pending') { log.welcome = (log.welcome ?? []).filter(item => item !== entry); return null; }
+  if (entry.claimedAt !== undefined || entry.nextAt > now) return null;
+  entry.claimedAt = now;
+  const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
+  return { email: account.email, name: record && record.account === id ? record.name : '' };
+}
+/** Record what became of a claimed attempt: sent (never again), failed for good, or to be tried again later. */
+export function settleWelcome(db: Db, deps: AccountDeps, id: string, result: { ok: boolean; retry: boolean }): void {
+  const log = db.accountLog, account = own(db.accounts, id), now = deps.now();
+  const entry = log?.welcome?.find(item => item.id === id);
+  if (!log || !entry) return;
+  const done = (state: number | 'failed'): void => { if (account) account.welcome = state; log.welcome = (log.welcome ?? []).filter(item => item !== entry); };
+  if (result.ok) { done(now); return; }
+  entry.tries += 1;
+  if (!result.retry || entry.tries >= WELCOME_TRIES) { done('failed'); return; }
+  delete entry.claimedAt; entry.nextAt = now + welcomeBackoff(entry.tries);
+}
+/** Ids whose welcome message is owed and due (for the retry tick). A claim nobody settled — the host stopped mid-send — is never retried: better none than two. */
+export function dueWelcomes(db: Db, now: number): string[] {
+  return (db.accountLog?.welcome ?? []).filter(item => item.claimedAt === undefined && item.nextAt <= now).map(item => item.id).slice(0, 20);
 }

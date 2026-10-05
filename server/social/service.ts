@@ -795,7 +795,8 @@ function buildService(ctx: RouteContext) {
     // ---- messages --------------------------------------------------------------------------
     conversations(db: Db, session: SessionRecord) {
       const { s, p, id } = enter(db, session);
-      const list = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])))
+      // Only a conversation the caller is a member of is listed, whatever their own list holds.
+      const list = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && conv.members.includes(id) && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])))
         .map((conv) => summary(s, conv, id)).sort((a, b) => (b.last?.at ?? 0) - (a.last?.at ?? 0));
       return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0) });
     },
@@ -838,6 +839,8 @@ function buildService(ctx: RouteContext) {
       const refused = mutedRefusal(id) ?? screened(message, 'Your message');
       if (refused) return refused;
       if (!ctx.allow(`social:dm:${id}`, 30)) return no('rate_limited', 'You are sending messages too quickly. Wait a moment, then retry.');
+      // A direct chat named by its id belongs to its two players: anyone else is answered as for a chat that does not exist.
+      if (conv?.kind === 'dm' && !conv.members.includes(id)) return no('not_a_member', 'You are not in that conversation.');
       const partner = to ?? (conv?.kind === 'dm' ? conv.members.find((member) => member !== id) : null);
       if (partner) {
         const { target, refusal } = other(s, id, partner);

@@ -74,7 +74,7 @@ Discarded evidence: a conference-organiser map put an alleged Senate campus cent
 
 ## Layout decisions and remaining uncertainty
 
-Coordinates in `layout.js` use x east and z south over a 600 by 480 unit compressed campus, plus the lagoon promenade. They are deliberately authored placements. Confidence flags refer to source relationships, not metre accuracy. Ten zones preserve major compass relationships. Roads connect navigable public areas; their widths, bends and shuttle route are beta choices, not a verified current shuttle service. Water starts east of x=340 and cannot be walked on.
+Coordinates in `layout.ts` use x east and z south over a 600 by 480 unit compressed campus, plus the lagoon promenade. They are deliberately authored placements. Confidence flags refer to source relationships, not metre accuracy. Ten zones preserve major compass relationships. Roads connect navigable public areas; their widths, bends and shuttle route are beta choices, not a verified current shuttle service. Water starts east of x=340 and cannot be walked on.
 
 Queen Amina is separate from New Hall and lies south of Education. Clinical/Dental/Basic Medical buildings were excluded from Akoka because the evidence does not place those faculties here. No Dan Fodio residence hall was invented. Student Union and Bookshop exist in campus inventories, but their internal placement remains low confidence. The arrangement of halls within New Hall, exact Second Gate form, lecture theatre floorplans, Access Bank frontage, amphitheatre seating, and DLI compound boundaries need stronger visual evidence. Femi Gbajabiamila Hall is in the current official list but is not placed without location evidence. Henry Carr, Wema and UBA were subsequently added from the corroborated locations, and the swimming pool has a separate blocked water footprint. Ecobank, First Bank and GTBank frontage positions, the cricket oval, actual ring-road curves/roundabout geometry, and terrain/shoreline contours remain geometry gaps. The core study layout is a stylised beta and is not a complete surveyed replica.
 
@@ -110,23 +110,23 @@ Node checks use `NODE_OPTIONS='--import ./src/campus/shared/resolve-local.mjs'` 
 
 ## Initial scene verification
 
-`scene.test.js` verifies every resident-zone combination, every landmark route with rendered decoration footprints, shoreline rejection, same-zone geometry reuse, and exactly-once disposal of observed geometries. Worst resident count at this checkpoint: 38,610 triangles and 37 calls with 12 crowd figures. Near/goal markers can add 80 triangles and two calls; the hard limits remain 60,000 and 60. Host-facing spot arrays, lighting tuples, avatar appearance replacement and camera centre/scale match the existing scene contract.
+`scene.test.ts` verifies every resident-zone combination, every landmark route with rendered decoration footprints, shoreline rejection, same-zone geometry reuse, and exactly-once disposal of observed geometries. Worst resident count at this checkpoint: 38,610 triangles and 37 calls with 12 crowd figures. Near/goal markers can add 80 triangles and two calls; the hard limits remain 60,000 and 60. Host-facing spot arrays, lighting tuples, avatar appearance replacement and camera centre/scale match the existing scene contract.
 
 ## Exported API and loading order
 
 | Module | Public entry points | Consumer |
 |---|---|---|
-| `layout.js` | `LAYOUT`, `ZONES`, `BUILDINGS`, `ROADS`, `ANCHORS`, `ENTRANCE` | 45 named landmarks; 46 spot anchors including the shared People spot; ten zones |
-| `walk.js` | `createCampusWalk(extraFootprints?)`, `footprintOf` | Per-zone grids plus exact coarse-portal/fine-grid routes |
-| `scene.js` | `buildUnilag(kit, venue?)`, `CAMPUS_BUDGET` | Scene factory; position-driven two-level residency; full host walk contract |
-| `content.js` | `UNILAG_VENUE`, `CAMPUS_NPCS`, `DISCOVERY_TRAIL`, `UI_LINKS`, `shareLabel` | Venue catalogue, NPC catalogue, Bank app link and discovery copy |
-| `curriculum.js` | `PROGRAMMES`, `LECTURE_SLOTS`, `UNILAG_BETA_RULES`, programme/course lookups | Campus app course registration and timetable |
-| `student.js` | default system `unilagStudent`, `graduationOf`, `gradeOf`, `allocatedHostelSpot` | Server rules and read-only ID/results/hostel view |
-| `games.js` | default system `unilagCommunity`, `eventsAt`, election reducers, leaderboard reducers, `campusTeamStandings`, `creditCampusGoal` | Server-owned campus community and shared store |
-| `shuttle.js` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
+| `layout.ts` | `LAYOUT`, `ZONES`, `BUILDINGS`, `ROADS`, `ANCHORS`, `ENTRANCE` | 45 named landmarks; 46 spot anchors including the shared People spot; ten zones |
+| `walk.ts` | `createCampusWalk(extraFootprints?)`, `footprintOf` | Per-zone grids plus exact coarse-portal/fine-grid routes |
+| `scene.ts` | `buildUnilag(kit, venue?)`, `CAMPUS_BUDGET` | Scene factory; position-driven two-level residency; full host walk contract |
+| `content.ts` | `UNILAG_VENUE`, `CAMPUS_NPCS`, `DISCOVERY_TRAIL`, `UI_LINKS`, `shareLabel` | Venue catalogue, NPC catalogue, Bank app link and discovery copy |
+| `curriculum.ts` | `PROGRAMMES`, `LECTURE_SLOTS`, `UNILAG_BETA_RULES`, programme/course lookups | Campus app course registration and timetable |
+| `student.ts` | default system `unilagStudent`, `graduationOf`, `gradeOf`, `allocatedHostelSpot` | Server rules and read-only ID/results/hostel view |
+| `games.ts` | default system `unilagCommunity`, `eventsAt`, election reducers, leaderboard reducers, `campusTeamStandings`, `creditCampusGoal` | Server-owned campus community and shared store |
+| `shuttle.ts` | default system `unilagShuttle`, `SHUTTLE_STOPS`, `shuttleRoute`, `shuttlePose`, `buildShuttle` | Fare/timer authority and host-driven visible ride |
 | `landmark.ts` | `MAP_PLACEMENT`, `buildUnilagLandmark` | Lagos map miniature; x15/z-42, footprint14x10, approximate mainland presentation coordinates |
 
-Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The `integration.test.js` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
+Register venue content and merge NPC definitions before importing the current social system: it snapshots `Object.values(NPCS)` during module evaluation. A late assignment does not populate its cast or activities. The `integration.test.ts` exercises the correct load order and ensures every system-added venue spot has an anchor. Register student before community, and register shuttle; rebuild the activity catalogue after registering these systems. The isolated source lane did not edit registry files; the main integration below now registers these systems.
 
 Host travel arrives at `main-gate`. Call `walk.move(x,y,z,ry)` or `setPosition(x,z)` when the player moves. `walk.grid.path` routes through portals and rejects partial A* fallback results. Render only in the host's bounded motion loop. Supply the player's recorded appearance through `setPlayer`. Labels are plain text; DOM consumers must use `textContent`. `tags()` includes landmarks and a capped 12-person crowd. Scene, shuttle and landmark provide disposal hooks and share kit materials. `lighting()` returns the host's tuple shape, not preview-specific objects.
 
@@ -221,10 +221,10 @@ Everything above describes the campus as first built. In the current game it is 
 | Engine systems | `unilagStudent`, `unilagCommunity`, `unilagShuttle` are registered after `growth`. A guest of the quick start is refused every student action (apply, matriculate, register, lecture, assignment, test, close, defer, resume, drop, hostel, campus job, election) with `settle_required` — `GUEST_CAMPUS` in `src/game/systems/onboarding.ts`; visiting, the trail, the games and the shuttle stay open. |
 | Map | A site in the Lagos city pack at Akoka (`src/map3d/cities/lagos.ts`, inside the Lagos Mainland local government) with a landmark kind of its own (`src/map3d/landmarks.ts` `unilag`: Senate House and the main gate, in the city's merged batch). The flat map is the same pack from above. `landmark.ts` here remains for the standalone preview. |
 | Scene host | `src/campus/unilag/host.ts` behind `world-adapter.ts`, which the entry file talks to for every venue. The campus host is fetched only when the player is at the campus (or a trip to it has set off). `src/campus/shared/{characters,movement,motion-loop}.ts` were copies of the game's own modules and are gone: the campus uses `src/scene/characters.ts`, `src/scene/movement.ts` and `src/scene/motion-loop.ts`. Only `shared/geometry.ts` and `shared/signs.ts` remain. |
-| Selecting a landmark | The `spot` action is sent when the avatar arrives (`walkToSpot`, then `commitSpot` in `src/life-main.js`), from the panel's spot pills, the Campus app and a landmark's name tag alike. |
+| Selecting a landmark | The `spot` action is sent when the avatar arrives (`walkToSpot`, then `commitSpot` in `src/app/state/app.ts`), from the panel's spot pills, the Campus app and a landmark's name tag alike. |
 | Presence | Campus coordinates on the wire, valid only on walkable ground (`server/protocol.ts validatePosition(value, 'unilag')`); a join starts at the main gate. Every other venue keeps ±20. |
 | Table games | The two Student Union tables are rows of the one table registry (`src/tables/places.ts`: `union-whot-1`, `union-whot-2`) and are played through the shared table framework from the Tables app and the "table here" chip. They are not drawn in the campus scene. |
-| Campus app | A lazy phone app (`src/ui/panels/groups/campus.js`), in the City group with a drawn mortarboard; its emoji are drawn as the game's glyphs. |
+| Campus app | A lazy phone app (`src/app/features/campus/`), in the City group with a drawn mortarboard; its emoji are drawn as the game's glyphs. |
 | Shared routes | `GET /api/campus`, `POST /api/campus/nominate`, `POST /api/campus/vote` on both hosts, exactly once through `ctx.command` (the ballot is saved with the action receipt). Stored: the `campus` collection (one weekly election). |
 | Analytics | `campus_enrolled` and `campus_graduated` through `jaw:track`, from the server's own state (`src/telemetry/events.ts`). |
 | Economy | `npm run economy` plays a student on every start; `src/game/economy.test.ts` asserts fees (₦3,000 for the degree), one paid campus job a Lagos day and one scholarship at most. |

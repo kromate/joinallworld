@@ -12,7 +12,7 @@
  * FOUNDER_ENV: that one is passed on even when empty, which is how it is switched off). Nothing here deploys anything.
  */
 import { mkdtemp, readFile, mkdir } from 'node:fs/promises';
-import { rmSync } from 'node:fs';
+import { existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
@@ -30,8 +30,14 @@ interface EsbuildTooling { build(options: Record<string, unknown>): Promise<unkn
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const require = createRequire(resolve(process.env.JOINALLWORLD_TOOLS || join(root, 'deploy/tooling'), 'package.json'));
-const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as MiniflareTooling;
-const { build } = require('esbuild') as EsbuildTooling;
+/** Stop with one plain line: what is missing and the command that provides it. */
+function missing(what: string, command: string): never { console.error(`${what} Run this first: ${command}`); process.exit(1); }
+let tooling: { miniflare: MiniflareTooling; esbuild: EsbuildTooling };
+try { tooling = { miniflare: require('miniflare') as MiniflareTooling, esbuild: require('esbuild') as EsbuildTooling }; }
+catch { missing('The Worker tooling (Miniflare) is not installed.', 'npm ci --ignore-scripts --prefix deploy/tooling'); }
+const { Miniflare, convertV4MiniflareOptions } = tooling.miniflare;
+const { build } = tooling.esbuild;
+if (!existsSync(join(root, 'dist/index.html'))) missing('There is no built page in dist/.', 'npm run build');
 
 const port = Number(process.env.PORT) || 8787;
 const scratch = await mkdtemp(join(tmpdir(), 'allworld-worker-'));
@@ -56,6 +62,10 @@ const front = createServer((socket: Socket) => {
   const upstream = connect(Number(inner.port), '127.0.0.1');
   socket.pipe(upstream).pipe(socket);
   for (const end of [socket, upstream]) end.on('error', () => { socket.destroy(); upstream.destroy(); });
+});
+front.once('error', (error: NodeJS.ErrnoException) => {
+  console.error(error.code === 'EADDRINUSE' ? `Port ${port} is already in use. Stop what is using it, or set PORT to a free port.` : `The Worker host could not listen: ${error.message}`);
+  void mf.dispose().finally(() => process.exit(1));
 });
 front.listen(port, '127.0.0.1', () => console.log(`Allworld Worker (Miniflare) listening on http://localhost:${port} · storage ${storage}`));
 let stopping = false;

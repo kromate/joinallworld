@@ -685,7 +685,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in the README.');
+  if (process.env.STORE_MODE) console.error('STORE_MODE is no longer used: there is one store. See "Storage and limits" in docs/REFERENCE.md.');
   const server = await createServer();
   const telemetry = useTelemetry(server.telemetry);
   // Stop taking requests, then write everything in the one shutdown order (server.flush) before the process leaves. A step
@@ -698,5 +698,16 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   // Only with error monitoring on: a crash is reported before the process exits as it would have anyway.
   if (telemetry.enabled) for (const event of ['uncaughtException', 'unhandledRejection']) process.once(event, (error) => { console.error(error); telemetry.captureError(error, { source: event, level: 'fatal' }); telemetry.close().finally(() => process.exit(1)); });
   telemetry.started();
-  server.listen(Number(process.env.PORT) || 3001, '0.0.0.0', () => { const address = server.address(); console.log(`Allworld server listening on ${isObject(address) ? address.port : address}`); });
+  const port = Number(process.env.PORT) || 3001;
+  // A taken port is the usual reason a start fails: say so in one line instead of a stack trace.
+  server.once('error', (error) => {
+    if (fieldOf(error, 'code') !== 'EADDRINUSE') throw error;
+    console.error(`Port ${port} is already in use, probably by another copy of this server. Stop that one, or set PORT to a free port (PORT=${port + 1} npm start).`);
+    process.exit(1);
+  });
+  server.listen(port, '0.0.0.0', () => {
+    const address = server.address();
+    console.log(`Allworld server listening on ${isObject(address) ? address.port : address}`);
+    stat(join(resolve('dist'), 'index.html')).then(() => console.log(`Open http://localhost:${port}/ to play.`), () => console.error('There is no built page in dist/ yet, so only the API answers. Run `npm run build` first, or use `npm run dev` while developing.'));
+  });
 }

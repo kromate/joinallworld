@@ -38,6 +38,7 @@ import { viewLife } from '../../src/life.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { upcomingEvents } from '../../src/game/calendar.ts';
 import { composeDigest } from '../../src/game/digest.ts';
+import { cityRules } from '../../src/game/cities/index.ts';
 import { OUTREACH, channelUrl, checkEmail, inQuietHours, maskEmail, planMessage } from '../../src/game/outreach.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { growthOf, playerOf } from './data.ts';
@@ -61,11 +62,25 @@ type Job =
   | { channel: 'push'; kind: string; id: string; subs: { endpoint: string; p256dh: string; auth: string; at: number }[]; digest: Digest }
 type PushSub = { endpoint: string; p256dh: string; auth: string; at: number }
 /** The stored life a message is about. */
-interface MessageLife { name: string; cityId: CityId; state: LifeState }
+export interface MessageLife { name: string; cityId: CityId; state: LifeState }
+
+/** Select the character's city; latest-played is only a compatibility fallback for old sessions. */
+export function messageLifeOf(session: SessionRecord | null | undefined, cityIds: readonly CityId[], now: number): MessageLife | null {
+  if (!session || session.expiresAt <= now) return null;
+  const cities = cityIds.filter((cityId) => session.cities?.[cityId]?.state).sort((a, b) => (session.cities[b]?.updatedAt ?? 0) - (session.cities[a]?.updatedAt ?? 0));
+  const active = cities.find((cityId) => cityId === session.character?.city) ?? cities[0];
+  const record = active === undefined ? undefined : session.cities[active];
+  return active !== undefined && record ? { name: session.name, cityId: active, state: record.state } : null;
+}
+
+export function digestForLife(life: MessageLife, now: number) {
+  const view = viewLife(life.state, { now, cityId: life.cityId });
+  return { view, digest: composeDigest({ name: life.name, city: cityRules(life.state.estate.city)?.name ?? life.state.estate.city, missions: view.missions, events: upcomingEvents(now, 2, life.state.estate.city).slice(0, 3),
+    lines: (life.state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) }) };
+}
 
 export const LIMITS = Object.freeze({ subs: 3, log: 200, previews: 10, batch: 100, tickMs: 60000, emailPerDay: 500, pushPerDay: 5000, unsubscribeDays: 400 });
 const HOUR = 3600000, DAY = 86400000;
-const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const text = new TextEncoder();
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
@@ -272,18 +287,13 @@ function buildService(ctx: RouteContext) {
   }
 
   // ---- the schedule -----------------------------------------------------------------------------
-  /** The stored life a message is about: the city played most recently. Read-only — nothing is settled. */
+  /** The stored life a message is about: the character's actual city. Read-only — nothing is settled. */
   function lifeOf(db: Db, id: string): MessageLife | null {
     const session = ctx.core.sessionByPublicId?.(db, id);
-    if (!session || session.expiresAt <= now()) return null;
-    const cities = ctx.cityIds.filter((cityId) => session.cities?.[cityId]?.state).sort((a, b) => (session.cities[b]?.updatedAt ?? 0) - (session.cities[a]?.updatedAt ?? 0));
-    const latest = cities[0], record = latest === undefined ? undefined : session.cities[latest];
-    return latest !== undefined && record ? { name: session.name, cityId: latest, state: record.state } : null;
+    return messageLifeOf(session, ctx.cityIds, now());
   }
   function digestFor(life: MessageLife) {
-    const view = viewLife(life.state, { now: now(), cityId: life.cityId });
-    return { view, digest: composeDigest({ name: life.name, city: CITY_NAMES[life.cityId] ?? life.cityId, missions: view.missions, events: upcomingEvents(now(), 2, life.cityId).slice(0, 3),
-      lines: (life.state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) }) };
+    return digestForLife(life, now());
   }
   let running = false, lastTick = 0, stopped = false, current: Promise<unknown> | null = null;
   /**

@@ -27,7 +27,7 @@ const owner = registerSystem({ id: 'recovery-probe', stateKeys: ['recoveryProbe'
   modifiers: { 'activity.cost': (cost: number, state: LifeState, { def }: { def: { id: string } }) => def.id === paid.id ? cost * 2 : cost },
   activities: [paid, gradual],
 } as unknown as SystemDefinition);
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 const fresh = (): LifeState => createLife({ spot: 'drinks' }, ctx);
 const start = (state: LifeState, id: string) => dispatch(state, { type: 'activity', id }, ctx);
 const copy = (state: unknown) => JSON.parse(JSON.stringify(state));
@@ -53,13 +53,13 @@ test('paid gradual gains require a nonrefundable start charge, including choices
       { chargeOn: 'complete', effectsPerSecond: {}, xpPerSecond: { coding: 1 } },
     ]) {
       Object.assign(gradual, change);
-      assert.throws(rebuildCatalogue, /paid per-second gains/);
+      assert.throws(() => rebuildCatalogue('lagos'), /paid per-second gains/);
       delete gradual.choices;
     }
   } finally {
     Object.assign(gradual, { chargeOn: 'start', refundOnCancel: false, effectsPerSecond: { energy: 1 } });
     delete gradual.xpPerSecond;
-    rebuildCatalogue();
+    rebuildCatalogue('lagos');
   }
 });
 
@@ -103,13 +103,13 @@ test('trusted invalidation refunds actual modified payment exactly once after de
     assert.equal(refunded.ledger.at(-1)?.amount, 200);
     assert.deepEqual(createLife(copy(refunded), trusted), refunded);
     assert.equal(createLife(copy(state), ctx).cash, 4800, 'untrusted hydrate cannot mint a refund');
-  } finally { paid.cost = 100; paid.duration = 10; rebuildCatalogue(); }
+  } finally { paid.cost = 100; paid.duration = 10; rebuildCatalogue('lagos'); }
 });
 
 test('trusted removed and malformed actions refund once; arbitrary client paid values never mint', () => {
   const state = fresh(); start(state, paid.id);
   try {
-    owner.activities = [gradual]; rebuildCatalogue();
+    owner.activities = [gradual]; rebuildCatalogue('lagos');
     for (const value of [state.activeAction, { ...state.activeAction, remaining: -1 }, { ...state.activeAction, duration: 'broken' }]) {
       const input = { ...copy(state), activeAction: value };
       const refunded = createLife(input, trusted);
@@ -122,7 +122,7 @@ test('trusted removed and malformed actions refund once; arbitrary client paid v
       const forged = createLife({ cash: 5000, activeAction: { kind: 'activity', id: 'removed', duration: 10, remaining: 5, paid: amount } }, ctx);
       assert.equal(forged.cash, 5000);
     }
-  } finally { owner.activities = [paid, gradual]; rebuildCatalogue(); }
+  } finally { owner.activities = [paid, gradual]; rebuildCatalogue('lagos'); }
 });
 
 

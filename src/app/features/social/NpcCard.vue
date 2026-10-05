@@ -5,8 +5,8 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { NPCS } from '../../../game/content/npcs.ts'
-import { venueLabel } from '../../../game/content/venues.ts'
+import { contentFor, regularFor } from '../../../game/cities/runtime.ts'
+import { cityRules } from '../../../game/cities/registry.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -18,17 +18,20 @@ import { closenessText, STRANGER_TEXT, tagLabel } from './socialModel.ts'
 const props = defineProps<{ id: string }>()
 const { game, shell } = useApp()
 const view = game.view
-const base = computed(() => NPCS[props.id] ?? null)
-const here = computed(() => view.value.social.here.find((npc) => npc.id === props.id) ?? null)
 const rel = computed(() => view.value.social.relationships.find((item) => item.id === props.id))
-const why = computed(() => (base.value ? npcReason({
-  connected: view.value.connected,
-  cannot: linkWords(view.value)?.cannot('interact') ?? 'Not connected.',
-  here: here.value,
-  name: base.value.name,
-  venueLabel: venueLabel(base.value.venue, view.value.cityId),
-  busy: Boolean(game.state.value.activeAction),
-}) : null))
+const local = computed(() => regularFor(view.value.cityId, props.id) ?? null)
+const base = computed(() => local.value ?? (rel.value?.npc ? rel.value : null))
+const here = computed(() => view.value.social.here.find((npc) => npc.id === props.id) ?? null)
+const why = computed(() => {
+  if (!base.value) return null
+  if (!local.value) {
+    const origin = game.state.value.social.rel[props.id]?.npcSnapshot?.city
+    return `${base.value.name} is in ${cityRules(origin)?.name ?? 'another city'}. Travel there to interact.`
+  }
+  const place = contentFor(view.value.cityId).venues.find((venue) => venue.id === local.value?.venue)?.name ?? local.value.venue
+  return npcReason({ connected: view.value.connected, cannot: linkWords(view.value)?.cannot('interact') ?? 'Not connected.', here: here.value,
+    name: base.value.name, venueLabel: place, busy: Boolean(game.state.value.activeAction) })
+})
 const points = computed(() => rel.value?.points ?? 0)
 const max = computed(() => npcMeterMax(rel.value, view.value.social.maxCloseness))
 const starting = ref(false)

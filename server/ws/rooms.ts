@@ -1,3 +1,4 @@
+import { venueFor } from '../../src/game/cities/runtime.ts';
 /**
  * OWNER: foundation
  * Venue rooms: presence, movement, text chat, voice state and proximity-gated signalling.
@@ -85,7 +86,7 @@
  *   cityId } (no host connection in the room) or 'guest-expired' with the same fields (anything else).
  */
 import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, initialVenuePosition, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.ts';
-import { VENUES, watchLives } from '../life-service.ts';
+import { watchLives } from '../life-service.ts';
 import { checkLook } from '../../src/game/systems/onboarding.ts';
 import { screenText } from '../moderation/text.ts';
 import type { CityId, ChatFrame, PresenceMember, PublicSession, SignalData } from '../../src/types/protocol.ts';
@@ -337,7 +338,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   const messages: Record<string, WsMessageEntry> = {
     async join(ws, message) {
       const cityId = ctx.cityIds.find((item) => item === message.cityId), venueId = message.venueId;
-      if (cityId === undefined || typeof venueId !== 'string' || !Object.hasOwn(VENUES, venueId)) throw Error('invalid_room');
+      if (cityId === undefined || typeof venueId !== 'string' || !venueFor(cityId, venueId)) throw Error('invalid_room');
       // hostId is only meaningful for Home, and only as a well-formed public id.
       const rawHostId = message.hostId;
       if (rawHostId !== undefined && (venueId !== 'home' || typeof rawHostId !== 'string' || !UUID_PATTERN.test(rawHostId))) throw Error('invalid_room');

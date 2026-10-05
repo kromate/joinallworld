@@ -48,7 +48,7 @@ registerSystem({
     'campus.volunteered': (_state: LifeState, data: CampusEventMap['campus.volunteered']) => seen.push(['volunteer', structuredClone(data)]),
   },
 });
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 
 interface Player {
   state: LifeState

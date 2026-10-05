@@ -1,3 +1,4 @@
+import { cachedCityContent } from '../cities/registry.ts';
 /**
  * OWNER: world
  * Venue catalogue: venue → district, opening hours, map position, spots → activities, scene.
@@ -37,7 +38,7 @@ import { AIRPORT, REFINERY } from './venues-transport.ts';
 import { UNILAG_VENUE } from '../../campus/unilag/content.ts';
 import type { HouseId, VenueId, WorldCityId } from '../../types/life.ts';
 import type {
-  CityMapNames, CityVenueLabel, ComingSoonDefinition, HomeMapSpot, SceneKind, VenueCategory, VenueCategoryId, VenueDefinition,
+  CityVenueLabel, ComingSoonDefinition, HomeMapSpot, SceneKind, VenueCategory, VenueCategoryId, VenueDefinition,
 } from '../../types/content.ts';
 
 /**
@@ -67,7 +68,7 @@ export const VENUE_CATEGORIES: Record<VenueCategoryId, VenueCategory> = {
   civic: { id: 'civic', label: 'Civic' },
 };
 
-export const VENUES: Record<VenueId, VenueDefinition> = {
+const VENUES_DATA = {
   park: {
     id: 'park', label: 'Freedom Park', district: 'Lagos Island', icon: '🌳', category: 'fun',
     description: 'A place to relax, enjoy art and meet your city.',
@@ -711,7 +712,8 @@ export const VENUES: Record<VenueId, VenueDefinition> = {
   refinery: REFINERY,
   // The University of Lagos campus at Akoka (Lagos only): src/campus/unilag/content.ts.
   unilag: UNILAG_VENUE,
-};
+} satisfies Record<string, VenueDefinition>;
+export const VENUES: Record<string, VenueDefinition> & Record<keyof typeof VENUES_DATA, VenueDefinition> = VENUES_DATA;
 
 /**
  * Shown on the map but not enterable yet: { [id]: { id, label, district, icon, description, zone, map: { x, y } } }.
@@ -735,10 +737,7 @@ export const HOME_SPOTS: Record<HouseId, HomeMapSpot> = {
 };
 
 /** Map backdrop labels per city. Ibadan reuses the Lagos layout with its own names. */
-export const CITY_MAPS: Partial<Record<WorldCityId, CityMapNames>> = {
-  lagos: { north: 'MAINLAND', south: 'ISLAND', east: 'LEKKI', water: 'LAGOS LAGOON', sea: 'ATLANTIC OCEAN', bridges: ['Third Mainland Bridge', 'Carter Bridge', 'Link Bridge'] },
-  ibadan: { north: 'BODIJA SIDE', south: 'DUGBE SIDE', east: 'AKOBO', water: 'OGUNPA RIVER', sea: 'ELEYELE LAKE', bridges: ['Mokola Flyover', 'Ogunpa Bridge', 'Iwo Road Bridge'] },
-};
+
 
 /** Per-city display overrides. Rules, ids and activities are shared. */
 export const CITY_LABELS: Partial<Record<WorldCityId, Partial<Record<VenueId, CityVenueLabel>>>> = {
@@ -773,5 +772,5 @@ export const CITY_LABELS: Partial<Record<WorldCityId, Partial<Record<VenueId, Ci
 // The same tables read by an arbitrary (possibly unknown) id, as the callers do.
 const cityLabelsById: Record<string, Record<string, CityVenueLabel | undefined> | undefined> = CITY_LABELS;
 const venuesById: Record<string, VenueDefinition | undefined> = VENUES;
-export const venueLabel = (venueId: string, cityId: string): string => cityLabelsById[cityId]?.[venueId]?.label ?? venuesById[venueId]?.label ?? COMING_SOON[venueId]?.label ?? venueId;
-export const venueDistrict = (venueId: string, cityId: string): string => cityLabelsById[cityId]?.[venueId]?.district ?? venuesById[venueId]?.district ?? COMING_SOON[venueId]?.district ?? '';
+export const venueLabel = (venueId: string, cityId: string): string => cachedCityContent(cityId)?.venues.find(item => item.id === venueId)?.name ?? cityLabelsById[cityId]?.[venueId]?.label ?? venuesById[venueId]?.label ?? COMING_SOON[venueId]?.label ?? venueId;
+export const venueDistrict = (venueId: string, cityId: string): string => cachedCityContent(cityId)?.venues.find(item => item.id === venueId)?.district ?? cityLabelsById[cityId]?.[venueId]?.district ?? venuesById[venueId]?.district ?? COMING_SOON[venueId]?.district ?? '';

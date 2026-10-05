@@ -17,7 +17,8 @@ import AdBoard from './AdBoard.vue'
 import CivicAction from './CivicAction.vue'
 import CivicStale from './CivicStale.vue'
 import CivicStatus from './CivicStatus.vue'
-import { AD_COLOURS, AD_ICONS, AD_TEXT, BILLBOARDS, SEA_PLOTS } from './civicContent.ts'
+import { AD_COLOURS, AD_ICONS, AD_TEXT, SEA_PLOTS } from './civicContent.ts'
+import { contentFor } from '../../../game/cities/runtime.ts'
 import { adsRentRequest, adsUi as ui } from './civicDrafts.ts'
 import { adTooShort, adsKey, colourOf, adsPath, dateTime, ownedAds, previewText, rentWhy, roadside, seaPrice, seaSlot } from './civicModel.ts'
 import { useCivic, useLinkWhy, useLoaded, useOffline } from './useCivic.ts'
@@ -30,6 +31,7 @@ const linkWhy = useLinkWhy()
 const view = game.view
 const state = game.state
 const cityId = computed(() => view.value.cityId)
+const billboardCount = computed(() => contentFor(cityId.value).billboardRoads.length)
 const { item, reload } = useLoaded<AdsResponse>({ key: () => adsKey(cityId.value), path: () => adsPath(cityId.value), maxAge: 30000 })
 const data = computed(() => item.value.data)
 const textField = ref<HTMLInputElement | null>(null)
@@ -146,7 +148,7 @@ const pick = (row: number, col: number): void => { ui.row = row; ui.col = col }
       </template>
       <div class="civic-actions"><CivicAction :working="item.loading" @click="reload">Refresh</CivicAction></div>
     </template>
-    <HowItWorks id="ads-rules" page label="How ads work" :rules="['An ad is one line of text, a colour and an icon. Picture uploads and links are switched off until moderation exists, and ad text is never clickable.', 'Rent is paid in in-game naira only, and taking an ad down early is not refunded.', 'Ads are drawn on the city map behind its Billboards and Sea layers; they are never links.', `Billboard pricing and the sea grid are original beta values (${BILLBOARDS.slots.length} billboard slots).`]" />
+    <HowItWorks id="ads-rules" page label="How ads work" :rules="['An ad is one line of text, a colour and an icon. Picture uploads and links are switched off until moderation exists, and ad text is never clickable.', 'Rent is paid in in-game naira only, and taking an ad down early is not refunded.', 'Ads are drawn on the city map behind its Billboards and Sea layers; they are never links.', `Billboard pricing and the sea grid are original beta values (${billboardCount} billboard slots).`]" />
   </div>
 </template>
 

@@ -14,9 +14,9 @@ import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { ClientOptions, CommandArgs, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
-import { CITIES, createClient } from '../../client.ts'
-import { VENUES, viewLife } from '../../life.ts'
-import { venueDistrict, venueLabel } from '../../game/content/venues.ts'
+import { clientCity, createClient } from '../../client.ts'
+import { viewLife } from '../../life.ts'
+import { contentFor } from '../../game/cities/runtime.ts'
 import { toast as sharedToast } from './toasts.ts'
 import { telemetry as realTelemetry } from '../../telemetry/index.ts'
 
@@ -145,14 +145,15 @@ export function createGame(options: GameOptions = {}): Game {
 
   const view = computed<PanelView>(() => {
     const life = state.value, city = cityId.value
+    const catalogue = contentFor(city)
     const now = client.serverNow()
     return {
       ...viewLife(life, { now, cityId: city }),
-      cityId: city, city: CITIES[city], connected: online.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
+      cityId: city, city: clientCity(city), connected: online.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
       // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
       name: life.name || client.identity.name, now,
       clock: clockFormat.format(new Date(now)).replace(',', ' ·'),
-      venues: Object.values(VENUES).map((item) => ({ id: item.id, label: venueLabel(item.id, city), district: venueDistrict(item.id, city), icon: item.icon, description: item.description })),
+      venues: catalogue.venues.map((item) => ({ id: item.id, label: item.name, district: item.district, icon: item.definition.icon, description: item.whatYouCanDo })),
       mode: mode.value, params: null,
     }
   })

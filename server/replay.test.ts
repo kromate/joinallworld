@@ -42,8 +42,8 @@ test('receipts replay exactly: every action sent twice is applied once, in memor
     const roll = rng();
     const body: WalkBody = { actionId: `${f.now()}:00000000-0000-4000-8000-${String(i).padStart(12, '0')}`, cityId: 'lagos',
       ...(roll < 0.3 ? { type: 'travel', payload: { id: pick(rng, Object.keys(VENUES)), mode: pick(rng, ['trek', 'danfo', 'cab', 'okada']) } }
-        : roll < 0.45 ? { type: 'spot', payload: { id: pick(rng, spotsOf(state.location)).id } }
-        : roll < 0.8 ? { type: 'activity', payload: { id: pick(rng, (spotsOf(state.location).find((spot) => spot.id === state.spot)?.activities ?? napOnly).concat(napOnly)).id } }
+        : roll < 0.45 ? { type: 'spot', payload: { id: pick(rng, spotsOf(state.location, 'lagos')).id } }
+        : roll < 0.8 ? { type: 'activity', payload: { id: pick(rng, (spotsOf(state.location, 'lagos').find((spot) => spot.id === state.spot)?.activities ?? napOnly).concat(napOnly)).id } }
         : roll < 0.9 ? { type: 'cancel' } : { type: 'apply-job', payload: { id: pick(rng, ['community-helper', 'tech', 'teaching']) } }) };
     // First delivery, sometimes raced by its own retry.
     const racing = rng() < 0.3;

@@ -1,3 +1,5 @@
+import { jobsFor, jobFor, venueFor } from '../cities/runtime.ts';
+import { cachedCityContent, cityModule } from '../cities/registry.ts';
 /**
  * OWNER: career
  * Jobs, schedules, shifts, performance and promotion.
@@ -89,12 +91,20 @@ export type ShiftStatus =
   | { code: Extract<ShiftStatusCode, 'available' | 'orientation'>; canWork: true; text: string; next: string }
   | { code: Extract<ShiftStatusCode, 'no_job' | 'working' | 'shift_done' | 'day_off'>; canWork: false; text: string; next: string }
 
-const jobOf = (id: unknown): JobDefinition | null => (typeof id === 'string' && Object.hasOwn(JOBS, id) ? JOBS[id as JobId] : null); // hasOwn proved the key
+const canonicalJobOf = (id: unknown): JobDefinition | null => typeof id === 'string' ? Object.values(JOBS).find((job) => job.id === id) ?? null : null;
+const contentReady = (cityId: string): boolean => Boolean(cachedCityContent(cityId)) || cityId === 'lagos' || (cityId === 'ibadan' && !cityModule(cityId));
+const cityHasCareer = (cityId: string, id: unknown): boolean => {
+  const canonical = canonicalJobOf(id);
+  if (!canonical) return false;
+  const module = cityModule(cityId);
+  return module ? module.rules.careerIds.includes(canonical.id) : cityId === 'lagos' || cityId === 'ibadan';
+};
+const jobOf = (id: unknown, cityId: string): JobDefinition | null => contentReady(cityId) ? jobFor(cityId, id) ?? null : null;
 /** A job can only be held while its workplace venue is part of this build. */
-export const workplaceOpen = (job: JobDefinition): boolean => Object.hasOwn(VENUES, job.workplace.venue);
-const placeName = (job: JobDefinition, ctx?: LifeContext): string => (workplaceOpen(job) ? venueLabel(job.workplace.venue, ctx?.cityId ?? '') : job.workplaceName); // no city: no city-specific label
+export const workplaceOpen = (job: JobDefinition, cityId: string): boolean => Boolean(venueFor(cityId, job.workplace.venue));
+const placeName = (job: JobDefinition, ctx: LifeContext): string => (workplaceOpen(job, ctx.cityId) ? venueLabel(job.workplace.venue, ctx.cityId) : job.workplaceName);
 /** The label of the workplace spot as the venue panel shows it (an existing venue spot keeps its own name). */
-const spotName = (job: JobDefinition): string => spotsOf(job.workplace.venue).find((spot) => spot.id === job.workplace.spot)?.label || 'Work';
+const spotName = (job: JobDefinition, cityId: string): string => spotsOf(job.workplace.venue, cityId).find((spot) => spot.id === job.workplace.spot)?.label || 'Work';
 const nowOf = (state: LifeState, ctx?: LifeContext): number => { const now = ctx?.now; return finite(now) ? now : state.t; };
 /** The ladder rung at an index that is always inside the ladder (six rungs, level clamped); a missing rung would have thrown on the first read. */
 const ladderRung = (job: TrackJobDefinition, index: number): LadderRung => {
@@ -103,13 +113,14 @@ const ladderRung = (job: TrackJobDefinition, index: number): LadderRung => {
   return found;
 };
 /** The track behind a job id that names one (a shift's `careerTrack`); a job without a ladder would have thrown at its first read. */
-const trackOf = (id: JobId): TrackJobDefinition => {
-  const job = JOBS[id];
+const trackOf = (id: JobId, cityId: string): TrackJobDefinition => {
+  const job = jobOf(id, cityId);
+  if (!job) throw new TypeError(`${id} is not a job in ${cityId}`);
   if (!job.track) throw new TypeError(`${id} has no career ladder`);
   return job;
 };
 const rung = (job: TrackJobDefinition, level: number): LadderRung => ladderRung(job, clamp(level, 1, job.ladder.length) - 1);
-const freshCareer = (): CareerState => ({ level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
+const freshCareer = (): CareerState => ({ city: null, level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
 const dayIndex = (value: unknown): number | null => (Number.isSafeInteger(value) ? (value as number) : null); // isSafeInteger proved the number
 
 /** "Mon–Fri" for a consecutive run (weeks start on Monday and may wrap to Sunday), else a list. */
@@ -129,14 +140,14 @@ export function scheduleText(job: JobDefinition): string {
 }
 
 /** Opening state of a job's workplace venue (null hours = always open). */
-const workplaceOpening = (job: JobDefinition, state: LifeState, ctx?: LifeContext) => openingInfo(VENUES[job.workplace.venue]?.hours, nowOf(state, ctx));
+const workplaceOpening = (job: JobDefinition, state: LifeState, ctx?: LifeContext) => openingInfo(venueFor(state.estate.city, job.workplace.venue)?.hours, nowOf(state, ctx));
 /**
  * The single workplace-hours sentence, shown next to the schedule in Jobs and Career. The hours
  * come from the same clock.openingInfo label the map card uses.
  */
-export function workplaceHoursText(job: JobDefinition, ctx?: LifeContext): string {
-  if (!workplaceOpen(job)) return `${cap(job.workplaceName)} is not open in this build yet.`;
-  const hours = openingInfo(VENUES[job.workplace.venue].hours, 0);
+export function workplaceHoursText(job: JobDefinition, ctx: LifeContext): string {
+  if (!workplaceOpen(job, ctx.cityId)) return `${cap(job.workplaceName)} is not open in this build yet.`;
+  const hours = openingInfo(venueFor(ctx.cityId, job.workplace.venue)?.hours, 0);
   return hours.always ? `${placeName(job, ctx)} · Open 24 hours` : `${placeName(job, ctx)} · Open ${hours.hours} — you can only travel there while it is open`;
 }
 
@@ -154,7 +165,11 @@ function nextWorkDay(job: TrackJobDefinition, weekday: number): string {
  *   `next` is the one "Next shift: …" label shown everywhere.
  */
 export function shiftStatus(state: LifeState, ctx?: LifeContext): ShiftStatus {
-  const job = jobOf(state.job);
+  const job = jobOf(state.job, state.career.city ?? state.estate.city);
+  if (!job && state.job && state.career.city && cityHasCareer(state.career.city, state.job)) {
+    return { code: 'no_job', canWork: false, text: 'Your job is in another city. Apply for its local career track to work here.', next: 'after choosing a local workplace' };
+  }
+  if (job && state.career.city !== state.estate.city) return { code: 'no_job', canWork: false, text: 'Your job is in another city. Apply for its local career track to work here.', next: 'after choosing a local workplace' };
   if (!job) return { code: 'no_job', canWork: false, text: 'No job yet.', next: 'after you apply for a job' };
   if (!job.track) return { code: 'available', canWork: true, text: `Starter job: a shift at any hour, then a ${HELPER_COOLDOWN_SECONDS / 3600}-hour break before the next one.`, next: 'now' };
   const today = lagosTime(nowOf(state, ctx));
@@ -188,7 +203,7 @@ function nextPromotion(state: LifeState, job: JobDefinition | null): PromotionTa
 }
 
 function tryPromote(state: LifeState, ctx: LifeContext): boolean {
-  const job = jobOf(state.job);
+  const job = jobOf(state.job, state.career.city ?? state.estate.city);
   const next = nextPromotion(state, job);
   if (!job?.track || !next || !next.performanceMet || !next.skillMet) return false; // a promotion target exists only for a track job
   state.career.level = next.level;
@@ -202,8 +217,8 @@ function tryPromote(state: LifeState, ctx: LifeContext): boolean {
 
 /** "Go automatically": start the free commute if a shift is waiting. At most once per Lagos day. */
 function maybeCommute(state: LifeState, ctx: LifeContext): boolean {
-  const job = jobOf(state.job);
-  if (!job?.track || !state.career.auto || state.activeAction || !workplaceOpen(job) || state.location === job.workplace.venue) return false;
+  const job = jobOf(state.job, state.career.city ?? state.estate.city);
+  if (!job?.track || !state.career.auto || state.activeAction || !workplaceOpen(job, state.estate.city) || state.location === job.workplace.venue) return false;
   const today = lagosTime(nowOf(state, ctx)).day;
   if (state.career.autoDay === today || !shiftStatus(state, ctx).canWork || shortNeeds(state, job).length) return false;
   // Another system may hold the commute back (the tutorial does, until it asks for a shift).
@@ -219,20 +234,21 @@ function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeCont
 function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext, switching: true): ActionOutcome<ActionMap['career.switch']['ok'], ActionMap['career.switch']['fail']>;
 function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext, switching = false): ActionOutcome<ActionMap['apply-job' | 'career.switch']['ok'], ActionMap['apply-job' | 'career.switch']['fail']> {
   if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before applying.');
-  const job = jobOf(payload?.id);
+  const job = jobOf(payload?.id, ctx.cityId);
   if (!job) return fail(state, 'invalid_job', 'Choose a job from the Jobs list.');
-  if (state.job === job.id) {
+  if (state.job === job.id && state.career.city === ctx.cityId) {
     state.message = `You already work as a ${job.label}. Visit your workplace to start a shift.`;
     return ok(state, 'already_employed');
   }
-  if (!workplaceOpen(job)) return fail(state, 'workplace_unavailable', `${job.label} is based at ${job.workplaceName}, which is not open in this build yet. Choose a track whose workplace is on the map.`);
-  const old = jobOf(state.job);
+  if (!workplaceOpen(job, ctx.cityId)) return fail(state, 'workplace_unavailable', `${job.label} is based at ${job.workplaceName}, which is not open in this build yet. Choose a track whose workplace is on the map.`);
+  const old = jobOf(state.job, state.career.city ?? state.estate.city);
   if (switching && !old) return fail(state, 'no_job', 'You have no job to switch from. Use Apply instead.');
   if (old && !switching) {
     return fail(state, 'confirm_switch', `Switching to ${job.label} ends your ${old.label} job: you start ${job.track ? `as ${ladderRung(job, 0).role} at ${START_PERFORMANCE}% performance` : 'in the starter job, which has no ladder,'} and lose your ${old.label} level and performance. Confirm the switch to continue.`);
   }
   if (old) emit(state, 'job.quit', { job: old.id }, ctx);
   state.job = job.id;
+  state.career.city = ctx.cityId;
   Object.assign(state.career, { level: 1, performance: job.track ? START_PERFORMANCE : 0, shifts: 0, shiftStartDay: null });
   const place = placeName(job, ctx);
   if (!job.track) state.message = `${job.label} job accepted. Visit your workplace to work a shift.`;
@@ -246,11 +262,11 @@ function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeCont
 }
 
 function quit(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
-  const job = jobOf(state.job);
+  const job = jobOf(state.job, state.career.city ?? state.estate.city);
   if (!job) return fail(state, 'no_job', 'You do not have a job to quit.');
   if (state.activeAction) return fail(state, 'busy', 'Finish or cancel your current action before quitting.');
   state.job = null;
-  Object.assign(state.career, { level: 1, performance: 0, shifts: 0, shiftStartDay: null });
+  Object.assign(state.career, { city: null, level: 1, performance: 0, shifts: 0, shiftStartDay: null });
   state.message = `You quit your ${job.label} job. Your level and performance in it are gone; apply again any time to start over.`;
   emit(state, 'job.quit', { job: job.id }, ctx);
   return ok(state, 'quit');
@@ -268,7 +284,7 @@ function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null,
   if (!job) return { kind: 'apply', text: 'Pick a job and tap Apply. Applying is free and you can work your first shift the same day.' };
   const shift = job.shift, place = placeName(job, ctx), pay = payOf(state, job);
   if (status.code === 'working') return { kind: 'wait', text: `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
-  if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the ${spotName(job)} spot when you arrive.` };
+  if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the ${spotName(job, ctx.cityId)} spot when you arrive.` };
   if (!status.canWork) return { kind: 'wait', text: status.text };
   const short = shortNeeds(state, job);
   if (short.length) {
@@ -280,8 +296,8 @@ function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null,
   if (state.location !== job.workplace.venue && !opening.open) {
     return { kind: 'wait', text: `${place} is closed right now${opening.opensAt ? `: it opens ${opening.opensAt}` : ''}. Travel there once it is open to work today’s shift. ${facts}` };
   }
-  if (state.location !== job.workplace.venue) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `Go to ${place} and open the ${spotName(job)} spot to start today’s shift. ${facts}` };
-  if (state.spot !== job.workplace.spot) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `You are at ${place}. Open the ${spotName(job)} spot to start today’s shift. ${facts}` };
+  if (state.location !== job.workplace.venue) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `Go to ${place} and open the ${spotName(job, ctx.cityId)} spot to start today’s shift. ${facts}` };
+  if (state.spot !== job.workplace.spot) return { kind: 'go', venue: job.workplace.venue, spot: job.workplace.spot, text: `You are at ${place}. Open the ${spotName(job, ctx.cityId)} spot to start today’s shift. ${facts}` };
   return { kind: 'start', text: `You are at work. Close this and tap “${shift.label}” to start. ${facts}` };
 }
 
@@ -290,13 +306,15 @@ const payOf = (state: LifeState, job: JobDefinition): number => (job.track ? run
 export default {
   id: 'career',
   stateKeys: ['job', 'completedShifts', 'career'],
-  sanitize(input, state) {
-    const job = jobOf(input.job);
-    state.job = job && workplaceOpen(job) ? job.id : null;
-    state.completedShifts = safeCount(input.completedShifts) ? input.completedShifts : 0;
+  sanitize(input, state, ctx) {
     const saved = isRecord(input.career) ? input.career : {};
-    const held = jobOf(state.job);
+    const jobCity = typeof saved.city === 'string' ? saved.city : ctx.cityId;
+    const loaded = contentReady(jobCity), job = jobOf(input.job, jobCity), canonical = canonicalJobOf(input.job);
+    state.job = loaded ? (job && workplaceOpen(job, jobCity) ? job.id : null) : (canonical && cityHasCareer(jobCity, canonical.id) ? canonical.id : null);
+    state.completedShifts = safeCount(input.completedShifts) ? input.completedShifts : 0;
+    const held = job ?? canonicalJobOf(state.job);
     const career = freshCareer();
+    career.city = state.job ? jobCity : null;
     if (held?.track) {
       career.level = finite(saved.level) && Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
       career.performance = finite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
@@ -315,27 +333,32 @@ export default {
     'career.quit': quit,
     'career.auto': setAuto,
   },
-  activities: Object.values(JOBS).filter((job) => job.shift && workplaceOpen(job))
+  activitiesFor: (cityId) => jobsFor(cityId).filter((job) => job.shift && venueFor(cityId, job.workplace.venue))
     .map((job) => ({ ...job.shift, requiresJob: job.id, where: { ...job.workplace, spotLabel: 'Work', spotIcon: '💼' } })),
   active: {
     commute: {
       moves: true, // the player is on their way out of the venue: no room, no voice, until they arrive or cancel
       sanitize(value, state) {
-        const job = jobOf(state.job);
+        const job = jobOf(state.job, state.career.city ?? state.estate.city);
         return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;
       },
       complete(state, active, ctx) {
-        const job = jobOf(state.job);
+        const job = jobOf(state.job, state.career.city ?? state.estate.city);
         if (!arrive(state, active.id, ctx, { spot: job?.workplace.spot, mode: null })) return;
-        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
+        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job, ctx.cityId) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
       },
     },
   },
   modifiers: {
-    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack ? rung(trackOf(def.careerTrack), state.career.level).pay : value),
+    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack && state.career.city
+      ? rung(trackOf(def.careerTrack, state.career.city), state.career.level).pay
+      : value),
     'activity.block'(value, state, { def }, ctx) {
       if (value || !def?.requiresJob) return value;
       if (state.completedShifts >= Number.MAX_SAFE_INTEGER) return { code: 'balance_limit', reason: 'Your shift count has reached its supported limit.' };
+      if (!state.career.city || state.career.city !== ctx.cityId) {
+        return { code: 'no_job', reason: 'Your job is in another city. Apply for its local equivalent to work here.' };
+      }
       if (!def.careerTrack || state.job !== def.careerTrack) return null;
       const status = shiftStatus(state, ctx);
       return status.canWork ? null : { code: status.code, reason: status.text };
@@ -346,11 +369,11 @@ export default {
       if (def?.careerTrack) state.career.shiftStartDay = lagosTime(nowOf(state, ctx)).day;
     },
     'action.cancelled'(state, { kind, id }) {
-      if (kind === 'activity' && jobOf(state.job)?.shift.id === id) state.career.shiftStartDay = null;
+      if (kind === 'activity' && jobOf(state.job, state.career.city ?? state.estate.city)?.shift.id === id) state.career.shiftStartDay = null;
     },
     'activity.completed'(state, { def }, ctx) {
       if (!def?.requiresJob) return;
-      const job = jobOf(def.requiresJob);
+      const job = jobOf(def.requiresJob, state.career.city ?? state.estate.city);
       state.completedShifts += 1;
       const career = state.career, level = job?.track ? career.level : 1;
       const pay = Math.max(0, Math.round(modify(state, 'activity.reward', def.reward || 0, { def }, ctx)));
@@ -369,13 +392,15 @@ export default {
       }
     },
     'skill.levelup'(state, { skill }, ctx) {
-      const job = jobOf(state.job);
+      const job = jobOf(state.job, state.career.city ?? state.estate.city);
       if (job?.track && job.skill === skill) tryPromote(state, ctx); // only a track has a skill
     },
   },
   advance(state, dt, ctx) { maybeCommute(state, ctx); },
   view(state, ctx): CareerView {
-    const job = jobOf(state.job);
+    const job = jobOf(state.job, state.career.city ?? state.estate.city);
+    const coldJob = !job && state.job && state.career.city && cityHasCareer(state.career.city, state.job) ? canonicalJobOf(state.job) : null;
+    const shown = job ?? coldJob;
     const status = shiftStatus(state, ctx);
     const today = lagosTime(nowOf(state, ctx));
     const career = state.career;
@@ -383,29 +408,29 @@ export default {
     return {
       job, // legacy field: the raw catalogue entry
       completedShifts: state.completedShifts,
-      employed: Boolean(job),
-      id: job?.id ?? null,
-      label: job?.label ?? null,
-      icon: job?.icon ?? '💼',
-      isTrack: Boolean(job?.track),
-      level: job?.track ? career.level : null,
-      levels: job?.track ? job.ladder.length : null,
-      role: job ? (job.track ? rung(job, career.level).role : job.label) : null,
+      employed: Boolean(shown),
+      id: shown?.id ?? null,
+      label: shown?.label ?? null,
+      icon: shown?.icon ?? '💼',
+      isTrack: Boolean(shown?.track),
+      level: shown?.track ? career.level : null,
+      levels: shown?.track ? shown.ladder.length : null,
+      role: shown ? (shown.track ? rung(shown, career.level).role : shown.label) : null,
       pay,
       weeklyPay: job?.track ? pay * job.days.length : 0,
-      performance: job?.track ? Math.floor(career.performance) : null,
+      performance: shown?.track ? Math.floor(career.performance) : null,
       shifts: career.shifts,
       schedule: job ? scheduleText(job) : null,
       chips: CHIP_LETTERS.map((letter, weekday) => ({ letter, name: WEEKDAYS[weekday] ?? '', work: job ? (job.track ? job.days.includes(weekday) : true) : false, today: weekday === today.weekday })),
       today: { code: status.code, canWork: status.canWork, text: status.text, weekday: WEEKDAYS[today.weekday] ?? '' },
       nextShift: job ? `Next shift: ${status.next}` : null,
-      next: nextPromotion(state, job),
-      topOfLadder: Boolean(job?.track && career.level >= job.ladder.length),
+      next: nextPromotion(state, shown),
+      topOfLadder: Boolean(shown?.track && career.level >= shown.ladder.length),
       auto: career.auto,
       workplace: job ? { venue: job.workplace.venue, spot: job.workplace.spot, label: placeName(job, ctx), open: workplaceOpening(job, state, ctx).open, status: workplaceOpening(job, state, ctx).status } : null,
       hours: job ? workplaceHoursText(job, ctx) : null,
       shift: job ? { id: job.shift.id, label: job.shift.label, duration: job.shift.duration, minimumNeeds: job.shift.minimumNeeds ?? {}, effects: job.shift.effects ?? {}, xp: job.shift.xp || {} } : null, // every shipped shift defines both; see CareerView.shift
-      step: nextStep(state, ctx, job, status),
+      step: job ? nextStep(state, ctx, job, status) : shown ? { kind: 'apply', text: status.text } : nextStep(state, ctx, null, status),
       busy: Boolean(state.activeAction),
       rules: [
         'Applying is free and hires you at once.',
@@ -414,8 +439,8 @@ export default {
         'You are paid when the shift finishes. Cancelling earns nothing and costs nothing.',
         `Each shift adds about ${PERFORMANCE_PER_SHIFT}% performance; it never drops. Promotion needs 100% plus the track skill.`,
       ],
-      jobs: Object.values(JOBS).map((item): JobListing => {
-        const open = workplaceOpen(item), current = state.job === item.id;
+      jobs: jobsFor(ctx.cityId).map((item): JobListing => {
+        const open = workplaceOpen(item, ctx.cityId), current = state.job === item.id && state.career.city === ctx.cityId;
         const blocked = current ? null
           : !open ? `${cap(item.workplaceName)} is not open in this build yet.`
           : state.activeAction ? 'Finish or cancel your current action first.'
@@ -430,7 +455,7 @@ export default {
           workplace: placeName(item, ctx), blocked,
           // The workplace venue's id (null while it is not in this build) and whether it is open at this moment.
           venue: open ? item.workplace.venue : null, openNow: open ? workplaceOpening(item, state, ctx).open : false,
-          switchWarning: job && !current ? `You will leave ${job.label}${job.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? ladderRung(item, 0).role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
+          switchWarning: shown && !current ? `You will leave ${shown.label}${shown.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? ladderRung(item, 0).role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
         };
       }),
     };

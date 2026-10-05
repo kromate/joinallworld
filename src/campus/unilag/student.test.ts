@@ -57,7 +57,7 @@ registerSystem({
   id: 'unilagStudentTestProbe', stateKeys: [], sanitize() {}, actions: {}, advance() {},
   on: { 'campus.graduated': (_state: unknown, data: unknown) => events.push(structuredClone(data)) },
 });
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 
 function lagosAt(dayOffset: number, hour: number, minute = 0, second = 0): number {
   return START + dayOffset * DAY + (hour - 9) * HOUR + minute * 60000 + second * 1000;

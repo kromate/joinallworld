@@ -1,3 +1,4 @@
+import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
 /**
  * Node host: HTTP + WebSocket plumbing, static files and the server context.
  * Everything Node-specific lives here and in store.js. Rules shared with the Cloudflare worker
@@ -23,7 +24,7 @@ import { buildSocketHandlers } from './ws/index.ts';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { siteFile } from './site-files.ts';
 import telemetryRoutes from './telemetry/routes.ts';
-import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
+import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ActionRequest, CityId, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
@@ -399,7 +400,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (!known && errorCode !== 'ENOENT') log(`Request failed: ${firstLine(error)}`);
       telemetry.httpFailed(thrown, { method, route: at?.key, status: known ? errorStatus : errorCode === 'ENOENT' ? 404 : 500, code: known ? errorCode : undefined, body: at?.request.body, publicId: at?.request.publicId });
       reply(res, known ? errorStatus : errorCode === 'ENOENT' ? 404 : 500, { error: known ? errorCode : errorCode === 'ENOENT' ? 'build_required' : 'internal_error',
-        ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
+        ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) });
     }
   }
   // A client that goes away mid-request must never take the process with it.
@@ -418,12 +419,12 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // In-process events between server modules (never sent to a client by the host itself).
   type Listener = (data: ServerEvents[keyof ServerEvents]) => void;
   const listeners = new Map<keyof ServerEvents, Listener[]>();
-  const startup: Promise<unknown>[] = [];
+  const startup: Promise<unknown>[] = registeredCityIds().map(loadCityContent);
   const closing: (() => Promise<void>)[] = [];
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, shards: shards as ShardStore, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
+    store, shards: shards as ShardStore, now, fail, allow, collection, send, publicSession, cityIds: registeredCityIds(), telemetry,
     randomId: () => randomUUID(),
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },
@@ -446,7 +447,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
      * Read-only: nothing is settled, so a trip that has ended but not been settled yet reads as "not home".
      */
     atHome(db, publicId, cityId) {
-      const city: CityId | undefined = CITY_IDS.find(id => id === cityId);
+      const city: CityId | undefined = registeredCityIds().find(id => id === cityId);
       if (typeof publicId !== 'string' || !city) return false;
       const found = sessionByPublicId(db, publicId);
       const session = found && found.expiresAt > now() ? found : undefined;

@@ -1,5 +1,5 @@
-import { createWalkGrid } from '../../scene/movement.ts';
-import type { WalkCircle, WalkGrid, WalkPoint, WalkRect } from '../../scene/movement.ts';
+import { createWalkGrid } from '../../scene/walk-grid.ts';
+import type { WalkCircle, WalkGrid, WalkPoint, WalkRect } from '../../scene/walk-grid.ts';
 import { BUILDINGS, ZONES } from './layout.ts';
 import type { CampusBuilding, CampusZone, Portal } from './layout.ts';
 

@@ -43,7 +43,7 @@ function finish(game: Game) { let guard = 0; while (game.state.activeAction && g
 function travel(game: Game, venue: string) { const result = act(game, 'travel', { id: venue, mode: 'trek' }); assert.equal(result.ok, true, `travel to ${venue}: ${why(result)}`); finish(game); if (game.state.travel?.event) act(game, 'world.roadside', { choice: 'walk-on' }); assert.equal(game.state.location, venue); }
 function run(game: Game, spot: string, wanted: (def: Activity) => boolean) {
   if (game.state.spot !== spot) assert.equal(act(game, 'spot', { id: spot }).ok, true);
-  const def = need(spotsOf(game.state.location).find((item) => item.id === spot)).activities.find(wanted);
+  const def = need(spotsOf(game.state.location, 'lagos').find((item) => item.id === spot)).activities.find(wanted);
   assert.ok(def, `an activity at ${game.state.location}/${spot}`);
   const started = act(game, 'activity', { id: def.id, ...(def.choices ? { choice: need(def.choices[0]).id } : {}) });
   assert.equal(started.ok, true, `${def.id}: ${why(started)}`);
@@ -66,7 +66,7 @@ test('missions: a set is one mission of each kind, the same for the same life an
     const at = lagosDayStart(day) + 9 * HOUR;
     for (const entry of dealMissions(state, 'daily', day, ctxAt(at))) {
       ids.add(entry.id);
-      if (entry.id === 'd-event') assert.equal(hasEventToday(at), true, `day ${day} has an event`);
+      if (entry.id === 'd-event') assert.equal(hasEventToday(at, 'lagos'), true, `day ${day} has an event`);
     }
   }
   assert.equal(ids.has('d-shift'), false);
@@ -95,7 +95,7 @@ test('missions: real play completes a mission exactly once, a claim pays once, a
   travel(game, 'home'); travel(game, 'park');
   assert.equal(mission(game, 'd-two-places').n, 1, 'arriving at the park again does not count twice, and home never counts');
   // Say hello to two regulars at the park.
-  for (const def of need(spotsOf('park').find((spot) => spot.id === 'people')).activities.filter((item) => item.social?.action === 'hello').slice(0, 2)) {
+  for (const def of need(spotsOf('park', 'lagos').find((spot) => spot.id === 'people')).activities.filter((item) => item.social?.action === 'hello').slice(0, 2)) {
     assert.equal(act(game, 'spot', { id: 'people' }).ok || game.state.spot === 'people', true);
     assert.equal(act(game, 'activity', { id: def.id }).ok, true); finish(game);
   }
@@ -183,27 +183,27 @@ test('missions: hostile saved input is rebuilt to a valid slice', () => {
 test('calendar: weekly events recur on Lagos time, also across midnight; dated events hold their days; a closed venue never hosts', () => {
   const friday = lagosDayStart(TODAY + 4); // Monday + 4
   assert.equal(lagosTime(friday).weekday, 5);
-  const club = (at: number) => eventsAt(at).some((event) => event.id === 'club-night');
+  const club = (at: number) => eventsAt(at, 'lagos').some((event) => event.id === 'club-night');
   assert.deepEqual([club(friday + 19.9 * HOUR), club(friday + 20 * HOUR), club(friday + 25.5 * HOUR), club(friday + 26 * HOUR)], [false, true, true, false], 'Friday 20:00 to Saturday 02:00');
   assert.equal(club(friday + 7 * DAY + 21 * HOUR), true, 'and again the next Friday');
   assert.equal(club(friday - DAY + 21 * HOUR), false, 'not on Thursday');
-  const live = need(eventsAt(friday + 25 * HOUR).find((event) => event.id === 'club-night'));
+  const live = need(eventsAt(friday + 25 * HOUR, 'lagos').find((event) => event.id === 'club-night'));
   assert.deepEqual([live.start, live.end, live.key], [friday + 20 * HOUR, friday + 26 * HOUR, `club-night:${TODAY + 4}`]);
   // Dated: Felabration, 12–18 October 2026, 17:00–23:00 each day.
   const first = need(dayOfDate('2026-10-12'));
-  const fela = (at: number) => eventsAt(at).some((event) => event.id === 'felabration-2026');
+  const fela = (at: number) => eventsAt(at, 'lagos').some((event) => event.id === 'felabration-2026');
   assert.deepEqual([fela(lagosDayStart(first) + 18 * HOUR), fela(lagosDayStart(first + 6) + 22 * HOUR), fela(lagosDayStart(first + 7) + 18 * HOUR), fela(lagosDayStart(first - 1) + 18 * HOUR), fela(lagosDayStart(first) + 12 * HOUR)],
     [true, true, false, false, false]);
   assert.deepEqual([dayOfDate('2026-02-30'), dayOfDate('nope'), dayOfDate(null)], [null, null, null]);
   // The week ahead is in order and every row names a real venue.
-  const week = upcomingEvents(NOW, 7);
+  const week = upcomingEvents(NOW, 7, 'lagos');
   assert.ok(week.length >= 6 && week.every((event, index) => Object.hasOwn(VENUES, event.venue) && (index === 0 || need(week[index - 1]).start <= event.start)));
   for (const event of EVENTS_CALENDAR) assert.ok(Object.hasOwn(VENUES, event.venue), `${event.id} is at a real venue`);
   // A venue that is closed for the whole event never hosts it; one that is open does.
   const shut = [{ id: 'late-vote', title: 'Late vote', blurb: 'x', venue: 'polling-unit', icon: 'star', when: { weekday: 1, from: 21, to: 23 } },
     { id: 'early-vote', title: 'Early vote', blurb: 'x', venue: 'polling-unit', icon: 'star', when: { weekday: 1, from: 9, to: 11 } }];
   assert.deepEqual(eventsBetween(NOW, NOW + DAY, 'lagos', shut).map((event) => event.id), ['early-vote']);
-  assert.deepEqual([occurrenceOn({ id: 'x', when: {} } as unknown as CalendarEvent, TODAY) /* hostile: an event with no schedule */, occurrenceOn(null, TODAY), eventsBetween(NaN, 5), eventsBetween(5, 5)], [null, null, [], []]);
+  assert.deepEqual([occurrenceOn({ id: 'x', when: {} } as unknown as CalendarEvent, TODAY) /* hostile: an event with no schedule */, occurrenceOn(null, TODAY), eventsBetween(NaN, 5, 'lagos'), eventsBetween(5, 5, 'lagos')], [null, null, [], []]);
   const ics = eventIcs(live, 'https://example.test/');
   assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.includes('SUMMARY:Allworld: Friday club night') && ics.includes(`UID:club-night:${TODAY + 4}@allworld`) && /DTSTART:\d{8}T\d{6}Z/.test(ics));
 });

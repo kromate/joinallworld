@@ -1,3 +1,4 @@
+import { knownCityIds, cityRules, cityModule, loadCityMap, KNOWN_CITIES, citiesInState } from '../game/cities/registry.ts';
 /**
  * OWNER: world
  * Region registry: country → cities. Everything the country map (src/world-map.ts) and the 3D
@@ -56,6 +57,15 @@ export interface Continent { id: ContinentId; name: string; lon: number; lat: nu
 /** What a player may do with a city: it is where they are, they may enter it, they may only look, or it is coming soon. */
 export type CityAccess = 'here' | 'enter' | 'preview' | 'soon';
 
+const cityDescriptor = (id: string): CityEntry | null => {
+  const rules = cityRules(id);
+  if (!rules || rules.country.id !== 'ng') return null;
+  return { id, name: rules.name, region: rules.state.name, status: rules.status === 'open' ? 'playable' : 'soon', ...rules.atlas,
+    ...(KNOWN_CITIES[id]?.compatibility.acceptStoredLives && rules.status !== 'open' ? { legacy: true } : {}),
+    pack: cityModule(id) ? async () => (await loadCityMap(id)).loadScene() : null };
+};
+const nigeriaCities = (): Readonly<Record<string, CityEntry>> => Object.fromEntries(knownCityIds().flatMap(id => { const city = cityDescriptor(id); return city ? [[id, city]] : []; }));
+
 export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
   nigeria: {
     id: 'nigeria', name: 'Nigeria', status: 'playable',
@@ -68,19 +78,7 @@ export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
       [[3.6, 11.7], [4.5, 10.3], [5.6, 9.2], [6.2, 8.5], [6.75, 7.8], [6.7, 6.6], [6.5, 5.5], [6.2, 4.6]],
       [[13.2, 9.3], [11.6, 8.9], [10.0, 8.3], [8.5, 7.75], [6.75, 7.8]],
     ],
-    cities: {
-      lagos: { id: 'lagos', name: 'Lagos', region: 'Lagos State', status: 'playable', lon: 3.38, lat: 6.52, stand: 'low',
-        teaser: 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', pack: () => import('./cities/lagos.ts') },
-      ibadan: { id: 'ibadan', name: 'Ibadan', region: 'Oyo State', status: 'soon', legacy: true, lon: 3.95, lat: 7.38, stand: 'high',
-        teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', pack: null,
-        preview: ['Dugbe and Cocoa House', 'Bodija market and the University of Ibadan', 'Mapo Hall on its hill'] },
-      abuja: { id: 'abuja', name: 'Abuja', region: 'Federal Capital Territory', status: 'soon', lon: 7.49, lat: 9.06,
-        teaser: 'The capital under Aso Rock: wide roads, big offices and bigger politics.', pack: null,
-        preview: ['The Three Arms Zone under Aso Rock', 'Wuse market and Jabi Lake', 'Garki, Maitama and the long expressways'] },
-      'port-harcourt': { id: 'port-harcourt', name: 'Port Harcourt', region: 'Rivers State', status: 'soon', lon: 7.03, lat: 4.82,
-        teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', pack: null,
-        preview: ['Old GRA and the Garden City roundabouts', 'Mile One market and the waterfront', 'The creeks down to Bonny'] },
-    },
+    get cities() { return nigeriaCities(); },
   },
 });
 
@@ -88,10 +86,10 @@ export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
 export const MORE_REGIONS: readonly string[] = Object.freeze(['More Nigerian states', 'Ghana', 'Kenya', 'South Africa', 'United Kingdom']);
 
 export const countryList = () => Object.values(COUNTRIES);
-export const citiesOf = (countryId: string) => Object.values<CityEntry>(COUNTRIES[countryId as CountryId]?.cities || {});
+export const citiesOf = (countryId: string) => countryId === 'nigeria' ? Object.values(nigeriaCities()) : [];
 export function cityEntry(cityId: string): CityRecord | null {
-  for (const country of Object.values(COUNTRIES)) if (Object.hasOwn(country.cities, cityId)) return { ...country.cities[cityId]!, country: country.id, countryName: country.name };
-  return null;
+  const city = cityDescriptor(cityId), country = COUNTRIES.nigeria;
+  return city ? { ...city, country: country.id, countryName: country.name } : null;
 }
 export const isPlayable = (cityId: string) => cityEntry(cityId)?.status === 'playable';
 /** Does this city have a 3D pack? Without one the city map falls back to the 2D schematic. */
@@ -153,10 +151,10 @@ export const CONTINENTS: Readonly<Record<ContinentId, Continent>> = Object.freez
 const state = (zone: ZoneId, teaser: string, more: RegionEntry = {}): RegionEntry => ({ status: 'soon', zone, teaser, ...more });
 /** Every first-level unit of Nigeria, by the ids of src/map3d/geo/data/nigeria.ts. */
 const NIGERIA_STATES: Record<string, RegionEntry> = {
-  lagos: state('sw', 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', { status: 'open', city: 'lagos' }),
-  oyo: state('sw', 'Ibadan on its seven hills, old Oyo and the widest spread of brown roofs in the country.', { status: 'planned', city: 'ibadan' }),
-  fct: state('nc', 'Abuja, the capital under Aso Rock: wide roads, big offices and bigger politics.', { status: 'planned', city: 'abuja' }),
-  rivers: state('ss', 'Port Harcourt, the Garden City: oil money, bole and fish, and creeks that run to the sea.', { status: 'planned', city: 'port-harcourt' }),
+  lagos: state('sw', 'The city that never slows down: mainland hustle, island nights and the Atlantic at your feet.', { status: 'open' }),
+  oyo: state('sw', 'Ibadan on its seven hills, old Oyo and the widest spread of brown roofs in the country.', { status: 'planned' }),
+  fct: state('nc', 'Abuja, the capital under Aso Rock: wide roads, big offices and bigger politics.', { status: 'planned' }),
+  rivers: state('ss', 'Port Harcourt, the Garden City: oil money, bole and fish, and creeks that run to the sea.', { status: 'planned' }),
   ogun: state('sw', 'The gateway state: Abeokuta under Olumo Rock, adire cloth and the factories on the Lagos road.'),
   osun: state('sw', 'Osogbo and its sacred grove, Ile-Ife and the oldest crowns in Yorubaland.'),
   ondo: state('sw', 'The Sunshine State: cocoa farms, Idanre Hills and a long quiet coast.'),
@@ -236,13 +234,17 @@ export const ATLAS_LEVELS: readonly AtlasLevel[] = Object.freeze<AtlasLevel[]>([
 /** @param {RegionKind} kind @param {string} id @returns {RegionEntry & { status: RegionStatus }} the registry entry, with the default status filled in */
 export function regionEntry(kind: RegionKind, id: string): RegionInfo {
   const entry = Object.hasOwn(ATLAS[kind] || {}, id) ? ATLAS[kind][id] : null;
+  if (kind === 'state') {
+    const cities = citiesInState(id), open = cities.find(city => city.status === 'open'), city = open ?? cities[0];
+    return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
+  }
   return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
 }
 export const regionStatus = (kind: RegionKind, id: string) => regionEntry(kind, id).status;
 /** Only an open region can be entered. For a state that means its city; for a country, its states level. */
 export const canEnter = (kind: RegionKind, id: string) => regionStatus(kind, id) === 'open';
 /** The state a city lies in, or null. */
-export const stateOfCity = (cityId: string) => Object.keys(NIGERIA_STATES).find((id) => NIGERIA_STATES[id]!.city === cityId) ?? null;
+export const stateOfCity = (cityId: string) => cityRules(cityId)?.state.id ?? null;
 /** Planned routes between countries: from the open city to the hub of every country marked `planned`. */
 export interface PlannedRoute { id: string; from: Hub & { id: string }; to: Hub & { id: string }; mode: 'air' }
 export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {

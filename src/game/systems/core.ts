@@ -1,3 +1,4 @@
+import { venueFor, venuesFor } from '../cities/runtime.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Identity of a life and the single timed-action slot.
@@ -18,7 +19,6 @@
  */
 import { activeHandler, emit } from '../registry.ts';
 import { finite, isRecord, ok, fail } from '../util.ts';
-import { VENUES } from '../content/venues.ts';
 import type { SavedActiveAction, SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { ActiveAction, AdvanceOutcome, LifeContext, LifeState, VenueId } from '../../types/life.ts';
 
@@ -26,7 +26,7 @@ export const STATE_VERSION = 1;
 export const DEFAULT_NAME = 'New Lagosian';
 const START_VENUE = 'park';
 
-export const isVenueId = (value: unknown): value is VenueId => typeof value === 'string' && Object.hasOwn(VENUES, value);
+export const isVenueId = (value: unknown, cityId: string): value is VenueId => typeof value === 'string' && Boolean(venueFor(cityId, value));
 
 /** Run after every system has sanitized: the active action may depend on any of them. */
 export function sanitizeActive(input: SavedInput, state: LifeState, ctx: LifeContext): void {
@@ -71,7 +71,7 @@ export default {
     state.t = finite(input.t) && input.t >= 0 ? input.t : finite(ctx.now) ? ctx.now : 0;
     state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || DEFAULT_NAME : DEFAULT_NAME;
     state.message = typeof input.message === 'string' && input.message.length <= 500 ? input.message : '';
-    state.location = isVenueId(input.location) ? input.location : START_VENUE;
+    state.location = isVenueId(input.location, ctx.cityId) ? input.location : venueFor(ctx.cityId, START_VENUE)?.id ?? venuesFor(ctx.cityId)[0]?.id ?? (() => { throw new TypeError('City has no starting venue'); })();
     state.activeAction = null;
   },
   actions: {

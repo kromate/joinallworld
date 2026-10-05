@@ -12,7 +12,7 @@ import { cleanLine } from './text.ts';
 
 type Block = { code: string; reason: string };
 
-export const isClub = (venueId: string): boolean => RADIO.venues.includes(venueId);
+export const isClub = (venueId: string, radioVenueIds: readonly string[] = RADIO.venues): boolean => radioVenueIds.includes(venueId);
 /** Validate a song. Returns { ok: true, song: { title, artist } } or { ok: false, code, reason }. */
 export function validateSong(input: unknown): { ok: false; code: string; reason: string } | { ok: true; song: { title: string; artist: string } } {
   const title = cleanLine(field(input, 'title'), { min: 1, max: RADIO.titleMax, what: 'Song title' });
@@ -32,8 +32,8 @@ const dailyCount = (city: CivicCityRecord, playerId: string, day: number): numbe
 };
 
 /** Why the player cannot queue a shout-out in this venue now, or null. Location and wallet are checked by the rules engine. */
-export function shoutBlock(city: CivicCityRecord, now: number, playerId: string, venueId: string): Block | null {
-  if (!isClub(venueId)) return { code: 'not_in_club', reason: 'Club radio only plays in clubs. Travel to one first.' };
+export function shoutBlock(city: CivicCityRecord, now: number, playerId: string, venueId: string, radioVenueIds: readonly string[] = RADIO.venues): Block | null {
+  if (!isClub(venueId, radioVenueIds)) return { code: 'not_in_club', reason: 'Club radio only plays in clubs. Travel to one first.' };
   const used = dailyCount(city, playerId, lagosTime(now).day);
   if (used >= RADIO.perPlayerPerDay) return { code: 'shoutout_limit', reason: `You have used all ${RADIO.perPlayerPerDay} shout-outs for today. They reset at midnight, Lagos time.` };
   if (pending(city, venueId, now).length >= RADIO.queueMax) return { code: 'queue_full', reason: `The queue here is full (${RADIO.queueMax} songs). Try again in a few minutes.` };
@@ -68,11 +68,12 @@ export function liveShoutouts(city: CivicCityRecord, now: number) {
 export const publicEntry = (entry: ShoutoutRecord, viewerId: string | null = null): RadioEntry => ({ id: entry.id, by: { id: entry.by.id, name: entry.by.name }, title: entry.title, artist: entry.artist, startsAt: entry.startsAt, endsAt: entry.endsAt, mine: entry.by.id === viewerId });
 
 /** { venue, club, playing: Entry | null, queue: [Entry], price, slotSeconds, perDay, usedToday, queueMax } */
-export function radioView(city: CivicCityRecord, now: number, venueId: string, viewerId: string | null = null): RadioView {
-  const queue = isClub(venueId) ? pending(city, venueId, now) : [];
+export function radioView(city: CivicCityRecord, now: number, venueId: string, viewerId: string | null = null, radioVenueIds: readonly string[] = RADIO.venues): RadioView {
+  const club = isClub(venueId, radioVenueIds);
+  const queue = club ? pending(city, venueId, now) : [];
   const playing = queue.find((entry) => entry.startsAt <= now) ?? null;
   return {
-    venue: venueId, club: isClub(venueId), playing: playing ? publicEntry(playing, viewerId) : null,
+    venue: venueId, club, playing: playing ? publicEntry(playing, viewerId) : null,
     queue: queue.filter((entry) => entry !== playing).map((entry) => publicEntry(entry, viewerId)),
     price: RADIO.price, slotSeconds: RADIO.slotSeconds, perDay: RADIO.perPlayerPerDay, queueMax: RADIO.queueMax,
     usedToday: viewerId ? dailyCount(city, viewerId, lagosTime(now).day) : 0,

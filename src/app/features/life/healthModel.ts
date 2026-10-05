@@ -35,11 +35,13 @@ export interface CureLine {
 }
 
 /** One cure with its price (free, or from the activity that cures) and where to get it. */
-/** The part of a venue the cure is priced from: its spots and their activities (content/venues.ts VENUES). */
+/** Current-city venue spots and activities, keyed by that city's local venue id. */
 export interface VenueSpots { spots: Readonly<Record<string, { activities: readonly { id: string; cost?: number; duration: number }[] }>> }
 
 export function cureLine(cure: HealthCure, cash: number, venues: Readonly<Record<string, VenueSpots>>): CureLine {
-  const def = cure.activity && cure.where ? Object.values(venues[cure.where]?.spots ?? {}).flatMap((spot) => spot.activities).find((item) => item.id === cure.activity) ?? null : null
+  const found = cure.activity ? Object.entries(venues).map(([venue, content]) => ({ venue, def: Object.values(content.spots).flatMap((spot) => spot.activities).find((item) => item.id === cure.activity) ?? null })).find((item) => item.def) : null
+  const def = found?.def ?? null
   const cost = def ? def.cost || 0 : cure.cost || 0
-  return { id: cure.id, label: cure.label, price: cost ? `₦${Math.round(cost).toLocaleString('en-NG')}` : 'Free', time: def ? ` · ${def.duration}s` : '', short: cost > cash, text: cure.text, place: cure.where }
+  const place = found?.venue ?? (cure.where && venues[cure.where] ? cure.where : null)
+  return { id: cure.id, label: cure.label, price: cost ? `₦${Math.round(cost).toLocaleString('en-NG')}` : 'Free', time: def ? ` · ${def.duration}s` : '', short: cost > cash, text: cure.text, place }
 }

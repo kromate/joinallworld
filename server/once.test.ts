@@ -12,6 +12,7 @@ import { createServer } from './server.ts';
 import { ONCE } from './routes/once.ts';
 import { ROUTE_MODULES } from './routes/index.ts';
 import { registerSystem } from '../src/game/registry.ts';
+import { createLife } from '../src/life.ts';
 import type { TestContext } from 'node:test';
 import type { Database, SessionRecord, RouteContext, RouteModule, RouteRequest, ActBody } from './types.ts';
 import type { SystemDefinition } from '../src/types/registry.ts';
@@ -185,15 +186,23 @@ test('two copies of one gift sent at the same moment move the money once, and th
   assert.deepEqual([(await call('/api/life?city=lagos', null, ada)).state.cash, (await call('/api/life?city=lagos', null, bola)).state.cash], [9500, 10500]);
 });
 
-test('which life a gift lands in: the gift’s city if the friend lives there, else the life they played last; never a life that does not exist', async (t) => {
+test('a gift reaches the active character life; archived lives are preserved and never credited behind its back', async (t) => {
   const f = await fixture(t);
   const [ada, bola, chi, dayo] = await friends(f, ['Ada', 'Bola', 'Chi', 'Dayo'], { lives: false });
-  await life(f, ada);
-  await f.server.store.transact((db) => { const state = must(sessionOf(db, ada).cities.lagos, 'life').state; state.cash = 10000; state.social.earned = 5000; });
+  await life(f, ada); await life(f, chi);
+  await f.server.store.transact((db) => {
+    const adaState = must(sessionOf(db, ada).cities.lagos, 'life').state; adaState.cash = 10000; adaState.social.earned = 5000;
+    const bolaSession = sessionOf(db, bola);
+    bolaSession.cities.ibadan = { state: createLife({ name: 'Bola' }, { now: f.now(), cityId: 'ibadan' }), updatedAt: f.now(), salt: 'b'.repeat(32) };
+    bolaSession.character = { v: 1, city: 'ibadan' };
+    const chiSession = sessionOf(db, chi);
+    chiSession.legacyLives = { 'ibadan:1': { state: createLife({ name: 'Chi' }, { now: f.now(), cityId: 'ibadan' }), updatedAt: f.now() - 1, salt: 'c'.repeat(32) } };
+    chiSession.legacyLifeCities = { 'ibadan:1': 'ibadan' };
+  });
   const send = (to: Who, amount = 500) => post(f, '/api/social/transfers', { to: to.id, amount, cityId: 'lagos', clientId: f.id() }, ada);
   const cities = async (who: Who) => Object.keys(storedOf(await database(f), who).cities ?? {});
 
-  // Bola plays only in Ibadan. The money goes to that life; no Lagos life is made for him.
+  // Bola's one active character is in Ibadan. The money follows it; no Lagos life is made for him.
   assert.equal((await life(f, bola, 'ibadan')).cash, 5000);
   const toBola = await send(bola);
   assert.deepEqual([toBola.code, toBola.credited, toBola.creditedCity], ['sent', false, 'ibadan']);
@@ -201,12 +210,23 @@ test('which life a gift lands in: the gift’s city if the friend lives there, e
   assert.equal((await life(f, bola, 'ibadan')).cash, 5500);
   assert.deepEqual(await cities(bola), ['ibadan'], 'no life appeared in the sender’s city');
 
-  // Chi has a life in both cities: the gift’s own city wins, whichever she played last.
-  await life(f, chi, 'lagos'); f.advance(1000); await life(f, chi, 'ibadan');
+  // Chi is active in Lagos and has a genuine pre-migration Ibadan life in the archive.
   f.advance(61000);
   assert.equal((await send(chi)).creditedCity, 'lagos');
   await get(f, '/api/social/me', chi);
-  assert.deepEqual([(await life(f, chi, 'lagos')).cash, (await life(f, chi, 'ibadan')).cash], [5500, 5000]);
+  assert.equal((await life(f, chi, 'lagos')).cash, 5500);
+  const listed = await get(f, '/api/characters', chi) as Answer & { active: string; legacy: { id: string; city: string; cash: number }[] };
+  assert.deepEqual([listed.active, listed.legacy.map(({ city, cash }) => [city, cash])], ['lagos', [['ibadan', 5000]]]);
+  const archived = listed.legacy[0];
+  if (!archived) throw new Error('expected an archived Ibadan life');
+  const switched = await post(f, '/api/characters/switch', { id: archived.id, clientId: f.id() }, chi);
+  assert.deepEqual([switched.ok, switched.code, (switched as Answer & { city: string }).city], [true, undefined, 'ibadan']);
+  assert.equal((await life(f, chi, 'ibadan')).cash, 5000, 'switching did not merge or credit the archived life');
+  // With no active Lagos life, another Lagos gift follows Chi's active Ibadan character.
+  f.advance(61000);
+  assert.equal((await send(chi)).creditedCity, 'ibadan');
+  await get(f, '/api/social/me', chi);
+  assert.equal((await life(f, chi, 'ibadan')).cash, 5500);
 
   // Dayo has opened the game but has no life anywhere: refused before Ada is charged, nothing waits, nothing is created.
   f.advance(61000);
@@ -217,8 +237,8 @@ test('which life a gift lands in: the gift’s city if the friend lives there, e
   assert.equal((await life(f, ada)).cash, before);
   assert.deepEqual(await cities(dayo), []);
   assert.equal(socialOf(await database(f)).pending[dayo.id], undefined);
-  // The money is all still there: 10,000 + Bola's and Chi's lives, moved by exactly 2 × 500.
-  assert.equal(before, 9000);
+  // The money is all still there: three gifts moved exactly 3 × ₦500.
+  assert.equal(before, 8500);
 });
 
 test('a gift left waiting for a friend whose life is gone stays owed and returns to the sender: it is never dropped and never creates a life', async (t) => {

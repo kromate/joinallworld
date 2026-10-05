@@ -1,3 +1,5 @@
+import { venueFor } from './game/cities/runtime.ts';
+import { DEFAULT_CITY_ID } from './game/cities/registry.ts';
 /**
  * Venue scene host (thin). It owns the renderer, the camera, the two lights and the DOM name
  * tags, and asks the scene modules for geometry: src/scene/venue-scenes.ts for each venue
@@ -88,7 +90,6 @@ import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './s
 import { createSceneControls } from './scene/controls.ts';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
 import { buildHomeScene } from './scene/home-scene.ts';
-import { VENUES as VENUE_DATA } from './game/content/venues.ts';
 import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
 import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson } from './scene/types.ts';
@@ -97,7 +98,6 @@ import type { HomePick } from './scene/home-scene.ts';
 import type { SceneControls } from './scene/controls.ts';
 import type { WalkPoint, WalkMode } from './scene/movement.ts';
 import type { LifeState } from './types/life.ts';
-import type { VenueDefinition } from './types/content.ts';
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). pose: set only by the host's own callers (a fixed pose). */
 export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }
@@ -147,6 +147,7 @@ export interface SceneSpotRequest { id: string; open: boolean }
 /** Where the avatar stands, in presence units (options.onMove, 'jaw:avatar-move'). */
 export interface AvatarPosition { x: number; z: number; location: string | null }
 export interface VenueWorldOptions {
+  cityId?: string
   location?: string
   /** A renderer to draw with (tests pass a stub); by default a WebGLRenderer is made. */
   renderer?: THREE.WebGLRenderer
@@ -237,7 +238,6 @@ export interface VenueWorld {
  */
 export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
 const DEFAULT_BACKGROUND = '#182a25';
-const VENUES = VENUE_DATA as unknown as Readonly<Record<string, VenueDefinition | undefined>>;
 
 /**
  * The host's three lights. apply(preset) sets them from a scene's lighting(), or back to the
@@ -277,10 +277,10 @@ export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shado
 }
 
 /** The venue as the scene module should see it: every spot players can stand at, including spots other systems added. */
-export function sceneVenue(id: string) {
-  const venue = VENUES[id];
+export function sceneVenue(id: string, cityId: string = DEFAULT_CITY_ID) {
+  const venue = venueFor(cityId, id);
   if (!venue) return venue;
-  return { ...venue, scene: { ...venue.scene, spots: spotsOf(id).map((spot) => ({ id: spot.id, label: spot.label })) } };
+  return { ...venue, scene: { ...venue.scene, spots: spotsOf(id, cityId).map((spot) => ({ id: spot.id, label: spot.label })) } };
 }
 
 /** What the scene teaches, one at a time (scene/controls.js): walking first, then looking. Each goes away when the player has done it. */
@@ -352,7 +352,7 @@ interface Hover { key: string; type: Target['type']; spot: WalkSpot | null; pers
 /** 'jaw:reward': { cash, needs, skills }. */
 interface RewardDetail { cash?: number; needs?: Record<string, number>; skills?: Record<string, number> }
 
-export function createVenueWorld(container: HTMLElement, { location = 'park', renderer: providedRenderer, onTag, onSpot, onMove }: VenueWorldOptions = {}): VenueWorld {
+export function createVenueWorld(container: HTMLElement, { location = 'park', cityId = DEFAULT_CITY_ID, renderer: providedRenderer, onTag, onSpot, onMove }: VenueWorldOptions = {}): VenueWorld {
   // Cheaper scenery (Lambert in place of Standard) is behind a flag, default off: see matteScenery() in scene/look.js.
   const kit = createKit({ matte: matteScenery() });
   const { THREE } = kit;
@@ -1107,8 +1107,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', re
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id: string) {
     if (!built.has(id)) {
-      const venue = VENUES[id];
-      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit) : buildVenueScene(kit, sceneVenue(id));
+      const venue = venueFor(cityId, id);
+      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit) : buildVenueScene(kit, sceneVenue(id, cityId), cityId);
       entry.group.visible = false;
       scene.add(entry.group);
       built.set(id, entry);
@@ -1197,6 +1197,13 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', re
   /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
   function setState(state: LifeState) {
     lastState = state;
+    if (state.estate?.city && state.estate.city !== cityId) {
+      cityId = state.estate.city;
+      loop.stop();
+      for (const builtScene of built.values()) { builtScene.dispose?.(); scene.remove(builtScene.group); }
+      built.clear(); current = null; currentLocation = null;
+      setLocation(state.location);
+    }
     trackReward(state);
     const changed = current?.update?.(state);
     const walk = walkOf();
@@ -1246,7 +1253,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', re
      * different one, or a trip that ended elsewhere, frees it.
      */
     prepare(id) {
-      if (!VENUES[id] || id === currentLocation) return false;
+      if (!venueFor(cityId, id) || id === currentLocation) return false;
       if (prepared && prepared !== id && prepared !== currentLocation) { const old = built.get(prepared); if (old) { old.dispose?.(); scene.remove(old.group); built.delete(prepared); } }
       prepared = id;
       sceneFor(id);

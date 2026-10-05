@@ -35,6 +35,7 @@
 import { viewLife } from '../../src/life.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { upcomingEvents } from '../../src/game/calendar.ts';
+import { cityRules } from '../../src/game/cities/index.ts';
 import { composeDigest } from '../../src/game/digest.ts';
 import { isShareCode } from '../../src/game/share-model.ts';
 import { growthOf, playerOf, sweep, LIMITS } from '../growth/data.ts';
@@ -54,7 +55,6 @@ type GrowthAnswer = { material?: boolean } & Record<string, unknown>;
 interface GrowthCall { db: Db; g: GrowthCollection; session: SessionRecord; state: LifeState; cityId: CityId; body: Record<string, unknown>; request: RouteRequest }
 
 const SESSION_GAP_MS = 30 * 60000;
-const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const AGES: readonly ConsentView['age'][] = ['adult', 'minor'];
 
 const ready = (state: LifeState | null | undefined): boolean => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
@@ -102,7 +102,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       // A HEAD (a crawler checking the link before it fetches it) is not an opening: only a GET is counted, once.
       if (method !== 'GET') return { facts: found.facts, by: found.by };
       found.opened = Math.min(Number.MAX_SAFE_INTEGER, (found.opened ?? 0) + 1);
-      count(g, ctx.now(), 'share.opened');
+      count(g, ctx.now(), found.cityId ?? 'lagos', 'share.opened');
       return { facts: found.facts, by: found.by };
     }, { durable: false }).catch(() => null);
     return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin) };
@@ -134,16 +134,17 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       if (!player) return { ok: false, code: 'server_full', reason: 'This is not available right now. Try again later.' };
       sweep(g, now); prune(g, now);
       const hoursAway = player.seen ? Math.max(0, (now - player.seen) / 3600000) : 0;
-      if (!player.seen || now - player.seen >= SESSION_GAP_MS) count(g, now, 'sessions');
+      if (!player.seen || now - player.seen >= SESSION_GAP_MS) count(g, now, cityId, 'sessions');
       const since = player.seen || null;
       player.seen = now;
       if (body.device !== undefined) referral.noteDevice(g, player, body.device);
       touch(g, now, id, state, since);
       const material = referral.settle(g, session, state, cityId);
-      const view = viewLife(state, { now, cityId });
-      const events = upcomingEvents(now, 7, cityId).slice(0, 12);
+      const actualCity = state.estate.city;
+      const view = viewLife(state, { now, cityId: actualCity });
+      const events = upcomingEvents(now, 7, actualCity).slice(0, 12);
       const refs = referral.view(g, id, view.growth);
-      const digest = composeDigest({ name: session.name, city: CITY_NAMES[cityId] ?? cityId, missions: view.missions, events,
+      const digest = composeDigest({ name: session.name, city: cityRules(actualCity)?.name ?? actualCity, missions: view.missions, events,
         referral: { counted: refs.counted, waiting: refs.waiting }, lines: (state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) });
       const out = outreach.mine(g, id);
       return { ok: true, material, ...(material ? { state } : {}), channel: out.channel, contact: out, away: { hours: Math.round(hoursAway * 10) / 10, since }, referral: refs, consent: consentView(player), events,
@@ -162,9 +163,9 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       return { body: { ok: true, kind: share.kind, by: { id: share.by, name: share.facts.name }, facts: share.facts } };
     },
 
-    'POST /api/growth/referral/link': route(({ g, session, state, body, request }) => referral.link(g, session, state, body, request.ip)),
+    'POST /api/growth/referral/link': route(({ g, session, state, cityId, body, request }) => referral.link(g, session, state, cityId, body, request.ip)),
 
-    'POST /api/growth/consent': route(({ g, session, body }) => {
+    'POST /api/growth/consent': route(({ g, session, cityId, body }) => {
       const now = ctx.now(), player = playerOf(g, session.publicId);
       if (!player) return { ok: false, code: 'server_full', reason: 'This is not available right now. Try again later.' };
       const answered = AGES.find((item) => item === body.age);
@@ -179,17 +180,17 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       // Under 18 also ends analytics for this player at once: the server forgets any Accept it held (the browser is told by its own page).
       if (age === 'minor') ctx.telemetry?.consent?.(session.publicId, false);
       if (age === 'minor' && (body.push === true || body.email === true)) {
-        if (player.consent?.age !== 'minor') count(g, now, 'consent.minor');
+        if (player.consent?.age !== 'minor') count(g, now, cityId, 'consent.minor');
         player.consent = { age, push: false, email: false, at: now };
         return { ok: false, code: 'under_18', reason: 'Messages outside the game are only for players who are 18 or older. Everything inside the game still works.', consent: consentView(player) };
       }
-      if (!player.consent || player.consent.age !== age) count(g, now, `consent.${age}`);
+      if (!player.consent || player.consent.age !== age) count(g, now, cityId, `consent.${age}`);
       player.consent = { age, push: age === 'adult' && player.consent?.push === true, email: age === 'adult' && player.consent?.email === true, at: now };
       return { ok: true, code: 'saved', consent: consentView(player) };
     }),
 
     // Table games: apply the caller's finished games to their life (what a win pays, what counts for missions), once each.
-    'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId) }), { durable: (result) => result?.material === true }),
+    'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId, cityId) }), { durable: (result) => result?.material === true }),
     // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.ts.
     'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
     'POST /api/growth/email/remove': route(({ g, session }) => ({ ok: true, code: 'removed', removed: outreach.dropContact(g, session.publicId, 'removed') })),
@@ -206,6 +207,8 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       if (!ctx.allow(`growth:client:${request.ip}`, 10)) throw ctx.fail(429, 'rate_limited');
       const named: unknown[] = Array.isArray(body.signals) ? body.signals.slice(0, 8) : [];
       const signals = [...new Set(named)].filter((name): name is string => typeof name === 'string' && CLIENT_SIGNALS.includes(name));
+      // Browser capability signals have no city authority. Keep them in the legacy/global bucket;
+      // never accept a client-supplied city merely to add a dimension.
       if (signals.length) await ctx.store.transact((db) => { const g = growthOf(ctx, db); for (const name of signals) count(g, ctx.now(), `client.${name}`); }, { durable: false });
       return { body: { ok: true, counted: signals.length } };
     },

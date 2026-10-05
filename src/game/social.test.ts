@@ -29,7 +29,7 @@ registerSystem({
   on: Object.fromEntries(['npc.greeted', 'npc.interacted', 'friend.made', 'relationship.changed', 'transfer.sent', 'transfer.received'].map((name) => [name, (state: LifeState, data: unknown) => probe.events.push([name, data])])),
   modifiers: { 'social.gain': (value: number) => value * probe.gain, 'social.success': (value: number) => probe.chance ?? value },
 } as unknown as SystemDefinition);
-rebuildCatalogue();
+rebuildCatalogue('lagos');
 const reset = () => { probe.events = []; probe.gain = 1; probe.chance = null; };
 /** Narrows a lookup that must have found something. */
 function need<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }
@@ -86,18 +86,18 @@ test('actions are namespaced; server-only operations cannot be reached from a re
 
 test('NPC interactions are activities at the People spot of every public venue', () => {
   assert.equal(hasAction('social.call'), true);
-  const people = need(spotsOf('park').find((spot) => spot.id === 'people'));
+  const people = need(spotsOf('park', 'lagos').find((spot) => spot.id === 'people'));
   assert.deepEqual(people.activities.map((def: ActivityDefinition) => def.id).filter((id) => id.includes('kunle')), NPC_ACTIONS.map((action) => activityId('kunle', action.id)));
-  assert.equal(spotsOf('park')[0]?.id, Object.keys(VENUES.park.spots)[0], 'the arrival spot is unchanged');
+  assert.equal(spotsOf('park', 'lagos')[0]?.id, Object.keys(VENUES.park.spots)[0], 'the arrival spot is unchanged');
   for (const venue of Object.keys(VENUES).filter((id) => id !== 'home')) {
     const locals = Object.values(NPCS).filter((npc) => npc.venue === venue);
     assert.equal(locals.length, venue === 'unilag' ? 12 : 2, `${venue} has its registered regulars`);
-    const spot = need(spotsOf(venue).find((item) => item.id === 'people'));
+    const spot = need(spotsOf(venue, 'lagos').find((item) => item.id === 'people'));
     assert.equal(spot.activities.length, locals.length * NPC_ACTIONS.length, `${venue}: every regular offers every interaction`);
     const view = viewLife(createLife({ location: venue }, ctxAt()), ctxAt()).social;
     assert.deepEqual(view.here.map((npc) => npc.id), locals.map((npc) => npc.id)); assert.ok(view.here.every((npc) => npc.blocked === null && typeof npc.at === 'string'));
   }
-  assert.equal(spotsOf('home').some((spot) => spot.id === 'people'), false, 'nobody lives in your home but you');
+  assert.equal(spotsOf('home', 'lagos').some((spot) => spot.id === 'people'), false, 'nobody lives in your home but you');
   assert.deepEqual(viewLife(createLife({ location: 'home' }, ctxAt()), ctxAt()).social.here, []);
 });
 

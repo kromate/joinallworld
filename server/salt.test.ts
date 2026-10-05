@@ -66,10 +66,12 @@ test('a life gets its salt on the server when it is first settled; it is stored 
   const stored: SessionRecord = JSON.parse(JSON.stringify(s));
   settleCity(stored, 'lagos', NOW + 9000);
   assert.equal(lifeOf(stored).salt, salt, 'hydrating the stored session keeps the salt');
-  // Each city's life has its own; so does each player.
-  settleCity(s, 'ibadan', NOW);
-  assert.match(lifeOf(s, 'ibadan').salt, SALT);
-  assert.notEqual(lifeOf(s, 'ibadan').salt, salt);
+  // A legacy Ibadan life in a separate session gets its own salt without creating a second character life.
+  const ibadanPlayer = session();
+  ibadanPlayer.cities.ibadan = { state: createLife({ name: ibadanPlayer.name }, { now: NOW, cityId: 'ibadan' }), updatedAt: NOW, salt: '' };
+  settleCity(ibadanPlayer, 'ibadan', NOW);
+  assert.match(lifeOf(ibadanPlayer, 'ibadan').salt, SALT);
+  assert.notEqual(lifeOf(ibadanPlayer, 'ibadan').salt, salt);
   const someoneElse = session(); settleCity(someoneElse, 'lagos', NOW);
   assert.notEqual(lifeOf(someoneElse).salt, salt);
   // A life stored before salts existed, or with a damaged one, is given a fresh salt at its next settlement.

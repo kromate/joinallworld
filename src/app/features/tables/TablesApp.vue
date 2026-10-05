@@ -59,7 +59,7 @@ function openFromParams(params: unknown): void {
   const id = tableParam(params)
   if (!id || params === handled) return
   handled = params
-  if (tableById(id)) tables.openTable(id)
+  if (tableById(view.value.cityId, id)) tables.openTable(id)
 }
 onMounted(() => openFromParams(props.params))
 watch(() => props.params, openFromParams)

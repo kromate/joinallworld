@@ -58,6 +58,7 @@ import { emit } from '../registry.ts';
 import { fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart, LAGOS_OFFSET_MS, WEEKDAYS } from '../clock.ts';
 import { addMoodlet, canAfford, canCredit, credit, debit, removeMoodlet } from '../api.ts';
+import { houseFor as cityHouseFor } from '../cities/housingRuntime.ts';
 import type { ActionMap } from '../../types/actions.ts';
 import type { DepositTerm, LoanTerms, RentEntry } from '../../types/content.ts';
 import type { Deposit, DepositTermId, EconomyState, HouseId, LifeContext, LifeState } from '../../types/life.ts';
@@ -97,6 +98,7 @@ export const DEPOSIT_TOTAL_CAP = 100000;
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const nowOf = (state: LifeState, ctx?: LifeContext): number => { const now = ctx?.now; return finite(now) ? now : state.t; };
+const cityOf = (state: LifeState, ctx: LifeContext): string => state.estate?.city ?? ctx.cityId;
 
 /** Number of the billing week: increases by one at every Saturday 00:00 Lagos time. */
 export const billingWeek = (ms: number): number => Math.floor((lagosTime(ms).day - 2) / 7);
@@ -108,7 +110,12 @@ export function dateLabel(ms: number): string {
   return `${(WEEKDAYS[local.getUTCDay()] ?? '').slice(0, 3)} ${local.getUTCDate()} ${MONTHS[local.getUTCMonth()]}`; // getUTCDay is 0–6
 }
 
-const houseOf = (id: unknown): RentEntry | null => (typeof id === 'string' && Object.hasOwn(RENTS, id) ? RENTS[id as HouseId] : null); // hasOwn proved the key
+const houseOf = (cityId: string, id: unknown): RentEntry | null => {
+  const house = cityHouseFor(cityId, id);
+  if (!house) return null;
+  const legacy = cityId === 'lagos' || cityId === 'ibadan' ? Object.values(RENTS).find((entry) => entry.id === house.id) : null;
+  return { id: house.id, label: legacy?.label ?? house.label, rent: house.rent };
+};
 const idOf = (value: unknown): unknown => (isRecord(value) ? value.id : value);
 /** What interest and maturity need of a deposit (a deposit being priced for display has no id yet). */
 type PricedDeposit = Pick<Deposit, 'amount' | 'term'>;
@@ -131,7 +138,7 @@ function setArrearsFeeling(state: LifeState, ctx: LifeContext): void {
 
 /** Settle one Saturday: arrears, then this week's rent, then the loan instalment. */
 function bill(state: LifeState, week: number, ctx: LifeContext): void {
-  const economy = state.economy, rent = economy.rent, house = houseOf(rent.house);
+  const economy = state.economy, rent = economy.rent, house = houseOf(cityOf(state, ctx), rent.house);
   const due = dateLabel(dueAt(week));
   if (house) {
     if (rent.arrears > 0) {
@@ -195,7 +202,7 @@ const actions = {
     return ok(state, loan.left > 0 ? 'loan_paid' : 'loan_cleared');
   },
   'economy.pay-rent'(state, payload, ctx) {
-    const rent = state.economy.rent, house = houseOf(rent.house);
+    const rent = state.economy.rent, house = houseOf(cityOf(state, ctx), rent.house);
     if (!house || rent.arrears <= 0) return fail(state, 'nothing_due', 'No rent is overdue. Rent is collected automatically every Saturday.');
     const amount = rent.arrears;
     if (!debit(state, amount, `Rent arrears: ${house.label}`, ctx)) {
@@ -269,7 +276,7 @@ export default {
   sanitize(input, state, ctx) {
     const saved = isRecord(input.economy) ? input.economy : {};
     const rent = isRecord(saved.rent) ? saved.rent : {};
-    const house = houseOf(rent.house);
+    const house = houseOf(cityOf(state, ctx), rent.house);
     const loan = isRecord(saved.loan) ? saved.loan : null;
     const maxLeft = LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES;
     const left = loan && safeCount(loan.left) && loan.left <= maxLeft ? loan.left : null; // the saved balance, when it is a valid one
@@ -299,7 +306,7 @@ export default {
   on: {
     'life.started'(state, data, ctx) {
       const economy = state.economy;
-      const house = houseOf(idOf(data?.house));
+      const house = houseOf(cityOf(state, ctx), idOf(data?.house));
       if (house) economy.rent.house = house.id;
       if (!economy.started) {
         economy.started = true;
@@ -312,13 +319,13 @@ export default {
     /** Living in a house the player built (systems/estate.ts): the weekly rent stops; back in a rented home it starts again. */
     'home.owned'(state, data, ctx) {
       if (data?.living === true) { state.economy.rent.house = null; state.economy.rent.missed = 0; return; }
-      const house = houseOf(idOf(data?.house));
+      const house = houseOf(cityOf(state, ctx), idOf(data?.house));
       if (!house) return;
       state.economy.rent.house = house.id;
       startBilling(state, ctx);
     },
     'house.moved'(state, data, ctx) {
-      const house = houseOf(idOf(data?.id ?? data?.house));
+      const house = houseOf(cityOf(state, ctx), idOf(data?.id ?? data?.house));
       if (!house) return;
       state.economy.rent.house = house.id;
       startBilling(state, ctx);
@@ -338,7 +345,7 @@ export default {
     // Friday: one reminder of what falls due at midnight, so a bill is never a surprise.
     if (lagosTime(now).weekday === 5 && economy.reminded !== billingWeek(now) + 1) {
       economy.reminded = billingWeek(now) + 1;
-      const house = houseOf(economy.rent.house), loan = economy.loan;
+      const house = houseOf(cityOf(state, ctx), economy.rent.house), loan = economy.loan;
       const instalment = loan && loan.left > 0 && !(loan.prepaid > 0) ? Math.min(LOAN.weekly, loan.left) : 0;
       const parts = [house ? `rent ${naira(house.rent)}` : '', instalment ? `loan ${naira(instalment)}` : ''].filter(Boolean);
       const total = (house ? house.rent : 0) + instalment;
@@ -352,7 +359,7 @@ export default {
   },
   view(state, ctx): EconomyView {
     const economy = state.economy, now = nowOf(state, ctx);
-    const house = houseOf(economy.rent.house);
+    const house = houseOf(cityOf(state, ctx), economy.rent.house);
     const nextDue = dueAt(billingWeek(now) + 1);
     const nextDueLabel = dateLabel(nextDue);
     const loan = economy.loan;

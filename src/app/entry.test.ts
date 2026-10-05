@@ -6,9 +6,8 @@
 // 2. Build (runs when `npm run build` has produced dist/): the entry chunk and every chunk it statically
 //    imports (the modulepreload links) stay inside a size budget.
 //
-// The rules engine (src/game, src/life.ts) IS reachable and is meant to be: the shell builds and reads every
-// life through it. It has its own chunk (vite.config.ts, `engine`), so a change to the shell does not
-// invalidate it. Making it lazy needs the shell to paint without a life; see docs/MIGRATION-VUE-TS.md.
+// The loading screen paints without a life. The selected city loads before the full game shell;
+// the rules engine is reachable from that shell, but never from the entry's static graph.
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
@@ -55,20 +54,31 @@ function graph(entry: string): { files: Set<string>; packages: Set<string> } {
 
 const reachable = graph(join(root, 'src/app/main.ts'))
 const paths = [...reachable.files].map((file) => relative(root, file))
+const gameGraph = graph(join(root, 'src/app/startApp.ts'))
+const gamePaths = [...gameGraph.files].map((file) => relative(root, file))
 
-test('the first download reaches the shell and the rules engine, and sees them through the same files as before', () => {
-  assert.ok(paths.includes('src/app/App.vue') && paths.includes('src/life.ts') && paths.includes('src/client.ts'), `${paths.length} files reached`)
-  assert.ok(paths.length > 150, 'the walk really followed the imports')
+test('the first download paints without the game shell, rules engine or city content', () => {
+  assert.ok(paths.includes('src/app/BootScreen.vue'))
+  assert.ok(paths.includes('src/app/bootstrap.ts'))
+  assert.ok(!paths.includes('src/app/App.vue'))
+  assert.ok(!paths.includes('src/client.ts'))
+  assert.ok(!paths.includes('src/life.ts'))
+  assert.deepEqual(paths.filter(path => path.startsWith('src/game/')), [])
+  assert.ok(gamePaths.includes('src/app/App.vue') && gamePaths.includes('src/life.ts') && gamePaths.includes('src/client.ts'))
+  assert.ok(gamePaths.length > 150, 'the lazy shell still uses the real engine')
 })
 
-test('Three.js, the maps, the scene hosts, the campus world, the models and the telemetry SDKs are not statically reachable from the entry', () => {
-  for (const pkg of ['three', '@sentry/browser', 'posthog-js']) assert.ok(!reachable.packages.has(pkg), `${pkg} must be fetched by a dynamic import()`)
+test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell', () => {
+  for (const pkg of ['three', '@sentry/browser', 'posthog-js']) {
+    assert.ok(!reachable.packages.has(pkg), `${pkg} must not be in the entry`)
+    assert.ok(!gameGraph.packages.has(pkg), `${pkg} must be fetched by a dynamic import()`)
+  }
   const forbidden: [string, RegExp][] = [
     ['the 3D map', /^src\/map3d\//],
     ['the SVG city map', /^src\/city-map\.ts$/],
     ['the world map', /^src\/world-map\.ts$/],
     ['the venue scene host', /^src\/venue-world\.ts$/],
-    ['the scene modules (only movement.ts, build.ts (plain typed-array code the campus rules use) and the small crowd.ts are allowed)', /^src\/scene\/(?!movement\.ts$|build\.ts$|crowd\.ts$|types\.ts$)/],
+    ['the scene modules (only the pure walk grid, crowd metadata and type constants are allowed)', /^src\/scene\/(?!walk-grid\.ts$|crowd\.ts$|types\.ts$)/],
     ['the campus scene and hosts', /^src\/campus\/unilag\/(host|scene|world-adapter|preview|landmark|model|characters)[\w-]*\.ts$/],
     ['the campus shared scene code', /^src\/campus\/shared\//],
     ['the models', /^src\/models\//],
@@ -77,19 +87,20 @@ test('Three.js, the maps, the scene hosts, the campus world, the models and the 
     ['a panel body', /^src\/app\/features\/(?!landing\/|hud\/|nav\/|venue\/|phone\/(PanelHost|SheetHost)\.vue$).*\/[A-Z]\w+(App|Panel|Sheet|Tab|Chip|Modal|Card)\.vue$/],
   ]
   for (const [what, pattern] of forbidden) {
-    const hit = paths.filter((path) => pattern.test(path) && !/\.test\./.test(path))
+    const hit = [...new Set([...paths, ...gamePaths])].filter((path) => pattern.test(path) && !/\.test\./.test(path))
     // CommunityPanel is fetched by CommunityHost with defineAsyncComponent; the host itself is small and is allowed.
     assert.deepEqual(hit, [], `${what} must not be in the first download`)
   }
 })
 
 // ---- the built bundle ------------------------------------------------------------------------------------------------------------
-// Measured on the build of this change (raw bytes / gzip): app 180 kB / 66.6, vue 79 / 31.3, engine 412 / 140. Budget: that + ~5%.
-const BUDGET = { raw: 705_000, gzip: 250_000 }
+// The pre-module first-download baseline, measured including every static dependency.
+const BUDGET = { raw: 673_651, gzip: 238_877 }
 
-function eagerChunks(dist: string): string[] {
+function eagerChunks(dist: string, additional: readonly string[] = []): string[] {
   const html = readFileSync(join(dist, 'index.html'), 'utf8')
   const queue = [...html.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)="\/(assets\/[^"]+\.js)"/g)].map((match) => match[1] as string)
+  queue.push(...additional)
   const seen = new Set<string>()
   while (queue.length) {
     const name = queue.pop() as string
@@ -102,7 +113,7 @@ function eagerChunks(dist: string): string[] {
   return [...seen]
 }
 
-test('the eager JavaScript of index.html stays inside its budget, and is only the shell, Vue and the engine', (t) => {
+test('the eager JavaScript does not grow and contains only the loading screen and Vue', (t) => {
   const dist = join(root, 'dist')
   if (!existsSync(join(dist, 'index.html')) || !existsSync(join(dist, 'assets'))) { t.diagnostic('no dist/: run `npm run build` to check the bundle'); return }
   const names = eagerChunks(dist)
@@ -110,10 +121,30 @@ test('the eager JavaScript of index.html stays inside its budget, and is only th
   const total = sizes.reduce((sum, item) => ({ raw: sum.raw + item.raw, gzip: sum.gzip + item.gzip }), { raw: 0, gzip: 0 })
   t.diagnostic(sizes.map((item) => `${item.name} ${item.raw} raw ${item.gzip} gzip`).join('; ') + `; total ${total.raw} raw ${total.gzip} gzip`)
   const kinds = names.map((name) => name.replace(/^assets\//, '').replace(/-[\w-]{8}\.js$/, '')).sort()
-  assert.deepEqual(kinds, ['app', 'engine', 'vue'], 'the first download is the entry, the framework and the engine, and nothing else')
+  assert.deepEqual(kinds, ['app', 'vue'], 'the first download contains no game engine or city content')
   assert.ok(total.raw <= BUDGET.raw, `eager JavaScript is ${total.raw} bytes (budget ${BUDGET.raw})`)
   assert.ok(total.gzip <= BUDGET.gzip, `eager JavaScript is ${total.gzip} bytes gzipped (budget ${BUDGET.gzip})`)
   // Three.js, the telemetry SDKs and the scene are chunks of their own, never in the first download.
   const all = readdirSync(join(dist, 'assets')).filter((name) => name.endsWith('.js'))
   for (const name of all.filter((item) => /^(three|sentry|sentry-replay|posthog|world-adapter)-/.test(item))) assert.ok(!names.includes(`assets/${name}`), `${name} is not eager`)
+})
+
+test('automatic game startup, including one selected city, stays within the original first-load budget', (t) => {
+  const dist = join(root, 'dist')
+  if (!existsSync(join(dist, 'index.html')) || !existsSync(join(dist, 'assets'))) { t.diagnostic('no dist/: run `npm run build` to check the complete startup payload'); return }
+  const all = readdirSync(join(dist, 'assets')).filter(name => name.endsWith('.js'))
+  const core = all.filter(name => /^startApp-[\w-]+\.js$/.test(name))
+  assert.equal(core.length, 1, 'the automatic startup has one deferred game shell')
+  const cityChunks = all.filter(name => /^city-.+-content-[\w-]+\.js$/.test(name))
+  // Lagos may share the synchronous engine chunk. Other cities load one content chunk on entry.
+  for (const city of [null, ...cityChunks]) {
+    const names = eagerChunks(dist, [...core, ...(city ? [city] : [])].map(name => `assets/${name}`))
+    const total = names.reduce((sum, name) => {
+      const bytes = readFileSync(join(dist, name))
+      return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
+    }, { raw: 0, gzip: 0 })
+    t.diagnostic(`${city ?? 'default city'} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
+    assert.ok(total.raw <= BUDGET.raw, `automatic startup for ${city ?? 'default city'} is ${total.raw} bytes (baseline ${BUDGET.raw})`)
+    assert.ok(total.gzip <= BUDGET.gzip, `automatic startup for ${city ?? 'default city'} is ${total.gzip} gzip bytes (baseline ${BUDGET.gzip})`)
+  }
 })

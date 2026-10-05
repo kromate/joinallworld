@@ -1,3 +1,4 @@
+import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
 /**
  * WORKER HOST: the Cloudflare Worker and its SQLite Durable Object — the production host.
  *
@@ -46,7 +47,7 @@ import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
 import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
-import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
+import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
@@ -222,7 +223,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const unresponsive = (ws: HostSocket): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= HEARTBEAT_MS / 2;
     const open = (): HostSocket[] => [...this.peers.values()].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
-      store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: CITY_IDS, telemetry: this.telemetry,
+      store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
       send: (ws, message) => this.sendFrame(ws as HostSocket, message),
@@ -235,7 +236,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       push: (id, message) => { let count = 0; for (const ws of open()) if (ws.session.id === id) { context.send(ws, message); count++; } return count; },
       online: (id) => open().some(ws => ws.session.id === id && !unresponsive(ws)),
       atHome(db, id, city) {
-        if (!(CITY_IDS as readonly string[]).includes(city)) return false;
+        if (!registeredCityIds().includes(city)) return false;
         const found = context.core.sessionByPublicId(db, id), state = found && found.expiresAt > now() ? found.cities?.[city as CityId]?.state : undefined;
         return Boolean(state) && canOccupyVenue(state, 'home');
       },
@@ -260,7 +261,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // Work that outlives the request that started it: the object stays up until it has finished.
       waitUntil: (promise) => { try { ctx.waitUntil(Promise.resolve(promise).catch(() => {})); } catch { /* not in a request */ } },
       config: { publicOrigin: cleanOrigin(env.PUBLIC_ORIGIN), sessionTtlMs: SESSION_TTL_MS, actionWindowMs: ACTION_WINDOW_MS, maxActiveSessions: 10000, buildId, votesPerAddress, voteCapMode, heartbeatMs: HEARTBEAT_MS, moderation: Boolean(operatorToken) },
-      startup: [],
+      startup: registeredCityIds().map(loadCityContent),
       // Nothing stops a Durable Object in an orderly way: every write is durable when it is acknowledged, and work in
       // flight is covered by waitUntil. The list exists so a module can register without asking which host it is on.
       closing: [],
@@ -390,7 +391,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (!known) this.context.core.log(`Request failed: ${firstLine(error)}`);
       this.telemetry.httpFailed(thrown, { method: raw.method, route: at?.key, status: known ? error.status as number : 500, code: known ? error.code : undefined, body: at?.request.body, publicId: at?.request.publicId });
       this.saveSockets();
-      return json(known ? error.status as number : 500, { error: known ? error.code : 'internal_error', ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}) });
+      return json(known ? error.status as number : 500, { error: known ? error.code : 'internal_error', ...(known && typeof error.reason === 'string' ? { reason: error.reason } : {}), ...(known && error.code === 'city_moved' && typeof Reflect.get(error, 'city') === 'string' ? { city: Reflect.get(error, 'city') } : {}) });
     } finally { this.ctx.waitUntil(this.telemetry.flush()); }
   }
   /**

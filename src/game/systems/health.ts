@@ -31,6 +31,7 @@ import { emit } from '../registry.ts';
 import { finite, isRecord, makeRng } from '../util.ts';
 import { addMoodlet, removeMoodlet, feelingsOf } from '../api.ts';
 import { HEALTH } from '../content/health.ts';
+import { isCityId } from '../cities/registry.ts';
 import { ALL_MODES } from '../content/travel.ts';
 import type { SystemDefinition } from '../../types/registry.ts';
 import type { IllnessCause, LifeContext, LifeState, NeedId } from '../../types/life.ts';
@@ -41,7 +42,8 @@ const CAUSES = ['neglect', 'rain'] as const satisfies readonly IllnessCause[];
 const isCause = (value: unknown): value is IllnessCause => CAUSES.some((cause) => cause === value);
 
 /** The sky over a city at a moment. Deterministic; identical for every player and every caller. */
-export function weatherAt(now: unknown, cityId = 'lagos') {
+export function weatherAt(now: unknown, cityId: string) {
+  if (!isCityId(cityId)) throw new TypeError(`Unknown city weather: ${cityId}`);
   const blockMs = weather.blockMinutes * 60000;
   const block = Math.floor((finite(now) ? now : 0) / blockMs);
   const raining = makeRng(`weather|${cityId}|${block}`)() < weather.rainChance;
@@ -84,7 +86,7 @@ function cure(state: LifeState, by: string, seconds: number, ctx: LifeContext): 
 
 function view(state: LifeState, ctx: LifeContext): HealthView {
   const now = nowOf(state, ctx), health = state.health;
-  const sky = weatherAt(now, ctx?.cityId);
+  const sky = weatherAt(now, state.estate.city);
   const strain = Math.min(1, health.strain / illness.neglectSeconds);
   const low = illness.neglectNeeds.filter((need) => state.needs[need] < illness.neglectBelow);
   const rundown = !health.sick && strain >= illness.warnAt;
@@ -147,7 +149,7 @@ export default {
     'travel.arrived': (state, data, ctx) => {
       const mode = data.mode === null || data.mode === 'campus-shuttle' ? undefined : ALL_MODES[data.mode];
       const now = nowOf(state, ctx);
-      if (!mode?.exposed || !weatherAt(now, ctx?.cityId).raining) return;
+      if (!mode?.exposed || !weatherAt(now, state.estate.city).raining) return;
       addMoodlet(state, feelings.soaked, ctx);
       state.message = `${state.message} The rain soaked you on the way.`.trim();
       emit(state, 'weather.soaked', { mode: mode.id }, ctx);

@@ -593,7 +593,7 @@ export default {
   active: {
     [CAMPUS_GAME_KIND]: { moves: false, sanitize: sanitizeCampusGame, complete: completeCampusGame },
   },
-  activities: [VOLUNTEER_ACTIVITY],
+  activitiesFor: (cityId) => cityId === 'lagos' ? [VOLUNTEER_ACTIVITY] : [],
   modifiers: {
     'activity.block'(value, state, { def }, ctx): Block<ActivityVetoCode> | null {
       if (value || def?.id !== VOLUNTEER_ACTIVITY.id) return value;

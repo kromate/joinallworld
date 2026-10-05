@@ -24,10 +24,7 @@ export type SkillId = 'cooking' | 'charisma' | 'fitness' | 'coding' | 'music' | 
  * Every venue in this build (keys of content/venues.js VENUES). `state.location` is always one of these.
  * 'unilag' (the campus, src/campus/unilag/content.ts) exists in Lagos only: see VenueDefinition.cities.
  */
-export type VenueId =
-  | 'park' | 'library' | 'home' | 'radio' | 'shrine' | 'viewing-centre' | 'amala-shitta' | 'cchub'
-  | 'hospital' | 'salon' | 'church' | 'mosque' | 'market' | 'police' | 'polling-unit' | 'state-house'
-  | 'i-fitness' | 'office' | 'quilox' | 'rooftop' | 'canopy-walk' | 'palms' | 'beach' | 'airport' | 'refinery' | 'unilag'
+export type VenueId<City extends string = string> = import('../game/cities/ids.ts').VenueId<City>
 
 /**
  * Places shown on the map that cannot be travelled to yet (content/venues.js COMING_SOON).
@@ -41,13 +38,10 @@ export type ComingSoonId = never
  * the links between cities. Not the same set as protocol.ts `CityId` (server/protocol.ts CITY_IDS:
  * the cities a server keeps lives for) — hence the different name.
  */
-export type WorldCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
+export type WorldCityId = import('../game/cities/ids.ts').CityId
 
 /** The twenty local governments of Lagos (content/world.js LAGOS_LGAS). The other cities have none yet. */
-export type LgaId =
-  | 'agege' | 'ajeromi-ifelodun' | 'alimosho' | 'amuwo-odofin' | 'apapa' | 'badagry' | 'epe' | 'eti-osa' | 'ibeju-lekki'
-  | 'ifako-ijaiye' | 'ikeja' | 'ikorodu' | 'kosofe' | 'lagos-island' | 'lagos-mainland' | 'mushin' | 'ojo' | 'oshodi-isolo'
-  | 'somolu' | 'surulere'
+export type LgaId<City extends string = string> = import('../game/cities/ids.ts').LgaId<City>
 
 /** Sizes of the house everyone has on a plot, smallest first (content/world.js HOUSE_TIERS / TIER_ORDER). */
 export type HouseTierId = 'starter' | 'bq' | 'bungalow' | 'duplex' | 'villa'
@@ -59,7 +53,7 @@ export type HouseStyleField = 'shape' | 'wall' | 'roof' | 'door' | 'windows' | '
 export type CityLinkMode = 'road' | 'air'
 
 /** Houses a life can live in (content/housing.js HOUSES; also the keys of venues.js HOME_SPOTS and economy.js RENTS). */
-export type HouseId = 'mushin' | 'yaba' | 'lekki' | 'ikoyi' | 'banana'
+export type HouseId<City extends string = string> = import('../game/cities/ids.ts').HouseId<City>
 
 /** Houses offered at the end of character creation (content/traits.js START_HOMES). */
 export type StartHomeId = 'mushin' | 'yaba' | 'lekki'
@@ -308,6 +302,7 @@ export interface SkillsSlice {
 // ---- career -------------------------------------------------------------------------------
 
 export interface CareerState {
+  city: WorldCityId | null
   /** 1-based ladder level in the current track (1 when unemployed or in the starter job). */
   level: number
   /** 0–100 in the current role (may be fractional). */
@@ -754,6 +749,8 @@ export interface Relationship {
   name?: string
   /** Players only, and only while friends (the key is deleted on unfriend). NPC friendship is derived from points. */
   friend?: true
+  /** Non-Lagos NPCs only: bounded identity retained when the origin city's lazy content is not loaded. */
+  npcSnapshot?: { city: WorldCityId; name: string; emoji: string; role: string }
 }
 
 /** A line in Messages → Updates. */
@@ -803,6 +800,7 @@ export interface HuntGem {
 }
 
 export interface DailyHunt {
+  city?: WorldCityId
   day: LagosDay
   /** The daily prize was paid (only possible once every gem is found). */
   claimed: boolean
@@ -1077,7 +1075,7 @@ export const SYSTEM_STATE_KEYS = {
  * (`inventory`) is not listed; `needs`/`decay` are keyed by NeedId and `skills` by SkillId.
  */
 export const SLICE_FIELD_KEYS = {
-  career: ['auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts'],
+  career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],

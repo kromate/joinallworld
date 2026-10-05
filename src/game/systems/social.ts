@@ -1,3 +1,5 @@
+import { regularsFor, regularFor, knownRegular, venueFor } from '../cities/runtime.ts';
+import { cachedCityContent, isCityId } from '../cities/registry.ts';
 /**
  * OWNER: social
  * NPC interactions, relationships, family calls and the life-side half of player-to-player
@@ -54,8 +56,7 @@ import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
-import { VENUES } from '../content/venues.ts';
-import { NPCS, NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLOSENESS, DAILY_INTERACTIONS, MAX_RELATIONSHIPS,
+import { NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLOSENESS, DAILY_INTERACTIONS, MAX_RELATIONSHIPS,
   JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from '../content/npcs.ts';
 
 export const MAX_NOTICES = 20;
@@ -69,7 +70,7 @@ const tierAt = (index: number): TierDefinition => {
 };
 /** An NPC by id; every id passed is a key of NPCS (the original read a property of undefined, a TypeError, otherwise). */
 const npcOf = (id: string): NpcDefinition => {
-  const npc = NPCS[id];
+  const npc = knownRegular(id);
   if (!npc) throw new TypeError(`No NPC ${id}`);
   return npc;
 };
@@ -82,14 +83,29 @@ export const tierOf = (points: number): TierDefinition => tierAt(tierIndex(point
 export const activityId = (npcId: string, actionId: string): string => `npc-${npcId}-${actionId}`;
 
 /** Who an interaction is with: an NPC, or a player (whose display name may be sent). */
-interface Meta { npc: boolean; name?: unknown }
+interface Meta { npc: boolean; name?: unknown; npcDefinition?: NpcDefinition; cityId?: string }
+
+type NpcSnapshot = NonNullable<Relationship['npcSnapshot']>;
+const snapshotOf = (npc: NpcDefinition, cityId: string): NpcSnapshot | undefined => cityId === 'lagos' ? undefined : {
+  city: cityId,
+  name: cleanText(npc.name, 24, 'Regular'),
+  emoji: cleanText(npc.emoji, 12, '🧑🏾'),
+  role: cleanText(npc.role, 48, 'Regular'),
+};
+const cleanSnapshot = (value: unknown): NpcSnapshot | null => {
+  if (!isRecord(value) || !isCityId(value.city)) return null;
+  const name = cleanText(value.name, 24), emoji = cleanText(value.emoji, 12), role = cleanText(value.role, 48);
+  return name && emoji && role ? { city: value.city, name, emoji, role } : null;
+};
+const snapshotRegular = (id: string, snapshot: NpcSnapshot): NpcDefinition | undefined => cachedCityContent(snapshot.city)?.regulars.find((item) => item.id === id)?.definition;
 
 function fresh(): SocialState {
   return { rel: {}, bae: null, family: {}, streak: { day: 0, count: 0 }, earned: 0, transfer: { day: 0, sent: 0, count: 0, total: 0 }, notices: [] };
 }
 
 /** The relationship record for `id`, created on first contact. Returns null if the book is full of closer people. */
-function relation(state: LifeState, id: string, { npc, name }: Meta, ctx: LifeContext | undefined): Relationship | null {
+function relation(state: LifeState, id: string, meta: Meta, ctx: LifeContext | undefined): Relationship | null {
+  const { npc, name } = meta;
   const book = state.social.rel;
   let entry = book[id];
   if (!entry) {
@@ -102,6 +118,10 @@ function relation(state: LifeState, id: string, { npc, name }: Meta, ctx: LifeCo
     entry = book[id] = { p: 0, d: 0, n: 0, npc: Boolean(npc), at: finite(ctx?.now) ? ctx.now : state.t };
   }
   if (!npc && name) entry.name = cleanText(name, 24, 'Player');
+  if (npc && meta.npcDefinition && meta.cityId) {
+    const snapshot = snapshotOf(meta.npcDefinition, meta.cityId);
+    if (snapshot) entry.npcSnapshot = snapshot; else delete entry.npcSnapshot;
+  }
   return entry;
 }
 
@@ -278,8 +298,7 @@ export function serverOp(state: LifeState, op: unknown, payload: unknown, ctx: L
 // ---- content → activities ------------------------------------------------------------------------
 // The cast of every public venue in this build. Their interactions attach at that venue's People
 // spot, which the activity engine creates where the venue content does not declare one.
-const cast = Object.values(NPCS).filter((npc): npc is NpcDefinition & { venue: VenueId } => Object.hasOwn(VENUES, npc.venue) && npc.venue !== 'home');
-const activities: AttachedActivity[] = cast.flatMap((npc) => NPC_ACTIONS.map((action) => ({
+const cityActivities = (cityId: string): AttachedActivity[] => regularsFor(cityId).filter((npc) => npc.venue !== 'home' && venueFor(cityId, npc.venue)).flatMap((npc) => NPC_ACTIONS.map((action) => ({
   id: activityId(npc.id, action.id), label: `${action.label} · ${npc.name}`, icon: action.icon, duration: action.duration, cost: action.cost || 0,
   effects: action.effects, xp: action.xp, tags: ['social'], beta: Boolean(action.beta || npc.beta), note: action.note,
   social: { npc: npc.id, action: action.id },
@@ -325,14 +344,22 @@ export default {
   sanitize(input, state) {
     const saved: Record<string, unknown> = isRecord(input.social) ? input.social : {};
     const next = state.social = fresh();
-    const entries = Object.entries(isRecord(saved.rel) ? saved.rel : {}).filter((entry): entry is [string, Record<string, unknown> & { p: number }] => {
-      const [id, rel] = entry;
-      return isId(id) && isRecord(rel) && finite(rel.p) && (rel.npc === true ? Object.hasOwn(NPCS, id) : Boolean(playerId(id)));
-    }).slice(0, MAX_RELATIONSHIPS);
+    const entries = Object.entries(isRecord(saved.rel) ? saved.rel : {}).slice(0, MAX_RELATIONSHIPS);
     for (const [id, rel] of entries) {
+      if (!isId(id) || !isRecord(rel) || !finite(rel.p)) continue;
+      const isNpc = rel.npc === true, snapshot = isNpc ? cleanSnapshot(rel.npcSnapshot) : null;
+      let authoritative: NpcDefinition | undefined;
+      if (isNpc && snapshot) {
+        const origin = cachedCityContent(snapshot.city);
+        authoritative = origin ? snapshotRegular(id, snapshot) : undefined;
+        if (origin && !authoritative) continue;
+      } else if (isNpc) authoritative = knownRegular(id);
+      if (isNpc ? !authoritative && !snapshot : !playerId(id)) continue;
+      const canonicalSnapshot = isNpc && snapshot && authoritative ? snapshotOf(authoritative, snapshot.city) : snapshot;
       next.rel[id] = { p: clamp(round1(rel.p), 0, MAX_CLOSENESS), d: safeCount(rel.d) ? rel.d : 0, n: safeCount(rel.n) ? Math.min(rel.n, DAILY_INTERACTIONS) : 0,
-        npc: rel.npc === true, at: finite(rel.at) ? rel.at : 0,
-        ...(rel.npc !== true ? { name: cleanText(rel.name, 24, 'Player') } : {}), ...(rel.npc !== true && rel.friend === true ? { friend: true } : {}) };
+        npc: isNpc, at: finite(rel.at) ? rel.at : 0,
+        ...(isNpc && canonicalSnapshot ? { npcSnapshot: canonicalSnapshot } : {}),
+        ...(!isNpc ? { name: cleanText(rel.name, 24, 'Player') } : {}), ...(!isNpc && rel.friend === true ? { friend: true } : {}) };
     }
     const bae = playerId(saved.bae);
     next.bae = bae && next.rel[bae] && !next.rel[bae].npc ? bae : null;
@@ -369,12 +396,12 @@ export default {
     },
   },
 
-  activities,
+  activitiesFor: cityActivities,
 
   modifiers: {
     'activity.block'(value, state, { def }, ctx) {
       if (value || !def?.social) return value;
-      const npc = npcOf(def.social.npc);
+      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc);
       return usedToday(state.social.rel[npc.id], dayOf(state, ctx)) >= DAILY_INTERACTIONS
         ? { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` } : null;
     },
@@ -388,9 +415,9 @@ export default {
         state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
       }
       if (!def?.social) return;
-      const npc = npcOf(def.social.npc), action = NPC_ACTIONS.find((item) => item.id === def.social?.action);
+      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action = NPC_ACTIONS.find((item) => item.id === def.social?.action);
       if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
-      const { landed, result } = interact(state, npc.id, action, { npc: true }, ctx, false);
+      const { landed, result } = interact(state, npc.id, action, { npc: true, npcDefinition: npc, cityId: ctx.cityId }, ctx, false);
       const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
       state.message = landed
         ? `${npc.name}: “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
@@ -407,14 +434,15 @@ export default {
     const day = dayOf(state, ctx), book = state.social, L = TRANSFER_LIMITS;
     const relationships = Object.entries(book.rel).map(([id, rel]) => {
       const index = tierIndex(rel.p), isBae = book.bae === id, next = TIERS[index + 1] || null;
-      return { id, npc: rel.npc, name: rel.npc ? npcOf(id).name : rel.name || 'Player', emoji: rel.npc ? npcOf(id).emoji : '🧑🏾', role: rel.npc ? npcOf(id).role : 'Real player',
+      const snapshot = rel.npcSnapshot, loaded = snapshot ? snapshotRegular(id, snapshot) : undefined, npc = rel.npc ? loaded ?? (snapshot ? undefined : knownRegular(id)) : undefined;
+      return { id, npc: rel.npc, name: rel.npc ? npc?.name ?? snapshot?.name ?? 'Regular' : rel.name || 'Player', emoji: rel.npc ? npc?.emoji ?? snapshot?.emoji ?? '🧑🏾' : '🧑🏾', role: rel.npc ? npc?.role ?? snapshot?.role ?? 'Regular' : 'Real player',
         points: rel.p, tier: isBae ? BAE_TIER.id : tierAt(index).id, tierLabel: isBae ? BAE_TIER.label : tierAt(index).label, next: next ? { label: next.label, min: next.min } : null,
         friend: rel.npc ? index >= FRIEND_INDEX : rel.friend === true, left: Math.max(0, DAILY_INTERACTIONS - usedToday(rel, day)) };
     }).sort((a, b) => b.points - a.points || a.name.localeCompare(b.name));
     const today = book.transfer.day === day ? book.transfer : { sent: 0, count: 0 };
     return {
       tiers: TIERS, maxCloseness: MAX_CLOSENESS, baeUnlock: BAE_UNLOCK, bae: book.bae, dailyInteractions: DAILY_INTERACTIONS,
-      here: cast.filter((npc) => npc.venue === state.location).map((npc) => npcSummary(state, npc, day, ctx)),
+      here: regularsFor(ctx.cityId).filter((npc) => npc.venue === state.location).map((npc) => npcSummary(state, npc, day, ctx)),
       relationships,
       friends: relationships.filter((rel) => rel.friend),
       paddyCount: relationships.filter((rel) => rel.points >= BAE_UNLOCK).length,

@@ -34,6 +34,8 @@ function moveMaps(): Plugin {
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
   plugins: [vue(), ...(wantMaps ? [moveMaps()] : [])],
+  // Every shipped component uses Composition API; omit the unused Options API runtime.
+  define: { __VUE_OPTIONS_API__: false },
   server: {
     host: '127.0.0.1', port: 5173,
     proxy: {
@@ -51,9 +53,12 @@ export default defineConfig({
   //   vue     the framework: changes with a Vue upgrade only;
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
-  build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { manualChunks(id) {
+  build: { minify: 'terser', terserOptions: { ecma: 2020, compress: { passes: 3 }, format: { comments: false } }, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
+    const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
+    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
+    if (city) return `city-${city[1]}-${city[2]}`
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|content|layout|walk)\.ts$|tables\/places\.ts$|scene\/(movement|build)\.ts$)/.test(id)) return 'engine'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|content|layout|walk)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
   } } } },
 });

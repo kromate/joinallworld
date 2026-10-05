@@ -44,7 +44,8 @@ import type { OverlayData, OverlayLayers, OverlayChip } from './overlays.ts';
 import type { Trip, TripPose, TripSource } from './trip.ts';
 import type { Route } from './roads.ts';
 import { createKit } from '../scene/kit.ts';
-import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.ts';
+import { COMING_SOON } from '../game/content/venues.ts';
+import { contentFor } from '../game/cities/runtime.ts';
 import { openingInfo, lagosTime } from '../game/clock.ts';
 import { buildNetwork } from './roads.ts';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.ts';
@@ -61,7 +62,6 @@ import { iconFor } from '../ui/icon-map.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
-const VENUE_TABLE: Readonly<Record<string, VenueInfo | undefined>> = VENUES;
 const SOON_TABLE = COMING_SOON as Record<string, VenueInfo | undefined>;
 /** How close the camera may come: near enough to tell the houses of a compact estate apart. */
 const CLOSEST = 3;
@@ -121,6 +121,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   world = null, onSelectLga = () => {}, onSelectHouse = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden }: Map3DOptions) {
+  const content = contentFor(cityId), venueTable = Object.fromEntries(content.venues.map((venue) => [venue.id, venue.definition]));
+  const stateHouseId = content.venues.find((venue) => venue.kind === 'statehouse')?.id ?? null;
+  const govVenueIds = new Set(content.venues.filter((venue) => venue.kind === 'statehouse' || venue.kind === 'polling').map((venue) => venue.id));
   const doc: Document | null = Boolean(globalThis.document?.createElement) ? globalThis.document : null;
   const pageHidden = tabHidden || (() => Boolean(doc && doc.hidden));
   const kit = createKit(), { THREE } = kit;
@@ -135,7 +138,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const hemi = new THREE.HemisphereLight('#ffffff', '#9fb07f', 2), sun = new THREE.DirectionalLight('#fff0d2', 2.4);
   scene.add(hemi, sun);
   const network = buildNetwork(pack);
-  const city = buildCity(kit, pack, network, { venues: VENUES, soon: SOON_TABLE });
+  const city = buildCity(kit, pack, network, { venues: venueTable, soon: SOON_TABLE });
   scene.add(city.group);
   const overlays = createOverlays(kit, city);
   scene.add(overlays.group);
@@ -348,11 +351,11 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
 
   // ---- labels ------------------------------------------------------------------------------------
   const probe = new THREE.Vector3();
-  const nameOf = (place: CityPlace) => (place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId));
+  const nameOf = (place: CityPlace) => (place.kind === 'home' ? 'Home' : venueTable[place.id]?.label ?? place.id);
   function buildLabels() {
     if (!labelLayer) return;
     for (const place of Object.values(city.places).sort((a, b) => a.x - b.x || a.z - b.z)) {
-      const source = VENUE_TABLE[place.id] || SOON_TABLE[place.id];
+      const source = venueTable[place.id] || SOON_TABLE[place.id];
       const node = doc!.createElement('button');
       node.type = 'button'; node.className = `m3-label is-${place.kind}`; node.dataset.venue = place.id;
       const icon = doc!.createElement('span'); icon.className = 'm3-label-icon'; icon.setAttribute('aria-hidden', 'true'); icon.innerHTML = iconFor('venue', place.id, source?.icon);
@@ -382,18 +385,18 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     if (!labelLayer) return;
     // Once the server has moved the player, the place is where they are — not where they are going, nor one they are leaving.
     const at = state?.t ?? 0, going = trip && state?.location !== trip.to ? trip.to : null, home = city.places.home!;
-    const next = JSON.stringify([state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values<VenueInfo>(VENUE_TABLE as Record<string, VenueInfo>).map((venue) => openingInfo(venue.hours, at).status)]);
+    const next = JSON.stringify([state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
     if (next === labelKey) return;
     labelKey = next;
     for (const [id, label] of labels) {
-      const place = city.places[id]!, venue = VENUE_TABLE[id], soon = place.kind === 'soon';
+      const place = city.places[id]!, venue = venueTable[id], soon = place.kind === 'soon';
       const opening = venue ? openingInfo(venue.hours, at) : null, open = Boolean(opening?.open), here = state?.location === id;
       const status = soon ? 'Coming soon' : here ? (going ? 'Leaving from here' : 'You are here') : going === id ? 'On the way' : open ? '' : opening?.opensAt ? `opens ${opening.opensAt}` : 'Closed';
       const dimmed = soon ? filter !== 'all' : filter === 'open' ? !open : filter !== 'all' && venue!.category !== filter && id !== 'home';
-      const district = place.kind === 'home' ? home.district : venueDistrict(id, cityId);
+      const district = place.kind === 'home' ? home.district : venue?.district ?? '';
       label.name.textContent = nameOf(place); label.note.textContent = status;
       const node = label.node;
-      node.className = `m3-label is-${place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${hovered === id ? ' is-hover' : ''}${layers.gov && (id === 'state-house' || id === 'polling-unit') ? ' is-gov' : ''}`;
+      node.className = `m3-label is-${place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${hovered === id ? ' is-hover' : ''}${layers.gov && govVenueIds.has(id) ? ' is-gov' : ''}`;
       node.setAttribute('aria-label', `${nameOf(place)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
       node.title = `${nameOf(place)}${status ? ` · ${status}` : ''}`;
       if (here) node.setAttribute('aria-current', 'location'); else node.removeAttribute('aria-current');
@@ -587,7 +590,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     setSelected(id);
     request();
     // With the Gov layer on, the State House opens the Governor sheet instead of the travel card.
-    if (layers.gov && id === 'state-house') onSelectGov(); else onSelectVenue(id);
+    if (layers.gov && id === stateHouseId) onSelectGov(); else onSelectVenue(id);
   }
   function focus(id: string) { const place = city.places[id]; if (place) { userMoved = true; tripCamera = false; motion({ x: place.x, z: place.z, distance: 52 }, 0.55); } }
 

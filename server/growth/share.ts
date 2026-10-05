@@ -13,14 +13,12 @@
 import { UUID_PATTERN } from '../protocol.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { viewLife } from '../../src/life.ts';
-import { DISTRICTS } from '../../src/game/content/civic.ts';
 import { lgaOf } from '../../src/game/content/world.ts';
+import { cityContent, cityRules } from '../../src/game/cities/index.ts';
 import { hasPlace } from '../../src/game/systems/estate.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.ts';
 import { eventsBetween } from '../../src/game/calendar.ts';
-import { venueLabel } from '../../src/game/content/venues.ts';
-import { tableById } from '../../src/tables/places.ts';
 import { GAMES } from '../../src/tables/games.ts';
 import { LIMITS, playerOf, sweep } from './data.ts';
 import { count } from './metrics.ts';
@@ -30,26 +28,32 @@ import type { ShareFacts, ShareKind } from '../../src/types/growth.ts';
 import type { GrowthCollection, GrowthPlayerRecord, RouteContext, SessionRecord, ShareRecord } from '../types.ts';
 
 export const OG_IMAGE = '/og/allworld.png';
-const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
 const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
 
 /** The facts of a share, read from the sharer's settled life. Nothing comes from the request but the kind (and an event id). */
 export function factsFor(kind: ShareKind, session: Pick<SessionRecord, 'name'>, state: LifeState, cityId: CityId, now: number, player: GrowthPlayerRecord, eventId?: unknown, tableId?: unknown): Partial<ShareFacts> | null {
-  const view = viewLife(state, { now, cityId });
+  const actualCity: CityId = typeof state.estate?.city === 'string' && cityRules(state.estate.city) ? state.estate.city : cityId;
+  const view = viewLife(state, { now, cityId: actualCity });
   // Where the sharer lives: the local government of their own house, or the district of the home they rent. A guest (no
   // home yet) and a life whose local government is only the game's guess say nothing about where they live.
   const unit = hasPlace(state) && state.estate.living === 'own' ? lgaOf(state.estate.city, state.estate.lga) : null;
-  const district = unit ? unit.name : !isGuestLife(state) && state.estate?.living !== 'own' ? DISTRICTS.find((item) => item.id === state.property?.house)?.label ?? '' : '';
-  const base = { kind, name: session.name, district, city: CITY_NAMES[cityId] ?? cityId };
+  const district = unit ? unit.name : !isGuestLife(state) && state.estate?.living !== 'own' ? cityRules(actualCity)?.districts?.find((item) => item.id === state.property?.house)?.name ?? '' : '';
+  const base = { kind, name: session.name, district, city: cityRules(actualCity)?.name ?? actualCity };
   if (kind === 'missions') return { ...base, done: view.missions.dailySet.done, total: view.missions.dailySet.total || 3, days: view.missions.activeDays, title: view.missions.title ?? '' };
   if (kind === 'week') return { ...base, stamps: view.missions.stamps.days, days: view.missions.activeDays, title: view.missions.title ?? '' };
   if (kind === 'table') {
     // With a table id: an invitation to that table. Without: the caller's last result.
-    const place = typeof tableId === 'string' ? tableById(tableId) : null;
-    if (place) return { ...base, game: GAMES[place.game].label, tableId: place.id, venue: venueLabel(place.venue, cityId) };
-    return player.table ? { ...base, game: player.table.label, won: player.table.won } : null;
+    const place = typeof tableId === 'string' ? cityContent(actualCity).tablePlaces.find((item) => item.id === tableId) ?? null : null;
+    if (place) {
+      const game = place.game === 'whot' || place.game === 'penalty' ? GAMES[place.game] : null;
+      const venue = cityContent(actualCity).venues.find((item) => item.id === place.venueId);
+      return game && venue ? { ...base, game: game.label, tableId: place.id, venue: venue.name } : null;
+    }
+    if (!player.table) return null;
+    const tableCity = player.table.cityId ?? 'lagos';
+    return { ...base, city: cityRules(tableCity)?.name ?? tableCity, district: tableCity === actualCity ? base.district : '', game: player.table.label, won: player.table.won };
   }
   if (kind === 'event') {
     const event = eventsBetween(now, now + 8 * 86400000, cityId).find((item) => item.id === eventId);
@@ -80,9 +84,10 @@ export function createShare(ctx: Pick<RouteContext, 'now' | 'fail' | 'randomId'>
   let code = '';
   for (let tries = 0; tries < 5 && (!code || Object.hasOwn(g.shares, code)); tries++) code = ctx.randomId().replace(/-/g, '').slice(0, 10);
   if (!isShareCode(code) || Object.hasOwn(g.shares, code)) return no('server_full', 'Sharing is not available right now. Try again later.');
-  g.shares[code] = { by: session.publicId, kind, at: now, facts, opened: 0, joined: 0 };
+  const actualCity: CityId = typeof state.estate?.city === 'string' && cityRules(state.estate.city) ? state.estate.city : cityId;
+  g.shares[code] = { cityId: actualCity, by: session.publicId, kind, at: now, facts, opened: 0, joined: 0 };
   player.shares.n += 1;
-  count(g, now, `share.made.${kind}`);
+  count(g, now, actualCity, `share.made.${kind}`);
   return { ok: true, code: 'shared', share: { code, path: `/s/${code}`, facts } };
 }
 

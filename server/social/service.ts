@@ -1,3 +1,4 @@
+import { venueFor } from '../../src/game/cities/runtime.ts';
 /**
  * OWNER: social
  * All player-to-player logic, shared by the HTTP routes (server/routes/social.ts) and the
@@ -53,7 +54,7 @@
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
-import { venueLabel, VENUES } from '../../src/game/content/venues.ts';
+import { venueLabel } from '../../src/game/content/venues.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
@@ -876,7 +877,7 @@ function buildService(ctx: RouteContext) {
       const host = pub(s, hostId), where = whereabouts(hostId, true);
       if (where.status !== 'online') return yes(where.status === 'reconnecting' ? 'reconnecting' : 'offline', { host, hostStatus: where.status === 'reconnecting' ? 'reconnecting' : 'offline' });
       if (where.venue === 'home' && where.cityId === cityId) return yes('at_home', { host, hostStatus: 'home' });
-      if (where.cityId !== cityId || where.venue === 'visit' || where.venue === 'home' || !Object.hasOwn(VENUES, where.venue!)) return yes('out', { host, hostStatus: 'out' });
+      if (where.cityId !== cityId || where.venue === 'visit' || where.venue === 'home' || !venueFor(cityId, where.venue)) return yes('out', { host, hostStatus: 'out' });
       const life = ctx.settle(session, cityId);
       if (life.location === where.venue && !isDeparting(life)) return yes('here', { host, hostStatus: 'out', venue: where.venue });
       const moved = ctx.act(life, { type: 'onboarding.arrive', cityId, payload: { venue: where.venue }, stateGuard: 'onboarding.joined: the first arrival sets it and a second is refused' });

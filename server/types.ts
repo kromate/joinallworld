@@ -90,12 +90,13 @@ export interface SessionRecord {
   once?: Record<TimedId, OnceReceipt>
   /** server/world/service.ts rekey(): a separate life that was already filed under the city a character arrived in, put aside as `<city>:<ms>`. */
   legacyLives?: Record<string, CityLifeRecord>
+  legacyLifeCities?: Record<string, CityId>
 }
 /**
  * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live
  * in their own SQL table (without `type`), and there is no `once` and no `onboarding`.
  */
-export type WorkerSessionRecord = Pick<SessionRecord, 'secret' | 'publicId' | 'name' | 'expiresAt' | 'cities'>
+export type WorkerSessionRecord = Pick<SessionRecord, 'secret' | 'publicId' | 'name' | 'expiresAt' | 'cities' | 'character' | 'legacyLives' | 'legacyLifeCities'>
 
 /** An expired session's lives, kept without the secret (protocol.js archivedLife). Keyed by public id. */
 export interface ArchivedLife {
@@ -304,7 +305,7 @@ export interface SupportCollection {
 // `contacts`, `push` and `outreach` on ITS first use.
 
 /** One finished table game not yet applied to the life (POST /api/growth/tables/claim applies it once). */
-export interface PendingTableResult { id: string; game: TableGameId; label: string; won: boolean; human: boolean; counted: boolean }
+export interface PendingTableResult { cityId?: CityId; id: string; game: TableGameId; label: string; won: boolean; human: boolean; counted: boolean }
 export interface GrowthPlayerRecord {
   /** Server ms of the last hello; 0 before the first. */
   seen: number
@@ -322,19 +323,25 @@ export interface GrowthPlayerRecord {
   shares: { day: number; n: number }
   consent: ConsentView | null
   /** The last finished table game (for a share). */
-  table: { game: TableGameId; label: string; won: boolean; at: number } | null
+  table: { cityId?: CityId; game: TableGameId; label: string; won: boolean; at: number } | null
   /** At most 12. */
   wins: PendingTableResult[]
 }
-export interface ShareRecord { by: string; kind: ShareKind; at: number; facts: ShareFacts; opened: number; joined: number }
+export interface ShareRecord { cityId?: CityId; by: string; kind: ShareKind; at: number; facts: ShareFacts; opened: number; joined: number }
 /** server/growth/metrics.ts: daily totals, retention cohorts, and lives still inside their 31-day window (`steps` is a bit mask of funnel steps). */
 export interface GrowthMetricsRecord {
+  cities?: Partial<Record<CityId, GrowthCityMetricsRecord>>
   days?: Record<string, Record<string, number>>
   cohorts?: Record<string, { size: number; r: Record<string, number> }>
   lives?: Record<string, { first: number; last: number | null; steps: number }>
 }
+export type GrowthCityMetricsRecord = Omit<GrowthMetricsRecord, 'cities'>
+export interface GrowthCityTablesRecord {
+  ratings?: Record<string, Partial<Record<TableGameId, { rating: number; played: number; won: number }>>>
+}
 /** server/growth/tables.ts: ratings per player per game, and how often two players' games counted today. */
 export interface GrowthTablesRecord {
+  cities?: Partial<Record<CityId, GrowthCityTablesRecord>>
   ratings?: Record<string, Partial<Record<TableGameId, { rating: number; played: number; won: number }>>>
   pairs?: { day: number; counts: Record<string, number> }
 }

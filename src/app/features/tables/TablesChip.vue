@@ -15,7 +15,7 @@ const { game, shell } = useApp()
 const here = computed(() => {
   const view = game.view.value, state = game.state.value
   if (!view.connected || view.onboarding?.required || isDeparting(state)) return []
-  return tablesAt(state.location)
+  return tablesAt(view.cityId, state.location)
 })
 const games = computed(() => chipGames(here.value))
 const open = (): void => { const first = here.value[0]; if (first) shell.open('tables', { table: first.id }) }

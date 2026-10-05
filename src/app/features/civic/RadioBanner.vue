@@ -10,11 +10,12 @@ import GameIcon from '../../ui/GameIcon.vue'
 import { RADIO } from './civicContent.ts'
 import { inClub, radioKey, radioPath, schedule, song } from './civicModel.ts'
 import { useLoaded } from './useCivic.ts'
+import { contentFor } from '../../../game/cities/runtime.ts'
 
 const { game, shell } = useApp()
 const view = game.view
 const state = game.state
-const inside = computed(() => inClub(state.value))
+const inside = computed(() => inClub(state.value, contentFor(view.value.cityId).radioVenueIds))
 const { item } = useLoaded<RadioView>({
   key: () => radioKey(view.value.cityId, state.value.location), path: () => radioPath(view.value.cityId, state.value.location), maxAge: 12000, live: true, when: () => inside.value,
 })

@@ -268,7 +268,14 @@ test('the city card: the city and a link to every place on the Map', async () =>
   const words = text(html)
   assert.ok(words.startsWith(view.city.name))
   assert.ok(words.includes('You are here. Choose somewhere to go.'))
-  assert.equal((html.match(/<button type="button">/g) ?? []).length, view.venues.length)
+  const places = /<div id="city-places">([^]*?)<\/div>/.exec(html)?.[1]
+  assert.ok(places, 'the complete place list remains available')
+  assert.equal((places.match(/<button type="button">/g) ?? []).length, view.venues.length)
+  assert.ok(words.includes(`Things to do in ${view.city.name}`))
+  const guide = /<ul>([^]*?)<\/ul>/.exec(html)?.[1]
+  assert.ok(guide, 'the city guide is shown before the full place list')
+  assert.equal((guide.match(/<li>/g) ?? []).length, 5)
+  assert.equal((guide.match(/<button type="button">/g) ?? []).length, 5)
   assert.ok(words.includes(`More places and activities are coming to ${view.city.name}.`))
 })
 

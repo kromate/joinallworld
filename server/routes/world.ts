@@ -1,3 +1,4 @@
+import { requireCharacterCity } from '../character.ts';
 /**
  * OWNER: world
  * World endpoints under /api/world/: your place in the city, the city at a glance, one local
@@ -58,13 +59,7 @@ export default function worldRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return { id: session.publicId, placed, lga: placed ? state.estate.lga : null, plot: placed ? state.estate.plot ?? null : null, hasLife: Boolean(state?.estate), character: { city: session.character?.city ?? cityId } };
   });
   // One character: once a life has travelled to another city, asking for the city it left must not start a second life there.
-  const hasLifeIn = (session: SessionRecord, cityId: string): boolean => { const known = ctx.cityIds.find((id) => id === cityId); return known !== undefined && Boolean(session.cities?.[known]); };
-  const cityGate = (session: SessionRecord, cityId: string): void => {
-    const character = session?.character;
-    if (character?.movedAt && character.city !== cityId && character.from === cityId && !hasLifeIn(session, cityId)) {
-      throw Object.assign(fail(409, 'city_moved'), { reason: `Your character is in ${character.city} now. Open that city to carry on.`, city: character.city });
-    }
-  };
+  const cityGate = requireCharacterCity;
   (ctx.checks ??= {}).cityGate = cityGate;
   const unchanged = (request: RouteRequest, v: unknown) => (request.query.get('v') === String(v) ? { body: { v, unchanged: true } } : null);
 

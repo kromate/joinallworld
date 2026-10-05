@@ -68,11 +68,15 @@ test('simplification kept the shapes sound: no ring crosses itself among the mos
 });
 
 test('the data modules are small, say where they came from, and decode from their compact form', () => {
-  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000 };
+  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000 };
   for (const [file, limit] of Object.entries(limits)) {
     const path = here(`./data/${file}`), text = readFileSync(path, 'utf8');
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
-    assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
+    if (file === 'lagos.ts') {
+      assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/); assert.match(text, /shared-arc topology/);
+    } else {
+      assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
+    }
   }
   assert.deepEqual(readdirSync(here('./data/')).sort(), Object.keys(limits).sort());
   const values = [0, 1, -1, 31, 32, -33, 1024, -99999, 1234567];

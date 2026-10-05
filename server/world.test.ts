@@ -279,7 +279,12 @@ test('a write outage: nobody is told about a plot that is not saved, and the nex
 test('one character: a life that arrives in another city is filed under it, a separate life already there is put aside whole, and the city left cannot be re-entered as a new life', async (t) => {
   const f = await fixture(t);
   const ada = await f.device('Ada');
-  await life(f, ada); const ibadan = (await get<{ state: LifeState }>(f, '/api/life?city=ibadan', ada)).state; // a legacy separate life in Ibadan
+  await life(f, ada);
+  const ibadan = createLife({ name: 'Ada' }, { now: f.now(), cityId: 'ibadan' });
+  await f.server.store.transact((db) => {
+    const session = defined(Object.values(db.sessions).find((item) => item.publicId === ada.id));
+    session.cities.ibadan = { state: ibadan, updatedAt: f.now(), salt: 'c'.repeat(32) };
+  }); // pre-migration sessions could contain a separate Ibadan life
   await f.server.world.idle();
   // Stand in for the arrival of an inter-city trip (no city is open, so no request can produce one).
   await f.server.store.transact((db) => { const lagos = defined(defined(Object.values(db.sessions)[0]).cities.lagos); lagos.state.estate.city = 'ibadan'; lagos.state.cash = 4242; });

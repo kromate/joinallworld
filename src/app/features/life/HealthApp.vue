@@ -5,7 +5,7 @@
 // every cure with its price and where to get it. Everything shown comes from view.health
 // (src/game/systems/health.ts) and view.travel.
 import { computed } from 'vue'
-import { VENUES as VENUE_SPOTS } from '../../../game/content/venues.ts'
+import { contentFor } from '../../../game/cities/runtime.ts'
 import { useApp } from '../../state/app.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -16,7 +16,8 @@ defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
 const view = game.view
 const health = computed(() => view.value.health)
-const cures = computed(() => health.value.cures.map((cure) => cureLine(cure, game.state.value.cash, VENUE_SPOTS)))
+const venueSpots = computed(() => Object.fromEntries(contentFor(view.value.cityId).venues.map((venue) => [venue.id, venue.definition])))
+const cures = computed(() => health.value.cures.map((cure) => cureLine(cure, game.state.value.cash, venueSpots.value)))
 const resistance = computed(() => resistanceOf(health.value.strain))
 const place = (id: string | null) => (id ? view.value.travel.destinations.find((item) => item.id === id) ?? null : null)
 </script>

@@ -25,7 +25,7 @@ export const CAMPUS_VENUE = 'unilag';
 const campus = (id: string): boolean => id === CAMPUS_VENUE;
 
 export type HostKind = 'venue' | 'campus';
-export type AdapterState = HostState & { location?: string };
+export type AdapterState = HostState & { location?: string; estate?: { city: string } };
 type Insets = { top?: number; bottom?: number };
 
 /** What the adapter asks of either host (the venue host has more; the campus host has no setGoal/zoom/recentre/prepare). */
@@ -76,7 +76,7 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
     host.resize?.();
     onHost?.(kind);
   }
-  function useVenueHost(id: string): void { kind = 'venue'; host = createVenueWorld(container, { ...options, location: id }); replay(); }
+  function useVenueHost(id: string): void { kind = 'venue'; host = createVenueWorld(container, { ...options, ...(state?.estate?.city ? { cityId: state.estate.city } : {}), location: id }); replay(); }
   function build(id: string): void {
     host?.dispose(); host = null; kind = null;
     const mine = ++token;

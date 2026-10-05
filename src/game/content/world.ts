@@ -20,46 +20,19 @@
  */
 
 import { isRecord } from '../util.ts';
-import type { HouseId, HouseStyle, HouseStyleField, HouseTierId, LgaId, WorldCityId } from '../../types/life.ts';
+import { cityRules as cityRulesFromRegistry, linksFrom as cityLinksFrom } from '../cities/registry.ts';
+import type { HouseStyle, HouseStyleField, HouseTierId, LgaId } from '../../types/life.ts';
 import type {
-  CityLink, CityLinkFrom, CityRules, EstateGrid, HouseStyleContent, HouseTierDefinition, LgaDefinition, LgaRules, OwningRules,
+  EstateGrid, HouseStyleContent, HouseTierDefinition, LgaDefinition, LgaRules, OwningRules,
 } from '../../types/content.ts';
+
+export { CITY_LINKS, CITY_RULES } from '../cities/registry.ts';
+export { LAGOS_LGAS } from '../cities/lagos/rules.ts';
+import { LAGOS_LGAS } from '../cities/lagos/rules.ts';
 
 export const ESTATE: Readonly<EstateGrid> = Object.freeze({ beta: true, estates: 512, streets: 14, plots: 14 });
 export const PLOTS_PER_ESTATE = ESTATE.streets * ESTATE.plots;
 export const LGA_CAPACITY = ESTATE.estates * PLOTS_PER_ESTATE;
-
-/**
- * The local governments of Lagos. `land` is how dear land is there, in naira (it scales the price
- * of every house upgrade: see tierCost — the plot itself is free); `zone` is the landmass
- * the travel system uses for fare bands when Home is a house built there; `district` lists the
- * rented-home districts (ids of content/housing.ts) that lie inside it.
- */
-/** A local government as written below: `beta` and an empty `districts` are filled in. */
-type LgaSeed = Omit<LgaDefinition, 'beta' | 'districts'> & { districts?: HouseId[] };
-
-export const LAGOS_LGAS: readonly LgaDefinition[] = Object.freeze([
-  { id: 'agege', name: 'Agege', zone: 'mainland', land: 120000, line: 'Bread at dawn, a stadium at dusk and a market that never quite closes.' },
-  { id: 'ajeromi-ifelodun', name: 'Ajeromi-Ifelodun', zone: 'mainland', land: 100000, line: 'Ajegunle: crowded, loud and proud — where footballers and musicians come from.' },
-  { id: 'alimosho', name: 'Alimosho', zone: 'mainland', land: 90000, line: 'The biggest of them all: Ikotun, Egbeda, Ipaja and estates as far as you can see.' },
-  { id: 'amuwo-odofin', name: 'Amuwo-Odofin', zone: 'mainland', land: 150000, line: 'Festac’s wide avenues, the trade fair and creeks at the back door.' },
-  { id: 'apapa', name: 'Apapa', zone: 'mainland', land: 280000, line: 'The port: containers, cranes and the long line of trucks.' },
-  { id: 'badagry', name: 'Badagry', zone: 'mainland', land: 60000, line: 'The old coast town in the far west: coconut beaches, lagoons and a long history.' },
-  { id: 'epe', name: 'Epe', zone: 'east', land: 60000, line: 'A fishing town on the far lagoon shore, famous for its fish market.' },
-  { id: 'eti-osa', name: 'Eti-Osa', zone: 'island', land: 750000, line: 'Ikoyi, Victoria Island and Lekki: glass towers, the beach and the dearest land in the city.', districts: ['lekki', 'ikoyi', 'banana'] },
-  { id: 'ibeju-lekki', name: 'Ibeju-Lekki', zone: 'east', land: 90000, line: 'The new frontier: the free zone, the refinery and land everyone says will boom.' },
-  { id: 'ifako-ijaiye', name: 'Ifako-Ijaiye', zone: 'mainland', land: 110000, line: 'The northern edge: Ogba, Iju and the road out of town.' },
-  { id: 'ikeja', name: 'Ikeja', zone: 'mainland', land: 500000, line: 'The state capital: the airport, Allen Avenue, Computer Village and the Secretariat.' },
-  { id: 'ikorodu', name: 'Ikorodu', zone: 'mainland', land: 70000, line: 'Across the lagoon to the north-east: a town of its own, a ferry ride from the island.' },
-  { id: 'kosofe', name: 'Kosofe', zone: 'mainland', land: 180000, line: 'Ketu, Ojota and Gbagada: fruit markets, motor parks and the foot of the long bridge.' },
-  { id: 'lagos-island', name: 'Lagos Island', zone: 'island', land: 420000, line: 'Isale Eko: the old city, the big markets, Marina and Broad Street.' },
-  { id: 'lagos-mainland', name: 'Lagos Mainland', zone: 'mainland', land: 240000, line: 'Yaba and Ebute Metta: the university, the tech hubs and the railway.', districts: ['yaba'] },
-  { id: 'mushin', name: 'Mushin', zone: 'mainland', land: 130000, line: 'Dense, busy and resourceful: spare parts, tailors and a hustle on every corner.', districts: ['mushin'] },
-  { id: 'ojo', name: 'Ojo', zone: 'mainland', land: 80000, line: 'Alaba market, the university by the lagoon and the road to the border.' },
-  { id: 'oshodi-isolo', name: 'Oshodi-Isolo', zone: 'mainland', land: 160000, line: 'Oshodi interchange: every bus in Lagos passes through sooner or later.' },
-  { id: 'somolu', name: 'Somolu', zone: 'mainland', land: 170000, line: 'Bariga and Somolu: printing presses, the lagoon front and long-settled streets.' },
-  { id: 'surulere', name: 'Surulere', zone: 'mainland', land: 260000, line: 'The National Stadium, Adeniran Ogunsanya and the home of Nollywood.' },
-] satisfies LgaSeed[]).map((lga) => Object.freeze({ beta: true, districts: [], ...lga }));
 
 /**
  * EVERYONE HAS A HOUSE. Each life is given a plot and the starter house on it, free, in its local
@@ -148,37 +121,8 @@ export const OWNING: Readonly<OwningRules> = Object.freeze({
 /** Changing your local government (original beta rule). Confirming the one the game guessed is free and immediate. */
 export const LGA_RULES: Readonly<LgaRules> = Object.freeze({ beta: true, changeCooldownDays: 7 });
 
-/**
- * Cities as the rules see them. `status`: 'open' (lives can be lived there) or 'soon'. `unit` is
- * what the city calls its districts. Lagos is the only open city; the others are data so that the
- * way cities connect is real before a second one opens.
- */
-export const CITY_RULES: Readonly<Record<WorldCityId, CityRules>> = Object.freeze({
-  lagos: { id: 'lagos', name: 'Lagos', status: 'open', unit: 'local government', units: LAGOS_LGAS, hub: { road: 'Ojota Motor Park', air: 'the airport at Ikeja' } },
-  ibadan: { id: 'ibadan', name: 'Ibadan', status: 'soon', unit: 'local government', units: [], hub: { road: 'Iwo Road Motor Park', air: 'Ibadan airport at Alakia' } },
-  abuja: { id: 'abuja', name: 'Abuja', status: 'soon', unit: 'district', units: [], hub: { road: 'Utako Motor Park', air: 'the airport on the Airport Road' } },
-  'port-harcourt': { id: 'port-harcourt', name: 'Port Harcourt', status: 'soon', unit: 'local government', units: [], hub: { road: 'Waterlines Motor Park', air: 'the airport at Omagwa' } },
-});
-
-/**
- * How cities connect: `fare` in naira, `seconds` of real time the trip takes on the country map.
- * A link works in both directions. Original beta values.
- */
-export const CITY_LINKS: readonly CityLink[] = Object.freeze([
-  { a: 'lagos', b: 'ibadan', mode: 'road', beta: true, label: 'Bus on the Lagos–Ibadan Expressway', icon: '🚌', fare: 3500, seconds: 120, km: 130 },
-  { a: 'lagos', b: 'abuja', mode: 'road', beta: true, label: 'Night bus through Lokoja', icon: '🚌', fare: 14000, seconds: 420, km: 760 },
-  { a: 'lagos', b: 'abuja', mode: 'air', beta: true, label: 'Flight to Abuja', icon: '✈️', fare: 65000, seconds: 90, km: 520 },
-  { a: 'lagos', b: 'port-harcourt', mode: 'road', beta: true, label: 'Bus through Benin and the East–West Road', icon: '🚌', fare: 12000, seconds: 360, km: 620 },
-  { a: 'lagos', b: 'port-harcourt', mode: 'air', beta: true, label: 'Flight to Port Harcourt', icon: '✈️', fare: 60000, seconds: 90, km: 440 },
-  { a: 'ibadan', b: 'abuja', mode: 'road', beta: true, label: 'Bus through Ilorin', icon: '🚌', fare: 12000, seconds: 360, km: 640 },
-  { a: 'abuja', b: 'port-harcourt', mode: 'road', beta: true, label: 'Bus through Enugu', icon: '🚌', fare: 11000, seconds: 360, km: 600 },
-  { a: 'abuja', b: 'port-harcourt', mode: 'air', beta: true, label: 'Flight to Port Harcourt', icon: '✈️', fare: 55000, seconds: 80, km: 450 },
-]);
-
-// The same tables read by an arbitrary (possibly unknown) id, as the callers do.
-const cityRulesById: Readonly<Record<string, CityRules | undefined>> = CITY_RULES;
 const tiersById: Readonly<Record<string, HouseTierDefinition | undefined>> = HOUSE_TIERS;
-export const cityRules = (cityId: unknown): CityRules | null => (typeof cityId === 'string' && Object.hasOwn(CITY_RULES, cityId) ? cityRulesById[cityId] ?? null : null);
+export const cityRules = cityRulesFromRegistry;
 /** The local governments (or the local equivalent) of a city. */
 export const lgasOf = (cityId: unknown): readonly LgaDefinition[] => cityRules(cityId)?.units ?? [];
 export const lgaOf = (cityId: unknown, id: unknown): LgaDefinition | null => (typeof id === 'string' ? lgasOf(cityId).find((lga) => lga.id === id) ?? null : null);
@@ -190,9 +134,7 @@ export function lgaOfDistrict(cityId: unknown, district: string): LgaDefinition 
 export const tierOf = (id: unknown): HouseTierDefinition | null => (typeof id === 'string' && Object.hasOwn(HOUSE_TIERS, id) ? tiersById[id] ?? null : null);
 export const designOf = tierOf;
 /** Links leaving a city: [{ to, mode, label, icon, fare, seconds, km }]. */
-export function linksFrom(cityId: string): CityLinkFrom[] {
-  return CITY_LINKS.filter((link) => link.a === cityId || link.b === cityId).map(({ a, b, ...link }) => ({ ...link, to: a === cityId ? b : a }));
-}
+export const linksFrom = cityLinksFrom;
 
 const whole = (value: unknown, max: number): boolean => typeof value === 'number' && Number.isInteger(value) && value >= 0 && value < max;
 /** Is this a real plot? `estate` 0…511, `plot` 0…195 (street = plot ÷ 14, number on the street = plot mod 14). */

@@ -6,7 +6,8 @@ import { rebuildCatalogue } from '../../game/systems/activities.ts';
 import { makeContext } from '../../game/util.ts';
 import { BUILDINGS, ROADS } from './layout.ts';
 import { createCampusWalk, footprintOf } from './walk.ts';
-import unilagShuttle, { buildShuttle, SHUTTLE_FEE, SHUTTLE_STOPS, shuttlePose, shuttleRoute } from './shuttle.ts';
+import unilagShuttle, { SHUTTLE_FEE, SHUTTLE_STOPS, shuttlePose, shuttleRoute } from './shuttle.ts';
+import { buildShuttle } from './shuttle-scene.ts';
 import { buildUnilagLandmark, MAP_PLACEMENT } from './landmark.ts';
 import type * as ThreeModule from 'three';
 import type { LifeContext, LifeState } from '../../types/life.ts';
@@ -110,7 +111,7 @@ test('boarding is server-authoritative, charges once and cannot teleport or forg
 
 test('completion uses a registered venue spot and cancellation never refunds the fare', () => {
   // VENUES already holds the real campus venue (game/content/venues.ts); its spots are the shuttle stops.
-  rebuildCatalogue();
+  rebuildCatalogue('lagos');
   try {
     const state = lifeAt();
     const board = unilagShuttle.actions['campus-shuttle'];
@@ -134,7 +135,7 @@ test('completion uses a registered venue spot and cancellation never refunds the
     assert.equal(board(free, { destination: 'senate' }, context).code, 'insufficient_funds');
     assert.deepEqual([free.cash, free.ledger.length, free.activeAction], [0, 0, null]);
   } finally {
-    rebuildCatalogue();
+    rebuildCatalogue('lagos');
   }
 });
 

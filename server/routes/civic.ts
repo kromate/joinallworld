@@ -61,9 +61,9 @@ import type { CityCounters, EligibilityCheck, Gate, GovResponse, GovRules, GovYo
 import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult } from '../types.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { makeContext } from '../../src/game/util.ts';
-import { VENUES } from '../../src/game/content/venues.ts';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.ts';
-import { civicEligibility } from '../../src/game/systems/civic.ts';
+import { cityContent, cityRules } from '../../src/game/cities/index.ts';
+import { civicEligibility, pollingVenueFor } from '../../src/game/systems/civic.ts';
 import { cityOf, emptyCivic, nextId } from '../civic/data.ts';
 import { cleanLine } from '../civic/text.ts';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.ts';
@@ -73,7 +73,6 @@ import { AD_KINDS, adsView, removeAd, rent, rentBlock, validateCreative } from '
 import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong } from '../civic/radio.ts';
 import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.ts';
 
-const CITY_NAMES: Record<CityId, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const COUNTER_CACHE_MS = 5000;
 
 type Block = { code: string; reason?: string | undefined };
@@ -81,7 +80,8 @@ type Block = { code: string; reason?: string | undefined };
 export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, fail } = ctx;
   const ttl = () => ctx.config.sessionTtlMs;
-  const cityName = (cityId: CityId): string => CITY_NAMES[cityId] ?? cityId;
+  const cityName = (cityId: CityId): string => cityRules(cityId)?.name ?? cityId;
+  const districts = (cityId: CityId) => cityRules(cityId)?.districts ?? [];
 
   const cityParam = (value: unknown): CityId => { const found = ctx.cityIds.find((id) => id === value); if (typeof value !== 'string' || found === undefined) throw fail(400, 'invalid_city'); return found; };
   const limit = (bucket: string, key: string, count: number, windowMs = 60000): void => { if (!ctx.allow(`civic:${bucket}:${key}`, count, windowMs)) throw fail(429, 'civic_rate_limited'); };
@@ -116,7 +116,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     // Nor is a guest who is playing: a guest has no local government and no house, so it is in no residents directory, estate
     // or rich list until it settles in (src/game/systems/onboarding.ts THE STAGED MODEL). It still plays, travels and meets people.
     const resident = !(life.onboarding?.required === true && life.onboarding.done !== true) && !isGuestLife(life);
-    if (resident) checkIn(city, ctx.now(), who, life, ttl());
+    if (resident) checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
     prunePrefs(civic);
     return { session, who, life, civic, city, resident };
   }
@@ -138,9 +138,9 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return value;
   }
 
-  const rules = (): GovRules => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
+  const rules = (cityId: CityId): GovRules => ({ beta: true, minDaysToRun: ELECTION.minDaysToRun, minDaysToVote: ELECTION.minDaysToVote, minWorkDays: ELECTION.minWorkDays, votesPerAddress: ctx.config.votesPerAddress, filingFee: ELECTION.filingFee, sloganMin: ELECTION.sloganMin, sloganMax: ELECTION.sloganMax,
     maxCandidates: ELECTION.maxCandidates, announcementMax: ELECTION.announcement.max, announcementsPerDay: ELECTION.announcement.perDay,
-    pollingVenue: Object.hasOwn(VENUES, ELECTION.pollingVenue) ? ELECTION.pollingVenue : null });
+    pollingVenue: pollingVenueFor(cityId)?.id ?? null });
 
   /** Governor state plus, for a signed-in viewer, exactly why they can or cannot run, vote and announce. */
   function govBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null): GovResponse {
@@ -160,7 +160,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       if (!youBody.vote.ok && youBody.vote.code === 'unknown_candidate') youBody.vote.reason = 'Nobody is on the ballot yet, so there is no one to vote for.';
       you = youBody;
     }
-    return { city: cityId, ...view, rules: rules(), you };
+    return { city: cityId, ...view, rules: rules(cityId), you };
   }
 
   const huntBody = (city: CivicCityRecord, cityId: CityId, life: LifeState | null): HuntResponse => {
@@ -178,7 +178,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
       notices: notices(city, now, cityName(cityId)),
-      radio: venue && isClub(venue) ? radioView(city, now, venue, who?.id ?? null) : null };
+      radio: venue && isClub(venue, cityContent(cityId).radioVenueIds) ? radioView(city, now, venue, who?.id ?? null, cityContent(cityId).radioVenueIds) : null };
   }
 
   return {
@@ -223,7 +223,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           const paid = act(life, cityId, 'civic.run');
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
           declare(city, ctx.now(), who, slogan.text);
-          checkIn(city, ctx.now(), who, life, ttl());
+          checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
           return { ok: true, code: 'declared' };
         });
         return { body: { ...outcome, state: life, gov: govBody(city, cityId, who, life) }, renew: true };
@@ -287,7 +287,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const viewer = ctx.publicSession(session);
         limit('read', session.publicId, 120);
         return { city: cityId, demonym: DEMONYMS[cityId] ?? `${cityName(cityId)} residents`, hidden: civic.prefs[viewer.id]?.directory === true,
-          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id) };
+          ...neighboursView(city, ctx.now(), ttl(), ctx.online, civic.prefs, viewer.id, districts(cityId)) };
       });
       return { body };
     },
@@ -295,7 +295,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     // ---- billboards and sea plots ---------------------------------------------------------
     'GET /api/civic/ads': async (request) => {
       const cityId = cityParam(request.query.get('city'));
-      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...adsView(cityOf(civicOf(db), cityId), ctx.now(), session?.publicId ?? null) }; });
+      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...adsView(cityOf(civicOf(db), cityId), ctx.now(), session?.publicId ?? null, cityContent(cityId).billboardRoads) }; });
       return { body };
     },
     'POST /api/civic/ads/rent': async (request) => {
@@ -306,16 +306,16 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const { session, who, life, city } = enter(db, request, cityId);
         limit('ads-rent', who.id, 30);
         const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.rent-ad', fingerprint: [cityId, body.kind, body.slot, creative.ok ? creative.creative.text : body.text, body.colour, body.icon].map((part) => String(part ?? '')) }, () => {
-          const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot) ?? muted(who);
+          const block = rentBlock(city, ctx.now(), who.id, body.kind, body.slot, cityContent(cityId).billboardRoads) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
           if (!creative.ok) return { ok: false, code: creative.code, reason: creative.reason };
           const paid = act(life, cityId, 'civic.rent-ad', { kind: body.kind, slot: body.slot });
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
-          rent(city, ctx.now(), who, body.kind, body.slot, creative.creative);
-          checkIn(city, ctx.now(), who, life, ttl());
+          rent(city, ctx.now(), who, body.kind, body.slot, creative.creative, cityContent(cityId).billboardRoads);
+          checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
           return { ok: true, code: 'rented' };
         });
-        return { body: { ...outcome, state: life, ads: { city: cityId, ...adsView(city, ctx.now(), who.id) } }, renew: true };
+        return { body: { ...outcome, state: life, ads: { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads) } }, renew: true };
       });
     },
     'POST /api/civic/ads/remove': async (request) => {
@@ -326,7 +326,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const { who, city } = enter(db, request, cityId);
         limit('ads-remove', who.id, 12);
         const block = removeAd(city, ctx.now(), who.id, body.kind, body.slot);
-        const ads = { city: cityId, ...adsView(city, ctx.now(), who.id) };
+        const ads = { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads) };
         return block ? refused(block, { ads }) : { body: { ok: true, code: 'removed', ads }, renew: true };
       });
     },
@@ -343,7 +343,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const cityId = cityParam(request.query.get('city'));
       const venue = request.query.get('venue');
       if (typeof venue !== 'string' || !/^[a-z0-9][a-z0-9-]{0,39}$/.test(venue)) throw fail(400, 'invalid_venue');
-      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...radioView(cityOf(civicOf(db), cityId), ctx.now(), venue, session?.publicId ?? null) }; });
+      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...radioView(cityOf(civicOf(db), cityId), ctx.now(), venue, session?.publicId ?? null, cityContent(cityId).radioVenueIds) }; });
       return { body };
     },
     'POST /api/civic/radio/shoutout': async (request) => {
@@ -356,16 +356,16 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const now = ctx.now(), venue = life.location;
         // A retried request (same id) returns the entry it already bought instead of charging again.
         const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.shoutout', fingerprint: [cityId, ...(song.ok ? [song.song.title, song.song.artist] : [String(body.title ?? ''), String(body.artist ?? '')])] }, () => {
-          const block = shoutBlock(city, now, who.id, venue) ?? muted(who);
+          const block = shoutBlock(city, now, who.id, venue, cityContent(cityId).radioVenueIds) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
           if (!song.ok) return { ok: false, code: song.code, reason: song.reason };
           const paid = act(life, cityId, 'civic.shoutout');
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
           const entry = addShoutout(city, now, who, venue, song.song, nextId(city, 'r'), typeof body.requestId === 'string' ? body.requestId : null);
-          checkIn(city, now, who, life, ttl());
+          checkIn(city, now, who, life, ttl(), districts(cityId));
           return { ok: true, code: 'queued', entry: publicEntry(entry, who.id) };
         });
-        return { body: { ...outcome, state: life, radio: { city: cityId, ...radioView(city, ctx.now(), venue, who.id) } }, renew: true };
+        return { body: { ...outcome, state: life, radio: { city: cityId, ...radioView(city, ctx.now(), venue, who.id, cityContent(cityId).radioVenueIds) } }, renew: true };
       });
     },
 

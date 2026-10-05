@@ -186,9 +186,10 @@ function buildService(ctx: RouteContext) {
   async function requestEmail(request: RouteRequest, body: Record<string, unknown>) {
     if (body.consent !== true) throw ctx.fail(400, 'consent_required');
     const checked = checkEmail(body.email);
-    if (!ctx.allow(`growth:email:${request.ip}`, 10, HOUR)) throw ctx.fail(429, 'rate_limited');
     const saved = await ctx.store.transact((db) => {
       const session = request.requireSession(db, { renew: true });
+      // Counted only once there is a session: a request without one makes no hour-long row.
+      if (!ctx.allow(`growth:email:${request.ip}`, 10, HOUR)) throw ctx.fail(429, 'rate_limited');
       if (!ctx.allow(`growth:email:${session.publicId}`, 6, HOUR)) throw ctx.fail(429, 'rate_limited');
       const g = growthOf(ctx, db), player = playerOf(g, session.publicId);
       book(g);

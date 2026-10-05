@@ -271,9 +271,9 @@ test('Cloudflare: a limiter table full of other people’s live rows turns no ne
   const f = await fixture(t), storage = await f.storage(), far = Date.now() + 3600000;
   await f.request('/api/health');
   // 10,000 live rows of other addresses (what a flood leaves behind), a long-window row and an operator row.
-  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 9998) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${Date.now() + 900000} + i FROM n`);
-  await storage.exec('INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'mod:fail:operator', Date.now(), 1, Date.now() + 1000);
-  await storage.exec('INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'upgrade:long-window', Date.now(), 7, far + 86400000);
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits(key,started_at,count,expires_at) SELECT 'http-ip:flood-' || i, ${Date.now()}, 1, ${Date.now() + 900000} + i FROM n`);
+  await storage.exec('INSERT OR REPLACE INTO rate_limits_protected(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'mod:fail:operator', Date.now(), 1, Date.now() + 1000);
+  await storage.exec('INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) VALUES(?,?,?,?)', 'upgrade:long-window', Date.now(), 7, far + 86400000);
   assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n >= 10000);
   // A visitor from an address never seen before: a session, a life, an action, a socket.
   const fresh = { 'cf-connecting-ip': '198.51.100.77' };
@@ -285,10 +285,35 @@ test('Cloudflare: a limiter table full of other people’s live rows turns no ne
   for (let i = 0; i < 20; i++) assert.equal((await f.request('/api/health', null, null, { 'cf-connecting-ip': `198.51.100.${100 + i}` })).status, 200, `address ${i}`);
   assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits'))[0].n <= 10000, 'the table stays inside its bound');
   // What was dropped to make room expired soonest; the long window kept its count and the operator's row is still there.
-  assert.equal((await storage.exec("SELECT count AS n FROM rate_limits WHERE key = 'upgrade:long-window'"))[0].n, 7);
-  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'mod:fail:operator'"))[0].n, 1);
+  assert.equal((await storage.exec("SELECT count AS n FROM rate_limits_long WHERE key = 'upgrade:long-window'"))[0].n, 7);
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_protected WHERE key = 'mod:fail:operator'"))[0].n, 1);
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-1'"))[0].n, 0, 'the soonest-to-expire flood rows went first');
-  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-9998'"))[0].n, 1);
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits WHERE key = 'http-ip:flood-10000'"))[0].n, 1);
+});
+
+test('Cloudflare: a flood of hour-long rows cannot erase the operator guard or a session’s limit, and a newcomer still gets a session', async t => {
+  const token = 'worker-operator-token-0123456789-abcdef';
+  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage();
+  const ip = (n: number) => ({ 'cf-connecting-ip': `203.0.${Math.floor(n / 250)}.${1 + (n % 250)}` });
+  // The operator guard: 100 token-less tries from many addresses fill its window; the next one is refused with 429.
+  for (let i = 0; i < 100; i++) assert.equal((await f.request('/api/mod/overview', null, null, ip(i))).status, 401, `try ${i}`);
+  assert.equal((await f.request('/api/mod/overview', null, null, ip(300))).status, 429, 'the guard is at its cap');
+  // A session close to its limit.
+  const ada = await f.device('Ada');
+  await f.request('/api/session', null, ada.cookie);
+  await storage.exec("UPDATE rate_limits SET count=599 WHERE key LIKE 'http:session:%'");
+  // The flood: the hour-long table full (what unauthenticated e-mail requests used to leave), then more new keys arriving.
+  await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 10000) INSERT OR REPLACE INTO rate_limits_long(key,started_at,count,expires_at) SELECT 'growth:email:flood-' || i, ${Date.now()}, 1, ${Date.now() + 3600000} + i FROM n`);
+  for (let i = 0; i < 30; i++) await f.request('/api/growth/email', { consent: true, email: `x${i}@example.test` }, null, ip(400 + i));
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_long WHERE key LIKE 'growth:email:203.%'"))[0].n, 0, 'a request without a session makes no hour-long row');
+  for (let i = 0; i < 300; i++) await f.request('/api/health', null, null, ip(800 + i));
+  assert.ok((await storage.exec('SELECT COUNT(*) AS n FROM rate_limits_long'))[0].n <= 10000, 'the long table stays inside its bound');
+  // Nothing short or protected was erased.
+  assert.equal((await f.request('/api/mod/overview', null, null, ip(301))).status, 429, 'mod-fail:all still refuses at its cap');
+  assert.equal((await f.request('/api/session', null, ada.cookie)).status, 200);
+  assert.equal((await f.request('/api/session', null, ada.cookie)).status, 429, 'the session is still held to its limit');
+  const fresh = await f.request('/api/session', { name: 'Newcomer' }, null, ip(2000));
+  assert.equal(fresh.status, 200, 'a newcomer is not turned away'); await fresh.text();
 });
 
 test('Cloudflare: proximity survives hibernation, movement avoids SQL writes and private homes stay isolated', async t => {

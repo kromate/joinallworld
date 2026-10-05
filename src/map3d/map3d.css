@@ -121,3 +121,15 @@ button.m3-house{cursor:pointer}
 .m3-flat-houses { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 .m3-flat .m3-label::after { height: 7px; }
 .m3-flat.is-far .m3-flat-names text { opacity: .75; }
+
+/* The flat map's strokes: a route is a few pixels wide at every zoom; far out, the roads keep a minimum width and the small names step aside. */
+.m3-flat-trip path { vector-effect: non-scaling-stroke; }
+.m3-flat-trip [data-trip] { stroke-width: 5px; }
+.m3-flat-trip [data-trip-top] { stroke-width: 2.6px; }
+.m3-flat.is-whole .m3-flat-roads path { vector-effect: non-scaling-stroke; }
+.m3-flat.is-whole [data-ink="parapet"] path { stroke-width: 3px; }
+.m3-flat.is-whole [data-ink="kerb"] path { stroke-width: 2.4px; }
+.m3-flat.is-whole [data-ink="asphalt"] path { stroke-width: 1.4px; }
+.m3-flat.is-whole [data-ink="dash"] { display: none; }
+.m3-flat.is-whole .m3-flat-names { display: none; }
+.m3-flat-lgas path { vector-effect: non-scaling-stroke; stroke-width: 1px; }

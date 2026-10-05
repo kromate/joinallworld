@@ -74,7 +74,7 @@ The scripted version, with no browser at all, is `npm run two-players`.
 
 ### Several cities
 
-All six open cities run locally. Open the Map, zoom out to the atlas, choose a city and travel; the fare is charged once and the trip takes real seconds. `npm run two-cities` plays Lagos to Ibadan and back against a real server. City content is data: [CITIES.md](CITIES.md).
+All six open cities run locally. Open the Map, press **Nigeria map** to reach the atlas, then choose an open city and one of its routes; the fare is charged once, at departure. `npm run two-cities` plays Lagos to Ibadan and back against a real server. City content is data: [CITIES.md](CITIES.md).
 
 ### Development-only pages
 

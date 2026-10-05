@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Leave it running in one terminal, open http://127.0.0.1:5173/, press **Play now** and skip the tour. The venue panel lists the park's spots; **Under the trees** has two activities, *Chill Under the Trees* and *Play Ayo*. You are going to add a third.
+Leave it running in one terminal, open http://127.0.0.1:5173/, press **Play now** and skip the tour. The panel at the bottom lists the park's spots; **Under the trees** has two activities, *Chill Under the Trees* and *Play Ayo*. You are going to add a third.
 
 ## 1. Find where it lives
 
@@ -40,7 +40,7 @@ Save. The terminal running `npm run dev` prints `Game server restarted (src/game
 
 ## 3. See it in the game
 
-Back in the browser, **Feed the Birds, 6 seconds, ₦100** is now under the trees. Press it. Six seconds later your wallet has gone from ₦5,000 to ₦4,900 and the Fun bar has gone up.
+Back in the browser, press **Under the trees** to open its activities: **Feed the Birds, 6 seconds, ₦100** is there. Press it. Six seconds later your wallet has gone from ₦5,000 to ₦4,900 and the Fun bar has gone up.
 
 Nothing else was needed: the activity card, the progress bar, the charge and the saved result all come from the data. Nothing in the browser granted anything either. The page sent an action, the server applied the rules and answered with the new life.
 

@@ -114,6 +114,13 @@ test('the first screen: a refusal of the name comes back with its sentence, and 
   assert.ok(html.includes('value="&quot;&gt;&lt;b&gt;x&lt;/b&gt;"') && !html.includes('<b>x</b>'))
 })
 
+test('the first screen: "the world is full" is a calm notice, not the red error', async () => {
+  await resetCreator()
+  const html = await render('QuickStartApp', { params: { reason: 'new', problem: { reason: 'The world is full right now: every place is taken.', name: 'Kunle', calm: true } } })
+  assert.match(html, /<p class="cr-banner is-info" role="status" data-cr-error>The world is full right now: every place is taken\.<\/p>/)
+  assert.ok(!html.includes('cr-banner is-error'))
+})
+
 test('the first screen opened again after a Play that was turned away (the world was full): the sentence is there, and so is Play now', async () => {
   await resetCreator()
   const full = 'The world is full right now: every place is taken. Nothing is lost — your name and character are kept on this device. Trying again in about 10 seconds; tap Play now to try at once.'

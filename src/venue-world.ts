@@ -81,6 +81,8 @@ import { DEFAULT_CITY_ID } from './game/cities/registry.ts';
  */
 import { createKit } from './scene/kit.ts';
 import { createOrbit, followShare } from './scene/camera-controls.ts';
+import { dragKind, isDrag, isTap, twist } from './scene/gesture.ts';
+import type { DragKind } from './scene/gesture.ts';
 import { createOccluders, resolve as resolveCollision } from './scene/camera-collision.ts';
 import { sceneMaterials } from './scene/build.ts';
 import { createMotionLoop } from './scene/motion-loop.ts';
@@ -285,8 +287,8 @@ export function sceneVenue(id: string, cityId: string = DEFAULT_CITY_ID) {
 }
 
 /** What the scene teaches, one at a time (scene/controls.js): walking first, then looking. Each goes away when the player has done it. */
-const LESSONS_DESKTOP = [{ id: 'walk', text: 'Click the floor to walk there — or use W A S D' }, { id: 'look', text: 'Drag to look around · scroll to zoom' }];
-const LESSONS_TOUCH = [{ id: 'walk', text: 'Drag the stick to walk — or tap where you want to go' }, { id: 'look', text: 'Drag anywhere to look around · pinch to zoom' }];
+const LESSONS_DESKTOP = [{ id: 'walk', text: 'Click the floor to walk there — or use W A S D' }, { id: 'look', text: 'Drag to look around · right-drag to slide the view · scroll to zoom' }];
+const LESSONS_TOUCH = [{ id: 'walk', text: 'Drag the stick to walk — or tap where you want to go' }, { id: 'look', text: 'Drag anywhere to look around · pinch to zoom · two fingers to slide the view' }];
 /**
  * How far from the player the camera starts, in avatar-scale units (multiplied by the scene's walk
  * scale): a phone held upright, a short window (a phone on its side), anything wider. The same
@@ -409,7 +411,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   const point = new THREE.Vector3(), rayA = new THREE.Vector3(), rayB = new THREE.Vector3();
   const orbit = createOrbit();
   const walker = createWalker();
-  const pointers = new Map<number, { x: number; y: number; startX: number; startY: number; loose: boolean }>();
+  const pointers = new Map<number, { x: number; y: number; startX: number; startY: number; loose: boolean; kind: DragKind; type: string; down: number }>();
   let suppressClick = false;
   const canvas = renderer.domElement;
   const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
@@ -690,7 +692,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     head.set(walker.x, avatarY + tall * 0.62, walker.z);
     // The camera's un-held place, from the orbit's present angles and pivot.
     const azimuth = orbit.azimuth, pitch = orbit.pitch, asked = orbit.asked, flat = Math.cos(pitch) * asked;
-    eye.set(orbit.now.x + Math.sin(azimuth) * flat - offset.x, orbit.now.y + Math.sin(pitch) * asked, orbit.now.z + Math.cos(azimuth) * flat - offset.z);
+    eye.set(orbit.now.x + orbit.now.px + Math.sin(azimuth) * flat - offset.x, orbit.now.y + Math.sin(pitch) * asked, orbit.now.z + orbit.now.pz + Math.cos(azimuth) * flat - offset.z);
     occluders.setPeople(walk.people(), 0.3 * walk.scale);
     const reach = head.distanceTo(eye);
     const hit = occluders.sweep(head.x, head.y, head.z, eye.x, eye.y, eye.z);
@@ -748,39 +750,48 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   function pointerDown(event: PointerEvent, capture = true) {
     if (event.pointerType === 'touch') controls?.touch(true);
-    if (event.button !== 0 || pointers.size >= 2) return;
+    if (event.button > 2 || pointers.size >= 2) return;
+    if (event.button === 1) event.preventDefault();
     if (!pointers.size) suppressClick = false;
     else suppressClick = true;
     // A press that began on a name tag is not captured yet: left alone it is a click on the tag; once it moves it becomes a drag (pointerMove).
-    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY, loose: !capture });
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY, loose: !capture, kind: dragKind(event, 'scene'), type: event.pointerType, down: event.timeStamp });
     if (capture) { try { canvas.setPointerCapture?.(event.pointerId); } catch {} }
     if (canvas.style) canvas.style.cursor = 'grabbing';
     setHover(null);
   }
+  /** Scene units under one pixel of the screen at the pivot, for a slide of the view. */
+  const unitsPerPixel = () => (2 * Math.tan((camera.fov * Math.PI) / 360) * orbit.asked) / Math.max(1, size.height);
   function pointerMove(event: PointerEvent) {
     const previous = pointers.get(event.pointerId);
     if (!previous) { if (!pointers.size && event.pointerType !== 'touch') hoverAt(event); return; }
     const next = { ...previous, x: event.clientX, y: event.clientY };
     if (!suppressClick && pointers.size === 1) {
-      if (Math.hypot(next.x - previous.startX, next.y - previous.startY) < 6) return;
+      if (!isDrag(Math.hypot(next.x - previous.startX, next.y - previous.startY), previous.type)) return;
       suppressClick = true;
       if (previous.loose) { next.loose = false; try { canvas.setPointerCapture?.(event.pointerId); } catch {} }
     }
     if (next.x === previous.x && next.y === previous.y) return;
     if (pointers.size === 2) {
+      // Two fingers: the pinch zooms, the twist turns the scene, and moving both together slides the view.
       const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)![1];
       const before = Math.hypot(previous.x - other.x, previous.y - other.y);
       const after = Math.hypot(next.x - other.x, next.y - other.y);
-      if (before > 4 && after > 4) orbit.zoomBy(after / before);
-    } else orbit.drag(next.x - previous.x, next.y - previous.y);
+      if (before > 4 && after > 4) { orbit.zoomBy(after / before); orbit.rotate(twist(previous, other, next, other), 0); }
+      orbit.panScreen((next.x - previous.x) / 2, (next.y - previous.y) / 2, unitsPerPixel());
+    } else if (previous.kind === 'pan') orbit.panScreen(next.x - previous.x, next.y - previous.y, unitsPerPixel());
+    else orbit.drag(next.x - previous.x, next.y - previous.y);
     controls?.learned('look');
     pointers.set(event.pointerId, next);
     event.preventDefault();
     redrawView();
   }
   function pointerEnd(event: PointerEvent) {
-    if (!pointers.has(event.pointerId)) return;
+    const press = pointers.get(event.pointerId);
+    if (!press) return;
     pointers.delete(event.pointerId);
+    // A press held for too long is not a tap, and the click that follows it must not walk the avatar.
+    if (!suppressClick && event.type === 'pointerup' && !isTap(0, event.timeStamp - press.down, press.type)) suppressClick = true;
     try { canvas.releasePointerCapture?.(event.pointerId); } catch {}
     if (!pointers.size && canvas.style) canvas.style.cursor = 'grab';
   }
@@ -944,6 +955,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   const listeners: Record<string, EventListener> = { pointerdown: (event) => pointerDown(event as PointerEvent), pointermove: (event) => pointerMove(event as PointerEvent), pointerup: (event) => pointerEnd(event as PointerEvent),
     pointercancel: (event) => pointerEnd(event as PointerEvent), lostpointercapture: (event) => pointerEnd(event as PointerEvent), wheel: (event) => wheel(event as WheelEvent),
+    contextmenu(event) { event.preventDefault(); },
     pointerleave() { if (hover && !pointers.size) { setHover(null); if (!loop.running) renderScene(); } },
     click(event) {
       if (suppressClick && (event as MouseEvent).detail !== 0) { event.preventDefault(); event.stopImmediatePropagation(); return; }
@@ -1107,7 +1119,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
   // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
-  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x, orbit.now.y, orbit.now.z); renderer.render(scene, camera); renderCount += 1; projectTags(); }
+  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz); renderer.render(scene, camera); renderCount += 1; projectTags(); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id: string) {
@@ -1273,7 +1285,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
         // walls: which of a room's walls are showing; held: the share of the asked-for distance a collision holds the camera at; ghost: the see-through circle's strength.
         walls: current?.walls ?? null, perch: Boolean(perch), hover: hover ? hover.key : null, easing: Boolean(current?.easing), solids: occluders.count,
         camera: { yaw: Math.round(orbit.azimuth * 1000) / 1000, pitch: Math.round(orbit.pitch * 1000) / 1000, zoom: Math.round(orbit.now.zoom * 1000) / 1000, distance: Math.round(orbit.distance * 100) / 100,
-          asked: Math.round(orbit.asked * 100) / 100, whole: Math.round(orbit.base.distance * closeness * 100) / 100, held: Math.round(orbit.now.squeeze * 1000) / 1000, ghost: Math.round(ghost.now * 100) / 100, x: Math.round(camera.position.x * 100) / 100, y: Math.round(camera.position.y * 100) / 100, z: Math.round(camera.position.z * 100) / 100,
+          asked: Math.round(orbit.asked * 100) / 100, whole: Math.round(orbit.base.distance * closeness * 100) / 100, held: Math.round(orbit.now.squeeze * 1000) / 1000, pan: [Math.round(orbit.now.px * 100) / 100, Math.round(orbit.now.pz * 100) / 100], holding: Math.round(orbit.holding * 100) / 100, ghost: Math.round(ghost.now * 100) / 100, x: Math.round(camera.position.x * 100) / 100, y: Math.round(camera.position.y * 100) / 100, z: Math.round(camera.position.z * 100) / 100,
           limits: { pitch: [0.1, Math.round((Math.PI / 2 - 0.07) * 1000) / 1000], zoom: [Math.round(orbit.limits.zoomMin * 1000) / 1000, Math.round(orbit.limits.zoomMax * 1000) / 1000], azimuth: orbit.limits.azimuth } },
         // Where each spot and person is on the canvas (CSS pixels) — what a tap on it has to hit.
         spots: spotList.map((spot) => { current!.group.updateMatrixWorld(true); const at = screenOf(spot.x, spot.y + 0.1, spot.z, { x: 0, y: 0 }); return { id: spot.id, x: spot.x, z: spot.z, px: Math.round(at.x), py: Math.round(at.y), selected: spot.id === lastState?.spot }; }),

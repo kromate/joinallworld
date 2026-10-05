@@ -50,6 +50,7 @@ import { openingInfo, lagosTime } from '../game/clock.ts';
 import { buildNetwork, localTripRoute, pointInPolygon } from './roads.ts';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.ts';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.ts';
+import { createFlick, DOUBLE_TAP_MS, DOUBLE_TAP_PX, dragKind, isDrag, isTap, localPoint, mapHint, MAP_HINT_KEY, ROTATE_PITCH, ROTATE_YAW, twist } from '../scene/gesture.ts';
 import { createActor } from './actor.ts';
 import { createOverlays } from './overlays.ts';
 import { createHouses } from './houses.ts';
@@ -69,8 +70,10 @@ interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
 const SOON_TABLE = COMING_SOON as Record<string, VenueInfo | undefined>;
 /** How close the camera may come: near enough to tell the houses of a compact estate apart. */
 const CLOSEST = 3;
-const DRAG_START = 6, DOUBLE_TAP_MS = 340, PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
-let hintSeen = false;             // the how-to line shows until the player first moves the map, picks a place or travels
+const PICK_RADIUS = 34, PLINTH = PLINTH_UNIT * LANDMARK_SCALE;
+/** The how-to line shows until the player first moves the map, picks a place or travels: once on each device. */
+let hintSeen = false;
+const hintKnown = (): boolean => { if (hintSeen) return true; try { hintSeen = globalThis.localStorage?.getItem(MAP_HINT_KEY) === '1'; } catch { /* shown again next visit */ } return hintSeen; };
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 export type { TimeOfDay };
 export const timeOfDay = (ms: number): TimeOfDay => { const { minuteOfDay } = lagosTime(ms), hour = minuteOfDay / 60; return hour < 5.5 || hour >= 19 ? 'night' : hour < 7 || hour >= 17.5 ? 'dusk' : 'day'; };
@@ -91,7 +94,7 @@ interface LabelEntry { node: HTMLButtonElement; name: HTMLElement; note: HTMLEle
 interface Insets { left: number; top: number; right: number; bottom: number }
 type Pt = { x: number; y: number };
 /** One pointer gesture in progress. */
-type Gesture = { kind: 'pan' | 'orbit'; id: number; from: Pt; last: Pt; moved: boolean; spin?: number; at?: number; onLabel?: boolean } | { kind: 'pinch'; id?: undefined; distance: number; mid: Pt; moved: true }
+type Gesture = { kind: 'pan' | 'rotate'; id: number; from: Pt; last: Pt; moved: boolean; spin: number; at: number; down: number; type: string; grab: { x: number; z: number } | null; onLabel?: boolean } | { kind: 'pinch'; id?: undefined; distance: number; mid: Pt; a: Pt; b: Pt; moved: true }
 /** The renderer the map draws with: a WebGLRenderer, or a stand-in under test. */
 export type MapRenderer = THREE.WebGLRenderer
 export interface Map3DOptions {
@@ -170,8 +173,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     root = doc.createElement('div');
     root.className = 'm3';
     root.innerHTML = `<div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
-      <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole ${extentWord(pack)}" title="Show the whole ${extentWord(pack)}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${extentWord(pack) === 'state' ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
-      <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to turn the city · pinch or scroll to zoom · two fingers to move. Tap a building to go there.</p>`;
+      <div class="m3-controls" role="group" aria-label="Map view"><button type="button" class="m3-north" data-m3="north" aria-label="Turn the map so north is up" title="North up" hidden><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l4 9h-8z" fill="#c0392b"/><path d="M12 21l-4-9h8z" fill="#5c6670"/></svg></button><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill m3-fit" data-m3="fit" aria-label="Show the whole ${extentWord(pack)}" title="Show the whole ${extentWord(pack)}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${extentWord(pack) === 'state' ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Find me: show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
+      <p class="m3-hint" data-m3-hint ${hintKnown() ? 'hidden' : ''}>${mapHint(Boolean(globalThis.matchMedia?.('(pointer: coarse)').matches), false)}</p>`;
     root.prepend(canvas);
     canvas.classList?.add('m3-canvas');
     canvas.setAttribute?.('aria-hidden', 'true');
@@ -187,6 +190,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const quiet: { node: HTMLElement; x: number; z: number }[] = [];   // the names of the land and sea around a state: shown on the whole-state view only
   const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga; span: ReturnType<typeof spanOf>; scale: number }>(), tags: HTMLDivElement[] = [];
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
+  let northDegrees = 0;
   let wholeFrom = WHOLE_FROM;       // beyond this camera distance the view is of the whole state (see labels.ts), judged against the opening view of this screen
   let openedWhole = false;          // "Whole city" was pressed: a resize keeps that view, not the opening one
   // Very wide screens enlarge the interface (--ui-zoom, tokens.css). The labels, plates and tags are zoomed with it by CSS, so their
@@ -590,6 +594,13 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     // "Find me" lights up while the player's piece is out of sight, or (on a phone) the view has pulled well back from it.
     const away = !feet?.front || feet.x < insets.left || feet.x > size.width - insets.right || feet.y < insets.top || feet.y > size.height - insets.bottom + 40 || (size.width <= 720 && nearDistance > 0 && rig.view.distance > nearDistance * 1.7);
     if (root!.classList.contains('is-away') !== away) root!.classList.toggle('is-away', away);
+    // The compass shows while the view is turned or tipped; its needle points to north.
+    const north = controls.north;
+    if (north) {
+      const skewed = rig.skewed(), degrees = Math.round((rig.view.yaw * 180) / Math.PI);
+      if (north.hidden === skewed) north.hidden = !skewed;
+      if (skewed && northDegrees !== degrees) { northDegrees = degrees; (north.firstElementChild as SVGElement | null)?.style.setProperty('transform', `rotate(${degrees}deg)`); }
+    }
     for (const { node, chip } of chips.values()) {
       const at = project(chip.x, chip.y, chip.z);
       const visible = at.front && at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && (chip.kind === 'plot' || chip.kind === 'board-free'));
@@ -630,6 +641,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   }
   function layout() {
     const rect = container.getBoundingClientRect();
+    box = { left: rect.left, top: rect.top, scale: 1 };
     if (container.hidden || !rect.width || !rect.height) { stop(); return false; }
     const next = measureInsets();
     const changed = rect.width !== size.width || rect.height !== size.height || (['left', 'top', 'right', 'bottom'] as const).some((side) => Math.round(next[side]) !== Math.round(insets[side]));
@@ -663,9 +675,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const inside = at.front && at.x > insets.left + 60 && at.x < size.width - insets.right - 60 && at.y > insets.top + 70 && at.y < size.height - insets.bottom - 40;
     if (!inside) motion({ x: place.x, z: place.z });
   }
-  function dismissHint() { hintSeen = true; if (hint && !hint.hidden) hint.hidden = true; }
+  function dismissHint() { if (!hintSeen) { hintSeen = true; try { globalThis.localStorage?.setItem(MAP_HINT_KEY, '1'); } catch { /* shown again next visit */ } } if (hint && !hint.hidden) hint.hidden = true; }
   function pick(clientX: number, clientY: number, radius = PICK_RADIUS): string | null {
-    const page = container.getBoundingClientRect(), x = clientX - page.left, y = clientY - page.top;
+    const x = clientX - box.left, y = clientY - box.top;
     let best = null;
     for (const place of Object.values(city.places)) {
       const base = project(place.x, 0, place.z), top = project(place.x, place.top, place.z);
@@ -689,47 +701,69 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
 
   // ---- input -------------------------------------------------------------------------------------
   const pointers = new Map<number, { x: number; y: number }>();
-  let gesture: Gesture | null = null, lastTap: { id: string | null; at: number } = { id: null, at: 0 }, suppressClick = false;
-  const local = (event: MouseEvent) => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
+  let gesture: Gesture | null = null, lastTap: { id: string | null; at: number; x: number; y: number; opened: boolean } = { id: null, at: 0, x: 0, y: 0, opened: false }, suppressClick = false;
+  const flick = createFlick();
+  // A flick is timed by the moments the pointer reported, so a slow frame between them does not turn a fast flick into a stop.
+  const stampOf = (event: Event) => (Number.isFinite(event.timeStamp) ? event.timeStamp : now());
+  // The canvas's place on the page is read once for each press, not for each move; the size the maths uses comes from the same rectangle, so a
+  // map inside CSS zoom is measured in the pixels the pointer reports.
+  let box = { left: 0, top: 0, scale: 1 };
+  const readBox = () => { const page = container.getBoundingClientRect(); box = { left: page.left, top: page.top, scale: 1 }; };
+  const local = (event: MouseEvent) => localPoint(event.clientX, event.clientY, box);
   const toNdc = (point: { x: number; y: number }) => ({ x: (point.x / size.width) * 2 - 1, y: -(point.y / size.height) * 2 + 1 });
   function grab() { userMoved = true; tripCamera = false; following = false; dismissHint(); }
   function onPointerDown(event: PointerEvent) {
     if ((event.target as HTMLElement).closest?.<HTMLElement>('[data-m3],[data-neighbour]')) return;   // the view buttons and the estate's homes are not a place to start a drag
-    if (event.isPrimary) pointers.clear();
+    if (event.pointerType === 'mouse' && event.button > 2) return;
+    if (event.button === 1) event.preventDefault();
+    readBox();
+    if (event.isPrimary) { pointers.clear(); rig.endDrag(); }
     pointers.set(event.pointerId, local(event));
     rig.hold();
     // A fresh press starts clean: only the click that ends a drag is swallowed (see onClick).
-    if (pointers.size === 1) { suppressClick = false; gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0, at: now(), onLabel: Boolean((event.target as HTMLElement).closest?.<HTMLElement>('.m3-label,.m3-person')) }; }
-    else if (pointers.size === 2) { const [a, b] = [...pointers.values()] as [Pt, Pt]; gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, moved: true }; suppressClick = true; grab(); }
+    if (pointers.size === 1) {
+      suppressClick = false; flick.clear();
+      const from = local(event), kind = dragKind(event, 'map'), n = toNdc(from);
+      gesture = { kind, id: event.pointerId, from, last: from, moved: false, spin: 0, at: now(), down: now(), type: event.pointerType, grab: kind === 'pan' ? rig.groundAt(n.x, n.y) : null, onLabel: Boolean((event.target as HTMLElement).closest?.<HTMLElement>('.m3-label,.m3-person')) };
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()] as [Pt, Pt];
+      gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, a, b, moved: true }; suppressClick = true; grab(); rig.beginDrag(); root?.classList.add('is-dragging');
+    }
   }
   function onPointerMove(event: PointerEvent) {
-    const at = local(event);
     if (!pointers.has(event.pointerId)) {
       if (event.pointerType === 'mouse' && !event.buttons) { houseHover(event); hover((event.target as HTMLElement).closest?.<HTMLElement>('.m3-label')?.dataset.venue || ((event.target as HTMLElement).closest?.<HTMLElement>('[data-m3],.m3-chip') ? null : pick(event.clientX, event.clientY, 22))); }
       return;
     }
+    const at = local(event);
     pointers.set(event.pointerId, at);
     if (gesture?.kind === 'pinch' && pointers.size >= 2) {
+      // Two fingers: the pinch zooms, the twist turns, and the ground between the fingers stays between them as they travel.
       const [a, b] = [...pointers.values()] as [Pt, Pt], distance = Math.hypot(a.x - b.x, a.y - b.y) || 1, mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
-      rig.panScreen(mid.x - gesture.mid.x, mid.y - gesture.mid.y);
-      const n = toNdc(mid);
-      rig.zoomAt(gesture.distance / distance, n.x, n.y);
-      gesture.distance = distance; gesture.mid = mid;
+      const before = toNdc(gesture.mid), held = rig.groundAt(before.x, before.y), to = toNdc(mid);
+      rig.zoomAt(gesture.distance / distance);
+      rig.orbit(twist(gesture.a, gesture.b, a, b), 0);
+      if (!held || !rig.dragTo(held, to.x, to.y)) rig.panScreen(mid.x - gesture.mid.x, mid.y - gesture.mid.y);
+      gesture.distance = distance; gesture.mid = mid; gesture.a = a; gesture.b = b;
       request();
       return;
     }
     if (!gesture || gesture.kind === 'pinch' || gesture.id !== event.pointerId) return;
     const dx = at.x - gesture.last.x, dy = at.y - gesture.last.y;
-    if (!gesture.moved && Math.hypot(at.x - gesture.from.x, at.y - gesture.from.y) < DRAG_START) return;
+    if (!gesture.moved && !isDrag(Math.hypot(at.x - gesture.from.x, at.y - gesture.from.y), gesture.type)) return;
     // A drag may start anywhere, a label included; the pointer is captured only now, so a plain tap on a label is still its click.
-    if (!gesture.moved) { gesture.moved = true; grab(); root?.classList.add('is-dragging'); try { root!.setPointerCapture?.(event.pointerId); } catch { /* the pointer is already gone */ } }
+    if (!gesture.moved) { gesture.moved = true; grab(); if (gesture.kind === 'pan') rig.beginDrag(); root?.classList.add('is-dragging'); try { root!.setPointerCapture?.(event.pointerId); } catch { /* the pointer is already gone */ } }
     gesture.last = at;
-    if (gesture.kind === 'pan') rig.panScreen(dx, dy);
-    else {
+    if (gesture.kind === 'pan') {
+      // The ground under the pointer when it went down stays under it.
+      const n = toNdc(at);
+      if (!gesture.grab || !rig.dragTo(gesture.grab, n.x, n.y)) rig.panScreen(dx, dy);
+      flick.push(rig.view.x, rig.view.z, stampOf(event));
+    } else {
       // The city follows the finger; dragging down tips the view over the top. The turn's speed is kept for the glide on release.
-      const turn = -dx * 0.0052, t = now(), dt = Math.max(0.008, (t - gesture.at!) / 1000);
-      gesture.spin = gesture.spin! * 0.5 + (turn / dt) * 0.5; gesture.at = t;
-      rig.orbit(turn, dy * 0.0042);
+      const turn = -dx * ROTATE_YAW, t = now(), dt = Math.max(0.008, (t - gesture.at) / 1000);
+      gesture.spin = gesture.spin * 0.5 + (turn / dt) * 0.5; gesture.at = t;
+      rig.orbit(turn, dy * ROTATE_PITCH);
     }
     request();
   }
@@ -737,20 +771,37 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     if (!pointers.delete(event.pointerId)) return;
     if (gesture?.kind === 'pinch') {
       const [rest] = [...pointers.entries()];
-      gesture = rest ? { kind: 'pan', id: rest[0], from: rest[1], last: rest[1], moved: true } : null;
+      if (rest) { const n = toNdc(rest[1]); gesture = { kind: 'pan', id: rest[0], from: rest[1], last: rest[1], moved: true, spin: 0, at: now(), down: now(), type: 'touch', grab: rig.groundAt(n.x, n.y) }; flick.clear(); }
+      else { gesture = null; rig.endDrag(); }
     } else if (gesture?.id === event.pointerId) {
-      // A flick glides on; a drag that had stopped before the finger lifted does not.
-      if (gesture.moved) { suppressClick = true; if (gesture.kind === 'orbit' && !reducedMotion && event.type !== 'pointercancel' && now() - gesture.at! < 90) { rig.release(gesture.spin!); request(); } }
-      else if (event.type !== 'pointercancel' && !gesture.onLabel) tap(event);        // a tap on a label is the label's own click
+      const cancelled = event.type === 'pointercancel';
+      if (gesture.moved) {
+        suppressClick = true;
+        // A flick glides on; a drag that had stopped before the finger lifted does not. Nothing glides for a player who asked for less motion.
+        const glides = !reducedMotion && !cancelled;
+        if (gesture.kind === 'pan') rig.endDrag(glides ? flick.velocity(stampOf(event)) : null);
+        else if (glides && now() - gesture.at < 90) rig.release(gesture.spin);
+        request();
+      } else {
+        // A press that was held too long is not a tap, and the click that follows it is not a choice either.
+        if (!cancelled && !isTap(0, now() - gesture.down, gesture.type)) suppressClick = true;
+        else if (!cancelled && !gesture.onLabel) tap(event);        // a tap on a label is the label's own click
+      }
       gesture = null;
     }
     if (!pointers.size) root?.classList.remove('is-dragging');
   }
   function tap(event: PointerEvent) {
     const id = pick(event.clientX, event.clientY), at = now();
-    if (id && lastTap.id === id && at - lastTap.at < DOUBLE_TAP_MS) { focus(id); lastTap = { id: null, at: 0 }; return; }
-    lastTap = { id, at };
-    if (id) choose(id); else if (worldTap(event)) request();
+    if (id && lastTap.id === id && at - lastTap.at < DOUBLE_TAP_MS) { focus(id); lastTap = { id: null, at: 0, x: 0, y: 0, opened: false }; return; }
+    // A second tap on bare ground, close to the first, zooms in on that spot (unless the first one already opened something).
+    if (!id && !lastTap.id && !lastTap.opened && at - lastTap.at < DOUBLE_TAP_MS && Math.hypot(event.clientX - lastTap.x, event.clientY - lastTap.y) < DOUBLE_TAP_PX) {
+      const n = toNdc(local(event));
+      grab(); motion({ ...rig.zoomed(0.5, n.x, n.y) }, 0.3); lastTap = { id: null, at: 0, x: 0, y: 0, opened: false };
+      return;
+    }
+    lastTap = { id, at, x: event.clientX, y: event.clientY, opened: false };
+    if (id) choose(id); else if (worldTap(event)) { lastTap.opened = true; request(); }
   }
   function hover(id: string | null) {
     if (id === hovered) return;
@@ -787,6 +838,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     grab();
     if (name === 'in') motion({ distance: rig.view.distance * 0.68 }, 0.3);
     else if (name === 'out') motion({ distance: rig.view.distance / 0.68 }, 0.3);
+    else if (name === 'north') { const rest = rig.rest(); motion({ yaw: rest.yaw, pitch: rest.pitch }, 0.45); }
     else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; openedWhole = true; }
     else if (name === 'me') {
       // During a trip "find me" also keeps up with the traveller, until the player moves the view themselves.
@@ -801,6 +853,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     if (mode !== 'map' || layer !== 'city' || !shown()) return;
     if (action === 'move-left') rig.panScreen(90, 0); else if (action === 'move-right') rig.panScreen(-90, 0);
     else if (action === 'move-up') rig.panScreen(0, 90); else if (action === 'move-down') rig.panScreen(0, -90);
+    else if (action === 'look-left') rig.orbit(-0.16, 0); else if (action === 'look-right') rig.orbit(0.16, 0); else if (action === 'look-up') rig.orbit(0, 0.1); else if (action === 'look-down') rig.orbit(0, -0.1);
     else if (action === 'zoom-in') { onControl('in'); return; } else if (action === 'zoom-out') { onControl('out'); return; } else if (action === 'zoom-fit') { onControl('fit'); return; }
     else return;
     grab(); request();
@@ -831,7 +884,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const listeners: (() => void)[] = [];
   const listen = <E extends Event>(target: EventTarget | null | undefined, type: string, handler: (event: E) => void, options?: AddEventListenerOptions) => { if (!target?.addEventListener) return; target.addEventListener(type, handler as EventListener, options); listeners.push(() => target.removeEventListener(type, handler as EventListener, options)); };
   if (root) {
-    listen(root, 'pointerdown', onPointerDown); listen(root, 'pointermove', onPointerMove);
+    listen(root, 'pointerdown', onPointerDown); listen(root, 'pointermove', onPointerMove); listen(root, 'pointerenter', readBox); listen(root, 'contextmenu', (event) => { event.preventDefault(); });
     listen(globalThis, 'pointerup', onPointerUp); listen(globalThis, 'pointercancel', onPointerUp);
     listen(root, 'wheel', onWheel, { passive: false }); listen(root, 'click', onClick);
     listen(root, 'dblclick', (event) => { const id = (event.target as HTMLElement).closest?.<HTMLElement>('.m3-label')?.dataset.venue; if (id) focus(id); });

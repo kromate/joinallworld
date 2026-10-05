@@ -4,6 +4,7 @@
 // (socialClient.test.ts, socialModel.test.ts).
 import assert from 'node:assert/strict'
 import { after, before, test } from 'node:test'
+import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
 import type { ViteDevServer } from 'vite'
@@ -314,4 +315,13 @@ test('the registry: the same ids, placements, order, groups and badges as the la
     social.me = null
     assert.equal(badge('people')?.(), 0)
   } finally { social.me = before }
+})
+
+test('the person card brings a form that opens below the screen edge into view, whoever opened it', async () => {
+  const card = await readFile(`${root}/src/app/features/social/PlayerCard.vue`, 'utf8')
+  const chat = await readFile(`${root}/src/app/features/messages/MessagesApp.vue`, 'utf8')
+  // The chat header sets the form directly (it does not go through the card's own button), so the scroll follows the form, not the button.
+  assert.match(chat, /personUi\.form = 'money'/)
+  assert.match(card, /watch\(\(\) => \[personUi\.form, formEl\.value\] as const[\s\S]*scrollIntoView\?\.\(\{ block: 'nearest' \}\)/)
+  assert.doesNotMatch(card.match(/function openForm[\s\S]*?\n\}/)![0], /scrollIntoView/, 'one place scrolls, not two')
 })

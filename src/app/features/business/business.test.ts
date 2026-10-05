@@ -27,6 +27,10 @@ test('keys and paths, stars and time left', () => {
   assert.deepEqual([starsLabel(3, 0), starsLabel(4.25, 1), starsLabel(5, 12)], ['3.0 stars · no ratings yet', '4.3 stars · 1 rating', '5.0 stars · 12 ratings'])
   const hour = 3600000
   assert.deepEqual([untilWords(0, 5), untilWords(30 * 60000, 0), untilWords(5 * hour, 0), untilWords(47 * hour, 0), untilWords(6 * 24 * hour + 5, 0)], ['now', 'under an hour', '5 h', '47 h', '6 days'])
+  // The first week's rent is paid at the moment the stall opens: the line under it must not say a day is gone already.
+  assert.equal(untilWords(7 * 24 * hour, 3000), '7 days')
+  assert.equal(untilWords(7 * 24 * hour + 60000, 0), '7 days')
+  assert.equal(untilWords(6 * 24 * hour + 13 * hour, 0), '7 days'); assert.equal(untilWords(6 * 24 * hour + 5 * hour, 0), '6 days')
 })
 
 test('an order from the supplier: its bill, and the one reason it cannot be bought', () => {
@@ -104,4 +108,14 @@ test('the page never imports the shop rules or the catalogue: the routes answer 
   const entry = readFileSync(join(root, 'app', 'features', 'business', 'register.ts'), 'utf8')
   assert.match(entry, /defineAsyncComponent\(\(\) => import\('\.\/BusinessApp\.vue'\)\)/)
   assert.doesNotMatch(entry, /businessModel|BusinessApp\.vue'\n?import/)
+})
+
+test('opening a stall says it once: the game\'s own line is the toast, and the request adds none', () => {
+  const root = fileURLToPath(new URL('../../../', import.meta.url))
+  const app = readFileSync(join(root, 'app', 'features', 'business', 'BusinessApp.vue'), 'utf8')
+  const call = app.match(/paid\('open', 'open'[^\n]*/)?.[0] ?? ''
+  assert.ok(call, 'the open request is there')
+  assert.match(call, /, ''\)$/, 'no success toast is passed for an opening')
+  const rules = readFileSync(join(root, 'game', 'systems', 'business.ts'), 'utf8')
+  assert.match(rules, /state\.message = `\$\{name\} is open\./, 'the game names the stall in its own line')
 })

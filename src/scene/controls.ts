@@ -98,7 +98,7 @@ export function createSceneControls(container: HTMLElement | null | undefined, {
     <div class="scene-pad" role="group" aria-label="Camera">
       <button type="button" data-scene="zoom-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
       <button type="button" data-scene="zoom-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
-      <button type="button" data-scene="recentre" aria-label="Recentre the camera on you" title="Recentre (0)">${ICON_HOME}</button>
+      <button type="button" data-scene="recentre" aria-label="Reset the camera view" title="Reset view (0)">${ICON_HOME}</button>
     </div>
     <p class="scene-hint" role="note" hidden><span></span><button type="button" data-scene="hint-off" aria-label="Hide this tip">×</button></p>`;
   container.appendChild(root);

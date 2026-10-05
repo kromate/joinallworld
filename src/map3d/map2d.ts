@@ -35,6 +35,7 @@ import { lgaAt } from './lga.ts';
 import { cityUnit } from '../game/cities/terminology.ts';
 import { civicTitle } from '../game/cities/terminology.ts';
 import { plateFit, plateWidth, spanOf } from './labels.ts';
+import { DOUBLE_TAP_MS, DOUBLE_TAP_PX, isDrag, isTap, mapHint, MAP_HINT_KEY } from '../scene/gesture.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
 import type { HouseStyle, PlotAddress } from '../types/index.ts';
@@ -123,10 +124,12 @@ export interface Map2D {
   destroy(): void;
 }
 
-const DRAG_START = 6, MAX_SCALE = 150, WHOLE_SCALE = 1.9, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
+const MAX_SCALE = 150, WHOLE_SCALE = 1.9, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
 const ICON = (path: string) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
+/** The how-to line shows until the player first moves the map, picks a place or travels: once on each device. */
 let hintSeen = false;
+const hintKnown = (): boolean => { if (hintSeen) return true; try { hintSeen = globalThis.localStorage?.getItem(MAP_HINT_KEY) === '1'; } catch { /* shown again next visit */ } return hintSeen; };
 /** The coming-soon list, read by id. */
 const SOON_TABLE = COMING_SOON as Readonly<Record<string, { icon?: string }>>;
 
@@ -153,7 +156,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     <canvas class="m3-flat-houses" aria-hidden="true"></canvas>
     <div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
     <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill" data-m3="fit" aria-label="Show the whole ${model.extent}" title="Show the whole ${model.extent}">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>${model.extent === 'state' ? 'Whole state' : 'Whole city'}</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
-    <p class="m3-hint" data-m3-hint ${hintSeen ? 'hidden' : ''}>Drag to move the map · pinch or scroll to zoom. Tap a place to go there.</p>`;
+    <p class="m3-hint" data-m3-hint ${hintKnown() ? 'hidden' : ''}>${mapHint(Boolean(globalThis.matchMedia?.('(pointer: coarse)').matches), true)}</p>`;
   container.appendChild(root);
   const worldNode = root.querySelector<HTMLElement>('.m3-flat-world')!, canvas = root.querySelector('canvas')!, labelLayer = root.querySelector<HTMLElement>('.m3-labels')!, hint = root.querySelector<HTMLElement>('[data-m3-hint]')!;
   const lgaArt = root.querySelector<SVGGElement>('.m3-flat-lgas')!, tripPaths = [root.querySelector('[data-trip]')!, root.querySelector('[data-trip-top]')!];
@@ -449,18 +452,19 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     userMoved = true; apply();
   }
   const middle = () => ({ x: insets.left + free().width / 2, y: insets.top + free().height / 2 });
-  function dismissHint() { hintSeen = true; if (!hint.hidden) hint.hidden = true; }
+  function dismissHint() { if (!hintSeen) { hintSeen = true; try { globalThis.localStorage?.setItem(MAP_HINT_KEY, '1'); } catch { /* shown again next visit */ } } if (!hint.hidden) hint.hidden = true; }
 
   // ---- input -------------------------------------------------------------------------------------
   const pointers = new Map<number, { x: number, y: number }>();
-  let drag: { id: number, from: { x: number, y: number }, ox: number, oy: number, moved: boolean, onControl?: boolean } | null = null, pinch: { distance: number, mid: { x: number, y: number } } | null = null, suppressClick = false;
+  let lastTap = { at: 0, x: 0, y: 0, opened: false };
+  let drag: { id: number, from: { x: number, y: number }, ox: number, oy: number, moved: boolean, down: number, type: string, onControl?: boolean } | null = null, pinch: { distance: number, mid: { x: number, y: number } } | null = null, suppressClick = false;
   const local = (event: { clientX: number, clientY: number }) => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
   function onPointerDown(event: PointerEvent) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     if ((event.target as Element).closest('[data-m3]')) return;
     if (event.isPrimary) pointers.clear();
     pointers.set(event.pointerId, local(event));
-    if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), ox, oy, moved: false, onControl: Boolean((event.target as Element).closest('.m3-label,.m3-lga,.m3-person')) }; pinch = null; }
+    if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), ox, oy, moved: false, down: performance.now(), type: event.pointerType, onControl: Boolean((event.target as Element).closest('.m3-label,.m3-lga,.m3-person')) }; pinch = null; }
     else if (pointers.size === 2) { const [p, q] = [...pointers.values()] as [{ x: number, y: number }, { x: number, y: number }]; pinch = { distance: Math.hypot(p.x - q.x, p.y - q.y) || 1, mid: { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 } }; drag = null; suppressClick = true; }
   }
   function onPointerMove(event: PointerEvent) {
@@ -476,31 +480,44 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     }
     if (!drag || drag.id !== event.pointerId) return;
     const dx = at.x - drag.from.x, dy = at.y - drag.from.y;
-    if (!drag.moved && Math.hypot(dx, dy) < DRAG_START) return;
+    if (!drag.moved && !isDrag(Math.hypot(dx, dy), drag.type)) return;
     if (!drag.moved) { drag.moved = true; suppressClick = true; root.classList.add('is-dragging'); dismissHint(); try { root.setPointerCapture(event.pointerId); } catch { /* the pointer is already gone */ } }
     ox = drag.ox + dx; oy = drag.oy + dy; userMoved = true;
     apply();
   }
   function onPointerUp(event: PointerEvent) {
     if (!pointers.delete(event.pointerId)) return;
-    if (drag?.id === event.pointerId) { if (!drag.moved && !drag.onControl && event.type !== 'pointercancel') tap(event); drag = null; }
-    if (pinch && pointers.size < 2) { pinch = null; const [rest] = [...pointers.entries()]; if (rest) drag = { id: rest[0], from: rest[1], ox, oy, moved: true }; }
+    if (drag?.id === event.pointerId) {
+      if (drag.moved || event.type === 'pointercancel') { /* a drag, or a press that was taken away: not a tap */ }
+      else if (!isTap(0, performance.now() - drag.down, drag.type)) suppressClick = true;   // held too long: neither a tap nor a click
+      else if (!drag.onControl) tap(event);
+      drag = null;
+    }
+    if (pinch && pointers.size < 2) { pinch = null; const [rest] = [...pointers.entries()]; if (rest) drag = { id: rest[0], from: rest[1], ox, oy, moved: true, down: performance.now(), type: 'touch' }; }
     if (!pointers.size) root.classList.remove('is-dragging');
   }
   /** A tap on the ground: a house opens its owner's card, an estate is zoomed into, a local government opens its page. */
   function tap(event: PointerEvent) {
-    if (!pack.lgas?.length) return;
-    const at = local(event), point = ground(at.x, at.y), lga = lgaAt(pack, point.x, point.z);
-    if (!lga) return;
+    const at = local(event), time = performance.now();
+    // A second tap close to the first zooms in on that spot (unless the first one already opened something).
+    if (!lastTap.opened && time - lastTap.at < DOUBLE_TAP_MS && Math.hypot(event.clientX - lastTap.x, event.clientY - lastTap.y) < DOUBLE_TAP_PX) { lastTap = { at: 0, x: 0, y: 0, opened: false }; dismissHint(); zoomAt(2, at.x, at.y); return; }
+    lastTap = { at: time, x: event.clientX, y: event.clientY, opened: false };
+    if (openAt(at)) lastTap.opened = true;
+  }
+  function openAt(at: { x: number, y: number }): boolean {
+    if (!pack.lgas?.length) return false;
+    const point = ground(at.x, at.y), lga = lgaAt(pack, point.x, point.z);
+    if (!lga) return false;
     dismissHint();
     const layout = estateLayout(pack, lga)!, hit = layers.homes ? plotAt(layout, point.x, point.z) : null;
     if (hit && hit.plot >= 0 && drawn.some((item) => item.lga === lga && item.estate === hit.estate)) {
       const house = world?.estate(lga, hit.estate)?.houses.get(hit.plot);
-      if (house) { onSelectHouse({ lga, estate: hit.estate, plot: hit.plot, id: house.id ?? null, name: house.name ?? null, online: Boolean(house.online), you: Boolean(house.you), style: house.s, upgrading: house.u > (state?.t ?? 0) }); return; }
+      if (house) { onSelectHouse({ lga, estate: hit.estate, plot: hit.plot, id: house.id ?? null, name: house.name ?? null, online: Boolean(house.online), you: Boolean(house.you), style: house.s, upgrading: house.u > (state?.t ?? 0) }); return true; }
     }
     const occupied = hit && ((world?.summary()?.get(lga)?.occ?.[hit.estate] ?? 0) > 0 || hit.estate === 0);
-    if (occupied && layout.pitch(hit.estate) * scale < HOUSE_PIXELS) { api.focusEstate(lga, hit.estate); return; }
-    if (layers.lgas) onSelectLga(lga);
+    if (occupied && layout.pitch(hit.estate) * scale < HOUSE_PIXELS) { api.focusEstate(lga, hit.estate); return true; }
+    if (layers.lgas) { onSelectLga(lga); return true; }
+    return false;
   }
   function onWheel(event: WheelEvent) {
     event.preventDefault();

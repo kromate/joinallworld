@@ -43,7 +43,7 @@ import type { CreatorDraft } from './creatorState.ts'
 import { chooseLook, lookAlt, lookSummary, lookUi, openLookTab, randomLook, sameLook, starterWardrobe } from './lookModel.ts'
 import type { LookField } from './lookModel.ts'
 import { failureText, introFor, keepLook, storedLook, toggleTrait, triggerOf } from './onboardingModel.ts'
-import { fallbackPreset, planPlay, problemOf, refusedNameToKeep, showsLinkNote, shownError } from './quickStartModel.ts'
+import { fallbackPreset, isCalm, planPlay, problemOf, refusedNameToKeep, showsLinkNote, shownError } from './quickStartModel.ts'
 import { currentDraft, draft as quickDraftRef, qs } from './quickStartState.ts'
 import { invitedWords, inviterName } from '../growth/inviterLookup.ts'
 import { firstLanding, joinTarget, keepDraft, nameProblem, pendingRef, presetLook, shuffleLook, suggestName, track, withBody } from './startBoundary.ts'
@@ -128,6 +128,8 @@ const areaName = computed(() => {
 const alt = computed(() => lookAlt(draft.value.look, draft.value.name))
 const finished = computed(() => !isNew && o.value.done)
 const shown = computed(() => shownError(cr.error, problem.value))
+/** "The world is full" and a wait for room are news, not a mistake: they are drawn calmly. */
+const calm = computed(() => isCalm(cr.error, problem.value))
 const showNote = computed(() => showsLinkNote(words.value, shown.value, view.value.link))
 const intro = computed(() => (isNew ? null : introFor(props.params, { guest: o.value.guest, name: view.value.name, cash: state.value.cash, stars: view.value.goals?.stars ?? 0 })))
 
@@ -343,7 +345,7 @@ onBeforeUnmount(() => {
         <p v-if="intro" class="cr-banner is-info"><span aria-hidden="true"><GameIcon :name="intro.kind === 'why' ? 'home' : 'star'" inline /></span><span><strong>{{ intro.strong }}</strong> {{ intro.text }}</span></p>
         <p v-if="isNew && invited()" class="cr-banner is-good" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>{{ invitedNote.title }}</strong> {{ inviter ? `Start your life and you land where ${inviter} is.` : 'Start your life and you land where they are.' }}</span></p>
         <p v-if="showNote && words" class="cr-banner is-warn" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}.</strong> {{ words.why }} Your character is kept on this device.</span><LinkAction class-name="cr-btn is-small" /></p>
-        <p v-if="shown" class="cr-banner is-error" role="alert" data-cr-error>{{ shown }}</p>
+        <p v-if="shown" :class="['cr-banner', calm ? 'is-info' : 'is-error']" :role="calm ? 'status' : 'alert'" data-cr-error>{{ shown }}</p>
 
         <Transition name="cr-step" mode="out-in">
           <div v-if="finished" key="done" class="cr-body cr-done">

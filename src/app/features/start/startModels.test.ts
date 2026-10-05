@@ -8,7 +8,7 @@ import { avatarShapes, chooseLook, chosen, lookAlt, lookFocus, lookFocusBody, lo
 import {
   DRAFT_KEY, dreamFoot, failureText, firstStep, homeFoot, homeMissing, homePayload, introFor, keepLook, keptCash, lookFoot, lotteryFoot, reasonOf, storedLook, toggleTrait, traitsFoot, triggerOf,
 } from './onboardingModel.ts'
-import { LOOK_REFUSED, PLAY_HELD, held, planPlay, problemOf, quickStartRequired, networkLimitText, networkLimitWait, showsLinkNote, shownError, worldFullText, worldFullWait } from './quickStartModel.ts'
+import { LOOK_REFUSED, PLAY_HELD, held, isCalm, planPlay, problemOf, quickStartRequired, networkLimitText, networkLimitWait, showsLinkNote, shownError, worldFullText, worldFullWait } from './quickStartModel.ts'
 import { nicknameOf, sessionRequired } from './sessionModel.ts'
 import { PRESETS, presetLook, starterLook } from './startBoundary.ts'
 
@@ -127,6 +127,13 @@ test('Play checks the name first, then that the character is one a new Sim may w
 
 test('the server\'s refusal wins over the sheet\'s own sentence; the link note stays quiet while there is something more important', () => {
   assert.equal(shownError('', { reason: 'That name is not allowed.' }), 'That name is not allowed.')
+  // "The world is full" is a calm notice; a refusal is not, and the sheet's own error is never softened.
+  const full = problemOf({ problem: { reason: worldFullText(20), name: 'Kunle', calm: true } })
+  assert.deepEqual(full, { reason: worldFullText(20), name: 'Kunle', calm: true })
+  assert.equal(isCalm('', full), true); assert.equal(isCalm('Pick a name.', full), false)
+  assert.equal(isCalm('', problemOf({ problem: { reason: 'That name is not allowed.' } })), false)
+  assert.equal(isCalm('', problemOf({ problem: { calm: true } })), false, 'nothing to say, nothing to style')
+  assert.equal(problemOf({ problem: { reason: 'x', calm: 'yes' } })!.calm, undefined)
   assert.equal(shownError('Own', { reason: 'Theirs' }), 'Own')
   assert.equal(showsLinkNote({}, '', 'offline'), true)
   assert.equal(showsLinkNote({}, 'x', 'offline'), false)

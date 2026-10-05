@@ -6,6 +6,8 @@
  *
  *   rig.view = { x, z, yaw, pitch, distance }       what is looked at, from where
  *   orbit(dYaw, dPitch) · pan(dx, dz) · panScreen(px, py) · zoomAt(factor, ndcX, ndcY)
+ *   dragTo(grab, ndcX, ndcY)       grab-and-drag: the ground point `grab` goes under that screen point, exactly
+ *   beginDrag() · endDrag(velocity)  while a drag lasts the edge gives a little (rubber) and springs back; a flick glides on
  *   fit() · focus(x, z, distance?) · frame(points)  set a target view; step() eases towards it
  *   step(dt) → true while the view is still changing (an ease or inertia)
  *
@@ -15,6 +17,8 @@
  */
 
 /** The camera's view: what is looked at (x, z on the ground), the turn, the tilt and the distance. */
+import { glide, northUp, rubber, wrapAngle } from '../scene/gesture.ts';
+
 export interface RigView { x: number; z: number; yaw: number; pitch: number; distance: number }
 /** What the rig needs to know of the city: the board it may wander over, the land to fit, and optional limits. */
 export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean; /** The state has no coast to leave room for: its whole-state view is centred, not nudged north. */ inland?: boolean }
@@ -34,6 +38,18 @@ export interface Rig {
   pan(dx: number, dz: number): void
   panScreen(px: number, py: number): void
   zoomAt(factor: number, nx?: number | null, ny?: number | null): void
+  /** Where zoomAt(factor, nx, ny) would put the view, without moving it (to ease there). */
+  zoomed(factor: number, nx?: number | null, ny?: number | null): { x: number; z: number; distance: number }
+  /** Grab-and-drag: move the view so that the ground point `grab` is under the screen point (nx, ny). False when that point sees only sky. */
+  dragTo(grab: { x: number; z: number }, nx: number, ny: number): boolean
+  /** A drag is on: the edge of the land gives a little instead of stopping the view dead. */
+  beginDrag(): void
+  /** The drag is over: spring back inside the edge, and carry on gliding at `velocity` (ground units a second) if given. */
+  endDrag(velocity?: { x: number; z: number } | null): void
+  /** North up, at the tilt this distance rests at: where a "reset the view" tap turns to. */
+  rest(): { yaw: number; pitch: number }
+  /** Is the view turned or tipped away from its rest? */
+  skewed(): boolean
   groundAt(nx: number, ny: number): { x: number; z: number } | null
   ease(target: Partial<RigView>, seconds?: number): void
   jump(target: Partial<RigView>): void
@@ -59,7 +75,7 @@ export const pitchFloor = (distance: number) => PITCH_MIN + (FLAT_PITCH - PITCH_
 
 export function createRig(THREE: typeof import('three'), camera: import('three').PerspectiveCamera, bounds: RigBounds): Rig {
   const view: RigView = { x: 0, z: 0, yaw: 0, pitch: DEFAULT_PITCH, distance: 220 };
-  let goal: RigGoal | null = null, spin = 0, size = { width: 1, height: 1 }, free = { left: 0, top: 0, right: 0, bottom: 0 }, maxDistance = 400;
+  let goal: RigGoal | null = null, spin = 0, flick: { x: number; z: number } | null = null, dragging = false, overscroll = false, size = { width: 1, height: 1 }, free = { left: 0, top: 0, right: 0, bottom: 0 }, maxDistance = 400;
   // `bounds.fit` is what "the whole city" means (the land); the bounds themselves are how far the view may wander (the board).
   // How close the view may come: near enough to see a single house of an estate.
   const floor = bounds.minDistance ?? MIN_DISTANCE;
@@ -69,15 +85,18 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
   const roam = { minX: whole.minX, maxX: whole.maxX, minZ: bounds.context ? whole.minZ - reach * 0.9 : whole.minZ, maxZ: Math.max(whole.maxZ, bounds.roamZ ?? whole.maxZ) };
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), ground = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3(), probe = new THREE.Vector3();
 
-  function limit<T extends RigView>(target: T): T {
+  /** How far past the land's edge a dragged view may be pulled. */
+  const margin = reach * 0.05;
+  function limit<T extends RigView>(target: T, soft = false): T {
     target.distance = clamp(target.distance, floor, maxDistance);
     target.pitch = clamp(target.pitch, pitchFloor(target.distance), PITCH_MAX);
     // What is looked at never leaves the land (plus the sea plots), so the city cannot be dragged out of sight.
-    target.x = clamp(target.x, roam.minX, roam.maxX); target.z = clamp(target.z, roam.minZ, roam.maxZ);
+    const give = soft ? margin : 0;
+    target.x = clamp(target.x, roam.minX - give, roam.maxX + give); target.z = clamp(target.z, roam.minZ - give, roam.maxZ + give);
     return target;
   }
   function apply() {
-    limit(view);
+    limit(view, dragging || overscroll);
     const flat = Math.cos(view.pitch) * view.distance;
     camera.position.set(view.x + Math.sin(view.yaw) * flat, Math.sin(view.pitch) * view.distance, view.z + Math.cos(view.yaw) * flat);
     camera.up.set(0, 1, 0);
@@ -132,11 +151,11 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     },
     apply,
     /** Stop any ease or inertia where it is. */
-    hold() { goal = null; spin = 0; },
-    orbit(dYaw, dPitch) { goal = null; spin = 0; view.yaw += dYaw; view.pitch += dPitch; apply(); },
+    hold() { goal = null; spin = 0; flick = null; },
+    orbit(dYaw, dPitch) { goal = null; spin = 0; flick = null; view.yaw += dYaw; view.pitch += dPitch; apply(); },
     /** Let go after an orbit: the turn carries on for a moment. `velocity` is in radians a second. */
     release(velocity = 0) { spin = Math.abs(velocity) > 0.25 ? clamp(velocity, -2.6, 2.6) : 0; },
-    pan(dx, dz) { goal = null; spin = 0; view.x += dx; view.z += dz; apply(); },
+    pan(dx, dz) { goal = null; spin = 0; flick = null; view.x += dx; view.z += dz; apply(); },
     /** Pan by screen pixels: the ground follows the fingers. */
     panScreen(px, py) {
       const perPixel = (2 * Math.tan((camera.fov * Math.PI) / 360) * view.distance) / size.height;
@@ -145,17 +164,44 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
     },
     /** Zoom by `factor` (< 1 closer) keeping the ground under (ndcX, ndcY) where it is. */
     zoomAt(factor, nx = null, ny = null) {
-      goal = null; spin = 0;
-      const before = nx === null ? null : groundAt(nx, ny!), next = clamp(view.distance * factor, floor, maxDistance), ratio = next / view.distance;
-      if (before) { view.x = before.x + (view.x - before.x) * ratio; view.z = before.z + (view.z - before.z) * ratio; }
-      view.distance = next;
+      goal = null; spin = 0; flick = null;
+      const to = rig.zoomed(factor, nx, ny);
+      view.x = to.x; view.z = to.z; view.distance = to.distance;
       apply();
     },
+    zoomed(factor, nx = null, ny = null) {
+      const before = nx === null ? null : groundAt(nx, ny!), next = clamp(view.distance * factor, floor, maxDistance), ratio = next / view.distance;
+      return before ? { x: before.x + (view.x - before.x) * ratio, z: before.z + (view.z - before.z) * ratio, distance: next } : { x: view.x, z: view.z, distance: next };
+    },
+    dragTo(grab, nx, ny) {
+      goal = null; spin = 0; flick = null;
+      const under = groundAt(nx, ny);
+      if (!under) return false;
+      // Moving the view moves what is under every pixel by the same amount, so one step lands the grabbed point exactly under the pointer.
+      view.x = rubber(view.x + grab.x - under.x, roam.minX, roam.maxX, margin);
+      view.z = rubber(view.z + grab.z - under.z, roam.minZ, roam.maxZ, margin);
+      apply();
+      return true;
+    },
+    beginDrag() { dragging = true; overscroll = false; goal = null; spin = 0; flick = null; },
+    endDrag(velocity = null) {
+      dragging = false;
+      const outside = view.x < roam.minX || view.x > roam.maxX || view.z < roam.minZ || view.z > roam.maxZ;
+      if (outside) { overscroll = true; goal = { from: { ...view }, to: limit({ ...view }), t: 0, seconds: 0.35 }; return; }
+      overscroll = false;
+      const speed = velocity ? Math.hypot(velocity.x, velocity.z) : 0;
+      if (velocity && speed > view.distance * 0.05) flick = { x: velocity.x, z: velocity.z };
+    },
+    rest() {
+      const far = view.distance > FLAT_FROM;
+      return { yaw: northUp(view.yaw), pitch: far ? (bounds.context ? TOP_DOWN : STATE_PITCH) : Math.max(DEFAULT_PITCH, pitchFloor(view.distance)) };
+    },
+    skewed() { const rest = rig.rest(); return Math.abs(wrapAngle(view.yaw)) > 0.04 || Math.abs(view.pitch - rest.pitch) > 0.08; },
     groundAt,
     /** Ease to a view. Missing fields keep their current value. */
-    ease(target, seconds = 0.6) { spin = 0; goal = { from: { ...view }, to: limit({ ...view, ...target }), t: 0, seconds: Math.max(0.01, seconds) }; },
+    ease(target, seconds = 0.6) { spin = 0; flick = null; goal = { from: { ...view }, to: limit({ ...view, ...target }), t: 0, seconds: Math.max(0.01, seconds) }; },
     /** Jump to a view at once (reduced motion, the first frame, a resize). */
-    jump(target) { goal = null; spin = 0; Object.assign(view, limit({ ...view, ...target })); apply(); },
+    jump(target) { goal = null; spin = 0; flick = null; Object.assign(view, limit({ ...view, ...target })); apply(); },
     /** The whole city, seen from the south at the default tilt. */
     whole() {
       // A state with land around it is seen from nearly straight above, not turned, its width fitted to the screen's: on a wide screen the
@@ -192,7 +238,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       const x = (Math.min(...xs) + Math.max(...xs)) / 2, z = (Math.min(...zs) + Math.max(...zs)) / 2;
       return { x, z, distance: clamp(Math.max(min, distanceFor(points.map((point) => ({ ...point, y: point.y ?? 4 })), x, z, view.yaw, view.pitch, pad)), floor, maxDistance) };
     },
-    get moving() { return Boolean(goal) || spin !== 0; },
+    get moving() { return Boolean(goal) || spin !== 0 || flick !== null; },
     /** Advance an ease or the inertia by dt seconds. Returns true while something is still moving. */
     step(dt) {
       if (goal) {
@@ -202,14 +248,25 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
         if (turn > Math.PI) turn -= Math.PI * 2; else if (turn < -Math.PI) turn += Math.PI * 2;
         view.x = from.x + (to.x - from.x) * k; view.z = from.z + (to.z - from.z) * k; view.pitch = from.pitch + (to.pitch - from.pitch) * k;
         view.yaw = from.yaw + turn * k; view.distance = from.distance * Math.pow(to.distance / from.distance, k);
-        if (goal.t >= 1) goal = null;
+        if (goal.t >= 1) { goal = null; overscroll = false; }
         apply();
-      } else if (spin) {
-        // A short glide: it loses 99.9% of its speed each second, so even a hard flick turns the city less than a quarter turn more.
-        view.yaw += spin * dt;
-        spin *= Math.pow(0.001, dt);
-        if (Math.abs(spin) < 0.08) spin = 0;
-        apply();
+      } else if (spin || flick) {
+        if (spin) {
+          // A short glide: it loses 99.9% of its speed each second, so even a hard flick turns the city less than a quarter turn more.
+          view.yaw += spin * dt;
+          spin *= Math.pow(0.001, dt);
+          if (Math.abs(spin) < 0.08) spin = 0;
+        }
+        if (flick) {
+          const wantX = view.x + flick.x * dt, wantZ = view.z + flick.z * dt;
+          view.x = wantX; view.z = wantZ;
+          apply();
+          // The land's edge stops a glide on that side.
+          if (view.x !== wantX) flick.x = 0;
+          if (view.z !== wantZ) flick.z = 0;
+          flick.x = glide(flick.x, dt); flick.z = glide(flick.z, dt);
+          if (Math.hypot(flick.x, flick.z) < view.distance * 0.02) flick = null;
+        } else apply();
       }
       return rig.moving;
     },

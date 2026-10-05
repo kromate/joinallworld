@@ -16,10 +16,10 @@
  *   'look:<dir>'      left | right | up | down — held to turn or tilt the scene camera
  * Shortcuts are ignored while typing in a field and when Ctrl/Meta/Alt is held.
  *
- * WHO GETS THE ARROWS, + AND −. One key never does two things at once; the view decides:
+ * WHO GETS THE ARROWS, + AND −. ([ ] PgUp PgDn turn and tilt the camera in a scene and the map alike.) One key never does two things at once; the view decides:
  *   venue / home scene (no sheet open)   arrows and W A S D walk; + − zoom the scene; 0 recentres it
  *   Buy mode (placing furniture)         arrows move the furniture (W A S D do nothing); + − 0 zoom the room
- *   Map                                  arrows pan; + − 0 zoom the map
+ *   Map                                  arrows pan; + − 0 zoom the map; [ ] turn it; PgUp PgDn tip it
  *   a sheet is open                      none of them reach the scene
  * S used to open the Sim sheet; it is a walking key now, and the Sim sheet is on I.
  */
@@ -50,10 +50,10 @@ export const SHORTCUTS: Shortcut[] = [
   { keys: ['ArrowDown'], label: '↓', description: 'Walk · move furniture in Buy · pan the map', run: 'key:move-down', group: 'arrows' },
   { keys: ['ArrowLeft'], label: '←', description: 'Walk · move furniture in Buy · pan the map', run: 'key:move-left', group: 'arrows' },
   { keys: ['ArrowRight'], label: '→', description: 'Walk · move furniture in Buy · pan the map', run: 'key:move-right', group: 'arrows' },
-  { keys: ['['], label: '[', description: 'Swing the camera left', run: 'look:left', group: 'look' },
-  { keys: [']'], label: ']', description: 'Swing the camera right', run: 'look:right', group: 'look' },
-  { keys: ['PageUp'], label: 'PgUp', description: 'Raise the camera (look from above)', run: 'look:up', group: 'look' },
-  { keys: ['PageDown'], label: 'PgDn', description: 'Lower the camera (look along the ground)', run: 'look:down', group: 'look' },
+  { keys: ['['], label: '[', description: 'Swing the camera left (on the map: turn it)', run: 'look:left', group: 'look' },
+  { keys: [']'], label: ']', description: 'Swing the camera right (on the map: turn it)', run: 'look:right', group: 'look' },
+  { keys: ['PageUp'], label: 'PgUp', description: 'Raise the camera (look from above) · tip the map up', run: 'look:up', group: 'look' },
+  { keys: ['PageDown'], label: 'PgDn', description: 'Lower the camera (look along the ground) · tip the map down', run: 'look:down', group: 'look' },
   { keys: ['+', '='], label: '+', description: 'Zoom in (the scene, or the map)', run: 'key:zoom-in', group: 'zoom' },
   { keys: ['-', '_'], label: '−', description: 'Zoom out (the scene, or the map)', run: 'key:zoom-out', group: 'zoom' },
   { keys: ['0'], label: '0', description: 'Recentre the camera · fit the whole city on the map', run: 'key:zoom-fit', group: 'zoom' },

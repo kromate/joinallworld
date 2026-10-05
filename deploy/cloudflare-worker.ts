@@ -35,6 +35,7 @@ import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
 import { createSqliteStore } from './sqlite-store.ts';
+import { LIMITER_CAPS, limiterBatch, limiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
 import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
@@ -223,6 +224,10 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL)');
     if (!this.sql.exec('PRAGMA table_info(rate_limits)').toArray().some(column => column['name'] === 'expires_at')) this.sql.exec('ALTER TABLE rate_limits ADD COLUMN expires_at INTEGER');
     this.sql.exec('UPDATE rate_limits SET expires_at = started_at + 60000 WHERE expires_at IS NULL');
+    // The limiter's rows are bounded per class of key (server/limiter.ts); the account class has a table of its own, added beside the first.
+    this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits_account (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL, expires_at INTEGER)');
+    this.sql.exec('CREATE INDEX IF NOT EXISTS rate_limits_expiry ON rate_limits(expires_at)');
+    this.sql.exec('CREATE INDEX IF NOT EXISTS rate_limits_account_expiry ON rate_limits_account(expires_at)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS host_keys (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
@@ -246,6 +251,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: CITY_IDS, telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
+      peek: (key: string, count = 120) => this.peek(key, count),
       send: (ws, message) => this.sendFrame(ws as HostSocket, message),
       on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
       emit(event, value) { for (const fn of listeners.get(event) || []) { try { fn(value); } catch (error) { log(`Listener for ${event} failed: ${firstLine(error)}`); } } },
@@ -320,18 +326,28 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (await ctx.storage.getAlarm() === null) await ctx.storage.setAlarm(Date.now() + (this.peers.size ? HEARTBEAT_MS : IDLE_BEAT_MS));
     }).then(() => { this.booted = true; });
   }
+  /**
+   * ctx.allow (server/limiter.ts). Rows are bounded per class of key, each class in its own table; a full table drops the
+   * rows that expire soonest to make room, so whoever filled it cannot turn newcomers away. `mod:` rows are never dropped.
+   */
   allow(key: string, count: number, windowMs = 60000): boolean {
-    const now = Date.now();
-    if (now >= this.rateCleanupAt) { this.sql.exec('DELETE FROM rate_limits WHERE expires_at <= ?', now); this.rateCleanupAt = now + 60000; }
-    const old = this.sql.exec<{ started_at: number; count: number; expires_at: number }>('SELECT started_at,count,expires_at FROM rate_limits WHERE key = ?', key).toArray()[0];
-    if (!old && this.sql.exec<{ count: number }>('SELECT COUNT(*) AS count FROM rate_limits').one().count >= 10000) {
-      this.sql.exec('DELETE FROM rate_limits WHERE expires_at <= ?', now);
-      // The operator's own budget is never locked out by a flood of other keys.
-      if (this.sql.exec<{ count: number }>('SELECT COUNT(*) AS count FROM rate_limits').one().count >= 10000 && !String(key).startsWith('mod:')) return false;
+    const now = Date.now(), kind = limiterClass(key), table = kind === 'account' ? 'rate_limits_account' : 'rate_limits', cap = LIMITER_CAPS[kind];
+    if (now >= this.rateCleanupAt) { this.sql.exec('DELETE FROM rate_limits WHERE expires_at <= ?', now); this.sql.exec('DELETE FROM rate_limits_account WHERE expires_at <= ?', now); this.rateCleanupAt = now + 60000; }
+    const old = this.sql.exec<{ started_at: number; count: number; expires_at: number }>(`SELECT started_at,count,expires_at FROM ${table} WHERE key = ?`, key).toArray()[0];
+    const size = (): number => this.sql.exec<{ count: number }>(`SELECT COUNT(*) AS count FROM ${table}`).one().count;
+    if (!old && size() >= cap) {
+      this.sql.exec(`DELETE FROM ${table} WHERE expires_at <= ?`, now);
+      const over = size() - cap;
+      if (over >= 0) this.sql.exec(`DELETE FROM ${table} WHERE key IN (SELECT key FROM ${table} WHERE key NOT LIKE 'mod:%' ORDER BY expires_at LIMIT ?)`, over + limiterBatch(cap));
     }
     const active = old && old.expires_at > now, next = active ? old.count + 1 : 1;
-    this.sql.exec('INSERT INTO rate_limits(key,started_at,count,expires_at) VALUES(?,?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count,expires_at=excluded.expires_at', key, active ? old.started_at : now, next, active ? old.expires_at : now + windowMs);
+    this.sql.exec(`INSERT INTO ${table}(key,started_at,count,expires_at) VALUES(?,?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count,expires_at=excluded.expires_at`, key, active ? old.started_at : now, next, active ? old.expires_at : now + windowMs);
     return next <= count;
+  }
+  /** ctx.peek: would allow(key, count) pass now? Reads one row; writes nothing. */
+  peek(key: string, count: number): boolean {
+    const old = this.sql.exec<{ count: number; expires_at: number }>(`SELECT count,expires_at FROM ${limiterClass(key) === 'account' ? 'rate_limits_account' : 'rate_limits'} WHERE key = ?`, key).toArray()[0];
+    return old && old.expires_at > Date.now() ? old.count < count : true;
   }
   wrap(socket: WebSocket, info: SocketInfo): HostSocket {
     const ws: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [], look: info.look ?? null, stale: false, guestUntil: 0,

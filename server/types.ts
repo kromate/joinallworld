@@ -677,6 +677,8 @@ export interface RouteContext {
   fail(status: number, code: string): HttpError
   /** In-memory rate limiter: at most `count` (120) calls per `windowMs` (60 000) for one key. */
   allow(key: string, count?: number, windowMs?: number): boolean
+  /** Would a call of allow(key, count) be allowed now? Counts nothing and creates no row: for checking a shared bucket before counting against a key of the caller's own. Absent on a host without it. */
+  peek?(key: string, count?: number): boolean
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]
   collection(db: Db, name: string, initial?: object): Record<string, unknown>

@@ -17,8 +17,8 @@
  * Pure maths: no Three.js, no DOM. Layouts are cached per pack.
  */
 import { ESTATE } from '../game/content/world.ts';
-import { landOf, scan } from './lga.ts';
-import type { CityPack, PackLga, Point2, Rect, XZ } from './types.ts';
+import { landOf, partsOf, scanRings } from './lga.ts';
+import type { CityPack, PackLga, Rect, XZ } from './types.ts';
 
 /** One estate's square on the map: its centre and its side. */
 export interface EstateCell { x: number; z: number; size: number }
@@ -47,6 +47,10 @@ const FRONT = 15;            // the side of a local government's first estate, w
 const FILL = 0.9;            // the share of an estate's square its plots cover (the rest is the verge between estates)
 
 const SCALE = 4;             // cells of the buildable-land grid per map unit
+/** Half the side, in map units, of the square a venue's or home's landmark keeps clear of estates. */
+export const SITE_CLEAR = 1.2;
+/** Half the width of the verge a ground road keeps clear of estates: its half width (scaled by the pack's roadScale) and a margin. */
+export const roadClear = (pack: CityPack, major: boolean | undefined) => ((major ? 1.25 : 0.9) * (pack.roadScale ?? 1)) + 0.3;
 const grids = new WeakMap<CityPack, Grid>();
 /**
  * The city as a grid: for every quarter-unit cell, the local government it belongs to if a house
@@ -57,22 +61,25 @@ function gridOf(pack: CityPack): Grid {
   if (grids.has(pack)) return grids.get(pack)!;
   const { minX, maxX, minZ, maxZ } = pack.bounds, cell = 1 / SCALE;
   const width = Math.ceil((maxX - minX) * SCALE), height = Math.ceil((maxZ - minZ) * SCALE);
-  const land = new Uint8Array(width * height), owner = new Uint8Array(width * height);
+  const owner = new Uint8Array(width * height);
   const paint = (target: Uint8Array, value: number) => (row: number, from: number, to: number) => target.fill(value, row * width + from, row * width + to + 1);
-  for (const entry of landOf(pack)) if (entry.kind !== 'sand') scan(entry.polygon, minX, minZ, cell, width, height, paint(land, 1));
-  const box = (x0: number, z0: number, x1: number, z1: number): [number, number][] => [[x0, z0], [x1, z0], [x1, z1], [x0, z1]];
-  for (const zone of pack.zones || []) scan(box(zone[0], zone[1], zone[2], zone[3]), minX, minZ, cell, width, height, paint(land, 0));
-  for (const spot of [...Object.values<XZ>(pack.sites || {}), ...Object.values<XZ>(pack.homes || {})]) scan(box(spot.x - 4.6, spot.z - 4.6, spot.x + 4.6, spot.z + 4.6), minX, minZ, cell, width, height, paint(land, 0));
+  // An exact pack's land is its boundaries themselves; any other pack's boundaries are clipped to its land.
+  const lands = landOf(pack).filter((entry) => entry.kind !== 'sand');
+  const land = pack.land.every((entry) => entry.exact) ? null : new Uint8Array(width * height);
+  if (land) for (const entry of lands) scanRings([entry.polygon, ...(entry.holes || [])], minX, minZ, cell, width, height, paint(land, 1));
+  pack.lgas.forEach((lga, index) => { for (const part of partsOf(lga)) scanRings(part, minX, minZ, cell, width, height, (row, from, to) => { for (let i = row * width + from; i <= row * width + to; i++) if ((!land || land[i]) && !owner[i]) owner[i] = index + 1; }); });
+  const clear = (x0: number, z0: number, x1: number, z1: number) => scanRings([[[x0, z0], [x1, z0], [x1, z1], [x0, z1]]], minX, minZ, cell, width, height, paint(owner, 0));
+  for (const zone of pack.zones || []) clear(zone[0], zone[1], zone[2], zone[3]);
+  for (const spot of [...Object.values<XZ>(pack.sites || {}), ...Object.values<XZ>(pack.homes || {})]) clear(spot.x - SITE_CLEAR, spot.z - SITE_CLEAR, spot.x + SITE_CLEAR, spot.z + SITE_CLEAR);
   for (const road of pack.roads || []) {
     if (road.bridge) continue;
-    const half = (road.major ? 1.25 : 0.9) + 0.7;
+    const half = roadClear(pack, road.major);
     for (let i = 1; i < road.points.length; i++) {
       const [ax, az] = road.points[i - 1]!, [bx, bz] = road.points[i]!, length = Math.hypot(bx - ax, bz - az) || 1, nx = (-(bz - az) / length) * half, nz = ((bx - ax) / length) * half;
       const ex = ((bx - ax) / length) * half, ez = ((bz - az) / length) * half;
-      scan([[ax - ex + nx, az - ez + nz], [bx + ex + nx, bz + ez + nz], [bx + ex - nx, bz + ez - nz], [ax - ex - nx, az - ez - nz]], minX, minZ, cell, width, height, paint(land, 0));
+      scanRings([[[ax - ex + nx, az - ez + nz], [bx + ex + nx, bz + ez + nz], [bx + ex - nx, bz + ez - nz], [ax - ex - nx, az - ez - nz]]], minX, minZ, cell, width, height, paint(owner, 0));
     }
   }
-  pack.lgas.forEach((lga, index) => scan(lga.polygon, minX, minZ, cell, width, height, (row, from, to) => { for (let i = row * width + from; i <= row * width + to; i++) if (land[i] && !owner[i]) owner[i] = index + 1; }));
   const grid = { width, height, owner, x0: minX, z0: minZ };
   grids.set(pack, grid);
   return grid;
@@ -85,7 +92,11 @@ function squareFree(mine: Sampler, x: number, z: number, size: number): boolean 
   for (let i = 0; i <= steps; i++) for (let j = 0; j <= steps; j++) if (!mine(x - inset + (2 * inset * i) / steps, z - inset + (2 * inset * j) / steps)) return false;
   return true;
 }
-const boundsOf = (polygon: readonly Point2[]): Rect => { const xs = polygon.map((point) => point[0]), zs = polygon.map((point) => point[1]); return { minX: Math.min(...xs), maxX: Math.max(...xs), minZ: Math.min(...zs), maxZ: Math.max(...zs) }; };
+const boundsOf = (lga: PackLga): Rect => {
+  const box = { minX: Infinity, maxX: -Infinity, minZ: Infinity, maxZ: -Infinity };
+  for (const part of partsOf(lga)) for (const point of part[0]!) { box.minX = Math.min(box.minX, point[0]); box.maxX = Math.max(box.maxX, point[0]); box.minZ = Math.min(box.minZ, point[1]); box.maxZ = Math.max(box.maxZ, point[1]); }
+  return box;
+};
 
 /**
  * ESTATE 1 IS THE SHOW ESTATE: one big square near the name plate, where the first 196 residents
@@ -93,7 +104,7 @@ const boundsOf = (polygon: readonly Point2[]): Rect => { const xs = polygon.map(
  * (up to FRONT units a side). The other 511 estates are the compact lattice around it.
  */
 function frontFor(lga: PackLga, mine: Sampler): EstateCell | null {
-  const { minX, maxX, minZ, maxZ } = boundsOf(lga.polygon), [px, pz] = lga.plate;
+  const { minX, maxX, minZ, maxZ } = boundsOf(lga), [px, pz] = lga.plate;
   for (let size = FRONT; size >= 3; size *= 0.9) {
     let best: { x: number; z: number; size: number; far: number } | null = null;
     for (let z = minZ + size / 2; z <= maxZ - size / 2; z += size / 4) for (let x = minX + size / 2; x <= maxX - size / 2; x += size / 4) {
@@ -105,7 +116,7 @@ function frontFor(lga: PackLga, mine: Sampler): EstateCell | null {
   return null;
 }
 function cellsFor(lga: PackLga, size: number, mine: Sampler, front: EstateCell | null, want: number): EstateCell[] | null {
-  const { minX, maxX, minZ, maxZ } = boundsOf(lga.polygon), half = size / 2, cells: EstateCell[] = [], gap = front ? front.size / 2 + half + 0.4 : 0;
+  const { minX, maxX, minZ, maxZ } = boundsOf(lga), half = size / 2, cells: EstateCell[] = [], gap = front ? front.size / 2 + half + 0.4 : 0;
   for (let z = minZ + half; z + half <= maxZ + 1e-9; z += size) for (let x = minX + half; x + half <= maxX + 1e-9; x += size) {
     if (front && Math.abs(x - front.x) < gap && Math.abs(z - front.z) < gap) continue;
     if (squareFree(mine, x, z, size)) cells.push({ x, z, size });

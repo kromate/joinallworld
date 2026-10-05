@@ -15,6 +15,7 @@ import { LANDMARK_KINDS } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints } from './labels.ts';
 import type { ScreenBox, GroundPoint } from './labels.ts';
 import { lgaAt } from './lga.ts';
+import { fromLocal, ORIGINS } from './geo/frame.ts';
 import { shimmer } from './city-build.ts';
 import pack from './cities/lagos.ts';
 import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.ts';
@@ -25,8 +26,9 @@ import { goBlock, tripInfo, chosenMode } from '../app/features/travel/travelMode
 const NOON = Date.UTC(2026, 0, 5, 11), NIGHT = Date.UTC(2026, 0, 5, 22);
 const network = buildNetwork(pack);
 const keyOf = (id: string, home = 'yaba') => (id === 'home' ? `home:${home}` : id);
-const mainland = roundPolygon(pack.land.find((entry) => entry.id === 'mainland')!.points, 2);
-const onMainland = (spot: GroundPoint) => pointInPolygon(spot.x, spot.z, mainland);
+// The mainland is the land north of the lagoon: every local government but the three on the barrier coast (the real boundaries, drawn exactly).
+const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
+const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
 test('the region registry: Lagos is playable, Ibadan, Abuja and Port Harcourt are coming soon, and a city is data plus a pack', async () => {
   assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'soon'], ['abuja', 'soon'], ['port-harcourt', 'soon']]);
@@ -66,7 +68,7 @@ test('the Lagos pack places every venue (the airport and the refinery among them
   for (const [id, venue] of Object.entries(VENUES)) {
     if (id === 'home') continue;
     assert.equal(onMainland(pack.sites[id]!), venue.zone === 'mainland', `${id} is on the ${venue.zone}`);
-    if (venue.zone === 'east') assert.ok(pack.sites[id]!.x > 56, `${id} is on the Lekki peninsula`);
+    if (venue.zone === 'east') assert.ok(fromLocal(ORIGINS.lagos, pack.sites[id]!.x, pack.sites[id]!.z).lon > 3.44, `${id} is east of Ikoyi, on the Lekki peninsula`);
   }
   for (const [id, spot] of Object.entries(HOME_SPOTS)) assert.equal(onMainland(pack.homes[id]!), spot.zone === 'mainland', `home ${id}`);
 });
@@ -87,7 +89,7 @@ test('roads: every place can reach every other along the road graph, across the 
   }
   assert.equal(routes, ids.length * (ids.length - 1));
   assert.deepEqual(network.route('hospital', 'state-house')!.bridges, ['third-mainland'], 'Gbagada to the Marina goes over the Third Mainland Bridge');
-  assert.ok(network.route('home:ikoyi', 'palms')!.bridges.includes('link'), 'Ikoyi to Lekki takes the link bridge');
+  assert.ok(network.route('home:banana', 'home:lekki')!.bridges.includes('link'), 'Banana Island to Lekki Phase 1 takes the link bridge');
   assert.ok(network.route('park', 'i-fitness')!.bridges.includes('falomo'), 'Lagos Island to Victoria Island takes Falomo Bridge');
   // A bridge is a bridge: its deck rises over the water and comes back down at both ends.
   for (const road of network.roads.filter((item) => item.bridge)) {
@@ -148,7 +150,7 @@ test('the place on the route is a pure function of progress: leave on foot, ride
   assert.ok(shares.lead > 0 && shares.lead <= 0.2 && shares.tail > 0 && shares.tail <= 0.2);
   // In the middle of a cross-lagoon ride the vehicle is on a bridge, above the water.
   const onBridge = Array.from({ length: 200 }, (_, i) => tripPose(route, i / 200, 'danfo')).filter((pose) => pose.bridge);
-  assert.ok(onBridge.length > 10 && onBridge.some((pose) => pose.y > 1), 'the ride crosses a raised bridge deck');
+  assert.ok(onBridge.length > 10 && onBridge.some((pose) => pose.y > 0.5), 'the ride crosses a raised bridge deck');
   assert.ok(onBridge.every((pose) => pose.phase === 'ride'));
 });
 

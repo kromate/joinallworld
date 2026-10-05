@@ -1,3 +1,4 @@
+import { PORT_HARCOURT_SCENES } from './scenes.ts'
 import {
   activity, buildCityContent, hospitalSpots, PORT_HARCOURT_LOCAL_MODES, PORT_HARCOURT_LOCAL_UNIT_DESCRIPTIONS,
   riversPeople, spot, work, type CityVenueSeed,
@@ -80,7 +81,7 @@ const voices: Readonly<Record<string, readonly [string, string, string, string]>
 }
 const careers={'community-helper':'pleasure-park',tech:'rsu',banking:'rumuola-savings',music:'garden-city-evening',trading:'mile-one-market',nursing:'ph-clinic',hair:'garden-city-salon',chef:'bole-kitchen',dj:'garden-city-evening',fitness:'yakubu-gowon-stadium',creator:'tourist-beach',teaching:'iaue',event:'isaac-boro-park',football:'adokiye-stadium',retail:'oil-mill-market'}
 
-const base=buildCityContent({cityId:'port-harcourt',cityName:'Port Harcourt',origin:PORT_HARCOURT_MAP_ORIGIN,bounds:PORT_HARCOURT_PLAY_BOUNDS,localUnitDescriptions:PORT_HARCOURT_LOCAL_UNIT_DESCRIPTIONS,venues,people:riversPeople(venues,names,voices),careerVenues:careers,careerSummaries:{'community-helper':'Help visitors and residents at the Pleasure Park community desk.'},houses:[
+const base=buildCityContent({scenes:PORT_HARCOURT_SCENES,cityId:'port-harcourt',cityName:'Port Harcourt',origin:PORT_HARCOURT_MAP_ORIGIN,bounds:PORT_HARCOURT_PLAY_BOUNDS,localUnitDescriptions:PORT_HARCOURT_LOCAL_UNIT_DESCRIPTIONS,venues,people:riversPeople(venues,names,voices),careerVenues:careers,careerSummaries:{'community-helper':'Help visitors and residents at the Pleasure Park community desk.'},houses:[
   {id:'ph-diobu-room',label:'Single room',districtId:'diobu',district:'Diobu',rent:3200,grid:6,point:points.mile1},
   {id:'ph-rumuola-flat',label:'Self-contain',districtId:'rumuola',district:'Rumuola',rent:7500,grid:8,point:points.park},
   {id:'ph-eleme-flat',label:'One-bedroom flat',districtId:'eleme',district:'Alesa-Eleme',rent:12000,grid:9,point:points.alesa},

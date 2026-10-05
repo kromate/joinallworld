@@ -3,7 +3,7 @@ import { toLocal } from '../../../geo/frame.ts'
 import type {
   ActivityDefinition, CalendarEvent, CityContent, CityCultureCard, CityGuidePlace, CityVenueContent,
   DreamDefinition, HouseDefinition, JobDefinition, NpcDefinition, SceneKind, SpotDefinition,
-  StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, WishDefinition,
+  StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, VenueScene, WishDefinition,
 } from '../../../types/content.ts'
 import type { DreamId, LotteryId } from '../../../types/life.ts'
 
@@ -25,6 +25,8 @@ export interface CityHouseSeed {
 export interface CityContentSpec<City extends string> {
   readonly cityId: City; readonly cityName: string; readonly origin: Readonly<{ x: number; z: number }>; readonly bounds: CityBounds
   readonly localUnitDescriptions: Readonly<Record<string, string>>
+  /** A venue's own scene (kind, variant, spot anchors) where it is not the bare scene of its seed's kind: ./scenes.ts. */
+  readonly scenes?: Readonly<Record<string, VenueScene>>
   readonly venues: readonly CityVenueSeed[]; readonly people: readonly CityPersonSeed[]
   readonly careerVenues: Readonly<Record<string, string>>; readonly careerSummaries: Readonly<Record<string, string>>
   readonly houses: readonly CityHouseSeed[]; readonly events: readonly CalendarEvent[]
@@ -93,10 +95,10 @@ export function buildCityContent<City extends string>(spec: CityContentSpec<City
     const definition: VenueDefinition = {
       id: seed.id, label: seed.name, district: seed.district, icon: seed.icon, category: seed.category,
       description: seed.description, zone: 'mainland', map: displayPoint(spec.origin, spec.bounds, seed.point), ambient: [...seed.ambient],
-      scene: { kind: seed.kind, ...(seed.variant ? { variant: seed.variant } : {}) }, spots,
+      scene: spec.scenes?.[seed.id] ?? { kind: seed.kind, ...(seed.variant ? { variant: seed.variant } : {}) }, spots,
       ...(seed.hours ? { hours: { ...seed.hours } } : {}), ...(seed.beta ? { beta: true } : {}), ...(seed.note ? { note: seed.note } : {}),
     }
-    return Object.freeze({ cityId: spec.cityId, id: seed.id, kind: seed.kind, name: seed.name, district: seed.district, position: { kind: 'lon-lat' as const, ...seed.point }, whatYouCanDo: seed.description, definition: Object.freeze(definition), spotWording: Object.freeze({}), activityWording: Object.freeze({}) })
+    return Object.freeze({ cityId: spec.cityId, id: seed.id, kind: definition.scene?.kind ?? seed.kind, name: seed.name, district: seed.district, position: { kind: 'lon-lat' as const, ...seed.point }, whatYouCanDo: seed.description, definition: Object.freeze(definition), spotWording: Object.freeze({}), activityWording: Object.freeze({}) })
   }))
   const publicVenues = venues.filter((venue) => venue.id !== 'home')
   if (spec.people.length !== publicVenues.length * 2) throw new Error(`${spec.cityId} requires two authored regulars at every public venue`)

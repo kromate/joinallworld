@@ -1,3 +1,4 @@
+import { ABUJA_SCENES } from './scenes.ts'
 import {buildCityContent,hospitalSpots,type CityVenueSeed} from './descriptions.ts'
 import {ABUJA_MAP_ORIGIN,ABUJA_PLAY_BOUNDS} from './rules.ts'
 const venueSeeds:readonly (Omit<CityVenueSeed,'spots'> & {spots:CityVenueSeed['spots']|null})[] = [
@@ -1245,7 +1246,7 @@ const venueSeeds:readonly (Omit<CityVenueSeed,'spots'> & {spots:CityVenueSeed['s
   }
 ]
 const venues:readonly CityVenueSeed[] = venueSeeds.map(venue=>({...venue,spots:venue.spots ?? hospitalSpots()}))
-const base = buildCityContent({...{
+const base = buildCityContent({scenes:ABUJA_SCENES,...{
   "cityId": "abuja",
   "cityName": "Abuja",
   "localUnitDescriptions": {

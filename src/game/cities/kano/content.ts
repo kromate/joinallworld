@@ -1,3 +1,4 @@
+import { KANO_SCENES } from './scenes.ts'
 import {buildCityContent,hospitalSpots,type CityVenueSeed} from './descriptions.ts'
 import {KANO_MAP_ORIGIN,KANO_PLAY_BOUNDS} from './rules.ts'
 const seeds:readonly(Omit<CityVenueSeed,'spots'>&{spots:CityVenueSeed['spots']|null})[]=[
@@ -1355,7 +1356,7 @@ const seeds:readonly(Omit<CityVenueSeed,'spots'>&{spots:CityVenueSeed['spots']|n
   }
 ]
 const venues:readonly CityVenueSeed[]=seeds.map(venue=>({...venue,spots:venue.spots ?? hospitalSpots()}))
-const base=buildCityContent({...{
+const base=buildCityContent({scenes:KANO_SCENES,...{
   "cityId": "kano",
   "cityName": "Kano",
   "localUnitDescriptions": {

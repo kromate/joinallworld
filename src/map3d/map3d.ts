@@ -7,7 +7,15 @@
  *   createMap3D(container, { pack, onSelectVenue, onSelectGov, onSelectNeighbour, onTripDue, onContextLost })
  *     → { ready, setState(state), setPlayer({ look, seed }), resize(), arrive(done), diagnostics(), destroy() }
  * It listens to the Map panel's 'jaw:map-ui' event (filter, selected place, layers and their data)
- * and to the shell's 'jaw:key' (arrows pan, + and − zoom, 0 shows the whole city).
+ * and to the shell's 'jaw:key' (arrows pan, + and − zoom, [ ] turn, PgUp PgDn tip, 0 shows the whole city).
+ *
+ * THE POINTER. The left button, or one finger, grabs the ground and drags it (the point under the pointer stays under it, and a
+ * quick flick glides on); the right button, or Shift, Ctrl or Alt with the left, turns and tips the view about the middle of the
+ * screen (a full turn, the tilt held between the flattest the distance allows and nearly straight down); two fingers pinch to zoom,
+ * twist to turn and travel to move; the wheel and a trackpad pinch zoom towards the pointer; a second tap on bare ground zooms
+ * in. A press that moves less than a few pixels and ends within a third of a second is a tap; anything else never selects.
+ * A compass appears while the view is turned, and one tap puts north up. The land's edge gives a little while dragging and
+ * springs back. With reduced motion nothing glides. The arithmetic is in src/scene/gesture.ts and src/map3d/camera.ts.
  *
  * THE OPENING VIEW: every screen opens on the metropolitan core, filling the width; "Whole city" pulls back to the whole
  * state (tipped well up, and turned a quarter on a tall phone when that is larger) and "Find me" comes back to the player

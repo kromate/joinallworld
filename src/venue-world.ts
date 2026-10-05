@@ -414,6 +414,10 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   const pointers = new Map<number, { x: number; y: number; startX: number; startY: number; loose: boolean; kind: DragKind; type: string; down: number }>();
   let suppressClick = false;
   const canvas = renderer.domElement;
+  // Where the canvas is on the page, read when the scene is sized and when a press begins, not for every pointer move or tag.
+  let boxCache: { left: number; top: number; width: number; height: number } | null = null;
+  const refreshBox = () => (boxCache = container.getBoundingClientRect());
+  const boxOf = () => boxCache ?? refreshBox();
   const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
   const previousTouchAction = canvas.style?.touchAction;
   const previousCursor = canvas.style?.cursor;
@@ -752,6 +756,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     if (event.pointerType === 'touch') controls?.touch(true);
     if (event.button > 2 || pointers.size >= 2) return;
     if (event.button === 1) event.preventDefault();
+    refreshBox();
     if (!pointers.size) suppressClick = false;
     else suppressClick = true;
     // A press that began on a name tag is not captured yet: left alone it is a click on the tag; once it moves it becomes a drag (pointerMove).
@@ -808,7 +813,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   /** The floor point (scene coordinates) under a point of the canvas, or null when it looks at the sky. */
   function floorAt(clientX: number, clientY: number, out: { x: number; z: number }) {
-    const box = container.getBoundingClientRect();
+    const box = boxOf();
     if (!box.width || !box.height || !current) return null;
     const nx = ((clientX - (box.left || 0)) / box.width) * 2 - 1, ny = -((clientY - (box.top || 0)) / box.height) * 2 + 1;
     camera.updateMatrixWorld(true);
@@ -826,7 +831,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     point.set(x, y, z);
     if (current?.group) point.applyMatrix4(current.group.matrixWorld);
     point.project(camera);
-    const box = container.getBoundingClientRect();
+    const box = boxOf();
     out.x = (box.left || 0) + ((point.x + 1) / 2) * box.width; out.y = (box.top || 0) + ((1 - point.y) / 2) * box.height;
     return out;
   }
@@ -956,6 +961,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   const listeners: Record<string, EventListener> = { pointerdown: (event) => pointerDown(event as PointerEvent), pointermove: (event) => pointerMove(event as PointerEvent), pointerup: (event) => pointerEnd(event as PointerEvent),
     pointercancel: (event) => pointerEnd(event as PointerEvent), lostpointercapture: (event) => pointerEnd(event as PointerEvent), wheel: (event) => wheel(event as WheelEvent),
     contextmenu(event) { event.preventDefault(); },
+    pointerenter() { refreshBox(); },
     pointerleave() { if (hover && !pointers.size) { setHover(null); if (!loop.running) renderScene(); } },
     click(event) {
       if (suppressClick && (event as MouseEvent).detail !== 0) { event.preventDefault(); event.stopImmediatePropagation(); return; }
@@ -1158,7 +1164,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   /** Size the canvas and the projection, and give the orbit the scene's own camera preset and limits. */
   function frame() {
-    const { width, height } = container.getBoundingClientRect();
+    const { width, height } = refreshBox();
     size = { width, height };
     camera.aspect = width / Math.max(1, height);
     const portrait = camera.aspect < 0.85;

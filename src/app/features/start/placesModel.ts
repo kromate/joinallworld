@@ -61,5 +61,6 @@ export function groupLgas(cityId: string, lgas: readonly LgaCard[], query = ''):
   const zones = new Map<string, LgaCard[]>()
   for (const item of shown) { const zone = zoneOf(cityId, item.id); zones.set(zone, [...(zones.get(zone) ?? []), item]) }
   const keys = [...zones.keys()].sort((a, b) => (ZONE_ORDER.indexOf(a) + 1 || 99) - (ZONE_ORDER.indexOf(b) + 1 || 99))
-  return keys.map((zone) => ({ zone, title: ZONE_TITLES[zone] ?? '', items: (zones.get(zone) ?? []).slice().sort((a, b) => a.name.localeCompare(b.name)) }))
+  // A city whose units all lie in one zone (an inland city) gets one plain list, not a heading that says nothing.
+  return keys.map((zone) => ({ zone, title: keys.length > 1 ? ZONE_TITLES[zone] ?? '' : '', items: (zones.get(zone) ?? []).slice().sort((a, b) => a.name.localeCompare(b.name)) }))
 }

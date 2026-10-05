@@ -5,6 +5,7 @@ import { createRequire } from 'node:module'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { ibadanJourney } from '../server/testing/ibadanJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, object, qualifyState, seedLegacyRecords } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice, JourneyHost, JourneySocket } from '../server/testing/cityJourney.ts'
 
@@ -136,5 +137,6 @@ test('Worker city modules: complete city journey and lossless legacy switches su
     },
   }
   const device = await cityJourney(host)
+  await ibadanJourney(host)
   await legacyJourney(host, device)
 })

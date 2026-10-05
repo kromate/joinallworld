@@ -51,6 +51,15 @@ function clip(points: readonly Point2[], r: Rect): Point2[] {
   return out;
 }
 
+/** What a state's surroundings are made of: its own id in the atlas data, the countries that touch the window, the roads that leave it and the names around it. */
+export interface ContextSpec {
+  /** The state's id in the atlas data: drawn as the base under the state itself, and not as a neighbour. */
+  own: string;
+  countries: readonly string[];
+  roads: readonly { id: string; name: string; line: readonly (readonly [number, number])[] }[];
+  names: readonly { id: string; text: string; kind: ContextLabel['kind']; at: readonly [number, number] }[];
+}
+
 /** Roads that leave the state, as [lon, lat]: they start where the state's own roads end. */
 const ROADS: { id: string; name: string; line: [number, number][] }[] = [
   { id: 'ibadan', name: 'Lagos–Ibadan Expressway', line: [[3.365, 6.642], [3.42, 6.74], [3.55, 6.88], [3.7, 7.04], [3.8, 7.2], [3.9, 7.38]] },
@@ -87,8 +96,9 @@ const cache = new Map<string, MapContext>();
  * The context of a state map. `planned` lists the state ids the registry has a reserved city in; `around` is the window
  * around the state's own rect, in map units (the default is wide enough that a phone held upright is still full of land).
  */
-export function mapContext(origin: MapOrigin, state: Rect, planned: readonly string[] = [], around = 2600): MapContext {
-  const key = `${origin.x},${origin.z}|${planned.join()}|${around}`;
+export function mapContext(origin: MapOrigin, state: Rect, planned: readonly string[] = [], around = 2600, spec?: ContextSpec): MapContext {
+  const own = spec?.own ?? 'lagos', countries = spec?.countries ?? COUNTRIES, roadList = spec?.roads ?? ROADS, nameList = spec?.names ?? NAMES;
+  const key = `${origin.x},${origin.z}|${planned.join()}|${around}|${own}`;
   const hit = cache.get(key);
   if (hit) return hit;
   const rect: Rect = { minX: state.minX - around, maxX: state.maxX + around, minZ: state.minZ - around, maxZ: state.maxZ + around };
@@ -104,13 +114,13 @@ export function mapContext(origin: MapOrigin, state: Rect, planned: readonly str
   };
   const nigeria = decodeTopology(NIGERIA), around_ = decodeTopology(AROUND);
   // Under the state itself: the same region from the atlas data, so that a hairline between two sources never shows water.
-  const lagos = nigeria.byId.get('lagos');
-  if (lagos) draw('lagos-base', 'Lagos', 'base', lagos.rings, null);
+  const base = nigeria.byId.get(own);
+  if (base) draw(`${own}-base`, base.name, 'base', base.rings, null);
   // Every other state that comes into the window: the whole map of Nigeria is there, not only the ones named.
-  for (const f of nigeria.features) if (f.id !== 'lagos') draw(f.id, f.name, 'state', f.rings, planned.includes(f.id) ? 'planned' : null);
-  for (const id of COUNTRIES) { const f = around_.byId.get(id); if (f) draw(id, f.name, 'country', f.rings, null); }
-  const roads = ROADS.map((road) => ({ id: road.id, name: road.name, points: clipLine(road.line.map(([lon, lat]) => toLocal(origin, lon, lat)), rect) }));
-  const labels = NAMES.map((name) => { const [x, z] = toLocal(origin, name.at[0], name.at[1]); return { id: name.id, text: name.text, kind: name.kind, x, z }; });
+  for (const f of nigeria.features) if (f.id !== own) draw(f.id, f.name, 'state', f.rings, planned.includes(f.id) ? 'planned' : null);
+  for (const id of countries) { const f = around_.byId.get(id); if (f) draw(id, f.name, 'country', f.rings, null); }
+  const roads = roadList.map((road) => ({ id: road.id, name: road.name, points: clipLine(road.line.map(([lon, lat]) => toLocal(origin, lon, lat)), rect) }));
+  const labels = nameList.map((name) => { const [x, z] = toLocal(origin, name.at[0], name.at[1]); return { id: name.id, text: name.text, kind: name.kind, x, z }; });
   const made: MapContext = { rect, land, roads, labels };
   cache.set(key, made);
   return made;

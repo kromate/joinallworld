@@ -7,10 +7,10 @@ A playable city is one folder under `src/game/cities`. The folder exports one `C
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes Lagos and legacy Ibadan lives.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos only.
+- `isCityId` accepts cities whose stored lives the server may read. This currently includes Lagos and Ibadan.
+- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos and Ibadan.
 
-Ibadan, Abuja and Port Harcourt remain closed. Ibadan has compatibility metadata because earlier builds stored lives under that key. Loading its compatibility content uses the unchanged Lagos catalogue and does not open Ibadan or allow a fresh life there.
+Abuja and Port Harcourt remain closed. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
 
 `registeredCityIds()` returns server-known ids. `playableCityIds()` returns open modules. Callers should choose the list that matches the action instead of treating an atlas label as permission to create a life.
 
@@ -93,4 +93,4 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 
 `npm run geo:boundaries` regenerates only the Lagos topology. It downloads the pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. `npm run geo:boundaries -- --check` compares both exact generated text and decoded geometry without writing. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. Changing the Nigeria atlas requires the explicit `--nigeria` option; the default cannot change it.
 
-The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and three compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.
+The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and two compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.

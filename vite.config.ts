@@ -76,7 +76,7 @@ export default defineConfig({
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
     if (city) return `city-${city[1]}-${city[2]}`
-    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|geometry)\.ts$/)
+    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|roads|geometry)\.ts$/)
     if (geometry) return `city-${geometry[1]}-${geometry[2]}`
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'

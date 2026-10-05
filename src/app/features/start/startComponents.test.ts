@@ -208,6 +208,28 @@ test('a life that never had a character starts the creator on the look, with und
   await resetCreator()
 })
 
+test('the home step of a life not yet started offers every open state, and the chosen city brings its own local governments', async () => {
+  await resetCreator()
+  const { cr } = await load<{ cr: { step: string; city: string | null } }>('/src/app/features/start/creatorState.ts')
+  const cities = await load<{ loadCityContent(id: string): Promise<unknown> }>('/src/game/cities/registry.ts')
+  await cities.loadCityContent('ibadan')
+  try {
+    await render('QuickStartApp', { params: { reason: 'new' } })
+    cr.step = 'home'
+    const lagos = await render('QuickStartApp', { params: { reason: 'new' } })
+    assert.ok(text(lagos).includes('Lagos State') && text(lagos).includes('Oyo State'), 'both open states are chips')
+    assert.ok(text(lagos).includes('local governments of Lagos'))
+    cr.city = 'ibadan'
+    const ibadan = await render('QuickStartApp', { params: { reason: 'new' } })
+    const words = text(ibadan)
+    assert.ok(words.includes('11 local governments of Ibadan'), 'the list is the chosen city’s own')
+    for (const id of ['akinyele', 'egbeda', 'ibadan-north', 'ibadan-north-east', 'ibadan-north-west', 'ibadan-south-east', 'ibadan-south-west', 'ido', 'lagelu', 'oluyole', 'ona-ara']) assert.ok(ibadan.includes(`data-lga="${id}"`), id)
+    assert.ok(!ibadan.includes('data-lga="ikeja"'), 'nothing of Lagos is listed')
+    assert.ok(!words.includes('The mainland'), 'an inland city is not split into island and mainland')
+  } finally { cr.city = null; cr.step = 'who' }
+  await resetCreator()
+})
+
 test('the home step: state, city, the starter house, find my area, and the local governments by zone', async () => {
   await resetCreator()
   await withState(guest, async () => {

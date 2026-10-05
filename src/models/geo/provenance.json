@@ -96,6 +96,11 @@
         "way/863990411"
       ],
       "retrieved": "2026-10-05"
+    },
+    "openstreetmap-ibadan-roads": {
+      "url": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL 1.0 (© OpenStreetMap contributors)",
+      "note": "Queried by scripts/geo/build-ibadan-roads.ts; the combined response hash is recorded in src/game/cities/ibadan/roads.ts."
     }
   },
   "attribution": {
@@ -147,6 +152,16 @@
         "src/game/cities/ibadan/landmarks.ts (IBADAN_RAIL_ROUTE)",
         "src/game/cities/ibadan/rail.ts (IBADAN_ROUTE_GEOMETRY)"
       ]
+    },
+    "ibadan-roads": {
+      "inputs": [
+        "openstreetmap-ibadan-roads"
+      ],
+      "method": "Overpass interpreter: motorway, trunk and primary ways in the play-area box and named secondary ways in the core, simplified with Douglas-Peucker (0.0008 degrees, 0.0004 in the core) and quantised to 0.0001 degrees; the source sha256 is in the generated file's header.",
+      "outputs": [
+        "src/game/cities/ibadan/roads.ts"
+      ],
+      "generator": "scripts/geo/build-ibadan-roads.ts"
     }
   },
   "processing": {

@@ -67,3 +67,22 @@ test('starting in a chosen city loads it before creating the first life and neve
     assert.deepEqual(requested, ['/api/session', `/api/life?city=${fictionalCity.id}`])
   } finally { client.stop(); setup.dispose() }
 })
+
+test('a device with no saved city whose session holds one life in Ibadan asks for that life and never for Lagos', async () => {
+  const requested: string[] = []
+  const client = createClient({
+    now: () => now, storage: { getItem: () => null, setItem: () => {} },
+    setTimeout: () => 0, clearTimeout: () => {},
+    fetch: async (path) => {
+      requested.push(String(path))
+      if (path === '/api/session') return response({ session: { ...session, cities: ['ibadan'] }, serverTime: now })
+      if (path === '/api/life?city=ibadan') return response({ state: createLife({ name: 'Tester' }, { now, cityId: 'ibadan' }), serverTime: now })
+      throw new Error(`Unexpected request ${path}`)
+    },
+  })
+  try {
+    assert.equal(await client.connect(), true)
+    assert.equal(client.cityId, 'ibadan')
+    assert.deepEqual(requested, ['/api/session', '/api/life?city=ibadan'])
+  } finally { client.stop() }
+})

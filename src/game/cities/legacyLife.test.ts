@@ -4,7 +4,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
-import { createLife, viewLife } from '../../life.ts'
+import { createLife, dispatch, viewLife } from '../../life.ts'
 import type { LifeState } from '../../types/life.ts'
 import { loadCityContent } from '../../game/cities/registry.ts'
 await loadCityContent('lagos')
@@ -50,4 +50,18 @@ test('a Lagos life that holds a home in another city keeps it, and a life with n
   assert.deepEqual(Object.keys(state.estate.away), ['ibadan'])
   const bare = createLife({ name: 'Ada' }, { now: NOW, cityId: 'ibadan' })
   assert.equal(bare.estate.city, 'ibadan')
+})
+
+test('the oldest Ibadan lives (before accounts, characters or the creator) keep cash, job, needs and skills, land at a real Ibadan place and are asked once for a local government, free', () => {
+  const old = { v: 1, t: NOW, cash: 12345, job: 'tech', needs: { hunger: 71, energy: 68, fun: 59, social: 63, hygiene: 75, bladder: 82 }, skills: { coding: 80 }, property: { house: 'yaba' }, location: 'cchub', travel: { home: 'yaba', visited: ['park', 'cchub'] } }
+  const state = createLife(old, { now: NOW, cityId: 'ibadan' })
+  assert.deepEqual([state.cash, state.job, state.needs, state.skills.coding], [12345, 'tech', old.needs, 80])
+  assert.equal(state.location, 'polytechnic', 'the old Lagos tech hub becomes the local one')
+  assert.equal(state.estate.lga, null, 'the local government is chosen once')
+  assert.equal(state.property.house, 'ibadan-bodija-flat', 'a home that exists in Ibadan, not the Lagos one')
+  const view = viewLife(state, { now: NOW, cityId: 'ibadan' })
+  assert.equal(view.estate.lgas.length, 11)
+  assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: 'oluyole', via: 'manual' } }, { now: NOW, cityId: 'ibadan' }).code, 'lga_set')
+  assert.equal(state.cash, 12345, 'the first choice costs nothing')
+  assert.deepEqual(plain(createLife(plain(state), { now: NOW, cityId: 'ibadan', trustedSave: true })), plain(state), 'read again, nothing changes')
 })

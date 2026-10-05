@@ -7,6 +7,7 @@ import { once } from 'node:events'
 import { WebSocket } from 'ws'
 import { createServer } from './server.ts'
 import type { AllworldServer } from './server.ts'
+import { ibadanJourney } from './testing/ibadanJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, qualifyState, seedLegacyRecords } from './testing/cityJourney.ts'
 import { registerCityForTest, loadCityContent } from '../src/game/cities/registry.ts'
 import { fictionalCity, fictionalNeighbourCity } from '../src/game/cities/testing/fictionalCity.test-fixture.ts'
@@ -70,5 +71,6 @@ test('Node city modules: complete city journey and lossless legacy switches surv
     },
   }
   const device = await cityJourney(host)
+  await ibadanJourney(host)
   await legacyJourney(host, device)
 })

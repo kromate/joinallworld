@@ -32,9 +32,11 @@ export function qualifyState(value: unknown): void {
   const state = object(value), civic = object(state.civic), work = object(civic.work)
   civic.since = JOURNEY_TIME - 4 * 86400000
   work.days = 2
+  if (typeof work.last !== 'number') work.last = Math.floor((JOURNEY_TIME - 86400000) / 86400000) // a stored count of days needs its last day
 }
 
-export async function cityJourney(host: JourneyHost): Promise<JourneyDevice> {
+/** What a scripted run needs of a host: read a life, send one action, let a timed action finish, start a new life in a city. */
+export function driver(host: JourneyHost) {
   const id = (): string => `${host.now()}:${randomUUID()}`
   async function read(path: string, cookie?: string): Promise<Record<string, unknown>> {
     const response = await host.request(path, undefined, cookie)
@@ -78,6 +80,11 @@ export async function cityJourney(host: JourneyHost): Promise<JourneyDevice> {
     conserved(settled)
     return device
   }
+  return { id, read, life, action, finish, conserved, start }
+}
+
+export async function cityJourney(host: JourneyHost): Promise<JourneyDevice> {
+  const { id, read, life, action, finish, conserved, start } = driver(host)
   async function square(device: JourneyDevice, city: string): Promise<Record<string, unknown>> {
     const current = await life(device, city)
     if (current.location === 'test-square') return current

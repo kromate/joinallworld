@@ -30,6 +30,7 @@ import AvatarFigure from './AvatarFigure.vue'
 import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
 import StepHome from './StepHome.vue'
+import { lgasOf } from '../../../game/content/world.ts'
 import StepLook from './StepLook.vue'
 import StepReady from './StepReady.vue'
 import StepSpirit from './StepSpirit.vue'
@@ -117,7 +118,11 @@ if (!steps.value.some((item) => item.id === cr.step)) cr.step = steps.value[0]?.
 openLookTab('body')
 
 const presetId = computed(() => (isNew ? (quickDraftRef.value ?? currentDraft()).preset : null))
-const areaName = computed(() => view.value.estate?.lgas?.find((item) => item.id === d().area?.lga)?.name ?? '')
+const areaName = computed(() => {
+  const id = d().area?.lga
+  // A life not started yet may be choosing a home in another city than the one on screen: the name comes from that city's own units.
+  return view.value.estate?.lgas?.find((item) => item.id === id)?.name ?? (cr.city ? lgasOf(cr.city).find((item) => item.id === id)?.name : undefined) ?? ''
+})
 const alt = computed(() => lookAlt(draft.value.look, draft.value.name))
 const finished = computed(() => !isNew && o.value.done)
 const shown = computed(() => shownError(cr.error, problem.value))
@@ -271,7 +276,7 @@ async function finish(stay: boolean): Promise<void> {
 function onStarted(event: Event): void {
   if (!cr.settling) return
   const ok = (event as CustomEvent<{ ok?: boolean }>).detail?.ok === true
-  if (ok) { void runSettle(false); return }
+  if (ok) { cr.city = null; void runSettle(false); return } // the life exists in its city now: the screen's own city is the right one
   cr.pending = ''
   cr.settling = false
   cr.played = false

@@ -17,7 +17,7 @@
 /** The camera's view: what is looked at (x, z on the ground), the turn, the tilt and the distance. */
 export interface RigView { x: number; z: number; yaw: number; pitch: number; distance: number }
 /** What the rig needs to know of the city: the board it may wander over, the land to fit, and optional limits. */
-export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean }
+export interface RigBounds { minX: number; maxX: number; minZ: number; maxZ: number; fit?: { minX: number; maxX: number; minZ: number; maxZ: number }; core?: { minX: number; maxX: number; minZ: number; maxZ: number }; minDistance?: number; roamZ?: number; /** The pack draws the land around its state: the whole-state view is straight down, unturned, with that land filling what the state does not. */ context?: boolean; /** The state has no coast to leave room for: its whole-state view is centred, not nudged north. */ inland?: boolean }
 /** Pixels of the canvas the HUD covers. */
 export interface RigInsets { left?: number; top?: number; right?: number; bottom?: number }
 export interface RigPoint { x: number; z: number; y?: number }
@@ -163,7 +163,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       if (bounds.context) {
         const distance = distanceFor(corners(), centre.x, centre.z, 0, TOP_DOWN, 1.04);
         // The coast is the state's south edge and beyond it is sea: the view is nudged north so that land, not water, is most of the picture.
-        const half = Math.tan((camera.fov * Math.PI) / 360) * distance, ahead = Math.min(half * 0.3, reach * 0.9);
+        const half = Math.tan((camera.fov * Math.PI) / 360) * distance, ahead = bounds.inland ? 0 : Math.min(half * 0.3, reach * 0.9);
         return { x: centre.x, z: centre.z - ahead, yaw: 0, pitch: TOP_DOWN, distance };
       }
       // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.

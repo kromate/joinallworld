@@ -88,17 +88,17 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     note: 'Beta gameplay polling centre co-located with the mapped Mapo civic complex; it is not presented as a permanent electoral office.',
   },
   {
-    id: 'bowers-tower', name: 'Bower’s Tower', district: 'Oke Aare, Ibadan North', kind: 'rooftop', category: 'fun', icon: 'view', point: { lon: 3.896598, lat: 7.392036 },
-    description: 'Climb for a view over the seven hills and the brown-roof skyline.', ambient: ['The city spreads in every direction below the hill.'],
-    spots: [spot('top', 'Tower viewpoint', activity('ibadan-tower-view', 'Take in the seven hills', 'view', ['view', 'photography'], { xp: { photography: 15 }, effects: { fun: 10 } })), work()],
-  },
-  {
     id: 'agodi-gardens', name: 'Agodi Gardens', district: 'Agodi, Ibadan North', kind: 'park', category: 'fun', icon: 'park', point: { lon: 3.8982644, lat: 7.4093254 },
     description: 'Walk under the trees, play ayo and stay for an evening garden set.', ambient: ['Families spread out under the trees.'],
     spots: [spot('garden', 'Garden lawn',
       activity('ibadan-play-ayo', 'Play a round of ayo', 'tables', ['fun'], { duration: 7 }),
       activity('ibadan-garden-evening', 'Listen to an evening garden set', 'music', ['music', 'nightlife'], { hours: { open: 18, close: 23 }, xp: { music: 8 } }),
     ), work()],
+  },
+  {
+    id: 'bowers-tower', name: 'Bower’s Tower', district: 'Oke Aare, Ibadan North', kind: 'park', category: 'fun', icon: 'view', point: { lon: 3.896598, lat: 7.392036 },
+    description: 'Climb for a view over the seven hills and the brown-roof skyline.', ambient: ['The city spreads in every direction below the hill.'],
+    spots: [spot('top', 'Tower viewpoint', activity('ibadan-tower-view', 'Take in the seven hills', 'view', ['view', 'photography'], { xp: { photography: 15 }, effects: { fun: 10 } })), work()],
   },
   {
     id: 'bodija-market', name: 'Bodija Market', district: 'Bodija, Ibadan North', kind: 'market', category: 'food', icon: 'market', point: { lon: 3.9157404, lat: 7.4359015 },
@@ -137,7 +137,7 @@ const VENUE_SEEDS: readonly VenueSeed[] = [
     spots: [spot('trail', 'Forest trail', activity('ibadan-forest-walk', 'Walk the forest trail', 'walk', ['walk', 'nature'], { duration: 15, xp: { fitness: 12 }, effects: { fun: 10 } })), work()],
   },
   {
-    id: 'eleyele-lake', name: 'Eleyele Reservoir', district: 'Eleyele, Ido', kind: 'beach', category: 'fun', icon: 'water', point: { lon: 3.8687741, lat: 7.4333509 },
+    id: 'eleyele-lake', name: 'Eleyele Reservoir', district: 'Eleyele, Ido', kind: 'park', category: 'fun', icon: 'water', point: { lon: 3.8687741, lat: 7.4333509 },
     description: 'Sit by the reservoir and watch the water and birds.', ambient: ['The reservoir opens out beyond the city streets.'],
     spots: [spot('shore', 'Reservoir edge', activity('ibadan-eleyele-watch', 'Watch birds by the water', 'view', ['nature'], { xp: { photography: 8 }, effects: { fun: 8 } }))],
   },

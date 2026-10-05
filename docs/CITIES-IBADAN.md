@@ -16,11 +16,17 @@ Ibadan is an open city module in Oyo State. It covers the five urban local gover
 
 The city map uses the shared Nigeria projection and renders those 11 local governments. The lazy Oyo data chunk retains all 33 state local-government features for future state modules, while the atlas currently shows the full Oyo State outline. The module does not imply that the Ibadan play area covers the rest of Oyo State.
 
+## The map
+
+The Ibadan pack is drawn from the eleven local governments' real boundaries in the shared frame, one unit to 100 m, so it sits at its true size beside Lagos (the eleven cover about 2,875 km2, Lagos State's twenty local governments about 3,548 km2). The main roads are OpenStreetMap motorway, trunk and primary ways in the play area and named secondary ways in the core (`roads.ts`, rebuilt by `scripts/geo/build-ibadan-roads.ts`, simplified and quantised, source hash in its header). The land around Oyo State (Ogun, Osun, Ondo, Kwara and the Republic of Benin) is drawn flat and quiet under the whole-state view from the Nigeria atlas data, with Ogun's reserved city answering a tap with "Opening soon". Ibadan is inland: no water is drawn and the whole-state view is centred, not nudged north for a coast.
+
 ## Playable places
 
 The content catalogue has 25 venues: Home and 24 public venues. Every public venue has two distinct regulars and at least one activity. The venue set covers food, recreation, markets, health, worship, polling, government and nightlife. Every canonical career has a local workplace.
 
 Landmark venues include the University of Ibadan, The Polytechnic, Lead City University, University College Hospital, Cocoa House, Mapo Hall, Bower's Tower, Agodi Gardens, Bodija Market, Dugbe Market, Gbagi New International Market, Lekan Salami Stadium, the National Museum of Unity, IITA Forest Reserve and Eleyele Reservoir. Transport venues include Iwo Road, Orita Challenge, Obafemi Awolowo Station at Moniya and Ibadan Airport.
+
+Scenes reuse the shared scene builders (a park, a market, a buka, a hospital, a worship hall, a statehouse, a hub, an airport, a walk). Bower's Tower and Eleyele Reservoir use the park builder; the University of Ibadan and the museum use the walk builder, which is a woodland trail. A scene of their own for the tower, the reservoir and a campus court is a separate piece of work.
 
 Three generic venues provide required mechanics without claiming a real private business:
 

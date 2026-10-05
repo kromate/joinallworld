@@ -316,7 +316,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   /** Which view a resize returns to while the player has not moved the map: the core (the opening view) until "Whole city" is pressed. */
   let home: 'core' | 'whole' = 'core';
   const homeView = () => (home === 'whole' ? whole() : core());
-  function whole() { home = 'whole'; scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2 - (model.context ? (free().height * 0.3) / scale : 0)); userMoved = false; }
+  function whole() { home = 'whole'; scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2 - (model.context && !model.inland ? (free().height * 0.3) / scale : 0)); userMoved = false; }
   /** The opening view of a wide screen: the metropolitan core, where the venues are (the whole city when the pack names no core). */
   function core() {
     const area = pack.core;

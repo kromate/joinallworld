@@ -346,6 +346,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
         }
       }
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
+      // A new device asks for the default city first: when the session says its one life is elsewhere, ask for that one, not for a city that has moved on.
+      const held = response.session.cities;
+      if (!createNew && Array.isArray(held) && held.length === 1 && isCityId(held[0]) && held[0] !== client.cityId) { await loadCityContent(held[0]); client.cityId = held[0] as CityId; }
       onSession(client.session, createNew);
       client.link = 'online';
       await accept((await fetchCurrentLife(client.cityId)).state);

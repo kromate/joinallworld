@@ -132,6 +132,7 @@
   .map-card{max-height:calc(100 * var(--ui-vh) - 150px)}
   .life-ui .map-modes button{min-height:68px}
 }
+@media(min-width:721px) and (max-width:1120px){.map-dock{max-height:calc(100 * var(--ui-vh) - 160px)}}
 @media(max-height:560px){.map-list{max-height:calc(30 * var(--ui-vh))}}
 
 /* Arriving from a trip: the venue comes up with a short fade instead of a cut */

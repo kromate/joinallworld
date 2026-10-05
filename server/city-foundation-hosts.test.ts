@@ -8,6 +8,7 @@ import { WebSocket } from 'ws'
 import { createServer } from './server.ts'
 import type { AllworldServer } from './server.ts'
 import { ibadanJourney } from './testing/ibadanJourney.ts'
+import { ogunJourney } from './testing/ogunJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, qualifyState, seedLegacyRecords } from './testing/cityJourney.ts'
 import { registerCityForTest, loadCityContent } from '../src/game/cities/registry.ts'
 import { fictionalCity, fictionalNeighbourCity } from '../src/game/cities/testing/fictionalCity.test-fixture.ts'
@@ -50,6 +51,9 @@ test('Node city modules: complete city journey and lossless legacy switches surv
     qualify: async (device: { cookie: string }, city: string) => {
       await server.store.transact(db => { const state = db.sessions[device.cookie.slice(4)]?.cities[city]?.state; assert.ok(state); qualifyState(state) })
     },
+    edit: async (device: { cookie: string }, city: string, change: (state: Record<string, unknown>) => void) => {
+      await server.store.transact(db => { const state = db.sessions[device.cookie.slice(4)]?.cities[city]?.state; assert.ok(state); change(state as unknown as Record<string, unknown>) })
+    },
     seedLegacy: async (device: { cookie: string }) => {
       await server.store.transact(db => { const session = db.sessions[device.cookie.slice(4)]; assert.ok(session); seedLegacyRecords(session, time) })
     },
@@ -72,5 +76,6 @@ test('Node city modules: complete city journey and lossless legacy switches surv
   }
   const device = await cityJourney(host)
   await ibadanJourney(host)
+  await ogunJourney(host)
   await legacyJourney(host, device)
 })

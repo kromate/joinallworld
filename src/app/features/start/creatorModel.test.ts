@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { DEFAULT_LOOK } from '../../../game/content/traits.ts'
 import { FOCUS_CHOICES, defaultSpirit, focusForField, focusForTab, nextLabel, previousStep, progressOf, pushHistory, settlePlan, startStep, stepBlocked, stepsFor } from './creatorModel.ts'
-import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen } from './placesModel.ts'
+import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
 import { loadCityContent } from '../../../game/cities/registry.ts'
 await loadCityContent('lagos')
 
@@ -71,13 +71,18 @@ test('the settle plan sends only what the server does not hold, in order, and th
 test('places are data: the open city is found, the others are coming and have no local governments to choose', () => {
   assert.equal(PLACES[0]?.id, 'nigeria')
   assert.deepEqual(firstOpen() && [firstOpen()?.state.id, firstOpen()?.city.id], ['lagos', 'lagos'])
-  for (const id of ['lagos', 'ibadan']) assert.equal(cityOpen(id), true)
-  for (const id of ['abuja', 'port-harcourt', 'abeokuta', 'kano']) assert.equal(cityOpen(id), false)
+  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu']) assert.equal(cityOpen(id), true)
+  for (const id of ['abuja', 'port-harcourt', 'kano']) assert.equal(cityOpen(id), false)
   // The list is read from the city registry: the planned cities come from there, grouped by their state.
-  assert.deepEqual(PLACES[0]?.states.flatMap((state) => state.cities.map((city) => city.id)), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'kano'])
+  assert.deepEqual(PLACES[0]?.states.flatMap((state) => state.cities.map((city) => city.id)), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'kano', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'])
   assert.deepEqual(stateOfCity('ibadan'), { id: 'oyo', name: 'Oyo State', cities: [{ id: 'ibadan', name: 'Ibadan' }] })
-  assert.deepEqual(PLACES[0]?.states.filter(stateOpen).map((state) => state.id), ['lagos', 'oyo'])
+  assert.deepEqual(PLACES[0]?.states.filter(stateOpen).map((state) => state.id), ['lagos', 'oyo', 'ogun'])
   assert.equal(stateOfCity('abuja')?.id, 'fct')
+  // The creator offers state → city → local government: Ogun is one open state with four open cities, each with its own local governments.
+  const ogun = PLACES[0]?.states.find((state) => state.id === 'ogun')
+  assert.deepEqual([ogun?.name, ogun?.cities.map((city) => [city.id, city.name, cityOpen(city.id)])], ['Ogun State', [['abeokuta', 'Abeokuta', true], ['ota', 'Ota', true], ['ijebu-ode', 'Ijebu-Ode', true], ['sagamu', 'Sagamu', true]]])
+  assert.deepEqual(stateOfCity('sagamu')?.id, 'ogun')
+  assert.deepEqual(['abeokuta', 'ota', 'ijebu-ode', 'sagamu'].map((id) => unitOf(id)), ['local government', 'local government', 'local government', 'local government'])
   const lgas = ['eti-osa', 'agege', 'badagry', 'epe'].map((id) => ({ id, name: id, line: '', land: 0, levy: 0 }))
   const groups = groupLgas('lagos', lgas as never)
   assert.deepEqual(groups.map((group) => group.zone), ['island', 'mainland', 'east'])

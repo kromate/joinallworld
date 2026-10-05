@@ -7,17 +7,10 @@ A playable city is one folder under `src/game/cities`. The folder exports one `C
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-<<<<<<< HEAD
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes Lagos and Ibadan.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos and Ibadan.
-
-Abuja and Port Harcourt remain closed. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
-=======
 - `isCityId` accepts cities whose stored lives the server may read. This currently includes the six open city modules.
 - `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
 
-Abuja and Port Harcourt remain closed. Older Ibadan saves may contain Lagos venue ids; the explicit aliases are `park → agodi-gardens`, `library → ui-campus`, `office → cocoa-house`, `hospital → uch`, `market → dugbe-market`, `beach → eleyele-lake`, `airport → ibadan-airport`, `polling-unit → mapo-polling`, `state-house → mapo-hall`, `amala-shitta → dugbe-amala`, `salon → mokola-salon`, `church → ui-chapel`, `mosque → ui-mosque`, `viewing-centre → lekan-salami-stadium`, `i-fitness → lekan-salami-stadium`, `canopy-walk → iita-forest`, `refinery → moniya-station`, `cchub → polytechnic`, `radio/shrine/quilox/rooftop → agodi-gardens`, `palms → dugbe-market`, and `police → mapo-hall`. They preserve old references while the current Ibadan module supplies the real city content.
->>>>>>> astra/ogun
+Abuja, Port Harcourt and Kano remain closed. Ibadan is an authored module (`src/game/cities/ibadan`). Lives that earlier builds filed under its key are read by that module: their venue ids resolve through `legacyVenueAliases`, and the owner chooses a local government once, for free (`legacyLgaChoice`).
 
 `registeredCityIds()` returns server-known ids. `playableCityIds()` returns open modules. Callers should choose the list that matches the action instead of treating an atlas label as permission to create a life.
 
@@ -55,6 +48,15 @@ A state owns one or more cities. A life belongs to one local unit in one city. T
 The state map is the travel and overview surface. `CityMapGeometry.state` is its full first-level outline and may be shared by several city modules. `playArea` is the part opened by one city; that city's local units and local water tile only this footprint. The city map is the play surface with venues, homes and those local units. Both use the same projection and whole-unit origin, so a city footprint can be placed back into its state without a second coordinate system. A city never claims that its local units cover the rest of the state.
 
 Map geometry follows the equirectangular Nigeria frame: 8 degrees east and 9 degrees north as the frame origin, 9 degrees north as the standard parallel, x east, z south, and ten units per kilometre. Lagos is anchored at 3.40 degrees east, 6.45 degrees north, which projects to `{-5052, 2835}` after whole-unit rounding. The atlas marker remains at 3.38 degrees east, 6.52 degrees north; the marker and geometry anchor serve different views. Its geometry source is the generated geoBoundaries gbOpen Lagos topology, licensed CC BY 4.0 and attributed in `NOTICE.md`. `loadGeometry` decodes that topology and `loadScene` imports the existing renderer pack. Both stay behind the lazy map chunk.
+
+### How the state view and the city maps relate
+
+- The atlas (Nigeria level) is the state view. A state with several open cities names each of them on the map; the city the player is in carries "You are here", the others "Open", and a state's own marker never claims the player is there. Labels collide-check by priority; only the player's city is always shown.
+- Selecting such a state opens its card: one 44px chip per city, then the state's own map (`src/map3d/geo/state-overview.ts`): every local government of the state in the shared projection, open cities as pins, the unopened local governments grey and labelled "coming", and the travel links between cities (including those that leave for a city in another state, such as Lagos or Ibadan) as lines, dashed for rail. Tapping a pin selects the city; tapping a line or a row shows its mode, fare, time and distance. The overview loads with the state's map chunk when the card opens.
+- Choosing a city shows its card: its teaser, "Things to do in <city>" (from the city's content `thingsToDo`, fetched only when the card opens and shown once cached), the action and the routes with Travel.
+- A city map shows only its own local governments and play area, with the land around it drawn quiet: neighbouring states and countries, the sea, and the roads that leave. The whole-extent button names the city, not the state. The two views share one projection and origin, so a city's footprint lies exactly on the state view.
+- On a phone the folded card keeps the city chips and leaves the map in view; "Routes and details" unfolds the state map.
+- Per-city map character, roads and water for Ogun live in `src/game/cities/ogun/{character,scene}.ts`, clipped per city from the OpenStreetMap files; they load only with that city's map.
 
 ## Adding a city
 

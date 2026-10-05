@@ -261,7 +261,8 @@ test('a capital marker does not claim the character is there merely because its 
     atlas.setCity('ota'); run();
     assert.deepEqual(atlas.diagnostics().selected, { kind: 'state', id: 'ogun' });
     assert.deepEqual(atlas.diagnostics().cityLabels.find(label => label.id === 'city:abeokuta'), { id: 'city:abeokuta', text: 'Abeokuta', note: 'Open' });
-    assert.equal(atlas.diagnostics().cityLabels.some(label => label.note === 'You are here'), false);
+    assert.deepEqual(atlas.diagnostics().cityLabels.filter(label => label.note === 'You are here').map(label => label.id), ['city:ota'], 'the note belongs to the city the player is in, not to the state’s marker');
+    assert.deepEqual(atlas.diagnostics().cityLabels.filter(label => label.id.startsWith('city:') && label.note === 'Open').some(label => label.id === 'city:ota'), false);
     atlas.setCity('abeokuta'); run();
     assert.deepEqual(atlas.diagnostics().cityLabels.find(label => label.id === 'city:abeokuta'), { id: 'city:abeokuta', text: 'Abeokuta', note: 'You are here' });
     atlas.setCity('lagos'); run();
@@ -403,4 +404,16 @@ test('the atlas stays out of the first download, and its one frame loop lives in
     if (name !== 'atlas.ts') assert.doesNotMatch(bare, /requestAnimationFrame/, name);
     if (!['atlas.ts', 'build.ts'].includes(name)) assert.doesNotMatch(bare, /from 'three'|document\.|window\./, `${name} is pure`);
   }
+});
+
+test('a state with several open cities names each of them on the map', async () => {
+  const { atlas, settle, run } = harness({ reducedMotion: true, width: 390, height: 844 });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    atlas.select({ kind: 'state', id: 'ogun' }, { flyTo: true }); await settle(); run();
+    const names = atlas.diagnostics().cityLabels.map(label => label.text);
+    assert.ok(names.includes('Abeokuta'), 'the state’s own marker');
+    assert.ok(names.filter(name => ['Ota', 'Ijebu-Ode', 'Sagamu'].includes(name)).length >= 1, 'the other open cities of the state are named as soon as there is room');
+    assert.equal(new Set(atlas.diagnostics().cityLabels.map(label => label.id)).size, atlas.diagnostics().cityLabels.length);
+  } finally { atlas.destroy(); }
 });

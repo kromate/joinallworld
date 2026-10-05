@@ -275,6 +275,10 @@ test('synthetic audio: spatial playback, range, diagnostics and an explicit Join
   assert.equal(diagnosticsCalls, 2, 'stale diagnostics callback cannot publish after leave')
   api.join('lagos', 'home')
   assert.ok(api.state.roomText.includes('Your home (private)'))
+  for (const [city, name] of [['ibadan', 'Ibadan'], ['abeokuta', 'Abeokuta'], ['ota', 'Ota'], ['ijebu-ode', 'Ijebu-Ode'], ['sagamu', 'Sagamu'], ['lagos', 'Lagos']] as const) {
+    api.join(city, 'home')
+    assert.ok(api.state.roomText.startsWith(`${name} · `), `the room line names ${name}: ${api.state.roomText}`)
+  }
   assert.equal(api.state.privateHome, true)
   api.destroy()
 })

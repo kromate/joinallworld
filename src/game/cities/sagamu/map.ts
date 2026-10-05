@@ -9,8 +9,8 @@ export const SAGAMU_MAP: CityMapPack<'sagamu', SagamuLocalGovernmentId> = Object
   cityId: 'sagamu', origin: SAGAMU_MAP_ORIGIN, projection: 'nigeria-equirectangular-v1', unitsPerKm: 10,
   localUnitIds: OGUN_CITY_LGA_IDS.sagamu, stateFeatureId: 'ogun-state',
   loadScene: async () => {
-    const [{ sagamuCity }, { createModulePack }] = await Promise.all([import('./index.ts'), import('../../../map3d/cities/module.ts')])
-    return createModulePack(sagamuCity, SAGAMU_LANDMARKS)
+    const [{ sagamuCity }, { createModulePack }, { ogunScene }] = await Promise.all([import('./index.ts'), import('../../../map3d/cities/module.ts'), import('../ogun/scene.ts')])
+    return createModulePack(sagamuCity, ogunScene('sagamu', SAGAMU_LANDMARKS))
   },
   loadGeometry: async () => ogunCityGeometry(OGUN_CITY_LGA_IDS.sagamu),
   loadStateOverview: async () => ogunStateOverview(),

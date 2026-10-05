@@ -166,8 +166,14 @@ export type SceneKind =
   | 'refinery' | 'unilag' | 'home'
   | 'quad' | 'hilltop' | 'lakeside'
 
+/** Scenes of Ogun State's cities that share a kind with another (src/scene/venues-ogun-a.ts, venues-ogun-b.ts). */
+export type OgunSceneVariant = 'outcrop' | 'adire' | 'palace-court' | 'ojude-ground' | 'hall' | 'library' | 'river-bridge' | 'cathedral' | 'mosque-court'
+  | 'station' | 'park-lot' | 'park-trucks' | 'park-rank' | 'interchange' | 'market-sheds' | 'market-containers' | 'market-garri' | 'market-kola'
+  | 'campus-farm' | 'campus-dome' | 'campus-tech' | 'campus-lawn' | 'campus-flag' | 'cloth-studio' | 'media-studio'
+  | 'bowl' | 'track-stadium' | 'ground-clay' | 'ground-terrace' | 'factory' | 'heritage-house' | 'heritage-gallery' | 'hall-brick' | 'hall-dome' | 'ayo-park' | 'evening-garden'
+
 /** Scenes of a city's own that share a kind with another (src/scene/venues-ibadan-b.ts). */
-export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest'
+export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest' | OgunSceneVariant
 
 export interface VenueScene {
   kind: SceneKind

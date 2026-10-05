@@ -27,11 +27,13 @@ export type JobControl =
   | { kind: 'apply' }
   | { kind: 'confirm'; warning: string }
   | { kind: 'switch' }
+  | { kind: 'transfer'; label: string }
 
 /** What a job card offers: the one control, or the one reason there is none. `offline` is the connection's reason, or null. */
 export function jobControl(job: JobListing, career: Pick<CareerView, 'employed'>, offline: string | null, asking: string | null): JobControl {
   if (job.current) return { kind: 'current' }
-  if (job.blocked || offline) return { kind: 'blocked', label: career.employed ? 'Switch to this job' : 'Apply', why: job.blocked || offline || '' }
+  if (job.blocked || offline) return job.transfer ? { kind: 'blocked', label: `Transfer to ${job.workplace}`, why: job.blocked || offline || '' } : { kind: 'blocked', label: career.employed ? 'Switch to this job' : 'Apply', why: job.blocked || offline || '' }
+  if (job.transfer) return { kind: 'transfer', label: `Transfer to ${job.workplace}` }
   if (!career.employed) return { kind: 'apply' }
   if (asking === job.id) return { kind: 'confirm', warning: job.switchWarning ?? '' }
   return { kind: 'switch' }

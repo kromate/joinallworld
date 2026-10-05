@@ -445,7 +445,9 @@ const actions = {
     if (wantsLga && !unit) return fail(state, 'invalid_lga', `Choose one of the ${lgasOf(city).length} local governments of ${cityRules(city)?.name ?? 'this city'}.`);
     const rented = payload?.house !== undefined && payload?.house !== null;
     const home = isStartHomeId(payload?.house) ? START_HOMES[payload.house] : null;
-    if (rented && !home) return fail(state, 'invalid_house', `Choose a starting home: ${Object.values(START_HOMES).map((item) => `${item.label} (${item.district})`).join(', ')}.`);
+    // A rented start home is one of the city's own homes: another city's rentals are never offered (only Lagos has them at start).
+    const offered = Object.values(START_HOMES).filter((item) => housesFor(city).some((house) => house.id === item.id));
+    if (rented && (!home || !offered.some((item) => item.id === home.id))) return fail(state, 'invalid_house', offered.length ? `Choose a starting home: ${offered.map((item) => `${item.label} (${item.district})`).join(', ')}.` : 'Choose your local government: your free starter house stands on a plot there.');
     if (!rented && !unit) return fail(state, 'lga_required', 'Choose your local government: your free starter house stands on a plot there.');
     const locked = home ? homeLock(outcome, home.id) : null;
     if (locked) return fail(state, 'house_locked', locked);

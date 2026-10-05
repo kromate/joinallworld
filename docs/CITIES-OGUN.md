@@ -54,3 +54,14 @@ Primary references include the [Ogun State 2024 local-government report](https:/
 ## Beta values
 
 Beta content includes all land tiers, rents, move-in charges, local-mode values, intercity fares and times, activity costs and effects, local career placements, fictional venue placement, event schedules, billboard slots, table placements, calendar dates, dream wording and family wording. These values are game design and do not claim to be current market prices or official schedules.
+
+## Roads and rivers
+
+`src/game/cities/ogun/roads.ts` (`OGUN_ROADS`) and `src/game/cities/ogun/water.ts` (`OGUN_WATER`) are generated from OpenStreetMap through the public Overpass interpreter by `scripts/geo/build-ogun-roads.ts` and `scripts/geo/build-ogun-water.ts` (ODbL 1.0; the response SHA-256 is in each file header and in `src/models/geo/provenance.json`). They use the same compact row format as the Ibadan files and are not wired into the city map packs by these files themselves.
+
+- Roads: motorway, trunk and primary ways in the box 6.45, 2.85, 7.5, 4.1 (south, west, north, east), which covers the four play areas and the corridors between them (Lagos–Abeokuta, Lagos–Ibadan, Abeokuta–Sagamu, Sagamu–Ijebu-Ode–Benin, Ota–Idiroko), plus named secondary ways in the Abeokuta, Ota, Ijebu-Ode and Sagamu town cores. A way is kept when one vertex lies inside the Ogun State outline. Each row is `[name, major (1/0), first longitude and latitude in 0.0001 degrees, then longitude and latitude steps to every next vertex]`.
+- Water: named river ways (Ogun, Lafenwa, Yewa, Ona, Ibu, Omi, Ofe, Majidun Creek; lines) and named closed water ways (the Ogun-Osun reservoir and the Ologe lagoon; rings) in the same box. Each row is `[name, "river" or "lake", first longitude and latitude in 0.0001 degrees, then steps]`. Multipolygon water (the Lagos, Lekki and Epe lagoons, Badagry Creek) is not included, because the shared state outline already treats water as the gap between land polygons.
+
+## Coordinate checks
+
+Reference points were compared with OpenStreetMap, Wikidata and Wikimedia Commons structured coordinates. The Sagamu interchange sits where the Lagos–Ibadan Expressway motorway links meet the Abeokuta–Sagamu road, not at the F102 roundabout it used before. Venues carry their own points: real mapped places where they exist (the stadium, the markets, the Ake palace and hall, the teaching hospital, the state government hospital, a general hospital), otherwise a street-level spot in the named district. District text follows the local government that the source outline puts at the point (for example Olumo Rock and Ake are in Abeokuta South, Oke Mosan is in Obafemi/Owode, and the old Ijebu-Ode town centre falls inside the Odogbolu outline). `src/map3d/geo/ogun-borders.test.ts` checks the shared Lagos and Oyo borders, the 20 local-government names, venue footprints and the reference points.

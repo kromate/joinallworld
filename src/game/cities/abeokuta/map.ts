@@ -9,8 +9,8 @@ export const ABEOKUTA_MAP: CityMapPack<'abeokuta', AbeokutaLocalGovernmentId> = 
   cityId: 'abeokuta', origin: ABEOKUTA_MAP_ORIGIN, projection: 'nigeria-equirectangular-v1', unitsPerKm: 10,
   localUnitIds: OGUN_CITY_LGA_IDS.abeokuta, stateFeatureId: 'ogun-state',
   loadScene: async () => {
-    const [{ abeokutaCity }, { createModulePack }] = await Promise.all([import('./index.ts'), import('../../../map3d/cities/module.ts')])
-    return createModulePack(abeokutaCity, ABEOKUTA_LANDMARKS)
+    const [{ abeokutaCity }, { createModulePack }, { ogunScene }] = await Promise.all([import('./index.ts'), import('../../../map3d/cities/module.ts'), import('../ogun/scene.ts')])
+    return createModulePack(abeokutaCity, ogunScene('abeokuta', ABEOKUTA_LANDMARKS))
   },
   loadGeometry: async () => ogunCityGeometry(OGUN_CITY_LGA_IDS.abeokuta),
   loadStateOverview: async () => ogunStateOverview(),

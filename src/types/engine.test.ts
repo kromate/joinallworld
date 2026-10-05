@@ -305,7 +305,7 @@ const readers = {
 } satisfies { [S in SystemId]?: (state: LifeState) => SliceBySystem[S] }
 
 const inner = {
-  career: ({ career: c }: LifeState) => ({ city: c.city, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, oriented: c.oriented }),
+  career: ({ career: c }: LifeState) => ({ city: c.city, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
   travel: ({ travel: t }: LifeState) => ({ home: t.home, event: t.event, lastTrip: t.lastTrip, visited: t.visited, trips: t.trips, cooldowns: t.cooldowns, funded: t.funded, gigs: t.gigs, eventDays: t.eventDays }),
   economy: ({ economy: e }: LifeState) => ({ billedWeek: e.billedWeek, started: e.started, rent: e.rent, loan: e.loan, deposits: e.deposits, seq: e.seq, reminded: e.reminded }),
   onboarding: ({ onboarding: o }: LifeState) => ({
@@ -440,7 +440,7 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   }
   for (const spot of shown.activities.spots) assert.deepEqual(keys(spot).filter((key) => key !== 'caption' && key !== 'icon'), ['count', 'id', 'label'], `${what}: spot summary`)
   for (const job of shown.career.jobs) {
-    assert.deepEqual(keys(job), ['beta', 'blocked', 'current', 'duration', 'entryRole', 'hours', 'icon', 'id', 'label', 'openNow', 'pay', 'schedule', 'skill', 'summary', 'switchWarning', 'topRole', 'track', 'venue', 'workplace'], `${what}: job listing`)
+    assert.deepEqual(keys(job), ['beta', 'blocked', 'current', 'duration', 'entryRole', 'hours', 'icon', 'id', 'label', 'openNow', 'pay', 'schedule', 'skill', 'summary', 'switchWarning', 'topRole', 'track', 'transfer', 'venue', 'workplace'], `${what}: job listing`)
   }
   assert.deepEqual(keys(shown.civic.hunt), ['canClaim', 'claimed', 'day', 'found', 'gems', 'prize', 'total'], `${what}: hunt`)
   assert.deepEqual(keys(shown.civic.eligibility), ['days', 'pollingVenue', 'run', 'vote'], `${what}: eligibility`)
@@ -998,7 +998,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(DEPOSIT_TERMS), idsOf<DepositTermId>({ d1: true, d3: true, d7: true }))
   assert.deepEqual(keys(FAMILY), idsOf<FamilyId>({ mummy: true, daddy: true, tobi: true, grandma: true }))
   assert.deepEqual(sorted(TIERS.map((tier) => tier.id)), idsOf<TierId>({ stranger: true, acquaintance: true, friend: true, paddy: true }))
-  assert.deepEqual(keys(CITY_RULES), idsOf<WorldCityId>({ lagos: true, ibadan: true, abuja: true, 'port-harcourt': true, abeokuta: true, kano: true }))
+  assert.deepEqual(keys(CITY_RULES), idsOf<WorldCityId>({ lagos: true, ibadan: true, abuja: true, 'port-harcourt': true, kano: true }))
   assert.deepEqual(LAGOS_LGAS.map((lga) => lga.id), [...LGA_IDS])
   for (const city of Object.values(CITY_RULES).map(required)) {
     for (const unit of city.units) assert.equal(lgaOf(city.id, unit.id), unit, `${city.id}: ${unit.id}`)

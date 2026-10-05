@@ -317,6 +317,8 @@ export interface CareerState {
   shiftStartDay: LagosDay | null
   /** Lagos day of the last automatic commute. */
   autoDay: LagosDay | null
+  /** Lagos day of the last move of this job to another city (at most one a day). */
+  transferDay: LagosDay | null
   /** True once any career shift has been completed (ends the day-off "orientation" allowance). */
   oriented: boolean
 }
@@ -1075,7 +1077,7 @@ export const SYSTEM_STATE_KEYS = {
  * (`inventory`) is not listed; `needs`/`decay` are keyed by NeedId and `skills` by SkillId.
  */
 export const SLICE_FIELD_KEYS = {
-  career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts'],
+  career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],

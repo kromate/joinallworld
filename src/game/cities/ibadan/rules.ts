@@ -1,4 +1,6 @@
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
+import { LAGOS_IBADAN_RAIL } from '../links.ts'
+import { OGUN_LINKS } from '../ogun/links.ts'
 
 export type IbadanLocalGovernmentId =
   | 'akinyele' | 'egbeda' | 'ibadan-north' | 'ibadan-north-east' | 'ibadan-north-west'
@@ -83,6 +85,8 @@ export const IBADAN_RULES = Object.freeze({
   ],
   links: [
     { a: 'lagos', b: 'ibadan', mode: 'road', beta: true, label: 'Bus on the Lagos–Ibadan Expressway', icon: '🚌', fare: 3500, seconds: 120, km: 130 },
-    { a: 'lagos', b: 'ibadan', mode: 'rail', beta: true, label: 'Train between Mobolaji Johnson and Obafemi Awolowo stations', icon: '🚆', fare: 9000, seconds: 90, km: 157 },
+    LAGOS_IBADAN_RAIL,
+    OGUN_LINKS.abeokutaIbadan,
+    OGUN_LINKS.abeokutaIbadanRail,
   ],
 } satisfies CityModuleRules<'ibadan', 'oyo', IbadanLocalGovernmentId, IbadanDistrictId, IbadanHubId>)

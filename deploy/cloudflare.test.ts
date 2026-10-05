@@ -387,6 +387,31 @@ test('Cloudflare: gradual home nap cancellation survives eviction without repeat
   const after = await f.life(a); assert.equal(after.needs.energy, cancelled.state.needs.energy);
 });
 
+test('Cloudflare: an Ogun trip survives the object sleeping; the fare is charged once and a reload shows the new city', async t => {
+  const f = await fixture(t);
+  const opened = await f.request('/api/session', { name: 'Ada', onboarding: true });
+  const a = { ...(await opened.json()).session, cookie: (opened.headers.get('set-cookie') as string).split(';')[0] as string };
+  const step = async (type: string, payload: object = {}, cityId = 'lagos') => (await (await f.action(a, { type, payload, cityId })).json());
+  assert.equal((await step('onboarding.quick-start', { look: (await import('../src/quick-start/look-model.ts')).presetLook('owambe') })).ok, true);
+  for (const [type, payload] of [['onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }], ['onboarding.dream', { dream: 'everybodys-padi' }], ['onboarding.lottery', {}], ['onboarding.home', { lga: 'ikeja', via: 'manual' }]] as const) assert.equal((await step(type, payload)).ok, true, type);
+  const before = (await f.life(a)).cash;
+  const sent = await step('estate.relocate', { to: 'ota', mode: 'road' });
+  assert.equal(sent.ok, true);
+  assert.equal(sent.state.cash, before - 2000, 'the Ota fare is charged at departure');
+  await f.hibernate();
+  const midway = await f.life(a);
+  assert.equal(midway.activeAction.kind, 'intercity'); assert.equal(midway.cash, before - 2000);
+  assert.equal((await step('estate.relocate', { to: 'ota', mode: 'road' })).ok, false, 'a second departure while travelling is refused');
+  await f.skip(a, 61000);
+  await f.hibernate();
+  const arrived = await f.life(a);
+  assert.deepEqual([arrived.estate.city, arrived.cash, arrived.activeAction], ['ota', before - 2000, null]);
+  await f.restart();
+  const reloaded = await (await f.request('/api/life?city=ota', null, a.cookie)).json();
+  assert.deepEqual([reloaded.state.estate.city, reloaded.state.cash, reloaded.state.location], ['ota', before - 2000, arrived.location], 'a reload shows the same city, wallet and place');
+  assert.equal(reloaded.state.ledger.filter((line: { amount: number }) => line.amount === -2000).length, 1, 'one fare in the ledger');
+});
+
 test('Cloudflare: real static HTML receives response security and cache headers', async t => {
   const f = await fixture(t); const response = await f.request('/');
   assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff'); assert.equal(response.headers.get('cache-control'), 'no-cache'); assert.match(await response.text(), /Allworld/);

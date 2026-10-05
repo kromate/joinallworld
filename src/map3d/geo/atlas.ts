@@ -1,4 +1,5 @@
 import { stateOverviewHtml } from './state-overview.ts';
+import type { OverviewExtras } from './state-overview.ts';
 import type { CityStateOverview } from '../../types/content.ts';
 import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
@@ -184,12 +185,14 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   let level = NIGERIA, wanted = NIGERIA, tintOn = false, listOpen = false, sheetOpen = false, query = '';
   let selectedCity: string | null = null;
   let stateOverviewShown: string | null = null;
+  /** The travel link the state view has in focus (a link id), chosen by tapping a line or a row. */
+  let overviewLink: string | null = null;
   type OverviewState = { kind: 'loading' } | { kind: 'ready'; data: CityStateOverview } | { kind: 'error' };
   const stateOverviews = new Map<string, OverviewState>();
   const overviewExpanded = new Set<string>();
-  async function showStateOverview(id: string): Promise<void> {
+  async function showStateOverview(id: string, expand = true): Promise<void> {
     stateOverviewShown = id;
-    sheetOpen = true;
+    if (expand) sheetOpen = true;
     if (stateOverviews.has(id)) { drawSheet(); return; }
     const city = citiesInState(id).find(item => cityModule(item.id)?.rules.hasStateOverview);
     if (!city) return;
@@ -566,7 +569,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       const sheet = sheets[NIGERIA], close = rig.view.distance < fits![NIGERIA]!.distance * 0.62;
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
-        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? 1000 : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: entry.status === 'open', cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
+        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
+        // A state with several open cities names each of them; the one the player is in says so, whichever the state's own marker is.
+        for (const other of citiesInState(feature.id)) {
+          const spot = other.status === 'open' && other.id !== city?.id && (close || selected?.id === feature.id || other.id === current) ? cityEntry(other.id) : null;
+          if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below'], fixed: other.id === current, cls: 'is-city is-open', note: other.id === current ? 'You are here' : 'Open' });
+        }
         if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
       }
@@ -682,17 +690,26 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       : `<li class="atlas-none">Nothing called “${esc(query)}” at this level. Zoom out to look wider.</li>`;
     root!.classList.toggle('is-list', listOpen);
   }
+  /** What the state view draws of the travel links: the links between open cities where one end is in this state, and the places outside it they leave for. */
+  function stateLinks(inState: readonly { id: string }[]): OverviewExtras {
+    const here = new Set(inState.map(city => city.id)), opens = (id: string) => cityEntry(id)?.status === 'playable';
+    const links = allCityLinks().filter(link => (here.has(link.a) || here.has(link.b)) && opens(link.a) && opens(link.b) && link.mode !== 'air')
+      .map(link => ({ id: linkId(link), a: link.a, b: link.b, mode: link.mode, label: link.label, fare: link.fare, minutes: Math.round((link.seconds / 60) * 10) / 10, km: link.km }));
+    const outside = [...new Set(links.flatMap(link => [link.a, link.b]).filter(id => !here.has(id)))].flatMap(id => { const city = cityEntry(id); return city ? [{ id, name: city.name, lon: city.lon, lat: city.lat }] : []; });
+    return { current, links, outside, link: overviewLink };
+  }
   function drawSheet() {
     if (!ui.sheet) return;
     const hit = find(selected);
     ui.sheet.hidden = !hit;
     root!.classList.toggle('has-sheet', Boolean(hit));
-    if (!hit) { ui.sheet.innerHTML = ''; return; }
+    if (!hit) { ui.sheet.innerHTML = ''; root!.classList.remove('has-cities'); return; }
     const info = infoOf(hit);
     const stateCities = hit.kind === 'state' ? citiesInState(hit.id) : [];
+    root!.classList.toggle('has-cities', stateCities.length > 1);
     const overviewCity = stateCities.find(city => cityModule(city.id)?.rules.hasStateOverview);
     const overview = stateOverviewShown === hit.id ? stateOverviews.get(hit.id) : undefined;
-    const overviewBody = overview?.kind === 'ready' ? stateOverviewHtml(overview.data, stateCities, info.city?.id ?? null, { units: overviewExpanded.has(`${hit.id}:units`), landmarks: overviewExpanded.has(`${hit.id}:landmarks`) }) : overview?.kind === 'loading' ? '<p role="status">Loading the state map…</p>' : overview?.kind === 'error' ? '<p role="alert">The state map could not be loaded. <button type="button" data-atlas-state-retry>Reload to try again</button></p>' : '';
+    const overviewBody = overview?.kind === 'ready' ? stateOverviewHtml(overview.data, stateCities.map(city => ({ ...city, ...(cityEntry(city.id) ? { at: { lon: cityEntry(city.id)!.lon, lat: cityEntry(city.id)!.lat } } : {}) })), info.city?.id ?? null, { units: overviewExpanded.has(`${hit.id}:units`), landmarks: overviewExpanded.has(`${hit.id}:landmarks`) }, stateLinks(stateCities)) : overview?.kind === 'loading' ? '<p role="status">Loading the state map…</p>' : overview?.kind === 'error' ? '<p role="alert">The state map could not be loaded. <button type="button" data-atlas-state-retry>Reload to try again</button></p>' : '';
     const guide = info.city ? cachedCityContent(info.city.id)?.thingsToDo.slice(0, 5) : undefined;
     const routeRow = (route: RouteInfo) => {
       const on = routeShown === route.id, playing = preview && routeShown === route.id;
@@ -704,8 +721,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     ui.sheet.setAttribute('aria-label', `${info.name}: ${info.tag}`);
     ui.sheet.innerHTML = `<header><div><h2>${esc(info.name)}</h2><p>${esc(info.type)}${info.capital ? ` · capital ${esc(info.capital)}` : ''}</p></div><span class="atlas-tag">${esc(info.tag)}</span><button type="button" class="atlas-close" data-atlas-close aria-label="Close ${esc(info.name)}">${ICON('<path d="M6 6l12 12M18 6 6 18"/>')}</button></header>
       ${stateCities.length > 1 ? `<nav aria-label="Cities in this state">${stateCities.map(city => `<button type="button" data-atlas-inspect-city="${esc(city.id)}" aria-pressed="${city.id === info.city?.id}">${esc(city.name)}</button>`).join('')}</nav>` : ''}
-      <p class="atlas-teaser">${esc(info.teaser)}</p>
       ${overviewCity ? `<button type="button" class="atlas-chip" data-atlas-state-overview="${esc(hit.id)}" aria-expanded="${stateOverviewShown === hit.id}">${stateOverviewShown === hit.id ? 'Hide state overview' : 'View all local governments'}</button>${overviewBody}` : ''}
+      <p class="atlas-teaser">${esc(info.teaser)}</p>
       ${guide?.length ? `<section class="atlas-guide"><h3>Things to do in ${esc(info.city!.name)}</h3><ul>${guide.map(place => `<li><b>${esc(place.name)}</b> · ${esc(place.line)}</li>`).join('')}</ul></section>` : ''}
       ${info.action ? `<button type="button" class="atlas-go" data-atlas-action>${esc(info.action.label)}<span aria-hidden="true"> →</span></button>` : ''}
       ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}
@@ -718,10 +735,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
-    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; }
+    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; }
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     const city = hit ? infoOf(hit).city : null;
+    // A state with several open cities opens on its own map (the state view); the cities' text waits for the card.
+    if (hit?.kind === 'state' && citiesInState(hit.id).filter(item => item.status === 'open').length > 1 && stateOverviewShown !== hit.id) void showStateOverview(hit.id, false);
     if (city && isOpenCityId(city.id) && !cachedCityContent(city.id)) void loadCityContent(city.id).then(() => { if (selected?.id === hit?.id) drawSheet(); }, () => {});
     if (!preview && !trip) routeShown = null;
     const inside = hit?.kind === 'country' ? ATLAS_LEVELS.findIndex((entry) => entry.id === regionEntry('country', hit.id).level) : -1;
@@ -850,8 +869,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
     const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel');
-    const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section');
-    if (inspectCity) { selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
+    const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link');
+    if (stateLink) { const id = stateLink.dataset.atlasStateLink ?? null; overviewLink = overviewLink === id ? null : id; drawSheet(); }
+    else if (inspectCity) { overviewLink = null; selectedCity = inspectCity.dataset.atlasInspectCity ?? null; if (selectedCity && isOpenCityId(selectedCity)) void loadCityContent(selectedCity).then(drawSheet, () => {}); drawSheet(); }
     else if (overviewSection && stateOverviewShown) { const key = `${stateOverviewShown}:${overviewSection.dataset.atlasOverviewSection}`; if (overviewExpanded.has(key)) overviewExpanded.delete(key); else overviewExpanded.add(key); }
     else if (overviewButton) { const id = overviewButton.dataset.atlasStateOverview; if (id) { if (stateOverviewShown === id) { stateOverviewShown = null; drawSheet(); } else void showStateOverview(id); } }
     else if (hit('state-retry')) doc?.defaultView?.location.reload();
@@ -862,7 +882,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (hit('layer')) setTint(!tintOn);
     else if (hit('action')) act();
     else if (hit('close')) select(null);
-    else if (hit('expand')) { sheetOpen = !sheetOpen; drawSheet(); ui.sheet!.querySelector<HTMLElement>('[data-atlas-expand]')?.focus(); }
+    else if (hit('expand')) { sheetOpen = !sheetOpen; drawSheet(); ui.sheet!.querySelector<HTMLElement>('[data-atlas-expand]')?.focus({ preventScroll: true }); }
     else if (hit('list')) { listOpen = !listOpen; drawCrumbs(); drawRail(); if (listOpen) ui.rail!.querySelector<HTMLElement>('[data-atlas-search]')?.focus(); }
     else if (hit('retry')) { failed = ''; void ensure(wanted); showWait(); }
     else if (play) previewTrip(play.dataset.atlasPreview!);

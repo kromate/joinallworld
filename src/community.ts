@@ -22,6 +22,7 @@
  * is revoked (`venue_mismatch`, `visit_ended`) or refused (`not_a_guest`) stops voice.
  */
 import type { PublicSession } from './types/protocol.ts'
+import { cityName } from './game/cities/registry.ts'
 import { fetchIceConfig } from './voice-config.ts'
 import type { IceConfig } from './voice-config.ts'
 import type {
@@ -164,7 +165,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     let named: string | null = null
     try { named = typeof venueName === 'function' ? venueName(room.venueId, room.cityId) : null } catch { named = null }
     const place = privateHome ? 'Your home (private)' : typeof named === 'string' && named ? named : room.venueId === 'library' ? 'Library' : room.venueId === 'club' ? 'Club' : 'Park'
-    roomText = `${room.cityId === 'ibadan' ? 'Ibadan' : 'Lagos'} · ${place}`
+    roomText = `${cityName(room.cityId) ?? 'Lagos'} · ${place}`
     emit()
   }
   labelRoom()

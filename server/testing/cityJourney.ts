@@ -11,6 +11,8 @@ export interface JourneyHost {
   request(path: string, body?: object, cookie?: string): Promise<{ status: number; headers: Pick<Headers, 'get'>; json(): Promise<unknown> }>
   elapse(device: JourneyDevice, city: string, ms: number): Promise<void>
   qualify(device: JourneyDevice, city: string): Promise<void>
+  /** Change the stored life of a character, as a damaged or hostile save would. Hosts that cannot do it leave it out. */
+  edit?(device: JourneyDevice, city: string, change: (state: Record<string, unknown>) => void): Promise<void>
   socket(device: JourneyDevice): Promise<JourneySocket>
   session(device: JourneyDevice): Promise<unknown>
   seedLegacy(device: JourneyDevice): Promise<void>

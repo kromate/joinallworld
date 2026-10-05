@@ -1,5 +1,5 @@
 import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
-await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
+await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota'].map(preloadCityContent));
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createLife, dispatch, advanceLife } from '../src/life.ts'
@@ -8,7 +8,7 @@ import { settleCity } from './life-service.ts'
 import type { SessionRecord } from './types.ts'
 
 const record = (): SessionRecord => ({ secret: 'test', publicId: 'test-public', name: 'Player', expiresAt: 1e15, cities: {}, actions: {} })
-const held = (cityId: 'lagos' | 'ibadan', cash: number) => ({ state: createLife({ cash }, { cityId }), updatedAt: 1000, salt: 'a'.repeat(32) })
+const held = (cityId: 'lagos' | 'ibadan' | 'abeokuta' | 'ota', cash: number) => ({ state: createLife({ cash }, { cityId }), updatedAt: 1000, salt: 'a'.repeat(32) })
 
 test('a second city read cannot create a second character', () => {
   const session = record()
@@ -120,4 +120,35 @@ test('an account character and a set-aside character follow the same rule (a rec
   assert.deepEqual(Object.keys(restored.legacyLives ?? {}), ['ibadan:1'])
   const current = { ...archived, character: { v: 2 as const, city: 'ibadan', movedAt: 1, from: 'lagos' } }
   assert.equal(normalizeCharacter({ ...record(), ...structuredClone(current) }), 'ibadan')
+})
+
+test('Ogun cities: a Lagos life that travelled to Ota is filed under Ota, a v:2 pin names it, and an old pin never overrules the newest life', () => {
+  const session = record(), lagos = held('lagos', 15000)
+  session.cities = { lagos }
+  lagos.state.estate.city = 'ota'
+  fileCharacter(session, 'lagos', 5000)
+  assert.deepEqual(Object.keys(session.cities), ['ota'])
+  assert.deepEqual(session.character, { v: 2, city: 'ota', from: 'lagos', movedAt: 5000 })
+  assert.equal(characterCity(session), 'ota')
+  // Ota to Abeokuta: the pin follows the life and records the move again.
+  session.cities.ota!.state.estate.city = 'abeokuta'
+  fileCharacter(session, 'ota', 6000)
+  assert.deepEqual([Object.keys(session.cities), session.character], [['abeokuta'], { v: 2, city: 'abeokuta', from: 'ota', movedAt: 6000 }])
+  // An older build's start-up pin names Lagos for a character that is now in Abeokuta: the newest life decides and the pin is rewritten.
+  const old = record()
+  old.cities = { lagos: { ...held('lagos', 1), updatedAt: 10 }, abeokuta: { ...held('abeokuta', 2), updatedAt: 20 } }
+  old.character = { v: 1, city: 'lagos' }
+  assert.equal(characterCity(old), 'abeokuta')
+  assert.equal(normalizeCharacter(old), 'abeokuta')
+  assert.deepEqual(old.character, { v: 2, city: 'abeokuta' })
+  assert.deepEqual(Object.keys(old.cities), ['abeokuta'])
+  assert.equal(Object.values(old.legacyLives ?? {}).length, 1, 'the other life is kept, not dropped')
+  // A pin naming a city the character has no life in, or one this build does not know, is not trusted.
+  const stray = record()
+  stray.cities = { abeokuta: held('abeokuta', 3) }
+  for (const city of ['ota', 'atlantis']) {
+    stray.character = { v: 2, city }
+    assert.equal(characterCity(stray), 'abeokuta')
+  }
+  assert.throws(() => settleCity(session, 'lagos', 7000), { code: 'city_moved', city: 'abeokuta' })
 })

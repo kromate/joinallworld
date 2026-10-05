@@ -535,3 +535,64 @@ test('every Ibadan venue builds in budget with its own scene: each spot and game
   assert.deepEqual([...used].sort(), all.sort(), 'every variant scene is used by a venue');
   kit.dispose();
 });
+
+test('every Ogun venue builds in budget with its own scene: each spot and game table has a place and a way to it', async () => {
+  const { VARIANTS: signature } = await import('./venues-ogun-a.ts');
+  const { VARIANTS: everyday } = await import('./venues-ogun-b.ts');
+  const kit = createKit();
+  const used = new Set<string>();
+  const report: string[] = [];
+  for (const city of ['abeokuta', 'ota', 'ijebu-ode', 'sagamu'] as const) {
+    const content = await preloadCityContent(city);
+    for (const authored of content.venues) {
+      if (authored.kind === 'home') continue;
+      const venue = sceneVenue(authored.id, city) as unknown as SceneVenue;
+      const variant = ['church', 'mosque', 'speakeasy'].includes(String(venue.scene?.variant)) ? undefined : venue.scene?.variant;
+      if (variant) {
+        used.add(`${venue.scene!.kind}/${variant}`);
+        assert.ok(signature[venue.scene!.kind!]?.[variant] || everyday[venue.scene!.kind!]?.[variant], `${authored.id}: ${venue.scene!.kind}/${variant} is a scene of its own`);
+      }
+      const entry = buildVenueScene(kit, venue, city);
+      entry.setCrowd(crowd());
+      const stats = entry.stats();
+      report.push(`${city}/${authored.id} ${venue.scene!.kind}${variant ? `/${variant}` : ''} ${stats.triangles} ${stats.drawCalls}`);
+      assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}`);
+      const { grid, entrance } = entry.walk;
+      const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
+        const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);
+        assert.ok(at && grid!.path(entrance!.x, entrance!.z, at.x, at.z)?.length! > 0, `${authored.id}.${what} is reachable from the entrance`);
+        assert.ok(Math.hypot(at.x - (approach?.x ?? x), at.z - (approach?.z ?? z)) < within, `${authored.id}.${what}: the floor reaches it`);
+      };
+      for (const spot of entry.walk.spots()) {
+        assert.ok(entry.anchors[spot.id]?.landmark, `${authored.id}.${spot.id} is pinned to a landmark of the scene`);
+        reach(spot.id, spot.x, spot.z, spot.approach);
+      }
+      for (const thing of entry.walk.things()) reach(thing.id, thing.x, thing.z, null, 2.6);
+      // A variant is a different scene from the bare kind it replaces.
+      if (variant) assert.notEqual(stats.triangles, buildVenueScene(kit, { ...venue, scene: { ...venue.scene, variant: undefined } }, city).stats().triangles, `${authored.id} differs from the bare ${venue.scene!.kind}`);
+      entry.dispose();
+    }
+  }
+  if (process.env.OGUN_REPORT) console.log(report.join('\n'));
+  const all = [...Object.entries(signature), ...Object.entries(everyday)].flatMap(([kind, variants]) => Object.keys(variants).map((variant) => `${kind}/${variant}`));
+  assert.deepEqual([...used].sort(), all.sort(), 'every variant scene is used by a venue');
+  kit.dispose();
+});
+
+test('no two Ogun scenes are the same scene', async () => {
+  const { VARIANTS: signature } = await import('./venues-ogun-a.ts');
+  const { VARIANTS: everyday } = await import('./venues-ogun-b.ts');
+  const kit = createKit();
+  const sizes = new Map<string, string>();
+  for (const [kind, variants] of [...Object.entries(signature), ...Object.entries(everyday)]) {
+    for (const variant of Object.keys(variants)) {
+      const entry = buildVenueScene(kit, { id: `${kind}-${variant}`, label: 'Test Place', scene: { kind, variant } } as SceneVenue);
+      const key = `${entry.stats().triangles}`;
+      assert.ok(!sizes.has(key), `${kind}/${variant} has the same triangle count as ${sizes.get(key)}`);
+      sizes.set(key, `${kind}/${variant}`);
+      entry.dispose();
+    }
+  }
+  kit.dispose();
+});

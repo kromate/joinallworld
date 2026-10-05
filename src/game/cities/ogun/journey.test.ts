@@ -155,7 +155,7 @@ test('Lagos → Ota → Abeokuta → Lagos keeps one wallet, the held job and bo
   assert.notEqual(state.location, 'home')
   const awayCareer = viewLife(state, clock.context(state)).career
   assert.equal(awayCareer.id, job, 'the held job identity is still visible')
-  assert.deepEqual([awayCareer.workplace, awayCareer.hours, awayCareer.shift, awayCareer.pay, awayCareer.today.canWork], [null, null, null, 0, false], 'a cached Lagos catalogue cannot offer work in Ota')
+  assert.deepEqual([awayCareer.workplace, awayCareer.hours, awayCareer.shift, awayCareer.pay, awayCareer.today.canWork], [null, null, null, 0, false], 'a job held in Lagos cannot be worked in Ota until it is moved')
   const beforeHome = state.cash
   assert.equal(dispatch(state, { type: 'estate.set-lga', payload: { lga: defaultUnit('ota'), via: 'manual' } }, clock.context(state)).code, 'lga_set')
   assert.equal(state.estate.living, 'own')
@@ -178,4 +178,57 @@ test('Lagos → Ota → Abeokuta → Lagos keeps one wallet, the held job and bo
   assert.equal(dispatch(state, { type: 'activity', payload: { id: originalWork.shift.id } }, clock.context(state)).code, 'cooldown')
   const restored = createLife(structuredClone(state), { ...clock.context(state), trustedSave: true })
   assert.deepEqual(restored, state)
+})
+
+const travelBy = (state: LifeState, clock: Clock, to: string): void => {
+  const link = linksFrom(state.estate.city).find(item => item.to === to && item.mode === 'road')
+  assert.ok(link, `a road link reaches ${to}`)
+  assert.equal(dispatch(state, { type: 'estate.relocate', payload: { to, mode: 'road' } }, clock.context(state)).code, 'departed')
+  clock.finish(state)
+  assert.equal(state.estate.city, to)
+}
+
+test('moving a job to another city keeps its track, level and the day\'s shift; the starter shift has one break for the character', async () => {
+  await Promise.all(['lagos', 'ota', 'abeokuta'].map(loadCityContent))
+  const clock = journeyClock('lagos'), state = newGuest('lagos', clock)
+  settle(state, clock)
+  workLocally(state, clock)
+  assert.ok(state.travel.cooldowns['helper-shift'], 'the starter shift break is filed for the character')
+  travelBy(state, clock, 'ota')
+  const listing = viewLife(state, clock.context(state)).career.jobs.find(job => job.id === 'community-helper')
+  assert.equal(listing?.transfer, true, 'the same track elsewhere is offered as a transfer')
+  assert.equal(listing?.switchWarning, null, 'a transfer loses nothing, so there is no warning')
+  const before = structuredClone(state.career)
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'community-helper' } }, clock.context(state)).code, 'transferred')
+  assert.equal(state.career.city, 'ota')
+  assert.deepEqual({ ...state.career, city: null, transferDay: null }, { ...before, city: null, transferDay: null })
+  assert.equal(state.job, 'community-helper')
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'community-helper' } }, clock.context(state)).code, 'already_employed')
+  // The break from the Lagos shift still runs in Ota: travelling never buys a second paid shift.
+  const work = contentFor('ota').workplaces.find(item => item.careerId === 'community-helper')!.definition
+  if (state.location !== work.workplace.venue) {
+    assert.equal(dispatch(state, { type: 'travel', payload: { id: work.workplace.venue, mode: 'trek' } }, clock.context(state)).code, 'started')
+    clock.finish(state)
+  }
+  assert.equal(dispatch(state, { type: 'spot', payload: { id: work.workplace.spot } }, clock.context(state)).ok, true)
+  assert.equal(dispatch(state, { type: 'activity', payload: { id: work.shift.id } }, clock.context(state)).code, 'cooldown')
+  assert.equal((viewLife(state, clock.context(state)).travel.cooldowns[work.shift.id] ?? 0) > 0, true, 'the break is shown in the new city')
+  // One move a day.
+  travelBy(state, clock, 'lagos')
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'community-helper' } }, clock.context(state)).code, 'transfer_limit')
+})
+
+test('a career track moved between cities keeps its level and the one paid shift a day', async () => {
+  await Promise.all(['lagos', 'ota'].map(loadCityContent))
+  const clock = journeyClock('lagos'), state = newGuest('lagos', clock)
+  settle(state, clock)
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'teaching' } }, clock.context(state)).code, 'applied')
+  const day = Math.floor((Date.UTC(2026, 0, 5, 9) + 3600000) / 86400000)
+  Object.assign(state.career, { level: 2, performance: 60, shifts: 4, lastShiftDay: day })
+  travelBy(state, clock, 'ota')
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'teaching' } }, clock.context(state)).code, 'transferred')
+  assert.deepEqual([state.career.city, state.career.level, state.career.performance, state.career.shifts, state.career.lastShiftDay], ['ota', 2, 60, 4, day])
+  assert.equal(viewLife(state, clock.context(state)).career.today.code, 'shift_done', 'today\'s paid shift was already worked in Lagos')
+  // A track with no workplace to move to is not touched: a different local job is a confirmed switch that resets.
+  assert.equal(dispatch(state, { type: 'apply-job', payload: { id: 'community-helper' } }, clock.context(state)).code, 'confirm_switch')
 })

@@ -149,7 +149,7 @@ export interface ActionMap extends CampusActionMap {
 
   // -- career --
   /** Apply while unemployed. 'already_employed' (same job) is a success that changes nothing. Never switches jobs. */
-  'apply-job': { payload: { id: JobId }; ok: 'applied' | 'already_employed'; fail: 'busy' | 'invalid_job' | 'workplace_unavailable' | 'confirm_switch' }
+  'apply-job': { payload: { id: JobId }; ok: 'applied' | 'already_employed' | 'transferred'; fail: 'busy' | 'invalid_job' | 'workplace_unavailable' | 'confirm_switch' | 'transfer_limit' }
   /** The confirmed switch: leave the current job for another. */
   'career.switch': { payload: { id: JobId }; ok: 'switched' | 'already_employed'; fail: 'busy' | 'invalid_job' | 'workplace_unavailable' | 'no_job' }
   'career.quit': { payload: NoPayload; ok: 'quit'; fail: 'no_job' | 'busy' }

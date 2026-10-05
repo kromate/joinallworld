@@ -1,5 +1,8 @@
 import type { CityLink } from '../../types/content.ts'
 
+/** The Lagos–Ibadan train: listed by both cities' rules, kept out of the legacy road table. */
+export const LAGOS_IBADAN_RAIL: CityLink = Object.freeze({ a: 'lagos', b: 'ibadan', mode: 'rail', beta: true, label: 'Train between Mobolaji Johnson and Obafemi Awolowo stations', icon: '🚆', fare: 9000, seconds: 90, km: 157 })
+
 /** Intercity links are symmetric. Fares and durations are original beta values. */
 export const CITY_LINKS: readonly CityLink[] = Object.freeze([
   { a: 'lagos', b: 'ibadan', mode: 'road', beta: true, label: 'Bus on the Lagos–Ibadan Expressway', icon: '🚌', fare: 3500, seconds: 120, km: 130 },

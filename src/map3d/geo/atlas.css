@@ -160,7 +160,10 @@
   .atlas-sheet{grid-column:1;grid-row:2;align-self:end;max-height:min(100%,64dvh);padding:12px;gap:8px;border-radius:22px;z-index:4}
   .atlas-sheet h2{font-size:var(--t-title,17px)}
   /* Folded, the sheet is a name, a line and its one action: the map stays in view. "Routes and details" unfolds it. */
-  .atlas-sheet:not(.is-expanded)>:not(header):not(.atlas-go):not(.atlas-more):not(.atlas-teaser){display:none}
+  .atlas-sheet:not(.is-expanded)>:not(header):not(nav):not(.atlas-go):not(.atlas-more):not(.atlas-teaser){display:none}
+  .atlas-sheet nav[aria-label="Cities in this state"]{flex-wrap:nowrap;overflow-x:auto;min-height:44px;scrollbar-width:none}
+  .atlas-sheet nav[aria-label="Cities in this state"] button{flex:none}
+  .atlas.has-cities .atlas-frame>.atlas-stage{margin-bottom:262px}
   .atlas-sheet:not(.is-expanded) .atlas-teaser{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .atlas-more{display:block;justify-self:center;min-height:36px;padding:0 14px;border:0;border-radius:18px;background:var(--c-fill,#eef1ef);font-size:var(--t-caption,12px);font-weight:650}
   .atlas-go{min-height:44px}
@@ -171,7 +174,40 @@
 @media(prefers-reduced-motion:reduce){.atlas-canvas,.atlas.is-entering .atlas-canvas,.atlas.is-entering .atlas-labels,.atlas.is-entering .atlas-frame{transition:none}}
 
 .atlas-state-overview{display:grid;gap:8px;border-top:1px solid var(--c-line,#dce2dc);padding-top:12px}
-.atlas .atlas-state-map{display:block;width:100%;height:auto;max-height:260px;background:#fafbf7;border-radius:12px}
+/* The state view: the state's own map with its cities as pins and the travel links between them. The pins are HTML over the drawing, so each is a 44px target at any size. */
+.atlas-state-stage{position:relative;width:100%;max-width:560px;justify-self:center;background:#fafbf7;border-radius:12px;overflow:hidden}
+.atlas .atlas-state-map{position:absolute;inset:0;display:block;width:100%;height:100%}
+.atlas-state-link{stroke:#9a7a3c;stroke-width:1.6px;vector-effect:non-scaling-stroke;opacity:.55}
+.atlas-state-link.is-rail{stroke:#4a6a9c;stroke-dasharray:5 4}
+.atlas-state-link.is-lit{opacity:1;stroke-width:3px}
+.atlas-state-hit{stroke:transparent;stroke-width:26px;vector-effect:non-scaling-stroke;cursor:pointer;pointer-events:stroke}
+.atlas-state-pin{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;padding:0;border:0;background:none;cursor:pointer;display:block}
+.atlas-state-pin i{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;border-radius:50%;background:var(--c-green,#2fa866);border:2px solid #fff;box-shadow:0 1px 4px #0006;transition:transform .12s}
+.atlas-state-pin.is-selected i{background:#1d4d33;transform:scale(1.3)}
+.atlas-state-pin.is-here i{box-shadow:0 0 0 4px #e8a64399,0 1px 4px #0006}
+.atlas-state-pin span,.atlas-state-ext span{position:absolute;display:grid;justify-items:center;text-align:center;white-space:nowrap;pointer-events:none;font-size:12px;line-height:1.2;color:#1c2b21;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+.atlas-state-pin b{font-weight:700}
+.atlas-state-pin small{font-size:10px;font-weight:700;color:#8a5a12}
+.atlas-state-pin.at-below span{top:34px;left:50%;transform:translateX(-50%)}
+.atlas-state-pin.at-above span{bottom:34px;left:50%;transform:translateX(-50%)}
+.atlas-state-pin.at-right span{left:34px;top:50%;transform:translateY(-50%);justify-items:start}
+.atlas-state-pin.at-left span{right:34px;top:50%;transform:translateY(-50%);justify-items:end}
+.atlas-state-pin:focus-visible{outline:var(--focus,3px solid #1c5f3c);outline-offset:-4px;border-radius:50%}
+.atlas-state-ext{position:absolute;width:0;height:0}
+.atlas-state-ext i{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:#9a7a3c;border:1.5px solid #fff}
+.atlas-state-ext span{font-size:11px;color:#6b5a2e}
+.atlas-state-ext.at-below span{top:9px;left:0;transform:translateX(-50%)}
+.atlas-state-ext.at-above span{bottom:9px;left:0;transform:translateX(-50%)}
+.atlas-state-ext.at-right span{left:10px;top:0;transform:translateY(-50%)}
+.atlas-state-ext.at-left span{right:10px;top:0;transform:translateY(-50%)}
+.atlas-state-links{display:grid;gap:4px}
+.atlas-state-links h3{margin:0}
+.atlas-state-links p{margin:0;display:grid;gap:2px;font-size:12px;padding:8px 10px;border-radius:10px;background:#f3efe2}
+.atlas-state-links p span{color:#5b5640}
+.atlas-state-links ul{margin:0}
+.atlas-state-links li>button{display:grid;gap:1px;min-height:44px;align-content:center}
+.atlas-state-links li>button b{font-size:12px}
+.atlas-state-links li>button span{font-size:11px;color:#566457}
 .atlas-state-map [data-atlas-inspect-city]{cursor:pointer}
 .atlas-state-map [data-atlas-inspect-city]:hover{fill:#79a66b}
 .atlas-state-key{font-size:11px;line-height:1.4;color:var(--c-muted,#566457)}
@@ -181,5 +217,5 @@
 .atlas-state-overview li>span{background:#f3f4f0;color:#6b7168}
 .atlas-state-overview small{font-size:10px;white-space:nowrap}
 .atlas-sheet nav[aria-label="Cities in this state"]{display:flex;flex-wrap:wrap;gap:6px}
-.atlas-sheet nav[aria-label="Cities in this state"] button{border:1px solid #cbd7c6;border-radius:18px;background:#f2f5ed;padding:7px 11px;color:#334b38;font:inherit;font-size:12px;cursor:pointer}
+.atlas-sheet nav[aria-label="Cities in this state"] button{min-height:44px;border:1px solid #cbd7c6;border-radius:22px;background:#f2f5ed;padding:7px 14px;color:#334b38;font:inherit;font-size:12px;cursor:pointer}
 .atlas-sheet nav[aria-label="Cities in this state"] button[aria-pressed="true"]{background:#2e6542;color:#fff;border-color:#2e6542}

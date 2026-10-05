@@ -2,7 +2,7 @@
 // train against the real server on a controlled clock, with each fare charged once and the Lagos home still there.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runTwoCities } from '../scripts/two-cities.ts';
+import { runThreePlaces, runTwoCities } from '../scripts/two-cities.ts';
 
 test('the two-cities script runs to the end with every assertion holding', { timeout: 30000 }, async () => {
   const lines: string[] = [];
@@ -10,4 +10,12 @@ test('the two-cities script runs to the end with every assertion holding', { tim
   assert.equal(result.steps, 9);
   assert.deepEqual(result.fares, { bus: 3500, train: 9000 });
   assert.ok(lines.some((line) => line.startsWith('Two cities complete')));
+});
+
+test('the three-places run: Lagos, Ota, Abeokuta, Ibadan and home, each fare charged once and the Lagos house intact', { timeout: 30000 }, async () => {
+  const lines: string[] = [];
+  const result = await runThreePlaces({ log: (line) => lines.push(line) });
+  assert.equal(result.steps, 12);
+  assert.deepEqual(result.fares, [2000, 2500, 4000, 3500]);
+  assert.ok(lines.some((line) => line.startsWith('Three places complete')));
 });

@@ -117,6 +117,7 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
               <button type="button" class="ui-button" @click="asking = null">Keep current job</button>
             </div>
           </div>
+          <button v-else-if="control.kind === 'transfer'" type="button" class="ui-button is-primary" :disabled="wait" @click="apply(job.id)">{{ control.label }} — free, keeps your level</button>
           <button v-else-if="control.kind === 'switch'" type="button" class="ui-button" @click="asking = job.id">Switch to this job</button>
         </template>
       </article>

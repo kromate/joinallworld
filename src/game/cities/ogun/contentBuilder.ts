@@ -1,7 +1,7 @@
 import { JOBS } from '../../content/jobs.ts'
 import { toLocal } from '../../../geo/frame.ts'
 import type {
-  ActivityDefinition, CalendarEvent, CityContent, CityCultureCard, CityGuidePlace, CityVenueContent,
+  ActivityDefinition, CalendarEvent, CitySceneVariant, CityContent, CityCultureCard, CityGuidePlace, CityVenueContent,
   DreamDefinition, HouseDefinition, JobDefinition, NpcDefinition, SceneKind, SpotDefinition,
   StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, WishDefinition,
 } from '../../../types/content.ts'
@@ -15,7 +15,7 @@ export interface OgunVenueSeed {
   readonly category: VenueCategoryId | 'home'; readonly icon: string; readonly point: OgunPoint
   readonly description: string; readonly ambient: readonly string[]; readonly spots: readonly OgunSpotSeed[]
   readonly hours?: Readonly<{ open: number; close: number; days?: number[] }>
-  readonly variant?: 'speakeasy' | 'church' | 'mosque'; readonly beta?: boolean; readonly note?: string
+  readonly variant?: 'speakeasy' | 'church' | 'mosque' | CitySceneVariant; readonly beta?: boolean; readonly note?: string
 }
 export interface OgunPersonSeed { readonly name: string; readonly role: string; readonly quotes: readonly [string, string] }
 export interface OgunHouseSeed {

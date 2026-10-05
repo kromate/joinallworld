@@ -112,6 +112,8 @@
         "node/5854068985",
         "node/8841632699",
         "node/9074714198",
+        "way/281964151",
+        "way/281964155",
         "way/316843082",
         "way/453068217",
         "way/472426637",
@@ -122,6 +124,24 @@
         "way/1215520865",
         "way/1456801587"
       ],
+      "retrieved": "2026-10-05"
+    },
+    "openstreetmap-ogun-roads": {
+      "url": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL 1.0 (© OpenStreetMap contributors)",
+      "attribution": "OpenStreetMap contributors",
+      "objects": "Overpass query: highway motorway, trunk and primary ways in the box 6.45,2.85,7.5,4.1 plus named secondary ways in the four town cores",
+      "sha256": "5d204e45bb1cc6aeaa01094f9e667c0695fed9aaca0c138b48536a19ed88ec60",
+      "note": "Queried by scripts/geo/build-ogun-roads.ts; the combined response hash is also recorded in src/game/cities/ogun/roads.ts.",
+      "retrieved": "2026-10-05"
+    },
+    "openstreetmap-ogun-water": {
+      "url": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL 1.0 (© OpenStreetMap contributors)",
+      "attribution": "OpenStreetMap contributors",
+      "objects": "Overpass query: waterway=river ways named Ogun, Lafenwa River, Yewa, Ona, Ibu, Omi, Ofe or Majidun Creek, and named natural=water ways, in the box 6.45,2.85,7.5,4.1",
+      "sha256": "3fc8018009bc08f3488bc2ac6a84dbb61583593f1af9107bc793dc2943ab1381",
+      "note": "Queried by scripts/geo/build-ogun-water.ts; the combined response hash is also recorded in src/game/cities/ogun/water.ts.",
       "retrieved": "2026-10-05"
     },
     "ogun-lga-names-2024": {
@@ -193,6 +213,26 @@
         "src/game/cities/ibadan/roads.ts"
       ],
       "generator": "scripts/geo/build-ibadan-roads.ts"
+    },
+    "ogun-roads": {
+      "inputs": [
+        "openstreetmap-ogun-roads"
+      ],
+      "method": "Overpass interpreter: motorway, trunk and primary ways in the Ogun box and named secondary ways in the four town cores, kept when a vertex lies inside the Ogun State outline, simplified with Douglas-Peucker (0.0008 degrees, 0.0004 in the cores) and quantised to 0.0001 degrees; the source sha256 is in the generated file's header.",
+      "outputs": [
+        "src/game/cities/ogun/roads.ts (OGUN_ROADS)"
+      ],
+      "generator": "scripts/geo/build-ogun-roads.ts"
+    },
+    "ogun-water": {
+      "inputs": [
+        "openstreetmap-ogun-water"
+      ],
+      "method": "Overpass interpreter: named river ways (lines) and named closed natural=water ways (rings) in the Ogun box, kept when a vertex lies inside the Ogun State outline, simplified with Douglas-Peucker (0.0003 degrees) and quantised to 0.0001 degrees; the source sha256 is in the generated file's header.",
+      "outputs": [
+        "src/game/cities/ogun/water.ts (OGUN_WATER)"
+      ],
+      "generator": "scripts/geo/build-ogun-water.ts"
     },
     "ogun-city-footprints": {
       "inputs": [

@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { ibadanJourney } from '../server/testing/ibadanJourney.ts'
+import { ogunJourney } from '../server/testing/ogunJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, object, qualifyState, seedLegacyRecords } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice, JourneyHost, JourneySocket } from '../server/testing/cityJourney.ts'
 
@@ -107,6 +108,7 @@ test('Worker city modules: complete city journey and lossless legacy switches su
     }),
     elapse: (device, city, ms) => modify(device, city, entry => { assert.equal(typeof entry.updatedAt, 'number'); entry.updatedAt = Number(entry.updatedAt) - ms }),
     qualify: (device, city) => modify(device, city, entry => qualifyState(entry.state)),
+    edit: (device, city, change) => modify(device, city, entry => change(object(entry.state))),
     session: stored,
     seedLegacy: async device => {
       const session = await stored(device)
@@ -138,5 +140,6 @@ test('Worker city modules: complete city journey and lossless legacy switches su
   }
   const device = await cityJourney(host)
   await ibadanJourney(host)
+  await ogunJourney(host)
   await legacyJourney(host, device)
 })

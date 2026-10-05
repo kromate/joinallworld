@@ -187,6 +187,8 @@ export interface JobListing {
   openNow: boolean
   /** What switching to this job loses; null when unemployed or for the current job. */
   switchWarning: string | null
+  /** The player holds this same track in another city: taking it here moves the job, keeping level, performance and shifts. */
+  transfer: boolean
 }
 
 export interface CareerView {

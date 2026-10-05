@@ -121,7 +121,7 @@ const trackOf = (id: JobId, cityId: string): TrackJobDefinition => {
   return job;
 };
 const rung = (job: TrackJobDefinition, level: number): LadderRung => ladderRung(job, clamp(level, 1, job.ladder.length) - 1);
-const freshCareer = (): CareerState => ({ city: null, level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, oriented: false });
+const freshCareer = (): CareerState => ({ city: null, level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
 const dayIndex = (value: unknown): number | null => (Number.isSafeInteger(value) ? (value as number) : null); // isSafeInteger proved the number
 
 /** "Mon–Fri" for a consecutive run (weeks start on Monday and may wrap to Sunday), else a list. */
@@ -242,6 +242,7 @@ function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeCont
     return ok(state, 'already_employed');
   }
   if (!workplaceOpen(job, ctx.cityId)) return fail(state, 'workplace_unavailable', `${job.label} is based at ${job.workplaceName}, which is not open in this build yet. Choose a track whose workplace is on the map.`);
+  if (!switching && state.job === job.id && state.career.city && state.career.city !== ctx.cityId) return transfer(state, job, ctx);
   const old = jobOf(state.job, state.career.city ?? state.estate.city);
   if (switching && !old) return fail(state, 'no_job', 'You have no job to switch from. Use Apply instead.');
   if (old && !switching) {
@@ -260,6 +261,23 @@ function apply(state: LifeState, payload: Record<string, unknown>, ctx: LifeCont
   emit(state, 'job.applied', { job: job.id, ...(job.track ? { maxLevel: job.ladder.length } : {}) }, ctx);
   maybeCommute(state, ctx);
   return ok(state, old ? 'switched' : 'applied');
+}
+
+/**
+ * Moving between cities is not a punishment: the same track held in another city moves to this city's workplace
+ * keeping its level, performance, shift count and the day's shift (`lastShiftDay` is the character's, never the city's,
+ * so a move never allows a second paid shift on one day). One move a day stops a daily commute between two cities
+ * from being used to dodge the shift rules.
+ */
+function transfer(state: LifeState, job: JobDefinition, ctx: LifeContext) {
+  const today = lagosTime(nowOf(state, ctx)).day;
+  if (state.career.transferDay === today) return fail(state, 'transfer_limit', 'You already moved your job today. You can move it again tomorrow.');
+  state.career.city = ctx.cityId;
+  state.career.transferDay = today;
+  state.career.shiftStartDay = null;
+  state.message = `Transferred to ${placeName(job, ctx)}. Your ${job.label} level, performance and shifts came with you.`;
+  maybeCommute(state, ctx);
+  return ok(state, 'transferred');
 }
 
 function quit(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
@@ -371,6 +389,7 @@ export default {
     career.lastShiftDay = dayIndex(saved.lastShiftDay);
     career.shiftStartDay = dayIndex(saved.shiftStartDay);
     career.autoDay = dayIndex(saved.autoDay);
+    career.transferDay = dayIndex(saved.transferDay);
     career.oriented = saved.oriented === true;
     state.career = career;
   },
@@ -450,9 +469,11 @@ export default {
       ],
       jobs: jobsFor(ctx.cityId).map((item): JobListing => {
         const open = workplaceOpen(item, ctx.cityId), current = state.job === item.id && state.career.city === ctx.cityId;
+        const moves = !current && state.job === item.id && Boolean(state.career.city);
         const blocked = current ? null
           : !open ? `${cap(item.workplaceName)} is not open in this build yet.`
           : state.activeAction ? 'Finish or cancel your current action first.'
+          : moves && career.transferDay === today.day ? 'You already moved your job today. You can move it again tomorrow.'
           : null;
         return {
           id: item.id, label: item.label, icon: item.icon || '💼', track: Boolean(item.track), beta: Boolean(item.beta), current,
@@ -464,7 +485,7 @@ export default {
           workplace: placeName(item, ctx), blocked,
           // The workplace venue's id (null while it is not in this build) and whether it is open at this moment.
           venue: open ? item.workplace.venue : null, openNow: open ? workplaceOpening(item, state, ctx).open : false,
-          switchWarning: shown && !current ? `You will leave ${shown.label}${shown.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? ladderRung(item, 0).role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
+          transfer: moves, switchWarning: shown && !current && !moves ? `You will leave ${shown.label}${shown.track ? ` (level ${career.level}, ${Math.floor(career.performance)}% performance)` : ''} and start as ${item.track ? ladderRung(item, 0).role : item.label}${item.track ? ` at ${START_PERFORMANCE}% performance` : ''}. This cannot be undone.${career.lastShiftDay === today.day && item.track ? ' You already worked today, so your first shift there is on its next work day.' : ''}` : null,
         };
       }),
     };

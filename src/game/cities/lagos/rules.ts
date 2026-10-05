@@ -1,5 +1,6 @@
 import type { CityModuleRules, LgaDefinition } from '../../../types/content.ts'
-import { CITY_LINKS } from '../links.ts'
+import { CITY_LINKS, LAGOS_IBADAN_RAIL } from '../links.ts'
+import { OGUN_LINKS } from '../ogun/links.ts'
 import { ORIGINS } from '../../../map3d/geo/frame.ts'
 
 export type LagosLocalGovernmentId =
@@ -78,5 +79,5 @@ export const LAGOS_RULES = Object.freeze({
     { id: 'ikeja-airport', name: 'Murtala Muhammed International Airport', mode: 'air', venueId: 'airport' },
     { id: 'ebute-metta-rail', name: 'Mobolaji Johnson Station', mode: 'rail' },
   ],
-  links: CITY_LINKS.filter((link) => link.a === 'lagos' || link.b === 'lagos'),
+  links: [...CITY_LINKS.filter((link) => link.a === 'lagos' || link.b === 'lagos'), LAGOS_IBADAN_RAIL, OGUN_LINKS.lagosOta, OGUN_LINKS.lagosAbeokuta, OGUN_LINKS.lagosAbeokutaRail],
 } satisfies CityModuleRules<'lagos', 'lagos', LagosLocalGovernmentId, LagosDistrictId, LagosHubId>)

@@ -53,7 +53,7 @@ Game rules belong in plain modules such as `src/life.ts` that run without a brow
 
 ## Cities
 
-Lagos and Ibadan are the first two cities. If you add or change city content, keep it as data — venues, spots, fares, map positions — rather than city-specific logic, so the next city can reuse it. The pack format is not final; raise an issue before investing heavily.
+Lagos, Ibadan and the four cities of Ogun State are the first open cities. If you add or change city content, keep it as data — venues, spots, fares, map positions — rather than city-specific logic, so the next city can reuse it. The pack format is not final; raise an issue before investing heavily.
 
 ## Security issues
 

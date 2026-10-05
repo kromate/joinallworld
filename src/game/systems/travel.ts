@@ -87,6 +87,8 @@ import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
 const MAX_VISITED = 512;
+/** The longest authored cooldown is a day: a timer for a city whose content is not loaded cannot honestly run longer. */
+const MAX_COLD_COOLDOWN_MS = 86_400_000;
 /** Upper bound accepted for a saved trip's `fare` (no route costs anywhere near this). */
 const MAX_TRIP_FARE = 1_000_000;
 
@@ -330,7 +332,15 @@ function rollActivity(state: LifeState, id: ActivityId, rule: ActivityOutcomeRul
   emit(state, 'activity.outcome', { id, success }, ctx);
 }
 
-const cooldownLeft = (state: LifeState, id: string, now: number): number => Math.max(0, Math.ceil(((state.travel?.cooldowns?.[cityReference(state.estate.city, id)] ?? 0) - now) / 1000));
+/** The starter job's shift has one break for the whole character: it is filed once, whichever city's counter it was worked at. */
+const SHARED_SHIFT = 'helper-shift';
+const isStarterShift = (def: { requiresJob?: unknown; careerTrack?: unknown } | undefined): boolean => Boolean(def?.requiresJob) && !def?.careerTrack;
+const cooldownKey = (city: string, def: { id: string; requiresJob?: unknown; careerTrack?: unknown }): string => isStarterShift(def) ? SHARED_SHIFT : cityReference(city, def.id);
+const cooldownLeft = (state: LifeState, id: string, now: number): number => {
+  const def = findActivity(id, state.estate.city)?.def;
+  const readyAt = state.travel?.cooldowns?.[def ? cooldownKey(state.estate.city, def) : cityReference(state.estate.city, id)] ?? 0;
+  return Math.max(0, Math.ceil((readyAt - now) / 1000));
+};
 
 const hasActivity = (city: string, id: string): boolean => Boolean(findActivity(id, city));
 const hasVenue = (city: string, id: string): boolean => Boolean(venueFor(city, id));
@@ -345,7 +355,7 @@ function cleanCooldowns(value: unknown, city: string, now: number): Record<strin
     const reference = readCityReference(key, city, hasActivity);
     if (!reference) continue;
     const identity = cityReference(reference.cityId, reference.id);
-    if (!cachedCityContent(reference.cityId)) { kept[identity] = readyAt; continue; }
+    if (!cachedCityContent(reference.cityId)) { kept[identity] = Math.min(readyAt, now + MAX_COLD_COOLDOWN_MS); continue; }
     const seconds = findActivity(reference.id, reference.cityId)?.def.cooldown;
     // Active-city rules always bound the timer. A cold origin is checked when its content loads.
     if (finite(seconds) && seconds > 0) kept[identity] = Math.min(readyAt, now + seconds * 1000);
@@ -436,7 +446,10 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
       if (reference?.cityId !== ctx.cityId) return [];
       const left = cooldownLeft(state, reference.id, ctx.now);
       return left > 0 ? [[reference.id, left]] : [];
-    })),
+    }).concat(contentFor(ctx.cityId).workplaces.flatMap((place): [string, number][] => {
+      const left = !place.definition.track ? cooldownLeft(state, place.definition.shift.id, ctx.now) : 0;
+      return left > 0 ? [[place.definition.shift.id, left]] : [];
+    }))),
     gigs: { limit: GIG_DAILY_LIMIT, used: gigsToday(state, ctx.now), left: Math.max(0, GIG_DAILY_LIMIT - gigsToday(state, ctx.now)) },
     // The gigs offered at the spot the player stands at (activity ids), so the venue panel can show the counter beside them.
     gigsHere: (spotsOf(state.location, ctx.cityId).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
@@ -470,7 +483,7 @@ const play = PLAYS ? {
       if (!def) return;
       const now = finite(ctx?.now) ? ctx.now : state.t;
       if (finite(def.cooldown) && def.cooldown > 0) {
-        const key = cityReference(state.estate.city, def.id), ids = Object.keys(state.travel.cooldowns);
+        const key = cooldownKey(state.estate.city, def), ids = Object.keys(state.travel.cooldowns);
         if (ids.length >= MAX_COOLDOWNS && !Object.hasOwn(state.travel.cooldowns, key)) delete state.travel.cooldowns[ids[0] ?? ''];
         state.travel.cooldowns[key] = now + def.cooldown * 1000;
       }

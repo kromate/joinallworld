@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { CityContent, CityMapGeometry, CityMapPack, CityModule, LonLatPolygon } from '../../types/content.ts'
 import { JOBS } from '../content/jobs.ts'
-import { linksFrom, cityModule, loadCityContent, registerCityForTest } from './registry.ts'
+import { linksFrom, cityModule, loadCityContent, loadCityRoutes, registerCityForTest } from './registry.ts'
 import { project, unproject } from '../../map3d/geo/frame.ts'
 import { KINDS as BUILT_SCENE_KINDS } from '../../scene/venue-scenes.ts'
 
@@ -175,8 +175,9 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
   }
   const railLinks = module.rules.links.filter(link => link.mode === 'rail')
   if (railLinks.length) {
-    assert.ok(module.loadRoutes, 'declared rail links have a lazy geometry loader')
-    const routes = await module.loadRoutes()
+    // A rail line is drawn once, by the module of either end; the other end lists the same link without a second copy of the geometry.
+    const routes = [...await (module.loadRoutes?.() ?? []), ...(await Promise.all(railLinks.map(link => loadCityRoutes(link.a === module.id ? link.b : link.a)))).flat()]
+    assert.ok(routes.length, 'declared rail links have lazy geometry in a module at one of their ends')
     for (const link of railLinks) {
       const route = routes.find(route => route.mode === 'rail' && ((route.a === link.a && route.b === link.b) || (route.a === link.b && route.b === link.a)))
       assert.ok(route && route.points.length >= 2, `rail geometry exists for ${link.a} and ${link.b}`)

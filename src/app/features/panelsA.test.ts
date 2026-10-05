@@ -60,7 +60,7 @@ after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = re
 
 // ---- models -----------------------------------------------------------------------------------
 
-const job = (extra: Partial<Omit<JobListing, 'id'>> & { id?: string }): JobListing => ({ id: 'tech', label: 'Tech', icon: '', track: true, beta: false, current: false, entryRole: 'Intern', pay: 3600, topRole: 'CTO', summary: '', schedule: '', hours: '', skill: 'coding', duration: 40, workplace: 'CcHub', blocked: null, venue: 'cchub', openNow: true, switchWarning: 'You lose your level.', ...extra }) as unknown as JobListing
+const job = (extra: Partial<Omit<JobListing, 'id'>> & { id?: string }): JobListing => ({ id: 'tech', label: 'Tech', icon: '', track: true, beta: false, current: false, entryRole: 'Intern', pay: 3600, topRole: 'CTO', summary: '', schedule: '', hours: '', skill: 'coding', duration: 40, workplace: 'CcHub', blocked: null, venue: 'cchub', openNow: true, switchWarning: 'You lose your level.', transfer: false, ...extra }) as unknown as JobListing
 
 test('jobs: open workplaces come first, the player\'s own job is the card at the top, and a question that no longer applies is dropped', () => {
   const list = [job({ id: 'a', openNow: false }), job({ id: 'b' }), job({ id: 'c', current: true }), job({ id: 'd', venue: null, openNow: false })]

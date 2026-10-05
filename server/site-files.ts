@@ -12,7 +12,7 @@ export interface SiteFile { type: string; body: string }
 const MANIFEST = `{
   "name": "Allworld",
   "short_name": "Allworld",
-  "description": "A digital world to live in. Explore cities and cultures, work, travel and make friends. Lagos and Ibadan are open, more cities coming. Free in your browser.",
+  "description": "A digital world to live in. Explore cities and cultures, work, travel and make friends. Lagos, Ibadan and Ogun's cities are open; more places are opening. Free in your browser.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

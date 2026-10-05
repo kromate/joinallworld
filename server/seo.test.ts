@@ -85,3 +85,18 @@ test('public files: robots.txt, sitemap.xml, manifest and the images they name',
 test('the workshop pages are not for search engines', async () => {
   for (const page of ['campus.html', 'models.html', 'voice-test.html']) assert.match(await read(page), /<meta name="robots" content="noindex,nofollow">/, page);
 });
+
+test('the page, the manifest and the readme say which cities are open, and say it the same way', async () => {
+  const html = await read('index.html'), head = html.slice(0, html.indexOf('</head>'));
+  const manifest = (JSON.parse(siteFile('/manifest.webmanifest', '')?.body ?? '') as { description: string }).description;
+  const description = tag(head, 'description') ?? '';
+  for (const text of [description, tag(head, 'og:description') ?? '', tag(head, 'twitter:description') ?? '', manifest]) {
+    assert.match(text, /Lagos, Ibadan and Ogun's cities are open; more places are opening\./, text);
+  }
+  assert.ok(description.length <= 155 && ((/<title>([^<]*)<\/title>/.exec(head)?.[1] ?? '').length <= 60), 'title at most 60 and description at most 155 characters');
+  assert.match(html, /<noscript>[^]*Lagos, Ibadan and the cities of Ogun State[^]*<\/noscript>/);
+  for (const [name, text] of [['index.html', html], ['manifest', manifest], ['README.md', await read('README.md')], ['CONTRIBUTING.md', await read('CONTRIBUTING.md')]] as const) {
+    assert.ok(!/two cities|Lagos and Ibadan are open|first two cities|more cities (are )?coming/i.test(text), `${name} does not claim only two cities are open`);
+  }
+  assert.match(await read('README.md'), /Today Lagos, Ibadan and Ogun's cities \(Abeokuta, Ota, Ijebu-Ode and Sagamu\) are open/);
+});

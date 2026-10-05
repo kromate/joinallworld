@@ -73,12 +73,14 @@ interface EconomySim {
   categoryOf(line: { reason: string; amount: number }): string;
   simulateIbadanStart(options: { days: number }): CityLife;
   simulateTraveller(options: { daysEach: number }): CityLife;
+  simulateOgunStart(options: { city: string; days: number }): CityLife;
+  simulateOgunTraveller(options: { daysEach: number }): CityLife;
 }
 interface CityLife {
   finalCash: number; conserved: boolean; unknown: string[]; stages: { stage: string; city: string; cash: number }[]; fares: { to: string; mode: string; fare: number }[]; player: SimPlayer;
 }
 // Trust boundary: the script is plain JavaScript; the shapes above are what it builds.
-const { runEconomy, simulate, Player, STARTS, STRATEGIES, GIGS, CHECKPOINTS, CHEAPEST_CAR, categoryOf, simulateIbadanStart, simulateTraveller } = economySim as unknown as EconomySim;
+const { runEconomy, simulate, Player, STARTS, STRATEGIES, GIGS, CHECKPOINTS, CHEAPEST_CAR, categoryOf, simulateIbadanStart, simulateTraveller, simulateOgunStart, simulateOgunTraveller } = economySim as unknown as EconomySim;
 
 /** A value a test needs to be there: fails the test, with a message, instead of being read as `undefined`. */
 const found = <T>(value: T | undefined, what: string): T => { assert.ok(value !== undefined, `${what} exists`); return value; };
@@ -317,4 +319,26 @@ test('economy: a life that starts in Ibadan, and one that travels Lagos to Ibada
   assert.deepEqual(trip.fares, [{ to: 'ibadan', mode: 'road', fare: 3500 }, { to: 'lagos', mode: 'rail', fare: 9000 }], 'each fare is charged exactly once');
   assert.equal(trip.player.lines.filter((line) => line.reason.startsWith('Start cash')).length, 1, 'start cash is paid once across both cities');
   assert.ok(trip.player.state.estate.lga !== null && trip.player.state.job === 'community-helper', 'the Lagos home and the job are still there');
+});
+
+test('economy: a life that starts in each Ogun city, and one that crosses Ota, Abeokuta and Ibadan and home, conserve every naira', () => {
+  for (const city of ['abeokuta', 'ota', 'ijebu-ode', 'sagamu']) {
+    const life = simulateOgunStart({ city, days: 14 });
+    assert.equal(life.conserved, true, `${city}: cash = seed + Σ ledger`);
+    assert.deepEqual(life.unknown, [], `${city}: every ledger reason is one the report knows`);
+    assert.deepEqual(life.stages.map((stage) => stage.city), [city, city]);
+    assert.ok(life.player.lines.some((line) => line.amount > 0 && line.reason !== 'Start cash'), `${city}: the local helper job pays`);
+    assert.equal(life.player.lines.filter((line) => line.reason.startsWith('Start cash')).length, 1, `${city}: start cash is paid once`);
+  }
+  const trip = simulateOgunTraveller({ daysEach: 3 });
+  assert.equal(trip.conserved, true, 'cash = seed + Σ ledger across five journeys');
+  assert.deepEqual(trip.unknown, []);
+  assert.deepEqual(trip.fares, [
+    { to: 'ota', mode: 'road', fare: 2000 }, { to: 'abeokuta', mode: 'road', fare: 2500 }, { to: 'ibadan', mode: 'rail', fare: 4000 },
+    { to: 'abeokuta', mode: 'road', fare: 3000 }, { to: 'lagos', mode: 'road', fare: 3500 },
+  ], 'each fare is charged exactly once');
+  assert.deepEqual(trip.stages.map((stage) => stage.city), ['lagos', 'ota', 'ota', 'abeokuta', 'abeokuta', 'ibadan', 'abeokuta', 'lagos', 'lagos']);
+  assert.equal(trip.player.lines.filter((line) => line.reason.startsWith('Start cash')).length, 1, 'start cash is paid once across five cities');
+  assert.ok(trip.player.state.estate.lga !== null && trip.player.state.job === 'community-helper', 'the Lagos home and the job are still there');
+  assert.ok(Object.keys(trip.player.state.estate.away).sort().join() === 'abeokuta,ibadan,ota', 'the three houses away are kept');
 });

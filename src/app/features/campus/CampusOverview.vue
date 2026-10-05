@@ -16,9 +16,11 @@ const { shell } = useApp()
 const { state, view, blocked, act, go } = useCampus()
 const here = computed(() => onCampus(state.value))
 
-// The landmark to walk to: where you stand, until another is chosen.
-const wanted = ref(state.value.spot ?? 'main-gate')
-watch(() => state.value.spot, (spot) => { if (spot) wanted.value = spot })
+// The landmark to walk to: where you stand, until another is chosen. Away from the campus nothing is chosen and the picker is not shown
+// (the spot is then wherever the player is, which is not a landmark of the campus).
+const landmarkOf = (spot: string | null | undefined): string => (spot && LANDMARKS[spot] ? spot : 'main-gate')
+const wanted = ref(landmarkOf(state.value.spot))
+watch(() => state.value.spot, (spot) => { if (spot && LANDMARKS[spot]) wanted.value = spot })
 const walk = (): void => go(wanted.value)
 
 const place = computed(() => (state.value.spot ? LANDMARKS[state.value.spot] ?? null : null))
@@ -38,7 +40,7 @@ const found = computed(() => new Set(state.value.unilagCommunity?.trail ?? []))
 
 <template>
   <div class="campus-grid">
-    <CampusCard icon="🚶🏾" heading="Walk around campus">
+    <CampusCard v-if="here" icon="🚶🏾" heading="Walk around campus">
       <label class="campus-field">Landmark
         <select v-model="wanted">
           <option v-for="landmark in Object.values(LANDMARKS)" :key="landmark.id" :value="landmark.id">{{ landmark.label }}</option>

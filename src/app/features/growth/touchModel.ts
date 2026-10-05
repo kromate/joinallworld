@@ -41,7 +41,7 @@ export function pushDeclinedWords(code: string): string {
     : code === 'declined' ? 'No problem. Nothing was switched on.'
       : 'Notifications could not be switched on in this browser.'
 }
-export const COMEBACK_SENTENCE = 'We’ll send you a few e-mails a week at most about your character. Change this any time.'
+export const COMEBACK_SENTENCE = 'We’ll send you a few e-mails a week at most about your character, and a note when a friend pings you to join them. Change this any time.'
 /** Said where an account is made, and again where the character's e-mails are switched. */
 export const COMEBACK_ACCOUNT_SENTENCE = 'You can turn this off any time.'
 export const emailSavedWords = (dryRun: boolean): string => (dryRun ? 'Address saved. E-mail is not switched on for this server yet, so nothing was sent.' : 'Check your inbox and press the button in the e-mail to confirm.')

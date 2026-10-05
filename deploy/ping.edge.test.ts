@@ -29,11 +29,12 @@ interface Device { id: string; name: string; cookie: string }
 interface Answer { ok?: boolean; code?: string; error?: string; note?: string; link?: string; moved?: string; expiresAt?: number; from?: { id: string }; notice?: PingNotice | null; incoming?: PingNotice[]; state?: { location: string } }
 const pause = (ms = 25): Promise<void> => new Promise((done) => setTimeout(done, ms));
 
-async function fixture(t: TestContext) {
+/** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
+async function fixture(t: TestContext, sleeps = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-ping-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-ping', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-ping', FOUNDER_EMAIL_SHA256: '' } };
+  const options = { name: 'joinallworld-ping', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-ping', FOUNDER_EMAIL_SHA256: '', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };
@@ -118,7 +119,7 @@ test('Cloudflare ping: the frame to a connected friend, the join link checked wi
 });
 
 test('Cloudflare ping: a ping, its link and the join after the object slept', { timeout: 120000 }, async (t) => {
-  const f = await fixture(t);
+  const f = await fixture(t, true);
   const ada = await f.player('Ada'), bola = await f.player('Bola');
   assert.equal((await f.request('/api/social/friends/request', { to: bola.id, cityId: 'lagos' }, ada)).code, 'requested');
   assert.equal((await f.request('/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola)).code, 'accepted');

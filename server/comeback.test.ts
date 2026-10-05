@@ -68,7 +68,7 @@ test('consent: confirming starts the preference on with the sentence; without an
   assert.equal((await h.hello(ada)).contact.comeback.on, false, 'not before the address is confirmed');
   const link = h.linkIn(must(h.mails().at(-1)), '/e/confirm');
   const shown = await h.page(link);
-  assert.match(shown.html, /We’ll send you a few e-mails a week at most about your character\. Change this any time\./);
+  assert.match(shown.html, /We’ll send you a few e-mails a week at most about your character, and a note when a friend pings you to join them\. Change this any time\./);
   const done = await h.page(link, 'POST');
   assert.match(done.html, /a few e-mails a week at most about your character/);
   const view = (await h.hello(ada)).contact.comeback;

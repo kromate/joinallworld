@@ -119,7 +119,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     const value = query.get('t') ?? '', action = `${path}?t=${encodeURIComponent(value)}`;
     if (!ctx.allow(`growth:mail-page:${ip}`, 30)) return { status: 429, cache: false, html: mailPage({ title: 'Too many tries', text: 'Wait a minute and open the link again.' }) };
     if (path === '/e/confirm') {
-      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Confirm your e-mail', text: 'Press the button to let Allworld e-mail you. We’ll send you a few e-mails a week at most about your character. Change this any time.', button: 'Yes, e-mail me', action }) };
+      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Confirm your e-mail', text: 'Press the button to let Allworld e-mail you. We’ll send you a few e-mails a week at most about your character, and a note when a friend pings you to join them. Change this any time.', button: 'Yes, e-mail me', action }) };
       const done = await outreach.confirmEmail(value);
       // One answer for every kind of bad link, so a link says nothing about who has an address here.
       return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are in', text: 'Your e-mail is confirmed. We’ll send you a few e-mails a week at most about your character. Change this any time in the game: Phone, Stay in touch.' } : { title: 'That link does not work', text: 'It may have expired or already been replaced. Ask for a new one in the game: Phone, Stay in touch.' }) };

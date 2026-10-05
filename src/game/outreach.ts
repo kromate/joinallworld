@@ -27,7 +27,7 @@ export const OUTREACH: Readonly<OutreachRules> = Object.freeze({
 const HOUR = 3600000, DAY = 86400000;
 
 /** The consent a player ticks before an address is stored. Shown word for word; also in SECURITY.md. */
-export const EMAIL_CONSENT = 'Send me Allworld e-mails at this address: one to confirm it now, then at most one message a day and three a week about my Sim, my friends and events, and a weekly summary. I can stop with one tap in any e-mail or here. I am 18 or older.';
+export const EMAIL_CONSENT = 'Send me Allworld e-mails at this address: one to confirm it now, then at most one message a day and three a week about my Sim, my friends and events, and a weekly summary. A friend can also ping me to join them: at most two such e-mails a day. I can stop with one tap in any e-mail or here. I am 18 or older.';
 export const PUSH_CONSENT = 'Send notifications to this phone: at most one a day and three a week, never at night, about my Sim, my friends and events. I can switch them off here at any time.';
 
 export const inQuietHours = (now: number, rules: Pick<OutreachRules, 'quietFrom' | 'quietTo'> = OUTREACH): boolean => { const hour = lagosTime(now).hour; return hour >= rules.quietFrom || hour < rules.quietTo; };

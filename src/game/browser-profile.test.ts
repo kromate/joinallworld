@@ -1,0 +1,133 @@
+// The browser's engine (campus stand-ins, nothing that only playing needs: profile.ts) must rebuild and view every life exactly as the
+// full engine does. A child process runs it on lives the full engine played, with two module hooks that do what vite.config.ts does to the
+// browser build: the systems come from systems/browser.ts (campus stand-ins), and profile.ts says PLAYS = false.
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import test from 'node:test';
+import { pathToFileURL } from 'node:url';
+import { advanceLife, createLife, dispatch, viewLife } from '../life.ts';
+import { makeContext } from './util.ts';
+import { lagosTime } from './clock.ts';
+import { CAMPUS_SLICES, isFreshSlice, needsCampusRules } from '../campus/unilag/slices.ts';
+import type { ActionBody } from '../types/actions.ts';
+import type { LifeContextInit, LifeState } from '../types/life.ts';
+
+const HOOKS = `
+export async function resolve(specifier, context, next) {
+  const resolved = await next(specifier, context);
+  return /\\/src\\/game\\/systems\\/index\\.ts$/.test(resolved.url) ? { ...resolved, url: resolved.url.replace(/index\\.ts$/, 'browser.ts'), shortCircuit: true } : resolved;
+}
+export async function load(url, context, next) {
+  if (/\\/src\\/game\\/profile\\.ts$/.test(url)) return { format: 'module', source: 'export const PLAYS = false;\\nexport const LEFT_OUT = {};\\n', shortCircuit: true };
+  return next(url, context);
+}`;
+const REGISTER = `import { register } from 'node:module'; register('data:text/javascript,' + encodeURIComponent(${JSON.stringify(HOOKS)}));`;
+
+/** Rebuilds and views the lives of the file named in argv[1] with the engine this process loads; prints what it saw. */
+const url = (path: string): string => pathToFileURL(new URL(path, import.meta.url).pathname).href;
+const PROBE = `
+import { readFileSync } from 'node:fs';
+import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
+import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
+import { isStandIn } from '${url('./registry.ts')}';
+const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
+const results = [];
+let playing = true;
+try { dispatch(createLife(null), { type: 'cancel' }); } catch { playing = false; }
+for (const { raw, ctx } of input.lives) {
+  let refused = null;
+  const waiting = campusFor(raw);
+  if (waiting) { try { createLife(raw, ctx); } catch (error) { refused = error.name; } await waiting; }
+  const state = createLife(raw, ctx);
+  results.push({ waited: waiting !== null, refused, state, view: viewLife(state, ctx) });
+}
+await loadCampus();
+process.stdout.write(JSON.stringify({ playing, standInsLeft: isStandIn('unilagStudent'), results }));`;
+
+const START = Date.UTC(2026, 0, 5, 8);
+const CAMPUS_KEYS = ['unilagStudent', 'unilagCommunity', 'unilagShuttle'];
+
+function player(seed: string): { state: LifeState; act(body: ActionBody): void; wait(seconds: number): void; ctx(): LifeContextInit } {
+  let now = START;
+  const ctx = (): LifeContextInit => makeContext({ now, cityId: 'lagos', seed });
+  const state = createLife(null, ctx());
+  return {
+    state, ctx,
+    act(body) { dispatch(state, { ...body, actionId: `${seed}-${now}` }, { ...ctx(), internal: true }); },
+    wait(seconds) { now += seconds * 1000; advanceLife(state, seconds, ctx()); },
+  };
+}
+
+function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
+  const out: { name: string; raw: unknown; ctx: LifeContextInit }[] = [];
+  const keep = (name: string, p: ReturnType<typeof player>): void => { out.push({ name, raw: JSON.parse(JSON.stringify(p.state)), ctx: { now: p.state.t, cityId: 'lagos' } }); };
+  out.push({ name: 'nobody', raw: null, ctx: { now: START, cityId: 'lagos' } });
+  const fresh = player('fresh'); keep('fresh', fresh);
+  const settled = player('settled');
+  settled.act({ type: 'onboarding.look', payload: { look: { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' } } });
+  settled.act({ type: 'onboarding.traits', payload: { traits: ['musical', 'tech-bro-or-sis'] } });
+  settled.act({ type: 'onboarding.dream', payload: { dream: 'yaba-unicorn' } });
+  settled.act({ type: 'onboarding.lottery', payload: {} });
+  settled.act({ type: 'onboarding.home', payload: { house: 'yaba' } });
+  keep('settled at home', settled);
+  for (const venue of ['park', 'market', 'gym']) { settled.act({ type: 'travel', id: venue, mode: 'okada' }); settled.wait(600); }
+  settled.act({ type: 'travel', id: 'park', mode: 'okada' }); settled.wait(600);
+  settled.act({ type: 'spot', payload: { id: 'trees' } }); settled.act({ type: 'activity', id: 'chill' }); settled.wait(5);
+  keep('settled, mid-activity', settled);
+  settled.wait(3600 * 5);
+  keep('settled, hours later', settled);
+  settled.act({ type: 'apply-job', id: 'community-helper' }); settled.wait(3600 * 30);
+  keep('settled, a day and a half later', settled);
+  const student = player('student');
+  for (const [type, payload] of [['onboarding.look', { look: { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'plain', skin: 'skin-3', hairColor: 'black', outfitColor: 'green', bottomsColor: 'navy' } }], ['onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] }], ['onboarding.dream', { dream: 'yaba-unicorn' }], ['onboarding.lottery', {}], ['onboarding.home', { house: 'yaba' }]] as const) student.act({ type, payload } as ActionBody);
+  student.act({ type: 'travel', id: 'unilag', mode: 'okada' }); student.wait(900);
+  keep('at the campus', student);
+  // A student of the campus: what the server would hold after the application, a ride and a club (rebuilt by the full engine, so it is a valid life).
+  const enrolled = JSON.parse(JSON.stringify(student.state)) as Record<string, unknown>;
+  enrolled.unilagStudent = { ...(enrolled.unilagStudent as object), status: 'admitted', programme: 'computer', admittedDay: lagosTime(START).day, applicationCount: 1 };
+  enrolled.unilagShuttle = { rides: 3 };
+  enrolled.unilagCommunity = { ...(enrolled.unilagCommunity as object), clubs: ['debate'] };
+  const rebuilt = createLife(enrolled, { now: student.state.t, cityId: 'lagos' });
+  out.push({ name: 'a student at the campus', raw: JSON.parse(JSON.stringify(rebuilt)), ctx: { now: rebuilt.t, cityId: 'lagos' } });
+  const away = JSON.parse(JSON.stringify(rebuilt)) as Record<string, unknown>;
+  away.location = 'park'; away.spot = 'amphitheatre';
+  out.push({ name: 'a student, away from the campus', raw: JSON.parse(JSON.stringify(createLife(away, { now: rebuilt.t, cityId: 'lagos' }))), ctx: { now: rebuilt.t, cityId: 'lagos' } });
+  return out;
+}
+
+const withoutCampus = (view: unknown): unknown => Object.fromEntries(Object.entries(view as Record<string, unknown>).filter(([key]) => !CAMPUS_KEYS.includes(key)));
+
+test('the browser engine rebuilds and views every life as the full engine does, and refuses a campus life until the campus rules are loaded', (t) => {
+  const given = lives();
+  assert.ok(given.some((life) => CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]))), 'the sample includes a life with campus state');
+  assert.ok(given.some((life) => !needsCampusRules(life.raw) && life.raw !== null), 'and lives that do not');
+  const dir = mkdtempSync(join(tmpdir(), 'browser-profile-'));
+  try {
+    const file = join(dir, 'lives.json');
+    writeFileSync(file, JSON.stringify({ lives: given.map(({ raw, ctx }) => ({ raw, ctx })) }));
+    const output = JSON.parse(execFileSync(process.execPath, ['--experimental-strip-types', '--no-warnings', '--import', `data:text/javascript,${encodeURIComponent(REGISTER)}`, '--input-type=module', '--eval', PROBE, file], { encoding: 'utf8', maxBuffer: 1 << 28 })) as
+      { playing: boolean; standInsLeft: boolean; results: { waited: boolean; refused: string | null; state: unknown; view: unknown }[] };
+    assert.equal(output.playing, false, 'the browser profile cannot play a life');
+    assert.equal(output.standInsLeft, false, 'the campus rules were loaded');
+    assert.equal(output.results.length, given.length);
+    let loaded = false;
+    given.forEach((life, index) => {
+      const result = output.results[index];
+      assert.ok(result, life.name);
+      const full = createLife(life.raw, life.ctx);
+      assert.deepEqual(result.state, JSON.parse(JSON.stringify(full)), `${life.name}: the rebuilt life`);
+      const fullView = JSON.parse(JSON.stringify(viewLife(full, life.ctx))) as Record<string, unknown>;
+      const uses = needsCampusRules(life.raw), loadedBefore = loaded;
+      assert.equal(result.waited, uses && !loaded, `${life.name}: waits for the campus rules the first time a life uses the campus, and never again`);
+      loaded ||= uses;
+      const holdsCampusState = CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]));
+      assert.equal(result.refused, holdsCampusState && !loadedBefore ? 'CampusNotLoaded' : null, `${life.name}: a stand-in refuses what only the campus rules can rebuild`);
+      if (uses) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
+      else assert.deepEqual(result.view, withoutCampus(fullView), `${life.name}: the view (the campus views arrive with the campus rules)`);
+    });
+    t.diagnostic(`${given.length} lives, ${given.filter((life) => needsCampusRules(life.raw)).length} using the campus`);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});

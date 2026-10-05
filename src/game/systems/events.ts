@@ -18,6 +18,7 @@
  * EMITS    'event.attended' { id, venue }     'event.sprayed' { id, amount }
  * LISTENS  'activity.completed'
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, isDeparting } from '../registry.ts';
 import { fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -50,6 +51,24 @@ export const spray: TypedActionHandler<'events.spray'> = (state, payload, ctx) =
   return ok(state, 'sprayed');
 };
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions: { 'events.spray': spray },
+  on: {
+    'activity.completed'(state, data, ctx) {
+      const event = here(state, ctx);
+      if (!event || state.events.attended.includes(event.key)) return;
+      state.events.attended.push(event.key);
+      if (state.events.attended.length > KEEP) state.events.attended.splice(0, state.events.attended.length - KEEP);
+      state.events.count = Math.min(Number.MAX_SAFE_INTEGER, state.events.count + 1);
+      emit(state, 'event.attended', { id: event.id, venue: event.venue }, ctx);
+    },
+  },
+} satisfies Pick<SystemDefinition<'events'>, 'actions' | 'on'> : LEFT_OUT;
+
 export default {
   id: 'events',
   stateKeys: ['events'],
@@ -63,17 +82,6 @@ export default {
       sprayed: safeCount(saved.sprayed) ? saved.sprayed : 0,
     };
   },
-  actions: { 'events.spray': spray },
-  on: {
-    'activity.completed'(state, data, ctx) {
-      const event = here(state, ctx);
-      if (!event || state.events.attended.includes(event.key)) return;
-      state.events.attended.push(event.key);
-      if (state.events.attended.length > KEEP) state.events.attended.splice(0, state.events.attended.length - KEEP);
-      state.events.count = Math.min(Number.MAX_SAFE_INTEGER, state.events.count + 1);
-      emit(state, 'event.attended', { id: event.id, venue: event.venue }, ctx);
-    },
-  },
   view(state, ctx) {
     const now = nowOf(state, ctx), event = here(state, ctx), spent = sprayedToday(state, ctx);
     return {
@@ -83,4 +91,5 @@ export default {
       count: state.events.count, sprayed: state.events.sprayed,
     };
   },
+  ...play,
 } satisfies SystemDefinition<'events'>;

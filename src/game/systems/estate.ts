@@ -64,6 +64,7 @@
  * reached is taken out (or a fresh one is started), and estate.city changes; the server then files
  * the life under its new city (server/world/character.js).
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -365,10 +366,11 @@ function view(state: LifeState, ctx: LifeContext): EstateView {
   };
 }
 
-export default {
-  id: 'estate',
-  stateKeys: ['estate'],
-  sanitize,
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'estate.set-lga': setLga,
     'estate.assign': { serverOnly: true, run: assign, refusal: 'Plots are allocated by the game server. Nothing was changed.' },
@@ -378,22 +380,7 @@ export default {
     'estate.move-in': moveIn,
     'estate.relocate': relocate,
   },
-  active: {
-    intercity: {
-      moves: true,
-      sanitize(value, state) {
-        const from = state.estate.city;
-        const link = linksFrom(from).find((item) => item.to === value.id && item.mode === value.mode);
-        return link && value.duration === link.seconds ? { mode: link.mode, fare: link.fare, from } : null;
-      },
-      complete: arriveInCity,
-      cancel: (state) => fail(state, 'no_cancel', 'The trip has left: it cannot be cancelled now. The fare is not refunded.'),
-      /** A trip that can no longer run (the link changed) gives the fare back, once. */
-      invalidated(state, value, ctx) { if (isSafeInt(value.fare) && value.fare > 0 && value.fare <= 1e6) credit(state, value.fare, 'Inter-city fare refunded', ctx); },
-    },
-  },
   advance,
-  view,
   on: {
     /** The life has settled in a home: until a local government is chosen, the guess follows that home's district. */
     'life.started'(state, data, ctx) {
@@ -409,4 +396,26 @@ export default {
     /** Moving to a rented home through the Houses app ends living in the owned one (the house stays yours). */
     'house.moved'(state, data) { if (data?.id !== 'own' && data?.from !== 'away' && state.estate.living === 'own') state.estate.living = 'rent'; },
   },
+} satisfies Pick<SystemDefinition<'estate'>, 'actions' | 'advance' | 'on'> : LEFT_OUT;
+
+export default {
+  id: 'estate',
+  stateKeys: ['estate'],
+  sanitize,
+  active: {
+    intercity: {
+      moves: true,
+      sanitize(value, state) {
+        const from = state.estate.city;
+        const link = linksFrom(from).find((item) => item.to === value.id && item.mode === value.mode);
+        return link && value.duration === link.seconds ? { mode: link.mode, fare: link.fare, from } : null;
+      },
+      complete: arriveInCity,
+      cancel: (state) => fail(state, 'no_cancel', 'The trip has left: it cannot be cancelled now. The fare is not refunded.'),
+      /** A trip that can no longer run (the link changed) gives the fare back, once. */
+      invalidated(state, value, ctx) { if (isSafeInt(value.fare) && value.fare > 0 && value.fare <= 1e6) credit(state, value.fare, 'Inter-city fare refunded', ctx); },
+    },
+  },
+  view,
+  ...play,
 } satisfies SystemDefinition<'estate'>;

@@ -8,6 +8,7 @@
  *   ledger      the last LEDGER_LIMIT changes in full, newest last
  *   ledgerDays  one summary per Lagos day on which the balance changed, newest last
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts'
 import { cleanText } from '../util.ts'
 import { lagosTime } from '../clock.ts'
@@ -227,6 +228,15 @@ function sanitizeLines(saved: unknown): LedgerLine[] {
   return lines
 }
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions: {},
+  advance(): void {},
+} satisfies Pick<SystemDefinition<'wallet'>, 'actions' | 'advance'> : LEFT_OUT;
+
 export default {
   id: 'wallet',
   stateKeys: ['cash', 'ledger', 'ledgerDays'],
@@ -253,11 +263,10 @@ export default {
       for (const entry of state.ledger) addToDay(state, entry.at, entry.amount, entry.balance, entry.reason)
     }
   },
-  actions: {},
-  advance(): void {},
   view(state: WalletState): WalletView {
     const statement = statementOf(state)
     return { cash: state.cash, ledger: state.ledger.slice().reverse(), days: statement.days.slice().reverse(),
       statement: { opening: statement.opening, closing: statement.closing, totals: statement.totals, reconciled: statement.reconciled, problems: statement.problems, kept: statement.kept, linesOpening: statement.linesOpening } }
   },
-} satisfies SystemDefinition<'wallet'>
+  ...play,
+} satisfies SystemDefinition<'wallet'>;

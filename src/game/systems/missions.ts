@@ -36,6 +36,7 @@
  */
 import type { LagosTime } from '../clock.ts';
 import type { LifeContext, LifeState, MissionDefinition, MissionEntry, MissionRow, MissionSet, MissionTitleId, SystemDefinition, VenueId } from '../../types/index.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart } from '../clock.ts';
@@ -218,31 +219,11 @@ function row(entry: MissionEntry, scope: Scope): MissionRow {
     open: def.open ?? null, go: def.go ?? null };
 }
 
-export default {
-  id: 'missions',
-  stateKeys: ['missions'],
-  sanitize(input, state, ctx) {
-    const saved: Record<string, unknown> = isRecord(input.missions) ? input.missions : {};
-    const count = (value: unknown, max = Number.MAX_SAFE_INTEGER) => (safeCount(value) && value <= max ? value : 0);
-    const active = isRecord(saved.active) && safeCount(saved.active.days) && saved.active.days <= MAX_DAYS && (saved.active.last === null || safeCount(saved.active.last))
-      && (saved.active.days === 0) === (saved.active.last === null) ? { days: saved.active.days, last: saved.active.last } : { days: 0, last: null };
-    state.missions = {
-      seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
-        : Math.floor(makeRng(`missions-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
-      day: count(saved.day), daily: sanitizeList(saved.daily, 'daily'),
-      week: count(saved.week), weekly: sanitizeList(saved.weekly, 'weekly'),
-      rerolls: count(saved.rerolls, MISSION_REWARDS.rerollsPerDay),
-      sets: { day: count(isRecord(saved.sets) ? saved.sets.day : undefined), week: count(isRecord(saved.sets) ? saved.sets.week : undefined) },
-      active,
-      stamps: isRecord(saved.stamps) && safeCount(saved.stamps.week) && safeCount(saved.stamps.days) && saved.stamps.days <= 7
-        ? { week: saved.stamps.week, days: saved.stamps.days, paid: saved.stamps.paid === true && saved.stamps.days >= STAMP_CARD.need } : { week: 0, days: 0, paid: false },
-      visited: isRecord(saved.visited) && safeCount(saved.visited.week)
-        ? { week: saved.visited.week, list: [...new Set((Array.isArray(saved.visited.list) ? saved.visited.list : []).filter((id): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id)))].slice(0, 64) } : { week: 0, list: [] },
-      paidDay: count(saved.paidDay),
-      titles: [...new Set((Array.isArray(saved.titles) ? saved.titles : []).filter((id): id is MissionTitleId => TITLE_IDS.includes(id)))],
-      claimed: count(saved.claimed),
-    };
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'missions.claim': claimMission,
     'missions.reroll': rerollMission,
@@ -270,6 +251,33 @@ export default {
     },
   },
   advance(state, dt, ctx) { roll(state, ctx); },
+} satisfies Pick<SystemDefinition<'missions'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'missions',
+  stateKeys: ['missions'],
+  sanitize(input, state, ctx) {
+    const saved: Record<string, unknown> = isRecord(input.missions) ? input.missions : {};
+    const count = (value: unknown, max = Number.MAX_SAFE_INTEGER) => (safeCount(value) && value <= max ? value : 0);
+    const active = isRecord(saved.active) && safeCount(saved.active.days) && saved.active.days <= MAX_DAYS && (saved.active.last === null || safeCount(saved.active.last))
+      && (saved.active.days === 0) === (saved.active.last === null) ? { days: saved.active.days, last: saved.active.last } : { days: 0, last: null };
+    state.missions = {
+      seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
+        : Math.floor(makeRng(`missions-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
+      day: count(saved.day), daily: sanitizeList(saved.daily, 'daily'),
+      week: count(saved.week), weekly: sanitizeList(saved.weekly, 'weekly'),
+      rerolls: count(saved.rerolls, MISSION_REWARDS.rerollsPerDay),
+      sets: { day: count(isRecord(saved.sets) ? saved.sets.day : undefined), week: count(isRecord(saved.sets) ? saved.sets.week : undefined) },
+      active,
+      stamps: isRecord(saved.stamps) && safeCount(saved.stamps.week) && safeCount(saved.stamps.days) && saved.stamps.days <= 7
+        ? { week: saved.stamps.week, days: saved.stamps.days, paid: saved.stamps.paid === true && saved.stamps.days >= STAMP_CARD.need } : { week: 0, days: 0, paid: false },
+      visited: isRecord(saved.visited) && safeCount(saved.visited.week)
+        ? { week: saved.visited.week, list: [...new Set((Array.isArray(saved.visited.list) ? saved.visited.list : []).filter((id): id is VenueId => typeof id === 'string' && Object.hasOwn(VENUES, id)))].slice(0, 64) } : { week: 0, list: [] },
+      paidDay: count(saved.paidDay),
+      titles: [...new Set((Array.isArray(saved.titles) ? saved.titles : []).filter((id): id is MissionTitleId => TITLE_IDS.includes(id)))],
+      claimed: count(saved.claimed),
+    };
+  },
   view(state, ctx) {
     const book = state.missions, now = nowOf(state, ctx), time = lagosTime(now);
     // What is shown is today's set: a saved set from an earlier day is about to be replaced and is not offered.
@@ -292,4 +300,5 @@ export default {
       resetAt: lagosDayStart(time.day + 1), weekResetAt: weekStart + 7 * 86400000, claimed: book.claimed,
     };
   },
+  ...play,
 } satisfies SystemDefinition<'missions'>;

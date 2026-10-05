@@ -46,6 +46,7 @@ import type {
   ActionType, ActivityDefinition, CivicCheckCode, CivicView, DailyHunt, EligibilityCheck, GemKind, HuntGem, LifeContext, LifeState, ServerOnlyAction, SpotId,
   SystemDefinition, TypedActionHandler, VenueId,
 } from '../../types/index.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, isDeparting } from '../registry.ts';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -307,25 +308,11 @@ function sanitizeHunt(value: unknown): DailyHunt | null {
   return { day: value.day, claimed: value.claimed === true && gems.every((gem) => gem.found), gems };
 }
 
-export default {
-  id: 'civic',
-  stateKeys: ['civic'],
-  sanitize(input, state, ctx) {
-    const saved: Record<string, unknown> = isRecord(input.civic) ? input.civic : {};
-    const week = isRecord(saved.week) && safeCount(saved.week.week) && safeCount(saved.week.earned) ? { week: saved.week.week, earned: saved.week.earned } : { week: 0, earned: 0 };
-    state.civic = {
-      seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
-        : Math.floor(makeRng(`civic-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
-      since: finite(saved.since) && saved.since >= 0 && saved.since <= state.t ? saved.since : state.t,
-      gems: safeCount(saved.gems) ? saved.gems : 0,
-      claims: safeCount(saved.claims) ? saved.claims : 0,
-      week,
-      work: isRecord(saved.work) && safeCount(saved.work.days) && saved.work.days <= 100000 && (saved.work.last === null || safeCount(saved.work.last)) && (saved.work.days === 0) === (saved.work.last === null)
-        ? { days: saved.work.days, last: saved.work.last } : { days: 0, last: null },
-      news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id): id is string => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
-      hunt: sanitizeHunt(saved.hunt),
-    };
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'civic.hunt-search': searchForGem,
     'civic.hunt-claim': claimHuntPrize,
@@ -357,6 +344,27 @@ export default {
     roll(state, ctx);
     sweep(state, ctx);
   },
+} satisfies Pick<SystemDefinition<'civic'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'civic',
+  stateKeys: ['civic'],
+  sanitize(input, state, ctx) {
+    const saved: Record<string, unknown> = isRecord(input.civic) ? input.civic : {};
+    const week = isRecord(saved.week) && safeCount(saved.week.week) && safeCount(saved.week.earned) ? { week: saved.week.week, earned: saved.week.earned } : { week: 0, earned: 0 };
+    state.civic = {
+      seed: typeof saved.seed === 'number' && Number.isInteger(saved.seed) && saved.seed >= 0 && saved.seed < 4294967296 ? saved.seed
+        : Math.floor(makeRng(`civic-seed|${state.t}|${state.name}|${ctx?.cityId}`)() * 4294967296),
+      since: finite(saved.since) && saved.since >= 0 && saved.since <= state.t ? saved.since : state.t,
+      gems: safeCount(saved.gems) ? saved.gems : 0,
+      claims: safeCount(saved.claims) ? saved.claims : 0,
+      week,
+      work: isRecord(saved.work) && safeCount(saved.work.days) && saved.work.days <= 100000 && (saved.work.last === null || safeCount(saved.work.last)) && (saved.work.days === 0) === (saved.work.last === null)
+        ? { days: saved.work.days, last: saved.work.last } : { days: 0, last: null },
+      news: [...new Set((Array.isArray(saved.news) ? saved.news : []).filter((id): id is string => typeof id === 'string' && NEWS_ID.test(id)))].slice(-NEWS_LIMIT),
+      hunt: sanitizeHunt(saved.hunt),
+    };
+  },
   view(state, ctx) {
     const hunt = currentHunt(state, ctx), city = ctx?.cityId ?? 'lagos';
     const count = hunt.gems.filter((gem) => gem.found).length;
@@ -375,4 +383,5 @@ export default {
       gems: state.civic.gems,
     };
   },
+  ...play,
 } satisfies SystemDefinition<'civic'>;

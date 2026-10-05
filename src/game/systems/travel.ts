@@ -66,6 +66,7 @@
 import type { ActivityDefinition, ActivityOutcomeRule, ActivitySuccessOutcome, Block, ComingSoonDefinition, FareBands, OutcomeBlock, RoadsideEvent, RouteBand, SkillCheck, VenueDefinition, VenueZone } from '../../types/content.ts';
 import type { ActivityId, HouseId, LifeContext, LifeState, NeedMap, RoadsideEventId, SkillMap, TravelAction, TravelModeId, TravelState, VenueId } from '../../types/life.ts';
 import type { TravelBlockCode } from '../../types/actions.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { TravelDestination, TravelModeCard, TravelView } from '../../types/view.ts';
 import { emit, modify } from '../registry.ts';
@@ -406,30 +407,17 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
   };
 }
 
-export default {
-  id: 'travel',
-  stateKeys: ['travel'],
-  sanitize,
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: { travel, 'world.roadside': roadside },
-  active: {
-    travel: {
-      moves: true,
-      sanitize(value, state) {
-        if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
-        if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
-        const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
-        if (!valid) return null;
-        return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
-      },
-      complete,
-    },
-  },
   advance(state, dt, ctx) {
     const now = finite(ctx?.now) ? ctx.now : state.t;
     if (state.travel.event && now - state.travel.event.at >= EVENT_TTL_SECONDS * 1000) state.travel.event = null;
     for (const [id, readyAt] of Object.entries(state.travel.cooldowns)) if (readyAt <= now) delete state.travel.cooldowns[id];
   },
-  view,
   on: {
     'life.started': (state, data) => setHome(state, data?.house),
     'house.moved': (state, data) => setHome(state, data?.id),
@@ -451,6 +439,26 @@ export default {
       if (rule) rollActivity(state, def.id, rule, ctx);
     },
   },
+} satisfies Pick<SystemDefinition<'travel'>, 'actions' | 'advance' | 'on'> : LEFT_OUT;
+
+export default {
+  id: 'travel',
+  stateKeys: ['travel'],
+  sanitize,
+  active: {
+    travel: {
+      moves: true,
+      sanitize(value, state) {
+        if (!Object.hasOwn(VENUES, value.id) || value.id === state.location) return null;
+        if (value.mode === undefined) return value.duration === TRAVEL_DURATION ? {} : null;
+        const valid = isModeId(value.mode) && value.duration >= MIN_TRIP_SECONDS && value.duration <= MAX_TRIP_SECONDS;
+        if (!valid) return null;
+        return { mode: value.mode, ...(typeof value.fare === 'number' && Number.isSafeInteger(value.fare) && value.fare >= 0 && value.fare <= MAX_TRIP_FARE ? { fare: value.fare } : {}) };
+      },
+      complete,
+    },
+  },
+  view,
   modifiers: {
     'activity.block': (value, state, data, ctx) => {
       const def = data?.def;
@@ -466,4 +474,5 @@ export default {
       return null;
     },
   },
+  ...play,
 } satisfies SystemDefinition<'travel'>;

@@ -27,6 +27,7 @@
  * MODIFIERS          'activity.block' — `requiresIllness: true` activities need you to be sick
  *                    'travel.needCost' — a sick trek costs 2 more Energy and Hygiene
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { finite, isRecord, makeRng } from '../util.ts';
 import { addMoodlet, removeMoodlet, feelingsOf } from '../api.ts';
@@ -111,22 +112,11 @@ function view(state: LifeState, ctx: LifeContext): HealthView {
   };
 }
 
-export default {
-  id: 'health',
-  stateKeys: ['health'],
-  sanitize(input, state, ctx) {
-    const saved = isRecord(input.health) ? input.health : {};
-    const now = nowOf(state, ctx);
-    const sick = saved.sick === true;
-    state.health = {
-      sick,
-      cause: sick && isCause(saved.cause) ? saved.cause : sick ? 'neglect' : null,
-      since: sick ? (finite(saved.since) && saved.since <= now ? saved.since : now) : null,
-      strain: finite(saved.strain) ? Math.min(illness.neglectSeconds, Math.max(0, saved.strain)) : 0,
-      // Immunity can never outlast the longest one the rules grant.
-      immuneUntil: finite(saved.immuneUntil) && saved.immuneUntil > 0 ? Math.min(saved.immuneUntil, now + Math.max(...Object.values(illness.immunitySeconds)) * 1000) : 0,
-    };
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {},
   advance(state, dt, ctx) {
     const now = nowOf(state, ctx), health = state.health;
@@ -142,7 +132,6 @@ export default {
       state.message = 'You have fallen sick from going hungry and unwashed for too long. Go to the General Hospital — the free clinic costs nothing.';
     }
   },
-  view,
   on: {
     'travel.arrived': (state, data, ctx) => {
       const mode = data.mode === null || data.mode === 'campus-shuttle' ? undefined : ALL_MODES[data.mode];
@@ -163,6 +152,25 @@ export default {
     },
     'health.treat': (state, data, ctx) => { cure(state, typeof data.by === 'string' ? data.by : 'remedy', illness.immunitySeconds.agbo, ctx); },
   },
+} satisfies Pick<SystemDefinition<'health'>, 'actions' | 'advance' | 'on'> : LEFT_OUT;
+
+export default {
+  id: 'health',
+  stateKeys: ['health'],
+  sanitize(input, state, ctx) {
+    const saved = isRecord(input.health) ? input.health : {};
+    const now = nowOf(state, ctx);
+    const sick = saved.sick === true;
+    state.health = {
+      sick,
+      cause: sick && isCause(saved.cause) ? saved.cause : sick ? 'neglect' : null,
+      since: sick ? (finite(saved.since) && saved.since <= now ? saved.since : now) : null,
+      strain: finite(saved.strain) ? Math.min(illness.neglectSeconds, Math.max(0, saved.strain)) : 0,
+      // Immunity can never outlast the longest one the rules grant.
+      immuneUntil: finite(saved.immuneUntil) && saved.immuneUntil > 0 ? Math.min(saved.immuneUntil, now + Math.max(...Object.values(illness.immunitySeconds)) * 1000) : 0,
+    };
+  },
+  view,
   modifiers: {
     'activity.block': (value, state, data) => value || (data?.def?.requiresIllness && !state.health.sick
       ? { code: 'not_sick', reason: 'You are not sick, so there is nothing to treat. Come back if you fall ill.' } : null),
@@ -174,4 +182,5 @@ export default {
       return next;
     },
   },
+  ...play,
 } satisfies SystemDefinition<'health'>;

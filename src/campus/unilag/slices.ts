@@ -9,6 +9,7 @@
  * src/game/campus-gate.ts fetches the campus rules before such a life reaches createLife.
  */
 import type { SystemDefinition } from '../../types/registry.ts';
+import { STUDENT_REQUIRED_BLOCK, VOLUNTEER_ACTIVITY } from './volunteer.ts';
 import type { UnilagCommunityState, UnilagShuttleState, UnilagStudentState } from '../../types/campus.ts';
 
 export function freshStudent(): UnilagStudentState {
@@ -64,6 +65,11 @@ export class CampusNotLoaded extends Error {
 
 function standIn<K extends CampusSlice>(key: K): SystemDefinition<K> {
   return {
+    // What the campus puts in a catalogue of every life, as the full system does for a life that is not a student (the only kind a stand-in rebuilds).
+    ...(key === 'unilagCommunity' ? {
+      activities: [VOLUNTEER_ACTIVITY],
+      modifiers: { 'activity.block': (value: unknown, _state: unknown, data: { def?: { id?: string } }) => (value || data?.def?.id !== VOLUNTEER_ACTIVITY.id ? value : STUDENT_REQUIRED_BLOCK) },
+    } : {}),
     id: key,
     stateKeys: [key],
     sanitize(input, state) {

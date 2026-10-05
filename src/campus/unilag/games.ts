@@ -9,6 +9,7 @@
  * All rewards, timings, limits, questions, clubs, discoveries and event schedules are original
  * beta gameplay content. No campus game or community action changes cash.
  */
+import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { emit } from '../../game/registry.ts';
 import { addSkillXp, changeNeeds } from '../../game/api.ts';
 import { busy, cleanText, fail, ok } from '../../game/util.ts';
@@ -16,6 +17,7 @@ import { lagosDayStart, lagosTime } from '../../game/clock.ts';
 import { DISCOVERY_TRAIL } from './content.ts';
 import { PROGRAMMES, programmeOf } from './curriculum.ts';
 import { freshCommunity } from './slices.ts';
+import { STUDENT_REQUIRED, STUDENT_REQUIRED_BLOCK, VOLUNTEER_ACTIVITY, VOLUNTEER_RULES } from './volunteer.ts';
 import { tablesAt } from '../../tables/places.ts';
 import type {
   CampusCandidate, CampusClubDefinition, CampusClubId, CampusDiscoveryDefinition, CampusDiscoveryId, CampusElectionRecord,
@@ -59,9 +61,9 @@ export const CAMPUS_GAME_RULES = Object.freeze({
   quizCorrectScore: 10,
   quizWrongScore: 2,
   discoveryScore: 5,
-  volunteerSeconds: 45,
-  volunteerFun: 5,
-  volunteerXp: 5,
+  volunteerSeconds: VOLUNTEER_RULES.seconds,
+  volunteerFun: VOLUNTEER_RULES.fun,
+  volunteerXp: VOLUNTEER_RULES.xp,
   leaderboardRecords: 2048,
   electionCandidates: 16,
   electionBallots: 2048,
@@ -152,10 +154,9 @@ function currentStudent(state: LifeState): CurrentStudent | null {
   return { student, programme, studentId: student.studentId, faculty: programme.faculty, hall };
 }
 
-const STUDENT_REQUIRED = 'Matriculate as a current UNILAG student before joining campus games or community activities.';
 
 function studentBlock(state: LifeState): Block<'student_required'> | null {
-  return currentStudent(state) ? null : { code: 'student_required', reason: STUDENT_REQUIRED };
+  return currentStudent(state) ? null : STUDENT_REQUIRED_BLOCK;
 }
 
 /** The refusal every student-only action gives a life that is not a current student. */
@@ -564,18 +565,13 @@ export function campusLeaderboardStandings(leaderboard: unknown, now: number, fi
   return [...scores.values()].sort((a, b) => b.score - a.score || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 }
 
-export const VOLUNTEER_ACTIVITY: Readonly<AttachedActivity> = Object.freeze<AttachedActivity>({
-  id: 'unilag-volunteer', label: 'Aluta volunteering', icon: '🤝', duration: CAMPUS_GAME_RULES.volunteerSeconds,
-  cost: 0, reward: 0, effects: { fun: CAMPUS_GAME_RULES.volunteerFun }, xp: { charisma: CAMPUS_GAME_RULES.volunteerXp },
-  tags: ['aluta', 'volunteering', 'community'], beta: true,
-  note: 'Original beta activity: once per Lagos day, no cash reward.',
-  where: { venue: 'unilag', spot: 'student-union', spotLabel: 'Student Union', spotIcon: '🤝' },
-});
+export { VOLUNTEER_ACTIVITY };
 
-export default {
-  id: 'unilagCommunity',
-  stateKeys: ['unilagCommunity'],
-  sanitize,
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'unilag.club.join': joinClub,
     'unilag.club.leave': leaveClub,
@@ -587,6 +583,22 @@ export default {
     'unilag.election.nominate': serverOnly(localNomination),
     'unilag.election.vote': serverOnly(localVote),
   },
+  on: {
+    'activity.completed'(state, { id, tags }, ctx) {
+      if (id !== VOLUNTEER_ACTIVITY.id) return;
+      const day = lagosTime(nowOf(state, ctx)).day;
+      dayRecord(state.unilagCommunity, day).volunteered = true;
+      const profile = currentStudent(state);
+      if (profile) emit(state, 'campus.volunteered', { studentId: profile.studentId, day, faculty: profile.faculty, hall: profile.hall, tags: Array.isArray(tags) ? tags : [] }, ctx);
+    },
+  },
+  advance() {},
+} satisfies Pick<SystemDefinition<'unilagCommunity'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'unilagCommunity',
+  stateKeys: ['unilagCommunity'],
+  sanitize,
   active: {
     [CAMPUS_GAME_KIND]: { moves: false, sanitize: sanitizeCampusGame, complete: completeCampusGame },
   },
@@ -600,16 +612,6 @@ export default {
         ? { code: 'daily_limit', reason: 'You already completed today’s Aluta volunteering. Return after midnight, Lagos time.' } : null;
     },
   },
-  on: {
-    'activity.completed'(state, { id, tags }, ctx) {
-      if (id !== VOLUNTEER_ACTIVITY.id) return;
-      const day = lagosTime(nowOf(state, ctx)).day;
-      dayRecord(state.unilagCommunity, day).volunteered = true;
-      const profile = currentStudent(state);
-      if (profile) emit(state, 'campus.volunteered', { studentId: profile.studentId, day, faculty: profile.faculty, hall: profile.hall, tags: Array.isArray(tags) ? tags : [] }, ctx);
-    },
-  },
-  advance() {},
   view(state, ctx): UnilagCommunityView {
     const community = state.unilagCommunity, profile = currentStudent(state), today = lagosTime(nowOf(state, ctx)).day;
     const pending: PendingQuiz | null = community.quiz, current = pending ? questionById.get(pending.questionId) : null;
@@ -624,6 +626,7 @@ export default {
       eligible: Boolean(profile),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'unilagCommunity'>;
 
 

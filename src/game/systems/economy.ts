@@ -54,6 +54,7 @@
  *          'loan.missed' { amount, left } · 'deposit.opened' { id, amount, term } ·
  *          'deposit.closed' { id, amount, interest }
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart, LAGOS_OFFSET_MS, WEEKDAYS } from '../clock.ts';
@@ -263,38 +264,11 @@ function sanitizeDeposits(saved: unknown, now: number): Deposit[] {
   return deposits;
 }
 
-export default {
-  id: 'economy',
-  stateKeys: ['economy'],
-  sanitize(input, state, ctx) {
-    const saved = isRecord(input.economy) ? input.economy : {};
-    const rent = isRecord(saved.rent) ? saved.rent : {};
-    const house = houseOf(rent.house);
-    const loan = isRecord(saved.loan) ? saved.loan : null;
-    const maxLeft = LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES;
-    const left = loan && safeCount(loan.left) && loan.left <= maxLeft ? loan.left : null; // the saved balance, when it is a valid one
-    const validLoan = loan !== null && left !== null;
-    const fees = validLoan && finite(loan.fees) && Number.isInteger(loan.fees) && loan.fees >= 0 && loan.fees <= MAX_LOAN_FEES ? loan.fees : 0;
-    // Saved times are checked against the later of the server clock and the save's own clock.
-    const now = Math.max(finite(ctx?.now) ? ctx.now : 0, state.t);
-    state.economy = {
-      billedWeek: isSafeInt(saved.billedWeek) ? Math.min(saved.billedWeek, billingWeek(now)) : null,
-      started: saved.started === true,
-      rent: {
-        house: house?.id ?? null,
-        arrears: house && safeCount(rent.arrears) ? Math.min(rent.arrears, arrearsCap(house)) : 0,
-        missed: house && safeCount(rent.missed) ? Math.min(rent.missed, 1000) : 0,
-      },
-      loan: validLoan ? {
-        left: Math.min(left, LOAN.total + LOAN_LATE_FEE * fees),
-        prepaid: safeCount(loan.prepaid) ? Math.min(loan.prepaid, Math.ceil(left / LOAN.weekly)) : 0,
-        fees,
-      } : null,
-      deposits: sanitizeDeposits(saved.deposits, now),
-      seq: safeCount(saved.seq) ? saved.seq : 0,
-      reminded: isSafeInt(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
-    };
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions,
   on: {
     'life.started'(state, data, ctx) {
@@ -349,6 +323,40 @@ export default {
     const first = Math.max(economy.billedWeek + 1, current - MAX_CATCHUP_WEEKS + 1);
     economy.billedWeek = current;
     for (let week = first; week <= current; week++) bill(state, week, ctx);
+  },
+} satisfies Pick<SystemDefinition<'economy'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'economy',
+  stateKeys: ['economy'],
+  sanitize(input, state, ctx) {
+    const saved = isRecord(input.economy) ? input.economy : {};
+    const rent = isRecord(saved.rent) ? saved.rent : {};
+    const house = houseOf(rent.house);
+    const loan = isRecord(saved.loan) ? saved.loan : null;
+    const maxLeft = LOAN.total + LOAN_LATE_FEE * MAX_LOAN_FEES;
+    const left = loan && safeCount(loan.left) && loan.left <= maxLeft ? loan.left : null; // the saved balance, when it is a valid one
+    const validLoan = loan !== null && left !== null;
+    const fees = validLoan && finite(loan.fees) && Number.isInteger(loan.fees) && loan.fees >= 0 && loan.fees <= MAX_LOAN_FEES ? loan.fees : 0;
+    // Saved times are checked against the later of the server clock and the save's own clock.
+    const now = Math.max(finite(ctx?.now) ? ctx.now : 0, state.t);
+    state.economy = {
+      billedWeek: isSafeInt(saved.billedWeek) ? Math.min(saved.billedWeek, billingWeek(now)) : null,
+      started: saved.started === true,
+      rent: {
+        house: house?.id ?? null,
+        arrears: house && safeCount(rent.arrears) ? Math.min(rent.arrears, arrearsCap(house)) : 0,
+        missed: house && safeCount(rent.missed) ? Math.min(rent.missed, 1000) : 0,
+      },
+      loan: validLoan ? {
+        left: Math.min(left, LOAN.total + LOAN_LATE_FEE * fees),
+        prepaid: safeCount(loan.prepaid) ? Math.min(loan.prepaid, Math.ceil(left / LOAN.weekly)) : 0,
+        fees,
+      } : null,
+      deposits: sanitizeDeposits(saved.deposits, now),
+      seq: safeCount(saved.seq) ? saved.seq : 0,
+      reminded: isSafeInt(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
+    };
   },
   view(state, ctx): EconomyView {
     const economy = state.economy, now = nowOf(state, ctx);
@@ -407,4 +415,5 @@ export default {
       },
     };
   },
+  ...play,
 } satisfies SystemDefinition<'economy'>;

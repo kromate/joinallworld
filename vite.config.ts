@@ -40,6 +40,8 @@ function browserSystems(): Plugin {
   return {
     name: 'allworld:browser-systems',
     enforce: 'pre',
+    // The browser only reads lives (src/game/profile.ts): what only playing one needs is not in the page.
+    load(id) { return /\/src\/game\/profile\.ts$/.test(id) ? 'export const PLAYS = false;\nexport const LEFT_OUT = {};\n' : null; },
     async resolveId(source, importer, options) {
       if (!/systems\/index\.ts$/.test(source)) return null;
       const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
@@ -73,6 +75,8 @@ export default defineConfig({
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
     if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|register)\.ts$/.test(id)) return 'campus-rules'
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|layout)\.ts$|tables\/places\.ts$|scene\/(movement|build)\.ts$)/.test(id)) return 'engine'
+    // Plain typed-array code shared by the campus rules and the scenes (never part of the first page).
+    if (/\/src\/scene\/(movement|build)\.ts$/.test(id)) return 'scene-core'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|layout)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
   } } } },
 });

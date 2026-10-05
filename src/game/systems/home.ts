@@ -59,6 +59,7 @@
 import type { ActivityDefinition, Block, FurnitureDefinition, FurnitureKind, IngredientDefinition, RecipeDefinition, ResolvedActivity } from '../../types/content.ts';
 import type { PlacementCode } from '../../types/actions.ts';
 import type { FurnitureId, HomeState, ItemId, LifeContext, LifeState, PlacedItem, VenueId } from '../../types/life.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { HomeView } from '../../types/view.ts';
 import { emit, modify } from '../registry.ts';
@@ -299,35 +300,11 @@ function sanitizeBoost(value: unknown): HomeState['boost'] {
   return { id: value.id, mult: value.mult, done: value.done, finished: value.finished === true };
 }
 
-export default {
-  id: 'home',
-  stateKeys: ['home'],
-
-  sanitize(input: SavedInput, state: LifeState): void {
-    const grid = gridOf(state);
-    const saved = isRecord(input.home) ? input.home : null;
-    if (!saved || !Array.isArray(saved.items)) { state.home = freshHome(grid, saved?.stocked === true); return; }
-    const seen = new Set<string>();
-    const wanted: WantedItem[] = []; // an id of '' is a placeholder, replaced below
-    for (const raw of saved.items.slice(0, MAX_PLACED)) {
-      if (!isRecord(raw) || typeof raw.itemId !== 'string' || !itemOf(raw.itemId)) continue;
-      const id = typeof raw.id === 'string' && ID_PATTERN.test(raw.id) && !seen.has(raw.id) ? raw.id : '';
-      if (id) seen.add(id);
-      wanted.push({ id, itemId: raw.itemId, x: raw.x, y: raw.y, rot: raw.rot });
-    }
-    let seq = typeof saved.seq === 'number' && Number.isSafeInteger(saved.seq) && saved.seq > 0 && saved.seq < 1e9 ? saved.seq : 1;
-    for (const id of seen) seq = Math.max(seq, Number(id.slice(1)) + 1);
-    for (const entry of wanted) if (!entry.id) { entry.id = `f${seq}`; seq += 1; }
-    const { items, stored } = fitInto(grid, wanted);
-    state.home = { items, storage: {}, seq, stocked: saved.stocked === true, custom: saved.custom === true, boost: sanitizeBoost(saved.boost) };
-    if (isRecord(saved.storage)) {
-      for (const [itemId, count] of Object.entries(saved.storage)) {
-        if (itemOf(itemId) && typeof count === 'number' && Number.isSafeInteger(count) && count > 0) state.home.storage[itemId] = Math.min(count, MAX_STORED_PER_ITEM);
-      }
-    }
-    for (const itemId of stored) store(state, itemId);
-  },
-
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'home.furniture-buy': buyFurniture,
     'home.furniture-move': moveFurniture,
@@ -337,30 +314,6 @@ export default {
     'home.grocery-buy': buyGroceries,
     'home.kitchen-unpack': unpackKitchen,
   },
-
-  activities: [...furnitureActivities, ...recipeActivities],
-
-  modifiers: {
-    /** The legacy free garri is only listed while the cooler cannot make the real thing. */
-    'activity.hidden'(value, state, data) {
-      if (value || data?.def?.id !== 'garri') return value;
-      const soak = RECIPES['soak-garri']!; // a content entry
-      return placedOfKind(state, soak.station).length > 0 && !missingIngredients(state, soak).length;
-    },
-    'activity.block'(value, state, data) {
-      const home = data?.def?.home;
-      if (value || !home) return value;
-      if (!placedOfKind(state, home.kind).length) {
-        return { code: 'furniture_required', reason: `Needs ${KINDS[home.kind].needs} in your room. Open Buy to place one.` };
-      }
-      if (home.recipe) {
-        const missing = missingIngredients(state, RECIPES[home.recipe]!); // a recipe id set by this file's own recipeActivities
-        if (missing.length) return { code: 'missing_items', reason: `Need ${missing.join(', ')}. Order in Phone → Groceries.` };
-      }
-      return null;
-    },
-  },
-
   on: {
     'life.started'(state) {
       if (!state.home.custom) state.home = freshHome(gridOf(state), state.home.stocked);
@@ -410,7 +363,6 @@ export default {
       if (def?.tags?.includes('sleep')) state.message = `${state.name} woke up. The rest you got is kept.`;
     },
   },
-
   /** Pays out the quality bonus of a running per-second activity for the seconds just settled. */
   advance(state) {
     const boost = state.home.boost;
@@ -424,6 +376,59 @@ export default {
     for (const [need, rate] of Object.entries(def.effectsPerSecond || {})) if (rate > 0) changeNeeds(state, { [need]: rate * (boost.mult - 1) * seconds });
     boost.done = upto;
     if (!running) state.home.boost = null;
+  },
+} satisfies Pick<SystemDefinition<'home'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'home',
+  stateKeys: ['home'],
+
+  sanitize(input: SavedInput, state: LifeState): void {
+    const grid = gridOf(state);
+    const saved = isRecord(input.home) ? input.home : null;
+    if (!saved || !Array.isArray(saved.items)) { state.home = freshHome(grid, saved?.stocked === true); return; }
+    const seen = new Set<string>();
+    const wanted: WantedItem[] = []; // an id of '' is a placeholder, replaced below
+    for (const raw of saved.items.slice(0, MAX_PLACED)) {
+      if (!isRecord(raw) || typeof raw.itemId !== 'string' || !itemOf(raw.itemId)) continue;
+      const id = typeof raw.id === 'string' && ID_PATTERN.test(raw.id) && !seen.has(raw.id) ? raw.id : '';
+      if (id) seen.add(id);
+      wanted.push({ id, itemId: raw.itemId, x: raw.x, y: raw.y, rot: raw.rot });
+    }
+    let seq = typeof saved.seq === 'number' && Number.isSafeInteger(saved.seq) && saved.seq > 0 && saved.seq < 1e9 ? saved.seq : 1;
+    for (const id of seen) seq = Math.max(seq, Number(id.slice(1)) + 1);
+    for (const entry of wanted) if (!entry.id) { entry.id = `f${seq}`; seq += 1; }
+    const { items, stored } = fitInto(grid, wanted);
+    state.home = { items, storage: {}, seq, stocked: saved.stocked === true, custom: saved.custom === true, boost: sanitizeBoost(saved.boost) };
+    if (isRecord(saved.storage)) {
+      for (const [itemId, count] of Object.entries(saved.storage)) {
+        if (itemOf(itemId) && typeof count === 'number' && Number.isSafeInteger(count) && count > 0) state.home.storage[itemId] = Math.min(count, MAX_STORED_PER_ITEM);
+      }
+    }
+    for (const itemId of stored) store(state, itemId);
+  },
+
+  activities: [...furnitureActivities, ...recipeActivities],
+
+  modifiers: {
+    /** The legacy free garri is only listed while the cooler cannot make the real thing. */
+    'activity.hidden'(value, state, data) {
+      if (value || data?.def?.id !== 'garri') return value;
+      const soak = RECIPES['soak-garri']!; // a content entry
+      return placedOfKind(state, soak.station).length > 0 && !missingIngredients(state, soak).length;
+    },
+    'activity.block'(value, state, data) {
+      const home = data?.def?.home;
+      if (value || !home) return value;
+      if (!placedOfKind(state, home.kind).length) {
+        return { code: 'furniture_required', reason: `Needs ${KINDS[home.kind].needs} in your room. Open Buy to place one.` };
+      }
+      if (home.recipe) {
+        const missing = missingIngredients(state, RECIPES[home.recipe]!); // a recipe id set by this file's own recipeActivities
+        if (missing.length) return { code: 'missing_items', reason: `Need ${missing.join(', ')}. Order in Phone → Groceries.` };
+      }
+      return null;
+    },
   },
 
   view(state: LifeState, ctx: LifeContext): HomeView {
@@ -449,4 +454,5 @@ export default {
       quality,
     };
   },
+  ...play,
 } satisfies SystemDefinition<'home'>;

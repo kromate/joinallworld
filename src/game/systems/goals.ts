@@ -54,6 +54,7 @@ import type {
   ActivityDefinition, ActiveWish, ChipTarget, DreamId, GoalChip, GoalsView, LifeContext, LifeState, LotteryId, NeedId, PerkDefinition, PerkId, SpotDefinition,
   StarterGoal, StarterGoalCondition, StarterGoalId, SystemDefinition, VenueId, WishDefinition,
 } from '../../types/index.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify, occupiesVenue } from '../registry.ts';
 import { cap, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -475,6 +476,20 @@ const actions = {
 
 const pitchReady = (state: LifeState): boolean => skillLevel(state, 'hustle') >= DREAM_TARGETS.hustleLevel;
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions,
+  advance(state, dt, ctx) {
+    fillWishes(state, ctx);
+    progressChain(state, ctx);
+    checkDream(state, ctx);
+  },
+  on: Object.fromEntries(EVENTS.map((event) => [event, (state: LifeState, data: Data, ctx: LifeContext) => handle(event, state, data, ctx)])),
+} satisfies Pick<SystemDefinition<'goals'>, 'actions' | 'advance' | 'on'> : LEFT_OUT;
+
 export default {
   id: 'goals',
   stateKeys: ['goals'],
@@ -516,13 +531,6 @@ export default {
     // First wishes are the first attainable ones in pool order (no randomness), so every new life starts alike.
     fillWishes(state, { now: ctx?.now });
   },
-  actions,
-  advance(state, dt, ctx) {
-    fillWishes(state, ctx);
-    progressChain(state, ctx);
-    checkDream(state, ctx);
-  },
-  on: Object.fromEntries(EVENTS.map((event) => [event, (state: LifeState, data: Data, ctx: LifeContext) => handle(event, state, data, ctx)])),
   modifiers: {
     ...fxModifiers((state: LifeState) => state.goals.perks.map((id) => perkById[id]?.fx)),
     'career.autoCommute'(value, state) {
@@ -566,4 +574,6 @@ export default {
       feed: g.feed.map((item) => ({ ...item })),
       seq: g.seq,
     };
-  },} satisfies SystemDefinition<'goals'>;
+  },
+  ...play,
+} satisfies SystemDefinition<'goals'>;

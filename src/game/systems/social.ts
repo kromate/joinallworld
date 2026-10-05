@@ -50,6 +50,7 @@ import type {
   ActionFailure, ActionOutcome, ActionSuccess, AttachedActivity, FamilyId, FamilyMember, LifeContext, LifeState, NpcAction, NpcDefinition, NpcSummary,
   PlayerAction, Relationship, SocialServerOp, SocialServerOpMap, SocialState, SocialView, SystemDefinition, TierDefinition, TransferBlockCode, VenueId,
 } from '../../types/index.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -318,6 +319,48 @@ function npcSummary(state: LifeState, npc: NpcDefinition, day: number, ctx: Life
   };
 }
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions: {
+    'social.call'(state, payload) {
+      const blocked = busy(state, 'Finish or cancel your current action before making a call.');
+      if (blocked) return blocked;
+      const memberId = payload?.id, member = isFamilyId(memberId) ? FAMILY[memberId] : null;
+      if (!member) return fail(state, 'invalid_contact', 'Choose someone from your family list.');
+      state.activeAction = { kind: 'call', id: member.id, duration: FAMILY_CALL.duration, remaining: FAMILY_CALL.duration };
+      state.message = `Calling ${member.name}…`;
+      return ok(state, 'calling');
+    },
+    'social.sync': (state) => ok(state, 'synced'),
+    'social.server': { serverOnly: true, refusal: 'That can only be done through the People and Messages screens.',
+      run: (state, payload, ctx) => serverOp(state, payload.op, payload, ctx) },
+  },
+  on: {
+    'activity.completed'(state, { def }, ctx) {
+      const reward = def?.reward;
+      if (reward !== undefined && reward > 0) {
+        const paid = Math.max(0, Math.round(Number(modify(state, 'activity.reward', reward, { def }, ctx)) || 0));
+        state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
+      }
+      if (!def?.social) return;
+      const npc = npcOf(def.social.npc), action = NPC_ACTIONS.find((item) => item.id === def.social?.action);
+      if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
+      const { landed, result } = interact(state, npc.id, action, { npc: true }, ctx, false);
+      const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
+      state.message = landed
+        ? `${npc.name}: “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
+        : `Your joke did not land. ${npc.name} just blinked at you.`;
+      if (action.id === 'hello') emit(state, 'npc.greeted', { npc: npc.id }, ctx);
+      emit(state, 'npc.interacted', { npc: npc.id, action: action.id, success: landed }, ctx);
+    },
+    'notice.posted'(state, data, ctx) { if (isRecord(data)) pushNotice(state, data.kind, data.text, ctx); },
+  },
+  advance() {},
+} satisfies Pick<SystemDefinition<'social'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
 export default {
   id: 'social',
   stateKeys: ['social'],
@@ -346,21 +389,6 @@ export default {
       .map((item) => ({ id: item.id, kind: isId(item.kind) ? item.kind : 'notice', text: cleanText(item.text, 160, 'Notice'), at: item.at }));
   },
 
-  actions: {
-    'social.call'(state, payload) {
-      const blocked = busy(state, 'Finish or cancel your current action before making a call.');
-      if (blocked) return blocked;
-      const memberId = payload?.id, member = isFamilyId(memberId) ? FAMILY[memberId] : null;
-      if (!member) return fail(state, 'invalid_contact', 'Choose someone from your family list.');
-      state.activeAction = { kind: 'call', id: member.id, duration: FAMILY_CALL.duration, remaining: FAMILY_CALL.duration };
-      state.message = `Calling ${member.name}…`;
-      return ok(state, 'calling');
-    },
-    'social.sync': (state) => ok(state, 'synced'),
-    'social.server': { serverOnly: true, refusal: 'That can only be done through the People and Messages screens.',
-      run: (state, payload, ctx) => serverOp(state, payload.op, payload, ctx) },
-  },
-
   active: {
     call: {
       moves: false,
@@ -379,29 +407,6 @@ export default {
         ? { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` } : null;
     },
   },
-
-  on: {
-    'activity.completed'(state, { def }, ctx) {
-      const reward = def?.reward;
-      if (reward !== undefined && reward > 0) {
-        const paid = Math.max(0, Math.round(Number(modify(state, 'activity.reward', reward, { def }, ctx)) || 0));
-        state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
-      }
-      if (!def?.social) return;
-      const npc = npcOf(def.social.npc), action = NPC_ACTIONS.find((item) => item.id === def.social?.action);
-      if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
-      const { landed, result } = interact(state, npc.id, action, { npc: true }, ctx, false);
-      const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
-      state.message = landed
-        ? `${npc.name}: “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
-        : `Your joke did not land. ${npc.name} just blinked at you.`;
-      if (action.id === 'hello') emit(state, 'npc.greeted', { npc: npc.id }, ctx);
-      emit(state, 'npc.interacted', { npc: npc.id, action: action.id, success: landed }, ctx);
-    },
-    'notice.posted'(state, data, ctx) { if (isRecord(data)) pushNotice(state, data.kind, data.text, ctx); },
-  },
-
-  advance() {},
 
   view(state, ctx) {
     const day = dayOf(state, ctx), book = state.social, L = TRANSFER_LIMITS;
@@ -429,4 +434,5 @@ export default {
       notices: book.notices.slice().reverse(),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'social'>;

@@ -1378,7 +1378,7 @@ test('Cloudflare: the welcome message — one per new account, after the sign-in
   assert.equal(mails.length, 1);
   assert.deepEqual([mails[0]?.subject, mails[0]?.personalizations[0]?.to[0]?.email], ['Welcome to Allworld: your character is saved', 'uidada@example.com']);
   const text = mails[0]?.content.find(part => part.type === 'text/plain')?.value ?? '';
-  assert.ok(text.includes('Allworld is a digital world you can live in.') && text.includes('saved to this account — sign in on any device to continue.') && text.includes('Open Allworld: https://play.example/'));
+  assert.ok(text.includes('Allworld is a digital universe of the whole world that you can live in.') && text.includes('saved to this account: log in on any device to carry on.') && text.includes('Open Allworld: https://play.example/'));
   const storage = await f.storage();
   assert.equal(typeof JSON.parse((await storage.exec('SELECT value FROM accounts'))[0].value).welcome, 'number');
   // Another device, and a restart, send nothing more.

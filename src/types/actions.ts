@@ -65,9 +65,9 @@ export type TransferBlockCode =
 export type CivicCheckCode = 'too_new' | 'insufficient_funds' | 'work_days' | 'wrong_place' | 'not_main_home'
 
 /** Why a trip to another city cannot start (estate.js relocateBlock). */
-export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'route_not_open' | 'insufficient_funds'
+export type RelocateBlockCode = 'invalid_city' | 'no_route' | 'city_not_open' | 'route_not_open' | 'insufficient_funds' | 'ride_debt' | 'credit_not_offered' | 'settle_required'
 /** Why 'travel.skip' is refused: no trip, a trip about to end, a trip inside the city with too little left, a price that rose above the one shown, not enough cash. */
-export type TripSkipCode = 'not_travelling' | 'almost_there' | 'too_short' | 'price_changed' | 'insufficient_funds'
+export type TripSkipCode = 'not_travelling' | 'almost_there' | 'too_short' | 'price_changed' | 'insufficient_funds' | 'ride_debt'
 
 /**
  * The settle-in choices 'onboarding.home' takes besides where to live. `via` records how the local
@@ -177,6 +177,8 @@ export interface ActionMap extends CampusActionMap {
   'world.roadside': { payload: { choice: string }; ok: 'resolved'; fail: 'no_event' | 'invalid_choice' | 'insufficient_funds' }
   /** Pay to arrive now from a trip between venues or between cities. `quote` is the price the player was shown (`view.travel.skip.fee`). */
   'travel.skip': { payload: { quote?: number }; ok: 'skipped'; fail: TripSkipCode }
+  /** Pay what is owed for a ride home taken on credit, as far as cash goes (src/game/relief.ts). */
+  'travel.repay-ride': { payload: NoPayload; ok: 'repaid'; fail: 'no_debt' | 'no_cash' }
 
   // -- economy --
   /** 'week' pays one instalment early; 'all' clears the balance ('loan_cleared' whenever nothing is left). */
@@ -202,7 +204,7 @@ export interface ActionMap extends CampusActionMap {
    * choice is free and immediate; later changes wait out LGA_RULES.changeCooldownDays and may cost a
    * levy for dearer land. 'unchanged' (already confirmed there) is a success.
    */
-  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual'; home?: 'buy' | 'main' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged' | 'home_bought' | 'home_moved'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' | 'choice_required' | 'home_owned' | 'home_cooldown' }
+  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual'; home?: 'buy' | 'main' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged' | 'home_bought' | 'home_moved'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' | 'choice_required' | 'home_owned' | 'home_cooldown' | 'ride_debt' }
   /** SERVER ONLY: record the plot the server allocated (server/world/service.ts). 'unchanged' (the same plot again) is a success. */
   'estate.assign': { payload: PlotAddress; ok: 'assigned' | 'unchanged'; fail: 'no_place' | 'invalid_plot'; serverOnly: true }
   /** SERVER ONLY: the server freed the plot left behind (`state.estate.old`). Succeeds whether or not the address matched. */
@@ -214,11 +216,11 @@ export interface ActionMap extends CampusActionMap {
   /** Live in your own house (free; weekly rent stops). Back to a rented home is 'property.house-move'. */
   'estate.move-in': { payload: NoPayload; ok: 'moved_in'; fail: 'busy' | 'already_home' | 'rent_arrears' }
   /** Leave for another city along a CITY_LINKS link (timed action kind 'intercity'). Refused while the destination is not open. */
-  'estate.relocate': { payload: { to: WorldCityId; mode: CityLinkMode }; ok: 'departed'; fail: 'busy' | RelocateBlockCode }
+  'estate.relocate': { payload: { to: WorldCityId; mode: CityLinkMode; credit?: boolean }; ok: 'departed'; fail: 'busy' | RelocateBlockCode }
   /** A visitor's room at a guest house: LODGING.fee is charged and Energy and Hygiene are restored. Refused for a life with a home in this city. */
   'estate.lodge': { payload: NoPayload; ok: 'rested'; fail: 'settle_required' | 'has_home' | 'busy' | 'rested' | 'insufficient_funds' }
   /** Name the city the life is in its primary home. It must hold a house here. */
-  'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'no_place' | 'home_cooldown' }
+  'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'no_place' | 'home_cooldown' | 'ride_debt' }
 
   // -- home --
   /** At home only; charged when placed. */
@@ -430,7 +432,7 @@ export const ACTION_TYPES = [
   'cancel',
   'apply-job', 'career.switch', 'career.quit', 'career.auto',
   'activity', 'spot',
-  'travel', 'world.roadside', 'travel.skip',
+  'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',

@@ -7,11 +7,13 @@
 // the server" fetches GET /api/support/statement, the same statement computed from the server's own
 // copy, and says whether the two agree (a toast, and a line that stays under the button). Nothing
 // here changes anything.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import type { WalletStatement } from '../../../types/view.ts'
 import { formatClock } from '../../../game/clock.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
+// Loaded when the wallet opens, not with it: it only matters while money is short.
+const ReliefLink = defineAsyncComponent(() => import('../relief/ReliefLink.vue'))
 import { money, signedMoney } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
@@ -54,6 +56,7 @@ async function check(): Promise<void> {
 <template>
   <EmptyState v-if="!summary" icon="statement" title="No statement yet" text="This life has no wallet history to explain yet. Your first fare, meal or wage starts it." />
   <div v-else class="statement-app">
+    <ReliefLink />
     <section class="ui-hero statement-hero" aria-label="Closing balance"><small>Closing balance · {{ changes(summary.totals.changes) }}</small><strong>{{ money(summary.closing) }}</strong></section>
     <dl class="statement-sums">
       <div><dt>Opening balance <small>{{ since }}</small></dt><dd>{{ money(summary.opening.balance) }}</dd></div>

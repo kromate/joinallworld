@@ -32,6 +32,7 @@ import { emit } from '../registry.ts';
 import { cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { addMoodlet, canAfford, canCredit, changeNeeds, credit, debit, NEEDS } from '../api.ts';
+import { repayFromEarnings } from '../relief.ts';
 import { TRANSFER_LIMITS } from '../content/npcs.ts';
 import { BAG_LIMIT, BUSINESS_BUYING, SALES_COUNTED_PER_COLLECT } from '../content/business-limits.ts';
 import type { BusinessBlockCode } from '../../types/actions.ts';
@@ -118,6 +119,7 @@ const ops = {
     if (amount === null) return noAmount(state);
     if (!canCredit(state, amount)) return full(state);
     credit(state, amount, `Shop takings: ${name}`, ctx);
+    repayFromEarnings(state, amount, ctx);
     state.business.sales = Math.min(Number.MAX_SAFE_INTEGER, state.business.sales + sales);
     for (let index = 0; index < Math.min(sales, SALES_COUNTED_PER_COLLECT); index++) emit(state, 'business.sale', {}, ctx);
     state.message = amount ? `Collected ${naira(amount)} from ${name}.` : `Nothing to collect at ${name} yet.`;

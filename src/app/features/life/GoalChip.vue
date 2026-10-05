@@ -10,6 +10,8 @@
 // The Goals tab of the Sim sheet is GoalsTab.vue. All rules live in src/game/systems/goals.ts.
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
+import { helpStep } from '../relief/reliefHelp.ts'
+import { makeContext } from '../../../game/util.ts'
 import { keepNudges, nudgesOf } from '../../../quick-start/entry.ts'
 import { NUDGE_QUIET_MS, nextNudge, nudged } from '../../../quick-start/model.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -19,7 +21,11 @@ import { chipAction, chipLabel, lagosDay, newFeed, rememberSeq } from './goalChi
 
 const { game, shell, goTo, community } = useApp()
 const view = game.view
-const step = computed(() => view.value.goals.chip)
+// The moments a player could be stuck in: the one line points at the first step of the "What you can do now" card.
+const step = computed(() => {
+  const help = helpStep(game.state.value, makeContext({ cityId: game.cityId.value, now: game.state.value.t }))
+  return help ? { kind: 'guide' as const, ...help } : view.value.goals.chip
+})
 
 /** How long the reward toast is left alone before the offer comes up. */
 const NUDGE_DELAY_MS = 1400

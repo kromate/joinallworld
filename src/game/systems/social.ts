@@ -57,6 +57,7 @@ import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
 import { addMoodlet, addSkillXp, arrive, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
+import { repayFromEarnings } from '../relief.ts';
 import { arriveInCity } from './estate.ts';
 import { cityRules, linksFrom } from '../content/world.ts';
 import { venueLabel } from '../content/venues.ts';
@@ -245,6 +246,7 @@ const serverOps: ServerOps = {
     if (!canCredit(state, amount)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
     const name = cleanText(payload.name, 24, 'a friend');
     credit(state, amount, payload.refund ? `Refund: transfer to ${name}` : `Transfer from ${name}`, ctx);
+    if (!payload.refund) repayFromEarnings(state, amount, ctx);
     if (payload.refund) {
       // A returned gift no longer counts against the lifetime ceiling.
       state.social.transfer.total = Math.max(0, state.social.transfer.total - amount);

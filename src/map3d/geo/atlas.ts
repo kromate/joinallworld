@@ -84,7 +84,9 @@ export interface AtlasOptions {
   onEnterCity?: (cityId: string) => void;
   /** Inspect a local departure venue; never starts a trip or changes city. */
   onInspectVenue?: (cityId: string, venueId: string) => void;
-  onTravel?: (to: string, mode: string) => void;
+  onTravel?: (to: string, mode: string, credit?: boolean) => void;
+  /** The ride home on credit on offer to a visitor who cannot pay the cheapest fare to the main home: the travel card for that city adds it, clearly labelled. */
+  credit?: () => { to: string; mode: string; fare: number } | null;
   routes?: () => TripRoutes | null;
   /** The cash the player has in hand, or null when it is not known: the travel card says what a fare leaves short. */
   wallet?: () => number | null;
@@ -176,7 +178,7 @@ const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const GLYPH = { globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>', rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, routes = () => null, wallet = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, wallet = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -198,6 +200,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   let selectedCity: string | null = null;
   /** The way of travelling the card is asking about once more (a link id): its fare is a large part of the player's cash. */
   let confirming: string | null = null;
+  /** The ride on credit has asked once, because it is a debt. */
+  let creditAsk = false;
   let stateOverviewShown: string | null = null;
   /** The travel link the state view has in focus (a link id), chosen by tapping a line or a row. */
   let overviewLink: string | null = null;
@@ -759,7 +763,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       if (way.state === 'ask') return `<li><div class="atlas-way-ask" role="group" aria-label="Confirm the fare"><p>${naira(way.fare)} is more than half of the ${naira(cash)} you have. Go by ${way.name.toLowerCase()}?</p><div><button type="button" class="atlas-go is-small" data-atlas-go="${esc(way.to)}:${esc(way.mode)}" data-atlas-sure>Pay ${naira(way.fare)} and go</button><button type="button" class="atlas-chip" data-atlas-cancel>Not now</button></div></div></li>`;
       return `<li><button type="button" class="atlas-way" data-atlas-go="${esc(way.to)}:${esc(way.mode)}" ${way.state === 'go' ? '' : 'disabled'} aria-label="${way.name} to ${esc(info.city!.name)}: ${naira(way.fare)}, ${way.seconds} seconds${way.why ? `. ${esc(way.why)}` : ''}"><span class="atlas-way-mode" aria-hidden="true">${glyph}</span><b>${way.name}</b><span>${naira(way.fare)}</span><span>${way.seconds} s</span></button>${way.why ? `<small class="atlas-way-why">${esc(way.why)}</small>` : ''}</li>`;
     };
-    const travelCard = ways.length ? `<section class="atlas-travel" aria-label="Travel to ${esc(info.city!.name)}"><h3>Go to ${esc(info.city!.name)}</h3>${shared ? `<p class="atlas-way-why" role="status">${esc(shared)}</p>` : ''}<ul>${ways.map(wayRow).join('')}</ul></section>`
+    const owed = credit();
+    const creditRow = owed && info.city && owed.to === info.city.id && ways.length
+      ? `<li class="atlas-way-credit">${creditAsk
+        ? `<div class="atlas-way-ask" role="group" aria-label="Confirm the ride on credit"><p>${naira(owed.fare)} is advanced for the ticket and you owe it: it comes out of what you earn. No skipping the trip.</p><div><button type="button" class="atlas-go is-small" data-atlas-credit="${esc(owed.to)}:${esc(owed.mode)}" data-atlas-sure>Ride home on credit</button><button type="button" class="atlas-chip" data-atlas-cancel>Not now</button></div></div>`
+        : `<button type="button" class="atlas-way" data-atlas-credit="${esc(owed.to)}:${esc(owed.mode)}"><span class="atlas-way-mode" aria-hidden="true">${ICON(GLYPH.bus)}</span><b>Ride home on credit</b><span>${naira(owed.fare)} owed</span></button>`}</li>` : '';
+    const travelCard = ways.length ? `<section class="atlas-travel" aria-label="Travel to ${esc(info.city!.name)}"><h3>Go to ${esc(info.city!.name)}</h3>${shared ? `<p class="atlas-way-why" role="status">${esc(shared)}</p>` : ''}<ul>${ways.map(wayRow).join('')}${creditRow}</ul></section>`
       : choosing ? `<p class="atlas-travel atlas-way-why">${esc(info.name)} has ${openHere.length} open cities. Choose one to go there.</p>` : '';
     const more = Boolean(overviewCity || info.preview || info.routes.length || info.soon.length || info.planned || info.wait || guide?.length);
     ui.sheet.className = `atlas-sheet is-${info.tone}${sheetOpen ? ' is-expanded' : ''}`;
@@ -784,7 +793,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
-    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; }
+    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; creditAsk = false; }
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     const city = hit ? infoOf(hit).city : null;
@@ -957,7 +966,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
-    const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go');
+    const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go'), onCredit = hit('credit');
     const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link'), departure = hit('departure');
     if (departure && stateOverviewShown) {
       const overview = stateOverviews.get(stateOverviewShown);
@@ -982,7 +991,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (hit('retry')) { failed = ''; void ensure(wanted); showWait(); }
     else if (play) previewTrip(play.dataset.atlasPreview!);
     else if (go) { const [to, mode] = go.dataset.atlasTravel!.split(':'); onTravel(to!, mode!); }
-    else if (hit('cancel')) { confirming = null; drawSheet(); }
+    else if (onCredit) {
+      const [to, mode] = onCredit.dataset.atlasCredit!.split(':');
+      if (!('atlasSure' in onCredit.dataset)) { creditAsk = true; drawSheet(); ui.sheet!.querySelector<HTMLElement>('[data-atlas-sure]')?.focus({ preventScroll: true }); }
+      else { creditAsk = false; onTravel(to!, mode!, true); }
+    }
+    else if (hit('cancel')) { confirming = null; creditAsk = false; drawSheet(); }
     else if (leave) {
       const [to, mode] = leave.dataset.atlasGo!.split(':'), link = allCityLinks().find(item => ((item.a === current && item.b === to) || (item.b === current && item.a === to)) && item.mode === mode), cash = wallet();
       // An ordinary fare leaves at once. One that takes more than TRAVEL_CONFIRM_SHARE of the cash in hand asks once, in place.

@@ -35,6 +35,7 @@ import { TRIP_SKIP, tripSkipFee } from './content/travel.ts';
 import { venueLabel } from './content/venues.ts';
 import { advanceActive, canAfford, debit } from './api.ts';
 import { fail, naira, ok, safeCount } from './util.ts';
+import { rideDebtOf } from './relief.ts';
 
 type Trip = TravelAction | IntercityAction;
 const tripOf = (state: LifeState): Trip | null => {
@@ -56,7 +57,9 @@ export function skipOffer(state: LifeState): TripSkipOffer | null {
   const left = trip.remaining;
   if (trip.kind === 'travel' && left <= TRIP_SKIP.localMinRemainingSeconds) return null;
   const fee = priceOf(state, trip, left), free = isFree(state, trip);
-  const blocked: Block<'almost_there' | 'insufficient_funds'> | null = left < TRIP_SKIP.minRemainingSeconds
+  const blocked: Block<'almost_there' | 'insufficient_funds' | 'ride_debt'> | null = trip.kind === 'intercity' && rideDebtOf(state) > 0
+    ? { code: 'ride_debt', reason: 'A ride on credit cannot be skipped.' }
+    : left < TRIP_SKIP.minRemainingSeconds
     ? { code: 'almost_there', reason: 'You arrive in a moment. Waiting is free.' }
     : !canAfford(state, fee) ? { code: 'insufficient_funds', reason: `You need ${naira(fee - state.cash)} more` } : null;
   return { kind: trip.kind, fee, free, confirm: fee >= TRIP_SKIP.confirmFrom, blocked };
@@ -67,6 +70,7 @@ export function skipTrip(state: LifeState, payload: Record<string, unknown>, ctx
   const trip = tripOf(state);
   if (!trip) return fail<TripSkipCode>(state, 'not_travelling', 'You are not on a trip, so there is nothing to skip.');
   const left = trip.remaining;
+  if (trip.kind === 'intercity' && rideDebtOf(state) > 0) return fail<TripSkipCode>(state, 'ride_debt', 'A ride on credit cannot be skipped. Nothing was charged.');
   if (left < TRIP_SKIP.minRemainingSeconds) return fail<TripSkipCode>(state, 'almost_there', 'You arrive in a moment. Waiting is free, so nothing was charged.');
   if (trip.kind === 'travel' && left <= TRIP_SKIP.localMinRemainingSeconds) {
     return fail<TripSkipCode>(state, 'too_short', `This trip is almost over. A trip inside the city can be skipped only while more than ${TRIP_SKIP.localMinRemainingSeconds} seconds are left. Nothing was charged.`);

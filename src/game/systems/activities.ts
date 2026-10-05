@@ -88,6 +88,7 @@ import { busy, cap, fail, isRecord, naira, ok, safeCount } from '../util.ts';
 import { isOpen, minutesUntilOpen } from '../clock.ts';
 import { venueLabel } from '../content/venues.ts';
 import { canAfford, canCredit, credit, debit } from './wallet.ts';
+import { repayFromEarnings } from '../relief.ts';
 import { changeNeeds, addMoodlet } from './needs.ts';
 import { addSkillXp, skillLevel } from './skills.ts';
 import { addItem, countItem, hasItems, removeItems } from './inventory.ts';
@@ -366,6 +367,7 @@ const played = PLAYS ? {
     changeNeeds(state, def.effects);
     const reward = rewardOf(state, def, ctx);
     const paid = reward > 0 && credit(state, reward, def.label, ctx);
+    if (paid) repayFromEarnings(state, reward, ctx);
     for (const [skill, amount] of entriesOf(def.xp)) addSkillXp(state, skill, amount, ctx);
     for (const [item, count] of Object.entries(def.produces || {})) addItem(state, item, count);
     for (const moodlet of def.moodlets || []) addMoodlet(state, moodlet, ctx);

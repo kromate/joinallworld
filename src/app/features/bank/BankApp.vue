@@ -5,7 +5,7 @@
 // Everything shown comes from the view (systems/economy.js, career.js, wallet.js). Payments are
 // the 'economy.pay-rent' and 'economy.pay-loan' { mode } actions: the button that was pressed
 // says "Paying…" until the server answers, and the answer — not the press — changes the numbers.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
 import { money, signedMoney } from '../../ui/format.ts'
@@ -20,6 +20,8 @@ import RowMark from '../../ui/RowMark.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { linkWords } from '../../../ui/link.ts'
+// Loaded when the wallet opens, not with it: it only matters while money is short.
+const ReliefLink = defineAsyncComponent(() => import('../relief/ReliefLink.vue'))
 import { billsLine, loanReasons, loanRule, rentStanding } from './bankLines.ts'
 
 defineProps<{ params?: unknown }>()
@@ -56,6 +58,7 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
 
 <template>
   <div class="bank">
+    <ReliefLink />
     <HeroCard label="Balance" :figure="money(state.cash)">
       <template v-if="bills.due">
         Due every Saturday: <b>{{ money(economy.weeklyBills) }}</b> · next {{ economy.nextDueLabel }}.

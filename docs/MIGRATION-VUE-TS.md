@@ -388,6 +388,28 @@ The existing split is kept and extended:
   eager panels are deleted. Keep a budget: the Vue entry must not grow past 480 kB before step 5
   and must be under the existing 375 kB at step 8.
 
+### The engine in the first download
+
+The shell builds and reads every life through the rules engine, so the engine is part of the first load. It is kept as small as
+the rules allow, without a second implementation of anything:
+
+- **The browser only reads lives.** It rebuilds each server answer (`createLife`) and derives its views (`viewLife`); it never applies
+  an action or settles time, so it has nothing to apply optimistically. Each system keeps what only playing a life needs (its
+  `actions`, `advance` and event listeners) in one `play` block that is built only where `PLAYS` is true (`src/game/profile.ts`). The
+  browser build replaces that module with `PLAYS = false` (`vite.config.ts`), and the bundler drops the block with the code that
+  only it uses. `dispatch` and `advanceLife` refuse to run there. Servers, the Worker, scripts and tests play.
+- **The campus rules load on demand.** `src/game/systems/browser.ts` takes the place of `systems/index.ts` in the build and registers a
+  stand-in for each campus system (`campus/unilag/slices.ts`). A stand-in owns the same state key and rebuilds only a slice that is
+  exactly the fresh one; anything else makes it throw, so nothing is ever dropped. `src/game/campus-gate.ts` fetches the campus chunk
+  (`campus/unilag/register.ts`, which replaces the stand-ins in place, in the same order) before the client accepts a life that
+  holds campus state, stands on the campus or runs a campus action; the Campus app brings the chunk with its own. `onSystemsCompleted`
+  tells the game store to derive its views again. What a stand-in also carries (the volunteering activity and its veto) is the same
+  data the full system uses (`campus/unilag/volunteer.ts`).
+- **`src/game/browser-profile.test.ts`** runs the browser's engine in a child process and compares every rebuilt life and view with
+  the full engine's. `src/app/entry.test.ts` lists what must not be reachable from the entry, and holds the size budget.
+- Next-needed chunks (the phone, the map, Jobs, Groceries, Buy mode, the Boutique) are fetched when the browser is idle, after the
+  first screen has its code (`src/app/state/idlePreload.ts`).
+
 ## Accessibility and focus
 
 The existing shell manages focus by hand. In Vue most of it is the platform's, and the rest is

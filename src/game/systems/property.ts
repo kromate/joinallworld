@@ -29,6 +29,7 @@
  * Modifier called here: 'shop.price' with data { item, kind: 'car' }.
  * Moving house is a landlord-and-agent fee, not a shop purchase, so it is not discounted.
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { canAfford, canCredit, credit, debit } from '../api.ts';
@@ -108,20 +109,11 @@ function carMode(car: CarDefinition) {
   return { ...CAR_MODE, label: `Drive · ${car.label}`, icon: car.icon, fare: car.fuel, fuelOnly: true, car: car.id };
 }
 
-export default {
-  id: 'property',
-  stateKeys: ['homeOwned', 'property'],
-  sanitize(input, state) {
-    state.homeOwned = input.homeOwned === true;
-    const saved = isRecord(input.property) ? input.property : {};
-    const listed: unknown[] = Array.isArray(saved.cars) ? saved.cars : [];
-    const cars = [...new Set(listed.filter(isCarId))];
-    state.property = {
-      house: houseOf(saved.house)?.id ?? DEFAULT_HOUSE,
-      cars,
-      car: isCarId(saved.car) && cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
-    };
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: { 'property.house-move': moveHouse, 'property.car-buy': buyCar, 'property.car-use': useCar, 'property.car-sell': sellCar },
   on: {
     /** End of onboarding: live in the chosen house. Free — the move-in fee is for later moves. */
@@ -136,6 +128,23 @@ export default {
       const house = data?.from === 'away' ? houseOf(data.house) : null;
       if (house) state.property.house = house.id;
     },
+  },
+  advance() {},
+} satisfies Pick<SystemDefinition<'property'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'property',
+  stateKeys: ['homeOwned', 'property'],
+  sanitize(input, state) {
+    state.homeOwned = input.homeOwned === true;
+    const saved = isRecord(input.property) ? input.property : {};
+    const listed: unknown[] = Array.isArray(saved.cars) ? saved.cars : [];
+    const cars = [...new Set(listed.filter(isCarId))];
+    state.property = {
+      house: houseOf(saved.house)?.id ?? DEFAULT_HOUSE,
+      cars,
+      car: isCarId(saved.car) && cars.includes(saved.car) ? saved.car : cars.at(-1) ?? null,
+    };
   },
   modifiers: {
     'travel.modes'(value, state) {
@@ -158,7 +167,6 @@ export default {
       return car && data?.mode === CAR_MODE.id && Number.isFinite(value) ? Math.max(1, Math.round(value * car.speed)) : value;
     },
   },
-  advance() {},
   view(state, ctx): PropertyView {
     const current = HOUSES[state.property.house];
     const index = HOUSE_ORDER.indexOf(current.id);
@@ -180,4 +188,5 @@ export default {
       }),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'property'>;

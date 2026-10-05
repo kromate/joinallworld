@@ -7,6 +7,8 @@
  * coordinates and must not be used for navigation outside the game.
  */
 
+import { landmarkLabel } from './spot-names.ts';
+
 const STUDY_MAP = 'https://assets-eu.researchsquare.com/files/rs-2926408/v1/fc6eeb08-d1ff-422a-8880-e4baab439b27.pdf?c=1689601461#page=13';
 const FIELD_MAP = 'User brief from the UNILAG campus-map interpretation; placement approximate';
 
@@ -196,57 +198,57 @@ export const ZONES: CampusZone[] = [
 ];
 
 export const BUILDINGS: CampusBuilding[] = [
-  { id: 'main-gate', label: 'UNILAG Main Gate', zone: 'gate', x: -286, z: -105, w: 18, d: 5, h: 8, kind: 'gate', color: '#8f2434', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'el-kanemi-hall', label: 'El-Kanemi Hall', zone: 'gate', x: -246, z: -151, w: 28, d: 20, h: 13, kind: 'hall', color: '#c67f4d', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'main-gate', label: landmarkLabel('main-gate'), zone: 'gate', x: -286, z: -105, w: 18, d: 5, h: 8, kind: 'gate', color: '#8f2434', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'el-kanemi-hall', label: landmarkLabel('el-kanemi-hall'), zone: 'gate', x: -246, z: -151, w: 28, d: 20, h: 13, kind: 'hall', color: '#c67f4d', interior: false, confidence: 'medium', source: STUDY_MAP },
 
-  { id: 'eni-njoku-hall', label: 'Professor Eni Njoku Hall', zone: 'new-hall', x: -76, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#ba6d43', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'sodeinde-hall', label: 'Sodeinde Hall', zone: 'new-hall', x: -39, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#bb7548', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'makama-hall', label: 'Makama Bida Hall', zone: 'new-hall', x: 0, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#bd7c4e', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'fagunwa-hall', label: 'Fagunwa Hall', zone: 'new-hall', x: 39, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#b66b45', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'tinubu-hall', label: 'Madame Tinubu Hall', zone: 'new-hall', x: 76, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#b97553', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'cafeteria', label: '2001 Café', zone: 'new-hall', x: -24, z: -105, w: 18, d: 12, h: 7, kind: 'services', color: '#d59c50', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'access-bank', label: 'Access Bank', zone: 'new-hall', x: 25, z: -105, w: 20, d: 12, h: 8, kind: 'services', color: '#e36b32', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'new-hall-shopping', label: 'New Hall Shopping Complex', zone: 'new-hall', x: 68, z: -111, w: 24, d: 14, h: 8, kind: 'services', color: '#b9824d', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'eni-njoku-hall', label: landmarkLabel('eni-njoku-hall'), zone: 'new-hall', x: -76, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#ba6d43', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'sodeinde-hall', label: landmarkLabel('sodeinde-hall'), zone: 'new-hall', x: -39, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#bb7548', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'makama-hall', label: landmarkLabel('makama-hall'), zone: 'new-hall', x: 0, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#bd7c4e', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'fagunwa-hall', label: landmarkLabel('fagunwa-hall'), zone: 'new-hall', x: 39, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#b66b45', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'tinubu-hall', label: landmarkLabel('tinubu-hall'), zone: 'new-hall', x: 76, z: -204, w: 24, d: 18, h: 15, kind: 'hall', color: '#b97553', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'cafeteria', label: landmarkLabel('cafeteria'), zone: 'new-hall', x: -24, z: -105, w: 18, d: 12, h: 7, kind: 'services', color: '#d59c50', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'access-bank', label: landmarkLabel('access-bank'), zone: 'new-hall', x: 25, z: -105, w: 20, d: 12, h: 8, kind: 'services', color: '#e36b32', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'new-hall-shopping', label: landmarkLabel('new-hall-shopping'), zone: 'new-hall', x: 68, z: -111, w: 24, d: 14, h: 8, kind: 'services', color: '#b9824d', interior: true, confidence: 'medium', source: STUDY_MAP },
 
-  { id: 'arts', label: 'Faculty of Arts', zone: 'academic', x: 138, z: -203, w: 28, d: 20, h: 13, kind: 'faculty', color: '#b56b57', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'law', label: 'Faculty of Law', zone: 'academic', x: 185, z: -210, w: 28, d: 20, h: 14, kind: 'faculty', color: '#9f6658', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-west of the library; compressed distance' },
-  { id: 'management', label: 'Faculty of Management Sciences', zone: 'academic', x: 245, z: -222, w: 30, d: 18, h: 15, kind: 'faculty', color: '#ab7655', interior: true, confidence: 'medium', source: 'Mapcarta N6122566947; compressed placement' },
-  { id: 'library', label: 'University Library', zone: 'academic', x: 247, z: -186, w: 32, d: 22, h: 16, kind: 'academic', color: '#8f6b53', interior: true, confidence: 'medium', source: 'Mapcarta N6122566943; compressed placement' },
-  { id: 'senate', label: 'Senate House', zone: 'academic', x: 203, z: -165, w: 28, d: 22, h: 42, kind: 'administration', color: '#a16e4b', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'auditorium', label: 'Main Auditorium', zone: 'academic', x: 247, z: -132, w: 34, d: 22, h: 14, kind: 'academic', color: '#ad7957', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'uba-bank', label: 'UBA', zone: 'academic', x: 275, z: -165, w: 16, d: 10, h: 7, kind: 'services', color: '#b5282f', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'arts', label: landmarkLabel('arts'), zone: 'academic', x: 138, z: -203, w: 28, d: 20, h: 13, kind: 'faculty', color: '#b56b57', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'law', label: landmarkLabel('law'), zone: 'academic', x: 185, z: -210, w: 28, d: 20, h: 14, kind: 'faculty', color: '#9f6658', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-west of the library; compressed distance' },
+  { id: 'management', label: landmarkLabel('management'), zone: 'academic', x: 245, z: -222, w: 30, d: 18, h: 15, kind: 'faculty', color: '#ab7655', interior: true, confidence: 'medium', source: 'Mapcarta N6122566947; compressed placement' },
+  { id: 'library', label: landmarkLabel('library'), zone: 'academic', x: 247, z: -186, w: 32, d: 22, h: 16, kind: 'academic', color: '#8f6b53', interior: true, confidence: 'medium', source: 'Mapcarta N6122566943; compressed placement' },
+  { id: 'senate', label: landmarkLabel('senate'), zone: 'academic', x: 203, z: -165, w: 28, d: 22, h: 42, kind: 'administration', color: '#a16e4b', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'auditorium', label: landmarkLabel('auditorium'), zone: 'academic', x: 247, z: -132, w: 34, d: 22, h: 14, kind: 'academic', color: '#ad7957', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'uba-bank', label: landmarkLabel('uba-bank'), zone: 'academic', x: 275, z: -165, w: 16, d: 10, h: 7, kind: 'services', color: '#b5282f', interior: false, confidence: 'medium', source: STUDY_MAP },
 
-  { id: 'environmental', label: 'Faculty of Environmental Sciences', zone: 'sports', x: -220, z: -42, w: 28, d: 19, h: 12, kind: 'faculty', color: '#9d7854', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-east of Education; compressed distance' },
-  { id: 'education-chapel', label: 'University Chapel', zone: 'sports', x: -170, z: -55, w: 18, d: 14, h: 11, kind: 'worship', color: '#8e7b65', interior: false, confidence: 'high', source: 'Mapcarta adjacency W650873126; compressed distance' },
-  { id: 'central-mosque', label: 'University Mosque', zone: 'sports', x: -136, z: -61, w: 20, d: 15, h: 12, kind: 'worship', color: '#4f8862', interior: false, confidence: 'high', source: 'Mapcarta adjacency W1286088886; compressed distance' },
-  { id: 'henry-carr-hall', label: 'Henry Carr Hall', zone: 'sports', x: -276, z: -47, w: 24, d: 16, h: 11, kind: 'academic', color: '#a87955', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'wema-bank', label: 'Wema Bank', zone: 'sports', x: -246, z: -25, w: 16, d: 10, h: 7, kind: 'services', color: '#7550a3', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-east of Education; compressed distance' },
-  { id: 'education', label: 'Faculty of Education', zone: 'sports', x: -270, z: 0, w: 30, d: 21, h: 13, kind: 'faculty', color: '#b98552', interior: false, confidence: 'medium', source: 'Mapcarta N6122566937; compressed placement' },
-  { id: 'multipurpose-hall', label: 'Multipurpose Hall', zone: 'sports', x: -220, z: 27, w: 29, d: 20, h: 12, kind: 'academic', color: '#8c6b50', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
-  { id: 'social-sciences', label: 'Faculty of Social Sciences', zone: 'sports', x: -145, z: 31, w: 30, d: 20, h: 13, kind: 'faculty', color: '#a67554', interior: true, confidence: 'medium', source: 'Mapcarta N6122566933; compressed placement' },
-  { id: 'queen-amina-hall', label: 'Queen Amina Hall', zone: 'sports', x: -272, z: 48, w: 26, d: 18, h: 14, kind: 'hall', color: '#b46f51', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south of Education; compressed distance' },
-  { id: 'kofo-hall', label: 'Kofo Ademola Hall', zone: 'sports', x: -235, z: 67, w: 24, d: 17, h: 13, kind: 'hall', color: '#bc7952', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
-  { id: 'biobaku-hall', label: 'Saburi Biobaku Hall', zone: 'sports', x: -190, z: 65, w: 24, d: 17, h: 13, kind: 'hall', color: '#ae6748', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
-  { id: 'sports-centre', label: 'Sports Centre & Stadium', zone: 'sports', x: -165, z: -15, w: 38, d: 26, h: 1, kind: 'open-space', color: '#5d9660', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'swimming-pool', label: 'UNILAG Swimming Pool', zone: 'sports', x: -124, z: -35, w: 20, d: 12, h: 1, kind: 'open-space', color: '#4d91a8', interior: false, confidence: 'high', source: 'Mapcarta W707208516 adjacency: north of the sports grounds; compressed distance' },
-  { id: 'amphitheatre', label: 'Amphitheatre', zone: 'sports', x: -117, z: 63, w: 26, d: 20, h: 4, kind: 'open-space', color: '#998267', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'environmental', label: landmarkLabel('environmental'), zone: 'sports', x: -220, z: -42, w: 28, d: 19, h: 12, kind: 'faculty', color: '#9d7854', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-east of Education; compressed distance' },
+  { id: 'education-chapel', label: landmarkLabel('education-chapel'), zone: 'sports', x: -170, z: -55, w: 18, d: 14, h: 11, kind: 'worship', color: '#8e7b65', interior: false, confidence: 'high', source: 'Mapcarta adjacency W650873126; compressed distance' },
+  { id: 'central-mosque', label: landmarkLabel('central-mosque'), zone: 'sports', x: -136, z: -61, w: 20, d: 15, h: 12, kind: 'worship', color: '#4f8862', interior: false, confidence: 'high', source: 'Mapcarta adjacency W1286088886; compressed distance' },
+  { id: 'henry-carr-hall', label: landmarkLabel('henry-carr-hall'), zone: 'sports', x: -276, z: -47, w: 24, d: 16, h: 11, kind: 'academic', color: '#a87955', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'wema-bank', label: landmarkLabel('wema-bank'), zone: 'sports', x: -246, z: -25, w: 16, d: 10, h: 7, kind: 'services', color: '#7550a3', interior: false, confidence: 'high', source: 'Mapcarta adjacency: north-east of Education; compressed distance' },
+  { id: 'education', label: landmarkLabel('education'), zone: 'sports', x: -270, z: 0, w: 30, d: 21, h: 13, kind: 'faculty', color: '#b98552', interior: false, confidence: 'medium', source: 'Mapcarta N6122566937; compressed placement' },
+  { id: 'multipurpose-hall', label: landmarkLabel('multipurpose-hall'), zone: 'sports', x: -220, z: 27, w: 29, d: 20, h: 12, kind: 'academic', color: '#8c6b50', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
+  { id: 'social-sciences', label: landmarkLabel('social-sciences'), zone: 'sports', x: -145, z: 31, w: 30, d: 20, h: 13, kind: 'faculty', color: '#a67554', interior: true, confidence: 'medium', source: 'Mapcarta N6122566933; compressed placement' },
+  { id: 'queen-amina-hall', label: landmarkLabel('queen-amina-hall'), zone: 'sports', x: -272, z: 48, w: 26, d: 18, h: 14, kind: 'hall', color: '#b46f51', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south of Education; compressed distance' },
+  { id: 'kofo-hall', label: landmarkLabel('kofo-hall'), zone: 'sports', x: -235, z: 67, w: 24, d: 17, h: 13, kind: 'hall', color: '#bc7952', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
+  { id: 'biobaku-hall', label: landmarkLabel('biobaku-hall'), zone: 'sports', x: -190, z: 65, w: 24, d: 17, h: 13, kind: 'hall', color: '#ae6748', interior: false, confidence: 'high', source: 'Mapcarta adjacency: south-east of Education; compressed distance' },
+  { id: 'sports-centre', label: landmarkLabel('sports-centre'), zone: 'sports', x: -165, z: -15, w: 38, d: 26, h: 1, kind: 'open-space', color: '#5d9660', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'swimming-pool', label: landmarkLabel('swimming-pool'), zone: 'sports', x: -124, z: -35, w: 20, d: 12, h: 1, kind: 'open-space', color: '#4d91a8', interior: false, confidence: 'high', source: 'Mapcarta W707208516 adjacency: north of the sports grounds; compressed distance' },
+  { id: 'amphitheatre', label: landmarkLabel('amphitheatre'), zone: 'sports', x: -117, z: 63, w: 26, d: 20, h: 4, kind: 'open-space', color: '#998267', interior: false, confidence: 'medium', source: STUDY_MAP },
 
-  { id: 'student-union', label: 'Student Union Building', zone: 'gardens', x: -54, z: -30, w: 28, d: 19, h: 11, kind: 'services', color: '#b98048', interior: false, confidence: 'low', source: FIELD_MAP },
-  { id: 'university-bookshop', label: 'University Bookshop', zone: 'gardens', x: -16, z: -31, w: 20, d: 15, h: 8, kind: 'services', color: '#9a7656', interior: false, confidence: 'low', source: FIELD_MAP },
-  { id: 'moremi-hall', label: 'Moremi Hall', zone: 'gardens', x: 72, z: -32, w: 26, d: 19, h: 14, kind: 'hall', color: '#bd7451', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'medical-centre', label: 'UNILAG Medical Centre', zone: 'gardens', x: 5, z: 35, w: 30, d: 20, h: 11, kind: 'services', color: '#a67a5e', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'medical-gardens', label: 'Medical Gardens', zone: 'gardens', x: 63, z: 43, w: 42, d: 30, h: 1, kind: 'open-space', color: '#5d9764', interior: false, confidence: 'low', source: FIELD_MAP },
+  { id: 'student-union', label: landmarkLabel('student-union'), zone: 'gardens', x: -54, z: -30, w: 28, d: 19, h: 11, kind: 'services', color: '#b98048', interior: false, confidence: 'low', source: FIELD_MAP },
+  { id: 'university-bookshop', label: landmarkLabel('university-bookshop'), zone: 'gardens', x: -16, z: -31, w: 20, d: 15, h: 8, kind: 'services', color: '#9a7656', interior: false, confidence: 'low', source: FIELD_MAP },
+  { id: 'moremi-hall', label: landmarkLabel('moremi-hall'), zone: 'gardens', x: 72, z: -32, w: 26, d: 19, h: 14, kind: 'hall', color: '#bd7451', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'medical-centre', label: landmarkLabel('medical-centre'), zone: 'gardens', x: 5, z: 35, w: 30, d: 20, h: 11, kind: 'services', color: '#a67a5e', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'medical-gardens', label: landmarkLabel('medical-gardens'), zone: 'gardens', x: 63, z: 43, w: 42, d: 30, h: 1, kind: 'open-space', color: '#5d9764', interior: false, confidence: 'low', source: FIELD_MAP },
 
-  { id: 'jaja-hall', label: 'King Jaja Hall', zone: 'science', x: 134, z: -42, w: 25, d: 18, h: 14, kind: 'hall', color: '#b76e49', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'engineering', label: 'Faculty of Engineering', zone: 'science', x: 220, z: -42, w: 32, d: 22, h: 15, kind: 'faculty', color: '#9c7656', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'mariere-hall', label: 'Mariere Hall', zone: 'science', x: 147, z: 27, w: 25, d: 18, h: 14, kind: 'hall', color: '#af694b', interior: true, confidence: 'medium', source: STUDY_MAP },
-  { id: 'pharmacy', label: 'Faculty of Pharmacy', zone: 'science', x: 198, z: 33, w: 28, d: 19, h: 13, kind: 'faculty', color: '#a27a5a', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'science', label: 'Faculty of Science', zone: 'science', x: 252, z: 37, w: 32, d: 22, h: 14, kind: 'faculty', color: '#9f7552', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'jaja-hall', label: landmarkLabel('jaja-hall'), zone: 'science', x: 134, z: -42, w: 25, d: 18, h: 14, kind: 'hall', color: '#b76e49', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'engineering', label: landmarkLabel('engineering'), zone: 'science', x: 220, z: -42, w: 32, d: 22, h: 15, kind: 'faculty', color: '#9c7656', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'mariere-hall', label: landmarkLabel('mariere-hall'), zone: 'science', x: 147, z: 27, w: 25, d: 18, h: 14, kind: 'hall', color: '#af694b', interior: true, confidence: 'medium', source: STUDY_MAP },
+  { id: 'pharmacy', label: landmarkLabel('pharmacy'), zone: 'science', x: 198, z: 33, w: 28, d: 19, h: 13, kind: 'faculty', color: '#a27a5a', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'science', label: landmarkLabel('science'), zone: 'science', x: 252, z: 37, w: 32, d: 22, h: 14, kind: 'faculty', color: '#9f7552', interior: false, confidence: 'medium', source: STUDY_MAP },
 
-  { id: 'honours-hall', label: 'Honours Hall', zone: 'second-gate', x: -244, z: 174, w: 28, d: 20, h: 13, kind: 'hall', color: '#b5724f', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'second-gate', label: 'UNILAG Second Gate', zone: 'second-gate', x: -282, z: 222, w: 18, d: 5, h: 8, kind: 'gate', color: '#8f2434', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'dli-building', label: 'Distance Learning Institute', zone: 'dli', x: -30, z: 175, w: 36, d: 24, h: 14, kind: 'academic', color: '#9f714c', interior: false, confidence: 'medium', source: STUDY_MAP },
-  { id: 'lagoon-front', label: 'Lagoon Front', zone: 'lagoon', x: 320, z: 0, w: 28, d: 24, h: 1, kind: 'open-space', color: '#4c9b8d', interior: false, confidence: 'high', source: 'Shoreline adjacency; stylised promenade position' },
+  { id: 'honours-hall', label: landmarkLabel('honours-hall'), zone: 'second-gate', x: -244, z: 174, w: 28, d: 20, h: 13, kind: 'hall', color: '#b5724f', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'second-gate', label: landmarkLabel('second-gate'), zone: 'second-gate', x: -282, z: 222, w: 18, d: 5, h: 8, kind: 'gate', color: '#8f2434', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'dli-building', label: landmarkLabel('dli-building'), zone: 'dli', x: -30, z: 175, w: 36, d: 24, h: 14, kind: 'academic', color: '#9f714c', interior: false, confidence: 'medium', source: STUDY_MAP },
+  { id: 'lagoon-front', label: landmarkLabel('lagoon-front'), zone: 'lagoon', x: 320, z: 0, w: 28, d: 24, h: 1, kind: 'open-space', color: '#4c9b8d', interior: false, confidence: 'high', source: 'Shoreline adjacency; stylised promenade position' },
 ];
 
 /**
@@ -270,7 +272,7 @@ export const ANCHORS: Record<string, CampusAnchor> = Object.fromEntries(BUILDING
 
 const studentUnionAnchor = ANCHORS['student-union'];
 if (!studentUnionAnchor) throw new TypeError('UNILAG layout has no student-union building');
-ANCHORS.people = {...studentUnionAnchor,id:'people',label:'Campus people'};
+ANCHORS.people = {...studentUnionAnchor,id:'people',label:landmarkLabel('people')};
 
 /**
  * Broad visual road guides. Walking is allowed throughout campus zones; these

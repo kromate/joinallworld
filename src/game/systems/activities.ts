@@ -81,6 +81,7 @@
  *   complete-charged activity whose price is still known is charged for the time used. This
  *   happens exactly once: the action is no longer in the state afterwards.
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify, systems } from '../registry.ts';
 import { busy, cap, fail, isRecord, naira, ok, safeCount } from '../util.ts';
 import { isOpen, minutesUntilOpen } from '../clock.ts';
@@ -363,13 +364,11 @@ function card(state: LifeState, def: ActivityDefinition, venueId: string, ctx: L
   return { ...shown, cost: costOf(state, def, ctx), reward: rewardOf(state, def, ctx), blocked };
 }
 
-export default {
-  id: 'activities',
-  stateKeys: ['spot'],
-  sanitize(input, state) {
-    const spots = index().venues[state.location] || {};
-    state.spot = typeof input.spot === 'string' && Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(state.location);
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     activity: (state, payload, ctx) => start(state, isRecord(payload) ? payload : {}, ctx),
     spot(state, payload) {
@@ -380,8 +379,17 @@ export default {
       return ok(state, 'selected');
     },
   },
-  active: { activity: active },
   advance() {},
+} satisfies Pick<SystemDefinition<'activities'>, 'actions' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'activities',
+  stateKeys: ['spot'],
+  sanitize(input, state) {
+    const spots = index().venues[state.location] || {};
+    state.spot = typeof input.spot === 'string' && Object.hasOwn(spots, input.spot) ? input.spot : defaultSpot(state.location);
+  },
+  active: { activity: active },
   view(state, ctx) {
     const spots = spotsOf(state.location);
     const here = spots.find((spot) => spot.id === state.spot);
@@ -396,4 +404,5 @@ export default {
         cancellable: runningDef.cancellable !== false, tags: runningDef.tags || [] } : null,
     };
   },
+  ...play,
 } satisfies SystemDefinition<'activities'>;

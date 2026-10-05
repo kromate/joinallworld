@@ -104,6 +104,7 @@
  */
 import type { AccessoryId, LotteryId, NeedId, AccessorySlot, BodyId, FabricId, HairId, LifeContext, LifeState, Look, OnboardingState, OutfitId, StartHomeId, TraitId, DreamId, VenueId, Wardrobe, WardrobeKind } from '../../types/life.ts';
 import type { Appearance, LotteryOutcome, MoodWord } from '../../types/content.ts';
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { BoutiqueItem, OnboardingView } from '../../types/view.ts';
 import { emit } from '../registry.ts';
@@ -512,6 +513,38 @@ const actions = {
   },
 } satisfies NonNullable<SystemDefinition<'onboarding'>['actions']>;
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions,
+  advance() {},
+  on: {
+    'activity.completed'(state, data, ctx) {
+      const o = state.onboarding;
+      if (isGuest(o)) {
+        if (o.firstAt === null) o.firstAt = finite(ctx?.now) ? ctx.now : state.t;
+        o.activities = Math.min(ACTIVITY_CAP, o.activities + 1);
+      }
+      let tags = Array.isArray(data?.tags) ? data.tags : [];
+      if (tags.includes('food')) {
+        const now = finite(ctx?.now) ? ctx.now : state.t;
+        // Another system may already have reported this meal through 'meal.eaten'.
+        if (state.onboarding.bonusAt === now) tags = tags.filter((tag) => tag !== 'food');
+        state.onboarding.bonusAt = now;
+      }
+      giveBonus(state, tags);
+    },
+    'meal.eaten'(state, data, ctx) {
+      const now = finite(ctx?.now) ? ctx.now : state.t;
+      if (state.onboarding.bonusAt === now) return; // the same meal already counted as a food activity
+      state.onboarding.bonusAt = now;
+      giveBonus(state, ['food']);
+    },
+  },
+} satisfies Pick<SystemDefinition<'onboarding'>, 'actions' | 'advance' | 'on'> : LEFT_OUT;
+
 export default {
   id: 'onboarding',
   stateKeys: ['onboarding'],
@@ -561,8 +594,6 @@ export default {
     base.wardrobe = base.done ? wardrobeOf(savedWardrobe, base.look) : wardrobeOf(null, null);
     state.onboarding = base;
   },
-  actions,
-  advance() {},
   modifiers: {
     ...fxModifiers(sources),
     /**
@@ -580,29 +611,6 @@ export default {
       // The campus is open to visitors, but a student needs a life of their own: enrolment, study, the hostel, campus jobs and the student vote wait too.
       if (GUEST_CAMPUS.test(type)) return { code: 'settle_required', reason: ENROL_REASON };
       return value;
-    },
-  },
-  on: {
-    'activity.completed'(state, data, ctx) {
-      const o = state.onboarding;
-      if (isGuest(o)) {
-        if (o.firstAt === null) o.firstAt = finite(ctx?.now) ? ctx.now : state.t;
-        o.activities = Math.min(ACTIVITY_CAP, o.activities + 1);
-      }
-      let tags = Array.isArray(data?.tags) ? data.tags : [];
-      if (tags.includes('food')) {
-        const now = finite(ctx?.now) ? ctx.now : state.t;
-        // Another system may already have reported this meal through 'meal.eaten'.
-        if (state.onboarding.bonusAt === now) tags = tags.filter((tag) => tag !== 'food');
-        state.onboarding.bonusAt = now;
-      }
-      giveBonus(state, tags);
-    },
-    'meal.eaten'(state, data, ctx) {
-      const now = finite(ctx?.now) ? ctx.now : state.t;
-      if (state.onboarding.bonusAt === now) return; // the same meal already counted as a food activity
-      state.onboarding.bonusAt = now;
-      giveBonus(state, ['food']);
     },
   },
   view(state: LifeState): OnboardingView {
@@ -637,4 +645,5 @@ export default {
       feelings: feelingsOf(state).map((feeling) => ({ ...feeling, line: FEELING_LINES[feeling.id] ?? '' })),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'onboarding'>;

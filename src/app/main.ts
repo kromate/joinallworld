@@ -1,11 +1,12 @@
 // Entry of the game: index.html → this file. The shell is a Vue 3 application over the client model
 // (src/client.ts), the rules (src/game), the scenes (src/scene, src/campus, src/map3d) and the server.
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import App from './App.vue'
 import { useApp } from './state/app.ts'
 import { telemetry } from '../telemetry/index.ts'
 import { isChunkLoadError, noteChunkFailure } from './state/updateNotice.ts'
-import { warmLanding } from './features/start/warmLanding.ts'
+import { landingCodeSettled, warmLanding } from './features/start/warmLanding.ts'
+import { preloadNext } from './state/idlePreload.ts'
 
 warmLanding() // a device that has never played opens on the landing: fetch its code now, not after the first paint
 const app = createApp(App)
@@ -15,6 +16,15 @@ window.addEventListener('vite:preloadError', () => { void noteChunkFailure() })
 app.mount('#app')
 // The HUD is on screen: the first telemetry mark (the facade keeps it until, and unless, telemetry is configured).
 telemetry.hudReady()
+// Then, when the browser is idle, what is opened next (the phone, the map, Jobs, Groceries, Buy mode, the Boutique).
+// The scene is what the first screen waits for: nothing is fetched beside it (or after ten seconds, when it never comes).
+const sceneShown = new Promise<void>((resolve) => {
+  const { scene } = useApp()
+  if (scene.venue.value) { resolve(); return }
+  const stop = watch(scene.venue, (venue) => { if (venue) { stop(); resolve() } })
+  globalThis.setTimeout(resolve, 10000)
+})
+preloadNext(Promise.all([landingCodeSettled(), sceneShown]))
 
 // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness. The count
 // is flat while the game is idle; a Vue re-render alone must never move it.

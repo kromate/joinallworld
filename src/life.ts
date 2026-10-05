@@ -16,6 +16,7 @@
  * fields that did not exist when a save was written simply start at their defaults.
  */
 import './game/systems/index.ts';
+import { PLAYS } from './game/profile.ts';
 import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReason, assertDeclared, isDeparting, occupiesVenue, activeMoves } from './game/registry.ts';
 import { fail, finite, isRecord, makeContext } from './game/util.ts';
 import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.ts';
@@ -109,6 +110,7 @@ export function createLife(saved: unknown, ctx?: LifeContextInit): LifeState {
  */
 export function dispatch<T extends ActionType>(state: LifeState, body: ActionBody<T>, ctx?: LifeContextInit): ActionResult<T>;
 export function dispatch(state: LifeState, body: ActionBody, ctx?: LifeContextInit): ActionOutcome {
+  if (!PLAYS) throw new Error('This build only reads lives: actions are applied by the server (src/game/profile.ts).');
   const handler = actionHandler(body?.type);
   if (!handler) throw new Error('Invalid action type');
   const payload: Record<string, unknown> = { ...(isRecord(body.payload) ? body.payload : {}) };
@@ -130,6 +132,7 @@ export function dispatch(state: LifeState, body: ActionBody, ctx?: LifeContextIn
  * Returns { ok, code: 'idle' | 'advanced' | 'completed' | 'invalid_time', state }.
  */
 export function advanceLife(state: LifeState, dt: number, ctx?: LifeContextInit): AdvanceOutcome {
+  if (!PLAYS) throw new Error('This build only reads lives: time is settled by the server (src/game/profile.ts).');
   if (!finite(dt) || dt <= 0) return { ok: false, code: 'invalid_time', state };
   const now = finite(ctx?.now) ? ctx.now : state.t + dt * 1000;
   const context = contextFor(state, { ...ctx, now }, `settle|${state.t}|${now}`);

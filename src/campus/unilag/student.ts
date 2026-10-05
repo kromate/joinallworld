@@ -16,6 +16,7 @@
  * Modifier: career.performance adds one point to a positive shift gain when the current job
  * matches the career track of a degree earned through validated semester results.
  */
+import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { emit } from '../../game/registry.ts';
 import { addItem, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, removeItems, skillLevel } from '../../game/api.ts';
 import { busy, fail, isRecord, naira, ok, safeCount } from '../../game/util.ts';
@@ -28,6 +29,7 @@ import type {
 } from '../../types/campus.ts';
 import type { ActionFailure, ActionOutcome, ActionSuccess, LagosDay, LifeContext, LifeState } from '../../types/life.ts';
 import type { SavedActiveAction, SavedInput, SystemDefinition } from '../../types/registry.ts';
+import { freshStudent } from './slices.ts';
 import { LECTURE_SLOTS, PROGRAMMES, UNILAG_BETA_RULES, courseOf, programmeOf, semesterOf } from './curriculum.ts';
 
 /** The fields a saved 'campus-study' action keeps: what ActiveKindHandler.sanitize returns. */
@@ -107,15 +109,6 @@ function nextSemester(records: SemesterRecord[]): SemesterNumber | null {
   if (!passedRecord(records, 1)) return 1;
   if (!passedRecord(records, 2)) return 2;
   return null;
-}
-
-function freshStudent(): UnilagStudentState {
-  return {
-    status: 'none', programme: null, studentId: null, admittedDay: null, applicationCount: 0,
-    term: null, records: [],
-    hostel: { allocations: [], storage: {} },
-    lifetime: { scholarshipPaid: false, campusJobDays: [] },
-  };
 }
 
 function normalizeCourseResult(value: unknown, course: CourseDefinition): CourseResult | null {
@@ -601,10 +594,11 @@ function completeActive(state: LifeState, active: CampusStudyAction, ctx: LifeCo
   state.message = `${course.title} ${active.task} completed: ${result[active.task]}/${active.task === 'assignment' ? UNILAG_BETA_RULES.assignmentWeight : UNILAG_BETA_RULES.examWeight}.`;
 }
 
-export default {
-  id: 'unilagStudent',
-  stateKeys: ['unilagStudent'],
-  sanitize,
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'unilag.apply': application,
     'unilag.matriculate': matriculate,
@@ -622,6 +616,13 @@ export default {
     'unilag.hostel.store': hostelStore,
     'unilag.job': campusJob,
   },
+  advance() {},
+} satisfies Pick<SystemDefinition<'unilagStudent'>, 'actions' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'unilagStudent',
+  stateKeys: ['unilagStudent'],
+  sanitize,
   active: {
     [CAMPUS_STUDY_KIND]: {
       moves: false,
@@ -635,7 +636,6 @@ export default {
       return degree && data?.job === degree.careerTrack && Number.isFinite(value) && value > 0 ? value + 1 : value;
     },
   },
-  advance() {},
   view(state): UnilagStudentView {
     const student = studentOf(state), programme = programmeOf(student.programme), degree = graduationOf(student);
     const term = student.term;
@@ -650,4 +650,5 @@ export default {
       campusJobs: Object.values(CAMPUS_JOBS),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'unilagStudent'>;

@@ -16,6 +16,7 @@ import type { ClientOptions, CommandArgs, CommandResult, FetchJson, GameClient, 
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
 import { CITIES, createClient } from '../../client.ts'
 import { VENUES, viewLife } from '../../life.ts'
+import { onSystemsCompleted } from '../../game/registry.ts'
 import { venueDistrict, venueLabel } from '../../game/content/venues.ts'
 import { toast as sharedToast } from './toasts.ts'
 import { telemetry as realTelemetry } from '../../telemetry/index.ts'
@@ -143,7 +144,11 @@ export function createGame(options: GameOptions = {}): Game {
     lastMessage = text
   }
 
+  // A system that was a stand-in (the campus) has been loaded: the views derived before it have to be derived again.
+  const rules = ref(0)
+  onSystemsCompleted(() => { rules.value += 1 })
   const view = computed<PanelView>(() => {
+    void rules.value
     const life = state.value, city = cityId.value
     const now = client.serverNow()
     return {

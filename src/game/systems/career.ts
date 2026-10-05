@@ -67,6 +67,7 @@
  * TIMED-ACTION KIND
  *   'commute' { id: venue }   the automatic commute; free, cancellable, COMMUTE_SECONDS long
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { cap, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, openingInfo, WEEKDAYS } from '../clock.ts';
@@ -287,59 +288,16 @@ function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null,
 
 const payOf = (state: LifeState, job: JobDefinition): number => (job.track ? rung(job, state.career.level).pay : job.shift.reward ?? 0); // the starter shift always defines its reward
 
-export default {
-  id: 'career',
-  stateKeys: ['job', 'completedShifts', 'career'],
-  sanitize(input, state) {
-    const job = jobOf(input.job);
-    state.job = job && workplaceOpen(job) ? job.id : null;
-    state.completedShifts = safeCount(input.completedShifts) ? input.completedShifts : 0;
-    const saved = isRecord(input.career) ? input.career : {};
-    const held = jobOf(state.job);
-    const career = freshCareer();
-    if (held?.track) {
-      career.level = finite(saved.level) && Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
-      career.performance = finite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
-    }
-    career.shifts = safeCount(saved.shifts) ? saved.shifts : 0;
-    career.auto = saved.auto !== false;
-    career.lastShiftDay = dayIndex(saved.lastShiftDay);
-    career.shiftStartDay = dayIndex(saved.shiftStartDay);
-    career.autoDay = dayIndex(saved.autoDay);
-    career.oriented = saved.oriented === true;
-    state.career = career;
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     'apply-job': (state, payload, ctx) => apply(state, payload, ctx),
     'career.switch': (state, payload, ctx) => apply(state, payload, ctx, true),
     'career.quit': quit,
     'career.auto': setAuto,
-  },
-  activities: Object.values(JOBS).filter((job) => job.shift && workplaceOpen(job))
-    .map((job) => ({ ...job.shift, requiresJob: job.id, where: { ...job.workplace, spotLabel: 'Work', spotIcon: '💼' } })),
-  active: {
-    commute: {
-      moves: true, // the player is on their way out of the venue: no room, no voice, until they arrive or cancel
-      sanitize(value, state) {
-        const job = jobOf(state.job);
-        return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;
-      },
-      complete(state, active, ctx) {
-        const job = jobOf(state.job);
-        if (!arrive(state, active.id, ctx, { spot: job?.workplace.spot, mode: null })) return;
-        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
-      },
-    },
-  },
-  modifiers: {
-    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack ? rung(trackOf(def.careerTrack), state.career.level).pay : value),
-    'activity.block'(value, state, { def }, ctx) {
-      if (value || !def?.requiresJob) return value;
-      if (state.completedShifts >= Number.MAX_SAFE_INTEGER) return { code: 'balance_limit', reason: 'Your shift count has reached its supported limit.' };
-      if (!def.careerTrack || state.job !== def.careerTrack) return null;
-      const status = shiftStatus(state, ctx);
-      return status.canWork ? null : { code: status.code, reason: status.text };
-    },
   },
   on: {
     'activity.started'(state, { def }, ctx) {
@@ -374,6 +332,56 @@ export default {
     },
   },
   advance(state, dt, ctx) { maybeCommute(state, ctx); },
+} satisfies Pick<SystemDefinition<'career'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'career',
+  stateKeys: ['job', 'completedShifts', 'career'],
+  sanitize(input, state) {
+    const job = jobOf(input.job);
+    state.job = job && workplaceOpen(job) ? job.id : null;
+    state.completedShifts = safeCount(input.completedShifts) ? input.completedShifts : 0;
+    const saved = isRecord(input.career) ? input.career : {};
+    const held = jobOf(state.job);
+    const career = freshCareer();
+    if (held?.track) {
+      career.level = finite(saved.level) && Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
+      career.performance = finite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
+    }
+    career.shifts = safeCount(saved.shifts) ? saved.shifts : 0;
+    career.auto = saved.auto !== false;
+    career.lastShiftDay = dayIndex(saved.lastShiftDay);
+    career.shiftStartDay = dayIndex(saved.shiftStartDay);
+    career.autoDay = dayIndex(saved.autoDay);
+    career.oriented = saved.oriented === true;
+    state.career = career;
+  },
+  activities: Object.values(JOBS).filter((job) => job.shift && workplaceOpen(job))
+    .map((job) => ({ ...job.shift, requiresJob: job.id, where: { ...job.workplace, spotLabel: 'Work', spotIcon: '💼' } })),
+  active: {
+    commute: {
+      moves: true, // the player is on their way out of the venue: no room, no voice, until they arrive or cancel
+      sanitize(value, state) {
+        const job = jobOf(state.job);
+        return job?.track && value.id === job.workplace.venue && value.id !== state.location && value.duration === COMMUTE_SECONDS ? {} : null;
+      },
+      complete(state, active, ctx) {
+        const job = jobOf(state.job);
+        if (!arrive(state, active.id, ctx, { spot: job?.workplace.spot, mode: null })) return;
+        state.message = `You are at ${venueLabel(active.id, ctx?.cityId)}, at the ${job ? spotName(job) : 'Work'} spot. Start ${job ? `your ${job.label} shift` : 'your shift'} when you are ready.`;
+      },
+    },
+  },
+  modifiers: {
+    'activity.reward': (value, state, { def }) => (def?.careerTrack && state.job === def.careerTrack ? rung(trackOf(def.careerTrack), state.career.level).pay : value),
+    'activity.block'(value, state, { def }, ctx) {
+      if (value || !def?.requiresJob) return value;
+      if (state.completedShifts >= Number.MAX_SAFE_INTEGER) return { code: 'balance_limit', reason: 'Your shift count has reached its supported limit.' };
+      if (!def.careerTrack || state.job !== def.careerTrack) return null;
+      const status = shiftStatus(state, ctx);
+      return status.canWork ? null : { code: status.code, reason: status.text };
+    },
+  },
   view(state, ctx): CareerView {
     const job = jobOf(state.job);
     const status = shiftStatus(state, ctx);
@@ -435,6 +443,7 @@ export default {
       }),
     };
   },
+  ...play,
 } satisfies SystemDefinition<'career'>;
 
 export { TRACKS, MAX_CAREER_LEVEL };

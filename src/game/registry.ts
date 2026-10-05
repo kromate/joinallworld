@@ -189,37 +189,55 @@ const MAX_EMIT_DEPTH = 8;
 const SERVER_ONLY_REASON = 'That step is completed by the game server from its own screen. Nothing was changed.';
 let depth = 0;
 
-export function registerSystem(def: SystemDefinition<string>): SystemDefinition {
-  if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
-  if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
-  if (def.stateKeys.some((key) => typeof key !== 'string' || !key || ['__proto__', 'constructor', 'prototype'].includes(key))
-    || new Set(def.stateKeys).size !== def.stateKeys.length) throw new Error(`Invalid stateKeys for ${def.id}`);
-  for (const key of def.stateKeys) {
-    const owner = order.find((other) => other.stateKeys.includes(key));
-    if (owner) throw new Error(`State key "${key}" is owned by ${owner.id}, not ${def.id}`);
-  }
+/** Check a definition and write its actions and timed-action kinds into the tables. Nothing is changed when it throws. */
+function install(def: SystemDefinition<string>, replacing: SystemDefinition | null): void {
   const actions: Record<string, ActionHandler | ServerOnlyAction | undefined> = def.actions || {};
+  const active: Record<string, ActiveKindHandler | undefined> = def.active || {};
+  const ours = (table: Map<string, unknown>, key: string, owned: string[] | undefined): boolean => table.has(key) && !(owned ?? []).includes(key);
+  const previous = replacing as { actions?: Record<string, unknown>; active?: Record<string, unknown> } | null;
+  const handlers: [string, ActionHandler, ServerOnlyAction | undefined][] = [];
   for (const type of Object.keys(actions)) {
-    if (actionTable.has(type)) throw new Error(`Action "${type}" is already registered`);
+    if (ours(actionTable, type, previous?.actions ? Object.keys(previous.actions) : undefined)) throw new Error(`Action "${type}" is already registered`);
     const entry = actions[type];
     const handler = typeof entry === 'function' ? entry : entry?.serverOnly === true ? entry.run : null;
     if (typeof handler !== 'function') throw new Error(`Action "${type}" needs a handler function, or { serverOnly: true, run }`);
-    actionTable.set(type, handler);
-    if (typeof entry !== 'function') serverOnlyTable.set(type, typeof entry?.refusal === 'string' && entry.refusal ? entry.refusal : SERVER_ONLY_REASON);
+    handlers.push([type, handler, typeof entry === 'function' ? undefined : entry]);
   }
-  const active: Record<string, ActiveKindHandler | undefined> = def.active || {};
   for (const kind of Object.keys(active)) {
-    if (activeTable.has(kind)) throw new Error(`Active kind "${kind}" is already registered`);
+    if (ours(activeTable, kind, previous?.active ? Object.keys(previous.active) : undefined)) throw new Error(`Active kind "${kind}" is already registered`);
     const handler = active[kind];
     // Whether a timed action takes the player out of their venue is never left to a default:
     // room membership and voice depend on it (isDeparting), so every kind must say.
     if (typeof handler?.moves !== 'boolean') throw new Error(`Active kind "${kind}" must declare moves: true or false`);
     if (typeof handler.sanitize !== 'function' || typeof handler.complete !== 'function') throw new Error(`Active kind "${kind}" needs sanitize and complete`);
   }
+  for (const key of Object.keys(previous?.actions ?? {})) { actionTable.delete(key); serverOnlyTable.delete(key); }
+  for (const key of Object.keys(previous?.active ?? {})) activeTable.delete(key);
+  for (const [type, handler, entry] of handlers) {
+    actionTable.set(type, handler);
+    if (entry) serverOnlyTable.set(type, typeof entry.refusal === 'string' && entry.refusal ? entry.refusal : SERVER_ONLY_REASON);
+  }
   for (const kind of Object.keys(active)) {
     const handler = active[kind];
     if (handler) activeTable.set(kind, handler);
   }
+}
+
+function validate(def: SystemDefinition<string>): void {
+  if (!def || typeof def.id !== 'string') throw new Error(`Invalid or duplicate system: ${def?.id}`);
+  if (!Array.isArray(def.stateKeys) || typeof def.sanitize !== 'function') throw new Error(`System ${def.id} needs stateKeys and sanitize`);
+  if (def.stateKeys.some((key) => typeof key !== 'string' || !key || ['__proto__', 'constructor', 'prototype'].includes(key))
+    || new Set(def.stateKeys).size !== def.stateKeys.length) throw new Error(`Invalid stateKeys for ${def.id}`);
+}
+
+export function registerSystem(def: SystemDefinition<string>): SystemDefinition {
+  if (!def || typeof def.id !== 'string' || byId.has(def.id)) throw new Error(`Invalid or duplicate system: ${def?.id}`);
+  validate(def);
+  for (const key of def.stateKeys) {
+    const owner = order.find((other) => other.stateKeys.includes(key));
+    if (owner) throw new Error(`State key "${key}" is owned by ${owner.id}, not ${def.id}`);
+  }
+  install(def, null);
   for (const key of def.stateKeys) declaredKeys.add(key);
   // Tests register probe systems under ids of their own; the table keeps the engine's own SystemId type.
   const registered = def as SystemDefinition;
@@ -227,6 +245,35 @@ export function registerSystem(def: SystemDefinition<string>): SystemDefinition 
   byId.set(def.id, registered);
   return registered;
 }
+
+/**
+ * LAZY SYSTEMS. The browser starts with a small stand-in for a system whose code it fetches only when a life needs it
+ * (the UNILAG campus: src/campus/unilag/register.ts). A stand-in registers like any system and owns the same state keys,
+ * but it only knows the slice of a life that has never used the system and REFUSES (throws) any other input: nothing is
+ * ever rebuilt without the real sanitize(). `completeSystem` puts the real definition in the stand-in's place, in the same
+ * position of the order, so sanitize, events and modifiers run in the order every other host uses.
+ */
+const standIns = new Set<string>();
+const changeListeners = new Set<() => void>();
+export function registerStandIn(def: SystemDefinition<string>): SystemDefinition { const registered = registerSystem(def); standIns.add(def.id); return registered; }
+/** True while `id` is only a stand-in: its views, actions and listeners are not loaded. */
+export const isStandIn = (id: string): boolean => standIns.has(id);
+export function completeSystem(def: SystemDefinition<string>): SystemDefinition {
+  validate(def);
+  const index = order.findIndex((other) => other.id === def.id);
+  const current = order[index];
+  if (!current || !standIns.has(def.id)) throw new Error(`System "${def.id}" is not a stand-in`);
+  if (current.stateKeys.length !== def.stateKeys.length || current.stateKeys.some((key, at) => def.stateKeys[at] !== key)) throw new Error(`The system "${def.id}" must own the same state keys as its stand-in`);
+  install(def, current);
+  const registered = def as SystemDefinition;
+  order[index] = registered;
+  byId.set(def.id, registered);
+  standIns.delete(def.id);
+  for (const listener of changeListeners) listener();
+  return registered;
+}
+/** Told after a stand-in was replaced by its system: what was derived from the registry (views) is stale. Returns the unsubscribe. */
+export function onSystemsCompleted(listener: () => void): () => void { changeListeners.add(listener); return () => { changeListeners.delete(listener); }; }
 
 export const systems = (): SystemDefinition[] => order;
 export const getSystem = (id: string): SystemDefinition | undefined => byId.get(id);

@@ -31,9 +31,28 @@ function moveMaps(): Plugin {
   };
 }
 
+/**
+ * The browser's engine registers the UNILAG campus as stand-ins and fetches its rules on first use (src/game/systems/browser.ts,
+ * src/game/campus-gate.ts); the servers, the Worker, the scripts and the tests register everything from systems/index.ts. Only
+ * this build swaps one for the other, so the rules themselves exist once.
+ */
+function browserSystems(): Plugin {
+  return {
+    name: 'allworld:browser-systems',
+    enforce: 'pre',
+    // The browser only reads lives (src/game/profile.ts): what only playing one needs is not in the page.
+    load(id) { return /\/src\/game\/profile\.ts$/.test(id) ? 'export const PLAYS = false;\nexport const LEFT_OUT = {};\n' : null; },
+    async resolveId(source, importer, options) {
+      if (!/systems\/index\.ts$/.test(source)) return null;
+      const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
+      return resolved && /\/src\/game\/systems\/index\.ts$/.test(resolved.id) ? resolved.id.replace(/index\.ts$/, 'browser.ts') : null;
+    },
+  };
+}
+
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
-  plugins: [vue(), ...(wantMaps ? [moveMaps()] : [])],
+  plugins: [browserSystems(), vue(), ...(wantMaps ? [moveMaps()] : [])],
   server: {
     host: '127.0.0.1', port: 5173,
     proxy: {
@@ -54,6 +73,12 @@ export default defineConfig({
   build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { manualChunks(id) {
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(student|games|shuttle|curriculum|content|layout|walk)\.ts$|tables\/places\.ts$|scene\/(movement|build)\.ts$)/.test(id)) return 'engine'
+    // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
+    if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|layout|register)\.ts$/.test(id)) return 'campus-rules'
+    // Plain typed-array code shared by the campus rules and the scenes (never part of the first page).
+    if (/\/src\/scene\/(movement|build)\.ts$/.test(id)) return 'scene-core'
+    // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
+    if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
   } } } },
 });

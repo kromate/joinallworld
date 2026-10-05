@@ -21,6 +21,7 @@
  *       'reward':  REFERRAL.reward and stars to the inviter, within the weekly and lifetime caps.
  * EMITS  'table.played' { game, won, human, paid }   'stars.granted'   'notice.posted'
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -83,6 +84,17 @@ export const referralGift: TypedActionHandler<'growth.referral'> = (state, paylo
   return fail(state, 'invalid_gift', 'Unknown referral step.');
 };
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions: {
+    'growth.table-result': serverOnly<'growth.table-result'>(tableResult, 'when a table game ends'),
+    'growth.referral': serverOnly<'growth.referral'>(referralGift, 'when a referral counts'),
+  },
+} satisfies Pick<SystemDefinition<'growth'>, 'actions'> : LEFT_OUT;
+
 export default {
   id: 'growth',
   stateKeys: ['growth'],
@@ -95,10 +107,6 @@ export default {
       referrals: { week: count(refs.week), paid: count(refs.paid, REFERRAL.paidPerWeek), total: count(refs.total, REFERRAL.paidLifetime) },
     };
   },
-  actions: {
-    'growth.table-result': serverOnly<'growth.table-result'>(tableResult, 'when a table game ends'),
-    'growth.referral': serverOnly<'growth.referral'>(referralGift, 'when a referral counts'),
-  },
   view(state, ctx) {
     const day = lagosTime(nowOf(state, ctx)).day, week = lagosTime(nowOf(state, ctx)).week, book = state.growth;
     const paid = book.tables.day === day ? book.tables.paid : 0;
@@ -108,4 +116,5 @@ export default {
         welcome: REFERRAL.welcome, reward: REFERRAL.reward, rewardStars: REFERRAL.rewardStars },
     };
   },
+  ...play,
 } satisfies SystemDefinition<'growth'>;

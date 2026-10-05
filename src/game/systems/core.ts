@@ -16,6 +16,7 @@
  * afterwards, so the hook can never run twice for one action. For any other input nothing is
  * settled: the action is just dropped.
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { activeHandler, emit } from '../registry.ts';
 import { finite, isRecord, ok, fail } from '../util.ts';
 import { VENUES } from '../content/venues.ts';
@@ -63,17 +64,11 @@ export function advanceActive(state: LifeState, dt: number, ctx: LifeContext): E
   return 'completed';
 }
 
-export default {
-  id: 'core',
-  stateKeys: ['v', 't', 'name', 'message', 'location', 'activeAction'],
-  sanitize(input, state, ctx) {
-    state.v = STATE_VERSION;
-    state.t = finite(input.t) && input.t >= 0 ? input.t : finite(ctx.now) ? ctx.now : 0;
-    state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || DEFAULT_NAME : DEFAULT_NAME;
-    state.message = typeof input.message === 'string' && input.message.length <= 500 ? input.message : '';
-    state.location = isVenueId(input.location) ? input.location : START_VENUE;
-    state.activeAction = null;
-  },
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
   actions: {
     /** Cancel the running timed action. What is kept or refunded is decided by the kind's handler. */
     cancel(state, payload, ctx) {
@@ -91,4 +86,18 @@ export default {
     },
   },
   advance() {},
+} satisfies Pick<SystemDefinition<'core'>, 'actions' | 'advance'> : LEFT_OUT;
+
+export default {
+  id: 'core',
+  stateKeys: ['v', 't', 'name', 'message', 'location', 'activeAction'],
+  sanitize(input, state, ctx) {
+    state.v = STATE_VERSION;
+    state.t = finite(input.t) && input.t >= 0 ? input.t : finite(ctx.now) ? ctx.now : 0;
+    state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || DEFAULT_NAME : DEFAULT_NAME;
+    state.message = typeof input.message === 'string' && input.message.length <= 500 ? input.message : '';
+    state.location = isVenueId(input.location) ? input.location : START_VENUE;
+    state.activeAction = null;
+  },
+  ...play,
 } satisfies SystemDefinition<'core'>;

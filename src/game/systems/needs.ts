@@ -21,6 +21,7 @@
  *   Low needs lower mood and block activities that declare minimumNeeds; they never block
  *   travelling home, eating or resting.
  */
+import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { modify } from '../registry.ts';
 import { clamp, cleanText, finite, isId, isRecord } from '../util.ts';
 import type { SystemDefinition } from '../../types/registry.ts';
@@ -83,6 +84,29 @@ export function moodOf(state: Pick<LifeState, 'needs' | 'moodlets'>): Mood {
   return { score, label, icon: score >= 70 ? '😄' : score >= 45 ? '🙂' : score >= 25 ? '😟' : '😣' };
 }
 
+/**
+ * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
+ * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
+ */
+const play = PLAYS ? {
+  actions: {},
+  advance(state, dt, ctx) {
+    const seconds = Math.min(dt, OFFLINE_DECAY_CAP_SECONDS);
+    for (const need of NEEDS) {
+      const rate = Math.max(0, modify(state, 'needs.decayRate', 1, { need }, ctx));
+      const total = state.decay[need] + NEED_DECAY_PER_HOUR[need] * rate * seconds / 3600;
+      // The epsilon keeps many small settlements equal to one large one despite float rounding.
+      const whole = Math.floor(total + 1e-9);
+      state.decay[need] = Math.max(0, total - whole);
+      if (whole > 0 && state.needs[need] > DECAY_FLOOR) state.needs[need] = Math.max(DECAY_FLOOR, state.needs[need] - whole);
+    }
+    const now = finite(ctx?.now) ? ctx.now : state.t;
+    if (state.moodlets.some((moodlet) => moodlet.expiresAt !== null && moodlet.expiresAt <= now)) {
+      state.moodlets = state.moodlets.filter((moodlet) => moodlet.expiresAt === null || moodlet.expiresAt > now);
+    }
+  },
+} satisfies Pick<SystemDefinition<'needs'>, 'actions' | 'advance'> : LEFT_OUT;
+
 export default {
   id: 'needs',
   stateKeys: ['needs', 'decay', 'moodlets'],
@@ -101,21 +125,6 @@ export default {
       .filter((moodlet): moodlet is Record<string, unknown> & { id: string; value: number; expiresAt: number | null } => isRecord(moodlet) && isId(moodlet.id) && finite(moodlet.value) && (moodlet.expiresAt === null || finite(moodlet.expiresAt)))
       .map((moodlet) => ({ id: moodlet.id, label: cleanText(moodlet.label, 40, moodlet.id), value: clamp(Math.round(moodlet.value), -100, 100), expiresAt: moodlet.expiresAt }));
   },
-  actions: {},
-  advance(state, dt, ctx) {
-    const seconds = Math.min(dt, OFFLINE_DECAY_CAP_SECONDS);
-    for (const need of NEEDS) {
-      const rate = Math.max(0, modify(state, 'needs.decayRate', 1, { need }, ctx));
-      const total = state.decay[need] + NEED_DECAY_PER_HOUR[need] * rate * seconds / 3600;
-      // The epsilon keeps many small settlements equal to one large one despite float rounding.
-      const whole = Math.floor(total + 1e-9);
-      state.decay[need] = Math.max(0, total - whole);
-      if (whole > 0 && state.needs[need] > DECAY_FLOOR) state.needs[need] = Math.max(DECAY_FLOOR, state.needs[need] - whole);
-    }
-    const now = finite(ctx?.now) ? ctx.now : state.t;
-    if (state.moodlets.some((moodlet) => moodlet.expiresAt !== null && moodlet.expiresAt <= now)) {
-      state.moodlets = state.moodlets.filter((moodlet) => moodlet.expiresAt === null || moodlet.expiresAt > now);
-    }
-  },
   view(state) { return { order: NEEDS, low: LOW_NEED, mood: moodOf(state), feelings: feelingsOf(state) }; },
+  ...play,
 } satisfies SystemDefinition<'needs'>;

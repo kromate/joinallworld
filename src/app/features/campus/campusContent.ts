@@ -3,6 +3,8 @@
 import type { CampusClubDefinition, CampusJobDefinition, HostelHallId, HostelStorageItemId, LectureSlot, LectureSlotId, ProgrammeDefinition, ProgrammeId, ShuttleStopId, TrailStopDefinition } from '../../../types/campus.ts'
 import type { SpotDefinition } from '../../../types/content.ts'
 import { DISCOVERY_TRAIL as trail, spots as landmarks } from '../../../campus/unilag/content.ts'
+// The Campus app reads the campus views: its chunk brings the campus rules and registers them (a life that does not use the campus has only stand-ins).
+import '../../../campus/unilag/register.ts'
 import { LECTURE_SLOTS as slots, PROGRAMMES as programmes } from '../../../campus/unilag/curriculum.ts'
 import { CAMPUS_CLUBS as clubs, CAMPUS_DISCOVERIES as discoveries } from '../../../campus/unilag/games.ts'
 import { CAMPUS_JOBS as jobs, HOSTEL_HALLS as halls, HOSTEL_STORAGE_ITEMS as storage } from '../../../campus/unilag/student.ts'

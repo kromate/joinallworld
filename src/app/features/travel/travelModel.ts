@@ -182,7 +182,7 @@ export const LAYERS: readonly MapLayer[] = [
 ]
 export const DATA_LAYERS: readonly MapLayer[] = LAYERS.filter((item) => item.path)
 export type LayerState = Record<LayerId, boolean>
-export const initialLayers = (): LayerState => ({ lgas: true, homes: true, moving: false, billboards: false, sea: false, gov: false })
+export { initialLayers } from './travelLayers.ts'
 
 /** Does this place pass the filter? Coming-soon places never do. */
 export const matchesFilter = (item: Pick<TravelDestination, 'kind' | 'open' | 'category'>, filter: string): boolean =>

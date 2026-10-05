@@ -100,6 +100,8 @@ button.m3-house{cursor:pointer}
 
 /* ---- local governments and houses ------------------------------------------------------------ */
 .m3-lga { position: absolute; left: 0; top: 0; z-index: 1; display: grid; justify-items: center; gap: 1px; padding: 3px 9px 4px; border: 1px solid rgba(20, 83, 45, .28); border-radius: 9px; background: rgba(255, 255, 255, .78); color: #1f3d2c; font: 800 11px/1.1 var(--font, system-ui, sans-serif); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; cursor: pointer; pointer-events: auto; backdrop-filter: blur(2px); }
+.m3-lga.is-sized { background: rgba(255, 255, 255, .6); border-color: transparent; padding: .25em .6em .3em; letter-spacing: .14em; box-shadow: 0 1px 6px rgba(20, 60, 40, .18); }
+.m3-lga.is-sized.is-own { background: #14532d; }
 .m3-lga small { font-weight: 700; font-size: 9.5px; letter-spacing: .02em; text-transform: none; color: #4a6152; }
 .m3-lga small:empty { display: none; }
 .m3-lga.is-own { background: #14532d; color: #fff; border-color: #14532d; }
@@ -120,3 +122,15 @@ button.m3-house{cursor:pointer}
 .m3.m3-flat { background: #4faacb; }
 .m3-flat .m3-label::after { height: 7px; }
 .m3-flat.is-far .m3-flat-names text { opacity: .75; }
+
+/* The flat map's strokes: a route is a few pixels wide at every zoom; far out, the roads keep a minimum width and the small names step aside. */
+.m3-flat-trip path { vector-effect: non-scaling-stroke; }
+.m3-flat-trip [data-trip] { stroke-width: 5px; }
+.m3-flat-trip [data-trip-top] { stroke-width: 2.6px; }
+.m3-flat.is-whole .m3-flat-roads path { vector-effect: non-scaling-stroke; }
+.m3-flat.is-whole [data-ink="parapet"] path { stroke-width: 3px; }
+.m3-flat.is-whole [data-ink="kerb"] path { stroke-width: 2.4px; }
+.m3-flat.is-whole [data-ink="asphalt"] path { stroke-width: 1.4px; }
+.m3-flat.is-whole [data-ink="dash"] { display: none; }
+.m3-flat.is-whole .m3-flat-names { display: none; }
+.m3-flat-lgas path { vector-effect: non-scaling-stroke; stroke-width: 1px; }

@@ -147,7 +147,7 @@ const WORLD = 0, AFRICA = 1, NIGERIA = 2;
 /** Camera tilt per level, radians above the horizon: flat-on for the world, leaning in over Nigeria. */
 const PITCHES: readonly number[] = [1.5, 1.44, 1.04];
 const FADE = 0.36;
-const HEIGHT = { around: 0.03, state: 0.2, open: 0.42, country: 0.45, openCountry: 0.95 };
+const HEIGHT = { around: 0.02, state: 0.08, open: 0.13, country: 0.45, openCountry: 0.95 };
 const INK = {
   base: ['#d9ddd6', '#d3d8d1', '#dee2dc'], none: '#e9ece7', around: '#d6dad3',
   soon: ['#c3c9c4', '#cbd0cb', '#bcc3be'], planned: '#d6ceb0', open: '#2fa866', openCountry: '#52b679',
@@ -317,7 +317,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const y = HEIGHT.state + 0.006;
     const rivers = data.WATER.rivers.flatMap((river) => river.lines.map((line) => ({ colour: INK.water, width: river.name === 'Niger' ? 3 : 2.4, points: Array.from({ length: line.length / 2 }, (_, i) => spot(line[i * 2]!, line[i * 2 + 1]!, y)) })));
     const lakes = data.WATER.lakes.map((lake, index) => ({ id: lake.name, index, rings: [[Float64Array.from(lake.ring)]] }));
-    const lakeMesh = mesh.plates(lakes, { height: () => y, colour: () => INK.water, walls: false });
+    // A lagoon inside an open state sits on that state's lifted plate; the other lakes lie on the ordinary land.
+    const lakeMesh = mesh.plates(lakes, { height: (lake) => (/lagoon/i.test(lake.id) ? HEIGHT.open + 0.006 : y), colour: () => INK.water, walls: false });
     addLayer(new THREE.Mesh(lakeMesh.geometry, flatMaterial()), [NIGERIA], { extrude: true });
     // Roads and flights between cities, in one mesh.
     const seen = new Set(), roads = [];

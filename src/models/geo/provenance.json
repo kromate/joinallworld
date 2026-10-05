@@ -36,18 +36,59 @@
       "sha256": "4d9e1b8a6d305ee2b2bbeeeb4dd6ec3cc52e44884f0f6065d14d255810f9eae4",
       "bytes": 861584,
       "license": "geoBoundaries gbOpen CC BY 4.0 collection; source metadata Public Domain"
+    },
+    "nigeria-states-adm1": {
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM1/geoBoundaries-NGA-ADM1.geojson",
+      "sha256": "64fa218ac3d453cc1e66412ff461c5dfa1a4a1ade0da93b239a9891b587d28f9",
+      "bytes": 2289696,
+      "license": "CC BY 4.0",
+      "boundaryID": "NGA-ADM1-27671186",
+      "release": "9469f09",
+      "year": 2022,
+      "originalSource": "GRID3",
+      "retrieved": "2026-10-05"
+    },
+    "nigeria-lgas-adm2": {
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/NGA/ADM2/geoBoundaries-NGA-ADM2.geojson",
+      "sha256": "bef7f2cfa45e012f4772eaa61c7b99e5188aeba4d5c6badae7e9f9aae8c02fcd",
+      "bytes": 9422551,
+      "license": "CC BY 4.0",
+      "boundaryID": "NGA-ADM2-59680162",
+      "release": "9469f09",
+      "year": 2022,
+      "originalSource": "GRID3",
+      "retrieved": "2026-10-05"
     }
   },
   "attribution": {
     "Natural Earth": "Made with Natural Earth. https://www.naturalearthdata.com/about/terms-of-use/",
     "Kenya": "geoBoundaries, William & Mary geoLab, RCMRD GeoPortal / Africa GeoPortal; KEN-ADM1-32016919, year2020, release9469f09. Simplified, rounded, and converted to ES module by Allworld. CC BY4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/KEN/ADM1/. User approved attributed dataset exception on2026-10-04.",
     "Capital supplement": "Wikidata structured data CC0; Q1024647, Q1061665, Q304976, Q648749. https://www.wikidata.org/wiki/Wikidata:Licensing",
-    "Airports": "OurAirports public-domain data; selected coordinates retained in sources/airports.json with original source hash. https://ourairports.com/data/"
+    "Airports": "OurAirports public-domain data; selected coordinates retained in sources/airports.json with original source hash. https://ourairports.com/data/",
+    "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/"
   },
   "limitations": [
     "Roads are original schematic travel corridors joining city coordinates, not surveyed highway alignments.",
     "Small islands are simplified; largest polygon retained and minor secondary islands omitted at small map scale.",
     "Shared collinear border segments are noded before canonical chain simplification; input is expected to be valid administrative coverage.",
-    "Natural Earth de facto disputed boundaries remain source representations, not a sovereignty endorsement."
-  ]
+    "Natural Earth de facto disputed boundaries remain source representations, not a sovereignty endorsement.",
+    "Lagos State's local governments are land only: the Lagos Lagoon and the Lekki Lagoon are gaps, not polygons. The lagoon is derived and is accurate to the raster size (about 22 m)."
+  ],
+  "derived": {
+    "lagos-lagoon": {
+      "inputs": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2"
+      ],
+      "method": "Lagos State (ADM1, includes the lagoon) minus the union of the 20 Lagos local governments (ADM2, land only), traced from a 0.0002 degree raster, pieces under 0.5 km2 and land islands under 0.05 km2 dropped, then simplified once with Visvalingam-Whyatt",
+      "outputs": [
+        "src/map3d/geo/data/lagos.ts (feature 'lagoon')",
+        "src/map3d/geo/data/nigeria.ts (lakes 'Lagos Lagoon')"
+      ],
+      "generator": "scripts/geo/build-boundaries.ts (npm run geo:boundaries)"
+    }
+  },
+  "processing": {
+    "nigeria-and-lagos-boundaries": "scripts/geo/build-boundaries.ts caches the two files in .cache/geo, verifies the sha256 and byte count, builds shared-arc topology so a border two regions share is one arc, simplifies each arc once (Visvalingam-Whyatt, effective area in square map units of the Nigeria frame, 1 unit = 100 m) and quantises it (lagos.ts 0.0002 degrees, nigeria.ts 0.001 degrees). Tolerances are recorded in each data file's header."
+  }
 }

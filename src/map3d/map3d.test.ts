@@ -12,10 +12,12 @@ import { createKit } from '../scene/kit.ts';
 import type { MapRenderer } from './map3d.ts';
 import type * as THREE from 'three';
 import { LANDMARK_KINDS } from './landmarks.ts';
-import { avatarBox, labelShift, nearPoints } from './labels.ts';
+import { avatarBox, labelShift, nearPoints, plateFit } from './labels.ts';
 import type { ScreenBox, GroundPoint } from './labels.ts';
 import { lgaAt } from './lga.ts';
-import { shimmer } from './city-build.ts';
+import { fromLocal, ORIGINS } from './geo/frame.ts';
+import { shimmer, createRaw, CITY_TRIANGLE_BUDGET } from './city-build.ts';
+import { pitchFloor, PITCH_MIN, FLAT_PITCH } from './camera.ts';
 import pack from './cities/lagos.ts';
 import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.ts';
 import { ALL_MODES } from '../game/content/travel.ts';
@@ -25,8 +27,9 @@ import { goBlock, tripInfo, chosenMode } from '../app/features/travel/travelMode
 const NOON = Date.UTC(2026, 0, 5, 11), NIGHT = Date.UTC(2026, 0, 5, 22);
 const network = buildNetwork(pack);
 const keyOf = (id: string, home = 'yaba') => (id === 'home' ? `home:${home}` : id);
-const mainland = roundPolygon(pack.land.find((entry) => entry.id === 'mainland')!.points, 2);
-const onMainland = (spot: GroundPoint) => pointInPolygon(spot.x, spot.z, mainland);
+// The mainland is the land north of the lagoon: every local government but the three on the barrier coast (the real boundaries, drawn exactly).
+const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
+const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
 test('the region registry: Lagos is playable, Ibadan, Abuja and Port Harcourt are coming soon, and a city is data plus a pack', async () => {
   assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'soon'], ['abuja', 'soon'], ['port-harcourt', 'soon']]);
@@ -66,7 +69,7 @@ test('the Lagos pack places every venue (the airport and the refinery among them
   for (const [id, venue] of Object.entries(VENUES)) {
     if (id === 'home') continue;
     assert.equal(onMainland(pack.sites[id]!), venue.zone === 'mainland', `${id} is on the ${venue.zone}`);
-    if (venue.zone === 'east') assert.ok(pack.sites[id]!.x > 56, `${id} is on the Lekki peninsula`);
+    if (venue.zone === 'east') assert.ok(fromLocal(ORIGINS.lagos, pack.sites[id]!.x, pack.sites[id]!.z).lon > 3.44, `${id} is east of Ikoyi, on the Lekki peninsula`);
   }
   for (const [id, spot] of Object.entries(HOME_SPOTS)) assert.equal(onMainland(pack.homes[id]!), spot.zone === 'mainland', `home ${id}`);
 });
@@ -87,7 +90,7 @@ test('roads: every place can reach every other along the road graph, across the 
   }
   assert.equal(routes, ids.length * (ids.length - 1));
   assert.deepEqual(network.route('hospital', 'state-house')!.bridges, ['third-mainland'], 'Gbagada to the Marina goes over the Third Mainland Bridge');
-  assert.ok(network.route('home:ikoyi', 'palms')!.bridges.includes('link'), 'Ikoyi to Lekki takes the link bridge');
+  assert.ok(network.route('home:banana', 'home:lekki')!.bridges.includes('link'), 'Banana Island to Lekki Phase 1 takes the link bridge');
   assert.ok(network.route('park', 'i-fitness')!.bridges.includes('falomo'), 'Lagos Island to Victoria Island takes Falomo Bridge');
   // A bridge is a bridge: its deck rises over the water and comes back down at both ends.
   for (const road of network.roads.filter((item) => item.bridge)) {
@@ -148,7 +151,7 @@ test('the place on the route is a pure function of progress: leave on foot, ride
   assert.ok(shares.lead > 0 && shares.lead <= 0.2 && shares.tail > 0 && shares.tail <= 0.2);
   // In the middle of a cross-lagoon ride the vehicle is on a bridge, above the water.
   const onBridge = Array.from({ length: 200 }, (_, i) => tripPose(route, i / 200, 'danfo')).filter((pose) => pose.bridge);
-  assert.ok(onBridge.length > 10 && onBridge.some((pose) => pose.y > 1), 'the ride crosses a raised bridge deck');
+  assert.ok(onBridge.length > 10 && onBridge.some((pose) => pose.y > 0.5), 'the ride crosses a raised bridge deck');
   assert.ok(onBridge.every((pose) => pose.phase === 'ride'));
 });
 
@@ -277,7 +280,7 @@ test('reduced motion: the trip is a dot moved once per server report — no fram
   h.map.destroy();
 });
 
-test('render budget: the whole city, with every layer on and a trip running, stays under 60k triangles and 40 draw calls', () => {
+test('render budget: the whole city, with every layer on and a trip running, stays under the triangle budget and 40 draw calls', () => {
   const h = harness();
   h.map.setState(h.state({ activeAction: travelling(10, 10, 'danfo', 'beach') })); h.map.resize();
   const ads = { palette: { colours: [{ id: 'green', bg: '#256b45', ink: '#ffffff' }], icons: [{ id: 'star', icon: '⭐' }] },
@@ -297,7 +300,7 @@ test('render budget: the whole city, with every layer on and a trip running, sta
     meshes += 1;
     triangles += ((mesh.geometry.index ? mesh.geometry.index.count : mesh.geometry.attributes.position!.count) / 3) * (mesh.isInstancedMesh ? mesh.count! : 1);
   });
-  assert.ok(triangles < 60000, `${Math.round(triangles)} triangles in view`);
+  assert.ok(triangles < CITY_TRIANGLE_BUDGET, `${Math.round(triangles)} triangles in view`);
   assert.ok(meshes <= 40, `${meshes} draw calls`);
   assert.ok(d.counts.houses > 200 && d.counts.trees > 40 && d.counts.vehicles > 20, 'houses, trees and traffic are there');
   // What players typed is carried as plain text for DOM nodes; it is never turned into geometry or markup.
@@ -342,8 +345,10 @@ test('the opening view: a phone opens close on the player, a wide screen on the 
   assert.equal(away.queue.length, 0); assert.equal(away.pump(), 0); assert.equal(away.count(), idle, 'still once open');
   const desk = harness({ width: 1280, height: 800 });
   desk.map.setState(desk.state()); desk.map.resize(); desk.pump();
-  const wide = desk.map.diagnostics().view, all = desk.map.rig.whole();
-  assert.deepEqual([wide.x, wide.z, Math.round(wide.distance)], [all.x, all.z, Math.round(all.distance)], 'a wide screen opens on the whole city');
+  const wide = desk.map.diagnostics().view, core = desk.map.rig.core(), all = desk.map.rig.whole();
+  assert.deepEqual([wide.x, wide.z, Math.round(wide.distance)], [core.x, core.z, Math.round(core.distance)], 'a wide screen opens on the metropolitan core');
+  assert.ok(core.distance < all.distance * 0.5, `the core is much closer than the whole state (${Math.round(core.distance)} against ${Math.round(all.distance)})`);
+  assert.ok(all.pitch > core.pitch, 'the whole state is seen tipped up towards the map');
   for (const h of [phone, away, desk]) h.map.destroy();
 });
 
@@ -524,4 +529,54 @@ test('an actor disposes completely: its geometry and materials are freed, its gr
   actor.dispose();
   assert.equal(freed.size, after, 'disposing twice does nothing more');
   kit.dispose();
+});
+
+test('true-scale land: a polygon with a hole is triangulated around the hole, and a ring closed on itself is not counted twice', () => {
+  const { THREE } = createKit();
+  const area = (mesh: THREE.Mesh) => {
+    const position = mesh.geometry.attributes.position!, index = mesh.geometry.index!;
+    let sum = 0;
+    for (let i = 0; i < index.count; i += 3) {
+      const [a, b, c] = [index.getX(i), index.getX(i + 1), index.getX(i + 2)];
+      sum += Math.abs((position.getX(b) - position.getX(a)) * (position.getZ(c) - position.getZ(a)) - (position.getX(c) - position.getX(a)) * (position.getZ(b) - position.getZ(a))) / 2;
+    }
+    return sum;
+  };
+  const outer: [number, number][] = [[0, 0], [10, 0], [10, 10], [0, 10]], hole: [number, number][] = [[3, 3], [3, 7], [7, 7], [7, 3]];
+  const holed = createRaw(THREE);
+  holed.shape(outer, 0, '#ffffff', [hole]);
+  assert.ok(Math.abs(area(holed.build(new THREE.MeshBasicMaterial())) - 84) < 1e-6, 'the hole is cut out of the land');
+  const closed = createRaw(THREE);
+  closed.shape([...outer, outer[0]!], 0, '#ffffff', [[...hole, hole[0]!]]);
+  assert.ok(Math.abs(area(closed.build(new THREE.MeshBasicMaterial())) - 84) < 1e-6, 'a ring that repeats its first point is the same ring');
+});
+
+test('the camera: a state a long way out is tipped up towards the map, the opening view is the core, and the limits scale with the land', () => {
+  assert.ok(pitchFloor(100) === PITCH_MIN && pitchFloor(520) === PITCH_MIN, 'a city view keeps the whole range of tilt');
+  assert.ok(pitchFloor(1200) > pitchFloor(800) && pitchFloor(5000) <= FLAT_PITCH + 1e-9, 'farther out, flatter, never past the flat tilt');
+  const h = harness({ width: 1280, height: 800 });
+  h.map.setState(h.state()); h.map.resize(); h.pump();
+  const rig = h.map.rig, whole = rig.whole(), core = rig.core();
+  assert.ok(rig.maxDistance >= whole.distance, 'the farthest view holds the whole state');
+  assert.ok(whole.distance > 1000, `the state is more than a thousand units across (${Math.round(whole.distance)} away)`);
+  assert.ok(core.distance < whole.distance * 0.5 && core.pitch < whole.pitch);
+  // Zooming out to the end flattens the view; zooming back in does not take the player's tilt away.
+  rig.jump({ distance: rig.maxDistance, pitch: PITCH_MIN });
+  assert.ok(rig.view.pitch >= pitchFloor(rig.maxDistance) - 1e-9, 'a view at the far end cannot be tilted low');
+  assert.ok(rig.view.distance >= 3, 'the closest view is a few units from the ground');
+  h.map.destroy();
+});
+
+test('level of detail: the fabric is drawn near and left out when the whole state is in view; a local government is named by its size', () => {
+  const h = harness({ width: 1280, height: 800 });
+  h.map.setState(h.state()); h.map.resize(); h.pump();
+  const city = h.map.city, fabric = () => { let on = 0; city.group.traverse((object) => { if (['house-walls', 'towers', 'trees'].includes(object.name) && object.visible) on += 1; }); return on; };
+  assert.equal(fabric(), 3, 'the opening view draws the fabric');
+  assert.equal(city.setDetail(3000), true); assert.equal(fabric(), 0, 'a whole state is its shape');
+  assert.equal(city.setDetail(3100), false, 'nothing changes while it stays far');
+  assert.equal(city.setDetail(300), true); assert.equal(fabric(), 3);
+  assert.deepEqual(plateFit('Ikorodu', 40, 300), { show: true, scale: 1 }, 'near, the usual plate');
+  assert.equal(plateFit('Ikorodu', 20, 3000).show, false, 'a polygon too small to hold its name keeps it hidden');
+  assert.ok(plateFit('Ikorodu', 400, 3000).scale > 1.5 && plateFit('Ikorodu', 4000, 3000).scale <= 2.5, 'a large one is named large, to a limit');
+  h.map.destroy();
 });

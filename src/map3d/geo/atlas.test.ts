@@ -74,7 +74,11 @@ test('the data modules are small, say where they came from, and decode from thei
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
     assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
   }
-  assert.deepEqual(readdirSync(here('./data/')).sort(), Object.keys(limits).sort());
+  // The Lagos shapes are a separate lazy chunk, built from geoBoundaries (CC BY 4.0), not Natural Earth.
+  const lagosText = readFileSync(here('./data/lagos.ts'), 'utf8');
+  assert.ok(statSync(here('./data/lagos.ts')).size <= 60000);
+  assert.match(lagosText, /geoBoundaries/); assert.match(lagosText, /CC BY 4\.0/); assert.match(lagosText, /Visvalingam/);
+  assert.deepEqual(readdirSync(here('./data/')).sort(), [...Object.keys(limits), 'lagos.ts'].sort());
   const values = [0, 1, -1, 31, 32, -33, 1024, -99999, 1234567];
   assert.deepEqual(decodeInts(encodeInts(values)), values);
   const arc = [[100, 200], [101, 198], [90, 260]] satisfies [number, number][];

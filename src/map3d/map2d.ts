@@ -28,6 +28,7 @@ import { buildNetwork, pointAt } from './roads.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
+import { plateFit, plateWidth, spanOf } from './labels.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
 import type { VenueDefinition } from '../types/index.ts';
@@ -112,7 +113,7 @@ export interface Map2D {
   destroy(): void;
 }
 
-const DRAG_START = 6, MAX_SCALE = 150, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
+const DRAG_START = 6, MAX_SCALE = 150, WHOLE_SCALE = 1.9, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
 const ICON = (path: string) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 let hintSeen = false;
@@ -130,7 +131,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
 
   const root = document.createElement('div');
   root.className = 'm3 m3-flat';
-  root.innerHTML = `<div class="m3-flat-world">${flatSvg(model)}<svg class="m3-flat-trip" viewBox="${box.x} ${box.z} ${box.width} ${box.height}" preserveAspectRatio="none" aria-hidden="true"><path data-trip fill="none" stroke="#14532d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path data-trip-top fill="none" stroke="#ffd166" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  root.innerHTML = `<div class="m3-flat-world">${flatSvg(model)}<svg class="m3-flat-trip" viewBox="${box.x} ${box.z} ${box.width} ${box.height}" preserveAspectRatio="none" aria-hidden="true"><path data-trip fill="none" stroke="#14532d" stroke-linecap="round" stroke-linejoin="round"/><path data-trip-top fill="none" stroke="#ffd166" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <canvas class="m3-flat-houses" aria-hidden="true"></canvas>
     <div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
     <div class="m3-controls" role="group" aria-label="Map view"><div class="m3-zoom"><button type="button" data-m3="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-m3="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div><div class="m3-go"><button type="button" class="m3-pill" data-m3="fit" aria-label="Show the whole city" title="Show the whole city">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span>Whole city</span></button><button type="button" class="m3-pill m3-me" data-m3="me" aria-label="Show where you are" title="Show where you are">${ICON('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')}<span>Find me</span></button></div></div>
@@ -143,7 +144,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   // ---- places, plates and tags: the 3D map's own markup, so the styles are literally shared -------
   const homeSpot = (): Spot => { const e = state?.estate; if (e?.living === 'own' && e.plot && pack.lgas?.some((lga) => lga.id === e.plot!.lga)) return { ...estateLayout(pack, e.plot.lga)!.plot(e.plot.estate, e.plot.plot), district: pack.lgas.find((lga) => lga.id === e.plot!.lga)!.name, own: true }; return model.homes[state?.travel?.home as string] ?? Object.values(model.homes)[0]!; };
   const places = [...model.places, { id: 'home', kind: 'home', x: 0, z: 0 }].sort((a, b) => a.x - b.x || a.z - b.z);
-  const labels = new Map<string, { node: HTMLButtonElement, name: HTMLElement, note: HTMLElement, place: { id: string, kind: string, x: number, z: number }, width: number, height: number, priority: number }>(), plates = new Map<string, { node: HTMLButtonElement, note: HTMLElement, lga: PackLga }>(), tags: HTMLDivElement[] = [], chips = new Map<string, { node: HTMLDivElement, chip: Chip }>();
+  const labels = new Map<string, { node: HTMLButtonElement, name: HTMLElement, note: HTMLElement, place: { id: string, kind: string, x: number, z: number }, width: number, height: number, priority: number }>(), plates = new Map<string, { node: HTMLButtonElement, note: HTMLElement, lga: PackLga, span: ReturnType<typeof spanOf>, scale: number }>(), tags: HTMLDivElement[] = [], chips = new Map<string, { node: HTMLDivElement, chip: Chip }>();
   for (const place of places) {
     const source = VENUE_TABLE[place.id] || SOON_TABLE[place.id];
     const node = document.createElement('button');
@@ -159,7 +160,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     node.type = 'button'; node.className = 'm3-lga'; node.dataset.lga = lga.id;
     const name = document.createElement('b'), note = document.createElement('small');
     name.textContent = lga.name; node.append(name, note); labelLayer.append(node);
-    plates.set(lga.id, { node, note, lga });
+    plates.set(lga.id, { node, note, lga, span: spanOf(lga.polygon), scale: 1 });
   }
   for (let i = 0; i < 14; i++) { const node = document.createElement('div'); node.className = 'm3-tag'; node.hidden = true; node.setAttribute('aria-hidden', 'true'); labelLayer.append(node); tags.push(node); }
   const you = document.createElement('div');
@@ -302,11 +303,23 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   const free = () => ({ width: Math.max(80, size.width - insets.left - insets.right), height: Math.max(80, size.height - insets.top - insets.bottom) });
   const fitScale = () => Math.min(free().width / (fit.maxX - fit.minX), free().height / (fit.maxZ - fit.minZ));
   function centreOn(x: number, z: number) { const area = free(); ox = insets.left + area.width / 2 - (x - box.x) * scale; oy = insets.top + area.height / 2 - (z - box.z) * scale; }
-  function whole() { scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2); userMoved = false; }
+  /** Which view a resize returns to while the player has not moved the map: the core (the opening view) until "Whole city" is pressed. */
+  let home: 'core' | 'whole' = 'core';
+  const homeView = () => (home === 'whole' ? whole() : core());
+  function whole() { home = 'whole'; scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2); userMoved = false; }
+  /** The opening view of a wide screen: the metropolitan core, where the venues are (the whole city when the pack names no core). */
+  function core() {
+    const area = pack.core;
+    home = 'core';
+    if (!area) { whole(); return; }
+    const next = Math.min(free().width / (area.maxX - area.minX), free().height / (area.maxZ - area.minZ));
+    if (next <= fitScale()) { whole(); return; }
+    scale = next; centreOn((area.minX + area.maxX) / 2, (area.minZ + area.maxZ) / 2); userMoved = false;
+  }
   function near(at: { x: number, z: number }) { scale = Math.max(fitScale(), free().width / 58); centreOn(at.x, at.z); }
   /** A view kept before a reload, applied when the map first opens. */
   let pendingView: { scale: number; x: number; y: number } | null = null;
-  function open() { opened = true; userMoved = false; if (pendingView) { scale = pendingView.scale; ox = pendingView.x; oy = pendingView.y; pendingView = null; userMoved = true; return; } if (size.width > 720) whole(); else near(spotOf(state?.location) || homeSpot()); }
+  function open() { opened = true; userMoved = false; if (pendingView) { scale = pendingView.scale; ox = pendingView.x; oy = pendingView.y; pendingView = null; userMoved = true; return; } if (size.width > 720) core(); else near(spotOf(state?.location) || homeSpot()); }
   function apply() {
     if (!scale) return;
     scale = clamp(scale, fitScale() * 0.8, MAX_SCALE);
@@ -316,14 +329,14 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     oy = clamp(oy, insets.top + keepY - (Math.max(fit.maxZ, model.sea ? model.sea.z1 : fit.maxZ) - box.z) * scale, insets.top + area.height - keepY - (fit.minZ - box.z) * scale);
     worldNode.style.width = `${box.width * scale}px`; worldNode.style.height = `${box.height * scale}px`;
     worldNode.style.transform = `translate(${Math.round(ox)}px,${Math.round(oy)}px)`;
-    const far = scale < 3.2;
-    root.classList.toggle('is-far', far);
+    const far = scale < 3.2, wholeView = scale < fitScale() * WHOLE_SCALE;
+    root.classList.toggle('is-far', far); root.classList.toggle('is-whole', wholeView);
     lgaArt.style.display = layers.lgas ? '' : 'none';
-    placeLabels(far);
+    placeLabels(far, wholeView);
     drawHouses();
   }
-  function placeLabels(far: boolean) {
-    const entries = [...labels.values()].map((label) => { const spot = spotOf(label.place.id)!; const at = project(spot.x, spot.z - (label.place.id === 'home' && homeAt!.own ? 0 : 2.2)); return { label, at, visible: at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 }; });
+  function placeLabels(far: boolean, wholeView: boolean) {
+    const entries = [...labels.values()].map((label) => { const spot = spotOf(label.place.id)!; const at = project(spot.x, spot.z - (label.place.id === 'home' && homeAt!.own ? 0 : 2.2)); return { label, at, visible: at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) }; });
     entries.sort((p, q) => q.label.priority - p.label.priority || q.at.y - p.at.y);
     const taken: { l: number, r: number, t: number, b: number }[] = [], hits = (rect: { l: number, r: number, t: number, b: number }) => taken.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t);
     for (const { label, at, visible } of entries) {
@@ -335,10 +348,18 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       node.classList.toggle('is-compact', compact);
       node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
     }
-    for (const { node, lga } of plates.values()) {
-      const at = project(lga.plate[0], lga.plate[1]), visible = layers.lgas && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26;
+    // Level of detail: a whole-state view names the local governments by their size; nearer, the usual small plates, out of the way of the place names.
+    const platesAt: { l: number, r: number, t: number, b: number }[] = [];
+    for (const plate of [...plates.values()].sort((p, q) => (q.span.maxX - q.span.minX) - (p.span.maxX - p.span.minX))) {
+      const { node, lga } = plate, at = project(lga.plate[0], lga.plate[1]), distance = wholeView ? 1000 : 0;
+      const fit = plateFit(lga.name, (plate.span.maxX - plate.span.minX) * scale, distance);
+      const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, rect = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
+      const visible = layers.lgas && fit.show && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26 && !platesAt.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t) && !(!wholeView && hits(rect));
       if (node.hidden === visible) node.hidden = !visible;
-      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
+      if (!visible) continue;
+      platesAt.push(rect);
+      if (fit.scale !== plate.scale) { plate.scale = fit.scale; node.style.fontSize = fit.scale > 1 ? `${(11 * fit.scale).toFixed(1)}px` : ''; node.classList.toggle('is-sized', fit.scale > 1); }
+      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
     }
     for (const { node, chip } of chips.values()) {
       const at = project(chip.x, chip.z), visible = at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && chip.kind === 'board-free');
@@ -380,7 +401,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     const done = clamp(1 - active!.remaining / (active!.duration || 1), 0, 1), spot = pointAt(tripRoute, tripRoute.length * done), at = project(spot.x, spot.z);
     you.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
   }
-  function layout() { if (!measure()) return false; if (!opened) open(); else if (!userMoved && size.width > 720 && !isDeparting(state)) whole(); apply(); return true; }
+  function layout() { if (!measure()) return false; if (!opened) open(); else if (!userMoved && size.width > 720 && !isDeparting(state)) homeView(); apply(); return true; }
   function zoomAt(factor: number, px: number, py: number) {
     const before = ground(px, py);
     scale = clamp(scale * factor, fitScale() * 0.8, MAX_SCALE);
@@ -487,7 +508,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     updateLabels(); syncChips();
     if (!measure()) return;
     if (!opened) open();
-    else if (detail.layout && !userMoved && size.width > 720) whole();
+    else if (detail.layout && !userMoved && size.width > 720) homeView();
     if (selected && (picked || detail.layout)) { const spot = spotOf(selected)!, at = project(spot.x, spot.z); if (at.x < insets.left + 60 || at.x > size.width - insets.right - 60 || at.y < insets.top + 70 || at.y > size.height - insets.bottom - 40) centreOn(spot.x, spot.z); }
     if (layers.sea && seaWasOff && model.sea) { scale = Math.max(scale, free().width / (model.sea.x1 - model.sea.x0 + 20)); centreOn((model.sea.x0 + model.sea.x1) / 2, (model.sea.z0 + model.sea.z1) / 2 - 6); userMoved = true; }
     apply();

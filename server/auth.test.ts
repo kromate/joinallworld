@@ -271,6 +271,9 @@ test('a socket opened under a session that was signed out, moved or signed out e
   const laptopSocket = await a.f.socket(laptop), phoneSocket = await a.f.socket(phone);
   phoneSocket.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' }));
   assert.equal((await phoneSocket.next()).type, 'presence', 'a signed-in device joins rooms as the character');
+  // One character, two devices: when the laptop sends the character away, the phone's room is revoked too.
+  assert.equal((await a.f.action(laptop.cookie, { type: 'travel', id: 'library', mode: 'trek' })).ok, true);
+  assert.equal((await phoneSocket.next() as { code?: string }).code, 'venue_mismatch');
   const closedPhone = once(phoneSocket.ws, 'close');
   await a.change('/api/account/sign-out-everywhere', {}, laptop.cookie);
   assert.equal((await closedPhone)[0], 4401);

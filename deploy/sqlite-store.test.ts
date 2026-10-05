@@ -124,3 +124,70 @@ test('SQLite: a collection that exists is an own property of the document, so th
  await f.store.transact(db=>{assert.equal(Object.hasOwn(db,'social'),true);assert.equal('social' in db,true);(collection(db,'social',{players:{}}) as Social).players['bola']={name:'Bola'};});
  assert.deepEqual(await f.store.read(db=>Object.keys((db['social'] as Social).players)),['ada','bola']);
 });
+
+// ---- accounts (server/accounts/service.ts): two tables beside the existing ones ----
+type AccountRow = { id: string; publicId: string | null; devices: string[] };
+type DeviceRow = { account: string; expiresAt: number };
+const accountsOf = (db: Draft): Record<string, AccountRow | undefined> => db['accounts'] as Record<string, AccountRow | undefined>;
+const devicesOf = (db: Draft): Record<string, DeviceRow | undefined> => db['accountDevices'] as Record<string, DeviceRow | undefined>;
+/** The tables exactly as a database made before accounts existed has them. */
+const TABLES_BEFORE_ACCOUNTS = [
+ 'CREATE TABLE sessions (secret TEXT PRIMARY KEY, public_id TEXT NOT NULL UNIQUE, expires_at INTEGER NOT NULL, value TEXT NOT NULL)',
+ 'CREATE TABLE archived_lives (public_id TEXT PRIMARY KEY, value TEXT NOT NULL)',
+ 'CREATE TABLE action_receipts (sender TEXT NOT NULL, action_id TEXT NOT NULL, action_at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,action_id))',
+ 'CREATE INDEX action_expiry ON action_receipts(action_at)',
+ 'CREATE TABLE once_receipts (sender TEXT NOT NULL, id TEXT NOT NULL, at INTEGER NOT NULL, kind TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,id))',
+ 'CREATE INDEX once_expiry ON once_receipts(at)',
+ 'CREATE TABLE collections (name TEXT PRIMARY KEY, value TEXT NOT NULL)',
+ 'CREATE TABLE collection_parts (name TEXT NOT NULL, part INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(name,part))',
+];
+test('SQLite: a database made before accounts existed gains the account tables empty; no existing table or row changes',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());
+ for(const statement of TABLES_BEFORE_ACCOUNTS)db.exec(statement);
+ const old=session();
+ db.prepare('INSERT INTO sessions VALUES(?,?,?,?)').run(old.secret,old.publicId,old.expiresAt,JSON.stringify({...old,actions:undefined,once:undefined}));
+ db.prepare('INSERT INTO action_receipts VALUES(?,?,?,?)').run(old.publicId,'1:a',1,JSON.stringify({actionAt:1,ok:true,code:'saved',fingerprint:'f'}));
+ db.prepare('INSERT INTO archived_lives VALUES(?,?)').run('gone',JSON.stringify({publicId:'gone',name:'Gone',cities:{},archivedAt:1}));
+ db.prepare('INSERT INTO collections VALUES(?,?)').run('social',JSON.stringify({players:{ada:{name:'Ada'}}}));
+ const schema=()=>(db.prepare("SELECT name,sql FROM sqlite_master WHERE tbl_name NOT LIKE 'account%' ORDER BY name").all() as {name:string;sql:string}[]).map(row=>`${row.name}:${row.sql}`);
+ const rows=()=>['sessions','archived_lives','action_receipts','once_receipts','collections','collection_parts'].map(table=>JSON.stringify(db.prepare(`SELECT * FROM ${table}`).all()));
+ const schemaBefore=schema(),rowsBefore=rows();
+ const store=open(storageOn(db));
+ assert.deepEqual(schema(),schemaBefore,'no existing table or index was altered');
+ assert.deepEqual(rows(),rowsBefore,'no existing row was touched by opening the store');
+ assert.deepEqual((db.prepare("SELECT name FROM sqlite_master WHERE name LIKE 'account%' ORDER BY name").all() as {name:string}[]).map(row=>row.name).filter(name=>!name.startsWith('sqlite_')),['account_devices','account_devices_account','accounts']);
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM accounts'),0);assert.equal(count(db,'SELECT COUNT(*) AS n FROM account_devices'),0);
+ // Everything that was there reads as before, and the new collections are there, empty.
+ assert.deepEqual(await store.read(d=>[life(d).cities.lagos.cash,life(d).actions['1:a']?.code,(d['social'] as {players:object}).players,Object.keys(accountsOf(d)),Object.keys(devicesOf(d)),accountsOf(d)['fb:nobody'],devicesOf(d)['nobody']]),[5000,'saved',{ada:{name:'Ada'}},[],[],undefined,undefined]);
+ // The first account is written beside the session it belongs to, in one transaction.
+ await store.transact(d=>{accountsOf(d)['fb:ada']={id:'fb:ada',publicId:old.publicId,devices:['cookie-1']};devicesOf(d)['cookie-1']={account:'fb:ada',expiresAt:99};life(d).cities.lagos.cash-=1;});
+ assert.deepEqual(db.prepare('SELECT id,public_id FROM accounts').all().map(row=>({...row})),[{id:'fb:ada',public_id:old.publicId}]);
+ assert.deepEqual(db.prepare('SELECT secret,account_id,expires_at FROM account_devices').all().map(row=>({...row})),[{secret:'cookie-1',account_id:'fb:ada',expires_at:99}]);
+ assert.deepEqual(schema(),schemaBefore);
+ // A second start finds what the first one wrote.
+ assert.deepEqual(await open(storageOn(db)).read(d=>[accountsOf(d)['fb:ada']?.devices,devicesOf(d)['cookie-1']?.account,life(d).cities.lagos.cash]),[['cookie-1'],'fb:ada',4999]);
+});
+test('SQLite: account rows are read by key, change and disappear with their transaction, and a failed commit keeps none',async t=>{
+ const f=fixture(t);await f.store.transact(db=>{put(db,'secret',session());});
+ await f.store.transact(db=>{accountsOf(db)['fb:ada']={id:'fb:ada',publicId:'public',devices:['c1','c2']};devicesOf(db)['c1']={account:'fb:ada',expiresAt:10};devicesOf(db)['c2']={account:'fb:ada',expiresAt:20};});
+ // A change inside a stored record is saved; an untouched one is not rewritten.
+ await f.store.transact(db=>{const device=devicesOf(db)['c1'];if(device)device.expiresAt=11;});
+ assert.deepEqual(f.db.prepare('SELECT secret,expires_at FROM account_devices ORDER BY secret').all().map(row=>({...row})),[{secret:'c1',expires_at:11},{secret:'c2',expires_at:20}]);
+ // A failed commit: the account change, the device removal and the session change are all undone together.
+ f.db.exec("CREATE TRIGGER fail_device BEFORE DELETE ON account_devices BEGIN SELECT RAISE(ABORT,'injected'); END");
+ await assert.rejects(f.store.transact(db=>{const account=accountsOf(db)['fb:ada'];if(account)account.devices=['c1'];delete devicesOf(db)['c2'];life(db).cities.lagos.cash=0;}),error=>codedError(error).code==='storage_unavailable');
+ f.db.exec('DROP TRIGGER fail_device');
+ assert.deepEqual(await f.store.read(db=>[accountsOf(db)['fb:ada']?.devices,devicesOf(db)['c2']?.expiresAt,life(db).cities.lagos.cash]),[['c1','c2'],20,5000]);
+ // A throw inside the callback leaves nothing either.
+ await assert.rejects(f.store.transact(db=>{accountsOf(db)['fb:eve']={id:'fb:eve',publicId:null,devices:[]};throw Error('refused');}),/refused/);
+ assert.equal(count(f.db,'SELECT COUNT(*) AS n FROM accounts'),1);
+ // Removing a row that this transaction never read still removes it (sign out everywhere names bindings it has not loaded).
+ await f.store.transact(db=>{delete devicesOf(db)['c2'];delete devicesOf(db)['never-there'];});
+ assert.deepEqual(f.db.prepare('SELECT secret FROM account_devices').all().map(row=>({...row})),[{secret:'c1'}]);
+ await f.store.transact(db=>{delete accountsOf(db)['fb:ada'];delete devicesOf(db)['c1'];});
+ assert.equal(count(f.db,'SELECT COUNT(*) AS n FROM accounts')+count(f.db,'SELECT COUNT(*) AS n FROM account_devices'),0);
+ // The shared collection() helper sees both as existing collections and never replaces them.
+ const {collection:shared}=await import('../server/protocol.ts');
+ await f.store.transact(db=>{(shared(db as unknown as Db,'accounts',{}) as Record<string,AccountRow>)['fb:bo']={id:'fb:bo',publicId:null,devices:[]};});
+ assert.equal(count(f.db,'SELECT COUNT(*) AS n FROM accounts'),1);assert.equal(count(f.db,"SELECT COUNT(*) AS n FROM collections WHERE name LIKE 'account%'"),0,'accounts are rows of their own table, never a JSON collection');
+});

@@ -138,3 +138,10 @@ button.m3-house{cursor:pointer}
 /* Very wide screens: the names and plates are enlarged with the rest of the interface (--ui-zoom). CSS zoom lays the text out at its
    real size, so it is drawn sharp; map3d.ts places the nodes in the same zoomed pixels. */
 @supports (zoom: 2) { .m3-label, .m3-lga, .m3-tag, .m3-you, .m3-chip { zoom: var(--ui-zoom, 1); } }
+
+/* Very wide screens: the zoom above scales the whole label, but the smallest text (the LGA caption) started at 9.5px and read
+   as 12px at 3440. Its base size is raised here, so the computed size there is about 16px, like the place labels. */
+@media (min-width: 2400px) {
+  .m3-lga small { font-size: 12px; }
+  .m3-lga:not(.is-sized) { font-size: 13px; }
+}

@@ -20,11 +20,13 @@ export interface ComebackLinks {
   unsubscribeUrl: string
 }
 
-export function comebackMail({ plan, name, now, links, contact }: { plan: Plan; name: string; now: number; links: ComebackLinks; contact?: string }): Mail {
+export function comebackMail({ plan, name, now, links, contact, source = 'contact' }: { plan: Plan; name: string; now: number; links: ComebackLinks; contact?: string; /** Where the address came from: it decides the sentence that says why the mail was sent. */ source?: 'contact' | 'account' }): Mail {
   const words = mailWords(plan, { name, now });
   const prefsUrl = goUrl(links.origin, 'touch');
   const stop = STOP_WORDS[words.pref];
-  const why = `You get this because you asked ${BRAND}, a digital world you can live in, to e-mail you about your character. A few a week at most.`;
+  const why = source === 'account'
+    ? `You get this because you made an ${BRAND} account with this address, which turns on e-mails about your character. A few a week at most. You can turn them off any time.`
+    : `You get this because you asked ${BRAND}, a digital world you can live in, to e-mail you about your character. A few a week at most.`;
   const foot = `${esc(why)}<br><a href="${esc(links.stopUrl)}" style="color:#5b6472">${esc(stop)}</a> · <a href="${esc(links.unsubscribeUrl)}" style="color:#5b6472">Unsubscribe from everything</a> · <a href="${esc(prefsUrl)}" style="color:#5b6472">Change what I get</a>${contact ? `<br>${esc(contact)}` : ''}`;
   const footText = `${why}\n${stop}: ${links.stopUrl}\nUnsubscribe from everything: ${links.unsubscribeUrl}\nChange what I get: ${prefsUrl}${contact ? `\n${contact}` : ''}`;
   return build(words.subject, { heading: words.heading, intro: words.intro, lines: words.lines, button: { label: words.button.label, url: goUrl(links.origin, words.button.go) }, foot, footText });

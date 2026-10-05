@@ -63,7 +63,9 @@ export function sweep(g: GrowthCollection, now: number): void {
   const oldShare = now - LIMITS.shareDays * 86400000, idle = now - LIMITS.idleDays * 86400000;
   for (const [code, share] of Object.entries(g.shares)) if (!(((share as GrowthCollection['shares'][string] | null | undefined)?.at ?? NaN) >= oldShare)) delete g.shares[code];
   for (const [id, player] of Object.entries(g.players)) {
-    if (((player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN) >= idle) continue;
+    const seen = (player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN;
+    // A record that has not said hello yet (`seen: 0`, made by a consent or an invite first) is new, not idle: sweeping it lost the answers just given.
+    if (seen >= idle || seen === 0) continue;
     delete g.players[id];
   }
   // Comeback mail's records follow the address: none left for a player whose address is gone. A record made for an account's

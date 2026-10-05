@@ -189,7 +189,7 @@ test('fresh and expired entry offer ordinary navigation to the old-character bri
 
 test('the account placeholder says accounts are not available', async () => {
   const words = text(await render('AccountApp'))
-  assert.equal(words, 'Account Accounts are not available yet. Your progress is saved to this device session.')
+  assert.equal(words, 'Account Accounts are not available on this server. Your character is saved on this device.')
 })
 
 

@@ -289,7 +289,12 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     const onboarding = game.state.value.onboarding
     if (onboarding.done || onboarding.stage !== 'guest') { play.sending = false; if (onboarding.done) forgetDraft(); await landing.land(); return }
     const kept = pendingPlay()
-    if (!onboarding.required || !kept) { play.sending = false; if (!onboarding.required) keepPlay(null); return }
+    if (!onboarding.required || !kept) {
+      play.sending = false
+      // A guest who is playing (the look is confirmed, the settling-in steps are not done) is landed too: a link they kept, or a button in an e-mail, is not left waiting for them to finish.
+      if (!onboarding.required) { keepPlay(null); await landing.land() }
+      return
+    }
     const actionId = kept.actionId ?? game.newId()
     if (!kept.actionId) keepPlay({ ...kept, actionId })
     play.sending = true

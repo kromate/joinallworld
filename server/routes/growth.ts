@@ -143,9 +143,10 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   return {
     'POST /api/growth/hello': route(({ db, g, session, state, cityId, body }) => {
       const now = ctx.now(), id = session.publicId;
+      // The hourly sweep runs before this player's record is made or read: a record made now has `seen: 0` until the end of this call and would be swept as idle.
+      sweep(g, now); prune(g, now);
       const player = playerOf(g, id);
       if (!player) return { ok: false, code: 'server_full', reason: 'This is not available right now. Try again later.' };
-      sweep(g, now); prune(g, now);
       const hoursAway = player.seen ? Math.max(0, (now - player.seen) / 3600000) : 0;
       if (!player.seen || now - player.seen >= SESSION_GAP_MS) count(g, now, cityId, 'sessions');
       const since = player.seen || null;

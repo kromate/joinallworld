@@ -69,7 +69,7 @@ test('on a server without accounts nothing about them is shown, anywhere', async
   assert.equal(useAccountEntry().available, false)
   // And the Settings tab as a whole still explains the device session.
   const settings = text(await renderToString(createSSRApp({ render: () => h(awaitedSettings) })))
-  assert.ok(settings.includes('A device session , not an account') && !settings.includes('Sign in') && !settings.includes('Save your character'))
+  assert.ok(settings.includes('You are playing as a guest') && !settings.includes('Sign in') && !settings.includes('Save your character'))
 })
 
 test('the start screens’ entry: available once the server says so, and it opens the two screens', async () => {
@@ -195,7 +195,7 @@ test('Settings, as a guest: what an account is for and the two ways in', async (
   // The Settings tab carries the section, and still explains the device session to a guest.
   await given(CONFIGURED)
   const settings = text(await renderToString(createSSRApp({ render: () => h(awaitedSettings) })))
-  assert.ok(settings.includes('A device session , not an account') && settings.includes('Save your character'))
+  assert.ok(settings.includes('You are playing as a guest') && settings.includes('Save your character'))
   assert.ok(!settings.includes('are not part of this build'))
 })
 
@@ -212,7 +212,7 @@ test('Settings, signed in: who is signed in, sign out, sign out everywhere, the 
   assert.ok(google.includes('With Google · 1 device signed in') && !google.includes('Set-aside characters'))
   // Signed in, the Settings tab no longer calls this a device session with no sign-in.
   const settings = text(await renderToString(createSSRApp({ render: () => h(awaitedSettings) })))
-  assert.ok(settings.includes('Signed in as ada@example.com') && !settings.includes('not an account'))
+  assert.ok(settings.includes('Signed in as ada@example.com') && !settings.includes('playing as a guest'))
   // The sign-in sheet, opened while signed in, says so instead of offering a form.
   const sheet = await render('AccountSignIn')
   assert.equal(text(sheet), 'You are signed in Signed in as ada@example.com . Your character is kept with your account. Back to the game')

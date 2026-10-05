@@ -112,7 +112,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
       <div class="ui-row"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>{{ game.state.value.name }}</b><small><template v-if="view.session">Player code #{{ view.session.id.slice(0, 6) }} · </template>{{ device }}</small></span></div>
     </div>
     <template v-if="!account.state.account">
-      <p class="settings-note">A <strong>device session</strong>, not an account: a cookie in this browser is the only key. Clearing cookies, or 30 days without playing, ends it.</p>
+      <p class="settings-note">You are playing as a guest: your character lives on this device. Clearing cookies, or 30 days without playing, ends it. Sign up for a free account to keep it and play on any device.</p>
       <HowItWorks id="settings-session" page label="How a device session works" :rules="SESSION_RULES" />
     </template>
     <AccountSettings />

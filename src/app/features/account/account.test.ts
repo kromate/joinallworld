@@ -437,6 +437,26 @@ test('the Google button: Google draws it, and only a credential made for THIS bu
   assert.match(newNonce(), /^[0-9a-f]{32}$/); assert.notEqual(newNonce(), newNonce())
 })
 
+test('the Google button: the API is initialised once per page; a second button re-renders and takes over, and the first one no longer receives', () => {
+  const { api } = fakeGoogle()
+  let initialised = 0, callback: Parameters<GoogleIdentity['initialize']>[0]['callback'] = () => {}, nonce = ''
+  const counting: GoogleIdentity = { ...api, initialize(options) { initialised += 1; callback = options.callback; nonce = options.nonce } }
+  const first: string[] = [], second: string[] = []
+  const removeFirst = renderGoogleButton(counting, host(), 'client-id', (value) => first.push(value), 'page-nonce')
+  removeFirst()
+  const removeSecond = renderGoogleButton(counting, host(), 'client-id', (value) => second.push(value), 'a-different-nonce')
+  assert.equal(initialised, 1, 'initialize() is called once, not once per button')
+  assert.equal(nonce, 'page-nonce', 'the nonce the page started with stays the one that is checked')
+  const good = credential('page-nonce')
+  callback({ credential: good })
+  assert.deepEqual([first, second], [[], [good]], 'the button now on screen receives the credential')
+  callback({ credential: credential('a-different-nonce') })
+  assert.deepEqual(second, [good], 'a credential with another nonce is still ignored')
+  removeSecond()
+  renderGoogleButton(counting, host(), 'another-client-id', () => {}, 'n2')
+  assert.equal(initialised, 2, 'a different client id is a different configuration')
+})
+
 test('the Google button: its script is added only when asked for, from Google’s own address, and a failure is reported', async () => {
   const added: { src: string; async: boolean; onload: (() => void) | null; onerror: (() => void) | null; remove(): void }[] = []
   const doc = { createElement: () => ({ src: '', async: false, referrerPolicy: '', onload: null, onerror: null, remove() {} }), head: { append(script: (typeof added)[number]) { added.push(script) } } } as unknown as Document

@@ -127,6 +127,10 @@ async function sendReport(): Promise<void> {
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>
     <PersonCallButton :id="id" :name="card.name" :status="card.status" :blocked="card.blocked" />
+    <template v-if="nudge">
+      <button type="button" class="ui-button is-block player-nudge" data-nudge :disabled="nudge.disabled" @click="sendNudge"><GameIcon name="heart" inline /> {{ nudge.label }}</button>
+      <span class="player-nudge-note">{{ nudge.reason ?? 'Ask them to come back to Allworld.' }}</span>
+    </template>
     <p>{{ rel ? closenessText(rel, social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="social.baeUnlock" :label="`Closeness with ${card.name}`" />
     <div class="social-grid">
@@ -154,9 +158,6 @@ async function sendReport(): Promise<void> {
       <p class="social-note">A moderator reviews reports. You get a receipt in Messages → Updates.</p>
       <span class="social-actions"><button type="submit" class="social-btn is-primary" :disabled="personUi.busy">Send report</button><button type="button" class="social-btn" @click="openForm(null)">Cancel</button></span>
     </form>
-    <template v-if="nudge">
-      <button type="button" class="social-act" :disabled="nudge.disabled" @click="sendNudge"><strong><GameIcon name="heart" inline /> {{ nudge.label }}</strong><small>{{ nudge.reason ?? 'Ask them to come back to Allworld' }}</small></button>
-    </template>
     <span class="social-actions">
       <button v-if="friend === 'unfriend'" type="button" class="social-btn" :disabled="personUi.busy" @click="doAction('unfriend')">Remove friend</button>
       <button v-else-if="friend === 'accept'" type="button" class="social-btn is-primary" :disabled="personUi.busy" @click="doAction('accept')">Accept friend request</button>
@@ -169,3 +170,9 @@ async function sendReport(): Promise<void> {
     <p class="preview-note">Blocking removes you from each other’s lists and stops messages, invites and friend requests. Closeness numbers are original beta values.</p>
   </div>
 </template>
+
+<style scoped>
+/* The third full-width button under Chat and Call, with the same gap; its line of explanation is quiet, not an error. */
+.player-nudge { margin-top: 8px; }
+.player-nudge-note { display: block; margin: 4px 2px 0; font-size: 12px; line-height: 1.4; color: var(--c-muted); }
+</style>

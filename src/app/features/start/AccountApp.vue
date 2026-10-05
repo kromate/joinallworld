@@ -8,5 +8,5 @@
 </script>
 
 <template>
-  <div class="ui-placeholder"><h3>Account</h3><p>Accounts are not available yet. Your progress is saved to this device session.</p></div>
+  <div class="ui-placeholder"><h3>Account</h3><p>Accounts are not available on this server. Your character is saved on this device.</p></div>
 </template>

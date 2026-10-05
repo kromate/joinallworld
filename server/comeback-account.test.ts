@@ -91,6 +91,7 @@ test('one ledger and one daily cap: a new account is not sent a comeback mail wi
   const after = mailsOf(h.sent);
   assert.equal(after[0]?.personalizations[0]?.to[0]?.email, 'uidada@example.com');
   assert.match(after[0]?.subject ?? '', /Bola is waiting for you/);
+  assert.match(after[0]?.content[0]?.value ?? '', /made an Allworld account with this address/, 'the footer says why an account holder gets it');
   const ledger = await h.read((db) => db.growth?.comeback?.[ada.id]?.sent.map((entry) => entry.type));
   assert.deepEqual(ledger, ['welcome', 'waiting']);
 });
@@ -138,4 +139,14 @@ test('an account made before this change is not switched on, and a character set
   // A guest with nothing at all has no address to switch anything on for.
   const guest = await h.f.device('Guest'); await h.f.request('/api/life?city=lagos', null, guest.cookie); await h.hello(guest.cookie);
   assert.equal((await h.post<{ ok: boolean; code: string }>('/api/growth/comeback', { cityId: 'lagos', on: true }, guest.cookie)).code, 'no_address');
+});
+
+test('the hourly sweep does not forget a player who has not said hello yet', async (t) => {
+  const h = await harness(t);
+  const ada = await h.f.device('Ada'); await h.f.request('/api/life?city=lagos', null, ada.cookie);
+  h.go(0, 12);
+  await h.post('/api/growth/consent', { cityId: 'lagos', age: 'adult' }, ada.cookie);
+  h.go(0, 14);
+  const view = await h.post<{ consent: { age: string } | null }>('/api/growth/hello', { cityId: 'lagos' }, ada.cookie);
+  assert.equal(view.consent?.age, 'adult');
 });

@@ -24,7 +24,7 @@ function showShortcuts(): void { window.dispatchEvent(new CustomEvent('jaw:short
       <li v-for="step in STEPS" :key="step.title"><i aria-hidden="true"><GameIcon bare :name="step.icon" /></i><div><b>{{ step.title }}</b><span>{{ step.text }}</span></div></li>
     </ul>
     <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the city switch. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
-    <p class="help-note">{{ game.connected.value ? 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.' }}</p>
+    <p class="help-note">{{ game.connected.value ? 'Your progress is saved on this server. As a guest your character lives on this device; make a free account (Sign up) to keep it and play on any device.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.' }}</p>
     <div class="help-actions">
       <BaseButton block variant="primary" @click="takeTour">Take the tour</BaseButton>
       <BaseButton block @click="showShortcuts">Keyboard shortcuts</BaseButton>

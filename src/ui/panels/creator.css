@@ -56,7 +56,7 @@
 .cr-round.is-wide{padding:0 16px}
 .cr-round:hover:enabled,.cr-zoom button:hover:enabled{background:#ffffff2e}
 .cr-zoom button[aria-pressed=true]:hover:enabled{background:#fff}
-.cr-hint{position:absolute;z-index:2;left:50%;bottom:calc(var(--cr-tools) + var(--cr-lift) + 14px);transform:translateX(-50%);padding:5px 14px;border-radius:999px;background:#ffffffd9;color:#2a3a33;font-size:13px;font-weight:700;pointer-events:none;white-space:nowrap}
+.cr-hint{position:absolute;z-index:2;left:50%;bottom:calc((var(--cr-inset, calc(var(--cr-tools) + var(--cr-lift))) + 8px) / var(--cr-z, 1));transform:translateX(-50%);padding:5px 14px;border-radius:999px;background:#ffffffd9;color:#2a3a33;font-size:13px;font-weight:700;pointer-events:none;white-space:nowrap}
 .cr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---- the panel ---- */
@@ -251,12 +251,12 @@
 @media(min-width:2000px) and (min-aspect-ratio:1/1){
   .cr-root{padding-inline:max(0px,calc((100vw - 2500px) / 2))}
   .cr-panel{zoom:1.4;align-self:start;height:calc(100dvh / 1.4 - 2 * var(--cr-pad))}
-  .cr-stage-tools,.cr-brand,.cr-caption,.cr-hint{zoom:1.4}
+  .cr-stage-tools,.cr-brand,.cr-caption,.cr-hint{zoom:1.4;--cr-z:1.4}
 }
 @media(min-width:2800px) and (min-aspect-ratio:1/1){
   .cr-root{padding-inline:max(0px,calc((100vw - 3000px) / 2))}
   .cr-panel{zoom:1.8;align-self:start;height:calc(100dvh / 1.8 - 2 * var(--cr-pad))}
-  .cr-stage-tools,.cr-brand,.cr-caption,.cr-hint{zoom:1.8}
+  .cr-stage-tools,.cr-brand,.cr-caption,.cr-hint{zoom:1.8;--cr-z:1.8}
 }
 
 /* The three starts take room: tighter rows, no fine print on a short screen, and a smaller stage on a phone so the name field stays in view. */

@@ -43,17 +43,31 @@ export function newNonce(source: Pick<Crypto, 'getRandomValues'> = globalThis.cr
   return [...source.getRandomValues(new Uint8Array(16))].map((byte) => byte.toString(16).padStart(2, '0')).join('')
 }
 
+/** What was handed to `initialize` for one page's Google API: it is initialised ONCE (a second call logs a warning and is ignored), so what changes between buttons lives here. */
+interface Started { clientId: string; nonce: string; handler: ((credential: string) => void) | null }
+const started = new WeakMap<object, Started>()
+
 /**
  * Draw the button into `host`. `onCredential` is called with Google's credential once the person has chosen an account
- * — only for a credential that carries this button's own nonce. Returns how to remove the button.
+ * — only for a credential that carries the page's nonce (made when the API was first initialised; the server accepts a
+ * token once, so a fresh nonce per button adds nothing). Initialises the API once per page and client id and only
+ * re-renders after that. Returns how to remove the button.
  */
 export function renderGoogleButton(api: GoogleIdentity, host: HTMLElement, clientId: string, onCredential: (credential: string) => void, nonce: string = newNonce()): () => void {
-  let live = true
-  api.initialize({ client_id: clientId, nonce, auto_select: false, callback(reply) {
-    const credential = isRecord(reply) ? reply.credential : null
-    if (!live || typeof credential !== 'string' || credential.length < 100 || credential.length > 4096 || credentialClaim(credential, 'nonce') !== nonce) return
-    onCredential(credential)
-  } })
+  let page = started.get(api)
+  if (!page || page.clientId !== clientId) {
+    const fresh: Started = { clientId, nonce, handler: null }
+    page = fresh
+    started.set(api, fresh)
+    api.initialize({ client_id: clientId, nonce, auto_select: false, callback(reply) {
+      const credential = isRecord(reply) ? reply.credential : null
+      if (!fresh.handler || typeof credential !== 'string' || credential.length < 100 || credential.length > 4096 || credentialClaim(credential, 'nonce') !== fresh.nonce) return
+      fresh.handler(credential)
+    } })
+  }
+  const mine = onCredential
+  page.handler = mine
+  const current = page
   api.renderButton(host, { type: 'standard', theme: 'outline', size: 'large', text: 'continue_with', shape: 'rectangular', logo_alignment: 'left', width: Math.max(200, Math.min(400, Math.round(host.clientWidth) || 280)) })
-  return () => { live = false; try { api.cancel() } catch { /* nothing to cancel */ } host.replaceChildren() }
+  return () => { if (current.handler === mine) current.handler = null; try { api.cancel() } catch { /* nothing to cancel */ } host.replaceChildren() }
 }

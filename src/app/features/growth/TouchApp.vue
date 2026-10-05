@@ -115,7 +115,7 @@ async function removeEmail(): Promise<void> {
     <p v-if="!view.connected" class="gr-note">{{ why }}</p>
     <p v-else-if="!hello" class="gr-note" role="status">{{ growth.state.error ?? 'Loading…' }}</p>
     <template v-else>
-      <HeroCard label="Stay in touch" figure="Only if you ask">The game never contacts you unless you switch it on here. Nothing below is on by default.</HeroCard>
+      <HeroCard label="Stay in touch" figure="Only if you ask">The game never contacts you outside the game unless you ask: here, or when you make an account, which says so. Every switch is here, and one tap turns it off.</HeroCard>
 
       <div data-cards tabindex="-1" class="gr-cards">
         <div v-if="ageCard(hello.consent) === 'ask'" class="gr-card">

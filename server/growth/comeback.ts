@@ -60,7 +60,7 @@ export interface Mailing {
   token(purpose: string, id: string, nonce: string, expires: number): Promise<string>
   deliver(id: string, kind: string, to: string, message: Omit<MailMessage, 'to'>): Promise<{ ok: boolean; off?: true; dryRun?: true }>
 }
-interface Job { id: string; to: string; nonce: string; plan: Plan; name: string }
+interface Job { id: string; to: string; nonce: string; plan: Plan; name: string; source: 'contact' | 'account' }
 
 const emptyCounters = (): ComebackCounters => ({ queued: 0, sent: 0, failed: 0, suppressed: 0, unsubscribed: 0 });
 const types = (value: unknown): Record<PrefKey, boolean> => {
@@ -320,7 +320,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
         if (chosen.type === 'nudge') record.nudges = record.nudges.filter((item) => item.at > chosen.newest);
         record.next = t + DAY;
         bump(g, chosen.type, 'queued');
-        jobs.push({ id, to: recipient.email, nonce: recipient.nonce, plan: chosen, name: life.name });
+        jobs.push({ id, to: recipient.email, nonce: recipient.nonce, plan: chosen, name: life.name, source: recipient.source });
       } catch (error) {
         // One life the rules cannot read (a stored life that does not fit its city) never stops everyone else's mail: it is looked at again tomorrow.
         ctx.core?.log?.(`Comeback skipped one player: ${String((isRecord(error) ? error.message : undefined) ?? error).split('\n')[0]?.slice(0, 120)}`);
@@ -339,7 +339,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     const origin = mailing.origin(), expires = now() + 400 * DAY;
     const [all, stop] = await Promise.all([mailing.token('unsub', job.id, job.nonce, expires), mailing.token(`unsub-${job.plan.type}`, job.id, job.nonce, expires)]);
     const unsubscribeUrl = `${origin}/e/unsub?t=${all}`, stopUrl = `${origin}/e/unsub?t=${stop}`;
-    const mail = comebackMail({ plan: job.plan, name: job.name, now: now(), links: { origin, stopUrl, unsubscribeUrl }, contact: mailing.contactLine() });
+    const mail = comebackMail({ plan: job.plan, name: job.name, now: now(), links: { origin, stopUrl, unsubscribeUrl }, contact: mailing.contactLine(), source: job.source });
     const result = await mailing.deliver(job.id, `comeback-${job.plan.type}`, job.to, { ...mail, headers: { 'List-Unsubscribe': `<${unsubscribeUrl}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } });
     await ctx.store.transact((db) => { bump(growthOf(ctx, db), job.plan.type, result.off ? 'suppressed' : result.ok ? 'sent' : 'failed'); }, { durable: false });
   }

@@ -30,7 +30,15 @@ const alt = computed(() => lookAlt(props.look, props.name))
 let handle: StageHandle | null = null
 
 /** How much of the stage's bottom the buttons take: the character stands above it. */
-function inset(): number { return stage.value && tools.value ? Math.max(0, stage.value.clientHeight - tools.value.offsetTop + 4) : 0 }
+// Measured on screen (getBoundingClientRect), not with offsetTop: the buttons are zoomed on very large screens, and offsetTop is then
+// in the zoomed element's own units, which reserved far too much and left the character small.
+function inset(): number {
+  if (!stage.value || !tools.value) return 0
+  const space = Math.max(0, stage.value.getBoundingClientRect().bottom - tools.value.getBoundingClientRect().top + 4)
+  // The "Drag to turn" chip sits just above the buttons: it is anchored to this same number.
+  stage.value.style.setProperty('--cr-inset', `${Math.round(space)}px`)
+  return space
+}
 function request(): void {
   if (!handle) return
   showLookPreview({ stage: handle, inset: inset(), look: sceneLook(props.look), focus: props.focus, label: `${alt.value} Drag, or use the left and right arrow keys, to turn.` })

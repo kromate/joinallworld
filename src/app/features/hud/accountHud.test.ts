@@ -10,7 +10,7 @@ import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import type { App } from '../../state/app.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
-import { BAR_KEY, DISMISS_MS, barDue, dismissBar, hiddenUntil } from '../account/guestBarModel.ts'
+import { BAR_KEY, DISMISS_MS, barDue, barFacts, dismissBar, hiddenUntil } from '../account/guestBarModel.ts'
 import type { BarFacts } from '../account/guestBarModel.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
@@ -87,4 +87,18 @@ test('the guest bar: what it says and what it offers, and what it carries as a s
   assert.match(html, /<button[^>]*data-guest-login[^>]*>Log in<\/button>/)
   assert.match(html, /<button[^>]*data-guest-dismiss[^>]*aria-label="Hide this for a week"/)
   assert.match(html, /role="region" aria-label="Save your character"/)
+})
+
+test('the guest bar shows for a connected player with no account even when the first answer said "no session", after a call ended, and with the coach tip up', async () => {
+  const { callStore, callVisible, idleView } = await load<typeof import('../calls/callState.ts')>('/src/app/features/calls/callState.ts')
+  const inputs = { account: { loaded: true, enabled: true, account: null }, connected: true, creatorOpen: false, tour: false, sheetOpen: false, activityRunning: false, callOnScreen: false, venue: true, hiddenUntil: 0, now: 5 }
+  // The account state was fetched before this device had a session (guest: false there): the bar does not depend on it.
+  assert.equal(barDue(barFacts({ ...inputs, account: { ...inputs.account, guest: false } as typeof inputs.account })), true)
+  callStore.view = { ...idleView(), phase: 'connected' }
+  assert.equal(barDue(barFacts({ ...inputs, callOnScreen: callVisible() })), false, 'not over a call')
+  callStore.view = { ...idleView(), phase: 'ended', notice: 'Call ended.' }
+  assert.equal(barDue(barFacts({ ...inputs, callOnScreen: callVisible() })), false, 'nor over its ended note')
+  callStore.view = idleView()
+  assert.equal(barDue(barFacts({ ...inputs, callOnScreen: callVisible() })), true, 'once the call has gone and nothing else is open the bar shows')
+  assert.equal(barDue(barFacts({ ...inputs, account: { ...inputs.account, account: { email: 'a@b.c' } } })), false, 'never for someone signed in')
 })

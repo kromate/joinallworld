@@ -418,8 +418,9 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   let refused = await send();
   assert.equal(refused.code, 'friends_only'); assert.match(refused.reason, /Add Bola as a friend first/);
   await befriend(f, ada, bola); await befriend(f, ada, chi);
+  // No waiting period on a new life or a new friendship: what has been earned from work is the guard.
   refused = await send();
-  assert.equal(refused.code, 'account_too_new'); assert.match(refused.reason, /24 hours/);
+  assert.notEqual(refused.code, 'account_too_new'); assert.notEqual(refused.code, 'friendship_too_new'); assert.equal(refused.ok, false);
   const earned = await earn(f, ada);
   assert.equal(earned.cash, 8000); assert.equal(earned.social.earned, 3000);
   f.advance(24 * HOUR);

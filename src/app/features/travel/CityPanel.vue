@@ -14,13 +14,14 @@ const guide = computed(() => contentFor(game.cityId.value).thingsToDo.slice(0, 5
 </script>
 
 <template>
-  <div>
+  <div class="city-card">
     <h3>{{ game.view.value.city?.name ?? 'Lagos' }}</h3>
-    <p>{{ game.view.value.city?.region ?? 'Lagos State' }}, Nigeria</p>
-    <p>You are here. Choose somewhere to go.</p>
+    <p class="city-card-region">{{ game.view.value.city?.region ?? 'Lagos State' }}, Nigeria</p>
+    <p class="city-card-lead">You are here. Choose somewhere to go.</p>
     <LgaCard v-if="game.state.value.onboarding.done && !game.view.value.estate.placed" heading="Choose where to live" compact />
     <h4>Things to do in {{ game.view.value.city.name }}</h4>
-    <ul><li v-for="place in guide" :key="place.venueId"><button type="button" @click="shell.open('map', { destination: place.venueId })">{{ place.name }}</button> · {{ place.line }}</li></ul>
+    <ul><li v-for="place in guide" :key="place.venueId"><button type="button" @click="shell.open('map', { destination: place.venueId })">{{ place.name }}</button> <span>{{ place.line }}</span></li></ul>
+    <h4>Every place</h4>
     <div id="city-places">
       <button v-for="venue in game.view.value.venues" :key="venue.id" type="button" @click="shell.open('map', { destination: venue.id })"><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ venue.label }}</button>
     </div>

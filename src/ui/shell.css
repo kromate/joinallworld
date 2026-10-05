@@ -414,7 +414,19 @@ button.ui-row:hover{background:#f7f9f8}
 .sim-need{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:15px 0;font-size:13px}.sim-need span{min-width:60px}.sim-need meter{flex:1}.sim-need b{width:25px}
 #life-dialog form label{display:grid;gap:6px;font-size:13px;font-weight:600;margin-bottom:12px}
 /* (Fields, selects and buttons are styled once, in controls.css.) */
-#city-places{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+/* The city card: the city and where it is, the guide as rows (a place's name is the button, its line sits under it), then every place as a chip. */
+.city-card h3{margin:0;font-size:var(--t-heading);line-height:1.2;letter-spacing:-.3px}
+#life-dialog .city-card-region{margin:2px 0 0;font-size:13px;color:var(--c-muted)}
+#life-dialog .city-card-lead{margin:var(--s-3) 0;padding:10px 12px;border-radius:var(--r-sm);background:var(--c-green-soft);color:var(--c-green-dark);font-size:13px;font-weight:600}
+.city-card h4{margin:var(--s-5) 2px var(--s-2);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted)}
+.city-card>ul{list-style:none;margin:0;padding:0;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
+.city-card>ul>li{display:grid;gap:1px;padding:4px 14px 11px;border-bottom:1px solid var(--c-line)}
+.city-card>ul>li:last-child{border-bottom:0}
+.city-card>ul>li>button{justify-self:start;min-height:36px;margin:0 -6px;padding:0 6px;border:0;border-radius:var(--r-xs);background:none;color:var(--c-green-dark);font:700 14px/1.3 var(--font);text-align:left;text-decoration:underline;text-decoration-color:#1c5f3c55;text-underline-offset:3px;cursor:pointer}
+.city-card>ul>li>button:hover{background:var(--c-green-soft)}
+.city-card>ul>li>button:focus-visible{outline:var(--focus);outline-offset:1px}
+.city-card>ul>li>span{font-size:13px;line-height:1.4;color:var(--c-muted)}
+#city-places{display:flex;flex-wrap:wrap;gap:8px}
 #city-places button{border:0;background:var(--c-green-soft);color:var(--c-ink);padding:8px 12px;min-height:var(--tap);border-radius:18px;cursor:pointer;font:600 12px var(--font)}
 /* Inside the Phone the page is grey and the pieces are white cards */
 .ph-appbody .ui-card,.ph-appbody .ui-details{border-color:transparent;box-shadow:var(--e-1),var(--ring)}

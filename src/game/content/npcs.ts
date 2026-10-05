@@ -90,5 +90,5 @@ export const FAMILY_CALL: FamilyCallRules = { duration: 8, effects: { social: 2 
  */
 export const TRANSFER_LIMITS: TransferLimits = {
   min: 100, maxPerTransfer: 5000, dailyAmount: 10000, dailyCount: 3, dailyReceive: 20000,
-  minEarned: 1000, minAccountAgeMs: 24 * 3600 * 1000, minFriendshipMs: 3600 * 1000, beta: true,
+  minEarned: 1000, minAccountAgeMs: 0, minFriendshipMs: 0, beta: true, // no waiting period: the earned-from-work rule and the daily caps are the guard
 };

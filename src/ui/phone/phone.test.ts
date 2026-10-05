@@ -186,3 +186,25 @@ test('a panel opened inside the phone keeps the phone full width: no #life-dialo
     }
   }
 });
+
+// A length inside a zoomed element is enlarged with it, viewport units included: `max-height:38dvh` in an interface zoomed 1.2
+// is 45.6% of the window, and a panel sized that way runs off a wide, short screen. Heights are written with --ui-vh instead.
+test('the zoomed interface sizes itself with --ui-vh: every rule that sets the interface zoom sets the unit, and no sheet or panel uses dvh', async () => {
+  const { readdir } = await import('node:fs/promises');
+  const read = (path: string): Promise<string> => readFile(new URL(path, import.meta.url), 'utf8');
+  assert.match(await read('../tokens.css'), /--ui-vh:\s*1dvh/);
+  for (const [path, selector] of [['../shell.css', '.life-ui{'], ['../shell.css', '#life-dialog{'], ['../../map3d/geo/atlas.css', '.atlas-frame{position:absolute;'], ['../../app/features/tour/TourHost.vue', '.tour:not(.in-dialog) {']] as const) {
+    const css = await read(path), at = css.indexOf(selector);
+    assert.ok(at >= 0, `${path}: ${selector}`);
+    const rule = css.slice(at, css.indexOf('}', at));
+    assert.match(rule, /zoom:\s*var\(--ui-zoom\)/, `${selector} is zoomed`);
+    assert.match(rule, /--ui-vh:\s*calc\(1dvh \/ var\(--ui-zoom\)\)/, `${selector} sets the unit beside its zoom`);
+  }
+  const panels = new URL('../panels/', import.meta.url);
+  // (creator.css is the full-screen creator: it resets the zoom and divides by its own.)
+  const files = [...(await readdir(panels)).filter((name) => name.endsWith('.css') && name !== 'creator.css').map((name) => `../panels/${name}`), '../shell.css', '../controls.css', './phone.css', '../../map3d/geo/atlas.css', '../../app/ui/BaseSheet.vue'];
+  for (const path of files) {
+    const css = (await read(path)).replace(/--ui-vh:\s*calc\(1dvh[^;]*;/g, '');
+    assert.doesNotMatch(css, /\d(dvh|svh|lvh|vh)\b/, `${path} sizes with --ui-vh, not with a viewport height unit`);
+  }
+});

@@ -28,6 +28,7 @@ import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import PersonCallButton from '../calls/PersonCallButton.vue'
+import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { isOutbox, lastLine, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, unreadChats, updateLines, updatesCount } from './messagesModel.ts'
@@ -138,6 +139,12 @@ function messagePlayer(player: SearchResult): void {
   if (existing) void openThread(existing.id)
 }
 const group = reactive<{ open: boolean; name: string; members: string[]; clientId: string; busy: boolean }>({ open: false, name: '', members: [], clientId: '', busy: false })
+/** Send money from a chat: the player's card opens with its gift form already showing (the card owns the limits and the one-send client id). */
+async function sendMoneyTo(player: string, name: string): Promise<void> {
+  shell.open('person', { player, name })
+  await nextTick(); await nextTick()
+  if (personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
+}
 function newGroup(): void { Object.assign(group, { open: true, name: '', members: [], clientId: newClientId() }) }
 async function createGroup(): Promise<void> {
   if (group.busy) return
@@ -217,6 +224,7 @@ defineExpose({
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="conv?.kind === 'dm' && conv.with">
             <BaseButton small @click="shell.open('person', { player: conv.with, name: title })">Profile</BaseButton>
+            <BaseButton small data-chat="send-money" @click="sendMoneyTo(conv.with, title)">Send money</BaseButton>
             <PersonCallButton compact :id="conv.with" :name="title" />
           </template>
         </header>

@@ -1,16 +1,16 @@
 # City modules
 
-A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
+A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu and Port Harcourt.
 
 ## Catalogue states
 
 The registry distinguishes three questions.
 
 - `isKnownCityId` accepts every city named by the atlas and compatibility layer.
-- `isCityId` accepts cities whose stored lives the server may read. This currently includes the six open city modules.
-- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode and Sagamu.
+- `isCityId` accepts cities whose stored lives the server may read. This currently includes the seven open city modules.
+- `isOpenCityId` accepts cities that can receive a new life or a trip. This currently includes Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu and Port Harcourt.
 
-Abuja and Port Harcourt remain closed. Older Ibadan saves may contain Lagos venue ids; the explicit aliases are `park → agodi-gardens`, `library → ui-campus`, `office → cocoa-house`, `hospital → uch`, `market → dugbe-market`, `beach → eleyele-lake`, `airport → ibadan-airport`, `polling-unit → mapo-polling`, `state-house → mapo-hall`, `amala-shitta → dugbe-amala`, `salon → mokola-salon`, `church → ui-chapel`, `mosque → ui-mosque`, `viewing-centre → lekan-salami-stadium`, `i-fitness → lekan-salami-stadium`, `canopy-walk → iita-forest`, `refinery → moniya-station`, `cchub → polytechnic`, `radio/shrine/quilox/rooftop → agodi-gardens`, `palms → dugbe-market`, and `police → mapo-hall`. They preserve old references while the current Ibadan module supplies the real city content.
+Abuja, Aba and Owerri remain closed atlas previews. Older Ibadan saves may contain Lagos venue ids; the explicit aliases are `park → agodi-gardens`, `library → ui-campus`, `office → cocoa-house`, `hospital → uch`, `market → dugbe-market`, `beach → eleyele-lake`, `airport → ibadan-airport`, `polling-unit → mapo-polling`, `state-house → mapo-hall`, `amala-shitta → dugbe-amala`, `salon → mokola-salon`, `church → ui-chapel`, `mosque → ui-mosque`, `viewing-centre → lekan-salami-stadium`, `i-fitness → lekan-salami-stadium`, `canopy-walk → iita-forest`, `refinery → moniya-station`, `cchub → polytechnic`, `radio/shrine/quilox/rooftop → agodi-gardens`, `palms → dugbe-market`, and `police → mapo-hall`. They preserve old references while the current Ibadan module supplies the real city content.
 
 `registeredCityIds()` returns server-known ids. `playableCityIds()` returns open modules. Callers should choose the list that matches the action instead of treating an atlas label as permission to create a life.
 

@@ -28,3 +28,9 @@ test('the overview uses the common north-up frame and rejects empty geometry', (
   assert.doesNotMatch(html, /NaN|Infinity/)
   assert.throws(() => stateOverviewHtml({ ...overview, outline: [] }, [], null), /needs an outline/)
 })
+
+test('a state overview can show explicit water without changing the unit choices', () => {
+  const html = stateOverviewHtml({ ...overview, water: overview.localUnits[1]!.polygons }, [], null)
+  assert.match(html, /fill="#7cb9cd" fill-rule="evenodd" pointer-events="none"/)
+  assert.match(html, /2 local governments · 0 in open cities · 2 coming/)
+})

@@ -375,12 +375,15 @@ export interface FurnitureDefinition {
   /** List price in naira (the charged price is modify('shop.price', price, { item, kind: 'furniture' })). */
   price: number
   icon: string
+  beta?: boolean
+}
+
+/** Loaded with the furniture catalogue UI or home renderer, not the shared game rules. */
+export interface FurniturePresentation {
   /** Which procedural model src/scene/home-scene.ts draws. */
   shape: string
-  /** Hex colour. */
   color: string
   blurb: string
-  beta?: boolean
 }
 
 /** KINDS[kind]: the home spot a kind's actions appear at (null = no actions), and how to name it in a "you need one" message. */
@@ -1195,6 +1198,7 @@ export type LonLatPolygon = readonly LonLatRing[]
 
 /** Lazy state overview, retaining full local-unit geometry beyond the currently opened cities. */
 export interface CityStateOverview {
+  water?: readonly LonLatPolygon[]
   stateId: string
   name: string
   outline: readonly LonLatPolygon[]
@@ -1285,6 +1289,8 @@ export interface CityContent<City extends string = string> {
   localUnitDescriptions: Readonly<Record<string, string>>
   /** Local names and beta quotes for the shared travel mechanics. */
   localModes?: readonly TravelModeDefinition[]
+  /** Bidirectional jetty trips. Fares and fixed durations are original beta values. */
+  localRoutes?: readonly { a: string; b: string; mode: 'boat'; fare: number; seconds: number; beta: true }[]
   /** City wording only; dream ids, targets and rewards remain shared rules. */
   dreamWording?: Readonly<Partial<Record<DreamId, Partial<Pick<DreamDefinition, 'label' | 'goal' | 'measure'>>>>>
   /** Local explanation of a family outcome; its loan, skills and cash cannot be overridden. */

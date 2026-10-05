@@ -69,11 +69,11 @@ test('simplification kept the shapes sound: no ring crosses itself among the mos
 });
 
 test('the data modules are small, say where they came from, and decode from their compact form', () => {
-  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000 };
+  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000 };
   for (const [file, limit] of Object.entries(limits)) {
     const path = here(`./data/${file}`), text = readFileSync(path, 'utf8');
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
-    if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts') {
+    if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts' || file === 'rivers.ts') {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/); assert.match(text, /shared-arc topology/);
     } else {
       assert.match(text, /Natural Earth/); assert.match(text, /public domain/); assert.match(text, /Visvalingam/); assert.match(text, /default view/);
@@ -113,14 +113,14 @@ test('pick() finds the right region at known places, at every level, through the
   assert.ok(all.candidates(relLon(8), 9).length < 12);
 });
 
-test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open', () => {
-  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'ogun']);
+test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers are open', () => {
+  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'rivers', 'ogun']);
   assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)), ['ng']);
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
     assert.equal(Boolean(info.action), feature.id === 'lagos', `${feature.id}: ${info.tag}`);
-    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : feature.id === 'oyo' || feature.id === 'ogun' ? 'Open' : 'Coming soon');
+    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : ['oyo', 'ogun', 'rivers'].includes(feature.id) ? 'Open' : 'Coming soon');
     assert.ok(info.teaser && info.type.includes(feature.id === 'fct' ? 'Territory' : 'State') && info.capital === feature.cap[0]);
     for (const route of info.routes) assert.equal(route.live, false, 'a route is not live until supplied by the server');
   }
@@ -137,9 +137,9 @@ test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open
   assert.equal(oyo.preview, null); assert.equal(oyo.teaser, cityEntry('ibadan')!.teaser); assert.deepEqual(oyo.routes.map((route) => route.mode), ['road', 'rail']);
   assert.ok(oyo.routes.every((route) => route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub && route.why === null));
   assert.equal(regionStatus('state', 'ogun'), 'open');
-  // The two planned cities keep their preview and their routes, with fare and time.
-  for (const [id, city] of [['fct', 'abuja'], ['rivers', 'port-harcourt']] satisfies [string, string][]) {
-    const info = regionInfo({ kind: 'state', id }, { ...context, feature: nigeria.byId.get(id) });
+  // The planned cities keep their preview and their routes, with fare and time.
+  for (const [id, city, current] of [['fct', 'abuja', 'lagos'], ['abia', 'aba', 'port-harcourt'], ['imo', 'owerri', 'port-harcourt']] satisfies [string, string, string][]) {
+    const info = regionInfo({ kind: 'state', id }, { ...context, current, feature: nigeria.byId.get(id) });
     assert.equal(regionStatus('state', id), 'planned'); assert.equal(stateOfCity(city), id);
     assert.deepEqual(info.preview, cityEntry(city)!.preview); assert.ok(info.routes.length >= 1);
     for (const route of info.routes) { assert.ok(route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub); assert.match(route.why!, /is not open yet, so nothing leaves for it\. Departures start the day it opens\./); }
@@ -155,7 +155,7 @@ test('open versus coming soon is the live registry: Lagos, Oyo and Ogun are open
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
   assert.match(regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') }).planned!, /Lagos and Accra/);
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
-  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['lagos', 'ogun', 'oyo', 'fct', 'rivers']);
+  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['lagos', 'ogun', 'oyo', 'rivers', 'abia']);
 });
 
 test('levels: thresholds half-way between the fits, hysteresis at each, and a closer level only over its own frame', () => {

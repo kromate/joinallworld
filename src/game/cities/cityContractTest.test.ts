@@ -33,6 +33,14 @@ export function assertCityContentContract(module: CityModule, content: CityConte
   for (const line of Object.values(content.localUnitDescriptions)) assert.ok(line.trim().length > 0, 'local-unit description is not empty')
   const venueIds = content.venues.map((venue) => venue.id), venues = new Set(venueIds)
   unique(venueIds, 'venue')
+  unique((content.localRoutes ?? []).map(route => [route.a, route.b].sort().join('|')), 'local route')
+  for (const route of content.localRoutes ?? []) {
+    assert.ok(route.a !== route.b && route.a !== 'home' && route.b !== 'home' && venues.has(route.a) && venues.has(route.b), 'local water route joins two public venues')
+    assert.equal(route.mode, 'boat')
+    assert.equal(route.beta, true)
+    assert.ok(Number.isSafeInteger(route.fare) && route.fare >= 0 && route.fare <= 1_000_000, 'local route fare is bounded whole naira')
+    assert.ok(Number.isInteger(route.seconds) && route.seconds >= 4 && route.seconds <= 60, 'local route duration fits saved travel bounds')
+  }
   for (const [oldId, target] of Object.entries(module.rules.legacyVenueAliases ?? {})) {
     assert.ok(oldId.length > 0 && venues.has(target), `legacy venue ${oldId} resolves inside ${module.id}`)
   }
@@ -184,6 +192,13 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
     }
   }
   const [scene, geometry] = await Promise.all([map.loadScene(), map.loadGeometry()])
+  const content = await module.loadContent()
+  for (const route of content.localRoutes ?? []) {
+    const path = scene.localRoutes?.find(path => path.mode === route.mode && ((path.a === route.a && path.b === route.b) || (path.a === route.b && path.b === route.a)))
+    assert.ok(path && path.points.length >= 2, 'local water route has lazy map geometry')
+    assert.ok(path.points.every(point => Number.isFinite(point.x) && Number.isFinite(point.y) && Number.isFinite(point.z)), 'local route vertices are finite')
+    assert.ok(path.points.some(point => point.x !== path.points[0]!.x || point.z !== path.points[0]!.z), 'local water route has positive length')
+  }
   assert.equal(scene.id, module.id); assert.deepEqual(scene.lgas.map((unit) => unit.id).sort(), module.rules.units.map((unit) => unit.id).sort())
   assert.deepEqual(Object.keys(geometry.localUnits).sort(), module.rules.units.map((unit) => unit.id).sort()); assert.ok(geometry.gridDegrees > 0)
   assert.ok(geometry.source.length > 0 && geometry.licence.length > 0, 'geometry states its source and licence')

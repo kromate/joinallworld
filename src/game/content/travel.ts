@@ -31,7 +31,7 @@ export const TRAVEL_MODES: BaseModeTable = {
 export const CAR_MODE = { id: 'car', label: 'Own car', icon: '🚗', fare: 120, seconds: 5, needs: {}, eventChance: 0.1, fuel: true, beta: true, blurb: 'Your own ride. You only pay for fuel.' } satisfies TravelModeDefinition;
 
 /** Every mode the travel action accepts. */
-export const ALL_MODES: Record<TravelModeId, TravelModeDefinition> = { ...TRAVEL_MODES, car: CAR_MODE };
+export const ALL_MODES: Record<TravelModeId, TravelModeDefinition> = { ...TRAVEL_MODES, car: CAR_MODE, boat: { id: 'boat', label: 'Boat', icon: '🛥️', fare: 0, seconds: 40, needs: {}, eventChance: 0, beta: true, blurb: 'A scheduled jetty-to-jetty water trip.' } };
 // Object.keys is string[]; the keys of TRAVEL_MODES are exactly the BaseTravelModeId union.
 export const BASE_MODE_IDS: readonly BaseTravelModeId[] = Object.freeze(Object.keys(TRAVEL_MODES) as BaseTravelModeId[]);
 export const DEFAULT_MODE: BaseTravelModeId = 'danfo';

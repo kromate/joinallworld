@@ -25,7 +25,7 @@ import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
 import { iconFor } from '../ui/icon-map.ts';
-import { buildNetwork, pointAt } from './roads.ts';
+import { buildNetwork, localTripRoute, pointAt } from './roads.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { estateLayout, plotAt } from './estates.ts';
 import { lgaAt } from './lga.ts';
@@ -52,7 +52,7 @@ export interface HouseCard { lga: string; estate: number; plot: number; id: stri
 export interface Map2DState {
   t?: number;
   location?: string;
-  activeAction?: { kind: string; id: string; duration: number; remaining: number } | null;
+  activeAction?: { kind: string; id: string; duration: number; remaining: number; mode?: string } | null;
   estate?: { living?: string; plot?: PlotAddress | null; lga?: string | null };
   travel?: { home?: string };
 }
@@ -137,7 +137,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   let homeAt: Spot | null = null;
 
   const root = document.createElement('div');
-  root.className = 'm3 m3-flat';
+  root.className = `m3 m3-flat${model.inland ? ' is-inland' : ''}`;
   root.innerHTML = `<div class="m3-flat-world">${flatSvg(model)}<svg class="m3-flat-trip" viewBox="${box.x} ${box.z} ${box.width} ${box.height}" preserveAspectRatio="none" aria-hidden="true"><path data-trip fill="none" stroke="#14532d" stroke-linecap="round" stroke-linejoin="round"/><path data-trip-top fill="none" stroke="#ffd166" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <canvas class="m3-flat-houses" aria-hidden="true"></canvas>
     <div class="m3-labels" role="group" aria-label="Places in ${pack.name}. Choose one to see it and travel there. The list of places in the Map panel is the same thing as a list."></div>
@@ -391,13 +391,13 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   function placeTrip() {
     const active = isDeparting(state) && (state!.activeAction!.kind === 'travel' || state!.activeAction!.kind === 'commute') ? state!.activeAction! : null;
     const key = (id: string) => (id === 'home' ? (homeAt?.own ? 'home:own' : `home:${state?.travel?.home}`) : id);
-    const next = active ? `${state!.location}>${active.id}` : '';
+    const next = active ? `${state!.location}>${active.id}:${active.mode}` : '';
     if (next !== tripKey) {
       tripKey = next;
       if (active && homeAt?.own) network.attachPlace('home:own', { x: homeAt.x, z: homeAt.z });
-      tripRoute = active ? network.route(key(state!.location!), key(active.id)) : null;
+      tripRoute = active ? localTripRoute(pack, state!.location!, active.id, active.mode) || (active.mode === 'boat' ? null : network.route(key(state!.location!), key(active.id))) : null;
       const from = active ? spotOf(state!.location) : null, to = active ? spotOf(active.id) : null;
-      if (active && !tripRoute && from && to) { const length = Math.hypot(to.x - from.x, to.z - from.z) || 1; tripRoute = { points: [{ x: from.x, y: 0, z: from.z, bridge: null }, { x: to.x, y: 0, z: to.z, bridge: null }], lengths: [0, length], length }; }
+      if (active && active.mode !== 'boat' && !tripRoute && from && to) { const length = Math.hypot(to.x - from.x, to.z - from.z) || 1; tripRoute = { points: [{ x: from.x, y: 0, z: from.z, bridge: null }, { x: to.x, y: 0, z: to.z, bridge: null }], lengths: [0, length], length }; }
       const d = tripRoute ? tripRoute.points.map((point, i) => `${i ? 'L' : 'M'}${point.x.toFixed(2)} ${point.z.toFixed(2)}`).join('') : '';
       for (const node of tripPaths) node.setAttribute('d', d);
     }

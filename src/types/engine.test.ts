@@ -971,7 +971,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(RENTS), houses)
   assert.deepEqual(keys(START_HOMES), idsOf<StartHomeId>({ mushin: true, yaba: true, lekki: true }))
   assert.deepEqual(keys(TRAVEL_MODES), idsOf<BaseTravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true }))
-  assert.deepEqual(keys(ALL_MODES), idsOf<TravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true, car: true }))
+  assert.deepEqual(keys(ALL_MODES), idsOf<TravelModeId>({ trek: true, keke: true, danfo: true, okada: true, cab: true, car: true, boat: true }))
   assert.deepEqual(keys(JOBS), idsOf<JobId>({
     'community-helper': true, tech: true, banking: true, music: true, trading: true, nursing: true, hair: true, chef: true,
     dj: true, fitness: true, creator: true, teaching: true, event: true, football: true, retail: true,
@@ -1117,7 +1117,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
     (entries: readonly object[], what: string) => {
       for (const entry of entries) assert.deepEqual(Object.keys(entry).filter((key) => !(fields as readonly PropertyKey[]).includes(key)), [], what)
     }
-  declared<FurnitureDefinition>()(['id', 'label', 'category', 'kind', 'w', 'h', 'wall', 'stars', 'price', 'icon', 'shape', 'color', 'blurb', 'beta'])(Object.values(FURNITURE), 'furniture')
+  declared<FurnitureDefinition>()(['id', 'label', 'category', 'kind', 'w', 'h', 'wall', 'stars', 'price', 'icon', 'beta'])(Object.values(FURNITURE), 'furniture')
   declared<CarDefinition>()(['id', 'label', 'nickname', 'icon', 'price', 'fuel', 'speed', 'beta', 'priceReported'])(Object.values(CARS), 'car')
   declared<HouseDefinition>()(['id', 'label', 'district', 'grid', 'rent', 'moveIn', 'tag', 'description', 'betaFields'])(Object.values(HOUSES), 'house')
   declared<TravelModeDefinition>()(['id', 'label', 'icon', 'fare', 'seconds', 'needs', 'xp', 'exposed', 'eventChance', 'blurb', 'fuel', 'beta'])(Object.values(ALL_MODES), 'travel mode')

@@ -17,7 +17,8 @@ import { useApp } from '../state/app.ts'
 import { loadSceneWorld } from './loaders.ts'
 import { landingCodeSettled } from '../features/start/warmLanding.ts'
 import { telemetry } from '../../telemetry/index.ts'
-import { noteChunkFailure } from '../state/updateNotice.ts'
+import { isChunkLoadError, noteChunkFailure } from '../state/updateNotice.ts'
+import { scene as homeScene } from '../features/home/homeState.ts'
 
 const props = defineProps<{
   /** Elements whose bottom edge marks how far the HUD covers the top of the scene. */
@@ -31,6 +32,8 @@ const props = defineProps<{
 const { game, shell, scene, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
+const downloadFailed = ref(false)
+const reload = (): void => location.reload()
 const waiting = ref(true)
 let observer: ResizeObserver | null = null
 let disposed = false
@@ -85,9 +88,14 @@ onMounted(() => {
       observer = new ResizeObserver(layout)
       for (const node of [...props.top(), ...props.rows(), props.bottom()]) if (node) observer.observe(node)
     } catch (error) {
+      if (disposed) return
       console.error('The scene could not be started:', error)
       telemetry.chunkFailed('scene', error); void noteChunkFailure(); telemetry.sceneReady(false)
       failed.value = true
+      downloadFailed.value = isChunkLoadError(error)
+      scene.venue.value?.dispose()
+      scene.venue.value = null
+      homeScene.status = 'error'; homeScene.placed = 0
     }
   }, 0)
   window.addEventListener('resize', onResize)
@@ -112,6 +120,16 @@ defineExpose({ layout })
 
 <template>
   <div id="venue-scene" ref="container"  class="life-scene" :hidden="hidden">
-    <p v-if="waiting" class="scene-wait" role="status">{{ failed ? 'The 3D scene could not be drawn on this device. Everything else still works.' : 'Drawing the scene…' }}</p>
+    <div v-if="waiting || failed" class="scene-wait" :class="{ 'is-error': failed }" role="status">
+      <p>{{ downloadFailed ? 'The scene could not be downloaded. Check your connection and reload.' : failed ? 'The 3D scene could not be drawn on this device. Everything else still works.' : 'Drawing the scene…' }}</p>
+      <button v-if="failed" type="button" @click="reload">Reload scene</button>
+    </div>
   </div>
 </template>
+
+<style>
+#venue-scene .scene-wait p{margin:0}
+#venue-scene .scene-wait.is-error{pointer-events:auto}
+#venue-scene .scene-wait.is-error::after{display:none}
+#venue-scene .scene-wait button{margin-top:12px;padding:8px 14px;border:1px solid currentColor;border-radius:8px;background:var(--c-white,#fff);color:inherit;font:inherit;cursor:pointer}
+</style>

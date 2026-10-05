@@ -35,6 +35,7 @@ export interface FlatModel {
   name: string
   box: FlatBox
   land: FlatLand[]
+  water: { id: string; d: string }[]
   roads: FlatRoad[]
   lgas: FlatLga[]
   zones: FlatZone[]
@@ -64,6 +65,7 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
     id: pack.id, name: pack.name,
     box: { x: minX, z: minZ, width: maxX - minX, height: (pack.bounds.sea ? pack.bounds.sea.z1 + 4 : maxZ) - minZ },
     land: landOf(pack).map((entry) => ({ id: entry.id, kind: entry.kind, d: rings([entry.polygon, ...(entry.holes ?? [])]) })),
+    water: (pack.water ?? []).map(entry => ({ id: entry.id, d: rings([entry.points, ...(entry.holes ?? [])]) })),
     roads: network.roads.map((road) => ({ id: road.id, name: road.name, major: road.major, bridge: road.bridge > 0, d: path(road.points), width: (road.major ? 2.5 : 1.8) * (pack.roadScale ?? 1), from: road.points[0]!, to: road.points[road.points.length - 1]! })),
     lgas: (pack.lgas || []).map((lga) => ({ id: lga.id, name: lga.name, tint: lga.tint, d: partsOf(lga).map(rings).join(''), plate: lga.plate })),
     zones: Object.entries<PackSoon>(pack.soon || {}).map(([id, spot]) => ({ id, x: spot.zone[0], z: spot.zone[1], width: spot.zone[2] - spot.zone[0], height: spot.zone[3] - spot.zone[1] })),
@@ -85,6 +87,7 @@ export function flatSvg(model: FlatModel): string {
   return `<svg class="m3-flat-art" viewBox="${fixed(box.x)} ${fixed(box.z)} ${fixed(box.width)} ${fixed(box.height)}" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs><clipPath id="m3-flat-land-${esc(model.id)}" clip-rule="evenodd">${model.land.map((entry) => `<path d="${entry.d}"/>`).join('')}</clipPath></defs>
     <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${model.inland ? c.mainland : c.water}"/>
+    ${model.water.length ? `<g fill="${c.water}" fill-rule="evenodd">${model.water.map(entry => `<path d="${entry.d}" data-water="${esc(entry.id)}"/>`).join('')}</g>` : ''}
     <g fill="${model.inland ? c.mainland : c.shallows}" fill-rule="evenodd" stroke="${model.inland ? c.mainland : c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
     <g class="m3-flat-lgas" clip-path="url(#m3-flat-land-${esc(model.id)})" fill-rule="evenodd">${model.lgas.map((lga) => `<path d="${lga.d}" data-lga="${esc(lga.id)}" fill="${esc(lga.tint)}" fill-opacity=".34" stroke="#46544a" stroke-opacity=".6" stroke-width="${fixed(0.5 * Math.max(g, 0.5))}" stroke-linejoin="round"/>`).join('')}</g>

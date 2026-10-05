@@ -399,7 +399,10 @@ test('roadside events: deterministic, pending in state, resolved by an action', 
       }
     }
   }
-  for (const mode of Object.keys(ALL_MODES) as TravelModeId[]) assert.ok(Object.values(EVENTS).some((event) => event.modes.includes(mode)), `${mode} has events`);
+  for (const mode of Object.keys(ALL_MODES) as TravelModeId[]) {
+    if (mode === 'boat') assert.equal(Object.values(EVENTS).some((event) => event.modes.includes(mode)), false, 'boat has no roadside events');
+    else assert.ok(Object.values(EVENTS).some((event) => event.modes.includes(mode)), `${mode} has events`);
+  }
   const { state, seed } = trekUntil('agbo');
   // Both lives are built the same way (from an empty save), so only the seed can make them differ.
   const replay = createLife({}, at(DRY_NOON)); go(replay, 'library', 'trek', DRY_NOON, seed);

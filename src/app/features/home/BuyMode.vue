@@ -14,6 +14,7 @@
 // green/red state uses the same pure rules (src/game/home-layout.ts) so the player sees the answer
 // before pressing Place.
 import { computed } from 'vue'
+import { FURNITURE_PRESENTATION } from '../../../game/content/furniture-presentation.ts'
 import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../../game/content/furniture.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -81,7 +82,7 @@ defineExpose({ keys: (action: string): boolean => buyKey(action) })
   </div>
   <div v-else-if="placed && selectedDef" class="buy-place">
     <header><strong><GameIcon inline kind="furniture" :id="selectedDef.id" :emoji="selectedDef.icon" /> {{ selectedDef.label }} <em class="buy-stars"><StarRating :count="selectedDef.stars" /></em></strong><span>{{ size(selectedDef) }}</span></header>
-    <p class="buy-hint">{{ selectedDef.blurb }}</p>
+    <p class="buy-hint">{{ FURNITURE_PRESENTATION[selectedDef.id]?.blurb }}</p>
     <p v-if="selectedWhy" class="buy-why is-bad" role="status">{{ selectedWhy }}</p>
     <div class="buy-row">
       <button type="button" class="ui-button is-primary" :disabled="Boolean(selectedWhy)" @click="pickItem('move', placed.itemId, placed.id)">Move</button>

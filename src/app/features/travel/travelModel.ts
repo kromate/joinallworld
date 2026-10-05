@@ -137,7 +137,7 @@ export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel
   const from = place(trip?.from ?? state.location), to = place(active.id)
   const wanted = active.kind === 'travel' ? active.mode : undefined
   const mode: TripMode = commute ? { id: 'commute', label: 'Commute to work' }
-    : view.travel?.modes?.find((item) => item.id === wanted) ?? (wanted === 'car' ? { id: 'car', label: 'Your car' } : { id: 'unknown', label: 'On the way' })
+    : view.travel?.destinations?.find(item => item.id === active.id)?.modes.find(item => item.id === wanted) ?? view.travel?.modes?.find((item) => item.id === wanted) ?? (wanted === 'car' ? { id: 'car', label: 'Your car' } : { id: 'unknown', label: 'On the way' })
   const fare = Number.isFinite(trip?.fare) ? trip?.fare ?? null : null
   const rule = commute ? `Cancel to stay at ${from.label}. Nothing was charged for the commute.`
     : fare === null ? `Cancel to stay at ${from.label}. A fare already paid is not refunded.`

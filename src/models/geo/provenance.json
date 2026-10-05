@@ -59,6 +59,19 @@
       "originalSource": "GRID3",
       "retrieved": "2026-10-05"
     },
+    "rivers-osm-water-and-mangroves": {
+      "url": "https://download.geofabrik.de/africa/nigeria-261003.osm.pbf",
+      "sha256": "6dfa568106792fb8a9bba0b12a91e1edfb789d38c452087b2c48bc58326880b5",
+      "bytes": 709273731,
+      "sourceDate": "2026-10-03",
+      "retrieved": "2026-10-05",
+      "license": "Open Database License 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "derivedGeoJSON": "scripts/geo/sources/rivers-water.geojson",
+      "derivedSha256": "176197c043a0975eb5f7d1bfe72cc9e1eca3d2a297f06476eeed0f9681ac7b36",
+      "objectIds": "All 540 natural=water area object IDs and 750 wetland=mangrove area object IDs are embedded in the derived GeoJSON metadata.",
+      "processing": "In an offline pyosmium area pass, natural=water and waterway=riverbank/dock polygons and wetland=mangrove polygons were selected within bbox 6.65..7.60 E, 4.35..5.35 N. Water polygons were unioned, clipped to pinned Rivers ADM1 and topology-preserving simplified at 0.00005 degrees. The seven opened ADM2 polygons were intersected and differenced against that same water mask at 0.0000001-degree coordinate precision to derive paired water/land surfaces. Mangroves were unioned, clipped to the opened area and simplified at 0.00005 degrees. A four-neighbour A* search on a 0.0003-degree water grid within 7.015..7.105 E, 4.70..4.77 N found the 21-point derived jetty path; line-of-sight reduction accepted only segments inside the same water component with a 0.0000001-degree boarding tolerance. It is not a surveyed channel or official ferry schedule. State-overview water and mangrove display topology are simplified further at generation time; the city water navigation mask remains at 0.000001-degree grid."
+    },
     "openstreetmap-ibadan-landmarks": {
       "url": "https://www.openstreetmap.org/copyright",
       "license": "Open Database License 1.0",
@@ -135,6 +148,7 @@
     "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Oyo State and Ibadan local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 33 Oyo local governments are retained in the generated topology; the Ibadan play area selects 11. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Ogun State and local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 20 Ogun local governments are retained; 11 form the Abeokuta, Ota, Ijebu-Ode and Sagamu play footprints and nine remain state context. The Lagos-facing state edge is copied from the accepted Lagos topology selected by the exact shared ADM1 source chain. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
+    "Rivers State and local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 23 source-named Rivers local governments are retained, including Oyigbo; seven open Port Harcourt and 16 remain state context. The raw ADM2 union equals pinned Rivers ADM1 and has zero overlap with pinned Abia ADM1. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Ibadan landmarks and Lagos-Ibadan railway": "© OpenStreetMap contributors. Landmark points and railway relation 10699301 are used under the Open Database License 1.0. The railway is simplified while retaining source vertices; its recorded 23.4 m source gap is disclosed in code. https://www.openstreetmap.org/copyright",
     "Ogun landmarks": "© OpenStreetMap contributors. Selected mapped points and feature centroids for Abeokuta, Ota, Ijebu-Ode, Sagamu and the Ogun state overview are used under the Open Database License 1.0. OOU Ago-Iwoye and Papalanto remain state context outside the opened city footprints. https://www.openstreetmap.org/copyright"
   },

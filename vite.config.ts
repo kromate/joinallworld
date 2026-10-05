@@ -55,11 +55,12 @@ export default defineConfig({
   //           part of the first load, but it changes far less often than the shell.
   build: { minify: 'terser', terserOptions: { ecma: 2020, compress: { passes: 3 }, format: { comments: false } }, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
     if (id === '\0vite/preload-helper.js') return 'vue'
+    if (id.endsWith('/src/game/content/furniture-presentation.ts')) return 'furniture-presentation'
     const cityFile = id.match(/\/src\/game\/cities\/([^/]+)\/([^/]+)\.ts$/)
     if (cityFile) {
       const [, city, file] = cityFile
       if (file === 'index' || file === 'rules' || file === 'links') return 'engine'
-      if (file === 'map' || file === 'mapOverview' || file === 'geometry') return `city-${city}-map`
+      if (file === 'map' || file === 'mapOverview' || file === 'geometry' || file === 'scenery') return `city-${city}-map`
       if (file === 'landmarks' || file === 'rail') return `city-${city}-${file}`
       return `city-${city}-content`
     }

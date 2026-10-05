@@ -224,3 +224,16 @@ export function pointAt(route: Pick<Route, 'points' | 'lengths' | 'length'>, dis
   const t = Math.max(0, Math.min(1, (d - lengths[low]!) / span));
   return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, ry: Math.atan2(b.x - a.x, b.z - a.z), bridge: b.bridge && a.bridge ? b.bridge : (t > 0.5 ? b.bridge : a.bridge) || null };
 }
+
+/** A declared water path, kept on its source vertices in either direction. */
+export function localTripRoute(pack: Pick<CityPack, 'localRoutes'>, from: string, to: string, mode: unknown): Route | null {
+  const declared = pack.localRoutes?.find(route => route.mode === mode && ((route.a === from && route.b === to) || (route.b === from && route.a === to)));
+  if (!declared || declared.points.length < 2) return null;
+  const points = (declared.a === from ? [...declared.points] : [...declared.points].reverse()).map(point => ({ ...point, bridge: null }));
+  const lengths = [0];
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1]!, b = points[i]!;
+    lengths.push(lengths[i - 1]! + Math.hypot(b.x - a.x, b.y - a.y, b.z - a.z));
+  }
+  return { from, to, points, lengths, length: lengths[lengths.length - 1]!, lead: 0, tail: 0, bridges: [] };
+}

@@ -44,7 +44,8 @@
  * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
  * are resolved with the exact camera the host used.
  */
-import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE } from '../game/content/furniture.ts';
+import { KINDS as KIND_TABLE } from '../game/content/furniture.ts';
+import { FURNITURE as CATALOGUE } from '../game/content/furniture-presentation.ts';
 import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
 import { drawAvatar, buildAvatar, POSES } from './characters.ts';
 import type { Pose } from './characters.ts';
@@ -58,7 +59,8 @@ import type * as THREE from 'three';
 import type { Kit } from './kit.ts';
 import type { Colour, SceneCamera, Vec3 } from './types.ts';
 import type { WalkRect } from './movement.ts';
-import type { FurnitureDefinition } from '../types/content.ts';
+import type { FurnitureDefinition as FurnitureRules, FurniturePresentation } from '../types/content.ts';
+type FurnitureDefinition = FurnitureRules & FurniturePresentation;
 import type { LifeState } from '../types/life.ts';
 
 /** The modelling tools a furniture shape draws with (the kit's primitives, bound to one parent group). */

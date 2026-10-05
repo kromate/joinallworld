@@ -47,7 +47,7 @@ import { createKit } from '../scene/kit.ts';
 import { COMING_SOON } from '../game/content/venues.ts';
 import { contentFor } from '../game/cities/runtime.ts';
 import { openingInfo, lagosTime } from '../game/clock.ts';
-import { buildNetwork } from './roads.ts';
+import { buildNetwork, localTripRoute } from './roads.ts';
 import { buildCity, createRaw, LANDMARK_SCALE } from './city-build.ts';
 import { createRig, DEFAULT_PITCH, MIN_DISTANCE } from './camera.ts';
 import { createActor } from './actor.ts';
@@ -306,7 +306,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function startTrip(next: Trip) {
     trip = next; returning = null; settling = false; dueAt = -Infinity; tripCamera = true;
     dismissHint(); following = false;
-    route = network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to);
+    route = localTripRoute(pack, next.from, next.to, next.mode) || (next.mode === 'boat' ? null : network.route(placeKey(next.from), placeKey(next.to)) || straight(next.from, next.to));
+    if (!route) return;
     actor.dot(reducedMotion); actor.setMode(next.mode);
     drawRoute();
     if (shown() && !reducedMotion) rig.ease(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 }), 0.9);

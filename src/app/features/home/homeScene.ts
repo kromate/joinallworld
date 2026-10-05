@@ -5,6 +5,7 @@
 //   receives  'jaw:home-pick'   { id, cell } — a tapped object or floor tile
 //             'jaw:home-scene'  { status, placed } — ready / empty / error
 import { watch } from 'vue'
+import { noteChunkFailure } from '../../state/updateNotice.ts'
 import { useApp } from '../../state/app.ts'
 import { KINDS } from '../../../game/content/furniture.ts'
 import { houseOf } from './houseOf.ts'
@@ -26,7 +27,7 @@ export function show(redraw = true): void {
   if (redraw) api.redrawScene()
 }
 
-function onPick(event: Event): void {
+async function onPick(event: Event): Promise<void> {
   const { game, command, goTo } = useApp()
   const state = game.state.value
   if (state.location !== 'home') return
@@ -47,7 +48,16 @@ function onPick(event: Event): void {
   const spot = KINDS[def.kind]?.spot
   // Selecting the spot goes through the server; the accepted state redraws the scene with the marker.
   if (spot) void goTo('home', spot)
-  else { game.toast(`${def.label} — ${def.blurb}`); if (state.spot) void command('spot', { id: state.spot }) }
+  else {
+    if (state.spot) void command('spot', { id: state.spot })
+    try {
+      const { FURNITURE_PRESENTATION } = await import('../../../game/content/furniture-presentation.ts')
+      if (game.state.value.location === 'home' && H.selected === id) game.toast(`${def.label} — ${FURNITURE_PRESENTATION[def.id]!.blurb}`)
+    } catch {
+      void noteChunkFailure()
+      game.toast('Furniture details could not load. Tap the item to try again.')
+    }
+  }
 }
 
 function onScene(event: Event): void {
@@ -79,7 +89,9 @@ export function startHome(): void {
 
 /** "Try again" on a room that could not be drawn. */
 export function retryRoom(): void {
-  const { game, command } = useApp()
+  const app = useApp()
+  if (!app.scene.venue.value) { location.reload(); return }
+  const { game, command } = app
   sent = ''
   scene.status = 'loading'; scene.placed = 0
   window.dispatchEvent(new CustomEvent('jaw:home-ui', { detail: { selected: H.selected, buy: H.inBuy, ghost: null, retry: true } }))

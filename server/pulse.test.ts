@@ -54,7 +54,7 @@ test('only live sockets are online: polling the pulse is a visit, not presence, 
   assert.equal(polled.visits, 1);
 });
 
-test('visits count one per player per Lagos day, not twice', async (t) => {
+test('visits count one per player per day, not twice', async (t) => {
   const f = await fixture(t);
   const ada = await f.device('Ada'), bola = await f.device('Bola');
   // The first count seeds from the sessions stored so far (Ada and Bola), each counted once, today.

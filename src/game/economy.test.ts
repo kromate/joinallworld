@@ -292,7 +292,7 @@ test('economy: a UNILAG student pays every fee once, is paid for one campus job 
     const scholarships = pay.filter((line) => line.reason === 'UNILAG scholarship');
     assert.ok(scholarships.length <= 1 && scholarships.every((line) => line.amount === UNILAG_BETA_RULES.scholarshipAward), `${at(row)}: one scholarship at most`);
     const jobs = pay.filter((line) => line.reason !== 'UNILAG scholarship');
-    assert.equal(new Set(jobs.map((line) => lagosTime(line.at).day)).size, jobs.length, `${at(row)}: one paid campus job a Lagos day`);
+    assert.equal(new Set(jobs.map((line) => lagosTime(line.at).day)).size, jobs.length, `${at(row)}: one paid campus job a day`);
     assert.ok(jobs.length === row.student.jobDays && jobs.every((line) => line.amount === bestJob), `${at(row)}: ${jobs.length} campus jobs at ₦${bestJob}`);
     assert.ok(flow(row, 'campusPay') <= jobs.length * bestJob + UNILAG_BETA_RULES.scholarshipAward);
     // The degree is not a faucet: over the whole of it the campus pays back less than a helper's wages for the same days.

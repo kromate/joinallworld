@@ -26,7 +26,7 @@ test('until: days and hours, hours and minutes, minutes; never negative', () => 
   assert.equal(until(now + 1, now), '1m', 'a started minute counts')
 })
 
-test('dateTime is Lagos time; count is whole numbers with separators', () => {
+test('dateTime is Nigerian time; count is whole numbers with separators', () => {
   assert.match(dateTime(Date.UTC(2026, 9, 11, 4, 28)), /Sun, 11 Oct, 5:28 am/i)
   assert.equal(count(1234.6), '1,235')
   assert.equal(count('x'), '0')
@@ -57,8 +57,8 @@ test('electionRules: every line is real text with the numbers of this city', () 
   const lines = electionRules(rules)
   assert.equal(lines.length, 9)
   assert.ok(lines.includes('The Polling Unit is not built in this city yet, so for now you vote from this app.'))
-  assert.ok(lines.includes('To run: live here 2 Lagos days and be paid for work on 2 different Lagos days.'))
-  assert.ok(lines.includes('To vote: live here 1 Lagos day and be paid for work on 2 different Lagos days.'))
+  assert.ok(lines.includes('To run: live here 2 days and be paid for work on 2 different days.'))
+  assert.ok(lines.includes('To vote: live here 1 day and be paid for work on 2 different days.'))
   assert.ok(lines.some((line) => line.includes('₦2,000') && line.includes('At most 30 candidates')))
   assert.ok(lines.some((line) => line.includes('At most 3 votes are counted from one network connection.')))
   assert.ok(electionRules({ ...rules, votesPerAddress: 0, pollingVenue: 'polling-unit' }).every((line) => !line.includes('network connection') || line.startsWith('A device')))
@@ -101,7 +101,7 @@ test('hunt: why Search and Claim are off', () => {
   assert.equal(huntSearchWhy(null, true, 0, 3), 'You are on the road. Arrive first.')
   assert.equal(huntSearchWhy(null, false, 3, 3), 'You have found every gem today.')
   assert.equal(huntSearchWhy(null, false, 1, 3), '')
-  assert.equal(huntClaimWhy(null, { claimed: true, found: 3, total: 3 }), 'Already claimed today. New gems at midnight, Lagos time.')
+  assert.equal(huntClaimWhy(null, { claimed: true, found: 3, total: 3 }), 'Already claimed today. New gems at midnight, Nigerian time.')
   assert.equal(huntClaimWhy(null, { claimed: false, found: 1, total: 3 }), 'Find all 3 gems first (1 so far).')
   assert.equal(huntClaimWhy(null, { claimed: false, found: 3, total: 3 }), '')
 })
@@ -131,7 +131,7 @@ test('inClub: only a club venue, and not while travelling', () => {
 test('radioWhy: offline, used up, queue full, cannot afford, ok', () => {
   const radio = { venue: 'quilox', club: true, playing: null, queue: [], price: 500, slotSeconds: 60, perDay: 3, queueMax: 20, usedToday: 0 }
   assert.equal(radioWhy('Offline.', radio, 0, false, 9999), 'Offline.')
-  assert.equal(radioWhy(null, { ...radio, usedToday: 3 }, 0, false, 9999), 'You have used all 3 shout-outs today. They reset at midnight, Lagos time.')
+  assert.equal(radioWhy(null, { ...radio, usedToday: 3 }, 0, false, 9999), 'You have used all 3 shout-outs today. They reset at midnight, Nigerian time.')
   assert.equal(radioWhy(null, radio, 19, true, 9999), 'The queue is full. Try again in a few minutes.')
   assert.equal(radioWhy(null, radio, 0, false, 100), 'Costs ₦500; you have ₦100.')
   assert.equal(radioWhy(null, radio, 0, false, 500), '')

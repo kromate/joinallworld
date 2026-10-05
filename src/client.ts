@@ -1,5 +1,5 @@
 import { initialCity } from './storage-city.ts';
-import { registeredCityIds, cityRules, loadCityContent, isCityId, isOpenCityId } from './game/cities/registry.ts';
+import { registeredCityIds, cityRules, cityDefaultName, loadCityContent, isCityId, isOpenCityId } from './game/cities/registry.ts';
 import { STORAGE_KEY } from './storage-key.ts';
 /**
  * Client model: the browser's read-only mirror of the server-held life, plus networking.
@@ -193,7 +193,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
     state: createLife(campusFor(saved?.state) ? null : saved?.state, { cityId }),
     cityId,
-    identity: { name: saved?.identity?.name || 'New Lagosian' },
+    identity: { name: saved?.identity?.name || cityDefaultName(cityId) },
     hasSavedIdentity: Boolean(saved?.identity),
     session: null, ready: false, busy: false, serverTimeOffset: 0, link: 'connecting',
     serverNow: () => Math.round(now() + client.serverTimeOffset),

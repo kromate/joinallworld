@@ -283,7 +283,7 @@ function transferBlock(state: LifeState, payload: Record<string, unknown>, ctx: 
     return fail(state, 'gift_exceeds_earned', `You can only give away money you have earned from work. You can still give ${naira(Math.max(0, state.social.earned - book.total))}.`);
   }
   const today = book.day === dayOf(state, ctx) ? book : { sent: 0, count: 0 };
-  if (today.count >= L.dailyCount) return fail(state, 'daily_transfer_limit', `You have sent ${L.dailyCount} gifts today. The limit resets at midnight, Lagos time.`);
+  if (today.count >= L.dailyCount) return fail(state, 'daily_transfer_limit', `You have sent ${L.dailyCount} gifts today. The limit resets at midnight, Nigerian time.`);
   if (today.sent + amount > L.dailyAmount) return fail(state, 'daily_transfer_limit', `You can send ${naira(L.dailyAmount)} a day. ${naira(Math.max(0, L.dailyAmount - today.sent))} is left today.`);
   if (!canAfford(state, amount)) return fail(state, 'insufficient_funds', `You do not have enough cash. You have ${naira(state.cash)}.`);
   return null;

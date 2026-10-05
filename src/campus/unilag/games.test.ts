@@ -91,7 +91,7 @@ function player(): Player {
   return api;
 }
 
-test('faculty quiz, discovery and penalties use server state, award no cash and credit once per Lagos day', () => {
+test('faculty quiz, discovery and penalties use server state, award no cash and credit once per day', () => {
   seen.length = 0;
   const p = player(), cash = p.state.cash;
   p.at(localAt(4, 18));
@@ -158,7 +158,7 @@ test('penalty cancellation, clubs and Aluta volunteering respect caps and never 
   assert.equal(Object.hasOwn(gamesSystem.actions, 'unilag.night-class'), false, 'night class remains owned by the student system');
 });
 
-test('weekly event windows use Lagos time exactly', () => {
+test('weekly event windows use Nigerian time exactly', () => {
   assert.deepEqual(eventsAt(localAt(0, 0)).map((event) => event.id), ['freshers']);
   assert.deepEqual(eventsAt(localAt(0, 23, 59)).map((event) => event.id), ['freshers']);
   assert.deepEqual(eventsAt(localAt(1, 0)), []);
@@ -231,7 +231,7 @@ test('leaderboard reducer credits one result per life, day and game, sorts stabl
   assert.deepEqual(campusLeaderboardStandings(board, now, { hall: 'moremi' }).map((item) => item.id), ['ada', 'bola']);
   assert.equal(creditCampusLeaderboard(board, entry('bad', 'ULG-0001-000003', 'quiz', 99), now).code, 'invalid_result');
   assert.equal(creditCampusLeaderboard(board, entry('bad', 'ULG-0001-000003', 'quiz', 5, { faculty: '__proto__' }), now).code, 'invalid_result');
-  assert.equal(sanitizeCampusLeaderboard(board, localAt(7, 10)).records.length, 0, 'a new Lagos week starts a fresh board');
+  assert.equal(sanitizeCampusLeaderboard(board, localAt(7, 10)).records.length, 0, 'a new week starts a fresh board');
 });
 
 test('hostile per-life community state is bounded, cannot forge scores, and round-trips', () => {

@@ -34,6 +34,6 @@ export const failedVerdict = (cityId: string, status: unknown): Verdict => ({ ci
 /** The rules under "How this statement works". */
 export const statementRules = (kept: { lines: number; days: number }): string[] => [
   `The last ${kept.lines} changes are kept line by line and the last ${kept.days} days with activity are kept as daily totals, so older changes stay explained after their lines scroll away.`,
-  'Rent and the loan are collected on Saturdays, Lagos time, even while you are away — they appear here with the date they were due.',
+  'Rent and the loan are collected on Saturdays, Nigerian time, even while you are away — they appear here with the date they were due.',
   '“Check with the server” compares this page with the statement the server computes from its own copy. It changes nothing.',
 ]

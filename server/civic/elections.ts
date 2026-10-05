@@ -78,8 +78,8 @@ export function declareBlock(city: CivicCityRecord, now: number, playerId: strin
   const candidates = electionOf(city, phase.week)?.candidates ?? {};
   if (Object.hasOwn(candidates, playerId)) return { code: 'already_candidate', reason: 'You are already on this week’s ballot.' };
   if (phase.phase !== 'nominations') {
-    return { code: 'nominations_closed', reason: phase.phase === 'voting' ? 'Nominations closed when voting opened on Thursday. They reopen on Monday, Lagos time.'
-      : 'It is results day. Nominations for the next election open on Monday, Lagos time.' };
+    return { code: 'nominations_closed', reason: phase.phase === 'voting' ? 'Nominations closed when voting opened on Thursday. They reopen on Monday, Nigerian time.'
+      : 'It is results day. Nominations for the next election open on Monday, Nigerian time.' };
   }
   if (Object.keys(candidates).length >= ELECTION.maxCandidates) return { code: 'ballot_full', reason: `The ballot is full (${ELECTION.maxCandidates} candidates). Run again next week.` };
   return null;
@@ -98,8 +98,8 @@ export function voteBlock(city: CivicCityRecord, now: number, playerId: string, 
   const election = electionOf(city, phase.week);
   if (election && Object.hasOwn(election.votes, playerId)) return { code: 'already_voted', reason: 'You have already voted in this election. Each player has one vote.' };
   if (phase.phase !== 'voting') {
-    return { code: 'polls_closed', reason: phase.phase === 'nominations' ? 'Polls are not open yet. Voting runs Thursday to Saturday, Lagos time.'
-      : 'Polls closed at midnight. The next vote opens on Thursday, Lagos time.' };
+    return { code: 'polls_closed', reason: phase.phase === 'nominations' ? 'Polls are not open yet. Voting runs Thursday to Saturday, Nigerian time.'
+      : 'Polls closed at midnight. The next vote opens on Thursday, Nigerian time.' };
   }
   if (typeof candidateId !== 'string' || !election || !Object.hasOwn(election.candidates, candidateId)) return { code: 'unknown_candidate', reason: 'Choose a candidate from this week’s ballot.' };
   return null;
@@ -152,7 +152,7 @@ export function announceBlock(city: CivicCityRecord, now: number, playerId: stri
   const mine = city.gov.announcements.filter((item) => item.by.id === playerId);
   const last = mine.at(-1);
   if (last && now - last.at < rules.cooldownMs) return { code: 'announcement_cooldown', reason: `Wait ${Math.ceil((rules.cooldownMs - (now - last.at)) / 60000)} more minutes before the next announcement.` };
-  if (mine.filter((item) => lagosTime(item.at).day === day).length >= rules.perDay) return { code: 'announcement_limit', reason: `A Governor may post ${rules.perDay} announcements a day. Post again after midnight, Lagos time.` };
+  if (mine.filter((item) => lagosTime(item.at).day === day).length >= rules.perDay) return { code: 'announcement_limit', reason: `A Governor may post ${rules.perDay} announcements a day. Post again after midnight, Nigerian time.` };
   return null;
 }
 
@@ -193,8 +193,8 @@ export function notices(city: CivicCityRecord, now: number, cityName = 'Lagos'):
       items.push({ id: `result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new Governor of ${cityName}` : `${cityName} has no Governor this week`,
         text: result.winner ? `Elected with ${result.winner.votes} of ${result.totalVotes} vote${result.totalVotes === 1 ? '' : 's'}.` : result.candidates ? 'Nobody voted, so nobody took office.' : 'Nobody stood for election.' });
     }
-    if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: 'Voting for Governor runs until midnight on Saturday, Lagos time.' });
-    if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: 'Run for Governor before Thursday, Lagos time.' });
+    if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: 'Voting for Governor runs until midnight on Saturday, Nigerian time.' });
+    if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: 'Run for Governor before Thursday, Nigerian time.' });
   }
   for (const item of city.gov.announcements) items.push({ id: `announcement-${item.id}`, kind: 'announcement', at: item.at, title: `Governor ${item.by.name} announced`, text: item.text });
   return items.filter((item) => item.at <= now && item.at > now - 8 * DAY_MS).sort((a, b) => b.at - a.at || (a.id < b.id ? -1 : 1)).slice(0, 12);

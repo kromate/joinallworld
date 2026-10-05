@@ -23,7 +23,7 @@ import { addShoutout, radioView, shoutBlock, validateSong } from './radio.ts';
 import { checkIn, counters, neighboursView, richListView, houseOf } from './residents.ts';
 
 const DAY = 86400000;
-const MONDAY = lagosDayStart(4); // first Monday after the epoch, 00:00 Lagos time
+const MONDAY = lagosDayStart(4); // first Monday after the epoch, 00:00 Nigerian time
 /** The value, or a thrown error naming what was missing (a test that finds nothing fails at once, as a property read on null did). */
 function must<T>(value: T | null | undefined, what = 'value'): T {
   if (value === null || value === undefined) throw new Error(`expected a ${what}`);
@@ -162,7 +162,7 @@ test('club radio: slots chain on server time, daily cap and full queue are refus
   assert.equal(radioView(data, second.endsAt, 'library').playing, null);
   addShoutout(data, 3000, ada, 'library', { title: 'Three', artist: 'A' }, 'r3');
   assert.equal(shoutBlock(data, 4000, 'ada', 'library')?.code, 'shoutout_limit');
-  assert.equal(shoutBlock(data, 4000 + DAY, 'ada', 'library'), null, 'the cap resets on the next Lagos day');
+  assert.equal(shoutBlock(data, 4000 + DAY, 'ada', 'library'), null, 'the cap resets on the next day');
   const crowd = city();
   for (let i = 0; i < RADIO.queueMax; i++) addShoutout(crowd, 0, { id: `p${i}`, name: 'P' }, 'quilox', { title: 'T', artist: 'A' }, `q${i}`);
   assert.equal(shoutBlock(crowd, 0, 'new', 'quilox')?.code, 'queue_full');
@@ -182,7 +182,7 @@ test('residents: counts are real, presence comes from the online check, opt-outs
   assert.deepEqual(counters(data, MONDAY + 1000, ttl, online), { players: 2, online: 1, visits: 2 });
   assert.equal(data.hunt.found, 2, 'gems are counted once however often the player checks in');
   checkIn(data, MONDAY + DAY, { id: 'ada', name: 'Ada' }, rich, ttl);
-  assert.equal(data.visits, 3, 'a new Lagos day is a new visit');
+  assert.equal(data.visits, 3, 'a new day is a new visit');
   const hood = neighboursView(data, MONDAY + DAY, ttl, online, { bola: { directory: true } }, 'ada');
   assert.equal(hood.total, 2); assert.equal(hood.online, 1); assert.equal(hood.listed, 1);
   assert.deepEqual(hood.districts.find((group) => group.id === 'yaba'), { id: 'yaba', label: 'Yaba', count: 1, online: 0, homes: [] });
@@ -293,7 +293,7 @@ test('gem hunt: deterministic per player and day, found by searching and by acti
       const refused = dispatch(state, { type: 'travel', payload: { id: gem.venue, mode: 'trek' } }, at(now, 'closed'));
       assert.equal(refused.code, 'closed', 'a gem behind a closed door waits for opening time'); assert.match(reasonOf(refused), /opens/);
       settle(minutesUntilOpen(must(VENUES[gem.venue], 'registered venue').hours, now) * 60);
-      assert.equal(lagosTime(now).day, hunt.day, 'every venue opens at some point of the same Lagos day');
+      assert.equal(lagosTime(now).day, hunt.day, 'every venue opens at some point of the same day');
     }
     if (state.location !== gem.venue) {
       assert.match(searchForGem(state, {}, at(now)).code, /nothing_here|wrong_spot|activity_needed/);
@@ -341,11 +341,11 @@ test('civic payments: every refusal names what is missing and charges nothing', 
   const fresh = civicEligibility(state, at(MONDAY));
   assert.equal(fresh.days, 0); assert.equal(fresh.run[0]?.met, false); assert.equal(fresh.run[1]?.met, true); assert.equal(fresh.pollingVenue, 'polling-unit');
   const early = fileCandidacy(state, {}, at(MONDAY));
-  assert.equal(early.code, 'too_new'); assert.match(reasonOf(early), /at least 2 Lagos days/); assert.equal(state.cash, 5000);
+  assert.equal(early.code, 'too_new'); assert.match(reasonOf(early), /at least 2 days/); assert.equal(state.cash, 5000);
   assert.equal(castVote(state, {}, at(MONDAY)).code, 'too_new');
   // Age is not enough: the life must have been paid for work on two different Lagos days.
   const idle = castVote(state, {}, at(MONDAY + DAY));
-  assert.equal(idle.code, 'work_days'); assert.match(reasonOf(idle), /paid for work on at least 2 different Lagos days/); assert.match(reasonOf(idle), /on 2 more days/);
+  assert.equal(idle.code, 'work_days'); assert.match(reasonOf(idle), /paid for work on at least 2 different days/); assert.match(reasonOf(idle), /on 2 more days/);
   assert.equal(fileCandidacy(state, {}, at(MONDAY + 2 * DAY)).code, 'work_days'); assert.equal(state.cash, 5000, 'a refused candidacy charges nothing');
   state.civic.work = { days: 2, last: lagosTime(MONDAY).day };
   // The Polling Unit exists in the merged city, so a vote is cast there and nowhere else.
@@ -383,7 +383,7 @@ test('the civic rule modules stay portable: no Node-only imports, clocks or rand
   }
 });
 
-test('work days: one per Lagos day with a paid activity, never from unpaid ones, and hostile saves are reset', () => {
+test('work days: one per day with a paid activity, never from unpaid ones, and hostile saves are reset', () => {
   const state = life();
   const paid = { def: { id: 'x', reward: 300 }, tags: [] }, unpaid = { def: { id: 'y', reward: 0 }, tags: [] };
   const emitDone = (data: object, now: number) => { Reflect.apply(civicSystem.on['activity.completed'], civicSystem.on, [state, data, at(now)]); };

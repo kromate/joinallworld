@@ -217,7 +217,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   // Same Lagos day: no second paid shift, however long we wait or however often we reload.
   player.rest();
   const again = player.act('activity', { id: 'teaching-shift' });
-  assert.equal(again.code, 'shift_done'); assert.match(again.reason ?? '', /one per Lagos day.*Next shift: tomorrow \(Tuesday\)/);
+  assert.equal(again.code, 'shift_done'); assert.match(again.reason ?? '', /one per day.*Next shift: tomorrow \(Tuesday\)/);
   const reloaded = createLife(JSON.parse(JSON.stringify(player.state)), player.at());
   assert.equal(dispatch(reloaded, { type: 'activity', payload: { id: 'teaching-shift' } }, player.at()).code, 'shift_done');
   player.step(3600); assert.equal(player.state.cash, 8000);
@@ -337,7 +337,7 @@ test('switching needs confirmation and restarts the ladder; quitting clears it; 
   assert.equal(player.act('career.switch', { id: 'teaching' }).code, 'switched');
   assert.deepEqual([player.state.career.level, player.state.career.performance], [1, START_PERFORMANCE], 'coming back starts over');
   player.state.activeAction = null; player.state.location = 'park'; player.state.spot = 'work'; player.rest();
-  assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done', 'still one paid career shift per Lagos day');
+  assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done', 'still one paid career shift per day');
   assert.equal(player.state.cash, cash);
 
   assert.equal(player.command('quit-job').code, 'quit');
@@ -358,7 +358,7 @@ test('switching needs confirmation and restarts the ladder; quitting clears it; 
   assert.equal(player.command('set-auto-go', { on: 'yes' }).code, 'invalid_setting');
 });
 
-test('Go automatically starts one free, cancellable commute per Lagos day and only when a shift is workable', () => {
+test('Go automatically starts one free, cancellable commute per day and only when a shift is workable', () => {
   const player = life({ location: 'home' });
   player.rest();
   assert.equal(player.act('apply-job', { id: 'teaching' }).code, 'applied');
@@ -484,7 +484,7 @@ function onboarded(house = 'yaba', lottery: string | { id: string; loan: boolean
 }
 const secondsUntil = (player: { now: number }, ms: number) => Math.ceil((ms - player.now) / 1000);
 
-test('billing weeks start on Saturday 00:00 Lagos time and rents follow the rent table', () => {
+test('billing weeks start on Saturday 00:00 Nigerian time and rents follow the rent table', () => {
   assert.deepEqual(Object.fromEntries(Object.values(RENTS).map((house) => [house.id, house.rent])), { mushin: 2400, yaba: 6000, lekki: 17000, ikoyi: 250000, banana: 1500000 });
   assert.deepEqual(LOAN, { principal: 60000, total: 72000, weekly: 12000 });
   const saturday = Date.UTC(2026, 0, 9, 23); // Sat 10 Jan 00:00 Lagos

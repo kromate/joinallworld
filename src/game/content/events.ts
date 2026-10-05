@@ -52,7 +52,7 @@ export const EVENTS: Record<RoadsideEventId, RoadsideEvent> = {
       { id: 'insist', label: 'Insist on your change', hint: 'Charisma decides', result: '',
         check: { skill: 'charisma', base: 0.45, perLevel: 0.07, max: 0.95,
           success: { reward: 50, xp: { charisma: 10 }, result: 'The whole bus backed you. The conductor produced ₦50.' },
-          failure: { effects: { fun: -3 }, xp: { charisma: 4 }, result: 'He drove off with your ₦50. Lagos.' } } },
+          failure: { effects: { fun: -3 }, xp: { charisma: 4 }, result: 'He drove off with your ₦50. That is the road.' } } },
       { id: 'leave', label: 'Leave it', hint: 'Not worth the stress', effects: { fun: -1 }, result: 'You let the ₦50 go.' },
     ],
   },

@@ -13,7 +13,7 @@ export const VOLUNTEER_ACTIVITY: Readonly<AttachedActivity> = Object.freeze<Atta
   id: 'unilag-volunteer', label: 'Aluta volunteering', icon: '🤝', duration: VOLUNTEER_RULES.seconds,
   cost: 0, reward: 0, effects: { fun: VOLUNTEER_RULES.fun }, xp: { charisma: VOLUNTEER_RULES.xp },
   tags: ['aluta', 'volunteering', 'community'], beta: true,
-  note: 'Original beta activity: once per Lagos day, no cash reward.',
+  note: 'Original beta activity: once per day, no cash reward.',
   where: { venue: 'unilag', spot: 'student-union', spotLabel: 'Student Union', spotIcon: '🤝' },
 });
 

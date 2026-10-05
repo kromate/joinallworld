@@ -57,7 +57,7 @@ function go(venue: string, spot?: string): void { shell.close(); void goTo(venue
       <ul class="career-chips" aria-label="Work days">
         <li v-for="chip in career.chips" :key="chip.name" :class="{ 'is-work': chip.work, 'is-today': chip.today }" :title="`${chip.name}: ${chip.work ? 'work day' : 'day off'}${chip.today ? ' (today)' : ''}`" :aria-label="chipWords(chip)">{{ chip.letter }}</li>
       </ul>
-      <p class="career-legend">Filled = work day · ring = today ({{ career.today.weekday }}, Lagos time)</p>
+      <p class="career-legend">Filled = work day · ring = today ({{ career.today.weekday }}, Nigerian time)</p>
       <p class="career-hours">{{ career.hours }}</p>
     </section>
     <details class="ui-details"><summary>How work works</summary><ul class="career-rules"><li v-for="rule in career.rules" :key="rule">{{ rule }}</li></ul></details>

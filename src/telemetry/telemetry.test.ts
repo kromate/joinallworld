@@ -575,7 +575,7 @@ test('every event the game’s screens report is in the catalogue, with every pr
   for (const [name, spec] of Object.entries(EVENTS)) if (spec.from === 'client' && name !== '$pageview') assert.ok(new RegExp(`['"]${name}['"]`).test(derived), `${name} is catalogued as derived but telemetry does not emit it`);
 });
 
-test('session_start fires once per Lagos day per device, with the first-seen date; day2_return once, on the next day', async () => {
+test('session_start fires once per day per device, with the first-seen date; day2_return once, on the next day', async () => {
   let time = Date.UTC(2026, 9, 4, 22, 30); // 23:30 in Lagos on 4 October
   const first = running({ now: () => time, stored: { consent: 'granted', at: 1 } });
   first.core.session({ id: PUBLIC }, false, 5); first.core.identify(PUBLIC); first.core.state(createLife({}), createLife(undefined), client());

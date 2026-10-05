@@ -36,7 +36,7 @@ export const STAMP_CARD: Readonly<StampCard> = Object.freeze({ need: 4, stars: 3
 /** Titles for days lived actively in the city. The count only ever goes up. */
 export const DAY_TITLES: readonly DayTitle[] = Object.freeze([
   { id: 'settled', days: 7, label: 'Settled in' },
-  { id: 'lagosian', days: 30, label: 'True Lagosian' },
+  { id: 'lagosian', days: 30, label: 'True local' },
   { id: 'city-elder', days: 100, label: 'City elder' },
 ]);
 /** Earned by finishing a whole weekly set; kept for good. */

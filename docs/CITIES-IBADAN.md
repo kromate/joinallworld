@@ -18,7 +18,20 @@ The city map uses the shared Nigeria projection and renders those 11 local gover
 
 ## The map
 
-The Ibadan pack is drawn from the eleven local governments' real boundaries in the shared frame, one unit to 100 m, so it sits at its true size beside Lagos (the eleven cover about 2,875 km2, Lagos State's twenty local governments about 3,548 km2). The main roads are OpenStreetMap motorway, trunk and primary ways in the play area and named secondary ways in the core (`roads.ts`, rebuilt by `scripts/geo/build-ibadan-roads.ts`, simplified and quantised, source hash in its header). The land around Oyo State (Ogun, Osun, Ondo, Kwara and the Republic of Benin) is drawn flat and quiet under the whole-state view from the Nigeria atlas data, with Ogun's reserved city answering a tap with "Opening soon". Ibadan is inland: no water is drawn and the whole-state view is centred, not nudged north for a coast.
+The Ibadan pack is drawn from the eleven local governments' real boundaries in the shared frame, one unit to 100 m, so it sits at its true size beside Lagos (the eleven cover about 2,875 km2, Lagos State's twenty local governments about 3,548 km2). The main roads are OpenStreetMap motorway, trunk and primary ways in the play area and named secondary ways in the core (`roads.ts`, rebuilt by `scripts/geo/build-ibadan-roads.ts`, simplified and quantised, source hash in its header). The land around Oyo State (Ogun, Osun, Ondo, Kwara and the Republic of Benin) is drawn flat and quiet under the whole-state view from the Nigeria atlas data, with Ogun's reserved city answering a tap with "Opening soon". Ibadan is inland: there is no sea (only the Ogunpa and the Eleyele Reservoir, below) and the whole-state view is centred, not nudged north for a coast.
+
+### Character of the map
+
+The pack carries what makes Ibadan read as Ibadan from above (`character.ts`, drawn by `src/map3d/city-build.ts`; every field is optional, so Lagos is unchanged):
+
+- Old, dense, brown-roofed Mapo, Oja'ba, Beere, Oje, Oke Aremo and Dugbe against planned, leafy Bodija, the University of Ibadan, Jericho and Agodi: a ground tint and a roof palette per area.
+- Six hills (Mapo, Oke Aare, Oke Ado, Oke Sapati, Oke Padre, Agodi) as low shaded mounds, one mesh. Their centres are approximate (the bundled data holds no peaks) and their rise is exaggerated to about 100 m. Landmarks, roads, houses, doors and the route on a hill stand on it (`src/map3d/relief.ts`).
+- The Ogunpa river and the Eleyele Reservoir from OpenStreetMap (`water.ts`, rebuilt by `scripts/geo/build-ibadan-water.ts`), the standard-gauge railway with the Obafemi Awolowo station, and the expressways and Ring Road as the widest, darkest roads.
+- Landmark icons for Cocoa House, Mapo Hall, Bower's Tower, the University clock tower and the Adamasingba stadium.
+- The map's whole-extent button is named by the pack (`extent`): 'Whole city' for these eleven local governments; a pack with no `extent` says 'Whole state' when it draws a state's surroundings, as Lagos does.
+- Orita Challenge Interchange stands at the junction of Challenge Road, the Lagos-Ibadan expressway (A1) and Ring Road in the bundled roads (3.8793 E, 7.3482 N). The boundary data puts that junction in Ibadan South-East, a little north of Oluyole.
+
+Name labels are level-of-detail: the player's place, picked and next places and the pack's `notable` landmarks come first, and an icon that would still overlap another is left out until the view is closer.
 
 ## Playable places
 

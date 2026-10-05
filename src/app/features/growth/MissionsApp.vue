@@ -34,7 +34,7 @@ const noMissions = computed(() => Boolean(m.value) && !m.value?.daily.length && 
 const rules = computed(() => [
   'Three missions a day and three a week: one about your life, one about the city, one about people.',
   `A daily mission pays ${money(m.value?.daily[0]?.cash ?? 250)} and a weekly one ${money(m.value?.weekly[0]?.cash ?? 1000)}, once, when you collect it. All three of a set add stars.`,
-  'Unfinished missions are replaced at midnight (weekly ones on Monday), Lagos time. Nothing is taken from you for missing them.',
+  'Unfinished missions are replaced at midnight (weekly ones on Monday), Nigerian time. Nothing is taken from you for missing them.',
   'You can swap one unfinished daily mission a day.',
   'Your count of days only ever goes up. There is no streak to lose.',
 ])

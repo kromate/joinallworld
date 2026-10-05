@@ -239,7 +239,7 @@ test('hostel transfers use inventory APIs and campus jobs pay once per Lagos sta
   p.at(lagosAt(1, 23, 59, 30));
   completeTimed(p, 'unilag.job', { id: 'lab-assistant' }, UNILAG_BETA_RULES.campusJobSeconds);
   assert.equal(p.state.unilagStudent.lifetime.campusJobDays.length, 2);
-  assert.equal(p.act('unilag.job', { id: 'lab-assistant' }).code, 'started', 'the new Lagos day is still available after a cross-midnight job');
+  assert.equal(p.act('unilag.job', { id: 'lab-assistant' }).code, 'started', 'the new day is still available after a cross-midnight job');
   p.step(UNILAG_BETA_RULES.campusJobSeconds);
   assert.equal(p.state.ledger.filter((line) => line.reason === 'UNILAG Lab assistant').length, 2);
 });
@@ -277,7 +277,7 @@ test('resuming a deferred term whose deferral day was lost pauses nothing', () =
   term.deferredAtDay = null; // what sanitize() stores when the saved deferredAtDay is invalid
   p.at(p.now + 3 * DAY);
   assert.equal(p.act('unilag.resume').code, 'resumed');
-  assert.equal(termOf(p.state).deadlineDay, deadline, 'no pause by the whole Lagos day number');
+  assert.equal(termOf(p.state).deadlineDay, deadline, 'no pause by the whole day number');
   assert.equal(termOf(p.state).deferredDays, 0);
 });
 

@@ -184,7 +184,7 @@ test('missions: hostile saved input is rebuilt to a valid slice', () => {
   }
 });
 
-test('calendar: weekly events recur on Lagos time, also across midnight; dated events hold their days; a closed venue never hosts', () => {
+test('calendar: weekly events recur on Nigerian time, also across midnight; dated events hold their days; a closed venue never hosts', () => {
   const friday = lagosDayStart(TODAY + 4); // Monday + 4
   assert.equal(lagosTime(friday).weekday, 5);
   const club = (at: number) => eventsAt(at, 'lagos').some((event) => event.id === 'club-night');

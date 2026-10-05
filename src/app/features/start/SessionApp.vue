@@ -12,6 +12,7 @@
 // what happened and puts "Start a new life" one tap away, with "Try again" beside it.
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
+import { isDefaultName } from '../../../game/cities/registry.ts'
 import { problemOf } from './quickStartModel.ts'
 import { LEGACY_CHARACTER_URL, nicknameOf } from './sessionModel.ts'
 
@@ -20,7 +21,7 @@ const { game, shell } = useApp()
 const view = game.view
 const expired = computed(() => (props.params && typeof props.params === 'object' ? (props.params as { reason?: unknown }).reason : null) === 'expired')
 const problem = computed(() => problemOf(props.params))
-const kept = computed(() => (view.value.name && view.value.name !== 'New Lagosian' ? view.value.name : ''))
+const kept = computed(() => (view.value.name && !isDefaultName(view.value.name) ? view.value.name : ''))
 const nickname = ref(problem.value?.name ?? kept.value)
 
 function start(name: string | null): void {

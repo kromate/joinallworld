@@ -115,7 +115,7 @@ const dropProgramme = async (): Promise<void> => { if ((await act('unilag.drop')
   </template>
 
   <CampusCard icon="💼" heading="Scholarship and campus jobs">
-    <p>A passed semester with a GPA of {{ Number(rules?.scholarshipCgpa ?? 4).toFixed(2) }} pays the one-time {{ money(rules?.scholarshipAward ?? 200) }} scholarship. One campus job can be completed per Lagos day.</p>
+    <p>A passed semester with a GPA of {{ Number(rules?.scholarshipCgpa ?? 4).toFixed(2) }} pays the one-time {{ money(rules?.scholarshipAward ?? 200) }} scholarship. One campus job can be completed per day.</p>
     <div v-for="job in campusJobs" :key="job.id" class="campus-row">
       <div><strong>{{ job.label }}</strong><small>{{ title(job.spot) }} · {{ money(job.pay) }}</small></div>
       <CampusControl v-if="at(state, job.spot)" primary label="Start job" :reason="jobReason(blocked, student, doneToday, true, job.spot)" @press="act('unilag.job', { id: job.id })" />

@@ -76,7 +76,7 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
     <section v-if="!rent" class="bank-card" aria-label="Rent">
       <header><span class="bank-card-mark" aria-hidden="true"><GameIcon name="home" /></span><div><b>Rent</b></div></header>
       <div class="bank-note">No rent yet: it starts when you move into a rented home.</div>
-      <HowItWorks id="bank-rent" :rules="['Once you live in a rented home, its rent is collected here automatically every Saturday (Lagos time), even while you are away.', 'Missed-rent rules are original beta rules.']" />
+      <HowItWorks id="bank-rent" :rules="['Once you live in a rented home, its rent is collected here automatically every Saturday (Nigerian time), even while you are away.', 'Missed-rent rules are original beta rules.']" />
     </section>
     <section v-else class="bank-card" :class="{ 'is-warning': rent.arrears > 0 }" aria-label="Rent">
       <header>

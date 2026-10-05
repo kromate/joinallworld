@@ -191,7 +191,7 @@ export function createPhone({ dialog, content, panels, host }: { dialog: HTMLDia
     const energy = Math.max(0, Math.min(100, Math.round(state.needs?.energy ?? 0)));
     const online = Boolean(view.connected);
     const level = energy <= 15 ? 'is-low' : energy <= 35 ? 'is-mid' : '';
-    return `<button class="ph-status-btn" data-ph-shade aria-label="Notifications. Lagos time ${esc(TIME.format(new Date(view.now)))}">${esc(TIME.format(new Date(view.now)))}</button>
+    return `<button class="ph-status-btn" data-ph-shade aria-label="Notifications. Nigerian time ${esc(TIME.format(new Date(view.now)))}">${esc(TIME.format(new Date(view.now)))}</button>
       <span class="ph-sys"><span class="ph-signal${online ? '' : ' is-off'}" role="img" aria-label="${online ? 'Connected to the game server' : 'No connection to the game server'}"><i></i><i></i><i></i><i></i></span><b>${online ? '4G' : 'No service'}</b>
       <span class="ph-batt ${level}" role="img" aria-label="Battery: your Sim’s Energy is ${energy}%" style="--level:${energy}%"><i></i></span><b>${energy}%</b></span>`;
   }

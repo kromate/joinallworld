@@ -25,7 +25,7 @@ import { WebSocket } from 'ws';
 
 const TOKEN = 'operator-token-for-tests-0123456789';
 const DAY = 86400000, HOUR = 3600000;
-const MONDAY = 4 * DAY - HOUR; // the Monday after the fixture's start (a Thursday, 01:01 Lagos time), 00:00 Lagos time
+const MONDAY = 4 * DAY - HOUR; // the Monday after the fixture's start (a Thursday, 01:01 Nigerian time), 00:00 Nigerian time
 
 /** What a JSON answer may carry in these tests (the documented bodies, read loosely); a field a route does not send reads as undefined. */
 interface ReportRow { id: string; by: string; byName: string; about: string; reason: string; text: string; evidence: string[]; status: string; note: string }

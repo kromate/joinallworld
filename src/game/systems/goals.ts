@@ -455,7 +455,7 @@ const actions = {
     const g = state.goals, slot = payload?.slot;
     if (typeof slot !== 'number' || !Number.isInteger(slot) || slot < 0 || slot >= g.wishes.length) return fail(state, 'invalid_wish', 'Choose one of your active wishes to re-roll.');
     if (rerollsOf(state, ctx).left <= 0) {
-      return fail(state, 'no_rerolls', `You have used all ${WISH_REROLLS_PER_DAY} wish re-rolls for today. They reset at midnight, Lagos time.`);
+      return fail(state, 'no_rerolls', `You have used all ${WISH_REROLLS_PER_DAY} wish re-rolls for today. They reset at midnight, Nigerian time.`);
     }
     const current = g.wishes[slot], old = current ? wishTable(state)[current.id] : undefined; // slot is in range
     const next = pickWish(state, ctx?.rng, old?.id);
@@ -571,7 +571,7 @@ export default {
         const n = wish.on === 'earn' && entry.day !== day ? 0 : Math.min(entry.n, target);
         return { slot, id: wish.id, label: wish.label, hint: wish.hint, icon: wish.icon, stars: WISH_STARS, progress: n, target, money: wish.on === 'earn', beta: Boolean(wish.beta) };
       }),
-      rerolls: { ...rerolls, blocked: rerolls.left > 0 ? null : `No re-rolls left today (${WISH_REROLLS_PER_DAY} a day). They reset at midnight, Lagos time.` },
+      rerolls: { ...rerolls, blocked: rerolls.left > 0 ? null : `No re-rolls left today (${WISH_REROLLS_PER_DAY} a day). They reset at midnight, Nigerian time.` },
       granted: g.granted,
       dream: g.dream ? { ...dreamFor(state.estate.city, g.dream), progress, percent: Math.floor(progress * 100), done: g.dreamDone, reward: DREAM_REWARD } : null,
       dreams: g.dream ? [] : dreamsFor(state.estate.city),

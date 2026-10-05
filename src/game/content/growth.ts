@@ -31,5 +31,5 @@ export const REFERRAL: Readonly<ReferralRules> = Object.freeze({
   linkWithinDays: 3,
   /** Links one network address may attach to one inviter in seven days (hostels and carriers share addresses). */
   perAddressPerWeek: 3,
-  titles: [{ id: 'connector', count: 3, label: 'Connector' }, { id: 'area-mayor', count: 10, label: 'Area Mayor' }, { id: 'big-name', count: 25, label: 'Lagos Big Name' }],
+  titles: [{ id: 'connector', count: 3, label: 'Connector' }, { id: 'area-mayor', count: 10, label: 'Area Mayor' }, { id: 'big-name', count: 25, label: 'Big Name' }],
 });

@@ -73,7 +73,7 @@ export const EVENTS: Record<string, EventSpec> = {
   activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
   first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 6.' },
   first_job_shift: { from: 'client', props: { job_id: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed work shift.', why: 'Funnel step 7.' },
-  streak_day: { from: 'client', props: { days: 'number', stamps: 'number' }, when: 'The life’s count of days lived actively went up (once per Lagos day; the count never goes down). stamps: days played this week.', why: 'Return rhythm, counted kindly: days played, not days missed.' },
+  streak_day: { from: 'client', props: { days: 'number', stamps: 'number' }, when: 'The life’s count of days lived actively went up (once per day; the count never goes down). stamps: days played this week.', why: 'Return rhythm, counted kindly: days played, not days missed.' },
   event_joined: { from: 'client', props: { venue_id: 'string', total: 'number' }, when: 'The player showed up at an event of the calendar (the life’s count of events attended went up).', why: 'Do scheduled events bring people to a place?' },
 
   // ---- Where you live (the world layer: src/ui/panels/lga-card.js, world-panels.js, src/life-main.js)

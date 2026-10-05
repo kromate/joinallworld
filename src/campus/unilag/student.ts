@@ -374,7 +374,7 @@ function closeSemester(state: LifeState, payload: Record<string, unknown>, ctx: 
   if (!term || !['studying', 'deferred'].includes(student.status)) return fail(state, 'not_registered', 'There is no registered semester to close.');
   if (student.status === 'deferred') return fail(state, 'deferred', 'Resume the semester before closing it.');
   const today = todayOf(state, ctx);
-  if (today < term.deadlineDay) return fail(state, 'semester_running', `The semester closes in ${term.deadlineDay - today} Lagos day(s).`);
+  if (today < term.deadlineDay) return fail(state, 'semester_running', `The semester closes in ${term.deadlineDay - today} day(s).`);
   const semester = must(semesterOf(student.programme, term.semester), 'its semester');
   const missing = semester.courses.filter((course) => must(term.assessments[course.id], 'assessments').test === null);
   if (missing.length) return fail(state, 'tests_required', `Complete every course test first: ${missing.map((course) => course.id).join(', ')}.`);
@@ -427,7 +427,7 @@ function resumeSemester(state: LifeState, payload: Record<string, unknown>, ctx:
   const paused = term.deferredAtDay === null ? 0 : Math.max(0, todayOf(state, ctx) - term.deferredAtDay);
   if (term.deferredDays + paused > MAX_DEFERRED_DAYS) return fail(state, 'defer_limit', 'This semester has reached the supported one-year deferral limit.');
   term.deferredDays += paused; term.deadlineDay += paused; term.deferredAtDay = null; student.status = 'studying';
-  state.message = `Semester resumed. The new closing day is Lagos day ${term.deadlineDay}.`;
+  state.message = `Semester resumed. The new closing day is day ${term.deadlineDay}.`;
   return ok(state, 'resumed');
 }
 
@@ -513,7 +513,7 @@ function campusJob(state: LifeState, payload: Record<string, unknown>, ctx: Life
   if (!student.studentId || ['none', 'admitted', 'dropped', 'graduated'].includes(student.status)) return fail(state, 'student_required', 'Matriculate as a current student before taking a campus job.');
   const place = campusSpot(state, job.spot, `starting the ${job.label} job`); if (place) return place;
   const day = todayOf(state, ctx);
-  if (student.lifetime.campusJobDays.includes(day)) return fail(state, 'campus_job_done', 'You already completed one paid campus job this Lagos day.');
+  if (student.lifetime.campusJobDays.includes(day)) return fail(state, 'campus_job_done', 'You already completed one paid campus job this day.');
   if (!canCredit(state, job.pay)) return fail(state, 'balance_limit', 'Your balance cannot receive this campus-job pay.');
   state.activeAction = { kind: CAMPUS_STUDY_KIND, id: job.id, duration: UNILAG_BETA_RULES.campusJobSeconds,
     remaining: UNILAG_BETA_RULES.campusJobSeconds, task: 'job', startedDay: day, startedMinute: lagosTime(nowOf(state, ctx)).minuteOfDay };

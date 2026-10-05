@@ -150,7 +150,7 @@ export function closeSemesterReason(blocked: string, student: UnilagStudentView,
   const allTests = student.courses.every((course) => course.test !== null)
   const deadline = student.term?.deadlineDay ?? today
   return {
-    reason: first(blocked, student.status === 'deferred' ? 'Resume this semester first.' : '', !allTests ? 'Complete every course test first.' : '', today < deadline ? `Semester closes in ${deadline - today} Lagos day(s).` : ''),
+    reason: first(blocked, student.status === 'deferred' ? 'Resume this semester first.' : '', !allTests ? 'Complete every course test first.' : '', today < deadline ? `Semester closes in ${deadline - today} day(s).` : ''),
     primary: allTests && today >= deadline,
   }
 }

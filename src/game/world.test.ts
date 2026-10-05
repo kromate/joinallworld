@@ -634,7 +634,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
   }
   assert.equal(done, GIG_DAILY_LIMIT);
   const refusal = need(refused);
-  assert.equal(refusal.code, 'gig_limit'); assert.match(why(refusal), /today’s 8 paid gigs\. Gigs open again at midnight, Lagos time\. Your job’s shift is not affected\./);
+  assert.equal(refusal.code, 'gig_limit'); assert.match(why(refusal), /today’s 8 paid gigs\. Gigs open again at midnight, Nigerian time\. Your job’s shift is not affected\./);
   const card = viewLife(state, at(now)).activities.cards.find((item) => item.reward > 0);
   assert.equal(need(need(card).blocked).code, 'gig_limit', 'the card itself says why it is closed');
   // The starter job's shift still pays today.
@@ -649,7 +649,7 @@ test('daily gig limit: paid gigs across the whole city stop at the limit and reo
   assert.equal(viewLife(state, at(now)).travel.gigs.used, 0);
 });
 
-test('a found wallet is offered at most once per Lagos day', () => {
+test('a found wallet is offered at most once per day', () => {
   assert.equal(EVENTS.wallet.oncePerDay, true);
   assert.deepEqual(Object.values(EVENTS).filter((event) => event.choices.some((choice) => (choice.reward ?? 0) >= 100 || (choice.check?.success?.reward ?? 0) >= 100)).map((event) => event.id), ['wallet'], 'it is the only event that pays');
   let now = MONDAY_NOON, wallets = 0, trips = 0;

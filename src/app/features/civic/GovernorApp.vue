@@ -99,7 +99,7 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
 
       <SectionTitle>{{ data.phase === 'results' ? 'This week’s result' : 'Candidates' }}</SectionTitle>
       <EmptyState v-if="!data.election.candidates.length && data.phase === 'nominations'" icon="ballot" title="Nobody has declared yet" text="Be the first: see what you need under “Run for office” below." />
-      <EmptyState v-else-if="!data.election.candidates.length" icon="ballot" title="Nobody stood in this election" text="Nominations open again on Monday, Lagos time." />
+      <EmptyState v-else-if="!data.election.candidates.length" icon="ballot" title="Nobody stood in this election" text="Nominations open again on Monday, Nigerian time." />
       <template v-else>
         <div class="governor-ballot">
           <div v-for="candidate in data.election.candidates" :key="candidate.id" class="governor-candidate" :class="{ 'is-chosen': data.election.yourVote === candidate.id }">
@@ -132,7 +132,7 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
       <SectionTitle>Run for office</SectionTitle>
       <section class="ui-card">
         <p v-if="!you" class="civic-note">Connect to see whether you can run.</p>
-        <p v-else-if="you.isCandidate" class="civic-note"><GameIcon inline name="check" /> You are on this week’s ballot. Voting runs Thursday to Saturday, Lagos time.</p>
+        <p v-else-if="you.isCandidate" class="civic-note"><GameIcon inline name="check" /> You are on this week’s ballot. Voting runs Thursday to Saturday, Nigerian time.</p>
         <template v-else>
           <p class="civic-note">What you need to run, and where you stand:</p>
           <ul class="civic-checks">

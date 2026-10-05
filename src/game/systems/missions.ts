@@ -174,9 +174,9 @@ export function claimMission(state: LifeState, payload: Record<string, unknown>,
   if (!open(state)) return fail(state, 'missions_locked', LOCKED);
   const time = roll(state, ctx);
   const id = payload?.id, scope = typeof id === 'string' ? scopeOf(state, id) : null;
-  if (!scope || typeof id !== 'string') return fail(state, 'unknown_mission', 'That mission is not one of yours today. Missions change at midnight, Lagos time.');
+  if (!scope || typeof id !== 'string') return fail(state, 'unknown_mission', 'That mission is not one of yours today. Missions change at midnight, Nigerian time.');
   const entry = state.missions[scope].find((item) => item.id === id), def = defOf(id);
-  if (!entry) return fail(state, 'unknown_mission', 'That mission is not one of yours today. Missions change at midnight, Lagos time.'); // scopeOf found it, so it is there
+  if (!entry) return fail(state, 'unknown_mission', 'That mission is not one of yours today. Missions change at midnight, Nigerian time.'); // scopeOf found it, so it is there
   if (entry.claimed) return fail(state, 'already_claimed', 'You already collected that mission.');
   if (!done(entry)) return fail(state, 'not_done', `${def.label}: ${entry.n} of ${need(def)} so far.`);
   const cash = MISSION_REWARDS[scope].cash;
@@ -198,7 +198,7 @@ export function rerollMission(state: LifeState, payload: Record<string, unknown>
   const current = book.daily[index];
   if (!current) return fail(state, 'unknown_mission', 'Only one of today’s missions can be swapped.'); // index >= 0 and in range
   if (done(current)) return fail(state, 'already_done', 'That mission is finished. Collect it instead.');
-  if (book.rerolls >= MISSION_REWARDS.rerollsPerDay) return fail(state, 'no_rerolls', 'You have used today’s swap. Missions change at midnight, Lagos time.');
+  if (book.rerolls >= MISSION_REWARDS.rerollsPerDay) return fail(state, 'no_rerolls', 'You have used today’s swap. Missions change at midnight, Nigerian time.');
   const old = defOf(current.id);
   const options = DAILY_MISSIONS.filter((def) => def.kind === old.kind && doable(def, state, ctx) && !book.daily.some((entry) => entry.id === def.id));
   if (!options.length) return fail(state, 'nothing_else', 'There is no other mission of that kind today.');

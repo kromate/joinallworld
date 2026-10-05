@@ -141,7 +141,7 @@ test('social.gain modifies every closeness gain; crossing the friend tier emits 
   assert.equal(viewLife(state, ctxAt(NOW + 120000)).social.friends[0]?.id, 'kunle');
 });
 
-test('per-NPC daily limit blocks with a reason and resets the next Lagos day', () => {
+test('per-NPC daily limit blocks with a reason and resets the next day', () => {
   reset();
   const state = atPeople();
   for (const action of ['hello', 'gist', 'compliment', 'hello']) assert.equal(run(state, activityId('kunle', action)).ok, true, action);

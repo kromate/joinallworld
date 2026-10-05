@@ -49,7 +49,7 @@ async function toggle(): Promise<void> {
         <CivicAction v-if="you" :working="civic.busy('prefs')" :reason="offline('change this') ?? ''" @click="toggle">{{ you.listed ? 'Hide me from the Rich List' : 'Show me on the Rich List' }}</CivicAction>
         <CivicAction :working="item.loading" @click="reload">Refresh</CivicAction>
       </div>
-      <HowItWorks id="richlist-rules" page label="How the lists are counted" :rules="['Balances are each player’s in-game naira at their last check-in.', 'Earners count naira received since Monday, Lagos time.', 'Players are counted once they have opened the game since this feature shipped; “online” means a live connection right now.', 'You can hide yourself from both lists with the button above. This is a beta feature.']" />
+      <HowItWorks id="richlist-rules" page label="How the lists are counted" :rules="['Balances are each player’s in-game naira at their last check-in.', 'Earners count naira received since Monday, Nigerian time.', 'Players are counted once they have opened the game since this feature shipped; “online” means a live connection right now.', 'You can hide yourself from both lists with the button above. This is a beta feature.']" />
     </template>
   </div>
 </template>

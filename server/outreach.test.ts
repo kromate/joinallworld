@@ -103,7 +103,7 @@ test('rules: one a day, three a week, never at night, back-off of 1, 3 then 7 da
   const plan = (input: Partial<PlanInput>) => planMessage({ now: noon, seen: noon - 30 * HOUR, sends: [], periods: {}, ...input });
   assert.deepEqual(plan({}), { kind: 'away', reason: 'away', period: 61 });
   assert.equal(plan({ seen: noon - 23 * HOUR }).reason, 'nothing_due', 'not before a day away');
-  assert.equal(plan({ periods: { away: 61 } }).reason, 'nothing_due', 'one away message per Lagos day');
+  assert.equal(plan({ periods: { away: 61 } }).reason, 'nothing_due', 'one away message per day');
   assert.equal(plan({ seen: 0 }).reason, 'never_seen');
   for (const hour of [22, 23, 0, 3, 6]) assert.equal(planMessage({ now: 5 * DAY + (hour - 1) * HOUR, seen: 1, sends: [], periods: {} }).reason, 'quiet_hours', `${hour}:00 Lagos`);
   assert.deepEqual([inQuietHours(5 * DAY + 6 * HOUR), inQuietHours(5 * DAY + 20.9 * HOUR)], [false, false], '07:00 and 21:54 are fine');

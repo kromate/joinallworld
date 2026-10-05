@@ -1048,6 +1048,7 @@ test('venue, scene and furniture unions are exactly the values the content uses'
     park: true, buka: true, hub: true, club: true, office: true, market: true, gym: true, mall: true, beach: true, hospital: true,
     salon: true, rooftop: true, police: true, worship: true, radio: true, polling: true, viewing: true, shrine: true, walk: true,
     statehouse: true, airport: true, refinery: true, unilag: true, home: true,
+    quad: true, hilltop: true, lakeside: true,
   }))
   for (const venue of venues) assert.ok((SCENE_KINDS as readonly string[]).includes(venue.scene.kind), venue.scene.kind)
   assert.deepEqual([...new Set(venues.map((venue) => venue.zone))].sort(), idsOf<VenueZone>({ mainland: true, island: true, east: true }))

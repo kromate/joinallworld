@@ -32,7 +32,7 @@ const union = computed(() => at(state.value, 'student-union'))
     </div>
   </CampusCard>
   <CampusCard v-else icon="🧠" heading="Faculty quiz night">
-    <p>Quiz night runs Friday from 6:00 PM to 9:00 PM, Lagos time. The server chooses one question for your faculty.</p>
+    <p>Quiz night runs Friday from 6:00 PM to 9:00 PM, Nigerian time. The server chooses one question for your faculty.</p>
     <template #extra>
       <CampusControl primary label="Start quiz" :reason="quizReason(blocked, union, eligible)" @press="act('unilag.quiz.start')" />
       <CampusGo v-if="!union" spot="student-union" />
@@ -55,7 +55,7 @@ const union = computed(() => at(state.value, 'student-union'))
   </CampusCard>
 
   <CampusCard icon="⚽" heading="Penalty shoot-out">
-    <p>Take five server-settled kicks once per Lagos day and add the score to the weekly board.</p>
+    <p>Take five server-settled kicks once per day and add the score to the weekly board.</p>
     <template #extra>
       <CampusControl primary label="Take penalties" :reason="penaltyReason(blocked, eligible, sports)" @press="act('unilag.penalties')" />
       <CampusGo v-if="!sports" spot="sports-centre" />

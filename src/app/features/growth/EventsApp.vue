@@ -23,7 +23,7 @@ const state = game.state
 const events = computed(() => upcomingEvents(view.value.now, 7, view.value.cityId))
 const live = computed(() => events.value.filter((event) => event.live))
 const later = computed(() => events.value.filter((event) => !event.live))
-const rules = ['Events happen at a place and a time, on Lagos time. Be there and finish any activity to count as attending.', 'An event changes no price and no pay. Being there counts for missions.',
+const rules = ['Events happen at a place and a time, on Nigerian time. Be there and finish any activity to count as attending.', 'An event changes no price and no pay. Being there counts for missions.',
   'Events come round again: weekly ones every week, yearly ones every year. Nothing is gone for ever.', '“Add to my calendar” makes a calendar file on your phone. The game sends no reminder by itself.']
 
 onMounted(() => { void growth.load() })

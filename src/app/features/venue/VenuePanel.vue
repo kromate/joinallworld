@@ -82,7 +82,7 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
     </div>
     <template v-if="ui.expanded">
       <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>
-      <p v-if="showGigs && gigs" class="life-actions-note life-gigs" :class="{ 'is-out': !gigs.left }" role="note" title="Paid gigs are limited each Lagos day. Your job’s shift does not count."><b>Gigs today: {{ gigs.used }}/{{ gigs.limit }}</b> · {{ gigs.left ? `${gigs.left} left` : 'open again at midnight, Lagos time' }}</p>
+      <p v-if="showGigs && gigs" class="life-actions-note life-gigs" :class="{ 'is-out': !gigs.left }" role="note" title="Paid gigs are limited each day. Your job’s shift does not count."><b>Gigs today: {{ gigs.used }}/{{ gigs.limit }}</b> · {{ gigs.left ? `${gigs.left} left` : 'open again at midnight, Nigerian time' }}</p>
       <div class="life-actions">
         <template v-for="{ card, face, tags } in cards" :key="card.id">
           <div v-if="card.choices && face.state !== 'unavailable'" class="life-action has-choices" :class="face.state === 'ready' ? undefined : `is-${face.state}`" role="group" :aria-label="face.label">

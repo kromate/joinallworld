@@ -23,7 +23,7 @@ import { outcomeKey } from './routes/core.ts';
 import { FAILED_PER_ADDRESS, FAILED_TOTAL, OPERATOR_PER_MINUTE } from './routes/moderation.ts';
 
 const DAY = 86400000, HOUR = 3600000;
-const MONDAY = 4 * DAY - 3600000; // the Monday after the fixture's start, 00:00 Lagos time
+const MONDAY = 4 * DAY - 3600000; // the Monday after the fixture's start, 00:00 Nigerian time
 const TOKEN = 'operator-token-for-tests-0123456789';
 
 /** A telemetry object the host accepts: the fakes below implement only what the host calls. */

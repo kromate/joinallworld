@@ -180,7 +180,7 @@ export function shiftStatus(state: LifeState, ctx?: LifeContext): ShiftStatus {
   if (running) return { code: 'working', canWork: false, text: 'Shift in progress. You are paid when it finishes; cancelling earns nothing.', next: upcoming };
   if (career.lastShiftDay === today.day) {
     return { code: 'shift_done', canWork: false, next: upcoming,
-      text: `You have already worked today’s paid shift (one per Lagos day). Next shift: ${upcoming}.` };
+      text: `You have already worked today’s paid shift (one per day). Next shift: ${upcoming}.` };
   }
   if (job.days.includes(today.weekday)) return { code: 'available', canWork: true, text: 'Work day: today’s shift is available now.', next: 'now' };
   if (!career.oriented) {
@@ -442,7 +442,7 @@ export default {
       busy: Boolean(state.activeAction),
       rules: [
         'Applying is free and hires you at once.',
-        'One paid shift per Lagos day, at any hour, on your work days. Your first ever shift can also be worked on a day off.',
+        'One paid shift per day, at any hour, on your work days. Your first ever shift can also be worked on a day off.',
         'You can only travel to a workplace while it is open; each track lists its workplace hours.',
         'You are paid when the shift finishes. Cancelling earns nothing and costs nothing.',
         `Each shift adds about ${PERFORMANCE_PER_SHIFT}% performance; it never drops. Promotion needs 100% plus the track skill.`,

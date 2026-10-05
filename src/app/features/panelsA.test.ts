@@ -100,7 +100,7 @@ test('career: the promotion card says what is still needed, and the step line do
   assert.equal(percent(140), 100); assert.equal(percent(null), 0)
 })
 
-test('statement: day labels in Lagos time, whether the two statements agree, and what is said when they do not', () => {
+test('statement: day labels in Nigerian time, whether the two statements agree, and what is said when they do not', () => {
   assert.equal(dayLabel(Math.floor((Date.UTC(2026, 9, 4, 12) + 3600000) / 86400000)), 'Sun 4 Oct')
   assert.equal(changes(1), '1 change'); assert.equal(changes(3), '3 changes')
   const totals = { in: 10, out: 4, changes: 2, net: 6 }
@@ -209,7 +209,7 @@ test('goals: the reasons, the loan card, and the goal chip\'s action, label and 
   const feed = [{ n: 1, text: 'a' }, { n: 2, text: 'b' }, { n: 3, text: 'c' }]
   assert.deepEqual(newFeed(feed, 1).map((item) => item.text), ['b', 'c']); assert.deepEqual(newFeed(feed, null), [], 'the first look toasts nothing')
   assert.equal(rememberSeq(5, null), 5); assert.equal(rememberSeq(2, 5), 2, 'a different life starts again'); assert.equal(rememberSeq(7, 5), 5)
-  assert.equal(lagosDay(Date.UTC(2026, 0, 5, 22, 59)) + 1, lagosDay(Date.UTC(2026, 0, 5, 23, 0)), 'the Lagos day turns at 23:00 UTC')
+  assert.equal(lagosDay(Date.UTC(2026, 0, 5, 22, 59)) + 1, lagosDay(Date.UTC(2026, 0, 5, 23, 0)), 'the day turns at 23:00 UTC')
 })
 
 test('boutique: trying on is a preview of an item still on offer; each item has one control and one reason', () => {

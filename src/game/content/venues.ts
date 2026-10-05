@@ -18,7 +18,8 @@ export const GIG_DAILY_LIMIT = 8;
 
 
 export const SCENE_KINDS: readonly SceneKind[] = Object.freeze(['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop',
-  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'unilag', 'home']);
+  'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'unilag', 'home',
+  'quad', 'hilltop', 'lakeside']);
 
 /** Map filter bar. */
 export const VENUE_CATEGORIES: Record<VenueCategoryId, VenueCategory> = {

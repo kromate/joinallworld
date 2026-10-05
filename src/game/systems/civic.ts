@@ -162,9 +162,9 @@ const check = <Code extends CivicCheckCode>(id: EligibilityCheck['id'], met: boo
 export function civicEligibility(state: LifeState, ctx: LifeContext | undefined): Omit<CivicView['eligibility'], 'run' | 'vote'> & { run: RunCheck[]; vote: VoteCheck[] } {
   const days = daysLived(state, ctx), city = state.estate.city;
   const polling = pollingVenueFor(city);
-  const lived = (min: number, verb: string) => check('days', days >= min, `Lived here for at least ${min} Lagos day${min === 1 ? '' : 's'}`,
+  const lived = (min: number, verb: string) => check('days', days >= min, `Lived here for at least ${min} day${min === 1 ? '' : 's'}`,
     days >= min ? `You have lived here ${days} day${days === 1 ? '' : 's'}.`
-      : `You have lived here ${days} day${days === 1 ? '' : 's'}; you can ${verb} after ${min - days} more midnight${min - days === 1 ? '' : 's'} (Lagos time).`, 'too_new');
+      : `You have lived here ${days} day${days === 1 ? '' : 's'}; you can ${verb} after ${min - days} more midnight${min - days === 1 ? '' : 's'} (Nigerian time).`, 'too_new');
   const run: RunCheck[] = [
     lived(ELECTION.minDaysToRun, 'run'),
     check('fee', canAfford(state, ELECTION.filingFee), `Filing fee of ${naira(ELECTION.filingFee)} (not refunded)`,
@@ -172,7 +172,7 @@ export function civicEligibility(state: LifeState, ctx: LifeContext | undefined)
   ];
   // Paid work on enough different days: age alone can be waited out by an idle sock puppet.
   const need = ELECTION.minWorkDays, worked = state.civic.work.days;
-  const working = check('work', worked >= need, `Been paid for work on at least ${need} different Lagos days`,
+  const working = check('work', worked >= need, `Been paid for work on at least ${need} different days`,
     worked >= need ? `You have been paid for work on ${worked} different days.`
       : `You have been paid for work on ${worked} day${worked === 1 ? '' : 's'}. Finish a paid shift or gig on ${need - worked} more day${need - worked === 1 ? '' : 's'}${state.civic.work.last === lagosTime(nowOf(state, ctx)).day ? ' (today is already counted — come back tomorrow)' : ''}.`, 'work_days');
   run.push(working);
@@ -220,7 +220,7 @@ export function searchForGem(state: LifeState, payload: Record<string, unknown>,
   const here = venueLabel(state.location, ctx?.cityId);
   const left = hunt.gems.filter((gem) => !gem.found);
   if (!left.length) {
-    return fail(state, 'hunt_complete', hunt.claimed ? 'You found and claimed today’s gems. New gems are hidden at midnight, Lagos time.'
+    return fail(state, 'hunt_complete', hunt.claimed ? 'You found and claimed today’s gems. New gems are hidden at midnight, Nigerian time.'
       : `You have found every gem today. Claim your ${naira(HUNT.prize)} prize.`);
   }
   const local = left.filter((gem) => gem.venue === state.location);
@@ -233,7 +233,7 @@ export function searchForGem(state: LifeState, payload: Record<string, unknown>,
 export function claimHuntPrize(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const hunt = roll(state, ctx);
   const count = hunt.gems.filter((gem) => gem.found).length;
-  if (hunt.claimed) return fail(state, 'already_claimed', 'You already claimed today’s gem prize. New gems are hidden at midnight, Lagos time.');
+  if (hunt.claimed) return fail(state, 'already_claimed', 'You already claimed today’s gem prize. New gems are hidden at midnight, Nigerian time.');
   if (count < hunt.gems.length) return fail(state, 'gems_missing', `Find all ${hunt.gems.length} gems first: you have ${count}. The clues are on the gem hunt chip.`);
   if (!canCredit(state, HUNT.prize)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
   credit(state, HUNT.prize, 'Daily gem hunt prize', ctx);

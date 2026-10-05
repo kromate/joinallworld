@@ -1,4 +1,4 @@
-import { cityRules } from '../cities/registry.ts';
+import { cityDefaultName, cityRules } from '../cities/registry.ts';
 import { venueFor, publicArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
@@ -25,7 +25,10 @@ import type { SavedActiveAction, SavedInput, SystemDefinition } from '../../type
 import type { ActiveAction, AdvanceOutcome, LifeContext, LifeState, VenueId } from '../../types/life.ts';
 
 export const STATE_VERSION = 1;
+/** What a life with no name is called when the city is not known to say (a city module's own `defaultName` is used otherwise). */
 export const DEFAULT_NAME = 'New Lagosian';
+/** What a nameless life is called in this city: its module's `defaultName`. */
+export const defaultNameFor = (cityId: unknown): string => cityDefaultName(cityId);
 
 export const isVenueId = (value: unknown, cityId: string): value is VenueId => typeof value === 'string' && Boolean(venueFor(cityId, value));
 
@@ -103,7 +106,7 @@ export default {
   sanitize(input, state, ctx) {
     state.v = STATE_VERSION;
     state.t = finite(input.t) && input.t >= 0 ? input.t : finite(ctx.now) ? ctx.now : 0;
-    state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || DEFAULT_NAME : DEFAULT_NAME;
+    state.name = typeof input.name === 'string' ? input.name.trim().slice(0, 24) || defaultNameFor(ctx.cityId) : defaultNameFor(ctx.cityId);
     state.message = typeof input.message === 'string' && input.message.length <= 500 ? input.message : '';
     state.location = savedVenue(input.location, ctx.cityId) ?? publicArrivalVenue(ctx.cityId).id;
     state.activeAction = null;

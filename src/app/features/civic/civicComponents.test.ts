@@ -62,8 +62,8 @@ const governor = (patch: Partial<GovResponse> = {}): GovResponse => ({
   governor: null, lastResult: null, announcements: [],
   rules: { beta: true, minDaysToRun: 2, minDaysToVote: 1, minWorkDays: 2, votesPerAddress: 0, filingFee: 2000, sloganMin: 3, sloganMax: 60, maxCandidates: 30, announcementMax: 140, announcementsPerDay: 3, pollingVenue: null },
   you: { days: 3, isGovernor: false, isCandidate: false, votedFor: null,
-    run: { ok: false, code: 'insufficient_funds', reason: 'Filing costs ₦2,000; you have less.', checks: [{ id: 'fee', met: false, label: 'Filing fee', detail: 'You have ₦100 of ₦2,000.', code: 'insufficient_funds' }, { id: 'work', met: false, label: 'Paid work', detail: '0 of 2 Lagos days.', code: 'work_days' }] },
-    vote: { ok: false, code: 'work_days', reason: 'Work two Lagos days first.', checks: [{ id: 'work', met: false, label: 'Paid work', detail: '0 of 2 Lagos days.', code: 'work_days' }] },
+    run: { ok: false, code: 'insufficient_funds', reason: 'Filing costs ₦2,000; you have less.', checks: [{ id: 'fee', met: false, label: 'Filing fee', detail: 'You have ₦100 of ₦2,000.', code: 'insufficient_funds' }, { id: 'work', met: false, label: 'Paid work', detail: '0 of 2 days.', code: 'work_days' }] },
+    vote: { ok: false, code: 'work_days', reason: 'Work two days first.', checks: [{ id: 'work', met: false, label: 'Paid work', detail: '0 of 2 days.', code: 'work_days' }] },
     announce: { ok: false, code: 'not_governor', reason: 'Only the Governor can post.' } },
   ...patch,
 })
@@ -103,8 +103,8 @@ test('Governor: the week, the ballot with a reason on every disabled vote, what 
   assert.ok(words.includes('5 votes cast so far. One vote per player; it cannot be changed.'))
   const vote = buttonTag(html, 'Vote for Tolu')
   assert.match(vote, /disabled/)
-  assert.match(vote, /title="Work two Lagos days first\."/)
-  assert.ok(words.includes('Work two Lagos days first.'), 'the reason is printed under the button, not only in a tooltip')
+  assert.match(vote, /title="Work two days first\."/)
+  assert.ok(words.includes('Work two days first.'), 'the reason is printed under the button, not only in a tooltip')
   assert.match(html, /<i role="img" aria-label="Not met"[^>]*>/)
   assert.ok(buttons(html).includes('Open Jobs to find paid work'))
   assert.match(buttonTag(html, /Run for Governor · ₦2,000/), /disabled/)
@@ -258,7 +258,7 @@ test('Gem hunt: the sheet with its reasons, the chip, and the counters only once
   const words = text(sheet)
   assert.ok(words.includes(`Daily gem hunt ${hunt.found} of ${hunt.total} found`), words.slice(0, 200))
   assert.ok(words.includes('Loading the city counter…'), 'no number before the counters arrive')
-  assert.ok(words.includes('Resets at midnight, Lagos time — an unclaimed prize does not carry over.'))
+  assert.ok(words.includes('Resets at midnight, Nigerian time — an unclaimed prize does not carry over.'))
   assert.match(buttonTag(sheet, /^Claim ₦/), /disabled/)
   assert.ok(words.includes(`Find all ${hunt.total} gems first (${hunt.found} so far).`))
   assert.equal([...sheet.matchAll(/<li class="ui-row/g)].length, hunt.total)

@@ -54,6 +54,7 @@ export const LAGOS_RULES = Object.freeze({
   state: { id: 'lagos', name: 'Lagos State', unit: 'local government' },
   country: { id: 'ng', name: 'Nigeria' },
   timezone: 'Africa/Lagos',
+  defaultName: 'New Lagosian',
   rentedHomeIds: ['mushin', 'yaba', 'lekki', 'ikoyi', 'banana'],
   defaultRentedHome: 'yaba',
   campus: 'unilag',

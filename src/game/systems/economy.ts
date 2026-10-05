@@ -390,7 +390,7 @@ export default {
         warning: economy.rent.arrears > 0
           ? `You owe ${naira(economy.rent.arrears)} in missed rent. Pay it before ${nextDueLabel} or a ${naira(lateFee(house))} late fee is added. It is collected automatically on a Saturday when your balance covers it. You keep your home in this beta.`
           : !canAfford(state, house.rent) ? `Your balance does not cover the ${naira(house.rent)} rent due ${nextDueLabel}. If it is missed it becomes arrears, with one week to pay before a late fee.` : null,
-        rule: `Rent is collected automatically every Saturday (Lagos time), even while you are away — at most ${MAX_CATCHUP_WEEKS} missed weeks are caught up. It is never taken in part.`,
+        rule: `Rent is collected automatically every Saturday (Nigerian time), even while you are away — at most ${MAX_CATCHUP_WEEKS} missed weeks are caught up. It is never taken in part.`,
       } : null,
       loan: loan ? {
         principal: LOAN.principal, total: LOAN.total + LOAN_LATE_FEE * loan.fees, weekly: LOAN.weekly, left: loan.left, fees: loan.fees,

@@ -69,13 +69,13 @@ export const refusalTitle = (code: string): string => REFUSAL_TITLES[code] ?? 'Y
 /** What the State House sheet's button offers for each phase. */
 export const houseButton = (phase: ElectionPhase): string => (phase === 'voting' ? 'Vote for Governor' : phase === 'nominations' ? 'Run for office' : 'See the election')
 
-const lagosDays = (n: number): string => `${n} Lagos day${Number(n) === 1 ? '' : 's'}`
+const lagosDays = (n: number): string => `${n} day${Number(n) === 1 ? '' : 's'}`
 /** Every election rule, one line each: the body of "How elections work". */
 export function electionRules(rules: GovRules): string[] {
   const work = rules.minWorkDays ?? ELECTION.minWorkDays
-  const workText = work === 1 ? 'one Lagos day' : `${work} different Lagos days`
+  const workText = work === 1 ? 'one day' : `${work} different days`
   return [
-    'Every week: nominations Monday–Wednesday, voting Thursday–Saturday, and on Sunday the winner takes office for seven days (Lagos time).',
+    'Every week: nominations Monday–Wednesday, voting Thursday–Saturday, and on Sunday the winner takes office for seven days (Nigerian time).',
     rules.pollingVenue ? 'Votes are cast at the Polling Unit.' : 'The Polling Unit is not built in this city yet, so for now you vote from this app.',
     `To run: live here ${lagosDays(rules.minDaysToRun)} and be paid for work on ${workText}.`,
     `To vote: live here ${lagosDays(rules.minDaysToVote)} and be paid for work on ${workText}.`,
@@ -116,7 +116,7 @@ export function huntSearchWhy(offline: string | null, travelling: boolean, found
   return offline ?? (travelling ? 'You are on the road. Arrive first.' : found === total ? 'You have found every gem today.' : '')
 }
 export function huntClaimWhy(offline: string | null, hunt: { claimed: boolean; found: number; total: number }): string {
-  return offline ?? (hunt.claimed ? 'Already claimed today. New gems at midnight, Lagos time.' : hunt.found < hunt.total ? `Find all ${hunt.total} gems first (${hunt.found} so far).` : '')
+  return offline ?? (hunt.claimed ? 'Already claimed today. New gems at midnight, Nigerian time.' : hunt.found < hunt.total ? `Find all ${hunt.total} gems first (${hunt.found} so far).` : '')
 }
 
 // ---- billboards and sea plots --------------------------------------------------------------
@@ -148,7 +148,7 @@ export function schedule(data: Pick<RadioView, 'playing' | 'queue'> | null | und
 export const song = (item: Pick<RadioEntry, 'title' | 'artist'>): string => `${item.title} — ${item.artist}`
 export function radioWhy(offline: string | null, data: RadioView, queued: number, playing: boolean, cash: number): string {
   if (offline) return offline
-  if (data.usedToday >= data.perDay) return `You have used all ${data.perDay} shout-outs today. They reset at midnight, Lagos time.`
+  if (data.usedToday >= data.perDay) return `You have used all ${data.perDay} shout-outs today. They reset at midnight, Nigerian time.`
   if (queued + (playing ? 1 : 0) >= data.queueMax) return 'The queue is full. Try again in a few minutes.'
   if (cash < data.price) return `Costs ${money(data.price)}; you have ${money(cash)}.`
   return ''
@@ -158,7 +158,7 @@ export const shoutoutMissing = (draft: { title: string; artist: string }): 'titl
 export const radioRules = (): string[] => [
   'A shout-out is text only — a song title and an artist. No audio is played and links are not allowed.',
   `It costs ${money(RADIO.price)} of in-game naira and plays for ${RADIO.slotSeconds} seconds on the club banner.`,
-  `Each player gets ${RADIO.perPlayerPerDay} a day; they reset at midnight, Lagos time.`,
+  `Each player gets ${RADIO.perPlayerPerDay} a day; they reset at midnight, Nigerian time.`,
   'Club radio plays inside clubs only. These are original beta values.',
 ]
 

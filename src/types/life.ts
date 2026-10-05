@@ -213,7 +213,7 @@ export interface CoreSlice {
   v: number
   /** Server ms this state was last settled to. */
   t: Ms
-  /** Display name, 1–24 characters; 'New Lagosian' by default. */
+  /** Display name, 1–24 characters; the city module's defaultName ('New Lagosian' in Lagos) by default. */
   name: string
   /** The last thing the game told the player (at most 500 characters). A failed action mirrors its reason here. */
   message: string

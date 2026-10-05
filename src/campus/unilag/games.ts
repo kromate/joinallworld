@@ -278,9 +278,9 @@ function startQuiz(state: LifeState, _payload: Record<string, unknown>, ctx: Lif
   const blocked = busy(state); if (blocked) return blocked;
   const profile = currentStudent(state); if (!profile) return studentRequired(state);
   const place = campusSpotBlock(state, 'student-union'); if (place) return fail(state, place.code, place.reason);
-  if (!eventsAt(nowOf(state, ctx)).some((event) => event.id === 'quiz-night')) return fail(state, 'quiz_closed', 'Faculty quiz night runs Friday from 6:00 PM to 9:00 PM, Lagos time.');
+  if (!eventsAt(nowOf(state, ctx)).some((event) => event.id === 'quiz-night')) return fail(state, 'quiz_closed', 'Faculty quiz night runs Friday from 6:00 PM to 9:00 PM, Nigerian time.');
   const time = lagosTime(nowOf(state, ctx)), community = state.unilagCommunity, day = dayRecord(community, time.day);
-  if (day.games.quiz !== undefined) return fail(state, 'daily_limit', 'You already completed today’s faculty quiz. Come back after midnight, Lagos time.');
+  if (day.games.quiz !== undefined) return fail(state, 'daily_limit', 'You already completed today’s faculty quiz. Come back after midnight, Nigerian time.');
   if (community.quiz) return fail(state, 'quiz_started', 'Answer the current faculty question before starting another.');
   const bank = QUIZ_QUESTIONS[profile.faculty];
   const question = bank[Math.floor(ctx.rng() * bank.length)];
@@ -315,7 +315,7 @@ function discover(state: LifeState, _payload: Record<string, unknown>, ctx: Life
   if (state.location !== 'unilag' || !isDiscoveryId(state.spot)) return fail(state, 'nothing_here', 'Stand at a marked UNILAG discovery spot and look again.');
   const community = state.unilagCommunity, discovery = CAMPUS_DISCOVERIES[state.spot], today = lagosTime(nowOf(state, ctx)).day;
   const record = dayRecord(community, today);
-  if (record.games.discovery !== undefined) return fail(state, 'daily_limit', 'You already logged one campus discovery today. Look again after midnight, Lagos time.');
+  if (record.games.discovery !== undefined) return fail(state, 'daily_limit', 'You already logged one campus discovery today. Look again after midnight, Nigerian time.');
   if (community.discoveries.includes(discovery.id)) return fail(state, 'already_discovered', `${discovery.label} is already in your campus discoveries.`);
   community.discoveries.push(discovery.id); record.games.discovery = CAMPUS_GAME_RULES.discoveryScore;
   changeNeeds(state, { fun: 5 }); addSkillXp(state, discovery.skill, 3, ctx);
@@ -329,7 +329,7 @@ function startPenalties(state: LifeState, _payload: Record<string, unknown>, ctx
   const profile = currentStudent(state); if (!profile) return studentRequired(state);
   const place = campusSpotBlock(state, 'sports-centre'); if (place) return fail(state, place.code, place.reason);
   const today = lagosTime(nowOf(state, ctx)).day, record = dayRecord(state.unilagCommunity, today);
-  if (record.games.penalties !== undefined) return fail(state, 'daily_limit', 'You already took today’s penalty shoot-out. Try again after midnight, Lagos time.');
+  if (record.games.penalties !== undefined) return fail(state, 'daily_limit', 'You already took today’s penalty shoot-out. Try again after midnight, Nigerian time.');
   state.activeAction = { kind: CAMPUS_GAME_KIND, id: 'football-penalties', duration: CAMPUS_GAME_RULES.penaltySeconds,
     remaining: CAMPUS_GAME_RULES.penaltySeconds, day: today };
   state.message = 'Penalty shoot-out started. The server will settle all five kicks.';
@@ -370,7 +370,7 @@ const serverOnly = <T extends CampusActionType>(run: TypedActionHandler<T>): Ser
 function localNomination(state: LifeState, _payload: Record<string, unknown>, ctx: LifeContext): CampusOutcome<'unilag.election.nominate'> {
   const profile = currentStudent(state); if (!profile) return studentRequired(state);
   const phase = electionPhaseAt(nowOf(state, ctx));
-  if (phase.phase !== 'nominations') return fail(state, 'nominations_closed', 'Nominations run Monday to Wednesday, Lagos time.');
+  if (phase.phase !== 'nominations') return fail(state, 'nominations_closed', 'Nominations run Monday to Wednesday, Nigerian time.');
   if (state.unilagCommunity.elections.nominated.includes(phase.week)) return fail(state, 'already_candidate', 'You are already on this week’s Student Union ballot.');
   state.unilagCommunity.elections.nominated.push(phase.week);
   state.unilagCommunity.elections.nominated = state.unilagCommunity.elections.nominated.slice(-8);
@@ -382,7 +382,7 @@ function localNomination(state: LifeState, _payload: Record<string, unknown>, ct
 function localVote(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext): CampusOutcome<'unilag.election.vote'> {
   const profile = currentStudent(state); if (!profile) return studentRequired(state);
   const phase = electionPhaseAt(nowOf(state, ctx));
-  if (phase.phase !== 'voting') return fail(state, 'polls_closed', 'Student Union voting runs Thursday to Saturday, Lagos time.');
+  if (phase.phase !== 'voting') return fail(state, 'polls_closed', 'Student Union voting runs Thursday to Saturday, Nigerian time.');
   if (!isPublicId(payload?.candidate)) return fail(state, 'invalid_candidate', 'Choose a candidate from the shared Student Union ballot.');
   if (state.unilagCommunity.elections.voted.includes(phase.week)) return fail(state, 'already_voted', 'You already voted this week. A cast ballot cannot be changed.');
   state.unilagCommunity.elections.voted.push(phase.week);
@@ -458,8 +458,8 @@ export function nominateCampusElection(election: unknown, now: number, authority
   const state = sanitizeCampusElection(election);
   if (!finite(now) || now < 0) return resultFail(state, 'invalid_time', 'The campus server supplied an invalid election time.');
   const phase = electionPhaseAt(now);
-  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This election belongs to another Lagos week. Load the current ballot.');
-  if (phase.phase !== 'nominations') return resultFail(state, 'nominations_closed', 'Nominations run Monday to Wednesday, Lagos time.');
+  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This election belongs to another week. Load the current ballot.');
+  if (phase.phase !== 'nominations') return resultFail(state, 'nominations_closed', 'Nominations run Monday to Wednesday, Nigerian time.');
   if (!validAuthority(authority)) return resultFail(state, 'student_required', 'The server must supply a current matriculated student identity.');
   if (state.candidates.some((candidate) => candidate.id === authority.id || candidate.studentId === authority.studentId)) return resultFail(state, 'already_candidate', 'This student is already on the ballot.');
   if (state.candidates.length >= CAMPUS_GAME_RULES.electionCandidates) return resultFail(state, 'ballot_full', `The ballot is full at ${CAMPUS_GAME_RULES.electionCandidates} candidates.`);
@@ -472,8 +472,8 @@ export function voteCampusElection(election: unknown, now: number, authority: un
   const state = sanitizeCampusElection(election);
   if (!finite(now) || now < 0) return resultFail(state, 'invalid_time', 'The campus server supplied an invalid election time.');
   const phase = electionPhaseAt(now);
-  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This ballot belongs to another Lagos week. Load the current ballot.');
-  if (phase.phase !== 'voting') return resultFail(state, 'polls_closed', 'Voting runs Thursday to Saturday, Lagos time.');
+  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This ballot belongs to another week. Load the current ballot.');
+  if (phase.phase !== 'voting') return resultFail(state, 'polls_closed', 'Voting runs Thursday to Saturday, Nigerian time.');
   if (!validAuthority(authority)) return resultFail(state, 'student_required', 'The server must supply a current matriculated student identity.');
   if (state.ballots.some((ballot) => ballot.studentId === authority.studentId)) return resultFail(state, 'already_voted', 'This student already voted. A cast ballot cannot be changed.');
   if (!isPublicId(candidateId) || !state.candidates.some((candidate) => candidate.id === candidateId)) return resultFail(state, 'invalid_candidate', 'Choose a candidate from this week’s ballot.');
@@ -486,8 +486,8 @@ export function finalizeCampusElection(election: unknown, now: number): CampusRe
   const state = sanitizeCampusElection(election);
   if (!finite(now) || now < 0) return resultFail(state, 'invalid_time', 'The campus server supplied an invalid election time.');
   const phase = electionPhaseAt(now);
-  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This election belongs to another Lagos week. Load the current ballot.');
-  if (phase.phase !== 'results') return resultFail(state, 'polls_open', 'Results are final on Sunday, Lagos time.');
+  if (state.week !== phase.week) return resultFail(state, 'stale_election', 'This election belongs to another week. Load the current ballot.');
+  if (phase.phase !== 'results') return resultFail(state, 'polls_open', 'Results are final on Sunday, Nigerian time.');
   state.winner = electionWinner(state);
   return resultOk(state, 'finalized');
 }
@@ -609,7 +609,7 @@ export default {
       const student = studentBlock(state); if (student) return student;
       const day = lagosTime(nowOf(state, ctx)).day;
       return state.unilagCommunity.days.find((record) => record.day === day)?.volunteered
-        ? { code: 'daily_limit', reason: 'You already completed today’s Aluta volunteering. Return after midnight, Lagos time.' } : null;
+        ? { code: 'daily_limit', reason: 'You already completed today’s Aluta volunteering. Return after midnight, Nigerian time.' } : null;
     },
   },
   view(state, ctx): UnilagCommunityView {

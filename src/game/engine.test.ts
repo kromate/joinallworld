@@ -437,7 +437,7 @@ test('Lagos wall clock: UTC+1 day, hour, weekday and week index', () => {
   assert.equal(minutesUntilOpen(office, MONDAY_9AM - 30 * 60000), 30); assert.equal(minutesUntilOpen(office, MONDAY_9AM), 0);
 });
 
-test('wallet history: full recent lines, a summary per Lagos day, bounded, and a statement that always reconciles', () => {
+test('wallet history: full recent lines, a summary per day, bounded, and a statement that always reconciles', () => {
   const DAY = 86400000, start = Date.UTC(2026, 0, 5, 9);
   const state = createLife(null, at(start));
   let expected = state.cash;

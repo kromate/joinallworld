@@ -94,7 +94,7 @@ export const FURNITURE: Record<FurnitureId, FurnitureDefinition> = {
   'double-fridge': { id: 'double-fridge', label: 'Double-door Fridge', category: 'kitchen', kind: 'cooler', w: 1, h: 1, stars: 3, price: 260000, icon: '🧊', shape: 'fridge', color: '#b9c2c6', blurb: 'A freezer on top and room for a whole pot of soup.', beta: B },
   'water-drum': { id: 'water-drum', label: 'Water Drum', category: 'kitchen', kind: 'water', w: 1, h: 1, stars: 0, price: 2000, icon: '🛢️', shape: 'drum', color: '#3d6fa3', blurb: 'Fetch once, use all week.', beta: B },
   // ---- Bath ----
-  'bucket-bowl': { id: 'bucket-bowl', label: 'Bucket & Bowl', category: 'bath', kind: 'bath', w: 1, h: 1, stars: 1, price: 800, icon: '🪣', shape: 'bucket', color: '#3f8f6b', blurb: 'The shower every Lagosian learned first.', beta: B },
+  'bucket-bowl': { id: 'bucket-bowl', label: 'Bucket & Bowl', category: 'bath', kind: 'bath', w: 1, h: 1, stars: 1, price: 800, icon: '🪣', shape: 'bucket', color: '#3f8f6b', blurb: 'The shower many of us learned first.', beta: B },
   'shower-cubicle': { id: 'shower-cubicle', label: 'Shower Cubicle', category: 'bath', kind: 'bath', w: 1, h: 1, stars: 3, price: 60000, icon: '🚿', shape: 'shower', color: '#bfd6dc', blurb: 'Water from above. No more scooping.', beta: B },
   bathtub: { id: 'bathtub', label: 'Soaking Bathtub', category: 'bath', kind: 'tub', w: 2, h: 1, stars: 4, price: 180000, icon: '🛁', shape: 'tub', color: '#f1f1ec', blurb: 'Bubbles, a long soak and nobody knocking.', beta: B },
   toilet: { id: 'toilet', label: 'Toilet', category: 'bath', kind: 'toilet', w: 1, h: 1, stars: 1, price: 5000, icon: '🚽', shape: 'toilet', color: '#eeeeea', blurb: 'Your own. No queue in the compound.', beta: B },

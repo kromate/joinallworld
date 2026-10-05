@@ -9,7 +9,7 @@ const START = Date.UTC(2026, 0, 5, 0, 0)
 test('lagosTime: Lagos is one hour ahead of UTC and weeks start on Monday', () => {
   const monday = ts.lagosTime(Date.UTC(2026, 0, 5, 9, 30))
   assert.deepEqual({ weekday: monday.weekday, hour: monday.hour, minute: monday.minute, minuteOfDay: monday.minuteOfDay }, { weekday: 1, hour: 10, minute: 30, minuteOfDay: 630 })
-  assert.equal(ts.lagosTime(Date.UTC(2026, 0, 4, 22, 59)).week + 1, ts.lagosTime(Date.UTC(2026, 0, 4, 23, 0)).week, 'the week turns at Monday 00:00 Lagos time')
+  assert.equal(ts.lagosTime(Date.UTC(2026, 0, 4, 22, 59)).week + 1, ts.lagosTime(Date.UTC(2026, 0, 4, 23, 0)).week, 'the week turns at Monday 00:00 Nigerian time')
   assert.equal(ts.lagosDayStart(monday.day), Date.UTC(2026, 0, 4, 23, 0))
   assert.equal(ts.lagosTime(Number.NaN).day, 0, 'a time that is not a number reads as the epoch')
 })

@@ -16,8 +16,8 @@ import type { ApiEnvelope } from '../src/types/protocol.ts';
 import type { Database } from './types.ts';
 
 const DAY = 86400000;
-const START = 100000; // the fixture's clock starts on a Thursday, 01:01 Lagos time
-const MONDAY = 4 * DAY - 3600000; // the following Monday, 00:00 Lagos time
+const START = 100000; // the fixture's clock starts on a Thursday, 01:01 Nigerian time
+const MONDAY = 4 * DAY - 3600000; // the following Monday, 00:00 Nigerian time
 const HOUR = 3600000;
 
 type Fixture = Awaited<ReturnType<typeof fixture>>;
@@ -149,7 +149,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
     assert.equal(refused.ok, false); assert.equal(refused.code, code, String(slogan)); assert.ok(refused.reason); assert.equal(refused.state.cash, 5600);
   }
   const newcomer = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'New broom' }, dayo);
-  assert.equal(newcomer.code, 'too_new'); assert.match(reasonOf(newcomer), /at least 2 Lagos days/); assert.equal(newcomer.state.cash, 5000);
+  assert.equal(newcomer.code, 'too_new'); assert.match(reasonOf(newcomer), /at least 2 days/); assert.equal(newcomer.state.cash, 5000);
   const declared = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: '  Light <b>for</b> all  ' }, ada);
   assert.equal(declared.ok, true); assert.equal(declared.code, 'declared'); assert.equal(declared.state.cash, 3600);
   assert.deepEqual(declared.state.ledger.at(-1), { at: MONDAY + 60000, amount: -2000, reason: 'Governorship filing fee', balance: 3600 });
@@ -159,7 +159,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   wait(1000);
   assert.equal((await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Roads first' }, bola)).ok, true);
   const idle = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Never worked a day' }, chidi);
-  assert.equal(idle.code, 'work_days'); assert.match(reasonOf(idle), /paid for work on at least 2 different Lagos days/); assert.equal(idle.state.cash, 5000, 'age alone does not qualify, and nothing is charged');
+  assert.equal(idle.code, 'work_days'); assert.match(reasonOf(idle), /paid for work on at least 2 different days/); assert.equal(idle.state.cash, 5000, 'age alone does not qualify, and nothing is charged');
   const notYet = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, chidi);
   assert.equal(notYet.code, 'polls_closed'); assert.match(reasonOf(notYet), /Thursday to Saturday/);
 
@@ -319,7 +319,7 @@ test('daily gem hunt: found through play, real city counter, prize paid through 
     }
     state = await life(ada);
     assert.equal(huntOf(state).gems[index]?.found, true, JSON.stringify(gem));
-    assert.equal(huntOf(state).day, day, 'all three were reachable within one Lagos day');
+    assert.equal(huntOf(state).day, day, 'all three were reachable within one day');
   }
   const done = await f.action(ada.cookie, { type: 'civic.hunt-search' });
   assert.equal(done.code, 'hunt_complete'); assert.match(reasonOf(done), /Claim your ₦3,000 prize/);

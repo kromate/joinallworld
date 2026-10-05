@@ -54,7 +54,7 @@ async function claim(): Promise<void> {
   <div v-else class="hunt">
     <HeroCard label="Daily gem hunt" :figure="`${hunt.found} of ${hunt.total} found`" class="hunt-hero">
       <div class="hunt-dots" aria-hidden="true"><i v-for="(gem, index) in hunt.gems" :key="index" :class="{ 'is-found': gem.found }" /></div>
-      {{ hunt.claimed ? 'Prize claimed. New gems at midnight, Lagos time.' : `Find them all to win ${money(hunt.prize)}.` }}
+      {{ hunt.claimed ? 'Prize claimed. New gems at midnight, Nigerian time.' : `Find them all to win ${money(hunt.prize)}.` }}
     </HeroCard>
     <ul v-if="pulse" class="ui-stats">
       <li><b>{{ count(pulse.hunt.found) }}</b>gems found in {{ view.city.name }}</li>
@@ -74,8 +74,8 @@ async function claim(): Promise<void> {
       <CivicAction primary block :working="working === 'search'" :reason="searchWhy" @click="search">Search {{ here }}</CivicAction>
       <CivicAction block :highlight="hunt.canClaim" :working="working === 'claim'" :reason="claimWhy" @click="claim">Claim {{ money(hunt.prize) }}</CivicAction>
     </div>
-    <p class="civic-note">Resets at midnight, Lagos time — an unclaimed prize does not carry over.</p>
-    <HowItWorks id="hunt-rules" page label="How the hunt works" :rules="['Travel to a place in the clues, stand at a spot and search.', 'Some gems only come loose when you finish an activity there.', 'Find them all, then claim the prize here. Gems and the prize reset at midnight, Lagos time; an unclaimed prize does not carry over.', `Beta: the ${money(hunt.prize)} prize is provisional and may change; how gems are hidden and found is an original beta mechanic. The prize is in-game naira.`]" />
+    <p class="civic-note">Resets at midnight, Nigerian time — an unclaimed prize does not carry over.</p>
+    <HowItWorks id="hunt-rules" page label="How the hunt works" :rules="['Travel to a place in the clues, stand at a spot and search.', 'Some gems only come loose when you finish an activity there.', 'Find them all, then claim the prize here. Gems and the prize reset at midnight, Nigerian time; an unclaimed prize does not carry over.', `Beta: the ${money(hunt.prize)} prize is provisional and may change; how gems are hidden and found is an original beta mechanic. The prize is in-game naira.`]" />
   </div>
 </template>
 

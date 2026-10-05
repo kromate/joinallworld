@@ -90,7 +90,7 @@ function track({ id, label, icon, skill, venue, workplaceName, days, entryPay, r
       id: `${id}-shift`, label: `${label} shift`, icon, duration: SHIFT_SECONDS, cost: 0, reward: entryPay,
       minimumNeeds: { ...SHIFT_MINIMUM_NEEDS }, effects: { ...SHIFT_EFFECTS }, xp: { [skill]: SHIFT_XP },
       hours: ANY_TIME, tags: ['work'], careerTrack: id, beta: true,
-      note: 'Original beta shift: paid on completion, one paid shift per Lagos day. Cancelling earns nothing.',
+      note: 'Original beta shift: paid on completion, one paid shift per day. Cancelling earns nothing.',
     },
   };
 }

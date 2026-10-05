@@ -31,6 +31,7 @@ import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
 import StepHome from './StepHome.vue'
 import { lgasOf } from '../../../game/content/world.ts'
+import { isDefaultName } from '../../../game/cities/registry.ts'
 import StepLook from './StepLook.vue'
 import StepReady from './StepReady.vue'
 import StepSpirit from './StepSpirit.vue'
@@ -76,7 +77,7 @@ function makeDraft(): CreatorDraft {
   const spirit = defaultSpirit()
   const chosen = saved.traits.length === TRAITS_REQUIRED
   if (isNew) {
-    const kept = currentDraft(view.value.name === 'New Lagosian' ? undefined : view.value.name)
+    const kept = currentDraft(isDefaultName(view.value.name) ? undefined : view.value.name)
     // What this device kept of the later steps comes back after a reload; what the server already holds wins.
     const keptSpirit = !chosen && kept.traits.length === TRAITS_REQUIRED
     return { look: { ...kept.look }, name: kept.name, traits: chosen ? [...saved.traits] : keptSpirit ? [...kept.traits] : spirit.traits, dream: saved.dream ?? kept.dream ?? spirit.dream,

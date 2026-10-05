@@ -57,6 +57,7 @@ export const IBADAN_RULES = Object.freeze({
   state: { id: 'oyo', name: 'Oyo State', unit: 'local government' },
   country: { id: 'ng', name: 'Nigeria' },
   timezone: 'Africa/Lagos',
+  defaultName: 'New arrival',
   rentedHomeIds: ['ibadan-mokola-room', 'ibadan-bodija-flat', 'ibadan-dugbe-flat', 'ibadan-ring-road-flat', 'ibadan-akobo-house'],
   defaultRentedHome: 'ibadan-bodija-flat',
   careerIds: CAREER_IDS,

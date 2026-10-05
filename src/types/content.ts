@@ -164,11 +164,15 @@ export type SceneKind =
   | 'park' | 'buka' | 'hub' | 'club' | 'office' | 'market' | 'gym' | 'mall' | 'beach' | 'hospital' | 'salon'
   | 'rooftop' | 'police' | 'worship' | 'radio' | 'polling' | 'viewing' | 'shrine' | 'walk' | 'statehouse' | 'airport'
   | 'refinery' | 'unilag' | 'home'
+  | 'quad' | 'hilltop' | 'lakeside'
+
+/** Scenes of a city's own that share a kind with another (src/scene/venues-ibadan-b.ts). */
+export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest'
 
 export interface VenueScene {
   kind: SceneKind
   /** Picks the look where one kind has several (club: 'speakeasy'; worship: 'church' | 'mosque'). */
-  variant?: 'speakeasy' | 'church' | 'mosque'
+  variant?: 'speakeasy' | 'church' | 'mosque' | CitySceneVariant
   /** Pins a spot id — including spots other systems add, such as 'work' — to a landmark key of the scene. */
   anchors?: Record<SpotId, string>
 }
@@ -1307,6 +1311,8 @@ export interface CityModuleRules<
   state: CityState<State>
   country: CityCountry
   timezone: string
+  /** The display name of a life that has none yet (what the city calls someone new to it). */
+  defaultName: string
   atlas: CityAtlasMarker
   mapOrigin: CityMapOrigin
   units: readonly (Omit<LgaDefinition, 'id' | 'districts'> & { id: LocalUnit; districts: DistrictId[] })[]

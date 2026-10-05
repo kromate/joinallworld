@@ -35,7 +35,7 @@ const dailyCount = (city: CivicCityRecord, playerId: string, day: number): numbe
 export function shoutBlock(city: CivicCityRecord, now: number, playerId: string, venueId: string, radioVenueIds: readonly string[] = RADIO.venues): Block | null {
   if (!isClub(venueId, radioVenueIds)) return { code: 'not_in_club', reason: 'Club radio only plays in clubs. Travel to one first.' };
   const used = dailyCount(city, playerId, lagosTime(now).day);
-  if (used >= RADIO.perPlayerPerDay) return { code: 'shoutout_limit', reason: `You have used all ${RADIO.perPlayerPerDay} shout-outs for today. They reset at midnight, Lagos time.` };
+  if (used >= RADIO.perPlayerPerDay) return { code: 'shoutout_limit', reason: `You have used all ${RADIO.perPlayerPerDay} shout-outs for today. They reset at midnight, Nigerian time.` };
   if (pending(city, venueId, now).length >= RADIO.queueMax) return { code: 'queue_full', reason: `The queue here is full (${RADIO.queueMax} songs). Try again in a few minutes.` };
   return null;
 }

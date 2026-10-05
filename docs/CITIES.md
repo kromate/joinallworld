@@ -94,3 +94,7 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 `npm run geo:boundaries` regenerates only the Lagos topology. It downloads the pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. `npm run geo:boundaries -- --check` compares both exact generated text and decoded geometry without writing. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. Changing the Nigeria atlas requires the explicit `--nigeria` option; the default cannot change it.
 
 The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and two compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.
+
+## Atlas markers
+
+Every city of the registry is a marker on the Nigeria atlas, open or not. Where markers crowd (Lagos, Abeokuta and Ibadan lie within a few pixels of each other), a closed city's marker tries its other anchors (`alts` in `src/map3d/geo/labels.ts`) before it is left out, so a city the creator lists is never missing from the atlas.

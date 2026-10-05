@@ -169,7 +169,7 @@ defineExpose({
       <div class="ph-screen">
         <div class="ph-wallpaper" aria-hidden="true" />
         <header class="ph-status">
-          <button class="ph-status-btn" type="button" :aria-label="`Notifications. Lagos time ${TIME.format(now)}`" @click="setShade(!shade)">{{ TIME.format(now) }}</button>
+          <button class="ph-status-btn" type="button" :aria-label="`Notifications. Nigerian time ${TIME.format(now)}`" @click="setShade(!shade)">{{ TIME.format(now) }}</button>
           <span class="ph-sys">
             <span class="ph-signal" :class="{ 'is-off': !view.connected }" role="img" :aria-label="view.connected ? 'Connected to the game server' : 'No connection to the game server'"><i /><i /><i /><i /></span><b>{{ view.connected ? '4G' : 'No service' }}</b>
             <span class="ph-batt" :class="power.tone" role="img" :aria-label="`Battery: your Sim’s Energy is ${power.level}%`" :style="{ '--level': `${power.level}%` }"><i /></span><b>{{ power.level }}%</b>

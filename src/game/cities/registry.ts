@@ -157,6 +157,11 @@ export const cityRules = (value: unknown): CataloguedCityRules | null => {
 
 export const cityName = (value: unknown): string | null => cityRules(value)?.name ?? null
 
+/** The name of a life that has none yet: the city module's `defaultName` ('New Lagosian' where the city does not say). */
+export const cityDefaultName = (value: unknown): string => (cityRules(value) as { defaultName?: string } | null)?.defaultName ?? 'New Lagosian'
+/** Whether a name is the placeholder some city gives a life that has not been named. */
+export const isDefaultName = (name: unknown): boolean => name === 'New Lagosian' || knownCityIds().some(id => cityDefaultName(id) === name)
+
 export const citiesInState = (stateId: unknown): readonly CataloguedCityRules[] => typeof stateId === 'string'
   ? knownCityIds().flatMap(id => { const rules = cityRules(id); return rules?.state.id === stateId ? [rules] : [] })
   : []

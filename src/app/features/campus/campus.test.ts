@@ -273,7 +273,8 @@ test('away from the campus: one trip away, nothing to do here, a way in, and no 
   assert.ok(words.includes('Things to do here Travel to UNILAG to see activities at each landmark.'))
   assert.ok(words.includes('Open Bank'))
   assert.ok(words.includes('Travel to campus'))
-  assert.match(html, /<button type="button" class="ui-button is-primary" disabled[^>]*>Select and walk<\/button>/, 'walking needs the campus')
+  assert.ok(!words.includes('Walk around campus') && !words.includes('Landmark') && !html.includes('Select and walk'), 'no landmark picker (and no button that cannot be pressed) until the player is on the campus')
+  assert.equal((html.match(/<select/g) ?? []).length, 1, 'the shuttle destination is the only choice shown')
   assert.match(html, /aria-current="page"[^>]*>Overview/)
   for (const tab of ['Overview', 'Study', 'Residence', 'Community']) assert.ok(words.includes(tab))
   assert.ok(words.includes('Discovery trail · 0/8'))
@@ -293,6 +294,10 @@ test('on the campus: where you are, what can be done there with its duration and
   assert.match(words, /Read and practise coding 12s · Free Start/)
   assert.equal((html.match(/>Start<\/button>/g) ?? []).length >= 2, true)
   assert.ok(words.includes('Walk here'))
+  assert.ok(words.includes('Walk around campus') && words.includes('Select and walk'))
+  const picker = /<select[^>]*>(.*?)<\/select>/.exec(html)?.[1] ?? ''
+  assert.ok((picker.match(/<option/g) ?? []).length >= 8, 'the picker lists the landmarks of the campus')
+  assert.match(picker, /<option value="library" selected>University Library<\/option>/, 'and starts on where the player stands')
   assert.equal(EMOJI.test(html), false)
 })
 

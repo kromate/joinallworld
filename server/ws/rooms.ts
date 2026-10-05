@@ -284,6 +284,9 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   // transaction: the mark stops forwarding at once, the re-check drops them and tells the room.
   const scheduled = new Set<string>();
   const onLife = (publicId: string, city: CityId, state: LifeState): void => {
+    // The watcher list is process-wide. A life announced inside ANOTHER store's transaction (an earlier Durable Object instance in
+    // this isolate that has not been collected) is not ours: re-checking sockets would read this instance's storage on that request's behalf.
+    if (ctx.store.executing && !ctx.store.executing()) return;
     let due = false;
     for (const ws of inRooms.get(publicId) || []) {
       if (cityOf(ws) !== city || visitedHost(ws, city)) continue;

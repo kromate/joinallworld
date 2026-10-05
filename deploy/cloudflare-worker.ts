@@ -44,8 +44,10 @@ import { createOnce } from '../server/routes/once.ts';
 import { createShardStoreOn } from '../server/world/shard-core.ts';
 import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
+import { readTelemetryConfig } from '../server/telemetry/config.ts';
+import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from '../server/host-context.ts';
 import { CITY_IDS, SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
@@ -101,55 +103,74 @@ function publicOrigin(env: WorkerEnv, url: URL): string {
   return host ? `${url.protocol}//${host}` : '';
 }
 
+/** JSON answers (the API, and the errors of the page routes) are for this site's own pages only, and HTTPS is remembered for a year. */
+function sealJson(response: Response, url: URL): Response {
+  if (response.status === 101 || !response.headers.get('content-type')?.includes('application/json')) return response;
+  const sealed = new Response(response.body, response);
+  sealed.headers.set('cross-origin-resource-policy', 'same-origin');
+  const { 'Strict-Transport-Security': hsts } = apiHeaders(factsOfUrl(url));
+  if (hsts) sealed.headers.set('strict-transport-security', hsts);
+  return sealed;
+}
+
 export default {
   async fetch(request: Request, env: WorkerEnv): Promise<Response> {
-    const url = new URL(request.url);
-    const state = () => env.JOINALLWORLD.getByName('joinallworld-v1');
-    if (url.pathname.startsWith('/api/') || url.pathname === '/socket') {
-      // Operator routes authenticate with a bearer token in a header, which a browser never attaches by itself, so
-      // they are not tied to the page's origin. Every other route keeps the origin check.
-      const operator = url.pathname.startsWith('/api/mod/');
-      if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) return json(403, { error: 'origin_rejected' });
-      return state().fetch(request);
-    }
-    const paged = PAGE_PREFIXES.some(prefix => url.pathname.startsWith(prefix));
-    if (!['GET', 'HEAD'].includes(request.method) && !(paged && request.method === 'POST')) return json(405, { error: 'method_not_allowed' });
-    let assetPath;
-    try { assetPath = decodeURIComponent(url.pathname); } catch { return json(400, { error: 'invalid_path' }); }
-    if (assetPath.endsWith('.map')) return json(404, { error: 'not_found' });
-    if (url.pathname === '/old-character.html') {
-      if (url.origin !== 'https://joinallworld.com') return json(404, { error: 'not_found' });
-      return oldCharacterLanding(request.method === 'HEAD');
-    }
-    if (paged) {
-      // A page a module serves (the link preview /s/<code>, the e-mail pages /e/…). A prefix that renders nothing is
-      // not a page: a GET falls through to the game, a POST has nowhere else to go.
-      const page = await state().fetch(request);
-      if (page.headers.get('x-allworld-page') !== 'none') return page;
-      if (request.method === 'POST') return json(405, { error: 'method_not_allowed' });
-    }
-    // The manifest and the sitemap are made by code (server/site-files.ts), not shipped as assets: the release package admits neither extension.
-    const site = siteFile(url.pathname, publicOrigin(env, url));
-    if (site) return new Response(request.method === 'HEAD' ? null : site.body, { status: 200, headers: { 'content-type': site.type, 'x-content-type-options': 'nosniff' } });
-    const response = await env.ASSETS.fetch(request);
-    const headers = new Headers(response.headers);
-    headers.set('x-content-type-options', 'nosniff');
-    // A hashed build file that is gone (an old tab after a deploy): the binding's single-page fallback answers index.html, which a
-    // dynamic import cannot use. Under /assets/ that is a 404, never the page.
-    const inAssets = assetPath.startsWith('/assets/');
-    if (inAssets && (response.status === 404 || response.headers.get('content-type')?.includes('text/html'))) {
-      return new Response(request.method === 'HEAD' ? null : 'Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } });
-    }
-    if (inAssets && response.status === 200) headers.set('cache-control', 'public, max-age=31536000, immutable'); // hashed: the name changes when the content does
-    if (!headers.get('content-type')?.includes('text/html')) return new Response(response.body, { status: response.status, headers });
-    headers.set('cache-control', 'no-cache');
-    if (request.method === 'HEAD' || response.status !== 200) return new Response(response.body, { status: response.status, headers });
-    // The game's own page: its default link-preview image is made absolute, because the crawlers of chat apps do not
-    // resolve a relative og:image. The length changes, so the asset's own validators no longer describe the body.
-    for (const name of ['content-length', 'etag']) headers.delete(name);
-    return new Response(absolutePreviewImage(await response.text(), publicOrigin(env, url)), { status: 200, headers });
+    return sealJson(await respond(request, env), new URL(request.url));
   },
 };
+
+async function respond(request: Request, env: WorkerEnv): Promise<Response> {
+  const url = new URL(request.url);
+  const state = () => env.JOINALLWORLD.getByName('joinallworld-v1');
+  if (url.pathname.startsWith('/api/') || url.pathname === '/socket') {
+    // Operator routes authenticate with a bearer token in a header, which a browser never attaches by itself, so
+    // they are not tied to the page's origin. Every other route keeps the origin check.
+    const operator = url.pathname.startsWith('/api/mod/');
+    if (!operator && !isSameOrigin(request.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket' })) return json(403, { error: 'origin_rejected' });
+    return state().fetch(request);
+  }
+  const paged = PAGE_PREFIXES.some(prefix => url.pathname.startsWith(prefix));
+  if (!['GET', 'HEAD'].includes(request.method) && !(paged && request.method === 'POST')) return json(405, { error: 'method_not_allowed' });
+  let assetPath;
+  try { assetPath = decodeURIComponent(url.pathname); } catch { return json(400, { error: 'invalid_path' }); }
+  if (assetPath.endsWith('.map')) return json(404, { error: 'not_found' });
+  if (url.pathname === '/old-character.html') {
+    if (url.origin !== 'https://joinallworld.com') return json(404, { error: 'not_found' });
+    return oldCharacterLanding(request.method === 'HEAD');
+  }
+  if (paged) {
+    // A page a module serves (the link preview /s/<code>, the e-mail pages /e/…). A prefix that renders nothing is
+    // not a page: a GET falls through to the game, a POST has nowhere else to go.
+    const page = await state().fetch(request);
+    if (page.headers.get('x-allworld-page') !== 'none') return page;
+    if (request.method === 'POST') return json(405, { error: 'method_not_allowed' });
+  }
+  // The manifest and the sitemap are made by code (server/site-files.ts), not shipped as assets: the release package admits neither extension.
+  const site = siteFile(url.pathname, publicOrigin(env, url));
+  if (site) return new Response(request.method === 'HEAD' ? null : site.body, { status: 200, headers: { 'content-type': site.type, 'x-content-type-options': 'nosniff' } });
+  const response = await env.ASSETS.fetch(request);
+  const headers = new Headers(response.headers);
+  headers.set('x-content-type-options', 'nosniff');
+  // A hashed build file that is gone (an old tab after a deploy): the binding's single-page fallback answers index.html, which a
+  // dynamic import cannot use. Under /assets/ that is a 404, never the page.
+  const inAssets = assetPath.startsWith('/assets/');
+  if (inAssets && (response.status === 404 || response.headers.get('content-type')?.includes('text/html'))) {
+    return new Response(request.method === 'HEAD' ? null : 'Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } });
+  }
+  if (inAssets && response.status === 200) headers.set('cache-control', 'public, max-age=31536000, immutable'); // hashed: the name changes when the content does
+  if (!headers.get('content-type')?.includes('text/html')) return new Response(response.body, { status: response.status, headers });
+  headers.set('cache-control', 'no-cache');
+  // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as
+  // served. A HEAD answer has no body to hash, so the same page is read with a GET.
+  const head = request.method === 'HEAD';
+  const text = await (head ? await env.ASSETS.fetch(new Request(request.url, { method: 'GET' })) : response).text();
+  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })) }))) headers.set(name, value);
+  if (head || response.status !== 200) return new Response(head ? null : text, { status: response.status, headers });
+  // The game's own page: its default link-preview image is made absolute, because the crawlers of chat apps do not
+  // resolve a relative og:image. The length changes, so the asset's own validators no longer describe the body.
+  for (const name of ['content-length', 'etag']) headers.delete(name);
+  return new Response(absolutePreviewImage(text, publicOrigin(env, url)), { status: 200, headers });
+}
 
 /** Declared here, not in host-seam.ts: it names Workers runtime globals the Node test projects do not have. */
 /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
@@ -413,7 +434,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (!page || typeof page.html !== 'string') return none();
       const status = typeof page.status === 'number' && Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
       this.telemetry.http({ method: raw.method, route: key, status, ms: performance.now() - began });
-      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...PAGE_HEADERS, 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
+      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...pageHeaders(factsOfUrl(url)), 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
     } catch (thrown) {
       const coded = (thrown ?? {}) as Partial<HttpError>;
       const known = Number.isInteger(coded.status) && typeof coded.code === 'string';

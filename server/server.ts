@@ -15,12 +15,14 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, PAGE_HEADERS, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from './host-context.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
 import { buildSocketHandlers } from './ws/index.ts';
 import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
+import { readTelemetryConfig } from './telemetry/config.ts';
+import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigins, type RequestFacts } from './security-headers.ts';
 import { siteFile } from './site-files.ts';
 import telemetryRoutes from './telemetry/routes.ts';
 import { CITY_IDS, ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, collection, canOccupyVenue } from './protocol.ts';
@@ -67,6 +69,7 @@ export interface ServerOptions {
   receiptLimits?: Parameters<typeof createOnce>[0]['limits']
   env?: Readonly<Record<string, unknown>>
   fetch?: (url: string, init: RequestInit) => Promise<Response>
+  randomId?: () => string
   publicOrigin?: string | undefined
   buildId?: string
   telemetry?: ServerTelemetry
@@ -129,12 +132,17 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   log = (line: string) => console.error(line),
   receiptLimits, // { perPlayer, global, lightPerPlayer, lightGlobal } for ctx.once (server/routes/once.ts); the defaults are the documented numbers
   env = process.env, // where ctx.env reads the outreach settings from (a test passes its own object)
+  randomId = () => randomUUID(), // ids and match seeds modules draw (a scripted run passes a counter so every deal repeats)
   fetch: outbound = globalThis.fetch, // the one way a module makes an outside request (a test passes a fake)
   publicOrigin: givenOrigin = process.env.PUBLIC_ORIGIN, // e.g. https://play.example — used for absolute links in previews
   buildId = process.env.BUILD_ID || packageVersion(),
   // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) }: ServerOptions = {}): Promise<AllworldServer> {
   const configuredOrigin = cleanOrigin(givenOrigin);
+  // The ingest hosts the browser may talk to: none unless telemetry is configured (the same reading the client's config comes from).
+  const telemetryHosts = telemetryOrigins(readTelemetryConfig(env, { buildId }));
+  /** What the security headers need to know of a request. */
+  const factsOf = (req: IncomingMessage | undefined): RequestFacts => ({ secure: req ? isSecure(req, trustProxy) : false, host: cleanHost(req?.headers.host) });
   const store = providedStore || await createStore(dataDir, { ...(lazyFlushMs !== undefined ? { lazyFlushMs } : {}) });
   // The world registry: one append-only shard file per local government, beside the main data file.
   const shards = await createShardStore(join(dataDir, 'world'), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log, ...(shardIo ? { io: shardIo } : {}) });
@@ -245,13 +253,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     try { text = JSON.stringify(code === status ? body ?? {} : { error: 'internal_error' }); if (typeof text !== 'string') throw new TypeError('The response body is not JSON'); }
     catch (error) { log(`Response could not be serialised: ${firstLine(error)}`); code = 500; text = '{"error":"internal_error"}'; extra = {}; }
     try {
-      try { res.writeHead(code, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...extra }); }
+      try { res.writeHead(code, { ...apiHeaders(factsOf(res.req)), ...extra }); }
       catch (error) {
         // A header value Node refuses (a control character). Nothing has been sent yet: answer generically.
         log(`Response headers were refused: ${errorDetail(error)}`);
         if (res.headersSent) { res.destroy(); return false; }
         text = '{"error":"internal_error"}';
-        res.writeHead(500, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
+        res.writeHead(500, apiHeaders(factsOf(res.req)));
       }
       res.end(text);
       return true;
@@ -265,7 +273,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   function replyPage(res: ServerResponse, status: number, html: string, { cache = false, head = false }: { cache?: boolean; head?: boolean } = {}): boolean {
     if (res.headersSent || res.writableEnded || res.destroyed) return false;
     try {
-      res.writeHead(Number.isInteger(status) && status >= 200 && status <= 599 ? status : 200, { ...PAGE_HEADERS, 'Cache-Control': cache ? 'public, max-age=300' : 'no-store' });
+      res.writeHead(Number.isInteger(status) && status >= 200 && status <= 599 ? status : 200, { ...pageHeaders(factsOf(res.req)), 'Cache-Control': cache ? 'public, max-age=300' : 'no-store' });
       res.end(head ? undefined : html);
       return true;
     } catch (error) { log(`Page could not be written: ${errorDetail(error)}`); try { res.destroy(); } catch {} return false; }
@@ -385,11 +393,15 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       }
       // The game's own page: its default link-preview image is made absolute here, from PUBLIC_ORIGIN (or this request's own
       // host when that is not set), because the crawlers of chat apps do not resolve a relative og:image.
-      const bytes = path === resolve(root, 'index.html') ? Buffer.from(await serveIndex(req, path)) : await readFile(path);
+      const isIndex = path === resolve(root, 'index.html');
+      const html = isIndex ? await serveIndex(req, path) : '';
+      const bytes = isIndex ? Buffer.from(html) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
+      // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.
+      const security = isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts }) : {};
       // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
       const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
-      res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff' });
+      res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff', ...security });
       res.end(method === 'HEAD' ? undefined : bytes);
     } catch (thrown) {
       // Only the first line of the message is logged: never a header, a cookie or a body.
@@ -424,7 +436,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
     store, shards: shards as ShardStore, now, fail, allow, collection, send, publicSession, cityIds: CITY_IDS, telemetry,
-    randomId: () => randomUUID(),
+    randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },
     settle,

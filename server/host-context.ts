@@ -103,12 +103,6 @@ export function routeHeaders(headers: unknown): Record<string, string | string[]
   return kept;
 }
 
-/**
- * The headers of every HTML page a module serves (ctx.pages). A page cannot change them: no script may run, nothing may
- * frame it, it sets no cookie and it sends no referrer.
- */
-export const PAGE_HEADERS = Object.freeze({ 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY', 'X-Robots-Tag': 'noindex, nofollow',
-  'Content-Security-Policy': "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" });
 /** The registered page whose prefix a path starts with: [prefix, render] or undefined. */
 export const pageFor = (pages: Map<string, PageHandler>, pathname: string): [string, PageHandler] | undefined => [...pages].find(([prefix]) => pathname.startsWith(prefix));
 /** The public origin an operator may configure (PUBLIC_ORIGIN): scheme and host only, or ''. */

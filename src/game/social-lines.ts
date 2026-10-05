@@ -33,10 +33,12 @@ export function presenceText(person: { status?: string; seenAt?: number; venue?:
 }
 
 /** The line above the people list: what the count means and why it may be empty. */
-export function roomSummary(list: Pick<PeopleListing, 'venue' | 'self' | 'count'> | null | undefined, venueName: string): string {
+export function roomSummary(list: Pick<PeopleListing, 'venue' | 'self' | 'count' | 'here' | 'total'> | null | undefined, venueName: string): string {
   if (!list) return 'Checking who is here…';
   if (list.venue === 'home') return list.count ? `${list.count} guest${list.count === 1 ? '' : 's'} in your home` : 'Your home is private. Only guests you let in appear here.';
   if (list.self === 'travelling') return 'You are on the move. People appear when you arrive.';
   if (list.self === 'not_joined') return `Connecting you to ${venueName}… other players cannot see you here yet.`;
-  return `${list.count} other player${list.count === 1 ? '' : 's'} here — the same people who see this venue’s chat.`;
+  // A busy venue is split into groups: the list, the scene and the chat are the people around you, and the venue's own total is said beside it.
+  const around = `${list.count} other player${list.count === 1 ? '' : 's'} here with you — the same people who see this venue’s chat.`;
+  return typeof list.total === 'number' && typeof list.here === 'number' && list.total > list.here ? `${around} ${list.total} ${list.total === 1 ? 'person is' : 'people are'} in this place.` : around;
 }

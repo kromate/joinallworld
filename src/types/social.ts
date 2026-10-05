@@ -204,7 +204,12 @@ export interface PeopleListing {
   venue: string
   self: 'travelling' | 'joined' | 'not_joined'
   players: PersonHere[]
+  /** The players in the caller's GROUP of the venue (everyone, in a venue small enough to be one group, and in a Home). */
   count: number
+  /** A public venue: how many are in the caller's group (themselves included), how many are in the venue, and in how many groups. */
+  here?: number
+  total?: number
+  groups?: number
 }
 
 export interface SearchResult extends PlayerRef { friend: boolean }
@@ -482,7 +487,7 @@ export const SOCIAL_OVERVIEW_KEYS = [
 ] as const satisfies readonly (keyof SocialOverview | keyof ApiEnvelope)[]
 export const HOUSE_VIEW_KEYS = ['capacity', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'role'] as const satisfies readonly (keyof HouseView)[]
 export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
-export const PEOPLE_LISTING_KEYS = ['cityId', 'code', 'count', 'ok', 'players', 'self', 'serverTime', 'venue'] as const satisfies readonly (keyof PeopleListing | keyof ApiEnvelope)[]
+export const PEOPLE_LISTING_KEYS = ['cityId', 'code', 'count', 'groups', 'here', 'ok', 'players', 'self', 'serverTime', 'total', 'venue'] as const satisfies readonly (keyof PeopleListing | keyof ApiEnvelope)[]
 export const CONVERSATION_KEYS = ['id', 'kind', 'last', 'members', 'name', 'owner', 'unread', 'with'] as const satisfies readonly (keyof Conversation)[]
 /** A sender's own message; someone else's has no `clientId`, a system line adds `sys`. */
 export const OWN_MESSAGE_KEYS = ['at', 'body', 'clientId', 'conv', 'from', 'id', 'seq'] as const satisfies readonly (keyof Message)[]

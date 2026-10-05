@@ -24,6 +24,17 @@ test('the caps are settings: a whole number inside its bounds replaces the defau
   assert.equal(capacityConfig({ MAX_SOCKETS: '' }).maxSockets, CAPACITY_DEFAULTS.maxSockets, 'an empty setting is no setting');
 });
 
+test('the room group sizes are settings too: a small target brings the minimum down with it, and sizes that do not rise in order are ignored', () => {
+  assert.deepEqual([CAPACITY_DEFAULTS.roomGroupTarget, CAPACITY_DEFAULTS.roomGroupMax, CAPACITY_DEFAULTS.roomGroupMin], [12, 16, 4]);
+  const small = capacityConfig({ ROOM_GROUP_TARGET: '3', ROOM_GROUP_MAX: '4' });
+  assert.deepEqual([small.roomGroupTarget, small.roomGroupMax, small.roomGroupMin], [3, 4, 1]);
+  assert.equal(capacityConfig({ ROOM_GROUP_MIN: '2', ROOM_GROUP_TARGET: '3', ROOM_GROUP_MAX: '4' }).roomGroupMin, 2);
+  const lines: string[] = [];
+  const bad = capacityConfig({ ROOM_GROUP_TARGET: '20', ROOM_GROUP_MAX: '10' }, (line) => { lines.push(line); });
+  assert.deepEqual([bad.roomGroupTarget, bad.roomGroupMax, bad.roomGroupMin], [12, 16, 4]);
+  assert.equal(lines.length, 1);
+});
+
 test('a full world asks a NEW visitor to wait, with a sentence; everyone who has a session plays on, and a place that ran out is given away', async t => {
   const f = await fixture(t, { maxActiveSessions: 2 });
   const ada = await f.device('Ada'), bola = await f.device('Bola');

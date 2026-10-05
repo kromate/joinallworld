@@ -27,6 +27,7 @@ import type { RouteContext, WsHandlers } from '../types.ts';
 
 export default function tablesSocket(ctx: RouteContext): WsHandlers {
   const tables = tablesService(ctx);
+  if (ctx.checks) ctx.checks.seated = (id) => tables.isSeated(id);
   return {
     close(ws) { tables.drop(ws); },
     messages: {

@@ -110,6 +110,39 @@ or frame unless configured higher; 10 GB of SQLite storage; 2 MB a row; about 1,
 game reaches its own limits long before the socket and storage limits; the memory limit is the one the whole-collection
 design can reach (a 10 MB collection is several times that while it is being parsed).
 
+## Room groups
+
+A public venue's room is split into **groups** (`server/ws/groups.ts` holds the rules, `server/ws/rooms.ts` the state and the
+sending, `src/game/roomGroups.ts` the numbers). A player sees, hears (chat, the voice circle) and is sent moves from their
+group only; the venue still tells everyone a truthful total.
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `ROOM_GROUP_TARGET` | 12 | strangers are placed in the fullest group below this |
+| `ROOM_GROUP_MAX` | 16 | a player who hops in by choice; friends are kept together up to this plus 2 |
+| `ROOM_GROUP_MIN` | 4 | a group below this is merged into another at the next join or leave in the venue |
+
+Placement, in order: the group of the person they came to be with (a ping join, or a friend named in the join); the group
+with the most of their mutual friends (the founder's automatic friendship does not count); the group they were in a minute
+ago; the fullest group below the target; a new group. A block is never a reason to be placed anywhere. A friend whose group is
+past the maximum plus two is named ("in another part of the venue") with a one-tap join that waits for room.
+A merge moves a small group whole, never a seated player, and never splits a voice circle, a recent conversation or two
+friends standing together. Home rooms (a host and at most 5 guests), game tables and calls are not grouped.
+
+Everything is in memory: nothing is stored, no row is written by room traffic, and a Worker that slept puts each socket back
+in the group it carried (the group id is in the socket's attachment). A page that joins with `deltas: true` gets one
+`presence` snapshot (with `counts`) and then `presence-delta` frames; moves are gathered and sent at most about eight times a
+second per group. A page that does not know groups is sent its group's whole list as the room. The venue total is sent to
+each group once per heartbeat, only when it changed. `GET /api/social/people` lists the caller's group and carries `here`,
+`total`, `groups`.
+
+Measured at 1,000 players in one venue (`server/room-groups-load.test.ts`): a step in which everybody moves once is about
+0.8 MB in all (about 800 bytes a player), and no page is told of more than 18 members. The whole-room list would be one
+list of 121 KB to every page on each of the 1,000 moves, 121 GB.
+
+Still sized by everyone, not by a group: the heartbeat sweep walks every socket (every 10 seconds); a venue's tables are
+listed whole (a venue has a handful); the live friend places and the neighbours directory were already capped.
+
 ## What was measured
 
 `npm run capacity -- --host worker|node --steps 250,500,1000` (see the head of `scripts/capacity.ts` for the method and
@@ -162,7 +195,7 @@ what the host keeps, is what approaches the memory limit.
    expired sessions by their stored expiry instead of reading every record.
 4. **A room's member list was turned into text once per member.** It is now made once per change. The list itself is
    still sent whole to everyone in the room on every step anyone takes: 43 MB a second at 1,000 busy players. A room has
-   no member limit.
+   no member limit. *(Both are now fixed: see "Room groups" below.)*
 5. **Telling a player's friends that they connected read the whole `social` collection, per socket.** Arrivals and
    departures that come while such a read is on its way now share the next one, and when reads take long the next waits
    a little (`server/ws/social.ts`). Before, a wave of reconnecting pages was 55% of the host's time and kept it down.
@@ -203,9 +236,7 @@ In order. Each step is worth doing by itself.
    `MAX_ACTIVE_SESSIONS` rise.
 2. **One socket per page.** The game socket and the social socket carry disjoint message types and are already served
    by the same handlers; one connection halves the sockets, the heartbeat frames and the session renewals.
-3. **Rooms of bounded size.** A public venue becomes several rooms of at most a few dozen members, filled in order, with
-   friends placed together; or the member list is sent as changes instead of whole. Either removes the one cost that
-   grows with the square of a crowd.
+3. **Rooms of bounded size.** Done: see "Room groups" below.
 4. **An index for what the campus and the search read**, kept by the modules that own them.
 5. **One object per city.** Only when one thread is no longer enough after the steps above — on the measurements here,
    somewhere above 3,000 players connected at once.

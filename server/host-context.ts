@@ -8,6 +8,7 @@
  */
 import { settleCity, applyLifeAction } from './life-service.ts';
 import { fileCharacter } from './character.ts';
+import { ROOM_GROUP_MAX, ROOM_GROUP_MIN, ROOM_GROUP_TARGET } from '../src/game/roomGroups.ts';
 import { archivedLife, NEW_SESSIONS_PER_ADDRESS, SOCKETS_PER_ADDRESS, SOCKETS_PER_PLAYER } from './protocol.ts';
 import { outcomeKey } from './routes/core.ts';
 import type { ActionRequest, CityId, LifeChangedFrame } from '../src/types/protocol.ts';
@@ -61,16 +62,19 @@ export function founderEmailHash(env: Readonly<Record<string, unknown>> | null |
  *   SOCKETS_PER_ADDRESS   open sockets one network address may hold, so one visitor cannot take every place.
  *   NEW_SESSIONS_PER_ADDRESS   new sessions one network address may make in an hour. Beyond it a new visitor from that address
  *                         is told so, and when to try again (429 with Retry-After); nobody who has a session is affected.
+ *   ROOM_GROUP_TARGET, ROOM_GROUP_MAX, ROOM_GROUP_MIN   the sizes of the groups a public venue's room is split into (src/game/roomGroups.ts):
+ *                         strangers are placed up to the target, friends up to the maximum plus two, a group below the minimum is merged away.
  *   SOCKETS_PER_PLAYER    not a setting: open sockets one session may hold.
  * A value that is not a whole number inside its bounds is ignored with one log line, and the default applies: a typing
  * mistake in a setting must not stop the game.
  */
-export interface CapacityConfig { maxActiveSessions: number; maxSockets: number; socketsPerAddress: number; socketsPerPlayer: number; newSessionsPerAddress: number }
-export const CAPACITY_DEFAULTS: Readonly<CapacityConfig> = Object.freeze({ maxActiveSessions: 10000, maxSockets: 4000, socketsPerAddress: SOCKETS_PER_ADDRESS, socketsPerPlayer: SOCKETS_PER_PLAYER, newSessionsPerAddress: NEW_SESSIONS_PER_ADDRESS });
+export interface CapacityConfig { maxActiveSessions: number; maxSockets: number; socketsPerAddress: number; socketsPerPlayer: number; newSessionsPerAddress: number; roomGroupTarget: number; roomGroupMax: number; roomGroupMin: number }
+export const CAPACITY_DEFAULTS: Readonly<CapacityConfig> = Object.freeze({ maxActiveSessions: 10000, maxSockets: 4000, socketsPerAddress: SOCKETS_PER_ADDRESS, socketsPerPlayer: SOCKETS_PER_PLAYER, newSessionsPerAddress: NEW_SESSIONS_PER_ADDRESS, roomGroupTarget: ROOM_GROUP_TARGET, roomGroupMax: ROOM_GROUP_MAX, roomGroupMin: ROOM_GROUP_MIN });
 /** [setting, field, least, most]. The most a host can be told to take is what the platform itself allows (docs/CAPACITY.md). */
 export const CAPACITY_ENV: readonly (readonly [string, keyof CapacityConfig, number, number])[] = Object.freeze([
   ['MAX_ACTIVE_SESSIONS', 'maxActiveSessions', 1, 5000000], ['MAX_SOCKETS', 'maxSockets', 2, 32000], ['SOCKETS_PER_ADDRESS', 'socketsPerAddress', 2, 32000],
   ['NEW_SESSIONS_PER_ADDRESS', 'newSessionsPerAddress', 1, 100000],
+  ['ROOM_GROUP_TARGET', 'roomGroupTarget', 2, 64], ['ROOM_GROUP_MAX', 'roomGroupMax', 2, 64], ['ROOM_GROUP_MIN', 'roomGroupMin', 1, 32],
 ] as const);
 export function capacityConfig(env: Readonly<Record<string, unknown>> | null | undefined, log: (line: string) => void = () => {}): CapacityConfig {
   const config: CapacityConfig = { ...CAPACITY_DEFAULTS };
@@ -80,6 +84,14 @@ export function capacityConfig(env: Readonly<Record<string, unknown>> | null | u
     const value = typeof given === 'number' ? given : typeof given === 'string' && /^\d{1,9}$/.test(given.trim()) ? Number(given.trim()) : NaN;
     if (Number.isSafeInteger(value) && value >= least && value <= most) config[field] = value;
     else log(`${name} must be a whole number from ${least} to ${most}: the default (${config[field]}) is used.`);
+  }
+  // A minimum nobody set follows a small target (about a third of it), so a host that only shrinks the groups gets groups that can merge.
+  const minGiven = env?.['ROOM_GROUP_MIN'];
+  if (minGiven === undefined || minGiven === null || minGiven === '') config.roomGroupMin = Math.min(config.roomGroupMin, Math.max(1, Math.floor(config.roomGroupTarget / 3)));
+  // The three group sizes only make sense together: a minimum above the target, or a target above the maximum, is a typing mistake too.
+  if (!(config.roomGroupMin <= config.roomGroupTarget && config.roomGroupTarget <= config.roomGroupMax)) {
+    log(`ROOM_GROUP_MIN (${config.roomGroupMin}), ROOM_GROUP_TARGET (${config.roomGroupTarget}) and ROOM_GROUP_MAX (${config.roomGroupMax}) must rise in that order: the defaults are used.`);
+    config.roomGroupMin = CAPACITY_DEFAULTS.roomGroupMin; config.roomGroupTarget = CAPACITY_DEFAULTS.roomGroupTarget; config.roomGroupMax = CAPACITY_DEFAULTS.roomGroupMax;
   }
   return config;
 }

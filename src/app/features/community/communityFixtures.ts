@@ -4,7 +4,7 @@ import type { CommunityController, CommunityState } from '../../../types/communi
 
 export function communityState(patch: Partial<CommunityState> = {}): CommunityState {
   return {
-    room: { cityId: 'lagos', venueId: 'park' }, roomText: 'Lagos · The Park', privateHome: false, connection: 'Connected',
+    room: { cityId: 'lagos', venueId: 'park' }, group: null, groupList: null, apart: null, groupNote: null, roomText: 'Lagos · The Park', privateHome: false, connection: 'Connected',
     hasSession: true, session: { id: 'a', name: 'Alex' }, savingName: false,
     members: [{ id: 'a', label: 'Alex (you)', state: 'Here' }, { id: 'b', label: 'Bea <b>', state: 'In voice · near' }], memberCount: 2,
     positionText: 'Nobody else is in voice here yet.', walkDisabled: false,
@@ -39,6 +39,8 @@ export function fakeController(options: CommunityOptions, initial: CommunityStat
     saveName: async (name) => { calls.push(`saveName ${name}`); return true },
     sendChat(body) { calls.push(`sendChat ${body}`); return true },
     retryMessage(key) { calls.push(`retryMessage ${key}`) },
+    listGroups() { calls.push('listGroups') }, closeGroups() { calls.push('closeGroups') }, joinGroup(id) { calls.push(`joinGroup ${id}`) },
+    joinFriendGroup(id) { calls.push(`joinFriendGroup ${id}`) }, clearGroupNote() { calls.push('clearGroupNote') },
     joinVoice: async () => { calls.push('joinVoice') },
     toggleMute() { calls.push('toggleMute') },
     leaveVoice() { calls.push('leaveVoice') },

@@ -186,6 +186,7 @@ export function createCommunityStore(deps: CommunityDeps): CommunityStore {
       const created = await module.createCommunity({
         cityId: game.cityId.value, venueId: game.state.value.location,
         onMembers: handleMembers,
+        onNotice: (text) => deps.toast(text),
         venueName: (venueId, cityId) => deps.venueLabel(venueId, cityId),
         // The panel's Walk buttons walk the avatar; its new place comes back through moveTo like any other step.
         onStep: (dx, dz) => deps.walkBy(dx, dz) === true,

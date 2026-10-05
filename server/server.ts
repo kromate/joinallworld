@@ -509,7 +509,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     // the Worker host keeps itself alive for it. A module calls ctx.waitUntil?.(promise) and never relies on the answer.
     waitUntil() {},
     keyFile,
-    config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, maxSockets, socketsPerAddress, socketsPerPlayer: caps.socketsPerPlayer, newSessionsPerAddress: caps.newSessionsPerAddress, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
+    config: { accounts: accountsConfig(env), founderEmailSha256: founderEmailHash(env), publicOrigin: configuredOrigin, sessionTtlMs, actionWindowMs, maxActiveSessions, maxSockets, socketsPerAddress, socketsPerPlayer: caps.socketsPerPlayer, newSessionsPerAddress: caps.newSessionsPerAddress, roomGroupTarget: caps.roomGroupTarget, roomGroupMax: caps.roomGroupMax, roomGroupMin: caps.roomGroupMin, voiceConfigProvider, buildId: String(buildId).slice(0, 40), votesPerAddress, voteCapMode, heartbeatMs, moderation: Boolean(moderatorDigest) },
     // Work a module must finish before the server takes requests (loading an in-memory index).
     startup,
     // Work a module must finish when the server stops, BEFORE the store is closed: async functions, run in order

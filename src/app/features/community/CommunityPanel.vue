@@ -45,10 +45,29 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
     <p v-if="s.privateHome" class="community-private-note">Your home is private to this device session. Public nearby voice and community chat are available at shared venues.</p>
     <div v-if="s.hasSession" class="community-content">
       <div class="community-presence">
-        <h3>In this room <span class="community-count">{{ s.memberCount }}</span></h3>
+        <h3>{{ s.group ? 'Around you' : 'In this room' }} <span class="community-count">{{ s.memberCount }}</span></h3>
+        <p v-if="s.group" class="community-group-header" data-group-header>{{ s.group.header }}</p>
+        <p v-if="s.groupNote" class="community-group-note" role="status" data-group-note>{{ s.groupNote }} <button type="button" class="community-link" @click="control()?.clearGroupNote()">OK</button></p>
+        <p v-if="s.apart" class="community-group-apart" data-group-apart>
+          {{ s.apart.name }} is in another part of the venue.
+          <button type="button" data-group-join-friend :disabled="s.apart.waiting" @click="control()?.joinFriendGroup(s.apart.id)">{{ s.apart.waiting ? 'Waiting for room…' : `Join ${s.apart.name}'s group` }}</button>
+        </p>
         <ul class="community-members" aria-label="Room members">
           <li v-for="member in s.members" :key="member.id"><span>{{ member.label }}</span><small>{{ member.state }}</small></li>
         </ul>
+        <div v-if="s.group && s.group.groups > 1" class="community-groups">
+          <button v-if="!s.groupList" type="button" data-groups-open @click="control()?.listGroups()">See other groups</button>
+          <template v-else>
+            <ul class="community-group-list" aria-label="Groups in this place" data-group-list>
+              <li v-for="group in s.groupList.groups" :key="group.id">
+                <span>Group {{ group.no }}{{ group.mine ? ' (yours)' : '' }} · {{ group.size }} {{ group.size === 1 ? 'person' : 'people' }}<template v-if="group.friends.length"> · {{ group.friends.join(', ') }}</template></span>
+                <button v-if="!group.mine" type="button" :disabled="!group.open" :data-group-join="group.id" @click="control()?.joinGroup(group.id)">{{ group.open ? 'Join' : 'Full' }}</button>
+              </li>
+            </ul>
+            <p v-if="s.groupList.more" class="community-position-note">and {{ s.groupList.more }} more groups</p>
+            <button type="button" @click="control()?.closeGroups()">Close</button>
+          </template>
+        </div>
       </div>
 
       <div v-if="!s.privateHome" class="community-proximity">

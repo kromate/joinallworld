@@ -171,7 +171,7 @@ test('socket registry: room-free and room-only handlers, error replies, open/clo
 
 test('socket registry rejects duplicate or malformed message types and lists the core types', () => {
   const ctx = bareContext();
-  const CORE = ['chat', 'join', 'move', 'signal', 'voice-state'];
+  const CORE = ['chat', 'group-join', 'groups', 'join', 'move', 'signal', 'voice-state'];
   const types = [...buildSocketHandlers(ctx).messages.keys()];
   for (const type of CORE) assert.ok(types.includes(type), `core message type ${type} is registered`);
   // The rooms module owns exactly the core types; every other type carries its owner's prefix.

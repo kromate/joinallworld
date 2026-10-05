@@ -10,9 +10,6 @@ import type { LifeState } from '../../types/life.ts'
 
 /** What a device says, once, when its character was moved on from another device of the same player. */
 export const CONTINUED_TEXT = 'Continued from your other device.'
-/** What it says before it starts again because its session changed under it (server/routes/auth.ts closes its socket with 4401). */
-export const SIGNED_OUT_TEXT = 'You were signed out on another device.'
-export const CHARACTER_CHANGED_TEXT = 'Your account is playing another character now.'
 /** The close code of a socket whose session changed: signed out, or the account plays another character. */
 export const SESSION_CHANGED = 4401
 

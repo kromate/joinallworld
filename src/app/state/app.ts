@@ -17,7 +17,6 @@ import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
-import { networkLimitText, networkLimitWait, worldFullText, worldFullWait } from '../features/start/capacityWait.ts'
 import { captureLink, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
@@ -26,8 +25,7 @@ import { createLanding } from '../features/landing/landingStore.ts'
 import { pingUi } from '../features/ping/pingLoader.ts'
 import { tableById } from '../../tables/city-places.ts'
 import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, socketWanted, takeLinkHost } from '../features/social/useSocial.ts'
-import { STORAGE_KEY } from '../../storage-key.ts'
-import { CHARACTER_CHANGED_TEXT, CONTINUED_TEXT, SESSION_CHANGED, SIGNED_OUT_TEXT, continuedElsewhere } from './devices.ts'
+import { CONTINUED_TEXT, SESSION_CHANGED, continuedElsewhere } from './devices.ts'
 import { mapPeople } from '../../game/live-model.ts'
 import { hueOf, initialOf } from '../ui/format.ts'
 import { funnelEvents, funnelSnap } from '../../quick-start/model.ts'
@@ -283,22 +281,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   game.on('accepted', () => { socketWanted() })
   // The server closed this socket because its session changed: this browser was signed out from another device, or the
   // account now plays another character. The copy of the old life kept here is dropped and the page starts again.
-  let leaving = false
-  async function sessionMoved(): Promise<void> {
-    if (leaving) return
-    const held = game.session.value?.id ?? null
-    let now: string | null
-    try { now = (await game.fetchJson<{ session: { id: string } }>('/api/session')).session.id }
-    catch (error) { if ((error as { status?: number }).status !== 401) return; now = null }
-    if (now === held || leaving) return
-    leaving = true
-    game.stop()
-    game.toast(now === null ? SIGNED_OUT_TEXT : CHARACTER_CHANGED_TEXT)
-    globalThis.setTimeout(() => {
-      try { globalThis.localStorage?.removeItem(STORAGE_KEY) } catch { /* nothing was kept */ }
-      try { globalThis.location?.reload() } catch { /* the next request says so */ }
-    }, 1800)
-  }
+  async function sessionMoved(): Promise<void> { await (await import('./sessionEnd.ts')).sessionMoved(game) }
   onSocketClose((code) => { if (code === SESSION_CHANGED) void sessionMoved() })
   // The saved life is gone: its own sheet says so, not the welcome of the landing screen.
   game.on('expired', () => { positions = {}; forgetViews(tabStore(), deviceStore(), whoIs()); sessionChanged(null); const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
@@ -457,12 +440,16 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       // A refused name comes back through 'needName' with the server's sentence; anything else is the connection.
       if (!ok && game.link.value !== 'new') {
         play.sending = false
-        if (game.client.refusal === 'full') {
+        // The sentences of a refusal are fetched only when the server gave one.
+        const capacity = game.client.refusal ? await import('../features/start/capacityWait.ts') : null
+        if (capacity && game.client.refusal === 'full') {
+          const { worldFullText, worldFullWait } = capacity
           // Every place is taken. The visitor waits on the landing screen, told why, and is let in as soon as there is room.
           const wait = worldFullWait(fullTries++)
           reopenLanding(worldFullText(wait), name, true)
           fullRetry = globalThis.setTimeout(() => { fullRetry = null; if (!game.connected.value) void quickStart(name, startCity) }, wait * 1000)
-        } else if (game.client.refusal === 'limit') {
+        } else if (capacity) {
+          const { networkLimitText, networkLimitWait } = capacity
           // Too many new players from this network address in the last hour: said plainly, with the wait the server gave, and tried again then.
           const wait = networkLimitWait(game.client.retryAfter)
           reopenLanding(networkLimitText(wait), name, true)

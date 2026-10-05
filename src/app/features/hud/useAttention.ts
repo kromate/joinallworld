@@ -5,8 +5,9 @@
 // with Hints off, and it tapers: each situational pointer is shown a few times and then retired.
 // Nothing here keeps time: the movements are CSS animations that end by themselves.
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
-import { createAttention, nextStep } from '../../../ui/attention.ts'
-import type { Attention, NextStep, Point, StepContext } from '../../../ui/attention.ts'
+import { nextStep } from '../../../ui/attention.ts'
+import type { NextStep, Point, StepContext } from '../../../ui/attention.ts'
+import type { Attention } from '../../../ui/attention-dom.ts'
 import { isTrip } from '../venue/venueModel.ts'
 import { useApp } from '../../state/app.ts'
 import { COACH_KEY } from './coachModel.ts'
@@ -36,6 +37,7 @@ export function useAttention() {
   let lastCash: number | null = null
   let lastNeeds: Record<string, number> | null = null
   let lastLife = ''
+  let gone = false
 
   const root = (): HTMLElement | null => document.getElementById('life-overlay')
   const inOverlay = (selector: string): boolean => Boolean(root()?.querySelector(selector))
@@ -111,12 +113,17 @@ export function useAttention() {
     try { globalThis.localStorage?.setItem(COACH_KEY, '1') } catch { /* still off for this visit */ }
   }
   onMounted(() => {
-    attention = createAttention({ root: root() ?? document.body, dialog: document.getElementById('life-dialog') as HTMLDialogElement | null })
+    // The rings and pills are drawn by code fetched after the first paint; the next step itself is worked out at once.
+    void import('../../../ui/attention-dom.ts').then(({ createAttention }) => {
+      if (gone) return
+      attention = createAttention({ root: root() ?? document.body, dialog: document.getElementById('life-dialog') as HTMLDialogElement | null })
+      point(); notice()
+    })
     document.addEventListener('pointerdown', onClick, true)
     window.addEventListener('jaw:hints', onHints)
     void nextTick(() => { point(); notice() })
   })
-  onBeforeUnmount(() => { document.removeEventListener('pointerdown', onClick, true); window.removeEventListener('jaw:hints', onHints); attention?.destroy(); attention = null })
+  onBeforeUnmount(() => { gone = true; document.removeEventListener('pointerdown', onClick, true); window.removeEventListener('jaw:hints', onHints); attention?.destroy(); attention = null })
   watch([game.state, game.mode, shell.sheet, off, () => shell.ui.clean, () => shell.ui.expanded, () => shell.ui.trayOpen, () => tour.active], () => { void nextTick(() => { point(); notice() }) }, { flush: 'post' })
   // Going up to the world map, or picking another place there, changes what Go there is to point at.
   watch([() => mapUi.layer, () => mapUi.destination], () => { void nextTick(point) }, { flush: 'post' })

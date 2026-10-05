@@ -13,6 +13,9 @@ const STEPS = [
   { icon: 'person', title: 'Look after your Sim', text: 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.' },
 ] as const
 const rows = shortcutRows()
+/** The walkthrough starts after this sheet closes (src/app/features/tour/TourTrigger.vue). */
+function takeTour(): void { window.dispatchEvent(new CustomEvent('jaw:tour')) }
+function showShortcuts(): void { window.dispatchEvent(new CustomEvent('jaw:shortcuts', { detail: { from: 'help' } })) }
 </script>
 
 <template>
@@ -22,8 +25,16 @@ const rows = shortcutRows()
     </ul>
     <p class="help-note">The <b>More</b> button holds the weather, the gem hunt, messages and the city switch. <b>Clean screen</b> (the eye, or X) hides the panels so you can see the whole scene.</p>
     <p class="help-note">{{ game.connected.value ? 'Your progress is saved on this server under this device session. It is not a password-protected account, so keep your cookies.' : 'You are not connected: what you see is the last saved copy, and nothing changes until the connection is back.' }}</p>
+    <div class="help-actions">
+      <BaseButton block variant="primary" @click="takeTour">Take the tour</BaseButton>
+      <BaseButton block @click="showShortcuts">Keyboard shortcuts</BaseButton>
+    </div>
     <h3>Keyboard</h3>
     <dl class="help-keys"><div v-for="row in rows" :key="row.label"><dt><kbd>{{ row.label }}</kbd></dt><dd>{{ row.description }}</dd></div></dl>
     <BaseButton block @click="shell.open('support')">Report a problem</BaseButton>
   </div>
 </template>
+
+<style scoped>
+.help-actions { display: grid; gap: 8px; margin: 0 0 16px; }
+</style>

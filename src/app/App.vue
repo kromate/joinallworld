@@ -21,6 +21,7 @@ import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
 import HudSidebar from './features/hud/HudSidebar.vue'
 import ConnectionNotice from './features/hud/ConnectionNotice.vue'
+import TourTrigger from './features/tour/TourTrigger.vue'
 import VenuePanel from './features/venue/VenuePanel.vue'
 import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
@@ -78,7 +79,7 @@ function onKey(event: KeyboardEvent): void {
     else if (ui.trayOpen) ui.trayOpen = false
     else if (ui.clean) ui.clean = false
     else if (ui.expanded) ui.expanded = false
-  } else if (verb === 'help') shell.open('help')
+  } else if (verb === 'help') window.dispatchEvent(new CustomEvent('jaw:shortcuts', { detail: { from: 'key' } }))
   else if (verb === 'clean') { ui.clean = !ui.clean; ui.trayOpen = false }
   else if (verb === 'nav') nav.value?.navigate(arg, null)
   else if (verb === 'toggle') { if (mode.value === 'venue') { ui.clean = false; ui.expanded = !ui.expanded } }
@@ -157,6 +158,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     </div>
   </div>
   <SheetHost />
+  <TourTrigger />
   <CommunityHost />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <UpdateBanner />

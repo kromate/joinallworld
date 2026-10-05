@@ -60,7 +60,7 @@ function showWorld(): void {
 </script>
 
 <template>
-  <div class="map-panel map-overview" :class="open ? 'is-open' : 'is-collapsed'">
+  <div class="map-panel map-overview" data-tour="map-card" :class="open ? 'is-open' : 'is-collapsed'">
     <button type="button" class="map-handle" :aria-expanded="open" aria-controls="map-list" @click="toggleList">
       <span class="map-grip" aria-hidden="true" />
       <span class="map-handle-text"><b>{{ view.city?.name || 'City' }} map</b><small><template v-if="!trip && weather"><GameIcon inline kind="weather" :id="weather.id" :emoji="weather.icon" />{{ ' ' }}</template>{{ line }}</small></span>

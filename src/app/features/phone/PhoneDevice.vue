@@ -188,7 +188,7 @@ defineExpose({
               <button v-if="notes.length > 1" class="ph-more" type="button" :aria-expanded="shade" :aria-label="`Show all ${notes.length} notifications`" @click="setShade(!shade)"><GameIcon bare name="bell" /><span><template v-if="freshNotes > 1">{{ freshNotes }} new · </template>{{ notes.length - 1 }} more</span></button>
             </template>
           </div>
-          <div ref="pagesBox" class="ph-pages" @scroll.passive="onScroll">
+          <div ref="pagesBox" class="ph-pages" data-tour="phone-apps" @scroll.passive="onScroll">
             <section v-for="(item, index) in pages" :key="item.label" class="ph-page" :data-ph-page="index" :aria-label="item.label">
               <template v-for="group in item.groups" :key="group.id">
                 <h3 class="ph-group">{{ group.label }}</h3>

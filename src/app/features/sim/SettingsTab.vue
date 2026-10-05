@@ -45,6 +45,7 @@ function toggleHints(on: boolean): void {
 }
 function pickWall(id: string): void { warning.value = setWallpaper(id) ? '' : WALLPAPER_NOT_SAVED; wall.value = id }
 
+function showTour(): void { window.dispatchEvent(new CustomEvent('jaw:tour')) }
 function openPrivacy(): void { window.dispatchEvent(new CustomEvent('jaw:privacy')) }
 
 onMounted(() => { void growth.load() })
@@ -60,6 +61,7 @@ onMounted(() => { void growth.load() })
 
     <h3 class="ui-section">Guidance</h3>
     <div class="ui-rows">
+      <button class="ui-row settings-row" type="button" @click="showTour"><span class="ui-row-body"><b>Show the tour again</b><small>A short walkthrough of the screen.</small></span></button>
       <label class="ui-row settings-row"><span class="ui-row-body"><b>Hints</b><small>Point at the next thing to tap, and say when something happens elsewhere on screen.</small></span>
         <span class="settings-state">{{ hints ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="hints" aria-label="Hints" @change="toggleHints(($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
     </div>

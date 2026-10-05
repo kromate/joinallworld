@@ -85,6 +85,7 @@ test('Three.js, the maps, the scene hosts, the campus world, the models and the 
     ['the models', /^src\/models\//],
     ['the community and voice client', /^src\/community\.ts$/],
     ['the telemetry SDK modules', /^src\/telemetry\/(core|sentry|sentry-replay|posthog|consent-ui)\.ts$/],
+    ['the walkthrough and the shortcuts sheet (only the small trigger, the state and the stored "seen" flags are in the first download)', /^src\/app\/features\/tour\/(?!(TourTrigger\.vue|tourState\.ts|tourSeen\.ts)$)/],
     ['a panel body', /^src\/app\/features\/(?!landing\/|hud\/|nav\/|venue\/|phone\/(PanelHost|SheetHost)\.vue$).*\/[A-Z]\w+(App|Panel|Sheet|Tab|Chip|Modal|Card)\.vue$/],
   ]
   for (const [what, pattern] of forbidden) {

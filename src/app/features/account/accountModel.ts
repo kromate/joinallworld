@@ -4,7 +4,7 @@
 import type { SignInOutcome, SignInResponse } from '../../../types/account.ts'
 
 /** A new password is at least this long. The provider's own policy is the authority; this only saves a round trip. */
-export const NEW_PASSWORD_MIN = 10
+export const NEW_PASSWORD_MIN = 6
 export const PASSWORD_MAX = 128
 
 /** The address as it is sent: trimmed and lower-case. */
@@ -30,7 +30,7 @@ export type ProviderRefusal = 'credentials' | 'not_created' | 'weak_password' | 
 export const PROVIDER_TEXT: Readonly<Record<ProviderRefusal, string>> = {
   credentials: 'That e-mail and password do not match an account.',
   not_created: 'An account could not be created with that e-mail. If you already have one, sign in or reset your password.',
-  weak_password: 'Choose a longer, less common password.',
+  weak_password: 'That password was not accepted. Use at least 6 characters.',
   throttled: 'Too many attempts. Wait a few minutes and try again.',
   unavailable: 'Sign-in cannot be reached right now. Try again shortly.',
   cancelled: 'Sign-in was cancelled.',

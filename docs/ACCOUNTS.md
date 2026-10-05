@@ -292,7 +292,7 @@ Nothing here is done by the game; an operator does it once in the provider's con
 2. **Authentication → Sign-in method**: enable **Email/Password** and **Google**. Leave "one account per e-mail address" on.
 3. **Authentication → Settings → Authorised domains**: add the game's domain. The exchange of a Google credential is refused for a domain not listed.
 4. **Authentication → Settings → User actions**: turn **e-mail enumeration protection** ON. **This is a deploy gate**: without it the provider's own replies distinguish an unknown address from a wrong password to anyone who asks it directly, and nothing this server does can hide that.
-5. **Authentication → Settings → Password policy**: require at least 10 characters, to match the form.
+5. **Authentication → Settings → Password policy**: a minimum of 6 characters and no required character classes, to match the form. The game deliberately keeps passwords easy; six is the provider's own floor.
 6. **Authentication → Templates**: the confirmation and reset e-mails are sent by the provider; set the sender name and, optionally, a custom domain for the links.
 7. **Project settings → General**: the **Project ID** is `ACCOUNTS_FIREBASE_PROJECT_ID`; the **Web API key** is `ACCOUNTS_FIREBASE_API_KEY`.
 8. **Google Cloud console → APIs & Services → Credentials**: the OAuth **Web client** the Google provider uses. Its **client id** is `ACCOUNTS_GOOGLE_CLIENT_ID`; add the game's origin to its **Authorised JavaScript origins**. If the client is not the one the Google provider created, add it to the provider's list of allowed client ids.

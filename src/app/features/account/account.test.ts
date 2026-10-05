@@ -26,7 +26,7 @@ test('an address and a password are judged by shape only', () => {
   assert.equal(cleanEmail('  Ada@Example.COM '), 'ada@example.com')
   assert.equal(passwordProblem('', false), 'Enter your password.')
   assert.equal(passwordProblem('x', false), '', 'signing in accepts whatever password the account has')
-  assert.equal(passwordProblem('x'.repeat(NEW_PASSWORD_MIN - 1), true), 'Use a password of at least 10 characters.')
+  assert.equal(passwordProblem('x'.repeat(NEW_PASSWORD_MIN - 1), true), 'Use a password of at least 6 characters.')
   assert.equal(passwordProblem('x'.repeat(NEW_PASSWORD_MIN), true), '')
   assert.equal(passwordProblem('x'.repeat(129), false), 'Use a password of at most 128 characters.')
 })
@@ -210,7 +210,7 @@ test('store: restoring on another device forgets the life this device had cached
 test('store: local checks stop a bad address or a short new password before anything is sent', async () => {
   const f = setup(); await f.store.load(); f.store.begin()
   assert.equal(await f.store.withPassword('not-an-address', PASSWORD, false), false); assert.equal(f.store.state.error, 'Enter your e-mail address.')
-  assert.equal(await f.store.withPassword('ada@example.com', 'short', true), false); assert.equal(f.store.state.error, 'Use a password of at least 10 characters.')
+  assert.equal(await f.store.withPassword('ada@example.com', 'short', true), false); assert.equal(f.store.state.error, 'Use a password of at least 6 characters.')
   assert.equal(await f.store.withPassword('ada@example.com', '', false), false); assert.equal(f.store.state.error, 'Enter your password.')
   assert.equal(f.providerLoads(), 0); assert.equal(f.provider.sent.length, 0); assert.deepEqual(f.posts(), [])
 })

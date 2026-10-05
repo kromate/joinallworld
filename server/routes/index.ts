@@ -211,8 +211,9 @@ import pulse from './pulse.ts';
 import ping from './ping.ts';
 import business from './business.ts';
 import businessMod from './business-mod.ts';
+import notice from './notice.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod, notice];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }

@@ -116,7 +116,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   const CORE = ['GET /api/characters', 'GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/characters/switch', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
-  const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse', '/api/social/ping', '/api/business/', '/api/mod/business/'];
+  const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse', '/api/social/ping', '/api/business/', '/api/mod/business/', '/api/notice'];
   assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
   ROUTE_MODULES.forEach((module, index) => {
     const own = Object.keys(module(ctx) || {});

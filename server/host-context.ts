@@ -17,7 +17,7 @@ import { FOUNDER_EMAIL_SHA256 } from './social/founder.ts';
 import type { AccountsConfig, ActBody, ActionOutcome, ContextCore, Db, PageHandler, SessionRecord } from './types.ts';
 
 /** The settings a module may read through ctx.env(name). Nothing else of the environment is reachable. */
-export const OUTREACH_ENV = Object.freeze(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP']);
+export const OUTREACH_ENV = Object.freeze(['ZEPTOMAIL_AUTH', 'EMAIL_FROM_ADDRESS', 'EMAIL_FROM_NAME', 'EMAIL_CONTACT_LINE', 'EMAIL_DAILY_CAP', 'WHATSAPP_CHANNEL_URL', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT', 'PUSH_DAILY_CAP', 'NOTICE_PUBLIC_KEY']);
 /** ctx.env: one of the settings above, or '' — whatever object the host keeps its environment in. */
 export const envReader = (env: Readonly<Record<string, unknown>> | null | undefined) => (name: string): string => {
   const value = OUTREACH_ENV.includes(name) ? env?.[name] : undefined;

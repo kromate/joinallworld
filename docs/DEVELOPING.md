@@ -21,7 +21,7 @@ npm run start:worker
 npm run test:edge       # the Worker host's own tests, about two minutes
 ```
 
-Nothing here deploys anything. Releases are made by a reviewed workflow outside this repository ([deploy/README.md](../deploy/README.md)).
+Nothing here deploys anything. Releases are made by a reviewed workflow outside this repository ([deploy/README.md](../deploy/README.md)). Telling players an update is coming (a signed announcement, no server secret) is described there too, under "Announcing an update".
 
 ## Settings
 

@@ -154,3 +154,7 @@
   .map-levels{top:calc(60px * var(--ui-zoom,1));left:8px;max-width:calc(100vw - 16px)}
   .map-levels button{padding:0 10px;font-size:12px}
 }
+@media(min-width:721px){
+  /* Docked, the Map's panel sits under the level bar. */
+  .map-panel.map-overview,.map-panel.map-card{top:124px;max-height:calc(100 * var(--ui-vh) - 138px)}
+}

@@ -740,6 +740,11 @@ export interface ContextChecks {
   blocked?: (a: string, b: string) => boolean
   /** Social: is anybody blocked at all? */
   anyBlocks?: () => boolean
+  /** Tables: is this player seated at a game table? */
+  seated?: (publicId: string) => boolean
+  /** Rooms: the public ids sharing the caller's group of a venue room (null when the caller is not in it), and the venue's counts. */
+  groupPeers?: (publicId: string, room: string) => string[] | null
+  venueCounts?: (room: string) => { total: number; groups: number } | null
   /** Moderation. */
   muted?: (publicId: string) => MuteVerdict | null
   /** World: throws 409 `city_moved` when the session's character travelled away from `cityId` and has no life left there. */
@@ -764,6 +769,10 @@ export interface ServerConfig {
   socketsPerPlayer: number
   /** New sessions one network address may make in an hour. */
   newSessionsPerAddress: number
+  /** The sizes of the groups a public venue's room is split into (src/game/roomGroups.ts; server/host-context.ts capacityConfig). */
+  roomGroupTarget: number
+  roomGroupMax: number
+  roomGroupMin: number
   /** Optional TURN credential source for GET /api/voice-config. */
   voiceConfigProvider?: (session: PublicSession) => Promise<{ iceServers: IceServerConfig[]; expiresAt: number }> | { iceServers: IceServerConfig[]; expiresAt: number }
   /** At most 40 characters. */
@@ -970,6 +979,10 @@ export interface WsConnection {
   lastMoves: number[]
   /** Appearance recorded from the server-held life on join. */
   look: LookIds | null
+  /** The group of the room this socket is in (a public venue; null in a Home room). Kept so a sleeping Worker puts it back where it was. */
+  group?: string | null
+  /** This client reads the room as one snapshot and then changes (presence-delta), not a whole list every time. */
+  deltas?: boolean
   /** Marked by a life change: nothing is forwarded until it has been re-checked against the store. */
   stale: boolean
   /** Until when a guest's entitlement is remembered; 0 for a non-guest. */

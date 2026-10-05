@@ -434,6 +434,8 @@ function buildService(ctx: RouteContext) {
   /** The frames a table socket sends are any JSON object: every field is untrusted and read through tableOf and the checks below. */
   type Frame = Record<string, unknown>;
   const api = {
+    /** Is this player seated at a table? (The room module does not move a seated player to another group.) */
+    isSeated: (id: string): boolean => seated.has(id),
     list(ws: WsConnection, message: Frame): TablesFrame {
       // Reading the list changes nothing and is bounded by the host's own per-identity limit.
       const cityId = ctx.cityIds.find((item) => item === message.cityId);

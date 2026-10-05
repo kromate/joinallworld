@@ -670,13 +670,18 @@ function buildService(ctx: RouteContext) {
       const room = venueRoomKey(cityId, state.location, id);
       const joined = !travelling && presence.isIn(id, room);
       // `look` (appearance option ids) and `here` come from the room module's own record of who is in the room.
-      const inRoom = new Map(presence.inRoom(room).map((member) => [member.id, member]));
+      // A public venue is split into groups: the list is the caller's own group (a few people), read by name — never a walk over every
+      // player of the venue. A host with no room module, and a Home, read the whole room as before.
+      const mates = joined ? ctx.checks?.groupPeers?.(id, room) ?? null : null;
+      const inRoom = new Map((mates ? presence.among(mates, room) : presence.inRoom(room)).map((member) => [member.id, member]));
+      const counts = mates ? ctx.checks?.venueCounts?.(room) ?? null : null;
       const card = (member: string) => ({ ...pub(s, member), friend: areFriends(s, id, member), requested: Boolean(p.out[member]), incoming: Boolean(p.in[member]),
         look: inRoom.get(member)?.look ?? null, here: inRoom.has(member) });
       let players: ReturnType<typeof card>[] = [];
       if (state.location === 'home') players = Object.keys(pruneHouse(s, id)?.guests || {}).map(card);
       else if (joined) players = [...inRoom.values()].filter((member) => member.id !== id && s.players[member.id] && !blockedEither(s, id, member.id)).map((member) => card(member.id));
-      return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' as const : joined ? 'joined' as const : 'not_joined' as const, players, count: players.length });
+      return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' as const : joined ? 'joined' as const : 'not_joined' as const, players, count: players.length,
+        ...(mates && counts ? { here: mates.length, total: counts.total, groups: counts.groups } : {}) });
     },
     search(db: Db, session: SessionRecord, query: unknown) {
       const { s, id } = enter(db, session);

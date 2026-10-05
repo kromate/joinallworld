@@ -270,6 +270,10 @@ export interface JoinFrame {
   cityId: CityId
   venueId: string
   hostId?: string
+  /** This page reads a public venue as its group: one `presence` snapshot, then `presence-delta` frames (see PresenceDeltaFrame). Without it every change is a whole `presence` list. */
+  deltas?: true
+  /** The public id of a friend to be placed with (their group), when there is room; only a mutual friend is honoured. */
+  with?: string
 }
 /** Position in the venue's voice space; both coordinates within ±20. At most 5 a second. */
 export interface MoveFrame {
@@ -319,7 +323,11 @@ export interface ChatSendFrame {
    */
   clientId?: string
 }
-export type RoomClientFrame = JoinFrame | MoveFrame | VoiceStateFrame | SignalFrame | ChatSendFrame
+/** Ask for the venue's groups (answered `groups`): `room: true`, so only a socket that has joined. */
+export interface GroupsFrame { type: 'groups' }
+/** Move to another group of the venue: by its id (`group`, refused when it is full) or to a friend's group (`friend`; when that group is full, the move waits for room). Answered with a fresh `presence` and a `group` notice. */
+export interface GroupJoinFrame { type: 'group-join'; group?: string; friend?: string }
+export type RoomClientFrame = JoinFrame | MoveFrame | VoiceStateFrame | SignalFrame | ChatSendFrame | GroupsFrame | GroupJoinFrame
 
 export interface PresenceMember extends PublicSession {
   position: { x: number; z: number }
@@ -335,6 +343,35 @@ export interface PresenceMember extends PublicSession {
 export interface PresenceFrame {
   type: 'presence'
   members: PresenceMember[]
+  /** Only to a page that joined with `deltas`: the list is its GROUP of the venue (never more than the group maximum plus two), and `counts` says how many are here in all. Later changes arrive as `presence-delta`. */
+  counts?: RoomCounts
+  delta?: true
+}
+/** A venue's own group, everyone in the venue and how many groups there are; `cap` is a group's hard maximum. */
+export interface RoomCounts { here: number; total: number; groups: number; cap: number }
+/**
+ * What changed in the page's group since its last `presence` snapshot, to a page that joined with `deltas`: members who
+ * joined (or changed their name), ids that left, where members moved to (gathered and sent at most about eight times a second),
+ * voice changes, and the counts when they changed. Members the recipient has a block with are left out, as in `presence`.
+ */
+export interface PresenceDeltaFrame {
+  type: 'presence-delta'
+  joined?: PresenceMember[]
+  left?: string[]
+  moved?: { id: string; x: number; z: number }[]
+  voice?: { id: string; enabled: boolean; muted: boolean }[]
+  counts?: RoomCounts
+}
+/** One group in the answer to `groups`. `friends` are the caller's friends in it (names); a stranger is only a count. */
+export interface GroupSummary { id: string; no: number; size: number; open: boolean; mine: boolean; friends: PublicSession[] }
+export interface GroupsListFrame { type: 'groups'; here: number; total: number; groups: GroupSummary[]; more: number }
+/** A calm line about where the player is: they were moved to another group, or could not be placed with a friend. */
+export interface GroupNoticeFrame {
+  type: 'group'
+  event: 'placed' | 'moved' | 'apart' | 'waiting'
+  here: number
+  text: string
+  friend?: PublicSession
 }
 export interface ChatFrame {
   type: 'chat'
@@ -359,6 +396,8 @@ export type NodeSocketErrorCode =
   | 'invalid_position' | 'move_rate_limited' | 'invalid_voice_state' | 'voice_room_full'
   | 'invalid_signal' | 'peer_not_in_room' | 'peer_out_of_range'
   | 'invalid_chat' | 'text_blocked' | 'muted'
+  // venue groups (server/ws/rooms.ts)
+  | 'group_full' | 'group_gone' | 'in_voice' | 'not_a_friend'
   // malformed social frames (server/social/service.ts throws ctx.fail(400, code))
   | 'invalid_player' | 'invalid_city' | 'invalid_conversation' | 'invalid_answer'
   // a call frame from a device that does not carry the call (server/social/calls.ts)
@@ -387,7 +426,7 @@ export interface ErrorFrame {
   to?: string
   clientId?: string
 }
-export type RoomServerFrame = PresenceFrame | ChatFrame | SignalRelayFrame | ErrorFrame
+export type RoomServerFrame = PresenceFrame | PresenceDeltaFrame | GroupsListFrame | GroupNoticeFrame | ChatFrame | SignalRelayFrame | ErrorFrame
 
 /** Close codes the hosts use: 1008 rate limit / expired session, 1011 server error. */
 export type SocketCloseCode = 1008 | 1011
@@ -559,7 +598,7 @@ export const WORKER_HOST_ROUTE_KEYS = ['GET /api/voice-config'] as const satisfi
 
 /** `type` of every frame the Node server accepts (server/ws/index.ts buildSocketHandlers). */
 export const CLIENT_FRAME_TYPES = [
-  'join', 'move', 'voice-state', 'signal', 'chat',
+  'join', 'move', 'voice-state', 'signal', 'chat', 'groups', 'group-join',
   'dm-send', 'dm-read', 'people-list', 'friend-request', 'friend-answer', 'invite-knock', 'invite-answer',
   'table-list', 'table-watch', 'table-unwatch', 'table-sit', 'table-options', 'table-start', 'table-move', 'table-leave', 'table-again',
   'call-invite', 'call-accept', 'call-decline', 'call-cancel', 'call-hangup', 'call-signal', 'call-settings',
@@ -570,7 +609,7 @@ export const WORKER_CLIENT_FRAME_TYPES: readonly (ClientFrameType | HeartbeatAck
 
 /** `type` of every frame the Node server sends (server/server.ts, server/ws/*.js, server/social/service.ts, server/growth/tables.ts). */
 export const SERVER_FRAME_TYPES = [
-  'presence', 'chat', 'signal', 'error',
+  'presence', 'presence-delta', 'groups', 'group', 'chat', 'signal', 'error',
   'dm-sent', 'dm-failed', 'dm-read-ok', 'people', 'friend-result', 'invite-result',
   'dm', 'social-update', 'social-sync', 'friend-request', 'friend-accepted', 'people-presence', 'people-changed',
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',

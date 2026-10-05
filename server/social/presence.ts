@@ -87,6 +87,15 @@ function buildRegistry(ctx: RouteContext) {
      * appearance the room module recorded from that player's server-held life when they joined
      * (eight option ids, or null) — never anything a client supplied.
      */
+    /** The same for the named players only (a group of a venue): one lookup each, never a walk over every player. */
+    among(ids: readonly string[], room: string): { id: string; name: string; look: LookIds | null }[] {
+      const members: { id: string; name: string; look: LookIds | null }[] = [];
+      for (const id of ids) {
+        const ws = live(id).find((socket) => socket.room === room);
+        if (ws) members.push({ id, name: ws.session.name, look: ws.look ?? null });
+      }
+      return members;
+    },
     inRoom(room: string): { id: string; name: string; look: LookIds | null }[] {
       const members: { id: string; name: string; look: LookIds | null }[] = [];
       for (const id of sockets.keys()) {

@@ -23,6 +23,8 @@
  *   push      { [publicId]: { subs: [{ endpoint, p256dh, auth, at }], sends: [ms], periods } }   (LIMITS.subs per player)
  *   outreach  { off: { email, push }, log: [{ at, channel, kind, state, status?, error? }], sent: { [lagosDay]: { email, push } },
  *               pushPausedUntil }      the log holds no address, no endpoint and no player id (LIMITS.log lines)
+ * COMEBACK MAIL (./comeback.ts, docs/COMEBACK-MAIL.md) is written to the same confirmed address, under its own switches and one
+ * shared ledger with the weekly digest. The e-mail "away" message of earlier builds is now its 3, 7 and 28 day steps.
  * Two secrets live outside the data file, in DATA_DIR/keys (mode 0600): the key that signs
  * confirmation and unsubscribe links, and the VAPID key pair.
  *
@@ -45,6 +47,7 @@ import type { ComebackType } from '../../src/game/comeback.ts';
 import { growthOf, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
+import { mailRecipientOf } from './recipient.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -270,7 +273,8 @@ function buildService(ctx: RouteContext) {
     if (!claim || scope === null) return { ok: false };
     await ctx.store.transact((db) => {
       const g = growthOf(ctx, db);
-      if (g.contacts?.[claim.id]?.nonce !== claim.nonce) return;
+      // The link's nonce must be the current recipient's: a changed or removed address voids it (mailRecipientOf decides who that is).
+      if (mailRecipientOf(g, claim.id)?.nonce !== claim.nonce) return;
       comeback.unsubscribeType(g, claim.id, scope);
       if (scope === 'all') dropContact(g, claim.id, 'unsubscribed');
     });

@@ -21,11 +21,17 @@ import { PASSWORD_MAX } from './accountModel.ts'
 import type { Reauth } from './accountStore.ts'
 import { openLogin, openSignup } from './accountOpen.ts'
 import { useAccount } from './useAccount.ts'
+import ComebackSwitches from '../growth/ComebackSwitches.vue'
+import { COMEBACK_ACCOUNT_SENTENCE } from '../growth/touchModel.ts'
+import { useGrowth } from '../growth/useGrowth.ts'
 
 /** What is waiting for the person to prove who they are. */
 type Pending = { kind: 'everywhere' } | { kind: 'export' } | { kind: 'switch'; id: string; name: string } | { kind: 'delete' }
-const { shell } = useApp()
+const { game, shell } = useApp()
 const account = useAccount()
+const growth = useGrowth()
+/** The choices about e-mails on the character, from the server's own record; shown to an account holder only. */
+const mail = computed(() => (state.account && growth.state.hello?.contact.comeback.source === 'account' ? growth.state.hello.contact.comeback : null))
 const state = account.state
 const pending = ref<Pending | null>(null)
 const erase = ref(false)
@@ -90,7 +96,7 @@ async function confirm(): Promise<void> {
   field.value?.hide()
   await run({ password: typed })
 }
-onMounted(() => { void account.load() })
+onMounted(() => { void account.load().then(() => { if (state.account && game.view.value.connected) void growth.load() }) })
 onBeforeUnmount(() => { removeGoogle?.() })
 </script>
 
@@ -124,6 +130,11 @@ onBeforeUnmount(() => { removeGoogle?.() })
       <p v-if="state.notice" class="settings-note" role="status">{{ state.notice }}</p>
 
       <template v-if="!pending">
+        <template v-if="mail">
+          <h3 class="ui-section">E-mails about your character</h3>
+          <p class="settings-note" data-account-mail>They go to {{ mail.address }}, the address of your account. {{ COMEBACK_ACCOUNT_SENTENCE }}</p>
+          <ComebackSwitches :view="mail" />
+        </template>
         <template v-if="state.parked.length">
           <h3 class="ui-section">Set-aside characters</h3>
           <div class="ui-rows">

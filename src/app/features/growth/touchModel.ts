@@ -42,6 +42,8 @@ export function pushDeclinedWords(code: string): string {
       : 'Notifications could not be switched on in this browser.'
 }
 export const COMEBACK_SENTENCE = 'We’ll send you a few e-mails a week at most about your character. Change this any time.'
+/** Said where an account is made, and again where the character's e-mails are switched. */
+export const COMEBACK_ACCOUNT_SENTENCE = 'You can turn this off any time.'
 export const emailSavedWords = (dryRun: boolean): string => (dryRun ? 'Address saved. E-mail is not switched on for this server yet, so nothing was sent.' : 'Check your inbox and press the button in the e-mail to confirm.')
 
 export const WEEKLY_RULES: readonly string[] = ['E-mail: at most one a day and three a week, never between 9 pm and 8 am Lagos time, and none within 12 hours of a visit. Notifications: at most one a day and three a week, never between 10 pm and 7 am.', 'A message says what happened and what you could do. It never says you lost something by being away.',

@@ -202,7 +202,7 @@ test('channel: only an https link is ever drawn', () => {
 })
 
 test('hello events: an e-mail confirmed and a referral reward are reported once', () => {
-  const confirmed = helloOk({ contact: { channel: '', email: { address: 'a***@x.com', confirmed: true, preview: null }, push: { devices: 0 }, live: { email: false }, comeback: { on: true, pausedUntil: 0, types: { needs: true, friends: true, milestones: true, events: true, away: true, week: true }, nudged: {} } } })
+  const confirmed = helloOk({ contact: { channel: '', email: { address: 'a***@x.com', confirmed: true, preview: null }, push: { devices: 0 }, live: { email: false }, comeback: { source: 'contact', on: true, pausedUntil: 0, types: { needs: true, friends: true, milestones: true, events: true, away: true, week: true }, nudged: {} } } })
   assert.deepEqual(helloEvents(confirmed, helloOk()), ['email_optin_confirmed'])
   assert.deepEqual(helloEvents(confirmed, null), [], 'the first hello reports nothing')
   const paid = (total: number) => helloOk({ referral: referral({ paid: { paidTotal: total } as never }) })

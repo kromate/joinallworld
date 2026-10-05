@@ -290,7 +290,8 @@ export function signIn(db: Db, deps: AccountDeps, input: Caller & { identity: Ve
   const created = !account;
   if (!account) {
     if ((log.accounts ?? 0) >= MAX_ACCOUNTS) { sweepAccounts(db, deps); if ((log.accounts ?? 0) >= MAX_ACCOUNTS) throw deps.fail(503, 'account_capacity'); }
-    account = accounts[id] = { v: 1, id, provider: identity.provider, subject: identity.subject, email: identity.email, createdAt: now, lastSeenAt: now, sessionKey: null, publicId: null, devices: [], parked: [] };
+    // mailOptIn: the creation screen says, next to its button, that the character's e-mails are on until the owner turns them off.
+    account = accounts[id] = { v: 1, id, provider: identity.provider, subject: identity.subject, email: identity.email, createdAt: now, lastSeenAt: now, sessionKey: null, publicId: null, devices: [], parked: [], mailOptIn: true };
     log.accounts = (log.accounts ?? 0) + 1;
     audit(db, deps, 'created', account);
     // The welcome message belongs to the creation of the account: it is owed from this transaction on, and only if it can be sent at all.

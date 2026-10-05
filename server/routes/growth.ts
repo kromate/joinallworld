@@ -141,7 +141,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   });
 
   return {
-    'POST /api/growth/hello': route(({ g, session, state, cityId, body }) => {
+    'POST /api/growth/hello': route(({ db, g, session, state, cityId, body }) => {
       const now = ctx.now(), id = session.publicId;
       const player = playerOf(g, id);
       if (!player) return { ok: false, code: 'server_full', reason: 'This is not available right now. Try again later.' };
@@ -150,7 +150,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       if (!player.seen || now - player.seen >= SESSION_GAP_MS) count(g, now, cityId, 'sessions');
       const since = player.seen || null;
       player.seen = now;
-      outreach.comeback.onVisit(g, id, now);
+      outreach.comeback.onVisit(db, g, id, now, session);
       if (body.device !== undefined) referral.noteDevice(g, player, body.device);
       touch(g, now, id, state, since);
       const material = referral.settle(g, session, state, cityId);
@@ -160,7 +160,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       const refs = referral.view(g, id, view.growth);
       const digest = composeDigest({ name: session.name, city: cityRules(actualCity)?.name ?? actualCity, missions: view.missions, events,
         referral: { counted: refs.counted, waiting: refs.waiting }, lines: (state.social?.notices ?? []).slice(-6).map((notice) => ({ text: notice.text, at: notice.at, group: 'sim' })) });
-      const out = outreach.mine(g, id);
+      const out = outreach.mine(db, g, id, session);
       return { ok: true, material, ...(material ? { state } : {}), channel: out.channel, contact: out, away: { hours: Math.round(hoursAway * 10) / 10, since }, referral: refs, consent: consentView(player), events,
         // What a weekly message would say. This build sends nothing outside the game: it is shown in the in-game inbox only.
         digest: { ...digest, delivery: 'dry-run' }, sharesLeft: Math.max(0, LIMITS.sharesPerDay - (player.shares.day === lagosTime(now).day ? player.shares.n : 0)) };
@@ -207,7 +207,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId, cityId) }), { durable: (result) => result?.material === true }),
     // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.ts.
     'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
-    'POST /api/growth/comeback': route(({ g, session, body }) => outreach.comeback.setPrefs(g, session.publicId, body)),
+    'POST /api/growth/comeback': route(({ db, g, session, body }) => outreach.comeback.setPrefs(db, g, session.publicId, body, session)),
     'POST /api/growth/nudge': route(({ db, g, session, body }) => outreach.comeback.nudge(db, g, session, body)),
     'POST /api/growth/email/remove': route(({ g, session }) => ({ ok: true, code: 'removed', removed: outreach.dropContact(g, session.publicId, 'removed') })),
     // Web push: the server's public key, then a subscription the browser made with it.

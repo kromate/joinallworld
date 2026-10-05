@@ -59,7 +59,7 @@ test('milestones come from state that exists: house, deposit, table win, electio
   assert.deepEqual(milestoneFacts(state, none), []);
   state.estate.upgrade = { to: 'bq', cost: 60000, startedAt: now - 2 * HOUR, doneAt: now - HOUR };
   state.economy.deposits = [{ id: 'fd-1', amount: 5000, term: 'd1', openedAt: now - 2 * DAY }, { id: 'fd-2', amount: 5000, term: 'd7', openedAt: now - 2 * DAY }];
-  state.job = 'tech';
+  state.job = 'tech'; state.career.city = 'lagos';
   const found = milestoneFacts(state, { ...none, wins: [{ id: 'w1', won: true }, { id: 'w2', won: false }], civic: { elected: 7, voting: 7 } });
   assert.deepEqual(found.map((item) => item.what).sort(), ['deposit', 'elected', 'house', 'shift', 'table', 'vote']);
   assert.equal(found.filter((item) => item.what === 'deposit').length, 1, 'only the deposit whose term ended');

@@ -27,8 +27,11 @@ import { UUID_PATTERN } from '../protocol.ts';
 import { COMEBACK, NEVER, PREF_KEYS, PREF_OF, decide, defaultPrefs, firstName, milestoneFacts, remember } from '../../src/game/comeback.ts';
 import { comebackMail } from './email/comeback.ts';
 import { growthOf, playerOf } from './data.ts';
+import { maskEmail } from '../../src/game/outreach.ts';
+import { cityName } from '../../src/game/cities/index.ts';
 import { mailRecipientOf } from './recipient.ts';
-import type { ComebackType, Facts, Memory, MilestoneInput, NudgeItem, Plan, PrefKey, Prefs, WaitingItem } from '../../src/game/comeback.ts';
+import type { AccountOf, MailRecipient } from './recipient.ts';
+import type { ComebackType, Facts, LedgerType, Memory, MilestoneInput, NudgeItem, Plan, PrefKey, Prefs, WaitingItem } from '../../src/game/comeback.ts';
 import type { ComebackCounters, ComebackView } from '../../src/types/growth.ts';
 import type { CityId } from '../../src/types/protocol.ts';
 import type { LifeState } from '../../src/types/life.ts';
@@ -37,7 +40,6 @@ import type { MailMessage } from './email/zeptomail.ts';
 
 export const LIMITS = Object.freeze({ batch: 25, examine: 100, tickMs: 60000, statDays: 14, nudged: 50 });
 const HOUR = 3600000, DAY = 86400000;
-const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
 export const NUDGE_NOTE = 'We’ll let them know if they’ve asked for e-mails.';
@@ -65,6 +67,8 @@ const types = (value: unknown): Record<PrefKey, boolean> => {
   const base = defaultPrefs().types, found = isRecord(value) ? value : {};
   return Object.fromEntries(PREF_KEYS.map((key) => [key, typeof found[key] === 'boolean' ? found[key] : base[key]])) as Record<PrefKey, boolean>;
 };
+/** A stored life from before cities were data has no `career.city`: its job is in the city it lives in (the engine says the same when it loads it). */
+const withCareerCity = (state: LifeState): LifeState => (state.career && state.career.city === undefined ? { ...state, career: { ...state.career, city: state.estate.city } } : state);
 const num = (value: unknown, fallback = 0): number => (typeof value === 'number' && Number.isFinite(value) ? value : fallback);
 
 /** A new record. `on`: the preference "E-mail me about my character". */
@@ -76,13 +80,14 @@ function sane(raw: unknown): ComebackRecord {
   const list = <T>(value: unknown, keep: (item: unknown) => item is T, max: number): T[] => (Array.isArray(value) ? value.filter(keep).slice(-max) : []);
   return {
     on: r.on === true, legacy: r.legacy === true, pausedUntil: num(r.pausedUntil), types: types(r.types),
-    sent: list(r.sent, (item): item is { at: number; type: ComebackType } => isRecord(item) && typeof item.at === 'number' && typeof item.type === 'string' && Object.hasOwn(PREF_OF, item.type), COMEBACK.ledger),
+    sent: list(r.sent, (item): item is { at: number; type: LedgerType } => isRecord(item) && typeof item.at === 'number' && typeof item.type === 'string' && (item.type === 'welcome' || Object.hasOwn(PREF_OF, item.type)), COMEBACK.ledger),
     last: isRecord(r.last) ? Object.fromEntries(Object.entries(r.last).filter(([key, at]) => Object.hasOwn(PREF_OF, key) && typeof at === 'number')) : {},
     away: isRecord(r.away) ? Object.fromEntries(Object.entries(r.away).filter(([key, at]) => ['3', '7', '28'].includes(key) && typeof at === 'number')) : {},
     keys: list(r.keys, (item): item is string => typeof item === 'string', COMEBACK.keys),
     waitingAt: num(r.waitingAt), nudgeAt: num(r.nudgeAt),
     nudges: list(r.nudges, (item): item is { from: string; at: number } => isRecord(item) && typeof item.from === 'string' && typeof item.at === 'number', COMEBACK.nudge.kept),
     next: num(r.next), suppressedDay: num(r.suppressedDay, -1),
+    ...(r.acct === true ? { acct: true as const } : {}),
   };
 }
 
@@ -108,6 +113,15 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
   }
   const wake = (at = 0): void => { wakeAt = Math.min(wakeAt, at); };
 
+  // ---- who is written to ---------------------------------------------------------------------------
+  /** The account whose active character is `id` (read by key: the Worker keeps accounts in rows). `session` saves a lookup when the caller has it. */
+  const accountOf = (db: Db, session?: SessionRecord): AccountOf => (id) => {
+    const found = session?.publicId === id ? session : ctx.core.sessionByPublicId?.(db, id);
+    const key = found?.account, account = typeof key === 'string' && key !== '__proto__' ? db.accounts?.[key] : undefined;
+    return account && typeof account === 'object' && account.publicId === id ? account : undefined;
+  };
+  const recipientOf = (db: Db, g: GrowthCollection, id: string, session?: SessionRecord): MailRecipient | null => mailRecipientOf(g, id, accountOf(db, session));
+
   // ---- counters ---------------------------------------------------------------------------------
   function bump(g: GrowthCollection, type: ComebackType | 'all', field: (typeof STAT_FIELDS)[number], n = 1): void {
     if (!isRecord(g.comebackStats)) g.comebackStats = {};
@@ -126,39 +140,47 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     wake();
   }
   /** A visit: nothing is due for 12 hours. Also ends the back-off and the stop after the final away mail (the ledger compares with the visit). */
-  function onVisit(g: GrowthCollection, id: string, at: number): void {
-    const record = recordOf(g, id, false);
+  function onVisit(db: Db, g: GrowthCollection, id: string, at: number, session?: SessionRecord): void {
+    let record = recordOf(g, id, false);
+    // The first visit of a character whose account was made with "E-mail me about my character" on: its choice starts here (and only here, so it is made once).
+    if (!record && session?.account !== undefined && g.players[id]?.consent?.age !== 'minor') {
+      const account = accountOf(db, session)(id);
+      if (account?.mailOptIn === true) { record = recordOf(g, id, true, true); record.acct = true; }
+    }
     if (!record) return;
     record.next = at + COMEBACK.activeHours * HOUR;
     wake(record.next);
   }
-  function viewOf(g: GrowthCollection, id: string): ComebackView {
-    const record = recordOf(g, id, false), player = playerOf(g, id, { create: false }), t = now();
+  function viewOf(db: Db, g: GrowthCollection, id: string, session?: SessionRecord): ComebackView {
+    const record = recordOf(g, id, false), player = playerOf(g, id, { create: false }), t = now(), recipient = recipientOf(db, g, id, session);
     const nudged = Object.fromEntries(Object.entries(player?.nudged ?? {}).filter(([, at]) => t - at < COMEBACK.nudge.perFriendDays * DAY));
-    const usable = record !== null && mailRecipientOf(g, id) !== null;
-    return { on: usable && record.on, pausedUntil: usable && record.pausedUntil > t ? record.pausedUntil : 0, types: record ? { ...record.types } : defaultPrefs().types, nudged };
+    const usable = record !== null && recipient !== null;
+    return { source: recipient?.source ?? null, ...(recipient?.source === 'account' ? { address: maskEmail(recipient.email) } : {}), on: usable && record.on, pausedUntil: usable && record.pausedUntil > t ? record.pausedUntil : 0, types: record ? { ...record.types } : defaultPrefs().types, nudged };
   }
   /** The player's choices from Stay in touch. Switching anything on needs a confirmed address. */
-  function setPrefs(g: GrowthCollection, id: string, body: Record<string, unknown>) {
+  function setPrefs(db: Db, g: GrowthCollection, id: string, body: Record<string, unknown>, session?: SessionRecord) {
     const t = now();
     for (const key of ['on', 'pause']) if (body[key] !== undefined && typeof body[key] !== 'boolean') throw ctx.fail(400, 'invalid_comeback');
     if (body.types !== undefined && !isRecord(body.types)) throw ctx.fail(400, 'invalid_comeback');
     const asked = isRecord(body.types) ? body.types : {};
     for (const [key, value] of Object.entries(asked)) if (!(PREF_KEYS as readonly string[]).includes(key) || typeof value !== 'boolean') throw ctx.fail(400, 'invalid_comeback');
-    const recipient = mailRecipientOf(g, id);
+    const recipient = recipientOf(db, g, id, session);
     const wantsOn = body.on === true || body.pause === false || Object.values(asked).includes(true);
     if (!recipient && wantsOn) return no('no_address', 'Confirm an e-mail address first. Phone, Stay in touch.');
     const record = recordOf(g, id, true, false);
+    if (recipient?.source === 'account') record.acct = true;
     if (typeof body.on === 'boolean') { record.on = body.on; record.legacy = false; }
     for (const [key, value] of Object.entries(asked)) record.types[key as PrefKey] = value === true;
     if (body.pause === true) record.pausedUntil = t + COMEBACK.pauseDays * DAY;
     if (body.pause === false) record.pausedUntil = 0;
     record.next = 0; wake();
-    return { ok: true as const, code: 'saved' as const, comeback: viewOf(g, id) };
+    return { ok: true as const, code: 'saved' as const, comeback: viewOf(db, g, id, session) };
   }
   /** An unsubscribe link: one kind (`type`) or everything (the link's `all`). Returns what it did, for the page. */
-  function unsubscribeType(g: GrowthCollection, id: string, type: ComebackType | 'all'): void {
+  function unsubscribeType(db: Db, g: GrowthCollection, id: string, type: ComebackType | 'all'): void {
     const record = recordOf(g, id, true, false);
+    // Everything off for an account holder also ends the account's own "on from the start": nothing re-creates it later. No sign-in is needed: the signed link is the authority.
+    if (type === 'all') { const account = accountOf(db)(id); if (account) { delete account.mailOptIn; record.acct = true; } }
     const was = type === 'all' ? record.on : record.types[PREF_OF[type]];
     if (type === 'all') { record.on = false; record.legacy = false; } else record.types[PREF_OF[type]] = false;
     if (was) bump(g, type, 'unsubscribed'); // the same link twice is still one
@@ -239,17 +261,18 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     const lines: { text: string; group: string }[] = [];
     if (unread) lines.push({ text: `${unread} ${unread === 1 ? 'update is' : 'updates are'} waiting in your inbox`, group: 'person' });
     if (view.missions?.claimable) lines.push({ text: `${view.missions.claimable} finished ${view.missions.claimable === 1 ? 'mission' : 'missions'} to collect`, group: 'progress' });
-    const digest = composeDigest({ name: life.name, city: CITY_NAMES[life.cityId] ?? life.cityId, missions: null, events: upcomingEvents(t, 7, life.cityId).slice(0, 2), lines });
+    const digest = composeDigest({ name: life.name, city: cityName(life.cityId) ?? life.cityId, missions: null, events: upcomingEvents(t, 7, life.cityId).slice(0, 2), lines });
     return digest.lines.slice(0, 3);
   }
 
   /** Everything the rules look at for one player, from stored state. Nothing is settled or written. */
   function gather(db: Db, g: GrowthCollection, id: string, record: ComebackRecord, life: MailLife, lastActive: number): Facts {
     const t = now(), state = life.state;
-    const wins = playerOf(g, id, { create: false })?.wins ?? [];
+    // A table win belongs to the city it was won in; only this life's own city counts.
+    const wins = (playerOf(g, id, { create: false })?.wins ?? []).filter((win) => (win.cityId ?? 'lagos') === life.cityId);
     return {
       name: life.name, needs: state.needs, needsAt: state.t, waiting: waitingFor(db, id, t), nudges: nudgesFor(db, record, id),
-      milestones: milestoneFacts(state, { now: t, cityId: life.cityId, wins: wins.map((win) => ({ id: win.id, won: win.won })), civic: civicFor(db, id, life.cityId, t, lastActive) }),
+      milestones: milestoneFacts(withCareerCity(state), { now: t, cityId: life.cityId, wins: wins.map((win) => ({ id: win.id, won: win.won })), civic: civicFor(db, id, life.cityId, t, lastActive) }),
       events: upcomingEvents(t, 2, life.cityId).map((event) => ({ key: `event:${event.key}`, title: event.title, venue: event.venueLabel, start: event.start })),
     };
   }
@@ -273,27 +296,36 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
       if (!record || record.next > t) continue;
       if (jobs.length >= LIMITS.batch || examined >= LIMITS.examine) { break; }
       examined++;
-      const recipient = mailRecipientOf(g, id), life = recipient ? mailing.lifeOf(db, id) : null;
+      const recipient = recipientOf(db, g, id), life = recipient ? mailing.lifeOf(db, id) : null;
       if (!recipient || !life) { record.next = t + (recipient ? 7 * DAY : DAY); continue; }
+      // The welcome message of a new account is one of this player's mails: it is in the same ledger, so the caps hold across both.
+      if (recipient.welcome === 'pending') { record.next = t + HOUR; continue; }
+      if (typeof recipient.welcome === 'number' && t - recipient.welcome < 8 * DAY && !record.sent.some((entry) => entry.type === 'welcome')) record.sent = [...record.sent, { at: recipient.welcome, type: 'welcome' as const }].sort((a, b) => a.at - b.at).slice(-COMEBACK.ledger);
       const lastActive = lastActiveOf(db, g, id);
       if (lastActive <= 0) { record.next = t + DAY; continue; }
-      // Cheap gates first: a player who is not eligible costs no more than the record itself.
-      const early = decide({ now: t, lastActive, facts: { name: life.name, needs: null, needsAt: 0, waiting: [], nudges: [], milestones: [], events: [] }, memory: memoryOf(record), prefs: prefsOf(record) });
-      if (early.why === 'off' || early.why === 'paused' || early.why === 'active' || early.why === 'stopped') { record.next = early.next; continue; }
-      const decision = decide({ now: t, lastActive, facts: gather(db, g, id, record, life, lastActive), memory: memoryOf(record), prefs: prefsOf(record) });
-      if (!decision.plan) {
-        record.next = Math.max(decision.next, t + 1000);
-        if (decision.suppressed.length && record.suppressedDay !== day) { record.suppressedDay = day; for (const type of decision.suppressed) bump(g, type, 'suppressed'); }
-        continue;
+      try {
+        // Cheap gates first: a player who is not eligible costs no more than the record itself.
+        const early = decide({ now: t, lastActive, facts: { name: life.name, needs: null, needsAt: 0, waiting: [], nudges: [], milestones: [], events: [] }, memory: memoryOf(record), prefs: prefsOf(record) });
+        if (early.why === 'off' || early.why === 'paused' || early.why === 'active' || early.why === 'stopped') { record.next = early.next; continue; }
+        const decision = decide({ now: t, lastActive, facts: gather(db, g, id, record, life, lastActive), memory: memoryOf(record), prefs: prefsOf(record) });
+        if (!decision.plan) {
+          record.next = Math.max(decision.next, t + 1000);
+          if (decision.suppressed.length && record.suppressedDay !== day) { record.suppressedDay = day; for (const type of decision.suppressed) bump(g, type, 'suppressed'); }
+          continue;
+        }
+        if (mailing.sentToday(g) + jobs.length >= dailyCap) { capped = true; for (const type of [decision.plan.type]) bump(g, type, 'suppressed'); record.next = Math.max(nextDay(t), t + HOUR); continue; }
+        // The claim: the ledger, the type's last time, the key, the next look. All of it is saved before anything is sent.
+        const chosen: Plan = decision.plan.type === 'away' ? { ...decision.plan, facts: awayFacts(life, id, db) } : decision.plan;
+        Object.assign(record, remember(memoryOf(record), chosen, t));
+        if (chosen.type === 'nudge') record.nudges = record.nudges.filter((item) => item.at > chosen.newest);
+        record.next = t + DAY;
+        bump(g, chosen.type, 'queued');
+        jobs.push({ id, to: recipient.email, nonce: recipient.nonce, plan: chosen, name: life.name });
+      } catch (error) {
+        // One life the rules cannot read (a stored life that does not fit its city) never stops everyone else's mail: it is looked at again tomorrow.
+        ctx.core?.log?.(`Comeback skipped one player: ${String((isRecord(error) ? error.message : undefined) ?? error).split('\n')[0]?.slice(0, 120)}`);
+        record.next = t + DAY;
       }
-      if (mailing.sentToday(g) + jobs.length >= dailyCap) { capped = true; for (const type of [decision.plan.type]) bump(g, type, 'suppressed'); record.next = Math.max(nextDay(t), t + HOUR); continue; }
-      // The claim: the ledger, the type's last time, the key, the next look. All of it is saved before anything is sent.
-      const chosen: Plan = decision.plan.type === 'away' ? { ...decision.plan, facts: awayFacts(life, id, db) } : decision.plan;
-      Object.assign(record, remember(memoryOf(record), chosen, t));
-      if (chosen.type === 'nudge') record.nudges = record.nudges.filter((item) => item.at > chosen.newest);
-      record.next = t + DAY;
-      bump(g, chosen.type, 'queued');
-      jobs.push({ id, to: recipient.email, nonce: recipient.nonce, plan: chosen, name: life.name });
     }
     // When to look again: the earliest record that is due, and at once when this pass stopped early.
     let soon = NEVER;
@@ -372,7 +404,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     for (const [key] of oldest.slice(0, Math.max(0, oldest.length - LIMITS.nudged))) delete mine[key];
     // Only a friend with a confirmed address and the Friends switch on keeps the nudge; nothing says which.
     const record = recordOf(g, to, false);
-    if (record && mailRecipientOf(g, to)) {
+    if (record && recipientOf(db, g, to)) {
       record.nudges = [...record.nudges.filter((item) => item.from !== id), { from: id, at: t }].slice(-COMEBACK.nudge.kept);
       record.next = Math.min(record.next, t); wake();
     }
@@ -388,5 +420,5 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     return { days: LIMITS.statDays, types: total, today: { ...(stats[today] ?? {}) }, waiting, passes };
   }
 
-  return { tick, onConfirmed, onVisit, viewOf, setPrefs, unsubscribeType, weekAllowed, sendsFor, noteDigest, nudge, operatorView, wake };
+  return { tick, onConfirmed, onVisit, viewOf, recipientOf, accountOf, setPrefs, unsubscribeType, weekAllowed, sendsFor, noteDigest, nudge, operatorView, wake };
 }

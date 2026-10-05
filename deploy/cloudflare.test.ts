@@ -1362,7 +1362,7 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   const saved = await post('/api/growth/comeback', { cityId: 'lagos', types: { friends: false, milestones: false, events: false, away: false, week: false } }, ada);
   assert.deepEqual([saved.code, (saved.comeback as { on: boolean; types: Record<string, boolean> }).on, Object.values((saved.comeback as { types: Record<string, boolean> }).types).filter(Boolean).length], ['saved', true, 1]);
   const db = await f.storage();
-  const secret = ada.cookie.slice(4), PAST = 6 * 86400000;
+  const secret = ada.cookie.split('=')[1] ?? '', PAST = 6 * 86400000;
   const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
   session.cities.lagos.updatedAt -= PAST; session.cities.lagos.state.needs.hunger = 5;
   await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
@@ -1387,6 +1387,42 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   const dry = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
   const result = await (await dry.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json() as Round;
   assert.deepEqual(result.comeback, { ran: false, reason: 'not_configured' });
+});
+
+test('Worker: an account holder is a comeback recipient — on from the start, and the welcome is in the same ledger', async t => {
+  const key = await makeKey('edge-key-1'), mails: { subject: string; headers?: Record<string, string>; personalizations: { to: { email: string }[] }[] }[] = [];
+  const token = 'worker-operator-token-0123456789-abcdef';
+  const DAY_MS = 86400000, clockShiftMs = (11.5 * 3600000 - (Date.now() % DAY_MS) + DAY_MS) % DAY_MS;
+  const f = await fixture(t, { clockShiftMs, bindings: { ...ACCOUNT_BINDINGS, MODERATOR_TOKEN: token, PUBLIC_ORIGIN: 'https://play.example', ZEPTOMAIL_AUTH: 'Zoho-enczapikey placeholder-not-a-key', EMAIL_FROM_ADDRESS: 'hello@mail.example.com' }, outboundService: async (request: Request) => {
+    if (request.url === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'cache-control': 'public, max-age=3600' } });
+    if (request.url === 'https://api.zeptomail.com/v1.1/sg/email') { mails.push(await request.json()); return new Response('{}', { status: 200 }); }
+    return new Response('{}', { status: 200 });
+  } });
+  const ada = await f.device('Ada'); await f.life(ada);
+  const csrf = (await (await f.request('/api/account', null, ada.cookie)).json()).csrf;
+  const response = await f.request('/api/account/sign-in', { idToken: await signToken(key, claimsFor(ACCOUNT_PROJECT, Date.now() + clockShiftMs, { subject: 'UidAda', email: 'uidada@example.com', n: 1 })), csrf }, ada.cookie, { 'cf-connecting-ip': '203.0.113.9' });
+  const cookie = (response.headers.get('set-cookie') ?? '').split(';')[0] as string;
+  assert.equal((await response.json()).created, true);
+  const until = Date.now() + 3000; while (!mails.length && Date.now() < until) await new Promise(resolve => setTimeout(resolve, 20));
+  const hello = async () => (await (await f.request('/api/growth/hello', { cityId: 'lagos' }, cookie)).json()).contact.comeback as { source: string; on: boolean; address: string };
+  const view = await hello();
+  assert.deepEqual([view.source, view.on, mails[0]?.subject], ['account', true, 'Welcome to Allworld']);
+  assert.ok(!view.address.includes('uidada'), 'only a masked address is shown');
+  const db = await f.storage();
+  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  assert.equal(growth.comeback[ada.id].acct, true);
+  assert.equal(JSON.stringify(growth.comeback).includes('@'), false, 'no address in the comeback record');
+  // The welcome is in the ledger on the next look, so a character that is long away and hungry is still not written to within the day.
+  const row = (await db.exec('SELECT secret,value FROM sessions WHERE public_id = ?', ada.id))[0];
+  const record = JSON.parse(row.value); record.cities.lagos.updatedAt -= 6 * DAY_MS; record.cities.lagos.state.needs.hunger = 5;
+  await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(record), row.secret);
+  growth.comeback[ada.id].next = 0;
+  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+  const run = () => f.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: '{}' });
+  await run();
+  const after = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  assert.deepEqual(after.comeback[ada.id].sent.map((entry: { type: string }) => entry.type), ['welcome'], 'the welcome holds the day');
+  assert.equal(mails.length, 1);
 });
 
 async function storage_(f: { storage(): Promise<ObjectStorage> }, query: string): Promise<string> {

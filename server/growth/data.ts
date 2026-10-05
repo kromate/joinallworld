@@ -66,8 +66,9 @@ export function sweep(g: GrowthCollection, now: number): void {
     if (((player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN) >= idle) continue;
     delete g.players[id];
   }
-  // Comeback mail's records follow the address: none left for a player whose address is gone.
-  for (const id of Object.keys(g.comeback ?? {})) if (!Object.hasOwn(g.contacts ?? {}, id)) delete g.comeback?.[id];
+  // Comeback mail's records follow the address: none left for a player whose address is gone. A record made for an account's
+  // character (`acct`) is the owner's choice and stays: dropping it would turn the account's default back on.
+  for (const id of Object.keys(g.comeback ?? {})) if (!Object.hasOwn(g.contacts ?? {}, id) && g.comeback?.[id]?.acct !== true) delete g.comeback?.[id];
 }
 
 /**

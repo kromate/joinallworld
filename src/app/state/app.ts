@@ -348,7 +348,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       if (view.camera) { lastCamera = view.camera; pendingCamera = view.camera }
       shell.setMode(view.mode, view.mode === 'map' ? { layer: view.layer, ...(view.destination ? { destination: view.destination } : {}) } : null)
     }
-    if (view.sheet && !shell.sheet.value) {
+    // An e-mail's button was pressed: its panel is what the player came for (it opens once the landing has settled), so the remembered phone app or tab is not opened first. The remembered place and map are kept.
+    if (view.sheet && !shell.sheet.value && pendingGo() === null) {
       if (view.sheet.kind === 'phone') shell.open('phone')
       else if (view.sheet.kind === 'sim') shell.open('sim', { tab: view.sheet.tab })
       else shell.open(view.sheet.id)

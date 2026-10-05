@@ -7,6 +7,9 @@ import { ENDPOINT } from './growth/email/zeptomail.ts';
 import { comebackMail } from './growth/email/comeback.ts';
 import { NUDGE_NOTE } from './growth/comeback.ts';
 import { mailRecipientOf } from './growth/recipient.ts';
+import { loadCityContent, registerCityForTest } from '../src/game/cities/registry.ts';
+import { upcomingEvents } from '../src/game/calendar.ts';
+import { fictionalCity } from '../src/game/cities/testing/fictionalCity.test-fixture.ts';
 import type { TestContext } from 'node:test';
 import type { ComebackView, HelloResult, OutreachOperatorResponse, OutreachRunResponse } from '../src/types/growth.ts';
 import type { Plan } from '../src/game/comeback.ts';
@@ -392,7 +395,7 @@ test('a database from before the feature: no comeback fields, a legacy contact, 
 test('the recipient is one function: confirmed and adult only', () => {
   const contact = { email: 'a@example.com', confirmed: true, nonce: 'n', at: 1, confirmedAt: 1, welcomed: true, confirms: [], sends: [], periods: {}, preview: null };
   const players = { adult: { consent: { age: 'adult' as const, push: false, email: true, at: 1 } }, minor: { consent: { age: 'minor' as const, push: false, email: false, at: 1 } }, none: { consent: null } };
-  const g = { contacts: { adult: contact, minor: contact, none: contact, pending: { ...contact, confirmed: false } }, players } as unknown as Pick<GrowthCollection, 'contacts' | 'players'>;
+  const g = { contacts: { adult: contact, minor: contact, none: contact, pending: { ...contact, confirmed: false } }, players } as unknown as Pick<GrowthCollection, 'contacts' | 'players' | 'salt'>;
   assert.deepEqual(mailRecipientOf(g, 'adult'), { email: 'a@example.com', nonce: 'n', source: 'contact' });
   for (const id of ['minor', 'none', 'pending', 'ghost', '__proto__']) assert.equal(mailRecipientOf(g, id), null, id);
 });
@@ -414,4 +417,37 @@ test('templates: a hostile name or title is escaped, and every type reads well',
     assert.equal(mail.html.includes('&lt;'), true, plan.type);
     assert.match(mail.text, /https:\/\/play\.example\/\?go=/);
   }
+});
+
+test('per city: a character in another city is written about its own city only — its events, its facts, never Lagos', async (t) => {
+  const installed = registerCityForTest(fictionalCity);
+  t.after(() => installed.dispose());
+  await loadCityContent(fictionalCity.id);
+  const h = await harness(t);
+  const [ada, zed] = [await h.player('Ada'), await h.player('Zed')] as [Who, Who];
+  await h.optIn(ada, 'ada@example.com'); await h.optIn(zed, 'zed@example.com');
+  await h.only(ada, 'events'); await h.only(zed, 'events', 'away');
+  // Zed's character lives in the other city (its own life there; the Lagos one is still stored).
+  await h.edit((db) => {
+    const session = must(Object.values(db.sessions).find((item) => item.publicId === zed.id), 'a session');
+    const there = structuredClone(must(session.cities.lagos, 'a life'));
+    there.state.estate.city = fictionalCity.id; there.state.goals.wishes = [];
+    session.cities[fictionalCity.id] = there;
+    session.character = { v: 1, city: fictionalCity.id };
+  });
+  // The first day with a Lagos event starting within the next 24 hours, two days or more from the start.
+  let day = 2;
+  while (day < 30 && !upcomingEvents(Date.UTC(1970, 0, 1 + day, 11), 1, 'lagos').length) day++;
+  assert.ok(day < 30, 'the calendar has an event');
+  h.go(day, 11);
+  await h.run();
+  const to = (email: string) => h.comebackMails().filter((mail) => mail.personalizations[0]?.to[0]?.email === email);
+  assert.equal(to('ada@example.com').length, 1, 'the Lagos character is told about its Lagos event');
+  assert.match(must(to('ada@example.com')[0]).subject, /starts/);
+  assert.deepEqual(to('zed@example.com').filter((mail) => /starts/.test(mail.subject)), [], 'the other city has none of Lagos events');
+  // Away mails for the other city never name Lagos, in the subject or the body.
+  h.go(day + 4, 11); await h.run();
+  const mine = to('zed@example.com');
+  assert.ok(mine.length >= 1, 'an away mail was sent');
+  for (const mail of mine) assert.equal(/lagos/i.test(JSON.stringify(mail)), false, mail.subject);
 });

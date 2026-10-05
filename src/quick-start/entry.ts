@@ -59,6 +59,7 @@ const recordOf = (value: unknown): Record<string, unknown> | null => (value && t
 
 const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref', go: 'joinallworld-quick-go' };
 const REF_KEEP_MS = 7 * 86400000;
+const GO_KEEP_MS = 86400000;
 const memory = new Map<string, unknown>(); // the fallback when storage is off
 let storage: Storage | null = null;
 try { storage = globalThis.localStorage ?? null; } catch { storage = null; }
@@ -116,7 +117,7 @@ export function captureLink(): CapturedLink {
   if (link.ref) { found.ref = link.ref; write(KEYS.ref, { code: link.ref, at: Date.now() }); }
   if (link.table) { found.table = link.table; write(KEYS.table, link.table); }
   const go = goFrom(location.search);
-  if (go) { found.go = go; write(KEYS.go, go); }
+  if (go) { found.go = go; write(KEYS.go, { go, at: Date.now() }); }
   return found;
 }
 /** The share code waiting to be attached as a referral, or null (a code is kept for a week). */
@@ -126,7 +127,13 @@ export const forgetRef = (): void => write(KEYS.ref, null);
 export function pendingTable(): string | null { const kept = read(KEYS.table); return typeof kept === 'string' ? linkParts('/', `?table=${kept}`).table : null; }
 export const forgetTable = (): void => write(KEYS.table, null);
 /** The panel an e-mail's button asked for, until it has been opened (only a name on the fixed list is ever returned). */
-export function pendingGo(): GoTarget | null { const kept = read(KEYS.go); return typeof kept === 'string' ? goFrom(`?go=${kept}`) : null; }
+export function pendingGo(): GoTarget | null {
+  const kept = recordOf(read(KEYS.go)) as { go?: unknown; at?: unknown } | null;
+  if (!kept || typeof kept.go !== 'string') return null;
+  // A button pressed yesterday and never answered (no sign-in, no character) does not open a panel out of the blue a week later.
+  if (!(Date.now() - Number(kept.at) < GO_KEEP_MS)) { write(KEYS.go, null); return null; }
+  return goFrom(`?go=${kept.go}`);
+}
 export const forgetGo = (): void => write(KEYS.go, null);
 
 /**

@@ -22,8 +22,7 @@
     "economy": "node --experimental-strip-types scripts/economy-sim.ts",
     "load": "node --experimental-strip-types scripts/load.ts",
     "world-load": "node --experimental-strip-types scripts/world-load.ts",
-    "sentry:sourcemaps": "node --experimental-strip-types scripts/sentry-sourcemaps.ts",
-    "geo:boundaries": "node --experimental-strip-types scripts/geo/build-boundaries.ts"
+    "sentry:sourcemaps": "node --experimental-strip-types scripts/sentry-sourcemaps.ts"
   },
   "dependencies": {
     "@sentry/browser": "^11.4.0",

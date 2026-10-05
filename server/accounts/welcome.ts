@@ -17,6 +17,9 @@
  *             five times in all; anything else is given up. A claim that was never settled (the host stopped in the
  *             middle of a send) is released after a day for ONE last attempt and then abandoned: it cannot sit in the
  *             queue for good, and a message that may already have gone out is never sent a third time.
+ *   one ledger  The welcome counts as one of the character's mails in the comeback ledger (growth.comeback[id].sent, type
+ *             'welcome'; server/growth/comeback.ts adds it on its next look), under the same daily and weekly caps and the
+ *             same EMAIL_DAILY_CAP as every other mail: a new account is not sent a welcome and a comeback mail on one day.
  *   bounded   An address is welcomed at most once in 30 days (a salted hash is remembered), so deleting an account
  *             and making it again earns no second message; and every welcome counts against the mailer's daily
  *             allowance (EMAIL_DAILY_CAP) — at the allowance it waits for the next day.
@@ -68,7 +71,10 @@ function build(ctx: RouteContext) {
         const claim = await ctx.store.transact((db) => {
           const owed = claimWelcome(db, bound, id);
           if (!owed) return null;
-          const held = db.growth?.outreach?.off?.email === true || (db.growth?.outreach?.sent?.[today()]?.email ?? 0) >= dailyCap();
+          // One ledger with comeback mail (server/growth/comeback.ts): a mail already sent to this character in the last day holds the welcome back, as it would hold another comeback mail.
+          const character = db.accounts?.[id]?.publicId, ledger = character ? db.growth?.comeback?.[character]?.sent : undefined;
+          const recent = Array.isArray(ledger) && ledger.some((entry) => entry.at <= ctx.now() && ctx.now() - entry.at < 86400000);
+          const held = db.growth?.outreach?.off?.email === true || (db.growth?.outreach?.sent?.[today()]?.email ?? 0) >= dailyCap() || recent;
           // Held back: nothing was attempted, so no try is spent; it waits its turn.
           if (held) settleWelcome(db, bound, id, { ok: false, retry: true, counted: false });
           return held ? null : owed;

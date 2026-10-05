@@ -10,7 +10,6 @@
 // what is being typed. The control that was pressed says so until the server answers.
 import { computed, nextTick, onMounted, ref } from 'vue'
 import type { ComebackView, ConsentResult, EmailResult } from '../../../types/growth.ts'
-import type { PrefKey } from '../../../game/comeback-prefs.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -20,8 +19,8 @@ import SectionTitle from '../../ui/SectionTitle.vue'
 import DigestPreview from './DigestPreview.vue'
 import LinkButton from './LinkButton.vue'
 import { EMAIL_CONSENT, PUSH_CONSENT, loadPushModule } from './boundary.ts'
-import { COMEBACK_SENTENCE, WEEKLY_RULES, ageCard, devicesLine, emailCard, emailDisabled, emailReason, emailSavedWords, pushCard, pushDeclinedWords, showsChannels } from './touchModel.ts'
-import { comebackRows, pausedWords } from './comebackModel.ts'
+import { COMEBACK_ACCOUNT_SENTENCE, COMEBACK_SENTENCE, WEEKLY_RULES, ageCard, devicesLine, emailCard, emailDisabled, emailReason, emailSavedWords, pushCard, pushDeclinedWords, showsChannels } from './touchModel.ts'
+import ComebackSwitches from './ComebackSwitches.vue'
 import { pushKind, touch } from './touchState.ts'
 import { useGrowth } from './useGrowth.ts'
 
@@ -100,16 +99,6 @@ async function askEmail(): Promise<void> {
   await settle()
 }
 const comeback = computed<ComebackView | null>(() => hello.value?.contact.comeback ?? null)
-const rows = comebackRows()
-const paused = computed(() => (comeback.value ? pausedWords(comeback.value, Date.now()) : null))
-/** One switch, or "pause all": the control that was pressed says so until the server answers. */
-async function saveComeback(body: { on?: boolean; types?: Partial<Record<PrefKey, boolean>>; pause?: boolean }): Promise<void> {
-  if (touch.busy) return
-  touch.busy = 'comeback'
-  const result = await growth.call<{ ok: boolean; reason?: string }>('/api/growth/comeback', body)
-  if (!result.ok) game.toast(('reason' in result && result.reason) || 'That could not be saved.', 'error')
-  await settle()
-}
 async function removeEmail(): Promise<void> {
   if (touch.busy) return
   touch.busy = 'email'
@@ -138,6 +127,13 @@ async function removeEmail(): Promise<void> {
         <div v-else-if="ageCard(hello.consent) === 'minor'" class="gr-card">
           <h3>You are all set</h3>
           <p>You told us you are under 18, so the game will never message you outside the game. Everything inside it works the same: Updates, Missions and Events are right here on your Phone.</p>
+        </div>
+
+        <!-- An account's verified address is where the character's e-mails go, whatever was said about Stay in touch. -->
+        <div v-if="comeback && comeback.source === 'account'" class="gr-card" data-account-mail>
+          <h3>E-mails about your character</h3>
+          <p>They go to <b>{{ comeback.address }}</b>, the address of your account. At most one a day and three a week. {{ COMEBACK_ACCOUNT_SENTENCE }}</p>
+          <ComebackSwitches :view="comeback" />
         </div>
 
         <template v-if="showsChannels(hello.consent)">
@@ -179,13 +175,7 @@ async function removeEmail(): Promise<void> {
             <p v-if="!hello.contact.live.email" class="gr-note">E-mail is not switched on for this server yet: messages are composed and shown here, and nothing is sent.</p>
             <template v-if="comeback">
               <p>{{ COMEBACK_SENTENCE }}</p>
-              <label class="gr-check"><input type="checkbox" name="comeback-on" :checked="comeback.on" :disabled="touch.busy !== null" @change="saveComeback({ on: ($event.target as HTMLInputElement).checked })"><span>E-mail me about my character</span></label>
-              <template v-if="comeback.on">
-                <label v-for="row in rows" :key="row.key" class="gr-check"><input type="checkbox" :name="`comeback-${row.key}`" :checked="comeback.types[row.key]" :disabled="touch.busy !== null" @change="saveComeback({ types: { [row.key]: ($event.target as HTMLInputElement).checked } })"><span><b>{{ row.label }}</b><br>{{ row.hint }}</span></label>
-                <p v-if="paused" class="gr-note">{{ paused }}</p>
-                <BaseButton v-if="paused" :disabled="touch.busy !== null" @click="saveComeback({ pause: false })">Resume e-mails</BaseButton>
-                <BaseButton v-else :disabled="touch.busy !== null" @click="saveComeback({ pause: true })">Pause all for 30 days</BaseButton>
-              </template>
+              <ComebackSwitches :view="comeback" />
             </template>
             <template v-if="hello.contact.email.preview">
               <div class="gr-preview"><b>{{ hello.contact.email.preview.subject }}</b><span class="gr-text">{{ hello.contact.email.preview.text }}</span></div>

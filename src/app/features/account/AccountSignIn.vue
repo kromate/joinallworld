@@ -122,6 +122,7 @@ onBeforeUnmount(() => {
         <!-- Google's own script draws its button in here. -->
         <div ref="googleHost" class="account-google" data-account-google />
         <p v-if="googleFailed" class="session-note">Google sign-in could not be loaded. Use your e-mail address below, or try again later.</p>
+        <p v-if="mode === 'sign-in'" class="session-note account-lone" data-account-google-note>New here? Google makes your account, and we’ll e-mail you a few times a week at most about your character. You can turn this off any time.</p>
         <p class="account-or" aria-hidden="true"><span>or with your e-mail</span></p>
       </template>
       <form class="session-form" data-account-form novalidate @submit.prevent="submit">
@@ -133,6 +134,7 @@ onBeforeUnmount(() => {
         <PasswordField v-if="mode !== 'reset'" id="account-password" ref="field" v-model="password" label="Password" :autocomplete="mode === 'create' ? 'new-password' : 'current-password'" :minlength="mode === 'create' ? NEW_PASSWORD_MIN : 1" :maxlength="PASSWORD_MAX" :error="passwordError" :hint="mode === 'create' ? `At least ${NEW_PASSWORD_MIN} characters.` : ''" />
         <button class="ui-button is-primary is-block" data-account-submit :disabled="state.busy">{{ state.busy ? 'One moment…' : submitLabel }}</button>
       </form>
+      <p v-if="mode === 'create'" class="session-note account-lone" data-account-mail-note>We'll e-mail you a few times a week at most about your character. You can turn this off any time.</p>
       <p v-if="mode === 'create'" class="session-note account-lone">We will e-mail you a link to confirm the address before anything is saved to it.</p>
       <div class="account-links">
         <button v-if="mode !== 'create'" type="button" class="account-link" data-account-create @click="setMode('create')">Create an account</button>

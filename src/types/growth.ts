@@ -126,6 +126,10 @@ export interface OutreachMine {
 
 /** The caller's choices about comeback mail (docs/COMEBACK-MAIL.md). Without a confirmed address everything is off. */
 export interface ComebackView {
+  /** Where the mails go: the address of Stay in touch, the verified address of the account, or nowhere yet. */
+  source: 'contact' | 'account' | null
+  /** The address the mails go to, masked, when `source` is 'account' (a Stay in touch address is in `contact.email`). */
+  address?: string
   /** "E-mail me about my character". */
   on: boolean
   /** Server ms until which everything is paused, or 0. */

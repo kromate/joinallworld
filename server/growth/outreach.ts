@@ -48,7 +48,6 @@ import type { ComebackType } from '../../src/game/comeback.ts';
 import { growthOf, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
-import { mailRecipientOf } from './recipient.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -290,9 +289,11 @@ function buildService(ctx: RouteContext) {
     await ctx.store.transact((db) => {
       const g = growthOf(ctx, db);
       // The link's nonce must be the current recipient's: a changed or removed address voids it (mailRecipientOf decides who that is).
-      if (mailRecipientOf(g, claim.id)?.nonce !== claim.nonce) return;
-      comeback.unsubscribeType(g, claim.id, scope);
-      if (scope === 'all') dropContact(g, claim.id, 'unsubscribed');
+      const recipient = comeback.recipientOf(db, g, claim.id);
+      if (recipient?.nonce !== claim.nonce) return;
+      comeback.unsubscribeType(db, g, claim.id, scope);
+      // The Stay in touch address is deleted; an account's address is the account's own and stays (its mail is off).
+      if (scope === 'all' && recipient.source === 'contact') dropContact(g, claim.id, 'unsubscribed');
     });
     return { ok: true, scope }; // also when it was already gone: unsubscribing twice is still unsubscribed
   }
@@ -394,12 +395,12 @@ function buildService(ctx: RouteContext) {
 
   // ---- what each side may see ---------------------------------------------------------------------
   /** For the player's own Stay in touch screen. */
-  function mine(g: GrowthCollection, id: string): OutreachMine {
+  function mine(db: Db, g: GrowthCollection, id: string, session?: SessionRecord): OutreachMine {
     book(g);
     const contact = contactsOf(g)[id], entry = pushOf(g)[id];
     return { channel: channelUrl(ctx.env('WHATSAPP_CHANNEL_URL')),
       email: contact ? { address: maskEmail(contact.email), confirmed: contact.confirmed, preview: contact.preview ? { kind: contact.preview.kind, subject: contact.preview.subject, text: contact.preview.text } : null } : null,
-      push: { devices: entry?.subs.length ?? 0 }, live: { email: emailReady() }, comeback: comeback.viewOf(g, id) };
+      push: { devices: entry?.subs.length ?? 0 }, live: { email: emailReady() }, comeback: comeback.viewOf(db, g, id, session) };
   }
   /** For the operator: totals, switches, the last lines of the log and the last dry-run previews. No address, no endpoint, no player id. */
   function operatorView(g: GrowthCollection): Omit<OutreachOperatorResponse, never> {

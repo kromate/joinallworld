@@ -4,6 +4,8 @@
  * touch) can use them without the rules (src/game/comeback.ts) that decide when each is sent.
  */
 export type ComebackType = 'waiting' | 'nudge' | 'need' | 'milestone' | 'event' | 'away' | 'week';
+/** What the shared ledger of one player's mails records: comeback types, and the welcome message of a new account (which counts against the same caps). */
+export type LedgerType = ComebackType | 'welcome';
 export type PrefKey = 'needs' | 'friends' | 'milestones' | 'events' | 'away' | 'week';
 export const PREF_KEYS: readonly PrefKey[] = Object.freeze(['needs', 'friends', 'milestones', 'events', 'away', 'week'] as const);
 export const PREF_LABELS: Readonly<Record<PrefKey, string>> = Object.freeze({

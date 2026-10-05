@@ -16,7 +16,7 @@ import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, Soci
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
-import type { ComebackType, PrefKey } from '../src/game/comeback.ts'
+import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
 //
@@ -158,6 +158,12 @@ export interface AccountRecord {
    * 'skipped': it will not be sent. Set in the transaction that creates the account, so it is owed exactly once.
    */
   welcome?: 'pending' | 'failed' | 'skipped' | number
+  /**
+   * "E-mail me about my character" was on when the account was made (the creation screen says so next to its button). Set
+   * only on an account created from the build that has comeback mail; absent on an older account, which has to switch it on
+   * itself. Cleared when the owner unsubscribes from everything. Read when the character first plays after the change.
+   */
+  mailOptIn?: true
 }
 /** One signed-in browser. The key in `accountDevices` is that browser's `sid` cookie value. */
 export interface AccountDeviceRecord { account: string; createdAt: number; seenAt: number; expiresAt: number }
@@ -474,7 +480,7 @@ export interface ComebackRecord {
   legacy: boolean
   pausedUntil: number
   types: Record<PrefKey, boolean>
-  sent: { at: number; type: ComebackType }[]
+  sent: { at: number; type: LedgerType }[]
   last: Partial<Record<ComebackType, number>>
   away: Partial<Record<'3' | '7' | '28', number>>
   keys: string[]
@@ -486,6 +492,8 @@ export interface ComebackRecord {
   next: number
   /** The Lagos day a held-back mail was last counted. */
   suppressedDay: number
+  /** Made for a character that belongs to an account: the record outlives the idle-player sweep (the choice stays) and its recipient is the account's verified address. Absent: the address of Stay in touch. */
+  acct?: true
 }
 /** Counters per Lagos day and per type of comeback mail. */
 export type ComebackStats = Record<string, Record<string, { queued: number; sent: number; failed: number; suppressed: number; unsubscribed: number }>>

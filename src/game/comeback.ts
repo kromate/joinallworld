@@ -18,7 +18,7 @@ import { JOBS } from './content/jobs.ts';
 import { HOUSE_TIERS } from './content/world.ts';
 import { makeContext } from './util.ts';
 import { PREF_OF } from './comeback-prefs.ts';
-import type { ComebackType, PrefKey } from './comeback-prefs.ts';
+import type { ComebackType, LedgerType, PrefKey } from './comeback-prefs.ts';
 import type { GoTarget } from './go-links.ts';
 import type { LifeState, NeedId } from '../types/life.ts';
 
@@ -27,7 +27,7 @@ const HOUR = 3600000, DAY = 86400000;
 export const NEVER = Number.MAX_SAFE_INTEGER;
 
 export { COMEBACK_TYPES, PREF_KEYS, PREF_LABELS, PREF_OF } from './comeback-prefs.ts';
-export type { ComebackType, PrefKey } from './comeback-prefs.ts';
+export type { ComebackType, LedgerType, PrefKey } from './comeback-prefs.ts';
 /** Strongest first: the order in which one mail is chosen when several qualify. The weekly digest has its own schedule. */
 const PRIORITY: readonly Exclude<ComebackType, 'week'>[] = ['waiting', 'nudge', 'need', 'milestone', 'event', 'away'];
 
@@ -86,7 +86,7 @@ export interface Facts {
 }
 /** What has been sent to this player and why nothing more is due: a bounded record the server keeps. */
 export interface Memory {
-  sent: readonly { at: number; type: ComebackType }[]
+  sent: readonly { at: number; type: LedgerType }[]
   last: Readonly<Partial<Record<ComebackType, number>>>
   away: Readonly<Partial<Record<'3' | '7' | '28', number>>>
   keys: readonly string[]

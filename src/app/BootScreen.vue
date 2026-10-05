@@ -3,6 +3,7 @@
 import '../ui/tokens.css'
 import { nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 import type { Component, ShallowRef } from 'vue'
+import { noteBootResult } from './bootstrap.ts'
 import type { LoadedGame } from './bootstrap.ts'
 import { isChunkLoadError, noteChunkFailure, updateAvailable } from './state/updateNotice.ts'
 
@@ -22,12 +23,14 @@ async function open(): Promise<void> {
     const loaded = await props.load()
     if (disposed) return
     game.value = loaded.default
+    noteBootResult(false)
     await nextTick()
     if (!disposed) loaded.ready()
   } catch (error) {
     if (disposed) return
     game.value = null
     failed.value = true
+    noteBootResult(true)
     if (isChunkLoadError(error)) await noteChunkFailure()
   } finally { busy.value = false }
 }

@@ -31,11 +31,17 @@ test('a life with homes in Lagos, Ota and Abeokuta reloads cleanly in each of th
   assert.deepEqual(Object.keys(state.estate.away).sort(), ['abeokuta', 'ota'])
   const dir = mkdtempSync(join(tmpdir(), 'allworld-reload-'))
   try {
-    const file = join(dir, 'life.json')
-    writeFileSync(file, JSON.stringify({ ...state, t: now }))
-    for (const city of ['lagos', 'ota', 'abeokuta']) for (const mode of ['trusted', 'untrusted']) {
-      const probe = spawnSync(process.execPath, ['--experimental-strip-types', new URL('../../../../scripts/reload-probe.ts', import.meta.url).pathname, file, city, mode], { encoding: 'utf8' })
-      assert.equal(probe.status, 0, `${city} (${mode}): ${probe.stderr.split('\n').filter(Boolean).slice(0, 3).join(' | ')}`)
+    // The saved copy a page reads is the life as it stood in that city, so one is taken on a second round of trips, in each city in turn.
+    for (const city of ['ota', 'abeokuta', 'lagos']) {
+      assert.equal(run('estate.relocate', { to: city, mode: 'road' }).code, 'departed', `a second road trip to ${city}`)
+      finish()
+      assert.equal(state.estate.city, city)
+      const file = join(dir, `${city}.json`)
+      writeFileSync(file, JSON.stringify({ ...state, t: now }))
+      for (const mode of ['trusted', 'untrusted']) {
+        const probe = spawnSync(process.execPath, ['--experimental-strip-types', new URL('../../../../scripts/reload-probe.ts', import.meta.url).pathname, file, city, mode], { encoding: 'utf8' })
+        assert.equal(probe.status, 0, `${city} (${mode}): ${probe.stderr.split('\n').filter(Boolean).slice(0, 3).join(' | ')}`)
+      }
     }
   } finally { rmSync(dir, { recursive: true, force: true }) }
 })

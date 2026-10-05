@@ -66,6 +66,8 @@ export function sweep(g: GrowthCollection, now: number): void {
     if (((player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN) >= idle) continue;
     delete g.players[id];
   }
+  // Comeback mail's records follow the address: none left for a player whose address is gone.
+  for (const id of Object.keys(g.comeback ?? {})) if (!Object.hasOwn(g.contacts ?? {}, id)) delete g.comeback?.[id];
 }
 
 /**

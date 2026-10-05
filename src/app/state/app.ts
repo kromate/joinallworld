@@ -18,8 +18,10 @@ import { roomJoinNeeded } from '../../client.ts'
 import { venueLabel } from '../../game/content/venues.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
-import { captureLink, forgetDraft, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
+import { captureLink, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
+import { GO_TARGETS } from '../../game/go-links.ts'
+import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { tableById } from '../../tables/places.ts'
 import { loadPeople, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
@@ -259,7 +261,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     track,
     cleanAddress() { try { if (location.pathname !== '/' || location.search) history.replaceState(null, '', '/') } catch { /* the address stays as it was */ } },
     takeLinkHost: () => { takeLinkHost() },
-    joinTarget, forgetJoin, pendingRef, forgetRef, pendingTable, forgetTable,
+    joinTarget, forgetJoin, pendingRef, forgetRef, pendingTable, forgetTable, pendingGo, forgetGo,
+    panelFor: (go) => (Object.hasOwn(GO_TARGETS, go) ? GO_TARGETS[go as GoTarget] : null),
     setTimeout: (run, ms) => globalThis.setTimeout(run, ms),
     clearTimeout: (handle) => globalThis.clearTimeout(handle as number),
   })

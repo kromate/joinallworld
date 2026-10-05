@@ -320,7 +320,7 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   for (const name of COLLECTION_NAMES) assert.ok(Object.hasOwn(database, name), `the ${name} collection was created`)
   const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'cities', 'expiresAt', 'name', 'once', 'publicId', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
   const growth = record(database.growth, 'growth')
-  for (const key of Object.keys(growth)) assert.ok((['contacts', 'metrics', 'outreach', 'players', 'push', 'salt', 'shares', 'sweptAt', 'tables'] satisfies (keyof GrowthCollection)[] as string[]).includes(key), `the growth collection has an untyped key "${key}"`)
+  for (const key of Object.keys(growth)) assert.ok((['comeback', 'comebackStats', 'contacts', 'metrics', 'outreach', 'players', 'push', 'salt', 'shares', 'sweptAt', 'tables'] satisfies (keyof GrowthCollection)[] as string[]).includes(key), `the growth collection has an untyped key "${key}"`)
   sameKeys(record(growth.players, 'players')[efe.id], ['consent', 'counted', 'devices', 'invited', 'owed', 'ref', 'seen', 'shares', 'table', 'wins'] satisfies (keyof GrowthPlayerRecord)[], 'growth player')
   sameKeys(Object.values(record(growth.shares, 'shares'))[0], ['at', 'by', 'facts', 'joined', 'kind', 'opened'] satisfies (keyof ShareRecord)[], 'stored share')
   sameKeys(record(stored.cities, 'cities').lagos, ['salt', 'state', 'updatedAt'] satisfies (keyof CityLifeRecord)[], 'stored city life')

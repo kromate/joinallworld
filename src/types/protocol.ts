@@ -464,6 +464,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/growth/tables/claim',
   'POST /api/growth/email',
   'POST /api/growth/email/remove',
+  'POST /api/growth/comeback',
+  'POST /api/growth/nudge',
   'GET /api/growth/push/key',
   'POST /api/growth/push/subscribe',
   'POST /api/growth/push/unsubscribe',

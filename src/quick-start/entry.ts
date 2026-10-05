@@ -43,6 +43,8 @@
  */
 import type { Look } from '../types/life.ts';
 import { nudgeMemory, joinIdFrom, linkParts } from './model.ts';
+import { goFrom } from '../game/go-links.ts';
+import type { GoTarget } from '../game/go-links.ts';
 import type { Draft, NudgeMemory } from './model.ts';
 
 /** What the device kept for a tapped Play: the look, and the action id once it exists. `joining` was decided when Play was tapped (an invite link is waiting). */
@@ -50,12 +52,12 @@ export interface PendingPlay { look: Look; actionId?: string; joining?: boolean 
 /** The share code a link carried, with when it was kept (ms). */
 interface KeptRef { code: string; at: number }
 /** What the address carried, for the funnel. */
-export interface CapturedLink { join: string | null; ref: string | null; table: string | null }
+export interface CapturedLink { join: string | null; ref: string | null; table: string | null; go: GoTarget | null }
 
 /** A stored value, read as a record to look at its keys (nothing in it is trusted). */
 const recordOf = (value: unknown): Record<string, unknown> | null => (value && typeof value === 'object' ? value as Record<string, unknown> : null);
 
-const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref' };
+const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref', go: 'joinallworld-quick-go' };
 const REF_KEEP_MS = 7 * 86400000;
 const memory = new Map<string, unknown>(); // the fallback when storage is off
 let storage: Storage | null = null;
@@ -106,13 +108,15 @@ export const forgetJoin = (): void => write(KEYS.join, null);
 let captured: CapturedLink | null = null;
 export function captureLink(): CapturedLink {
   if (captured) return captured;
-  const found: CapturedLink = captured = { join: null, ref: null, table: null };
+  const found: CapturedLink = captured = { join: null, ref: null, table: null, go: null };
   if (typeof location === 'undefined') return found;
   found.join = joinIdFrom(location.pathname, location.search);
   if (found.join) write(KEYS.join, found.join);
   const link = linkParts(location.pathname, location.search);
   if (link.ref) { found.ref = link.ref; write(KEYS.ref, { code: link.ref, at: Date.now() }); }
   if (link.table) { found.table = link.table; write(KEYS.table, link.table); }
+  const go = goFrom(location.search);
+  if (go) { found.go = go; write(KEYS.go, go); }
   return found;
 }
 /** The share code waiting to be attached as a referral, or null (a code is kept for a week). */
@@ -121,6 +125,9 @@ export const forgetRef = (): void => write(KEYS.ref, null);
 /** The table a link asked for, until the Tables app has been opened on it. */
 export function pendingTable(): string | null { const kept = read(KEYS.table); return typeof kept === 'string' ? linkParts('/', `?table=${kept}`).table : null; }
 export const forgetTable = (): void => write(KEYS.table, null);
+/** The panel an e-mail's button asked for, until it has been opened (only a name on the fixed list is ever returned). */
+export function pendingGo(): GoTarget | null { const kept = read(KEYS.go); return typeof kept === 'string' ? goFrom(`?go=${kept}`) : null; }
+export const forgetGo = (): void => write(KEYS.go, null);
 
 /**
  * A random token made once per browser ('allworld-device'). It is sent with a referral link and with the growth hello and is

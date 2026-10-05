@@ -20,6 +20,8 @@
  *   POST /api/growth/consent        { age, push?: false, email?: false }   the age question; `false` switches a channel off and deletes what it stored
  *   POST /api/growth/email          { email, consent: true }   store a consented address and send its confirmation (adults only)
  *   POST /api/growth/email/remove   { cityId }                 delete the caller's address
+ *   POST /api/growth/comeback       { cityId, on?, types?, pause? }   the caller's choices about e-mails on their character (docs/COMEBACK-MAIL.md)
+ *   POST /api/growth/nudge          { cityId, to }             ask an away friend to come back (friends only, once a week per friend)
  *   GET  /api/growth/push/key                                  the server's VAPID public key
  *   POST /api/growth/push/subscribe { cityId, subscription, consent: true }   store a browser's push subscription (adults only)
  *   POST /api/growth/push/unsubscribe { cityId, endpoint? }    delete one or all of the caller's subscriptions
@@ -47,6 +49,7 @@ import { mailPage } from '../growth/email/templates.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { CityId } from '../../src/types/protocol.ts';
 import type { ConsentView } from '../../src/types/growth.ts';
+import type { ComebackType } from '../../src/game/comeback.ts';
 import type { Db, GrowthCollection, GrowthPlayerRecord, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 
 /** What a growth route's `call` hands back: the JSON answer, and `material` (kept out of the answer) when the life changed. */
@@ -56,6 +59,8 @@ interface GrowthCall { db: Db; g: GrowthCollection; session: SessionRecord; stat
 const SESSION_GAP_MS = 30 * 60000;
 const CITY_NAMES: Record<string, string> = { lagos: 'Lagos', ibadan: 'Ibadan' };
 const AGES: readonly ConsentView['age'][] = ['adult', 'minor'];
+/** What a comeback mail's "stop these" page calls each kind. */
+const KINDS: Readonly<Record<ComebackType, string>> = { waiting: 'e-mails about your friends', nudge: 'e-mails about your friends', need: 'e-mails about your character’s needs', milestone: 'milestone e-mails', event: 'event e-mails', away: 'e-mails for when you have been away', week: 'the weekly digest' };
 
 const ready = (state: LifeState | null | undefined): boolean => Boolean(state) && !(state?.onboarding?.required === true && state.onboarding.done !== true);
 /** What the caller may see of their own consent. */
@@ -114,15 +119,23 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     const value = query.get('t') ?? '', action = `${path}?t=${encodeURIComponent(value)}`;
     if (!ctx.allow(`growth:mail-page:${ip}`, 30)) return { status: 429, cache: false, html: mailPage({ title: 'Too many tries', text: 'Wait a minute and open the link again.' }) };
     if (path === '/e/confirm') {
-      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Confirm your e-mail', text: 'Press the button to let Allworld e-mail you: at most one message a day and three a week.', button: 'Yes, e-mail me', action }) };
+      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Confirm your e-mail', text: 'Press the button to let Allworld e-mail you. We’ll send you a few e-mails a week at most about your character. Change this any time.', button: 'Yes, e-mail me', action }) };
       const done = await outreach.confirmEmail(value);
       // One answer for every kind of bad link, so a link says nothing about who has an address here.
-      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are in', text: 'Your e-mail is confirmed. You can switch it off any time in the game: Phone, Stay in touch.' } : { title: 'That link does not work', text: 'It may have expired or already been replaced. Ask for a new one in the game: Phone, Stay in touch.' }) };
+      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are in', text: 'Your e-mail is confirmed. We’ll send you a few e-mails a week at most about your character. Change this any time in the game: Phone, Stay in touch.' } : { title: 'That link does not work', text: 'It may have expired or already been replaced. Ask for a new one in the game: Phone, Stay in touch.' }) };
     }
     if (path === '/e/unsub') {
-      if (method !== 'POST') return { cache: false, html: mailPage({ title: 'Stop Allworld e-mails?', text: 'One tap and your address is deleted. Your game is not affected.', button: 'Unsubscribe', action }) };
+      if (method !== 'POST') {
+        const scope = await outreach.unsubscribeScope(value);
+        return { cache: false, html: mailPage(scope === null || scope === 'all'
+          ? { title: 'Stop Allworld e-mails?', text: 'One tap and your address is deleted. Your game is not affected.', button: 'Unsubscribe', action }
+          : { title: 'Stop these e-mails?', text: `You will not get ${KINDS[scope]} any more. Everything else stays as you set it, and your game is not affected.`, button: 'Stop these', action }) };
+      }
       const done = await outreach.unsubscribe(value);
-      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok ? { title: 'You are unsubscribed', text: 'Your address has been deleted. Allworld will not e-mail you again.' } : { title: 'That link does not work', text: 'You can also stop e-mails in the game: Phone, Stay in touch.' }) };
+      const stopped = done.scope !== undefined && done.scope !== 'all';
+      return { status: done.ok ? 200 : 400, cache: false, html: mailPage(done.ok
+        ? (stopped ? { title: 'Done', text: 'You will not get those e-mails any more. You can change this any time in the game: Phone, Stay in touch.' } : { title: 'You are unsubscribed', text: 'Your address has been deleted. Allworld will not e-mail you again.' })
+        : { title: 'That link does not work', text: 'You can also stop e-mails in the game: Phone, Stay in touch.' }) };
     }
     return { status: 404, cache: false, html: mailPage({ title: 'Nothing here', text: 'That page does not exist.' }) };
   });
@@ -137,6 +150,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       if (!player.seen || now - player.seen >= SESSION_GAP_MS) count(g, now, 'sessions');
       const since = player.seen || null;
       player.seen = now;
+      outreach.comeback.onVisit(g, id, now);
       if (body.device !== undefined) referral.noteDevice(g, player, body.device);
       touch(g, now, id, state, since);
       const material = referral.settle(g, session, state, cityId);
@@ -192,6 +206,8 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId) }), { durable: (result) => result?.material === true }),
     // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.ts.
     'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
+    'POST /api/growth/comeback': route(({ g, session, body }) => outreach.comeback.setPrefs(g, session.publicId, body)),
+    'POST /api/growth/nudge': route(({ db, g, session, body }) => outreach.comeback.nudge(db, g, session, body)),
     'POST /api/growth/email/remove': route(({ g, session }) => ({ ok: true, code: 'removed', removed: outreach.dropContact(g, session.publicId, 'removed') })),
     // Web push: the server's public key, then a subscription the browser made with it.
     'GET /api/growth/push/key': async (request) => {

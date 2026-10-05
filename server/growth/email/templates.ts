@@ -7,11 +7,11 @@
  * the sender's contact line; the plain-text part says the same as the HTML part.
  */
 const ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
-const BRAND = 'Allworld';
+export const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
+export const BRAND = 'Allworld';
 
 /** A message's content before it is laid out as HTML and as plain text. */
-interface Parts {
+export interface Parts {
   heading: string
   intro: string
   lines?: readonly string[]
@@ -44,7 +44,7 @@ function footer({ unsubscribeUrl, contact }: { unsubscribeUrl: string; contact?:
   return { foot: `${esc(why)} <a href="${esc(unsubscribeUrl)}" style="color:#5b6472">Unsubscribe with one tap</a>.${contact ? `<br>${esc(contact)}` : ''}`,
     footText: `${why}\nUnsubscribe with one tap: ${unsubscribeUrl}${contact ? `\n${contact}` : ''}` };
 }
-const build = (subject: string, parts: Parts): Mail => ({ subject, html: layout(parts), text: plain(parts) });
+export const build = (subject: string, parts: Parts): Mail => ({ subject, html: layout(parts), text: plain(parts) });
 
 /** "Confirm your address": sent once per request, before anything else may be sent. It has no unsubscribe link because nothing is subscribed yet. */
 export function confirmMail({ name, confirmUrl, hours, contact }: { name: string; confirmUrl: string; hours: number; contact?: string }): Mail {

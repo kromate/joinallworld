@@ -16,6 +16,7 @@ import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, Soci
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
+import type { ComebackType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
 //
@@ -325,6 +326,8 @@ export interface GrowthPlayerRecord {
   table: { game: TableGameId; label: string; won: boolean; at: number } | null
   /** At most 12. */
   wins: PendingTableResult[]
+  /** Friends this player nudged to come back (public id → server ms), at most 50. */
+  nudged?: Record<string, number>
 }
 export interface ShareRecord { by: string; kind: ShareKind; at: number; facts: ShareFacts; opened: number; joined: number }
 /** server/growth/metrics.ts: daily totals, retention cohorts, and lives still inside their 31-day window (`steps` is a bit mask of funnel steps). */
@@ -375,6 +378,32 @@ export interface OutreachRecord {
   /** Set when a push service asked the server to wait. */
   pushPausedUntil?: number
 }
+/**
+ * What comeback mail remembers about one player (server/growth/comeback.ts): their choices, what was sent, and when to
+ * look at them next. Bounded: at most 12 sends, 20 keys, 5 nudges. Holds no address.
+ */
+export interface ComebackRecord {
+  /** "E-mail me about my character". */
+  on: boolean
+  /** An address confirmed before comeback mail existed: its weekly digest goes on while `on` is false. */
+  legacy: boolean
+  pausedUntil: number
+  types: Record<PrefKey, boolean>
+  sent: { at: number; type: ComebackType }[]
+  last: Partial<Record<ComebackType, number>>
+  away: Partial<Record<'3' | '7' | '30', number>>
+  keys: string[]
+  waitingAt: number
+  nudgeAt: number
+  /** Friends who asked for this player (public id, server ms), at most 5. */
+  nudges: { from: string; at: number }[]
+  /** Server ms to look at this player next (NEVER = not until a visit or a change). */
+  next: number
+  /** The Lagos day a held-back mail was last counted. */
+  suppressedDay: number
+}
+/** Counters per Lagos day and per type of comeback mail. */
+export type ComebackStats = Record<string, Record<string, { queued: number; sent: number; failed: number; suppressed: number; unsubscribed: number }>>
 export interface GrowthCollection {
   /** Random, made once; mixed into every hash of a device token or an address. */
   salt: string
@@ -388,6 +417,9 @@ export interface GrowthCollection {
   contacts?: Record<string, EmailContactRecord>
   push?: Record<string, PushContactRecord>
   outreach?: OutreachRecord
+  /** server/growth/comeback.ts */
+  comeback?: Record<string, ComebackRecord>
+  comebackStats?: ComebackStats
 }
 
 export interface Database {

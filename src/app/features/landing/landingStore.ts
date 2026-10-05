@@ -53,6 +53,11 @@ export interface LandingDeps {
   forgetRef(): void
   pendingTable(): string | null
   forgetTable(): void
+  /** The panel a link in an e-mail asked for (a name from the fixed list), kept until it is opened. */
+  pendingGo(): string | null
+  forgetGo(): void
+  /** The panel a go-link name opens, or null when this build has no such panel. */
+  panelFor(go: string): string | null
   setTimeout(run: () => void, ms: number): unknown
   clearTimeout(handle: unknown): void
 }
@@ -101,7 +106,8 @@ export function createLanding(deps: LandingDeps): Landing {
     let host = deps.joinTarget()
     const ref = deps.pendingRef()
     const table = deps.pendingTable()
-    if ((!host && !ref && !table && !owedWelcome) || joining || !deps.online()) return
+    const go = deps.pendingGo()
+    if ((!host && !ref && !table && !go && !owedWelcome) || joining || !deps.online()) return
     joining = true
     const guest = deps.isGuest()
     const kind = table ? 'table' : ref ? 'share' : 'house'
@@ -141,6 +147,8 @@ export function createLanding(deps: LandingDeps): Landing {
     if (gift && sharer && host && !landed.value) landed.value = { kind, by: { id: host, name: sharer } }
     // A table the link named: the Tables app opens on it (the banner is shown over it).
     if (table) { deps.forgetTable(); if (deps.tableExists(table)) deps.open('tables', { table }) }
+    // An e-mail's button: one panel from the fixed list, opened once. A table link, which names its own panel, wins.
+    if (go) { deps.forgetGo(); const panel = deps.panelFor(go); if (panel && !table && !host) deps.open(panel) }
     if (shown) show(shown, shown.knock && !table ? host : null)
     // Nobody could be joined after all: the welcome the quick start held back is said now, once.
     else if (owedWelcome && guest) deps.toast(deps.welcomeText())

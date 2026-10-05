@@ -42,7 +42,7 @@ watch(() => props.params, (params) => {
   if (!params || params === ui.seenParams) return
   ui.seenParams = params
   const tab = (params as { tab?: unknown }).tab
-  if (tab === 'sea' || tab === 'billboard') ui.tab = tab
+  if (tab === 'billboard') ui.tab = tab // sea plots are not offered for now
   if (cityRules(cityId.value)?.seaPlots === false) ui.tab = 'billboard'
 }, { immediate: true })
 
@@ -88,7 +88,6 @@ const pick = (row: number, col: number): void => { ui.row = row; ui.col = col }
   <div class="ads">
     <div class="ui-seg" role="group" aria-label="Ad type">
       <button type="button" :aria-pressed="ui.tab === 'billboard'" @click="ui.tab = 'billboard'">Billboards</button>
-      <button v-if="data?.sea.rows" type="button" :aria-pressed="ui.tab === 'sea'" @click="ui.tab = 'sea'">Sea plots</button>
     </div>
     <p class="civic-note">Balance <b>{{ money(state.cash) }}</b></p>
     <CivicStatus :item="item" @retry="reload" />

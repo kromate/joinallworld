@@ -21,7 +21,8 @@ const { game, shell } = useApp()
 const civic = useCivic()
 const view = game.view
 
-const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea' || cityRules(game.cityId.value)?.seaPlots !== false))
+// The sea-plot layer is not offered on the map for now.
+const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea'))
 const open = computed(() => isListOpen())
 const destinations = computed(() => view.value.travel.destinations)
 const places = computed(() => destinations.value.filter((item) => matchesFilter(item, mapUi.filter)))

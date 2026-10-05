@@ -18,6 +18,7 @@ export function callReason(card: CallableCard, connected: boolean, supported = t
   if (!connected) return 'Not connected.'
   if (card.blocked) return 'Unblock this player to call.'
   if (!supported) return 'Calls need a supported browser on HTTPS.'
+  if (callStore.view.phase === 'elsewhere') return 'You are on a call on another device.'
   if (callActive()) return 'You are already in a call.'
   if (card.status === 'offline' || card.status === 'reconnecting') return 'They are offline.'
   return null

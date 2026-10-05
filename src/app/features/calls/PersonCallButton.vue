@@ -17,7 +17,8 @@ const reason = computed(() => {
   return callReason({ status: props.status, blocked: props.blocked, self: props.self }, game.view.value.connected, supported())
 })
 // The first call waits behind its note; once it is placed the card is put away too, so the bar is not drawn over it.
-watch(() => view.value.phase, (phase, before) => { if (before === 'idle' && phase !== 'idle' && phase !== 'ended' && view.value.role === 'caller') shell.close() })
+// (A call placed on another device of this player is not this device's: whatever is open here stays open.)
+watch(() => view.value.phase, (phase, before) => { if (before === 'idle' && phase !== 'idle' && phase !== 'ended' && phase !== 'elsewhere' && view.value.role === 'caller') shell.close() })
 async function press(): Promise<void> {
   const rang = await request({ id: props.id, name: props.name })
   // The bar floats over the game: put the card away so the player can see it. A first call waits behind its note instead.

@@ -11,7 +11,8 @@ import { createSSRApp, h } from 'vue'
 import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import type { CallView } from '../../../calls.ts'
-import { NO_CONNECTION_TEXT } from '../../../calls.ts'
+import { ANSWERED_ELSEWHERE_TEXT, ELSEWHERE_TEXT, NO_CONNECTION_TEXT } from '../../../calls.ts'
+import { startsElsewhere } from './callsLoader.ts'
 import { callStore, DISCLOSURE, idleView } from './callState.ts'
 import { callReason } from './useCall.ts'
 
@@ -71,6 +72,26 @@ test('the call bar says what is happening at each step and offers only what make
   assert.match(text(reconnecting), /Reconnecting…/)
 })
 
+test('a call on another device of this player is one quiet line with no button: it cannot be ended, muted or joined from here', async () => {
+  const answered = await render('CallBar', { view: view({ phase: 'elsewhere', peer: { id: 'b', name: 'Bola' }, role: 'callee', callId: 'c1', notice: ANSWERED_ELSEWHERE_TEXT }) })
+  assert.match(text(answered), /Answered on another device\./)
+  const passive = await render('CallBar', { view: view({ phase: 'elsewhere', peer: { id: 'b', name: 'Bola' }, role: 'callee', callId: 'c1', notice: ELSEWHERE_TEXT }) })
+  assert.match(text(passive), /On a call on another device\. With Bola/)
+  for (const html of [answered, passive]) {
+    assert.doesNotMatch(html, /<button/, 'no button at all')
+    assert.doesNotMatch(html, /data-call="(hangup|mute|start|hear|dismiss)"/)
+    assert.match(html, /aria-live="polite"/)
+  }
+  // The Call button on a player's card says why it is off.
+  callStore.view = view({ phase: 'elsewhere', peer: { id: 'b', name: 'Bola' }, notice: ELSEWHERE_TEXT })
+  assert.equal(callReason({ status: 'online' }, true), 'You are on a call on another device.')
+  callStore.view = idleView()
+  // The lazily loaded controller is fetched for a call that began on another device, and for nothing else it never saw.
+  assert.equal(startsElsewhere({ type: 'call-state', state: 'accepted', elsewhere: true } as { type: string }), true)
+  assert.equal(startsElsewhere({ type: 'call-state', state: 'ringing', elsewhere: true } as { type: string }), true)
+  assert.equal(startsElsewhere({ type: 'call-state', state: 'ended' } as { type: string }), false)
+  assert.equal(startsElsewhere({ type: 'call-signal' }), false)
+})
 test('an ended call says why, and a call that could not connect explains the network limit', async () => {
   const ended = await render('CallBar', { view: view({ phase: 'ended', peer: { id: 'b', name: 'Bola' }, notice: 'Bola can’t be reached right now.' }) })
   assert.match(text(ended), /Bola can’t be reached right now\./)

@@ -331,14 +331,21 @@ test('the caller can cancel, the callee can decline, and either side can hang up
   assert.ok(ada.id);
 });
 
-test('a socket that closes ends the call when it was the player\'s last, and not while another tab is open', async (t) => {
+test('the call ends when the socket that carries it closes, and not when another tab of the same player closes', async (t) => {
   const { f, a, b, bola, ada, callId } = await connected(t);
+  // A tab opened during the call is told the call is in another tab; closing it again changes nothing.
   const second = await f.socket(bola);
-  b.ws.close();
-  await new Promise((resolve) => setTimeout(resolve, 80));
-  assert.deepEqual(callFrames(await drain(a)), [], 'Bola still has a tab');
+  assert.deepEqual([(await until(second, 'call-state')).elsewhere], [true]);
   second.ws.close();
+  await new Promise((resolve) => setTimeout(resolve, 80));
+  assert.deepEqual(callFrames(await drain(a)), [], 'the tab that answered is still open');
+  // The tab that answered closes while a third one is open: the audio was in the closed tab, so the call is over.
+  const third = await f.socket(bola);
+  await until(third, 'call-state');
+  b.ws.close();
   assert.equal(stateOf(await until(a, 'call-state')), 'ended');
+  assert.equal(stateOf(await until(third, 'call-state')), 'ended');
+  third.ws.close();
   // A ringing call whose caller leaves is cancelled for the callee.
   const b2 = await f.socket(bola);
   f.advance(61000);

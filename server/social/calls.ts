@@ -21,6 +21,21 @@
  * Attempts are limited per caller and per caller-and-callee pair, before any of the above is looked at,
  * so the limit tells a caller nothing about the callee either.
  *
+ * ONE CALL, SEVERAL DEVICES (docs/DEVICES.md). A player may have several sockets open: tabs, or the browsers signed in to
+ * one account. A call belongs to the player, and is CARRIED by exactly one socket on each side: the caller's is the one
+ * that sent the invite, the callee's is the one that accepted.
+ *   - An incoming call is announced to every open socket of the callee, and to one that opens while it rings.
+ *   - Any of the callee's sockets may accept or decline while it rings. The first accept carries the call; the others
+ *     are told `accepted` with `elsewhere`. A decline is for all of them.
+ *   - The caller's other sockets are told `ringing` and then `accepted`, each with `elsewhere`: they show that the player
+ *     is in a call on another device, and that is all they can do with it.
+ *   - Signalling is taken from a carrying socket and handed to the other side's carrying socket, and to no other.
+ *   - Only a carrying socket can cancel or hang up; the same frame from another socket of that player is refused
+ *     (`call_elsewhere`). So a device that did not answer cannot end the call, whether by a button or by being closed.
+ *   - When a carrying socket closes, the call is over for everyone, as it is for a player with one device. Closing any
+ *     other socket changes nothing, and nothing rings again.
+ *   - Every end is announced to every socket of both players.
+ *
  * LIFETIME. A call rings for 30 s (a timer, the host's heartbeat, and a check on every call frame all
  * apply it). An accepted call without an offer is ended after 60 s. A call ends when either side hangs up,
  * when all of a player's sockets are gone, when a block appears between the two, or when a side becomes
@@ -55,8 +70,8 @@ interface CallRecord {
   deadline: number
   offered: boolean
   counts: { offer: number; answer: number; ice: number }
-  /** The socket each side last used for this call (media lives in that tab); the fallback is every socket of the player. */
-  sockets: { caller: WsConnection | null; callee: WsConnection | null }
+  /** The socket that carries the call on each side: the one that invited, and (once accepted) the one that answered. */
+  sockets: { caller: WsConnection; callee: WsConnection | null }
 }
 export type CallService = ReturnType<typeof buildService>;
 const services = new WeakMap<RouteContext, CallService>();
@@ -102,16 +117,26 @@ function buildService(ctx: RouteContext) {
 
   const otherOf = (call: CallRecord, id: string): PlayerRef => (call.caller.id === id ? call.callee : call.caller);
   const sideOf = (call: CallRecord, id: string): 'caller' | 'callee' | null => (call.caller.id === id ? 'caller' : call.callee.id === id ? 'callee' : null);
-  /** To one socket if it is open, else to every open socket of that player. */
-  function toSide(call: CallRecord, side: 'caller' | 'callee', frame: Parameters<RouteContext['send']>[1]): void {
+  /** To the socket that carries the call on that side, if it is open. Never to another socket of the player. */
+  function toCarrier(call: CallRecord, side: 'caller' | 'callee', frame: Parameters<RouteContext['send']>[1]): void {
     const ws = call.sockets[side];
     if (ws && ws.readyState === OPEN) ctx.send(ws, frame);
-    else ctx.push((side === 'caller' ? call.caller : call.callee).id, frame);
   }
   const stateFrame = (call: CallRecord, side: 'caller' | 'callee', state: CallStateName, extra: Partial<CallStateFrame> = {}): CallStateFrame => ({
     type: 'call-state', callId: call.id, state, role: side, peer: { ...(side === 'caller' ? call.callee : call.caller) },
     ...(side === 'caller' ? { clientId: call.clientId } : {}), ...extra,
   });
+  /** What a socket that does not carry the call is told: the call is on another device. It never carries the caller's client id. */
+  const elsewhereFrame = (call: CallRecord, side: 'caller' | 'callee', state: 'ringing' | 'accepted'): CallStateFrame => ({
+    type: 'call-state', callId: call.id, state, role: side, peer: { ...(side === 'caller' ? call.callee : call.caller) }, elsewhere: true,
+  });
+  /** Tell every other open socket of that side's player that the call is on another device. */
+  function tellOthers(call: CallRecord, side: 'caller' | 'callee', state: 'ringing' | 'accepted'): void {
+    const carrier = call.sockets[side];
+    for (const other of presence.sockets((side === 'caller' ? call.caller : call.callee).id)) if (other !== carrier) ctx.send(other, elsewhereFrame(call, side, state));
+  }
+  /** A carrying socket that can no longer carry: closed, or not answering the host's pings. */
+  const gone = (ws: WsConnection | null): boolean => !ws || ws.readyState !== OPEN || ctx.core?.unresponsive?.(ws) === true;
 
   /** Remove the call and tell both sides. `callerState` differs from `state` only when the caller must not learn why. */
   function end(call: CallRecord, state: CallStateName, callerState: CallStateName = state): void {
@@ -138,7 +163,10 @@ function buildService(ctx: RouteContext) {
       if (call.state === 'ringing' && t >= call.deadline) { end(call, 'timeout'); continue; }
       if (call.state === 'accepted' && !call.offered && t >= call.deadline) { end(call, 'ended'); continue; }
       if (barred(call.caller.id, call.callee.id)) { end(call, call.state === 'ringing' ? 'cancelled' : 'ended', call.state === 'ringing' ? 'unreachable' : 'ended'); continue; }
-      if (!hasLive(call.caller.id) || !hasLive(call.callee.id)) end(call, call.state === 'ringing' ? 'cancelled' : 'ended', call.state === 'ringing' ? 'unreachable' : 'ended');
+      if (!hasLive(call.caller.id) || !hasLive(call.callee.id)) { end(call, call.state === 'ringing' ? 'cancelled' : 'ended', call.state === 'ringing' ? 'unreachable' : 'ended'); continue; }
+      // The device that carries a side has gone, though another device of that player is still connected.
+      if (gone(call.sockets.caller)) { end(call, call.state === 'ringing' ? 'cancelled' : 'ended'); continue; }
+      if (call.state === 'accepted' && gone(call.sockets.callee)) end(call, 'ended');
     }
   }
   /** One timer while any call exists: at the next deadline, and (on a host that sleeps when idle) often enough to stay awake. */
@@ -208,6 +236,7 @@ function buildService(ctx: RouteContext) {
       if (byClient.size > 5000) byClient.clear();
       ctx.push(to, { type: 'call-incoming', callId: call.id, from: { ...call.caller }, expiresAt: call.expiresAt });
       ctx.send(ws, stateFrame(call, 'caller', 'ringing', { expiresAt: call.expiresAt }));
+      tellOthers(call, 'caller', 'ringing');
       arm();
     },
 
@@ -218,21 +247,26 @@ function buildService(ctx: RouteContext) {
       if (call.state !== 'ringing') return;
       if (barred(call.caller.id, call.callee.id) || !hasLive(call.caller.id)) { end(call, 'cancelled', 'unreachable'); return; }
       call.state = 'accepted'; call.sockets.callee = ws; call.deadline = now() + CALL_SETUP_MS;
-      for (const other of presence.sockets(call.callee.id)) if (other !== ws) ctx.send(other, stateFrame(call, 'callee', 'accepted', { elsewhere: true }));
+      tellOthers(call, 'callee', 'accepted');
       ctx.send(ws, stateFrame(call, 'callee', 'accepted'));
-      toSide(call, 'caller', stateFrame(call, 'caller', 'accepted'));
+      toCarrier(call, 'caller', stateFrame(call, 'caller', 'accepted'));
+      tellOthers(call, 'caller', 'accepted');
       arm();
     },
 
-    /** `cancel` (caller), `decline` (callee) or `hangup` (either side; on a ringing call it means cancel or decline). */
+    /**
+     * `cancel` (caller), `decline` (callee) or `hangup` (either side; on a ringing call it means cancel or decline).
+     * Any socket of the callee may decline a ringing call. Everything else is for the socket that carries the call.
+     */
     leave(ws: WsConnection, message: IncomingFrame, how: 'cancel' | 'decline' | 'hangup'): void {
       sweep();
       const call = lookup(message.callId);
       const side = call ? sideOf(call, ws.session.id) : null;
       if (!call || !side) { unknown(ws, message.callId); return; }
       if ((how === 'cancel' && side !== 'caller') || (how === 'decline' && side !== 'callee')) throw Error('invalid_call');
+      if (call.state === 'accepted' || side === 'caller') { if (ws !== call.sockets[side]) throw Error('call_elsewhere'); }
       if (call.state === 'accepted') { end(call, 'ended'); return; }
-      if (how === 'decline' || (how === 'hangup' && side === 'callee')) end(call, 'declined');
+      if (side === 'callee') end(call, 'declined');
       else end(call, 'cancelled');
     },
 
@@ -248,10 +282,11 @@ function buildService(ctx: RouteContext) {
       if ((kind === 'offer' && side !== 'caller') || (kind === 'answer' && side !== 'callee')) throw Error('invalid_call');
       const data = cleanSignal(kind, message.data);
       if (!data) throw Error('invalid_call');
+      // Only the device that carries this side may signal, and what it sends goes to the other side's carrying device alone.
+      if (ws !== call.sockets[side]) throw Error('call_elsewhere');
       if (call.counts[kind === 'ice' ? 'ice' : kind]++ >= (kind === 'ice' ? CALL_LIMITS.ice : kind === 'offer' ? CALL_LIMITS.offers : CALL_LIMITS.answers)) throw Error('rate_limited');
-      call.sockets[side] = ws;
       if (kind === 'offer') call.offered = true;
-      toSide(call, side === 'caller' ? 'callee' : 'caller', { type: 'call-signal', callId: call.id, kind, data });
+      toCarrier(call, side === 'caller' ? 'callee' : 'caller', { type: 'call-signal', callId: call.id, kind, data });
     },
 
     /** Read or change who may ring the sender. Needs the sender to have a social record (the client reads its overview first). */
@@ -269,15 +304,33 @@ function buildService(ctx: RouteContext) {
       return wanted ? ctx.store.transact(apply) : ctx.store.read(apply);
     },
 
-    /** A socket closed: when the player has none left, their call ends. */
+    /**
+     * A socket opened while its player is in a call: a ringing call rings here too, and any other call is shown as being
+     * on another device. Nothing about the call changes.
+     */
+    open(ws: WsConnection): void {
+      const id = ws.session?.id;
+      if (!id || !byPlayer.has(id)) return;
+      sweep();
+      const call = calls.get(byPlayer.get(id) ?? '');
+      const side = call ? sideOf(call, id) : null;
+      if (!call || !side) return;
+      if (call.state === 'ringing' && side === 'callee') ctx.send(ws, { type: 'call-incoming', callId: call.id, from: { ...call.caller }, expiresAt: call.expiresAt });
+      else ctx.send(ws, elsewhereFrame(call, side, call.state));
+    },
+
+    /**
+     * A socket closed. The call ends when it was the socket that carried it (the caller's, or the one that answered),
+     * and when a ringing callee has no socket left. Any other socket of either player closing changes nothing.
+     */
     close(ws: WsConnection): void {
       const id = ws.session?.id;
       if (!id) return;
       const call = calls.get(byPlayer.get(id) ?? '');
-      if (!call || presence.sockets(id).some((other) => other !== ws)) return;
-      if (call.state === 'accepted') end(call, 'ended');
-      else if (call.caller.id === id) end(call, 'cancelled');
-      else end(call, 'cancelled', 'unreachable');
+      if (!call) return;
+      if (ws === call.sockets.caller) { end(call, call.state === 'accepted' ? 'ended' : 'cancelled'); return; }
+      if (call.state === 'accepted') { if (ws === call.sockets.callee) end(call, 'ended'); return; }
+      if (call.callee.id === id && !presence.sockets(id).some((other) => other !== ws)) end(call, 'cancelled', 'unreachable');
     },
 
   };

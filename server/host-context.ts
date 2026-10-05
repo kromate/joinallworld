@@ -8,7 +8,8 @@
  */
 import { settleCity, applyLifeAction } from './life-service.ts';
 import { archivedLife } from './protocol.ts';
-import type { ActionRequest, CityId } from '../src/types/protocol.ts';
+import { outcomeKey } from './routes/core.ts';
+import type { ActionRequest, CityId, LifeChangedFrame } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
 import { FOUNDER_EMAIL_SHA256 } from './social/founder.ts';
 import type { AccountsConfig, ActBody, ActionOutcome, ContextCore, Db, PageHandler, SessionRecord } from './types.ts';
@@ -144,6 +145,40 @@ export function sessionArchiver({ now, randomId }: { now: () => number; randomId
   };
 }
 
+/** Told, inside the transaction, that a character changed in a way a player would see; `actionId` when an accepted action did it. */
+export type LifeChanged = (publicId: string, rev: number, actionId?: string) => void;
+/** How long a change waits for others of the same character before its one frame goes out. */
+export const LIFE_SYNC_DELAY_MS = 40;
+const LIFE_SYNC_CAUSES = 8;
+/**
+ * ONE CHARACTER ON SEVERAL DEVICES (docs/DEVICES.md): tells every open socket of a character that its life changed.
+ * note() is called from inside transactions (lifeAuthority's `changed`); the frame goes out a moment later, one per
+ * character however many changes that moment held, with the highest revision and the action ids that caused them. It is a
+ * hint to read again, never the state: a change whose write was then undone costs its devices one read and nothing else.
+ * Nothing is kept beyond that moment, so a host that loses its memory loses at most a hint the next poll makes up for.
+ */
+export function lifeAnnouncer(push: (publicId: string, frame: LifeChangedFrame) => unknown, delayMs = LIFE_SYNC_DELAY_MS) {
+  const pending = new Map<string, { rev: number; by: string[] }>();
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  function flush(): void {
+    if (timer !== null) { clearTimeout(timer); timer = null; }
+    const batch = [...pending];
+    pending.clear();
+    for (const [publicId, { rev, by }] of batch) { try { push(publicId, { type: 'life-changed', rev, ...(by.length ? { by } : {}) }); } catch { /* a socket that went away */ } }
+  }
+  const note: LifeChanged = (publicId, rev, actionId) => {
+    const entry = pending.get(publicId) ?? { rev: 0, by: [] };
+    entry.rev = Math.max(entry.rev, rev);
+    if (typeof actionId === 'string' && !entry.by.includes(actionId)) { entry.by.push(actionId); if (entry.by.length > LIFE_SYNC_CAUSES) entry.by.shift(); }
+    pending.set(publicId, entry);
+    if (timer !== null) return;
+    const handle = setTimeout(flush, delayMs);
+    (handle as { unref?: () => void }).unref?.();
+    timer = handle;
+  };
+  return { note, flush };
+}
+
 /**
  * ctx.settle and ctx.act for a host, over its receipts (server/routes/once.ts createOnce).
  * EVERY ctx.act must be safe to retry, and the host checks it rather than trusting the caller:
@@ -155,13 +190,25 @@ export function sessionArchiver({ now, randomId }: { now: () => number; randomId
  *     returns { ok, code, state, duplicate: true } without running the action again.
  * Anything else throws, so a route cannot spend without a receipt by accident.
  */
-export function lifeAuthority({ now, receipts }: { now: () => number; receipts: { active(): boolean; action: ContextCore['actionOnce'] } }) {
+export function lifeAuthority({ now, receipts, changed }: { now: () => number; receipts: { active(): boolean; action: ContextCore['actionOnce'] }; changed?: LifeChanged }) {
   // Which stored session a settled life belongs to, so ctx.act can find that player's receipts.
   const ownerOf = new WeakMap<LifeState, SessionRecord>();
-  const settle = (session: SessionRecord, city: CityId): LifeState => { const state = settleCity(session, city, now()); ownerOf.set(state, session); return state; };
+  // What a player would see of a character: the outcome of its life in this city, and which city and lives it has.
+  const seen = (session: SessionRecord, city: CityId): string => `${outcomeKey(session.cities?.[city]?.state)}${JSON.stringify([session.character, Object.keys(session.cities || {}), Object.keys(session.legacyLives ?? {})])}`;
+  const applied = (state: LifeState, result: ActionOutcome, actionId: string | undefined): ActionOutcome => {
+    const owner = ownerOf.get(state);
+    if (changed && owner && result.ok) changed(owner.publicId, owner.rev ?? 0, actionId);
+    return result;
+  };
+  const settle = (session: SessionRecord, city: CityId): LifeState => {
+    const before = changed ? seen(session, city) : '';
+    const state = settleCity(session, city, now()); ownerOf.set(state, session);
+    if (changed && before !== seen(session, city)) changed(session.publicId, session.rev ?? 0);
+    return state;
+  };
   function act(state: LifeState, body: ActBody): ActionOutcome {
     const { stateGuard, ...action } = body;
-    const run = () => applyLifeAction(state, action, { now: now(), cityId: action.cityId, actionId: action.actionId, internal: true });
+    const run = () => applied(state, applyLifeAction(state, action, { now: now(), cityId: action.cityId, actionId: action.actionId, internal: true }), action.actionId);
     if (receipts.active() || (typeof stateGuard === 'string' && stateGuard.trim().length >= 12)) return run();
     const session = ownerOf.get(state);
     if (!session || action.actionId === undefined) throw new Error(`ctx.act(${action.type}) has no receipt: call it inside ctx.once, pass the request's actionId, or state its stateGuard`);
@@ -169,7 +216,7 @@ export function lifeAuthority({ now, receipts }: { now: () => number; receipts: 
     return result.duplicate ? { ...result, state } : result;
   }
   /** What POST /api/action runs: a player's own request, with no server authority. */
-  const playerAct = (state: LifeState, body: ActionRequest): ActionOutcome => applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId });
+  const playerAct = (state: LifeState, body: ActionRequest): ActionOutcome => applied(state, applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }), body.actionId);
   return { settle, act, playerAct };
 }
 

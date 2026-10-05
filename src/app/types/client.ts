@@ -4,6 +4,8 @@
 import type { ActionMap, ActionType, PlayerActionType } from '../../types/actions.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { CityId, OwnSession } from '../../types/protocol.ts'
+import type { ChangeCause, LifeHint } from '../../client.ts'
+export type { ChangeCause, LifeHint }
 
 /**
  * WHY the game is or is not playable. "Offline" is said only for 'offline'.
@@ -72,7 +74,7 @@ export interface ClientOptions {
   /** False when the device itself has no network. */
   isOnline?: () => boolean
   /** After every accepted server state, and (with the same state twice) when only the link or storage changed. */
-  onChange?: (state: LifeState, previous: LifeState) => void
+  onChange?: (state: LifeState, previous: LifeState, cause?: ChangeCause) => void
   onStatus?: (text: string, isError: boolean) => void
   /** The device session is gone (401). */
   onSessionExpired?: () => void
@@ -109,6 +111,11 @@ export interface GameClient {
   switchLegacy(id: string, clientId: string): Promise<SwitchCityResult>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(lostText?: string): Promise<boolean>
+  /** The server said the life changed: read it again unless this device already holds that revision. */
+  lifeChanged(hint: LifeHint): void
+  /** This device was away: read the life again now. */
+  wake(): Promise<boolean>
+  readonly revision: number
   schedule(): void
   stop(): void
 }

@@ -84,10 +84,13 @@ export async function fixture(t: TestContext, { disk, ...options }: FixtureOptio
     return { cookie: header.split(';')[0] ?? '', ...((await res.json()) as SessionResponse).session };
   }
   async function action(cookie: string, fields: (Partial<ActionRequest> & Pick<ActionRequest, 'type'>) | ActionAttempt): Promise<ActionResponse & { error?: string }> { return (await request('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, cookie)).json() as Promise<ActionResponse & { error?: string }>; }
-  async function socket(device: { cookie: string }): Promise<TestSocket> {
+  // `life-changed` (one character on several devices, docs/DEVICES.md) is a hint to a character's own sockets that arrives a
+  // moment after whatever caused it; a test that is not about it does not see it, so that "the next frame" stays what the
+  // test did. A test about it passes { life: true }.
+  async function socket(device: { cookie: string }, { life = false }: { life?: boolean } = {}): Promise<TestSocket> {
     const ws = new WebSocket(base.replace('http', 'ws') + '/socket', { headers: { Cookie: device.cookie, Origin: base } });
     sockets.push(ws); const queue: ServerFrame[] = []; const waiting: ((message: ServerFrame) => void)[] = [];
-    ws.on('message', data => { const message = JSON.parse(data.toString()) as ServerFrame; const wait = waiting.shift(); if (wait) wait(message); else queue.push(message); });
+    ws.on('message', data => { const message = JSON.parse(data.toString()) as ServerFrame; if (message.type === 'life-changed' && !life) return; const wait = waiting.shift(); if (wait) wait(message); else queue.push(message); });
     await once(ws, 'open');
     return { ws, next: (): Promise<ServerFrame> => { const first = queue.shift(); return first ? Promise.resolve(first) : new Promise<ServerFrame>((resolve, reject) => { const timeout = setTimeout(() => reject(Error('Message timeout')), 2000); waiting.push(message => { clearTimeout(timeout); resolve(message); }); }); } };
   }

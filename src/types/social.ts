@@ -402,6 +402,13 @@ export interface DmFrame { type: 'dm'; conv: Conversation; message: Message }
 export interface SocialUpdateFrame { type: 'social-update'; update: SocialUpdate }
 /** Something of the player's changed server-side: re-read GET /api/social/me (and the life). */
 export interface SocialSyncFrame { type: 'social-sync' }
+/**
+ * To every open socket of the player who read something: the conversation as it now stands for them (`conv`), or that
+ * their updates list was read (`updates`). Their other devices clear the same badge without a request.
+ */
+export interface SocialReadFrame { type: 'social-read'; conv?: Conversation; updates?: true }
+/** To every open socket of a player whose own request changed their friends, groups, blocks or visits: read the overview again. */
+export interface SocialChangedFrame { type: 'social-changed' }
 export interface FriendRequestFrame { type: 'friend-request'; from: PlayerRef }
 export interface FriendAcceptedFrame { type: 'friend-accepted'; by: PlayerRef }
 /** A friend's first socket connected, or their last one closed. */
@@ -420,6 +427,7 @@ export type SocialReplyFrame = DmSentFrame | DmFailedFrame | DmReadOkFrame | Peo
 export type SocialPushFrame =
   | DmFrame | SocialUpdateFrame | SocialSyncFrame | FriendRequestFrame | FriendAcceptedFrame | PeoplePresenceFrame | PeopleChangedFrame
   | PeopleInteractionFrame | InviteKnockFrame | InviteAnswerFrame | InviteHouseFrame | TransferFrame
+  | SocialReadFrame | SocialChangedFrame
 export type SocialServerFrame = SocialReplyFrame | SocialPushFrame
 
 // ---- browser side --------------------------------------------------------------------------------

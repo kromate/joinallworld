@@ -23,7 +23,9 @@ import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { tableById } from '../../tables/city-places.ts'
-import { loadPeople, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { loadPeople, onLifeFrame, onPeople, onSocketClose, onSocketOpen, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { STORAGE_KEY } from '../../storage-key.ts'
+import { CHARACTER_CHANGED_TEXT, CONTINUED_TEXT, SESSION_CHANGED, SIGNED_OUT_TEXT, continuedElsewhere } from './devices.ts'
 import { funnelEvents, funnelSnap } from '../../quick-start/model.ts'
 import { telemetry } from '../../telemetry/index.ts'
 import { installCommunity } from '../features/community/communityStore.ts'
@@ -164,8 +166,12 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
 
   let lastPlot: string | null = null
-  game.on('accepted', (state, previous) => {
+  game.on('accepted', (state, previous, cause) => {
     const moved = previous.location !== state.location
+    // The character is shared; the screen is this device's. A place that changed on another device is followed by the
+    // scene and said in one calm line, and whatever is open here (a panel, the Map, the Phone) stays open.
+    const away = continuedElsewhere(cause, previous, state)
+    if (away) game.toast(CONTINUED_TEXT)
     // The funnel, from the server's own state: each event once, when it happens.
     const was = funnelSnap(previous), is = funnelSnap(state)
     for (const event of funnelEvents(was, is)) {
@@ -177,7 +183,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     // A trip started — from the map card, the Ride app, Go to work, anywhere: the map shows it. Once per trip, so a
     // player who then opens another screen is not pulled back; leaving that screen returns to the map.
     const trip = tripKey(state)
-    if (trip && trip !== shownTrip && game.mode.value !== 'map') shell.setMode('map')
+    if (trip && trip !== shownTrip && game.mode.value !== 'map' && !away) shell.setMode('map')
     // The trip has just set off: build the place it is going to now (once, a moment after the trip bar has appeared), so
     // arriving is a reveal and not a wait. Nothing is drawn; the map is what is on screen.
     if (trip && trip !== shownTrip && state.activeAction?.kind === 'travel') { const to = state.activeAction.id; setTimeout(() => { if (tripKey(game.state.value) === trip) scene.venue.value?.prepare?.(to) }, 450) }
@@ -188,7 +194,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       scene.venue.value?.setLocation(state.location)
       // Arrived while watching the trip: the map shows the arrival for a moment, then the venue comes up.
       if (game.mode.value === 'map' && city && isDeparting(previous)) { city.setState(state); city.arrive(showVenue) }
-      else if (game.mode.value !== 'venue') shell.setMode('venue')
+      else if (game.mode.value !== 'venue' && !away) shell.setMode('venue')
       if (pendingRoute && pendingRoute.venue !== state.location) pendingRoute = null // went somewhere else instead
     }
     // Arrival, or a cancelled trip: restore room membership. Join only — voice stays off until the player asks.
@@ -202,7 +208,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       scene.world.value?.setCity(state.estate.city)
       scene.city.value?.setCity(state.estate.city)
       placeSent = false
-      if (state.onboarding.done && !state.estate.lga) shell.open('city', { city: state.estate.city })
+      if (state.onboarding.done && !state.estate.lga && !away) shell.open('city', { city: state.estate.city })
     }
     // The server has set a plot aside for this life (or moved it): tell the maps and, decoupled, analytics. No address, no name.
     const plot = state.estate?.plot
@@ -245,6 +251,31 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     globalThis.window?.dispatchEvent(new CustomEvent('jaw:session', { detail: { id } }))
   }
   game.on('session', (session) => { sessionChanged(session.id ?? null) })
+
+  // ---- one character on several devices -------------------------------------------------------------------------
+  // The server tells every socket of a character when its life changed; the game reads it again unless this device
+  // already holds that revision. A socket that opens again (the network came back, the phone was unlocked) reads at once.
+  onLifeFrame((hint) => { game.lifeChanged(hint) })
+  onSocketOpen((again) => { if (again) void game.wake() })
+  // The server closed this socket because its session changed: this browser was signed out from another device, or the
+  // account now plays another character. The copy of the old life kept here is dropped and the page starts again.
+  let leaving = false
+  async function sessionMoved(): Promise<void> {
+    if (leaving) return
+    const held = game.session.value?.id ?? null
+    let now: string | null
+    try { now = (await game.fetchJson<{ session: { id: string } }>('/api/session')).session.id }
+    catch (error) { if ((error as { status?: number }).status !== 401) return; now = null }
+    if (now === held || leaving) return
+    leaving = true
+    game.stop()
+    game.toast(now === null ? SIGNED_OUT_TEXT : CHARACTER_CHANGED_TEXT)
+    globalThis.setTimeout(() => {
+      try { globalThis.localStorage?.removeItem(STORAGE_KEY) } catch { /* nothing was kept */ }
+      try { globalThis.location?.reload() } catch { /* the next request says so */ }
+    }, 1800)
+  }
+  onSocketClose((code) => { if (code === SESSION_CHANGED) void sessionMoved() })
   // The saved life is gone: its own sheet says so, not the welcome of the landing screen.
   game.on('expired', () => { positions = {}; forgetViews(tabStore(), deviceStore(), whoIs()); sessionChanged(null); const gate = shell.sessionGate('expired'); if (gate) shell.open(gate.id, { reason: 'expired' }) })
   game.on('needName', (problem) => { const gate = shell.sessionGate('new'); if (gate) shell.open(gate.id, { reason: 'new', problem }) })

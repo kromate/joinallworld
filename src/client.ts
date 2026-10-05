@@ -30,6 +30,15 @@ export type NameRefusalCode = 'name_not_allowed' | 'invalid_name' | 'muted'
 export interface NameProblem { code: NameRefusalCode; reason: string; name: string }
 /** Set while the server says it cannot save. */
 export interface StorageProblem { reason: string }
+/**
+ * Why a state was accepted (one character on several devices, docs/DEVICES.md):
+ *   'own'        this device's own action or poll;
+ *   'elsewhere'  the server said the life changed and named an action this device did not send: another device did it;
+ *   'wake'       the first read after this device was away (the tab was hidden, the network or the socket came back).
+ */
+export type ChangeCause = 'own' | 'elsewhere' | 'wake'
+/** The server's hint that the life changed (src/types/protocol.ts LifeChangedFrame), as far as the client reads it. */
+export interface LifeHint { rev: number; by?: readonly string[] }
 /** Outcome of command() and switchCity(). `ok: false` with `code: 'offline' | 'busy'` means nothing was sent. */
 export interface CommandResult { ok: boolean; code: string | undefined; reason?: string }
 /** What api() rejects with. A network failure has neither status nor code. */
@@ -53,8 +62,8 @@ export interface ClientOptions {
   randomUUID?: () => string
   /** True while the page is hidden (polling pauses). */
   isHidden?: () => boolean
-  /** After every accepted server state. */
-  onChange?: (state: LifeState, previous: LifeState) => void
+  /** After every accepted server state, with why it was accepted (absent when only the link or the storage notice changed). */
+  onChange?: (state: LifeState, previous: LifeState, cause?: ChangeCause) => void
   /** Connection status line. */
   onStatus?: (text: string, isError: boolean) => void
   /** The device session is gone (401). */
@@ -88,6 +97,12 @@ export interface Client {
   switchLegacy(id: string, clientId: string): Promise<CommandResult>
   switchCity(id: string): Promise<CommandResult>
   refresh(lostText?: string): Promise<boolean>
+  /** The server said the life changed (a `life-changed` frame): read it again unless this device already holds that revision. */
+  lifeChanged(hint: LifeHint): void
+  /** This device was away: read the life again now. A command sent meanwhile waits for the answer first. */
+  wake(): Promise<boolean>
+  /** The revision of the life this device shows; -1 before the server's first answer. */
+  readonly revision: number
   schedule(): void
   stop(): void
 }
@@ -206,7 +221,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     /** null while the server is saving normally; { reason } from the moment it says it cannot (storage: "failing", or 503 storage_unavailable). */
     storage: null,
     get online() { return client.ready && Boolean(client.session); },
-    api, fetchJson: api, connect, command, switchCity, switchLegacy, refresh, schedule, stop,
+    get revision() { return revision; },
+    api, fetchJson: api, connect, command, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
   let pollTimer: unknown = null;
   // A saved life that uses the campus is rebuilt as soon as the campus rules have arrived, unless the server has answered first.
@@ -255,12 +271,37 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   /** The server's answer is the life now (a late hydration of the saved copy, below, must not replace it). */
   let accepted = false;
-  /** Rebuild `next` (it waits first for the campus rules when the life uses the campus and they are not loaded yet) and take it as the life. */
-  async function accept(next: unknown): Promise<void> {
+  // ONE CHARACTER ON SEVERAL DEVICES (docs/DEVICES.md). Every answer that carries the life carries the character's
+  // revision, which only goes up. This device keeps the revision of the life it shows and never replaces it with an
+  // older answer that was asked for BEFORE the newer one was taken (two answers that crossed on the way). An answer
+  // asked for afterwards is the server's word however low its number: a server that was restored starts lower.
+  let revision = -1;
+  /** Counts the answers taken, so each request knows whether another answer was taken while it was on its way. */
+  let taken = 0;
+  /** The highest revision the server has announced, and the highest it announced for an action this device did not send. */
+  let announced = -1, announcedElsewhere = -1;
+  /** The ids of the actions this device sent lately: a change they caused is this device's own. */
+  const sentIds: string[] = [];
+  /** Set by wake(): the next read is the one that brings this device up to date. */
+  let waking: Promise<boolean> | null = null;
+  let catching: Promise<void> | null = null;
+  /**
+   * Rebuild `next` (it waits first for the campus rules when the life uses the campus and they are not loaded yet) and take
+   * it as the life. `rev` is the answer's revision and `askedAt` the value of `taken` when it was asked for; an answer
+   * that a newer one overtook is dropped (false).
+   */
+  async function accept(next: unknown, rev?: number, askedAt = taken, cause: ChangeCause = 'own'): Promise<boolean> {
+    const overtaken = (): boolean => typeof rev === 'number' && rev < revision && askedAt < taken;
+    if (overtaken()) return false;
     await loadLifeCities(next, [client.cityId]).catch(() => []); // every city the life refers to, before it is rebuilt
     const waiting = campusFor(next);
     if (waiting) await waiting;
+    if (overtaken()) return false;
     accepted = true;
+    // The change another device made arrived with this answer, whichever request carried it.
+    const why: ChangeCause = typeof rev === 'number' && announcedElsewhere > revision && rev >= announcedElsewhere ? 'elsewhere' : cause;
+    if (typeof rev === 'number') revision = rev;
+    taken += 1;
     const previous = client.state;
     // A server snapshot is rebuilt at ITS time and city, not at time zero: a sanitiser that compares with the clock
     // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
@@ -269,10 +310,14 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     client.state = createLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
     if (isCityId(client.state.estate.city)) client.cityId = client.state.estate.city as CityId;
     persist();
-    onChange(client.state, previous);
+    onChange(client.state, previous, why);
     schedule();
+    return true;
   }
+  /** Another session, or none: what was held about revisions belonged to the one before. */
+  function forgetRevisions(): void { revision = -1; announced = -1; announcedElsewhere = -1; sentIds.length = 0; }
   function expired() {
+    forgetRevisions();
     client.ready = false; client.session = null; client.link = 'expired'; cancelTimer(pollTimer);
     status('Device session expired · saved preview preserved', true);
     onSessionExpired();
@@ -311,15 +356,47 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     }
   }
 
-  async function refresh(lostText = 'Reconnect to refresh progress'): Promise<boolean> {
+  async function refresh(lostText = 'Reconnect to refresh progress', cause: ChangeCause = 'own'): Promise<boolean> {
     if (!client.online) return false;
-    try { await accept((await fetchCurrentLife(client.cityId)).state); return true; }
+    const askedAt = taken;
+    try { const response = await fetchCurrentLife(client.cityId); await accept(response.state, response.rev, askedAt, cause); return true; }
     catch (e) {
       const error = e as ApiError;
       // The server answered, it just could not save this settlement: still connected, try again at the next poll.
       if (error.code === 'storage_unavailable') { schedule(); return false; }
       if (error.status === 401) expired(); else lost(error, lostText); return false;
     }
+  }
+
+  /**
+   * The server said the life changed. Nothing is read while an action of this device is on its way (its answer may
+   * already be that change), and nothing is read when this device holds that revision or a later one. Otherwise the life is
+   * read again, and once more a moment later if the server had not caught up with what it announced.
+   */
+  function lifeChanged(hint: LifeHint): void {
+    if (!hint || typeof hint.rev !== 'number' || !Number.isFinite(hint.rev)) return;
+    announced = Math.max(announced, hint.rev);
+    if (Array.isArray(hint.by) && hint.by.some((id) => !sentIds.includes(id))) announcedElsewhere = Math.max(announcedElsewhere, hint.rev);
+    void catchUp();
+  }
+  function catchUp(): Promise<void> {
+    if (catching) return catching;
+    if (client.busy || !client.online || announced <= revision) return Promise.resolve();
+    catching = (async () => {
+      for (let attempt = 0; attempt < 3 && client.online && !client.busy && announced > revision; attempt++) {
+        if (attempt) await new Promise<void>((resolve) => { later(resolve, 250 * attempt); });
+        if (!(await refresh())) break;
+      }
+      // What the server holds now is the life, whatever number it announced (a write that was undone is announced too).
+      if (!client.busy) announced = Math.min(announced, revision);
+    })().finally(() => { catching = null; });
+    return catching;
+  }
+  /** This device was away (hidden, offline, its socket closed): read the life now. command() waits for this read. */
+  function wake(): Promise<boolean> {
+    if (!client.online) return Promise.resolve(false);
+    waking ??= refresh(undefined, 'wake').finally(() => { waking = null; });
+    return waking;
   }
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
@@ -346,13 +423,16 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
           return false;
         }
       }
+      if (client.session?.id !== response.session.id) forgetRevisions();
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
       // A new device asks for the default city first: when the session says its one life is elsewhere, ask for that one, not for a city that has moved on.
       const held = response.session.cities;
       if (!createNew && Array.isArray(held) && held.length === 1 && isCityId(held[0]) && held[0] !== client.cityId) { await loadCityContent(held[0]); client.cityId = held[0] as CityId; }
       onSession(client.session, createNew);
       client.link = 'online';
-      await accept((await fetchCurrentLife(client.cityId)).state);
+      const askedAt = taken;
+      const first = await fetchCurrentLife(client.cityId);
+      await accept(first.state, first.rev, askedAt);
       holdCity(client.cityId);
       status('Connected · progress saved');
       return true;
@@ -393,21 +473,26 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
    */
   async function command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult> {
     if (client.busy) return { ok: false, code: 'busy' };
+    // A device that has just come back reads the life first: the action is then sent about what the server holds, not about a stale copy.
+    if (waking) { await waking.catch(() => false); if (client.busy) return { ok: false, code: 'busy' }; }
     // `code: 'offline'` is the machine code for "not sent"; the sentence says which of the reasons it really is.
     if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason }; }
     client.busy = true;
     try {
       const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
       if (payload !== undefined && payload !== null) body.payload = outgoing(type, payload);
+      sentIds.push(body.actionId); if (sentIds.length > 32) sentIds.shift();
+      const askedAt = taken;
       const response = await api<ActionResponse>('/api/action', { method: 'POST', body });
       await loadedSnapshot(response);
-      await accept(response.state);
+      await accept(response.state, response.rev, askedAt);
       if (!response.ok && client.state.message) status(client.state.message, true);
       return { ok: response.ok, code: response.code, reason: response.ok ? undefined : client.state.message };
     } catch (e) {
       const error = e as ApiError;
       if (error.code === 'city_moved' && isCityId(error.city)) {
-        try { await accept((await fetchCurrentLife(error.city)).state); }
+        // The character is in another city now (it travelled on another device): this device follows it there.
+        try { const askedAt = taken; const moved = await fetchCurrentLife(error.city); await accept(moved.state, moved.rev, askedAt, 'elsewhere'); }
         catch { lost(error); }
         return { ok: false, code: 'city_moved', reason: error.reason ?? 'Your character moved. Review its current city before trying again.' };
       }
@@ -415,7 +500,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       if (error.code === 'storage_unavailable') return { ok: false, code: error.code, reason: error.reason || TEXT.notSaving };
       if (error.status === 401) expired(); else lost(error);
       return { ok: false, code: error.code || 'network', reason: error.message };
-    } finally { client.busy = false; }
+    } finally { client.busy = false; void catchUp(); }
   }
 
   async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {
@@ -423,8 +508,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     client.busy = true;
     try {
       const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } });
+      const askedAt = taken;
       const current = await fetchCurrentLife(result.city);
-      await accept(current.state);
+      await accept(current.state, current.rev, askedAt);
       return { ok: true, code: 'switched' };
     } catch (error) {
       return { ok: false, code: error instanceof Error ? (error as ApiError).code ?? 'network' : 'network', reason: error instanceof Error ? error.message : 'Could not switch characters.' };
@@ -438,10 +524,11 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
     try {
       await loadCityContent(id);
+      const askedAt = taken;
       const data = await api<LifeResponse>(`/api/life?city=${id}`);
       client.cityId = id as CityId;
       await loadedSnapshot(data);
-      await accept(data.state);
+      await accept(data.state, data.rev, askedAt);
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };
     } catch (e) {

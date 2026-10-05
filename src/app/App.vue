@@ -11,7 +11,7 @@ import '../ui/shell.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from './state/app.ts'
 import { heldActionFor, shortcutFor } from '../ui/keys.ts'
-import { start as startSocial } from './features/social/useSocial.ts'
+import { start as startSocial, wakeSocket } from './features/social/useSocial.ts'
 import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
 import LinkBanner from './features/landing/LinkBanner.vue'
@@ -118,7 +118,9 @@ const lifecycle = createPageLifecycle(game, community)
 const onPageHide = (): void => lifecycle.onPageHide()
 // Restored from the back/forward cache: the socket was closed on pagehide, so bring the community back (voice stays off).
 const onPageShow = (event: Event): void => lifecycle.onPageShow(event as PageTransitionEvent)
-const onVisibility = (): void => { if (document.hidden) game.stop(); else void game.refresh() }
+// In front again (the tab was hidden, the phone was locked): the life is read before anything else, and a socket that
+// was lost meanwhile is opened now, so this device is not left showing what another one has since changed.
+const onVisibility = (): void => { if (document.hidden) game.stop(); else { wakeSocket(); void game.wake() } }
 
 const listeners: [EventTarget, string, EventListener][] = [
   [window, 'keydown', onKey as EventListener], [window, 'keyup', onKeyUp as EventListener], [window, 'jaw:scene-spot', onSceneSpot],

@@ -26,6 +26,8 @@
  *   people-interaction{ from, action, label, landed }
  *   invite-knock      { from, expiresAt }          invite-answer { host, answer, house }      invite-house { house }
  *   transfer          { from, amount, credited }
+ *   social-read       { conv? , updates? }         you read a conversation, or your updates, on one of your devices
+ *   social-changed    {}                           your own request changed your friends, groups, blocks or visits: re-read /api/social/me
  * Clients must ignore types they do not know (the community panel's socket receives these too).
  *
  * Nothing here touches voice, the microphone, ws.room, ws.voice or ws.position.
@@ -47,6 +49,8 @@ export default function socialSocket(ctx: RouteContext): WsHandlers {
     }, { committed: (value) => service.committed(value) });
     return service.deliver(result);
   }
+  /** A change the sender made to their own friends or visits: their other open sockets read the overview again (as the HTTP routes do). */
+  const changed = (ws: WsConnection, result: { ok: boolean }): void => { if (result.ok) ctx.push(ws.session.id, { type: 'social-changed' }); };
   /** Tell a player's friends that they connected or dropped. Best effort; never blocks the socket. */
   function announce(id: string, status: 'online' | 'reconnecting'): void {
     ctx.store.read((db) => presenceAudience(db.social?.players, id))
@@ -127,18 +131,22 @@ export default function socialSocket(ctx: RouteContext): WsHandlers {
       },
       async 'friend-request'(ws, message) {
         const result = await run(ws, (db, session) => service.friendRequest(db, session, message));
+        changed(ws, result);
         ctx.send(ws, { type: 'friend-result', ...result });
       },
       async 'friend-answer'(ws, message) {
         const result = await run(ws, (db, session) => service.friendAnswer(db, session, message));
+        changed(ws, result);
         ctx.send(ws, { type: 'friend-result', ...result });
       },
       async 'invite-knock'(ws, message) {
         const result = await run(ws, (db, session) => service.knock(db, session, message));
+        changed(ws, result);
         ctx.send(ws, { type: 'invite-result', op: 'knock', ...result });
       },
       async 'invite-answer'(ws, message) {
         const result = await run(ws, (db, session) => service.knockAnswer(db, session, message));
+        changed(ws, result);
         ctx.send(ws, { type: 'invite-result', op: 'answer', ...result });
       },
     },

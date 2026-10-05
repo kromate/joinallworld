@@ -101,6 +101,11 @@ export interface SessionRecord {
    */
   account?: string
   legacyLifeCities?: Record<string, CityId>
+  /**
+   * Counts every settlement of this character (server/life-service.ts settleCity), so it only goes up: the order of the
+   * answers its devices are given (docs/DEVICES.md). Absent on a record stored before it existed, which reads as 0.
+   */
+  rev?: number
 }
 /**
  * WORKER: what deploy/cloudflare-worker.ts stores in its `sessions` table. Action receipts live
@@ -667,6 +672,8 @@ export interface ActionOutcome {
   state: LifeState
   reason?: string
   duplicate?: true
+  /** The character's revision, on an outcome of ctx.command (server/routes/core.ts executeCommand). */
+  rev?: number
 }
 /** The body ctx.act takes: an action named by server code, never forwarded from a request. */
 export interface ActBody {
@@ -823,6 +830,8 @@ export interface ContextCore {
   chatHistory?(ws: WsConnection, body: string): { has(id: string): boolean; get(id: string): unknown; set(id: string, chat: unknown): void; delete(id: string): void; keys(): Iterable<string>; readonly size: number }
   /** Kept here so the weakly-held life watcher lives as long as the server (set by rooms.js). */
   lifeWatcher?: (publicId: string, cityId: CityId, state: LifeState) => void
+  /** A character changed outside a settlement (another of its lives was put in play): its devices are told (host-context.ts lifeAnnouncer). */
+  lifeChanged?: (publicId: string, rev: number) => void
   // The four room lifecycle functions. The socket registry replaces the host's no-op defaults.
   validateMemberships(secret: string | undefined, cityId: CityId, state: LifeState, publicId?: string): Promise<void>
   revalidate(publicId: string): Promise<void>

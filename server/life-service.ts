@@ -134,6 +134,8 @@ export function settleCity(session: SessionRecord, cityId: CityId, now: number):
   entry.updatedAt = now;
   entry.state.name = session.name;
   fileCharacter(session, cityId, now);
+  // The character's revision: every settlement is a later answer than the one before it (docs/DEVICES.md).
+  session.rev = (typeof session.rev === 'number' && Number.isSafeInteger(session.rev) && session.rev >= 0 ? session.rev : 0) + 1;
   const meta: LifeMeta = { salt, publicId: session.publicId, cityId: entry.state.estate.city as CityId };
   lives.set(entry.state, meta);
   announce(meta, entry.state);

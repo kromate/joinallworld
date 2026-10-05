@@ -652,9 +652,9 @@ function buildService(ctx: RouteContext) {
       return yes('ok', { friends: page.ids.map(([other, since]) => ({ ...pub(s, other), ...whereabouts(other, true), since, bae: p.bae === other })), total: page.total, next: page.next });
     },
     readUpdates(db: Db, session: SessionRecord) {
-      const { p } = enter(db, session);
+      const { p, id } = enter(db, session);
       for (const update of p.updates) update.read = true;
-      return yes('read');
+      return yes('read', { push: [[id, { type: 'social-read', updates: true }]] as PushList });
     },
 
     // ---- people ----------------------------------------------------------------------------
@@ -815,7 +815,9 @@ function buildService(ctx: RouteContext) {
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
       const seq = typeof body.seq === 'number' && Number.isSafeInteger(body.seq) ? Math.max(0, Math.min(body.seq, conv.seq)) : conv.seq;
       p.convs[key]!.read = Math.max(p.convs[key]!.read, seq);
-      return yes('read', { conv: summary(s, conv, id) });
+      // Read on one device is read on all of them: every open socket of the reader is given the conversation as it now stands.
+      const view = summary(s, conv, id);
+      return yes('read', { conv: view, push: [[id, { type: 'social-read', conv: view }]] as PushList });
     },
     /**
      * Send to a player (`to`) or an existing conversation (`conv`). Idempotent on the sender's

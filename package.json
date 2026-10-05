@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --experimental-strip-types scripts/dev.ts",
     "build": "vite build",
-    "typecheck": "node --experimental-strip-types scripts/typecheck.ts",
+    "geo:boundaries": "node --experimental-strip-types scripts/geo/build-boundaries.ts",
+    "typecheck":"node --experimental-strip-types scripts/typecheck.ts",
     "test": "node --experimental-strip-types --test \"src/**/*.test.js\" \"src/**/*.test.ts\" \"server/**/*.test.js\" \"server/**/*.test.ts\"",
     "start": "node server/server.ts",
     "start:server": "node server/server.ts",

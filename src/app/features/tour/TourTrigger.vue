@@ -43,7 +43,7 @@ function consider(): void {
   if (running.value) return
   const now = verdict()
   // Due and not started: everything that would compete with it waits. A HUD that never draws stops holding things back.
-  tour.pending = now !== 'never' && (now === 'start' || hudReady() || tries < 8)
+  tour.pending = now !== 'never' && game.view.value.connected && (now === 'start' || hudReady() || tries < 8)
   if (now === 'never') return
   // The HUD may still be drawing: look again a few times, once each, never in a loop.
   if (now === 'wait') { if (!hudReady() && tries++ < 8) timer = window.setTimeout(consider, 600); return }

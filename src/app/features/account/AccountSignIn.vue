@@ -13,7 +13,7 @@
 // back to hidden when the form is sent, and nothing typed here is logged or sent to telemetry.
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { NEW_PASSWORD_MIN, PASSWORD_MAX, devicesText, outcomeText } from './accountModel.ts'
+import { NEW_PASSWORD_MIN, PASSWORD_MAX, VERIFY_SENT, devicesText, outcomeText } from './accountModel.ts'
 import { useAccount } from './useAccount.ts'
 import AccountChoice from './AccountChoice.vue'
 import AccountSettings from './AccountSettings.vue'
@@ -152,7 +152,7 @@ onBeforeUnmount(() => {
         <p class="session-note">Nothing is saved to the account until the address is confirmed. Look in your spam folder if it does not arrive.</p>
       </div>
       <p v-if="state.error" class="ui-error" role="alert">{{ state.error }}</p>
-      <p v-if="state.notice" class="account-notice" role="status">{{ state.notice }}</p>
+      <p v-if="state.notice && state.notice !== VERIFY_SENT" class="account-notice" role="status">{{ state.notice }}</p>
       <div class="session-actions">
         <button type="button" class="ui-button is-primary is-block" data-account-confirmed :disabled="state.busy" @click="account.confirmed()">I’ve confirmed — continue</button>
         <button type="button" class="ui-button is-block" data-account-resend :disabled="state.busy" @click="account.resendVerification()">Resend e-mail</button>

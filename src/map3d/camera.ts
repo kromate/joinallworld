@@ -50,6 +50,8 @@ const clamp = (value: number, low: number, high: number) => Math.max(low, Math.m
 export const PITCH_MIN = 0.36, PITCH_MAX = 1.5, DEFAULT_PITCH = 0.92, MIN_DISTANCE = 34;
 /** Past this distance the view tips up towards straight down, so that a whole state reads as a map; by FLAT_FULL it is as flat as it gets. */
 export const FLAT_FROM = 520, FLAT_FULL = 1900, FLAT_PITCH = 1.2;
+/** The tilt of the whole-state view: nearly straight down. */
+export const STATE_PITCH = 1.36;
 /** The flattest-allowed tilt's lower limit at a distance: the usual one near, rising to FLAT_PITCH far out. */
 export const pitchFloor = (distance: number) => PITCH_MIN + (FLAT_PITCH - PITCH_MIN) * clamp((distance - FLAT_FROM) / (FLAT_FULL - FLAT_FROM), 0, 1);
 
@@ -156,7 +158,9 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       // A city is seen at the default tilt; a state a long way out is tipped up so that its shape reads.
       // On a tall, narrow screen a long state is turned a quarter (west at the top) when that fills the screen better; nothing is distorted.
       const fit = (yaw: number) => {
-        const first = distanceFor(corners(), centre.x, centre.z, yaw, DEFAULT_PITCH, 1), pitch = Math.max(DEFAULT_PITCH, pitchFloor(first) + 0.04);
+        const first = distanceFor(corners(), centre.x, centre.z, yaw, DEFAULT_PITCH, 1);
+        // A state seen from far out is tipped well up (STATE_PITCH): a low angle turns it into a thin strip in a lot of sea.
+        const pitch = Math.max(DEFAULT_PITCH, pitchFloor(first) + 0.04, first > FLAT_FROM ? STATE_PITCH : 0);
         return { x: centre.x, z: centre.z, yaw, pitch, distance: pitch === DEFAULT_PITCH ? first : distanceFor(corners(), centre.x, centre.z, yaw, pitch, 1) };
       };
       const north = fit(0);

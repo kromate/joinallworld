@@ -13,6 +13,7 @@ import { useCommunity } from '../community/communityStore.ts'
 import { EMPTY_ROOM_MS, INVITE_KEY, PROMPT_MS, decideInvite, freshMemory, inviteMemory, promptActed, promptDismissed, promptShown } from './inviteNudgeModel.ts'
 import type { InviteMemory, InviteMoment } from './inviteNudgeModel.ts'
 import { useGrowth } from './useGrowth.ts'
+import { hold } from '../../state/landingHold.ts'
 
 // The chip is loaded the first time a prompt is shown, so the button stays small.
 const InviteChip = defineAsyncComponent(() => import('./InviteChip.vue'))
@@ -68,6 +69,8 @@ const stillApplies = (moment: InviteMoment): boolean => moment !== 'empty-venue'
 
 function propose(moment: InviteMoment): void {
   if (prompt.value) return
+  // The first landing: the walkthrough goes first. The moment is kept and offered once it has gone.
+  if (hold.invite) { pending = { moment, at: Date.now() }; return }
   const now = Date.now()
   const decision = decideInvite({ moment, memory: memory.value, now, activity: busy.value, guestNotPlaying: guestNotPlaying.value })
   if (decision.show && decision.which) { show(decision.which, now); return }
@@ -98,6 +101,14 @@ function dismiss(): void {
   if (moment) growth.track('invite_prompt_dismissed', { moment })
 }
 function press(): void { hide(); void growth.share('invite', { surface: 'hud' }) }
+
+// The landing's hold ended: a moment that waited is offered if it still applies.
+watch(() => hold.invite, (now) => {
+  if (now || !pending || busy.value) return
+  const kept = pending
+  pending = null
+  if (Date.now() - kept.at < KEEP_MS && stillApplies(kept.moment)) propose(kept.moment)
+})
 
 // The activity ended: a moment that had to wait is offered if it still applies.
 watch(busy, (now) => {
@@ -144,7 +155,7 @@ onBeforeUnmount(() => {
     <button type="button" class="inv-button" aria-label="Invite your friends" title="Invite your friends" :disabled="sending" data-invite-button data-tour="invite" @click="press">
       <GameIcon name="people" :size="17" /><span class="inv-label">Invite</span>
     </button>
-    <InviteChip v-if="prompt" :moment="prompt" @accept="accept" @dismiss="dismiss" />
+    <InviteChip v-if="prompt && game.mode.value === 'venue'" :moment="prompt" @accept="accept" @dismiss="dismiss" />
   </span>
 </template>
 

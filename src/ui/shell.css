@@ -588,7 +588,7 @@ button.ui-row:hover{background:#f7f9f8}
    activity's progress, a trip — is in the bottom-centre stack, directly above the nav, on every
    screen including the map. */
 .life-bottom>.life-alerts{width:100%;max-width:460px;justify-self:center}
-.life-ui .life-bottom .map-panel.map-trip{position:static;width:100%;max-width:460px;max-height:none;justify-self:center}
+.life-ui .life-bottom .map-panel.map-trip{position:static;width:100%;max-width:460px;max-height:none;justify-self:center;margin-bottom:6px}
 /* A card that has just appeared slides in from the control that started it. */
 .attn-arrive{animation:attn-arrive .34s var(--ease-out)}
 @keyframes attn-arrive{from{opacity:.25;transform:translate(var(--attn-x,0),var(--attn-y,0)) scale(.55)}to{opacity:1;transform:none}}
@@ -621,3 +621,6 @@ button.ui-row:hover{background:#f7f9f8}
 
 /* Until the server has said where the player is (and the view they left has been put back), the life is not drawn: no jump from a cached place to the real one. */
 .life-ui.is-resuming{visibility:hidden}
+
+/* The first landing holds the scene's hint until the walkthrough is over (state/landingHold.ts). */
+body[data-hold-hint] .scene-hint{display:none!important}

@@ -20,7 +20,7 @@ const show = computed(() => {
   const view = game.view.value
   return barDue({
     enabled: lite.state.loaded && lite.state.enabled, guest: lite.state.guest && lite.state.account === null, connected: view.connected,
-    creating: view.onboarding?.required === true, tour: tour.active || tour.pending,
+    creating: view.onboarding?.required === true || shell.ui.coaching, tour: tour.active || tour.pending,
     busy: Boolean(shell.sheet.value) || Boolean(game.state.value.activeAction) || callVisible(),
     venue: game.mode.value === 'venue', hiddenUntil: hidden.value, now: Date.now(),
   })

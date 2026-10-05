@@ -178,6 +178,13 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
   let wholeFrom = WHOLE_FROM;       // beyond this camera distance the view is of the whole state (see labels.ts), judged against the opening view of this screen
   let openedWhole = false;          // "Whole city" was pressed: a resize keeps that view, not the opening one
+  // Very wide screens enlarge the interface (--ui-zoom, tokens.css). The labels, plates and tags are zoomed with it by CSS, so their
+  // lettering is drawn at its real size (no scaling of a drawn picture); `uz` is that factor, for the places where the maths needs it:
+  // a label's box on screen is its own size times uz, and its position is written in the labels' own (zoomed) pixels.
+  let uz = 1;
+  const readZoom = (): void => { const value = root ? parseFloat(getComputedStyle(root).getPropertyValue('--ui-zoom')) : 1; uz = Number.isFinite(value) && value > 0 && globalThis.CSS?.supports?.('zoom', '2') ? value : 1; };
+  /** Where a node goes: whole screen pixels, expressed in the node's own zoomed pixels. */
+  const here = (value: number): string => `${Math.round(value) / uz}px`;
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time: TimeOfDay | null = null, labelKey = '', chipKey = '';
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs: number[] = [], gaps: number[] = [];
   let trip: Trip | null = null, route: Route | null = null, returning: { p: number; rate: number } | null = null, settling = false, pendingArrive: (() => void) | null = null, dueAt = -Infinity, tripCamera = true, pose: (TripPose & { progress?: number }) | null = null;
@@ -360,6 +367,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const nameOf = (place: CityPlace) => (place.kind === 'home' ? 'Home' : venueLabel(place.id, cityId));
   function buildLabels() {
     if (!labelLayer) return;
+    readZoom();
     for (const place of Object.values(city.places).sort((a, b) => a.x - b.x || a.z - b.z)) {
       const source = VENUE_TABLE[place.id] || SOON_TABLE[place.id];
       const node = doc!.createElement('button');
@@ -407,7 +415,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       node.title = `${nameOf(place)}${status ? ` · ${status}` : ''}`;
       if (here) node.setAttribute('aria-current', 'location'); else node.removeAttribute('aria-current');
       label.priority = (here ? 100 : 0) + (selected === id ? 90 : 0) + (going === id ? 80 : 0) + (hovered === id ? 70 : 0) + (place.kind === 'home' ? 40 : 0) + (soon ? 5 : open ? 20 : 10) - (dimmed ? 30 : 0);
-      label.width = node.offsetWidth || 90; label.height = node.offsetHeight || 30;
+      label.width = (node.offsetWidth || 90) * uz; label.height = (node.offsetHeight || 30) * uz;
     }
   }
   function syncChips() {
@@ -468,7 +476,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 };
       // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
       const lift = labelShift(full, piece), moved = lift ? { l: full.l, r: full.r, t: full.t + lift, b: full.b + lift } : full;
-      const compact = hits(moved), small = { l: at.x - 15, r: at.x + 15, t: at.y - 30, b: at.y };
+      const compact = hits(moved), small = { l: at.x - 15 * uz, r: at.x + 15 * uz, t: at.y - 30 * uz, b: at.y };
       // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.ts).
       const shift = compact ? labelShift(small, piece) : lift;
       taken.push(compact ? { l: small.l, r: small.r, t: small.t + shift, b: small.b + shift } : moved);
@@ -476,13 +484,13 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       if (shift !== label.shift) {
         label.shift = shift;
         node.classList.toggle('is-lowered', shift > 0);
-        if (shift < 0) node.style.setProperty('--m3-stalk', `${(compact ? 6 : 9) - shift}px`); else node.style.removeProperty('--m3-stalk');
+        if (shift < 0) node.style.setProperty('--m3-stalk', `${(compact ? 6 : 9) - shift / uz}px`); else node.style.removeProperty('--m3-stalk');
       }
-      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y + shift)}px) translate(-50%,-100%)`;
+      node.style.transform = `translate(${here(at.x)},${here(at.y + shift)}) translate(-50%,-100%)`;
     }
     if (you) {
       if (you.hidden === travelling) you.hidden = !travelling;
-      if (travelling) you.style.transform = `translate(${Math.round(head!.x)}px,${Math.round(head!.y)}px) translate(-50%,-100%)`;
+      if (travelling) you.style.transform = `translate(${here(head!.x)},${here(head!.y)}) translate(-50%,-100%)`;
     }
     const far = rig.view.distance > 230;
     if (root!.classList.contains('is-far') !== far) root!.classList.toggle('is-far', far);
@@ -491,14 +499,14 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     for (const plate of [...plates.values()].sort((p, q) => (q.span.maxX - q.span.minX) - (p.span.maxX - p.span.minX))) {
       const { node, lga } = plate, at = project(lga.plate[0], 0.1, lga.plate[1]);
       const fit = plateFit(lga.name, Math.abs(project(plate.span.maxX, 0.1, lga.plate[1]).x - project(plate.span.minX, 0.1, lga.plate[1]).x), rig.view.distance, wholeFrom * 1.25);
-      const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, box = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
+      const w = plateWidth(lga.name) * fit.scale * 0.6 * uz, h = 24 * fit.scale * uz, box = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
       const visible = layers.lgas && fit.show && at.front && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && rig.view.distance > 26
         && !drawn.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t) && !(wholeView ? false : hits(box));
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
       drawn.push(box);
       if (fit.scale !== plate.scale) { plate.scale = fit.scale; node.style.fontSize = fit.scale > 1 ? `${(11 * fit.scale).toFixed(1)}px` : ''; node.classList.toggle('is-sized', fit.scale > 1); }
-      node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-50%)`;
+      node.style.transform = `translate(${here(at.x)},${here(at.y)}) translate(-50%,-50%)`;
     }
     // House tags: yours, the one under the pointer, friends' in the estates drawn as houses.
     const wanted: (PlotRef & { text: string; kind: string })[] = [], own = layers.homes ? ownPlot() : null;
@@ -514,7 +522,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       if (!visible) return;
       if (node.textContent !== item!.text) node.textContent = item!.text;
       node.className = `m3-tag is-${item!.kind}`;
-      node.style.transform = `translate(${Math.round(at!.x)}px,${Math.round(at!.y)}px) translate(-50%,-100%)`;
+      node.style.transform = `translate(${here(at!.x)},${here(at!.y)}) translate(-50%,-100%)`;
     });
     // "Find me" lights up while the player's piece is out of sight, or (on a phone) the view has pulled well back from it.
     const away = !feet?.front || feet.x < insets.left || feet.x > size.width - insets.right || feet.y < insets.top || feet.y > size.height - insets.bottom + 40 || (size.width <= 720 && nearDistance > 0 && rig.view.distance > nearDistance * 1.7);
@@ -523,7 +531,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const at = project(chip.x, chip.y, chip.z);
       const visible = at.front && at.x > -40 && at.x < size.width + 40 && at.y > 0 && at.y < size.height + 40 && !(far && (chip.kind === 'plot' || chip.kind === 'board-free'));
       if (node.hidden === visible) node.hidden = !visible;
-      if (visible) node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y - (chip.lift || 0))}px) translate(-50%,-100%)`;
+      if (visible) node.style.transform = `translate(${here(at.x)},${here(at.y - (chip.lift || 0) * uz)}) translate(-50%,-100%)`;
     }
   }
 
@@ -561,7 +569,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const next = measureInsets();
     const changed = rect.width !== size.width || rect.height !== size.height || (['left', 'top', 'right', 'bottom'] as const).some((side) => Math.round(next[side]) !== Math.round(insets[side]));
     if (changed) {
-      size = { width: rect.width, height: rect.height }; insets = next;
+      size = { width: rect.width, height: rect.height }; insets = next; readZoom();
       renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
       renderer.setSize(size.width, size.height, false);
       rig.setViewport(size.width, size.height, insets);

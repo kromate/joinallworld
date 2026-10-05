@@ -117,6 +117,7 @@ function onSaved(): void {
   /* A long change note ("+₦195,000 · Start cash · Starter house, …") wraps to two lines and hangs below the top row, clear of the cash pill. */
   .hud-delta { top: calc(100% + 4px); right: 4px; z-index: 1; max-width: min(300px, calc(100vw - 24px)); padding: 4px 12px; border-radius: 16px; white-space: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
 }
+@media (max-width: 420px) { .hud-bar { gap: 5px; padding-left: 10px; } .hud-mark { display: none; } .hud-clock { font-size: 11px; } .hud-cash { padding: 0 9px; font-size: 12px !important; } }
 @media (max-width: 360px) { .hud-mood { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   .hud-cash.is-up, .hud-cash.is-down { animation: none; }

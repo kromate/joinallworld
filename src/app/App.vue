@@ -28,6 +28,7 @@ import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
 import PanelHost from './features/phone/PanelHost.vue'
 import SheetHost from './features/phone/SheetHost.vue'
+import { startLandingHold } from './state/landingHold.ts'
 import { createPageLifecycle } from './state/pageLifecycle.ts'
 import CommunityHost from './features/community/CommunityHost.vue'
 import CallsHost from './features/calls/CallsHost.vue'
@@ -125,6 +126,7 @@ const listeners: [EventTarget, string, EventListener][] = [
   [window, 'online', onOnline], [window, 'pagehide', onPageHide], [window, 'pageshow', onPageShow], [document, 'visibilitychange', onVisibility],
 ]
 onMounted(() => {
+  startLandingHold()
   for (const [target, type, listener] of listeners) target.addEventListener(type, listener)
   // The social client reads who is here for the scene's crowd; it starts once connected (see state/app.ts).
   startSocial(api)

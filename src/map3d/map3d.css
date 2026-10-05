@@ -134,3 +134,7 @@ button.m3-house{cursor:pointer}
 .m3-flat.is-whole [data-ink="dash"] { display: none; }
 .m3-flat.is-whole .m3-flat-names { display: none; }
 .m3-flat-lgas path { vector-effect: non-scaling-stroke; stroke-width: 1px; }
+
+/* Very wide screens: the names and plates are enlarged with the rest of the interface (--ui-zoom). CSS zoom lays the text out at its
+   real size, so it is drawn sharp; map3d.ts places the nodes in the same zoomed pixels. */
+@supports (zoom: 2) { .m3-label, .m3-lga, .m3-tag, .m3-you, .m3-chip { zoom: var(--ui-zoom, 1); } }

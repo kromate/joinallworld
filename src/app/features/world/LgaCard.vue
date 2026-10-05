@@ -53,7 +53,7 @@ async function send(via: 'device' | 'manual'): Promise<void> {
   if (ui.sending) return
   const wanted = via === 'device' ? ui.found?.id : pick.value
   const lga = estate.value.lgas.find((item) => item.id === wanted)?.id
-  if (!lga) { ui.note = `Choose a ${estate.value.unit} first.`; return }
+  if (!lga) { ui.note = `Choose ${/^[aeiou]/i.test(estate.value.unit) ? 'an' : 'a'} ${estate.value.unit} first.`; return }
   ui.sending = true
   ui.note = ''
   const result = await command('estate.set-lga', { lga, via })

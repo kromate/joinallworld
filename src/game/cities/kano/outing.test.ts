@@ -27,7 +27,7 @@ function fixture(){
 
 const place=(state:LifeState)=>({city:state.estate.city,location:state.location,spot:state.spot,estate:structuredClone(state.estate),house:state.property.house})
 const start=(f:ReturnType<typeof fixture>)=>dispatch(f.state,{type:'activity',payload:{id:'kano-tiga-outing'}},f.context())
-const outingLedger=(state:LifeState)=>state.ledger.filter(line=>line.reason==='Simulated Tiga countryside outing')
+const outingLedger=(state:LifeState)=>state.ledger.filter(line=>line.reason==='Countryside outing (simulated)')
 
 test('Tiga outing charges once, survives reload and returns without moving the character',()=>{
   const f=fixture(),originalPlace=place(f.state)

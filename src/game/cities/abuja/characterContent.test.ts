@@ -7,7 +7,7 @@ import { ABUJA_LANDMARKS } from './landmarks.ts'
 test('Abuja uses area councils, a fictional community office and Kubwa first arrival', () => {
   assert.equal(ABUJA_RULES.unit, 'area council')
   assert.equal(ABUJA_RULES.civicTitle, 'Community Chair')
-  assert.match(ABUJA_CONTENT.civicExplanation, /fictional citywide.*FCT Minister.*area council chairmen/)
+  assert.match(ABUJA_CONTENT.civicExplanation, /no governor.*FCT Minister.*area council.*not a real public office/)
   assert.equal(ABUJA_RULES.defaultRentedHome, 'fct-kubwa-home')
   const district = ABUJA_RULES.districts.find(district => district.id === 'kubwa')
   assert.equal(district?.localUnitId, 'bwari')

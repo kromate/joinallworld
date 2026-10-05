@@ -5,7 +5,7 @@ import { ROOM_PALETTE } from '../../scene/home-scene.ts'
 import { createLife, viewLife } from '../../life.ts'
 import { cleanStyle } from '../content/world.ts'
 
-const OTHERS = ['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'] as const
+const OTHERS = ['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] as const
 await Promise.all(['lagos', ...OTHERS].map((id) => loadCityContent(id)))
 const HEX = /^#[0-9a-f]{6}$/
 const paletteOf = (id: string) => cachedCityContent(id)?.homePalette

@@ -175,6 +175,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   // The world: local governments and the houses on their estates (src/map3d/houses.ts, world-data.js).
   const plates = new Map<string, { node: HTMLButtonElement; note: HTMLElement; lga: PackLga; span: ReturnType<typeof spanOf>; scale: number }>(), tags: HTMLDivElement[] = [];
   let friends = new Set<string>(), summaryShown: ReturnType<WorldData['summary']> = null, hoverHouse: (PlotRef & { text: string }) | null = null, mine = null, pixels = 1;
+  let wholeFrom = WHOLE_FROM;       // beyond this camera distance the view is of the whole state (see labels.ts), judged against the opening view of this screen
+  let openedWhole = false;          // "Whole city" was pressed: a resize keeps that view, not the opening one
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, opened = false, userMoved = false, time: TimeOfDay | null = null, labelKey = '', chipKey = '';
   let rafId = 0, renderCount = 0, frameCount = 0, lastTick = 0, seconds = 0, frameMs: number[] = [], gaps: number[] = [];
   let trip: Trip | null = null, route: Route | null = null, returning: { p: number; rate: number } | null = null, settling = false, pendingArrive: (() => void) | null = null, dueAt = -Infinity, tripCamera = true, pose: (TripPose & { progress?: number }) | null = null;
@@ -203,7 +205,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function draw(t = now()) {
     // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
     actor.setSize(clamp(rig.view.distance / 62, rig.view.distance < 34 ? Math.max(0.12, rig.view.distance / 62) : 1.2, Math.max(4, rig.view.distance / 110)));
-    city.setDetail(rig.view.distance);
+    city.setDetail(rig.view.distance, wholeFrom * 1.35);
     if (route && routeStep() !== routeWidth) drawRoute();
     syncWorld();
     renderer.render(scene, camera);
@@ -445,7 +447,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function placeLabels() {
     if (!labelLayer) return;
     // Level of detail: a whole-state view names the local governments, and only the places that matter to the player (here, picked, on the way).
-    const wholeView = rig.view.distance > WHOLE_FROM;
+    const wholeView = rig.view.distance > wholeFrom;
     const entries: { label: LabelEntry; at: ReturnType<typeof project>; visible: boolean }[] = [];
     for (const [id, label] of labels) {
       const place = city.places[id]!, at = project(place.x, place.top + 0.5, place.z);
@@ -487,10 +489,10 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const drawn: ScreenBox[] = [];
     for (const plate of [...plates.values()].sort((p, q) => (q.span.maxX - q.span.minX) - (p.span.maxX - p.span.minX))) {
       const { node, lga } = plate, at = project(lga.plate[0], 0.1, lga.plate[1]);
-      const fit = plateFit(lga.name, Math.abs(project(plate.span.maxX, 0.1, lga.plate[1]).x - project(plate.span.minX, 0.1, lga.plate[1]).x), rig.view.distance);
+      const fit = plateFit(lga.name, Math.abs(project(plate.span.maxX, 0.1, lga.plate[1]).x - project(plate.span.minX, 0.1, lga.plate[1]).x), rig.view.distance, wholeFrom * 1.25);
       const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, box = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
       const visible = layers.lgas && fit.show && at.front && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && rig.view.distance > 26
-        && (rig.view.distance < 300 || !drawn.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t));
+        && !drawn.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t) && !(wholeView ? false : hits(box));
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
       drawn.push(box);
@@ -540,6 +542,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   function openView() {
     opened = true; userMoved = false;
     rig.jump({ yaw: 0, pitch: DEFAULT_PITCH });
+    openedWhole = false;
     if (size.width > 720) { rig.jump(rig.core()); return; }
     // A phone cannot name the places of the whole city at once: it opens close on where the player is.
     rig.jump(nearView(city.places[state?.location!] || city.places.home!));
@@ -560,11 +563,12 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
       renderer.setSize(size.width, size.height, false);
       rig.setViewport(size.width, size.height, insets);
+      wholeFrom = Math.max(WHOLE_FROM, rig.core().distance * 1.5);
       container.style?.setProperty('--map-dock', `${Math.round(insets.bottom)}px`);
       if (root) { root.style.setProperty('--m3-dock', `${Math.round(insets.bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(insets.left)}px`); root.style.setProperty('--m3-top', `${Math.round(insets.top)}px`); }
     }
     if (!opened) { openView(); if (trip && route && !reducedMotion) rig.jump(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 })); }
-    else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(rig.core());
+    else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(openedWhole ? rig.whole() : rig.core());
     return true;
   }
   const motion = (target: Partial<RigView>, time = 0.5) => { if (reducedMotion) rig.jump(target); else rig.ease(target, time); request(); };
@@ -704,7 +708,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     grab();
     if (name === 'in') motion({ distance: rig.view.distance * 0.68 }, 0.3);
     else if (name === 'out') motion({ distance: rig.view.distance / 0.68 }, 0.3);
-    else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; }
+    else if (name === 'fit') { motion(rig.whole(), 0.6); userMoved = false; openedWhole = true; }
     else if (name === 'me') {
       // During a trip "find me" also keeps up with the traveller, until the player moves the view themselves.
       // It comes back to the close view the map opens on — or stays closer, if the player already is.

@@ -112,7 +112,7 @@ export interface Map2D {
   destroy(): void;
 }
 
-const DRAG_START = 6, MAX_SCALE = 150, WHOLE_SCALE = 1.3, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
+const DRAG_START = 6, MAX_SCALE = 150, WHOLE_SCALE = 1.9, HOUSE_PIXELS = 6, MAX_DETAILED = 12;
 const ICON = (path: string) => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 let hintSeen = false;
@@ -302,10 +302,14 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   const free = () => ({ width: Math.max(80, size.width - insets.left - insets.right), height: Math.max(80, size.height - insets.top - insets.bottom) });
   const fitScale = () => Math.min(free().width / (fit.maxX - fit.minX), free().height / (fit.maxZ - fit.minZ));
   function centreOn(x: number, z: number) { const area = free(); ox = insets.left + area.width / 2 - (x - box.x) * scale; oy = insets.top + area.height / 2 - (z - box.z) * scale; }
-  function whole() { scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2); userMoved = false; }
+  /** Which view a resize returns to while the player has not moved the map: the core (the opening view) until "Whole city" is pressed. */
+  let home: 'core' | 'whole' = 'core';
+  const homeView = () => (home === 'whole' ? whole() : core());
+  function whole() { home = 'whole'; scale = fitScale(); centreOn((fit.minX + fit.maxX) / 2, (fit.minZ + fit.maxZ) / 2); userMoved = false; }
   /** The opening view of a wide screen: the metropolitan core, where the venues are (the whole city when the pack names no core). */
   function core() {
     const area = pack.core;
+    home = 'core';
     if (!area) { whole(); return; }
     const next = Math.min(free().width / (area.maxX - area.minX), free().height / (area.maxZ - area.minZ));
     if (next <= fitScale()) { whole(); return; }
@@ -322,7 +326,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     oy = clamp(oy, insets.top + keepY - (Math.max(fit.maxZ, model.sea ? model.sea.z1 : fit.maxZ) - box.z) * scale, insets.top + area.height - keepY - (fit.minZ - box.z) * scale);
     worldNode.style.width = `${box.width * scale}px`; worldNode.style.height = `${box.height * scale}px`;
     worldNode.style.transform = `translate(${Math.round(ox)}px,${Math.round(oy)}px)`;
-    const far = scale < 3.2, wholeView = scale < WHOLE_SCALE;
+    const far = scale < 3.2, wholeView = scale < fitScale() * WHOLE_SCALE;
     root.classList.toggle('is-far', far); root.classList.toggle('is-whole', wholeView);
     lgaArt.style.display = layers.lgas ? '' : 'none';
     placeLabels(far, wholeView);
@@ -347,7 +351,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       const { node, lga } = plate, at = project(lga.plate[0], lga.plate[1]), distance = wholeView ? 1000 : 0;
       const fit = plateFit(lga.name, (plate.span.maxX - plate.span.minX) * scale, distance);
       const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, rect = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
-      const visible = layers.lgas && fit.show && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26 && !platesAt.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t);
+      const visible = layers.lgas && fit.show && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26 && !platesAt.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t) && !(!wholeView && hits(rect));
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
       platesAt.push(rect);
@@ -394,7 +398,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     const done = clamp(1 - active!.remaining / (active!.duration || 1), 0, 1), spot = pointAt(tripRoute, tripRoute.length * done), at = project(spot.x, spot.z);
     you.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
   }
-  function layout() { if (!measure()) return false; if (!opened) open(); else if (!userMoved && size.width > 720 && !isDeparting(state)) core(); apply(); return true; }
+  function layout() { if (!measure()) return false; if (!opened) open(); else if (!userMoved && size.width > 720 && !isDeparting(state)) homeView(); apply(); return true; }
   function zoomAt(factor: number, px: number, py: number) {
     const before = ground(px, py);
     scale = clamp(scale * factor, fitScale() * 0.8, MAX_SCALE);
@@ -501,7 +505,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     updateLabels(); syncChips();
     if (!measure()) return;
     if (!opened) open();
-    else if (detail.layout && !userMoved && size.width > 720) core();
+    else if (detail.layout && !userMoved && size.width > 720) homeView();
     if (selected && (picked || detail.layout)) { const spot = spotOf(selected)!, at = project(spot.x, spot.z); if (at.x < insets.left + 60 || at.x > size.width - insets.right - 60 || at.y < insets.top + 70 || at.y > size.height - insets.bottom - 40) centreOn(spot.x, spot.z); }
     if (layers.sea && seaWasOff && model.sea) { scale = Math.max(scale, free().width / (model.sea.x1 - model.sea.x0 + 20)); centreOn((model.sea.x0 + model.sea.x1) / 2, (model.sea.z0 + model.sea.z1) / 2 - 6); userMoved = true; }
     apply();

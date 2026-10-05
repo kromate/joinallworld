@@ -7,7 +7,7 @@
  *
  * BUDGET (asserted in src/map3d/map3d.test.ts): everything static is merged into a few meshes and
  * everything repeated is instanced, so the whole city is a few dozen draw calls and stays under
- * 60,000 triangles. Nothing here needs a WebGL context: it is typed-array work and runs under
+ * CITY_TRIANGLE_BUDGET. Nothing here needs a WebGL context: it is typed-array work and runs under
  * `node --test`. There are no shadow maps — shadows are flat dark quads laid beside what casts them.
  *
  *   buildCity(kit, pack, network, { venues, soon, labelOf }) → {
@@ -92,7 +92,7 @@ export interface City {
   setHome(house: string | null, own?: OwnHome | null): boolean;
   setLgas(on: boolean, own?: string | null): boolean;
   /** Level of detail for a camera this far from the ground: returns true when something was shown or hidden. */
-  setDetail(distance: number): boolean;
+  setDetail(distance: number, far?: number): boolean;
   fronts: CityFront[];
   setTime(next: string): TimePreset;
   setTraffic(on: boolean): boolean;
@@ -111,6 +111,13 @@ export interface Raw {
 }
 
 export const WATER_Y = -0.5;
+/**
+ * The most triangles one frame of the city may cost: the city itself, its overlays, the route and the houses of an estate in view.
+ * It was 60,000 for an invented board of 370 x 180 units. A map in true scale draws the real shoreline, about five triangles for
+ * each of its few thousand vertices (the shallows, the wall and the top of the land), which is about 17,000 on its own, and the
+ * fabric is spread over a state and not a city. Instancing and the merged meshes keep it to about forty draw calls, which is the limit that matters.
+ */
+export const CITY_TRIANGLE_BUDGET = 90000;
 /** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
 export const LANDMARK_SCALE = 1.15;
 const LOT = PLINTH * LANDMARK_SCALE;
@@ -328,24 +335,6 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   // `k` shrinks what is drawn on a road (widths, kerbs, parapets, piers) for a map in true scale; the road's length and the deck's height are the pack's.
   const k = pack.roadScale ?? 1;
   const lands = landOf(pack).map((entry) => ({ ...entry, exact: pack.land.find((land) => land.id === entry.id)?.exact === true }));
-  const closed = (ring: readonly Point2[]): Point3[] => [...ring, ring[0]!].map(([x, z]) => ({ x, y: 0, z }));
-  for (const entry of lands) {
-    const sand = entry.kind === 'sand', holes = entry.holes ?? [];
-    if (entry.exact) {
-      // A real shoreline is drawn as given: the shallows and the beach are bands laid along it (half of each lies under the land), so no corner moves.
-      for (const ring of [entry.polygon, ...holes]) {
-        raw.ribbon(closed(ring), SHALLOWS * 2, WATER_Y + 0.03, '#7cc6d6');
-        raw.ribbon(closed(ring), BEACH * 2, WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');
-      }
-      raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
-      for (const hole of holes) raw.wall([...hole].reverse(), WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
-    } else {
-      raw.shape(offsetPolygon(entry.polygon, 2.6), WATER_Y + 0.03, '#7cc6d6');                       // the shallows
-      raw.shape(offsetPolygon(entry.polygon, 1.1), WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');    // the beach rim
-      raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
-    }
-    raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland, holes);
-  }
   // Where the land is, as a grid: bit 1 is any land, bit 2 is land that may be built on. Looked up thousands of times by the fabric, the boats and the waves.
   const gridCell = Math.max(0.5, Math.sqrt((width * (maxZ - minZ)) / 6e6)), gridW = Math.ceil(width / gridCell), gridH = Math.ceil((maxZ - minZ) / gridCell);
   const mask = new Uint8Array(gridW * gridH);
@@ -358,6 +347,52 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   const onLand = (x: number, z: number, margin = 0) => (margin ? around(x, z, margin).every(([px, pz]) => bitAt(px, pz, 2)) : bitAt(x, z, 2));
   /** Land, or its shore (3 units round it): where no boat sails and no wave breaks. */
   const onAnyLand = (x: number, z: number) => around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
+  /**
+   * The stretches of a true-scale outline that are shore: an edge with more land just beyond it (the boundary between two local governments) is no shore and gets no
+   * wall, shallows or beach. A stretch is a run of points; a ring that is shore all the way round is one closed run.
+   */
+  function shoreRuns(ring: readonly Point2[], hole: boolean): Point3[][] {
+    const n = ring.length;
+    let area = 0;
+    for (let i = 0; i < n; i++) { const [ax, az] = ring[i]!, [bx, bz] = ring[(i + 1) % n]!; area += ax * bz - bx * az; }
+    // Beyond the edge is the water side: outside an outer ring, inside a hole.
+    const side = (area > 0 ? 1 : -1) * (hole ? -1 : 1);
+    const shore = ring.map(([ax, az], i) => {
+      const [bx, bz] = ring[(i + 1) % n]!, length = Math.hypot(bx - ax, bz - az) || 1;
+      return !bitAt((ax + bx) / 2 + ((bz - az) / length) * side * 0.6, (az + bz) / 2 - ((bx - ax) / length) * side * 0.6, 1);
+    });
+    const at = (i: number): Point3 => ({ x: ring[i % n]![0], y: 0, z: ring[i % n]![1] });
+    if (shore.every(Boolean)) return [Array.from({ length: n + 1 }, (_, i) => at(i))];
+    const start = shore.findIndex((edge) => !edge), runs: Point3[][] = [];
+    let run: Point3[] = [];
+    for (let j = 1; j <= n; j++) {
+      const i = (start + j) % n;
+      if (shore[i]) { if (!run.length) run.push(at(i)); run.push(at(i + 1)); } else if (run.length) { runs.push(run); run = []; }
+    }
+    if (run.length) runs.push(run);
+    return runs;
+  }
+  for (const entry of lands) {
+    const sand = entry.kind === 'sand', holes = entry.holes ?? [];
+    if (entry.exact) {
+      // A real shoreline is drawn as given: the shallows and the beach are bands laid along it (half of each lies under the land), so no corner moves.
+      const wall = sand ? '#e0cc98' : '#a9b98a', top = sand ? -0.12 : 0;
+      [entry.polygon, ...holes].forEach((ring, index) => {
+        for (const run of shoreRuns(ring, index > 0)) {
+          raw.ribbon(run, SHALLOWS * 2, WATER_Y + 0.03, '#7cc6d6');
+          if (sand) raw.ribbon(run, BEACH * 2, WATER_Y + 0.14, '#f8efd2');           // a green shore needs no beach band: it is under a pixel wide from any distance that shows it
+          let area = 0;
+          for (let i = 0; i < ring.length; i++) { const [ax, az] = ring[i]!, [bx, bz] = ring[(i + 1) % ring.length]!; area += ax * bz - bx * az; }
+          raw.strip(run, 0, WATER_Y + 0.1, top, wall, (area > 0 ? 1 : -1) * (index > 0 ? 1 : -1));
+        }
+      });
+    } else {
+      raw.shape(offsetPolygon(entry.polygon, 2.6), WATER_Y + 0.03, '#7cc6d6');                       // the shallows
+      raw.shape(offsetPolygon(entry.polygon, 1.1), WATER_Y + 0.14, sand ? '#f8efd2' : '#ecdcae');    // the beach rim
+      raw.wall(entry.polygon, WATER_Y + 0.1, sand ? -0.12 : 0, sand ? '#e0cc98' : '#a9b98a');
+    }
+    raw.shape(entry.polygon, sand ? -0.12 : 0, LAND_COLOURS[entry.kind] || LAND_COLOURS.mainland, holes);
+  }
 
   // ---- roads and bridges --------------------------------------------------------------------
   const b = createBatch(THREE), w = createBatch(THREE);
@@ -562,7 +597,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     return [...take(inner, Math.ceil(cap * 0.8)), ...take(outer, Math.max(Math.floor(cap * 0.2), room))];
   };
   // The decorative fabric is thinner than it could be on purpose: the houses that matter are the players' own (src/map3d/houses.ts), and they need room in the budget.
-  const HOUSE_CAP = 520, TOWER_CAP = 190, TREE_CAP = 400, PALM_CAP = 110;
+  const HOUSE_CAP = 460, TOWER_CAP = 160, TREE_CAP = 330, PALM_CAP = 80;
   const fabric = { houses: thin(houses, HOUSE_CAP), towers: thin(towers, TOWER_CAP), trees: thin(trees, TREE_CAP), palms: thin(palms, PALM_CAP) };
 
   const dummy = new THREE.Object3D(), tint = new THREE.Color();
@@ -741,8 +776,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     get time() { return time; },
     setHome, setLgas, fronts,
     /** Choose the level of detail for a camera this far away: the fabric is drawn near, and left out when the whole state is in view. True when it changed. */
-    setDetail(distance: number) {
-      const on = distance < FABRIC_FAR;
+    setDetail(distance: number, far = FABRIC_FAR) {
+      const on = distance < far;
       if (on === fabricOn) return false;
       fabricOn = on;
       for (const mesh of fabricMeshes) mesh.visible = on && mesh.count > 0;

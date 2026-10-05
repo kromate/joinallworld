@@ -7,7 +7,7 @@ import { createKit } from '../scene/kit.ts';
 import pack from './cities/lagos.ts';
 import { buildNetwork, pointInPolygon } from './roads.ts';
 import { ORIGINS, toLocal } from './geo/frame.ts';
-import { buildCity } from './city-build.ts';
+import { buildCity, CITY_TRIANGLE_BUDGET } from './city-build.ts';
 import { flatModel, flatSvg } from './flat.ts';
 import { lgaAt, landOf, onLand, rasterLgas, resolveLga } from './lga.ts';
 import { estateLayout, plotAt, SITE_CLEAR } from './estates.ts';
@@ -152,7 +152,7 @@ test('houses at city scale: two million residents cost one mesh of blocks; only 
   assert.equal(houses.level, 'close'); assert.ok(wanted.length >= 1 && wanted.length <= 9);
   assert.ok(c.detail > 5000 && c.detail <= DETAIL_BUDGET, `${c.detail} triangles of houses`);
   assert.ok(c.calls <= 16, `${c.calls} draw calls`);
-  assert.ok(city.triangles + houses.triangles < 60000, `${city.triangles + houses.triangles} triangles with the city`);
+  assert.ok(city.triangles + houses.triangles < CITY_TRIANGLE_BUDGET, `${city.triangles + houses.triangles} triangles with the city`);
   const dots = houses.group.children.find((mesh) => mesh.name === 'houses-dots') as InstancedMesh, scaffold = houses.group.children.find((mesh) => mesh.name === 'houses-scaffold') as InstancedMesh;
   assert.equal(dots.count, c.estates * Math.ceil(PLOTS_PER_ESTATE / 3), 'one green light per owner who is online');
   assert.equal(scaffold.count, c.estates * 5, 'scaffolding round the houses being upgraded');

@@ -54,7 +54,7 @@ export function nearPoints(at: GroundPoint, narrow = true): GroundPoint[] {
 /** Beyond this camera distance (map units) a view is of a whole state, not a city: only a name that matters is lettered, and local governments are named instead. */
 export const WHOLE_FROM = 560;
 /** A local-government plate's size is by its polygon only from this far out; nearer it is the usual small plate. */
-export const PLATE_SIZED_FROM = 300;
+export const PLATE_SIZED_FROM = 700;
 const PLATE_MAX = 2.6;
 const clamp = (value: number, low: number, high: number) => Math.max(low, Math.min(high, value));
 /** The room a plate's lettering needs, in pixels, at its usual size (11px type): about 8.4px a letter (capitals, spaced) and the padding. */
@@ -64,10 +64,10 @@ export const plateWidth = (name: string) => name.length * 8.4 + 22;
  * its type grows by. Nearer than PLATE_SIZED_FROM it is the usual plate, always; farther out the
  * plate grows with the polygon (to PLATE_MAX), and one whose polygon is too small to hold its name stays hidden.
  */
-export function plateFit(name: string, spanPixels: number, distance: number): { show: boolean; scale: number } {
-  if (distance < PLATE_SIZED_FROM) return { show: true, scale: 1 };
+export function plateFit(name: string, spanPixels: number, distance: number, sizedFrom = PLATE_SIZED_FROM): { show: boolean; scale: number } {
+  if (distance < sizedFrom) return { show: true, scale: 1 };
   const need = plateWidth(name);
-  return { show: spanPixels >= need * 0.8, scale: Math.round(clamp((spanPixels * 0.72) / need, 1, PLATE_MAX) * 8) / 8 };
+  return { show: spanPixels >= need * 0.4, scale: Math.round(clamp((spanPixels * 0.72) / need, 1, PLATE_MAX) * 8) / 8 };
 }
 /** The span of the points' x and z: { minX, maxX, minZ, maxZ }. */
 export function spanOf(points: readonly (readonly [number, number])[]): { minX: number; maxX: number; minZ: number; maxZ: number } {

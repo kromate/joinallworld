@@ -98,7 +98,7 @@ export function createRig(THREE: typeof import('three'), camera: import('three')
       Object.assign(view, { x, z, yaw, pitch, distance: mid });
       const flat = Math.cos(pitch) * mid;
       camera.position.set(x + Math.sin(yaw) * flat, Math.sin(pitch) * mid, z + Math.cos(yaw) * flat);
-      camera.lookAt(x, 0, z); camera.aspect = size.width / size.height; camera.clearViewOffset(); camera.updateProjectionMatrix(); camera.updateMatrixWorld(true);
+      camera.lookAt(x, 0, z); camera.aspect = size.width / size.height; camera.near = 0.2; camera.far = 1e6; camera.clearViewOffset(); camera.updateProjectionMatrix(); camera.updateMatrixWorld(true);
       const fits = points.every((point) => { probe.set(point.x, point.y || 0, point.z).project(camera); return Math.abs(probe.x) <= share.x / pad && Math.abs(probe.y) <= share.y / pad && probe.z < 1; });
       if (fits) high = mid; else low = mid;
     }

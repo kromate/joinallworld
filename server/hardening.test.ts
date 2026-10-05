@@ -42,3 +42,26 @@ test('a direct chat takes messages from its two players only, and shows itself t
   assert.equal(JSON.stringify(listed).includes('Six it is'), false);
   assert.equal((await get(f, `/api/social/conversations/${conv}`, chi)).code, 'not_a_member');
 });
+
+test('a call can only be placed by a player the callee could block: a session that never arrived in the city rings nobody', async t => {
+  const f = await fixture(t);
+  const [ada] = await people(f, ['Ada']) as [Device];
+  const a = await f.socket(ada);
+  // A session with a name and a socket, which has not played and so is no player anybody can find, message or block.
+  const ghost = await f.device('Unknown caller');
+  assert.equal((await post(f, '/api/social/block', { id: ghost.id, cityId: 'lagos' }, ada)).code, 'unknown_player', 'there is nobody to block yet');
+  const g = await f.socket(ghost);
+  g.ws.send(JSON.stringify({ type: 'call-invite', to: ada.id, clientId: 'ring-1' }));
+  const answer = await g.next();
+  assert.deepEqual([answer.type, 'state' in answer ? answer.state : null], ['call-state', 'unreachable']);
+  // Nothing rang: the next frame Ada's socket is sent is the answer to her own question.
+  a.ws.send(JSON.stringify({ type: 'call-settings' }));
+  assert.equal((await a.next()).type, 'call-settings');
+  // Once the caller is a player like any other the call rings, and the callee can block them.
+  await get(f, '/api/social/me', ghost);
+  g.ws.send(JSON.stringify({ type: 'call-invite', to: ada.id, clientId: 'ring-2' }));
+  let rang = await g.next();
+  while (rang.type !== 'call-state') rang = await g.next();
+  assert.equal('state' in rang ? rang.state : null, 'ringing');
+  assert.equal((await post(f, '/api/social/block', { id: ghost.id, cityId: 'lagos' }, ada)).code, 'blocked');
+});

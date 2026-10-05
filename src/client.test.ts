@@ -305,6 +305,20 @@ test('a full world is not an unreachable server: a new start refused with 503 de
   assert.equal(down.refusal, null); assert.equal(down.link, 'unreachable');
 });
 
+test('a full world met by a start in a chosen city: the refusal is "full", the chosen city is kept, and the same start is let in there when a place opens', async () => {
+  const full = { ok: false, status: 503, json: async () => ({ error: 'device_capacity', reason: 'The world is full right now. Your place is not lost: try again in a moment.', retryAfter: 30 }) };
+  const asked: string[] = [];
+  let places = 0;
+  const client = createClient({ fetch: async (path) => { asked.push(String(path)); if (String(path).startsWith('/api/session')) return places > 0 ? { ok: true, status: 200, json: async () => ({ session: { id: 'p1', name: 'Ada' }, serverTime: 1000 }) } : full; return { ok: true, status: 200, json: async () => ({ state: { estate: { city: 'abuja' } }, serverTime: 1000 }) }; }, storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+  assert.equal(await client.connect(true, 'abuja'), false);
+  assert.deepEqual([client.refusal, client.retryAfter, client.cityId, client.online], ['full', 30, 'abuja', false]);
+  assert.deepEqual(asked, ['/api/session'], 'no life is asked for while there is no place');
+  places = 1;
+  assert.equal(await client.connect(true, 'abuja'), true);
+  assert.deepEqual([client.refusal, client.retryAfter, client.cityId, client.link], [null, null, 'abuja', 'online']);
+  assert.ok(asked.some((path) => path.startsWith('/api/life?city=abuja')), 'the life is started in the city that was chosen');
+});
+
 test('a new start refused for too many new players from one network address is remembered as "limit", with the wait the server gave', async () => {
   const limited = { ok: false, status: 429, json: async () => ({ error: 'rate_limited', retryAfter: 1380, reason: 'Too many new players have started from your network in the last hour.' }) };
   const statuses: string[] = [];

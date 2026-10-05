@@ -118,8 +118,15 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // (After the city modules alone it was 583.1 / 215.3; before them, on the first-load split, 557.8 / 203.3. About 17 kB of the difference is the eager
 // city registry and the Lagos rules and content the engine reads synchronously; the reserved cities' atlas text is about 3 kB of it.) The budget is the measurement plus about 4%.
 // The loading screen alone (entry, Vue, the module preload helper) measured 88.1 kB / 35.5 kB; its budget is that plus about 4%.
-// With Ogun's four city modules registered (their compact rules, links and the shared reference and job-transfer code) it measures 623.4 kB / 228.7 kB; the budget is that plus about 1.5%.
-const BUDGET = { raw: 633_000, gzip: 232_000 }
+// With Ogun's four city modules registered (their compact rules, links and the shared reference and job-transfer code) it measures 623.4 kB / 228.7 kB; the budget was that plus about 1.5%.
+// With one character on several devices, live friend places and the invite prompts it measured 634.5 kB / 233.1 kB. Three things were then taken out of it:
+// the other cities' water, landmarks and map character (a chunk rule had put them in the engine), the walk grid (only the campus rules and the scenes
+// read it) and the travel rules the Map and the Ride app use (the page's travel state needs only the starting layers). It measures 597.2 kB / 218.6 kB;
+// the budget is that plus 2%. `node --experimental-strip-types scripts/startup-size.ts` prints what is in it, by chunk and by module.
+// With Port Harcourt, Abuja and Kano registered it measures 613.1 kB / 222.8 kB: their rules, links and registry entries (about 10 kB) are read at
+// startup like every open city's, with the local travel zones, the boat route rule, the seasonal climate and the wording of local units and the
+// elected office. Their content, maps, roads, water and scenes are not in it. The budget is that plus 1%.
+const BUDGET = { raw: 619_000, gzip: 225_000 }
 // A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
 // the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.
 const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
@@ -172,7 +179,7 @@ test('automatic game startup, including one selected city, stays within the orig
   t.diagnostic(`default city automatic startup: ${base.raw} raw ${base.gzip} gzip bytes`)
   assert.ok(base.raw <= BUDGET.raw, `automatic startup for the default city is ${base.raw} bytes (budget ${BUDGET.raw})`)
   assert.ok(base.gzip <= BUDGET.gzip, `automatic startup for the default city is ${base.gzip} gzip bytes (budget ${BUDGET.gzip})`)
-  assert.ok(!defaultNames.some(name => /^assets\/city-.+-content-/.test(name)), 'a city content chunk is never part of the default startup')
+  assert.deepEqual(defaultNames.filter(name => /^assets\/city-/.test(name)), [], 'no city chunk (content, map, roads, water, landmarks) is part of the default startup')
   // Every other city adds its own content chunk and no other chunk.
   assert.ok(cityChunks.length >= 1, 'a non-default city has a content chunk')
   for (const city of cityChunks) {

@@ -132,12 +132,7 @@ export const KANO_RULES=Object.freeze({...{
   "atlas": {
     "lon": 8.52,
     "lat": 12,
-    "teaser": "An old walled city of dyeing, markets, campuses and Durbar heritage.",
-    "preview": [
-      "Kofar Mata dyeing and Kurmi crafts",
-      "Dala Hill and the old city gates",
-      "Tea, suya and Kannywood stories"
-    ]
+    "teaser": "An old walled city of dyeing, markets, campuses and Durbar heritage."
   },
   "districts": [
     {

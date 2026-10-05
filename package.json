@@ -4,8 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "preflight": "node -e \"const v=process.versions.node.split('.').map(Number);if(v[0]<22||(v[0]===22&&v[1]<18)){console.error('Allworld needs Node.js 22.18 or newer (24 is recommended); this is '+process.versions.node+'. Install a newer one from https://nodejs.org/ or run: nvm install (it reads .nvmrc).');process.exit(1)}if(!require('fs').existsSync('node_modules/vite')){console.error('The dependencies are not installed yet. Run this first: npm install');process.exit(1)}\"",
+    "predev": "npm run -s preflight",
+    "prebuild": "npm run -s preflight",
+    "pretypecheck": "npm run -s preflight",
+    "pretest": "npm run -s preflight",
+    "prestart": "npm run -s preflight",
     "dev": "node --experimental-strip-types scripts/dev.ts",
     "build": "vite build",
+    "check": "npm run typecheck && npm run build && npm test",
     "geo:boundaries": "node --experimental-strip-types scripts/geo/build-boundaries.ts",
     "typecheck":"node --experimental-strip-types scripts/typecheck.ts",
     "test": "node --experimental-strip-types --test \"src/**/*.test.js\" \"src/**/*.test.ts\" \"server/**/*.test.js\" \"server/**/*.test.ts\"",
@@ -35,7 +42,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.18.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261004.1",

@@ -571,6 +571,8 @@ export interface StoreHelpers {
   /** Keys of sessions whose record satisfies `predicate`, without copying every record. */
   scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]
   sessionKeyByPublicId(publicId: string): string | undefined
+  /** WORKER: keys of the sessions whose expiry has passed, found by the stored expiry so that no other record is read (deploy/sqlite-store.ts). */
+  expiredSessionKeys?(now: number): string[]
   /** WORKER: a store that keeps receipts apart from the session records counts the live ones itself (deploy/sqlite-store.ts). */
   onceCounts?(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }
 }
@@ -712,8 +714,6 @@ export interface ContextChecks {
   blocked?: (a: string, b: string) => boolean
   /** Social: is anybody blocked at all? */
   anyBlocks?: () => boolean
-  /** Social: everyone in a block with this player, whichever of the two made it (in memory). */
-  blockedWith?: (publicId: string) => Iterable<string>
   /** Moderation. */
   muted?: (publicId: string) => MuteVerdict | null
   /** World: throws 409 `city_moved` when the session's character travelled away from `cityId` and has no life left there. */
@@ -801,7 +801,8 @@ export interface ShardStore {
 /** Foundation internals. Not for feature modules. */
 export interface ContextCore {
   archiveSession(db: Db, secret: string, session: SessionRecord): void
-  expiredSessionKeys(db: Db): string[]
+  /** Keys of the sessions to archive now. `always`: a session is about to be made, so a host that otherwise looks only now and then looks at once. */
+  expiredSessionKeys(db: Db, always?: boolean): string[]
   sessionByPublicId(db: Db, publicId: string): SessionRecord | undefined
   unresponsive(ws: WsConnection): boolean
   storeStats(): StoreStats | null

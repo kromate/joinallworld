@@ -3,7 +3,7 @@
 // filter and the same layers; here it is one reactive object each, kept for the page's lifetime in
 // the same way. Nothing in it is saved or sent.
 import { reactive, ref } from 'vue'
-import { initialLayers } from './travelModel.ts'
+import { initialLayers } from './travelLayers.ts'
 import type { LayerState, MapUiDetail } from './travelModel.ts'
 
 export interface MapUi {

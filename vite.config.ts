@@ -72,26 +72,30 @@ export default defineConfig({
   //   vue     the framework: changes with a Vue upgrade only;
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
-  build: { sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
-    // A city's folder: its small rules (index, rules, links) are read by the registry at startup and stay with the engine; everything else is fetched with
-    // that city. Lagos is the default city: the engine reads its content synchronously, so only its map is a chunk of its own.
-    const cityFile = id.match(/\/src\/game\/cities\/([^/]+)\/([^/.]+)\.ts$/)
-    if (cityFile) {
-      const [, city, file] = cityFile
-      if (file === 'index' || file === 'rules' || file === 'links') return 'engine'
-      if (city === 'lagos') return file === 'map' ? 'city-lagos-map' : 'engine'
-      if (file === 'landmarks' || file === 'rail' || file === 'roads' || file === 'geometry') return `city-${city}-${file}`
-      if (file === 'map' || file === 'mapOverview' || file === 'character' || file === 'scene' || file === 'scenery' || file === 'water') return `city-${city}-map`
-      return `city-${city}-content`
-    }
+  // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
+  build: { chunkSizeWarningLimit: 800, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
+    const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
+    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
+    if (city) return `city-${city[1]}-${city[2]}`
+    if (/\/src\/game\/cities\/ogun\/(contentBuilder)\.ts$/.test(id)) return 'city-ogun-content'
+    if (/\/src\/game\/cities\/ogun\/(character|scene)\.ts$/.test(id)) return 'city-ogun-map'
+    if (/\/src\/game\/cities\/ogun\/mapOverview\.ts$/.test(id)) return 'city-ogun-map'
+    // A city's local-unit wording, and the table of its venues' own scenes, are read by its content only.
+    const wording = id.match(/\/src\/game\/cities\/([^/]+)\/(?:descriptions|scenes)\.ts$/)
+    if (wording) return wording[1] === 'lagos' ? 'engine' : `city-${wording[1]}-content`
+    // Of a city's folder the engine reads only the rules, the registry entry and the links. Every other file (roads, water, landmarks,
+    // rail, the map's character) is fetched with that city's map, so it must never fall through to the `engine` rule below.
+    // The default city is the exception: all of its content is part of the engine.
+    const part = id.match(/\/src\/game\/cities\/([^/]+)\/([\w-]+)\.ts$/)
+    if (part && part[1] !== 'lagos' && !/^(rules|index|links)$/.test(part[2] as string)) return `city-${part[1]}-${part[2]}`
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
     if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|layout|register)\.ts$/.test(id)) return 'campus-rules'
-    // Plain typed-array code shared by the campus rules and the scenes (never part of the first page).
-    if (/\/src\/scene\/(movement|build)\.ts$/.test(id)) return 'scene-core'
+    // Plain typed-array code shared by the campus rules and the scenes (never part of the first page): the walk grid included.
+    if (/\/src\/scene\/(movement|build|walk-grid)\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names|trail)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names|trail)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
   } } } },
 });

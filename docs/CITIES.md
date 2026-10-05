@@ -92,7 +92,7 @@ Links must produce matching journeys from both endpoints through `linksFrom`. Lo
 
 A first arrival without a saved residence is a visitor at a public venue. Its local unit remains unchosen across reloads. Choosing a local unit allocates the free starter house; private home actions remain unavailable until then. Returning to a city restores its existing residence.
 
-Each session has one active character. Reading another city's life cannot create a second character. An arrival is filed under its destination in the same settlement transaction. Existing separate lives are retained in `legacyLives`, with city provenance held separately for older records without an estate. The character list and receipt-protected switch exchange whole records without merging or deleting them. A retry returns the saved switch result.
+Each session has one active character. Reading another city's life cannot create a second character. An arrival is filed under its destination in the same settlement transaction. A trip ended early by `travel.skip` (the wait paid for in game money, `src/game/trip-skip.ts`) arrives through the same completion and is filed in the transaction of that action. Existing separate lives are retained in `legacyLives`, with city provenance held separately for older records without an estate. The character list and receipt-protected switch exchange whole records without merging or deleting them. A retry returns the saved switch result.
 
 ### The two ways a life is "kept aside"
 

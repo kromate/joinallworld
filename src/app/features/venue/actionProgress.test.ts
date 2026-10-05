@@ -1,5 +1,5 @@
-// The activity bar: a trip between cities cannot be cancelled, so it shows the rule and no Cancel button;
-// a local trip still can be cancelled.
+// The activity bar: a trip between cities cannot be cancelled, so it shows the rule and no Cancel button (only the
+// way to arrive now); a local trip still can be cancelled.
 import assert from 'node:assert/strict'
 import { after, before, test } from 'node:test'
 import { fileURLToPath } from 'node:url'
@@ -37,7 +37,9 @@ test('a trip between cities shows the rule and no Cancel button', async () => {
   run({ kind: 'intercity', id: 'ibadan' })
   const out = await html()
   assert.match(out, /This cannot be cancelled once started\./)
-  assert.ok(!/<button/.test(out), 'nothing to press')
+  assert.ok(!/Cancel<\/button>/.test(out), 'no Cancel to press')
+  // The one thing to press is the way to arrive now.
+  assert.deepEqual(out.match(/<button[^>]*>[^<]*<\/button>/g)?.map((button) => button.replace(/<[^>]+>/g, '')), ['Skip the trip · Free'])
 })
 test('a local trip can still be cancelled', async () => {
   run({ kind: 'travel', id: 'park', mode: 'walk' })

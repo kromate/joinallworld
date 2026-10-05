@@ -6,7 +6,7 @@
 // cannot send it twice.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, onMounted, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { presenceText } from '../../../game/social-model.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PersonCard } from '../../../types/social.ts'
@@ -86,7 +86,13 @@ async function interact(actionId: string): Promise<void> {
   const result = await run<{ message: string }>(`/api/social/players/${encodeURIComponent(props.id)}/interact`, { action: actionId, cityId: cityId(), clientId: client.newClientId() }, (done) => done.message)
   if (result.ok) client.refreshLife(); else void client.loadPeople()
 }
-function openForm(form: 'money' | 'report' | null): void { personUi.form = form; personUi.clientId = client.newClientId() }
+/** The form that is open (money or report): it opens below the buttons, which on a small screen is below the edge. */
+const formEl = ref<HTMLFormElement | null>(null)
+function openForm(form: 'money' | 'report' | null): void {
+  personUi.form = form; personUi.clientId = client.newClientId()
+  // The whole form, with its Send and Cancel, is brought into view.
+  if (form) void nextTick(() => { formEl.value?.scrollIntoView?.({ block: 'nearest' }) })
+}
 const actions: Record<string, () => Promise<unknown>> = {
   friend: () => run<{ code: string }>('/api/social/friends/request', { to: props.id, cityId: cityId() }, (done) => (done.code === 'accepted' ? 'You are now friends' : 'Friend request sent')),
   accept: () => run('/api/social/friends/answer', { from: props.id, accept: true, cityId: cityId() }, 'You are now friends'),
@@ -149,12 +155,12 @@ async function sendReport(): Promise<void> {
       <button v-else type="button" class="social-act" :disabled="Boolean(whyBae) || personUi.busy" @click="doAction('bae')"><strong><GameIcon name="heart" inline /> Ask to be my Bae</strong><small>{{ whyBae || 'Ask them now' }}</small></button>
       <button type="button" class="social-act" :disabled="Boolean(whyMoney)" @click="openForm('money')"><strong><GameIcon name="coin" inline /> Send money</strong><small>{{ whyMoney || `Up to ${money(moneyCeiling(t))} now` }}</small></button>
     </div>
-    <form v-if="personUi.form === 'money'" class="ui-card" @submit.prevent="sendMoney">
+    <form v-if="personUi.form === 'money'" ref="formEl" class="ui-card" @submit.prevent="sendMoney">
       <label>Amount to send (₦{{ t.min }}–₦{{ moneyCeiling(t) }})<input v-model="personUi.amount" class="social-field" name="amount" inputmode="numeric" pattern="[0-9]*" maxlength="5" required></label>
       <p class="social-note">Gifts are capped: {{ money(t.maxPerTransfer) }} each, {{ t.dailyCount }} a day, and never more than you have earned from work. You have {{ money(game.state.value.cash) }}.</p>
       <span class="social-actions"><button type="submit" class="social-btn is-primary" :disabled="personUi.busy">{{ personUi.busy ? 'Sending…' : 'Send' }}</button><button type="button" class="social-btn" @click="openForm(null)">Cancel</button></span>
     </form>
-    <form v-else-if="personUi.form === 'report' && state.me" class="ui-card" @submit.prevent="sendReport">
+    <form v-else-if="personUi.form === 'report' && state.me" ref="formEl" class="ui-card" @submit.prevent="sendReport">
       <label>What is wrong?
         <select v-model="personUi.reason" class="social-field" name="reason"><option v-for="reason in state.me.limits.reasons" :key="reason" :value="reason">{{ reasonLabel(reason) }}</option></select>
       </label>

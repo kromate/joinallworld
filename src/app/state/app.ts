@@ -23,7 +23,7 @@ import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { tableById } from '../../tables/city-places.ts'
-import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, socketWanted, takeLinkHost } from '../features/social/useSocial.ts'
 import { STORAGE_KEY } from '../../storage-key.ts'
 import { CHARACTER_CHANGED_TEXT, CONTINUED_TEXT, SESSION_CHANGED, SIGNED_OUT_TEXT, continuedElsewhere } from './devices.ts'
 import { mapPeople } from '../../game/live-model.ts'
@@ -268,6 +268,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   // already holds that revision. A socket that opens again (the network came back, the phone was unlocked) reads at once.
   onLifeFrame((hint) => { game.lifeChanged(hint) })
   onSocketOpen((again) => { if (again) void game.wake() })
+  // The server has just answered the game: a social socket that was lost while it could not be reached is opened now.
+  game.on('accepted', () => { socketWanted() })
   // The server closed this socket because its session changed: this browser was signed out from another device, or the
   // account now plays another character. The copy of the old life kept here is dropped and the page starts again.
   let leaving = false

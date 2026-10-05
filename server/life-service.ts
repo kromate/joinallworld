@@ -134,8 +134,11 @@ export function settleCity(session: SessionRecord, cityId: CityId, now: number):
   entry.updatedAt = now;
   entry.state.name = session.name;
   fileCharacter(session, cityId, now);
-  // The character's revision: every settlement is a later answer than the one before it (docs/DEVICES.md).
-  session.rev = (typeof session.rev === 'number' && Number.isSafeInteger(session.rev) && session.rev >= 0 ? session.rev : 0) + 1;
+  // The character's revision: every settlement is a later answer than the one before it (docs/DEVICES.md). It is never
+  // below the clock (ms) either: a quiet settlement may be held in memory and lost with it (a host that restarted), and
+  // the first settlement after that must still be later than any number a device was given — without a row written for it.
+  const held = typeof session.rev === 'number' && Number.isSafeInteger(session.rev) && session.rev >= 0 ? session.rev : 0;
+  session.rev = Math.max(held + 1, Number.isSafeInteger(Math.floor(now)) ? Math.floor(now) : 0);
   const meta: LifeMeta = { salt, publicId: session.publicId, cityId: entry.state.estate.city as CityId };
   lives.set(entry.state, meta);
   announce(meta, entry.state);
@@ -166,6 +169,8 @@ export function applyLifeAction(state: LifeState, body: LifeActionBody, ctx?: Li
   }
   // The engine reads every payload as untrusted (each system validates its own), so the envelope-checked body goes in as it is.
   const result = dispatch(state, body as ActionBody, context);
+  // An action may end a trip between cities: the life is then announced under the city it arrived in, as a settlement would.
+  if (meta && cityRules(state.estate.city)) meta.cityId = state.estate.city as CityId;
   if (meta) announce(meta, state);
   return result;
 }

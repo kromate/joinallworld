@@ -25,9 +25,11 @@ So when the laptop starts a trip, the phone's scene and trip bar follow it and t
 
 ### The revision
 
-A session record carries `rev`, a number that goes up by one at every settlement of the character (`settleCity`), and so at every request that reads or changes its life. Transactions run one at a time, so two answers made by two requests never carry the same number, and the higher one was made later. `GET /api/life` and `POST /api/action` put it in their answer.
+A session record carries `rev`, a number that goes up at every settlement of the character (`settleCity`), and so at every request that reads or changes its life. Transactions run one at a time, so two answers made by two requests never carry the same number, and the higher one was made later. `GET /api/life` and `POST /api/action` put it in their answer.
 
-A device keeps the revision of the life it shows. It **never replaces that life with an answer that has a lower revision and was asked for before the newer answer was taken** — two answers that crossed on the way. An answer asked for *afterwards* is taken whatever its number: a server whose data was restored, or a character that came back from the archive, counts from a lower number, and the device must believe it rather than hold on to a life that no longer exists. A new session forgets the held revision. An answer without `rev` (an older server) is taken as before.
+**It does not go down when a host restarts.** A settlement sets it to one more than it was, or to the server's clock in milliseconds when that is higher — so it is an opaque number of about thirteen digits, not a count. This matters because a quiet poll is not written at once (it only moved the clock; on the Worker it may stay in memory for up to ten minutes, on Node for about a second): a host that restarts has lost the numbers of those polls, and counting on from the stored one would hand a device a lower number than it already holds. With the clock as the floor, the first settlement after a restart is above every number given before it, and no row is written for it. The one thing this rests on is the host's clock not running backwards across the restart by more than the restart took; if it did, the rule below still makes every device take the next answer it asks for.
+
+A device keeps the revision of the life it shows. It **never replaces that life with an answer that has a lower revision and was asked for before the newer answer was taken** — two answers that crossed on the way. An answer asked for *afterwards* is taken whatever its number: a server whose data was restored from a copy made by an older build may count from a lower number, and the device must believe it rather than hold on to a life that no longer exists. A new session forgets the held revision. An answer without `rev` (an older server) is taken as before.
 
 ### The hint
 
@@ -104,9 +106,15 @@ Calls live in memory. A call keeps the Worker's object awake (a timer), so the o
 
 The Node server and the Worker run the same code for all of the above. On the Worker a socket's attachment already carries who it is (the session's public identity, its record's key and the cookie it was opened with), so after the object has slept and lost its memory every socket is handed back to the modules and is again counted for presence and reached by pushes. The 40 ms the hint waits is a timer; if the object were replaced inside it the hint would be lost, and the next poll would make up for it.
 
+**When the Worker's object is replaced** (a deploy, a runtime update): as deployed it stays in memory while anyone is connected, so this is the one way it loses its memory under a player. Every socket closes and every device reconnects (section 2, *A device that comes back*, and the social socket below). What was acknowledged — every action, every outcome of a settlement, a place, a message, a friendship — is stored and is what the devices read; what is lost is quiet polls (the clock, recomputed), short rate-limit counts, and calls, which end for both sides. The revision is above every one given before. Friends see the player where the stored life has them, as soon as their sockets are back.
+
+### The social socket comes back
+
+The socket that carries the hint, messages, live places and calls is reopened by the device whenever it is lost, for as long as the page is in front and the game is connected: after 1, 2, 4, 8 and 15 seconds, then every 30 seconds (Messages then says live updates are off and offers Reconnect, and the tries go on). It is opened at once when the device is online again, the page comes to the front, or the game has just had an answer from the server. A socket that has not closed but is dead — the network went and came back — is found out: one that sent nothing for 25 seconds, or that is still there when the device comes online, is asked for a sign of life (a read of the call setting) and replaced if nothing arrives within 4 seconds. Every opening reads the overview and the open threads again, asks for the people list and a fresh live snapshot, reads the life, and is told by the server about a call the player is in (section 4, *A socket opens during a call*).
+
 ## 8. What changed in the stored data and on the wire
 
-**Stored:** one optional number, `rev`, on a session record. A record without it reads as 0 and gets it at its next settlement. Nothing else is stored; no table or collection is added. An archived life does not keep it (it starts again at the next settlement, which the device rule above allows for).
+**Stored:** one optional number, `rev`, on a session record. A record without it reads as 0 and gets it at its next settlement. Nothing else is stored; no table or collection is added. An archived life does not keep it: it starts again at the next settlement, from the clock, and so above where it was.
 
 **HTTP:** `rev` in the answers of `GET /api/life` and `POST /api/action`.
 
@@ -125,7 +133,8 @@ A client that does not know the new frames ignores them, as the protocol already
 | | |
 | --- | --- |
 | The server, one character on three signed-in browsers | `server/devices.test.ts` |
-| The Worker | `deploy/devices.edge.test.ts` |
+| The Worker, also after its object started again on its storage | `deploy/devices.edge.test.ts` |
+| The social socket coming back | `src/app/features/social/socialClient.test.ts` |
 | The device's model of the life | `src/client-devices.test.ts` |
 | The device's side of a call | `src/calls.test.ts` (the last four tests), `src/app/features/calls/callsComponents.test.ts` |
 | The socket seam | `src/app/features/calls/callsSocket.test.ts` |

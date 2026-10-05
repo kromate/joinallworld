@@ -10,8 +10,16 @@
 // arrived while it was down is fetched again when it reconnects. Rules that can be tested
 // without a browser live in src/game/social-model.ts.
 //
-// Nothing here touches the microphone or voice, and no timer repeats: the only timers are the
-// bounded reconnect back-off and single follow-up checks.
+// Nothing here touches the microphone or voice. The timers are single follow-up checks, the reconnect back-off, and
+// one check of the open socket at a time.
+//
+// THE SOCKET ALWAYS COMES BACK. A socket that closed is opened again with a back-off for as long as the page is in front
+// and the game is connected: quickly at first, then every SLOW_RETRY_MS (the state then reads 'offline', and the
+// screens offer Reconnect). It is also opened at once when the device is online again, the page comes to the front, or
+// the game has just had an answer from the server. A socket can be dead without having closed (the network went and
+// came back): one that has been silent for QUIET_MS, or that is still there when the device comes online, is asked
+// for a sign of life and replaced when none comes within PROBE_MS. Every opening reads the overview and the open
+// threads again and asks for the people list and a live snapshot; the server tells a socket that opens about a call.
 //
 // LIVE LOCATION. While the socket is open it watches the player's city and friends (`live-watch`); the
 // `live-snapshot` and `live-move` frames fill `state.live`, and each friend row and friend card is
@@ -34,9 +42,14 @@ import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleList
 import type { ApiError } from '../../types/client.ts'
 import type { PanelApi } from '../../types/panel.ts'
 
+/** The quick reconnects, each after twice the wait of the one before; after them the socket is tried every SLOW_RETRY_MS. */
 const MAX_ATTEMPTS = 6
+const SLOW_RETRY_MS = 30000
+/** An open socket that sent nothing for this long is asked for a sign of life, and has this long to give one. */
+const QUIET_MS = 25000
+const PROBE_MS = 4000
 
-/** What the socket for live pushes is doing. 'offline' = the automatic reconnects ran out. */
+/** What the socket for live pushes is doing. 'offline' = the quick reconnects ran out, or the game is not connected; it is still tried now and then. */
 export type SocialSocketState = 'idle' | 'connecting' | 'open' | 'reconnecting' | 'offline'
 /** A refusal comes back as { ok: false, code, reason }; `transport` is true when the server was not reached. */
 export type SocialResult<T> = ({ ok: true } & T) | { ok: false; code: string; reason: string; transport?: boolean }
@@ -91,6 +104,8 @@ export interface SocialEnv {
   clearAddress(): void
   /** Called whenever the device comes back online. */
   onOnline(listener: () => void): void
+  /** The page is in front (not a hidden tab, not a locked phone). */
+  visible(): boolean
   setTimeout(run: () => void, ms: number): unknown
   clearTimeout(handle: unknown): void
   now(): number
@@ -101,6 +116,7 @@ const browserEnv = (): SocialEnv => ({
   pageAddress: () => ({ pathname: globalThis.location?.pathname ?? '', search: globalThis.location?.search ?? '' }),
   clearAddress() { try { globalThis.history.replaceState(null, '', '/') } catch { /* the address stays */ } },
   onOnline(listener) { globalThis.window?.addEventListener('online', listener) },
+  visible: () => globalThis.document?.hidden !== true,
   setTimeout: (run, ms) => globalThis.setTimeout(run, ms),
   clearTimeout: (handle) => globalThis.clearTimeout(handle as ReturnType<typeof setTimeout>),
   now: () => Date.now(),
@@ -137,6 +153,13 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   let ws: SocketLike | null = null
   let attempts = 0
   let timer: unknown = null
+  /** A socket was lost and has not been replaced yet: it is tried again until it has. */
+  let waiting = false
+  /** Counts every frame received; the check of the open socket compares it with what it saw last (`noted`). */
+  let heard = 0
+  let noted = 0
+  let probing = false
+  let watch: unknown = null
   let started = false
   let syncing = false
   let dirty = false
@@ -361,6 +384,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     let message: Incoming
     try { message = JSON.parse(String(event.data)) as Incoming } catch { return }
     if (!message || typeof message.type !== 'string') return
+    heard += 1
     // The Worker's liveness probe: answered at once, or the social socket is closed as idle.
     if ((message.type as string) === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return }
     if (message.type.startsWith('call-')) { for (const listener of [...frameListeners]) listener(message); return }
@@ -468,31 +492,86 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
+  /** Try again later: soon while the quick attempts last, then every SLOW_RETRY_MS — never given up while a socket is wanted. */
+  function retryLater(): void {
+    env.clearTimeout(timer)
+    const quick = attempts < MAX_ATTEMPTS && connected()
+    state.socket = quick ? 'reconnecting' : 'offline'
+    timer = env.setTimeout(connectSocket, quick ? Math.min(1000 * 2 ** attempts, 15000) : SLOW_RETRY_MS)
+    if (quick) attempts += 1
+  }
+  /** `current` is gone (it closed, or it was found dead): what came over it is stale, and the features that share it are told. */
+  function lost(current: SocketLike, code?: number): boolean {
+    if (ws !== current) return false
+    ws = null; waiting = true; state.houseRoom = null; joiningHouse = null
+    env.clearTimeout(watch); watch = null; probing = false
+    dropLive() // what is known is going stale: the next connection starts from a snapshot
+    for (const listener of [...closeListeners]) listener(code)
+    return true
+  }
   function connectSocket(): void {
     env.clearTimeout(timer); timer = null
-    if (ws || !connected()) return
+    if (ws) return
+    // Not now (the game is not connected, the page is hidden): a socket that was lost is looked at again later.
+    if (!connected() || !env.visible()) { if (waiting) retryLater(); return }
     state.socket = attempts ? 'reconnecting' : 'connecting'
     const current = ws = env.openSocket()
     current.onopen = () => {
-      attempts = 0; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople(); watchLive(true)
+      if (ws !== current) return
+      attempts = 0; waiting = false; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople(); watchLive(true)
       opened += 1
       for (const listener of [...openListeners]) listener(opened > 1)
+      watchSocket()
     }
-    current.onmessage = receive
+    current.onmessage = (event) => { if (ws === current) receive(event) }
     current.onclose = (event) => {
-      if (ws !== current) return
-      ws = null; state.houseRoom = null; joiningHouse = null
-      dropLive() // what is known is going stale: the next connection starts from a snapshot
-      for (const listener of [...closeListeners]) listener(event?.code)
-      if (connected() && attempts < MAX_ATTEMPTS) { state.socket = 'reconnecting'; timer = env.setTimeout(connectSocket, Math.min(1000 * 2 ** attempts, 15000)); attempts += 1 }
-      else state.socket = 'offline'
+      if (!lost(current, event?.code)) return
+      retryLater()
       refresh()
     }
   }
-  /** Manual reconnect after the automatic attempts ran out. */
+  /** Book the next check of the open socket (one at a time). */
+  function watchSocket(): void {
+    env.clearTimeout(watch); watch = null
+    if (!ws || state.socket !== 'open') return
+    noted = heard
+    watch = env.setTimeout(checkSocket, probing ? PROBE_MS : QUIET_MS)
+  }
+  /** Nothing arrived since the last check: ask; nothing arrived since it was asked: the socket is dead, and is replaced. */
+  function checkSocket(): void {
+    watch = null
+    if (!ws || state.socket !== 'open') return
+    const silent = heard === noted
+    if (probing && silent) { replaceSocket(); return }
+    probing = false
+    if (silent && env.visible()) probeSocket(); else watchSocket()
+  }
+  /** Ask the open socket for a sign of life: a read of the call setting, which a server that hears it always answers. */
+  function probeSocket(): void {
+    if (!ws || state.socket !== 'open' || probing) return
+    probing = true
+    try { ws.send(JSON.stringify({ type: 'call-settings' })) } catch { /* a socket that cannot send gives no sign either */ }
+    watchSocket()
+  }
+  /** The socket there is cannot be trusted (dead, or never opened): it is dropped as if it had closed, and a new one is opened now. */
+  function replaceSocket(): void {
+    const old = ws
+    if (old) { lost(old); try { old.close() } catch { /* already closed */ } }
+    attempts = 0; connectSocket(); refresh()
+  }
+  /** Manual reconnect, and every event that says a lost socket can be had again. */
   function reconnect(): void { attempts = 0; connectSocket(); refresh() }
-  /** The page is in front again, or the device is back online: a socket that was lost meanwhile is opened now, not at the next back-off. */
-  function wakeSocket(): void { if (started && !ws && connected()) reconnect() }
+  /**
+   * The page is in front again, or the device is back online: a socket that was lost meanwhile is opened now, not at the
+   * next back-off; one that never finished opening is replaced; one that looks open is asked for a sign of life.
+   */
+  function wakeSocket(): void {
+    if (!started) return
+    if (ws) { if (state.socket === 'open') probeSocket(); else replaceSocket() }
+    else if (connected()) reconnect()
+  }
+  /** The game has just heard from the server: a socket that was lost is opened now. Cheap enough to call on every answer. */
+  function socketWanted(): void { if (started && waiting && !ws && connected() && env.visible()) reconnect() }
 
   /**
    * The device session changed (a new life was started, or the old one is gone): everything this client holds belonged to the
@@ -505,7 +584,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     env.clearTimeout(liveTimer); liveTimer = null; liveAsked = ''; liveOffset = null
     for (const listener of liveWatchers) { try { listener() } catch (error) { console.error('Live watcher failed:', error) } }
     joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0; opened = 0
-    env.clearTimeout(timer); timer = null
+    env.clearTimeout(timer); timer = null; waiting = false
+    env.clearTimeout(watch); watch = null; probing = false
     const old = ws; ws = null
     state.socket = 'idle'; state.friendsLoading = false
     for (const listener of [...closeListeners]) listener()
@@ -540,7 +620,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       started = true
       const address = env.pageAddress()
       state.linkHost = inviteIdFrom(address.pathname) || inviteIdFrom(address.search)
-      env.onOnline(() => { if (!ws) reconnect() })
+      env.onOnline(wakeSocket)
     }
     if (!connected()) return
     if (!ws && state.socket !== 'offline' && !timer) connectSocket()
@@ -552,6 +632,6 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
-  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, onLive, liveNow, watchLive, sendFrame, onCallFrame, onSocketClose, onLifeFrame, onSocketOpen, wakeSocket, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
+  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, onLive, liveNow, watchLive, sendFrame, onCallFrame, onSocketClose, onLifeFrame, onSocketOpen, wakeSocket, socketWanted, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
 }
 export type SocialClient = ReturnType<typeof createSocialClient>

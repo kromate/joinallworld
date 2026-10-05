@@ -37,8 +37,14 @@ export function hash53(text: string): string {
 /** Loopback, private-range and link-local addresses: many people can sit behind one of these. */
 export function isSharedAddress(ip: unknown): boolean {
   const text = String(ip || '').toLowerCase().replace(/^::ffff:/, '');
-  return text === '' || text === 'unknown' || text === '::1' || /^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(text) || /^(fc|fd|fe80)/.test(text);
+  // The IPv6 ranges are matched as addresses (a group, then a colon): a host that keys on a digest of the address
+  // (the Worker) must not have one that happens to begin with these letters read as a private network.
+  return text === '' || text === 'unknown' || text === '::1' || /^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(text) || /^(f[cd][0-9a-f]{0,2}|fe80):/.test(text);
 }
+/** Open sockets one network address may hold on a host, out of the 1,024 it holds in all. */
+export const SOCKETS_PER_ADDRESS = 32;
+/** Sessions one network address may create in an hour (routes/core.ts): a visitor makes one. */
+export const NEW_SESSIONS_PER_ADDRESS = 60;
 /**
  * A nickname: 3–24 characters, no control characters, and — because every other player can see
  * it — nothing the text filter refuses, no link and no contact detail. A refused name throws

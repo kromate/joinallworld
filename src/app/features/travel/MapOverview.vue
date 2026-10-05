@@ -99,7 +99,7 @@ function showWorld(): void {
         <p>Closed places open again later in the day.</p>
         <button type="button" class="ui-button is-primary" @click="choose('all')">Show every place</button>
       </div>
-      <button type="button" class="map-chip-button map-world" @click="showWorld"><GameIcon inline name="globe" /><span>World map · {{ openCities }} cities open</span></button>
+      <button type="button" class="map-chip-button map-world" data-tour="map-world" @click="showWorld"><GameIcon inline name="globe" /><span>World map · {{ openCities }} cities open</span></button>
     </div>
   </div>
 </template>

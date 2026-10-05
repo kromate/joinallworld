@@ -56,3 +56,35 @@ export const MAX_TRIP_SECONDS = 60;
 
 /** Legacy flat trip time. Saves written before per-mode travel carry it, and still resume. */
 export const TRAVEL_DURATION = 5;
+
+/**
+ * Skipping the rest of a trip for game money ('travel.skip', src/game/trip-skip.ts). All original beta values.
+ * The price is for the seconds NOT waited: `base + perSecond × seconds left`, rounded up to `roundTo`, so it falls
+ * as the trip goes on. Between cities it is never more than `capShare` of the fare that was paid; inside a city never
+ * more than `cap`. Nothing is sold below `minRemainingSeconds` (waiting is free), and a trip inside a city can be
+ * skipped only while more than `localMinRemainingSeconds` is left — short hops are simply waited out.
+ */
+export const TRIP_SKIP = Object.freeze({
+  beta: true,
+  minRemainingSeconds: 3,
+  localMinRemainingSeconds: 20,
+  intercity: Object.freeze({ base: 100, perSecond: 10, capShare: 0.5 }),
+  local: Object.freeze({ base: 50, perSecond: 5, cap: 300 }),
+  /** Prices are whole multiples of this, and never below it. */
+  roundTo: 50,
+  /** From this price on the player is asked once more before paying, so a mis-tap cannot spend it. */
+  confirmFrom: 1000,
+  /** A price shown to the player is honoured for this long, so what is charged is what was on the button. */
+  quoteGraceSeconds: 5,
+  /** The first skip between cities of each character costs nothing. */
+  firstIntercityFree: true,
+});
+
+/** The price of skipping `remaining` seconds of a trip. `fare` is what the trip cost at departure (between cities only). */
+export function tripSkipFee(kind: 'intercity' | 'local', remaining: number, fare = 0): number {
+  const step = TRIP_SKIP.roundTo, left = Math.max(0, Number.isFinite(remaining) ? remaining : 0);
+  const rule = kind === 'intercity' ? TRIP_SKIP.intercity : TRIP_SKIP.local;
+  const asked = Math.ceil((rule.base + rule.perSecond * left) / step) * step;
+  const most = kind === 'intercity' ? Math.floor((Math.max(0, fare) * TRIP_SKIP.intercity.capShare) / step) * step : TRIP_SKIP.local.cap;
+  return Math.max(step, Math.min(asked, most));
+}

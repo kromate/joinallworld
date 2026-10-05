@@ -14,7 +14,8 @@
  * WHO CAN BE RUNG. All of these must hold, and when any one fails the caller sees `unreachable` and
  * nothing else (so nobody learns whether they were blocked, whether the other player is busy, or what
  * the other player's setting is):
- *   - the callee is a stored, unexpired session with a social record (so a bot or an unknown id is not);
+ *   - the callee is a stored, unexpired session with a social record (so a bot or an unknown id is not), and the
+ *     caller has a social record too (so the callee can block whoever rings them);
  *   - neither has blocked the other, and neither is muted by moderation;
  *   - the callee's setting allows it: `everyone` (the default), `friends` (mutual friends only) or `nobody`;
  *   - the callee has an open, responsive socket, and neither side is in another call.
@@ -195,6 +196,9 @@ function buildService(ctx: RouteContext) {
     const social = db.social;
     const record = social?.players?.[callee];
     if (!social || !record) return null;
+    // The caller must be a player too: someone the callee can find, block and report. A session that has a socket but
+    // has never arrived in the city has no record, and a block cannot name it.
+    if (!social.players?.[caller]) return null;
     if (record.blocked?.[caller] || social.players?.[caller]?.blocked?.[callee]) return null;
     const mode: CallsFrom = CALLS_FROM.find((item) => item === record.calls) ?? CALLS_FROM_DEFAULT;
     if (mode === 'nobody') return null;

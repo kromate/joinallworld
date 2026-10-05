@@ -1,5 +1,7 @@
 # Moving Allworld to Vue 3 and TypeScript
 
+> This is the record of a move that has been made: the source is TypeScript now (the service worker and two release shims are the only JavaScript left), and `npm test` fails if a new JavaScript file appears. File names ending in `.js` below are the names of the time; today they end in `.ts` or are gone. For where things live now, see the project map in [CONTRIBUTING.md](../CONTRIBUTING.md).
+
 The game is plain JavaScript today. It is being moved to Vue 3 single-file components and
 TypeScript in steps, and it ships at every step. This document is the plan: what exists now, the
 conventions, the order, how each step is checked, and what everyone working on the code has to do

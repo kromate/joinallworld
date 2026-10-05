@@ -243,7 +243,7 @@ export interface EmailBody {
 export type EmailResult =
   | Done<'confirm_sent', { email: string; dryRun: false }>
   | Done<'dry_run', { email: string; dryRun: true; confirmPath: string }>
-  | Refusal<'age_required' | 'under_18' | 'invalid_email' | 'email_typo' | 'email_disposable' | 'confirm_limit'>
+  | Refusal<'age_required' | 'under_18' | 'invalid_email' | 'email_typo' | 'email_disposable' | 'confirm_limit' | 'try_later'>
 
 /** What PushSubscription.toJSON() gives: an https endpoint and the two base64url keys. */
 export interface PushSubscriptionLike {

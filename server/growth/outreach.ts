@@ -46,7 +46,7 @@ import { characterCity } from '../character.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { COMEBACK_TYPES } from '../../src/game/comeback.ts';
 import type { ComebackType } from '../../src/game/comeback.ts';
-import { growthOf, playerOf } from './data.ts';
+import { growthOf, keyed, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
@@ -233,6 +233,13 @@ function buildService(ctx: RouteContext) {
       const old = contactsOf(g)[session.publicId], t = now();
       const confirms = (old?.confirms ?? []).filter((at) => t - at < DAY);
       if (confirms.length >= OUTREACH.confirmsPerDay) return no('confirm_limit', `You have asked for ${OUTREACH.confirmsPerDay} confirmation e-mails today. Look in your inbox and spam folder, or try again tomorrow.`);
+      // AN ADDRESS IS SOMEBODY'S INBOX, and the player asking need not be its owner. Whoever asks, one address is sent
+      // OUTREACH.confirmsPerDay confirmations a day (counted under a salted hash, never the address), and confirmations
+      // as a whole stay inside the server's daily total and may use at most half of it, so that asking for them can
+      // neither fill an inbox nor use up what the mail people confirmed for needs.
+      const dailyCap = cap('EMAIL_DAILY_CAP', LIMITS.emailPerDay);
+      if (!ctx.allow(`growth:email-to:${keyed(g, `email|${checked.email.toLowerCase()}`)}`, OUTREACH.confirmsPerDay, DAY)) return no('confirm_limit', 'That address has been sent several confirmation e-mails today. Look in its inbox and spam folder, or try again tomorrow.');
+      if (sentToday(g, 'email') >= dailyCap || !ctx.allow('growth:email-confirm:all', Math.max(1, Math.floor(dailyCap / 2)), DAY)) return no('try_later', 'No more confirmation e-mails can be sent today. Try again tomorrow.');
       // A new or changed address is unconfirmed, and nothing but its confirmation may go to it.
       player.consent.email = false;
       const nonce = ctx.randomId();

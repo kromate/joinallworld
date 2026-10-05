@@ -19,5 +19,5 @@ export function useSocial(): SocialClient { return shared }
 export const social = shared.state
 export const {
   call, perform, sync, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial,
-  refreshLife, takeLinkHost, onPeople, onLive, liveNow, watchLive, cityId, newClientId, attach, start, sendFrame, onCallFrame, onSocketClose, onLifeFrame, onSocketOpen, wakeSocket,
+  refreshLife, takeLinkHost, onPeople, onLive, liveNow, watchLive, cityId, newClientId, attach, start, sendFrame, onCallFrame, onSocketClose, onLifeFrame, onSocketOpen, wakeSocket, socketWanted,
 } = shared

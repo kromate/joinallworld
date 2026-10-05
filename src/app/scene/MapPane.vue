@@ -46,7 +46,8 @@ function load(): Promise<void> {
       },
       // One character travels between cities: an ordinary game action, refused with its reason while the city is not open.
       onTravel: (to, mode) => { void command('estate.relocate', { to: to as WorldCityId, mode: mode as CityLinkMode }) }, // (the Atlas names the ids; the server validates them)
-      routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links ?? null,
+      // Each route also says what arriving at once would add to its fare ('travel.skip'): free for a character that has never skipped.
+      routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links?.map((link) => ({ ...link, skipFree: game.state.value.travel.skipped !== true })) ?? null,
       held: heldCities,
     })
     const city = createCityView(cityBox.value, {

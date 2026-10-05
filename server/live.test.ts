@@ -150,18 +150,19 @@ test('only friends by request are told: not a stranger, not a blocked friend, an
   await c.until(() => c.city()?.moving === 2, 'two players moving');
   assert.deepEqual(Object.keys(c.live().at(-1) ?? {}).sort().filter((key) => key !== 'spots' && key !== 'got'), ['at', 'city', 'type'], 'a city frame for a stranger is counts only');
 
-  // A block: the two stop existing for each other, at once, in the list and in the counts.
+  // A block: the two stop existing for each other, at once, in the list. The counts stay the ones everybody is given:
+  // counts that left the blocked player out would tell the blocker where that player is.
   const blocks = a.live().filter((frame) => frame.type === 'live-snapshot').length;
   assert.equal((await post(f, '/api/social/block', { id: bola.id, cityId: 'lagos' }, ada)).ok, true);
   const fresh = await a.until(() => { const list = a.live().filter((frame): frame is LiveSnapshotFrame => frame.type === 'live-snapshot'); return list.length > blocks ? list.at(-1) : null; }, 'a fresh snapshot after the block');
   assert.deepEqual(fresh.friends, []);
-  assert.equal(fresh.city?.moving, 1, 'the blocked player is not in the counts Ada is given');
+  assert.equal(fresh.city?.moving, c.city()?.moving, 'Ada is given the counts a stranger is given');
   const told = a.live().length;
   assert.equal((await f.action(bola.cookie, { type: 'cancel' })).ok, true);
   await c.until(() => c.city()?.moving === 1, 'the stranger sees the count change');
   await quiet();
   assert.ok(a.live().slice(told).every((frame) => !(frame.type === 'live-move' && frame.spots)), 'nothing more about Bola reaches Ada');
-  assert.equal(a.city()?.moving, 1, 'and Ada still counts only the other traveller');
+  assert.equal(a.city()?.moving, 1, 'and Ada counts what the stranger counts');
 });
 
 test('a friendship that ended is not followed, even before the watcher subscribes again', async (t) => {

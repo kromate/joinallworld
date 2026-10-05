@@ -119,12 +119,7 @@ export const ABUJA_RULES = Object.freeze({...{
   "atlas": {
     "lon": 7.49,
     "lat": 9.06,
-    "teaser": "A planned capital of parks, markets, campuses and satellite towns.",
-    "preview": [
-      "Millennium Park and the national worship landmarks",
-      "Gbagyi pottery and markets",
-      "Kubwa, Gwagwalada and six area councils"
-    ]
+    "teaser": "A planned capital of parks, markets, campuses and satellite towns."
   },
   "districts": [
     {

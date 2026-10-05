@@ -12,6 +12,7 @@ import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
  * ACTIONS
  *   'travel'    { id: venueId, mode }   start a trip. The fare is charged at departure.
  *   'world.roadside'  { choice }        answer the pending roadside event (state.travel.event).
+ *   'travel.skip'     { quote? }        pay to arrive now, from a trip here or between cities (../trip-skip.ts).
  * Timed-action kind: 'travel' — { kind, id, duration, remaining, mode, fare }. `fare` is the naira
  * charged at departure, kept so the travel screen can say exactly what a cancel forfeits. A save
  * from before per-mode travel has no `mode` and the old flat duration, and an older trip has no
@@ -40,6 +41,7 @@ import { contentFor, venueFor, venuesFor } from '../cities/runtime.ts';
  *   funded     true once the startup grant has been paid
  *   gigs       { day, count }   paid gigs finished on Lagos day `day` (the daily gig limit)
  *   eventDays  { [eventId]: day }  the Lagos day a once-a-day roadside event was last offered
+ *   skipped    true once a trip between cities was skipped (the first such skip is free: ../trip-skip.ts)
  * }
  *
  * THE DAILY GIG LIMIT (original beta rule, GIG_DAILY_LIMIT in content/venues.ts)
@@ -83,6 +85,7 @@ import { COMING_SOON, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict }
 import { lagosTime } from '../clock.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
+import { skipOffer, skipTrip } from '../trip-skip.ts';
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
@@ -401,6 +404,7 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
     funded: saved.funded === true,
     gigs: isRecord(saved.gigs) && safeCount(saved.gigs.day) && safeCount(saved.gigs.count) ? { day: saved.gigs.day, count: Math.min(saved.gigs.count, GIG_DAILY_LIMIT) } : { day: 0, count: 0 },
     eventDays: Object.fromEntries(Object.entries(isRecord(saved.eventDays) ? saved.eventDays : {}).filter(([id, day]) => isEventId(id) && EVENTS[id].oncePerDay && safeCount(day))),
+    skipped: saved.skipped === true,
   };
 }
 
@@ -476,6 +480,8 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
     gigsHere: (spotsOf(state.location, ctx.cityId).find((spot) => spot.id === state.spot)?.activities || []).filter(isGig).map((def) => def.id),
     // The trip in progress: where it started (a cancel leaves the player there), how, and the fare already paid (null on an older save).
     active: trip ? { from: state.location, to: trip.id, mode: typeof trip.mode === 'string' ? trip.mode : null, fare: typeof trip.fare === 'number' && Number.isSafeInteger(trip.fare) ? trip.fare : null, refundable: false } : null,
+    // Paying to arrive now: the price as it stands, or why it is not offered (a trip between cities is in state.activeAction, not in `active`).
+    skip: skipOffer(state),
   };
 }
 
@@ -484,7 +490,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
  */
 const play = PLAYS ? {
-  actions: { travel, 'world.roadside': roadside },
+  actions: { travel, 'world.roadside': roadside, 'travel.skip': skipTrip },
   advance(state, dt, ctx) {
     const now = finite(ctx?.now) ? ctx.now : state.t;
     if (state.travel.event && now - state.travel.event.at >= EVENT_TTL_SECONDS * 1000) state.travel.event = null;

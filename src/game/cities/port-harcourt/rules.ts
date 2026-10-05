@@ -27,7 +27,7 @@ export const PORT_HARCOURT_RULES = Object.freeze({
   state:{id:'rivers',name:'Rivers State',unit:'local government'},country: NIGERIA,timezone:'Africa/Lagos',
   rentedHomeIds:['ph-diobu-room','ph-rumuola-flat','ph-eleme-flat','ph-okrika-room','ph-omagwa-flat','ph-oyigbo-house','ph-etche-house'],defaultRentedHome:'ph-rumuola-flat',
   defaultName:'New arrival',careerIds:CAREER_IDS,
-  atlas:{lon:7.03,lat:4.82,teaser:'The Garden City: markets, campuses, stadiums and waterways beside the Bonny River.',preview:['Pleasure Park and Aba Road','Diobu markets and the old township','Okrika and the waterfront landings']},
+  atlas:{lon:7.03,lat:4.82,teaser:'The Garden City: markets, campuses, stadiums and waterways beside the Bonny River.'},
   mapOrigin:PORT_HARCOURT_MAP_ORIGIN,
   districts:[
     {id:'diobu',name:'Diobu',localUnitId:'port-harcourt'},{id:'rumuola',name:'Rumuola',localUnitId:'obio-akpor'},

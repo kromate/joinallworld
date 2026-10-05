@@ -57,8 +57,8 @@ import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
-import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind } from '../server/host-context.ts';
-import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig } from '../server/protocol.ts';
+import { envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
+import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKETS_PER_ADDRESS } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
@@ -71,6 +71,8 @@ const LAZY_FLUSH_MS = 600000;
 const RENEW_SLACK_MS = 86400000;
 /** How often the limiter's stored rows and the day-old chat receipts are swept. A sweep that finds nothing writes nothing. */
 const SWEEP_MS = 600000;
+/** How often expired sessions are looked for after start-up (expiredSessions below). */
+const EXPIRY_SWEEP_MS = 60000;
 /** Path prefixes outside /api/ that a module may serve as an HTML page (ctx.pages). The Worker sends these to the object. */
 const PAGE_PREFIXES = ['/s/', '/e/'];
 /** A socket's attachment may hold 2,048 bytes. */
@@ -95,12 +97,6 @@ const digest = async (value: string): Promise<string> => [...new Uint8Array(awai
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
 const firstLine = (error: unknown): string => { try { return String((error as { message?: unknown } | null | undefined)?.message ?? error).split('\n')[0]?.slice(0, 300) ?? ''; } catch { return 'unprintable error'; } };
-function addressBucket(ip: string): string {
-  if (!ip.includes(':')) return ip;
-  const [left, right = ''] = ip.toLowerCase().split('::');
-  const start = left ? left.split(':') : [], end = right ? right.split(':') : [];
-  return [...start, ...Array(Math.max(0, 8 - start.length - end.length)).fill('0'), ...end].slice(0, 4).map(part => parseInt(part || '0', 16).toString(16)).join(':');
-}
 async function bodyOf(request: Request): Promise<Record<string, unknown>> {
   if (!request.headers.get('content-type')?.startsWith('application/json')) throw protocolError(415, 'json_required');
   const reader = request.body?.getReader();
@@ -242,6 +238,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   store: SqliteStore;
   shards: ShardStore;
   sweepAt: number;
+  expirySweepAt: number;
   shortLimits: ReturnType<typeof createMemoryLimiter>;
   beatTimer: ReturnType<typeof setTimeout> | null;
   sleeps: boolean;
@@ -281,7 +278,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS host_keys (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
-    this.sweepAt = 0; this.beatTimer = null;
+    this.sweepAt = 0; this.expirySweepAt = 0; this.beatTimer = null;
     // The operator token never leaves this closure: only its digest is kept. Unset or too short = no operator surface.
     const operatorToken = validOperatorToken(env.MODERATOR_TOKEN) ? env.MODERATOR_TOKEN as string : null;
     this.operatorDigest = operatorToken ? digest(operatorToken) : null;
@@ -345,7 +342,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       closing: [],
       core: {
         archiveSession: sessionArchiver({ now, randomId: () => crypto.randomUUID() }),
-        expiredSessionKeys: (db: Db) => db.$store!.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
+        expiredSessionKeys: (db: Db, always?: boolean) => this.expiredSessions(db, now(), always === true),
         sessionByPublicId: (db: Db, id: string) => { const key = db.$store!.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
         unresponsive,
         storeStats: () => ({ ...this.store.stats(), rows: this.meter.snapshot(), limits: this.limits() }),
@@ -434,6 +431,20 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     for (const table of Object.values(RATE_TABLES)) this.sql.exec(`DELETE FROM ${table} WHERE expires_at <= ?`, now);
     this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', now - 86400000);
     this.shortLimits.sweep();
+  }
+  /**
+   * The sessions to archive now. At start-up every record is read once (records of builds that kept no public id or no
+   * expiry are rotated then). After that a request must not be able to make the object read every session: expired
+   * ones are found by their stored expiry, and looked for when a session is about to be made (`always`: a request that
+   * is itself limited per address) and otherwise at most once every EXPIRY_SWEEP_MS, however often it is asked.
+   * A session that has run out is refused from that moment whether or not it has been archived yet (protocol.ts sessionOfCookie).
+   */
+  expiredSessions(db: Db, now: number, always = false): string[] {
+    const helpers = db.$store!;
+    if (!this.booted || !helpers.expiredSessionKeys) return helpers.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now);
+    if (!always && now < this.expirySweepAt) return [];
+    this.expirySweepAt = now + EXPIRY_SWEEP_MS;
+    return helpers.expiredSessionKeys(now);
   }
   /** Set the alarm. Setting it is a write, and is counted as one. */
   async arm(at: number): Promise<void> { await this.ctx.storage.setAlarm(at); this.meter.add(ALARM_TABLE, 1); }
@@ -587,7 +598,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // `secret` is the stored record's key; `device` is the cookie the browser presented, the only value ever sent back to it.
     const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, device: request.cookie as string, session: publicSession(s), expiresAt: s.expiresAt }; });
     const peers = [...this.peers.values()].filter(ws => ws.readyState === 1);
-    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= 32) throw protocolError(503, 'socket_capacity');
+    if (peers.length >= 1024 || peers.filter(ws => ws.secret === info.secret).length >= 8 || peers.filter(ws => ws.ip === request.ip).length >= SOCKETS_PER_ADDRESS) throw protocolError(503, 'socket_capacity');
     const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
     const ws = this.wrap(socket, { ...info, ip: request.ip, room: null, closed: false, alive: true, pingedAt: 0, seenAt: Date.now(), lastSessionRenewedAt: Date.now() });
     this.handlers.open(ws); this.saveSockets();

@@ -7,6 +7,7 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { paidText } from './travelModel.ts'
 import type { TripInfo } from './travelModel.ts'
+import SkipTrip from './SkipTrip.vue'
 
 defineProps<{ trip: TripInfo }>()
 const { command } = useApp()
@@ -27,5 +28,6 @@ const { command } = useApp()
       <i :key="`${trip.fraction}|${trip.remaining}`" :style="{ '--from': `${(trip.fraction * 100).toFixed(1)}%`, animationDuration: `${Math.max(0.05, trip.remaining).toFixed(2)}s` }" />
     </div>
     <p class="map-trip-rule">{{ trip.rule }}</p>
+    <SkipTrip />
   </div>
 </template>

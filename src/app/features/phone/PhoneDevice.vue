@@ -203,7 +203,7 @@ defineExpose({
           <div class="ph-dots" role="group" aria-label="Home screen pages">
             <button v-for="(item, index) in pages" :key="item.label" type="button" :aria-label="`Page ${index + 1} of ${pages.length}: ${item.label}`" :aria-current="index === page ? 'true' : undefined" @click="goPage(index)" />
           </div>
-          <div class="ph-dock" role="group" aria-label="Dock">
+          <div class="ph-dock" data-tour="phone-dock" role="group" aria-label="Dock">
             <button v-for="entry in dock" :key="entry.id" class="ph-appbtn" :class="{ 'is-running': lastApp === entry.id }" type="button" data-ph-dock :data-ph-app="entry.id" :aria-label="`${entry.title}${badges[entry.id] ? `, ${badges[entry.id]} new` : ''}`" @click="openApp(entry)">
               <span class="ph-icon" :style="{ '--tint': tintOf(entry) }"><GameIcon bare :name="glyphFor(entry.id)" /></span><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
             </button>

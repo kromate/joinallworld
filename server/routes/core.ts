@@ -17,7 +17,7 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../../src/types/protocol.ts';
 import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { hasAction } from '../../src/game/registry.ts';
-import { validateName, validateActionPayload, publicSession, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
+import { validateName, validateActionPayload, publicSession, isSharedAddress, NEW_SESSIONS_PER_ADDRESS, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
@@ -112,9 +112,16 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       const body = await request.json();
       const name = validateName(body.name);
       const result = await store.transact((db): Answer => {
-        for (const secret of core.expiredSessionKeys(db)) { const stale = db.sessions[secret]; if (stale) core.archiveSession(db, secret, stale); }
         let current = request.session(db), created = false;
+        // Sessions that have run out are archived here. A host on which looking for them costs something is told whether
+        // a session is about to be made (it then looks at once, so the places counted below are live ones) or the caller
+        // already has one (it then looks now and then: renaming must not be a way to make the host search).
+        for (const secret of core.expiredSessionKeys(db, !current)) { const stale = db.sessions[secret]; if (stale) core.archiveSession(db, secret, stale); }
         if (!current) {
+          // A NEW SESSION COSTS ITS MAKER NOTHING and takes one of the places every player shares, for as long as a session
+          // lasts. One network address may make NEW_SESSIONS_PER_ADDRESS an hour; an address many people are behind without the
+          // server being able to tell them apart (a proxy without TRUST_PROXY, a LAN) is not counted.
+          if (!isSharedAddress(request.ip) && !allow(`session:new:${request.ip}`, NEW_SESSIONS_PER_ADDRESS, 3600000)) throw fail(429, 'rate_limited');
           if (Object.keys(db.sessions).length >= config.maxActiveSessions) throw fail(503, 'device_capacity');
           const { secret, publicId } = core.newIdentity();
           current = db.sessions[secret] = { secret, publicId, name, expiresAt: now() + config.sessionTtlMs, cities: {}, actions: {}, ...(body.onboarding === true ? { onboarding: true as const } : {}) };

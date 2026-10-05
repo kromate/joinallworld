@@ -86,11 +86,11 @@ test('world systems are registered and survive hostile saves', () => {
   const hostile = createLife({
     travel: { home: '__proto__', event: { id: 'constructor', at: 1 }, lastTrip: { mode: 'jetpack', from: 'park', to: 'moon' }, visited: ['park', 'park', 'moon', 5, { id: 'x' }], trips: -4,
       cooldowns: { 'buka-help': MONDAY_NOON + 9e12, chill: MONDAY_NOON + 5000, nope: 1, 'hub-pitch': 'soon' }, funded: 'yes', admin: true,
-      gigs: { day: 3, count: -9e9 }, eventDays: { wallet: 'never', agbo: 5, constructor: 1 } },
+      gigs: { day: 3, count: -9e9 }, eventDays: { wallet: 'never', agbo: 5, constructor: 1 }, skipped: 1 },
     health: { sick: 'true', cause: 'curse', since: 'never', strain: 9e9, immuneUntil: 9e15, extra: 1 },
   }, at(MONDAY_NOON));
   assert.deepEqual(hostile.travel, { home: 'yaba', event: null, lastTrip: null, visited: ['park'], trips: 0, cooldowns: { 'buka-help': MONDAY_NOON + 300000 }, funded: false,
-    gigs: { day: 0, count: 0 }, eventDays: {} });
+    gigs: { day: 0, count: 0 }, eventDays: {}, skipped: false });
   assert.deepEqual(createLife({ travel: { gigs: { day: 7, count: 99 }, eventDays: { wallet: 7 } } }, at(MONDAY_NOON)).travel.gigs, { day: 7, count: GIG_DAILY_LIMIT }, 'a saved count can never exceed the limit');
   assert.deepEqual(hostile.health, { sick: false, cause: null, since: null, strain: HEALTH.illness.neglectSeconds, immuneUntil: MONDAY_NOON + 7200000 });
   const sick = createLife({ health: { sick: true, cause: 'curse', since: MONDAY_NOON + HOUR } }, at(MONDAY_NOON));

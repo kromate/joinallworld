@@ -23,7 +23,9 @@
  *             stored document, each time a spot is delivered: an index that is a moment out of date reveals nothing.
  *   the city  a watcher is in the room of ONE city, the one their character is in. The room carries counts only: how
  *             many players are at each public venue and how many are on a trip. No names, and homes are not counted.
- *             A watcher with a block gets counts without the players of that block. Sent at most every CITY_TICKS ticks.
+ *             Every watcher of a city is given the SAME counts. A count that left out the players of a watcher's blocks
+ *             would differ from a stranger's by exactly those players, and so say where each of them is to anyone
+ *             who blocks them (or whom they blocked). Sent at most every CITY_TICKS ticks.
  * A life still held for the quick start is not in the city: it has no spot and is in no count.
  *
  * BOUNDS. One frame per socket per tick (four a second); at most LIVE.batch players are read per tick, the rest
@@ -154,16 +156,11 @@ function build(ctx: RouteContext) {
     if (add) here.add(spot.id); else { here.delete(spot.id); if (!here.size) city.delete(venue); if (!city.size) occupancy.delete(spot.cityId); }
     cityDue.add(spot.cityId);
   }
-  /** A city's counts as one viewer may see them: without the players of a block they have. */
-  function cityFor(cityId: string, viewer: string): LiveCity {
+  /** A city's counts: the same for every viewer (see WHO IS TOLD), so nothing about one player can be read out of them. */
+  function cityFor(cityId: string): LiveCity {
     const venues: Record<string, number> = {};
     let moving = 0;
     for (const [venue, here] of occupancy.get(cityId) ?? []) { if (venue) venues[venue] = here.size; else moving = here.size; }
-    for (const other of ctx.checks?.blockedWith?.(viewer) ?? []) {
-      const spot = known.get(other), venue = spot?.cityId === cityId ? countedAt(spot) : null;
-      if (venue === null) continue;
-      if (venue) { const left = (venues[venue] ?? 0) - 1; if (left > 0) venues[venue] = left; else delete venues[venue]; } else moving = Math.max(0, moving - 1);
-    }
     return { cityId, venues, moving };
   }
 
@@ -215,7 +212,7 @@ function build(ctx: RouteContext) {
     follow(ws, view.friends);
     outbox.delete(ws);
     const friends = view.friends.flatMap((id) => { const spot = known.get(id) ?? view.fresh.get(id); return spot ? [spot] : []; });
-    const frame: LiveSnapshotFrame = { type: 'live-snapshot', at: ctx.now(), city: view.cityId ? cityFor(view.cityId, ws.session.id) : null, friends };
+    const frame: LiveSnapshotFrame = { type: 'live-snapshot', at: ctx.now(), city: view.cityId ? cityFor(view.cityId) : null, friends };
     ctx.send(ws, frame);
   }
   function drop(ws: WsConnection): void { unfollow(ws); leaveCity(ws); ws.liveCity = null; outbox.delete(ws); resync.delete(ws); }
@@ -261,7 +258,7 @@ function build(ctx: RouteContext) {
       for (const cityId of cities) for (const ws of cityRooms.get(cityId) ?? []) owed.add(ws);
       for (const ws of owed) {
         const spots = [...(outbox.get(ws)?.values() ?? [])].slice(0, LIVE.friends);
-        const city = ws.liveCity && cities.includes(ws.liveCity) ? cityFor(ws.liveCity, ws.session.id) : null;
+        const city = ws.liveCity && cities.includes(ws.liveCity) ? cityFor(ws.liveCity) : null;
         if (spots.length || city) ctx.send(ws, { type: 'live-move', at: ctx.now(), ...(spots.length ? { spots } : {}), ...(city ? { city } : {}) });
       }
       outbox.clear();
@@ -288,7 +285,7 @@ function build(ctx: RouteContext) {
   watchLives(onLife);
   // A guest's visit shows as 'visit' from the rooms their sockets are in.
   ctx.on?.('room-changed', ({ cause }) => { if (cause && hints.has(cause)) mark(cause); });
-  // A block or an unblock changes what each of the two may see: both are given a fresh snapshot.
+  // A block or an unblock changes which friends each of the two follows: both are given a fresh snapshot.
   ctx.on?.('blocks-changed', ({ a, b }) => {
     for (const id of [a, b]) for (const ws of presence.sockets(id)) if (follows.has(ws) || ws.liveCity) resync.add(ws);
     if (resync.size) arm();

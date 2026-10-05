@@ -7,6 +7,7 @@
  * are here, once, so the two hosts cannot drift apart. Portable: no Node imports.
  */
 import { settleCity, applyLifeAction } from './life-service.ts';
+import { fileCharacter } from './character.ts';
 import { archivedLife } from './protocol.ts';
 import { outcomeKey } from './routes/core.ts';
 import type { ActionRequest, CityId, LifeChangedFrame } from '../src/types/protocol.ts';
@@ -103,6 +104,20 @@ export const isStrictOrigin = (origin: string | null | undefined, host: string |
   try { const url = new URL(origin); return url.host === host && (secure ? url.protocol === 'https:' : ['http:', 'https:'].includes(url.protocol)); } catch { return false; }
 };
 
+/**
+ * THE ADDRESS A LIMIT IS KEYED ON, on both hosts. An IPv4 address is itself (also when it arrives written as an
+ * IPv4-mapped IPv6 address). An IPv6 address is its /64: a network hands one subscriber at least that much, so every
+ * address inside it is the same visitor, and a limit keyed on the full address could be dodged by changing the last
+ * bits. The loopback address stays as it is.
+ */
+export function addressBucket(ip: string): string {
+  const text = ip.toLowerCase().replace(/^::ffff:(?=\d{1,3}(?:\.\d{1,3}){3}$)/, '');
+  if (!text.includes(':') || text === '::1') return text;
+  const [left, right = ''] = text.split('::');
+  const start = left ? left.split(':') : [], end = right ? right.split(':') : [];
+  return [...start, ...Array(Math.max(0, 8 - start.length - end.length)).fill('0'), ...end].slice(0, 4).map(part => parseInt(part || '0', 16).toString(16)).join(':');
+}
+
 /** The longest an outside request (ctx.fetch) may take, whatever its caller asked for. */
 export const OUTBOUND_TIMEOUT_MS = 15000;
 /**
@@ -195,8 +210,16 @@ export function lifeAuthority({ now, receipts, changed }: { now: () => number; r
   const ownerOf = new WeakMap<LifeState, SessionRecord>();
   // What a player would see of a character: the outcome of its life in this city, and which city and lives it has.
   const seen = (session: SessionRecord, city: CityId): string => `${outcomeKey(session.cities?.[city]?.state)}${JSON.stringify([session.character, Object.keys(session.cities || {}), Object.keys(session.legacyLives ?? {})])}`;
+  /** The city a life is still filed under although it now says another one, or null. */
+  const cityFiling = (session: SessionRecord, state: LifeState): CityId | null => {
+    for (const [city, entry] of Object.entries(session.cities ?? {})) if (entry?.state === state) return state.estate.city === city ? null : city as CityId;
+    return null;
+  };
   const applied = (state: LifeState, result: ActionOutcome, actionId: string | undefined): ActionOutcome => {
     const owner = ownerOf.get(state);
+    // An action that ended a trip between cities (a skipped trip) left the life in another city: it is filed under that
+    // city in the same transaction, exactly as a settlement files a trip that ran out (settleCity).
+    if (owner && result.ok) { const from = cityFiling(owner, state); if (from) fileCharacter(owner, from, now()); }
     if (changed && owner && result.ok) changed(owner.publicId, owner.rev ?? 0, actionId);
     return result;
   };

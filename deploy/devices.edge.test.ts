@@ -2,7 +2,8 @@
 // through the Durable Object. Three sockets of one session stand for three devices of one character: an account's
 // browsers reach their character through bindings and then share its sockets exactly as these do (the account routes on
 // this host are tested in cloudflare.test.ts). Also here: the hint still reaches every socket after the object has slept
-// and lost its memory, because a socket's attachment carries who it is.
+// and lost its memory, because a socket's attachment carries who it is; and, as the object runs when deployed (in memory
+// while anyone is connected, quiet changes held there), what a device finds when the object started again on its storage.
 import test from 'node:test';
 import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
@@ -32,12 +33,14 @@ interface Peer { send(message: object): void; next(timeout?: number): Promise<Fr
 interface Life { state: { cash: number; location: string; activeAction: unknown }; rev: number; ok?: boolean; code?: string; duplicate?: boolean }
 const pause = (ms: number): Promise<void> => new Promise((done) => { setTimeout(done, ms); });
 
-async function fixture(t: TestContext) {
+/** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
+async function fixture(t: TestContext, sleeps = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-devices-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-devices', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-devices' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
-  const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
+  const options = { name: 'joinallworld-devices', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-devices', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
+  const start = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
+  let mf = start();
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };
   const send = async (url: string, init?: RequestInit & { headers?: Record<string, string> }) => { const response = await mf.dispatchFetch(url, init); handed.push(response); return response; };
@@ -47,6 +50,8 @@ async function fixture(t: TestContext) {
     await within('Miniflare dispose', mf.dispose());
   }
   t.after(async () => { await stop(); await rm(folder, { recursive: true, force: true }); });
+  /** The runtime stops and starts again on the same storage: everything the object held in memory is gone, and every socket is closed. */
+  const restart = async () => { await stop(); mf = start(); await mf.ready; };
   await mf.ready;
   const origin = 'https://joinallworld.test';
   const request = (path: string, body?: object | null, cookie?: string) => send(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
@@ -92,7 +97,7 @@ async function fixture(t: TestContext) {
     for (const peer of [a, b, c, friend]) await peer.drain();
     return { ada, bola, a, b, c, friend };
   }
-  return { request, device, socket, life, act, household, hibernate: () => mf.unsafeEvictDurableObject('joinallworld-devices', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }) };
+  return { request, device, socket, life, act, household, restart, hibernate: () => mf.unsafeEvictDurableObject('joinallworld-devices', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }) };
 }
 let counter = 0;
 const invite = (peer: Peer, to: string): void => peer.send({ type: 'call-invite', to, clientId: `edge-d${++counter}` });
@@ -133,7 +138,7 @@ test('on the Worker: an accepted command is announced to every socket of the cha
 });
 
 test('on the Worker: after the object slept and lost its memory, every socket of the character is still told, and what one device read is read on the others', async (t) => {
-  const f = await fixture(t);
+  const f = await fixture(t, true);
   const { ada, bola, a, b, c } = await f.household();
   await f.hibernate();
   const done = await f.act(ada, { type: 'spot', id: 'trees' });
@@ -217,4 +222,46 @@ test('on the Worker: a decline on any device stops them all; a call placed on on
   c.send({ type: 'call-accept', callId: second });
   assert.equal((await c.until('call-state')).state, 'accepted');
   assert.equal((await b.until('call-state')).elsewhere, true);
+});
+
+test('on the Worker, as deployed: the object starts again on its storage with quiet changes unwritten — a device that reconnects is given a higher revision than any it held, the life and the friends as they were acknowledged, a fresh live snapshot, and the hint at the next change', { timeout: 120000 }, async (t) => {
+  const f = await fixture(t);
+  const { ada, bola, a, b } = await f.household();
+  // Acknowledged before the restart: Ada bought a look around, Bola set off for the library.
+  const spent = await f.act(ada, { type: 'spot', id: 'trees' });
+  assert.equal(spent.ok, true);
+  assert.equal((await f.act(bola, { type: 'travel', id: 'library', mode: 'trek' })).ok, true);
+  await a.until('life-changed'); await b.until('life-changed');
+  a.send({ type: 'live-watch', cityId: 'lagos' });
+  const watched = await a.until('live-snapshot') as Frame & { friends: { id: string; status: string; trip?: { to: string } }[] };
+  assert.deepEqual(watched.friends.map((spot) => [spot.id, spot.status, spot.trip?.to]), [[bola.id, 'online', 'library']]);
+  // Quiet polls from two devices: each is a later answer, and none of them is written.
+  let held = spent.rev;
+  for (let i = 0; i < 6; i++) { const read = await f.life(ada); assert.ok(read.rev > held); held = read.rev; }
+  await f.restart();
+  // Both come back. Nothing acknowledged is lost, and no answer is older than one a device already took.
+  const again = await f.life(ada);
+  assert.ok(again.rev > held, `the revision after the restart (${again.rev}) is above the last one given before it (${held})`);
+  assert.equal(again.state.cash, spent.state.cash);
+  assert.ok((await f.life(bola)).state.activeAction, 'the trip that was acknowledged is still running');
+  const overview = await (await f.request('/api/social/me', null, ada.cookie)).json() as { friends: { id: string; status: string }[] };
+  assert.deepEqual(overview.friends.map((item) => [item.id, item.status]), [[bola.id, 'offline']], 'the friendship is stored; nobody is connected yet');
+  const a2 = await f.socket(ada), b2 = await f.socket(ada);
+  a2.send({ type: 'live-watch', cityId: 'lagos' });
+  const fresh = await a2.until('live-snapshot') as Frame & { friends: { id: string; status: string }[] };
+  assert.deepEqual(fresh.friends.map((spot) => [spot.id, spot.status]), [[bola.id, 'offline']]);
+  // The friend reconnects: where the stored life has him, not where anything in memory had him.
+  await f.socket(bola);
+  for (let i = 0; ; i++) {
+    const move = await a2.until('live-move') as Frame & { spots?: { id: string; status: string; trip?: { to: string } }[] };
+    const spot = move.spots?.find((item) => item.id === bola.id);
+    if (spot?.status === 'online') { assert.equal(spot.trip?.to, 'library'); break; }
+    assert.ok(i < 20, 'Bola never came online');
+  }
+  // And the next change is announced to the other device, with a revision above everything before.
+  await b2.drain();
+  const done = await f.act(ada, { type: 'spot', id: 'drinks' });
+  assert.equal(done.ok, true);
+  assert.ok(done.rev > again.rev);
+  assert.ok(((await b2.until('life-changed')).rev ?? 0) >= done.rev);
 });

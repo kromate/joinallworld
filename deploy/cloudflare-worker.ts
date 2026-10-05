@@ -16,10 +16,16 @@ import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.
  *   sockets      hibernating WebSockets. What a socket carries (room, position, voice, look, what it watches) is its
  *                attachment; when the object wakes without its memory every connected socket is handed back to the
  *                modules (`restore`), and its room is re-checked against the stored life before its next message.
- *   heartbeat    an alarm every HEARTBEAT_MS while a socket is connected: an application `heartbeat` frame the
+ *   heartbeat    a timer in memory every HEARTBEAT_MS while a socket is connected: an application `heartbeat` frame the
  *                browser answers with `heartbeat-ack` (a hibernating socket cannot be pinged), and the in-process
- *                'heartbeat' event the modules do their housekeeping on. With nobody connected the alarm still runs
- *                every IDLE_BEAT_MS, so mail and push that are due go out and the world registry is tidied.
+ *                'heartbeat' event the modules do their housekeeping on. The alarm runs every IDLE_BEAT_MS whoever is
+ *                connected: with nobody there it is the beat (mail and push that are due go out, the world registry is
+ *                tidied), and it restarts the timer of an object that lost its memory with sockets open.
+ *   rows         A ROW WRITTEN IS A ROW BILLED, and an index entry is a row. So nothing is written that is not a change
+ *                somebody made: short rate limits are counted in memory, the alarm is set once per IDLE_BEAT_MS and
+ *                never per beat or per request, a session's expiry is pushed out a day at a time, and what a poll or a
+ *                check-in changes is held in memory and written later (sqlite-store.ts LAZY). write-meter.ts counts
+ *                what is written, per table and per kind of work, for the operator's overview.
  *   timers       a module's own timer (a table's clock) is an ordinary timer: while one is pending the object is not
  *                put to sleep (ctx.core.hibernates tells the table service to keep one going while a seat is taken).
  *   background   ctx.waitUntil(promise) and every `after` step keep the object up until the work has finished.
@@ -36,8 +42,10 @@ import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
 import { createSqliteStore } from './sqlite-store.ts';
-import { LIMITER_CAPS, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
+import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
+import { ALARM_TABLE, createWriteMeter, type WriteMeter } from './write-meter.ts';
+import type { SqliteStorage, SqlStorageLike } from './cf-types.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
 import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
 import { buildSocketHandlers } from '../server/ws/index.ts';
@@ -55,14 +63,20 @@ import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../sr
 import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
 
-/** How often connected sockets are asked for a sign of life, and how often the object wakes with nobody connected. */
+/** How often connected sockets are asked for a sign of life (a timer in memory), and how often the alarm wakes the object whoever is connected. */
 const HEARTBEAT_MS = 10000, IDLE_BEAT_MS = 300000;
+/** A lazy change (a poll that only moved the clock, a check-in, a counter) is written this long after it was made, at the latest (sqlite-store.ts LAZY). */
+const LAZY_FLUSH_MS = 600000;
+/** A session's stored expiry is pushed out only once that gains this much: a request must not rewrite the row to add a second to thirty days. */
+const RENEW_SLACK_MS = 86400000;
+/** How often the limiter's stored rows and the day-old chat receipts are swept. A sweep that finds nothing writes nothing. */
+const SWEEP_MS = 600000;
 /** Path prefixes outside /api/ that a module may serve as an HTML page (ctx.pages). The Worker sends these to the object. */
 const PAGE_PREFIXES = ['/s/', '/e/'];
 /** A socket's attachment may hold 2,048 bytes. */
 const ATTACHMENT_BYTES = 2000;
-/** The limiter's tables, one per class (server/limiter.ts). */
-const RATE_TABLES: Record<LimiterClass, string> = { short: 'rate_limits', long: 'rate_limits_long', protected: 'rate_limits_protected' };
+/** The limiter's STORED classes, one table each (server/limiter.ts). The short class is kept in memory and has no table. */
+const RATE_TABLES: Record<Exclude<LimiterClass, 'short'>, string> = { long: 'rate_limits_long', protected: 'rate_limits_protected' };
 
 /** Response headers from a plain record; a header given as a list (two Set-Cookie lines) is sent as that many headers. */
 function headersOf(headers: Record<string, string | string[]>): Headers {
@@ -203,6 +217,12 @@ export interface WorkerEnv {
   ACCOUNTS_FIREBASE_PROJECT_ID?: string
   ACCOUNTS_FIREBASE_API_KEY?: string
   ACCOUNTS_GOOGLE_CLIENT_ID?: string
+  /**
+   * '1': the object may sleep while sockets are connected. The beat then runs on the alarm (a row written per beat) and
+   * no lazy change is held in memory (every write is durable at once) — what the object did before it counted its rows.
+   * Unset, the default: the beat is a timer, lazy changes are held, and the object stays in memory while anyone is connected.
+   */
+  SLEEP_BETWEEN_BEATS?: string
   /** Replaces the built-in founder hash; empty: no founder (server/host-context.ts founderEmailHash). */
   FOUNDER_EMAIL_SHA256?: string
   [name: string]: unknown
@@ -213,21 +233,25 @@ interface ChatRecord { id: string; at: number; bodyHash?: string }
 interface VoiceConfig { iceServers: unknown; turnConfigured: boolean; mode: string; expiresAt?: number }
 
 export class JoinAllworldState extends DurableObject<WorkerEnv> {
-  sql: SqlStorage;
+  sql: SqlStorageLike;
+  meter: WriteMeter;
   peers: Map<WebSocket, HostSocket>;
   inflight: Map<WebSocket, Promise<void>>;
   telemetry: ReturnType<typeof createServerTelemetry>;
   booted: boolean;
   store: SqliteStore;
   shards: ShardStore;
-  rateCleanupAt: number;
+  sweepAt: number;
+  shortLimits: ReturnType<typeof createMemoryLimiter>;
+  beatTimer: ReturnType<typeof setTimeout> | null;
+  sleeps: boolean;
   operatorDigest: Promise<string> | null;
   context: RouteContext;
   handlers: WsDispatch;
   routes: RouteTable;
   ready: Promise<void>;
   constructor(ctx: DurableObjectState, env: WorkerEnv) {
-    super(ctx, env); this.env = env; this.sql = ctx.storage.sql; this.peers = new Map(); this.inflight = new Map();
+    super(ctx, env); this.env = env; this.meter = createWriteMeter(ctx.storage.sql); this.sql = this.meter.sql; this.peers = new Map(); this.inflight = new Map();
     const now = () => Date.now();
     const log = (line: unknown): void => { try { console.error(String(line).slice(0, 500)); } catch { /* a failing logger changes nothing */ } };
     const buildId = String(env.BUILD_ID || 'unreleased').slice(0, 40);
@@ -237,22 +261,27 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // be acknowledged (no request is being answered, and the runtime holds every response until its writes are confirmed),
     // and the barrier cannot be waited for inside blockConcurrencyWhile — so start-up writes go without it.
     const barrier = () => (this.booted ? ctx.storage.sync() : Promise.resolve());
-    this.store = createSqliteStore(ctx.storage, { barrier });
+    // Every table is written through the meter (write-meter.ts): the same storage, with its rows counted.
+    const storage: SqliteStorage = { sql: this.sql, transactionSync: fn => ctx.storage.transactionSync(fn), sync: () => ctx.storage.sync() };
+    this.sleeps = env.SLEEP_BETWEEN_BEATS === '1';
+    this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS });
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
-    this.shards = createShardStoreOn(sqliteShardBackend(ctx.storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
-    this.sql.exec('CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL)');
-    if (!this.sql.exec('PRAGMA table_info(rate_limits)').toArray().some(column => column['name'] === 'expires_at')) this.sql.exec('ALTER TABLE rate_limits ADD COLUMN expires_at INTEGER');
-    this.sql.exec('UPDATE rate_limits SET expires_at = started_at + 60000 WHERE expires_at IS NULL');
-    // The limiter's rows are bounded per class (server/limiter.ts): short windows in rate_limits, long windows and the keys that
-    // are never dropped (the operator's guard, account sign-in) each in a table of their own. Each is indexed by expiry.
+    this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
+    // THE LIMITER (server/limiter.ts), bounded per class. SHORT windows (a minute or less: every request, every socket frame) are
+    // counted IN MEMORY: a stored row per request is a row billed per request, for a count that is worthless a minute later.
+    // The object is in memory for as long as anyone is connected or asking, so the counts hold exactly when they matter; one
+    // that has slept starts its short windows again. LONG windows and the keys that are never dropped (the operator's guard,
+    // account sign-in) are STORED, each class in a table of its own, indexed by expiry, and outlive any restart.
+    // (A database made before this keeps a `rate_limits` table of short rows: it is no longer read or written.)
+    this.shortLimits = createMemoryLimiter({ now });
     for (const table of Object.values(RATE_TABLES)) {
-      if (table !== 'rate_limits') this.sql.exec(`CREATE TABLE IF NOT EXISTS ${table} (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL, expires_at INTEGER)`);
+      this.sql.exec(`CREATE TABLE IF NOT EXISTS ${table} (key TEXT PRIMARY KEY, started_at INTEGER NOT NULL, count INTEGER NOT NULL, expires_at INTEGER)`);
       this.sql.exec(`CREATE INDEX IF NOT EXISTS ${table}_expiry ON ${table}(expires_at)`);
     }
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS host_keys (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
-    this.rateCleanupAt = 0;
+    this.sweepAt = 0; this.beatTimer = null;
     // The operator token never leaves this closure: only its digest is kept. Unset or too short = no operator surface.
     const operatorToken = validOperatorToken(env.MODERATOR_TOKEN) ? env.MODERATOR_TOKEN as string : null;
     this.operatorDigest = operatorToken ? digest(operatorToken) : null;
@@ -317,7 +346,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         expiredSessionKeys: (db: Db) => db.$store!.scanSessions(s => !s.publicId || !Number.isFinite(s.expiresAt) || s.expiresAt <= now()),
         sessionByPublicId: (db: Db, id: string) => { const key = db.$store!.sessionKeyByPublicId(id); return key === undefined ? undefined : db.sessions[key]; },
         unresponsive,
-        storeStats: () => this.store.stats(),
+        storeStats: () => ({ ...this.store.stats(), rows: this.meter.snapshot(), limits: this.limits() }),
         newIdentity: () => ({ secret: crypto.randomUUID(), publicId: crypto.randomUUID() }),
         newId: () => crypto.randomUUID(),
         cookieHeader: (request, secret: string) => cookie(secret, request.raw as Request),
@@ -346,18 +375,23 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       for (const socket of ctx.getWebSockets()) { const info = socket.deserializeAttachment(); if (info && !info.closed) this.handlers.restore(this.wrap(socket, info)); }
       // Rotate credentials created by versions that exposed the cookie as a public ID, and archive what has expired.
       await this.store.transact(db => { for (const secret of context.core.expiredSessionKeys(db)) { const expired = db.sessions[secret]; if (expired) context.core.archiveSession(db, secret, expired); } });
-      if (await ctx.storage.getAlarm() === null) await ctx.storage.setAlarm(Date.now() + (this.peers.size ? HEARTBEAT_MS : IDLE_BEAT_MS));
-    }).then(() => { this.booted = true; });
+      if (await ctx.storage.getAlarm() === null) await this.arm(Date.now() + (this.sleeps && this.peers.size ? HEARTBEAT_MS : IDLE_BEAT_MS));
+    }).then(() => { this.booted = true; this.keepBeating(); });
   }
   /**
-   * ctx.allow (server/limiter.ts). Rows are bounded per class, each class in its own table; a full table drops the rows that
-   * expire soonest to make room, so whoever filled it cannot turn newcomers away or erase another class. The protected class
-   * (operator and account keys) is never dropped from: when it is full of live rows a new key of it is refused.
-   * The row count of a full-table check is a COUNT(*) per NEW key; it is only paid when the key is new, and is left as it is.
+   * ctx.allow (server/limiter.ts). A short window is counted in memory. A long or protected one is a stored row, bounded per
+   * class: a full table drops the rows that expire soonest to make room, so whoever filled it cannot turn newcomers away or
+   * erase another class. The protected class (operator and account keys) is never dropped from: when it is full of live rows
+   * a new key of it is refused. The row count of a full-table check is a COUNT(*) per NEW key; it is only paid when the key is new.
+   * WHAT A CALL WRITES: a new window is one row and its index entry; a further call inside the window updates the count
+   * alone (one row); a call that is already over its limit writes nothing — so whoever is being refused cannot make the
+   * object write, however often they ask.
    */
   allow(key: string, count: number, windowMs = 60000): boolean {
-    const now = Date.now(), kind = limiterClass(key, windowMs), table = RATE_TABLES[kind], cap = LIMITER_CAPS[kind];
-    if (now >= this.rateCleanupAt) { for (const name of Object.values(RATE_TABLES)) this.sql.exec(`DELETE FROM ${name} WHERE expires_at <= ?`, now); this.rateCleanupAt = now + 60000; }
+    const kind = limiterClass(key, windowMs);
+    if (kind === 'short') return this.shortLimits.allow(key, count, windowMs);
+    const now = Date.now(), table = RATE_TABLES[kind], cap = LIMITER_CAPS[kind];
+    this.sweep(now);
     const old = this.sql.exec<{ started_at: number; count: number; expires_at: number }>(`SELECT started_at,count,expires_at FROM ${table} WHERE key = ?`, key).toArray()[0];
     const size = (): number => this.sql.exec<{ count: number }>(`SELECT COUNT(*) AS count FROM ${table}`).one().count;
     if (!old && size() >= cap) {
@@ -368,18 +402,38 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
         this.sql.exec(`DELETE FROM ${table} WHERE key IN (SELECT key FROM ${table} ORDER BY expires_at LIMIT ?)`, over + limiterBatch(cap));
       }
     }
-    const active = old && old.expires_at > now, next = active ? old.count + 1 : 1;
-    this.sql.exec(`INSERT INTO ${table}(key,started_at,count,expires_at) VALUES(?,?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count,expires_at=excluded.expires_at`, key, active ? old.started_at : now, next, active ? old.expires_at : now + windowMs);
-    return next <= count;
+    if (old && old.expires_at > now) {
+      if (old.count > count) return false;
+      this.sql.exec(`UPDATE ${table} SET count = ? WHERE key = ?`, old.count + 1, key);
+      return old.count + 1 <= count;
+    }
+    this.sql.exec(`INSERT INTO ${table}(key,started_at,count,expires_at) VALUES(?,?,?,?) ON CONFLICT(key) DO UPDATE SET started_at=excluded.started_at,count=excluded.count,expires_at=excluded.expires_at`, key, now, 1, now + windowMs);
+    return 1 <= count;
   }
-  /** ctx.peek: would allow(key, count) pass now? Reads the key's row in whichever table holds it; writes nothing. */
+  /** ctx.peek: would allow(key, count) pass now? Looks in memory, then at the key's row in whichever table holds it; writes nothing. */
   peek(key: string, count: number): boolean {
+    if (!this.shortLimits.peek(key, count)) return false;
     for (const table of Object.values(RATE_TABLES)) {
       const old = this.sql.exec<{ count: number; expires_at: number }>(`SELECT count,expires_at FROM ${table} WHERE key = ?`, key).toArray()[0];
       if (old) return old.expires_at > Date.now() ? old.count < count : true;
     }
     return true;
   }
+  /** Keys the limiter holds per class, for the operator's overview: short in memory, long and protected stored. */
+  limits(): Record<LimiterClass, number> {
+    const stored = (table: string): number => this.sql.exec<{ count: number }>(`SELECT COUNT(*) AS count FROM ${table}`).one().count;
+    return { short: this.shortLimits.sizes().short, long: stored(RATE_TABLES.long), protected: stored(RATE_TABLES.protected) };
+  }
+  /** Now and then: drop the limiter's expired rows and the chat receipts older than a day. Rows that are not there cost nothing to remove. */
+  sweep(now: number): void {
+    if (now < this.sweepAt) return;
+    this.sweepAt = now + SWEEP_MS;
+    for (const table of Object.values(RATE_TABLES)) this.sql.exec(`DELETE FROM ${table} WHERE expires_at <= ?`, now);
+    this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', now - 86400000);
+    this.shortLimits.sweep();
+  }
+  /** Set the alarm. Setting it is a write, and is counted as one. */
+  async arm(at: number): Promise<void> { await this.ctx.storage.setAlarm(at); this.meter.add(ALARM_TABLE, 1); }
   wrap(socket: WebSocket, info: SocketInfo): HostSocket {
     const ws: HostSocket = { ...info, voice: info.voice || { enabled: false, muted: true }, position: info.position || { x: 0, z: 0 }, lastMoves: info.lastMoves || [], look: info.look ?? null, stale: false, guestUntil: 0,
       get readyState() { return this.closed ? 3 : socket.readyState; },
@@ -407,7 +461,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
     const found = sessionOfCookie(db, request.cookie, Date.now(), request.binding !== undefined);
     if (!found) return undefined;
-    if (renew) renewResolved(found, Date.now());
+    if (renew) renewResolved(found, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS);
     request.secret = found.session.secret;
     return found.session;
   }
@@ -421,6 +475,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     await this.ready;
     const url = new URL(raw.url);
     if (!url.pathname.startsWith('/api/') && url.pathname !== '/socket') return this.page(raw, url);
+    this.meter.from('http (before routing)');
     let at: { key: string; request: WorkerRequest; began: number } | undefined;
     try {
       const secret = cookieId(raw), now = Date.now();
@@ -445,7 +500,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       }
       if (url.pathname === '/api/voice-config' && raw.method === 'GET') return await this.voiceConfig(request);
       const route = this.routes.match(raw.method, url.pathname); if (!route) throw protocolError(404, 'not_found'); request.params = route.params;
-      at = { key: route.key, request, began: performance.now() };
+      at = { key: route.key, request, began: performance.now() }; this.meter.from(route.key);
       // ROOM REVALIDATION, for every route and every outcome (as on Node): before the request is answered, every room
       // the caller's sockets are in is re-checked against the STORED lives.
       let returned: RouteResult | void;
@@ -484,6 +539,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const found = pageFor(this.context.pages ?? new Map<string, PageHandler>(), url.pathname);
     if (!found || !['GET', 'HEAD', 'POST'].includes(raw.method)) return none();
     const [prefix, render] = found, began = performance.now(), key = `${prefix}*`;
+    this.meter.from(`page ${key}`);
     try {
       const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
       // Pages have a budget of their own, so a crawler reading link previews cannot use up an address's API allowance.
@@ -523,6 +579,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   }
   async upgrade(raw: Request, request: WorkerRequest): Promise<Response> {
     if (raw.headers.get('upgrade')?.toLowerCase() !== 'websocket' || raw.method !== 'GET') throw protocolError(403, 'websocket_required');
+    this.meter.from('socket open');
     if (!this.allow(`upgrade:${request.ip}`, 60)) throw protocolError(429, 'rate_limited');
     // `secret` is the stored record's key; `device` is the cookie the browser presented, the only value ever sent back to it.
     const info = await this.store.transact(db => { const s = request.requireSession(db, { renew: true }); return { secret: s.secret as string, device: request.cookie as string, session: publicSession(s), expiresAt: s.expiresAt }; });
@@ -531,13 +588,13 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const pair = new WebSocketPair(), socket = pair[1]; this.ctx.acceptWebSocket(socket);
     const ws = this.wrap(socket, { ...info, ip: request.ip, room: null, closed: false, alive: true, pingedAt: 0, seenAt: Date.now(), lastSessionRenewedAt: Date.now() });
     this.handlers.open(ws); this.saveSockets();
-    // Never postpone a beat that is already due; bring an idle one forward now that somebody is connected.
-    const due = await this.ctx.storage.getAlarm();
-    if (due === null || due > Date.now() + HEARTBEAT_MS) await this.ctx.storage.setAlarm(Date.now() + HEARTBEAT_MS);
+    // Somebody is connected: the beat runs (a beat that is already due is never postponed by a newer socket).
+    this.keepBeating();
+    if (this.sleeps) { const due = await this.ctx.storage.getAlarm(); if (due === null || due > Date.now() + HEARTBEAT_MS) await this.arm(Date.now() + HEARTBEAT_MS); }
     return new Response(null, { status: 101, webSocket: pair[0], headers: headersOf({ 'Set-Cookie': cookie(info.device, raw) }) });
   }
   chatHistory(ws: HostSocket, body: unknown) {
-    this.sql.exec('DELETE FROM chat_receipts WHERE at < ?', Date.now() - 86400000);
+    this.sweep(Date.now());
     const rows = this.sql.exec<{ client_id: string; value: string }>('SELECT client_id,value FROM chat_receipts WHERE sender=? AND room=? ORDER BY at,rowid', ws.session.id, ws.room).toArray();
     const records = new Map<string, ChatRecord>(rows.map(row => [row.client_id, JSON.parse(row.value) as ChatRecord]));
     return {
@@ -550,6 +607,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   override async webSocketMessage(socket: WebSocket, raw: Inbound): Promise<void> {
     await this.ready;
     const ws = this.peers.get(socket); if (!ws || ws.readyState !== 1) return;
+    this.meter.from('socket (before parsing)');
     if (!this.allow(`ws:${ws.session.id}`, 600)) { this.sendFrame(ws, { type: 'error', code: 'rate_limited', error: 'rate_limited' }); return; }
     const before = this.inflight.get(socket) || Promise.resolve();
     const operation = before.then(() => this.message(socket, raw)); this.inflight.set(socket, operation);
@@ -562,13 +620,14 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (typeof raw !== 'string' || new TextEncoder().encode(raw).length > 16384) throw Error('invalid_message');
       try { message = JSON.parse(raw) as IncomingFrame; } catch { throw Error('invalid_message'); }
       if (!message || typeof message !== 'object') throw Error('invalid_message');
+      this.meter.from(`socket ${typeof message.type === 'string' && this.handlers.messages.has(message.type) ? message.type : message.type === 'heartbeat-ack' ? 'heartbeat-ack' : '(unknown)'}`);
       const authenticated = await this.store.read(db => Boolean(this.socketSession(db, ws)));
       if (!authenticated || ws.expiresAt <= Date.now()) { this.context.send(ws, { type: 'error', code: 'device_session_required', error: 'device_session_required' }); ws.close(1008, 'Device session expired'); this.release(ws); return; }
       ws.alive = true; ws.seenAt = Date.now(); // any frame proves the connection is alive
       if (message.type === 'heartbeat-ack') return;
       if (Date.now() - ws.lastSessionRenewedAt >= 60000) {
         // The renewal could not be saved, so it did not happen: the socket keeps its expiry and the message is still handled.
-        const expiration = await this.store.transact(db => { const found = this.socketSession(db, ws); if (!found || !renewSession(found.session, Date.now())) throw Error('device_session_required'); renewResolved(found, Date.now()); return found.session.expiresAt; }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
+        const expiration = await this.store.transact(db => { const found = this.socketSession(db, ws); if (!found || !renewSession(found.session, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS)) throw Error('device_session_required'); renewResolved(found, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS); return found.session.expiresAt; }, { durable: false }).catch((error: unknown) => { if ((error as Partial<HttpError> | null | undefined)?.code !== 'storage_unavailable') throw error; return null; });
         if (expiration !== null) for (const peer of this.peers.values()) if (peer.secret === ws.secret) { peer.expiresAt = expiration; peer.lastSessionRenewedAt = Date.now(); }
       }
       const entry = typeof message.type === 'string' ? this.handlers.messages.get(message.type) : undefined;
@@ -592,17 +651,44 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     }
     finally { this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); }
   }
-  override async webSocketClose(socket: WebSocket): Promise<void> { await this.ready; const ws = this.peers.get(socket); if (ws) { this.release(ws); this.peers.delete(socket); this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); } }
+  override async webSocketClose(socket: WebSocket): Promise<void> { await this.ready; const ws = this.peers.get(socket); if (ws) { this.meter.from('socket close'); this.release(ws); this.peers.delete(socket); this.saveSockets(); this.ctx.waitUntil(this.telemetry.flush()); } }
   override async webSocketError(socket: WebSocket): Promise<void> { await this.webSocketClose(socket); }
-  override async alarm(): Promise<void> {
-    await this.ready;
+  /**
+   * THE BEAT, every HEARTBEAT_MS while a socket is open: a socket that did not answer the last one is closed, the others are
+   * asked for a sign of life, and the modules do their housekeeping ('heartbeat'). It is a timer in memory, not the alarm:
+   * setting an alarm is a write, and six a minute for as long as anyone is connected is what the alarm used to cost. A
+   * pending timer also keeps the object in memory, so what it holds there (short limits, lazy changes) stays while anyone is connected.
+   */
+  beat(): void {
+    this.meter.from('beat');
     for (const ws of [...this.peers.values()]) {
       if (ws.readyState !== 1) continue;
       if (!ws.alive || ws.expiresAt <= Date.now()) { ws.close(1008, 'Session inactive'); this.release(ws); continue; }
       ws.alive = false; ws.pingedAt = Date.now(); this.sendFrame(ws, { type: 'heartbeat' });
     }
     this.context.emit('heartbeat', { now: Date.now() }); this.saveSockets();
-    this.ctx.waitUntil(this.telemetry.flush());
-    await this.ctx.storage.setAlarm(Date.now() + ([...this.peers.values()].some(ws => ws.readyState === 1) ? HEARTBEAT_MS : IDLE_BEAT_MS));
+    this.sweep(Date.now());
+    try { this.ctx.waitUntil(this.telemetry.flush()); } catch { /* not in a request */ }
+  }
+  /** Keep the beat going while a socket is open. One timer at a time: asking again never moves a beat that is already due. */
+  keepBeating(): void {
+    if (this.sleeps || this.beatTimer !== null || ![...this.peers.values()].some(ws => ws.readyState === 1)) return;
+    this.beatTimer = setTimeout(() => {
+      this.beatTimer = null;
+      try { this.beat(); } catch (error) { this.context.core.log(`Beat failed: ${firstLine(error)}`); }
+      this.keepBeating();
+    }, HEARTBEAT_MS);
+  }
+  /**
+   * THE ALARM, every IDLE_BEAT_MS: what brings the object back when nothing else does. With nobody connected it is the
+   * beat (mail and push that are due go out, the world registry is tidied); with sockets it has woken an object that lost
+   * its memory, and the beat's timer starts again. It is set once per run and never from a request.
+   * (SLEEP_BETWEEN_BEATS: there is no timer; the alarm is the beat, every HEARTBEAT_MS while a socket is open.)
+   */
+  override async alarm(): Promise<void> {
+    await this.ready;
+    this.meter.from('alarm');
+    try { if (this.beatTimer === null) this.beat(); }
+    finally { await this.arm(Date.now() + (this.sleeps && [...this.peers.values()].some(ws => ws.readyState === 1) ? HEARTBEAT_MS : IDLE_BEAT_MS)); this.keepBeating(); }
   }
 }

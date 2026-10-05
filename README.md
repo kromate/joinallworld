@@ -297,19 +297,19 @@ Pages outside `/api/` (`ctx.pages`, written by the host itself with fixed header
 
 | | Node (`server/server.ts`) | Worker (`deploy/`) |
 | --- | --- | --- |
-| Main store | one JSON file, group commit (`server/store.ts`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged |
+| Main store | one JSON file, group commit (`server/store.ts`) | SQLite tables of one Durable Object (`sqlite-store.ts`): `sessions`, `action_receipts`, `once_receipts`, `archived_lives`, `collections` + `collection_parts`. One SQL transaction per write, durable before it is acknowledged. A lazy change (a poll that only moved the clock, a check-in, a counter — what Node may also save a moment later) is held in memory and written within ten minutes, or sooner with the next durable change that read the same session or collection: a row written is a row billed, so a poll writes none. The operator's overview shows the rows written per table and per kind of work (`write-meter.ts`) |
 | World shards | one append-only file per local government (`server/world/shards.ts`) | rows of `world_shards` (`sqlite-shards.ts`), through the same store code (`server/world/shard-core.ts`): the same bounded reads, group commit and compaction |
 | Keys the server makes (push, link signing) | `DATA_DIR/keys/*.json`, mode 0600 | rows of `host_keys` in the object's own storage |
-| Rate limits | in memory | the `rate_limits`, `rate_limits_long` and `rate_limits_protected` tables (they survive a sleep). On both hosts rows are bounded per class (short 10,000, long 10,000, protected 20,000); a full short or long table drops the rows that expire soonest instead of refusing new keys, and the protected class (the operator's guard and the account sign-in and reset limits) is never dropped from (`server/limiter.ts`) |
+| Rate limits | in memory | short windows (a minute or less) in memory, so a request or a socket frame writes no row; long windows and the protected class in the `rate_limits_long` and `rate_limits_protected` tables (they survive a restart). On both hosts rows are bounded per class (short 10,000, long 10,000, protected 20,000); a full short or long table drops the rows that expire soonest instead of refusing new keys, and the protected class (the operator's guard and the account sign-in and reset limits) is never dropped from (`server/limiter.ts`) |
 | Sockets | `ws`, protocol ping | hibernating WebSockets; what a socket carries is its attachment, and the modules get each socket back (`restore`) when the object wakes. An application `heartbeat` frame is answered by every browser socket with `heartbeat-ack` |
-| Heartbeat and housekeeping | a 10 s timer | an alarm: every 10 s while a socket is connected, every 5 minutes otherwise (mail and push that are due, registry tidying) |
+| Heartbeat and housekeeping | a 10 s timer | a 10 s timer while a socket is connected (the object stays in memory for as long as anyone is), and an alarm every 5 minutes whoever is connected (mail and push that are due, registry tidying; it also restarts the timer of an object that lost its memory). `SLEEP_BETWEEN_BEATS=1` puts the beat back on the alarm and writes every change at once, so the object can sleep between beats — at the price of a row per beat |
 | Work after the answer | runs in the process | `ctx.waitUntil` keeps the object up for it |
 | Pages `/s/:code`, `/e/*` | written by the host | the Worker sends those paths to the object; same fixed headers |
 | The game's own page | default preview image made absolute | the same, from `PUBLIC_ORIGIN` or the request's host |
 | Operator routes | bearer token, `MODERATOR_TOKEN` | the same; off unless the `MODERATOR_TOKEN` secret is set |
 | Voice relay | `voiceConfigProvider` (none by default) | the bounded two-tester relay test (`turn-provider.ts`) |
 | The original Allworld character | — | `/old-character.html` on the apex host only (`legacy-bridge.ts`) |
-| Stopping | one shutdown order | nothing to flush: every acknowledged write is already durable |
+| Stopping | one shutdown order | nothing to flush that anyone was promised: every acknowledged write is already durable, and a lazy change that was still in memory is computed again from what is stored |
 
 What does not carry over, or fails closed, on the Worker:
 

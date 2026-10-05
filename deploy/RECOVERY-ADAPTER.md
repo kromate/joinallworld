@@ -20,10 +20,10 @@ The Worker sends an application heartbeat because its hibernating socket API doe
 
 - Keys the server makes for itself (push, link signing) are rows of `host_keys`, not files.
 - `ctx.fetch` cannot ask the runtime to fail on a redirect: it does not follow one and rejects the answer.
-- Rate limits are durable rows; the operator's own budget is never locked out by a flood of other keys.
+- Long-window and protected rate limits are durable rows; short windows (a minute or less) are counted in memory and start again with the object. The operator's own budget is never locked out by a flood of other keys.
 - Addresses are kept only as a digest of `CF-Connecting-IP` (IPv6: its /64).
 
-- Worker uses durable SQLite transactions for all writes; Node may defer nonmaterial writes.
+- Worker uses durable SQLite transactions for every write that acknowledges something; nonmaterial writes (the ones Node may defer) are held in memory and written within ten minutes, or with the next durable change that read the same session or collection.
 - Worker hibernation restore hooks and digest-only room-chat receipts are host-specific. Node keeps its existing in-memory room-chat history.
 - Missing live voice-room membership now follows the shared recovery contract: HTTP 403 `room_membership_required` (old edge used 409).
 - Health retains edge `buildId`/`transport` fields alongside shared `build`.

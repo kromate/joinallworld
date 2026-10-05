@@ -73,3 +73,29 @@ test('Node host: with the limiter full of other people’s keys, a new visitor s
   assert.equal(ctx.allow('account:sign-in:203.0.113.9', 10), true, 'and an account key of a new address is admitted too');
   assert.equal(ctx.peek?.('mod-fail:all', 100), true);
 });
+
+test('sweep drops what has expired and nothing else; a session is renewed a slack at a time when a host asks for that', async () => {
+  let time = 1000;
+  const limiter = createMemoryLimiter({ now: () => time });
+  limiter.allow('short-a', 3); limiter.allow('long-a', 3, 3600000); limiter.allow('mod:operator', 3, 600000);
+  time += 61000; limiter.allow('short-b', 3);
+  limiter.sweep();
+  assert.deepEqual(limiter.sizes(), { short: 1, long: 1, protected: 1 });
+  assert.equal(limiter.allow('long-a', 3, 3600000), true); assert.equal(limiter.peek('long-a', 2), false, 'the live window kept its count');
+  const { renewSession, renewResolved, SESSION_TTL_MS, DEVICE_SEEN_SLACK_MS } = await import('./protocol.ts');
+  const day = 86400000, now = 5 * day;
+  // Without slack: every renewal moves the expiry, as it always did.
+  const plain = { expiresAt: now + SESSION_TTL_MS - 5 }; assert.equal(renewSession(plain, now), true); assert.equal(plain.expiresAt, now + SESSION_TTL_MS);
+  // With a day's slack: a record that would gain less than a day is left as it is, and is live all the same.
+  const fresh = { expiresAt: now + SESSION_TTL_MS - day + 1 }; assert.equal(renewSession(fresh, now, SESSION_TTL_MS, day), true); assert.equal(fresh.expiresAt, now + SESSION_TTL_MS - day + 1);
+  const older = { expiresAt: now + SESSION_TTL_MS - day }; assert.equal(renewSession(older, now, SESSION_TTL_MS, day), true); assert.equal(older.expiresAt, now + SESSION_TTL_MS);
+  const gone = { expiresAt: now }; assert.equal(renewSession(gone, now, SESSION_TTL_MS, day), false, 'an expired session is not brought back'); assert.equal(gone.expiresAt, now);
+  // A device binding is touched once its "last seen" is an hour old.
+  type Found = Parameters<typeof renewResolved>[0];
+  const found = { session: { expiresAt: now + SESSION_TTL_MS - 10 }, device: { account: 'a', createdAt: now - day, seenAt: now - DEVICE_SEEN_SLACK_MS + 1, expiresAt: now + SESSION_TTL_MS - 10 } };
+  renewResolved(found as unknown as Found, now, SESSION_TTL_MS, day);
+  assert.deepEqual([found.session.expiresAt, found.device.seenAt, found.device.expiresAt], [now + SESSION_TTL_MS - 10, now - DEVICE_SEEN_SLACK_MS + 1, now + SESSION_TTL_MS - 10]);
+  found.device.seenAt = now - DEVICE_SEEN_SLACK_MS;
+  renewResolved(found as unknown as Found, now, SESSION_TTL_MS, day);
+  assert.deepEqual([found.session.expiresAt, found.device.seenAt, found.device.expiresAt], [now + SESSION_TTL_MS - 10, now, now + SESSION_TTL_MS]);
+});

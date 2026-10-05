@@ -202,9 +202,34 @@ test('the zoomed interface sizes itself with --ui-vh: every rule that sets the i
   }
   const panels = new URL('../panels/', import.meta.url);
   // (creator.css is the full-screen creator: it resets the zoom and divides by its own.)
-  const files = [...(await readdir(panels)).filter((name) => name.endsWith('.css') && name !== 'creator.css').map((name) => `../panels/${name}`), '../shell.css', '../controls.css', './phone.css', '../../map3d/geo/atlas.css', '../../app/ui/BaseSheet.vue'];
+  const files = [...(await readdir(panels)).filter((name) => name.endsWith('.css') && name !== 'creator.css').map((name) => `../panels/${name}`), '../shell.css', '../compact.css', '../controls.css', './phone.css', '../../map3d/geo/atlas.css', '../../app/ui/BaseSheet.vue'];
   for (const path of files) {
     const css = (await read(path)).replace(/--ui-vh:\s*calc\(1dvh[^;]*;/g, '');
     assert.doesNotMatch(css, /\d(dvh|svh|lvh|vh)\b/, `${path} sizes with --ui-vh, not with a viewport height unit`);
   }
+});
+
+// The Map's level bar and its panel are ONE column on a wide screen, so no state of the panel (list, handle, venue card, the atlas's travel card) can
+// slide under the bar; and on a phone the bar is one chip that opens the trail, never a row wider than the screen.
+test('the level bar and the docked map panel are one column; the panel is never fixed on its own on a wide screen', async () => {
+  const read = (path: string): Promise<string> => readFile(new URL(path, import.meta.url), 'utf8');
+  const app = await read('../../app/features/travel/MapApp.vue'), css = await read('../panels/map.css'), levels = await read('../../app/features/travel/MapLevels.vue');
+  assert.match(app, /<div class="map-dock">\s*<MapLevels \/>[\s\S]*<VenueCard[\s\S]*<MapOverview[\s\S]*<\/div>/, 'the bar, the card and the overview share one wrapper');
+  const wide = css.slice(css.indexOf('@media(min-width:721px){'), css.indexOf('@media(max-width:720px){\n  .map-panel'));
+  assert.match(wide, /\.map-dock\{position:fixed;[^}]*flex-direction:column/, 'the wrapper is the one fixed, stacked column');
+  assert.match(wide, /\.map-dock>\.map-panel\{[^}]*min-height:0/, 'the panel shrinks inside the column');
+  assert.doesNotMatch(wide, /\.map-panel[^{]*\{[^}]*position:fixed/, 'no panel is fixed on its own');
+  assert.doesNotMatch(css, /\.map-levels\{[^}]*top:calc\(\d+px \* var\(--ui-zoom/, 'the bar is not placed with the zoom applied twice');
+  assert.match(levels, /class="map-levels-cur"[^>]*data-tour="map-world"[^>]*:aria-expanded="open"/, 'the phone chip carries the tour anchor and says whether it is open');
+});
+
+test('the compact layout: a 45% panel, a 44px target for every small control, one stack of view buttons, no raw viewport units', async () => {
+  const css = await readFile(new URL('../compact.css', import.meta.url), 'utf8');
+  assert.match(css, /@media\(max-width:480px\)/);
+  assert.match(css, /max-height:calc\(45 \* var\(--ui-vh\)\)/, 'an open panel takes at most 45% of the height');
+  assert.match(css, /\.m3-controls[^{]*\{[^}]*grid-auto-flow:row/, 'the view buttons are one column');
+  assert.match(css, /\.life-round::after\{content:'';position:absolute;inset:-5px\}/, 'a small round button reaches a 44px target');
+  assert.match(css, /safe-area-inset-bottom/);
+  assert.match(css, /prefers-reduced-motion/);
+  assert.doesNotMatch(css, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
 });

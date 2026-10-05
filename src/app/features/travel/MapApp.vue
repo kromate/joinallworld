@@ -104,10 +104,14 @@ defineExpose({ keys })
     <TripBar v-if="trip?.locked" :trip="trip" />
   </template>
   <template v-else>
-    <MapLevels />
-    <TripBar v-if="trip?.locked" :trip="trip" />
-    <VenueCard v-else-if="item" :item="item" />
-    <TripBar v-else-if="trip" :trip="trip" />
-    <MapOverview v-else />
+    <!-- One column: the level bar above, the docked panel below it, so no state of the panel can slide under the bar. A trip bar is not docked. -->
+    <div class="map-dock">
+      <MapLevels />
+      <template v-if="!trip?.locked">
+        <VenueCard v-if="item" :item="item" />
+        <MapOverview v-else-if="!trip" />
+      </template>
+    </div>
+    <TripBar v-if="trip && (trip.locked || !item)" :trip="trip" />
   </template>
 </template>

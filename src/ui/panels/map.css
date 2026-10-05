@@ -109,24 +109,30 @@
 .map-event-chip b,.map-event-chip small{display:block;font-size:12px}
 .map-event-chip small{color:var(--c-amber-dark)}
 
-/* Wide screens: the sheet is docked at the left, clear of the map */
+/* Wide screens: ONE column at the left, clear of the map — the level bar on top, the panel below it, a gap between. Whatever the panel shows
+   (list, handle, venue card, the atlas's travel card) lives inside the column and shrinks to fit it, so it can never slide under the bar.
+   (The trip bar is not docked: a running trip is shown in the bottom-centre stack with every other live status — shell.css.) */
+.map-dock{display:contents}
 @media(min-width:721px){
-  /* (The trip bar is not docked: a running trip is shown in the bottom-centre stack with every other live status — shell.css.) */
-  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:14px;top:70px;width:330px;max-height:calc(100 * var(--ui-vh) - 84px)}
-  .map-overview{grid-template-rows:auto auto minmax(0,1fr)}
+  .map-dock{position:fixed;z-index:6;left:14px;top:74px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:max-content;max-width:calc(100% - 28px);max-height:calc(100 * var(--ui-vh) - 88px);pointer-events:none}
+  .map-dock>*{pointer-events:auto}
+  .map-dock>.map-levels{flex:none}
+  .map-dock>.map-panel{flex:0 1 auto;min-height:0;width:330px}
+  .map-overview{grid-template-rows:auto auto minmax(0,1fr);overflow:hidden}
   .map-list{max-height:none}
   /* Docked, the chips wrap onto a second line: a row cut at the panel's edge has no scrollbar to show there is more. */
   .map-filters{flex-wrap:wrap;overflow-x:visible}
   .map-more{grid-template-rows:auto;overflow-y:auto}
   .map-grip{display:none}
   .life-ui .map-handle{padding-top:4px}
-  .map-card{overflow-y:auto}
+  .map-card{overflow-y:auto;max-height:none}
 }
 @media(max-width:720px){
   .map-panel{max-width:none;border-radius:22px}
   .map-card{max-height:calc(100 * var(--ui-vh) - 150px)}
   .life-ui .map-modes button{min-height:68px}
 }
+@media(min-width:721px) and (max-width:1120px){.map-dock{max-height:calc(100 * var(--ui-vh) - 160px)}}
 @media(max-height:560px){.map-list{max-height:calc(30 * var(--ui-vh))}}
 
 /* Arriving from a trip: the venue comes up with a short fade instead of a cut */
@@ -140,8 +146,10 @@
 .map-modes button>span{color:var(--c-ink-2)}.map-modes button.is-selected>span{color:var(--c-green-dark)}
 .map-event-icon{color:var(--c-amber-dark)}.map-event-chip>span:first-child{color:var(--c-amber-dark)}
 
-/* The level bar at the top of the city map: World › Africa › Nigeria › the city. The same place and look as the atlas's own bar. */
-.map-levels{position:fixed;z-index:6;top:calc(74px * var(--ui-zoom,1));left:calc(14px * var(--ui-zoom,1));max-width:calc(100vw - 28px);pointer-events:auto}
+/* The level bar at the top of the city map: World › Africa › Nigeria › the city. The same look as the atlas's own bar. On a wide screen it is the
+   first item of the docked column (.map-dock); on a phone it is fixed under the top bar (compact.css turns it into one chip). */
+.map-levels{position:relative;z-index:6;max-width:100%;pointer-events:auto}
+.life-ui .map-levels .map-levels-cur{display:none}
 .map-levels ol{display:flex;align-items:center;gap:2px;margin:0;padding:4px;list-style:none;background:var(--c-surface,#fffffff7);border:1px solid #fff;border-radius:999px;box-shadow:var(--e-2,0 6px 18px #0000001f);overflow-x:auto;scrollbar-width:none}
 .map-levels li{display:flex;align-items:center;flex:none}
 .map-levels li+li::before{content:"›";padding:0 2px;color:var(--c-faint,#8a929b);font-size:16px}
@@ -151,10 +159,6 @@
 .life-ui .map-levels button[data-map-level="world"],.map-levels button[data-map-level="world"]{background:var(--c-green-dark,#1d6b43);color:#fff}
 .map-levels button[data-map-level="world"]:hover{background:#17573a}
 @media(max-width:720px){
-  .map-levels{top:calc(60px * var(--ui-zoom,1));left:8px;max-width:calc(100vw - 16px)}
+  .map-levels{position:fixed;top:60px;left:8px;max-width:calc(100vw - 16px)}
   .map-levels button{padding:0 10px;font-size:12px}
-}
-@media(min-width:721px){
-  /* Docked, the Map's panel sits under the level bar. */
-  .map-panel.map-overview,.map-panel.map-card{top:124px;max-height:calc(100 * var(--ui-vh) - 138px)}
 }

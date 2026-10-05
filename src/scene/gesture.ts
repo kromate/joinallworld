@@ -90,6 +90,6 @@ export const glide = (speed: number, dt: number): number => speed * Math.exp(-dt
 /** The one-line how-to, per kind of device and map. */
 export const MAP_HINT_KEY = 'allworld:map-hint';
 export function mapHint(touch: boolean, flat: boolean): string {
-  if (touch) return flat ? 'Drag to move · pinch to zoom · tap a place to go there' : 'Drag to move · two fingers to rotate and zoom · tap a place to go there';
+  if (touch) return flat ? 'Drag to move · pinch to zoom' : 'Drag to move · two fingers to turn and zoom';
   return flat ? 'Drag to move · scroll to zoom · tap a place to go there' : 'Drag to move · right-drag or two fingers to rotate · scroll to zoom';
 }

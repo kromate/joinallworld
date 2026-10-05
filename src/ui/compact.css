@@ -1,0 +1,192 @@
+/*
+ * Small screens: a compact layout for phones (width up to 480px), a tighter step for short ones (height up to 700px) and a side-sheet layout for
+ * a phone on its side (height up to 430px). Wider screens are not touched here. The map or the scene gets most of the screen; every control keeps a
+ * 44px touch target (a smaller drawing gets its target from a ::after that reaches 2–4px past it) and no text is set below 12px.
+ *
+ *   top        the HUD row (HudBar.vue: one row — online, the status chip, invite, cash), then on the Map one chip with the current level
+ *   Map        the view buttons are ONE vertical stack at the right edge, the panel is a slim handle (the list opens to at most 45% of the height)
+ *   venue      one strip for the needs and the two round buttons, the goal line, the venue card as two slim rows, the nav
+ *
+ * Vertical sizes use --ui-vh (tokens.css), never dvh/vh. Safe-area insets are respected at every edge.
+ */
+@media(max-width:480px),(max-height:430px) and (max-width:900px){
+  /* ---- the Map: level chip -------------------------------------------------------------------------------------------- */
+  .life-ui .map-levels{top:calc(max(6px,env(safe-area-inset-top)) + 46px);left:max(8px,env(safe-area-inset-left));max-width:calc(100% - 16px)}
+  body .life-ui .map-levels .map-levels-cur{position:relative;display:inline-flex;align-items:center;gap:6px;max-width:100%;min-height:36px;padding:0 10px 0 9px;border:1px solid #fff;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:var(--e-2);color:var(--c-ink);font-size:var(--t-body);font-weight:700}
+  body .map-levels-cur::after{content:'';position:absolute;inset:-5px -2px}
+  body .map-levels-cur span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body .map-levels-cur svg:last-child{width:14px;height:14px;color:var(--c-muted);transition:transform var(--m-fast)}
+  body .map-levels[data-open] .map-levels-cur svg:last-child{transform:rotate(180deg)}
+  body .map-levels ol{display:none}
+  body .map-levels[data-open] ol{position:absolute;left:0;top:calc(100% + 6px);display:grid;gap:2px;min-width:min(240px,calc(100vw - 16px));padding:6px;border-radius:var(--r-lg);overflow:visible;box-shadow:var(--e-3)}
+  body .map-levels li+li::before{display:none}
+  .life-ui .map-levels ol button{width:100%;min-height:var(--tap);justify-content:flex-start;padding:0 14px;font-size:var(--t-body)}
+
+  /* ---- the top row: the other small targets of the HUD -------------------------------------------------------------------- */
+  body .life-ui .hud-bar .pulse-pill,body .life-ui .hud-bar .inv-button{position:relative}
+  body .life-ui .hud-bar .pulse-pill::after{content:'';position:absolute;inset:-8px -5px}
+  body .life-ui .hud-bar .inv-button::after{content:'';position:absolute;inset:-5px}
+  body .life-ui .hud-bar .acct-signup::after{content:'';position:absolute;inset:-7px -3px}
+
+  /* ---- the Map: view buttons, one stack at the right edge -------------------------------------------------------------- */
+  body .m3-controls,body .cmap-controls{right:max(8px,env(safe-area-inset-right));bottom:calc(var(--m3-dock,var(--cmap-dock,150px)) + 6px);display:grid;grid-auto-flow:row;gap:6px;justify-items:end}
+  body .m3-zoom,body .m3-go{display:grid;gap:6px;justify-items:end}
+  body .m3-controls button,body .cmap-controls button{position:relative;width:40px;height:40px}
+  body .m3-controls button::after,body .cmap-controls button::after{content:'';position:absolute;inset:-3px}
+  body .m3-controls button.m3-pill,body .cmap-controls button.cmap-fit{width:40px;padding:0;justify-content:center;gap:0}
+  body .m3-pill span,body .cmap-fit span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  body .m3-controls button.m3-me span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  /* The 3D / simple switch: an icon on a phone (its name is its aria-label), at the top of the right edge under the HUD, clear of the stack below. */
+  body .cmap-switch{right:max(8px,env(safe-area-inset-right));left:auto;top:calc(max(6px,env(safe-area-inset-top)) + 46px);bottom:auto;width:40px;min-height:40px;padding:0;border-radius:50%;font-size:0;color:transparent;overflow:hidden;background:#fffffff5 center/20px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2320232c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 4.5v9L12 21l-8-4.5v-9z'/%3E%3Cpath d='M12 12l8-4.5M12 12v9M12 12L4 7.5'/%3E%3C/svg%3E")}
+  body [data-map="3d"]>.cmap-switch{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2320232c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='2'/%3E%3Cpath d='M4 12h16M12 4v16'/%3E%3C/svg%3E")}
+  body .cmap-switch::after{content:'';position:absolute;inset:-3px}
+  body .cmap-switch{overflow:visible}
+
+  /* The how-to line: one short line over the bottom of the map, clear of the labels, and gone after a few seconds (or the first drag, which retires it for good). */
+  body .m3-hint,body .cmap-hint{top:auto;bottom:calc(var(--m3-dock,var(--cmap-dock,150px)) + 8px);left:max(8px,env(safe-area-inset-left));right:64px;width:fit-content;max-width:calc(100% - 72px);margin:0;padding:6px 12px;font-size:var(--t-small);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:map-hint-out .4s ease 4.5s forwards}
+  @keyframes map-hint-out{to{opacity:0;visibility:hidden}}
+
+  /* ---- the Map: panel -------------------------------------------------------------------------------------------------- */
+  .life-ui .map-panel{border-radius:var(--r-lg)}
+  .life-ui .map-overview{display:flex;flex-direction:column;gap:4px;padding:2px 6px;overflow:hidden;max-height:calc(45 * var(--ui-vh))}
+  .life-ui .map-overview.is-open{padding:4px 6px 6px;gap:6px}
+  .life-ui .map-overview .map-handle{flex:none;min-height:44px;padding:0 0 0 6px}
+  .life-ui .map-overview.is-collapsed .map-grip{display:none}
+  .life-ui .map-handle-cta{min-height:36px;position:relative}
+  body .map-handle-cta::after{content:'';position:absolute;inset:-5px -2px}
+  body .map-overview.is-collapsed .map-handle-text small,body .map-overview.is-collapsed .map-filters{display:none}
+  .life-ui .map-filters button{min-width:var(--tap)}
+  .life-ui .map-overview .map-filters{flex:none;padding:1px 0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+  .life-ui .map-overview .map-more{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;grid-template-rows:none;grid-auto-rows:max-content;align-content:start}
+  .life-ui .map-overview .map-list{max-height:none;overflow:visible}
+  .life-ui .map-more .map-filters{-webkit-mask-image:none;mask-image:none}
+
+  /* ---- the Map: venue card ---------------------------------------------------------------------------------------------- */
+  .life-ui .map-card{max-height:calc(45 * var(--ui-vh));padding:8px;gap:6px}
+  .life-ui .map-card .map-card-icon{display:none}
+  body .map-card-head h1{font-size:var(--t-lead)}
+  body .map-status{padding:3px 10px}
+  .life-ui .map-modes{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;gap:4px}
+  .life-ui .map-modes button{min-height:56px;padding:4px 0;border-radius:var(--r-sm);border-width:1.5px}
+  body .map-modes button>span{font-size:18px}
+  body .map-modes small.map-mode-time{display:none}
+  .life-ui .map-card .map-go{min-height:var(--tap);padding:6px 16px}
+  body .map-trip{line-height:1.3}
+
+}
+
+/* The venue's own rows, on a phone and on a phone on its side (the landscape layout of shell.css puts the nav and the card in one bottom row). */
+@media(max-width:480px),(max-height:430px) and (max-width:900px){
+  /* ---- the venue: top strip ----------------------------------------------------------------------------------------------- */
+  .life-ui .life-sidebar{top:calc(max(6px,env(safe-area-inset-top)) + 46px);left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));gap:4px}
+  .life-ui .life-quick{gap:6px}
+  .life-ui .needs-strip{height:32px;padding:0 10px;gap:4px}
+  .life-ui .life-round{position:relative;width:36px;height:36px}
+  body .life-round::after{content:'';position:absolute;inset:-5px}
+  .life-ui .life-round svg{width:18px;height:18px}
+  body .life-badge{top:-5px;right:-5px}
+  body .life-ui .life-goal .life-job{position:relative;min-height:36px;min-width:var(--tap);padding:2px 12px 2px 4px}
+  body .life-goal .life-job::after{content:'';position:absolute;inset:-5px -4px}
+  .life-ui .life-goal .life-job>span{width:28px;height:28px}
+  body .life-alerts .map-event-chip{min-height:var(--tap)}
+  .life-ui .life-coach{padding:2px 2px 2px 10px;border-radius:16px;line-height:1.25}
+  .life-ui .life-coach button{margin:-6px 0}
+
+  /* ---- the venue: card as two slim rows ---------------------------------------------------------------------------------- */
+  .life-ui .life-venue-panel{padding:4px 6px;border-radius:var(--r-lg)}
+  .life-ui .life-venue-header{gap:6px;margin-bottom:2px}
+  .life-ui .life-venue-header .life-avatar{position:relative;width:36px;height:36px;font-size:20px!important}
+  body .life-venue-header .life-avatar::after{content:'';position:absolute;inset:-7px}
+  body .life-venue-header .life-icon-button::after{content:'';position:absolute;inset:-5px}
+  .life-ui .life-venue-header .life-icon-button{position:relative;width:36px;height:36px}
+  .life-ui .life-spots{min-height:46px;gap:6px}
+  .life-ui .life-spots button{min-height:36px;position:relative;padding:0 14px}
+  body .life-spots button::after{content:'';position:absolute;inset:-5px -2px}
+  .life-ui .life-spots .life-expand{width:36px;padding:0}
+  .life-ui .life-spots .life-expand::after{inset:-5px -4px}
+
+  /* ---- the venue: controls over the scene ---------------------------------------------------------------------------------- */
+  body .scene-stick{width:84px;height:84px;opacity:.55;transition:opacity var(--m-fast)}
+  body .scene-stick:active,body .scene-stick.is-active{opacity:1}
+  body .scene-stick i{width:36px;height:36px;margin:-18px 0 0 -18px}
+  body .scene-pad{gap:6px}
+  body .scene-pad button{position:relative;width:40px;height:40px}
+  body .scene-pad button::after{content:'';position:absolute;inset:-3px}
+
+}
+
+@media(max-width:480px),(max-height:430px) and (max-width:900px){
+  /* The atlas's own bar and sheet: the same 44px targets. */
+  body .atlas-crumbs button,body .atlas-close,body .atlas-more{min-height:var(--tap);min-width:var(--tap)}
+  body .atlas-close{width:var(--tap);height:var(--tap);margin:-4px -4px 0 0}
+}
+
+@media(max-width:480px){
+  body .atlas-frame>.atlas-stage{margin-bottom:240px}
+  body .atlas.has-cities .atlas-frame>.atlas-stage{margin-bottom:296px}
+  /* ---- bottom: stack and nav --------------------------------------------------------------------------------------------- */
+  .life-ui .life-bottom{width:calc(100% - 16px);bottom:max(8px,env(safe-area-inset-bottom));gap:6px}
+  .life-ui .life-nav,.life-ui .life-bottom>nav[data-slot]{width:100%;padding:3px;border-radius:26px;gap:2px}
+  .life-ui .life-nav button{min-height:var(--tap);gap:0;padding:3px 4px;border-radius:23px;line-height:1.15}
+  .life-ui .life-nav svg{width:20px;height:20px}
+  /* The map panel and the venue panel are the same slot: the stack is the panel's own height, never more than the nav's. */
+
+  /* ---- the guest bar ----------------------------------------------------------------------------------------------------- */
+  .life-ui .life-bottom .gbar{padding:2px 2px 2px 12px;border-radius:var(--r-lg)}
+  .life-ui .life-bottom .gbar button{min-height:var(--tap)}
+  .life-ui .life-bottom .gbar .gbar-x{width:var(--tap);height:var(--tap)}
+}
+
+/* A short phone: the extras give way. The HUD already has "Sign up", so the guest bar waits for a taller screen. */
+@media(max-width:480px) and (max-height:700px){
+  body:has(.life-ui.is-expanded) .scene-stick,body:has(.life-ui.is-expanded) .scene-pad{visibility:hidden}
+  /* Short: the view buttons hang from the top (under the switch) and an open panel stops short of them. */
+  body .m3-controls,body .cmap-controls{bottom:auto;top:calc(max(6px,env(safe-area-inset-top)) + 46px + 46px)}
+  body .life-ui .map-overview,body .life-ui .map-card{max-height:min(45 * var(--ui-vh),calc(100 * var(--ui-vh) - 400px))}
+  body .atlas-zoom{display:none}
+  body .atlas-controls{display:flex;gap:6px}
+  .life-ui .life-bottom .gbar{display:none}
+  .life-ui .needs-strip{height:30px}
+  .life-ui .life-coach{font-size:var(--t-small)}
+}
+
+/* A phone on its side: the Map's column becomes a side sheet at the left (level chip above the panel), the view buttons sit at the right. */
+@media(max-height:430px) and (min-width:481px) and (max-width:900px){
+  body .map-dock{position:fixed;z-index:6;left:max(8px,env(safe-area-inset-left));top:calc(max(6px,env(safe-area-inset-top)) + 46px);display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:min(300px,45vw);max-height:calc(100 * var(--ui-vh) - 58px - 70px);pointer-events:none}
+  body .map-dock>*{pointer-events:auto}
+  .life-ui .map-dock>.map-levels{position:relative;top:auto;left:auto;max-width:100%;flex:none}
+  .life-ui .map-dock>.map-panel{position:static;flex:0 1 auto;min-height:0;width:100%;max-height:none;overflow-y:auto}
+  .life-ui .map-dock>.map-overview{display:flex;flex-direction:column;overflow:hidden}
+  .life-ui .map-dock .map-more{flex:1 1 auto;min-height:0;overflow-y:auto}
+  .life-ui .map-dock .map-list{max-height:none}
+  body .m3-controls,body .cmap-controls{right:max(8px,env(safe-area-inset-right));bottom:calc(max(8px,env(safe-area-inset-bottom)) + 62px);display:grid;gap:6px}
+  body .cmap-switch{left:auto;right:calc(max(8px,env(safe-area-inset-right)) + 48px);top:calc(max(6px,env(safe-area-inset-top)) + 46px);bottom:auto;width:40px;min-height:40px;padding:0;border-radius:50%;font-size:0;color:transparent}
+  body .m3-hint,body .cmap-hint{top:calc(max(6px,env(safe-area-inset-top)) + 46px);bottom:auto;left:calc(min(300px,45vw) + 20px);right:112px;margin:0;max-width:calc(100% - min(300px,45vw) - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  body .m3-zoom,body .m3-go{display:grid;gap:6px}
+  body .m3-controls button,body .cmap-controls button{position:relative;width:40px;height:40px}
+  body .m3-controls button::after,body .cmap-controls button::after{content:'';position:absolute;inset:-3px}
+  body .m3-controls button.m3-pill,body .cmap-controls button.cmap-fit{width:40px;padding:0;justify-content:center;gap:0}
+  body .m3-pill span,body .cmap-fit span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+}
+
+@media(max-height:430px) and (min-width:481px) and (max-width:900px){
+  body .life-ui .needs-strip{display:none}
+  /* The landscape rule of shell.css hid every span of a nav button, the icon's own wrapper included. */
+  body .life-ui .life-nav button span.game-icon{position:static;width:auto;height:auto;overflow:visible;clip-path:none}
+  /* The atlas: its list and sheet are a side column, the map the rest; the breadcrumb is the same compact chip row. */
+  body .atlas-frame{top:calc(max(6px,env(safe-area-inset-top)) + 46px);bottom:calc(max(8px,env(safe-area-inset-bottom)) + 62px);width:calc(100% - 16px);grid-template-columns:minmax(0,1fr) min(300px,45vw);column-gap:8px}
+  body .atlas-frame>.atlas-stage,body .atlas.has-cities .atlas-frame>.atlas-stage{grid-column:1;margin-bottom:0}
+  body .atlas-sheet{grid-column:2;grid-row:2;align-self:stretch;max-height:100%}
+  body .atlas-crumbs{grid-column:1/-1}
+  body .atlas-rail{grid-column:1;max-height:100%}
+  .life-ui .life-bottom .gbar{display:none}
+  .is-expanded .life-sidebar{display:none}
+  .is-expanded [data-slot=coach]{display:none}
+  body:has(.life-ui.is-expanded) .scene-stick,body:has(.life-ui.is-expanded) .scene-pad{visibility:hidden}
+  .life-ui .life-action{min-height:80px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body .m3-hint,body .cmap-hint{animation-duration:.01s}
+  body .scene-stick,.map-levels-cur svg:last-child{transition:none}
+}

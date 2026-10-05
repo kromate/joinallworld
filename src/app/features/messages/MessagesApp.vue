@@ -28,6 +28,9 @@ import GlyphText from '../kit/GlyphText.vue'
 import LinkButton from '../growth/LinkButton.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import PersonCallButton from '../calls/PersonCallButton.vue'
+import PingButton from '../ping/PingButton.vue'
+import PingStrip from '../ping/PingStrip.vue'
+import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
@@ -144,6 +147,8 @@ const presenceOf = (id: string | null | undefined): 'online' | 'offline' | null 
   const friend = id ? me.value?.friends.find((item) => item.id === id) : undefined
   return friend ? (friend.status === 'online' || friend.status === 'away' ? 'online' : 'offline') : null
 }
+/** A friend who is not in the game: Ping stands where Call does. Nobody else is ever offered it here. */
+const pingFor = (id: string | null | undefined): boolean => pingInstead(id ? me.value?.friends.find((item) => item.id === id)?.status : null)
 const presenceWord = (id: string | null | undefined): string | null => { const state = presenceOf(id); return state === 'online' ? 'Online now' : state === 'offline' ? 'Offline' : null }
 /** Send money from a chat: the player's card opens with its gift form already showing (the card owns the limits and the one-send client id). */
 async function sendMoneyTo(player: string, name: string): Promise<void> {
@@ -231,9 +236,12 @@ defineExpose({
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="conv?.kind === 'dm' && conv.with">
             <BaseButton small data-chat="send-money" @click="sendMoneyTo(conv.with, title)">Send money</BaseButton>
-            <PersonCallButton compact :id="conv.with" :name="title" :status="presenceOf(conv.with) ?? undefined" />
+            <!-- A friend who is not in the game cannot be rung: Ping takes Call's place, so the header never holds a fourth control. -->
+            <PingButton v-if="pingFor(conv.with)" compact :id="conv.with" :name="title" />
+            <PersonCallButton v-else compact :id="conv.with" :name="title" :status="presenceOf(conv.with) ?? undefined" />
           </template>
         </header>
+        <PingStrip v-if="conv?.kind === 'dm' && conv.with && pingFor(conv.with)" inset :id="conv.with" :name="title" />
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
         <section v-if="conv?.kind === 'group' && ui.manage" class="messages-manage" aria-label="Group members">

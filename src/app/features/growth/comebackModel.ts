@@ -11,7 +11,7 @@ export const NUDGE_SENTENCE = 'We’ll let them know if they’ve asked for e-ma
 
 export const COMEBACK_HINTS: Readonly<Record<PrefKey, string>> = Object.freeze({
   needs: 'When your character is hungry, tired or lonely after you have been away.',
-  friends: 'When a friend wrote to you, sent a gift, or asked for you to come back.',
+  friends: 'When a friend wrote to you, sent a gift, pinged you to join them, or asked for you to come back.',
   milestones: 'When something finished: a house upgrade, a shift, an election.',
   events: 'When something is on in your city tomorrow.',
   away: 'A note after 3 days, a week and four weeks away. The last is the last.',

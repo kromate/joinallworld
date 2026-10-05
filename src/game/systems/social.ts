@@ -56,7 +56,10 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
-import { addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
+import { addMoodlet, addSkillXp, arrive, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
+import { arriveInCity } from './estate.ts';
+import { cityRules, linksFrom } from '../content/world.ts';
+import { venueLabel } from '../content/venues.ts';
 import { NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLOSENESS, DAILY_INTERACTIONS, MAX_RELATIONSHIPS,
   JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from '../content/npcs.ts';
 
@@ -186,6 +189,37 @@ const playerId = (value: unknown): string | null => (typeof value === 'string' &
 type ServerOps = {
   [Op in SocialServerOp]: (state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) => ActionOutcome<SocialServerOpMap[Op]['ok'], SocialServerOpMap[Op]['fail']>;
 };
+/**
+ * Stand beside a friend who pinged. The server has checked the ping, the friendship and where the friend is; this checks
+ * what only the life knows: it is not held for its look, it is not in the middle of something that would be lost, and a
+ * life that has not settled in does not leave its city (it could not travel there either). No fare, no trip time, no need
+ * cost. Another city is reached through the arrival of a trip between cities (systems/estate.ts): the home left behind is
+ * kept, and a life with no home there arrives as a visitor.
+ */
+// Only a host that plays lives runs it; the browser build leaves it out (src/game/profile.ts).
+const joinOp: ServerOps['join'] = PLAYS ? (state, payload, ctx) => {
+  const o = state.onboarding, city = payload.city, venue = payload.venue;
+  if (o && o.done !== true && o.required === true) return fail(state, 'onboarding_required', 'Choose your look and tap Play first.');
+  const blocked = busy(state, 'Finish or cancel what you are doing first, then join them.');
+  if (blocked) return blocked;
+  const rules = cityRules(city);
+  if (!rules || !isCityId(city) || typeof venue !== 'string' || venue === 'home' || !venueFor(city, venue)) return fail(state, 'invalid_place', 'That is not a place you can be brought to.');
+  const name = cleanText(payload.name, 24, 'your friend'), label = venueLabel(venue, city);
+  if (city === state.estate.city) {
+    if (state.location === venue) return ok(state, 'here');
+    arrive(state, venue, ctx, { mode: null });
+    state.message = `You joined ${name} at ${label}.`;
+    return ok(state, 'joined');
+  }
+  if (o && o.done !== true && o.stage === 'guest') return fail(state, 'settle_required', `${name} is in ${rules.name}. Settle in first: a life that has moved in can go to other cities.`);
+  if (rules.status !== 'open') return fail(state, 'city_not_open', `${rules.name} is not open yet.`);
+  // The way back is an ordinary paid trip, so there has to be one.
+  const from = state.estate.city;
+  if (!linksFrom(city).some((link) => link.to === from)) return fail(state, 'no_route', `Nothing runs between ${cityRules(from)?.name ?? 'your city'} and ${rules.name} yet.`);
+  arriveInCity(state, { id: rules.id }, ctx, venue);
+  state.message = `You joined ${name} at ${label}, ${rules.name}.${state.estate.lga ? '' : ` You are visiting: your home in ${cityRules(from)?.name ?? from} stays yours.`}`;
+  return ok(state, 'joined_city');
+} : LEFT_OUT;
 const serverOps: ServerOps = {
   /** Would a gift of `amount` be allowed right now? Never mutates. */
   'transfer-check'(state, payload, ctx) { return transferBlock(state, payload, ctx) || ok(state, 'allowed'); },
@@ -270,6 +304,7 @@ const serverOps: ServerOps = {
     emit(state, 'relationship.changed', { id, value: state.social.rel[id]?.p ?? 0, tier: tierOf(state.social.rel[id]?.p ?? 0).id }, ctx);
     return ok(state, 'ended');
   },
+  join: joinOp,
 };
 
 /** Why this life may not send `amount` now, as a failure result, or null. Pure. */

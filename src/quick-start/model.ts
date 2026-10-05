@@ -22,7 +22,7 @@ export interface Draft { name: string; look: Look; landedAt: number; nameEdited:
 export interface NudgeMemory { count: number; reasons: string[]; day: number | null; until: number | null }
 export interface FunnelSnap { guest: boolean; required: boolean; done: boolean; step: number; activities: number; firstAt: number | null; active: string | null; location: string }
 /** The answer of POST /api/social/join as far as the banner reads it (untrusted: every part may be missing). */
-export interface JoinAnswer { ok?: boolean; code?: string; host?: { name?: string }; venue?: string }
+export interface JoinAnswer { ok?: boolean; code?: string; host?: { name?: string }; venue?: string; /** The city the inviter is in, when it is another one. */ elsewhere?: string }
 /** What the funnel reads of a life's state: the parts of a LifeState it may hold, each possibly missing. */
 export type FunnelSource = { onboarding?: Partial<Pick<OnboardingState, 'stage' | 'done' | 'required' | 'step' | 'activities' | 'firstAt'>>; activeAction?: ActiveAction | null; location?: string } | null | undefined;
 export interface FunnelEvent { name: string; props: Record<string, unknown> }
@@ -70,7 +70,8 @@ function joinWords(answer: JoinAnswer | null, venueLabel: (venueId: string) => s
     case 'joined': case 'here': return { tone: 'good', title, text: `${name} is at ${venueLabel(answer.venue ?? '')} right now — so are you. Look for their name tag.`, knock: false };
     case 'at_home': return { tone: 'good', title, text: `${name} is at home. Knock, and they can let you in.`, knock: true };
     case 'reconnecting': return { tone: 'info', title, text: `${name} is reconnecting. Have a look around; you can knock from Phone → Invite in a moment.`, knock: false };
-    case 'out': return { tone: 'info', title, text: `${name} is out in the city right now. Have a look around; add them from Phone → People and you will see when they are near.`, knock: false };
+    case 'out': if (typeof answer.elsewhere === 'string' && answer.elsewhere) return { tone: 'info', title, text: `${name} is in ${answer.elsewhere.slice(0, 40)} right now — you can travel there once you have settled in. Have a look around here first.`, knock: false };
+      return { tone: 'info', title, text: `${name} is out in the city right now. Have a look around; add them from Phone → People and you will see when they are near.`, knock: false };
     default: return { tone: 'info', title, text: `${name} is offline right now. Have a look around — their link still works when they are back.`, knock: false };
   }
 }

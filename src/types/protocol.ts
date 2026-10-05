@@ -27,6 +27,7 @@ import type { CampusHttpRoutes } from './campus.ts'
 import type { CallClientFrame, CallServerFrame } from './calls.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
+import type { PingHttpRoutes } from './ping.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -244,7 +245,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -457,6 +458,12 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/bae/answer',
   'POST /api/social/bae/end',
   'POST /api/social/transfers',
+  'GET /api/social/ping',
+  'GET /api/social/ping/:id',
+  'POST /api/social/ping',
+  'POST /api/social/ping/cancel',
+  'POST /api/social/ping/open',
+  'POST /api/social/ping/join',
   'GET /api/civic/pulse',
   'GET /api/civic/gov',
   'POST /api/civic/gov/run',
@@ -549,6 +556,7 @@ export const SERVER_FRAME_TYPES = [
   'call-incoming', 'call-state', 'call-signal', 'call-settings',
   'life-changed', 'social-read', 'social-changed',
   'live-snapshot', 'live-move',
+  'ping-incoming', 'ping-joined', 'ping-ended',
 ] as const satisfies readonly ServerFrameType[]
 /** WORKER: every frame type the shared modules send, and its application heartbeat. */
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']

@@ -207,7 +207,12 @@ test('Person: a player\'s card says why each control is off, and a stranger read
     let words = text(html)
     assert.ok(words.startsWith('Ada <b> Real player · Offline'), words.slice(0, 60))
     assert.ok(!html.includes('Ada <b>'), 'a name is text')
-    assert.ok(words.includes('Chat Call'), words)
+    // Not in the game: Ping stands where Call would, and for a stranger it says what is missing.
+    assert.ok(words.includes('Chat Ping Ada <b> Add Ada <b> as a friend to ping them.'), words)
+    assert.match(html, /<button[^>]*disabled[^>]*data-ping="send"|<button[^>]*data-ping="send"[^>]*disabled/)
+    client.state.profiles.set('ada', { ...card, status: 'online' })
+    assert.ok(text(await render('/src/app/features/social/PersonApp.vue', { params: { player: 'ada' } })).includes('Chat Call'), 'in the game: Call, as before')
+    client.state.profiles.set('ada', card)
     assert.ok(words.includes('Stranger · 0/5 to Acquaintance'), words)
     assert.ok(words.includes('Ada <b> is not in this venue with you right now.'))
     assert.ok(words.includes('Ask to be my Bae Become friends first.'))

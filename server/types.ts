@@ -321,6 +321,23 @@ export interface SocialCollection {
   sweptAt?: number
   /** The founder's account and its character, as last seen (server/social/founder.ts); checked against the account on every use. */
   founder?: { account: string; id: string }
+  /** Pending pings, keyed `<from>><to>` (server/social/ping.ts): at most PING.open, each dropped once it can no longer be joined or count for the wait before the next. */
+  pings?: Record<string, PingRecord>
+  /** Journeys to another city each player made free of charge by joining a friend: server ms, the last 24 hours only. */
+  pingJoins?: Record<string, number[]>
+}
+/** One pending ping: who asked whom to come, when, and where the pinger was. `venue` is a venue id or `'home'`; nothing more exact than that is ever kept. */
+export interface PingRecord {
+  from: string
+  to: string
+  at: number
+  expires: number
+  cityId: CityId
+  venue: string
+  /** `joined`: the friend came. `ended`: cancelled, or the pinger left the game. Kept until the wait before the next ping is over. */
+  state: 'open' | 'joined' | 'ended'
+  /** Made by the server when a new player arrived through this player's invite link (nobody pressed Ping, so nothing is mailed for it). */
+  auto?: true
 }
 
 // ---- civic collection (db.civic) -----------------------------------------------------------------
@@ -510,6 +527,8 @@ export interface ComebackRecord {
   suppressedDay: number
   /** Made for a character that belongs to an account: the record outlives the idle-player sweep (the choice stays) and its recipient is the account's verified address. Absent: the address of Stay in touch. */
   acct?: true
+  /** Ping mails sent to this player (src/game/ping.ts): when, and whose ping. At most PING.mail.kept, a week of them; counted apart from `sent`. */
+  pings?: { at: number; from: string }[]
 }
 /** Counters per Lagos day and per type of comeback mail. */
 export type ComebackStats = Record<string, Record<string, { queued: number; sent: number; failed: number; suppressed: number; unsubscribed: number }>>
@@ -755,7 +774,7 @@ export interface ServerEvents {
   /** social: a house visit ended; rooms.js drops that guest from the host's Home room. */
   'visit-ended': { hostId: string; guestId: string }
   /** social: a player who came through `inviter`'s link was introduced to them (comeback mail looks at the inviter soon). */
-  'invite-joined': { inviter: string }
+  'invite-joined': { inviter: string; /** The player who joined (absent on a build that did not say). */ newcomer?: string }
   /** social: a block or unblock was committed. */
   'blocks-changed': { a: string; b: string }
   /** host: every heartbeat. */

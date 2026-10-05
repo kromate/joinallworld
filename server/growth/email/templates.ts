@@ -71,9 +71,9 @@ interface WelcomeParts {
   button: { label: string; url: string }; fallback: string; why: string; help: string; contact: string
 }
 
-const WELCOME_FONT = "font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+export const WELCOME_FONT = "font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 /** The dark colours, for a reader that honours the reader's choice; one that ignores this block shows the light message, whose colours are all set inline. */
-const WELCOME_DARK = `:root{color-scheme:light dark;supported-color-schemes:light dark}
+export const WELCOME_DARK = `:root{color-scheme:light dark;supported-color-schemes:light dark}
 @media (prefers-color-scheme:dark){.aw-page{background:#101613!important}.aw-card{background:#18211c!important}.aw-ink{color:#eef2ef!important}.aw-body{color:#d5dcd7!important}.aw-muted{color:#a3aea7!important}
 .aw-soft{background:#203027!important;border-color:#2f4638!important}.aw-badge{background:#274a37!important;color:#bfe6cd!important}.aw-rule{border-color:#2a352f!important}.aw-link{color:#9ad6b2!important}}`;
 

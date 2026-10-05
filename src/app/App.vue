@@ -32,6 +32,7 @@ import { startLandingHold } from './state/landingHold.ts'
 import { createPageLifecycle } from './state/pageLifecycle.ts'
 import CommunityHost from './features/community/CommunityHost.vue'
 import CallsHost from './features/calls/CallsHost.vue'
+import PingHost from './features/ping/PingHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import MapPane from './scene/MapPane.vue'
 
@@ -168,6 +169,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
   <TourTrigger />
   <CommunityHost />
   <CallsHost :host="sheetOpen ? '#life-dialog' : 'body'" />
+  <PingHost :host="sheetOpen ? '#life-dialog' : 'body'" />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <UpdateBanner />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />

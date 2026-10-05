@@ -88,14 +88,14 @@ test('the first-call note shows the disclosure line and a Call button', async ()
   assert.match(html, /<button[^>]*>Call<\/button>/)
 })
 
-test('Calls from: three choices, friends only unless the server said otherwise', async () => {
+test('Calls from: three choices, everyone unless the server said otherwise', async () => {
   // The page's own module instance (the one the rendered component reads), not this file's copy.
   const { callStore: page } = (await vite.ssrLoadModule('/src/app/features/calls/callState.ts')) as { callStore: typeof callStore }
   page.accepting = null
   const html = await render('CallSettings')
   for (const label of ['Everyone', 'Friends only', 'Nobody']) assert.ok(text(html).includes(label), label)
   assert.match(html, /role="radiogroup"/)
-  assert.match(html, /value="friends"[^>]*checked|checked[^>]*value="friends"/)
+  assert.match(html, /value="everyone"[^>]*checked|checked[^>]*value="everyone"/)
   assert.doesNotMatch(html, /value="nobody"[^>]*checked/)
   page.accepting = 'nobody'
   assert.match(await render('CallSettings'), /value="nobody"[^>]*checked|checked[^>]*value="nobody"/)

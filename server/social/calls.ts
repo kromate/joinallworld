@@ -16,7 +16,7 @@
  * the other player's setting is):
  *   - the callee is a stored, unexpired session with a social record (so a bot or an unknown id is not);
  *   - neither has blocked the other, and neither is muted by moderation;
- *   - the callee's setting allows it: `everyone`, `friends` (the default: mutual friends) or `nobody`;
+ *   - the callee's setting allows it: `everyone` (the default), `friends` (mutual friends only) or `nobody`;
  *   - the callee has an open, responsive socket, and neither side is in another call.
  * Attempts are limited per caller and per caller-and-callee pair, before any of the above is looked at,
  * so the limit tells a caller nothing about the callee either.

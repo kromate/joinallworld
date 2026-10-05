@@ -77,35 +77,39 @@ test('a friend rings the callee, who sees the public name and the expiry; the ca
   assert.equal(JSON.stringify(incoming).includes(ada.cookie.slice(4)), false, 'no secret in the frame');
 });
 
-test('the default is friends only; everyone and nobody are honoured; the setting is read back', async (t) => {
+test('the default is everyone; friends only and nobody are honoured; the setting is read back', async (t) => {
   const f = await fixture(t);
   const [ada, bola, cleo] = await players(f, ['Ada', 'Bola', 'Cleo']) as [Device, Device, Device];
   await makeFriends(f, ada, bola);
   const a = await f.socket(ada), b = await f.socket(bola), c = await f.socket(cleo);
   send(b, { type: 'call-settings' });
-  assert.equal((await until(b, 'call-settings')).calls, 'friends', 'default');
-  // A stranger cannot ring under the default.
-  invite(c, bola.id);
-  assert.equal(stateOf(await until(c, 'call-state')), 'unreachable');
-  assert.deepEqual(callFrames(await drain(b)), []);
-  // Everyone: the stranger rings.
-  await setCalls(b, 'everyone');
+  assert.equal((await until(b, 'call-settings')).calls, 'everyone', 'default');
+  // A stranger can ring under the default; the callee still has to accept.
   invite(c, bola.id);
   assert.equal((await until(c, 'call-state')).state, 'ringing');
   const incoming = await until(b, 'call-incoming');
   send(c, { type: 'call-cancel', callId: incoming.callId });
-  await until(b, 'call-state');
+  await until(b, 'call-state'); await until(c, 'call-state');
+  // Friends only: the stranger is turned away, a friend still rings.
+  await setCalls(b, 'friends');
+  invite(c, bola.id);
+  assert.equal(stateOf(await until(c, 'call-state')), 'unreachable');
+  assert.deepEqual(callFrames(await drain(b)), []);
+  invite(a, bola.id);
+  assert.equal(stateOf(await until(a, 'call-state')), 'ringing');
+  send(a, { type: 'call-cancel', callId: (await until(b, 'call-incoming')).callId });
+  await until(b, 'call-state'); await until(a, 'call-state');
   // Nobody: not even a friend.
   await setCalls(b, 'nobody');
   invite(a, bola.id);
   assert.equal(stateOf(await until(a, 'call-state')), 'unreachable');
   assert.deepEqual(callFrames(await drain(b)), []);
-  // Back to friends: the friend rings again.
-  await setCalls(b, 'friends');
+  // Back to everyone: the friend rings again.
+  await setCalls(b, 'everyone');
   invite(a, bola.id);
   assert.equal(stateOf(await until(a, 'call-state')), 'ringing');
   // The change is stored with the player (not only in memory) and a bad value is refused.
-  assert.equal(await f.server.store.read((db) => db.social?.players?.[bola.id]?.calls), 'friends');
+  assert.equal(await f.server.store.read((db) => db.social?.players?.[bola.id]?.calls), 'everyone');
   send(b, { type: 'call-settings', calls: 'whoever' });
   assert.equal((await until(b, 'error')).code, 'invalid_call_setting');
 });
@@ -115,8 +119,8 @@ test('the caller never learns the reason: block, nobody, busy, offline, muted an
   const [ada, bola, cleo, dede, eze] = await players(f, ['Ada', 'Bola', 'Cleo', 'Dede', 'Eze']) as [Device, Device, Device, Device, Device];
   for (const other of [bola, cleo, dede]) await makeFriends(f, ada, other);
   const a = await f.socket(ada), b = await f.socket(bola), c = await f.socket(cleo), d = await f.socket(dede);
-  await f.socket(eze);
-  // Blocked by the callee, 'nobody', busy (Dede is in a call with Cleo), offline (Eze has no friends and no socket), unknown id.
+  await setCalls(await f.socket(eze), 'friends');
+  // Blocked by the callee, 'nobody', busy (Dede is in a call with Cleo), a stranger of a player who accepts friends only (Eze), unknown id.
   assert.equal((await f.request('/api/social/block', { id: ada.id, cityId: 'lagos' }, bola.cookie)).status, 200);
   await setCalls(c, 'nobody');
   const stranger = await f.device('Fola'); await f.request('/api/social/me', null, stranger.cookie);

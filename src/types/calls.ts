@@ -23,10 +23,10 @@
  */
 import type { PlayerRef } from './protocol.ts'
 
-/** Who may ring a player. The default is `friends`. */
+/** Who may ring a player. The default is `everyone`: any online player can be rung, and the callee still has to accept. */
 export type CallsFrom = 'everyone' | 'friends' | 'nobody'
 export const CALLS_FROM = ['everyone', 'friends', 'nobody'] as const satisfies readonly CallsFrom[]
-export const CALLS_FROM_DEFAULT: CallsFrom = 'friends'
+export const CALLS_FROM_DEFAULT: CallsFrom = 'everyone'
 
 export type CallStateName = 'ringing' | 'accepted' | 'declined' | 'cancelled' | 'timeout' | 'ended' | 'unreachable'
 export type CallSignalKind = 'offer' | 'answer' | 'ice'

@@ -650,53 +650,76 @@ test('H2 — a flood of reset requests leaves the site open: a new visitor gets 
 
 test('M2 — over HTTPS the cookie is __Host-sid: a sibling host cannot plant it, an old `sid` guest is upgraded without losing anything, and a binding is honoured under the new name only', async t => {
   const a = await accounts(t, { trustProxy: true }), base = a.f.base, secure = tls(base);
+  const HOST = (value: string) => `__Host-sid=${value}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`;
   // A guest who has played under the old cookie name (made here over plain http, as every cookie before this change was named).
   const old = await a.player('Oldtimer');
   assert.match(old.cookie, /^sid=[0-9a-f-]{36}$/);
-  const secret = old.cookie.slice(4);
-  // Their next visit over HTTPS: the same life, and the cookie comes back under the new name while the old one is removed.
+  const secret = old.cookie.slice(4), upgraded = `__Host-sid=${secret}`;
+  // Their next visit over HTTPS: the same life, and the cookie is ALSO set under the new name. The old one is left alone (N1):
+  // the build before this one reads only `sid`, so a rollback must still find every guest.
   const visit = await a.call('/api/session', null, old.cookie, secure);
   assert.equal(visit.status, 200); assert.equal((await visit.json() as { session: { id: string } }).session.id, old.id);
-  assert.deepEqual(cookiesOf(visit), [`__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`, 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure']);
-  const upgraded = `__Host-sid=${secret}`;
-  const again = await a.call('/api/life?city=lagos', null, upgraded, secure);
-  assert.equal(again.status, 200); assert.deepEqual(cookiesOf(again), [`__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`], 'nothing left to remove');
-  // A route that does not renew still upgrades a legacy guest.
-  assert.equal(cookiesOf(await a.call('/api/account', null, old.cookie, secure))[0], `__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`);
+  assert.deepEqual(cookiesOf(visit), [HOST(secret)], 'the new name is set, and nothing removes `sid`');
+  // From now on the browser holds both, and that works; so does `sid` alone (a browser that never got the answer, or the previous build's view of it).
+  const who = async (cookie: string) => { const response = await a.call('/api/session', null, cookie, secure); return response.status === 200 ? (await response.json() as { session: { id: string } }).session.id : response.status; };
+  assert.equal(await who(`${old.cookie}; ${upgraded}`), old.id); assert.equal(await who(old.cookie), old.id); assert.equal(await who(upgraded), old.id);
+  const both = await a.call('/api/life?city=lagos', null, `${old.cookie}; ${upgraded}`, secure);
+  assert.equal(both.status, 200); assert.deepEqual(cookiesOf(both), [HOST(secret)]);
+  // A route that does not renew still upgrades a legacy guest; no answer to a guest ever removes `sid`.
+  assert.deepEqual(cookiesOf(await a.call('/api/account', null, old.cookie, secure)), [HOST(secret)]);
+  for (const response of [await a.call('/api/session', { name: 'Oldtimer' }, old.cookie, secure), await a.call('/api/life?city=lagos', null, old.cookie, secure), await a.call('/api/session', null, `${old.cookie}; ${upgraded}`, secure)]) assert.ok(!cookiesOf(response).some(line => line.startsWith('sid=')), 'a rollback finds the guest’s `sid` untouched');
   // A new visitor over HTTPS gets the new name from the start.
   const fresh = await a.call('/api/session', { name: 'Newcomer' }, null, secure);
   assert.match(cookiesOf(fresh).join('|'), /^__Host-sid=[0-9a-f-]{36}; HttpOnly; SameSite=Lax; Path=\/; Max-Age=2592000; Secure$/);
   // COOKIE TOSSING. The sibling host can only set `sid`. The attacker plants THEIR guest session's value.
   const attacker = await a.player('Mallory'), planted = attacker.cookie;
-  const who = async (cookie: string) => { const response = await a.call('/api/session', null, cookie, secure); return response.status === 200 ? (await response.json() as { session: { id: string } }).session.id : response.status; };
   assert.equal(await who(`${planted}; ${upgraded}`), old.id, 'sid=attacker; __Host-sid=victim → the victim, whatever the order');
   assert.equal(await who(`${upgraded}; ${planted}`), old.id);
-  assert.equal(await who(`${planted}; ${old.cookie}`), 401, 'sid=attacker; sid=victim → nobody: which one the browser holds cannot be told');
-  assert.equal(await who(`${old.cookie}; ${planted}`), 401);
-  assert.equal(await who(`${old.cookie}; ${old.cookie}`), old.id, 'the same value twice is one value');
-  assert.equal(await who(`__Host-sid=${attacker.cookie.slice(4)}; ${upgraded}`), 401, 'two values under the protected name are nobody either');
-  assert.equal(cookiesOf(await a.call('/api/session', null, `${planted}; ${upgraded}`, secure)).at(-1), 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure', 'and the planted cookie is told to go');
-  // SIGNED IN. The sign-in answer sets the new name (and removes an old-named cookie the browser came with).
+  assert.equal(await who(`__Host-sid=${attacker.cookie.slice(4)}; ${upgraded}`), 401, 'two values under the protected name are nobody');
+  // N4 — a guest who has NOT been upgraded yet sees exactly what the previous build did: the first `sid` is the cookie. No new way to end up in a new life.
+  assert.equal(await who(`${old.cookie}; ${planted}`), old.id, 'sid=victim; sid=attacker → the first, as before');
+  assert.equal(await who(`${planted}; ${old.cookie}`), attacker.id, 'sid=attacker; sid=victim → the first, as before (and the next answer protects whoever it is)');
+  assert.equal(await who(`${old.cookie}; ${old.cookie}`), old.id);
+  // SIGNED IN. The sign-in answer sets the new name; `sid` is still not removed.
   const signedIn = await a.call('/api/account/sign-in', { idToken: await a.token('UidOld'), csrf: await csrfOf(secret) }, old.cookie, secure);
   assert.equal(signedIn.status, 200);
   const lines = cookiesOf(signedIn), binding = /^__Host-sid=([0-9a-f-]{36});/.exec(lines[0] ?? '')?.[1] ?? '';
-  assert.match(lines[0] ?? '', /^__Host-sid=[0-9a-f-]{36}; HttpOnly; SameSite=Lax; Path=\/; Max-Age=2592000; Secure$/); assert.equal(lines[1], 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure');
+  assert.deepEqual(lines, [HOST(binding)]); assert.notEqual(binding, secret);
   assert.equal(await who(`__Host-sid=${binding}`), old.id);
-  // A binding's value under the old name — the only name a sibling host can set — opens nothing: not the game, not the account.
+  assert.equal(await who(`${old.cookie}; __Host-sid=${binding}`), old.id, 'the browser now holds the old guest value as `sid` and the binding as __Host-sid: the binding wins');
+  // A binding's value under the old name — the only name a sibling host can set — opens nothing: not the game, not the account. Duplicates change nothing about that.
   assert.equal(await who(`sid=${binding}`), 401, 'a device binding is not honoured from a cookie a sibling host could have planted');
+  assert.equal(await who(`sid=${binding}; ${planted}`), 401);
   const viaLegacy = await (await a.call('/api/account', null, `sid=${binding}`, secure)).json() as AccountStateResponse;
   assert.deepEqual([viaLegacy.account, viaLegacy.guest], [null, false]);
   assert.deepEqual(await errorOf(await a.call('/api/account/sign-out', { csrf: await csrfOf(binding) }, `sid=${binding}`, secure)), [409, 'account_required']);
   assert.equal(await a.f.socket({ cookie: `sid=${binding}` }).then(() => 'opened', () => 'refused'), 'opened', 'on plain http — development — the one name is honoured for everything');
   // Planting a guest cookie under the old name beside a signed-in browser changes nothing: the binding wins.
   assert.equal(await who(`${planted}; __Host-sid=${binding}`), old.id);
-  // Sign out removes both names.
+  // Signing out is where `sid` IS removed: a signed-out browser must not fall back to whatever `sid` it still holds.
   const out = await a.call('/api/account/sign-out', { csrf: await csrfOf(binding) }, `${planted}; __Host-sid=${binding}`, secure);
   assert.deepEqual(cookiesOf(out), ['__Host-sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure', 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure']);
   // THE ORIGIN'S SCHEME. Over HTTPS, a page served over plain http from the same host name is another origin.
   assert.deepEqual(await errorOf(await a.call('/api/session', { name: 'Downgrade' }, null, { ...secure, Origin: base })), [403, 'origin_rejected']);
   assert.deepEqual(await errorOf(await a.call('/api/account/password-reset', { email: 'ada@example.com' }, null, { ...secure, Origin: base })), [403, 'origin_rejected']);
   assert.equal((await a.call('/api/session', { name: 'Proper' }, null, secure)).status, 200);
+});
+
+test('N3 — validly signed tokens of throwaway, unconfirmed accounts cannot spend the shared sign-in bucket: 320 of them from 320 addresses, then a real sign-in works', async t => {
+  const a = await accounts(t, { trustProxy: true });
+  for (let i = 0; i < 320; i++) {
+    const response = await a.call('/api/account/sign-in', { idToken: await a.token(`UidThrowaway${i}`, { verified: false }) }, null, { 'X-Forwarded-For': `2001:db8::${(i + 1).toString(16)}` });
+    assert.equal(response.status, 403, `attempt ${i}`); await response.arrayBuffer();
+  }
+  const real = await a.call('/api/account/sign-in', { idToken: await a.token('UidAda') }, null, { 'X-Forwarded-For': '203.0.113.200' });
+  assert.equal(real.status, 200, 'a real player is not refused because others sent unconfirmed sign-ups');
+  // An unconfirmed attempt still counts against its own address, and against nothing else: not the shared bucket, not the per-account one.
+  for (let i = 0; i < 10; i++) await a.call('/api/account/sign-in', { idToken: await a.token('UidAda', { verified: false }) }, null, { 'X-Forwarded-For': '198.51.100.1' });
+  assert.deepEqual(await errorOf(await a.call('/api/account/sign-in', { idToken: await a.token('UidAda', { verified: false }) }, null, { 'X-Forwarded-For': '198.51.100.1' })), [429, 'account_rate_limited'], 'ten a minute per address');
+  for (let i = 0; i < 7; i++) assert.equal((await a.call('/api/account/sign-in', { idToken: await a.token('UidAda') }, null, { 'X-Forwarded-For': `203.0.113.${i + 1}` })).status, 200, 'ten unconfirmed tokens for this account did not use up its eight a five minutes');
+  // A proof with an unconfirmed token proves nothing either.
+  const mine = await a.signIn('UidBola');
+  assert.deepEqual(await errorOf(await a.change('/api/account/export', { idToken: await a.token('UidBola', { verified: false }) }, mine.cookie)), [403, 'email_unverified']);
 });
 
 test('M3 — when the real owner arrives, an earlier binding goes: the pre-hijack, another way of signing in, and a 90-day absolute lifetime', async t => {
@@ -962,4 +985,74 @@ test('welcome: with the mailer not configured nothing is marked, queued, sent or
   await m.f.server.store.transact((store) => { store.growth = { ...(store.growth ?? { salt: 's', players: {}, shares: {}, metrics: {}, tables: {}, sweptAt: 0 }), outreach: { off: { email: true }, log: [], sent: {}, previews: [] } }; });
   await m.signIn('UidAda'); await m.settled(1, 200);
   assert.equal(m.mails().length, 0); assert.equal((await m.account('UidAda'))?.welcome, 'pending'); assert.deepEqual(m.logs, []);
+});
+
+test('N5 — an address is welcomed once in thirty days however often its account is deleted and made again, and a welcome counts against the day’s e-mail allowance', async t => {
+  const m = await mailing(t, { env: { ...MAIL_ENV, EMAIL_DAILY_CAP: '2' } });
+  const first = await m.signIn('UidAda'); await m.settled(1);
+  assert.equal(m.mails().length, 1);
+  // Delete and re-create, three times over: no second message.
+  let cookie = first.cookie;
+  for (let round = 0; round < 3; round++) {
+    m.f.advance(301000);
+    assert.equal((await m.proved('/api/account/delete', { confirm: 'delete', erase: true }, cookie, 'UidAda')).status, 200);
+    const again = await m.signIn('UidAda'); cookie = again.cookie;
+    assert.deepEqual([again.status, again.body.created], [200, true]);
+    await m.settled(2, 150);
+    assert.equal((await m.account('UidAda'))?.welcome, 'skipped');
+  }
+  assert.equal(m.mails().length, 1, 'one address, one message');
+  const db = await m.stored();
+  assert.equal(Object.keys(db.accountLog?.welcomed ?? {}).length, 1); assert.ok(!JSON.stringify(db.accountLog?.welcomed).includes('example.com'), 'what is remembered is a salted hash, not the address');
+  // After thirty days a new account for that address is welcomed again.
+  m.f.advance(30 * 86400000);
+  await m.proved('/api/account/delete', { confirm: 'delete', erase: true }, (await m.signIn('UidAda')).cookie, 'UidAda');
+  m.f.advance(301000);
+  await m.signIn('UidAda'); await m.settled(2);
+  assert.equal(m.mails().length, 2);
+  // THE DAILY ALLOWANCE (2 here). One has gone out today; the next uses the allowance up; the one after waits — unsent, still owed, no attempt spent.
+  assert.equal((await m.stored()).growth?.outreach?.sent[Object.keys((await m.stored()).growth?.outreach?.sent ?? {}).at(-1) ?? '']?.email, 1, 'a welcome is counted where the mailer’s other messages are');
+  await m.signIn('UidBo'); await m.settled(3);
+  assert.equal(m.mails().length, 3);
+  await m.signIn('UidCy'); await m.settled(4, 200);
+  assert.equal(m.mails().length, 3, 'at the allowance nothing more goes out today');
+  assert.equal((await m.account('UidCy'))?.welcome, 'pending');
+  assert.deepEqual((await m.stored()).accountLog?.welcome?.map(item => [item.id, item.tries, item.claimedAt]), [['fb:UidCy', 0, undefined]]);
+  assert.deepEqual(m.logs, [], 'waiting for the allowance is not an error');
+  // The next day it goes.
+  m.f.advance(86400000); m.f.server.beat(); await m.settled(4);
+  assert.equal(m.mails().length, 4); assert.equal(typeof (await m.account('UidCy'))?.welcome, 'number');
+});
+
+test('N6 — a claim nobody settled does not sit in the queue for good: after a day it gets one last attempt, and is abandoned if that one is not settled either', async t => {
+  const m = await mailing(t);
+  // A send that never returns: the claim is made and never settled (as when the host stops in the middle of a send).
+  const original = m.provider.fetch;
+  let hang = true, attempts = 0;
+  // (A held request is let go after a few real seconds, long after the test has looked, so that the server can stop.)
+  m.provider.fetch = (url, init = {}) => (String(url) === MAIL_URL ? (attempts += 1, hang ? new Promise<Response>((resolve) => { setTimeout(() => resolve(new Response('{}', { status: 400 })), 4000); }) : original(url, init)) : original(url, init));
+  await m.signIn('UidAda'); await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(attempts, 1);
+  const stuck = (await m.stored()).accountLog?.welcome ?? [];
+  assert.equal(stuck.length, 1); assert.equal(typeof stuck[0]?.claimedAt, 'number');
+  // Within the day nothing touches it: a message that may be on its way is not sent again.
+  m.f.advance(23 * 3600000); m.f.server.beat(); await new Promise(resolve => setTimeout(resolve, 60));
+  assert.equal(attempts, 1);
+  // After a day: ONE last attempt.
+  m.f.advance(2 * 3600000); m.f.server.beat(); await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(attempts, 2);
+  assert.deepEqual((await m.stored()).accountLog?.welcome?.map(item => [item.id, item.last, typeof item.claimedAt]), [['fb:UidAda', true, 'number']]);
+  // That one is not settled either: abandoned. Never a third.
+  m.f.advance(25 * 3600000); m.f.server.beat(); await new Promise(resolve => setTimeout(resolve, 80));
+  m.f.advance(25 * 3600000); m.f.server.beat(); await new Promise(resolve => setTimeout(resolve, 80));
+  assert.equal(attempts, 2);
+  const db = await m.stored();
+  assert.deepEqual(db.accountLog?.welcome, []); assert.equal(db.accounts?.['fb:UidAda']?.welcome, 'failed');
+  // A queue full of stuck claims no longer stops new accounts' messages: the stale ones are cleared when the next account is made.
+  hang = false;
+  await m.f.server.store.transact((store) => { const log = store.accountLog; if (log) log.welcome = Array.from({ length: 500 }, (_, n) => ({ id: `fb:Ghost${n}`, at: 0, tries: 0, nextAt: 0, claimedAt: m.f.now() - 2 * 86400000, last: true as const })); });
+  m.f.advance(301000);
+  const next = await m.signIn('UidEve'); await m.settled(3);
+  assert.equal(next.status, 200); assert.equal(typeof (await m.account('UidEve'))?.welcome, 'number', 'the new account was not marked skipped');
+  assert.equal((await m.stored()).accountLog?.welcome?.length, 0);
 });

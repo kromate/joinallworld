@@ -140,10 +140,11 @@ A guest is unchanged: the cookie is the key of the guest's session record.
 
 Over HTTPS the session cookie is **`__Host-sid`** — a name a browser accepts only with `Secure`, `Path=/` and no `Domain`, so a page on a sibling host of the same site cannot set or overwrite it. It used to be `sid`, which a sibling host *can* set for the whole site. The old name is still read so that nobody is logged out:
 
-- `__Host-sid`, when present, is the session cookie and `sid` is ignored.
-- A lone `sid` is honoured for a **guest's own session record only**, and that answer re-issues it as `__Host-sid` and removes `sid`. A guest who was playing keeps their life.
+- `__Host-sid`, when present, is the session cookie and `sid` is ignored. Two different values under *this* name are nobody's session.
+- With no `__Host-sid`, the **first `sid`** is the cookie — exactly what the build before this one did, so a guest who has not been upgraded yet sees no new behaviour. It is honoured for a **guest's own session record only**, and that answer also sets it as `__Host-sid`. A guest who was playing keeps their life.
 - A **device binding is honoured from `__Host-sid` only.** The same value arriving as `sid` opens nothing.
-- Two different values under one name are nobody's session: which one the browser really holds cannot be told. (A sibling host can therefore make a not-yet-upgraded guest appear signed out until its planted cookie goes; it cannot become them or hand them its own session.)
+
+**The old cookie is kept for this release.** An upgrade sets `__Host-sid` and does *not* remove `sid`: the browser then holds both, and `__Host-sid` wins. The reason is rollback — the build before this one reads only `sid`, so if this release had to be withdrawn, every guest would still be known. `sid` is removed in one place only, when a browser signs out of an account (a signed-out browser must not fall back to whatever `sid` it still holds). **Removing `sid` for good — no longer reading it, and clearing it on upgrade — belongs to a later release**, once this one is no longer a rollback target. Until a guest's first answer from this release, a sibling host that plants a `sid` ahead of theirs can still put them in its own guest session, as it could before; after that answer it cannot.
 
 Without HTTPS — development on plain http — a browser refuses a `__Host-` cookie, so the name stays `sid` there and is honoured for everything. The Worker host always sets `__Host-sid`.
 
@@ -247,8 +248,8 @@ Through the shared limiter (`ctx.allow`, `server/limiter.ts`): in memory on the 
 | What | Key | Limit | Counted |
 | --- | --- | --- | --- |
 | A token (sign-in and every proof) | address | 10 a minute | every attempt, before the token is verified |
-| A token | whole server | 300 a minute | **only a token that verified** |
-| A token | account | 8 per 5 minutes | only a token that verified |
+| A token | whole server | 300 a minute | **only a token that verified and whose address is confirmed** |
+| A token | account | 8 per 5 minutes | the same |
 | Reset requests | whole server | 120 a minute | looked at first, without counting |
 | Reset requests | address | 5 per 15 minutes | |
 | Reset requests | address written to | 3 an hour | |
@@ -256,7 +257,9 @@ Through the shared limiter (`ctx.allow`, `server/limiter.ts`): in memory on the 
 
 On excess: `429 account_rate_limited`.
 
-- **Junk cannot spend a shared bucket.** The server-wide sign-in bucket counts only tokens whose signature and claims verified; what bounds verification work is the per-address ten a minute.
+- **Neither junk nor throwaway sign-ups can spend a shared bucket.** The server-wide sign-in bucket and the per-account one count only tokens whose signature and claims verified *and* whose address is confirmed. A validly signed token of an unconfirmed account — which anyone can mint by signing up at the provider — counts against its own address and nothing else. What bounds verification work is the per-address ten a minute.
+- **The shared reset bucket has no reserved slice, on purpose.** An attacker with many addresses can spend the 120 a minute, and real resets are then refused until the minute passes. A slice reserved for "an address that has had no reset in the last hour" would not help: the attacker's requests name a fresh address each time and qualify for it just as well, and nothing in a reset request distinguishes a real person from them — it carries only an address. The bucket exists to bound what this server asks of the provider and how much mail it can cause; the per-address and per-address-written-to limits bound each attacker and each target. A person who is refused can also reset directly through the provider's own page, which this server does not gate. If this becomes a problem in practice the fix is a proof of work or a challenge on the reset form, not a larger bucket.
+- **Key names.** Every key of these routes starts `account:sign-in` or `account:reset`.
 - **A refused request leaves no row.** A reset first *looks at* the shared bucket (`ctx.peek`, which counts nothing and creates nothing), then counts the address it came from, then the address it writes to. The per-address-written-to limit is keyed by a hash of the address and applies whether or not it has an account.
 - **These keys cannot starve the game.** Limiter rows are bounded per *class* of key, each class in its own table: account keys (`account:…`, at most 4,000 rows) and everything else (10,000). A full table does not refuse new keys — it drops the rows that expire soonest to make room — so neither a flood of account keys nor a flood of anything else can turn a new visitor away. The operator's own rows are never dropped.
 
@@ -311,9 +314,16 @@ The game page is given a Content-Security-Policy and `Cross-Origin-Opener-Policy
 
 Nothing else: no `img-src`, `font-src` or `form-action` addition, and no inline script. The server's own requests (the provider's keys, the reset, the welcome message) are not subject to the page's policy.
 
-**`Cross-Origin-Opener-Policy` must be relaxed to `same-origin-allow-popups` on the game page when a Google client id is set.** The Google button opens the account chooser as a popup on `accounts.google.com`, and the chooser hands the credential back to the page that opened it; under `same-origin` the two are put in separate browsing-context groups, the popup cannot reach its opener, and the sign-in never completes (the popup closes or hangs and the callback is not called). Google's own guidance for the button's popup flow is `same-origin-allow-popups`. With no Google client id — e-mail sign-in only — nothing opens a popup and `same-origin` can stay.
+`server/accounts/csp.ts` `accountsCspAdditions(config)` returns exactly this table for a given configuration, and the opener policy below, for the host's header builder to apply; `server/accounts/csp.test.ts` holds it equal to what the sign-in code really loads and calls.
 
-How sure: **high for the CSP origins** (they are the four Google documents for its identity script, plus the two endpoints this code itself calls, which the tests pin); **high but untested for COOP** — it follows from how the popup flow works and from Google's documentation as remembered, and no test here loads Google's script or opens its popup. It should be confirmed once, in a browser, against the staging configuration before the header ships. If relaxing COOP is unwanted, the alternative is Google's redirect flow (`ux_mode: 'redirect'`), which needs a server endpoint to receive the credential and is not built.
+**`Cross-Origin-Opener-Policy` must be relaxed to `same-origin-allow-popups` on the game page when a Google client id is set** (`accountsCspAdditions(config).coop`). This client draws Google's button in its default **popup** mode: the account chooser opens as a popup on `accounts.google.com` and hands the credential back to the page that opened it. Under `same-origin` the two are put in separate browsing-context groups, the popup cannot reach its opener, and the sign-in never completes. With no Google client id — e-mail sign-in only — nothing opens a popup and `same-origin` stays.
+
+The modes that would keep `same-origin` were considered and are not used:
+
+- **Redirect mode** (`ux_mode: 'redirect'`) has Google post the credential to an address on the game server as a cross-site form POST. This server deliberately accepts no such request (a foreign `Origin` is refused, a body must be JSON), the credential would pass through the server instead of going from the browser to the provider, and the per-button nonce check is lost. It would need a new endpoint and its own review.
+- **FedCM** (the browser's own account chooser) removes the popup only in browsers that implement it; the others still open one. It cannot be relied on to keep `same-origin` everywhere.
+
+How sure: **high for the CSP origins** (the four Google documents for its identity script, plus the two endpoints this code itself calls, which a test pins against the source); **high but untested for COOP** — it follows from how the popup flow works and from Google's documentation as remembered, and no test here loads Google's script or opens its popup. Confirm it once, in a browser, against the staging configuration before the header ships.
 
 ## 11. Threats, and the test that covers each
 
@@ -325,12 +335,15 @@ How sure: **high for the CSP origins** (they are the four Google documents for i
 | A used token respelled (trailing bits, padding, whitespace) | strict decoding; digest over the signed content | `token.test.ts` "a token has exactly ONE spelling …"; `auth.test.ts` "H1 — …" |
 | A client that vouches for itself; an unconfirmed address | only the token is read; `email_verified` required | "an unverified address links nothing …" |
 | Session fixation | a new cookie at every sign-in; a record's key is not a credential | "session fixation: …" |
-| Cookie tossing from a sibling host | `__Host-sid`; a binding honoured under that name only; ambiguous cookies refused | "M2 — over HTTPS the cookie is __Host-sid …" |
+| Cookie tossing from a sibling host | `__Host-sid` wins and cannot be planted; a binding honoured under that name only; two values under it refused | "M2 — over HTTPS the cookie is __Host-sid …" |
 | CSRF and login CSRF | strict origin (with scheme) and the session's own token | "CSRF: account state changes need this host as Origin …" |
 | A stolen cookie reaching past its browser | proof for sign-out-everywhere, export, switch, delete | "a binding alone plays and signs itself out …" |
 | An earlier binding surviving the owner's arrival | owner-arrival sign-out; 90-day lifetime; device count shown | "M3 — when the real owner arrives …" |
 | Guessing, flooding | limits per address, per account, per address written to | "rate limits: …" |
-| Junk spending a shared bucket | the shared bucket counts verified tokens only | "M1 — junk cannot spend the shared sign-in bucket …" |
+| Junk, or throwaway unconfirmed sign-ups, spending a shared bucket | the shared bucket counts verified tokens of confirmed addresses only | "M1 — junk cannot spend the shared sign-in bucket …", "N3 — validly signed tokens of throwaway, unconfirmed accounts …" |
+| A rollback logging every upgraded guest out | the old cookie is kept beside the new one | "M2 — …" (no answer to a guest removes `sid`) |
+| Welcome mail repeated by delete and re-create; a stuck queue | once per address in 30 days; daily allowance; stale claims released once, then abandoned | "N5 — …", "N6 — …" |
+| Sign-in visible but blocked by the page's own policy | the additions are a tested function of the configuration | `csp.test.ts` |
 | Filling the limiter to lock everyone out | bounded classes; a full table makes room | `limiter.test.ts`; "H2 — a flood of reset requests leaves the site open …" |
 | A storm of key fetches | one attempt per 15 seconds after a failure | `token.test.ts` "a provider that cannot be reached is not asked again for every token …" |
 | Finding out who has an account | one answer per kind of refusal; reset answers before the provider | "enumeration: …" |
@@ -351,10 +364,13 @@ A new account is sent **one** e-mail, to the address its owner has confirmed, th
 
 - **Owed** from the transaction that *creates* the account (`welcome: 'pending'`, and an entry in a queue of at most 500). An account is created by a verified token only; a guest, an unverified address, a later sign-in, another device and a restore create nothing and so owe nothing.
 - **Claimed** in a saved transaction before each attempt. Only the claimant sends, so two requests — or a request and the retry — can never both send it.
-- **Settled** afterwards: sent (the account records when; never again), refused for good (a 4xx from the mailer: given up), or worth retrying (network, 429, 5xx after the mailer's own three attempts): tried again after 5 minutes, then 20, 80 …, five times in all. A claim that was never settled — the host stopped in the middle of a send — is not retried: one message too few rather than two.
+- **Settled** afterwards: sent (the account records when; never again), refused for good (a 4xx from the mailer: given up), or worth retrying (network, 429, 5xx after the mailer's own three attempts): tried again after 5 minutes, then 20, 80 …, five times in all.
+- **A claim nobody settled** — the host stopped in the middle of a send — does not sit in the queue for good. After a day it is released for **one** last attempt; if that one is not settled within a day either, it is abandoned. Never a third: a message that may already have gone out is not sent again and again.
+- **Once per address in 30 days.** A salted hash of each welcomed address is remembered for 30 days (at most 5,000), so deleting an account and making it again earns no second message.
+- **It counts against the mailer's daily allowance** (`EMAIL_DAILY_CAP`, default 500), in the same counter as the mailer's other messages. At the allowance it waits for the next day, without using up an attempt.
 - It is sent after the sign-in has been answered and can neither delay nor fail it.
 - **Off when the mailer is not configured** (`ZEPTOMAIL_AUTH`, `EMAIL_FROM_ADDRESS` and `PUBLIC_ORIGIN`): nothing is marked, queued, sent or logged. The operator's e-mail switch holds it back like a failed send. The mailer has no bounce or complaint feed today; a 4xx answer is the only "do not send to this address" signal there is, and it is honoured.
-- An account that is swept (no binding, no character) and whose owner later returns is a new account, and is welcomed as one.
+- An account that is swept (no binding, no character) and whose owner returns more than 30 days after their welcome is a new account, and is welcomed as one.
 
 ## 13. Open questions
 
@@ -364,5 +380,5 @@ A new account is sent **one** e-mail, to the address its owner has confirmed, th
 5. **A password reset by itself does not end other sign-ins.** The provider's token does not say that a password changed. Linking into an existing account, a change in the way of signing in, the 90-day lifetime and the visible device count cover the rest; revoking on reset would need the server to learn of the reset from the provider.
 5a. **A sign-in that needs a sixth set-aside character** is refused. There is no screen for discarding a set-aside character, by design, until it is decided how such a discard should be confirmed.
 6. **The reset request is proxied; sign-in is not.** Someone who talks to the provider directly meets the provider's own limits and replies, not the game's. Enumeration protection in the provider project is what covers that path.
-7. **A not-yet-upgraded guest can be made to look signed out by a sibling host** that plants a second `sid` (section 6). It cannot be impersonated; it recovers when the planted cookie goes.
+7. **A guest not yet upgraded is where they were before this release** with respect to a sibling host planting `sid` (section 6); their first answer from this release ends that. `sid` itself is still read and kept, for rollback; removing it is a later release.
 8. **One character per account per world.** A second world would need the account to hold a character per world.

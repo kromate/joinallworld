@@ -15,19 +15,25 @@
  *   settled   Sent: the account records when, and it is never owed again. A failure the mailer says is worth retrying
  *             (network, 429, 5xx — after its own three attempts) is tried again after 5 minutes, then 20, 80 … up to
  *             five times in all; anything else is given up. A claim that was never settled (the host stopped in the
- *             middle of a send) is not retried: one message too few rather than two.
+ *             middle of a send) is released after a day for ONE last attempt and then abandoned: it cannot sit in the
+ *             queue for good, and a message that may already have gone out is never sent a third time.
+ *   bounded   An address is welcomed at most once in 30 days (a salted hash is remembered), so deleting an account
+ *             and making it again earns no second message; and every welcome counts against the mailer's daily
+ *             allowance (EMAIL_DAILY_CAP) — at the allowance it waits for the next day.
  * The send runs after the sign-in has been answered (ctx.waitUntil) and again from the host's heartbeat for what is
  * due. Nothing it does can fail or delay a sign-in.
  *
  * OFF WHEN THE MAILER IS NOT CONFIGURED (ZEPTOMAIL_AUTH, EMAIL_FROM_ADDRESS and PUBLIC_ORIGIN): nothing is marked,
- * queued, sent or logged. The operator's e-mail switch (Stay in touch → outreach) stops this message too; it is
- * retried later like any other failure.
+ * queued, sent or logged. The operator's e-mail switch (Stay in touch → outreach) holds this message back too; it
+ * waits, without using up an attempt.
  *
  * Nothing here logs an address or a name. Portable: no Node imports.
  */
 import { mailConfig, sendMail } from '../growth/email/zeptomail.ts';
 import { accountWelcomeMail } from '../growth/email/templates.ts';
-import { claimWelcome, dueWelcomes, settleWelcome } from './service.ts';
+import { lagosTime } from '../../src/game/clock.ts';
+import { growthOf } from '../growth/data.ts';
+import { claimWelcome, dueWelcomes, reviveWelcomes, settleWelcome } from './service.ts';
 import type { AccountDeps } from './service.ts';
 import type { RouteContext } from '../types.ts';
 
@@ -48,6 +54,9 @@ function build(ctx: RouteContext) {
   /** Can a message be sent at all? */
   const ready = (): boolean => mailConfig(ctx).configured && Boolean(origin());
   const contact = (): string => ctx.env('EMAIL_CONTACT_LINE').replace(/[\r\n<>]/g, ' ').slice(0, 200);
+  /** The mailer's daily allowance (EMAIL_DAILY_CAP, as server/growth/outreach.ts reads it): a welcome message counts against it like any other e-mail. */
+  const dailyCap = (): number => { const raw = ctx.env('EMAIL_DAILY_CAP').trim(), value = Number(raw); return /^\d{1,9}$/.test(raw) && Number.isSafeInteger(value) ? value : 500; };
+  const today = (): string => String(lagosTime(ctx.now()).day);
 
   /** Send the welcome message owed to this account, if it is owed, due and nobody else is sending it. Never throws. */
   function send(id: string): Promise<void> {
@@ -55,16 +64,29 @@ function build(ctx: RouteContext) {
       const bound = deps;
       if (!bound || stopped || !ready()) return;
       try {
-        const owed = await ctx.store.transact(db => claimWelcome(db, bound, id));
-        if (!owed) return;
-        // The operator's switch stops every e-mail; this one waits its turn like a failed send.
-        const off = await ctx.store.read(db => db.growth?.outreach?.off?.email === true);
-        const result = off ? { ok: false, status: 0, error: 'switched_off' } : await sendMail(ctx, { to: owed.email, ...accountWelcomeMail({ name: owed.name, playUrl: `${origin()}/`, contact: contact() }) });
+        // Claimed, and — in the same transaction — checked against what may go out at all: the operator's switch, and the day's allowance.
+        const claim = await ctx.store.transact((db) => {
+          const owed = claimWelcome(db, bound, id);
+          if (!owed) return null;
+          const held = db.growth?.outreach?.off?.email === true || (db.growth?.outreach?.sent?.[today()]?.email ?? 0) >= dailyCap();
+          // Held back: nothing was attempted, so no try is spent; it waits its turn.
+          if (held) settleWelcome(db, bound, id, { ok: false, retry: true, counted: false });
+          return held ? null : owed;
+        });
+        if (!claim) return;
+        const result = await sendMail(ctx, { to: claim.email, ...accountWelcomeMail({ name: claim.name, playUrl: `${origin()}/`, contact: contact() }) });
         const status = result.status ?? 0;
         // Worth another try: the mailer could not be reached or asked to wait. A 4xx is the mailer refusing THIS message (a bad or bounced address): never again.
-        const retry = off || status === 0 || status === 429 || status >= 500;
-        await ctx.store.transact(db => settleWelcome(db, bound, id, { ok: result.ok, retry }));
-        if (!result.ok && !off) ctx.core.log?.(`Welcome message was not sent: ${String(result.error ?? 'failed').slice(0, 40)}`);
+        const retry = status === 0 || status === 429 || status >= 500;
+        await ctx.store.transact((db) => {
+          settleWelcome(db, bound, id, { ok: result.ok, retry });
+          if (!result.ok) return;
+          // It went out: one of today's e-mails, counted where the mailer's other messages are counted.
+          const g = growthOf(ctx, db), book = (g.outreach ||= { off: {}, log: [], sent: {}, previews: [] }), day = today();
+          const sent = (book.sent[day] ||= { email: 0, push: 0 });
+          sent.email = (sent.email ?? 0) + 1;
+        });
+        if (!result.ok) ctx.core.log?.(`Welcome message was not sent: ${String(result.error ?? 'failed').slice(0, 40)}`);
       } catch (error) { ctx.core.log?.(`Welcome message could not be recorded: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`); }
     })();
     inFlight.add(work);
@@ -75,8 +97,13 @@ function build(ctx: RouteContext) {
   async function tick(force = false): Promise<number> {
     if (!deps || stopped || !ready() || (!force && ctx.now() - lastTick < TICK_MS)) return 0;
     lastTick = ctx.now();
+    const bound = deps;
     let due: string[] = [];
-    try { due = await ctx.store.read(db => dueWelcomes(db, ctx.now())); } catch { return 0; }
+    try {
+      // A claim left unsettled for a day is released for its one last attempt, or abandoned (service.ts reviveWelcomes).
+      if (await ctx.store.read(db => (db.accountLog?.welcome ?? []).some(item => item.claimedAt !== undefined && ctx.now() - item.claimedAt >= 86400000))) await ctx.store.transact(db => reviveWelcomes(db, bound));
+      due = await ctx.store.read(db => dueWelcomes(db, ctx.now()));
+    } catch { return 0; }
     for (const id of due) await send(id);
     return due.length;
   }

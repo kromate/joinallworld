@@ -51,6 +51,12 @@ export const SWEEP_EVERY_MS = 3600000;
 const MAX_USED = 5000;
 /** Welcome messages waiting to be sent or retried, at most. */
 export const MAX_WELCOME_QUEUE = 500;
+/** An address is welcomed at most once in this long, however often an account for it is deleted and made again. */
+export const WELCOMED_FOR_MS = 30 * 86400000;
+/** Addresses remembered as welcomed, at most (as salted hashes; the oldest go first). */
+export const MAX_WELCOMED = 5000;
+/** A claim nobody settled (the host stopped in the middle of a send) is released for ONE more attempt after this long, and abandoned if that one is not settled either. */
+export const WELCOME_CLAIM_STALE_MS = 86400000;
 
 export interface AccountDeps {
   now(): number
@@ -249,6 +255,7 @@ export function sweepAccounts(db: Db, deps: AccountDeps): { devices: number; acc
     if (!account.devices.length && !hasCharacter) { delete accounts[id]; endedAccounts += 1; } else kept += 1;
   }
   log.sweptAt = now; log.accounts = kept;
+  reviveWelcomes(db, deps);
   return { devices: endedDevices, accounts: endedAccounts };
 }
 
@@ -288,9 +295,18 @@ export function signIn(db: Db, deps: AccountDeps, input: Caller & { identity: Ve
     audit(db, deps, 'created', account);
     // The welcome message belongs to the creation of the account: it is owed from this transaction on, and only if it can be sent at all.
     if (deps.welcome?.() === true) {
-      account.welcome = 'pending';
-      const queue = (log.welcome ||= []);
-      if (queue.length < MAX_WELCOME_QUEUE) { queue.push({ id, at: now, tries: 0, nextAt: now }); welcome = id; } else account.welcome = 'skipped';
+      reviveWelcomes(db, deps);
+      const queue = (log.welcome ||= []), welcomed = (log.welcomed ||= {}), address = hash53(`${log.salt}\n${identity.email.toLowerCase()}`);
+      for (const [key, at] of Object.entries(welcomed)) if (!(now - at < WELCOMED_FOR_MS)) delete welcomed[key];
+      // Deleting an account and making it again does not earn the address a second message.
+      if (Object.hasOwn(welcomed, address) || queue.length >= MAX_WELCOME_QUEUE) account.welcome = 'skipped';
+      else {
+        account.welcome = 'pending';
+        queue.push({ id, at: now, tries: 0, nextAt: now }); welcome = id;
+        welcomed[address] = now;
+        const keys = Object.keys(welcomed);
+        if (keys.length > MAX_WELCOMED) for (const key of keys.sort((x, y) => (welcomed[x] ?? 0) - (welcomed[y] ?? 0)).slice(0, keys.length - MAX_WELCOMED)) delete welcomed[key];
+      }
     }
   }
   pruneDevices(db, account, now);
@@ -449,16 +465,35 @@ export function claimWelcome(db: Db, deps: AccountDeps, id: string): { email: st
   const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
   return { email: account.email, name: record && record.account === id ? record.name : '' };
 }
-/** Record what became of a claimed attempt: sent (never again), failed for good, or to be tried again later. */
-export function settleWelcome(db: Db, deps: AccountDeps, id: string, result: { ok: boolean; retry: boolean }): void {
+/** Record what became of a claimed attempt: sent (never again), failed for good, or to be tried again later. A message on its one last attempt (`last`) is never tried again. */
+export function settleWelcome(db: Db, deps: AccountDeps, id: string, result: { ok: boolean; retry: boolean; counted?: boolean }): void {
   const log = db.accountLog, account = own(db.accounts, id), now = deps.now();
   const entry = log?.welcome?.find(item => item.id === id);
   if (!log || !entry) return;
   const done = (state: number | 'failed'): void => { if (account) account.welcome = state; log.welcome = (log.welcome ?? []).filter(item => item !== entry); };
   if (result.ok) { done(now); return; }
-  entry.tries += 1;
-  if (!result.retry || entry.tries >= WELCOME_TRIES) { done('failed'); return; }
-  delete entry.claimedAt; entry.nextAt = now + welcomeBackoff(entry.tries);
+  // Held back without an attempt (the day's allowance is used up, the operator's switch is off): no try is spent.
+  if (result.counted !== false) entry.tries += 1;
+  if (!result.retry || entry.tries >= WELCOME_TRIES || (entry.last === true && result.counted !== false)) { done('failed'); return; }
+  delete entry.claimedAt; entry.nextAt = now + welcomeBackoff(Math.max(1, entry.tries));
+}
+/**
+ * A claim nobody settled is not left in the queue for good (five hundred of them would stop every new account's
+ * message). After a day it is released for ONE last attempt; if that one is not settled within a day either, it is
+ * abandoned. Never more: a message that may already have gone out is not sent a third time.
+ */
+export function reviveWelcomes(db: Db, deps: AccountDeps): number {
+  const log = db.accountLog, now = deps.now();
+  if (!log?.welcome?.length) return 0;
+  let changed = 0;
+  log.welcome = log.welcome.filter((entry) => {
+    if (entry.claimedAt === undefined || now - entry.claimedAt < WELCOME_CLAIM_STALE_MS) return true;
+    changed += 1;
+    if (entry.last === true) { const account = own(db.accounts, entry.id); if (account && account.welcome === 'pending') account.welcome = 'failed'; return false; }
+    entry.last = true; delete entry.claimedAt; entry.nextAt = now;
+    return true;
+  });
+  return changed;
 }
 /** Ids whose welcome message is owed and due (for the retry tick). A claim nobody settled — the host stopped mid-send — is never retried: better none than two. */
 export function dueWelcomes(db: Db, now: number): string[] {

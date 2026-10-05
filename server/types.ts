@@ -171,7 +171,9 @@ export interface AccountLogCollection {
   sweptAt?: number
   accounts?: number
   /** Welcome messages owed: when queued, attempts made, when the next may be made, and — while one is being sent — when it was claimed. At most 500. */
-  welcome?: { id: string; at: number; tries: number; nextAt: number; claimedAt?: number }[]
+  welcome?: { id: string; at: number; tries: number; nextAt: number; claimedAt?: number; /** Its one last attempt, after a claim nobody settled. */ last?: true }[]
+  /** Salted hashes of the addresses welcomed in the last 30 days → when. At most 5000. */
+  welcomed?: Record<string, number>
 }
 /** The public client configuration of the sign-in provider (server/host-context.ts accountsConfig); null = accounts are off. */
 export interface AccountsConfig { projectId: string; apiKey: string; googleClientId: string }

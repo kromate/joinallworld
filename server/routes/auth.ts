@@ -30,10 +30,11 @@
  * ANSWERS DO NOT DESCRIBE ACCOUNTS. A token that is refused for any reason is `401 invalid_token`; a reset request is
  * answered the same way, at the same speed, whether or not the address has an account.
  * LIMITS (ctx.allow; server/limiter.ts — these keys are a bounded class of their own). A token: 10 a minute per
- * address, counted before it is verified; then, ONLY for a token that verified, 300 a minute in all and 8 per five
+ * address, counted before it is verified; then, ONLY for a token that verified and whose address is confirmed, 300 a minute in all and 8 per five
  * minutes per account — so junk cannot spend the shared bucket. A reset: the shared 120 a minute is looked at first
  * (ctx.peek, which counts nothing), then 5 per fifteen minutes per address and 3 an hour per address written to, so a
- * request that would be refused anyway leaves no row behind. Sign-out: 30 a minute per address.
+ * request that would be refused anyway leaves no row behind. Sign-out: 30 a minute per address. (Every key here starts
+ * `account:sign-in` or `account:reset`.) The shared reset bucket has no reserved slice: docs/ACCOUNTS.md says why.
  */
 import type { AfterChange, AccountDeps, Caller } from '../accounts/service.ts';
 import type { VerifiedIdentity } from '../accounts/token.ts';
@@ -93,10 +94,11 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
   }
   /**
    * What the token proves — or one refusal for every way a token can be wrong. The per-address bucket counts every
-   * attempt; the shared bucket and the per-account one count only a token that VERIFIED, so nobody can spend them with junk.
+   * attempt. The shared bucket and the per-account one count only a token that verified AND whose address is confirmed:
+   * neither junk nor validly signed tokens of throwaway, unconfirmed sign-ups can spend what real players share.
    */
   async function identityOf(request: RouteRequest, token: unknown): Promise<VerifiedIdentity> {
-    if (!allow(`account:sign-in:${request.ip}`, 10)) throw limited();
+    if (!allow(`account:sign-in:ip:${request.ip}`, 10)) throw limited();
     if (!verifier || typeof token !== 'string') throw fail(401, 'invalid_token');
     let identity: VerifiedIdentity;
     try { identity = await verifier.verify(token); }
@@ -106,7 +108,9 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
       if (error instanceof TokenError) { core.log?.(`Account token refused: ${error.refusal}`); throw fail(401, 'invalid_token'); }
       throw error;
     }
-    if (!allow('account:sign-in', 300) || !allow(`account:id:${hash53(identity.subject)}`, 8, 300000)) throw limited();
+    // An address nobody has proved they can read links nothing (whoever typed it first would own the character) and proves nothing.
+    if (!identity.emailVerified) throw fail(403, 'email_unverified');
+    if (!allow('account:sign-in', 300) || !allow(`account:sign-in:id:${hash53(identity.subject)}`, 8, 300000)) throw limited();
     return identity;
   }
   /** Sockets opened under a session that moved or a binding that is gone are closed: they would otherwise keep their old identity. */
@@ -131,8 +135,6 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
       const body = await request.json();
       await guard(request, body);
       const identity = await identityOf(request, body.idToken);
-      // An address nobody has proved they can read links nothing: whoever typed it first would own the character.
-      if (!identity.emailVerified) throw fail(403, 'email_unverified');
       const result = await store.transact(db => signIn(db, deps, { ...callerOf(request), identity }));
       closeSockets(result);
       // The welcome message of a NEW account: owed since the transaction above, sent now that it is saved. It never delays or fails the sign-in.
@@ -142,7 +144,7 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
     'POST /api/account/sign-out': async (request) => {
       const body = await request.json();
       await guard(request, body, false);
-      if (!allow(`account:change:${request.ip}`, 30)) throw limited();
+      if (!allow(`account:sign-in:out:${request.ip}`, 30)) throw limited();
       closeSockets(await store.transact(db => signOut(db, deps, callerOf(request))));
       return { body: { ok: true }, headers: { 'Set-Cookie': clearCookie(request) } };
     },

@@ -1108,6 +1108,10 @@ test('Cloudflare: accounts hardening — a flood of resets and junk sign-ins fil
   // Junk sign-ins from thirty addresses do not spend the shared sign-in bucket.
   for (let address = 0; address < 30; address++) await Promise.all(Array.from({ length: 10 }, async (_, i) => { const response = await f.request('/api/account/sign-in', { idToken: `junk.${address}.${i}` }, null, { 'cf-connecting-ip': `198.51.100.${address + 1}` }); assert.equal(response.status, 401); await response.text(); }));
   assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_account WHERE key = 'account:sign-in'"))[0].n, 0, 'the shared bucket was not touched by tokens that did not verify');
+  // Nor do validly signed tokens of throwaway, unconfirmed accounts.
+  for (let batch = 0; batch < 8; batch++) await Promise.all(Array.from({ length: 40 }, async (_, i) => { const n = batch * 40 + i; const response = await f.request('/api/account/sign-in', { idToken: await f.token(`UidThrowaway${n}`, { verified: false }) }, null, { 'cf-connecting-ip': `2001:db8:aaaa:${n.toString(16)}::1` }); assert.equal(response.status, 403); await response.text(); }));
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_account WHERE key = 'account:sign-in' OR key LIKE 'account:sign-in:id:%'"))[0].n, 0, '320 unconfirmed sign-ups from 320 addresses counted against nothing shared');
+  assert.equal((await storage.exec("SELECT COUNT(*) AS n FROM rate_limits_account WHERE key NOT LIKE 'account:sign-in%' AND key NOT LIKE 'account:reset%'"))[0].n, 0, 'every account key starts account:sign-in or account:reset');
   // Now the worst case the tables allow: both full of long-lived rows.
   const far = Date.now() + 3600000;
   await storage.exec(`WITH RECURSIVE n(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM n WHERE i < 4000) INSERT OR REPLACE INTO rate_limits_account(key,started_at,count,expires_at) SELECT 'account:reset:to:flood-' || i, ${Date.now()}, 3, ${far} + i FROM n`);
@@ -1129,24 +1133,36 @@ test('Cloudflare: accounts hardening — __Host-sid: an old `sid` guest keeps th
   const secret = old.cookie.slice(11), legacy = `sid=${secret}`; // the same session as a browser that got its cookie before the change holds it
   const visit = await f.request('/api/life?city=lagos', null, legacy);
   assert.equal(visit.status, 200); assert.equal((await visit.json()).state.cash, 5000);
-  assert.deepEqual(visit.headers.getSetCookie(), [`__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`, 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure']);
+  assert.deepEqual(visit.headers.getSetCookie(), [`__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`], 'the new name is set and `sid` is NOT removed: the previous build, which reads only `sid`, would still find this guest after a rollback');
+  // The browser now holds both; that works, and so does `sid` alone. No answer to a guest clears `sid`.
+  for (const cookie of [`${legacy}; ${old.cookie}`, legacy, old.cookie]) {
+    const response = await f.request('/api/session', null, cookie);
+    assert.equal(response.status, 200); assert.ok(!response.headers.getSetCookie().some(line => line.startsWith('sid=')), cookie); await response.text();
+  }
+  assert.equal((await (await f.request('/api/session', { name: 'Oldtimer' }, legacy)).json()).session.id, old.id);
   assert.equal((await f.upgrade({ origin: f.origin, cookie: legacy })).headers.getSetCookie()[0], `__Host-sid=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000; Secure`, 'a socket opened with the old name is upgraded too');
   const who = async (cookie: string) => { const answer = await f.whoAmI(cookie); return answer.status === 200 ? answer.id : answer.status; };
   const attacker = await f.player('Mallory'), planted = `sid=${attacker.cookie.slice(11)}`;
   assert.equal(await who(`${planted}; ${old.cookie}`), old.id, 'sid=attacker; __Host-sid=victim → the victim');
   assert.equal(await who(`${old.cookie}; ${planted}`), old.id);
-  assert.equal(await who(`${planted}; ${legacy}`), 401, 'sid=attacker; sid=victim → nobody');
-  assert.equal(await who(`${legacy}; ${planted}`), 401);
+  // A guest not upgraded yet sees what the previous build did: the first `sid` is the cookie.
+  assert.equal(await who(`${legacy}; ${planted}`), old.id, 'sid=victim; sid=attacker → the first, as before');
+  assert.equal(await who(`${planted}; ${legacy}`), attacker.id, 'sid=attacker; sid=victim → the first, as before');
   assert.equal(await who(`${attacker.cookie}; ${old.cookie}`), 401, 'two values under the protected name → nobody');
   // Signed in: the binding is honoured as __Host-sid, and not when the same value arrives as `sid`.
   const signed = await f.signIn('UidOld', old.cookie);
   assert.match(signed.setCookie, /^__Host-sid=[0-9a-f-]{36}; HttpOnly; SameSite=Lax; Path=\/; Max-Age=2592000; Secure$/);
   const binding = signed.cookie.slice(11);
   assert.equal(await who(signed.cookie), old.id);
-  assert.equal(await who(`sid=${binding}`), 401);
+  assert.equal(await who(`sid=${binding}`), 401); assert.equal(await who(`sid=${binding}; ${planted}`), 401);
   assert.equal((await f.state(`sid=${binding}`)).account, null);
+  // Signing out is where `sid` is removed.
+  const out = await f.change('/api/account/sign-out', {}, `${planted}; ${signed.cookie}`);
+  assert.deepEqual(out.headers.getSetCookie(), ['__Host-sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure', 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0; Secure']); await out.text();
+  const back = await f.signIn('UidOld');
+  assert.equal(await who(back.cookie), old.id);
   assert.equal((await f.upgrade({ origin: f.origin, cookie: `sid=${binding}` })).status, 401);
-  assert.equal(await who(`${planted}; ${signed.cookie}`), old.id, 'a guest cookie planted beside a signed-in browser changes nothing');
+  assert.equal(await who(`${planted}; ${back.cookie}`), old.id, 'a guest cookie planted beside a signed-in browser changes nothing');
   // Over https an Origin naming this host over plain http is another origin.
   assert.equal((await f.request('/api/session', { name: 'Downgrade' }, null, { origin: f.origin.replace('https://', 'http://') })).status, 403);
 });

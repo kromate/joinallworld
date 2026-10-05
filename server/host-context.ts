@@ -39,10 +39,15 @@ export function accountsConfig(env: Readonly<Record<string, unknown>> | null | u
  * THE SESSION COOKIE. Over HTTPS it is `__Host-sid`: a name a browser only accepts with Secure, Path=/ and NO Domain, so
  * a page on a sibling host (another subdomain of the same site) cannot set or overwrite it. Before that name it was
  * `sid`, which a sibling host CAN set for the whole site; it is still read, so nobody is signed out by the change:
- *   - `__Host-sid`, when present, is the session cookie and `sid` is ignored;
- *   - a lone `sid` is honoured for a GUEST's own session record only (never as an account's device binding), and the
- *     next answer re-issues it as `__Host-sid` and removes `sid`;
- *   - two different values under one name are nobody's session: which of them the browser really holds cannot be told.
+ *   - `__Host-sid`, when present, is the session cookie and `sid` is ignored. Two different values under THIS name are
+ *     nobody's session (a browser holds one; two means the header was made by hand);
+ *   - with no `__Host-sid`, the FIRST `sid` is the cookie — exactly what the build before this one did, so a guest who
+ *     has not been upgraded yet sees no new behaviour. It is honoured for a GUEST's own session record only (never as
+ *     an account's device binding), and the next answer also sets it as `__Host-sid`.
+ * THE OLD COOKIE IS KEPT FOR THIS RELEASE. An upgrade sets `__Host-sid` and leaves `sid` alone, so a browser holds both
+ * and the build before this one — which reads only `sid` — would still know every guest if this release had to be
+ * rolled back. `sid` is removed only where leaving it would be wrong: when a browser signs out. Dropping it for good
+ * belongs to a later release.
  * Without HTTPS (development on plain http) a browser refuses a `__Host-` cookie, so the name stays `sid` there and is
  * honoured for everything.
  */
@@ -52,26 +57,28 @@ export interface PresentedSession {
   value: string | undefined
   /** It arrived under the old name. */
   legacy: boolean
-  /** The request carried a cookie under the old name at all (it is removed with the next cookie this server sets). */
+  /** The request carried a cookie under the old name at all (it is removed when the browser signs out, and not before). */
   hadLegacy: boolean
 }
 export function presentedSession(header: string | null | undefined): PresentedSession {
   const named = (name: string): string[] => [...new Set(String(header || '').split(';').map(part => part.trim()).filter(part => part.startsWith(`${name}=`)).map(part => part.slice(name.length + 1)))];
   const current = named(SESSION_COOKIE), old = named(LEGACY_SESSION_COOKIE);
   if (current.length) return { value: current.length === 1 ? current[0] : undefined, legacy: false, hadLegacy: old.length > 0 };
-  return { value: old.length === 1 ? old[0] : undefined, legacy: old.length === 1, hadLegacy: old.length > 0 };
+  return { value: old[0], legacy: old.length > 0, hadLegacy: old.length > 0 };
 }
 /** May this presented cookie name an account's device binding? Only under the name a sibling host cannot set — or where that name cannot be used at all. */
 export const mayBind = (presented: PresentedSession, secure: boolean): string | undefined => (presented.value !== undefined && (!presented.legacy || !secure) ? presented.value : undefined);
 const cookieLine = (name: string, secret: string, maxAgeSeconds: number, secure: boolean): string => `${name}=${secret}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${secret ? Math.floor(maxAgeSeconds) : 0}${secure ? '; Secure' : ''}`;
 /**
  * The Set-Cookie value(s) that set the session cookie — or, with `secret` '', remove it. One place, so setting and
- * clearing can never differ. `dropLegacy`: also remove a cookie under the old name (the request carried one).
+ * clearing can never differ. SETTING never touches a cookie under the old name (see above: it is kept for this release).
+ * REMOVING (`hadLegacy`: the request carried one) removes that too: a signed-out browser must not fall back to whatever
+ * `sid` it still holds.
  */
-export function sessionCookie(secret: string, maxAgeSeconds: number, secure: boolean, dropLegacy = false): string | string[] {
+export function sessionCookie(secret: string, maxAgeSeconds: number, secure: boolean, hadLegacy = false): string | string[] {
   if (!secure) return cookieLine(LEGACY_SESSION_COOKIE, secret, maxAgeSeconds, false);
   const current = cookieLine(SESSION_COOKIE, secret, maxAgeSeconds, true);
-  return dropLegacy ? [current, cookieLine(LEGACY_SESSION_COOKIE, '', 0, true)] : current;
+  return hadLegacy && !secret ? [current, cookieLine(LEGACY_SESSION_COOKIE, '', 0, true)] : current;
 }
 /**
  * Whether a request may change account state: it named this host as its Origin — with https when this host is reached

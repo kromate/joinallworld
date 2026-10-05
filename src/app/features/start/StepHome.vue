@@ -8,7 +8,7 @@
 // (world/lgaCardModel.ts findLga): the position is never stored, logged or sent, only the local
 // government the player confirms.
 import '../../../ui/panels/world.css'
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { DEFAULT_STYLE } from '../../../game/content/world.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useApp } from '../../state/app.ts'
@@ -45,6 +45,10 @@ const groups = computed(() => groupLgas(estate.value.city, estate.value.lgas, qu
 const picked = computed(() => estate.value.lgas.find((item) => item.id === area.value?.lga) ?? null)
 // A found answer is asked about only until the player has chosen.
 const found = computed(() => (ui.found && !picked.value ? ui.found : null))
+
+// The answer can land below the fold of a short window: bring it into view, so its two buttons are seen.
+const foundBox = ref<HTMLElement | null>(null)
+watch(found, async (now) => { if (!now) return; await nextTick(); foundBox.value?.scrollIntoView({ block: 'center', behavior: globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }) })
 
 function choose(id: string): void { area.value = { lga: id, via: 'manual' }; Object.assign(ui, { found: null, note: '' }) }
 function yes(): void { if (ui.found) { area.value = { lga: ui.found.id, via: 'device' }; Object.assign(ui, { found: null, note: '' }) } }
@@ -89,7 +93,7 @@ function surprise(): void {
         <button type="button" class="cr-btn" data-key="area:random" @click="surprise"><GameIcon name="game" inline /> Pick for me</button>
       </div>
       <p class="cr-note">Worked out on this device. Your position is never sent or stored: only the {{ unit }} you confirm.</p>
-      <div v-if="found" class="cr-found" role="status">
+      <div v-if="found" ref="foundBox" class="cr-found" role="status">
         <p>{{ found.sure ? 'You are in' : 'Nearest to you is' }} <b>{{ found.name }}</b>. Is that right?</p>
         <div class="cr-row"><button type="button" class="cr-btn is-primary" data-key="area:yes" @click="yes">Yes, {{ found.name }}</button><button type="button" class="cr-btn" data-key="area:no" @click="no">No, let me pick</button></div>
       </div>

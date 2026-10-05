@@ -6,7 +6,7 @@
 // decideView() is the whole decision, pure: the saved record and what the server says about the life in, the view
 // to start with out. A record that names a place the player is no longer in, or another life, is ignored.
 
-import { CAMERA_FRAME } from '../../map3d/geo/frame.ts'
+import { CAMERA_FRAME } from './cameraFrame.ts'
 
 export type SavedSheet = { kind: 'phone' } | { kind: 'panel'; id: string } | { kind: 'sim'; tab: string }
 export type SavedCamera =

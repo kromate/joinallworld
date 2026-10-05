@@ -62,7 +62,7 @@ watch(() => (sheet.value ? `${sheet.value.kind}:${sheet.value.kind === 'panel' ?
       <SimSheet v-else-if="sheet.kind === 'sim'" :tab="sheet.tab" :params="sheet.params" />
       <PanelHost v-else-if="panel && fullscreen" :key="panel.id" class="sheet-fullscreen" :panel="panel" :params="sheet.kind === 'panel' ? sheet.params : null" />
       <template v-else-if="panel">
-        <AppBar :title="`${panel.icon ?? ''} ${panel.title}`.trim()" :back="sheet.kind === 'panel' && sheet.from === 'phone' ? 'Back to phone' : null" @back="shell.open('phone')" />
+        <AppBar :title="panel.title" :back="sheet.kind === 'panel' && sheet.from === 'phone' ? 'Back to phone' : null" @back="shell.open('phone')" />
         <p v-if="lock" class="sheet-lock" role="note">🔒 {{ lock.reason }}</p>
         <PanelHost :key="panel.id" class="sheet-body" :panel="panel" :params="sheet.kind === 'panel' ? sheet.params : null" />
       </template>

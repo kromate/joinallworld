@@ -58,6 +58,7 @@ import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
+import { dockOf } from './insets.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
@@ -533,10 +534,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const box = (selector: string) => { const rect = doc.querySelector(selector)?.getBoundingClientRect(); return rect && rect.height ? rect : null; };
     const bar = box('.life-status'), nav = box('.life-nav'), panel = box('.map-panel'), wide = page.width > 720;
     let left = 8, right = wide ? 64 : 8, top = (bar ? bar.bottom - page.top : 56) + 8, bottom = (nav ? page.bottom - nav.top : 70) + 10;
-    if (panel) {
-      if (wide) left = Math.max(left, panel.right - page.left + 12);
-      else if (panel.height < page.height * 0.62) bottom = Math.max(bottom, page.bottom - panel.top + 10);
-    }
+    const dock = panel ? dockOf(panel, page, wide) : null;
+    if (dock?.side === 'left') left = Math.max(left, dock.amount); else if (dock?.side === 'bottom') bottom = Math.max(bottom, dock.amount);
     return { left, top, right, bottom, wide };
   }
   /** A camera kept before a reload, applied when the map first opens (or at once when it is open). */
@@ -572,6 +571,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     }
     if (!opened) { openView(); if (trip && route && !reducedMotion) rig.jump(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 })); }
     else if (changed && !userMoved && size.width > 720 && !trip) rig.jump(openedWhole ? rig.whole() : rig.core());
+    // The panels change as a trip starts (the list gives way to the trip bar): the route is framed again in the room that is left.
+    else if (changed && trip && route && tripCamera && !reducedMotion) rig.ease(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 }), 0.4);
     return true;
   }
   const motion = (target: Partial<RigView>, time = 0.5) => { if (reducedMotion) rig.jump(target); else rig.ease(target, time); request(); };

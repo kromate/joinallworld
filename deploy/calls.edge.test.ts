@@ -91,7 +91,9 @@ test('on the Worker: friends ring, the callee sees the name, strangers and block
   const ada = await f.device('Ada'), bola = await f.device('Bola'), cleo = await f.device('Cleo');
   await f.befriend(ada, bola);
   const a = await f.socket(ada), b = await f.socket(bola), c = await f.socket(cleo);
-  // The default is friends only.
+  // Bola accepts calls from friends only: a stranger reads unreachable.
+  b.send({ type: 'call-settings', calls: 'friends' });
+  assert.equal((await b.until('call-settings')).calls, 'friends');
   invite(c, bola.id);
   assert.equal((await c.until('call-state')).state, 'unreachable');
   assert.deepEqual(callFrames(await b.drain()), []);
@@ -134,7 +136,7 @@ test('on the Worker: the setting, a block in either direction, a decline, a busy
   await f.befriend(ada, bola);
   const a = await f.socket(ada), b = await f.socket(bola), c = await f.socket(cleo);
   b.send({ type: 'call-settings' });
-  assert.equal((await b.until('call-settings')).calls, 'friends');
+  assert.equal((await b.until('call-settings')).calls, 'everyone', 'the default');
   b.send({ type: 'call-settings', calls: 'everyone' });
   assert.equal((await b.until('call-settings')).calls, 'everyone');
   invite(c, bola.id);

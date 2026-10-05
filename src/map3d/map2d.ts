@@ -20,6 +20,7 @@
  * Player text (ads) is written with textContent only and is never a link or a button.
  */
 import { VENUES, COMING_SOON, venueLabel, venueDistrict } from '../game/content/venues.ts';
+import { dockOf } from './insets.ts';
 import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
@@ -294,7 +295,8 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     const rect = (selector: string) => { const found = document.querySelector(selector)?.getBoundingClientRect(); return found && found.height ? found : null; };
     const bar = rect('.life-status'), nav = rect('.life-nav'), panel = rect('.map-panel'), wide = page.width > 720;
     let left = 8, right = wide ? 64 : 8, top = (bar ? bar.bottom - page.top : 56) + 8, bottom = (nav ? page.bottom - nav.top : 70) + 10;
-    if (panel) { if (wide) left = Math.max(left, panel.right - page.left + 12); else if (panel.height < page.height * 0.62) bottom = Math.max(bottom, page.bottom - panel.top + 10); }
+    const dock = panel ? dockOf(panel, page, wide) : null;
+    if (dock?.side === 'left') left = Math.max(left, dock.amount); else if (dock?.side === 'bottom') bottom = Math.max(bottom, dock.amount);
     size = { width: page.width, height: page.height }; insets = { left, top, right, bottom };
     container.style?.setProperty('--map-dock', `${Math.round(bottom)}px`);
     root.style.setProperty('--m3-dock', `${Math.round(bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(left)}px`); root.style.setProperty('--m3-top', `${Math.round(top)}px`);

@@ -1,7 +1,8 @@
 // OWNER: shell — the start-up view after a reload (./viewMemory.ts): pure decisions and the storage round trip.
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CAMERA_FRAME } from '../../map3d/geo/frame.ts'
+import { CAMERA_FRAME } from './cameraFrame.ts'
+import { FRAME_LAT, FRAME_LON, UNITS_PER_KM } from '../../map3d/geo/frame.ts'
 import { decideView, forgetViews, keepView, loadView, savedViewFrom } from './viewMemory.ts'
 import type { LifeFacts, SavedView } from './viewMemory.ts'
 
@@ -63,4 +64,8 @@ test('a camera kept in another map frame, or before frames were named, is droppe
     assert.deepEqual([view.mode, view.destination, view.camera], ['map', 'library', null], String(frame))
   }
   assert.equal(decideView(saved(), facts()).camera?.kind, '3d')
+})
+
+test('the camera frame names the map frame it stands for', () => {
+  assert.ok(CAMERA_FRAME.startsWith(`nigeria-frame:${FRAME_LON},${FRAME_LAT},${UNITS_PER_KM}:`))
 })

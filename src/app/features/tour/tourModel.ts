@@ -15,7 +15,10 @@ export interface StepContext {
   keys?: boolean
   /** Is a `data-tour` target on screen? */
   has: (id: string) => boolean
+  /** The other cities that are open, by name, and the country the player is in (tourWorld.ts reads them from the city registry). */
+  world?: TourWorld
 }
+export interface TourWorld { cities: readonly string[]; country: string }
 export interface KeyRow { caps: string[]; text: string }
 export interface TourStep {
   id: string
@@ -37,6 +40,8 @@ export interface TourStep {
   expand?: boolean
   /** The step's own sheet is allowed to be open (the phone). */
   allows?: 'phone'
+  /** What the step before opened stays open for this one (the map, the phone), and is closed after it. */
+  keeps?: 'map' | 'phone'
   prefer?: Side
   keys?: (context: StepContext) => KeyRow[]
   /** The last card: an extra button. */
@@ -45,8 +50,22 @@ export interface TourStep {
 
 const text = (home: string, away: string) => (context: StepContext): string => (context.home ? home : away)
 
+/** Up to three names as words: "Ibadan", "Ibadan and Ota", "Ibadan, Ota and Abeokuta", and "… and more" past three. */
+export function cityWords(names: readonly string[]): string {
+  const [first = '', ...rest] = names.slice(0, 3)
+  if (names.length > 3) return `${[first, ...rest].join(', ')} and more`
+  const last = rest.pop()
+  return last ? `${[first, ...rest].join(', ')} and ${last}` : first
+}
+/** The travel step: only cities that are open are named, and nothing is promised as open that is not. */
+function travelText(context: StepContext): string {
+  const { cities, country } = context.world ?? { cities: [], country: 'Nigeria' }
+  if (!cities.length) return `Allworld is the real world, one city at a time, and you will travel between them to see what there is to do in each. ${country} comes first, and more of Africa and the world are coming.`
+  return `The ${country} map, at the end of the Map list, takes you to other real cities like ${cityWords(cities)}: go and see what there is to do there. Cities in ${country} are open now, and more of Africa and the world are coming.`
+}
+
 export const STEPS: readonly TourStep[] = [
-  { id: 'welcome', title: 'Welcome to Allworld', text: 'Let me show you around. It takes a minute, and you can skip any time.' },
+  { id: 'welcome', title: 'Welcome to Allworld', text: 'Let me show you around. It takes about two minutes, and you can skip any time.' },
   { id: 'needs', title: 'Your needs', targets: ['needs'], prefer: 'bottom', text: 'These bars show how you are doing: energy, food and more. They fall slowly as time passes. The line under them always says what to do next: tap it and it takes you there.' },
   { id: 'hud', title: 'Time, mood and cash', targets: ['hud'], prefer: 'bottom', text: 'The clock shows the day and the hour, with your mood beside it. Your cash is on the right: tap it to open your Bank.' },
   { id: 'signup', title: 'Save your progress', targets: ['signup'], needs: ['signup'], prefer: 'bottom', text: 'You are playing as a guest, which is fine. Sign up free to keep your character and play on from any device. Log in is next to it if you have an account already.' },
@@ -62,12 +81,17 @@ export const STEPS: readonly TourStep[] = [
     keys: (context) => ((context.keys ?? !context.touch) ? [{ caps: ['walk:up', 'walk:left', 'walk:down', 'walk:right'].map(capOf), text: 'Walk' }, { caps: [capOf('walk:jog')], text: 'Hold to jog' }, { caps: ['Click'], text: 'Walk there' }, { caps: ['Drag'], text: 'Look around' }, { caps: ['Scroll'], text: 'Zoom' }] : []) },
   { id: 'map', title: 'The Map', targets: ['nav-map'], doneTargets: ['map-card'], wait: 'map',
     text: 'Travel from here to anywhere in the city.', task: 'Tap Map to open it.',
-    doneText: 'Pick a place to see the trip first: how long it takes, and what each way of travelling costs. The world atlas shows the bigger picture, and more places are opening.' },
+    doneText: 'Pick a place to see the trip first: how long it takes, and what each way of travelling costs.' },
+  { id: 'travel', title: 'Travel the world', targets: ['map-world', 'nav-map'], keeps: 'map', text: travelText },
   { id: 'phone', title: 'Your phone', targets: ['nav-phone'], doneTargets: ['phone-apps'], wait: 'phone', allows: 'phone',
     text: 'Jobs, Bank, Messages, Missions and more are apps in your phone.', task: 'Tap Phone to open it.',
     doneText: 'These are your apps. Jobs finds you work, Bank keeps your money, Messages keeps you in touch and Missions gives you something to aim for.' },
-  { id: 'people', title: 'People', targets: ['online', 'community'], needs: ['online', 'community', 'invite', 'call'],
-    text: (context) => `Other people live here too.${context.has('online') ? ' The green count shows who is online: tap it to meet them.' : ' Open Community to talk to whoever is around.'} ${context.has('online') || context.has('call') ? 'Tap a player to chat, or press Call to ring them; they choose whether to answer.' : ''}${context.has('invite') ? ' Invite brings a friend in with your link.' : ''}`.trim() },
+  { id: 'work', title: 'Work and business', targets: ['phone-dock', 'nav-phone'], allows: 'phone', keeps: 'phone',
+    text: 'Jobs pays you for every shift, and a Career moves you up. Keep your money in Bank, grow it in Invest and rent Billboards to advertise.' },
+  { id: 'people', title: 'Talk to people', targets: ['online', 'invite'], needs: ['online', 'invite', 'call'],
+    text: (context) => `${context.has('online') ? 'Tap the green count to see who is online, then a player to chat or press Call to ring them; they choose whether to answer.' : 'Other people live here too: find one in People in your phone, then chat or press Call to ring them; they choose whether to answer.'} ${context.has('invite') ? 'Messages keeps your chats and groups, and Invite brings a friend in with your link.' : 'Messages in your phone keeps your chats and groups.'}` },
+  { id: 'community', title: 'Community', targets: ['community'], needs: ['community'],
+    text: 'This opens the chat of the place you are in, for everyone who is here. Join the voice circle there to talk out loud with people nearby.' },
   { id: 'done', title: 'You’re set', text: 'Need this again? Open Phone, then Help, then Take the tour. Press ? any time for the shortcuts.', action: { label: 'See the shortcuts', run: 'shortcuts' } },
 ]
 
@@ -96,6 +120,11 @@ export function seek(list: readonly TourStep[], from: number, way: 1 | -1, conte
 }
 
 export interface WaitFacts { activeAction: boolean; mode: string; sheet: string | null }
+/** What a step has open (it waited for it, or kept it from the step before) that the step coming next does not carry on with. */
+export function closes(now: TourStep, next: TourStep | null): 'map' | 'phone' | null {
+  const open = now.keeps ?? (now.wait === 'map' || now.wait === 'phone' ? now.wait : null)
+  return open && next?.keeps !== open && next?.wait !== open ? open : null
+}
 /** Has the player done the thing a step waits for? */
 export function isDone(wait: Wait | undefined, facts: WaitFacts): boolean {
   if (wait === 'activity') return facts.activeAction

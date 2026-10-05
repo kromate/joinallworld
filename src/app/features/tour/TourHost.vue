@@ -12,7 +12,8 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch 
 import { useApp } from '../../state/app.ts'
 import { tour, track } from './tourState.ts'
 import { signupShown } from '../account/shownOnce.ts'
-import { STEPS, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
+import { STEPS, closes, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
+import { openWorld } from './tourWorld.ts'
 import { callStore } from '../calls/callState.ts'
 import { input, startInputMode } from '../../state/inputMode.ts'
 import type { StepContext, TourStep } from './tourModel.ts'
@@ -53,7 +54,7 @@ function find(id: string): HTMLElement | null {
   for (const node of document.querySelectorAll(`[data-tour="${CSS.escape(id)}"]`)) if (visible(node)) return node
   return null
 }
-const context = (): StepContext => ({ home: game.state.value.location === 'home', touch: input.touch, keys: input.keys, has: (id) => find(id) !== null })
+const context = (): StepContext => ({ home: game.state.value.location === 'home', touch: input.touch, keys: input.keys, has: (id) => find(id) !== null, world: openWorld(game.cityId.value) })
 startInputMode()
 const ctx = computed(() => { void index.value; void done.value; void input.touch; void input.keys; return context() })
 const words = computed(() => (step.value ? wordsOf(step.value, ctx.value, done.value) : { title: '', text: '', task: null }))
@@ -113,13 +114,15 @@ function settle(): void {
 let before: Element | null = null
 let wasExpanded = false
 let advancing = 0
-function leave(): void {
+/** Leave the step; `next` is the one being entered, which may carry on with what this one has open. */
+function leave(next: TourStep | null = null): void {
   clearTimeout(advancing)
   const now = step.value
   if (!now) return
   if (now.expand) shell.ui.expanded = wasExpanded
-  if (now.wait === 'map' && game.mode.value === 'map') shell.close()
-  if (now.wait === 'phone' && shell.sheet.value?.kind === 'phone') shell.close()
+  const shut = closes(now, next)
+  if (shut === 'map' && game.mode.value === 'map') shell.close()
+  if (shut === 'phone' && shell.sheet.value?.kind === 'phone') shell.close()
 }
 function enter(): void {
   const now = step.value
@@ -139,7 +142,7 @@ function enter(): void {
 function go(way: 1 | -1): void {
   const next = seek(list.value, index.value, way, context())
   if (next < 0) { if (way === 1) finish(); return }
-  leave()
+  leave(list.value[next] ?? null)
   index.value = next
   enter()
 }

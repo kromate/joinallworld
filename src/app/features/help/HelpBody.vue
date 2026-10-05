@@ -1,17 +1,23 @@
 <script setup lang="ts">
 // How to play: the Help app in the phone, and the help sheet (the ? key) outside it.
+import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { shortcutRows } from '../../../ui/keys.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
+import { openWorld } from '../tour/tourWorld.ts'
 
 const { game, shell } = useApp()
-const STEPS = [
+const country = computed(() => openWorld(game.cityId.value).country)
+const STEPS = computed(() => [
   { icon: 'home', title: 'Do things', text: 'Pick a spot in the venue panel, then an activity. It takes real seconds and finishes on the server even if you close the tab.' },
   { icon: 'map', title: 'Go places', text: 'Open the Map to travel. Every fare, trip time and closing hour is shown before you go.' },
   { icon: 'phone', title: 'Use your phone', text: 'Jobs, Bank, Messages and every other app live in the Phone (P). Red badges mean something is waiting.' },
   { icon: 'person', title: 'Look after your Sim', text: 'The six bars are your needs. Tap your avatar for your profile, goals, skills and people.' },
-] as const
+  { icon: 'globe', title: 'Travel to other cities', text: `Open the Map, then the ${country.value} map at the end of the list. Pick a city that is open and press Travel. More of Africa and the world are coming.` },
+  { icon: 'chat', title: 'Call and chat', text: 'Tap the online count, then a player, to chat or Call them; they choose whether to answer. The chat button at a place opens its community.' },
+  { icon: 'career', title: 'Work and business', text: 'Jobs and Career earn your pay, Bank and Invest look after it, and Billboards advertise for you.' },
+] as const)
 const rows = shortcutRows()
 /** The walkthrough starts after this sheet closes (src/app/features/tour/TourTrigger.vue). */
 function takeTour(): void { window.dispatchEvent(new CustomEvent('jaw:tour')) }

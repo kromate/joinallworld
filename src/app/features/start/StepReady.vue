@@ -29,5 +29,6 @@ const rows = computed<{ step: StepId; label: string; value: string }[]>(() => [
       </div>
     </dl>
     <p class="cr-note">Your birth lottery is rolled when you start. It decides your start cash. You keep going from there: jobs, friends, a house to make your own.</p>
+    <p class="cr-note" data-cr-world>Allworld is the real world, one city at a time: travel between cities to see what life is like in each. Call and chat with the people you meet, and earn, invest and advertise as you go.</p>
   </div>
 </template>

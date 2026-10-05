@@ -134,11 +134,11 @@ test('share: makes the link, prepares the card, opens the sheet, and replaces th
   assert.equal(h.growth.state.sharing?.prepared.url, 'blob:1')
   assert.deepEqual(h.opened, ['share-sheet'])
   assert.deepEqual(h.sent[0]?.options, { method: 'POST', body: { cityId: 'lagos', kind: 'invite' } })
-  assert.deepEqual(events, ['share_card_created', 'invite_created'])
+  assert.deepEqual(events, ['share_card_created', 'share_opened', 'invite_created'])
   await h.growth.share('event', { event: 'owambe' })
   assert.deepEqual(h.revoked, ['blob:1'], 'the earlier picture is released')
   assert.deepEqual(h.sent[1]?.options?.body, { cityId: 'lagos', kind: 'event', event: 'owambe' })
-  assert.deepEqual(events.slice(2), ['share_card_created'], 'an event share is not an invitation')
+  assert.deepEqual(events.slice(3), ['share_card_created', 'share_opened'], 'an event share is not an invitation')
   Reflect.deleteProperty(globalThis, 'window')
 })
 

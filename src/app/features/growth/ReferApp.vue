@@ -39,8 +39,8 @@ onMounted(() => { void growth.load() })
       <div class="gr-card">
         <h3>Your invite link</h3>
         <p>Send it in WhatsApp or anywhere else. Your friend picks a name and is in: no sign-up. When they have been paid for work on {{ r.rules.workDays }} different days, you get {{ money(r.rules.reward) }} and {{ r.rules.stars }} stars. They get {{ money(r.rules.welcome) }} after their first paid day.</p>
-        <BaseButton variant="primary" block :disabled="busy !== null" @click="growth.share('invite')">{{ busy === 'invite' ? 'Preparing…' : 'Share my invite link' }}</BaseButton>
-        <BaseButton block :disabled="busy !== null" @click="growth.share('house')">{{ busy === 'house' ? 'Preparing…' : 'Invite someone to my house' }}</BaseButton>
+        <BaseButton variant="primary" block :disabled="busy !== null" @click="growth.share('invite', { surface: 'phone' })">{{ busy === 'invite' ? 'Preparing…' : 'Share my invite link' }}</BaseButton>
+        <BaseButton block :disabled="busy !== null" @click="growth.share('house', { surface: 'phone' })">{{ busy === 'house' ? 'Preparing…' : 'Invite someone to my house' }}</BaseButton>
       </div>
       <div v-if="r.by" class="gr-card">
         <h3>You came through {{ r.by.name }}’s link</h3>

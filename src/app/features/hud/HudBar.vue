@@ -61,6 +61,7 @@ function onSaved(): void {
         <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
       </span>
     </span>
+    <InviteButton />
     <button class="hud-cash" :class="cashFlash" type="button" @animationend="cashFlash = null" :aria-label="`Wallet ${cash}. Open the bank and your transactions`" @click="shell.open('bank')">{{ cash }}</button>
     <span v-if="delta" :key="delta.run" class="hud-delta" :class="delta.up ? 'is-up' : 'is-down'" aria-hidden="true">{{ delta.text }}</span>
   </section>

@@ -3,27 +3,60 @@
 // (a blob URL, revoked by the store when it is replaced), the text that goes with it, the phone's
 // own share sheet, WhatsApp, X, Copy and Save picture. The game sends nothing; the player
 // chooses who sees it. The text is shown as text, never as markup.
-import { ref } from 'vue'
+//
+// For an invitation (the invite link, the house, a table) it also offers Copy link, Telegram and a
+// QR code, says what the inviter gets (the referral rules, with their conditions) and how many
+// friends have joined. The QR encoder is only fetched when the code is asked for.
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
+import { REFERRAL } from '../../../game/content/growth.ts'
+import { channelLinks } from '../../../ui/share-links.ts'
+import { money } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import LinkButton from './LinkButton.vue'
+import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, progressLine } from './inviteModel.ts'
+import type { InviteRules, ShareChannel } from './inviteModel.ts'
 import { useGrowth } from './useGrowth.ts'
 
 defineProps<{ params?: unknown }>()
+const ShareQr = defineAsyncComponent(() => import('./ShareQr.vue'))
 const growth = useGrowth()
 const sharing = growth.state
-const working = ref<'share' | 'copy' | null>(null)
+const working = ref<'share' | 'copy' | 'link' | null>(null)
+const showQr = ref(false)
+const canNative = ref(false)
+const invite = computed(() => isInviteSheet(sharing.sharing?.facts.kind))
+const links = computed(() => { const made = sharing.sharing; return made ? channelLinks(made.prepared.text, made.prepared.link) : null })
+const referral = computed(() => sharing.hello?.referral ?? null)
+const fallback: InviteRules = { welcome: REFERRAL.welcome, reward: REFERRAL.reward, stars: REFERRAL.rewardStars, perWeek: REFERRAL.paidPerWeek, lifetime: REFERRAL.paidLifetime, workDays: REFERRAL.countWorkDays, linkWithinDays: REFERRAL.linkWithinDays }
+const rules = computed<InviteRules>(() => referral.value?.rules ?? fallback)
+const progress = computed(() => progressLine(referral.value))
+
+function channel(name: ShareChannel): void { growth.track('share_channel', { channel: name }) }
 async function run(what: 'share' | 'copy'): Promise<void> {
   if (working.value) return
   working.value = what
+  channel(what === 'share' ? 'native' : 'copy')
   try { await (what === 'share' ? growth.shareNow() : growth.copyShare()) } finally { working.value = null }
 }
+async function copyLink(): Promise<void> {
+  const made = sharing.sharing
+  if (working.value || !made) return
+  working.value = 'link'
+  channel('copy')
+  try { await growth.copyLink() } finally { working.value = null }
+}
+function toggleQr(): void { showQr.value = !showQr.value; if (showQr.value) channel('qr') }
+onMounted(() => {
+  canNative.value = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
+  if (invite.value) void growth.load()
+})
 </script>
 
 <template>
   <div class="gr-share">
     <p v-if="!sharing.sharing" class="gr-note">Nothing to share yet.</p>
-    <template v-else>
+    <template v-else-if="!invite">
       <img v-if="sharing.sharing.prepared.url" class="gr-share-img" :src="sharing.sharing.prepared.url" alt="Your Allworld card" width="320" height="320">
       <p class="gr-share-text">{{ sharing.sharing.prepared.text }}</p>
       <div class="gr-share-acts">
@@ -35,6 +68,26 @@ async function run(what: 'share' | 'copy'): Promise<void> {
       </div>
       <p class="gr-note">You choose who sees this. The link is the last line: delete it if you only want the result. Sharing pays nothing; a friend who really plays does.</p>
     </template>
+    <template v-else>
+      <img v-if="sharing.sharing.prepared.url" class="gr-share-img" :src="sharing.sharing.prepared.url" alt="Your Allworld card" width="320" height="320">
+      <p class="gr-share-text gr-share-link" data-invite-link>{{ sharing.sharing.prepared.link }}</p>
+      <div class="gr-share-acts">
+        <BaseButton variant="primary" class="is-wide" :disabled="working !== null" @click="copyLink">{{ working === 'link' ? 'Copying…' : 'Copy link' }}</BaseButton>
+        <BaseButton v-if="canNative" class="is-wide" :disabled="working !== null" @click="run('share')">{{ working === 'share' ? 'Sharing…' : 'Share…' }}</BaseButton>
+        <LinkButton v-if="links" :href="links.whatsapp" @click="channel('whatsapp')">WhatsApp</LinkButton>
+        <LinkButton v-if="links" :href="links.telegram" @click="channel('telegram')">Telegram</LinkButton>
+        <LinkButton v-if="links" :href="links.x" @click="channel('x')">X</LinkButton>
+        <BaseButton :aria-expanded="showQr" @click="toggleQr">{{ showQr ? 'Hide QR code' : 'Show QR code' }}</BaseButton>
+      </div>
+      <ShareQr v-if="showQr" :link="sharing.sharing.prepared.link" />
+      <p class="gr-progress" role="status" data-invite-progress>{{ progress || 'Your link is ready.' }}</p>
+      <div class="gr-reward" data-invite-reward>
+        <p>{{ inviterRewardLine(rules, money) }}</p>
+        <p>{{ friendGetsLine(rules, money) }}</p>
+        <p>{{ inviterLimitLine(rules) }}</p>
+      </div>
+      <p class="gr-note">You choose who sees this: the game sends nothing. A friend who opens the link sees your name and goes straight to making their Sim.</p>
+    </template>
   </div>
 </template>
 
@@ -43,7 +96,10 @@ async function run(what: 'share' | 'copy'): Promise<void> {
 .gr-share-img { display: block; width: 100%; max-width: 320px; margin: 0 auto var(--s-3); border-radius: 18px; box-shadow: var(--e-2); }
 :global(.ph.is-wide) .gr-share-img { max-width: 380px; }
 .gr-share-text { white-space: pre-wrap; background: var(--c-fill); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.45; margin: 0 0 var(--s-3); user-select: all; overflow-wrap: anywhere; }
-.gr-share-acts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+.gr-share-acts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); margin-bottom: var(--s-3); }
 .gr-share-acts > * { min-height: var(--tap, 44px); text-align: center; }
 .gr-share-acts .is-wide { grid-column: 1 / -1; }
+.gr-progress { margin: 0 0 var(--s-2); font-size: 14px; font-weight: 700; color: var(--c-green-dark); }
+.gr-reward { background: var(--c-fill); border-radius: 12px; padding: 8px 12px; }
+.gr-reward p { margin: 4px 0; font-size: 12.5px; line-height: 1.45; color: var(--c-ink-2); }
 </style>

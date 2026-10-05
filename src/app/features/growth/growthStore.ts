@@ -29,6 +29,7 @@ import type { ShareModule } from './boundary.ts'
 import { announceAge, channelHref, failureOf, growthReady, helloEvents, helloStale, isInvite, track } from './growthModel.ts'
 import type { GrowthCall, HelloOk } from './growthModel.ts'
 import type { LandingState, SharingState } from './growthTypes.ts'
+import { surfaceOf } from './inviteModel.ts'
 
 export { announceAge, track } from './growthModel.ts'
 export type { GrowthCall, GrowthFailure, HelloOk } from './growthModel.ts'
@@ -49,7 +50,7 @@ export interface GrowthState {
 const fresh = (): GrowthState => ({ hello: null, at: 0, loading: false, error: null, sharing: null, busy: null, landing: null })
 
 /** What the second argument of share() may carry: the calendar event id, or a table id. */
-export interface ShareExtra { event?: string; table?: string }
+export interface ShareExtra { event?: string; table?: string; /** Where the share was started from (telemetry only; never sent to the server). */ surface?: string }
 
 export interface GrowthDeps {
   fetchJson: FetchJson
@@ -101,16 +102,18 @@ export function createGrowth(deps: GrowthDeps) {
 
   /** Make a share link, paint the card and open the share sheet panel. */
   async function share(kind: ShareKind, extra: ShareExtra = {}): Promise<void> {
+    const { surface, ...asked } = extra
     if (state.busy) return
     if (!growthReady(deps.view())) { deps.toast('Sharing needs a connection to the server.', 'error'); return }
     state.busy = kind
-    const made = await call<ShareResult>('/api/growth/share', { kind, ...extra })
+    const made = await call<ShareResult>('/api/growth/share', { kind, ...asked })
     if (!made.ok) { state.busy = null; deps.toast(made.reason || 'That could not be shared.', 'error'); return }
     let prepared
     try { prepared = await (await deps.loadShare()).prepareShare(made.share.facts, `${deps.origin()}${made.share.path}`) } catch { state.busy = null; deps.toast('That could not be shared.', 'error'); return }
     if (state.sharing?.prepared.url) deps.revokeUrl(state.sharing.prepared.url)
-    state.sharing = { facts: made.share.facts, prepared }
+    state.sharing = { facts: made.share.facts, prepared, surface: surfaceOf(surface) }
     track('share_card_created', { kind })
+    track('share_opened', { surface: surfaceOf(surface) })
     if (isInvite(kind)) track('invite_created')
     state.busy = null
     deps.open('share-sheet')
@@ -122,6 +125,13 @@ export function createGrowth(deps: GrowthDeps) {
     const outcome = await (await deps.loadShare()).systemShare(current.prepared)
     void call('/api/growth/client', { signals: [outcome === 'unavailable' ? 'share-fallback' : 'share-sheet'] })
     if (outcome === 'unavailable') deps.toast('This browser has no share sheet. Use WhatsApp, X or Copy below.', 'info')
+  }
+  /** Copy the link alone (the invite sheet's Copy link). */
+  async function copyLink(): Promise<void> {
+    const current = state.sharing
+    if (!current) return
+    const copied = await (await deps.loadShare()).copyText(current.prepared.link)
+    deps.toast(copied ? 'Link copied. Paste it into any chat.' : 'Could not copy. Press and hold the link to copy it yourself.', 'good')
   }
   async function copyShare(): Promise<void> {
     const current = state.sharing
@@ -150,7 +160,7 @@ export function createGrowth(deps: GrowthDeps) {
   // Replies that change what a screen holds go through here, so the stored copy is replaced, never mutated.
   function setConsent(consent: NonNullable<HelloOk['consent']>): void { if (state.hello) state.hello = { ...state.hello, consent } }
 
-  return { state, call, load, share, shareNow, copyShare, channel, awayDismissed, dismissAway, setConsent, reset, track, announceAge, dispose: stopListening }
+  return { state, call, load, share, shareNow, copyShare, copyLink, channel, awayDismissed, dismissAway, setConsent, reset, track, announceAge, dispose: stopListening }
 }
 export type Growth = ReturnType<typeof createGrowth>
 

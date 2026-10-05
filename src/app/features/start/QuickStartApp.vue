@@ -33,6 +33,7 @@ import { currentDraft, draft, focus, qs } from './quickStartState.ts'
 import { APPEARANCE } from '../../../game/content/traits.ts'
 import { PRESETS, firstLanding, joinTarget, keepDraft, pendingRef, presetLook, shuffleLook, suggestName, track, withBody } from './startBoundary.ts'
 import type { QuickDraft } from './startBoundary.ts'
+import { invitedWords, inviterName } from '../growth/inviterLookup.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
@@ -51,6 +52,8 @@ const nameShown = computed(() => current.value.name)
 const refused = refusedNameToKeep(problem.value, current.value.name)
 if (refused !== null) draft.value = keepDraft({ name: refused })
 const invited = (): boolean => Boolean(joinTarget() || pendingRef())
+const inviter = ref<string | null>(null)
+const invitedNote = computed(() => invitedWords(inviter.value))
 const wardrobe = starterWardrobe()
 
 /** Change the draft and keep it on the device. */
@@ -62,6 +65,9 @@ function focusTapped(): void {
 function tap(key: string): void { qs.taps += 1; qs.error = ''; focus.key = key }
 
 onMounted(() => {
+  // A link that carried a share code names who sent it, as text, before Play is pressed.
+  const code = pendingRef()
+  if (code) void inviterName(game.fetchJson, code).then((name) => { inviter.value = name })
   // Once per device, not once per page load: a reload in the middle of the form is the same landing.
   if (!qs.landed) { qs.landed = true; if (!held(view.value) && firstLanding()) track('landed', { join: invited() }) }
   // Play is where the keyboard starts (Enter plays).
@@ -120,7 +126,7 @@ function onEditorTap(event: MouseEvent): void {
 <template>
   <div ref="root" class="qs-root" data-qs-root>
     <p class="qs-lead"><b>Step into a world to live in, with your friends.</b>Start playing in seconds. Build your life as you go.</p>
-    <p v-if="invited()" class="qs-join" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>A friend invited you.</strong>Tap Play and you land where they are.</span></p>
+    <p v-if="invited()" class="qs-join" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>{{ invitedNote.title }}</strong>{{ invitedNote.text }}</span></p>
     <p v-if="showNote && words" class="qs-note" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}</strong>{{ words.why }} Your character is kept on this device.</span><LinkAction class-name="ui-button is-small" /></p>
     <p v-if="shown" class="qs-error" role="alert">{{ shown }}</p>
     <LookStage :look="current.look" variant="hero" :name="current.name">

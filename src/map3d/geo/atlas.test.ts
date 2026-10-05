@@ -10,6 +10,7 @@ import { createPicker } from './pick.ts';
 import { EXTENT, project, relLon, unproject } from './projection.ts';
 import { FRAME_MARGIN, HYSTERESIS, crumbs, focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
 import { EDGE_MARGIN, LABEL_CAP, placeLabels, textWidth } from './labels.ts';
+import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
@@ -475,4 +476,40 @@ test('all nine open cities are named on a phone-sized Nigeria: every name whole 
       }
     }
   }
+})
+
+test('taps at 390 × 844: every open city is selectable by its dot and by its name from every other city’s view, and a tap on small Lagos is never Ota', () => {
+  const alts = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const
+  const open = playableCityIds().map((id) => ({ id, name: cityRules(id)!.name, entry: cityEntry(id)! }))
+  const states = createPicker(nigeria, { slack: 0.05 })
+  assert.equal(MIN_TOUCH_PX, 44)
+  for (const current of open.map((city) => city.id)) for (const pixels of [22, 26, 30]) {
+    const point = (lon: number, lat: number) => ({ x: 14 + (lon - 2.7) * pixels, y: 190 + (13.9 - lat) * pixels })
+    const placed = placeLabels(open.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), text: city.name, priority: city.id === current ? 2000 : 1000, size: 13, anchor: 'above' as const, alts, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open' })), { width: 390, height: 844 })
+    const targets = open.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), state: stateOfCity(city.id), label: placed.find((label) => label.id === city.id)?.box ?? null }))
+    const under = (x: number, y: number) => { const lon = 2.7 + (x - 14) / pixels, lat = 13.9 - (y - 190) / pixels; return states.find(lon, lat)?.id ?? null }
+    for (const target of targets) {
+      assert.equal(cityHit(target, targets, { stateUnder: under(target.x, target.y) }), target.id, `${current} at ${pixels}px: the dot of ${target.id}`)
+      if (target.label) {
+        // Somewhere on the name that no other dot sits under (a name moved clear of its dot can lie across a neighbour's).
+        const y = (target.label.top + target.label.bottom) / 2, row = [0.5, 0.25, 0.75, 0.1, 0.9].map((share) => ({ x: target.label!.left + (target.label!.right - target.label!.left) * share, y }))
+        const spot = row.find((p) => targets.every((other) => other === target || Math.hypot(other.x - p.x, other.y - p.y) > DOT_EXACT_PX))
+        assert.ok(spot, `${current} at ${pixels}px: ${target.id}'s name has a free place to tap`)
+        assert.equal(cityHit(spot, targets, { stateUnder: under(spot.x, spot.y) }), target.id, `${current} at ${pixels}px: the name of ${target.id}`)
+      }
+    }
+    // The little Lagos area, a few pixels from Ota's dot: any tap on Lagos's own ground that is nearer its dot than Ota's, or in no dot's reach, is Lagos.
+    const lagos = targets.find((target) => target.id === 'lagos')!
+    for (const [dx, dy] of [[0, 0], [3, 0], [-3, 4], [4, -4], [6, 6]] as const) {
+      const spot = { x: lagos.x + dx, y: lagos.y + dy }, toLagos = Math.hypot(dx, dy)
+      const onAName = targets.some((other) => other.label && spot.x >= other.label.left && spot.x <= other.label.right && spot.y >= other.label.top && spot.y <= other.label.bottom)
+      if (onAName || targets.some((other) => other !== lagos && Math.hypot(spot.x - other.x, spot.y - other.y) < toLagos) || under(spot.x, spot.y) !== 'lagos') continue
+      assert.equal(cityHit(spot, targets, { stateUnder: 'lagos' }), 'lagos', `${current} at ${pixels}px: ${dx},${dy}`)
+    }
+  }
+  const dots = [{ id: 'a', x: 100, y: 100, state: 'one' }, { id: 'b', x: 105, y: 100, state: 'two' }]
+  assert.equal(cityHit({ x: 100, y: 120 }, dots, { stateUnder: 'one' }), 'a', 'beyond a dot, the state under the finger decides between two near cities')
+  assert.equal(cityHit({ x: 100, y: 120 }, dots, { stateUnder: 'two' }), 'b')
+  assert.equal(cityHit({ x: 300, y: 300 }, dots), null, 'far from every city: the caller falls back to the state')
+  assert.equal(cityHit({ x: 100, y: 130 }, [{ id: 'n', x: 400, y: 400, label: { left: 90, right: 130, top: 110, bottom: 124 } }]), 'n', 'a name is a target at least 44 px tall')
 })

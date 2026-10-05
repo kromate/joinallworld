@@ -26,6 +26,8 @@ export interface TravelWay {
   /** Under the button: why it is off ('' when it can leave, or when the reason is the shared one). */
   why: string;
 }
+/** The most buttons the card shows: one each for the bus, the flight and the train. */
+export const MAX_WAYS = 3;
 export interface TravelCard { shared: string | null; ways: TravelWay[] }
 
 const NAMES: Readonly<Record<string, string>> = { road: 'Bus', rail: 'Train', air: 'Flight' };
@@ -33,7 +35,8 @@ const naira = (value: number): string => `₦${value.toLocaleString('en-NG')}`;
 
 export function travelWays(routes: readonly RouteInfo[], { cash = null, confirming = null }: { cash?: number | null; confirming?: string | null } = {}): TravelCard {
   // Cheapest first; a way that is not open yet comes after every way that is.
-  const sorted = [...routes].sort((a, b) => Number(a.status === 'coming') - Number(b.status === 'coming') || a.fare - b.fare || a.seconds - b.seconds);
+  // One way per mode, so a city with many connections still shows at most the bus, the flight and the train.
+  const sorted = [...routes].filter((route, i, all) => all.findIndex((other) => other.mode === route.mode) === i).sort((a, b) => Number(a.status === 'coming') - Number(b.status === 'coming') || a.fare - b.fare || a.seconds - b.seconds);
   const bookable = sorted.filter((route) => route.status !== 'coming');
   const first = bookable[0]?.why ?? null;
   // The server names a fare it cannot take ("… costs ₦65,000; you have …"): that belongs to one way, never to all.
@@ -46,5 +49,5 @@ export function travelWays(routes: readonly RouteInfo[], { cash = null, confirmi
     if (!route.live) return { ...base, state: 'off', short: 0, why: shared ? '' : route.why || 'This way is not available right now.' };
     return { ...base, state: confirming === route.id ? 'ask' : 'go', short: 0, why: '' };
   });
-  return { shared, ways };
+  return { shared, ways: ways.slice(0, MAX_WAYS) };
 }

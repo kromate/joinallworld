@@ -142,7 +142,17 @@ Venues authored on one reference point (a neighbourhood's services share its loc
 
 ## Planned routes and seasonal climate
 
-`CityLink.status: 'coming'` lists a link between two open cities that cannot be booked yet: it is refused before any fare is taken, the atlas shows it as coming, and a trip already paid for still finishes. The Lagos–Kano railway is the one such link. A rail link is drawn only from track geometry a city module holds; one without it has no line.
+`CityLink.status: 'coming'` lists a link between two open cities that cannot be booked yet: it is refused before any fare is taken, the atlas shows it as coming, and a trip already paid for still finishes. The Lagos–Kano railway is the one such link.
+
+### Every open city reaches every other
+
+A module writes only the links that are real and tuned (its railways, its named roads and flights). `allCityLinks()` adds the rest with `generateCityLinks` (`src/game/cities/generatedLinks.ts`), a pure function of the open modules' atlas positions and air hubs, so a city opened later, in Nigeria or anywhere else, is connected to every existing city with no edit to any other module. Test fixtures are not part of it: a `test-` city keeps exactly the links it declares.
+
+- Road: every pair whose road distance is at most `maxRoadKm` (1,500 km), unless a road link is authored. Road distance is the great-circle distance between the atlas positions times 1.35 (the authored roads run 1.3 to 1.5 times the straight line). Fare `₦1,500 + ₦16 per km`, rounded to ₦500 (authored: 130 km ₦3,500; 760 km ₦14,000; 1,100 km ₦20,000).
+- Air: every pair where both cities have an air hub and are at least 250 km apart, unless an air link is authored. Fare `₦20,000 + ₦80 per km` of great-circle distance, rounded to ₦1,000 (authored: 364 km ₦45,000; 520 km ₦65,000; 834 km ₦85,000). Past `maxRoadKm`, air is offered between ANY two open cities: a city without an airport is assumed to be served from its nearest airfield (the label says so), so no pair is ever unreachable, including cities on another continent.
+- Rail: never generated. Only authored railways exist.
+- Times come from `timedLink`, so they stay inside the timetable's clamps (road 25 to 75 s, air 12 to 20 s), and the skip fee follows the fare as for any other link.
+- The atlas card shows at most one button per mode, cheapest first. A rail link is drawn only from track geometry a city module holds; one without it has no line.
 
 Optional `rules.climate` gives twelve monthly rain chances and the names of clear weather by season; a city without it keeps the shared weather. Kano's is hot and dry with harmattan dust from November to February, and adds no penalty. See [CITIES-KANO.md](CITIES-KANO.md).
 

@@ -42,3 +42,10 @@ test('what stops every way alike is said once above them; what stops one is said
   assert.deepEqual([poor.shared, poor.ways.map((way) => way.why)], [null, ['You need ₦3,400 more.', 'You need ₦8,900 more.']])
   assert.deepEqual(travelWays([], { cash: 1 }), { shared: null, ways: [] })
 })
+
+test('the card never shows more than three buttons, and never two of one mode', () => {
+  const road = routesTo('fct', 'abuja')[0]!, extra = [road, { ...road, id: 'lagos:abuja:road:2', fare: road.fare - 1 }, ...routesTo('kano', 'kano')]
+  const ways = travelWays(extra, { cash: 500_000 }).ways
+  assert.ok(ways.length <= 3)
+  assert.equal(new Set(ways.map((way) => way.mode)).size, ways.length)
+})

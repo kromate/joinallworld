@@ -47,7 +47,9 @@ import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
 import { focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
-import type { LabelCandidate, PlacedLabel } from './labels.ts';
+import { cityHit } from './city-hit.ts';
+import type { CityTarget } from './city-hit.ts';
+import type { LabelBox, LabelCandidate, PlacedLabel } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, flightPoint, interCityTripOf, liftOf, linkId, linkPath, measure, tripPoint } from './routes.ts';
 import type { InterCitySource, LinkPath, MeasuredLine } from './routes.ts';
 import { linkKey, listOrder, regionInfo } from './info.ts';
@@ -168,8 +170,6 @@ const MAJOR_CAPITALS = new Set(['Abuja', 'Cairo', 'Nairobi', 'Accra', 'Addis Aba
 const NEIGHBOUR_LABELS: [string, number, number][] = [['Benin', 2.15, 9.9], ['Niger', 8.6, 14.7], ['Chad', 15.9, 11.2], ['Cameroon', 12.5, 5.6]];
 const WATER_LABELS: [string, number, number, 'sea' | 'river' | 'town'][] = [['Gulf of Guinea', 4.6, 3.55, 'sea'], ['Niger', 5.25, 9.72, 'river'], ['Benue', 9.7, 8.05, 'river'], ['Lake Chad', 14.2, 13.55, 'river'], ['Lokoja', 6.74, 7.8, 'town']];
 const DRAG_START = 5, DOUBLE_MS = 340;
-/** How near a city's dot a tap counts as a tap on the city, in CSS pixels. */
-const CITY_TAP_PX = 22;
 const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }) as Record<string, string>)[c]!);
 const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en-NG')}`;
@@ -223,6 +223,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   let selected: RegionRef | null = null, hovered: RegionRef | null = null;
   let routeShown: string | null = null, trip: Run | null = null, preview: Preview | null = null, entering: (() => void) | null = null, keyboard = false;
   let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, fits: { x: number; z: number; distance: number }[] | null = null, cuts = [1, 1], lastLabels = 0, labelKey = '';
+  /** Where each shown name is on the screen, for taps. */
+  const lastPlaced = new Map<string, LabelBox>();
   let rafId = 0, renderCount = 0, lastTick = 0, loading = '', failed = '';
   const clock = createTripClock();
   /** One per level, filled when its data arrives: { topology, picker, layers… }. */
@@ -614,6 +616,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (!ui.labels) { lastLabels = Math.min(LABEL_CAP, candidates().length); return; }
     const placed = placeLabels(candidates(), { width: size.width, height: size.height });
     lastLabels = placed.length;
+    lastPlaced.clear(); for (const label of placed) lastPlaced.set(label.id, label.box);
     const keep = new Set<string>();
     for (const label of placed) {
       keep.add(label.id);
@@ -804,14 +807,14 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   /** The open city whose dot is within a finger of a point of the canvas, at the level that shows cities; the nearest, or null. */
   function cityNear(point: Point): string | null {
     if (level !== NIGERIA || !sheets[NIGERIA]) return null;
-    let best: string | null = null, nearest = CITY_TAP_PX;
-    for (const feature of sheets[NIGERIA].topology.features) for (const city of citiesInState(feature.id)) {
+    const sheet = sheets[NIGERIA], targets: CityTarget[] = [];
+    for (const feature of sheet.topology.features) for (const city of citiesInState(feature.id)) {
       const spot = city.status === 'open' ? cityEntry(city.id) : null;
       if (!spot) continue;
-      const where = at(spot.lon, spot.lat, sheets[NIGERIA].top(feature) + 0.02), distance = Math.hypot(where.x - point.x, where.y - point.y);
-      if (!where.behind && distance < nearest) { nearest = distance; best = city.id; }
+      const where = at(spot.lon, spot.lat, sheet.top(feature) + 0.02);
+      if (!where.behind) targets.push({ id: city.id, x: where.x, y: where.y, state: feature.id, label: lastPlaced.get(`city:${city.id}`) ?? null });
     }
-    return best;
+    return cityHit(point, targets, { stateUnder: pickAt(point.x, point.y)?.id ?? null });
   }
   /** Open a city's card: select its state and, in a state with several cities, choose that one. */
   function selectCity(id: string): boolean {
@@ -966,7 +969,8 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     else if (overviewSection && stateOverviewShown) { const key = `${stateOverviewShown}:${overviewSection.dataset.atlasOverviewSection}`; if (overviewExpanded.has(key)) overviewExpanded.delete(key); else overviewExpanded.add(key); }
     else if (overviewButton) { const id = overviewButton.dataset.atlasStateOverview; if (id) { if (stateOverviewShown === id) { stateOverviewShown = null; drawSheet(); } else void showStateOverview(id); } }
     else if (hit('state-retry')) doc?.defaultView?.location.reload();
-    else if (lvl) goLevel(Number(lvl.dataset.atlasLevel));
+    // Choosing a level from the bar is choosing the map: the list of places, if it was open, gets out of the way.
+    else if (lvl) { if (listOpen) { listOpen = false; drawCrumbs(); drawRail(); } goLevel(Number(lvl.dataset.atlasLevel)); }
     else if (city) enterCity(city.dataset.atlasCity!);
     else if (pick) { const [kind, id] = pick.dataset.atlasPick!.split(':'); select({ kind: kind as RegionKind, id: id! }, { from: 'list', flyTo: true }); }
     else if (zoom) { const how = zoom.dataset.atlasZoom; if (how === 'fit') fly(levelView(level)); else fly({ distance: rig.view.distance * (how === 'in' ? 0.6 : 1 / 0.6), x: rig.view.x, z: rig.view.z, yaw: rig.view.yaw }, 0.3); }

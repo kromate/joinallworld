@@ -390,7 +390,6 @@ export interface FurnitureDefinition {
   shape: string
   /** Hex colour. */
   color: string
-  blurb: string
   beta?: boolean
 }
 

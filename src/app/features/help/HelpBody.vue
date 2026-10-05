@@ -2,7 +2,7 @@
 // How to play: the Help app in the phone, and the help sheet (the ? key) outside it.
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { shortcutRows } from '../../../ui/keys.ts'
+import { shortcutRows } from '../../../ui/keys-text.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { openWorld } from '../tour/tourWorld.ts'

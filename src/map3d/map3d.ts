@@ -60,6 +60,8 @@ import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, extentWord, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
 import { dockOf } from './insets.ts';
+import { createPinLayer, pinsOf, EMPTY_PEOPLE } from './people.ts';
+import type { MapPeople, PinLayer, PeoplePin } from './people.ts';
 
 /** What the map reads of a venue (src/game/content/venues.ts): its icon, filter category and opening hours. */
 interface VenueInfo { icon?: string; category?: string; hours?: OpeningHours }
@@ -106,6 +108,8 @@ export interface Map3DOptions {
   world?: WorldData | null
   onSelectLga?: (lga: string) => void
   onSelectHouse?: (house: HouseCard) => void
+  /** A pin of other players was tapped: the friends it stands for, and the venue it stands at (null on the road). */
+  onSelectPeople?: (ids: string[], venue: string | null) => void
   renderer?: MapRenderer
   raf?: ((callback: FrameRequestCallback) => number) | undefined
   caf?: ((handle: number) => void) | undefined
@@ -121,7 +125,7 @@ export const detailOf = (event: CustomEvent<unknown>): Record<string, unknown> =
 };
 
 export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, travelVehicle = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onSelectContext = () => {}, onTripDue = () => {}, onContextLost = () => {},
-  world = null, onSelectLga = () => {}, onSelectHouse = () => {},
+  world = null, onSelectLga = () => {}, onSelectHouse = () => {}, onSelectPeople = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden }: Map3DOptions) {
   const content = contentFor(cityId), venueTable = Object.fromEntries(content.venues.map((venue) => [venue.id, venue.definition]));
@@ -196,13 +200,22 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   let trip: Trip | null = null, route: Route | null = null, returning: { p: number; rate: number } | null = null, settling = false, pendingArrive: (() => void) | null = null, dueAt = -Infinity, tripCamera = true, pose: (TripPose & { progress?: number }) | null = null;
   let stood: { x: number; y: number; z: number } | null = null, nearDistance = 0;             // stood: where the piece stands when it is not travelling; nearDistance: how far out the close view is
   const clock = createTripClock();
+  // Other players (src/map3d/people.ts): friends where they stand or travel, and counts. Their pins move without a new picture of the city.
+  let people: MapPeople = EMPTY_PEOPLE, peopleNow: () => number = () => Date.now(), pinLayer: PinLayer | null = null, peopleMoving = false, wantDraw = false, peopleTimer: ReturnType<typeof setTimeout> | null = null, pins: PeoplePin[] = [];
+  const routes = new Map<string, Route | null>();
   let heldTime: TimeOfDay | null = null, following = false;        // following: "find me" was pressed during a trip, so the view keeps the traveller in its middle
   const shown = () => !destroyed && !lost && !container.hidden && !pageHidden() && size.width > 0;
   const placeKey = (id: string) => (id === 'home' ? `home:${city.places.home!.house}` : id);
 
   // ---- drawing: on demand, and only as long as something moves ----------------------------------
-  function request() { if (!rafId && shown() && raf) rafId = raf(tick); }
-  function stop() { if (rafId) { caf?.(rafId); rafId = 0; } lastTick = 0; }
+  function request() { wantDraw = true; if (!rafId && shown() && raf) rafId = raf(tick); }
+  /** Another frame for the pins of other players only: the city is not drawn again for it. */
+  function requestPins() {
+    if (rafId || peopleTimer || !shown()) return;
+    if (reducedMotion || !raf) { peopleTimer = setTimeout(() => { peopleTimer = null; if (shown()) { placePeople(); if (peopleMoving) requestPins(); } }, 1000); return; }
+    rafId = raf(tick);
+  }
+  function stop() { if (rafId) { caf?.(rafId); rafId = 0; } if (peopleTimer) { clearTimeout(peopleTimer); peopleTimer = null; } lastTick = 0; }
   function tick() {
     rafId = 0;
     if (!shown()) { lastTick = 0; return; }
@@ -213,8 +226,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     moving = stepTrip(t, dt) || moving;
     if (settling && !rig.moving) finishArrival();
     if (moving) { seconds += dt; city.animate(seconds); }
-    draw(t);
-    if (moving && !destroyed) { lastTick = t; request(); } else lastTick = 0;
+    // Only a friend's pin is on the move: the picture of the city stands, the pin is placed again.
+    if (wantDraw || moving) { wantDraw = false; draw(t); } else placePeople();
+    if (moving && !destroyed) { lastTick = t; request(); } else { lastTick = 0; if (peopleMoving && !destroyed) requestPins(); }
   }
   function draw(t = now()) {
     // The player's piece grows as the view pulls back, so it can always be found — and a trip always followed.
@@ -361,6 +375,20 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     done?.();
   }
 
+  // ---- other players ------------------------------------------------------------------------------
+  const pinWorld = {
+    place(id: string) { const place = id === 'home' ? null : city.places[id]; if (!place) return null; const door = network.places[id]?.door || place; return { x: door.x, z: door.z }; },
+    route(from: string, to: string) { const key = `${from}>${to}`; if (!routes.has(key)) { if (routes.size > 64) routes.clear(); routes.set(key, network.route(from, to)); } return routes.get(key) ?? null; },
+    name: (id: string) => venueTable[id]?.label ?? id,
+  };
+  const pinAt = (pin: PeoplePin) => { const at = project(pin.x, pin.moving ? 1.2 : 0, pin.z); return { x: at.x, y: at.y, visible: at.front && at.x > -40 && at.x < size.width + 40 && at.y > insets.top - 10 && at.y < size.height + 30 }; };
+  /** Place the pins for this instant; remembers whether any is still travelling. */
+  function placePeople() {
+    const next = people.people.length || Object.keys(people.counts).length ? pinsOf(people, peopleNow(), pinWorld) : { pins: [], moving: false };
+    peopleMoving = next.moving; pins = next.pins;
+    pinLayer?.render(pins, pinAt, here);
+  }
+
   // ---- lighting ----------------------------------------------------------------------------------
   function applyTime(next: TimeOfDay) {
     if (next === time) return false;
@@ -414,6 +442,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     you = doc!.createElement('div');
     you.className = 'm3-you'; you.hidden = true; you.setAttribute('aria-hidden', 'true'); you.textContent = 'You';
     labelLayer.append(you);
+    pinLayer = createPinLayer(labelLayer, doc!);
   }
   function updateLabels() {
     if (!labelLayer) return;
@@ -565,6 +594,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       if (node.hidden === visible) node.hidden = !visible;
       if (visible) node.style.transform = `translate(${here(at.x)},${here(at.y - (chip.lift || 0) * uz)}) translate(-50%,-100%)`;
     }
+    placePeople();
   }
 
   // ---- the view --------------------------------------------------------------------------------
@@ -667,7 +697,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     pointers.set(event.pointerId, local(event));
     rig.hold();
     // A fresh press starts clean: only the click that ends a drag is swallowed (see onClick).
-    if (pointers.size === 1) { suppressClick = false; gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0, at: now(), onLabel: Boolean((event.target as HTMLElement).closest?.<HTMLElement>('.m3-label')) }; }
+    if (pointers.size === 1) { suppressClick = false; gesture = { kind: event.button === 2 || event.button === 1 || event.shiftKey ? 'pan' : 'orbit', id: event.pointerId, from: local(event), last: local(event), moved: false, spin: 0, at: now(), onLabel: Boolean((event.target as HTMLElement).closest?.<HTMLElement>('.m3-label,.m3-person')) }; }
     else if (pointers.size === 2) { const [a, b] = [...pointers.values()] as [Pt, Pt]; gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, moved: true }; suppressClick = true; grab(); }
   }
   function onPointerMove(event: PointerEvent) {
@@ -747,6 +777,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     const label = (event.target as HTMLElement).closest?.<HTMLElement>('.m3-label');
     // Only the pointer click that ends a drag or a pinch is swallowed; a keyboard click (detail 0) always goes through.
     if (suppressClick) { suppressClick = false; if (event.detail !== 0) return; }
+    const pin = pinLayer?.hit(event.target);
+    if (pin) { if (pin.ids.length) onSelectPeople(pin.ids, pin.venue); return; }
     if (label) choose(label.dataset.venue!);
   }
   function onControl(name: string | undefined) {
@@ -845,6 +877,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     worldChanged() { if (world?.summary() !== summaryShown) updatePlates(); request(); },
     /** Public ids of the player's friends, so their houses can be named on the map. */
     setFriends(ids: Iterable<string> | null | undefined) { friends = new Set(ids || []); request(); },
+    /** Other players to draw (src/map3d/people.ts), and the server clock their trips are timed by. Only the pins are placed again. */
+    setPeople(next: MapPeople | null | undefined, clock?: () => number) { people = next ?? EMPTY_PEOPLE; if (clock) peopleNow = clock; if (shown()) { placePeople(); if (peopleMoving) requestPins(); } },
     /** Fly to an estate so that its houses can be told apart. */
     focusEstate(lga: string, estate: number) { const cell = estateLayout(pack, lga)?.cells[estate]; if (!cell) return; grab(); motion({ x: cell.x, z: cell.z, distance: clamp(cell.size * 3.4, CLOSEST, 90) }, 0.7); },
     focusPlot(plot: PlotRef | null | undefined) { if (!plot || !pack.lgas?.some((lga) => lga.id === plot.lga)) return; const at = plotPoint(plot), cell = estateLayout(pack, plot.lga)!.cells[plot.estate]!; grab(); motion({ x: at.x, z: at.z, distance: clamp(cell.size * 2.2, CLOSEST, 60) }, 0.7); },
@@ -877,7 +911,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
         houses: { level: houses.level, ...houses.counts(), cached: world?.size?.() ?? 0 }, pixels,
         view: { ...rig.view }, frameMs: { median: mid(sorted), max: sorted.at(-1) ?? 0 }, frameGapMs: { median: mid(gap), max: gap.at(-1) ?? 0 },
         trip: trip ? { ...trip, progress: clock.progress(now()), remaining: clock.remaining(now()), shown: pose?.progress ?? null, phase: pose?.phase ?? null, bridge: pose?.bridge ?? null, distance: pose?.distance ?? null, length: route?.length ?? null, bridges: route?.bridges ?? [], x: pose?.x, z: pose?.z, settling, returning: Boolean(returning) } : null,
-        selected, layers: { ...layers }, labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) };
+        selected, layers: { ...layers }, people: pins.map((pin) => ({ key: pin.key, kind: pin.kind, text: pin.text, venue: pin.venue, moving: pin.moving, x: pin.x, z: pin.z })), labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) };
     },
     /** Where a place is on screen, in CSS pixels of the page (for tests that click on buildings). */
     screenOf(id: string) { const place = city.places[id]; if (!place) return null; const page = container.getBoundingClientRect(), at = project(place.x, place.top * 0.45, place.z); return { x: at.x + page.left, y: at.y + page.top }; },
@@ -889,6 +923,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       routeMaterial.dispose();
       for (const ring of [selectRing, hoverRing]) { ring.geometry.dispose(); ring.material.dispose(); }
       ownRing.geometry.dispose(); ownRing.material.dispose();
+      pinLayer?.destroy();
       actor.dispose(); overlays.dispose(); houses.dispose(); city.dispose(); kit.dispose();
       if (!providedRenderer) { renderer.dispose(); renderer.forceContextLoss?.(); }
       root?.remove();

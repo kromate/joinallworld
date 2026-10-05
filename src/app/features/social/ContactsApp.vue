@@ -5,6 +5,7 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
 import { presenceText } from '../../../game/social-model.ts'
+import { cityName } from '../../../game/cities/registry.ts'
 import type { SearchResult } from '../../../types/social.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
@@ -25,6 +26,8 @@ const mummy = computed(() => social.value.family.find((member) => member.contact
 const met = computed(() => social.value.relationships.filter((rel) => rel.npc))
 const note = computed(() => callNote({ connected: view.value.connected, cannot: cannot('call'), busy: Boolean(game.state.value.activeAction) }))
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
+/** A friend in another city reads "in <city>": the reader's own city is what that is judged against. */
+const place = computed(() => ({ cityId: view.value.cityId, cityName: (id: string) => cityName(id) ?? id }))
 const results = computed<SearchResult[] | null>(() => (contactsUi.results && !('error' in contactsUi.results) ? contactsUi.results : null))
 const resultError = computed(() => (contactsUi.results && 'error' in contactsUi.results ? contactsUi.results.error : null))
 
@@ -74,7 +77,7 @@ async function find(): Promise<void> {
       <template v-if="!gate && state.me">
         <div v-for="friend in state.me.friends" :key="`f${friend.id}`" class="social-row">
           <PlayerAvatar :name="friend.name" :seed="friend.id" :status="friend.status" />
-          <div><strong>{{ friend.name }}<FounderTag v-if="friend.founder" /></strong><small class="social-presence" :class="`is-${presenceClass(friend.status)}`">Friend · {{ presenceText(friend, venueName, view.now) }}</small></div>
+          <div><strong>{{ friend.name }}<FounderTag v-if="friend.founder" /></strong><small class="social-presence" :class="`is-${presenceClass(friend.status)}`">Friend · {{ presenceText(friend, venueName, view.now, place) }}</small></div>
           <span class="social-actions"><button type="button" class="social-btn is-primary" @click="shell.open('messages', { to: friend.id, name: friend.name })">Chat</button></span>
         </div>
       </template>

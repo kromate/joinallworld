@@ -705,6 +705,8 @@ export interface ContextChecks {
   blocked?: (a: string, b: string) => boolean
   /** Social: is anybody blocked at all? */
   anyBlocks?: () => boolean
+  /** Social: everyone in a block with this player, whichever of the two made it (in memory). */
+  blockedWith?: (publicId: string) => Iterable<string>
   /** Moderation. */
   muted?: (publicId: string) => MuteVerdict | null
   /** World: throws 409 `city_moved` when the session's character travelled away from `cityId` and has no life left there. */
@@ -929,6 +931,9 @@ export interface WsConnection {
   // growth/tables.js
   /** `<city>:<venue>` this socket last listed with `table-list` (it is told when a table there changes), or null. */
   tablesVenue?: string | null
+  // social/live.js
+  /** Set while this socket watches live location (`live-watch`): the city whose counts it is sent, or '' for its friends only. */
+  liveCity?: string | null
 }
 
 /** A parsed client frame: `type` selected the handler; every other field is untrusted. */

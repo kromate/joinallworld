@@ -33,6 +33,10 @@ export interface Whereabouts {
   cityId?: string
   /** A venue id, `'home'`, or `'visit'` (in someone else's Home room). Only with `cityId`. */
   venue?: string
+  /** Set by the browser from live location (src/game/live-model.ts), never sent by a route: the venue (or `'home'`) a friend is on the way to. */
+  going?: string
+  /** The same, for a journey between cities: the city they are travelling to. */
+  journey?: string
 }
 
 /**

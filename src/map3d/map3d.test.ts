@@ -176,6 +176,42 @@ function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 8
 }
 const travelling = (remaining: number, duration = 10, mode = 'danfo', id = 'park') => ({ kind: 'travel', id, duration, remaining, mode, fare: 200 });
 
+test('a friend\'s trip moves their pin on its own frames without drawing the city again, and the loop ends at the door', () => {
+  const h = harness();
+  h.map.setState(h.state()); h.map.resize(); h.pump();
+  const idle = h.count();
+  const server = { now: 5_000_000 };
+  const friend = { id: 'bola', name: 'Bola', initial: 'B', hue: 200 };
+  // Standing somewhere: a pin, and nothing scheduled.
+  h.map.setPeople({ people: [{ ...friend, venue: 'park' }], counts: { library: 2 } }, () => server.now);
+  assert.deepEqual(h.map.diagnostics().people.map((pin) => [pin.key, pin.kind, pin.text, pin.venue, pin.moving]), [['p:bola', 'friend', 'Bola', 'park', false], ['c:library', 'count', '2 here', 'library', false]]);
+  assert.equal(h.queue.length, 0, 'a standing friend costs no frames');
+  // A ten-second trip that began two seconds ago.
+  h.map.setPeople({ people: [{ ...friend, trip: { from: 'park', to: 'library', mode: 'keke', startedAt: server.now - 2000, duration: 10 } }], counts: {} }, () => server.now);
+  const route = network.route('park', 'library')!, at = () => h.map.diagnostics().people[0]!;
+  assert.deepEqual([at().moving, at().venue], [true, null]);
+  assert.deepEqual([at().x, at().z], [tripPose(route, 0.2, 'keke').x, tripPose(route, 0.2, 'keke').z], 'on the road the player\'s own trip would take, a fifth of the way');
+  let last = at();
+  for (let second = 3; second <= 9; second++) {
+    server.now += 1000;
+    assert.equal(h.pump(1), 1, 'a frame is asked for while the pin travels');
+    const now = at(), want = tripPose(route, second / 10, 'keke');
+    assert.deepEqual([now.x, now.z], [want.x, want.z]);
+    assert.ok(Math.hypot(now.x - last.x, now.z - last.z) > 0, 'it moved');
+    last = now;
+  }
+  assert.equal(h.count(), idle, 'the city was not drawn again for it');
+  server.now += 1500; h.pump(2);
+  assert.deepEqual([at().moving, at().venue], [false, 'library'], 'at the door when the server\'s timer says so');
+  assert.equal(h.queue.length, 0, 'and the loop has ended');
+  const still = h.count(); h.env.now += 60000; assert.equal(h.pump(), 0); assert.equal(h.count(), still);
+  // Hidden, nothing runs at all.
+  h.map.setPeople({ people: [{ ...friend, trip: { from: 'library', to: 'park', mode: 'keke', startedAt: server.now, duration: 10 } }], counts: {} }, () => server.now);
+  assert.equal(h.queue.length, 1);
+  h.env.hidden = true; h.map.visibility();
+  assert.equal(h.queue.length, 0, 'a hidden tab schedules nothing');
+});
+
 test('battery rule: an open, idle map draws nothing; a trip draws frames; after arrival it is flat again', () => {
   const h = harness();
   h.map.setState(h.state()); h.map.resize();

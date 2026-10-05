@@ -19,6 +19,7 @@
  * few tens of milliseconds the next time the map opens). A lost context frees them at once.
  */
 import type { HouseCard } from './map2d.ts';
+import type { MapPeople } from './people.ts';
 import type { MapState } from './map3d.ts';
 import type { TravelVehicleBuilder } from './actor.ts';
 import type { FetchJson, WorldData } from './world-data.ts';
@@ -38,6 +39,8 @@ export interface CityViewOptions {
   onSelectNeighbour?: (neighbour: { id: string | undefined; name: string | undefined }) => void
   onSelectLga?: (lga: string) => void
   onSelectHouse?: (house: HouseCard) => void
+  /** A pin of other players was tapped: the friends it stands for, and the venue it stands at (null on the road). */
+  onSelectPeople?: (ids: string[], venue: string | null) => void
   fetchJson?: FetchJson | null
   onTripDue?: () => void
   onNotice?: (text: string) => void
@@ -48,6 +51,7 @@ export interface MapImpl {
   setState(state: MapState | null): void
   setPlayer?(player?: unknown): unknown
   setFriends?(ids?: Iterable<string> | null): void
+  setPeople?(next: MapPeople | null | undefined, clock?: () => number): void
   resize(): void
   arrive?(done: () => void): void
   diagnostics?(): object
@@ -77,6 +81,8 @@ export interface CityView {
   setCity(id: string): void
   /** Public ids of the player's friends: their houses are named on the map. */
   setFriends(ids: unknown): void
+  /** Other players to draw on the map (src/map3d/people.ts), and the server clock their trips are timed by. */
+  setPeople(next: MapPeople | null, clock?: () => number): void
   world: WorldData | null
   setState(next: MapState | null): void
   setPlayer(next: unknown): void
@@ -99,7 +105,7 @@ export interface CityView {
 const PREFERENCE_KEY = 'joinallworld-map';
 const RELEASE_MS = 120000;
 
-export function createCityView(container: HTMLElement, { cityId: firstCity = 'lagos', onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, fetchJson = null, onTripDue, onNotice = () => {} }: CityViewOptions = {}): CityView {
+export function createCityView(container: HTMLElement, { cityId: firstCity = 'lagos', onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, onSelectPeople, fetchJson = null, onTripDue, onNotice = () => {} }: CityViewOptions = {}): CityView {
   let cityId = firstCity, state: MapState | null = null, player: unknown = null, impl: MapImpl | null = null, kind: CityViewKind | null = null, layer = 'city', shown = false, mounting = 0, releaseTimer: ReturnType<typeof setTimeout> | null = null, released = false, brokenGl = false;
   let simple = false;
   try { simple = globalThis.localStorage?.getItem(PREFERENCE_KEY) === '2d' || new URLSearchParams(globalThis.location.search).get('map') === '2d'; } catch { simple = false; }
@@ -109,7 +115,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
   const onUi = (event: Event) => { const detail = detailOf(event as CustomEvent<unknown>); if (detail.layer === 'city' || detail.layer === 'world') layer = detail.layer; const { layout, ...rest } = detail; Object.assign(ui, rest); };
   window.addEventListener('jaw:map-ui', onUi);
   // Houses and residents for the part of the city in view: one cache, shared by whichever map is mounted (src/map3d/world-data.ts).
-  let friends: string[] = [];
+  let friends: string[] = [], people: MapPeople | null = null, peopleClock: (() => number) | undefined;
   const world = fetchJson ? createWorldData({ fetchJson, cityId: firstCity, onChange: () => impl?.worldChanged?.() }) : null;
   // A panel says the player's own place in the world changed (their local government, their house): what is cached is stale.
   const onWorld = () => { world?.stale(); if (shown) void world?.loadCity(true); };
@@ -136,7 +142,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
   }
 
   const onSelectContext = (land: { id: string; name: string; planned: boolean }): void => { if (land.planned) onNotice(`${land.name}: opening soon.`); };
-  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, onSelectContext };
+  const callbacks = { onSelectVenue, onSelectGov, onSelectNeighbour, onSelectLga, onSelectHouse, onSelectPeople, onSelectContext };
   async function mount() {
     const ticket = ++mounting;
     const want3d = !simple && !brokenGl && hasCityPack(cityId) && webglAvailable();
@@ -187,6 +193,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     impl.setPlayer?.(player);
     impl.setFriends?.(friends);
     if (state) impl.setState(state);
+    impl.setPeople?.(people, peopleClock);
     if (Object.keys(ui).length) window.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { ...ui, layout: true } }));
     if (wantedCamera) { const camera = wantedCamera; wantedCamera = null; applyCamera(camera); }
     impl.resize();
@@ -210,6 +217,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     setCity(id) { layer = 'city'; if (id === cityId && impl) { impl.setCity?.(id); return; } cityId = id; world?.drop(id); void mount(); },
     /** Public ids of the player's friends: their houses are named on the map. */
     setFriends(ids) { friends = Array.isArray(ids) ? ids : []; impl?.setFriends?.(friends); },
+    setPeople(next, clock) { people = next; if (clock) peopleClock = clock; impl?.setPeople?.(people, peopleClock); },
     world,
     setState(next) { state = next; impl?.setState(next); },
     setPlayer(next) { player = next; impl?.setPlayer?.(next); },

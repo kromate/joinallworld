@@ -23,7 +23,9 @@ import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { tableById } from '../../tables/city-places.ts'
-import { loadPeople, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { liveNow, loadPeople, onLive, onPeople, resetSocial, social, takeLinkHost } from '../features/social/useSocial.ts'
+import { mapPeople } from '../../game/live-model.ts'
+import { hueOf, initialOf } from '../ui/format.ts'
 import { funnelEvents, funnelSnap } from '../../quick-start/model.ts'
 import { telemetry } from '../../telemetry/index.ts'
 import { installCommunity } from '../features/community/communityStore.ts'
@@ -87,6 +89,13 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   // Friends' houses are named on the map (public ids only).
   const showFriends = (): void => { scene.city.value?.setFriends?.((social.me?.friends ?? []).map((friend) => friend.id)) }
   onPeople(showFriends)
+  // Friends where they stand or travel, and how many other players are at each venue: the map's pins, from the live frames.
+  const showLive = (): void => {
+    const state = game.state.value
+    scene.city.value?.setPeople?.(mapPeople({ table: social.live, friends: social.me?.friends ?? [], cityId: game.cityId.value, here: isDeparting(state) ? null : state.location, now: liveNow(),
+      look: (person) => ({ initial: initialOf(person.name), hue: hueOf(person.id) }) }), liveNow)
+  }
+  onLive(showLive)
 
   /** The current goal's place in the world: the scene flags the spot it points at (a guest's first goals; nothing once settled in). */
   function showGoal(): void {
@@ -219,6 +228,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       if (event) globalThis.window?.dispatchEvent(new CustomEvent('jaw:track', { detail: event }))
     }
     city?.setState(state)
+    // Where the player stands decides who the "others" at a venue are: the pins are worked out again when that changed.
+    if (moved || tripKey(previous) !== trip || state.estate.city !== previous.estate.city) showLive()
     // A trip between cities is drawn on the world map, where the server's timer says it is.
     scene.world.value?.setState?.(state)
     shell.enforceRequired()
@@ -487,7 +498,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     view: () => shell.viewFor(),
   }
 
-  return { game, ready, panels, shell, landing, api, community, scene, command, connect, showFriends, showGoal, reportPlace, onMove, commitSpot, quickStart, goTo, menu, startLife, switchCity, showMapLayer, showPlayer, showCrowd, heldCities, playerLook }
+  return { game, ready, panels, shell, landing, api, community, scene, command, connect, showFriends, showGoal, reportPlace, onMove, commitSpot, quickStart, goTo, menu, startLife, switchCity, showMapLayer, showPlayer, showCrowd, showLive, heldCities, playerLook }
 }
 export type App = ReturnType<typeof createApp>
 

@@ -154,3 +154,15 @@ button.m3-house{cursor:pointer}
 .cmap-error{position:absolute;z-index:4;left:50%;top:35%;transform:translate(-50%,-50%);width:min(340px,calc(100% - 32px));padding:24px;border-radius:20px;background:#fff;color:#263d2d;box-shadow:0 4px 24px #0002;text-align:center}
 .cmap-error h2{margin:0 0 8px;font-size:20px}.cmap-error p{line-height:1.5;font-size:14px}
 .cmap-error button{min-height:44px;border:0;border-radius:24px;padding:10px 20px;background:#2f6544;color:#fff;font:inherit;cursor:pointer}
+
+/* ---- other players (src/map3d/people.ts): a friend's pin is a white pill with their avatar; a count of other players is a quiet dark one. */
+.m3-person { position: absolute; left: 0; top: 0; z-index: 8; display: inline-flex; align-items: center; gap: 4px; max-width: 150px; margin: 0; padding: 2px 8px 2px 2px; border: 2px solid #2f6fed; border-radius: 999px; background: #fff; color: #14213d; font: 800 11px/1.2 var(--font, system-ui, sans-serif); white-space: nowrap; cursor: pointer; pointer-events: auto; box-shadow: 0 2px 8px #0b2b3a55; will-change: transform; }
+.m3-person[hidden] { display: none; }
+.m3-person b { overflow: hidden; text-overflow: ellipsis; font-weight: 800; }
+.m3-person-dot { flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: hsl(var(--hue, 210) 55% 42%); color: #fff; font-style: normal; font-size: 11px; font-weight: 800; }
+.m3-person.is-moving { border-color: #12a150; }
+.m3-person.is-moving.is-friend::after { content: ''; position: absolute; left: 50%; top: 100%; margin-left: -5px; border: 5px solid #0000; border-top-color: #12a150; }
+.m3-person.is-count { padding: 2px 8px; border-color: #fff; background: #20232cdd; color: #fff; font-weight: 700; cursor: default; pointer-events: none; }
+.m3-person.is-count .m3-person-dot { display: none; }
+.m3-person:hover, .m3-person:focus-visible { outline: 2px solid #14532d; outline-offset: 1px; }
+@supports (zoom: 2) { .m3-person { zoom: var(--ui-zoom, 1); } }

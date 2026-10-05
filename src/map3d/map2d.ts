@@ -22,6 +22,8 @@
 import { COMING_SOON } from '../game/content/venues.ts';
 import { contentFor } from '../game/cities/runtime.ts';
 import { dockOf } from './insets.ts';
+import { createPinLayer, pinsOf, EMPTY_PEOPLE } from './people.ts';
+import type { MapPeople, PeoplePin } from './people.ts';
 import { openingInfo } from '../game/clock.ts';
 import { isDeparting } from '../game/registry.ts';
 import { ESTATE, PLOTS_PER_ESTATE, HOUSE_STYLE, unpackStyle } from '../game/content/world.ts';
@@ -65,6 +67,8 @@ export interface Map2DOptions {
   onSelectGov?: () => void;
   onSelectLga?: (id: string) => void;
   onSelectHouse?: (house: HouseCard) => void;
+  /** A pin of other players was tapped: the friends it stands for, and the venue it stands at (null on the road). */
+  onSelectPeople?: (ids: string[], venue: string | null) => void;
   /** A venue to select as soon as the first state arrives (?venue=). */
   deepLink?: string | null;
 }
@@ -85,6 +89,7 @@ export interface Map2DView { scale: number; x: number; y: number; opened: boolea
 export interface Map2DDiagnostics {
   kind: '2d'; renderCount: number; loop: boolean; view: Map2DView; houses: { detailed: number; cached: number }; layers: MapLayers;
   labels: { id: string; text: string | null; note: string | null; hidden: boolean | 'until-found'; compact: boolean }[];
+  people: { key: string; kind: string; text: string; hidden: boolean; transform: string }[];
 }
 /** A floating chip: a billboard, the sea-plots title or the Governor's. */
 interface Chip { key: string; kind: string; x: number; z: number; lift?: number; glyph: string; text: string; bg?: string; ink?: string; label: string }
@@ -100,6 +105,8 @@ export interface Map2D {
   arrive(done: () => void): void;
   worldChanged(): void;
   setFriends(ids?: Iterable<string> | null): void;
+  /** Other players to draw (src/map3d/people.ts), and the server clock their trips are timed by. */
+  setPeople(next: MapPeople | null | undefined, clock?: () => number): void;
   focusEstate(lga: string, estate: number): void;
   focusPlot(plot: PlotAddress | null | undefined): void;
   focusLga(id: string): void;
@@ -127,7 +134,7 @@ export function cityFlatModel(pack: CityPack, cityId = pack.id, network = buildN
   return flatModel(pack, network, { venues, soon: COMING_SOON });
 }
 
-export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, world = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectLga = () => {}, onSelectHouse = () => {}, deepLink = null }: Map2DOptions = {} as Map2DOptions): Map2D {
+export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, world = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectLga = () => {}, onSelectHouse = () => {}, onSelectPeople = () => {}, deepLink = null }: Map2DOptions = {} as Map2DOptions): Map2D {
   const content = contentFor(cityId), venueTable = Object.fromEntries(content.venues.map((venue) => [venue.id, venue.definition]));
   const stateHouseId = content.venues.find((venue) => venue.kind === 'statehouse')?.id ?? null;
   const govVenueIds = new Set(content.venues.filter((venue) => venue.kind === 'statehouse' || venue.kind === 'polling').map((venue) => venue.id));
@@ -176,6 +183,9 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   const you = document.createElement('div');
   you.className = 'm3-you'; you.hidden = true; you.setAttribute('aria-hidden', 'true'); you.textContent = 'You';
   labelLayer.append(you);
+  // Other players: friends where they stand or travel, and counts. A travelling pin is moved by the browser (one animation per trip), not by a loop here.
+  const pinLayer = createPinLayer(labelLayer, document), routes = new Map<string, Route | null>();
+  let people: MapPeople = EMPTY_PEOPLE, peopleNow: () => number = () => Date.now();
 
   const project = (x: number, z: number) => ({ x: ox + (x - box.x) * scale, y: oy + (z - box.z) * scale });
   const ground = (px: number, py: number) => ({ x: box.x + (px - ox) / scale, z: box.z + (py - oy) / scale });
@@ -395,6 +405,19 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       node.style.transform = `translate(${Math.round(at!.x)}px,${Math.round(at!.y)}px) translate(-50%,-100%)`;
     });
     placeTrip();
+    placePeople();
+  }
+  const pinWorld = {
+    place(id: string) { const spot = id === 'home' ? null : labels.get(id)?.place; return spot ? { x: spot.x, z: spot.z } : null; },
+    route(from: string, to: string) { const key = `${from}>${to}`; if (!routes.has(key)) { if (routes.size > 64) routes.clear(); routes.set(key, network.route(from, to)); } return routes.get(key) ?? null; },
+    name: nameOf,
+  };
+  const pinAt = (pin: PeoplePin) => { const at = project(pin.x, pin.z); return { x: at.x, y: at.y, visible: at.x > -40 && at.x < size.width + 40 && at.y > insets.top - 10 && at.y < size.height + 30 }; };
+  /** Place the pins for this instant; a travelling one is handed the rest of its trip, and placed again when that has ended. */
+  function placePeople() {
+    if (!scale || destroyed) return;
+    const at = peopleNow(), next = people.people.length || Object.keys(people.counts).length ? pinsOf(people, at, pinWorld) : { pins: [], moving: false };
+    pinLayer.render(next.pins, pinAt, undefined, { now: at, project, done: placePeople });
   }
   /** The trip: the real route as a line, and the traveller placed from the server's own progress. No script moves it. */
   let tripKey = '', tripRoute: Pick<Route, 'points' | 'lengths' | 'length'> | null = null;
@@ -435,7 +458,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     if ((event.target as Element).closest('[data-m3]')) return;
     if (event.isPrimary) pointers.clear();
     pointers.set(event.pointerId, local(event));
-    if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), ox, oy, moved: false, onControl: Boolean((event.target as Element).closest('.m3-label,.m3-lga')) }; pinch = null; }
+    if (pointers.size === 1) { suppressClick = false; drag = { id: event.pointerId, from: local(event), ox, oy, moved: false, onControl: Boolean((event.target as Element).closest('.m3-label,.m3-lga,.m3-person')) }; pinch = null; }
     else if (pointers.size === 2) { const [p, q] = [...pointers.values()] as [{ x: number, y: number }, { x: number, y: number }]; pinch = { distance: Math.hypot(p.x - q.x, p.y - q.y) || 1, mid: { x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 } }; drag = null; suppressClick = true; }
   }
   function onPointerMove(event: PointerEvent) {
@@ -494,6 +517,8 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     if (suppressClick) { suppressClick = false; if (event.detail !== 0) return; }
     const plate = target.closest<HTMLElement>('.m3-lga');
     if (plate) { onSelectLga(plate.dataset.lga!); return; }
+    const pin = pinLayer.hit(target);
+    if (pin) { if (pin.ids.length) onSelectPeople(pin.ids, pin.venue); return; }
     const label = target.closest<HTMLElement>('.m3-label');
     if (label) choose(label.dataset.venue!);
   }
@@ -552,6 +577,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     arrive(done: () => void) { done(); },
     worldChanged() { updatePlates(); if (scale) apply(); },
     setFriends(ids?: Iterable<string> | null) { friends = new Set(ids || []); if (scale) apply(); },
+    setPeople(next: MapPeople | null | undefined, clock?: () => number) { people = next ?? EMPTY_PEOPLE; if (clock) peopleNow = clock; placePeople(); },
     focusEstate(lga: string, estate: number) { const cell = estateLayout(pack, lga)?.cells[estate]; if (!cell || !measure()) return; scale = clamp(Math.min(free().width, free().height) / (cell.size * 1.15), fitScale(), MAX_SCALE); centreOn(cell.x, cell.z); userMoved = true; apply(); },
     focusPlot(plot: PlotAddress | null | undefined) { if (!plot || !pack.lgas?.some((lga) => lga.id === plot.lga) || !measure()) return; const layoutOf = estateLayout(pack, plot.lga)!, cell = layoutOf.cells[plot.estate]!, at = layoutOf.plot(plot.estate, plot.plot); scale = clamp(free().width / (cell.size * 0.9), fitScale(), MAX_SCALE); centreOn(at.x, at.z); userMoved = true; apply(); },
     focusLga(id: string) { const lga = pack.lgas?.find((item) => item.id === id); if (!lga || !measure()) return; const xs = lga.polygon.map((point) => clamp(point[0], fit.minX, fit.maxX)), zs = lga.polygon.map((point) => clamp(point[1], fit.minZ, fit.maxZ)); scale = Math.min(free().width / (Math.max(...xs) - Math.min(...xs) + 6), free().height / (Math.max(...zs) - Math.min(...zs) + 6)); centreOn((Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...zs) + Math.max(...zs)) / 2); userMoved = true; apply(); },
@@ -562,8 +588,8 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     /** Where a place or a map point is on screen (for tests that compare the two maps). */
     screenOf(id: string) { const spot = spotOf(id); if (!spot) return null; const page = container.getBoundingClientRect(), at = project(spot.x, spot.z); return { x: at.x + page.left, y: at.y + page.top }; },
     model,
-    diagnostics() { return { kind: '2d', renderCount: 0, loop: false, view: api.view(), houses: { detailed: drawn.length, cached: world?.size?.() ?? 0 }, layers: { ...layers }, labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) }; },
-    destroy() { destroyed = true; window.removeEventListener('pointerup', onPointerUp); window.removeEventListener('pointercancel', onPointerUp); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
+    diagnostics() { return { kind: '2d', renderCount: 0, loop: false, view: api.view(), houses: { detailed: drawn.length, cached: world?.size?.() ?? 0 }, layers: { ...layers }, people: pinLayer.shown(), labels: [...labels].map(([id, label]) => ({ id, text: label.name.textContent, note: label.note.textContent, hidden: label.node.hidden, compact: label.node.classList.contains('is-compact') })) }; },
+    destroy() { destroyed = true; pinLayer.destroy(); window.removeEventListener('pointerup', onPointerUp); window.removeEventListener('pointercancel', onPointerUp); window.removeEventListener('jaw:map-ui', onUi); window.removeEventListener('jaw:key', onKey); root.remove(); },
   };
   updateLabels(); updatePlates();
   return api;

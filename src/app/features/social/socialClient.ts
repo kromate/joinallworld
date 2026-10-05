@@ -13,6 +13,11 @@
 // Nothing here touches the microphone or voice, and no timer repeats: the only timers are the
 // bounded reconnect back-off and single follow-up checks.
 //
+// LIVE LOCATION. While the socket is open it watches the player's city and friends (`live-watch`); the
+// `live-snapshot` and `live-move` frames fill `state.live`, and each friend row and friend card is
+// written from it, so "at Freedom Park" and "On the way to …" follow the server within a tick and a
+// re-read of the overview never puts an older place back. onLive() tells the map host.
+//
 // `state` is reactive (a component that reads it follows it) and every change also calls the
 // host's refresh(), so the existing panels and the registry's badge() functions, which are not
 // reactive, redraw as before. `revision` counts those changes for anything that reads the outbox,
@@ -21,6 +26,9 @@ import { reactive, ref } from 'vue'
 import type { Ref } from 'vue'
 import { createOutbox, freshSocial, inviteIdFrom, mergeMessages, SEND_TIMEOUT_MS } from '../../../game/social-model.ts'
 import type { ThreadRecord } from '../../../game/social-model.ts'
+import { applyWhereabouts, freshLive, LIVE_GRACE_MS, takeMove, takeSnapshot, whereabouts } from '../../../game/live-model.ts'
+import type { LiveTable } from '../../../game/live-model.ts'
+import type { LiveServerFrame } from '../../../types/live.ts'
 import type { ErrorFrame, PresenceFrame } from '../../../types/protocol.ts'
 import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
 import type { ApiError } from '../../types/client.ts'
@@ -60,6 +68,8 @@ export interface SocialState {
   linkHost: string | null
   /** While this socket is in a host's Home room as a guest. */
   houseRoom: { host: string; members: { id: string; name: string }[] } | null
+  /** Where friends are right now, and how many players are at each venue of this city (src/game/live-model.ts). */
+  live: LiveTable
 }
 
 /** The socket, as far as this client uses it. */
@@ -96,7 +106,7 @@ const browserEnv = (): SocialEnv => ({
 })
 
 /** What a server push may be: the social frames, the answer to people-list, and the room's presence and error frames. */
-type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame
+type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame | LiveServerFrame
 
 /** The refusal sentence for a failed request (the server's own wording when it explained one). */
 export function failureReason(error: ApiError): string {
@@ -117,7 +127,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   const state = reactive<SocialState>({
     me: null, loading: false, error: null, socket: 'idle',
     people: null, peopleAt: 0, peopleLoading: false, friendsLoading: false,
-    threads: new Map(), profiles: new Map(), openConv: null, knock: null, linkHost: null, houseRoom: null,
+    threads: new Map(), profiles: new Map(), openConv: null, knock: null, linkHost: null, houseRoom: null, live: freshLive(),
   })
   /** Counts every change: reading it makes a computed follow the (not reactive) outbox. */
   const revision = ref(0)
@@ -136,9 +146,53 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   const frameListeners = new Set<(frame: { type: string }) => void>()
   const closeListeners = new Set<() => void>()
 
+  const liveWatchers = new Set<() => void>()
+  /** What the server was last asked to watch: the city and the friends (a change of either is asked again). */
+  let liveAsked = ''
+  /** Server time minus this device's, from the live frames: a friend's trip is timed by the server's clock. */
+  let liveOffset: number | null = null
+  let liveTimer: unknown = null
+
   /** Call `listener` whenever the who-is-here listing changes (the scene host draws its crowd from it). */
   function onPeople(listener: (people: PeopleState | null) => void): () => void { peopleWatchers.add(listener); return () => peopleWatchers.delete(listener) }
   const peopleChanged = (): void => { for (const listener of peopleWatchers) { try { listener(state.people) } catch (error) { console.error('People watcher failed:', error) } } }
+
+  /** Call `listener` whenever where friends are, or the city's counts, changed (the scene host draws the map's pins from it). */
+  function onLive(listener: () => void): () => void { liveWatchers.add(listener); return () => liveWatchers.delete(listener) }
+  /** The server's clock, as the live frames have shown it (the game's own server time until one has arrived). */
+  const liveNow = (): number => (liveOffset === null ? api?.view().now ?? env.now() : env.now() + liveOffset)
+  /**
+   * Write what the live table says over every friend row and friend card, tell the map, and book ONE follow-up for the
+   * next moment a spot reads differently by the clock alone (a trip reaching its door, a dropped connection becoming offline).
+   */
+  function showLive(redraw = true): void {
+    const now = liveNow()
+    let next = Infinity
+    for (const spot of state.live.friends.values()) {
+      if (spot.trip) { const end = spot.trip.startedAt + spot.trip.duration * 1000; if (end > now) next = Math.min(next, end) }
+      if (spot.status === 'reconnecting' && typeof spot.seenAt === 'number' && spot.seenAt + LIVE_GRACE_MS > now) next = Math.min(next, spot.seenAt + LIVE_GRACE_MS)
+    }
+    for (const friend of state.me?.friends ?? []) { const spot = state.live.friends.get(friend.id); if (spot) applyWhereabouts(friend, whereabouts(spot, now)) }
+    for (const [id, card] of state.profiles) { const spot = state.live.friends.get(id); if (spot && !('error' in card) && card.friend) applyWhereabouts(card, whereabouts(spot, now)) }
+    env.clearTimeout(liveTimer); liveTimer = null
+    if (Number.isFinite(next)) liveTimer = env.setTimeout(() => { liveTimer = null; showLive() }, Math.max(50, next - now + 50))
+    for (const listener of liveWatchers) { try { listener() } catch (error) { console.error('Live watcher failed:', error) } }
+    if (redraw) refresh()
+  }
+  /** Ask the server to watch this city and these friends; asked again only when one of the two changed. */
+  function watchLive(force = false): void {
+    if (ws?.readyState !== 1 || state.socket !== 'open' || !connected() || !cityId()) return
+    const asked = `${cityId()}|${(state.me?.friends ?? []).map((friend) => friend.id).sort().join()}`
+    if (!force && asked === liveAsked) return
+    liveAsked = asked
+    ws.send(JSON.stringify({ type: 'live-watch', cityId: cityId() }))
+  }
+  function dropLive(): void {
+    env.clearTimeout(liveTimer); liveTimer = null; liveAsked = ''
+    if (!state.live.friends.size && !state.live.city) return
+    state.live = freshLive()
+    for (const listener of liveWatchers) { try { listener() } catch (error) { console.error('Live watcher failed:', error) } }
+  }
 
   function refresh(): void { revision.value += 1; api?.refresh() }
   // Until a new life has finished character creation it is not in the city: the social features stay closed.
@@ -180,6 +234,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       state.me = result; state.error = null
       if (state.knock?.status === 'accepted' && result.visiting?.host.id !== state.knock.host) state.knock = null
       joinHouse()
+      // The overview's places are as old as its read: what the live frames say stands, and a new friend is watched.
+      showLive(false); watchLive()
     } else state.error = result.reason
     refresh()
     if (dirty) { dirty = false; void sync() }
@@ -221,6 +277,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     const result = await call<{ player: PersonCard }>(`/api/social/players/${encodeURIComponent(id)}`)
     if (version !== profileVersion) return // An older response must not restore invalidated friendship details.
     state.profiles.set(id, result.ok ? result.player : { error: result.reason })
+    showLive(false)
     refresh()
   }
 
@@ -352,9 +409,21 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       case 'people-changed':
         void loadPeople()
         return
+      case 'live-snapshot':
+        liveOffset = Number.isFinite(message.at) ? message.at - env.now() : liveOffset
+        takeSnapshot(state.live, message)
+        showLive()
+        return
+      case 'live-move':
+        // The largest reading is the one with the least delay in it.
+        if (Number.isFinite(message.at)) liveOffset = Math.max(liveOffset ?? -Infinity, message.at - env.now())
+        takeMove(state.live, message)
+        showLive()
+        return
       case 'people-presence': {
         const friend = state.me?.friends.find((item) => item.id === message.id)
-        if (friend) { friend.status = message.status === 'online' ? 'away' : 'reconnecting'; delete friend.venue; refresh() }
+        // A friend the live frames report on is written from those; this older frame only books the follow-up read.
+        if (friend && !state.live.friends.has(friend.id)) { friend.status = message.status === 'online' ? 'away' : 'reconnecting'; delete friend.venue; refresh() }
         // One follow-up read settles "reconnecting" into online or offline once the grace period is over.
         env.setTimeout(() => { void sync(); if (state.people) void loadPeople() }, message.status === 'online' ? 1500 : 22000)
         return
@@ -383,11 +452,12 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     if (ws || !connected()) return
     state.socket = attempts ? 'reconnecting' : 'connecting'
     const current = ws = env.openSocket()
-    current.onopen = () => { attempts = 0; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople() }
+    current.onopen = () => { attempts = 0; state.socket = 'open'; for (const [id, thread] of state.threads) if (thread.loaded) void openThread(id); void sync(); watchPeople(); watchLive(true) }
     current.onmessage = receive
     current.onclose = () => {
       if (ws !== current) return
       ws = null; state.houseRoom = null; joiningHouse = null
+      dropLive() // what is known is going stale: the next connection starts from a snapshot
       for (const listener of [...closeListeners]) listener()
       if (connected() && attempts < MAX_ATTEMPTS) { state.socket = 'reconnecting'; timer = env.setTimeout(connectSocket, Math.min(1000 * 2 ** attempts, 15000)); attempts += 1 }
       else state.socket = 'offline'
@@ -405,6 +475,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   function resetSocial(): void {
     Object.assign(state, freshSocial())
     outbox.clear()
+    env.clearTimeout(liveTimer); liveTimer = null; liveAsked = ''; liveOffset = null
+    for (const listener of liveWatchers) { try { listener() } catch (error) { console.error('Live watcher failed:', error) } }
     joiningHouse = null; syncing = false; dirty = false; peopleDirty = false; profileVersion += 1; attempts = 0
     env.clearTimeout(timer); timer = null
     const old = ws; ws = null
@@ -449,6 +521,6 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     }
   }
 
-  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
+  return { state, revision: revision as Readonly<Ref<number>>, outbox, onPeople, onLive, liveNow, watchLive, sendFrame, onCallFrame, onSocketClose, cityId, newClientId, call, perform, refreshLife, sync, loadMoreFriends, loadPeople, loadProfile, openThread, threadView, send, retry, discard, reconnect, resetSocial, takeLinkHost, attach, start }
 }
 export type SocialClient = ReturnType<typeof createSocialClient>

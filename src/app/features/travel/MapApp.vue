@@ -7,6 +7,7 @@
 //   overview   a handle, the filter chips and, opened, the layer toggles and the list of places
 //   card       a place picked on the map or in the list: hours, modes, Go, About (VenueCard)
 //   trip bar   WHILE A TRIP IS RUNNING the panel is a slim bar: from → to, how, time left, Cancel
+//   dock       one column (.map-dock): the level bar on top and the panel below it, so the panel never slides under the bar
 //   levels     the bar at the top (MapLevels): World › Africa › Nigeria › the city; a wider level swaps the backdrop
 //              to the atlas, which draws the same bar itself. A trip between cities keeps its trip bar there
 //
@@ -103,11 +104,11 @@ defineExpose({ keys })
     <h1 class="ui-sr">World map. Explore cities and travel routes.</h1>
     <TripBar v-if="trip?.locked" :trip="trip" />
   </template>
-  <template v-else>
+  <div v-else class="map-dock">
     <MapLevels />
     <TripBar v-if="trip?.locked" :trip="trip" />
     <VenueCard v-else-if="item" :item="item" />
     <TripBar v-else-if="trip" :trip="trip" />
     <MapOverview v-else />
-  </template>
+  </div>
 </template>

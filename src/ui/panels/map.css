@@ -112,7 +112,8 @@
 /* Wide screens: the sheet is docked at the left, clear of the map */
 @media(min-width:721px){
   /* (The trip bar is not docked: a running trip is shown in the bottom-centre stack with every other live status — shell.css.) */
-  .map-panel.map-overview,.map-panel.map-card{position:fixed;left:14px;top:70px;width:330px;max-height:calc(100 * var(--ui-vh) - 84px)}
+  /* The docked panels are laid out by the dock (below), under the level bar, never by their own offsets. */
+  .map-dock .map-panel.map-overview,.map-dock .map-panel.map-card{position:static;width:100%;max-height:calc(100 * var(--ui-vh) - var(--dock-top) - var(--map-bar-h) - var(--dock-gap) - var(--dock-bottom))}
   .map-overview{grid-template-rows:auto auto minmax(0,1fr)}
   .map-list{max-height:none}
   /* Docked, the chips wrap onto a second line: a row cut at the panel's edge has no scrollbar to show there is more. */
@@ -140,8 +141,12 @@
 .map-modes button>span{color:var(--c-ink-2)}.map-modes button.is-selected>span{color:var(--c-green-dark)}
 .map-event-icon{color:var(--c-amber-dark)}.map-event-chip>span:first-child{color:var(--c-amber-dark)}
 
-/* The level bar at the top of the city map: World › Africa › Nigeria › the city. The same place and look as the atlas's own bar. */
-.map-levels{position:fixed;z-index:6;top:calc(74px * var(--ui-zoom,1));left:calc(14px * var(--ui-zoom,1));max-width:calc(100vw - 28px);pointer-events:auto}
+/* The level bar at the top of the city map: World › Africa › Nigeria › the city. The same place and look as the atlas's own bar.
+   The bar and a docked panel are ONE column (.map-dock, wide screens): the bar on top, the panel below it with a gap, so no state of the
+   panel (list, handle, venue card) can slide under the bar. All offsets are in the interface's own (zoomed) units, never multiplied by
+   --ui-zoom again. Narrow screens: the panel is in the bottom stack, so the bar stands alone at the top. */
+.map-dock{--dock-top:74px;--dock-gap:8px;--dock-bottom:14px;--map-bar-h:46px;display:contents}
+.map-levels{position:fixed;z-index:6;top:var(--dock-top);left:14px;max-width:calc(100vw - 28px);pointer-events:auto}
 .map-levels ol{display:flex;align-items:center;gap:2px;margin:0;padding:4px;list-style:none;background:var(--c-surface,#fffffff7);border:1px solid #fff;border-radius:999px;box-shadow:var(--e-2,0 6px 18px #0000001f);overflow-x:auto;scrollbar-width:none}
 .map-levels li{display:flex;align-items:center;flex:none}
 .map-levels li+li::before{content:"›";padding:0 2px;color:var(--c-faint,#8a929b);font-size:16px}
@@ -151,10 +156,14 @@
 .life-ui .map-levels button[data-map-level="world"],.map-levels button[data-map-level="world"]{background:var(--c-green-dark,#1d6b43);color:#fff}
 .map-levels button[data-map-level="world"]:hover{background:#17573a}
 @media(max-width:720px){
-  .map-levels{top:calc(60px * var(--ui-zoom,1));left:8px;max-width:calc(100vw - 16px)}
+  .map-dock{--dock-top:60px}
+  .map-levels{left:8px;max-width:calc(100vw - 16px)}
   .map-levels button{padding:0 10px;font-size:12px}
 }
 @media(min-width:721px){
-  /* Docked, the Map's panel sits under the level bar. */
-  .map-panel.map-overview,.map-panel.map-card{top:124px;max-height:calc(100 * var(--ui-vh) - 138px)}
+  .map-dock:has(>.map-overview,>.map-card){position:fixed;z-index:6;left:14px;top:var(--dock-top);width:330px;max-height:calc(100 * var(--ui-vh) - var(--dock-top) - var(--dock-bottom));display:flex;flex-direction:column;align-items:stretch;gap:var(--dock-gap);pointer-events:none}
+  .map-dock:has(>.map-overview,>.map-card)>.map-levels{position:static;flex:none;max-width:none;align-self:flex-start}
+  .map-dock>.map-panel.map-overview,.map-dock>.map-panel.map-card{flex:0 1 auto;min-height:0}
 }
+/* Where the bottom nav is as wide as the space beside the dock, the panel stops above it. */
+@media(min-width:721px) and (max-width:1160px){.map-dock{--dock-bottom:92px}}

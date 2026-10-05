@@ -52,6 +52,8 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
     elapse: async (_device, _city, ms) => { time += ms; },
     qualify: async () => {}, socket: async () => { throw new Error('no sockets in this script'); }, session: async () => null, seedLegacy: async () => {}, restart: async () => {},
   };
+  /** The character pin the server stored for the device: a real move writes a current (version 2) pin that later reads honour. */
+  const pinned = (device: { cookie: string }) => server.store.read((db: { sessions: Record<string, { character?: { v?: number; city?: string } }> }) => db.sessions[device.cookie.slice(4)]?.character);
   const say = (title: string, state: Record<string, unknown>, note = '') => log(`${String(++step).padStart(2, '0')}  ${title.padEnd(52)} ${naira(num(state.cash)).padStart(9)}  ${note}`);
   try {
     const { life, action, finish, conserved, start } = driver(host);
@@ -82,6 +84,8 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
     const arrived = object((await host.request('/api/life?city=lagos', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
     assert.deepEqual([object(arrived.estate).city, object(arrived.estate).lga, num(arrived.cash)], ['ibadan', null, num(departed.cash)]);
     assert.ok(ibadan.venues.some((venue) => venue.id === arrived.location && venue.id !== 'home'), 'a visitor arrives at a public Ibadan place');
+    const ibadanPin = await pinned(device);
+    assert.deepEqual([ibadanPin?.v, ibadanPin?.city], [2, 'ibadan'], 'the move wrote a current pin for Ibadan');
     say(`Arrived in Ibadan at ${String(arrived.location)}`, arrived, 'a visitor; arriving costs nothing more');
 
     // 4. two activities, at the University of Ibadan and Bower's Tower
@@ -111,6 +115,8 @@ export async function runTwoCities({ log = console.log }: TwoCitiesOptions = {})
     const back = object((await host.request('/api/life?city=ibadan', undefined, device.cookie).then((response) => response.json()) as { state: unknown }).state);
     assert.deepEqual([object(back.estate).city, num(back.cash)], ['lagos', num(left.cash)]);
 
+    const lagosPin = await pinned(device);
+    assert.deepEqual([lagosPin?.v, lagosPin?.city], [2, 'lagos'], 'the move back wrote a current pin for Lagos');
     // 7. Lagos is still there
     assert.deepEqual([object(back.estate).lga, object(back.estate).living, object(back.estate).tier, back.job], ['ikeja', 'own', 'starter', 'community-helper']);
     // The train home arrives at the Lagos home itself; it can be left for a public place and entered again.

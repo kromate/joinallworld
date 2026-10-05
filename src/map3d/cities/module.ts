@@ -56,6 +56,8 @@ export interface ModuleScene {
   roads?: RoadRows
   /** The land around the state, drawn quiet under it (src/map3d/context.ts): a module that names it gets the whole-state view of a state with neighbours. */
   surroundings?: { spec: ContextSpec; planned: readonly string[] }
+  /** Display-only shifts, in metres, of a venue's map icon where two sit on almost the same point; the venue keeps its true coordinate in the data. */
+  iconOffsets?: Readonly<Record<string, { east: number; north: number }>>
 }
 
 function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk: ReadonlySet<string>): PackRoad[] {
@@ -72,7 +74,7 @@ function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk
 
 /** The same shared-frame renderer for authored city modules; no second projection or outline. */
 export async function createModulePack(module: CityModule, scene: ModuleScene['landmarks'] | ModuleScene = {}): Promise<CityPack> {
-  const { landmarks = [], roads: roadRows = [], surroundings, character = {} } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
+  const { landmarks = [], roads: roadRows = [], surroundings, character = {}, iconOffsets = {} } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
   const [content, map] = await Promise.all([module.loadContent(), module.loadMap()])
   const geometry = await map.loadGeometry(), origin = map.origin
   const local = (parts: readonly LonLatPolygon[]): Point2[][][] => parts.map(part => part.map(ring => ring.map(([lon, lat]) => toLocal(origin, lon, lat))))
@@ -93,7 +95,8 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
   })
   const sites = Object.fromEntries(content.venues.filter(venue => venue.id !== 'home').map(venue => {
     if (venue.position.kind !== 'lon-lat') throw new TypeError(`A new city needs geographic venue coordinates: ${venue.id}`)
-    const [x, z] = toLocal(origin, venue.position.lon, venue.position.lat)
+    const shift = iconOffsets[venue.id], lat = venue.position.lat
+    const [x, z] = toLocal(origin, venue.position.lon + (shift ? shift.east / (111320 * Math.cos(lat * Math.PI / 180)) : 0), lat + (shift ? shift.north / 110574 : 0))
     return [venue.id, { x, z }]
   }))
   const homes = Object.fromEntries(content.housing.map(home => {

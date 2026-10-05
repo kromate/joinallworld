@@ -22,7 +22,9 @@ Rules provide:
 
 - city, state and country identity;
 - timezone and the shared-frame map origin;
+- `defaultName`, the name of a life that has none yet (a city that does not say gets 'New Lagosian');
 - a separate atlas marker, teaser and preview text;
+- a map pack that may carry `character` (ground tint, roofs, hills, water, rail, landmark icons) and `extent` (the name of the whole-extent view);
 - the city's name for its local units, plus local-unit land tiers;
 - rented-home districts and the local unit each belongs to;
 - road, air and rail hubs;
@@ -30,7 +32,7 @@ Rules provide:
 
 Content provides the venue scene kind, existing activity definition, opening hours, display wording and position; regulars and their city; career workplaces; rented homes and their map spots; calendar entries; goal and wish wording; radio venues; billboard roads; table places; a ranked things-to-do list; and a short culture card.
 
-Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
+`carNicknames` replaces the shared nickname of any car (label, price and speed stay shared). `defaultName` is a rules field (above). A venue's scene is its `kind`, optionally refined by `variant`; a scene's `camera` may carry `start`, a factor on how far back the view begins. Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
 
 The engine remains synchronous after startup. A host first awaits `loadCityContent(id)`, then reads `cityContent(id)`. Reading an unloaded city's content throws. `cachedCityContent(id)` is the non-throwing probe. Map hosts use the equivalent `loadCityMap` and `cityMap` pair.
 

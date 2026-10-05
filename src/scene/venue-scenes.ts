@@ -315,6 +315,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, def: SceneD
     variant: typeof options.variant === 'string' ? options.variant : defaultVariant || null,
     accent: typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a',
     label: String(venue?.label || kind),
+    cityId,
   };
   const mood = (typeof def.mood === 'function' ? def.mood(context) : def.mood) || 'outdoor';
   const group = new THREE.Group();

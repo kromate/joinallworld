@@ -44,7 +44,7 @@ import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
 import { focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
-import type { LabelCandidate } from './labels.ts';
+import type { LabelCandidate, PlacedLabel } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, flightPoint, interCityTripOf, liftOf, linkId, linkPath, measure, tripPoint } from './routes.ts';
 import type { InterCitySource, LinkPath, MeasuredLine } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
@@ -579,6 +579,19 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
       node.style.transform = `translate(${label.x.toFixed(1)}px,${label.y.toFixed(1)}px)`;
     }
     for (const [id, node] of labelNodes) if (!keep.has(id)) { node.remove(); labelNodes.delete(id); }
+    drawLeaders(placed);
+  }
+  /** A thin line from each displaced label to the dot it names, drawn under the labels. */
+  function drawLeaders(placed: readonly PlacedLabel[]) {
+    const lines = placed.flatMap((label) => {
+      if (!label.displaced) return [];
+      const { box, home } = label, x = Math.min(Math.max(home.x, box.left), box.right), y = Math.min(Math.max(home.y, box.top), box.bottom);
+      return Math.hypot(x - home.x, y - home.y) > 6 ? [`<line x1="${home.x.toFixed(1)}" y1="${home.y.toFixed(1)}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/><circle cx="${home.x.toFixed(1)}" cy="${home.y.toFixed(1)}" r="2.5"/>`] : [];
+    });
+    let layer = ui.labels!.querySelector<SVGSVGElement>('.atlas-leaders');
+    if (!lines.length) { layer?.remove(); return; }
+    if (!layer) { layer = doc!.createElementNS('http://www.w3.org/2000/svg', 'svg') as SVGSVGElement; layer.setAttribute('class', 'atlas-leaders'); layer.setAttribute('aria-hidden', 'true'); ui.labels!.prepend(layer); }
+    layer.innerHTML = lines.join('');
   }
 
   // ---- travel between cities: the server's timer, or the preview --------------------------------------

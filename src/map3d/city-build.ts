@@ -113,6 +113,8 @@ export interface Raw {
   build(material: Material): Mesh;
 }
 
+/** The least width of a river ribbon, in map units (100 m): narrower than this a river line vanishes at the whole-city zoom. */
+const RIVER_MIN_WIDTH = 1;
 export const WATER_Y = -0.5;
 /**
  * The most triangles one frame of the city may cost: the city itself, its overlays, the route and the houses of an estate in view.
@@ -446,7 +448,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (water.kind === 'lake') {
       raw.shape(water.points, 0.022, '#79bfd2');
       raw.ribbon(flat([...water.points, water.points[0]!]), 0.5, 0.02, '#a9dbe4');
-    } else raw.ribbon(flat(water.points), water.width ?? 0.5, 0.025, '#6fb6cd');
+    } else raw.ribbon(flat(water.points), Math.max(water.width ?? 0.5, RIVER_MIN_WIDTH), 0.025, '#5aa8c6');
   }
   for (const rail of pack.rails ?? []) {
     const line = flat(rail.points);

@@ -99,6 +99,9 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
   };
 }
 
+/** The least width, in screen pixels, a river line is drawn with, so it stays visible when the true width shrinks below a pixel. */
+const RIVER_MIN_PX = 2;
+
 export function flatSvg(model: FlatModel): string {
   const { box } = model, c = FLAT_COLOURS, g = model.scale.ground, k = model.scale.road;
   const land = (kind: string) => model.land.filter((entry) => (kind === 'sand') === (entry.kind === 'sand'));
@@ -113,7 +116,7 @@ export function flatSvg(model: FlatModel): string {
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
     <g class="m3-flat-lgas" clip-path="url(#m3-flat-land-${esc(model.id)})" fill-rule="evenodd">${model.lgas.map((lga) => `<path d="${lga.d}" data-lga="${esc(lga.id)}" fill="${esc(lga.tint)}" fill-opacity=".34" stroke="#46544a" stroke-opacity=".6" stroke-width="${fixed(0.5 * Math.max(g, 0.5))}" stroke-linejoin="round"/>`).join('')}</g>
     ${model.character.areas.length ? `<g class="m3-flat-areas" aria-hidden="true">${model.character.areas.map((area) => `<circle cx="${fixed(area.x)}" cy="${fixed(area.z)}" r="${fixed(area.r)}" fill="${area.tone === 'old' ? '#cdb48c' : '#a6cc7c'}" fill-opacity=".55"/>`).join('')}</g>` : ''}
-    ${model.character.waters.length ? `<g class="m3-flat-waters" aria-hidden="true" fill="#79bfd2" stroke="#6fb6cd" stroke-linecap="round" stroke-linejoin="round">${model.character.waters.map((water) => water.kind === 'lake' ? `<path d="${water.d}" data-water="${esc(water.name)}" stroke-width="${fixed(0.3 * k)}"/>` : `<path d="${water.d}" data-water="${esc(water.name)}" fill="none" stroke-width="${fixed(water.width * k)}"/>`).join('')}</g>` : ''}
+    ${model.character.waters.length ? `<g class="m3-flat-waters" aria-hidden="true" fill="#79bfd2" stroke="#6fb6cd" stroke-linecap="round" stroke-linejoin="round">${model.character.waters.map((water) => water.kind === 'lake' ? `<path d="${water.d}" data-water="${esc(water.name)}" stroke-width="${fixed(0.3 * k)}"/>` : `<path d="${water.d}" data-water="${esc(water.name)}" fill="none" stroke-width="${fixed(water.width * k)}"/><path d="${water.d}" data-water-line="${esc(water.name)}" fill="none" stroke="#4f9fc0" stroke-width="${RIVER_MIN_PX}" vector-effect="non-scaling-stroke"/>`).join('')}</g>` : ''}
     ${model.character.rails.length ? `<g class="m3-flat-rails" aria-hidden="true" fill="none" stroke-linejoin="round">${model.character.rails.map((rail) => `<path d="${rail.d}" stroke="#a7a395" stroke-width="${fixed(0.9 * k)}"/><path d="${rail.d}" stroke="#6f6b60" stroke-width="${fixed(0.4 * k)}" stroke-dasharray="${fixed(1.2 * k)} ${fixed(0.8 * k)}"/>`).join('')}</g>` : ''}
     <g class="m3-flat-zones">${model.zones.map((zone) => `<rect data-zone="${esc(zone.id)}" x="${fixed(zone.x)}" y="${fixed(zone.z)}" width="${fixed(zone.width)}" height="${fixed(zone.height)}" fill="#c8bfa4" stroke="#f2c230" stroke-width=".8" stroke-dasharray="2.2 2.2"/>`).join('')}</g>
     <g class="m3-flat-roads">

@@ -1154,7 +1154,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     // about a tenth of a phone's height. Zooming out still reaches the whole-venue view and beyond.
     const preset = portrait ? view.portrait : view.landscape;
     const whole = Math.hypot(preset[0], preset[1] - 0.7, preset[2]);
-    const close = Math.min(1, ((portrait ? START_DISTANCE.portrait : height <= 520 ? START_DISTANCE.short : START_DISTANCE.wide) * (walk?.scale || 1)) / whole);
+    const close = Math.min(1, ((portrait ? START_DISTANCE.portrait : height <= 520 ? START_DISTANCE.short : START_DISTANCE.wide) * (walk?.scale || 1) * (view.start || 1)) / whole);
     closeness = 1 / close;
     orbit.setBase([preset[0] * close, 0.7 + (preset[1] - 0.7) * close, preset[2] * close]);
     // Close enough to see a face, far enough to see the whole venue. The orbit is free all the way round:

@@ -64,13 +64,13 @@ export interface MapImpl {
 interface MapFocusDetail { plot?: { lga: string; estate: number; plot: number }; lga?: string; estate?: number }
 /** The camera of the city map: the 3D rig, or the flat map's scale and offset. */
 export type MapCamera = { kind: '3d'; x: number; z: number; yaw: number; pitch: number; distance: number } | { kind: '2d'; scale: number; x: number; y: number }
-/** Which map is on screen: the 3D one, or the flat one. */
-export type CityViewKind = '3d' | '2d'
+/** The mounted map, or its explicit download-recovery view. */
+export type CityViewKind = '3d' | '2d' | 'unavailable'
 /** The handle the host talks to. */
 export interface CityView {
   readonly ready: boolean
   readonly kind: CityViewKind | null
-  /** Resolves once the first map is on screen. */
+  /** Resolves once the first map or recovery view is mounted. */
   started: Promise<void> | null
   setCity(id: string): void
   /** Public ids of the player's friends: their houses are named on the map. */
@@ -124,7 +124,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
   });
   container.appendChild(toggle);
   function label() {
-    const can3d = hasCityPack(cityId) && !brokenGl;
+    const can3d = hasCityPack(cityId) && !brokenGl && kind !== 'unavailable';
     toggle.hidden = !can3d;
     toggle.textContent = kind === '3d' ? 'Simple map' : '3D map';
     toggle.setAttribute('aria-label', kind === '3d' ? 'Switch to the simple flat map' : 'Switch to the 3D map');
@@ -158,14 +158,24 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
       const pack = hasCityPack(cityId) ? await loadCityPack(cityId).catch(() => null) : null;
       if (ticket !== mounting) return;
       if (pack) { impl?.destroy(); impl = null; next = createMap2D(container, { pack, cityId, world, ...callbacks, deepLink }); }
-      else {
+      else if (hasCityPack(cityId)) {
+        impl?.destroy(); impl = null;
+        const message = document.createElement('section'); message.className = 'cmap-error';
+        const title = document.createElement('h2'); title.textContent = 'City map unavailable';
+        const detail = document.createElement('p'); detail.textContent = 'The map could not be downloaded. Your saved character is safe.';
+        const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = 'Reload map';
+        retry.addEventListener('click', () => window.location.reload());
+        message.append(title, detail, retry); container.appendChild(message);
+        next = { setState() {}, resize() {}, destroy() { message.remove(); }, diagnostics: () => ({ unavailable: true }) };
+        nextKind = 'unavailable';
+      } else {
         const { createCityMap } = await import('../city-map.ts');
         if (ticket !== mounting) return;
         impl?.destroy(); impl = null;
         next = createCityMap(container, callbacks);
         next.setCity!(cityId);
       }
-      nextKind = '2d';
+      if (nextKind !== 'unavailable') nextKind = '2d';
     }
     deepLink = null;
     impl = next; kind = nextKind; released = false;
@@ -191,7 +201,7 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
   const view: CityView = {
     get ready() { return layer === 'city'; },
     get kind() { return kind; },
-    /** Resolves once the first map is on screen. */
+    /** Resolves once the first map or recovery view is mounted. */
     started: null,
     setCity(id) { layer = 'city'; if (id === cityId && impl) { impl.setCity?.(id); return; } cityId = id; world?.drop(id); void mount(); },
     /** Public ids of the player's friends: their houses are named on the map. */

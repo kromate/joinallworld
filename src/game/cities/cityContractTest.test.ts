@@ -29,6 +29,8 @@ const activitiesAt = (content: CityContent, venueId: string, spotId?: string): r
 export function assertCityContentContract(module: CityModule, content: CityContent, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(content.cityId, module.id)
+  assert.deepEqual(Object.keys(content.localUnitDescriptions).sort(), module.rules.units.map(unit => unit.id).sort(), 'every local unit has city-owned prose')
+  for (const line of Object.values(content.localUnitDescriptions)) assert.ok(line.trim().length > 0, 'local-unit description is not empty')
   const venueIds = content.venues.map((venue) => venue.id), venues = new Set(venueIds)
   unique(venueIds, 'venue')
   for (const [oldId, target] of Object.entries(module.rules.legacyVenueAliases ?? {})) {
@@ -162,6 +164,25 @@ export async function assertCityMapContract(module: CityModule, map: CityMapPack
   assert.equal(map.cityId, module.id); assert.equal(map.projection, 'nigeria-equirectangular-v1'); assert.equal(map.unitsPerKm, 10)
   assert.ok(Number.isInteger(map.origin.x) && Number.isInteger(map.origin.z), 'map origin uses whole frame units'); assert.deepEqual(map.origin, module.rules.mapOrigin)
   assert.deepEqual([...map.localUnitIds].sort(), module.rules.units.map((unit) => unit.id).sort())
+  if (module.rules.hasStateOverview) {
+    assert.ok(map.loadStateOverview, 'advertised state overview has a lazy loader')
+    const overview = await map.loadStateOverview()
+    assert.equal(overview.stateId, module.rules.state.id)
+    assert.equal(overview.name, module.rules.state.name)
+    unique(overview.localUnits.map(unit => unit.id), 'state local unit')
+    for (const unit of module.rules.units) assert.ok(overview.localUnits.some(item => item.id === unit.id), `state overview includes ${unit.id}`)
+    assert.ok(overview.outline.length > 0 && overview.localUnits.every(unit => unit.polygons.length > 0), 'overview includes real polygons')
+  }
+  const railLinks = module.rules.links.filter(link => link.mode === 'rail')
+  if (railLinks.length) {
+    assert.ok(module.loadRoutes, 'declared rail links have a lazy geometry loader')
+    const routes = await module.loadRoutes()
+    for (const link of railLinks) {
+      const route = routes.find(route => route.mode === 'rail' && ((route.a === link.a && route.b === link.b) || (route.a === link.b && route.b === link.a)))
+      assert.ok(route && route.points.length >= 2, `rail geometry exists for ${link.a} and ${link.b}`)
+      for (const [lon, lat] of route.points) assert.ok(Number.isFinite(lon) && Number.isFinite(lat) && Math.abs(lon) <= 180 && Math.abs(lat) <= 90, 'rail uses geographic coordinates')
+    }
+  }
   const [scene, geometry] = await Promise.all([map.loadScene(), map.loadGeometry()])
   assert.equal(scene.id, module.id); assert.deepEqual(scene.lgas.map((unit) => unit.id).sort(), module.rules.units.map((unit) => unit.id).sort())
   assert.deepEqual(Object.keys(geometry.localUnits).sort(), module.rules.units.map((unit) => unit.id).sort()); assert.ok(geometry.gridDegrees > 0)
@@ -177,6 +198,7 @@ const linkShape = (link: { to: string; mode: string; label: string; icon: string
 export function assertCityRulesContract(module: CityModule, options: CityContractOptions = {}): void {
   const { profile } = optionsFor(module, options)
   assert.equal(module.id, module.rules.id); assert.equal(module.rules.status, 'open'); assert.ok(module.rules.timezone.length > 0); assert.ok(module.rules.units.length > 0)
+  for (const unit of module.rules.units) assert.equal(Object.hasOwn(unit, 'line'), false, 'local-unit prose belongs in lazy content')
   unique(module.rules.units.map((unit) => unit.id), 'local unit'); unique(module.rules.districts.map((district) => district.id), 'district'); unique(module.rules.hubs.map((hub) => hub.id), 'hub')
   if (profile === 'opened') {
     assert.ok(module.rules.districts.length > 0, 'opened city declares at least one rented-home district')

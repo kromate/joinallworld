@@ -93,7 +93,7 @@ export type ShiftStatus =
   | { code: Extract<ShiftStatusCode, 'no_job' | 'working' | 'shift_done' | 'day_off'>; canWork: false; text: string; next: string }
 
 const canonicalJobOf = (id: unknown): JobDefinition | null => typeof id === 'string' ? Object.values(JOBS).find((job) => job.id === id) ?? null : null;
-const contentReady = (cityId: string): boolean => Boolean(cachedCityContent(cityId)) || cityId === 'lagos' || (cityId === 'ibadan' && !cityModule(cityId));
+const contentReady = (cityId: string): boolean => Boolean(cachedCityContent(cityId));
 const cityHasCareer = (cityId: string, id: unknown): boolean => {
   const canonical = canonicalJobOf(id);
   if (!canonical) return false;
@@ -406,9 +406,10 @@ export default {
     },
   },
   view(state, ctx): CareerView {
-    const job = jobOf(state.job, state.career.city ?? state.estate.city);
-    const coldJob = !job && state.job && state.career.city && cityHasCareer(state.career.city, state.job) ? canonicalJobOf(state.job) : null;
-    const shown = job ?? coldJob;
+    const heldJob = jobOf(state.job, state.career.city ?? state.estate.city);
+    const coldJob = !heldJob && state.job && state.career.city && cityHasCareer(state.career.city, state.job) ? canonicalJobOf(state.job) : null;
+    const shown = heldJob ?? coldJob;
+    const job = state.career.city === state.estate.city ? heldJob : null;
     const status = shiftStatus(state, ctx);
     const today = lagosTime(nowOf(state, ctx));
     const career = state.career;

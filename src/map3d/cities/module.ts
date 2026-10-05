@@ -89,7 +89,9 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     if (!polygon) throw new TypeError(`Empty geometry for ${unit.id}`)
     const plate = interior(parts), box = extent(parts.flatMap(part => part[0] ?? []))
     const nw = fromLocal(origin, box.minX, box.minZ), se = fromLocal(origin, box.maxX, box.maxZ), at = fromLocal(origin, ...plate)
-    return { ...unit, polygon, polygons: parts, plate, tint: '#baad87', geo: { c: [at.lat, at.lon], box: [se.lat, nw.lon, nw.lat, se.lon] } }
+    const line = content.localUnitDescriptions[unit.id]
+    if (typeof line !== 'string') throw new TypeError(`Missing description for ${unit.id}`)
+    return { ...unit, line, polygon, polygons: parts, plate, tint: '#baad87', geo: { c: [at.lat, at.lon], box: [se.lat, nw.lon, nw.lat, se.lon] } }
   })
   const sites = Object.fromEntries(content.venues.filter(venue => venue.id !== 'home').map(venue => {
     if (venue.position.kind !== 'lon-lat') throw new TypeError(`A new city needs geographic venue coordinates: ${venue.id}`)

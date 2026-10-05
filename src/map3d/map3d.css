@@ -151,3 +151,6 @@ button.m3-house{cursor:pointer}
 .m3-ctx.is-sea { color: rgba(255, 255, 255, .72); text-shadow: 0 0 4px rgba(20, 70, 90, .5); letter-spacing: .3em; font-style: italic; font-weight: 600; }
 .m3-ctx.is-country { font-size: 12px; }
 @supports (zoom: 2) { .m3-ctx { zoom: var(--ui-zoom, 1); } }
+.cmap-error{position:absolute;z-index:4;left:50%;top:35%;transform:translate(-50%,-50%);width:min(340px,calc(100% - 32px));padding:24px;border-radius:20px;background:#fff;color:#263d2d;box-shadow:0 4px 24px #0002;text-align:center}
+.cmap-error h2{margin:0 0 8px;font-size:20px}.cmap-error p{line-height:1.5;font-size:14px}
+.cmap-error button{min-height:44px;border:0;border-radius:24px;padding:10px 20px;background:#2f6544;color:#fff;font:inherit;cursor:pointer}

@@ -52,6 +52,7 @@ const techJob: JobDefinition = {
 
 export const fictionalContent: CityContent<typeof FICTIONAL_CITY_ID> = {
   cityId: FICTIONAL_CITY_ID,
+  localUnitDescriptions: { 'test-central': 'Test only.' },
   venues: [square, polling, stateHouse, home].map((definition) => ({
     cityId: FICTIONAL_CITY_ID,
     id: definition.id,
@@ -118,6 +119,7 @@ export const fictionalMap: CityMapPack<typeof FICTIONAL_CITY_ID, 'test-central'>
 export const fictionalNeighbourContent: CityContent<typeof FICTIONAL_NEIGHBOUR_CITY_ID> = {
   ...fictionalContent,
   cityId: FICTIONAL_NEIGHBOUR_CITY_ID,
+  localUnitDescriptions: { 'test-neighbour-central': 'Test only.' },
   venues: fictionalContent.venues.map((venue) => ({ ...venue, cityId: FICTIONAL_NEIGHBOUR_CITY_ID })),
   regulars: fictionalContent.regulars.map((regular) => {
     const id = regular.id.replace('test-fictional-', 'test-neighbour-')
@@ -158,7 +160,7 @@ export const fictionalCity: CityModule<typeof FICTIONAL_CITY_ID, 'test-state', '
   id: FICTIONAL_CITY_ID,
   rules: {
     id: FICTIONAL_CITY_ID, name: 'Fictional', status: 'open', unit: 'local government',
-    units: [{ id: 'test-central', name: 'Test Central', zone: 'mainland', land: 1, line: 'Test only.', districts: ['test-centre'] }],
+    units: [{ id: 'test-central', name: 'Test Central', zone: 'mainland', land: 1, districts: ['test-centre'] }],
     hub: { road: 'Test Park', air: 'Test Park' },
     state: { id: 'test-state', name: 'Test State', unit: 'local government' },
     country: { id: 'ng', name: 'Nigeria' }, timezone: 'Africa/Lagos', defaultName: 'New arrival', atlas: { lon: 8, lat: 9, teaser: 'Test only.' }, mapOrigin: { x: 0, z: 0 },
@@ -175,7 +177,7 @@ export const fictionalNeighbourCity: CityModule<typeof FICTIONAL_NEIGHBOUR_CITY_
   id: FICTIONAL_NEIGHBOUR_CITY_ID,
   rules: {
     id: FICTIONAL_NEIGHBOUR_CITY_ID, name: 'Fictional Neighbour', status: 'open', unit: 'local government',
-    units: [{ id: 'test-neighbour-central', name: 'Neighbour Central', zone: 'mainland', land: 1, line: 'Test only.', districts: ['test-neighbour-centre'] }],
+    units: [{ id: 'test-neighbour-central', name: 'Neighbour Central', zone: 'mainland', land: 1, districts: ['test-neighbour-centre'] }],
     hub: { road: 'Neighbour Park', air: 'Neighbour Park' },
     state: { id: 'test-state', name: 'Test State', unit: 'local government' },
     country: { id: 'ng', name: 'Nigeria' }, timezone: 'Africa/Lagos', defaultName: 'New arrival', atlas: { lon: 8.3, lat: 9, teaser: 'Test only.' }, mapOrigin: { x: 300, z: 0 },

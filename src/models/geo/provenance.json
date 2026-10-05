@@ -101,6 +101,35 @@
       "url": "https://overpass-api.de/api/interpreter",
       "license": "ODbL 1.0 (© OpenStreetMap contributors)",
       "note": "Queried by scripts/geo/build-ibadan-roads.ts; the combined response hash is recorded in src/game/cities/ibadan/roads.ts."
+    },
+    "openstreetmap-ogun-landmarks": {
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "Open Database License 1.0",
+      "attribution": "OpenStreetMap contributors",
+      "objects": [
+        "node/4247701494",
+        "node/501496491",
+        "node/5854068985",
+        "node/8841632699",
+        "node/9074714198",
+        "way/316843082",
+        "way/453068217",
+        "way/472426637",
+        "way/617596401",
+        "way/669568923",
+        "way/705301227",
+        "way/789111299",
+        "way/1215520865",
+        "way/1456801587"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    "ogun-lga-names-2024": {
+      "url": "https://api.ogunstate.gov.ng/archive/CONSOLIDATEDREPORTOFTHEAUDITOR-GENERALFORLOCALGOVERNMENTSYEAR2024.pdf",
+      "license": "Public administrative names used as factual data",
+      "publisher": "Ogun State Government",
+      "use": "Current display names for the 20 local governments, including Sagamu, Yewa North and Yewa South",
+      "retrieved": "2026-10-05"
     }
   },
   "attribution": {
@@ -110,7 +139,9 @@
     "Airports": "OurAirports public-domain data; selected coordinates retained in sources/airports.json with original source hash. https://ourairports.com/data/",
     "Nigeria states and Lagos local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
     "Oyo State and Ibadan local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 33 Oyo local governments are retained in the generated topology; the Ibadan play area selects 11. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
-    "Ibadan landmarks and Lagos-Ibadan railway": "© OpenStreetMap contributors. Landmark points and railway relation 10699301 are used under the Open Database License 1.0. The railway is simplified while retaining source vertices; its recorded 23.4 m source gap is disclosed in code. https://www.openstreetmap.org/copyright"
+    "Ogun State and local governments": "geoBoundaries gbOpen, NGA-ADM1-27671186 and NGA-ADM2-59680162, release 9469f09, year 2022, original source GRID3; William & Mary geoLab. All 20 Ogun local governments are retained; 11 form the Abeokuta, Ota, Ijebu-Ode and Sagamu play footprints and nine remain state context. The Lagos-facing state edge is copied from the accepted Lagos topology selected by the exact shared ADM1 source chain. Simplified, quantised and converted to ES modules by Allworld. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/. Source: https://www.geoboundaries.org/api/current/gbOpen/NGA/",
+    "Ibadan landmarks and Lagos-Ibadan railway": "© OpenStreetMap contributors. Landmark points and railway relation 10699301 are used under the Open Database License 1.0. The railway is simplified while retaining source vertices; its recorded 23.4 m source gap is disclosed in code. https://www.openstreetmap.org/copyright",
+    "Ogun landmarks": "© OpenStreetMap contributors. Selected mapped points and feature centroids for Abeokuta, Ota, Ijebu-Ode, Sagamu and the Ogun state overview are used under the Open Database License 1.0. OOU Ago-Iwoye and Papalanto remain state context outside the opened city footprints. https://www.openstreetmap.org/copyright"
   },
   "limitations": [
     "Roads are original schematic travel corridors joining city coordinates, not surveyed highway alignments.",
@@ -162,10 +193,23 @@
         "src/game/cities/ibadan/roads.ts"
       ],
       "generator": "scripts/geo/build-ibadan-roads.ts"
+    },
+    "ogun-city-footprints": {
+      "inputs": [
+        "nigeria-states-adm1",
+        "nigeria-lgas-adm2",
+        "ogun-lga-names-2024"
+      ],
+      "method": "All 20 Ogun ADM2 local governments are retained in one shared-arc topology. Abeokuta selects Abeokuta North, Abeokuta South, Odeda and Obafemi/Owode; Ota selects Ado Odo/Ota; Ijebu-Ode selects Ijebu Ode, Ijebu North East and Odogbolu; Sagamu selects Sagamu, Ikenne and Remo North. The other nine remain visible in the state overview. The Ogun state outline is built with all 37 ADM1 states, then only its exact raw Lagos-shared chain is replaced by the corresponding 430-vertex path from the accepted Lagos topology sha256 e65bb768f638d863576bf64dc800fb4823777def95813e4ed8171678ec7ac1f9. Ado Odo/Ota's exact raw ADM2 chain shared with Lagos LGAs similarly selects and reuses the accepted 147-vertex land path, so the rendered Ota play area has the same edge as adjacent Lagos local-government polygons.",
+      "outputs": [
+        "src/map3d/geo/data/ogun.ts (OGUN_LGAS, OGUN_STATE, city and coming selections)"
+      ],
+      "generator": "scripts/geo/build-boundaries.ts (npm run geo:boundaries -- --ogun)"
     }
   },
   "processing": {
     "nigeria-and-lagos-boundaries": "scripts/geo/build-boundaries.ts caches the two files in .cache/geo, verifies the sha256 and byte count, builds shared-arc topology so a border two regions share is one arc, simplifies each arc once (Visvalingam-Whyatt, effective area in square map units of the Nigeria frame, 1 unit = 100 m) and quantises it (lagos.ts 0.0002 degrees, nigeria.ts 0.001 degrees). Tolerances are recorded in each data file's header.",
-    "oyo-boundaries": "All 33 Oyo ADM2 features are built in one shared-arc topology at 0.0002 degrees. The full Oyo State outline is cut from a topology built from all 37 ADM1 features, preserving shared boundary arcs for neighbouring state packs. No inland water is inferred from gaps."
+    "oyo-boundaries": "All 33 Oyo ADM2 features are built in one shared-arc topology at 0.0002 degrees. The full Oyo State outline is cut from a topology built from all 37 ADM1 features, preserving shared boundary arcs for neighbouring state packs. No inland water is inferred from gaps.",
+    "ogun-boundaries": "All 20 Ogun ADM2 features use shared arcs at 0.0002 degrees. Non-Lagos state edges come from the all-37-state shared topology. The 430-vertex state chain and 147-vertex Ado Odo/Ota land chain reuse every corresponding accepted Lagos segment exactly; neither is simplified again. No coastal or inland water polygon is inferred from administrative gaps."
   }
 }

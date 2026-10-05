@@ -10,7 +10,8 @@
 import '../../../ui/panels/world.css'
 import { computed, nextTick, ref, watch } from 'vue'
 import { DEFAULT_STYLE, lgasOf } from '../../../game/content/world.ts'
-import { loadCityContent } from '../../../game/cities/registry.ts'
+import { cachedCityContent, loadCityContent } from '../../../game/cities/registry.ts'
+import { localUnitDescription } from '../../../game/cities/runtime.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useApp } from '../../state/app.ts'
 import HouseArt from '../world/HouseArt.vue'
@@ -58,7 +59,7 @@ function pickState(id: string): void {
   if (next) void pickCity(next.id)
 }
 const cityLabel = computed(() => cityNow.value?.name ?? estate.value.cityName)
-const lgas = computed<readonly LgaCard[]>(() => cityId.value === estate.value.city ? estate.value.lgas : lgasOf(cityId.value).map((item) => ({ id: item.id, name: item.name, line: item.line, land: item.land, levy: 0 })))
+const lgas = computed<readonly LgaCard[]>(() => cityId.value === estate.value.city ? estate.value.lgas : lgasOf(cityId.value).map((item) => ({ id: item.id, name: item.name, line: cachedCityContent(cityId.value) ? localUnitDescription(cityId.value, item.id) : '', land: item.land, levy: 0 })))
 
 const query = ref('')
 const groups = computed(() => groupLgas(cityId.value, lgas.value, query.value))

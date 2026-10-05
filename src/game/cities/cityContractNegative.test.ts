@@ -13,10 +13,11 @@ function moduleWithContent(base: CityModule, content: CityContent): CityModule {
 }
 
 function twoUnitModule(geometry: CityMapGeometry): CityModule {
-  const east: { id: string; name: string; zone: 'mainland'; land: number; line: string; districts: string[] } = { id: 'test-east', name: 'Test East', zone: 'mainland', land: 1, line: 'Test only.', districts: [] }
+  const east: { id: string; name: string; zone: 'mainland'; land: number; districts: string[] } = { id: 'test-east', name: 'Test East', zone: 'mainland', land: 1, districts: [] }
   return {
     ...fictionalCity,
     rules: { ...fictionalCity.rules, units: [...fictionalCity.rules.units, east] },
+    loadContent: async () => ({ ...await fictionalCity.loadContent(), localUnitDescriptions: { 'test-central': 'Test only.', 'test-east': 'Test only.' } }),
     loadMap: async () => ({
       ...fictionalMap,
       localUnitIds: ['test-central', 'test-east'],

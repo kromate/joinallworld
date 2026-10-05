@@ -1,6 +1,9 @@
-import { legacyCityContent } from './legacyContent.ts'
 import { lagosCity } from './lagos/index.ts'
 import { ibadanCity } from './ibadan/index.ts'
+import { abeokutaCity } from './abeokuta/index.ts'
+import { otaCity } from './ota/index.ts'
+import { ijebuOdeCity } from './ijebu-ode/index.ts'
+import { sagamuCity } from './sagamu/index.ts'
 import { CITY_LINKS } from './links.ts'
 import type { CityId } from './ids.ts'
 import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
@@ -33,7 +36,7 @@ export interface CataloguedCityRules extends CityRules {
   hubs: readonly CityHub[]
 }
 
-function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker, serverKnown = false, contentSource: string | null = null): KnownCity {
+function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): KnownCity {
   const hubs: readonly CityHub[] = Object.freeze([
     { id: 'road', name: rules.hub.road, mode: 'road' },
     { id: 'air', name: rules.hub.air, mode: 'air' },
@@ -46,25 +49,25 @@ function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker, serv
     atlas,
     mapOrigin: null,
     districts: [],
-    rentedHomeIds: serverKnown ? lagosCity.rules.rentedHomeIds : [],
-    defaultRentedHome: serverKnown ? lagosCity.rules.defaultRentedHome : null,
+    rentedHomeIds: [],
+    defaultRentedHome: null,
     hubs,
   })
   return Object.freeze({
     rules: catalogued,
-    serverKnown,
+    serverKnown: false,
     compatibility: Object.freeze({
-      acceptStoredLives: serverKnown,
+      acceptStoredLives: false,
       allowNewLives: false,
-      contentSource,
-      note: serverKnown ? 'Stored lives remain readable; new lives and travel stay closed.' : 'Reserved for future city content.',
+      contentSource: null,
+      note: 'Reserved for future city content.',
     }),
   })
 }
 
 const publicRules = ({ id, name, status, unit, units, hub }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub })
 
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity })
+const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity })
 
 type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
 type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
@@ -75,13 +78,11 @@ export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
     serverKnown: true,
     compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'lagos', note: 'Open and playable.' }),
   }),
-  ibadan: closed(
-    { id: 'ibadan', name: 'Ibadan', status: 'soon', unit: 'local government', units: [], hub: { road: 'Iwo Road Motor Park', air: 'Ibadan airport at Alakia' } },
-    { id: 'oyo', name: 'Oyo State', unit: 'local government' },
-    { lon: 3.95, lat: 7.38, stand: 'high', teaser: 'Seven hills of brown roofs, Cocoa House and the best amala in the country.', preview: ['Dugbe and Cocoa House', 'Bodija market and the University of Ibadan', 'Mapo Hall on its hill'] },
-    true,
-    'lagos',
-  ),
+  ibadan: Object.freeze({
+    rules: ibadanCity.rules,
+    serverKnown: true,
+    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'ibadan', note: 'Open and playable.' }),
+  }),
   abuja: closed(
     { id: 'abuja', name: 'Abuja', status: 'soon', unit: 'district', units: [], hub: { road: 'Utako Motor Park', air: 'the airport on the Airport Road' } },
     { id: 'fct', name: 'Federal Capital Territory', unit: 'area council' },
@@ -91,11 +92,6 @@ export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
     { id: 'port-harcourt', name: 'Port Harcourt', status: 'soon', unit: 'local government', units: [], hub: { road: 'Waterlines Motor Park', air: 'the airport at Omagwa' } },
     { id: 'rivers', name: 'Rivers State', unit: 'local government' },
     { lon: 7.03, lat: 4.82, teaser: 'The Garden City: oil money, bole and fish, and creeks that run to the sea.', preview: ['Old GRA and the Garden City roundabouts', 'Mile One market and the waterfront', 'The creeks down to Bonny'] },
-  ),
-  abeokuta: closed(
-    { id: 'abeokuta', name: 'Abeokuta', status: 'soon', unit: 'local government', units: [], hub: { road: 'Lafenwa Motor Park', air: 'the nearest airport, in Lagos' } },
-    { id: 'ogun', name: 'Ogun State', unit: 'local government' },
-    { lon: 3.35, lat: 7.16, teaser: 'The city under the rock: Olumo, the Egba markets and adire cloth dyed by hand.', preview: ['Olumo Rock above the river', 'Adire dyeing at Itoku market', 'The Ogun river and the old Egba quarter'] },
   ),
   kano: closed(
     { id: 'kano', name: 'Kano', status: 'soon', unit: 'local government', units: [], hub: { road: 'Kano Motor Park', air: 'Mallam Aminu Kano International Airport' } },
@@ -197,12 +193,6 @@ async function readCityContent(cityId: unknown): Promise<CityContent> {
     const content = await module.loadContent()
     if (content.cityId !== module.id) throw new Error(`City content id ${content.cityId} does not match ${module.id}`)
     if (moduleOf(module.id) === module) loadedContent.set(module.id, content)
-    return content
-  }
-  if (typeof cityId === 'string' && KNOWN_CITIES[cityId]?.compatibility.contentSource === 'lagos') {
-    const source = await lagosCity.loadContent()
-    const content = legacyCityContent(source, cityId)
-    loadedContent.set(cityId, content)
     return content
   }
   throw new RangeError(`City content is not available: ${String(cityId)}`)

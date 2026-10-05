@@ -1,4 +1,4 @@
-import { publicArrivalVenue } from '../cities/runtime.ts';
+import { localUnitDescription, publicArrivalVenue } from '../cities/runtime.ts';
 /**
  * OWNER: world
  * Where a life lives in the wider sense: its city, its local government, the house everyone has
@@ -353,11 +353,11 @@ function view(state: LifeState, ctx: LifeContext): EstateView {
   const cheapest = cheapestUpgrade(e.city);
   return {
     city: e.city, cityName: city?.name ?? e.city, unit: city?.unit ?? 'district',
-    lga: unit ? { id: unit.id, name: unit.name, line: unit.line, land: unit.land } : null,
+    lga: unit ? { id: unit.id, name: unit.name, line: localUnitDescription(e.city, unit.id), land: unit.land } : null,
     lgaConfirmed: e.lgaConfirmed, lgaVia: e.lgaVia, placed: hasPlace(state),
     change: { cooldownDays: LGA_RULES.changeCooldownDays, at: cooldownEnds > now ? cooldownEnds : null,
       blocked: cooldownEnds > now ? `You can change again in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (once every ${LGA_RULES.changeCooldownDays} days).` : e.upgrade ? 'Your house is being upgraded: wait for the builders to finish.' : null },
-    lgas: lgasOf(e.city).map((item) => ({ id: item.id, name: item.name, line: item.line, land: item.land, levy: moveLevy(e.city, e.lga, item.id, e.tier) })),
+    lgas: lgasOf(e.city).map((item) => ({ id: item.id, name: item.name, line: localUnitDescription(e.city, item.id), land: item.land, levy: moveLevy(e.city, e.lga, item.id, e.tier) })),
     plot: e.plot ? { ...e.plot, key: addressKey(e.plot.lga, e.plot.estate, e.plot.plot), address: addressLabel(e.city, e.plot.lga, e.plot.estate, e.plot.plot) } : null,
     tier: { id: tier.id, label: tier.label, icon: tier.icon, grid: tier.grid, groundRent: tier.groundRent },
     style: { ...e.style }, packed: packStyle(e.style, e.tier),

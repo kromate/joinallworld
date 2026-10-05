@@ -78,7 +78,7 @@ test('the first download paints without the game shell, rules engine or city con
 })
 
 test('the shared shell does not statically import a city venue or regular catalogue', () => {
-  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars)\.ts$/.test(path)), [])
+  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars|descriptions)\.ts$/.test(path)), [])
 })
 
 test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell', () => {

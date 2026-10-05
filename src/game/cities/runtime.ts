@@ -22,3 +22,10 @@ export function publicArrivalVenue(city: string): VenueDefinition {
   if (!place) throw new TypeError('A city needs a public arrival venue');
   return place;
 }
+
+/** Display prose is only available after the caller has loaded the city's content. */
+export function localUnitDescription(city: string, id: string): string {
+  const line = contentFor(city).localUnitDescriptions[id]
+  if (typeof line !== 'string') throw new TypeError(`City ${city} has no description for ${id}`)
+  return line
+}

@@ -1,3 +1,4 @@
+import { LAGOS_LOCAL_UNIT_DESCRIPTIONS } from './descriptions.ts'
 import { EVENTS_CALENDAR } from '../../content/calendar.ts'
 import { BILLBOARDS, RADIO } from '../../content/civic.ts'
 import { STARTER_GOALS, WISHES } from '../../content/goals.ts'
@@ -36,6 +37,7 @@ const housing = Object.freeze(Object.values(HOUSES).map((definition) => {
 
 export const LAGOS_CONTENT: CityContent<'lagos'> = Object.freeze({
   cityId: 'lagos',
+  localUnitDescriptions: LAGOS_LOCAL_UNIT_DESCRIPTIONS,
   venues,
   regulars: Object.freeze(Object.values(NPCS).map((definition) => Object.freeze({
     cityId: 'lagos' as const,

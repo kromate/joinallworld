@@ -1,0 +1,23 @@
+/** Local-government descriptions, fetched with this city's content rather than its price rules. */
+export const LAGOS_LOCAL_UNIT_DESCRIPTIONS = Object.freeze({
+  'agege': 'Bread at dawn, a stadium at dusk and a market that never quite closes.',
+  'ajeromi-ifelodun': 'Ajegunle: crowded, loud and proud — where footballers and musicians come from.',
+  'alimosho': 'The biggest of them all: Ikotun, Egbeda, Ipaja and estates as far as you can see.',
+  'amuwo-odofin': 'Festac’s wide avenues, the trade fair and creeks at the back door.',
+  'apapa': 'The port: containers, cranes and the long line of trucks.',
+  'badagry': 'The old coast town in the far west: coconut beaches, lagoons and a long history.',
+  'epe': 'A fishing town on the far lagoon shore, famous for its fish market.',
+  'eti-osa': 'Ikoyi, Victoria Island and Lekki: glass towers, the beach and the dearest land in the city.',
+  'ibeju-lekki': 'The new frontier: the free zone, the refinery and land everyone says will boom.',
+  'ifako-ijaiye': 'The northern edge: Ogba, Iju and the road out of town.',
+  'ikeja': 'The state capital: the airport, Allen Avenue, Computer Village and the Secretariat.',
+  'ikorodu': 'Across the lagoon to the north-east: a town of its own, a ferry ride from the island.',
+  'kosofe': 'Ketu, Ojota and Gbagada: fruit markets, motor parks and the foot of the long bridge.',
+  'lagos-island': 'Isale Eko: the old city, the big markets, Marina and Broad Street.',
+  'lagos-mainland': 'Yaba and Ebute Metta: the university, the tech hubs and the railway.',
+  'mushin': 'Dense, busy and resourceful: spare parts, tailors and a hustle on every corner.',
+  'ojo': 'Alaba market, the university by the lagoon and the road to the border.',
+  'oshodi-isolo': 'Oshodi interchange: every bus in Lagos passes through sooner or later.',
+  'somolu': 'Bariga and Somolu: printing presses, the lagoon front and long-settled streets.',
+  'surulere': 'The National Stadium, Adeniran Ogunsanya and the home of Nollywood.',
+})

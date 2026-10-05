@@ -62,6 +62,13 @@ export const EVENTS: Record<string, EventSpec> = {
   tour_finished: { from: 'quick-start', props: { steps: 'number' }, when: 'The walkthrough was finished at its last card.', why: 'How many reach the end.' },
   shortcuts_opened: { from: 'quick-start', props: { from: 'string' }, when: 'The shortcuts sheet was opened (from: key | help | tour).', why: 'Whether people look for the shortcuts, and where from.' },
 
+  // ---- Signing up (src/app/features/account; only on a server where accounts are configured). Words only: never an address, a name or a token.
+  signup_shown: { from: 'growth', props: { where: 'string' }, when: 'A way to sign up was put in front of a guest (where: hud | creator | guestbar | tour). Once per page load and place.', why: 'Which entry point gets seen.' },
+  signup_opened: { from: 'growth', props: { where: 'string' }, when: 'The create-account sheet was opened (where: hud | creator | guestbar | settings).', why: 'Which entry point gets pressed.' },
+  signup_created: { from: 'growth', props: { method: 'string' }, when: 'An account was created (method: password | google).', why: 'Sign-ups by method.' },
+  login_opened: { from: 'growth', props: { where: 'string' }, when: 'The log-in sheet was opened (where: hud | creator | guestbar | settings).', why: 'How many returning players look for the way back.' },
+  login_done: { from: 'growth', props: { method: 'string', outcome: 'string' }, when: 'A player signed in to an existing account (method: password | google; outcome: linked | restored | parked | signed_in).', why: 'Returning players who get back to their character.' },
+
   // ---- After the first minute (derived by telemetry from the server’s states: src/telemetry/funnel.ts)
   activity_completed: { from: 'client', props: { activity_id: 'string', venue_id: 'string' }, when: 'Every time a timed activity ran to its end (not when cancelled).', why: 'What players actually do; engagement per venue.' },
   first_travel: { from: 'client', props: { mode: 'string', ms_since_session: 'number', backfill: 'boolean' }, when: 'Once per life: the first completed trip.', why: 'Funnel step 6.' },

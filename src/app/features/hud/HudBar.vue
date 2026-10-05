@@ -10,6 +10,8 @@ import { money } from '../../ui/format.ts'
 import { cashDelta, moodOf, savedPill } from './hudModel.ts'
 import InviteButton from '../growth/InviteButton.vue'
 import OnlinePill from './OnlinePill.vue'
+import AccountHud from './AccountHud.vue'
+import { useAccountLite } from '../account/useAccountLite.ts'
 
 const { game, shell, menu } = useApp()
 const view = game.view
@@ -17,6 +19,9 @@ const state = game.state
 const mood = computed(() => moodOf(view.value))
 const saved = computed(() => savedPill(view.value, game.saving.value))
 const cash = computed(() => money(state.value.cash))
+/** Signed in: the account chip carries the name, so the plain name button steps aside (its sheet is one tap further, from the account sheet). */
+const account = useAccountLite()
+const chip = computed(() => game.connected.value && account.state.loaded && account.state.enabled && account.state.account !== null)
 
 /** The last change of the balance, and a counter that restarts its animation. */
 const delta = ref<{ text: string; up: boolean; run: number } | null>(null)
@@ -47,9 +52,10 @@ function onSaved(): void {
 </script>
 
 <template>
-  <section class="hud-bar" data-tour="hud" aria-label="Player status">
+  <section class="hud-bar" :class="{ 'has-chip': chip }" data-tour="hud" aria-label="Player status">
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
     <OnlinePill />
+    <AccountHud />
     <span class="hud-clock">{{ view.clock }}</span>
     <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
     <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>
@@ -78,6 +84,7 @@ function onSaved(): void {
 .hud-mood.is-bad { color: var(--c-red-dark); }
 .hud-mood.is-neutral { color: var(--c-muted); }
 .hud-name { display: flex; align-items: center; gap: 5px; min-height: var(--tap); max-width: 170px; padding: 0 4px 0 12px; border-left: 1px solid var(--c-line) !important; border-radius: 0; background: none; color: var(--c-ink-2); font-weight: 600 !important; }
+@media (min-width: 721px) { .hud-bar.has-chip .hud-name { display: none; } }
 .hud-name span { overflow: hidden; text-overflow: ellipsis; }
 .hud-name :deep(.game-icon) { color: var(--c-green-dark); }
 .hud-saved { display: inline-flex; align-items: center; gap: 5px; padding: 0; background: none; color: var(--c-muted); font-size: var(--t-small) !important; font-weight: 700 !important; }

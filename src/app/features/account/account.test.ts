@@ -453,3 +453,48 @@ test('the Google button: its script is added only when asked for, from Google’
     assert.equal(await loadGoogleIdentity(doc), api, 'once it is there the script is not added again'); assert.equal(added.length, 2)
   } finally { Reflect.deleteProperty(globalThis, 'google') }
 })
+
+// ---- errors beside their field, and the funnel ----
+
+test('store: an error says which field it is about, so the sheet can put it next to that field', async () => {
+  const f = setup({ provider: { signInWithPassword: { status: 400, body: { error: { message: 'INVALID_LOGIN_CREDENTIALS' } } }, signUp: { status: 400, body: { error: { message: 'EMAIL_EXISTS' } } } } })
+  await f.store.load(); f.store.begin()
+  await f.store.withPassword('not-an-address', PASSWORD, false)
+  assert.deepEqual([f.store.state.errorField, f.store.state.error], ['email', 'Enter your e-mail address.'])
+  await f.store.withPassword('ada@example.com', 'short', true)
+  assert.deepEqual([f.store.state.errorField, f.store.state.error], ['password', 'Use a password of at least 6 characters.'])
+  await f.store.withPassword('ada@example.com', PASSWORD, false)
+  assert.deepEqual([f.store.state.errorField, f.store.state.error], ['password', 'That e-mail and password do not match an account.'])
+  await f.store.withPassword('ada@example.com', PASSWORD, true)
+  assert.equal(f.store.state.errorField, 'email', 'a refused sign-up is about the address')
+  await f.store.resetPassword('nope'); assert.equal(f.store.state.errorField, 'email')
+  f.store.begin(); assert.deepEqual([f.store.state.error, f.store.state.errorField], ['', ''])
+})
+
+test('store: after "Create account" the inbox screen names the address, and a different address starts over', async () => {
+  const f = setup({ provider: { signUp: { body: { idToken: UNVERIFIED, refreshToken: 'refresh-token-0000000000000000' } } } })
+  await f.store.load(); f.store.begin()
+  assert.equal(await f.store.withPassword(' Ada@Example.com ', PASSWORD, true), true)
+  assert.deepEqual([f.store.state.step, f.store.state.pendingEmail], ['verify', 'ada@example.com'])
+  f.store.begin(); assert.equal(f.store.state.pendingEmail, '', 'nothing of the address is left once the sheet starts again')
+  noSecrets(f.store.state)
+})
+
+test('store: the funnel is told in words only — never an address, a name or a token', async () => {
+  const told: { name: string; props: Record<string, unknown> }[] = []
+  const win = globalThis as unknown as { window?: unknown; CustomEvent?: unknown }
+  const before = { window: win.window, CustomEvent: win.CustomEvent }
+  win.CustomEvent = class { type: string; detail: unknown; constructor(type: string, init: { detail: unknown }) { this.type = type; this.detail = init.detail } }
+  win.window = { dispatchEvent(event: { type: string; detail: { name: string; props: Record<string, unknown> } }) { if (event.type === 'jaw:track') told.push(event.detail) } }
+  try {
+    const made = setup({ provider: { signUp: { body: { idToken: UNVERIFIED, refreshToken: 'refresh-token-0000000000000000' } } }, server: { 'POST /api/account/sign-in': SIGNED_IN('linked') } })
+    await made.store.load(); made.store.begin()
+    await made.store.withPassword('ada@example.com', PASSWORD, true)
+    assert.deepEqual(told, [{ name: 'signup_created', props: { method: 'password' } }], 'the account exists as soon as the provider made it')
+    const back = setup({ server: { 'POST /api/account/sign-in': SIGNED_IN('restored') } })
+    await back.store.load(); back.store.begin()
+    await back.store.withPassword('ada@example.com', PASSWORD, false)
+    assert.deepEqual(told.slice(1), [{ name: 'login_done', props: { method: 'password', outcome: 'restored' } }])
+    assert.ok(!JSON.stringify(told).match(/ada|example|eyJ|csrf|refresh/i))
+  } finally { win.window = before.window; win.CustomEvent = before.CustomEvent }
+})

@@ -20,6 +20,7 @@ import { useGrowth } from './features/growth/useGrowth.ts'
 import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
 import HudSidebar from './features/hud/HudSidebar.vue'
+import GuestBarSlot from './features/hud/GuestBarSlot.vue'
 import ConnectionNotice from './features/hud/ConnectionNotice.vue'
 import TourTrigger from './features/tour/TourTrigger.vue'
 import VenuePanel from './features/venue/VenuePanel.vue'
@@ -155,6 +156,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
         <section v-if="navPanel" class="life-sheet" :aria-label="navPanel.title"><PanelHost :key="navPanel.id" :panel="navPanel" :params="shell.modeParams.value" /></section>
         <VenuePanel v-else />
       </div>
+      <div data-slot="guest"><GuestBarSlot /></div>
       <BottomNav ref="nav" />
     </div>
   </div>

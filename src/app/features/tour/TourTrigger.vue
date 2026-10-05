@@ -9,7 +9,7 @@ import { defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch 
 import { useApp } from '../../state/app.ts'
 import { hintsOn } from '../sim/settingsModel.ts'
 import { markTourSeen, tourDue, tourSeen } from './tourSeen.ts'
-import { track } from './tourState.ts'
+import { track, tour } from './tourState.ts'
 
 const TourHost = defineAsyncComponent(() => import('./TourHost.vue'))
 const ShortcutsSheet = defineAsyncComponent(() => import('./ShortcutsSheet.vue'))
@@ -42,6 +42,8 @@ function consider(): void {
   clearTimeout(timer)
   if (running.value) return
   const now = verdict()
+  // Due and not started: everything that would compete with it waits. A HUD that never draws stops holding things back.
+  tour.pending = now !== 'never' && (now === 'start' || hudReady() || tries < 8)
   if (now === 'never') return
   // The HUD may still be drawing: look again a few times, once each, never in a loop.
   if (now === 'wait') { if (!hudReady() && tries++ < 8) timer = window.setTimeout(consider, 600); return }
@@ -49,6 +51,7 @@ function consider(): void {
 }
 function begin(again: boolean): void {
   if (running.value) return
+  tour.pending = false
   held.add(who())
   markTourSeen(store(), who())
   replay.value = again

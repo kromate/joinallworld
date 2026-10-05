@@ -25,6 +25,7 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { track as worldTrack, worldChanged } from '../world/worldModel.ts'
 import { useAccountEntry } from './accountEntry.ts'
+import { signupShown } from '../account/shownOnce.ts'
 import AvatarFigure from './AvatarFigure.vue'
 import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
@@ -148,7 +149,11 @@ const last = computed(() => nextStep(steps.value, cr.step) === null)
 const previous = computed(() => previousStep(steps.value, cr.step))
 /** "Play now" belongs to a device that has not played yet; afterwards the same place says "Not now". */
 const playable = computed(() => isNew && !cr.played)
+/** The first step on a server with accounts: three ranked ways to begin (play now, sign up, log in). Nothing here slows the guest path. */
+const choices = computed(() => playable.value && cr.step === 'who' && account.available && !account.signedIn)
 const canStay = computed(() => !isNew && last.value && o.value.guest && state.value.location !== 'home')
+
+watch(choices, (on) => { if (on) signupShown('creator') }, { immediate: true })
 
 function go(step: StepId): void {
   cr.error = ''
@@ -284,6 +289,7 @@ watch(problem, (now) => {
 })
 function notNow(): void { shell.close() }
 function openSignIn(): void { account.openSignIn() }
+function openSignUp(): void { account.openSignUp() }
 function openSave(): void { account.openSave() }
 
 onMounted(() => {
@@ -316,8 +322,7 @@ onBeforeUnmount(() => {
         <div class="cr-head-row">
           <button v-if="previous && !finished" type="button" class="cr-back" data-key="back" :aria-label="`Back to ${stepDef(previous).label}`" @click="back"><GameIcon name="back" :size="22" /></button>
           <p class="cr-stepline" aria-live="polite"><template v-if="finished">All set</template><template v-else>Step {{ progress.index }} of {{ progress.count }} · <b>{{ progress.label }}</b></template></p>
-          <button v-if="playable && account.available && cr.step === 'who'" type="button" class="cr-link" data-key="sign-in" @click="openSignIn">I already have a character</button>
-          <button v-else-if="!isNew && !finished" type="button" class="cr-close" data-key="close" aria-label="Not now, keep playing" title="Not now, keep playing" :disabled="Boolean(cr.pending)" @click="notNow"><GameIcon name="close" :size="20" /></button>
+          <button v-if="!isNew && !finished" type="button" class="cr-close" data-key="close" aria-label="Not now, keep playing" title="Not now, keep playing" :disabled="Boolean(cr.pending)" @click="notNow"><GameIcon name="close" :size="20" /></button>
         </div>
         <ol v-if="!finished" class="cr-progress" aria-label="Progress">
           <li v-for="(item, index) in steps" :key="item.id" :class="{ 'is-done': index + 1 < progress.index, 'is-current': item.id === cr.step }" :aria-current="item.id === cr.step ? 'step' : undefined">
@@ -361,14 +366,23 @@ onBeforeUnmount(() => {
             <button type="button" class="cr-btn" data-key="later" @click="notNow">Close</button>
             <button type="button" class="cr-btn is-primary" data-key="primary" @click="shell.open('profile')">Edit look</button>
           </template>
+          <div v-else-if="choices" class="cr-choices" data-cr-choices>
+            <div class="cr-actions">
+              <button type="button" class="cr-btn is-primary" data-qs="play" data-key="play-now" @click="playNow(false)">Play now</button>
+              <button type="button" class="cr-btn" data-key="next" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ nextLabel(steps, cr.step) }}</button>
+            </div>
+            <button type="button" class="cr-btn is-signup" data-key="sign-up" @click="openSignUp">Sign up free<span> — keep your character</span></button>
+            <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">I already have an account · Log in</button>
+          </div>
           <template v-else>
             <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" @click="playNow(false)">Play now</button>
-            <button v-else-if="last && account.available" type="button" class="cr-btn" data-key="save-character" @click="openSave">Save your character</button>
+            <button v-else-if="last && account.available && !account.signedIn" type="button" class="cr-btn" data-key="save-character" @click="openSave">Save your character</button>
             <button v-else-if="!playable && o.guest" type="button" class="cr-btn" data-key="later" :disabled="Boolean(cr.pending)" @click="notNow">Not now</button>
             <button type="button" class="cr-btn is-primary" data-key="primary" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ cr.pending || (last ? 'Start your life' : nextLabel(steps, cr.step)) }}</button>
           </template>
         </div>
-        <p v-if="playable && cr.step === 'who'" class="cr-fine">No password, no e-mail. Play now and finish your character later.</p>
+        <p v-if="choices" class="cr-fine">Play now needs no password or e-mail. You can sign up any time.</p>
+        <p v-else-if="playable && cr.step === 'who'" class="cr-fine">No password, no e-mail. Play now and finish your character later.</p>
         <p v-else-if="!playable && o.guest && !last" class="cr-fine">Not now keeps your game going. Your choices here are kept.</p>
       </footer>
     </section>

@@ -546,7 +546,7 @@ button.ui-row:hover{background:#f7f9f8}
   .is-tray-open .life-menu{order:0;padding:0;box-shadow:none;border-top:1px solid var(--c-line);border-radius:0;padding-top:6px}
   .life-tray .life-job,.life-tray .home-chip,.life-tray .health-chip{box-shadow:none;background:var(--c-fill)}
   .life-bottom{width:auto;left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:max(6px,env(safe-area-inset-bottom));grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px}
-  .life-bottom>[data-slot=coach],.life-bottom>[data-slot=progress]{grid-column:1/-1}
+  .life-bottom>[data-slot=coach],.life-bottom>[data-slot=progress],.life-bottom>[data-slot=guest]{grid-column:1/-1}
   .life-bottom>[data-slot=main]{grid-column:1}
   .life-bottom>nav[data-slot],.life-nav{grid-column:2;width:auto}
   .life-nav button{min-width:var(--tap);min-height:var(--tap);padding:4px 10px}

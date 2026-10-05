@@ -2,6 +2,7 @@
 import { useApp } from '../../state/app.ts'
 import { STORAGE_KEY } from '../../../client.ts'
 import { createAccount } from './accountStore.ts'
+import { useAccountLite } from './useAccountLite.ts'
 import type { Account } from './accountStore.ts'
 
 let shared: Account | null = null
@@ -15,6 +16,6 @@ export function useAccount(): Account {
     origin: () => globalThis.location.origin,
     forgetLife() { try { globalThis.localStorage?.removeItem(STORAGE_KEY) } catch { /* nothing was kept */ } },
     reload() { globalThis.location.reload() },
-  })
+  }, useAccountLite())
   return shared
 }

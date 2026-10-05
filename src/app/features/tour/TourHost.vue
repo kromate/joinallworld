@@ -11,6 +11,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { tour, track } from './tourState.ts'
+import { signupShown } from '../account/shownOnce.ts'
 import { STEPS, isDone, playlist, seek, showable, wordsOf } from './tourModel.ts'
 import type { StepContext, TourStep } from './tourModel.ts'
 import { placeCard, spotlightOf } from './placement.ts'
@@ -120,6 +121,7 @@ function enter(): void {
   done.value = isDone(now.wait, { activeAction: Boolean(game.state.value.activeAction), mode: game.mode.value, sheet: sheetKind.value })
   if (now.expand) { wasExpanded = shell.ui.expanded; shell.ui.expanded = true }
   track('tour_step', { index: index.value })
+  if (now.id === 'signup') signupShown('tour')
   announce.value = `Step ${index.value + 1} of ${list.value.length}: ${words.value.title}. ${words.value.text}`
   void nextTick(() => {
     target()?.scrollIntoView({ block: 'nearest', inline: 'nearest' })

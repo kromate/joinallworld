@@ -79,21 +79,30 @@ test('the first screen: full-screen creator with the welcome, the quick characte
   assert.match(html, /<button[^>]*data-key="primary"[^>]*>Next: Look<\/button>/)
   assert.ok(words.includes('No password, no e-mail.'))
   assert.ok(!html.includes('look-editor'), 'the editor is on the next step')
-  assert.ok(!html.includes('sign-in') && !html.includes('I already have a character'), 'no sign-in button while accounts are not wired')
+  assert.ok(!html.includes('sign-in') && !html.includes('I already have'), 'no sign-in button while accounts are not configured')
   for (const control of ['Turn left', 'Turn right', 'Turn around']) assert.ok(html.includes(`aria-label="${control}"`))
   for (const view of ['Body', 'Face', 'Outfit']) assert.ok(words.includes(view))
 })
 
-test('the first screen shows the sign-in entry only when the account feature has wired it', async () => {
+test('the first screen offers play now, sign up and log in only on a server with accounts, and nothing otherwise', async () => {
   await resetCreator()
-  const { registerAccountEntry } = await load<{ registerAccountEntry: (entry: { openSignIn(): void; openSave(): void }) => () => void }>('/src/app/features/start/accountEntry.ts')
-  const unregister = registerAccountEntry({ openSignIn() {}, openSave() {} })
+  const { useAccountLite } = await load<{ useAccountLite: () => { state: { loaded: boolean; enabled: boolean; account: unknown } } }>('/src/app/features/account/useAccountLite.ts')
+  const lite = useAccountLite()
+  Object.assign(lite.state, { loaded: true, enabled: true, account: null })
   try {
     const html = await render('QuickStartApp', { params: { reason: 'new' } })
-    assert.match(html, /<button[^>]*data-key="sign-in"[^>]*>I already have a character<\/button>/)
-  } finally { unregister() }
+    assert.match(html, /<div class="cr-choices" data-cr-choices>/)
+    assert.match(html, /<button[^>]*data-key="play-now"[^>]*>Play now<\/button>/)
+    assert.match(html, /<button[^>]*data-key="sign-up"[^>]*>Sign up free<span> — keep your character<\/span><\/button>/)
+    assert.match(html, /<button[^>]*data-key="sign-in"[^>]*>I already have an account · Log in<\/button>/)
+    assert.ok(text(html).includes('Play now needs no password or e-mail.'))
+    // Signed in already: the choices step aside.
+    Object.assign(lite.state, { account: { email: 'ada@example.com', provider: 'password', createdAt: 0, devices: 1 } })
+    assert.ok(!(await render('QuickStartApp', { params: { reason: 'new' } })).includes('data-cr-choices'))
+  } finally { Object.assign(lite.state, { loaded: false, enabled: false, account: null }) }
   await resetCreator()
-  assert.ok(!(await render('QuickStartApp', { params: { reason: 'new' } })).includes('I already have a character'))
+  const plain = await render('QuickStartApp', { params: { reason: 'new' } })
+  assert.ok(!plain.includes('data-cr-choices') && !plain.includes('Sign up') && !plain.includes('Log in') && !plain.includes('data-key="sign-in"'), 'no accounts: exactly the guest start')
 })
 
 test('the first screen: a refusal of the name comes back with its sentence, and the refused name is in the field as text', async () => {

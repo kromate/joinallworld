@@ -125,6 +125,13 @@
 .cr-btn.is-primary{border-color:var(--c-green-dark);background:var(--c-green-dark);color:#fff;font-size:16px;font-weight:700;box-shadow:0 2px 8px #1d6b4340}
 .cr-btn.is-primary:hover:enabled{background:#17583a}
 .cr-btn:disabled{opacity:.5;cursor:not-allowed}
+/* The first step on a server with accounts: Play now (filled) with the way on beside it, Sign up (green outline), then Log in as a link. */
+.cr-actions>.cr-choices{flex:1 1 auto;display:grid;gap:8px;justify-items:stretch}
+.cr-choices .cr-actions .cr-btn.is-primary{flex:1 1 auto}
+.cr-choices .cr-link{justify-self:center}
+.cr-btn.is-signup{width:100%;border:2px solid var(--c-green-dark);background:var(--c-green-soft);color:var(--c-green-dark);font-weight:700;white-space:normal;line-height:1.2;text-align:center}
+.cr-btn.is-signup:hover:enabled{background:#d8eddf}
+.cr-btn.is-signup span{font-weight:600}
 .cr-btn.is-primary:disabled{background:#6f8f7e;border-color:#6f8f7e;box-shadow:none;opacity:1}
 .cr-icon{flex:none;display:grid;place-items:center;width:48px;min-height:48px;border:1px solid #cdd3cf;border-radius:14px;background:#fff}
 .cr-icon:hover{background:var(--c-fill)}

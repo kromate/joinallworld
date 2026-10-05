@@ -184,3 +184,17 @@ test('every key the shortcuts sheet lists has a handler, and the gestures are on
   const caps = shortcutGroups(false).flatMap((group) => group.rows.flatMap((row) => row.caps))
   for (const cap of ['W', 'A', 'S', 'D', 'M', 'P', 'I', 'H', '?', 'Esc', 'Shift']) assert.ok(caps.includes(cap), cap)
 })
+
+test('the sign-up step lights the Sign up button only when it is on screen, and the tour stays at ten steps or fewer', () => {
+  assert.ok(STEPS.length <= 10)
+  const signup = STEPS.find((step) => step.id === 'signup')!
+  assert.equal(signup.title, 'Save your progress')
+  assert.deepEqual(signup.targets, ['signup'])
+  assert.match(wordsOf(signup, context([]), false).text, /Sign up free to keep your character/)
+  // Accounts not configured, or already signed in: the HUD has no Sign up button, so the step is not in the list.
+  assert.ok(!titles(playlist(STEPS, context(ALL))).includes('Save your progress'))
+  const withIt = playlist(STEPS, context([...ALL, 'signup']))
+  assert.ok(titles(withIt).includes('Save your progress'))
+  assert.ok(withIt.length <= 10)
+  assert.equal(titles(withIt)[titles(withIt).indexOf('Time, mood and cash') + 1], 'Save your progress', 'it follows the bar it points at')
+})

@@ -65,7 +65,7 @@ test('on a server without accounts nothing about them is shown, anywhere', async
   assert.equal(sheet, 'Accounts are not available here Your progress is saved to this device. Close')
   const html = await render('AccountSignIn')
   assert.ok(!/<input|<form|data-account-google/.test(html), 'no form, no field, no Google button')
-  const { useAccountEntry } = await load<{ useAccountEntry: () => { available: boolean; openSignIn(): void; openSave(): void } }>('/src/app/features/start/accountEntry.ts')
+  const { useAccountEntry } = await load<{ useAccountEntry: () => { available: boolean; signedIn: boolean; openSignIn(): void; openSignUp(): void; openSave(): void } }>('/src/app/features/start/accountEntry.ts')
   assert.equal(useAccountEntry().available, false)
   // And the Settings tab as a whole still explains the device session.
   const settings = text(await renderToString(createSSRApp({ render: () => h(awaitedSettings) })))
@@ -74,14 +74,17 @@ test('on a server without accounts nothing about them is shown, anywhere', async
 
 test('the start screens’ entry: available once the server says so, and it opens the two screens', async () => {
   await given(CONFIGURED)
-  const { useAccountEntry } = await load<{ useAccountEntry: () => { available: boolean; openSignIn(): void; openSave(): void } }>('/src/app/features/start/accountEntry.ts')
+  const { useAccountEntry } = await load<{ useAccountEntry: () => { available: boolean; signedIn: boolean; openSignIn(): void; openSignUp(): void; openSave(): void } }>('/src/app/features/start/accountEntry.ts')
   const entry = useAccountEntry()
   assert.equal(entry.available, true)
-  assert.deepEqual(Object.keys(entry).sort(), ['available', 'openSave', 'openSignIn'])
+  assert.deepEqual(Object.keys(entry).sort(), ['available', 'openSave', 'openSignIn', 'openSignUp', 'signedIn'])
+  assert.equal(entry.signedIn, false)
   entry.openSave()
-  assert.deepEqual(app.shell.sheet.value, { kind: 'panel', id: 'account-sign-in', params: { intent: 'save' }, from: null })
+  assert.deepEqual(app.shell.sheet.value, { kind: 'panel', id: 'account-sign-in', params: { intent: 'save', mode: 'create', where: 'ready' }, from: null })
+  entry.openSignUp()
+  assert.deepEqual(app.shell.sheet.value, { kind: 'panel', id: 'account-sign-in', params: { intent: 'save', mode: 'create', where: 'creator' }, from: null })
   entry.openSignIn()
-  assert.deepEqual(app.shell.sheet.value, { kind: 'panel', id: 'account-sign-in', params: { intent: 'sign-in' }, from: null })
+  assert.deepEqual(app.shell.sheet.value, { kind: 'panel', id: 'account-sign-in', params: { intent: 'sign-in', mode: 'sign-in', where: 'creator' }, from: null })
   await given({ enabled: false })
   assert.equal(entry.available, false, 'the same object follows the server’s answer')
 })
@@ -90,19 +93,23 @@ test('save your character: the Google button’s place, an e-mail and password f
   await given(CONFIGURED)
   const html = await render('AccountSignIn', { params: { intent: 'save' } })
   const words = text(html)
-  assert.ok(words.startsWith(`Save your character Sign in or create an account, and ${app.game.state.value.name} is kept with it: lose this device and you can still play on.`), words.slice(0, 160))
+  assert.ok(words.startsWith('Log in Log in to play your saved character on this device.'), words.slice(0, 160))
   assert.match(html, /<div[^>]*class="account-google"[^>]*data-account-google[^>]*><\/div>/, 'an empty host for Google to draw its own button in')
   assert.ok(!/<button[^>]*>[^<]*Google/i.test(html), 'the page draws no Google-styled button of its own')
   const email = input(html, 'email'), password = input(html, 'password')
+  // The eye: a real button, named for what it does, not pressed, and the field keeps the autocomplete a password manager reads.
+  assert.match(html, /<button[^>]*type="button"[^>]*data-account-eye[^>]*aria-pressed="false"[^>]*aria-label="Show password"/)
   for (const attribute of ['type="email"', 'autocomplete="username"', 'inputmode="email"', 'autocapitalize="none"', 'spellcheck="false"', 'maxlength="254"', 'required']) assert.ok(email.includes(attribute), `e-mail field: ${attribute}`)
   for (const attribute of ['type="password"', 'autocomplete="current-password"', 'maxlength="128"', 'required']) assert.ok(password.includes(attribute), `password field: ${attribute}`)
   assert.ok(!/value="[^"]/.test(password), 'the password field is never pre-filled')
-  assert.match(html, /<button[^>]*data-account-submit[^>]*>Sign in<\/button>/)
+  assert.match(html, /<button[^>]*data-account-submit[^>]*>Log in<\/button>/)
   for (const control of ['Create an account', 'Forgot your password?', 'Not now']) assert.ok(words.includes(control), control)
   assert.ok(words.includes('An account is optional.'))
   // Sign-in for someone who has no character here: other words, same form.
   await given({ ...CONFIGURED, guest: false })
-  assert.ok(text(await render('AccountSignIn', { params: { intent: 'save' } })).startsWith('Sign in Sign in to play your saved character on this device.'))
+  assert.ok(text(await render('AccountSignIn', { params: { intent: 'save' } })).startsWith('Log in Log in to play your saved character on this device.'))
+  // Creating the account of a guest says what is kept.
+  assert.ok(text(await (async () => { await given(CONFIGURED); return render('AccountSignIn', { params: { intent: 'save', mode: 'create' } }) })()).startsWith(`Create your free account ${app.game.state.value.name} is kept with your account, so you can play on from any device.`))
   // Without a Google client id only the e-mail form is offered.
   await given({ ...CONFIGURED, provider: { ...CONFIGURED.provider, googleClientId: '' } })
   assert.ok(!(await render('AccountSignIn')).includes('data-account-google'))
@@ -113,7 +120,7 @@ test('create account and reset: a new password is announced as one, and a reset 
   const create = await render('AccountSignIn', { params: { intent: 'save', mode: 'create' } })
   const password = input(create, 'password')
   for (const attribute of ['type="password"', 'autocomplete="new-password"', 'minlength="6"', 'maxlength="128"']) assert.ok(password.includes(attribute), `new password field: ${attribute}`)
-  assert.ok(text(create).includes('Create your account') && text(create).includes('At least 6 characters. We will e-mail you a link to confirm the address before anything is saved to it.'))
+  assert.ok(text(create).includes('Create your free account') && text(create).includes('At least 6 characters.') && text(create).includes('We will e-mail you a link to confirm the address before anything is saved to it.'))
   assert.match(create, /<button[^>]*data-account-submit[^>]*>Create account<\/button>/)
   assert.ok(text(create).includes('I already have an account'))
   const reset = await render('AccountSignIn', { params: { mode: 'reset' } })
@@ -142,9 +149,13 @@ test('the confirm-your-address notice, the merge choice and the final screen', a
   await given(CONFIGURED)
   account.state.step = 'verify'; account.state.notice = 'We sent a link to your e-mail address. Open it to confirm the address, then come back here.'
   const verify = await render('AccountSignIn', { params: { intent: 'save' } })
-  assert.ok(text(verify).startsWith('Confirm your e-mail address We sent a link to the address you gave.'))
-  for (const marker of ['data-account-confirmed', 'data-account-resend']) assert.ok(verify.includes(marker), marker)
-  for (const label of ['I have confirmed it', 'Send the link again', 'Use a different address', 'Not now']) assert.ok(text(verify).includes(label), label)
+  assert.ok(text(verify).startsWith('Check your inbox We sent a confirmation link to the address you gave.'))
+  account.state.pendingEmail = 'ada@example.com'
+  const named = text(await render('AccountSignIn', { params: { intent: 'save' } }))
+  assert.ok(named.includes('Check your inbox We sent a confirmation link to ada@example.com . Open it, then come back here.'), named.slice(0, 200))
+  account.state.pendingEmail = ''
+  for (const marker of ['data-account-inbox', 'data-account-confirmed', 'data-account-resend', 'data-account-other']) assert.ok(verify.includes(marker), marker)
+  for (const label of ['I’ve confirmed — continue', 'Resend e-mail', 'Use a different address', 'Not now']) assert.ok(text(verify).includes(label), label)
   assert.match(verify, /role="status"/)
   assert.ok(!/<input/.test(verify), 'no field on the notice: nothing typed is kept on screen')
 
@@ -176,7 +187,7 @@ test('Settings, as a guest: what an account is for and the two ways in', async (
   const html = await render('AccountSettings'), words = text(html)
   assert.ok(words.startsWith('Account An account is optional.'))
   assert.match(html, /<button[^>]*data-account-save[^>]*>/); assert.match(html, /<button[^>]*data-account-open[^>]*>/)
-  assert.ok(words.includes('Save your character') && words.includes('Sign in Play a character you saved before'))
+  assert.ok(words.includes('Save your character') && words.includes('Log in Play a character you saved before'))
   assert.ok(!words.includes('Sign out') && !words.includes('Delete account'))
   // A browser with no character at all is only offered sign-in.
   await given({ ...CONFIGURED, guest: false })

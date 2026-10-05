@@ -16,9 +16,10 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import PasswordField from './PasswordField.vue'
 import { PASSWORD_MAX } from './accountModel.ts'
 import type { Reauth } from './accountStore.ts'
-import { ACCOUNT_PANEL } from './register.ts'
+import { openLogin, openSignup } from './accountOpen.ts'
 import { useAccount } from './useAccount.ts'
 
 /** What is waiting for the person to prove who they are. */
@@ -29,6 +30,7 @@ const state = account.state
 const pending = ref<Pending | null>(null)
 const erase = ref(false)
 const password = ref('')
+const field = ref<InstanceType<typeof PasswordField> | null>(null)
 const googleHost = ref<HTMLElement | null>(null)
 const googleFailed = ref(false)
 let removeGoogle: (() => void) | null = null
@@ -85,6 +87,7 @@ async function confirm(): Promise<void> {
   const typed = password.value
   // The field is emptied before anything is sent.
   password.value = ''
+  field.value?.hide()
   await run({ password: typed })
 }
 onMounted(() => { void account.load() })
@@ -108,8 +111,8 @@ onBeforeUnmount(() => { removeGoogle?.() })
     <template v-if="!state.account">
       <p class="settings-note">An account is optional. It keeps your character somewhere you can reach from another device; without one, your character lives on this device only.</p>
       <div class="ui-rows">
-        <button v-if="state.guest" type="button" class="ui-row" data-account-save @click="shell.open(ACCOUNT_PANEL, { intent: 'save' })"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Save your character</b><small>Sign in or create an account to keep it</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
-        <button type="button" class="ui-row" data-account-open @click="shell.open(ACCOUNT_PANEL, { intent: 'sign-in' })"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Sign in</b><small>Play a character you saved before</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
+        <button v-if="state.guest" type="button" class="ui-row" data-account-save @click="openSignup(shell, 'settings')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Save your character</b><small>Sign in or create an account to keep it</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
+        <button type="button" class="ui-row" data-account-open @click="openLogin(shell, 'settings')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Log in</b><small>Play a character you saved before</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
       </div>
     </template>
 
@@ -153,7 +156,7 @@ onBeforeUnmount(() => { removeGoogle?.() })
           <p v-if="googleFailed" class="ui-error" role="alert">Google sign-in could not be loaded. Try again later.</p>
         </template>
         <template v-else>
-          <label class="account-field">Confirm it is you: your password <input v-model="password" type="password" name="password" autocomplete="current-password" :maxlength="PASSWORD_MAX" required></label>
+          <PasswordField id="account-confirm-password" ref="field" v-model="password" label="Confirm it is you: your password" autocomplete="current-password" :maxlength="PASSWORD_MAX" />
           <button class="ui-button is-block" :class="pending.kind === 'delete' ? 'is-danger' : 'is-primary'" data-account-confirm :disabled="state.busy">{{ state.busy ? 'One moment…' : confirmLabel }}</button>
         </template>
         <button type="button" class="ui-button is-block" :disabled="state.busy" @click="cancel">Cancel</button>

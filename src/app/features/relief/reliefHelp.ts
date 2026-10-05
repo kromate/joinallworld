@@ -33,7 +33,7 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
   const tired = !e.lga && state.needs.energy < HELP_NEEDS.energy && state.cash < LODGING.fee;
   if (!farHome && !hungry && !tired) return null;
   const key = `${[farHome ? 'home' : '', hungry ? 'hunger' : '', tired ? 'rest' : ''].filter(Boolean).join('+')}@${e.city}`;
-  const line = farHome ? `You have ${naira(state.cash)} in ${name} and the cheapest way home to ${homeName} is ${naira(cheapest ?? 0)}. Nothing here is a dead end.`
+  const line = farHome ? `You have ${naira(state.cash)} in ${name} and the cheapest way home to ${homeName} is ${naira(cheapest ?? 0)}. There is a way through.`
     : hungry ? `You are hungry and have ${naira(state.cash)}. There is a way through.` : `You are worn out and have ${naira(state.cash)}. There is a way through.`;
   const defs = reliefActivities(e.city), arrival = defs[0]?.where.venue ?? null;
   const at = (id: string, kind: 'odd-job' | 'bench' | 'tap', detail: string): ReliefAction | null => {
@@ -50,7 +50,7 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
   if (hungry && tap) actions.push(tap);
   if ((tired || !hungry) && bench) actions.push(bench);
   const offer = state.activeAction ? null : creditLink(state, ctx);
-  if (offer) actions.push({ ...NOTHING, id: 'credit-ride', label: `Ride home on credit to ${cityRules(offer.to)?.name ?? offer.to}`, detail: `${naira(offer.fare)} is advanced and you owe it: it comes out of your earnings, half of each. No skipping the trip.`, to: offer.to, mode: offer.mode });
+  if (offer) actions.push({ ...NOTHING, id: 'credit-ride', label: `Ride home on credit to ${cityRules(offer.to)?.name ?? offer.to}`, detail: `${naira(offer.fare)} is advanced and you owe it: half of each earning repays it. No skipping the trip.`, to: offer.to, mode: offer.mode });
   if (state.business.opened > 0) actions.push({ ...NOTHING, id: 'cash-box', label: 'Collect your cash box', detail: 'Whatever your stall has taken is yours.' });
   actions.push({ ...NOTHING, id: 'friend', label: 'Ask a friend', detail: 'A message is ready for you to send.' });
   return { key, title: 'What you can do now', line, actions };
@@ -61,6 +61,6 @@ export function helpStep(state: LifeState, ctx: LifeContext): { icon: string; ti
   const help = helpOf(state, ctx), first = help?.actions.find((action) => !action.blocked && (action.activity || action.id === 'credit-ride'));
   if (!help || !first) return null;
   return first.activity && first.venue
-    ? { icon: first.id === 'odd-job' ? '🧹' : first.id === 'bench' ? '🪑' : '🥤', title: first.label, hint: `${first.label}. ${first.detail}`, go: [first.venue, first.spot ?? ''] }
+    ? { icon: first.id === 'odd-job' ? '🧹' : first.id === 'bench' ? '🪑' : '🥤', title: first.label, hint: first.detail, go: [first.venue, first.spot ?? ''] }
     : { icon: '🚌', title: first.label, hint: 'Open Home: the ride home on credit is the first button after the room.', open: 'visiting' };
 }

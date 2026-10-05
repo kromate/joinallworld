@@ -144,7 +144,7 @@ test('the debt is repaid from earnings, half of each, as ledger lines, and the s
   assert.deepEqual([l.state.cash, l.state.travel.rideDebt], [175, 11825])
   const repaid = l.state.ledger.find((line) => line.reason === 'Ride home repaid')
   assert.equal(repaid?.amount, -175)
-  assert.ok(statementOf(l.state).days.at(-1)!.groups.some((group) => group.group === 'Ride home'), 'a group of its own in the day summary')
+  assert.ok(statementOf(l.state).days.at(-1)!.groups.some((group) => group.group === 'Ride home repaid'), 'a group of its own in the day summary')
   // A gift received: half of it too.
   const gift = l.run('social.server', { op: 'transfer-in', from: FRIEND, amount: 1000, name: 'Ada' }, { internal: true })
   assert.equal(gift.ok, true, String(gift.code))
@@ -190,11 +190,13 @@ test('with a debt standing, the main home cannot be moved and a second home cann
   assert.equal(l.run('estate.relocate', { to: 'lagos', mode: 'road', credit: true }).code, 'departed')
   l.arrival()
   l.state.cash = 1_000_000
+  const owed = l.state.travel.rideDebt, cashBefore = l.state.cash
   // Pay to go to Abuja is refused (a debt): so put the life there the way a ping does, free.
   const joined = l.run('social.server', { op: 'join', city: 'abuja', venue: publicArrivalVenue('abuja').id, name: 'Ada' }, { internal: true })
   assert.equal(joined.ok, true, String(joined.code))
   assert.equal(l.state.estate.city, 'abuja')
-  assert.equal(l.state.travel.rideDebt, 12000 === l.state.travel.rideDebt ? 12000 : l.state.travel.rideDebt, 'the free join does not touch the debt')
+  assert.equal(l.state.travel.rideDebt, owed, 'the free join does not touch the debt')
+  assert.equal(l.state.cash, cashBefore, 'and costs nothing')
   const unit = cityRules('abuja')!.units[0]!.id
   assert.equal(l.run('estate.set-lga', { lga: unit, home: 'buy' }).code, 'ride_debt')
   assert.equal(l.run('estate.set-lga', { lga: unit, home: 'main' }).code, 'ride_debt')

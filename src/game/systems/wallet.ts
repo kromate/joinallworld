@@ -81,7 +81,7 @@ const safeInteger = (value: unknown): value is number => Number.isSafeInteger(va
 const validAmount = (amount: unknown): amount is number => Number.isSafeInteger(amount) && (amount as number) >= 0
 
 /** Lines that say the same kind of thing share a group: "Rent: Yaba (due …)" → "Rent", "Danfo to X" → "Danfo". */
-const PREFIXES = ['Refund', 'Bought', 'Sold', 'Groceries', 'Boutique', 'Transfer from', 'Transfer to', 'Fixed deposit', 'Loan repayment', 'Rent arrears', 'Goal', 'Start cash', 'Fuel', 'Ride home']
+const PREFIXES = ['Refund', 'Bought', 'Sold', 'Groceries', 'Boutique', 'Transfer from', 'Transfer to', 'Fixed deposit', 'Loan repayment', 'Rent arrears', 'Goal', 'Start cash', 'Fuel', 'Ride home on credit', 'Ride home repaid']
 export function reasonGroup(reason: unknown): string {
   const text = String(reason ?? '')
   const known = PREFIXES.find((prefix) => text.startsWith(prefix))

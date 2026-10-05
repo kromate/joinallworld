@@ -18,6 +18,7 @@ import type { LifeState } from './life.ts'
 import type { GrowthView } from './view.ts'
 import type { CityId, HostErrorCode, JsonBodyErrorCode, Ok, PlayerRef, Refusal, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { Done, Repeat } from './social.ts'
+import type { PrefKey } from '../game/comeback-prefs.ts'
 
 // ---- shares and the events calendar ---------------------------------------------------------------
 
@@ -119,7 +120,22 @@ export interface OutreachMine {
   push: { devices: number }
   /** Whether e-mail really leaves the server (otherwise it is composed and kept as a preview: dry-run). */
   live: { email: boolean }
+  /** What the player chose about e-mails on their character, and the friends they have nudged. */
+  comeback: ComebackView
 }
+
+/** The caller's choices about comeback mail (docs/COMEBACK-MAIL.md). Without a confirmed address everything is off. */
+export interface ComebackView {
+  /** "E-mail me about my character". */
+  on: boolean
+  /** Server ms until which everything is paused, or 0. */
+  pausedUntil: number
+  types: Record<PrefKey, boolean>
+  /** Friends the caller nudged (public id → server ms), kept 7 days: the card shows when it can be done again. */
+  nudged: Record<string, number>
+}
+export interface ComebackBody { cityId: CityId; on?: boolean; types?: Partial<Record<PrefKey, boolean>>; pause?: boolean }
+export interface NudgeBody { cityId: CityId; to: string }
 
 /** The weekly digest exactly as it would be sent (src/game/digest.ts composeDigest). */
 export interface Digest {
@@ -283,6 +299,10 @@ export interface GrowthHttpRoutes {
   'POST /api/growth/email': { body: EmailBody; response: Ok<EmailResult>; errors: HostErrorCode | JsonBodyErrorCode | SessionErrorCode | StorageErrorCode | 'consent_required' }
   /** `removed` is false when no address was stored. */
   'POST /api/growth/email/remove': { body: { cityId: CityId }; response: Ok<Done<'removed', { removed: boolean }> | Refusal<'not_ready'>>; errors: GrowthPost }
+  /** Switch comeback mail on or off, per type, or pause it 30 days (`pause: true`; `false` lifts it). Needs a confirmed address to switch anything on. */
+  'POST /api/growth/comeback': { body: ComebackBody; response: Ok<Done<'saved', { comeback: ComebackView }> | Refusal<'not_ready' | 'no_address'>>; errors: GrowthPost | 'invalid_comeback' }
+  /** Ask an away friend (2 days or more) to come back: friends only, once per friend per 7 days, 5 an hour. The answer never says whether the friend has an address. */
+  'POST /api/growth/nudge': { body: NudgeBody; response: Ok<Done<'nudged', { note: string; nudged: number }> | Refusal<'not_ready' | 'not_friends' | 'not_away' | 'cooldown' | 'muted'>>; errors: GrowthPost | 'invalid_player' | 'rate_limited' }
   /** The server's VAPID public key (base64url). No session needed; never cached. */
   'GET /api/growth/push/key': { response: Ok<{ ok: true; publicKey: string }>; errors: HostErrorCode }
   'POST /api/growth/push/subscribe': {
@@ -368,6 +388,7 @@ export interface OutreachRules {
 }
 
 /** GET /api/mod/growth/outreach. */
+export interface ComebackCounters { queued: number; sent: number; failed: number; suppressed: number; unsubscribed: number }
 export interface OutreachOperatorResponse {
   email: {
     provider: 'zeptomail'
@@ -383,6 +404,8 @@ export interface OutreachOperatorResponse {
     dailyCap: number
     lastError: OutreachLogLine | null
   }
+  /** Comeback mail per type over the last 14 days. No address, name or id. */
+  comeback: { days: number; types: Record<string, ComebackCounters>; today: Record<string, ComebackCounters>; waiting: number; /** Rounds that opened the store since the server started: the cost of the schedule. */ passes: number }
   push: { off: boolean; subscribers: number; devices: number; sentToday: number; dailyCap: number; pausedUntil: number | null; lastError: OutreachLogLine | null }
   whatsapp: { channel: string | null }
   rules: OutreachRules
@@ -399,6 +422,8 @@ export interface OutreachRunResponse {
   jobs?: number
   reason?: 'quiet_hours' | 'stopping'
   failed?: true
+  /** What the comeback round did (it keeps its own hours, caps and quiet time). */
+  comeback?: { ran: boolean; jobs?: number; reason?: 'not_configured' | 'idle' | 'stopping'; failed?: true }
 }
 
 type GrowthModCommon = 'not_found' | 'moderator_token_required' | 'rate_limited' | 'internal_error'
@@ -563,7 +588,7 @@ export type TableErrorCode =
 /** A hello that paid nothing (no `state`). */
 export const HELLO_RESPONSE_KEYS = ['away', 'channel', 'consent', 'contact', 'digest', 'events', 'ok', 'referral', 'serverTime', 'sharesLeft'] as const satisfies readonly (keyof Ok<Extract<HelloResult, { ok: true }>>)[]
 export const REFERRAL_VIEW_KEYS = ['by', 'counted', 'invited', 'nextTitle', 'owed', 'paid', 'rules', 'title', 'waiting'] as const satisfies readonly (keyof ReferralView)[]
-export const OUTREACH_MINE_KEYS = ['channel', 'email', 'live', 'push'] as const satisfies readonly (keyof OutreachMine)[]
+export const OUTREACH_MINE_KEYS = ['channel', 'comeback', 'email', 'live', 'push'] as const satisfies readonly (keyof OutreachMine)[]
 export const DIGEST_KEYS = ['caps', 'delivery', 'footer', 'greeting', 'lines', 'more', 'subject', 'tasks'] as const satisfies readonly (keyof (Digest & { delivery: 'dry-run' }))[]
 export const CALENDAR_OCCURRENCE_KEYS = ['blurb', 'end', 'icon', 'id', 'key', 'live', 'spray', 'start', 'table', 'title', 'venue', 'venueLabel'] as const satisfies readonly (keyof CalendarOccurrence)[]
 export const SHARE_FACTS_KEYS = [
@@ -580,7 +605,7 @@ export const GROWTH_METRICS_RESPONSE_KEYS = [
   'analytics', 'cohorts', 'days', 'funnel', 'generatedAt', 'retention', 'serverTime', 'source', 'timezone', 'totals', 'tracked',
 ] as const satisfies readonly (keyof Ok<GrowthMetricsResponse>)[]
 export const OUTREACH_OPERATOR_RESPONSE_KEYS = [
-  'email', 'log', 'previews', 'push', 'quietNow', 'rules', 'serverTime', 'whatsapp',
+  'comeback', 'email', 'log', 'previews', 'push', 'quietNow', 'rules', 'serverTime', 'whatsapp',
 ] as const satisfies readonly (keyof Ok<OutreachOperatorResponse>)[]
 export const SHARE_KINDS = ['invite', 'house', 'missions', 'week', 'table', 'event'] as const satisfies readonly ShareKind[]
 export const CLIENT_SIGNALS = ['webgl-missing', 'opera-mini', 'save-data', 'slow-start', 'installed', 'share-sheet', 'share-fallback'] as const satisfies readonly ClientSignal[]

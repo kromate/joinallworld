@@ -62,6 +62,8 @@ async function harness(t: TestContext, { env = {}, respond }: { env?: Record<str
 }
 type Harness = Awaited<ReturnType<typeof harness>>;
 const LIVE: Record<string, string> = { ZEPTOMAIL_AUTH: 'Zoho-enczapikey TESTKEY-not-a-real-key', EMAIL_FROM_ADDRESS: 'hello@mail.play.example', EMAIL_FROM_NAME: 'Allworld', EMAIL_CONTACT_LINE: 'Allworld, 1 Example Street, Lagos' };
+/** Only the "when I've been away" mails stay on: the calendar always has something coming, and these tests are about the schedule, not the choice of mail. */
+const awayOnly = (h: Harness, who: Who) => h.post('/api/growth/comeback', { cityId: 'lagos', types: { needs: false, friends: false, milestones: false, events: false } }, who);
 const optIn = async (h: Harness, who: Who, email = 'ada@example.com') => {
   const asked = await h.post<Asked>('/api/growth/email', { email, consent: true }, who);
   const link = h.linkIn(must(h.mails().at(-1), 'a mail'), '/e/confirm');
@@ -226,46 +228,39 @@ test('e-mail: one-click unsubscribe deletes the address at once, with no login, 
   assert.deepEqual([totals['email.unsubscribed'], totals['email.removed'], totals['email.confirmed']], [1, 1, 2]);
 });
 
-test('e-mail schedule: exactly once per period, daily and weekly caps, quiet hours, back-off, the kill switch and the global cap', async (t) => {
+test('e-mail schedule: exactly once, quiet hours, the kill switch and the global cap', async (t) => {
   const h = await harness(t, { env: { ...LIVE, EMAIL_DAILY_CAP: '2' } });
   const { f, hello, player, mails, run, mod } = h;
   const ada = await player('Ada');
-  await optIn(h, ada);
-  const digests = () => mails().filter((mail) => mail.subject.startsWith('While you were away'));
+  await optIn(h, ada); await awayOnly(h, ada);
+  const away = () => mails().filter((mail) => mail.subject === 'Your world is still here');
   // Not away long enough; then away, but it is night in Lagos.
-  f.advance(20 * HOUR); await run();
-  assert.equal(digests().length, 0);
-  f.advance(5 * HOUR); // 02:01 Lagos the next night
-  assert.deepEqual([(await run()).reason, digests().length], ['quiet_hours', 0]);
-  f.advance(10 * HOUR); // noon
-  assert.equal((await run()).jobs, 1);
-  assert.equal(digests().length, 1);
-  const mail = must(digests()[0], 'digest');
-  assert.ok(must(mail.content[0], 'part').value.includes('Nothing was taken from you') && must(mail.content[0], 'part').value.includes('This week you could:') && mail.headers['List-Unsubscribe-Post'] === 'List-Unsubscribe=One-Click');
+  f.advance(2 * DAY); await run();
+  assert.equal(away().length, 0, 'under three days');
+  f.advance(DAY - 4 * HOUR); // 21:01 Lagos on day three
+  assert.equal((await run()).comeback?.jobs, 0);
+  assert.equal(away().length, 0, 'never in quiet hours');
+  f.advance(15 * HOUR); // noon
+  assert.equal((await run()).comeback?.jobs, 1);
+  assert.equal(away().length, 1);
+  const mail = must(away()[0], 'mail');
+  assert.ok(must(mail.content[0], 'part').value.includes('Your world is still here') && mail.headers['List-Unsubscribe-Post'] === 'List-Unsubscribe=One-Click');
   assert.equal(/miss you|you will lose|last chance|hurry/i.test(must(mail.content[0], 'part').value), false);
-  // Run again, and again an hour later: the period is claimed, so nothing more goes out today.
+  // Run again, and again an hour later: the mail is claimed, so nothing more goes out.
   for (let i = 0; i < 3; i++) { await run(); f.advance(HOUR); }
-  assert.equal(digests().length, 1);
-  // Day 2: one unanswered message, a day has passed. Days 3 and 4: back-off of three days.
-  f.advance(DAY - 3 * HOUR); await run();
-  assert.equal(digests().length, 2);
-  f.advance(DAY); await run(); f.advance(DAY); await run();
-  assert.equal(digests().length, 2, 'two unanswered messages: wait three days');
-  f.advance(DAY); await run();
-  assert.equal(digests().length, 3);
-  // The player comes back: the count of unanswered messages starts again, but three a week still holds.
-  await hello(ada);
-  f.advance(DAY); assert.equal((await run()).jobs, 0, 'the week’s allowance is used up');
-  // The operator's switch stops e-mail; switching it back lets the next due message go.
-  f.advance(6 * DAY);
+  assert.equal(away().length, 1);
+  // The operator's switch stops e-mail; switching it back lets the next due mail go (the week's step, four days on).
+  f.advance(4 * DAY);
   assert.deepEqual((await mod('/api/mod/growth/outreach/switch', { channel: 'email', off: true })).off, true);
-  await run(); assert.equal(digests().length, 3);
+  await run(); assert.equal(mails().filter((item) => item.subject.startsWith('Ada, your world')).length, 0);
   await mod('/api/mod/growth/outreach/switch', { channel: 'email', off: false });
-  await run(); assert.equal(digests().length, 4);
-  // The global cap: three more confirmed players are due the same day, and the cap of two a day (one already used) stops the rest.
+  await run(); assert.equal(mails().filter((item) => item.subject.startsWith('Ada, your world')).length, 1);
+  // The player comes back: the run starts again.
+  await hello(ada);
+  // The global cap: three more confirmed players are due the same day, and the cap of two a day (none used yet today) stops the rest.
   const others = [];
-  for (const name of ['Bola', 'Chidi', 'Dayo']) { const who = await player(name); await optIn(h, who, `${name.toLowerCase()}@example.com`); others.push(who); }
-  f.advance(DAY + HOUR); await run();
+  for (const name of ['Bola', 'Chidi', 'Dayo']) { const who = await player(name); await optIn(h, who, `${name.toLowerCase()}@example.com`); await awayOnly(h, who); others.push(who); }
+  f.advance(3 * DAY + HOUR); await run();
   const view = await mod<OutreachOperatorResponse>('/api/mod/growth/outreach');
   assert.deepEqual([view.email.sentToday, view.email.dailyCap], [2, 2]);
   assert.deepEqual([view.email.configured, view.email.live, view.email.confirmed, view.email.from], [true, true, 4, LIVE.EMAIL_FROM_ADDRESS]);
@@ -273,7 +268,7 @@ test('e-mail schedule: exactly once per period, daily and weekly caps, quiet hou
   assert.equal(JSON.stringify(view).includes(ada.id), false);
 });
 
-test('provider failures: a 4xx is never retried, a 5xx and a timeout are retried a bounded number of times, and a failed digest is not sent again that day', async (t) => {
+test('provider failures: a 4xx is never retried, a 5xx and a timeout are retried a bounded number of times, and a failed mail is not sent again', async (t) => {
   const env = (name: string) => LIVE[name] ?? '';
   const attempt = async (responses: (number | Error)[]) => {
     const seen: (object | undefined)[] = [];
@@ -298,11 +293,11 @@ test('provider failures: a 4xx is never retried, a 5xx and a timeout are retried
   let fail = false;
   const h = await harness(t, { env: LIVE, respond: () => ({ status: fail ? 401 : 202 }) });
   const ada = await h.player('Ada');
-  await optIn(h, ada);
-  h.f.advance(DAY + TO_NOON); fail = true;
+  await optIn(h, ada); await awayOnly(h, ada);
+  h.f.advance(3 * DAY + TO_NOON); fail = true;
   const before = h.mails().length;
   await h.run(); await h.run();
-  assert.equal(h.mails().length, before + 1, 'one attempt, no retry of a 4xx, no second attempt for the same day');
+  assert.equal(h.mails().length, before + 1, 'one attempt, no retry of a 4xx, no second attempt for the same mail');
   const view = await h.mod<OutreachOperatorResponse>('/api/mod/growth/outreach');
   assert.deepEqual([must(view.email.lastError).state, must(view.email.lastError).status, must(view.email.lastError).error, view.email.sentToday], ['failed', 401, 'http_401', 0]);
   assert.equal(JSON.stringify(view).includes('TESTKEY'), false, 'the provider key is never shown');
@@ -316,15 +311,15 @@ test('dry-run: with no provider configured nothing leaves the server; the messag
   assert.deepEqual([asked.ok, asked.code, asked.dryRun], [true, 'dry_run', true]);
   assert.match(asked.confirmPath, /^\/e\/confirm\?t=/);
   assert.equal((await page(asked.confirmPath, 'POST')).status, 200);
-  f.advance(DAY + TO_NOON); await run();
+  f.advance(4 * DAY + TO_NOON); await run();
   assert.equal(calls.length, 0, 'no outside request at all');
   const mine = (await hello(ada)).contact;
-  assert.deepEqual([mine.live.email, must(mine.email).confirmed, must(must(mine.email).preview).kind], [false, true, 'away']);
-  assert.match(must(must(mine.email).preview).text, /While you were away/);
+  // Comeback mail does no work at all without a mailer: nothing is composed, so the last preview is the welcome.
+  assert.deepEqual([mine.live.email, must(mine.email).confirmed, must(must(mine.email).preview).kind], [false, true, 'welcome']);
   const view = await mod<OutreachOperatorResponse>('/api/mod/growth/outreach');
   assert.deepEqual([view.email.configured, view.email.live, view.email.from], [false, false, null]);
-  assert.deepEqual(view.log.filter((line) => line.channel === 'email').map((line) => line.state), ['dry-run', 'dry-run', 'dry-run']);
-  assert.deepEqual(view.previews.map((preview) => preview.kind), ['away', 'welcome', 'confirm']);
+  assert.deepEqual(view.log.filter((line) => line.channel === 'email').map((line) => line.state), ['dry-run', 'dry-run']);
+  assert.deepEqual(view.previews.map((preview) => preview.kind), ['welcome', 'confirm']);
   assert.ok(view.previews.every((preview) => !/[?&]t=[A-Za-z0-9_-]{7,}/.test(preview.text) && !/example\.com/.test(preview.text)), 'a stored preview holds no working link and no address');
   // Half configured is still dry-run: a key without a sender address sends nothing.
   const half = await harness(t, { env: { ZEPTOMAIL_AUTH: must(LIVE.ZEPTOMAIL_AUTH) } });

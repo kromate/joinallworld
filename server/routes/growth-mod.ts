@@ -44,7 +44,7 @@ export default function growthOperatorRoutes(ctx: RouteContext): Record<RouteKey
     'GET /api/mod/growth/outreach': operator((db) => outreach.operatorView(growthOf(ctx, db))),
     'POST /api/mod/growth/outreach/switch': operator((db, request, body) => outreach.setSwitch(growthOf(ctx, db), body.channel, body.off), { write: true }),
     // Run the schedule now instead of at the next minute (the same rules, caps and quiet hours apply).
-    'POST /api/mod/growth/outreach/run': async (request) => { const guarded = await operator(() => ({}))(request); return { ...guarded, body: await outreach.tick({ force: true }) }; },
+    'POST /api/mod/growth/outreach/run': async (request) => { const guarded = await operator(() => ({}))(request); return { ...guarded, body: { ...(await outreach.tick({ force: true })), comeback: await outreach.comeback.tick({ force: true }) } }; },
     'GET /api/mod/growth/metrics': operator((db, request) => {
       const days = Number(request.query.get('days'));
       // `analytics` says whether product analytics (PostHog) is ALSO running on this server. These first-party numbers do not

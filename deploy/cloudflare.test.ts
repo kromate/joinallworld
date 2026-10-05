@@ -67,11 +67,12 @@ interface TableState {
 /** A socket with the frames it has received. `state` is set by the first table-state frame; the table steps read it only after one arrived. */
 interface Peer { who: Device; send(message: object): void; next(): Promise<Frame>; until(type: string, tries?: number): Promise<Frame>; seen: Frame[]; state: TableState }
 
-async function fixture(t: TestContext, overrides: Record<string, unknown> = {}) {
+/** `clockShiftMs`: the object's clock runs this far ahead (a test of something that depends on the hour of the day cannot wait for it). */
+async function fixture(t: TestContext, { clockShiftMs = 0, ...overrides }: Record<string, unknown> & { clockShiftMs?: number } = {}) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-do-test-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-conformance', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
+  const options = { name: 'joinallworld-conformance', script: (clockShiftMs ? `Date.now = ((real) => () => real() + ${Math.round(clockShiftMs)})(Date.now.bind(Date));\n` : '') + await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
   // What the object wrote to its console is kept (and still shown): a test can say what must never be logged.
   const lines: string[] = [], handleStructuredLogs = ({ level, message }: { level: string; message: string }) => { lines.push(message); (level === 'error' || level === 'warn' ? console.error : console.log)(message); };
   let mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs });
@@ -1325,3 +1326,70 @@ test('Cloudflare: the welcome message — one per new account, after the sign-in
   assert.deepEqual(log.welcome.map((item: { id: string; tries: number; claimedAt?: number }) => [item.id, item.tries, item.claimedAt]), [['fb:UidEve', 1, undefined]]);
   assert.ok(!/example\.com/.test(f.logged()), 'no address is logged');
 });
+
+test('Worker: comeback mail is claimed before it is sent — concurrent rounds and an eviction send it once, and an object with no mailer or no opted-in player does no work', async t => {
+  const token = 'worker-operator-token-0123456789-abcdef';
+  const sent: { subject: string; text: string; post: string }[] = [];
+  const outboundService = async (request: Request) => {
+    if (new URL(request.url).origin !== 'https://api.zeptomail.com') return new Response('no', { status: 404 });
+    const body = await request.json() as { subject: string; content: { value: string }[]; headers?: Record<string, string> };
+    sent.push({ subject: body.subject, text: body.content[0]?.value ?? '', post: body.headers?.['List-Unsubscribe-Post'] ?? '' });
+    return new Response(null, { status: 202 });
+  };
+  const live = { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token, PUBLIC_ORIGIN: 'https://joinallworld.test', ZEPTOMAIL_AUTH: 'Zoho-enczapikey SYNTHETIC', EMAIL_FROM_ADDRESS: 'hello@mail.joinallworld.test' };
+  // The object's clock is moved to 12:30 Lagos time (11:30 UTC): the rules never send at night, and the test cannot wait for noon.
+  const DAY_MS = 86400000, clockShiftMs = (11.5 * 3600000 - (Date.now() % DAY_MS) + DAY_MS) % DAY_MS;
+  const f = await fixture(t, { bindings: live, outboundService, clockShiftMs });
+  const operator = { authorization: `Bearer ${token}`, 'content-type': 'application/json' };
+  type Round = { comeback?: { ran: boolean; jobs?: number; reason?: string } };
+  const run = async () => (await (await f.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json()) as Round;
+  const post = async (path: string, body: object, who: Device) => (await (await f.request(path, body, who.cookie)).json()) as Record<string, unknown>;
+  const comebackMails = () => sent.filter(mail => !/^(Confirm your|You are in)/.test(mail.subject));
+
+  // Nobody has an address: one look at most, and nothing stored for the feature.
+  assert.deepEqual((await run()).comeback, { ran: true, jobs: 0 });
+  assert.equal((await storage_(f, "SELECT value FROM collections WHERE name = 'growth'")).includes('"comeback"'), false);
+
+  // Ada opts in (double opt-in), keeps only the needs switch on, and is then away with a hungry character.
+  const ada = await f.device('Ada');
+  await f.life(ada);
+  await post('/api/growth/hello', { cityId: 'lagos' }, ada);
+  await post('/api/growth/consent', { cityId: 'lagos', age: 'adult' }, ada);
+  await post('/api/growth/email', { email: 'ada@example.com', consent: true }, ada);
+  const link = /https:\/\/joinallworld\.test(\/e\/confirm\?t=[A-Za-z0-9_.-]+)/.exec(sent.at(-1)?.text ?? '')?.[1];
+  assert.ok(link, 'the confirmation mail carries its link');
+  assert.equal((await f.fetch(link, { method: 'POST' })).status, 200);
+  const saved = await post('/api/growth/comeback', { cityId: 'lagos', types: { friends: false, milestones: false, events: false, away: false, week: false } }, ada);
+  assert.deepEqual([saved.code, (saved.comeback as { on: boolean; types: Record<string, boolean> }).on, Object.values((saved.comeback as { types: Record<string, boolean> }).types).filter(Boolean).length], ['saved', true, 1]);
+  const db = await f.storage();
+  const secret = ada.cookie.slice(4), PAST = 6 * 86400000;
+  const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
+  session.cities.lagos.updatedAt -= PAST; session.cities.lagos.state.needs.hunger = 5;
+  await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
+  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  growth.players[ada.id].seen -= PAST;
+  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+
+  // Three rounds at the same moment, then the object is evicted and two more.
+  const first = await Promise.all([run(), run(), run()]);
+  assert.equal(first.reduce((sum, round) => sum + (round.comeback?.jobs ?? 0), 0), 1, 'one of the concurrent rounds claimed it');
+  await f.hibernate();
+  await run(); await run();
+  const stored = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  assert.equal(comebackMails().length, 1, 'once, however many rounds and restarts');
+  assert.equal(comebackMails()[0]?.subject, 'Ada is hungry');
+  assert.equal(comebackMails()[0]?.post, 'List-Unsubscribe=One-Click');
+  assert.equal(stored.comeback[ada.id].sent.length, 1, 'the claim is in the stored ledger');
+  assert.equal(Object.values(stored.comebackStats as Record<string, Record<string, { sent: number }>>).some(day => day.need?.sent === 1), true);
+  assert.equal(JSON.stringify(stored.comeback).includes('@'), false, 'no address in the comeback record');
+
+  // An object without a mailer does nothing at all.
+  const dry = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  const result = await (await dry.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json() as Round;
+  assert.deepEqual(result.comeback, { ran: false, reason: 'not_configured' });
+});
+
+async function storage_(f: { storage(): Promise<ObjectStorage> }, query: string): Promise<string> {
+  const rows = await (await f.storage()).exec(query).catch(() => []);
+  return JSON.stringify(rows);
+}

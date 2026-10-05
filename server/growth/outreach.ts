@@ -23,6 +23,8 @@
  *   push      { [publicId]: { subs: [{ endpoint, p256dh, auth, at }], sends: [ms], periods } }   (LIMITS.subs per player)
  *   outreach  { off: { email, push }, log: [{ at, channel, kind, state, status?, error? }], sent: { [lagosDay]: { email, push } },
  *               pushPausedUntil }      the log holds no address, no endpoint and no player id (LIMITS.log lines)
+ * COMEBACK MAIL (./comeback.ts, docs/COMEBACK-MAIL.md) is written to the same confirmed address, under its own switches and one
+ * shared ledger with the weekly digest. The e-mail "away" message of earlier builds is now its 3, 7 and 28 day steps.
  * Two secrets live outside the data file, in DATA_DIR/keys (mode 0600): the key that signs
  * confirmation and unsubscribe links, and the VAPID key pair.
  *
@@ -41,8 +43,12 @@ import { composeDigest } from '../../src/game/digest.ts';
 import { cityRules } from '../../src/game/cities/index.ts';
 import { OUTREACH, channelUrl, checkEmail, inQuietHours, maskEmail, planMessage } from '../../src/game/outreach.ts';
 import { UUID_PATTERN } from '../protocol.ts';
+import { COMEBACK_TYPES } from '../../src/game/comeback.ts';
+import type { ComebackType } from '../../src/game/comeback.ts';
 import { growthOf, playerOf } from './data.ts';
 import { count } from './metrics.ts';
+import { comebackService } from './comeback.ts';
+import { mailRecipientOf } from './recipient.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -139,16 +145,21 @@ function buildService(ctx: RouteContext) {
     const body = b64u.encode(text.encode(`${purpose}.${id}.${nonce}.${expires}`));
     return `${body}.${b64u.encode(await globalThis.crypto.subtle.sign('HMAC', await signingKey(), text.encode(body)))}`;
   }
-  async function readToken(value: unknown, purpose: string): Promise<{ id: string; nonce: string } | null> {
+  /** The signed claim of a link token (what it is for, whose it is, the contact's nonce), or null when the signature, the shape or the time is wrong. */
+  async function claimOf(value: unknown): Promise<{ purpose: string; id: string; nonce: string } | null> {
     if (typeof value !== 'string' || value.length > 400 || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(value)) return null;
     const [body, signature] = value.split('.');
     if (body === undefined || signature === undefined) return null;
     try {
       if (!(await globalThis.crypto.subtle.verify('HMAC', await signingKey(), b64u.decode(signature), text.encode(body)))) return null;
       const [what, id, nonce, expires] = new TextDecoder().decode(b64u.decode(body)).split('.');
-      if (what !== purpose || id === undefined || nonce === undefined || !UUID_PATTERN.test(id) || !UUID_PATTERN.test(nonce) || !(Number(expires) > now())) return null;
-      return { id, nonce };
+      if (what === undefined || id === undefined || nonce === undefined || !UUID_PATTERN.test(id) || !UUID_PATTERN.test(nonce) || !(Number(expires) > now())) return null;
+      return { purpose: what, id, nonce };
     } catch { return null; }
+  }
+  async function readToken(value: unknown, purpose: string): Promise<{ id: string; nonce: string } | null> {
+    const claim = await claimOf(value);
+    return claim && claim.purpose === purpose ? { id: claim.id, nonce: claim.nonce } : null;
   }
   const links = async (id: string, nonce: string) => ({ playUrl: `${origin()}/`, unsubscribeUrl: `${origin()}/e/unsub?t=${await token('unsub', id, nonce, now() + LIMITS.unsubscribeDays * DAY)}` });
   /** RFC 8058: one HTTPS address a mail program may POST to, with no login, to unsubscribe at once. */
@@ -196,6 +207,14 @@ function buildService(ctx: RouteContext) {
     return results.map(([, result]) => result);
   }
 
+  // Comeback mail (./comeback.ts) sends through deliverMail and signs its links with the same key.
+  const comeback = comebackService(ctx, {
+    emailReady, contactLine, origin, cap, sentToday: (g) => sentToday(g, 'email'),
+    lifeOf: (db, id) => lifeOf(db, id),
+    token: (purpose, id, nonce, expires) => token(purpose, id, nonce, expires),
+    deliver: (id, kind, to, message) => deliverMail(id, kind, to, message),
+  });
+
   // ---- e-mail: ask, confirm, remove ------------------------------------------------------------------
   /** Store an address the player consented to and send its confirmation. `address` is the request's, for the limit only. */
   async function requestEmail(request: RouteRequest, body: Record<string, unknown>) {
@@ -240,7 +259,7 @@ function buildService(ctx: RouteContext) {
       contact.confirmed = true; contact.confirmedAt ||= now(); player.consent.email = true;
       const welcome = first && !contact.welcomed;
       if (welcome) contact.welcomed = true; // claimed here, so the welcome is attempted once
-      if (first) count(g, now(), 'email.confirmed');
+      if (first) { count(g, now(), 'email.confirmed'); comeback.onConfirmed(g, claim.id); }
       const session = ctx.core.sessionByPublicId?.(db, claim.id);
       return { ok: true, welcome, email: contact.email, nonce: contact.nonce, name: session?.name ?? 'friend' };
     });
@@ -256,12 +275,26 @@ function buildService(ctx: RouteContext) {
     count(g, now(), `email.${how}`);
     return true;
   }
+  /** What an unsubscribe link is for: everything (the one in the List-Unsubscribe header) or one type of comeback mail. */
+  const unsubScope = (purpose: string): ComebackType | 'all' | null => {
+    if (purpose === 'unsub') return 'all';
+    const type = purpose.startsWith('unsub-') ? purpose.slice(6) : '';
+    return COMEBACK_TYPES.find((known) => known === type) ?? null;
+  };
+  /** Peek at a link without acting on it (for the page a GET shows). */
+  async function unsubscribeScope(value: unknown): Promise<ComebackType | 'all' | null> { const claim = await claimOf(value); return claim ? unsubScope(claim.purpose) : null; }
   /** An unsubscribe link, or a mail program's one-click POST. No login: the signed token is the authority. */
-  async function unsubscribe(value: unknown): Promise<{ ok: boolean }> {
-    const claim = await readToken(value, 'unsub');
-    if (!claim) return { ok: false };
-    await ctx.store.transact((db) => { const g = growthOf(ctx, db); if (g.contacts?.[claim.id]?.nonce === claim.nonce) dropContact(g, claim.id, 'unsubscribed'); });
-    return { ok: true }; // also when it was already gone: unsubscribing twice is still unsubscribed
+  async function unsubscribe(value: unknown): Promise<{ ok: boolean; scope?: ComebackType | 'all' }> {
+    const claim = await claimOf(value), scope = claim ? unsubScope(claim.purpose) : null;
+    if (!claim || scope === null) return { ok: false };
+    await ctx.store.transact((db) => {
+      const g = growthOf(ctx, db);
+      // The link's nonce must be the current recipient's: a changed or removed address voids it (mailRecipientOf decides who that is).
+      if (mailRecipientOf(g, claim.id)?.nonce !== claim.nonce) return;
+      comeback.unsubscribeType(g, claim.id, scope);
+      if (scope === 'all') dropContact(g, claim.id, 'unsubscribed');
+    });
+    return { ok: true, scope }; // also when it was already gone: unsubscribing twice is still unsubscribed
   }
 
   // ---- push: subscribe, unsubscribe ---------------------------------------------------------------------
@@ -316,7 +349,10 @@ function buildService(ctx: RouteContext) {
           const life = lifeOf(db, id);
           if (!life) return null;
           const stamps = life.state.missions?.stamps;
-          const plan = planMessage({ now: t, seen: player.seen, sends: entry.sends, periods: entry.periods, playedThisWeek: stamps?.week === week && stamps.days > 0 });
+          // E-mail shares one ledger with comeback mail: the digest counts as one of the player's mails, and comeback mail owns the "away" kind.
+          const sends = channel === 'email' ? comeback.sendsFor(g, id, entry.sends) : entry.sends;
+          const plan = planMessage({ now: t, seen: player.seen, sends, periods: entry.periods, playedThisWeek: stamps?.week === week && stamps.days > 0 });
+          if (channel === 'email' && (plan.kind === 'away' || (plan.kind === 'week' && !comeback.weekAllowed(g, id, t)))) return null;
           return plan.kind ? { kind: plan.kind, period: plan.period, life } : null;
         };
         if (!o.off.email) for (const [id, contact] of Object.entries(contactsOf(g))) {
@@ -325,6 +361,7 @@ function buildService(ctx: RouteContext) {
           const found = due(id, contact, 'email');
           if (!found) continue;
           contact.periods[found.kind] = found.period; // the claim
+          if (found.kind === 'week') comeback.noteDigest(g, id, t);
           jobs.push({ channel: 'email', kind: found.kind, id, to: contact.email, nonce: contact.nonce, digest: digestFor(found.life).digest });
         }
         if (!o.off.push && !((o.pushPausedUntil ?? 0) > t)) for (const [id, entry] of Object.entries(pushOf(g))) {
@@ -362,7 +399,7 @@ function buildService(ctx: RouteContext) {
     const contact = contactsOf(g)[id], entry = pushOf(g)[id];
     return { channel: channelUrl(ctx.env('WHATSAPP_CHANNEL_URL')),
       email: contact ? { address: maskEmail(contact.email), confirmed: contact.confirmed, preview: contact.preview ? { kind: contact.preview.kind, subject: contact.preview.subject, text: contact.preview.text } : null } : null,
-      push: { devices: entry?.subs.length ?? 0 }, live: { email: emailReady() } };
+      push: { devices: entry?.subs.length ?? 0 }, live: { email: emailReady() }, comeback: comeback.viewOf(g, id) };
   }
   /** For the operator: totals, switches, the last lines of the log and the last dry-run previews. No address, no endpoint, no player id. */
   function operatorView(g: GrowthCollection): Omit<OutreachOperatorResponse, never> {
@@ -374,6 +411,7 @@ function buildService(ctx: RouteContext) {
         sentToday: sentToday(g, 'email'), dailyCap: cap('EMAIL_DAILY_CAP', LIMITS.emailPerDay), lastError: recent('email').filter((line) => line.state === 'failed').at(-1) ?? null },
       push: { off: o.off.push === true, subscribers: Object.keys(pushOf(g)).length, devices: Object.values(pushOf(g)).reduce((sum, entry) => sum + entry.subs.length, 0), sentToday: sentToday(g, 'push'),
         dailyCap: cap('PUSH_DAILY_CAP', LIMITS.pushPerDay), pausedUntil: o.pushPausedUntil !== undefined && o.pushPausedUntil > now() ? o.pushPausedUntil : null, lastError: recent('push').filter((line) => line.state === 'failed').at(-1) ?? null },
+      comeback: comeback.operatorView(g),
       whatsapp: { channel: channelUrl(ctx.env('WHATSAPP_CHANNEL_URL')) || null },
       rules: OUTREACH, quietNow: inQuietHours(now()), log: o.log.slice(-100).reverse(), previews: o.previews.slice().reverse(),
     };
@@ -385,5 +423,5 @@ function buildService(ctx: RouteContext) {
     return { ok: true, channel, off };
   }
 
-  return { requestEmail, confirmEmail, unsubscribe, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
+  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
 }

@@ -41,7 +41,8 @@ export function pushDeclinedWords(code: string): string {
     : code === 'declined' ? 'No problem. Nothing was switched on.'
       : 'Notifications could not be switched on in this browser.'
 }
+export const COMEBACK_SENTENCE = 'We’ll send you a few e-mails a week at most about your character. Change this any time.'
 export const emailSavedWords = (dryRun: boolean): string => (dryRun ? 'Address saved. E-mail is not switched on for this server yet, so nothing was sent.' : 'Check your inbox and press the button in the e-mail to confirm.')
 
-export const WEEKLY_RULES: readonly string[] = ['At most one message a day and three a week on each channel, never between 10 pm and 7 am Lagos time.', 'A message says what happened and what you could do. It never says you lost something by being away.',
-  'If messages do not bring you back, they slow down (1, 3, then 7 days apart) and stop after four.', 'Switching a channel off deletes what was stored for it: your address, or this phone’s subscription.', 'Your address is shown to nobody, and never appears in a share, a profile or a list.']
+export const WEEKLY_RULES: readonly string[] = ['E-mail: at most one a day and three a week, never between 9 pm and 8 am Lagos time, and none within 12 hours of a visit. Notifications: at most one a day and three a week, never between 10 pm and 7 am.', 'A message says what happened and what you could do. It never says you lost something by being away.',
+  'If e-mails do not bring you back they slow down (one every 14 days after three) and stop for good after a last note.', 'Switching a channel off deletes what was stored for it: your address, or this phone’s subscription.', 'Your address is shown to nobody, and never appears in a share, a profile or a list.']

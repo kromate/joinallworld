@@ -5,7 +5,7 @@ import type { PushKind } from './boundary.ts'
 
 export interface TouchDraft {
   /** Which request is on its way: it disables the controls it belongs to. */
-  busy: 'age' | 'push' | 'email' | null
+  busy: 'age' | 'push' | 'email' | 'comeback' | null
   /** The address as typed (trimmed when sent). */
   email: string
   tick: boolean

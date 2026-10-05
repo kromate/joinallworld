@@ -6,10 +6,10 @@ import type { LandingDeps } from './landingStore.ts'
 
 const HOST = '11111111-2222-4333-8444-555555555555'
 
-function setup(over: Partial<LandingDeps> = {}, kept: { join?: string | null; ref?: string | null; table?: string | null } = {}) {
+function setup(over: Partial<LandingDeps> = {}, kept: { join?: string | null; ref?: string | null; table?: string | null; go?: string | null } = {}) {
   const calls: { path: string; body?: unknown }[] = []
   const log: string[] = []
-  const keep = { join: kept.join ?? null, ref: kept.ref ?? null, table: kept.table ?? null }
+  const keep = { join: kept.join ?? null, ref: kept.ref ?? null, table: kept.table ?? null, go: kept.go ?? null }
   const timers: (() => void)[] = []
   const answers: Record<string, unknown> = {
     '/api/social/join': { ok: true, code: 'joined', host: { name: 'Ada' }, venue: 'market' },
@@ -24,6 +24,7 @@ function setup(over: Partial<LandingDeps> = {}, kept: { join?: string | null; re
     cleanAddress: () => { log.push('clean') }, takeLinkHost: () => { log.push('take') },
     joinTarget: () => keep.join, forgetJoin: () => { keep.join = null; log.push('forget-join') },
     pendingRef: () => keep.ref, forgetRef: () => { keep.ref = null }, pendingTable: () => keep.table, forgetTable: () => { keep.table = null },
+    pendingGo: () => keep.go, forgetGo: () => { keep.go = null }, panelFor: (go) => (go === 'needs' ? 'needs' : go === 'messages' ? 'messages' : null),
     setTimeout: (run) => timers.push(run), clearTimeout: () => {},
     ...over,
   }
@@ -106,4 +107,21 @@ test('the banner leaves after its time, and a newer banner is not removed by an 
   assert.ok(one.landing.banner.value)
   one.timers[0]?.()
   assert.equal(one.landing.banner.value, null)
+})
+
+test('an e-mail button opens one panel from the list, once, with no request; an unknown name opens nothing', async () => {
+  const one = setup({ isGuest: () => false }, { go: 'messages' })
+  await one.landing.land()
+  assert.equal(one.calls.length, 0)
+  assert.ok(one.log.includes('open:messages:undefined') && one.log.includes('clean'))
+  assert.equal(one.keep.go, null)
+  await one.landing.land()
+  assert.equal(one.log.filter((line) => line.startsWith('open:')).length, 1, 'handled once')
+  const odd = setup({ isGuest: () => false }, { go: 'admin' })
+  await odd.landing.land()
+  assert.deepEqual(odd.log.filter((line) => line.startsWith('open:')), [])
+  assert.equal(odd.keep.go, null, 'an unknown name is dropped, not kept')
+  const offline = setup({ online: () => false }, { go: 'needs' })
+  await offline.landing.land()
+  assert.equal(offline.keep.go, 'needs', 'kept until the connection is there')
 })

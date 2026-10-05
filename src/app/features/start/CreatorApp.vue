@@ -243,7 +243,7 @@ function playNow(settle = false): void {
   cr.played = true
   if (settle) cr.pending = 'Starting your life…'
   else shell.close()
-  window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look } }))
+  window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look, ...(cr.city ? { city: cr.city } : {}) } }))
 }
 /** The life exists (or Play failed): move in with the choices on screen. */
 async function runSettle(stay: boolean): Promise<void> {
@@ -349,9 +349,9 @@ onBeforeUnmount(() => {
             <p class="cr-lead">{{ lead }}</p>
             <StepWho v-if="cr.step === 'who'" :look="draft.look" :preset="presetId" :name="draft.name" :error="shown" @preset="preset" @body="body" @shuffle="shuffle" @dice="dice" @name="typed" @submit="next" />
             <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
-            <StepSpirit v-else-if="cr.step === 'spirit'" :traits="draft.traits" :dream="draft.dream" @trait="pickTrait" @dream="pickDream" @random="randomSpirit" />
-            <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" />
-            <StepReady v-else :name="draft.name" :look="draft.look" :traits="draft.traits" :dream="draft.dream" :area="areaName" @edit="go" />
+            <StepSpirit v-else-if="cr.step === 'spirit'" :city="cr.city ?? view.cityId" :traits="draft.traits" :dream="draft.dream" @trait="pickTrait" @dream="pickDream" @random="randomSpirit" />
+            <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" :choosable="isNew" />
+            <StepReady v-else :city="cr.city ?? view.cityId" :name="draft.name" :look="draft.look" :traits="draft.traits" :dream="draft.dream" :area="areaName" @edit="go" />
             <p v-if="canStay" class="cr-stay"><button type="button" class="cr-link" data-key="stay" :disabled="Boolean(cr.pending)" @click="finish(true)">Move in, but stay here for now</button></p>
           </div>
         </Transition>

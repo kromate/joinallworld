@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The 3D city map: registry, routing, the server-timed trip, the render budget and the battery rule.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -19,7 +21,9 @@ import { fromLocal, ORIGINS } from './geo/frame.ts';
 import { shimmer, createRaw, CITY_TRIANGLE_BUDGET } from './city-build.ts';
 import { pitchFloor, PITCH_MIN, FLAT_PITCH } from './camera.ts';
 import pack from './cities/lagos.ts';
-import { VENUES, COMING_SOON, HOME_SPOTS, SCENE_KINDS } from '../game/content/venues.ts';
+import { COMING_SOON, SCENE_KINDS } from '../game/content/venues.ts';
+import { VENUES, HOME_SPOTS } from '../game/cities/lagos/venues.ts';
+
 import { ALL_MODES } from '../game/content/travel.ts';
 import { createLife, viewLife } from '../life.ts';
 import { goBlock, tripInfo, chosenMode } from '../app/features/travel/travelModel.ts';
@@ -31,8 +35,8 @@ const keyOf = (id: string, home = 'yaba') => (id === 'home' ? `home:${home}` : i
 const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
 const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
-test('the region registry: Lagos is playable, Ibadan, Abuja, Port Harcourt, Abeokuta and Kano are coming soon, and a city is data plus a pack', async () => {
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'soon'], ['abuja', 'soon'], ['port-harcourt', 'soon'], ['abeokuta', 'soon'], ['kano', 'soon']]);
+test('the region registry: Lagos and Ibadan are playable, Abuja, Port Harcourt, Abeokuta and Kano are coming soon, and a city is data plus a pack', async () => {
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'playable'], ['abuja', 'soon'], ['port-harcourt', 'soon'], ['abeokuta', 'soon'], ['kano', 'soon']]);
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);
@@ -43,17 +47,16 @@ test('the region registry: Lagos is playable, Ibadan, Abuja, Port Harcourt, Abeo
       assert.equal(hasCityPack(city.id), city.status === 'playable', `${city.id}: playable cities, and only they, have a 3D pack`);
     }
   }
-  assert.equal(isPlayable('lagos'), true); assert.equal(isPlayable('ibadan'), false); assert.equal(cityEntry('nowhere'), null);
-  // Ibadan has lives on the server but is shown as coming soon: only a player who already has one gets a way in, as a preview.
+  assert.equal(isPlayable('lagos'), true); assert.equal(isPlayable('ibadan'), true); assert.equal(cityEntry('nowhere'), null);
   assert.equal(cityAccess('lagos', { current: 'lagos' }), 'here');
-  assert.equal(cityAccess('ibadan', { current: 'lagos', held: ['lagos'] }), 'soon');
-  assert.equal(cityAccess('ibadan', { current: 'lagos', held: ['lagos', 'ibadan'] }), 'preview');
+  assert.equal(cityAccess('ibadan', { current: 'lagos', held: ['lagos'] }), 'enter');
+  assert.equal(cityAccess('ibadan', { current: 'lagos', held: ['lagos', 'ibadan'] }), 'enter');
   assert.equal(cityAccess('ibadan', { current: 'ibadan', held: ['ibadan'] }), 'here');
   assert.equal(cityAccess('lagos', { current: 'ibadan', held: ['ibadan'] }), 'enter');
   assert.equal(cityAccess('abuja', { current: 'lagos', held: ['abuja'] }), 'soon', 'a city without server lives is never offered');
   for (const id of ['abeokuta', 'kano']) assert.equal(cityAccess(id, { current: 'lagos', held: [id] }), 'soon', `${id} is only planned`);
   const loaded = await loadCityPack('lagos');
-  assert.equal(loaded!.id, 'lagos'); assert.equal(await loadCityPack('abuja'), null);
+  assert.equal(loaded!.id, 'lagos'); assert.equal((await loadCityPack('ibadan'))?.id, 'ibadan'); assert.equal(await loadCityPack('abuja'), null);
 });
 
 test('the Lagos pack places every venue (the airport and the refinery among them) and every home district, and every scene kind has a landmark', () => {

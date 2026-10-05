@@ -1,7 +1,10 @@
+import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createLife, dispatch as dispatchTyped, advanceLife, viewLife } from '../../life.ts';
-import { VENUES } from '../../game/content/venues.ts';
+import { VENUES } from '../../game/cities/lagos/venues.ts';
+
 import { registerSystem } from '../../game/registry.ts';
 import { rebuildCatalogue } from '../../game/systems/activities.ts';
 import { makeContext } from '../../game/util.ts';

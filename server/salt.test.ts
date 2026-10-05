@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The per-life secret salt (server/life-service.ts): random outcomes cannot be predicted or chosen
 // by picking an action ID, the salt never leaves the server, it is stored with the life and it
 // survives a restart. Protocol-level only.

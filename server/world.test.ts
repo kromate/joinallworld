@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: world — the registry of local governments: plots, the directory, the shard store, and the one-character migration.
 import test from 'node:test';
 import assert from 'node:assert/strict';

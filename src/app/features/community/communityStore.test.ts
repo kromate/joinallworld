@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The Community store, against a fake game and a fake controller: loading with the bounded retry and
 // what it says while it fails, opening and the rules for when it may not open, the room following the
 // life, member positions for the scene, and the refusal toast, now taken from state.

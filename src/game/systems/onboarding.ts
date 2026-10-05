@@ -1,3 +1,4 @@
+import { dreamFor, dreamsFor, lotteryBulletsFor } from '../cities/characterContent.ts';
 /**
  * OWNER: character
  * The quick start (a look, then straight into a public venue as a GUEST), settling in (personality →
@@ -406,8 +407,8 @@ const actions = {
   'onboarding.dream'(state, payload) {
     const blocked = notDone(state) || needStep(state, 2);
     if (blocked) return blocked;
-    const dream = isDreamId(payload?.dream) ? DREAMS[payload.dream] : null;
-    if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${Object.values(DREAMS).map((item) => item.label).join(', ')}.`);
+    const dream = isDreamId(payload?.dream) ? dreamFor(state.estate.city, payload.dream) : null;
+    if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${dreamsFor(state.estate.city).map((item) => item.label).join(', ')}.`);
     state.onboarding.dream = dream.id;
     reach(state, 3);
     state.message = `Dream saved: ${dream.label}.`;
@@ -623,7 +624,7 @@ export default {
       /** The first-minute timings in server ms (null until they happen) and what a guest has done so far. */
       timing: { bornAt: o.bornAt, playedAt: o.playedAt, firstAt: o.firstAt, settledAt: o.completedAt }, activities: o.activities,
       settleReason: isGuest(o) ? SETTLE_REASON : null, steps: ONBOARDING_STEPS, look: { ...o.look }, traits: [...o.traits], dream: o.dream, house: o.house,
-      lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: outcome.bullets, beta: Boolean(outcome.beta), at: o.lottery!.at } : null, // outcomeOf found it through o.lottery
+      lottery: outcome ? { id: outcome.id, label: outcome.label, icon: outcome.icon, tagline: outcome.tagline, bullets: lotteryBulletsFor(state.estate.city, outcome.id), beta: Boolean(outcome.beta), at: o.lottery!.at } : null, // outcomeOf found it through o.lottery
       /** The start a new life is offered: its own starter house, free, in the local government it chooses. */
       own: { startCash: outcome ? outcome.ownCash : null, rent: 0 },
       homes: Object.values(START_HOMES).filter((home) => housesFor(state.estate.city).some((house) => house.id === home.id)).map((home) => {

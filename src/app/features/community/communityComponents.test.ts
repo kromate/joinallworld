@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Component tests for the Community panel and its host, in the manner of src/app/components.test.ts:
 // compiled by the project's own Vite configuration and rendered to a string, against a store whose
 // state is set by hand. What is asserted is the words, labels, roles and disabled controls the player

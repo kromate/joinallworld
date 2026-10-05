@@ -15,8 +15,11 @@ import type { EstateLayout } from './estates.ts';
 import { createHouses, DETAIL_BUDGET } from './houses.ts';
 import { createWorldData, ESTATES_KEPT } from './world-data.ts';
 import { COUNTRIES, cityEntry } from './regions.ts';
-import { VENUES, COMING_SOON } from '../game/content/venues.ts';
-import { CITY_LINKS, CITY_RULES, ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.ts';
+import { COMING_SOON } from '../game/content/venues.ts';
+import { VENUES } from '../game/cities/lagos/venues.ts';
+import { allCityLinks, cityRules } from '../game/cities/registry.ts';
+
+import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE, packStyle } from '../game/content/world.ts';
 
 const network = buildNetwork(pack), kit = createKit();
 const city = buildCity(kit, pack, network, { venues: VENUES, soon: COMING_SOON as Record<string, unknown> });
@@ -195,14 +198,15 @@ test('the maps fetch only what is in view: one summary with a version stamp, one
   assert.ok(changes.includes('city') && changes.includes('estate'));
 });
 
-test('cities connect as data, and each city that is coming soon has a preview on the country map', () => {
-  for (const id of Object.keys(CITY_RULES)) assert.ok(cityEntry(id), `${id} is on the country map`);
-  for (const link of CITY_LINKS) assert.ok(cityEntry(link.a) && cityEntry(link.b));
+test('open and coming-soon cities share the live registry and canonical links', () => {
+  for (const id of Object.keys(COUNTRIES.nigeria.cities)) assert.ok(cityEntry(id), `${id} is on the country map`);
+  for (const link of allCityLinks()) assert.ok(cityEntry(link.a) && cityEntry(link.b));
+  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), ['lagos', 'ibadan']);
   // Cities that are only planned (no stored lives, no route yet) are listed with a preview; the first route to one is added with its module.
   const planned = ['abeokuta', 'kano'];
   const soon = Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'soon');
-  assert.deepEqual(soon.map((item) => item.id), ['ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'kano']);
-  for (const item of soon) { assert.equal(item.preview!.length, 3); const city = CITY_RULES[item.id]; assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); assert.ok(planned.includes(item.id) || CITY_LINKS.some((link) => link.a === item.id || link.b === item.id)); }
+  assert.deepEqual(soon.map((item) => item.id), ['abuja', 'port-harcourt', 'abeokuta', 'kano']);
+  for (const item of soon) { assert.equal(item.preview!.length, 3); const city = cityRules(item.id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); assert.ok(planned.includes(item.id) || allCityLinks().some((link) => link.a === item.id || link.b === item.id)); }
   // The atlas shows a route's Travel button only when the server would let it leave; otherwise it says why (src/map3d/geo).
   const atlas = readFileSync(new URL('./geo/atlas.ts', import.meta.url), 'utf8'), info = readFileSync(new URL('./geo/info.ts', import.meta.url), 'utf8');
   assert.match(atlas, /data-atlas-travel=/); assert.match(info, /is not open yet, so nothing leaves for it/);

@@ -3,16 +3,18 @@
 // buttons that start the life are the creator's footer.
 import { computed } from 'vue'
 import { DREAMS, TRAITS } from '../../../game/content/traits.ts'
+import { dreamFor } from '../../../game/cities/characterContent.ts'
+import { cachedCityContent } from '../../../game/cities/registry.ts'
 import type { DreamId, Look, TraitId } from '../../../types/life.ts'
 import { lookSummary } from './lookModel.ts'
 import type { StepId } from './creatorModel.ts'
 
-const props = defineProps<{ name: string; look: Look; traits: readonly TraitId[]; dream: DreamId | null; area: string }>()
+const props = defineProps<{ city?: string; name: string; look: Look; traits: readonly TraitId[]; dream: DreamId | null; area: string }>()
 const emit = defineEmits<{ edit: [step: StepId] }>()
 const rows = computed<{ step: StepId; label: string; value: string }[]>(() => [
   { step: 'look', label: 'Look', value: lookSummary(props.look) },
   { step: 'spirit', label: 'Traits', value: props.traits.map((id) => TRAITS[id]?.label ?? id).join(' and ') || 'None yet' },
-  { step: 'spirit', label: 'Dream', value: props.dream ? DREAMS[props.dream]?.label ?? props.dream : 'None yet' },
+  { step: 'spirit', label: 'Dream', value: props.dream ? (props.city && cachedCityContent(props.city) ? dreamFor(props.city, props.dream).label : DREAMS[props.dream]?.label) ?? props.dream : 'None yet' },
   { step: 'home', label: 'Home', value: props.area ? `Starter house in ${props.area}` : 'Not chosen yet' },
 ])
 </script>

@@ -43,6 +43,7 @@ export interface FlatModel {
   places: FlatPlace[]
   homes: Record<string, { x: number; z: number; district: string }>
   names: FlatName[]
+  inland: boolean
   sea: PackBounds['sea'] | null
   /** Present for a state map: drawn under everything, muted. */
   context: FlatContext | null
@@ -81,7 +82,8 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
     places,
     homes: Object.fromEntries(Object.entries(pack.homes).map(([id, spot]) => [id, { x: spot.x, z: spot.z, district: spot.district }])),
     names: (pack.districts || []).map((plate) => ({ name: plate.name, x: plate.x, z: plate.z, size: plate.size || 2, water: Boolean(plate.water) })),
-    sea: pack.bounds.sea || null,
+    inland: pack.inland === true,
+    sea: pack.inland ? null : pack.bounds.sea || null,
     scale: { ground: groundScale(pack), road: pack.roadScale ?? 1 },
   };
 }
@@ -94,9 +96,9 @@ export function flatSvg(model: FlatModel): string {
   const stroke = (road: FlatRoad, colour: string, extra: number, more = '') => `<path d="${road.d}" data-road="${esc(road.id)}" fill="none" stroke="${colour}" stroke-width="${fixed(road.width + extra)}" stroke-linecap="round" stroke-linejoin="round" ${more}/>`;
   return `<svg class="m3-flat-art" viewBox="${fixed(box.x)} ${fixed(box.z)} ${fixed(box.width)} ${fixed(box.height)}" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs><clipPath id="m3-flat-land-${esc(model.id)}" clip-rule="evenodd">${model.land.map((entry) => `<path d="${entry.d}"/>`).join('')}</clipPath></defs>
-    <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${c.water}"/>
+    <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${model.inland ? c.mainland : c.water}"/>
     ${model.context ? `<g class="m3-flat-context" fill-rule="evenodd" aria-hidden="true"><g>${model.context.land.map((piece) => `<path d="${piece.d}" data-context="${esc(piece.id)}" fill="${piece.kind === 'country' ? '#e4dfd0' : '#dde1d3'}"/>`).join('')}</g><g fill="none" stroke="#b7b8ae" stroke-width="${fixed(1.1 * k)}" stroke-linecap="round" stroke-linejoin="round">${model.context.roads.map((road) => `<path d="${road.d}"/>`).join('')}</g><g font-family="DM Sans, Arial, sans-serif" font-weight="700" text-anchor="middle" font-size="46" letter-spacing="7">${model.context.names.map((label) => `<text x="${fixed(label.x)}" y="${fixed(label.z)}" fill="${label.kind === 'sea' ? '#e2f4f8' : '#56684f'}" fill-opacity=".75">${esc(label.text)}</text>`).join('')}</g></g>` : ''}
-    <g fill="${c.shallows}" fill-rule="evenodd" stroke="${c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
+    <g fill="${model.inland ? c.mainland : c.shallows}" fill-rule="evenodd" stroke="${model.inland ? c.mainland : c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>
     <g stroke-width="${fixed(2.2 * g)}" stroke-linejoin="round" fill-rule="evenodd">${ground.map((entry) => `<path d="${entry.d}" data-land="${esc(entry.id)}" fill="${c[entry.kind] || c.mainland}" stroke="${entry.kind === 'sand' ? '#f8efd2' : c.rim}"/>`).join('')}</g>
     <g class="m3-flat-lgas" clip-path="url(#m3-flat-land-${esc(model.id)})" fill-rule="evenodd">${model.lgas.map((lga) => `<path d="${lga.d}" data-lga="${esc(lga.id)}" fill="${esc(lga.tint)}" fill-opacity=".34" stroke="#46544a" stroke-opacity=".6" stroke-width="${fixed(0.5 * Math.max(g, 0.5))}" stroke-linejoin="round"/>`).join('')}</g>
     <g class="m3-flat-zones">${model.zones.map((zone) => `<rect data-zone="${esc(zone.id)}" x="${fixed(zone.x)}" y="${fixed(zone.z)}" width="${fixed(zone.width)}" height="${fixed(zone.height)}" fill="#c8bfa4" stroke="#f2c230" stroke-width=".8" stroke-dasharray="2.2 2.2"/>`).join('')}</g>

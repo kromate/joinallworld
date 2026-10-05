@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Property-style test: seeded random action sequences against the rules engine. Whatever a player
 // sends, in whatever order, with whatever payload:
 //   cash == what the life started with + the sum of every ledger line (nothing appears or vanishes),
@@ -13,7 +15,8 @@ import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState, StartHomeId } from '../types/life.ts';
 import { statementOf } from './systems/wallet.ts';
 import { MAX_STACK } from './systems/inventory.ts';
-import { VENUES } from './content/venues.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { ALL_MODES } from './content/travel.ts';
 import { JOBS } from './content/jobs.ts';
 import { HOUSES } from './content/housing.ts';

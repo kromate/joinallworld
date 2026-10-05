@@ -12,9 +12,9 @@ cityContractTest(fictionalNeighbourCity, { profile: 'test-fixture' })
 
 test('test registration is scoped and keeps closed cities closed', async () => {
   resetFictionalLoadCounts()
-  assert.equal(isKnownCityId('ibadan'), true)
-  assert.equal(isCityId('ibadan'), true)
-  assert.equal(isOpenCityId('ibadan'), false)
+  assert.equal(isKnownCityId('abuja'), true)
+  assert.equal(isCityId('abuja'), false)
+  assert.equal(isOpenCityId('abuja'), false)
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
   const neighbourRegistration = registerCityForTest(fictionalNeighbourCity)
   const registration = registerCityForTest(fictionalCity)
@@ -37,11 +37,14 @@ test('test registration is scoped and keeps closed cities closed', async () => {
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
 })
 
-test('legacy Ibadan content loads for stored lives without opening the city', async () => {
+test('authored Ibadan content is open and exposes its canonical road and rail links', async () => {
   const content = await loadCityContent('ibadan')
   assert.equal(content.cityId, 'ibadan')
-  assert.equal(content.venues.some((venue) => venue.id === 'unilag'), false)
+  assert.equal(content.venues.some((venue) => venue.id === 'mapo-hall'), true)
+  assert.equal(content.venues.some((venue) => venue.id === 'unilag' || venue.id === 'park'), false)
   assert.ok(content.venues.every((venue) => venue.cityId === 'ibadan'))
   assert.ok(content.regulars.every((regular) => regular.cityId === 'ibadan'))
-  assert.equal(isOpenCityId('ibadan'), false)
+  assert.equal(isOpenCityId('ibadan'), true)
+  assert.deepEqual(linksFrom('lagos').filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 120], ['rail', 9000, 90]])
+  assert.deepEqual(linksFrom('ibadan').filter((link) => link.to === 'lagos').map((link) => [link.mode, link.fare, link.seconds]), [['road', 3500, 120], ['rail', 9000, 90]])
 })

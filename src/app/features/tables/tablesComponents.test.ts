@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Component tests for the Tables panels, in the manner of src/app/components.test.ts: each
 // component is compiled by the project's own Vite configuration and rendered to a string with
 // Vue's server renderer, against the real store on a fake server. The client's state `T` is set by
@@ -51,6 +53,8 @@ const whotView = (patch: Record<string, unknown> = {}) => ({
 before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   assert.equal(await app.game.connect(), true)
   app.game.stop()

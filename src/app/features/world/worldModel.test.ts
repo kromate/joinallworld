@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../../game/cities/registry.ts';
+await preloadCityContent('lagos');
 // The world panels' logic without a browser: the drawing of a house, the directory's requests and
 // pages, finding the local government from a position, and the select's keys held equal to the
 // control kit's own (src/ui/controls.ts).

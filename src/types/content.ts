@@ -1094,6 +1094,12 @@ export interface LgaRules {
 
 /** A city as the rules see it (CITY_RULES). */
 export interface CityRules {
+  /** Inland cities disable offshore advertising. Omitted preserves older coastal saves. */
+  seaPlots?: boolean
+  /** Existing lives choose their first local unit when this city opens. */
+  legacyLgaChoice?: boolean
+  /** Previous preview venue ids mapped to this module's closest local equivalents. */
+  legacyVenueAliases?: Readonly<Record<string, string>>
   id: WorldCityId
   name: string
   /** 'open': lives can be lived there. */
@@ -1102,7 +1108,7 @@ export interface CityRules {
   unit: string
   units: readonly LgaDefinition[]
   /** Where trips to other cities leave from, per mode. */
-  hub: Record<CityLinkMode, string>
+  hub: Record<'road' | 'air', string> & Partial<Record<'rail', string>>
 }
 
 /** A connection between two cities (CITY_LINKS); it works in both directions. */
@@ -1151,7 +1157,7 @@ export interface CityDistrict<LocalUnit extends string = string, DistrictId exte
 export interface CityHub<HubId extends string = string> {
   id: HubId
   name: string
-  mode: CityLinkMode | 'rail'
+  mode: CityLinkMode
   venueId?: string
 }
 
@@ -1256,6 +1262,9 @@ export interface CityCultureCard {
 }
 
 export interface CityHousingContent {
+  /** Authored district identity for geographic placement. Older schematic homes omit it. */
+  districtId?: string
+  position?: { lon: number; lat: number }
   definition: HouseDefinition
   spot: HomeMapSpot
 }
@@ -1263,6 +1272,12 @@ export interface CityHousingContent {
 /** Prose and gameplay catalogues. This object is loaded only when the city is entered or previewed. */
 export interface CityContent<City extends string = string> {
   cityId: City
+  /** Local names and beta quotes for the shared travel mechanics. */
+  localModes?: readonly TravelModeDefinition[]
+  /** City wording only; dream ids, targets and rewards remain shared rules. */
+  dreamWording?: Readonly<Partial<Record<DreamId, Partial<Pick<DreamDefinition, 'label' | 'goal' | 'measure'>>>>>
+  /** Local explanation of a family outcome; its loan, skills and cash cannot be overridden. */
+  lotteryWording?: Readonly<Partial<Record<LotteryId, { bullets: readonly string[] }>>>
   venues: readonly CityVenueContent<City>[]
   regulars: readonly CityRegularContent<City>[]
   workplaces: readonly CityWorkplaceContent[]
@@ -1306,6 +1321,10 @@ export interface CityModuleRules<
   links: readonly CityLink[]
 }
 
+export interface CityRouteGeometry extends Pick<CityLink, 'a' | 'b' | 'mode'> {
+  points: readonly (readonly [number, number])[]
+}
+
 /** One folder supplies the eager rules and two independently lazy chunks for a playable city. */
 export interface CityModule<
   City extends string = string,
@@ -1318,6 +1337,7 @@ export interface CityModule<
   rules: CityModuleRules<City, State, LocalUnit, DistrictId, HubId>
   loadContent: () => Promise<CityContent<City>>
   loadMap: () => Promise<CityMapPack<City, LocalUnit>>
+  loadRoutes?: () => Promise<readonly CityRouteGeometry[]>
 }
 
 // ---- missions (content/missions.js) -------------------------------------------------------

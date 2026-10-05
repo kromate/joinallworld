@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: civic — tests for the pure civic rules: server/civic/*.js and src/game/systems/civic.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -8,7 +10,8 @@ import { createLife, dispatch, advanceLife, viewLife, actionTypes } from '../../
 import { makeContext } from '../../src/game/util.ts';
 import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../../src/game/clock.ts';
 import { blockReason, spotsOf } from '../../src/game/api.ts';
-import { VENUES } from '../../src/game/content/venues.ts';
+import { VENUES } from '../../src/game/cities/lagos/venues.ts';
+
 import { systems } from '../../src/game/registry.ts';
 import { ELECTION, HUNT, RADIO, SEA_PLOTS, BILLBOARDS, AD_COLOURS, AD_ICONS } from '../../src/game/content/civic.ts';
 import civicSystem, { adSlot, gemsFor, searchForGem, claimHuntPrize, fileCandidacy, castVote, payForAd, payForShoutout, civicEligibility } from '../../src/game/systems/civic.ts';

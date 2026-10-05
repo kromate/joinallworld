@@ -1,7 +1,10 @@
+import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+await preloadCityContent('lagos');
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { VENUES } from '../../game/content/venues.ts';
+import { VENUES } from '../../game/cities/lagos/venues.ts';
+
 import { rebuildCatalogue } from '../../game/systems/activities.ts';
 import { makeContext } from '../../game/util.ts';
 import { BUILDINGS, ROADS } from './layout.ts';

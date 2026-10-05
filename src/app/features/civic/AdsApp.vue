@@ -18,6 +18,7 @@ import CivicAction from './CivicAction.vue'
 import CivicStale from './CivicStale.vue'
 import CivicStatus from './CivicStatus.vue'
 import { AD_COLOURS, AD_ICONS, AD_TEXT, SEA_PLOTS } from './civicContent.ts'
+import { cityRules } from '../../../game/cities/registry.ts'
 import { contentFor } from '../../../game/cities/runtime.ts'
 import { adsRentRequest, adsUi as ui } from './civicDrafts.ts'
 import { adTooShort, adsKey, colourOf, adsPath, dateTime, ownedAds, previewText, rentWhy, roadside, seaPrice, seaSlot } from './civicModel.ts'
@@ -42,7 +43,10 @@ watch(() => props.params, (params) => {
   ui.seenParams = params
   const tab = (params as { tab?: unknown }).tab
   if (tab === 'sea' || tab === 'billboard') ui.tab = tab
+  if (cityRules(cityId.value)?.seaPlots === false) ui.tab = 'billboard'
 }, { immediate: true })
+
+watch(cityId, city => { if (cityRules(city)?.seaPlots === false) ui.tab = 'billboard' }, { immediate: true })
 
 const taken = computed(() => new Map((data.value?.sea.plots ?? []).map((plot) => [plot.slot, plot] as const)))
 const slot = computed(() => seaSlot(ui.row, ui.col))
@@ -84,7 +88,7 @@ const pick = (row: number, col: number): void => { ui.row = row; ui.col = col }
   <div class="ads">
     <div class="ui-seg" role="group" aria-label="Ad type">
       <button type="button" :aria-pressed="ui.tab === 'billboard'" @click="ui.tab = 'billboard'">Billboards</button>
-      <button type="button" :aria-pressed="ui.tab === 'sea'" @click="ui.tab = 'sea'">Sea plots</button>
+      <button v-if="data?.sea.rows" type="button" :aria-pressed="ui.tab === 'sea'" @click="ui.tab = 'sea'">Sea plots</button>
     </div>
     <p class="civic-note">Balance <b>{{ money(state.cash) }}</b></p>
     <CivicStatus :item="item" @retry="reload" />

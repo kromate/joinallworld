@@ -1,9 +1,13 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: career — tests for this owner's systems and content.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { createLife, dispatch, advanceLife, viewLife, VENUES } from '../life.ts';
+import { createLife, dispatch, advanceLife, viewLife } from '../life.ts';
+import { VENUES } from './cities/lagos/venues.ts';
+
 import { systems, registerSystem, emit, actionTypes } from './registry.ts';
 import { makeContext, isRecord } from './util.ts';
 import { lagosTime } from './clock.ts';

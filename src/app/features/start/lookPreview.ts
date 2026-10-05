@@ -8,7 +8,7 @@
 // silhouette; if WebGL is not available, or the context is lost, it shows the flat figure and
 // nothing is reported as an error.
 import type { AvatarPreview, PreviewFocus } from '../../../scene/avatar-preview.ts'
-import { markSpun } from './lookModel.ts'
+import { markSpun } from './lookState.ts'
 import type { SceneLook } from './lookModel.ts'
 
 export type StageMode = 'loading' | '3d' | '2d'

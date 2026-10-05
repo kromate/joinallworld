@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createLife } from '../life.ts'
@@ -62,4 +64,28 @@ test('a city module owns property choices, the home grid, map spot and weekly re
   economySystem.advance(renter, WEEK_SECONDS, makeContext({ now: WEEK_SECONDS * 1000, cityId: FICTIONAL_CITY_ID, seed: 'rent' }))
   assert.equal(renter.cash, 90)
   assert.equal(renter.ledger.filter((line) => line.reason.startsWith('Rent: Test flat')).length, 1)
+})
+
+
+test('the declared default rented home wins over catalogue order', async () => {
+  await loadCityContent('ibadan')
+  assert.equal(housesFor('ibadan')[0]?.id, 'ibadan-mokola-room')
+  assert.equal(defaultHouseFor('ibadan').id, 'ibadan-bodija-flat')
+  const life = createLife(null, { cityId: 'ibadan', isNew: true })
+  assert.equal(life.property.house, 'ibadan-bodija-flat')
+})
+
+
+test('rented home ids resolve through their authored district to the correct local government', () => {
+  for (const [house, lga] of [
+    ['ibadan-mokola-room', 'ibadan-north'], ['ibadan-bodija-flat', 'ibadan-north'], ['ibadan-dugbe-flat', 'ibadan-north-west'],
+    ['ibadan-ring-road-flat', 'ibadan-south-west'], ['ibadan-akobo-house', 'lagelu'],
+  ]) {
+    const state = createLife({ property: { house }, onboarding: { done: false, legacy: false } }, { cityId: 'ibadan' })
+    assert.equal(state.property.house, house)
+    assert.equal(state.estate.lga, lga, house)
+  }
+  const withoutChoice = createLife({ onboarding: { done: false, legacy: false } }, { cityId: 'ibadan' })
+  assert.equal(withoutChoice.property.house, 'ibadan-bodija-flat')
+  assert.equal(withoutChoice.estate.lga, 'ibadan-north')
 })

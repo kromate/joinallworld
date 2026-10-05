@@ -1,7 +1,9 @@
 // Portable settlement logic shared by the Node server and the Cloudflare worker (no I/O).
 import { normalizeCharacter, requireCharacterCity, fileCharacter } from './character.ts';
 import { cityRules } from '../src/game/content/world.ts';
-import { createLife, advanceLife, dispatch, hasAction, VENUES } from '../src/life.ts';
+import { createLife, advanceLife, dispatch, hasAction } from '../src/life.ts';
+import { VENUES } from '../src/game/cities/lagos/venues.ts';
+
 import type { ActionType, ActionBody } from '../src/types/actions.ts';
 import type { LifeContextInit, LifeState } from '../src/types/life.ts';
 import type { CityId } from '../src/types/protocol.ts';

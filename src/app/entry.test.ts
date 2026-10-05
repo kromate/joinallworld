@@ -77,6 +77,10 @@ test('the first download paints without the game shell, rules engine or city con
   assert.ok(gamePaths.length > 150, 'the lazy shell still uses the real engine')
 })
 
+test('the shared shell does not statically import a city venue or regular catalogue', () => {
+  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars)\.ts$/.test(path)), [])
+})
+
 test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell', () => {
   for (const pkg of ['three', '@sentry/browser', 'posthog-js']) {
     assert.ok(!reachable.packages.has(pkg), `${pkg} must not be in the entry`)
@@ -156,7 +160,7 @@ test('automatic game startup, including one selected city, stays within the orig
   const core = all.filter(name => /^startApp-[\w-]+\.js$/.test(name))
   assert.equal(core.length, 1, 'the automatic startup has one deferred game shell')
   const cityChunks = all.filter(name => /^city-.+-content-[\w-]+\.js$/.test(name))
-  // Lagos may share the synchronous engine chunk. Other cities load one content chunk on entry.
+  // Every city loads its own content; the shell closure alone is checked as well.
   for (const city of [null, ...cityChunks]) {
     const names = eagerChunks(dist, [...core, ...(city ? [city] : [])].map(name => `assets/${name}`))
     const total = names.reduce((sum, name) => {

@@ -191,7 +191,7 @@ const NIGERIA_STATES: Record<string, RegionEntry> = {
 };
 /** Countries with something to say. Every other country is `soon` (see regionEntry). Ids are ISO 3166-1 alpha-2, lower case. */
 const WORLD_COUNTRIES: Record<string, RegionEntry> = {
-  ng: { status: 'open', level: 'nigeria', teaser: 'Where Allworld begins. Lagos is open; more states are on the way.' },
+  ng: { status: 'open', level: 'nigeria', teaser: 'Where Allworld begins. Explore open cities across Nigeria; more states are on the way.' },
   gh: { status: 'planned', teaser: 'Accra: Osu nights, Makola market and the jollof argument settled in person.', hub: { name: 'Accra', lon: -0.19, lat: 5.6 } },
   ke: { status: 'planned', teaser: 'Nairobi: matatus, tech money and a national park at the edge of town.', hub: { name: 'Nairobi', lon: 36.82, lat: -1.29 } },
   za: { status: 'planned', teaser: 'Johannesburg: the City of Gold, townships, towers and amapiano all night.', hub: { name: 'Johannesburg', lon: 28.05, lat: -26.2 } },

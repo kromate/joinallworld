@@ -8,6 +8,8 @@ import { characterCity, legacyLifeCity, normalizeCharacter, swapLegacyLife } fro
 import { count, report } from './growth/metrics.ts'
 import { ratingsForCity, takePendingTableResults } from './growth/tables.ts'
 import type { CityLifeRecord, GrowthCollection, GrowthPlayerRecord, SessionRecord } from './types.ts'
+import { loadCityContent } from '../src/game/cities/registry.ts'
+await loadCityContent('lagos'); await loadCityContent('ibadan')
 
 const NOW = Date.UTC(2026, 0, 5, 9)
 const held = (cityId: 'lagos' | 'ibadan', cash: number, updatedAt: number): CityLifeRecord => ({ state: createLife({ cash }, { cityId, now: NOW }), updatedAt, salt: 'a'.repeat(32) })

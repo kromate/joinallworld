@@ -36,6 +36,8 @@ const guest = (state: LifeState): LifeState => ({ ...state, onboarding: { ...sta
 before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   assert.equal(await app.game.connect(), true)
   app.game.stop()
@@ -215,7 +217,7 @@ test('the home step: state, city, the starter house, find my area, and the local
     const html = await render('OnboardingApp')
     const words = text(html)
     assert.ok(words.includes('Step 3 of 4 · Home') && words.includes('Where do you live?'))
-    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Ibadan Abuja Port Harcourt Abeokuta Kano'))
+    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Abuja Port Harcourt Abeokuta Kano'))
     assert.ok(words.includes('Your free starter house') && words.includes('No rent'))
     const estate = app.game.view.value.estate
     if (estate.lgas.length) {

@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // Leaving a venue ends room membership and voice state — however the player leaves (a trip, the
 // automatic commute) and whichever request starts it. Room authority follows the life the store
 // holds: with the real store a departure whose write failed did not happen (nobody is revoked); with

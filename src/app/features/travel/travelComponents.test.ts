@@ -54,6 +54,8 @@ const escape = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '
 before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   assert.equal(await app.game.connect(), true)
   app.game.stop()
@@ -193,7 +195,7 @@ test('the trip bar: from, to, how, the time left, Cancel with the real rule; the
 test('the world layer: the panel only names the screen', async () => {
   await resetMap()
   const html = await render('/src/app/features/travel/MapApp.vue', { params: { layer: 'world' } })
-  assert.match(html, /^<h1 class="ui-sr">World map\. .+ is open; everything else is coming soon\.<\/h1>$/)
+  assert.match(html, /^<h1 class="ui-sr">World map\. Explore cities and travel routes\.<\/h1>$/)
   await resetMap()
 })
 

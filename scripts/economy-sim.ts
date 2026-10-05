@@ -1,3 +1,5 @@
+import { loadCityContent } from '../src/game/cities/registry.ts';
+await loadCityContent('lagos');
 /**
  * Economy simulation: scripted players on a virtual clock, played through the real rules engine
  * (createLife / dispatch / advanceLife — nothing here sets cash, needs or skills by hand).
@@ -44,9 +46,11 @@ import { makeContext } from '../src/game/util.ts';
 import { createLife, dispatch, advanceLife, viewLife } from '../src/life.ts';
 import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/clock.ts';
 import { blockReason, spotsOf, skillLevel } from '../src/game/api.ts';
-import { VENUES } from '../src/game/content/venues.ts';
+import { VENUES } from '../src/game/cities/lagos/venues.ts';
+
 import { JOBS } from '../src/game/content/jobs.ts';
-import { NPCS } from '../src/game/content/npcs.ts';
+import { NPCS } from '../src/game/cities/lagos/regulars.ts';
+
 import { LOTTERY, START_HOMES } from '../src/game/content/traits.ts';
 import { HOUSES, HOUSE_ORDER } from '../src/game/content/housing.ts';
 import { CARS, CAR_ORDER } from '../src/game/content/cars.ts';

@@ -44,6 +44,8 @@ const disabledButton = (html: string, label: string): boolean => new RegExp(`<bu
 before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   assert.equal(await app.game.connect(), true)
   app.game.stop()

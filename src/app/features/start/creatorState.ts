@@ -23,8 +23,10 @@ export interface CreatorUi {
   /** Play was sent from this creator: the life exists (or is being made), so the rest is a move-in, not a Play. */
   played: boolean
   offered: boolean
+  /** The city a life that does not exist yet will be born in (chosen on the Home step); null is the one the device is showing. */
+  city: string | null
 }
-export const cr = reactive<CreatorUi>({ draft: null, owner: null, step: 'who', origin: null, history: [], error: '', pending: '', settling: false, played: false, offered: false })
+export const cr = reactive<CreatorUi>({ draft: null, owner: null, step: 'who', origin: null, history: [], error: '', pending: '', settling: false, played: false, offered: false, city: null })
 
 /** Whose draft this is: the session and the city. */
 export const ownerOf = (view: Pick<PanelView, 'session' | 'cityId'>, mode: string): string => `${mode}:${view.session?.id ?? 'local'}:${view.cityId}`

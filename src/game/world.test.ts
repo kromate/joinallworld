@@ -1,4 +1,5 @@
-import { CITY_MAPS } from '../map3d/city-labels.ts';
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: world — tests for venues, travel, roadside events, weather and illness.
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test from 'node:test';
@@ -7,7 +8,10 @@ import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.ts
 import { registerSystem, systems } from './registry.ts';
 import { makeContext, isRecord } from './util.ts';
 import { isOpen } from './clock.ts';
-import { VENUES, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, HOME_SPOTS, CITY_LABELS, GIG_DAILY_LIMIT, venueLabel } from './content/venues.ts';
+import { COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES, GIG_DAILY_LIMIT, venueLabel } from './content/venues.ts';
+import { contentFor } from './cities/runtime.ts';
+import { VENUES, HOME_SPOTS } from './cities/lagos/venues.ts';
+
 import { TRAVEL_MODES, ALL_MODES, DEFAULT_MODE, TRAVEL_DURATION } from './content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from './content/events.ts';
 import { HEALTH } from './content/health.ts';
@@ -132,9 +136,9 @@ test('venue catalogue: 25 venues and the UNILAG campus with district, hours, sce
   assert.ok(seen.size >= 180, `${seen.size} activities`);
   // Places that must be reachable at any hour.
   for (const id of ['home', 'park', 'hospital', 'police', 'amala-shitta'] as const) assert.equal(need(VENUES[id], 'registered venue').hours, undefined, id);
-  for (const id of ids.filter((id) => { const venue = need(VENUES[id], 'registered venue'); return id !== 'home' && (!venue.cities || venue.cities.includes('ibadan')); })) assert.ok(need(CITY_LABELS.ibadan)[id]?.label, `Ibadan label for ${id}`);
-  assert.equal(venueLabel('park', 'ibadan'), 'Agodi Gardens'); assert.equal(venueLabel('airport', 'lagos'), 'Airport');
-  assert.deepEqual(Object.keys(CITY_MAPS).sort(), ['ibadan', 'lagos']);
+  const ibadan = contentFor('ibadan');
+  assert.equal(ibadan.venues.length, 25); assert.equal(ibadan.venues.some((venue) => venue.id === 'park' || venue.id === 'unilag'), false);
+  assert.equal(venueLabel('agodi-gardens', 'ibadan'), 'Agodi Gardens'); assert.equal(venueLabel('airport', 'lagos'), 'Airport');
   assert.deepEqual(Object.keys(HOME_SPOTS).sort(), ['banana', 'ikoyi', 'lekki', 'mushin', 'yaba']);
 });
 

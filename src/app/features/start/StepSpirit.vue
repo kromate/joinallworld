@@ -2,13 +2,16 @@
 // Step 3, "What drives you?": two traits and a dream, as cards. Chosen for the player to begin with,
 // so skipping the step still leaves a life that makes sense; "Pick for me" draws another set.
 import { DREAMS, TRAITS, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
+import { dreamsFor } from '../../../game/cities/characterContent.ts'
+import { cachedCityContent } from '../../../game/cities/registry.ts'
 import type { DreamId, TraitId } from '../../../types/life.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 
-const props = defineProps<{ traits: readonly TraitId[]; dream: DreamId | null }>()
+const props = defineProps<{ city?: string; traits: readonly TraitId[]; dream: DreamId | null }>()
 const emit = defineEmits<{ trait: [id: TraitId]; dream: [id: DreamId]; random: [] }>()
 const traitList = Object.values(TRAITS)
-const dreamList = Object.values(DREAMS)
+/** The dreams in the words of the city the life will be in (the same ids and rewards everywhere). */
+const dreamList = props.city && cachedCityContent(props.city) ? dreamsFor(props.city) : Object.values(DREAMS)
 const picked = (): string => `${props.traits.length} of ${TRAITS_REQUIRED} chosen. A third pick swaps out your first.`
 </script>
 

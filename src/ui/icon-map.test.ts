@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { glyphNameFor, glyphOfEmoji, iconFor, withGlyphs, stripLeadEmoji } from './icon-map.ts';
 import { hasGlyph, glyph, glyphFor } from './phone/icons.ts';
-import { VENUES, COMING_SOON } from '../game/content/venues.ts';
+import { COMING_SOON } from '../game/content/venues.ts';
+import { VENUES } from '../game/cities/lagos/venues.ts';
+
 import { FURNITURE, CATEGORIES, HOME_SPOTS, HOME_ACTIVITIES } from '../game/content/furniture.ts';
 import { INGREDIENTS, RECIPES } from '../game/content/food.ts';
 import { JOBS } from '../game/content/jobs.ts';
@@ -12,7 +14,9 @@ import { CARS } from '../game/content/cars.ts';
 import { ALL_MODES } from '../game/content/travel.ts';
 import { EVENTS } from '../game/content/events.ts';
 import { STARTER_GOALS, WISHES, PERKS } from '../game/content/goals.ts';
-import { NPCS, NPC_ACTIONS, PLAYER_ACTIONS, FAMILY } from '../game/content/npcs.ts';
+import { NPC_ACTIONS, PLAYER_ACTIONS, FAMILY } from '../game/content/npcs.ts';
+import { NPCS } from '../game/cities/lagos/regulars.ts';
+
 import { AD_ICONS } from '../game/content/civic.ts';
 import { HEALTH } from '../game/content/health.ts';
 import { TRAITS, DREAMS, START_HOMES, LOTTERY, MOODS } from '../game/content/traits.ts';

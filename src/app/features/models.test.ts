@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+await preloadCityContent('lagos');
 // The logic behind the converted screens, without a browser: what the HUD says for each
 // connection state, what an activity card shows, the Bank's badge, the Messages counts and
 // notification lines, the panel registry and the Phone's home screen, and the Report a

@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './registry.ts';
+await preloadCityContent('lagos');
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { createLife, dispatch, viewLife } from '../../life.ts'

@@ -74,16 +74,7 @@ if (!studentUnion) throw new TypeError('UNILAG layout has no student-union ancho
 studentUnion.caption = 'Meet friends, join a club or take a seat at the tables.';
 studentUnion.integration = Object.freeze({ requested: 'table-game-framework' });
 
-export const DISCOVERY_TRAIL: ReadonlyArray<TrailStopDefinition> = Object.freeze([
-  { id: 'main-gate', label: 'Enter through Main Gate', description: 'Start the Akoka walk.', venue: 'unilag', spot: 'main-gate' },
-  { id: 'new-hall', label: 'Find New Hall', description: 'Visit the northern residence zone.', venue: 'unilag', spot: 'cafeteria' },
-  { id: 'library', label: 'Study at the Library', description: 'Read and practise coding.', venue: 'unilag', spot: 'library' },
-  { id: 'engineering', label: 'Visit Engineering', description: 'See the engineering faculty landmark.', venue: 'unilag', spot: 'engineering' },
-  { id: 'sports', label: 'Reach the Sports Centre', description: 'Watch or play on the field.', venue: 'unilag', spot: 'sports-centre' },
-  { id: 'auditorium', label: 'Attend the Auditorium', description: 'Find a lecture or show.', venue: 'unilag', spot: 'auditorium' },
-  { id: 'lagoon', label: 'Walk to the Lagoon Front', description: 'Relax by the waterfront.', venue: 'unilag', spot: 'lagoon-front' },
-  { id: 'student-union', label: 'Find Student Union', description: 'Meet the students by the tables.', venue: 'unilag', spot: 'student-union' },
-]);
+export { DISCOVERY_TRAIL } from './trail.ts';
 
 const baseNpcs: Array<[string, CampusNpc]> = [
   ['aunty-ngozi', { id: 'aunty-ngozi', venue: 'unilag', name: 'Aunty Ngozi', role: 'Food seller at 2001', emoji: '👩🏾', quotes: ['The queue moves when you greet people.', 'Eat first, then face the lecture.'], at: 'cafeteria', beta: true }],

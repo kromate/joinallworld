@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { loadCityContent } from '../src/game/cities/registry.ts';
+await loadCityContent('lagos');
 /**
  * The new-player journey: the merged game, end to end, against the real server.
  *
@@ -33,7 +35,8 @@ import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { lagosTime } from '../src/game/clock.ts';
 import { EVENTS } from '../src/game/content/events.ts';
-import { NPCS } from '../src/game/content/npcs.ts';
+import { NPCS } from '../src/game/cities/lagos/regulars.ts';
+
 import { HELPER_COOLDOWN_SECONDS } from '../src/game/content/jobs.ts';
 import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.ts';
 import { MISSION_REWARDS } from '../src/game/content/missions.ts';

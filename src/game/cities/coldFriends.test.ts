@@ -1,3 +1,6 @@
+import { spawnSync } from 'node:child_process'
+import { loadCityContent as preloadCityContent } from './registry.ts';
+await preloadCityContent('lagos');
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { advanceLife, createLife, dispatch, viewLife } from '../../life.ts'
@@ -116,4 +119,33 @@ test('legacy Lagos NPC relationships keep their original saved shape', () => {
   assert.deepEqual(state.social.rel.kunle, { p: 20, d: 4, n: 2, npc: true, at: 9 })
   assert.equal(Object.hasOwn(state.social.rel.kunle ?? {}, 'npcSnapshot'), false)
   assert.deepEqual(createLife(structuredClone(state), { cityId: 'lagos' }).social, state.social)
+})
+
+
+test('a Lagos NPC friend survives a journey and a destination-only cold reload', async () => {
+  await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan')])
+  const now = Date.UTC(2026, 0, 5, 9)
+  const state = createLife({ cash: 100000, social: { rel: { kunle: { p: 20, d: 4, n: 2, npc: true, at: 9 } } } }, { cityId: 'lagos', now })
+  assert.equal(dispatch(state, { type: 'estate.relocate', payload: { to: 'ibadan', mode: 'road' } }, { now }).code, 'departed')
+  const seconds = state.activeAction?.remaining
+  assert.ok(typeof seconds === 'number')
+  assert.equal(advanceLife(state, seconds + 1, { now: now + (seconds + 1) * 1000 }).ok, true)
+  assert.equal(state.estate.city, 'ibadan')
+  assert.equal(state.social.rel.kunle?.npcSnapshot?.city, 'lagos')
+  const child = spawnSync(process.execPath, ['--experimental-strip-types', '--input-type=module', '-e', `
+    import { readFileSync } from 'node:fs';
+    import { loadCityContent, cachedCityContent } from './src/game/cities/registry.ts';
+    import { createLife, viewLife } from './src/life.ts';
+    await loadCityContent('ibadan');
+    const state = createLife(JSON.parse(readFileSync(0, 'utf8')), { cityId: 'ibadan', trustedSave: true });
+    console.log(JSON.stringify({ cold: cachedCityContent('lagos') === null, friend: state.social.rel.kunle,
+      card: viewLife(state).social.relationships.find(item => item.id === 'kunle') }));
+  `], { input: JSON.stringify(state), encoding: 'utf8' })
+  assert.equal(child.status, 0, child.stderr)
+  const result = JSON.parse(child.stdout)
+  assert.equal(result.cold, true)
+  assert.deepEqual(result.friend, state.social.rel.kunle)
+  assert.equal(result.card.name, 'Kunle')
+  assert.equal(result.card.points, 20)
+  assert.equal(result.card.friend, true)
 })

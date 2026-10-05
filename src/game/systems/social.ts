@@ -87,12 +87,12 @@ export const activityId = (npcId: string, actionId: string): string => `npc-${np
 interface Meta { npc: boolean; name?: unknown; npcDefinition?: NpcDefinition; cityId?: string }
 
 type NpcSnapshot = NonNullable<Relationship['npcSnapshot']>;
-const snapshotOf = (npc: NpcDefinition, cityId: string): NpcSnapshot | undefined => cityId === 'lagos' ? undefined : {
+const snapshotOf = (npc: NpcDefinition, cityId: string): NpcSnapshot => ({
   city: cityId,
   name: cleanText(npc.name, 24, 'Regular'),
   emoji: cleanText(npc.emoji, 12, '🧑🏾'),
   role: cleanText(npc.role, 48, 'Regular'),
-};
+});
 const cleanSnapshot = (value: unknown): NpcSnapshot | null => {
   if (!isRecord(value) || !isCityId(value.city)) return null;
   const name = cleanText(value.name, 24), emoji = cleanText(value.emoji, 12), role = cleanText(value.role, 48);
@@ -120,7 +120,7 @@ function relation(state: LifeState, id: string, meta: Meta, ctx: LifeContext | u
   }
   if (!npc && name) entry.name = cleanText(name, 24, 'Player');
   if (npc && meta.npcDefinition && meta.cityId) {
-    const snapshot = snapshotOf(meta.npcDefinition, meta.cityId);
+    const snapshot = meta.cityId === 'lagos' ? undefined : snapshotOf(meta.npcDefinition, meta.cityId);
     if (snapshot) entry.npcSnapshot = snapshot; else delete entry.npcSnapshot;
   }
   return entry;
@@ -358,6 +358,13 @@ const play = PLAYS ? {
       run: (state, payload, ctx) => serverOp(state, payload.op, payload, ctx) },
   },
   on: {
+    'city.changed'(state, { from }) {
+      for (const [id, rel] of Object.entries(state.social.rel)) {
+        if (!rel.npc || rel.npcSnapshot) continue;
+        const npc = cachedCityContent(from)?.regulars.find(item => item.id === id)?.definition;
+        if (npc) rel.npcSnapshot = snapshotOf(npc, from);
+      }
+    },
     'activity.completed'(state, { def }, ctx) {
       const reward = def?.reward;
       if (reward !== undefined && reward > 0) {
@@ -398,7 +405,10 @@ export default {
         if (origin && !authoritative) continue;
       } else if (isNpc) authoritative = knownRegular(id);
       if (isNpc ? !authoritative && !snapshot : !playerId(id)) continue;
-      const canonicalSnapshot = isNpc && snapshot && authoritative ? snapshotOf(authoritative, snapshot.city) : snapshot;
+      const canonicalSnapshot = isNpc && authoritative
+        ? snapshot ? snapshotOf(authoritative, snapshot.city)
+          : state.estate.city !== 'lagos' && cachedCityContent('lagos')?.regulars.some(item => item.id === id) ? snapshotOf(authoritative, 'lagos') : null
+        : snapshot;
       next.rel[id] = { p: clamp(round1(rel.p), 0, MAX_CLOSENESS), d: safeCount(rel.d) ? rel.d : 0, n: safeCount(rel.n) ? Math.min(rel.n, DAILY_INTERACTIONS) : 0,
         npc: isNpc, at: finite(rel.at) ? rel.at : 0,
         ...(isNpc && canonicalSnapshot ? { npcSnapshot: canonicalSnapshot } : {}),

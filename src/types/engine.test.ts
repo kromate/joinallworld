@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import { CITY_MAPS } from '../map3d/city-labels.ts';
 /**
  * Proves that src/types/{life,view,actions,content,registry}.ts still describe the running rules
@@ -18,7 +20,8 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { actionTypes, advanceLife, createLife, dispatch, makeContext, spotsOf, viewLife } from '../life.ts'
 import { serverOnlyReason, systems } from '../game/registry.ts'
-import { CITY_LABELS, COMING_SOON, HOME_SPOTS, SCENE_KINDS, VENUE_CATEGORIES, VENUES } from '../game/content/venues.ts'
+import { CITY_LABELS, COMING_SOON, SCENE_KINDS, VENUE_CATEGORIES } from '../game/content/venues.ts';
+import { HOME_SPOTS, VENUES } from '../game/cities/lagos/venues.ts';
 import { ALL_MODES, FARE_BANDS, TRAVEL_MODES } from '../game/content/travel.ts'
 import { JOBS } from '../game/content/jobs.ts'
 import { CATEGORIES, FURNITURE, HOME_ACTIVITIES, HOME_SPOTS as FURNITURE_HOME_SPOTS, KINDS, STARTER_FURNITURE } from '../game/content/furniture.ts'
@@ -26,7 +29,8 @@ import { INGREDIENTS, RECIPES } from '../game/content/food.ts'
 import { APPEARANCE, BOUTIQUE_PRICES, DEFAULT_LOOK, DREAMS, LOTTERY, MOODS, ONBOARDING_STEPS, START_HOMES, TRAITS } from '../game/content/traits.ts'
 import { CARS } from '../game/content/cars.ts'
 import { HOUSES } from '../game/content/housing.ts'
-import { FAMILY, FAMILY_CALL, NPC_ACTIONS, NPCS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.ts'
+import { FAMILY, FAMILY_CALL, NPC_ACTIONS, PLAYER_ACTIONS, TIERS, TRANSFER_LIMITS } from '../game/content/npcs.ts';
+import { NPCS } from '../game/cities/lagos/regulars.ts';
 import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.ts'
 import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.ts'
 import { HEALTH } from '../game/content/health.ts'
@@ -600,9 +604,8 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
 
 test('a trip between cities is the timed action kind intercity', () => {
   const state = onboarded()
-  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'city_not_open')
-  const open: LifeContext = { ...at(), openCities: ['ibadan'] }
-  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, open).code, 'departed')
+  assert.equal(act(state, 'estate.relocate', { to: 'abuja', mode: 'road' }, at()).code, 'city_not_open')
+  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'departed')
   const active = state.activeAction
   assert.ok(active && active.kind === 'intercity')
   complete(activeReaders.intercity(active), active, 'intercity action')
@@ -610,10 +613,10 @@ test('a trip between cities is the timed action kind intercity', () => {
   assert.equal(act(state, 'cancel', {}, at()).code, 'no_cancel')
   const arrival = MONDAY_9AM + active.duration * 1000
   assert.equal(settle(state, active.duration, arrival), 'completed')
-  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'park', ['lagos']])
+  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'agodi-gardens', ['lagos']])
   checkState(state, 'in another city')
   const shown = view(state, at(arrival))
-  assert.deepEqual([shown.estate.city, shown.estate.lga, shown.estate.cheapest], ['ibadan', null, null], 'a city without local governments has none to show')
+  assert.equal(shown.estate.city, 'ibadan'); assert.equal(shown.estate.lga, null); assert.ok(shown.estate.cheapest, 'Ibadan offers its cheapest local starter upgrade')
   assert.deepEqual(shown.estate.away.map((home) => home.city), ['lagos'])
 })
 
@@ -1141,7 +1144,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   for (const goal of STARTER_GOALS) assert.deepEqual(Object.keys(goal.done).filter((key) => !['events', 'tags', 'venue', 'hasJob', 'activity', 'fresh'].includes(key)), [], goal.id)
   declared<LgaDefinition>()(['id', 'name', 'zone', 'land', 'line', 'districts', 'beta'])(LAGOS_LGAS, 'local government')
   declared<HouseTierDefinition>()(['id', 'rank', 'label', 'icon', 'grid', 'cost', 'buildSeconds', 'groundRent', 'blurb', 'beta'])(Object.values(HOUSE_TIERS), 'house tier')
-  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub'])(Object.values(CITY_RULES).map(required), 'city')
+  declared<CityRules>()(['id', 'name', 'status', 'unit', 'units', 'hub', 'seaPlots', 'legacyLgaChoice', 'legacyVenueAliases'])(Object.values(CITY_RULES).map(required), 'city')
   declared<CityLink>()(['a', 'b', 'mode', 'label', 'icon', 'fare', 'seconds', 'km', 'beta'])(CITY_LINKS, 'city link')
   declared<CalendarEvent>()(['id', 'title', 'blurb', 'venue', 'icon', 'when', 'spray', 'table'])(EVENTS_CALENDAR, 'calendar event')
   for (const option of Object.values(HOUSE_STYLE).flat()) assert.deepEqual(Object.keys(option).filter((key) => !['id', 'label', 'hex', 'price'].includes(key)), [], option.id)

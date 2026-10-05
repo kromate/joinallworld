@@ -75,6 +75,8 @@ export interface PackLga {
 }
 /** What a city module exports, and what the maps are drawn from. `decorate` receives a geometry batch (src/scene/build) and helpers. */
 export interface CityPack {
+  /** Ground continues beyond this inland footprint; uncovered space is not ocean. */
+  inland?: boolean
   id: string
   name: string
   bounds: PackBounds

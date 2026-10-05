@@ -76,6 +76,8 @@ export default defineConfig({
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
     if (city) return `city-${city[1]}-${city[2]}`
+    const geometry = id.match(/\/src\/game\/cities\/([^/]+)\/(landmarks|rail|geometry)\.ts$/)
+    if (geometry) return `city-${geometry[1]}-${geometry[2]}`
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
@@ -84,6 +86,6 @@ export default defineConfig({
     if (/\/src\/scene\/(movement|build)\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
-    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
+    if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names|trail)\.ts$|tables\/places\.ts$|scene\/walk-grid\.ts$)/.test(id)) return 'engine'
   } } } },
 });

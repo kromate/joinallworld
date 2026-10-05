@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await preloadCityContent('lagos');
 // Keeping the avatar in sight, walking round people, stepping up where the steps are, and the
 // feature-detected avatar rig: the pure parts, without a renderer.
 import test from 'node:test';

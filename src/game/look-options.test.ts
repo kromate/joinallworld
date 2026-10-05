@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: character — the beta look options: extra hairstyles and outfits, accessories, face and expression.
 // They are add-only: a look or a wardrobe that uses none of them is stored exactly as it always was.
 import test from 'node:test';

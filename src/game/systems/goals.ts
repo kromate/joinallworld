@@ -1,3 +1,4 @@
+import { dreamFor, dreamsFor } from '../cities/characterContent.ts';
 import { contentFor, venueFor, venuesFor, jobFor } from '../cities/runtime.ts';
 /**
  * OWNER: character
@@ -245,8 +246,8 @@ function checkDream(state: LifeState, ctx: LifeContext): void {
   if (!g.dream || g.dreamDone || dreamProgress(state) < 1) return;
   g.dreamDone = true; // set first: the reward's own wallet event must not pay it again
   addStars(state, DREAM_REWARD.stars);
-  const paid = credit(state, DREAM_REWARD.cash, `Dream achieved: ${DREAMS[g.dream].label}`, ctx);
-  note(state, `Dream achieved: ${DREAMS[g.dream].label} · ${paid ? `+${naira(DREAM_REWARD.cash)} ` : ''}+${DREAM_REWARD.stars}✨`);
+  const paid = credit(state, DREAM_REWARD.cash, `Dream achieved: ${dreamFor(state.estate.city, g.dream).label}`, ctx);
+  note(state, `Dream achieved: ${dreamFor(state.estate.city, g.dream).label} · ${paid ? `+${naira(DREAM_REWARD.cash)} ` : ''}+${DREAM_REWARD.stars}✨`);
   emit(state, 'dream.completed', { id: g.dream }, ctx);
 }
 
@@ -424,7 +425,7 @@ function chipOf(state: LifeState, ctx: LifeContext): GoalChip {
   if (!state.job) return { kind: 'guide', icon: '💼', title: 'Find a job', hint: 'Open Phone → Jobs', open: 'jobs' };
   const firstWish = g.wishes[0], wish = firstWish ? wishTable(state)[firstWish.id] : undefined;
   if (wish) return { kind: 'guide', icon: wish.icon, title: wish.label, hint: `${wish.hint} · +${WISH_STARS}✨`, open: 'goals' };
-  if (g.dream && !g.dreamDone) return { kind: 'guide', icon: DREAMS[g.dream].icon, title: DREAMS[g.dream].label, hint: `${Math.floor(dreamProgress(state) * 100)}% · ${DREAMS[g.dream].goal}`, open: 'goals' };
+  if (g.dream && !g.dreamDone) return { kind: 'guide', icon: DREAMS[g.dream].icon, title: dreamFor(state.estate.city, g.dream).label, hint: `${Math.floor(dreamProgress(state) * 100)}% · ${dreamFor(state.estate.city, g.dream).goal}`, open: 'goals' };
   const workplace = workplaceOf(state);
   return { kind: 'guide', icon: '💼', title: 'Work a shift', hint: 'Earn towards your next upgrade', ...(workplace ? { go: workplace } : { open: 'jobs' }) };
 }
@@ -467,9 +468,9 @@ const actions = {
   },
   'goals.set-dream'(state, payload, ctx) {
     const g = state.goals;
-    if (g.dream) return fail(state, 'dream_already_chosen', `Your dream is already ${DREAMS[g.dream].label}. A dream is chosen once per life.`);
-    const dreamId = payload?.dream, dream = isDream(dreamId) ? DREAMS[dreamId] : null;
-    if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${Object.values(DREAMS).map((item) => item.label).join(', ')}.`);
+    if (g.dream) return fail(state, 'dream_already_chosen', `Your dream is already ${dreamFor(state.estate.city, g.dream).label}. A dream is chosen once per life.`);
+    const dreamId = payload?.dream, dream = isDream(dreamId) ? dreamFor(state.estate.city, dreamId) : null;
+    if (!dream) return fail(state, 'invalid_dream', `Choose one dream: ${dreamsFor(state.estate.city).map((item) => item.label).join(', ')}.`);
     g.dream = dream.id;
     state.message = `Dream chosen: ${dream.label}.`;
     checkDream(state, ctx);
@@ -572,8 +573,8 @@ export default {
       }),
       rerolls: { ...rerolls, blocked: rerolls.left > 0 ? null : `No re-rolls left today (${WISH_REROLLS_PER_DAY} a day). They reset at midnight, Lagos time.` },
       granted: g.granted,
-      dream: g.dream ? { ...DREAMS[g.dream], progress, percent: Math.floor(progress * 100), done: g.dreamDone, reward: DREAM_REWARD } : null,
-      dreams: g.dream ? [] : Object.values(DREAMS),
+      dream: g.dream ? { ...dreamFor(state.estate.city, g.dream), progress, percent: Math.floor(progress * 100), done: g.dreamDone, reward: DREAM_REWARD } : null,
+      dreams: g.dream ? [] : dreamsFor(state.estate.city),
       feed: g.feed.map((item) => ({ ...item })),
       seq: g.seq,
     };

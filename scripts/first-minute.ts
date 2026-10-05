@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { loadCityContent } from '../src/game/cities/registry.ts';
+await loadCityContent('lagos');
 /**
  * The scripted first minute: one brand-new player, from the landing screen's Play to a settled
  * life, against the real server.

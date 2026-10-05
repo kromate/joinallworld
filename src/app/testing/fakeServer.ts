@@ -1,3 +1,5 @@
+import { loadCityContent } from '../../game/cities/registry.ts';
+await loadCityContent('lagos');
 // A stand-in for the game server, for tests of the new shell: the three core routes (session,
 // life, action) answered by the real rules engine, in process. It keeps the server's promises the
 // client depends on — a session cookie is not needed, an action id is applied once and a repeat

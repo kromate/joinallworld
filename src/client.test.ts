@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The client is a read-only mirror: offline it sends nothing and grants nothing.
 import test from 'node:test';
 import assert from 'node:assert/strict';

@@ -9,21 +9,29 @@
 // government the player confirms.
 import '../../../ui/panels/world.css'
 import { computed, nextTick, ref, watch } from 'vue'
-import { DEFAULT_STYLE } from '../../../game/content/world.ts'
+import { DEFAULT_STYLE, lgasOf } from '../../../game/content/world.ts'
+import { loadCityContent } from '../../../game/cities/registry.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useApp } from '../../state/app.ts'
 import HouseArt from '../world/HouseArt.vue'
 import { findLga, lgaCardUi as ui } from '../world/lgaCardModel.ts'
 import type { AreaChoice } from './onboardingModel.ts'
-import { PLACES, cityOpen, firstOpen, groupLgas, stateOpen, unitOf } from './placesModel.ts'
+import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
+import { cr } from './creatorState.ts'
+import type { LgaCard } from '../../../types/view.ts'
 
+// `choosable`: a life that does not exist yet may start in any open city, so the city chips choose where it will be born
+// (the choice is kept in cr.city and rides with Play). A life that already exists settles where it is.
+const props = defineProps<{ choosable?: boolean }>()
 const area = defineModel<AreaChoice | undefined>({ required: true })
 const { game } = useApp()
 const estate = computed(() => game.view.value.estate)
 
 const start = firstOpen()
-const stateId = ref(start?.state.id ?? '')
-const cityId = ref(start?.city.id ?? '')
+const first = (props.choosable ? cr.city : null) ?? (stateOfCity(estate.value.city) ? estate.value.city : start?.city.id ?? '')
+const stateId = ref(stateOfCity(first)?.id ?? start?.state.id ?? '')
+const cityId = ref(first)
+const loading = ref(false)
 const country = PLACES[0]
 const states = computed(() => country?.states ?? [])
 const openStates = computed(() => states.value.filter(stateOpen))
@@ -31,18 +39,30 @@ const stateNow = computed(() => states.value.find((item) => item.id === stateId.
 const openCities = computed(() => (stateNow.value?.cities ?? []).filter((item) => cityOpen(item.id)))
 const soon = computed(() => [...states.value.flatMap((item) => item.cities.filter((city) => !cityOpen(city.id)))])
 const cityNow = computed(() => stateNow.value?.cities.find((item) => item.id === cityId.value) ?? null)
-const here = computed(() => cityNow.value !== null && cityNow.value.id === estate.value.city)
+const here = computed(() => cityNow.value !== null && (props.choosable ? !loading.value : cityNow.value.id === estate.value.city))
 const unit = computed(() => unitOf(cityId.value))
 
+/** The city whose local governments are offered: the life's own, or (for a life not yet started) the one chosen here. */
+async function pickCity(id: string): Promise<void> {
+  if (id === cityId.value && !props.choosable) return
+  const before = cityId.value
+  cityId.value = id
+  if (!props.choosable) return
+  loading.value = true
+  try { await loadCityContent(id); cr.city = id } catch { cityId.value = before } finally { loading.value = false }
+  if (before !== cityId.value) { area.value = undefined; Object.assign(ui, { found: null, note: '' }) }
+}
 function pickState(id: string): void {
   stateId.value = id
   const next = states.value.find((item) => item.id === id)?.cities.find((city) => cityOpen(city.id))
-  if (next) cityId.value = next.id
+  if (next) void pickCity(next.id)
 }
+const cityLabel = computed(() => cityNow.value?.name ?? estate.value.cityName)
+const lgas = computed<readonly LgaCard[]>(() => cityId.value === estate.value.city ? estate.value.lgas : lgasOf(cityId.value).map((item) => ({ id: item.id, name: item.name, line: item.line, land: item.land, levy: 0 })))
 
 const query = ref('')
-const groups = computed(() => groupLgas(estate.value.city, estate.value.lgas, query.value))
-const picked = computed(() => estate.value.lgas.find((item) => item.id === area.value?.lga) ?? null)
+const groups = computed(() => groupLgas(cityId.value, lgas.value, query.value))
+const picked = computed(() => lgas.value.find((item) => item.id === area.value?.lga) ?? null)
 // A found answer is asked about only until the player has chosen.
 const found = computed(() => (ui.found && !picked.value ? ui.found : null))
 
@@ -62,9 +82,9 @@ watch(found, async (now) => {
 function choose(id: string): void { area.value = { lga: id, via: 'manual' }; Object.assign(ui, { found: null, note: '' }) }
 function yes(): void { if (ui.found) { area.value = { lga: ui.found.id, via: 'device' }; Object.assign(ui, { found: null, note: '' }) } }
 function no(): void { Object.assign(ui, { found: null, note: '' }) }
-async function find(): Promise<void> { area.value = undefined; await findLga(ui, estate.value.city) }
+async function find(): Promise<void> { area.value = undefined; await findLga(ui, cityId.value) }
 function surprise(): void {
-  const all = estate.value.lgas
+  const all = lgas.value
   const item = all[Math.floor(Math.random() * all.length)]
   if (item) choose(item.id)
 }
@@ -75,14 +95,14 @@ function surprise(): void {
     <nav class="cr-places" aria-label="Where in the world">
       <ol>
         <li>{{ country?.name }}</li>
-        <li v-if="openStates.length <= 1">{{ stateNow?.name }}</li>
-        <li v-if="openStates.length <= 1">{{ cityNow?.name }}</li>
+        <li v-if="openStates.length <= 1 || !choosable">{{ stateNow?.name }}</li>
+        <li v-if="openStates.length <= 1 || !choosable">{{ cityNow?.name }}</li>
       </ol>
-      <div v-if="openStates.length > 1" class="cr-chips" role="group" aria-label="State">
+      <div v-if="openStates.length > 1 && choosable" class="cr-chips" role="group" aria-label="State">
         <button v-for="item in openStates" :key="item.id" type="button" class="cr-chip" :aria-pressed="item.id === stateId" @click="pickState(item.id)">{{ item.name }}</button>
       </div>
-      <div v-if="openCities.length > 1" class="cr-chips" role="group" aria-label="City">
-        <button v-for="item in openCities" :key="item.id" type="button" class="cr-chip" :aria-pressed="item.id === cityId" @click="cityId = item.id">{{ item.name }}</button>
+      <div v-if="openCities.length > 1 && choosable" class="cr-chips" role="group" aria-label="City">
+        <button v-for="item in openCities" :key="item.id" type="button" class="cr-chip" :aria-pressed="item.id === cityId" @click="pickCity(item.id)">{{ item.name }}</button>
       </div>
       <p v-if="soon.length" class="cr-soon">More places are opening: <span v-for="item in soon" :key="item.id">{{ item.name }}</span></p>
     </nav>
@@ -108,12 +128,12 @@ function surprise(): void {
       </div>
       <p v-if="ui.note" class="cr-note is-warn" role="status">{{ ui.note }}</p>
 
-      <label class="cr-field">Or choose from the {{ estate.lgas.length }} {{ unit }}s of {{ estate.cityName }}
+      <label class="cr-field">Or choose from the {{ lgas.length }} {{ unit }}s of {{ cityLabel }}
         <input v-model="query" type="search" name="area-search" placeholder="Search by name" autocomplete="off" data-key="area:search">
       </label>
       <div v-for="group in groups" :key="group.zone" class="cr-lgas">
         <h3 v-if="group.title">{{ group.title }}</h3>
-        <div class="cr-cards is-areas" role="group" :aria-label="group.title || estate.cityName">
+        <div class="cr-cards is-areas" role="group" :aria-label="group.title || cityLabel">
           <button v-for="item in group.items" :key="item.id" type="button" class="cr-card" :data-lga="item.id" :data-key="`area:${item.id}`" :aria-pressed="area?.lga === item.id" @click="choose(item.id)"><strong>{{ item.name }}</strong><small>{{ item.line }}</small></button>
         </div>
       </div>

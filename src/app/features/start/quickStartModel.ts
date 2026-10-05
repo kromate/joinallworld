@@ -6,16 +6,8 @@ import type { Look } from '../../../types/life.ts'
 import type { PanelView } from '../../types/panel.ts'
 import { PRESETS, nameProblem, starterLook } from './startBoundary.ts'
 
-export const PLAY_HELD = 'Choose your look and tap Play to start.'
 export const LOOK_REFUSED = 'That character could not be used. Here is another — tap Play again.'
-
-/** The life is held for its look, and the connection to confirm it is there. */
-export const held = (view: Pick<PanelView, 'onboarding' | 'connected'>): boolean => view.onboarding?.required === true && view.connected
-/**
- * A life whose look the server has not confirmed is held here — unless its Play is being sent right
- * now (the same rule is on its stub in src/ui/panels/index.js, so it holds before this file has arrived).
- */
-export const quickStartRequired = (view: Pick<PanelView, 'onboarding' | 'connected'>, sending: boolean): string | null => (held(view) && !sending ? PLAY_HELD : null)
+export { PLAY_HELD, held, quickStartRequired } from './startGate.ts'
 
 /** The sentence under the lead: the server's refusal wins over the sheet's own error. */
 export const shownError = (own: string, problem: { reason?: string } | null | undefined): string => own || problem?.reason || ''

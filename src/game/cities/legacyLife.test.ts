@@ -6,6 +6,9 @@ import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 import { createLife, viewLife } from '../../life.ts'
 import type { LifeState } from '../../types/life.ts'
+import { loadCityContent } from '../../game/cities/registry.ts'
+await loadCityContent('lagos')
+await loadCityContent('ibadan')
 
 const saved = (): Record<string, unknown> => JSON.parse(readFileSync(new URL('./testing/legacy-lagos-life.json', import.meta.url), 'utf8')) as Record<string, unknown>
 const plain = (state: LifeState): Record<string, unknown> => JSON.parse(JSON.stringify(state)) as Record<string, unknown>
@@ -27,14 +30,15 @@ test('a Lagos life saved without the city fields is read as it was, with its job
   assert.equal(viewLife(state, { now: NOW, cityId: 'lagos' }).career.employed, true)
 })
 
-test('an older life filed under Ibadan keeps its city, its job and its venues', () => {
+test('an older life filed under Ibadan keeps its city and its job, and its old venues become the local ones', () => {
   const old = saved()
   ;(old.estate as { city: string }).city = 'ibadan'
   const state = createLife(old, { now: NOW, cityId: 'ibadan' })
   assert.equal(state.estate.city, 'ibadan')
-  assert.deepEqual([state.job, state.career.city, state.location], ['community-helper', 'ibadan', 'amala-shitta'])
-  assert.equal(state.civic.hunt?.city, 'ibadan')
-  assert.deepEqual(state.travel.visited, (old.travel as { visited: string[] }).visited)
+  assert.deepEqual([state.job, state.career.city, state.location], ['community-helper', 'ibadan', 'dugbe-amala'])
+  assert.equal(state.civic.hunt, null, 'the old hunt named places that are not in the new city: today starts a new one')
+  assert.equal(state.cash, old.cash, 'the wallet is kept')
+  assert.equal(state.estate.lga, 'ibadan-north', 'a local government of the new city, to be chosen once')
   // The same record read where the engine is asked for Lagos still belongs to the city it names.
   assert.equal(createLife(old, { now: NOW, cityId: 'lagos' }).estate.city, 'ibadan')
 })

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { loadCityContent } from '../src/game/cities/registry.ts';
+await loadCityContent('lagos');
 /**
  * Two players, one city: the multiplayer seams played end to end against the real server.
  *
@@ -32,8 +34,10 @@ import { WebSocket } from 'ws';
 import { createServer } from '../server/server.ts';
 import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
-import { VENUES } from '../src/game/content/venues.ts';
-import { NPCS } from '../src/game/content/npcs.ts';
+import { VENUES } from '../src/game/cities/lagos/venues.ts';
+
+import { NPCS } from '../src/game/cities/lagos/regulars.ts';
+
 import { EVENTS } from '../src/game/content/events.ts';
 import { isOpen, minutesUntilOpen, lagosTime } from '../src/game/clock.ts';
 import type { AddressInfo } from 'node:net';

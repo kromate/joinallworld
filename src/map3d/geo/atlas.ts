@@ -1,4 +1,4 @@
-import { cachedCityContent, loadCityContent, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
+import { cachedCityContent, loadCityContent, loadCityRoutes, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
  * OWNER: world
  * The atlas: ONE continuous map with three levels of detail — the world, Africa, Nigeria — and
@@ -158,7 +158,7 @@ const clamp = (value: number, low: number, high: number): number => Math.max(low
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }) as Record<string, string>)[c]!);
 const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en-NG')}`;
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
-const GLYPH = { bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
+const GLYPH = { rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
 export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onTravel = () => {}, routes = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
@@ -197,7 +197,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   const labelNodes = new Map<string, HTMLElement>();
   if (doc) {
     root = doc.createElement('section');
-    root.className = 'atlas'; root.setAttribute('aria-label', 'World map: the world, Africa and Nigeria. Lagos is open; everything else is coming soon.');
+    root.className = 'atlas'; root.setAttribute('aria-label', 'World map: explore the world, Africa, Nigerian cities and travel routes.');
     root.innerHTML = `<div class="atlas-labels" aria-hidden="true"></div>
       <div class="atlas-marker" aria-hidden="true" hidden></div>
       <div class="atlas-frame">
@@ -318,6 +318,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     // A lagoon inside an open state sits on that state's lifted plate; the other lakes lie on the ordinary land.
     const lakeMesh = mesh.plates(lakes, { height: (lake) => (/lagoon/i.test(lake.id) ? HEIGHT.open + 0.006 : y), colour: () => INK.water, walls: false });
     addLayer(new THREE.Mesh(lakeMesh.geometry, flatMaterial()), [NIGERIA], { extrude: true });
+    const routeCities = [...new Set(allCityLinks().flatMap(link => [link.a, link.b]))];
+    void Promise.all(routeCities.map(loadCityRoutes)).then(groups => {
+      if (destroyed) return;
+      for (const route of groups.flat()) authoredRoutes.set(linkId(route), { id: linkId(route), mode: route.mode, towns: null, points: route.points });
+      drawHighlights(); request();
+    }, () => {});
     // Roads and flights between cities, in one mesh.
     const seen = new Set(), roads = [];
     for (const road of HIGHWAYS) for (let i = 1; i < road.towns.length; i++) {
@@ -496,7 +502,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const path = routePath(routeShown);
     swap(routeLine, path && level === NIGERIA ? mesh.ribbons([{ colour: '#ffffff', width: 7, points: pathPoints(path, HEIGHT.state + 0.03) }, { colour: INK.route, width: 4, points: pathPoints(path, HEIGHT.state + 0.032) }]).geometry : null);
   }
-  const routePath = (id: string | null) => { const link = id ? allCityLinks().find((item) => linkId(item) === id) : null; return link ? linkPath(link, cityEntry) : null; };
+  const authoredRoutes = new Map<string, LinkPath>();
+  const pathOf = (link: { a: string; b: string; mode: string }) => authoredRoutes.get(linkId(link)) ?? (link.mode === 'rail' ? null : linkPath(link, cityEntry));
+  const routePath = (id: string | null) => { const link = id ? allCityLinks().find((item) => linkId(item) === id) : null; return link ? pathOf(link) : null; };
 
   // ---- drawing: on demand, and only as long as something moves ---------------------------------------
   function request() { if (!rafId && shown() && raf) rafId = raf(tick); }
@@ -590,11 +598,11 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const place = tripPoint(run.path, run.line, run.from, run.progress ?? 0), where = screenOf(place.x, HEIGHT.state + 0.05 + place.height, -place.y);
     ui.marker.hidden = false;
     ui.marker.className = `atlas-marker is-${place.mode === 'air' ? 'air' : 'road'}`;
-    if (ui.marker.dataset.mode !== place.mode) { ui.marker.dataset.mode = place.mode; ui.marker.innerHTML = ICON(place.mode === 'air' ? GLYPH.plane : GLYPH.bus); }
+    if (ui.marker.dataset.mode !== place.mode) { ui.marker.dataset.mode = place.mode; ui.marker.innerHTML = ICON(place.mode === 'air' ? GLYPH.plane : place.mode === 'rail' ? GLYPH.rail : GLYPH.bus); }
     ui.marker.style.transform = `translate(${where.x.toFixed(1)}px,${where.y.toFixed(1)}px)`;
   }
   function startRun(link: { a: string; b: string; mode: string }, from: string): Run | null {
-    const path = linkPath(link, cityEntry);
+    const path = pathOf(link);
     return path ? { path, line: measure(path.points), from, progress: 0 } : null;
   }
   /** Play a link's journey on the map without leaving: a preview, clearly not a real trip. */
@@ -662,7 +670,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     const guide = info.city ? cachedCityContent(info.city.id)?.thingsToDo.slice(0, 5) : undefined;
     const routeRow = (route: RouteInfo) => {
       const on = routeShown === route.id, playing = preview && routeShown === route.id;
-      return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
+      return `<li class="${on ? 'is-on' : ''}"><button type="button" class="atlas-route" data-atlas-route="${esc(route.id)}" aria-pressed="${on}"><span class="atlas-route-mode" aria-hidden="true">${ICON(route.mode === 'air' ? GLYPH.plane : route.mode === 'rail' ? GLYPH.rail : GLYPH.bus)}</span><span><b>${esc(route.label)}</b><small>${naira(route.fare)} · about ${route.minutes} min · ${route.km} km · from ${esc(route.hub)}</small></span></button>
         ${on ? `<div class="atlas-route-more">${route.live ? `<button type="button" class="atlas-go is-small" data-atlas-travel="${esc(route.to)}:${esc(route.mode)}">Travel · ${naira(route.fare)}</button>` : `<p>${esc(route.why || '')}</p>`}<button type="button" class="atlas-chip" data-atlas-preview="${esc(route.id)}" ${playing ? 'disabled' : ''}>${playing ? 'Showing the journey…' : 'Preview the journey'}</button></div>` : ''}</li>`;
     };
     const more = Boolean(info.preview || info.routes.length || info.planned || info.wait);

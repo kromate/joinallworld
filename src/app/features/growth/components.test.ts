@@ -47,6 +47,8 @@ const hello = (over: Partial<HelloOk> = {}): HelloOk => ({
 before(async () => {
   globalThis.fetch = server.fetch
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
+  await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   growth = (await load<{ useGrowth: () => Growth }>('/src/app/features/growth/useGrowth.ts')).useGrowth()
   social = (await load<{ social: SocialClientState }>('/src/app/features/social/useSocial.ts')).social

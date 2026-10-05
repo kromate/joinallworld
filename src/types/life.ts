@@ -50,7 +50,7 @@ export type HouseTierId = 'starter' | 'bq' | 'bungalow' | 'duplex' | 'villa'
 export type HouseStyleField = 'shape' | 'wall' | 'roof' | 'door' | 'windows' | 'fence' | 'yard' | 'sign'
 
 /** How two cities connect (content/world.js CITY_LINKS[].mode). */
-export type CityLinkMode = 'road' | 'air'
+export type CityLinkMode = 'road' | 'air' | 'rail'
 
 /** Houses a life can live in (content/housing.js HOUSES; also the keys of venues.js HOME_SPOTS and economy.js RENTS). */
 export type HouseId<City extends string = string> = import('../game/cities/ids.ts').HouseId<City>

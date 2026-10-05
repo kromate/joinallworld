@@ -50,7 +50,7 @@ export const LAGOS_RULES = Object.freeze({
   status: 'open',
   unit: 'local government',
   units: LAGOS_LGAS,
-  hub: { road: 'Ojota Motor Park', air: 'the airport at Ikeja' },
+  hub: { road: 'Ojota Motor Park', air: 'the airport at Ikeja', rail: 'Mobolaji Johnson Station at Ebute Metta' },
   state: { id: 'lagos', name: 'Lagos State', unit: 'local government' },
   country: { id: 'ng', name: 'Nigeria' },
   timezone: 'Africa/Lagos',

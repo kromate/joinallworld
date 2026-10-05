@@ -7,6 +7,8 @@ import { COMEBACK, NEVER, awayPlan, candidates, decide, defaultPrefs, digestAllo
 import { mailWords, whenWords } from './comeback-words.ts';
 import type { ComebackType, DecideInput, Facts, Memory, Plan } from './comeback.ts';
 import type { LifeState } from '../types/life.ts';
+import { loadCityContent } from '../game/cities/registry.ts'
+await loadCityContent('lagos')
 
 const HOUR = 3600000, DAY = 86400000;
 /** Thursday 2026-01-08, 12:00 Lagos (UTC+1): outside quiet hours. */

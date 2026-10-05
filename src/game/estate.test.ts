@@ -1,3 +1,5 @@
+import { allCityLinks, cityRules, loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: world — the house everyone has, local governments, styles, upgrades and travel between cities.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -7,7 +9,7 @@ import { makeContext, isRecord } from './util.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { ActionOutcome, LifeContext, LifeContextInit, LifeState, WorldCityId } from '../types/life.ts';
 import { HOUSES } from './content/housing.ts';
-import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
+import { ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8), DAY = 86400000;
 const at = (now = MONDAY_9AM, seed = 'estate', extra: LifeContextInit = {}): LifeContext => makeContext({ now, cityId: 'lagos', seed, ...extra });
@@ -154,10 +156,10 @@ test('styling: free options cost nothing, priced ones are charged through the le
   assert.equal(act(broke, 'estate.style', { style: { yard: 6 } }).code, 'insufficient_funds');
 });
 
-test('upgrading in a city with no local governments is refused, not thrown, and costs nothing', () => {
+test('upgrading with a local government outside the active city is refused, not thrown, and costs nothing', () => {
   const { state } = onboard({ house: 'mushin', own: true, lga: 'badagry' }, 'ajebutter');
   const cash = state.cash;
-  state.estate.city = 'ibadan' as typeof state.estate.city; // a city that has no local governments yet
+  state.estate.city = 'ibadan' as typeof state.estate.city; // Badagry is not an Ibadan local government
   const refused = act(state, 'estate.upgrade', { to: 'bq' });
   assert.equal(refused.ok, false);
   assert.equal(refused.code, 'insufficient_funds', 'the refusal the action already has for a house that cannot be paid for');
@@ -206,37 +208,39 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
   conserved(state, 5000);
 });
 
-test('cities connect as data, and a trip to a city that is not open is refused with the reason and charges nothing', () => {
-  assert.equal(CITY_RULES.lagos.status, 'open');
-  const soon: WorldCityId[] = ['ibadan', 'abuja', 'port-harcourt'];
-  for (const id of soon) { const city = CITY_RULES[id]; assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
-  for (const link of CITY_LINKS) { assert.ok(CITY_RULES[link.a] && CITY_RULES[link.b] && ['road', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
+test('cities connect as data, while a trip to closed Abuja is refused without charging', () => {
+  for (const id of ['lagos', 'ibadan'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
+  const soon: WorldCityId[] = ['abuja', 'port-harcourt'];
+  for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
+  for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds >= 30 && link.seconds <= 600 && link.beta); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
   const cash = state.cash;
-  const refused = act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' });
-  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Ibadan is not open yet/);
+  const refused = act(state, 'estate.relocate', { to: 'abuja', mode: 'road' });
+  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Abuja is not open yet/);
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'air' }).code, 'no_route');
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
   assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 5); assert.equal(links.every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
+  assert.equal(links.length, 6)
+  assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
+  assert.equal(links.filter((link) => link.to !== 'ibadan').every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 
 test('one character between cities: money, skills and people travel; the home left behind is kept and found again on return', () => {
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
-  const open: LifeContextInit = { openCities: ['ibadan'] }, server = at(MONDAY_9AM, 'server', { internal: true });
+  const server = at(MONDAY_9AM, 'server', { internal: true });
   act(state, 'estate.assign', { lga: 'ikeja', estate: 4, plot: 20 }, server);
   act(state, 'estate.style', { style: { wall: 3 } });
   // The slice is { skill: xp }, so an object under 'tech' (not even a SkillId) is not the real shape; kept as the original test wrote it.
   const skillBag: Record<string, unknown> = state.skills;
   skillBag.tech = { ...(isRecord(skillBag.tech) ? skillBag.tech : {}), level: 3 };
   const skills = structuredClone(state.skills), cash = state.cash, look = structuredClone(state.onboarding.look);
-  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at(MONDAY_9AM, 'go', open)).code, 'departed');
+  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at(MONDAY_9AM, 'go')).code, 'departed');
   assert.equal(state.cash, cash - 3500);
   assert.equal(act(state, 'cancel', {}).code, 'no_cancel');
   assert.deepEqual([state.activeAction?.kind, state.estate.city], ['intercity', 'lagos']);
   settle(state, MONDAY_9AM + 121000);
-  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot, state.estate.lga], ['ibadan', 'park', null, null, null]);
+  assert.deepEqual([state.estate.city, state.location, state.activeAction, state.estate.plot, state.estate.lga], ['ibadan', 'agodi-gardens', null, null, null]);
   assert.equal(hasPlace(state), false, 'a first arrival is a visitor until a local government is chosen');
   assert.deepEqual(found(state.estate.away.lagos, 'the home left in lagos').plot, { lga: 'ikeja', estate: 4, plot: 20 });
   assert.equal(found(state.estate.away.lagos, 'the home left in lagos').style.wall, 3);
@@ -244,7 +248,7 @@ test('one character between cities: money, skills and people travel; the home le
   // The stored state survives a load in its new city, and comes home to exactly what was left.
   const reloaded = createLife(state, makeContext({ now: state.t, cityId: 'ibadan', seed: 'load' }));
   assert.deepEqual(reloaded.estate, state.estate);
-  const back = makeContext({ now: state.t, cityId: 'ibadan', seed: 'back', openCities: ['lagos'] });
+  const back = makeContext({ now: state.t, cityId: 'ibadan', seed: 'back' });
   assert.equal(dispatch(reloaded, { type: 'estate.relocate', payload: { to: 'lagos', mode: 'road' } }, back).code, 'departed');
   advanceLife(reloaded, 121, makeContext({ now: reloaded.t + 121000, cityId: 'ibadan', seed: 'home' }));
   assert.deepEqual([reloaded.estate.city, reloaded.estate.lga, reloaded.estate.plot, reloaded.estate.style.wall, reloaded.estate.living], ['lagos', 'ikeja', { lga: 'ikeja', estate: 4, plot: 20 }, 3, 'own']);

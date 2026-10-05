@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../src/game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';

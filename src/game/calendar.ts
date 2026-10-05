@@ -6,8 +6,7 @@ import { contentFor, venueFor } from './cities/runtime.ts';
  * rules engine (systems/events.ts), the server (the pulse of live events) and the Events app.
  */
 import { lagosTime, lagosDayStart, isOpen } from './clock.ts';
-import { EVENTS_CALENDAR } from './content/calendar.ts';
-import { VENUES, venueLabel } from './content/venues.ts';
+import { venueLabel } from './content/venues.ts';
 import type { CalendarOccurrence } from '../types/growth.ts';
 import type { CalendarEvent, VenueDefinition } from '../types/content.ts';
 
@@ -22,8 +21,6 @@ export interface Occurrence {
 }
 /** Lagos keeps its deployed key; every other city qualifies the same local event id. */
 export const eventOccurrenceKey = (cityId: string, eventId: string, day: number): string => cityId === 'lagos' ? `${eventId}:${day}` : `${cityId}:${eventId}:${day}`;
-/** VENUES read by an arbitrary id (an event may name a venue that is not in the build). */
-const venuesById: Record<string, VenueDefinition | undefined> = VENUES;
 
 const HOUR = 3600000, DAY = 86400000;
 const DATE = /^(\d{4})-(\d{2})-(\d{2})$/;

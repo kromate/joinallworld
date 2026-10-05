@@ -126,10 +126,10 @@ export const cityRules = cityRulesFromRegistry;
 /** The local governments (or the local equivalent) of a city. */
 export const lgasOf = (cityId: unknown): readonly LgaDefinition[] => cityRules(cityId)?.units ?? [];
 export const lgaOf = (cityId: unknown, id: unknown): LgaDefinition | null => (typeof id === 'string' ? lgasOf(cityId).find((lga) => lga.id === id) ?? null : null);
-/** The local government a rented-home district lies in, or the city's first as a last resort. */
+/** Resolve the district's declared local government; an unknown district has no inferred location. */
 export function lgaOfDistrict(cityId: unknown, district: string): LgaDefinition | null {
-  const units = lgasOf(cityId);
-  return units.find((lga) => (lga.districts as readonly string[]).includes(district)) ?? null;
+  const localUnitId = cityRules(cityId)?.districts.find(item => item.id === district)?.localUnitId;
+  return lgaOf(cityId, localUnitId);
 }
 export const tierOf = (id: unknown): HouseTierDefinition | null => (typeof id === 'string' && Object.hasOwn(HOUSE_TIERS, id) ? tiersById[id] ?? null : null);
 export const designOf = tierOf;

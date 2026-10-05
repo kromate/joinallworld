@@ -1,7 +1,11 @@
+import { loadCityContent as preloadCityContent } from './game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import type { NeedId, TravelModeId, VenueId } from './types/life.ts';
-import { createLife, VENUES, TRAVEL_OPTIONS, PREVIEW_TRAVEL_DURATION, startActivity, cancelActivity, advanceLife, startTravel, applyJob } from './life.ts';
+import { createLife, TRAVEL_OPTIONS, PREVIEW_TRAVEL_DURATION, startActivity, cancelActivity, advanceLife, startTravel, applyJob } from './life.ts';
+import { VENUES } from './game/cities/lagos/venues.ts';
+
 
 /** Narrows a lookup that must have found something. */
 function must<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value, what); return value; }

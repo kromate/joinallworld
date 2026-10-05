@@ -22,14 +22,13 @@ import { systems, actionHandler, hasAction, actionTypes, modify, serverOnlyReaso
 import { fail, finite, isRecord, makeContext } from './game/util.ts';
 import { STATE_VERSION, sanitizeActive, advanceActive } from './game/systems/core.ts';
 import { NEEDS } from './game/systems/needs.ts';
-import { VENUES } from './game/content/venues.ts';
 import { TRAVEL_MODES, TRAVEL_DURATION } from './game/content/travel.ts';
 import type { ActionBody, ActionResult, ActionType } from './types/actions.ts';
 import type { ActivityId, AdvanceOutcome, LifeContext, LifeContextInit, LifeState, ActionOutcome, TravelModeId, VenueId } from './types/life.ts';
 import type { SavedInput } from './types/registry.ts';
 import type { LifeView } from './types/view.ts';
 
-export { VENUES, STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction, isDeparting, occupiesVenue, activeMoves };
+export { STATE_VERSION, NEEDS, makeContext, actionTypes, hasAction, isDeparting, occupiesVenue, activeMoves };
 export { spotsOf } from './game/systems/activities.ts';
 
 /** Legacy names kept for existing callers. Fares by mode, and the flat beta trip time. */

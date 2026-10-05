@@ -295,7 +295,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     // ---- billboards and sea plots ---------------------------------------------------------
     'GET /api/civic/ads': async (request) => {
       const cityId = cityParam(request.query.get('city'));
-      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...adsView(cityOf(civicOf(db), cityId), ctx.now(), session?.publicId ?? null, cityContent(cityId).billboardRoads) }; });
+      const body = await store.read(db => { const session = request.session(db); limit('read', session?.publicId ?? `ip:${request.ip}`, 120); return { city: cityId, ...adsView(cityOf(civicOf(db), cityId), ctx.now(), session?.publicId ?? null, cityContent(cityId).billboardRoads, cityRules(cityId)?.seaPlots !== false) }; });
       return { body };
     },
     'POST /api/civic/ads/rent': async (request) => {
@@ -315,7 +315,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
           return { ok: true, code: 'rented' };
         });
-        return { body: { ...outcome, state: life, ads: { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads) } }, renew: true };
+        return { body: { ...outcome, state: life, ads: { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads, cityRules(cityId)?.seaPlots !== false) } }, renew: true };
       });
     },
     'POST /api/civic/ads/remove': async (request) => {
@@ -326,7 +326,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const { who, city } = enter(db, request, cityId);
         limit('ads-remove', who.id, 12);
         const block = removeAd(city, ctx.now(), who.id, body.kind, body.slot);
-        const ads = { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads) };
+        const ads = { city: cityId, ...adsView(city, ctx.now(), who.id, cityContent(cityId).billboardRoads, cityRules(cityId)?.seaPlots !== false) };
         return block ? refused(block, { ads }) : { body: { ok: true, code: 'removed', ads }, renew: true };
       });
     },

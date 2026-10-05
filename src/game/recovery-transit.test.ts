@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';import assert from 'node:assert/strict';
 import {createLife,dispatch} from '../life.ts';
 import type {ActiveAction} from '../types/life.ts';

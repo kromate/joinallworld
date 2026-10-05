@@ -334,6 +334,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   count(add(board, 'board'));
   const water = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), materials.water);
   materials.water.map!.repeat.set(width / WATER_TILE, depth / WATER_TILE);
+  if (pack.inland) { materials.water.map = null; materials.water.color.set('#bcd596'); materials.water.roughness = 1; materials.water.metalness = 0; }
   water.rotation.x = -Math.PI / 2; water.position.set(midX, WATER_Y, midZ);
   count(add(water, 'water'));
 
@@ -353,7 +354,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   const around = (x: number, z: number, margin: number): [number, number][] => [[x, z], [x + margin, z], [x - margin, z], [x, z + margin], [x, z - margin]];
   const onLand = (x: number, z: number, margin = 0) => (margin ? around(x, z, margin).every(([px, pz]) => bitAt(px, pz, 2)) : bitAt(x, z, 2));
   /** Land, or its shore (3 units round it): where no boat sails and no wave breaks. */
-  const onAnyLand = (x: number, z: number) => around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
+  const onAnyLand = (x: number, z: number) => pack.inland || around(x, z, 3).some(([px, pz]) => bitAt(px, pz, 1));
   /**
    * The stretches of a true-scale outline that are shore: an edge with more land just beyond it (the boundary between two local governments) is no shore and gets no
    * wall, shallows or beach. A stretch is a run of points; a ring that is shore all the way round is one closed run.
@@ -801,7 +802,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     setTime(next: string) {
       const preset = presets[next] || CITY_LIGHT.day;
       time = presets[next] ? next : 'day';
-      materials.water.color.set(preset.water); materials.windows.color.set(preset.windows);
+      materials.water.color.set(pack.inland ? '#bcd596' : preset.water); materials.windows.color.set(preset.windows);
       materials.waves.opacity = preset.waves; materials.shadow.opacity = preset.shadow;
       return preset;
     },

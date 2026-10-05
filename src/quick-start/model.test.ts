@@ -1,3 +1,5 @@
+import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: quick start — the pure client logic of the first minute (./model.ts).
 import test from 'node:test';
 import assert from 'node:assert/strict';

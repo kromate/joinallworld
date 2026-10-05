@@ -30,7 +30,12 @@ Rules provide:
 
 Content provides the venue scene kind, existing activity definition, opening hours, display wording and position; regulars and their city; career workplaces; rented homes and their map spots; calendar entries; goal and wish wording; radio venues; billboard roads; table places; a ranked things-to-do list; and a short culture card.
 
+Dream and family-outcome wording can be localized through `dreamWording` and `lotteryWording`. These fields change labels, guidance and explanatory bullets only; IDs, targets, loans, cash, skill effects and rewards remain shared mechanics. Check the onboarding cards, profile, goals and completion messages when authoring these overrides.
+
 The engine remains synchronous after startup. A host first awaits `loadCityContent(id)`, then reads `cityContent(id)`. Reading an unloaded city's content throws. `cachedCityContent(id)` is the non-throwing probe. Map hosts use the equivalent `loadCityMap` and `cityMap` pair.
+
+The browser, servers, tests and command-line tools must cross this loading boundary before calling `createLife`. The shared engine never imports another city's venue or regular catalogue as a fallback. Lagos definitions live in `src/game/cities/lagos/venues.ts` and `regulars.ts`; import them directly only when inspecting that city's source data. A friend's bounded identity snapshot travels with the character, so loading a destination does not require the previous city's prose.
+
 
 ## State, city and local unit
 
@@ -88,4 +93,4 @@ Money receipts, friend relationships, privacy preferences, consent and anti-farm
 
 `npm run geo:boundaries` regenerates only the Lagos topology. It downloads the pinned ADM1/ADM2 sources into the ignored cache and verifies their byte counts and SHA-256 before processing them. `npm run geo:boundaries -- --check` compares both exact generated text and decoded geometry without writing. The projection, simplification thresholds and raster water derivation are recorded in the generator and generated header. Changing the Nigeria atlas requires the explicit `--nigeria` option; the default cannot change it.
 
-The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and two compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.
+The production bundle omits Vue's unused Options API runtime; all shipped components use Composition API. Terser is pinned as a build-only dependency with safe transformations, ES2020 output supported by the existing browser targets, and three compression passes. The entry gate checks both the loading-screen closure and the complete automatic game-startup closure against the original byte limits. Moving a download behind the loading screen does not satisfy that budget by itself.

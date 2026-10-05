@@ -1,4 +1,4 @@
-import { DEFAULT_HOUSE } from '../content/housing.ts'
+import { cityRules } from './registry.ts'
 import { contentFor } from './runtime.ts'
 import type { CityHousingContent, HomeMapSpot, HouseDefinition } from '../../types/content.ts'
 
@@ -17,8 +17,7 @@ export function houseSpotFor(cityId: string, id: unknown): HomeMapSpot | null {
 
 export function defaultHouseFor(cityId: string): HouseDefinition {
   const houses = housesFor(cityId)
-  const preferred = houses.find((house) => house.id === DEFAULT_HOUSE)
-  const first = preferred ?? houses[0]
-  if (!first) throw new TypeError(`City ${cityId} has no rented homes`)
-  return first
+  const preferred = houses.find((house) => house.id === cityRules(cityId)?.defaultRentedHome)
+  if (!preferred) throw new TypeError(`City ${cityId} has no declared default rented home`)
+  return preferred
 }

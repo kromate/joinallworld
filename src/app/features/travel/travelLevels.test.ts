@@ -19,7 +19,7 @@ test('the level bar: World › Africa › Nigeria › the city, the level in vie
 
 test('the bar is on the city map itself, the world is one key away, and arriving opens no sheet', async () => {
   const [app, bar, levels, keys, shell, pane] = await Promise.all([here('./MapApp.vue'), here('./MapLevels.vue'), here('./MapOverview.vue'), here('../../../ui/keys.ts'), here('../../state/app.ts'), here('../../scene/MapPane.vue')])
-  assert.match(app, /<template v-else>\s*<MapLevels \/>/, 'drawn with the city map whatever else the panel shows')
+  assert.match(app, /<div class="map-dock">\s*<MapLevels \/>/, 'drawn with the city map whatever else the panel shows, as the top of the one docked column')
   assert.match(bar, /showMapLayer\('world', \{ level: level\.atlas \}\)/)
   assert.doesNotMatch(levels, /World map|showWorld/, 'the entry at the end of the list is gone')
   assert.match(keys, /\{ keys: \['g'\], label: 'G', description: 'World map', run: 'world' \}/)

@@ -8,6 +8,8 @@
 import '../ui/tokens.css'
 // The page layout and the styles of every existing panel. Converted components carry their own.
 import '../ui/shell.css'
+// The compact layout of a phone (and a phone on its side), after the page layout it adjusts.
+import '../ui/compact.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from './state/app.ts'
 import { heldActionFor, shortcutFor } from '../ui/keys.ts'

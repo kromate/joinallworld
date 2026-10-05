@@ -3,7 +3,7 @@
 // one small pill. The name opens the Sim sheet and the wallet opens the Bank. A change of the
 // balance is flashed and written out with its reason from the ledger; the flash is one CSS
 // animation that ends by itself, so nothing runs while the game is idle.
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
@@ -49,6 +49,14 @@ watch([state, view], () => {
   if (view.value.connected) lastCash = now
 }, { immediate: true })
 
+/** On a phone the time, the mood and the saved state are one small chip; it opens them in full (and the Sim, which has no room of its own there). */
+const statusOpen = ref(false)
+const statusBox = ref<HTMLElement | null>(null)
+const timeOnly = computed(() => view.value.clock.split('·').pop()?.trim() || view.value.clock)
+const away = (event: Event): void => { if (statusOpen.value && event.target instanceof Node && !statusBox.value?.contains(event.target)) statusOpen.value = false }
+onMounted(() => document.addEventListener('pointerdown', away))
+onBeforeUnmount(() => document.removeEventListener('pointerdown', away))
+
 function onSaved(): void {
   const pill = saved.value
   if (pill.kind !== 'button') return
@@ -62,15 +70,22 @@ function onSaved(): void {
     <i class="hud-mark" aria-hidden="true"><GameIcon name="globe" :size="19" /></i>
     <OnlinePill />
     <AccountHud />
-    <span class="hud-clock">{{ view.clock }}</span>
-    <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
-    <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>
-    <span class="hud-saved-slot">
-      <button v-if="saved.kind === 'button'" class="hud-saved is-off" :class="{ 'is-wait': saved.wait }" type="button" :title="saved.title" @click="onSaved">
-        <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
+    <span ref="statusBox" class="hud-status" :class="{ 'is-open': statusOpen }">
+      <button class="hud-status-toggle" type="button" :aria-expanded="statusOpen" aria-controls="hud-status-body" :aria-label="`Time ${view.clock}, mood ${mood.word}, ${saved.text}. Show details`" @click="statusOpen = !statusOpen">
+        <GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /><span class="hud-status-time">{{ timeOnly }}</span><i class="hud-status-dot" :class="saved.kind === 'button' ? 'is-off' : `is-${saved.tone}`" aria-hidden="true"></i>
       </button>
-      <span v-else class="hud-saved" :class="`is-${saved.tone}`" role="status" :title="saved.title">
-        <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
+      <span id="hud-status-body" class="hud-status-body">
+      <span class="hud-clock">{{ view.clock }}</span>
+      <span class="hud-mood" :class="`is-${mood.tone}`"><GameIcon inline kind="mood" :id="mood.tone" :emoji="mood.icon" /> {{ mood.word }}</span>
+      <button class="hud-name" type="button" @click="shell.open('sim')"><GameIcon name="person" :size="17" /><span>{{ state.name }}</span></button>
+      <span class="hud-saved-slot">
+        <button v-if="saved.kind === 'button'" class="hud-saved is-off" :class="{ 'is-wait': saved.wait }" type="button" :title="saved.title" @click="onSaved">
+          <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
+        </button>
+        <span v-else class="hud-saved" :class="`is-${saved.tone}`" role="status" :title="saved.title">
+          <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
+        </span>
+      </span>
       </span>
     </span>
     <InviteButton />
@@ -126,6 +141,34 @@ function onSaved(): void {
 }
 @media (max-width: 420px) { .hud-bar { gap: 5px; padding-left: 10px; } .hud-mark { display: none; } .hud-clock { font-size: 11px; } .hud-cash { padding: 0 9px; font-size: 12px !important; } }
 @media (max-width: 360px) { .hud-mood { display: none; } }
+/* The time, the mood and the saved state: inline on a wide screen; on a phone one small chip that opens them in full. */
+.hud-status, .hud-status-body { display: contents; }
+.hud-status-toggle { display: none; }
+@media (max-width: 480px), (max-height: 430px) and (max-width: 900px) {
+  .hud-bar { top: max(6px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right)); height: 40px; gap: 4px; padding: 0 3px 0 8px; justify-content: flex-start; }
+  .hud-status { display: block; flex: 1 1 0; min-width: 0; }
+  .hud-status-toggle { position: relative; display: inline-flex; align-items: center; gap: 6px; max-width: 100%; height: 32px; padding: 0 10px; border-radius: var(--r-pill); background: var(--c-fill); color: var(--c-ink-2); font-size: var(--t-small); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hud-status-toggle::after { content: ''; position: absolute; inset: -6px -2px; }
+  .hud-status.is-open .hud-status-toggle { background: var(--c-ink); color: #fff; }
+  .hud-status-time { overflow: hidden; text-overflow: ellipsis; }
+  .hud-status-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--c-green); }
+  .hud-status-dot.is-saving, .hud-status-dot.is-wait { background: var(--c-amber); }
+  .hud-status-dot.is-off, .hud-status-dot.is-unsaved { background: var(--c-red); box-shadow: 0 0 0 2px #fff; }
+  .hud-status-body { display: none; }
+  .hud-status.is-open .hud-status-body { position: fixed; z-index: 6; left: max(8px, env(safe-area-inset-left)); top: calc(max(6px, env(safe-area-inset-top)) + 46px); display: grid; gap: 2px; width: min(280px, calc(100vw - 16px)); padding: 6px; border-radius: var(--r-lg); background: var(--c-surface-solid); box-shadow: var(--e-3); }
+  .hud-status-body > * { display: flex; align-items: center; min-height: var(--tap); padding: 0 10px; border: 0 !important; border-radius: var(--r-sm); }
+  .hud-status-body .hud-mood { display: flex; padding-left: 10px; font-size: var(--t-body); }
+  .hud-status-body .hud-clock { font-size: var(--t-body); }
+  .hud-status-body .hud-name { display: flex; width: 100%; max-width: none; background: var(--c-fill); }
+  .hud-status-body .hud-saved-slot { margin-left: 0; }
+  .hud-status-body .hud-saved { min-height: var(--tap); padding: 0 !important; background: none; box-shadow: none; }
+  .hud-status-body .hud-saved > span { position: static; width: auto; height: auto; clip-path: none; }
+  .hud-status-body .hud-saved.is-off { padding: 0 12px 0 6px !important; background: var(--c-red-soft); box-shadow: inset 0 0 0 1px #e9b9a8; }
+  .hud-cash { min-height: 32px; padding: 0 10px; margin-left: auto; }
+  .hud-cash::after { inset: -6px -3px; }
+  .hud-delta { top: calc(100% + 4px); }
+}
+@media (max-width: 359px) { .hud-status-time { display: none; } .hud-status-toggle { padding: 0 8px; } }
 @media (prefers-reduced-motion: reduce) {
   .hud-cash.is-up, .hud-cash.is-down { animation: none; }
   .hud-delta.is-up, .hud-delta.is-down { animation: hud-delta-still 3.4s steps(1, end); }

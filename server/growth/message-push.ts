@@ -56,6 +56,9 @@ export function tagOf(conv: string): string {
 const setting = (ctx: RouteContext, name: string): string => (typeof ctx.env === 'function' ? ctx.env(name) : '');
 const wait = (ctx: RouteContext, name: string, fallback: number): number => { const value = Number(setting(ctx, name)); return setting(ctx, name) !== '' && Number.isFinite(value) && value >= 0 ? Math.min(value, 600000) : fallback; };
 
+/** A timer that does not keep a Node process alive (on the Worker the handle is a number and there is nothing to do). */
+function later(run: () => void, ms: number): void { const handle: unknown = setTimeout(run, ms); if (typeof handle === 'object' && handle !== null && 'unref' in handle && typeof handle.unref === 'function') handle.unref(); }
+
 export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
   const now = (): number => ctx.now();
   const unseenMs = (): number => wait(ctx, 'CHAT_PUSH_UNSEEN_MS', MESSAGE_PUSH.unseenMs), windowMs = (): number => wait(ctx, 'CHAT_PUSH_WINDOW_MS', MESSAGE_PUSH.perConvMs);
@@ -98,15 +101,17 @@ export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
     return { id: n.to, subs: subs.map((sub) => ({ ...sub })), payload: { title: where, body: unseen > 1 ? `${unseen} new messages · ${body}`.slice(0, 160) : body, url: `/?chat=${encodeURIComponent(n.conv)}`, tag: tagOf(n.conv), kind: 'chat', conv: n.conv, count: unseen, badge } };
   }
 
-  async function run(n: ChatNotice): Promise<void> {
+  async function run(n: ChatNotice, followUp = false): Promise<void> {
     const key = `${n.to}|${n.conv}`;
     const job = await ctx.store.read((db) => decide(db, n));
     if (!job) return;
     // One push per conversation per window; a message that arrives inside it is folded into one that follows the window.
     if (!ctx.allow(`msgpush:${key}`, 1, windowMs())) {
+      // The follow-up is made once: if the window is somehow still closed it is dropped, never retried without end.
+      if (followUp) return;
       if (!waiting.has(key)) {
         const wait = (ctx.retryIn?.(`msgpush:${key}`) ?? windowMs()) + 50;
-        ctx.waitUntil?.(new Promise<void>((done) => { setTimeout(() => { const latest = waiting.get(key); waiting.delete(key); void (latest ? run(latest) : Promise.resolve()).finally(done); }, wait); }));
+        ctx.waitUntil?.(new Promise<void>((done) => { later(() => { const latest = waiting.get(key); waiting.delete(key); void (latest ? run(latest, true) : Promise.resolve()).finally(done); }, wait); }));
       }
       waiting.set(key, n);
       return;
@@ -115,10 +120,10 @@ export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
     await mailing.deliver(job.id, job.subs, job.payload, job.payload.tag);
   }
 
-  // Until the notification settings ship the listener is off unless CHAT_PUSH=on.
-  if (setting(ctx, 'CHAT_PUSH') === 'on') ctx.on?.('chat-notice', (notice) => {
+  // The listener is on unless an operator sets CHAT_PUSH=off.
+  if (setting(ctx, 'CHAT_PUSH') !== 'off') ctx.on?.('chat-notice', (notice) => {
     const work = new Promise<void>((done) => {
-      setTimeout(() => { run(notice).catch((error) => ctx.core?.log?.(`A message notification failed: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`)).finally(done); }, unseenMs());
+      later(() => { run(notice).catch((error) => ctx.core?.log?.(`A message notification failed: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`)).finally(done); }, unseenMs());
     });
     ctx.waitUntil?.(work);
   });

@@ -45,6 +45,8 @@ import MessageBubble from './MessageBubble.vue'
 import FriendPicker from './FriendPicker.vue'
 import GroupManage from './GroupManage.vue'
 import ChatSettings from './ChatSettings.vue'
+import Lightbox from './Lightbox.vue'
+import { askedAboutNotifications, noteAskedAboutNotifications } from './notifyAsk.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()
@@ -223,6 +225,25 @@ async function pinChat(on: boolean): Promise<void> { const key = ui.open; if (ke
 const chatFilter = ref('')
 const chatList = computed(() => sortChats(filterChats(me.value?.conversations ?? [], chatFilter.value)))
 const showSettings = ref(false)
+const lightbox = ref<Message | null>(null)
+/** The picture button shows where pictures are switched on and the chat takes them: a direct chat with a friend, or a group. */
+const pictureAllowed = computed(() => Boolean(me.value?.limits.pictures.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some((friend) => friend.id === partner.value))) && !readOnly.value))
+async function pictureSent(result: { conv: Conversation }): Promise<void> {
+  const real = result.conv.id
+  if (ui.open !== real) setOpen(real)
+  await openThread(real)
+}
+async function reportPicture(): Promise<void> {
+  const line = lightbox.value, key = ui.open
+  if (!line?.image || !key) return
+  lightbox.value = null
+  await perform('/api/social/reports', { conv: key, image: line.image.id, reason: 'other' }, 'Report received. The picture is hidden for you.')
+  void openThread(key)
+}
+/** After the player's own message in a chat, once: "Get a notification when Joy replies?" (never on arrival; the browser's own question comes only after Yes). */
+const askNotify = computed(() => Boolean(ui.open && conv.value && items.value.some((item) => isOutbox(item) || (!isOutbox(item) && item.from?.id === me.value?.me.id)) && !askedAboutNotifications() && growth.state.hello?.consent?.push !== true && growth.state.hello?.consent?.age !== 'minor'))
+const askedNow = ref(0)
+function answerNotify(yes: boolean): void { noteAskedAboutNotifications(); askedNow.value += 1; if (yes) shell.open('touch') }
 
 // ---- updates -------------------------------------------------------------------------------
 const chats = computed(() => unreadChats(me.value))
@@ -321,16 +342,20 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @picture="(line) => { lightbox = line }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
         </div>
         <div v-if="quoted" class="messages-quoted" role="status"><b>{{ quoted.from }}</b> {{ quoted.text }}<small> — the original is no longer kept</small> <button type="button" class="messages-link" @click="quoted = null">Close</button></div>
 
+        <div v-if="askNotify && askedNow >= 0" class="messages-ask-notify" role="group" aria-label="Notifications">
+          <span>Get a notification when {{ conv?.kind === 'dm' ? title : 'someone answers here' }} replies?</span>
+          <BaseButton small variant="primary" @click="answerNotify(true)">Yes</BaseButton><BaseButton small @click="answerNotify(false)">Not now</BaseButton>
+        </div>
         <footer class="messages-foot">
           <span v-if="readOnly" class="messages-why">{{ readOnly }}</span>
-          <Composer ref="composer" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" />
+          <Composer ref="composer" :pictures="pictureAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" />
         </footer>
       </div>
 
@@ -420,6 +445,7 @@ defineExpose({
         <LinkButton v-if="growth.channel.value" :href="growth.channel.value" block class="messages-channel">Follow Allworld on WhatsApp</LinkButton>
       </template>
     </template>
+    <Lightbox v-if="lightbox?.image" :id="lightbox.image.id" :caption="lightbox.body" :from="lightbox.from?.name ?? ''" :mine="lightbox.from?.id === me?.me.id" @close="lightbox = null" @report="reportPicture" />
   </div>
 </template>
 
@@ -498,6 +524,8 @@ defineExpose({
 .messages-at { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--c-green-dark); color: #fff; font-size: 11px; font-weight: 700; }
 .messages-update > .bubble-actions { flex-basis: 100%; justify-content: flex-start; margin: -4px 0 2px; padding-left: 50px; }
 .messages-badge.is-quiet { background: var(--c-muted); }
+.messages-ask-notify { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0 12px 6px; padding: 8px 12px; border-radius: var(--r-md); background: #eef8f1; font-size: 13px; }
+.messages-ask-notify span { flex: 1 1 200px; }
 .messages-kebab { flex: none; min-width: 36px; min-height: 36px; border: 0; border-radius: 50%; background: none; font-size: 20px; cursor: pointer; }
 .messages-switch { display: flex; align-items: center; gap: 8px; min-height: 36px; font-weight: 500; }
 .messages-settings-toggle { margin-top: var(--s-3); }

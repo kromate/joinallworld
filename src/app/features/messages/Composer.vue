@@ -6,7 +6,9 @@ import GameIcon from '../../ui/GameIcon.vue'
 import EmojiPicker from './EmojiPicker.vue'
 import { composerLines, createDrafts, insertMention, liveMentions, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
 import type { Picked } from './messagesText.ts'
-import type { Message } from '../../../types/social.ts'
+import type { Message, SendMessageResult } from '../../../types/social.ts'
+import { preparePicture, uploadBody } from './pictureModel.ts'
+import type { Ready } from './pictureModel.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
 
 const props = defineProps<{
@@ -20,8 +22,13 @@ const props = defineProps<{
   reply: Message | null
   /** Text another screen has ready for the next conversation opened. */
   prefill: string
+  /** Pictures may be sent here (switched on, and a chat that takes them): the picture button shows. */
+  pictures: boolean
+  /** Who a picture goes to. */
+  target: { to: string } | { conv: string }
+  newId: () => string
 }>()
-const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: [] }>()
+const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
 
 const drafts = createDrafts((() => { try { return globalThis.localStorage ?? null } catch { return null } })())
 const text = ref('')
@@ -30,6 +37,43 @@ const field = ref<HTMLTextAreaElement | null>(null)
 const picked = ref<Picked[]>([])
 const emoji = ref(false)
 const active = ref(0)
+// ---- a picture: choose, see it, send it (with progress), try again
+const fileInput = ref<HTMLInputElement | null>(null)
+const photo = ref<{ ready: Ready; caption: string; clientId: string; busy: boolean; progress: number; error: string | null } | null>(null)
+async function chosen(): Promise<void> {
+  const file = fileInput.value?.files?.[0]
+  if (fileInput.value) fileInput.value.value = ''
+  if (!file) return
+  photo.value = null
+  const made = await preparePicture(file)
+  photo.value = made.ok ? { ready: made.ready, caption: '', clientId: props.newId(), busy: false, progress: 0, error: null } : { ready: { blob: file, type: 'image/jpeg', width: 1, height: 1, url: '' }, caption: '', clientId: '', busy: false, progress: 0, error: made.reason }
+}
+function dismissPhoto(): void { if (photo.value?.ready.url) URL.revokeObjectURL(photo.value.ready.url); photo.value = null }
+async function sendPhoto(): Promise<void> {
+  const current = photo.value
+  if (!current || current.busy || !current.clientId) return
+  current.busy = true; current.error = null; current.progress = 0
+  const body = await uploadBody({ target: props.target, clientId: current.clientId, ready: current.ready, caption: current.caption.trim(), ...(props.reply ? { replyTo: props.reply.seq } : {}) })
+  // XMLHttpRequest, because a fetch cannot say how much of the upload has gone.
+  const outcome = await new Promise<{ ok: true; result: Extract<SendMessageResult, { ok: true }> } | { ok: false; reason: string }>((done) => {
+    const request = new XMLHttpRequest()
+    request.open('POST', '/api/social/images')
+    request.setRequestHeader('Content-Type', 'application/json')
+    request.upload.onprogress = (event) => { if (event.lengthComputable) current.progress = Math.round(100 * event.loaded / event.total) }
+    request.onerror = () => done({ ok: false, reason: 'Connection lost. Nothing was sent; try again.' })
+    request.ontimeout = request.onerror
+    request.timeout = 60000
+    request.onload = () => {
+      let answer: { ok?: boolean; reason?: string; error?: string } = {}
+      try { answer = JSON.parse(request.responseText) as typeof answer } catch { /* a page that is not ours */ }
+      if (request.status === 200 && answer.ok === true) done({ ok: true, result: answer as Extract<SendMessageResult, { ok: true }> })
+      else done({ ok: false, reason: answer.reason ?? (request.status === 413 ? 'That picture is too big to send.' : request.status === 429 ? 'Too many requests. Wait a minute and try again.' : 'The picture was not sent. Try again.') })
+    }
+    request.send(body)
+  })
+  current.busy = false
+  if (outcome.ok) { emit('sentPicture', outcome.result); emit('cancelReply'); dismissPhoto() } else current.error = outcome.reason
+}
 
 watch(() => props.conv, () => { text.value = props.prefill || drafts.get(props.conv); picked.value = []; emoji.value = false; void nextTick(grow) }, { immediate: true })
 watch(text, (value) => drafts.set(props.conv, value))
@@ -100,8 +144,22 @@ const lines = computed(() => composerLines(text.value))
         <b>@{{ choice.name }}</b><small v-if="choice.id === 'everyone'">notify the whole group</small>
       </li>
     </ul>
+    <div v-if="photo" class="composer-photo" role="group" aria-label="Picture to send">
+      <img v-if="photo.ready.url" :src="photo.ready.url" alt="The picture you are about to send">
+      <div class="composer-photo-side">
+        <input v-if="photo.clientId" v-model="photo.caption" name="caption" maxlength="200" placeholder="Add a caption (optional)" aria-label="Caption" autocomplete="off" :disabled="photo.busy">
+        <progress v-if="photo.busy" max="100" :value="photo.progress" aria-label="Sending">{{ photo.progress }}%</progress>
+        <p v-if="photo.error" class="composer-photo-error" role="alert">{{ photo.error }}</p>
+        <span class="composer-photo-actions">
+          <button v-if="photo.clientId" type="button" class="composer-photo-send" :disabled="photo.busy" @click="sendPhoto">{{ photo.busy ? 'Sending…' : photo.error ? 'Try again' : 'Send' }}</button>
+          <button type="button" :disabled="photo.busy" @click="dismissPhoto">Cancel</button>
+        </span>
+      </div>
+    </div>
     <EmojiPicker v-if="emoji" class="composer-emoji" @pick="insertEmoji" />
     <form class="composer-form" @submit.prevent="submit">
+      <input v-if="pictures" ref="fileInput" type="file" accept="image/*" class="composer-file" aria-label="Choose a picture" tabindex="-1" @change="chosen">
+      <button v-if="pictures" type="button" class="composer-side" aria-label="Send a picture" title="Send a picture" :disabled="disabled" @click="fileInput?.click()">📷</button>
       <button type="button" class="composer-side" :aria-pressed="emoji" aria-label="Emoji" :disabled="disabled" @click="emoji = !emoji">☺</button>
       <textarea ref="field" v-model="text" name="body" :rows="lines" :maxlength="max * 2" autocomplete="off" enterkeyhint="send" placeholder="Message" aria-label="Message" :disabled="disabled" @input="onInput" @keydown="onKey" @keyup="track" @click="track" @focus="emoji = false" />
       <button type="submit" class="composer-send" aria-label="Send" title="Send" :disabled="disabled || !text.trim()"><GameIcon name="earn" :size="22" /></button>
@@ -126,5 +184,16 @@ const lines = computed(() => composerLines(text.value))
 .composer-picker li { display: flex; align-items: baseline; gap: 8px; min-height: 40px; padding: 8px 10px; border-radius: 10px; font-size: 14px; cursor: pointer; }
 .composer-picker li.is-on { background: var(--c-fill-2); }
 .composer-picker small { color: var(--c-muted); font-size: 11px; }
+.composer-file { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.composer-photo { display: flex; gap: 10px; padding: 8px; border: 1px solid var(--c-line); border-radius: var(--r-md); background: #fff; }
+.composer-photo img { flex: none; width: 96px; height: 96px; object-fit: cover; border-radius: 10px; background: var(--c-fill-2); }
+.composer-photo-side { flex: 1; min-width: 0; display: grid; align-content: start; gap: 6px; }
+.composer-photo-side input { box-sizing: border-box; width: 100%; min-height: 36px; padding: 6px 10px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); font: inherit; font-size: 14px; }
+.composer-photo-side progress { width: 100%; height: 8px; }
+.composer-photo-error { margin: 0; font-size: 12px; line-height: 1.4; color: var(--c-red); }
+.composer-photo-actions { display: flex; gap: 6px; }
+.composer-photo-actions button { min-height: 36px; padding: 0 14px; border: 0; border-radius: 18px; background: var(--c-fill); font: 600 13px var(--font); cursor: pointer; }
+.composer-photo-actions .composer-photo-send { background: var(--app-tint, var(--c-green-dark)); color: #fff; }
+.composer-photo-actions button:disabled { opacity: .5; cursor: not-allowed; }
 .composer-emoji { position: absolute; left: 0; right: 0; bottom: calc(100% + 4px); z-index: 3; }
 </style>

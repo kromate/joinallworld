@@ -4,15 +4,16 @@
 import { computed, onBeforeUnmount, ref } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import EmojiPicker from './EmojiPicker.vue'
+import PictureView from './PictureView.vue'
 import { QUICK_REACTIONS } from './emojiData.ts'
 import { emojiOnly, giftDetail, giftLine, pieces } from './messagesText.ts'
 import type { Message } from '../../../types/social.ts'
 
 const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean }>()
-const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number] }>()
+const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; picture: [item: Message] }>()
 const mine = computed(() => props.item.from?.id === props.meId)
 const parts = computed(() => pieces(props.item.body, props.item.mentions))
-const big = computed(() => (props.item.mentions?.length || props.item.replyTo ? 0 : emojiOnly(props.item.body)))
+const big = computed(() => (props.item.mentions?.length || props.item.replyTo || props.item.image ? 0 : emojiOnly(props.item.body)))
 const open = ref(false)
 const more = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
@@ -38,7 +39,8 @@ onBeforeUnmount(cancel)
       <button v-if="item.replyTo" type="button" class="bubble-quote" :aria-label="`Show the message from ${item.replyTo.from?.name ?? 'someone'}`" @click="emit('jump', item.replyTo.seq)">
         <b>{{ item.replyTo.from?.name ?? 'Message' }}</b><span>{{ item.replyTo.text || 'Picture' }}</span>
       </button>
-      <span class="bubble-text" :class="{ 'is-big': big > 0 }" :style="big ? { fontSize: `${big === 1 ? 44 : big === 2 ? 36 : 30}px` } : undefined"><template v-for="(piece, index) in parts" :key="index"><button v-if="piece.mention && piece.mention.id !== 'everyone'" type="button" class="chip" :aria-label="`Open ${piece.text.slice(1)}'s card`" @click.stop="emit('player', piece.mention.id)">{{ piece.text }}</button><span v-else-if="piece.mention" class="chip is-all">{{ piece.text }}</span><template v-else>{{ piece.text }}</template></template></span>
+      <PictureView v-if="item.image" class="bubble-pic" :image="item.image" @open="emit('picture', item)" />
+      <span v-if="item.body || !item.image" class="bubble-text" :class="{ 'is-big': big > 0 }" :style="big ? { fontSize: `${big === 1 ? 44 : big === 2 ? 36 : 30}px` } : undefined"><template v-for="(piece, index) in parts" :key="index"><button v-if="piece.mention && piece.mention.id !== 'everyone'" type="button" class="chip" :aria-label="`Open ${piece.text.slice(1)}'s card`" @click.stop="emit('player', piece.mention.id)">{{ piece.text }}</button><span v-else-if="piece.mention" class="chip is-all">{{ piece.text }}</span><template v-else>{{ piece.text }}</template></template></span>
       <small v-if="tail">{{ time }}<template v-if="mine"> · Sent</template></small>
     </div>
     <div v-if="item.reactions?.length" class="reactions" role="group" aria-label="Reactions">
@@ -68,6 +70,7 @@ onBeforeUnmount(cancel)
 .bubble.is-mine small { color: #ffffffcc; }
 .bubble.is-big small { color: var(--c-muted); }
 .bubble-text.is-big { line-height: 1.15; }
+.bubble-pic { margin: 2px 0 4px; }
 .bubble-quote { display: grid; width: 100%; margin: 2px 0 4px; padding: 4px 8px; border: 0; border-left: 3px solid currentColor; border-radius: 6px; background: rgba(0, 0, 0, .07); color: inherit; font: inherit; font-size: 12px; text-align: left; opacity: .85; cursor: pointer; white-space: normal; }
 .bubble-quote b { font-size: 11px; }
 .bubble-quote span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

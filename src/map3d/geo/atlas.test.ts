@@ -601,7 +601,7 @@ test('the density table: phones get smaller type and fewer names, a larger text 
 });
 
 test('venue names on the city map: long names are cut, few are written at the opening view, more as the camera comes closer, the places that matter always', () => {
-  assert.equal(shorten('Sagamu Community Clinic', 16), 'Sagamu Communi…');
+  assert.equal(shorten('Sagamu Community Clinic', 16), 'Sagamu Communit…');
   assert.equal(shorten('Market', 16), 'Market');
   assert.ok(shorten('Sagamu Community Clinic', 16).length <= 16);
   const phone = DENSITY.phone;

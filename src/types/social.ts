@@ -129,7 +129,7 @@ export interface PictureView {
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction' | 'missed-call'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -137,7 +137,7 @@ export interface SocialUpdate {
   text: string
   at: number
   read: boolean
-  /** `{ from }`, `{ host }`, `{ conv }`, `{ report }` or `{ from, amount }` depending on `kind`; absent for `moderation`. `invite-joined`: `from` is the player who joined. */
+  /** `{ from }`, `{ host }`, `{ conv }`, `{ report }` or `{ from, amount }` depending on `kind`; absent for `moderation`. `invite-joined`: `from` is the player who joined. `missed-call`: `from` is who rang. */
   data?: { from?: string; host?: string; conv?: string; report?: string; amount?: number; seq?: number }
   // INCONSISTENT: src/ui/panels/inbox.js:52 keys a notification by `update.at` + `update.kind`, not by this
   // `id`, so two updates of one kind in the same millisecond share a key.

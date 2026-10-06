@@ -28,11 +28,11 @@ interface Frame { type: string; code?: string; callId?: string; state?: string; 
 interface Peer { send(message: object): void; next(timeout?: number): Promise<Frame>; until(type: string): Promise<Frame>; drain(): Promise<Frame[]>; close(): void }
 
 /** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
-async function fixture(t: TestContext, sleeps = false) {
+async function fixture(t: TestContext, sleeps = false, extra: { bindings?: Record<string, string>; outboundService?: (request: Request) => Promise<Response> } = {}) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-calls-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-calls', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) }, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
+  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-calls', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}), ...(extra.bindings ?? {}) }, ...(extra.outboundService ? { outboundService: extra.outboundService } : {}), assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };
@@ -212,4 +212,46 @@ test('on the Worker: when the object is evicted mid-call, the other side is told
   invite(a2, bola.id);
   assert.equal((await b2.until('call-incoming')).from?.name, 'Ada');
   assert.equal((await a2.until('call-state')).state, 'ringing');
+});
+
+test('on the Worker: both sides of an accepted call get their own relay servers, the day count survives the object sleeping, a limit falls back to STUN, and health reports the relay', async (t) => {
+  let minted = 0;
+  const f = await fixture(t, true, {
+    bindings: { TURN_KEY_ID: 'a'.repeat(32), TURN_API_TOKEN: 'synthetic-api-secret', CALL_RELAY_DAILY_CEILING: '3' },
+    outboundService: async (request: Request) => {
+      minted++;
+      assert.equal(new URL(request.url).origin, 'https://rtc.live.cloudflare.com');
+      return new Response(JSON.stringify({ iceServers: [{ urls: 'stun:stun.example.test:3478' }, { urls: ['turn:turn.example.test:3478?transport=udp', 'turns:turn.example.test:443?transport=tcp'], username: `user-${minted}`, credential: `secret-${minted}` }] }), { status: 201 });
+    },
+  });
+  assert.equal(((await (await f.request('/api/health')).json()) as { relay: boolean }).relay, true);
+  const ada = await f.device('Ada'), bola = await f.device('Bola');
+  await f.befriend(ada, bola);
+  const a = await f.socket(ada), b = await f.socket(bola);
+  invite(a, bola.id);
+  const callId = (await b.until('call-incoming')).callId as string;
+  b.send({ type: 'call-accept', callId });
+  await b.until('call-state'); await a.until('call-state');
+  a.send({ type: 'call-ice', callId });
+  const first = await a.until('call-ice');
+  b.send({ type: 'call-ice', callId });
+  const second = await b.until('call-ice');
+  assert.deepEqual([first.relay, second.relay], ['on', 'on']);
+  assert.notDeepEqual(first.iceServers, second.iceServers);
+  assert.equal(JSON.stringify([first, second]).includes('synthetic-api-secret'), false);
+  // The object is replaced (its sockets close and its memory goes): the day's count is in its storage and still holds.
+  a.close(); b.close();
+  await f.hibernate();
+  const a2 = await f.socket(ada), b2 = await f.socket(bola);
+  invite(a2, bola.id);
+  const again = (await b2.until('call-incoming')).callId as string;
+  b2.send({ type: 'call-accept', callId: again });
+  await b2.until('call-state'); await a2.until('call-state');
+  a2.send({ type: 'call-ice', callId: again });
+  assert.equal((await a2.until('call-ice')).relay, 'on', 'the third of three');
+  b2.send({ type: 'call-ice', callId: again });
+  const limited = await b2.until('call-ice');
+  assert.equal(limited.relay, 'limited', 'the ceiling counted all three across the replacement');
+  assert.equal(minted, 3);
+  assert.deepEqual((limited.iceServers as { urls: string }[]).map((server) => server.urls), ['stun:stun.l.google.com:19302']);
 });

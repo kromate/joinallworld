@@ -4,6 +4,7 @@
 import { onCallFrame, onSocketClose, sendFrame } from '../social/useSocial.ts'
 import type { CallController } from '../../../calls.ts'
 import type { CallServerFrame, CallsFrom } from '../../../types/calls.ts'
+import type { PlayerRef } from '../../../types/protocol.ts'
 import { callStore } from './callState.ts'
 
 let loading: Promise<CallController> | null = null
@@ -12,8 +13,10 @@ let listening = false
 
 /** The controller, fetched on first use. */
 export function loadCalls(): Promise<CallController> {
-  loading ??= import('../../../calls.ts').then(({ createCallController, browserCallsEnv }) => {
-    const controller = createCallController(browserCallsEnv(sendFrame))
+  // The tones come with the controller, so the Call and Answer taps can unlock sound in the same breath (iOS Safari insists).
+  loading ??= Promise.all([import('../../../calls.ts'), import('./callTones.ts')]).then(([{ createCallController, browserCallsEnv }, tones]) => {
+    const base = browserCallsEnv(sendFrame)
+    const controller = createCallController({ ...base, unlockAudio: () => { base.unlockAudio?.(); tones.unlockCallAudio() } })
     callStore.view = controller.view
     controller.subscribe((next) => { callStore.view = next })
     // A tab that is closed or hidden for good must not leave the other side ringing or the microphone open; a device that
@@ -37,6 +40,11 @@ export function startsElsewhere(frame: { type: string }): boolean {
 export function startCalls(): void {
   if (listening) return
   listening = true
+  // A page opened by a test run (the flag is set before the page loads) can place a call and read the state without going
+  // through four panels. It gives a script nothing a player cannot already do with the Call button.
+  try {
+    if (window.localStorage.getItem('allworld:test-hooks') === '1') (window as unknown as { __allworldCalls?: unknown }).__allworldCalls = { call: async (peer: PlayerRef) => (await loadCalls()).call(peer), view: () => JSON.parse(JSON.stringify(callStore.view)) as unknown }
+  } catch { /* storage is off: no hook */ }
   onCallFrame((frame) => {
     if (frame.type === 'call-settings') {
       const calls = (frame as { calls?: unknown }).calls

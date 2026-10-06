@@ -6,5 +6,5 @@ test('preview identifies its serving build without creating an identity', async 
  const response = await f.request('/api/health');
  assert.equal(response.status, 200);
  assert.equal(response.headers.has('set-cookie'), false);
- assert.deepEqual(await response.json(), { ok: true, build: 'recovery-test', serverTime: 100000 });
+ assert.deepEqual(await response.json(), { ok: true, build: 'recovery-test', relay: false, serverTime: 100000 });
 });

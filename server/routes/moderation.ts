@@ -43,6 +43,7 @@
  * A mute never touches the player's session, life, money or belongings (moderation/service.js).
  * Removing content does not refund what was paid for it; the owner is told in their Updates.
  */
+import { callService } from '../social/calls.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { moderationService, LIMITS } from '../moderation/service.ts';
 import { socialService } from '../social/service.ts';
@@ -119,6 +120,8 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
       capacity: { sessions: { held: Object.keys(db.sessions).length, most: ctx.config.maxActiveSessions },
         sockets: { open: ctx.core.sockets().length, most: ctx.config.maxSockets, perAddress: ctx.config.socketsPerAddress, perPlayer: ctx.config.socketsPerPlayer } },
       store: ctx.core.storeStats?.() ?? null, build: ctx.config.buildId,
+      // Whether calls work: today's counts (UTC), and whether the relay is configured. No names, no ids.
+      calls: callService(ctx).stats(),
     })),
     'GET /api/mod/reports': guarded((db, request) => ({ reports: social.modReports(db, statusParam(request, ['received', 'dismissed', 'actioned'])) })),
     'GET /api/mod/problems': guarded((db, request) => ({ problems: support.list(db, statusParam(request, STATUSES)) })),

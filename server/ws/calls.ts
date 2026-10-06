@@ -4,8 +4,8 @@
  * holds every rule; the frames are documented in src/types/calls.ts. Calls are not tied to a venue room:
  * these messages work whether or not the socket has joined one, and across cities.
  *
- * CLIENT -> SERVER   call-invite, call-accept, call-decline, call-cancel, call-hangup, call-signal, call-settings
- * SERVER -> CLIENT   call-incoming, call-state, call-signal, call-settings
+ * CLIENT -> SERVER   call-invite, call-accept, call-decline, call-cancel, call-hangup, call-signal, call-settings, call-ice, call-report
+ * SERVER -> CLIENT   call-incoming, call-state, call-signal, call-settings, call-ice
  * A player with several sockets open (tabs, or the devices of one account) is rung on all of them and carries the call on
  * one: server/social/calls.ts, ONE CALL, SEVERAL DEVICES.
  *
@@ -26,6 +26,8 @@ export default function callsSocket(ctx: RouteContext): WsHandlers {
       'call-cancel': (ws, message) => service.leave(ws, message, 'cancel'),
       'call-hangup': (ws, message) => service.leave(ws, message, 'hangup'),
       'call-signal': (ws, message) => service.signal(ws, message),
+      'call-ice': (ws, message) => service.ice(ws, message),
+      'call-report': (ws, message) => service.report(ws, message),
       async 'call-settings'(ws, message) {
         const calls = await service.settings(ws, message);
         // A change is the player's, not the device's: every open socket of theirs is told. A read answers the asker.

@@ -68,7 +68,7 @@ export function notificationLines(me: SocialOverview | null, input: { connected:
   for (const update of me.updates) {
     if (REQUEST_KINDS.includes(update.kind)) continue
     // A friend who joined through the player's link: the line opens that friend's card.
-    if (update.kind === 'invite-joined' && update.data?.from) { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'person', params: { player: update.data.from }, text: update.text }); continue }
+    if ((update.kind === 'invite-joined' || update.kind === 'missed-call') && update.data?.from) { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'person', params: { player: update.data.from }, text: update.text }); continue }
     // A mention, a new group or a reaction opens the chat it is about.
     if (update.data?.conv && UPDATE_APPS[update.kind] === 'messages') { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'messages', params: { conv: update.data.conv }, text: update.text }); continue }
     const app = UPDATE_APPS[update.kind]

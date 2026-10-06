@@ -38,7 +38,11 @@ node -e "const c=require('crypto');const k=c.generateKeyPairSync('ed25519');requ
 
 Set the printed value as the `NOTICE_PUBLIC_KEY` setting (a Worker var or an environment variable of the Node host; unset, the built-in key applies), then sign and POST the body above with the private key. Do not commit the `.pem` file.
 
-## Controlled TURN testing
+## Calls and the relay
+
+One-to-one calls take relay credentials from `TURN_KEY_ID` + `TURN_API_TOKEN` (secrets) with the limits `CALL_RELAY_PER_PLAYER_DAY`, `CALL_RELAY_PER_ADDRESS_HOUR` and `CALL_RELAY_DAILY_CEILING` (vars, optional). `GET /api/health` shows `relay: true` when both secrets are set. Details and cost: `docs/CALLS.md`.
+
+## Controlled TURN testing (room voice)
 
 With no test configuration, /api/voice-config returns STUN-only. General public TURN issuance is disabled. User-entered encrypted Worker secrets TURN_API_TOKEN, TURN_KEY_ID and TURN_TEST_PUBLIC_IDS allow at most two explicitly nominated public session IDs to request ten-minute credentials. KeyID is nonsecret but stored with encrypted settings so fixed-config releases preserve it. Never commit credentials or paste them into a conversation.
 

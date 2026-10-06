@@ -33,7 +33,7 @@ export function unpackFrontCoded(data: Uint8Array, first: number, counts: readon
 export const ALPHABET = Array.from({ length: 94 }, (_, i) => String.fromCharCode(33 + i)).filter((c) => !`'"\\\`<>&`.includes(c)).slice(0, 85).join('')
 
 /** Decode text made of ALPHABET (five characters for four bytes; a last short group of n characters is n - 1 bytes). */
-export function decodeText(text: string): Uint8Array {
+export function decodeText(text: string): Uint8Array<ArrayBuffer> {
   const digit = new Uint8Array(128).fill(255)
   for (let i = 0; i < ALPHABET.length; i++) digit[ALPHABET.charCodeAt(i)] = i
   const rest = text.length % 5

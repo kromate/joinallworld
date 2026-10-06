@@ -182,8 +182,10 @@ function parseMove(input: unknown): WeaveMove {
 // legal. Work is bounded by counts, not clocks: at most EXAMINE_BUDGET words are aligned and at most
 // SCORE_BUDGET plays are scored in a move, wherever the scan starts (the start is drawn from `rng`).
 // ---------------------------------------------------------------------------------------------
-export const EXAMINE_BUDGET = 12000;
-export const SCORE_BUDGET = 600;
+export const EXAMINE_BUDGET = 8000;
+/** Words that pass the letter test and are looked at (cheap) in one move. */
+export const LOOK_BUDGET = 40000;
+export const SCORE_BUDGET = 400;
 const A = 97;
 type Bucket = { words: string[]; masks: Int32Array };
 const bucketCache = new WeakMap<Dictionary, Bucket[]>();
@@ -234,7 +236,7 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
   for (const tile of rack) { if (tile === '?') blanks++; else { counts[tile.charCodeAt(0) - A] = (counts[tile.charCodeAt(0) - A] ?? 0) + 1; rackMask |= 1 << (tile.charCodeAt(0) - A); } }
   const buckets = bucketsOf(dict);
   const found: Candidate[] = [];
-  let examined = 0, scored = 0;
+  let examined = 0, scored = 0, looked = 0;
   const scratch = new Int8Array(26);
   const bagOpen = state.bag.length > 0;
 
@@ -244,7 +246,7 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
       if (examined >= EXAMINE_BUDGET || scored >= SCORE_BUDGET) return found;
       // Each line may spend its fair share of what is left, so the first rows cannot use it all up.
       const linesLeft = 2 * SIZE - linesDone;
-      const examineTo = examined + Math.ceil((EXAMINE_BUDGET - examined) / linesLeft), scoreTo = SCORE_BUDGET;
+      const lookTo = looked + Math.ceil((LOOK_BUDGET - looked) / linesLeft), examineTo = examined + Math.ceil((EXAMINE_BUDGET - examined) / linesLeft), scoreTo = SCORE_BUDGET;
       const at = (p: number): string => (across ? cellAt(board, line, p) : cellAt(board, p, line));
       const rowOf = (p: number): number => (across ? line : p), colOf = (p: number): number => (across ? p : line);
       // Allowed letters per square (cross-checks) and which squares are anchors.
@@ -283,6 +285,7 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
           const index = (startAt + n) % total;
           const missing = (masks[index] as number) & ~offered;
           if (missing !== 0 && (blanks === 0 || popcount(missing) > blanks)) continue;
+          if (++looked > lookTo) break;
           const word = words[index] as string;
           for (let s = 0; s + length <= SIZE; s++) {
             const end = s + length, fresh = (emptiesTo[end] as number) - (emptiesTo[s] as number);
@@ -310,9 +313,9 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
             const kept = takeTiles(rack, used) as string[]; // the tiles were taken from this rack
             found.push({ placements, used, points: result.points, rank: result.points + (bagOpen ? leaveValue(kept) : 0) });
           }
-          if (examined >= examineTo || scored >= scoreTo) break;
+          if (looked >= lookTo || examined >= examineTo || scored >= scoreTo) break;
         }
-        if (examined >= examineTo || scored >= scoreTo) break;
+        if (looked >= lookTo || examined >= examineTo || scored >= scoreTo) break;
       }
     }
   }

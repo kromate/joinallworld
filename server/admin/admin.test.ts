@@ -129,10 +129,15 @@ test('credit and debit: one ledger line each, bounded, exactly once, audited, an
   assert.equal(after.cash - lines, after.ledger.length === 0 ? after.cash : after.ledger[0]!.balance - after.ledger[0]!.amount);
   // Limits: a reason is required; one action at most ₦500,000; the day's total per player.
   assert.equal((await act({ action: 'credit', amount: 100 })).body.error, 'reason_required');
-  assert.equal((await act({ action: 'credit', amount: 500001, reason: 'too much' })).body.error, 'invalid_amount');
-  assert.equal((await act({ action: 'credit', amount: 500000, reason: 'big one' })).status, 200);
-  const third = await act({ action: 'credit', amount: 500000, reason: 'another' });
-  assert.equal(third.body.error, 'over_target_day_limit');
+  // The founder has no cap: above the old limits is fine; only a typo guard above ₦10,000,000 and a hard bound for number handling remain.
+  assert.equal((await act({ action: 'credit', amount: 1_000_000_000_001, reason: 'too much' })).body.error, 'invalid_amount');
+  assert.equal((await act({ action: 'credit', amount: 500001, reason: 'over the old cap' })).status, 200);
+  assert.equal((await act({ action: 'credit', amount: 500000, reason: 'another' })).status, 200);
+  const huge = { action: 'credit', amount: 50_000_000, reason: 'a typed confirmation, not a limit' };
+  const ask = await act(huge);
+  assert.equal(ask.body.code, 'confirmation_required');
+  assert.equal((await act({ ...huge, confirm: ask.body.token as string })).body.code, 'credited');
+  assert.equal((await act({ action: 'credit', amount: 10_000_000, reason: 'at the guard, not over it' })).body.code, 'credited');
   // A debit asks for confirmation first, takes at most the balance, and says so.
   const wantDebit = { action: 'debit', amount: 400000, reason: 'correcting' };
   const needs = await act(wantDebit);
@@ -146,19 +151,21 @@ test('credit and debit: one ledger line each, bounded, exactly once, audited, an
   // The audit holds a line for each action that ran, newest first, with who and why.
   const audit = await a.admin('/api/admin/audit?target=' + ada.id, founder.cookie);
   const lines2 = audit.body.lines as { action: string; reason: string; admin: string; summary: string }[];
-  assert.deepEqual(lines2.map((line) => line.action), ['debit', 'credit', 'credit']);
-  assert.equal(lines2[2]?.reason, 'launch bonus'); assert.match(lines2[2]?.summary ?? '', /₦5,000/);
+  assert.deepEqual(lines2.map((line) => line.action), ['debit', 'credit', 'credit', 'credit', 'credit', 'credit']);
+  assert.equal(lines2[5]?.reason, 'launch bonus'); assert.match(lines2[5]?.summary ?? '', /₦5,000 \(unrestricted/);
   assert.equal(JSON.stringify(audit.body).includes(FOUNDER_ADDRESS), false);
   const dash = await a.admin('/api/admin/dashboard?fresh=1', founder.cookie);
   const money = dash.body.adminMoney as { creditTotal: number; debitTotal: number };
-  assert.equal(money.creditTotal, 505000); assert.ok(money.debitTotal > 0);
+  assert.equal(money.creditTotal, 5000 + 500001 + 500000 + 50_000_000 + 10_000_000); assert.ok(money.debitTotal > 0);
 });
 
-test('the limits have names and the environment can replace them', async (t) => {
+test('the limits have names and the environment can replace them: they bind every admin but the founder', async (t) => {
   const a = await admins(t, { env: { ADMIN_MAX_AMOUNT: '1000' } });
-  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), ada = await a.ready('Ada');
-  assert.equal((await a.admin(`/api/admin/players/${ada.id}/act`, founder.cookie, { action: 'credit', amount: 1001, reason: 'over the line' })).body.error, 'invalid_amount');
-  assert.equal((await a.admin(`/api/admin/players/${ada.id}/act`, founder.cookie, { action: 'credit', amount: 1000, reason: 'on the line' })).status, 200);
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), second = await a.account(OTHER_ADMIN_ADDRESS, 'Second'), ada = await a.ready('Ada');
+  const credit = (cookie: string, amount: number) => a.admin(`/api/admin/players/${ada.id}/act`, cookie, { action: 'credit', amount, reason: 'a test credit' });
+  assert.equal((await credit(second.cookie, 1001)).body.error, 'over_action_limit', 'another admin keeps the cap');
+  assert.equal((await credit(second.cookie, 1000)).status, 200);
+  assert.equal((await credit(founder.cookie, 1_000_000)).status, 200, 'the founder has none');
   assert.equal(((await a.admin('/api/admin/me', founder.cookie)).body.limits as { maxAmount: number }).maxAmount, 1000);
 });
 

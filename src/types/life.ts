@@ -799,6 +799,12 @@ export interface SocialState {
   streak: { day: LagosDay; count: number }
   /** Naira earned from paid activities — the ceiling on lifetime gifts. */
   earned: number
+  /**
+   * UNRESTRICTED FUNDS: naira an admin credited without the gift restrictions (systems/wallet.ts freeOf). A gift to another player and a purchase at a player's stall
+   * draw on it first and, for the part it covers, are exempt from the earned-from-work rule and the gift caps. Never more than the cash held (any spend
+   * brings it down to cash). The launch bonus is not part of it. Absent = 0; a life saved before it existed loads unchanged.
+   */
+  free?: number
   /** Gifts sent on `day` (`sent` naira over `count` gifts) and in this life (`total`). */
   transfer: { day: LagosDay; sent: number; count: number; total: number }
   /** At most 20, oldest first. */
@@ -1134,7 +1140,7 @@ export const SLICE_FIELD_KEYS = {
     'needsSet', 'playedAt', 'required', 'seed', 'stage', 'step', 'traits', 'wardrobe',
   ],
   goals: ['besties', 'chain', 'cv', 'dream', 'dreamDone', 'feed', 'granted', 'perks', 'rerolls', 'seen', 'seq', 'stars', 'started', 'stats', 'wishes'],
-  social: ['bae', 'earned', 'family', 'notices', 'rel', 'streak', 'transfer'],
+  social: ['bae', 'earned', 'family', 'free', 'notices', 'rel', 'streak', 'transfer'],
   civic: ['claims', 'gems', 'hunt', 'news', 'seed', 'since', 'week', 'work'],
   missions: ['active', 'claimed', 'daily', 'day', 'paidDay', 'rerolls', 'seed', 'sets', 'stamps', 'titles', 'visited', 'week', 'weekly'],
   events: ['attended', 'count', 'spray', 'sprayed'],

@@ -56,6 +56,7 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
+import { freeOf, spendFree } from './wallet.ts';
 import { addMoodlet, addSkillXp, arrive, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
 import { repayFromEarnings } from '../relief.ts';
 import { arriveInCity } from './estate.ts';
@@ -232,10 +233,13 @@ const serverOps: ServerOps = {
     const amount = payload.amount, to = playerId(payload.to);
     if (typeof amount !== 'number' || to === null) return fail(state, 'invalid_transfer', 'Choose a friend to send money to.'); // unreachable: transferBlock checked both
     const name = cleanText(payload.name, 24, 'a friend');
+    // The unrestricted part first; only the rest is counted against the gift rules (transferBlock checked it).
+    const free = Math.min(freeOf(state), amount), ordinary = amount - free;
+    spendFree(state, free);
     debit(state, amount, `Transfer to ${name}`, ctx);
     const book = state.social.transfer, day = dayOf(state, ctx);
     if (book.day !== day) { book.day = day; book.sent = 0; book.count = 0; }
-    book.sent += amount; book.count += 1; book.total += amount;
+    if (ordinary > 0) { book.sent += ordinary; book.count += 1; book.total += ordinary; }
     state.message = `You sent ${naira(amount)} to ${name}.`;
     emit(state, 'transfer.sent', { to, amount }, ctx);
     return ok(state, 'sent');
@@ -311,21 +315,40 @@ const serverOps: ServerOps = {
   join: joinOp,
 };
 
-/** Why this life may not send `amount` now, as a failure result, or null. Pure. */
+/**
+ * What this life may send as ordinary gifts now: the most one gift can carry under the earned-from-work rule and the daily caps (0 when it may send none).
+ * Unrestricted funds (an admin's credit) are on top of it and have no limits: see `sendable`.
+ */
+export function giftRoom(state: LifeState, ctx: LifeContext): number {
+  const L = TRANSFER_LIMITS, book = state.social.transfer, today = book.day === dayOf(state, ctx) ? book : { sent: 0, count: 0 };
+  if (state.social.earned < L.minEarned || today.count >= L.dailyCount) return 0;
+  const room = Math.min(L.maxPerTransfer, L.dailyAmount - today.sent, state.social.earned - (book.total + (state.business?.spent ?? 0)));
+  return room >= L.min ? room : 0;
+}
+/** The most one gift can be now: the unrestricted part plus the ordinary room, never more than the cash held. */
+export const sendable = (state: LifeState, ctx: LifeContext): number => Math.max(0, Math.min(state.cash, freeOf(state) + giftRoom(state, ctx)));
+
+/**
+ * Why this life may not send `amount` now, as a failure result, or null. Pure.
+ * A gift is drawn FIRST from the unrestricted funds an admin credited; for that part no gift rule applies. Whatever is beyond it follows the ordinary rules, and
+ * when the ordinary part would be refused the whole gift is refused (nothing is split behind the player's back) with the exact most that can be sent.
+ */
 function transferBlock(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext): ActionFailure<TransferBlockCode> | null {
   const L = TRANSFER_LIMITS, amount = payload.amount, book = state.social.transfer;
   if (!playerId(payload.to)) return fail(state, 'invalid_transfer', 'Choose a friend to send money to.');
   if (typeof amount !== 'number' || !Number.isSafeInteger(amount) || amount < L.min) return fail(state, 'amount_too_small', `The smallest gift is ${naira(L.min)}.`);
-  if (amount > L.maxPerTransfer) return fail(state, 'amount_too_large', `The largest single gift is ${naira(L.maxPerTransfer)}.`);
-  if (state.social.earned < L.minEarned) return fail(state, 'earn_first', `Earn at least ${naira(L.minEarned)} from paid work before sending money (you have earned ${naira(state.social.earned)}).`);
-  // What was spent at other players' shops (systems/business.ts) came out of the same allowance: money earned from work passes to another player once.
-  const passed = book.total + (state.business?.spent ?? 0);
-  if (passed + amount > state.social.earned) {
-    return fail(state, 'gift_exceeds_earned', `You can only give away money you have earned from work. You can still give ${naira(Math.max(0, state.social.earned - passed))}.`);
+  const free = Math.min(freeOf(state), amount), ordinary = amount - free;
+  const refuse = (code: TransferBlockCode, reason: string): ActionFailure<TransferBlockCode> => fail(state, code, free > 0 ? `${reason} You can send up to ${naira(sendable(state, ctx))} now (${naira(freeOf(state))} of it has no gift limits).` : reason);
+  if (ordinary > 0) {
+    if (ordinary > L.maxPerTransfer) return refuse('amount_too_large', `The largest single gift is ${naira(L.maxPerTransfer)}${free > 0 ? ' beyond what has no limits' : ''}.`);
+    if (state.social.earned < L.minEarned) return refuse('earn_first', `Earn at least ${naira(L.minEarned)} from paid work before sending more (you have earned ${naira(state.social.earned)}).`);
+    // What was spent at other players' shops (systems/business.ts) came out of the same allowance: money earned from work passes to another player once.
+    const passed = book.total + (state.business?.spent ?? 0);
+    if (passed + ordinary > state.social.earned) return refuse('gift_exceeds_earned', `You can only give away money you have earned from work. You can still give ${naira(Math.max(0, state.social.earned - passed))}.`);
+    const today = book.day === dayOf(state, ctx) ? book : { sent: 0, count: 0 };
+    if (today.count >= L.dailyCount) return refuse('daily_transfer_limit', `You have sent ${L.dailyCount} gifts today. The limit resets at midnight, Nigerian time.`);
+    if (today.sent + ordinary > L.dailyAmount) return refuse('daily_transfer_limit', `You can send ${naira(L.dailyAmount)} a day. ${naira(Math.max(0, L.dailyAmount - today.sent))} is left today.`);
   }
-  const today = book.day === dayOf(state, ctx) ? book : { sent: 0, count: 0 };
-  if (today.count >= L.dailyCount) return fail(state, 'daily_transfer_limit', `You have sent ${L.dailyCount} gifts today. The limit resets at midnight, Nigerian time.`);
-  if (today.sent + amount > L.dailyAmount) return fail(state, 'daily_transfer_limit', `You can send ${naira(L.dailyAmount)} a day. ${naira(Math.max(0, L.dailyAmount - today.sent))} is left today.`);
   if (!canAfford(state, amount)) return fail(state, 'insufficient_funds', `You do not have enough cash. You have ${naira(state.cash)}.`);
   return null;
 }
@@ -460,6 +483,7 @@ export default {
     for (const [id, day] of Object.entries(isRecord(saved.family) ? saved.family : {})) if (isFamilyId(id) && safeCount(day)) next.family[id] = day;
     if (isRecord(saved.streak) && safeCount(saved.streak.day) && safeCount(saved.streak.count)) next.streak = { day: saved.streak.day, count: Math.min(saved.streak.count, 100000) };
     next.earned = safeCount(saved.earned) ? saved.earned : 0;
+    if (safeCount(saved.free) && saved.free > 0) next.free = saved.free;
     const book = isRecord(saved.transfer) ? saved.transfer : {};
     for (const key of ['day', 'sent', 'count', 'total'] as const) if (safeCount(book[key])) next.transfer[key] = book[key];
     next.notices = (Array.isArray(saved.notices) ? saved.notices : []).slice(-MAX_NOTICES)
@@ -509,7 +533,8 @@ export default {
       streak: book.streak.day >= day - 1 ? book.streak.count : 0,
       calling: state.activeAction?.kind === 'call' ? state.activeAction.id : null,
       transfer: { ...L, earned: book.earned, sentToday: today.sent, countToday: today.count,
-        leftToday: Math.max(0, Math.min(L.dailyAmount - today.sent, book.earned - book.transfer.total - (state.business?.spent ?? 0))), giftsLeftToday: Math.max(0, L.dailyCount - today.count) },
+        leftToday: Math.max(0, Math.min(L.dailyAmount - today.sent, book.earned - book.transfer.total - (state.business?.spent ?? 0))), giftsLeftToday: Math.max(0, L.dailyCount - today.count),
+        free: freeOf(state) },
       notices: book.notices.slice().reverse(),
     };
   },

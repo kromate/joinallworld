@@ -61,6 +61,7 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
 import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
+import { freeOf } from '../../src/game/systems/wallet.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityName } from '../../src/game/cities/index.ts';
 import { DREAMS, TRAITS } from '../../src/game/content/traits.ts';
@@ -1624,7 +1625,10 @@ function buildService(ctx: RouteContext) {
         if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
         const day = lagosTime(t).day;
         if (target.recv.day !== day) target.recv = { day, amount: 0 };
-        if (target.recv.amount + amount > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
+        // The part of the gift that is the sender's unrestricted funds (an admin's credit) is neither blocked by nor counted against the recipient's daily cap: to them it is an ordinary gift,
+        // and what they receive is ordinary money (it is never passed on as unrestricted).
+        const unlimited = Math.min(freeOf(ctx.settle(session, cityId)), amount), counted = amount - unlimited;
+        if (target.recv.amount + counted > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
         if ((s.pending[to]?.length ?? 0) >= LIMITS.pending) return no('recipient_unavailable', `${target.name} has too many gifts waiting. Ask them to log in first.`);
         // Where the money will land, decided before anything is charged. No life anywhere: no gift.
         const theirs = ctx.core.sessionByPublicId(db, to);
@@ -1632,7 +1636,7 @@ function buildService(ctx: RouteContext) {
         if (!creditCity) return no('recipient_no_life', `${target.name} has no life in any city right now, so there is nowhere to put the money. Nothing was sent.`);
         const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount }, `social|transfer|${id}|${cid}`);
         if (!sent.ok) return no(sent.code, sent.reason!);
-        target.recv.amount += amount;
+        target.recv.amount += counted;
         // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
         const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [] };
         index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);

@@ -3,7 +3,7 @@
 // A destructive action carries a typed word; the page then makes the two requests the server needs (token, then the action) itself.
 import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import { useAdmin } from './useAdmin.ts'
-import { PLAYER_ACTIONS, absolute, actionDef, bodyOf, formWhy, naira, relative } from './adminModel.ts'
+import { PLAYER_ACTIONS, absolute, actionDef, bodyOf, formWhy, naira, relative, typedWord } from './adminModel.ts'
 import type { ActionDef } from './adminModel.ts'
 
 const props = defineProps<{ id: string }>()
@@ -98,7 +98,7 @@ const until = (s: { until: number } | null): string => (s ? (s.until ? `until ${
               <textarea v-else-if="field.kind === 'long'" v-model="values[field.key]" maxlength="500" />
               <input v-else v-model="values[field.key]" :type="field.kind === 'number' ? 'number' : 'text'" :min="field.min" :max="field.max" :placeholder="field.placeholder"></label>
             <label v-if="chosen.reason !== 'none'" style="flex:1;min-width:200px">Reason{{ chosen.reason === 'required' ? ' (required)' : '' }}<input v-model="reason" maxlength="200"></label>
-            <label v-if="chosen.typed">Type {{ chosen.typed }} to confirm<input v-model="typed" autocomplete="off"></label>
+            <label v-if="typedWord(chosen, values)">Type {{ typedWord(chosen, values) }} to confirm<input v-model="typed" autocomplete="off"></label>
             <button class="adm-btn" :class="chosen.danger ? 'danger' : 'primary'" :disabled="busy || Boolean(why)" :title="why ?? undefined">{{ busy ? 'Working…' : chosen.label }}</button>
           </div>
           <p v-if="why" class="adm-sub">{{ why }}</p>

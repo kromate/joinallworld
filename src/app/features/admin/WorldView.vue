@@ -6,10 +6,10 @@ import { admin, useAdmin } from './useAdmin.ts'
 import { naira } from './adminModel.ts'
 
 const api = useAdmin()
-const grant = reactive({ audience: 'online', city: 'lagos', amount: 500, reason: 'launch bonus' })
+const grant = reactive({ audience: 'online', city: 'lagos', amount: 500, reason: 'launch bonus', unrestricted: false })
 const preview = ref<{ count: number; total: number; leftToday: number; needsConfirmation: boolean } | null>(null), typed = ref('')
 const out = ref<{ ok: boolean; text: string } | null>(null), busy = ref(false)
-const body = (): Record<string, unknown> => ({ audience: grant.audience, ...(grant.audience === 'city' ? { city: grant.city } : {}), amount: Number(grant.amount), reason: grant.reason })
+const body = (): Record<string, unknown> => ({ audience: grant.audience, ...(grant.audience === 'city' ? { city: grant.city } : {}), amount: Number(grant.amount), reason: grant.reason, ...(grant.unrestricted ? { unrestricted: true } : {}) })
 async function look(): Promise<void> {
   const r = await api.post<{ count: number; total: number; leftToday: number; needsConfirmation: boolean }>('/api/admin/world/grant', { ...body(), preview: true }, 'grant-preview')
   if (r.ok) { preview.value = r.data; out.value = null } else out.value = { ok: false, text: r.error.reason }
@@ -49,6 +49,7 @@ async function notice(m: number): Promise<void> { const r = await api.post('/api
           <label v-if="grant.audience === 'city'">City<select v-model="grant.city"><option v-for="id in admin.me?.cities ?? []" :key="id" :value="id">{{ id }}</option></select></label>
           <label>₦ each (most {{ naira(admin.me?.limits.grantEach) }})<input v-model.number="grant.amount" type="number" min="1" :max="admin.me?.limits.grantEach"></label>
           <label style="flex:1">Reason<input v-model="grant.reason" maxlength="60"></label>
+          <label><input v-model="grant.unrestricted" type="checkbox"> unrestricted (can be gifted freely; default: restricted, because a grant reaches many players)</label>
         </div>
         <button class="adm-btn" @click="look">Count who would get it</button>
         <p v-if="preview" class="adm-sub">{{ preview.count }} players · {{ naira(preview.total) }} in all · {{ naira(preview.leftToday) }} left of today’s grant allowance.</p>

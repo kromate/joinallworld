@@ -36,7 +36,7 @@ import { moderationService } from '../moderation/service.ts';
 import { noticeOf } from '../notice.ts';
 import { socialService } from '../social/service.ts';
 import { UUID_PATTERN } from '../protocol.ts';
-import { DESTRUCTIVE, actionsService, formatNaira, parseAction } from '../admin/actions.ts';
+import { actionsService, formatNaira, needsConfirmation, parseAction } from '../admin/actions.ts';
 import type { Effects } from '../admin/actions.ts';
 import { announceOf } from '../admin/announce.ts';
 import { linkFeatures } from '../admin/links.ts';
@@ -145,7 +145,7 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const body = await request.json(), id = publicId(request.params.id);
       const parsed = parseAction(ctx, body.action, body);
       ctx.onceId(body.clientId);
-      if (DESTRUCTIVE.has(parsed.action)) {
+      if (needsConfirmation(parsed)) {
         const bound = canon([parsed.params, parsed.reason]);
         if (!(await checkConfirm(ctx, body.confirm, admin.accountId, parsed.action, id, bound))) {
           // The first request of a destructive action changes nothing: it checks the target and answers a token for the second.
@@ -180,7 +180,7 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const effects: Effects = {};
       const result = await ctx.store.transact((db) => {
         const caller = again(db, request);
-        return ctx.once(db, caller.session, { id: body.clientId as string, kind: 'admin.grant', fingerprint: [input.audience, input.city, input.amount, input.reason] }, () => ({ ...world.run(db, caller, input, effects) }));
+        return ctx.once(db, caller.session, { id: body.clientId as string, kind: 'admin.grant', fingerprint: [input.audience, input.city, input.amount, input.reason, input.unrestricted] }, () => ({ ...world.run(db, caller, input, effects) }));
       });
       stats.invalidate();
       await actions.finish(effects);

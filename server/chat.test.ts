@@ -288,6 +288,31 @@ test('a gift is a money line in both threads at once, the recipient is told live
   assert.equal((await get(f, '/api/life?city=lagos', chi)).state.cash, 5500);
 });
 
+test('a gift from unrestricted funds (an admin credit) skips the sender\'s rules and the recipient\'s daily cap, and lands as ordinary money', async (t) => {
+  const f = await fixture(t);
+  const [ada, bola, chi] = await people(f, ['Ada', 'Bola', 'Chi']);
+  await befriend(f, ada, bola); await befriend(f, bola, chi);
+  f.advance(24 * HOUR);
+  // What an admin's credit leaves on the life: cash, and the unrestricted counter. Ada has earned nothing from work.
+  await f.server.store.transact((db) => { const life = defined(db.sessions[Object.keys(db.sessions).find((k) => db.sessions[k]!.publicId === ada.id)!]!.cities['lagos']?.state) as unknown as { cash: number; social: { free?: number } }; life.cash = 600000; life.social.free = 500000; });
+  const send = (from: Device, to: Device, amount: number) => post(f, '/api/social/transfers', { to: to.id, amount, cityId: 'lagos', clientId: f.id() }, from);
+  assert.equal((await send(ada, bola, 150000)).code, 'sent', 'over the per-gift cap, with nothing earned');
+  assert.equal((await send(ada, bola, 150000)).code, 'sent', 'and again: no gifts-a-day limit, no receive cap for the recipient');
+  await get(f, '/api/social/me', bola);
+  assert.equal((await get(f, '/api/life?city=lagos', bola)).state.cash, 5000 + 300000);
+  const ada2 = (await get(f, '/api/life?city=lagos', ada)).state as unknown as { cash: number; social: { free?: number; transfer: { total: number } } };
+  assert.equal(ada2.cash, 300000); assert.equal(ada2.social.free, 200000); assert.equal(ada2.social.transfer.total, 0);
+  const social = await f.server.store.read((db) => db.social);
+  assert.equal(defined(social?.players[bola.id]).recv.amount, 0, 'the recipient\'s daily receive cap was not consumed');
+  // Beyond the unrestricted amount the ordinary rules apply, and the exact most that can be sent is said.
+  const refused = await send(ada, bola, 205000);
+  assert.equal(refused.ok, false); assert.match(String(refused.reason), /You can send up to ₦200,000 now \(₦200,000 of it has no gift limits\)/);
+  // What Bola got is ordinary money: she cannot pass it on as unrestricted.
+  const onward = await send(bola, chi, 100000);
+  assert.equal(onward.ok, false);
+  assert.equal(((await get(f, '/api/life?city=lagos', bola)).state as unknown as { social: { free?: number } }).social.free, undefined);
+});
+
 test('a share of a gift that went to a ride debt is written into the receiver\'s line only', async (t) => {
   const f = await fixture(t);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);

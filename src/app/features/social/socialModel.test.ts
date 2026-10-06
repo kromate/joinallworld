@@ -6,11 +6,11 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { HouseView, KnockState } from '../../../types/social.ts'
 import { knockReason, knockView, roomLine, statusText, homeLine } from './inviteModel.ts'
-import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, npcActionReason, npcMeterMax, npcReason } from './personModel.ts'
+import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, npcActionReason, npcMeterMax, npcReason, sendLine } from './personModel.ts'
 import { knocksWaiting, requestsWaiting } from './socialModel.ts'
 import { callNote, callReason, closenessText, dotHint, dotOf, gateOf, meterPercent, presenceClass, reasonLabel, staleSteps, STALE_MS, tagLabel, venueNameOf } from './socialWords.ts'
 
-const transfer = { min: 50, maxPerTransfer: 5000, dailyAmount: 20000, dailyCount: 3, dailyReceive: 50000, minEarned: 2000, minAccountAgeMs: 0, minFriendshipMs: 0, earned: 3000, sentToday: 0, countToday: 0, leftToday: 5000, giftsLeftToday: 3 }
+const transfer = { min: 50, maxPerTransfer: 5000, dailyAmount: 20000, dailyCount: 3, dailyReceive: 50000, minEarned: 2000, minAccountAgeMs: 0, minFriendshipMs: 0, earned: 3000, sentToday: 0, countToday: 0, leftToday: 5000, giftsLeftToday: 3, free: 0 }
 
 test('badges: People counts friend and Bae requests, Invite counts knocks; nothing before the overview', () => {
   assert.equal(requestsWaiting(null), 0)
@@ -106,12 +106,19 @@ test('a player: why interactions, Bae and gifts are off', () => {
   assert.equal(baeReason({ card: { ...card, baeAsked: true }, social, meBae: false, points: 20 }), 'Asked. Waiting for an answer.')
   assert.equal(baeReason({ card, social, meBae: false, points: 20 }), null)
 
-  assert.equal(moneyReason(card, transfer), null)
-  assert.equal(moneyReason({ friend: false }, transfer), 'You can only send money to friends.')
-  assert.equal(moneyReason(card, { ...transfer, earned: 100 }), 'Earn ₦2,000 from paid work first (earned so far: ₦100).')
-  assert.equal(moneyReason(card, { ...transfer, giftsLeftToday: 0 }), 'You have sent 3 gifts today.')
-  assert.equal(moneyReason(card, { ...transfer, leftToday: 10 }), 'You have given away all you may for now. You can only give money you earned from work.')
-  assert.equal(moneyCeiling({ maxPerTransfer: 5000, leftToday: 1200 }), 1200)
+  assert.equal(moneyReason(card, transfer, 50000), null)
+  assert.equal(moneyReason({ friend: false }, transfer, 50000), 'You can only send money to friends.')
+  assert.equal(moneyReason(card, { ...transfer, earned: 100 }, 50000), 'Earn ₦2,000 from paid work first (earned so far: ₦100).')
+  assert.equal(moneyReason(card, { ...transfer, giftsLeftToday: 0 }, 50000), 'You have sent 3 gifts today.')
+  assert.equal(moneyReason(card, { ...transfer, leftToday: 10 }, 50000), 'You have given away all you may for now. You can only give money you earned from work.')
+  assert.equal(moneyCeiling({ ...transfer, leftToday: 1200 }, 50000), 1200)
+  // Unrestricted funds (an admin's credit): a friend can be sent them though nothing was earned and the day's gifts are used up.
+  const rich = { ...transfer, earned: 0, giftsLeftToday: 0, leftToday: 0, free: 276200 }
+  assert.equal(moneyReason(card, rich, 288200), null)
+  assert.equal(moneyCeiling(rich, 288200), 276200)
+  assert.ok(sendLine(rich, 288200).startsWith('You can send up to ₦276,200 now · ₦276,200 of it has no gift limits.'))
+  assert.ok(sendLine(rich, 288200).includes('What a friend receives is ordinary money.'))
+  assert.ok(sendLine(transfer, 9000).startsWith('Gifts are capped: ₦5,000 each, 3 a day'))
 })
 
 test('the friendship button: none while blocked, then remove, accept, sent, add', () => {

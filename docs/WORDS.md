@@ -13,7 +13,7 @@ rules, the answer list and the everyday additions are original to this project.
 ## Selection rules
 
 1. Keep lower-case `a-z` entries only. Capitalised entries (proper nouns), hyphens, apostrophes and accents drop out.
-2. Keep lengths 2 to 15. Keep a word only if it has a vowel (a, e, i, o, u, y) and no letter three times in a row.
+2. Keep lengths 2 to 13 (the Weave board is 13 across, so a longer word can never be played). Keep a word only if it has a vowel (a, e, i, o, u, y) and no letter three times in a row.
    Two-letter words come from a short hand list of ordinary words, because the source holds many two-letter fragments.
 3. Drop blocked words: the chat filter in `server/moderation/text.ts` (`blockedCategory`), the hand-written
    `scripts/words/blocklist.ts` (`BLOCKED_WORDS`, and `BLOCKED_PREFIXES` for stems that are never innocent).
@@ -29,7 +29,7 @@ rules, the answer list and the everyday additions are original to this project.
 5. Hand-added everyday words (`EXTRA_WORDS` in `scripts/words/answer-edits.ts`): irregular verb forms, a few modern
    words the 1934 list lacks, and eleven Nigerian food and culture words (akara, amala, egusi, garri, danfo, okada,
    naija, ewedu, ofada, iroko, abula) accepted as guesses only, never answers.
-6. Long words (11 to 15 letters) are kept only when another word shares all but the last four letters, which drops
+6. Long words (11 to 13 letters) are kept only when another word shares all but the last four letters, which drops
    one-off technical terms.
 
 ## Files
@@ -38,11 +38,13 @@ rules, the answer list and the everyday additions are original to this project.
 | --- | --- |
 | `allowed5.ts` | every accepted five-letter guess, sorted, 5 characters each, no separator |
 | `answers.ts` | the daily answers in a fixed shuffled order, 5 characters each, no separator |
-| `dictionary.ts` | `Record<length, string>` for 2 to 15 letters, sorted, fixed width, no separator |
+| `dictionary.ts` | `Record<length, string>` for 2 to 13 letters, sorted, fixed width, no separator |
 | `letters.ts` | letter counts over dictionary words of 2 to 8 letters plus the answers |
 
 Lookup is a binary search over the fixed-width string (`src/words/guess.ts`, `src/words/dict.ts`); no Set is built.
-`guess.ts` (about 70 KB raw) is safe for the browser; `dict.ts` imports the dictionary (about 3.7 MB raw) and is for the server host only.
+`guess.ts` (about 70 KB raw) is safe for the browser; `dict.ts` imports the dictionary (about 3.2 MB raw, 347,726 words) and is for the server host only.
+
+The list is never parsed, split or indexed when a host starts: it stays one string per length. A lookup is a binary search over that string (about 0.2 µs). The Weave computer player reads each length's masks off the same strings the first time a Weave table is created (about 6 ms) and cuts a word out of them only when it looks at it. `deploy/words.edge.test.ts` holds the budgets: the Worker script's compressed size, its start-up time with the list inside it, the first-use cost and a lookup.
 
 ## Daily answers
 

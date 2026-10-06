@@ -10,7 +10,7 @@ import { ANSWER_WORDS, EXTRA_WORDS } from './answer-edits.ts'
 const SOURCE = '/usr/share/dict/words'
 const OUT = new URL('../../src/words/data/', import.meta.url)
 const MIN = 2
-const MAX = 15
+const MAX = 13
 const ANSWER_TARGET = 1500
 const log = (...parts: unknown[]): void => console.log(...parts)
 
@@ -36,7 +36,7 @@ count('source entries', raw)
 const lower = new Set(raw.filter(w => /^[a-z]+$/.test(w)))
 count('lower-case a-z only', lower)
 const sized = new Set([...lower].filter(w => w.length >= MIN && w.length <= MAX))
-count('length 2..15', sized)
+count('length 2..13', sized)
 const shaped = new Set([...sized].filter(w => /[aeiouy]/.test(w) && !/(.)\1\1/.test(w) && (w.length !== 2 || COMMON_TWO.has(w))))
 count('has a vowel, no triple, short list', shaped)
 // A base is blocked if it, or the stem it extends, is blocked (derived forms inherit this below).
@@ -53,12 +53,12 @@ for (const base of clean) {
   }
 }
 count('derived inflections added', derived)
-const extras = EXTRA_WORDS.filter(w => /^[a-z]{2,15}$/.test(w) && !isBlockedWord(w) && !clean.has(w) && !derived.has(w))
+const extras = EXTRA_WORDS.filter(w => /^[a-z]{2,13}$/.test(w) && !isBlockedWord(w) && !clean.has(w) && !derived.has(w))
 count('hand-added everyday words', extras)
 const all = new Set([...clean, ...derived, ...extras])
 count('final dictionary', all)
 
-// Long words (11 to 15 letters) are kept only when they belong to a family: another word shares
+// Long words (11 to 13 letters) are kept only when they belong to a family: another word shares
 // all but the last few letters. This drops one-off technical and chemical terms.
 const sortedAll = [...all].sort()
 const commonPrefix = (a: string, b: string): number => { let i = 0; while (i < a.length && a[i] === b[i]) i++; return i }
@@ -108,7 +108,7 @@ emit('allowed5.ts', `// Every accepted five-letter guess, sorted, concatenated w
 emit('answers.ts', `// Daily answers, in a fixed shuffled order, concatenated with no separator (5 characters each).\nexport default '${answers.join('')}'\n`)
 const dictLines = [...byLength.keys()].sort((a, b) => a - b)
   .map(n => `  ${n}: '${(byLength.get(n) ?? []).join('')}',`).join('\n')
-emit('dictionary.ts', `// Accepted words per length 2..15, each sorted and concatenated with no separator.\nconst dictionary: Readonly<Record<number, string>> = {\n${dictLines}\n}\nexport default dictionary\n`)
+emit('dictionary.ts', `// Accepted words per length 2..13, each sorted and concatenated with no separator.\nconst dictionary: Readonly<Record<number, string>> = {\n${dictLines}\n}\nexport default dictionary\n`)
 emit('letters.ts', `// Letter counts over the dictionary words of length 2..8 plus the answers.\nconst letters: Readonly<Record<string, number>> = ${JSON.stringify(letterObject)}\nexport default letters\n`)
 log('stage table written:', Object.keys(stages).join(' | '))
 if (!existsSync(new URL('allowed5.ts', OUT))) throw new Error('write failed')

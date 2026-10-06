@@ -141,7 +141,7 @@ onMounted(() => {
   void connect()
   if (new URLSearchParams(location.search).has('venue')) scene.mapsWanted.value = true
   // The guide (src/app/features/companion): fetched once the first frame is up.
-  requestAnimationFrame(() => { void import('./features/companion/companionLoader.ts').then((loader) => loader.startCompanion()) })
+  setTimeout(() => { void import('./features/companion/companionLoader.ts').then((loader) => loader.startCompanion()) }, 800)
 })
 onBeforeUnmount(() => { for (const [target, type, listener] of listeners) target.removeEventListener(type, listener) })
 // Connected (or connected again): the social client opens its socket and reads the overview.

@@ -187,7 +187,8 @@ export const EXAMINE_BUDGET = 8000;
 export const LOOK_BUDGET = 40000;
 export const SCORE_BUDGET = 400;
 const A = 97;
-type Bucket = { words: string[]; masks: Int32Array };
+/** The words of one length: how many, the word at an index, and the 26-bit letter mask of each. */
+type Bucket = { count: number; word(index: number): string; masks: Int32Array };
 const bucketCache = new WeakMap<Dictionary, Bucket[]>();
 
 function bucketsOf(dict: Dictionary): Bucket[] {
@@ -195,16 +196,24 @@ function bucketsOf(dict: Dictionary): Bucket[] {
   if (cached) return cached;
   const buckets: Bucket[] = [];
   for (let n = 0; n <= SIZE; n++) {
+    const text = n >= 2 ? dict.packed?.(n) : undefined;
+    if (text !== undefined) {
+      // The real list: the masks are read straight off the packed string, and a word is cut out of it only when it is looked at.
+      const count = Math.floor(text.length / n), masks = new Int32Array(count);
+      for (let i = 0, at = 0; i < count; i++) { let mask = 0; for (let k = 0; k < n; k++, at++) mask |= 1 << (text.charCodeAt(at) - A); masks[i] = mask; }
+      buckets.push({ count, word: (index) => text.slice(index * n, index * n + n), masks });
+      continue;
+    }
     const words: string[] = [];
     if (n >= 2) for (const word of dict.ofLength(n)) words.push(word);
     const masks = new Int32Array(words.length);
     words.forEach((word, i) => { let mask = 0; for (let k = 0; k < word.length; k++) mask |= 1 << (word.charCodeAt(k) - A); masks[i] = mask; });
-    buckets.push({ words, masks });
+    buckets.push({ count: words.length, word: (index) => words[index] as string, masks });
   }
   bucketCache.set(dict, buckets);
   return buckets;
 }
-/** Builds the bot's per-length tables now (about half a second for the real list) instead of in the first bot move. */
+/** Builds the bot's per-length tables now (a few hundredths of a second for the real list) instead of in the first bot move. */
 export function warmBot(dict: Dictionary): void { bucketsOf(dict); }
 const popcount = (value: number): number => { let n = 0; for (let v = value; v; v &= v - 1) n++; return n; };
 
@@ -277,8 +286,7 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
       const offered = lineMask; // letters a word on this line may use without a blank
 
       for (let length = 2; length <= SIZE; length++) {
-        const { words, masks } = buckets[length] as Bucket;
-        const total = words.length;
+        const { count: total, word: wordAt, masks } = buckets[length] as Bucket;
         if (total === 0) continue;
         const startAt = Math.floor(rng() * total);
         for (let n = 0; n < total; n++) {
@@ -286,7 +294,7 @@ function candidates(state: WeaveState, seat: number, dict: Dictionary, rng: () =
           const missing = (masks[index] as number) & ~offered;
           if (missing !== 0 && (blanks === 0 || popcount(missing) > blanks)) continue;
           if (++looked > lookTo) break;
-          const word = words[index] as string;
+          const word = wordAt(index);
           for (let s = 0; s + length <= SIZE; s++) {
             const end = s + length, fresh = (emptiesTo[end] as number) - (emptiesTo[s] as number);
             if (fresh === 0 || fresh > rack.length || (anchorsTo[end] as number) === (anchorsTo[s] as number)) continue;

@@ -335,9 +335,12 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   let sampleEvery = Math.max(1, Math.floor(shadowSample));
   /** Write a legacy collection value; when the layout is `shadow` the entry rows are brought to the same state in the same SQLite transaction. */
   function writeLegacy(name: string, text: string, old: string | undefined): void {
+    const shadowed = layout === 'shadow' && synced.has(name) && isKeyedCollection(name);
+    // A value written over one this transaction never read (a collection made fresh) is compared with what is stored.
+    const before = shadowed ? (old ?? collectionText(name)) : undefined;
     writeCollection(name, text);
-    if (layout !== 'shadow' || !synced.has(name) || !isKeyedCollection(name)) return;
-    try { shadowApply(name, old, text); shadow.applied += 1; }
+    if (!shadowed) return;
+    try { shadowApply(name, before, text); shadow.applied += 1; }
     catch (error) {
       // The entry rows are only a copy: whatever went wrong, the player's write stands, and the copy is rebuilt (backfill) at the next start.
       shadow.errors += 1; synced.delete(name); sql.exec('DELETE FROM store_meta WHERE key = ?', `synced:${name}`); migrationErrors.set(name, `shadow write failed: ${error instanceof Error ? error.message : String(error)}`);

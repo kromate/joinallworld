@@ -146,10 +146,81 @@ the way back is to unset the variable. `shadow` is `legacy` there.
 
 ## Moving an existing store (Worker)
 
-Planned in this order; each stage is shippable by itself and changes nothing for a player.
+The store is moved by the operator, at run time, with the routes below; the code ships with `STORE_LAYOUT` unset, which
+changes nothing. The layout lives in the store itself (`store_meta`): once the operator has set it, a restart with another
+`STORE_LAYOUT` value does NOT change it. The variable is only the starting point of a store that has never been told.
 
-1. The code ships with `STORE_LAYOUT` unset (`legacy`). The new tables (`entries`, `store_meta`) are created empty; nothing
-   reads or writes them.
-2. See "Rollout" below.
+| Route (operator token) | What it does |
+| --- | --- |
+| `GET /api/mod/store` | the layout, per collection: mode, synced, whether a legacy row exists, entries stored, any error; the shadow counters (`mismatches`, `checks`, `errors`, the first differences) |
+| `GET /api/mod/store/compare` | each collection's entry rows against its legacy value: equal or not, and the first differences |
+| `GET /api/mod/store/hashes` | a fingerprint of each collection's whole text, to compare two stores or a store before and after |
+| `POST /api/mod/store/migrate` `{collections?}` | make the entry rows from the legacy values and read them back; one SQLite transaction per collection |
+| `POST /api/mod/store/layout` `{layout, force?}` | `shadow`, `entries` or `legacy`; refuses with 409 and a code (`shadow_mismatch`, `not_equal`, `migration_failed`) when it would lose or mismatch anything |
+| `POST /api/mod/store/safety` `{action: 'drop' \| 'restore', force?}` | after the switch: delete the legacy rows (not before 14 days, `SAFETY_DAYS`, unless `force`), or go back to them |
 
-(This section is completed in the final report of the work, with the exact operator steps and the measurements.)
+**What "moving a collection" does.** In ONE SQLite transaction: any old entry rows of the collection are cleared; the legacy
+text is cut into a root and entries WITHOUT parsing it (`splitText`: a scan of the text that slices each entry out, so a
+20 MB collection costs 20 MB of text, not 80 MB of objects); each entry is written with its projection columns; then every
+row is read back and put together again, and the result must equal the legacy text to the character. Anything else (a
+mismatch, a failure of any statement, the object being evicted) rolls the whole step back: the collection stays legacy, the
+store is readable, and the step is tried again by the next call or the next start. Requests that arrive during a step wait
+in the store's queue, so none sees a half-moved collection. The legacy rows are never written by the move.
+
+**Cost** (`scripts/store-migration-bench.ts`, node:sqlite on the build machine; the Worker's storage adds its own latency):
+
+| Registered players | `social` | All four collections | Table rows written (each entry row also writes one index entry) | Compare of everything |
+| --- | --- | --- | --- | --- |
+| 2,000 | 53 ms | 93 ms | 7,800 | 18 ms |
+| 10,000 | 264 ms | 457 ms | 39,400 (so about 79,000 rows billed) | 83 ms |
+| 2,000, heavy profile (five times the friends, full conversations) | 355 ms | 399 ms | 16,100 | 131 ms |
+
+The largest step is one collection in one event: 0.3 s of CPU at 10,000 players against a limit of 30 s, so no step is split
+into key ranges. 79,000 rows is under 0.2% of the plan's 50 million a month. Memory: the legacy text (19 MB `social`) and
+its slices are held while the step runs; a store of 10,000 players needs about 60 MB for it, within the object's 128 MB.
+
+**A failure at any point.** The move is tested by failing every statement of it in turn (`deploy/sqlite-migration.test.ts`): each
+time the store reads back exactly what it held before, and the move then finishes. A deploy or eviction between two collections
+leaves some collections moved and some not; each is judged by its own `synced` flag, and `entries` mode serves only the ones
+that are moved, the others stay legacy. A commit in `shadow` or `entries` is one SQLite transaction (sessions, receipts, root,
+entries): nothing of a failed one stays (tested at every statement).
+
+### Rollout, with the operator's steps
+
+1. **Ship** with `STORE_LAYOUT` unset. Check `GET /api/mod/store`: `requested: legacy`; `entries` tables are empty.
+2. **Shadow.** `POST /api/mod/store/layout {"layout":"shadow"}`. The first request after it makes the entry copy of each
+   collection (about half a second at 10,000 players) and from then on every legacy write also writes the entries that changed,
+   in the same transaction. One load of a collection in 50 (`shadowSample`) compares the whole entry copy with the legacy text
+   (one more `entries` write per changed entry; the extra CPU is the splitting of the legacy text on each write of a layered
+   collection). A copy that fails to be written stops being kept (`errors`), the player's write stands, and the copy is made
+   again at the next start. Watch `shadow.mismatches` and `shadow.errors` stay at 0 for as long as you like (a few days).
+3. **Check.** `GET /api/mod/store/compare`: every collection `equal: true`.
+4. **Switch.** `POST /api/mod/store/layout {"layout":"entries"}`. It refuses unless the copy equals the legacy value now and the
+   shadow counters are clean (`force: true` overrides the counters only). From this moment collections are read and written per
+   entry; the legacy rows stay untouched as the safety copy, and the switch's time is kept.
+5. **The way back, in the first 14 days.** Either
+   - `POST /api/mod/store/layout {"layout":"shadow"}` (or `legacy`): the legacy rows are rewritten from the entries, so every
+     write made since the switch is kept, and the store carries on in the older layout; or
+   - `POST /api/mod/store/safety {"action":"restore"}`: back to the legacy rows exactly as they were at the switch; writes made
+     since are given up. Use this only if the entries themselves are suspect.
+6. **Retention.** After 14 days, `POST /api/mod/store/safety {"action":"drop"}` deletes the legacy rows of the four collections.
+   The way back to `legacy` still works afterwards (it is made from the entries); `restore` does not.
+7. **Settle.** Set `STORE_LAYOUT=entries` as the variable too, so that a store made from scratch starts in it.
+
+There is no dual write after the switch: keeping the legacy text current would mean serialising the whole collection on every
+request, which is what this change removes. The way back is a one-time rewrite from the entries instead.
+
+## Tests
+
+- `server/keyed.test.ts`: splitting and assembling, a model test of the layer against plain objects (12 seeds, 600 transactions each,
+  restarts, discarded transactions, undo), scans.
+- `deploy/sqlite-entries.test.ts`: the Worker's store in the entries layout against the legacy layout through random transactions,
+  lazy writes and restarts; one row for one changed player; rows split over parts; a failing commit.
+- `deploy/sqlite-migration.test.ts`: shadow, the switch, the way back, the safety copy, a failure at every statement of the move and
+  of a commit, requests during the move, shadow against random changes.
+- `server/store-model.test.ts`: two servers, one per layout, given the same random requests (friends, messages, groups, reactions,
+  blocks, gifts, pings, searches, civic pulses, reads): every answer and every stored collection equal.
+- `deploy/storage.edge.test.ts`: the same on Miniflare with persisted storage and restarts, the operator routes, the rows a message costs.
+- The whole server suite and the edge suite run under `STORE_LAYOUT=entries` (`STORE_LAYOUT=entries npm test`, `STORE_LAYOUT=entries npm run test:edge`).
+- `scripts/live-build-migration.ts --live <checkout of the live build>`: data written through the live build's own routes is moved by this build
+  on both hosts and every collection reads back equal.

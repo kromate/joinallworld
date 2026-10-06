@@ -7,7 +7,7 @@ import type { CallView } from '../../../calls.ts'
 import type { CallsFrom } from '../../../types/calls.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
 
-export const idleView = (): CallView => ({ phase: 'idle', peer: null, role: null, callId: '', expiresAt: null, startedAt: null, muted: false, notice: null, error: null, playBlocked: false, devices: null, selectedDevice: '' })
+export const idleView = (): CallView => ({ phase: 'idle', peer: null, role: null, callId: '', expiresAt: null, startedAt: null, muted: false, notice: null, error: null, playBlocked: false, devices: null, selectedDevice: '', outcome: null, duration: null, mic: 'none', micProblem: null, micLevel: 0, quality: null, path: null, relay: null, outputs: null, selectedOutput: '', awake: null })
 
 export const callStore = reactive({
   view: idleView(),

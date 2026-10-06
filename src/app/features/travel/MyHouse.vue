@@ -15,6 +15,7 @@ import { useAct } from '../kit/act.ts'
 import HouseArt from '../world/HouseArt.vue'
 import LgaCard from '../world/LgaCard.vue'
 import VisitorHome from './VisitorHome.vue'
+import ResidenceCard from '../locate/ResidenceCard.vue'
 import { STYLE_FIELDS } from '../world/worldContent.ts'
 import { focusMap, track, worldChanged } from '../world/worldModel.ts'
 import { FIELD_NAMES, afterStyle, minutesToGo, offeredTiers, offlineWhy, swatchLabel, swatchOff, swatchTitle, tierWhy } from './myHouseModel.ts'
@@ -88,6 +89,7 @@ function showOnMap(): void {
         ><i v-if="option.hex" :style="{ background: option.hex }" />{{ swatchLabel(option) }}</button>
       </div>
     </div>
+    <ResidenceCard />
     <h3>Bigger houses</h3>
     <div class="world-tiers">
       <article v-for="tier in tiers" :key="tier.id" class="world-tier">

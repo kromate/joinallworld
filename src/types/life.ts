@@ -513,6 +513,17 @@ export interface EstateState extends Residence {
   home: WorldCityId | null
   /** Server ms the main home was last moved to another city by the player, or null. */
   homeAt: Ms | null
+  /** Absent unless the player confirmed (and has not switched it off, moved their main home or let it lapse). */
+  confirmed?: ResidenceConfirmed
+}
+
+/**
+ * A device's word that its owner was in their main home's local government, once, when they pressed the button
+ * (docs/LOCATION.md). The game never saw a position: this is only the id and the server's clock.
+ */
+export interface ResidenceConfirmed {
+  lga: LgaId
+  at: Ms
 }
 
 /** OWNER world. */
@@ -1116,7 +1127,7 @@ export const SLICE_FIELD_KEYS = {
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],
-  estate: ['away', 'city', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
+  estate: ['away', 'city', 'confirmed', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
   home: ['boost', 'custom', 'items', 'seq', 'stocked', 'storage'],
   onboarding: [
     'activities', 'bonusAt', 'bornAt', 'completedAt', 'done', 'dream', 'firstAt', 'house', 'joined', 'legacy', 'look', 'lottery',

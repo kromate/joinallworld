@@ -13,7 +13,7 @@
  * shard store. `v` is a version stamp: send it back as `?v=` and an unchanged answer is short.
  * WORKER: none of this exists on the Cloudflare Worker (every path is 404).
  */
-import type { CityId, HostErrorCode, Ok, SessionErrorCode, StorageErrorCode } from './protocol.ts'
+import type { CityId, HostErrorCode, JsonBodyErrorCode, Ok, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { HouseId, LgaId, PlotAddress } from './life.ts'
 
 /** What every world route can throw before its own validation. */
@@ -117,6 +117,10 @@ export type WorldPeopleResponse =
   | { items: WorldPerson[]; next: number | null }
   | { items: []; next: null; short: true }
 
+/** A standing location-confirmed badge: the local government the player lives in, confirmed by their own device (docs/LOCATION.md). */
+export interface WorldBadge { lga: LgaId; name: string }
+/** POST /api/world/badges: the badges of up to 40 players, only those with one. */
+export interface WorldBadgesResponse { badges: Record<string, WorldBadge> }
 export interface WorldPulseResponse { online: number; visits: number; today: number; cities: Record<string, number> }
 export interface WorldHttpRoutes {
   /** Settles (or creates) the caller's life in that city exactly as a poll would, so it can also answer 409 `city_moved` and 503 `storage_unavailable`. */
@@ -146,6 +150,8 @@ export interface WorldHttpRoutes {
     response: Ok<WorldPeopleResponse>
     errors: WorldLga | 'invalid_query' | 'invalid_number'
   }
+  /** Who among the given players holds a location-confirmed badge, and the name of their local government when they are listed (server/routes/residence.ts). */
+  'POST /api/world/badges': { body: { ids: string[] }; response: Ok<WorldBadgesResponse>; errors: HostErrorCode | JsonBodyErrorCode | SessionErrorCode | 'invalid_ids' | 'rate_limited' }
 }
 
 // ---- runtime key lists (compared with the running server by protocol.test.ts) -------------------

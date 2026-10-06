@@ -12,6 +12,7 @@ import { dreamFor } from '../../../game/cities/characterContent.ts'
 import { START_HOMES, TRAITS } from '../../../game/content/traits.ts'
 import { linkWords } from '../../../ui/link.ts'
 import LgaCard from '../world/LgaCard.vue'
+import ResidenceCard from '../locate/ResidenceCard.vue'
 import LookEditor from '../start/LookEditor.vue'
 import LookStage from '../start/LookStage.vue'
 import { chooseLook, lookSummary, sameLook } from '../start/lookModel.ts'
@@ -98,6 +99,7 @@ async function submit(): Promise<void> {
     <p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>
     <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" />
     <LgaCard v-if="onboarding.done && !view.estate.settle" />
+    <ResidenceCard v-if="onboarding.done" />
     <p v-if="form.error" class="sim-error" role="alert">{{ form.error }}</p>
     <div class="sim-save-bar"><button type="submit" class="ui-button is-primary sim-save" data-key="save" :disabled="save.disabled">{{ save.label }}</button></div>
   </form>

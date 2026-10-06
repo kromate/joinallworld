@@ -11,6 +11,7 @@ import { money, plural } from '../../ui/format.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
+import ResidentBadge from '../locate/ResidentBadge.vue'
 import HeroCard from '../../ui/HeroCard.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -203,7 +204,7 @@ const rules = [
             <li v-for="card in others" :key="card.id" class="biz-card biz-shop">
               <header>
                 <span class="biz-sign" :style="{ background: colourOf(card.colour).bg, color: colourOf(card.colour).ink }" aria-hidden="true"><GameIcon kind="ad" :emoji="card.icon" :size="24" /></span>
-                <div class="biz-what"><strong>{{ card.name }}</strong><small>{{ card.typeLabel }} · <button type="button" class="biz-link" @click="shell.open('person', { player: card.owner.id, name: card.owner.name })">{{ card.owner.name }}</button></small>
+                <div class="biz-what"><strong>{{ card.name }}</strong><small>{{ card.typeLabel }} · <button type="button" class="biz-link" @click="shell.open('person', { player: card.owner.id, name: card.owner.name })">{{ card.owner.name }}</button><ResidentBadge :id="card.owner.id" /></small>
                   <small :aria-label="starsLabel(card.stars, card.ratings)"><span aria-hidden="true">{{ starMarks(card.stars) }}</span> {{ card.stars.toFixed(1) }}{{ card.ratings ? ` · ${plural(card.ratings, 'rating')}` : '' }}</small></div>
                 <BaseButton v-if="!card.blocked" small @click="shell.open('messages', { to: card.owner.id, name: card.owner.name })">Chat</BaseButton>
               </header>

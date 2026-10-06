@@ -20,6 +20,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import CallSettings from '../calls/CallSettings.vue'
 import AccountSettings from '../account/AccountSettings.vue'
+import ResidenceCard from '../locate/ResidenceCard.vue'
 import { useAccount } from '../account/useAccount.ts'
 import { HINTS_KEY, hintsOn } from './settingsModel.ts'
 import { NOT_SAVED, SESSION_RULES, WALLPAPER_NOT_SAVED } from './settingsOptions.ts'
@@ -105,6 +106,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <p v-if="warning" class="ui-error" role="alert">{{ warning }}</p>
 
     <CallSettings />
+    <ResidenceCard />
 
     <section v-if="olderLives.length || switchError" aria-label="Older characters">
       <h3 class="ui-section">Older characters</h3>

@@ -104,7 +104,7 @@ export function rasterLgas(pack: CityPack, { scale = 2, own = null }: { scale?: 
 
 /** How far (map units) from a boundary a position still counts as "on the shore" of a local government. */
 const SHORE = 15;
-const near = (x: number, z: number, ring: Ring) => {
+export const near = (x: number, z: number, ring: Ring) => {
   let best = Infinity;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
     const [ax, az] = ring[j]!, [bx, bz] = ring[i]!, dx = bx - ax, dz = bz - az, len = dx * dx + dz * dz;

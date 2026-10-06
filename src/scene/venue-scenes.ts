@@ -417,7 +417,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     }
     markers = null; // read again when the crowd is placed: the list was only borrowed here
     // Turned a little so that two tables in one room do not look stamped, and the goal faces the room's middle.
-    for (const item of tableList) gameTable(recorder.batch, item.x, item.z, { game: item.game, accent: context.accent, ry: item.game === 'penalty' ? Math.atan2(-item.x, -item.z) + Math.PI : (item.x + item.z) * 0.37 });
+    for (const item of tableList) gameTable(recorder.batch, item.x, item.z, { game: item.game, accent: context.accent, ry: item.game === 'penalty' ? Math.atan2(-item.x, -item.z) + Math.PI : item.game === 'chess' ? Math.round(Math.atan2(item.x, item.z) / (Math.PI / 2)) * (Math.PI / 2) : (item.x + item.z) * 0.37 });
   }
   /** The floor as a grid, from this kind's walkable description and the footprints of what was drawn. */
   function buildGrid() {

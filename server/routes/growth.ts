@@ -27,6 +27,9 @@
  *   POST /api/growth/push/unsubscribe { cityId, endpoint? }    delete one or all of the caller's subscriptions
  *   GET|POST /e/confirm?t=  ·  GET|POST /e/unsub?t=            the pages a link in an e-mail opens (signed token; POST does it)
  *   POST /api/growth/tables/claim   { cityId }            apply the caller's finished table games to their life, once each
+
+ *   POST /api/growth/oro/state      { cityId }            the daily word puzzle: today's number, the caller's guesses with their marks, stats; the answer only once finished
+ *   POST /api/growth/oro/guess      { cityId, no, n, word, hard? }   one guess (see server/growth/oro.ts); finishing writes the result once
  *   POST /api/growth/client         { signals: [name] }   a browser says something about itself from a fixed list (metrics only)
  *   GET  /s/<code>                                        the link-preview page (HTML, no script; see server/growth/share.ts)
  *
@@ -46,6 +49,7 @@ import { referralService } from '../growth/referral.ts';
 import { CLIENT_SIGNALS, count, prune, touch } from '../growth/metrics.ts';
 import { outreachService } from '../growth/outreach.ts';
 import { tablesService } from '../growth/tables.ts';
+import { oroService } from '../growth/oro.ts';
 import { mailPage } from '../growth/email/templates.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { CityId } from '../../src/types/protocol.ts';
@@ -70,6 +74,7 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   const referral = referralService(ctx);
   const outreach = outreachService(ctx);
   const tables = tablesService(ctx);
+  const oro = oroService(ctx.randomId);
   const city = (value: unknown): CityId => { const known = ctx.cityIds.find((id) => id === value); if (known === undefined) throw ctx.fail(400, 'invalid_city'); return known; };
   // THE AGE ANSWER LIVES HERE AND NOWHERE ELSE (growth.players[id].consent.age). Whoever needs it asks this check: e-mail
   // and push eligibility below, and analytics (server/telemetry/routes.ts) — a player who said "under 18" gets none of them.
@@ -206,6 +211,12 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
 
     // Table games: apply the caller's finished games to their life (what a win pays, what counts for missions), once each.
     'POST /api/growth/tables/claim': route(({ g, session, state, cityId }) => ({ ...tables.claim(g, session, state, cityId), ratings: tables.ratings(g, session.publicId, cityId) }), { durable: (result) => result?.material === true }),
+    // Oro, the daily word: reading it writes nothing; a guess writes only when it finishes the puzzle.
+    'POST /api/growth/oro/state': route(({ g, session }) => oro.state(g, g.players[session.publicId] ?? null, session.publicId, ctx.now()), { durable: false }),
+    'POST /api/growth/oro/guess': route(({ g, session, cityId, body }) => {
+      if (!ctx.allow(`oro:${session.publicId}`, 40)) return { ok: false, code: 'rate_limited', reason: 'You are guessing too quickly. Wait a moment.' };
+      return oro.guess(g, session.publicId, ctx.now(), cityId, body, () => playerOf(g, session.publicId));
+    }, { durable: (result) => result?.finished === true }),
     // E-mail: store a consented address and send its confirmation (double opt-in). See server/growth/outreach.ts.
     'POST /api/growth/email': async (request) => ({ body: await outreach.requestEmail(request, await request.json()), renew: true }),
     'POST /api/growth/comeback': route(({ db, g, session, body }) => outreach.comeback.setPrefs(db, g, session.publicId, body, session)),

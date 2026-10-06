@@ -52,9 +52,11 @@ export const tableResult: TypedActionHandler<'growth.table-result'> = (state, pa
     credit(state, paid, `Table win: ${label}`, ctx);
   }
   // Missions count a game against a real player (when the pair has not played too often today) and the first bot games of a day.
-  let credited = human && counted;
-  if (!human && tables.bots < TABLE_REWARDS.botCreditsPerDay) { tables.bots += 1; credited = true; }
-  if (credited) emit(state, 'table.played', { game, won, human, paid }, ctx);
+  // The daily word puzzle (Oro) is one result a day by the server's own rule, so it is not held to the bot-game allowance; it pays nothing.
+  let credited = (human && counted) || game === 'oro' || (game === 'chess' && won); // a chess win is what a mission asks for, whoever it was against
+  if (game !== 'oro' && !human && tables.bots < TABLE_REWARDS.botCreditsPerDay) { tables.bots += 1; credited = true; }
+  // `chessWin` and `wordSolved` are what the missions "Win a game of chess" and "Solve today's word" listen for.
+  if (credited) emit(state, 'table.played', { game, won, human, paid, chessWin: game === 'chess' && won, wordSolved: game === 'oro' && won }, ctx);
   state.message = paid ? `You won at ${label}: +${naira(paid)}.` : won ? `You won at ${label}.` : `Game over at ${label}.`;
   return ok(state, paid ? 'paid' : credited ? 'counted' : 'for_fun');
 };

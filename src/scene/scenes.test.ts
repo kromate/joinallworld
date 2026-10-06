@@ -423,11 +423,11 @@ test('scene sources hold no frame loops or timers, and the dev harness is not a 
 });
 
 test('every game table stands in its venue’s scene: on free floor, reachable from the door, clear of markers and of each other', async () => {
-  const { TABLES, tablesAt } = await import('../tables/places.ts');
+  const { tablesAt, tablesFor } = await import('../tables/city-places.ts');
   const { TABLE_CLEAR, TABLE_REACH, TABLE_PLACES } = await import('./venue-scenes.ts');
   const kit = createKit();
   // The campus tables (venue 'unilag') are not furniture of a venue scene: the campus has its own host, and they open from the Tables app.
-  const venues = [...new Set(TABLES.map((table) => table.venue))].filter((id) => id !== 'unilag');
+  const venues = [...new Set(tablesFor('lagos').map((table) => table.venue))].filter((id) => id !== 'unilag');
   assert.deepEqual(venues.sort(), ['amala-shitta', 'beach', 'park', 'rooftop', 'viewing-centre']);
   const seen: string[] = [];
   for (const id of venues) {
@@ -437,7 +437,7 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
     bare.dispose();
     const entry = buildVenueScene(kit, venue);
     parent.add(entry.group);
-    const things = entry.walk.things(), wanted = tablesAt(id), grid = entry.walk.grid, door = entry.walk.entrance;
+    const things = entry.walk.things(), wanted = tablesAt('lagos', id), grid = entry.walk.grid, door = entry.walk.entrance;
     assert.deepEqual(things.map((thing) => thing.id), wanted.map((table) => `table:${table.id}`), `${id}: every table of the venue has a place in the scene`);
     assert.ok(Object.hasOwn(TABLE_PLACES, entry.kind), `${id}: the ${entry.kind} scene has preferred table places`);
     for (const thing of things) {
@@ -466,7 +466,7 @@ test('every game table stands in its venue’s scene: on free floor, reachable f
     assert.deepEqual(entry.walk.things().map((thing) => [thing.x, thing.z]), before);
     entry.dispose();
   }
-  assert.equal(seen.length, TABLES.filter((table) => table.venue !== 'unilag').length, 'all eight venue tables stand somewhere');
+  assert.equal(seen.length, tablesFor('lagos').filter((table) => table.venue !== 'unilag').length, 'every venue table (listed ones and the derived chess and word-tile tables) stands somewhere');
   // A venue without a table has nothing extra.
   const library = buildVenueScene(kit, sceneVenue('library') ?? VENUES.library);
   assert.deepEqual(library.walk.things(), []);

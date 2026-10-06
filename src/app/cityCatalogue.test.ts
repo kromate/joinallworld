@@ -68,7 +68,7 @@ test('Vue game view, scene crowd and NPC card use the current city catalogue', a
   assert.ok(radio.includes('Club radio') && !radio.includes('Quilox'))
   const TablesChip = (await load<{ default: Component }>('/src/app/features/tables/TablesChip.vue')).default
   const chip = text(await renderToString(createSSRApp({ render: () => h(TablesChip) })))
-  assert.ok(chip.includes('Whot table here'))
+  assert.ok(chip.includes('Whot, Chess table here'))
   const AdsApp = (await load<{ default: Component }>('/src/app/features/civic/AdsApp.vue')).default
   const ads = text(await renderToString(createSSRApp({ render: () => h(AdsApp) })))
   assert.ok(ads.includes('1 billboard slots') && !ads.includes('12 billboard slots'))
@@ -79,17 +79,17 @@ test('Vue game view, scene crowd and NPC card use the current city catalogue', a
   assert.equal(health.includes('General Hospital'), false)
 })
 
-test('the fictional table is the only table row and scene marker in its renamed venue', async () => {
+test('the fictional table (and the chess table every park gets) are the only table rows and scene markers in its renamed venue', async () => {
   const registration = registerDirectCity(directCity)
   const kit = createKit()
   try {
     await loadDirectContent(DIRECT_CITY_ID)
-    assert.deepEqual(tablesFor(DIRECT_CITY_ID).map((table) => [table.id, table.venue, table.label]), [['test-square-table', 'test-square', 'Test square table']])
+    assert.deepEqual(tablesFor(DIRECT_CITY_ID).map((table) => [table.id, table.venue, table.label]), [['test-square-table', 'test-square', 'Test square table'], ['test-square-chess', 'test-square', 'Chess under the trees']])
     const venue = contentFor(DIRECT_CITY_ID).venues.find((item) => item.id === 'test-square')?.definition
     assert.ok(venue)
     const scene = buildVenueScene(kit, venue, DIRECT_CITY_ID)
     try {
-      assert.deepEqual(scene.walk.things().map((thing) => [thing.id, thing.label]), [['table:test-square-table', 'Whot · Test square table']])
+      assert.deepEqual(scene.walk.things().map((thing) => [thing.id, thing.label]), [['table:test-square-table', 'Whot · Test square table'], ['table:test-square-chess', 'Chess · Chess under the trees']])
     } finally { scene.dispose() }
   } finally { kit.dispose(); registration.dispose() }
 })

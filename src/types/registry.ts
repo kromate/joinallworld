@@ -201,7 +201,7 @@ export interface EngineEventMap {
 
   // -- growth --
   /** A finished table game that counts for missions. `paid` is the naira credited (0 when none). */
-  'table.played': { game: string; won: boolean; human: boolean; paid: number }
+  'table.played': { game: string; won: boolean; human: boolean; paid: number; chessWin: boolean; wordSolved: boolean }
 
   // -- business --
   /** This life opened a shop. */

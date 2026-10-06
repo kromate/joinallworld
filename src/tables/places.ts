@@ -8,7 +8,7 @@
  */
 import type { TableGameId } from '../types/growth.ts';
 
-export const GAME_LABELS = Object.freeze({ whot: 'Whot', penalty: 'Penalties' });
+export const GAME_LABELS = Object.freeze({ whot: 'Whot', penalty: 'Penalties', chess: 'Chess', weave: 'Weave' });
 
 /** One table: a row of TABLES. */
 export interface TableDef { id: string; venue: string; game: TableGameId; label: string; seats: number }

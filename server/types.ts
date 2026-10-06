@@ -15,7 +15,7 @@ import type { ActionType } from '../src/types/actions.ts'
 import type { ActionRequest, CityId, ClientFrameType, IceServerConfig, PlayerRef, PublicSession, ServerFrame, TimedId } from '../src/types/protocol.ts'
 import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, SocialUpdate } from '../src/types/social.ts'
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
-import type { ConsentView, OutreachLogLine, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
+import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
@@ -484,7 +484,7 @@ export interface SupportCollection {
 // `contacts`, `push` and `outreach` on ITS first use.
 
 /** One finished table game not yet applied to the life (POST /api/growth/tables/claim applies it once). */
-export interface PendingTableResult { cityId?: CityId; id: string; game: TableGameId; label: string; won: boolean; human: boolean; counted: boolean }
+export interface PendingTableResult { cityId?: CityId; id: string; game: ResultGameId; label: string; won: boolean; human: boolean; counted: boolean }
 export interface GrowthPlayerRecord {
   /** Server ms of the last hello; 0 before the first. */
   seen: number
@@ -502,12 +502,17 @@ export interface GrowthPlayerRecord {
   shares: { day: number; n: number }
   consent: ConsentView | null
   /** The last finished table game (for a share). */
-  table: { cityId?: CityId; game: TableGameId; label: string; won: boolean; at: number } | null
+  table: { cityId?: CityId; game: ResultGameId; label: string; won: boolean; at: number } | null
   /** At most 12. */
   wins: PendingTableResult[]
   /** Friends this player nudged to come back (public id → server ms), at most 50. */
   nudged?: Record<string, number>
+  /** server/growth/oro.ts: the daily word puzzle's stats and today's finished puzzle. Added on the first finished puzzle. */
+  oro?: OroRecord
 }
+/** Streaks and totals of the daily word puzzle; `last` is the number of the last puzzle finished, `dist[i]` the puzzles solved in i+1 guesses. */
+export interface OroStats { played: number; won: number; streak: number; best: number; last: number; dist: number[] }
+export interface OroRecord { stats: OroStats; today: { no: number; guesses: string[]; won: boolean; hard: boolean } | null }
 export interface ShareRecord { cityId?: CityId; by: string; kind: ShareKind; at: number; facts: ShareFacts; opened: number; joined: number }
 /** server/growth/metrics.ts: daily totals, retention cohorts, and lives still inside their 31-day window (`steps` is a bit mask of funnel steps). */
 export interface GrowthMetricsRecord {

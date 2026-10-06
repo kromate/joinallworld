@@ -217,7 +217,7 @@ function sanitizeList(value: unknown, scope: Scope, cityId: string): MissionEntr
 }
 
 const eventNames = [...new Set([...DAILY_MISSIONS, ...WEEKLY_MISSIONS].filter((def): def is Extract<MissionDefinition, { on: 'event' }> => def.on === 'event').map((def) => def.event))];
-const listeners = Object.fromEntries(eventNames.map((name) => [name, (state: LifeState, data: unknown, ctx: LifeContext) => progress(state, ctx, (def) => def.on === 'event' && def.event === name)]));
+const listeners = Object.fromEntries(eventNames.map((name) => [name, (state: LifeState, data: unknown, ctx: LifeContext) => progress(state, ctx, (def) => def.on === 'event' && def.event === name && (def.where === undefined || (typeof data === 'object' && data !== null && (data as Record<string, unknown>)[def.where] === true)))])); // data is an event's own payload: only the named flag is read
 
 /** One row of the Missions app. */
 function row(entry: MissionEntry, scope: Scope): MissionRow {

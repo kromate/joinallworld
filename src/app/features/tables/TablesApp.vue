@@ -6,7 +6,7 @@
 // Everything shown comes from the server (src/tables/client.ts, through useTables()); every button
 // sends a message and the answer, not the press, changes what is shown. A press that is on its way
 // disables the buttons that would repeat it. Player names are text, never markup.
-import { computed, onMounted, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -20,7 +20,10 @@ import SectionTitle from '../../ui/SectionTitle.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import PenaltyBoard from './PenaltyBoard.vue'
 import WhotBoard from './WhotBoard.vue'
-import { GAME_LABELS, isPenaltyState, isWhotState, penaltyRules, tableById, whotRules } from './tablesBoundary.ts'
+// The board games' screens are chunks of their own, fetched when a table of that game is opened.
+const ChessBoard = defineAsyncComponent(() => import('./ChessBoard.vue'))
+const WeaveBoard = defineAsyncComponent(() => import('./WeaveBoard.vue'))
+import { GAME_LABELS, chessRules, isChessState, isPenaltyState, isWeaveState, isWhotState, penaltyRules, tableById, weaveRules, whotRules } from './tablesBoundary.ts'
 import {
   LIST_RULES, NO_TABLE_HERE, botCounts, botLabel, heroFigure, heroNote, hostNote, leavesOnBack, openLabel, optionKey, outcomeNote, outcomeTitle,
   parseOption, partition, ratingLine, rowSub, seatLabel, startNote, tableParam, tableTitle,
@@ -45,11 +48,15 @@ const busyWhy = computed(() => (growth.state.busy ? 'A share is being prepared.'
 const s = computed(() => t.value.state)
 const table = computed(() => s.value?.table ?? null)
 const seated = computed(() => s.value !== null && s.value.you !== null)
-const atVenue = computed(() => table.value !== null && table.value.venue === at.value)
+/** A Phone table (src/tables phone-*) is not in a venue: you can sit at it anywhere. */
+const onPhone = computed(() => table.value?.venue === 'phone')
+const atVenue = computed(() => table.value !== null && (onPhone.value || table.value.venue === at.value))
 const free = computed(() => (table.value ? table.value.max - table.value.seats.length : 0))
-const rulesText = computed(() => (table.value?.game === 'whot' ? whotRules : table.value?.game === 'penalty' ? penaltyRules : []))
+const rulesText = computed(() => (table.value?.game === 'whot' ? whotRules : table.value?.game === 'penalty' ? penaltyRules : table.value?.game === 'chess' ? chessRules : table.value?.game === 'weave' ? weaveRules : []))
 const whot = computed(() => (s.value && isWhotState(s.value) ? s.value : null))
 const penalty = computed(() => (s.value && isPenaltyState(s.value) ? s.value : null))
+const chess = computed(() => (s.value && isChessState(s.value) ? s.value : null))
+const weave = computed(() => (s.value && isWeaveState(s.value) ? s.value : null))
 const result = computed(() => (table.value?.status === 'over' ? s.value?.result ?? null : null))
 const outcome = computed(() => (result.value ? { title: outcomeTitle(result.value), note: outcomeNote(result.value, t.value.claimed, paid.value?.win ?? 0) } : null))
 
@@ -59,8 +66,12 @@ function openFromParams(params: unknown): void {
   const id = tableParam(params)
   if (!id || params === handled) return
   handled = params
-  if (tableById(view.value.cityId, id)) tables.openTable(id)
+  if (id.startsWith('phone-') || tableById(view.value.cityId, id)) tables.openTable(id)
 }
+// "Play the computer" on a Phone table: sit down, and start with the bots as soon as the seat is confirmed.
+const wantBots = ref(0)
+function playBots(count: number): void { if (seated.value) tables.begin(count); else { wantBots.value = count; tables.sit() } }
+watch(seated, (now) => { if (now && wantBots.value > 0 && table.value?.status === 'open') { const count = wantBots.value; wantBots.value = 0; tables.begin(count) } })
 onMounted(() => openFromParams(props.params))
 watch(() => props.params, openFromParams)
 
@@ -140,6 +151,9 @@ function onOption(name: string, raw: string): void {
             <BaseButton variant="primary" @click="goToVenue(table.venue)">Go to {{ table.venueLabel }}</BaseButton>
           </template>
         </div>
+        <div v-if="onPhone && !seated" class="tb-start">
+          <BaseButton variant="primary" :reason="t.pending ? 'Waiting for the table to answer.' : null" @click="playBots(1)">Play the computer</BaseButton>
+        </div>
         <template v-if="seated">
           <div class="tb-start">
             <BaseButton v-if="table.seats.length >= table.min" variant="primary" :reason="t.pending ? 'Waiting for the table to answer.' : null" @click="tables.begin(0)">Start with {{ table.seats.length }}</BaseButton>
@@ -147,7 +161,7 @@ function onOption(name: string, raw: string): void {
           </div>
           <p class="gr-note">{{ startNote(table) }}</p>
         </template>
-        <BaseButton block :reason="busyWhy" @click="invite">{{ growth.state.busy === 'table' ? 'Preparing…' : 'Invite a friend to this table' }}</BaseButton>
+        <BaseButton v-if="!onPhone" block :reason="busyWhy" @click="invite">{{ growth.state.busy === 'table' ? 'Preparing…' : 'Invite a friend to this table' }}</BaseButton>
         <div class="gr-card">
           <h3>Table rules</h3>
           <label v-for="option in s.optionList" :key="option.name" class="tb-option">{{ option.label }}
@@ -171,9 +185,11 @@ function onOption(name: string, raw: string): void {
         </div>
         <WhotBoard v-if="whot" :state="whot" :now="view.now" @play="tables.play" />
         <PenaltyBoard v-else-if="penalty" :state="penalty" :now="view.now" @play="tables.play" />
+        <ChessBoard v-else-if="chess" :state="chess" :now="view.now" @play="tables.play" />
+        <WeaveBoard v-else-if="weave" :state="weave" :now="view.now" @play="tables.play" />
         <p v-else class="gr-note">This game cannot be shown in this version.</p>
         <button v-if="table.status !== 'over' && seated" class="gr-swap" type="button" @click="forfeit">Leave the game (you forfeit)</button>
-        <BaseButton v-if="table.status !== 'over'" block :reason="busyWhy" @click="invite">{{ growth.state.busy === 'table' ? 'Preparing…' : 'Invite a friend to this table' }}</BaseButton>
+        <BaseButton v-if="table.status !== 'over' && !onPhone" block :reason="busyWhy" @click="invite">{{ growth.state.busy === 'table' ? 'Preparing…' : 'Invite a friend to this table' }}</BaseButton>
       </template>
     </template>
   </div>

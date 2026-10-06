@@ -1154,7 +1154,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   declared<CalendarEvent>()(['id', 'title', 'blurb', 'venue', 'icon', 'when', 'spray', 'table'])(EVENTS_CALENDAR, 'calendar event')
   for (const option of Object.values(HOUSE_STYLE).flat()) assert.deepEqual(Object.keys(option).filter((key) => !['id', 'label', 'hex', 'price'].includes(key)), [], option.id)
   // Missions are a union keyed by `on`; each member's own fields are checked by name.
-  const missionFields: Record<MissionDefinition['on'], string[]> = { event: ['event'], tag: ['tags'], paid: [], venue: ['fresh'] }
+  const missionFields: Record<MissionDefinition['on'], string[]> = { event: ['event', 'where'], tag: ['tags'], paid: [], venue: ['fresh'] }
   const missions: readonly { id: string; on: string }[] = [...DAILY_MISSIONS, ...WEEKLY_MISSIONS]
   for (const mission of missions) {
     assert.ok(Object.hasOwn(missionFields, mission.on), mission.id)

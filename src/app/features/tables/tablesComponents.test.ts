@@ -252,7 +252,7 @@ test('the HUD chip: shown in a venue with tables, opening the first; renders not
     set({ location: 'park' })
     const chip = await render('/src/app/features/tables/TablesChip.vue')
     assert.match(chip, /<div data-panel="tables-chip"><button class="life-job" type="button"><span aria-hidden="true">/)
-    assert.ok(text(chip).includes('Whot, Penalties table here Sit down, or invite a friend to play'))
+    assert.ok(text(chip).includes('Whot, Penalties, Chess table here Sit down, or invite a friend to play'))
     set({ location: 'home' })
     const none = await render('/src/app/features/tables/TablesChip.vue')
     assert.equal(text(none), '')

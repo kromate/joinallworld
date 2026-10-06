@@ -41,6 +41,8 @@ import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityContent } from '../../src/game/cities/index.ts';
 import { BOT_NAMES } from '../../src/tables/places.ts';
 import type { TableDef } from '../../src/tables/places.ts';
+import { withBoardGames } from '../../src/tables/derive.ts';
+import { warm as warmWeave } from '../../src/tables/weave.ts';
 import { GAMES } from '../../src/tables/games.ts';
 import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.ts';
 import type { Outcome, TableOptionSpec, TableOptions, TableRules, TableState } from '../../src/tables/rules.ts';
@@ -49,8 +51,11 @@ import { growthOf, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import type { CityId } from '../../src/types/protocol.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { TableGameId, TableOptionValue, TableRating, TableResultMine, TableStateFrame, TableSummary, TablesFrame } from '../../src/types/growth.ts';
+import type { ResultGameId, TableGameId, TableOptionValue, TableRating, TableResultMine, TableStateFrame, TableSummary, TablesFrame } from '../../src/types/growth.ts';
 import type { GrowthCityTablesRecord, GrowthCollection, GrowthPlayerRecord, PendingTableResult, RouteContext, SessionRecord, WsConnection } from '../types.ts';
+
+/** The venue id of a table that is on the Phone: it is not in any venue. */
+export const PHONE_VENUE = 'phone';
 
 /** Timings. A test may shorten them; nothing else should. */
 export const TUNING = { botDelayMs: 900, awayForfeitMs: 120000, resetMs: 45000, missesToForfeit: 3, maxSockets: 40, logLines: 30, minMovesEach: 2, keepAwakeMs: 45000 };
@@ -91,6 +96,8 @@ interface ParsedMove {
   readonly json: string
   /** What the retry check compares with the last move's `json`: JSON.stringify of the parsed move itself, which is undefined for an undefined move (so such a move is never taken as a retry), as before. */
   readonly retryKey: string | undefined
+  /** A move any seated player may make at any time without it being their turn (resign, offer a draw). */
+  readonly side: boolean
   /** The log line for this move by `seat`, from the state before it. */
   describe(seat: number): string
   /** Apply it (the rules throw RulesError for an illegal one); returns the log lines it earned: the move itself, then any report. */
@@ -108,6 +115,10 @@ interface Engine {
   /** The clock ran out: the rules play for the seat. Returns the log lines. */
   timeout(seat: number, rng: () => number): string[]
   forfeit(seat: number): void
+  /** How many milliseconds the seat to move has, for a game that keeps its own clocks; null when every move gets the game's `turnSeconds`. */
+  clockMs(): number | null
+  /** Charge the time the mover took, just before a real move is applied. */
+  charge(seat: number, elapsedMs: number): void
 }
 /** A game as a table needs it. Reads the rules object each time, so a live change to it is seen. */
 interface Game {
@@ -135,6 +146,7 @@ function gameOf<State extends TableState, Move, View>(rules: TableRules<State, M
         return {
           json: JSON.stringify(move ?? null),
           retryKey,
+          side: rules.side?.(move) === true,
           describe: (seat) => rules.describe(state, seat, move),
           play(seat, moveRng) {
             const line = rules.describe(state, seat, move), before = state;
@@ -156,11 +168,13 @@ function gameOf<State extends TableState, Move, View>(rules: TableRules<State, M
           return [`{${seat}} ran out of time`, ...(rules.report?.(before, state) ?? [])];
         },
         forfeit(seat) { state = rules.forfeit(state, seat); },
+        clockMs: () => (rules.clockMs ? rules.clockMs(state) : null),
+        charge(seat, elapsedMs) { if (rules.charge) state = rules.charge(state, seat, elapsedMs); },
       };
     },
   };
 }
-const GAME_OF: Record<TableGameId, Game> = { whot: gameOf(GAMES.whot), penalty: gameOf(GAMES.penalty) };
+const GAME_OF: Record<TableGameId, Game> = { whot: gameOf(GAMES.whot), penalty: gameOf(GAMES.penalty), chess: gameOf(GAMES.chess), weave: gameOf(GAMES.weave) };
 
 // ---- the service's own records ----------------------------------------------------------------------
 
@@ -174,6 +188,9 @@ interface Match {
   log: string[]
   last: { seat: number; n: number; move: string } | null
   deadline: number
+  /** When the move now being waited for began, and the most it may take (the game's `turnSeconds`, or its own clock). */
+  turnStart: number
+  allowedMs: number
   botAt: number | null
   engine: Engine
 }
@@ -221,19 +238,30 @@ function buildService(ctx: RouteContext) {
   const tables = new Map<string, Table>();
   /** publicId → the key of the table that player is seated at */
   const seated = new Map<string, string>();
-  const gameId = (value: string): TableGameId | null => (value === 'whot' || value === 'penalty' ? value : null);
-  const places = (cityId: CityId): TableDef[] => cityContent(cityId).tablePlaces.flatMap((place) => {
-    const game = gameId(place.game);
-    return game ? [{ id: place.id, venue: place.venueId, game, label: place.label, seats: place.seats }] : [];
-  });
+  const gameId = (value: string): TableGameId | null => (value === 'whot' || value === 'penalty' || value === 'chess' || value === 'weave' ? value : null);
+  /** The tables standing in a city: the ones it lists, and a chess and a word-tile table wherever a venue suits them (src/tables/derive.ts). */
+  const places = (cityId: CityId): TableDef[] => {
+    const content = cityContent(cityId);
+    return withBoardGames(content.venues, content.tablePlaces).flatMap((place) => {
+      const game = gameId(place.game);
+      return game ? [{ id: place.id, venue: place.venueId, game, label: place.label, seats: place.seats }] : [];
+    });
+  };
+  /** The Phone's own tables: a board game against the house's bots, anywhere, with no venue and no seat for anyone else. Yours alone; the id the screen uses is `phone-chess`, `phone-weave`. */
+  const phonePlace = (id: unknown): TableDef | null => {
+    const game = typeof id === 'string' && id.startsWith('phone-') ? gameId(id.slice(6)) : null;
+    return game === 'chess' || game === 'weave' ? { id: `phone-${game}`, venue: PHONE_VENUE, game, label: game === 'chess' ? 'Chess on your Phone' : 'Word tiles on your Phone', seats: GAME_OF[game].seats.max } : null;
+  };
   const venueName = (cityId: CityId, venueId: string): string => cityContent(cityId).venues.find((venue) => venue.id === venueId)?.name ?? venueLabel(venueId, cityId);
 
-  function tableOf(cityId: unknown, id: unknown): Table {
+  function tableOf(cityId: unknown, id: unknown, caller: string): Table {
     const city = ctx.cityIds.find((item) => item === cityId);
     if (city === undefined) throw refuse('invalid_city', 'That city is not available.');
-    const place = typeof id === 'string' ? places(city).find((entry) => entry.id === id) ?? null : null;
+    const phone = phonePlace(id);
+    const place = phone ?? (typeof id === 'string' ? places(city).find((entry) => entry.id === id) ?? null : null);
     if (!place) throw refuse('unknown_table', 'That table does not exist.');
-    const key = `${city}:${place.id}`;
+    // A Phone table is one per player (and per city): nobody else can find or watch it.
+    const key = phone ? `${city}:${place.id}:${caller}` : `${city}:${place.id}`;
     let table = tables.get(key);
     if (!table) {
       const game = GAME_OF[place.game];
@@ -248,7 +276,7 @@ function buildService(ctx: RouteContext) {
 
   /** What anyone may know about a table: who sits, whether a game is on. Never a card. */
   function summary(table: Table): TableSummary {
-    return { id: table.place.id, venue: table.place.venue, venueLabel: venueName(table.cityId, table.place.venue), game: table.place.game, gameLabel: table.game.label, label: table.place.label,
+    return { id: table.place.id, venue: table.place.venue, venueLabel: table.place.venue === PHONE_VENUE ? 'Your Phone' : venueName(table.cityId, table.place.venue), game: table.place.game, gameLabel: table.game.label, label: table.place.label,
       status: table.status, max: Math.min(table.place.seats, table.game.seats.max), min: table.game.seats.min, options: table.options,
       seats: table.seats.map((seat) => ({ name: seat.name, bot: seat.bot, ...(seat.bot ? {} : { id: seat.id, away: seat.away > 0 }), ...(seat.left ? { left: true as const } : {}) })),
       watching: new Set([...table.sockets].map((ws) => ws.session.id).filter((id) => seatIndex(table, id) < 0)).size };
@@ -258,14 +286,14 @@ function buildService(ctx: RouteContext) {
     const seat = seatIndex(table, id), match = table.match;
     return { type: 'table-state', cityId: table.cityId, table: summary(table), you: seat >= 0 ? seat : null, host: table.seats.find((item) => !item.bot)?.id === id,
       n: match?.n ?? 0, view: match ? match.engine.view(seat >= 0 ? seat : null) : null, log: match?.log ?? [],
-      toMove: match && table.status === 'playing' ? match.engine.toMove() : [], clock: match && table.status === 'playing' ? { deadline: match.deadline, now: now(), seconds: table.game.turnSeconds } : null,
+      toMove: match && table.status === 'playing' ? match.engine.toMove() : [], clock: match && table.status === 'playing' ? { deadline: match.deadline, now: now(), seconds: Math.ceil(match.allowedMs / 1000) } : null,
       result: table.result ? { text: table.result.text, calledOff: table.result.calledOff, winners: table.result.winners, mine: table.result.per[id] ?? null } : null,
       optionList: table.game.optionSpecs().map(([name, option]) => ({ name, label: option.label, values: [...option.values], names: option.names ? [...option.names] : option.values.map(String), value: table.options[name] as TableOptionValue })) };
   }
   function broadcast(table: Table): void {
     for (const ws of table.sockets) { if (ctx.core.isOpen(ws)) ctx.send(ws, stateFor(table, ws.session.id)); else table.sockets.delete(ws); }
     // Sockets that asked for a venue's list are told that it changed (no table data in the nudge).
-    for (const ws of ctx.core.sockets()) if (ws.tablesVenue === `${table.cityId}:${table.place.venue}` && !table.sockets.has(ws) && ctx.core.isOpen(ws)) ctx.send(ws, { type: 'tables-changed', cityId: table.cityId, venue: table.place.venue });
+    if (table.place.venue !== PHONE_VENUE) for (const ws of ctx.core.sockets()) if (ws.tablesVenue === `${table.cityId}:${table.place.venue}` && !table.sockets.has(ws) && ctx.core.isOpen(ws)) ctx.send(ws, { type: 'tables-changed', cityId: table.cityId, venue: table.place.venue });
     if (ctx.core?.hibernates === true && table.status === 'open') schedule(table);
   }
 
@@ -286,14 +314,24 @@ function buildService(ctx: RouteContext) {
   const rngFor = (match: Match, salt: string) => makeRng(`${match.seed}|${match.n}|${salt}`);
   function log(table: Table, text: string): void { const lines = matchOf(table).log; lines.push(withNames(text, names(table))); if (lines.length > TUNING.logLines) lines.shift(); }
 
+  /** The clock for the move that starts now: the game's own (a chess clock) or its fixed `turnSeconds`. */
+  function startTurn(table: Table, match: Match): void {
+    match.turnStart = now();
+    match.allowedMs = Math.max(1000, match.engine.clockMs() ?? table.game.turnSeconds * 1000);
+    match.deadline = match.turnStart + match.allowedMs;
+  }
   /** Play a move (a ParsedMove) for a seat, or, with `auto: 'timeout'` and no move, let the rules play for the clock. */
   function applyMove(table: Table, seat: number, move: ParsedMove | null, { auto = false }: { auto?: false | 'timeout' } = {}): void {
     const match = matchOf(table);
+    const side = move?.side === true && auto === false;
+    // A real move is charged the time it took; a side move (resign, offer a draw) is not a turn and leaves the clock alone.
+    if (move && !side && auto === false) match.engine.charge(seat, now() - match.turnStart);
     const lines = auto === 'timeout' || !move ? match.engine.timeout(seat, rngFor(match, 'move')) : move.play(seat, rngFor(match, 'move'));
     for (const line of lines) log(table, line);
     match.last = { seat, n: match.n, move: move ? move.json : JSON.stringify(null) };
     match.n += 1;
-    match.deadline = now() + table.game.turnSeconds * 1000;
+    if (side) return;
+    startTurn(table, match);
     const next = match.engine.toMove();
     match.botAt = next.some((index) => seatOf(table, index).bot) ? now() + TUNING.botDelayMs : null;
   }
@@ -304,7 +342,7 @@ function buildService(ctx: RouteContext) {
     match.engine.forfeit(seat);
     log(table, `{${seat}} ${why}`);
     match.n += 1;
-    match.deadline = now() + table.game.turnSeconds * 1000;
+    startTurn(table, match);
     match.botAt = match.engine.toMove().some((index) => seatOf(table, index).bot) ? now() + TUNING.botDelayMs : null;
     if (!leaver.bot) seated.delete(leaver.id);
   }
@@ -359,7 +397,7 @@ function buildService(ctx: RouteContext) {
     if (!outcome) throw new Error(`Table ${table.key} finished without an outcome`);
     const humans = table.seats.map((seat, index) => ({ seat, index })).filter(({ seat }) => !seat.bot);
     // Moves a player really made: one the clock made for them does not count as playing.
-    const calledOff = outcome.reason === 'forfeit' && humans.some(({ seat }) => (seat.moves ?? 0) < TUNING.minMovesEach);
+    const calledOff = ['forfeit', 'resign', 'time'].includes(outcome.reason) && humans.some(({ seat }) => (seat.moves ?? 0) < TUNING.minMovesEach);
     const per: Record<string, TableResultMine> = {};
     const result: TableResult = { text: calledOff ? 'The game was called off before it really began. Nothing counts.' : withNames(outcome.text, names(table)), calledOff, winners: calledOff ? [] : outcome.winners, per };
     table.result = result;
@@ -442,25 +480,25 @@ function buildService(ctx: RouteContext) {
       if (cityId === undefined) throw refuse('invalid_city', 'That city is not available.');
       const venue = typeof message.venue === 'string' ? message.venue : null;
       ws.tablesVenue = venue ? `${cityId}:${venue}` : null;
-      return { type: 'tables', cityId, venue, tables: places(cityId).filter((place) => !venue || place.venue === venue).map((place) => summary(tableOf(cityId, place.id))) };
+      return { type: 'tables', cityId, venue, tables: places(cityId).filter((place) => !venue || place.venue === venue).map((place) => summary(tableOf(cityId, place.id, ws.session.id))) };
     },
     watch(ws: WsConnection, message: Frame): void {
       limit(ws);
-      const table = tableOf(message.cityId, message.table);
+      const table = tableOf(message.cityId, message.table, ws.session.id);
       attach(ws, table);
       broadcast(table);
     },
     unwatch(ws: WsConnection): void { for (const table of tables.values()) if (table.sockets.delete(ws)) settleAway(table, ws.session.id); },
     async sit(ws: WsConnection, message: Frame): Promise<void> {
       limit(ws);
-      const table = tableOf(message.cityId, message.table), id = ws.session.id;
+      const table = tableOf(message.cityId, message.table, ws.session.id), id = ws.session.id;
       if (seatIndex(table, id) >= 0) { attach(ws, table); broadcast(table); return; } // coming back to your own seat
       if (abandoned(table)) reset(table);
       if (table.status !== 'open') throw refuse('game_on', 'A game is on at this table. Watch it, or sit when it ends.');
       if (seated.has(id)) throw refuse('already_seated', 'You are sitting at another table. Leave it first.');
       if (table.seats.length >= Math.min(table.place.seats, table.game.seats.max)) throw refuse('table_full', 'Every seat at this table is taken.');
       if (table.seats.some((seat) => ctx.checks?.blocked?.(id, seat.id) === true)) throw refuse('table_closed', 'You cannot sit at this table right now.');
-      if (!(await atVenue(ws, table))) throw refuse('not_here', `Go to ${venueName(table.cityId, table.place.venue)} to sit at this table. You can watch from anywhere.`);
+      if (table.place.venue !== PHONE_VENUE && !(await atVenue(ws, table))) throw refuse('not_here', `Go to ${venueName(table.cityId, table.place.venue)} to sit at this table. You can watch from anywhere.`);
       if (table.status !== 'open' || seatIndex(table, id) >= 0 || seated.has(id) || table.seats.length >= Math.min(table.place.seats, table.game.seats.max)) throw refuse('table_changed', 'The table changed while you were sitting down. Try again.');
       attach(ws, table);
       table.seats.push({ id, name: ws.session.name, bot: false, away: 0 });
@@ -469,7 +507,7 @@ function buildService(ctx: RouteContext) {
     },
     options(ws: WsConnection, message: Frame): void {
       limit(ws);
-      const table = tableOf(message.cityId, message.table);
+      const table = tableOf(message.cityId, message.table, ws.session.id);
       if (table.status !== 'open') throw refuse('game_on', 'The rules cannot change during a game.');
       if (table.seats.find((seat) => !seat.bot)?.id !== ws.session.id) throw refuse('not_host', 'Whoever sat down first chooses the table’s rules.');
       table.options = table.game.cleanOptions({ ...table.options, ...(isRecord(message.options) ? message.options : {}) });
@@ -477,7 +515,7 @@ function buildService(ctx: RouteContext) {
     },
     async start(ws: WsConnection, message: Frame): Promise<{ humans: number }> {
       limit(ws);
-      const table = tableOf(message.cityId, message.table), id = ws.session.id;
+      const table = tableOf(message.cityId, message.table, ws.session.id), id = ws.session.id;
       if (table.status === 'playing') throw refuse('game_on', 'A game is already on.');
       // A finished or called-off match does not hold the table: whoever is still seated may start the next one without leaving.
       const mine = table.seats[seatIndex(table, id)];
@@ -489,8 +527,10 @@ function buildService(ctx: RouteContext) {
       for (let i = 0; i < bots; i++) table.seats.push({ id: `bot-${i}`, name: `${BOT_NAMES[i]} (bot)`, bot: true, away: 0 });
       const seed = `${ctx.randomId()}${ctx.randomId()}`;
       const matchId = ctx.randomId();
+      if (table.place.game === 'weave') warmWeave(); // builds the computer players' word tables once, not in the middle of a turn
       const engine = table.game.start(table.seats.length, makeRng(`${seed}|deal`), table.options);
-      const match: Match = { id: matchId, seed, n: 0, log: [], last: null, deadline: now() + table.game.turnSeconds * 1000, botAt: null, engine };
+      const match: Match = { id: matchId, seed, n: 0, log: [], last: null, deadline: 0, turnStart: 0, allowedMs: 0, botAt: null, engine };
+      startTurn(table, match);
       table.match = match; table.status = 'playing'; table.result = null;
       for (const seat of table.seats) { seat.misses = 0; seat.moves = 0; seat.left = false; }
       match.botAt = engine.toMove().some((index) => seatOf(table, index).bot) ? now() + TUNING.botDelayMs : null;
@@ -503,7 +543,7 @@ function buildService(ctx: RouteContext) {
     },
     async move(ws: WsConnection, message: Frame): Promise<void> {
       limit(ws);
-      const table = tableOf(message.cityId, message.table), id = ws.session.id, match = table.match;
+      const table = tableOf(message.cityId, message.table, ws.session.id), id = ws.session.id, match = table.match;
       const seat = seatIndex(table, id);
       if (table.status !== 'playing' || !match) throw refuse('no_game', 'There is no game on at this table.');
       if (seat < 0 || seatOf(table, seat).left) throw refuse('not_seated', 'You are watching this game, not playing it.');
@@ -513,18 +553,25 @@ function buildService(ctx: RouteContext) {
       try { move = match.engine.parseMove(message.move); } catch (error) { if (error instanceof RulesError) throw refuse('invalid_move', error.message); throw error; }
       // A retry of the move just made: answer with the state as it is and apply nothing.
       if (n === match.n - 1 && match.last?.seat === seat && match.last.n === n && match.last.move === move.retryKey) { ctx.send(ws, { ...stateFor(table, id), repeat: true }); return; }
-      if (n !== match.n) throw refuse('stale_move', 'The game moved on before that reached the table. Look again and play.');
-      if (!match.engine.toMove().includes(seat)) throw refuse('not_your_turn', 'It is not your turn.');
-      try { applyMove(table, seat, move); } catch (error) { if (error instanceof RulesError) throw refuse('illegal_move', error.message); throw error; }
+      if (n !== match.n && !move.side) throw refuse('stale_move', 'The game moved on before that reached the table. Look again and play.');
+      // A side move (resign, offer a draw) may come from any seat at any time; every other move only from a seat whose turn it is.
+      if (!move.side && !match.engine.toMove().includes(seat)) throw refuse('not_your_turn', 'It is not your turn.');
+      try { applyMove(table, seat, move); } catch (error) {
+        if (error instanceof RulesError) {
+          // A move that arrived after the mover's clock ran out was charged and found the game over: say so to everyone.
+          if (match.engine.outcome()) { broadcast(table); await pump(table); }
+          throw refuse('illegal_move', error.message);
+        }
+        throw error;
+      }
       const mover = seatOf(table, seat);
-      mover.misses = 0;
-      mover.moves = (mover.moves ?? 0) + 1;
+      if (!move.side) { mover.misses = 0; mover.moves = (mover.moves ?? 0) + 1; }
       attach(ws, table);
       broadcast(table);
       await pump(table);
     },
     async leave(ws: WsConnection, message: Frame): Promise<void> {
-      const table = tableOf(message.cityId, message.table), id = ws.session.id, seat = seatIndex(table, id);
+      const table = tableOf(message.cityId, message.table, ws.session.id), id = ws.session.id, seat = seatIndex(table, id);
       if (seat < 0) { table.sockets.delete(ws); return; }
       if (table.status === 'playing' && !seatOf(table, seat).left) { forfeitSeat(table, seat, 'left the table'); broadcast(table); await pump(table); }
       else if (table.status === 'open') { table.seats.splice(seat, 1); seated.delete(id); broadcast(table); }
@@ -533,7 +580,7 @@ function buildService(ctx: RouteContext) {
     /** Play again: the table opens with the people still here. */
     again(ws: WsConnection, message: Frame): void {
       limit(ws);
-      const table = tableOf(message.cityId, message.table);
+      const table = tableOf(message.cityId, message.table, ws.session.id);
       if (table.status !== 'over') throw refuse('game_on', 'The game is not over yet.');
       reset(table);
       broadcast(table); schedule(table);
@@ -541,14 +588,20 @@ function buildService(ctx: RouteContext) {
     /** A socket closed: it stops watching; a player with no other connection to the table is away (and may come back). */
     drop(ws: WsConnection): void { for (const table of tables.values()) if (table.sockets.delete(ws)) settleAway(table, ws.session.id); },
     /** Everything due now, at every table. Run on the server's heartbeat and by tests. */
-    async pumpAll(): Promise<void> { for (const table of tables.values()) if (table.status !== 'open') await pump(table); },
+    async pumpAll(): Promise<void> {
+      for (const [key, table] of tables) {
+        if (table.status !== 'open') await pump(table);
+        // A Phone table nobody sits at or watches is forgotten, so the map holds only tables someone is using.
+        else if (table.place.venue === PHONE_VENUE && !table.seats.length && !table.sockets.size) { if (table.timer) clearTimeout(table.timer); tables.delete(key); }
+      }
+    },
     /**
      * Apply the caller's finished games to their life: what a win pays and what counts for missions.
      * Runs inside the caller's store transaction; each pending result leaves the queue in that same
      * transaction, so it can be applied once only.
      */
     claim(g: GrowthCollection, session: SessionRecord, state: LifeState, cityId: CityId) {
-      const player = playerOf(g, session.publicId, { create: false }), results: { game: TableGameId; label: string; won: boolean; code: string }[] = [];
+      const player = playerOf(g, session.publicId, { create: false }), results: { game: ResultGameId; label: string; won: boolean; code: string }[] = [];
       for (const result of takePendingTableResults(player, cityId)) {
         const done = ctx.act(state, { type: 'growth.table-result', cityId, payload: { game: result.game, label: result.label, won: result.won, human: result.human, counted: result.counted },
           stateGuard: 'the pending table result is removed from the queue in this same transaction' });

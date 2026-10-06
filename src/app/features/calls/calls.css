@@ -11,7 +11,7 @@
 .call-ring:nth-child(2) { animation-delay: .8s; }
 .call-ring:nth-child(3) { animation-delay: 1.6s; }
 @keyframes call-ring { 0% { transform: scale(.9); opacity: .55; } 100% { transform: scale(1.55); opacity: 0; } }
-.call-name { margin: 0; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
+.call-name { margin: 0; color: #fff; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
 .call-status { margin: 0; font-size: var(--t-body); color: #cfe3d9; min-height: 1.35em; }
 .call-where { margin: -6px 0 0; font-size: var(--t-small); color: #9fbbae; }
 .call-note { margin: 0; font-size: var(--t-small); color: #cfe3d9; max-width: 32ch; }

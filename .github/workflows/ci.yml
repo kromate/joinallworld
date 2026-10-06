@@ -15,7 +15,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # The full suite takes more than 10 minutes on a hosted runner (every run on main was cancelled at 10).
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:

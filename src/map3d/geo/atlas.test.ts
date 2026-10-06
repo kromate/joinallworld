@@ -14,7 +14,7 @@ import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
-import { DENSITY, NAMED_FROM, densityFor, shorten, venueNamesAt } from './density.ts';
+import { DENSITY, NAMED_FROM, atlasNamesAt, countChips, densityFor, namedCities, shorten, venueNamesAt } from './density.ts';
 import * as THREE from 'three';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
@@ -615,4 +615,26 @@ test('venue names on the city map: long names are cut, few are written at the op
     assert.match(code, /shorten\(/, `${file} cuts long names`);
   }
   assert.match(readFileSync(new URL('../map3d.css', import.meta.url), 'utf8'), /\.m3-label\.is-compact::before\{inset:-10px -8px\}/, 'an icon keeps a 44px target');
+});
+
+test('forty cities on a phone stay readable: names up to the cap, the rest dots, no two names overlap, the player\'s city always named', () => {
+  const row = densityFor(390), width = 390, height = 700;
+  const cities = Array.from({ length: 40 }, (_, i) => ({ id: `city:c${String(i).padStart(2, '0')}`, x: 30 + (i * 53) % 330, y: 120 + (i * 97) % 480, text: `City number ${i}`, priority: i === 7 ? 2000 : 1000 - i, fixed: i === 7, size: row.city, compact: true, anchor: 'above' as const, cls: 'is-city is-open' }));
+  const keep = namedCities(cities, atlasNamesAt(row, 1));
+  assert.ok(keep.size <= row.atlasNames && keep.has('city:c07'));
+  const placed = placeLabels(cities.filter((city) => keep.has(city.id)), { width, height });
+  assert.ok(placed.length <= row.atlasNames, 'names at most the cap');
+  for (const [i, a] of placed.entries()) for (const b of placed.slice(i + 1)) assert.ok(!(a.box.left < b.box.right && b.box.left < a.box.right && a.box.top < b.box.bottom && b.box.top < a.box.bottom), `${a.id} and ${b.id} overlap`);
+  assert.ok(atlasNamesAt(row, 3) > atlasNamesAt(row, 1), 'zooming in names more');
+  assert.ok(atlasNamesAt(row, 3) <= row.atlasNames * 3);
+  // Every city is still tappable: its hit box does not depend on whether it has a name.
+  for (const city of cities) assert.ok(cityHit({ x: city.x, y: city.y }, [{ id: city.id, x: city.x, y: city.y, state: 's', label: null }], { stateUnder: null }) === city.id, `${city.id} is tappable`);
+});
+
+test('a state that lost three or more names to dots gets a count chip', () => {
+  assert.deepEqual(countChips(['ogun', 'ogun', 'ogun', 'ogun', 'oyo', 'oyo']), [['ogun', 4]]);
+  assert.deepEqual(countChips(['a', 'a', 'a', 'b', 'b', 'b'], 3), [['a', 3], ['b', 3]]);
+  assert.deepEqual(countChips([]), []);
+  const code = readFileSync(here('./atlas.ts'), 'utf8');
+  assert.match(code, /count:\$\{stateId\}/, 'the atlas draws the chip');
 });

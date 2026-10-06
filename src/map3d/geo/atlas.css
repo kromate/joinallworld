@@ -43,6 +43,7 @@
 .atlas-label.is-city.is-open small{color:#d5f0df}
 .atlas-label.is-city.is-you{background:#fff;color:var(--c-green-dark,#1d6b43);box-shadow:0 0 0 2px var(--c-green-dark,#1d6b43),var(--e-2,0 2px 8px #0003);z-index:4}
 .atlas-label.is-city.is-you::before{border:2px solid var(--c-green-dark,#1d6b43);background:var(--c-green-dark,#1d6b43);box-shadow:inset 0 0 0 1.5px #fff}
+.atlas-label.is-count{padding:1px 7px;border-radius:9px;background:#ffffffd9;box-shadow:0 1px 4px #0b2b3a40;font-size:11px;font-weight:650;color:#39404b;text-shadow:none;z-index:2}
 .atlas-label.is-region{font-size:11px;font-weight:500;color:#6b747c}
 @media(max-width:520px){.atlas-label.is-region{font-size:10px}.atlas-label.is-city{font-size:12px;gap:4px;padding:2px 7px 2px 5px;border-radius:10px}.atlas-label.is-city::before{width:6px;height:6px}}
 .atlas-marker{position:absolute;left:0;top:0;z-index:4;display:grid;place-items:center;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#ffb224;color:#20232c;box-shadow:0 0 0 3px #fff,0 3px 10px #0b2b3a80;pointer-events:none;will-change:transform}

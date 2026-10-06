@@ -53,7 +53,7 @@ import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
 import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
-import { densityFor } from './density.ts';
+import { atlasNamesAt, countChips, densityFor, namedCities } from './density.ts';
 import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
@@ -711,6 +711,18 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
         }
         if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, size: dn.other, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
+      }
+      // Crowding: only the most important city names are written (a table in density.ts; more as the view comes closer), the others stay dots,
+      // and a state that lost three or more of its names to dots says how many ("Ogun · 4"). Zooming in or tapping the state brings the names back.
+      const cities = out.filter((label) => label.id.startsWith('city:')), keep = namedCities(cities, atlasNamesAt(dn, fits![NIGERIA]!.distance / rig.view.distance));
+      const dropped = cities.filter((label) => !keep.has(label.id));
+      if (dropped.length) {
+        const gone = new Set(dropped.map((label) => label.id));
+        for (let i = out.length - 1; i >= 0; i--) if (gone.has(out[i]!.id)) out.splice(i, 1);
+        for (const [stateId, count] of countChips(dropped.map((label) => stateOfCity(label.id.slice(5)) ?? ''))) {
+          const feature = sheet.topology.features.find((item) => item.id === stateId);
+          if (feature) push(`count:${stateId}`, at(feature.at[0], feature.at[1], sheet.top(feature) + 0.02), `${feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name} · ${count}`, { priority: 300, size: dn.other, compact: true, cls: 'is-count', title: `${count} more cities here: zoom in to name them` });
+        }
       }
       for (const [name, lon, lat] of NEIGHBOUR_LABELS) push(`near:${name}`, at(lon, lat), name, { priority: 34, size: 12, cls: 'is-neighbour' });
       for (const [name, lon, lat, kind] of WATER_LABELS) push(`water:${name}`, at(lon, lat, HEIGHT.state), name, { priority: kind === 'sea' ? 40 : 26, size: kind === 'sea' ? 12 : 10, anchor: kind === 'town' ? 'right' : 'centre', cls: `is-${kind}` });

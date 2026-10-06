@@ -36,3 +36,23 @@ export const shorten = (name: string, chars: number): string => (name.length <= 
 export const venueNamesAt = (row: Density, ratio: number): number => Math.max(2, Math.round(row.venueNames * Math.min(3, Math.max(0.6, ratio))));
 /** A name is always written for the places that matter to the player: priority at or above this (here, picked, on the way, under the pointer, Home). */
 export const NAMED_FROM = 60;
+
+/** How many city names the atlas writes at this zoom: the table's count at the whole-level view, up to three times as many nearer, a few fewer if further out. `ratio` is the whole-level distance over the camera's. */
+export const atlasNamesAt = (row: Density, ratio: number): number => Math.max(2, Math.round(row.atlasNames * Math.min(3, Math.max(0.6, ratio))));
+
+/**
+ * Which of the city markers keep a name: the ones that are always shown (the player's city), then the most important, up to `budget`; the rest are dots.
+ * Ties go to the earlier id so the choice does not flicker as the view moves.
+ */
+export function namedCities<T extends { id: string; priority: number; fixed?: boolean | undefined }>(cities: readonly T[], budget: number): Set<string> {
+  const keep = new Set(cities.filter((city) => city.fixed).map((city) => city.id));
+  for (const city of [...cities].sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1))) { if (keep.size >= budget) break; keep.add(city.id); }
+  return keep;
+}
+
+/** A count chip ("Ogun · 4") for each group that lost at least `least` names to dots: group → how many. */
+export function countChips(dropped: readonly string[], least = 3): [string, number][] {
+  const counts = new Map<string, number>();
+  for (const group of dropped) counts.set(group, (counts.get(group) ?? 0) + 1);
+  return [...counts].filter(([, count]) => count >= least).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+}

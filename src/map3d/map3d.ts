@@ -68,6 +68,7 @@ import { tripOf, createTripClock, tripPose } from './trip.ts';
 import { PLINTH as PLINTH_UNIT } from './landmarks.ts';
 import { avatarBox, extentWord, labelShift, nearPoints, plateFit, plateWidth, spanOf, WHOLE_FROM } from './labels.ts';
 import { iconFor } from '../ui/icon-map.ts';
+import { NAMED_FROM, densityFor, shorten, venueNamesAt } from './geo/density.ts'
 import { dockOf } from './insets.ts';
 import { createPinLayer, pinsOf, EMPTY_PEOPLE } from './people.ts';
 import type { MapPeople, PinLayer, PeoplePin } from './people.ts';
@@ -462,7 +463,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     if (!labelLayer) return;
     // Once the server has moved the player, the place is where they are — not where they are going, nor one they are leaving.
     const at = state?.t ?? 0, going = trip && state?.location !== trip.to ? trip.to : null, home = city.places.home!;
-    const next = JSON.stringify([state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
+    const next = JSON.stringify([densityFor(size.width).venueChars, state?.location, going, home.house, filter, selected, hovered, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
     if (next === labelKey) return;
     labelKey = next;
     for (const [id, label] of labels) {
@@ -471,7 +472,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const status = soon ? 'Coming soon' : here ? (going ? 'Leaving from here' : 'You are here') : going === id ? 'On the way' : open ? '' : opening?.opensAt ? `opens ${opening.opensAt}` : 'Closed';
       const dimmed = soon ? filter !== 'all' : filter === 'open' ? !open : filter !== 'all' && venue!.category !== filter && id !== 'home';
       const district = place.kind === 'home' ? home.district : venue?.district ?? '';
-      label.name.textContent = nameOf(place); label.note.textContent = status;
+      label.name.textContent = shorten(nameOf(place), densityFor(size.width).venueChars); label.note.textContent = status;
       const node = label.node;
       node.className = `m3-label is-${place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${hovered === id ? ' is-hover' : ''}${layers.gov && govVenueIds.has(id) ? ' is-gov' : ''}`;
       node.setAttribute('aria-label', `${nameOf(place)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
@@ -529,6 +530,9 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
     }
     entries.sort((a, b) => b.label.priority - a.label.priority || b.at.y - a.at.y);
     const taken: ScreenBox[] = [];
+    // Level of detail: only a few names are written at the opening view (a table in geo/density.ts), more as the camera comes closer; the rest are round icons.
+    const allowed = venueNamesAt(densityFor(size.width, doc?.defaultView ? parseFloat(doc.defaultView.getComputedStyle(doc.documentElement).fontSize) / 16 || 1 : 1), nearDistance > 0 ? nearDistance / rig.view.distance : 1);
+    let named = 0;
     const hits = (box: ScreenBox) => taken.some((other) => box.l < other.r && box.r > other.l && box.t < other.b && box.b > other.t);
     // The player's piece on screen (with its "You" tag during a trip): no label may cover it.
     const travelling = Boolean(pose && trip && shown()), spot = travelling ? pose : stood, riding = travelling && pose!.phase === 'ride';
@@ -540,7 +544,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 };
       // A name that would sit on top of a more important one shrinks to its icon; it is still a button with its full name.
       const lift = labelShift(full, piece), moved = lift ? { l: full.l, r: full.r, t: full.t + lift, b: full.b + lift } : full;
-      const compact = hits(moved), small = { l: at.x - 15 * uz, r: at.x + 15 * uz, t: at.y - 30 * uz, b: at.y };
+      const wantsName = label.priority >= NAMED_FROM || named < allowed, compact = !wantsName || hits(moved), small = { l: at.x - 15 * uz, r: at.x + 15 * uz, t: at.y - 30 * uz, b: at.y };
       // It steps clear of the player's piece: up on a longer stalk, or down over its own roof (src/map3d/labels.ts).
       const shift = compact ? labelShift(small, piece) : lift;
       const used = compact ? { l: small.l - 2, r: small.r + 2, t: small.t + shift - 2, b: small.b + shift + 2 } : moved;
@@ -548,6 +552,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       if (compact && label.priority < 70 && hits(used)) { if (!node.hidden) node.hidden = true; continue; }
       if (node.hidden) node.hidden = false;
       taken.push(used);
+      if (!compact && label.priority < NAMED_FROM) named += 1;
       node.classList.toggle('is-compact', compact);
       if (shift !== label.shift) {
         label.shift = shift;

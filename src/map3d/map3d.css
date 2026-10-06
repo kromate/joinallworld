@@ -7,7 +7,7 @@
 .m3-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 
 /* A place label: icon and name in one pill, its note on a second line. It is a button with a 44px touch target. */
-.m3-label{position:absolute;left:0;top:0;z-index:2;display:flex;align-items:center;gap:6px;min-height:30px;max-width:190px;padding:3px 10px 3px 3px;border:0;border-radius:17px;background:#fffffff7;color:#20232c;font:inherit;line-height:1.15;text-align:left;box-shadow:0 2px 8px #0b2b3a40;cursor:pointer;pointer-events:auto;will-change:transform;-webkit-tap-highlight-color:transparent}
+.m3-label{position:absolute;left:0;top:0;z-index:2;display:flex;align-items:center;gap:5px;min-height:28px;max-width:170px;padding:2px 9px 2px 2px;border:0;border-radius:17px;background:#fffffff7;color:#20232c;font:inherit;line-height:1.15;text-align:left;box-shadow:0 2px 8px #0b2b3a40;cursor:pointer;pointer-events:auto;will-change:transform;-webkit-tap-highlight-color:transparent}
 .m3-label::before{content:"";position:absolute;inset:-8px -4px}
 .m3-label::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:var(--m3-stalk,9px);margin-left:-1px;background:#ffffffd9;box-shadow:0 0 2px #0b2b3a66}
 .m3-label-icon{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#edf4ee;font-size:14px;line-height:1}
@@ -46,6 +46,7 @@
 .m3.is-far .m3-label-icon{width:20px;height:20px;font-size:12px}
 /* Crowded: the name gives way to the icon alone (the button keeps its full name for assistive technology) */
 .m3-label.is-compact{padding:3px;min-height:0;z-index:0}
+.m3-label.is-compact::before{inset:-10px -8px}
 .m3-label.is-compact .m3-label-text{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .m3-label.is-compact::after{height:var(--m3-stalk,6px)}
 /* Stepped clear of the player's piece (src/map3d/labels.js): up on a longer stalk, or down over its own roof with none */

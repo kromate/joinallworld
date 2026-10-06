@@ -38,6 +38,7 @@ import { plateFit, plateWidth, spanOf } from './labels.ts';
 import { DOUBLE_TAP_MS, DOUBLE_TAP_PX, isDrag, isTap, mapHint, MAP_HINT_KEY } from '../scene/gesture.ts';
 import type { CityPack, PackLga } from './types.ts';
 import type { Route } from './roads.ts';
+import { NAMED_FROM, densityFor, shorten, venueNamesAt } from './geo/density.ts';
 import type { HouseStyle, PlotAddress } from '../types/index.ts';
 
 // ---- the contract ---------------------------------------------------------------------------------
@@ -201,7 +202,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   function updateLabels() {
     const at = state?.t ?? 0, going = isDeparting(state) && state!.activeAction!.id !== state!.location ? state!.activeAction!.id : null;
     homeAt = homeSpot();
-    const next = JSON.stringify([state?.location, going, homeAt.x, homeAt.z, filter, selected, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
+    const next = JSON.stringify([densityFor(size.width).venueChars, state?.location, going, homeAt.x, homeAt.z, filter, selected, layers.gov, Object.values(venueTable).map((venue) => openingInfo(venue.hours, at).status)]);
     if (next === labelKey) return;
     labelKey = next;
     for (const [id, label] of labels) {
@@ -210,7 +211,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       const status = soon ? 'Coming soon' : here ? (going ? 'Leaving from here' : 'You are here') : going === id ? 'On the way' : open ? '' : opening?.opensAt ? `opens ${opening.opensAt}` : 'Closed';
       const dimmed = soon ? filter !== 'all' : filter === 'open' ? !open : filter !== 'all' && venue!.category !== filter && id !== 'home';
       const district = id === 'home' ? homeAt.district : venue?.district ?? '';
-      label.name.textContent = nameOf(id); label.note.textContent = status;
+      label.name.textContent = shorten(nameOf(id), densityFor(size.width).venueChars); label.note.textContent = status;
       label.node.className = `m3-label is-${label.place.kind}${here ? ' is-here' : ''}${going === id ? ' is-going' : ''}${!soon && !open ? ' is-closed' : ''}${dimmed && !here ? ' is-dimmed' : ''}${selected === id ? ' is-selected' : ''}${layers.gov && govVenueIds.has(id) ? ' is-gov' : ''}`;
       label.node.setAttribute('aria-label', `${nameOf(id)}, ${district}${status ? `, ${status.toLowerCase()}` : ', open now'}`);
       label.node.title = `${nameOf(id)}${status ? ` · ${status}` : ''}`;
@@ -365,16 +366,19 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     const entries = [...labels.values()].map((label) => { const spot = spotOf(label.place.id)!; const at = project(spot.x, spot.z - (label.place.id === 'home' && homeAt!.own ? 0 : 2.2)); return { label, at, visible: at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) }; });
     entries.sort((p, q) => q.label.priority - p.label.priority || q.at.y - p.at.y);
     const taken: { l: number, r: number, t: number, b: number }[] = [], hits = (rect: { l: number, r: number, t: number, b: number }) => taken.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t);
+    const allowed = venueNamesAt(densityFor(size.width), scale / fitScale());
+    let named = 0;
     for (const { label, at, visible } of entries) {
       const node = label.node;
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
-      const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 }, compact = hits(full);
+      const full = { l: at.x - label.width / 2 - 3, r: at.x + label.width / 2 + 3, t: at.y - label.height - 2, b: at.y + 2 }, compact = (label.priority < NAMED_FROM && named >= allowed) || hits(full);
       const used = compact ? { l: at.x - 17, r: at.x + 17, t: at.y - 32, b: at.y + 2 } : full;
       // Level of detail: an icon that would still sit on a more important label or icon is left out until the view is closer.
       if (compact && label.priority < 70 && hits(used)) { if (!node.hidden) node.hidden = true; continue; }
       if (node.hidden) node.hidden = false;
       taken.push(used);
+      if (!compact && label.priority < NAMED_FROM) named += 1;
       node.classList.toggle('is-compact', compact);
       node.style.transform = `translate(${Math.round(at.x)}px,${Math.round(at.y)}px) translate(-50%,-100%)`;
     }

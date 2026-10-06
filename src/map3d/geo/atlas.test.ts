@@ -14,7 +14,7 @@ import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
-import { DENSITY, densityFor } from './density.ts';
+import { DENSITY, NAMED_FROM, densityFor, shorten, venueNamesAt } from './density.ts';
 import * as THREE from 'three';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
@@ -598,4 +598,21 @@ test('the density table: phones get smaller type and fewer names, a larger text 
   assert.ok(DENSITY.phone.city < DENSITY.wide.city && DENSITY.phone.atlasNames < DENSITY.wide.atlasNames);
   assert.ok(densityFor(390, 1.5).atlasNames < DENSITY.phone.atlasNames, 'larger text, more dots');
   assert.ok(densityFor(390, 3).atlasNames >= 2, 'never fewer than the player\'s city and one more');
+});
+
+test('venue names on the city map: long names are cut, few are written at the opening view, more as the camera comes closer, the places that matter always', () => {
+  assert.equal(shorten('Sagamu Community Clinic', 16), 'Sagamu Communi…');
+  assert.equal(shorten('Market', 16), 'Market');
+  assert.ok(shorten('Sagamu Community Clinic', 16).length <= 16);
+  const phone = DENSITY.phone;
+  assert.equal(venueNamesAt(phone, 1), phone.venueNames);
+  assert.ok(venueNamesAt(phone, 2) > venueNamesAt(phone, 1) && venueNamesAt(phone, 0.5) <= venueNamesAt(phone, 1));
+  assert.ok(venueNamesAt(phone, 100) <= phone.venueNames * 3, 'never more than three times');
+  assert.ok(NAMED_FROM <= 60, 'Home, here, picked and on the way are always named');
+  for (const file of ['./map3d.ts', './map2d.ts']) {
+    const code = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    assert.match(code, /NAMED_FROM/, `${file} names the places that matter`);
+    assert.match(code, /shorten\(/, `${file} cuts long names`);
+  }
+  assert.match(readFileSync(new URL('../map3d.css', import.meta.url), 'utf8'), /\.m3-label\.is-compact::before\{inset:-10px -8px\}/, 'an icon keeps a 44px target');
 });

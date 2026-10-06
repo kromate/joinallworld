@@ -25,3 +25,14 @@ export function densityFor(width: number, textScale = 1): Density {
   const row: Density = width <= PHONE_WIDTH ? DENSITY.phone : DENSITY.wide, less = textScale > 1.1 ? 1 / textScale : 1;
   return { ...row, atlasNames: Math.max(2, Math.floor(row.atlasNames * less)), venueNames: Math.max(2, Math.floor(row.venueNames * less)) };
 }
+
+/** A venue's name cut to `chars` characters with an ellipsis (the whole name stays in the tooltip and the aria label). */
+export const shorten = (name: string, chars: number): string => (name.length <= chars ? name : `${name.slice(0, Math.max(1, chars - 1)).trimEnd()}…`);
+
+/**
+ * How many venue names the city map writes in full at this zoom: the table's count when the view is as far out as the opening view,
+ * more as the camera comes closer (up to three times as many), a few fewer when it is further out. `ratio` is the opening distance over the camera's.
+ */
+export const venueNamesAt = (row: Density, ratio: number): number => Math.max(2, Math.round(row.venueNames * Math.min(3, Math.max(0.6, ratio))));
+/** A name is always written for the places that matter to the player: priority at or above this (here, picked, on the way, under the pointer, Home). */
+export const NAMED_FROM = 60;

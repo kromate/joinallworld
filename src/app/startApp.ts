@@ -20,6 +20,7 @@ export function ready(): void {
     globalThis.setTimeout(resolve, 10000)
   })
   preloadNext(Promise.all([landingCodeSettled(), sceneShown]))
-  // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness (./diagnostics.ts, fetched only then).
-  if (new URLSearchParams(location.search).has('diagnostics')) void import('./diagnostics.ts').then(({ showDiagnostics }) => { showDiagnostics() })
+  // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness; a short address (/games, /abuja, …): its chunk. Fetched only then (./startExtras.ts).
+  const diagnostics = new URLSearchParams(location.search).has('diagnostics')
+  if (diagnostics || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
 }

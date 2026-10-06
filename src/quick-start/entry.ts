@@ -120,6 +120,8 @@ export function captureLink(): CapturedLink {
   if (go) { found.go = go; write(KEYS.go, { go, at: Date.now() }); }
   return found;
 }
+/** A link was handled: the address goes back to `/`, without a reload (the page's one way to clean its address). */
+export const cleanAddress = (): void => { history.replaceState(null, '', '/') }
 /** The share code waiting to be attached as a referral, or null (a code is kept for a week). */
 export function pendingRef(): string | null { const kept = recordOf(read(KEYS.ref)) as Partial<KeptRef> | null; if (!kept || typeof kept.code !== 'string') return null; if (!(Date.now() - Number(kept.at) < REF_KEEP_MS)) { write(KEYS.ref, null); return null; } return linkParts('/', `?ref=${kept.code}`).ref; }
 export const forgetRef = (): void => write(KEYS.ref, null);

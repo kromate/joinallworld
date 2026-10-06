@@ -820,7 +820,9 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.match(robots.headers.get('content-type') as string, /^text\/plain/); assert.equal(sitemap.headers.get('content-type'), 'application/xml; charset=utf-8');
   assert.match(await robots.text(), /Disallow: \/api\/[\s\S]*Sitemap: /);
   // The sitemap and the manifest are made by code on this host (server/site-files.ts), not served as assets; the sitemap names the public origin.
-  assert.equal(await sitemap.text(), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${ORIGIN}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n</urlset>\n`);
+  const listed = await sitemap.text();
+  assert.ok(listed.startsWith(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${ORIGIN}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n`) && listed.endsWith('</urlset>\n'), 'the home page first, on the public origin');
+  assert.ok(listed.includes(`<loc>${ORIGIN}/games</loc>`), 'the games and the open cities follow (their addresses are checked in the short-addresses test)');
   const manifest = await f.fetch('/manifest.webmanifest');
   assert.deepEqual([manifest.status, manifest.headers.get('content-type'), manifest.headers.get('x-content-type-options')], [200, 'application/manifest+json', 'nosniff']);
   assert.deepEqual(Object.keys(JSON.parse(await manifest.text()) as object).slice(0, 3), ['name', 'short_name', 'description']);
@@ -1067,6 +1069,39 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   const deep = await f.fetch('/some/deep/link');
   assert.equal(deep.status, 200); assert.match(deep.headers.get('content-type') as string, /text\/html/); assert.equal(deep.headers.get('cache-control'), 'no-cache');
   assert.ok((await deep.text()).includes('game'));
+});
+
+test('short addresses: /games, /abuja and an unknown path get their own head from the Worker, with the same policy hashes and a sitemap from the registry', async t => {
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  const index = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  await writeFile(join(dist, 'index.html'), index);
+  const f = await fixture(t, { assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } });
+  const title = (html: string) => /<title>([^<]*)<\/title>/.exec(html)?.[1];
+  const tag = (html: string, key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
+  const home = await f.fetch('/');
+  const homePolicy = home.headers.get('content-security-policy');
+  assert.ok(homePolicy);
+  assert.equal(title(await home.text()), title(index), 'the home page keeps its own head');
+  for (const [path, expected, canonical] of [['/games', 'Play chess, the daily word and more — Allworld', '/games'], ['/games/oro', 'Oro, a new word every day — Allworld', '/games/oro'], ['/abuja', 'Live in Abuja — Allworld', '/abuja'], ['/fct', 'Live in Abuja — Allworld', '/abuja'], ['/kano', 'Live in Kano — Allworld', '/kano']] as const) {
+    const response = await f.fetch(path);
+    const body = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.equal(title(body), expected, path);
+    assert.equal(tag(body, 'og:title'), expected);
+    assert.equal(tag(body, 'twitter:title'), expected);
+    assert.match(body, new RegExp(`<link rel="canonical" href="https?://[^"/]+${canonical}">`), path);
+    assert.equal(response.headers.get('content-security-policy'), homePolicy, `${path}: the script hashes are the home page's`);
+    assert.equal(response.headers.get('cache-control'), 'no-cache');
+  }
+  const head = await f.fetch('/abuja', { method: 'HEAD' });
+  assert.equal(head.headers.get('content-security-policy'), homePolicy, 'HEAD gets the same policy');
+  const unknown = await f.fetch('/some/deep/link');
+  const body = await unknown.text();
+  assert.deepEqual([unknown.status, tag(body, 'robots'), title(body)], [200, 'noindex,follow', title(index)]);
+  const sitemap = await (await f.fetch('/sitemap.xml')).text();
+  for (const path of ['/games', '/games/chess', '/lagos', '/abuja', '/kano', '/port-harcourt', '/ogun']) assert.ok(new RegExp(`<loc>https?://[^<]+${path}</loc>`).test(sitemap), path);
+  assert.ok(!sitemap.includes('/kaduna<'), 'a city that is not open is not listed');
 });
 
 // ---- accounts (server/routes/auth.ts) on the Worker: the same routes over the SQLite tables ----

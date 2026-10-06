@@ -164,7 +164,7 @@ function sources(folder: string): string[] {
 
 test('only the on-device check reads a position, and those files hold no way to send, log or store it', () => {
   const reading = sources('src').concat(sources('server'), sources('deploy')).filter((file) => /getCurrentPosition|watchPosition|\.coords\b|GeolocationPosition|navigator\.geolocation/.test(readFileSync(join(root, file), 'utf8')))
-  assert.deepEqual(reading.sort(), ['src/app/features/locate/locateModel.ts', 'src/app/features/world/lgaCardModel.ts'])
+  assert.deepEqual(reading.sort(), ['src/app/features/locate/locateModel.ts', 'src/app/features/start/findCity.ts', 'src/app/features/world/lgaCardModel.ts'])
   for (const file of reading) {
     const code = readFileSync(join(root, file), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')
     assert.ok(!/watchPosition/.test(code), `${file}: the position is never watched`)

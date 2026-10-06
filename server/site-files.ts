@@ -6,6 +6,7 @@
  * robots.txt stays a static asset (public/robots.txt).
  */
 import { SITE_ORIGIN } from './host-context.ts';
+import { escapeHtml, sitemapPaths } from './path-meta.ts';
 
 export interface SiteFile { type: string; body: string }
 
@@ -30,12 +31,17 @@ const MANIFEST = `{
 }
 `;
 
-/** `origin` is the public origin (PUBLIC_ORIGIN, else the request's own host); empty falls back to the site's own. */
-const sitemap = (origin: string): string => `<?xml version="1.0" encoding="UTF-8"?>
+/** `origin` is the public origin (PUBLIC_ORIGIN, else the request's own host); empty falls back to the site's own. The games and every open city come from the registry (server/path-meta.ts). */
+const sitemap = (origin: string): string => {
+  const base = origin || SITE_ORIGIN;
+  const rows = sitemapPaths().map((path) => `  <url><loc>${escapeHtml(`${base}${path}`)}</loc><changefreq>weekly</changefreq><priority>${path === '/games' ? '0.8' : '0.7'}</priority></url>`);
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${origin || SITE_ORIGIN}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>${base}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+${rows.join('\n')}
 </urlset>
 `;
+};
 
 /** The file served at `pathname`, or undefined when the path is not one of the two. */
 export function siteFile(pathname: string, origin: string): SiteFile | undefined {

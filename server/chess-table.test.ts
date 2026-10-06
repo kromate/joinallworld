@@ -184,3 +184,21 @@ test('chess: on the Phone it is you against the computer, anywhere; nobody else 
   assert.equal(ada.state.table.status, 'over');
   assert.deepEqual((await claim(ada)).results.map((item) => item.code).filter((code) => code === 'paid'), []);
 });
+
+test('Whot and penalties on the Phone: a private game against the computer, like chess and Weave, with no venue', async (t) => {
+  const { act, send, all, player, claim } = await harness(t);
+  const ada = await player('Ada'), bola = await player('Bola');
+  for (const [table, game, label] of [['phone-whot', 'whot', 'Whot on your Phone'], ['phone-penalty', 'penalty', 'Penalties on your Phone']] as const) {
+    send(ada, 'table-sit', { table }); await all(ada);
+    assert.deepEqual([ada.errors, ada.state.table.venueLabel, ada.state.table.label, ada.state.table.game, ada.state.you], [[], 'Your Phone', label, game, 0], table);
+    await act(ada, 'table-start', { table, bots: 1 });
+    assert.deepEqual([ada.state.table.status, ada.state.table.seats.map((seat) => seat.bot)], ['playing', [false, true]], table);
+    // Nobody else can see it: Bola's Phone table of the same game is her own, and empty.
+    await act(bola, 'table-watch', { table });
+    assert.deepEqual([bola.state.table.status, bola.state.table.seats.length, bola.state.you], ['open', 0, null], table);
+    await act(ada, 'table-leave', { table });
+    assert.deepEqual((await claim(ada)).results.map((item) => item.code).filter((code) => code === 'paid'), [], 'a game against the computer pays nothing');
+  }
+  send(ada, 'table-sit', { table: 'phone-nothing' }); await all(ada);
+  assert.equal(ada.errors.at(-1)?.code, 'unknown_table');
+});

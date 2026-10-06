@@ -44,6 +44,7 @@ import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleList
 import type { ApiError } from '../../types/client.ts'
 import type { PanelApi } from '../../types/panel.ts'
 import { play } from '../../../audio/play.ts'
+import { cleanAddress } from '../../../quick-start/entry.ts'
 
 /** The quick reconnects, each after twice the wait of the one before; after them the socket is tried every SLOW_RETRY_MS. */
 const MAX_ATTEMPTS = 6
@@ -119,7 +120,7 @@ export interface SocialEnv {
 const browserEnv = (): SocialEnv => ({
   openSocket: () => new WebSocket(`${globalThis.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${globalThis.location.host}/socket`) as unknown as SocketLike,
   pageAddress: () => ({ pathname: globalThis.location?.pathname ?? '', search: globalThis.location?.search ?? '' }),
-  clearAddress() { try { globalThis.history.replaceState(null, '', '/') } catch { /* the address stays */ } },
+  clearAddress: cleanAddress,
   onOnline(listener) { globalThis.window?.addEventListener('online', listener) },
   visible: () => globalThis.document?.hidden !== true,
   setTimeout: (run, ms) => globalThis.setTimeout(run, ms),

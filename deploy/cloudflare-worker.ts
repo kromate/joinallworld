@@ -42,6 +42,7 @@ import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
 import { ADMIN_HOST_ENV, ADMIN_ROBOTS, ADMIN_SHELL, adminAddress, adminHostName, adminHostRoute, isAdminHost } from '../server/admin/host.ts';
+import { withPathMeta } from '../server/path-meta.ts';
 import { createSqliteStore } from './sqlite-store.ts';
 import { createSqliteImages } from './sqlite-images.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
@@ -202,13 +203,15 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as
   // served. A HEAD answer has no body to hash, so the same page is read with a GET.
   const head = request.method === 'HEAD';
-  const text = await (head ? await env.ASSETS.fetch(new Request(request.url, { method: 'GET' })) : response).text();
+  const origin = publicOrigin(env, url);
+  // A short address (/games, /abuja, …) gets its own title, description and link-preview tags; the page's scripts are untouched, so the hashes below are the same.
+  const text = withPathMeta(await (head ? await env.ASSETS.fetch(new Request(request.url, { method: 'GET' })) : response).text(), url.pathname, origin);
   for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })), accounts: accountsConfig(env) }))) headers.set(name, value);
   if (head || response.status !== 200) return new Response(head ? null : text, { status: response.status, headers });
   // The game's own page: its default link-preview image is made absolute, because the crawlers of chat apps do not
   // resolve a relative og:image. The length changes, so the asset's own validators no longer describe the body.
   for (const name of ['content-length', 'etag']) headers.delete(name);
-  return new Response(absolutePreviewImage(text, publicOrigin(env, url)), { status: 200, headers });
+  return new Response(absolutePreviewImage(text, origin), { status: 200, headers });
 }
 
 /** The admin page: the build's second entry, with the admin address's own headers (no beacon, no sockets, never kept or indexed). */

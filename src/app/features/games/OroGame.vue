@@ -10,6 +10,9 @@ import BaseButton from '../../ui/BaseButton.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { loadShareModule } from '../growth/boundary.ts'
 import { useGrowth } from '../growth/useGrowth.ts'
+import { openSignup } from '../account/accountOpen.ts'
+import { useAccountLite } from '../account/useAccountLite.ts'
+import { addressOf } from '../paths/share.ts'
 import type { OroMark, OroView } from '../../../types/growth.ts'
 import {
   KEY_ROWS, MAX_GUESSES, ORO_RULES, WORD_LENGTH, backspace, barWidths, canSubmit, keyOf, keyStates, refusalWords, tileLabel, typeLetter, untilNext, winRate,
@@ -17,8 +20,10 @@ import {
 
 const props = defineProps<{ mode: 'daily' | 'practice' }>()
 const emit = defineEmits<{ close: []; state: [view: OroView] }>()
-const { game } = useApp()
+const { game, shell } = useApp()
 const growth = useGrowth()
+const account = useAccountLite()
+void account.load()
 
 type Row = { word: string; marks: OroMark[] }
 const rows = ref<Row[]>([])
@@ -48,6 +53,10 @@ const tiles = computed(() => Array.from({ length: MAX_GUESSES }, (_, r) => {
     return { letter: live ? draft.value.charAt(c) : '', mark: null, live }
   })
 }))
+/** The result as it is shared: the squares, then the address of today's word. */
+const sharedText = computed(() => (shareLine.value ? `${shareLine.value}\n${addressOf('/games/oro')}` : ''))
+/** A guest's streak lives on this device only: finishing the daily word offers a free account to keep it. */
+const keepStreak = computed(() => props.mode === 'daily' && Boolean(game.view.value.onboarding?.guest) && account.state.loaded && account.state.enabled && account.state.account === null)
 const solvedIn = computed(() => (status.value === 'won' ? rows.value.length : 0))
 
 function say(text: string, bad = false): void {
@@ -133,7 +142,7 @@ function toggleHard(): void {
   try { localStorage.setItem(HARD_KEY, hard.value ? '1' : '0') } catch { /* private mode */ }
 }
 async function share(): Promise<void> {
-  const text = shareLine.value
+  const text = sharedText.value
   if (!text) return
   const module = await loadShareModule()
   const outcome = await module.systemShare({ text, link: '', file: null, url: null, whatsapp: '', x: '' })
@@ -188,8 +197,12 @@ defineExpose({ press })
             <li v-for="(w, i) in barWidths(stats.dist)" :key="i"><span>{{ i + 1 }}</span><i :style="{ width: `${w}%` }" :class="{ 'is-this': status === 'won' && solvedIn === i + 1 }">{{ stats.dist[i] || '' }}</i></li>
           </ol>
           <p class="oro-next">Next word in {{ untilNext(now) }}.</p>
-          <pre class="oro-share" aria-label="Your result, as it will be shared">{{ shareLine }}</pre>
+          <pre class="oro-share" aria-label="Your result, as it will be shared">{{ sharedText }}</pre>
           <BaseButton variant="primary" @click="share">Share result</BaseButton>
+          <template v-if="keepStreak">
+            <p class="oro-next">Sign up free to keep your streak on any device.</p>
+            <BaseButton @click="openSignup(shell, 'ready', account.state.guest)">Sign up free</BaseButton>
+          </template>
         </template>
         <BaseButton v-if="mode === 'practice'" variant="primary" @click="loadPractice">Another word</BaseButton>
         <BaseButton @click="emit('close')">Back to Games</BaseButton>

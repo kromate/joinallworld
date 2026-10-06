@@ -67,7 +67,8 @@ hour. If a launch at one campus is planned, raise it for that day; if abuse from
 | Growth | 50,000 players, 20,000 share links, 20 links a day; 500 e-mails a day (`EMAIL_DAILY_CAP`), 5,000 notifications a day (`PUSH_DAILY_CAP`) | `server/growth/data.ts`, `outreach.ts` | the message is not sent that day |
 | Civic | 20 announcements, 12 billboards, 256 sea plots, 30 candidates, 20 shout-outs a club | `server/civic/` | a sentence |
 | Moderation, support | 1,000 audit lines, 5,000 mutes; 2,000 problem reports, 5 open per player | `server/moderation/`, `server/support/` | a sentence |
-| Voice relay (Worker) | 8 credentials a day, two nominated players | `deploy/turn-provider.ts` | `relay_test_limit` |
+| Room voice relay test (Worker) | 8 credentials a day, two nominated players | `deploy/turn-provider.ts` | `relay_test_limit` |
+| Call relay (both hosts) | 30 credentials per player a day, 120 per address an hour, 3000 a day in all (`CALL_RELAY_*`) | `server/call-relay.ts` | the call carries on with STUN only (`relay: limited`) |
 | Storage (Worker) | a collection is split into rows of 400,000 characters; a lazy change is written within 10 minutes | `deploy/sqlite-store.ts` | none |
 | Storage (Node) | one file, written whole; 50 MB a second (`STORE_WRITE_MB_PER_S`) | `server/store.ts` | slower answers to actions as the file grows |
 

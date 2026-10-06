@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url'
 import { JOURNEY_TIME } from '../server/testing/cityJourney.ts'
 import { residenceJourney } from '../server/testing/residenceJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 await loadCityContent('lagos')
 

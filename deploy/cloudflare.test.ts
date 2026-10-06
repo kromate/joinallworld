@@ -10,7 +10,7 @@ import { createRequire } from 'node:module';
 import { createHash, randomUUID } from 'node:crypto';
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts';
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts';
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; addEventListener(type: 'close', listener: (event: { code: number }) => void): void; accept(): void; send(data: string): void; close(): void }

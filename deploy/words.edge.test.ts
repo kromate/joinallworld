@@ -13,7 +13,7 @@ import { createRequire } from 'node:module';
 import { gzipSync } from 'node:zlib';
 import { FIRST_LENGTH, PACKED, WORD_COUNTS } from '../src/words/data/dictionary.ts';
 import { unpackDictionary } from '../scripts/words/pack.ts';
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface MiniflareInstance { ready: Promise<URL>; dispose(): Promise<void>; dispatchFetch(url: string): Promise<Response> }
 interface MiniflareTooling { Miniflare: new (options: Record<string, unknown>) => MiniflareInstance; convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown> }

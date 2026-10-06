@@ -9,7 +9,7 @@ import { ibadanJourney } from '../server/testing/ibadanJourney.ts'
 import { ogunJourney } from '../server/testing/ogunJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, object, qualifyState, seedLegacyRecords } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice, JourneyHost, JourneySocket } from '../server/testing/cityJourney.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface TestWebSocket {
   accept(): void

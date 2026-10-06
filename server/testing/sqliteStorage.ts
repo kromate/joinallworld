@@ -1,6 +1,6 @@
 /** The Durable Object storage surface backed by node:sqlite, for tests of the store (deploy/sqlite-store.ts). */
 import { DatabaseSync } from 'node:sqlite';
-import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts';
+import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from '../../deploy/cf-types.ts';
 
 export interface TestStorage { db: DatabaseSync; storage: SqliteStorage; fail: { sync: boolean }; changes(): number; close(): void }
 /** A fresh in-memory database, or the given one (a restart opens the same database again). */

@@ -2,8 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createSqliteStore } from './sqlite-store.ts';
-import { testStorage } from './test-storage.ts';
-import type { Db, StoreLayoutTools, TransactOptions } from '../server/types.ts';
+import { testStorage } from '../server/testing/sqliteStorage.ts';
+import type { StoreLayoutTools, TransactOptions } from '../server/types.ts';
 
 interface Player { name: string; seen: number; friends: Record<string, number>; convs: Record<string, number>; blocked: Record<string, number> }
 interface Social { players: Record<string, Player>; convs: Record<string, { id: string; messages: { seq: number; text: string }[] }>; houses: Record<string, unknown>; pending: Record<string, { at: number }[]>; reports: unknown[]; seq: number }
@@ -13,7 +13,7 @@ interface Loose {
   flush(): Promise<void>
   layout: Required<StoreLayoutTools>
 }
-type Draft = Db & { social?: Social; [name: string]: unknown };
+type Draft = Record<string, unknown>;
 const open = (storage: ReturnType<typeof testStorage>['storage'], options: Parameters<typeof createSqliteStore>[1] = {}): Loose => createSqliteStore(storage, options) as unknown as Loose;
 const emptySocial = (): Social => ({ players: {}, convs: {}, houses: {}, pending: {}, reports: [], seq: 0 });
 const player = (name: string): Player => ({ name, seen: 1, friends: {}, convs: {}, blocked: {} });

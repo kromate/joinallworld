@@ -3,12 +3,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createSqliteStore } from './sqlite-store.ts';
-import { testStorage } from './test-storage.ts';
+import { testStorage } from '../server/testing/sqliteStorage.ts';
 import { legacySeed } from '../server/testing/legacySeed.ts';
 import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts';
-import type { Db, StoreLayoutTools, TransactOptions } from '../server/types.ts';
+import type { StoreLayoutTools, TransactOptions } from '../server/types.ts';
 
-type Draft = Db & { [name: string]: unknown };
+type Draft = Record<string, unknown>;
 interface Loose {
   transact<T>(operation: (db: Draft) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
   read<T>(operation: (db: Draft) => T | Promise<T>): Promise<T>

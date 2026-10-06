@@ -14,7 +14,7 @@ import { businessJourney } from '../server/testing/businessJourney.ts'
 import type { BusinessHost } from '../server/testing/businessJourney.ts'
 import { lagosTime } from '../src/game/clock.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 await loadCityContent('lagos')
 

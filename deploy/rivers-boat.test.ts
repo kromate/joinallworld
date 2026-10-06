@@ -9,7 +9,7 @@ import { boatJourney } from '../server/testing/boatJourney.ts'
 import { object, JOURNEY_TIME } from '../server/testing/cityJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
 import { contentFor } from '../src/game/cities/runtime.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface StoredObject { exec(sql: string, ...values: (string | number)[]): Promise<Record<string, unknown>[]> }
 interface WorkerHost {

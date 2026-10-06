@@ -77,7 +77,7 @@ export function legacySeed({ players: count, seed = 1, now = 1_790_000_000_000, 
       link(id, other);
       if (random() < chatShare && !convs[[id, other].sort().join(':')]) makeConv('dm', [id, other].sort(), random() < fullShare);
     }
-    const mine = players[id] as { friends: Record<string, number>; founder?: { id: string; at: number }; invite?: { by: string; at: number } };
+    const mine = players[id] as { first: number; friends: Record<string, number>; founder?: { id: string; at: number }; invite?: { by: string; at: number } };
     mine.friends[founder] = mine.first; mine.founder = { id: founder, at: mine.first };
     if (random() < 0.15) { const by = ids[1 + int(count - 1)] as string; if (by !== id) mine.invite = { by, at: mine.first }; }
   });

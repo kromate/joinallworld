@@ -7,7 +7,7 @@
  */
 import { DatabaseSync } from 'node:sqlite';
 import { createSqliteStore } from '../deploy/sqlite-store.ts';
-import { testStorage } from '../deploy/test-storage.ts';
+import { testStorage } from '../server/testing/sqliteStorage.ts';
 import { legacySeed } from '../server/testing/legacySeed.ts';
 import type { StoreLayoutTools } from '../server/types.ts';
 

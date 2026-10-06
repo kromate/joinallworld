@@ -12,7 +12,7 @@ import type { JourneyDevice } from '../server/testing/cityJourney.ts'
 import { rideJourney } from '../server/testing/rideJourney.ts'
 import type { RideHost } from '../server/testing/rideJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent))
 

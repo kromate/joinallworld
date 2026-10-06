@@ -13,7 +13,7 @@ import type { JourneyDevice } from '../server/testing/cityJourney.ts'
 import { skipJourney } from '../server/testing/skipJourney.ts'
 import type { SkipHost, SkipSocket } from '../server/testing/skipJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
-import { layoutBindings } from './test-storage.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent))
 

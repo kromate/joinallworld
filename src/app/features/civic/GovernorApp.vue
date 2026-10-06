@@ -15,6 +15,7 @@ import type { GovResponse, PulseResponse } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
+import ResidentBadge from '../locate/ResidentBadge.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import CivicAction from './CivicAction.vue'
@@ -107,7 +108,7 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
           <div v-for="candidate in data.election.candidates" :key="candidate.id" class="governor-candidate" :class="{ 'is-chosen': data.election.yourVote === candidate.id }">
             <div class="governor-who">
               <CivicAvatar :name="candidate.name" :seed="candidate.id" />
-              <strong>{{ candidate.name }}{{ candidate.you ? ' (you)' : '' }}</strong>
+              <strong>{{ candidate.name }}{{ candidate.you ? ' (you)' : '' }}</strong><ResidentBadge :id="candidate.id" />
               <span v-if="data.phase !== 'nominations'">{{ votes(candidate.votes) }}</span>
             </div>
             <q>{{ candidate.slogan }}</q>

@@ -34,6 +34,7 @@ import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
+import ResidentBadge from '../locate/ResidentBadge.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
@@ -235,7 +236,7 @@ defineExpose({
           <RowMark v-if="conv?.kind === 'group'" round>👥</RowMark>
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
-          <h3 v-if="withFounder"><button type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="conv?.with && shell.open('person', { player: conv.with, name: title })">{{ title }}</button><FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
+          <h3 v-if="withFounder"><button type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="conv?.with && shell.open('person', { player: conv.with, name: title })">{{ title }}</button><FounderTag /><ResidentBadge v-if="conv?.kind === 'dm' && conv.with" :id="conv.with" /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
           <h3 v-else><button v-if="partner" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: partner, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="partner && presenceOf(partner) ? `messages-presence is-${presenceOf(partner)}` : undefined">{{ (partner && presenceWord(partner)) || threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
           <template v-else-if="partner">

@@ -33,6 +33,7 @@ const KEY = /^[a-z][a-z0-9_]{0,39}$/;
 /** Property names that are refused whatever they hold. */
 const DENIED_KEYS = new Set(['name', 'nickname', 'username', 'display_name', 'text', 'body', 'message', 'chat', 'content', 'draft', 'note', 'title', 'reason',
   'email', 'phone', 'x', 'y', 'z', 'lat', 'lng', 'lon', 'latitude', 'longitude', 'position', 'pos', 'coords', 'coordinates', 'location_exact',
+  'accuracy', 'altitude', 'altitude_accuracy', 'heading', 'speed', 'geolocation', 'geo', 'timestamp',
   'ip', 'ip_address', 'address', 'secret', 'sid', 'cookie', 'cookies', 'token', 'password', 'passwd', 'id_token', 'idtoken', 'refresh_token', 'credential', 'csrf', 'authorization', 'query', 'query_string', 'search', 'url', 'href', 'referrer', 'data', 'payload']);
 export const MAX_PROPS = 24;
 export const MAX_TEXT = 300;
@@ -65,7 +66,7 @@ export function scrubText(value: unknown, limit = MAX_TEXT): string {
     .replace(UUID, '[id]')
     .replace(/([a-z][a-z0-9+.-]*:\/\/[^\s?#"'<>]*)[?#][^\s"'<>]*/gi, '$1')
     .replace(/(\/[A-Za-z0-9_\-./]*)\?[^\s"'<>]*/g, '$1')
-    .replace(/\b(x|y|z|lat|lng|lon|latitude|longitude)\b(["']?\s*[:=]\s*)-?\d+(?:\.\d+)?/gi, '$1$2[pos]')
+    .replace(/\b(x|y|z|lat|lng|lon|latitude|longitude|accuracy|altitude|heading|speed)\b(["']?\s*[:=]\s*)-?\d+(?:\.\d+)?/gi, '$1$2[pos]')
     .replace(/-?\d{1,3}\.\d{2,}\s*,\s*-?\d{1,3}\.\d{2,}/g, '[pos]')
     .replace(/\+?\d[\d\s-]{7,}\d/g, '[number]');
   return text.slice(0, limit);

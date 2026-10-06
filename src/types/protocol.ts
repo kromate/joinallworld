@@ -551,6 +551,7 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/world/lga/:id/estates',
   'GET /api/world/lga/:id/estate/:estate/houses',
   'GET /api/world/lga/:id/people',
+  'POST /api/world/badges',
   'POST /api/growth/hello',
   'POST /api/growth/share',
   'GET /api/growth/share/:code',

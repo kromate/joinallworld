@@ -607,6 +607,18 @@ export interface CityLinkCard extends CityLinkFrom {
   blocked: string | null
 }
 
+/** The location-confirmed badge as its owner sees it (docs/LOCATION.md). `city` is the main home's city, whose boundary the device is checked against. */
+export interface ResidenceView {
+  city: WorldCityId
+  cityName: string
+  unit: string
+  lga: LgaId
+  lgaName: string
+  /** The standing confirmation and the server ms it lapses, or null. */
+  confirmed: { at: Ms; until: Ms } | null
+  days: number
+}
+
 export interface EstateView {
   city: WorldCityId
   cityName: string
@@ -657,6 +669,8 @@ export interface EstateView {
   lodging: { fee: number; blocked: string | null }
   /** The ride home on credit (src/game/relief.ts): what is owed, and the ride on offer to a visitor who cannot pay the cheapest fare to the main home. */
   ride: RideCreditView
+  /** The location-confirmed badge. Null while the life has no home anywhere. */
+  residence: ResidenceView | null
 }
 
 export interface RideCreditView {
@@ -1139,7 +1153,7 @@ export const VIEW_FIELD_KEYS = {
   property: ['car', 'cars', 'house', 'houses', 'nextHouse', 'rent'],
   estate: [
     'arrears', 'away', 'change', 'cheapest', 'city', 'cityName', 'home', 'lga', 'lgaConfirmed', 'lgaVia', 'lgas', 'links', 'living', 'lodging', 'makeMain', 'packed',
-    'placed', 'plot', 'ride', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
+    'placed', 'plot', 'residence', 'ride', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
   ],
   home: ['ambience', 'atHome', 'door', 'grid', 'groceries', 'house', 'kitchen', 'placed', 'prices', 'quality', 'refundRate', 'stocked', 'stored', 'window'],
   onboarding: [

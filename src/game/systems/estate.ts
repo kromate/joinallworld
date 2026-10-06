@@ -99,11 +99,12 @@ import { isCityId } from '../cities/registry.ts';
 import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, LODGING, OWNING, SECOND_HOME, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.ts';
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
+import { CONFIRMATION_DAYS, mainHomeKey, mainHomeUnit, standingConfirmation } from '../residence.ts';
 import type { RelocateBlockCode } from '../../types/actions.ts';
 import type { CityLinkFrom } from '../../types/content.ts';
 import type { AwayResidence, EstateState, HouseId, HouseStyleField, HouseUpgrade, IntercityAction, LgaId, LgaVia, LifeContext, LifeState, PlotAddress, Residence, WorldCityId } from '../../types/life.ts';
 import type { ActiveKindHandler, NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
-import type { EstateView, HouseStyleCard, RideCreditView } from '../../types/view.ts';
+import type { EstateView, HouseStyleCard, ResidenceView, RideCreditView } from '../../types/view.ts';
 
 const DAY_MS = 86400000;
 const SETTLE_FIRST = 'Settle in first (tap the "Settle in" goal): then you can travel between cities.';
@@ -193,6 +194,11 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   }
   state.estate = { city, ...home, away, nudged: saved.nudged === true, home: null, homeAt: finite(saved.homeAt) && saved.homeAt >= 0 ? Math.min(saved.homeAt, now) : null };
   state.estate.home = mainHome(state.estate, saved.home);
+  const unit = mainHomeUnit(state.estate), kept = isRecord(saved.confirmed) ? { lga: saved.confirmed.lga, at: saved.confirmed.at } : null;
+  if (unit && kept && kept.lga === unit.lga && finite(kept.at)) {
+    const confirmed = { lga: unit.lga, at: Math.min(Math.max(0, kept.at), now) };
+    if (standingConfirmation({ ...state.estate, confirmed }, now)) state.estate.confirmed = confirmed;
+  }
 }
 
 /**
@@ -252,9 +258,10 @@ function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeCon
   const levy = e.lgaConfirmed ? moveLevy(e.city, e.lga, unit.id, e.tier) : 0;
   if (levy > 0 && !canAfford(state, levy)) return fail(state, 'insufficient_funds', `Land is dearer in ${unit.name}: taking your ${HOUSE_TIERS[e.tier].label} there costs ${naira(levy)}; you have ${naira(state.cash)}.`);
   if (levy > 0) debit(state, levy, `Moving your ${HOUSE_TIERS[e.tier].label} to ${unit.name} (dearer land)`, ctx);
-  const first = !e.lga;
+  const first = !e.lga, was = mainHomeKey(e);
   Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via });
   e.home ??= e.city; // a life with no home anywhere: this, its first, is the main one
+  if (mainHomeKey(e) !== was) delete e.confirmed; // a new local government at the main home: the old confirmation is for another place
   state.message = first ? `You now belong to ${unit.name}. Your house is being set on a plot there.` : `You now belong to ${unit.name}. Your house is being moved to a plot there.`;
   emit(state, 'lga.changed', { lga: unit.id }, ctx);
   return ok(state, 'lga_set');
@@ -284,6 +291,7 @@ function settleHere(state: LifeState, unit: { id: LgaId; name: string }, via: Lg
     if (why) return fail(state, why.code, why.reason);
     // The one free starter house moves: it is given up where it stood and stands here, with the look it had.
     const old = from ? e.away[from] : undefined;
+    delete e.confirmed; // the main home moves: a confirmation belongs to the old one
     if (from) delete e.away[from];
     Object.assign(e, { lga: unit.id, lgaAt: now, lgaConfirmed: true, lgaVia: via, plot: null, old: null, tier: 'starter', style: cleanStyle(old?.style ?? e.style), upgrade: null, living: 'own', ground: { week: null, arrears: 0 }, home: e.city, homeAt: now });
     state.message = `${here} is your main home now: ${unit.name} is your ${cityUnit(e.city)} and your starter house is being set on a plot there. Your starter house${old?.living === 'rent' ? ' and rented place' : ''} in ${fromName} ${old?.living === 'rent' ? 'were' : 'was'} given up.`;
@@ -390,8 +398,30 @@ function makeHome(state: LifeState, _payload: Record<string, unknown>, ctx: Life
   const wait = homeCooldown(e, nowOf(state, ctx));
   if (wait) return fail(state, 'home_cooldown', wait);
   e.home = e.city; e.homeAt = nowOf(state, ctx);
+  delete e.confirmed;
   state.message = `${name} is your main home now. The homes you keep elsewhere stay yours.`;
   return ok(state, 'home_set');
+}
+
+/**
+ * 'estate.confirm-residence' { lga, ok: true }: the player's device found itself in the main home's local government.
+ * Only the id and the fact arrive; the game records `{ lga, at: server time }`. It proves nothing the device cannot fake (docs/LOCATION.md).
+ */
+function confirmResidence(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  const home = mainHomeUnit(state.estate);
+  if (!home) return fail(state, 'no_home', 'Choose a home first: the badge is for the local government you live in.');
+  if (payload?.lga !== home.lga) return fail(state, 'not_main_home', `The badge is for the local government of your main home, ${lgaName(home.city, home.lga)}.`);
+  if (payload?.ok !== true) return fail(state, 'not_confirmed', 'Nothing was confirmed.');
+  state.estate.confirmed = { lga: home.lga, at: nowOf(state, ctx) };
+  state.message = `Your device says you are in ${lgaName(home.city, home.lga)}. Your badge is on for ${CONFIRMATION_DAYS} days; you can switch it off any time.`;
+  return ok(state, 'residence_confirmed');
+}
+/** 'estate.unconfirm-residence': the badge goes and the stored confirmation is deleted; a new check is needed to bring it back. */
+function unconfirmResidence(state: LifeState) {
+  if (!state.estate.confirmed) return ok(state, 'unchanged');
+  delete state.estate.confirmed;
+  state.message = 'Your location-confirmed badge is off.';
+  return ok(state, 'residence_removed');
 }
 
 /**
@@ -557,7 +587,17 @@ function view(state: LifeState, ctx: LifeContext): EstateView {
     makeMain: hasPlace(state) && e.home !== null && e.home !== e.city ? { blocked: homeCooldown(e, now) } : null,
     lodging: { fee: LODGING.fee, blocked: lodgeBlock(state)?.reason ?? null },
     ride: rideView(state, ctx),
+    residence: residenceView(state, now),
   };
+}
+
+/** The badge as its owner sees it: where the main home is, and whether a confirmation stands. Null while there is no home. */
+function residenceView(state: LifeState, now: number): ResidenceView | null {
+  const e = state.estate, home = mainHomeUnit(e);
+  if (!home) return null;
+  const standing = standingConfirmation(e, now);
+  return { city: home.city, cityName: cityRules(home.city)?.name ?? home.city, unit: cityRules(home.city)?.unit ?? 'district', lga: home.lga, lgaName: lgaOf(home.city, home.lga)?.name ?? home.lga,
+    confirmed: standing ? { at: standing.at, until: standing.at + CONFIRMATION_DAYS * DAY_MS } : null, days: CONFIRMATION_DAYS };
 }
 
 function rideView(state: LifeState, ctx: LifeContext): RideCreditView {
@@ -580,6 +620,8 @@ const play = PLAYS ? {
     'estate.relocate': relocate,
     'estate.lodge': lodge,
     'estate.make-home': makeHome,
+    'estate.confirm-residence': confirmResidence,
+    'estate.unconfirm-residence': unconfirmResidence,
   },
   advance,
   on: {

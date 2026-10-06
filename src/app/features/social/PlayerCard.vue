@@ -16,6 +16,7 @@ import { NUDGE_SENTENCE, nudgeControl } from '../growth/comebackModel.ts'
 import { useGrowth } from '../growth/useGrowth.ts'
 import ClosenessMeter from './ClosenessMeter.vue'
 import FounderTag from './FounderTag.vue'
+import ResidentBadge from '../locate/ResidentBadge.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
@@ -136,7 +137,7 @@ async function sendReport(): Promise<void> {
   </template>
   <p v-else-if="card?.self">This is you, {{ card.name }}.</p>
   <div v-else-if="card" :data-c-player="id">
-    <div class="social-head people-who"><PlayerAvatar :name="card.name" :seed="id" :status="card.status" /><h3>{{ card.name }}<FounderTag v-if="card.founder" /></h3></div>
+    <div class="social-head people-who"><PlayerAvatar :name="card.name" :seed="id" :status="card.status" /><h3>{{ card.name }}<FounderTag v-if="card.founder" /><ResidentBadge :id="id" /></h3></div>
     <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now, place) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>

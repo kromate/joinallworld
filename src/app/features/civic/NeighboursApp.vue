@@ -3,6 +3,8 @@
 // Counts and the online flag come from the server (GET /api/civic/neighbours). "Say hi" opens that
 // player's card (the social 'person' panel): chat, add friend, knock at their house.
 import { computed } from 'vue'
+import ResidentBadge from '../locate/ResidentBadge.vue'
+import { useConfirmedOnly } from '../locate/confirmedFilter.ts'
 import { useApp } from '../../state/app.ts'
 import type { NeighboursResponse } from '../../../types/civic.ts'
 import HeroCard from '../../ui/HeroCard.vue'
@@ -24,6 +26,7 @@ const view = game.view
 const { item, reload } = useLoaded<NeighboursResponse>({ key: () => hoodKey(view.value.cityId), path: () => hoodPath(view.value.cityId), maxAge: 30000, live: true })
 const data = computed(() => item.value.data)
 const groups = computed(() => data.value?.districts.filter((group) => group.count > 0) ?? [])
+const confirmed = useConfirmedOnly(() => groups.value.flatMap((group) => group.homes.map((home) => home.id)))
 const unset = computed(() => data.value?.districts.some((group) => group.id === 'unknown') ?? false)
 
 async function toggle(): Promise<void> {
@@ -42,13 +45,14 @@ function hi(player: { id: string; name: string }): void {
     <template v-if="data">
       <HeroCard :label="`${view.city.name} directory`" :figure="`${count(data.total)} home${data.total === 1 ? '' : 's'}`">{{ count(data.online) }} online now{{ data.hidden ? ' · your home is hidden' : '' }}</HeroCard>
       <CivicStale :item="item" />
+      <label v-if="groups.length" class="civic-note"><input v-model="confirmed.on.value" type="checkbox" data-confirmed-filter> Location-confirmed only</label>
       <template v-if="groups.length">
         <template v-for="group in groups" :key="group.id">
           <SectionTitle :note="`${count(group.count)} home${group.count === 1 ? '' : 's'}${group.count ? ` · ${count(group.online)} online` : ''}`">{{ group.label }}</SectionTitle>
           <ul v-if="group.homes.length" class="ui-rows">
-            <li v-for="home in group.homes" :key="home.id" class="ui-row" :class="{ 'is-you': home.you }">
+            <li v-for="home in group.homes.filter((entry) => confirmed.keep(entry.id))" :key="home.id" class="ui-row" :class="{ 'is-you': home.you }">
               <CivicAvatar :name="home.name" :seed="home.id"><i class="social-dot" :class="{ 'is-on': home.online }" /></CivicAvatar>
-              <span class="ui-row-body"><b>{{ home.name }}{{ home.you ? ' (you)' : '' }}</b><small>{{ home.online ? 'Online now' : 'Not online' }}</small></span>
+              <span class="ui-row-body"><b>{{ home.name }}{{ home.you ? ' (you)' : '' }}</b><ResidentBadge :id="home.id" /><small>{{ home.online ? 'Online now' : 'Not online' }}</small></span>
               <span v-if="!home.you" class="ui-row-end"><BaseButton small :aria-label="`Say hi to ${home.name}`" @click="hi(home)">Say hi</BaseButton></span>
             </li>
           </ul>

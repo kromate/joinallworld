@@ -221,6 +221,10 @@ export interface ActionMap extends CampusActionMap {
   'estate.lodge': { payload: NoPayload; ok: 'rested'; fail: 'settle_required' | 'has_home' | 'busy' | 'rested' | 'insufficient_funds' }
   /** Name the city the life is in its primary home. It must hold a house here. */
   'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'no_place' | 'home_cooldown' | 'ride_debt' }
+  /** The device matched the main home's local government (the position never leaves it): record `{ lga, at }`. Refused unless `lga` is the main home's. */
+  'estate.confirm-residence': { payload: { lga: LgaId; ok: true }; ok: 'residence_confirmed'; fail: 'no_home' | 'not_main_home' | 'not_confirmed' }
+  /** Switch the location-confirmed badge off: the stored confirmation is deleted. */
+  'estate.unconfirm-residence': { payload: NoPayload; ok: 'residence_removed' | 'unchanged'; fail: never }
 
   // -- home --
   /** At home only; charged when placed. */
@@ -436,6 +440,7 @@ export const ACTION_TYPES = [
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',
+  'estate.confirm-residence', 'estate.unconfirm-residence',
   'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
   'home.grocery-buy', 'home.kitchen-unpack',
   'onboarding.quick-start', 'onboarding.arrive',

@@ -527,7 +527,7 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
       return sizes;
     },
     layout: {
-      status: async () => { await queue; return { requested: layout, entries: layered ? layers.collections().sort() : [], errors: {} }; },
+      status: async () => { await queue; return { requested: layout, collections: Object.fromEntries(Object.keys(KEYED_SPECS).map((name) => [name, { mode: layered ? 'entries' : 'legacy' }])) }; },
       logical: async () => {
         await queue;
         const out: Record<string, unknown> = {};

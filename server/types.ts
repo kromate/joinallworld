@@ -681,9 +681,20 @@ export interface TransactOptions<T> {
 /** What the operator and the tests may ask of a store that keeps collections per entry (server/keyed.ts, docs/STORAGE.md). */
 export interface StoreLayoutTools {
   /** How the store is laid out now, and what it has moved. */
-  status(): Promise<{ requested: string; entries: string[]; errors: Record<string, string> }>
+  status(): Promise<Record<string, unknown>>
   /** Every collection kept per entry, as a plain value, whichever way it is stored. Reads every entry. */
   logical(): Promise<Record<string, unknown>>
+  /** The Worker's store only (Node's file is the same in every layout): */
+  /** Make the entry rows of these collections (all, when none is named) from their legacy values and read them back. */
+  migrate?(names?: string[]): Promise<Record<string, { entries: number; rows: number; ms: number }>>
+  /** Entry rows against the legacy value, per collection. */
+  compare?(): Promise<Record<string, unknown>>
+  /** Move to another layout; refused (409 with a code) when it would lose or mismatch anything. */
+  setLayout?(layout: 'legacy' | 'shadow' | 'entries', force?: boolean): Promise<Record<string, unknown>>
+  /** After the switch to `entries`: delete the legacy rows (the safety copy) or go back to them. */
+  safety?(action: 'drop' | 'restore', force?: boolean): Promise<Record<string, unknown>>
+  /** A fingerprint of each collection's whole text, to compare two stores. */
+  hashes?(): Promise<Record<string, string | null>>
 }
 /** Rejections carry `{ status: 503, code: 'storage_unavailable', reason }` when a write failed; the change was undone. */
 export interface Store {

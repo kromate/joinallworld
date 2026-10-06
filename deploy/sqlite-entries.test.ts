@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createSqliteStore } from './sqlite-store.ts';
 import { testStorage } from './test-storage.ts';
-import type { Db, TransactOptions } from '../server/types.ts';
+import type { Db, StoreLayoutTools, TransactOptions } from '../server/types.ts';
 
 interface Player { name: string; seen: number; friends: Record<string, number>; convs: Record<string, number>; blocked: Record<string, number> }
 interface Social { players: Record<string, Player>; convs: Record<string, { id: string; messages: { seq: number; text: string }[] }>; houses: Record<string, unknown>; pending: Record<string, { at: number }[]>; reports: unknown[]; seq: number }
@@ -11,7 +11,7 @@ interface Loose {
   transact<T>(operation: (db: Draft) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
   read<T>(operation: (db: Draft) => T | Promise<T>): Promise<T>
   flush(): Promise<void>
-  layout: { status(): Promise<{ requested: string; entries: string[]; errors: Record<string, string> }>; logical(): Promise<Record<string, unknown>> }
+  layout: Required<StoreLayoutTools>
 }
 type Draft = Db & { social?: Social; [name: string]: unknown };
 const open = (storage: ReturnType<typeof testStorage>['storage'], options: Parameters<typeof createSqliteStore>[1] = {}): Loose => createSqliteStore(storage, options) as unknown as Loose;
@@ -54,7 +54,7 @@ test('entries layout: an existing legacy collection is moved when the layout ask
   const before = await legacy.layout.logical();
   const store = open(t.storage, { layout: 'entries' });
   assert.deepEqual(await store.read((db) => (db['social'] as Social).players['p3']?.name), 'Player 3 \u{1F600}');
-  assert.deepEqual((await store.layout.status()).entries, ['business', 'civic', 'growth', 'social']);
+  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business']);
   assert.deepEqual(await store.layout.logical(), before);
   assert.equal((t.db.prepare("SELECT value FROM collections WHERE name='social'").get() as { value: string }).value, stored, 'the legacy value is untouched');
   assert.equal(count(t, "SELECT COUNT(*) AS n FROM entries WHERE coll='social'"), 60);

@@ -230,6 +230,30 @@ test('a life that never had a character starts the creator on the look, with und
   await resetCreator()
 })
 
+test('the home city model makes cold Sagamu rules reactive after switching from Lagos', async () => {
+  const registry = await load<typeof import('../../../game/cities/registry.ts')>('/src/game/cities/registry.ts')
+  assert.equal(registry.cachedCityContent('sagamu'), null, 'only the starting city content is loaded')
+  assert.equal(registry.cityRules('sagamu'), null, 'Sagamu rules start cold')
+  const { areaForCity, useHomeCity } = await load<typeof import('./homeCityModel.ts')>('/src/app/features/start/homeCityModel.ts')
+  const ready: boolean[] = []
+  const loaded: string[] = []
+  const city = useHomeCity('lagos', (value) => { ready.push(value) }, (id) => { loaded.push(id) })
+  try {
+    assert.equal(city.units.value.length, 20)
+    const sagamuArea = { lga: 'sagamu', via: 'manual' as const }
+    assert.equal(areaForCity(sagamuArea, city.units.value), undefined, 'a Sagamu draft cannot make Lagos ready')
+    const pending = city.select('sagamu')
+    assert.equal(city.cityId.value, 'sagamu')
+    assert.equal(city.units.value.length, 0, 'cold rules are not shown while their load is pending')
+    assert.equal(await pending, true)
+    assert.equal(city.readyCityId.value, 'sagamu')
+    assert.deepEqual(city.units.value.map((unit) => unit.id), ['sagamu', 'ikenne', 'remo-north'])
+    assert.equal(areaForCity(sagamuArea, city.units.value), sagamuArea, 'the same draft remains valid once Sagamu is ready')
+    assert.deepEqual(ready, [false, true])
+    assert.deepEqual(loaded, ['sagamu'])
+  } finally { city.cancel() }
+})
+
 test('the home step of a life not yet started offers every open state, and the chosen city brings its own local governments', async () => {
   await resetCreator()
   const { cr } = await load<{ cr: { step: string; city: string | null } }>('/src/app/features/start/creatorState.ts')

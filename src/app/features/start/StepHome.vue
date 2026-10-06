@@ -8,9 +8,8 @@
 // (world/lgaCardModel.ts findLga): the position is never stored, logged or sent, only the local
 // government the player confirms.
 import '../../../ui/panels/world.css'
-import { computed, nextTick, ref, watch } from 'vue'
-import { DEFAULT_STYLE, lgasOf } from '../../../game/content/world.ts'
-import { cachedCityContent, loadCityContent } from '../../../game/cities/registry.ts'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { DEFAULT_STYLE } from '../../../game/content/world.ts'
 import { localUnitDescription } from '../../../game/cities/runtime.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useApp } from '../../state/app.ts'
@@ -19,11 +18,13 @@ import { findLga, lgaCardUi as ui } from '../world/lgaCardModel.ts'
 import type { AreaChoice } from './onboardingModel.ts'
 import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
 import { cr } from './creatorState.ts'
+import { areaForCity, useHomeCity } from './homeCityModel.ts'
 import type { LgaCard } from '../../../types/view.ts'
 
 // `choosable`: a life that does not exist yet may start in any open city, so the city chips choose where it will be born
 // (the choice is kept in cr.city and rides with Play). A life that already exists settles where it is.
 const props = defineProps<{ choosable?: boolean }>()
+const emit = defineEmits<{ ready: [ready: boolean] }>()
 const area = defineModel<AreaChoice | undefined>({ required: true })
 const { game } = useApp()
 const estate = computed(() => game.view.value.estate)
@@ -31,8 +32,8 @@ const estate = computed(() => game.view.value.estate)
 const start = firstOpen()
 const first = (props.choosable ? cr.city : null) ?? (stateOfCity(estate.value.city) ? estate.value.city : start?.city.id ?? '')
 const stateId = ref(stateOfCity(first)?.id ?? start?.state.id ?? '')
-const cityId = ref(first)
-const loading = ref(false)
+const city = useHomeCity(first, (ready) => emit('ready', ready), (id) => { cr.city = id; validateArea() })
+const { cityId, readyCityId, loading, error: loadError } = city
 const country = PLACES[0]
 const states = computed(() => country?.states ?? [])
 const openStates = computed(() => states.value.filter(stateOpen))
@@ -40,18 +41,17 @@ const stateNow = computed(() => states.value.find((item) => item.id === stateId.
 const openCities = computed(() => (stateNow.value?.cities ?? []).filter((item) => cityOpen(item.id)))
 const soon = computed(() => [...states.value.flatMap((item) => item.cities.filter((city) => !cityOpen(city.id)))])
 const cityNow = computed(() => stateNow.value?.cities.find((item) => item.id === cityId.value) ?? null)
-const here = computed(() => cityNow.value !== null && (props.choosable ? !loading.value : cityNow.value.id === estate.value.city))
-const unit = computed(() => unitOf(cityId.value))
+const here = computed(() => cityNow.value !== null && (props.choosable ? readyCityId.value === cityId.value && !loading.value && !loadError.value : cityNow.value.id === estate.value.city))
+const unit = computed(() => readyCityId.value === cityId.value ? unitOf(cityId.value) : 'area')
 
 /** The city whose local governments are offered: the life's own, or (for a life not yet started) the one chosen here. */
 async function pickCity(id: string): Promise<void> {
   if (id === cityId.value && !props.choosable) return
-  const before = cityId.value
+  const changed = id !== cityId.value
   cityId.value = id
   if (!props.choosable) return
-  loading.value = true
-  try { await loadCityContent(id); cr.city = id } catch { cityId.value = before } finally { loading.value = false }
-  if (before !== cityId.value) { area.value = undefined; Object.assign(ui, { found: null, note: '' }) }
+  if (changed) { area.value = undefined; Object.assign(ui, { found: null, note: '' }) }
+  await city.select(id)
 }
 function pickState(id: string): void {
   stateId.value = id
@@ -59,7 +59,11 @@ function pickState(id: string): void {
   if (next) void pickCity(next.id)
 }
 const cityLabel = computed(() => cityNow.value?.name ?? estate.value.cityName)
-const lgas = computed<readonly LgaCard[]>(() => cityId.value === estate.value.city ? estate.value.lgas : lgasOf(cityId.value).map((item) => ({ id: item.id, name: item.name, line: cachedCityContent(cityId.value) ? localUnitDescription(cityId.value, item.id) : '', land: item.land, levy: 0 })))
+const lgas = computed<readonly LgaCard[]>(() => cityId.value === estate.value.city ? estate.value.lgas : city.units.value.map((item) => ({ id: item.id, name: item.name, line: localUnitDescription(cityId.value, item.id), land: item.land, levy: 0 })))
+function validateArea(): void {
+  const valid = areaForCity(area.value, lgas.value)
+  if (valid !== area.value) area.value = valid
+}
 
 const query = ref('')
 const groups = computed(() => groupLgas(cityId.value, lgas.value, query.value))
@@ -89,6 +93,11 @@ function surprise(): void {
   const item = all[Math.floor(Math.random() * all.length)]
   if (item) choose(item.id)
 }
+onMounted(() => {
+  if (!props.choosable || readyCityId.value === cityId.value) { validateArea(); emit('ready', true) }
+  else void city.select(cityId.value)
+})
+onBeforeUnmount(city.cancel)
 </script>
 
 <template>
@@ -107,6 +116,12 @@ function surprise(): void {
       </div>
       <p v-if="soon.length" class="cr-soon">More places are opening: <span v-for="item in soon" :key="item.id">{{ item.name }}</span></p>
     </nav>
+
+    <p v-if="loading" class="cr-note" role="status">Loading {{ cityLabel }}…</p>
+    <div v-else-if="loadError" class="cr-load-error" role="alert">
+      <p class="cr-note is-warn">{{ loadError }}</p>
+      <button type="button" class="cr-btn" data-key="area:retry" @click="pickCity(cityId)">Try again</button>
+    </div>
 
     <div class="cr-house" :class="{ 'is-empty': !picked }" data-cr-house>
       <HouseArt :look="DEFAULT_STYLE" tier="starter" />

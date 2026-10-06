@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import type { FixtureOptions } from './test-fixture.ts';
 import type { TestContext } from 'node:test';
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
@@ -70,7 +70,7 @@ async function world(t: TestContext, options: FixtureOptions = {}) {
     assert.equal((await me(who)).status, 200);
     return who;
   }
-  const social = (): Promise<SocialCollection> => f.server.store.read((db) => structuredClone(must(db.social, 'db.social')));
+  const social = (): Promise<SocialCollection> => f.server.store.read((db) => snapshot(must(db.social, 'db.social')));
   const edit = (fn: (db: Db) => void): Promise<void> => f.server.store.transact((db) => { fn(db); });
   return { f, get, post, signIn, playAs, me, player, founder, social, edit };
 }

@@ -2,8 +2,8 @@
  * The committed state of the layered collections held in memory: what the Node host keeps (server/store.ts), and what the
  * layer's tests read from. A root text per collection and, per keyed map, the entry texts in the order they were added.
  */
-import { assembleText, splitText } from './keyed.ts';
-import type { CollectionWrite, LayerSource } from './keyed.ts';
+import { assembleText, matches, projectionOf, specOf, splitText } from './keyed.ts';
+import type { CollectionWrite, LayerSource, ScanHit, ScanQuery } from './keyed.ts';
 
 export class MemoryLayers implements LayerSource {
   private readonly roots = new Map<string, string>();
@@ -11,6 +11,13 @@ export class MemoryLayers implements LayerSource {
   root(coll: string): { text: string; stored: string } | undefined { const text = this.roots.get(coll); return text === undefined ? undefined : { text, stored: text }; }
   entry(coll: string, id: string, key: string): { text: string; stored: string } | undefined { const text = this.data.get(coll)?.get(id)?.get(key); return text === undefined ? undefined : { text, stored: text }; }
   keys(coll: string, id: string): string[] { return [...this.data.get(coll)?.get(id)?.keys() ?? []]; }
+  ord(coll: string, id: string, key: string): number | undefined { let at = 0; for (const other of this.data.get(coll)?.get(id)?.keys() ?? []) { at += 1; if (other === key) return at; } return undefined; }
+  scan(coll: string, id: string, query: ScanQuery): ScanHit[] {
+    const name = specOf(coll, id)?.project, hits: ScanHit[] = [];
+    let ord = 0;
+    for (const [key, text] of this.data.get(coll)?.get(id) ?? []) { ord += 1; const p = projectionOf(name, JSON.parse(text)); if (matches(query, key, p)) hits.push({ key, ord, n: p?.n, ...(p?.j !== undefined ? { j: p.j } : {}) }); }
+    return hits;
+  }
   collections(): string[] { return [...this.roots.keys()]; }
   /** Take a collection's stored text in (start-up, or a collection that was just made). */
   ingest(coll: string, text: string): void {

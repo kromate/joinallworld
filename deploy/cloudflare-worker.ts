@@ -42,6 +42,7 @@ import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
 import { createSqliteStore } from './sqlite-store.ts';
+import { parseLayout } from '../server/keyed.ts';
 import { createSqliteImages } from './sqlite-images.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
@@ -231,6 +232,8 @@ export interface WorkerEnv {
    * Unset, the default: the beat is a timer, lazy changes are held, and the object stays in memory while anyone is connected.
    */
   SLEEP_BETWEEN_BEATS?: string
+  /** How the big collections are stored: `legacy` (default), `shadow` or `entries` (docs/STORAGE.md). */
+  STORE_LAYOUT?: string
   /** Replaces the built-in founder hash; empty: no founder (server/host-context.ts founderEmailHash). */
   FOUNDER_EMAIL_SHA256?: string
   [name: string]: unknown
@@ -283,7 +286,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     // Every table is written through the meter (write-meter.ts): the same storage, with its rows counted.
     const storage: SqliteStorage = { sql: this.sql, transactionSync: fn => ctx.storage.transactionSync(fn), sync: () => ctx.storage.sync() };
     this.sleeps = env.SLEEP_BETWEEN_BEATS === '1';
-    this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS });
+    this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS, layout: parseLayout(env.STORE_LAYOUT) ?? 'legacy', log });
     this.images = createSqliteImages(storage);
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
     this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
@@ -535,6 +538,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const sizes: Record<string, number> = {};
     for (const row of this.sql.exec<{ name: string; size: number }>('SELECT name, LENGTH(value) AS size FROM collections').toArray()) sizes[row.name] = Number(row.size);
     for (const row of this.sql.exec<{ name: string; size: number }>('SELECT name, SUM(LENGTH(value)) AS size FROM collection_parts GROUP BY name').toArray()) sizes[row.name] = Number(row.size);
+    // Collections kept per entry (docs/STORAGE.md): the rows of `entries` by collection. A root is a collection of its own, named `root:<name>`.
+    for (const row of this.sql.exec<{ coll: string; size: number }>('SELECT coll, SUM(LENGTH(value)) AS size FROM entries GROUP BY coll').toArray()) sizes[`entries:${row.coll}`] = Number(row.size);
     return sizes;
   }
   /** To one socket, if it is open: the frames the shared modules send, plus the Worker's own application heartbeat. */

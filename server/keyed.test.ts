@@ -2,7 +2,7 @@
 // that applies the same mutations to a plain document and to the layer and compares them after every commit.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Layer, assembleText, markerIds, plainOrder, splitText } from './keyed.ts';
+import { Layer, assembleText, forEachValue, markerIds, plainOrder, scanKeys, splitText } from './keyed.ts';
 import { MemoryLayers } from './keyed-memory.ts';
 
 type Json = Record<string, unknown>;
@@ -162,3 +162,27 @@ for (const seed of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
     }
   });
 }
+
+test('a scan answers by the projection of each entry and agrees between a lazy map and a plain object', () => {
+  const players: Record<string, unknown> = {
+    a: { name: 'Ada Obi', seen: 10, blocked: { z: 1 }, friends: {} },
+    b: { name: 'Bola', seen: 20, blocked: {}, friends: {} },
+    c: { name: 'Chidi ada', seen: 30, blocked: {}, friends: {}, invite: { by: 'a', at: 1 } },
+    d: { name: 'Dayo', blocked: {}, friends: {} },
+  };
+  const layers = new MemoryLayers();
+  layers.ingest('social', JSON.stringify({ players, convs: {}, houses: {}, pending: {}, seq: 0 }));
+  const lazy = (open(layers).get('social') as { players: Record<string, unknown> }).players, plain = players;
+  const queries: Parameters<typeof scanKeys>[2][] = [{ tContains: 'ada' }, { tContains: 'ada', orKey: 'b' }, { nBelow: 25 }, { nBelow: 25, missing: true }, { nAtLeast: 20 }, { hasJ: true }, { jIncludes: '"i":"a"' }, {}];
+  for (const query of queries) assert.deepEqual(scanKeys(lazy, 'socialPlayer', query).map((hit) => hit.key), scanKeys(plain, 'socialPlayer', query).map((hit) => hit.key), JSON.stringify(query));
+  assert.deepEqual(scanKeys(lazy, 'socialPlayer', { hasJ: true }).map((hit) => [hit.key, hit.j]), [['a', '{"b":["z"]}'], ['c', '{"i":"a"}']]);
+  // Entries this transaction changed are judged by their present value, and keep their place.
+  (lazy['b'] as { name: string }).name = 'Ada B';
+  delete lazy['a'];
+  lazy['e'] = { name: 'Ada E', seen: 1, blocked: {}, friends: {} };
+  assert.deepEqual(scanKeys(lazy, 'socialPlayer', { tContains: 'ada' }).map((hit) => hit.key), ['b', 'c', 'e']);
+  const seen: string[] = [];
+  forEachValue(lazy, (value, key) => { seen.push(key); void value; });
+  assert.deepEqual(seen, ['b', 'c', 'd', 'e']);
+  assert.throws(() => scanKeys(lazy, 'growthPlayer', {}), /no projection/);
+});

@@ -3,7 +3,7 @@
 // Fixture: see server/routes/index.ts ("HOW TO TEST"). No e-mail leaves the test: the mailer's endpoint is a fake.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import type { FixtureOptions } from './test-fixture.ts';
 import { ENDPOINT } from './growth/email/zeptomail.ts';
 import { RECONNECT_GRACE_MS } from './social/presence.ts';
@@ -74,8 +74,8 @@ async function harness(t: TestContext, options: FixtureOptions = {}) {
   const ping = (from: Who, to: Who, clientId = f.id()): Promise<Reply> => post('/api/social/ping', { to: to.id, clientId }, from);
   const join = (who: Who, from: Who, clientId = f.id()): Promise<Reply> => post('/api/social/ping/join', { from: from.id, clientId }, who);
   const life = async (who: Pick<Who, 'cookie'>, city = 'lagos'): Promise<LifeState> => (await get(`/api/life?city=${city}`, who)).state;
-  const social = (): Promise<SocialCollection> => f.server.store.read((db) => structuredClone(must(db.social, 'db.social')));
-  const growth = (): Promise<GrowthCollection> => f.server.store.read((db) => structuredClone(must(db.growth, 'db.growth')));
+  const social = (): Promise<SocialCollection> => f.server.store.read((db) => snapshot(must(db.social, 'db.social')));
+  const growth = (): Promise<GrowthCollection> => f.server.store.read((db) => snapshot(must(db.growth, 'db.growth')));
   const edit = (fn: (db: Db) => void): Promise<void> => f.server.store.transact((db) => { fn(db); });
   /** Move the clock to a Lagos day (0 = Thursday 1 January 1970) and hour. Never backwards. */
   const go = (day: number, hour = 12): void => { const target = Date.UTC(1970, 0, 1 + day, hour - 1); assert.ok(target >= f.now(), 'time only goes forward'); f.advance(target - f.now()); };

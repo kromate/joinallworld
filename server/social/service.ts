@@ -68,6 +68,7 @@ import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { clip, glyphs } from './clip.ts';
+import { forEachValue, scanKeys } from '../keyed.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
@@ -147,7 +148,8 @@ function buildService(ctx: RouteContext) {
     ctx.checks.blocked = blocked;
     ctx.checks.anyBlocks = () => blockIndex.size > 0;
   }
-  ctx.startup?.push(ctx.store.read((db) => Object.entries(db.social?.players ?? {}).map(([id, player]): [string, string[]] => [id, Object.keys(player?.blocked ?? {})]))
+  // Who blocked whom, read from the players' index (server/keyed.ts: a player's blocked ids are kept beside the record), not from every record.
+  ctx.startup?.push(ctx.store.read((db): [string, string[]][] => (db.social?.players ? scanKeys(db.social.players, 'socialPlayer', { hasJ: true }).flatMap((hit): [string, string[]][] => { const blocked = hit.j ? (JSON.parse(hit.j) as { b?: string[] }).b : undefined; return blocked?.length ? [[hit.key, blocked]] : []; }) : []))
     .then((rows) => { for (const [id, list] of rows) for (const other of list) applyBlockChange(['block', id, other]); }));
   /** null, or the refusal for a muted sender. */
   const mutedRefusal = (id: string): Refused | null => { const mute = ctx.checks?.muted?.(id); return mute ? no(mute.code, mute.reason) : null; };
@@ -306,8 +308,12 @@ function buildService(ctx: RouteContext) {
    * founder's record does not list them); `after` is the `next` of the page before.
    */
   function founderFriends(s: SocialCollection, founder: string, after: string | null): { ids: [string, number][]; total: number; next: string | null } {
-    const all: [string, number][] = [];
-    for (const other in s.players) if (autoFriend(s.players, founder, other)) all.push([other, s.players[other]!.friends[founder]!]);
+    const all: [string, number][] = [], mine = s.players[founder];
+    // The index says who holds the automatic friendship (their record names this founder and lists them); the founder's own record says it was not answered.
+    if (mine) for (const hit of scanKeys(s.players, 'socialPlayer', { jIncludes: `"f":[${JSON.stringify(founder)},` })) {
+      const link = hit.j ? (JSON.parse(hit.j) as { f?: [string, number] }).f : undefined;
+      if (link && link[0] === founder && mine.friends[hit.key] === undefined) all.push([hit.key, link[1]]);
+    }
     all.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
     const [sinceText = '', afterId = ''] = (after ?? '').split(':'), since = Number(sinceText);
     const start = after === null ? 0 : all.findIndex(([other, at]) => at < since || (at === since && other > afterId));
@@ -442,7 +448,10 @@ function buildService(ctx: RouteContext) {
   function sweep(s: SocialCollection, t: number): void {
     if (t - (s.sweptAt || 0) < LIMITS.sweepMs) return;
     s.sweptAt = t;
-    for (const [to, queue] of Object.entries(s.pending)) {
+    // Only the queues that may hold a stale effect (or hold none) are looked at: the index keeps each queue's oldest effect.
+    for (const { key: to } of scanKeys(s.pending, 'socialPending', { nBelow: t - LIMITS.escrowMs, missing: true })) {
+      const queue = s.pending[to];
+      if (!queue) continue;
       const keep: PendingEffect[] = [];
       for (const effect of queue) {
         const stale = t - effect.at > LIMITS.escrowMs;
@@ -456,7 +465,10 @@ function buildService(ctx: RouteContext) {
       if (keep.length) s.pending[to] = keep; else delete s.pending[to];
     }
     const founder = founderId(s);
-    for (const [id, p] of Object.entries(s.players)) {
+    // The players who may have gone idle, by the index of when each was last seen; each is judged again by its own record below.
+    for (const { key: id } of scanKeys(s.players, 'socialPlayer', { nBelow: t - LIMITS.playerIdleMs, missing: true })) {
+      const p = s.players[id];
+      if (!p) continue;
       // The founder is kept however long they are away: every player's first friendship points at their record.
       if (t - p.seen <= LIMITS.playerIdleMs || presence.status(id).state === 'online' || id === founder) continue;
       for (const friend of Object.keys(p.friends)) delete s.players[friend]?.friends[id];
@@ -865,8 +877,10 @@ function buildService(ctx: RouteContext) {
       if (q.length < 2 || q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
       if (!ctx.allow(`social:search:${id}`, 20)) return no('rate_limited', 'You are searching too quickly. Wait a moment.');
       const results = [];
-      for (const [other, player] of Object.entries(s.players)) {
-        if (other === id || blockedEither(s, id, other)) continue;
+      // Found by the name index (server/keyed.ts), in the order the players were added: only the players whose name has `q` in it are read.
+      for (const { key: other } of scanKeys(s.players, 'socialPlayer', { tContains: q, orKey: q })) {
+        const player = s.players[other];
+        if (!player || other === id || blockedEither(s, id, other)) continue;
         if (other === q || player.name.toLowerCase().includes(q)) results.push({ ...pub(s, other), friend: areFriends(s, id, other), exact: other === q || player.name.toLowerCase() === q });
         if (results.length >= 200) break;
       }
@@ -1248,7 +1262,7 @@ function buildService(ctx: RouteContext) {
       if (q.length < 2 || q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
       if (!ctx.allow(`social:search:${id}`, 20)) return no('rate_limited', 'You are searching too quickly. Wait a moment.');
       const founder = founderId(s), isFounder = founder === id, results: { id: string; name: string }[] = [];
-      const candidates = isFounder ? Object.keys(s.players) : Object.keys(p.friends);
+      const candidates = isFounder ? scanKeys(s.players, 'socialPlayer', { tContains: q }).map((hit) => hit.key) : Object.keys(p.friends);
       for (const other of candidates) {
         const them = s.players[other];
         if (!them || other === id || other === founder || blockedEither(s, id, other)) continue;
@@ -1366,16 +1380,17 @@ function buildService(ctx: RouteContext) {
     /** For the operator: pictures that were reported or hidden, newest first, at most 100. */
     modPictures(db: Db) {
       const s = col(db), found: object[] = [];
-      for (const conv of Object.values(s.convs)) for (const line of conv.messages) {
+      forEachValue(s.convs, (conv) => { for (const line of conv.messages) {
         if (line.img && (line.img.rp?.length || line.img.hid || line.img.gone)) found.push({ id: line.img.id, conv: conv.id, seq: line.seq, from: line.from, fromName: line.from ? s.players[line.from]?.name ?? 'Former player' : null, at: line.at, reports: line.img.rp?.length ?? 0, hidden: line.img.hid === true, removed: line.img.gone === true, width: line.img.w, height: line.img.h, bytes: line.img.n });
-      }
+      } });
       return yes('ok', { pictures: found.sort((a, b) => Number(Reflect.get(b, 'at')) - Number(Reflect.get(a, 'at'))).slice(0, 100) });
     },
     /** Where a picture is, for the operator (any conversation): its conversation, or null. */
     modPictureConv(db: Db, imageId: string): string | null {
       const s = col(db);
-      for (const conv of Object.values(s.convs)) if (conv.messages.some((line) => line.img?.id === imageId)) return conv.id;
-      return null;
+      let found: string | null = null;
+      forEachValue(s.convs, (conv) => { if (conv.messages.some((line) => line.img?.id === imageId)) { found = conv.id; return true; } return undefined; });
+      return found;
     },
     /** The operator removes a picture (its bytes are deleted, the bubble says it expired) or puts a hidden one back. */
     modPicture(db: Db, imageId: string, action: 'remove' | 'restore') {

@@ -25,6 +25,7 @@
  * Players idle for LIMITS.idleDays are forgotten together with their referral links.
  */
 import { hash53 } from '../protocol.ts';
+import { scanKeys } from '../keyed.ts';
 import type { Db, GrowthCollection, GrowthPlayerRecord, OutboundResponse, RouteContext } from '../types.ts';
 
 export const LIMITS = Object.freeze({
@@ -61,8 +62,10 @@ export function sweep(g: GrowthCollection, now: number): void {
   if (now - g.sweptAt < LIMITS.sweepMs) return;
   g.sweptAt = now;
   const oldShare = now - LIMITS.shareDays * 86400000, idle = now - LIMITS.idleDays * 86400000;
-  for (const [code, share] of Object.entries(g.shares)) if (!(((share as GrowthCollection['shares'][string] | null | undefined)?.at ?? NaN) >= oldShare)) delete g.shares[code];
-  for (const [id, player] of Object.entries(g.players)) {
+  // The indexes of when each link was made and each player last said hello pick the ones that may be old (a record with no time is picked too); each is judged again by its own record.
+  for (const { key: code } of scanKeys(g.shares, 'growthShare', { nBelow: oldShare, missing: true })) { const share = g.shares[code]; if (!(((share as GrowthCollection['shares'][string] | null | undefined)?.at ?? NaN) >= oldShare)) delete g.shares[code]; }
+  for (const { key: id } of scanKeys(g.players, 'growthPlayer', { nBelow: idle, missing: true })) {
+    const player = g.players[id];
     const seen = (player as GrowthCollection['players'][string] | null | undefined)?.seen ?? NaN;
     // A record that has not said hello yet (`seen: 0`, made by a consent or an invite first) is new, not idle: sweeping it lost the answers just given.
     if (seen >= idle || seen === 0) continue;

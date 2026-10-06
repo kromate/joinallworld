@@ -10,6 +10,7 @@ import { callService } from '../social/calls.ts';
 import { pictureSettings } from '../social/images.ts';
 import { registerAdminSetting } from './settings.ts';
 import { registerAdminStat, registerAdminTool } from './tools.ts';
+import { forEachValue } from '../keyed.ts';
 import type { Db, RouteContext } from '../types.ts';
 
 const bytesText = (n: number): string => (n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.round(n / 1024)} kB`);
@@ -18,13 +19,14 @@ const linked = new WeakSet<object>();
 /** What the pictures in stored conversations come to. */
 export function pictureCounts(db: Db): { stored: number; reported: number; hidden: number } {
   let stored = 0, reported = 0, hidden = 0;
-  for (const conv of Object.values(db.social?.convs ?? {})) for (const line of conv.messages) {
+  // One conversation at a time: the operator's page must not hold every conversation in memory at once.
+  forEachValue(db.social?.convs ?? {}, (conv) => { for (const line of conv.messages) {
     const image = line.img;
     if (!image || image.gone) continue;
     stored += 1;
     if (image.rp?.length) reported += 1;
     if (image.hid) hidden += 1;
-  }
+  } });
   return { stored, reported, hidden };
 }
 

@@ -678,6 +678,13 @@ export interface TransactOptions<T> {
   /** A lazy transaction still waits for the unsaved durable changes of others it may have read. */
   waitForObserved?: boolean
 }
+/** What the operator and the tests may ask of a store that keeps collections per entry (server/keyed.ts, docs/STORAGE.md). */
+export interface StoreLayoutTools {
+  /** How the store is laid out now, and what it has moved. */
+  status(): Promise<{ requested: string; entries: string[]; errors: Record<string, string> }>
+  /** Every collection kept per entry, as a plain value, whichever way it is stored. Reads every entry. */
+  logical(): Promise<Record<string, unknown>>
+}
 /** Rejections carry `{ status: 503, code: 'storage_unavailable', reason }` when a write failed; the change was undone. */
 export interface Store {
   transact<T>(operation: (db: Db) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
@@ -689,6 +696,8 @@ export interface Store {
   sizes?(): Record<string, number>
   /** True while one of THIS store's transaction or read callbacks is running (hosts with several stores in one isolate). */
   executing?(): boolean
+  /** Present when the store can keep collections per entry. */
+  layout?: StoreLayoutTools
 }
 
 // ---- the route-module contract (server/routes/index.ts) ------------------------------------------

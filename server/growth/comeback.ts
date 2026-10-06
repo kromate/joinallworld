@@ -30,6 +30,7 @@ import { upcomingEvents } from '../../src/game/calendar.ts';
 import { composeDigest } from '../../src/game/digest.ts';
 import { governorAt, phaseAt } from '../civic/elections.ts';
 import { UUID_PATTERN } from '../protocol.ts';
+import { scanKeys } from '../keyed.ts';
 import { COMEBACK, NEVER, PREF_KEYS, PREF_OF, decide, defaultPrefs, firstName, milestoneFacts, remember } from '../../src/game/comeback.ts';
 import { comebackMail } from './email/comeback.ts';
 import { PING } from '../../src/game/ping.ts';
@@ -311,7 +312,8 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     if (g.outreach?.off?.email === true) { wakeAt = t + 10 * 60000; return jobs; }
     const dailyCap = mailing.cap('EMAIL_DAILY_CAP', 500);
     let examined = 0, capped = false;
-    for (const id of Object.keys(all)) {
+    // Only the players who may be due, by the index of when each is to be looked at next; each is judged again by its own record.
+    for (const { key: id } of scanKeys(all, 'growthComeback', { nBelow: t + 1, missing: true })) {
       const record = recordOf(g, id, false);
       if (!record || record.next > t) continue;
       if (jobs.length >= LIMITS.batch || examined >= LIMITS.examine) { break; }
@@ -351,7 +353,7 @@ export function comebackService(ctx: RouteContext, mailing: Mailing) {
     }
     // When to look again: the earliest record that is due, and at once when this pass stopped early.
     let soon = NEVER;
-    for (const id of Object.keys(all)) { const record = all[id]; if (record && record.next < soon) soon = record.next; }
+    for (const hit of scanKeys(all, 'growthComeback', { nAtLeast: Number.MIN_SAFE_INTEGER })) if (hit.n !== undefined && hit.n < soon) soon = hit.n;
     wakeAt = capped ? Math.max(soon, nextDay(t)) : jobs.length >= LIMITS.batch || examined >= LIMITS.examine ? t : soon;
     return jobs;
   }

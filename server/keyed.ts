@@ -23,6 +23,14 @@
  * listed in docs/STORAGE.md; the ones that run on a request were given an index (keyedScan) or a bound.
  */
 
+/**
+ * How a host stores the collections in KEYED_SPECS. `legacy`: one JSON value each. `entries`: a root and one entry per key.
+ * `shadow`: the legacy value is the truth while the entries are kept beside it and compared (the Worker only; Node's file
+ * is the same in every layout, so on Node `shadow` is `legacy`).
+ */
+export type StoreLayout = 'legacy' | 'shadow' | 'entries'
+export const parseLayout = (value: unknown): StoreLayout | undefined => (value === 'legacy' || value === 'shadow' || value === 'entries' ? value : undefined);
+
 /** A projection of one entry, kept beside its text so that a scan can pick entries without reading and parsing all of them. */
 export interface Projection {
   /** A number to compare (a last-seen time, an expiry). */
@@ -32,47 +40,90 @@ export interface Projection {
   /** A small JSON payload a scan returns with the key (a player's blocked ids). */
   j?: string | undefined
 }
+export type ProjectionName = 'socialPlayer' | 'socialPending' | 'growthPlayer' | 'growthShare' | 'growthComeback' | 'civicResident' | 'businessShop'
 export interface KeyedSpec {
   /** Where the map is in the collection: `['players']`, `['cities', '*', 'residents']` (`*`: every key of the map before it). */
   readonly path: readonly string[]
-  /** What a scan may ask of an entry. */
-  readonly project?: (value: unknown) => Projection | undefined
+  /** What a scan may ask of an entry (PROJECTIONS). */
+  readonly project?: ProjectionName
 }
-
+/** What a scan may ask, ANDed together (`orKey` is ORed with `tContains`). An entry whose number is missing never matches a number test, except under `missing`. */
+export interface ScanQuery {
+  /** n < this. */
+  nBelow?: number
+  /** n >= this. */
+  nAtLeast?: number
+  /** With nBelow: entries that have no number match too (a record whose time is damaged is treated as the oldest). */
+  missing?: boolean
+  /** t contains this (lower-case). */
+  tContains?: string
+  /** An entry whose key is this matches whatever else was asked (a player is found by id as well as by name). */
+  orKey?: string
+  /** t is exactly this. */
+  tEquals?: string
+  /** j contains this text. */
+  jIncludes?: string
+  /** j is present. */
+  hasJ?: boolean
+}
+export interface ScanHit { key: string; ord: number; /** The entry's number, when it has one. */ n?: number | undefined; /** The entry's `j`, when it has one. */ j?: string | undefined }
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const num = (value: unknown): number | undefined => (typeof value === 'number' && Number.isFinite(value) ? value : undefined);
+const idList = (value: unknown): string[] => (isRecord(value) ? Object.keys(value) : []);
+/** What each map tells a scan about its entries. Computed from the parsed entry when it is written (and in plain form by the legacy layout's scans). */
+const PROJECTIONS: Readonly<Record<ProjectionName, (value: unknown) => Projection | undefined>> = Object.freeze({
+  /** n: last seen. t: the name in lower case. j: { b: ids this player blocked, f: [the founder this player is automatic friends with, since], i: who invited them }. */
+  socialPlayer: (value: unknown): Projection | undefined => {
+    if (!isRecord(value)) return undefined;
+    const j: { b?: string[]; f?: [string, number]; i?: string } = {}, blocked = idList(value['blocked']);
+    if (blocked.length) j.b = blocked;
+    const founder = value['founder'], friends = value['friends'];
+    if (isRecord(founder) && typeof founder['id'] === 'string' && isRecord(friends) && typeof friends[founder['id']] === 'number') j.f = [founder['id'], friends[founder['id']] as number];
+    const invite = value['invite'];
+    if (isRecord(invite) && typeof invite['by'] === 'string') j.i = invite['by'];
+    return { n: num(value['seen']), t: typeof value['name'] === 'string' ? value['name'].toLowerCase() : undefined, j: Object.keys(j).length ? JSON.stringify(j) : undefined };
+  },
+  /** n: the time of the oldest effect waiting. */
+  socialPending: (value: unknown): Projection | undefined => {
+    if (!Array.isArray(value)) return undefined;
+    let oldest: number | undefined;
+    for (const effect of value) { const at = isRecord(effect) ? num(effect['at']) : undefined; if (at !== undefined && (oldest === undefined || at < oldest)) oldest = at; }
+    return { n: oldest };
+  },
+  growthPlayer: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['seen']) } : undefined),
+  growthShare: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['at']) } : undefined),
+  /** n: when to look at this player next. */
+  growthComeback: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['next']) } : undefined),
+  /** n: the last check-in. */
+  civicResident: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['lastSeen']) } : undefined),
+  /** A sound shop only. t: `city`, a NUL and `venue` of a shop that is open for customers. n: when a closed shop closed; 9e15 while it is open (it is never "old"). */
+  businessShop: (value: unknown): Projection | undefined => {
+    if (!isRecord(value) || !isRecord(value['by']) || typeof value['by']['id'] !== 'string' || typeof value['city'] !== 'string' || typeof value['venue'] !== 'string' || typeof value['type'] !== 'string') return undefined;
+    const closed = value['status'] === 'closed';
+    return { t: closed ? undefined : `${value['city']}\u0000${value['venue']}`, n: closed ? (num(value['closedAt']) ?? num(value['at'])) : 9e15 };
+  },
+});
+/** Does an entry with this key and projection answer the query? */
+export function matches(query: ScanQuery, key: string, projection: Projection | undefined): boolean {
+  if (query.orKey !== undefined && key === query.orKey) return true;
+  const p = projection ?? {};
+  if (query.nBelow !== undefined && !(p.n !== undefined ? p.n < query.nBelow : query.missing === true)) return false;
+  if (query.nAtLeast !== undefined && !(p.n !== undefined && p.n >= query.nAtLeast)) return false;
+  if (query.tContains !== undefined && !(p.t !== undefined && p.t.includes(query.tContains))) return false;
+  if (query.tEquals !== undefined && p.t !== query.tEquals) return false;
+  if (query.jIncludes !== undefined && !(p.j !== undefined && p.j.includes(query.jIncludes))) return false;
+  if (query.hasJ === true && p.j === undefined) return false;
+  return true;
+}
+/** The projection an entry of a map has (the map is named by its spec). */
+export const projectionOf = (name: ProjectionName | undefined, value: unknown): Projection | undefined => (name === undefined ? undefined : PROJECTIONS[name](value));
 
 /** The collections kept per entry, and where their big maps are. Everything else in a collection stays in its root. */
 export const KEYED_SPECS: Readonly<Record<string, readonly KeyedSpec[]>> = Object.freeze({
-  social: [
-    { path: ['players'], project: (value: unknown): Projection | undefined => {
-      if (!isRecord(value)) return undefined;
-      const blocked = isRecord(value['blocked']) ? Object.keys(value['blocked']) : [];
-      return { n: num(value['seen']), t: typeof value['name'] === 'string' ? value['name'].toLowerCase() : undefined, j: blocked.length ? JSON.stringify(blocked) : undefined };
-    } },
-    { path: ['convs'] },
-    { path: ['houses'] },
-    { path: ['pending'], project: (value: unknown): Projection | undefined => {
-      if (!Array.isArray(value)) return undefined;
-      let oldest: number | undefined;
-      for (const effect of value) { const at = isRecord(effect) ? num(effect['at']) : undefined; if (at !== undefined && (oldest === undefined || at < oldest)) oldest = at; }
-      return { n: oldest };
-    } },
-  ],
-  growth: [
-    { path: ['players'], project: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['seen']) } : undefined) },
-    { path: ['shares'], project: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['at']) } : undefined) },
-    { path: ['comeback'] },
-    { path: ['push'] },
-    { path: ['contacts'] },
-  ],
-  civic: [
-    { path: ['cities', '*', 'residents'], project: (value: unknown): Projection | undefined => (isRecord(value) ? { n: num(value['lastSeen']) } : undefined) },
-    { path: ['cities', '*', 'gov', 'elections'] },
-  ],
-  business: [
-    { path: ['shops'] },
-  ],
+  social: [{ path: ['players'], project: 'socialPlayer' }, { path: ['convs'] }, { path: ['houses'] }, { path: ['pending'], project: 'socialPending' }],
+  growth: [{ path: ['players'], project: 'growthPlayer' }, { path: ['shares'], project: 'growthShare' }, { path: ['comeback'], project: 'growthComeback' }, { path: ['push'] }, { path: ['contacts'] }],
+  civic: [{ path: ['cities', '*', 'residents'], project: 'civicResident' }, { path: ['cities', '*', 'gov', 'elections'] }],
+  business: [{ path: ['shops'], project: 'businessShop' }],
 });
 export const isKeyedCollection = (name: string): boolean => Object.hasOwn(KEYED_SPECS, name);
 
@@ -230,6 +281,10 @@ export interface LayerSource {
   entry(coll: string, id: string, key: string): { text: string; stored: string } | undefined
   /** The keys of a map in the order they were added (not integer-sorted). */
   keys(coll: string, id: string): string[]
+  /** The stored entries that answer a scan, in the order they were added (changes held in memory laid over the rows). Absent: the layer reads every entry. */
+  scan?(coll: string, id: string, query: ScanQuery): ScanHit[]
+  /** Where a stored key stands in the order (a scan merges entries this transaction changed). */
+  ord?(coll: string, id: string, key: string): number | undefined
 }
 export interface EntryPut { key: string; text: string; /** The text the row holds now; undefined: a new entry. */ stored: string | undefined; value: unknown }
 export interface MapWrite { id: string; puts: EntryPut[]; deletes: string[] }
@@ -253,6 +308,8 @@ class KeyedMap {
   private readonly raw = new Map<string, { text: string; stored: string } | null>()
   private listed: string[] | undefined
   private listedSet: Set<string> | undefined
+  /** A map handed back by a finished transaction cannot be changed through. */
+  frozen = false
   private readonly source: LayerSource
   readonly coll: string
   readonly id: string
@@ -288,7 +345,7 @@ class KeyedMap {
         return Reflect.get(target, key, receiver) as unknown;
       },
       set: (_, key, value: unknown) => {
-        if (typeof key !== 'string') return false;
+        if (typeof key !== 'string' || this.frozen) return false;
         onTouch();
         if (value === undefined) { remove(key); return true; }
         const have = this.loaded.get(key);
@@ -298,12 +355,12 @@ class KeyedMap {
         this.loaded.set(key, { value, stored });
         return true;
       },
-      deleteProperty: (_, key) => { if (typeof key === 'string') { onTouch(); remove(key); } return true; },
+      deleteProperty: (_, key) => { if (this.frozen) return false; if (typeof key === 'string') { onTouch(); remove(key); } return true; },
       has: (_, key) => (typeof key === 'string' ? exists(key) || Reflect.has(target, key) : Reflect.has(target, key)),
       ownKeys: () => this.keys(),
       getOwnPropertyDescriptor: (_, key) => (typeof key === 'string' && exists(key) ? { value: undefined, writable: true, enumerable: true, configurable: true } : undefined),
       defineProperty: (_, key, descriptor) => {
-        if (typeof key !== 'string' || !('value' in descriptor)) return false;
+        if (typeof key !== 'string' || !('value' in descriptor) || this.frozen) return false;
         this.proxy[key] = descriptor.value as unknown;
         return true;
       },
@@ -321,6 +378,39 @@ class KeyedMap {
     for (const key of this.loaded.keys()) if (!this.listedSet?.has(key) || this.deleted.has(key)) out.push(key);
     return plainOrder(out);
   }
+  /** An entry as it is now without keeping it: this transaction's own object when it has one, else a throwaway parse of the stored text. */
+  peekValue(key: string): unknown {
+    const have = this.loaded.get(key);
+    if (have) return have.value;
+    if (this.deleted.has(key)) return undefined;
+    const row = this.source.entry(this.coll, this.id, key);
+    return row ? JSON.parse(row.text) as unknown : undefined;
+  }
+  /** The keys that answer a scan, as this transaction sees the map, in key order. */
+  scan(query: ScanQuery): ScanHit[] {
+    const name = specOf(this.coll, this.id)?.project;
+    let stored: ScanHit[];
+    if (this.source.scan) stored = this.source.scan(this.coll, this.id, query);
+    else {
+      stored = [];
+      let ord = 0;
+      for (const key of this.stored()) { ord += 1; const row = this.source.entry(this.coll, this.id, key); if (!row) continue; const p = projectionOf(name, JSON.parse(row.text)); if (matches(query, key, p)) stored.push({ key, ord, n: p?.n, j: p?.j }); }
+    }
+    if (!this.loaded.size && !this.deleted.size) return stored;
+    // What this transaction changed is judged by its present value, not by the row.
+    const changed = new Set<string>([...this.loaded.keys(), ...this.deleted]);
+    const merged: ScanHit[] = stored.filter((hit) => !changed.has(hit.key));
+    let created = 0;
+    for (const [key, entry] of this.loaded) {
+      const p = projectionOf(name, entry.value);
+      if (!matches(query, key, p)) continue;
+      const kept = entry.stored !== undefined && !this.deleted.has(key);
+      merged.push({ key, ord: kept ? (this.source.ord?.(this.coll, this.id, key) ?? Number.MAX_SAFE_INTEGER) : Number.MAX_SAFE_INTEGER + (created += 1), n: p?.n, j: p?.j });
+    }
+    return merged.sort((a, b) => a.ord - b.ord);
+  }
+  /** Every entry read or made is frozen, and the map refuses changes from now on. */
+  freeze(seen: WeakSet<object>): void { this.frozen = true; for (const entry of this.loaded.values()) freezeValue(entry.value, seen); }
   /** What to write for this map. */
   write(): MapWrite {
     const puts: EntryPut[] = [], deletes: string[] = [...this.deleted];
@@ -333,10 +423,50 @@ class KeyedMap {
   }
 }
 const keyedMaps = new WeakMap<object, KeyedMap>();
+/** Freeze a value all the way down; a keyed map is frozen as a map (it is not walked: that would read every entry). */
+function freezeValue(value: unknown, seen: WeakSet<object>): void {
+  const stack: unknown[] = [value];
+  while (stack.length) {
+    const item = stack.pop();
+    if (item === null || typeof item !== 'object' || seen.has(item)) continue;
+    seen.add(item);
+    const keyed = keyedMaps.get(item);
+    if (keyed) { keyed.freeze(seen); continue; }
+    Object.freeze(item);
+    for (const child of Array.isArray(item) ? item : Object.values(item)) stack.push(child);
+  }
+}
 /** Is this one of the lazy maps the layer made? */
 export const isKeyedMap = (value: unknown): boolean => typeof value === 'object' && value !== null && keyedMaps.has(value);
 /** The keys of a map (a lazy one lists its keys without reading any entry). Works on a plain object too. */
 export function keysOf(map: Record<string, unknown>): string[] { const keyed = keyedMaps.get(map); return keyed ? keyed.keys() : Object.keys(map); }
+
+/**
+ * The keys of a map that answer a scan, in key order, and for each what its projection says. A lazy map asks the store, which
+ * reads no entry; a plain object (the legacy layout, or a map the route just made) is walked and each value projected the same
+ * way, so both answer alike. `name` names the map's projection (KEYED_SPECS).
+ */
+export function scanKeys(map: Record<string, unknown>, name: ProjectionName, query: ScanQuery): ScanHit[] {
+  const keyed = keyedMaps.get(map);
+  if (keyed) {
+    if (specOf(keyed.coll, keyed.id)?.project !== name) throw new Error(`The keyed map ${keyed.id} has no projection ${name}`);
+    return keyed.scan(query);
+  }
+  const hits: ScanHit[] = [];
+  let ord = 0;
+  for (const key of plainOrder(Object.keys(map))) { ord += 1; const p = projectionOf(name, map[key]); if (matches(query, key, p)) hits.push({ key, ord, n: p?.n, j: p?.j }); }
+  return hits;
+}
+/**
+ * Look at every entry of a map, one at a time, READ-ONLY: a lazy map reads, parses and lets go of each entry in turn, so a map
+ * of any size is walked in the memory of one entry (changes to `value` are not kept). For the operator's tools and the rare
+ * walks that have no index. The order is the order of `Object.entries`; `each` answering true stops the walk.
+ */
+export function forEachValue<T>(map: Record<string, T>, each: (value: T, key: string) => void | boolean): void {
+  const keyed = keyedMaps.get(map);
+  if (!keyed) { for (const [key, value] of Object.entries(map)) if (each(value, key) === true) return; return; }
+  for (const key of keyed.keys()) { const value = keyed.peekValue(key); if (value !== undefined && each(value as T, key) === true) return; }
+}
 
 /** One collection as a transaction sees it. */
 interface State { obj: unknown; stored: string | undefined; existed: Set<string>; removed: boolean }
@@ -378,8 +508,12 @@ export class Layer {
     const before = this.load(coll);
     if (before) this.states.set(coll, { ...before, removed: true }); else this.states.set(coll, null);
   }
+  /** Freeze everything this transaction loaded or made, as the Node store freezes what it commits (nothing handed back can be changed). */
+  freeze(): void { const seen = new WeakSet<object>(); for (const state of this.states.values()) if (state && !state.removed) freezeValue(state.obj, seen); }
   /** The collections this transaction has loaded or made. */
   names(): string[] { return [...this.states.keys()]; }
+  /** Does the collection exist as this transaction sees it (without asking the source: only what was loaded or made counts)? */
+  known(coll: string): boolean | undefined { const state = this.states.get(coll); return state === undefined ? undefined : state !== null && !state.removed; }
   /** What the transaction changed, as writes. Pure: it asks the source only for the keys of maps it must clear. */
   changes(): CollectionWrite[] {
     const out: CollectionWrite[] = [];

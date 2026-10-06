@@ -15,6 +15,7 @@ import { peek } from './store.ts';
 import { sanctionsOf } from './sanctions.ts';
 import { moderationService } from '../moderation/service.ts';
 import type { LedgerLine } from '../../src/types/life.ts';
+import { scanKeys } from '../keyed.ts';
 import type { Db, RouteContext, SessionRecord } from '../types.ts';
 
 export const PAGE_SIZE = 40;
@@ -95,7 +96,7 @@ export function playersService(ctx: RouteContext) {
       const audit = peek(db, 'adminAudit').lines.filter((line) => line.target === id).slice(-12).reverse().map((line) => ({ n: line.n, at: line.at, action: line.action, by: adminRef(line.admin), byName: line.adminName, summary: line.summary, reason: line.reason }));
       const reports = (db.social?.reports ?? []).filter((report) => report.about === id || report.by === id);
       const shops = Object.entries(db.business?.shops ?? {}).filter(([, shop]) => shop.by.id === id).map(([shopId, shop]) => ({ id: shopId, name: shop.name, city: shop.city, status: shop.status }));
-      const invited = Object.values(db.social?.players ?? {}).filter((other) => other.invite?.by === id).length;
+      const invited = db.social?.players ? scanKeys(db.social.players, 'socialPlayer', { jIncludes: `"i":${JSON.stringify(id)}` }).length : 0;
       return {
         profile: row(db, session, flagged),
         account: account ? { ref: shortRef(account.id), email: maskEmail(account.email), provider: account.provider, createdAt: account.createdAt, lastSeenAt: account.lastSeenAt, devices: account.devices.length, parked: account.parked.length } : null,

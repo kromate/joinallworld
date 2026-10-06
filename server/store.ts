@@ -2,7 +2,10 @@ import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 import { storageError } from './protocol.ts';
 import type { NodeStoreStats, StoreStats } from '../src/types/support.ts';
-import type { Db, SessionRecord, Store, StoreHelpers, TransactOptions } from './types.ts';
+import type { Db, SessionRecord, Store, StoreHelpers, StoreLayoutTools, TransactOptions } from './types.ts';
+import { KEYED_SPECS, Layer, isKeyedCollection, parseLayout } from './keyed.ts';
+import type { StoreLayout } from './keyed.ts';
+import { MemoryLayers } from './keyed-memory.ts';
 
 /**
  * JSON file store (Node only). The storage interface the rest of the server relies on is just:
@@ -99,6 +102,11 @@ export interface StoreOptions {
   now?: () => number
   log?: (line: string) => void
   mode?: string
+  /**
+   * How the collections of server/keyed.ts are held. `entries`: a root and one text per key, so that a request reads only
+   * the entries it touches (the file written is the same as ever). Anything else: each collection whole, as before.
+   */
+  layout?: StoreLayout
 }
 /**
  * The store createStore makes: the host-only extras are always present. `D` is the document a transaction sees:
@@ -112,6 +120,7 @@ export interface JsonFileStore<D extends object = Db> {
   stats(): StoreStats
   /** JSON characters held per collection, for the operator's overview. Uses the texts the last write made; what changed since is serialised once. */
   sizes(): Record<string, number>
+  layout: StoreLayoutTools
 }
 /** The part of one transaction that is applied or undone later. */
 interface PendingChange { seq: number; undo: (() => void)[]; hook: ((value: unknown) => void) | undefined; value: unknown; durable: boolean; names: Set<string> | null }
@@ -140,7 +149,7 @@ function deepFreeze<T>(value: T): T {
 }
 
 export async function createStore<D extends object = Db>(dataDir: string, { lazyFlushMs = 1000, writeMegabytesPerSecond = Number(process.env.STORE_WRITE_MB_PER_S || 50),
-  io = {}, now = Date.now, log = (line: string) => console.error(line), mode }: StoreOptions = {}): Promise<JsonFileStore<D>> {
+  io = {}, now = Date.now, log = (line: string) => console.error(line), mode, layout = parseLayout(process.env['STORE_LAYOUT']) ?? 'legacy' }: StoreOptions = {}): Promise<JsonFileStore<D>> {
   if (mode !== undefined && mode !== 'grouped') throw new Error(`Unknown store mode "${mode}": there is one store now (STORE_MODE=legacy was removed).`);
   if (!Number.isFinite(writeMegabytesPerSecond) || writeMegabytesPerSecond <= 0) throw new Error('Invalid STORE_WRITE_MB_PER_S');
   const writeBytesPerMs = writeMegabytesPerSecond * 1000;
@@ -170,6 +179,12 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
   for (const name of KEYED) if (base[name] !== undefined && !isRecord(base[name])) throw new Error('Invalid device database');
   // Stored values are frozen; the containers they sit in (the document, the session map) are not.
   for (const [key, value] of Object.entries(base)) { if (isKeyed(key)) Object.values(mapOf(key)).forEach(deepFreeze); else deepFreeze(value); }
+  // Collections kept per entry (server/keyed.ts): the committed text of each root and entry. They are not in `base`, which is what
+  // the rest of this file walks; serialise() and sizes() put them back.
+  const layers = new MemoryLayers(), layered = layout === 'entries';
+  if (layered) for (const name of Object.keys(KEYED_SPECS)) { if (Object.hasOwn(base, name) && isRecord(base[name])) { layers.ingest(name, JSON.stringify(base[name])); delete base[name]; } }
+  const layerText = new Map<string, string>(); // collection → its assembled text, until a commit changes it
+  const isLayered = (key: string): boolean => layered && isKeyedCollection(key);
   const textOf: Record<KeyedName, Map<string, string>> = { sessions: new Map(), archivedLives: new Map() }; // key → cached JSON text of one entry
   const partText = new Map<string, string>(); // other top-level key → cached JSON text
   const keyOfPublicId = new Map<string, string>(), publicIdOfKey = new Map<string, string>();
@@ -187,6 +202,7 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
   function open() {
     const keyed: Partial<Record<KeyedName, KeyedPart>> = {};
     const parts = new Map<string, unknown>(), removed = new Set<string>();
+    const layer = new Layer(layers);
     let scanned = false; // looked across every session (a scan, a lookup by public id, a key listing)
     const peeked = new Set<string>(); // asked "is it there?" without reading it
     function keyedPart(name: KeyedName): KeyedPart {
@@ -233,13 +249,14 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
         return key !== undefined && !part.deleted.has(key) && !part.copies.has(key) ? key : undefined;
       },
     });
-    const dbHas = (key: string | symbol): boolean => { if (typeof key === 'string') peeked.add(key); return typeof key === 'string' && !removed.has(key) && (key === 'version' || (isKeyed(key) ? keyedExists(key) : parts.has(key) || Object.hasOwn(base, key))); };
+    const dbHas = (key: string | symbol): boolean => { if (typeof key === 'string') peeked.add(key); return typeof key === 'string' && !removed.has(key) && (key === 'version' || (isLayered(key) ? layer.has(key) : isKeyed(key) ? keyedExists(key) : parts.has(key) || Object.hasOwn(base, key))); };
     const db = new Proxy<View>({} as View, {
       get(target, key) {
         if (key === '$store') return helpers;
         if (typeof key !== 'string' || removed.has(key)) return undefined;
         if (key === 'version') return base.version;
         if (isKeyed(key)) return keyedExists(key) ? keyedPart(key).proxy : undefined;
+        if (isLayered(key)) { peeked.add(key); return layer.get(key); }
         if (parts.has(key)) return parts.get(key);
         if (!Object.hasOwn(base, key)) { peeked.add(key); return undefined; }
         const copy = structuredClone(base[key]);
@@ -259,17 +276,20 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
           for (const [entry, record] of Object.entries(value)) { part.copies.set(entry, record); part.deleted.delete(entry); }
           return true;
         }
+        if (isLayered(key)) { peeked.add(key); layer.set(key, value); return true; }
         parts.set(key, value);
         return true;
       },
       has: (target, key) => dbHas(key),
-      deleteProperty(target, key) { if (typeof key !== 'string' || key === 'version' || key === 'sessions') return false; parts.delete(key); if (isKeyed(key)) delete keyed[key]; removed.add(key); return true; },
+      deleteProperty(target, key) { if (typeof key !== 'string' || key === 'version' || key === 'sessions') return false; if (isLayered(key)) { peeked.add(key); layer.remove(key); return true; } parts.delete(key); if (isKeyed(key)) delete keyed[key]; removed.add(key); return true; },
       ownKeys() {
         scanned = true;
         const keys = new Set(['version']);
         for (const key of Object.keys(base)) keys.add(key);
         for (const key of parts.keys()) keys.add(key);
         for (const name of KEYED) if (keyed[name]?.created) keys.add(name);
+        for (const name of layers.collections()) keys.add(name);
+        for (const name of layer.names()) { if (layer.known(name)) keys.add(name); else keys.delete(name); }
         for (const key of removed) keys.delete(key);
         return [...keys];
       },
@@ -295,6 +315,15 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
         for (const [key, record] of part.copies) { const old = Object.hasOwn(map, key) ? map[key] : undefined; undo.push(() => put(key, old)); put(key, deepFreeze(record)); }
       }
       for (const [key, value] of parts) { restoreTop(key, Object.hasOwn(base, key), base[key]); base[key] = deepFreeze(value); partText.delete(key); }
+      const writes = layer.changes();
+      layer.freeze();
+      if (writes.length) {
+        const names = writes.map((write) => write.coll);
+        const forget = (): void => { for (const name of names) layerText.delete(name); };
+        undo.push(forget); // runs after the steps below put the texts back
+        undo.push(...layers.apply(writes));
+        forget();
+      }
       return undo.length ? undo : null;
     }
     /**
@@ -329,6 +358,11 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
       let text = partText.get(key);
       if (text === undefined) { text = JSON.stringify(value); if (text === undefined) continue; partText.set(key, text); }
       out.push(`${JSON.stringify(key)}:${text}`);
+    }
+    for (const name of layers.collections()) {
+      let text = layerText.get(name);
+      if (text === undefined) { text = layers.text(name) as string; layerText.set(name, text); }
+      out.push(`${JSON.stringify(name)}:${text}`);
     }
     return `{${out.join(',')}}`;
   }
@@ -489,7 +523,20 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
         if (text === undefined) { text = JSON.stringify(value); if (text === undefined) continue; partText.set(key, text); }
         sizes[key] = text.length;
       }
+      for (const name of layers.collections()) sizes[name] = layers.size(name);
       return sizes;
+    },
+    layout: {
+      status: async () => { await queue; return { requested: layout, entries: layered ? layers.collections().sort() : [], errors: {} }; },
+      logical: async () => {
+        await queue;
+        const out: Record<string, unknown> = {};
+        for (const name of Object.keys(KEYED_SPECS)) {
+          const text = layered ? layers.text(name) : (Object.hasOwn(base, name) ? JSON.stringify(base[name]) : undefined);
+          if (text !== undefined) out[name] = JSON.parse(text);
+        }
+        return out;
+      },
     },
   };
 }

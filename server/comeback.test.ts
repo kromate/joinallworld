@@ -2,7 +2,7 @@
 // for everything, blocked and muted senders, the zero-work paths, and a store from before the feature.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import { ENDPOINT } from './growth/email/zeptomail.ts';
 import { comebackMail } from './growth/email/comeback.ts';
 import { NUDGE_NOTE } from './growth/comeback.ts';
@@ -47,7 +47,7 @@ async function harness(t: TestContext, { env = LIVE, respond }: { env?: Record<s
   };
   /** Only the named types stay on, so a test is about one kind of mail (the calendar always has something coming). */
   const only = (who: Who, ...on: string[]) => post('/api/growth/comeback', { cityId: 'lagos', types: Object.fromEntries(['needs', 'friends', 'milestones', 'events', 'away', 'week'].map((key) => [key, on.includes(key)])) }, who);
-  const growth = () => f.server.store.read((db) => structuredClone<Partial<GrowthCollection>>(db.growth ?? {}));
+  const growth = () => f.server.store.read((db) => snapshot<Partial<GrowthCollection>>(db.growth ?? {}));
   const edit = (fn: (db: Db) => void) => f.server.store.transact((db) => { fn(db); });
   /** Change a player's stored life (their needs, job, upgrade) as a long absence leaves it. */
   const life = (who: Who, fn: (state: import('../src/types/life.ts').LifeState) => void) => edit((db) => { const session = Object.values(db.sessions).find((item) => item.publicId === who.id); fn(must(session?.cities.lagos, 'a life').state); });

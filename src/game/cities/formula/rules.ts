@@ -1,6 +1,6 @@
-import { CAREER_IDS } from '../../content/career-ids.ts'
 import type { CityClimate, CityHub, CityMapOrigin, CityModuleRules } from '../../../types/content.ts'
 import type { CitySpec, ClimateProfile, PopulationTier, RealPlaceFact } from '../spec.ts'
+import { formulaCareerPlan, formulaRoadArrival } from './careers.ts'
 
 const landFor = (tier: PopulationTier): number => {
   switch (tier) {
@@ -26,8 +26,9 @@ const placeNamed = (places: readonly RealPlaceFact[], id: string): RealPlaceFact
 }
 
 export function buildFormulaRules<City extends string>(spec: CitySpec<City>, origin: CityMapOrigin): CityModuleRules<City> {
-  const road = spec.places.find(place => place.kind === 'road-hub')
+  const road = formulaRoadArrival(spec.places)
   if (!road) throw new TypeError(`${spec.id} needs a road hub`)
+  const careers = formulaCareerPlan(spec.places)
   const airportFact = spec.transport.airports.find(item => active(item.status))
   const railFact = spec.transport.rail.find(item => active(item.status))
   const airport = airportFact ? placeNamed(spec.places, airportFact.placeId) : null
@@ -53,7 +54,7 @@ export function buildFormulaRules<City extends string>(spec: CitySpec<City>, ori
     defaultName: 'New arrival',
     rentedHomeIds,
     defaultRentedHome: firstHome,
-    careerIds: CAREER_IDS,
+    careerIds: Object.keys(careers.venues),
     atlas: { lon: spec.atlas.lon, lat: spec.atlas.lat, teaser: spec.atlas.teaser, preview: spec.atlas.preview },
     mapOrigin: origin,
     districts: spec.localUnits.map(unit => ({ id: `${unit.id}-home`, name: unit.name, localUnitId: unit.id })),

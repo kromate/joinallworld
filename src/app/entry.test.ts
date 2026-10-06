@@ -240,7 +240,7 @@ test('automatic game startup, including one selected city, stays within the orig
     assert.ok(marginal <= 150, `${id} adds ${marginal} built bytes of catalogue and loader rows (limit 150)`)
     const names = eagerChunks(dist, [...common, rules, content].map((name) => `assets/${name}`))
     assert.ok(names.includes(`assets/${rules}`) && names.includes(`assets/${content}`) && names.includes(`assets/${routes[0]}`), `${id} loads its rules, content and authored routes`)
-    assert.deepEqual(names.filter((name) => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name)), [], `${id} does not load another city's rules or content`)
+    assert.deepEqual(names.filter((name) => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name) && !/\/city-formula-content-/.test(name)), [], `${id} does not load another city's rules or content`)
     assert.deepEqual(names.filter((name) => /\/city-.+-map-[\w-]+\.js$/.test(name)), [], `${id} does not load a map at startup`)
     const total = measure(names)
     t.diagnostic(`${id} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)

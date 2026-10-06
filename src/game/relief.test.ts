@@ -15,8 +15,7 @@ import { makeContext } from './util.ts'
 import { DECAY_FLOOR } from './systems/needs.ts'
 import type { LifeContextInit, LifeState } from '../types/life.ts'
 
-const CITIES = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']
-await Promise.all(CITIES.map(loadCityContent))
+await Promise.all(playableCityIds().map(loadCityContent))
 
 const HOUR = 3600
 /** A settled life whose main home is `home`, standing in `home`. */

@@ -1,0 +1,163 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'uyo',
+  name: 'Uyo',
+  state: { id: 'akwa-ibom', name: 'Akwa Ibom', sourceName: 'Akwa Ibom', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 7.924791,
+    lat: 5.0322447,
+    teaser: 'The Akwa Ibom capital, with Ibibio soups, a national museum and a stadium city.',
+    preview: ['Visit the National Museum and Unity Park.', 'Ride from AKTC Park in Itu into Uyo.'],
+    coordinateSourceId: 'osm-selected',
+    coordinateRef: { provider: 'openstreetmap', element: 'node', id: 501193829 },
+  },
+  population: { tier: 'city', sourceIds: ['uyo-wiki'], note: 'The cited article reports 427,873 residents at the 2006 census including Itu and a 2024 estimate of 1,393,000.' },
+  localUnits: [
+    { id: 'uyo', name: 'Uyo', sourceName: 'Uyo', populationTier: 'city', description: 'The selected central local government contains the secretariat, assembly, university and most mapped venues.', sourceIds: ['geography'] },
+    { id: 'itu', name: 'Itu', sourceName: 'Itu', populationTier: 'town', description: 'The selected Itu local government contains AKTC Park, a mapped bus station.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'full-life-christian-centre', name: 'Full Life Christian Centre', kind: 'church', lon: 7.931644, lat: 5.00862, localUnitId: 'uyo',
+      description: 'A mapped Pentecostal church named Full Life Christain Centre in the source data.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5754058875 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'rccg-zion-mega-parish-uyo', name: 'RCCG Zion Super Mega Parish Uyo', kind: 'church', lon: 7.9347344, lat: 5.0099063, localUnitId: 'uyo',
+      description: 'A mapped Pentecostal church named RCCG Zion Super Mega Parish Uyo.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7024238955 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'cheeries-fast-food', name: 'Cheeries Fast food', kind: 'eatery', lon: 7.9348052, lat: 5.0094857, localUnitId: 'uyo',
+      description: 'A mapped fast-food outlet named Cheeries Fast food, shown here with Afang soup.', sourceIds: ['osm-selected', 'afang-soup'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5754061133 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'afang-soup',
+    },
+    {
+      id: 'night-fast-food', name: 'Night fast food', kind: 'eatery', lon: 7.9387689, lat: 5.0226635, localUnitId: 'uyo',
+      description: 'A mapped restaurant named Night fast food, shown here with Edikang Ikong.', sourceIds: ['osm-selected', 'edikang-ikong'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7240841089 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'edikang-ikong',
+    },
+    {
+      id: 'university-of-uyo', name: 'University of Uyo', kind: 'university', lon: 7.9782683, lat: 5.0378887, localUnitId: 'uyo',
+      description: 'A mapped university named University of Uyo.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669841132 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'national-museum-uyo', name: 'National Museum, Uyo', kind: 'museum', lon: 7.9282987, lat: 5.0076695, localUnitId: 'uyo',
+      description: 'Wikidata records the National Museum, Uyo as a museum in Akwa Ibom State.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q110927162' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'uuth-uyo', name: 'University of Uyo Teaching Hospital', kind: 'hospital', lon: 7.859527, lat: 5.01165, localUnitId: 'uyo',
+      description: 'Wikidata records the University of Uyo Teaching Hospital with a published coordinate.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q30254141' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'akwa-ibom-house-of-assembly', name: 'House of Assembly', kind: 'government', lon: 7.9309268, lat: 5.004845, localUnitId: 'uyo',
+      description: 'A mapped government office named House of Assembly.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5754058878 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'akwa-ibom-state-secretariat', name: 'Idongesit Nkanga Secretariat (Akwa Ibom State Secretariat)', kind: 'government', lon: 7.9037729, lat: 5.023092, localUnitId: 'uyo',
+      description: 'A mapped government office named Idongesit Nkanga Secretariat (Akwa Ibom State Secretariat).', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7956230585 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'godswill-akpabio-stadium', name: 'Godswill Akpabio International Stadium', kind: 'stadium', lon: 7.8847933, lat: 5.0067222, localUnitId: 'uyo',
+      description: 'A mapped stadium named Godswill Akpabio International Stadium.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 421424865 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'uyo-township-stadium', name: 'Uyo Township Stadium', kind: 'stadium', lon: 7.9256138, lat: 5.0190093, localUnitId: 'uyo',
+      description: 'A mapped stadium named Uyo Township Stadium.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669841154 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'unity-park-uyo', name: 'Unity Park', kind: 'park', lon: 7.9263155, lat: 5.007413, localUnitId: 'uyo',
+      description: 'A mapped public park named Unity Park.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 607068827 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'union-bank-uyo', name: 'Union Bank', kind: 'savings', lon: 7.9289194, lat: 5.0035748, localUnitId: 'uyo',
+      description: 'A mapped bank branch named Union Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5754058919 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'zenith-bank-uyo', name: 'Zenith Bank', kind: 'savings', lon: 7.9268535, lat: 5.0048451, localUnitId: 'uyo',
+      description: 'A mapped bank branch named Zenith Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5754061122 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'akpan-andem-market', name: 'Akpan Andem Market', kind: 'market', lon: 7.924516766847078, lat: 5.016417458401704, localUnitId: 'uyo',
+      description: 'Wikidata records Akpan Andem Market in Akwa Ibom, and BusinessDay quotes a yam seller there.', sourceIds: ['wikidata-selected', 'akpan-andem-news'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q136511383' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['akpan-andem-foodstuffs'],
+    },
+    {
+      id: 'aktc-park', name: 'AKTC Park', kind: 'road-hub', lon: 7.884274, lat: 5.0554817, localUnitId: 'itu',
+      description: 'A mapped bus station named AKTC Park in Itu.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 4756396721 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['bench', 'lamp'] },
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'afang-soup', name: 'Afang soup', description: 'Afang soup is a vegetable soup made by the Ibibio people of Akwa Ibom State.', sourceIds: ['afang-soup'] },
+      { id: 'edikang-ikong', name: 'Edikang Ikong', description: 'Edikang ikong is a vegetable soup that originated among the Efik people and the Ibibio people of Akwa Ibom State.', sourceIds: ['edikang-ikong'] },
+    ],
+    crafts: [
+      { id: 'ibibio-ekpo-masks', name: 'Ibibio Ekpo masks', description: 'Wikipedia describes the masks of the Ibibio Ekpo society as the greatest works of art in Ibibio society.', sourceIds: ['ibibio-wiki'] },
+    ],
+    industries: [
+      { id: 'akwa-ibom-oil-agriculture', name: 'Oil and farming', description: 'Wikipedia says Akwa Ibom is based on oil and gas production, with cocoyam, yam and plantain farming and fishing as smaller industries.', sourceIds: ['akwa-ibom-wiki'] },
+      { id: 'akpan-andem-foodstuffs', name: 'Akpan Andem yam trade', description: 'BusinessDay quotes a yam seller at the popular Akpan Andem market in Uyo.', sourceIds: ['akpan-andem-news'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'southern-wet-dry', rainyMonths: [3, 4, 5, 6, 7, 8, 9, 10], dryMonths: [11, 12, 1, 2],
+    description: 'Uyo has warm, cloudy wet seasons and hot, largely cloudy dry seasons, with its clearer season running from late November to mid-February.',
+    clearLabel: 'Clearer-season sky', sourceIds: ['uyo-wiki'],
+  },
+  homePalette: { back: '#c4915c', left: '#7a5638', floor: ['#c9a870', '#5d7d4e'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/uyo-surface.geojson', bytes: 162807, sha256: 'd5a71e3a759fa0c4e4fc69fe8f8d32bb66fa11e88c1584ae7290e8054a2736c6' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Uyo', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/uyo/reviewed/osm-selected.json', bytes: 3691, sha256: 'faac1af6ff08d4fa127b53245d5263b1b2d6118b3ea1e094fb1d3a64f3ff395b' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Uyo', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/uyo/reviewed/wikidata-selected.json', bytes: 2641, sha256: '642faf997decbfe4825aebf60f7ea17cbe959c723020c3077157919ec36e3066' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/geography.json', bytes: 378, sha256: 'aad1dacf7f5acd1821cf5b644ddc1264db55582bb7e50d644a89c2d55512cb18' } },
+    { id: 'uyo-wiki', title: 'Wikipedia: Uyo', url: 'https://en.wikipedia.org/wiki/Uyo', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/uyo-wiki.json', bytes: 400, sha256: 'a0394ef7bdcb42346800184bb1145cc9ba251a8a8693449afdb05eeb4200f4c3' } },
+    { id: 'akwa-ibom-wiki', title: 'Wikipedia: Akwa Ibom State', url: 'https://en.wikipedia.org/wiki/Akwa_Ibom_State', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/akwa-ibom-wiki.json', bytes: 296, sha256: 'a34227cb9cff8978906f8b78dffb3e01df61d031a5fc3c814a5ab7e941239a17' } },
+    { id: 'ibibio-wiki', title: 'Wikipedia: Ibibio people', url: 'https://en.wikipedia.org/wiki/Ibibio_people', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/ibibio-wiki.json', bytes: 313, sha256: '4fbfc334ed0fa76d5908105db9ec217efab2563b112c5247bcd2b268ed4f3813' } },
+    { id: 'afang-soup', title: 'Wikipedia: Afang soup', url: 'https://en.wikipedia.org/wiki/Afang_soup', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/afang-soup.json', bytes: 270, sha256: '63056c56467a69b5410bfa8f1635955920fb44a3ebea75d62ee4e8001b8115c7' } },
+    { id: 'edikang-ikong', title: 'Wikipedia: Edikang Ikong', url: 'https://en.wikipedia.org/wiki/Edikang_Ikong', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/uyo/reviewed/edikang-ikong.json', bytes: 275, sha256: '5126ad8ae48b7feca0858e1539e8ba2554d96259e8ef35693eb0991da3ad9dff' } },
+    { id: 'akpan-andem-news', title: 'BusinessDay: Hawkers, vendors take over major streets in Uyo', url: 'https://businessday.ng/news/article/hawkers-vendors-take-over-major-streets-in-uyo/', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/uyo/reviewed/akpan-andem-news.json', bytes: 415, sha256: '43874b01da42d619cb08337effa4341c615359025c2e8174e61bd6761ab61960' } },
+  ],
+  unmapped: [
+    { kind: 'garden', note: 'No named garden with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'mosque', note: 'No named mosque with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon or barber shop with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

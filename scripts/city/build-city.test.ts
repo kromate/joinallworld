@@ -225,6 +225,48 @@ test('a valid synthetic CitySpec builds the playable formula skeleton without re
   assert.equal(content.venues.some(venue => venue.kind === 'club'), false)
   const meal = content.venues.find(venue => venue.id === 'test-eatery')?.definition.spots.counter?.activities[0]
   assert.equal(meal?.label, 'Eat test plate')
+  assert.deepEqual(content.unavailableCareerIds, [])
+  assert.equal(content.unmappedServices, undefined)
+})
+
+const SPARSE_KINDS = ['eatery', 'garden', 'mosque', 'park', 'polling', 'road-hub', 'salon'] as const
+const sparseSpec = (): CitySpec<'test-formula'> => ({
+  ...formulaSpec,
+  places: formulaSpec.places.filter(place => !SPARSE_KINDS.some(kind => kind === place.kind)),
+  unmapped: SPARSE_KINDS.map(kind => ({ kind, note: `No exact ${kind} record in the synthetic sources.` })),
+})
+
+test('a sparse CitySpec documents unmapped kinds and builds honest fallbacks', () => {
+  const spec = defineCitySpec(sparseSpec())
+  const origin = { x: 0, z: 0 }
+  const rules = buildFormulaRules(spec, origin)
+  const content = buildFormulaContent({
+    spec,
+    origin,
+    bounds: { minX: -100, maxX: 100, minZ: -100, maxZ: 100 },
+    localUnitAnchors: { 'test-centre': { lon: 3.01, lat: 7.01 }, 'test-north': { lon: 3.02, lat: 7.02 } },
+    scenes: buildFormulaScenes(spec),
+  })
+  assert.equal(rules.hubs.find(hub => hub.mode === 'road')?.venueId, 'test-centre-market', 'road arrivals set down at the first sourced market')
+  assert.equal(content.venues[1]?.id, 'test-stadium', 'the first recreation fallback becomes the arrival venue')
+  assert.deepEqual([...content.unavailableCareerIds].sort(), ['dj', 'hair', 'music'], 'careers without a sourced venue are explicitly unavailable')
+  assert.deepEqual([...rules.careerIds].sort(), content.workplaces.map(workplace => workplace.careerId).sort())
+  assert.deepEqual(content.unmappedServices, ['food', 'polling'])
+  const market = content.venues.find(venue => venue.id === 'test-centre-market')?.definition.spots.aisle?.activities
+  assert.ok(market?.some(item => item.tags?.includes('food')), 'market food stalls stand in for the unmapped eatery')
+  const evening = content.venues[1]?.definition.spots.stand?.activities
+  assert.ok(evening?.some(item => item.tags?.includes('nightlife')), 'the arrival venue carries the evening option')
+})
+
+test('unmapped kinds are rejected when placed, unsupported, or missing a note', () => {
+  const base = sparseSpec()
+  const placedAndUnmapped = validateCitySpec({ ...base, unmapped: [...(base.unmapped ?? []), { kind: 'stadium', note: 'Fixture.' }] })
+  assert.ok(placedAndUnmapped.includes('kind stadium cannot be both placed and unmapped'))
+  const noWorship = validateCitySpec({ ...base, places: base.places.filter(place => place.kind !== 'church'), unmapped: [...(base.unmapped ?? []), { kind: 'church', note: 'Fixture.' }] })
+  assert.ok(noWorship.includes('city needs at least one sourced church or mosque'))
+  const blankNote = validateCitySpec({ ...base, unmapped: [{ kind: 'salon', note: ' ' }] })
+  assert.ok(blankNote.includes('unmapped salon needs a note'))
+  assert.ok(blankNote.includes('city needs a sourced polling place or a documented unmapped polling'))
 })
 
 test('generated eager rules and content cannot statically reach the lazy map or topology data', () => {

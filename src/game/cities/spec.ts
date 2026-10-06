@@ -119,6 +119,18 @@ export interface TransportAbsenceFact extends SourcedFact {
   readonly note: string
 }
 
+/** Required service kinds a sparse city may document as unmapped instead of placing. */
+export type UnmappableKind = 'church' | 'eatery' | 'garden' | 'mosque' | 'park' | 'polling' | 'road-hub' | 'salon' | 'savings' | 'stadium'
+
+/**
+ * A required service kind with no exact OSM element or Wikidata P625 record at research time.
+ * It makes no claim that the service is absent from the city; the formula uses a documented fallback.
+ */
+export interface UnmappedKindFact {
+  readonly kind: UnmappableKind
+  readonly note: string
+}
+
 export interface CitySpec<City extends string = string> {
   readonly schemaVersion: 1
   readonly id: City
@@ -155,6 +167,8 @@ export interface CitySpec<City extends string = string> {
   /** Committed derived geometry input. It contains selected raw boundaries and clipped OSM surface data. */
   readonly geometry: { readonly surface: SourceCache }
   readonly sourceGroups: readonly SourceGroup[]
+  /** Documented unmapped service kinds. Empty or omitted means every required kind is placed. */
+  readonly unmapped?: readonly UnmappedKindFact[]
   readonly origin?: { readonly x: number; readonly z: number }
 }
 
@@ -210,16 +224,22 @@ const validateCoordinateReference = (label: string, reference: CoordinateReferen
 }
 
 const requiredKinds: readonly RealPlaceKind[] = ['church', 'eatery', 'garden', 'government', 'hospital', 'market', 'mosque', 'park', 'polling', 'road-hub', 'salon', 'savings', 'stadium']
+const UNMAPPABLE_KINDS: ReadonlySet<RealPlaceKind> = new Set<UnmappableKind>(['church', 'eatery', 'garden', 'mosque', 'park', 'polling', 'road-hub', 'salon', 'savings', 'stadium'])
+
+export const unmappedKindsOf = (spec: CitySpec): ReadonlySet<RealPlaceKind> => new Set((spec.unmapped ?? []).map(fact => fact.kind))
 
 export function validateCitySpec(spec: CitySpec): readonly string[] {
   const errors: string[] = []
+  const unmapped = unmappedKindsOf(spec)
+  const sparse = unmapped.size > 0
   if (!SLUG.test(spec.id)) errors.push('city id must be a lowercase slug')
   if (!spec.name.trim()) errors.push('city name is required')
   if (!SLUG.test(spec.state.id)) errors.push('state id must be a lowercase slug')
   if (!spec.state.name.trim() || !spec.state.sourceName.trim() || !spec.state.unit.trim()) errors.push('state needs name, sourceName and unit')
   if (!SLUG.test(spec.country.id) || !spec.country.name.trim()) errors.push('country needs a lowercase slug id and name')
   if (!spec.localUnits.length) errors.push('at least one local unit is required')
-  if (spec.places.length < 20 || spec.places.length > 30) errors.push('a new city needs 20 to 30 real places')
+  const minimumPlaces = sparse ? 12 : 20
+  if (spec.places.length < minimumPlaces || spec.places.length > 30) errors.push(`a new city needs ${minimumPlaces} to 30 real places`)
   const expectedSurfacePath = `scripts/geo/sources/formula/${spec.id}-surface.geojson`
   if (spec.geometry.surface.path !== expectedSurfacePath) errors.push(`geometry surface path must be ${expectedSurfacePath}`)
   if (!SHA256.test(spec.geometry.surface.sha256)) errors.push('geometry surface sha256 is invalid')
@@ -282,13 +302,24 @@ export function validateCitySpec(spec: CitySpec): readonly string[] {
     validateCoordinateReference(`place ${place.id}`, place.coordinateRef, errors)
   }
 
-  for (const kind of requiredKinds) if (!spec.places.some(place => place.kind === kind)) errors.push(`city needs a sourced ${kind} place`)
+  for (const duplicate of duplicateValues((spec.unmapped ?? []).map(fact => fact.kind))) errors.push(`unmapped kind ${duplicate} is listed twice`)
+  for (const fact of spec.unmapped ?? []) {
+    if (!UNMAPPABLE_KINDS.has(fact.kind)) errors.push(`kind ${fact.kind} cannot be documented as unmapped`)
+    if (!fact.note.trim()) errors.push(`unmapped ${fact.kind} needs a note`)
+    if (spec.places.some(place => place.kind === fact.kind)) errors.push(`kind ${fact.kind} cannot be both placed and unmapped`)
+  }
+  for (const kind of requiredKinds) {
+    if (spec.places.some(place => place.kind === kind) || unmapped.has(kind)) continue
+    errors.push(UNMAPPABLE_KINDS.has(kind) ? `city needs a sourced ${kind} place or a documented unmapped ${kind}` : `city needs a sourced ${kind} place`)
+  }
+  if (!spec.places.some(place => place.kind === 'church' || place.kind === 'mosque')) errors.push('city needs at least one sourced church or mosque')
   const markets = spec.places.filter(place => place.kind === 'market').length
   if (markets < 1 || markets > 3) errors.push('city needs 1 to 3 sourced markets')
   const tertiary = spec.places.filter(place => place.kind === 'college' || place.kind === 'polytechnic' || place.kind === 'university').length
   if (tertiary < 1 || tertiary > 3) errors.push('city needs 1 to 3 sourced tertiary institutions')
   const heritage = spec.places.filter(place => place.kind === 'civic-landmark' || place.kind === 'heritage' || place.kind === 'museum').length
-  if (heritage < 2 || heritage > 3) errors.push('city needs 2 to 3 sourced heritage, landmark or museum sites')
+  const minimumHeritage = sparse ? 1 : 2
+  if (heritage < minimumHeritage || heritage > 3) errors.push(`city needs ${minimumHeritage} to 3 sourced heritage, landmark or museum sites`)
 
   const identityFacts = [...spec.identity.foods, ...spec.identity.crafts, ...spec.identity.industries]
   for (const duplicate of duplicateValues(identityFacts.map(fact => fact.id))) errors.push(`duplicate identity id ${duplicate}`)
@@ -344,7 +375,7 @@ export function validateCitySpec(spec: CitySpec): readonly string[] {
   return errors
 }
 
-export function defineCitySpec<const Spec extends CitySpec>(spec: Spec): Spec {
+export function defineCitySpec<const Spec extends CitySpec>(spec: Spec): CitySpec<Spec['id']> {
   const errors = validateCitySpec(spec)
   if (errors.length) throw new TypeError(`Invalid city spec:\n- ${errors.join('\n- ')}`)
   definedSpecs.add(spec)

@@ -1,5 +1,5 @@
 import { isOpenCityId, loadAllCityRules, loadCityContent as preloadCityContent, playableCityIds } from '../game/cities/registry.ts';
-await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan'].map(preloadCityContent)]);
+await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan', 'abuja', 'kaduna'].map(preloadCityContent)]);
 import { CITY_MAPS } from '../map3d/city-labels.ts';
 /**
  * Proves that src/types/{life,view,actions,content,registry}.ts still describe the running rules

@@ -65,7 +65,18 @@ export function assertCityContentContract(module: CityModule, content: CityConte
   }
   if (profile === 'opened') {
     const kinds = new Set<string>(content.venues.map((venue) => venue.kind))
-    for (const group of requiredSceneGroups) assert.ok(group.kinds.some((kind) => kinds.has(kind)), `required venue kind: ${group.label}`)
+    const unmapped = new Set<string>(content.unmappedServices ?? [])
+    for (const group of requiredSceneGroups) {
+      if (unmapped.has(group.label)) {
+        assert.ok(!group.kinds.some((kind) => kinds.has(kind)), `unmapped ${group.label} is not also placed`)
+        if (group.label === 'food') {
+          const foodStop = content.starterGoals.find((goal) => goal.id === 'visit-buka')?.done.venue
+          assert.ok(foodStop && activitiesAt(content, foodStop).some((activity) => activity.tags?.includes('food')), 'an unmapped food stop still offers a food activity')
+        }
+        continue
+      }
+      assert.ok(group.kinds.some((kind) => kinds.has(kind)), `required venue kind: ${group.label}`)
+    }
     const nightlife = ['club', 'shrine', 'rooftop'].some((kind) => kinds.has(kind))
       || content.venues.some((venue) => activitiesAt(content, venue.id).some((activity) => activity.tags?.includes('nightlife')))
     assert.ok(nightlife, 'required nightlife coverage: a nightlife scene or an activity tagged nightlife')

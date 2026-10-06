@@ -1,6 +1,6 @@
 import { localUnitDescription } from './cities/runtime.ts';
 import { allCityLinks, cityCatalogueEntry, cityRules, isOpenCityId, loadAllCityRules, loadCityContent as preloadCityContent } from './cities/registry.ts';
-await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan'].map(preloadCityContent)]);
+await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan', 'abuja', 'kaduna'].map(preloadCityContent)]);
 // OWNER: world — the house everyone has, local governments, styles, upgrades and travel between cities.
 import test from 'node:test';
 import assert from 'node:assert/strict';

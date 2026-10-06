@@ -1,0 +1,168 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'dutse',
+  name: 'Dutse',
+  state: { id: 'jigawa', name: 'Jigawa', sourceName: 'Jigawa', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 9.3390747,
+    lat: 11.6909859,
+    teaser: 'The Jigawa State capital, named for its rocks and known for date palms, the Dutse Emirate and a polytechnic and federal university.',
+    preview: ["Visit the Dutse Museum and the Emir's Palace.", 'Try suya at a local spot and browse the Ultra Modern Market.'],
+    coordinateSourceId: 'osm-selected',
+    coordinateRef: { provider: 'openstreetmap', element: 'node', id: 501540908 },
+  },
+  population: { tier: 'city', sourceIds: ['dutse-wiki'], note: 'The cited article gives an estimated population of 153,000 in 2009 for Dutse.' },
+  localUnits: [
+    { id: 'dutse', name: 'Dutse', sourceName: 'Dutse', populationTier: 'city', description: 'The single selected local government holds the state capital, the emirate palace and museum, the polytechnic, the markets, the hospitals and every mapped venue.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'christ-the-king-catholic-church-dutse', name: 'Christ the King Catholic Church', kind: 'church', lon: 9.359547, lat: 11.715047, localUnitId: 'dutse',
+      description: 'Wikidata records the Christ the King Catholic Church in Dutse.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q125463898' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'central-mosque-galamawa-dutse', name: 'Central Mosque Galamawa', kind: 'mosque', lon: 9.340087, lat: 11.759522, localUnitId: 'dutse',
+      description: 'Wikidata records the Central Mosque Galamawa in Dutse.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q125463939' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'yahuza-suya-spot-dutse', name: 'Yahuza Suya Spot Nig Ltd', kind: 'eatery', lon: 9.35220674553634, lat: 11.709886288774817, localUnitId: 'dutse',
+      description: 'Wikidata records Yahuza Suya Spot as a restaurant in Dutse, Jigawa, shown here with suya.', sourceIds: ['wikidata-selected', 'suya-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q139380583' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'suya',
+    },
+    {
+      id: 'hadiza-nakowa-restaurant-dutse', name: 'Hadiza Nakowa Restaurant', kind: 'eatery', lon: 9.359968, lat: 11.7195379, localUnitId: 'dutse',
+      description: 'A mapped restaurant named Hadiza Nakowa Restaurant serving regional cuisine, shown here with kilishi.', sourceIds: ['osm-selected', 'kilishi-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 2887716560 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'kilishi',
+    },
+    {
+      id: 'jigawa-state-secretariat-dutse', name: 'Jigawa State Secretariat', kind: 'government', lon: 9.3318965, lat: 11.6857923, localUnitId: 'dutse',
+      description: 'A mapped government office named Jigawa State Secretariat.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 6201108385 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'jigawa-ministry-of-environment-dutse', name: 'Jigawa State Ministry of Environment', kind: 'government', lon: 9.337454, lat: 11.691002, localUnitId: 'dutse',
+      description: 'Wikidata records the Jigawa State Ministry of Environment in Dutse.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q122640159' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'rasheed-shekoni-hospital-dutse', name: 'Rasheed Shekoni Hospital', kind: 'hospital', lon: 9.3360635, lat: 11.6790323, localUnitId: 'dutse',
+      description: 'A mapped hospital building named Rasheed Shekoni Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 666644399 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'dutse-general-hospital', name: 'Dutse General Hospital', kind: 'hospital', lon: 9.380443938326435, lat: 11.726307776834947, localUnitId: 'dutse',
+      description: 'Wikidata records Dutse General Hospital in Dutse.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q139547268' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'dutse-ultra-modern-market', name: 'Dutse Ultra Modern Market', kind: 'market', lon: 9.344199327640327, lat: 11.691643138078268, localUnitId: 'dutse',
+      description: 'Wikidata records Dutse Ultra Modern Market in Jigawa State; Wikipedia says Jigawa trade centres on agricultural goods and livestock.', sourceIds: ['wikidata-selected', 'jigawa-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q123375856' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['jigawa-farming-livestock-trade'],
+    },
+    {
+      id: 'laraba-market-dutse', name: 'Laraba Market', kind: 'market', lon: 9.342172198552834, lat: 11.668648595649545, localUnitId: 'dutse',
+      description: 'Wikidata records Laraba Market in Jigawa State; Wikipedia says Jigawa trade centres on agricultural goods and livestock.', sourceIds: ['wikidata-selected', 'jigawa-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q123383531' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['jigawa-farming-livestock-trade'],
+    },
+    {
+      id: 'dutse-emirate-museum-park', name: 'Dutse Emirate Museum', kind: 'park', lon: 9.3488916, lat: 11.7374052, localUnitId: 'dutse',
+      description: 'A mapped park, recorded under the name Dutse Emirate Museum.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7590751932 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'gtbank-dutse', name: 'GTBank', kind: 'savings', lon: 9.3562121, lat: 11.7161939, localUnitId: 'dutse',
+      description: 'A mapped bank named GTBank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 6244922588 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'sterling-bank-dutse', name: 'Sterling Bank Dutse', kind: 'savings', lon: 9.352464237577552, lat: 11.710317015793748, localUnitId: 'dutse',
+      description: 'Wikidata records Sterling Bank Dutse as a bank in Jigawa.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q139547452' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'jigawa-state-polytechnic-dutse', name: 'Jigawa State Polytechnic, Dutse', kind: 'polytechnic', lon: 9.355463554592422, lat: 11.716664592230986, localUnitId: 'dutse',
+      description: 'Wikidata records Jigawa State Polytechnic, Dutse; Wikipedia lists a state polytechnic in Dutse.', sourceIds: ['wikidata-selected', 'dutse-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q108607234' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'dutse-museum', name: 'Dutse Museum', kind: 'museum', lon: 9.34866, lat: 11.73765, localUnitId: 'dutse',
+      description: 'Wikidata records Dutse Museum as a museum in Jigawa.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q112033360' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'emir-of-dutse-palace', name: 'Emir of Dutse Palace, Jigawa.', kind: 'heritage', lon: 9.348088, lat: 11.738296, localUnitId: 'dutse',
+      description: "Wikidata records the Emir of Dutse's Palace; Wikipedia says Dutse is the capital of Dutse Emirate.", sourceIds: ['wikidata-selected', 'dutse-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q109252616' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'dutse-rock-range', name: 'Dutse Rock Range', kind: 'heritage', lon: 9.33204, lat: 11.703541, localUnitId: 'dutse',
+      description: 'Wikidata records the Dutse Rock Range; Wikipedia says the city got its name, Hausa for rock, from its rocky topography.', sourceIds: ['wikidata-selected', 'dutse-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q109252564' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'suya', name: 'Suya', description: 'Wikipedia describes suya as a traditional Hausa smoke-grilled spiced meat on skewers, seasoned with the spice mix yaji.', sourceIds: ['suya-wiki'] },
+      { id: 'kilishi', name: 'Kilishi', description: 'Wikipedia describes kilishi as a Hausaland jerky of dried, spiced meat such as beef or lamb, seasoned, smoked and sun-dried.', sourceIds: ['kilishi-wiki'] },
+    ],
+    crafts: [
+      { id: 'jigawa-leather-dyeing-blacksmithing', name: 'Blacksmithing, leatherwork, tanning and dyeing', description: 'Wikipedia lists blacksmithing, leather-works, tanning and dyeing among the informal-sector activities of Jigawa State.', sourceIds: ['jigawa-wiki'] },
+    ],
+    industries: [
+      { id: 'jigawa-farming-livestock-trade', name: 'Farming, livestock and trade', description: 'Wikipedia says over 80% of Jigawa residents are engaged in subsistence farming and animal husbandry, with trade especially in agricultural goods and livestock.', sourceIds: ['jigawa-wiki'] },
+      { id: 'dutse-date-palms', name: 'Date palms (dabino)', description: 'Wikipedia says Dutse and its environs are well known for date trees (dabino) of different varieties, and that the city has a date palm research sub-station.', sourceIds: ['dutse-wiki'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'northern-savanna', rainyMonths: [5, 6, 7, 8, 9], dryMonths: [11, 12, 1, 2, 3],
+    description: 'Dutse has a tropical savanna climate (Aw) with a hot dry season and a muggy wet season; the harmattan usually appears in December and January.',
+    clearLabel: 'Dry-season sky', sourceIds: ['dutse-wiki', 'climate-nigeria-wiki'], harmattan: { months: [12, 1], label: 'Harmattan haze' },
+  },
+  homePalette: { back: '#c9bfa8', left: '#7d7358', floor: ['#ded3b5', '#8a8a6a'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/dutse-surface.geojson', bytes: 146399, sha256: '46a4da1ef8b8c58ae52d7b91ac5e7f82d7f9226d28da6cc1b521ed9445c4b730' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Dutse', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/dutse/reviewed/osm-selected.json', bytes: 1652, sha256: '424d4708f271042d5fdb4e677a57546f3aefb5bed54aba2accc7903497e434d5' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Dutse', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/dutse/reviewed/wikidata-selected.json', bytes: 7773, sha256: 'f7814a79843a33026887c6336851846cfb864571fb5ae5065649c03a9fa9aad1' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/geography.json', bytes: 344, sha256: '79c33736be245669a7e6aa0cc8634d52ed0201959fd5d8f53c4b41ad427b4a29' } },
+    { id: 'dutse-wiki', title: 'Wikipedia: Dutse', url: 'https://en.wikipedia.org/wiki/Dutse', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/dutse-wiki.json', bytes: 759, sha256: '42b0503a6fea633cb5666092ead20f833218cbe6b58444bfdc4b15d93d4afd01' } },
+    { id: 'jigawa-wiki', title: 'Wikipedia: Jigawa State', url: 'https://en.wikipedia.org/wiki/Jigawa_State', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/jigawa-wiki.json', bytes: 535, sha256: '1acee498cef8fe3215f029aa2475d20e608107675000fc65511bace1ca934e96' } },
+    { id: 'climate-nigeria-wiki', title: 'Wikipedia: Climate of Nigeria', url: 'https://en.wikipedia.org/wiki/Climate_of_Nigeria', checkedOn: '2026-10-06', supports: ['climate'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/climate-nigeria-wiki.json', bytes: 277, sha256: '09369377504d8b707c5a71181917109995704e17e0238006f5307b3d6253bba4' } },
+    { id: 'suya-wiki', title: 'Wikipedia: Suya', url: 'https://en.wikipedia.org/wiki/Suya', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/suya-wiki.json', bytes: 277, sha256: 'ff698f4bff5262056dabb7347be0cb9124e194f9727a2548e7d91028a64643bd' } },
+    { id: 'kilishi-wiki', title: 'Wikipedia: Kilishi', url: 'https://en.wikipedia.org/wiki/Kilishi', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/dutse/reviewed/kilishi-wiki.json', bytes: 320, sha256: 'dea34f670c3f12b5527a66d5099665c517538f678af58e93b3cc43ef4d2e1b72' } },
+  ],
+  unmapped: [
+    { kind: 'garden', note: 'No named garden with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'road-hub', note: 'No named road hub with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'stadium', note: 'No named stadium with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

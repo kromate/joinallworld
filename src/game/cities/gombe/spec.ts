@@ -1,0 +1,181 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'gombe',
+  name: 'Gombe',
+  state: { id: 'gombe', name: 'Gombe', sourceName: 'Gombe', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 11.1667,
+    lat: 10.2833,
+    teaser: 'The Gombe capital, with an emir’s palace, a national museum, grain markets and Pantami Stadium.',
+    preview: ["Visit the Emir's Palace and the National Museum.", 'Trade in the Timber Market and ride from the Gombe Line terminal.'],
+    coordinateSourceId: 'wikidata-selected',
+    coordinateRef: { provider: 'wikidata', entity: 'Q591598' },
+  },
+  population: { tier: 'city', sourceIds: ['gombe-wiki'], note: 'The cited article reports 280,000 residents at the 2006 census and an estimated 446,800 in its infobox.' },
+  localUnits: [
+    { id: 'gombe', name: 'Gombe', sourceName: 'Gombe', populationTier: 'city', description: 'The selected Gombe local government holds the palace, museum, university, markets and every mapped venue.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'pantami-stadium', name: 'Pantami Stadium', kind: 'stadium', lon: 11.1684017, lat: 10.2765209, localUnitId: 'gombe',
+      description: 'A mapped stadium named Pantami Stadium.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 11349146554 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'central-mosque-emir-palace', name: 'Central Mosque Emir Palace', kind: 'mosque', lon: 11.1680965, lat: 10.2941202, localUnitId: 'gombe',
+      description: 'A mapped mosque named Central Mosque Emir Palace.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 328221571 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'emirs-palace-gombe', name: "Emir's Palace Gombe", kind: 'heritage', lon: 11.168693, lat: 10.29341, localUnitId: 'gombe',
+      description: "Wikidata records the Emir's Palace in Gombe with a published coordinate.", sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q108956370' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'national-museum-gombe', name: 'National Museum Gombe', kind: 'museum', lon: 11.136828010382995, lat: 10.291030498837582, localUnitId: 'gombe',
+      description: 'Wikidata records the National Museum Gombe as a national museum in Gombe State.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q112064167' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'bubayeros-tomb', name: "Bubayero's Tomb", kind: 'heritage', lon: 11.1731, lat: 10.2791, localUnitId: 'gombe',
+      description: "Wikidata records Bubayero's Tomb as a tourist centre in Gombe.", sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q111912541' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'gombe-state-university', name: 'Gombe State University', kind: 'university', lon: 11.1755497, lat: 10.3044678, localUnitId: 'gombe',
+      description: 'A mapped university named Gombe State University.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 328221569 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'specialist-hospital-gombe', name: 'SPECIALIST HOSPITAL GOMBE', kind: 'hospital', lon: 11.1574571, lat: 10.2888282, localUnitId: 'gombe',
+      description: 'A mapped hospital named SPECIALIST HOSPITAL GOMBE.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 803651831 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'federal-teaching-hospital-gombe', name: 'Federal Teaching Hospital', kind: 'hospital', lon: 11.1363065, lat: 10.2990598, localUnitId: 'gombe',
+      description: 'A mapped hospital named Federal Teaching Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7843431685 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'kasuwar-mata', name: 'KASUWAR MATA', kind: 'market', lon: 11.1697987, lat: 10.3015083, localUnitId: 'gombe',
+      description: 'A mapped marketplace named KASUWAR MATA; Wikipedia says farming is the main income in Gombe.', sourceIds: ['osm-selected', 'gombe-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 914742997 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['gombe-farming'],
+    },
+    {
+      id: 'timber-market-gombe', name: 'Timber Market Lowcost div', kind: 'market', lon: 11.187404, lat: 10.280989, localUnitId: 'gombe',
+      description: 'A mapped marketplace named Timber Market Lowcost div; Wikipedia lists furniture manufacturing among Gombe industries.', sourceIds: ['osm-selected', 'gombe-state-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5103204594 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['gombe-furniture'],
+    },
+    {
+      id: 'gombe-line-bus-station', name: 'Gombe State Transport Services (Gombe Line)', kind: 'road-hub', lon: 11.1655148, lat: 10.2868505, localUnitId: 'gombe',
+      description: 'A mapped bus station named Gombe State Transport Services (Gombe Line).', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7972408585 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['bench', 'lamp'] },
+    },
+    {
+      id: 'botanical-garden-gombe', name: 'Botanical Garden', kind: 'garden', lon: 11.1733051, lat: 10.3067468, localUnitId: 'gombe',
+      description: 'A mapped garden named Botanical Garden.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 777567481 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'shiloh-baptist-church-malan-inna', name: 'Shiloh Baptist Church Malan Inna', kind: 'church', lon: 11.1792189, lat: 10.3099478, localUnitId: 'gombe',
+      description: 'A mapped church named Shiloh Baptist Church Malan Inna.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1017399534 }, accuracy: 'feature-centroid',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'catholic-church-gombe', name: 'Catholic church', kind: 'church', lon: 11.177331, lat: 10.3064719, localUnitId: 'gombe',
+      description: 'A mapped place of worship named Catholic church.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 784436980 }, accuracy: 'feature-centroid',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'aroma-restaurant-bcj', name: 'Aroma restaurant BCJ', kind: 'eatery', lon: 11.1837159, lat: 10.279707, localUnitId: 'gombe',
+      description: 'A mapped restaurant named Aroma restaurant BCJ, shown here with tuwon masara.', sourceIds: ['osm-selected', 'hausa-cuisine-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7328639286 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'tuwon-masara',
+    },
+    {
+      id: 'dados-eatery', name: 'Dados Eatery', kind: 'eatery', lon: 11.1468254, lat: 10.2912831, localUnitId: 'gombe',
+      description: 'A mapped fast-food outlet named Dados Eatery, shown here with kosai.', sourceIds: ['osm-selected', 'hausa-cuisine-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 6100414191 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'kosai',
+    },
+    {
+      id: 'gtbank-gombe', name: 'Guarantee Trust Bank', kind: 'savings', lon: 11.184922, lat: 10.283458, localUnitId: 'gombe',
+      description: 'A mapped bank branch named Guarantee Trust Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 6060244485 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'first-bank-gombe', name: 'First bank Gombe', kind: 'savings', lon: 11.1829641, lat: 10.2805995, localUnitId: 'gombe',
+      description: 'A mapped bank branch named First bank Gombe.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1083461333 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'inec-hq-gombe', name: 'INEC HQ', kind: 'government', lon: 11.1339813, lat: 10.290648, localUnitId: 'gombe',
+      description: 'A mapped government office named INEC HQ.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 932648641 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'gombe-treasury-house', name: 'Gombe Treasury House', kind: 'government', lon: 11.1535647, lat: 10.2823721, localUnitId: 'gombe',
+      description: 'A mapped office named Gombe Treasury House.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 9767591959 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'tuwon-masara', name: 'Tuwon masara', description: 'Tuwon masara is a Hausa swallow made from maize, millet or guinea corn flour.', sourceIds: ['hausa-cuisine-wiki', 'gombe-wiki'] },
+      { id: 'kosai', name: 'Kosai', description: 'Kosai is a Hausa breakfast dish of peeled beans formed into balls and deep-fried.', sourceIds: ['hausa-cuisine-wiki'] },
+    ],
+    crafts: [
+      { id: 'gombe-furniture', name: 'Furniture making', description: 'Wikipedia lists furniture manufacturing among the small-scale industries of Gombe State.', sourceIds: ['gombe-state-wiki'] },
+    ],
+    industries: [
+      { id: 'gombe-farming', name: 'Farming and grain trade', description: 'Wikipedia says farming is the main income in Gombe, with maize, millet, guinea corn, rice, cotton, groundnut and beans, and names Tudun Hatsi as a notable grain market.', sourceIds: ['gombe-wiki'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'northern-savanna', rainyMonths: [4, 5, 6, 7, 8, 9, 10], dryMonths: [11, 12, 1, 2, 3],
+    description: 'Gombe has a rainy season from April to October and a dry season from November to March, with about 850 mm of rain a year.',
+    clearLabel: 'Dry-season sky', sourceIds: ['gombe-state-wiki'],
+  },
+  homePalette: { back: '#c9b98f', left: '#7f7048', floor: ['#bfae78', '#6a8a5a'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/gombe-surface.geojson', bytes: 89156, sha256: '2c0e3babf863a21b31d18519914ae0779738a84ae825833ed895ea54931ce598' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Gombe', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/gombe/reviewed/osm-selected.json', bytes: 4611, sha256: 'e6a161948cbc2849851e19155b9315a4342f1e4acab4ed7de4d04fca616934d3' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Gombe', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/gombe/reviewed/wikidata-selected.json', bytes: 2893, sha256: '14d7d21a212717c1d39e195affbe6f9c8b404176cc2d72001c867bd8bd75512a' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/gombe/reviewed/geography.json', bytes: 342, sha256: '918c36ade54a0f6a4b0d57282d52faf30c29aa8069de313716552b64e9109c3c' } },
+    { id: 'gombe-wiki', title: 'Wikipedia: Gombe, Nigeria', url: 'https://en.wikipedia.org/wiki/Gombe,_Nigeria', checkedOn: '2026-10-06', supports: ['population', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gombe/reviewed/gombe-wiki.json', bytes: 427, sha256: '0ca4f52e0480ad6b59efb9132c47052441dfd392f1c5177e39e3f361505f270f' } },
+    { id: 'gombe-state-wiki', title: 'Wikipedia: Gombe State', url: 'https://en.wikipedia.org/wiki/Gombe_State', checkedOn: '2026-10-06', supports: ['climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gombe/reviewed/gombe-state-wiki.json', bytes: 454, sha256: 'b25e1f2b0abaf561876b87d2d687d5c117bda1a31a6825b983ffef438e7cf312' } },
+    { id: 'hausa-cuisine-wiki', title: 'Wikipedia: Hausa cuisine', url: 'https://en.wikipedia.org/wiki/Hausa_cuisine', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gombe/reviewed/hausa-cuisine-wiki.json', bytes: 314, sha256: 'f168fc25b88c46f5233149e8d8d6e4370d7e6dfd8368998f73c01c7423d3d73b' } },
+  ],
+  unmapped: [
+    { kind: 'park', note: 'No named public park with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon or barber shop with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

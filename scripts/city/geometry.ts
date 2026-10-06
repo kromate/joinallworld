@@ -37,6 +37,10 @@ const PBF = {
 
 const ADMIN_GRID_DEGREES = 0.0002
 const ADMIN_TOLERANCE_SQUARE_UNITS = 0.01
+// The selected state outline snaps to a 10x finer grid (same absolute simplification) so a local unit
+// running along the state border does not poke past it by grid-rounding noise.
+const STATE_GRID_DEGREES = ADMIN_GRID_DEGREES / 10
+const STATE_TOLERANCE_SQUARE_UNITS = ADMIN_TOLERANCE_SQUARE_UNITS * 100
 const SURFACE_GRID_DEGREES = 0.000001
 const SURFACE_TOLERANCE_SQUARE_UNITS = 0.0001
 
@@ -363,7 +367,7 @@ function topologyText(topology: BuiltTopology, features: readonly { id: string; 
   return JSON.stringify({
     grid: topology.grid,
     arcs: topologyArcText(topology),
-    features: features.map((feature) => ({ ...feature, polys: topologyPolys(topology, feature.id) })),
+    features: features.map((feature) => ({ id: feature.id, name: feature.name, polys: topologyPolys(topology, feature.id) })),
   })
 }
 
@@ -399,7 +403,7 @@ export function buildSelectedStateTopology(adm1: BoundaryFeatureCollection, sour
     polygonsOf(feature),
   ))
   return subsetTopology(
-    buildTopology(inputs, ADMIN_GRID_DEGREES, () => ADMIN_TOLERANCE_SQUARE_UNITS),
+    buildTopology(inputs, STATE_GRID_DEGREES, () => STATE_TOLERANCE_SQUARE_UNITS),
     new Set([owner]),
   )
 }
@@ -434,7 +438,7 @@ import {
   FORMULA_WATER,
 } from '../../../map3d/geo/data/${input.cityId}.formula.ts'
 
-export const CITY_MAP: CityMapPack = Object.freeze({
+export const CITY_MAP: CityMapPack<typeof CITY_SPEC.id, (typeof CITY_SPEC.localUnits)[number]['id']> = Object.freeze({
   cityId: ${JSON.stringify(input.cityId)},
   origin: CITY_MAP_ORIGIN,
   projection: 'nigeria-equirectangular-v1',
@@ -522,10 +526,11 @@ export async function buildCityGeometry(input: BuildCityGeometryInput): Promise<
       throw new Error(`${venue.id}: derived dry-land owner is ${dryOwners.join(', ') || 'none'}, declared ${venue.localUnitId}${inWater ? '; point is in mapped water' : ''}`)
     }
   }
+  // Local-unit outlines use the surface grid so derived land never pokes past the play area at small-city scale.
   const localUnitTopology = buildTopology(
     units.flatMap((unit) => ringsFor(unit.id, unit.feature?.polygons ?? [])),
-    ADMIN_GRID_DEGREES,
-    () => ADMIN_TOLERANCE_SQUARE_UNITS,
+    SURFACE_GRID_DEGREES,
+    () => SURFACE_TOLERANCE_SQUARE_UNITS,
   )
   const stateFeatureId = `${input.stateId}-state`
   const selectedStateTopology = buildSelectedStateTopology(adm1, input.stateSourceName, stateFeatureId)

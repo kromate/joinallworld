@@ -1,0 +1,156 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'gusau',
+  name: 'Gusau',
+  state: { id: 'zamfara', name: 'Zamfara', sourceName: 'Zamfara', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 6.6606398,
+    lat: 12.1658358,
+    teaser: 'The Zamfara State capital, an agricultural and commercial centre of the old Sokoto Caliphate with a lively yam and central market.',
+    preview: ['Catch a match at the Sardauna Memorial Stadium.', 'Browse Gusau Central Market and the yam market.'],
+    coordinateSourceId: 'osm-selected',
+    coordinateRef: { provider: 'openstreetmap', element: 'node', id: 501540899 },
+  },
+  population: { tier: 'city', sourceIds: ['gusau-wiki'], note: 'The cited article gives a population of 383,162 for the Gusau local government area at the 2006 census.' },
+  localUnits: [
+    { id: 'gusau', name: 'Gusau', sourceName: 'Gusau', populationTier: 'city', description: 'The single selected local government holds the state capital, the stadium, the markets, the hospitals, the state ministries and every mapped venue.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'our-lady-of-fatima-church-gusau', name: 'Our Lady of Fatima Catholic Church gusau', kind: 'church', lon: 6.671489, lat: 12.171179, localUnitId: 'gusau',
+      description: 'Wikidata records the Our Lady of Fatima Catholic Church in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q125391123' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'first-baptist-church-gusau', name: 'First Baptist Church Gusau', kind: 'church', lon: 6.669367, lat: 12.167449, localUnitId: 'gusau',
+      description: 'Wikidata records the First Baptist Church in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q125392381' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'zamfara-ministry-of-information-culture-tourism', name: 'Zamfara State Ministry of information, Culture and Tourism', kind: 'government', lon: 6.657523647616265, lat: 12.17797367139902, localUnitId: 'gusau',
+      description: 'Wikidata records the Zamfara State Ministry of Information, Culture and Tourism as the state agency for culture and tourism.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q130458838' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'zamfara-ministry-of-environment-solid-minerals', name: 'Zamfara State Ministry of Environment & Solid Minerals Development', kind: 'government', lon: 6.663212, lat: 12.180343, localUnitId: 'gusau',
+      description: 'Wikidata records the Zamfara State Ministry of Environment and Solid Minerals Development in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q122643858' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'zamfara-state-gis-gusau', name: 'Zamfara State Geographic Information System', kind: 'government', lon: 6.6836815, lat: 12.1673566, localUnitId: 'gusau',
+      description: 'A mapped government office named Zamfara State Geographic Information System.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 11289151810 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'yariman-bakura-specialist-hospital-gusau', name: 'Yariman Bakura Specialist Hospital', kind: 'hospital', lon: 6.677084795422724, lat: 12.168391158403434, localUnitId: 'gusau',
+      description: 'Wikidata records the Yariman Bakura Specialist Hospital in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q93122035' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'federal-medical-centre-gusau', name: 'Federal Medical Centre, Gusau', kind: 'hospital', lon: 6.687103758189616, lat: 12.183999162280694, localUnitId: 'gusau',
+      description: 'Wikidata records the Federal Medical Centre, Gusau; Wikipedia lists it for the city.', sourceIds: ['wikidata-selected', 'gusau-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q112939189' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'daula-hospital-gusau', name: 'Daula Hospital Gusau', kind: 'hospital', lon: 6.6836263, lat: 12.1717902, localUnitId: 'gusau',
+      description: 'A mapped hospital named Daula Hospital Gusau.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7824027783 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'gusau-central-market', name: 'Gusau central market', kind: 'market', lon: 6.6689771, lat: 12.183036, localUnitId: 'gusau',
+      description: 'Wikidata records Gusau central market in Zamfara State; Wikipedia describes Gusau as an agricultural and commercial centre.', sourceIds: ['wikidata-selected', 'gusau-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q136515607' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['gusau-farming-trade'],
+    },
+    {
+      id: 'gusau-yam-market', name: 'Gusau Yam Market', kind: 'market', lon: 6.668169, lat: 12.184991, localUnitId: 'gusau',
+      description: 'Wikidata records Gusau Yam Market in Zamfara State; Wikipedia describes Gusau as an agricultural and commercial centre.', sourceIds: ['wikidata-selected', 'gusau-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q136525073' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['gusau-farming-trade'],
+    },
+    {
+      id: 'sardauna-memorial-stadium-gusau', name: 'Sardauna Memorial Stadium', kind: 'stadium', lon: 6.66845441, lat: 12.16407248, localUnitId: 'gusau',
+      description: 'Wikidata records Sardauna Memorial Stadium as a stadium in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q1266564' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'gusau-amusement-park', name: 'Gusau Amusement Park', kind: 'park', lon: 6.6555168, lat: 12.189437, localUnitId: 'gusau',
+      description: 'Wikidata records Gusau Amusement Park as a park in Gusau, Zamfara State.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q131442403' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'federal-college-of-education-technical-gusau', name: 'Federal College of Education (Technical), Gusau', kind: 'college', lon: 6.721918027501154, lat: 12.146464207812235, localUnitId: 'gusau',
+      description: 'Wikidata records the Federal College of Education (Technical), Gusau as a college of education.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q107477982' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'huda-university-gusau', name: 'Huda University, Gusau', kind: 'university', lon: 6.663893, lat: 12.121489, localUnitId: 'gusau',
+      description: 'Wikidata records Huda University, Gusau as a private university in Zamfara State.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q138052722' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'zamfara-state-library-gusau', name: 'Zanfara State Library Board, Gusau', kind: 'civic-landmark', lon: 6.66682, lat: 12.17357, localUnitId: 'gusau',
+      description: 'Wikidata records the Zamfara State Library Board library in Gusau.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q68652755' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'suya', name: 'Suya', description: 'Wikipedia describes suya as a traditional Hausa smoke-grilled spiced meat on skewers, seasoned with the spice mix yaji.', sourceIds: ['suya-wiki'] },
+      { id: 'tuwon-shinkafa', name: 'Tuwon shinkafa', description: 'Wikipedia describes tuwon shinkafa as a rice swallow from northern Nigeria; Wikipedia lists rice among the main products of Zamfara State.', sourceIds: ['tuwon-shinkafa-wiki', 'zamfara-wiki'] },
+    ],
+    crafts: [
+      { id: 'gusau-builders-blacksmiths', name: 'Building, thatching and blacksmithing', description: 'Wikipedia says that before the colonial period Gusau had builders, thatchers, butchers and blacksmiths alongside its farming economy.', sourceIds: ['gusau-wiki'] },
+    ],
+    industries: [
+      { id: 'gusau-farming-trade', name: 'Farming and commerce', description: 'Wikipedia describes Gusau as an important agricultural and commercial centre, and says over 80 percent of Zamfara State is engaged in agriculture, with millet, guinea corn, maize, rice, groundnut, cotton, tobacco and beans.', sourceIds: ['gusau-wiki', 'zamfara-wiki'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'northern-savanna', rainyMonths: [5, 6, 7, 8, 9], dryMonths: [10, 11, 12, 1, 2, 3, 4],
+    description: 'Gusau has a tropical savanna climate (Aw); in Zamfara State the rains run from late May to September and the harmattan season lasts from December to April.',
+    clearLabel: 'Dry-season sky', sourceIds: ['gusau-wiki', 'zamfara-wiki'], harmattan: { months: [12, 1, 2, 3, 4], label: 'Harmattan haze' },
+  },
+  homePalette: { back: '#a8553a', left: '#6b3324', floor: ['#d9b99a', '#8a6a4a'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/gusau-surface.geojson', bytes: 173919, sha256: 'e5691f9bc6c496cf12b7d5136550b2849a64a5f3275a5ddddda4425ffbaaa6cc' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Gusau', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/gusau/reviewed/osm-selected.json', bytes: 1034, sha256: '653b2c7db9801fd2f4a25d5310a7a5b32acb8470c6fbd1f40d73218aa5521cad' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Gusau', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/gusau/reviewed/wikidata-selected.json', bytes: 10423, sha256: '5fafd2afc46863427e0cf5b8f7ba01035a8cc80a382cb425300669b38bd9a9c5' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/gusau/reviewed/geography.json', bytes: 346, sha256: '5e738c4d0cb284d52414a7cb2b262da4d945c512caa320ae12c052044c1f701f' } },
+    { id: 'gusau-wiki', title: 'Wikipedia: Gusau', url: 'https://en.wikipedia.org/wiki/Gusau', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gusau/reviewed/gusau-wiki.json', bytes: 617, sha256: '8fa4cb929271ec51a3fe3636663650e2bfaa6a15a5e6b3a2347ce30be52cae44' } },
+    { id: 'zamfara-wiki', title: 'Wikipedia: Zamfara State', url: 'https://en.wikipedia.org/wiki/Zamfara_State', checkedOn: '2026-10-06', supports: ['climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gusau/reviewed/zamfara-wiki.json', bytes: 427, sha256: '52ada7bae0eaf05b02c607d096e960381d3b1bb3e88d56cf4125e595d6d72bea' } },
+    { id: 'suya-wiki', title: 'Wikipedia: Suya', url: 'https://en.wikipedia.org/wiki/Suya', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gusau/reviewed/suya-wiki.json', bytes: 277, sha256: 'ff698f4bff5262056dabb7347be0cb9124e194f9727a2548e7d91028a64643bd' } },
+    { id: 'tuwon-shinkafa-wiki', title: 'Wikipedia: Tuwon shinkafa', url: 'https://en.wikipedia.org/wiki/Tuwon_shinkafa', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/gusau/reviewed/tuwon-shinkafa-wiki.json', bytes: 278, sha256: 'd6423e372de83365894902bc6d0f2cf63ba8fe953ec641f4966280a25ac82e84' } },
+  ],
+  unmapped: [
+    { kind: 'eatery', note: 'No named eatery with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'garden', note: 'No named garden with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'mosque', note: 'No named mosque with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'road-hub', note: 'No named road hub with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'savings', note: 'No named bank or savings venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

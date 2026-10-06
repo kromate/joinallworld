@@ -1327,6 +1327,9 @@ export interface CityHousingContent {
 /** How a city sounds, all optional: a short arrival motif (an instrument id from src/audio/data.ts MOTIFS), the city map's ambience (a SCAPES id) and a key in semitones. */
 export interface CitySound { motif: string; ambience?: string; key?: number }
 
+/** A required service group a formula city documents as unmapped in exact sources. */
+export type UnmappedService = 'food' | 'polling'
+
 export interface CityContent<City extends string = string> {
   cityId: City
   /** Local market products and specialties; shared shop mechanics remain unchanged. */
@@ -1364,6 +1367,8 @@ export interface CityContent<City extends string = string> {
   workplaces: readonly CityWorkplaceContent[]
   /** Career ids intentionally unavailable in this city. Together with workplaces this is exhaustive. */
   unavailableCareerIds: readonly string[]
+  /** Required service groups with no exact sourced venue in this city (formula cities only); a documented fallback covers them. */
+  unmappedServices?: readonly UnmappedService[]
   housing: readonly CityHousingContent[]
   events: readonly CalendarEvent[]
   starterGoals: readonly StarterGoal[]

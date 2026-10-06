@@ -47,7 +47,7 @@ test('atlas consumers read live city metadata and canonical links after module i
   assert.deepEqual([kaduna.city, kaduna.status], ['kaduna', 'open'])
   assert.deepEqual([regionEntry('state', 'test-state').city, regionEntry('state', 'test-state').status], [FICTIONAL_CITY_ID, 'open'])
 
-  const canonical = allCityLinks().find((link) => link.a === 'lagos' && link.b === 'kaduna' && link.mode === 'road')
+  const canonical = allCityLinks().find((link) => [link.a, link.b].sort().join('|') === 'kaduna|lagos' && link.mode === 'road')
   if (kadunaWasClosed) assert.deepEqual(canonical, kadunaLink, 'the opened fixture overrides the legacy compatibility row')
   else assert.ok(canonical && canonical.fare > 0, 'the opened catalogue city has its canonical road')
   assert.ok(allCityLinks().some((link) => link.a === FICTIONAL_CITY_ID && link.b === fictionalNeighbourCity.id), 'new module links reach atlas drawing')

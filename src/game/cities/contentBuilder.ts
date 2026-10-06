@@ -40,6 +40,9 @@ export interface CityContentSpec<City extends string> {
   readonly homePalette?: CityContent<City>['homePalette']
   readonly sound?: CityContent<City>['sound']
   readonly business?: CityContent<City>['business']
+  /** Careers with no compatible venue in this city; together with workplaces this is exhaustive. */
+  readonly unavailableCareerIds?: readonly string[]
+  readonly unmappedServices?: CityContent<City>['unmappedServices']
 }
 
 export const activity = (id: string, label: string, icon: string, tags: string[], fields: Partial<ActivityDefinition> = {}): ActivityDefinition => ({
@@ -111,7 +114,8 @@ export function buildCityContent<City extends string>(spec: CityContentSpec<City
     const definition: NpcDefinition = { id, venue: venue.id, name: person.name, role: person.role, emoji: personIndex ? 'neighbour' : 'person', quotes: [...person.quotes], at: null, beta: true }
     return Object.freeze({ cityId: spec.cityId, id, venueId: venue.id, definition: Object.freeze(definition) })
   })))
-  const workplaces = Object.freeze(Object.values(JOBS).map((job) => {
+  const unavailable = new Set(spec.unavailableCareerIds ?? [])
+  const workplaces = Object.freeze(Object.values(JOBS).filter((job) => !unavailable.has(job.id)).map((job) => {
     const venueId = spec.careerVenues[job.id], venue = venues.find((entry) => entry.id === venueId)
     if (!venueId || !venue) throw new Error(`${spec.cityId} missing workplace for ${job.id}`)
     const definition: JobDefinition = { ...job, summary: spec.careerSummaries[job.id] ?? `Build a ${job.label.toLowerCase()} career at ${venue.name}.`, workplace: { venue: venueId, spot: 'work' }, workplaceName: venue.name, shift: { ...job.shift, id: `${spec.cityId}-${job.id}-shift`, note: `${venue.name} beta workplace; shared career ladder and shift rules.` } }
@@ -137,7 +141,7 @@ export function buildCityContent<City extends string>(spec: CityContentSpec<City
   return Object.freeze({
     cityId: spec.cityId, localModes: spec.localModes, dreamWording, lotteryWording, ...(spec.homePalette ? { homePalette: spec.homePalette } : {}), ...(spec.sound ? { sound: spec.sound } : {}),
     ...(spec.business ? { business: spec.business } : {}),
-    localUnitDescriptions: spec.localUnitDescriptions, venues, regulars, workplaces, unavailableCareerIds: Object.freeze([]),
+    localUnitDescriptions: spec.localUnitDescriptions, venues, regulars, workplaces, unavailableCareerIds: Object.freeze([...unavailable]), ...(spec.unmappedServices?.length ? { unmappedServices: Object.freeze([...spec.unmappedServices]) } : {}),
     housing: Object.freeze(spec.houses.map((house) => ({ districtId: house.districtId, position: house.point, definition: { id: house.id, label: house.label, district: house.district, grid: house.grid, rent: house.rent, moveIn: house.rent * 3, description: `A beta rental option in ${house.district}.`, betaFields: ['grid', 'rent', 'moveIn'] } satisfies HouseDefinition, spot: { district: house.district, zone: 'mainland' as const, map: displayPoint(spec.origin, spec.bounds, house.point) } }))),
     events: spec.events, starterGoals: goals(spec), wishes: wishes(spec), radioVenueIds: spec.radioVenueIds,
     billboardRoads: spec.billboardRoads, tablePlaces: spec.tablePlaces, thingsToDo: spec.thingsToDo, culture: spec.culture,

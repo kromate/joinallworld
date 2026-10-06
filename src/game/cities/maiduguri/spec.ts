@@ -1,0 +1,182 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'maiduguri',
+  name: 'Maiduguri',
+  state: { id: 'borno', name: 'Borno', sourceName: 'Borno', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 13.15,
+    lat: 11.833333333333,
+    teaser: "The Borno capital and a long-standing trading hub, with the Shehu's palace, busy markets and El-Kanemi Stadium.",
+    preview: ["Visit the Shehu of Borno's Palace and Maiduguri Central Mosque.", 'Browse Gamboru Market and Monday Market.'],
+    coordinateSourceId: 'wikidata-selected',
+    coordinateRef: { provider: 'wikidata', entity: 'Q221436' },
+  },
+  population: { tier: 'major-city', sourceIds: ['maiduguri-wiki'], note: 'The cited article gives an estimated 791,200 residents for Maiduguri (2022 projection).' },
+  localUnits: [
+    { id: 'maiduguri', name: 'Maiduguri', sourceName: 'Maiduguri', populationTier: 'major-city', description: 'The selected Maiduguri local government holds the palace, central mosque, stadium, state offices and most mapped venues.', sourceIds: ['geography'] },
+    { id: 'jere', name: 'Jere', sourceName: 'Jere', populationTier: 'town', description: 'The selected Jere local government holds the University of Maiduguri, its teaching hospital and Kasuwan Shanu market.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'maiduguri-central-mosque', name: 'Maiduguri Central Mosque', kind: 'mosque', lon: 13.1592709, lat: 11.848293, localUnitId: 'maiduguri',
+      description: 'A mapped mosque named Maiduguri Central Mosque.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 198291341 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'shehu-of-borno-palace', name: "Shehu of Borno's Palace", kind: 'heritage', lon: 13.1603631, lat: 11.8481309, localUnitId: 'maiduguri',
+      description: "A mapped historic site named Shehu of Borno's Palace.", sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7817546688 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'st-patricks-cathedral-maiduguri', name: "St. Patrick's Catholic Cathedral", kind: 'church', lon: 13.1421061, lat: 11.8373667, localUnitId: 'maiduguri',
+      description: "A mapped Catholic cathedral named St. Patrick's Catholic Cathedral.", sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 13704257602 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'el-kanemi-stadium', name: 'El-Kanemi Stadium', kind: 'stadium', lon: 13.1437508, lat: 11.850095, localUnitId: 'maiduguri',
+      description: 'A mapped stadium named El-Kanemi Stadium.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 10010058911 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'adamawa-sunshine-motor-park', name: 'Adamwa Sunshine Motor Park', kind: 'road-hub', lon: 13.1468342, lat: 11.8393647, localUnitId: 'maiduguri',
+      description: 'A mapped bus station named Adamwa Sunshine Motor Park.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 264963043 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['bench', 'lamp'] },
+    },
+    {
+      id: 'maiduguri-monday-market', name: 'Maiduguri Monday Market', kind: 'market', lon: 13.1535094, lat: 11.8363842, localUnitId: 'maiduguri',
+      description: 'A mapped marketplace named Maiduguri Monday Market; Wikipedia describes Maiduguri as the principal trading hub of north-eastern Nigeria.', sourceIds: ['osm-selected', 'maiduguri-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 5913463694 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['maiduguri-trade-hub'],
+    },
+    {
+      id: 'gamboru-market', name: 'Gamboru Market', kind: 'market', lon: 13.1736787, lat: 11.8528045, localUnitId: 'maiduguri',
+      description: 'A mapped commercial marketplace named Gamboru Market; Wikipedia describes Maiduguri as a regional trading hub.', sourceIds: ['osm-selected', 'maiduguri-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1495609509 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['maiduguri-trade-hub'],
+    },
+    {
+      id: 'kasuwan-shanu', name: 'Kasuwan Shanu', kind: 'market', lon: 13.17666, lat: 11.8597948, localUnitId: 'jere',
+      description: 'A mapped commercial marketplace named Kasuwan Shanu in the Jere local government.', sourceIds: ['osm-selected', 'maiduguri-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1495915445 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['maiduguri-trade-hub'],
+    },
+    {
+      id: 'borno-state-specialist-hospital', name: 'Borno State Specialist Hospital', kind: 'hospital', lon: 13.1501826, lat: 11.8393876, localUnitId: 'maiduguri',
+      description: 'A mapped hospital named Borno State Specialist Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 804181504 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'umth-maiduguri', name: 'University Of Maiduguri Teaching Hospital', kind: 'hospital', lon: 13.1865647, lat: 11.8245445, localUnitId: 'jere',
+      description: 'A mapped hospital named University Of Maiduguri Teaching Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 361959689 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'al-ansar-university', name: 'Al-Ansar University', kind: 'university', lon: 13.1262051, lat: 11.8681256, localUnitId: 'maiduguri',
+      description: 'A mapped university named Al-Ansar University.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1495475663 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'university-of-maiduguri', name: 'University of Maiduguri', kind: 'university', lon: 13.197004421912943, lat: 11.804931635864225, localUnitId: 'jere',
+      description: 'Wikidata records the University of Maiduguri as a public university with a published coordinate.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q3509668' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'uba-maiduguri', name: 'UBA', kind: 'savings', lon: 13.146773, lat: 11.8422276, localUnitId: 'maiduguri',
+      description: 'A mapped bank branch named UBA.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 13704237089 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'access-bank-maiduguri', name: 'Access Bank', kind: 'savings', lon: 13.145363, lat: 11.839223, localUnitId: 'maiduguri',
+      description: 'A mapped bank branch named Access Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 13704254596 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'borno-government-house', name: 'Government House', kind: 'government', lon: 13.1566093, lat: 11.8213411, localUnitId: 'maiduguri',
+      description: 'A mapped government office area named Government House.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1510267357 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'borno-house-of-assembly', name: 'BornoState House of Assembly', kind: 'government', lon: 13.1585634, lat: 11.8470598, localUnitId: 'maiduguri',
+      description: 'A mapped government office named Borno State House of Assembly.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7817546687 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'maiduguri-international-park', name: 'maiduguri international park', kind: 'park', lon: 13.1556524, lat: 11.8724038, localUnitId: 'maiduguri',
+      description: 'A mapped public park named maiduguri international park.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 858425425 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'bexil-gardens', name: 'BEXIL GARDENS', kind: 'garden', lon: 13.1548582, lat: 11.8258028, localUnitId: 'maiduguri',
+      description: 'A mapped leisure area named BEXIL GARDENS.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1532396828 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'kayat-restaurant', name: 'KAYAT RESTAURANT', kind: 'eatery', lon: 13.1505801, lat: 11.8074893, localUnitId: 'maiduguri',
+      description: 'A mapped restaurant named KAYAT RESTAURANT, shown here with kilishi.', sourceIds: ['osm-selected', 'kilishi-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 10837141106 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'kilishi',
+    },
+    {
+      id: 'hannas-restaurant', name: 'HANNAS RESTAURANT', kind: 'eatery', lon: 13.1492845, lat: 11.8308213, localUnitId: 'maiduguri',
+      description: 'A mapped restaurant named HANNAS RESTAURANT, shown here with suya.', sourceIds: ['osm-selected', 'suya-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 10837141111 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'suya',
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'kilishi', name: 'Kilishi', description: 'Kilishi is a sun-dried, spiced and smoked meat from Hausaland, coated in a groundnut paste called labu.', sourceIds: ['kilishi-wiki'] },
+      { id: 'suya', name: 'Suya', description: 'Suya is a Hausa smoke-grilled spiced meat on skewers, popular as evening street food across Nigeria.', sourceIds: ['suya-wiki'] },
+    ],
+    crafts: [
+      { id: 'borno-textile', name: 'Borno textile', description: "Wikipedia's Borno State article lists Borno textile among the state's named industries.", sourceIds: ['borno-wiki'] },
+    ],
+    industries: [
+      { id: 'maiduguri-trade-hub', name: 'Regional trade and services', description: 'Wikipedia describes Maiduguri as the principal trading hub of north-eastern Nigeria, with a services and trade economy.', sourceIds: ['maiduguri-wiki'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'sahel', rainyMonths: [5, 6, 7, 8, 9, 10], dryMonths: [11, 12, 1, 2, 3, 4],
+    description: 'Maiduguri has a hot semi-arid climate, with a rainy season peaking in July and August and a nearly dry stretch from November to March.',
+    clearLabel: 'Dry-season sky', sourceIds: ['maiduguri-wiki'],
+  },
+  homePalette: { back: '#dcc38f', left: '#9a7a44', floor: ['#cdb27a', '#7e8d58'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/maiduguri-surface.geojson', bytes: 413338, sha256: '108a2a37ae227fa4738c74a4800df76e3927ce9e859731164b9baa18a707415e' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Maiduguri', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/osm-selected.json', bytes: 5208, sha256: '14c88a9c480d45300b79ca96a95a29d2ad45adf0b3d5fe33d6f66bc5f9b6283c' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Maiduguri', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/wikidata-selected.json', bytes: 1775, sha256: '4423032a1c58f283a4961732b6471868b1fe8f4f61c45b78f23ef3b5a6febcbd' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/geography.json', bytes: 384, sha256: '6c4e60129ea447755f4852d2a7df93a6e248cdb61352d451645ae4814b8f481d' } },
+    { id: 'maiduguri-wiki', title: 'Wikipedia: Maiduguri', url: 'https://en.wikipedia.org/wiki/Maiduguri', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/maiduguri-wiki.json', bytes: 597, sha256: '0250638341077b3ff34fd77367b3d6f2ce5f484fe6e79ccdaeb3af2af2786043' } },
+    { id: 'borno-wiki', title: 'Wikipedia: Borno State', url: 'https://en.wikipedia.org/wiki/Borno_State', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/borno-wiki.json', bytes: 210, sha256: 'bf58cdc74b372a760e4f0b4d856f41ef22e16bba7cb03aa7cc13d36e5b9428ab' } },
+    { id: 'kilishi-wiki', title: 'Wikipedia: Kilishi', url: 'https://en.wikipedia.org/wiki/Kilishi', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/kilishi-wiki.json', bytes: 285, sha256: 'ab333634bc5de2cbb2bec0209f2e690a8b213801a95af7f14bf364dcb1e3206e' } },
+    { id: 'suya-wiki', title: 'Wikipedia: Suya', url: 'https://en.wikipedia.org/wiki/Suya', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/maiduguri/reviewed/suya-wiki.json', bytes: 270, sha256: '5e2f1fa403d1d716bf9305fafe422f92955301f92e94806bdf3dda13c36b3ff6' } },
+  ],
+  unmapped: [
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon or barber shop with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

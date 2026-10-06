@@ -98,13 +98,16 @@ test('simplification kept the shapes sound: no ring crosses itself among the mos
 });
 
 test('the data modules are small, say where they came from, and decode from their compact form', () => {
-  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000, 'fct.ts': 150000, 'kano.ts': 200000 };
+  const limits = { 'world.ts': 120000, 'africa.ts': 80000, 'nigeria.ts': 60000, 'lagos.ts': 60000, 'oyo.ts': 30000, 'ogun.ts': 30000, 'rivers.ts': 900000, 'fct.ts': 150000, 'kano.ts': 200000,
+    ...Object.fromEntries(readdirSync(here('./data')).filter((file) => file.endsWith('.formula.ts')).map((file) => [file, 120000])),
+    // Lokoja sits on the Niger-Benue confluence; its lazily loaded mapped water is larger than other capitals.
+    'lokoja.formula.ts': 140000 };
   const wallPath = here('./data/kano-wall.ts');
   assert.ok(statSync(wallPath).size <= 30000, `kano-wall.ts is ${statSync(wallPath).size} bytes (limit 30000)`);
   for (const [file, limit] of Object.entries(limits)) {
     const path = here(`./data/${file}`), text = readFileSync(path, 'utf8');
     assert.ok(statSync(path).size <= limit, `${file} is ${statSync(path).size} bytes (limit ${limit})`);
-    if (file === 'fct.ts' || file === 'kano.ts') {
+    if (file === 'fct.ts' || file === 'kano.ts' || file.endsWith('.formula.ts')) {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/);
     } else if (file === 'lagos.ts' || file === 'oyo.ts' || file === 'ogun.ts' || file === 'rivers.ts') {
       assert.match(text, /geoBoundaries gbOpen Nigeria/); assert.match(text, /CC BY 4\.0/); assert.match(text, /9469f09/); assert.match(text, /shared-arc topology/);
@@ -209,7 +212,7 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
   assert.match(regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') }).planned!, /Lagos and Accra/);
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
-  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['fct', 'kano', 'lagos', 'ogun', 'oyo']);
+  assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['abia', 'adamawa', 'akwa-ibom', 'anambra', 'bauchi']);
 });
 
 test('levels: thresholds half-way between the fits, hysteresis at each, and a closer level only over its own frame', () => {

@@ -930,8 +930,9 @@ test('welcome: the message — short, about the account, text and HTML saying th
   assert.deepEqual(text.split('\n').filter(line => /^\d\. /.test(line)).map(line => line.slice(0, 2)), ['1.', '2.', '3.', '4.']);
   // The open cities are the registry's, named after the world and never in place of it.
   const { cityName, playableCityIds } = await import('../src/game/cities/index.ts');
+  // The template names at most twelve open cities, so a long catalogue never lengthens the message.
   const open = playableCityIds().map(id => cityName(id) ?? '');
-  assert.ok(open.length > 1 && open.every(name => name && text.includes(name) && seen.includes(name)), 'the open cities are named from the registry');
+  assert.ok(open.length > 1 && open.slice(0, 12).every(name => name && text.includes(name) && seen.includes(name)), 'the open cities are named from the registry');
   assert.ok(!open.some(name => `${mail.subject}\n${text.split('\n').slice(0, 3).join('\n')}`.includes(name)), 'it presents a world, not one city');
   assert.match(html, /<html lang="en">/); assert.match(html, /<meta name="color-scheme" content="light dark">/); assert.ok((html.match(/<table /g) ?? []).length === (html.match(/<table role="presentation"/g) ?? []).length, 'every layout table is marked as layout');
   assert.ok(!/@import|@font-face|\bsrc=|background=/i.test(html), 'no font, no source and no background picture');

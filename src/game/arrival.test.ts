@@ -1,6 +1,6 @@
 // OWNER: world — where a ticket lands a visitor: the airport, the motor park or terminal, or the station of the way they came.
 import { loadCityContent, playableCityIds, cityRules, linksFrom } from './cities/registry.ts';
-await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'].map(loadCityContent));
+await Promise.all(playableCityIds().map(loadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { publicArrivalVenue, ticketArrivalVenue, venueFor } from './cities/runtime.ts';

@@ -1,0 +1,175 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'yola',
+  name: 'Yola',
+  state: { id: 'adamawa', name: 'Adamawa', sourceName: 'Adamawa', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 12.483333333333,
+    lat: 9.2,
+    teaser: 'The Adamawa capital on the Benue, with a Lamido palace, an emirates museum and the Jimeta markets.',
+    preview: ['Visit the Lamido Palace and The Emirates Museum.', 'Try suya at Yahuza Suya Spot and shop in Jimeta.'],
+    coordinateSourceId: 'wikidata-selected',
+    coordinateRef: { provider: 'wikidata', entity: 'Q994114' },
+  },
+  population: { tier: 'city', sourceIds: ['yola-wiki'], note: 'The cited article reports 392,854 residents at the 2006 census for Yola, including the Jimeta side.' },
+  localUnits: [
+    { id: 'yola-north', name: 'Yola North', sourceName: 'Yola North', populationTier: 'city', description: 'The selected Yola North local government holds Jimeta, its markets, the cathedral and state offices.', sourceIds: ['geography'] },
+    { id: 'yola-south', name: 'Yola South', sourceName: 'Yola South', populationTier: 'city', description: 'The selected Yola South local government holds the old town, the Lamido palace, the museums and the race course.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'yola-race-course', name: 'Yola Race Course', kind: 'stadium', lon: 12.4907395, lat: 9.2146987, localUnitId: 'yola-south',
+      description: 'A mapped stadium named Yola Race Course.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 670626677 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'yola-mosque', name: 'Yola Mosque', kind: 'mosque', lon: 12.4778939, lat: 9.2077256, localUnitId: 'yola-south',
+      description: 'A mapped mosque named Yola Mosque.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 670535239 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'yola-central-mosque', name: 'Yola Central Mosque', kind: 'mosque', lon: 12.478134075941778, lat: 9.207787208342364, localUnitId: 'yola-south',
+      description: 'Wikidata records Yola Central Mosque on Lamido Road, Yola Town.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q125423706' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'american-university-of-nigeria', name: 'American University of Nigeria', kind: 'university', lon: 12.5007604, lat: 9.1913456, localUnitId: 'yola-south',
+      description: 'A mapped university named American University of Nigeria.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 432890703 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'mauth-yola', name: 'Modibbo Adama University Teaching Hospital', kind: 'hospital', lon: 12.4914568, lat: 9.1936627, localUnitId: 'yola-south',
+      description: 'A mapped hospital named Modibbo Adama University Teaching Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1288856908 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'fmc-yola', name: 'Federal Medical Centre, Yola', kind: 'hospital', lon: 12.478150580049329, lat: 9.209787006905033, localUnitId: 'yola-south',
+      description: 'Wikidata records Federal Medical Centre, Yola with a published coordinate.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q112939172' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'keystone-bank-yola', name: 'Keystone Bank', kind: 'savings', lon: 12.4866155, lat: 9.2053274, localUnitId: 'yola-south',
+      description: 'A mapped bank branch named Keystone Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1115073442 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'musa-barbing-salon', name: 'Musa Barbing Salon', kind: 'salon', lon: 12.4157779, lat: 9.2762309, localUnitId: 'yola-north',
+      description: 'A mapped commercial building named Musa Barbing Salon.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1110376510 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] },
+    },
+    {
+      id: 'yola-market', name: 'Yola Market, Adamawa', kind: 'market', lon: 12.482655934584434, lat: 9.204179504899427, localUnitId: 'yola-south',
+      description: 'Wikidata records Yola Market, Adamawa; Wikipedia describes livestock and crops as the base of the state economy.', sourceIds: ['wikidata-selected', 'adamawa-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q123369520' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['adamawa-livestock-crops'],
+    },
+    {
+      id: 'jimeta-ultra-modern-market', name: 'Jimeta ultra modern market', kind: 'market', lon: 12.4376647, lat: 9.2723609, localUnitId: 'yola-north',
+      description: 'Wikidata records Jimeta ultra modern market; Wikipedia describes cattle markets as important to Adamawa trade.', sourceIds: ['wikidata-selected', 'adamawa-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q136486255' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['adamawa-livestock-crops'],
+    },
+    {
+      id: 'karew-jimeta-market', name: 'Karew Jimeta Market', kind: 'market', lon: 12.443260908557328, lat: 9.243456834247775, localUnitId: 'yola-north',
+      description: 'Wikidata records Karew Jimeta Market in Yola North.', sourceIds: ['wikidata-selected', 'adamawa-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q108530018' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['adamawa-livestock-crops'],
+    },
+    {
+      id: 'lamido-palace-yola', name: 'Lamido Palace', kind: 'heritage', lon: 12.4790328, lat: 9.2074207, localUnitId: 'yola-south',
+      description: 'Wikidata records the Lamido Palace as the emir’s palace of Adamawa in Yola.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q136457621' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'emirates-museum-yola', name: 'The Emirates Museum', kind: 'museum', lon: 12.4785188, lat: 9.2075378, localUnitId: 'yola-south',
+      description: 'Wikidata records The Emirates Museum as a museum in Yola.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q111925012' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'national-museum-yola', name: 'National Museum, Yola', kind: 'museum', lon: 12.49539, lat: 9.203496, localUnitId: 'yola-south',
+      description: 'Wikidata records the National Museum, Yola as a national museum.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q112064081' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'st-theresas-cathedral-yola', name: 'St. Theresa’s Cathedral', kind: 'church', lon: 12.44519, lat: 9.27244, localUnitId: 'yola-north',
+      description: 'Wikidata records St. Theresa’s Cathedral in Yola North.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q123054252' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'mubi-park-motor-park', name: 'Mubi Park Motor Park', kind: 'road-hub', lon: 12.450882, lat: 9.2843583, localUnitId: 'yola-north',
+      description: 'Wikidata records Mubi Park Motor Park as a motor park in Adamawa State.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q139712298' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'roadside', props: ['bench', 'lamp'] },
+    },
+    {
+      id: 'adamawa-ministry-tourism-arts-culture', name: 'Adamawa state Ministry of Tourism, Arts and Culture', kind: 'government', lon: 12.459881383006936, lat: 9.252941050586339, localUnitId: 'yola-north',
+      description: 'Wikidata records the Adamawa State Ministry of Tourism, Arts and Culture.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q130456907' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'gorilla-park-yola', name: 'Gorilla Park Yola', kind: 'park', lon: 12.4632389, lat: 9.2157418, localUnitId: 'yola-south',
+      description: 'Wikidata records Gorilla Park Yola, described as a recreational garden.', sourceIds: ['wikidata-selected'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q129175776' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'yahuza-suya-spot', name: 'Yahuza Suya Spot Yola', kind: 'eatery', lon: 12.4553553, lat: 9.2447577, localUnitId: 'yola-north',
+      description: 'Wikidata records Yahuza Suya Spot Yola as a suya restaurant, shown here with suya.', sourceIds: ['wikidata-selected', 'suya-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q137156820' }, accuracy: 'published-point',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'suya',
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'suya', name: 'Suya', description: 'Suya is a Hausa smoke-grilled spiced meat on skewers, popular as evening street food across Nigeria.', sourceIds: ['suya-wiki'] },
+    ],
+    crafts: [
+      { id: 'fulani-handicrafts', name: 'Fulani weaving and basketry', description: 'Wikipedia says Fulani women make handicrafts including weaving, knitting and basketry; Yola was founded by Fulani leader Modibbo Adama.', sourceIds: ['fula-wiki', 'yola-wiki'] },
+    ],
+    industries: [
+      { id: 'adamawa-livestock-crops', name: 'Livestock and crop trade', description: 'Wikipedia says Adamawa relies on livestock and crops such as cotton, groundnuts, millet and guinea corn, with cattle markets important to trade.', sourceIds: ['adamawa-wiki'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'northern-savanna', rainyMonths: [5, 6, 7, 8, 9, 10], dryMonths: [11, 12, 1, 2, 3, 4],
+    description: 'Yola has a wet season from May to October and a dry season for the rest of the year, with August the wettest month and the hottest days in March and April.',
+    clearLabel: 'Dry-season sky', sourceIds: ['yola-wiki'],
+  },
+  homePalette: { back: '#bfb48a', left: '#6e6a45', floor: ['#c4b17c', '#5b7f5d'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/yola-surface.geojson', bytes: 289400, sha256: '048834e00c80a85b293dbb33b5f56b092e5749033c1c2a84bf709495b7da03a9' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Yola', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/yola/reviewed/osm-selected.json', bytes: 2090, sha256: 'd97d453fcc05a6a8774c0dde4b36c2618a886fab7f3f03938bc1c623f244c628' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Yola', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/yola/reviewed/wikidata-selected.json', bytes: 10697, sha256: 'ec551d1b98f64c0770f5ceceb11a3975ae8991778d896ba48c3f70ecb6d3ace7' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/yola/reviewed/geography.json', bytes: 402, sha256: '8d69df07e02827a822f2c4bea5874a364b3eb18784967781e18d0f0e9b0252b3' } },
+    { id: 'yola-wiki', title: 'Wikipedia: Yola, Nigeria', url: 'https://en.wikipedia.org/wiki/Yola,_Nigeria', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/yola/reviewed/yola-wiki.json', bytes: 576, sha256: '461ed7fb125aae7e92569fc34d8bdf06156598fa31eeb2de78cd253e5976eb8a' } },
+    { id: 'adamawa-wiki', title: 'Wikipedia: Adamawa State', url: 'https://en.wikipedia.org/wiki/Adamawa_State', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/yola/reviewed/adamawa-wiki.json', bytes: 402, sha256: 'afaaf45570492e3c8c229a1697e301623a0a0ca42d6205c2f310854ad387bf1d' } },
+    { id: 'fula-wiki', title: 'Wikipedia: Fula people', url: 'https://en.wikipedia.org/wiki/Fula_people', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/yola/reviewed/fula-wiki.json', bytes: 213, sha256: '2422d89ad9d6852f35368d8dd524e881db86cd5c7a731a8dffd27aec38fd0742' } },
+    { id: 'suya-wiki', title: 'Wikipedia: Suya', url: 'https://en.wikipedia.org/wiki/Suya', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/yola/reviewed/suya-wiki.json', bytes: 270, sha256: '5e2f1fa403d1d716bf9305fafe422f92955301f92e94806bdf3dda13c36b3ff6' } },
+  ],
+  unmapped: [
+    { kind: 'garden', note: 'No named garden with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

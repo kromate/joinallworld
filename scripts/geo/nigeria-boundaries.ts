@@ -262,7 +262,8 @@ export function buildTopology(
     const input = inputs[ringIndex]!
     const signatures = ids.map((id, index) => signature(id, ids[(index + 1) % count]!))
     let cuts = ids.map((_, index) => index).filter((index) => signatures[(index - 1 + count) % count] !== signatures[index])
-    if (!cuts.length) cuts = [0]
+    // A ring wholly shared with one neighbour (an enclave) has no cut. Start it at its lowest vertex so both owners store one arc.
+    if (!cuts.length) cuts = [signatures[0]!.includes(',') ? ids.indexOf(Math.min(...ids)) : 0]
     const ring: number[] = []
     cuts.forEach((from, cutIndex) => {
       const to = cuts[(cutIndex + 1) % cuts.length]!

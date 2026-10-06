@@ -1,0 +1,167 @@
+import { defineCitySpec } from '../spec.ts'
+
+export const CITY_SPEC = defineCitySpec({
+  schemaVersion: 1,
+  id: 'calabar',
+  name: 'Calabar',
+  state: { id: 'cross-river', name: 'Cross River', sourceName: 'Cross River', unit: 'local government', sourceIds: ['geography'] },
+  country: { id: 'nigeria', name: 'Nigeria' },
+  timezone: 'Africa/Lagos',
+  atlas: {
+    lon: 8.3373597,
+    lat: 4.9795999,
+    teaser: 'A riverside Efik city of carnival costumes, museums and old harbour trade.',
+    preview: ['Walk to the Slave History Museum and the National Museum.', 'Cross Calabar Municipal and Calabar South by road.'],
+    coordinateSourceId: 'osm-selected',
+    coordinateRef: { provider: 'openstreetmap', element: 'node', id: 251608378 },
+  },
+  population: { tier: 'city', sourceIds: ['calabar-wiki'], note: 'The cited article reports 371,022 residents at the 2006 census and an estimated 571,500 for both local governments in 2022.' },
+  localUnits: [
+    { id: 'calabar-municipal', name: 'Calabar Municipal', sourceName: 'Calabar Municipal', populationTier: 'city', description: 'The selected central local government contains the cathedral, museums, Watt Market and the municipal headquarters.', sourceIds: ['geography'] },
+    { id: 'calabar-south', name: 'Calabar South', sourceName: 'Calabar South', populationTier: 'city', description: 'The selected southern local government contains the university campus, teaching hospital and Calabar South churches.', sourceIds: ['geography'] },
+  ],
+  places: [
+    {
+      id: 'sacred-heart-cathedral', name: 'Sacred Heart Cathedral', kind: 'church', lon: 8.3180258, lat: 4.9574735, localUnitId: 'calabar-municipal',
+      description: 'A mapped Catholic place of worship named Sacred Heart Cathedral.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669758904 }, accuracy: 'feature-centroid',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'apostolic-church-calabar', name: 'The Apostolic Church', kind: 'church', lon: 8.331169, lat: 4.9430465, localUnitId: 'calabar-south',
+      description: 'A mapped Pentecostal church named The Apostolic Church in Calabar South.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 12339390995 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'native-delicacies-food', name: 'Native Delicacies Food', kind: 'eatery', lon: 8.333519, lat: 4.9954235, localUnitId: 'calabar-municipal',
+      description: 'A mapped restaurant named Native Delicacies Food, shown here with Edikang Ikong.', sourceIds: ['osm-selected', 'edikang-ikong'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 7956218490 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'edikang-ikong',
+    },
+    {
+      id: 'chef-green-local-cuisine-hub', name: 'Chef Green Signature Local Cuisine Hub', kind: 'eatery', lon: 8.3421674, lat: 4.9808568, localUnitId: 'calabar-municipal',
+      description: 'A mapped African-cuisine restaurant, shown here with Afang soup.', sourceIds: ['osm-selected', 'afang-soup'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 12776692126 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter'] }, featuredIdentityId: 'afang-soup',
+    },
+    {
+      id: 'unicross-main-campus', name: 'University of Cross River State, Calabar Main Campus', kind: 'university', lon: 8.329466, lat: 4.9313584, localUnitId: 'calabar-south',
+      description: 'A mapped university campus for the University of Cross River State in Calabar South.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 14049723501 }, accuracy: 'mapped-feature',
+      scene: { roof: 'hipped', sign: 'facade', props: ['tree', 'lamp'] },
+    },
+    {
+      id: 'slave-history-museum', name: 'Slave History Museum', kind: 'museum', lon: 8.3184062, lat: 4.966256, localUnitId: 'calabar-municipal',
+      description: 'A mapped museum named Slave History Museum, which Wikipedia describes within Calabar slave-trade history.', sourceIds: ['osm-selected', 'calabar-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 4757969041 }, accuracy: 'mapped-feature',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'national-museum-calabar', name: 'National Museum, Calabar', kind: 'museum', lon: 8.321, lat: 4.9672, localUnitId: 'calabar-municipal',
+      description: 'Wikipedia describes the National Museum of Calabar as a colonial-era building shipped from Britain and built in 1884.', sourceIds: ['wikidata-selected', 'calabar-wiki'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q111889271' }, accuracy: 'published-point',
+      scene: { roof: 'gable', sign: 'facade', props: ['tree'], landmark: 'tower' },
+    },
+    {
+      id: 'bassey-duke-statue', name: 'Bassey Duke Statue', kind: 'civic-landmark', lon: 8.3202855, lat: 4.9575144, localUnitId: 'calabar-municipal',
+      description: 'A mapped public artwork named Bassey Duke Statue.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'node', id: 10109898207 }, accuracy: 'mapped-feature',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'ucth-calabar', name: 'University of Calabar Teaching Hospital', kind: 'hospital', lon: 8.3502891, lat: 4.9553439, localUnitId: 'calabar-south',
+      description: 'A mapped hospital named University of Calabar Teaching Hospital.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669695779 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'navy-reference-hospital', name: 'Nigerian Navy Reference Hospital Calabar', kind: 'hospital', lon: 8.3329796, lat: 5.0010496, localUnitId: 'calabar-municipal',
+      description: 'Wikipedia names the Nigerian Navy Reference Hospital as the naval hospital in Calabar.', sourceIds: ['osm-selected', 'calabar-wiki'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669758839 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['planter', 'lamp'] },
+    },
+    {
+      id: 'calabar-municipal-hq', name: 'Calabar Municipal Government Headquarters', kind: 'government', lon: 8.3424987, lat: 4.9742849, localUnitId: 'calabar-municipal',
+      description: 'A mapped town hall named Calabar Municipal Government Headquarters.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669758784 }, accuracy: 'feature-centroid',
+      scene: { roof: 'hipped', sign: 'facade', props: ['lamp'], landmark: 'gate' },
+    },
+    {
+      id: 'uj-esuene-stadium', name: 'UJ Esuene Stadium', kind: 'stadium', lon: 8.3268055, lat: 4.9676208, localUnitId: 'calabar-municipal',
+      description: 'A mapped stadium named UJ Esuene Stadium.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 617583331 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['lamp'], landmark: 'tower' },
+    },
+    {
+      id: 'millennium-park-calabar', name: 'Millennium Park', kind: 'park', lon: 8.3251373, lat: 4.9648708, localUnitId: 'calabar-municipal',
+      description: 'A mapped public park named Millennium Park.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1544845318 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'calabar-municipal-gardens', name: 'Calabar Municipal Gardens', kind: 'garden', lon: 8.3412195, lat: 4.9744708, localUnitId: 'calabar-municipal',
+      description: 'A mapped recreation ground named Calabar Municipal Gardens.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 669758779 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'roadside', props: ['tree', 'bench'] },
+    },
+    {
+      id: 'first-bank-calabar', name: 'First Bank Nigeria', kind: 'savings', lon: 8.3335317, lat: 4.9965075, localUnitId: 'calabar-municipal',
+      description: 'A mapped bank building named First Bank Nigeria on Ekorinm Street II.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 779581545 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'polaris-bank-calabar', name: 'Polaris Bank', kind: 'savings', lon: 8.3211682, lat: 4.9569418, localUnitId: 'calabar-municipal',
+      description: 'A mapped bank building named Polaris Bank.', sourceIds: ['osm-selected'],
+      coordinateSourceId: 'osm-selected', coordinateRef: { provider: 'openstreetmap', element: 'way', id: 1467998201 }, accuracy: 'feature-centroid',
+      scene: { roof: 'flat', sign: 'facade', props: ['lamp'] },
+    },
+    {
+      id: 'watt-market', name: 'Watt Market', kind: 'market', lon: 8.321507, lat: 4.957642, localUnitId: 'calabar-municipal',
+      description: 'Wikipedia describes Watt Market (Urua Awat) as the largest market in Cross River State, established in 1901.', sourceIds: ['wikidata-selected', 'watt-market'],
+      coordinateSourceId: 'wikidata-selected', coordinateRef: { provider: 'wikidata', entity: 'Q108560340' }, accuracy: 'published-point',
+      scene: { roof: 'hipped', sign: 'roadside', props: ['stall', 'lamp'] }, specialtyIds: ['watt-market-goods'],
+    },
+  ],
+  identity: {
+    foods: [
+      { id: 'edikang-ikong', name: 'Edikang Ikong', description: 'Edikang ikong is a vegetable soup that originated among the Efik people of Cross River State and the Ibibio people of Akwa Ibom State.', sourceIds: ['edikang-ikong'] },
+      { id: 'afang-soup', name: 'Afang soup', description: 'Afang soup is a vegetable soup of the Ibibio people that is also common among the Efik people of Cross River State.', sourceIds: ['afang-soup'] },
+    ],
+    crafts: [
+      { id: 'carnival-costumes', name: 'Carnival costumes', description: 'The Calabar Carnival takes place every December and is known for imaginative costumes made by participating dance schools.', sourceIds: ['calabar-wiki'] },
+    ],
+    industries: [
+      { id: 'calabar-harbour-trade', name: 'Harbour and trade', description: 'Wikipedia lists the state administration, naval base, harbour, airport and free trade zone as the main parts of the Calabar economy.', sourceIds: ['calabar-wiki'] },
+      { id: 'watt-market-goods', name: 'Watt Market goods', description: 'Wikipedia says Watt Market sells food, clothes and electronics.', sourceIds: ['watt-market'] },
+    ],
+  },
+  transport: {
+    airports: [],
+    rail: [],
+    ports: [],
+  },
+  climate: {
+    profile: 'humid-coastal', rainyMonths: [3, 4, 5, 6, 7, 8, 9, 10, 11], dryMonths: [12, 1, 2],
+    description: 'Calabar has a tropical monsoon climate with a nine-month wet season and a short three-month dry season, and its harmattan is less pronounced than elsewhere in West Africa.',
+    clearLabel: 'Dry-season sky', sourceIds: ['calabar-wiki'],
+  },
+  homePalette: { back: '#b98a5a', left: '#7d5a3c', floor: ['#c8a972', '#5f7f50'] },
+  geometry: { surface: { path: 'scripts/geo/sources/formula/calabar-surface.geojson', bytes: 204195, sha256: '3ae0916ac6d2d9398ecd3876a99e2c82e1f24afaf9c09a378e75bb775c1f5565' } },
+  sourceGroups: [
+    { id: 'osm-selected', title: 'Selected OpenStreetMap records for Calabar', url: 'https://www.openstreetmap.org/', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'ODbL 1.0', cache: { path: 'scripts/city/research/calabar/reviewed/osm-selected.json', bytes: 4741, sha256: '99064c5ef4345a5c83e9fd93cbf6fdba63ab7b13a7bdf94e6f277950942e1216' } },
+    { id: 'wikidata-selected', title: 'Selected Wikidata entities for Calabar', url: 'https://www.wikidata.org/wiki/Wikidata:Main_Page', checkedOn: '2026-10-06', supports: ['coordinate', 'identity'], licence: 'CC0 1.0', cache: { path: 'scripts/city/research/calabar/reviewed/wikidata-selected.json', bytes: 1360, sha256: '052f852d2ead08334521778681b42135577559de5d9bfc43eecc07430f9bc743' } },
+    { id: 'geography', title: 'Pinned Nigerian administrative geography', url: 'https://www.geoboundaries.org/', checkedOn: '2026-10-06', supports: ['geography'], licence: 'CC BY 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/geography.json', bytes: 430, sha256: '5f63a82e6be1286995d247785649a3ef80557620e48f3823430ac2003d0f4a19' } },
+    { id: 'calabar-wiki', title: 'Wikipedia: Calabar', url: 'https://en.wikipedia.org/wiki/Calabar', checkedOn: '2026-10-06', supports: ['population', 'climate', 'identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/calabar-wiki.json', bytes: 1044, sha256: '7ae76983727184f148ef2f260e90f52de217afe36e8eff903d5022bb1909cd1f' } },
+    { id: 'watt-market', title: 'Wikipedia: Watt Market', url: 'https://en.wikipedia.org/wiki/Watt_Market', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/watt-market.json', bytes: 328, sha256: 'ac304ec88c2b8741c3df9a79c195b44568bf5b06bfa497b35e91dc218b653041' } },
+    { id: 'edikang-ikong', title: 'Wikipedia: Edikang Ikong', url: 'https://en.wikipedia.org/wiki/Edikang_Ikong', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/edikang-ikong.json', bytes: 275, sha256: '5126ad8ae48b7feca0858e1539e8ba2554d96259e8ef35693eb0991da3ad9dff' } },
+    { id: 'afang-soup', title: 'Wikipedia: Afang soup', url: 'https://en.wikipedia.org/wiki/Afang_soup', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/afang-soup.json', bytes: 270, sha256: '63056c56467a69b5410bfa8f1635955920fb44a3ebea75d62ee4e8001b8115c7' } },
+  ],
+  unmapped: [
+    { kind: 'mosque', note: 'No named mosque with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'polling', note: 'No named polling venue with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'road-hub', note: 'No named bus station, motor park or terminal with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+    { kind: 'salon', note: 'No named salon or barber shop with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },
+  ],
+})

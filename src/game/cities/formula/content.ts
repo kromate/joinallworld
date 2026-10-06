@@ -1,11 +1,11 @@
-import { CAREER_IDS } from '../../content/career-ids.ts'
 import {
   activity, buildCityContent, hospitalSpots, spot, work,
-  type CityBounds, type CityHouseSeed, type CityPersonSeed, type CityVenueSeed,
+  type CityBounds, type CityHouseSeed, type CityPersonSeed, type CitySpotSeed, type CityVenueSeed,
 } from '../contentBuilder.ts'
-import type { CityContent, CityMapOrigin, TravelModeDefinition, VenueScene } from '../../../types/content.ts'
+import type { ActivityDefinition, CityContent, CityMapOrigin, TravelModeDefinition, UnmappedService, VenueScene } from '../../../types/content.ts'
 import type { BusinessTypeId } from '../../../types/business.ts'
-import type { CitySpec, IdentityFact, PopulationTier, RealPlaceFact, RealPlaceKind } from '../spec.ts'
+import { unmappedKindsOf, type CitySpec, type IdentityFact, type PopulationTier, type RealPlaceFact, type RealPlaceKind } from '../spec.ts'
+import { formulaArrivalRecreation, formulaCareerPlan, formulaRoadArrival } from './careers.ts'
 import { sceneKindFor } from './scenes.ts'
 
 export interface FormulaContentInput<City extends string> {
@@ -96,12 +96,19 @@ const activityLabelFor = (place: RealPlaceFact, identities: ReadonlyMap<string, 
   return fallback
 }
 
-const venueSeed = (cityId: string, unitName: string, place: RealPlaceFact, identities: ReadonlyMap<string, FormulaIdentity>): CityVenueSeed => {
+const venueSeed = (
+  cityId: string,
+  unitName: string,
+  place: RealPlaceFact,
+  identities: ReadonlyMap<string, FormulaIdentity>,
+  primaryHospitalId: string | undefined,
+  extras: readonly ActivityDefinition[],
+): CityVenueSeed => {
   const treatment = TREATMENTS[place.kind]
   const activityFields = place.kind === 'eatery'
     ? { cost: 700, effects: { hunger: 30, fun: 4 } }
     : place.kind === 'market' ? { xp: { hustle: 8 } } : {}
-  const places = place.kind === 'hospital'
+  const places: readonly CitySpotSeed[] = place.kind === 'hospital' && place.id === primaryHospitalId
     ? hospitalSpots()
     : [spot(treatment.spotId, treatment.spotLabel, activity(
       visitActivityId(cityId, place),
@@ -109,7 +116,7 @@ const venueSeed = (cityId: string, unitName: string, place: RealPlaceFact, ident
       treatment.icon,
       [...treatment.tags],
       activityFields,
-    )), work()]
+    ), ...extras), work()]
   return {
     id: place.id,
     name: place.name,
@@ -124,35 +131,6 @@ const venueSeed = (cityId: string, unitName: string, place: RealPlaceFact, ident
     ...(place.hours ? { hours: place.hours } : {}),
     note: `Sources: ${place.sourceIds.join(', ')}. Coordinate: ${place.coordinateSourceId} (${place.accuracy}).`,
   }
-}
-
-const careerKinds: Readonly<Record<string, readonly RealPlaceKind[]>> = Object.freeze({
-  'community-helper': ['garden', 'government', 'park'],
-  tech: ['university', 'polytechnic', 'college', 'school', 'savings'],
-  banking: ['savings', 'government'],
-  music: ['nightlife', 'garden', 'sport'],
-  trading: ['market'],
-  nursing: ['hospital'],
-  hair: ['salon'],
-  chef: ['eatery', 'market'],
-  dj: ['nightlife', 'garden'],
-  fitness: ['stadium', 'sport', 'park', 'garden'],
-  creator: ['craft-centre', 'university', 'polytechnic', 'college', 'school'],
-  teaching: ['university', 'polytechnic', 'college', 'school'],
-  event: ['government', 'garden', 'stadium', 'sport'],
-  football: ['stadium', 'sport'],
-  retail: ['market'],
-})
-
-const careerVenueMap = (places: readonly RealPlaceFact[]): Readonly<Record<string, string>> => {
-  const result: Record<string, string> = {}
-  for (const careerId of CAREER_IDS) {
-    const kinds = careerKinds[careerId] ?? []
-    const venue = kinds.flatMap(kind => places.filter(place => place.kind === kind)).at(0)
-    if (!venue) throw new TypeError(`No compatible venue can host ${careerId}`)
-    result[careerId] = venue.id
-  }
-  return Object.freeze(result)
 }
 
 const houseShape = (tier: PopulationTier): { readonly grid: number; readonly rent: number } => {
@@ -172,12 +150,32 @@ const peopleFor = (cityId: string, places: readonly RealPlaceFact[]): readonly C
 export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes }: FormulaContentInput<City>): CityContent<City> {
   const unitNames = new Map(spec.localUnits.map(unit => [unit.id, unit.name]))
   const identities = identityIndex(spec)
-  const roadHub = spec.places.find(place => place.kind === 'road-hub')
-  const arrivalPark = spec.places.find(place => place.kind === 'park')
-  const eatery = spec.places.find(place => place.kind === 'eatery')
+  const roadHub = formulaRoadArrival(spec.places)
+  const arrivalPark = formulaArrivalRecreation(spec.places)
+  const firstMarket = spec.places.find(place => place.kind === 'market')
+  const eatery = spec.places.find(place => place.kind === 'eatery') ?? firstMarket
+  const primaryHospitalId = spec.places.find(place => place.kind === 'hospital')?.id
   if (!roadHub || !arrivalPark || !eatery) throw new TypeError(`${spec.id} is missing a road hub, arrival park or eatery`)
+  const plate = spec.identity.foods[0]
+  if (!plate) throw new TypeError(`${spec.id} needs a sourced local plate`)
+  const unmapped = unmappedKindsOf(spec)
+  const extras = new Map<string, ActivityDefinition[]>()
+  const addExtra = (placeId: string, extra: ActivityDefinition): void => { extras.set(placeId, [...(extras.get(placeId) ?? []), extra]) }
+  // Documented fallbacks for unmapped kinds: market food stalls stand in for an unmapped eatery,
+  // and the arrival recreation venue carries the evening option when no garden or nightlife venue is sourced.
+  if (eatery.kind !== 'eatery') {
+    addExtra(eatery.id, activity(`${spec.id}-${eatery.id}-food`, `Eat ${plate.name} at a food stall`, 'food', ['food'], { cost: 700, effects: { hunger: 30, fun: 4 } }))
+  }
+  if (!spec.places.some(place => place.kind === 'garden' || place.kind === 'nightlife')) {
+    addExtra(arrivalPark.id, activity(`${spec.id}-${arrivalPark.id}-evening`, 'Spend a quiet evening here', 'park', ['fun', 'nightlife']))
+  }
   const orderedPlaces = [arrivalPark, ...spec.places.filter(place => place !== arrivalPark)]
-  const venues = orderedPlaces.map(place => venueSeed(spec.id, unitNames.get(place.localUnitId) ?? place.localUnitId, place, identities))
+  const venues = orderedPlaces.map(place => venueSeed(spec.id, unitNames.get(place.localUnitId) ?? place.localUnitId, place, identities, primaryHospitalId, extras.get(place.id) ?? []))
+  const careers = formulaCareerPlan(spec.places)
+  const unmappedServices: UnmappedService[] = [
+    ...(eatery.kind !== 'eatery' && unmapped.has('eatery') ? ['food' as const] : []),
+    ...(unmapped.has('polling') ? ['polling' as const] : []),
+  ]
   const houses: readonly CityHouseSeed[] = spec.localUnits.map(unit => {
     const point = localUnitAnchors[unit.id]
     if (!point) throw new TypeError(`Missing geometry-derived home anchor for ${unit.id}`)
@@ -188,8 +186,6 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
     id: `${spec.id}-${market.id}-table`, venueId: market.id, game: 'whot', label: `${market.name} table`, seats: 4,
   }))
   const knownFor = [...spec.identity.foods, ...spec.identity.crafts, ...spec.identity.industries].map(fact => fact.name)
-  const plate = spec.identity.foods[0]
-  if (!plate) throw new TypeError(`${spec.id} needs a sourced local plate`)
   const markets = Object.fromEntries(spec.places.filter(place => place.kind === 'market').map(place => {
     const known = [...new Set((place.specialtyIds ?? []).flatMap(id => {
       const identity = identities.get(id)
@@ -210,7 +206,9 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
     scenes,
     venues,
     people: peopleFor(spec.id, orderedPlaces),
-    careerVenues: careerVenueMap(spec.places),
+    careerVenues: careers.venues,
+    unavailableCareerIds: careers.unavailable,
+    ...(unmappedServices.length ? { unmappedServices } : {}),
     careerSummaries: {},
     houses,
     events: [],

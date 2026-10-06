@@ -17,6 +17,8 @@ import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import CivicAction from '../civic/CivicAction.vue'
 import CivicStatus from '../civic/CivicStatus.vue'
+import LazyList from '../../ui/LazyList.vue'
+import { chunkedView } from '../../ui/lazyList.ts'
 import { requestSlot } from '../civic/civicCore.ts'
 import type { SendResult } from '../civic/civicCore.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
@@ -98,6 +100,8 @@ const chosen = computed(() => (mine.value ? orderOf(mine.value, order) : { units
 const wallet = computed(() => ({ cash: state.value.cash, canSpend: life.value?.canSpend ?? 0, buyWhy: life.value?.buyWhy ?? '', offline: offline('buy') }))
 const colourOf = (id: string): { bg: string; ink: string } => stalls.value?.colours.find((colour) => colour.id === id) ?? { bg: '#256b45', ink: '#ffffff' }
 const others = computed(() => (stalls.value?.shops ?? []).filter((card) => !card.mine))
+// A busy venue has many stalls: they are drawn twelve at a time as the reader goes down.
+const shops = chunkedView(() => others.value, 12)
 const rules = [
   'Rent a stall at any market. Buy stock from the supplier, set a price inside the fair range, and passers-by buy during market hours whether you are there or not.',
   'Takings wait in the cash box. Collect them from anywhere; restocking and pricing need you at your stall.',
@@ -200,8 +204,9 @@ const rules = [
 
           <SectionTitle :note="others.length ? plural(others.length, 'stall') : ''">Shops here</SectionTitle>
           <EmptyState v-if="!others.length" compact icon="buy" title="No other player trades here yet" :text="stalls.mine && stalls.shops.some((card) => card.mine) ? 'Yours is the only stall. Tell your friends where to find you.' : 'Be the first: rent a stall below.'" />
-          <ul v-else class="biz-shops">
-            <li v-for="card in others" :key="card.id" class="biz-card biz-shop">
+          <LazyList v-else class="biz-shops" :items="shops.visible.value" :item-key="(card: (typeof others.value)[number]) => card.id" :has-more="shops.hasMore.value" :loading="false" label="stalls" @more="shops.more()">
+            <template #row="{ item: card }">
+            <div class="biz-card biz-shop">
               <header>
                 <span class="biz-sign" :style="{ background: colourOf(card.colour).bg, color: colourOf(card.colour).ink }" aria-hidden="true"><GameIcon kind="ad" :emoji="card.icon" :size="24" /></span>
                 <div class="biz-what"><strong>{{ card.name }}</strong><small>{{ card.typeLabel }} · <button type="button" class="biz-link" @click="shell.open('person', { player: card.owner.id, name: card.owner.name })">{{ card.owner.name }}</button><ResidentBadge :id="card.owner.id" /></small>
@@ -216,8 +221,9 @@ const rules = [
               </ul>
               <div v-if="card.canRate" class="biz-rate" role="group" :aria-label="`Rate ${card.name}`"><span>Rate your purchase</span><button v-for="stars in 5" :key="stars" type="button" :aria-label="plural(stars, 'star')" @click="rate(card, stars)">★</button></div>
               <button type="button" class="biz-link biz-report" @click="report(card)">Report this stall</button>
-            </li>
-          </ul>
+            </div>
+            </template>
+          </LazyList>
 
           <template v-if="!stalls.mine">
             <SectionTitle>Open a stall here</SectionTitle>
@@ -286,7 +292,8 @@ const rules = [
 .biz-actions :deep(.civic-action) { flex: 1 1 140px; display: grid; margin: 0; }
 .biz-owned { font-size: 12px; font-weight: 700; color: var(--c-green-dark); }
 .biz-confirm { display: flex; gap: 6px; align-items: start; }
-.biz-shops { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.biz-shops { list-style: none; margin: 0; padding: 0; }
+.biz-shops :deep(.ll-rows) { display: grid; gap: var(--s-3); }
 .biz-shop > header { display: flex; align-items: center; gap: var(--s-3); padding-bottom: 8px; border-bottom: 1px solid var(--c-line); }
 .biz-sign { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-sm); font-size: 22px; box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-link { border: 0; background: none; padding: 0; font: inherit; color: var(--c-green-dark); text-decoration: underline; cursor: pointer; }
@@ -301,6 +308,6 @@ const rules = [
 .biz-swatches { display: flex; flex-wrap: wrap; gap: 6px; }
 .biz-swatches button { width: var(--tap); height: var(--tap); border-radius: var(--r-sm); border: 2px solid transparent; cursor: pointer; font-size: 20px; background: var(--c-fill); box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-swatches button[aria-pressed=true] { border-color: var(--c-ink); box-shadow: 0 0 0 2px #fff inset; }
-:global(.ph.is-wide) .biz-shops { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); align-items: start; }
+:global(.ph.is-wide) .biz-shops :deep(.ll-rows) { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); align-items: start; }
 :global(.ph.is-wide) .biz-form input { max-width: 460px; }
 </style>

@@ -44,6 +44,8 @@ import { civicTitle } from '../../src/game/cities/terminology.ts';
  *   POST /api/civic/gov/run      { cityId, slogan, requestId } → { ok, code, reason?, duplicate?, state, gov }
  *   POST /api/civic/gov/vote     { cityId, candidate }   → { ok, code, reason?, state, gov }
  *   POST /api/civic/gov/announce { cityId, text }        → { ok, code, reason?, gov }
+ *   GET  /api/civic/neighbours?city=&district=<id>&after=&limit=   one district's homes in name order, a page at a time: { district, homes, next, count }
+ *   GET  /api/civic/richlist?city=&board=balances|earners&after=&limit=   the rich list below its top, a page at a time: { board, rows: [{ rank, … }], next }
  *   GET  /api/civic/neighbours  { city, demonym, total, online, listed, hidden, districts: [{ id, label, count, online, homes: [{ id, name, online, you }] }] }
  *   GET  /api/civic/ads         { city, palette, billboards, sea }   — shape documented at adsView() in server/civic/ads.ts
  *   POST /api/civic/ads/rent     { cityId, kind: 'billboard' | 'sea', slot, text, colour, icon, requestId } → { ok, code, reason?, duplicate?, state, ads }
@@ -75,7 +77,7 @@ import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong }
 import { characterCity } from '../character.ts';
 import { pulseOf } from '../pulse.ts';
 import type { Viewer } from '../pulse.ts';
-import { checkIn, counters, huntCounters, neighboursView, richListView } from '../civic/residents.ts';
+import { NEIGHBOURS_PAGE, RICH_PAGE, checkIn, counters, huntCounters, neighboursPage, neighboursView, richListPage, richListView } from '../civic/residents.ts';
 
 const COUNTER_CACHE_MS = 5000;
 
@@ -294,6 +296,18 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     // ---- neighbours -----------------------------------------------------------------------
     'GET /api/civic/neighbours': async (request) => {
       const cityId = cityParam(request.query.get('city'));
+      const asked = request.query.get('district');
+      if (asked !== null) {
+        const size = Math.min(NEIGHBOURS_PAGE.max, Math.max(1, Number(request.query.get('limit')) || NEIGHBOURS_PAGE.size));
+        const page = await store.read(db => {
+          const session = request.requireSession(db);
+          const civic = civicOf(db), city = cityOf(civic, cityId);
+          limit('read', session.publicId, 120);
+          return neighboursPage(cityId, city, ctx.now(), ttl(), ctx.online, civic.prefs, ctx.publicSession(session).id, asked.slice(0, 40), request.query.get('after'), size);
+        });
+        if (!page) throw fail(400, 'invalid_cursor');
+        return { body: { ok: true, ...page } };
+      }
       const body = await store.read(db => {
         const session = request.requireSession(db);
         const { civic, city } = peek(db, request, cityId);
@@ -387,6 +401,14 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const cityId = cityParam(request.query.get('city'));
       const signedIn = await store.read(db => request.session(db)?.publicId ?? null);
       limit('read', signedIn ?? `ip:${request.ip}`, 120);
+      const board = request.query.get('board');
+      if (board !== null) {
+        if (board !== 'balances' && board !== 'earners') throw fail(400, 'invalid_board');
+        const size = Math.min(RICH_PAGE.max, Math.max(1, Number(request.query.get('limit')) || RICH_PAGE.size));
+        const page = await store.read(db => { const session = request.session(db), civic = civicOf(db), city = cityOf(civic, cityId); return richListPage(cityId, city, ctx.now(), ttl(), civic.prefs, session ? ctx.publicSession(session).id : null, board, request.query.get('after'), size); });
+        if (!page) throw fail(400, 'invalid_cursor');
+        return { body: { ok: true, ...page } };
+      }
       const build = (civic: CivicCollection, city: CivicCityRecord, who: PlayerRef | null, viewer: Viewer | null) => ({ city: cityId, ...richListView(city, ctx.now(), ttl(), civic.prefs, who?.id ?? null), counters: cityCounters(city, cityId, viewer) });
       // Opening the list checks the viewer in first, so their own row is never stale.
       if (signedIn && ctx.allow(`civic:checkin:${signedIn}`, 6)) {

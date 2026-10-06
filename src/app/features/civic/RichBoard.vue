@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // One board of the Rich List: the top three on a podium (second, first, third), then everyone
 // else as a ranked list.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import type { RichRow } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
@@ -9,7 +9,9 @@ import SectionTitle from '../../ui/SectionTitle.vue'
 import CivicAvatar from './CivicAvatar.vue'
 import { podium } from './civicModel.ts'
 
-const props = defineProps<{ title: string; rows: readonly RichRow[]; none: string }>()
+const props = defineProps<{ title: string; rows: readonly RichRow[]; none: string; /** The board's name and the city, when the list goes on below the rows given (the server's page size is the length of `rows`). */ more?: { path: string; size: number } }>()
+const MoreRows = defineAsyncComponent(() => import('./MoreRows.vue'))
+const last = computed(() => props.rows.at(-1))
 const shape = computed(() => podium(props.rows))
 const PLACES = [2, 1, 3] as const
 </script>
@@ -32,6 +34,7 @@ const PLACES = [2, 1, 3] as const
         <span class="ui-row-body"><b>{{ row.name }}{{ row.you ? ' (you)' : '' }}</b></span><span class="ui-row-end">{{ money(row.amount) }}</span>
       </li>
     </ol>
+    <MoreRows v-if="more && rows.length >= more.size && last" :path="more.path" kind="rich" :shown="rows.map((row) => row.id)" :start="`${last.amount}:${last.id}`" label="Show more" />
   </template>
 </template>
 

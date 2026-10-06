@@ -121,3 +121,82 @@ export function richListView(city: CivicCityRecord, now: number, ttlMs: number, 
       balanceRank: balances.find((entry) => entry.you)?.rank ?? null, earnerRank: earners.find((entry) => entry.you)?.rank ?? null } : null,
   };
 }
+
+// ---- paged reads (docs/LISTS.md) ---------------------------------------------------------------------------------------------------
+// The first answers above are capped lists. These read further: a district's homes in name order, and the rich list below its top, each
+// by a cursor of the last row held (a name and an id; an amount and an id), so a row that appears or changes meanwhile can neither repeat
+// a row nor skip one. Each city's sorted rows are kept for INDEX_TTL_MS, so a page costs a binary search and the page, not a pass over
+// every resident. `key` names the city: the rows do not depend on which copy of the city record a transaction saw.
+export const INDEX_TTL_MS = 10000;
+export const NEIGHBOURS_PAGE = { size: 40, max: 100 };
+/** How far down the rich list a reader can go, and the rows of a page. */
+export const RICH_PAGE = { size: 40, max: 100, depth: 500 };
+interface HomeRow { id: string; name: string; lower: string }
+interface BoardRow { id: string; name: string; amount: number }
+const homeIndexes = new Map<string, { at: number; districts: Map<string, HomeRow[]> }>();
+const boardIndexes = new Map<string, { at: number; week: number; boards: Record<'balances' | 'earners', BoardRow[]> }>();
+const homeOrder = (a: HomeRow, b: HomeRow): number => (a.lower < b.lower ? -1 : a.lower > b.lower ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+const cut = (cache: Map<string, unknown>): void => { while (cache.size > 24) cache.delete(cache.keys().next().value as string); };
+const firstWhere = <T>(rows: readonly T[], after: (row: T) => boolean): number => { let low = 0, high = rows.length; while (low < high) { const mid = (low + high) >>> 1; if (after(rows[mid]!)) high = mid; else low = mid + 1; } return low; };
+
+/** A page of one district's homes, by name. `after` is `<lower-cased name>:<id>` of the last row held (both URL-encoded). Null: the cursor is not one of ours. */
+export function neighboursPage(key: string, city: CivicCityRecord, now: number, ttlMs: number, online: (id: string) => boolean, prefs: CivicCollection['prefs'] | undefined, viewerId: string | null,
+  district: string, after: string | null, limit: number): { district: string; homes: NeighbourHome[]; next: string | null; count: number } | null {
+  let held = homeIndexes.get(key);
+  if (!held || now - held.at > INDEX_TTL_MS) {
+    const districts = new Map<string, HomeRow[]>();
+    for (const [id, entry] of current(city, now, ttlMs)) {
+      const home = entry.house ?? UNKNOWN_DISTRICT.id, rows = districts.get(home) ?? [];
+      rows.push({ id, name: entry.name, lower: entry.name.toLowerCase() }); districts.set(home, rows);
+    }
+    for (const rows of districts.values()) rows.sort(homeOrder);
+    held = { at: now, districts }; homeIndexes.delete(key); homeIndexes.set(key, held); cut(homeIndexes);
+  }
+  const rows = held.districts.get(district) ?? [];
+  let from = 0;
+  if (after) {
+    const parts = after.split(':');
+    if (parts.length !== 2) return null;
+    let lower: string, id: string;
+    try { lower = decodeURIComponent(parts[0]!); id = decodeURIComponent(parts[1]!); } catch { return null; }
+    from = firstWhere(rows, (row) => homeOrder(row, { id, name: '', lower }) > 0);
+  }
+  const homes: NeighbourHome[] = [];
+  let i = from;
+  for (; i < rows.length && homes.length < limit; i += 1) {
+    const row = rows[i]!;
+    if (prefs?.[row.id]?.directory === true && row.id !== viewerId) continue;
+    homes.push({ id: row.id, name: row.name, online: online(row.id), you: row.id === viewerId });
+  }
+  const last = rows[i - 1];
+  return { district, homes, next: last && i < rows.length ? `${encodeURIComponent(last.lower)}:${encodeURIComponent(last.id)}` : null, count: rows.length };
+}
+
+/** A page of the rich list below its top: `after` is `<amount>:<id>` of the last row held. Ranks are the rows' places on the whole list. Null: not one of our cursors. */
+export function richListPage(key: string, city: CivicCityRecord, now: number, ttlMs: number, prefs: CivicCollection['prefs'] | undefined, viewerId: string | null,
+  board: 'balances' | 'earners', after: string | null, limit: number): { board: string; rows: RichRow[]; next: string | null } | null {
+  const week = lagosTime(now).week;
+  let held = boardIndexes.get(key);
+  if (!held || held.week !== week || now - held.at > INDEX_TTL_MS) {
+    const listed = current(city, now, ttlMs).map(([id, entry]) => ({ id, name: entry.name, cash: count(entry.cash), earned: entry.week === week ? count(entry.earned) : 0 }));
+    const make = (field: 'cash' | 'earned'): BoardRow[] => listed.filter((entry) => entry[field] > 0).map((entry) => ({ id: entry.id, name: entry.name, amount: entry[field] }))
+      .sort((a, b) => b.amount - a.amount || (a.id < b.id ? -1 : 1)).slice(0, RICH_PAGE.depth);
+    held = { at: now, week, boards: { balances: make('cash'), earners: make('earned') } }; boardIndexes.delete(key); boardIndexes.set(key, held); cut(boardIndexes);
+  }
+  const rows = held.boards[board];
+  let from = 0;
+  if (after) {
+    const [amountText, id, extra] = after.split(':'), amount = Number(amountText);
+    if (extra !== undefined || id === undefined || !Number.isFinite(amount)) return null;
+    from = firstWhere(rows, (row) => row.amount < amount || (row.amount === amount && row.id > id));
+  }
+  const out: RichRow[] = [];
+  for (let i = from; i < rows.length && out.length < limit; i += 1) {
+    const row = rows[i]!;
+    // A player who opted out of the list is left out, as in the top of it (the rank is the place on the list the reader sees).
+    if (prefs?.[row.id]?.richList === true) continue;
+    out.push({ rank: i + 1, id: row.id, name: row.name, amount: row.amount, you: row.id === viewerId });
+  }
+  const last = out.at(-1), lastIndex = last ? last.rank : from;
+  return { board, rows: out, next: last && lastIndex < rows.length ? `${last.amount}:${last.id}` : null };
+}

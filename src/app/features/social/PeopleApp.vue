@@ -6,7 +6,7 @@
 // Every disabled control says why. All names are rendered as text.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, watch } from 'vue'
+import { computed, defineAsyncComponent, watch } from 'vue'
 import { roomSummary, presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PeopleListing } from '../../../types/social.ts'
@@ -19,6 +19,8 @@ import FounderTag from './FounderTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
+// The founder's view of every player: its own chunk, read only when it is shown.
+const PlayersList = defineAsyncComponent(() => import('./PlayersList.vue'))
 import { closenessText, presenceClass, STALE_MS, staleSteps, venueNameOf } from './socialWords.ts'
 import { peopleUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
@@ -96,8 +98,11 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
           <span class="social-actions"><button type="button" class="social-btn is-primary" @click="shell.open('messages', { to: friend.id, name: friend.name })">Chat</button><button type="button" class="social-btn" @click="shell.open('person', { player: friend.id, name: friend.name })">View</button></span>
         </div>
       </div>
-      <button v-if="state.me.friendsMore?.next" type="button" class="social-btn" :disabled="state.friendsLoading" @click="client.loadMoreFriends()">Show more friends</button>
-      <EmptyState v-if="!state.me.friends.length" icon="hand" title="No friends yet" text="Go to places around town, greet people, and add the players you meet.">
+      <template v-if="state.me.friendsMore">
+        <h3 class="ui-section">Players</h3>
+        <PlayersList />
+      </template>
+      <EmptyState v-if="!state.me.friends.length && !state.me.friendsMore" icon="hand" title="No friends yet" text="Go to places around town, greet people, and add the players you meet.">
         <BaseButton @click="shell.open('map')">Find somewhere to go</BaseButton>
       </EmptyState>
       <p v-if="state.me.requests.out.length" class="social-note">Waiting for an answer from: {{ state.me.requests.out.map((request) => request.name).join(', ') }}</p>

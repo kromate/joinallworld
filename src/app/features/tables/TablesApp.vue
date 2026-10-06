@@ -6,6 +6,8 @@
 // Everything shown comes from the server (src/tables/client.ts, through useTables()); every button
 // sends a message and the answer, not the press, changes what is shown. A press that is on its way
 // disables the buttons that would repeat it. Player names are text, never markup.
+import LazyList from '../../ui/LazyList.vue'
+import { chunkedView } from '../../ui/lazyList.ts'
 import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'
@@ -41,6 +43,8 @@ const offlineWhy = computed(() => linkWords(view.value)?.why ?? '')
 /** Where the Sim is, or null while it travels. */
 const at = computed(() => (isDeparting(game.state.value) ? null : game.state.value.location))
 const lists = computed(() => partition(t.value.list ?? [], at.value))
+// Tables in the rest of the city: drawn forty at a time as the reader goes down.
+const elsewhere = chunkedView(() => lists.value.other)
 const ratings = computed(() => Object.entries(t.value.ratings ?? {}).flatMap(([id, rating]) => (rating ? [{ id, label: GAME_LABELS[id] ?? id, rating }] : [])))
 const paid = computed(() => view.value.growth?.tables ?? null)
 const busyWhy = computed(() => (growth.state.busy ? 'A share is being prepared.' : null))
@@ -109,13 +113,15 @@ function onOption(name: string, raw: string): void {
         <EmptyState v-else compact icon="tables" :title="NO_TABLE_HERE.title" :text="NO_TABLE_HERE.text" />
         <template v-if="lists.other.length">
           <SectionTitle>Elsewhere in the city</SectionTitle>
-          <ul class="ui-rows">
-            <li v-for="row in lists.other" :key="row.id" class="ui-row">
-              <span class="ui-row-icon" aria-hidden="true"><GameIcon name="tables" inline /></span>
-              <span class="ui-row-body"><b>{{ tableTitle(row) }}</b><small>{{ rowSub(row) }}</small></span>
-              <span class="ui-row-end"><BaseButton @click="tables.openTable(row.id)">{{ openLabel(row, false) }}</BaseButton></span>
-            </li>
-          </ul>
+          <LazyList class="ui-rows" :items="elsewhere.visible.value" :item-key="(row: (typeof lists.other)[number]) => row.id" :has-more="elsewhere.hasMore.value" :loading="false" :row-height="60" label="tables" @more="elsewhere.more()">
+            <template #row="{ item: row }">
+              <div class="ui-row">
+                <span class="ui-row-icon" aria-hidden="true"><GameIcon name="tables" inline /></span>
+                <span class="ui-row-body"><b>{{ tableTitle(row) }}</b><small>{{ rowSub(row) }}</small></span>
+                <span class="ui-row-end"><BaseButton @click="tables.openTable(row.id)">{{ openLabel(row, false) }}</BaseButton></span>
+              </div>
+            </template>
+          </LazyList>
         </template>
         <p v-for="entry in ratings" :key="entry.id" class="gr-note">{{ ratingLine(entry.label, entry.rating) }}</p>
         <HowItWorks id="tables-rules" :rules="LIST_RULES" />

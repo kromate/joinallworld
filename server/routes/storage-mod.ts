@@ -11,20 +11,18 @@
  *   POST /api/mod/store/safety       { action: 'drop' | 'restore', force?: boolean }   the legacy rows kept at the switch
  * Nothing here returns a player's data. A host whose store keeps no entry rows (the Node file) answers 501 `not_supported`.
  */
-import { operatorGuard } from './growth-mod.ts';
+import { operatorGate } from './growth-mod.ts';
 import { isKeyedCollection } from '../keyed.ts';
 import type { RouteContext, RouteHandler, RouteKey, RouteRequest, StoreLayoutTools } from '../types.ts';
 
 export default function storageOperatorRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
-  const guard = operatorGuard(ctx);
+  const gate = operatorGate(ctx);
   const tools = (): StoreLayoutTools => { const found = ctx.store.layout; if (!found) throw ctx.fail(501, 'not_supported'); return found; };
   const need = <K extends keyof StoreLayoutTools>(name: K): NonNullable<StoreLayoutTools[K]> => { const found = tools()[name]; if (!found) throw ctx.fail(501, 'not_supported'); return found as NonNullable<StoreLayoutTools[K]>; };
   /** A handler that talks to the store itself, not inside a transaction. */
   const direct = (handler: (body: Record<string, unknown>, request: RouteRequest) => Promise<object>): RouteHandler => {
-    const gate = guard(() => ({}));
     return async (request) => {
-      await gate(request);
-      const body: Record<string, unknown> = request.method === 'POST' ? await request.json() : {};
+      const body = await gate(request);
       try { return { body: await handler(body, request), headers: { 'Cache-Control': 'no-store' } }; }
       catch (error) {
         const found = error as { status?: unknown; code?: unknown; message?: unknown };

@@ -31,6 +31,11 @@
  *   POST /api/social/messages            { to | conv, body, clientId }
  *   POST /api/social/groups              { name, members: [id], clientId }
  *   POST /api/social/groups/:id          { op: 'rename' | 'add' | 'remove' | 'leave', name?, id? }
+ *   GET  /api/social/friends/search?q=                friends whose name has q in it (for picking group members)
+ *   POST /api/social/conversations/:id/prefs { mute?, pin?, hide? }   the caller's own mute, pin, or removal of a chat
+ *   POST /api/social/prefs               { groups?, mentions?, pictures? }   who may add me to groups, mentions through mute, who may send me pictures
+ *   POST /api/social/images              { to | conv, clientId, type, data (base64), body? }   a message with one picture (server/social/images.ts)
+ *   GET  /api/social/images/:id                       the picture's bytes, for members of its conversation only
  *   GET  /api/social/house/:host                      a house's guest list, as seen by me
  *   POST /api/social/join                { host, cityId }   the invite landing: who you are joining and how (service.join)
  *   POST /api/social/house/knock         { host, cityId }
@@ -44,12 +49,16 @@
  */
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { socialService, MATERIAL } from '../social/service.ts';
+import { CONTENT_TYPES, FAULT_WORDS, PICTURE_LIMITS, cleanPicture, claimedType, fromBase64, pictureSettings } from '../social/images.ts';
+import type { ImageRef } from '../types.ts';
 
 type Service = ReturnType<typeof socialService>;
 type Outcome = object;
 type Call = (db: Db, session: SessionRecord, body: Record<string, unknown>, request: RouteRequest) => Outcome;
 
 export const HTTP_PER_MINUTE = 240;
+/** The most a picture upload body may be: 250 kB of picture as base64 and its fields. */
+const UPLOAD_BYTES = Math.ceil(PICTURE_LIMITS.bytes / 3) * 4 + 4096;
 
 export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const service = socialService(ctx);
@@ -73,6 +82,65 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   /** The same, for a request that changes what the caller's own overview shows. */
   const mine = (call: Call): RouteHandler => route(call, true);
   const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
+  // ---- pictures ------------------------------------------------------------------------------------------------
+  // The bytes are checked and kept outside the social collection (ctx.images); the message holds only their id.
+  let storedBytes: number | null = null, trimmedAt = 0;
+  /** Keep the store inside its retention time and its size ceiling (at most once an hour, and whenever an upload takes it over the ceiling). */
+  async function keepTidy(added: number): Promise<void> {
+    const images = ctx.images, settings = pictureSettings(ctx.env);
+    if (!images) return;
+    storedBytes = (storedBytes ?? (await images.stats()).bytes) + added;
+    if (ctx.now() - trimmedAt < 3600000 && storedBytes <= settings.ceilingBytes) return;
+    trimmedAt = ctx.now();
+    await images.trim(ctx.now() - settings.retentionMs, settings.ceilingBytes);
+    storedBytes = (await images.stats()).bytes;
+  }
+  const upload: RouteHandler = async (request) => {
+    const body = await request.json(UPLOAD_BYTES);
+    const images = ctx.images;
+    const claimed = claimedType(body.type), bytes = fromBase64(body.data, PICTURE_LIMITS.bytes + 4);
+    if (!claimed || !bytes) throw ctx.fail(400, 'invalid_picture');
+    const settings = pictureSettings(ctx.env);
+    // Who is asking, and which conversation the picture is for, before anything is kept.
+    const me = await ctx.store.read((db) => request.requireSession(db).publicId);
+    if (!ctx.allow(`social:http:${me}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');
+    if (settings.mode === 'off' || !images) return { body: { ok: false, code: 'pictures_off', reason: 'Pictures are not switched on here.' }, renew: true };
+    const cleaned = cleanPicture(bytes, claimed);
+    if (!cleaned.ok) return { body: { ok: false, code: 'picture_rejected', reason: FAULT_WORDS[cleaned.fault] }, renew: true };
+    const { picture } = cleaned;
+    const to = typeof body.to === 'string' ? body.to.toLowerCase() : null;
+    const conv = to !== null ? `dm.${[me, to].sort().join('.')}` : typeof body.conv === 'string' ? body.conv : '';
+    if (!/^(dm|g|h)\.[0-9a-f.-]{1,80}$/.test(conv)) throw ctx.fail(400, to !== null ? 'invalid_player' : 'invalid_conversation');
+    const id = ctx.randomId().replaceAll('-', '');
+    if (!PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(500, 'internal_error');
+    const ref: ImageRef = { id, w: picture.width, h: picture.height, n: picture.bytes.length };
+    await images.put({ id, conv, at: ctx.now(), size: picture.bytes.length, type: picture.type }, picture.bytes);
+    try {
+      const result = await ctx.store.transact((db) => {
+        const session = request.requireSession(db, { renew: true });
+        return service.finish(db, service.send(db, session, body, { ref }));
+      }, { durable: () => true, waitForObserved: true, committed: (value) => service.committed(value) });
+      const answer = service.deliver(result);
+      // A refusal, or a retry of a picture already stored, keeps nothing of this upload.
+      if (!answer.ok || 'duplicate' in answer) await images.remove([id]);
+      else void keepTidy(picture.bytes.length).catch(() => {});
+      return { body: answer, renew: true };
+    } catch (error) { await images.remove([id]).catch(() => {}); throw error; }
+  };
+  const picture: RouteHandler = async (request) => {
+    const id = request.params.id ?? '', images = ctx.images;
+    if (!images || !PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(404, 'unknown_picture');
+    // Who may see it is decided from the stored conversation on every request; the picture is read only after that.
+    const allowed = await ctx.store.read((db) => {
+      const session = request.requireSession(db);
+      if (!ctx.allow(`social:img:${session.publicId}`, 240)) throw ctx.fail(429, 'rate_limited');
+      const found = Object.values(ctx.collection(db, 'social').convs ?? {}).find((conv) => conv.messages.some((line) => line.img?.id === id));
+      return found ? service.pictureAllowed(db, session, found.id, id) : false;
+    });
+    const found = allowed ? await images.get(id) : null;
+    if (!found) throw ctx.fail(404, 'unknown_picture');
+    return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
+  };
   return {
     'GET /api/social/me': route((db, session) => service.me(db, session)),
     'GET /api/social/friends': route((db, session, body, request) => service.friendsPage(db, session, request.query.get('after'))),
@@ -93,6 +161,11 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/messages': route((db, session, body) => service.send(db, session, body)),
     'POST /api/social/groups': mine((db, session, body) => service.groupCreate(db, session, body)),
     'POST /api/social/groups/:id': mine((db, session, body, request) => service.groupUpdate(db, session, { ...body, conv: request.params.id })),
+    'GET /api/social/friends/search': route((db, session, body, request) => service.friendSearch(db, session, request.query.get('q'))),
+    'POST /api/social/conversations/:id/prefs': mine((db, session, body, request) => service.convPrefs(db, session, { ...body, conv: request.params.id })),
+    'POST /api/social/prefs': mine((db, session, body) => service.chatPrefs(db, session, body)),
+    'POST /api/social/images': upload,
+    'GET /api/social/images/:id': picture,
     'GET /api/social/house/:host': route((db, session, body, request) => service.house(db, session, request.params.host)),
     'POST /api/social/join': route((db, session, body) => service.join(db, session, body)),
     'POST /api/social/house/knock': mine((db, session, body) => service.knock(db, session, body)),

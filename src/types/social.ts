@@ -78,7 +78,18 @@ export interface Conversation {
   with: string | null
   last: { seq: number; from: PlayerRef | null; body: string; at: number } | null
   unread: number
+  /** Unread messages that mention the viewer (groups only). Absent: none. */
+  mentions?: number
+  /** The viewer muted this group: no sound or toast, and it is left out of the badge (a mention still counts, unless they turned that off). */
+  muted?: true
+  /** The viewer pinned this chat to the top of their list (at most `LIMITS.pins`). */
+  pinned?: true
 }
+
+/** One mention in a group message: `body.slice(start, end)` is its text, `@` and the name as it was when the message was sent. */
+export interface Mention { id: string | 'everyone'; start: number; end: number }
+/** The message a reply answers, frozen when the reply was sent. `from` is null when the author is no longer shown to the viewer. */
+export interface ReplyQuote { seq: number; from: PlayerRef | null; text: string }
 
 /** One message as one member sees it (service.js messageView()). */
 export interface Message {
@@ -95,11 +106,28 @@ export interface Message {
   auto?: true
   /** The sender's retry key — only on the sender's own messages. */
   clientId?: string
+  /** Group messages only: who the body mentions. */
+  mentions?: Mention[]
+  /** The message this one answers. */
+  replyTo?: ReplyQuote
+  /** A gift of money sent from the chat: the amount, and how much of it paid a ride debt on arrival (shown to the one who received it). */
+  gift?: { amount: number; repaid?: number }
+  /** A picture. Its bytes are at GET /api/social/images/<id>, for members of the conversation only. */
+  image?: PictureView
+}
+/** What a picture is to the one looking at it. `state` is absent when it can be shown. */
+export interface PictureView {
+  id: string
+  width: number
+  height: number
+  state?: 'expired' | 'hidden' | 'reported' | 'off'
+  /** Show it blurred until the viewer taps it (a new friend's picture, or a friend's first). */
+  blur?: true
 }
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -154,7 +182,15 @@ export interface SocialLimits {
   guests: number
   reportText: number
   reasons: ReportReason[]
+  /** Chats a player may pin, and the most mentions in one message. */
+  pins: number
+  mentions: number
+  /** Pictures: whether this player can send them now, the largest upload in bytes, the longest caption. */
+  pictures: { on: boolean; bytes: number; caption: number }
 }
+
+/** Who may add a player to a group, and whether a mention breaks through a muted group. */
+export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody' }
 
 /** GET /api/social/me. */
 export interface SocialOverview {
@@ -181,6 +217,7 @@ export interface SocialOverview {
   visiting: HouseView | null
   /** `/v/<publicId>`. */
   invitePath: string
+  prefs: ChatPrefs
   limits: SocialLimits
 }
 
@@ -234,9 +271,21 @@ export interface FriendAnswerBody { from: string; accept: boolean; cityId: CityI
 export interface FriendRemoveBody { id: string; cityId: CityId }
 export interface BlockBody { id: string; cityId: CityId }
 export interface UnblockBody { id: string }
-export interface PlayerReportBody { id: string; reason: ReportReason; text?: string }
+/** A player, a group (`conv`) or one picture of a conversation (`conv` and `image`). */
+export type PlayerReportBody = ({ id: string } | { conv: ConversationId; image?: string }) & { reason: ReportReason; text?: string }
 /** `clientId` here is any retry key of 8–80 characters `[A-Za-z0-9:_-]`; the browser sends a TimedId. */
-export type SendMessageBody = ({ to: string } | { conv: ConversationId }) & { body: string; clientId: string }
+export type SendMessageBody = ({ to: string } | { conv: ConversationId }) & {
+  body: string; clientId: string
+  /** Groups only: each mention's player (or `'everyone'`) and where its `@` is in `body`. The server checks the text there is `@` and that player's name. */
+  mentions?: { id: string; start: number }[]
+  /** The `seq` of a message in the same conversation that this one answers. */
+  replyTo?: number
+}
+/** `type` names the bytes' content type; `data` is standard base64. `body` is an optional caption. */
+export type PictureUploadBody = ({ to: string } | { conv: ConversationId }) & { clientId: string; type: 'image/jpeg' | 'image/png' | 'image/webp'; data: string; body?: string; replyTo?: number; mentions?: { id: string; start: number }[] }
+export type PictureRefusal = 'pictures_off' | 'pictures_blocked' | 'pictures_refused' | 'friends_only' | 'rate_limited' | 'not_a_member' | 'picture_rejected' | OtherPlayerRefusal | TextRefusal
+export interface ConvPrefsBody { mute?: boolean; pin?: boolean; hide?: true }
+export interface ChatPrefsBody { groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody' }
 export interface ReadBody { seq?: number }
 export interface GroupCreateBody { name: string; members: string[]; clientId: TimedId }
 export type GroupUpdateBody = { op: 'rename'; name: string } | { op: 'add' | 'remove'; id: string } | { op: 'leave' }
@@ -358,6 +407,16 @@ export interface SocialHttpRoutes {
   'POST /api/social/messages': { body: SendMessageBody; response: Ok<SendMessageResult>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' }
   'POST /api/social/groups': { body: GroupCreateBody; response: Ok<GroupCreateResult>; errors: SocialPost | OnceErrorCode | 'invalid_group_name' | 'invalid_members' | 'invalid_player' }
   'POST /api/social/groups/:id': { params: { id: ConversationId }; body: GroupUpdateBody; response: Ok<GroupUpdateResult>; errors: SocialPost | 'invalid_conversation' | 'invalid_group_name' | 'invalid_player' | 'invalid_group_op' }
+  /** Friends whose name has `q` (2–36 characters) in it, at most 20: for picking people to add to a group. */
+  'GET /api/social/friends/search': { query: { q: string }; response: Ok<Done<'ok', { results: { id: string; name: string }[] }> | Refusal<'rate_limited'>>; errors: SocialCommon | 'invalid_query' }
+  /** Mute or pin a conversation, or remove it from the caller's list (`hide`): the caller's own copy only. */
+  'POST /api/social/conversations/:id/prefs': { params: { id: ConversationId }; body: ConvPrefsBody; response: Ok<Done<'updated', { conv: Conversation }> | Done<'hidden'> | Refusal<'not_a_member' | 'not_allowed' | 'pin_limit'>>; errors: SocialPost | 'invalid_conversation' }
+  /** Who may add the caller to groups, whether a mention breaks through a muted group, who may send them pictures. */
+  'POST /api/social/prefs': { body: ChatPrefsBody; response: Ok<Done<'saved', { prefs: ChatPrefs }>>; errors: SocialPost | 'invalid_pref' }
+  /** One picture in a message: the body is JSON with the picture as base64 (at most 250 kB of picture). Answered like POST /api/social/messages. */
+  'POST /api/social/images': { body: PictureUploadBody; response: Ok<SendMessageResult | Refusal<PictureRefusal>>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' | 'invalid_picture' | 'body_too_large' }
+  /** The picture's bytes (not JSON): members of its conversation only, `Cache-Control: private`, `nosniff`, inline. 404 for anyone else. */
+  'GET /api/social/images/:id': { params: { id: string }; response: Ok<Record<string, never>>; errors: SocialCommon | 'unknown_picture' }
   'GET /api/social/house/:host': { params: { host: string }; response: Ok<HouseResult>; errors: SocialCommon | 'invalid_player' }
   /** The same body as a knock: `{ host, cityId }`. */
   'POST /api/social/join': { body: KnockBody; response: Ok<JoinResult>; errors: SocialPost | 'invalid_player' | 'invalid_city' }
@@ -416,6 +475,8 @@ export interface SocialSyncFrame { type: 'social-sync' }
  * To every open socket of the player who read something: the conversation as it now stands for them (`conv`), or that
  * their updates list was read (`updates`). Their other devices clear the same badge without a request.
  */
+/** A message changed after it was sent (a picture hidden, a gift's share of a ride debt): the message as the recipient now sees it. */
+export interface MessageChangedFrame { type: 'message-changed'; conv: Conversation; message: Message }
 export interface SocialReadFrame { type: 'social-read'; conv?: Conversation; updates?: true }
 /** To every open socket of a player whose own request changed their friends, groups, blocks or visits: read the overview again. */
 export interface SocialChangedFrame { type: 'social-changed' }
@@ -437,7 +498,7 @@ export type SocialReplyFrame = DmSentFrame | DmFailedFrame | DmReadOkFrame | Peo
 export type SocialPushFrame =
   | DmFrame | SocialUpdateFrame | SocialSyncFrame | FriendRequestFrame | FriendAcceptedFrame | PeoplePresenceFrame | PeopleChangedFrame
   | PeopleInteractionFrame | InviteKnockFrame | InviteAnswerFrame | InviteHouseFrame | TransferFrame
-  | SocialReadFrame | SocialChangedFrame | PingServerFrame
+  | SocialReadFrame | SocialChangedFrame | MessageChangedFrame | PingServerFrame
 export type SocialServerFrame = SocialReplyFrame | SocialPushFrame
 
 // ---- browser side --------------------------------------------------------------------------------
@@ -482,11 +543,11 @@ export interface KnockState {
 // ---- runtime key lists (protocol.test.ts) --------------------------------------------------------
 
 export const SOCIAL_OVERVIEW_KEYS = [
-  'bae', 'baeRequests', 'blocked', 'code', 'conversations', 'friends', 'house', 'invitePath', 'limits', 'me', 'ok', 'reports',
+  'bae', 'baeRequests', 'blocked', 'code', 'conversations', 'friends', 'house', 'invitePath', 'limits', 'me', 'ok', 'prefs', 'reports',
   'requests', 'serverTime', 'updates', 'visiting',
 ] as const satisfies readonly (keyof SocialOverview | keyof ApiEnvelope)[]
 export const HOUSE_VIEW_KEYS = ['capacity', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'role'] as const satisfies readonly (keyof HouseView)[]
-export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
+export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'mentions', 'pictures', 'pins', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
 export const PEOPLE_LISTING_KEYS = ['cityId', 'code', 'count', 'groups', 'here', 'ok', 'players', 'self', 'serverTime', 'total', 'venue'] as const satisfies readonly (keyof PeopleListing | keyof ApiEnvelope)[]
 export const CONVERSATION_KEYS = ['id', 'kind', 'last', 'members', 'name', 'owner', 'unread', 'with'] as const satisfies readonly (keyof Conversation)[]
 /** A sender's own message; someone else's has no `clientId`, a system line adds `sys`. */

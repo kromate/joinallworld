@@ -209,8 +209,8 @@ export interface SocialPlayerRecord {
   in: Record<string, number>
   out: Record<string, number>
   blocked: Record<string, number>
-  /** Conversations this player lists, with their read marker. */
-  convs: Record<string, { read: number }>
+  /** Conversations this player lists, with their read marker, and (set only when on) that they muted or pinned it. */
+  convs: Record<string, { read: number; mute?: true; pin?: true }>
   /** At most 50, newest last. */
   updates: SocialUpdate[]
   /** At most 20, newest last. */
@@ -225,6 +225,16 @@ export interface SocialPlayerRecord {
   chats: { day: number; count: number }
   /** Who may ring this player (server/social/calls.ts); absent means the default, everyone. */
   calls?: 'everyone' | 'friends' | 'nobody'
+  /** Who may add this player to a group: absent means friends; 'nobody' refuses every invitation (server/social/service.ts). */
+  groups?: 'nobody'
+  /** Absent: a mention breaks through a muted group. 'off': a muted group stays silent even for a mention. */
+  mentions?: 'off'
+  /** Pictures: 'nobody' refuses every picture sent to this player (server/social/images.ts). Absent: friends. */
+  pictures?: 'nobody'
+  /** An operator stopped this player sending pictures. */
+  noPictures?: true
+  /** Pictures sent on Lagos day `day`. */
+  pics?: { day: number; count: number }
   /** This player was introduced to the founder (that character's id), once: never cleared (server/social/founder.ts). Absent: not yet. */
   founder?: { id: string; at: number }
   /** This player came through `by`'s invite link and the two were introduced, once: never cleared (server/social/service.ts meetInviter). Absent: not yet. */
@@ -241,6 +251,42 @@ export interface MessageRecord {
   sys?: true
   /** The founder's welcome note: `body` is '' and the words come from server/social/founder.ts. */
   auto?: true
+  /** Groups only: who the body mentions, as `[player id | 'everyone', start of the `@` in body, its length]`. The text of the mention is in the body itself. */
+  men?: [string, number, number][]
+  /** The message this one answers: its sequence number, its author and the first characters of it, frozen when this was sent. */
+  re?: { seq: number; from: string; text: string }
+  /** A gift of money sent from the chat: `n` naira, and `r` of it that went to a ride debt on arrival. Its words are in `body`. */
+  gift?: { n: number; r?: number }
+  /** A picture: the id of its bytes (kept apart from this collection), its size and what became of it. */
+  img?: ImageRef
+}
+/** What a message holds of a picture. The bytes are in the image store (server/social/images.ts), never here. */
+export interface ImageRef {
+  id: string
+  w: number
+  h: number
+  /** Bytes. */
+  n: number
+  /** The players who reported it (at most the report limit). */
+  rp?: string[]
+  /** Hidden from everyone: enough reports, or an operator hid it, pending review. */
+  hid?: true
+  /** Deleted: expired, pushed out by newer pictures, or removed by an operator. */
+  gone?: true
+}
+/** One picture in the image store. */
+export interface StoredImage { id: string; conv: string; at: number; size: number; type: 'jpeg' | 'png' | 'webp' }
+/** Where picture bytes are kept: files on Node, a SQLite table of the Durable Object on the Worker. Never the `social` collection. */
+export interface ImageStore {
+  put(image: StoredImage, bytes: Uint8Array): Promise<void>
+  get(id: string): Promise<{ image: StoredImage; bytes: Uint8Array } | null>
+  /** Delete these; ids that are not there are ignored. */
+  remove(ids: readonly string[]): Promise<void>
+  /** Delete every picture of these conversations. */
+  removeConv(convs: readonly string[]): Promise<void>
+  /** Delete pictures stored before `before` (server ms) and, while the total is over `maxBytes`, the oldest. Returns the ids removed. */
+  trim(before: number, maxBytes: number): Promise<string[]>
+  stats(): Promise<{ count: number; bytes: number }>
 }
 export interface ConversationRecord {
   id: string
@@ -254,6 +300,8 @@ export interface ConversationRecord {
   // INCONSISTENT: server/social/service.ts:690 also stores `creator` on a new group; the header comment of
   // that file (line 19) does not list it and nothing reads it.
   creator?: string
+  /** Groups: when `@everyone` was last used (server ms). Absent: never. */
+  everyoneAt?: number
   /** Sequence number of the last message. */
   seq: number
   created: number
@@ -292,6 +340,8 @@ export interface PendingEffect {
   payload: SocialEffectPayload
   /** Money: never dropped to make room. */
   keep: boolean
+  /** The gift's line in the chat, so what the arrival did to it (a ride debt repaid) can be written there. */
+  gift?: { conv: string; seq: number }
   /** An unclaimed gift on its way back to the sender. */
   refund?: true
 }
@@ -308,6 +358,9 @@ export interface PlayerReportRecord {
   evidence: string[]
   note?: string
   updatedAt?: number
+  /** A report about a picture: its id and conversation. */
+  image?: string
+  conv?: string
 }
 export interface SocialCollection {
   players: Record<string, SocialPlayerRecord>
@@ -648,8 +701,8 @@ export interface RouteRequest {
   ip: string
   /** True only for a request carrying the operator's bearer token. */
   moderator(): boolean
-  /** Rejects 415 / 413 / 400. */
-  json(): Promise<Record<string, unknown>>
+  /** Rejects 415 / 413 / 400. The body may be at most `limit` bytes (default 8 KiB). */
+  json(limit?: number): Promise<Record<string, unknown>>
   session(db: Db, options?: { renew?: boolean }): SessionRecord | undefined
   /** Throws 401 device_session_required. */
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
@@ -680,6 +733,8 @@ export interface RouteResult {
   renew?: boolean
   /** Runs once the answer is out; a throw is logged and goes no further. */
   after?: () => void | Promise<void>
+  /** Instead of `body`: bytes to send as they are, with their content type. Always sent `private`, `nosniff` and `inline`. */
+  file?: { bytes: Uint8Array; type: string }
 }
 export type RouteHandler = (request: RouteRequest) => RouteResult | void | Promise<RouteResult | void>
 export type RouteMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -898,6 +953,8 @@ export interface RouteContext {
   peek?(key: string, count?: number): boolean
   /** Milliseconds until the window of a limiter key ends (0: no window is running). For telling a refused caller when to come back. Absent on a host without it. */
   retryIn?(key: string): number
+  /** The picture bytes (server/social/images.ts); null on a host built without them. */
+  images: ImageStore | null
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]
   collection(db: Db, name: string, initial?: object): Record<string, unknown>

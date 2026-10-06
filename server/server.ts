@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
+import { createFileImages } from './social/image-files.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
 import { capacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
@@ -118,12 +119,12 @@ function packageVersion(): string {
 /** Whether this connection is TLS (a direct HTTPS listener) or reached through a trusted proxy that spoke HTTPS. */
 const isSecure = (req: IncomingMessage, trustProxy: boolean): boolean => ('encrypted' in req.socket && Boolean(req.socket.encrypted)) || (trustProxy && req.headers['x-forwarded-proto'] === 'https');
 const errorDetail = (error: unknown): unknown => fieldOf(error, 'code') || fieldOf(error, 'message');
-async function jsonBody(req: IncomingMessage): Promise<Record<string, unknown>> {
+async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<string, unknown>> {
   if (!req.headers['content-type']?.startsWith('application/json')) throw fail(415, 'json_required');
   let body = '';
   for await (const chunk of req) {
     body += String(chunk);
-    if (Buffer.byteLength(body) > 8192) throw fail(413, 'body_too_large');
+    if (Buffer.byteLength(body) > limit) throw fail(413, 'body_too_large');
   }
   try { const value: unknown = JSON.parse(body); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
@@ -326,7 +327,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           method, path: url.pathname, params: route.params, query: url.searchParams, ip,
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
-          json: () => jsonBody(req).then(body => (request.body = body)),
+          json: (limit?: number) => jsonBody(req, limit).then(body => (request.body = body)),
           session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) { request.publicId = session.publicId; request.secret = session.secret; } return session; },
           requireSession(db: Db, options?: { renew?: boolean }) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
           // Foundation-only: the stored session's key (the cookie until session() resolves it), the cookie as presented, and the raw request.
@@ -344,6 +345,15 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         finally { for (const publicId of new Set([...held.bySecret.get(request.secret ?? '') ?? []].filter(ws => ws.room).map(ws => ws.session.id))) await ctx.core.revalidate(publicId); }
         const result: RouteResult = returned && typeof returned === 'object' ? returned : {};
         const status = result.status || 200;
+        if (result.file && status < 300) {
+          // Bytes a route hands over as they are (a chat picture): private to the caller, never sniffed, shown in the page.
+          if (!res.headersSent && !res.destroyed) {
+            res.writeHead(status, { ...apiHeaders(factsOf(req)), 'Content-Type': result.file.type, 'Cache-Control': 'private, max-age=300', 'Content-Disposition': 'inline', 'Content-Length': String(result.file.bytes.length) });
+            res.end(Buffer.from(result.file.bytes));
+          }
+          telemetry.http({ method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId });
+          return;
+        }
         // While the data file cannot be written, every success says so: what the player sees is what
         // is stored, and nothing new is being saved.
         const payload = status < 300 && result.body && typeof result.body === 'object' && !Array.isArray(result.body)
@@ -460,7 +470,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, images: createFileImages(join(dataDir, 'chat-images')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

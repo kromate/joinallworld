@@ -65,11 +65,12 @@ import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityName } from '../../src/game/cities/index.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
+import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
-import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus } from '../../src/types/social.ts';
+import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { AccountRecord, ConversationRecord, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
+import type { AccountRecord, ConversationRecord, ImageRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
 
 /** A request body or socket frame: every field is untrusted until a validator below has read it. */
 export type SocialBody = Record<string, unknown>;
@@ -79,7 +80,9 @@ export interface Refused { ok: false; code: string; reason: string }
 type BlockChange = ['block' | 'unblock', string, string] | ['forget', string];
 type VisitEnd = [string, string];
 /** The visits and block changes one transaction made, kept per collection copy (see endedIn). */
-interface Ended extends Array<VisitEnd> { blocks: BlockChange[]; material?: boolean; pushes: PushList }
+interface Ended extends Array<VisitEnd> { blocks: BlockChange[]; material?: boolean; pushes: PushList; drops: Drops }
+/** Pictures to delete from the image store once the transaction has committed: by id, and every picture of a conversation. */
+interface Drops { ids: string[]; convs: string[] }
 type BlockChanges = BlockChange[] & { applied?: boolean };
 type Delivered<R> = R extends { push: unknown } ? Omit<R, 'push'> : R;
 
@@ -89,6 +92,7 @@ export const LIMITS = Object.freeze({
   updates: 50, reports: 2000, ownReports: 20, reportText: 300, pending: 50,
   guests: 5, knockMs: 60000, knockCooldownMs: 60000, visitMs: 30 * 60000,
   strangerMessages: 3, newChatsPerDay: 10, searchResults: 10,
+  pins: 3, mentions: 5, everyoneMs: 600000, groupAddsPerHour: 30, mentionMessages: 20, friendPicks: 20, quote: 80, giftLine: 40,
   escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
 });
 export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReason[]>(['harassment', 'spam', 'cheating', 'offensive-name', 'other']);
@@ -108,6 +112,7 @@ const services = new WeakMap<RouteContext, SocialService>();
 const ENDED = Symbol('visits ended by this transaction');
 const BLOCKS = Symbol('block changes made by this transaction');
 const PUSHES = Symbol('pushes owed by this transaction beside its own result');
+const DROPS = Symbol('pictures this transaction took out of conversations');
 /** Set on a result (see finish) when the transaction applied a life effect that was owed to the caller. */
 export const MATERIAL = Symbol('this transaction changed a life');
 
@@ -126,7 +131,7 @@ function buildService(ctx: RouteContext) {
   // in one shared list) because another transaction may run between this one's commit and its
   // deliver(): finish() moves the list onto the result inside the transaction, deliver() announces it.
   const endedOf = new WeakMap<SocialCollection, Ended>();
-  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList })); } return list; };
+  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList, drops: { ids: [], convs: [] } as Drops })); } return list; };
   // ---- blocks, in memory (see header) ----------------------------------------------------------
   const blockIndex = new Map<string, Set<string>>(); // blocker → Set<blocked>
   const blocked = (a: string, b: string): boolean => Boolean(blockIndex.get(a)?.has(b) || blockIndex.get(b)?.has(a));
@@ -156,6 +161,12 @@ function buildService(ctx: RouteContext) {
   function text(value: unknown, max: number, code: string): string {
     const body = typeof value === 'string' ? value.trim() : '';
     if (!body || body.length > max || CONTROL.test(body)) throw bad(code);
+    return body;
+  }
+  /** A picture's caption: may be empty, never longer than PICTURE_LIMITS.caption. */
+  function caption(value: unknown): string {
+    const body = typeof value === 'string' ? value.trim() : '';
+    if (body.length > PICTURE_LIMITS.caption || CONTROL.test(body)) throw bad('invalid_message');
     return body;
   }
   const convId = (value: unknown): string => { if (typeof value !== 'string' || !CONV_ID.test(value)) throw bad('invalid_conversation'); return value; };
@@ -292,6 +303,7 @@ function buildService(ctx: RouteContext) {
     const ids = start < 0 ? [] : all.slice(start, start + FOUNDER_PAGE), last = ids.at(-1);
     return { ids, total: all.length, next: last && start + ids.length < all.length ? `${last[1]}:${last[0]}` : null };
   }
+  const prefsOf = (p: SocialPlayerRecord): { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody' } => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends' });
   const bodyOf = (message: MessageRecord): string => (message.auto ? WELCOME_NOTE : message.body);
 
   const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
@@ -374,16 +386,23 @@ function buildService(ctx: RouteContext) {
     return null;
   }
   /** 'applied' | 'refused' (the rules engine said no) | 'no-life' (nowhere to apply it yet: it waits). */
-  function runEffect(session: SessionRecord, effect: PendingEffect): 'applied' | 'refused' | 'no-life' {
+  function runEffect(s: SocialCollection, session: SessionRecord, effect: PendingEffect): 'applied' | 'refused' | 'no-life' {
     const cityId = lifeCity(session, effect.cityId);
     if (!cityId) return 'no-life';
-    return act(session, cityId, effect.payload.op, effect.payload, `social|effect|${effect.n}`, 'an owed effect is applied and taken off the queue in one transaction').ok ? 'applied' : 'refused';
+    const owed = session.cities?.[cityId]?.state?.travel?.rideDebt ?? 0;
+    const done = act(session, cityId, effect.payload.op, effect.payload, `social|effect|${effect.n}`, 'an owed effect is applied and taken off the queue in one transaction');
+    if (!done.ok) return 'refused';
+    // A gift that arrived: write into its line in the chat what the arrival did with it (a share paid a ride debt).
+    const line = effect.gift ? s.convs[effect.gift.conv]?.messages.find((item) => item.seq === effect.gift!.seq) : undefined;
+    const repaid = owed - (done.state.travel?.rideDebt ?? 0);
+    if (line?.gift && repaid > 0) line.gift.r = repaid;
+    return 'applied';
   }
   /** Apply a life effect to another player now if they are connected, otherwise keep it for their next request. */
-  function owe(s: SocialCollection, db: Db, to: string, cityId: CityId, payload: SocialEffectPayload, { keep = false, refund = false } = {}): boolean {
-    const effect: PendingEffect = { n: ++s.seq, at: now(), cityId, payload, keep, ...(refund ? { refund: true } : {}) };
+  function owe(s: SocialCollection, db: Db, to: string, cityId: CityId, payload: SocialEffectPayload, { keep = false, refund = false, gift }: { keep?: boolean; refund?: boolean; gift?: { conv: string; seq: number } } = {}): boolean {
+    const effect: PendingEffect = { n: ++s.seq, at: now(), cityId, payload, keep, ...(refund ? { refund: true } : {}), ...(gift ? { gift } : {}) };
     const session = onlineSession(db, to);
-    if (session && runEffect(session, effect) === 'applied') return true;
+    if (session && runEffect(s, session, effect) === 'applied') return true;
     const queue = s.pending[to] ||= [];
     queue.push(effect);
     // Money (keep) is never dropped; only bookkeeping effects make room.
@@ -395,10 +414,14 @@ function buildService(ctx: RouteContext) {
     if (!queue?.length) return;
     const left: PendingEffect[] = [];
     for (const effect of queue) {
-      const outcome = runEffect(session, effect);
+      const outcome = runEffect(s, session, effect);
       // Money (keep) is never dropped. Anything waits while the player has no life to apply it to.
       if (outcome === 'no-life' || (outcome === 'refused' && effect.keep)) left.push(effect);
-      else endedIn(s).material = true; // a gift or a friendship reached this life (or was settled): the request must be durable
+      else {
+        endedIn(s).material = true; // a gift or a friendship reached this life (or was settled): the request must be durable
+        const chat = effect.gift ? s.convs[effect.gift.conv] : undefined, line = chat?.messages.find((item) => item.seq === effect.gift!.seq);
+        if (chat && line?.gift?.r) endedIn(s).pushes.push([session.publicId, { type: 'message-changed', conv: summary(s, chat, session.publicId), message: messageView(s, chat, line, session.publicId) }]);
+      }
     }
     if (left.length) s.pending[session.publicId] = left; else delete s.pending[session.publicId];
   }
@@ -435,25 +458,54 @@ function buildService(ctx: RouteContext) {
   }
 
   // ---- conversations -------------------------------------------------------------------------
+  /** The viewer is a member of the group and a message mentions them or everyone (their own messages never count). */
+  const mentionsViewer = (message: MessageRecord, viewer: string): boolean => message.from !== viewer && Boolean(message.men?.some(([who]) => who === viewer || who === 'everyone'));
+  /** What a picture is to this viewer: shown, shown blurred until tapped, or why it is not shown. */
+  function pictureView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string): PictureView | undefined {
+    const image = message.img;
+    if (!image) return undefined;
+    const base = { id: image.id, width: image.w, height: image.h };
+    const mine = message.from === viewer;
+    if (image.gone) return { ...base, state: 'expired' };
+    if (!mine && image.rp?.includes(viewer)) return { ...base, state: 'reported' };
+    if (image.hid) return { ...base, state: 'hidden' };
+    if (!mine && s.players[viewer]?.pictures === 'nobody') return { ...base, state: 'off' };
+    if (mine || !message.from) return base;
+    // A new friend's picture, or a friend's first picture here, is blurred until tapped.
+    const first = !conv.messages.some((item) => item.seq < message.seq && item.from === message.from && item.img && !item.img.gone);
+    const since = friendsSince(s.players, viewer, message.from), fresh = since > 0 && now() - since < 86400000;
+    return { ...base, ...(first || fresh ? { blur: true as const } : {}) };
+  }
   function messageView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string) {
+    const quote = message.re && !s.players[viewer]?.blocked[message.re.from] ? { seq: message.re.seq, from: pub(s, message.re.from), text: message.re.text } : undefined;
+    const picture = pictureView(s, conv, message, viewer);
     return { seq: message.seq, id: `${conv.id}#${message.seq}`, conv: conv.id, from: message.from ? pub(s, message.from) : null, body: bodyOf(message), at: message.at,
-      ...(message.sys ? { sys: true as const } : {}), ...(message.auto ? { auto: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}) };
+      ...(message.sys ? { sys: true as const } : {}), ...(message.auto ? { auto: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}),
+      ...(message.men?.length ? { mentions: message.men.map(([id, start, length]): Mention => ({ id, start, end: start + length })) } : {}),
+      ...(quote ? { replyTo: quote } : {}),
+      ...(message.gift ? { gift: { amount: message.gift.n, ...(message.gift.r && message.from !== viewer ? { repaid: message.gift.r } : {}) } } : {}),
+      ...(picture ? { image: picture } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
   function summary(s: SocialCollection, conv: ConversationRecord, viewer: string) {
-    const read = s.players[viewer]?.convs[conv.id]?.read ?? 0;
+    const entry = s.players[viewer]?.convs[conv.id], read = entry?.read ?? 0;
     const seen = conv.messages.filter((message) => visibleTo(s, viewer, message));
     const last = seen.at(-1);
     const others = conv.members.filter((id) => id !== viewer);
+    const unseen = seen.filter((message) => message.seq > read && message.from !== viewer && !message.sys);
+    const mentions = conv.kind === 'group' && !(entry?.mute && s.players[viewer]?.mentions === 'off') ? unseen.filter((message) => mentionsViewer(message, viewer)).length : 0;
     return { id: conv.id, kind: conv.kind, name: conv.kind === 'dm' ? pub(s, others[0]!).name : conv.kind === 'house' ? `${pub(s, conv.owner!).name}’s house` : conv.name!,
       members: conv.members.map((id) => pub(s, id)), owner: conv.owner ?? null, with: conv.kind === 'dm' ? others[0]! : null,
-      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: bodyOf(last).slice(0, 80), at: last.at } : null,
-      unread: seen.filter((message) => message.seq > read && message.from !== viewer && !message.sys).length };
+      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: (bodyOf(last) || (last.img ? 'Picture' : '')).slice(0, 80), at: last.at } : null,
+      unread: unseen.length,
+      ...(mentions ? { mentions } : {}), ...(entry?.mute ? { muted: true as const } : {}), ...(entry?.pin ? { pinned: true as const } : {}) };
   }
-  function append(s: SocialCollection, conv: ConversationRecord, from: string | null, body: string, cid: string | null, sys = false): MessageRecord {
-    const message: MessageRecord = { seq: ++conv.seq, from, body, at: now(), ...(cid ? { cid } : {}), ...(sys ? { sys: true as const } : {}) };
+  function append(s: SocialCollection, conv: ConversationRecord, from: string | null, body: string, cid: string | null, sys = false, extra: Partial<MessageRecord> = {}): MessageRecord {
+    const message: MessageRecord = { seq: ++conv.seq, from, body, at: now(), ...(cid ? { cid } : {}), ...(sys ? { sys: true as const } : {}), ...extra };
     conv.messages.push(message);
-    if (conv.messages.length > LIMITS.history) conv.messages.splice(0, conv.messages.length - LIMITS.history);
+    if (conv.messages.length > LIMITS.history) {
+      for (const old of conv.messages.splice(0, conv.messages.length - LIMITS.history)) if (old.img && !old.img.gone) endedIn(s).drops.ids.push(old.img.id);
+    }
     if (from && s.players[from]?.convs[conv.id]) s.players[from]!.convs[conv.id]!.read = message.seq;
     return message;
   }
@@ -463,7 +515,7 @@ function buildService(ctx: RouteContext) {
       push.push([member, { type: 'dm', conv: summary(s, conv, member), message: messageView(s, conv, message, member) }]);
     }
   }
-  function index(s: SocialCollection, id: string, conv: ConversationRecord): void {
+  function index(s: SocialCollection, id: string, conv: ConversationRecord, read = 0): void {
     const p = s.players[id];
     if (!p || p.convs[conv.id]) return;
     const ids = Object.keys(p.convs);
@@ -472,21 +524,23 @@ function buildService(ctx: RouteContext) {
       const quiet = ids.filter((key) => s.convs[key]?.kind === 'dm').sort((a, b) => (s.convs[a]!.messages.at(-1)?.at ?? 0) - (s.convs[b]!.messages.at(-1)?.at ?? 0))[0];
       if (quiet) { delete p.convs[quiet]; collect(s, quiet); }
     }
-    p.convs[conv.id] = { read: 0 };
+    p.convs[conv.id] = { read };
   }
   /** Delete a conversation nobody lists any more. */
   function collect(s: SocialCollection, id: string): void {
     const conv = s.convs[id];
-    if (conv && !conv.members.some((member) => s.players[member]?.convs[id])) delete s.convs[id];
+    if (conv && !conv.members.some((member) => s.players[member]?.convs[id])) { delete s.convs[id]; endedIn(s).drops.convs.push(id); }
   }
   function leaveConv(s: SocialCollection, conv: ConversationRecord | undefined | null, id: string, silent = false): void {
     if (!conv) return;
     delete s.players[id]?.convs[conv.id];
     if (conv.kind === 'dm') { collect(s, conv.id); return; }
     conv.members = conv.members.filter((member) => member !== id);
-    if (!conv.members.length) { delete s.convs[conv.id]; return; }
-    if (conv.kind === 'group' && conv.owner === id) conv.owner = conv.members[0]!;
-    if (!silent) append(s, conv, null, `${pub(s, id).name} left.`, null, true);
+    if (!conv.members.length) { delete s.convs[conv.id]; endedIn(s).drops.convs.push(conv.id); return; }
+    // The person who runs a group leaves: the member who has been in it longest takes over (the list is in the order they joined).
+    const handed = conv.kind === 'group' && conv.owner === id;
+    if (handed) conv.owner = conv.members[0]!;
+    if (!silent) append(s, conv, null, handed ? `${pub(s, id).name} left. ${pub(s, conv.owner!).name} now runs the group.` : `${pub(s, id).name} left.`, null, true);
   }
   function memberConv(s: SocialCollection, me: string, id: string): ConversationRecord | null {
     const conv = Object.hasOwn(s.convs, id) ? s.convs[id] ?? null : null;
@@ -567,6 +621,82 @@ function buildService(ctx: RouteContext) {
     if (were && !automatic) for (const [to, about] of [[a, b], [b, a]] as [string, string][]) owe(s, db, to, cityId, { op: 'unfriend', id: about });
   }
 
+  // ---- groups, mentions, pictures: shared rules ----------------------------------------------
+  /** Both listed each other: an ordinary friendship. The founder's automatic one is not (server/social/founder.ts). */
+  const ordinary = (s: SocialCollection, a: string, b: string): boolean => s.players[a]?.friends[b] !== undefined && s.players[b]?.friends[a] !== undefined;
+  const groupsOf = (s: SocialCollection, id: string): number => Object.keys(s.players[id]?.convs ?? {}).filter((key) => s.convs[key]?.kind === 'group').length;
+  /**
+   * May `adder` put `target` in a group? Only an ordinary friend (never a stranger, never the founder through the automatic
+   * friendship — the founder alone may add the players who hold it), nobody who blocked or is blocked by the adder, and nobody
+   * who turned group invitations off.
+   */
+  function addRefusal(s: SocialCollection, adder: string, target: string): Refused | null {
+    const them = s.players[target];
+    if (!them) return no('unknown_player', 'That player was not found.');
+    if (blockedEither(s, adder, target)) return no('blocked', `${them.name} is not accepting this from you.`);
+    if (!ordinary(s, adder, target) && !autoFriend(s.players, adder, target)) return no('friends_only', `You can only add friends to a group. ${them.name} is not your friend yet.`);
+    if (them.groups === 'nobody') return no('not_accepting', `${them.name} is not taking group invitations.`);
+    if (groupsOf(s, target) >= LIMITS.groups) return no('too_many_groups', `${them.name} is already in ${LIMITS.groups} groups.`);
+    return null;
+  }
+  /** Does a mention by `sender` reach `target` as a notice? Friends, the group's admin and the founder reach anyone; nobody reaches the founder but a friend. */
+  function mentionReaches(s: SocialCollection, conv: ConversationRecord, sender: string, target: string): boolean {
+    if (blockedEither(s, sender, target)) return false;
+    if (ordinary(s, sender, target)) return true;
+    return founderId(s) !== target && (conv.owner === sender || founderId(s) === sender);
+  }
+  /** Check the mentions a client sent against the group and the text; the stored form, or the refusal. */
+  function readMentions(s: SocialCollection, conv: ConversationRecord, sender: string, body: string, raw: unknown): [string, number, number][] | Refused {
+    if (conv.kind !== 'group' || raw === undefined) return [];
+    if (!Array.isArray(raw) || raw.length > LIMITS.mentions) throw bad('invalid_mention');
+    const found: [string, number, number][] = [];
+    let end = 0;
+    for (const entry of raw) {
+      if (!isRecord(entry) || typeof entry.id !== 'string' || typeof entry.start !== 'number' || !Number.isSafeInteger(entry.start) || entry.start < end) throw bad('invalid_mention');
+      const everyone = entry.id === 'everyone', who = everyone ? 'everyone' : uuid(entry.id, 'invalid_mention');
+      if (!everyone && who === sender) throw bad('invalid_mention');
+      if (!everyone && !conv.members.includes(who)) return no('not_in_group', `${s.players[who]?.name ?? 'That person'} is not in this group.`);
+      if (everyone && conv.owner !== sender) return no('owner_only', `Only ${pub(s, conv.owner!).name}, who runs this group, can mention everyone.`);
+      const words = everyone ? '@everyone' : `@${s.players[who]!.name}`;
+      if (body.slice(entry.start, entry.start + words.length) !== words) return no('invalid_mention', 'A mention does not match the message. Pick the name again.');
+      found.push([who, entry.start, words.length]);
+      end = entry.start + words.length;
+    }
+    return found;
+  }
+  /** One notice for each member a message mentions (everyone: all of them), where the mention reaches and the group is not silenced. */
+  function notifyMentions(s: SocialCollection, conv: ConversationRecord, sender: string, message: MessageRecord, push: PushList): void {
+    if (!message.men?.length) return;
+    const all = message.men.some(([who]) => who === 'everyone');
+    const targets = new Set(all ? conv.members : message.men.map(([who]) => who));
+    targets.delete(sender);
+    for (const target of targets) {
+      const them = s.players[target];
+      if (!them || !conv.members.includes(target) || !mentionReaches(s, conv, sender, target)) continue;
+      if (them.convs[conv.id]?.mute && them.mentions === 'off') continue;
+      notify(s, target, 'mention', `${pub(s, sender).name} mentioned ${all ? 'everyone' : 'you'} in ${conv.name}.`, { from: sender, conv: conv.id }, push);
+    }
+  }
+  /** The record's own words for a message in a quote: its text, or what it was instead. */
+  const quoteText = (message: MessageRecord): string => (Array.from(bodyOf(message)).slice(0, LIMITS.quote).join('') || (message.img ? 'Picture' : ''));
+  const settingsOf = () => pictureSettings(ctx.env);
+  /** The refusal for a picture this player may not send into this conversation, or null. */
+  function pictureRefusal(s: SocialCollection, p: SocialPlayerRecord, id: string, conv: ConversationRecord | null, partner: string | null): Refused | null {
+    const settings = settingsOf();
+    if (settings.mode === 'off' || !ctx.images) return no('pictures_off', 'Pictures are not switched on here.');
+    if (p.noPictures) return no('pictures_blocked', 'You cannot send pictures right now.');
+    if (conv && conv.kind === 'house') return no('pictures_off', 'Pictures cannot be sent in a house chat.');
+    if (partner) {
+      const target = s.players[partner]!;
+      if (target.pictures === 'nobody') return no('pictures_refused', `${target.name} is not taking pictures.`);
+      const founderFirst = autoFriend(s.players, partner, id) && Boolean(conv?.messages.some((item) => item.from === partner && !item.auto && !item.sys));
+      if (!ordinary(s, id, partner) && !autoFriend(s.players, id, partner) && !founderFirst) return no('friends_only', 'Pictures can only be sent to friends.');
+    }
+    const day = lagosTime(now()).day;
+    if (p.pics?.day === day && p.pics.count >= settings.perDay) return no('rate_limited', `You can send ${settings.perDay} pictures a day. Try again tomorrow.`);
+    return null;
+  }
+
   const service = {
     LIMITS,
     presence,
@@ -583,6 +713,7 @@ function buildService(ctx: RouteContext) {
       if (list.length) Object.defineProperty(result, ENDED, { value: list.splice(0), enumerable: false });
       if (list.blocks.length) Object.defineProperty(result, BLOCKS, { value: list.blocks.splice(0), enumerable: false });
       if (list.pushes.length) Object.defineProperty(result, PUSHES, { value: list.pushes.splice(0), enumerable: false });
+      if (list.drops.ids.length || list.drops.convs.length) { Object.defineProperty(result, DROPS, { value: { ids: list.drops.ids.splice(0), convs: list.drops.convs.splice(0) }, enumerable: false }); }
       return result;
     },
     /**
@@ -602,6 +733,13 @@ function buildService(ctx: RouteContext) {
       const ended: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, ENDED) : undefined;
       for (const [hostId, guestId] of (ended ?? []) as VisitEnd[]) ctx.emit?.('visit-ended', { hostId, guestId });
       service.committed(result); // a store without the `committed` hook: apply the block changes now
+      // Pictures that left their conversations in the committed transaction are taken out of the image store.
+      const dropped: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, DROPS) : undefined;
+      if (dropped && ctx.images) {
+        const { ids, convs } = dropped as Drops, images = ctx.images;
+        const work = (async () => { if (ids.length) await images.remove(ids); if (convs.length) await images.removeConv(convs); })().catch(() => {});
+        ctx.waitUntil?.(work);
+      }
       // What the transaction owed beside its own answer (an inviter told that a friend joined).
       const owed: unknown = typeof result === 'object' && result !== null ? Reflect.get(result, PUSHES) : undefined;
       for (const [to, message] of (owed ?? []) as PushList) {
@@ -643,7 +781,9 @@ function buildService(ctx: RouteContext) {
         house: houseView(s, id, id),
         visiting: visit?.role === 'guest' ? visit : null,
         invitePath: `/v/${id}`,
-        limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS },
+        prefs: prefsOf(p),
+        limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS, pins: LIMITS.pins, mentions: LIMITS.mentions,
+          pictures: { on: settingsOf().mode !== 'off' && Boolean(ctx.images) && p.noPictures !== true, bytes: PICTURE_LIMITS.bytes, caption: PICTURE_LIMITS.caption } },
       });
     },
     /** The founder's next page of automatic friends (`after`: the `next` of the page before). Anyone else has no further page. */
@@ -777,6 +917,7 @@ function buildService(ctx: RouteContext) {
     },
     /** File a report for moderators. The reporter gets a receipt that survives reloads. */
     report(db: Db, session: SessionRecord, body: SocialBody) {
+      if (body.conv !== undefined) return service.reportConversation(db, session, body);
       const about = uuid(body.id);
       const reason = REPORT_REASONS.find((item) => item === body.reason);
       if (!reason) throw bad('invalid_reason');
@@ -824,6 +965,7 @@ function buildService(ctx: RouteContext) {
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
       const seq = typeof body.seq === 'number' && Number.isSafeInteger(body.seq) ? Math.max(0, Math.min(body.seq, conv.seq)) : conv.seq;
       p.convs[key]!.read = Math.max(p.convs[key]!.read, seq);
+      for (const update of p.updates) if (update.kind === 'mention' && update.data?.conv === key) update.read = true;
       // Read on one device is read on all of them: every open socket of the reader is given the conversation as it now stands.
       const view = summary(s, conv, id);
       return yes('read', { conv: view, push: [[id, { type: 'social-read', conv: view }]] as PushList });
@@ -831,10 +973,14 @@ function buildService(ctx: RouteContext) {
     /**
      * Send to a player (`to`) or an existing conversation (`conv`). Idempotent on the sender's
      * `clientId`: a retry returns the stored message and nothing is stored or delivered twice.
+     * `picture` is set only by the upload route, which has already checked and stored the bytes.
      */
-    send(db: Db, session: SessionRecord, body: SocialBody) {
-      const cid = clientId(body.clientId), message = text(body.body, LIMITS.body, 'invalid_message');
+    send(db: Db, session: SessionRecord, body: SocialBody, picture?: { ref: ImageRef }) {
+      const cid = clientId(body.clientId);
+      const message = picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
       const to = body.to !== undefined ? uuid(body.to) : null, key = to ? dmId(session.publicId, to) : convId(body.conv);
+      const replyAsked = body.replyTo === undefined ? 0 : typeof body.replyTo === 'number' && Number.isSafeInteger(body.replyTo) && body.replyTo > 0 ? body.replyTo : -1;
+      if (replyAsked < 0) throw bad('invalid_reply');
       const { s, p, id } = enter(db, session);
       let conv = Object.hasOwn(s.convs, key) ? s.convs[key] : null;
       const sent = conv?.messages.find((item) => item.from === id && item.cid === cid);
@@ -846,7 +992,7 @@ function buildService(ctx: RouteContext) {
         if (sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
         return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, sent, id), duplicate: true });
       }
-      const refused = mutedRefusal(id) ?? screened(message, 'Your message');
+      const refused = mutedRefusal(id) ?? (message ? screened(message, picture ? 'Your caption' : 'Your message') : null);
       if (refused) return refused;
       if (!ctx.allow(`social:dm:${id}`, 30)) return no('rate_limited', 'You are sending messages too quickly. Wait a moment, then retry.');
       // A direct chat named by its id belongs to its two players: anyone else is answered as for a chat that does not exist.
@@ -860,17 +1006,42 @@ function buildService(ctx: RouteContext) {
           const day = lagosTime(now()).day;
           if (p.chats.day !== day) p.chats = { day, count: 0 };
           if (!friends && p.chats.count >= LIMITS.newChatsPerDay) return no('new_chat_limit', `You can start ${LIMITS.newChatsPerDay} chats with new people a day. Add friends to message freely.`);
+          if (!friends && picture) return no('friends_only', 'Pictures can only be sent to friends.');
           if (!friends) p.chats.count += 1;
           conv = s.convs[key] = { id: key, kind: 'dm', members: [id, partner].sort(), seq: 0, created: now(), messages: [] };
         }
         if (!friends && !conv.messages.some((item) => item.from === partner) && conv.messages.filter((item) => item.from === id).length >= LIMITS.strangerMessages) {
           return no('awaiting_reply', `${target.name} has not replied yet. You can send ${LIMITS.strangerMessages} messages until they do, or become friends first.`);
         }
-        index(s, id, conv); index(s, partner, conv);
+        if (picture) { const why = pictureRefusal(s, p, id, conv, partner); if (why) { if (!conv.messages.length && !p.convs[key]) delete s.convs[key]; return why; } }
+        // A chat one of them removed from their list comes back with only the new message unread.
+        index(s, id, conv, conv.seq); index(s, partner, conv, conv.seq);
       } else if (!conv || !memberConv(s, id, key)) return no('not_a_member', 'You are not in that conversation.');
-      const stored = append(s, conv, id, message, cid);
+      else if (picture) { const refusedPicture = pictureRefusal(s, p, id, conv, null); if (refusedPicture) return refusedPicture; }
+      const men = readMentions(s, conv, id, message, body.mentions);
+      if (!Array.isArray(men)) return men;
+      if (men.length) {
+        if (!ctx.allow(`social:mention:${id}`, LIMITS.mentionMessages, 600000)) return no('rate_limited', 'You are mentioning people too often. Wait a few minutes.');
+        if (men.some(([who]) => who === 'everyone')) {
+          const wait = (conv.everyoneAt ?? 0) + LIMITS.everyoneMs - now();
+          if (wait > 0) return no('rate_limited', `@everyone can be used once every ${LIMITS.everyoneMs / 60000} minutes in a group. Try again in ${Math.ceil(wait / 60000)} min.`);
+          conv.everyoneAt = now();
+        }
+      }
+      // The message this one answers: only one the sender can see and that is a person's own words. Anything else is sent without a quote.
+      const target = replyAsked ? conv.messages.find((item) => item.seq === replyAsked) : undefined;
+      const quoted = target && target.from && !target.sys && !target.auto && visibleTo(s, id, target) ? { seq: target.seq, from: target.from, text: quoteText(target) } : null;
+      if (picture) {
+        // Only the newest pictures of a conversation are kept.
+        const live = conv.messages.filter((item) => item.img && !item.img.gone), keep = settingsOf().perChat;
+        for (const old of live.slice(0, Math.max(0, live.length - keep + 1))) { old.img!.gone = true; endedIn(s).drops.ids.push(old.img!.id); }
+        const day = lagosTime(now()).day;
+        p.pics = { day, count: (p.pics?.day === day ? p.pics.count : 0) + 1 };
+      }
+      const stored = append(s, conv, id, message, cid, false, { ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}) });
       const push: PushList = [];
       fanOut(s, conv, stored, push, null);
+      notifyMentions(s, conv, id, stored, push);
       return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, stored, id), push });
     },
 
@@ -887,15 +1058,19 @@ function buildService(ctx: RouteContext) {
         const refused = mutedRefusal(id) ?? screened(name, 'A group name', true);
         if (refused) return refused;
         if (!ctx.allow(`social:group:${id}`, 5, 3600000)) return no('rate_limited', 'You have created several groups this hour. Try again later.');
-        if (Object.keys(p.convs).filter((key) => s.convs[key]?.kind === 'group').length >= LIMITS.groups) return no('too_many_groups', `You can be in ${LIMITS.groups} groups. Leave one first.`);
+        if (groupsOf(s, id) >= LIMITS.groups) return no('too_many_groups', `You can be in ${LIMITS.groups} groups. Leave one first.`);
         if (members.length + 1 > LIMITS.groupSize) return no('group_full', `A group holds ${LIMITS.groupSize} people including you.`);
-        const stranger = members.find((member) => member === id || !areFriends(s, id, member));
-        if (stranger) return no('friends_only', `You can only add friends to a group. ${pub(s, stranger).name} is not your friend yet.`);
+        if (members.includes(id)) return no('friends_only', 'You are already in the group.');
+        for (const member of members) {
+          const why = addRefusal(s, id, member);
+          if (why) return why;
+          if (!ctx.allow(`social:groupadd:${id}`, LIMITS.groupAddsPerHour, 3600000)) return no('rate_limited', 'You have added a lot of people to groups this hour. Try again later.');
+        }
         const conv = s.convs[`g.${++s.seq}`] = { id: `g.${s.seq}`, kind: 'group', name, owner: id, creator: id, members: [id, ...members], seq: 0, created: now(), messages: [] };
         for (const member of conv.members) index(s, member, conv);
         const first = append(s, conv, null, `${p.name} created “${name}”.`, null, true);
         fanOut(s, conv, first, push, id);
-        for (const member of members) notify(s, member, 'group-added', `${p.name} added you to the group “${name}”.`, { conv: conv.id }, push);
+        for (const member of members) notify(s, member, 'group-added', `${p.name} added you to the group “${name}”.`, { from: id, conv: conv.id }, push);
         return yes('created', { conv: conv.id });
       });
       if (!outcome.ok) return outcome;
@@ -928,10 +1103,11 @@ function buildService(ctx: RouteContext) {
         const member = uuid(body.id);
         if (conv.members.includes(member)) return yes('updated', { conv: summary(s, conv, id), duplicate: true });
         if (conv.members.length >= LIMITS.groupSize) return no('group_full', `This group is full (${LIMITS.groupSize} people).`);
-        if (!areFriends(s, id, member)) return no('friends_only', 'You can only add your friends to a group.');
-        if (Object.keys(s.players[member]!.convs).filter((item) => s.convs[item]?.kind === 'group').length >= LIMITS.groups) return no('too_many_groups', `${pub(s, member).name} is already in ${LIMITS.groups} groups.`);
+        const why = addRefusal(s, id, member);
+        if (why) return why;
+        if (!ctx.allow(`social:groupadd:${id}`, LIMITS.groupAddsPerHour, 3600000)) return no('rate_limited', 'You have added a lot of people to groups this hour. Try again later.');
         conv.members.push(member); index(s, member, conv);
-        notify(s, member, 'group-added', `${p.name} added you to the group “${conv.name}”.`, { conv: conv.id }, push);
+        notify(s, member, 'group-added', `${p.name} added you to the group “${conv.name}”.`, { from: id, conv: conv.id }, push);
         say(`${p.name} added ${pub(s, member).name}.`);
       } else if (body.op === 'remove') {
         const member = uuid(body.id);
@@ -943,6 +1119,56 @@ function buildService(ctx: RouteContext) {
         say(`${p.name} removed ${pub(s, member).name}.`);
       } else throw bad('invalid_group_op');
       return yes('updated', { conv: summary(s, conv, id), push });
+    },
+    /** body: { conv, mute?, pin?, hide? } — what one player keeps for themselves about a conversation. */
+    convPrefs(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv);
+      const { s, p, id } = enter(db, session);
+      const conv = memberConv(s, id, key), entry = p.convs[key];
+      if (!conv || !entry) return no('not_a_member', 'You are not in that conversation.');
+      const push: PushList = [];
+      if (body.hide === true) {
+        if (conv.kind === 'house') return no('not_allowed', 'A house chat cannot be removed. It ends with the visit.');
+        leaveConv(s, conv, id);
+        if (conv.kind === 'group' && s.convs[key]) fanOut(s, conv, conv.messages.at(-1)!, push, null);
+        return yes('hidden', { push });
+      }
+      if (typeof body.mute === 'boolean') {
+        if (conv.kind !== 'group') return no('not_allowed', 'Only groups can be muted.');
+        if (body.mute) entry.mute = true; else delete entry.mute;
+      }
+      if (typeof body.pin === 'boolean') {
+        if (body.pin && !entry.pin && Object.values(p.convs).filter((item) => item.pin).length >= LIMITS.pins) return no('pin_limit', `You can pin ${LIMITS.pins} chats. Unpin one first.`);
+        if (body.pin) entry.pin = true; else delete entry.pin;
+      }
+      const view = summary(s, conv, id);
+      return yes('updated', { conv: view, push: [[id, { type: 'social-read', conv: view }]] as PushList });
+    },
+    /** body: { groups?, mentions?, pictures? } — the player's own chat settings. */
+    chatPrefs(db: Db, session: SessionRecord, body: SocialBody) {
+      const { p } = enter(db, session);
+      if (body.groups !== undefined) { if (body.groups !== 'friends' && body.groups !== 'nobody') throw bad('invalid_pref'); if (body.groups === 'nobody') p.groups = 'nobody'; else delete p.groups; }
+      if (body.mentions !== undefined) { if (body.mentions !== 'on' && body.mentions !== 'off') throw bad('invalid_pref'); if (body.mentions === 'off') p.mentions = 'off'; else delete p.mentions; }
+      if (body.pictures !== undefined) { if (body.pictures !== 'friends' && body.pictures !== 'nobody') throw bad('invalid_pref'); if (body.pictures === 'nobody') p.pictures = 'nobody'; else delete p.pictures; }
+      return yes('saved', { prefs: prefsOf(p) });
+    },
+    /** Friends whose name has the query in it, for picking people to add: at most LIMITS.friendPicks. The founder's automatic friends are searched too. */
+    friendSearch(db: Db, session: SessionRecord, query: unknown) {
+      const { s, p, id } = enter(db, session);
+      const q = typeof query === 'string' ? query.trim().replace(/^@/, '').toLowerCase() : '';
+      if (q.length < 2 || q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
+      if (!ctx.allow(`social:search:${id}`, 20)) return no('rate_limited', 'You are searching too quickly. Wait a moment.');
+      const founder = founderId(s), isFounder = founder === id, results: { id: string; name: string }[] = [];
+      const candidates = isFounder ? Object.keys(s.players) : Object.keys(p.friends);
+      for (const other of candidates) {
+        const them = s.players[other];
+        if (!them || other === id || other === founder || blockedEither(s, id, other)) continue;
+        if (!(ordinary(s, id, other) || autoFriend(s.players, id, other)) || !them.name.toLowerCase().includes(q)) continue;
+        results.push({ id: other, name: them.name });
+        if (results.length >= 100) break;
+      }
+      results.sort((a, b) => a.name.localeCompare(b.name));
+      return yes('ok', { results: results.slice(0, LIMITS.friendPicks) });
     },
 
     /**
@@ -998,6 +1224,86 @@ function buildService(ctx: RouteContext) {
     },
     modReportCounts(db: Db) { const s = col(db); return { total: s.reports.length, open: s.reports.filter((report) => report.status === 'received').length }; },
     /** Set a report's status and tell the reporter, whose own receipt shows the same status. */
+    /** A report about a group (`conv`), or about one picture in a conversation (`conv` and `image`). */
+    reportConversation(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv);
+      const reason = REPORT_REASONS.find((item) => item === body.reason);
+      if (!reason) throw bad('invalid_reason');
+      const detail = body.text === undefined || body.text === '' ? '' : text(body.text, LIMITS.reportText, 'invalid_report_text');
+      const picture = body.image === undefined ? null : typeof body.image === 'string' && PICTURE_LIMITS.idPattern.test(body.image) ? body.image : (() => { throw bad('invalid_image'); })();
+      const { s, p, id } = enter(db, session);
+      const conv = memberConv(s, id, key);
+      if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      const line = picture ? conv.messages.find((item) => item.img?.id === picture) : undefined;
+      if (picture && (!line || !line.from || line.from === id)) return no('unknown_picture', 'That picture is not there any more.');
+      if (!picture && conv.kind !== 'group') return no('not_allowed', 'Report the player instead.');
+      const about = picture ? line!.from! : conv.id, aboutName = picture ? pub(s, about).name : conv.name!;
+      const existing = picture ? undefined : p.reports.find((report) => report.about === about && report.reason === reason && now() - report.at < 86400000);
+      if (existing) return yes('reported', { receipt: existing, duplicate: true });
+      if (line?.img?.rp?.includes(id)) return no('already_reported', 'You already reported this picture.');
+      const push: PushList = [];
+      const image = line?.img;
+      if (image && !image.rp?.includes(id)) {
+        // Hidden for the reporter at once; hidden for everyone once enough different players have reported it.
+        image.rp = [...(image.rp ?? []), id].slice(0, 10);
+        if (image.rp.length >= settingsOf().reportsToHide) image.hid = true;
+        for (const member of conv.members) if (member !== id) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line!, member) }]);
+        push.push([id, { type: 'message-changed', conv: summary(s, conv, id), message: messageView(s, conv, line!, id) }]);
+      }
+      if (!ctx.allow(`social:report:${id}`, 5, 3600000)) return no('rate_limited', 'You have filed several reports this hour. Try again later.');
+      const evidence = picture ? [`Picture ${picture} in ${conv.id}`, ...(line!.body ? [line!.body] : [])] : conv.messages.filter((item) => item.from && item.from !== id).slice(-8).map((item) => `${pub(s, item.from!).name}: ${bodyOf(item)}`);
+      const report: PlayerReportRecord = { id: `R-${++s.seq}`, by: id, about, aboutName, reason, text: detail, at: now(), status: 'received', evidence, ...(picture ? { image: picture, conv: conv.id } : {}) };
+      s.reports.push(report);
+      if (s.reports.length > LIMITS.reports) s.reports.splice(0, s.reports.length - LIMITS.reports);
+      const receipt: PlayerReportReceipt = { id: report.id, about, name: aboutName, reason, at: report.at, status: report.status };
+      p.reports.push(receipt);
+      if (p.reports.length > LIMITS.ownReports) p.reports.shift();
+      notify(s, id, 'report', `Report ${report.id} about ${aboutName} was received. A moderator will review it.`, { report: report.id }, push);
+      return yes('reported', { receipt, push });
+    },
+    /**
+     * May this caller be shown this picture? Members of its conversation only, not across a block, and not while it is hidden or
+     * switched off for them. Read-only: looking at a picture writes nothing.
+     */
+    pictureAllowed(db: Db, session: SessionRecord, convKey: string, imageId: string): boolean {
+      const s = ctx.collection(db, 'social'), id = session.publicId;
+      const conv = Object.hasOwn(s.convs ?? {}, convKey) ? s.convs[convKey] : undefined;
+      if (!conv || !conv.members.includes(id) || !s.players[id]?.convs[convKey]) return false;
+      const line = conv.messages.find((item) => item.img?.id === imageId);
+      if (!line?.img || !visibleTo(s, id, line)) return false;
+      if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return false;
+      return pictureView(s, conv, line, id)?.state === undefined;
+    },
+    /** For the operator: pictures that were reported or hidden, newest first, at most 100. */
+    modPictures(db: Db) {
+      const s = col(db), found: object[] = [];
+      for (const conv of Object.values(s.convs)) for (const line of conv.messages) {
+        if (line.img && (line.img.rp?.length || line.img.hid || line.img.gone)) found.push({ id: line.img.id, conv: conv.id, seq: line.seq, from: line.from, fromName: line.from ? s.players[line.from]?.name ?? 'Former player' : null, at: line.at, reports: line.img.rp?.length ?? 0, hidden: line.img.hid === true, removed: line.img.gone === true, width: line.img.w, height: line.img.h, bytes: line.img.n });
+      }
+      return yes('ok', { pictures: found.sort((a, b) => Number(Reflect.get(b, 'at')) - Number(Reflect.get(a, 'at'))).slice(0, 100) });
+    },
+    /** Where a picture is, for the operator (any conversation): its conversation, or null. */
+    modPictureConv(db: Db, imageId: string): string | null {
+      const s = col(db);
+      for (const conv of Object.values(s.convs)) if (conv.messages.some((line) => line.img?.id === imageId)) return conv.id;
+      return null;
+    },
+    /** The operator removes a picture (its bytes are deleted, the bubble says it expired) or puts a hidden one back. */
+    modPicture(db: Db, imageId: string, action: 'remove' | 'restore') {
+      const s = col(db), key = service.modPictureConv(db, imageId), conv = key ? s.convs[key] : undefined, line = conv?.messages.find((item) => item.img?.id === imageId);
+      if (!conv || !line?.img) return no('unknown_picture', 'That picture is not stored.');
+      const push: PushList = [];
+      if (action === 'remove') { if (!line.img.gone) { line.img.gone = true; endedIn(s).drops.ids.push(imageId); } } else { if (line.img.gone) return no('gone', 'That picture has been deleted.'); delete line.img.hid; delete line.img.rp; }
+      for (const member of conv.members) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      return yes(action === 'remove' ? 'removed' : 'restored', { push });
+    },
+    /** The operator stops (or allows again) one player's pictures. */
+    modPictureBan(db: Db, playerId: string, on: boolean) {
+      const s = col(db), them = s.players[playerId];
+      if (!them) return no('unknown_player', 'That player was not found.');
+      if (on) them.noPictures = true; else delete them.noPictures;
+      return yes(on ? 'banned' : 'allowed', {});
+    },
     modSetReport(db: Db, reportId: string, status: PlayerReportRecord['status'], note = '') {
       const s = col(db);
       const report = s.reports.find((item) => item.id === reportId);
@@ -1238,7 +1544,12 @@ function buildService(ctx: RouteContext) {
         const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount }, `social|transfer|${id}|${cid}`);
         if (!sent.ok) return no(sent.code, sent.reason!);
         target.recv.amount += amount;
-        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount }, { keep: true });
+        // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
+        const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [] };
+        index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);
+        const line = append(s, chat, id, `Sent ${naira(amount)}`, null, false, { gift: { n: amount } });
+        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount }, { keep: true, gift: { conv: gkey, seq: line.seq } });
+        fanOut(s, chat, line, push, null);
         push.push([to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]);
         notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);
         return yes('sent', { amount, to: pub(s, to), credited, creditedCity: creditCity, balance: sent.state.cash });

@@ -127,7 +127,8 @@ function overview(): SocialOverview {
       { id: 3, kind: 'friend-request', text: 'Bola wants to be friends', at: 600, read: false },
     ],
     house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [{ from: ada, at: 950, expiresAt: 9999 }] },
-    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'] },
+    prefs: { groups: 'friends', mentions: 'on', pictures: 'friends' },
+    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'], pins: 3, mentions: 5, pictures: { on: true, bytes: 250000, caption: 200 } },
   }
 }
 

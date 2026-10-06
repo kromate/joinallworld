@@ -118,7 +118,8 @@ function overview(): SocialOverview {
     requests: { in: [], out: [] }, baeRequests: [],
     conversations: [{ id: 'dm.ada.me', kind: 'dm', name: ada.name, members: [me, ada], owner: null, with: 'ada', unread: 2, last: { seq: 2, from: ada, body: 'How far? <script>x</script>', at: server.now() } }],
     updates: [], house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [] },
-    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'] },
+    prefs: { groups: 'friends', mentions: 'on', pictures: 'friends' },
+    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'], pins: 3, mentions: 5, pictures: { on: true, bytes: 250000, caption: 200 } },
   }
 }
 

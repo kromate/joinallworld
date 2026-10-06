@@ -191,6 +191,7 @@ test('health: the status, the cure prices and where they are, and the chips that
   assert.deepEqual(trayOf({ warning: null, weather: { id: 'clear', label: 'Dry', icon: 'x', text: '', raining: false, minutesLeft: 3 } }), { kind: 'weather', id: 'clear', label: 'Dry', icon: 'x' })
   assert.equal(trayOf(undefined), null)
   assert.equal(warningLabel({ text: 'You are sick' }), 'You are sick. Open the Health app.')
+  assert.equal(warningLabel({ text: 'Very sick · see a doctor', level: 'sick' }), 'Very sick · see a doctor. Go to the nearest clinic.')
 })
 
 test('goals: the reasons, the loan card, and the goal chip\'s action, label and toasts', () => {

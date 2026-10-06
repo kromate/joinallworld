@@ -6,7 +6,7 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
 import { ui as messages } from '../messages/messagesState.ts'
-import { actionVerb, askFriendText } from './reliefModel.ts'
+import { actionVerb, askFriendText, orderedActions, shortReason } from './reliefModel.ts'
 
 const props = defineProps<{ help: ReliefHelp }>()
 const emit = defineEmits<{ done: [] }>()
@@ -15,7 +15,7 @@ const { act, pending } = useAct()
 /** The ride on credit asks once more: it is a debt. */
 const confirming = ref(false)
 
-const glyph = (action: ReliefAction): string => (action.id === 'odd-job' ? 'jobs' : action.id === 'bench' ? 'bed' : action.id === 'tap' ? 'drink' : action.id === 'credit-ride' ? 'bus' : action.id === 'friend' ? 'social' : 'coin')
+const glyph = (action: ReliefAction): string => (action.id === 'odd-job' ? 'jobs' : action.id === 'bench' ? 'bed' : action.id === 'tap' ? 'drink' : action.id === 'credit-ride' ? 'bus' : action.id === 'clinic' ? 'health' : action.id === 'friend' ? 'social' : 'coin')
 
 async function run(action: ReliefAction): Promise<void> {
   if (action.blocked) return
@@ -44,14 +44,15 @@ async function run(action: ReliefAction): Promise<void> {
 
 <template>
   <ul class="relief-actions">
-    <li v-for="action in props.help.actions" :key="action.id" :data-relief="action.id">
+    <li v-for="action in orderedActions(props.help.actions)" :key="action.id" :data-relief="action.id" :class="{ 'is-off': Boolean(action.blocked) }">
       <span class="relief-mark" aria-hidden="true"><GameIcon :name="glyph(action)" :size="20" /></span>
       <span class="relief-text">
         <b>{{ action.label }}</b>
         <small v-if="action.id === 'credit-ride' && confirming">You will owe this. Tap again to ride.</small>
-        <small v-else>{{ action.blocked ?? action.detail }}</small>
+        <small v-else>{{ action.blocked ? shortReason(action.blocked) : action.detail }}</small>
       </span>
-      <button type="button" class="relief-go" :disabled="Boolean(action.blocked) || pending !== null" @click="run(action)">{{ action.id === 'credit-ride' && confirming ? 'Yes, ride' : actionVerb(action) }}</button>
+      <span v-if="action.blocked" class="relief-off">Not now</span>
+      <button v-else type="button" class="relief-go" :disabled="pending !== null" @click="run(action)">{{ action.id === 'credit-ride' && confirming ? 'Yes, ride' : actionVerb(action) }}</button>
     </li>
   </ul>
 </template>

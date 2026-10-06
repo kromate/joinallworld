@@ -21,7 +21,7 @@ function wake(): void {
     engine.call(calling); engine.unlock()
     if (latest) engine.observe(...latest)
     for (const name of waiting.splice(0)) engine.play(name)
-  }).catch((error) => { loading = false; globalThis.console?.debug?.('sound', error) })
+  }).catch(() => { loading = false })
 }
 if (typeof window !== 'undefined') for (const type of ['pointerdown', 'keydown']) window.addEventListener(type, wake, { capture: true, passive: true })
 

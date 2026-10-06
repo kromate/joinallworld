@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { FakeContext, FakeSource, asContext } from './fakeAudio.ts'
+import { FakeContext, FakeParam, FakeSource, asContext } from './fakeAudio.ts'
 import { MAX_VOICES, MIN_GAP, Synth, type Recipe } from './synth.ts'
 import { RECIPES } from './data.ts'
 
+const param = (p: AudioParam): FakeParam => p as unknown as FakeParam
 const make = (recipes: Readonly<Record<string, Recipe>> = RECIPES): { ctx: FakeContext; synth: Synth } => { const ctx = new FakeContext(); return { ctx, synth: new Synth(asContext(ctx), recipes) } }
 
 test('a recipe schedules its envelope: a ramp up to the peak, an exponential decay to silence, and a stop after the end', () => {
@@ -60,14 +61,14 @@ test('the same recipe twice in a moment is one sound; later it plays again', () 
 test('an effect steps the ambience back for a moment; a call keeps it nearly silent and softens effects', () => {
   const { ctx, synth } = make()
   synth.play('success')
-  assert.ok(synth.ambDuck.gain.calls.some(c => c[0] === 'target' && (c[1] as number) < 1), 'ducked under the effect')
-  assert.ok(synth.ambDuck.gain.calls.some(c => c[0] === 'target' && c[1] === 1), 'and released')
+  assert.ok(param(synth.ambDuck.gain).calls.some(c => c[0] === 'target' && (c[1] as number) < 1), 'ducked under the effect')
+  assert.ok(param(synth.ambDuck.gain).calls.some(c => c[0] === 'target' && c[1] === 1), 'and released')
   ctx.currentTime = 1
   synth.setCall(true)
   assert.equal(synth.ambDuck.gain.value, 0.03); assert.equal(synth.fxDuck.gain.value, 0.4)
-  const mark = synth.ambDuck.gain.calls.length
+  const mark = param(synth.ambDuck.gain).calls.length
   synth.play('notify')
-  const after = synth.ambDuck.gain.calls.slice(mark).filter(c => c[0] === 'target')
+  const after = param(synth.ambDuck.gain).calls.slice(mark).filter(c => c[0] === 'target')
   assert.ok(after.length > 0 && after.every(c => (c[1] as number) <= 0.03), 'effects duck from the call level, not from full')
   synth.setCall(false)
   assert.equal(synth.ambDuck.gain.value, 1); assert.equal(synth.fxDuck.gain.value, 1)

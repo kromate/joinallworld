@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { FX_TRIM } from './synth.ts'
 import { Director, IDLE_MS, isNight, type Deps, type Seen } from './director.ts'
 import { FakeContext, asContext } from './fakeAudio.ts'
 import { SOUND_DEFAULTS, readSound, type SoundSettings } from './settings.ts'
@@ -33,9 +34,9 @@ test('muted: nothing is scheduled, no scape is built, and the buses are at zero'
 
 test('the settings are respected: category levels reach the buses, Quiet silences ambience and softens effects', () => {
   const r = rig({ master: 0.5, effects: 0.8, ambience: 0.4 })
-  assert.ok(Math.abs(r.director.synth.fx.gain.value - 0.4) < 1e-9); assert.ok(Math.abs(r.director.synth.amb.gain.value - 0.2) < 1e-9)
+  assert.ok(Math.abs(r.director.synth.fx.gain.value - 0.4 * FX_TRIM) < 1e-9); assert.ok(Math.abs(r.director.synth.amb.gain.value - 0.2) < 1e-9)
   r.settings.quiet = true; r.director.applySettings()
-  assert.ok(Math.abs(r.director.synth.fx.gain.value - 0.2) < 1e-9); assert.equal(r.director.synth.amb.gain.value, 0)
+  assert.ok(Math.abs(r.director.synth.fx.gain.value - 0.2 * FX_TRIM) < 1e-9); assert.equal(r.director.synth.amb.gain.value, 0)
   assert.equal(levelFor(r.settings, 'calls'), 0.5 * 0.8, 'call tones ignore Quiet')
   r.director.observe(seen())
   const noise = r.ctx.sources.filter(s => s.kind === 'noise').length

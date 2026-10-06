@@ -43,7 +43,7 @@ export class FakeContext {
   createBufferSource(): FakeSource { return new FakeSource('noise', this) }
   createBiquadFilter(): FakeFilter { return new FakeFilter(this) }
   createDelay(): FakeNode & { delayTime: FakeParam } { const n = Object.assign(new FakeNode(), { delayTime: new FakeParam() }); this.made.push(n); return n }
-  createDynamicsCompressor(): FakeNode & Record<string, FakeParam> { return Object.assign(new FakeNode(), { threshold: new FakeParam(), knee: new FakeParam(), ratio: new FakeParam(), attack: new FakeParam(), release: new FakeParam() }) }
+  createDynamicsCompressor(): FakeNode & { threshold: FakeParam; knee: FakeParam; ratio: FakeParam; attack: FakeParam; release: FakeParam } { return Object.assign(new FakeNode(), { threshold: new FakeParam(), knee: new FakeParam(), ratio: new FakeParam(), attack: new FakeParam(), release: new FakeParam() }) }
   shapers: { curve: Float32Array | null }[] = []
   createWaveShaper(): FakeNode & { curve: Float32Array | null } { const n = Object.assign(new FakeNode(), { curve: null as Float32Array | null }); this.shapers.push(n); return n }
   createAnalyser(): FakeNode & { fftSize: number } { return Object.assign(new FakeNode(), { fftSize: 0 }) }

@@ -22,6 +22,8 @@ export interface Bed {
 export type Shot = readonly [string, number, number, number, ('day' | 'night')?]
 export interface ScapeSpec { beds?: readonly Bed[]; shots?: readonly Shot[] }
 
+/** Beds sit well under the interface sounds: they are the room, not the event. */
+const BED_GAIN = 0.3
 const DRIFT_STEP = 2.2
 const rand = (a: number, b: number): number => a + Math.random() * (b - a)
 
@@ -56,7 +58,7 @@ export class Scape {
     } else { const o = c.createOscillator(); o.type = bed.w ?? 'sine'; o.frequency.value = bed.hum ?? 100; o.start(now); src = o }
     this.sources.push(src); this.nodes.push(src)
     const filter = c.createBiquadFilter(); filter.type = bed.fl[0]; filter.frequency.value = bed.fl[1]; filter.Q.value = bed.fl[2] ?? 0.7
-    const gain = c.createGain(), base = bed.g * (this.night ? bed.night ?? 1 : 1)
+    const gain = c.createGain(), base = bed.g * BED_GAIN * (this.night ? bed.night ?? 1 : 1)
     gain.gain.value = base
     src.connect(filter); filter.connect(gain); gain.connect(this.out); this.nodes.push(filter, gain)
     if (bed.lfo) {

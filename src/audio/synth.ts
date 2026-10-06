@@ -44,6 +44,8 @@ export interface Recipe {
 }
 export interface PlayOptions { vel?: number; pitch?: number; at?: number; pan?: number; dest?: AudioNode }
 
+/** Effects are mixed this far under full scale, so the default level is gentle. */
+export const FX_TRIM = 0.6
 export const MAX_VOICES = 16
 /** Two plays of one recipe closer than this are one (a double tap must not stack). */
 export const MIN_GAP = 0.035
@@ -120,8 +122,12 @@ export class Synth {
   /** The levels of the two buses (0..1), from the settings. */
   setLevels(effects: number, ambience: number): void {
     const t = this.ctx.currentTime
-    this.fx.gain.setTargetAtTime(effects, t, 0.05)
-    this.amb.gain.setTargetAtTime(ambience, t, 0.08)
+    for (const [bus, level] of [[this.fx, effects * FX_TRIM], [this.amb, ambience]] as const) {
+      bus.gain.cancelScheduledValues(t)
+      bus.gain.setTargetAtTime(level, t, 0.05)
+      // An exponential approach never quite arrives: a muted bus is set to exactly zero once the fade is over.
+      if (level === 0) bus.gain.setValueAtTime(0, t + 0.5)
+    }
   }
 
   /** A voice call: ambience nearly silent, interface sounds softened. */

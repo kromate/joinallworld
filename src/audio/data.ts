@@ -192,6 +192,7 @@ export const ACTIVITIES: readonly { id?: string; tag?: string; scape: string; st
   { id: 'cook|fry|grill|suya|bake|stove', scape: 'act-cook' },
   { tag: 'sleep', scape: 'act-sleep', start: 'sleep', end: 'wake' },
   { tag: 'hygiene', scape: 'act-wash' },
+  { tag: 'cooking', scape: 'act-cook' },
   { tag: 'food', scape: 'act-food', kitchen: 'act-food-kitchen' },
   { tag: 'drink', scape: 'act-drink' },
   { tag: 'workout', scape: 'act-move' },

@@ -56,6 +56,8 @@ python3 scripts/geo/extract-city-osm.py \
 
 Repeat `--local-unit` for every selected local government. The extractor clips mapped water, major roads and rail to the selected footprint. It writes `scripts/geo/sources/formula/<id>-surface.geojson` with the selected raw state and local-government boundaries plus pinned source metadata. Commit this derived source with the city research. It supplies selected ADM2 and surface data in clean CI. State topology always comes from the separately pinned national ADM1 source; generated TypeScript geometry is never used as its own source.
 
+For several cities with incomplete Overpass coverage, put their `id`, exact `stateSourceName` and `{id, sourceName}` local units in a JSON array, then run `python3 scripts/geo/extract-named-places.py --config <cities.json> --output-dir <directory>`. The command verifies the same pinned PBF and boundaries, scans the PBF once, and writes one deterministic `<city-id>.json` cache per city. It retains named nodes and ways only, allowlists research-relevant tags, records coordinate ownership separately from way intersection, uses source node coordinates or a canonical `center` object for the full source-way bounding-box centre, and does not process relations. Run `python3 scripts/geo/extract-named-places.py --self-check` for the small synthetic ownership check. Run the national extraction alone: its temporary file-backed node index can use substantial disk space and is removed on normal exit.
+
 ## Build and check
 
 Build a city from the repository root with:

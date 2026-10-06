@@ -13,14 +13,12 @@ import '../ui/compact.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from './state/app.ts'
 import { heldActionFor, shortcutFor } from '../ui/keys.ts'
-import { adminKey } from './features/admin/adminGate.ts'
 import { start as startSocial, wakeSocket } from './features/social/useSocial.ts'
 import GameIcon from './ui/GameIcon.vue'
 import ToastStack from './ui/ToastStack.vue'
 import LinkBanner from './features/landing/LinkBanner.vue'
 import UpdateBanner from './ui/UpdateBanner.vue'
 import NoticeHost from './features/notice/NoticeHost.vue'
-import AnnounceHost from './features/announce/AnnounceHost.vue'
 import { useGrowth } from './features/growth/useGrowth.ts'
 import CoachTip from './features/hud/CoachTip.vue'
 import HudBar from './features/hud/HudBar.vue'
@@ -61,7 +59,7 @@ function onKey(event: KeyboardEvent): void {
   const target = event.target instanceof Element ? event.target : null
   const typing = target?.matches('input, textarea, select, [contenteditable]') ?? false
   if (typing && event.key !== 'Escape') return
-  if (adminKey(event, (id) => shell.open(id))) return
+  if (event.altKey && event.shiftKey && event.code === 'KeyA') { void import('./features/admin/adminProbe.ts').then((m) => m.adminKey((id) => shell.open(id))); return }
   const shortcut = shortcutFor(event)
   if (!shortcut) return
   const [verb = '', arg = ''] = shortcut.run.split(':')
@@ -162,7 +160,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     <ConnectionNotice />
     <HudSidebar />
     <div ref="bottom" class="life-bottom">
-      <div data-slot="notice"><NoticeHost /><AnnounceHost /></div>
+      <div data-slot="notice"><NoticeHost /></div>
       <div data-slot="coach"><CoachTip /></div>
       <div data-slot="progress"><ActionProgress /></div>
       <div data-slot="main">

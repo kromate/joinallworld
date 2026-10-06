@@ -6,7 +6,7 @@ import type { VuePanel } from '../../types/panel.ts'
 import { ADMIN_PANEL, adminGate } from './adminGate.ts'
 
 export const admin = definePanel({
-  id: ADMIN_PANEL, title: 'Admin', placement: 'phone', order: 98, live: false, group: 'city', fullscreen: true, tint: '#3b3f4a',
+  id: ADMIN_PANEL, title: 'Admin', placement: 'phone', order: 98, live: false, group: 'city',
   hidden: () => !adminGate.admin,
   component: defineAsyncComponent(() => import('./AdminApp.vue')),
 })

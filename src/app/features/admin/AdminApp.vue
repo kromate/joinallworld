@@ -29,6 +29,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <Teleport to="#life-dialog">
   <div class="adm" role="application" aria-label="Admin">
     <header class="adm-top">
       <b class="adm-brand">Admin</b>
@@ -51,4 +52,5 @@ onMounted(async () => {
       <p v-else class="adm-muted">Loading…</p>
     </main>
   </div>
+  </Teleport>
 </template>

@@ -21,7 +21,6 @@ import { tintOf } from '../../../ui/phone/icons-more.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HelpBody from '../help/HelpBody.vue'
 import PanelHost from './PanelHost.vue'
-import { probeAdmin } from '../admin/adminGate.ts'
 import { PAGES, SHADE_MAX, badgeText, battery, dockApps, notificationsOf, phonePages } from './phoneModel.ts'
 import type { PhoneApp } from './phoneModel.ts'
 
@@ -92,7 +91,7 @@ watch(() => app.value?.id ?? '', (id) => {
   void nextTick(() => { if (id && appBody.value) appBody.value.scrollTop = 0; focusView() })
 })
 onMounted(() => {
-  void probeAdmin()
+  void import('../admin/adminProbe.ts').then((m) => m.probeAdmin())
   // Opening the phone is the moment to look for a moderator's reply to a report (at most once a minute).
   checkReports(api)
   void nextTick(focusView)

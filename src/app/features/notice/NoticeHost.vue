@@ -4,17 +4,20 @@
 import { defineAsyncComponent, ref } from 'vue'
 import { onCallFrame } from '../social/useSocial.ts'
 
-const wanted = ref(false)
+const wanted = ref(false), announced = ref(false)
 onCallFrame((frame) => {
+  if (frame.type === 'announce') { announced.value = true; void import('../announce/announceStore.ts').then((store) => store.receive(frame)); return }
   if (frame.type !== 'notice') return
   wanted.value = true
   void import('./noticeStore.ts').then((store) => store.receiveNotice(frame))
 })
 const NoticeBanner = defineAsyncComponent(() => import('./NoticeBanner.vue'))
+const AnnounceBanner = defineAsyncComponent(() => import('../announce/AnnounceBanner.vue'))
 </script>
 
 <template>
   <NoticeBanner v-if="wanted" />
+  <AnnounceBanner v-if="announced" />
 </template>
 
 <style>

@@ -2,6 +2,7 @@
 // arrives (AnnounceHost.vue) or when Messages is opened. What has been received and what has been seen is kept in this browser only: the
 // server holds one copy of each announcement and writes nothing per player.
 import { reactive } from 'vue'
+import { useApp } from '../../state/app.ts'
 import type { AnnounceFrame, AnnounceItem } from '../../../types/announce.ts'
 
 const KEY = 'allworld.announce.v1', KEEP = 20
@@ -28,6 +29,8 @@ export function dismissAnnounce(): void {
   announceUi.banner = null
   save()
 }
+/** From the socket (AnnounceHost): the city and the clock are the page's own. */
+export function receive(frame: { type: string }): void { const { view } = useApp().game; receiveAnnounce(frame as AnnounceFrame, view.value.cityId, view.value.now) }
 /** The lines Messages → Updates shows for announcements, newest first. */
 export interface AnnounceLine { key: string; at: number; text: string; fresh: boolean; kind: 'update'; id: string; player?: string }
 export const announceLines = (items: readonly AnnounceItem[], seen: readonly string[]): AnnounceLine[] => items.map((item) => ({ key: `a${item.id}`, at: item.at, text: `${item.title}: ${item.body}`, fresh: !seen.includes(item.id), kind: 'update' as const, id: 'announcement' }))

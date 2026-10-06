@@ -40,6 +40,9 @@ import { cachedCityContent, cityModule } from '../cities/registry.ts';
  *   'career.quit'    {}              leave the current job
  *   'career.auto'    { on: bool }    toggle "Go automatically"
  *
+ *   'career.dilemma' { choice }      answer the work dilemma waiting after a shift. Only when the host has switched dilemmas on
+ *                                    (src/game/features.ts); otherwise refused with 'dilemmas_off'. Always registered.
+ *
  * STATE
  *   job              legacy top-level: job id | null (activities read it for requiresJob)
  *   completedShifts  legacy top-level: lifetime count of completed shifts in any job
@@ -52,6 +55,12 @@ import { cachedCityContent, cityModule } from '../cities/registry.ts';
  *     shiftStartDay  Lagos day index the running career shift started on | null
  *     autoDay        Lagos day index of the last automatic commute | null
  *     oriented       true once any career shift has been completed
+ *     dilemmas       { pending, seen, memory } work dilemmas (src/game/dilemmas.ts). The key is absent until a dilemma has come up.
+ *
+ * WORK DILEMMAS (behind the `dilemmas` switch, off by default)
+ *   After a completed shift (a career track or the starter job) with nothing pending, a dilemma comes up with DILEMMA_CHANCE percent.
+ *   It waits in `career.dilemmas.pending` until answered; the answer moves a little money (a quarter of a shift at most), needs,
+ *   skill XP and a memory tag. With the switch off nothing here is written and the view has no `dilemma` key.
  *
  * EMITS
  *   'job.applied'     { job }
@@ -73,14 +82,19 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { cap, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, openingInfo, WEEKDAYS } from '../clock.ts';
-import { addMoodlet, arrive, skillLevel, spotsOf } from '../api.ts';
+import { addMoodlet, addSkillXp, arrive, canCredit, changeNeeds, credit, debit, skillLevel, spotsOf } from '../api.ts';
+import { dilemmasEnabled } from '../features.ts';
+import { cleanBook, emptyBook, markMemory, markSeen, pickDilemma, resolveDilemma, choiceOf } from '../dilemmas.ts';
+import { DILEMMA_CHANCE, dilemmaById } from '../content/dilemmas.ts';
+import { placeKindOf } from '../place-actions.ts';
 import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT, HELPER_COOLDOWN_SECONDS } from '../content/jobs.ts';
 import { venueLabel } from '../content/venues.ts';
 import type { LadderRung, JobDefinition, TrackJobDefinition } from '../../types/content.ts';
 import type { ActionMap } from '../../types/actions.ts';
 import type { ActionOutcome, CareerState, CommuteAction, JobId, LifeContext, LifeState, NeedId } from '../../types/life.ts';
 import type { ActiveKindHandler, SystemDefinition } from '../../types/registry.ts';
-import type { CareerStep, CareerView, JobListing, PromotionTarget, ShiftStatusCode } from '../../types/view.ts';
+import type { CareerStep, CareerView, DilemmaView, JobListing, PromotionTarget, ShiftStatusCode } from '../../types/view.ts';
+import type { DilemmaStats } from '../../types/content.ts';
 
 /** Seconds the automatic commute takes (original beta value). */
 export const COMMUTE_SECONDS = 5;
@@ -322,6 +336,61 @@ function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null,
 
 const payOf = (state: LifeState, job: JobDefinition): number => (job.track ? rung(job, state.career.level).pay : job.shift.reward ?? 0); // the starter shift always defines its reward
 
+/** The player as the dilemma rules see them: plain numbers, skills as levels. */
+function dilemmaStats(state: LifeState, job: JobDefinition | null, memory: readonly string[]): DilemmaStats {
+  const skills = {} as DilemmaStats['skills'];
+  for (const id of Object.keys(state.skills) as (keyof DilemmaStats['skills'])[]) skills[id] = skillLevel(state, id);
+  return { job: job?.id ?? null, level: job?.track ? state.career.level : 1, cash: state.cash, needs: { ...state.needs }, skills, tags: memory };
+}
+
+/** After a completed shift: maybe set one dilemma waiting. Does nothing with the switch off, with one already waiting, or when none fits. */
+function rollDilemma(state: LifeState, job: JobDefinition | null, ctx: LifeContext): void {
+  if (!dilemmasEnabled() || !job) return;
+  const book = state.career.dilemmas;
+  if (book?.pending) return;
+  if (ctx.rng() * 100 >= DILEMMA_CHANCE) return;
+  const seed = Math.floor(ctx.rng() * 2 ** 31);
+  const memory = book?.memory ?? [];
+  const picked = pickDilemma(dilemmaStats(state, job, memory), seed, book?.seen ?? [], placeKindOf(ctx.cityId, job.workplace.venue));
+  if (!picked) return;
+  const next = book ? { pending: book.pending, seen: [...book.seen], memory: [...book.memory] } : emptyBook();
+  next.pending = { id: picked.id, seed };
+  markSeen(next, picked.id);
+  state.career.dilemmas = next;
+  state.message = `${state.message ? `${state.message} ` : ''}Something came up at work. Open Career to decide.`;
+}
+
+/** Answers the waiting dilemma. */
+function answerDilemma(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  if (!dilemmasEnabled()) return fail(state, 'dilemmas_off', 'Work dilemmas are not switched on.');
+  const book = state.career.dilemmas;
+  const pending = book?.pending;
+  const dilemma = pending ? dilemmaById(pending.id) : undefined;
+  if (!book || !pending || !dilemma) return fail(state, 'no_dilemma', 'Nothing is waiting for a decision.');
+  const choice = choiceOf(dilemma, payload?.choice);
+  if (!choice) return fail(state, 'invalid_choice', 'Choose one of the options.');
+  const job = jobOf(state.job, state.career.city ?? state.estate.city);
+  const outcome = resolveDilemma(dilemma, choice.id, dilemmaStats(state, job, book.memory), pending.seed);
+  const reason = `Work dilemma: ${dilemma.id}`;
+  if (outcome.money > 0 && canCredit(state, outcome.money)) credit(state, outcome.money, reason, ctx);
+  else if (outcome.money < 0) debit(state, -outcome.money, reason, ctx, { partial: true });
+  changeNeeds(state, outcome.needs);
+  for (const [skill, xp] of Object.entries(outcome.skills)) addSkillXp(state, skill, xp, ctx);
+  const next = { pending: null, seen: [...book.seen], memory: [...book.memory] };
+  if (outcome.tag) markMemory(next, outcome.tag);
+  state.career.dilemmas = next;
+  state.message = outcome.result.en;
+  return ok(state, outcome.bad ? 'went_badly' : 'resolved');
+}
+
+/** The waiting dilemma for the Career screen; null when none. */
+function dilemmaView(state: LifeState): DilemmaView | null {
+  const pending = state.career.dilemmas?.pending;
+  const dilemma = pending ? dilemmaById(pending.id) : undefined;
+  if (!dilemma) return null;
+  return { id: dilemma.id, prompt: dilemma.prompt, beta: dilemma.beta, choices: dilemma.choices.map((item) => ({ id: item.id, label: item.label, risky: Boolean(item.risk) })) };
+}
+
 /**
  * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
@@ -332,6 +401,7 @@ const play = PLAYS ? {
     'career.switch': (state, payload, ctx) => apply(state, payload, ctx, true),
     'career.quit': quit,
     'career.auto': setAuto,
+    'career.dilemma': answerDilemma,
   },
   on: {
     'activity.started'(state, { def }, ctx) {
@@ -359,6 +429,7 @@ const play = PLAYS ? {
         const next = nextPromotion(state, job);
         state.message = `${def.label} completed. You earned ${naira(pay)}. Performance ${Math.floor(career.performance)}%. Next shift: ${shiftStatus(state, ctx).next}.${next && next.performanceMet && !next.skillMet ? ` Promotion to ${next.role} is waiting on ${cap(job.skill)} level ${next.skillLevel}.` : ''}`;
       }
+      rollDilemma(state, job ?? null, ctx);
     },
     'skill.levelup'(state, { skill }, ctx) {
       const job = jobOf(state.job, state.career.city ?? state.estate.city);
@@ -391,6 +462,8 @@ export default {
     career.autoDay = dayIndex(saved.autoDay);
     career.transferDay = dayIndex(saved.transferDay);
     career.oriented = saved.oriented === true;
+    const book = cleanBook(saved.dilemmas);
+    if (book) career.dilemmas = book;
     state.career = career;
   },
   activitiesFor: (cityId) => jobsFor(cityId).filter((job) => job.shift && venueFor(cityId, job.workplace.venue))
@@ -436,6 +509,7 @@ export default {
     const pay = job ? payOf(state, job) : 0;
     return {
       job, // legacy field: the raw catalogue entry
+      ...(dilemmasEnabled() ? { dilemma: dilemmaView(state) } : {}),
       completedShifts: state.completedShifts,
       employed: Boolean(shown),
       id: shown?.id ?? null,

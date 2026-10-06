@@ -363,7 +363,7 @@ function checkState(state: LifeState, what: string): void {
   assert.deepEqual(keys(state), sorted(LIFE_STATE_KEYS), `${what}: top-level keys`)
   for (const read of Object.values(readers)) for (const [field, value] of Object.entries(read(state))) assert.notEqual(value, undefined, `${what}: state.${field}`)
   // A field that is ABSENT until it has something to say (the ride debt, a location confirmation) is listed but need not exist.
-  const optional = ['rideDebt', 'confirmed', 'free']
+  const optional = ['rideDebt', 'confirmed', 'free', 'dilemmas', 'coupon']
   for (const [slice, list] of Object.entries(SLICE_FIELD_KEYS)) {
     assert.deepEqual(keys(state[slice as keyof typeof SLICE_FIELD_KEYS]).filter((key) => !optional.includes(key)), sorted(list).filter((key) => !optional.includes(key)), `${what}: keys of state.${slice}`)
   }
@@ -427,7 +427,8 @@ function checkState(state: LifeState, what: string): void {
 function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   const shown = view(state, ctx)
   assert.deepEqual(Object.keys(shown), [...VIEW_KEYS], `${what}: view keys, in registration order`)
-  for (const [id, list] of Object.entries(VIEW_FIELD_KEYS)) assert.deepEqual(keys(shown[id as keyof typeof VIEW_FIELD_KEYS]), sorted(list), `${what}: keys of view.${id}`)
+  // `career.dilemma` exists only while the host has dilemmas switched on (src/game/features.ts), so it is listed but need not be present.
+  for (const [id, list] of Object.entries(VIEW_FIELD_KEYS)) assert.deepEqual(keys(shown[id as keyof typeof VIEW_FIELD_KEYS]).filter((key) => key !== 'dilemma'), sorted(list).filter((key) => key !== 'dilemma'), `${what}: keys of view.${id}`)
   assert.deepEqual(keys(shown.skills), sorted(SKILL_IDS), `${what}: view.skills`)
   for (const skill of Object.values(shown.skills)) assert.deepEqual(keys(skill), ['level', 'next', 'progress', 'xp'], `${what}: skill progress`)
   for (const destination of shown.travel.destinations) assert.deepEqual(keys(destination), sorted(TRAVEL_DESTINATION_KEYS), `${what}: destination ${destination.id}`)
@@ -1135,7 +1136,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   declared<DreamDefinition>()(['id', 'label', 'icon', 'goal', 'measure'])(Object.values(DREAMS), 'dream')
   declared<StartHomeDefinition>()(['id', 'label', 'district', 'rent', 'tag', 'icon', 'blurb'])(Object.values(START_HOMES), 'start home')
   declared<LotteryOutcome>()(['id', 'label', 'icon', 'tagline', 'odds', 'startCash', 'ownCash', 'locked', 'loan', 'skills', 'fx', 'bullets', 'beta', 'betaFields'])(Object.values(LOTTERY), 'lottery outcome')
-  declared<NpcDefinition>()(['id', 'venue', 'name', 'role', 'emoji', 'quotes', 'at', 'beta', 'note', 'age', 'look', 'greeting'])(Object.values(NPCS), 'npc')
+  declared<NpcDefinition>()(['id', 'venue', 'name', 'role', 'emoji', 'quotes', 'at', 'actions', 'beta', 'note', 'age', 'look', 'greeting'])(Object.values(NPCS), 'npc')
   declared<NpcAction>()(['id', 'label', 'icon', 'duration', 'cost', 'effects', 'bonus', 'xp', 'points', 'success', 'beta', 'note'])(NPC_ACTIONS, 'npc action')
   declared<FamilyMember>()(['id', 'name', 'relation', 'emoji', 'line', 'contact', 'quotes', 'beta', 'note'])(Object.values(FAMILY), 'family member')
   declared<StarterGoal>()(['id', 'title', 'hint', 'icon', 'cash', 'stars', 'done', 'open', 'params', 'go', 'workplace', 'activity', 'here', 'beta', 'betaFields'])(STARTER_GOALS, 'starter goal')

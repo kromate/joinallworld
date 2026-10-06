@@ -7,10 +7,12 @@
  *   ?models=moments    the venue card now and then shows a local moment line (src/moments/, lazy) in place of its ambient line
  *   ?models=labels     the 3D scenes (venues, home, campus) spell "NPC" on every game character's name tag. Without it the tag keeps its
  *                      green dot and its tooltip and screen-reader label already say NPC; the 2D panels always carry the badge.
+ *   ?models=dilemmas   the Career tab draws the work-dilemma card. Only the drawing: the life is always played by the server, whose
+ *                      DILEMMAS switch (src/game/features.ts) decides whether a dilemma ever comes up.
  *
  * Several may be given, separated by commas. Unknown names are ignored.
  */
-export const MODEL_FLAGS = Object.freeze(['vehicles', 'moments', 'labels'] as const);
+export const MODEL_FLAGS = Object.freeze(['vehicles', 'moments', 'labels', 'dilemmas'] as const);
 export type ModelFlag = (typeof MODEL_FLAGS)[number];
 export type ModelFlags = Record<ModelFlag, boolean>;
 export function modelFlags(search: string = globalThis.location?.search ?? ''): ModelFlags {

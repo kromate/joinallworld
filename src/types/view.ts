@@ -10,7 +10,7 @@ import type {
   ActivityBlockCode, CivicCheckCode, TravelBlockCode,
 } from './actions.ts'
 import type {
-  ActivityDefinition, Block, CarDefinition, CityLinkFrom, DayTitle, DreamDefinition, HealthCure, HouseDefinition, JobDefinition,
+  ActivityDefinition, Block, CarDefinition, LocalText, CityLinkFrom, DayTitle, DreamDefinition, HealthCure, HouseDefinition, JobDefinition,
   MissionKind, OnboardingStep, StartHomeDefinition, TierDefinition, TransferLimits, TravelModeDefinition, VenueZone,
 } from './content.ts'
 import type {
@@ -191,9 +191,19 @@ export interface JobListing {
   transfer: boolean
 }
 
+/** The work dilemma waiting for an answer. Only present when the host has switched dilemmas on (src/game/features.ts). */
+export interface DilemmaView {
+  id: string
+  prompt: LocalText
+  beta: boolean
+  choices: { id: string; label: LocalText; /** True when the choice can go badly. */ risky: boolean }[]
+}
+
 export interface CareerView {
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
+  /** The dilemma waiting after a shift, or null. The key is absent unless dilemmas are switched on. */
+  dilemma?: DilemmaView | null
   completedShifts: number
   employed: boolean
   id: JobId | null
@@ -880,6 +890,8 @@ export interface NpcActionCard {
   /** The activity id to start (`npc-<npc>-<action>`). */
   activity: ActivityId
   label: string
+  /** Nigerian Pidgin wording of `label`. Only a place action (switched on by the host) carries one. */
+  pcmLabel?: string
   icon: string
   duration: number
   cost: number
@@ -1141,7 +1153,7 @@ export const VIEW_FIELD_KEYS = {
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [
-    'auto', 'busy', 'chips', 'completedShifts', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
+    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
     'levels', 'next', 'nextShift', 'pay', 'performance', 'role', 'rules', 'schedule', 'shift', 'shifts', 'step', 'today',
     'topOfLadder', 'weeklyPay', 'workplace',
   ],

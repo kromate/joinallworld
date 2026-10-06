@@ -719,6 +719,8 @@ export interface NpcDefinition {
   quotes: string[]
   /** Landmark key of the venue's scene where they stand, or null to join the general crowd. */
   at: string | null
+  /** Extra place actions (ids from PLACE_ACTIONS) this regular offers beyond the ones their place and age give. Only used when place actions are on. */
+  actions?: readonly string[]
   beta?: boolean
   note?: string
   /** Optional life stage; older regulars are addressed with the local honorific in their name. */
@@ -1587,3 +1589,108 @@ export interface DepositTerm {
 
 /** TRAVEL_MODES: the five base modes by id. */
 export type BaseModeTable = Record<BaseTravelModeId, TravelModeDefinition>
+
+// ---- work dilemmas and place actions (behind the `dilemmas` switch, src/game/features.ts) ------------
+
+/** One line in both wordings: English and Nigerian Pidgin. The ids and rules are shared; only these words are local. */
+export interface LocalText {
+  en: string
+  pcm: string
+}
+
+/** What a choice does. Every number is a request: the resolver (src/game/dilemmas.ts) keeps it inside the bounds. */
+export interface DilemmaEffects {
+  /** Naira, positive or negative. */
+  money?: number
+  /** Need deltas, using the existing need ids. */
+  needs?: NeedMap
+  /** Skill XP gained, using the existing skill ids. */
+  skills?: SkillMap
+  /** A short memory or reputation tag (an id). The life keeps the last few. */
+  tag?: string
+}
+
+/** The chance (percent) that a choice goes badly, and what that costs on top of its normal effects. */
+export interface DilemmaRisk {
+  chance: number
+  bad: DilemmaEffects
+  result: LocalText
+}
+
+export interface DilemmaChoice {
+  id: string
+  label: LocalText
+  /** What the player reads when it goes as planned. */
+  result: LocalText
+  effects: DilemmaEffects
+  risk?: DilemmaRisk
+  /** The choice breaks a rule or the law for gain. It must carry a risk that makes it a losing bet (asserted in dilemmas.test.ts). */
+  shady?: true
+}
+
+/** When a dilemma may come up; every field that is present must hold. */
+export interface DilemmaCondition {
+  minLevel?: number
+  maxLevel?: number
+  minCash?: number
+  maxCash?: number
+  skill?: { id: SkillId; min: number }
+  need?: { id: NeedId; below?: number; above?: number }
+  /** Needs this memory tag. */
+  tag?: string
+  /** Needs this memory tag to be absent. */
+  notTag?: string
+}
+
+export interface DilemmaDefinition {
+  id: string
+  /** Career tracks (and the starter job) it can come up in. */
+  jobs?: JobId[]
+  /** Kinds of place (the scene kind of the venue the shift is worked at) it can come up in. */
+  places?: string[]
+  prompt: LocalText
+  /** Two or three choices. */
+  choices: readonly DilemmaChoice[]
+  when?: DilemmaCondition
+  /** Relative chance among the dilemmas that fit. */
+  weight: number
+  /** The local wording has not been reviewed by a speaker. */
+  beta: boolean
+}
+
+/** What a player's stats look like to the resolver. Plain numbers: it reads no life. */
+export interface DilemmaStats {
+  job: JobId | null
+  level: number
+  cash: number
+  needs: Record<NeedId, number>
+  /** Skill LEVELS (not XP). */
+  skills: Record<SkillId, number>
+  tags?: readonly string[]
+}
+
+/** What a resolved choice changes. All of it is already inside the bounds: apply it as it is. */
+export interface DilemmaOutcome {
+  dilemma: string
+  choice: string
+  bad: boolean
+  money: number
+  needs: NeedMap
+  skills: SkillMap
+  tag: string | null
+  result: LocalText
+}
+
+/** One interaction a regular offers because of where they are, who they are or when it is (PLACE_ACTIONS). */
+export interface PlaceAction extends NpcAction {
+  /** Local wording in Nigerian Pidgin; `label` is the English one. The id is shared by every city. */
+  pcmLabel: string
+  /** Kinds of place that offer it (placeKindOf in src/game/place-actions.ts). */
+  places?: readonly string[]
+  /** Offered by regulars who are elders. */
+  elder?: true
+  /** Offered only shortly after a service has ended (SERVICE_TIMES). */
+  afterService?: true
+  /** What a success also gives. */
+  grant?: { coupon?: number; memory?: string }
+}

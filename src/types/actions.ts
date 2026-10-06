@@ -39,12 +39,12 @@ export type ActivityEngineBlockCode =
  *   health   not_sick
  *   home     furniture_required · missing_items
  *   goals    already_funded · skill_required
- *   social   npc_daily_limit
+ *   social   npc_daily_limit, not_now
  *   campus   student_required · daily_limit (the 'unilag-volunteer' activity only; games.js)
  */
 export type ActivityVetoCode =
   | 'cooldown' | 'gig_limit' | 'not_needed' | 'balance_limit' | 'shift_done' | 'day_off' | 'working' | 'no_job'
-  | 'not_sick' | 'furniture_required' | 'missing_items' | 'already_funded' | 'skill_required' | 'npc_daily_limit'
+  | 'not_sick' | 'furniture_required' | 'missing_items' | 'already_funded' | 'skill_required' | 'npc_daily_limit' | 'not_now'
   | CampusActivityVetoCode
 
 /** Every code an activity card's `blocked` (and a refused 'activity' start) can carry. */
@@ -172,6 +172,8 @@ export interface ActionMap extends CampusActionMap {
   'career.quit': { payload: NoPayload; ok: 'quit'; fail: 'no_job' | 'busy' }
   /** Toggle "Go automatically". */
   'career.auto': { payload: { on: boolean }; ok: 'auto_set'; fail: 'invalid_setting' }
+  /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' unless the host has switched dilemmas on. */
+  'career.dilemma': { payload: { choice: string }; ok: 'resolved' | 'went_badly'; fail: 'dilemmas_off' | 'no_dilemma' | 'invalid_choice' }
 
   // -- activities --
   /** Start an activity offered at the current spot. `choice` is required when the activity has `choices`. */
@@ -447,7 +449,7 @@ export type ActionBody<T extends ActionType = ActionType> = {
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
-  'apply-job', 'career.switch', 'career.quit', 'career.auto',
+  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
   'activity', 'spot', 'activity.admin',
   'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',

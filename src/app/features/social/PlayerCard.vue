@@ -25,7 +25,7 @@ const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'
 import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import type { SocialResult } from './socialClient.ts'
-import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason } from './personModel.ts'
+import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, sendLine } from './personModel.ts'
 import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, venueNameOf } from './socialWords.ts'
 import { personUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
@@ -63,7 +63,7 @@ const venueName = (id: string): string => venueNameOf(view.value.venues, id)
 const place = computed(() => ({ cityId: view.value.cityId, cityName: (id: string) => cityName(id) ?? id }))
 const whyAct = computed(() => (card.value ? interactReason({ card: card.value, together: together.value, left: left.value, daily: social.value.dailyInteractions, busy: personUi.busy }) : null))
 const whyBae = computed(() => (card.value ? baeReason({ card: card.value, social: social.value, meBae: Boolean(state.me?.bae), points: points.value }) : null))
-const whyMoney = computed(() => (card.value ? moneyReason(card.value, social.value.transfer) : null))
+const whyMoney = computed(() => (card.value ? moneyReason(card.value, social.value.transfer, game.state.value.cash) : null))
 const friend = computed(() => (card.value ? friendControl(card.value) : 'none'))
 const t = computed(() => social.value.transfer)
 const nudge = computed(() => (card.value ? nudgeControl({ self: card.value.self, friend: card.value.friend, blocked: card.value.blocked, name: card.value.name, status: card.value.status, seenAt: card.value.seenAt, now: view.value.now,
@@ -164,11 +164,11 @@ async function sendReport(): Promise<void> {
     <div class="social-grid">
       <button v-if="card.bae" type="button" class="social-act" :disabled="personUi.busy" @click="doAction('bae-end')"><strong><GameIcon name="heart-off" inline /> End things</strong><small>Stop being Bae</small></button>
       <button v-else type="button" class="social-act" :disabled="Boolean(whyBae) || personUi.busy" @click="doAction('bae')"><strong><GameIcon name="heart" inline /> Ask to be my Bae</strong><small>{{ whyBae || 'Ask them now' }}</small></button>
-      <button type="button" class="social-act" :disabled="Boolean(whyMoney)" @click="openForm('money')"><strong><GameIcon name="coin" inline /> Send money</strong><small>{{ whyMoney || `Up to ${money(moneyCeiling(t))} now` }}</small></button>
+      <button type="button" class="social-act" :disabled="Boolean(whyMoney)" @click="openForm('money')"><strong><GameIcon name="coin" inline /> Send money</strong><small>{{ whyMoney || `Up to ${money(moneyCeiling(t, game.state.value.cash))} now` }}</small></button>
     </div>
     <form v-if="personUi.form === 'money'" ref="formEl" class="ui-card" @submit.prevent="sendMoney">
-      <label>Amount to send (₦{{ t.min }}–₦{{ moneyCeiling(t) }})<input v-model="personUi.amount" class="social-field" name="amount" inputmode="numeric" pattern="[0-9]*" maxlength="5" required></label>
-      <p class="social-note">Gifts are capped: {{ money(t.maxPerTransfer) }} each, {{ t.dailyCount }} a day, and never more than you have earned from work. You have {{ money(game.state.value.cash) }}.</p>
+      <label>Amount to send (₦{{ t.min }}–₦{{ moneyCeiling(t, game.state.value.cash) }})<input v-model="personUi.amount" class="social-field" name="amount" inputmode="numeric" pattern="[0-9]*" maxlength="13" required></label>
+      <p class="social-note" data-gift-line>{{ sendLine(t, game.state.value.cash) }}</p>
       <span class="social-actions"><button type="submit" class="social-btn is-primary" :disabled="personUi.busy">{{ personUi.busy ? 'Sending…' : 'Send' }}</button><button type="button" class="social-btn" @click="openForm(null)">Cancel</button></span>
     </form>
     <form v-else-if="personUi.form === 'report' && state.me" ref="formEl" class="ui-card" @submit.prevent="sendReport">

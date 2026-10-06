@@ -19,7 +19,7 @@ import { decodeTopology } from './topo.ts';
 export type LonLatPolygon = Array<Array<[number, number]>>;
 
 export interface LagosShapes {
-  /** Local governments by game id (see LAGOS_LGAS in src/game/content/world.ts): 20 entries. */
+  /** Local governments by game id (see LAGOS_LGAS in src/game/cities/lagos/localUnits.ts): 20 entries. */
   lgas: Record<string, LonLatPolygon[]>;
   /** The Lagos State outline (includes the Lagos Lagoon). */
   state: LonLatPolygon[];

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts'
+import { loadCityRules } from '../../game/cities/registry.ts'
 import type { CityStateOverview } from '../../types/content.ts'
 
 const overview: CityStateOverview = {
@@ -93,7 +94,8 @@ test('an explicit context qualification overrides a conflicting polygon membersh
 })
 
 
-test('the atlas overview button uses the selected city unit while preserving Lagos wording', () => {
+test('the atlas overview button uses the selected city unit while preserving Lagos wording', async () => {
+  await Promise.all(['abuja', 'lagos'].map(loadCityRules))
   assert.match(stateOverviewToggleHtml('fct', 'abuja', false), /View all area councils/)
   assert.doesNotMatch(stateOverviewToggleHtml('fct', 'abuja', false), /local governments/)
   assert.match(stateOverviewToggleHtml('lagos', 'lagos', false), /View all local governments/)

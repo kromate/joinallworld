@@ -45,6 +45,7 @@ import { composeDigest } from '../../src/game/digest.ts';
 import { isShareCode } from '../../src/game/share-model.ts';
 import { growthOf, playerOf, sweep, LIMITS } from '../growth/data.ts';
 import { createShare, findShare, sharePageHtml } from '../growth/share.ts';
+import { bonusConfig, claimedOf, publicOffer } from '../bonus/service.ts';
 import { referralService } from '../growth/referral.ts';
 import { CLIENT_SIGNALS, count, prune, touch } from '../growth/metrics.ts';
 import { outreachService } from '../growth/outreach.ts';
@@ -115,7 +116,9 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       count(g, ctx.now(), found.cityId ?? 'lagos', 'share.opened');
       return { facts: found.facts, by: found.by };
     }, { durable: false }).catch(() => null);
-    return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin) };
+    // While the launch offer is open the preview says so (server/bonus/service.ts).
+    const offer = share ? publicOffer(bonusConfig(ctx), await ctx.store.read((db) => claimedOf(db)).catch(() => 0)) : null;
+    return { status: share ? 200 : 404, html: sharePageHtml(share, code, origin, offer) };
   });
 
   // The pages a link in an e-mail opens. A GET only ever shows a button: mail scanners follow links, so nothing is

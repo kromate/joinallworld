@@ -88,7 +88,7 @@ test('the main airport, northern and southern roads and planned city avenues ret
   }
 })
 
-test('light rail and the closed Kaduna preview use separate sourced tracks without invented connectors', () => {
+test('light rail and the Kaduna intercity route use separate sourced tracks without invented connectors', () => {
   assert.equal(FCT_RAIL.filter(track => track.mode === 'light_rail').length, 5)
   const rail = FCT_RAIL.find(track => track.mode === 'rail')
   assert.ok(rail)
@@ -98,7 +98,7 @@ test('light rail and the closed Kaduna preview use separate sourced tracks witho
   assert.deepEqual(FCT_KADUNA_RAIL.at(-1), [7.3547029, 10.5479045])
   assert.ok(FCT_KADUNA_RAIL.length > 550, 'complete source-node path reaches Rigasa without simplification')
   assert.deepEqual(rail.points[0], [7.3451511, 9.0457104])
-  assert.equal(rail.points.at(-1)?.[1], 9.6, 'preview ends at the disclosed source extent, not Kaduna')
+  assert.equal(rail.points.at(-1)?.[1], 9.6, 'the local preview ends at the disclosed source extent, not Kaduna')
   assert.ok(rail.points.length > 90)
   assert.ok(FCT_RAIL.some(track => track.name === 'ARMT Yellow Line'))
   assert.ok(FCT_RAIL.some(track => track.name === 'ARMT Blue Line'))

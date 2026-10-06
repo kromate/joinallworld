@@ -33,6 +33,7 @@ import { cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '.
 import { lagosTime } from '../clock.ts';
 import { addMoodlet, canAfford, canCredit, changeNeeds, credit, debit, NEEDS } from '../api.ts';
 import { repayFromEarnings } from '../relief.ts';
+import { freeOf, spendFree } from './wallet.ts';
 import { TRANSFER_LIMITS } from '../content/npcs.ts';
 import { BAG_LIMIT, BUSINESS_BUYING, SALES_COUNTED_PER_COLLECT } from '../content/business-limits.ts';
 import type { BusinessBlockCode } from '../../types/actions.ts';
@@ -53,6 +54,7 @@ const today = (state: LifeState, ctx: LifeContext): { spent: number; count: numb
 export const allowance = (state: LifeState): number => Math.max(0, state.social.earned - state.social.transfer.total - state.business.spent);
 /** Why this life may not buy at players' shops at all, in one sentence; '' when it may. Pure. */
 export function buyingWhy(state: LifeState): string {
+  if (freeOf(state) > 0) return '' // an admin's credit has no earned-from-work rule
   const earned = state.social.earned, need = TRANSFER_LIMITS.minEarned;
   if (earned < need) return `Earn at least ${naira(need)} from paid work before you buy from other players (you have earned ${naira(earned)}).`;
   if (allowance(state) <= 0) return 'You can only spend money you have earned from work at other players’ shops. Work a shift to buy more.';
@@ -61,7 +63,7 @@ export function buyingWhy(state: LifeState): string {
 /** Naira this life may still spend at players' shops today. Pure. */
 export function buyingLeft(state: LifeState, ctx: LifeContext): number {
   if (buyingWhy(state)) return 0;
-  return Math.max(0, Math.min(BUSINESS_BUYING.perDay - today(state, ctx).spent, allowance(state)));
+  return Math.max(0, Math.min(BUSINESS_BUYING.perDay - today(state, ctx).spent, allowance(state) + freeOf(state)));
 }
 
 /** The needs a product changes, bounded: only known needs, whole numbers, at most BUSINESS_BUYING.maxEffect either way. */
@@ -79,9 +81,11 @@ function effectsOf(value: unknown): NeedMap {
 export function buyBlock(state: LifeState, payload: Payload, ctx: LifeContext): Refusal | null {
   const amount = amountOf(payload.amount);
   if (amount === null || amount <= 0) return fail(state, 'invalid_amount', 'That purchase has no price.');
-  const why = buyingWhy(state);
+  // The unrestricted part (an admin's credit) is drawn first and is exempt from the earned-from-work rule; the shop's own daily and need limits below still apply to the whole price.
+  const ordinary = amount - Math.min(freeOf(state), amount);
+  const why = ordinary > 0 ? buyingWhy({ ...state, social: { ...state.social, free: 0 } }) : '';
   if (why) return fail(state, state.social.earned < TRANSFER_LIMITS.minEarned ? 'earn_first' : 'spend_exceeds_earned', why);
-  if (amount > allowance(state)) return fail(state, 'spend_exceeds_earned', `You can only spend money you have earned from work at other players’ shops. You can still spend ${naira(allowance(state))}.`);
+  if (ordinary > allowance(state)) return fail(state, 'spend_exceeds_earned', `You can only spend money you have earned from work at other players’ shops. You can still spend ${naira(allowance(state) + freeOf(state))}.`);
   const day = today(state, ctx);
   if (day.count >= BUSINESS_BUYING.countPerDay) return fail(state, 'daily_shop_limit', `You have bought from players’ shops ${BUSINESS_BUYING.countPerDay} times today. The limit resets at midnight, Nigerian time.`);
   if (day.spent + amount > BUSINESS_BUYING.perDay) return fail(state, 'daily_shop_limit', `You can spend ${naira(BUSINESS_BUYING.perDay)} a day at players’ shops. ${naira(Math.max(0, BUSINESS_BUYING.perDay - day.spent))} is left today.`);
@@ -138,11 +142,13 @@ const ops = {
     if (block) return block;
     const amount = amountOf(payload.amount) ?? 0, units = safeCount(payload.units) && payload.units > 0 ? payload.units : 1;
     const label = cleanText(payload.label, 32, 'something'), shop = cleanText(payload.shop, 24, 'a stall');
+    const free = Math.min(freeOf(state), amount);
+    spendFree(state, free);
     if (!debit(state, amount, `Bought at ${shop}: ${units} × ${label}`, ctx)) return short(state, amount);
     const book = state.business, day = lagosTime(nowOf(state, ctx)).day, effects = effectsOf(payload.effects);
     if (book.buys.day !== day) book.buys = { day, spent: 0, count: 0 };
     book.buys.spent += amount; book.buys.count += 1;
-    book.spent = Math.min(Number.MAX_SAFE_INTEGER, book.spent + amount);
+    book.spent = Math.min(Number.MAX_SAFE_INTEGER, book.spent + (amount - free));
     for (let index = 0; index < units; index++) changeNeeds(state, effects);
     const mood = isRecord(payload.mood) && isId(payload.mood.id) ? payload.mood : null;
     if (mood) {

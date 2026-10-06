@@ -42,6 +42,7 @@ import type { RouteContext, RouteHandler, RouteKey, RouteRequest } from '../type
 import { accountView, adoptNewSession, deleteAccount, exportAccount, signIn, signOut, signOutEverywhere, switchCharacter } from '../accounts/service.ts';
 import { KeysUnavailable, TOKEN_MAX_AGE_MS, TokenError, createTokenVerifier } from '../accounts/token.ts';
 import { welcomeService } from '../accounts/welcome.ts';
+import { bonusService } from '../bonus/service.ts';
 import { UUID_PATTERN, hash53 } from '../protocol.ts';
 
 /** Where the provider takes a request to send its password-reset e-mail. */
@@ -74,6 +75,7 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
   const config = ctx.config.accounts ?? null;
   const verifier = config ? createTokenVerifier({ projectId: config.projectId, fetch: (url, init) => ctx.fetch(url, init), now }) : null;
   const welcome = config ? welcomeService(ctx) : null;
+  const bonus = config ? bonusService(ctx) : null;
   const deps: AccountDeps = { now, ttlMs: ctx.config.sessionTtlMs, tokenMaxAgeMs: TOKEN_MAX_AGE_MS, newId: () => core.newId(), newSecret: () => core.newIdentity().secret, archive: (db, secret, session) => core.archiveSession(db, secret, session), fail,
     welcome: () => welcome?.ready() === true };
   welcome?.bind(deps);
@@ -137,6 +139,9 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
       const identity = await identityOf(request, body.idToken);
       const result = await store.transact(db => signIn(db, deps, { ...callerOf(request), identity }));
       closeSockets(result);
+      // The launch bonus (server/bonus/service.ts): the place is taken, and paid when the account has a character, at this moment. It never delays or fails the sign-in,
+      // and it is settled before the welcome message is written so that the message can say so.
+      try { await bonus?.run({ binding: result.cookie, ip: request.ip }); } catch (error) { core.log?.(`Launch bonus could not be settled: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`); }
       // The welcome message of a NEW account: owed since the transaction above, sent now that it is saved. It never delays or fails the sign-in.
       if (result.welcome && welcome) ctx.waitUntil?.(welcome.send(result.welcome));
       return { body: { outcome: result.outcome, created: result.created, character: result.character, parked: result.parked, devices: result.devices, ended: result.ended, csrf: await csrfOf(result.cookie) }, headers: { 'Set-Cookie': core.cookieHeader(request, result.cookie) } };

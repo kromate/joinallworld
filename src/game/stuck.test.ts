@@ -7,8 +7,7 @@ import { cityRules } from './cities/registry.ts'
 import { publicArrivalVenue, venueFor } from './cities/runtime.ts'
 import { START_SAMPLE, playOut, rng, sampleOf, stuck } from './stuckSearch.ts'
 
-const CITIES = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']
-await Promise.all(CITIES.map(loadCityContent))
+await Promise.all(playableCityIds().map(loadCityContent))
 
 test('with the safety nets, no sampled state is a dead end: needs recover, money comes in, and a visitor gets home', () => {
   const next = rng(20261005)
@@ -22,6 +21,21 @@ test('with the safety nets, no sampled state is a dead end: needs recover, money
   }
   assert.equal(played, 3000)
   assert.deepEqual(failing.slice(0, 3), [], `${failing.length} dead ends`)
+})
+
+test('each playable city gets its own bounded dead-end sample', () => {
+  for (const city of playableCityIds()) {
+    const next = rng(20261005 + city.length)
+    const failing = []
+    const otherHomes = playableCityIds().filter(id => id !== city)
+    for (let i = 0; i < 80; i++) {
+      const home = i % 2 === 0 ? city : otherHomes[i % otherHomes.length]!
+      const sample = { ...sampleOf(next, [city], [home]), city }
+      const outcome = playOut(sample, { nets: true })
+      if (stuck(outcome)) failing.push(outcome)
+    }
+    assert.deepEqual(failing.slice(0, 3), [], `${city}: ${failing.length} dead ends in 80 samples`)
+  }
 })
 
 test('the search is not vacuous: without the nets the same states include dead ends, and the owner\'s case is one', () => {

@@ -18,11 +18,11 @@ export function relative(at: number, now: number): string {
 export const bytes = (chars: number): string => (chars < 1024 ? `${chars} B` : chars < 1048576 ? `${(chars / 1024).toFixed(1)} kB` : `${(chars / 1048576).toFixed(2)} MB`)
 export const uptime = (ms: number): string => { const m = Math.floor(ms / 60000); return m < 60 ? `${m} min` : m < 2880 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${Math.floor(m / 1440)} d` }
 
-export interface Field { key: string; label: string; kind: 'number' | 'text' | 'select' | 'long'; options?: readonly (readonly [string, string])[]; min?: number; max?: number; placeholder?: string; initial?: string | number }
+export interface Field { key: string; label: string; kind: 'number' | 'text' | 'select' | 'long'; options?: readonly (readonly [string, string])[]; min?: number; max?: number; placeholder?: string; initial?: string | number; /** May be left as it is. */ optional?: true }
 export interface ActionDef { id: string; label: string; help: string; fields: readonly Field[]; reason: 'required' | 'optional' | 'none'; danger?: boolean; /** The word the admin types to confirm a destructive action. */ typed?: string; group: 'money' | 'life' | 'sanction' | 'contact' }
 const NEEDS: readonly (readonly [string, string])[] = [['hunger', 'Hunger'], ['energy', 'Energy'], ['fun', 'Fun'], ['social', 'Social'], ['hygiene', 'Hygiene'], ['bladder', 'Bladder']]
 export const PLAYER_ACTIONS: readonly ActionDef[] = [
-  { id: 'credit', label: 'Credit ₦', group: 'money', help: 'Adds cash with the ledger line "Admin credit: reason". Not counted as earned from work.', fields: [{ key: 'amount', label: 'Amount (₦)', kind: 'number', min: 1, placeholder: '5000' }], reason: 'required' },
+  { id: 'credit', label: 'Credit ₦', group: 'money', help: 'Adds cash with the ledger line "Admin credit: reason". The player can spend or gift this freely: it has no gift limits (what a friend receives is ordinary money). Over ₦10,000,000 asks you to type CREDIT.', fields: [{ key: 'amount', label: 'Amount (₦)', kind: 'number', min: 1, placeholder: '5000' }, { key: 'restricted', label: 'Gifting', kind: 'select', options: [['no', 'Unrestricted: the player can spend or gift this freely'], ['yes', 'Restricted: cannot be gifted']], initial: 'no', optional: true }], reason: 'required' },
   { id: 'debit', label: 'Debit ₦', group: 'money', danger: true, typed: 'DEBIT', help: 'Takes cash with the ledger line "Admin debit: reason". Never below zero: it takes what the balance holds.', fields: [{ key: 'amount', label: 'Amount (₦)', kind: 'number', min: 1 }], reason: 'required' },
   { id: 'heal', label: 'Heal', group: 'life', help: 'Lifts every need that is below 80 up to 80.', fields: [], reason: 'optional' },
   { id: 'need', label: 'Set a need', group: 'life', help: 'Sets one need to a value from 0 to 100.', fields: [{ key: 'need', label: 'Need', kind: 'select', options: NEEDS, initial: 'hunger' }, { key: 'value', label: 'Value', kind: 'number', min: 0, max: 100, initial: 80 }], reason: 'optional' },
@@ -40,21 +40,26 @@ export const PLAYER_ACTIONS: readonly ActionDef[] = [
 ]
 export const actionDef = (id: string): ActionDef | undefined => PLAYER_ACTIONS.find((item) => item.id === id)
 
+/** The word to type before the action goes: the action's own, or CREDIT for a single credit above ₦10,000,000 (a typo guard, not a limit). */
+export const CREDIT_CONFIRM_ABOVE = 10_000_000
+export const typedWord = (def: ActionDef, values: Record<string, string | number>): string => def.typed ?? (def.id === 'credit' && Number(values.amount) > CREDIT_CONFIRM_ABOVE ? 'CREDIT' : '')
 /** Why the form cannot be sent yet, or null. The server checks everything again. */
 export function formWhy(def: ActionDef, values: Record<string, string | number>, reason: string, typed: string): string | null {
   for (const field of def.fields) {
     const value = values[field.key]
+    if (field.optional && value === undefined) continue
     if (value === undefined || value === '') return `${field.label} is needed.`
     if (field.kind === 'number') { const n = Number(value); if (!Number.isInteger(n) || (field.min !== undefined && n < field.min) || (field.max !== undefined && n > field.max)) return `${field.label} must be a whole number${field.min !== undefined ? ` from ${field.min}` : ''}${field.max !== undefined ? ` to ${field.max}` : ''}.` }
   }
   if (def.reason === 'required' && reason.trim().length < 3) return 'A reason is needed (at least 3 characters).'
-  if (def.typed && typed.trim().toUpperCase() !== def.typed) return `Type ${def.typed} to confirm.`
+  const word = typedWord(def, values)
+  if (word && typed.trim().toUpperCase() !== word) return `Type ${word} to confirm.`
   return null
 }
 /** The request body for an action: numbers as numbers, text trimmed. */
 export function bodyOf(def: ActionDef, values: Record<string, string | number>, reason: string): Record<string, unknown> {
   const body: Record<string, unknown> = { action: def.id }
-  for (const field of def.fields) body[field.key] = field.kind === 'number' ? Number(values[field.key]) : String(values[field.key] ?? '').trim()
+  for (const field of def.fields) body[field.key] = field.key === 'restricted' ? values[field.key] === 'yes' : field.kind === 'number' ? Number(values[field.key]) : String(values[field.key] ?? '').trim()
   if (reason.trim()) body.reason = reason.trim()
   return body
 }

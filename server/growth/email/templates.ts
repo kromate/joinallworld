@@ -119,7 +119,7 @@ const welcomePlain = (m: WelcomeParts): string => [m.heading, '', m.intro, m.sav
  * fetched when it is read). `name` is the character's name when there is one; `cities` are the names of the cities open
  * today, in the order to say them, and the message names none when it is given none.
  */
-export function accountWelcomeMail({ name, playUrl, contact, cities = [] }: { name?: string; playUrl: string; contact?: string; cities?: readonly string[] }): Mail {
+export function accountWelcomeMail({ name, playUrl, contact, cities = [], bonus }: { name?: string; playUrl: string; contact?: string; cities?: readonly string[]; /** The launch bonus this account holds, said only while there is one (paid, or reserved and on its way). In-game naira. */ bonus?: { amount: number; places: number; paid: boolean } }): Mail {
   const who = oneLine(name, 40), open = cities.map((city) => oneLine(city, 40)).filter(Boolean).slice(0, 12);
   const parts: WelcomeParts = {
     subject: `Welcome to ${BRAND}: your character is saved`,
@@ -127,7 +127,7 @@ export function accountWelcomeMail({ name, playUrl, contact, cities = [] }: { na
     tagline: 'The whole world, to live in',
     heading: who ? `Welcome to the world, ${who}` : 'Welcome to the world',
     intro: `${BRAND} is a digital universe of the whole world that you can live in. Make a character, get a home, work, eat, meet real people who are online, and travel between real cities to see what life is like there.`,
-    saved: `${who ? `${who} is` : 'Your character is'} saved to this account: log in on any device to carry on.`,
+    saved: `${who ? `${who} is` : 'Your character is'} saved to this account: log in on any device to carry on.${bonus ? ` You are one of the first ${bonus.places.toLocaleString('en-NG')} players: ₦${bonus.amount.toLocaleString('en-NG')} in-game is ${bonus.paid ? 'in your wallet' : 'reserved for you'}.` : ''}`,
     cities: open.length ? `Open today: ${listOf(open)}. More cities are opening.` : 'More cities are opening.',
     stepsTitle: 'What to do first',
     steps: [

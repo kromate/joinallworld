@@ -7,7 +7,7 @@ import { NIGERIA, WATER } from './data/nigeria.ts';
 import { decodeTopology } from './topo.ts';
 import { ORIGINS, fromLocal, project, toLocal, unproject } from './frame.ts';
 import { lagosShapes, type LonLatPolygon } from './lagos-shapes.ts';
-import { LAGOS_LGAS } from '../../game/content/world.ts';
+import { LAGOS_LGAS } from '../../game/cities/lagos/localUnits.ts';
 
 const here = (name: string) => new URL(name, import.meta.url);
 const nigeria = decodeTopology(NIGERIA);

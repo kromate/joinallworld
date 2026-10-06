@@ -136,6 +136,20 @@ function record(state: WalletState, amount: number, reason: string, ctx?: Wallet
   emit(state, 'wallet.changed', { amount, reason, balance: state.cash }, ctx as LifeContext)
 }
 
+/** The part of the cash an admin credited without gift restrictions: never more than the cash held. Pure. */
+export const freeOf = (state: WalletState): number => { const free = state.social?.free; return typeof free === 'number' && Number.isSafeInteger(free) && free > 0 ? Math.min(free, state.cash) : 0 }
+/** Use up `amount` of the unrestricted funds (a gift or a purchase drew on them): the counter falls, and is removed at zero. */
+export function spendFree(state: WalletState, amount: number): void {
+  if (amount <= 0 || !state.social) return
+  const left = freeOf(state) - amount
+  if (left > 0) state.social.free = left; else delete state.social.free
+}
+/** After any spend the unrestricted amount is brought down to the cash that is left, so nobody keeps an allowance larger than the money they hold. */
+function clampFree(state: WalletState): void {
+  const free = state.social?.free
+  if (typeof free !== 'number') return
+  if (free > state.cash) { if (state.cash > 0) state.social.free = state.cash; else delete state.social.free }
+}
 export const canAfford = (state: WalletState, amount: number): boolean => validAmount(amount) && state.cash >= amount
 export const canCredit = (state: WalletState, amount: number): boolean => validAmount(amount) && Number.isSafeInteger(state.cash + amount)
 
@@ -158,6 +172,7 @@ export function debit(state: WalletState, amount: number, reason: string, ctx?: 
   if (state.cash < amount && !partial) return false
   const taken = Math.min(amount, state.cash)
   state.cash -= taken
+  clampFree(state)
   record(state, -taken, reason, ctx)
   return partial ? taken : true
 }
@@ -244,9 +259,25 @@ const play = PLAYS ? {
         const amount = payload?.amount, reason = cleanText(payload?.reason, 56, 'Adjustment')
         if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
         const context = { now: finite(ctx?.now) ? ctx.now : state.t }
-        if (payload.op === 'credit') return credit(state, amount, `Admin credit: ${reason}`, context) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
+        if (payload.op === 'credit') {
+          if (!credit(state, amount, `Admin credit: ${reason}`, context)) return fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
+          // An individual credit is unrestricted unless the admin said otherwise: it can be gifted and spent at players' stalls without the gift rules.
+          if (payload.unrestricted === true) state.social.free = Math.min(state.cash, freeOf(state) + amount)
+          return ok(state, 'credited')
+        }
         if (payload.op === 'debit') { debit(state, amount, `Admin debit: ${reason}`, context, { partial: true }); return ok(state, 'debited') }
         return fail(state, 'invalid_amount')
+      } },
+    /**
+     * SERVER ONLY. The launch bonus (server/bonus): one ledger line whose reason the server words ("Launch bonus: one of the first 10,000 players"),
+     * a faucet. It never touches `social.earned`, so it unlocks no gifting and no buying from players, and the ride debt's repayment from
+     * earnings does not take a share of it (only the whole-debt rule of relief.ts, which asks what cash can afford, sees it).
+     */
+    'wallet.bonus': { serverOnly: true, refusal: 'The launch bonus is paid by the server. Nothing was changed.',
+      run(state, payload, ctx) {
+        const amount = payload?.amount, reason = cleanText(payload?.reason, 80, 'Launch bonus')
+        if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
+        return credit(state, amount, reason, { now: finite(ctx?.now) ? ctx.now : state.t }) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
       } },
   },
   advance(): void {},

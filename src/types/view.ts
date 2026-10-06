@@ -948,7 +948,7 @@ export interface SocialView {
   /** The family member being phoned. */
   calling: FamilyId | null
   /** Every TRANSFER_LIMITS field (its `beta` mark included) plus this life's standing against them. */
-  transfer: TransferLimits & { earned: number; sentToday: number; countToday: number; leftToday: number; giftsLeftToday: number }
+  transfer: TransferLimits & { earned: number; sentToday: number; countToday: number; leftToday: number; giftsLeftToday: number; /** Unrestricted funds (an admin's credit): gifted with none of the gift rules. */ free: number}
   /** NEWEST FIRST (stored oldest first). */
   notices: Notice[]
 }

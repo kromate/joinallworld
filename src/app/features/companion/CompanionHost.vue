@@ -26,6 +26,8 @@ import type { GameEvent, Nudge } from './director.ts'
 import { TOUR_LABELS, TOUR_IDS } from './tours.ts'
 import { companionUi } from './companionState.ts'
 import { signal } from './signal.ts'
+import { heard, takeLine } from './say.ts'
+import type { Say } from './say.ts'
 import type { CompanionAction, CompanionContext } from './types.ts'
 
 const CompanionSheet = defineAsyncComponent(() => import('./CompanionSheet.vue'))
@@ -293,14 +295,24 @@ onMounted(() => {
   window.addEventListener('resize', onResize)
   document.addEventListener('visibilitychange', onVisibility)
   window.addEventListener('jaw:companion-point', onPoint as EventListener)
+  window.addEventListener('jaw:companion-say', onSay as EventListener)
+  const waiting = takeLine()
+  if (waiting) speak(waiting)
   reducedQuery?.addEventListener('change', onReduced)
 })
 onBeforeUnmount(() => {
   clearInterval(timer); clearTimeout(bubbleTimer); stop(); dispose()
   for (const type of ['pointerdown', 'keydown', 'wheel', 'touchstart'] as const) window.removeEventListener(type, noteInput)
   window.removeEventListener('pointermove', onPointerMove); window.removeEventListener('resize', onResize); document.removeEventListener('visibilitychange', onVisibility)
-  window.removeEventListener('jaw:companion-point', onPoint as EventListener); reducedQuery?.removeEventListener('change', onReduced)
+  window.removeEventListener('jaw:companion-point', onPoint as EventListener); window.removeEventListener('jaw:companion-say', onSay as EventListener); reducedQuery?.removeEventListener('change', onReduced)
 })
+/** A line another part of the page asked the companion to say (features/companion/say.ts): the launch bonus's moment. Spoken when it is lively, kept in the chat otherwise. */
+function speak(line: Say): void {
+  heard(line)
+  const nudge: Nudge = { id: `moment:${line.id}`, kind: 'moment', mood: 'celebrate', text: line.text, actions: line.actions ? [...line.actions] : [] }
+  if (effective.value === 'lively') show(nudge); else log('lumo', nudge.text, nudge.actions, false)
+}
+function onSay(event: CustomEvent<Say>): void { if (event.detail?.text) speak(event.detail) }
 function onReduced(): void { reduced.value = reducedQuery?.matches === true }
 function onResize(): void { size.value = window.innerWidth <= 480 ? 92 : 124; stage?.resize(size.value); place() }
 watch(() => [game.mode.value, shell.sheet.value], () => { void nextTick(place) })

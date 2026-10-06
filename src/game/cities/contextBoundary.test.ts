@@ -4,15 +4,16 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { createLife, dispatch, viewLife } from '../../life.ts'
 import { makeContext } from '../util.ts'
-import { loadCityContent, registerCityForTest } from './registry.ts'
+import { isOpenCityId, loadCityContent, registerCityForTest } from './registry.ts'
 import { FICTIONAL_CITY_ID, fictionalCity } from './testing/fictionalCity.test-fixture.ts'
 
-test('shared contexts require a registered city while new-game convenience chooses the declared default', () => {
+test('shared contexts require a registered city while new-game convenience chooses the declared default', async () => {
   assert.throws(() => Reflect.apply(makeContext, null, [{ now: 0 }]), /registered city context/)
   assert.throws(() => makeContext({ now: 0, cityId: 'not-a-city' }), /Unknown city context/)
-  assert.throws(() => makeContext({ now: 0, cityId: 'kaduna' }), /Unknown city context/, 'reserved atlas cities are not life contexts')
+  if (isOpenCityId('kaduna')) { await loadCityContent('kaduna'); assert.equal(makeContext({ now: 0, cityId: 'kaduna' }).cityId, 'kaduna') }
+  else assert.throws(() => makeContext({ now: 0, cityId: 'kaduna' }), /Unknown city context/, 'reserved atlas cities are not life contexts')
   assert.equal(createLife(null).estate.city, 'lagos')
-  assert.equal(createLife({ estate: { city: 'kaduna' } }).estate.city, 'lagos', 'a reserved atlas id is not adopted from a save')
+  if (!isOpenCityId('kaduna')) assert.equal(createLife({ estate: { city: 'kaduna' } }).estate.city, 'lagos', 'a reserved atlas id is not adopted from a save')
 })
 
 test('an established life uses its saved city instead of a stale storage-key context', async () => {

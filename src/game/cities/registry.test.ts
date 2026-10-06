@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { cityContent, cityMap, isCityId, isKnownCityId, isOpenCityId, knownCityIds, linksFrom, loadCityContent, loadCityMap, playableCityIds, registerCityForTest, registeredCityIds } from './registry.ts'
+import { cityCatalogue, cityCatalogueEntry, cityContent, cityMap, isCityId, isKnownCityId, isOpenCityId, knownCityIds, linksFrom, loadCityContent, loadCityMap, playableCityIds, registerCityForTest, registeredCityIds } from './registry.ts'
 import { cityContractTest } from './cityContractTest.test.ts'
 import { lagosCity } from './lagos/index.ts'
 import { fictionalCity, fictionalContent, fictionalLoadCounts, fictionalMap, fictionalNeighbourCity, resetFictionalLoadCounts } from './testing/fictionalCity.test-fixture.ts'
@@ -10,11 +10,12 @@ cityContractTest(lagosCity)
 cityContractTest(fictionalCity, { profile: 'test-fixture' })
 cityContractTest(fictionalNeighbourCity, { profile: 'test-fixture' })
 
-test('test registration is scoped and keeps closed cities closed', async () => {
+test('test registration is scoped and catalogue reservations keep their current status', async () => {
   resetFictionalLoadCounts()
+  const kadunaOpen = cityCatalogueEntry('kaduna')?.open === true
   assert.equal(isKnownCityId('kaduna'), true)
-  assert.equal(isCityId('kaduna'), false)
-  assert.equal(isOpenCityId('kaduna'), false)
+  assert.equal(isCityId('kaduna'), kadunaOpen)
+  assert.equal(isOpenCityId('kaduna'), kadunaOpen)
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
   const neighbourRegistration = registerCityForTest(fictionalNeighbourCity)
   const registration = registerCityForTest(fictionalCity)
@@ -37,10 +38,18 @@ test('test registration is scoped and keeps closed cities closed', async () => {
   assert.throws(() => cityContent('test-fictional'), /has not been loaded/)
 })
 
-test('the catalogue has nine open cities and one closed preview in registry order', () => {
-  assert.deepEqual(knownCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'kaduna', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
-  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
-  assert.deepEqual(playableCityIds(), ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'])
+test('the original nine keep their registry order while additive catalogue cities are open everywhere', () => {
+  const originalRegistered = ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano']
+  const originalPlayable = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']
+  const keepsOrder = (actual: readonly string[], expected: readonly string[]) => expected.every((id, index) => actual.includes(id) && (index === 0 || actual.indexOf(expected[index - 1]!) < actual.indexOf(id)))
+  assert.ok(keepsOrder(knownCityIds(), originalRegistered))
+  assert.ok(keepsOrder(registeredCityIds(), originalRegistered))
+  assert.ok(keepsOrder(playableCityIds(), originalPlayable))
+  assert.ok(knownCityIds().includes('kaduna'))
+  const open = cityCatalogue().filter((city) => city.open).map((city) => city.id)
+  assert.deepEqual(new Set(registeredCityIds()), new Set(open))
+  assert.deepEqual(new Set(playableCityIds()), new Set(open))
+  for (const id of open) assert.ok(isCityId(id) && isOpenCityId(id), id)
 })
 
 test('authored Ibadan content is open and exposes its canonical road and rail links', async () => {

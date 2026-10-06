@@ -13,7 +13,7 @@ import { join } from 'node:path'
 import { fixture } from '../../server/test-fixture.ts'
 import { buildRoutes } from '../../server/routes/index.ts'
 import { buildSocketHandlers } from '../../server/ws/index.ts'
-import { registeredCityIds } from '../game/cities/registry.ts'
+import { cityCatalogue, registeredCityIds } from '../game/cities/registry.ts'
 import { CATEGORIES, STATUSES } from '../../server/support/service.ts'
 import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.ts'
 import {
@@ -92,7 +92,10 @@ test('every registered route is typed, and every typed route is registered', () 
   const keys: string[] = buildRoutes(bareContext()).keys
   assert.deepEqual(sorted(keys), sorted(HTTP_ROUTE_KEYS), 'server/routes/*.ts and HTTP_ROUTE_KEYS (src/types/protocol.ts) list different routes')
   assert.equal(new Set(HTTP_ROUTE_KEYS).size, HTTP_ROUTE_KEYS.length)
-  assert.deepEqual(registeredCityIds(), ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'])
+  const original = ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano']
+  assert.ok(original.every((id, index) => registeredCityIds().includes(id) && (index === 0 || registeredCityIds().indexOf(original[index - 1]!) < registeredCityIds().indexOf(id))), 'the original server city order is preserved')
+  assert.deepEqual(registeredCityIds(), cityCatalogue().filter((city) => city.open).map((city) => city.id))
+  assert.equal(new Set(registeredCityIds()).size, registeredCityIds().length)
 })
 
 test('every frame type the server accepts or sends is typed', async () => {

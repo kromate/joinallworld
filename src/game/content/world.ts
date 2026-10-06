@@ -27,8 +27,6 @@ import type {
 } from '../../types/content.ts';
 
 export { CITY_LINKS, CITY_RULES } from '../cities/registry.ts';
-export { LAGOS_LGAS } from '../cities/lagos/rules.ts';
-import { LAGOS_LGAS } from '../cities/lagos/rules.ts';
 
 export const ESTATE: Readonly<EstateGrid> = Object.freeze({ beta: true, estates: 512, streets: 14, plots: 14 });
 export const PLOTS_PER_ESTATE = ESTATE.streets * ESTATE.plots;

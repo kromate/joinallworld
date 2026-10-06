@@ -42,6 +42,12 @@ export type PlayerAction = (typeof PLAYER_ACTIONS)[number];
 export const DESTRUCTIVE: ReadonlySet<PlayerAction> = new Set<PlayerAction>(['ban', 'signout', 'debit']);
 /** Actions that must give a reason (money and sanctions). */
 export const NEEDS_REASON: ReadonlySet<PlayerAction> = new Set<PlayerAction>(['credit', 'debit', 'mute', 'suspend', 'ban']);
+/** The founder's credits have no configured cap: only this bound, which protects number handling, applies. */
+export const HARD_AMOUNT_MAX = 1_000_000_000_000;
+/** A single credit above this asks for the typed confirmation: a guard against a typo, not a limit. */
+export const CREDIT_CONFIRM_ABOVE = 10_000_000;
+/** Does this parsed action ask for the typed confirmation (a confirmation token from a first request)? */
+export const needsConfirmation = (parsed: Parsed): boolean => DESTRUCTIVE.has(parsed.action) || (parsed.action === 'credit' && Number(parsed.params.amount) > CREDIT_CONFIRM_ABOVE);
 export const MAX_MINUTES = 30 * 24 * 60, MAX_BAN_MINUTES = 365 * 24 * 60, TEXT_MAX = 500, REASON_MAX = 200;
 
 export interface Parsed { action: PlayerAction; reason: string; params: Record<string, string | number> }
@@ -61,7 +67,7 @@ export function parseAction(ctx: RouteContext, action: unknown, body: Record<str
   if (NEEDS_REASON.has(name) && reason.length < 3) throw bad(ctx, 'reason_required');
   const params: Parsed['params'] = {};
   switch (name) {
-    case 'credit': case 'debit': params.amount = whole(body.amount, 1, limitsOf(ctx).maxAmount, 'invalid_amount'); break;
+    case 'credit': case 'debit': params.amount = whole(body.amount, 1, HARD_AMOUNT_MAX, 'invalid_amount'); if (name === 'credit' && body.restricted === true) params.restricted = 1; break;
     case 'need': { const need = String(body.need); if (!NEEDS.some((item) => item === need)) throw bad(ctx, 'invalid_need'); params.need = need; params.value = whole(body.value, 0, 100, 'invalid_value'); break; }
     case 'teleport': if (body.to !== 'arrival' && body.to !== 'home') throw bad(ctx, 'invalid_place'); params.to = body.to; break;
     case 'rename': params.name = validateName(body.name); break;
@@ -116,17 +122,21 @@ export function actionsService(ctx: RouteContext) {
 
   function money(db: Db, admin: Admin, target: SessionRecord, parsed: Parsed, effects: Effects): ActionResult {
     const city = lifeCity(ctx, target), limits = limitsOf(ctx), amount = Number(parsed.params.amount), credit = parsed.action === 'credit';
-    if (amount > limits.maxAmount) throw refuse(409, 'over_action_limit', `One credit or debit may move at most ${naira(limits.maxAmount)}.`);
-    const toTarget = movedToday(ctx, db, { target: target.publicId }), byAdmin = movedToday(ctx, db, { admin: admin.accountId });
-    if (toTarget + amount > limits.perTargetDay) throw refuse(409, 'over_target_day_limit', `Admins may move at most ${naira(limits.perTargetDay)} on one player per day; ${naira(toTarget)} has moved today.`);
-    if (byAdmin + amount > limits.perAdminDay) throw refuse(409, 'over_admin_day_limit', `You may move at most ${naira(limits.perAdminDay)} a day; you have moved ${naira(byAdmin)} today.`);
+    // The founder (the root admin) has no configured cap on money; other admins keep the three caps.
+    if (!admin.root) {
+      if (amount > limits.maxAmount) throw refuse(409, 'over_action_limit', `One credit or debit may move at most ${naira(limits.maxAmount)}.`);
+      const toTarget = movedToday(ctx, db, { target: target.publicId }), byAdmin = movedToday(ctx, db, { admin: admin.accountId });
+      if (toTarget + amount > limits.perTargetDay) throw refuse(409, 'over_target_day_limit', `Admins may move at most ${naira(limits.perTargetDay)} on one player per day; ${naira(toTarget)} has moved today.`);
+      if (byAdmin + amount > limits.perAdminDay) throw refuse(409, 'over_admin_day_limit', `You may move at most ${naira(limits.perAdminDay)} a day; you have moved ${naira(byAdmin)} today.`);
+    }
+    const restricted = parsed.params.restricted === 1;
     const life: LifeState = ctx.settle(target, city), before = life.cash;
-    const outcome = ctx.act(life, { type: 'wallet.admin', payload: { op: parsed.action as 'credit' | 'debit', amount, reason: parsed.reason }, cityId: city });
+    const outcome = ctx.act(life, { type: 'wallet.admin', payload: { op: parsed.action as 'credit' | 'debit', amount, reason: parsed.reason, ...(credit && !restricted ? { unrestricted: true } : {}) }, cityId: city });
     if (!outcome.ok) throw refuse(409, outcome.code, outcome.code === 'balance_limit' ? 'That would pass the largest balance a life can hold.' : 'The balance could not be changed.');
     const after = life.cash, applied = Math.abs(after - before), clamped = !credit && applied < amount;
-    const summary = `${credit ? 'Credit' : 'Debit'} ${naira(applied)}${clamped ? ` (asked ${naira(amount)}; the balance held less)` : ''}: cash ${naira(before)} → ${naira(after)}`;
+    const summary = `${credit ? 'Credit' : 'Debit'} ${naira(applied)}${credit ? (restricted ? ' (restricted: cannot be gifted)' : ' (unrestricted: can be gifted and spent freely)') : ''}${clamped ? ` (asked ${naira(amount)}; the balance held less)` : ''}: cash ${naira(before)} → ${naira(after)}`;
     const line = record(db, admin, { action: parsed.action, target: target.publicId, targetName: target.name, params: parsed.params, summary, reason: parsed.reason, amount: credit ? applied : -applied });
-    tell(db, effects, target.publicId, credit ? `An admin added ${naira(applied)} to your cash: ${parsed.reason}.` : `An admin took ${naira(applied)} from your cash: ${parsed.reason}.`);
+    tell(db, effects, target.publicId, credit ? `An admin added ${naira(applied)} to your cash: ${parsed.reason}.${restricted ? '' : ' You can spend it or give it to friends freely.'}` : `An admin took ${naira(applied)} from your cash: ${parsed.reason}.`);
     effects.lifeChanged = true;
     return { ok: true, code: credit ? 'credited' : 'debited', summary, before, after, applied, clamped, line };
   }

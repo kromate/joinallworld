@@ -1,8 +1,10 @@
 // The travel card of the atlas: the ways to a city as one button each, cheapest first, with the price and the seconds.
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { loadCityLinks } from '../../game/cities/registry.ts'
+await loadCityLinks()
 import { regionInfo } from './info.ts'
-import { TRAVEL_CONFIRM_SHARE, needsConfirm, travelWays } from './travel-card.ts'
+import { TRAVEL_CONFIRM_SHARE, debtHtml, needsConfirm, travelWays } from './travel-card.ts'
 
 const mine = (to: string, blocked: Record<string, string | null> = {}) => ['road', 'rail', 'air'].map((mode) => ({ to, mode, blocked: blocked[mode] ?? null, skipFree: true }))
 const routesTo = (state: string, city: string, blocked: Record<string, string | null> = {}) => regionInfo({ kind: 'state', id: state }, { cityId: city, feature: { name: state }, current: 'lagos', routes: mine(city, blocked) }).routes
@@ -49,3 +51,16 @@ test('the card never shows more than three buttons, and never two of one mode', 
   assert.ok(ways.length <= 3)
   assert.equal(new Set(ways.map((way) => way.mode)).size, ways.length)
 })
+
+test('a ride debt on the travel card: one pay button when cash covers what is still owed, otherwise the whole sentence and the way to the help card', () => {
+  const plain = (html: string) => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const rich = debtHtml(12000, 288200);
+  assert.match(rich, /data-atlas-repay>Pay ₦12,000 now</);
+  assert.ok(!rich.includes('data-atlas-help'));
+  const poor = debtHtml(12000, 3000);
+  assert.ok(plain(poor).startsWith('You still owe ₦12,000 for your ride home and have ₦3,000. Half of each earning repays it.'));
+  assert.match(poor, /data-atlas-help>What you can do now</);
+  assert.ok(!poor.includes('data-atlas-repay'));
+  assert.match(debtHtml(4500, 288200), /Pay ₦4,500 now/, 'the remaining amount, not the fare');
+  assert.equal(debtHtml(0, 288200), '', 'nothing owed: nothing shown');
+});

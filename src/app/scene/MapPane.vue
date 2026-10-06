@@ -95,6 +95,10 @@ function load(): Promise<void> {
       // Each route also says what arriving at once would add to its fare ('travel.skip'): free for a character that has never skipped.
       routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links?.map((link) => ({ ...link, skipFree: game.state.value.travel.skipped !== true })) ?? null,
       wallet: () => game.state.value.cash,
+      // A ride home on credit blocks every trip: the card pays it in place (the existing repayment action) or sends a player who cannot to the help card.
+      debt: () => game.view.value.estate?.ride.debt ?? 0,
+      onRepay: () => command('travel.repay-ride', {}),
+      onHelp: () => { shell.open('bank') },
       held: heldCities,
       // A row of the friends list: Chat opens the conversation; Call and Ping are the card's own buttons, pressed from here.
       onFriend: (action, id, name) => { void friendAction(action, id, name) },

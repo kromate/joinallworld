@@ -34,11 +34,11 @@ import { LAGOS_LOCAL_UNIT_DESCRIPTIONS } from '../../game/cities/lagos/descripti
  * Eko Atlantic).
  */
 
-import { LAGOS_LGAS } from '../../game/content/world.ts';
+import { LAGOS_LGAS } from '../../game/cities/lagos/localUnits.ts';
 import { ORIGINS, toLocal } from '../geo/frame.ts';
 import { lagosShapes } from '../geo/lagos-shapes.ts';
 import { mapContext } from '../context.ts';
-import { citiesInState } from '../../game/cities/registry.ts';
+import { catalogueCitiesInState } from '../../game/cities/registry.ts';
 import type { LonLatPolygon } from '../geo/lagos-shapes.ts';
 import type { Box4, CityPack, DecorateBatch, PackBounds, PackDistrict, PackEstate, PackFabric, PackHome, PackLand, PackLga, PackRoad, PackSite, PackSoon, Point2, Rect } from '../types.ts';
 
@@ -301,7 +301,7 @@ const TINTS: Record<string, string> = {
   surulere: '#e8a0c0', apapa: '#b8c4d2', 'ajeromi-ifelodun': '#f2c48a', 'amuwo-odofin': '#a6d8b0', ojo: '#d8b0e0', badagry: '#8fd0d8', 'lagos-island': '#f0d08a', 'eti-osa': '#9ad0a8', 'ibeju-lekki': '#e8b8a0', epe: '#b0c8f0',
 };
 /**
- * THE LOCAL GOVERNMENTS, as geometry. Ids, names, prices and character lines are in src/game/content/world.ts (LAGOS_LGAS)
+ * THE LOCAL GOVERNMENTS, as geometry. Ids, names and prices are in src/game/cities/lagos/localUnits.ts (LAGOS_LGAS)
  * and are merged in below; a test asserts the two lists match.
  *   polygons  every part of the real boundary, [outer ring, ...holes], in map units; `polygon` is the largest part
  *   plate     where its name plate stands [x, z]
@@ -430,7 +430,7 @@ export function decorate(batch: DecorateBatch, { rng }: { rng: () => number }) {
 }
 
 /** The land around the state (Ogun, Oyo, Ondo, Benin, Togo), flat and quiet; Ogun answers a tap with "Opening soon" because the registry has a reserved city in it. */
-export const context = mapContext(ORIGINS.lagos, fit, ['ogun', 'oyo', 'ondo'].filter((state) => citiesInState(state).length > 0));
+export const context = mapContext(ORIGINS.lagos, fit, ['ogun', 'oyo', 'ondo'].filter((state) => catalogueCitiesInState(state).length > 0));
 
 const pack: CityPack = { id, name, bounds, context, land, roads, sites, homes, soon, districts, zones, fabric, estates, lgas, geo, frame, core, roadScale, decorate };
 export default pack;

@@ -9,4 +9,5 @@ export const lagosCity = Object.freeze({
   loadMap: async () => (await import('./map.ts')).LAGOS_MAP,
 } satisfies CityModule<'lagos', 'lagos', LagosLocalGovernmentId, LagosDistrictId, LagosHubId>)
 
-export { LAGOS_LGAS, LAGOS_MAP_ORIGIN, LAGOS_RULES } from './rules.ts'
+export { LAGOS_MAP_ORIGIN, LAGOS_RULES } from './rules.ts'
+export { LAGOS_LGAS } from './localUnits.ts'

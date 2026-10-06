@@ -179,6 +179,8 @@ function boundAccount(db: Db, cookie: string | undefined, now: number): { accoun
   const account = own(db.accounts, device.account);
   return account ? { account, device, cookie } : undefined;
 }
+/** The account a device binding is signed in to (no cookie, no token): for the features that pay or tell an account's owner. */
+export function accountOfBinding(db: Db, binding: string | undefined, now: number): AccountRecord | undefined { return boundAccount(db, binding, now)?.account; }
 function requireAccount(db: Db, deps: AccountDeps, caller: Caller) {
   const bound = boundAccount(db, caller.binding, deps.now());
   if (!bound) throw deps.fail(409, 'account_required');
@@ -463,7 +465,7 @@ export const WELCOME_TRIES = 5;
  * once at a time: two requests (or a request and the retry tick) can never both send it. Returns what the message
  * needs, or null when there is nothing to send (not owed, already claimed, already sent, not due yet).
  */
-export function claimWelcome(db: Db, deps: AccountDeps, id: string): { email: string; name: string } | null {
+export function claimWelcome(db: Db, deps: AccountDeps, id: string): { email: string; name: string; bonus?: { amount: number; paid: boolean } } | null {
   const log = db.accountLog, account = own(db.accounts, id), now = deps.now();
   const entry = log?.welcome?.find(item => item.id === id);
   if (!log || !entry) return null;
@@ -471,7 +473,7 @@ export function claimWelcome(db: Db, deps: AccountDeps, id: string): { email: st
   if (entry.claimedAt !== undefined || entry.nextAt > now) return null;
   entry.claimedAt = now;
   const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
-  return { email: account.email, name: record && record.account === id ? record.name : '' };
+  return { email: account.email, name: record && record.account === id ? record.name : '', ...(account.bonus && account.bonus.amount > 0 ? { bonus: { amount: account.bonus.amount, paid: account.bonus.held === undefined } } : {}) };
 }
 /** Record what became of a claimed attempt: sent (never again), failed for good, or to be tried again later. A message on its one last attempt (`last`) is never tried again. */
 export function settleWelcome(db: Db, deps: AccountDeps, id: string, result: { ok: boolean; retry: boolean; counted?: boolean }): void {

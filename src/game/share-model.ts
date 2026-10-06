@@ -36,10 +36,23 @@ export function cleanFacts(input: unknown): ShareFacts {
     tableId: typeof facts.tableId === 'string' && /^[a-z0-9-]{1,40}$/.test(facts.tableId) ? facts.tableId : '' };
 }
 
+/** The launch offer as GET /api/world/bonus tells it (server/bonus/service.ts). */
+export interface ShareOffer { on: boolean; amount: number; places: number }
+/** "The first 10,000 players get ₦1,000,000 in the game" while the offer is open, else ''. In-game naira, said so. */
+export function offerSentence(offer: ShareOffer | null | undefined): string {
+  if (!offer || offer.on !== true || !(offer.amount > 0) || !(offer.places > 0)) return '';
+  return `The first ${offer.places.toLocaleString('en-NG')} players get ₦${offer.amount.toLocaleString('en-NG')} in the game`;
+}
+
 /**
  * Title and description for the link preview (Open Graph). Plain text; the page escapes it.
+ * While the launch offer is open its one sentence ends the description.
  */
-export function sharePreview(facts: unknown): { title: string; description: string } {
+export function sharePreview(facts: unknown, offer?: ShareOffer | null): { title: string; description: string } {
+  const made = previewOf(facts), line = offerSentence(offer);
+  return line ? { title: made.title, description: `${made.description} ${line}.` } : made;
+}
+function previewOf(facts: unknown): { title: string; description: string } {
   const f = cleanFacts(facts), place = f.district ? `${f.district}, ${f.city}` : f.city;
   switch (f.kind) {
     case 'house': return { title: `Come to ${f.name}’s house in ${place}`, description: `Knock at the door in ${BRAND}. No sign-up: pick a name and walk in.` };
@@ -57,7 +70,7 @@ const SQUARE = { on: '🟩', off: '⬜' };
  * The text that leaves the game. The link is always the last line on its own, so it can be removed.
  * `facts` is a ShareFacts record (cleaned here again); `link` is the absolute URL of the share page.
  */
-export function shareText(facts: unknown, link = ''): string {
+export function shareText(facts: unknown, link = '', offer?: ShareOffer | null): string {
   const f = cleanFacts(facts), lines: string[] = [];
   if (f.kind === 'missions') {
     const total = f.total || 3;
@@ -69,6 +82,8 @@ export function shareText(facts: unknown, link = ''): string {
   else if (f.kind === 'house') lines.push(`Come to my house in ${f.district || f.city} 🏠`, `Knock in ${BRAND}. No sign-up.`);
   else if (f.kind === 'event') lines.push(`${f.event} · ${f.venue}`, `I am going. Meet me there in ${BRAND}.`);
   else lines.push(`I live in ${BRAND} now: a world of real cities. Find me in ${f.district || f.city}.`, 'Make your character and come through. No sign-up.');
+  const line = offerSentence(offer);
+  if (line) lines.push(line);
   if (link) lines.push(link);
   return lines.join('\n');
 }

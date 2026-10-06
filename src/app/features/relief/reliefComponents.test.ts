@@ -132,9 +132,16 @@ test('the wallet: what is owed in plain words, a way to pay, and the card opened
   })
   await visitor(500, async () => {
     const words = text(await render('/src/app/features/relief/ReliefLink.vue'))
-    assert.ok(words.includes('You owe ₦12,000 for your ride home.'))
-    assert.ok(words.includes('Pay what I can'))
+    assert.ok(words.includes('You still owe ₦12,000 for your ride home and have ₦500. Half of each earning repays it.'), 'the whole sentence, with what is still owed')
+    assert.ok(!words.includes('Pay ₦12,000 now'), 'no pay button when cash does not cover it')
   }, 12000)
+  await visitor(14000, async () => {
+    const html = await render('/src/app/features/relief/ReliefLink.vue')
+    assert.ok(text(html).includes('You owe ₦12,000 for your ride home.'))
+    assert.match(html, /data-debt-button[^>]*>Pay ₦12,000 now</)
+  }, 12000)
+  // A partly repaid debt shows what is left, not the fare.
+  await visitor(14000, async () => { assert.match(text(await render('/src/app/features/relief/ReliefLink.vue')), /Pay ₦4,500 now/) }, 4500)
   // Nothing owed and nothing short: the wallet shows nothing extra.
   await visitor(30000, async () => { assert.equal(text(await render('/src/app/features/relief/ReliefLink.vue')), '') })
 })
@@ -178,4 +185,13 @@ test('the nearest cure: the hospital of the city, its free way always, and the d
     assert.equal(cure?.venue, 'ph-clinic')
     assert.deepEqual([cure?.free?.def.id, cure?.free?.spot, cure?.paid?.def.id, cure?.paidCost], ['hospital-free', 'ward', 'hospital-doctor', 1500])
   })
+})
+
+test('the visitor sheet carries the pay button for a debt, twice where a home is blocked, and none without one', async () => {
+  await visitor(40000, async () => {
+    const html = await render('/src/app/features/travel/VisitorHome.vue')
+    assert.equal((html.match(/data-debt-button/g) ?? []).length, 2)
+    assert.ok(text(html).includes('Pay ₦12,000 now'))
+  }, 12000)
+  await visitor(40000, async () => { assert.ok(!(await render('/src/app/features/travel/VisitorHome.vue')).includes('data-debt-pay')) })
 })

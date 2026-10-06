@@ -91,7 +91,7 @@ import * as social from './venues-social.ts';
 import * as work from './venues-work.ts';
 import * as civic from './venues-civic.ts';
 import * as transport from './venues-transport.ts';
-import { CITY_KINDS, citySceneDef, cityScenesReady } from './city-scenes.ts';
+import { CITY_KINDS, citySceneDef, cityScenesReady, parametricSceneAdapter } from './city-scenes.ts';
 
 export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
@@ -310,6 +310,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const materials: SkyMaterials = shared.materials;
   if (!materials.sky) materials.sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, depthWrite: false, fog: false });
   const options: SceneOptions = venue?.scene && typeof venue.scene === 'object' ? venue.scene : {};
+  const parametric = options.design ? parametricSceneAdapter() : null;
+  if (options.design && !parametric) throw new Error('Parametric venue scenes have not been loaded');
   // A venue may ask for a variant that is a scene of its own city (venues-ibadan-b.ts); the kind's walkable description then yields to the variant's.
   // A kind neither shared nor this city's is the generic plaza.
   const variantKey = typeof options.variant === 'string' ? options.variant : defaultVariant ?? '';
@@ -322,7 +324,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const context: SceneContext = {
     kind, venue, spots,
     variant: typeof options.variant === 'string' ? options.variant : defaultVariant || null,
-    accent: typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a',
+    accent: options.design?.palette.accent ?? (typeof options.palette === 'string' && /^#[0-9a-f]{6}$/i.test(options.palette) ? options.palette : def.accent || '#e0a43a'),
     label: String(venue?.label || kind),
     cityId,
   };
@@ -359,7 +361,9 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   function drawStatic() {
     const recorder = footprintRecorder(createBatch(THREE));
     const batch = recorder.batch;
-    layout = (def.build(batch, context) || {}) as SceneLayout;
+    const neutralWorship = options.design && wanted === 'worship' && !options.variant;
+    layout = ((neutralWorship && parametric ? parametric.buildQuietParametricWorship(batch, context) : def.build(batch, context)) || {}) as SceneLayout;
+    if (options.design && parametric) parametric.decorateParametricVenue({ batch, context, layout, footprints: recorder.shapes(), indoor: mood !== 'outdoor' });
     footprints = recorder.shapes();
     layout.spots ||= [];
     layout.crowd ||= [];

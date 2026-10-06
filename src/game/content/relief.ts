@@ -6,7 +6,8 @@
  *
  *   RIDE HOME ON CREDIT   a visitor who cannot pay the cheapest fare to the main home is advanced that fare. It is a debt on the
  *                         life (state.travel.rideDebt), repaid from earnings: `share` of every wage, gig, stall collection
- *                         and gift received goes to it until it is cleared. One debt at a time, only to the main home.
+ *                         and gift received goes to it until it is cleared; and a life that holds the whole debt plus `cushion` has it
+ *                         cleared from cash at once. One debt at a time, only to the main home.
  *   ODD JOBS              short paid work at the public place a city opens to a newcomer, any hour, with no minimum needs. A floor,
  *                         not a career: a small pay, a break between jobs, only while the player is short of money (`cashBelow`),
  *                         and each one counts as one of the day's paid gigs (the daily gig limit).
@@ -15,7 +16,8 @@
  */
 import type { ActivityDefinition } from '../../types/content.ts';
 
-export const RIDE_CREDIT = { share: 0.5, max: 1_000_000 };
+/** `cushion`: a life whose cash covers the whole debt AND this much more has the debt cleared from cash, whatever the money came from. */
+export const RIDE_CREDIT = { share: 0.5, max: 1_000_000, cushion: 5000 };
 /** Open at every hour: a newcomer who arrives at night still has somewhere to turn. */
 const ALWAYS = { open: 0, close: 24 };
 export const ODD_JOBS: ActivityDefinition = { id: 'relief-odd-jobs', label: 'Odd jobs: carrying and sweeping', icon: '🧹', duration: 12, reward: 350, cooldown: 4 * 3600, hours: ALWAYS, effects: { energy: -3, hunger: -2 } };

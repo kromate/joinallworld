@@ -8,7 +8,7 @@ import { createLife, dispatch, viewLife } from '../life.ts';
 import { makeContext } from './util.ts';
 import { lagosDayStart, lagosTime } from './clock.ts';
 import { cityContent, isOpenCityId } from './cities/registry.ts';
-import { BUSINESS, BUSINESS_PRODUCTS, BUSINESS_TYPES, BUSINESS_TYPE_IDS, BUSINESS_UPGRADES, BUSINESS_VENUES, LOCAL_PLATES } from './content/business.ts';
+import { BUSINESS, BUSINESS_PRODUCTS, BUSINESS_TYPES, BUSINESS_TYPE_IDS, BUSINESS_UPGRADES, BUSINESS_VENUES } from './content/business.ts';
 import { BAG_LIMIT, BUSINESS_BUYING, SALES_COUNTED_PER_COLLECT } from './content/business-limits.ts';
 import { TRANSFER_LIMITS } from './content/npcs.ts';
 import { AD_COLOURS } from './content/civic.ts';
@@ -83,7 +83,7 @@ test('every open city rents stalls at a market, and every market the table names
       assert.ok(market.stalls >= 1 && market.footfall > 0.5 && market.footfall < 1.5 && market.hours.close > market.hours.open);
       assert.equal(cityContent(city).venues.find((venue) => venue.id === market.venue)?.kind, 'market');
     }
-    assert.ok(LOCAL_PLATES[city], `${city} has a plate of its own`);
+    assert.notEqual(productLabel({ id: 'local-plate', label: 'Plate of the day' }, city), 'Plate of the day', `${city} has a plate of its own`);
   }
   for (const key of Object.keys(BUSINESS_VENUES)) { const [city, venue] = key.split(':'); assert.ok(businessVenue(city, venue), `${key} is a market of an open city`); }
   assert.equal(businessVenue('lagos', 'park'), null, 'a park rents no stalls');

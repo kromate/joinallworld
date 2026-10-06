@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { PLAYER_ACTIONS, actionDef, auditCsv, bodyOf, formWhy, relative, naira, uptime } from './adminModel.ts'
+import { PLAYER_ACTIONS, actionDef, auditCsv, bodyOf, formWhy, typedWord, relative, naira, uptime } from './adminModel.ts'
 
 test('every destructive action asks for a typed word, and a reason is required for money and sanctions', () => {
   for (const def of PLAYER_ACTIONS.filter((item) => item.danger)) assert.ok(def.typed, def.id)
@@ -12,10 +12,14 @@ test('a form is sendable only when its fields, reason and typed word are right',
   assert.match(formWhy(credit, { amount: 1.5 }, 'x', '') ?? '', /whole number/)
   assert.match(formWhy(credit, { amount: 100 }, 'ab', '') ?? '', /reason/)
   assert.equal(formWhy(credit, { amount: 100 }, 'launch bonus', ''), null)
+  assert.equal(bodyOf(credit, { amount: 5000, restricted: 'yes' }, 'x').restricted, true, 'the checkbox: restricted, cannot be gifted')
+  assert.equal(typedWord(credit, { amount: 10_000_000 }), '', 'at the guard, not over it')
+  assert.equal(typedWord(credit, { amount: 10_000_001 }), 'CREDIT')
+  assert.match(formWhy(credit, { amount: 20_000_000 }, 'a big one', '') ?? '', /Type CREDIT/)
   const ban = actionDef('ban')!
   assert.match(formWhy(ban, { minutes: 0 }, 'abuse', 'ban?') ?? '', /Type BAN/)
   assert.equal(formWhy(ban, { minutes: 0 }, 'abuse', 'ban'), null)
-  assert.deepEqual(bodyOf(credit, { amount: '5000' }, ' launch '), { action: 'credit', amount: 5000, reason: 'launch' })
+  assert.deepEqual(bodyOf(credit, { amount: '5000' }, ' launch '), { action: 'credit', amount: 5000, restricted: false, reason: 'launch' })
 })
 test('money and time are worded plainly', () => {
   assert.equal(naira(5000), '₦5,000')

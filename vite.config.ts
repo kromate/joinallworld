@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { mkdirSync, readdirSync, renameSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, renameSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import type { Plugin } from 'vite';
 
@@ -73,9 +73,46 @@ function leaveOutProvenance(): Plugin {
   };
 }
 
+/**
+ * The checked-in loader table uses literal dynamic imports so Node and the Worker bundler can resolve it. In the browser build,
+ * emit those same entry modules as Rollup chunks and keep only compact [URL, export] rows plus one shared importer in startup.
+ */
+function lazyCityLoaders(): Plugin {
+  const emitted = new Set<string>();
+  return {
+    name: 'allworld:lazy-city-loaders',
+    apply: 'build',
+    enforce: 'pre',
+    async transform(code, id) {
+      if (!/\/src\/game\/cities\/loaders\.generated\.ts$/.test(id)) return null;
+      const declarations = [...code.matchAll(/async\(\)=>\(await import\(("[^"]+")\)\)\.([A-Za-z_$][\w$]*),/g)];
+      const declaredCount = [...code.matchAll(/async\(\)=>/g)].length;
+      if (!declarations.length || declarations.length !== declaredCount) throw new Error(`Expected ${declaredCount} generated city loaders, parsed ${declarations.length}`);
+      const stringLiteral = (literal: string | undefined, label: string): string => { const value: unknown = JSON.parse(literal ?? 'null'); if (typeof value !== 'string') throw new Error(`${label} is not a string`); return value; };
+      const catalogueIds = [...readFileSync(id.replace(/loaders\.generated\.ts$/, 'catalogue.generated.ts'), 'utf8').matchAll(/^  \["([^"]+)"/gm)].flatMap((match) => typeof match[1] === 'string' ? [match[1]] : []);
+      const loaderIds = declarations.map((match) => stringLiteral(match[1], 'Generated city loader path').replace(/^\.\//, '').replace(/\/index\.ts$/, ''));
+      if (JSON.stringify(loaderIds) !== JSON.stringify(catalogueIds)) throw new Error('Generated city catalogue and browser loader rows differ');
+      const rows: string[] = [];
+      for (let index = 0; index < declarations.length; index += 1) {
+        const match = declarations[index]!, specifier = stringLiteral(match[1], 'Generated city loader path'), exportName = match[2]!;
+        const resolved = await this.resolve(specifier, id, { skipSelf: true });
+        if (!resolved) throw new Error(`Could not resolve generated city loader ${specifier}`);
+        const referenceId = this.emitFile({ type: 'chunk', id: resolved.id, name: `city-${catalogueIds[index]}-rules`, preserveSignature: 'strict' });
+        emitted.add(referenceId);
+        rows.push(`[import.meta.ROLLUP_FILE_URL_${referenceId},${JSON.stringify(exportName)}]`);
+      }
+      return { code: `import type { CityModule } from '../../types/content.ts'\nimport type { CityModuleLoader } from './catalogue.ts'\nconst rows = [${rows.join(',')}] as const\nconst load = ([path,name]: readonly [string,string]): Promise<CityModule> => import(/* @vite-ignore */ path).then((namespace: Record<string, CityModule>) => { const city = namespace[name]; if (!city) throw new Error('City module export is missing'); return city })\nexport const GENERATED_CITY_LOADERS: readonly CityModuleLoader[] = Object.freeze(rows.map((row) => async() => load(row)))\n`, map: null };
+    },
+    resolveFileUrl({ referenceId, relativePath }) {
+      if (!emitted.has(referenceId)) return null;
+      return JSON.stringify(relativePath.startsWith('.') ? relativePath : `./${relativePath}`);
+    },
+  };
+}
+
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
-  plugins: [browserSystems(), leaveOutProvenance(), vue(), ...(wantMaps ? [moveMaps()] : [])],
+  plugins: [browserSystems(), leaveOutProvenance(), lazyCityLoaders(), vue(), ...(wantMaps ? [moveMaps()] : [])],
   // Every shipped component uses Composition API; omit the unused Options API runtime.
   define: { __VUE_OPTIONS_API__: false },
   server: {
@@ -96,21 +133,28 @@ export default defineConfig({
   //   engine  the rules (src/game, src/life.ts, the campus rules): the shell builds and reads every life through them, so it is
   //           part of the first load, but it changes far less often than the shell.
   // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
-  build: { chunkSizeWarningLimit: 800, sourcemap: wantMaps ? 'hidden' : false, rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
+  build: {
+    chunkSizeWarningLimit: 800,
+    sourcemap: wantMaps ? 'hidden' : false,
+    rollupOptions: { input: { app: 'index.html' }, output: { onlyExplicitManualChunks: true, manualChunks(id) {
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
-    if (city?.[1] === 'lagos' && city[2] === 'content') return 'engine'
     if (city) return `city-${city[1]}-${city[2]}`
+    if (/\/src\/game\/cities\/(?:routes\.generated|links)\.ts$/.test(id) || /\/src\/game\/cities\/[^/]+\/links\.ts$/.test(id)) return 'city-routes'
+    if (/\/src\/game\/cities\/spec\.ts$/.test(id)) return 'city-spec'
+    if (/\/src\/game\/cities\/contentBuilder\.ts$/.test(id)) return 'city-content-builder'
     if (/\/src\/game\/cities\/ogun\/(contentBuilder)\.ts$/.test(id)) return 'city-ogun-content'
     if (/\/src\/game\/cities\/ogun\/(character|scene)\.ts$/.test(id)) return 'city-ogun-map'
     if (/\/src\/game\/cities\/ogun\/mapOverview\.ts$/.test(id)) return 'city-ogun-map'
     // A city's local-unit wording, and the table of its venues' own scenes, are read by its content only.
     const wording = id.match(/\/src\/game\/cities\/([^/]+)\/(?:descriptions|scenes)\.ts$/)
-    if (wording) return wording[1] === 'lagos' ? 'engine' : `city-${wording[1]}-content`
+    if (wording) return `city-${wording[1]}-content`
     // Of a city's folder the engine reads only the rules, the registry entry and the links. Every other file (roads, water, landmarks,
     // rail, the map's character) is fetched with that city's map, so it must never fall through to the `engine` rule below.
-    // The default city is the exception: all of its content is part of the engine.
     const part = id.match(/\/src\/game\/cities\/([^/]+)\/([\w-]+)\.ts$/)
-    if (part && part[1] !== 'lagos' && !/^(rules|index|links)$/.test(part[2] as string)) return `city-${part[1]}-${part[2]}`
+    if (part) {
+      if (/^(rules|index|links|localUnits)$/.test(part[2] as string)) return undefined
+      return `city-${part[1]}-${part[2]}`
+    }
     // A city's own scenes are fetched when a venue of that city is shown (src/scene/city-scenes.ts): one chunk per city — Ogun's four
     // cities share two, the signature scenes and the everyday ones. What several cities' scenes draw with (venues-common.ts) is left to the bundler: a small chunk of its own.
     const scenes = id.match(/\/src\/scene\/venues-(ibadan|ogun|rivers|fct|kano)(?:-([ab]))?\.ts$/)
@@ -134,5 +178,6 @@ export default defineConfig({
     // The campus discovery trail is read by the campus rules and the Campus app.
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
-  } } } },
+    } } },
+  },
 });

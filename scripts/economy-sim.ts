@@ -114,6 +114,8 @@ export function categoryOf(line: LedgerLine): string {
   if (reason === 'Daily gem hunt prize') return 'hunt';
   if (reason.startsWith('Mission: ')) return 'missions';
   if (reason.startsWith('Table win: ')) return 'tables';
+  // A faucet of its own: the server's launch bonus (server/bonus), paid to an account's character once.
+  if (reason.startsWith('Launch bonus')) return 'bonus';
   if (reason.startsWith('Welcome gift') || reason.startsWith('Referral reward')) return 'referral';
   if (reason.startsWith('Sprayed at ')) return 'leisure';
   if (reason.startsWith('Fixed deposit')) return 'savings';

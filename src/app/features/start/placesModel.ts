@@ -2,7 +2,7 @@
 // tree, so a new place is a new entry here and nothing else: a city is open when the rules say it
 // is (CITY_RULES), and its local governments come from the life's view (estate.lgas), which is
 // what the server validates. Places that are not open yet are listed as coming, never as dead controls.
-import { cityRules, knownCityIds } from '../../../game/cities/registry.ts'
+import { cityCatalogue, cityCatalogueEntry, cityRules, isOpenCityId } from '../../../game/cities/registry.ts'
 import type { LgaCard } from '../../../types/view.ts'
 
 export interface CityPlace { id: string; name: string }
@@ -17,18 +17,18 @@ export interface CountryPlace { id: string; name: string; states: readonly State
 export function placesFrom(cityIds: readonly string[]): readonly CountryPlace[] {
   const states = new Map<string, { id: string; name: string; cities: CityPlace[] }>()
   for (const id of cityIds) {
-    const rules = cityRules(id)
-    if (!rules || id.startsWith('test-')) continue
-    const state = states.get(rules.state.id) ?? { id: rules.state.id, name: rules.state.name, cities: [] }
-    state.cities.push({ id: rules.id, name: rules.name })
+    const city = cityCatalogueEntry(id)
+    if (!city || id.startsWith('test-')) continue
+    const state = states.get(city.state.id) ?? { id: city.state.id, name: city.state.name, cities: [] }
+    state.cities.push({ id: city.id, name: city.name })
     states.set(state.id, state)
   }
   return [{ id: 'nigeria', name: 'Nigeria', states: [...states.values()] }]
 }
-export const PLACES: readonly CountryPlace[] = placesFrom(knownCityIds())
+export const PLACES: readonly CountryPlace[] = placesFrom(cityCatalogue().map((city) => city.id))
 
 /** Whether lives can be lived in this city today. */
-export const cityOpen = (cityId: string): boolean => cityRules(cityId)?.status === 'open'
+export const cityOpen = (cityId: string): boolean => isOpenCityId(cityId)
 /** A state is open when any of its cities is. */
 export const stateOpen = (state: StatePlace): boolean => state.cities.some((city) => cityOpen(city.id))
 /** What the city calls the districts a player chooses between ('local government', 'district'). */

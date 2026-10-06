@@ -8,7 +8,7 @@
  * The card is drawn once per share, on demand, from the game's own colours and the page's font.
  * No image is downloaded for it and no loop runs.
  */
-import { shareCard, shareText, whatsappUrl, xUrl, type ShareCard } from '../game/share-model.ts';
+import { shareCard, shareText, whatsappUrl, xUrl, type ShareCard, type ShareOffer } from '../game/share-model.ts';
 
 /** What prepareShare produces. */
 export interface PreparedShare { text: string; link: string; file: File | null; url: string | null; whatsapp: string; x: string }
@@ -105,14 +105,24 @@ const toBlob = (canvas: HTMLCanvasElement) => new Promise<Blob | null>((resolve)
  * Everything a share needs, prepared once: the text, the link and the picture.
  * `facts` is the server's facts for this share; `link` the absolute URL of the share page.
  */
-export async function prepareShare(facts: unknown, link: string, doc: Document = globalThis.document): Promise<PreparedShare> {
-  const text = shareText(facts, link);
+export async function prepareShare(facts: unknown, link: string, doc: Document = globalThis.document, offer?: ShareOffer | null): Promise<PreparedShare> {
+  const text = shareText(facts, link, offer === undefined ? await readOffer() : offer);
   let file: File | null = null, url: string | null = null;
   try {
     const blob = await toBlob(paintCard(doc.createElement('canvas'), shareCard(facts)));
     if (blob) { file = new File([blob], 'allworld.jpg', { type: 'image/jpeg' }); url = URL.createObjectURL(blob); }
   } catch { /* no canvas: the text alone is still a share */ }
   return { text, link, file, url, whatsapp: whatsappUrl(text), x: xUrl(text) };
+}
+
+/** The launch offer, asked once and kept for a minute: the share says "The first 10,000 players get ₦1,000,000 in the game" only while it is open. Null when it cannot be read. */
+let offered: { at: number; offer: ShareOffer | null } | null = null;
+async function readOffer(): Promise<ShareOffer | null> {
+  if (offered && Date.now() - offered.at < 60000) return offered.offer;
+  let offer: ShareOffer | null = null;
+  try { const answer = await (await globalThis.fetch('/api/world/bonus', { credentials: 'same-origin' })).json() as ShareOffer; offer = answer && typeof answer.on === 'boolean' ? answer : null; } catch { offer = null; }
+  offered = { at: Date.now(), offer };
+  return offer;
 }
 
 /** Can this browser hand a picture to the share sheet? */

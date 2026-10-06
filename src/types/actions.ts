@@ -155,7 +155,9 @@ export interface ActionMap extends CampusActionMap {
    */
   cancel: { payload: NoPayload; ok: 'cancelled'; fail: 'idle' | 'not_cancellable' | 'no_cancel' }
   /** SERVER ONLY: the operator's credit or debit, one ledger line ("Admin credit: …" / "Admin debit: …"). A debit takes at most the balance. */
-  'wallet.admin': { payload: { op: 'credit' | 'debit'; amount: number; reason: string }; ok: 'credited' | 'debited'; fail: 'invalid_amount' | 'balance_limit'; serverOnly: true }
+  'wallet.admin': { payload: { op: 'credit' | 'debit'; amount: number; reason: string; /** A credit the recipient may gift and spend at players' stalls without the gift restrictions (social.free). */ unrestricted?: boolean }; ok: 'credited' | 'debited'; fail: 'invalid_amount' | 'balance_limit'; serverOnly: true }
+  /** SERVER ONLY: the launch bonus (server/bonus): one ledger line of its own, a faucet that is never counted as earned from work. */
+  'wallet.bonus': { payload: { amount: number; reason: string }; ok: 'credited'; fail: 'invalid_amount' | 'balance_limit'; serverOnly: true }
   /** SERVER ONLY: set one need (0-100), or lift every need below 80 to 80. */
   'needs.admin': { payload: { op: 'set' | 'heal'; need?: string; value?: number }; ok: 'set' | 'healed'; fail: 'invalid_need'; serverOnly: true }
   /** SERVER ONLY: stand the player at the city's arrival venue or at home, ending a stuck timed action. */
@@ -439,7 +441,7 @@ export type ActionBody<T extends ActionType = ActionType> = {
 
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
-  'cancel', 'wallet.admin', 'needs.admin',
+  'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
   'apply-job', 'career.switch', 'career.quit', 'career.auto',
   'activity', 'spot', 'activity.admin',
   'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
@@ -465,7 +467,7 @@ export const ACTION_TYPES = [
 
 /** The action types declared `serverOnly` (registry.js serverOnlyReason(type) !== null). */
 export const SERVER_ONLY_ACTIONS = [
-  'wallet.admin', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
+  'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
   'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 

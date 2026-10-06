@@ -2,11 +2,12 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createLife } from '../../../life.ts'
 import { relocateBlock } from '../../systems/estate.ts'
-import { allCityLinks, cityModule, cityRules, linksFrom, loadCityContent } from '../registry.ts'
+import { allCityLinks, cityModule, cityRules, isOpenCityId, linksFrom, loadCityContent } from '../registry.ts'
 import { OGUN_LINKS } from './links.ts'
 import type { CityLink } from '../../../types/content.ts'
 
 const OPEN = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu'] as const
+await Promise.all(OPEN.map(loadCityContent))
 const key = (link: Pick<CityLink, 'a' | 'b' | 'mode'>): string => `${[link.a, link.b].sort().join('|')}|${link.mode}`
 // The links the modules write by hand; every other pair is generated (see generatedLinks.test.ts).
 const openLinks = allCityLinks().filter(link => OPEN.includes(link.a as typeof OPEN[number]) && OPEN.includes(link.b as typeof OPEN[number])
@@ -62,7 +63,7 @@ test('no link can be used to travel to a city that is not open', async () => {
   for (const link of allCityLinks()) for (const [from, to] of [[link.a, link.b], [link.b, link.a]] as const) {
     if (from !== 'lagos' && from !== 'ibadan') continue
     rich.estate.city = from
-    const open = cityRules(to)?.status === 'open'
+    const open = isOpenCityId(to)
     const blocked = relocateBlock(rich, to, link.mode)
     if (!open) assert.equal(blocked?.code, 'city_not_open', `${from} to ${to} by ${link.mode} is refused: ${to} is closed`)
     else if (link.status === 'coming') assert.equal(blocked?.code, 'route_not_open', `${from} to ${to} by ${link.mode} is planned, not bookable`)

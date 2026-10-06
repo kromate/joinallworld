@@ -14,6 +14,7 @@ import { money } from '../../ui/format.ts'
 import { useAct } from '../kit/act.ts'
 import HouseArt from '../world/HouseArt.vue'
 import LgaCard from '../world/LgaCard.vue'
+import DebtPay from '../relief/DebtPay.vue'
 import VisitorHome from './VisitorHome.vue'
 import ResidenceCard from '../locate/ResidenceCard.vue'
 import { STYLE_FIELDS } from '../world/worldContent.ts'
@@ -70,7 +71,8 @@ function showOnMap(): void {
     <template v-if="estate.makeMain">
       <p class="ui-note">This is a home you keep in {{ estate.cityName }}. Your main home is in {{ estate.home?.name }}: that is where you vote.</p>
       <button type="button" class="ui-button is-block" data-make-main :disabled="Boolean(offline) || Boolean(estate.makeMain.blocked) || pending !== null" @click="makeMain">Make {{ estate.cityName }} my main home</button>
-      <p v-if="estate.makeMain.blocked" class="ui-why">{{ estate.makeMain.blocked }}</p>
+      <DebtPay v-if="estate.ride.debt" />
+      <p v-else-if="estate.makeMain.blocked" class="ui-why">{{ estate.makeMain.blocked }}</p>
     </template>
     <p v-else-if="estate.away.length" class="ui-note">This is your main home. You also keep {{ estate.away.map((item) => `a ${item.tier.toLowerCase()} in ${item.name}`).join(', ') }}.</p>
     <span v-if="estate.living === 'own'" class="ui-chip is-good">You live here · no weekly rent</span>

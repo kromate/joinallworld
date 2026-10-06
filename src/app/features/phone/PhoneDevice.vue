@@ -193,7 +193,7 @@ defineExpose({
               <template v-for="group in item.groups" :key="group.id">
                 <h3 class="ph-group">{{ group.label }}</h3>
                 <div class="ph-grid">
-                  <button v-for="entry in group.apps" :key="entry.id" class="ph-appbtn" :class="{ 'is-running': lastApp === entry.id }" type="button" :data-ph-app="entry.id" :aria-label="`${entry.title}${badges[entry.id] ? `, ${badges[entry.id]} new` : ''}`" @click="openApp(entry)">
+                  <button v-for="entry in group.apps" :key="entry.id" class="ph-appbtn" :class="{ 'is-running': lastApp === entry.id }" type="button" :data-ph-app="entry.id" :data-tour="`app-${entry.id}`" :aria-label="`${entry.title}${badges[entry.id] ? `, ${badges[entry.id]} new` : ''}`" @click="openApp(entry)">
                     <span class="ph-icon" :style="{ '--tint': tintOf(entry) }"><GameIcon bare :name="glyphFor(entry.id)" /></span><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
                   </button>
                 </div>

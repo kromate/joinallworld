@@ -19,6 +19,7 @@ const SETTLE_MS = 1500
 const { game, shell, community } = useApp()
 const running = ref(false)
 const replay = ref(false)
+const which = ref<'basics' | 'travel' | 'money' | 'friends' | 'business'>('basics')
 const shortcuts = ref(false)
 const held = new Set<string>()
 let timer = 0
@@ -55,10 +56,13 @@ function begin(again: boolean): void {
   held.add(who())
   markTourSeen(store(), who())
   replay.value = again
+  if (!again) which.value = 'basics'
   running.value = true
 }
-function onTour(): void {
+function onTour(event?: Event): void {
   if (running.value) return
+  const asked = (event as CustomEvent<{ tour?: string }> | undefined)?.detail?.tour
+  which.value = asked === 'travel' || asked === 'money' || asked === 'friends' || asked === 'business' ? asked : 'basics'
   shortcuts.value = false
   shell.closeSheet(); shell.setMode('venue'); shell.ui.clean = false; shell.ui.trayOpen = false
   void nextTick(() => { tries = 0; begin(true) })
@@ -73,14 +77,14 @@ function onShortcuts(event: Event): void {
 
 watch([() => game.view.value.connected, () => game.view.value.onboarding?.required, shell.sheet, game.mode, () => Boolean(game.state.value.activeAction), () => game.view.value.session?.id], () => { tries = 0; void nextTick(consider) }, { flush: 'post' })
 onMounted(() => {
-  window.addEventListener('jaw:tour', onTour)
+  window.addEventListener('jaw:tour', onTour as EventListener)
   window.addEventListener('jaw:shortcuts', onShortcuts)
   consider()
 })
-onBeforeUnmount(() => { clearTimeout(timer); window.removeEventListener('jaw:tour', onTour); window.removeEventListener('jaw:shortcuts', onShortcuts) })
+onBeforeUnmount(() => { clearTimeout(timer); window.removeEventListener('jaw:tour', onTour as EventListener); window.removeEventListener('jaw:shortcuts', onShortcuts) })
 </script>
 
 <template>
-  <TourHost v-if="running" :replay="replay" @end="running = false" />
+  <TourHost v-if="running" :replay="replay" :tour="which" @end="running = false" />
   <ShortcutsSheet v-if="shortcuts" @close="shortcuts = false" />
 </template>

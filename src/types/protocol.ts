@@ -26,6 +26,7 @@ import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, Ta
 import type { CampusHttpRoutes } from './campus.ts'
 import type { CallClientFrame, CallServerFrame } from './calls.ts'
 import type { NoticeFrame, NoticeHttpRoutes } from './notice.ts'
+import type { CompanionHttpRoutes } from './companion.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
 import type { PingHttpRoutes } from './ping.ts'
@@ -186,6 +187,8 @@ export interface HealthResponse extends ApiEnvelope {
   build: string
   /** The call relay is configured on this host (the one thing the owner checks; never a secret). */
   relay: boolean
+  /** The hosted companion is configured (a boolean only). */
+  companionAi?: boolean
 }
 /**
  * WORKER: the same route (server/routes/core.ts), to which the host adds which transport answered and the build
@@ -249,7 +252,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -542,6 +545,8 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/support/statement',
   'GET /api/support/reports',
   'GET /api/mod/overview',
+  'POST /api/mod/companion-test',
+  'POST /api/companion/ask',
   'GET /api/mod/reports',
   'GET /api/mod/problems',
   'GET /api/mod/mutes',
@@ -648,7 +653,7 @@ export const SERVER_FRAME_TYPES = [
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']
 
 /** Exact key sets of the core responses on the Node host, sorted. `storage` appears only while saving fails. */
-export const HEALTH_RESPONSE_KEYS = ['build', 'ok', 'relay', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]
+export const HEALTH_RESPONSE_KEYS = ['build', 'companionAi', 'ok', 'relay', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]
 export const SESSION_RESPONSE_KEYS = ['serverTime', 'session'] as const satisfies readonly (keyof SessionResponse)[]
 export const PUBLIC_SESSION_KEYS = ['id', 'name'] as const satisfies readonly (keyof PublicSession)[]
 /** What the Node server sends as its own session. */

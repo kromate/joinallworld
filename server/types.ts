@@ -254,6 +254,8 @@ export interface MessageRecord {
   sys?: true
   /** The founder's welcome note: `body` is '' and the words come from server/social/founder.ts. */
   auto?: true
+  /** With `auto`: the player's start the note was written from (server/social/founder.ts welcomeNote). Absent on earlier notes. */
+  start?: { name: string; city?: string; trait?: string; dream?: string; v: number }
   /** Groups only: who the body mentions, as `[player id | 'everyone', start of the `@` in body, its length]`. The text of the mention is in the body itself. */
   men?: [string, number, number][]
   /** The message this one answers: its sequence number, its author and the first characters of it, frozen when this was sent. */

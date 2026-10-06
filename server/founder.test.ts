@@ -9,7 +9,7 @@ import type { FixtureOptions } from './test-fixture.ts';
 import type { TestContext } from 'node:test';
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
 import { founderEmailHash } from './host-context.ts';
-import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, emailHash, friendsIn, presenceAudience } from './social/founder.ts';
+import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, emailHash, welcomeNote, friendsIn, presenceAudience } from './social/founder.ts';
 import { LIMITS } from './social/service.ts';
 import { NUDGE_NOTE } from './growth/comeback.ts';
 import type { Db, SocialCollection, SocialPlayerRecord } from './types.ts';
@@ -117,11 +117,14 @@ test('a new guest and a new account holder each find the founder first, tagged, 
   assert.equal(first.conversations.length, 1);
   const chat = must(first.conversations[0]);
   assert.deepEqual([chat.kind, chat.with, chat.unread, chat.name], ['dm', zed.id, 1, 'Zed']);
-  assert.equal(chat.last?.body, WELCOME_NOTE.slice(0, 80));
+  const note = must((await w.get(`/api/social/conversations/${chat.id}`, ngozi)).messages[0]).body;
+  assert.equal(chat.last?.body, note.slice(0, 80));
+  assert.match(note, /Ngozi/, 'the note is written for this player');
   assert.equal(chat.members.find((member) => member.id === zed.id)?.founder, true, 'the Messages header can tag the founder');
   const history = await w.get(`/api/social/conversations/${chat.id}`, ngozi);
-  assert.deepEqual(history.messages.map((message) => [message.body, message.auto, message.from?.id, message.from?.founder]), [[WELCOME_NOTE, true, zed.id, true]]);
+  assert.deepEqual(history.messages.map((message) => [message.body, message.auto, message.from?.id, message.from?.founder]), [[note, true, zed.id, true]]);
   assert.match(WELCOME_NOTE, /automatic welcome note/);
+  assert.match(note, /automatic welcome note from the founder/, 'it says plainly that it is automatic');
   assert.ok(WELCOME_NOTE.length <= LIMITS.body);
 
   // Another friend, whose name sorts before the founder's: the founder is still first.
@@ -400,4 +403,16 @@ test('a collection stored before the founder existed reads unchanged, and its pl
   const { founder, friends, convs, ...rest } = must(now.players[ada.id]), { friends: oldFriends, convs: oldConvs, ...oldRest } = must(old.players[ada.id]);
   assert.deepEqual({ ...rest, seen: 0 }, { ...oldRest, seen: 0 });
   assert.deepEqual([founder?.id, Object.keys(friends), Object.keys(convs).length - Object.keys(oldConvs).length, Object.keys(oldFriends)], [zed.id, [zed.id], 1, []]);
+});
+
+test('the welcome note is made from the player\'s own start, in three variations, and always says it is automatic', () => {
+  const start = { name: 'Ngozi Eze', city: 'Ibadan', trait: 'Foodie', dream: 'Lekki Landlord' };
+  const notes = [0, 1, 2].map((v) => welcomeNote({ ...start, v }));
+  assert.equal(new Set(notes).size, 3);
+  for (const text of notes) {
+    assert.match(text, /Ngozi/); assert.match(text, /Ibadan/); assert.match(text, /Foodie/); assert.match(text, /Lekki Landlord/);
+    assert.match(text, /automatic welcome note from the founder/); assert.ok(text.length <= LIMITS.body); assert.doesNotMatch(text, /typing|I am here right now|chatting/i);
+  }
+  assert.equal(welcomeNote(undefined), WELCOME_NOTE, 'an earlier note reads as it always did');
+  assert.match(welcomeNote({ name: 'Bisi', v: 4 }), /Bisi/, 'a start with no city or choices still reads well');
 });

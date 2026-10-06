@@ -36,7 +36,8 @@ import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
-import { noticeMarks, showConversation, ui } from './messagesState.ts'
+import CompanionPin from '../companion/CompanionPin.vue'
+import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { filterChats, sortChats, threadRows } from './messagesText.ts'
@@ -367,6 +368,7 @@ defineExpose({
         </div>
 
         <div v-if="ui.tab === 'chats'" role="tabpanel">
+          <CompanionPin />
           <form class="messages-form is-search" role="search" @submit.prevent="search">
             <input v-model="find.text" name="q" maxlength="36" placeholder="Find a player by name" aria-label="Find a player by name" autocomplete="off">
             <BaseButton small type="submit" :disabled="find.busy">Find</BaseButton>

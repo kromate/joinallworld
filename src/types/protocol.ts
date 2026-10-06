@@ -29,6 +29,7 @@ import type { NoticeFrame, NoticeHttpRoutes } from './notice.ts'
 import type { CompanionHttpRoutes } from './companion.ts'
 import type { AnnounceFrame } from './announce.ts'
 import type { AdminHttpRoutes } from './admin.ts'
+import type { StoreHttpRoutes } from './store.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
 import type { PingHttpRoutes } from './ping.ts'
@@ -254,7 +255,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -648,6 +649,12 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/mod/business/reports',
   'POST /api/mod/business/rename',
   'POST /api/mod/business/close',
+  'GET /api/mod/store',
+  'GET /api/mod/store/compare',
+  'GET /api/mod/store/hashes',
+  'POST /api/mod/store/migrate',
+  'POST /api/mod/store/layout',
+  'POST /api/mod/store/safety',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

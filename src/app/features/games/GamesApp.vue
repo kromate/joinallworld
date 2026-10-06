@@ -40,7 +40,7 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
   <div v-else-if="screen === 'hub'" class="gm">
     <HeroCard label="Games" :figure="today?.stats.streak ? `${today.stats.streak} day streak` : 'Pick a game'">Play on your own, anywhere. Sit at a table in a park or lounge to play with friends.</HeroCard>
     <section class="gm-card" aria-labelledby="gm-oro">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="notes" inline /></div>
+      <div class="gm-icon" aria-hidden="true"><GameIcon name="note" inline /></div>
       <div class="gm-body">
         <h3 id="gm-oro">Oro <small>a word a day</small></h3>
         <p>{{ dailyLine(today) }}</p>
@@ -51,7 +51,7 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
       </div>
     </section>
     <section class="gm-card" aria-labelledby="gm-chess">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="tables" inline /></div>
+      <div class="gm-icon" aria-hidden="true"><GameIcon name="crown" inline /></div>
       <div class="gm-body">
         <h3 id="gm-chess">Chess <small>against the computer</small></h3>
         <p>Easy, medium or hard. Or sit at a chess table in a park and play a friend.</p>
@@ -59,7 +59,7 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
       </div>
     </section>
     <section class="gm-card" aria-labelledby="gm-weave">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="tables" inline /></div>
+      <div class="gm-icon" aria-hidden="true"><GameIcon name="game" inline /></div>
       <div class="gm-body">
         <h3 id="gm-weave">Weave <small>word tiles</small></h3>
         <p>Weave words across the cloth with your seven tiles, against one to three computer players.</p>

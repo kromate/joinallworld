@@ -124,7 +124,8 @@ function onKey(event: KeyboardEvent): void {
   // Enter on a focused button presses that button; the keyboard below is made of buttons.
   if (event.key === 'Enter' && from?.tagName === 'BUTTON') return
   const key = keyOf(event)
-  if (key) { event.preventDefault(); press(key) }
+  // The game's own letter shortcuts must not also fire while someone is typing a word.
+  if (key) { event.preventDefault(); event.stopImmediatePropagation(); press(key) }
 }
 function toggleHard(): void {
   if (rows.value.length) return
@@ -143,12 +144,12 @@ async function share(): Promise<void> {
 }
 
 onMounted(async () => {
-  window.addEventListener('keydown', onKey)
+  window.addEventListener('keydown', onKey, true)
   try { hard.value = localStorage.getItem(HARD_KEY) === '1' } catch { /* private mode */ }
   tick = setInterval(() => { now.value = Date.now() }, 30000)
   if (props.mode === 'daily') await loadDaily(); else await loadPractice()
 })
-onBeforeUnmount(() => { window.removeEventListener('keydown', onKey); if (tick) clearInterval(tick) })
+onBeforeUnmount(() => { window.removeEventListener('keydown', onKey, true); if (tick) clearInterval(tick) })
 defineExpose({ press })
 </script>
 

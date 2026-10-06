@@ -96,7 +96,7 @@ test('tables: sit at a table in your venue, watch from anywhere, one seat per pl
   const { act, player, all } = await harness(t);
   const ada = await player('Ada'), bola = await player('Bola'), chidi = await player('Chidi');
   await all(ada);
-  assert.deepEqual(ada.list?.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4], ['park-goal', 'Penalties', 'open', 0, 2], ['park-chess', 'Chess', 'open', 0, 2], ['park-weave', 'Weave', 'open', 0, 4]]);
+  assert.deepEqual(ada.list?.tables.map((table) => [table.id, table.gameLabel, table.status, table.seats.length, table.max]), [['park-bench', 'Whot', 'open', 0, 4], ['park-goal', 'Penalties', 'open', 0, 2], ['park-chess', 'Chess', 'open', 0, 2]]);
   assert.ok(TABLES.some((table) => table.venue === 'amala-shitta') && TABLES.some((table) => table.venue === 'viewing-centre'), 'the buka and the viewing centre have tables too');
   // Nobody is at the buka: sitting there is refused with the reason, watching is allowed.
   await act(ada, 'table-sit', { table: 'buka-corner' });

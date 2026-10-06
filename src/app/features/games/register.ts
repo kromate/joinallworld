@@ -5,5 +5,5 @@ import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 
 export const GAMES_PANELS: readonly VuePanel[] = [
-  definePanel({ id: 'games', title: 'Games', icon: 'tables', placement: 'phone', order: 43.5, group: 'city', tint: '#7a4fb0', component: defineAsyncComponent(() => import('./GamesApp.vue')) }),
+  definePanel({ id: 'games', title: 'Games', icon: 'game', placement: 'phone', order: 43.5, group: 'city', tint: '#7a4fb0', component: defineAsyncComponent(() => import('./GamesApp.vue')) }),
 ]

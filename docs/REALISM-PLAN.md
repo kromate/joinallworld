@@ -37,6 +37,8 @@ Status: plan, 6 October 2026. Nothing below is implemented. This plan combines t
 | E-E | Buy the next plot, merged lots, compounds with shared tap and generator | EMBODIMENT |
 | E-F | Streamed street tiles: door to street to venue, on foot | EMBODIMENT |
 | E-G | Motor park, expressway ride, arrival on foot in the next state | EMBODIMENT |
+| RV-T | Trust layer: phone and ID tiers, no-fee filter, public complaint counts, safe links, no home addresses | REAL-VALUE |
+| RV1–RV12 | Real-life value: verified stalls with share cards, Skills Passport, gigs and notice boards, classes and learning quests, paid visibility later | REAL-VALUE |
 
 ## Rules that keep the machine and the codebase healthy
 
@@ -190,6 +192,21 @@ Gate: walk from home to a venue door on the phone with no loading screen; each t
 
 Gate: Lagos to Ibadan on foot and by bus, end to end, on the phone; the old intercity action still works.
 
+### Phase R: Real-life value (runs alongside Phase 4, 4 workers)
+
+The full design is in `REAL-VALUE.md`. The aim is that time in Allworld helps a player in real life: sell, get hired, learn and be found, with trust built first.
+
+| Lane | Work |
+| --- | --- |
+| RV-T trust (Sol or Terra) | Phone OTP tier for stalls, ID check tier for gigs, classes and meetups (result only, 18+), no-fee filter, complaint counts, link interstitial with allow-list, vendor-link exception to chat blocking |
+| RV1 + RV7 stalls | Verified stalls that link out, stall analytics and a share card for WhatsApp, Instagram and X |
+| RV2 Skills Passport | Skill badges earned from real proof, shown on the player card |
+| RV3 + RV6 gigs | Gigs and errands board plus venue notice boards, free to post, organic only |
+| RV4 + RV8 classes | Classes held in venues, and learning quests |
+| RV-L1 ads (Luna) | Ad template with an ARCON approval reference field and a takedown control, built but switched off |
+
+Gate: only money level L0 (no money moves through Allworld) goes to production. L1 and above wait for Anthony's decisions and a lawyer. The trust layer ships before any stall, gig or class is public.
+
 ## How many agents, phase by phase
 
 | Phase | Workers at once | With Astra and a reviewer |
@@ -199,6 +216,7 @@ Gate: Lagos to Ibadan on foot and by bus, end to end, on the phone; the old inte
 | 2 | 8 | 10 |
 | 3 | 7 | 9 |
 | 4 | 5 | 7 |
+| 4 + R | 5 + 4 | 10 |
 | 5 | 6 | 8 |
 | 6 | 4 | 6 |
 
@@ -223,6 +241,7 @@ The phase-1 gate is the main risk. Phases 2–3 are the busiest. Phase 4 is narr
    - an online real-device service if a free tier allows it.
    - The emulator uses the Mac's GPU, so its frame times flatter a real Tecno. The throttled Chrome run is the gate for CPU and load time. GPU cost is held down by the triangle, draw-call and texture budgets, which are checked in tests.
 6. **Efik review:** still open. Calabar lines stay `beta` until a native speaker reviews them.
+7. **Real-money levels (pending Anthony):** whether a CAC company exists, which lawyer reviews the seven questions in `REAL-VALUE.md`, payment-gateway approval for virtual goods, and VAT registration. Until then Phase R ships L0 only.
 
 ## Run log
 

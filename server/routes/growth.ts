@@ -84,9 +84,9 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       const cityId = city(body.cityId);
       // A life is never created here: someone who has not finished character creation is simply not ready.
       const stored = session.cities?.[cityId]?.state;
-      if (!ready(stored)) return { ok: false, code: 'not_ready', reason: 'Finish creating your Sim first.' };
+      if (!ready(stored)) return { ok: false, code: 'not_ready', reason: 'Finish creating your character first.' };
       const state = ctx.settle(session, cityId);
-      if (!ready(state)) return { ok: false, code: 'not_ready', reason: 'Finish creating your Sim first.' };
+      if (!ready(state)) return { ok: false, code: 'not_ready', reason: 'Finish creating your character first.' };
       const g = growthOf(ctx, db);
       return call({ db, g, session, state, cityId, body, request });
     }, { durable: typeof durable === 'function' ? durable : () => durable, waitForObserved: true });

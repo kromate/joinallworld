@@ -148,3 +148,23 @@ test('the compass: a turned or tipped view is skewed, and rest() is north up at 
   rig.jump({ yaw: 0, pitch: rest.pitch + 0.3 });
   assert.equal(rig.skewed(), true, 'a tipped view shows it too');
 });
+
+test('a leash narrows where the view may be centred as it pulls back, and a drag past it gives a little then springs back', () => {
+  const camera = new THREE.PerspectiveCamera(30, 1.6, 0.1, 4000);
+  // Up close the whole board; the whole of it in view, only a fifth of its middle.
+  const rig = createRig(THREE, camera, { ...BOUNDS, leash: (distance) => (distance > 500 ? 0.2 : 1) });
+  rig.setViewport(1600, 1000);
+  rig.jump({ x: 550, z: 0, yaw: 0, pitch: 0.9, distance: 120 });
+  assert.equal(rig.view.x, 550, 'close in, the east of the board can be looked at');
+  rig.jump({ distance: 700 });
+  near(rig.view.x, 0.2 * 600, 1e-9);
+  rig.jump({ x: -900, z: 900 });
+  near(rig.view.x, -120, 1e-9); near(rig.view.z, 80, 1e-9);
+  // A drag at that distance is held inside the same range, with the same give and spring.
+  const grab = rig.groundAt(0, 0)!;
+  rig.beginDrag(); rig.dragTo(grab, 0.9, 0.9);
+  assert.ok(rig.view.x >= -120 - 0.05 * 1200 - 1e-6 && rig.view.x <= 120 + 0.05 * 1200 + 1e-6);
+  rig.endDrag();
+  for (let i = 0; i < 60; i++) rig.step(1 / 30);
+  assert.ok(Math.abs(rig.view.x) <= 120 + 1e-6 && Math.abs(rig.view.z) <= 80 + 1e-6, `${rig.view.x}, ${rig.view.z}`);
+});

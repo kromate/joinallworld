@@ -1,24 +1,45 @@
 <script setup lang="ts">
-// "What you can do now": a calm card in the HUD when a player could be stuck (a visitor who cannot pay the way home, hunger with no
-// money for a meal, no energy with no money for a room). It comes once for each situation and goes when dismissed; the wallet can
-// open it again (the wallet). The situation is what reliefHelp.ts works out; this only shows it.
+// "What you can do now": a small chip in the HUD when a player could be stuck (a visitor who cannot pay the way home, hunger or a sickness
+// with no money to treat it, no energy with no money for a room). It opens the options as a centred card on a screen with room, and
+// as a bottom sheet on a phone. The chip stays while the situation does; the options are what reliefHelp.ts works out.
 import '../../../ui/panels/relief.css'
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
+import GameIcon from '../../ui/GameIcon.vue'
 import ReliefActions from './ReliefActions.vue'
-import { createDismissals, helpNow, shownHelp } from './reliefModel.ts'
+import { helpNow } from './reliefModel.ts'
 
 const { game } = useApp()
-const dismissals = createDismissals(globalThis.localStorage ?? null)
-const gone = ref(0)
-const help = computed(() => { void gone.value; return shownHelp(helpNow(game.state.value, game.cityId.value), dismissals.has) })
-function dismiss(): void { if (help.value) dismissals.add(help.value.key); gone.value++ }
+const help = computed(() => helpNow(game.state.value, game.cityId.value))
+const sheet = ref<HTMLDialogElement | null>(null)
+const open = ref(false)
+function show(): void { open.value = true }
+function hide(): void { open.value = false }
+watch(open, async (now) => {
+  await nextTick()
+  const dialog = sheet.value
+  if (!dialog || typeof dialog.showModal !== 'function') return
+  if (now && !dialog.open) { dialog.showModal(); dialog.focus({ preventScroll: true }) }
+  else if (!now && dialog.open) dialog.close()
+})
+// The situation ended (a meal was bought, the way home paid): the sheet goes with it.
+watch(help, (now) => { if (!now) open.value = false })
+/** A tap on the dimmed page outside the card closes it. */
+function backdrop(event: MouseEvent): void { if (event.target === sheet.value) hide() }
 </script>
 
 <template>
-  <section v-if="help" class="relief-card" aria-label="What you can do now">
-    <header><b>{{ help.title }}</b><button type="button" class="relief-close" aria-label="Dismiss" @click="dismiss">×</button></header>
-    <p>{{ help.line }}</p>
-    <ReliefActions :help="help" @done="dismiss" />
-  </section>
+  <template v-if="help">
+    <button type="button" class="relief-chip" aria-haspopup="dialog" :aria-expanded="open" @click="show">
+      <span aria-hidden="true"><GameIcon name="coin" :size="18" /></span>
+      <span>{{ help.chip }}</span>
+    </button>
+    <dialog ref="sheet" class="relief-sheet" tabindex="-1" aria-label="What you can do now" @close="open = false" @click="backdrop">
+      <section class="relief-card">
+        <header><b>{{ help.title }}</b><button type="button" class="relief-close" aria-label="Close" @click="hide">×</button></header>
+        <p>{{ help.line }}</p>
+        <ReliefActions :help="help" @done="hide" />
+      </section>
+    </dialog>
+  </template>
 </template>

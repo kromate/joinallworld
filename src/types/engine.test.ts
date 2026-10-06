@@ -617,7 +617,7 @@ test('a trip between cities is the timed action kind intercity', () => {
   assert.equal(act(state, 'cancel', {}, at()).code, 'no_cancel')
   const arrival = MONDAY_9AM + active.duration * 1000
   assert.equal(settle(state, active.duration, arrival), 'completed')
-  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'agodi-gardens', ['lagos']])
+  assert.deepEqual([state.estate.city, state.location, keys(state.estate.away)], ['ibadan', 'iwo-road-interchange', ['lagos']])
   checkState(state, 'in another city')
   const shown = view(state, at(arrival))
   assert.equal(shown.estate.city, 'ibadan'); assert.equal(shown.estate.lga, null); assert.ok(shown.estate.cheapest, 'Ibadan offers its cheapest local starter upgrade')
@@ -1123,7 +1123,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
     (entries: readonly object[], what: string) => {
       for (const entry of entries) assert.deepEqual(Object.keys(entry).filter((key) => !(fields as readonly PropertyKey[]).includes(key)), [], what)
     }
-  declared<FurnitureDefinition>()(['id', 'label', 'category', 'kind', 'w', 'h', 'wall', 'stars', 'price', 'icon', 'shape', 'color', 'blurb', 'beta'])(Object.values(FURNITURE), 'furniture')
+  declared<FurnitureDefinition>()(['id', 'label', 'category', 'kind', 'w', 'h', 'wall', 'stars', 'price', 'icon', 'shape', 'color', 'beta'])(Object.values(FURNITURE), 'furniture')
   declared<CarDefinition>()(['id', 'label', 'nickname', 'icon', 'price', 'fuel', 'speed', 'beta', 'priceReported'])(Object.values(CARS), 'car')
   declared<HouseDefinition>()(['id', 'label', 'district', 'grid', 'rent', 'moveIn', 'tag', 'description', 'betaFields'])(Object.values(HOUSES), 'house')
   declared<TravelModeDefinition>()(['id', 'label', 'icon', 'fare', 'seconds', 'needs', 'xp', 'exposed', 'eventChance', 'blurb', 'fuel', 'beta'])(Object.values(ALL_MODES), 'travel mode')

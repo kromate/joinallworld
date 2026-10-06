@@ -262,7 +262,7 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   assert.deepEqual([...ENGINE_SHARE_KINDS], [...SHARE_KINDS])
   assert.deepEqual([...SERVER_CLIENT_SIGNALS], [...CLIENT_SIGNALS])
   assert.deepEqual([...FUNNEL_ORDER], [...FUNNEL_STEPS])
-  assert.deepEqual(await post('/api/growth/hello', { cityId: 'lagos' }, freshCookie), { ok: false, code: 'not_ready', reason: 'Finish creating your Sim first.', serverTime: f.now() })
+  assert.deepEqual(await post('/api/growth/hello', { cityId: 'lagos' }, freshCookie), { ok: false, code: 'not_ready', reason: 'Finish creating your character first.', serverTime: f.now() })
   const hello = sameKeys(await post('/api/growth/hello', { cityId: 'lagos', device: 'protocol-test-device-0001' }, efe.cookie), HELLO_RESPONSE_KEYS, 'POST /api/growth/hello')
   sameKeys(hello.referral, REFERRAL_VIEW_KEYS, 'referral view')
   sameKeys(hello.contact, OUTREACH_MINE_KEYS, 'contact')

@@ -1,5 +1,5 @@
 /** Synchronous catalogue views once a city's content is available to the engine. */
-import { cityContent, cachedCityContent, knownCityIds } from './registry.ts'
+import { cityContent, cachedCityContent, cityRules, knownCityIds } from './registry.ts'
 import type { CityContent, VenueDefinition, NpcDefinition, JobDefinition } from '../../types/content.ts'
 
 export const contentFor = (city: string): CityContent => cityContent(city)
@@ -28,4 +28,15 @@ export function localUnitDescription(city: string, id: string): string {
   const line = contentFor(city).localUnitDescriptions[id]
   if (typeof line !== 'string') throw new TypeError(`City ${city} has no description for ${id}`)
   return line
+}
+
+/**
+ * Where a ticket lands a visitor: the venue of the city's hub for the way they came (flight: the airport, road: the motor park or bus
+ * terminal, rail: the station), or the public arrival venue where the city has no such venue, the way was a boat or something else, or
+ * `open` says the venue is closed to walk-ins at that moment.
+ */
+export function ticketArrivalVenue(city: string, mode: unknown, open: (venue: VenueDefinition) => boolean = () => true): VenueDefinition {
+  const hubId = mode === 'air' || mode === 'road' || mode === 'rail' ? cityRules(city)?.hubs.find(hub => hub.mode === mode)?.venueId : undefined
+  const venue = hubId ? venueFor(city, hubId) : undefined
+  return venue && venue.id !== 'home' && venue.category !== 'home' && open(venue) ? venue : publicArrivalVenue(city)
 }

@@ -1,7 +1,8 @@
 import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts';
 import type { OverviewExtras } from './state-overview.ts';
 import type { CityStateOverview } from '../../types/content.ts';
-import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
+import { venueFor } from '../../game/cities/runtime.ts';
+import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, cityRules, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
  * OWNER: world
  * The atlas: ONE continuous map with three levels of detail — the world, Africa, Nigeria — and
@@ -26,6 +27,12 @@ import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityMo
  * OPEN / COMING SOON comes from the registry (../regions.js): only a region whose status is
  * 'open' is in colour and can be entered. Everything else is grey, still hoverable and tappable.
  *
+ * INPUT. North-up at every level. One finger or any mouse button drags the ground (the grabbed point stays under the pointer, the
+ * land's edge gives a little and springs back, a flick glides on unless motion is reduced); two fingers pinch about their middle and
+ * travel; the wheel and a trackpad pinch zoom towards the pointer. A quick press that stayed put selects (a city dot or name first,
+ * ./city-hit.ts); a drag or a press held 350 ms or more never does. The view is leashed to the middle of the world as it pulls
+ * back (./levels.ts leashAt). The arithmetic is shared with the city map (src/scene/gesture.ts, ../camera.ts).
+ *
  * BATTERY RULE — NO FRAME LOOP WHILE IDLE. A frame is drawn when something asks for one. Another
  * is scheduled only while something moves: a camera ease, a level cross-fade, the fly-in to the
  * city, or a trip (the server's timer, or the preview). diagnostics().renderCount is the proof
@@ -36,6 +43,7 @@ import * as THREE from 'three';
 import { allCityLinks } from '../../game/cities/registry.ts';
 import type { AfricaGroupId, Box4, RegionKind } from '../types.ts';
 import { createRig } from '../camera.ts';
+import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
 import type { RigInsets, RigView } from '../camera.ts';
 import { createTripClock } from '../trip.ts';
 import { AFRICA_GROUPS, ATLAS_LEVELS, CONTINENTS, ZONES, cityEntry, plannedRoutes, regionEntry, stateOfCity } from '../regions.ts';
@@ -45,9 +53,11 @@ import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
 import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
-import { focusLevel, levelAt, pitchAt, thresholds } from './levels.ts';
+import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
+import { badgeOf, byCountry, EMPTY_FRIENDS } from './friends.ts';
+import type { FriendHere, FriendsModel } from './friends.ts';
 import type { CityTarget } from './city-hit.ts';
 import type { LabelBox, LabelCandidate, PlacedLabel } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, flightPoint, interCityTripOf, liftOf, linkId, linkPath, measure, tripPoint } from './routes.ts';
@@ -97,6 +107,8 @@ export interface AtlasOptions {
   now?: () => number;
   reducedMotion?: boolean;
   tabHidden?: () => boolean;
+  /** A friend's row in the friends list was used: Chat, Call or Ping. */
+  onFriend?: (action: 'chat' | 'call' | 'ping', id: string, name: string) => void;
   /** Fetches a level's data module; the default imports it from the registry. */
   load?: (levelId: string) => Promise<LevelModule>;
 }
@@ -123,12 +135,16 @@ interface Insets { left: number; top: number; right: number; bottom: number }
 /** The trip being drawn: the line, who walks it from where, and how far (0…1). */
 interface Run { path: LinkPath; line: MeasuredLine; from: string; progress: number }
 interface Preview extends Run { start: number; seconds: number }
-/** A pointer gesture: a pan or an orbit has `start` and `last`; a pinch has `span`, `mid` and `angle`. */
-interface Gesture { kind: 'orbit' | 'pan' | 'pinch'; moved: boolean; start?: Point; last?: Point; span?: number; mid?: Point; angle?: number }
+/**
+ * A pointer gesture. One pointer pans: `grab` is the ground point under it when it went down, which stays under it. Two pointers
+ * pinch: `span` and `mid` are their distance and middle, and the ground between them stays between them. `down` is when the press
+ * began, for the tap-or-drag rule (src/scene/gesture.ts).
+ */
+interface Gesture { kind: 'pan' | 'pinch'; id: number; moved: boolean; from: Point; last: Point; down: number; type: string; grab: { x: number; z: number } | null; span: number; mid: Point }
 /** What the shell's `jaw:key` event carries. */
 interface KeyDetail { action?: string; mode?: string }
 interface Point { x: number; y: number }
-type UiName = 'labels' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet';
+type UiName = 'labels' | 'friends' | 'fpanel' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet';
 /** What diagnostics() reports. */
 export interface AtlasDiagnostics {
   kind: 'atlas'; renderCount: number; loop: boolean; level: number; levelId: string; wanted: number; loading: string; loaded: string[]; fading: boolean;
@@ -151,6 +167,10 @@ export interface AtlasApi {
   selectCity(cityId: string): boolean;
   select(ref: RegionRef | null, options?: SelectOptions): boolean;
   zoomBy(factor: number): void;
+  /** The friends to show as badges on the cities (or countries) they are in; null clears them. */
+  setFriends(model: FriendsModel | null): void;
+  /** Fly to a city and open the list of the friends there. False when no friend is shown there. */
+  openFriends(cityId: string): boolean;
   screenOf(lon: number, lat: number): { x: number; y: number };
   pick(lon: number, lat: number): { kind: RegionKind; id: string; name: string } | null;
   diagnostics(): AtlasDiagnostics;
@@ -171,14 +191,14 @@ const INK = {
 const MAJOR_CAPITALS = new Set(['Abuja', 'Cairo', 'Nairobi', 'Accra', 'Addis Ababa', 'Pretoria', 'Kinshasa', 'Dakar', 'Algiers', 'Rabat', 'Luanda', 'Khartoum', 'Dodoma', 'Kampala', 'Tunis', 'Tripoli', 'Antananarivo', 'Lusaka', 'Harare', 'Bamako', 'Niamey', "N'Djamena", 'Mogadishu', 'Windhoek', 'Maputo', 'Yaoundé', 'Abidjan', 'Yamoussoukro']);
 const NEIGHBOUR_LABELS: [string, number, number][] = [['Benin', 2.15, 9.9], ['Niger', 8.6, 14.7], ['Chad', 15.9, 11.2], ['Cameroon', 12.5, 5.6]];
 const WATER_LABELS: [string, number, number, 'sea' | 'river' | 'town'][] = [['Gulf of Guinea', 4.6, 3.55, 'sea'], ['Niger', 5.25, 9.72, 'river'], ['Benue', 9.7, 8.05, 'river'], ['Lake Chad', 14.2, 13.55, 'river'], ['Lokoja', 6.74, 7.8, 'town']];
-const DRAG_START = 5, DOUBLE_MS = 340;
+const DOUBLE_MS = 340;
 const clamp = (value: number, low: number, high: number): number => Math.max(low, Math.min(high, value));
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }) as Record<string, string>)[c]!);
 const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en-NG')}`;
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const GLYPH = { globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>', rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, wallet = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, wallet = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -188,7 +208,9 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   if ('outputColorSpace' in renderer) renderer.outputColorSpace = THREE.SRGBColorSpace;
   const canvas = renderer.domElement;
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(30, 1, 0.1, 4000);
-  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4 });
+  /** Each level's frame: where the camera stands, and how far, when that level fills the free part of the screen (null until measured). */
+  let fits: { x: number; z: number; distance: number }[] | null = null;
+  const rig = createRig(THREE, camera, { minX: EXTENT.minX, maxX: EXTENT.maxX, minZ: -EXTENT.maxY, maxZ: -EXTENT.minY, minDistance: 0.4, leash: (distance) => (fits ? leashAt(distance, fits[NIGERIA]!.distance, fits[WORLD]!.distance) : 1) });
   const mesh = mesher(THREE);
   const ribbonMaterials: THREE.ShaderMaterial[] = [], probe = new THREE.Vector3();
   const ribbonMaterial = (opacity = 1, lift = 0.0004) => { const material = mesh.ribbonMaterial(opacity); material.uniforms.lift!.value = lift; ribbonMaterials.push(material); return material; };
@@ -226,7 +248,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   let selected: RegionRef | null = null, hovered: RegionRef | null = null;
   let routeShown: string | null = null, trip: Run | null = null, preview: Preview | null = null, entering: (() => void) | null = null, keyboard = false;
-  let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, fits: { x: number; z: number; distance: number }[] | null = null, cuts = [1, 1], lastLabels = 0, labelKey = '';
+  let size = { width: 0, height: 0 }, insets: Insets = { left: 0, top: 0, right: 0, bottom: 0 }, cuts = [1, 1], lastLabels = 0, labelKey = '';
   /** Where each shown name is on the screen, for taps. */
   const lastPlaced = new Map<string, LabelBox>();
   let rafId = 0, renderCount = 0, lastTick = 0, loading = '', failed = '';
@@ -245,6 +267,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     root = doc.createElement('section');
     root.className = 'atlas'; root.setAttribute('aria-label', 'World map: explore the world, Africa, Nigerian cities and travel routes.');
     root.innerHTML = `<div class="atlas-labels" aria-hidden="true"></div>
+      <div class="atlas-friends"></div>
       <div class="atlas-marker" aria-hidden="true" hidden></div>
       <div class="atlas-frame">
         <nav class="atlas-crumbs" aria-label="Map level"></nav>
@@ -252,11 +275,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
         <div class="atlas-stage"><div class="atlas-reticle" aria-hidden="true"></div><p class="atlas-wait" role="status" aria-live="polite" hidden></p>
           <div class="atlas-controls" role="group" aria-label="Map view"></div><div class="atlas-legend" hidden></div></div>
         <aside class="atlas-sheet" tabindex="-1" aria-live="polite" hidden></aside>
-      </div>`;
+      </div>
+      <aside class="atlas-fpanel" role="dialog" aria-label="Friends" hidden></aside>`;
     root.prepend(canvas);
     canvas.classList?.add('atlas-canvas'); canvas.setAttribute?.('aria-hidden', 'true');
     container.appendChild(root);
-    for (const name of ['labels', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
+    for (const name of ['labels', 'friends', 'fpanel', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
     ui.controls!.innerHTML = `<div class="atlas-zoom"><button type="button" data-atlas-zoom="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-atlas-zoom="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div>
       <button type="button" class="atlas-pill" data-atlas-zoom="fit">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span data-atlas-fit></span></button>
       <button type="button" class="atlas-pill" data-atlas-layer aria-pressed="false">${ICON('<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>')}<span data-atlas-layer-name></span></button>`;
@@ -424,7 +448,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (wanted > WORLD && !sheets[wanted - 1] && rig.view.distance > cuts[wanted - 1]! * 0.62) void ensure(wanted - 1);
     const next = sheets[wanted] ? wanted : level;
     if (next !== level) {
-      level = next; hovered = null;
+      level = next; hovered = null; settleFriends();
       // Arriving inside a country, the country itself is no longer the thing selected: its states are.
       if (selected?.kind === 'country' && selected.id === ATLAS_LEVELS[level]!.country) selected = null;
       drawChrome();
@@ -483,13 +507,11 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (reducedMotion || !raf) rig.jump(view); else rig.ease(view, seconds);
     moved();
   }
-  /** Zoom by a factor about a point of the screen (NDC), keeping the ground under it where it is. */
+  /** Zoom by a factor about a point of the screen (NDC), keeping the ground under it where it is. The map is always north-up. */
   function zoomBy(factor: number, nx: number | null = null, ny: number | null = null) {
     const distance = clamp(rig.view.distance * factor, minDistance(), maxDistance());
     const before = nx === null ? null : rig.groundAt(nx, ny!);
-    // The turn a player gave the closest level unwinds on the way out: farther levels are always north-up.
-    const near = fits![NIGERIA]!.distance, turn = distance <= near ? 1 : clamp((cuts[1]! - distance) / (cuts[1]! - near), 0, 1);
-    rig.jump({ distance, pitch: pitchAt(distance, distances(), PITCHES), yaw: factor > 1 ? rig.view.yaw * turn : rig.view.yaw });
+    rig.jump({ distance, pitch: pitchAt(distance, distances(), PITCHES), yaw: 0 });
     const after = before ? rig.groundAt(nx!, ny!) : null;
     if (before && after) rig.pan(before.x - after.x, before.z - after.z);
     moved();
@@ -570,12 +592,99 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function draw() {
     renderer.render(scene, camera);
     renderCount += 1;
-    drawLabels(); drawMarker();
+    drawLabels(); drawMarker(); drawFriends();
   }
   function syncResolution() {
     for (const material of ribbonMaterials) material.uniforms.resolution!.value.set(size.width, size.height);
     if (sheets[NIGERIA]?.dots) sheets[NIGERIA].dots.object.material.uniforms.ratio!.value = renderer.getPixelRatio?.() || 1;
   }
+
+
+  // ---- friends: a badge on each city (or country, further out) they are in, and the list behind it ------------
+  let friendsNow: FriendsModel = EMPTY_FRIENDS, friendsOpen: string | null = null;
+  const friendNodes = new Map<string, HTMLElement>();
+  const countryOf = (cityId: string): string | null => cityRules(cityId)?.country.id ?? null;
+  /** The groups drawn at this level, each with the place it stands at on the screen. */
+  function friendBadges(): { key: string; title: string; friends: FriendHere[]; x: number; y: number }[] {
+    if (!fits) return [];
+    if (level === NIGERIA) {
+      return friendsNow.cities.flatMap((group) => {
+        const spot = cityEntry(group.cityId);
+        if (!spot) return [];
+        const where = at(relLon(spot.lon), spot.lat, HEIGHT.open + 0.02);
+        return where.behind ? [] : [{ key: `city:${group.cityId}`, title: cityRules(group.cityId)?.name ?? group.cityId, friends: group.friends, x: where.x + 12, y: where.y + 8 }];
+      });
+    }
+    const sheet = level === AFRICA ? sheets[AFRICA] : sheets[WORLD];
+    return byCountry(friendsNow, countryOf).flatMap((group) => {
+      const feature = (sheet ?? sheets[WORLD] ?? sheets[AFRICA])?.topology.byId.get(group.countryId) as Feature<CountryData & { at?: [number, number] }> | undefined;
+      const point = feature && 'at' in feature ? (feature as unknown as { at: [number, number] }).at : null;
+      if (!feature || !point) return [];
+      const where = at(point[0], point[1], 0);
+      return where.behind ? [] : [{ key: `country:${group.countryId}`, title: feature.name, friends: group.friends, x: where.x + 14, y: where.y + 10 }];
+    });
+  }
+  function drawFriends() {
+    if (!ui.friends) return;
+    const badges = friendBadges(), keep = new Set<string>();
+    for (const badge of badges) {
+      keep.add(badge.key);
+      const look = badgeOf(badge.friends);
+      let node = friendNodes.get(badge.key);
+      if (!node) { const made = doc!.createElement('button'); made.type = 'button'; node = made; friendNodes.set(badge.key, node); ui.friends.appendChild(node); }
+      const key = `${look.initials.join('')}|${look.count}|${look.online}|${badge.title}`;
+      if (node.dataset.key !== key) {
+        node.dataset.key = key; node.dataset.atlasFb = badge.key;
+        node.className = `atlas-fb${look.online ? ' is-online' : ''}`;
+        node.setAttribute('aria-label', `${look.count} friend${look.count === 1 ? '' : 's'} in ${badge.title}${look.online ? ', some online' : ''}. Show who.`);
+        node.innerHTML = `<span class="atlas-fb-av">${look.initials.map((initial, index) => `<i style="--i:${index}">${esc(initial)}</i>`).join('')}</span><b>${look.count}</b>`;
+      }
+      node.style.transform = `translate(${badge.x.toFixed(1)}px,${badge.y.toFixed(1)}px)`;
+    }
+    for (const [key, node] of friendNodes) if (!keep.has(key)) { node.remove(); friendNodes.delete(key); }
+  }
+  function friendRow(friend: FriendHere, cityId: string | null): string {
+    const place = friend.venue === 'home' ? 'at home' : friend.venue && cityId ? (venueFor(cityId, friend.venue)?.label ?? '') : '';
+    const where = friend.online ? `Online${cityId ? ` · in ${esc(cityRules(cityId)?.name ?? cityId)}` : ''}${place ? ` · ${esc(place)}` : ''}${friend.journey ? ` · travelling to ${esc(cityRules(friend.journey)?.name ?? friend.journey)}` : ''}` : 'Offline';
+    return `<li><span class="atlas-fb-dot${friend.online ? ' is-online' : ''}" aria-hidden="true">${esc(friend.initial)}</span><span class="atlas-fp-text"><b>${esc(friend.name)}</b><small>${where}</small></span>`
+      + `<button type="button" data-atlas-fact="chat" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}">Chat</button>`
+      + `<button type="button" data-atlas-fact="${friend.online ? 'call' : 'ping'}" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}">${friend.online ? 'Call' : 'Ping'}</button></li>`;
+  }
+  function drawFriendsPanel() {
+    const panel = ui.fpanel;
+    if (!panel) return;
+    const badge = friendsOpen ? friendBadges().find((item) => item.key === friendsOpen) ?? null : null;
+    const group = friendsOpen?.startsWith('city:') ? friendsNow.cities.find((item) => `city:${item.cityId}` === friendsOpen) : null;
+    const countryId = friendsOpen?.startsWith('country:') ? friendsOpen.slice(8) : null;
+    const countryGroup = countryId ? byCountry(friendsNow, countryOf).find((item) => item.countryId === countryId) : null;
+    const friends = group?.friends ?? countryGroup?.friends ?? [];
+    if (!friendsOpen || !friends.length) { panel.hidden = true; panel.innerHTML = ''; if (friendsOpen && !friends.length && !badge) friendsOpen = null; return; }
+    const cities = group ? [group.cityId] : countryGroup?.cityIds ?? [];
+    const where = (friend: FriendHere): string | null => (group ? group.cityId : cities.find((cityId) => friendsNow.cities.find((item) => item.cityId === cityId)?.friends.some((item) => item.id === friend.id)) ?? null);
+    const title = group ? cityRules(group.cityId)?.name ?? group.cityId : badge?.title ?? 'this country';
+    const going = cities.filter((cityId) => cityId !== current && isOpenCityId(cityId)).map((cityId) => `<button type="button" class="atlas-fp-go" data-atlas-fgo="${esc(cityId)}">Go to ${esc(cityRules(cityId)?.name ?? cityId)}</button>`).join('');
+    const away = friendsNow.offline.slice(0, 5);
+    panel.hidden = false;
+    panel.innerHTML = `<header><b>Friends in ${esc(title)}</b><button type="button" data-atlas-fclose aria-label="Close the list of friends">×</button></header>`
+      + `<ul>${friends.map((friend) => friendRow(friend, where(friend))).join('')}</ul>`
+      + (away.length ? `<p class="atlas-fp-note">Offline, no place shown</p><ul>${away.map((friend) => friendRow(friend, null)).join('')}</ul>` : '')
+      + (going ? `<div class="atlas-fp-foot">${going}</div>` : '');
+  }
+  function setFriends(model: FriendsModel | null) {
+    friendsNow = model ?? EMPTY_FRIENDS;
+    drawFriendsPanel(); request();
+  }
+  function openFriends(cityId: string): boolean {
+    if (!friendsNow.cities.some((group) => group.cityId === cityId)) return false;
+    const spot = cityEntry(cityId);
+    void ensure(NIGERIA);
+    friendsOpen = `city:${cityId}`;
+    if (fits && spot) { const [x, y] = project(relLon(spot.lon), spot.lat); fly({ x, z: -y, distance: Math.min(rig.view.distance, fits[NIGERIA]!.distance * 0.8), yaw: 0 }, 0.8); }
+    drawFriendsPanel(); request();
+    return true;
+  }
+  // The badge a level draws is a different one (a city further in, a country further out): the list follows the level it was opened at.
+  function settleFriends() { if (friendsOpen && !friendBadges().some((item) => item.key === friendsOpen)) { friendsOpen = null; drawFriendsPanel(); } }
 
   // ---- labels ---------------------------------------------------------------------------------------
   function screenOf(x: number, y: number, z: number) { probe.set(x, y, z).project(camera); return { x: (probe.x * 0.5 + 0.5) * size.width, y: (0.5 - probe.y * 0.5) * size.height, behind: probe.z > 1 }; }
@@ -890,48 +999,86 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   // ---- input -------------------------------------------------------------------------------------------
   const pointers = new Map<number, Point>();
   let gesture: Gesture | null = null, lastTap = { t: -1e9, x: 0, y: 0 };
+  const flick = createFlick();
+  // A flick is timed by the moments the pointer reported, so a slow frame between them does not turn a fast flick into a stop.
+  const stampOf = (event: Event) => (Number.isFinite(event.timeStamp) ? event.timeStamp : now());
   const local = (event: MouseEvent): Point => { const page = container.getBoundingClientRect(); return { x: event.clientX - page.left, y: event.clientY - page.top }; };
   const ndc = (point: Point): [number, number] => [(point.x / size.width) * 2 - 1, 1 - (point.y / size.height) * 2];
+  const ground = (point: Point) => { const [nx, ny] = ndc(point); return rig.groundAt(nx, ny); };
+  const middle = (a: Point, b: Point): Point => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+  /**
+   * The map is NORTH-UP at every level, so there is no rotation and no compass. A country, a continent and the world are each one
+   * flat sheet drawn from above: turning it changes none of what is on it, would put every name at an angle to the page, and would
+   * make the level frames (which are measured north-up) wrong. Every button, and one finger, drags the ground; two fingers pinch
+   * and travel; a twist does nothing. The tilt follows the zoom (pitchAt), not the pointer.
+   */
   function onDown(event: PointerEvent) {
     if (entering) return;
+    if (event.pointerType === 'mouse' && event.button > 2) return;
+    if (event.button === 1) event.preventDefault();
     keyboard = false; root!.classList.remove('is-keys');
-    pointers.set(event.pointerId, local(event));
+    if (event.isPrimary) { pointers.clear(); rig.endDrag(); }
+    const point = local(event);
+    pointers.set(event.pointerId, point);
     canvas.setPointerCapture?.(event.pointerId);
     rig.hold();
-    if (pointers.size === 1) gesture = { kind: event.button === 2 || event.shiftKey ? 'orbit' : 'pan', start: local(event), last: local(event), moved: false };
-    else if (pointers.size === 2) { const [a, b] = [...pointers.values()] as [Point, Point]; gesture = { kind: 'pinch', span: Math.hypot(a.x - b.x, a.y - b.y), mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, angle: Math.atan2(b.y - a.y, b.x - a.x), moved: true }; }
+    if (pointers.size === 1) {
+      flick.clear();
+      gesture = { kind: 'pan', id: event.pointerId, moved: false, from: point, last: point, down: now(), type: event.pointerType, grab: fits ? ground(point) : null, span: 1, mid: point };
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()] as [Point, Point];
+      gesture = { kind: 'pinch', id: event.pointerId, moved: true, from: a, last: a, down: now(), type: event.pointerType, grab: null, span: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: middle(a, b) };
+      rig.beginDrag(); root!.classList.add('is-dragging'); setHover(null);
+    }
   }
   function onMove(event: PointerEvent) {
     const point = local(event);
     if (!pointers.has(event.pointerId)) { if (event.pointerType === 'mouse') hover(point); return; }
     pointers.set(event.pointerId, point);
-    if (!gesture) return;
+    if (!gesture || !fits) return;
     if (gesture.kind === 'pinch' && pointers.size >= 2) {
-      const [a, b] = [...pointers.values()] as [Point, Point], span = Math.hypot(a.x - b.x, a.y - b.y), mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, angle = Math.atan2(b.y - a.y, b.x - a.x);
-      rig.panScreen(mid.x - gesture.mid!.x, mid.y - gesture.mid!.y);
-      if (level === NIGERIA) rig.orbit(clamp(rig.view.yaw - (angle - gesture.angle!), -0.6, 0.6) - rig.view.yaw, 0);
-      if (span > 0 && gesture.span! > 0) zoomBy(gesture.span! / span, ...ndc(mid));
-      Object.assign(gesture, { span, mid, angle });
+      // Two fingers: the pinch zooms about the middle, and the ground between the fingers stays between them as they travel.
+      const [a, b] = [...pointers.values()] as [Point, Point], span = Math.hypot(a.x - b.x, a.y - b.y) || 1, mid = middle(a, b);
+      const held = ground(gesture.mid), to = ndc(mid);
+      zoomBy(gesture.span / span, ...ndc(gesture.mid));
+      if (!held || !rig.dragTo(held, to[0], to[1])) rig.panScreen(mid.x - gesture.mid.x, mid.y - gesture.mid.y);
+      gesture.span = span; gesture.mid = mid;
       moved();
       return;
     }
-    const dx = point.x - gesture.last!.x, dy = point.y - gesture.last!.y;
-    if (!gesture.moved && Math.hypot(point.x - gesture.start!.x, point.y - gesture.start!.y) < DRAG_START) return;
-    if (!gesture.moved) { gesture.moved = true; root!.classList.add('is-dragging'); setHover(null); }
+    if (gesture.kind === 'pinch' || gesture.id !== event.pointerId) return;
+    const dx = point.x - gesture.last.x, dy = point.y - gesture.last.y;
+    if (!gesture.moved && !isDrag(Math.hypot(point.x - gesture.from.x, point.y - gesture.from.y), gesture.type)) return;
+    if (!gesture.moved) { gesture.moved = true; rig.beginDrag(); root!.classList.add('is-dragging'); setHover(null); }
     gesture.last = point;
-    // Turning and tilting is for the closest level; farther out the map stays flat-on.
-    if (gesture.kind === 'orbit' && level === NIGERIA) rig.orbit(clamp(rig.view.yaw - dx * 0.005, -0.6, 0.6) - rig.view.yaw, clamp(rig.view.pitch + dy * 0.004, 0.7, 1.4) - rig.view.pitch);
-    else rig.panScreen(dx, dy);
+    // The ground under the pointer when it went down stays under it.
+    const [nx, ny] = ndc(point);
+    if (!gesture.grab || !rig.dragTo(gesture.grab, nx, ny)) rig.panScreen(dx, dy);
+    flick.push(rig.view.x, rig.view.z, stampOf(event));
     moved();
   }
   function onUp(event: PointerEvent) {
     if (!pointers.has(event.pointerId)) return;
-    const point = local(event), was = gesture;
+    const point = local(event), was = gesture, cancelled = event.type === 'pointercancel';
     pointers.delete(event.pointerId);
-    root!.classList.remove('is-dragging');
-    if (pointers.size === 1 && was?.kind === 'pinch') { const rest = [...pointers.values()][0]!; gesture = { kind: 'pan', start: rest, last: rest, moved: true }; return; }
+    if (was?.kind === 'pinch') {
+      const rest = [...pointers.entries()][0];
+      // One finger stays down: it carries on as a drag from where it is, and nothing glides from a pinch.
+      if (rest) { gesture = { kind: 'pan', id: rest[0], moved: true, from: rest[1], last: rest[1], down: now(), type: 'touch', grab: ground(rest[1]), span: 1, mid: rest[1] }; flick.clear(); }
+      else { gesture = null; rig.endDrag(); root!.classList.remove('is-dragging'); moved(); }
+      return;
+    }
+    if (!was || was.id !== event.pointerId) return;
     gesture = null;
-    if (!was || was.moved || event.type === 'pointercancel') return;
+    root!.classList.remove('is-dragging');
+    if (was.moved) {
+      // A flick glides on; a drag that had stopped before the finger lifted does not, and nothing glides for a player who asked for less motion.
+      rig.endDrag(!reducedMotion && !cancelled ? flick.velocity(stampOf(event)) : null);
+      moved();
+      return;
+    }
+    // Only a quick press that stayed put is a tap: one held for too long selects nothing.
+    if (cancelled || !isTap(0, now() - was.down, was.type)) return;
     const t = now(), double = t - lastTap.t < DOUBLE_MS && Math.hypot(point.x - lastTap.x, point.y - lastTap.y) < 28;
     lastTap = double ? { t: -1e9, x: 0, y: 0 } : { t, x: point.x, y: point.y };
     const hit = pickAt(point.x, point.y);
@@ -944,7 +1091,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (double) {
       // Twice on a region: go to it. Twice on open water: just closer.
       if (hit) { selected = { kind: hit.kind, id: hit.id }; select(selected, { flyTo: true }); }
-      else { const [nx, ny] = ndc(point), ground = rig.groundAt(nx, ny); if (ground) fly({ x: ground.x, z: ground.z, distance: rig.view.distance * 0.5, yaw: rig.view.yaw }, 0.45); }
+      else { const spot = ground(point); if (spot) fly({ x: spot.x, z: spot.z, distance: rig.view.distance * 0.5, yaw: 0 }, 0.45); }
       return;
     }
     select(hit, { from: 'map' });
@@ -960,12 +1107,21 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function onWheel(event: WheelEvent) {
     event.preventDefault();
     if (entering || !fits) return;
-    const delta = event.deltaMode === 1 ? event.deltaY * 16 : event.deltaY;
+    const delta = event.deltaY * (event.deltaMode === 1 ? 32 : event.deltaMode === 2 ? 320 : 1);
     rig.hold();
-    zoomBy(Math.exp(clamp(delta, -240, 240) * 0.0016), ...ndc(local(event)));
+    // A trackpad pinch arrives as a wheel with Ctrl held, in much smaller steps.
+    zoomBy(Math.exp(clamp(delta, -240, 240) * (event.ctrlKey ? 0.01 : 0.0016)), ...ndc(local(event)));
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
+    const friendOpen = hit('fb'), friendAct = hit('fact'), friendGo = hit('fgo');
+    if (friendOpen || friendAct || friendGo || hit('fclose')) {
+      if (friendAct) onFriend(friendAct.dataset.atlasFact as 'chat' | 'call' | 'ping', friendAct.dataset.id ?? '', friendAct.dataset.name ?? '');
+      else if (friendGo) { friendsOpen = null; drawFriendsPanel(); selectCity(friendGo.dataset.atlasFgo ?? ''); }
+      else if (friendOpen) { const key = friendOpen.dataset.atlasFb ?? null; friendsOpen = friendsOpen === key ? null : key; drawFriendsPanel(); }
+      else { friendsOpen = null; drawFriendsPanel(); }
+      return;
+    }
     const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go'), onCredit = hit('credit');
     const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link'), departure = hit('departure');
     if (departure && stateOverviewShown) {
@@ -1059,7 +1215,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     },
     /** The held cities or the links may have changed. */
     refresh() { drawRail(); drawSheet(); },
-    resize, goLevel, previewTrip, selectCity,
+    resize, goLevel, previewTrip, selectCity, setFriends, openFriends,
     warm() { void ensure(WORLD).then(() => ensure(AFRICA)); },
     select: (ref, options) => select(ref, options),
     zoomBy: (factor) => { if (fits) zoomBy(factor); },

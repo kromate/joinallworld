@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { createLife, dispatch, advanceLife, viewLife, spotsOf } from '../life.ts';
 import { systems, emit, modify } from './registry.ts';
 import { makeContext } from './util.ts';
+import { FURNITURE_BLURBS } from './content/furniture-blurbs.ts';
 import { FURNITURE, CATEGORIES, STARTER_FURNITURE, HOME_ACTIVITIES, KINDS, STAR_MULTIPLIER, SELL_REFUND_RATE } from './content/furniture.ts';
 import { INGREDIENTS, RECIPES } from './content/food.ts';
 import { HOUSES, HOUSE_ORDER, MOVE_IN_WEEKS } from './content/housing.ts';
@@ -74,7 +75,7 @@ test('content: fixed values are exact and every original value is marked', () =>
   for (const item of Object.values(FURNITURE)) {
     assert.ok(CATEGORIES.some((category) => category.id === item.category), item.id);
     assert.ok(Object.hasOwn(KINDS, item.kind), item.id);
-    assert.ok(Number.isInteger(item.price) && item.price > 0 && item.stars >= 0 && item.stars < STAR_MULTIPLIER.length && item.label && item.shape && item.blurb, item.id);
+    assert.ok(Number.isInteger(item.price) && item.price > 0 && item.stars >= 0 && item.stars < STAR_MULTIPLIER.length && item.label && item.shape && FURNITURE_BLURBS[item.id], item.id);
   }
   for (const category of CATEGORIES) assert.ok(Object.values(FURNITURE).some((item) => item.category === category.id), `${category.id} has items`);
   assert.equal(STAR_MULTIPLIER[1], 1, 'a one-star object gives exactly the listed amounts');

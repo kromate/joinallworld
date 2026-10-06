@@ -323,7 +323,7 @@ onBeforeUnmount(() => {
   <div ref="root" class="cr-root" :data-step="cr.step" :data-mode="mode" data-cr-root>
     <div class="cr-stage-col">
       <p class="cr-brand"><i aria-hidden="true"><GameIcon name="globe" :size="20" /></i><b>Allworld</b><span>A digital world you can live in</span></p>
-      <CreatorStage :look="draft.look" :name="draft.name || 'Your Sim'" :focus="focus" :caption="draft.name" @focus="setFocus" />
+      <CreatorStage :look="draft.look" :name="draft.name || 'Your character'" :focus="focus" :caption="draft.name" @focus="setFocus" />
     </div>
 
     <section class="cr-panel" :aria-labelledby="'cr-title'">
@@ -350,7 +350,7 @@ onBeforeUnmount(() => {
         <Transition name="cr-step" mode="out-in">
           <div v-if="finished" key="done" class="cr-body cr-done">
             <h1 id="cr-title" ref="heading" tabindex="-1">{{ view.name }} is ready</h1>
-            <p class="cr-lead">{{ o.legacy ? 'This life started before character creation existed, so nothing was changed.' : 'Your Sim has moved in.' }} You can change your look any time in Sim → Profile.</p>
+            <p class="cr-lead">{{ o.legacy ? 'This life started before character creation existed, so nothing was changed.' : 'Your character has moved in.' }} You can change your look any time in your Profile.</p>
             <p class="cr-note">{{ lookSummary(draft.look) }}</p>
           </div>
           <div v-else :key="cr.step" class="cr-body">

@@ -102,7 +102,7 @@ test('Bring a friend: loading, then the link, the friends and what each is owed;
   const words = text(html)
   assert.ok(words.startsWith('Bring a friend 1 friend playing because of you Your title: Connector.'), words.slice(0, 120))
   assert.ok(html.includes('Ada &lt;b&gt;bold&lt;/b&gt;') && !html.includes('<b>bold</b>'))
-  assert.ok(words.includes('Playing · counted') && words.includes('Made a Sim · has not worked two days yet') && words.includes('Counted'))
+  assert.ok(words.includes('Playing · counted') && words.includes('Made a character · has not worked two days yet') && words.includes('Counted'))
   assert.ok(words.includes('You came through Bola’s link') && words.includes('Go to their door'))
   assert.ok(words.includes('Share my invite link') && words.includes('Invite someone to my house'))
   assert.match(html, /<ul[^>]*aria-label="Friends who came through your link"/)

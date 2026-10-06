@@ -127,7 +127,7 @@ export function chooseLook(look: Look, group: string, value: string, owned?: Own
 /** "Woman · Braids · Owambe · Ankara · Glasses" */
 export const lookSummary = (look: Look): string => [look.body, look.hair, look.outfit, look.fabric, ...worn(look)].filter(Boolean).map(titled).join(' · ')
 /** The preview's text alternative: everything the picture shows, in words. */
-export function lookAlt(look: Look, name = 'Your Sim'): string {
+export function lookAlt(look: Look, name = 'Your character'): string {
   const wearing = worn(look)
   return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms${wearing.length ? `, wearing ${wearing.map((id) => titled(id).toLowerCase()).join(', ')}` : ''}.`
 }

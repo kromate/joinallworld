@@ -250,7 +250,7 @@ function build(ctx: RouteContext) {
         const t = now(), blocked = blockOf(db, s, session, id, to);
         if (blocked) return no(blocked.code, blocked.reason, blocked.again ? { again: blocked.again } : {});
         const cityId = characterCity(session);
-        if (!cityId) return no('not_live', 'Finish creating your Sim first.');
+        if (!cityId) return no('not_live', 'Finish creating your character first.');
         // The same count for everyone, the founder included: a ping is one friend at a time.
         if (!ctx.allow(`ping:hour:${id}`, PING.perHour, HOUR)) return no('rate_limited', `You have pinged ${PING.perHour} times this hour. Try again later.`);
         if (!ctx.allow(`ping:day:${id}`, PING.perDay, DAY)) return no('rate_limited', `You have pinged ${PING.perDay} times today. Try again tomorrow.`);
@@ -317,7 +317,7 @@ function build(ctx: RouteContext) {
         const where = whereIs(db, from), cityId = characterCity(session);
         if (!where) { record.state = 'ended'; return left(); }
         if (where.moving) return no('travelling', `${them.name} is on the way somewhere. Try again when they have arrived.`, { from: who });
-        if (!cityId) return no('settle_required', 'Finish creating your Sim first.');
+        if (!cityId) return no('settle_required', 'Finish creating your character first.');
         const life = ctx.settle(session, cityId), sameCity = where.cityId === cityId;
         const place = placeOf(where.cityId, where.venue);
         // A home is entered through its own door (the knock, ./service.ts): the join only ever brings a friend to the city.

@@ -38,7 +38,7 @@ function onArrow(event: KeyboardEvent, index: number): void {
     <span class="sim-avatar" aria-hidden="true"><GameIcon inline name="person" /></span>
     <div><h2>{{ game.state.value.name }}</h2><p>{{ mood.word }}<template v-if="feeling"> · {{ feeling.label }}</template></p></div>
   </header>
-  <div ref="row" class="sim-tabs" role="tablist" aria-label="Your Sim">
+  <div ref="row" class="sim-tabs" role="tablist" aria-label="Your character">
     <button v-for="(panel, index) in tabs" :id="`sim-tab-${panel.id}`" :key="panel.id" role="tab" type="button" :aria-selected="panel === current" :tabindex="panel === current ? 0 : -1" :class="{ 'is-selected': panel === current }" @click="shell.open('sim', { tab: panel.id })" @keydown="onArrow($event, index)">{{ panel.title }}</button>
   </div>
   <PanelHost v-if="current" :key="current.id" class="sheet-body" role="tabpanel" :aria-labelledby="`sim-tab-${current.id}`" :panel="current" :params="params" />

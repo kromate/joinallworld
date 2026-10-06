@@ -20,5 +20,5 @@ export function trayOf(health: Pick<HealthView, 'warning' | 'weather'> | undefin
 }
 
 /** The chip's text alternative: a warning says what it is and where it leads; the weather names itself. */
-export const warningLabel = (warning: Pick<Warning, 'text'>): string => `${warning.text}. Open the Health app.`
+export const warningLabel = (warning: Pick<Warning, 'text'> & Partial<Pick<Warning, 'level'>>): string => `${warning.text}. ${warning.level === 'sick' ? 'Go to the nearest clinic.' : 'Open the Health app.'}`
 export const weatherLabel = (label: string): string => `Weather: ${label}. Open the Health app.`

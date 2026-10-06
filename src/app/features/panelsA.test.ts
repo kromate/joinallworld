@@ -190,6 +190,7 @@ test('health: the status, the cure prices and where they are, and the chips that
   assert.deepEqual(trayOf({ warning: null, weather: { id: 'clear', label: 'Dry', icon: 'x', text: '', raining: false, minutesLeft: 3 } }), { kind: 'weather', id: 'clear', label: 'Dry', icon: 'x' })
   assert.equal(trayOf(undefined), null)
   assert.equal(warningLabel({ text: 'You are sick' }), 'You are sick. Open the Health app.')
+  assert.equal(warningLabel({ text: 'Very sick · see a doctor', level: 'sick' }), 'Very sick · see a doctor. Go to the nearest clinic.')
 })
 
 test('goals: the reasons, the loan card, and the goal chip\'s action, label and toasts', () => {
@@ -222,7 +223,7 @@ test('boutique: trying on is a preview of an item still on offer; each item has 
   assert.deepEqual(nextTrying(null, { kind: 'hair', id: 'afro' }), { kind: 'hair', id: 'afro' })
   assert.deepEqual(itemControl(item({}), { offline: '', done: true }), { kind: 'buy', why: '' })
   assert.deepEqual(itemControl(item({ blocked: 'Need ₦1,000 more' }), { offline: '', done: true }), { kind: 'buy', why: 'Need ₦1,000 more' })
-  assert.deepEqual(itemControl(item({ owned: true }), { offline: '', done: false }), { kind: 'wear', why: 'Finish creating your Sim first.' })
+  assert.deepEqual(itemControl(item({ owned: true }), { offline: '', done: false }), { kind: 'wear', why: 'Finish creating your character first.' })
   assert.deepEqual(itemControl(item({ wearing: true }), { offline: '', done: true }), { kind: 'worn' })
   assert.deepEqual(itemControl(item({ kind: 'accessories', wearing: true }), { offline: 'No internet — you cannot shop right now', done: true }), { kind: 'take-off', why: 'No internet — you cannot shop right now' })
 })
@@ -238,7 +239,7 @@ test('sim tabs: need levels, the feelings total, skill segments, the name rules 
   assert.equal(saveState({ ...ok, connected: false, short: 'No internet' }).label, 'No internet — cannot save right now')
   assert.equal(saveState({ ...ok, pending: true }).label, 'Saving…')
   assert.equal(saveState({ ...ok, done: false, guest: true }).label, 'Settle in to change your look')
-  assert.equal(saveState({ ...ok, done: false }).label, 'Finish creating your Sim first')
+  assert.equal(saveState({ ...ok, done: false }).label, 'Finish creating your character first')
   assert.equal(saveState({ ...ok, unchanged: true }).label, 'No changes yet')
   assert.equal(saveState({ ...ok, name: 'ab' }).disabled, true)
   assert.equal(saveFailure({ reason: 'Not allowed.' }), 'Not allowed.'); assert.ok(saveFailure({ code: 'muted' }).startsWith('A moderator has muted you'))

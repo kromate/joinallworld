@@ -34,7 +34,7 @@ export function askFriendText(where: string, cash: number, home: string | null):
 /** The label of the main button of an action: what happens when it is tapped. */
 export function actionVerb(action: ReliefAction): string {
   switch (action.id) {
-    case 'odd-job': case 'bench': case 'tap': return action.here ? 'Do it now' : 'Go there'
+    case 'odd-job': case 'bench': case 'tap': case 'clinic': return action.here ? 'Do it now' : 'Go there'
     case 'credit-ride': return 'Ride home'
     case 'friend': return 'Write'
     case 'cash-box': return 'Open'
@@ -44,3 +44,26 @@ export function actionVerb(action: ReliefAction): string {
 
 /** The card for the life as it stands now. */
 export const helpNow = (state: LifeState, cityId: string): ReliefHelp | null => helpOf(state, makeContext({ cityId, now: state.t }))
+
+/** A wait in words a person says: "under a minute", "12 min", "3 h 45 min" (rounded up to the minute). */
+export function humanWait(seconds: number): string {
+  if (!(seconds >= 60)) return 'under a minute'
+  const minutes = Math.ceil(seconds / 60)
+  if (minutes < 60) return `${minutes} min`
+  const hours = Math.floor(minutes / 60), rest = minutes % 60
+  return rest ? `${hours} h ${rest} min` : `${hours} h`
+}
+
+const clock = (hours: string | undefined, minutes: string | undefined, seconds?: string): number => Number(hours ?? 0) * 3600 + Number(minutes ?? 0) * 60 + Number(seconds ?? 0)
+
+/** The short line under a row that cannot be done now: "Again in 3 h 45 min", "Closed · opens in 2 h 3 min", else the game's own sentence. */
+export function shortReason(reason: string): string {
+  const again = /available again in (?:(\d+)m )?(\d+)s/.exec(reason)
+  if (again) return `Again in ${humanWait(clock(undefined, again[1], again[2]))}`
+  const opens = /Opens in (?:(\d+)h )?(?:(\d+)m)?/.exec(reason)
+  if (opens && /closed/i.test(reason)) return `Closed · opens in ${humanWait(clock(opens[1], opens[2]))}`
+  return reason
+}
+
+/** The rows in the order they are offered: what can be done now first, then what cannot (each group in the order the game gave). */
+export const orderedActions = (actions: readonly ReliefAction[]): ReliefAction[] => [...actions.filter((action) => !action.blocked), ...actions.filter((action) => action.blocked)]

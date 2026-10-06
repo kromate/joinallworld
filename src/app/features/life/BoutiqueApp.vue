@@ -44,7 +44,7 @@ const isTrying = (item: BoutiqueItem): boolean => tried.value === item
       <LookStage :look="shown" variant="wide" :name="view.name" :caption="caption">
         <template v-if="tried" #tools><button type="button" class="look-tool" data-try="null" data-key="try:none" @click="trying = null">↶ Back to my look</button></template>
       </LookStage>
-      <p>Wallet <strong>{{ money(game.state.value.cash) }}</strong><small>Try anything on first. Buying puts it on straight away and keeps it in your wardrobe. Styles shown fit your current body; colours are free in Sim → Profile.</small></p>
+      <p>Wallet <strong>{{ money(game.state.value.cash) }}</strong><small>Try anything on first. Buying puts it on straight away and keeps it in your wardrobe. Styles shown fit your current body; colours are free in your Profile.</small></p>
     </div>
     <template v-for="section in sections" :key="section.kind">
       <h3>{{ section.title }}</h3>

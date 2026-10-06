@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
   size?: number
   /** The text alternative; '' draws the figure as decoration. */
   label?: string
-}>(), { size: 150, label: 'Preview of your Sim' })
+}>(), { size: 150, label: 'Preview of your character' })
 const shapes = computed(() => avatarShapes(props.look))
 </script>
 

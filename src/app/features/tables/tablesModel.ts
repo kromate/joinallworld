@@ -29,7 +29,7 @@ export const heroNote = (paid: PaidTerms | null | undefined): string => (paid ? 
 export const ratingLine = (label: string, rating: TableRating): string => `Your ${label} rating: ${rating.rating}${rating.provisional ? ' (provisional)' : ''} · ${rating.won} won of ${rating.played} rated games.`
 
 export const LIST_RULES: readonly string[] = [
-  'Sit at a table in the place where your Sim is. Anyone can watch from anywhere.',
+  'Sit at a table in the place where your character is. Anyone can watch from anywhere.',
   'There are no stakes: nobody can lose money at a table. A win against a real player is paid by the game.',
   'Four paid wins a day. Games against the same player count three times a day; after that they are for fun.',
   'Bots fill empty seats when you ask. A game against bots pays nothing.',

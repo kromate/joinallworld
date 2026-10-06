@@ -98,6 +98,8 @@ A few tests read the built page in `dist/` (the first-load size budget, the rele
 
 Scripted journeys print a transcript and are useful when you change the rules: `npm run first-minute`, `npm run first-day`, `npm run new-player`, `npm run two-players`, `npm run two-cities`, `npm run economy`.
 
+A running copy can be checked in about a minute with `npm run smoke -- <origin>` (the origin defaults to `http://127.0.0.1:5173`; `npm start` and `npm run start:worker` print theirs). It reads the health answer and build id, the page with its security headers and every asset and script it references, makes one guest named "Zz Test", loads its life and the world pulse, opens the socket and waits for the counts frame, sends one harmless action and repeats its id to see it answered as a duplicate, and fetches the content and map chunk of every open city. It makes a few dozen requests, prints one line per check and a PASS summary, and exits non-zero with a single FAIL line at the first problem. Against `npm run dev` the security headers and the built chunks are not there, so those two checks are skipped.
+
 ## When something does not start
 
 | You see | Do |

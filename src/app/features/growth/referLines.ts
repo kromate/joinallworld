@@ -1,7 +1,7 @@
 // The lines of the Invites screen. Fetched with it: the first download needs only the badge in referModel.ts.
 import type { InvitedFriend, ReferralView } from '../../../types/growth.ts'
 
-const STATE: Readonly<Record<string, string>> = { joined: 'Made a Sim · has not worked two days yet', counted: 'Playing · counted' }
+const STATE: Readonly<Record<string, string>> = { joined: 'Made a character · has not worked two days yet', counted: 'Playing · counted' }
 export const friendState = (friend: Pick<InvitedFriend, 'state'>): string => STATE[friend.state] ?? friend.state
 export const heroFigure = (counted: number): string => `${counted} friend${counted === 1 ? '' : 's'} playing because of you`
 /** "Your title: Connector. 2 more for “Host”." */

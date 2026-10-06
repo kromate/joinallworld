@@ -509,7 +509,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
 
   /** Open the Map on the city map ('city') or the country map ('world'). The maps are told first. */
-  function showMapLayer(layer: 'city' | 'world', at: { level?: number; city?: string } = {}): void {
+  function showMapLayer(layer: 'city' | 'world', at: { level?: number; city?: string; friends?: boolean } = {}): void {
     globalThis.window?.dispatchEvent(new CustomEvent('jaw:map-ui', { detail: { layer, ...at } }))
     shell.open('map', { layer, ...at })
   }

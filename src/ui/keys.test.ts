@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SHORTCUTS, shortcutFor, shortcutRows, heldActionFor } from './keys.ts';
+import { SHORTCUTS, shortcutFor, heldActionFor } from './keys.ts';
+import { shortcutRows } from './keys-text.ts';
 
 test('shortcut map matches the documented keys and resolves events', () => {
   const run = (key: string) => shortcutFor({ key })?.run;
@@ -27,7 +28,7 @@ test('W A S D walk, Shift jogs, the camera has its own keys, and the Sim sheet m
   assert.equal(row('W A S D').length, 1); assert.match(row('W A S D')[0]!.description, /Walk.*Shift/);
   assert.equal(row('← ↑ ↓ →').length, 1); assert.match(row('← ↑ ↓ →')[0]!.description, /Walk.*Buy.*furniture.*map/);
   assert.equal(row('+ − 0').length, 1); assert.match(row('+ − 0')[0]!.description, /Zoom.*recentre/);
-  assert.equal(row('I')[0]!.description, 'Your Sim'); assert.equal(row('S').length, 0, 'S is no longer listed on its own');
+  assert.equal(row('I')[0]!.description, 'Your character'); assert.equal(row('S').length, 0, 'S is no longer listed on its own');
   assert.ok(rows.every(item => item.label && item.description));
   // A released key is recognised whatever modifiers are down, so nothing can stay held.
   assert.deepEqual([{ key: 'w' }, { key: 'W', shiftKey: true }, { key: 'ArrowLeft', ctrlKey: true }, { key: 'Shift' }, { key: 'PageUp' }, { key: 'm' }, { key: '+' }, {}].map(heldActionFor),

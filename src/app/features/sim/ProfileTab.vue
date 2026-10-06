@@ -79,7 +79,7 @@ async function submit(): Promise<void> {
 <template>
   <form v-if="current" class="sim-profile" data-profile novalidate @submit.prevent="submit()">
     <p v-if="!onboarding.done && onboarding.guest" class="sim-note">You are a guest in the city: no traits, dream or home yet. <button type="button" class="sim-link" @click="shell.open('onboarding')">Make this life yours</button> — everything you have earned is kept.</p>
-    <p v-else-if="!onboarding.done" class="sim-note">You have not created your Sim yet. <button type="button" class="sim-link" @click="shell.open('onboarding')">Create your Sim</button></p>
+    <p v-else-if="!onboarding.done" class="sim-note">You have not created your character yet. <button type="button" class="sim-link" @click="shell.open('onboarding')">Create your character</button></p>
     <LookStage class="sim-stage" :look="current.look" variant="wide" :name="state.name" :caption="lookSummary(current.look)" />
     <div class="sim-profile-top">
       <div>

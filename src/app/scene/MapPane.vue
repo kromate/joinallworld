@@ -22,29 +22,53 @@ const mapUi: Record<string, unknown> = {}
 const keepMapUi = (event: Event): void => { Object.assign(mapUi, (event as CustomEvent<Record<string, unknown>>).detail ?? {}) }
 window.addEventListener('jaw:map-ui', keepMapUi)
 /** What the atlas was asked to show when it comes to the front: a level (0 the world … 2 Nigeria) or a city's card. */
-let wanted: { level?: number; city?: string } | null = null
+let wanted: { level?: number; city?: string; friends?: boolean } | null = null
 const onLayer = (event: Event): void => {
-  const detail = (event as CustomEvent<{ layer?: string; level?: number; city?: string }>).detail
+  const detail = (event as CustomEvent<{ layer?: string; level?: number; city?: string; friends?: boolean }>).detail
   const layer = detail?.layer
   if (layer !== 'world' && layer !== 'city') return
   worldLayer.value = layer === 'world'
-  if (layer === 'world' && (typeof detail?.level === 'number' || typeof detail?.city === 'string')) { wanted = { ...(typeof detail.level === 'number' ? { level: detail.level } : {}), ...(typeof detail.city === 'string' ? { city: detail.city } : {}) }; aim() }
+  if (layer === 'world' && (typeof detail?.level === 'number' || typeof detail?.city === 'string')) { wanted = { ...(typeof detail.level === 'number' ? { level: detail.level } : {}), ...(typeof detail.city === 'string' ? { city: detail.city } : {}), ...(detail.friends === true ? { friends: true } : {}) }; aim() }
 }
 /** Point the atlas at what was asked for, once it exists and is in front. */
 function aim(): void {
   const world = scene.world.value
   if (!world || !wanted || !mapOpen() || !worldLayer.value) return
-  const { level, city } = wanted
+  const { level, city, friends } = wanted
   wanted = null
   // After the atlas has its first level and the shell has drawn, so it measures the screen it is shown on.
   void world.ready.then(() => nextTick()).then(() => {
     world.resize()
     if (typeof level === 'number') world.goLevel(level)
-    if (city) world.selectCity(city)
+    if (city && friends) world.openFriends(city)
+    else if (city) world.selectCity(city)
   })
 }
 window.addEventListener('jaw:map-ui', onLayer)
 let loading: Promise<void> | null = null
+
+/** What a row of the atlas's friends list asks for. The pieces are fetched when first wanted. */
+async function friendAction(action: 'chat' | 'call' | 'ping', id: string, name: string): Promise<void> {
+  if (action === 'chat') { shell.open('messages', { to: id, name }); return }
+  if (action === 'call') {
+    const { useCall } = await import('../features/calls/useCall.ts')
+    const rang = await useCall().request({ id, name })
+    if (rang) shell.close()
+    return
+  }
+  const { sendPing } = await import('../features/ping/pingStore.ts')
+  const done = await sendPing(id, name)
+  if (done.words) game.toast(done.words, done.ok ? 'good' : 'error')
+}
+/** The country map's friend badges follow the live frames (and the friends list); fetched with the map, drawn again when either changes. */
+let stopFriends: (() => void) | null = null
+async function keepFriends(): Promise<void> {
+  const [{ currentFriends }, { onLive, onPeople, social }] = await Promise.all([import('../features/social/friendsOnMap.ts'), import('../features/social/useSocial.ts')])
+  const draw = (): void => { scene.world.value?.setFriends(currentFriends(game.cityId.value)) }
+  const offs = [onLive(draw), onPeople(draw), watch(() => [game.cityId.value, social.me?.friends.length], draw)]
+  stopFriends = () => { for (const off of offs) off() }
+  draw()
+}
 
 const mapOpen = (): boolean => game.mode.value === 'map'
 function show(): void {
@@ -72,7 +96,10 @@ function load(): Promise<void> {
       routes: () => viewLife(game.state.value, { now: game.state.value.t, cityId: game.cityId.value }).estate?.links?.map((link) => ({ ...link, skipFree: game.state.value.travel.skipped !== true })) ?? null,
       wallet: () => game.state.value.cash,
       held: heldCities,
+      // A row of the friends list: Chat opens the conversation; Call and Ping are the card's own buttons, pressed from here.
+      onFriend: (action, id, name) => { void friendAction(action, id, name) },
     })
+    void keepFriends()
     const city = createCityView(cityBox.value, {
       cityId: game.cityId.value,
       onSelectVenue: (venueId) => { shell.open('map', { destination: venueId }) },
@@ -110,6 +137,7 @@ watch(() => heldCities().join(), () => scene.world.value?.refresh?.())
 const onResize = (): void => { if (mapOpen()) { scene.world.value?.resize(); scene.city.value?.resize() } }
 window.addEventListener('resize', onResize)
 onBeforeUnmount(() => {
+  stopFriends?.()
   window.removeEventListener('jaw:map-ui', keepMapUi); window.removeEventListener('jaw:map-ui', onLayer); window.removeEventListener('resize', onResize)
   scene.city.value?.destroy(); scene.city.value = null; scene.world.value = null
 })

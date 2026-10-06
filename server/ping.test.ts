@@ -678,7 +678,7 @@ test('the join and the one main home: a friend who owns a second home there arri
   const after = await h.life(bayo, 'ibadan');
   assert.deepEqual([after.location, after.cash, after.estate.lga, after.estate.tier, after.estate.living, after.estate.home], [there.location, before.cash, 'ibadan-south-east', SECOND_HOME.tier, 'own', 'lagos']);
   assert.deepEqual([Object.keys(after.estate.away), must(after.estate.away.lagos).lga, must(after.estate.away.lagos).tier], [['lagos'], before.estate.lga, before.estate.tier]);
-  assert.equal(after.message, 'You joined Ada at Agodi Gardens, Ibadan. You have a house here.');
+  assert.equal(after.message, 'You joined Ada at Iwo Road Interchange, Ibadan. You have a house here.');
   const tab = homeTab(after, h.f.now());
   assert.deepEqual([tab.visiting, tab.settle, tab.home, tab.makeMain], [false, null, { city: 'lagos', name: 'Lagos', here: false }, { blocked: null }]);
   assert.match(must(tab.lodging.blocked), /^You have a home in Ibadan/);

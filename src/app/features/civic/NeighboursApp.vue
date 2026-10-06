@@ -35,7 +35,7 @@ async function toggle(): Promise<void> {
   if (result.ok) reload()
 }
 function hi(player: { id: string; name: string }): void {
-  if (!shell.open('person', { player: player.id, name: player.name })) game.toast('That player’s card could not be opened. Try again from Sim → People.', 'error')
+  if (!shell.open('person', { player: player.id, name: player.name })) game.toast('That player’s card could not be opened. Try again from your People tab.', 'error')
 }
 </script>
 

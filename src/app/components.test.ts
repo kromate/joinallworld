@@ -213,6 +213,6 @@ test('Phone: the home screen lists the Vue panels', async () => {
   const kinds = Object.fromEntries(app.panels.map((panel) => [panel.id, 'kind' in panel ? 'vue' : 'existing']))
   assert.deepEqual([kinds.bank, kinds.messages, kinds.support, kinds.jobs, kinds.groceries, kinds.ride], ['vue', 'vue', 'vue', 'vue', 'vue', 'vue'])
   assert.match(html, /role="img" aria-label="Connected to the game server"/)
-  assert.match(html, new RegExp(`aria-label="Battery: your Sim’s Energy is ${Math.round(app.game.state.value.needs.energy)}%"`))
+  assert.match(html, new RegExp(`aria-label="Battery: your character’s Energy is ${Math.round(app.game.state.value.needs.energy)}%"`))
   assert.match(html, /<section class="ph-app"[^>]*inert/, 'no app is open, so the app layer cannot be reached')
 })

@@ -154,7 +154,7 @@ test('the first screen names the inviter as text, or falls back to "a friend"', 
   const asked: string[] = []
   await inviterName((async (path: string) => { asked.push(path); return { ok: false } }) as unknown as FetchJson, 'a/b?c')
   assert.deepEqual(asked, ['/api/growth/share/a%2Fb%3Fc'])
-  assert.deepEqual(invitedWords('Ada'), { title: 'Ada invited you.', text: 'Make your Sim, tap Play and you land where Ada is.' })
+  assert.deepEqual(invitedWords('Ada'), { title: 'Ada invited you.', text: 'Make your character, tap Play and you land where Ada is.' })
   assert.deepEqual(invitedWords(null), { title: 'A friend invited you.', text: 'Tap Play and you land where they are.' })
 })
 

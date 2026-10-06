@@ -47,7 +47,11 @@ function onPick(event: Event): void {
   const spot = KINDS[def.kind]?.spot
   // Selecting the spot goes through the server; the accepted state redraws the scene with the marker.
   if (spot) void goTo('home', spot)
-  else { game.toast(`${def.label} — ${def.blurb}`); if (state.spot) void command('spot', { id: state.spot }) }
+  else {
+    // The line about the piece is fetched with this screen's first use of it (game/content/furniture-blurbs.ts).
+    void import('../../../game/content/furniture-blurbs.ts').then(({ FURNITURE_BLURBS }) => game.toast(`${def.label} — ${FURNITURE_BLURBS[def.id]}`))
+    if (state.spot) void command('spot', { id: state.spot })
+  }
 }
 
 function onScene(event: Event): void {

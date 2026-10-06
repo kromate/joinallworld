@@ -388,7 +388,7 @@ const homeSpot = (id: string | undefined, cityId: string): ChipTarget => (spotsO
 function chipOf(state: LifeState, ctx: LifeContext): GoalChip {
   const g = state.goals;
   if (state.onboarding && !state.onboarding.done && state.onboarding.stage !== 'guest') {
-    return { kind: 'create', icon: '✨', title: 'Create your Sim', hint: 'Choose your look, personality, dream and home', open: 'onboarding' };
+    return { kind: 'create', icon: '✨', title: 'Create your character', hint: 'Choose your look, personality, dream and home', open: 'onboarding' };
   }
   const goal = g.started ? goalsFor(state)[g.chain] : null;
   if (goal) {

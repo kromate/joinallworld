@@ -680,7 +680,7 @@ export interface RideCreditView {
 }
 /** One thing a stuck player can do right now. `venue` is where it is done (null: anywhere); `here` says they are already there. */
 export interface ReliefAction {
-  id: 'odd-job' | 'bench' | 'tap' | 'credit-ride' | 'friend' | 'cash-box' | 'repay'
+  id: 'odd-job' | 'bench' | 'tap' | 'clinic' | 'credit-ride' | 'friend' | 'cash-box' | 'repay'
   label: string
   detail: string
   /** Why it cannot be done now (null when it can). */
@@ -696,6 +696,8 @@ export interface ReliefHelp {
   /** What kind of moment this is; a dismissed card is not shown again for the same key. */
   key: string
   title: string
+  /** The words of the small entry chip in the HUD. */
+  chip: string
   line: string
   actions: ReliefAction[]
 }

@@ -260,3 +260,29 @@ p.atlas-way-why{padding:8px 10px;border-radius:12px;background:#fff6e8}
 .atlas-way-ask div{display:flex;flex-wrap:wrap;gap:8px}
 .atlas-crumbs button svg{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
 .atlas-crumbs button[data-atlas-level="0"]:not([aria-current]){background:var(--c-green-soft,#e8f5ec);color:var(--c-green-dark,#1d6b43)}
+
+/* Friends on the map: a badge on each city (or country, further out) they are in, and the list behind it. */
+.atlas-friends{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4}
+.atlas-fb{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:5px;margin:0;padding:2px 8px 2px 3px;border:2px solid #fff;border-radius:999px;background:#20232cf2;color:#fff;font:800 11px/1.2 var(--font,system-ui,sans-serif);box-shadow:0 2px 8px #0b2b3a66;cursor:pointer;pointer-events:auto;will-change:transform}
+.atlas-fb.is-online{border-color:#31c76d;box-shadow:0 0 0 2px #31c76d55,0 2px 8px #0b2b3a66}
+.atlas-fb-av{display:inline-flex}
+.atlas-fb-av i{display:grid;place-items:center;width:20px;height:20px;margin-left:calc(var(--i,0)*-6px);border:1.5px solid #20232c;border-radius:50%;background:hsl(calc(var(--i,0)*70 + 205) 55% 46%);font-style:normal;font-size:10px;font-weight:800;position:relative;z-index:calc(5 - var(--i,0))}
+.atlas-fb-av i:first-child{margin-left:0}
+@supports(zoom:2){.atlas-fb{zoom:var(--ui-zoom,1)}}
+.atlas-fpanel{position:absolute;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:12;width:min(420px,calc(100% - 24px));max-height:55%;overflow:auto;padding:12px;border-radius:18px;background:#fff;color:#20232c;box-shadow:0 12px 36px #0005;pointer-events:auto;font-size:13px}
+@supports(zoom:2){.atlas-fpanel{zoom:var(--ui-zoom,1)}}
+.atlas-fpanel[hidden]{display:none}
+.atlas-fpanel header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.atlas-fpanel header b{font-size:15px}
+.atlas-fpanel header button{width:36px;height:36px;border:0;border-radius:50%;background:none;font-size:22px;line-height:1;color:#5c6670;cursor:pointer}
+.atlas-fpanel ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.atlas-fpanel li{display:grid;grid-template-columns:30px minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:6px 8px;border-radius:12px;background:#f2f4f3}
+.atlas-fp-text b,.atlas-fp-text small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.atlas-fp-text small{font-size:12px;color:#5c6670}
+.atlas-fb-dot{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#8a949c;color:#fff;font-weight:800;font-size:12px}
+.atlas-fb-dot.is-online{background:#1d6b43;box-shadow:0 0 0 2px #31c76d88}
+.atlas-fpanel li button,.atlas-fp-go{min-height:36px;padding:0 12px;border:0;border-radius:999px;background:#1d6b43;color:#fff;font:700 12px var(--font,inherit);cursor:pointer}
+.atlas-fpanel li button[data-atlas-fact=chat]{background:#e1ece6;color:#14532d}
+.atlas-fp-note{margin:10px 2px 6px;font-size:12px;color:#5c6670}
+.atlas-fp-foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+@media(max-width:720px){.atlas-fpanel{bottom:calc(76px + env(safe-area-inset-bottom,0px))}}

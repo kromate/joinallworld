@@ -68,7 +68,7 @@ test('between cities: the first skip is free, the next is charged exactly the pr
   assert.equal(skipped.travel.skipped, false);
   const done = skip(skipped, { quote: 0 });
   assert.deepEqual([done.ok, done.code], [true, 'skipped']);
-  assert.deepEqual([skipped.cash, skipped.travel.skipped, skipped.activeAction, skipped.estate.city, skipped.location], [cash, true, null, 'ibadan', 'agodi-gardens']);
+  assert.deepEqual([skipped.cash, skipped.travel.skipped, skipped.activeAction, skipped.estate.city, skipped.location], [cash, true, null, 'ibadan', 'iwo-road-interchange']);
   assert.match(skipped.message, /^Welcome to Ibadan\..*The first skip between cities is free\.$/);
   // The same trip waited out, then both brought to the same moment: everything a player owns or is, is the same.
   const end = waited.t + 21000;

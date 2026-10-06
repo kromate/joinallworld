@@ -22,7 +22,7 @@ test('the bar is on the city map itself, the world is one key away, and arriving
   assert.match(app, /<div class="map-dock">\s*<MapLevels \/>/, 'drawn with the city map whatever else the panel shows, as the top of the one docked column')
   assert.match(bar, /showMapLayer\('world', \{ level: level\.atlas \}\)/)
   assert.doesNotMatch(levels, /World map|showWorld/, 'the entry at the end of the list is gone')
-  assert.match(keys, /\{ keys: \['g'\], label: 'G', description: 'World map', run: 'world' \}/)
+  assert.match(keys, /\{ keys: \['g'\], label: 'G', run: 'world' \}/)
   assert.match(await here('../../App.vue'), /verb === 'world'\) showMapLayer\('world', \{ level: 0 \}\)/)
   // A visitor (a home elsewhere, none here) is not shown the city sheet on arrival or at connect: only a life with no home anywhere is.
   assert.equal((shell.match(/shell\.open\('city'/g) ?? []).length, 3)

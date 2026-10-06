@@ -369,7 +369,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     },
   };
   current = api;
-  api.setLabel(options.label ?? 'Preview of your Sim');
+  api.setLabel(options.label ?? 'Preview of your character');
   setLook(options.look);
   if (host) attach(host);
   return api;

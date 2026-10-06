@@ -22,7 +22,7 @@ export interface SaveInput {
 export function saveState(input: SaveInput): SaveState {
   if (!input.connected) return { disabled: true, label: `${input.short} — cannot save right now` }
   if (input.pending) return { disabled: true, label: 'Saving…' }
-  if (!input.done) return { disabled: true, label: input.guest ? 'Settle in to change your look' : 'Finish creating your Sim first' }
+  if (!input.done) return { disabled: true, label: input.guest ? 'Settle in to change your look' : 'Finish creating your character first' }
   if (input.unchanged) return { disabled: true, label: 'No changes yet' }
   const problem = nameProblem(input.name)
   return problem ? { disabled: true, label: problem } : { disabled: false, label: 'Save changes' }

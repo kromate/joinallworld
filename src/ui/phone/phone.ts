@@ -193,7 +193,7 @@ export function createPhone({ dialog, content, panels, host }: { dialog: HTMLDia
     const level = energy <= 15 ? 'is-low' : energy <= 35 ? 'is-mid' : '';
     return `<button class="ph-status-btn" data-ph-shade aria-label="Notifications. Nigerian time ${esc(TIME.format(new Date(view.now)))}">${esc(TIME.format(new Date(view.now)))}</button>
       <span class="ph-sys"><span class="ph-signal${online ? '' : ' is-off'}" role="img" aria-label="${online ? 'Connected to the game server' : 'No connection to the game server'}"><i></i><i></i><i></i><i></i></span><b>${online ? '4G' : 'No service'}</b>
-      <span class="ph-batt ${level}" role="img" aria-label="Battery: your Sim’s Energy is ${energy}%" style="--level:${energy}%"><i></i></span><b>${energy}%</b></span>`;
+      <span class="ph-batt ${level}" role="img" aria-label="Battery: your character’s Energy is ${energy}%" style="--level:${energy}%"><i></i></span><b>${energy}%</b></span>`;
   }
   function barHtml(title: string, id: string, _tint?: string): string {
     return `<button class="ph-back" data-open="phone" aria-label="Back to the home screen">${glyph('back')}</button><span class="ph-bar-icon" aria-hidden="true">${glyph(glyphFor(id))}</span><h2>${esc(title)}</h2><button class="ph-wide" data-ph-wide aria-pressed="${wide}" aria-label="${wide ? 'Make the phone narrower' : 'Make the phone wider'}" title="${wide ? 'Narrower' : 'Wider'}">${glyph(wide ? 'shrink' : 'expand')}</button>`;

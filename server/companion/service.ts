@@ -49,12 +49,12 @@ export function companionService(ctx: RouteContext) {
 }
 
 function build(ctx: RouteContext) {
-  const total = blank(0), startedAt = ctx.now();
-  let today = blank(lagosTime(ctx.now()).day);
+  const total = blank(0);
+  let startedAt = 0, today = blank(-1);
   const tests = { runs: 0, ok: 0, failed: 0 };
   const recent = new Map<string, { at: number; answer: Promise<AskAnswer> }>();
   const config = (): CompanionConfig | null => companionConfig((name) => ctx.env(name));
-  const day = (): DayCounts => { const d = lagosTime(ctx.now()).day; if (today.day !== d) today = blank(d); return today; };
+  const day = (): DayCounts => { const d = lagosTime(ctx.now()).day; if (!startedAt) startedAt = ctx.now(); if (today.day !== d) today = blank(d); return today; };
   const count = (outcome: Outcome): void => { total.outcomes[outcome]++; day().outcomes[outcome]++; };
   const tokens = (usage: Usage | null, sent: number, got: number): void => {
     const d = day();

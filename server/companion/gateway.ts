@@ -58,7 +58,7 @@ export function companionConfig(env: (name: string) => string): CompanionConfig 
   return {
     key, baseUrl, model: model('COMPANION_MODEL', DEFAULT_MODEL), fallbackModel: model('COMPANION_FALLBACK_MODEL', DEFAULT_FALLBACK_MODEL), enabled: true,
     rephrase: env('COMPANION_AI_REPHRASE').trim().toLowerCase() === 'on',
-    dailyRequests: whole(env('COMPANION_DAILY_REQUESTS'), 5000, 1, 10000000), playerDaily: whole(env('COMPANION_PLAYER_DAILY'), 60, 1, 100000), playerBurst: whole(env('COMPANION_PLAYER_BURST'), 6, 1, 1000),
+    dailyRequests: whole(env('COMPANION_DAILY_REQUESTS'), 25000, 1, 10000000), playerDaily: whole(env('COMPANION_PLAYER_DAILY'), 200, 1, 100000), playerBurst: whole(env('COMPANION_PLAYER_BURST'), 8, 1, 1000),
     maxOutputTokens: whole(env('COMPANION_MAX_OUTPUT_TOKENS'), 220, 16, 2000), timeoutMs: whole(env('COMPANION_TIMEOUT_MS'), 8000, 200, 30000),
     priceInPerM: price(env('COMPANION_PRICE_IN_PER_M'), DEFAULT_PRICE_PER_M.input), priceOutPerM: price(env('COMPANION_PRICE_OUT_PER_M'), DEFAULT_PRICE_PER_M.output),
   };

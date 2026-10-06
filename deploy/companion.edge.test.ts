@@ -42,10 +42,10 @@ async function fixture(t: TestContext, bindings: Record<string, string>) {
   t.after(async () => { await mf.dispose(); await gateway.stop(); await rm(folder, { recursive: true, force: true }); });
   await mf.ready;
   const origin = 'https://joinallworld.test';
-  const call = async (path: string, body: object | null, headers: Record<string, string> = {}): Promise<Answer & { status: number; text: string }> => {
+  const call = async (path: string, body: object | null, headers: Record<string, string> = {}): Promise<Answer & { status: number; raw: string }> => {
     const response = await mf.dispatchFetch(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
     const text = await response.text();
-    return { status: response.status, text, ...(JSON.parse(text) as Answer) };
+    return { ...(JSON.parse(text) as Answer), status: response.status, raw: text };
   };
   async function player(name: string): Promise<string> {
     const response = await mf.dispatchFetch(origin + '/api/session', { method: 'POST', headers: { origin, 'content-type': 'application/json' }, body: JSON.stringify({ name }) });
@@ -64,14 +64,14 @@ test('on the Worker: no key means off, no call, health false', async (t) => {
   const got = await f.ask(cookie, { message: 'what should I do' });
   assert.deepEqual([got.via, got.text], ['local', null]);
   assert.equal(f.gateway.seen.length, 0);
-  assert.equal((await f.call('/api/health')).companionAi, false);
+  assert.equal((await f.call('/api/health', null)).companionAi, false);
 });
 
 test('on the Worker: a reply from the gateway, the exact request, limits kept in the object, the overview and the self-test, and no key anywhere', async (t) => {
   const f = await fixture(t, { AI_GATEWAY_API_KEY: KEY, MODERATOR_TOKEN: TOKEN, COMPANION_PLAYER_DAILY: '2', COMPANION_PLAYER_BURST: '50' });
   const cookie = await f.player('Ada');
-  const health = await f.call('/api/health');
-  assert.equal(health.companionAi, true); assert.ok(!health.text.includes(KEY));
+  const health = await f.call('/api/health', null);
+  assert.equal(health.companionAi, true); assert.ok(!health.raw.includes(KEY));
 
   const first = await f.ask(cookie, { message: 'how do I get a job' });
   assert.deepEqual([first.via, first.text, first.suggest], ['primary', 'Hello! Try Jobs to find work.', ['open-jobs']]);
@@ -93,5 +93,5 @@ test('on the Worker: a reply from the gateway, the exact request, limits kept in
   assert.equal(overview.companion?.today.outcomes['quota'], 1);
   const test = await f.mod('/api/mod/companion-test', true);
   assert.deepEqual([test.ok, test.error], [true, undefined]);
-  for (const text of [first.text, third.text, overview.text, test.text]) assert.ok(!String(text).includes(KEY));
+  for (const text of [first.raw, third.raw, overview.raw, test.raw]) assert.ok(!String(text).includes(KEY));
 });

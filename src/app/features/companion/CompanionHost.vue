@@ -56,10 +56,11 @@ let dragged = false
 const clamp = (v: number, lo: number, hi: number): number => Math.max(lo, Math.min(hi, hi < lo ? lo : v))
 function rest(): { x: number; y: number } {
   if (prefs.x !== undefined && prefs.y !== undefined) return { x: clamp(prefs.x * window.innerWidth, 4, window.innerWidth - size.value - 4), y: clamp(prefs.y * window.innerHeight, 56, window.innerHeight - size.value - 4) }
-  const bottom = document.querySelector('.life-bottom')?.getBoundingClientRect().top ?? window.innerHeight - 220
-  const onMap = game.mode.value === 'map', narrow = window.innerWidth <= 720
-  const x = narrow ? (onMap ? 8 : window.innerWidth - size.value - 8) : window.innerWidth - size.value - 18
-  return { x, y: clamp(bottom - size.value - 8, 100, window.innerHeight - size.value - 8) }
+  // Out of the way of the bars, the venue card and the map's own buttons: the right edge, a little above the middle of the screen.
+  const narrow = window.innerWidth <= 720
+  const x = window.innerWidth - size.value - (narrow ? 6 : 18)
+  const y = narrow ? window.innerHeight * 0.4 : window.innerHeight * 0.52
+  return { x, y: clamp(y, 100, window.innerHeight - size.value - 8) }
 }
 function place(): void { const at = override.value ?? rest(); pos.x = at.x; pos.y = at.y }
 const style = computed(() => ({ left: `${pos.x}px`, top: `${pos.y}px`, width: `${size.value}px`, height: `${size.value}px` }))
@@ -310,6 +311,10 @@ function onPoint(event: CustomEvent<{ active: boolean; target?: Box | null; card
   const spots = [
     { x: anchor.left + anchor.width + gap, y: anchor.top + anchor.height / 2 - s / 2 }, { x: anchor.left - s - gap, y: anchor.top + anchor.height / 2 - s / 2 },
     { x: anchor.left + anchor.width / 2 - s / 2, y: anchor.top - s - gap }, { x: anchor.left + anchor.width / 2 - s / 2, y: anchor.top + anchor.height + gap },
+    ...(card ? [
+      { x: card.left + card.width - s, y: card.top + card.height + gap }, { x: card.left, y: card.top + card.height + gap }, { x: card.left, y: card.top - s - gap },
+      { x: card.left + card.width + gap, y: card.top }, { x: card.left - s - gap, y: card.top },
+    ] : []),
     { x: 8, y: h - s - 8 }, { x: w - s - 8, y: h - s - 8 },
   ]
   const free = (at: { x: number; y: number }): boolean => at.x >= 4 && at.y >= 56 && at.x + s <= w - 4 && at.y + s <= h - 4 && !(target && hit({ left: at.x, top: at.y, width: s, height: s }, target)) && !(card && hit({ left: at.x, top: at.y, width: s, height: s }, card))

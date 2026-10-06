@@ -66,6 +66,7 @@ import { cityName } from '../../src/game/cities/index.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
+import { clip } from './clip.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView } from '../../src/types/social.ts';
@@ -160,13 +161,14 @@ function buildService(ctx: RouteContext) {
   const clientId = (value: unknown): string => { if (typeof value !== 'string' || !CLIENT_ID.test(value)) throw bad('invalid_client_id'); return value; };
   function text(value: unknown, max: number, code: string): string {
     const body = typeof value === 'string' ? value.trim() : '';
-    if (!body || body.length > max || CONTROL.test(body)) throw bad(code);
+    // Counted in characters (code points), not UTF-16 units, so an emoji is one; the unit count only bounds the size.
+    if (!body || body.length > max * 4 || Array.from(body).length > max || CONTROL.test(body)) throw bad(code);
     return body;
   }
   /** A picture's caption: may be empty, never longer than PICTURE_LIMITS.caption. */
   function caption(value: unknown): string {
     const body = typeof value === 'string' ? value.trim() : '';
-    if (body.length > PICTURE_LIMITS.caption || CONTROL.test(body)) throw bad('invalid_message');
+    if (body.length > PICTURE_LIMITS.caption * 4 || Array.from(body).length > PICTURE_LIMITS.caption || CONTROL.test(body)) throw bad('invalid_message');
     return body;
   }
   const convId = (value: unknown): string => { if (typeof value !== 'string' || !CONV_ID.test(value)) throw bad('invalid_conversation'); return value; };
@@ -496,7 +498,7 @@ function buildService(ctx: RouteContext) {
     const mentions = conv.kind === 'group' && !(entry?.mute && s.players[viewer]?.mentions === 'off') ? unseen.filter((message) => mentionsViewer(message, viewer)).length : 0;
     return { id: conv.id, kind: conv.kind, name: conv.kind === 'dm' ? pub(s, others[0]!).name : conv.kind === 'house' ? `${pub(s, conv.owner!).name}’s house` : conv.name!,
       members: conv.members.map((id) => pub(s, id)), owner: conv.owner ?? null, with: conv.kind === 'dm' ? others[0]! : null,
-      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: (bodyOf(last) || (last.img ? 'Picture' : '')).slice(0, 80), at: last.at } : null,
+      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: clip(bodyOf(last) || (last.img ? 'Picture' : ''), LIMITS.quote), at: last.at } : null,
       unread: unseen.length,
       ...(mentions ? { mentions } : {}), ...(entry?.mute ? { muted: true as const } : {}), ...(entry?.pin ? { pinned: true as const } : {}) };
   }
@@ -678,7 +680,7 @@ function buildService(ctx: RouteContext) {
     }
   }
   /** The record's own words for a message in a quote: its text, or what it was instead. */
-  const quoteText = (message: MessageRecord): string => (Array.from(bodyOf(message)).slice(0, LIMITS.quote).join('') || (message.img ? 'Picture' : ''));
+  const quoteText = (message: MessageRecord): string => (clip(bodyOf(message), LIMITS.quote) || (message.img ? 'Picture' : ''));
   const settingsOf = () => pictureSettings(ctx.env);
   /** The refusal for a picture this player may not send into this conversation, or null. */
   function pictureRefusal(s: SocialCollection, p: SocialPlayerRecord, id: string, conv: ConversationRecord | null, partner: string | null): Refused | null {
@@ -1023,7 +1025,7 @@ function buildService(ctx: RouteContext) {
       if (men.length) {
         if (!ctx.allow(`social:mention:${id}`, LIMITS.mentionMessages, 600000)) return no('rate_limited', 'You are mentioning people too often. Wait a few minutes.');
         if (men.some(([who]) => who === 'everyone')) {
-          const wait = (conv.everyoneAt ?? 0) + LIMITS.everyoneMs - now();
+          const wait = conv.everyoneAt === undefined ? 0 : conv.everyoneAt + LIMITS.everyoneMs - now();
           if (wait > 0) return no('rate_limited', `@everyone can be used once every ${LIMITS.everyoneMs / 60000} minutes in a group. Try again in ${Math.ceil(wait / 60000)} min.`);
           conv.everyoneAt = now();
         }

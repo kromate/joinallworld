@@ -242,3 +242,14 @@ test('the compact layout: a 45% panel, a 44px target for every small control, on
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(css, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
 });
+
+test('the venue card on a phone is four short rows: title with its status, one row of mode chips, Go, About; every target stays 44px', async () => {
+  const css = await readFile(new URL('../compact.css', import.meta.url), 'utf8'), card = css.slice(css.indexOf('the Map: venue card'), css.indexOf('the Map: venue card') + 3200);
+  assert.match(card, /\.map-card-head\{display:contents\}/, 'the title and the status share a row');
+  assert.match(card, /\.life-ui \.map-modes\{display:flex;/, 'the modes are one row');
+  assert.match(card, /\.map-modes b\{display:none\}/, 'a chip is an icon and a price');
+  assert.match(card, /button\.is-selected small\.map-mode-time\{display:block\}/, 'the chosen mode says its time');
+  assert.match(card, /\.map-modes button\{[^}]*min-height:var\(--tap\)/, 'a chip is a full-size target');
+  assert.match(card, /\.map-go\{min-height:var\(--tap\)/, 'Go is a full-size target');
+  assert.doesNotMatch(card, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
+});

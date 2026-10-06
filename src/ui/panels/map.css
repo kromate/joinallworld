@@ -149,6 +149,8 @@
 /* The level control at the top of the city map: one chip with the level you are in, opening World, Africa, Nigeria and the city as a small list
    (the look is shared with the atlas: ui/levelMenu.css). On a wide screen it is the first item of the docked column (.map-dock); on a phone it is
    fixed under the top bar (compact.css). */
+/* In the docked column it sits in the flow; on a phone it is fixed. (Specificity beats the shared look, whichever sheet loads last.) */
+.life-ui .map-levels{position:relative}
 @media(max-width:720px){
-  .map-levels{position:fixed;top:60px;left:8px;max-width:calc(100vw - 16px)}
+  .life-ui .map-levels{position:fixed;top:60px;left:8px;max-width:calc(100vw - 16px)}
 }

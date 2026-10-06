@@ -191,3 +191,22 @@ for (const layout of ['entries', 'shadow'] as const) {
     }
   });
 }
+
+for (const [players, profile] of [[100, 'typical'], [2000, 'typical'], [300, 'heavy']] as const) {
+  test(`${players} players (${profile}): the legacy store moves, reads back equal in every collection, and requests after it are served from entries`, async () => {
+    const t = testStorage(), { collections } = legacySeed({ players, seed: 7, profile });
+    const created = open(t.storage);
+    void created;
+    for (const [name, value] of Object.entries(collections)) t.db.prepare('INSERT INTO collections(name,value) VALUES(?,?)').run(name, JSON.stringify(value));
+    const store = open(t.storage);
+    const moved = await store.layout.migrate();
+    assert.deepEqual(Object.keys(moved), KEYED);
+    assert.ok(Object.values(await store.layout.compare()).every((row) => (row as { equal: boolean }).equal));
+    await store.layout.setLayout('entries');
+    const expected = JSON.parse(JSON.stringify(collections)) as Record<string, unknown>;
+    assert.deepEqual(await logical(store), expected);
+    const ids = Object.keys((expected['social'] as { players: object }).players);
+    await store.transact((db) => { const s = db['social'] as { players: Record<string, { seen: number }> }; s.players[ids[1] as string]!.seen += 1; });
+    assert.equal(await store.read((db) => (db['social'] as { players: Record<string, { seen: number }> }).players[ids[1] as string]?.seen), ((expected['social'] as { players: Record<string, { seen: number }> }).players[ids[1] as string] as { seen: number }).seen + 1);
+  });
+}

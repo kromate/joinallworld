@@ -163,3 +163,31 @@ for (const seed of [1, 2, 3]) {
   });
 }
 const lazyHeld = (step: number): boolean => step < 0;
+
+for (const layout of ['entries', 'shadow'] as const) {
+  test(`a write that fails at any statement of a commit in the ${layout} layout leaves nothing of it, and the next write goes through`, async () => {
+    const t = testStorage(); seedLegacy(t, 30, 9);
+    const b = breakable(t);
+    const store = open(b.storage, { layout, log: () => {} });
+    const ids = Object.keys(((await logical(store))['social'] as { players: object }).players);
+    const change = (db: Draft): void => { const s = db['social'] as { players: Record<string, { seen: number }>; convs: Record<string, { messages: unknown[] }>; seq: number }; s.players[ids[2] as string]!.seen += 1; s.players['fresh'] = { seen: 1 } as never; delete s.players[ids[5] as string]; s.seq += 1; const key = Object.keys(s.convs)[0] as string; s.convs[key]!.messages.push({ seq: 999, body: 'x' }); (db['growth'] as { sweptAt: number }).sweptAt += 1; };
+    await store.layout.migrate();
+    b.arm(Infinity); const baseline = JSON.stringify(await logical(store));
+    b.arm(Infinity); await store.transact(change); const total = b.disarm();
+    assert.ok(total > 8);
+    const after = JSON.stringify(await logical(store));
+    for (let at = 1; at <= total + 2; at += 1) {
+      // Put everything back as it was, then break the write at statement `at`.
+      const reset = testStorage(); seedLegacy(reset, 30, 9);
+      const rb = breakable(reset), s2 = open(rb.storage, { layout, log: () => {} });
+      await s2.layout.migrate();
+      assert.equal(JSON.stringify(await logical(s2)), baseline);
+      rb.arm(at);
+      const outcome = await s2.transact(change).then(() => 'ok', () => 'failed');
+      rb.disarm();
+      const state = JSON.stringify(await logical(open(reset.storage, { layout })));
+      assert.ok(outcome === 'ok' ? state === after : state === baseline, `statement ${at}: ${String(outcome)}`);
+      if (outcome !== 'ok') { await s2.transact(change); assert.equal(JSON.stringify(await logical(s2)), after, `retry after ${at}`); }
+    }
+  });
+}

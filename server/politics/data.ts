@@ -12,7 +12,7 @@
 // Only public ids and public names are stored — never a session secret.
 import { cityCatalogueEntry } from '../../src/game/cities/registry.ts';
 import type { CityId } from '../../src/types/protocol.ts';
-import type { TierId } from '../../src/types/politics.ts';
+import type { JusticeRecord, TierId } from '../../src/types/politics.ts';
 import type { Db, GovScope, PoliticsCollection, PoliticsScopeRecord, RouteContext } from '../types.ts';
 
 export const COUNTRY = { id: 'ng', name: 'Nigeria' };
@@ -73,3 +73,13 @@ export function govOfScope(scope: PoliticsScopeRecord): GovScope {
 
 /** The ballots of a seat as a read sees them: nothing is created, so a read of an empty seat writes nothing. */
 export const peekGov = (scope: PoliticsScopeRecord): GovScope => (scope.gov ? govOfScope(scope) : { gov: { elections: {}, announcements: [] } });
+
+const emptyJustice = (): JusticeRecord => ({ offences: {}, jail: {}, police: {}, fights: {}, pairs: {} });
+/** The justice record, created or repaired in place. */
+export function justiceOf(politics: PoliticsCollection): JusticeRecord {
+  const found = record(politics.justice) ? politics.justice : (politics.justice = emptyJustice());
+  for (const key of ['offences', 'jail', 'police', 'fights', 'pairs'] as const) if (!record(found[key])) found[key] = {};
+  return found;
+}
+/** The justice record as a read sees it: nothing is created. */
+export const peekJustice = (politics: PoliticsCollection): JusticeRecord => (record(politics.justice) ? justiceOf(politics) : emptyJustice());

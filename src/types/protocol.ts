@@ -681,6 +681,11 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/politics/party/found',
   'POST /api/politics/party/join',
   'POST /api/politics/party/leave',
+  'GET /api/politics/justice/overview',
+  'POST /api/politics/justice/fight',
+  'POST /api/politics/justice/enrol',
+  'POST /api/politics/justice/dismiss',
+  'POST /api/politics/justice/arrest',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

@@ -39,3 +39,31 @@ test('a party needs a name and a motto of the right length', () => {
   assert.notEqual(partyNameWhy('ab'), ''); assert.equal(partyNameWhy('Green Hands'), '')
   assert.notEqual(partyMottoWhy('  '), ''); assert.equal(partyMottoWhy('Plant more'), '')
 })
+
+import type { JusticeResponse } from '../../../types/politics.ts'
+import { arrestWhy, enrolSeats, fightWhy, jailLine, offenceLine, officerOf, timeLeft } from './politicsModel.ts'
+
+test('a sentence is told in minutes, then hours', () => {
+  assert.equal(timeLeft(10 * 60000, 0), '10 minutes'); assert.equal(timeLeft(60000, 0), '1 minute'); assert.equal(timeLeft(95 * 60000, 0), '1 h 35 min'); assert.equal(timeLeft(5, 0), '1 minute')
+  const jail = { until: 30 * 60000, minutes: 30, by: { id: 'c', name: 'Chi' } }
+  assert.match(jailLine(jail, 0), /in jail for 30 minutes more, arrested by Chi\. You cannot travel or work, but you can message and call people\./)
+})
+
+test('the Fight button says why it is off: offline, in jail, or in another place', () => {
+  const you = (jail: NonNullable<JusticeResponse['you']>['jail']): JusticeResponse['you'] => ({ jail, police: null, wanted: [] })
+  assert.equal(fightWhy('No internet.', you(null), true, 0), 'No internet.')
+  assert.equal(fightWhy(null, null, true, 0), 'Connect to fight.')
+  assert.match(fightWhy(null, you({ until: 600000, minutes: 10, by: { id: 'c', name: 'Chi' } }), true, 0), /in jail for 10 minutes/)
+  assert.match(fightWhy(null, you(null), false, 0), /same place/)
+  assert.equal(fightWhy(null, you(null), true, 0), '')
+})
+
+test('an officer is told when the offender is not here, and the officeholder sees the seats they can enrol for', () => {
+  const offence = { by: { id: 'a', name: 'Ada' }, against: { id: 'b', name: 'Bola' }, venue: 'the park' }
+  assert.match(arrestWhy(null, { ...offence, here: false }), /Ada is not here with you/)
+  assert.equal(arrestWhy(null, { ...offence, here: true }), ''); assert.equal(arrestWhy('Offline.', { ...offence, here: true }), 'Offline.')
+  assert.equal(offenceLine(offence), 'Ada attacked Bola at the park')
+  const seats = [{ canEnrol: false, officers: [] }, { canEnrol: true, officers: [{ id: 'x', name: 'X' }] }] as unknown as JusticeResponse['seats']
+  assert.equal(enrolSeats({ seats }).length, 1); assert.equal(enrolSeats(null).length, 0)
+  assert.equal(officerOf(seats[1]!, 'x'), true); assert.equal(officerOf(seats[1]!, 'y'), false)
+})

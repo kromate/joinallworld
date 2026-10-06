@@ -5,7 +5,7 @@
  * A decree is never free text: it is a number for one lever, inside the range written here. The game enforces it where money
  * moves, so nothing an officeholder types can reach outside these ranges.
  */
-import type { LeverId, TierId } from '../../types/politics.ts';
+import type { LeverId, LeverUnit, TierId } from '../../types/politics.ts';
 
 export const TIER_IDS: readonly TierId[] = ['city', 'state', 'nation'];
 
@@ -41,15 +41,18 @@ export interface LeverRules {
   max: number
   /** The value when nobody has set one: the game as it plays without a government. */
   base: number
-  unit: '%'
-  /** What the levy is charged on: a purchase at a stall, or goods bought to carry between cities. */
-  on: 'sale' | 'trade'
+  unit: LeverUnit
+  /** What the lever acts on: a levy on a purchase at a stall, a levy on goods bought to carry between cities, or the length of a jail sentence. */
+  on: 'sale' | 'trade' | 'sentence'
   about: string
 }
 export const LEVERS: Readonly<Record<LeverId, LeverRules>> = {
   marketLevy: { tier: 'city', label: 'Market levy', min: 0, max: 10, base: 0, unit: '%', on: 'sale', about: 'Added to the price of everything bought at a stall in the city. It goes to the city treasury.' },
   salesTax: { tier: 'state', label: 'Sales tax', min: 0, max: 10, base: 0, unit: '%', on: 'sale', about: 'Added to the price of everything bought at a stall in the state’s cities. It goes to the state treasury.' },
   vat: { tier: 'nation', label: 'VAT', min: 0, max: 15, base: 0, unit: '%', on: 'sale', about: 'Added to the price of everything bought at a stall in the country. It goes to the federal treasury.' },
+  citySentence: { tier: 'city', label: 'Assault sentence', min: 1, max: 60, base: 10, unit: 'min', on: 'sentence', about: 'How long a player arrested by the city’s police for assault is held.' },
+  stateSentence: { tier: 'state', label: 'Assault sentence', min: 1, max: 120, base: 15, unit: 'min', on: 'sentence', about: 'How long a player arrested by the state’s police for assault is held.' },
+  nationSentence: { tier: 'nation', label: 'Assault sentence', min: 1, max: 240, base: 20, unit: 'min', on: 'sentence', about: 'How long a player arrested by the federal police for assault is held.' },
   tradeDuty: { tier: 'nation', label: 'Trade duty', min: 0, max: 25, base: 0, unit: '%', on: 'trade', about: 'Added to the cost of goods bought to carry between cities. It goes to the federal treasury.' },
 };
 export const LEVER_IDS = Object.keys(LEVERS) as LeverId[];
@@ -63,4 +66,32 @@ export const PARTY = {
   mottoMax: 60,
   /** Parties a single player may found. */
   perFounder: 1,
+};
+
+/** The sentence lever of each seat. */
+export const SENTENCE_LEVER: Readonly<Record<TierId, LeverId>> = { city: 'citySentence', state: 'stateSentence', nation: 'nationSentence' };
+
+/** Fights, offences, police and jail. Every number is a limit the game keeps whoever is in office. */
+export const JUSTICE = {
+  /** Days lived before a player may fight or be fought: a newcomer is left alone. */
+  minDays: 1,
+  /** The least energy a player needs to start a fight. */
+  minEnergy: 20,
+  /** A player may start a fight this often, and the same pair this often. */
+  cooldownMs: 5 * 60000,
+  pairCooldownMs: 30 * 60000,
+  /** Energy each side loses, and the mood the loser is left with. */
+  winnerEnergy: 10,
+  loserEnergy: 25,
+  loserMood: { value: -3, seconds: 3600 },
+  /** An offence can be acted on this long after it. */
+  offenceMs: 24 * 3600000,
+  /** The most a sentence can ever be, whatever a lever allows. */
+  sentenceMaxMin: 240,
+  /** Officers an officeholder may enrol. */
+  officers: { city: 3, state: 8, nation: 15 } as Readonly<Record<TierId, number>>,
+  /** Arrests one officer may make in an hour. */
+  arrestsPerHour: 6,
+  /** Offences and jail records kept. */
+  keepOffences: 200,
 };

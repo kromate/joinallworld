@@ -7,7 +7,7 @@
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
-import type { LeverView, PoliticsResponse, TierId } from '../../../types/politics.ts'
+import type { JusticeResponse, LeverView, PoliticsResponse, TierId } from '../../../types/politics.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -18,8 +18,8 @@ import CivicStatus from '../civic/CivicStatus.vue'
 import { colourOf, sloganTooShort, until, votes, PHASES, NEXT, voteWhy, runWhy, barWidth } from '../civic/civicModel.ts'
 import { AD_COLOURS, ELECTION } from '../civic/civicContent.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
-import { partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
-import { TABS, ballotKey, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
+import { arrestRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
+import { TABS, arrestWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
 
 defineProps<{ params?: unknown }>()
 const { game } = useApp()
@@ -28,7 +28,9 @@ const offline = useOffline()
 const view = game.view
 const cityId = computed(() => view.value.cityId)
 const overview = useLoaded<PoliticsResponse>({ key: () => overviewKey(cityId.value), path: () => overviewPath(cityId.value), maxAge: 20000 })
-const tier = computed<TierId | null>(() => (ui.tab === 'parties' ? null : ui.tab))
+const tier = computed<TierId | null>(() => (ui.tab === 'parties' || ui.tab === 'justice' ? null : ui.tab))
+const justice = useLoaded<JusticeResponse>({ key: () => justiceKey(cityId.value), path: () => justicePath(cityId.value), maxAge: 15000, when: () => ui.tab === 'justice' })
+const law = computed(() => justice.item.value.data)
 const ballot = useLoaded<GovResponse>({ key: () => ballotKey(cityId.value, tier.value ?? 'city'), path: () => ballotPath(cityId.value, tier.value ?? 'city'), maxAge: 20000, when: () => tier.value !== null })
 
 const data = computed(() => overview.item.value.data)
@@ -85,6 +87,16 @@ async function found(): Promise<void> {
 async function joinParty(id: string): Promise<void> { done(await civic.send(`p-join:${id}`, '/api/politics/party/join', { party: id }, { success: 'You joined the party.' })) }
 async function leaveParty(): Promise<void> { done(await civic.send('p-leave', '/api/politics/party/leave', {}, { success: 'You left your party.' })) }
 const bgOf = (id: string): string => colourOf(AD_COLOURS, id).bg
+function doneLaw(result: Record<string, unknown>): void {
+  if (result.justice) civic.put(justiceKey(cityId.value), result.justice as JusticeResponse)
+  civic.changed()
+}
+async function arrest(id: string): Promise<void> {
+  const result = await civic.send(`p-arrest:${id}`, '/api/politics/justice/arrest', { offence: id, requestId: civic.requestId(arrestRequest, [cityId.value, id]) }, { success: 'The arrest is made.' })
+  civic.requestDone(arrestRequest, result)
+  doneLaw(result)
+}
+async function dismissOfficer(tierId: string, player: string): Promise<void> { doneLaw(await civic.send(`p-dismiss:${player}`, '/api/politics/justice/dismiss', { tier: tierId, player }, { success: 'The officer is dismissed.' })) }
 const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', { day: 'numeric', month: 'short' })
 </script>
 
@@ -193,12 +205,46 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
         </template>
       </section>
     </template>
+
+    <template v-else-if="ui.tab === 'justice'">
+      <CivicStatus :item="justice.item.value" @retry="justice.reload" />
+      <template v-if="law">
+        <div v-if="law.you?.jail" class="politics-jail" role="alert"><strong>You are in jail</strong><p>{{ jailLine(law.you.jail, view.now) }}</p></div>
+        <SectionTitle>Police</SectionTitle>
+        <section v-for="seat in law.seats" :key="seat.scope" class="ui-card politics-force">
+          <strong>{{ seat.title }} of {{ seat.name }}</strong>
+          <p class="politics-note">Assault sentence in force: <b>{{ seat.sentence }} minutes</b>. {{ seat.officers.length }} of {{ seat.capacity }} officers{{ seat.officers.length ? ':' : '.' }}</p>
+          <ul v-if="seat.officers.length" class="politics-officers">
+            <li v-for="officer in seat.officers" :key="officer.id"><span>{{ officer.name }}</span><CivicAction v-if="seat.canEnrol" :working="civic.busy(`p-dismiss:${officer.id}`)" :reason="offline('dismiss') ?? ''" @click="dismissOfficer(seat.tier, officer.id)">Dismiss</CivicAction></li>
+          </ul>
+          <p v-if="seat.canEnrol" class="politics-note">You hold this seat. Open a player’s card to make them an officer. An officer serves until your term ends.</p>
+        </section>
+        <template v-if="law.you?.police">
+          <SectionTitle>Open offences</SectionTitle>
+          <EmptyState v-if="!law.offences.length" icon="ballot" title="Nothing to act on" text="Fights are on record for a day. An officer arrests someone standing in the same place." />
+          <section v-for="offence in law.offences" :key="offence.id" class="ui-card politics-offence">
+            <strong>{{ offenceLine(offence) }}</strong>
+            <small>{{ dateOf(offence.at) }} · {{ offence.here ? 'here with you now' : 'not here' }}</small>
+            <CivicAction primary :working="civic.busy(`p-arrest:${offence.id}`)" :reason="arrestWhy(offline('arrest'), offence)" @click="arrest(offence.id)">Arrest {{ offence.by.name }}</CivicAction>
+          </section>
+        </template>
+        <template v-if="law.you?.wanted.length">
+          <SectionTitle>You are wanted</SectionTitle>
+          <p class="politics-note">Police may arrest you for these fights if they find you.</p>
+          <section v-for="offence in law.you.wanted" :key="offence.id" class="ui-card politics-offence"><strong>{{ offenceLine(offence) }}</strong><small>{{ dateOf(offence.at) }}</small></section>
+        </template>
+        <SectionTitle>How it works</SectionTitle>
+        <section class="ui-card">
+          <p class="politics-note">Open another player’s card in the same place and press Fight. A newcomer (less than a day here) is left alone. The fitter player usually wins, both lose energy, and the fight goes on record for {{ law.rules.offenceHours }} hours. The officeholder of a seat enrols its police for their term and sets how long the sentence is. Jail never lasts more than four hours, and you can always message and call.</p>
+        </section>
+      </template>
+    </template>
   </div>
 </template>
 
 <style scoped>
-.politics-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
-.politics-tabs button { min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 13px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
+.politics-tabs button { min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
 .politics-tabs button.is-on { background: #fff; color: var(--c-ink); box-shadow: var(--e-1); }
 .politics-seat { display: grid; gap: 4px; }
 .politics-seat strong { font-size: 16px; }
@@ -237,6 +283,13 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-ledger small { display: block; font-size: 11px; color: var(--c-muted); overflow-wrap: anywhere; }
 .politics-ledger b { font-variant-numeric: tabular-nums; color: var(--c-green-dark); }
 .politics-ledger b.is-out { color: var(--c-red-dark); }
+.politics-jail { margin: var(--s-2) 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--c-red-soft); box-shadow: inset 0 0 0 1.5px #e3a995; }
+.politics-jail strong { color: var(--c-red-dark); }
+.politics-jail p { margin: 2px 0 0 !important; font-size: 13px !important; }
+.politics-force, .politics-offence { display: grid; gap: 6px; margin-bottom: var(--s-2); }
+.politics-offence small { color: var(--c-muted); font-size: 12px; }
+.politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.politics-officers li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
 .politics-colours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s-2); }
 .politics-colours button { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
 .politics-colours button.is-on { border-color: var(--c-ink); }

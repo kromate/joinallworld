@@ -21,6 +21,7 @@ import { validateName, validateActionPayload, publicSession, isSharedAddress, VO
 import { companionConfig } from '../companion/gateway.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 import { residenceGate } from './residence.ts';
+import { jailGate } from '../politics/gate.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
 export { MAX_RECEIPTS, boundedFingerprint };
@@ -67,6 +68,7 @@ export async function executeCommand(ctx: RouteContext, request: RouteRequest, b
     const state = settle(session, body.cityId);
     const result = core.actionOnce(session, body, () => {
       residenceGate(ctx, session, body);
+      jailGate(ctx, db, session, body);
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
       if (done.ok && afterAction) {
         const pending: unknown = afterAction({ db, session, result: done });

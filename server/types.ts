@@ -18,7 +18,7 @@ import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
-import type { DecreeRecord, PartyRecord, TreasuryRecord } from '../src/types/politics.ts'
+import type { DecreeRecord, JusticeRecord, PartyRecord, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
@@ -509,6 +509,8 @@ export interface PoliticsCollection {
   parties: Record<string, PartyRecord>
   /** Player id → the party they belong to. */
   members: Record<string, string>
+  /** Fights, offences, police and jail. Created by the first fight. */
+  justice?: JusticeRecord
 }
 export interface CivicCollection {
   v: 1

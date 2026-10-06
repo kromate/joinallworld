@@ -2,58 +2,14 @@
 // The pure rules are in server/politics/rules.test.ts. Design: docs/POLITICS.md.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { fixture, snapshot } from './test-fixture.ts';
-import { JOURNEY_TIME } from './testing/cityJourney.ts';
 import { loadCityContent } from '../src/game/cities/registry.ts';
-import { lagosTime } from '../src/game/clock.ts';
 import { PARTY, QUORUM, SEATS } from '../src/game/content/politics.ts';
 import type { GovResponse } from '../src/types/civic.ts';
-import type { PoliticsResponse } from '../src/types/politics.ts';
 import type { LifeState } from '../src/types/life.ts';
-import type { Database } from './types.ts';
-import { emptyPolitics } from './politics/data.ts';
+import { DAY, harness, object } from './testing/politicsHarness.ts';
+import { JOURNEY_TIME } from './testing/cityJourney.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent));
-
-type Fixture = Awaited<ReturnType<typeof fixture>>;
-type Device = Awaited<ReturnType<Fixture['device']>>;
-type Answer = Record<string, unknown> & { status: number; state?: LifeState; politics?: PoliticsResponse; code?: string; amount?: number }
-const DAY = 86400000;
-const object = (value: unknown): Record<string, unknown> => { assert.ok(value !== null && typeof value === 'object' && !Array.isArray(value)); return value as Record<string, unknown>; };
-
-async function harness(t: Parameters<typeof fixture>[0]) {
-  const f = await fixture(t);
-  f.advance(JOURNEY_TIME - f.now());
-  const send = async (path: string, init: RequestInit, device?: Device): Promise<Answer> => {
-    const response = await fetch(f.base + path, { ...init, headers: { 'Content-Type': 'application/json', ...(device ? { Cookie: device.cookie } : {}) } });
-    return { ...object(await response.json()), status: response.status } as Answer;
-  };
-  const post = (path: string, body: object, device?: Device) => send(path, { method: 'POST', body: JSON.stringify(body) }, device);
-  const get = (path: string, device?: Device) => send(path, {}, device);
-  const edit = (device: Device, change: (state: LifeState) => void) => f.server.store.transact((db) => { const state = db.sessions[device.cookie.slice(4)]?.cities.lagos?.state; assert.ok(state); change(state); });
-  /** A player in the Lagos market with money earned from work, two paid days behind them and four days lived. */
-  async function player(name: string): Promise<Device> {
-    const device = await f.device(name);
-    await f.request('/api/life?city=lagos', null, device.cookie);
-    await edit(device, (state) => {
-      state.cash = 100000; state.ledger = []; state.ledgerDays = []; state.location = 'market'; state.social.earned = 30000; state.needs.hunger = 30;
-      state.civic.since = JOURNEY_TIME - 4 * DAY; state.civic.work = { days: 3, last: Math.floor((JOURNEY_TIME - DAY) / DAY) };
-    });
-    await f.request('/api/social/me', null, device.cookie);
-    return device;
-  }
-  /** Seat `device` in a seat's current term as if it had won with `votes` votes last week. */
-  const elect = (device: Device, scope: 'city:lagos' | 'state:lagos' | 'nation:ng', votes: number) => f.server.store.transact((db) => {
-    const week = lagosTime(f.now()).week - 1, election = { candidates: { [device.id]: { name: 'Winner', slogan: 'Fair deal', at: JOURNEY_TIME - 8 * DAY } }, votes: Object.fromEntries(Array.from({ length: votes }, (_, index) => [`voter-${index}`, device.id])) };
-    if (scope === 'city:lagos') { const city = db.civic?.cities?.lagos; assert.ok(city); city.gov.elections[week] = election; return; }
-    const politics = (db.politics ||= emptyPolitics());
-    const record = (politics.scopes[scope] ||= { treasury: { balance: 0, ledger: [] } });
-    (record.gov ||= { elections: {}, announcements: [] }).elections[week] = election;
-  });
-  const overview = async (device?: Device): Promise<PoliticsResponse> => (await get('/api/politics/overview?city=lagos', device)) as unknown as PoliticsResponse;
-  const stored = async (): Promise<Database> => { await f.flush(); return f.server.store.read((db) => snapshot(db)); };
-  return { f, post, get, edit, player, elect, overview, stored };
-}
 
 test('levies set by a mayor, a governor and a president are added to a stall purchase and paid into their treasuries', { timeout: 60000 }, async (t) => {
   const { f, post, get, player, elect, overview } = await harness(t);
@@ -71,7 +27,7 @@ test('levies set by a mayor, a governor and a president are added to a stall pur
   assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'nation', lever: 'vat', value: 15 }, president)).code, 'decreed');
   assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'nation', lever: 'tradeDuty', value: 25 }, president)).code, 'decreed');
   const seen = await overview(buyer);
-  assert.deepEqual(seen.seats.map((seat) => [seat.tier, seat.levers.map((lever) => [lever.id, lever.value])]), [['city', [['marketLevy', 10]]], ['state', [['salesTax', 5]]], ['nation', [['vat', 15], ['tradeDuty', 25]]]]);
+  assert.deepEqual(seen.seats.map((seat) => [seat.tier, seat.levers.map((lever) => [lever.id, lever.value])]), [['city', [['marketLevy', 10], ['citySentence', 10]]], ['state', [['salesTax', 5], ['stateSentence', 15]]], ['nation', [['vat', 15], ['nationSentence', 20], ['tradeDuty', 25]]]]);
   assert.deepEqual(seen.seats.map((seat) => seat.you?.isOfficeholder), [false, false, false]);
   assert.deepEqual((await overview(mayor)).seats.map((seat) => seat.you?.isOfficeholder), [true, false, false]);
 

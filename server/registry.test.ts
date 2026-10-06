@@ -242,7 +242,7 @@ test('server-only actions: the public /api/action can never run one; a route mod
   assert.throws(() => registerSystem(unchecked<SystemDefinition>({ id: 'bad-server-only', stateKeys: [], sanitize() {}, actions: { 'bad.thing': { serverOnly: true } } })), /needs a handler function/);
   assert.throws(() => registerSystem(unchecked<SystemDefinition>({ id: 'bad-plain', stateKeys: [], sanitize() {}, actions: { 'bad.other': { run() {} } } })), /needs a handler function/);
   const serverOnly = actionTypes().filter((type) => serverOnlyReason(type));
-  assert.deepEqual(serverOnly.sort(), ['activity.admin', 'business.server', 'civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.treasury', 'civic.vote', 'estate.assign', 'estate.released', 'growth.referral', 'growth.table-result', 'needs.admin', 'onboarding.arrive', 'social.server', 'unilag.election.nominate', 'unilag.election.vote', 'wallet.admin', 'wallet.bonus']);
+  assert.deepEqual(serverOnly.sort(), ['activity.admin', 'business.server', 'civic.justice', 'civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.treasury', 'civic.vote', 'estate.assign', 'estate.released', 'growth.referral', 'growth.table-result', 'needs.admin', 'onboarding.arrive', 'social.server', 'unilag.election.nominate', 'unilag.election.vote', 'wallet.admin', 'wallet.bonus']);
   /** A route written against the contract: it names the type itself and runs it with server authority. */
   const grantRoutes: RouteModule = (ctx) => ({
     'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact((db) => {

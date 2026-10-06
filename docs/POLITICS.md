@@ -46,18 +46,19 @@ Each seat has a treasury: a whole-naira balance and a public ledger of every cre
 
 ## 5. Justice
 
-Players can fight each other and can break the law; the arms of government answer.
+Players can fight each other and can break the law; the arms of government answer. **Built:** fights, offences, police, arrest and jail. **Later:** courts, lawyers, appeals.
 
-- **Offences.** Fighting a player, theft from a stall, and refusing a lawful order are offences. Each has a *penalty range* in the constitution and a lever (section 3) the officeholder sets inside it.
-- **Police.** Players apply; the officeholder's commissioner enrols them. A police player can arrest someone who has an open offence, in the same place.
-- **Jail.** A jailed player cannot travel, work or fight until the time is up, but can read and send messages, call, and see the court. Sentences are short real time (minutes to a few hours), never a ban.
-- **Courts.** Lawyers represent a charged player; judges, appointed by the officeholder, hear a case and decide. A judgement can be appealed once, to the next tier up.
-- **Checks.** Every arrest, charge and judgement is public. A seat's decrees can be struck down by a court when they break the constitution.
+- **Fights.** On another player's card, in the same public place, a player can press Fight. The server decides it: the fitter player usually wins, both lose energy (the loser more, and is left in a bad mood for an hour), and the fight is an *assault* on record for 24 hours. Limits that hold whoever is in office: a player who has lived in the city less than a day cannot fight or be fought; one fight every five minutes, and the same pair only every half hour; nobody is fought at home, offline, in another place, or when blocked; a fighter needs some energy left.
+- **Police.** The sitting officeholder of a seat enrols players as officers (city 3, state 8, nation 15). An officer serves only until that officeholder's term ends, so a new term means new decisions. An officer acts in their seat's reach: a city's police in that city, a state's anywhere in the state, the federal police anywhere.
+- **Arrest and jail.** An officer standing in the same place as the offender arrests them for an open offence. The sentence is the *assault sentence* lever of the officer's seat (city 1–60 minutes, state 1–120, nation 1–240; defaults 10, 15, 20) and never more than four hours. A jailed player cannot travel, work or fight; they can still message, call and use the Phone. An officer can make six arrests an hour; an offence is acted on once.
+- **Checks.** Everything is public to the player concerned: the offender sees they are wanted, is told of the arrest and sees the time left.
+- **Courts (later).** Lawyers represent a charged player; judges, appointed by the officeholder, hear a case and decide. A judgement can be appealed once, to the next tier up. Courts can strike down a decree that breaks the constitution.
+- **Corruption (later).** Officials can skim the treasury, with a risk of audit and impeachment.
 
 ## 6. Order of work
 
 1. **Offices and parties.** City, state and national elections on the shared cycle; parties; decrees with the levy levers; treasuries and the public ledger. **next**
-2. **Justice.** Fights, offences, police, arrests, jail. **later**
+2. **Justice.** Fights, offences, police, arrests, jail. **built**
 3. **Courts.** Lawyers, judges, appeals, audits, impeachment, assemblies. **later**
 
 ## 7. Where things live

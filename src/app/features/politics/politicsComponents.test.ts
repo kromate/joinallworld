@@ -80,3 +80,27 @@ test('Politics: the officeholder sees a box for each rule inside its range and t
   assert.match(html, /<input[^>]*type="number"[^>]*min="0"[^>]*max="10"/)
   assert.ok(text(html).includes('Draw salary · ₦840'))
 })
+
+test('Justice: a sentence in a banner, the force with its sentence, and an offence an officer cannot act on until the offender is here', async () => {
+  const cityId = app.game.view.value.cityId
+  const { politicsUi } = await load<{ politicsUi: { tab: string } }>('/src/app/features/politics/politicsDrafts.ts')
+  civic.put(`politics:${cityId}`, overview(cityId))
+  civic.put(`justice:${cityId}`, {
+    city: cityId,
+    seats: [{ tier: 'city', scope: 'city:x', title: 'Chairman', name: 'Lagos', officers: [{ id: 'o1', name: 'Chi' }], capacity: 3, canEnrol: true, sentence: 10 }],
+    you: { jail: { until: server.now() + 12 * 60000, minutes: 15, by: { id: 'o1', name: 'Chi' } }, police: { tier: 'city', scope: 'city:x' }, wanted: [{ id: 'o9', kind: 'assault', by: { id: 'me', name: 'Me' }, against: { id: 'b', name: 'Bola' }, city: 'lagos', venue: 'park', at: server.now(), here: false }] },
+    offences: [{ id: 'o7', kind: 'assault', by: { id: 'a', name: 'Ada' }, against: { id: 'b', name: 'Bola' }, city: 'lagos', venue: 'park', at: server.now(), here: false }],
+    rules: { minDays: 1, minEnergy: 20, cooldownMinutes: 5, offenceHours: 24, arrestsPerHour: 6 },
+  })
+  politicsUi.tab = 'justice'
+  try {
+    const html = await render()
+    const words = text(html)
+    assert.ok(words.includes('You are in jail'), words.slice(0, 300))
+    assert.ok(words.includes('arrested by Chi') && words.includes('you can message and call people'))
+    assert.ok(words.includes('Assault sentence in force: 10 minutes') && words.includes('1 of 3 officers'))
+    assert.ok(words.includes('Ada attacked Bola at park') && words.includes('Ada is not here with you. Find them first.'))
+    assert.match(html, /<button[^>]*disabled[^>]*>(?:<!--[^>]*-->)*Arrest Ada/)
+    assert.ok(words.includes('You hold this seat') && words.includes('You are wanted'))
+  } finally { politicsUi.tab = 'city' }
+})

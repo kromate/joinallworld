@@ -52,10 +52,10 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, isDeparting } from '../registry.ts';
 import { fail, finite, isRecord, makeRng, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
-import { canAfford, canCredit, credit, debit, spotsOf } from '../api.ts';
+import { addMoodlet, canAfford, canCredit, changeNeeds, credit, debit, spotsOf } from '../api.ts';
 import { venueLabel } from '../content/venues.ts';
 import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.ts';
-import { SEATS, SEAT_TITLES, TIER_IDS } from '../content/politics.ts';
+import { JUSTICE, SEATS, SEAT_TITLES, TIER_IDS } from '../content/politics.ts';
 import type { TierId } from '../../types/politics.ts';
 import { cityRules } from '../content/world.ts';
 import { isCityId } from '../cities/registry.ts';
@@ -271,6 +271,18 @@ export function fileCandidacy(state: LifeState, payload: Record<string, unknown>
   return ok(state, 'declared');
 }
 
+/**
+ * What a fight leaves on a life, once the server has decided it. payload: { energy, beaten? } — `energy` is how much it loses (1 to 50),
+ * `beaten` leaves the mood of someone who lost. Nothing else about a life can be changed through it.
+ */
+export function justiceHurt(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  const lost = payload?.energy;
+  if (!Number.isSafeInteger(lost) || (lost as number) < 1 || (lost as number) > 50) return fail(state, 'invalid_amount', 'That is not an amount of energy.');
+  changeNeeds(state, { energy: -(lost as number) });
+  if (payload.beaten === true) addMoodlet(state, { id: 'justice-beaten', label: 'Beaten up', value: JUSTICE.loserMood.value, duration: JUSTICE.loserMood.seconds }, ctx);
+  return ok(state, 'hurt');
+}
+
 /** Money between a life and a party or a treasury, once the server has checked the rule. payload: { op: 'pay' | 'receive', amount, label }. */
 export function treasuryMoney(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const amount = payload?.amount, label = typeof payload?.label === 'string' && payload.label ? payload.label.slice(0, 60) : 'Civic payment';
@@ -368,6 +380,7 @@ const play = PLAYS ? {
     'civic.vote': serverOnly(castVote, 'Phone → Governor'),
     'civic.rent-ad': serverOnly(payForAd, 'Phone → Billboards'),
     'civic.treasury': serverOnly(treasuryMoney, 'Phone → Politics'),
+    'civic.justice': serverOnly(justiceHurt, 'Phone → Politics'),
     'civic.shoutout': serverOnly(payForShoutout, 'Phone → Radio'),
   },
   on: {

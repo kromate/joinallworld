@@ -22,6 +22,7 @@ import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import PingButton from '../ping/PingButton.vue'
 const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
+const PersonJustice = defineAsyncComponent(() => import('../politics/PersonJustice.vue'))
 import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import type { SocialResult } from './socialClient.ts'
@@ -165,6 +166,7 @@ async function sendReport(): Promise<void> {
       </button>
     </div>
     <span v-if="whyAct" class="social-why">{{ whyAct }}</span>
+    <PersonJustice v-if="!card.blocked" :id="id" :name="card.name" :together="together" />
     <div class="social-grid">
       <button v-if="card.bae" type="button" class="social-act" :disabled="personUi.busy" @click="doAction('bae-end')"><strong><GameIcon name="heart-off" inline /> End things</strong><small>Stop being Bae</small></button>
       <button v-else type="button" class="social-act" :disabled="Boolean(whyBae) || personUi.busy" @click="doAction('bae')"><strong><GameIcon name="heart" inline /> Ask to be my Bae</strong><small>{{ whyBae || 'Ask them now' }}</small></button>

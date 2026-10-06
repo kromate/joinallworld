@@ -556,7 +556,7 @@ export default {
       if (value || !def) return value;
       if (isReliefActivity(def)) { const held = reliefBlock(state, def); if (held) return held; }
       const left = cooldownLeft(state, def.id, ctx?.now ?? state.t);
-      if (left > 0) return { code: 'cooldown', reason: `You did this recently. ${def.label} is available again in ${left >= 60 ? `${Math.floor(left / 60)}m ${left % 60}s` : `${left}s`}.` };
+      if (left > 0) { const m = Math.ceil(left / 60); return { code: 'cooldown', reason: `Again in ${m < 60 ? `${m} min` : `${m / 60 | 0} h${m % 60 ? ` ${m % 60} min` : ''}`}.` }; }
       if (isGig(def) && gigsToday(state, ctx?.now ?? state.t) >= GIG_DAILY_LIMIT) {
         return { code: 'gig_limit', reason: `You have done today’s ${GIG_DAILY_LIMIT} paid gigs. Gigs open again at midnight, Nigerian time. Your job’s shift is not affected.` };
       }

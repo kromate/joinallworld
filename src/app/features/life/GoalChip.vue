@@ -36,7 +36,7 @@ let nudging = false
 function press(): void {
   const action = chipAction(step.value)
   if (action.kind === 'open') shell.open(action.id, action.params)
-  else if (action.kind === 'go') void goTo(action.venue, action.spot)
+  else if (action.kind === 'go') { const help = step.value; if (help.kind === 'guide') void import('../relief/trek.ts').then((trek) => trek.trekTo(action.venue, action.spot, help.card)); else void goTo(action.venue, action.spot) }
   else { shell.closeSheet(); shell.ui.trayOpen = false; community.toggle(true) }
 }
 

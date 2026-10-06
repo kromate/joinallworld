@@ -18,8 +18,13 @@ import type { LedgerLine } from '../../src/types/life.ts';
 import type { Db, RouteContext, SessionRecord } from '../types.ts';
 
 export const PAGE_SIZE = 40;
-export type PlayerFilter = 'all' | 'online' | 'guests' | 'accounts' | 'new' | 'flagged';
-export const FILTERS: readonly PlayerFilter[] = ['all', 'online', 'guests', 'accounts', 'new', 'flagged'];
+export type PlayerFilter = 'all' | 'online' | 'guests' | 'accounts' | 'new' | 'today' | 'broke' | 'banned' | 'flagged';
+export const FILTERS: readonly PlayerFilter[] = ['all', 'online', 'guests', 'accounts', 'new', 'today', 'broke', 'banned', 'flagged'];
+export const SORTS = ['seen', 'name', 'cash', 'since'] as const;
+export type PlayerSort = (typeof SORTS)[number];
+export const PAGE_SIZES: readonly number[] = [15, 40, 100];
+/** Below this much cash a player counts as broke in the list's filter. */
+export const BROKE_BELOW = 500;
 
 export interface PlayerRow { id: string; name: string; kind: 'guest' | 'account'; city: string | null; online: boolean; cash: number; lastSeen: number; since: number; flags: string[]; admin: boolean }
 
@@ -52,7 +57,8 @@ export function playersService(ctx: RouteContext) {
      * q: a display name (any part, any case), a public id (whole, or its first 8 characters or more), or the 64-hex SHA-256 of an
      * address (admin only: an exact match of the stored, verified address). Pages are PAGE_SIZE rows, newest activity first.
      */
-    list(db: Db, { q = '', filter = 'all', city = '', page = 0 }: { q?: string; filter?: PlayerFilter; city?: string; page?: number }) {
+    list(db: Db, { q = '', filter = 'all', city = '', page = 0, sort = 'seen', desc = true, size = PAGE_SIZE }: { q?: string; filter?: PlayerFilter; city?: string; page?: number; sort?: PlayerSort; desc?: boolean; size?: number }) {
+      const pageSize = PAGE_SIZES.includes(size) ? size : PAGE_SIZE;
       const text = q.trim().toLowerCase().slice(0, 64), flagged = reported(db), now = ctx.now();
       let byHash: string | null = null;
       if (/^[0-9a-f]{64}$/.test(text)) {
@@ -75,12 +81,19 @@ export function playersService(ctx: RouteContext) {
         if (filter === 'guests' && made.kind !== 'guest') return;
         if (filter === 'accounts' && made.kind !== 'account') return;
         if (filter === 'new' && !(made.since > 0 && lagosTime(made.since).day >= lagosTime(now).day - 1)) return;
+        if (filter === 'today' && !(made.since > 0 && lagosTime(made.since).day === lagosTime(now).day)) return;
+        if (filter === 'broke' && !(made.cash < BROKE_BELOW)) return;
+        if (filter === 'banned' && !made.flags.includes('banned')) return;
         if (filter === 'flagged' && !made.flags.length) return;
         hits.push(made);
       });
-      hits.sort((a, b) => Number(b.online) - Number(a.online) || b.lastSeen - a.lastSeen);
-      const last = Math.max(0, Math.ceil(hits.length / PAGE_SIZE) - 1), at = Math.min(Math.max(0, Math.floor(page)), last);
-      return { rows: hits.slice(at * PAGE_SIZE, (at + 1) * PAGE_SIZE), total: hits.length, page: at, pageSize: PAGE_SIZE, scanned };
+      const way = desc ? -1 : 1;
+      if (sort === 'seen') hits.sort((a, b) => way * (Number(a.online) - Number(b.online)) || way * (a.lastSeen - b.lastSeen));
+      else if (sort === 'name') hits.sort((a, b) => way * a.name.localeCompare(b.name));
+      else if (sort === 'cash') hits.sort((a, b) => way * (a.cash - b.cash));
+      else hits.sort((a, b) => way * (a.since - b.since));
+      const last = Math.max(0, Math.ceil(hits.length / pageSize) - 1), at = Math.min(Math.max(0, Math.floor(page)), last);
+      return { rows: hits.slice(at * pageSize, (at + 1) * pageSize), total: hits.length, page: at, pageSize, scanned };
     },
 
     /** One player's page. `undefined` when no live session has this id (an archived life is not played and cannot be acted on). */
@@ -107,7 +120,7 @@ export function playersService(ctx: RouteContext) {
         shops,
         social: { friends: Object.keys(social?.friends ?? {}).length, invitedBy: social?.invite?.by ? { id: social.invite.by, name: db.social?.players[social.invite.by]?.name ?? 'Former player' } : null, invited, updates: social?.updates.length ?? 0 },
         sanctions: { ban: sanc.ban ?? null, pictures: sanc.pictures ?? null, calls: sanc.calls ?? null, mute },
-        reports: reports.slice(-20).reverse().map((report) => ({ id: report.id, about: report.about === id, reason: report.reason, status: report.status, at: report.at, other: report.about === id ? (db.social?.players[report.by]?.name ?? 'Former player') : report.aboutName })),
+        reports: reports.slice(-20).reverse().map((report) => ({ id: report.id, about: report.about === id, reason: report.reason, status: report.status, at: report.at, otherId: report.about === id ? report.by : report.about, other: report.about === id ? (db.social?.players[report.by]?.name ?? 'Former player') : report.aboutName })),
         audit,
         notes: (peek(db, 'adminNotes').players[id] ?? []).slice().reverse().map((note) => ({ at: note.at, by: adminRef(note.by), text: note.text })),
         protected: playerIsAdmin(ctx, db, session),

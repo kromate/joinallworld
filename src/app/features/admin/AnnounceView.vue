@@ -1,8 +1,10 @@
 <script setup lang="ts">
 // Compose an announcement, see who it would reach by e-mail or push before sending, and see past ones with their reach.
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { admin, useAdmin } from './useAdmin.ts'
 import { absolute, relative } from './adminModel.ts'
+import { TEMPLATES, timeline } from './announceModel.ts'
+import { recordDone } from './adminUi.ts'
 
 const api = useAdmin()
 interface Row { id: string; title: string; body: string; audience: string; city: string | null; at: number; sentAt: number; expiresAt: number; status: string; reach: { sockets: number }; mail: { wanted: boolean; state: string; total: number; sent: number; failed: number } }
@@ -27,15 +29,19 @@ async function send(): Promise<void> {
   if ((form.email || form.push) && !counts.value) await preview()
   const r = await api.post<{ code: string; recipients: number }>('/api/admin/announcements', { ...bodyOf(), ...(needsTyped() ? { confirmCount: Number(typed.value) } : {}) }, `announce:${form.title}:${form.body}`)
   busy.value = false
-  if (r.ok) { result.value = { ok: true, text: r.data.code === 'sent' ? 'Sent.' : 'Scheduled.' }; form.title = ''; form.body = ''; counts.value = null; typed.value = ''; void load() }
+  if (r.ok) { result.value = { ok: true, text: r.data.code === 'sent' ? 'Sent.' : 'Scheduled.' }; recordDone(`Announcement “${form.title}” ${r.data.code === 'sent' ? 'sent' : 'scheduled'}`, true); form.title = ''; form.body = ''; counts.value = null; typed.value = ''; void load() }
   else result.value = { ok: false, text: r.error.reason }
 }
-async function cancel(id: string): Promise<void> { const r = await api.post(`/api/admin/announcements/${id}/cancel`, {}, `cancel:${id}`); if (!r.ok) error.value = r.error.reason; void load() }
+async function cancel(id: string): Promise<void> { const r = await api.post(`/api/admin/announcements/${id}/cancel`, {}, `cancel:${id}`); if (!r.ok) error.value = r.error.reason; recordDone(r.ok ? 'Announcement ended' : r.error.reason, r.ok); void load() }
+function useTemplate(id: string): void { const t = TEMPLATES.find((item) => item.id === id); if (t) Object.assign(form, { title: t.title, body: t.body, action: t.action, hours: t.hours }) }
+const ACTION_LABEL: Record<string, string> = { map: 'Open the Map', missions: 'See Missions', business: 'Open Business', invite: 'Invite a friend' }
+const upcoming = computed(() => timeline(rows.value, Date.now()))
+const failed = computed(() => (!form.title.trim() ? 'Write a title.' : !form.body.trim() ? 'Write the text.' : needsTyped() && Number(typed.value) !== total() ? `Type ${total()} to confirm.` : null))
 </script>
 
 <template>
   <section>
-    <h2>Announcements</h2>
+    <div class="adm-chips" role="group" aria-label="Start from a template"><span class="adm-muted">Start from:</span><button v-for="item in TEMPLATES" :key="item.id" type="button" @click="useTemplate(item.id)">{{ item.label }}</button></div>
     <div class="adm-two">
       <form class="adm-card" @submit.prevent="send">
         <h3>Compose</h3>
@@ -52,9 +58,19 @@ async function cancel(id: string): Promise<void> { const r = await api.post(`/ap
         <p v-if="counts && (form.push || form.email)" class="adm-sub">Would reach {{ counts.email }} by e-mail and {{ counts.push }} by push (those who opted in, under the daily caps and quiet hours).</p>
         <label v-if="counts && needsTyped()">Type {{ total() }} to confirm<input v-model="typed" inputmode="numeric"></label>
         <p class="adm-sub">The in-game banner and Messages → Updates entry reach everyone; text goes through the same filter as chat, with no links.</p>
-        <button class="adm-btn primary" :disabled="busy || !form.title || !form.body || (needsTyped() && Number(typed) !== total())">{{ form.when ? 'Schedule' : 'Send now' }}</button>
+        <button class="adm-btn primary" :disabled="busy || Boolean(failed)" :title="failed ?? undefined">{{ form.when ? 'Schedule' : 'Send now' }}</button>
+        <p v-if="failed" class="adm-sub">{{ failed }}</p>
         <p v-if="result" :class="result.ok ? 'adm-ok' : 'adm-error'" role="status">{{ result.text }}</p>
       </form>
+      <div class="adm-col">
+      <div class="adm-card"><h3>Preview</h3>
+        <div class="adm-previews">
+          <div class="adm-phone" aria-label="On a phone"><small>Phone</small><div class="adm-banner"><b>{{ form.title || 'Your title' }}</b><span>{{ form.body || 'Your text appears here.' }}</span><button v-if="form.action" type="button" tabindex="-1">{{ ACTION_LABEL[form.action] }}</button></div></div>
+          <div class="adm-desk" aria-label="On a computer"><small>Computer</small><div class="adm-banner"><b>{{ form.title || 'Your title' }}</b><span>{{ form.body || 'Your text appears here.' }}</span><button v-if="form.action" type="button" tabindex="-1">{{ ACTION_LABEL[form.action] }}</button></div></div>
+        </div>
+        <p class="adm-sub">In Messages, under Updates, it reads: <i>{{ form.title || 'Your title' }}: {{ form.body || 'your text' }}</i></p></div>
+      <div class="adm-card"><h3>Timeline</h3><p v-if="!upcoming.length" class="adm-muted">Nothing yet.</p>
+        <ol class="adm-timeline"><li v-for="slot in upcoming" :key="slot.id" :class="slot.phase"><span class="adm-chip" :class="slot.phase === 'showing' ? 'green' : ''">{{ slot.phase }}</span> <b>{{ slot.title }}</b><small>{{ slot.phase === 'upcoming' ? 'goes out ' : slot.phase === 'showing' ? 'since ' : 'was ' }}{{ absolute(slot.at) }} · {{ relative(slot.at, api.now()) }}</small></li></ol></div>
       <div class="adm-card adm-scroll">
         <h3>Past announcements</h3>
         <p v-if="error" class="adm-error" role="alert">{{ error }}</p>
@@ -64,6 +80,7 @@ async function cancel(id: string): Promise<void> { const r = await api.post(`/ap
             <td>{{ row.reach.sockets }} online<div v-if="row.mail.wanted" class="adm-sub">mail {{ row.mail.sent }}/{{ row.mail.total }} ({{ row.mail.state }})</div></td>
             <td><button v-if="row.status === 'running' || row.status === 'scheduled'" class="adm-btn" @click="cancel(row.id)">End</button></td></tr>
           <tr v-if="!rows.length"><td colspan="4" class="adm-muted">Nothing yet.</td></tr></tbody></table>
+      </div>
       </div>
     </div>
   </section>

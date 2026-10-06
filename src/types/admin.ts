@@ -23,6 +23,8 @@ export interface AdminHttpRoutes {
   'GET /api/admin/me': Get<AdminMe>
   'GET /api/admin/dashboard': Get<AdminJson>
   'GET /api/admin/economy': Get<AdminJson>
+  'GET /api/admin/history': Get<AdminJson>
+  'POST /api/admin/players/bulk': Post<{ clientId: string; ids: string[]; action: 'message' | 'credit'; text?: string; amount?: number; reason?: string; confirm?: string }, AdminJson>
   'GET /api/admin/players': Get<PlayersPage>
   'GET /api/admin/players/:id': Get<AdminJson>
   'POST /api/admin/players/:id/act': Post<{ clientId: string; action: string; reason?: string; confirm?: string; [param: string]: unknown }, ActionDone | ConfirmNeeded>

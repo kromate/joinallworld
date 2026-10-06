@@ -27,8 +27,10 @@ import { NOT_SAVED, SESSION_RULES, WALLPAPER_NOT_SAVED } from './settingsOptions
 import { SOUND_NOT_SAVED, SOUND_SLIDERS, SOUND_SWITCHES, change, percent, soundSummary } from './soundSettingsModel.ts'
 import { getSound, onSoundChange, setSound } from '../../../audio/settings.ts'
 import { play } from '../../../audio/play.ts'
+import { useSection } from '../kit/section.ts'
 
-defineProps<{ params?: unknown }>()
+const props = defineProps<{ params?: unknown }>()
+useSection(() => props.params)
 
 const { game, shell } = useApp()
 const growth = useGrowth()
@@ -94,7 +96,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
       <label class="ui-row settings-row"><span class="ui-row-body"><b>Hints</b><small>Point at the next thing to tap, and say when something happens elsewhere on screen.</small></span>
         <span class="settings-state">{{ hints ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="hints" aria-label="Hints" @change="toggleHints(($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
     </div>
-    <h3 class="ui-section">Sound <span class="settings-state">{{ soundSummary(sound) }}</span></h3>
+    <h3 class="ui-section" data-section="sound">Sound <span class="settings-state">{{ soundSummary(sound) }}</span></h3>
     <div class="ui-rows">
       <label v-for="option in SOUND_SWITCHES" :key="option.id" class="ui-row settings-row"><span class="ui-row-body"><b>{{ option.label }}</b><small>{{ option.hint }}</small></span>
         <span class="settings-state">{{ sound[option.id] ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="sound[option.id]" :aria-label="option.label" @change="changeSound(option.id, ($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
@@ -115,7 +117,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
       <p v-if="switchError" role="alert">{{ switchError }}</p>
       <button v-if="switchError" type="button" @click="loadOlderLives">Retry</button>
     </section>
-    <h3 class="ui-section">This device</h3>
+    <h3 class="ui-section" data-section="account">This device</h3>
     <div class="ui-rows">
       <div class="ui-row"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>{{ game.state.value.name }}</b><small><template v-if="view.session">Player code #{{ view.session.id.slice(0, 6) }} · </template>{{ device }}</small></span></div>
     </div>

@@ -4,6 +4,7 @@
 import { onMounted, reactive, ref } from 'vue'
 import { admin, useAdmin } from './useAdmin.ts'
 import { naira } from './adminModel.ts'
+import { recordDone } from './adminUi.ts'
 
 const api = useAdmin()
 const grant = reactive({ audience: 'online', city: 'lagos', amount: 500, reason: 'launch bonus', unrestricted: false })
@@ -21,6 +22,7 @@ async function give(): Promise<void> {
   if (r.ok && r.data.code === 'confirmation_required') r = await api.post('/api/admin/world/grant', { ...body(), confirm: r.data.token }, intent)
   busy.value = false
   out.value = r.ok ? { ok: r.data.ok === true, text: r.data.ok === true ? String(r.data.summary) : String(r.data.code) } : { ok: false, text: r.error.reason }
+  recordDone(out.value.text, out.value.ok)
   preview.value = null; typed.value = ''
 }
 interface Setting { key: string; label: string; help: string; kind: 'boolean' | 'number'; confirmOn?: boolean; min: number | null; max: number | null; default: boolean | number; value: boolean | number; changed: { at: number } | null }
@@ -32,15 +34,14 @@ async function set(key: string, value: boolean | number | null, confirm?: string
   const r = await api.post<Record<string, unknown>>('/api/admin/settings', { key, value, ...(confirm ? { confirm } : {}) }, `setting:${key}:${String(value)}`)
   if (r.ok && r.data.code === 'confirmation_required') { asking.value = { key, label: String(r.data.summary), token: String(r.data.token) }; word.value = ''; return }
   asking.value = null
-  note.value = r.ok ? 'Saved.' : r.error.reason; void loadSettings()
+  note.value = r.ok ? 'Saved.' : r.error.reason; recordDone(r.ok ? `Setting ${key} saved` : r.error.reason, r.ok); void loadSettings()
 }
 const minutes = ref(5)
-async function notice(m: number): Promise<void> { const r = await api.post('/api/admin/notice', { minutes: m }, `notice:${m}:${Date.now()}`); note.value = r.ok ? (m ? `The notice is showing for ${m} minutes.` : 'The notice ended.') : r.error.reason }
+async function notice(m: number): Promise<void> { const r = await api.post('/api/admin/notice', { minutes: m }, `notice:${m}:${Date.now()}`); note.value = r.ok ? (m ? `The notice is showing for ${m} minutes.` : 'The notice ended.') : r.error.reason; recordDone(note.value, r.ok) }
 </script>
 
 <template>
   <section>
-    <h2>World</h2>
     <div class="adm-two">
       <div class="adm-card">
         <h3>Grant to many players</h3>

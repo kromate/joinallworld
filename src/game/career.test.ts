@@ -401,7 +401,7 @@ test('the starter Community helper job still works for old saves, one shift per 
   assert.equal(player.state.job, 'community-helper');
   assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'started'); player.step(20); player.rest();
   const soon = player.act('activity', { id: 'helper-shift' });
-  assert.equal(soon.code, 'cooldown'); assert.match(soon.reason ?? '', /available again in 2\d\dm/); assert.equal(player.state.cash, 5300);
+  assert.equal(soon.code, 'cooldown'); assert.match(soon.reason ?? '', /Again in \d h/); assert.equal(player.state.cash, 5300);
   player.step(HELPER_COOLDOWN_SECONDS); player.rest();
   assert.equal(player.act('activity', { id: 'helper-shift' }).code, 'started'); player.step(20); player.rest();
   // Played round the clock the starter job still earns less in a day than one shift of the lowest-paid track.

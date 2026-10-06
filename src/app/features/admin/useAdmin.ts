@@ -1,7 +1,7 @@
 // The admin app's one way to talk to the server: reads, and writes that each carry a client id which is kept until the write is answered, so
 // pressing again after a lost answer repeats the SAME request (the server applies it once).
 import { reactive } from 'vue'
-import { useApp } from '../../state/app.ts'
+import { adminTransport } from './transport.ts'
 import type { AdminJson, AdminMe } from '../../../types/admin.ts'
 
 export interface Failure { status: number; code: string; reason: string }
@@ -13,8 +13,8 @@ const failureOf = (error: unknown): Failure => {
 export const admin = reactive<{ me: AdminMe | null }>({ me: null })
 
 export function useAdmin() {
-  const { game } = useApp()
-  const fetchJson = game.fetchJson
+  const transport = adminTransport()
+  const fetchJson = transport.fetchJson
   const pending = new Map<string, string>()
   const q = (query: Record<string, string | number | undefined>): string => { const p = new URLSearchParams(); for (const [k, v] of Object.entries(query)) if (v !== undefined && v !== '') p.set(k, String(v)); const s = p.toString(); return s ? `?${s}` : '' }
   return {
@@ -23,7 +23,7 @@ export function useAdmin() {
     },
     /** `intent` names what the admin is doing; its client id is reused until the server has answered for good. */
     post: async <T = AdminJson>(path: string, body: Record<string, unknown>, intent: string): Promise<Reply<T>> => {
-      const clientId = pending.get(intent) ?? game.newId()
+      const clientId = pending.get(intent) ?? transport.newId()
       pending.set(intent, clientId)
       try {
         const data = await fetchJson<T>(path, { method: 'POST', body: { ...body, clientId } })
@@ -37,6 +37,6 @@ export function useAdmin() {
       }
     },
     forget: (intent: string): void => { pending.delete(intent) },
-    now: (): number => game.view.value.now,
+    now: (): number => transport.now(),
   }
 }

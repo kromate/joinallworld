@@ -17,7 +17,9 @@ Only the founder may act on an admin or on the founder (including themselves, fo
 
 ## Opening it
 
-The Phone shows an **Admin** app after the server has answered `GET /api/admin/me` for the signed-in account. Alt + Shift + A opens it too. Sections: Dashboard, Players, Announcements, World, Moderation, Audit. It works on a phone (the nav becomes a top bar) and on very wide screens (`--ui-zoom`, `--ui-vh`).
+On the admin address (below) it is the whole page. In the game, the Phone shows an **Admin** app after the server has answered `GET /api/admin/me` for the signed-in account. Alt + Shift + A opens it too. Sections: Dashboard, Players, Announcements, World, Moderation, Audit. One frame for both: a rail on the left from 900 px wide and tabs along the bottom of a phone, a title and breadcrumbs, a search box that finds a player from anywhere, toasts for what a change did, and a **What just happened** list of this visit's changes with **Undo** where a change can be reversed (a credit is taken back as a debit with the same reason, a debit given back, a mute, suspension or ban lifted; a need, a rename, a message, a note or a sign-out cannot be). It scales with `--ui-zoom` and `--ui-vh` in the game and nothing sits under the Phone frame. Shortcuts: `/` find a player, `g` then `d` `p` `a` `w` `m` `l` for the screens, `?` for the list, in a queue `j` `k` `d` `w` `m`. On the admin address a screen and a player have their own link (`#/players/<id>/money`).
+
+**Players.** Saved filters (everyone, new today, online, signed up, guests, broke, banned, reported), a search that waits for the typing to stop and remembers the last eight searches on this browser, sorting, 15 / 40 / 100 rows, and a bulk bar for up to 20 chosen players: a message or a small credit (at most `ADMIN_GRANT_EACH_MAX`), **all or nothing**, through the same function and so the same per-action, per-target and per-admin limits and receipts as one player at a time, with a token and the number of players typed back (`POST /api/admin/players/bulk`). A player's page is tabs: Overview, Money (the ledger with a filter and the running balance), Social, Places, Sessions, Sanctions, Notes, History, and **As the player sees it** (a read-only summary of their top bar; never their messages, never a way to act as them), with Credit, Message, Mute and Ban pinned above.
 
 ## Dashboard
 
@@ -35,7 +37,38 @@ Each number says when it was true; the whole answer is cached 45 seconds. Exact 
 | stored collection sizes, rows written (Worker) | the store's own counters | none |
 | economy snapshot: cash in circulation, net of each ledger category today (wages, gigs, stall sales, admin credit and debit, fares, rent …), residents and visitors per city | one pass over stored sessions, at most `ADMIN_SCAN_MAX` | Node: memory. Worker: one read of every session row, no row written |
 
+### History, the funnel and what is exact (`GET /api/admin/history`)
+
+Two sources, both bounded, neither scanned on a read (`server/admin/history.ts`):
+
+- **The growth counters** (kept 400 days): new lives, lives seen each day, sessions, every funnel step and the retention cohorts. Counted by the server as it happens, so **exact**. The funnel shown is: new lives (pressed Play) → arrived in the city → first goal → settled a home → first paid work → came back the next day. "Opened the page" and "made a first friend" are **not measured** on the server and are shown as such; a step is counted on the day it happens, so the steps are not strictly the same people.
+- **`adminDaily`** (new, 400 days of 13 whole numbers each, one row on the Worker): the busiest moment of each day (players online at once), accounts, device sessions held, calls placed / connected / via the relay / failed, the hosted guide's requests (and how many the model and the fallback answered), e-mail and push sent, and cash in circulation when it was last measured. Written by the heartbeat while somebody is connected, **at most once every 15 minutes and only when a number changed**; recording starts the first time the server runs this code (`startedOn` says the day) and a day before it shows as a gap, never a zero. The busiest moment is the highest of the samples (a floor); calls and guide requests are the host's own day counters (UTC), taken at the last sample of the Lagos day; cash is sparse (it is only measured when an admin asks for the economy snapshot).
+
+Cost of each dashboard panel: tiles, cities (online, seen, new), system: memory and counters the host keeps, cached 45 s; the walk over followed lives (up to 50,000) behind "back in 7 days" is repeated at most every five minutes; the charts and the funnel: a few hundred additions over counters already in memory; the economy, richest ten, median, social (messages today, groups, pings) and residents/visitors: **one pass over the stored sessions and conversations**, only when asked and cached ten minutes (the page asks once when opened and again every ten minutes, never on the 60-second refresh). Nothing here writes except the 15-minute sample.
+
+The dashboard refreshes itself every minute and shows when its numbers are from. Charts are plain SVG (no chart library) with a text description, arrow-key reading of a day and the same numbers as a table.
+
 Calls placed/connected/failed and relay use are not in this build; a feature that has such counters adds them with `registerAdminStat` (`server/admin/tools.ts`).
+
+## Using admin.<domain>
+
+The admin screens can also be opened on a second address, `admin.joinallworld.com`: a page of their own with nothing of the game in it (no scene, no sound, no companion, no engine; a second build entry, `adminshell.html`, so the game's first download is unchanged).
+
+**How it works.** Both hosts decide with `server/admin/host.ts`. A request is for the admin address when its Host is `ADMIN_HOST` (a plain host name, a setting of the Node host and a variable of the Worker) or, when that is not set, `admin.` plus the host of `PUBLIC_ORIGIN` (else of the site's own origin), without a leading `www.`; `admin.localhost` always counts, so it can be tried on one machine (`http://admin.localhost:<port>`). On that address:
+
+- it answers `GET /api/health`, `GET /api/session`, `/api/account` and `/api/account/...`, `/api/admin/...`, `robots.txt` (everything disallowed), `/assets/...` and the favicon, and for any other `GET` the admin page. **Everything else is a 404** (a wrong method on the page, a 405): no game page, no sockets, no manifest, no sitemap, no link previews, no game routes, and `POST /api/session` is refused, so it cannot make players or be used as a second game origin. Origin checks are the host's own, so a page on any other origin is refused (403) there too. The `/assets/` files are the build's public, hashed files; the admin address does not hide the game's chunks (they hold no secret), it just does not serve its page.
+- the page carries `Content-Security-Policy` (the game's policy without the analytics beacon, the telemetry hosts and the sockets, plus the sign-in provider's own hosts), `frame-ancestors 'none'`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `X-Robots-Tag: noindex, nofollow`, `Cache-Control: no-store`, a `Permissions-Policy` with the microphone and location off, and HSTS over HTTPS. The game's own address does not serve the admin page (`/adminshell` is a 404 there).
+- **its session is its own**: the cookie is `__Host-sid`, host-only by definition, so signing in on the admin address creates and binds a session there through the normal account flow, and signing in or out there never touches the game's. Every address is counted under its own name on this host (`admin:<address>`), so the rate limits (the request limit, the sign-in limit, the admin failure limiter) of the two addresses are separate.
+- a signed-in account that is not an admin sees "This area is for Allworld staff" with a link to the game; a browser that is not signed in sees the sign-in (Google, or an e-mail address and password); nobody is ever told whether an address has an account.
+
+The in-game **Admin** entry on the game's address works as before.
+
+**What the owner must do** (nothing in the repository can):
+
+1. **Cloudflare.** Workers & Pages -> `joinallworld-next` -> Settings -> Domains & Routes -> **Add -> Custom domain** -> `admin.joinallworld.com`. Cloudflare creates the DNS record and the certificate itself; nothing else is needed (no code change, no second Worker). Optional: set a Worker variable `ADMIN_HOST` only if the name should be something else; without it the name above is derived from `PUBLIC_ORIGIN` (or the site's own origin).
+2. **The identity provider** (Firebase Authentication, the project named by `ACCOUNTS_FIREBASE_PROJECT_ID`). Authentication -> Settings -> **Authorized domains** -> add `admin.joinallworld.com`.
+3. **Google sign-in.** In the Google Cloud console for the same project (APIs & Services -> Credentials -> the OAuth 2.0 web client named by `ACCOUNTS_GOOGLE_CLIENT_ID`) add `https://admin.joinallworld.com` under **Authorized JavaScript origins**. Without steps 2 and 3 the Google button will not work on the admin address, **but e-mail and password does** (it needs only step 1, and step 2 if the provider's API key has an HTTP-referrer restriction: add `https://admin.joinallworld.com/*` to it).
+4. A new admin address needs no change to who is an admin: the same account, the same `FOUNDER_EMAIL_SHA256` / `ADMIN_EMAIL_SHA256S`.
 
 ## Players
 
@@ -121,6 +154,7 @@ Account-based guard decided per request from server records; constant-time hash 
 | `adminAnnounce` | announcements | last 200 |
 | `adminSettings` | only values that differ from the environment | the registered settings |
 | `adminNotes` | private notes | 20 per player, 2000 players |
+| `adminDaily` | `{ first, days: { [lagosDay]: number[13] } }`, one row of whole numbers per Lagos day (`server/admin/history.ts`) | last 400 days; written at most every 15 minutes, only when a number changed |
 
 Also a key `admin-confirm` (made once, in `DATA_DIR/keys` or the Durable Object's `host_keys`) for confirmation tokens, and the growth collection gains nothing new (mail batches keep their cursor in the announcement).
 

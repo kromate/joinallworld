@@ -41,6 +41,7 @@ import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.
 import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
+import { ADMIN_HOST_ENV, ADMIN_ROBOTS, ADMIN_SHELL, adminAddress, adminHostName, adminHostRoute, isAdminHost } from '../server/admin/host.ts';
 import { createSqliteStore } from './sqlite-store.ts';
 import { createSqliteImages } from './sqlite-images.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
@@ -147,9 +148,19 @@ export default {
   },
 };
 
+/** Which admin-address name this deployment answers for (server/admin/host.ts). */
+const adminNameOf = (env: WorkerEnv): string => adminHostName(env[ADMIN_HOST_ENV], cleanOrigin(env.PUBLIC_ORIGIN));
+
 async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   const url = new URL(request.url);
   const state = () => env.JOINALLWORLD.getByName('joinallworld-v1');
+  // The admin address answers only a few paths (server/admin/host.ts); the game's own address does not serve its page.
+  const adminKind = isAdminHost(url.host, adminNameOf(env)) ? adminHostRoute(request.method, url.pathname) : null;
+  if (adminKind === 'notfound') return json(404, { error: 'not_found' });
+  if (adminKind === 'method') return json(405, { error: 'method_not_allowed' });
+  if (adminKind === 'robots') return new Response(request.method === 'HEAD' ? null : ADMIN_ROBOTS, { status: 200, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=3600', 'x-content-type-options': 'nosniff' } });
+  if (adminKind === null && /^\/adminshell(\.html)?$/.test(url.pathname)) return json(404, { error: 'not_found' });
+  if (adminKind === 'shell') return adminShell(request, env, url);
   if (url.pathname.startsWith('/api/') || url.pathname === '/socket') {
     // Operator routes authenticate with a bearer token in a header, which a browser never attaches by itself, so
     // they are not tied to the page's origin. Every other route keeps the origin check.
@@ -200,6 +211,16 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   return new Response(absolutePreviewImage(text, publicOrigin(env, url)), { status: 200, headers });
 }
 
+/** The admin page: the build's second entry, with the admin address's own headers (no beacon, no sockets, never kept or indexed). */
+async function adminShell(request: Request, env: WorkerEnv, url: URL): Promise<Response> {
+  const found = await env.ASSETS.fetch(new Request(new URL(`/${ADMIN_SHELL.replace(/\.html$/, '')}`, url.origin), { method: 'GET', redirect: 'manual' }));
+  const text = found.status === 200 ? await found.text() : '';
+  if (found.status !== 200 || !text) return json(404, { error: 'not_found' });
+  const headers = new Headers({ 'content-type': 'text/html; charset=utf-8', 'x-content-type-options': 'nosniff' });
+  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), accounts: accountsConfig(env), admin: true }))) headers.set(name, value);
+  return new Response(request.method === 'HEAD' ? null : text, { status: 200, headers });
+}
+
 /** Declared here, not in host-seam.ts: it names Workers runtime globals the Node test projects do not have. */
 /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
 export interface WorkerEnv {
@@ -207,6 +228,8 @@ export interface WorkerEnv {
   ASSETS: Fetcher
   BUILD_ID?: string
   PUBLIC_ORIGIN?: string
+  /** The admin address's host name (server/admin/host.ts); unset: `admin.` + the public host. */
+  ADMIN_HOST?: string
   MODERATOR_TOKEN?: string
   VOTES_PER_ADDRESS?: string
   VOTE_CAP_MODE?: string
@@ -579,7 +602,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     let at: { key: string; request: WorkerRequest; began: number } | undefined;
     try {
       const secret = cookieId(raw), now = Date.now();
-      const ip = await digest(addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown'));
+      const address = addressBucket(raw.headers.get('cf-connecting-ip') || 'unknown');
+      const ip = await digest(isAdminHost(url.host, adminNameOf(this.env)) ? adminAddress(address) : address);
       const operator = url.pathname.startsWith('/api/mod/');
       if (!operator && !isSameOrigin(raw.headers.get('origin'), url.host, { requireOrigin: url.pathname === '/socket', secure: overHttps(url) })) throw protocolError(403, 'origin_rejected');
       // True only for a request carrying the operator's bearer token (never a cookie or a query value).

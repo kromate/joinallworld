@@ -1,0 +1,17 @@
+/* The admin address's own page: sign-in, the staff-only page. The admin screens bring their own sheet (features/admin/admin.css). */
+html, body { margin: 0; min-height: 100%; background: #20232c; color: #1c1f26; font: 400 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+#app { min-height: 100vh; }
+.ah-center { min-height: 100vh; display: grid; place-items: center; padding: 20px; box-sizing: border-box; }
+.ah-card { width: 100%; max-width: 420px; background: #fff; border-radius: 16px; padding: 24px 22px; box-shadow: 0 8px 30px #0006; display: grid; gap: 10px; box-sizing: border-box; }
+.ah-card h1 { margin: 0; font-size: 22px; }
+.ah-lead { margin: 0; color: #4b5563; }
+.ah-card label { font-size: 13px; font-weight: 600; color: #374151; }
+.ah-card input { font: inherit; padding: 10px 12px; min-height: 44px; border: 1px solid #c9ced8; border-radius: 10px; width: 100%; box-sizing: border-box; }
+.ah-card input[aria-invalid="true"] { border-color: #b42318; }
+.ah-pw { display: flex; gap: 6px; } .ah-pw button { border: 1px solid #c9ced8; border-radius: 10px; background: #f3f4f6; padding: 0 12px; font: inherit; cursor: pointer; }
+.ah-primary { display: block; text-align: center; text-decoration: none; border: 0; border-radius: 10px; min-height: 44px; padding: 11px 14px; background: #1f6f43; color: #fff; font: 600 15px system-ui, sans-serif; cursor: pointer; box-sizing: border-box; }
+.ah-primary:disabled { opacity: .55; cursor: wait; }
+.ah-link { border: 0; background: none; color: #1f6f43; text-decoration: underline; font: inherit; min-height: 40px; cursor: pointer; }
+.ah-error { margin: 0; color: #b42318; font-size: 13px; font-weight: 600; } .ah-note { margin: 0; color: #4b5563; font-size: 13px; }
+.ah-google { display: flex; justify-content: center; min-height: 44px; }
+.ah-or { display: flex; align-items: center; gap: 10px; margin: 2px 0; font-size: 12px; color: #6b7280; } .ah-or::before, .ah-or::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }

@@ -16,10 +16,12 @@ import { cap, money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { readOnlyReason, useAct } from '../kit/act.ts'
+import { useSection } from '../kit/section.ts'
 import { asking } from './jobsState.ts'
 import { autoWords, jobControl, jobsRules, openNow, otherJobs, validAsk } from './jobsModel.ts'
 
-defineProps<{ params?: unknown }>()
+const props = defineProps<{ params?: unknown }>()
+useSection(() => props.params)
 
 const { game, shell, command, goTo } = useApp()
 const { act, pending } = useAct()
@@ -85,7 +87,7 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
     <section v-else class="ui-hero" aria-label="Your next step"><small>No job yet</small><strong>Find work today</strong><p>{{ career.step.text }}</p></section>
 
     <HowItWorks id="jobs-rules" page label="How work works" :rules="rules" />
-    <h3 class="ui-section">{{ career.employed ? 'Other jobs' : 'Pick a job' }}</h3>
+    <h3 class="ui-section" data-section="list">{{ career.employed ? 'Other jobs' : 'Pick a job' }}</h3>
     <div class="jobs-list">
       <article v-for="job in jobs" :key="job.id" class="jobs-track">
         <header class="jobs-head">

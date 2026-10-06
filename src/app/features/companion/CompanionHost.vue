@@ -164,7 +164,7 @@ function notNow(): void { memory.setNudge(afterIgnored(memory.data)); closeBubbl
 function act(action: CompanionAction): void {
   if (action.kind !== 'dismiss') memory.setNudge(afterEngaged(memory.data))
   closeBubble()
-  runAction(action, env)
+  runAction(action, env, contextFromGame(app))
   signal('act', { action: action.kind })
 }
 
@@ -210,6 +210,8 @@ function setMode(next: CompanionMode): void {
   if (next === 'off') closeBubble()
 }
 const env = actionEnv(app, {
+  // A button that cannot work now says why, in the chat (and, with the chat closed, as a toast).
+  tell: (text) => { log('lumo', text); if (!companionUi.open) game.toast(text) },
   ask: (text) => { companionUi.open = true; void send(text) },
   setMode: (next) => { setMode(next); log('lumo', next === 'quiet' ? 'Okay, I will stay quiet and only speak when you ask.' : next === 'off' ? 'Turned off. You can switch me back on from the chat in Messages.' : 'Back to lively. I will only speak up now and then.') },
   dismiss: closeBubble,

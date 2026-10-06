@@ -25,17 +25,20 @@ import { supportService } from '../support/service.ts';
 import { LIMITS as OUTREACH_LIMITS } from '../growth/outreach.ts';
 import { limitsOf } from './config.ts';
 import { eachSession } from './players.ts';
+import { citiesToday } from './history.ts';
 import { peek } from './store.ts';
 import { adminStats } from './tools.ts';
 import type { Db, RouteContext } from '../types.ts';
 
-export const CACHE_MS = 45000, SNAPSHOT_CACHE_MS = 600000;
+export const CACHE_MS = 45000, SNAPSHOT_CACHE_MS = 600000, LIVES_CACHE_MS = 300000;
 const startedAt = new WeakMap<RouteContext, number>();
 const isCount = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
 
 export function statsService(ctx: RouteContext) {
   const support = supportService(ctx);
   startedAt.set(ctx, typeof ctx.now === 'function' ? ctx.now() : 0);
+  let cashSeen: number | undefined;
+  let lives: { at: number; day: number; tracked7: number; tracked30: number; trackedLives: number } | null = null;
   let cache: { at: number; value: ReturnType<typeof compute> } | null = null, snapshotCache: { at: number; value: ReturnType<typeof snapshot> } | null = null;
 
   function compute(db: Db) {
@@ -44,8 +47,13 @@ export function statsService(ctx: RouteContext) {
     const g = db.growth;
     const dayRow = (day: number) => { const counters = (g?.metrics.cities ? Object.values(g.metrics.cities) : []).reduce<Record<string, number>>((sum, book) => { for (const [name, value] of Object.entries(book?.days?.[day] ?? {})) sum[name] = (sum[name] ?? 0) + value; return sum; }, {}); for (const [name, value] of Object.entries(g?.metrics.days?.[day] ?? {})) if (!g?.metrics.cities?.['lagos']) counters[name] = (counters[name] ?? 0) + value; return counters; };
     const span = (days: number, name: string): number => { let total = 0; for (let day = today - days + 1; day <= today; day++) total += dayRow(day)[name] ?? 0; return total; };
-    let tracked7 = 0, tracked30 = 0, trackedLives = 0;
-    for (const book of [...Object.values(g?.metrics.cities ?? {}), ...(g?.metrics.cities?.['lagos'] ? [] : [g?.metrics])]) for (const life of Object.values(book?.lives ?? {})) { trackedLives += 1; if (life.last !== null && life.last >= today - 6) tracked7 += 1; if (life.last !== null && life.last >= today - 29) tracked30 += 1; }
+    // The one walk over followed lives (up to 50,000) is not repeated on every refresh: it is read again every LIVES_CACHE_MS.
+    if (!lives || now - lives.at >= LIVES_CACHE_MS || now < lives.at || lives.day !== today) {
+      let tracked7 = 0, tracked30 = 0, trackedLives = 0;
+      for (const book of [...Object.values(g?.metrics.cities ?? {}), ...(g?.metrics.cities?.['lagos'] ? [] : [g?.metrics])]) for (const life of Object.values(book?.lives ?? {})) { trackedLives += 1; if (life.last !== null && life.last >= today - 6) tracked7 += 1; if (life.last !== null && life.last >= today - 29) tracked30 += 1; }
+      lives = { at: now, day: today, tracked7, tracked30, trackedLives };
+    }
+    const { tracked7, tracked30, trackedLives } = lives;
     const sessionsHeld = Object.keys(db.sessions).length, accounts = db.accountLog?.accounts ?? Object.keys(db.accounts ?? {}).length;
     const accountCharacters = Object.values(db.accounts ?? {}).filter((account) => account?.sessionKey).length;
     const open = ctx.core.sockets().length;
@@ -59,6 +67,9 @@ export function statsService(ctx: RouteContext) {
     return {
       asOf: now,
       online: { value: Math.max(pulse.online, 0), cities: pulse.cities, cost: 'memory', exact: true },
+      cities: citiesToday(db, now),
+      yesterday: { new: dayRow(today - 1)['new'] ?? 0, active: (dayRow(today - 1)['active'] ?? 0) + (dayRow(today - 1)['active-untracked'] ?? 0), sessions: dayRow(today - 1)['sessions'] ?? 0 },
+      today: { sessions: dayRow(today)['sessions'] ?? 0 },
       players: {
         newToday: dayRow(today)['new'] ?? 0, new7d: span(7, 'new'), activeToday,
         active7d: { exact: tracked7, olderVisits: span(7, 'active-untracked') }, active30d: { exact: tracked30, olderVisits: span(30, 'active-untracked') }, tracked: trackedLives,
@@ -83,6 +94,7 @@ export function statsService(ctx: RouteContext) {
   function snapshot(db: Db) {
     const now = ctx.now(), today = lagosTime(now).day, limit = limitsOf(ctx).scanMax;
     let seen = 0, cash = 0, players = 0, withCash = 0;
+    const balances: number[] = [], richest: { id: string; name: string; cash: number }[] = [];
     const categories: Record<string, { net: number; players: number }> = {}, cities: Record<string, { residents: number; visitors: number }> = {};
     eachSession(db, (session) => {
       seen += 1;
@@ -90,14 +102,29 @@ export function statsService(ctx: RouteContext) {
       const city = characterCity(session), state = city ? session.cities[city]?.state : undefined;
       if (!city || !state) return;
       players += 1; cash += state.cash; if (state.cash > 0) withCash += 1;
+      balances.push(state.cash);
+      if (richest.length < 10 || state.cash > (richest[richest.length - 1]?.cash ?? 0)) { richest.push({ id: session.publicId, name: session.name, cash: state.cash }); richest.sort((a, b) => b.cash - a.cash); richest.length = Math.min(richest.length, 10); }
       const entry = (cities[city] ??= { residents: 0, visitors: 0 });
       if (state.estate?.home === city) entry.residents += 1; else entry.visitors += 1;
       const last = state.ledgerDays.at(-1);
       if (last?.day === today) for (const [group, [net]] of Object.entries(last.by)) { const slot = (categories[group] ??= { net: 0, players: 0 }); slot.net += net; slot.players += 1; }
     });
     const list = Object.entries(categories).map(([category, slot]) => ({ category, ...slot })).sort((a, b) => Math.abs(b.net) - Math.abs(a.net));
-    return { asOf: now, sessionsRead: Math.min(seen, limit), sessionsHeld: seen, truncated: seen > limit, players, cashInCirculation: cash, playersWithCash: withCash, cities,
-      faucets: list.filter((item) => item.net > 0).slice(0, 14), sinks: list.filter((item) => item.net < 0).slice(0, 14), cost: `one pass over ${Math.min(seen, limit)} stored sessions (reads only), cached ${SNAPSHOT_CACHE_MS / 60000} minutes` };
+    // Credits an admin made and the launch bonus are not earnings: they are listed apart from the faucets of play.
+    const apart = (item: { category: string }): boolean => /admin|bonus/i.test(item.category);
+    balances.sort((a, b) => a - b);
+    const median = balances.length ? (balances[Math.floor((balances.length - 1) / 2)]! + balances[Math.floor(balances.length / 2)]!) / 2 : 0;
+    // Messages and groups: one pass over the conversations, newest lines last, stopping at the first line older than today.
+    const dayStart = today * 86400000 - 3600000;
+    let messagesToday = 0, groups = 0, conversations = 0;
+    for (const conv of Object.values(db.social?.convs ?? {})) {
+      conversations += 1; if (conv.kind === 'group') groups += 1;
+      const lines = conv.messages;
+      for (let i = lines.length - 1; i >= 0; i--) { const line = lines[i]; if (!line || line.at < dayStart) break; if (line.from !== null) messagesToday += 1; }
+    }
+    return { asOf: now, sessionsRead: Math.min(seen, limit), sessionsHeld: seen, truncated: seen > limit, players, cashInCirculation: cash, playersWithCash: withCash, median: Math.round(median), richest, cities,
+      social: { messagesToday, groups, conversations, pings: Object.keys(db.social?.pings ?? {}).length },
+      faucets: list.filter((item) => item.net > 0 && !apart(item)).slice(0, 5), sinks: list.filter((item) => item.net < 0 && !apart(item)).slice(0, 5), adminMoney: list.filter(apart), cost: `one pass over ${Math.min(seen, limit)} stored sessions (reads only), cached ${SNAPSHOT_CACHE_MS / 60000} minutes` };
   }
 
   return {
@@ -110,9 +137,11 @@ export function statsService(ctx: RouteContext) {
     economy(db: Db, fresh = false) {
       if (!fresh && snapshotCache && ctx.now() - snapshotCache.at < SNAPSHOT_CACHE_MS && ctx.now() >= snapshotCache.at) return snapshotCache.value;
       const value = snapshot(db);
-      snapshotCache = { at: ctx.now(), value };
+      snapshotCache = { at: ctx.now(), value }; cashSeen = value.cashInCirculation;
       return value;
     },
+    /** Cash in circulation as of the last economy snapshot (undefined until an admin has asked for one). */
+    lastCash: (): number | undefined => cashSeen,
     invalidate(): void { cache = null; snapshotCache = null; },
   };
 }

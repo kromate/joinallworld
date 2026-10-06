@@ -193,7 +193,7 @@ test('Freedom Park is fully playable: paid shows, free play, and the skill-gated
   assert.equal(run(comic, 'perform-comedy', DRY_NOON).ok, true);
   assert.equal(comic.cash, 5900); assert.equal(comic.needs.energy, 42);
   const again = dispatch(comic, { type: 'activity', payload: { id: 'perform-comedy' } }, at(DRY_NOON + 60000));
-  assert.equal(again.code, 'cooldown'); assert.match(why(again), /available again in 9m 11s/);
+  assert.equal(again.code, 'cooldown'); assert.match(why(again), /Again in 10 min/);
   assert.equal(viewLife(comic, at(DRY_NOON + 60000)).travel.cooldowns['perform-comedy'], 551);
   assert.equal(viewLife(comic, at(DRY_NOON + 60000)).activities.cards.find((card) => card.id === 'perform-comedy')?.blocked?.code, 'cooldown');
   advanceLife(comic, 600, at(DRY_NOON + 611000));

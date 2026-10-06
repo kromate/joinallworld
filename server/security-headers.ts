@@ -94,21 +94,23 @@ export interface AppPolicy extends RequestFacts {
   telemetry?: readonly string[]
   /** The sign-in configuration (host-context.ts accountsConfig). Unset or null: accounts are off and the policy is the strict one. */
   accounts?: AccountsConfig | null
+  /** The admin address's page (server/admin/host.ts): no analytics beacon, no telemetry hosts, and the microphone and location are off. */
+  admin?: boolean
 }
 
 /** The Content-Security-Policy of the game's page. */
-export function appContentSecurityPolicy({ scriptHashes, telemetry = [], accounts = null, ...facts }: AppPolicy): string {
+export function appContentSecurityPolicy({ scriptHashes, telemetry = [], accounts = null, admin = false, ...facts }: AppPolicy): string {
   const host = facts.host && /^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(facts.host) ? facts.host : '';
   // 'self' covers a same-origin WebSocket in current browsers; older ones need the address spelled out.
   const sockets = host ? [`wss://${host}`, ...(facts.secure ? [] : [`ws://${host}`])] : [];
   const extra = accountsCspAdditions(accounts).csp;
   const directives: string[] = [
     "default-src 'self'",
-    `script-src ${["'self'", ...scriptHashes, BEACON_SCRIPT, ...extra['script-src']].join(' ')}`,
+    `script-src ${["'self'", ...scriptHashes, ...(admin ? [] : [BEACON_SCRIPT]), ...extra['script-src']].join(' ')}`,
     `style-src ${["'self'", "'unsafe-inline'", ...extra['style-src']].join(' ')}`,
     "img-src 'self' data: blob:",
     "font-src 'self'",
-    `connect-src ${["'self'", ...sockets, ...telemetry, BEACON_CONNECT, ...extra['connect-src']].join(' ')}`,
+    `connect-src ${["'self'", ...(admin ? [] : [...sockets, ...telemetry, BEACON_CONNECT]), ...extra['connect-src']].join(' ')}`,
     "media-src 'self' blob:",
     "worker-src 'self' blob:",
     ...(extra['frame-src'].length ? [`frame-src ${extra['frame-src'].join(' ')}`] : []),
@@ -129,7 +131,20 @@ const hsts = (facts: RequestFacts): Record<string, string> => (production(facts)
 
 /** Headers of the game's page (the Content-Type and caching are the host's). */
 export function appHeaders(policy: AppPolicy): Record<string, string> {
+  if (policy.admin) return adminHeaders(policy);
   return { ...BASE, 'Cross-Origin-Opener-Policy': accountsCspAdditions(policy.accounts).coop, ...hsts(policy), 'Content-Security-Policy': appContentSecurityPolicy(policy) };
+}
+
+/**
+ * Headers of the admin address's page and files: the game's policy without the analytics beacon, the telemetry hosts and the sockets, no
+ * referrer, no microphone or location, never kept, never indexed, never framed.
+ */
+export function adminHeaders(policy: AppPolicy): Record<string, string> {
+  return {
+    ...BASE, 'Referrer-Policy': 'no-referrer', 'Permissions-Policy': PERMISSIONS_POLICY.replace('microphone=(self)', 'microphone=()').replace('geolocation=(self)', 'geolocation=()'),
+    'Cross-Origin-Opener-Policy': accountsCspAdditions(policy.accounts).coop, ...hsts(policy), 'X-Robots-Tag': 'noindex, nofollow', 'Cache-Control': 'no-store',
+    'Content-Security-Policy': appContentSecurityPolicy({ ...policy, admin: true }),
+  };
 }
 
 /** Headers of a page a module serves. A page cannot change them. */

@@ -6,6 +6,8 @@ import { conceptById } from './knowledge.ts'
 import { matchIntent, nearTopics } from './intents.ts'
 import type { IntentId, Match } from './intents.ts'
 import { COMPANION_NAME } from './identity.ts'
+import { route } from './registry.ts'
+import type { GameId } from './registry.ts'
 import type { CompanionAction, CompanionContext, CompanionMemoryView, CompanionReply, FriendFact, PlaceFact, StepFact, TourId } from './types.ts'
 
 const naira = (value: number): string => `₦${Math.round(value).toLocaleString('en-NG')}`
@@ -16,6 +18,14 @@ const nightly = (hour: number): boolean => hour >= 22 || hour < 5
 const dayWord = (hour: number): string => (hour < 5 ? 'night' : hour < 12 ? 'morning' : hour < 17 ? 'afternoon' : hour < 22 ? 'evening' : 'night')
 const first = (name: string): string => name.trim().split(/\s+/)[0] ?? ''
 const pick = <T>(list: readonly T[], seed: number): T => list[Math.abs(seed) % list.length] as T
+
+/** The game a message is about: Oro for "today's word" and the daily puzzle, chess, Weave; null when it names none. */
+export function gameIn(words: readonly string[]): GameId | null {
+  if (words.some((word) => word === 'chess')) return 'chess'
+  if (words.some((word) => word === 'weave' || word === 'tile' || word === 'tiles')) return 'weave'
+  if (words.some((word) => word === 'oro' || word === 'word' || word === 'wordle' || word === 'daily' || word === 'todays')) return 'oro'
+  return null
+}
 
 /** The questions behind each topic chip ("closest topics"). */
 export const TOPIC_QUESTIONS: Partial<Record<IntentId, string>> = {
@@ -40,23 +50,23 @@ export function nextStep(ctx: CompanionContext, seed = 0): CompanionReply {
   const reply = (text: string, actions: CompanionAction[], topic = 'next', mood: CompanionReply['mood'] = 'point'): CompanionReply => ({ topic, text, actions, mood })
   if (ctx.travelling) return reply('You are on your way, so sit back. I will have something for you when you arrive.', [open('map', 'Watch the trip')], 'next', 'happy')
   if (ctx.busy) return reply('You are in the middle of something. Let it finish and then ask me again.', [], 'next', 'happy')
-  if (ctx.stuck) return reply(`Money is tight right now, ${name}, but there is a way through. The help card shows paid odd jobs, free rest and a ride home.`, [{ kind: 'relief', label: 'What can I do?' }], 'next', 'nod')
+  if (ctx.stuck) return reply(`Money is tight right now, ${name}, but there is a way through. The help card shows paid odd jobs, free rest and a ride home.`, [route.relief('What can I do?')], 'next', 'nod')
   if (ctx.needs.hunger < 25) {
     const food = nearestOpen(ctx.places, ['food'])
     return reply(`You are really hungry, ${name}. ${food ? `${food.label} is open and has food.` : 'Try the groceries at home.'}`, [...(food ? [goTo(food)] : []), open('groceries', 'Groceries')], 'next', 'point')
   }
   if (ctx.needs.energy < 20) {
     const home = ctx.places.find((place) => place.id === 'home')
-    return reply(`Your energy is nearly gone. ${nightly(ctx.hour) ? 'It is late as well, so' : 'Best thing now:'} rest at home.`, [...(home ? [goTo(home, 'Take me home')] : []), ...(ctx.cash < 1500 ? [{ kind: 'relief', label: 'Free ways to rest' } as CompanionAction] : [])], 'next', 'point')
+    return reply(`Your energy is nearly gone. ${nightly(ctx.hour) ? 'It is late as well, so' : 'Best thing now:'} rest at home.`, [...(home ? [goTo(home, 'Take me home')] : []), ...(ctx.cash < 1500 ? [route.relief('Free ways to rest')] : [])], 'next', 'point')
   }
   if (ctx.rentArrears > 0) return reply(`Your rent is behind by ${naira(ctx.rentArrears)}. Pay what you can early so the late fee stops growing.`, [open('bank', 'Open Bank')], 'next', 'think')
   if (ctx.stallAlert) return reply(`Your stall needs you: ${ctx.stallAlert}`, [open('business', 'Open Business')], 'next', 'think')
   const goal = ctx.goal
   if (goal && (ctx.newPlayer || ctx.guest)) return reply(`${goal.title}. ${goal.hint}`, [stepAction(goal)].filter((action): action is CompanionAction => action !== null), 'next', 'point')
-  if (ctx.missions.claimable > 0) return reply(`You have ${ctx.missions.claimable} finished mission${ctx.missions.claimable > 1 ? 's' : ''} waiting. Tap to collect the cash.`, [open('missions', 'Collect it')], 'next', 'celebrate')
+  if (ctx.missions.claimable > 0) return reply(`You have ${ctx.missions.claimable} finished mission${ctx.missions.claimable > 1 ? 's' : ''} waiting. Tap to collect the cash.`, [route.missions('Collect it')], 'next', 'celebrate')
   const online = onlineFriends(ctx)
   if (online[0] && seed % 3 === 0) return reply(`${online[0].name} is online right now. A quick hello keeps friendships warm.`, [{ kind: 'chat', friend: online[0].id, name: online[0].name, label: 'Say hi' }, { kind: 'call', friend: online[0].id, name: online[0].name, label: 'Call' }], 'next', 'wave')
-  if (!ctx.employed && ctx.cash < 5000 && !ctx.guest) return reply(`You have ${naira(ctx.cash)} and no job yet. A steady job pays every shift, so Jobs is the best start.`, [open('jobs', 'Open Jobs')], 'next', 'nod')
+  if (!ctx.employed && ctx.cash < 5000 && !ctx.guest) return reply(`You have ${naira(ctx.cash)} and no job yet. A steady job pays every shift, so Jobs is the best start.`, [route.jobs()], 'next', 'nod')
   const mission = ctx.missions.open[0]
   if (mission) return reply(`Today's mission: ${mission.label}. ${mission.hint}`, [mission.go ? { kind: 'go', venue: mission.go[0], ...(mission.go[1] ? { spot: mission.go[1] } : {}), label: 'Take me there' } : open(mission.open ?? 'missions', 'Open it')], 'next', 'point')
   if (goal) return reply(`${goal.title}. ${goal.hint}`, [stepAction(goal)].filter((action): action is CompanionAction => action !== null), 'next', 'point')
@@ -64,7 +74,7 @@ export function nextStep(ctx: CompanionContext, seed = 0): CompanionReply {
     const fun = nearestOpen(ctx.places, ['fun', 'nightlife'])
     if (fun) return reply(`You could use some fun, ${name}. ${fun.label} is open${fun.activities[0] ? ` and you can ${fun.activities[0].toLowerCase()}` : ''}.`, [goTo(fun)], 'next', 'point')
   }
-  if (!ctx.guest && seed % 5 === 3) return reply('Fancy a quick break? Today\'s word puzzle takes a minute, and everybody gets the same word.', [open('games', 'Play today\'s word')], 'next', 'happy')
+  if (!ctx.guest && seed % 5 === 3) return reply('Fancy a quick break? Today\'s word puzzle takes a minute, and everybody gets the same word.', [route.game('oro')], 'next', 'happy')
   const others = ctx.cities.filter((city) => city.open && !city.here)
   const spot = ctx.places.filter((place) => place.open && !place.here && place.category !== 'home')
   if (spot.length && seed % 2 === 0) { const place = pick(spot, seed); return reply(`Feeling curious? ${place.label} in ${place.district} is open. There is always something new to see.`, [goTo(place)], 'next', 'point') }
@@ -102,9 +112,9 @@ const MAKERS: Partial<Record<IntentId, Maker>> = {
   next: (ctx, _m, seed) => nextStep(ctx, seed),
   earn: (ctx) => {
     const work = nearestOpen(ctx.places, ['work'], false)
-    if (ctx.stuck) return R('earn', 'Money is tight, so start with paid odd jobs. They pay at any hour and need no experience.', [{ kind: 'relief', label: 'Show me odd jobs' }], 'nod')
-    if (ctx.employed) return R('earn', `You work as ${ctx.jobRole ?? 'an employee'}. Each shift pays, and Career shows the next step up. A stall of your own can add more.`, [open('jobs', 'Open Jobs'), open('business', 'Open Business')], 'nod', 'Jobs pays your shifts. Open it to see the next one.')
-    return R('earn', `Open Jobs: it lists work near you and pays every shift.${work ? ` ${work.label} is a good place to start.` : ''}`, [open('jobs', 'Open Jobs'), ...(work ? [goTo(work, `Go to ${work.label}`)] : [])], 'point', 'Jobs again: it has the list of work and pays every shift.')
+    if (ctx.stuck) return R('earn', 'Money is tight, so start with paid odd jobs. They pay at any hour and need no experience.', [route.relief('Show me odd jobs')], 'nod')
+    if (ctx.employed) return R('earn', `You work as ${ctx.jobRole ?? 'an employee'}. Each shift pays, and Career shows the next step up. A stall of your own can add more.`, [route.jobs(), open('business', 'Open Business')], 'nod', 'Jobs pays your shifts. Open it to see the next one.')
+    return R('earn', `Open Jobs: it lists work near you and pays every shift.${work ? ` ${work.label} is a good place to start.` : ''}`, [route.jobs(), ...(work ? [goTo(work, `Go to ${work.label}`)] : [])], 'point', 'Jobs again: it has the list of work and pays every shift.')
   },
   cash: (ctx) => R('cash', `You have ${naira(ctx.cash)}.${ctx.rideDebt ? ` You still owe ${naira(ctx.rideDebt)} for a ride home.` : ''}`, [open('bank', 'Open Bank')], 'nod'),
   eat: (ctx) => {
@@ -114,7 +124,7 @@ const MAKERS: Partial<Record<IntentId, Maker>> = {
   },
   sleep: (ctx) => {
     const home = ctx.places.find((place) => place.id === 'home')
-    return R('sleep', `Rest at home to get your energy back${ctx.cash < 1500 ? ', or use a free bench if money is tight' : ''}.${nightly(ctx.hour) ? ' It is late, so now is a good time.' : ''}`, [...(home ? [goTo(home, 'Take me home')] : []), ...(ctx.cash < 1500 ? [{ kind: 'relief', label: 'Free ways to rest' } as CompanionAction] : [])], 'nod', 'Home is the best place to rest.')
+    return R('sleep', `Rest at home to get your energy back${ctx.cash < 1500 ? ', or use a free bench if money is tight' : ''}.${nightly(ctx.hour) ? ' It is late, so now is a good time.' : ''}`, [...(home ? [goTo(home, 'Take me home')] : []), ...(ctx.cash < 1500 ? [route.relief('Free ways to rest')] : [])], 'nod', 'Home is the best place to rest.')
   },
   travel: (ctx, match) => {
     const city = match.city
@@ -140,15 +150,20 @@ const MAKERS: Partial<Record<IntentId, Maker>> = {
     return R('call', `Open a friend's card and press Call; they choose whether to answer.${online[0] ? ` ${online[0].name} is online now.` : ''}`, online[0] ? [{ kind: 'call', friend: online[0].id, name: online[0].name, label: `Call ${online[0].name}` }, open('people', 'Open People')] : [open('people', 'Open People')], 'point', 'Call is on a friend\'s card in People.')
   },
   ping: () => R('ping', conceptById('ping')?.text ?? '', [open('people', 'Open People')], 'nod'),
-  sendmoney: () => R('sendmoney', 'Open the player\'s card and choose Send money, or tap it in a chat with them. There is a daily limit, and the card says what is left.', [open('people', 'Open People'), open('messages', 'Open Messages')], 'point'),
-  business: (ctx) => R('business', ctx.stallsOpened ? `You already run ${ctx.stallsOpened === 1 ? 'a stall' : `${ctx.stallsOpened} stalls`}. Business is where you stock, price and collect the cash box.` : 'Go to a market and rent a stall in Business: stock it, set prices and collect the takings. Setting up costs a little, so check your cash first.', [open('business', 'Open Business'), tour('business', 'Show me how')], 'point', 'Business is where your stall lives.'),
+  sendmoney: (ctx, m) => {
+    const friends = ctx.friends.filter((friend) => !friend.founder)
+    const named = friends.find((friend) => m.words.some((word) => word.length > 2 && word === first(friend.name).toLowerCase()))
+    const friend = named ?? friends.find((item) => item.online) ?? friends[0]
+    return R('sendmoney', friend ? `Open ${friend.name}'s card and choose Send money. There is a daily limit, and the card says what is left.` : 'Open the player\'s card and choose Send money, or tap it in a chat with them. There is a daily limit, and the card says what is left.', friend ? [route.sendMoney(friend), route.people()] : [route.people(), route.messages()], 'point')
+  },
+  business: (ctx) => R('business', ctx.stallsOpened ? `You already run ${ctx.stallsOpened === 1 ? 'a stall' : `${ctx.stallsOpened} stalls`}. Business is where you stock, price and collect the cash box.` : 'Go to a market and rent a stall in Business: stock it, set prices and collect the takings. Setting up costs a little, so check your cash first.', [...(ctx.stallsOpened ? [route.business()] : [route.stall(ctx), route.business()]), tour('business', 'Show me how')], 'point', 'Business is where your stall lives.'),
   home: (ctx) => R('home', ctx.rentArrears ? `Your rent is behind by ${naira(ctx.rentArrears)}, so settle that first in Bank. Houses lists homes to rent or buy.` : 'Houses lists homes you can rent or buy, and your home stays yours in every city you visit.', [open('houses', 'Open Houses'), open('bank', 'Open Bank')], 'point'),
   vote: () => R('vote', conceptById('governor')?.text ?? '', [open('governor', 'Open Governor')], 'nod'),
   look: () => R('look', 'Visit the Boutique to change your hair, outfit and accessories.', [open('boutique', 'Open Boutique')], 'nod'),
-  save: (ctx) => ctx.signedIn ? R('save', 'You are signed in, so your character is kept and you can play from any device.', [open('account', 'Open Account')], 'happy') : R('save', 'Sign up free and your character is kept so you can carry on from any device. As a guest it lives only on this one.', [open('account', 'Save my progress')], 'point'),
-  sound: () => R('sound', 'Sound and music are in Settings, under your profile. You can turn them on or off there.', [{ kind: 'sim', tab: 'settings', label: 'Open Settings' }], 'nod'),
-  games: () => R('games', 'Open Games on your phone. Oro is one word puzzle a day, the same for everybody, and Weave is a word-tile game against the computer. Chess is there too: pick easy, medium or hard, or sit at a chess table in a park to play a friend.', [open('games', 'Open Games')], 'point', 'Games is on your phone: Oro for the daily word, Weave for tiles, and Chess against the computer.'),
-  group: () => R('group', 'Open Messages and tap New group. Give it a name, pick friends to add, and create it. Once it exists, the Group button inside lets you add or remove people and leave.', [open('messages', 'Open Messages')], 'point', 'In Messages, tap New group, name it and pick your friends.'),
+  save: (ctx) => ctx.signedIn ? R('save', 'You are signed in, so your character is kept and you can play from any device.', [route.account()], 'happy') : R('save', 'Sign up free and your character is kept so you can carry on from any device. As a guest it lives only on this one.', [{ ...route.signUp(), label: 'Save my progress' }], 'point'),
+  sound: () => R('sound', 'Sound and music are in Settings, under your profile. You can turn them on or off there.', [route.sound()], 'nod'),
+  games: (_c, m) => { const game = gameIn(m.words); return R('games', game === 'chess' ? 'Chess is in Games on your phone: pick easy, medium or hard and play the computer. To play a friend, sit at a chess table in a park or lounge.' : game === 'weave' ? 'Weave is in Games on your phone: weave words across the cloth with your seven tiles against one to three computer players.' : game === 'oro' ? 'Oro is one word puzzle a day, the same for everybody. It is in Games on your phone, and a new word comes every day.' : 'Open Games on your phone. Oro is one word puzzle a day, the same for everybody, and Weave is a word-tile game against the computer. Chess is there too: pick easy, medium or hard, or sit at a chess table in a park to play a friend.', [game ? route.game(game) : route.games()], 'point', 'Games is on your phone: Oro for the daily word, Weave for tiles, and Chess against the computer.') },
+  group: () => R('group', 'Open Messages and tap New group. Give it a name, pick friends to add, and create it. Once it exists, the Group button inside lets you add or remove people and leave.', [route.newGroup()], 'point', 'In Messages, tap New group, name it and pick your friends.'),
   picture: (ctx) => ctx.picturesOn
     ? R('picture', 'In a chat with a friend, or in a group, use the picture button next to the message box. Pictures go to friends only, the other person can report one, and a moderator can remove it.', [open('messages', 'Open Messages')], 'point', 'Tap the picture button in a friend chat, beside the message box.')
     : R('picture', 'Pictures in chat are not switched on right now, so there is nothing to send yet. Words, gifts and calls all work, and I will tell you when pictures arrive.', [open('messages', 'Open Messages')], 'nod'),

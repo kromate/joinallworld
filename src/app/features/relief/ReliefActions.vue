@@ -6,11 +6,12 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
 import { ui as messages } from '../messages/messagesState.ts'
+import { trekTo } from './trek.ts'
 import { actionVerb, askFriendText, orderedActions, shortReason } from './reliefModel.ts'
 
 const props = defineProps<{ help: ReliefHelp }>()
 const emit = defineEmits<{ done: [] }>()
-const { game, shell, goTo, command } = useApp()
+const { game, shell, command } = useApp()
 const { act, pending } = useAct()
 /** The ride on credit asks once more: it is a debt. */
 const confirming = ref(false)
@@ -28,7 +29,7 @@ async function run(action: ReliefAction): Promise<void> {
   }
   if (action.activity && action.venue) {
     const activity = action.activity
-    if (!action.here) { await goTo(action.venue, action.spot ?? undefined); emit('done'); return }
+    if (!action.here) { await trekTo(action.venue, action.spot ?? undefined, action.label); emit('done'); return }
     if (game.state.value.spot !== action.spot && action.spot) await command('spot', { id: action.spot })
     if (await act(action.id, () => command('activity', { id: activity }))) emit('done')
     return

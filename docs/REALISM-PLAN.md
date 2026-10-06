@@ -227,3 +227,23 @@ The phase-1 gate is the main risk. Phases 2–3 are the busiest. Phase 4 is narr
 ## Run log
 
 Each phase records here: model, workers, retries, what merged, what released, and what the gate measured.
+
+### Phase 0 (6 October 2026)
+
+Workers: three Sonnet-class workers (rails, budgets, reliability), each in its own worktree from `origin/main` at `5e9515b`. Retries: one (reliability first pushed the eager first-load bundle 1.6 kB over its budget; the additions were moved behind dynamic imports and both first-load budgets pass unchanged). Incident: all three workers' first `apply_patch` used relative paths and touched the main checkout; each reverted its own file at once and the checkout was confirmed back to Anthony's own edits. Briefs now require absolute paths.
+
+CI found on the way: every `main` CI run on 6 October was cancelled by the 10-minute job limit, not by a failure; the suite now takes longer. The limit is raised to 25 minutes in this pull request.
+
+**Baseline, before any realism work** (build `5e9515b`; scripts in `scripts/measure/`: Playwright driving Chrome over the DevTools protocol, phone viewport 390×844 at 2×, CPU throttled 6×, cache off).
+
+| Where | Network | First paint | Loading screen | Character creator ready | Bytes at ready | Bytes after 8 s |
+| --- | --- | --- | --- | --- | --- | --- |
+| joinallworld.com | slow 3G (2 s RTT, 400 kb/s) | 6.5 s | 6.7 s | 23.3 s | 540 kB | 703 kB |
+| joinallworld.com | fast 3G (560 ms, 1.6 Mb/s) | 2.6 s | 2.6 s | 7.2 s | 539 kB | 827 kB |
+| joinallworld.com | 4G (150 ms, 9 Mb/s) | 1.8 s | 1.8 s | 3.1 s | 539 kB | 827 kB |
+
+Slow 3G reaches the creator at 23 s, inside the new 40 s "Start fresh" point but past the 15 s "slow" message. The local Node server sends files uncompressed (1.8 MB at ready), so download numbers come from production only.
+
+Frame time in the world (Freedom Park, guest after "Play now"), Android emulator: Android 15 arm64, 2 GB, Chrome 124, SwiftShader software GPU, 412 px wide at DPR 2.6. Character creator: median 16.7 ms, p95 16.8. World: median 16.7 ms, p95 33.4 ms, worst 49.9; JS heap 17 MB; no console errors. Software rendering is slower than a mid-range phone's GPU and faster than nothing, so this is the reference to compare against, not an absolute. On the Mac's GPU with 6× CPU throttle the world holds 8.3 ms median and 9.2 ms p95.
+
+Phase 1 gate reads these: the skinned body must not move the creator-ready time on fast 3G by more than 0.5 s, must not add to bytes at ready, and must keep the emulator world p95 at or under 33.4 ms.

@@ -14,6 +14,7 @@ import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
+import { DENSITY, densityFor } from './density.ts';
 import * as THREE from 'three';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
@@ -579,4 +580,22 @@ test('the atlas shows its level as the shared chip and dropdown, with the way ba
   assert.match(code, /ArrowDown: 1, ArrowUp: -1/, 'arrow keys move through the list');
   assert.match(code, /addEventListener\('pointerdown', onAway\)/, 'a press outside closes it');
   assert.doesNotMatch(code, /<ol>\$\{ATLAS_LEVELS/, 'no row of level buttons');
+});
+
+test('a city marker is one line with a status dot: the status stays in the tooltip data, not in a second line', () => {
+  const one = placeLabels([{ id: 'a', x: 200, y: 300, text: 'Kano', note: 'Open', compact: true, size: 12, priority: 1, anchor: 'above' }], { width: 390, height: 844 })[0]!;
+  const two = placeLabels([{ id: 'a', x: 200, y: 300, text: 'Kano', note: 'Open', size: 12, priority: 1, anchor: 'above' }], { width: 390, height: 844 })[0]!;
+  assert.ok(one.box.bottom - one.box.top < two.box.bottom - two.box.top - 10, 'the compact marker has no second line');
+  assert.equal(one.note, 'Open');
+  const css = readFileSync(here('./atlas.css'), 'utf8');
+  assert.match(css, /\.atlas-label\.is-city::before\{/, 'the status dot');
+  assert.match(css, /\.atlas-label\.is-city\.is-you\{/, 'the player\'s own city is a distinct marker');
+});
+
+test('the density table: phones get smaller type and fewer names, a larger text setting fewer still', () => {
+  assert.deepEqual(densityFor(390), DENSITY.phone);
+  assert.deepEqual(densityFor(1440), DENSITY.wide);
+  assert.ok(DENSITY.phone.city < DENSITY.wide.city && DENSITY.phone.atlasNames < DENSITY.wide.atlasNames);
+  assert.ok(densityFor(390, 1.5).atlasNames < DENSITY.phone.atlasNames, 'larger text, more dots');
+  assert.ok(densityFor(390, 3).atlasNames >= 2, 'never fewer than the player\'s city and one more');
 });

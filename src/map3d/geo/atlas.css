@@ -32,13 +32,19 @@
 .atlas-label.is-capital::before{content:"";position:absolute;left:-11px;top:50%;width:5px;height:5px;margin-top:-3.5px;border-radius:50%;background:#39404b;border:1px solid #fff}
 .atlas-label.is-airport{font-size:12px;color:#3f5f93}
 /* A city: a pill on a short stalk. The open one is green; a planned one is cream. */
-.atlas-label.is-city{padding:4px 11px 5px;border-radius:13px;background:#fffdf3;box-shadow:var(--e-2,0 2px 8px #0003);text-shadow:none;color:#3d3520;z-index:2}
-.atlas-label.is-city b{font-size:13px;font-weight:750}
+.atlas-label.is-city{font-size:13px;display:flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:12px;background:#fffdf3;box-shadow:var(--e-2,0 2px 8px #0003);text-shadow:none;color:#3d3520;z-index:2}
+.atlas-label.is-city b{font-size:inherit;font-weight:700}
 .atlas-label.is-city small{font-size:10px;font-weight:700;color:#7a5a12}
+.atlas-label.is-city::before{content:"";flex:none;width:7px;height:7px;box-sizing:border-box;border-radius:50%;border:1.5px solid #8a929b;background:none}
 .atlas-label.is-city::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:9px;margin-left:-1px;background:#fffffff2;box-shadow:0 0 2px #0b2b3a66}
 .atlas-label.is-city:not(.at-above)::after{display:none}
 .atlas-label.is-city.is-open{background:var(--c-green-dark,#1d6b43);color:#fff;z-index:3}
+.atlas-label.is-city.is-open::before{border:0;background:#8be3ab}
 .atlas-label.is-city.is-open small{color:#d5f0df}
+.atlas-label.is-city.is-you{background:#fff;color:var(--c-green-dark,#1d6b43);box-shadow:0 0 0 2px var(--c-green-dark,#1d6b43),var(--e-2,0 2px 8px #0003);z-index:4}
+.atlas-label.is-city.is-you::before{border:2px solid var(--c-green-dark,#1d6b43);background:var(--c-green-dark,#1d6b43);box-shadow:inset 0 0 0 1.5px #fff}
+.atlas-label.is-region{font-size:11px;font-weight:500;color:#6b747c}
+@media(max-width:520px){.atlas-label.is-region{font-size:10px}.atlas-label.is-city{font-size:12px;gap:4px;padding:2px 7px 2px 5px;border-radius:10px}.atlas-label.is-city::before{width:6px;height:6px}}
 .atlas-marker{position:absolute;left:0;top:0;z-index:4;display:grid;place-items:center;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#ffb224;color:#20232c;box-shadow:0 0 0 3px #fff,0 3px 10px #0b2b3a80;pointer-events:none;will-change:transform}
 .atlas-marker.is-air{background:#2b4f86;color:#fff}
 .atlas-marker svg{width:20px;height:20px}

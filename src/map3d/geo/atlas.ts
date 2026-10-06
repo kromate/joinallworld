@@ -53,6 +53,7 @@ import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
 import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
+import { densityFor } from './density.ts';
 import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
@@ -693,20 +694,22 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   const at = (lon: number, lat: number, y = 0) => { const [x, py] = project(lon, lat); return screenOf(x, y, -py); };
   /** How wide a feature's box is on screen. */
   function roomOf(feature: Feature, y: number) { const b = feature.bounds, a = at(b.minLon, (b.minLat + b.maxLat) / 2, y), c = at(b.maxLon, (b.minLat + b.maxLat) / 2, y); return Math.abs(c.x - a.x); }
+  /** The reader's text scale: the root font size against the browser default of 16px. */
+  const textScale = () => { const px = doc?.defaultView ? parseFloat(doc.defaultView.getComputedStyle(doc.documentElement).fontSize) : 16; return Number.isFinite(px) && px > 0 ? px / 16 : 1; };
   function candidates(): LabelCandidate[] {
-    const out: LabelCandidate[] = [];
+    const out: LabelCandidate[] = [], dn = densityFor(size.width, textScale());
     const push = (id: string, where: { x: number; y: number; behind: boolean }, text: string, more: Partial<LabelCandidate>) => { if (!where.behind) out.push({ id, x: where.x, y: where.y, text, priority: 10, size: 11, ...more }); };
     if (level === NIGERIA && sheets[NIGERIA]) {
       const sheet = sheets[NIGERIA], close = rig.view.distance < fits![NIGERIA]!.distance * 0.62;
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
-        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: 13, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
+        if (city) push(`city:${city.id}`, at(city.lon, city.lat, top + 0.02), city.name, { priority: entry.status === 'open' ? (city.id === current ? 2000 : 1000) : 90, size: dn.city, compact: true, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: entry.status === 'open' && city.id === current, cls: `is-city is-${entry.status}${city.id === current ? ' is-you' : ''}`, note: city.id === current ? 'You are here' : entry.status === 'open' ? 'Open' : 'Coming soon' });
         // A state with several open cities names each of them at every zoom; the one the player is in says so, whichever the state's own marker is.
         for (const other of citiesInState(feature.id)) {
           const spot = other.status === 'open' && other.id !== city?.id ? cityEntry(other.id) : null;
-          if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: other.id === current, cls: 'is-city is-open', note: other.id === current ? 'You are here' : 'Open' });
+          if (spot) push(`city:${other.id}`, at(spot.lon, spot.lat, top + 0.02), other.name, { priority: other.id === current ? 2000 : 200, size: dn.city, compact: true, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: other.id === current, cls: `is-city is-open${other.id === current ? ' is-you' : ''}`, note: other.id === current ? 'You are here' : 'Open' });
         }
-        if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, cls: 'is-region' });
+        if (entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: city ? 44 : 50, size: dn.other, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
       }
       for (const [name, lon, lat] of NEIGHBOUR_LABELS) push(`near:${name}`, at(lon, lat), name, { priority: 34, size: 12, cls: 'is-neighbour' });
@@ -716,13 +719,13 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       const sheet = sheets[AFRICA];
       for (const feature of sheet.topology.features) {
         const top = sheet.top(feature), open = statusOf('country', feature.id) === 'open', b = feature.bounds;
-        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? 13 : 11, cls: open ? 'is-city is-open' : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
+        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? dn.city : dn.other, compact: open, cls: open ? `is-city is-open${feature.id === ATLAS_LEVELS[NIGERIA]!.country ? ' is-you' : ''}` : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
         if (feature.cap && MAJOR_CAPITALS.has(feature.cap[0])) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: feature.cap[0] === 'Abuja' ? 60 : 30, size: 10, anchor: 'right', cls: 'is-capital' });
       }
     } else if (sheets[WORLD]) {
       for (const continent of Object.values(CONTINENTS)) push(`continent:${continent.id}`, at(relLon(continent.lon), continent.lat), continent.name, { priority: 100, size: 13, cls: 'is-continent' });
       const home = sheets[WORLD].topology.byId.get(ATLAS_LEVELS[NIGERIA]!.country!);
-      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: 12, anchor: 'above', cls: 'is-city is-open', note: 'You are here' });
+      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: dn.city, compact: true, anchor: 'above', cls: 'is-city is-open is-you', note: 'You are here' });
       for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
     }
     return out;
@@ -737,8 +740,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       keep.add(label.id);
       let node = labelNodes.get(label.id);
       if (!node) { node = doc!.createElement('span'); labelNodes.set(label.id, node); ui.labels.appendChild(node); }
-      const key = `${label.cls}|${label.shown}|${label.note || ''}|${label.anchor || ''}`;
-      if (node.dataset.key !== key) { node.dataset.key = key; node.className = `atlas-label ${label.cls || ''} at-${label.anchor || 'centre'}`; node.innerHTML = `<b>${esc(label.shown)}</b>${label.note ? `<small>${esc(label.note)}</small>` : ''}`; if (label.title) node.title = label.title; }
+      const key = `${label.cls}|${label.shown}|${label.note || ''}|${label.anchor || ''}|${label.compact || ''}`;
+      if (node.dataset.key !== key) { node.dataset.key = key; node.className = `atlas-label ${label.cls || ''} at-${label.anchor || 'centre'}`; node.innerHTML = `<b>${esc(label.shown)}</b>${label.note && !label.compact ? `<small>${esc(label.note)}</small>` : ''}`; const tip = label.title ?? (label.compact ? label.note : undefined); if (tip) node.title = tip; else node.removeAttribute('title'); }
       node.style.transform = `translate(${label.x.toFixed(1)}px,${label.y.toFixed(1)}px)`;
     }
     for (const [id, node] of labelNodes) if (!keep.has(id)) { node.remove(); labelNodes.delete(id); }

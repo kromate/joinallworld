@@ -18,7 +18,7 @@
 export type LabelAnchor = 'centre' | 'above' | 'right' | 'left' | 'below' | 'far-above' | 'far-below' | 'far-right' | 'far-left';
 export interface LabelBox { left: number; top: number; right: number; bottom: number }
 export interface LabelCandidate { id: string; x: number; y: number; priority: number; size?: number; room?: number | undefined,
-  text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; /** Other anchors to try, in order, when the first would overlap a label already shown. */ alts?: readonly LabelAnchor[] | undefined; fixed?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
+  text: string; short?: string | undefined; note?: string | undefined; anchor?: LabelAnchor | undefined; /** Other anchors to try, in order, when the first would overlap a label already shown. */ alts?: readonly LabelAnchor[] | undefined; fixed?: boolean | undefined; /** The note is not drawn as a second line (it stays in the tooltip): a one-line marker with a status dot. */ compact?: boolean | undefined; cls?: string | undefined; title?: string | undefined }
 /** `home` is the point the label names; `displaced` is set when the label sits away from it (another anchor, or moved to stay on screen). */
 export interface PlacedLabel extends LabelCandidate { shown: string; abbreviated: boolean; box: LabelBox; home: { x: number; y: number }; displaced: boolean }
 
@@ -28,7 +28,7 @@ export const LABEL_CAP = 44;
 export const textWidth = (text: unknown, size = 12): number => Math.ceil(String(text).length * size * 0.6) + 10;
 
 const boxOf = (candidate: LabelCandidate, text: string): LabelBox => {
-  const size = candidate.size || 12, w = Math.max(textWidth(text, size), candidate.note ? textWidth(candidate.note, 10) : 0) + (candidate.note ? 8 : 0), h = Math.round(size * 1.5) + (candidate.note ? 16 : 0);
+  const size = candidate.size || 12, note = candidate.note && !candidate.compact ? candidate.note : '', w = Math.max(textWidth(text, size), note ? textWidth(note, 10) : 0) + (note ? 8 : 0) + (candidate.compact ? 8 : 0), h = Math.round(size * 1.5) + (note ? 16 : 0);
   if (candidate.anchor === 'above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 8, bottom: candidate.y - 8 };
   if (candidate.anchor === 'far-above') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y - h - 54, bottom: candidate.y - 54 };
   if (candidate.anchor === 'far-below') return { left: candidate.x - w / 2, right: candidate.x + w / 2, top: candidate.y + 54, bottom: candidate.y + 54 + h };

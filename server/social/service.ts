@@ -697,7 +697,7 @@ function buildService(ctx: RouteContext) {
   }
   /** The record's own words for a message in a quote: its text, or what it was instead. */
   const quoteText = (message: MessageRecord): string => (clip(bodyOf(message), LIMITS.quote) || (message.img ? 'Picture' : ''));
-  const settingsOf = () => pictureSettings(ctx.env);
+  const settingsOf = () => pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''));
   /** The refusal for a picture this player may not send into this conversation, or null. */
   function pictureRefusal(s: SocialCollection, p: SocialPlayerRecord, id: string, conv: ConversationRecord | null, partner: string | null): Refused | null {
     const settings = settingsOf();

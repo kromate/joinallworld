@@ -53,7 +53,8 @@ export function tagOf(conv: string): string {
 }
 
 /** A setting in whole milliseconds, or the default (CHAT_PUSH_UNSEEN_MS and CHAT_PUSH_WINDOW_MS exist so a test and an operator can change the two waits). */
-const wait = (ctx: RouteContext, name: string, fallback: number): number => { const value = Number(ctx.env(name)); return ctx.env(name) !== '' && Number.isFinite(value) && value >= 0 ? Math.min(value, 600000) : fallback; };
+const setting = (ctx: RouteContext, name: string): string => (typeof ctx.env === 'function' ? ctx.env(name) : '');
+const wait = (ctx: RouteContext, name: string, fallback: number): number => { const value = Number(setting(ctx, name)); return setting(ctx, name) !== '' && Number.isFinite(value) && value >= 0 ? Math.min(value, 600000) : fallback; };
 
 export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
   const now = (): number => ctx.now();
@@ -115,7 +116,7 @@ export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
   }
 
   // Until the notification settings ship the listener is off unless CHAT_PUSH=on.
-  if (ctx.env('CHAT_PUSH') === 'on') ctx.on?.('chat-notice', (notice) => {
+  if (setting(ctx, 'CHAT_PUSH') === 'on') ctx.on?.('chat-notice', (notice) => {
     const work = new Promise<void>((done) => {
       setTimeout(() => { run(notice).catch((error) => ctx.core?.log?.(`A message notification failed: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`)).finally(done); }, unseenMs());
     });

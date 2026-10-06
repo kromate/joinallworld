@@ -28,6 +28,7 @@ import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { readTelemetryConfig } from './telemetry/config.ts';
 import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigins, type RequestFacts } from './security-headers.ts';
 import { siteFile } from './site-files.ts';
+import { ADMIN_HOST_ENV, ADMIN_ROBOTS, ADMIN_SHELL, adminAddress, adminHostName, adminHostRoute, isAdminHost } from './admin/host.ts';
 import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
 import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, isSharedAddress, SOCKET_BUSY_CODE } from './protocol.ts';
@@ -150,6 +151,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) }: ServerOptions = {}): Promise<AllworldServer> {
   const configuredOrigin = cleanOrigin(givenOrigin);
+  // The admin address (server/admin/host.ts): the same server answering on admin.<domain> with a much smaller face.
+  const adminName = adminHostName(env?.[ADMIN_HOST_ENV], configuredOrigin);
+  const onAdminHost = (req: IncomingMessage): boolean => isAdminHost(req.headers.host, adminName);
   // How many players this host takes: MAX_ACTIVE_SESSIONS, MAX_SOCKETS and SOCKETS_PER_ADDRESS, or what a caller passed (host-context.ts capacityConfig).
   const caps = capacityConfig(env, log);
   const maxActiveSessions = givenSessions ?? caps.maxActiveSessions, maxSockets = givenSockets ?? caps.maxSockets, socketsPerAddress = givenPerAddress ?? caps.socketsPerAddress;
@@ -233,7 +237,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     for (const ws of held.bySecret.get(key ?? '') ?? []) { ws.expiresAt = now() + sessionTtlMs; ws.lastSessionRenewedAt = now(); }
     return { 'Set-Cookie': cookieHeader(req, cookieId(req)) };
   }
-  const addressOf = (req: IncomingMessage): string => clientAddress(req, trustProxy);
+  const addressOf = (req: IncomingMessage): string => (onAdminHost(req) ? adminAddress(clientAddress(req, trustProxy)) : clientAddress(req, trustProxy));
   /** A guest whose session arrived under the old cookie name over HTTPS gets it back under the new one with this answer. */
   const upgradesCookie = (req: IncomingMessage, request: { publicId?: string }): boolean => request.publicId !== undefined && isSecure(req, trustProxy) && presentedSession(req.headers.cookie).legacy;
   /**
@@ -316,6 +320,11 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     let at: Matched | null = null; // the matched route and its request, for telemetry (a template and codes, never the URL or the body)
     try {
       const url = new URL(req.url ?? '/', 'http://localhost');
+      // On the admin address only a handful of paths exist; everything else is a 404 (a wrong method, a 405).
+      const adminKind = onAdminHost(req) ? adminHostRoute(method, url.pathname) : null;
+      if (adminKind === 'notfound') throw fail(404, 'not_found');
+      if (adminKind === 'method') throw fail(405, 'method_not_allowed');
+      if (adminKind === 'robots') { res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600', 'X-Content-Type-Options': 'nosniff' }); res.end(method === 'HEAD' ? undefined : ADMIN_ROBOTS); return; }
       if (url.pathname.startsWith('/api/')) {
         // Operator routes authenticate with a bearer token in a header, which a browser never attaches
         // by itself, so they are not tied to the page's origin. Every other route keeps the origin check.
@@ -403,25 +412,27 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         return;
       }
       const root = resolve(distDir);
-      let path = resolve(root, `.${decodeURIComponent(url.pathname)}`);
+      let path = adminKind === 'shell' ? resolve(root, ADMIN_SHELL) : resolve(root, `.${decodeURIComponent(url.pathname)}`);
       if (path !== root && !path.startsWith(root + sep)) throw fail(403, 'invalid_path');
       if (extname(path) === '.map') throw fail(404, 'not_found'); // source maps are uploaded to Sentry, never served
       // A hashed build file that is gone (an old tab after a deploy) is a 404, never the app page: a dynamic import of it must fail clearly.
       const inAssets = url.pathname.startsWith('/assets/');
+      if (adminKind === null && path === resolve(root, ADMIN_SHELL)) throw fail(404, 'not_found'); // the game's own host does not serve the admin page
       let found = true;
       try { if (!(await stat(path)).isFile()) found = false; } catch { found = false; }
       if (!found) {
-        if (inAssets) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }); res.end(method === 'HEAD' ? undefined : 'Not found'); return; }
+        if (inAssets || adminKind) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }); res.end(method === 'HEAD' ? undefined : 'Not found'); return; }
         path = resolve(root, 'index.html');
       }
       // The game's own page: its default link-preview image is made absolute here, from PUBLIC_ORIGIN (or this request's own
       // host when that is not set), because the crawlers of chat apps do not resolve a relative og:image.
+      const isShell = adminKind === 'shell';
       const isIndex = path === resolve(root, 'index.html');
-      const html = isIndex ? await serveIndex(req, path) : '';
-      const bytes = isIndex ? Buffer.from(html) : await readFile(path);
+      const html = isShell ? await readFile(path, 'utf8') : isIndex ? await serveIndex(req, path) : '';
+      const bytes = isIndex || isShell ? Buffer.from(html) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
       // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.
-      const security = isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, accounts: accountsHeaderConfig }) : {};
+      const security = isShell ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), accounts: accountsHeaderConfig, admin: true }) : isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, accounts: accountsHeaderConfig }) : adminKind ? { 'X-Robots-Tag': 'noindex, nofollow' } : {};
       // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
       const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff', ...security });

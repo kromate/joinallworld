@@ -534,3 +534,73 @@ test('the founder: strangers cannot add or mention him, he may add the players w
   await post(f, '/api/social/messages', { to: ada.id, body: 'hello Ada', clientId: f.id() }, zed);
   assert.equal((await pic(ada, zed)).code, 'sent');
 });
+
+// ---- emoji and reactions -----------------------------------------------------------------------------------------
+
+test('emoji from a phone keyboard are stored and returned exactly, counted as characters, and never cut in the middle', async (t) => {
+  const f = await fixture(t);
+  const [ada, bola] = await people(f, ['Ada', 'Bola']);
+  await befriend(f, ada, bola);
+  const words = ['🇳🇬', '👍🏽', '👨‍👩‍👧‍👦', '❤️', '1️⃣', 'Chinedu 🎉 ñ é 你好'];
+  const dm = (await post(f, '/api/social/messages', { to: bola.id, body: 'start', clientId: f.id() }, ada)).conv.id;
+  for (const word of words) {
+    const sent = await say(f, ada, dm, word);
+    assert.equal(sent.message.body, word, word);
+    assert.equal(defined((await social(f)).convs[dm]).messages.at(-1)?.body, word, 'stored as written');
+  }
+  // The limit is 500 characters, not 500 UTF-16 units: 400 flags are 800 units and are accepted; 501 are not.
+  assert.equal((await say(f, ada, dm, '🇳🇬'.repeat(250))).code, 'sent');
+  assert.equal((await say(f, ada, dm, '🇳🇬'.repeat(251))).status, 400, 'a flag is two characters');
+  assert.equal((await say(f, ada, dm, '😂'.repeat(500))).code, 'sent');
+  assert.equal((await say(f, ada, dm, '😂'.repeat(501))).status, 400);
+  // The last line of the chat is cut between characters: 80 of them, never half a family.
+  await say(f, ada, dm, '👍🏽'.repeat(100));
+  const last = defined((await get(f, '/api/social/conversations', bola)).conversations.find((c) => c.id === dm)).last;
+  assert.equal(Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(defined(last).body)).length, 80);
+  assert.ok(defined(last).body.endsWith('👍🏽'));
+});
+
+test('reactions: one per player per message, changeable and removable, live to the conversation, quiet for the author, bounded', async (t) => {
+  const f = await fixture(t);
+  const [ada, bola, chi, dayo] = await people(f, ['Ada', 'Bola', 'Chidi', 'Dayo']);
+  await befriend(f, ada, bola); await befriend(f, ada, chi); await befriend(f, ada, dayo);
+  const gid = (await group(f, ada, 'Crew', [bola, chi, dayo])).conv.id;
+  const line = await say(f, ada, gid, 'Dinner at eight');
+  const react = (who: Device, emoji: string | null, seq = line.message.seq) => post(f, `/api/social/conversations/${gid}/react`, { seq, emoji }, who);
+  const peer = await f.socket(ada);
+  assert.equal((await react(bola, '👍🏽')).code, 'reacted');
+  const frame = await until(peer, 'message-changed');
+  assert.deepEqual(frame.type === 'message-changed' && frame.message.reactions, [{ emoji: '👍🏽', count: 1 }]);
+  // A second reaction replaces the first; the same one again, taken back.
+  await react(bola, '❤️');
+  assert.deepEqual((await get(f, `/api/social/conversations/${gid}`, bola)).messages.at(-1)?.reactions, [{ emoji: '❤️', count: 1, mine: true }]);
+  await react(chi, '❤️');
+  assert.deepEqual((await get(f, `/api/social/conversations/${gid}`, ada)).messages.at(-1)?.reactions, [{ emoji: '❤️', count: 2 }]);
+  assert.equal((await react(bola, null)).code, 'reacted');
+  assert.deepEqual((await get(f, `/api/social/conversations/${gid}`, ada)).messages.at(-1)?.reactions, [{ emoji: '❤️', count: 1 }]);
+  // Stored as player → emoji only.
+  assert.deepEqual(defined((await social(f)).convs[gid]).messages.at(-1)?.rx, { [chi.id]: '❤️' });
+  // The author is told quietly, one line for the message, and never by a toast frame.
+  await react(bola, '😂'); await react(dayo, '😂');
+  const notices = await unreadUpdates(f, ada, 'reaction');
+  assert.equal(notices.length, 1); assert.match(defined(notices[0]).text, /^Dayo and 2 others reacted to your message\.$/);
+  // Not an emoji, several emoji, text, a system line, a stranger, and too many kinds.
+  for (const bad of ['a', '👍👍', '', '<b>', '👍 ', 'ab❤️']) assert.equal((await react(chi, bad)).status, 400, JSON.stringify(bad));
+  assert.equal((await react(chi, '👍', 1)).code, 'unknown_message');
+  assert.equal((await react(dayo, '👍', 999)).code, 'unknown_message');
+  const outsider = (await people(f, ['Eze']))[0];
+  assert.equal((await react(outsider, '👍')).code, 'not_a_member');
+  for (const [who, emoji] of [[ada, '🔥'], [bola, '🎉'], [chi, '😮'], [dayo, '😢']] as [Device, string][]) await react(who, emoji);
+  assert.equal(Object.values(defined((await social(f)).convs[gid]).messages.at(-1)?.rx ?? {}).length, 4);
+  // Six different reactions at most: with six kinds already there, a seventh is refused and a repeat of one is not.
+  await f.server.store.transact((db) => { const stored = defined(db.social).convs[gid]!.messages.at(-1)!; stored.rx = { [ada.id]: '🔥', [bola.id]: '🎉', [chi.id]: '😮', [dayo.id]: '😢', [outsider.id]: '🙏', 'f': '🥳', 'g': '🍀' }; });
+  assert.equal((await react(bola, '👀')).code, 'too_many_reactions');
+  assert.equal((await react(bola, '🔥')).code, 'reacted');
+  // A blocked player's reaction is not shown to the one who blocked them.
+  await post(f, '/api/social/block', { id: dayo.id, cityId: 'lagos' }, bola);
+  const seen = (await get(f, `/api/social/conversations/${gid}`, bola)).messages.at(-1)?.reactions ?? [];
+  assert.ok(!seen.some((r) => r.emoji === '😢'));
+  // Leaving the group takes the reaction's reach away: a former member cannot react.
+  await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, chi);
+  assert.equal((await react(chi, '👍')).code, 'not_a_member');
+});

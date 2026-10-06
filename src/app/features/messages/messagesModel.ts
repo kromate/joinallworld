@@ -9,11 +9,12 @@ import type { PhoneNotification } from '../../types/panel.ts'
 const REQUEST_KINDS: readonly string[] = ['friend-request', 'bae-request']
 /** Which app a line of Updates belongs to: where tapping it in the Phone's notification list goes. */
 const NOTICE_APPS: Readonly<Record<string, string>> = { 'rent-due': 'bank', rent: 'bank', 'rent-missed': 'bank', loan: 'bank', 'loan-missed': 'bank', promotion: 'jobs', illness: 'health', recovered: 'health', gov: 'governor', transfer: 'statement', bae: 'people' }
-const UPDATE_APPS: Readonly<Record<string, string>> = { transfer: 'statement', business: 'business', 'friend-request': 'people', 'friend-accepted': 'contacts', 'invite-knock': 'invite', 'invite-answer': 'invite', 'bae-request': 'people', 'bae-answer': 'people' }
+const UPDATE_APPS: Readonly<Record<string, string>> = { mention: 'messages', 'group-added': 'messages', reaction: 'messages', transfer: 'statement', business: 'business', 'friend-request': 'people', 'friend-accepted': 'contacts', 'invite-knock': 'invite', 'invite-answer': 'invite', 'bae-request': 'people', 'bae-answer': 'people' }
 const UPDATES_TAB = { tab: 'updates' } as const
 export const SEEN_KEY = 'joinallworld-notices-seen'
 
-export const unreadChats = (me: Pick<SocialOverview, 'conversations'> | null): number => (me?.conversations ?? []).reduce((sum, conv) => sum + conv.unread, 0)
+/** Unread messages for the badge: a muted group counts only the mentions in it. */
+export const unreadChats = (me: Pick<SocialOverview, 'conversations'> | null): number => (me?.conversations ?? []).reduce((sum, conv) => sum + (conv.muted ? conv.mentions ?? 0 : conv.unread), 0)
 export const unreadUpdates = (me: Pick<SocialOverview, 'updates'> | null): number => (me?.updates ?? []).filter((update) => !update.read && !REQUEST_KINDS.includes(update.kind)).length
 
 /**
@@ -63,11 +64,13 @@ export function notificationLines(me: SocialOverview | null, input: { connected:
   for (const knock of me.house.knocks) lines.push({ id: `knock:${knock.from.id}`, at: now, fresh: true, app: 'invite', text: `${knock.from.name} is knocking at your door` })
   for (const request of me.requests.in) lines.push({ id: `friend:${request.id}`, at: now - 1, fresh: true, app: 'people', text: `${request.name} wants to be friends` })
   for (const request of me.baeRequests) lines.push({ id: `bae:${request.id}`, at: now - 2, fresh: true, app: 'people', text: `${request.name} asked you to be their Bae` })
-  for (const conv of me.conversations) if (conv.unread && conv.last) lines.push({ id: `chat:${conv.id}`, at: conv.last.at || now - 3, fresh: true, app: 'messages', params: { conv: conv.id }, text: `${conv.name}: ${conv.last.body}` })
+  for (const conv of me.conversations) if (conv.unread && conv.last && !conv.muted) lines.push({ id: `chat:${conv.id}`, at: conv.last.at || now - 3, fresh: true, app: 'messages', params: { conv: conv.id }, text: `${conv.name}: ${conv.last.body}` })
   for (const update of me.updates) {
     if (REQUEST_KINDS.includes(update.kind)) continue
     // A friend who joined through the player's link: the line opens that friend's card.
     if (update.kind === 'invite-joined' && update.data?.from) { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'person', params: { player: update.data.from }, text: update.text }); continue }
+    // A mention, a new group or a reaction opens the chat it is about.
+    if (update.data?.conv && UPDATE_APPS[update.kind] === 'messages') { lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: 'messages', params: { conv: update.data.conv }, text: update.text }); continue }
     const app = UPDATE_APPS[update.kind]
     // Keyed by the update's own id: two updates of one kind in the same millisecond stay two lines.
     lines.push({ id: `update:${update.id}`, at: update.at, fresh: !update.read, app: app ?? 'messages', params: app ? undefined : UPDATES_TAB, text: update.text })

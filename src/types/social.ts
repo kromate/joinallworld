@@ -537,6 +537,8 @@ export interface OutboxEntry {
   code: string | null
   /** Added by social-client.js send(): what to POST. */
   target?: { to: string } | { conv: ConversationId }
+  /** Its mentions and the message it answers, sent with it. */
+  extra?: { mentions?: { id: string; start: number }[]; replyTo?: number }
 }
 /** What a thread shows: confirmed messages, then this conversation's outbox entries. */
 export type ThreadItem = Message | OutboxEntry

@@ -12,7 +12,7 @@ export function clip(text: string, max: number): string {
   let out = '', count = 0;
   for (const { segment } of segmenter.segment(text)) {
     // One run of marks without end cannot make a preview of any size.
-    if (count >= max || out.length + segment.length > max * 8) break;
+    if (count >= max || out.length + segment.length > max * 16) break;
     out += segment; count += 1;
   }
   return out;

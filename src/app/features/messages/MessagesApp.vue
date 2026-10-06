@@ -15,7 +15,8 @@ import { civicTitle } from '../../../game/cities/terminology.ts'
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
-import type { Conversation, GroupUpdateBody, SearchResult } from '../../../types/social.ts'
+import type { Conversation, Message, SearchResult } from '../../../types/social.ts'
+import type { PlayerRef } from '../../../types/protocol.ts'
 import { call, cityId as socialCityId, discard, newClientId, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
@@ -34,9 +35,15 @@ import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
-import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
+import { noticeMarks, showConversation, ui } from './messagesState.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
+import { filterChats, sortChats, threadRows } from './messagesText.ts'
+import Composer from './Composer.vue'
+import MessageBubble from './MessageBubble.vue'
+import FriendPicker from './FriendPicker.vue'
+import GroupManage from './GroupManage.vue'
+import ChatSettings from './ChatSettings.vue'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()
@@ -57,7 +64,8 @@ const time = (at: number): string => formatClock(at).split('· ')[1] ?? ''
 // ---- what is open --------------------------------------------------------------------------
 function setOpen(key: string | null): void {
   showConversation(key); social.openConv = key
-  if (key) void nextTick(() => draftField.value?.focus())
+  replying.value = null; fresh.value = 0; quoted.value = null
+  if (key) void nextTick(() => composer.value?.focus())
 }
 // Opened from a person card, a contact or a notification: { to, name } | { conv } | { tab }.
 watch(() => props.params, (params) => {
@@ -104,11 +112,44 @@ const partner = computed(() => partnerOf(ui.open, conv.value))
 const withFounder = computed(() => conv.value?.kind === 'dm' && conv.value.members.some((member) => member.id === conv.value?.with && member.founder === true))
 const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))
 const isGroup = computed(() => Boolean(conv.value) && conv.value?.kind !== 'dm')
-const addable = computed(() => (me.value?.friends ?? []).filter((friend) => !conv.value?.members.some((member) => member.id === friend.id)))
 const threadBox = ref<HTMLElement | null>(null)
-const draftField = ref<HTMLInputElement | null>(null)
-// A new line, or a line changing from sending to sent: keep the newest in view.
-watch(items, () => { void nextTick(() => { const box = threadBox.value; if (box) box.scrollTop = box.scrollHeight }) }, { flush: 'post' })
+const composer = ref<InstanceType<typeof Composer> | null>(null)
+/** The message being answered, until it is sent or cancelled. */
+const replying = ref<Message | null>(null)
+const rows = computed(() => threadRows(items.value, Date.now()))
+/** Scrolled up to read earlier lines: new ones count on the jump button instead of pulling the view down. */
+const atBottom = ref(true)
+const fresh = ref(0)
+const quoted = ref<{ from: string; text: string } | null>(null)
+const nearBottom = (box: HTMLElement): boolean => box.scrollHeight - box.scrollTop - box.clientHeight < 80
+function onScroll(): void { const box = threadBox.value; if (!box) return; atBottom.value = nearBottom(box); if (atBottom.value) fresh.value = 0 }
+function toLatest(): void { const box = threadBox.value; if (box) box.scrollTo({ top: box.scrollHeight }); fresh.value = 0; atBottom.value = true }
+// A new line, or a line changing from sending to sent: keep the newest in view, unless the player scrolled up to read.
+watch(() => items.value.length, (now, was) => {
+  const last = items.value.at(-1)
+  const mineLast = Boolean(last && (isOutbox(last) || last.from?.id === me.value?.me.id))
+  if (atBottom.value || mineLast) void nextTick(toLatest)
+  else if (now > was) fresh.value += now - was
+}, { flush: 'post' })
+watch(() => ui.open, () => { atBottom.value = true; void nextTick(toLatest) })
+watch(thread, () => { if (atBottom.value) void nextTick(toLatest) })
+function jump(seq: number): void {
+  const box = threadBox.value, target = box?.querySelector<HTMLElement>(`[data-seq="${seq}"]`)
+  if (target) { target.scrollIntoView({ block: 'center', behavior: 'smooth' }); target.classList.add('is-flash'); setTimeout(() => target.classList.remove('is-flash'), 1400); quoted.value = null; return }
+  // No longer in the kept window: show what the quote froze.
+  const original = items.value.find((item): item is Message => !isOutbox(item) && item.replyTo?.seq === seq)
+  quoted.value = original?.replyTo ? { from: original.replyTo.from?.name ?? 'Message', text: original.replyTo.text || 'Picture' } : null
+}
+async function react(item: Message, emoji: string | null): Promise<void> {
+  const key = ui.open
+  if (!key) return
+  const result = await call<{ message: Message }>(`/api/social/conversations/${encodeURIComponent(key)}/react`, { seq: item.seq, emoji })
+  if (!result.ok) { game.toast(result.reason, 'error'); return }
+  const record = social.threads.get(key)
+  if (record) record.messages = record.messages.map((line) => (line.seq === item.seq ? result.message : line))
+  shell.bump()
+}
+const openCard = (id: string): void => { shell.open('person', { player: id }) }
 
 function openConversation(key: string): void { setOpen(key); void openThread(key) }
 const rootBox = ref<HTMLElement | null>(null)
@@ -119,14 +160,13 @@ function back(): void {
   void nextTick(() => { const list = rootBox.value; (Array.from(list?.querySelectorAll<HTMLElement>('[data-conv]') ?? []).find((row) => row.dataset.conv === was) ?? list?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]'))?.focus() })
 }
 function reloadThread(): void { const current = ui.open ? social.threads.get(ui.open) : undefined; if (current && ui.open) { current.error = null; void openThread(ui.open) } }
-function submitDraft(): void {
+function sendFromComposer(body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }): void {
   const key = ui.open
   if (!key || readOnly.value) return
-  const body = takeDraft()
-  if (!body) return
   // Shows at once as "Sending…"; the outbox turns it into sent, or failed with a Retry.
-  send(key, targetOf(key), body)
-  draftField.value?.focus()
+  send(key, targetOf(key), body, extra)
+  replying.value = null
+  ui.prefill = ''
 }
 
 // ---- finding a player, groups --------------------------------------------------------------
@@ -145,7 +185,7 @@ function messagePlayer(player: SearchResult): void {
   find.results = null; find.text = ''
   if (existing) void openThread(existing.id)
 }
-const group = reactive<{ open: boolean; name: string; members: string[]; clientId: string; busy: boolean }>({ open: false, name: '', members: [], clientId: '', busy: false })
+const group = reactive<{ open: boolean; name: string; members: PlayerRef[]; clientId: string; busy: boolean }>({ open: false, name: '', members: [], clientId: '', busy: false })
 /** Whether a friend is in the game now: known for friends only (nothing is said about anyone else). */
 const presenceOf = (id: string | null | undefined): 'online' | 'offline' | null => {
   const friend = id ? me.value?.friends.find((item) => item.id === id) : undefined
@@ -166,18 +206,22 @@ async function createGroup(): Promise<void> {
   if (group.busy) return
   group.busy = true
   // One client id per group form, reused on a retry, so a retry cannot create it twice.
-  const result = await perform<{ conv: Conversation }>('/api/social/groups', { name: group.name, members: group.members, clientId: group.clientId }, 'Group created')
+  const result = await perform<{ conv: Conversation }>('/api/social/groups', { name: group.name, members: group.members.map((person) => person.id), clientId: group.clientId }, 'Group created')
   group.busy = false
   if (result.ok) { group.open = false; openConversation(result.conv.id) }
 }
-const rename = ref('')
-watch(() => [ui.manage, conv.value?.name] as const, () => { rename.value = conv.value?.name ?? '' }, { immediate: true })
-async function updateGroup(body: GroupUpdateBody): Promise<void> {
+function groupLeft(): void { const key = ui.open; if (key) social.threads.delete(key); setOpen(null) }
+/** Remove a chat from my list only: the other person keeps theirs, and it comes back with a new message. */
+async function hideChat(): Promise<void> {
   const key = ui.open
   if (!key) return
-  const result = await perform(`/api/social/groups/${encodeURIComponent(key)}`, body)
-  if (result.ok && body.op === 'leave') { social.threads.delete(key); setOpen(null) } else void openThread(key)
+  const result = await perform(`/api/social/conversations/${encodeURIComponent(key)}/prefs`, { hide: true })
+  if (result.ok) groupLeft()
 }
+async function pinChat(on: boolean): Promise<void> { const key = ui.open; if (key) await perform(`/api/social/conversations/${encodeURIComponent(key)}/prefs`, { pin: on }) }
+const chatFilter = ref('')
+const chatList = computed(() => sortChats(filterChats(me.value?.conversations ?? [], chatFilter.value)))
+const showSettings = ref(false)
 
 // ---- updates -------------------------------------------------------------------------------
 const chats = computed(() => unreadChats(me.value))
@@ -195,6 +239,8 @@ function showTab(tab: 'chats' | 'updates'): void {
   if (tab === 'updates' && (me.value?.updates ?? []).some((update) => !update.read)) void call('/api/social/updates/read', {}).then(sync)
 }
 watch([() => ui.tab, () => ui.open, me, notices], readUpdates, { immediate: true })
+/** The notice that put the player in a group offers one tap to leave it. */
+async function leaveFromUpdate(key: string): Promise<void> { await perform(`/api/social/groups/${encodeURIComponent(key)}`, { op: 'leave' }, 'You left the group.'); social.threads.delete(key) }
 const answerFriend = (from: string, accept: boolean): Promise<unknown> => perform('/api/social/friends/answer', { from, accept, cityId: socialCityId() }, accept ? 'You are now friends' : null)
 const answerBae = (from: string, accept: boolean): Promise<unknown> => perform('/api/social/bae/answer', { from, accept, cityId: socialCityId() })
 
@@ -232,73 +278,58 @@ defineExpose({
       <div v-if="ui.open" class="messages-chat">
         <header class="messages-head">
           <button class="messages-back" type="button" aria-label="Back to chats" @click="back"><GameIcon name="back" :size="22" /></button>
-          <RowMark v-if="conv?.kind === 'group'" round>👥</RowMark>
+          <RowMark v-if="conv?.kind === 'group'" :name="title" :seed="conv.id" />
           <RowMark v-else-if="ui.open.startsWith('h.')" round>🏠</RowMark>
           <RowMark v-else :name="title" :seed="conv?.with ?? ui.open" />
           <h3 v-if="withFounder"><button type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="conv?.with && shell.open('person', { player: conv.with, name: title })">{{ title }}</button><FounderTag /><small :class="presenceOf(conv?.with) ? `messages-presence is-${presenceOf(conv?.with)}` : undefined">{{ (conv?.kind === 'dm' && presenceWord(conv.with)) || threadKind(conv) }}</small></h3>
           <h3 v-else><button v-if="partner" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: partner, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="partner && presenceOf(partner) ? `messages-presence is-${presenceOf(partner)}` : undefined">{{ (partner && presenceWord(partner)) || threadKind(conv) }}</small></h3>
-          <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Members' }}</BaseButton>
+          <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Group' }}</BaseButton>
           <template v-else-if="partner">
             <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
             <!-- A friend who is not in the game cannot be rung: Ping takes Call's place, so the header never holds a fourth control. -->
             <PingButton v-if="pingFor(partner)" compact :id="partner" :name="title" />
             <PersonCallButton v-else compact :id="partner" :name="title" :status="presenceOf(partner) ?? undefined" />
+            <button v-if="conv" type="button" class="messages-kebab" aria-label="Chat options" :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">⋯</button>
           </template>
         </header>
         <PingStrip v-if="partner && pingFor(partner)" inset :id="partner" :name="title" />
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
-        <section v-if="conv?.kind === 'group' && ui.manage" class="messages-manage" aria-label="Group members">
-          <ul>
-            <li v-for="member in conv.members" :key="member.id">
-              {{ member.name }}<template v-if="member.id === conv.owner"> (runs the group)</template>
-              <button v-if="conv.owner === me.me.id && member.id !== me.me.id" class="messages-link" type="button" @click="updateGroup({ op: 'remove', id: member.id })">Remove</button>
-            </li>
-          </ul>
-          <template v-if="conv.owner === me.me.id">
-            <form class="messages-form" @submit.prevent="updateGroup({ op: 'rename', name: rename })">
-              <input v-model="rename" name="name" :maxlength="me.limits.groupName" aria-label="Group name" required>
-              <BaseButton small type="submit">Rename</BaseButton>
-            </form>
-            <div v-if="addable.length && conv.members.length < me.limits.groupSize" class="messages-add">
-              <BaseButton v-for="friend in addable" :key="friend.id" small @click="updateGroup({ op: 'add', id: friend.id })">+ {{ friend.name }}</BaseButton>
-            </div>
-            <div v-else class="messages-note">{{ conv.members.length >= me.limits.groupSize ? `This group is full (${me.limits.groupSize} people).` : 'Only your friends can be added, and all of them are already here.' }}</div>
-          </template>
-          <div v-else class="messages-note">Only the person who runs the group can rename it or change members.</div>
-          <BaseButton small variant="danger" @click="updateGroup({ op: 'leave' })">Leave group</BaseButton>
+        <GroupManage v-if="conv?.kind === 'group' && ui.manage" :conv="conv" :me="me" @left="groupLeft" @player="openCard" />
+        <section v-else-if="conv?.kind === 'dm' && ui.manage" class="messages-manage" aria-label="Chat options">
+          <label class="messages-switch"><input type="checkbox" :checked="conv.pinned === true" @change="pinChat(($event.target as HTMLInputElement).checked)"> Pin to the top of my chats</label>
+          <BaseButton small variant="danger" @click="hideChat">Delete this chat for me</BaseButton>
+          <div class="messages-note">The other person keeps their copy. The chat comes back if either of you writes again.</div>
         </section>
 
-        <div ref="threadBox" class="messages-thread" aria-live="polite">
-          <template v-if="conv && !thread?.loaded">
-            <div v-if="thread?.error" class="messages-note is-warn">{{ thread.error }} <button class="messages-link" type="button" @click="reloadThread">Retry</button></div>
-            <div v-else class="messages-note">Loading messages…</div>
-          </template>
-          <div v-else-if="!items.length" class="messages-note">No messages yet. Say something.</div>
-          <template v-for="item in items" v-else :key="isOutbox(item) ? `o:${item.clientId}` : `m:${item.seq}`">
-            <div v-if="isOutbox(item)" class="bubble is-mine" :class="item.status === 'failed' ? 'is-failed' : 'is-pending'">
-              <span>{{ item.body }}</span>
-              <small>{{ item.status === 'failed' ? `Not sent · ${item.reason}` : 'Sending…' }}</small>
-              <span v-if="item.status === 'failed'" class="bubble-actions">
-                <BaseButton small variant="primary" @click="retry(item.clientId)">Retry</BaseButton>
-                <BaseButton small @click="discard(item.clientId)">Delete</BaseButton>
-              </span>
-            </div>
-            <div v-else-if="item.sys" class="bubble is-sys">{{ item.body }}</div>
-            <div v-else class="bubble" :class="{ 'is-mine': item.from?.id === me.me.id }">
-              <b v-if="isGroup && item.from?.id !== me.me.id">{{ item.from?.name }}</b>
-              <span>{{ item.body }}</span>
-              <small>{{ time(item.at) }}<template v-if="item.from?.id === me.me.id"> · Sent</template></small>
-            </div>
-          </template>
+        <div class="messages-body">
+          <div ref="threadBox" class="messages-thread" aria-live="polite" @scroll.passive="onScroll">
+            <template v-if="conv && !thread?.loaded">
+              <div v-if="thread?.error" class="messages-note is-warn">{{ thread.error }} <button class="messages-link" type="button" @click="reloadThread">Retry</button></div>
+              <div v-else class="messages-note">Loading messages…</div>
+            </template>
+            <div v-else-if="!items.length" class="messages-note">{{ isGroup ? 'No messages yet. Say hello to the group.' : 'No messages yet. Say something.' }}</div>
+            <template v-for="row in rows" v-else :key="row.key">
+              <div v-if="row.kind === 'day'" class="messages-day" role="separator"><span>{{ row.label }}</span></div>
+              <div v-else-if="isOutbox(row.item)" class="bubble is-mine" :class="row.item.status === 'failed' ? 'is-failed' : 'is-pending'">
+                <span>{{ row.item.body }}</span>
+                <small>{{ row.item.status === 'failed' ? `Not sent · ${row.item.reason}` : 'Sending…' }}</small>
+                <span v-if="row.item.status === 'failed'" class="bubble-actions">
+                  <BaseButton small variant="primary" @click="retry(row.item.clientId)">Retry</BaseButton>
+                  <BaseButton small @click="discard(row.item.clientId)">Delete</BaseButton>
+                </span>
+              </div>
+              <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" />
+            </template>
+          </div>
+          <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
         </div>
+        <div v-if="quoted" class="messages-quoted" role="status"><b>{{ quoted.from }}</b> {{ quoted.text }}<small> — the original is no longer kept</small> <button type="button" class="messages-link" @click="quoted = null">Close</button></div>
 
         <footer class="messages-foot">
           <span v-if="readOnly" class="messages-why">{{ readOnly }}</span>
-          <form class="messages-compose" @submit.prevent="submitDraft">
-            <input ref="draftField" v-model="ui.draft" name="body" :maxlength="me.limits.body" autocomplete="off" placeholder="Message" aria-label="Message" :disabled="Boolean(readOnly)">
-            <button type="submit" aria-label="Send" title="Send" :disabled="Boolean(readOnly) || !ui.draft.trim()"><GameIcon name="earn" :size="22" /></button>
-          </form>
+          <Composer ref="composer" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" />
         </footer>
       </div>
 
@@ -327,33 +358,33 @@ defineExpose({
           <SectionTitle>Chats<template #end><BaseButton v-if="!group.open" small @click="newGroup">New group</BaseButton></template></SectionTitle>
           <form v-if="group.open" class="messages-manage" @submit.prevent="createGroup">
             <input v-model="group.name" class="messages-field" name="name" :maxlength="me.limits.groupName" placeholder="Group name" aria-label="Group name" required>
-            <div v-if="me.friends.length" class="messages-checks">
-              <label v-for="friend in me.friends" :key="friend.id"><input v-model="group.members" type="checkbox" name="member" :value="friend.id"> {{ friend.name }}</label>
-            </div>
-            <div v-else class="messages-note">Groups are for friends. Add a friend first, then create a group.</div>
-            <div class="messages-note">Up to {{ me.limits.groupSize }} people including you.</div>
+            <FriendPicker v-model:selected="group.members" :exclude="[]" :max="me.limits.groupSize - 1" />
+            <div class="messages-note">{{ me.limits.groupSize }} people at most, including you. Only friends can be added, and you will be the admin.</div>
             <span class="bubble-actions is-start">
-              <BaseButton small variant="primary" type="submit" :disabled="group.busy" :reason="me.friends.length ? null : 'You need at least one friend to create a group.'">{{ group.busy ? 'Creating…' : 'Create group' }}</BaseButton>
+              <BaseButton small variant="primary" type="submit" :disabled="group.busy || !group.name.trim()" :reason="group.name.trim() ? null : 'Give the group a name.'">{{ group.busy ? 'Creating…' : 'Create group' }}</BaseButton>
               <BaseButton small @click="group.open = false">Cancel</BaseButton>
             </span>
-            <span v-if="!me.friends.length" class="messages-why">You need at least one friend to create a group.</span>
           </form>
 
-          <ListRows v-if="me.conversations.length" label="Chats">
-            <ListRow v-for="item in me.conversations" :key="item.id" as="button" :data-conv="item.id" :title="item.name" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
+          <input v-if="me.conversations.length > 4" v-model="chatFilter" class="messages-filter" type="search" name="chatfilter" placeholder="Search your chats" aria-label="Search your chats" autocomplete="off">
+          <ListRows v-if="chatList.length" label="Chats">
+            <ListRow v-for="item in chatList" :key="item.id" as="button" :data-conv="item.id" :title="`${item.pinned ? '📌 ' : ''}${item.name}${item.muted ? ' 🔕' : ''}`" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
               <template #icon>
-                <RowMark v-if="item.kind === 'group'" round>👥</RowMark>
+                <RowMark v-if="item.kind === 'group'" :name="item.name" :seed="item.id" />
                 <RowMark v-else-if="item.kind === 'house'" round>🏠</RowMark>
                 <RowMark v-else :name="item.name" :seed="item.with ?? item.id" />
               </template>
               <template #end>
-                <span class="messages-when"><small v-if="item.kind === 'dm' && presenceOf(item.with)" class="messages-presence" :class="`is-${presenceOf(item.with)}`">{{ presenceOf(item.with) === 'online' ? 'Online' : 'Offline' }}</small><small v-if="item.last?.at">{{ time(item.last.at) }}</small><span v-if="item.unread" class="messages-badge" :aria-label="`${item.unread} unread`">{{ item.unread }}</span></span>
+                <span class="messages-when"><small v-if="item.kind === 'dm' && presenceOf(item.with)" class="messages-presence" :class="`is-${presenceOf(item.with)}`">{{ presenceOf(item.with) === 'online' ? 'Online' : 'Offline' }}</small><small v-if="item.last?.at">{{ time(item.last.at) }}</small><span v-if="item.mentions" class="messages-at" aria-label="You were mentioned">@</span><span v-if="item.unread" class="messages-badge" :class="{ 'is-quiet': item.muted }" :aria-label="`${item.unread} unread`">{{ item.unread }}</span></span>
               </template>
             </ListRow>
           </ListRows>
-          <EmptyState v-else icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat.">
+          <p v-else-if="me.conversations.length" class="messages-note" role="status">No chat has that name.</p>
+          <EmptyState v-else icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat. You can also make a group with your friends.">
             <BaseButton @click="shell.open('people')">See who is here</BaseButton>
           </EmptyState>
+          <BaseButton small class="messages-settings-toggle" :aria-expanded="showSettings" @click="showSettings = !showSettings">{{ showSettings ? 'Hide chat settings' : 'Chat settings' }}</BaseButton>
+          <ChatSettings v-if="showSettings" :prefs="me.prefs" />
         </div>
 
         <div v-else role="tabpanel">
@@ -380,6 +411,7 @@ defineExpose({
               <RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark>
               <span class="messages-update-body"><b><GlyphText :text="line.text" /></b><small>{{ formatClock(line.at) }}{{ line.fresh ? ' · New' : '' }}</small></span>
               <BaseButton v-if="line.player" small @click="shell.open('person', { player: line.player })">Say hello</BaseButton>
+              <span v-if="line.conv" class="bubble-actions"><BaseButton small @click="openConversation(line.conv); ui.tab = 'chats'">Open</BaseButton><BaseButton v-if="line.leave" small variant="danger" @click="leaveFromUpdate(line.conv)">Leave</BaseButton></span>
             </div>
           </ListRows>
           <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" :text="`Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the ${civicTitle(view.cityId)} appear here.`" />
@@ -455,4 +487,17 @@ defineExpose({
 .messages-compose button { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--app-tint, var(--c-green-dark)); color: #fff; cursor: pointer; }
 .messages-compose button:disabled { opacity: .45; cursor: not-allowed; }
 @media (max-width: 540px) { .bubble { max-width: 86%; } }
+.messages-body { position: relative; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.messages-body .messages-thread { flex: 1; }
+.messages-day { align-self: center; margin: 6px 0 2px; }
+.messages-day span { padding: 3px 12px; border-radius: 12px; background: var(--c-fill-2); color: var(--c-muted); font-size: 11px; font-weight: 600; }
+.messages-latest { position: absolute; right: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; min-width: var(--tap); min-height: 40px; padding: 0 12px; border: 0; border-radius: 20px; background: #fff; box-shadow: var(--e-1), var(--ring); font: 700 16px var(--font); cursor: pointer; }
+.messages-quoted { margin: 0 12px 4px; padding: 6px 10px; border-left: 3px solid var(--c-line); border-radius: 6px; background: var(--c-fill); font-size: 12px; overflow-wrap: anywhere; }
+.messages-filter { box-sizing: border-box; width: 100%; min-height: 40px; margin: 0 0 var(--s-2); padding: 6px 14px; border: 1px solid #cfd5d1; border-radius: var(--r-pill); font: inherit; font-size: 14px; }
+.messages-at { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--c-green-dark); color: #fff; font-size: 11px; font-weight: 700; }
+.messages-badge.is-quiet { background: var(--c-muted); }
+.messages-kebab { flex: none; min-width: 36px; min-height: 36px; border: 0; border-radius: 50%; background: none; font-size: 20px; cursor: pointer; }
+.messages-switch { display: flex; align-items: center; gap: 8px; min-height: 36px; font-weight: 500; }
+.messages-settings-toggle { margin-top: var(--s-3); }
+:deep(.bubble-wrap.is-flash .bubble) { box-shadow: 0 0 0 3px #e8a643; transition: box-shadow .3s; }
 </style>

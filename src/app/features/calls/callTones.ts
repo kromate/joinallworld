@@ -9,7 +9,8 @@
 //
 // The tests read `globalThis.__callTones` (the events in order, and what plays now) instead of listening.
 import { reactive } from 'vue'
-import { getSound, onSoundChange, soundLevel } from '../../../audio/settings.ts'
+import { getSound, onSoundChange } from '../../../audio/settings.ts'
+import { soundLevel } from '../../../audio/levels.ts'
 
 export type ToneName = 'ringback' | 'ring' | 'connected' | 'ended' | 'declined' | 'failed'
 export interface ToneEvent { tone: ToneName | null; event: 'start' | 'stop' | 'blocked'; at: number }

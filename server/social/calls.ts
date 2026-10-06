@@ -241,7 +241,7 @@ function buildService(ctx: RouteContext) {
       // The limits come first and look at nothing about the callee.
       if (!ctx.allow(`call:from:${caller}`, CALL_LIMITS.perCallerPerMinute) || !ctx.allow(`call:pair:${caller}:${to}`, CALL_LIMITS.perPairPerMinute)) { refuse(ws, clientId, { limited: true }); return; }
       if (byPlayer.has(caller)) { refuse(ws, clientId, { busy: true }); return; }
-      if (barred(caller, to)) { refuse(ws, clientId); return; }
+      if (barred(caller, to) || ctx.checks?.suspended?.(caller, 'calls')) { refuse(ws, clientId); return; }
       const callee = await ctx.store.read((db) => ringable(db, caller, to));
       // Everything from here is synchronous, so two calls cannot both take the same player.
       sweep();

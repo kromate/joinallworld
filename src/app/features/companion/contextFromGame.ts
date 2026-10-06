@@ -42,7 +42,7 @@ export function contextFromGame(app: App): CompanionContext {
     unread: unreadChats(me), employed: Boolean(view.career?.employed), jobRole: view.career?.role ?? null,
     stallsOpened: state.business?.opened ?? 0, stallAlert: updates.find((update) => update.kind === 'business' && !update.read)?.text ?? null,
     rentArrears: rent?.arrears ?? 0, rentDueSoon: Boolean(rent && rent.amount > 0 && rent.nextDue - now < 36 * 3_600_000 && state.cash < rent.amount),
-    signedIn: Boolean(useAccountLite().state.account), soundOn: true, marketCloseHour: 20, inCall: callStore.view.phase !== 'idle' || callStore.confirm !== null,
+    signedIn: Boolean(useAccountLite().state.account), picturesOn: me?.limits.pictures.on === true, soundOn: true, marketCloseHour: 20, inCall: callStore.view.phase !== 'idle' || callStore.confirm !== null,
     online: Object.keys(social.live ?? {}).length, mode: game.mode.value, friendCount: (me?.friends ?? []).filter((friend) => !friend.founder).length,
     sales: state.business?.sales ?? 0, jobLevel: view.career?.level ?? 0, trips: view.travel?.trips ?? 0, activities: view.onboarding?.activities ?? 0,
     joined: updates.filter((update) => update.kind === 'invite-joined').length, pingsWaiting: updates.filter((update) => update.kind === 'ping' && !update.read).length,

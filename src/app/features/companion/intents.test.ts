@@ -8,6 +8,11 @@ import { distance, normalize, same } from './text.ts'
 import { ctx } from './testFixtures.ts'
 
 const TABLE: [string, IntentId][] = [
+  // games, groups, pictures, calls that fail
+  ['how do I play chess', 'games'], ['how do i play the word game', 'games'], ['what is oro', 'games'], ['where is the daily word', 'games'], ['i wan play game', 'games'], ['how do i play weave', 'games'],
+  ['how do I create a group', 'group'], ['abeg how i go make group chat', 'group'], ['can i start a new group', 'group'],
+  ['how do I send a picture', 'picture'], ['can i share photos in chat', 'picture'], ['how to post image', 'picture'],
+  ['why did my call not connect', 'callfail'], ['my call failed', 'callfail'], ['call dropped', 'callfail'], ['i cant hear the call', 'callfail'], ['why my call no go connect', 'callfail'], ['call not working', 'callfail'],
   // next step
   ['what should I do now', 'next'], ['wetin I go do', 'next'], ['wetin I suppose do now', 'next'], ['I dey bored', 'next'], ['i am bored', 'next'], ['nothing to do', 'next'],
   ['what next?', 'next'], ['give me a mission', 'next'], ['abeg suggest something to do', 'next'], ['I am lost', 'next'], ['where do I start', 'next'], ['wat shud i do', 'next'],

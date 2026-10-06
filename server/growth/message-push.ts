@@ -120,8 +120,10 @@ export function messagePushService(ctx: RouteContext, mailing: MessageMailing) {
     await mailing.deliver(job.id, job.subs, job.payload, job.payload.tag);
   }
 
-  // The listener is on unless an operator sets CHAT_PUSH=off.
-  if (setting(ctx, 'CHAT_PUSH') !== 'off') ctx.on?.('chat-notice', (notice) => {
+  // On unless an operator sets CHAT_PUSH=off; the admin's runtime switch (ctx.checks.setting) starts at that value and is read for every notice.
+  const pushOn = (): boolean => { const chosen = ctx.checks?.setting?.('chatPush'); return typeof chosen === 'boolean' ? chosen : setting(ctx, 'CHAT_PUSH') !== 'off'; };
+  ctx.on?.('chat-notice', (notice) => {
+    if (!pushOn()) return;
     const work = new Promise<void>((done) => {
       later(() => { run(notice).catch((error) => ctx.core?.log?.(`A message notification failed: ${String((error as { code?: unknown } | null)?.code ?? 'error').slice(0, 40)}`)).finally(done); }, unseenMs());
     });

@@ -41,4 +41,9 @@ export interface AdminHttpRoutes {
   'POST /api/admin/moderation/content/remove': Post<{ clientId: string; cityId: string; kind: string; slot?: string; id?: string; venue?: string; reason?: string }, AdminJson>
   'GET /api/admin/audit': Get<{ lines: AuditView[]; total: number; next: number | null }>
   'GET /api/admin/tools': Get<{ tools: AdminTool[] }>
+  'GET /api/admin/moderation/pictures': Get<AdminJson>
+  'GET /api/admin/moderation/pictures/:id': Get<AdminJson>
+  'POST /api/admin/moderation/pictures/:id/act': Post<{ clientId: string; action: 'remove' | 'restore' }, AdminJson>
+  'POST /api/admin/moderation/pictures/player': Post<{ clientId: string; player: string; allowed: boolean }, AdminJson>
+  'POST /api/admin/companion/test': Post<{ clientId: string }, AdminJson>
 }

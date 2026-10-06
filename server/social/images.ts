@@ -27,9 +27,11 @@ export interface PictureSettings {
 export const PICTURE_DEFAULTS: PictureSettings = Object.freeze({ mode: 'friends', perDay: 20, perChat: 50, retentionMs: 30 * 86400000, ceilingBytes: 200 * 1024 * 1024, reportsToHide: 2 });
 const whole = (text: string, fallback: number, min: number, max: number): number => { const value = Number(text); return text.trim() !== '' && Number.isFinite(value) ? Math.min(max, Math.max(min, Math.floor(value))) : fallback; };
 /** The settings, read from the host's environment (ctx.env). Anything missing or malformed is the default. */
-export function pictureSettings(env: (name: string) => string): PictureSettings {
+export function pictureSettings(env: (name: string) => string, setting?: (key: string) => boolean | number | undefined): PictureSettings {
   // Off unless an operator sets CHAT_IMAGES=friends: pictures are switched on deliberately, not by default.
-  const mode = env('CHAT_IMAGES').trim().toLowerCase() === 'friends' ? 'friends' : 'off';
+  // The admin's runtime switch (ctx.checks.setting) starts at that same value and may turn pictures on or off without a deploy.
+  const chosen = setting?.('chatPictures');
+  const mode = typeof chosen === 'boolean' ? (chosen ? 'friends' : 'off') : env('CHAT_IMAGES').trim().toLowerCase() === 'friends' ? 'friends' : 'off';
   return {
     mode,
     perDay: whole(env('CHAT_IMAGES_PER_DAY'), PICTURE_DEFAULTS.perDay, 1, 200),

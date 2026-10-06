@@ -706,12 +706,12 @@ function buildService(ctx: RouteContext) {
   }
   /** The record's own words for a message in a quote: its text, or what it was instead. */
   const quoteText = (message: MessageRecord): string => (clip(bodyOf(message), LIMITS.quote) || (message.img ? 'Picture' : ''));
-  const settingsOf = () => pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''));
+  const settingsOf = () => pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''), (key) => ctx.checks?.setting?.(key));
   /** The refusal for a picture this player may not send into this conversation, or null. */
   function pictureRefusal(s: SocialCollection, p: SocialPlayerRecord, id: string, conv: ConversationRecord | null, partner: string | null): Refused | null {
     const settings = settingsOf();
     if (settings.mode === 'off' || !ctx.images) return no('pictures_off', 'Pictures are not switched on here.');
-    if (p.noPictures) return no('pictures_blocked', 'You cannot send pictures right now.');
+    if (p.noPictures || ctx.checks?.suspended?.(id, 'pictures')) return no('pictures_blocked', 'You cannot send pictures right now.');
     if (conv && conv.kind === 'house') return no('pictures_off', 'Pictures cannot be sent in a house chat.');
     if (partner) {
       const target = s.players[partner]!;

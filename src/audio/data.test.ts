@@ -5,7 +5,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
 import test from 'node:test'
 import { fileURLToPath } from 'node:url'
-import { ACTIVITIES, COMMANDS, EVENTS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES } from './data.ts'
+import { ACTIVITIES, COMMANDS, COMPANION_SOUNDS, EVENTS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES, TABLE_SOUNDS } from './data.ts'
 
 const root = resolve(fileURLToPath(new URL('../..', import.meta.url)))
 function files(dir: string, found: string[] = []): string[] {
@@ -45,6 +45,8 @@ test('every event name the game uses exists, and every event is raised by someth
   for (const ride of Object.values(RIDES)) for (const name of [ride.start, ride.end]) if (name) raised.add(name)
   for (const rule of ACTIVITIES) for (const name of [rule.start, rule.end]) if (name) raised.add(name)
   for (const name of Object.values(COMMANDS)) raised.add(name)
+  for (const name of [...Object.values(TABLE_SOUNDS), ...Object.values(COMPANION_SOUNDS)]) raised.add(name)
+  for (const name of ['table-place', 'table-capture']) raised.add(name)
   const everything = code.map(([, text]) => text).join('\n')
   for (const name of eventNames) assert.ok(raised.has(name) || new RegExp(`['"\`]${name}['"\`]`).test(everything), `event "${name}" is never raised`)
 })
@@ -55,6 +57,7 @@ test('the tables point at things that exist', () => {
   for (const [mode, ride] of Object.entries(RIDES)) { assert.ok(SCAPES[ride.scape], mode); for (const name of [ride.start, ride.end]) if (name) assert.ok(eventNames.has(name), `${mode} ${name}`) }
   for (const rule of ACTIVITIES) { assert.ok(SCAPES[rule.scape], rule.scape); if (rule.kitchen) assert.ok(SCAPES[rule.kitchen]); for (const name of [rule.start, rule.end]) if (name) assert.ok(eventNames.has(name), name) }
   for (const [type, event] of Object.entries(COMMANDS)) assert.ok(eventNames.has(event), `${type} -> ${event}`)
+  for (const [name, event] of [...Object.entries(TABLE_SOUNDS), ...Object.entries(COMPANION_SOUNDS)]) assert.ok(eventNames.has(event), `${name} -> ${event}`)
   for (const name of ['city', 'harmattan', 'harbour', 'calm']) assert.ok(SCAPES[name], name)
 })
 

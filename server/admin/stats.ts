@@ -76,7 +76,7 @@ export function statsService(ctx: RouteContext) {
       adminMoney: { creditToday, debitToday, grantToday, creditTotal: audit.totals.credit, debitTotal: audit.totals.debit, grantTotal: audit.totals.grant },
       storage: { collections: (store as { collections?: Record<string, number> } | null)?.collections ?? {}, rows: (store as { rows?: unknown } | null)?.rows ?? null, writes: isCount((store as { writes?: unknown } | null)?.writes) ? (store as { writes: number }).writes : null, cost: 'counters the store keeps' },
       build: ctx.config.buildId, uptimeMs: now - (startedAt.get(ctx) ?? now),
-      extra: adminStats(ctx).map((stat) => ({ id: stat.id, label: stat.label, cost: stat.cost, value: stat.read(db) })),
+      extra: adminStats(ctx).map((stat) => ({ id: stat.id, label: stat.label, group: stat.group ?? '', cost: stat.cost, value: stat.read(db) })),
     };
   }
 

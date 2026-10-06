@@ -22,7 +22,12 @@ async function shop(item: Shop, action: 'rename' | 'close'): Promise<void> { con
 const city = ref('lagos'), content = ref<{ ads: { text: string; kind?: string; slot?: string; by: { name: string } }[]; radio: { id: string; title: string; venue?: string; by: { name: string } }[]; announcements: { id: string; text: string; by: { name: string } }[] } | null>(null)
 async function loadContent(): Promise<void> { const r = await api.get<NonNullable<typeof content.value>>('/api/admin/moderation/content', { city: city.value }); if (r.ok) content.value = r.data; else error.value = r.error.reason }
 async function remove(body: Record<string, unknown>): Promise<void> { const r = await api.post('/api/admin/moderation/content/remove', { cityId: city.value, ...body }, `content:${JSON.stringify(body)}`); note.value = r.ok ? 'Removed.' : r.error.reason; void loadContent() }
-onMounted(() => { void load(); void loadShops(); void loadContent() })
+interface Picture { id: string; conv: string; from: string | null; fromName: string | null; at: number; reports: number; hidden: boolean; removed: boolean }
+const pictures = ref<Picture[]>([]), viewing = ref('')
+async function loadPictures(): Promise<void> { const r = await api.get<{ pictures: Picture[] }>('/api/admin/moderation/pictures'); if (r.ok) pictures.value = r.data.pictures }
+async function picture(item: Picture, action: 'remove' | 'restore'): Promise<void> { const r = await api.post(`/api/admin/moderation/pictures/${item.id}/act`, { action }, `picture:${item.id}:${action}`); note.value = r.ok ? (action === 'remove' ? 'Picture removed.' : 'Picture restored.') : r.error.reason; if (action === 'remove') viewing.value = ''; void loadPictures() }
+async function pictureSending(item: Picture, allowed: boolean): Promise<void> { if (!item.from) return; const r = await api.post('/api/admin/moderation/pictures/player', { player: item.from, allowed }, `picture-player:${item.from}:${allowed}`); note.value = r.ok ? (allowed ? 'Picture-sending allowed again.' : 'Picture-sending stopped for that player.') : r.error.reason }
+onMounted(() => { void load(); void loadShops(); void loadContent(); void loadPictures() })
 </script>
 
 <template>
@@ -51,6 +56,13 @@ onMounted(() => { void load(); void loadShops(); void loadContent() })
           <div v-for="r in content.radio" :key="r.id" class="adm-sub">Shout-out “{{ r.title }}” by {{ r.by.name }} <button class="adm-btn" @click="remove({ kind: 'radio', id: r.id, venue: r.venue })">Remove</button></div>
           <p v-if="!content.ads.length && !content.announcements.length && !content.radio.length" class="adm-muted">Nothing live.</p></template></div>
     </div>
+    <div class="adm-card" style="margin-top:12px"><h3>Reported pictures</h3><p v-if="!pictures.length" class="adm-muted">No pictures have been reported, hidden or removed.</p>
+      <div v-for="item in pictures" :key="item.id" style="margin-bottom:8px"><b>{{ item.fromName ?? 'System' }}</b> · {{ absolute(item.at) }} · {{ item.reports }} report{{ item.reports === 1 ? '' : 's' }}
+        <span v-if="item.removed" class="adm-chip">removed</span><span v-else-if="item.hidden" class="adm-chip">hidden</span>
+        <div class="adm-row" style="margin:4px 0 0"><button v-if="!item.removed" class="adm-btn" @click="viewing = viewing === item.id ? '' : item.id">{{ viewing === item.id ? 'Hide' : 'View' }}</button>
+          <button v-if="!item.removed" class="adm-btn danger" @click="picture(item, 'remove')">Remove</button><button v-if="!item.removed && item.hidden" class="adm-btn" @click="picture(item, 'restore')">Restore</button>
+          <button v-if="item.from" class="adm-btn" @click="pictureSending(item, false)">Stop their pictures</button><button v-if="item.from" class="adm-btn" @click="pictureSending(item, true)">Allow their pictures</button></div>
+        <img v-if="viewing === item.id" :src="`/api/admin/moderation/pictures/${item.id}`" alt="The reported picture" style="max-width:100%;max-height:320px;margin-top:6px"></div></div>
     <div v-if="admin.me?.tools.length" class="adm-card" style="margin-top:12px"><h3>Tools from other features</h3><div v-for="tool in admin.me.tools" :key="tool.id" class="adm-sub">{{ tool.title }} ({{ tool.kind }})</div></div>
   </section>
 </template>

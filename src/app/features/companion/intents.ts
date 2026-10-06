@@ -11,10 +11,10 @@ export type IntentId =
   | 'greet' | 'thanks' | 'bye' | 'joke' | 'encourage' | 'safety' | 'insult' | 'howareyou' | 'who' | 'capabilities'
   | 'next' | 'earn' | 'cash' | 'eat' | 'sleep' | 'travel' | 'skip' | 'friends' | 'online' | 'call' | 'ping' | 'sendmoney'
   | 'business' | 'home' | 'vote' | 'look' | 'save' | 'sound' | 'report' | 'where' | 'whatis' | 'whatsnew' | 'tour'
-  | 'quiet' | 'lively' | 'messages' | 'time' | 'unknown'
+  | 'quiet' | 'lively' | 'messages' | 'time' | 'games' | 'group' | 'picture' | 'callfail' | 'unknown'
 
 /** Strongest first when two score the same. */
-const PRIORITY: readonly IntentId[] = ['safety', 'quiet', 'lively', 'tour', 'travel', 'skip', 'where', 'sendmoney', 'call', 'ping', 'online', 'friends', 'business', 'cash', 'earn', 'eat', 'sleep', 'home', 'vote', 'look', 'save', 'sound', 'report', 'messages', 'whatsnew', 'whatis', 'next', 'time', 'who', 'howareyou', 'capabilities', 'insult', 'encourage', 'joke', 'thanks', 'bye', 'greet']
+const PRIORITY: readonly IntentId[] = ['safety', 'quiet', 'lively', 'callfail', 'picture', 'group', 'games', 'tour', 'travel', 'skip', 'where', 'sendmoney', 'call', 'ping', 'online', 'friends', 'business', 'cash', 'earn', 'eat', 'sleep', 'home', 'vote', 'look', 'save', 'sound', 'report', 'messages', 'whatsnew', 'whatis', 'next', 'time', 'who', 'howareyou', 'capabilities', 'insult', 'encourage', 'joke', 'thanks', 'bye', 'greet']
 
 interface Rule { boost?: number; patterns: string[] }
 /** A pattern is words separated by spaces, all of which must be present; "a/b" in one place means either. */
@@ -53,6 +53,10 @@ const RULES: Record<Exclude<IntentId, 'unknown' | 'where' | 'whatis'>, Rule> = {
   quiet: { boost: 1.6, patterns: ['quiet', 'stop talk/talking/nudge/nudging/popping/pestering/disturbing/disturb', 'leave alone', 'go away', 'annoying', 'be silent', 'too much talk', 'not now', 'stop bothering', 'stop interrupting', 'dont disturb', 'mute you', 'stay quiet', ] },
   lively: { boost: 1.6, patterns: ['talk more', 'be lively', 'speak up', 'more tips', 'be chatty', 'more suggestions'] },
   messages: { boost: 1, patterns: ['message/messages/inbox/unread/mail/text', 'any message', 'new message', 'who texted', 'who wrote', 'chat'] },
+  games: { boost: 3, patterns: ['chess', 'oro', 'weave', 'wordle/scrabble/crossword', 'word game/puzzle/games', 'daily/todays word', 'play word/words', 'tile game', 'games app', 'board game/games', 'play game/games'] },
+  group: { boost: 3, patterns: ['group', 'group chat', 'create/make/start/new group', 'add people group'] },
+  picture: { boost: 3, patterns: ['picture/pictures/photo/photos/image/images/pic/pics/selfie', 'send/share/post picture/photo/image/pic'] },
+  callfail: { boost: 3, patterns: ['call connect/connecting/connected/fail/failed/drop/dropped/cut/hear/audio', 'call not connect/work', 'voice not work/connect', 'why call', 'cant call', 'call problem/issue/trouble/wahala', 'call no go/connect', 'no hear call'] },
   time: { boost: 0.6, patterns: ['what time', 'time now', 'market open', 'is it day', 'is it night', 'what day', 'when open', 'opening hours', 'when close', 'closing time'] },
 }
 

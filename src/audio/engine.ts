@@ -8,6 +8,7 @@ import type { PanelView } from '../app/types/panel.ts'
 import type { CitySound } from '../types/content.ts'
 import { Director, type Seen } from './director.ts'
 import { getSound, onSoundChange, setSound } from './settings.ts'
+import { COMPANION_SOUNDS, TABLE_SOUNDS } from './data.ts'
 
 export interface Engine {
   play(name: string): void
@@ -83,6 +84,8 @@ export function createEngine(): Engine | null {
   win.addEventListener('change', changed, { capture: true, passive: true })
   win.addEventListener('jaw:avatar-move', moved)
   win.addEventListener('jaw:sound', named)
+  win.addEventListener('jaw:table', (event) => { const at = (event as CustomEvent<{ game?: string; event?: string }>).detail; const id = at && TABLE_SOUNDS[`${at.game}:${at.event}`]; if (id) play(id) })
+  win.addEventListener('jaw:companion', (event) => { const at = (event as CustomEvent<{ kind?: string; mood?: string }>).detail; const id = at && COMPANION_SOUNDS[at.mood === 'celebrate' ? 'celebrate' : String(at.kind)]; if (id) play(id) })
   document.addEventListener('visibilitychange', shown)
   onSoundChange(() => director.applySettings())
   shown()

@@ -21,7 +21,7 @@ const pick = <T>(list: readonly T[], seed: number): T => list[Math.abs(seed) % l
 export const TOPIC_QUESTIONS: Partial<Record<IntentId, string>> = {
   next: 'What should I do now?', earn: 'How do I earn money?', eat: 'How do I eat?', sleep: 'How do I rest?', travel: 'How do I travel?', friends: 'How do I find friends?',
   call: 'How do I call a friend?', sendmoney: 'How do I send money?', business: 'How do I open a business?', home: 'How do I get a home?', vote: 'How do I vote?',
-  look: 'How do I change my look?', save: 'How do I save my progress?', sound: 'How do I change the sound?', report: 'How do I report someone?', tour: 'Show me around', whatsnew: 'What is new?',
+  look: 'How do I change my look?', save: 'How do I save my progress?', games: 'How do I play chess?', group: 'How do I create a group?', picture: 'How do I send a picture?', callfail: 'Why did my call not connect?', sound: 'How do I change the sound?', report: 'How do I report someone?', tour: 'Show me around', whatsnew: 'What is new?',
   online: 'Who is online?', messages: 'Any messages?', skip: 'How do I skip a trip?', ping: 'What is a ping?', cash: 'How much money do I have?',
 }
 export const MAIN_CHIPS = ['What should I do now?', 'How do I earn money?', 'Show me around', 'Who is online?']
@@ -64,6 +64,7 @@ export function nextStep(ctx: CompanionContext, seed = 0): CompanionReply {
     const fun = nearestOpen(ctx.places, ['fun', 'nightlife'])
     if (fun) return reply(`You could use some fun, ${name}. ${fun.label} is open${fun.activities[0] ? ` and you can ${fun.activities[0].toLowerCase()}` : ''}.`, [goTo(fun)], 'next', 'point')
   }
+  if (!ctx.guest && seed % 5 === 3) return reply('Fancy a quick break? Today\'s word puzzle takes a minute, and everybody gets the same word.', [open('games', 'Play today\'s word')], 'next', 'happy')
   const others = ctx.cities.filter((city) => city.open && !city.here)
   const spot = ctx.places.filter((place) => place.open && !place.here && place.category !== 'home')
   if (spot.length && seed % 2 === 0) { const place = pick(spot, seed); return reply(`Feeling curious? ${place.label} in ${place.district} is open. There is always something new to see.`, [goTo(place)], 'next', 'point') }
@@ -146,6 +147,12 @@ const MAKERS: Partial<Record<IntentId, Maker>> = {
   look: () => R('look', 'Visit the Boutique to change your hair, outfit and accessories.', [open('boutique', 'Open Boutique')], 'nod'),
   save: (ctx) => ctx.signedIn ? R('save', 'You are signed in, so your character is kept and you can play from any device.', [open('account', 'Open Account')], 'happy') : R('save', 'Sign up free and your character is kept so you can carry on from any device. As a guest it lives only on this one.', [open('account', 'Save my progress')], 'point'),
   sound: () => R('sound', 'Sound and music are in Settings, under your profile. You can turn them on or off there.', [{ kind: 'sim', tab: 'settings', label: 'Open Settings' }], 'nod'),
+  games: () => R('games', 'Open Games on your phone. Oro is one word puzzle a day, the same for everybody, and Weave is a word-tile game against the computer. Chess is there too: pick easy, medium or hard, or sit at a chess table in a park to play a friend.', [open('games', 'Open Games')], 'point', 'Games is on your phone: Oro for the daily word, Weave for tiles, and Chess against the computer.'),
+  group: () => R('group', 'Open Messages and tap New group. Give it a name, pick friends to add, and create it. Once it exists, the Group button inside lets you add or remove people and leave.', [open('messages', 'Open Messages')], 'point', 'In Messages, tap New group, name it and pick your friends.'),
+  picture: (ctx) => ctx.picturesOn
+    ? R('picture', 'In a chat with a friend, or in a group, use the picture button next to the message box. Pictures go to friends only, the other person can report one, and a moderator can remove it.', [open('messages', 'Open Messages')], 'point', 'Tap the picture button in a friend chat, beside the message box.')
+    : R('picture', 'Pictures in chat are not switched on right now, so there is nothing to send yet. Words, gifts and calls all work, and I will tell you when pictures arrive.', [open('messages', 'Open Messages')], 'nod'),
+  callfail: () => R('callfail', 'A call needs the other player to be online and to accept, and both of you to allow the microphone when the browser asks. If it still cannot connect, your two networks may need a relay, which is not always available. Try again in a minute, or send a message instead.', [open('messages', 'Open Messages'), { kind: 'report', label: 'Report a problem' }], 'nod', 'Check that they are online, that you both allowed the microphone, then try again.'),
   report: (ctx) => R('report', 'Sorry that happened. Use Report a problem to tell us, or open the player\'s card and choose Report. A real person reads it.', [{ kind: 'report', label: 'Report a problem' }, ...(onlineFriends(ctx)[0] ? [{ kind: 'chat', friend: onlineFriends(ctx)[0]!.id, name: onlineFriends(ctx)[0]!.name, label: `Ask ${onlineFriends(ctx)[0]!.name}` } as CompanionAction] : [])], 'nod'),
   messages: (ctx) => ctx.unread ? R('messages', `You have ${ctx.unread} unread message${ctx.unread > 1 ? 's' : ''}.`, [open('messages', 'Open Messages')], 'point') : R('messages', 'No new messages. Messages keeps your chats and groups when you want them.', [open('messages', 'Open Messages')], 'nod'),
   whatsnew: () => R('whatsnew', CHANGELOG.slice(0, 3).map((entry) => `• ${entry.text}`).join('\n'), [], 'happy'),

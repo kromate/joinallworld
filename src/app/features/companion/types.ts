@@ -62,6 +62,8 @@ export interface CompanionContext {
   rentArrears: number
   rentDueSoon: boolean
   signedIn: boolean
+  /** Pictures in chat are switched on for this player (the social overview's limits). */
+  picturesOn: boolean
   soundOn: boolean
   /** The market (stalls) trades between these hours in this city; null when unknown. */
   marketCloseHour: number | null

@@ -23,11 +23,17 @@ async function give(): Promise<void> {
   out.value = r.ok ? { ok: r.data.ok === true, text: r.data.ok === true ? String(r.data.summary) : String(r.data.code) } : { ok: false, text: r.error.reason }
   preview.value = null; typed.value = ''
 }
-interface Setting { key: string; label: string; help: string; kind: 'boolean' | 'number'; min: number | null; max: number | null; default: boolean | number; value: boolean | number; changed: { at: number } | null }
+interface Setting { key: string; label: string; help: string; kind: 'boolean' | 'number'; confirmOn?: boolean; min: number | null; max: number | null; default: boolean | number; value: boolean | number; changed: { at: number } | null }
 const settings = ref<Setting[]>([]), switches = ref({ email: false, push: false }), drafts = reactive<Record<string, string>>({}), note = ref('')
 async function loadSettings(): Promise<void> { const r = await api.get<{ settings: Setting[]; switches: { email: boolean; push: boolean } }>('/api/admin/settings'); if (r.ok) { settings.value = r.data.settings; switches.value = r.data.switches } }
 onMounted(loadSettings)
-async function set(key: string, value: boolean | number | null): Promise<void> { const r = await api.post('/api/admin/settings', { key, value }, `setting:${key}:${String(value)}`); note.value = r.ok ? 'Saved.' : r.error.reason; void loadSettings() }
+const asking = ref<{ key: string; label: string; token: string } | null>(null), word = ref('')
+async function set(key: string, value: boolean | number | null, confirm?: string): Promise<void> {
+  const r = await api.post<Record<string, unknown>>('/api/admin/settings', { key, value, ...(confirm ? { confirm } : {}) }, `setting:${key}:${String(value)}`)
+  if (r.ok && r.data.code === 'confirmation_required') { asking.value = { key, label: String(r.data.summary), token: String(r.data.token) }; word.value = ''; return }
+  asking.value = null
+  note.value = r.ok ? 'Saved.' : r.error.reason; void loadSettings()
+}
 const minutes = ref(5)
 async function notice(m: number): Promise<void> { const r = await api.post('/api/admin/notice', { minutes: m }, `notice:${m}:${Date.now()}`); note.value = r.ok ? (m ? `The notice is showing for ${m} minutes.` : 'The notice ended.') : r.error.reason }
 </script>
@@ -60,6 +66,8 @@ async function notice(m: number): Promise<void> { const r = await api.post('/api
     <div class="adm-card" style="margin-top:12px">
       <h3>Settings</h3>
       <p v-if="note" class="adm-ok" role="status">{{ note }}</p>
+      <div v-if="asking" class="adm-card" role="alertdialog" aria-label="Confirm"><p><b>{{ asking.label }}</b></p><label>Type ON to confirm<input v-model="word" autocomplete="off"></label>
+        <p><button class="adm-btn danger" :disabled="word.trim().toUpperCase() !== 'ON'" @click="set(asking.key, true, asking.token)">Turn on</button> <button class="adm-btn" @click="asking = null">Cancel</button></p></div>
       <table class="adm-table"><tbody>
         <tr v-for="s in settings" :key="s.key"><td><b>{{ s.label }}</b><div class="adm-sub">{{ s.help }}</div></td>
           <td v-if="s.kind === 'boolean'"><button class="adm-btn" :class="{ primary: s.value }" @click="set(s.key, !s.value)">{{ s.value ? 'On' : 'Off' }}</button></td>

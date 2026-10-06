@@ -39,6 +39,9 @@ import { UUID_PATTERN } from '../protocol.ts';
 import { DESTRUCTIVE, actionsService, formatNaira, parseAction } from '../admin/actions.ts';
 import type { Effects } from '../admin/actions.ts';
 import { announceOf } from '../admin/announce.ts';
+import { linkFeatures } from '../admin/links.ts';
+import { companionService } from '../companion/service.ts';
+import { CONTENT_TYPES, PICTURE_LIMITS } from '../social/images.ts';
 import { checkConfirm, issueConfirm } from '../admin/confirm.ts';
 import { limitsOf, maskEmail } from '../admin/config.ts';
 import { accountBudget, addressBudget, adminOf, countFailure, mayAct, notFound, shortRef } from '../admin/gate.ts';
@@ -60,6 +63,7 @@ const REPORT_ACTIONS = ['dismiss', 'warn', 'mute'] as const;
 export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const players = playersService(ctx), actions = actionsService(ctx), stats = statsService(ctx), announce = announceOf(ctx), settings = settingsOf(ctx), sanctions = sanctionsOf(ctx);
   const world = worldService(ctx), moderation = moderationService(ctx), social = socialService(ctx), outreach = outreachService(ctx), shops = businessService(ctx), notice = noticeOf(ctx);
+  linkFeatures(ctx);
   ctx.startup?.push(sanctions.load(), announce.load(), settings.load());
   const refuse = (status: number, code: string, reason: string) => Object.assign(ctx.fail(status, code), { reason });
 
@@ -88,9 +92,11 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return { body: await ctx.store.read((db) => handler(db, again(db, request), request)), headers: NO_STORE, ...(admin ? {} : {}) };
   };
   /** A write: the body, the clientId, one transaction, the receipt, then what the transaction decided to do afterwards. */
-  const write = <T extends object>(kind: string, plan: (db: Db, admin: Admin, body: Record<string, unknown>, request: RouteRequest, effects: Effects & { after?: (() => Promise<void> | void)[] }) => { fingerprint: unknown; run: () => T }, { durable = true }: { durable?: boolean } = {}): RouteHandler => async (request) => {
-    await enter(request, { write: true });
+  const write = <T extends object>(kind: string, plan: (db: Db, admin: Admin, body: Record<string, unknown>, request: RouteRequest, effects: Effects & { after?: (() => Promise<void> | void)[] }) => { fingerprint: unknown; run: () => T }, { durable = true, before }: { durable?: boolean; before?: (admin: Admin, body: Record<string, unknown>) => Promise<object | null> } = {}): RouteHandler => async (request) => {
+    const entered = await enter(request, { write: true });
     const body = await request.json();
+    const early = before ? await before(entered, body) : null;
+    if (early) return { body: early, headers: NO_STORE };
     const effects: Effects & { after?: (() => Promise<void> | void)[] } = {};
     ctx.onceId(body.clientId);
     const result = await ctx.store.transact((db) => {
@@ -103,6 +109,18 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     return { body: result, headers: NO_STORE };
   };
   const canon = (value: unknown): string => JSON.stringify(value);
+  /**
+   * A change to a picture or to a player's picture-sending: the same steps as the operator's route, so the bytes of a removed picture leave the
+   * image store after the commit and the people in the chat are told. Both changes can be repeated without harm, so no receipt is kept.
+   */
+  const pictureWrite = (plan: (db: Db, admin: Admin, body: Record<string, unknown>, request: RouteRequest) => object): RouteHandler => async (request) => {
+    await enter(request, { write: true });
+    const body = await request.json();
+    ctx.onceId(body.clientId);
+    const result = await ctx.store.transact((db) => social.finish(db, plan(db, again(db, request), body, request)), { committed: (value) => social.committed(value) });
+    stats.invalidate();
+    return { body: social.deliver(result) ?? {}, headers: NO_STORE };
+  };
 
   return {
     // The probe the game makes once a signed-in account is known: 404 for everyone who is not an admin, and it is not counted as an attempt.
@@ -230,7 +248,14 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: 'setting', target: key, targetName: key, params: { value: body.value === null ? 'default' : (body.value as boolean | number) }, summary: `${key}: ${String(changed.before)} → ${String(changed.after)}`, reason: '' });
         return { ok: true, code: 'changed', summary: line.summary, line: line.n };
       } };
-    }),
+    }, { before: async (admin, body) => {
+      // A setting that is risky to turn on (pictures in chat) answers a token first; the second request carries it back.
+      const item = settings.descriptors().get(String(body.key ?? ''));
+      if (!item?.confirmOn || body.value !== true) return null;
+      const bound = canon([item.key, true]);
+      if (await checkConfirm(ctx, body.confirm, admin.accountId, 'setting', item.key, bound)) return null;
+      return { ok: false, code: 'confirmation_required', ...(await issueConfirm(ctx, admin.accountId, 'setting', item.key, bound)), summary: `Turn on: ${item.label}` };
+    } }),
     'POST /api/admin/notice': write('notice', (db, admin, body, _request, effects) => ({ fingerprint: [body.minutes], run: () => {
       const minutes = body.minutes;
       if (typeof minutes !== 'number' || !Number.isInteger(minutes) || minutes < 0 || minutes > 15) throw refuse(400, 'invalid_notice', 'Use 1 to 15 minutes, or 0 to end the notice.');
@@ -309,6 +334,41 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: 'content-remove', target: removed.by.id, targetName: removed.by.name, params: { city: cityId, kind: String(body.kind) }, summary: `Removed ${String(body.kind)} “${label}”`, reason });
       return { ok: true, code: 'removed', summary: line.summary, line: line.n };
     } })),
+
+    // Pictures in chat that were reported, hidden or removed: the operator's own service functions (server/social/service.ts) under the admin guard.
+    'GET /api/admin/moderation/pictures': read((db) => social.modPictures(db)),
+    'GET /api/admin/moderation/pictures/:id': async (request) => {
+      await enter(request);
+      const id = request.params.id ?? '', found = ctx.images && PICTURE_LIMITS.idPattern.test(id) ? await ctx.images.get(id) : null;
+      if (!found) throw ctx.fail(404, 'unknown_picture');
+      return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
+    },
+    'POST /api/admin/moderation/pictures/:id/act': pictureWrite((db, admin, body, request) => {
+      const action = body.action, id = request.params.id ?? '';
+      if (action !== 'remove' && action !== 'restore') throw ctx.fail(400, 'invalid_action');
+      if (!PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(400, 'invalid_image');
+      const result = social.modPicture(db, id, action);
+      if (result.ok) {
+        moderation.audit(db, `picture-${action}`, id, '', 'admin');
+        audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: `picture-${action}`, target: id, targetName: 'picture', params: {}, summary: `Picture ${action === 'remove' ? 'removed' : 'restored'}`, reason: '' });
+      }
+      return { ...result };
+    }),
+    'POST /api/admin/moderation/pictures/player': pictureWrite((db, admin, body) => {
+      if (typeof body.allowed !== 'boolean') throw ctx.fail(400, 'invalid_action');
+      const id = publicId(body.player), result = social.modPictureBan(db, id, !body.allowed);
+      if (result.ok) {
+        moderation.audit(db, body.allowed ? 'picture-allow' : 'picture-ban', id, '', 'admin');
+        audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: body.allowed ? 'picture-allow' : 'picture-ban', target: id, targetName: 'player', params: {}, summary: `Picture-sending ${body.allowed ? 'allowed again' : 'stopped'} for one player`, reason: '' });
+      }
+      return { ...result };
+    }),
+    // One tiny request to the language-model gateway: the function behind POST /api/mod/companion-test.
+    'POST /api/admin/companion/test': async (request) => {
+      await enter(request, { write: true });
+      if (!ctx.allow('admin:companion-test', 6, 600000)) throw ctx.fail(429, 'rate_limited');
+      return { body: await companionService(ctx).selfTest(), headers: NO_STORE };
+    },
 
     'GET /api/admin/audit': read((db, _admin, request) => {
       const q = request.query, action = q.get('action') ?? '', admin = q.get('admin') ?? '', target = q.get('target') ?? '', text = (q.get('q') ?? '').toLowerCase().slice(0, 80);

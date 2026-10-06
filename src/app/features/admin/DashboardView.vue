@@ -13,7 +13,7 @@ interface Dash {
   businesses: { open: number; total: number }; reports: { open: number; problems: { open: number } }
   mail: { email: { sentToday: number; cap: number; off: boolean }; push: { sentToday: number; cap: number; off: boolean }; byKind: Record<string, number> }
   adminMoney: { creditToday: number; debitToday: number; grantToday: number; creditTotal: number; debitTotal: number; grantTotal: number }
-  storage: { collections: Record<string, number> }; build: string; uptimeMs: number; extra: { id: string; label: string; cost: string; value: number | string | null }[]
+  storage: { collections: Record<string, number> }; build: string; uptimeMs: number; extra: { id: string; label: string; group?: string; cost: string; value: number | string | null }[]
 }
 interface Eco { asOf: number; cashInCirculation: number; players: number; sessionsRead: number; truncated: boolean; faucets: { category: string; net: number }[]; sinks: { category: string; net: number }[]; cities: Record<string, { residents: number; visitors: number }>; cost: string }
 const dash = ref<Dash | null>(null), eco = ref<Eco | null>(null), error = ref(''), busy = ref(false), tick = ref(0)
@@ -30,6 +30,23 @@ onBeforeUnmount(() => clearInterval(timer))
 const cities = computed(() => Object.entries(dash.value?.online.cities ?? {}).sort((a, b) => b[1] - a[1]))
 const pct = (n: number, of: number): number => (of > 0 ? Math.min(100, Math.round((n / of) * 100)) : 0)
 const sizes = computed(() => Object.entries(dash.value?.storage.collections ?? {}).sort((a, b) => b[1] - a[1]).slice(0, 10))
+/** Numbers other features add: one card each, except those that share a group (calls, the AI guide, pictures), which share one card. */
+const extras = computed(() => {
+  const cards: { key: string; title: string; rows: { label: string; value: number | string | null }[]; cost: string }[] = []
+  for (const item of dash.value?.extra ?? []) {
+    const key = item.group || item.id, found = cards.find((card) => card.key === key)
+    if (found) found.rows.push({ label: item.label, value: item.value })
+    else cards.push({ key, title: item.group || item.label, rows: item.group ? [{ label: item.label, value: item.value }] : [{ label: '', value: item.value }], cost: item.cost })
+  }
+  return cards
+})
+const guideTest = ref('')
+async function testGuide(): Promise<void> {
+  guideTest.value = 'Asking…'
+  const reply = await api.post<{ ok: boolean; model?: string; ms?: number; error?: string }>('/api/admin/companion/test', {}, `guide-test:${Date.now()}`)
+  if (!reply.ok) guideTest.value = reply.error.reason
+  else guideTest.value = reply.data.ok ? `The guide answered in ${reply.data.ms} ms (${reply.data.model}).` : `The guide did not answer: ${reply.data.error} (${reply.data.ms} ms).`
+}
 const asOf = (at: number): string => `as of ${absolute(at)} (${relative(at, dash.value?.asOf ?? at)})`
 </script>
 
@@ -52,7 +69,11 @@ const asOf = (at: number): string => `as of ${absolute(at)} (${relative(at, dash
         <div class="adm-card"><h3>Reports open</h3><div class="adm-big">{{ dash.reports.open }}</div><div class="adm-sub">{{ dash.reports.problems.open }} problem reports open</div></div>
         <div class="adm-card"><h3>Mail today</h3><div class="adm-sub">E-mail {{ dash.mail.email.sentToday }} of {{ dash.mail.email.cap }}{{ dash.mail.email.off ? ' (off)' : '' }} · Push {{ dash.mail.push.sentToday }} of {{ dash.mail.push.cap }}{{ dash.mail.push.off ? ' (off)' : '' }}</div><div class="adm-sub">{{ Object.entries(dash.mail.byKind).map(([k, v]) => `${k} ${v}`).join(' · ') || 'no comeback mail today' }}</div></div>
         <div class="adm-card"><h3>Admin money</h3><div class="adm-sub">Today: +{{ naira(dash.adminMoney.creditToday) }} credits, −{{ naira(dash.adminMoney.debitToday) }} debits, {{ naira(dash.adminMoney.grantToday) }} grants</div><div class="adm-sub">All time: +{{ naira(dash.adminMoney.creditTotal) }} / −{{ naira(dash.adminMoney.debitTotal) }} / {{ naira(dash.adminMoney.grantTotal) }}</div></div>
-        <div v-for="item in dash.extra" :key="item.id" class="adm-card"><h3>{{ item.label }}</h3><div class="adm-big">{{ item.value ?? '-' }}</div><div class="adm-sub">{{ item.cost }}</div></div>
+        <div v-for="card in extras" :key="card.key" class="adm-card"><h3>{{ card.title }}</h3>
+          <div v-if="card.rows.length === 1 && !card.rows[0]?.label" class="adm-big">{{ card.rows[0]?.value ?? '-' }}</div>
+          <div v-else v-for="row in card.rows" :key="row.label" class="adm-sub"><b>{{ row.value ?? '-' }}</b> {{ row.label }}</div>
+          <template v-if="card.key === 'AI guide today'"><button class="adm-btn" @click="testGuide">Test the AI guide</button><div v-if="guideTest" class="adm-sub" role="status">{{ guideTest }}</div></template>
+          <div class="adm-sub">{{ card.cost }}</div></div>
       </div>
       <div class="adm-two" style="margin-top:12px">
         <div class="adm-card"><h3>Online by city</h3><table class="adm-table"><tbody><tr v-for="[city, n] in cities" :key="city"><td>{{ city }}</td><td>{{ n }}</td></tr></tbody></table></div>

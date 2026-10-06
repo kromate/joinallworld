@@ -87,7 +87,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   let storedBytes: number | null = null, trimmedAt = 0;
   /** Keep the store inside its retention time and its size ceiling (at most once an hour, and whenever an upload takes it over the ceiling). */
   async function keepTidy(added: number): Promise<void> {
-    const images = ctx.images, settings = pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''));
+    const images = ctx.images, settings = pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''), (key) => ctx.checks?.setting?.(key));
     if (!images) return;
     storedBytes = (storedBytes ?? (await images.stats()).bytes) + added;
     if (ctx.now() - trimmedAt < 3600000 && storedBytes <= settings.ceilingBytes) return;
@@ -100,7 +100,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     const images = ctx.images;
     const claimed = claimedType(body.type), bytes = fromBase64(body.data, PICTURE_LIMITS.bytes + 4);
     if (!claimed || !bytes) throw ctx.fail(400, 'invalid_picture');
-    const settings = pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''));
+    const settings = pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''), (key) => ctx.checks?.setting?.(key));
     // Who is asking, and which conversation the picture is for, before anything is kept.
     const me = await ctx.store.read((db) => request.requireSession(db).publicId);
     if (!ctx.allow(`social:http:${me}`, HTTP_PER_MINUTE)) throw ctx.fail(429, 'rate_limited');

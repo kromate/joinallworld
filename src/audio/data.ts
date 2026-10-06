@@ -38,6 +38,9 @@ export const RECIPES: Readonly<Record<string, Recipe>> = {
   message: { l: [{ w: 'sine', f: 480, f2: 900, a: 0.004, d: 0.08, g: 0.3 }, { w: 'sine', f: 720, f2: 1200, at: 0.09, a: 0.004, d: 0.1, g: 0.26, rv: 0.1 }], pri: 2 },
   online: { l: [...tink(88, 0, 0.16, 0.34, 0.3)], pri: 1 },
   toast: { l: bar(74, 0, 0.18, 0.1, 0.05), pri: 0 },
+  // a piece or a tile set down on a board, and a capture
+  'wood-tap': { l: [...knock(520, 0, 0.22, 0.05), puff(2400, 0.01, 0.06, 0, 1.2)], pri: 0, j: 0.03 },
+  'wood-clack': { l: [...knock(380, 0, 0.3, 0.06), ...knock(560, 0.045, 0.22, 0.05)], pri: 1, j: 0.03 },
   goal: { l: [...seq([60, 64, 67, 72], 0.085, (m, at) => bar(m, at, 0.3, 0.22, 0.25)), ...bar(76, 0.37, 0.34, 0.6, 0.4), ...bar(84, 0.37, 0.14, 0.6, 0.4)], pri: 2 },
   coins: { l: [...tink(88, 0, 0.2), ...tink(91, 0.055, 0.18), ...tink(95, 0.11, 0.16, 0.34)], pri: 1 },
   spend: { l: [...tink(91, 0, 0.14, 0.2), ...tink(84, 0.07, 0.14, 0.24)], pri: 1 },
@@ -113,8 +116,16 @@ export const EVENTS: Readonly<Record<string, string>> = {
   success: 'success', refused: 'refused', notify: 'notify', message: 'message', online: 'online', toast: 'toast',
   goal: 'goal', coins: 'coins', spend: 'spend', purchase: 'purchase', gift: 'gift', sale: 'sale', stock: 'stock', stamp: 'stamp',
   door: 'door', sleep: 'lullaby', wake: 'wake', 'shift-done': 'shift-done', 'trip-bus': 'horn-taps', 'trip-air': 'whoosh', 'arrive-air': 'cabin-chime',
-  card: 'card',
+  card: 'card', 'table-place': 'wood-tap', 'table-capture': 'wood-clack',
 }
+/** What a board or the word puzzle announces (window event `jaw:table`, detail { game, event }) and the event it plays. */
+export const TABLE_SOUNDS: Readonly<Record<string, string>> = {
+  'chess:move': 'table-place', 'chess:castle': 'table-place', 'chess:promote': 'success', 'chess:capture': 'table-capture', 'chess:check': 'notify', 'chess:end': 'goal',
+  'weave:play': 'table-place', 'weave:bingo': 'goal', 'weave:exchange': 'card', 'weave:pass': 'tab', 'weave:end': 'goal',
+  'oro:guess': 'table-place', 'oro:win': 'goal', 'oro:lose': 'refused',
+}
+/** What the guide announces (window event `jaw:companion`, detail { kind, mood? }) and the event it plays. */
+export const COMPANION_SOUNDS: Readonly<Record<string, string>> = { speak: 'toast', celebrate: 'success' }
 /** The footstep recipe for each surface. */
 export const STEPS: Readonly<Record<string, string>> = { floor: 'step-floor', grass: 'step-grass', path: 'step-path', sand: 'step-sand' }
 /** The arrival motif of each instrument. A city names one in its content (`sound.motif`). */

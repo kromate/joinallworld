@@ -19,7 +19,7 @@ import type { Db, RouteContext } from '../types.ts';
 
 export interface AdminToolAction { id: string; label: string; danger?: boolean; path: string }
 export interface AdminTool { id: string; title: string; group: 'moderation' | 'world' | 'players' | 'other'; kind: 'queue' | 'switch' | 'link'; list?: string; actions?: AdminToolAction[] }
-export interface AdminStat { id: string; label: string; /** What it costs to read, shown beside the number. */ cost: string; read(db: Db): number | string | null }
+export interface AdminStat { id: string; label: string; /** Stats with the same group are shown together on one card. */ group?: string; /** What it costs to read, shown beside the number. */ cost: string; read(db: Db): number | string | null }
 
 const tools = new WeakMap<object, Map<string, AdminTool>>(), stats = new WeakMap<object, Map<string, AdminStat>>();
 const mapOf = <T>(table: WeakMap<object, Map<string, T>>, ctx: object): Map<string, T> => { let found = table.get(ctx); if (!found) table.set(ctx, found = new Map()); return found; };

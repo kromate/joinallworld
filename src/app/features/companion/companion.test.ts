@@ -291,3 +291,23 @@ test('every tour step has a real anchor, a short line, and the tours are short, 
   const waits = TOUR_IDS.flatMap((id) => tourSteps(id).filter((step) => step.wait))
   assert.ok(waits.length >= 5 && waits.every((step) => step.task), 'a waiting step says what to do')
 })
+
+test('the guide answers about games, groups, pictures and a call that did not connect; pictures are only promised when they are on', () => {
+  const games = answerFor('how do I play chess', ctx())
+  assert.equal(games.intent, 'games'); assert.ok(games.actions.some((action) => action.kind === 'open' && action.id === 'games'))
+  assert.equal(answerFor('how do i play the daily word', ctx()).intent, 'games')
+  const group = answerFor('how do I create a group', ctx())
+  assert.equal(group.intent, 'group'); assert.match(group.text, /New group/)
+  const off = answerFor('how do I send a picture', ctx({ picturesOn: false })), on = answerFor('how do I send a picture', ctx({ picturesOn: true }))
+  assert.match(off.text, /not switched on/); assert.doesNotMatch(on.text, /not switched on/); assert.match(on.text, /picture button/)
+  const call = answerFor('why did my call not connect', ctx())
+  assert.equal(call.intent, 'callfail'); assert.match(call.text, /microphone/)
+  for (const reply of [games, group, off, on, call]) assert.ok(sentences(reply.text) <= 4, reply.text)
+})
+
+test('now and then the idle suggestion is today\'s word, for a player who is not a guest', () => {
+  const found = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((seed) => nextStep(ctx({ employed: true, goal: null, missions: { locked: null, claimable: 0, open: [] }, needs: { hunger: 90, energy: 90, fun: 90, social: 90, hygiene: 90, bladder: 90 }, friends: [] }), seed))
+  const word = found.find((reply) => reply.actions.some((action) => action.kind === 'open' && action.id === 'games'))
+  assert.ok(word, 'one of the ten suggestions is the word puzzle')
+  assert.equal(nextStep(ctx({ guest: true, goal: null, missions: { locked: null, claimable: 0, open: [] } }), 3).actions.some((action) => action.kind === 'open' && action.id === 'games'), false)
+})

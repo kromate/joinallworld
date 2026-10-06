@@ -8,6 +8,7 @@ import { useApp } from '../../state/app.ts'
 import { callStore } from '../calls/callState.ts'
 import { tour } from '../tour/tourState.ts'
 import { social } from '../social/useSocial.ts'
+import { announceUi } from '../announce/announceStore.ts'
 import { hintsOn } from '../sim/settingsModel.ts'
 import CompanionFace from './CompanionFace.vue'
 import { COMPANION_NAME } from './identity.ts'
@@ -273,6 +274,13 @@ watch(founderKey, (key) => {
   log('lumo', text, actions, companionUi.open)
   if (effective.value === 'lively' && !companionUi.open) { bubble.value = { id: 'founder-away', kind: 'social', text, actions, mood: 'wave' }; say('wave', text); clearTimeout(bubbleTimer); bubbleTimer = window.setTimeout(() => { bubble.value = null }, 16_000) }
 }, { immediate: true })
+/** A message from the people who run the game: the banner shows it, and the guide says it aloud when it is lively and the sheet is closed. */
+watch(() => announceUi.banner?.id, (id) => {
+  const item = announceUi.banner
+  if (!id || !item || effective.value !== 'lively' || companionUi.open) return
+  const text = `${item.title}: ${item.body}`.slice(0, 200)
+  bubble.value = { id: `announce:${id}`, kind: 'social', text, actions: [], mood: 'wave' }; say('wave', text); clearTimeout(bubbleTimer); bubbleTimer = window.setTimeout(() => { bubble.value = null }, 16_000)
+})
 const stop = game.on('accepted', () => { window.setTimeout(tick, 500) })
 let timer = 0
 onMounted(() => {

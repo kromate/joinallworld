@@ -31,7 +31,7 @@ export function ctx(over: Partial<CompanionContext> = {}): CompanionContext {
       { id: 'port-harcourt', name: 'Port Harcourt', open: true, here: false, home: false },
     ],
     friends: [], unread: 0, employed: false, jobRole: null, stallsOpened: 0, stallAlert: null, rentArrears: 0, rentDueSoon: false,
-    signedIn: true, soundOn: true, marketCloseHour: 20, inCall: false, online: 40,
+    signedIn: true, picturesOn: false, soundOn: true, marketCloseHour: 20, inCall: false, online: 40,
     mode: 'venue', friendCount: 0, sales: 0, jobLevel: 0, trips: 0, activities: 12, joined: 0, pingsWaiting: 0,
     ...over,
   }

@@ -14,6 +14,7 @@ import { businessJourney } from '../server/testing/businessJourney.ts'
 import type { BusinessHost } from '../server/testing/businessJourney.ts'
 import { lagosTime } from '../src/game/clock.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
+import { layoutBindings } from './test-storage.ts';
 
 await loadCityContent('lagos')
 
@@ -56,7 +57,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   })
   const options = {
     name: 'business', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
-    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { BUILD_ID: 'local-business' },
+    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-business' },
   }
   const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
   const responses: WorkerResponse[] = []

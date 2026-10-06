@@ -11,6 +11,7 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { noticeText } from '../server/notice.ts';
 import type { NoticeFrame } from '../src/types/notice.ts';
+import { layoutBindings } from './test-storage.ts';
 
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
@@ -37,7 +38,7 @@ async function fixture(t: TestContext, bindings: Record<string, string>) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-notice-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-notice', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-notice', FOUNDER_EMAIL_SHA256: '', ...bindings } };
+  const options = { name: 'joinallworld-notice', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { ...layoutBindings(), BUILD_ID: 'local-notice', FOUNDER_EMAIL_SHA256: '', ...bindings } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const send = async (url: string, init?: RequestInit & { headers?: Record<string, string> }) => { const response = await mf.dispatchFetch(url, init); handed.push(response); return response; };

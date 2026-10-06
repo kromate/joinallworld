@@ -9,6 +9,7 @@ import { boatJourney } from '../server/testing/boatJourney.ts'
 import { object, JOURNEY_TIME } from '../server/testing/cityJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
 import { contentFor } from '../src/game/cities/runtime.ts'
+import { layoutBindings } from './test-storage.ts';
 
 interface StoredObject { exec(sql: string, ...values: (string | number)[]): Promise<Record<string, unknown>[]> }
 interface WorkerHost {
@@ -54,7 +55,7 @@ test('Worker Rivers boat receipts charge once and resume through durable SQLite 
   const options = {
     name: 'rivers-boat', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
-    bindings: { BUILD_ID: 'local-boat-contract' },
+    bindings: { ...layoutBindings(), BUILD_ID: 'local-boat-contract' },
     assets: { directory: join(root, 'dist'), binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
   }
   const create = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true })

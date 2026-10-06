@@ -9,6 +9,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import type { PingServerFrame } from '../src/types/ping.ts';
+import { layoutBindings } from './test-storage.ts';
 
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
@@ -33,7 +34,7 @@ async function fixture(t: TestContext, sleeps = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-chat-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-chat', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-chat', FOUNDER_EMAIL_SHA256: '', CHAT_IMAGES: 'friends', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) } };
+  const options = { name: 'joinallworld-chat', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { ...layoutBindings(), BUILD_ID: 'local-chat', FOUNDER_EMAIL_SHA256: '', CHAT_IMAGES: 'friends', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}) } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };

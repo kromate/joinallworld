@@ -21,3 +21,9 @@ export function testStorage(existing?: DatabaseSync): TestStorage {
   };
   return { db, storage, fail, changes: () => Number((db.prepare('SELECT total_changes() AS n').get() as { n: number }).n), close: () => db.close() };
 }
+
+/** The `STORE_LAYOUT` binding the edge tests hand the Worker when the run asks for one (`STORE_LAYOUT=entries npm run test:edge`). */
+export function layoutBindings(): Record<string, string> {
+  const layout = process.env['STORE_LAYOUT'];
+  return layout === 'entries' || layout === 'shadow' ? { STORE_LAYOUT: layout } : {};
+}

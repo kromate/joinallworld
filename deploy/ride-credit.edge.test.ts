@@ -12,6 +12,7 @@ import type { JourneyDevice } from '../server/testing/cityJourney.ts'
 import { rideJourney } from '../server/testing/rideJourney.ts'
 import type { RideHost } from '../server/testing/rideJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
+import { layoutBindings } from './test-storage.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent))
 
@@ -55,7 +56,7 @@ test('Worker: a visitor who cannot pay the way home rides on credit, once, and o
   })
   const options = {
     name: 'ride-credit', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
-    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { BUILD_ID: 'local-ride-credit' },
+    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-ride-credit' },
   }
   const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
   const sockets: TestWebSocket[] = [], responses: WorkerResponse[] = []

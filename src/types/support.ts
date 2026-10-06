@@ -233,6 +233,8 @@ export interface ModOverviewResponse {
   capacity: { sessions: { held: number; most: number }; sockets: { open: number; most: number; perAddress: number; perPlayer: number } }
   store: StoreStats | null
   build: string
+  /** The hosted companion's counters for today (server/companion/service.ts); absent when the host has no such module. */
+  companion?: Record<string, unknown>
 }
 export interface ModContentResponse {
   city: CityId
@@ -310,7 +312,7 @@ export const STATEMENT_RESPONSE_KEYS = ['city', 'name', 'ok', 'serverTime', 'sta
 export const STATEMENT_KEYS = ['closing', 'days', 'kept', 'lines', 'linesOpening', 'opening', 'problems', 'reconciled', 'totals'] as const satisfies readonly (keyof Statement)[]
 export const SUPPORT_REPORT_KEYS = ['at', 'by', 'category', 'cityId', 'context', 'id', 'name', 'note', 'status', 'text', 'updatedAt'] as const satisfies readonly (keyof SupportReport)[]
 export const SUPPORT_CONTEXT_KEYS = ['actions', 'at', 'build', 'cityId', 'lastError', 'ledger', 'life'] as const satisfies readonly (keyof SupportContext)[]
-export const MOD_OVERVIEW_RESPONSE_KEYS = ['archivedLives', 'build', 'capacity', 'mutes', 'problems', 'reports', 'serverTime', 'sessions', 'store'] as const satisfies readonly (keyof ModOverviewResponse | keyof ApiEnvelope)[]
+export const MOD_OVERVIEW_RESPONSE_KEYS = ['archivedLives', 'build', 'capacity', 'companion', 'mutes', 'problems', 'reports', 'serverTime', 'sessions', 'store'] as const satisfies readonly (keyof ModOverviewResponse | keyof ApiEnvelope)[]
 /** A mute without the optional `report`. */
 export const MUTE_KEYS = ['at', 'id', 'reason', 'until'] as const satisfies readonly (keyof Mute)[]
 export const AUDIT_LINE_KEYS = ['action', 'at', 'detail', 'from', 'n', 'target'] as const satisfies readonly (keyof AuditLine)[]

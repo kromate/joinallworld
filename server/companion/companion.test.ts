@@ -57,3 +57,19 @@ test('cash is rounded and names are first names only', () => {
   assert.deepEqual([roundedCash(8049), roundedCash(8051), roundedCash(123456), roundedCash(30)], [8000, 8100, 123000, 50]);
   assert.equal(firstName('Ada Obi'), 'Ada'); assert.equal(firstName('New Lagosian'), ''); assert.equal(firstName('<b>x'), 'bx');
 });
+
+test('a 400 that names temperature or max_tokens is retried once without them', async () => {
+  const { fakeGateway, redirectTo } = await import('../testing/fakeGateway.ts');
+  const { ask } = await import('./gateway.ts');
+  const gate = await fakeGateway(4145, (_seen, index) => (index === 0 ? { status: 400, raw: JSON.stringify({ error: { message: 'Unsupported parameter: temperature' } }) } : {}));
+  try {
+    const config = companionConfig((name) => ({ AI_GATEWAY_API_KEY: 'k-test', AI_GATEWAY_BASE_URL: '' }[name] ?? ''));
+    assert.ok(config);
+    if (!config) return;
+    const result = await ask(redirectTo(gate.base) as never, { ...config, baseUrl: 'https://ai-gateway.vercel.sh' }, [{ role: 'user', content: 'hi' }], 'u');
+    assert.equal(result.answer.ok, true);
+    assert.equal(gate.seen.length, 2);
+    assert.ok('temperature' in gate.seen[0]!.body && 'max_tokens' in gate.seen[0]!.body);
+    assert.ok(!('temperature' in gate.seen[1]!.body) && !('max_tokens' in gate.seen[1]!.body) && 'max_completion_tokens' in gate.seen[1]!.body);
+  } finally { await gate.stop(); }
+});

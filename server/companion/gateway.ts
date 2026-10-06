@@ -72,9 +72,10 @@ export type GatewayAttempt = GatewayAnswer & { role: 'primary' | 'fallback' };
 type Fetcher = (url: string, init?: object) => Promise<unknown>;
 
 /** The exact JSON body of a request. `providerOptions.gateway` carries the spend tags and the end-user id (the gateway's own fields). */
-export function requestBody(config: CompanionConfig, model: string, role: 'primary' | 'fallback', messages: readonly ChatMessage[], user: string) {
+export function requestBody(config: CompanionConfig, model: string, role: 'primary' | 'fallback', messages: readonly ChatMessage[], user: string, plain = false) {
+  // `plain`: the second try after a 400 that named these fields (some models take no temperature and want max_completion_tokens).
   return {
-    model, messages, max_tokens: config.maxOutputTokens, temperature: TEMPERATURE, stream: false,
+    model, messages, ...(plain ? { max_completion_tokens: config.maxOutputTokens } : { max_tokens: config.maxOutputTokens, temperature: TEMPERATURE }), stream: false,
     providerOptions: { gateway: { user, tags: ['product:allworld', 'feature:companion', `role:${role}`, `model:${model}`] } },
   };
 }
@@ -94,20 +95,25 @@ export function readAnswer(raw: unknown): { text: string; usage: Usage | null } 
   return { text: text.slice(0, 8000), usage: input || output ? { input, output } : null };
 }
 
-async function once(fetcher: Fetcher, config: CompanionConfig, model: string, role: 'primary' | 'fallback', messages: readonly ChatMessage[], user: string, budgetMs: number): Promise<GatewayAnswer> {
+async function once(fetcher: Fetcher, config: CompanionConfig, model: string, role: 'primary' | 'fallback', messages: readonly ChatMessage[], user: string, budgetMs: number, plain = false): Promise<GatewayAnswer> {
   const control = new AbortController();
   const timer = setTimeout(() => control.abort(), Math.max(1, budgetMs));
   try {
     const sent = fetcher(`${config.baseUrl}/v1/chat/completions`, {
       method: 'POST', signal: control.signal, redirect: 'manual',
       headers: { 'Authorization': `Bearer ${config.key}`, 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(requestBody(config, model, role, messages, user)),
+      body: JSON.stringify(requestBody(config, model, role, messages, user, plain)),
     });
     // The timer must win even when a fetch ignores the abort signal.
     const response = await Promise.race([sent, new Promise<never>((_, reject) => { control.signal.addEventListener('abort', () => reject(new Error('timeout'))); })]);
     if (!isResponse(response)) return { ok: false, why: 'network' };
     if (response.status === 401 || response.status === 403) return { ok: false, why: 'auth' };
     if (response.status === 404) return { ok: false, why: 'model' };
+    if (response.status === 400 && !plain) {
+      const said = await Promise.race([response.text(), new Promise<string>((resolve) => { control.signal.addEventListener('abort', () => resolve('')); })]).catch(() => '');
+      if (/temperature|max_tokens|max_completion_tokens/i.test(said.slice(0, 2000))) { clearTimeout(timer); return once(fetcher, config, model, role, messages, user, budgetMs, true); }
+      return { ok: false, why: 'status' };
+    }
     if (response.status < 200 || response.status >= 300) return { ok: false, why: 'status' };
     const body = await Promise.race([response.text(), new Promise<never>((_, reject) => { control.signal.addEventListener('abort', () => reject(new Error('timeout'))); })]);
     let parsed: unknown;

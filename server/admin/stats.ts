@@ -35,7 +35,7 @@ const isCount = (value: unknown): value is number => typeof value === 'number' &
 
 export function statsService(ctx: RouteContext) {
   const support = supportService(ctx);
-  startedAt.set(ctx, ctx.now());
+  startedAt.set(ctx, typeof ctx.now === 'function' ? ctx.now() : 0);
   let cache: { at: number; value: ReturnType<typeof compute> } | null = null, snapshotCache: { at: number; value: ReturnType<typeof snapshot> } | null = null;
 
   function compute(db: Db) {

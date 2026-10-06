@@ -220,7 +220,16 @@ test('the level bar and the docked map panel are one column; the panel is never 
   assert.match(wide, /\.map-dock>\.map-panel\{[^}]*min-height:0/, 'the panel shrinks inside the column');
   assert.doesNotMatch(wide, /\.map-panel[^{]*\{[^}]*position:fixed/, 'no panel is fixed on its own');
   assert.doesNotMatch(css, /\.map-levels\{[^}]*top:calc\(\d+px \* var\(--ui-zoom/, 'the bar is not placed with the zoom applied twice');
-  assert.match(levels, /class="map-levels-cur"[^>]*data-tour="map-world"[^>]*:aria-expanded="open"/, 'the phone chip carries the tour anchor and says whether it is open');
+  assert.match(levels, /class="map-levels-cur level-menu-cur"[^>]*data-tour="map-world"[^>]*:aria-expanded="open"/, 'the chip carries the tour anchor and says whether it is open');
+  // One chip and one dropdown at every width: no breadcrumb row for the levels comes back (the chip is never hidden, the list is hidden unless open).
+  const menu = await read('../levelMenu.css'), atlasCss = await read('../../map3d/geo/atlas.css'), compact = await read('../compact.css');
+  assert.doesNotMatch(menu + css + atlasCss, /\.(map-levels|level-menu)[^{]*cur[^{]*\{[^}]*display:\s*none/, 'the level chip is never hidden');
+  assert.match(menu, /\.level-menu ol\{display:none;/, 'the list is hidden unless open');
+  assert.match(menu, /\.level-menu\[data-open\] ol\{position:absolute;[^}]*display:grid/, 'open, it floats over what is beneath');
+  assert.doesNotMatch(menu + css + atlasCss + compact, /li\+li::before\{content:"›"/, 'no › separators between levels');
+  assert.doesNotMatch(menu + css + atlasCss, /\.(map-levels|atlas-crumbs) ol\{display:flex/, 'the levels are not a row');
+  assert.doesNotMatch(compact, /body \.map-levels ol\{display:none\}/, 'the phone no longer has a look of its own for the list');
+  assert.match(await read('../../world-map.ts'), /levelMenu\.css/, 'the atlas loads the same rules');
 });
 
 test('the compact layout: a 45% panel, a 44px target for every small control, one stack of view buttons, no raw viewport units', async () => {
@@ -232,4 +241,15 @@ test('the compact layout: a 45% panel, a 44px target for every small control, on
   assert.match(css, /safe-area-inset-bottom/);
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(css, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
+});
+
+test('the venue card on a phone is four short rows: title with its status, one row of mode chips, Go, About; every target stays 44px', async () => {
+  const css = await readFile(new URL('../compact.css', import.meta.url), 'utf8'), card = css.slice(css.indexOf('the Map: venue card'), css.indexOf('the Map: venue card') + 3200);
+  assert.match(card, /\.map-card-head\{display:contents\}/, 'the title and the status share a row');
+  assert.match(card, /\.life-ui \.map-modes\{display:flex;/, 'the modes are one row');
+  assert.match(card, /\.map-modes b\{display:none\}/, 'a chip is an icon and a price');
+  assert.match(card, /button\.is-selected small\.map-mode-time\{display:block\}/, 'the chosen mode says its time');
+  assert.match(card, /\.map-modes button\{[^}]*min-height:var\(--tap\)/, 'a chip is a full-size target');
+  assert.match(card, /\.map-go\{min-height:var\(--tap\)/, 'Go is a full-size target');
+  assert.doesNotMatch(card, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
 });

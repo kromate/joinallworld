@@ -153,7 +153,7 @@ test('the travel step names only cities that are open, three at most, and promis
   assert.equal(cityWords(['A', 'B', 'C', 'D', 'E']), 'A, B, C and more')
   const travel = STEPS.find((step) => step.id === 'travel')!
   const say = (cities: string[], country = 'Nigeria'): string => wordsOf(travel, context(ALL, { world: { cities, country } }), false).text
-  assert.match(say(['Ibadan', 'Abeokuta', 'Ota', 'Sagamu']), /Tap World at the top of the Map, a city like Ibadan, Abeokuta, Ota and more, then the bus, train or flight: you are on your way, and your home stays yours while you visit\. Cities in Nigeria are open now, and more of Africa and the world are coming\./)
+  assert.match(say(['Ibadan', 'Abeokuta', 'Ota', 'Sagamu']), /Tap the level chip, choose World, a city like Ibadan, Abeokuta, Ota and more, then the bus, train or flight: you are on your way, and your home stays yours while you visit\. Cities in Nigeria are open now, and more of Africa and the world are coming\./)
   assert.doesNotMatch(say(['Ibadan', 'Abeokuta', 'Ota', 'Sagamu']), /Sagamu/)
   assert.match(say(['Ibadan']), /a city like Ibadan, then the bus/)
   for (const alone of [say([]), wordsOf(travel, context(ALL), false).text]) {
@@ -306,7 +306,7 @@ test('the tour steps aside for a call, and for a sheet that is not its own; urge
 test('the help text and the creator’s last card say the same things as the tour, and name no city', () => {
   const help = here('../help/HelpBody.vue'), ready = here('../start/StepReady.vue')
   for (const title of ['Travel to other cities', 'Call and chat', 'Work and business']) assert.ok(help.includes(`title: '${title}'`), title)
-  assert.match(help, /tap World at the top\. Tap a city that is open, then the bus, train or flight.*You stay a visitor there.*Cities in \$\{country\.value\} are open; more of Africa and the world are coming/)
+  assert.match(help, /tap the level chip at the top and choose World\. Tap a city that is open, then the bus, train or flight.*You stay a visitor there.*Cities in \$\{country\.value\} are open; more of Africa and the world are coming/)
   assert.match(help, /chat or Call them; they choose whether to answer/)
   assert.match(help, /Jobs and Career.*Business.*rent a stall.*Bank and Invest.*Billboards/)
   assert.match(ready, /travel between cities.*Call and chat.*earn, invest and advertise.*open a business of your own/)

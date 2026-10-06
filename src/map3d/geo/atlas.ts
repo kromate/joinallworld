@@ -53,6 +53,7 @@ import { decodeTopology } from './topo.ts';
 import type { AfricaFeature, Feature, FeatureData, NigeriaFeature, Topology, WorldFeature } from './topo.ts';
 import { createPicker } from './pick.ts';
 import type { Picker } from './pick.ts';
+import { atlasNamesAt, countChips, densityFor, namedCities } from './density.ts';
 import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
@@ -270,6 +271,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
 
   // ---- DOM ----------------------------------------------------------------------------------------
   let root: HTMLElement | null = null;
+  /** The level list (World, Africa, Nigeria, back to the city) is open. */
+  let levelsOpen = false;
   const ui: Partial<Record<UiName, HTMLElement | null>> = {};
   const labelNodes = new Map<string, HTMLElement>();
   if (doc) {
@@ -710,18 +713,33 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   const at = (lon: number, lat: number, y = 0) => { const [x, py] = project(lon, lat); return screenOf(x, y, -py); };
   /** How wide a feature's box is on screen. */
   function roomOf(feature: Feature, y: number) { const b = feature.bounds, a = at(b.minLon, (b.minLat + b.maxLat) / 2, y), c = at(b.maxLon, (b.minLat + b.maxLat) / 2, y); return Math.abs(c.x - a.x); }
+  /** The reader's text scale: the root font size against the browser default of 16px. */
+  const textScale = () => { const px = doc?.defaultView ? parseFloat(doc.defaultView.getComputedStyle(doc.documentElement).fontSize) : 16; return Number.isFinite(px) && px > 0 ? px / 16 : 1; };
   function candidates(): LabelCandidate[] {
-    const out: LabelCandidate[] = [];
+    const out: LabelCandidate[] = [], dn = densityFor(size.width, textScale());
     const push = (id: string, where: { x: number; y: number; behind: boolean }, text: string, more: Partial<LabelCandidate>) => { if (!where.behind) out.push({ id, x: where.x, y: where.y, text, priority: 10, size: 11, ...more }); };
     if (level === NIGERIA && sheets[NIGERIA]) {
       const sheet = sheets[NIGERIA], close = markerDetail() === 'cities';
       for (const feature of sheet.topology.features) {
         const entry = regionEntry('state', feature.id), top = sheet.top(feature), city = entry.city ? cityEntry(entry.city) : null;
+        // The whole-country view names states; close in, each open city is named, and the crowding rule below keeps only the most important names and counts the rest.
         if (close) for (const openCity of catalogueCitiesInState(feature.id)) {
-          if (openCity.open) push(`city:${openCity.id}`, at(openCity.lon, openCity.lat, top + 0.02), openCity.name, { priority: openCity.id === current ? 2000 : selected?.kind === 'state' && selected.id === feature.id ? 1200 : 200, size: openCity.id === city?.id ? 13 : 12, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: openCity.id === current, cls: 'is-city is-open', note: openCity.id === current ? 'You are here' : 'Open' });
+          if (openCity.open) push(`city:${openCity.id}`, at(openCity.lon, openCity.lat, top + 0.02), openCity.name, { priority: openCity.id === current ? 2000 : selected?.kind === 'state' && selected.id === feature.id ? 1200 : 200, size: dn.city, compact: true, anchor: 'above', alts: ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'], fixed: openCity.id === current, cls: `is-city is-open${openCity.id === current ? ' is-you' : ''}`, note: openCity.id === current ? 'You are here' : 'Open' });
         }
-        if (!close || entry.status !== 'open') push(`state:${feature.id}`, at(feature.cap[1], feature.cap[2], top + 0.012), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: entry.status === 'open' ? 80 : city ? 44 : 50, anchor: 'right', cls: 'is-region' });
+        if (!close || entry.status !== 'open') push(`state:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name, { short: feature.id === 'fct' ? 'FCT' : feature.ab, room: roomOf(feature, top) * 0.86, priority: entry.status === 'open' ? 80 : city ? 44 : 50, size: dn.other, cls: 'is-region' });
         if (close && !city) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: 22, size: 10, anchor: 'right', cls: 'is-town' });
+      }
+      // Crowding: only the most important city names are written (a table in density.ts; more as the view comes closer), the others stay dots,
+      // and a state that lost three or more of its names to dots says how many ("Ogun · 4"). Zooming in or tapping the state brings the names back.
+      const cities = out.filter((label) => label.id.startsWith('city:')), keep = namedCities(cities, atlasNamesAt(dn, fits![NIGERIA]!.distance / rig.view.distance));
+      const dropped = cities.filter((label) => !keep.has(label.id));
+      if (dropped.length) {
+        const gone = new Set(dropped.map((label) => label.id));
+        for (let i = out.length - 1; i >= 0; i--) if (gone.has(out[i]!.id)) out.splice(i, 1);
+        for (const [stateId, count] of countChips(dropped.map((label) => stateOfCity(label.id.slice(5)) ?? ''))) {
+          const feature = sheet.topology.features.find((item) => item.id === stateId);
+          if (feature) push(`count:${stateId}`, at(feature.at[0], feature.at[1], sheet.top(feature) + 0.02), `${feature.name === 'Federal Capital Territory' ? 'FCT' : feature.name} · ${count}`, { priority: 300, size: dn.other, compact: true, cls: 'is-count', title: `${count} more cities here: zoom in to name them` });
+        }
       }
       for (const [name, lon, lat] of NEIGHBOUR_LABELS) push(`near:${name}`, at(lon, lat), name, { priority: 34, size: 12, cls: 'is-neighbour' });
       for (const [name, lon, lat, kind] of WATER_LABELS) push(`water:${name}`, at(lon, lat, HEIGHT.state), name, { priority: kind === 'sea' ? 40 : 26, size: kind === 'sea' ? 12 : 10, anchor: kind === 'town' ? 'right' : 'centre', cls: `is-${kind}` });
@@ -730,13 +748,13 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       const sheet = sheets[AFRICA];
       for (const feature of sheet.topology.features) {
         const top = sheet.top(feature), open = statusOf('country', feature.id) === 'open', b = feature.bounds;
-        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? 13 : 11, cls: open ? 'is-city is-open' : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
+        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? dn.city : dn.other, compact: open, cls: open ? `is-city is-open${feature.id === ATLAS_LEVELS[NIGERIA]!.country ? ' is-you' : ''}` : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
         if (feature.cap && MAJOR_CAPITALS.has(feature.cap[0])) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: feature.cap[0] === 'Abuja' ? 60 : 30, size: 10, anchor: 'right', cls: 'is-capital' });
       }
     } else if (sheets[WORLD]) {
       for (const continent of Object.values(CONTINENTS)) push(`continent:${continent.id}`, at(relLon(continent.lon), continent.lat), continent.name, { priority: 100, size: 13, cls: 'is-continent' });
       const home = sheets[WORLD].topology.byId.get(ATLAS_LEVELS[NIGERIA]!.country!);
-      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: 12, anchor: 'above', cls: 'is-city is-open', note: 'You are here' });
+      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: dn.city, compact: true, anchor: 'above', cls: 'is-city is-open is-you', note: 'You are here' });
       for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
     }
     return out;
@@ -751,8 +769,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       keep.add(label.id);
       let node = labelNodes.get(label.id);
       if (!node) { node = doc!.createElement('span'); labelNodes.set(label.id, node); ui.labels.appendChild(node); }
-      const key = `${label.cls}|${label.shown}|${label.note || ''}|${label.anchor || ''}`;
-      if (node.dataset.key !== key) { node.dataset.key = key; node.className = `atlas-label ${label.cls || ''} at-${label.anchor || 'centre'}`; node.innerHTML = `<b>${esc(label.shown)}</b>${label.note ? `<small>${esc(label.note)}</small>` : ''}`; if (label.title) node.title = label.title; }
+      const key = `${label.cls}|${label.shown}|${label.note || ''}|${label.anchor || ''}|${label.compact || ''}`;
+      if (node.dataset.key !== key) { node.dataset.key = key; node.className = `atlas-label ${label.cls || ''} at-${label.anchor || 'centre'}`; node.innerHTML = `<b>${esc(label.shown)}</b>${label.note && !label.compact ? `<small>${esc(label.note)}</small>` : ''}`; const tip = label.title ?? (label.compact ? label.note : undefined); if (tip) node.title = tip; else node.removeAttribute('title'); }
       node.style.transform = `translate(${label.x.toFixed(1)}px,${label.y.toFixed(1)}px)`;
     }
     for (const [id, node] of labelNodes) if (!keep.has(id)) { node.remove(); labelNodes.delete(id); }
@@ -816,8 +834,11 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   function drawCrumbs() {
     if (!ui.crumbs) return;
     const city = cityEntry(current);
-    ui.crumbs.innerHTML = `<ol>${ATLAS_LEVELS.map((entry, i) => `<li><button type="button" data-atlas-level="${i}" ${i === level ? 'aria-current="true"' : ''}>${i === WORLD ? ICON(GLYPH.globe) : ''}${esc(entry.name)}</button></li>`).join('')}
-      <li><button type="button" class="atlas-back" data-atlas-city="${esc(current)}" aria-label="Back to ${esc(city?.name)}: open the city map">${esc(city?.name)}<span aria-hidden="true">Back to the city</span></button></li></ol>
+    ui.crumbs.innerHTML = `<div class="level-menu" ${levelsOpen ? 'data-open' : ''}>
+        <button type="button" class="level-menu-cur" data-atlas-levels data-tour="map-world" aria-expanded="${levelsOpen}" aria-controls="atlas-levels-list" aria-label="Map level: ${esc(ATLAS_LEVELS[level]!.name)}. Show World, Africa and Nigeria">${ICON(GLYPH.globe)}<span>${esc(ATLAS_LEVELS[level]!.name)}</span>${ICON('<path d="m6 9 6 6 6-6"/>')}</button>
+        <ol id="atlas-levels-list">${ATLAS_LEVELS.map((entry, i) => `<li><button type="button" data-atlas-level="${i}" ${i === level ? 'aria-current="true"' : ''}>${i === WORLD ? ICON(GLYPH.globe) : ''}<span>${esc(entry.name)}</span></button></li>`).join('')}
+          <li><button type="button" class="atlas-back-item" data-atlas-city="${esc(current)}">${esc(city?.name)} · back to the city</button></li></ol></div>
+      <button type="button" class="atlas-back" data-atlas-city="${esc(current)}" aria-label="Back to ${esc(city?.name)}: open the city map">${esc(city?.name)}<span aria-hidden="true">Back to the city</span></button>
       <button type="button" class="atlas-list-toggle" data-atlas-list aria-expanded="${listOpen}">${ICON('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')}<span>Find a place</span></button>`;
     const fit = ui.controls!.querySelector<HTMLElement>('[data-atlas-fit]')!, layer = ui.controls!.querySelector<HTMLElement>('[data-atlas-layer]')!;
     fit.textContent = `Whole of ${level === WORLD ? 'the world' : ATLAS_LEVELS[level]!.name}`;
@@ -916,6 +937,28 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       ${info.soon.length ? `<div class="atlas-routes atlas-soon"><h3>Opening soon</h3><p class="atlas-waitline">${info.soon.map((name) => esc(name)).join(' · ')}. Fares and times are shown the day they open.</p></div>` : ''}`;
   }
 
+  const chipNode = () => ui.crumbs?.querySelector<HTMLElement>('[data-atlas-levels]');
+  const levelItems = () => [...(ui.crumbs?.querySelectorAll<HTMLElement>('.level-menu ol button') ?? [])];
+  /** Close the level list; `refocus` hands focus back to the chip. */
+  function closeLevels(refocus: boolean) {
+    if (!levelsOpen) return;
+    levelsOpen = false; drawCrumbs();
+    if (refocus) chipNode()?.focus();
+  }
+  /** Focus the list item `step` away from the one in focus (the chip counts as before the first); Home and End use a step of ±Infinity. */
+  function moveLevels(step: number) {
+    const items = levelItems(), at = items.indexOf(doc!.activeElement as HTMLElement);
+    items[clamp(step === 0 ? Math.max(0, items.findIndex((item) => item.hasAttribute('aria-current'))) : at + step, 0, items.length - 1)]?.focus();
+  }
+  function onMenuKey(event: KeyboardEvent) {
+    if (!ui.crumbs?.contains(event.target as Node)) return;
+    if (event.key === 'Escape' && levelsOpen) { event.preventDefault(); event.stopPropagation(); closeLevels(true); return; }
+    const step = { ArrowDown: 1, ArrowUp: -1, Home: -Infinity, End: Infinity }[event.key];
+    if (step === undefined || !(event.target as Element).closest('.level-menu')) return;
+    event.preventDefault();
+    if (!levelsOpen) { levelsOpen = true; drawCrumbs(); moveLevels(0); } else moveLevels(step);
+  }
+  const onAway = (event: Event) => { if (levelsOpen && !(event.target as Element).closest?.('.level-menu')) closeLevels(false); };
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
@@ -936,7 +979,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     drawCrumbs(); drawRail(); drawSheet(); drawHighlights(); request();
     // The list and the keyboard move focus to the sheet; closing it hands focus back to the breadcrumb.
     if (hit && from !== 'map') ui.sheet?.focus?.({ preventScroll: true });
-    else if (back) ui.crumbs!.querySelector<HTMLElement>('[aria-current]')?.focus();
+    else if (back) ui.crumbs!.querySelector<HTMLElement>('[data-atlas-levels]')?.focus();
     return Boolean(hit);
   }
   /** The open city whose dot is within a finger of a point of the canvas, at the level that shows cities; the nearest, or null. */
@@ -1138,7 +1181,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       else { friendsOpen = null; drawFriendsPanel(); }
       return;
     }
-    const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go'), onCredit = hit('credit'), repay = hit('repay'), help = hit('help');
+    const levels = hit('levels'), lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go'), onCredit = hit('credit'), repay = hit('repay'), help = hit('help')
     const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link'), departure = hit('departure');
     if (departure && stateOverviewShown) {
       const overview = stateOverviews.get(stateOverviewShown);
@@ -1151,8 +1194,9 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     else if (overviewButton) { const id = overviewButton.dataset.atlasStateOverview; if (id) { if (stateOverviewShown === id) { stateOverviewShown = null; drawSheet(); } else void showStateOverview(id); } }
     else if (hit('state-retry')) doc?.defaultView?.location.reload();
     // Choosing a level from the bar is choosing the map: the list of places, if it was open, gets out of the way.
-    else if (lvl) { if (listOpen) { listOpen = false; drawCrumbs(); drawRail(); } goLevel(Number(lvl.dataset.atlasLevel)); }
-    else if (city) enterCity(city.dataset.atlasCity!);
+    else if (levels) { levelsOpen = !levelsOpen; drawCrumbs(); if (levelsOpen && event.detail === 0) moveLevels(0); else if (!levelsOpen) chipNode()?.focus(); }
+    else if (lvl) { levelsOpen = false; listOpen = false; drawCrumbs(); drawRail(); goLevel(Number(lvl.dataset.atlasLevel)); if (event.detail === 0) chipNode()?.focus(); }
+    else if (city) { levelsOpen = false; enterCity(city.dataset.atlasCity!); }
     else if (pick) { const [kind, id] = pick.dataset.atlasPick!.split(':'); select({ kind: kind as RegionKind, id: id! }, { from: 'list', flyTo: true }); }
     else if (zoom) { const how = zoom.dataset.atlasZoom; if (how === 'fit') fly(levelView(level)); else fly({ distance: rig.view.distance * (how === 'in' ? 0.6 : 1 / 0.6), x: rig.view.x, z: rig.view.z, yaw: rig.view.yaw }, 0.3); }
     else if (hit('layer')) setTint(!tintOn);
@@ -1194,7 +1238,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   /** Esc, offered by the Map panel: close what is open, then go up one level. Says whether it did anything. */
   function onEscape(event: Event) {
     if (!shown() || !fits) return;
-    if (listOpen) { listOpen = false; drawCrumbs(); drawRail(); }
+    if (levelsOpen) closeLevels(true);
+    else if (listOpen) { listOpen = false; drawCrumbs(); drawRail(); }
     else if (preview) { preview = null; routeShown = null; drawSheet(); drawHighlights(); request(); }
     else if (selected) select(null);
     else if (level > WORLD) goLevel(level - 1);
@@ -1208,7 +1253,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     canvas.addEventListener('pointerup', onUp); canvas.addEventListener('pointercancel', onUp);
     canvas.addEventListener('pointerleave', () => setHover(null));
     canvas.addEventListener('wheel', onWheel, { passive: false }); canvas.addEventListener('contextmenu', onContextMenu);
-    root!.addEventListener('click', onClick); root!.addEventListener('input', onInput);
+    root!.addEventListener('click', onClick); root!.addEventListener('keydown', onMenuKey); doc.addEventListener('pointerdown', onAway); root!.addEventListener('input', onInput);
     window.addEventListener('jaw:key', onKey); window.addEventListener('jaw:atlas-escape', onEscape);
     watcher?.observe(container, { attributes: true, attributeFilter: ['hidden'] });
   }
@@ -1251,7 +1296,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     },
     destroy() {
       destroyed = true; stop(); watcher?.disconnect();
-      if (doc) { window.removeEventListener('jaw:key', onKey); window.removeEventListener('jaw:atlas-escape', onEscape); root!.remove(); }
+      if (doc) { window.removeEventListener('jaw:key', onKey); window.removeEventListener('jaw:atlas-escape', onEscape); doc.removeEventListener('pointerdown', onAway); root!.remove(); }
       for (const entry of layers) { entry.object.geometry.dispose(); for (const material of entry.materials) material.dispose(); }
       for (const object of [hoverMesh, selectMesh, selectLine, routeLine]) { object.geometry.dispose(); object.material.dispose(); }
       if (!providedRenderer) renderer.dispose();

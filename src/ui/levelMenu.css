@@ -1,0 +1,18 @@
+/* The level control, shared by the city map (MapLevels.vue) and the atlas (map3d/geo/atlas.ts): ONE chip with the level you are in and a small
+   list that opens over whatever is beneath it. The list is hidden unless the control is open; the chip is never hidden. */
+.level-menu{z-index:6;max-width:100%;pointer-events:auto}
+.level-menu[data-open]{z-index:9}
+.atlas-crumbs .level-menu{position:relative}
+.level-menu-cur{position:relative;display:inline-flex;align-items:center;gap:6px;max-width:100%;min-height:36px;padding:0 10px 0 9px;border:1px solid #fff;border-radius:var(--r-pill,999px);background:var(--c-surface,#fffffff7);box-shadow:var(--e-2,0 6px 18px #0000001f);color:var(--c-ink,#1b1f27);font-size:var(--t-body,13px);font-weight:700;cursor:pointer}
+.level-menu-cur:hover{background:var(--c-surface-solid,#fff)}
+.level-menu-cur span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.level-menu-cur svg{width:16px;height:16px;flex:none}
+.level-menu-cur svg:last-child{width:14px;height:14px;color:var(--c-muted,#5f6770);transition:transform var(--m-fast,120ms)}
+.level-menu[data-open] .level-menu-cur svg:last-child{transform:rotate(180deg)}
+.level-menu ol{display:none;margin:0;padding:6px;list-style:none}
+.level-menu[data-open] ol{position:absolute;left:0;top:calc(100% + 6px);display:grid;gap:2px;min-width:min(240px,calc(100vw - 16px));border:1px solid #fff;border-radius:var(--r-lg,16px);background:var(--c-surface-solid,#fff);box-shadow:var(--e-3,0 12px 32px #00000029)}
+.level-menu ol button{display:flex;align-items:center;gap:8px;width:100%;min-height:40px;padding:0 14px;border:0;border-radius:var(--r-pill,999px);background:none;color:var(--c-ink-2,#39404b);font-size:var(--t-body,13px);font-weight:650;text-align:left;white-space:nowrap;cursor:pointer}
+.level-menu ol button svg{width:16px;height:16px;flex:none}
+.level-menu ol button:hover{background:var(--c-fill,#eef1ef)}
+.level-menu ol button[aria-current]{background:var(--c-ink,#1b1f27);color:#fff;cursor:default}
+@media(prefers-reduced-motion:reduce){.level-menu-cur svg:last-child{transition:none}}

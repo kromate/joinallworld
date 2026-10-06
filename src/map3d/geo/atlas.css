@@ -32,13 +32,20 @@
 .atlas-label.is-capital::before{content:"";position:absolute;left:-11px;top:50%;width:5px;height:5px;margin-top:-3.5px;border-radius:50%;background:#39404b;border:1px solid #fff}
 .atlas-label.is-airport{font-size:12px;color:#3f5f93}
 /* A city: a pill on a short stalk. The open one is green; a planned one is cream. */
-.atlas-label.is-city{padding:4px 11px 5px;border-radius:13px;background:#fffdf3;box-shadow:var(--e-2,0 2px 8px #0003);text-shadow:none;color:#3d3520;z-index:2}
-.atlas-label.is-city b{font-size:13px;font-weight:750}
+.atlas-label.is-city{font-size:13px;display:flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:12px;background:#fffdf3;box-shadow:var(--e-2,0 2px 8px #0003);text-shadow:none;color:#3d3520;z-index:2}
+.atlas-label.is-city b{font-size:inherit;font-weight:700}
 .atlas-label.is-city small{font-size:10px;font-weight:700;color:#7a5a12}
+.atlas-label.is-city::before{content:"";flex:none;width:7px;height:7px;box-sizing:border-box;border-radius:50%;border:1.5px solid #8a929b;background:none}
 .atlas-label.is-city::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:9px;margin-left:-1px;background:#fffffff2;box-shadow:0 0 2px #0b2b3a66}
 .atlas-label.is-city:not(.at-above)::after{display:none}
 .atlas-label.is-city.is-open{background:var(--c-green-dark,#1d6b43);color:#fff;z-index:3}
+.atlas-label.is-city.is-open::before{border:0;background:#8be3ab}
 .atlas-label.is-city.is-open small{color:#d5f0df}
+.atlas-label.is-city.is-you{background:#fff;color:var(--c-green-dark,#1d6b43);box-shadow:0 0 0 2px var(--c-green-dark,#1d6b43),var(--e-2,0 2px 8px #0003);z-index:4}
+.atlas-label.is-city.is-you::before{border:2px solid var(--c-green-dark,#1d6b43);background:var(--c-green-dark,#1d6b43);box-shadow:inset 0 0 0 1.5px #fff}
+.atlas-label.is-count{padding:1px 7px;border-radius:9px;background:#ffffffd9;box-shadow:0 1px 4px #0b2b3a40;font-size:11px;font-weight:650;color:#39404b;text-shadow:none;z-index:2}
+.atlas-label.is-region{font-size:11px;font-weight:500;color:#6b747c}
+@media(max-width:520px){.atlas-label.is-region{font-size:10px}.atlas-label.is-city{font-size:12px;gap:4px;padding:2px 7px 2px 5px;border-radius:10px}.atlas-label.is-city::before{width:6px;height:6px}}
 .atlas-marker{position:absolute;left:0;top:0;z-index:4;display:grid;place-items:center;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#ffb224;color:#20232c;box-shadow:0 0 0 3px #fff,0 3px 10px #0b2b3a80;pointer-events:none;will-change:transform}
 .atlas-marker.is-air{background:#2b4f86;color:#fff}
 .atlas-marker svg{width:20px;height:20px}
@@ -53,17 +60,13 @@
 .atlas button:focus-visible,.atlas input:focus-visible,.atlas-sheet:focus-visible{outline:var(--focus,3px solid #1c5f3c);outline-offset:2px}
 .atlas svg{width:18px;height:18px;flex:none}
 
-/* Breadcrumb: World › Africa › Nigeria › Lagos */
-.atlas-crumbs{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
-.atlas-crumbs ol{display:flex;align-items:center;gap:2px;margin:0;padding:4px;list-style:none;background:var(--c-surface,#fffffff7);border:1px solid #fff;border-radius:var(--r-pill,999px);box-shadow:var(--e-2);max-width:100%;overflow-x:auto;scrollbar-width:none}
-.atlas-crumbs li{display:flex;align-items:center;flex:none}
-.atlas-crumbs li+li::before{content:"›";padding:0 2px;color:var(--c-faint,#8a929b);font-size:16px}
-.atlas-crumbs button{min-height:36px;padding:0 13px;border:0;border-radius:var(--r-pill,999px);background:none;font-size:var(--t-body,13px);font-weight:650;color:var(--c-ink-2,#39404b);white-space:nowrap}
-.atlas-crumbs button:hover{background:var(--c-fill,#eef1ef)}
-.atlas-crumbs button[aria-current]{background:var(--c-ink,#1b1f27);color:#fff}
-.atlas-crumbs .atlas-back{display:flex;align-items:center;gap:7px;background:var(--c-green-dark,#1d6b43);color:#fff}
+/* The level control (the shared chip and list, ui/levelMenu.css), the way back to the city, and the Find a place toggle at the far end */
+.atlas-crumbs{grid-column:1/-1;display:flex;align-items:center;gap:8px;min-width:0}
+.atlas-crumbs .atlas-back{display:flex;align-items:center;gap:7px;min-height:36px;padding:0 13px;border:1px solid #fff;border-radius:var(--r-pill,999px);box-shadow:var(--e-2);font-size:var(--t-body,13px);font-weight:650;white-space:nowrap;background:var(--c-green-dark,#1d6b43);color:#fff}
 .atlas-crumbs .atlas-back:hover{background:#17573a}
 .atlas-crumbs .atlas-back span{font-size:var(--t-small,11px);font-weight:600;color:#d5f0df;padding-left:7px;border-left:1px solid #ffffff59}
+.atlas-crumbs .atlas-back-item{color:var(--c-green-dark,#1d6b43);border-top:1px solid var(--c-line,#e3e7e4);border-radius:0 0 var(--r-pill,999px) var(--r-pill,999px)}
+.atlas-crumbs .atlas-list-toggle{margin-left:auto}
 .atlas-list-toggle{display:none;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid #fff;border-radius:var(--r-pill,999px);background:var(--c-surface,#fffffff7);box-shadow:var(--e-2);font-size:var(--t-body,13px);font-weight:650;flex:none}
 
 /* The list: every region of the level in view, searchable — the alternative to pointing at the map */
@@ -157,7 +160,7 @@
   .atlas-frame{top:60px;bottom:80px;width:calc(100% - 16px);grid-template-columns:minmax(0,1fr);gap:6px}
   .atlas-frame>.atlas-stage{grid-column:1;margin-bottom:206px}
   .atlas-crumbs{gap:6px}
-  .atlas-crumbs button{padding:0 9px;min-height:36px;font-size:var(--t-caption,12px)}
+  .atlas-crumbs .atlas-back{padding:0 10px;font-size:var(--t-caption,12px)}
   .atlas-crumbs .atlas-back span,.atlas-list-toggle span{display:none}
   .atlas-list-toggle{width:44px;padding:0;justify-content:center}
   .atlas-rail{grid-column:1;width:100%;max-height:min(100%,calc(62 * var(--ui-vh)));background:var(--c-surface-solid,#fff)}
@@ -258,8 +261,6 @@ p.atlas-way-why{padding:8px 10px;border-radius:12px;background:#fff6e8}
 .atlas-way-ask{display:grid;gap:8px;padding:10px;border-radius:16px;background:#fff6e8;border:1px solid #f0d9b0}
 .atlas-way-ask p{margin:0;font-size:13px;line-height:1.4;color:#39404b}
 .atlas-way-ask div{display:flex;flex-wrap:wrap;gap:8px}
-.atlas-crumbs button svg{width:16px;height:16px;margin-right:6px;vertical-align:-3px}
-.atlas-crumbs button[data-atlas-level="0"]:not([aria-current]){background:var(--c-green-soft,#e8f5ec);color:var(--c-green-dark,#1d6b43)}
 
 /* Friends on the map: a badge on each city (or country, further out) they are in, and the list behind it. */
 .atlas-friends{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4}

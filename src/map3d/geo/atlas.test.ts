@@ -15,6 +15,7 @@ import { CITY_DETAIL_DISTANCE_SHARE, nigeriaMarkerDetail } from './atlas-scale.t
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
+import { DENSITY, NAMED_FROM, atlasNamesAt, countChips, densityFor, namedCities, shorten, venueNamesAt } from './density.ts';
 import * as THREE from 'three';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
@@ -611,4 +612,72 @@ test('a flick on the atlas glides a short way and stops; a press that moved litt
   rig.beginDrag(); rig.endDrag(null); assert.equal(rig.moving, false, 'no glide without a velocity (reduced motion passes none)');
   assert.equal(isTap(2, 120), true); assert.equal(isTap(2, 400), false, 'a press held for 350 ms or more selects nothing');
   assert.equal(isTap(12, 100), false); assert.equal(isDrag(12), true); assert.equal(isDrag(8, 'touch'), false, 'a finger gets more room before a press is a drag');
+});
+
+test('the atlas shows its level as the shared chip and dropdown, with the way back to the city as the last item and a button beside it', () => {
+  const code = readFileSync(here('./atlas.ts'), 'utf8');
+  assert.match(code, /class="level-menu"[\s\S]*class="level-menu-cur" data-atlas-levels data-tour="map-world" aria-expanded=/, 'the chip carries the tour anchor');
+  assert.match(code, /<ol id="atlas-levels-list">[\s\S]*data-atlas-level="\$\{i\}"[\s\S]*atlas-back-item" data-atlas-city[\s\S]*back to the city/, 'World, Africa, Nigeria, then the city');
+  assert.match(code, /class="atlas-back" data-atlas-city/, 'the green button back to the city stays');
+  assert.match(code, /event\.key === 'Escape' && levelsOpen[\s\S]*closeLevels\(true\)/, 'Escape closes the list and returns focus to the chip');
+  assert.match(code, /ArrowDown: 1, ArrowUp: -1/, 'arrow keys move through the list');
+  assert.match(code, /addEventListener\('pointerdown', onAway\)/, 'a press outside closes it');
+  assert.doesNotMatch(code, /<ol>\$\{ATLAS_LEVELS/, 'no row of level buttons');
+});
+
+test('a city marker is one line with a status dot: the status stays in the tooltip data, not in a second line', () => {
+  const one = placeLabels([{ id: 'a', x: 200, y: 300, text: 'Kano', note: 'Open', compact: true, size: 12, priority: 1, anchor: 'above' }], { width: 390, height: 844 })[0]!;
+  const two = placeLabels([{ id: 'a', x: 200, y: 300, text: 'Kano', note: 'Open', size: 12, priority: 1, anchor: 'above' }], { width: 390, height: 844 })[0]!;
+  assert.ok(one.box.bottom - one.box.top < two.box.bottom - two.box.top - 10, 'the compact marker has no second line');
+  assert.equal(one.note, 'Open');
+  const css = readFileSync(here('./atlas.css'), 'utf8');
+  assert.match(css, /\.atlas-label\.is-city::before\{/, 'the status dot');
+  assert.match(css, /\.atlas-label\.is-city\.is-you\{/, 'the player\'s own city is a distinct marker');
+});
+
+test('the density table: phones get smaller type and fewer names, a larger text setting fewer still', () => {
+  assert.deepEqual(densityFor(390), DENSITY.phone);
+  assert.deepEqual(densityFor(1440), DENSITY.wide);
+  assert.ok(DENSITY.phone.city < DENSITY.wide.city && DENSITY.phone.atlasNames < DENSITY.wide.atlasNames);
+  assert.ok(densityFor(390, 1.5).atlasNames < DENSITY.phone.atlasNames, 'larger text, more dots');
+  assert.ok(densityFor(390, 3).atlasNames >= 2, 'never fewer than the player\'s city and one more');
+});
+
+test('venue names on the city map: long names are cut, few are written at the opening view, more as the camera comes closer, the places that matter always', () => {
+  assert.equal(shorten('Sagamu Community Clinic', 16), 'Sagamu Communit…');
+  assert.equal(shorten('Market', 16), 'Market');
+  assert.ok(shorten('Sagamu Community Clinic', 16).length <= 16);
+  const phone = DENSITY.phone;
+  assert.equal(venueNamesAt(phone, 1), phone.venueNames);
+  assert.ok(venueNamesAt(phone, 2) > venueNamesAt(phone, 1) && venueNamesAt(phone, 0.5) <= venueNamesAt(phone, 1));
+  assert.ok(venueNamesAt(phone, 100) <= phone.venueNames * 3, 'never more than three times');
+  assert.ok(NAMED_FROM <= 60, 'Home, here, picked and on the way are always named');
+  for (const file of ['./map3d.ts', './map2d.ts']) {
+    const code = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    assert.match(code, /NAMED_FROM/, `${file} names the places that matter`);
+    assert.match(code, /shorten\(/, `${file} cuts long names`);
+  }
+  assert.match(readFileSync(new URL('../map3d.css', import.meta.url), 'utf8'), /\.m3-label\.is-compact::before\{inset:-10px -8px\}/, 'an icon keeps a 44px target');
+});
+
+test('forty cities on a phone stay readable: names up to the cap, the rest dots, no two names overlap, the player\'s city always named', () => {
+  const row = densityFor(390), width = 390, height = 700;
+  const cities = Array.from({ length: 40 }, (_, i) => ({ id: `city:c${String(i).padStart(2, '0')}`, x: 30 + (i * 53) % 330, y: 120 + (i * 97) % 480, text: `City number ${i}`, priority: i === 7 ? 2000 : 1000 - i, fixed: i === 7, size: row.city, compact: true, anchor: 'above' as const, cls: 'is-city is-open' }));
+  const keep = namedCities(cities, atlasNamesAt(row, 1));
+  assert.ok(keep.size <= row.atlasNames && keep.has('city:c07'));
+  const placed = placeLabels(cities.filter((city) => keep.has(city.id)), { width, height });
+  assert.ok(placed.length <= row.atlasNames, 'names at most the cap');
+  for (const [i, a] of placed.entries()) for (const b of placed.slice(i + 1)) assert.ok(!(a.box.left < b.box.right && b.box.left < a.box.right && a.box.top < b.box.bottom && b.box.top < a.box.bottom), `${a.id} and ${b.id} overlap`);
+  assert.ok(atlasNamesAt(row, 3) > atlasNamesAt(row, 1), 'zooming in names more');
+  assert.ok(atlasNamesAt(row, 3) <= row.atlasNames * 3);
+  // Every city is still tappable: its hit box does not depend on whether it has a name.
+  for (const city of cities) assert.ok(cityHit({ x: city.x, y: city.y }, [{ id: city.id, x: city.x, y: city.y, state: 's', label: null }], { stateUnder: null }) === city.id, `${city.id} is tappable`);
+});
+
+test('a state that lost three or more names to dots gets a count chip', () => {
+  assert.deepEqual(countChips(['ogun', 'ogun', 'ogun', 'ogun', 'oyo', 'oyo']), [['ogun', 4]]);
+  assert.deepEqual(countChips(['a', 'a', 'a', 'b', 'b', 'b'], 3), [['a', 3], ['b', 3]]);
+  assert.deepEqual(countChips([]), []);
+  const code = readFileSync(here('./atlas.ts'), 'utf8');
+  assert.match(code, /count:\$\{stateId\}/, 'the atlas draws the chip');
 });

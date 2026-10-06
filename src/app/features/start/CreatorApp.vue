@@ -324,6 +324,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <div class="cr-host">
   <div ref="root" class="cr-root" :data-step="cr.step" :data-mode="mode" data-cr-root>
     <div class="cr-stage-col">
       <p class="cr-brand"><i aria-hidden="true"><GameIcon name="globe" :size="20" /></i><b>Allworld</b><span>A digital world you can live in</span></p>
@@ -400,5 +401,6 @@ onBeforeUnmount(() => {
         <p v-else-if="!playable && o.guest && !last" class="cr-fine">Not now keeps your game going. Your choices here are kept.</p>
       </footer>
     </section>
+  </div>
   </div>
 </template>

@@ -5,7 +5,7 @@
  *   node --experimental-strip-types scripts/smoke.ts [origin]        (default http://127.0.0.1:5173)
  *   npm run smoke -- https://example.org
  *
- * Read-only apart from ONE guest session named "Zz Test" (and the one harmless action it takes), a few dozen requests in all,
+ * Read-only apart from ONE guest session named "Zz Test" (and the one harmless action it takes), about a hundred requests in all,
  * well under every rate limit. In order:
  *   1. /api/health answers ok with a build id (printed)
  *   2. the page loads with its security headers, and every asset it references (and every script those import) answers 200
@@ -15,7 +15,7 @@
  *   4. a socket opens, is answered, and sends the pulse counts frame
  *   5. one harmless action (choosing the spot the character already stands at) is accepted, and its repeated id answers
  *      as a duplicate
- *   6. the content and map chunk of every open city is fetched (built page only; the dev server has no such files)
+ *   6. the chunks of every open city (its rules or content, and its map) are fetched (built page only; the dev server has no such files)
  *
  * It prints one line per check and a short PASS summary, or one FAIL line and a non-zero exit code at the first failure.
  * Run against a built app (npm start, npm run start:worker) or a deployed origin. Against `npm run dev` the page is Vite's:
@@ -156,19 +156,37 @@ async function main(): Promise<void> {
   if (dev) pass('city chunks', 'skipped: the dev server has no built chunks');
   else {
     let fetched = 0;
-    const text = scripts.join('\n');
+    const texts = [...scripts], got = new Set<string>();
     for (const city of cities) {
-      for (const kind of ['content', 'map'] as const) {
-        const found = text.match(new RegExp(`assets/(city-${city}-${kind}-[\\w-]+\\.js)`));
-        // Lagos's own content is part of the rules chunk, which the page loads; every other piece is a chunk of its own.
-        if (!found) { if (city === 'lagos' && kind === 'content') continue; fail(`no ${kind} chunk of ${city} is referenced by the page's scripts`); }
-        const path = `/assets/${found?.[1]}`;
-        const chunk = await get(path);
-        if (chunk.status !== 200) fail(`${path} answered ${chunk.status}`);
-        if (!TYPES['.js']?.test(chunk.headers.get('content-type') ?? '')) fail(`${path} has content type "${chunk.headers.get('content-type')}"`);
-        await chunk.arrayBuffer();
-        fetched++;
+      // A city's files name each other (its rules name its map, a recipe names its content), so follow the names from the page's scripts
+      // until no new file of this city turns up. Lagos's rules may be part of the rules chunk the page loads.
+      const kinds = new Set<string>();
+      for (let more = true; more;) {
+        more = false;
+        for (const found of texts.join('\n').matchAll(new RegExp(`\\b(city-${city}-([a-z]+)-[\\w-]+\\.js)`, 'g'))) {
+          const name = found[1] as string;
+          if (got.has(name)) continue;
+          got.add(name); kinds.add(found[2] as string); more = true;
+          const path = `/assets/${name}`;
+          const chunk = await get(path);
+          if (chunk.status !== 200) fail(`${path} answered ${chunk.status}`);
+          if (!TYPES['.js']?.test(chunk.headers.get('content-type') ?? '')) fail(`${path} has content type "${chunk.headers.get('content-type')}"`);
+          const body = await chunk.text();
+          texts.push(body);
+          fetched++;
+          // What the file imports before it runs may be where the city's other files are named.
+          for (const needed of body.matchAll(/(?:from|import)\s*["']\.\/((?!city-)[\w.-]+\.js)["']/g)) {
+            const other = needed[1] as string;
+            if (got.has(other)) continue;
+            got.add(other);
+            const shared = await get(`/assets/${other}`);
+            if (shared.status !== 200) fail(`/assets/${other} answered ${shared.status}`);
+            texts.push(await shared.text());
+          }
+        }
       }
+      if (!kinds.has('map')) fail(`no map chunk of ${city} is referenced by the page's scripts`);
+      if (!kinds.has('content') && !kinds.has('rules') && city !== 'lagos') fail(`no rules or content chunk of ${city} is referenced by the page's scripts`);
     }
     pass('city chunks', `${fetched} files for ${cities.length} open cities`);
   }

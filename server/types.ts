@@ -9,6 +9,7 @@
  *
  * Nothing here is sent to a browser as it stands: a SessionRecord holds the cookie secret.
  */
+import type { CallRelay } from './call-relay.ts';
 import type { LifeState } from '../src/types/life.ts'
 import type { ActionType } from '../src/types/actions.ts'
 import type { ActionRequest, CityId, ClientFrameType, IceServerConfig, PlayerRef, PublicSession, ServerFrame, TimedId } from '../src/types/protocol.ts'
@@ -946,6 +947,8 @@ export interface RouteContext {
   shards: ShardStore | null
   telemetry: ContextTelemetry
   core: ContextCore
+  /** Relay credentials for calls (server/call-relay.ts). Absent on a context built without one: calls then get STUN only. */
+  callRelay?: CallRelay
 }
 
 // ---- the ws-module contract (server/ws/index.ts) -------------------------------------------------

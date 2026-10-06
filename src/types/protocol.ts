@@ -184,6 +184,8 @@ export interface VoiceConfigResponse extends ApiEnvelope {
 export interface HealthResponse extends ApiEnvelope {
   ok: true
   build: string
+  /** The call relay is configured on this host (the one thing the owner checks; never a secret). */
+  relay: boolean
 }
 /**
  * WORKER: the same route (server/routes/core.ts), to which the host adds which transport answered and the build
@@ -610,7 +612,7 @@ export const CLIENT_FRAME_TYPES = [
   'join', 'move', 'voice-state', 'signal', 'chat', 'groups', 'group-join',
   'dm-send', 'dm-read', 'people-list', 'friend-request', 'friend-answer', 'invite-knock', 'invite-answer',
   'table-list', 'table-watch', 'table-unwatch', 'table-sit', 'table-options', 'table-start', 'table-move', 'table-leave', 'table-again',
-  'call-invite', 'call-accept', 'call-decline', 'call-cancel', 'call-hangup', 'call-signal', 'call-settings',
+  'call-invite', 'call-accept', 'call-decline', 'call-cancel', 'call-hangup', 'call-signal', 'call-settings', 'call-ice', 'call-report',
   'live-watch', 'live-unwatch', 'pulse-watch',
 ] as const satisfies readonly ClientFrameType[]
 /** WORKER: every frame type of the registry, and the answer to its application heartbeat. */
@@ -623,7 +625,7 @@ export const SERVER_FRAME_TYPES = [
   'dm', 'social-update', 'social-sync', 'friend-request', 'friend-accepted', 'people-presence', 'people-changed',
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',
   'tables', 'table-state', 'tables-changed',
-  'call-incoming', 'call-state', 'call-signal', 'call-settings',
+  'call-incoming', 'call-state', 'call-signal', 'call-settings', 'call-ice',
   'life-changed', 'social-read', 'social-changed',
   'live-snapshot', 'live-move',
   'ping-incoming', 'ping-joined', 'ping-ended',
@@ -633,7 +635,7 @@ export const SERVER_FRAME_TYPES = [
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']
 
 /** Exact key sets of the core responses on the Node host, sorted. `storage` appears only while saving fails. */
-export const HEALTH_RESPONSE_KEYS = ['build', 'ok', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]
+export const HEALTH_RESPONSE_KEYS = ['build', 'ok', 'relay', 'serverTime'] as const satisfies readonly (keyof HealthResponse)[]
 export const SESSION_RESPONSE_KEYS = ['serverTime', 'session'] as const satisfies readonly (keyof SessionResponse)[]
 export const PUBLIC_SESSION_KEYS = ['id', 'name'] as const satisfies readonly (keyof PublicSession)[]
 /** What the Node server sends as its own session. */

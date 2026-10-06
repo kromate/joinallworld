@@ -16,6 +16,8 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
+import { createCallRelay } from './call-relay.ts';
+import type { CallRelay } from './call-relay.ts';
 import { capacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { executeCommand } from './routes/core.ts';
@@ -59,6 +61,8 @@ export interface ServerOptions {
   maxSockets?: number
   socketsPerAddress?: number
   voiceConfigProvider?: ServerConfig['voiceConfigProvider']
+  /** The relay for calls; built from `env` (TURN_KEY_ID, TURN_API_TOKEN, CALL_RELAY_*) and `fetch` when absent (server/call-relay.ts). */
+  callRelay?: CallRelay
   store?: Store
   routes?: RouteModule[]
   wsModules?: WsHandlerModule[]
@@ -128,7 +132,7 @@ async function jsonBody(req: IncomingMessage): Promise<Record<string, unknown>> 
   try { const value: unknown = JSON.parse(body); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -503,6 +507,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
     //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
     env: envReader(env),
+    callRelay: givenRelay ?? createCallRelay({ read: (name) => { const value = env?.[name]; return typeof value === 'string' ? value : undefined; }, now, ...(outbound ? { fetchImpl: outbound } : {}) }),
     // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (host-context.js).
     fetch: outboundFetch(outbound),
     // Work that outlives the request that started it (a message being sent, a registry sync). Node needs no help to finish it;

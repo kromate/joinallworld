@@ -31,3 +31,20 @@ export function microphoneFailure(error: unknown): 'denied' | 'unavailable' {
   const name = typeof error === 'object' && error !== null && 'name' in error ? String(error.name) : ''
   return name === 'NotAllowedError' || name === 'SecurityError' ? 'denied' : 'unavailable'
 }
+
+/** Why a microphone could not be opened, as far as the browser says. */
+export type MicProblem = 'denied' | 'no-device' | 'in-use' | 'failed'
+export function microphoneProblem(error: unknown): MicProblem {
+  const name = typeof error === 'object' && error !== null && 'name' in error ? String(error.name) : ''
+  if (name === 'NotAllowedError' || name === 'SecurityError' || name === 'PermissionDeniedError') return 'denied'
+  if (name === 'NotFoundError' || name === 'DevicesNotFoundError' || name === 'OverconstrainedError') return 'no-device'
+  if (name === 'NotReadableError' || name === 'TrackStartError' || name === 'AbortError') return 'in-use'
+  return 'failed'
+}
+/** What to tell the player, with what they can do about it. */
+export const MIC_HELP: Readonly<Record<MicProblem, string>> = {
+  denied: 'Microphone blocked. Allow the microphone for this site (the lock icon in the address bar, or your phone’s browser settings), then tap Try again.',
+  'no-device': 'No microphone was found. Plug one in or switch it on, then tap Try again.',
+  'in-use': 'Your microphone is being used by another app. Close that app, then tap Try again.',
+  failed: 'The microphone could not be opened. Tap Try again.',
+}

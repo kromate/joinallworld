@@ -53,8 +53,8 @@ async function pair(t: Parameters<typeof fixture>[0], options: Parameters<typeof
   return { f, ada, bola, a, b };
 }
 /** A ringing call, accepted. */
-async function connected(t: Parameters<typeof fixture>[0]) {
-  const ctx = await pair(t);
+async function connected(t: Parameters<typeof fixture>[0], options: Parameters<typeof fixture>[1] = {}) {
+  const ctx = await pair(t, options);
   invite(ctx.a, ctx.bola.id);
   const incoming = await until(ctx.b, 'call-incoming');
   await until(ctx.a, 'call-state');
@@ -397,4 +397,116 @@ test('a repeated invite with the same client id does not ring twice', async (t) 
   assert.deepEqual([again.callId, again.state], [first.callId, 'ringing']);
   assert.equal(first.callId, incoming.callId);
   assert.deepEqual(callFrames(await drain(b)), []);
+});
+
+// ---- the relay for calls (server/call-relay.ts) -----------------------------------------------------------------------
+const RELAY_ENV = { TURN_KEY_ID: 'k'.repeat(32), TURN_API_TOKEN: 'synthetic-api-token' };
+/** A provider that answers like the real one and records what it was asked. */
+function fakeProvider(): { fetch: (url: string, init: RequestInit) => Promise<Response>; asked: { url: string; body: string; token: string }[] } {
+  const asked: { url: string; body: string; token: string }[] = [];
+  return {
+    asked,
+    fetch: async (url, init) => {
+      asked.push({ url, body: String(init.body), token: String((init.headers as Record<string, string>).authorization) });
+      return new Response(JSON.stringify({ iceServers: [{ urls: ['stun:stun.example.test:3478'] }, { urls: ['turn:turn.example.test:3478?transport=udp', 'turn:turn.example.test:80?transport=tcp', 'turns:turn.example.test:443?transport=tcp'], username: `user-${asked.length}`, credential: `secret-${asked.length}` }] }), { status: 201 });
+    },
+  };
+}
+const askIce = async (peer: TestSocket, callId: string): Promise<Frame<'call-ice'>> => { send(peer, { type: 'call-ice', callId }); return until(peer, 'call-ice'); };
+
+test('without relay settings a call gets STUN only and says the relay is off; health says false', async (t) => {
+  const { f, a, callId } = await connected(t);
+  const reply = await askIce(a, callId);
+  assert.equal(reply.relay, 'off');
+  assert.ok(reply.iceServers.every((server) => [server.urls].flat().every((url) => url.startsWith('stun:'))));
+  assert.equal(((await (await f.request('/api/health')).json()) as { relay: boolean }).relay, false);
+});
+
+test('with relay settings both sides get their own short-lived relay servers, and the API token is never sent', async (t) => {
+  const provider = fakeProvider();
+  const { f, a, b, callId } = await connected(t, { env: RELAY_ENV, fetch: provider.fetch });
+  const first = await askIce(a, callId), second = await askIce(b, callId);
+  assert.deepEqual([first.relay, second.relay], ['on', 'on']);
+  assert.notDeepEqual(first.iceServers, second.iceServers, 'a credential per side');
+  assert.equal(provider.asked.length, 2);
+  assert.ok(provider.asked.every((item) => JSON.parse(item.body).ttl === 3600 && item.url.includes(RELAY_ENV.TURN_KEY_ID)));
+  assert.equal(JSON.stringify([first, second]).includes(RELAY_ENV.TURN_API_TOKEN), false);
+  assert.ok(first.expiresAt && first.expiresAt > f.now());
+  assert.equal(((await (await f.request('/api/health')).json()) as { relay: boolean }).relay, true);
+});
+
+test('the relay is not limited to nominated players; a ringing call gets nothing', async (t) => {
+  const provider = fakeProvider();
+  const ctx = await pair(t, { env: { ...RELAY_ENV, TURN_TEST_PUBLIC_IDS: '' }, fetch: provider.fetch });
+  invite(ctx.a, ctx.bola.id);
+  const incoming = await until(ctx.b, 'call-incoming'); await until(ctx.a, 'call-state');
+  send(ctx.a, { type: 'call-ice', callId: incoming.callId });
+  assert.equal((await until(ctx.a, 'error')).code, 'invalid_call');
+  assert.equal(provider.asked.length, 0);
+});
+
+test('a limit refuses gracefully: STUN only with the reason, and nothing more is asked of the provider', async (t) => {
+  const provider = fakeProvider();
+  const { a, b, callId } = await connected(t, { env: { ...RELAY_ENV, CALL_RELAY_PER_PLAYER_DAY: '1' }, fetch: provider.fetch });
+  assert.equal((await askIce(a, callId)).relay, 'on');
+  const refused = await askIce(a, callId);
+  assert.equal(refused.relay, 'limited');
+  assert.ok(refused.iceServers.every((server) => [server.urls].flat().every((url) => url.startsWith('stun:'))));
+  assert.equal((await askIce(b, callId)).relay, 'on', 'the other player has their own allowance');
+  assert.equal(provider.asked.length, 2);
+});
+
+test('the daily ceiling holds for everyone, and the provider failing is reported as error', async (t) => {
+  const provider = fakeProvider();
+  const ctx = await connected(t, { env: { ...RELAY_ENV, CALL_RELAY_DAILY_CEILING: '1' }, fetch: provider.fetch });
+  assert.equal((await askIce(ctx.a, ctx.callId)).relay, 'on');
+  assert.equal((await askIce(ctx.b, ctx.callId)).relay, 'limited');
+  const broken = await connected(t, { env: RELAY_ENV, fetch: async () => new Response('private upstream detail', { status: 403 }) });
+  const reply = await askIce(broken.a, broken.callId);
+  assert.equal(reply.relay, 'error');
+  assert.equal(JSON.stringify(reply).includes('private'), false);
+});
+
+test('a device that does not carry the call cannot ask, and a call asks at most three times per side', async (t) => {
+  const { b, callId, f, ada } = await connected(t, { env: RELAY_ENV, fetch: fakeProvider().fetch });
+  const other = await f.socket(ada);
+  await until(other, 'call-state');
+  send(other, { type: 'call-ice', callId });
+  assert.equal((await until(other, 'error')).code, 'call_elsewhere');
+  for (let i = 0; i < 3; i++) await askIce(b, callId);
+  send(b, { type: 'call-ice', callId });
+  assert.equal((await until(b, 'error')).code, 'rate_limited');
+});
+
+test('the operator overview counts calls placed, direct, relayed, failed and relay mints today; nothing personal', async (t) => {
+  const ctx = await pair(t, { moderatorToken: TOKEN, env: RELAY_ENV, fetch: fakeProvider().fetch });
+  const overview = async () => ((await (await fetch(`${ctx.f.base}/api/mod/overview`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json()) as { calls: Record<string, unknown> }).calls;
+  assert.deepEqual(await overview(), { relay: true, placed: 0, connectedDirect: 0, connectedViaRelay: 0, failedToConnect: 0, relayMintsToday: 0, relayLimits: { perPlayerPerDay: 30, perAddressPerHour: 120, dailyCeiling: 3000 } });
+  for (const path of ['direct', 'relay', 'failed']) {
+    invite(ctx.a, ctx.bola.id);
+    const incoming = await until(ctx.b, 'call-incoming'); await until(ctx.a, 'call-state');
+    send(ctx.b, { type: 'call-accept', callId: incoming.callId });
+    await until(ctx.b, 'call-state'); await until(ctx.a, 'call-state');
+    await askIce(ctx.a, incoming.callId);
+    send(ctx.a, { type: 'call-report', callId: incoming.callId, path });
+    send(ctx.a, { type: 'call-report', callId: incoming.callId, path: 'failed' });
+    send(ctx.a, { type: 'call-hangup', callId: incoming.callId });
+    await until(ctx.a, 'call-state'); await until(ctx.b, 'call-state');
+  }
+  const after = await overview();
+  assert.deepEqual([after.placed, after.connectedDirect, after.connectedViaRelay, after.failedToConnect, after.relayMintsToday], [3, 1, 1, 1, 3], 'the first report of a call counts, a second does not');
+  assert.equal(JSON.stringify(after).includes(ctx.ada.id), false);
+});
+
+test('a ring nobody answers leaves a missed-call line in the callee updates', async (t) => {
+  const { f, a, b, ada, bola } = await pair(t);
+  invite(a, bola.id);
+  const incoming = await until(b, 'call-incoming'); await until(a, 'call-state');
+  send(a, { type: 'call-cancel', callId: incoming.callId });
+  const update = await until(b, 'social-update');
+  assert.equal(update.update.kind, 'missed-call');
+  assert.equal(update.update.data?.from, ada.id);
+  assert.match(update.update.text, /Missed call from Ada/);
+  const me = (await (await f.request('/api/social/me', null, bola.cookie)).json()) as { updates: { kind: string }[] };
+  assert.ok(me.updates.some((item) => item.kind === 'missed-call'));
 });

@@ -47,15 +47,17 @@
  *
  * Portable: no Node imports. One table per server context.
  */
-import { UUID_PATTERN } from '../protocol.ts';
-import { CALL_RING_MS, CALL_SETUP_MS, CALLS_FROM, CALLS_FROM_DEFAULT } from '../../src/types/calls.ts';
-import type { CallSignalData, CallSignalKind, CallsFrom, CallStateFrame, CallStateName } from '../../src/types/calls.ts';
+import { UUID_PATTERN, STUN_ONLY_CONFIG } from '../protocol.ts';
+import { CALL_PATHS, CALL_RING_MS, CALL_SETUP_MS, CALLS_FROM, CALLS_FROM_DEFAULT } from '../../src/types/calls.ts';
+import type { CallPath, CallSignalData, CallSignalKind, CallsFrom, CallStateFrame, CallStateName } from '../../src/types/calls.ts';
 import type { PlayerRef } from '../../src/types/protocol.ts';
 import type { Db, IncomingFrame, RouteContext, WsConnection } from '../types.ts';
 import { presenceOf } from './presence.ts';
 import { friendsIn } from './founder.ts';
+import { socialService } from './service.ts';
+import type { PushList } from './service.ts';
 
-export const CALL_LIMITS = { perCallerPerMinute: 8, perPairPerMinute: 3, sdpChars: 8000, candidateChars: 1000, nameChars: 64, ice: 200, offers: 8, answers: 8, settingsPerMinute: 20, keepAwakeMs: 15000 } as const;
+export const CALL_LIMITS = { iceRequests: 3, perCallerPerMinute: 8, perPairPerMinute: 3, sdpChars: 8000, candidateChars: 1000, nameChars: 64, ice: 200, offers: 8, answers: 8, settingsPerMinute: 20, keepAwakeMs: 15000 } as const;
 const CLIENT_ID = /^[A-Za-z0-9:_-]{1,80}$/;
 const CALL_ID = /^[A-Za-z0-9-]{1,80}$/;
 const OPEN = 1;
@@ -70,7 +72,9 @@ interface CallRecord {
   /** While ringing: the ring's end. Once accepted: the end of the setup window, until the first offer. */
   deadline: number
   offered: boolean
-  counts: { offer: number; answer: number; ice: number }
+  counts: { offer: number; answer: number; ice: number; relay: { caller: number; callee: number } }
+  /** Whether how the audio connected has been counted (once per call). */
+  reported: boolean
   /** The socket that carries the call on each side: the one that invited, and (once accepted) the one that answered. */
   sockets: { caller: WsConnection; callee: WsConnection | null }
 }
@@ -115,6 +119,10 @@ function buildService(ctx: RouteContext) {
   const byPlayer = new Map<string, string>(); // player id → the call they are in (ringing or accepted, either side)
   const byClient = new Map<string, string>(); // `${caller}:${clientId}` → call id
   let timer: ReturnType<typeof setTimeout> | null = null;
+  // What the owner reads to see whether calls work: counts for the current UTC day, no names, no ids.
+  const tally = { day: '', placed: 0, direct: 0, relay: 0, failed: 0 };
+  const today = (): string => new Date(now()).toISOString().slice(0, 10);
+  const count = (key: 'placed' | 'direct' | 'relay' | 'failed'): void => { if (tally.day !== today()) Object.assign(tally, { day: today(), placed: 0, direct: 0, relay: 0, failed: 0 }); tally[key]++; };
 
   const otherOf = (call: CallRecord, id: string): PlayerRef => (call.caller.id === id ? call.callee : call.caller);
   const sideOf = (call: CallRecord, id: string): 'caller' | 'callee' | null => (call.caller.id === id ? 'caller' : call.callee.id === id ? 'callee' : null);
@@ -139,6 +147,13 @@ function buildService(ctx: RouteContext) {
   /** A carrying socket that can no longer carry: closed, or not answering the host's pings. */
   const gone = (ws: WsConnection | null): boolean => !ws || ws.readyState !== OPEN || ctx.core?.unresponsive?.(ws) === true;
 
+  /** A ring nobody answered: one line in the callee's Updates (and a badge), whether or not they are online. */
+  function missed(call: CallRecord): void {
+    const { notify } = socialService(ctx).kit;
+    const owed: PushList = [];
+    void ctx.store.transact((db) => { notify(ctx.collection(db, 'social'), call.callee.id, 'missed-call', `Missed call from ${call.caller.name}. Open their card to call back.`, { from: call.caller.id }, owed); })
+      .then(() => { for (const [to, frame] of owed) ctx.push(to, frame); }).catch(() => { /* the line is a courtesy */ });
+  }
   /** Remove the call and tell both sides. `callerState` differs from `state` only when the caller must not learn why. */
   function end(call: CallRecord, state: CallStateName, callerState: CallStateName = state): void {
     if (calls.get(call.id) !== call) return;
@@ -146,6 +161,7 @@ function buildService(ctx: RouteContext) {
     if (byPlayer.get(call.caller.id) === call.id) byPlayer.delete(call.caller.id);
     if (byPlayer.get(call.callee.id) === call.id) byPlayer.delete(call.callee.id);
     if (byClient.get(`${call.caller.id}:${call.clientId}`) === call.id) byClient.delete(`${call.caller.id}:${call.clientId}`);
+    if (call.state === 'ringing' && callerState === state && (state === 'timeout' || state === 'cancelled')) missed(call);
     ctx.push(call.caller.id, stateFrame(call, 'caller', callerState));
     ctx.push(call.callee.id, stateFrame(call, 'callee', state));
     arm();
@@ -233,9 +249,10 @@ function buildService(ctx: RouteContext) {
       const t = now();
       const call: CallRecord = {
         id: ctx.randomId(), caller: { id: caller, name: ws.session.name }, callee, clientId, state: 'ringing', expiresAt: t + CALL_RING_MS, deadline: t + CALL_RING_MS,
-        offered: false, counts: { offer: 0, answer: 0, ice: 0 }, sockets: { caller: ws, callee: null },
+        offered: false, counts: { offer: 0, answer: 0, ice: 0, relay: { caller: 0, callee: 0 } }, reported: false, sockets: { caller: ws, callee: null },
       };
       calls.set(call.id, call);
+      count('placed');
       byPlayer.set(caller, call.id); byPlayer.set(to, call.id); byClient.set(`${caller}:${clientId}`, call.id);
       if (byClient.size > 5000) byClient.clear();
       ctx.push(to, { type: 'call-incoming', callId: call.id, from: { ...call.caller }, expiresAt: call.expiresAt });
@@ -291,6 +308,40 @@ function buildService(ctx: RouteContext) {
       if (call.counts[kind === 'ice' ? 'ice' : kind]++ >= (kind === 'ice' ? CALL_LIMITS.ice : kind === 'offer' ? CALL_LIMITS.offers : CALL_LIMITS.answers)) throw Error('rate_limited');
       if (kind === 'offer') call.offered = true;
       toCarrier(call, side === 'caller' ? 'callee' : 'caller', { type: 'call-signal', callId: call.id, kind, data });
+    },
+
+    /** The sender's connection servers for an accepted call: relay servers made for this call when the relay is on and within its limits, else STUN only. */
+    async ice(ws: WsConnection, message: IncomingFrame): Promise<void> {
+      sweep();
+      const call = lookup(message.callId);
+      const side = call ? sideOf(call, ws.session.id) : null;
+      if (!call || !side) { unknown(ws, message.callId); return; }
+      if (call.state !== 'accepted') throw Error('invalid_call');
+      if (ws !== call.sockets[side]) throw Error('call_elsewhere');
+      if (call.counts.relay[side]++ >= CALL_LIMITS.iceRequests) throw Error('rate_limited');
+      const relay = ctx.callRelay;
+      const issued = relay ? await relay.issue(ws.session.id, ws.ip) : { relay: 'off' as const };
+      if (ws.readyState !== OPEN || calls.get(call.id) !== call) return;
+      if (issued.relay === 'on') ctx.send(ws, { type: 'call-ice', callId: call.id, relay: 'on', iceServers: issued.iceServers, expiresAt: issued.expiresAt });
+      else ctx.send(ws, { type: 'call-ice', callId: call.id, relay: issued.relay, iceServers: STUN_ONLY_CONFIG.iceServers.map((server) => ({ ...server })) });
+    },
+
+    /** How the audio of an accepted call connected, or that it did not. The first report of a call counts; nothing else is kept. */
+    report(ws: WsConnection, message: IncomingFrame): void {
+      const call = lookup(message.callId);
+      const side = call ? sideOf(call, ws.session.id) : null;
+      if (!call || !side) return;
+      const path = CALL_PATHS.find((item): item is CallPath => item === message.path);
+      if (!path || call.state !== 'accepted' || call.reported || ws !== call.sockets[side]) return;
+      call.reported = true;
+      count(path);
+    },
+    /** For the operator overview: today's counts and the relay's own numbers. */
+    stats() {
+      const day = today();
+      const mine = tally.day === day ? tally : { placed: 0, direct: 0, relay: 0, failed: 0 };
+      const relay = ctx.callRelay;
+      return { relay: relay?.configured === true, placed: mine.placed, connectedDirect: mine.direct, connectedViaRelay: mine.relay, failedToConnect: mine.failed, relayMintsToday: relay?.mintsToday() ?? 0, relayLimits: relay ? { ...relay.limits } : null };
     },
 
     /** Read or change who may ring the sender. Needs the sender to have a social record (the client reads its overview first). */

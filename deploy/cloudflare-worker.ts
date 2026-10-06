@@ -46,6 +46,7 @@ import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type Lim
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { ALARM_TABLE, createWriteMeter, type WriteMeter } from './write-meter.ts';
 import type { SqliteStorage, SqlStorageLike } from './cf-types.ts';
+import { createCallRelay } from '../server/call-relay.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
 import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
 import { buildSocketHandlers } from '../server/ws/index.ts';
@@ -216,6 +217,9 @@ export interface WorkerEnv {
   TURN_KEY_ID?: string
   TURN_API_TOKEN?: string
   TURN_TEST_PUBLIC_IDS?: string
+  CALL_RELAY_PER_PLAYER_DAY?: string
+  CALL_RELAY_PER_ADDRESS_HOUR?: string
+  CALL_RELAY_DAILY_CEILING?: string
   /** The sign-in provider's public client configuration (server/host-context.ts accountsConfig). Unset: accounts are off. */
   ACCOUNTS_FIREBASE_PROJECT_ID?: string
   ACCOUNTS_FIREBASE_API_KEY?: string
@@ -292,6 +296,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       this.sql.exec(`CREATE INDEX IF NOT EXISTS ${table}_expiry ON ${table}(expires_at)`);
     }
     this.sql.exec('CREATE TABLE IF NOT EXISTS turn_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
+    this.sql.exec('CREATE TABLE IF NOT EXISTS call_relay_budget (day TEXT PRIMARY KEY, issued INTEGER NOT NULL)');
     this.sql.exec('CREATE TABLE IF NOT EXISTS chat_receipts (sender TEXT NOT NULL, room TEXT NOT NULL, client_id TEXT NOT NULL, at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,room,client_id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS host_keys (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
     this.sweepAt = 0; this.expirySweepAt = 0; this.beatTimer = null;
@@ -316,6 +321,14 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const context: RouteContext = this.context = {
       store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
+      // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
+      callRelay: createCallRelay({
+        read: (name) => { const value = (this.env as unknown as Record<string, unknown>)[name]; return typeof value === 'string' ? value : undefined; }, now,
+        budget: {
+          used: (day) => this.sql.exec<{ issued: number }>('SELECT issued FROM call_relay_budget WHERE day = ?', day).toArray()[0]?.issued ?? 0,
+          add: (day) => { this.sql.exec('INSERT INTO call_relay_budget(day,issued) VALUES(?,1) ON CONFLICT(day) DO UPDATE SET issued=issued+1', day); this.sql.exec('DELETE FROM call_relay_budget WHERE day < ?', new Date(now() - 7 * 86400000).toISOString().slice(0, 10)); },
+        },
+      }),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
       peek: (key: string, count = 120) => this.peek(key, count),
       retryIn: (key: string) => this.retryIn(key),

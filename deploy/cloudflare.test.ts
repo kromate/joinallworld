@@ -10,7 +10,8 @@ import { createRequire } from 'node:module';
 import { createHash, randomUUID } from 'node:crypto';
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts';
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts';
-import { layoutBindings } from '../server/testing/sqliteStorage.ts';
+import { layoutBindings, readStoredCollection, writeStoredCollection } from '../server/testing/sqliteStorage.ts';
+import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; addEventListener(type: 'close', listener: (event: { code: number }) => void): void; accept(): void; send(data: string): void; close(): void }
@@ -1475,16 +1476,16 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
   session.cities.lagos.updatedAt -= PAST; session.cities.lagos.state.needs.hunger = 5;
   await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
-  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const growth = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   growth.players[ada.id].seen -= PAST;
-  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+  await writeStoredCollection(execOf(db), 'growth', JSON.stringify(growth));
 
   // Three rounds at the same moment, then the object is evicted and two more.
   const first = await Promise.all([run(), run(), run()]);
   assert.equal(first.reduce((sum, round) => sum + (round.comeback?.jobs ?? 0), 0), 1, 'one of the concurrent rounds claimed it');
   await f.hibernate();
   await run(); await run();
-  const stored = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const stored = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.equal(comebackMails().length, 1, 'once, however many rounds and restarts');
   assert.equal(comebackMails()[0]?.subject, 'Ada is hungry');
   assert.equal(comebackMails()[0]?.post, 'List-Unsubscribe=One-Click');
@@ -1519,7 +1520,7 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   assert.deepEqual([view.source, view.on, mails[0]?.subject], ['account', true, 'Welcome to Allworld: your character is saved']);
   assert.ok(!view.address.includes('uidada'), 'only a masked address is shown');
   const db = await f.storage();
-  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const growth = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.equal(growth.comeback[ada.id].acct, true);
   assert.equal(JSON.stringify(growth.comeback).includes('@'), false, 'no address in the comeback record');
   // The welcome is in the ledger on the next look, so a character that is long away and hungry is still not written to within the day.
@@ -1527,15 +1528,18 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   const record = JSON.parse(row.value); record.cities.lagos.updatedAt -= 6 * DAY_MS; record.cities.lagos.state.needs.hunger = 5;
   await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(record), row.secret);
   growth.comeback[ada.id].next = 0;
-  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+  await writeStoredCollection(execOf(db), 'growth', JSON.stringify(growth));
   const run = () => f.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: '{}' });
   await run();
-  const after = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const after = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.deepEqual(after.comeback[ada.id].sent.map((entry: { type: string }) => entry.type), ['welcome'], 'the welcome holds the day');
   assert.equal(mails.length, 1);
 });
 
+const execOf = (db: ObjectStorage): AsyncExec => (query, ...bindings) => db.exec(query, ...bindings) as Promise<Record<string, unknown>[]>;
 async function storage_(f: { storage(): Promise<ObjectStorage> }, query: string): Promise<string> {
+  const layered = /^SELECT value FROM collections WHERE name = '(social|growth|civic|business)'$/.exec(query);
+  if (layered) { const text = await readStoredCollection(execOf(await f.storage()), layered[1] as string); return JSON.stringify(text === undefined ? [] : [{ value: text }]); }
   const rows = await (await f.storage()).exec(query).catch(() => []);
   return JSON.stringify(rows);
 }

@@ -248,6 +248,17 @@ const play = PLAYS ? {
         if (payload.op === 'debit') { debit(state, amount, `Admin debit: ${reason}`, context, { partial: true }); return ok(state, 'debited') }
         return fail(state, 'invalid_amount')
       } },
+    /**
+     * SERVER ONLY. The launch bonus (server/bonus): one ledger line whose reason the server words ("Launch bonus: one of the first 10,000 players"),
+     * a faucet. It never touches `social.earned`, so it unlocks no gifting and no buying from players, and the ride debt's repayment from
+     * earnings does not take a share of it (only the whole-debt rule of relief.ts, which asks what cash can afford, sees it).
+     */
+    'wallet.bonus': { serverOnly: true, refusal: 'The launch bonus is paid by the server. Nothing was changed.',
+      run(state, payload, ctx) {
+        const amount = payload?.amount, reason = cleanText(payload?.reason, 80, 'Launch bonus')
+        if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
+        return credit(state, amount, reason, { now: finite(ctx?.now) ? ctx.now : state.t }) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
+      } },
   },
   advance(): void {},
 } satisfies Pick<SystemDefinition<'wallet'>, 'actions' | 'advance'> : LEFT_OUT;

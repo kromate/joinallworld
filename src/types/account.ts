@@ -66,7 +66,13 @@ export type AccountTokenErrorCode = 'invalid_token' | 'accounts_unavailable'
 /** A route that needs PROOF: a signed-in browser AND a fresh ID token for that same account. */
 export type AccountProofErrorCode = AccountGuardErrorCode | AccountTokenErrorCode | StorageErrorCode | 'account_required' | 'account_mismatch'
 
+/** GET /api/world/bonus: the launch offer, public. `left` is rounded down to a multiple of 10 above 100. */
+export interface BonusOfferResponse { on: boolean; amount: number; places: number; left: number }
+/** POST /api/account/bonus: the caller's own bonus. `show`: paid, and the moment has not been shown yet. `held`: why the money waits. */
+export interface BonusClaimResponse { state: 'none' | 'ended' | 'held' | 'paid'; amount: number; n: number; places: number; held?: 'character' | 'address'; show: boolean }
 export interface AccountHttpRoutes {
+  'GET /api/world/bonus': { response: ApiEnvelope & BonusOfferResponse; errors: HostErrorCode }
+  'POST /api/account/bonus': { body: { csrf: string; seen?: boolean }; response: ApiEnvelope & BonusClaimResponse; errors: AccountGuardErrorCode | StorageErrorCode }
   'GET /api/account': { response: AccountResponse; errors: HostErrorCode }
   'POST /api/account/sign-in': { body: SignInRequest; response: SignInResponse; errors: AccountGuardErrorCode | AccountTokenErrorCode | StorageErrorCode | 'email_unverified' | 'parked_full' | 'account_capacity' }
   /** The one account route that still answers when accounts are switched off. */

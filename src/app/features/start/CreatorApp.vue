@@ -26,6 +26,7 @@ import GameIcon from '../../ui/GameIcon.vue'
 import { track as worldTrack, worldChanged } from '../world/worldModel.ts'
 import { useAccountEntry } from './accountEntry.ts'
 import { signupShown } from '../account/shownOnce.ts'
+import BonusLine from '../bonus/BonusLine.vue'
 import AvatarFigure from './AvatarFigure.vue'
 import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
@@ -380,6 +381,7 @@ onBeforeUnmount(() => {
               <button type="button" class="cr-btn is-primary" data-qs="play" data-key="play-now" @click="playNow(false)">Play now</button>
               <button type="button" class="cr-btn" data-key="next" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ nextLabel(steps, cr.step) }}</button>
             </div>
+            <BonusLine v-if="account.available && !account.signedIn" />
             <button type="button" class="cr-btn is-signup" data-key="sign-up" @click="openSignUp">Sign up free<span> — keep your character</span></button>
             <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">I already have an account · Log in</button>
           </div>

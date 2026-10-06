@@ -135,6 +135,10 @@
   .life-ui .life-bottom .gbar{padding:2px 2px 2px 12px;border-radius:var(--r-lg)}
   .life-ui .life-bottom .gbar button{min-height:var(--tap)}
   .life-ui .life-bottom .gbar .gbar-x{width:var(--tap);height:var(--tap)}
+  /* The launch bonus's chip: one slim row above the guest bar. */
+  .life-ui .life-bottom .bonus-chip{padding:0 2px 0 12px;border-radius:var(--r-lg)}
+  .life-ui .life-bottom .bonus-chip .bonus-go,.life-ui .life-bottom .bonus-chip .bonus-x{min-height:var(--tap)}
+  .life-ui .life-bottom .bonus-chip .bonus-x{width:var(--tap)}
 }
 
 /* A short phone: the extras give way. The HUD already has "Sign up", so the guest bar waits for a taller screen. */
@@ -145,7 +149,7 @@
   body .life-ui .map-overview,body .life-ui .map-card{max-height:min(45 * var(--ui-vh),calc(100 * var(--ui-vh) - 400px))}
   body .atlas-zoom{display:none}
   body .atlas-controls{display:flex;gap:6px}
-  .life-ui .life-bottom .gbar{display:none}
+  .life-ui .life-bottom .gbar,.life-ui .life-bottom .bonus-chip{display:none}
   .life-ui .needs-strip{height:30px}
   .life-ui .life-coach{font-size:var(--t-small)}
 }
@@ -179,7 +183,7 @@
   body .atlas-sheet{grid-column:2;grid-row:2;align-self:stretch;max-height:100%}
   body .atlas-crumbs{grid-column:1/-1}
   body .atlas-rail{grid-column:1;max-height:100%}
-  .life-ui .life-bottom .gbar{display:none}
+  .life-ui .life-bottom .gbar,.life-ui .life-bottom .bonus-chip{display:none}
   .is-expanded .life-sidebar{display:none}
   .is-expanded [data-slot=coach]{display:none}
   body:has(.life-ui.is-expanded) .scene-stick,body:has(.life-ui.is-expanded) .scene-pad{visibility:hidden}

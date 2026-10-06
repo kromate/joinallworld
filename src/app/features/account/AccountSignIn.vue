@@ -18,6 +18,7 @@ import { useAccount } from './useAccount.ts'
 import AccountChoice from './AccountChoice.vue'
 import AccountSettings from './AccountSettings.vue'
 import PasswordField from './PasswordField.vue'
+import BonusLine from '../bonus/BonusLine.vue'
 
 type Mode = 'sign-in' | 'create' | 'reset'
 const props = defineProps<{ params?: unknown }>()
@@ -116,6 +117,7 @@ onBeforeUnmount(() => {
 
     <template v-else-if="state.step === 'form'">
       <div class="session-card"><h3>{{ heading }}</h3><p>{{ lead }}</p></div>
+      <BonusLine v-if="mode === 'create'" />
       <p v-if="formError" class="ui-error" role="alert">{{ formError }}</p>
       <p v-if="state.notice" class="account-notice" role="status">{{ state.notice }}</p>
       <template v-if="state.googleClientId && mode !== 'reset'">

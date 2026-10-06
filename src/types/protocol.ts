@@ -630,6 +630,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/account/delete',
   'POST /api/account/export',
   'POST /api/account/password-reset',
+  'GET /api/world/bonus',
+  'POST /api/account/bonus',
   'GET /api/business/venue',
   'GET /api/business/mine',
   'POST /api/business/open',

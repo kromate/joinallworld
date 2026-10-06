@@ -1160,7 +1160,7 @@ test('Cloudflare: accounts are off unless configured — one disabled answer, ev
 });
 
 test('Cloudflare: accounts — save, restore on another device, the merge choice, sign out, sign out everywhere and delete, over rows that survive a restart', async t => {
-  const f = await accountsFixture(t), ada = await f.player('Ada');
+  const f = await accountsFixture(t, { LAUNCH_BONUS: 'off' }), ada = await f.player('Ada');
   const open = await f.state(ada.cookie);
   assert.deepEqual([open.enabled, open.provider, open.guest, open.account], [true, { apiKey: ACCOUNT_BINDINGS.ACCOUNTS_FIREBASE_API_KEY, googleClientId: ACCOUNT_BINDINGS.ACCOUNTS_GOOGLE_CLIENT_ID }, true, null]);
   // Save: the guest's character becomes the account's, under a new cookie with the cookie's usual flags.
@@ -1229,6 +1229,32 @@ test('Cloudflare: accounts — save, restore on another device, the merge choice
   for (const secret of ['UidAda', 'example.com', 'eyJ', phone.cookie.slice(11)]) assert.ok(!JSON.stringify(log.audit).includes(secret), secret);
   assert.ok(!/eyJ[A-Za-z0-9_-]{10,}/.test(f.logged()), 'no token is logged');
   assert.deepEqual([...new Set(f.outbound.map(request => request.url))], [TOKEN_KEYS_URL], 'the only outbound request was for the provider’s keys');
+});
+
+test('Cloudflare: the launch bonus — public offer, paid once per account on sign-up, exact at the last place with every device asking at once, over rows that survive a restart', async t => {
+  const f = await accountsFixture(t, { LAUNCH_BONUS_PLACES: '2', LAUNCH_BONUS_PER_ADDRESS_DAY: '100' });
+  const offer = await (await f.request('/api/world/bonus', null, null, f.from())).json();
+  assert.deepEqual([offer.on, offer.amount, offer.places, offer.left], [true, 1_000_000, 2, 2]);
+  const ada = await f.player('Ada'), bea = await f.player('Beatrice'), cy = await f.player('Cyrus'), dee = await f.player('Deedee');
+  const guestAsk = await f.change('/api/account/bonus', {}, ada.cookie);
+  assert.deepEqual([guestAsk.status, (await guestAsk.json()).state], [200, 'none'], 'a guest is paid nothing');
+  // Four sign-ups at once for two places: exactly two are paid, each a different number.
+  const signed = await Promise.all([['UidAda', ada], ['UidBea', bea], ['UidCy', cy], ['UidDee', dee]].map(([subject, device]) => f.signIn(subject as string, (device as { cookie: string }).cookie)));
+  assert.ok(signed.every(entry => entry.status === 200));
+  const devices = [ada, bea, cy, dee].map((device, i) => ({ ...device, cookie: (signed[i] as { cookie: string }).cookie }));
+  const cash = await Promise.all(devices.map(async device => (await f.life(device)).cash));
+  assert.equal(cash.filter(value => value === 1_005_000).length, 2); assert.equal(cash.filter(value => value === 5000).length, 2);
+  const storage = await f.storage();
+  const rows = (await storage.exec('SELECT value FROM accounts')).map(row => JSON.parse(row.value as string));
+  assert.deepEqual(rows.map((row: { bonus?: { n: number } }) => row.bonus?.n).filter((n: number | undefined) => n !== undefined).sort(), [1, 2]);
+  assert.equal(JSON.parse((await storage.exec("SELECT value FROM collections WHERE name = 'launchBonus'"))[0].value).claimed, 2);
+  // Asking again, from every device at once, pays nothing more.
+  const paid = devices.filter((device, i) => cash[i] === 1_005_000);
+  const again = await Promise.all(paid.flatMap(entry => [f.change('/api/account/bonus', {}, entry.cookie), f.change('/api/account/bonus', {}, entry.cookie)]));
+  for (const answer of again) { const body = await answer.json(); assert.deepEqual([body.state, body.n >= 1 && body.n <= 2], ['paid', true]); }
+  assert.deepEqual(await Promise.all(paid.map(async device => (await f.life(device)).cash)), [1_005_000, 1_005_000]);
+  const last = await (await f.request('/api/world/bonus', null, null, f.from())).json();
+  assert.deepEqual([last.on, last.left], [false, 0]);
 });
 
 test('Cloudflare: accounts — fixation, CSRF, token replay, unverified address, one answer for every bad token, limits, and sockets closed on sign-out', async t => {

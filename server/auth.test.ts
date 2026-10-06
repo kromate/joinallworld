@@ -97,7 +97,7 @@ test('save your character: signing in links this browser’s life to the account
   // What is stored: the character is filed under a key no browser holds, and only what the design names is kept about the person.
   const db = await a.stored(), account = Object.values(db.accounts ?? {})[0];
   assert.ok(account);
-  assert.deepEqual(Object.keys(account).sort(), ['createdAt', 'devices', 'email', 'id', 'lastSeenAt', 'mailOptIn', 'parked', 'provider', 'publicId', 'sessionKey', 'subject', 'v']);
+  assert.deepEqual(Object.keys(account).sort(), ['bonus', 'createdAt', 'devices', 'email', 'id', 'lastSeenAt', 'mailOptIn', 'parked', 'provider', 'publicId', 'sessionKey', 'subject', 'v']);
   assert.deepEqual({ provider: account.provider, subject: account.subject, email: account.email, publicId: account.publicId, devices: account.devices }, { provider: 'password', subject: 'UidAda', email: 'uidada@example.com', publicId: ada.id, devices: [signed.cookie.slice(4)] });
   const record = db.sessions[account.sessionKey ?? ''];
   assert.equal(record?.account, account.id); assert.equal(record?.publicId, ada.id);

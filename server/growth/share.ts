@@ -18,6 +18,7 @@ import { cityContent, cityRules } from '../../src/game/cities/index.ts';
 import { hasPlace } from '../../src/game/systems/estate.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.ts';
+import type { ShareOffer } from '../../src/game/share-model.ts';
 import { eventsBetween } from '../../src/game/calendar.ts';
 import { GAME_LABELS } from '../../src/tables/places.ts';
 import { withBoardGames } from '../../src/tables/derive.ts';
@@ -107,9 +108,9 @@ export const safeOrigin = (origin: unknown): string => (typeof origin === 'strin
  * The preview page. `share` may be null (unknown code): the general preview.
  * `origin` is e.g. "https://play.example" or ''.
  */
-export function sharePageHtml(share: Pick<ShareRecord, 'by' | 'facts'> | null, code: unknown, origin: unknown = ''): string {
+export function sharePageHtml(share: Pick<ShareRecord, 'by' | 'facts'> | null, code: unknown, origin: unknown = '', offer: ShareOffer | null = null): string {
   const base = safeOrigin(origin);
-  const preview = share ? sharePreview(share.facts) : { title: `${BRAND}: a digital world you can live in`, description: TAGLINE };
+  const preview = share ? sharePreview(share.facts, offer) : { title: `${BRAND}: a digital world you can live in`, description: TAGLINE };
   // People are sent on to the game's own landing hook: `join` places a new visitor with the sharer (their venue, their
   // door, or a table), `ref` is this share code, which the game attaches as a referral once the visitor's life exists.
   const table = share?.facts?.tableId && /^[a-z0-9-]{1,40}$/.test(share.facts.tableId) ? `&table=${share.facts.tableId}` : '';

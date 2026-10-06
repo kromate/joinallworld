@@ -45,7 +45,7 @@ function listen(peer: { ws: { on(event: 'message', listener: (data: { toString()
 async function harness(t: TestContext, options: FixtureOptions = {}) {
   const calls: { url: string; body: string }[] = [], pushes: string[] = [];
   const key = await makeKey('key-1'), provider = fakeProvider([key]);
-  const f = await fixture(t, { moderatorToken: TOKEN, publicOrigin: 'https://play.example', log: () => {}, ...options, env: { ...LIVE, ...ACCOUNTS, FOUNDER_EMAIL_SHA256: emailHash(FOUNDER_ADDRESS), ...options.env },
+  const f = await fixture(t, { moderatorToken: TOKEN, publicOrigin: 'https://play.example', log: () => {}, ...options, env: { ...LIVE, ...ACCOUNTS, LAUNCH_BONUS: 'off', FOUNDER_EMAIL_SHA256: emailHash(FOUNDER_ADDRESS), ...options.env },
     fetch: async (url, init) => { if (String(url).startsWith('https://fcm.googleapis.com/')) { pushes.push(String(url)); return new Response(null, { status: 201 }); } if (String(url) === ENDPOINT) { calls.push({ url: String(url), body: String((init as RequestInit).body) }); return new Response(null, { status: 202 }); } return provider.fetch(String(url), init as { body?: unknown }); } });
   const answer = async (res: Response): Promise<Reply> => ({ status: res.status, ...((await res.json()) as object) } as Reply);
   const post = async (path: string, body: unknown, who?: Pick<Who, 'cookie'>): Promise<Reply> => answer(await f.request(path, body, who?.cookie));

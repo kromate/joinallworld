@@ -37,6 +37,7 @@ import { accountWelcomeMail } from '../growth/email/templates.ts';
 import { lagosTime } from '../../src/game/clock.ts';
 import { cityName, playableCityIds } from '../../src/game/cities/index.ts';
 import { growthOf } from '../growth/data.ts';
+import { bonusConfig } from '../bonus/service.ts';
 import { claimWelcome, dueWelcomes, reviveWelcomes, settleWelcome } from './service.ts';
 import type { AccountDeps } from './service.ts';
 import type { RouteContext } from '../types.ts';
@@ -83,7 +84,7 @@ function build(ctx: RouteContext) {
           return held ? null : owed;
         });
         if (!claim) return;
-        const result = await sendMail(ctx, { to: claim.email, ...accountWelcomeMail({ name: claim.name, playUrl: `${origin()}/`, contact: contact(), cities: openCities() }) });
+        const result = await sendMail(ctx, { to: claim.email, ...accountWelcomeMail({ name: claim.name, playUrl: `${origin()}/`, contact: contact(), cities: openCities(), ...(claim.bonus ? { bonus: { ...claim.bonus, places: bonusConfig(ctx).places } } : {}) }) });
         const status = result.status ?? 0;
         // Worth another try: the mailer could not be reached or asked to wait. A 4xx is the mailer refusing THIS message (a bad or bounced address): never again.
         const retry = status === 0 || status === 429 || status >= 500;

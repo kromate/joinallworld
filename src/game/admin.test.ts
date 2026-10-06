@@ -27,6 +27,26 @@ test('wallet.admin is refused to a player and credits and debits as ledger lines
   assert.equal(state.cash, first.balance - first.amount + state.ledger.reduce((sum, line) => sum + line.amount, 0));
 });
 
+test('wallet.bonus is server-only, one labelled ledger line, a faucet that is not earned from work and is not skimmed by the ride debt', () => {
+  const state = fresh(), start = state.cash, earned = state.social.earned, reason = 'Launch bonus: one of the first 10,000 players';
+  assert.equal(dispatch(state, { type: 'wallet.bonus', payload: { amount: 1_000_000, reason } }, { now: NOW, cityId: 'lagos' }).code, 'server_only');
+  assert.equal(state.cash, start);
+  state.travel.rideDebt = 2_000_000;
+  assert.equal(dispatch(state, { type: 'wallet.bonus', payload: { amount: 1_000_000, reason } }, internal).code, 'credited');
+  assert.equal(state.cash, start + 1_000_000, 'half is not taken for the ride debt: only an earning or a gift is shared with it');
+  assert.equal(state.travel.rideDebt, 2_000_000);
+  assert.equal(state.ledger.at(-1)?.reason, reason);
+  assert.equal(state.social.earned, earned, 'not earned from work: no gifting is unlocked and no buying from players');
+  assert.equal(dispatch(state, { type: 'wallet.bonus', payload: { amount: 0, reason } }, internal).code, 'invalid_amount');
+  assert.equal(dispatch(state, { type: 'wallet.bonus', payload: { amount: 1.5, reason } }, internal).code, 'invalid_amount');
+  const first = state.ledger[0]; assert.ok(first);
+  assert.equal(state.cash, first.balance - first.amount + state.ledger.reduce((sum, line) => sum + line.amount, 0), 'cash is the opening balance plus the ledger');
+  // Whole-debt rule: a bonus that makes the debt comfortably affordable clears it, as an ordinary sink.
+  const rich = fresh(); rich.travel.rideDebt = 12000;
+  assert.equal(dispatch(rich, { type: 'wallet.bonus', payload: { amount: 1_000_000, reason } }, internal).code, 'credited');
+  assert.equal('rideDebt' in rich.travel, false);
+});
+
 test('needs.admin sets one need or lifts the low ones, and refuses an unknown need', () => {
   const state = fresh();
   assert.equal(dispatch(state, { type: 'needs.admin', payload: { op: 'set', need: 'hunger', value: 7.4 } }, internal).code, 'set');

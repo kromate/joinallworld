@@ -172,6 +172,12 @@ export interface AccountRecord {
    * itself. Cleared when the owner unsubscribes from everything. Read when the character first plays after the change.
    */
   mailOptIn?: true
+  /**
+   * The launch bonus (server/bonus/service.ts): `n` is the place this account holds (1..N), `amount` what it is worth in the game,
+   * `at` when the place was taken (then when it was paid). `held` while the money waits for a started character or for an address
+   * under the daily cap; `told` once the player has seen the moment. Absent on an account that never asked.
+   */
+  bonus?: { at: number; amount: number; n: number; held?: 'character' | 'address'; told?: true }
 }
 /** One signed-in browser. The key in `accountDevices` is that browser's `sid` cookie value. */
 export interface AccountDeviceRecord { account: string; createdAt: number; seenAt: number; expiresAt: number }

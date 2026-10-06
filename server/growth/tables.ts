@@ -42,6 +42,7 @@ import { cityContent } from '../../src/game/cities/index.ts';
 import { BOT_NAMES } from '../../src/tables/places.ts';
 import type { TableDef } from '../../src/tables/places.ts';
 import { withBoardGames } from '../../src/tables/derive.ts';
+import { warm as warmWeave } from '../../src/tables/weave.ts';
 import { GAMES } from '../../src/tables/games.ts';
 import { RulesError, RATING, cleanOptions, eloChange, withNames } from '../../src/tables/rules.ts';
 import type { Outcome, TableOptionSpec, TableOptions, TableRules, TableState } from '../../src/tables/rules.ts';
@@ -526,6 +527,7 @@ function buildService(ctx: RouteContext) {
       for (let i = 0; i < bots; i++) table.seats.push({ id: `bot-${i}`, name: `${BOT_NAMES[i]} (bot)`, bot: true, away: 0 });
       const seed = `${ctx.randomId()}${ctx.randomId()}`;
       const matchId = ctx.randomId();
+      if (table.place.game === 'weave') warmWeave(); // builds the computer players' word tables once, not in the middle of a turn
       const engine = table.game.start(table.seats.length, makeRng(`${seed}|deal`), table.options);
       const match: Match = { id: matchId, seed, n: 0, log: [], last: null, deadline: 0, turnStart: 0, allowedMs: 0, botAt: null, engine };
       startTurn(table, match);

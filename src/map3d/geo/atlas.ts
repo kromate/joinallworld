@@ -1,7 +1,8 @@
 import { stateOverviewHtml, stateOverviewToggleHtml } from './state-overview.ts';
 import type { OverviewExtras } from './state-overview.ts';
 import type { CityStateOverview } from '../../types/content.ts';
-import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
+import { venueFor } from '../../game/cities/runtime.ts';
+import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, cityModule, cityRules, isOpenCityId, citiesInState } from '../../game/cities/registry.ts';
 /**
  * OWNER: world
  * The atlas: ONE continuous map with three levels of detail — the world, Africa, Nigeria — and
@@ -55,6 +56,8 @@ import type { Picker } from './pick.ts';
 import { focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { LABEL_CAP, placeLabels } from './labels.ts';
 import { cityHit } from './city-hit.ts';
+import { badgeOf, byCountry, EMPTY_FRIENDS } from './friends.ts';
+import type { FriendHere, FriendsModel } from './friends.ts';
 import type { CityTarget } from './city-hit.ts';
 import type { LabelBox, LabelCandidate, PlacedLabel } from './labels.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, flightPoint, interCityTripOf, liftOf, linkId, linkPath, measure, tripPoint } from './routes.ts';
@@ -104,6 +107,8 @@ export interface AtlasOptions {
   now?: () => number;
   reducedMotion?: boolean;
   tabHidden?: () => boolean;
+  /** A friend's row in the friends list was used: Chat, Call or Ping. */
+  onFriend?: (action: 'chat' | 'call' | 'ping', id: string, name: string) => void;
   /** Fetches a level's data module; the default imports it from the registry. */
   load?: (levelId: string) => Promise<LevelModule>;
 }
@@ -139,7 +144,7 @@ interface Gesture { kind: 'pan' | 'pinch'; id: number; moved: boolean; from: Poi
 /** What the shell's `jaw:key` event carries. */
 interface KeyDetail { action?: string; mode?: string }
 interface Point { x: number; y: number }
-type UiName = 'labels' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet';
+type UiName = 'labels' | 'friends' | 'fpanel' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet';
 /** What diagnostics() reports. */
 export interface AtlasDiagnostics {
   kind: 'atlas'; renderCount: number; loop: boolean; level: number; levelId: string; wanted: number; loading: string; loaded: string[]; fading: boolean;
@@ -162,6 +167,10 @@ export interface AtlasApi {
   selectCity(cityId: string): boolean;
   select(ref: RegionRef | null, options?: SelectOptions): boolean;
   zoomBy(factor: number): void;
+  /** The friends to show as badges on the cities (or countries) they are in; null clears them. */
+  setFriends(model: FriendsModel | null): void;
+  /** Fly to a city and open the list of the friends there. False when no friend is shown there. */
+  openFriends(cityId: string): boolean;
   screenOf(lon: number, lat: number): { x: number; y: number };
   pick(lon: number, lat: number): { kind: RegionKind; id: string; name: string } | null;
   diagnostics(): AtlasDiagnostics;
@@ -189,7 +198,7 @@ const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const GLYPH = { globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>', rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, wallet = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, wallet = () => null, held = () => [],
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -258,6 +267,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     root = doc.createElement('section');
     root.className = 'atlas'; root.setAttribute('aria-label', 'World map: explore the world, Africa, Nigerian cities and travel routes.');
     root.innerHTML = `<div class="atlas-labels" aria-hidden="true"></div>
+      <div class="atlas-friends"></div>
       <div class="atlas-marker" aria-hidden="true" hidden></div>
       <div class="atlas-frame">
         <nav class="atlas-crumbs" aria-label="Map level"></nav>
@@ -265,11 +275,12 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
         <div class="atlas-stage"><div class="atlas-reticle" aria-hidden="true"></div><p class="atlas-wait" role="status" aria-live="polite" hidden></p>
           <div class="atlas-controls" role="group" aria-label="Map view"></div><div class="atlas-legend" hidden></div></div>
         <aside class="atlas-sheet" tabindex="-1" aria-live="polite" hidden></aside>
-      </div>`;
+      </div>
+      <aside class="atlas-fpanel" role="dialog" aria-label="Friends" hidden></aside>`;
     root.prepend(canvas);
     canvas.classList?.add('atlas-canvas'); canvas.setAttribute?.('aria-hidden', 'true');
     container.appendChild(root);
-    for (const name of ['labels', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
+    for (const name of ['labels', 'friends', 'fpanel', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
     ui.controls!.innerHTML = `<div class="atlas-zoom"><button type="button" data-atlas-zoom="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-atlas-zoom="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div>
       <button type="button" class="atlas-pill" data-atlas-zoom="fit">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span data-atlas-fit></span></button>
       <button type="button" class="atlas-pill" data-atlas-layer aria-pressed="false">${ICON('<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>')}<span data-atlas-layer-name></span></button>`;
@@ -437,7 +448,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     if (wanted > WORLD && !sheets[wanted - 1] && rig.view.distance > cuts[wanted - 1]! * 0.62) void ensure(wanted - 1);
     const next = sheets[wanted] ? wanted : level;
     if (next !== level) {
-      level = next; hovered = null;
+      level = next; hovered = null; settleFriends();
       // Arriving inside a country, the country itself is no longer the thing selected: its states are.
       if (selected?.kind === 'country' && selected.id === ATLAS_LEVELS[level]!.country) selected = null;
       drawChrome();
@@ -581,12 +592,99 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   function draw() {
     renderer.render(scene, camera);
     renderCount += 1;
-    drawLabels(); drawMarker();
+    drawLabels(); drawMarker(); drawFriends();
   }
   function syncResolution() {
     for (const material of ribbonMaterials) material.uniforms.resolution!.value.set(size.width, size.height);
     if (sheets[NIGERIA]?.dots) sheets[NIGERIA].dots.object.material.uniforms.ratio!.value = renderer.getPixelRatio?.() || 1;
   }
+
+
+  // ---- friends: a badge on each city (or country, further out) they are in, and the list behind it ------------
+  let friendsNow: FriendsModel = EMPTY_FRIENDS, friendsOpen: string | null = null;
+  const friendNodes = new Map<string, HTMLElement>();
+  const countryOf = (cityId: string): string | null => cityRules(cityId)?.country.id ?? null;
+  /** The groups drawn at this level, each with the place it stands at on the screen. */
+  function friendBadges(): { key: string; title: string; friends: FriendHere[]; x: number; y: number }[] {
+    if (!fits) return [];
+    if (level === NIGERIA) {
+      return friendsNow.cities.flatMap((group) => {
+        const spot = cityEntry(group.cityId);
+        if (!spot) return [];
+        const where = at(relLon(spot.lon), spot.lat, HEIGHT.open + 0.02);
+        return where.behind ? [] : [{ key: `city:${group.cityId}`, title: cityRules(group.cityId)?.name ?? group.cityId, friends: group.friends, x: where.x + 12, y: where.y + 8 }];
+      });
+    }
+    const sheet = level === AFRICA ? sheets[AFRICA] : sheets[WORLD];
+    return byCountry(friendsNow, countryOf).flatMap((group) => {
+      const feature = (sheet ?? sheets[WORLD] ?? sheets[AFRICA])?.topology.byId.get(group.countryId) as Feature<CountryData & { at?: [number, number] }> | undefined;
+      const point = feature && 'at' in feature ? (feature as unknown as { at: [number, number] }).at : null;
+      if (!feature || !point) return [];
+      const where = at(point[0], point[1], 0);
+      return where.behind ? [] : [{ key: `country:${group.countryId}`, title: feature.name, friends: group.friends, x: where.x + 14, y: where.y + 10 }];
+    });
+  }
+  function drawFriends() {
+    if (!ui.friends) return;
+    const badges = friendBadges(), keep = new Set<string>();
+    for (const badge of badges) {
+      keep.add(badge.key);
+      const look = badgeOf(badge.friends);
+      let node = friendNodes.get(badge.key);
+      if (!node) { const made = doc!.createElement('button'); made.type = 'button'; node = made; friendNodes.set(badge.key, node); ui.friends.appendChild(node); }
+      const key = `${look.initials.join('')}|${look.count}|${look.online}|${badge.title}`;
+      if (node.dataset.key !== key) {
+        node.dataset.key = key; node.dataset.atlasFb = badge.key;
+        node.className = `atlas-fb${look.online ? ' is-online' : ''}`;
+        node.setAttribute('aria-label', `${look.count} friend${look.count === 1 ? '' : 's'} in ${badge.title}${look.online ? ', some online' : ''}. Show who.`);
+        node.innerHTML = `<span class="atlas-fb-av">${look.initials.map((initial, index) => `<i style="--i:${index}">${esc(initial)}</i>`).join('')}</span><b>${look.count}</b>`;
+      }
+      node.style.transform = `translate(${badge.x.toFixed(1)}px,${badge.y.toFixed(1)}px)`;
+    }
+    for (const [key, node] of friendNodes) if (!keep.has(key)) { node.remove(); friendNodes.delete(key); }
+  }
+  function friendRow(friend: FriendHere, cityId: string | null): string {
+    const place = friend.venue === 'home' ? 'at home' : friend.venue && cityId ? (venueFor(cityId, friend.venue)?.label ?? '') : '';
+    const where = friend.online ? `Online${cityId ? ` · in ${esc(cityRules(cityId)?.name ?? cityId)}` : ''}${place ? ` · ${esc(place)}` : ''}${friend.journey ? ` · travelling to ${esc(cityRules(friend.journey)?.name ?? friend.journey)}` : ''}` : 'Offline';
+    return `<li><span class="atlas-fb-dot${friend.online ? ' is-online' : ''}" aria-hidden="true">${esc(friend.initial)}</span><span class="atlas-fp-text"><b>${esc(friend.name)}</b><small>${where}</small></span>`
+      + `<button type="button" data-atlas-fact="chat" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}">Chat</button>`
+      + `<button type="button" data-atlas-fact="${friend.online ? 'call' : 'ping'}" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}">${friend.online ? 'Call' : 'Ping'}</button></li>`;
+  }
+  function drawFriendsPanel() {
+    const panel = ui.fpanel;
+    if (!panel) return;
+    const badge = friendsOpen ? friendBadges().find((item) => item.key === friendsOpen) ?? null : null;
+    const group = friendsOpen?.startsWith('city:') ? friendsNow.cities.find((item) => `city:${item.cityId}` === friendsOpen) : null;
+    const countryId = friendsOpen?.startsWith('country:') ? friendsOpen.slice(8) : null;
+    const countryGroup = countryId ? byCountry(friendsNow, countryOf).find((item) => item.countryId === countryId) : null;
+    const friends = group?.friends ?? countryGroup?.friends ?? [];
+    if (!friendsOpen || !friends.length) { panel.hidden = true; panel.innerHTML = ''; if (friendsOpen && !friends.length && !badge) friendsOpen = null; return; }
+    const cities = group ? [group.cityId] : countryGroup?.cityIds ?? [];
+    const where = (friend: FriendHere): string | null => (group ? group.cityId : cities.find((cityId) => friendsNow.cities.find((item) => item.cityId === cityId)?.friends.some((item) => item.id === friend.id)) ?? null);
+    const title = group ? cityRules(group.cityId)?.name ?? group.cityId : badge?.title ?? 'this country';
+    const going = cities.filter((cityId) => cityId !== current && isOpenCityId(cityId)).map((cityId) => `<button type="button" class="atlas-fp-go" data-atlas-fgo="${esc(cityId)}">Go to ${esc(cityRules(cityId)?.name ?? cityId)}</button>`).join('');
+    const away = friendsNow.offline.slice(0, 5);
+    panel.hidden = false;
+    panel.innerHTML = `<header><b>Friends in ${esc(title)}</b><button type="button" data-atlas-fclose aria-label="Close the list of friends">×</button></header>`
+      + `<ul>${friends.map((friend) => friendRow(friend, where(friend))).join('')}</ul>`
+      + (away.length ? `<p class="atlas-fp-note">Offline, no place shown</p><ul>${away.map((friend) => friendRow(friend, null)).join('')}</ul>` : '')
+      + (going ? `<div class="atlas-fp-foot">${going}</div>` : '');
+  }
+  function setFriends(model: FriendsModel | null) {
+    friendsNow = model ?? EMPTY_FRIENDS;
+    drawFriendsPanel(); request();
+  }
+  function openFriends(cityId: string): boolean {
+    if (!friendsNow.cities.some((group) => group.cityId === cityId)) return false;
+    const spot = cityEntry(cityId);
+    void ensure(NIGERIA);
+    friendsOpen = `city:${cityId}`;
+    if (fits && spot) { const [x, y] = project(relLon(spot.lon), spot.lat); fly({ x, z: -y, distance: Math.min(rig.view.distance, fits[NIGERIA]!.distance * 0.8), yaw: 0 }, 0.8); }
+    drawFriendsPanel(); request();
+    return true;
+  }
+  // The badge a level draws is a different one (a city further in, a country further out): the list follows the level it was opened at.
+  function settleFriends() { if (friendsOpen && !friendBadges().some((item) => item.key === friendsOpen)) { friendsOpen = null; drawFriendsPanel(); } }
 
   // ---- labels ---------------------------------------------------------------------------------------
   function screenOf(x: number, y: number, z: number) { probe.set(x, y, z).project(camera); return { x: (probe.x * 0.5 + 0.5) * size.width, y: (0.5 - probe.y * 0.5) * size.height, behind: probe.z > 1 }; }
@@ -1016,6 +1114,14 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
+    const friendOpen = hit('fb'), friendAct = hit('fact'), friendGo = hit('fgo');
+    if (friendOpen || friendAct || friendGo || hit('fclose')) {
+      if (friendAct) onFriend(friendAct.dataset.atlasFact as 'chat' | 'call' | 'ping', friendAct.dataset.id ?? '', friendAct.dataset.name ?? '');
+      else if (friendGo) { friendsOpen = null; drawFriendsPanel(); selectCity(friendGo.dataset.atlasFgo ?? ''); }
+      else if (friendOpen) { const key = friendOpen.dataset.atlasFb ?? null; friendsOpen = friendsOpen === key ? null : key; drawFriendsPanel(); }
+      else { friendsOpen = null; drawFriendsPanel(); }
+      return;
+    }
     const lvl = hit('level'), city = hit('city'), pick = hit('pick'), zoom = hit('zoom'), route = hit('route'), play = hit('preview'), go = hit('travel'), leave = hit('go'), onCredit = hit('credit');
     const inspectCity = hit('inspect-city'), overviewButton = hit('state-overview'), overviewSection = hit('overview-section'), stateLink = hit('state-link'), departure = hit('departure');
     if (departure && stateOverviewShown) {
@@ -1109,7 +1215,7 @@ export function createAtlas(container: HTMLElement, { onOpenCity = () => {}, onE
     },
     /** The held cities or the links may have changed. */
     refresh() { drawRail(); drawSheet(); },
-    resize, goLevel, previewTrip, selectCity,
+    resize, goLevel, previewTrip, selectCity, setFriends, openFriends,
     warm() { void ensure(WORLD).then(() => ensure(AFRICA)); },
     select: (ref, options) => select(ref, options),
     zoomBy: (factor) => { if (fits) zoomBy(factor); },

@@ -567,6 +567,8 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/admin/me',
   'GET /api/admin/dashboard',
   'GET /api/admin/economy',
+  'GET /api/admin/history',
+  'POST /api/admin/players/bulk',
   'GET /api/admin/players',
   'GET /api/admin/players/:id',
   'POST /api/admin/players/:id/act',

@@ -14,6 +14,8 @@
  *   GET  /api/admin/me                        who I am as an admin, the cities, the tool descriptors, the limits in force
  *   GET  /api/admin/dashboard[?fresh=1]       the dashboard (server/admin/stats.ts), cached 45 s
  *   GET  /api/admin/economy[?fresh=1]         the economy snapshot (a walk over the sessions), cached 10 min
+ *   GET  /api/admin/history[?days=30]         the dashboard's history: 30 days of exact counters and the daily samples, the new-player funnel
+ *   POST /api/admin/players/bulk              { clientId, ids (at most 20), action: message | credit, text? amount? reason? confirm? }
  *   GET  /api/admin/players?q&filter&city&page    search and list
  *   GET  /api/admin/players/:id               one player
  *   POST /api/admin/players/:id/act           { clientId, action, reason?, confirm?, …params }   server/admin/actions.ts
@@ -46,8 +48,10 @@ import { checkConfirm, issueConfirm } from '../admin/confirm.ts';
 import { limitsOf, maskEmail } from '../admin/config.ts';
 import { accountBudget, addressBudget, adminOf, countFailure, mayAct, notFound, shortRef } from '../admin/gate.ts';
 import type { Admin } from '../admin/gate.ts';
-import { playersService, FILTERS } from '../admin/players.ts';
+import { playersService, FILTERS, SORTS } from '../admin/players.ts';
 import type { PlayerFilter } from '../admin/players.ts';
+import { funnelOf, historyOf, recorder } from '../admin/history.ts';
+import { callService } from '../social/calls.ts';
 import { sanctionsOf } from '../admin/sanctions.ts';
 import { settingsOf } from '../admin/settings.ts';
 import { statsService } from '../admin/stats.ts';
@@ -58,12 +62,21 @@ import type { CityId } from '../../src/types/protocol.ts';
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
 
 const NO_STORE = { 'Cache-Control': 'no-store' };
+const BULK_MAX = 20;
 const REPORT_ACTIONS = ['dismiss', 'warn', 'mute'] as const;
 
 export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const players = playersService(ctx), actions = actionsService(ctx), stats = statsService(ctx), announce = announceOf(ctx), settings = settingsOf(ctx), sanctions = sanctionsOf(ctx);
   const world = worldService(ctx), moderation = moderationService(ctx), social = socialService(ctx), outreach = outreachService(ctx), shops = businessService(ctx), notice = noticeOf(ctx);
   linkFeatures(ctx);
+  // The history of the dashboard: one small row per day, sampled by the heartbeat (server/admin/history.ts).
+  const history = recorder(ctx, (db) => {
+    const d = stats.dashboard(db), calls = callService(ctx).stats(), guide = companionService(ctx).overview().today.outcomes;
+    return { peakOnline: d.online.value, accounts: d.accounts.accounts, sessions: d.capacity.sessions.held, callsPlaced: calls.placed, callsConnected: calls.connectedDirect + calls.connectedViaRelay, callsRelay: calls.connectedViaRelay, callsFailed: calls.failedToConnect,
+      aiRequests: Object.values(guide).reduce((sum, n) => sum + n, 0), aiModel: guide.primary, aiFallback: guide.fallback, emailSent: d.mail.email.sentToday, pushSent: d.mail.push.sentToday, ...(stats.lastCash() === undefined ? {} : { cash: stats.lastCash() as number }) };
+  });
+  // Only while somebody is connected: an idle server does no work (and reads nothing) on its heartbeat.
+  ctx.on?.('heartbeat', () => { if (ctx.core.sockets().length > 0) void history.tick(); });
   ctx.startup?.push(sanctions.load(), announce.load(), settings.load());
   const refuse = (status: number, code: string, reason: string) => Object.assign(ctx.fail(status, code), { reason });
 
@@ -127,12 +140,17 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     'GET /api/admin/me': read((db, admin) => ({ admin: true, level: admin.root ? 'root' : 'admin', name: admin.name, ref: shortRef(admin.accountId), cities: ctx.cityIds, tools: adminTools(ctx), limits: { ...limitsOf(ctx) },
       email: maskEmail(db.accounts?.[admin.accountId]?.email) }), { quiet: true }),
     'GET /api/admin/dashboard': read((db, _admin, request) => stats.dashboard(db, request.query.get('fresh') === '1')),
+    'GET /api/admin/history': read((db, _admin, request) => {
+      const days = Math.min(400, Math.max(1, Number(request.query.get('days')) || 30)), now = ctx.now();
+      return { ...historyOf(db, now, days), funnel: { today: funnelOf(db, now, 1), week: funnelOf(db, now, 7) } };
+    }),
     'GET /api/admin/economy': read((db, _admin, request) => stats.economy(db, request.query.get('fresh') === '1')),
     'GET /api/admin/tools': read(() => ({ tools: adminTools(ctx) })),
 
     'GET /api/admin/players': read((db, _admin, request) => {
       const filter = FILTERS.find((item) => item === request.query.get('filter')) ?? 'all' as PlayerFilter, city = ctx.cityIds.find((id) => id === request.query.get('city')) ?? '';
-      return players.list(db, { q: request.query.get('q') ?? '', filter, city, page: Number(request.query.get('page')) || 0 });
+      const sort = SORTS.find((item) => item === request.query.get('sort')) ?? 'seen';
+      return players.list(db, { q: request.query.get('q') ?? '', filter, city, page: Number(request.query.get('page')) || 0, sort, desc: request.query.get('dir') !== 'asc', size: Number(request.query.get('size')) || 0 });
     }),
     'GET /api/admin/players/:id': read((db, _admin, request) => {
       const found = players.detail(db, publicId(request.params.id));
@@ -158,6 +176,36 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       const result = await ctx.store.transact((db) => {
         const caller = again(db, request), target = targetOf(db, id);
         return ctx.once(db, caller.session, { id: body.clientId as string, kind: `admin.${parsed.action}`, fingerprint: [id, parsed.action, parsed.params, parsed.reason] }, () => ({ ...actions.run(db, caller, target, parsed, effects) }));
+      });
+      stats.invalidate();
+      await actions.finish(effects);
+      return { body: result, headers: NO_STORE };
+    },
+
+    // Several players at once, for the two things an admin does to many: a message, and a small credit. Under the same limits as one player at a time
+    // (every target is acted on by the same function, so the per-target, per-admin and per-action limits and the receipts apply to each), all or nothing,
+    // with a token first (the page asks for the number of players typed back).
+    'POST /api/admin/players/bulk': async (request) => {
+      const admin = await enter(request, { write: true });
+      const body = await request.json();
+      const ids = Array.isArray(body.ids) ? [...new Set(body.ids.map(publicId))] : [];
+      if (!ids.length || ids.length > BULK_MAX) throw refuse(400, 'invalid_players', `Choose 1 to ${BULK_MAX} players.`);
+      if (body.action !== 'message' && body.action !== 'credit') throw ctx.fail(400, 'unknown_action');
+      const parsed = parseAction(ctx, body.action, body);
+      if (parsed.action === 'credit' && Number(parsed.params.amount) > limitsOf(ctx).grantEach) throw refuse(409, 'over_grant_limit', `A bulk credit may give at most ${formatNaira(limitsOf(ctx).grantEach)} to each player.`);
+      ctx.onceId(body.clientId);
+      const bound = canon([parsed.action, parsed.params, parsed.reason, [...ids].sort()]);
+      if (!(await checkConfirm(ctx, body.confirm, admin.accountId, 'bulk', parsed.action, bound))) {
+        const issued = await issueConfirm(ctx, admin.accountId, 'bulk', parsed.action, bound);
+        return { body: { ok: false, code: 'confirmation_required', ...issued, summary: parsed.action === 'credit' ? `Give ${formatNaira(Number(parsed.params.amount))} to ${ids.length} players (${formatNaira(Number(parsed.params.amount) * ids.length)} in all)` : `Send your message to ${ids.length} players`, players: ids.length }, headers: NO_STORE };
+      }
+      const effects: Effects = {};
+      const result = await ctx.store.transact((db) => {
+        const caller = again(db, request);
+        return ctx.once(db, caller.session, { id: body.clientId as string, kind: 'admin.bulk', fingerprint: [parsed.action, parsed.params, parsed.reason, [...ids].sort()] }, () => {
+          const done = ids.map((id) => actions.run(db, caller, targetOf(db, id), parsed, effects));
+          return { ok: true, code: 'bulk', count: done.length, summary: `${parsed.action === 'credit' ? 'Credited' : 'Messaged'} ${done.length} players`, lines: done.map((item) => item.line) };
+        });
       });
       stats.invalidate();
       await actions.finish(effects);
@@ -373,8 +421,9 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     'GET /api/admin/audit': read((db, _admin, request) => {
       const q = request.query, action = q.get('action') ?? '', admin = q.get('admin') ?? '', target = q.get('target') ?? '', text = (q.get('q') ?? '').toLowerCase().slice(0, 80);
       const before = Number(q.get('before')) || Infinity, limit = Math.min(500, Math.max(1, Number(q.get('limit')) || 100));
+      const since = Number(q.get('from')) || 0, until = Number(q.get('to')) || Infinity;
       const log = peek(db, 'adminAudit');
-      const all = log.lines.filter((line) => line.n < before && (!action || line.action === action) && (!admin || shortRef(line.admin) === admin) && (!target || line.target === target)
+      const all = log.lines.filter((line) => line.n < before && line.at >= since && line.at <= until && (!action || line.action === action) && (!admin || shortRef(line.admin) === admin) && (!target || line.target === target)
         && (!text || `${line.summary} ${line.reason} ${line.targetName} ${line.adminName}`.toLowerCase().includes(text)));
       const page = all.slice(-limit).reverse(), last = page.at(-1);
       return { lines: page.map((line) => ({ ...line, admin: shortRef(line.admin) })), total: all.length, next: all.length > page.length && last ? last.n : null, totals: log.totals, kept: log.lines.length };

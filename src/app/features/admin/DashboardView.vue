@@ -1,96 +1,161 @@
 <script setup lang="ts">
-// The dashboard: each number with the time it was true and, in its footnote, what it cost to get and whether it is exact.
+// The dashboard: it answers "how is the game doing today?" first (six tiles with a 14-day trend and the change against yesterday), then
+// growth and activity over 30 days, the new-player funnel, each city, the economy, the social side, the AI guide and the system. Every
+// panel says what it cost to get and whether it is exact. It refreshes itself every minute and says when its numbers are from.
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useAdmin } from './useAdmin.ts'
 import { absolute, bytes, naira, relative, uptime } from './adminModel.ts'
+import { accountsPerDay, field, fillTone, lastDays, percent, returning, series, shortDate, sizeTone, tileChange } from './dashboardModel.ts'
+import type { DayRow } from './dashboardModel.ts'
+import Spark from './charts/Spark.vue'
+import Trend from './charts/Trend.vue'
+import Funnel from './charts/Funnel.vue'
+import type { FunnelRow } from './charts/Funnel.vue'
+import { recordDone } from './adminUi.ts'
 
-defineEmits<{ player: [id: string] }>()
+const emit = defineEmits<{ player: [id: string] }>()
 const api = useAdmin()
 interface Dash {
-  asOf: number; online: { value: number; cities: Record<string, number> }
+  asOf: number; online: { value: number; cities: Record<string, number> }; cities: Record<string, { new: number; seen: number }>; yesterday: { new: number; active: number; sessions: number }; today: { sessions: number }
   players: { newToday: number; new7d: number; activeToday: number; active7d: { exact: number; olderVisits: number }; active30d: { exact: number; olderVisits: number }; note: string }
-  accounts: { accounts: number; guests: number }; capacity: { sessions: { held: number; most: number }; sockets: { open: number; most: number } }
+  accounts: { accounts: number; guests: number }; capacity: { sessions: { held: number; most: number }; sockets: { open: number; most: number; perAddress: number } }
   businesses: { open: number; total: number }; reports: { open: number; problems: { open: number } }
-  mail: { email: { sentToday: number; cap: number; off: boolean }; push: { sentToday: number; cap: number; off: boolean }; byKind: Record<string, number> }
-  adminMoney: { creditToday: number; debitToday: number; grantToday: number; creditTotal: number; debitTotal: number; grantTotal: number }
-  storage: { collections: Record<string, number> }; build: string; uptimeMs: number; extra: { id: string; label: string; group?: string; cost: string; value: number | string | null }[]
+  mail: { email: { sentToday: number; cap: number; off: boolean }; push: { sentToday: number; cap: number; off: boolean } }
+  adminMoney: { creditToday: number; debitToday: number; grantToday: number }
+  storage: { collections: Record<string, number>; rows: unknown; writes: number | null }; build: string; uptimeMs: number
+  extra: { id: string; label: string; group?: string; cost: string; value: number | string | null }[]
 }
-interface Eco { asOf: number; cashInCirculation: number; players: number; sessionsRead: number; truncated: boolean; faucets: { category: string; net: number }[]; sinks: { category: string; net: number }[]; cities: Record<string, { residents: number; visitors: number }>; cost: string }
-const dash = ref<Dash | null>(null), eco = ref<Eco | null>(null), error = ref(''), busy = ref(false), tick = ref(0)
+interface Hist { asOf: number; startedOn: string | null; kept: number; days: DayRow[]; funnel: { today: { steps: FunnelRow[]; returned: { size: number; back: number; rate: number | null } }; week: { steps: FunnelRow[]; returned: { size: number; back: number; rate: number | null } } } }
+interface Eco {
+  asOf: number; cashInCirculation: number; players: number; median: number; richest: { id: string; name: string; cash: number }[]; sessionsRead: number; truncated: boolean; cost: string
+  faucets: { category: string; net: number }[]; sinks: { category: string; net: number }[]; adminMoney: { category: string; net: number }[]
+  cities: Record<string, { residents: number; visitors: number }>; social: { messagesToday: number; groups: number; conversations: number; pings: number }
+}
+const dash = ref<Dash | null>(null), hist = ref<Hist | null>(null), eco = ref<Eco | null>(null), error = ref(''), busy = ref(false)
+const span = ref<'today' | 'week'>('week'), now = ref(Date.now())
 async function load(fresh = false): Promise<void> {
   busy.value = true
-  const reply = await api.get<Dash>('/api/admin/dashboard', fresh ? { fresh: 1 } : {})
+  const [d, h] = await Promise.all([api.get<Dash>('/api/admin/dashboard', fresh ? { fresh: 1 } : {}), api.get<Hist>('/api/admin/history', { days: 30 })])
   busy.value = false
-  if (reply.ok) { dash.value = reply.data; error.value = '' } else error.value = reply.error.reason
+  if (d.ok) { dash.value = d.data; error.value = '' } else error.value = d.error.reason
+  if (h.ok) hist.value = h.data
 }
-async function economy(): Promise<void> { const reply = await api.get<Eco>('/api/admin/economy', { fresh: 1 }); if (reply.ok) eco.value = reply.data; else error.value = reply.error.reason }
-let timer: ReturnType<typeof setInterval> | undefined
-onMounted(() => { void load(); timer = setInterval(() => { tick.value += 1; if (tick.value % 6 === 0) void load() }, 10000) })
+async function economy(fresh = false): Promise<void> {
+  const reply = await api.get<Eco>('/api/admin/economy', fresh ? { fresh: 1 } : {})
+  if (reply.ok) eco.value = reply.data; else error.value = reply.error.reason
+}
+let timer: ReturnType<typeof setInterval> | undefined, ticks = 0
+onMounted(() => { void load(); void economy(); timer = setInterval(() => { now.value = Date.now(); ticks += 1; if (ticks % 6 === 0) void load(); if (ticks % 60 === 0) void economy() }, 10000) })
 onBeforeUnmount(() => clearInterval(timer))
-const cities = computed(() => Object.entries(dash.value?.online.cities ?? {}).sort((a, b) => b[1] - a[1]))
-const pct = (n: number, of: number): number => (of > 0 ? Math.min(100, Math.round((n / of) * 100)) : 0)
-const sizes = computed(() => Object.entries(dash.value?.storage.collections ?? {}).sort((a, b) => b[1] - a[1]).slice(0, 10))
-/** Numbers other features add: one card each, except those that share a group (calls, the AI guide, pictures), which share one card. */
-const extras = computed(() => {
-  const cards: { key: string; title: string; rows: { label: string; value: number | string | null }[]; cost: string }[] = []
-  for (const item of dash.value?.extra ?? []) {
-    const key = item.group || item.id, found = cards.find((card) => card.key === key)
-    if (found) found.rows.push({ label: item.label, value: item.value })
-    else cards.push({ key, title: item.group || item.label, rows: item.group ? [{ label: item.label, value: item.value }] : [{ label: '', value: item.value }], cost: item.cost })
-  }
-  return cards
+
+const days = computed(() => hist.value?.days ?? [])
+const labels = computed(() => days.value.map((row) => shortDate(row.date)))
+const two = computed(() => lastDays(days.value, 14)), twoLabels = computed(() => two.value.map((row) => shortDate(row.date)))
+const newSeries = computed(() => series(two.value, (row) => row.new)), seenSeries = computed(() => series(two.value, (row) => row.seen))
+const peakSeries = computed(() => series(two.value, field('peakOnline'))), accSeries = computed(() => series(two.value, field('accounts')))
+const returningNow = computed(() => (dash.value ? returning(dash.value.players.active7d.exact, dash.value.players.new7d) : 0))
+const extra = (id: string): number | string | null => dash.value?.extra.find((item) => item.id === id)?.value ?? null
+const group = (name: string): { label: string; value: number | string | null }[] => (dash.value?.extra ?? []).filter((item) => item.group === name).map((item) => ({ label: item.label, value: item.value }))
+const cityRows = computed(() => {
+  const ids = new Set([...Object.keys(dash.value?.online.cities ?? {}), ...Object.keys(dash.value?.cities ?? {}), ...Object.keys(eco.value?.cities ?? {})])
+  return [...ids].map((id) => ({ id, online: dash.value?.online.cities[id] ?? 0, new: dash.value?.cities[id]?.new ?? 0, seen: dash.value?.cities[id]?.seen ?? 0, residents: eco.value?.cities[id]?.residents ?? null, visitors: eco.value?.cities[id]?.visitors ?? null }))
+    .sort((a, b) => b.online - a.online || b.seen - a.seen || a.id.localeCompare(b.id))
 })
+const collections = computed(() => Object.entries(dash.value?.storage.collections ?? {}).sort((a, b) => b[1] - a[1]).slice(0, 12))
+const funnel = computed(() => hist.value?.funnel[span.value])
+const tileNote = (text: string | null): string => text ?? 'no earlier day to compare with'
+
 const guideTest = ref('')
 async function testGuide(): Promise<void> {
   guideTest.value = 'Asking…'
   const reply = await api.post<{ ok: boolean; model?: string; ms?: number; error?: string }>('/api/admin/companion/test', {}, `guide-test:${Date.now()}`)
-  if (!reply.ok) guideTest.value = reply.error.reason
-  else guideTest.value = reply.data.ok ? `The guide answered in ${reply.data.ms} ms (${reply.data.model}).` : `The guide did not answer: ${reply.data.error} (${reply.data.ms} ms).`
+  guideTest.value = !reply.ok ? reply.error.reason : reply.data.ok ? `The guide answered in ${reply.data.ms} ms (${reply.data.model}).` : `The guide did not answer: ${reply.data.error} (${reply.data.ms} ms).`
+  recordDone(guideTest.value, reply.ok && reply.data.ok === true)
 }
-const asOf = (at: number): string => `as of ${absolute(at)} (${relative(at, dash.value?.asOf ?? at)})`
+const asOf = computed(() => (dash.value ? `as of ${absolute(dash.value.asOf)}, ${relative(dash.value.asOf, now.value)}` : ''))
 </script>
 
 <template>
-  <section>
-    <div class="adm-row"><h2 style="margin:0;flex:1">Dashboard</h2><button class="adm-btn" :disabled="busy" @click="load(true)">{{ busy ? 'Refreshing…' : 'Refresh' }}</button></div>
+  <section class="adm-dash" aria-label="Dashboard">
+    <div class="adm-row adm-between">
+      <p class="adm-muted" role="status">{{ asOf || 'Loading…' }}<template v-if="dash"> · refreshes every minute · build {{ dash.build }}, up {{ uptime(dash.uptimeMs) }}</template></p>
+      <button class="adm-btn" :disabled="busy" @click="load(true); economy(true)">{{ busy ? 'Refreshing…' : 'Refresh now' }}</button>
+    </div>
     <p v-if="error" class="adm-error" role="alert">{{ error }}</p>
-    <p v-if="!dash && !error" class="adm-muted">Loading…</p>
+    <div v-if="!dash && !error" class="adm-grid" aria-busy="true"><div v-for="n in 6" :key="n" class="adm-card adm-skeleton" /></div>
     <template v-if="dash">
-      <p class="adm-muted">Cached up to 45 seconds, {{ asOf(dash.asOf) }}. Build {{ dash.build }}, up {{ uptime(dash.uptimeMs) }}.</p>
-      <div class="adm-grid">
-        <div class="adm-card"><h3>Online now</h3><div class="adm-big">{{ dash.online.value }}</div><div class="adm-sub">exact · live sockets, memory only</div></div>
-        <div class="adm-card"><h3>New players</h3><div class="adm-big">{{ dash.players.newToday }}</div><div class="adm-sub">today · {{ dash.players.new7d }} in 7 days</div></div>
-        <div class="adm-card"><h3>Active today</h3><div class="adm-big">{{ dash.players.activeToday }}</div><div class="adm-sub">exact</div></div>
-        <div class="adm-card"><h3>Active 7 / 30 days</h3><div class="adm-big">{{ dash.players.active7d.exact }} / {{ dash.players.active30d.exact }}</div><div class="adm-sub">lives under 31 days old; plus {{ dash.players.active7d.olderVisits }} / {{ dash.players.active30d.olderVisits }} older-life visits (upper bound)</div></div>
-        <div class="adm-card"><h3>Accounts / guests</h3><div class="adm-big">{{ dash.accounts.accounts }} / {{ dash.accounts.guests }}</div><div class="adm-sub">guests approximate · key counts</div></div>
-        <div class="adm-card"><h3>Sessions held</h3><div class="adm-big">{{ dash.capacity.sessions.held }}</div><div class="adm-bar"><i :style="{ width: pct(dash.capacity.sessions.held, dash.capacity.sessions.most) + '%' }" /></div><div class="adm-sub">of {{ dash.capacity.sessions.most }}</div></div>
-        <div class="adm-card"><h3>Sockets open</h3><div class="adm-big">{{ dash.capacity.sockets.open }}</div><div class="adm-bar"><i :style="{ width: pct(dash.capacity.sockets.open, dash.capacity.sockets.most) + '%' }" /></div><div class="adm-sub">of {{ dash.capacity.sockets.most }}</div></div>
-        <div class="adm-card"><h3>Businesses open</h3><div class="adm-big">{{ dash.businesses.open }}</div><div class="adm-sub">{{ dash.businesses.total }} ever opened</div></div>
-        <div class="adm-card"><h3>Reports open</h3><div class="adm-big">{{ dash.reports.open }}</div><div class="adm-sub">{{ dash.reports.problems.open }} problem reports open</div></div>
-        <div class="adm-card"><h3>Mail today</h3><div class="adm-sub">E-mail {{ dash.mail.email.sentToday }} of {{ dash.mail.email.cap }}{{ dash.mail.email.off ? ' (off)' : '' }} · Push {{ dash.mail.push.sentToday }} of {{ dash.mail.push.cap }}{{ dash.mail.push.off ? ' (off)' : '' }}</div><div class="adm-sub">{{ Object.entries(dash.mail.byKind).map(([k, v]) => `${k} ${v}`).join(' · ') || 'no comeback mail today' }}</div></div>
-        <div class="adm-card"><h3>Admin money</h3><div class="adm-sub">Today: +{{ naira(dash.adminMoney.creditToday) }} credits, −{{ naira(dash.adminMoney.debitToday) }} debits, {{ naira(dash.adminMoney.grantToday) }} grants</div><div class="adm-sub">All time: +{{ naira(dash.adminMoney.creditTotal) }} / −{{ naira(dash.adminMoney.debitTotal) }} / {{ naira(dash.adminMoney.grantTotal) }}</div></div>
-        <div v-for="card in extras" :key="card.key" class="adm-card"><h3>{{ card.title }}</h3>
-          <div v-if="card.rows.length === 1 && !card.rows[0]?.label" class="adm-big">{{ card.rows[0]?.value ?? '-' }}</div>
-          <div v-else v-for="row in card.rows" :key="row.label" class="adm-sub"><b>{{ row.value ?? '-' }}</b> {{ row.label }}</div>
-          <template v-if="card.key === 'AI guide today'"><button class="adm-btn" @click="testGuide">Test the AI guide</button><div v-if="guideTest" class="adm-sub" role="status">{{ guideTest }}</div></template>
-          <div class="adm-sub">{{ card.cost }}</div></div>
+      <div class="adm-tiles">
+        <div class="adm-card adm-tile"><h3>Online now</h3><div class="adm-big">{{ dash.online.value }}</div><Spark :values="peakSeries" :labels="twoLabels" name="Busiest moment of each day" /><div class="adm-sub">exact, live · trend is the busiest moment of each day</div></div>
+        <div class="adm-card adm-tile"><h3>Players today</h3><div class="adm-big">{{ dash.players.activeToday }}</div><Spark :values="seenSeries" :labels="twoLabels" name="Players seen each day" /><div class="adm-sub">{{ tileNote(tileChange([dash.yesterday.active, dash.players.activeToday])) }}</div></div>
+        <div class="adm-card adm-tile"><h3>New today</h3><div class="adm-big">{{ dash.players.newToday }}</div><Spark :values="newSeries" :labels="twoLabels" name="New players each day" color="#2563eb" /><div class="adm-sub">{{ tileNote(tileChange([dash.yesterday.new, dash.players.newToday])) }}</div></div>
+        <div class="adm-card adm-tile"><h3>Signed up / guests</h3><div class="adm-big">{{ dash.accounts.accounts }} <small>/ {{ dash.accounts.guests }}</small></div><Spark :values="accSeries" :labels="twoLabels" name="Accounts" color="#7c3aed" /><div class="adm-sub">{{ percent(dash.accounts.accounts, dash.accounts.accounts + dash.accounts.guests) }}% have an account · guests approximate</div></div>
+        <div class="adm-card adm-tile"><h3>Back in 7 days</h3><div class="adm-big">{{ returningNow }}</div><Spark :values="seenSeries" :labels="twoLabels" name="Players seen each day" color="#b45309" /><div class="adm-sub">seen this week, not new this week · approximate</div></div>
+        <div class="adm-card adm-tile"><h3>Open reports</h3><div class="adm-big">{{ dash.reports.open }}</div><div class="adm-sub">{{ dash.reports.problems.open }} problem reports open · {{ dash.businesses.open }} stalls open</div></div>
       </div>
-      <div class="adm-two" style="margin-top:12px">
-        <div class="adm-card"><h3>Online by city</h3><table class="adm-table"><tbody><tr v-for="[city, n] in cities" :key="city"><td>{{ city }}</td><td>{{ n }}</td></tr></tbody></table></div>
-        <div class="adm-card"><h3>Stored collections</h3><table class="adm-table"><tbody><tr v-for="[name, size] in sizes" :key="name"><td>{{ name }}</td><td>{{ bytes(size) }}</td></tr></tbody></table><div class="adm-sub">counters the store keeps</div></div>
+
+      <div class="adm-two">
+        <div class="adm-card"><Trend title="Growth: new players and new accounts a day" :labels="labels" :series="[{ name: 'New players', color: '#2563eb', values: series(days, (row) => row.new) }, { name: 'New accounts', color: '#7c3aed', values: accountsPerDay(days) }]" /><p class="adm-sub">New players: exact (counted as they arrive). New accounts: the growth of the count between measured days, so a gap is a day not measured. History: {{ hist?.startedOn ? `daily samples start ${hist.startedOn}` : 'daily samples start now' }}.</p></div>
+        <div class="adm-card"><Trend title="Activity: distinct players a day" :labels="labels" :series="[{ name: 'Players seen', color: '#1f6f43', values: series(days, (row) => row.seen) }, { name: 'Busiest moment online', color: '#b45309', values: series(days, field('peakOnline')) }]" /><p class="adm-sub">Players seen: exact. Busiest moment: the highest of the samples (every 15 minutes), so a floor.</p></div>
       </div>
-      <div class="adm-card" style="margin-top:12px">
-        <div class="adm-row"><h3 style="flex:1;margin:0">Economy snapshot</h3><button class="adm-btn" @click="economy">{{ eco ? 'Recompute' : 'Compute now' }}</button></div>
-        <p v-if="!eco" class="adm-muted">One pass over the stored sessions, so it is computed only when asked and cached for ten minutes.</p>
-        <template v-else>
-          <p class="adm-muted">{{ eco.cost }} · {{ asOf(eco.asOf) }}{{ eco.truncated ? ' · stopped at the scan limit' : '' }}</p>
-          <div class="adm-grid"><div class="adm-card"><h3>Cash in circulation</h3><div class="adm-big">{{ naira(eco.cashInCirculation) }}</div><div class="adm-sub">{{ eco.players }} players</div></div></div>
-          <div class="adm-two" style="margin-top:10px">
-            <div><h3>Faucets today (net)</h3><table class="adm-table"><tbody><tr v-for="item in eco.faucets" :key="item.category"><td>{{ item.category }}</td><td>+{{ naira(item.net) }}</td></tr></tbody></table></div>
-            <div><h3>Sinks today (net)</h3><table class="adm-table"><tbody><tr v-for="item in eco.sinks" :key="item.category"><td>{{ item.category }}</td><td>−{{ naira(-item.net) }}</td></tr></tbody></table></div>
+
+      <div class="adm-card">
+        <div class="adm-row adm-between"><h3>New-player funnel</h3><div class="adm-seg" role="group" aria-label="Funnel period"><button type="button" :aria-pressed="span === 'today'" @click="span = 'today'">Today</button><button type="button" :aria-pressed="span === 'week'" @click="span = 'week'">7 days</button></div></div>
+        <Funnel v-if="funnel" :title="`New players, ${span === 'today' ? 'today' : 'last 7 days'}`" :rows="funnel.steps" />
+        <p v-if="funnel" class="adm-sub">Came back the next day: <b>{{ funnel.returned.rate === null ? 'too early to say' : `${funnel.returned.back} of ${funnel.returned.size} (${funnel.returned.rate}%)` }}</b>. Steps are counted by the day they happen, so they are not strictly the same people. Hover a step for what it counts.</p>
+      </div>
+
+      <div class="adm-two">
+        <div class="adm-card adm-scroll"><h3>Cities</h3>
+          <table class="adm-table"><thead><tr><th>City</th><th>Online</th><th>Seen today</th><th>New today</th><th>Residents</th><th>Visitors</th></tr></thead><tbody>
+            <tr v-for="row in cityRows" :key="row.id"><td>{{ row.id }}</td><td>{{ row.online }}</td><td>{{ row.seen }}</td><td>{{ row.new }}</td><td>{{ row.residents ?? '-' }}</td><td>{{ row.visitors ?? '-' }}</td></tr>
+            <tr v-if="!cityRows.length"><td colspan="6" class="adm-muted">Nobody yet.</td></tr></tbody></table>
+          <p class="adm-sub">Online: memory, exact. Seen and new: the growth counters, exact. Residents and visitors: the economy snapshot (below), at most ten minutes old.</p></div>
+        <div class="adm-card"><h3>Economy</h3>
+          <template v-if="eco">
+            <div class="adm-kv"><div><div class="adm-big">{{ naira(eco.cashInCirculation) }}</div><div class="adm-sub">cash in circulation · {{ eco.players }} players</div></div><div><div class="adm-big">{{ naira(eco.median) }}</div><div class="adm-sub">median balance</div></div></div>
+            <div class="adm-two adm-tight"><div><h4>Faucets today</h4><p v-for="item in eco.faucets" :key="item.category" class="adm-line"><span>{{ item.category }}</span><b>+{{ naira(item.net) }}</b></p><p v-if="!eco.faucets.length" class="adm-muted">None yet.</p></div>
+              <div><h4>Sinks today</h4><p v-for="item in eco.sinks" :key="item.category" class="adm-line"><span>{{ item.category }}</span><b>−{{ naira(-item.net) }}</b></p><p v-if="!eco.sinks.length" class="adm-muted">None yet.</p></div></div>
+            <h4>Admin credits and bonuses (not earnings)</h4>
+            <p v-for="item in eco.adminMoney" :key="item.category" class="adm-line"><span>{{ item.category }}</span><b>{{ item.net < 0 ? '−' : '+' }}{{ naira(Math.abs(item.net)) }}</b></p>
+            <p class="adm-line"><span>Admin moves today (log)</span><b>+{{ naira(dash.adminMoney.creditToday) }} / −{{ naira(dash.adminMoney.debitToday) }} · grants {{ naira(dash.adminMoney.grantToday) }}</b></p>
+            <h4>Richest ten</h4><ol class="adm-rank"><li v-for="one in eco.richest" :key="one.id"><button type="button" class="adm-linkbtn" @click="emit('player', one.id)">{{ one.name }}</button><b>{{ naira(one.cash) }}</b></li></ol>
+            <p class="adm-sub">{{ eco.cost }} · {{ relative(eco.asOf, now) }}{{ eco.truncated ? ' · stopped at the scan limit' : '' }}</p>
+            <button class="adm-btn" @click="economy(true)">Recompute now</button>
+          </template>
+          <p v-else class="adm-muted">Computing from the stored players…</p></div>
+      </div>
+
+      <div class="adm-two">
+        <div class="adm-card"><h3>Social</h3>
+          <p class="adm-line"><span>Messages today</span><b>{{ eco?.social.messagesToday ?? '-' }}</b></p>
+          <p class="adm-line"><span>Groups / conversations</span><b>{{ eco ? `${eco.social.groups} / ${eco.social.conversations}` : '-' }}</b></p>
+          <p class="adm-line"><span>Pings waiting</span><b>{{ eco?.social.pings ?? '-' }}</b></p>
+          <p v-for="row in group('Calls today')" :key="row.label" class="adm-line"><span>{{ row.label }}</span><b>{{ row.value ?? '-' }}</b></p>
+          <p class="adm-sub">Messages, groups and pings: one pass over the conversations with the economy snapshot (ten-minute cache). Calls: the host's counters for today (UTC), memory only.</p></div>
+        <div class="adm-card"><h3>AI guide</h3>
+          <p v-for="row in group('AI guide today')" :key="row.label" class="adm-line"><span>{{ row.label }}</span><b>{{ row.value ?? '-' }}</b></p>
+          <p class="adm-sub">Model replies are counted here; answers the guide works out in the player's own browser never reach the server, so they are not counted. Cost is an estimate from the configured prices.</p>
+          <button class="adm-btn" @click="testGuide">Test the AI guide</button><p v-if="guideTest" class="adm-sub" role="status">{{ guideTest }}</p></div>
+      </div>
+
+      <div class="adm-card"><h3>System</h3>
+        <div class="adm-two adm-tight">
+          <div>
+            <p class="adm-line"><span>Device sessions held</span><b>{{ dash.capacity.sessions.held }} of {{ dash.capacity.sessions.most }}</b></p>
+            <div class="adm-bar" :class="fillTone(dash.capacity.sessions.held, dash.capacity.sessions.most)"><i :style="{ width: Math.min(100, percent(dash.capacity.sessions.held, dash.capacity.sessions.most)) + '%' }" /></div>
+            <p class="adm-line"><span>Sockets open</span><b>{{ dash.capacity.sockets.open }} of {{ dash.capacity.sockets.most }}</b></p>
+            <div class="adm-bar" :class="fillTone(dash.capacity.sockets.open, dash.capacity.sockets.most)"><i :style="{ width: Math.min(100, percent(dash.capacity.sockets.open, dash.capacity.sockets.most)) + '%' }" /></div>
+            <p class="adm-line"><span>E-mail sent today</span><b>{{ dash.mail.email.sentToday }} of {{ dash.mail.email.cap }}{{ dash.mail.email.off ? ' (off)' : '' }}</b></p>
+            <p class="adm-line"><span>Push sent today</span><b>{{ dash.mail.push.sentToday }} of {{ dash.mail.push.cap }}{{ dash.mail.push.off ? ' (off)' : '' }}</b></p>
+            <p class="adm-line"><span>Call relay configured</span><b>{{ extra('calls-relay-set') ?? '-' }}</b></p>
+            <p class="adm-line"><span>AI guide configured</span><b>{{ extra('guide-on') ?? '-' }}</b></p>
+            <p class="adm-line"><span>Rows written today</span><b>{{ dash.storage.writes ?? 'not metered on this host' }}</b></p>
           </div>
-          <h3 style="margin-top:10px">Residents and visitors</h3><table class="adm-table"><thead><tr><th>City</th><th>Residents</th><th>Visitors</th></tr></thead><tbody><tr v-for="(row, city) in eco.cities" :key="city"><td>{{ city }}</td><td>{{ row.residents }}</td><td>{{ row.visitors }}</td></tr></tbody></table>
-        </template>
+          <div><h4>Stored collections</h4>
+            <p v-for="[name, size] in collections" :key="name" class="adm-line"><span>{{ name }}</span><b :class="`tone-${sizeTone(size)}`">{{ bytes(size) }}<template v-if="sizeTone(size) !== 'ok'"> ·&nbsp;{{ sizeTone(size) === 'bad' ? 'near the limit' : 'growing' }}</template></b></p>
+            <p class="adm-sub">Amber from 2 MB, red from 8 MB: docs/CAPACITY.md puts the practical limit of one stored collection near 10 MB.</p></div>
+        </div>
+        <p class="adm-sub">Cost: the fast numbers are memory and the counters the host keeps; the walk over followed lives (up to 50,000) is repeated at most every five minutes; nothing here writes.</p>
       </div>
     </template>
   </section>

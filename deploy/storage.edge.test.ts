@@ -66,10 +66,16 @@ test('on the Worker: shadow, the switch, a restart, the way back and the safety 
   assert.equal(first.ok, true);
   const conv = first.conv?.id as string;
   assert.equal((await h.operator('/api/mod/store')).json['requested'], 'legacy');
+  // What the same message costs in the legacy layout, for the comparison below (a message to an existing conversation).
+  const legacyBefore = await h.rows();
+  await say(h, bola, ada, 'legacy cost');
+  const legacyAfter = await h.rows();
+  const legacyRows = Object.keys(legacyAfter).reduce((sum, table) => sum + (legacyAfter[table] ?? 0) - (legacyBefore[table] ?? 0), 0);
+  console.log(`rows written by one message, legacy layout: ${legacyRows} (${JSON.stringify(Object.fromEntries(Object.keys(legacyAfter).map((table) => [table, (legacyAfter[table] ?? 0) - (legacyBefore[table] ?? 0)]).filter(([, n]) => n)))})`);
 
   // Shadow: the first request after the restart makes the entry copy; it is kept equal and the sample finds nothing.
   await h.start({ STORE_LAYOUT: 'shadow' });
-  assert.deepEqual(await history(h, bola, conv), ['before the move']);
+  assert.deepEqual(await history(h, bola, conv), ['before the move', 'legacy cost']);
   await say(h, bola, ada, 'in shadow');
   const compared = (await h.operator('/api/mod/store/compare')).json['collections'] as Record<string, { equal: boolean }>;
   assert.ok(Object.values(compared).every((row) => row.equal), JSON.stringify(compared));
@@ -81,7 +87,7 @@ test('on the Worker: shadow, the switch, a restart, the way back and the safety 
   await say(h, ada, bola, 'after the switch');
   await h.start({ STORE_LAYOUT: 'legacy' });
   assert.equal((await h.operator('/api/mod/store')).json['requested'], 'entries');
-  assert.deepEqual(await history(h, ada, conv), ['before the move', 'in shadow', 'after the switch']);
+  assert.deepEqual(await history(h, ada, conv), ['before the move', 'legacy cost', 'in shadow', 'after the switch']);
   assert.equal((await h.operator('/api/mod/store/safety', { action: 'drop' })).status, 409, 'the safety copy is kept 14 days');
 
   // A message costs a handful of rows, and reading costs none.
@@ -90,6 +96,8 @@ test('on the Worker: shadow, the switch, a restart, the way back and the safety 
   const after = await h.rows();
   const wrote = (table: string): number => (after[table] ?? 0) - (before[table] ?? 0);
   assert.ok(wrote('entries') >= 1 && wrote('entries') <= 4, `entries rows for one message: ${wrote('entries')}`);
+  const entriesRows = Object.keys(after).reduce((sum, table) => sum + wrote(table), 0);
+  console.log(`rows written by one message, entries layout: ${entriesRows} (${JSON.stringify(Object.fromEntries(Object.keys(after).map((table) => [table, wrote(table)]).filter(([, n]) => n)))})`);
   const quiet = await h.rows();
   await (await h.get('/api/social/me', ada)).arrayBuffer(); await history(h, ada, conv);
   assert.equal(((await h.rows())['entries'] ?? 0), quiet['entries'] ?? 0, 'reading writes no entry row');
@@ -97,7 +105,7 @@ test('on the Worker: shadow, the switch, a restart, the way back and the safety 
   // The way back keeps every message.
   assert.equal((await h.operator('/api/mod/store/layout', { layout: 'legacy' })).status, 200);
   await h.start();
-  assert.deepEqual(await history(h, bola, conv), ['before the move', 'in shadow', 'after the switch', 'counted']);
+  assert.deepEqual(await history(h, bola, conv), ['before the move', 'legacy cost', 'in shadow', 'after the switch', 'counted']);
   assert.equal((await h.operator('/api/mod/store')).json['requested'], 'legacy');
 });
 

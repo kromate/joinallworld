@@ -6,7 +6,7 @@
 //
 // The layout still comes from the existing stylesheet (src/ui/shell.css, .life-venue-panel and
 // below), so this panel is the same size as the one the scene's camera is framed around.
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
 import { cachedCityContent } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
@@ -31,10 +31,26 @@ const house = computed(() => (privateHome.value ? view.value.property?.house : n
 const own = computed(() => (privateHome.value && state.value.estate?.living === 'own' && view.value.estate?.lgaConfirmed && view.value.estate.tier && view.value.estate.lga ? view.value.estate : null))
 const title = computed(() => own.value?.tier.label || house.value?.label || venue.value.label)
 const district = computed(() => own.value?.lga?.name || house.value?.district || venue.value.district)
+// Local moments (?models=moments only): now and then a line of local colour replaces the ambient line. Both the flag helper and
+// src/moments/ are loaded on demand, so nothing changes, and nothing extra loads, while the flag is off.
+const moment = ref('')
+let askMoment: (() => void) | null = null
+let momentTimer: ReturnType<typeof setInterval> | undefined
+let leaving = false
+onMounted(async () => {
+  if (!(await import('../../../models/integration/flags.ts')).modelFlags().moments || leaving) return
+  const { momentLine, MOMENT_POLL_MS } = await import('../../../moments/live.ts')
+  if (leaving) return
+  askMoment = () => { moment.value = momentLine(view.value.cityId, state.value.location) }
+  askMoment()
+  momentTimer = setInterval(askMoment, MOMENT_POLL_MS)
+})
+onBeforeUnmount(() => { leaving = true; clearInterval(momentTimer) })
+watch(() => [view.value.cityId, state.value.location], () => { moment.value = ''; askMoment?.() })
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient
-  return `${privateHome.value ? ' Private · ' : ''}${ambient || spot.value?.caption || 'Explore at your own pace'}`
+  return `${privateHome.value ? ' Private · ' : ''}${moment.value || ambient || spot.value?.caption || 'Explore at your own pace'}`
 })
 // Where this spot lists paid gigs, the day's counter sits above them (the limit is the server's).
 const gigs = computed(() => view.value.travel?.gigs)

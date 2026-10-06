@@ -1,32 +1,13 @@
-import { lagosCity } from './lagos/index.ts'
-import { ibadanCity } from './ibadan/index.ts'
-import { abeokutaCity } from './abeokuta/index.ts'
-import { otaCity } from './ota/index.ts'
-import { ijebuOdeCity } from './ijebu-ode/index.ts'
-import { sagamuCity } from './sagamu/index.ts'
-import { portHarcourtCity } from './port-harcourt/index.ts'
-import { abujaCity } from './abuja/index.ts'
-import { kanoCity } from './kano/index.ts'
-import { CITY_LINKS } from './links.ts'
+import { CITY_CATALOGUE, CITY_LOADERS } from './catalogue.ts'
 import { generateCityLinks } from './generatedLinks.ts'
+import type { CityCatalogueEntry } from './catalogue.ts'
 import type { CityId } from './ids.ts'
-import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRules, CityState } from '../../types/content.ts'
+import type { CityAtlasMarker, CityContent, CityCountry, CityDistrict, CityHub, CityLink, CityLinkFrom, CityMapOrigin, CityMapPack, CityModule, CityRouteGeometry, CityRules, CityState } from '../../types/content.ts'
 
 export const DEFAULT_CITY_ID: CityId<'lagos'> = 'lagos'
 
-export interface CityCompatibility {
-  acceptStoredLives: boolean
-  allowNewLives: boolean
-  contentSource: string | null
-  note: string
-}
-
-export interface KnownCity {
-  rules: CataloguedCityRules
-  serverKnown: boolean
-  compatibility: CityCompatibility
-}
-
+export interface CityCompatibility { acceptStoredLives: boolean; allowNewLives: boolean; contentSource: string | null; note: string }
+export interface KnownCity { catalogue: CityCatalogueEntry; serverKnown: boolean; compatibility: CityCompatibility }
 export interface CataloguedCityRules extends CityRules {
   state: CityState
   country: CityCountry
@@ -36,181 +17,166 @@ export interface CataloguedCityRules extends CityRules {
   districts: readonly CityDistrict[]
   rentedHomeIds: readonly string[]
   defaultRentedHome: string | null
+  defaultName: string
+  careerIds: readonly string[]
   campus?: 'unilag'
+  hasStateOverview?: boolean
   hubs: readonly CityHub[]
 }
 
-function closed(rules: CityRules, state: CityState, atlas: CityAtlasMarker): KnownCity {
-  const hubs: readonly CityHub[] = Object.freeze([
-    { id: 'road', name: rules.hub.road, mode: 'road' },
-    { id: 'air', name: rules.hub.air, mode: 'air' },
-    ...(rules.hub.rail ? [{ id: 'rail', name: rules.hub.rail, mode: 'rail' as const }] : []),
-  ])
-  const catalogued: CataloguedCityRules = Object.freeze({
-    ...rules,
-    state,
-    country: { id: 'ng', name: 'Nigeria' },
-    timezone: 'Africa/Lagos',
-    atlas,
-    mapOrigin: null,
-    districts: [],
-    rentedHomeIds: [],
-    defaultRentedHome: null,
-    hubs,
-  })
-  return Object.freeze({
-    rules: catalogued,
-    serverKnown: false,
-    compatibility: Object.freeze({
-      acceptStoredLives: false,
-      allowNewLives: false,
-      contentSource: null,
-      note: 'Reserved for future city content.',
-    }),
-  })
-}
-
-const publicRules = ({ id, name, status, unit, units, hub, civicTitle, climate }: CityRules): CityRules => Object.freeze({ id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}), ...(climate ? { climate } : {}) })
-
-const MODULES: Readonly<Record<string, CityModule | undefined>> = Object.freeze({ lagos: lagosCity, ibadan: ibadanCity, abeokuta: abeokutaCity, ota: otaCity, 'ijebu-ode': ijebuOdeCity, sagamu: sagamuCity, 'port-harcourt': portHarcourtCity, abuja: abujaCity, kano: kanoCity })
-
-type CoreKnownCityId = 'lagos' | 'ibadan' | 'abuja' | 'port-harcourt'
-type KnownCityCatalogue = Readonly<Record<CoreKnownCityId, KnownCity> & Record<string, KnownCity | undefined>>
-
-export const KNOWN_CITIES: KnownCityCatalogue = Object.freeze({
-  lagos: Object.freeze({
-    rules: lagosCity.rules,
-    serverKnown: true,
-    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'lagos', note: 'Open and playable.' }),
-  }),
-  ibadan: Object.freeze({
-    rules: ibadanCity.rules,
-    serverKnown: true,
-    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'ibadan', note: 'Open and playable.' }),
-  }),
-  abuja: Object.freeze({
-    rules: abujaCity.rules,
-    serverKnown: true,
-    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'abuja', note: 'Open and playable.' }),
-  }),
-  'port-harcourt': Object.freeze({
-    rules: portHarcourtCity.rules,
-    serverKnown: true,
-    compatibility: Object.freeze({ acceptStoredLives: true, allowNewLives: true, contentSource: 'port-harcourt', note: 'Open and playable.' }),
-  }),
-  kaduna: closed(
-    { id: 'kaduna', name: 'Kaduna', status: 'soon', unit: 'local government', units: [], hub: { road: 'a planned motor park', air: 'No air route', rail: 'Rigasa Railway Station' } },
-    { id: 'kaduna', name: 'Kaduna State', unit: 'local government' },
-    { lon: 7.4359863, lat: 10.5182899, teaser: 'A city on the Kaduna River, at the end of the railway from Abuja. It is not open yet.', preview: ['The railway from Idu to Rigasa', 'Homes and local governments', 'Road travel to neighbouring cities'] },
-  ),
-})
-
-/** Compatibility table for callers still migrating from content/world.ts. */
-export const CITY_RULES: Readonly<Record<CoreKnownCityId, CityRules> & Record<string, CityRules>> = Object.freeze({
-  lagos: publicRules(KNOWN_CITIES.lagos.rules),
-  ibadan: publicRules(KNOWN_CITIES.ibadan.rules),
-  abuja: publicRules(KNOWN_CITIES.abuja.rules),
-  'port-harcourt': publicRules(KNOWN_CITIES['port-harcourt'].rules),
-  ...Object.fromEntries(Object.entries(KNOWN_CITIES).flatMap(([id, city]) => city && !['lagos', 'ibadan', 'abuja', 'port-harcourt'].includes(id) ? [[id, publicRules(city.rules)]] : [])),
-})
+const catalogueById: ReadonlyMap<string, CityCatalogueEntry> = new Map(CITY_CATALOGUE.map((city) => [city.id, city]))
+const PLAYABLE_ORDER = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] as const
+export const KNOWN_CITIES: Readonly<Record<string, KnownCity | undefined>> = Object.freeze(Object.fromEntries(CITY_CATALOGUE.map((catalogue) => [catalogue.id, Object.freeze({
+  catalogue,
+  serverKnown: catalogue.open,
+  compatibility: Object.freeze({ acceptStoredLives: catalogue.open, allowNewLives: catalogue.open, contentSource: catalogue.open ? catalogue.id : null, note: catalogue.open ? 'Open and playable.' : 'Reserved for future city content.' }),
+})])))
 
 const fixtures = new Map<string, CityModule>()
+const loadedModules = new Map<string, CityModule>()
+const loadedRules = new Map<string, CataloguedCityRules>()
 const loadedContent = new Map<string, CityContent>()
 const loadedMaps = new Map<string, CityMapPack>()
+const pendingModules = new Map<string, Promise<CityModule>>()
 const pendingContent = new Map<string, Promise<CityContent>>()
 const pendingMaps = new Map<string, Promise<CityMapPack>>()
+let authoredCityLinks: readonly CityLink[] | null = null
+/** Loaded authored routes only. loadCityLinks fills this live binding. */
+export let CITY_LINKS: readonly CityLink[] = Object.freeze([])
+let pendingLinks: Promise<readonly CityLink[]> | null = null
+let linkCache: readonly CityLink[] | null = null
 
-const moduleOf = (value: unknown): CityModule | null => {
-  if (typeof value !== 'string') return null
-  return fixtures.get(value) ?? (Object.hasOwn(MODULES, value) ? MODULES[value] : null) ?? null
+/** Full rules that have actually loaded. This compatibility table never invents partial city rules. */
+const mutableCityRules: Record<string, CityRules> = Object.create(null)
+export const CITY_RULES: Readonly<Record<string, CityRules>> = mutableCityRules
+const publicRules = ({ id, name, status, unit, units, hub, civicTitle, climate }: CityRules): CityRules => Object.freeze({
+  id, name, status, unit, units, hub, ...(civicTitle ? { civicTitle } : {}), ...(climate ? { climate } : {}),
+})
+
+function rememberModule(module: CityModule): CityModule {
+  loadedModules.set(module.id, module)
+  loadedRules.set(module.id, module.rules)
+  mutableCityRules[module.id] = publicRules(module.rules)
+  linkCache = null
+  return module
 }
 
-export const knownCityIds = (): readonly string[] => Object.freeze([
-  ...new Set([...Object.keys(KNOWN_CITIES), ...Object.keys(MODULES), ...fixtures.keys()]),
-])
-
-/** Cities whose stored lives a server may read. Ibadan remains here for compatibility. */
-export const registeredCityIds = (): readonly CityId[] => Object.freeze([
-  ...new Set([...Object.entries(KNOWN_CITIES).flatMap(([id, city]) => city?.serverKnown ? [id] : []), ...Object.keys(MODULES), ...fixtures.keys()]),
-])
-
-/** Cities that can accept a new life or a trip. */
-export const playableCityIds = (): readonly CityId[] => Object.freeze([
-  ...Object.keys(MODULES),
-  ...fixtures.keys(),
-])
-
-export const isKnownCityId = (value: unknown): value is string => typeof value === 'string'
-  && (Object.hasOwn(KNOWN_CITIES, value) || Boolean(moduleOf(value)))
-
-export const isCityId = (value: unknown): value is CityId => typeof value === 'string'
-  && registeredCityIds().includes(value)
-
-export const isOpenCityId = (value: unknown): value is CityId => typeof value === 'string'
-  && playableCityIds().includes(value)
-
-export const cityModule = (value: unknown): CityModule | null => moduleOf(value)
-
-export const cityRules = (value: unknown): CataloguedCityRules | null => {
-  if (typeof value !== 'string') return null
-  return moduleOf(value)?.rules ?? KNOWN_CITIES[value]?.rules ?? null
+async function readCityModule(id: string): Promise<CityModule> {
+  const fixture = fixtures.get(id)
+  if (fixture) return fixture
+  const cached = loadedModules.get(id)
+  if (cached) return cached
+  const loader = CITY_LOADERS[id]
+  if (!loader) throw new RangeError(`City rules are not available: ${id}`)
+  const module = await loader()
+  if (module.id !== id || module.rules.id !== id) throw new Error(`City module id ${module.id} does not match ${id}`)
+  return rememberModule(module)
 }
 
-export const cityName = (value: unknown): string | null => cityRules(value)?.name ?? null
+function loadCityModule(id: string): Promise<CityModule> {
+  const existing = pendingModules.get(id)
+  if (existing) return existing
+  const work = readCityModule(id).finally(() => { if (pendingModules.get(id) === work) pendingModules.delete(id) })
+  pendingModules.set(id, work)
+  return work
+}
 
-/** The name of a life that has none yet: the city module's `defaultName` ('New Lagosian' where the city does not say). */
-export const cityDefaultName = (value: unknown): string => (cityRules(value) as { defaultName?: string } | null)?.defaultName ?? 'New Lagosian'
-/** Whether a name is the placeholder some city gives a life that has not been named. */
-export const isDefaultName = (name: unknown): boolean => name === 'New Lagosian' || knownCityIds().some(id => cityDefaultName(id) === name)
+const catalogueOfModule = (module: CityModule): CityCatalogueEntry => Object.freeze({
+  id: module.id,
+  name: module.rules.name,
+  state: Object.freeze({ id: module.rules.state.id, name: module.rules.state.name }),
+  lon: module.rules.atlas.lon,
+  lat: module.rules.atlas.lat,
+  open: module.rules.status === 'open',
+  airport: module.rules.hubs.some((hub) => hub.mode === 'air'),
+  ...(module.rules.atlas.teaser ? { teaser: module.rules.atlas.teaser } : {}),
+  ...(module.rules.atlas.preview ? { preview: module.rules.atlas.preview } : {}),
+})
 
+export const cityCatalogue = (): readonly CityCatalogueEntry[] => {
+  if (!fixtures.size) return CITY_CATALOGUE
+  const catalogue = new Map(CITY_CATALOGUE.map((city) => [city.id, city]))
+  for (const module of fixtures.values()) catalogue.set(module.id, catalogueOfModule(module))
+  return Object.freeze([...catalogue.values()])
+}
+export const cityCatalogueEntry = (value: unknown): CityCatalogueEntry | null => {
+  if (typeof value !== 'string') return null
+  const fixture = fixtures.get(value)
+  return fixture ? catalogueOfModule(fixture) : catalogueById.get(value) ?? null
+}
+export const catalogueCitiesInState = (stateId: unknown): readonly CityCatalogueEntry[] => typeof stateId === 'string' ? cityCatalogue().filter((city) => city.state.id === stateId) : []
+export const knownCityIds = (): readonly string[] => Object.freeze([...CITY_CATALOGUE.map((city) => city.id), ...fixtures.keys()].filter((id, index, all) => all.indexOf(id) === index))
+export const registeredCityIds = (): readonly CityId[] => Object.freeze([...CITY_CATALOGUE.filter((city) => city.open).map((city) => city.id), ...fixtures.keys()].filter((id, index, all) => all.indexOf(id) === index))
+export const playableCityIds = (): readonly CityId[] => {
+  const open = new Set(CITY_CATALOGUE.filter((city) => city.open).map((city) => city.id))
+  const ordered = PLAYABLE_ORDER.filter((id) => open.delete(id))
+  return Object.freeze([...ordered, ...open, ...fixtures.keys()].filter((id, index, all) => all.indexOf(id) === index))
+}
+export const isKnownCityId = (value: unknown): value is string => typeof value === 'string' && (catalogueById.has(value) || fixtures.has(value))
+export const isCityId = (value: unknown): value is CityId => typeof value === 'string' && (catalogueById.get(value)?.open === true || fixtures.has(value))
+export const isOpenCityId = isCityId
+
+/** Loaded modules and full rules only. Hosts await a loader before synchronous engine work. */
+export const cityModule = (value: unknown): CityModule | null => typeof value === 'string' ? fixtures.get(value) ?? loadedModules.get(value) ?? null : null
+export const cityRules = (value: unknown): CataloguedCityRules | null => typeof value === 'string' ? fixtures.get(value)?.rules ?? loadedRules.get(value) ?? null : null
+
+export async function loadCityRules(cityId: unknown): Promise<CataloguedCityRules> {
+  if (typeof cityId !== 'string') throw new TypeError('A city id is required')
+  return (await loadCityModule(cityId)).rules
+}
+export async function loadAllCityRules(): Promise<readonly CataloguedCityRules[]> { return Promise.all(playableCityIds().map(loadCityRules)) }
+export async function loadStateOverviewCity(stateId: unknown): Promise<string | null> {
+  if (typeof stateId !== 'string') return null
+  for (const city of catalogueCitiesInState(stateId).filter((item) => item.open)) if ((await loadCityRules(city.id)).hasStateOverview) return city.id
+  return null
+}
+
+export const cityName = (value: unknown): string | null => cityRules(value)?.name ?? cityCatalogueEntry(value)?.name ?? null
+export const cityDefaultName = (value: unknown): string => cityRules(value)?.defaultName ?? 'New Lagosian'
+export const isDefaultName = (name: unknown): boolean => name === 'New Lagosian' || [...loadedRules.values(), ...[...fixtures.values()].map((value) => value.rules)].some((rules) => rules.defaultName === name)
+/** Loaded full rules in a state. Catalogue-only marker callers use catalogueCitiesInState. */
 export const citiesInState = (stateId: unknown): readonly CataloguedCityRules[] => typeof stateId === 'string'
-  ? knownCityIds().flatMap(id => { const rules = cityRules(id); return rules?.state.id === stateId ? [rules] : [] })
+  ? [...loadedRules.values(), ...[...fixtures.values()].map((value) => value.rules)].filter((rules) => rules.state.id === stateId)
   : []
 
 const linkKey = (link: Pick<CityLink, 'a' | 'b' | 'mode'>): string => `${[link.a, link.b].sort().join('|')}|${link.mode}`
-const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && (a.status ?? 'open') === (b.status ?? 'open') && a.label === b.label && a.icon === b.icon
-  && a.fare === b.fare && a.seconds === b.seconds && a.km === b.km && a.beta === b.beta
+const sameLink = (a: CityLink, b: CityLink): boolean => a.a === b.a && a.b === b.b && a.mode === b.mode && (a.status ?? 'open') === (b.status ?? 'open') && a.label === b.label && a.icon === b.icon && a.fare === b.fare && a.seconds === b.seconds && a.km === b.km && a.beta === b.beta
 
-/** Canonical live link catalogue. Authored modules supersede legacy rows; authored conflicts are errors. */
-let linkCache: readonly CityLink[] | null = null
+/** Load the authored route catalogue. Hosts await this before synchronous travel views are built. */
+export function loadCityLinks(): Promise<readonly CityLink[]> {
+  if (authoredCityLinks) return Promise.resolve(authoredCityLinks)
+  if (pendingLinks) return pendingLinks
+  pendingLinks = import('./routes.generated.ts').then((module) => { authoredCityLinks = module.AUTHORED_CITY_LINKS; CITY_LINKS = authoredCityLinks; linkCache = null; return authoredCityLinks }).finally(() => { pendingLinks = null })
+  return pendingLinks
+}
+
+/** Authored routes win over generated road and air routes. Rail is never generated. */
 export function allCityLinks(): readonly CityLink[] {
   if (linkCache) return linkCache
-  const merged = new Map(CITY_LINKS.map((link): [string, CityLink] => [linkKey(link), link]))
-  for (const [source, links] of [['modules', Object.values(MODULES).flatMap(module => module?.rules.links ?? [])], ['fixtures', Array.from(fixtures.values()).flatMap(module => module.rules.links)]] as const) {
-    const authored = new Map<string, CityLink>()
-    for (const link of links) {
-      const key = linkKey(link), existing = authored.get(key)
-      if (existing && !sameLink(existing, link)) throw new Error(`Conflicting ${source} city link ${key}`)
-      authored.set(key, link); merged.set(key, link)
-    }
+  const merged = new Map<string, CityLink>()
+  for (const link of authoredCityLinks ?? [...loadedModules.values()].flatMap((module) => module.rules.links)) merged.set(linkKey(link), link)
+  const fixtureLinks = new Map<string, CityLink>()
+  for (const link of [...fixtures.values()].flatMap((module) => module.rules.links)) {
+    const key = linkKey(link), existing = fixtureLinks.get(key)
+    if (existing && !sameLink(existing, link)) throw new Error(`Conflicting fixtures city link ${key}`)
+    fixtureLinks.set(key, link); merged.set(key, link)
   }
-  // Only the cities that ship connect themselves: a test fixture keeps exactly the links it declares.
-  const open = Object.values(MODULES).flatMap(module => module ? [module] : []).flatMap(module => {
-    const atlas = module.rules.atlas
-    return atlas ? [{ id: module.id, name: module.rules.name, lon: atlas.lon, lat: atlas.lat, airport: module.rules.hubs.some(hub => hub.mode === 'air') }] : []
-  })
+  const open = CITY_CATALOGUE.filter((city) => city.open).map((city) => ({ id: city.id, name: city.name, lon: city.lon, lat: city.lat, airport: city.airport, countryId: 'ng' }))
   for (const link of generateCityLinks(open, [...merged.values()])) merged.set(linkKey(link), link)
   return linkCache = Object.freeze([...merged.values()])
 }
-
-export const cityLinks = (cityId: string): readonly CityLink[] => allCityLinks().filter(link => link.a === cityId || link.b === cityId)
+export const cityLinks = (cityId: string): readonly CityLink[] => allCityLinks().filter((link) => link.a === cityId || link.b === cityId)
 export const linksFrom = (cityId: string): CityLinkFrom[] => cityLinks(cityId).map(({ a, b, ...link }) => ({ ...link, to: a === cityId ? b : a }))
 
-async function readCityContent(cityId: unknown): Promise<CityContent> {
-  if (typeof cityId === 'string') {
-    const cached = loadedContent.get(cityId)
-    if (cached) return cached
-  }
-  const module = moduleOf(cityId)
-  if (module) {
-    const content = await module.loadContent()
-    if (content.cityId !== module.id) throw new Error(`City content id ${content.cityId} does not match ${module.id}`)
-    if (moduleOf(module.id) === module) loadedContent.set(module.id, content)
-    return content
-  }
-  throw new RangeError(`City content is not available: ${String(cityId)}`)
+async function readCityContent(cityId: string): Promise<CityContent> {
+  const cached = loadedContent.get(cityId)
+  if (cached) return cached
+  const [module] = await Promise.all([loadCityModule(cityId), loadCityLinks()])
+  const content = await module.loadContent()
+  if (content.cityId !== module.id) throw new Error(`City content id ${content.cityId} does not match ${module.id}`)
+  if (cityModule(module.id) === module) loadedContent.set(module.id, content)
+  return content
 }
-
 export function loadCityContent(cityId: unknown): Promise<CityContent> {
   if (typeof cityId !== 'string') return Promise.reject(new TypeError('A city id is required'))
   const pending = pendingContent.get(cityId)
@@ -219,7 +185,22 @@ export function loadCityContent(cityId: unknown): Promise<CityContent> {
   pendingContent.set(cityId, work)
   return work
 }
+export function cityContent(cityId: unknown): CityContent {
+  if (typeof cityId !== 'string') throw new TypeError('A city id is required')
+  const content = loadedContent.get(cityId)
+  if (!content) throw new Error(`City content has not been loaded: ${cityId}`)
+  return content
+}
+export const cachedCityContent = (cityId: unknown): CityContent | null => typeof cityId === 'string' ? loadedContent.get(cityId) ?? null : null
 
+async function readCityMap(cityId: string): Promise<CityMapPack> {
+  const cached = loadedMaps.get(cityId)
+  if (cached) return cached
+  const module = await loadCityModule(cityId), map = await module.loadMap()
+  if (map.cityId !== module.id) throw new Error(`City map id ${map.cityId} does not match ${module.id}`)
+  if (cityModule(module.id) === module) loadedMaps.set(module.id, map)
+  return map
+}
 export function loadCityMap(cityId: unknown): Promise<CityMapPack> {
   if (typeof cityId !== 'string') return Promise.reject(new TypeError('A city id is required'))
   const pending = pendingMaps.get(cityId)
@@ -228,32 +209,6 @@ export function loadCityMap(cityId: unknown): Promise<CityMapPack> {
   pendingMaps.set(cityId, work)
   return work
 }
-
-/** Synchronous engine access after the host has awaited loadCityContent. */
-export function cityContent(cityId: unknown): CityContent {
-  if (typeof cityId !== 'string') throw new TypeError('A city id is required')
-  const content = loadedContent.get(cityId)
-  if (!content) throw new Error(`City content has not been loaded: ${cityId}`)
-  return content
-}
-
-export const cachedCityContent = (cityId: unknown): CityContent | null => typeof cityId === 'string'
-  ? loadedContent.get(cityId) ?? null
-  : null
-
-async function readCityMap(cityId: unknown): Promise<CityMapPack> {
-  if (typeof cityId === 'string') {
-    const cached = loadedMaps.get(cityId)
-    if (cached) return cached
-  }
-  const module = moduleOf(cityId)
-  if (!module) throw new RangeError(`City map is not available: ${String(cityId)}`)
-  const map = await module.loadMap()
-  if (map.cityId !== module.id) throw new Error(`City map id ${map.cityId} does not match ${module.id}`)
-  if (moduleOf(module.id) === module) loadedMaps.set(module.id, map)
-  return map
-}
-
 export function cityMap(cityId: unknown): CityMapPack {
   if (typeof cityId !== 'string') throw new TypeError('A city id is required')
   const map = loadedMaps.get(cityId)
@@ -263,25 +218,22 @@ export function cityMap(cityId: unknown): CityMapPack {
 
 /** Register one isolated fictional module for a test and remove every cached value on disposal. */
 export function registerCityForTest(module: CityModule, { replaceClosed = false }: { replaceClosed?: boolean } = {}): { dispose: () => void } {
-  const replacesReserved = replaceClosed && KNOWN_CITIES[module.id]?.rules.status === 'soon' && !moduleOf(module.id)
+  const replacesReserved = replaceClosed && cityCatalogueEntry(module.id)?.open === false && !cityModule(module.id)
   if (!module.id.startsWith('test-') && !replacesReserved) throw new Error('Test city ids must start with test- or replace a closed reserved city')
   if (isKnownCityId(module.id) && !replacesReserved) throw new Error(`City id is already registered: ${module.id}`)
-  fixtures.set(module.id, module); linkCache = null
+  fixtures.set(module.id, module); mutableCityRules[module.id] = publicRules(module.rules); linkCache = null
   let disposed = false
-  return Object.freeze({
-    dispose: () => {
-      if (disposed) return
-      disposed = true
-      if (fixtures.get(module.id) === module) { fixtures.delete(module.id); linkCache = null }
-      pendingContent.delete(module.id)
-      pendingMaps.delete(module.id)
-      loadedContent.delete(module.id)
-      loadedMaps.delete(module.id)
-    },
-  })
+  return Object.freeze({ dispose: () => {
+    if (disposed) return
+    disposed = true
+    if (fixtures.get(module.id) === module) { fixtures.delete(module.id); delete mutableCityRules[module.id]; linkCache = null }
+    pendingModules.delete(module.id); pendingContent.delete(module.id); pendingMaps.delete(module.id)
+    loadedModules.delete(module.id); loadedRules.delete(module.id); loadedContent.delete(module.id); loadedMaps.delete(module.id)
+  } })
 }
 
-export { CITY_LINKS } from './links.ts'
-
 /** Map-only route geometry; loading rules never downloads its coordinates. */
-export const loadCityRoutes = async (id: string) => moduleOf(id)?.loadRoutes?.() ?? [];
+export async function loadCityRoutes(id: string): Promise<readonly CityRouteGeometry[]> {
+  if (!fixtures.has(id) && !CITY_LOADERS[id]) return []
+  return (await loadCityModule(id)).loadRoutes?.() ?? []
+}

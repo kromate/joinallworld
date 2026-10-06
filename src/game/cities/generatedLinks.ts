@@ -6,11 +6,10 @@ import type { CityLink } from '../../types/content.ts'
  * (anywhere in the world) is connected to every other city the moment it is registered.
  *
  * THE RULE
- *   road  every pair whose road distance is at most `maxRoadKm`, unless a road link is authored. Road distance is
+ *   road  every pair in the same country, or within `maxRoadKm`, unless a road link is authored. Road distance is
  *         the great-circle distance between the two atlas positions times `roadFactor`.
  *   air   every pair of cities that both have an air hub, from `minAirKm` up, unless an air link is authored.
- *         Past `maxRoadKm` air is offered between ANY two open cities: a city without an airport is assumed to be
- *         served from its nearest airfield, so no pair is ever left without a way to travel.
+ *         An airport must be declared at both ends; distance alone never creates an airfield.
  *   rail  never generated. Only authored railways exist.
  *
  * FARES (fitted to the authored links, which keep their own fares)
@@ -33,6 +32,8 @@ export interface LinkableCity {
   lat: number
   /** Whether the city has an air hub of its own. */
   airport: boolean
+  /** Known country identity permits long domestic road journeys. */
+  countryId?: string
 }
 
 const EARTH_RADIUS_KM = 6371
@@ -57,14 +58,13 @@ export function generateCityLinks(cities: readonly LinkableCity[], authored: rea
   const made: CityLink[] = []
   for (let i = 0; i < usable.length; i++) for (let j = i + 1; j < usable.length; j++) {
     const a = usable[i]!, b = usable[j]!, air = Math.round(greatCircleKm(a, b)), road = Math.round(air * GENERATED_LINKS.roadFactor)
-    if (road <= GENERATED_LINKS.maxRoadKm && !have.has(pairKey(a.id, b.id, 'road'))) {
+    const domestic = Boolean(a.countryId && a.countryId === b.countryId)
+    if ((domestic || road <= GENERATED_LINKS.maxRoadKm) && !have.has(pairKey(a.id, b.id, 'road'))) {
       made.push(timedLink({ a: a.id, b: b.id, mode: 'road', beta: true, label: `Bus between ${a.name} and ${b.name}`, icon: '🚌', fare: generatedRoadFare(road), km: road }))
     }
     const bothAirports = a.airport && b.airport && air >= GENERATED_LINKS.minAirKm
-    const beyondRoad = road > GENERATED_LINKS.maxRoadKm
-    if ((bothAirports || beyondRoad) && !have.has(pairKey(a.id, b.id, 'air'))) {
-      const served = a.airport && b.airport
-      made.push(timedLink({ a: a.id, b: b.id, mode: 'air', beta: true, label: served ? `Flight between ${a.name} and ${b.name}` : `Flight between ${a.name} and ${b.name}, from the nearest airfield`, icon: '✈️', fare: generatedAirFare(air), km: air }))
+    if (bothAirports && !have.has(pairKey(a.id, b.id, 'air'))) {
+      made.push(timedLink({ a: a.id, b: b.id, mode: 'air', beta: true, label: `Flight between ${a.name} and ${b.name}`, icon: '✈️', fare: generatedAirFare(air), km: air }))
     }
   }
   return Object.freeze(made)

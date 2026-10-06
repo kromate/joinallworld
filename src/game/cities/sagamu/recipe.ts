@@ -1,0 +1,81 @@
+import { activity, hospitalSpots, OGUN_LOCAL_MODES, peopleFor, spot, work, type OgunContentSpec, type OgunVenueSeed } from '../ogun/contentBuilder.ts'
+import { OGUN_LINKS } from '../ogun/links.ts'
+import { defineLegacyCityRecipe } from '../formula/legacy.ts'
+import type { LegacyCitySnapshot } from '../formula/legacy.ts'
+
+const mapOrigin = Object.freeze({ x: -4801, z: 2386 })
+const centre={lon:3.6441,lat:6.8477},interchange={lon:3.5788,lat:6.8832},babcock={lon:3.7224377,lat:6.8900559},ikenne={lon:3.7166694,lat:6.8666694}
+const venues:readonly OgunVenueSeed[]=[
+  {id:'sagamu-neighbourhood-park',name:'Sagamu Neighbourhood Park',district:'Sagamu Centre',kind:'park',variant:'ayo-park',category:'fun',icon:'park',point:centre,description:'Meet neighbours, play ayo and rest under the trees.',ambient:['The park fills as the afternoon cools.'],spots:[spot('trees','Under the trees',activity('sagamu-play-ayo','Play a round of ayo','tables',['fun'],{duration:7})),work()],beta:true,note:'Fictional public park at the mapped Sagamu locality.'},
+  {id:'babcock-university',name:'Babcock University',district:'Ilishan-Remo, Ikenne',kind:'office',variant:'campus-lawn',category:'work',icon:'school',point:babcock,description:'Join a university workshop at the Ilishan-Remo campus.',ambient:['Students move between lecture halls and practical rooms.'],spots:[spot('lab','Project lab',activity('sagamu-babcock-workshop','Join a project workshop','code',['learn'],{xp:{coding:10}})),work()]},
+  {id:'sagamu-interchange',name:'Sagamu Interchange',district:'Sagamu approach',kind:'hub',variant:'interchange',category:'civic',icon:'bus',point:{lon:3.5788,lat:6.8832},description:'Change buses between Lagos, Abeokuta, Ibadan and the road east.',ambient:['Long-distance buses turn off the expressway.'],spots:[spot('platform','Bus platform',activity('sagamu-bus-wait','Wait for the bus','bus',['travel'],{duration:4}))]},
+  {id:'sagamu-market',name:'Sagamu Market',district:'Sagamu Centre',kind:'market',variant:'market-kola',category:'work',icon:'market',point:{lon:3.63114,lat:6.83316},description:'Price produce, cloth and household goods.',ambient:['Market talk carries into the surrounding streets.'],spots:[spot('aisle','Market aisle',activity('sagamu-market-price','Price the market','groceries',['market'],{xp:{hustle:8}})),work()],beta:true,note:'Fictional gameplay market at the mapped Sagamu locality.'},
+  {id:'remo-civic-hall',name:'Remo Civic Hall',district:'Sagamu Centre',kind:'statehouse',variant:'hall-dome',category:'civic',icon:'governor',point:{lon:3.6465,lat:6.8461},description:'Read local notices and learn about the Remo towns.',ambient:['Residents arrive for a community meeting.'],spots:[spot('hall','Meeting hall',activity('sagamu-remo-history','Learn about Remo history','book',['history','learn'])) ,work()],beta:true,note:'Fictional civic venue at the mapped Sagamu locality.'},
+  {id:'sagamu-polling',name:'Sagamu Civic Polling Centre',district:'Sagamu Centre',kind:'polling',category:'civic',icon:'poll',point:{lon:3.6409,lat:6.8493},description:'Register, vote and follow the count.',ambient:['Officials check the register.'],spots:[spot('officials','Election officials',activity('sagamu-voter-info','Read voter information','poll',['civic']))],beta:true,note:'Fictional election setup at the mapped Sagamu locality.'},
+  {id:'sagamu-clinic',name:'Sagamu Community Clinic',district:'Sagamu Centre',kind:'hospital',category:'care',icon:'health',point:{lon:3.65313,lat:6.84904},description:'Get a check-up or use the free clinic.',ambient:['The clinic team calls the next patient.'],spots:hospitalSpots(),beta:true,note:'Fictional gameplay clinic at the mapped Sagamu locality.'},
+  {id:'ilisan-chapel',name:'Ilishan Community Chapel',district:'Ilishan-Remo, Ikenne',kind:'worship',category:'care',icon:'worship',point:{lon:3.7142,lat:6.8921},description:'Visit a community chapel near the university town.',ambient:['People arrive from Ilishan and the campus.'],variant:'church',spots:[spot('hall','Chapel hall',activity('sagamu-chapel-reflect','Sit quietly in the chapel','worship',['worship']))],beta:true,note:'Fictional worship venue at the verified Babcock campus locality.'},
+  {id:'sagamu-mosque',name:'Sagamu Community Mosque',district:'Sagamu Centre',kind:'worship',category:'care',icon:'worship',point:{lon:3.6398,lat:6.8421},description:'Visit the community mosque respectfully around prayer time.',ambient:['People arrive from the market roads.'],variant:'mosque',spots:[spot('hall','Prayer hall',activity('sagamu-mosque-reflect','Sit quietly in the mosque','worship',['worship']))],beta:true,note:'Fictional worship venue at the mapped Sagamu locality.'},
+  {id:'remo-stadium',name:'Remo Sports Ground',district:'Sagamu Centre',kind:'viewing',variant:'ground-terrace',category:'fun',icon:'ball',point:{lon:3.6532,lat:6.8397},description:'Train and watch a local football match.',ambient:['Players warm up beside the touchline.'],spots:[spot('stand','Touchline stand',activity('sagamu-match','Watch the match','ball',['sport'],{effects:{fun:10,social:4}})),work()],beta:true,note:'Fictional sports ground at the mapped Sagamu locality.'},
+  {id:'ikenne-heritage',name:'Ikenne Heritage Walk',district:'Ikenne, Ikenne',kind:'walk',variant:'heritage-house',category:'fun',icon:'museum',point:{lon:3.716,lat:6.8669},description:'Learn about Ikenne’s schools and political history.',ambient:['The route links old homes, schools and civic memories.'],spots:[spot('route','Heritage route',activity('sagamu-ikenne-learn','Walk the Ikenne heritage route','walk',['history','learn']))],beta:true,note:'Fictional interpretation at the published Ikenne locality point; named landmarks remain separate overlays.'},
+  {id:'remo-kitchen',name:'Remo Ofada Kitchen',district:'Sagamu Centre',kind:'buka',category:'food',icon:'food',point:{lon:3.6482,lat:6.8517},description:'Eat ofada rice with ayamase and a cold drink.',ambient:['The pepper sauce comes with a warning.'],spots:[spot('counter','Food counter',activity('sagamu-ofada','Eat ofada rice and ayamase','food',['food'],{cost:1100,effects:{hunger:34,fun:5}})),work()],beta:true,note:'Fictional food counter at the mapped Sagamu locality.'},
+  {id:'sagamu-salon',name:'Sagamu Junction Salon',district:'Sagamu Centre',kind:'salon',category:'care',icon:'hair',point:{lon:3.6428,lat:6.8527},description:'Get a trim or braid and catch up on local news.',ambient:['The clippers and radio share the room.'],spots:[spot('chair','Styling chair',activity('sagamu-hair','Get a fresh style','hair',['care'],{cost:1600,effects:{hygiene:8,fun:4}})),work()],beta:true,note:'Fictional salon at the mapped Sagamu locality.'},
+  {id:'remo-evening-garden',name:'Remo Evening Garden',district:'Sagamu Centre',kind:'park',variant:'evening-garden',category:'nightlife',icon:'music',point:{lon:3.6492,lat:6.8444},description:'Listen to an evening live set in a relaxed garden.',ambient:['Friends gather after the long-distance buses thin out.'],spots:[spot('stage','Garden stage',activity('sagamu-evening-set','Listen to the evening set','music',['music','nightlife'],{hours:{open:18,close:23},xp:{music:8}})),work()],beta:true,note:'Fictional nightlife garden at the mapped Sagamu locality.'},
+  {id:'sagamu-creative-hub',name:'Sagamu Creative Hub',district:'Sagamu Centre',kind:'office',variant:'media-studio',category:'work',icon:'camera',point:{lon:3.6371,lat:6.8452},description:'Record local stories and build a digital portfolio.',ambient:['Editing screens glow beside hand-written interview notes.'],spots:[spot('studio','Media studio',activity('sagamu-story-session','Record a Remo story','camera',['photography','learn'],{xp:{photography:12}})),work()],beta:true,note:'Fictional creative workplace at the mapped Sagamu locality.'},
+]
+const names=['Adebisi Ogunleye','Sina Awolesi','Kemi Osinowo','Lanre Odulate','Yetunde Akinyemi','Femi Adesanya','Bimpe Sonuga','Tunde Odugbose','Sade Onafowokan','Jide Olaitan','Rukayat Bello','Kayode Adebajo','Nike Odusanya','Seyi Afolabi','Peju Ogunnaike','Dayo Adebowale','Morenike Olurin','Taiwo Bakare','Kehinde Olatunji','Lekan Akinlade','Tola Adeoti','Bayo Salami','Funmi Ojo','Wale Adetona','Ronke Lawal','Kunle Balogun','Temi Adebiyi','Yinka Soyinka','Dupe Odejimi','Segun Arowolo']
+const careers={'community-helper':'sagamu-neighbourhood-park',tech:'sagamu-creative-hub',banking:'remo-civic-hall',music:'remo-evening-garden',trading:'sagamu-market',nursing:'sagamu-clinic',hair:'sagamu-salon',chef:'remo-kitchen',dj:'remo-evening-garden',fitness:'remo-stadium',creator:'sagamu-creative-hub',teaching:'babcock-university',event:'remo-civic-hall',football:'remo-stadium',retail:'sagamu-market'}
+const content={cityId:'sagamu',cityName:'Sagamu',origin:mapOrigin,bounds:{minX:-206.6301387489,maxX:218.3968074078,minZ:-257.7261643302,maxZ:200.8423465529},localUnitDescriptions:{sagamu:'The Remo commercial centre and a major road interchange.',ikenne:'Ikenne and Ilishan-Remo connect schools, heritage and university life.','remo-north':'The northern Remo towns extend the city’s rural and market connections.'},venues,people:peopleFor(venues,names),careerVenues:careers,careerSummaries:{},houses:[{id:'sagamu-centre-room',label:'Single room',districtId:'sagamu-centre',district:'Sagamu Centre',rent:2500,grid:6,point:centre},{id:'ilisan-flat',label:'Self-contain',districtId:'ilisan',district:'Ilishan-Remo',rent:5500,grid:8,point:babcock},{id:'ikenne-house',label:'Two-bedroom house',districtId:'ikenne-town',district:'Ikenne',rent:19000,grid:10,point:ikenne}],events:[{id:'sagamu-remo-evening',title:'Remo story and music evening',blurb:'Local histories and live music share the garden stage.',venue:'remo-evening-garden',icon:'music',when:{weekday:5,from:18,to:22}},{id:'sagamu-market-morning',title:'Sagamu market morning',blurb:'Produce and household rows fill early.',venue:'sagamu-market',icon:'groceries',when:{weekday:6,from:7,to:13}}],firstFun:{venue:'sagamu-neighbourhood-park',spot:'trees',activity:'sagamu-play-ayo',title:'Play ayo in the park',hint:'Neighbourhood Park · takes 7 seconds'},buka:'remo-kitchen',thingsToDo:[{venueId:'babcock-university',name:'Babcock University',line:'Join a university workshop at Ilishan-Remo.'},{venueId:'sagamu-interchange',name:'Sagamu Interchange',line:'See where major roads meet.'},{venueId:'ikenne-heritage',name:'Ikenne Heritage Walk',line:'Learn about schools and political history.'},{venueId:'remo-evening-garden',name:'Remo Evening Garden',line:'Listen to music and local stories.'},{venueId:'sagamu-market',name:'Sagamu Market',line:'Price produce and household goods.'}],culture:{greeting:'Ẹ káàbọ̀ sí Ṣagamu',food:['ofada rice and ayamase','remo-style stews','roasted corn'],knownFor:['the Remo towns','the expressway interchange','schools and university life']},localModes:OGUN_LOCAL_MODES,homePalette:{back:'#efe0a8',left:'#e0cf8a',floor:['#dfd2a8','#c2b27c']},radioVenueIds:['remo-evening-garden'],billboardRoads:[{id:'sagamu-bb-interchange',near:'sagamu-interchange',road:'Lagos–Ibadan Expressway'},{id:'sagamu-bb-centre',near:'remo-civic-hall',road:'Akarigbo Road'}],tablePlaces:[{id:'sagamu-garden-whot',venueId:'remo-evening-garden',game:'whot',label:'Garden table',seats:4},{id:'sagamu-sports-penalty',venueId:'remo-stadium',game:'penalty',label:'Sports-ground penalty spot',seats:2}],dreamWording:{'lekki-landlord':{label:'Remo Landlord'},'afrobeats-star':{label:'Remo Headliner'},'yaba-unicorn':{label:'Interchange Builder'}},lotteryWording:{'civil-servant':{bullets:['No loan: you start debt-free','A steady household connected across the Remo towns','Charisma starts at level 1','Choose any local home you can afford']}}} satisfies OgunContentSpec<'sagamu'>
+
+async function loadSagamuSnapshot(): Promise<LegacyCitySnapshot> {
+  const [{ SAGAMU_RULES }, { SAGAMU_CONTENT }, { SAGAMU_MAP }] = await Promise.all([
+    import('./rules.ts'),
+    import('./content.ts'),
+    import('./map.ts'),
+  ])
+  return { rules: SAGAMU_RULES, content: SAGAMU_CONTENT, geometry: await SAGAMU_MAP.loadGeometry() }
+}
+
+export const SAGAMU_LEGACY_RECIPE = defineLegacyCityRecipe({
+  kind: 'legacy-preservation',
+  family: 'ogun',
+  id: 'sagamu',
+  exports: {
+    city: 'sagamuCity',
+    rules: 'SAGAMU_RULES',
+    content: 'SAGAMU_CONTENT',
+    map: 'SAGAMU_MAP',
+    localUnits: 'SAGAMU_LGAS',
+    mapOrigin: 'SAGAMU_MAP_ORIGIN',
+    typePrefix: 'Sagamu',
+  },
+  rules: {
+    name: 'Sagamu',
+    localUnits: [
+      { id: 'sagamu', name: 'Sagamu', zone: 'mainland', land: 90000, districts: ['sagamu-centre'] },
+      { id: 'ikenne', name: 'Ikenne', zone: 'mainland', land: 70000, districts: ['ilisan', 'ikenne-town'] },
+      { id: 'remo-north', name: 'Remo North', zone: 'mainland', land: 55000 },
+    ],
+    hub: { road: 'Sagamu Interchange', air: 'Murtala Muhammed Airport via Lagos' },
+    rentedHomeIds: ['sagamu-centre-room', 'ilisan-flat', 'ikenne-house'],
+    defaultRentedHome: 'sagamu-centre-room',
+    atlas: {
+      lon: 3.64,
+      lat: 6.85,
+      teaser: 'A Remo crossroads linking markets, schools and the roads east and west.',
+      preview: ['Sagamu interchange', 'Ikenne and Ilishan-Remo', 'Remo markets and stadium'],
+    },
+    mapOrigin,
+    districts: [
+      { id: 'sagamu-centre', name: 'Sagamu Centre', localUnitId: 'sagamu' },
+      { id: 'ilisan', name: 'Ilishan-Remo', localUnitId: 'ikenne' },
+      { id: 'ikenne-town', name: 'Ikenne', localUnitId: 'ikenne' },
+    ],
+    hubs: [{ id: 'sagamu-interchange', name: 'Sagamu Interchange', mode: 'road', venueId: 'sagamu-interchange' }],
+    links: [OGUN_LINKS.abeokutaSagamu, OGUN_LINKS.otaSagamu, OGUN_LINKS.sagamuIjebu],
+  },
+  content,
+  map: { stateFeatureId: 'ogun-state', landmarksExport: 'SAGAMU_LANDMARKS' },
+  baselineSha256: '3a8a67dd52babbf7b78817e6379bf43b149adb0dc7a3714d90af89891c80bbb2',
+  baselineBytes: 98_108,
+  loadSnapshot: loadSagamuSnapshot,
+})

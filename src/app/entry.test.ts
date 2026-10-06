@@ -79,7 +79,17 @@ test('the first download paints without the game shell, rules engine or city con
 })
 
 test('the shared shell does not statically import a city venue or regular catalogue', () => {
-  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(content|venues|regulars|descriptions)\.ts$/.test(path)), [])
+  assert.deepEqual(gamePaths.filter(path => /^src\/game\/cities\/[^/]+\/(?:index|rules|content|venues|regulars|descriptions)\.ts$/.test(path)), [])
+})
+
+test('each generated catalogue row has one checked-in Node and Worker loader', () => {
+  const catalogue = readFileSync(join(root, 'src/game/cities/catalogue.generated.ts'), 'utf8').split('\n').filter((line) => /^  \["/.test(line))
+  const loaders = readFileSync(join(root, 'src/game/cities/loaders.generated.ts'), 'utf8').split('\n').filter((line) => /^  async\(\)/.test(line))
+  assert.equal(loaders.length, catalogue.length, 'one lazy loader per compact catalogue row')
+  for (let index = 0; index < catalogue.length; index += 1) {
+    const id = catalogue[index]?.match(/^  \["([^"]+)"/)?.[1] ?? `row ${index}`
+    assert.match(loaders[index] ?? '', new RegExp(`import\\("\\./${id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/index\\.ts"\\)`))
+  }
 })
 
 test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell', () => {
@@ -135,8 +145,8 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // timed action became play-only (the campus rules with it, so the wallet's writers left the engine), and what only a lazily fetched screen reads
 // was moved to files of its own (the people and map-list sentences, the advert choices, Ping's wording, the campus trail). It measures 604.8 kB / 219.5 kB.
 const BUDGET = { raw: 609_000, gzip: 223_000 }
-// A player who starts in another city also loads that city's own content chunk (venues, regulars, calendar, wording) and nothing else:
-// the set of eager chunks for it is the default-city set plus that one chunk, by name, and the default-city budget is unchanged.
+// A player loads the shared shell, authored route table, and exactly one city's rules and content. Unopened cities contribute
+// only their compact catalogue row and loader thunk to that startup closure.
 const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
 
 function eagerChunks(dist: string, additional: readonly string[] = []): string[] {
@@ -153,6 +163,24 @@ function eagerChunks(dist: string, additional: readonly string[] = []): string[]
     for (const match of code.matchAll(/(?:\bfrom|\bimport)\s*"\.\/([^"]+\.js)"/g)) queue.push(`assets/${match[1]}`)
   }
   return [...seen]
+}
+
+/** One emitted JSON-compatible array literal, including nested arrays and quoted brackets. */
+function arrayLiteralAt(code: string, start: number): string {
+  let depth = 0, quote = '', escaped = false
+  for (let index = start; index < code.length; index += 1) {
+    const char = code[index] ?? ''
+    if (quote) {
+      if (escaped) escaped = false
+      else if (char === '\\') escaped = true
+      else if (char === quote) quote = ''
+      continue
+    }
+    if (char === '"' || char === "'") { quote = char; continue }
+    if (char === '[') depth += 1
+    else if (char === ']' && --depth === 0) return code.slice(start, index + 1)
+  }
+  throw new Error(`Unclosed emitted array at byte ${start}`)
 }
 
 test('the eager JavaScript does not grow and contains only the loading screen and Vue', (t) => {
@@ -177,27 +205,46 @@ test('automatic game startup, including one selected city, stays within the orig
   const all = readdirSync(join(dist, 'assets')).filter(name => name.endsWith('.js'))
   const core = all.filter(name => /^startApp-[\w-]+\.js$/.test(name))
   assert.equal(core.length, 1, 'the automatic startup has one deferred game shell')
-  const cityChunks = all.filter(name => /^city-.+-content-[\w-]+\.js$/.test(name))
-  const defaultNames = eagerChunks(dist, core.map(name => `assets/${name}`))
+  const routes = all.filter(name => /^city-routes-[\w-]+\.js$/.test(name))
+  assert.equal(routes.length, 1, 'the automatic startup has one lazy authored-route table')
+  const catalogueRows = readFileSync(join(root, 'src/game/cities/catalogue.generated.ts'), 'utf8').split('\n').filter((line) => /^  \["/.test(line)).map((line) => JSON.parse(line.trim().replace(/,$/, '')) as [string, string, string, string, number, number, 0 | 1])
+  const loaderExports = [...readFileSync(join(root, 'src/game/cities/loaders.generated.ts'), 'utf8').matchAll(/\.([A-Za-z_$][\w$]*),$/gm)].map((match) => match[1] ?? '')
+  assert.equal(loaderExports.length, catalogueRows.length)
+  const one = (pattern: RegExp, label: string): string => {
+    const found = all.filter((name) => pattern.test(name))
+    assert.equal(found.length, 1, label)
+    return found[0] ?? ''
+  }
   const measure = (names: readonly string[]) => names.reduce((sum, name) => {
     const bytes = readFileSync(join(dist, name))
     return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
   }, { raw: 0, gzip: 0 })
-  const base = measure(defaultNames)
-  t.diagnostic(`default city automatic startup: ${base.raw} raw ${base.gzip} gzip bytes`)
-  assert.ok(base.raw <= BUDGET.raw, `automatic startup for the default city is ${base.raw} bytes (budget ${BUDGET.raw})`)
-  assert.ok(base.gzip <= BUDGET.gzip, `automatic startup for the default city is ${base.gzip} gzip bytes (budget ${BUDGET.gzip})`)
-  assert.deepEqual(defaultNames.filter(name => /^assets\/city-/.test(name)), [], 'no city chunk (content, map, roads, water, landmarks) is part of the default startup')
-  // Every other city adds its own content chunk and no other chunk.
-  assert.ok(cityChunks.length >= 1, 'a non-default city has a content chunk')
-  for (const city of cityChunks) {
-    const names = eagerChunks(dist, [...core, city].map(name => `assets/${name}`))
-    const added = names.filter(name => !defaultNames.includes(name))
-    // Ogun's four cities are authored with one shared builder: it is a content chunk of its own, named by file, and is loaded only with an Ogun city.
-    const sharedBuilder = ['abeokuta', 'ota', 'ijebu-ode', 'sagamu'].some(id => city.startsWith(`city-${id}-content-`))
-    assert.deepEqual(added.filter(name => !(sharedBuilder && /^assets\/city-ogun-content-[\w-]+\.js$/.test(name))), [`assets/${city}`], `a city adds only its own content chunk (${city})`)
-    if (sharedBuilder) assert.equal(added.filter(name => /^assets\/city-ogun-content-/.test(name)).length, 1, 'and the one shared Ogun builder')
+  const common = [...core, ...routes]
+  const commonNames = eagerChunks(dist, common.map((name) => `assets/${name}`))
+  const commonCode = commonNames.map((name) => readFileSync(join(dist, name), 'utf8')).join('\n')
+  for (let index = 0; index < catalogueRows.length; index += 1) {
+    const row = catalogueRows[index]!, id = row[0], exportName = loaderExports[index]!
+    const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const rules = one(new RegExp(`^city-${escaped}-rules-[\\w-]+\\.js$`), `${id} has one lazy rules chunk`)
+    const content = one(new RegExp(`^city-${escaped}-content-[\\w-]+\\.js$`), `${id} has one lazy content chunk`)
+    const catalogueStart = commonCode.indexOf(JSON.stringify(row))
+    assert.ok(catalogueStart >= 0, `${id}'s compact catalogue tuple is in the built startup`)
+    const catalogueTuple = arrayLiteralAt(commonCode, catalogueStart)
+    const loaderPattern = new RegExp(`\\["\\./${rules.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}","${exportName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\]`)
+    const loaderMatch = loaderPattern.exec(commonCode)
+    assert.ok(loaderMatch?.index !== undefined, `${id}'s emitted rule URL and export share one compact loader tuple`)
+    const loaderTuple = arrayLiteralAt(commonCode, loaderMatch.index)
+    assert.deepEqual(JSON.parse(catalogueTuple), row)
+    assert.deepEqual(JSON.parse(loaderTuple), [`./${rules}`, exportName])
+    const marginal = Buffer.byteLength(catalogueTuple) + Buffer.byteLength(loaderTuple) + 2
+    assert.ok(marginal <= 150, `${id} adds ${marginal} built bytes of catalogue and loader rows (limit 150)`)
+    const names = eagerChunks(dist, [...common, rules, content].map((name) => `assets/${name}`))
+    assert.ok(names.includes(`assets/${rules}`) && names.includes(`assets/${content}`) && names.includes(`assets/${routes[0]}`), `${id} loads its rules, content and authored routes`)
+    assert.deepEqual(names.filter((name) => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name)), [], `${id} does not load another city's rules or content`)
+    assert.deepEqual(names.filter((name) => /\/city-.+-map-[\w-]+\.js$/.test(name)), [], `${id} does not load a map at startup`)
     const total = measure(names)
-    t.diagnostic(`${city} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
+    t.diagnostic(`${id} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
+    assert.ok(total.raw <= BUDGET.raw, `automatic startup for ${id} is ${total.raw} bytes (budget ${BUDGET.raw})`)
+    assert.ok(total.gzip <= BUDGET.gzip, `automatic startup for ${id} is ${total.gzip} gzip bytes (budget ${BUDGET.gzip})`)
   }
 })

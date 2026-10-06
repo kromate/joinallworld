@@ -101,7 +101,12 @@ async function main(): Promise<number> {
     return 0
   }
 
-  const results = await Promise.all(Object.keys(PROJECTS).map(run))
+  const results: RunResult[] = []
+  if (args.includes('--serial')) {
+    for (const project of Object.keys(PROJECTS)) results.push(await run(project))
+  } else {
+    results.push(...await Promise.all(Object.keys(PROJECTS).map(run)))
+  }
   const owned: Record<string, TypeError[]> = {}
   const failures: string[] = []
   const notes: string[] = []

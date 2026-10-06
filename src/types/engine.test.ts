@@ -1,5 +1,5 @@
-import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
-await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
+import { isOpenCityId, loadAllCityRules, loadCityContent as preloadCityContent, playableCityIds } from '../game/cities/registry.ts';
+await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan'].map(preloadCityContent)]);
 import { CITY_MAPS } from '../map3d/city-labels.ts';
 /**
  * Proves that src/types/{life,view,actions,content,registry}.ts still describe the running rules
@@ -35,8 +35,9 @@ import { PERKS, STARTER_GOALS, WISHES } from '../game/content/goals.ts'
 import { ACTIVITY_OUTCOMES, EVENTS } from '../game/content/events.ts'
 import { HEALTH } from '../game/content/health.ts'
 import { AD_COLOURS, AD_ICONS, BILLBOARDS, DISTRICTS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../game/content/civic.ts'
-import type { LagosLocalGovernmentId } from '../game/cities/lagos/rules.ts'
-import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom, lgaOf } from '../game/content/world.ts'
+import { LAGOS_LGAS } from '../game/cities/lagos/localUnits.ts'
+import type { LagosLocalGovernmentId } from '../game/cities/lagos/localUnits.ts'
+import { CITY_LINKS, CITY_RULES, ESTATE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, OWNING, STYLE_FIELDS, TIER_ORDER, linksFrom, lgaOf } from '../game/content/world.ts'
 import { DAILY_MISSIONS, DAY_TITLES, MISSION_KINDS, MISSION_REWARDS, STAMP_CARD, WEEKLY_MISSIONS, WEEK_TITLE } from '../game/content/missions.ts'
 import { EVENTS_CALENDAR, SPRAY } from '../game/content/calendar.ts'
 import { REFERRAL, TABLE_REWARDS } from '../game/content/growth.ts'
@@ -605,10 +606,9 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
 })
 
 test('a trip between cities is the timed action kind intercity', () => {
+  const kaduna = onboarded(); kaduna.estate.city = 'abuja'
+  assert.equal(act(kaduna, 'estate.relocate', { to: 'kaduna', mode: 'rail' }, at()).code, isOpenCityId('kaduna') ? 'departed' : 'city_not_open')
   const state = onboarded()
-  state.estate.city = 'abuja'
-  assert.equal(act(state, 'estate.relocate', { to: 'kaduna', mode: 'rail' }, at()).code, 'city_not_open')
-  state.estate.city = 'lagos'
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'departed')
   const active = state.activeAction
   assert.ok(active && active.kind === 'intercity')
@@ -1003,7 +1003,9 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(DEPOSIT_TERMS), idsOf<DepositTermId>({ d1: true, d3: true, d7: true }))
   assert.deepEqual(keys(FAMILY), idsOf<FamilyId>({ mummy: true, daddy: true, tobi: true, grandma: true }))
   assert.deepEqual(sorted(TIERS.map((tier) => tier.id)), idsOf<TierId>({ stranger: true, acquaintance: true, friend: true, paddy: true }))
-  assert.deepEqual(keys(CITY_RULES), idsOf<WorldCityId>({ lagos: true, ibadan: true, abuja: true, 'port-harcourt': true, kaduna: true }))
+  const originalCities = idsOf<WorldCityId>({ lagos: true, ibadan: true, abeokuta: true, ota: true, 'ijebu-ode': true, sagamu: true, 'port-harcourt': true, abuja: true, kano: true })
+  assert.ok(originalCities.every((id) => Object.hasOwn(CITY_RULES, id)), 'the original nine city rules remain')
+  assert.deepEqual(new Set(keys(CITY_RULES)), new Set(playableCityIds()))
   assert.deepEqual(LAGOS_LGAS.map((lga) => lga.id), [...LGA_IDS])
   for (const city of Object.values(CITY_RULES).map(required)) {
     for (const unit of city.units) assert.equal(lgaOf(city.id, unit.id), unit, `${city.id}: ${unit.id}`)
@@ -1013,7 +1015,7 @@ test('the id unions in life.ts are exactly the keys of the content tables', () =
   assert.deepEqual(keys(HOUSE_TIERS), tiers)
   assert.deepEqual(sorted(TIER_ORDER), tiers)
   assert.deepEqual(sorted(STYLE_FIELDS), idsOf<HouseStyleField>({ shape: true, wall: true, roof: true, door: true, windows: true, fence: true, yard: true, sign: true }))
-  assert.deepEqual([...new Set(CITY_LINKS.map((link) => link.mode))].sort(), ['air', 'road'])
+  assert.deepEqual([...new Set(CITY_LINKS.map((link) => link.mode))].sort(), ['air', 'rail', 'road'])
   assert.deepEqual(sorted([...DAY_TITLES.map((title) => title.id), WEEK_TITLE.id]), idsOf<MissionTitleId>({ settled: true, lagosian: true, 'city-elder': true, 'week-finisher': true }))
   assert.deepEqual(sorted(MISSION_KINDS), idsOf<MissionKind>({ life: true, discovery: true, social: true }))
 })

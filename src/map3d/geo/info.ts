@@ -1,5 +1,5 @@
 import { routeUnavailable } from '../../game/cities/routeAvailability.ts';
-import { cityLinks, cityRules, citiesInState, linksFrom } from '../../game/cities/registry.ts';
+import { cityLinks, cityRules, cityName, catalogueCitiesInState, isOpenCityId, linksFrom } from '../../game/cities/registry.ts';
 /**
  * OWNER: world
  * What the atlas says about a region: the model behind its sheet and its row in the list.
@@ -47,9 +47,9 @@ export const linkKey = (link: { a: string; b: string; mode: string }): string =>
 /** The links between `from` and `to`, each with its fare and time, and whether the server would let it leave. */
 function routesBetween(from: string, to: string, mine: RegionContext['routes']): RouteInfo[] {
   return cityLinks(from).filter(link => link.a === to || link.b === to).map((link) => {
-    const live = mine?.find((item) => item.to === to && item.mode === link.mode), open = cityRules(to)?.status === 'open';
+    const live = mine?.find((item) => item.to === to && item.mode === link.mode), open = isOpenCityId(to);
     const unavailable = routeUnavailable(link);
-    const why = unavailable?.reason ?? (live ? live.blocked || null : open ? null : `${cityRules(to)?.name ?? 'It'} is not open yet, so nothing leaves for it. Departures start the day it opens.`);
+    const why = unavailable?.reason ?? (live ? live.blocked || null : open ? null : `${cityName(to) ?? 'It'} is not open yet, so nothing leaves for it. Departures start the day it opens.`);
     return { ...(link.status ? { status: link.status } : {}), id: linkKey(link), to, mode: link.mode, label: link.label, fare: link.fare, seconds: link.seconds, minutes: Math.round((link.seconds / 60) * 10) / 10, km: link.km,
       hub: cityRules(from)?.hub?.[link.mode] ?? 'the park', live: Boolean(live) && !unavailable && !live!.blocked && open, why, ...(typeof live?.skipFree === 'boolean' && !unavailable ? { skip: live.skipFree && TRIP_SKIP.firstIntercityFree ? 0 : tripSkipFee('intercity', link.seconds, link.fare) } : {}) };
   });
@@ -59,11 +59,11 @@ export function regionInfo(ref: RegionRef, { cityId = null, feature = null, curr
   const entry = regionEntry(ref.kind, ref.id), status = entry.status, name = feature?.name ?? ref.id;
   const capital = Array.isArray(feature?.cap) ? feature.cap[0] : feature?.cap ?? null;
   const base: Omit<RegionInfo, 'type' | 'teaser' | 'tag' | 'tone'> = { kind: ref.kind, id: ref.id, name, capital, status, city: null, preview: null, routes: [], soon: [], routesFrom: null, planned: null, wait: null, action: null };
-  const fromName = cityRules(current)?.name ?? null;
+  const fromName = cityName(current) ?? null;
 
   if (ref.kind === 'state') {
     const zone = ZONES[entry.zone!]?.name;
-    const candidates = citiesInState(ref.id);
+    const candidates = catalogueCitiesInState(ref.id);
     const selectedId = cityId && candidates.some(item => item.id === cityId) ? cityId : current && candidates.some(item => item.id === current) ? current : entry.city;
     const city = selectedId ? cityEntry(selectedId) : null;
     const type = `${ref.id === 'fct' ? 'Territory' : 'State'}${zone ? ` · ${zone}` : ''}`;
@@ -75,8 +75,8 @@ export function regionInfo(ref: RegionRef, { cityId = null, feature = null, curr
       // The open city: from here every link to a planned city can be looked at.
       // Only open destinations are listed with a fare; the planned ones are named under "Opening soon".
       const every = current === city.id ? [...new Set(linksFrom(city.id).map(link => link.to))] : [];
-      const others = every.filter((to) => cityRules(to)?.status === 'open');
-      const soon = every.filter((to) => cityRules(to)?.status !== 'open').map((to) => cityRules(to)?.name ?? to);
+      const others = every.filter((to) => isOpenCityId(to));
+      const soon = every.filter((to) => !isOpenCityId(to)).map((to) => cityName(to) ?? to);
       return { ...info, soon, tag: access === 'here' ? 'You are here' : 'Open', tone: access === 'here' ? 'here' : 'open',
         routes: current && current !== city.id ? routesBetween(current, city.id, routes) : others.flatMap((to) => routesBetween(city.id, to, routes)), routesFrom: current && current !== city.id ? fromName : others.length ? city.name : null,
         action: access === 'here' ? { kind: 'open-city', label: `Enter ${city.name}`, city: city.id } : current ? null : { kind: 'enter-city', label: `Go to ${city.name}`, city: city.id } };

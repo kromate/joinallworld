@@ -2,12 +2,13 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createLife, viewLife } from '../../life.ts'
 import { addressLabel, lgaOf, moveLevy } from '../content/world.ts'
-import { cachedCityContent, cityRules, loadCityContent } from './registry.ts'
+import { cachedCityContent, cityRules, loadCityContent, loadCityRules } from './registry.ts'
 import { localUnitDescription } from './runtime.ts'
 import { assertCityContentContract } from './cityContractTest.test.ts'
 import { lagosCity } from './lagos/index.ts'
 
-test('local-unit identity, addresses and prices work without loading city descriptions', () => {
+test('local-unit identity, addresses and prices work without loading city descriptions', async () => {
+  await loadCityRules('lagos')
   assert.equal(cachedCityContent('lagos'), null)
   assert.equal(lgaOf('lagos', 'ikeja')?.land, 500000)
   assert.match(addressLabel('lagos', 'ikeja', 0, 0), /Ikeja/)

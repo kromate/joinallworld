@@ -21,15 +21,10 @@ export async function loadGame(): Promise<LoadedGame> {
   const { loadLifeCities } = await import('../game/cities/lifeCities.ts')
   let cached: string | null = null
   try { cached = globalThis.localStorage.getItem(STORAGE_KEY) } catch { /* The server session can still restore the character. */ }
-  // A first attempt in this tab already failed ("Try again"): the saved copy is dropped and the server's answer is used.
-  if (cached !== null && bootFailed()) { try { globalThis.localStorage.removeItem(STORAGE_KEY) } catch { /* nothing more to do */ } cached = null }
   if (cached !== null) {
-    // Every city the saved life refers to is loaded before it is rebuilt. When one cannot be, the saved copy is dropped
-    // and the server's answer is waited for instead (the session cookie is not touched).
-    let usable = false
-    try { usable = (await loadLifeCities(savedState(cached), [initialCity(cached, isCityId)])).length === 0 } catch { /* dropped below */ }
-    if (!usable) { try { globalThis.localStorage.removeItem(STORAGE_KEY) } catch { /* nothing more to do */ } cached = null }
-  }
-  await loadCityContent(initialCity(cached, isCityId))
+    // Every referenced city's rules and the current city's content must arrive before reconstruction. A failed download
+    // leaves the saved copy untouched, so retrying can never trade homes or money for an empty preview.
+    await loadLifeCities(savedState(cached), [initialCity(cached, isCityId)])
+  } else await loadCityContent(initialCity(cached, isCityId))
   return import('./startApp.ts')
 }

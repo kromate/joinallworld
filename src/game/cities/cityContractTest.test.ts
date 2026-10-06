@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { CityContent, CityMapGeometry, CityMapPack, CityModule, LonLatPolygon } from '../../types/content.ts'
 import { JOBS } from '../content/jobs.ts'
-import { linksFrom, cityModule, loadCityContent, loadCityRoutes, registerCityForTest } from './registry.ts'
+import { linksFrom, cityModule, loadCityContent, loadCityLinks, loadCityRoutes, loadCityRules, registerCityForTest } from './registry.ts'
 import { BASE_MODE_IDS } from '../content/travel.ts'
 import { project, unproject } from '../../map3d/geo/frame.ts'
 import { KINDS as BUILT_SCENE_KINDS } from '../../scene/venue-scenes.ts'
@@ -267,11 +267,16 @@ export async function assertCityModuleContract(module: CityModule, options: City
   assertCityRulesContract(module, options); assertCityContentContract(module, await module.loadContent(), options); await assertCityMapContract(module, await module.loadMap())
 }
 export function cityContractTest(module: CityModule, options: CityContractOptions = {}): void {
-  test(`${module.id}: eager city rules contract`, () => assertCityRulesContract(module, options))
+  test(`${module.id}: loaded city rules contract`, async () => {
+    if (options.profile !== 'test-fixture') await Promise.all([loadCityLinks(), loadCityRules(module.id)])
+    assertCityRulesContract(module, options)
+  })
   test(`${module.id}: lazy content contract`, async () => assertCityContentContract(module, await module.loadContent(), options))
   test(`${module.id}: lazy map contract`, async () => assertCityMapContract(module, await module.loadMap()))
   test(`${module.id}: a new guest starts at a public venue`, async () => {
-    const registration = cityModule(module.id) ? null : registerCityForTest(module)
+    let registration: ReturnType<typeof registerCityForTest> | null = null
+    if (options.profile === 'test-fixture') registration = cityModule(module.id) ? null : registerCityForTest(module)
+    else await loadCityRules(module.id)
     try {
       await loadCityContent(module.id)
       const [{ createLife, dispatch }, { DEFAULT_LOOK }] = await Promise.all([import('../../life.ts'), import('../content/traits.ts')])

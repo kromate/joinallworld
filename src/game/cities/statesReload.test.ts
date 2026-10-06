@@ -6,7 +6,7 @@ import { join } from 'node:path'
 import test from 'node:test'
 import { advanceLife, createLife, dispatch } from '../../life.ts'
 import { DEFAULT_LOOK } from '../content/traits.ts'
-import { cityRules, loadCityContent } from './registry.ts'
+import { cityName, cityRules, loadCityContent } from './registry.ts'
 import type { LifeContextInit, LifeState } from '../../types/life.ts'
 
 const NEW_CITIES = ['port-harcourt', 'abuja', 'kano'] as const
@@ -38,14 +38,16 @@ function probe(dir: string, city: string, saved: string): void {
   for (const mode of ['trusted', 'untrusted']) {
     const child = spawnSync(process.execPath, ['--experimental-strip-types', probePath, file, city, mode], { encoding: 'utf8' })
     assert.equal(child.status, 0, `${city} (${mode}): ${child.stderr.split('\n').filter(Boolean).slice(0, 3).join(' | ')}`)
-    const read = JSON.parse(child.stdout) as { city: string; away: string[] }
+    const read = JSON.parse(child.stdout) as { city: string; away: string[]; rules: boolean; cold: string[] }
     assert.equal(read.city, city, `${city} (${mode}): the life is read in the city it was saved in`)
     assert.ok(read.away.length >= 1, `${city} (${mode}): the homes elsewhere are kept`)
+    assert.equal(read.rules, true, `${city} (${mode}): every referenced city's rules loaded before rebuild`)
+    assert.ok(read.cold.length >= 1, `${city} (${mode}): other city content stayed cold`)
   }
 }
 
 for (const city of NEW_CITIES) {
-  test(`a life with homes in Lagos and ${cityRules(city)!.name} reloads cleanly in each with only that city loaded`, async () => {
+  test(`a life with homes in Lagos and ${cityName(city) ?? city} reloads cleanly in each with only that city loaded`, async () => {
     await Promise.all(['lagos', city].map(loadCityContent))
     const life = traveller(`reload-${city}`)
     life.go(city); life.settle(city); life.go('lagos')

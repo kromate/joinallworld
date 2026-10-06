@@ -2,8 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { advanceLife, createLife, dispatch, viewLife } from '../../../life.ts'
 import { DEFAULT_LOOK } from '../../content/traits.ts'
-import { ibadanCity } from './index.ts'
-import { cityModule, loadCityContent, registerCityForTest } from '../registry.ts'
+import { loadCityContent } from '../registry.ts'
 import { createKit } from '../../../scene/kit.ts'
 import { buildVenueScene } from '../../../scene/venue-scenes.ts'
 import { sceneVenue } from '../../../venue-world.ts'
@@ -15,9 +14,8 @@ await loadAllCityScenes()
 const MONDAY = Date.UTC(2026, 0, 5, 9)
 
 async function useIbadan(): Promise<() => void> {
-  const registration = cityModule('ibadan') ? null : registerCityForTest(ibadanCity, { replaceClosed: true })
   await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan')])
-  return () => registration?.dispose()
+  return () => {}
 }
 
 function journeyClock(start = MONDAY): {
@@ -186,7 +184,7 @@ test('every public Ibadan scene spot has a walkable path from its entrance', asy
   const dispose = await useIbadan()
   const kit = createKit()
   try {
-    const content = await ibadanCity.loadContent()
+    const content = await loadCityContent('ibadan')
     for (const venue of content.venues.filter((item) => item.id !== 'home')) {
       const definition = sceneVenue(venue.id, 'ibadan')
       assert.ok(definition, venue.id)

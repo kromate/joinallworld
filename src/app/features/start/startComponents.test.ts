@@ -254,6 +254,8 @@ test('the home step of a life not yet started offers every open state, and the c
 
 test('the home step: state, city, the starter house, find my area, and the local governments by zone', async () => {
   await resetCreator()
+  const registry = await load<{ cityCatalogueEntry(id: string): { open: boolean } | null }>('/src/game/cities/registry.ts')
+  const kadunaOpen = registry.cityCatalogueEntry('kaduna')?.open === true
   await withState(guest, async () => {
     const { cr } = await load<{ cr: { step: string } }>('/src/app/features/start/creatorState.ts')
     await render('OnboardingApp')
@@ -261,7 +263,8 @@ test('the home step: state, city, the starter house, find my area, and the local
     const html = await render('OnboardingApp')
     const words = text(html)
     assert.ok(words.includes('Step 3 of 4 · Home') && words.includes('Where do you live?'))
-    assert.ok(words.includes('Nigeria') && words.includes('Lagos State') && words.includes('More places are opening: Kaduna'))
+    assert.ok(words.includes('Nigeria') && words.includes('Lagos State'))
+    assert.equal(words.includes('More places are opening: Kaduna'), !kadunaOpen)
     assert.ok(words.includes('Your free starter house') && words.includes('No rent'))
     const estate = app.game.view.value.estate
     if (estate.lgas.length) {

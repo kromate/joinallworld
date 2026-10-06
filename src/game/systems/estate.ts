@@ -95,7 +95,7 @@ import { isOpen as openAt, lagosTime } from '../clock.ts';
 import { arrive, canAfford, changeNeeds, credit, debit } from '../api.ts';
 import { rideDebtOf, rideDebtReason, rideDebtText, setRideDebt } from '../relief.ts';
 import { houseFor, housesFor, housingFor, defaultHouseFor } from '../cities/housingRuntime.ts';
-import { isCityId } from '../cities/registry.ts';
+import { cityCatalogueEntry, cityName, isCityId, isOpenCityId } from '../cities/registry.ts';
 import { CITY_RULES, DEFAULT_STYLE, HOUSE_STYLE, HOUSE_TIERS, LGA_RULES, LODGING, OWNING, SECOND_HOME, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cheapestUpgrade, cityRules, cleanStyle,
   lgaOf, lgaOfDistrict, lgasOf, linksFrom, moveLevy, packStyle, stylePrice, tierCost, tierOf, validPlot } from '../content/world.ts';
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
@@ -184,7 +184,7 @@ function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
   else if (!home.lga && saved.lga !== null) Object.assign(home, { lga: defaultLga(city, state), lgaAt: null, lgaConfirmed: false, lgaVia: 'default' });
   const away: Partial<Record<WorldCityId, AwayResidence>> = {};
   if (isRecord(saved.away)) {
-    for (const [id, value] of Object.entries(saved.away).slice(0, 16)) {
+    for (const [id, value] of Object.entries(saved.away)) {
       if (!isCityId(id) || id === city) continue;
       const rules = cityRules(id);
       if (!rules?.defaultRentedHome) continue;
@@ -225,7 +225,7 @@ function homeCooldown(e: EstateState, now: number): string | null {
 export const visitingHere = (state: LifeState): boolean => !unsettled(state) && !state.estate.lga && Boolean(state.estate.home) && state.estate.home !== state.estate.city;
 /** Why a visitor's main home cannot move to the city it is in, or null. */
 function moveMainBlock(state: LifeState, now: number): { code: 'home_owned' | 'home_cooldown'; reason: string } | null {
-  const e = state.estate, old = e.home ? e.away[e.home] : undefined, from = cityRules(e.home)?.name ?? 'your main home';
+  const e = state.estate, old = e.home ? e.away[e.home] : undefined, from = cityName(e.home) ?? 'your main home';
   if (old && (old.tier !== 'starter' || old.upgrade)) {
     return { code: 'home_owned', reason: `Your ${HOUSE_TIERS[old.upgrade?.to ?? old.tier].label} in ${from} is property you paid for: it is never given up. Buy a home here first, then make it your main home.` };
   }
@@ -433,10 +433,10 @@ export const hasPlace = (state: LifeState): boolean => Boolean(state?.estate?.lg
   && (state.estate.lgaConfirmed === true || (state.onboarding?.done === true && state.onboarding.legacy === true));
 
 /** Is the city open for departures? `ctx.openCities` lets a test open one; no request can set it. */
-const isOpen = (id: string, ctx?: LifeContext): boolean => cityRules(id)?.status === 'open' || Boolean(ctx?.openCities?.includes(id as WorldCityId));
+const isOpen = (id: string, ctx?: LifeContext): boolean => isOpenCityId(id) || Boolean(ctx?.openCities?.includes(id as WorldCityId));
 /** Why a trip to another city cannot start, or null. `ctx.openCities` lets a test open a city; no request can set it. */
 export function relocateBlock(state: LifeState, to: unknown, mode: unknown, ctx?: LifeContext): { code: RelocateBlockCode; reason: string } | null {
-  const e = state.estate, dest = cityRules(to);
+  const e = state.estate, dest = cityCatalogueEntry(to);
   const link = dest ? linksFrom(e.city).find((item) => item.to === to && item.mode === mode) : null;
   if (!dest || to === e.city) return { code: 'invalid_city', reason: 'Choose another city to travel to.' };
   if (!link) return { code: 'no_route', reason: `There is no ${mode === 'air' ? 'flight' : mode === 'rail' ? 'train' : 'road link'} from ${cityRules(e.city)?.name ?? 'here'} to ${dest.name}.` };
@@ -483,9 +483,9 @@ function relocate(state: LifeState, payload: Record<string, unknown>, ctx: LifeC
     credit(state, link.fare, `Ride home on credit: ${link.label} (advance)`, ctx);
     setRideDebt(state, link.fare);
   }
-  debit(state, link.fare, `${link.label} (${cityRules(state.estate.city)?.name} → ${cityRules(link.to)?.name ?? link.to})`, ctx);
+  debit(state, link.fare, `${link.label} (${cityName(state.estate.city) ?? state.estate.city} → ${cityName(link.to) ?? link.to})`, ctx);
   state.activeAction = { kind: 'intercity', id: link.to, duration: link.seconds, remaining: link.seconds, mode: link.mode, fare: link.fare, from: state.estate.city }; // link.to is payload.to
-  state.message = onCredit ? `On the way to ${cityRules(link.to)?.name ?? link.to} on credit. ${rideDebtText(link.fare)}: it comes out of what you earn.` : `On the way to ${cityRules(link.to)?.name ?? link.to}.`;
+  state.message = onCredit ? `On the way to ${cityName(link.to) ?? link.to} on credit. ${rideDebtText(link.fare)}: it comes out of what you earn.` : `On the way to ${cityName(link.to) ?? link.to}.`;
   return ok(state, 'departed');
 }
 /**
@@ -510,8 +510,8 @@ export function arriveInCity(state: LifeState, active: Pick<IntercityAction, 'id
   emit(state, 'house.moved', { id: e.living === 'own' ? 'own' : house, from: 'away', cost: 0, house }, ctx);
   const destination = venue ?? (kept?.lga ? 'home' : ticketArrivalVenue(to, active.mode, (place) => !place.cities && openAt(place.hours, now)).id);
   if (!destination || !arrive(state, destination, ctx, { mode: null })) throw new TypeError('The destination city needs a public arrival venue');
-  const homeName = e.home && e.home !== to ? cityRules(e.home)?.name ?? e.home : null;
-  state.message = `Welcome to ${cityRules(to)?.name ?? to}. ${kept?.lga ? (e.home === to ? 'You are home.' : 'You are back at your house here.') : `You are visiting${homeName ? `: your home is in ${homeName}` : ''}.`}`;
+  const homeName = e.home && e.home !== to ? cityName(e.home) ?? e.home : null;
+  state.message = `Welcome to ${cityName(to) ?? to}. ${kept?.lga ? (e.home === to ? 'You are home.' : 'You are back at your house here.') : `You are visiting${homeName ? `: your home is in ${homeName}` : ''}.`}`;
 }
 
 function advance(state: LifeState, dt: number, ctx: LifeContext): void {
@@ -575,18 +575,18 @@ function view(state: LifeState, ctx: LifeContext): EstateView {
     living: e.living, arrears: e.ground.arrears,
     cheapest: cheapest ? { ...cheapest, total: cheapest.total ?? 0, lgaName: lgaName(e.city, cheapest.lga), label: HOUSE_TIERS[cheapest.tier].label } : null,
     rules: { beta: true, housesPerLife: OWNING.housesPerLife, cooldownDays: LGA_RULES.changeCooldownDays },
-    links: linksFrom(e.city).map((link) => ({ ...link, name: cityRules(link.to)?.name ?? link.to, open: cityRules(link.to)?.status === 'open', hub: city?.hub?.[link.mode] ?? null,
+    links: linksFrom(e.city).map((link) => ({ ...link, name: cityName(link.to) ?? link.to, open: isOpenCityId(link.to), hub: city?.hub?.[link.mode] ?? null,
       blocked: (unsettled(state) ? SETTLE_FIRST : null) ?? relocateBlock(state, link.to, link.mode, ctx)?.reason
-        ?? (state.activeAction?.kind === 'intercity' ? `You are on the way to ${cityRules(state.activeAction.id)?.name ?? 'another city'}. Arrive first.` : state.activeAction ? 'Finish what you are doing first (or cancel it), then travel.' : null) })),
+        ?? (state.activeAction?.kind === 'intercity' ? `You are on the way to ${cityName(state.activeAction.id) ?? 'another city'}. Arrive first.` : state.activeAction ? 'Finish what you are doing first (or cancel it), then travel.' : null) })),
     // Object.entries widens the keys of the city table.
-    away: (Object.entries(e.away) as [WorldCityId, AwayResidence][]).filter(([, home]) => home.lga).map(([id, home]) => ({ city: id, name: cityRules(id)?.name ?? id, tier: HOUSE_TIERS[home.tier].label, living: home.living })),
-    home: e.home ? { city: e.home, name: cityRules(e.home)?.name ?? e.home, here: e.home === e.city } : null,
+    away: (Object.entries(e.away) as [WorldCityId, AwayResidence][]).filter(([, home]) => home.lga).map(([id, home]) => ({ city: id, name: cityName(id) ?? id, tier: HOUSE_TIERS[home.tier].label, living: home.living })),
+    home: e.home ? { city: e.home, name: cityName(e.home) ?? e.home, here: e.home === e.city } : null,
     visiting: !unsettled(state) && !e.lga,
     settle: visitingHere(state) ? {
       buy: { tier: HOUSE_TIERS[SECOND_HOME.tier].label, groundRent: HOUSE_TIERS[SECOND_HOME.tier].groundRent,
         prices: Object.fromEntries(lgasOf(e.city).map((item) => [item.id, tierCost(e.city, item.id, SECOND_HOME.tier) ?? 0])),
         from: Math.min(...lgasOf(e.city).map((item) => tierCost(e.city, item.id, SECOND_HOME.tier) ?? Infinity)) },
-      main: { blocked: moveMainBlock(state, now)?.reason ?? null, gives: e.home ? `your starter house${e.away[e.home]?.living === 'rent' ? ' and rented place' : ''} in ${cityRules(e.home)?.name ?? e.home}` : null },
+      main: { blocked: moveMainBlock(state, now)?.reason ?? null, gives: e.home ? `your starter house${e.away[e.home]?.living === 'rent' ? ' and rented place' : ''} in ${cityName(e.home) ?? e.home}` : null },
     } : null,
     makeMain: hasPlace(state) && e.home !== null && e.home !== e.city ? { blocked: homeCooldown(e, now) } : null,
     lodging: { fee: LODGING.fee, blocked: lodgeBlock(state)?.reason ?? null },

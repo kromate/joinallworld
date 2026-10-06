@@ -1,5 +1,5 @@
-import { loadCityContent as preloadCityContent } from '../game/cities/registry.ts';
-await Promise.all(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'].map(preloadCityContent));
+import { cityCatalogue, loadCityContent as preloadCityContent, playableCityIds } from '../game/cities/registry.ts';
+await Promise.all(playableCityIds().map(preloadCityContent));
 // The 3D city map: registry, routing, the server-timed trip, the render budget and the battery rule.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -35,8 +35,12 @@ const keyOf = (id: string, home = 'yaba') => (id === 'home' ? `home:${home}` : i
 const mainlandLand = pack.land.filter((entry) => entry.kind === 'mainland');
 const onMainland = (spot: GroundPoint) => mainlandLand.some((entry) => pointInPolygon(spot.x, spot.z, entry.points));
 
-test('the region registry: the nine opened cities are playable while Kaduna is coming soon', async () => {
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), [['lagos', 'playable'], ['ibadan', 'playable'], ['abuja', 'playable'], ['port-harcourt', 'playable'], ['kaduna', 'soon'], ['abeokuta', 'playable'], ['ota', 'playable'], ['ijebu-ode', 'playable'], ['sagamu', 'playable'], ['kano', 'playable']]);
+test('the region registry preserves the original nine and derives every additive city from the catalogue', async () => {
+  const original = ['lagos', 'ibadan', 'abuja', 'port-harcourt', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'kano'];
+  const nigeriaCities = citiesOf('nigeria');
+  assert.ok(original.every((id, index) => nigeriaCities.some((city) => city.id === id) && (index === 0 || nigeriaCities.findIndex((city) => city.id === original[index - 1]) < nigeriaCities.findIndex((city) => city.id === id))), 'the original map city order is preserved');
+  for (const id of original) assert.equal(cityEntry(id)?.status, 'playable', `${id}: original city remains playable`);
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), cityCatalogue().map((city) => [city.id, city.open ? 'playable' : 'soon']));
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);
@@ -53,9 +57,14 @@ test('the region registry: the nine opened cities are playable while Kaduna is c
   assert.equal(cityAccess('ibadan', { current: 'lagos', held: ['lagos', 'ibadan'] }), 'enter');
   assert.equal(cityAccess('ibadan', { current: 'ibadan', held: ['ibadan'] }), 'here');
   assert.equal(cityAccess('lagos', { current: 'ibadan', held: ['ibadan'] }), 'enter');
-  assert.equal(cityAccess('kaduna', { current: 'lagos', held: ['kaduna'] }), 'soon', 'a city without server lives is never offered');
-  const loaded = await loadCityPack('lagos');
-  assert.equal(loaded!.id, 'lagos'); assert.equal((await loadCityPack('ibadan'))?.id, 'ibadan'); assert.equal((await loadCityPack('port-harcourt'))?.id, 'port-harcourt'); assert.equal((await loadCityPack('abuja'))?.id, 'abuja'); assert.equal((await loadCityPack('kano'))?.id, 'kano'); assert.equal(await loadCityPack('aba'), null); assert.equal(await loadCityPack('owerri'), null); assert.equal(await loadCityPack('kaduna'), null);
+  const kadunaOpen = cityEntry('kaduna')?.status === 'playable';
+  assert.equal(cityAccess('kaduna', { current: 'lagos', held: ['kaduna'] }), kadunaOpen ? 'enter' : 'soon');
+  for (const city of cityCatalogue()) {
+    const loaded = await loadCityPack(city.id);
+    if (city.open) assert.equal(loaded?.id, city.id, `${city.id}: an open city has its pack`);
+    else assert.equal(loaded, null, `${city.id}: a closed catalogue city has no pack`);
+  }
+  assert.equal(await loadCityPack('atlantis'), null);
 });
 
 test('the Lagos pack places every venue (the airport and the refinery among them) and every home district, and every scene kind has a landmark', () => {

@@ -40,7 +40,7 @@ export type ComingSoonId = never
  */
 export type WorldCityId = import('../game/cities/ids.ts').CityId
 
-/** The twenty local governments of Lagos (content/world.js LAGOS_LGAS). The other cities have none yet. */
+/** A city's local-government id (Lagos definitions live in cities/lagos/localUnits.ts). */
 export type LgaId<City extends string = string> = import('../game/cities/ids.ts').LgaId<City>
 
 /** Sizes of the house everyone has on a plot, smallest first (content/world.js HOUSE_TIERS / TIER_ORDER). */
@@ -1148,7 +1148,7 @@ export const SLICE_FIELD_KEYS = {
 /** NEEDS, in the engine's display order. */
 export const NEED_IDS = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'] as const satisfies readonly NeedId[]
 
-/** The local governments of Lagos, in content order (alphabetical). Equals LAGOS_LGAS.map((lga) => lga.id). */
+/** The local governments of Lagos, in catalogue order. Equals LAGOS_LGAS.map((lga) => lga.id). */
 export const LGA_IDS = [
   'agege', 'ajeromi-ifelodun', 'alimosho', 'amuwo-odofin', 'apapa', 'badagry', 'epe', 'eti-osa', 'ibeju-lekki', 'ifako-ijaiye',
   'ikeja', 'ikorodu', 'kosofe', 'lagos-island', 'lagos-mainland', 'mushin', 'ojo', 'oshodi-isolo', 'somolu', 'surulere',

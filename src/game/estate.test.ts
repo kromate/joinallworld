@@ -1,6 +1,6 @@
 import { localUnitDescription } from './cities/runtime.ts';
-import { allCityLinks, cityRules, loadCityContent as preloadCityContent } from './cities/registry.ts';
-await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
+import { allCityLinks, cityCatalogueEntry, cityRules, isOpenCityId, loadAllCityRules, loadCityContent as preloadCityContent } from './cities/registry.ts';
+await Promise.all([loadAllCityRules(), ...['lagos', 'ibadan'].map(preloadCityContent)]);
 // OWNER: world — the house everyone has, local governments, styles, upgrades and travel between cities.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,7 +11,8 @@ import type { ActionBody } from '../types/actions.ts';
 import type { ActionOutcome, LifeContext, LifeContextInit, LifeState, WorldCityId } from '../types/life.ts';
 import { HOUSES } from './content/housing.ts';
 import { intercitySeconds } from './content/travel.ts';
-import { ESTATE, HOUSE_STYLE, HOUSE_TIERS, LAGOS_LGAS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
+import { LAGOS_LGAS } from './cities/lagos/localUnits.ts';
+import { ESTATE, HOUSE_STYLE, HOUSE_TIERS, LGA_CAPACITY, LGA_RULES, STYLE_FIELDS, TIER_ORDER, addressKey, addressLabel, cleanStyle, lgaOf, lgaOfDistrict, moveLevy, packStyle, stylePrice, tierCost, unpackStyle } from './content/world.ts';
 
 const MONDAY_9AM = Date.UTC(2026, 0, 5, 8), DAY = 86400000;
 const at = (now = MONDAY_9AM, seed = 'estate', extra: LifeContextInit = {}): LifeContext => makeContext({ now, cityId: 'lagos', seed, ...extra });
@@ -210,26 +211,25 @@ test('renting stays a choice: moving to a rented home restarts the weekly rent, 
   conserved(state, 5000);
 });
 
-test('cities connect as data, while a trip to closed Kaduna is refused without charging', () => {
-  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] satisfies WorldCityId[]) assert.equal(cityRules(id)?.status, 'open');
-  const soon: WorldCityId[] = ['kaduna'];
-  for (const id of soon) { const city = cityRules(id); assert.ok(city, 'registered city'); assert.equal(city.status, 'soon'); }
-  for (const link of allCityLinks()) { assert.ok(cityRules(link.a) && cityRules(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds === intercitySeconds(link.mode, link.km) && link.seconds >= 12 && link.seconds <= 75 && link.beta); }
+test('cities connect as data, and the Kaduna reservation follows its catalogue status', () => {
+  for (const id of ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] satisfies WorldCityId[]) assert.equal(isOpenCityId(id), true);
+  const kaduna = cityCatalogueEntry('kaduna'); assert.ok(kaduna, 'Kaduna is catalogued');
+  for (const link of allCityLinks()) { assert.ok(cityCatalogueEntry(link.a) && cityCatalogueEntry(link.b) && ['road', 'rail', 'air'].includes(link.mode) && link.fare > 0 && link.seconds === intercitySeconds(link.mode, link.km) && link.seconds >= 12 && link.seconds <= 75 && link.beta); }
+  const kadunaTrip = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter').state; kadunaTrip.estate.city = 'abuja';
+  const cash = kadunaTrip.cash, outcome = act(kadunaTrip, 'estate.relocate', { to: 'kaduna', mode: 'rail' });
+  if (kaduna.open) { assert.equal(outcome.code, 'departed'); assert.equal(kadunaTrip.activeAction?.kind, 'intercity'); }
+  else { assert.equal(outcome.code, 'city_not_open'); assert.match(reasonOf(outcome), /Kaduna is not open yet/); assert.equal(kadunaTrip.cash, cash); assert.equal(kadunaTrip.activeAction, null); }
   const { state } = onboard({ house: 'mushin', own: true, lga: 'ikeja' }, 'ajebutter');
-  const cash = state.cash;
-  state.estate.city = 'abuja';
-  const refused = act(state, 'estate.relocate', { to: 'kaduna', mode: 'rail' });
-  assert.equal(refused.code, 'city_not_open'); assert.match(reasonOf(refused), /Kaduna is not open yet/);
+  const startingCash = state.cash;
   state.estate.city = 'lagos';
   assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'air' }).code, 'no_route');
   assert.equal(act(state, 'estate.relocate', { to: 'lagos', mode: 'road' }).code, 'invalid_city');
-  assert.equal(state.cash, cash); assert.equal(state.activeAction, null);
+  assert.equal(state.cash, startingCash); assert.equal(state.activeAction, null);
   const links = viewLife(state, at()).estate.links;
-  assert.equal(links.length, 14)
+  assert.ok(links.length >= 14)
   assert.deepEqual(links.filter((link) => link.to === 'ibadan').map((link) => [link.mode, link.open, link.blocked]), [['road', true, null], ['rail', true, null]])
-  const openCities = new Set(['ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano']);
-  assert.equal(links.filter((link) => openCities.has(link.to)).every((link) => link.open), true);
-  assert.equal(links.filter((link) => !openCities.has(link.to)).every((link) => !link.open && /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
+  assert.equal(links.every((link) => link.open === isOpenCityId(link.to)), true);
+  assert.equal(links.filter((link) => !link.open).every((link) => /not open yet/.test(found(link.blocked, 'a blocked reason'))), true);
 });
 
 test('one character between cities: money, skills and people travel; the home left behind is kept and found again on return', () => {

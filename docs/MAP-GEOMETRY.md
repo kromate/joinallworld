@@ -64,3 +64,9 @@ Shapes (coastline, local government borders, lagoon, island outlines, road route
 ## Known limits of the water
 
 Water is whatever the land polygons leave uncovered, so the Lagos Lagoon and the eastern Lekki Lagoon appear exactly as the source draws them. Water that lies inside a land polygon in the source is drawn as land: the Apapa harbour and the Badagry creeks. No open dataset with a compatible licence for them has been added; when one is, draw them as additional holes in the land polygons, not as overlays.
+
+## Existing boundary precision
+
+The existing Lagos–Ijebu-Ode and Lagos–Sagamu footprints contain narrow overlapping boundary strips. Intersection in the shared geographic frame measures about 742.65 m² and 234.32 m² respectively. Both disappear when each footprint is inset by two metres. These strips are smaller than the existing 0.0002-degree boundary grid, about 22 metres.
+
+Those shipped polygons remain unchanged. The registry-wide check pins their exact polygon hashes so neither exception can grow unnoticed. Newly generated cities receive no such exception: their footprints must not overlap any open city. A future boundary correction must reconcile these seams together rather than simplifying either side independently.

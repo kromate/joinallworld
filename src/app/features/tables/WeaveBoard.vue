@@ -400,12 +400,12 @@ function resign(): void {
 }
 .wv-view.is-zoom .wv-cell { font-size: 22px; }
 .wv-cell:focus-visible { outline: 3px solid #1d6fd6; outline-offset: -3px; z-index: 2; }
-.wv-cell.is-dl { background: #cfe2f3; color: #1f4a73; }
-.wv-cell.is-tl { background: #3f78b4; color: #fff; }
-.wv-cell.is-dw { background: #f5c6b0; color: #7a2f17; }
-.wv-cell.is-tw { background: #c8423a; color: #fff; }
+.wv-cell.is-dl { background: #d4ecd9; color: #1f5a35; }
+.wv-cell.is-tl { background: #2f8f86; color: #fff; }
+.wv-cell.is-dw { background: #f1d58a; color: #6b4a08; }
+.wv-cell.is-tw { background: #7a3d8f; color: #fff; }
 .wv-prem { font-size: .5em; font-weight: 800; letter-spacing: -.02em; opacity: .9; }
-.wv-star { font-size: 1.1em; color: #7a2f17; }
+.wv-star { font-size: 1.1em; color: #6b4a08; }
 .wv-cell.has-tile, .wv-tile, .wv-ghost {
   background: linear-gradient(145deg, #efcb8a, #d3a05a); color: #4a3318;
 }

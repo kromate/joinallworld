@@ -1,6 +1,6 @@
 # Pictures in chat: what we can and cannot check
 
-Pictures are **off unless the host sets `CHAT_IMAGES=friends`**. This note is for the owner: what protects players, and what does not.
+Pictures are on by default (`CHAT_IMAGES=friends`); set `CHAT_IMAGES=off` to switch them off on a host (the button disappears and uploads are refused). This note is for the owner: what protects players, and what does not.
 
 ## What is checked
 

@@ -164,6 +164,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   let probing = false
   let watch: unknown = null
   let started = false
+  let chatLink: string | null = null
   let syncing = false
   let dirty = false
   let peopleDirty = false
@@ -643,11 +644,16 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       started = true
       const address = env.pageAddress()
       state.linkHost = inviteIdFrom(address.pathname) || inviteIdFrom(address.search)
+      // A message notification opens the game at /?chat=<conversation>, or tells a window that is open already to open it.
+      const asked = new URLSearchParams(address.search).get('chat')
+      if (asked && /^(dm|g)\.[0-9a-f.-]{1,80}$/.test(asked)) { chatLink = asked; env.clearAddress() }
+      globalThis.navigator?.serviceWorker?.addEventListener('message', (event: MessageEvent<{ type?: string; conv?: unknown }>) => { if (event.data?.type === 'open-chat' && typeof event.data.conv === 'string') api?.open('messages', { conv: event.data.conv }) })
       env.onOnline(wakeSocket)
     }
     if (!connected()) return
     if (!ws && state.socket !== 'offline' && !timer) connectSocket()
     if (!state.me && !state.loading && !state.error) void sync()
+    if (chatLink && state.me) { const conv = chatLink; chatLink = null; host.open('messages', { conv }) }
     if (state.linkHost && state.me) {
       const hostId = state.linkHost; state.linkHost = null
       env.clearAddress()

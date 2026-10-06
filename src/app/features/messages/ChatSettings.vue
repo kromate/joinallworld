@@ -2,6 +2,7 @@
 // Chat settings that are the player's own and follow them to every device: who may add them to groups, and whether a mention
 // breaks through a muted group.
 import { perform } from '../social/useSocial.ts'
+import NotifySettings from './NotifySettings.vue'
 import type { ChatPrefs } from '../../../types/social.ts'
 
 defineProps<{ prefs: ChatPrefs }>()
@@ -17,6 +18,7 @@ const save = (body: object): Promise<unknown> => perform('/api/social/prefs', bo
       <p>Someone you have blocked can never add you. If you are added to a group you do not want, you can leave it in one tap from Updates.</p>
     </fieldset>
     <label class="switch"><input type="checkbox" :checked="prefs.mentions === 'on'" @change="save({ mentions: ($event.target as HTMLInputElement).checked ? 'on' : 'off' })"> Let a mention reach me even when a group is muted</label>
+    <NotifySettings :notify="prefs.notify" />
   </section>
 </template>
 

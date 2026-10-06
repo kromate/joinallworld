@@ -69,7 +69,7 @@ async function switchPushOn(): Promise<void> {
   const key = await growth.call<{ ok: true; publicKey: string }>('/api/growth/push/key')
   const outcome = key.ok ? await (await loadPushModule()).enablePush(key.publicKey) : { ok: false as const, code: 'failed' as const }
   if (outcome.ok) {
-    const saved = await growth.call<{ ok: true }>('/api/growth/push/subscribe', { subscription: outcome.subscription, consent: true })
+    const saved = await growth.call<{ ok: true }>('/api/growth/push/subscribe', { subscription: outcome.subscription, consent: true, tz: -new Date().getTimezoneOffset() })
     if (saved.ok) { growth.track('push_prompt_accepted'); game.toast('Notifications are on for this phone.', 'good') } else game.toast(saved.reason || 'That could not be saved.', 'error')
   } else {
     growth.track('push_prompt_declined')

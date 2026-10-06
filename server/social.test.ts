@@ -25,7 +25,7 @@ type Person = Device;
  */
 interface Reply {
   status: number; error: string; ok: boolean; code: string; reason: string; duplicate: boolean; push: unknown
-  me: SocialOverview['me']; invitePath: string; friends: Friend[]; requests: SocialOverview['requests']; baeRequests: SocialOverview['baeRequests']
+  me: SocialOverview['me']; limits: SocialOverview['limits']; invitePath: string; friends: Friend[]; requests: SocialOverview['requests']; baeRequests: SocialOverview['baeRequests']
   bae: PlayerRef | null; blocked: SocialOverview['blocked']; conversations: Conversation[]; updates: SocialUpdate[]; reports: PlayerReportReceipt[]
   house: HouseView; visiting: HouseView | null
   results: SearchResult[]; players: PersonHere[]; player: PersonCard; venue: string; self: string; count: number
@@ -232,6 +232,9 @@ test('block hides both players from each other and stops DMs and knocks; reports
   assert.equal(defined(after.reports[0]).id, report.receipt.id); assert.match(defined(after.updates[0]).text, /was received/);
   const stored = defined((await socialOf(f)).reports[0]);
   assert.deepEqual([stored.by, stored.about, stored.reason, stored.text, stored.evidence], [ada.id, bola.id, 'spam', 'Keeps advertising.', ['buy my coin']]);
+  const scam = await post(f, '/api/social/reports', { id: bola.id, reason: 'scam', text: 'Begging for naira' }, ada);
+  assert.equal(scam.code, 'reported', 'scam or begging is a reason of its own'); assert.equal(scam.receipt.reason, 'scam');
+  assert.deepEqual((await get(f, '/api/social/me', ada)).limits.reasons, ['harassment', 'scam', 'spam', 'cheating', 'offensive-name', 'other']);
 
   assert.equal((await post(f, '/api/social/unblock', { id: bola.id }, ada)).code, 'unblocked');
   assert.deepEqual((await get(f, '/api/social/people?city=lagos', ada)).players.map((player) => player.id), [bola.id]);

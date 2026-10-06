@@ -716,7 +716,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       const history: ChatHistory = hosted || chatHistory.get(key) || new Map<string, ChatFrame>();
       if (clientId && history.has(clientId)) { const replay = history.get(clientId); if (isChatFrame(replay)) { send(ws, replay); return; } }
       // Refused, never altered: a muted sender or a blocked text gets a reason and nobody receives the line.
-      const refusal = ctx.checks?.muted?.(ws.session.id) ?? screenText(body, { what: 'Your message' });
+      // Venue chat is public: strangers read it, so a link, a phone number, an e-mail address or another app's handle is refused too.
+      const refusal = ctx.checks?.muted?.(ws.session.id) ?? screenText(body, { contact: true, what: 'Your message' });
       if (refusal) throw Object.assign(Error(refusal.code), { reason: refusal.reason });
       const chat: ChatFrame = { type: 'chat', id: core.newId(), ...(typeof clientId === 'string' ? { clientId } : {}), from: { ...ws.session }, body, at: now() };
       if (clientId) {

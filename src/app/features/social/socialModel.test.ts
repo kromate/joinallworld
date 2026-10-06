@@ -46,7 +46,10 @@ test('presence words: an unknown status is offline, with no hint', () => {
 
 test('small wording: report reasons, action tags, venue names', () => {
   assert.equal(reasonLabel('offensive-name'), 'Offensive name')
-  assert.equal(reasonLabel('harassment'), 'Harassment')
+  assert.equal(reasonLabel('harassment'), 'Insults or harassment')
+  assert.equal(reasonLabel('scam'), 'Scam or begging')
+  assert.equal(reasonLabel('other'), 'Something else')
+  assert.equal(reasonLabel('new-kind'), 'New kind')
   assert.equal(tagLabel('social'), '+Social')
   assert.equal(venueNameOf([{ id: 'market', label: 'Balogun Market' }], 'market'), 'Balogun Market')
   assert.equal(venueNameOf([], 'market'), 'market')

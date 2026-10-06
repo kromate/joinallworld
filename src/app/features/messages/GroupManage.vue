@@ -80,8 +80,8 @@ async function report(): Promise<void> {
 .manage-role { padding: 2px 8px; border-radius: 10px; background: #e2f2e7; color: var(--c-green-dark); font-size: 11px; font-weight: 700; }
 .manage-form { display: flex; gap: 6px; }
 .manage-form input { flex: 1; min-width: 0; min-height: var(--tap); box-sizing: border-box; padding: 8px 14px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); font: inherit; font-size: 14px; }
-.manage-switch { display: flex; align-items: center; gap: 8px; min-height: 36px; font-weight: 500; }
-.manage-switch small { color: var(--c-muted); }
+.manage-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; min-height: 36px; font-weight: 500; }
+.manage-switch small { flex-basis: 100%; padding-left: 26px; color: var(--c-muted); }
 .manage-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .manage-add { display: grid; gap: 6px; }
 </style>

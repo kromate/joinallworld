@@ -59,6 +59,7 @@ function hi(player: { id: string; name: string }): void {
             </li>
           </ul>
           <MoreRows v-if="group.count - group.homes.length > 0" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.homes.map((home) => home.id)" :label="`Show everyone in ${group.label}`" @hi="hi" />
+          <p v-if="group.count - group.homes.length > 0" class="civic-note">{{ count(group.count - group.homes.length) }} more not listed (hidden or beyond the list limit).</p>
         </template>
       </template>
       <p v-else class="civic-note">Nobody has checked in yet.</p>

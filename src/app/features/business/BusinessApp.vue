@@ -204,7 +204,7 @@ const rules = [
 
           <SectionTitle :note="others.length ? plural(others.length, 'stall') : ''">Shops here</SectionTitle>
           <EmptyState v-if="!others.length" compact icon="buy" title="No other player trades here yet" :text="stalls.mine && stalls.shops.some((card) => card.mine) ? 'Yours is the only stall. Tell your friends where to find you.' : 'Be the first: rent a stall below.'" />
-          <LazyList v-else class="biz-shops" :items="shops.visible.value" :item-key="(card: (typeof others.value)[number]) => card.id" :has-more="shops.hasMore.value" :loading="false" label="stalls" @more="shops.more()">
+          <LazyList v-else class="biz-shops" :items="shops.visible.value" :item-key="(card: ShopCard) => card.id" :has-more="shops.hasMore.value" :loading="false" label="stalls" @more="shops.more()">
             <template #row="{ item: card }">
             <div class="biz-card biz-shop">
               <header>

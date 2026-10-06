@@ -1168,7 +1168,7 @@ function buildService(ctx: RouteContext) {
       const owned = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && conv.members.includes(id) && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])));
       if (!opts.limit) {
         const list = owned.map((conv) => summary(s, conv, id)).sort((a, b) => (b.last?.at ?? 0) - (a.last?.at ?? 0));
-        return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0) });
+        return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0), total: list.length, next: null as string | null, unreadOlder: 0 });
       }
       const at = (conv: ConversationRecord): number => conv.messages.at(-1)?.at ?? conv.created;
       const order = owned.map((conv) => ({ conv, at: at(conv) })).sort((a, b) => b.at - a.at || (a.conv.id < b.conv.id ? -1 : 1));

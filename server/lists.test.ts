@@ -27,7 +27,7 @@ interface Reply {
   friends: Friend[]; friendsMore?: SocialOverview['friendsMore']; conversations: Conversation[]; updates: SocialOverview['updates']; requests: SocialOverview['requests']
   messages: Message[]; message: Message; conv: Conversation; results: SearchResult[]; player: PersonCard; state: LifeState; total: number | null; next: string | null
   players: PlayerRow[]; gone: number; online?: number; sort: string; more: boolean; unreadOlder: number; unread: number
-  results: (Reply['results'][number] | { id: string; ok: boolean; code?: string })[]; sent: number
+  sent: number
 }
 const must = <T>(value: T | null | undefined, what = 'value'): T => { if (value === null || value === undefined) throw new Error(`expected ${what}`); return value; };
 
@@ -298,7 +298,7 @@ test('Message selected: up to twenty, each an ordinary message with the usual ru
   const clientId = fx.id();
   const done = await w.post('/api/social/messages/many', { to: [ada.id, bola.id, chi.id, ada.id], body: 'Hello all', clientId }, zed);
   assert.equal(done.code, 'sent', JSON.stringify(done));
-  assert.deepEqual((done.results as { id: string; ok: boolean; code?: string }[]).map((item) => [item.id, item.ok, item.code]), [[ada.id, true, undefined], [bola.id, false, 'blocked'], [chi.id, true, undefined]]);
+  assert.deepEqual((done.results as unknown as { id: string; ok: boolean; code?: string }[]).map((item) => [item.id, item.ok, item.code]), [[ada.id, true, undefined], [bola.id, false, 'blocked'], [chi.id, true, undefined]]);
   assert.equal(done.sent, 2);
   await settleDown();
   assert.equal(heard.filter((frame) => frame.type === 'dm').length, 1, 'notified by the normal path');
@@ -306,7 +306,7 @@ test('Message selected: up to twenty, each an ordinary message with the usual ru
   // The same request again changes nothing.
   const again = await w.post('/api/social/messages/many', { to: [ada.id, bola.id, chi.id], body: 'Hello all', clientId }, zed);
   assert.equal(again.code, 'sent', JSON.stringify(again));
-  assert.deepEqual((again.results as { duplicate?: boolean }[]).map((item) => item.duplicate), [true, undefined, true]);
+  assert.deepEqual((again.results as unknown as { duplicate?: boolean }[]).map((item) => item.duplicate), [true, undefined, true]);
   const tooMany = Array.from({ length: LIMITS.batchTo + 1 }, () => randomUUID());
   assert.equal((await w.post('/api/social/messages/many', { to: tooMany, body: 'x', clientId: fx.id() }, zed)).status, 400);
   assert.equal((await w.post('/api/social/messages/many', { to: [], body: 'x', clientId: fx.id() }, zed)).status, 400);

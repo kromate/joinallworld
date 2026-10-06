@@ -6,6 +6,7 @@
 import { computed, watch } from 'vue'
 import { cityRules } from '../../../game/cities/registry.ts'
 import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
+import type { TravelDestination } from '../../../types/view.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import LazyList from '../../ui/LazyList.vue'
@@ -83,7 +84,7 @@ function pick(id: string): void {
       </div>
       <LayerNotes :notes="notes" />
       <div v-if="places.length" class="map-list" aria-label="Places">
-        <LazyList :items="shownPlaces.visible.value" :item-key="(item: (typeof places.value)[number]) => item.id" :has-more="shownPlaces.hasMore.value" :loading="false" :row-height="50" label="places" memory="atlas-places" @more="shownPlaces.more()">
+        <LazyList :items="shownPlaces.visible.value" :item-key="(item: TravelDestination) => item.id" :has-more="shownPlaces.hasMore.value" :loading="false" :row-height="50" label="places" memory="atlas-places" @more="shownPlaces.more()">
         <template #row="{ item }">
           <button type="button" :class="[statusClass(item), { 'is-here': item.here }]" @click="pick(item.id)">
             <span aria-hidden="true"><GameIcon inline kind="venue" :id="item.id" :emoji="item.icon" /></span>

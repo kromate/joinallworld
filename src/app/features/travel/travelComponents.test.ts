@@ -96,7 +96,7 @@ test('the Map overview: the handle, the filters, the layers and every place with
   assert.ok(!words.includes('Sea'), 'the sea-plot layer is not offered')
   assert.ok(!words.includes('Street traffic'), 'a layer that is off says nothing')
   const listed = view.travel.destinations.filter((item) => item.kind !== 'soon')
-  assert.equal((html.match(/<li><button/g) ?? []).length, listed.length, 'every place is in the list')
+  assert.equal((html.match(/class="ll-row"[^>]*>(?:<!--\[-->)?<button/g) ?? []).length, listed.length, 'every place is in the list')
   assert.ok(words.includes('You are here'))
   // The world is one tap from the Map: the level bar is on the city map itself, not at the end of the list.
   assert.match(html, /<nav class="map-levels" aria-label="Map level\. You are in World › Africa › Nigeria › [^"]+">/)
@@ -116,7 +116,7 @@ test('the Map overview: a filter narrows the list to its category, and Home is o
   const html = await render('/src/app/features/travel/MapApp.vue')
   const expected = view.travel.destinations.filter((item) => item.kind !== 'soon' && (item.category === 'food' || item.kind === 'home'))
   assert.ok(expected.length > 1 && expected.length < view.travel.destinations.length)
-  assert.equal((html.match(/<li><button/g) ?? []).length, expected.length)
+  assert.equal((html.match(/class="ll-row"[^>]*>(?:<!--\[-->)?<button/g) ?? []).length, expected.length)
   assert.match(html, /<button[^>]*aria-pressed="true"[^>]*class="is-selected"[^>]*>(?:<!--.*?-->)*Food/)
   await resetMap()
 })

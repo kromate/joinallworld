@@ -22,8 +22,8 @@ import { useSocialScreen } from './useSocialScreen.ts'
 
 /** The most players one message can go to at once (the server's limit). */
 const PICK_MAX = 20
-/** Height of one row, for the window the list is drawn through once it is long. */
-const ROW_HEIGHT = 96
+/** Height of one row, for the window the list is drawn through once it is long: taller on a phone, where the four buttons take two lines. */
+const ROW_HEIGHT = typeof window !== 'undefined' && window.innerWidth < 520 ? 124 : 96
 const { game, shell, client, view } = useSocialScreen()
 const query = reactive<{ q: string; sort: PlayerSort; city: string }>({ q: '', sort: 'newest', city: registeredCityIds()[0] ?? 'lagos' })
 const counts = ref<PlayersCounts>({ online: null, gone: 0 })
@@ -110,7 +110,7 @@ async function sendMany(): Promise<void> {
       <LazyList :items="list.items.value" :item-key="(row: PlayerRow) => row.id" :has-more="list.hasMore.value" :loading="list.loading.value" :error="list.error.value" :announcement="list.announcement.value"
         :row-height="ROW_HEIGHT" label="players" memory="players" @more="list.loadMore()" @retry="list.retry()">
         <template #row="{ item }">
-          <div class="players-row">
+          <div class="players-row" :style="{ height: `${ROW_HEIGHT}px` }">
             <label class="players-pickbox"><input type="checkbox" :checked="picked.has(item.id)" :disabled="!picked.has(item.id) && picked.size >= PICK_MAX" :aria-label="`Select ${item.name}`" @change="toggle(item, ($event.target as HTMLInputElement).checked)"></label>
             <PlayerAvatar :name="item.name" :seed="item.id" :status="item.status" />
             <div class="players-body">
@@ -141,12 +141,12 @@ async function sendMany(): Promise<void> {
 .players-pick { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; }
 .players-many { display: grid; gap: 8px; margin-bottom: 8px; }
 .players-many textarea { width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid var(--c-line); border-radius: var(--r-md); font: inherit; }
-.players-row { display: flex; align-items: flex-start; gap: 8px; height: 96px; padding: 8px 12px; border-bottom: 1px solid var(--c-line); box-sizing: border-box; min-width: 0; }
+.players-row { display: flex; align-items: flex-start; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--c-line); box-sizing: border-box; min-width: 0; }
 .players-pickbox { display: grid; place-items: center; min-width: 28px; min-height: 40px; }
 .players-body { flex: 1; min-width: 0; display: grid; gap: 2px; }
 .players-body strong, .players-body small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .players-body strong { font-size: 14px; font-weight: 600; }
 .players-body small { font-size: 12px; color: var(--c-muted); }
-.players-body .social-actions { gap: 6px; flex-wrap: nowrap; overflow: hidden; margin-top: 2px; }
+.players-body .social-actions { gap: 6px; flex-wrap: wrap; overflow: hidden; margin-top: 2px; }
 .players-body .social-btn { padding: 4px 10px; min-height: 30px; font-size: 12px; white-space: nowrap; }
 </style>

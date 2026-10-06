@@ -35,6 +35,14 @@ Only the founder's character (and accounts whose address hash is in `ADMIN_EMAIL
 * Rows of unknown height (chat lines) use chunked rendering instead: the newest 60 are drawn, earlier ones are drawn 40 at a time as the reader scrolls up (a skeleton at the top stands in for them), then fetched from the server when those run out; the scroll position is kept on the line being read. `chunkedView(rows, step)` spreads the drawing of a list already in memory (wallet lines, stalls, tables, places) the same way.
 * The admin tables can use `LazyList` and `createLazyList` as they are: give them a `fetchPage` that returns `{ ok: true, items, next, total? }`.
 
-## Measured
+## Measured (5,000 players, 300 chats of 200 lines, 5,000 residents; bytes of the JSON answer)
 
-See the commit message and `docs/CAPACITY.md` for payload sizes at 5,000 players and 200-line conversations.
+| Request | Before | After |
+| --- | --- | --- |
+| Opening Messages, the founder's overview | 62,245 B (`GET /api/social/me`: 100 chats and the newest 50 automatic friends) | 17,234 B (`?lite=1`: 30 chats, the rest by cursor; the Players view reads the friends) |
+| Next page of chats | none (the 101st chat was out of reach) | 16,327 to 16,431 B per 30 |
+| Opening a 200-line conversation | 17,406 B (the newest 50 lines) | 14,042 B (the newest 40); older lines 40 at a time; all 200 would be 34,157 B |
+| Founder's friends, one tap of "Show more friends" | 6,205 B per 50, with no search | the Players view: 5,129 B per 40, with search, sorts and counts |
+| Neighbours | 18,383 B for the first 200 homes, the rest "not listed" | the same first view; one district's next 40 homes 4,102 B |
+
+A request on this build costs about 95 ms on the Node host with these collections whatever it asks (a player card takes as long): the host copies the whole social collection for each transaction, which is the storage layout's cost and not the list routes'.

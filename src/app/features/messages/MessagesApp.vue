@@ -43,6 +43,7 @@ import { chunkStart, chunkedView, moreShown } from '../../ui/lazyList.ts'
 import { loadMoreChats, loadOlder } from '../social/socialPages.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
 import { announceLines, announceUi } from '../announce/announceStore.ts'
+import type { UpdateLine } from './messagesThread.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { filterChats, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
@@ -492,7 +493,7 @@ defineExpose({
             <SectionTitle v-if="lines.length">Earlier</SectionTitle>
           </template>
           <ListRows v-if="lines.length" label="Updates">
-            <LazyList :items="shownLines.visible.value" :item-key="(line: (typeof lines.value)[number]) => line.key" :has-more="shownLines.hasMore.value" :loading="false" label="updates" @more="shownLines.more()">
+            <LazyList :items="shownLines.visible.value" :item-key="(line: UpdateLine) => line.key" :has-more="shownLines.hasMore.value" :loading="false" label="updates" @more="shownLines.more()">
             <template #row="{ item: line }">
             <div class="messages-update" :class="{ 'is-unread': line.fresh }">
               <RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark>

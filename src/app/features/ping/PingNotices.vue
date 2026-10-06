@@ -4,7 +4,7 @@
 // another player". Text only: a player's name is never markup. Nothing here opens the microphone: Call is the ordinary
 // call button's ring, on an explicit tap.
 import '../../../ui/controls.css'
-import { computed, defineAsyncComponent, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { useCall } from '../calls/useCall.ts'
 import { keptToken, pingUi } from './pingLoader.ts'
@@ -13,8 +13,6 @@ import type { PingAction } from './pingModel.ts'
 import { closeBanner, joinFriend, loadIncoming, openKeptLink, pingState, takeFrames } from './pingStore.ts'
 
 defineProps<{ inDialog?: boolean }>()
-// A visit's notices (a house link, a knock, an invitation) are fetched with these: they come together and share the stack of banners.
-const VisitNotices = defineAsyncComponent(() => import('../visit/VisitNotices.vue'))
 const { game, shell } = useApp()
 const { request } = useCall()
 // A join that changed city reads the life in that city (asking for it in the old one would only be told where it went).
@@ -56,7 +54,6 @@ async function act(action: PingAction): Promise<void> {
 </script>
 
 <template>
-  <VisitNotices />
   <aside v-if="view" class="ping-notice" :class="[`is-${view.tone}`, { 'is-in-dialog': inDialog }]" role="status" aria-live="polite" data-ping="notice">
     <div class="ping-notice-words"><strong>{{ view.title }}</strong><small>{{ view.text }}</small></div>
     <div v-if="view.actions.length" class="ping-notice-actions">

@@ -82,13 +82,13 @@ test('Who can come into my home: the four choices, the switch for while I am out
   assert.equal(text(await render('VisitDoor')), '')
   client.state.me = overview({ door: { who: 'knock', out: false, chosen: true } })
   const html = await render('VisitDoor')
-  assert.match(text(html), /Who can come into my home Friends walk in .* Friends knock first .* Only people I invite .* Nobody .* Friends can visit while I am out Off/)
+  assert.match(text(html), /Who can come into my home Friends walk in .* Friends knock first .* Only people I invite .* Nobody .* Friends can visit while I am out .*home\. Off/)
   assert.match(html, /<input[^>]*value="knock"[^>]*checked/)
   assert.ok(!/<input[^>]*value="walk"[^>]*checked/.test(html))
   assert.match(html, /data-door="out"[^>]*disabled/, 'the switch needs "Friends walk in"')
   client.state.me = overview({ door: { who: 'walk', out: true, chosen: true } })
   const on = await render('VisitDoor')
-  assert.match(text(on), /Friends can visit while I am out On/)
+  assert.match(text(on), /Friends can visit while I am out .*home\. On/)
   assert.ok(!/data-door="out"[^>]*disabled/.test(on))
 })
 
@@ -106,7 +106,7 @@ test('the Home block: a player who has not chosen is asked once; the big button,
   assert.ok(!text(html).includes('Let friends walk in?'))
   assert.deepEqual(buttons(html).filter((name) => /^(close|end)/.test(name)), ['close', 'end'])
   client.state.me = overview({ house: house({ closed: true }) })
-  assert.match(text(await render('VisitHome')), /Open the door again .* The door is closed: nobody new comes in\. Your guests stay\./)
+  assert.match(text(await render('VisitHome')), /Open the door again The door is closed: nobody new comes in\. Your guests stay\./)
 })
 
 test('the Guests strip: the host can call, chat and ask to leave; a guest sees who is inside, can add the host, and leave', async () => {

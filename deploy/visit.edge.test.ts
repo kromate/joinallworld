@@ -27,7 +27,7 @@ const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as Minifla
 const { build } = require('esbuild') as { build(options: BundleOptions): Promise<unknown> };
 
 interface Device { id: string; name: string; cookie: string }
-interface Answer { ok?: boolean; code?: string; error?: string; reason?: string; door?: { who: string; out: boolean; chosen: boolean }; link?: { id: string; path: string; uses: number; max?: number }; links?: { id: string; path: string }[]; host?: { name: string }; invited?: { id: string }[]; skipped?: { reason: string }[]; invites?: { from: { id: string } }[]; friends?: { id: string; visit?: string }[] }
+interface Answer { ok?: boolean; closed?: boolean; code?: string; error?: string; reason?: string; door?: { who: string; out: boolean; chosen: boolean }; link?: { id: string; path: string; uses: number; max?: number }; links?: { id: string; path: string }[]; host?: { name: string }; invited?: { id: string }[]; skipped?: { reason: string }[]; invites?: { from: { id: string } }[]; friends?: { id: string; visit?: string }[] }
 const pause = (ms = 25): Promise<void> => new Promise((done) => setTimeout(done, ms));
 
 /** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */

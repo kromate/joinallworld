@@ -116,8 +116,8 @@ test('the guest rule cannot be used to enter any other private room, and a malfo
   const g = await f.socket(guest);
   // A guest of Host is not a guest of Other.
   joinHome(g, other.id); assert.equal((await next(g)).code, 'not_a_guest');
-  // The character is in Lagos: a room in another city is refused before guest authority is considered.
-  say(g, { type: 'join', cityId: 'ibadan', venueId: 'home', hostId: host.id }); assert.equal((await next(g)).code, 'city_moved');
+  // A visit belongs to the city of the house: a room in another city is no visit.
+  say(g, { type: 'join', cityId: 'ibadan', venueId: 'home', hostId: host.id }); assert.equal((await next(g)).code, 'not_a_guest');
   // hostId is only honoured for Home, and only as a public id; nothing else can shape the room key.
   for (const [venueId, hostId] of [['park', host.id], ['library', other.id], ['home', `${other.id}:x`], ['home', `lagos:home:${other.id}`], ['home', '__proto__'], ['home', ''], ['home', 5], ['home', null], ['home', { id: other.id }], ['home', [other.id]], ['home', 'home']] as [string, unknown][]) {
     say(g, { type: 'join', cityId: 'lagos', venueId, hostId });

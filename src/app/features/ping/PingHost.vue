@@ -8,10 +8,13 @@ import { pingUi, startPing } from './pingLoader.ts'
 withDefaults(defineProps<{ host?: string }>(), { host: 'body' })
 startPing()
 const PingNotices = defineAsyncComponent(() => import('./PingNotices.vue'))
+// A visit's notices (a house link, a knock, an invitation) come with the same trigger.
+const VisitNotices = defineAsyncComponent(() => import('../visit/VisitNotices.vue'))
 </script>
 
 <template>
   <Teleport :to="host">
     <PingNotices v-if="pingUi.wanted" :in-dialog="host !== 'body'" />
+    <VisitNotices v-if="pingUi.wanted" />
   </Teleport>
 </template>

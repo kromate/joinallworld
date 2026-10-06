@@ -40,3 +40,11 @@ test('a sentence another screen has ready (asking a friend) fills the box of the
   showConversation('to:other')
   assert.equal(ui.draft, '', 'the next conversation starts empty')
 })
+
+test('the badge counts the unread chats that are not loaded yet, so a page of chats never hides the rest', async () => {
+  const { unreadChats } = await import('./messagesModel.ts')
+  const chat = (unread: number, extra: object = {}) => ({ unread, ...extra }) as never
+  assert.equal(unreadChats({ conversations: [chat(2), chat(1, { muted: true, mentions: 1 })] }), 3)
+  assert.equal(unreadChats({ conversations: [chat(2)], conversationsMore: { total: 90, next: 'x', unreadOlder: 5 } }), 7)
+  assert.equal(unreadChats(null), 0)
+})

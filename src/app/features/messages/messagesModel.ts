@@ -14,7 +14,7 @@ const UPDATES_TAB = { tab: 'updates' } as const
 export const SEEN_KEY = 'joinallworld-notices-seen'
 
 /** Unread messages for the badge: a muted group counts only the mentions in it. */
-export const unreadChats = (me: Pick<SocialOverview, 'conversations'> | null): number => (me?.conversations ?? []).reduce((sum, conv) => sum + (conv.muted ? conv.mentions ?? 0 : conv.unread), 0)
+export const unreadChats = (me: Pick<SocialOverview, 'conversations' | 'conversationsMore'> | null): number => (me?.conversations ?? []).reduce((sum, conv) => sum + (conv.muted ? conv.mentions ?? 0 : conv.unread), me?.conversationsMore?.unreadOlder ?? 0)
 export const unreadUpdates = (me: Pick<SocialOverview, 'updates'> | null): number => (me?.updates ?? []).filter((update) => !update.read && !REQUEST_KINDS.includes(update.kind)).length
 
 /**

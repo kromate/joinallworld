@@ -76,7 +76,7 @@ test('the life hint reaches the game, read state from another device clears here
     conversations: [{ id: 'c1', kind: 'dm', name: 'Bola', unread: 2 }, { id: 'c2', kind: 'dm', name: 'Cleo', unread: 1 }] })
   const api = {
     view: () => ({ connected: true, cityId: 'lagos', now: 1000 }) as unknown as PanelView,
-    fetchJson: async (path: string) => { requests.push(path); return path === '/api/social/me' ? overview() : { ok: false, code: 'unknown' } },
+    fetchJson: async (path: string) => { requests.push(path); return path.startsWith('/api/social/me') ? overview() : { ok: false, code: 'unknown' } },
     newId: () => '1:x', toast: () => {}, refresh: () => {}, open: () => true, command: async () => ({ ok: true, code: 'synced' }),
   } as unknown as PanelApi
   const client = createSocialClient({
@@ -104,7 +104,7 @@ test('the life hint reaches the game, read state from another device clears here
   assert.equal(requests.length, before, 'neither cost a request')
   socket.push({ type: 'social-changed' })
   for (let i = 0; i < 10; i++) await Promise.resolve()
-  assert.deepEqual(requests.slice(before), ['/api/social/me'])
+  assert.deepEqual(requests.slice(before), ['/api/social/me?lite=1'])
   // The server closes the socket because the session changed: the listener is told why.
   socket.readyState = 3; socket.onclose?.({ code: 4401 })
   assert.deepEqual(closes, [4401])

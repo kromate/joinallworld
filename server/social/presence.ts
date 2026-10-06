@@ -96,6 +96,12 @@ function buildRegistry(ctx: RouteContext) {
       }
       return members;
     },
+    /** Everyone with a live connection right now, one entry per player (never a walk over players who are not connected). */
+    onlineIds(): string[] {
+      const ids: string[] = [];
+      for (const id of sockets.keys()) if (live(id).length) ids.push(id);
+      return ids;
+    },
     inRoom(room: string): { id: string; name: string; look: LookIds | null }[] {
       const members: { id: string; name: string; look: LookIds | null }[] = [];
       for (const id of sockets.keys()) {

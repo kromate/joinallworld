@@ -326,3 +326,18 @@ test('the person card brings a form that opens below the screen edge into view, 
   assert.match(card, /watch\(\(\) => \[personUi\.form, formEl\.value\] as const[\s\S]*scrollIntoView\?\.\(\{ block: 'nearest' \}\)/)
   assert.doesNotMatch(card.match(/function openForm[\s\S]*?\n\}/)![0], /scrollIntoView/, 'one place scrolls, not two')
 })
+
+test('People: the founder\'s Players view is there (search, sorts, a way to pick), and nobody else gets it', async () => {
+  client.state.error = null
+  client.state.me = overview({ friendsMore: { total: 3, next: null } })
+  const founder = await render('/src/app/features/social/PeopleApp.vue')
+  assert.ok(text(founder).includes('Players'), 'the section is there')
+  client.state.me = overview()
+  assert.ok(!text(await render('/src/app/features/social/PeopleApp.vue')).includes('Players'), 'a player without the founder\'s overview has no such section')
+  const html = await render('/src/app/features/social/PlayersList.vue')
+  assert.match(html, /<input[^>]*type="search"[^>]*aria-label="Search players by name"/)
+  assert.match(html, /<select[^>]*aria-label="Sort players"/)
+  for (const option of ['Newest first', 'Online first', 'Name A to Z', 'Online in a city']) assert.ok(html.includes(option), option)
+  assert.ok(!html.includes('Message selected'), 'nobody is picked yet')
+  client.state.me = null
+})

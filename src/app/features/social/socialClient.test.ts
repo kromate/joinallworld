@@ -106,7 +106,7 @@ test('start opens one socket and reads the overview once; the socket opening rea
   assert.equal(ctx.sockets.length, 1, 'one socket however often it is started')
   assert.equal(ctx.client.state.socket, 'connecting')
   assert.equal(ctx.client.state.me?.me.id, 'me-id')
-  assert.equal(ctx.calls.filter((item) => item.path === '/api/social/me').length, 1)
+  assert.equal(ctx.calls.filter((item) => item.path.startsWith('/api/social/me')).length, 1)
   ctx.sockets[0]?.onopen?.()
   await settle()
   assert.equal(ctx.client.state.socket, 'open')
@@ -228,11 +228,11 @@ test('pushes: an update is shown and toasted, a friend request clears the profil
   assert.equal(ctx.client.state.me?.updates[0]?.id, 7)
   assert.ok(ctx.toasts.includes('Bayo sent you ₦500'))
   ctx.client.state.profiles.set('bayo-id', { error: 'x' })
-  const before = ctx.calls.filter((item) => item.path === '/api/social/me').length
+  const before = ctx.calls.filter((item) => item.path.startsWith('/api/social/me')).length
   socket?.push({ type: 'friend-request', from: { id: 'bayo-id', name: 'Bayo' } })
   await settle()
   assert.equal(ctx.client.state.profiles.size, 0)
-  assert.equal(ctx.calls.filter((item) => item.path === '/api/social/me').length, before + 1)
+  assert.equal(ctx.calls.filter((item) => item.path.startsWith('/api/social/me')).length, before + 1)
   socket?.push({ type: 'social-sync' })
   await settle()
   assert.deepEqual(ctx.commands, ['social.sync'], 'a social-sync also re-reads the life')
@@ -331,7 +331,7 @@ async function whole(ctx: Awaited<ReturnType<typeof opened>>, index: number): Pr
   await settle()
   assert.equal(ctx.client.state.socket, 'open')
   assert.deepEqual(sentTypes(socket), ['people-list', 'live-watch'])
-  assert.deepEqual(ctx.calls.slice(before).map((call) => call.path).sort(), ['/api/social/conversations/c1?after=1', '/api/social/me'])
+  assert.deepEqual(ctx.calls.slice(before).map((call) => call.path).sort(), ['/api/social/conversations/c1?after=1', '/api/social/me?lite=1'])
   assert.equal(ctx.seen.opens.at(-1), true, 'the game is told it is a reconnection, and reads the life')
   socket?.push({ type: 'live-snapshot', at: 9000, city: null, friends: [{ id: 'f1', status: 'online', cityId: 'lagos', venue: 'library' }] })
   socket?.push({ type: 'call-state', callId: 'k', state: 'accepted', role: 'callee', elsewhere: true, peer: { id: 'f1', name: 'Femi' } })
@@ -438,13 +438,13 @@ test('perform toasts the reason when refused, the good text when done, and reads
   const ctx = setup({ '/api/social/friends/answer': () => (ok ? { ok: true, code: 'accepted' } : { ok: false, code: 'no_request', reason: 'There is no request.' }) })
   ctx.client.start(ctx.api)
   await settle()
-  const before = ctx.calls.filter((item) => item.path === '/api/social/me').length
+  const before = ctx.calls.filter((item) => item.path.startsWith('/api/social/me')).length
   const refused = await ctx.client.perform('/api/social/friends/answer', { from: 'a', accept: true }, 'You are now friends')
   assert.equal(refused.ok, false)
   ok = true
   await ctx.client.perform('/api/social/friends/answer', { from: 'a', accept: true }, 'You are now friends')
   assert.deepEqual(ctx.toasts, ['There is no request.', 'You are now friends'])
-  assert.equal(ctx.calls.filter((item) => item.path === '/api/social/me').length, before + 2)
+  assert.equal(ctx.calls.filter((item) => item.path.startsWith('/api/social/me')).length, before + 2)
 })
 
 test('call never throws: a network failure and a server refusal both come back as { ok: false }', async () => {

@@ -1135,6 +1135,54 @@ test('Cloudflare: the founder is every player’s first friend — tagged, once,
   assert.deepEqual([stored.founder.id, stored.players[zed.id]?.friends, stored.players[ada.id]?.founder?.id, stored.players[bola.id]?.founder?.id], [zed.id, {}, zed.id, zed.id]);
 });
 
+test('Cloudflare: the founder’s Players view and paged chats — cursors, search, a player who left, a dropped chat that comes back — refused to players, and reading them writes no row', async t => {
+  const hash = createHash('sha256').update('founder@example.com').digest('hex');
+  const f = await accountsFixture(t, { FOUNDER_EMAIL_SHA256: hash });
+  interface Answer { status: number; code: string; conv: unknown; players: { id: string; name: string }[]; next: string | null; gone: number; friends: unknown[]; more: boolean; sent: number
+    conversations: { id: string; with: string; unread: number; last: { body: string } }[]; messages: { body: string; seq: number }[] }
+  const get = async (path: string, who: { cookie: string }): Promise<Answer> => { const response = await f.request(path, null, who.cookie, f.from()); return { status: response.status, ...(await response.json()) as object } as Answer; };
+  const post = async (path: string, body: object, who: { cookie: string }): Promise<Answer> => { const response = await f.request(path, body, who.cookie, f.from()); return { status: response.status, ...(await response.json()) as object } as Answer; };
+  const device = await f.player('Zed');
+  const zed = { id: device.id, cookie: (await f.signIn('Founder', device.cookie)).cookie };
+  await get('/api/social/me', zed);
+  const names = ['Ada Obi', 'Bola', 'Chidi', 'Dayo', 'Ebere'];
+  const players = []; for (const name of names) { const who = await f.player(name); await get('/api/social/me', who); players.push(who); }
+  // Pages by cursor, newest first: five players, two at a time, each once.
+  const seen: string[] = [];
+  let cursor: string | null = null, calls = 0;
+  do { const page: Answer = await get(`/api/social/everyone?limit=2${cursor ? `&after=${encodeURIComponent(cursor)}` : ''}`, zed); assert.equal(page.status, 200); seen.push(...page.players.map((row) => row.id)); cursor = page.next; calls++; } while (cursor && calls < 10);
+  assert.deepEqual([calls, new Set(seen).size, seen.length], [3, 5, 5]);
+  assert.deepEqual((await get('/api/social/everyone?q=bo', zed)).players.map((row) => row.name), ['Bola']);
+  assert.deepEqual((await get('/api/social/everyone?sort=name&limit=2', zed)).players.map((row) => row.name), ['Ada Obi', 'Bola']);
+  // Players, guests and strangers never see it.
+  assert.equal((await get('/api/social/everyone', players[0]!)).status, 404);
+  assert.equal((await f.request('/api/social/everyone')).status, 401);
+  // One player removes the founder: counted, not listed.
+  assert.equal((await post('/api/social/friends/remove', { id: zed.id, cityId: 'lagos' }, players[2]!)).code, 'removed');
+  const after = await get('/api/social/everyone', zed);
+  assert.deepEqual([after.players.length, after.gone, JSON.stringify(after).includes('Chidi')], [4, 1, false]);
+  // A first message to a player who never chatted, the reply, a chat dropped from the founder's list and opened again.
+  assert.equal((await post('/api/social/chats/open', { with: players[1]!.id }, zed)).conv, null);
+  assert.equal((await post('/api/social/messages', { to: players[1]!.id, body: 'Welcome, Bola', clientId: `${Date.now()}:${randomUUID()}` }, zed)).code, 'sent');
+  const theirs = (await get('/api/social/me?lite=1', players[1]!)).conversations.find((conv) => conv.with === zed.id)!;
+  assert.equal(theirs.last.body, 'Welcome, Bola');
+  assert.equal((await post('/api/social/messages', { conv: theirs.id, body: 'Thanks', clientId: `${Date.now()}:${randomUUID()}` }, players[1]!)).code, 'sent');
+  const lite = await get('/api/social/me?lite=1', zed);
+  assert.deepEqual([lite.friends, lite.conversations.map((conv) => [conv.with, conv.unread])], [[], [[players[1]!.id, 1]]]);
+  const history = await get(`/api/social/conversations/${theirs.id}?limit=1`, zed);
+  assert.deepEqual([history.messages.map((line) => line.body), history.more], [['Thanks'], true]);
+  assert.deepEqual((await get(`/api/social/conversations/${theirs.id}?before=${history.messages[0]!.seq}&limit=5`, zed)).messages.map((line) => line.body).slice(-1), ['Welcome, Bola']);
+  const many = await post('/api/social/messages/many', { to: [players[0]!.id, players[3]!.id], body: 'Hello everyone', clientId: `${Date.now()}:${randomUUID()}` }, zed);
+  assert.deepEqual([many.code, many.sent], ['sent', 2]);
+  // Reading writes nothing: the same pages again, in the stored rows.
+  const storage = await f.storage();
+  const written = async (): Promise<number> => Number((await storage.exec('SELECT total_changes() AS n'))[0].n);
+  for (const path of ['/api/social/everyone', '/api/social/everyone?sort=online', '/api/social/everyone?q=da']) await get(path, zed);
+  const before = await written();
+  for (const path of ['/api/social/everyone', '/api/social/everyone?sort=name', '/api/social/everyone?q=da', '/api/social/conversations?limit=5', `/api/social/conversations/${theirs.id}?limit=1`]) await get(path, zed);
+  assert.ok(await written() - before <= 1, `five reads wrote ${await written() - before} rows`);
+});
+
 test('Cloudflare: an empty FOUNDER_EMAIL_SHA256 switches the founder off', async t => {
   const f = await accountsFixture(t, { FOUNDER_EMAIL_SHA256: '' });
   const device = await f.player('Zed');

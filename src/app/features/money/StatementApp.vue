@@ -21,6 +21,8 @@ import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
 import GameIcon from '../../ui/GameIcon.vue'
+import LazyList from '../../ui/LazyList.vue'
+import { chunkedView } from '../../ui/lazyList.ts'
 import { changes, dayLabel, failedVerdict, sameStatement, statementRules, verdictOf } from './statementModel.ts'
 import type { Verdict } from './statementModel.ts'
 import { checked } from './statementState.ts'
@@ -35,6 +37,8 @@ const since = computed(() => (summary.value.opening.day === null ? 'before your 
 const verdict = computed<Verdict | null>(() => (checked.value && checked.value.cityId === view.value.cityId ? checked.value : null))
 const offline = computed(() => (view.value.connected ? null : `${linkWords(view.value)?.why ?? ''} This check needs the server.`))
 const busy = ref(false)
+// The wallet keeps a long log: it is drawn forty lines at a time as the reader goes down it.
+const lines = chunkedView(() => wallet.value.ledger)
 
 async function check(): Promise<void> {
   if (busy.value) return
@@ -84,11 +88,15 @@ async function check(): Promise<void> {
     <EmptyState v-else compact icon="calendar" title="No changes yet" text="Your first fare, meal or wage will appear here, day by day." />
 
     <h3 class="ui-section">Recent changes</h3>
-    <ListRows v-if="wallet.ledger.length" as="ul" label="Recent changes">
-      <ListRow v-for="(line, index) in wallet.ledger" :key="`${line.at}:${index}`" as="li" :title="line.reason" :sub="`${formatClock(line.at)} · balance ${money(line.balance)}`">
+    <ListRows v-if="wallet.ledger.length" label="Recent changes">
+      <LazyList :items="lines.visible.value" :item-key="(line: (typeof wallet.ledger)[number]) => `${line.at}:${line.amount}:${line.balance}`" :has-more="lines.hasMore.value" :loading="false" label="changes" :row-height="58" @more="lines.more()">
+      <template #row="{ item: line }">
+      <ListRow :title="line.reason" :sub="`${formatClock(line.at)} · balance ${money(line.balance)}`">
         <template #icon><RowMark round :tone="line.amount < 0 ? 'out' : 'in'"><GameIcon :name="line.amount < 0 ? 'spend' : 'earn'" /></RowMark></template>
         <template #end><span :class="line.amount < 0 ? 'is-out' : 'is-in'">{{ signedMoney(line.amount) }}</span></template>
       </ListRow>
+      </template>
+      </LazyList>
     </ListRows>
     <EmptyState v-else compact icon="statement" title="Nothing yet" text="Every change to your balance is listed here with its reason and time." />
     <HowItWorks id="statement-rules" page label="How this statement works" :rules="statementRules(summary.kept)" />

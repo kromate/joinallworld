@@ -42,8 +42,8 @@ async function toggle(): Promise<void> {
       </ul>
       <CivicStale :item="item" />
       <div class="richlist-boards">
-        <div><RichBoard title="Top balances" :rows="data.balances" none="Nobody is listed yet." /></div>
-        <div><RichBoard title="Top earners this week" :rows="data.earners" none="Nobody has earned anything this week yet." /></div>
+        <div><RichBoard title="Top balances" :rows="data.balances" none="Nobody is listed yet." :more="{ path: `/api/civic/richlist?city=${encodeURIComponent(view.cityId)}&board=balances`, size: data.size }" /></div>
+        <div><RichBoard title="Top earners this week" :rows="data.earners" none="Nobody has earned anything this week yet." :more="{ path: `/api/civic/richlist?city=${encodeURIComponent(view.cityId)}&board=earners`, size: data.size }" /></div>
       </div>
       <div class="civic-actions">
         <CivicAction v-if="you" :working="civic.busy('prefs')" :reason="offline('change this') ?? ''" @click="toggle">{{ you.listed ? 'Hide me from the Rich List' : 'Show me on the Rich List' }}</CivicAction>

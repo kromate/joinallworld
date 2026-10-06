@@ -3,11 +3,14 @@
 // filter chips and, when opened, the layer toggles and the list of every place: the keyboard and
 // screen-reader alternative to pointing at a building. What a switched-on layer shows stays
 // readable with the list closed, where the layer itself is in view.
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { cityRules } from '../../../game/cities/registry.ts'
 import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
+import type { TravelDestination } from '../../../types/view.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import LazyList from '../../ui/LazyList.vue'
+import { chunkedView } from '../../ui/lazyList.ts'
 import { adsKey, govKey } from '../civic/civicModel.ts'
 import { useCivic } from '../civic/useCivic.ts'
 import LayerNotes from './LayerNotes.vue'
@@ -26,6 +29,9 @@ const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea'))
 const open = computed(() => isListOpen())
 const destinations = computed(() => view.value.travel.destinations)
 const places = computed(() => destinations.value.filter((item) => matchesFilter(item, mapUi.filter)))
+// A big city lists many places: they are drawn forty at a time as the list is scrolled.
+const shownPlaces = chunkedView(() => places.value)
+watch(() => mapUi.filter, () => shownPlaces.reset())
 const weather = computed(() => view.value.health?.weather ?? null)
 const trip = computed(() => {
   const active = game.state.value.activeAction
@@ -77,15 +83,17 @@ function pick(id: string): void {
         <button v-for="item in availableLayers" :key="item.id" type="button" :aria-pressed="layers[item.id]" :class="{ 'is-selected': layers[item.id] }" @click="toggleLayer(item.id)"><GameIcon inline :name="item.icon" /><span>{{ layerLabel(item, view.cityId) }}</span></button>
       </div>
       <LayerNotes :notes="notes" />
-      <ul v-if="places.length" class="map-list" aria-label="Places">
-        <li v-for="item in places" :key="item.id">
+      <div v-if="places.length" class="map-list" aria-label="Places">
+        <LazyList :items="shownPlaces.visible.value" :item-key="(item: TravelDestination) => item.id" :has-more="shownPlaces.hasMore.value" :loading="false" :row-height="50" label="places" memory="atlas-places" @more="shownPlaces.more()">
+        <template #row="{ item }">
           <button type="button" :class="[statusClass(item), { 'is-here': item.here }]" @click="pick(item.id)">
             <span aria-hidden="true"><GameIcon inline kind="venue" :id="item.id" :emoji="item.icon" /></span>
             <span class="map-list-text"><b>{{ item.label }}</b><small>{{ item.district }}<span v-if="crowd[item.id]" class="map-list-crowd" :data-crowd="item.id"> · {{ crowd[item.id] }}</span></small></span>
             <em>{{ item.here ? 'You are here' : item.open ? 'Open' : 'Closed' }}</em>
           </button>
-        </li>
-      </ul>
+        </template>
+        </LazyList>
+      </div>
       <div v-else class="ui-empty">
         <span aria-hidden="true"><GameIcon inline name="search" /></span>
         <h3>Nothing matches “{{ filterLabel }}” right now</h3>

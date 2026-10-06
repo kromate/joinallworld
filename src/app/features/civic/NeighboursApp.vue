@@ -2,7 +2,7 @@
 // Neighbours: the directory of player homes, grouped by district, with truthful presence.
 // Counts and the online flag come from the server (GET /api/civic/neighbours). "Say hi" opens that
 // player's card (the social 'person' panel): chat, add friend, knock at their house.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import { useConfirmedOnly } from '../locate/confirmedFilter.ts'
 import { useApp } from '../../state/app.ts'
@@ -16,6 +16,8 @@ import CivicAvatar from './CivicAvatar.vue'
 import CivicStale from './CivicStale.vue'
 import CivicStatus from './CivicStatus.vue'
 import { count, hoodKey, hoodPath } from './civicModel.ts'
+// The rest of a district, read a page at a time: its own chunk, fetched when the first district with more homes is drawn.
+const MoreRows = defineAsyncComponent(() => import('./MoreRows.vue'))
 import { useCivic, useLoaded, useOffline } from './useCivic.ts'
 
 defineProps<{ params?: unknown }>()
@@ -56,6 +58,7 @@ function hi(player: { id: string; name: string }): void {
               <span v-if="!home.you" class="ui-row-end"><BaseButton small :aria-label="`Say hi to ${home.name}`" @click="hi(home)">Say hi</BaseButton></span>
             </li>
           </ul>
+          <MoreRows v-if="group.count - group.homes.length > 0" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.homes.map((home) => home.id)" :label="`Show everyone in ${group.label}`" @hi="hi" />
           <p v-if="group.count - group.homes.length > 0" class="civic-note">{{ count(group.count - group.homes.length) }} more not listed (hidden or beyond the list limit).</p>
         </template>
       </template>

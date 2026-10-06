@@ -262,7 +262,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     if (!connected()) return
     if (syncing) { dirty = true; return }
     syncing = true; state.loading = !state.me
-    const result = await call<SocialOverview>('/api/social/me')
+    const result = await call<SocialOverview>('/api/social/me?lite=1')
     syncing = false; state.loading = false
     if (result.ok) {
       state.me = result; state.error = null

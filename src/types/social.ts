@@ -203,6 +203,8 @@ export interface SocialOverview {
   friends: Friend[]
   /** The founder's own overview only: how many automatic friends there are, and the cursor of the next page (GET /api/social/friends). */
   friendsMore?: { total: number; next: string | null }
+  /** Only when asked for with `?conversations=<n>`: how many chats there are, the cursor of the next page (GET /api/social/conversations) and the unread count of the chats not in this page. */
+  conversationsMore?: { total: number; next: string | null; unreadOlder: number }
   requests: { in: (PlayerRef & { at: number })[]; out: (PlayerRef & { at: number })[] }
   baeRequests: (PlayerRef & { at: number })[]
   bae: PlayerRef | null
@@ -327,9 +329,21 @@ export type FriendRemoveResult = Done<'removed', Repeat>
 export type BlockResult = Done<'blocked', Repeat> | Refusal<'self' | 'unknown_player' | 'block_list_full'>
 export type UnblockResult = Done<'unblocked'>
 export type PlayerReportResult = Done<'reported', { receipt: PlayerReportReceipt } & Repeat> | Refusal<'self' | 'unknown_player' | 'rate_limited'>
-export type ConversationsResult = Done<'ok', { conversations: Conversation[]; unread: number }>
+export type ConversationsResult = Done<'ok', { conversations: Conversation[]; unread: number; total?: number; next?: string | null; unreadOlder?: number }>
 /** At most 50 messages after `?after=<seq>`; `read` is the caller's read marker. */
-export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number }> | Refusal<'not_a_member'>
+export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number; more?: boolean }> | Refusal<'not_a_member'>
+
+/** One row of the Players view (GET /api/social/everyone): the founder's, or an admin's. Never an address. */
+export interface PlayerRow extends PlayerRef, Whereabouts {
+  /** Server ms of their first request. */
+  joined: number
+  friend: boolean
+  /** The direct chat with the viewer, if there is one: unread (0 when it is not in the viewer's list), its last line's time, and whether it is in the viewer's list. */
+  chat?: { unread: number; at: number; listed: boolean }
+}
+export type PlayerSort = 'newest' | 'name' | 'online' | 'city'
+export type EveryoneResult = Done<'ok', { players: PlayerRow[]; total: number | null; next: string | null; gone: number; sort: PlayerSort; online?: number }> | Refusal<'rate_limited'>
+export type ManyResult = Done<'sent', { results: ({ id: string; ok: true; duplicate?: true } | { id: string; ok: false; code: string; reason: string })[]; sent: number }> | Refusal<'rate_limited'>
 export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member' | (string & {})>
 export type SendMessageResult =
   | Done<'sent', { conv: Conversation; message: Message } & Repeat>
@@ -406,8 +420,12 @@ export interface SocialHttpRoutes {
   'POST /api/social/block': { body: BlockBody; response: Ok<BlockResult>; errors: SocialPost | 'invalid_player' | 'invalid_city' }
   'POST /api/social/unblock': { body: UnblockBody; response: Ok<UnblockResult>; errors: SocialPost | 'invalid_player' }
   'POST /api/social/reports': { body: PlayerReportBody; response: Ok<PlayerReportResult>; errors: SocialPost | 'invalid_player' | 'invalid_reason' | 'invalid_report_text' }
-  'GET /api/social/conversations': { response: Ok<ConversationsResult>; errors: SocialCommon }
-  'GET /api/social/conversations/:id': { params: { id: ConversationId }; query: { after?: number }; response: Ok<HistoryResult>; errors: SocialCommon | 'invalid_conversation' }
+  'GET /api/social/conversations': { query: { limit?: number; after?: string }; response: Ok<ConversationsResult>; errors: SocialCommon | 'invalid_cursor' }
+  'GET /api/social/conversations/:id': { params: { id: ConversationId }; query: { after?: number; before?: number; limit?: number }; response: Ok<HistoryResult>; errors: SocialCommon | 'invalid_conversation' }
+  /** The Players view: founder and admins; anyone else 404 `not_found`. */
+  'GET /api/social/everyone': { query: { q?: string; sort?: PlayerSort; city?: CityId; after?: string; limit?: number }; response: Ok<EveryoneResult>; errors: SocialCommon | 'not_found' | 'invalid_query' | 'invalid_cursor' | 'invalid_city' }
+  'POST /api/social/chats/open': { body: { with: string }; response: Ok<Done<'ok', { conv: Conversation | null }> | Refusal<OtherPlayerRefusal>>; errors: SocialPost | 'invalid_player' }
+  'POST /api/social/messages/many': { body: { to: string[]; body: string; clientId: string }; response: Ok<ManyResult>; errors: SocialPost | 'not_found' | 'invalid_players' | 'invalid_message' | 'invalid_client_id' | 'invalid_player' }
   'POST /api/social/conversations/:id/read': { params: { id: ConversationId }; body: ReadBody; response: Ok<ReadResult>; errors: SocialPost | 'invalid_conversation' }
   /** 409 `client_id_conflict`: the same clientId was already used in that conversation with another body. */
   'POST /api/social/messages': { body: SendMessageBody; response: Ok<SendMessageResult>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' }

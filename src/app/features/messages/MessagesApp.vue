@@ -38,8 +38,12 @@ import FounderTag from '../social/FounderTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import CompanionPin from '../companion/CompanionPin.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
+import LazyList from '../../ui/LazyList.vue'
+import { chunkStart, chunkedView, moreShown } from '../../ui/lazyList.ts'
+import { loadMoreChats, loadOlder } from '../social/socialPages.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
 import { announceLines, announceUi } from '../announce/announceStore.ts'
+import type { UpdateLine } from './messagesThread.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { filterChats, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
@@ -124,13 +128,56 @@ const threadBox = ref<HTMLElement | null>(null)
 const composer = ref<InstanceType<typeof Composer> | null>(null)
 /** The message being answered, until it is sent or cancelled. */
 const replying = ref<Message | null>(null)
-const rows = computed(() => threadRows(items.value, Date.now()))
+// Of a long conversation only the newest lines are drawn; earlier ones are drawn as the reader scrolls up, and read from the server
+// when the kept lines run out (chunked rendering: a line's height is not known, so there is no fixed window).
+const FIRST_SHOWN = 60, SHOWN_STEP = 40
+const shown = ref(FIRST_SHOWN)
+const exhausted = reactive(new Set<string>())
+const earlier = reactive({ busy: false, error: '' })
+const hiddenLocal = computed(() => chunkStart(items.value.length, shown.value))
+const olderKept = computed(() => { void tick.value; const first = ui.open ? social.threads.get(ui.open)?.messages[0]?.seq : undefined; return Boolean(ui.open && first && first > 1 && !exhausted.has(ui.open)) })
+const hasEarlier = computed(() => hiddenLocal.value > 0 || olderKept.value)
+const rows = computed(() => threadRows(items.value.slice(hiddenLocal.value), Date.now()))
+const olderMark = ref<HTMLElement | null>(null)
+/** Draw earlier lines, from what is held or, when that has run out, from the server; the reader stays on the line they were reading. */
+async function showEarlier(): Promise<void> {
+  const box = threadBox.value, key = ui.open
+  if (!box || !key || earlier.busy || !hasEarlier.value) return
+  earlier.busy = true; earlier.error = ''
+  const height = box.scrollHeight, top = box.scrollTop
+  if (hiddenLocal.value > 0) shown.value = moreShown(shown.value, items.value.length, SHOWN_STEP)
+  else {
+    const got = await loadOlder(key)
+    if (ui.open !== key) { earlier.busy = false; return }
+    if (!got) earlier.error = 'Couldn’t load earlier messages.'
+    else { shown.value += got.added; if (!got.more || !got.added) exhausted.add(key); shell.bump() }
+  }
+  await nextTick()
+  box.scrollTop = top + (box.scrollHeight - height)
+  earlier.busy = false
+  // Still near the top (a short page): keep going.
+  if (box.scrollTop < box.clientHeight * 1.5) void showEarlier()
+}
+let earlierWatch: IntersectionObserver | null = null
+watch(olderMark, (mark) => {
+  earlierWatch?.disconnect(); earlierWatch = null
+  const box = threadBox.value
+  if (!mark || !box || typeof IntersectionObserver === 'undefined') return
+  earlierWatch = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting)) void showEarlier() }, { root: box, rootMargin: `${Math.round(box.clientHeight * 1.5)}px 0px 0px 0px` })
+  earlierWatch.observe(mark)
+})
+onBeforeUnmount(() => earlierWatch?.disconnect())
+// A line that arrives while the reader is up the thread must not push the lines they are reading out of the drawn part.
+watch(() => items.value.length, (now, was) => { if (now > was && was > 0) shown.value += now - was })
+watch(() => ui.open, () => { shown.value = FIRST_SHOWN; earlier.error = '' })
+const chatsMore = ref(false)
+async function moreChats(): Promise<void> { if (chatsMore.value) return; chatsMore.value = true; try { await loadMoreChats() } finally { chatsMore.value = false }; shell.bump() }
 /** Scrolled up to read earlier lines: new ones count on the jump button instead of pulling the view down. */
 const atBottom = ref(true)
 const fresh = ref(0)
 const quoted = ref<{ from: string; text: string } | null>(null)
 const nearBottom = (box: HTMLElement): boolean => box.scrollHeight - box.scrollTop - box.clientHeight < 80
-function onScroll(): void { const box = threadBox.value; if (!box) return; atBottom.value = nearBottom(box); if (atBottom.value) fresh.value = 0 }
+function onScroll(): void { const box = threadBox.value; if (!box) return; atBottom.value = nearBottom(box); if (atBottom.value) fresh.value = 0; if (box.scrollTop < box.clientHeight * 1.5 && hasEarlier.value) void showEarlier() }
 function toLatest(): void { const box = threadBox.value; if (box) box.scrollTo({ top: box.scrollHeight }); fresh.value = 0; atBottom.value = true }
 // A new line, or a line changing from sending to sent: keep the newest in view, unless the player scrolled up to read.
 watch(() => items.value.length, (now, was) => {
@@ -258,6 +305,8 @@ const updates = computed(() => { void tick.value; return me.value ? updatesCount
 /** The mark from before the tab was opened: what was new stays marked "New" while it is read. */
 const seenBefore = ref<number | null>(null)
 const lines = computed(() => [...updateLines(me.value?.updates ?? [], notices.value, seenBefore.value ?? noticeMarks.seen(view.value.cityId)), ...announceLines(announceUi.items, announceUi.seen)].sort((a, b) => b.at - a.at))
+// Updates are drawn thirty at a time as the reader goes down (the server keeps at most fifty of its own).
+const shownLines = chunkedView(() => lines.value, 30)
 function readUpdates(): void {
   if (ui.tab !== 'updates' || ui.open || !me.value) { seenBefore.value = null; return }
   seenBefore.value ??= noticeMarks.seen(view.value.cityId)
@@ -333,6 +382,10 @@ defineExpose({
 
         <div class="messages-body">
           <div ref="threadBox" class="messages-thread" aria-live="polite" @scroll.passive="onScroll">
+            <div v-if="hasEarlier && items.length" ref="olderMark" class="messages-older" role="status">
+              <template v-if="earlier.error">{{ earlier.error }} <button type="button" class="messages-link" @click="showEarlier">Try again</button></template>
+              <template v-else><i aria-hidden="true" /><i aria-hidden="true" /><span class="sr-only">Loading earlier messages</span></template>
+            </div>
             <template v-if="conv && !thread?.loaded">
               <div v-if="thread?.error" class="messages-note is-warn">{{ thread.error }} <button class="messages-link" type="button" @click="reloadThread">Retry</button></div>
               <div v-else class="messages-note">Loading messages…</div>
@@ -402,7 +455,9 @@ defineExpose({
 
           <input v-if="me.conversations.length > 4" v-model="chatFilter" class="messages-filter" type="search" name="chatfilter" placeholder="Search your chats" aria-label="Search your chats" autocomplete="off">
           <ListRows v-if="chatList.length" label="Chats">
-            <ListRow v-for="item in chatList" :key="item.id" as="button" :data-conv="item.id" :title="`${item.pinned ? '📌 ' : ''}${item.name}${item.muted ? ' 🔕' : ''}`" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
+            <LazyList :items="chatList" :item-key="(chat: Conversation) => chat.id" :has-more="Boolean(me.conversationsMore?.next) && !chatFilter" :loading="chatsMore" :row-height="60" label="chats" memory="chats" @more="moreChats">
+            <template #row="{ item }">
+            <ListRow as="button" :data-conv="item.id" :title="`${item.pinned ? '📌 ' : ''}${item.name}${item.muted ? ' 🔕' : ''}`" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
               <template #icon>
                 <RowMark v-if="item.kind === 'group'" :name="item.name" :seed="item.id" />
                 <RowMark v-else-if="item.kind === 'house'" round>🏠</RowMark>
@@ -412,6 +467,8 @@ defineExpose({
                 <span class="messages-when"><small v-if="item.kind === 'dm' && presenceOf(item.with)" class="messages-presence" :class="`is-${presenceOf(item.with)}`">{{ presenceOf(item.with) === 'online' ? 'Online' : 'Offline' }}</small><small v-if="item.last?.at">{{ time(item.last.at) }}</small><span v-if="item.mentions" class="messages-at" aria-label="You were mentioned">@</span><span v-if="item.unread" class="messages-badge" :class="{ 'is-quiet': item.muted }" :aria-label="`${item.unread} unread`">{{ item.unread }}</span></span>
               </template>
             </ListRow>
+            </template>
+            </LazyList>
           </ListRows>
           <p v-else-if="me.conversations.length" class="messages-note" role="status">No chat has that name.</p>
           <EmptyState v-else icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat. You can also make a group with your friends.">
@@ -441,12 +498,16 @@ defineExpose({
             <SectionTitle v-if="lines.length">Earlier</SectionTitle>
           </template>
           <ListRows v-if="lines.length" label="Updates">
-            <div v-for="line in lines" :key="line.key" class="messages-update" :class="{ 'is-unread': line.fresh }">
+            <LazyList :items="shownLines.visible.value" :item-key="(line: UpdateLine) => line.key" :has-more="shownLines.hasMore.value" :loading="false" label="updates" @more="shownLines.more()">
+            <template #row="{ item: line }">
+            <div class="messages-update" :class="{ 'is-unread': line.fresh }">
               <RowMark round><GameIcon :kind="line.kind" :id="line.id" /></RowMark>
               <span class="messages-update-body"><b><GlyphText :text="line.text" /></b><small>{{ formatClock(line.at) }}{{ line.fresh ? ' · New' : '' }}</small></span>
               <BaseButton v-if="line.player" small @click="shell.open('person', { player: line.player })">Say hello</BaseButton>
               <span v-if="line.conv" class="bubble-actions"><BaseButton small @click="openConversation(line.conv); ui.tab = 'chats'">Open</BaseButton><BaseButton v-if="line.leave" small variant="danger" @click="leaveFromUpdate(line.conv)">Leave</BaseButton></span>
             </div>
+            </template>
+            </LazyList>
           </ListRows>
           <EmptyState v-else-if="!(me.requests.in.length || me.baeRequests.length || me.house.knocks.length)" icon="bell" title="Nothing yet" :text="`Friend requests, knocks at your door, gifts, rent and loan notices, promotions, illness and news from the ${civicTitle(view.cityId)} appear here.`" />
         </div>
@@ -462,6 +523,10 @@ defineExpose({
 .messages-presence { font-weight: 700; color: var(--c-muted); }
 .messages-presence::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: currentColor; vertical-align: 1px; }
 .messages-presence.is-online { color: var(--c-green-dark); }
+.messages-older { display: grid; gap: 6px; padding: 4px 0; font-size: 12px; color: var(--c-muted); text-align: center; }
+.messages-older i { display: block; height: 28px; border-radius: 14px; background: var(--c-fill); width: 55%; }
+.messages-older i + i { justify-self: end; width: 40%; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .messages-note { margin: 6px 2px; font-size: 12px; line-height: 1.45; color: var(--c-muted); }
 .messages-note.is-warn { color: var(--c-red); }
 .messages-note.is-inset { margin: 6px 14px; }

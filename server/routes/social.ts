@@ -25,8 +25,11 @@
  *   POST /api/social/block               { id, cityId }
  *   POST /api/social/unblock             { id }
  *   POST /api/social/reports             { id, reason, text? }
- *   GET  /api/social/conversations
- *   GET  /api/social/conversations/:id?after=<seq>
+ *   GET  /api/social/conversations?limit=&after=      all of them; with `limit`, one page by last activity and a cursor (`next`)
+ *   GET  /api/social/conversations/:id?after=<seq>&before=<seq>&limit=   the newest page, what came after a line, or the page before one (`more`: older lines are kept)
+ *   GET  /api/social/everyone?q=&sort=newest|name|online|city&city=&after=&limit=   the Players view: the founder's, or an admin's; anyone else 404 (server/social/pages.ts)
+ *   POST /api/social/chats/open          { with }          the direct chat with a player, back in my list if it was dropped from it
+ *   POST /api/social/messages/many       { to: [id, up to 20], body, clientId }   the same words to each, as ordinary messages (founder and admins)
  *   POST /api/social/conversations/:id/read { seq? }
  *   POST /api/social/messages            { to | conv, body, clientId }
  *   POST /api/social/groups              { name, members: [id], clientId }
@@ -48,7 +51,8 @@
  * The friends list is part of GET /api/social/me; only the founder's can be longer than that answer carries.
  */
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
-import { socialService, MATERIAL } from '../social/service.ts';
+import { socialService, MATERIAL, LIMITS } from '../social/service.ts';
+import { pageLimit } from '../social/pages.ts';
 import { CONTENT_TYPES, FAULT_WORDS, PICTURE_LIMITS, cleanPicture, claimedType, fromBase64, pictureSettings } from '../social/images.ts';
 import type { ImageRef } from '../types.ts';
 
@@ -82,6 +86,9 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   /** The same, for a request that changes what the caller's own overview shows. */
   const mine = (call: Call): RouteHandler => route(call, true);
   const after = (request: RouteRequest): number => { const value = Number(request.query.get('after')); return Number.isSafeInteger(value) ? value : 0; };
+  /** A page size asked for in the query: a whole number from 1 to PAGE_MAX, or undefined (no paging: the old answer). */
+  const limitOf = (request: RouteRequest, name: string): number | undefined => { const raw = request.query.get(name); return raw === null ? undefined : pageLimit(raw, LIMITS.chatPage); };
+  const seqOf = (request: RouteRequest, name: string): number | undefined => { const value = Number(request.query.get(name)); return request.query.get(name) !== null && Number.isSafeInteger(value) && value > 0 ? value : undefined; };
   // ---- pictures ------------------------------------------------------------------------------------------------
   // The bytes are checked and kept outside the social collection (ctx.images); the message holds only their id.
   let storedBytes: number | null = null, trimmedAt = 0;
@@ -142,7 +149,8 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
   };
   return {
-    'GET /api/social/me': route((db, session) => service.me(db, session)),
+    // `lite=1`: a first page of chats (`conversationsMore` for the rest) and, for the founder, none of the automatic friends (the Players view reads them). Absent: as before, up to LIMITS.convs chats.
+    'GET /api/social/me': route((db, session, body, request) => service.me(db, session, { lite: request.query.get('lite') === '1' })),
     'GET /api/social/friends': route((db, session, body, request) => service.friendsPage(db, session, request.query.get('after'))),
     'POST /api/social/updates/read': route((db, session) => service.readUpdates(db, session)),
     'GET /api/social/people': route((db, session, body, request) => service.people(db, session, request.query.get('city'))),
@@ -155,8 +163,11 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/block': mine((db, session, body) => service.block(db, session, body)),
     'POST /api/social/unblock': mine((db, session, body) => service.unblock(db, session, body)),
     'POST /api/social/reports': route((db, session, body) => service.report(db, session, body)),
-    'GET /api/social/conversations': route((db, session) => service.conversations(db, session)),
-    'GET /api/social/conversations/:id': route((db, session, body, request) => service.history(db, session, request.params.id, after(request))),
+    'GET /api/social/conversations': route((db, session, body, request) => service.conversations(db, session, { limit: limitOf(request, 'limit'), after: request.query.get('after') })),
+    'GET /api/social/conversations/:id': route((db, session, body, request) => service.history(db, session, request.params.id, after(request), { before: seqOf(request, 'before'), limit: limitOf(request, 'limit') })),
+    'GET /api/social/everyone': route((db, session, body, request) => service.everyone(db, session, { q: request.query.get('q'), sort: request.query.get('sort'), city: request.query.get('city'), after: request.query.get('after'), limit: request.query.get('limit') })),
+    'POST /api/social/chats/open': route((db, session, body) => service.openChat(db, session, body)),
+    'POST /api/social/messages/many': route((db, session, body) => service.sendMany(db, session, body)),
     'POST /api/social/conversations/:id/read': route((db, session, body, request) => service.read(db, session, { ...body, conv: request.params.id })),
     'POST /api/social/messages': route((db, session, body) => service.send(db, session, body)),
     'POST /api/social/groups': mine((db, session, body) => service.groupCreate(db, session, body)),

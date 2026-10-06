@@ -69,6 +69,9 @@ import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { clip, glyphs } from './clip.ts';
+import { DIRECTORY_SCAN, PAGE_MAX, byNameOrder, cursorOf, directoryCache, firstAfter, newestFirst, pageLimit, readCursor } from './pages.ts';
+import type { Directory, DirectoryRow } from './pages.ts';
+import { playerIsAdmin } from '../admin/gate.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
@@ -91,7 +94,7 @@ type Delivered<R> = R extends { push: unknown } ? Omit<R, 'push'> : R;
 
 /** Original beta limits. */
 export const LIMITS = Object.freeze({
-  body: 500, history: 200, page: 50, friends: 200, requests: 30, blocked: 200, convs: 100, groups: 20, groupSize: 12, groupName: 32,
+  body: 500, history: 200, page: 50, friends: 200, requests: 30, blocked: 200, convs: 100, founderConvs: 1000, chatPage: 30, openPage: 40, playersPage: 40, batchTo: 20, batchPerWindow: 6, batchWindowMs: 600000, groups: 20, groupSize: 12, groupName: 32,
   updates: 50, reports: 2000, ownReports: 20, reportText: 300, pending: 50,
   guests: 5, knockMs: 60000, knockCooldownMs: 60000, visitMs: 30 * 60000,
   strangerMessages: 3, newChatsPerDay: 10, searchResults: 10,
@@ -176,6 +179,9 @@ function buildService(ctx: RouteContext) {
   const convId = (value: unknown): string => { if (typeof value !== 'string' || !CONV_ID.test(value)) throw bad('invalid_conversation'); return value; };
 
   // ---- collection ----------------------------------------------------------------------------
+  /** Bumped when a player is added or renamed in this process: the player directory (pages.ts) is rebuilt at once. */
+  let directoryStamp = 0;
+  const directories = directoryCache();
   const dbOf = new WeakMap<SocialCollection, Db>(); // collection → the db it came from, for ctx.atHome inside pruneHouse
   function col(db: Db): SocialCollection {
     const s = ctx.collection(db, 'social');
@@ -242,8 +248,10 @@ function buildService(ctx: RouteContext) {
       const held = p.friends[p.founder.id];
       if (held === undefined || blockedHere || s.players[p.founder.id]?.friends[id] !== undefined) return;
       delete p.friends[p.founder.id];
+      directoryStamp += 1;
       p.founder = { id: founder, at: p.founder.at };
       if (p.friends[founder] === undefined) p.friends[founder] = held;
+      directoryStamp += 1;
       endedIn(s).material = true;
       return;
     }
@@ -253,6 +261,7 @@ function buildService(ctx: RouteContext) {
     if (!areFriends(s, id, founder)) {
       delete p.in[founder]; delete p.out[founder]; delete them.in[id]; delete them.out[id];
       p.friends[founder] = t;
+      directoryStamp += 1;
     }
     const key = dmId(id, founder);
     if (Object.hasOwn(s.convs, key)) return; // they have talked before: no note
@@ -284,6 +293,7 @@ function buildService(ctx: RouteContext) {
     }
     for (const [x, y] of [[a, inviter], [b, newcomer]] as [SocialPlayerRecord, string][]) { delete x.in[y]; delete x.out[y]; }
     a.friends[inviter] = b.friends[newcomer] = t;
+    directoryStamp += 1;
     owe(s, db, newcomer, cityId, { op: 'friend', id: inviter, name: b.name });
     owe(s, db, inviter, cityId, { op: 'friend', id: newcomer, name: a.name });
     notify(s, inviter, 'invite-joined', `${a.name} joined through your link. You are friends now: say hello.`, { from: newcomer }, push);
@@ -307,13 +317,32 @@ function buildService(ctx: RouteContext) {
    * founder's record does not list them); `after` is the `next` of the page before.
    */
   function founderFriends(s: SocialCollection, founder: string, after: string | null): { ids: [string, number][]; total: number; next: string | null } {
-    const all: [string, number][] = [];
-    for (const other in s.players) if (autoFriend(s.players, founder, other)) all.push([other, s.players[other]!.friends[founder]!]);
-    all.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+    const dir = directoryOf(s, founder, 'founder');
+    const own = s.players[founder]!.friends;
     const [sinceText = '', afterId = ''] = (after ?? '').split(':'), since = Number(sinceText);
-    const start = after === null ? 0 : all.findIndex(([other, at]) => at < since || (at === since && other > afterId));
-    const ids = start < 0 ? [] : all.slice(start, start + FOUNDER_PAGE), last = ids.at(-1);
-    return { ids, total: all.length, next: last && start + ids.length < all.length ? `${last[1]}:${last[0]}` : null };
+    const from = after === null ? 0 : firstAfter(dir.byNewest, (row) => row.first < since || (row.first === since && row.id > afterId));
+    const ids: [string, number][] = [];
+    let i = from;
+    for (; i < dir.byNewest.length && ids.length < FOUNDER_PAGE; i += 1) {
+      const row = dir.byNewest[i]!;
+      if (own[row.id] === undefined && autoFriend(s.players, founder, row.id)) ids.push([row.id, s.players[row.id]!.friends[founder]!]);
+    }
+    const last = ids.length ? dir.byNewest[i - 1] : undefined;
+    return { ids, total: Math.max(0, dir.listed - Object.keys(own).length), next: last && i < dir.byNewest.length ? `${last.first}:${last.id}` : null };
+  }
+  // ---- the player directory (founder and admins; server/social/pages.ts) ----------------------
+  type ViewerKind = 'founder' | 'admin';
+  /** Who may list every player: the founder's character, or an account whose address is on the admin list. Decided from the stored records on every request. */
+  function directoryViewer(s: SocialCollection, db: Db, session: SessionRecord, id: string): ViewerKind | null {
+    if (founderId(s) === id) return 'founder';
+    return playerIsAdmin(ctx, db, session) ? 'admin' : null;
+  }
+  /** Every player, by name and by first-seen time (the index behind player search and the picker; nothing about who is whose friend). */
+  const everyDirectory = (s: SocialCollection): Directory => directories.get('all', now(), directoryStamp, s.players, () => true, '');
+  /** The players this viewer may list: the founder's friends (either way, not blocked); for another admin every player they have not blocked or been blocked by. */
+  function directoryOf(s: SocialCollection, viewer: string, kind: ViewerKind): Directory {
+    const accept = (other: string): boolean => !blockedEither(s, viewer, other) && (kind === 'admin' || friendsIn(s.players, viewer, other));
+    return directories.get(`${kind}:${viewer}`, now(), directoryStamp, s.players, accept, viewer);
   }
   const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends',
     notify: { text: p.notify?.hide !== true, groups: p.notify?.all ? 'all' : 'mentions', pausedUntil: p.notify?.until && p.notify.until > now() ? p.notify.until : null, quietDm: p.notify?.quietDm === true, quietGroups: p.notify?.noQuiet !== true } });
@@ -331,6 +360,7 @@ function buildService(ctx: RouteContext) {
     const lives = Object.values(session.cities || {}).map((entry) => entry?.state?.onboarding).filter(Boolean);
     if (lives.length ? lives.every((o) => o?.required === true && o.done !== true) : session.onboarding === true) throw ctx.fail(403, 'onboarding_required');
     const s = col(db), id = session.publicId, t = now();
+    if (!Object.hasOwn(s.players, id) || s.players[id]!.name !== session.name) directoryStamp += 1;
     const p = s.players[id] ||= { name: session.name, first: t, seen: t, friends: {}, in: {}, out: {}, blocked: {}, convs: {}, updates: [], reports: [],
       baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 } };
     p.name = session.name; p.seen = t;
@@ -513,6 +543,19 @@ function buildService(ctx: RouteContext) {
       ...(picture ? { image: picture } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
+  /** A line someone wrote: not the automatic welcome note and not a system line. A chat holding only those is not yet a conversation. */
+  const realLine = (message: MessageRecord): boolean => !message.auto && !message.sys;
+  /** What a conversation holds unread for `viewer` (a muted group whose viewer turned mentions off counts none). The same rule as summary(). */
+  function unreadOf(s: SocialCollection, conv: ConversationRecord, viewer: string, silent = false): number {
+    const entry = s.players[viewer]?.convs[conv.id], read = entry?.read ?? 0;
+    let unseen = 0, mentions = 0;
+    for (const message of conv.messages) {
+      if (message.seq <= read || message.from === viewer || message.sys || !visibleTo(s, viewer, message)) continue;
+      unseen += 1;
+      if (mentionsViewer(message, viewer)) mentions += 1;
+    }
+    return entry?.mute && conv.kind === 'group' && !silent ? mentions : entry?.mute ? 0 : unseen;
+  }
   function summary(s: SocialCollection, conv: ConversationRecord, viewer: string) {
     const entry = s.players[viewer]?.convs[conv.id], read = entry?.read ?? 0;
     const seen = conv.messages.filter((message) => visibleTo(s, viewer, message));
@@ -545,7 +588,7 @@ function buildService(ctx: RouteContext) {
     const p = s.players[id];
     if (!p || p.convs[conv.id]) return;
     const ids = Object.keys(p.convs);
-    if (ids.length >= LIMITS.convs) {
+    if (ids.length >= (founderId(s) === id ? LIMITS.founderConvs : LIMITS.convs)) {
       // Make room by dropping the quietest direct chat from this player's list (history stays for the other side).
       const quiet = ids.filter((key) => s.convs[key]?.kind === 'dm').sort((a, b) => (s.convs[a]!.messages.at(-1)?.at ?? 0) - (s.convs[b]!.messages.at(-1)?.at ?? 0))[0];
       if (quiet) { delete p.convs[quiet]; collect(s, quiet); }
@@ -641,6 +684,7 @@ function buildService(ctx: RouteContext) {
     // An automatic friendship was never written to either life, so there is nothing to take out of one.
     const automatic = autoFriend(s.players, a, b) || autoFriend(s.players, b, a);
     delete pa.friends[b]; delete pb.friends[a];
+    directoryStamp += 1;
     for (const [x, y] of [[pa, b], [pb, a]] as [SocialPlayerRecord, string][]) { delete x.in[y]; delete x.out[y]; delete x.baeIn[y]; }
     if (pa.bae === b) pa.bae = null;
     if (pb.bae === a) pb.bae = null;
@@ -790,7 +834,7 @@ function buildService(ctx: RouteContext) {
     },
 
     // ---- overview --------------------------------------------------------------------------
-    me(db: Db, session: SessionRecord) {
+    me(db: Db, session: SessionRecord, opts: { lite?: boolean } = {}) {
       const { s, p, id } = enter(db, session);
       // An offline friend this process never saw connected (it restarted since) still has the stored time of their last request.
       const person = (other: string) => {
@@ -803,16 +847,17 @@ function buildService(ctx: RouteContext) {
       const friend = ([other, since]: [string, number]) => ({ ...person(other), since, bae: p.bae === other });
       // The founder is first in everyone's list. The founder's own list is their friends by request, then the newest automatic ones.
       const friends = Object.entries(p.friends).map(friend).sort((a, b) => Number(b.founder === true) - Number(a.founder === true) || a.name.localeCompare(b.name));
-      const automatic = founderId(s) === id ? founderFriends(s, id, null) : null;
+      const automatic = founderId(s) === id ? founderFriends(s, id, null) : null, chats = service.conversations(db, session, { limit: opts.lite ? LIMITS.chatPage : LIMITS.convs });
       return yes('ok', {
         me: { id, name: p.name, since: p.first },
-        friends: automatic ? [...friends, ...automatic.ids.map(friend)] : friends,
-        ...(automatic ? { friendsMore: { total: automatic.total, next: automatic.next } } : {}),
+        friends: automatic && !opts.lite ? [...friends, ...automatic.ids.map(friend)] : friends,
+        ...(automatic ? { friendsMore: { total: automatic.total, next: opts.lite ? null : automatic.next } } : {}),
+        ...(chats.next ? { conversationsMore: { total: chats.total, next: chats.next, unreadOlder: chats.unreadOlder } } : {}),
         requests: { in: Object.entries(p.in).map(([other, at]) => ({ ...pub(s, other), at })), out: Object.entries(p.out).map(([other, at]) => ({ ...pub(s, other), at })) },
         baeRequests: Object.entries(p.baeIn).map(([other, request]) => ({ ...pub(s, other), at: request.at })),
         bae: p.bae ? pub(s, p.bae) : null,
         blocked: Object.entries(p.blocked).map(([other, at]) => ({ ...pub(s, other), at })),
-        conversations: service.conversations(db, session).conversations,
+        conversations: chats.conversations,
         updates: p.updates.slice().reverse(),
         reports: p.reports.slice().reverse(),
         house: houseView(s, id, id),
@@ -830,6 +875,134 @@ function buildService(ctx: RouteContext) {
       if (founderId(s) !== id) return yes('ok', { friends: [], total: 0, next: null });
       const page = founderFriends(s, id, after);
       return yes('ok', { friends: page.ids.map(([other, since]) => ({ ...pub(s, other), ...whereabouts(other, true), since, bae: p.bae === other })), total: page.total, next: page.next });
+    },
+    /**
+     * THE PLAYERS VIEW (founder, and accounts on the admin list; anyone else is answered 404 like a route that does not exist).
+     * `sort`: `newest` (default, exact), `name` (A to Z, exact), `online` (connected players first, then the rest newest first),
+     * `city` (connected players in `city`). `q`: players whose name starts with it, then those that contain it, in name order.
+     * A page is `limit` rows (at most PAGE_MAX) and `next`, a cursor of the last row read; it may hold fewer rows than asked (a
+     * name search reads at most DIRECTORY_SCAN names a request), and `next` is null only when nothing is left. A row carries what
+     * the friends list already shows (online or not, and where, for a friend), when they joined, and the direct chat if there is one.
+     * It never carries an address. `gone` counts the players who are not listed because they removed or blocked the viewer (no names).
+     */
+    everyone(db: Db, session: SessionRecord, query: { q?: unknown; sort?: unknown; city?: unknown; after?: unknown; limit?: unknown }) {
+      const { s, p, id } = enter(db, session);
+      const kind = directoryViewer(s, db, session, id);
+      if (!kind) throw ctx.fail(404, 'not_found');
+      if (!ctx.allow(`social:everyone:${id}`, 120)) return no('rate_limited', 'You are looking too quickly. Wait a moment.');
+      const limit = pageLimit(query.limit, LIMITS.playersPage), dir = directoryOf(s, id, kind);
+      const sortRaw = typeof query.sort === 'string' ? query.sort : 'newest', sort = sortRaw === 'name' || sortRaw === 'online' || sortRaw === 'city' ? sortRaw : 'newest';
+      const q = typeof query.q === 'string' ? query.q.trim().replace(/^@/, '').toLowerCase() : '';
+      if (q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
+      const cityFilter = sort === 'city' ? city(query.city) : null;
+      const raw = typeof query.after === 'string' && query.after ? query.after : null;
+      // A row is listed only if it still passes the check, whatever the index said when it was built.
+      const keep = (row: DirectoryRow): boolean => Object.hasOwn(s.players, row.id) && !blockedEither(s, id, row.id) && (kind === 'admin' || friendsIn(s.players, id, row.id));
+      const scan = (rows: readonly DirectoryRow[], start: number, end: number, room: number, test: (row: DirectoryRow) => boolean, budget = Infinity) => {
+        const items: DirectoryRow[] = [];
+        let i = start, read = 0;
+        for (; i < end && items.length < room && read < budget; i += 1) { read += 1; const row = rows[i]!; if (keep(row) && test(row)) items.push(row); }
+        return { items, last: i > start ? rows[i - 1] : undefined, finished: i >= end };
+      };
+      const cursor = (parts: (string | number)[] | null, length: number): string[] | null => {
+        if (raw === null) return null;
+        const got = readCursor(raw, length);
+        if (!got || (parts && got[0] !== undefined && !parts.includes(got[0]))) throw bad('invalid_cursor');
+        return got;
+      };
+      const onlineRows = (): DirectoryRow[] => presence.onlineIds().map((other) => dir.rows.get(other)).filter((row): row is DirectoryRow => row !== undefined && keep(row) && (!cityFilter || whereabouts(row.id, true).cityId === cityFilter)).sort(newestFirst);
+      let page: DirectoryRow[] = [], next: string | null = null, total: number | null = dir.listed;
+      if (q) {
+        total = null;
+        const got = cursor(['p', 'c'], 3), prefixEnd = firstAfter(dir.byName, (row) => row.lower >= q && !row.lower.startsWith(q));
+        const position = got ? firstAfter(dir.byName, (row) => byNameOrder(row, { id: got[2]!, lower: got[1]!, name: '', first: 0 }) > 0) : 0;
+        if (!got || got[0] === 'p') {
+          const start = got ? position : firstAfter(dir.byName, (row) => row.lower >= q);
+          const found = scan(dir.byName, start, prefixEnd, limit, () => true);
+          page = found.items;
+          if (!found.finished && found.last) next = cursorOf('p', found.last.lower, found.last.id);
+          else if (page.length >= limit) next = cursorOf('c', '', ''); // the prefix matches ended with the page: the others are next
+        }
+        if (next === null && page.length < limit) {
+          const found = scan(dir.byName, got?.[0] === 'c' ? position : 0, dir.byName.length, limit - page.length, (row) => row.lower.includes(q) && !row.lower.startsWith(q), DIRECTORY_SCAN);
+          page = [...page, ...found.items];
+          if (!found.finished && found.last) next = cursorOf('c', found.last.lower, found.last.id);
+        }
+      } else if (sort === 'name') {
+        const got = cursor(['a'], 3);
+        const start = got ? firstAfter(dir.byName, (row) => byNameOrder(row, { id: got[2]!, lower: got[1]!, name: '', first: 0 }) > 0) : 0;
+        const found = scan(dir.byName, start, dir.byName.length, limit, () => true);
+        page = found.items;
+        if (!found.finished && found.last) next = cursorOf('a', found.last.lower, found.last.id);
+      } else if (sort === 'newest') {
+        const got = cursor(['n'], 3);
+        const start = got ? firstAfter(dir.byNewest, (row) => newestFirst(row, { id: got[2]!, lower: '', name: '', first: Number(got[1]) }) > 0) : 0;
+        const found = scan(dir.byNewest, start, dir.byNewest.length, limit, () => true);
+        page = found.items;
+        if (!found.finished && found.last) next = cursorOf('n', found.last.first, found.last.id);
+      } else {
+        const got = cursor(['o', 'r'], 3), online = onlineRows();
+        total = online.length;
+        const from = (rows: readonly DirectoryRow[]): number => (got ? firstAfter(rows, (row) => newestFirst(row, { id: got[2]!, lower: '', name: '', first: Number(got[1]) }) > 0) : 0);
+        if (!got || got[0] === 'o') {
+          const found = scan(online, from(online), online.length, limit, () => true);
+          page = found.items;
+          if (!found.finished && found.last) next = cursorOf('o', found.last.first, found.last.id);
+          else if (sort === 'online' && page.length >= limit) next = cursorOf('r', 9999999999999999, ''); // the connected players ended with the page: the rest are next
+        }
+        // After the connected players, the rest newest first (a player may show twice across the two parts; clients keep the first).
+        if (next === null && sort === 'online' && page.length < limit) {
+          const found = scan(dir.byNewest, got?.[0] === 'r' ? from(dir.byNewest) : 0, dir.byNewest.length, limit - page.length, () => true);
+          page = [...page, ...found.items];
+          if (!found.finished && found.last) next = cursorOf('r', found.last.first, found.last.id);
+          total = dir.listed;
+        }
+      }
+      const players = page.map((row) => {
+        const record = s.players[row.id]!, friend = areFriends(s, id, row.id), key = dmId(id, row.id);
+        const found = Object.hasOwn(s.convs, key) ? s.convs[key]! : null, conv = found?.messages.some(realLine) ? found : null, listed = Boolean(p.convs[key]);
+        const unread = conv && listed ? conv.messages.filter((message) => message.seq > p.convs[key]!.read && message.from !== id && !message.sys && visibleTo(s, id, message)).length : 0;
+        return { id: row.id, name: record.name, joined: record.first, friend, ...(founderId(s) === row.id ? { founder: true as const } : {}), ...whereabouts(row.id, friend),
+          ...(conv && conv.members.includes(id) ? { chat: { unread, at: conv.messages.at(-1)?.at ?? conv.created, listed } } : {}) };
+      });
+      return yes('ok', { players, total, next, gone: kind === 'founder' ? dir.gone : 0, sort, ...(raw === null ? { online: presence.onlineIds().filter((other) => dir.rows.has(other)).length } : {}) });
+    },
+    /**
+     * Open the direct chat with a player: the conversation as it is, put back in the caller's list if it was dropped from it
+     * (the founder's list is long, and the quietest chat goes when it is full), with the messages as before. A player the caller
+     * has never talked to has no conversation yet: `conv` is null and the first message makes it.
+     */
+    openChat(db: Db, session: SessionRecord, body: SocialBody) {
+      const to = uuid(body.with);
+      const { s, p, id } = enter(db, session);
+      const { refusal } = other(s, id, to);
+      if (refusal) return refusal;
+      const key = dmId(id, to), conv = Object.hasOwn(s.convs, key) ? s.convs[key]! : null;
+      if (!conv || !conv.members.includes(id) || !conv.messages.some(realLine)) return yes('ok', { conv: null });
+      if (!p.convs[key]) index(s, id, conv, conv.seq);
+      return yes('ok', { conv: summary(s, conv, id) });
+    },
+    /**
+     * The same words to several players, each as an ordinary direct message through send() (the screen, mutes, blocks, the
+     * stranger rules, the sender's per-minute limit, the notifications): founder and admins only. At most LIMITS.batchTo
+     * players, and LIMITS.batchPerWindow such sends per LIMITS.batchWindowMs. A refusal for one player is that player's own
+     * line in `results`; the others still go.
+     */
+    sendMany(db: Db, session: SessionRecord, body: SocialBody) {
+      const { s, id } = enter(db, session);
+      if (!directoryViewer(s, db, session, id)) throw ctx.fail(404, 'not_found');
+      const cid = clientId(body.clientId);
+      const ids = Array.isArray(body.to) ? [...new Set(body.to.map((value) => uuid(value)))] : [];
+      if (!ids.length || ids.length > LIMITS.batchTo || (Array.isArray(body.to) && body.to.length > LIMITS.batchTo)) throw bad('invalid_players');
+      text(body.body, LIMITS.body, 'invalid_message');
+      if (!ctx.allow(`social:batch:${id}`, LIMITS.batchPerWindow, LIMITS.batchWindowMs)) return no('rate_limited', 'You are sending to groups of people too often. Wait a few minutes.');
+      const push: PushList = [];
+      const results = ids.map((to, index) => {
+        const done = service.send(db, session, { to, body: body.body, clientId: `${cid.slice(0, 70)}-${index}` });
+        if (done.ok && 'push' in done) push.push(...done.push);
+        return done.ok ? { id: to, ok: true as const, ...('duplicate' in done ? { duplicate: true as const } : {}) } : { id: to, ok: false as const, code: done.code, reason: done.reason };
+      });
+      return yes('sent', { results, sent: results.filter((result) => result.ok).length, push });
     },
     readUpdates(db: Db, session: SessionRecord) {
       const { p, id } = enter(db, session);
@@ -865,11 +1038,13 @@ function buildService(ctx: RouteContext) {
       const q = typeof query === 'string' ? query.trim().replace(/^@/, '').toLowerCase() : '';
       if (q.length < 2 || q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
       if (!ctx.allow(`social:search:${id}`, 20)) return no('rate_limited', 'You are searching too quickly. Wait a moment.');
-      const results = [];
-      for (const [other, player] of Object.entries(s.players)) {
-        if (other === id || blockedEither(s, id, other)) continue;
-        if (other === q || player.name.toLowerCase().includes(q)) results.push({ ...pub(s, other), friend: areFriends(s, id, other), exact: other === q || player.name.toLowerCase() === q });
+      const results: (PlayerRef & { friend: boolean; exact: boolean })[] = [];
+      const hit = (other: string, name: string): void => { if (other !== id && !blockedEither(s, id, other)) results.push({ ...pub(s, other), friend: areFriends(s, id, other), exact: other === q || name.toLowerCase() === q }); };
+      if (Object.hasOwn(s.players, q)) hit(q, s.players[q]!.name);
+      // By name from an index kept in memory (pages.ts): no copy of every player is made for one search.
+      for (const row of everyDirectory(s).byName) {
         if (results.length >= 200) break;
+        if (row.id !== q && row.lower.includes(q)) hit(row.id, row.name);
       }
       results.sort((a, b) => Number(b.exact) - Number(a.exact) || a.name.localeCompare(b.name));
       return yes('ok', { results: results.slice(0, LIMITS.searchResults).map(({ exact, ...rest }) => rest) });
@@ -913,6 +1088,7 @@ function buildService(ctx: RouteContext) {
       if (!body.accept) return yes('declined', { player: pub(s, from), push });
       if (friendCount(s, id) >= LIMITS.friends || friendCount(s, from) >= LIMITS.friends) return no('friends_full', `One of you already has ${LIMITS.friends} friends.`);
       p.friends[from] = asker.friends[id] = now();
+      directoryStamp += 1;
       act(session, cityId, 'friend', { id: from, name: asker.name }, `social|friend|${id}|${from}`, 'the friendship is written to the social collection in this transaction; a repeat is answered from it');
       owe(s, db, from, cityId, { op: 'friend', id, name: p.name });
       push.push([from, { type: 'friend-accepted', by: pub(s, id) }], [from, { type: 'social-sync' }]);
@@ -938,6 +1114,7 @@ function buildService(ctx: RouteContext) {
       if (p.blocked[target]) return yes('blocked', { duplicate: true });
       if (Object.keys(p.blocked).length >= LIMITS.blocked) return no('block_list_full', `Your block list is full (${LIMITS.blocked}). Unblock someone first.`);
       p.blocked[target] = now();
+      directoryStamp += 1;
       endedIn(s).blocks.push(['block', id, target]);
       cut(s, db, id, target, cityId);
       const push: PushList = [];
@@ -950,6 +1127,7 @@ function buildService(ctx: RouteContext) {
       const { s, p, id } = enter(db, session);
       if (p.blocked[target]) endedIn(s).blocks.push(['unblock', id, target]);
       delete p.blocked[target];
+      directoryStamp += 1;
       return yes('unblocked');
     },
     /** File a report for moderators. The reporter gets a receipt that survives reloads. */
@@ -979,21 +1157,53 @@ function buildService(ctx: RouteContext) {
     },
 
     // ---- messages --------------------------------------------------------------------------
-    conversations(db: Db, session: SessionRecord) {
+    /**
+     * The caller's conversations, quietest last. Without `limit`: all of them, as before. With it: one page by last activity
+     * (a cursor `<time>:<id>` of the last row held, never an offset), and the first page also carries the pinned chats, so a
+     * pinned old chat is not out of sight. Cost: one pass over the caller's own list (at most LIMITS.convs, or founderConvs
+     * for the founder) for the order; a summary is built for the page only.
+     */
+    conversations(db: Db, session: SessionRecord, opts: { limit?: number; after?: string | null } = {}) {
       const { s, p, id } = enter(db, session);
       // Only a conversation the caller is a member of is listed, whatever their own list holds.
-      const list = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && conv.members.includes(id) && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])))
-        .map((conv) => summary(s, conv, id)).sort((a, b) => (b.last?.at ?? 0) - (a.last?.at ?? 0));
-      return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0) });
+      const owned = Object.keys(p.convs).map((key) => s.convs[key]).filter((conv): conv is ConversationRecord => Boolean(conv && conv.members.includes(id) && !(conv.kind === 'dm' && p.blocked[conv.members.find((member) => member !== id)!])));
+      if (!opts.limit) {
+        const list = owned.map((conv) => summary(s, conv, id)).sort((a, b) => (b.last?.at ?? 0) - (a.last?.at ?? 0));
+        return yes('ok', { conversations: list, unread: list.reduce((sum, conv) => sum + conv.unread, 0), total: list.length, next: null as string | null, unreadOlder: 0 });
+      }
+      const at = (conv: ConversationRecord): number => conv.messages.at(-1)?.at ?? conv.created;
+      const order = owned.map((conv) => ({ conv, at: at(conv) })).sort((a, b) => b.at - a.at || (a.conv.id < b.conv.id ? -1 : 1));
+      const cursor = opts.after ? readCursor(opts.after, 2) : null;
+      if (opts.after && !cursor) throw bad('invalid_cursor');
+      const since = cursor ? Number(cursor[0]) : 0, afterId = cursor?.[1] ?? '';
+      const from = cursor ? firstAfter(order, (row) => row.at < since || (row.at === since && row.conv.id > afterId)) : 0;
+      const slice = order.slice(from, from + opts.limit);
+      const shown = new Set(slice.map((row) => row.conv.id));
+      // Pinned chats are on the first page whatever their age; a later page never repeats them.
+      const pinned = cursor ? [] : order.filter((row) => p.convs[row.conv.id]?.pin && !shown.has(row.conv.id)).map((row) => row.conv);
+      const page = [...pinned, ...slice.map((row) => row.conv)].map((conv) => summary(s, conv, id));
+      const last = slice.at(-1), more = from + slice.length < order.length;
+      // Unread in chats beyond this page, so the badge stays whole while only a page is loaded (first page only).
+      let unreadOlder = 0;
+      if (!cursor) for (const row of order.slice(from + slice.length)) if (!pinned.includes(row.conv)) unreadOlder += unreadOf(s, row.conv, id, p.convs[row.conv.id]?.mute === true && p.mentions === 'off');
+      return yes('ok', { conversations: page, total: order.length, next: last && more ? cursorOf(last.at, last.conv.id) : null, unreadOlder, unread: page.reduce((sum, conv) => sum + conv.unread, 0) + unreadOlder });
     },
-    history(db: Db, session: SessionRecord, rawConv: unknown, after: unknown) {
+    /**
+     * A conversation's messages. `after=<seq>`: what arrived after it (at most `limit`, the newest of them), as before.
+     * `before=<seq>`: the page of messages just older than that line, for scrolling up. `more` says whether older lines
+     * than the first one returned are still kept (at most LIMITS.history are). Without either: the newest page.
+     */
+    history(db: Db, session: SessionRecord, rawConv: unknown, after: unknown, opts: { before?: number; limit?: number } = {}) {
       const key = convId(rawConv);
       const { s, p, id } = enter(db, session);
       const conv = memberConv(s, id, key);
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
       const from = typeof after === 'number' && Number.isSafeInteger(after) && after >= 0 ? after : 0;
-      const messages = conv.messages.filter((message) => message.seq > from && visibleTo(s, id, message)).slice(-LIMITS.page).map((message) => messageView(s, conv, message, id));
-      return yes('ok', { conv: summary(s, conv, id), messages, read: p.convs[key]!.read });
+      const take = Math.max(1, Math.min(opts.limit ?? (from === 0 && opts.before === undefined ? LIMITS.openPage : LIMITS.page), PAGE_MAX));
+      const visible = conv.messages.filter((message) => message.seq > from && (opts.before === undefined || message.seq < opts.before) && visibleTo(s, id, message));
+      const chosen = visible.slice(-take), firstSeq = chosen[0]?.seq ?? opts.before ?? 0;
+      const more = from === 0 && conv.messages.some((message) => message.seq < firstSeq && visibleTo(s, id, message));
+      return yes('ok', { conv: summary(s, conv, id), messages: chosen.map((message) => messageView(s, conv, message, id)), read: p.convs[key]!.read, more });
     },
     read(db: Db, session: SessionRecord, body: SocialBody) {
       const key = convId(body.conv);
@@ -1249,11 +1459,12 @@ function buildService(ctx: RouteContext) {
       if (q.length < 2 || q.length > 36 || CONTROL.test(q)) throw bad('invalid_query');
       if (!ctx.allow(`social:search:${id}`, 20)) return no('rate_limited', 'You are searching too quickly. Wait a moment.');
       const founder = founderId(s), isFounder = founder === id, results: { id: string; name: string }[] = [];
-      const candidates = isFounder ? Object.keys(s.players) : Object.keys(p.friends);
+      // The founder's friends are everyone: they are read from the name index, not by walking every player.
+      const candidates = isFounder ? directoryOf(s, id, 'founder').byName.map((row) => row.id) : Object.keys(p.friends);
       for (const other of candidates) {
         const them = s.players[other];
         if (!them || other === id || other === founder || blockedEither(s, id, other)) continue;
-        if (!(ordinary(s, id, other) || autoFriend(s.players, id, other)) || !them.name.toLowerCase().includes(q)) continue;
+        if (!them.name.toLowerCase().includes(q) || !(ordinary(s, id, other) || autoFriend(s.players, id, other))) continue;
         results.push({ id: other, name: them.name });
         if (results.length >= 100) break;
       }

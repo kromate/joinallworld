@@ -84,7 +84,7 @@ A title (up to 60 characters) and text (up to 240), through the chat text filter
 
 ## World
 
-A grant to everyone online or in a city (reason required, a preview of the count first, typed confirmation above the threshold). Runtime settings (`server/admin/settings.ts`), each defaulting to the environment: new sessions per address per hour, stored sessions the host takes, pictures in chat on/off (read by other features through `ctx.checks.setting('chatPictures')`), and the e-mail and push kill switches (the operator's own function). The "update is coming" notice from a button (`1-15` minutes, or end it): the same banner the signed announcer starts, which keeps working as it was. A time-boxed event flag (double wages) is **not** built: the rules engine has no such notion.
+A grant to everyone online or in a city (reason required, a preview of the count first, typed confirmation above the threshold). Runtime settings (`server/admin/settings.ts`), each defaulting to the environment: new sessions per address per hour, stored sessions the host takes, pictures in chat (off or friends; it starts at `CHAT_IMAGES`, which is off unless the host sets it, and turning it on needs the typed confirmation) and phone notifications for messages (`chatPush`, starting at `CHAT_PUSH`), both read by their features through `ctx.checks.setting`, and the e-mail and push kill switches (the operator's own function). The "update is coming" notice from a button (`1-15` minutes, or end it): the same banner the signed announcer starts, which keeps working as it was. A time-boxed event flag (double wages) is **not** built: the rules engine has no such notion.
 
 ## Moderation
 
@@ -102,7 +102,11 @@ Act on another admin or the founder (unless they are the founder); move more tha
 
 - **Ban**: every route (`buildRoutes`, `server/routes/index.ts`) answers 403 `account_banned` with a plain sentence the first time a request resolves a banned session, except under `/api/account/` (signing out). Open sockets are closed when the ban is made and a socket that opens later is refused. A ban is kept under the player's id and, for an account, under the account, so another of its characters is banned too. A **guest** is banned by session: clearing the cookie makes a new guest, which the per-address new-session limits slow down. A guest ban is a deterrent, not a wall.
 - **Mute**: the moderation module's own mute.
-- **Suspend pictures / calls**: stored and asked for through `ctx.checks.suspended(publicId, 'pictures' | 'calls')`. The features that send pictures and place calls call it before they do; nothing in this build calls it yet.
+- **Suspend pictures / calls**: stored and asked for through `ctx.checks.suspended(publicId, 'pictures' | 'calls')`. The features that send pictures and place calls call it before they do: a picture upload is refused with `pictures_blocked` and a call invite answers `unreachable` while the sanction lasts.
+
+## What other features put here (`server/admin/links.ts`)
+
+Through the extension points of `tools.ts` and `settings.ts`: dashboard cards for calls today (placed, connected direct, connected via relay, failed, relay credentials issued, relay configured), for the hosted guide (requests, outcomes, tokens, estimated cost, `companionAi`, and a "Test the AI guide" button that runs the function behind `POST /api/mod/companion-test`, as `POST /api/admin/companion/test`) and for pictures in chat (stored, reported, storage used, switched on or off). Moderation lists reported pictures (`GET /api/admin/moderation/pictures`, the picture itself at `.../pictures/:id`, `POST .../pictures/:id/act` { remove | restore }, `POST .../pictures/player` { player, allowed }), through the same service functions as `/api/mod/pictures` and `POST /api/mod/players/:id/pictures`.
 
 ## Security model
 

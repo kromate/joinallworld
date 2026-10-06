@@ -1,23 +1,5 @@
-// The settings the Settings tab lists and reads. Fetched with it: the first download needs only whether hints are on
-// (settingsModel.ts).
-import type { Reader } from './settingsModel.ts'
-
-export const SETTINGS_KEY = 'joinallworld-settings-v1'
-export interface Settings { sound: boolean; music: boolean }
-export const DEFAULTS: Settings = { sound: true, music: true }
-export type SettingId = keyof Settings
-export const OPTIONS: readonly { id: SettingId; label: string; hint: string }[] = [
-  { id: 'sound', label: 'Sound effects', hint: 'Taps, coins and arrivals.' },
-  { id: 'music', label: 'Music', hint: 'Background music in venues.' },
-]
-/** The saved preferences, with anything missing or malformed replaced by its default. */
-export function readSettings(storage: Reader): Settings {
-  let saved: unknown = null
-  try { saved = JSON.parse(storage?.getItem(SETTINGS_KEY) ?? 'null') } catch { saved = null }
-  const source = saved && typeof saved === 'object' && !Array.isArray(saved) ? saved as Record<string, unknown> : {}
-  const value = (key: SettingId): boolean => (typeof source[key] === 'boolean' ? source[key] : DEFAULTS[key])
-  return { sound: value('sound'), music: value('music') }
-}
+// The wording the Settings tab keeps. Fetched with it: the first download needs only whether hints are on (settingsModel.ts).
+// The sound preferences are in src/audio/settings.ts, listed by soundSettingsModel.ts.
 export const NOT_SAVED = 'This browser would not save the setting, so it lasts only until you close the tab.'
 export const WALLPAPER_NOT_SAVED = 'This browser would not save the wallpaper, so it lasts only until you close the tab.'
 export const SESSION_RULES: string[] = [

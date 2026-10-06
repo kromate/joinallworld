@@ -1,15 +1,14 @@
 <script setup lang="ts">
-// Settings tab of the Sim sheet: sound and music preferences, the device-session explanation and
+// Settings tab of the Sim sheet: the sound preferences, the device-session explanation and
 // the privacy switches the server already offers.
 //
-// Sound effects and Music are PREFERENCES ONLY in this build: the game ships no audio, so the
-// switches change nothing audible yet and the panel says so. They are stored on this device
-// (localStorage) and nowhere else; nothing here is sent to the server.
+// The sound preferences are stored on this device (localStorage, src/audio/settings.ts) and nowhere else;
+// nothing here is sent to the server.
 //
 // The account section (features/account/AccountSettings.vue) draws itself only when accounts are
 // configured on this server. A guest is still told what a device session is, so nobody mistakes it
 // for a password-protected account; that explanation is left out once the device is signed in.
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
@@ -23,8 +22,10 @@ import CallSettings from '../calls/CallSettings.vue'
 import AccountSettings from '../account/AccountSettings.vue'
 import { useAccount } from '../account/useAccount.ts'
 import { HINTS_KEY, hintsOn } from './settingsModel.ts'
-import { NOT_SAVED, OPTIONS, SESSION_RULES, SETTINGS_KEY, WALLPAPER_NOT_SAVED, readSettings } from './settingsOptions.ts'
-import type { SettingId } from './settingsOptions.ts'
+import { NOT_SAVED, SESSION_RULES, WALLPAPER_NOT_SAVED } from './settingsOptions.ts'
+import { SOUND_NOT_SAVED, SOUND_SLIDERS, SOUND_SWITCHES, change, percent, soundSummary } from './soundSettingsModel.ts'
+import { getSound, onSoundChange, setSound } from '../../../audio/settings.ts'
+import { play } from '../../../audio/play.ts'
 
 defineProps<{ params?: unknown }>()
 
@@ -34,16 +35,17 @@ const account = useAccount()
 const view = game.view
 function store(): Storage | null { try { return window.localStorage } catch { return null } }
 
-const settings = reactive(readSettings(store()))
+const sound = reactive({ ...getSound() })
+const stopSound = onSoundChange(() => { Object.assign(sound, getSound()) })
+onBeforeUnmount(stopSound)
+function changeSound(id: Parameters<typeof change>[0], value: boolean | number | string): void {
+  warning.value = setSound(change(id, value)) ? '' : SOUND_NOT_SAVED
+}
 const hints = ref(hintsOn(store()))
 const wall = ref(getWallpaper())
 const warning = ref('')
 const device = computed(() => (view.value.connected ? 'progress saved on the server' : `${linkWords(view.value)?.short ?? ''}: this is the last copy kept on this device`))
 
-function toggle(id: SettingId, on: boolean): void {
-  settings[id] = on
-  try { const target = store(); if (!target) throw new Error('no storage'); target.setItem(SETTINGS_KEY, JSON.stringify({ sound: settings.sound, music: settings.music })); warning.value = '' } catch { warning.value = NOT_SAVED }
-}
 function toggleHints(on: boolean): void {
   hints.value = on
   try { if (on) store()?.removeItem(HINTS_KEY); else store()?.setItem(HINTS_KEY, '1') } catch { warning.value = NOT_SAVED }
@@ -91,12 +93,15 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
       <label class="ui-row settings-row"><span class="ui-row-body"><b>Hints</b><small>Point at the next thing to tap, and say when something happens elsewhere on screen.</small></span>
         <span class="settings-state">{{ hints ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="hints" aria-label="Hints" @change="toggleHints(($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
     </div>
-    <h3 class="ui-section">Sound</h3>
+    <h3 class="ui-section">Sound <span class="settings-state">{{ soundSummary(sound) }}</span></h3>
     <div class="ui-rows">
-      <label v-for="option in OPTIONS" :key="option.id" class="ui-row settings-row"><span class="ui-row-body"><b>{{ option.label }}</b><small>{{ option.hint }}</small></span>
-        <span class="settings-state">{{ settings[option.id] ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="settings[option.id]" :aria-label="option.label" @change="toggle(option.id, ($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
+      <label v-for="option in SOUND_SWITCHES" :key="option.id" class="ui-row settings-row"><span class="ui-row-body"><b>{{ option.label }}</b><small>{{ option.hint }}</small></span>
+        <span class="settings-state">{{ sound[option.id] ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="sound[option.id]" :aria-label="option.label" @change="changeSound(option.id, ($event.target as HTMLInputElement).checked)"><i class="ui-switch" aria-hidden="true" /></label>
+      <label v-for="option in SOUND_SLIDERS" :key="option.id" class="ui-row settings-slider"><span class="ui-row-body"><b>{{ option.label }}</b><small>{{ option.hint }}</small>
+        <input type="range" min="0" max="100" step="5" :value="percent(sound[option.id])" :aria-label="option.label" :disabled="!sound.on" @input="changeSound(option.id, ($event.target as HTMLInputElement).value)" @change="play('tap')"></span>
+        <span class="settings-state">{{ percent(sound[option.id]) }}%</span></label>
     </div>
-    <p class="settings-note">No audio in this beta yet: your choice is saved on this device for when sound ships.</p>
+    <p class="settings-note">Saved on this device only. Sounds are made on your phone as you play; nothing is downloaded.</p>
     <p v-if="warning" class="ui-error" role="alert">{{ warning }}</p>
 
     <CallSettings />

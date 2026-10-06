@@ -1304,6 +1304,9 @@ export interface CityHousingContent {
 }
 
 /** Prose and gameplay catalogues. This object is loaded only when the city is entered or previewed. */
+/** How a city sounds, all optional: a short arrival motif (an instrument id from src/audio/data.ts MOTIFS), the city map's ambience (a SCAPES id) and a key in semitones. */
+export interface CitySound { motif: string; ambience?: string; key?: number }
+
 export interface CityContent<City extends string = string> {
   cityId: City
   /** Display prose, keyed by every local unit in this city's compact rules. */
@@ -1328,6 +1331,8 @@ export interface CityContent<City extends string = string> {
   carNicknames?: Readonly<Partial<Record<CarId, string>>>
   /** The colours of a home's room in this city (back wall, side wall and the two floor tiles, as #rrggbb); a city without one keeps the shared room colours. */
   homePalette?: HomePalette
+  /** Arrival motif and ambience; a city without one gets the neutral default. */
+  sound?: CitySound
   venues: readonly CityVenueContent<City>[]
   regulars: readonly CityRegularContent<City>[]
   workplaces: readonly CityWorkplaceContent[]

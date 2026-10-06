@@ -3,7 +3,7 @@
 // one small pill. The name opens the Sim sheet and the wallet opens the Bank. A change of the
 // balance is flashed and written out with its reason from the ledger; the flash is one CSS
 // animation that ends by itself, so nothing runs while the game is idle.
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, h, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
@@ -12,6 +12,8 @@ import InviteButton from '../growth/InviteButton.vue'
 import OnlinePill from './OnlinePill.vue'
 import AccountHud from './AccountHud.vue'
 import { useAccountLite } from '../account/useAccountLite.ts'
+// The speaker is fetched just after the bar paints (it keeps the sound preferences out of the first download); its place is held meanwhile.
+const SoundButton = defineAsyncComponent({ loader: () => import('./SoundButton.vue'), loadingComponent: { render: () => h('span', { class: 'hud-sound-slot', 'aria-hidden': 'true' }) }, delay: 0 })
 
 const { game, shell, menu } = useApp()
 const view = game.view
@@ -86,6 +88,7 @@ function onSaved(): void {
           <i aria-hidden="true"><GameIcon :name="saved.icon" :size="14" /></i><span>{{ saved.text }}</span>
         </span>
       </span>
+      <SoundButton />
       </span>
     </span>
     <InviteButton />
@@ -96,6 +99,8 @@ function onSaved(): void {
 
 <style scoped>
 .hud-bar { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 4; display: flex; align-items: center; gap: 12px; height: 48px; max-width: calc(100% - 24px); padding: 0 6px 0 18px; background: var(--c-surface); border: 1px solid #fff; border-radius: var(--r-pill); box-shadow: var(--e-2); white-space: nowrap; pointer-events: auto; color: var(--c-ink); font: 13px/1.35 var(--font); }
+.hud-sound-slot { display: inline-block; flex: none; width: 30px; height: var(--tap); }
+@media (max-width: 720px) { .hud-sound-slot { width: 100%; } }
 .hud-bar button { border: 0; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .hud-bar button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .hud-mark { display: none; flex: none; place-items: center; width: 26px; height: 26px; margin-left: -6px; border-radius: 9px; background: linear-gradient(150deg, #39c07a, #1d6b43); color: #fff; box-shadow: inset 0 1px 0 #ffffff59; }

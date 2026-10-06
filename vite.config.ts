@@ -94,6 +94,9 @@ export default defineConfig({
     if (scenes) return scenes[1] === 'ogun' ? `city-ogun-scenes-${scenes[2]}` : `city-${{ ibadan: 'ibadan', rivers: 'port-harcourt', fct: 'abuja', kano: 'kano' }[scenes[1] as 'ibadan' | 'rivers' | 'fct' | 'kano']}-scenes`
     // The table of which city needs which: nothing else is in it, so the page can ask for a city's scenes before the host has arrived.
     if (/\/src\/scene\/city-scenes\.ts$/.test(id)) return 'city-scenes'
+    // The sound engine (every recipe, the synth, the mixer) is fetched on the first tap; only src/audio/play.ts and settings.ts are in the first download.
+    if (/\/src\/audio\/(engine|director|data|synth|scape)\.ts$/.test(id)) return 'audio'
+    if (/\/src\/audio\/board\.ts$/.test(id)) return 'audio-board'
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.

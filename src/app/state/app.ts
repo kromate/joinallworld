@@ -36,6 +36,7 @@ import { useGame } from './game.ts'
 import type { Game } from './game.ts'
 import { buildRegistry } from './panels.ts'
 import { createShell } from './shell.ts'
+import { observe as observeSound, play as playSound } from '../../audio/play.ts'
 import { CAMERA_FRAME } from './cameraFrame.ts'
 import { warmCityScenes } from '../scene/loaders.ts'
 import { CAMERA_KEEP_MS, decideView, forgetViews, keepView, loadView } from './viewMemory.ts'
@@ -177,6 +178,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
 
   let lastPlot: string | null = null
   game.on('accepted', (state, previous, cause) => {
+    observeSound(state, game.view.value)
     const moved = previous.location !== state.location
     // The character is shared; the screen is this device's. A place that changed on another device is followed by the
     // scene and said in one calm line, and whatever is open here (a panel, the Map, the Phone) stays open.
@@ -400,6 +402,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
   // Closing the map and opening it again within half an hour keeps the view the player left it in; after longer, it opens on the city core.
   let mapLeftAt = 0
+  // Panels and sheets open and close with a soft sound; the sound hook is inert until the first tap.
+  watch(() => shell.sheet.value !== null, (open) => playSound(open ? 'open' : 'close'), { flush: 'post' })
   watch(game.mode, (mode, was) => {
     if (was === 'map' && mode !== 'map') mapLeftAt = Date.now()
     else if (mode === 'map' && was !== 'map' && mapLeftAt && Date.now() - mapLeftAt >= CAMERA_KEEP_MS) { mapLeftAt = 0; scene.city.value?.recentre() }

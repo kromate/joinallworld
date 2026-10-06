@@ -5,6 +5,7 @@
 // list). Every card is a real button, so the table works by keyboard and at 360 px. A Whot asks for
 // the shape you need first, unless it is your last card. Player names are text, never markup.
 import { computed, ref } from 'vue'
+import { play } from '../../../audio/play.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import BoardClock from './BoardClock.vue'
@@ -40,14 +41,14 @@ function tap(index: number): void {
   // A Whot needs a shape, unless it is the last card.
   if (item.s === 'whot' && (view.value.hand?.length ?? 0) > 1) { choosing.value = index; return }
   choosing.value = null
-  emit('play', { t: 'play', i: index })
+  play('card'); emit('play', { t: 'play', i: index })
 }
 function shape(name: WhotShape): void {
   const index = choosing.value
   choosing.value = null
-  if (index !== null) emit('play', { t: 'play', i: index, shape: name })
+  if (index !== null) { play('card'); emit('play', { t: 'play', i: index, shape: name }) }
 }
-function draw(): void { choosing.value = null; emit('play', { t: 'draw' }) }
+function draw(): void { choosing.value = null; play('card'); emit('play', { t: 'draw' }) }
 </script>
 
 <template>

@@ -805,7 +805,7 @@ const base=buildCityContent({scenes:KANO_SCENES,...{
 },origin:KANO_MAP_ORIGIN,bounds:KANO_PLAY_BOUNDS,venues})
 // Rooms in Kano: earth-plaster walls in ochre over a clay-brown floor.
 const KANO_HOME_PALETTE = { back: '#e4c79c', left: '#d0aa78', floor: ['#cda67c', '#a8825a'] as const }
-export const KANO_CONTENT=Object.freeze({...base,homePalette:KANO_HOME_PALETTE,workplaces:base.workplaces.map(workplace=>{const job=workplace.definition;return job.id==='dj'&&job.track?{...workplace,definition:{...job,ladder:job.ladder.map(rung=>({...rung,role:rung.role==='Club DJ'?'Programme DJ':rung.role}))}}:workplace}),localModeZones:[
+export const KANO_CONTENT=Object.freeze({...base,homePalette:KANO_HOME_PALETTE,sound:{motif:'plucked-string',ambience:'harmattan'},workplaces:base.workplaces.map(workplace=>{const job=workplace.definition;return job.id==='dj'&&job.track?{...workplace,definition:{...job,ladder:job.ladder.map(rung=>({...rung,role:rung.role==='Club DJ'?'Programme DJ':rung.role}))}}:workplace}),localModeZones:[
   {
     "mode": "keke",
     "venueIds": [

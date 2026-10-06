@@ -351,6 +351,7 @@ export const IBADAN_CONTENT: CityContent<'ibadan'> = Object.freeze({
     },
   },
   // Laterite-warm walls and a darker clay floor.
+  sound: { motif: 'talking-drum', ambience: 'calm', key: 2 },
   homePalette: { back: '#e0c2a2', left: '#cfa98a', floor: ['#cdb79a', '#a98b6c'] as const },
   carNicknames: { 'marina-v6': 'Ring Road flex', 'atlantic-x': 'Weekend special' },
   lotteryWording: Object.fromEntries(Object.values(LOTTERY).map(outcome => [outcome.id, {

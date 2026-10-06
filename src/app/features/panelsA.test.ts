@@ -32,7 +32,6 @@ import { itemControl, nextTrying, triedItem } from './life/boutiqueModel.ts'
 import { feelingsTotal, needLevel, skillRow } from './sim/simModel.ts'
 import { nameProblem, saveFailure, saveState } from './sim/profileModel.ts'
 import { hintsOn } from './sim/settingsModel.ts'
-import { DEFAULTS, readSettings } from './sim/settingsOptions.ts'
 import { money } from '../ui/format.ts'
 import type { BoutiqueItem, CareerView, JobListing } from '../../types/view.ts'
 
@@ -246,14 +245,7 @@ test('sim tabs: need levels, the feelings total, skill segments, the name rules 
   assert.equal(saveFailure({ message: 'boom' }), 'Your name could not be saved: boom. Try again.')
 })
 
-test('settings: the preferences are read the way the existing Settings tab reads them, and hints are on unless switched off', () => {
-  // The same cases and answers as the existing tab's readSettings (src/ui/panels/settings.js): anything missing or malformed is its default.
-  const cases: [string | null, { sound: boolean; music: boolean }][] = [
-    [null, { sound: true, music: true }], ['{"sound":false}', { sound: false, music: true }], ['{"sound":"no","music":false}', { sound: true, music: false }],
-    ['not json', { sound: true, music: true }], ['[1]', { sound: true, music: true }], ['{"sound":true,"music":true}', { sound: true, music: true }],
-  ]
-  for (const [saved, expected] of cases) assert.deepEqual(readSettings({ getItem: () => saved }), expected, String(saved))
-  assert.deepEqual(readSettings(null), DEFAULTS)
+test('settings: hints are on unless switched off', () => {
   assert.equal(hintsOn({ getItem: () => '1' }), false); assert.equal(hintsOn({ getItem: () => null }), true)
 })
 

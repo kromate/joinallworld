@@ -19,6 +19,7 @@ import { viewLife } from '../../life.ts'
 import { onSystemsCompleted } from '../../game/registry.ts'
 import { contentFor } from '../../game/cities/runtime.ts'
 import { toast as sharedToast } from './toasts.ts'
+import { play as playSound } from '../../audio/play.ts'
 import { telemetry as realTelemetry } from '../../telemetry/index.ts'
 
 const clockFormat = new Intl.DateTimeFormat('en-NG', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true })
@@ -183,6 +184,7 @@ export function createGame(options: GameOptions = {}): Game {
       measured?.(result)
       publish()
       if (!result.ok && result.reason && result.code !== 'busy') toast(result.reason, 'error')
+      else if (result.ok) playSound(`cmd:${type}`)
       return result
     } finally { saving.value -= 1 }
   }

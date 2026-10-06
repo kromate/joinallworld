@@ -42,6 +42,7 @@ import type { ErrorFrame, PresenceFrame, PulseFrame } from '../../../types/proto
 import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
 import type { ApiError } from '../../types/client.ts'
 import type { PanelApi } from '../../types/panel.ts'
+import { play } from '../../../audio/play.ts'
 
 /** The quick reconnects, each after twice the wait of the one before; after them the socket is tried every SLOW_RETRY_MS. */
 const MAX_ATTEMPTS = 6
@@ -406,8 +407,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
           if (state.openConv === message.conv.id && !thread.loaded) void openThread(message.conv.id)
         }
         const mine = message.message.from?.id === state.me?.me.id
-        if (state.openConv === message.conv.id) { if (!mine) void markRead(message.conv.id) }
-        else if (!mine && !message.message.sys) api?.toast(`New message from ${message.message.from?.name ?? message.conv.name}`)
+        if (state.openConv === message.conv.id) { if (!mine) { void markRead(message.conv.id); play('message') } }
+        else if (!mine && !message.message.sys) { play('message'); api?.toast(`New message from ${message.message.from?.name ?? message.conv.name}`) }
         refresh()
         return
       }
@@ -415,7 +416,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         if (!message.update) return
         const update = message.update
         if (state.me) state.me.updates = [update, ...state.me.updates.filter((item) => item.id !== update.id)]
-        api?.toast(String(update.text ?? ''))
+        play('notify'); api?.toast(String(update.text ?? ''))
         refresh()
         return
       }
@@ -455,6 +456,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
       case 'people-presence': {
         const friend = state.me?.friends.find((item) => item.id === message.id)
         // A friend the live frames report on is written from those; this older frame only books the follow-up read.
+        if (friend && message.status === 'online') play('online')
         if (friend && !state.live.friends.has(friend.id)) { friend.status = message.status === 'online' ? 'away' : 'reconnecting'; delete friend.venue; refresh() }
         // One follow-up read settles "reconnecting" into online or offline once the grace period is over.
         env.setTimeout(() => { void sync(); if (state.people) void loadPeople() }, message.status === 'online' ? 1500 : 22000)
@@ -485,6 +487,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         void sync()
         return
       case 'social-sync': case 'friend-request': case 'friend-accepted': case 'invite-knock': case 'invite-house':
+        if (message.type === 'friend-request' || message.type === 'friend-accepted' || message.type === 'invite-knock') play('notify')
         if (message.type === 'social-sync' || message.type === 'friend-request' || message.type === 'friend-accepted') { profileVersion += 1; state.profiles.clear() }
         if (message.type === 'social-sync') refreshLife()
         void sync()

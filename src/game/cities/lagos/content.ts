@@ -55,6 +55,7 @@ export const LAGOS_CONTENT: CityContent<'lagos'> = Object.freeze({
   events: EVENTS_CALENDAR,
   starterGoals: STARTER_GOALS,
   wishes: WISHES,
+  sound: { motif: 'talking-drum', ambience: 'city' },
   radioVenueIds: RADIO.venues,
   billboardRoads: BILLBOARDS.slots,
   tablePlaces: Object.freeze(TABLES.map((table) => Object.freeze({

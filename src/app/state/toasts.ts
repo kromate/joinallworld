@@ -3,6 +3,7 @@
 import { ref } from 'vue'
 import type { ToastKind } from '../types/panel.ts'
 import { stripLeadEmoji } from '../../ui/dom.ts'
+import { play } from '../../audio/play.ts'
 
 export interface ToastItem { id: number; text: string; kind: ToastKind }
 
@@ -36,6 +37,8 @@ export function createToasts(later: (run: () => void, ms: number) => unknown = (
     if (isDone && items.value.some((item) => /^goal complete/i.test(plain(item.text)))) return
     if (isGoal) items.value = items.value.filter((item) => !(item.kind === 'info' && / completed\.$/.test(item.text)))
     const showing = items.value.find((item) => item.text === body)
+    // Money has its own sound (from the ledger), a finished goal its own phrase; the rest are a soft tick, a chime or a knock.
+    if (!showing) play(isGoal ? 'goal' : tone === 'error' ? 'refused' : tone === 'good' ? 'success' : tone === 'info' ? 'toast' : '')
     if (showing) { if (tone !== 'info') showing.kind = tone; return }
     const item: ToastItem = { id: nextId++, text: body, kind: tone }
     items.value = [...items.value, item].slice(-MAX_TOASTS)

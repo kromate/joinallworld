@@ -38,14 +38,14 @@ rules, the answer list and the everyday additions are original to this project.
 | --- | --- |
 | `allowed5.ts` | every accepted five-letter guess, sorted, 5 characters each, no separator |
 | `answers.ts` | the daily answers in a fixed shuffled order, 5 characters each, no separator |
-| `dictionary.ts` | the 2 to 13 letter dictionary, packed: per length sorted, front-coded, raw-deflated, base64 (about 1 MB); `FIRST_LENGTH`, `WORD_COUNTS`, `PACKED` |
+| `dictionary.ts` | the 2 to 13 letter dictionary, packed: per length sorted, front-coded, raw-deflated, text encoded (about 1 MB); `FIRST_LENGTH`, `WORD_COUNTS`, `PACKED` |
 | `letters.ts` | letter counts over dictionary words of 2 to 8 letters plus the answers |
 
 `guess.ts` (about 70 KB raw) is safe for the browser; `dict.ts` holds the packed dictionary (about 1.1 MB raw, 347,726 words once unpacked) and is for the server host only.
 
 The deploy pipeline takes at most 5 MiB per file, so the dictionary is not stored as plain text in the Worker script. Each word is one character
-(48 plus the number of leading letters it shares with the word before it) and then its remaining letters; the stream is deflated and base64 encoded
-(`scripts/words/pack.ts`, `src/words/pack.ts`). Plain fixed-width text deflated is about 1.55 MB as base64; front coding brings it to about 1.08 MB.
+(48 plus the number of leading letters it shares with the word before it) and then its remaining letters; the stream is deflated and text encoded (85 characters, five for every four bytes)
+(`scripts/words/pack.ts`, `src/words/pack.ts`). Plain fixed-width text deflated is about 1.55 MB as base64; front coding brings it to about 1.08 MB, and the denser text encoding to about 1.01 MB.
 `node --experimental-strip-types scripts/words/build-lists.ts --check` fails when the committed data differs from what the source list would produce
 (or, on a machine without the list, when the packed dictionary is damaged); `src/words/pack.test.ts` runs it.
 

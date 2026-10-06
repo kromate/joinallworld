@@ -1,7 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
-import { PREFIX_BASE, unpackFrontCoded } from './pack.ts'
+import { PREFIX_BASE, decodeText, unpackFrontCoded } from './pack.ts'
+import { encodeText } from '../../scripts/words/pack.ts'
 import { isReady, isWord, packedOf, ready } from './dict.ts'
 
 test('front-coded bytes unpack to one fixed-width string per length', () => {
@@ -32,4 +33,16 @@ test('the list is not unpacked until ready() is awaited, and then it answers', a
 test('the committed word data matches its generator', () => {
   const run = spawnSync(process.execPath, ['--experimental-strip-types', 'scripts/words/build-lists.ts', '--check'], { encoding: 'utf8' })
   assert.equal(run.status, 0, run.stderr || run.stdout)
+})
+
+test('the text encoding round-trips every length of input and refuses bad characters', () => {
+  for (let size = 0; size <= 40; size++) {
+    const bytes = Uint8Array.from({ length: size }, (_, i) => (i * 37 + size * 11) & 255)
+    assert.deepEqual(decodeText(encodeText(bytes)), bytes, `size ${size}`)
+  }
+  const edges = Uint8Array.from([0, 0, 0, 0, 255, 255, 255, 255, 255, 0, 255, 0, 1])
+  assert.deepEqual(decodeText(encodeText(edges)), edges)
+  assert.ok(!/['"\\`]/.test(encodeText(Uint8Array.from({ length: 4096 }, (_, i) => (i * 131) & 255))))
+  assert.throws(() => decodeText('ab\u00e9de'), /damaged/)
+  assert.throws(() => decodeText('abcdea'), /damaged/)
 })

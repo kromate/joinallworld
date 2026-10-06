@@ -1,10 +1,10 @@
-// Packs the tile-game dictionary for the Worker script: front-coded (see src/words/pack.ts), deflated, base64. Deterministic for a given
+// Packs the tile-game dictionary for the Worker script: front-coded (see src/words/pack.ts), deflated, text encoded. Deterministic for a given
 // Node build; the check below compares decoded words, never the compressed bytes, so a different zlib cannot fail it.
 import { deflateRawSync, inflateRawSync } from 'node:zlib'
-import { PREFIX_BASE, unpackFrontCoded } from '../../src/words/pack.ts'
+import { ALPHABET, PREFIX_BASE, decodeText, unpackFrontCoded } from '../../src/words/pack.ts'
 
 /** `byLength` holds the sorted words of each length; lengths must run from `first` upward with no gap. */
-export function packDictionary(byLength: ReadonlyMap<number, readonly string[]>): { first: number; counts: number[]; base64: string } {
+export function packDictionary(byLength: ReadonlyMap<number, readonly string[]>): { first: number; counts: number[]; text: string } {
   const lengths = [...byLength.keys()].sort((a, b) => a - b)
   const first = lengths[0] ?? 0
   const parts: string[] = []
@@ -22,12 +22,26 @@ export function packDictionary(byLength: ReadonlyMap<number, readonly string[]>)
     }
   })
   const packed = deflateRawSync(Buffer.from(parts.join('')), { level: 9, memLevel: 9 })
-  return { first, counts, base64: packed.toString('base64') }
+  return { first, counts, text: encodeText(packed) }
+}
+
+/** The inverse of `decodeText`: five characters of ALPHABET for every four bytes, and n + 1 characters for a last group of n bytes. */
+export function encodeText(bytes: Uint8Array): string {
+  let text = ''
+  for (let at = 0; at < bytes.length; at += 4) {
+    const size = Math.min(4, bytes.length - at)
+    let value = 0
+    for (let i = 0; i < 4; i++) value = value * 256 + (i < size ? (bytes[at + i] ?? 0) : 0)
+    let group = ''
+    for (let i = 0; i < 5; i++) { group = ALPHABET[value % 85] + group; value = Math.floor(value / 85) }
+    text += size === 4 ? group : group.slice(0, size + 1)
+  }
+  return text
 }
 
 /** Decode a committed module's data back to one string per length. */
-export function unpackDictionary(first: number, counts: readonly number[], base64: string): Record<number, string> {
-  return unpackFrontCoded(new Uint8Array(inflateRawSync(Buffer.from(base64, 'base64'))), first, counts)
+export function unpackDictionary(first: number, counts: readonly number[], text: string): Record<number, string> {
+  return unpackFrontCoded(new Uint8Array(inflateRawSync(decodeText(text))), first, counts)
 }
 
 /** Problems with the words themselves: width, order, letters, duplicates. Empty when the list is sound. */
@@ -47,9 +61,9 @@ export function problemsWith(lists: Readonly<Record<number, string>>): string[] 
   return problems
 }
 
-export const moduleSource = (packed: { first: number; counts: number[]; base64: string }): string =>
-  `// Accepted words of 2 to 13 letters: sorted per length, front-coded, deflated (raw) and base64 encoded. Unpacked by src/words/pack.ts.\n` +
+export const moduleSource = (packed: { first: number; counts: number[]; text: string }): string =>
+  `// Accepted words of 2 to 13 letters: sorted per length, front-coded, deflated (raw) and text encoded (85 characters, five for four bytes). Unpacked by src/words/pack.ts.\n` +
   `export const FIRST_LENGTH = ${packed.first}\n` +
   `/** How many words there are of length FIRST_LENGTH, FIRST_LENGTH + 1, and so on. */\n` +
   `export const WORD_COUNTS: readonly number[] = [${packed.counts.join(', ')}]\n` +
-  `export const PACKED = '${packed.base64}'\n`
+  `export const PACKED = '${packed.text}'\n`

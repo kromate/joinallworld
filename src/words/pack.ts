@@ -28,3 +28,28 @@ export function unpackFrontCoded(data: Uint8Array, first: number, counts: readon
   if (at !== data.length) throw new Error('the packed word list is damaged')
   return result
 }
+
+/** The 85 characters of the text encoding: printable ASCII from `!`, leaving out the quote marks, the backslash and the back tick so the text sits safely in a string literal. */
+export const ALPHABET = Array.from({ length: 94 }, (_, i) => String.fromCharCode(33 + i)).filter((c) => !`'"\\\`<>&`.includes(c)).slice(0, 85).join('')
+
+/** Decode text made of ALPHABET (five characters for four bytes; a last short group of n characters is n - 1 bytes). */
+export function decodeText(text: string): Uint8Array {
+  const digit = new Uint8Array(128).fill(255)
+  for (let i = 0; i < ALPHABET.length; i++) digit[ALPHABET.charCodeAt(i)] = i
+  const rest = text.length % 5
+  const out = new Uint8Array(Math.floor(text.length / 5) * 4 + (rest ? rest - 1 : 0))
+  if (rest === 1) throw new Error('the packed word list is damaged')
+  for (let at = 0, to = 0; at < text.length; at += 5, to += 4) {
+    let value = 0
+    const size = Math.min(5, text.length - at)
+    for (let i = 0; i < 5; i++) {
+      const d = i < size ? (digit[text.charCodeAt(at + i)] ?? 255) : 84
+      if (d === 255) throw new Error('the packed word list is damaged')
+      value = value * 85 + d
+    }
+    if (value >= 4294967296) throw new Error('the packed word list is damaged')
+    const take = Math.min(4, out.length - to)
+    for (let i = 0; i < take; i++) out[to + i] = (value >>> (24 - 8 * i)) & 255
+  }
+  return out
+}

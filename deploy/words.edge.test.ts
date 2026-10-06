@@ -1,5 +1,5 @@
 // The word list on the Worker host. The list (about 3.2 MB once inflated) is a server-only module inside the Worker's script, stored
-// front-coded, deflated and base64 encoded (about 1 MB). These tests keep four promises: every file of the deploy package stays under the
+// front-coded, deflated and text encoded (about 1 MB). These tests keep four promises: every file of the deploy package stays under the
 // pipeline's per-file limit, evaluating the script at start-up does not inflate or touch the list, the list is inflated once by `ready()`
 // within a generous bound on both hosts (Node and the Worker runtime), and lookups are right for every length. Module evaluation time in
 // Node is the proxy for the platform's start-up CPU limit (about 400 ms), which is far above these budgets.

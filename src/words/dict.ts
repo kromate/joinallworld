@@ -1,10 +1,10 @@
 // Word lookups. The tile-game dictionary (about 3.2 MB, 2 to 13 letters: the board is 13 across) is stored deflated inside the script
-// (about 1 MB) and inflated the first time `ready()` is awaited, never at module load. Import this module only from the server host;
+// (about 1 MB as text) and inflated the first time `ready()` is awaited, never at module load. Import this module only from the server host;
 // browser code should import ./guess.ts instead.
 import { FIRST_LENGTH, PACKED, WORD_COUNTS } from './data/dictionary.ts'
 import letterCounts from './data/letters.ts'
 import { hasFixedWidth } from './guess.ts'
-import { unpackFrontCoded } from './pack.ts'
+import { decodeText, unpackFrontCoded } from './pack.ts'
 
 export { ANSWER_COUNT, answerAt, answerCount, isGuess5 } from './guess.ts'
 
@@ -15,10 +15,7 @@ let lists: Readonly<Record<number, string>> | null = null
 let pending: Promise<void> | null = null
 
 async function inflate(): Promise<Uint8Array> {
-  const text = atob(PACKED)
-  const bytes = new Uint8Array(text.length)
-  for (let i = 0; i < text.length; i++) bytes[i] = text.charCodeAt(i)
-  const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))
+  const stream = new Blob([decodeText(PACKED)]).stream().pipeThrough(new DecompressionStream('deflate-raw'))
   return new Uint8Array(await new Response(stream).arrayBuffer())
 }
 

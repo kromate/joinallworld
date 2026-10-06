@@ -228,13 +228,11 @@ overview, and the Durable Object's CPU time and memory in the platform's dashboa
 
 In order. Each step is worth doing by itself.
 
-1. **Store the big collections per entry.** `social.players`, `social.convs`, `social.houses`, `social.pending`,
-   `civic.cities.*.residents` and `growth.players` become rows keyed by player or conversation, read and written like
-   sessions are (the store already has the lazy keyed map sessions use). A request then costs what it touches. This
-   removes the largest remaining cost, the memory risk, and the rows a small change rewrites today (a change near the
-   start of a collection shifts every 400,000-character part after it). It needs a one-time, restartable split of the
-   stored JSON into rows, the old rows kept until the new ones have been read back equal. This is the step that lets
-   `MAX_ACTIVE_SESSIONS` rise.
+1. **Store the big collections per entry.** Done in code, off by default: `social`, `growth`, `civic` and `business` can be kept
+   as a root and one row per player, conversation, resident or shop, read and written like sessions are, so a request costs what
+   it touches. The move, the rollout (shadow, switch, way back, safety copy) and the measurements are in
+   [STORAGE.md](STORAGE.md). Until the switch is made on the live store this step is not complete, and `MAX_ACTIVE_SESSIONS`
+   should not be raised.
 2. **One socket per page.** The game socket and the social socket carry disjoint message types and are already served
    by the same handlers; one connection halves the sockets, the heartbeat frames and the session renewals.
 3. **Rooms of bounded size.** Done: see "Room groups" below.

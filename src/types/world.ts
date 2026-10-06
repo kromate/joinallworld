@@ -117,8 +117,8 @@ export type WorldPeopleResponse =
   | { items: WorldPerson[]; next: number | null }
   | { items: []; next: null; short: true }
 
-/** A standing location-confirmed badge as a viewer may see it: `lga` and `name` are null for a player hidden from directories (docs/LOCATION.md). */
-export interface WorldBadge { lga: LgaId | null; name: string | null }
+/** A standing location-confirmed badge: the local government the player lives in, confirmed by their own device (docs/LOCATION.md). */
+export interface WorldBadge { lga: LgaId; name: string }
 /** POST /api/world/badges: the badges of up to 40 players, only those with one. */
 export interface WorldBadgesResponse { badges: Record<string, WorldBadge> }
 export interface WorldPulseResponse { online: number; visits: number; today: number; cities: Record<string, number> }

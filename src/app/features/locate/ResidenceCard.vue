@@ -56,7 +56,7 @@ async function off(): Promise<void> {
     <p class="ui-note">{{ BADGE_NOTE }}</p>
     <template v-if="residence.confirmed">
       <p><ResidentBadge :id="me" long /></p>
-      <p class="ui-note">Other players see the name of your {{ residence.unit }} (they can already see it in the directory) and that your own device confirmed it; if you are hidden from the directory they see only "Location-confirmed". Nobody sees where you are. It lasts until {{ until }} ({{ residence.days }} days) or until you move your main home.</p>
+      <p class="ui-note">Other players see the name of your {{ residence.unit }} and that your own device confirmed it, wherever they see your card or name. Nobody sees where you are. It lasts until {{ until }} ({{ residence.days }} days) or until you move your main home.</p>
       <label class="residence-switch"><input type="checkbox" role="switch" checked :disabled="offline || switching" data-residence-switch @change="off"> Show my location-confirmed badge</label>
       <button v-if="locateUi.step === 'rest'" type="button" class="ui-button is-block" :disabled="offline" data-residence-again @click="explain">Check again</button>
     </template>

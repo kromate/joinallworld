@@ -1,8 +1,7 @@
 <script setup lang="ts">
 // A small "location-confirmed" tag beside a player's name (the pattern of FounderTag): a pin with a tick and the local government
-// the player already lives in. Drawn only where the server said a confirmation stands, and only with the name the viewer could
-// already see in the directory; a player who is hidden from directories shows a plain "Location-confirmed". Never a distance,
-// a direction or anything that follows the person: it is a fact about one past moment, confirmed by the player's own device.
+// the player lives in, shown to everyone who sees the player. Drawn only where the server said a confirmation stands. Never a
+// distance, a direction or anything that follows the person: it is a fact about one past moment, confirmed by the player's own device.
 import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { badgeCache } from './badgeFeed.ts'

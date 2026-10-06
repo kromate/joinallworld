@@ -5,7 +5,7 @@ import type { JourneyDevice, JourneyHost } from './cityJourney.ts'
 /**
  * The location-confirmed badge played against a real host (docs/LOCATION.md): two players in Ikeja. The first confirms with the
  * one action the device sends, `estate.confirm-residence { lga, ok: true }`, which is exactly-once; the second sees the badge by
- * name; a player hidden from directories shows only a generic tick; the daily limit holds; switching off removes it at once.
+ * name; the daily limit holds; switching off removes it at once.
  * The same run is used on the Node server (server/residence.test.ts) and on the Worker (deploy/residence.edge.test.ts).
  */
 export interface ResidenceResult { sent: Record<string, unknown>; stored: Record<string, unknown> | null; limitedAfter: number }
@@ -53,10 +53,8 @@ export async function residenceJourney(host: Pick<JourneyHost, 'now' | 'request'
   assert.deepEqual(await badges(kunle, [ada.id, kunle.id]), { [ada.id]: { lga: 'ikeja', name: 'Ikeja' } })
   assert.deepEqual(await badges(ada, [ada.id]), { [ada.id]: { lga: 'ikeja', name: 'Ikeja' } })
 
-  // Hidden from directories: only the generic tick. Listed again: the name is back.
+  // Everyone who can see the player sees the name, whatever the directory choice.
   assert.equal((await host.request('/api/civic/prefs', { directory: false }, ada.cookie)).status, 200)
-  assert.deepEqual(await badges(kunle, [ada.id]), { [ada.id]: { lga: null, name: null } })
-  assert.equal((await host.request('/api/civic/prefs', { directory: true }, ada.cookie)).status, 200)
   assert.deepEqual(await badges(kunle, [ada.id]), { [ada.id]: { lga: 'ikeja', name: 'Ikeja' } })
 
   // Five a day, then a refusal that says why.

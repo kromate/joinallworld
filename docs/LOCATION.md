@@ -31,7 +31,7 @@ It ends when any of these happens: the player switches the badge off (the field 
 
 ## Who sees what
 
-The badge reads "Lives in <Local Government> · confirmed by their device"; on cards and lists it is a small pin-with-tick and the name. The name of a player's local government is already public: players are listed in the directory of the local government they live in (`GET /api/world/lga/:id/people`) unless they chose to be hidden. So a listed player shows the name, and a player hidden from directories shows only a plain "Location-confirmed", to everyone. Nothing is shown about distance, direction, "nearby" or a last position, and nothing changes as the person moves.
+The badge reads "Lives in <Local Government> · confirmed by their device"; on cards and lists it is a small pin-with-tick and the name. Everyone who can see the player's card or list entry sees it, strangers included: the player turned it on, and it only names the local government they live in. Nothing is shown about distance, direction, "nearby" or a last position, and nothing changes as the person moves.
 
 It appears on the player card, People, Messages headers, Neighbours (with an optional "Location-confirmed only" filter), governor candidates and shop owner lines. It never gates anything: voting, standing for office and every other feature work without it. There is no reward for confirming.
 

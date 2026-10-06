@@ -32,7 +32,7 @@ test('a confirmation lapses after 90 days for other players too, with no one doi
   assert.ok(ada.id in await read(), 'day 89: still standing')
   f.advance(2 * DAY)
   assert.deepEqual(await read(), {}, 'day 91: gone, with no one having to do anything')
-  assert.equal(badgeOf(undefined, false, f.now()), null)
+  assert.equal(badgeOf(undefined, f.now()), null)
 })
 
 test('the page may ask for the device location itself, and no embedded page may', () => {

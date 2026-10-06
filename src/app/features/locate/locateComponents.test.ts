@@ -100,7 +100,7 @@ test('confirmed: the badge, until when, the switch that turns it off, and a way 
   assert.match(html, /checked[^>]*data-residence-switch/)
   assert.ok(words.includes('Show my location-confirmed badge'))
   assert.ok(words.includes('Lives in Ikeja · confirmed by your device'))
-  assert.ok(words.includes('Nobody sees where you are') && words.includes('if you are hidden from the directory they see only "Location-confirmed"'))
+  assert.ok(words.includes('Nobody sees where you are'))
   assert.match(words, /lasts until \d+ \w+ 2026 \(90 days\)/i)
   assert.match(html, /data-residence-again/)
   assert.ok(!html.includes('data-residence-start'))
@@ -113,23 +113,18 @@ test('a card for a life with no home anywhere draws nothing', async () => {
   try { assert.equal(text(await render(CARD)), '') } finally { home(false) }
 })
 
-test('the tag: the local government for a listed player, a plain tick for a hidden one, nothing without one; wording in the tooltip', async () => {
+test('the tag: the local government with the honest wording, nothing without one; wording in the tooltip', async () => {
   cache['pub-ada'] = { lga: 'ikeja', name: 'Ikeja' }
-  cache['pub-hidden'] = { lga: null, name: null }
   cache['pub-none'] = null
   const named = await render(BADGE, { id: 'pub-ada' })
   assert.match(named, /data-resident-badge/)
   assert.match(named, /aria-label="Lives in Ikeja · confirmed by their device"/)
   assert.match(named, /title="Lives in Ikeja · confirmed by their device"/)
   assert.equal(text(named), 'Ikeja')
-  const generic = await render(BADGE, { id: 'pub-hidden' })
-  assert.equal(text(generic), 'Location-confirmed')
-  assert.match(generic, /aria-label="Location-confirmed · confirmed by their device"/)
-  assert.ok(!generic.includes('Ikeja'), 'a hidden player\'s local government is never named')
   assert.equal(text(await render(BADGE, { id: 'pub-none' })), '')
   assert.equal(text(await render(BADGE, { id: 'pub-unasked' })), '')
   assert.equal(text(await render(BADGE, { id: 'pub-ada', long: true })), 'Lives in Ikeja · confirmed by their device')
-  for (const html of [named, generic]) assert.ok(!/verified|nearby|distance|last seen/i.test(html))
+  for (const html of [named]) assert.ok(!/verified|nearby|distance|last seen/i.test(html))
 })
 
 test('the own tag follows the life at once: on while a confirmation stands, gone the moment it is off', async () => {

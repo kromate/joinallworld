@@ -32,7 +32,7 @@ const settle = (): Promise<void> => new Promise((resolve) => setImmediate(resolv
 test('the players on a screen are asked about in one request, and again on a timer, so a switched-off badge goes without a reload', async () => {
   const time = clock()
   const asked: string[][] = []
-  let live: Record<string, WorldBadge> = { a: { lga: 'ikeja', name: 'Ikeja' }, b: { lga: null, name: null } }
+  let live: Record<string, WorldBadge> = { a: { lga: 'ikeja', name: 'Ikeja' }, b: { lga: 'agege', name: 'Agege' } }
   const cache: Record<string, WorldBadge | null> = {}
   const feed = createBadgeFeed({
     fetchJson: (async (path: string, options?: { body?: { ids: string[] } }) => { assert.equal(path, '/api/world/badges'); asked.push(options?.body?.ids ?? []); return { badges: Object.fromEntries((options?.body?.ids ?? []).filter((id) => id in live).map((id) => [id, live[id]])) } }) as never,
@@ -42,8 +42,8 @@ test('the players on a screen are asked about in one request, and again on a tim
   assert.deepEqual(asked, [], 'nothing is asked while the list is still being drawn')
   time.advance(100); await settle()
   assert.deepEqual(asked, [['a', 'b', 'c']])
-  assert.deepEqual(cache, { a: { lga: 'ikeja', name: 'Ikeja' }, b: { lga: null, name: null }, c: null })
-  live = { b: { lga: null, name: null } }
+  assert.deepEqual(cache, { a: { lga: 'ikeja', name: 'Ikeja' }, b: { lga: 'agege', name: 'Agege' }, c: null })
+  live = { b: { lga: 'agege', name: 'Agege' } }
   time.advance(REFRESH_MS); await settle()
   assert.equal(cache.a, null, 'the badge was switched off: it is gone at the next round')
   assert.equal(asked.length, 2)
@@ -85,12 +85,10 @@ test('a long list is asked in batches the server accepts, and a failed round kee
 })
 
 test('the wording says what a device can say, and never "verified"', () => {
-  const named: WorldBadge = { lga: 'ikeja', name: 'Ikeja' }, generic: WorldBadge = { lga: null, name: null }
+  const named: WorldBadge = { lga: 'ikeja', name: 'Ikeja' }
   assert.equal(badgeLong(named), 'Lives in Ikeja · confirmed by their device')
   assert.equal(badgeLong(named, true), 'Lives in Ikeja · confirmed by your device')
-  assert.equal(badgeLong(generic), 'Location-confirmed · confirmed by their device')
   assert.equal(badgeShort(named), 'Ikeja')
-  assert.equal(badgeShort(generic), 'Location-confirmed')
   assert.equal(BADGE_NOTE, 'Optional. You can live anywhere in Allworld wherever you are in the real world.')
-  for (const text of [badgeLong(named), badgeLong(generic), badgeShort(generic), BADGE_NOTE]) assert.ok(!/verif|identity|nearby|distance|km\b|last seen/i.test(text), text)
+  for (const text of [badgeLong(named), BADGE_NOTE]) assert.ok(!/verif|identity|nearby|distance|km\b|last seen/i.test(text), text)
 })

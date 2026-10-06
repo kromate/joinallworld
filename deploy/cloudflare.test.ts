@@ -1104,7 +1104,7 @@ test('short addresses: /games, /abuja and an unknown path get their own head fro
   assert.deepEqual([unknown.status, tag(body, 'robots'), title(body)], [200, 'noindex,follow', title(index)]);
   const sitemap = await (await f.fetch('/sitemap.xml')).text();
   for (const path of ['/games', '/games/chess', '/lagos', '/abuja', '/kano', '/port-harcourt', '/ogun']) assert.ok(new RegExp(`<loc>https?://[^<]+${path}</loc>`).test(sitemap), path);
-  assert.ok(!sitemap.includes('/kaduna<'), 'a city that is not open is not listed');
+  assert.ok(sitemap.includes('/kaduna<'), 'a capital that opened is listed');
 });
 
 // ---- accounts (server/routes/auth.ts) on the Worker: the same routes over the SQLite tables ----

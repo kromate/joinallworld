@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "imports": {
+    "#city-map/*": {
+      "types": "./src/game/cities/*/map.ts",
+      "browser": "./src/game/cities/*/map.ts",
+      "node": "./src/game/cities/*/map.ts",
+      "default": "./src/game/cities/map-unavailable.ts"
+    }
+  },
   "scripts": {
     "preflight": "node -e \"const v=process.versions.node.split('.').map(Number);if(v[0]<22||(v[0]===22&&v[1]<18)){console.error('Allworld needs Node.js 22.18 or newer (24 is recommended); this is '+process.versions.node+'. Install a newer one from https://nodejs.org/ or run: nvm install (it reads .nvmrc).');process.exit(1)}if(!require('fs').existsSync('node_modules/vite')){console.error('The dependencies are not installed yet. Run this first: npm install');process.exit(1)}\"",
     "predev": "npm run -s preflight",

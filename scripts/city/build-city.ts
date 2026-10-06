@@ -95,7 +95,7 @@ function legacyMapText(recipe: LegacyCityRecipe): string {
 function legacyIndexText(recipe: LegacyCityRecipe): string {
   const names = recipe.exports
   const prefix = names.typePrefix
-  return `// ${GENERATED}\nimport type { CityModule } from '../../../types/content.ts'\nimport { ${names.rules} } from './rules.ts'\nimport type { ${prefix}DistrictId, ${prefix}HubId, ${prefix}LocalGovernmentId } from './rules.ts'\n\nexport const ${names.city} = Object.freeze({\n  id: '${recipe.id}', rules: ${names.rules},\n  loadContent: async () => (await import('./content.ts')).${names.content},\n  loadMap: async () => (await import('./map.ts')).${names.map},\n} satisfies CityModule<'${recipe.id}', 'ogun', ${prefix}LocalGovernmentId, ${prefix}DistrictId, ${prefix}HubId>)\n\nexport { ${names.localUnits}, ${names.mapOrigin}, ${names.rules} } from './rules.ts'\n`
+  return `// ${GENERATED}\nimport type { CityModule } from '../../../types/content.ts'\nimport { ${names.rules} } from './rules.ts'\nimport type { ${prefix}DistrictId, ${prefix}HubId, ${prefix}LocalGovernmentId } from './rules.ts'\n\nexport const ${names.city} = Object.freeze({\n  id: '${recipe.id}', rules: ${names.rules},\n  loadContent: async () => (await import('./content.ts')).${names.content},\n  loadMap: async () => (await import('#city-map/${recipe.id}')).${names.map},\n} satisfies CityModule<'${recipe.id}', 'ogun', ${prefix}LocalGovernmentId, ${prefix}DistrictId, ${prefix}HubId>)\n\nexport { ${names.localUnits}, ${names.mapOrigin}, ${names.rules} } from './rules.ts'\n`
 }
 
 export function legacyGeneratedFiles(recipe: LegacyCityRecipe): Readonly<Record<'rules.ts' | 'content.ts' | 'map.ts' | 'index.ts', string>> {
@@ -234,8 +234,8 @@ export function formulaContentText(): string {
   return `// ${GENERATED}\nimport { buildFormulaContent } from '../formula/content.ts'\nimport { CITY_LOCAL_UNIT_ANCHORS, CITY_MAP_ORIGIN, CITY_PLAY_BOUNDS } from './geography.ts'\nimport { CITY_SCENES } from './scenes.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const CITY_CONTENT = buildFormulaContent({\n  spec: CITY_SPEC,\n  origin: CITY_MAP_ORIGIN,\n  bounds: CITY_PLAY_BOUNDS,\n  localUnitAnchors: CITY_LOCAL_UNIT_ANCHORS,\n  scenes: CITY_SCENES,\n})\n`
 }
 
-export function formulaIndexText(): string {
-  return `// ${GENERATED}\nimport type { CityModule } from '../../../types/content.ts'\nimport { CITY_RULES } from './rules.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const city = Object.freeze({\n  id: CITY_SPEC.id,\n  rules: CITY_RULES,\n  loadContent: async () => (await import('./content.ts')).CITY_CONTENT,\n  loadMap: async () => (await import('./map.ts')).CITY_MAP,\n} satisfies CityModule<typeof CITY_SPEC.id>)\n`
+export function formulaIndexText(cityId: string): string {
+  return `// ${GENERATED}\nimport type { CityModule } from '../../../types/content.ts'\nimport { CITY_RULES } from './rules.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const city = Object.freeze({\n  id: CITY_SPEC.id,\n  rules: CITY_RULES,\n  loadContent: async () => (await import('./content.ts')).CITY_CONTENT,\n  loadMap: async () => (await import('#city-map/${cityId}')).CITY_MAP,\n} satisfies CityModule<typeof CITY_SPEC.id>)\n`
 }
 
 function writeGenerated(path: string, text: string, check: boolean, allowAuthored = false): boolean {
@@ -299,7 +299,7 @@ async function buildFormula(cityId: string, specPath: string, check: boolean): P
     [join(cityDirectory, 'content.ts'), formulaContentText()],
     [join(cityDirectory, 'geography.ts'), geometry.geographyModuleText],
     [join(cityDirectory, 'map.ts'), geometry.runtimeModuleText],
-    [join(cityDirectory, 'index.ts'), formulaIndexText()],
+    [join(cityDirectory, 'index.ts'), formulaIndexText(cityId)],
     [join(root, 'src', 'map3d', 'geo', 'data', `${cityId}.formula.ts`), geometry.dataModuleText],
   ]
   let stale = false

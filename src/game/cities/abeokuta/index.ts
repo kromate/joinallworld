@@ -5,7 +5,7 @@ import type { AbeokutaDistrictId, AbeokutaHubId, AbeokutaLocalGovernmentId } fro
 export const abeokutaCity = Object.freeze({
   id: 'abeokuta', rules: ABEOKUTA_RULES,
   loadContent: async () => (await import('./content.ts')).ABEOKUTA_CONTENT,
-  loadMap: async () => (await import('./map.ts')).ABEOKUTA_MAP,
+  loadMap: async () => (await import('#city-map/abeokuta')).ABEOKUTA_MAP,
   loadRoutes: async () => (await import('./rail.ts')).ABEOKUTA_ROUTE_GEOMETRY,
 } satisfies CityModule<'abeokuta', 'ogun', AbeokutaLocalGovernmentId, AbeokutaDistrictId, AbeokutaHubId>)
 

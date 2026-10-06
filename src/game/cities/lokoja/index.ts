@@ -7,5 +7,5 @@ export const city = Object.freeze({
   id: CITY_SPEC.id,
   rules: CITY_RULES,
   loadContent: async () => (await import('./content.ts')).CITY_CONTENT,
-  loadMap: async () => (await import('./map.ts')).CITY_MAP,
+  loadMap: async () => (await import('#city-map/lokoja')).CITY_MAP,
 } satisfies CityModule<typeof CITY_SPEC.id>)

@@ -6,7 +6,7 @@ import type { SagamuDistrictId, SagamuHubId, SagamuLocalGovernmentId } from './r
 export const sagamuCity = Object.freeze({
   id: 'sagamu', rules: SAGAMU_RULES,
   loadContent: async () => (await import('./content.ts')).SAGAMU_CONTENT,
-  loadMap: async () => (await import('./map.ts')).SAGAMU_MAP,
+  loadMap: async () => (await import('#city-map/sagamu')).SAGAMU_MAP,
 } satisfies CityModule<'sagamu', 'ogun', SagamuLocalGovernmentId, SagamuDistrictId, SagamuHubId>)
 
 export { SAGAMU_LGAS, SAGAMU_MAP_ORIGIN, SAGAMU_RULES } from './rules.ts'

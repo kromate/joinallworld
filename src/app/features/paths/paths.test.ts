@@ -103,9 +103,9 @@ test('a state and the atlas levels', async () => {
   const state = fakeEnv(fakeAddress('/ogun'))
   await arrive(state.env, waitFor('/ogun'))
   assert.deepEqual(state.calls.layers, [['world', { level: 2, state: 'ogun' }]])
-  const soon = fakeEnv(fakeAddress('/kaduna'))
-  await arrive(soon.env, waitFor('/kaduna'))
-  assert.deepEqual(soon.calls.layers, [['world', { level: 2, state: 'kaduna' }]])
+  const opened = fakeEnv(fakeAddress('/kaduna'))
+  await arrive(opened.env, waitFor('/kaduna'))
+  assert.deepEqual(opened.calls.layers, [['world', { level: 2, city: 'kaduna' }]], 'an open city this device has not loaded is shown on the atlas')
   const levels: [string, number][] = [['/nigeria', 2], ['/world', 0], ['/map', 0]]
   for (const [path, level] of levels) { const next = fakeEnv(fakeAddress(path)); await arrive(next.env, waitFor(path)); assert.deepEqual(next.calls.layers, [['world', { level }]], path) }
 })

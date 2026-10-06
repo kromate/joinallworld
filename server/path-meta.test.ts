@@ -62,12 +62,12 @@ test('every open city: "Live in <City> — Allworld", a description from the cit
   assert.equal(head(withPathMeta(INDEX, '/abuja/some-venue')).canonical, `${SITE_ORIGIN}/abuja`, 'a venue the host cannot check is the city page');
 })
 
-test('a state with several open cities, and one that is coming', () => {
+test('a state with several open cities, and a capital that opened', () => {
   const ogun = head(withPathMeta(INDEX, '/ogun'));
   assert.equal(ogun.title, 'Ogun State — Allworld');
   assert.ok((ogun.description ?? '').includes('Abeokuta'));
-  assert.equal(head(withPathMeta(INDEX, '/kaduna')).title, 'Kaduna State — Allworld');
-  assert.match(head(withPathMeta(INDEX, '/kaduna')).description ?? '', /coming/);
+  // Every state now has an open city, so /kaduna is Kaduna's city page rather than a state page that says it is coming.
+  assert.equal(head(withPathMeta(INDEX, '/kaduna')).title, 'Live in Kaduna — Allworld');
   assert.equal(head(withPathMeta(INDEX, '/nigeria')).canonical, `${SITE_ORIGIN}/nigeria`);
 })
 
@@ -123,7 +123,7 @@ test('the sitemap is made from the registry: the games, every open city, every s
   for (const game of GAME_SLUGS) assert.ok(locs.includes(`https://play.example/games/${game}`), game);
   for (const id of openCityIds()) assert.ok(locs.includes(`https://play.example/${id}`), id);
   for (const state of knownStateIds()) assert.equal(locs.includes(`https://play.example/${state}`), openCitiesOf(state).length > 1 || openCityIds().includes(state), state);
-  assert.ok(!locs.includes('https://play.example/kaduna'), 'a city that is not open is not listed');
+  assert.ok(locs.includes('https://play.example/kaduna'), 'a capital that opened is listed');
   assert.deepEqual(locs.slice(1), sitemapPaths().map((path) => `https://play.example${path}`));
   assert.ok(body.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.ok((siteFile('/sitemap.xml', '')?.body ?? '').includes(`<loc>${SITE_ORIGIN}/games</loc>`), 'with no origin: the site\'s own');

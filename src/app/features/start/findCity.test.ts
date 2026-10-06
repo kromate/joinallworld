@@ -24,13 +24,14 @@ test('a visitor inside an open city is offered to start there', async () => {
   assert.deepEqual(seen[0], ['kano', 12.0, 8.52], 'the position goes to the lookup on this device')
 })
 
-test('a visitor in a place that is coming is offered the nearest open city', async () => {
+test('a visitor whose position no city map claims is offered the nearest open city', async () => {
   const kaduna = cityCatalogueEntry('kaduna')
   assert.ok(kaduna)
   const found = await findCity({ geolocation: at(kaduna.lat, kaduna.lon), packs: packs(null) })
   assert.equal(found.kind, 'near')
   if (found.kind !== 'near') return
-  assert.deepEqual([found.city, found.place, found.line], ['abuja', 'Kaduna', 'Kaduna is coming — start in the nearest open city: Abuja'])
+  // Every catalogue city is open, so no place is "coming": the nearest open city is the one at this marker.
+  assert.deepEqual([found.city, found.place, found.line], ['kaduna', null, 'Allworld is not open where you are yet — start in the nearest open city: Kaduna'])
 })
 
 test('a visitor far from every place is told so, and offered the nearest open city', async () => {

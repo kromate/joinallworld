@@ -37,12 +37,12 @@ test('aliases, case and trailing slashes', () => {
   assert.deepEqual(parsePath('/abuja?x=1#y'), city('abuja'), 'query and fragment are not part of the path')
 })
 
-test('a state with several open cities, and one with none', () => {
+test('a state with several open cities, and a capital that opened', () => {
   assert.ok(openCitiesOf('ogun').length > 1)
   assert.deepEqual(parsePath('/ogun'), { kind: 'state', state: 'ogun' })
-  // A city that is on the atlas but not open: its state's page says it is coming.
-  assert.equal(cityCatalogueEntry('kaduna')?.open, false)
-  assert.deepEqual(parsePath('/kaduna'), { kind: 'state', state: 'kaduna' })
+  // Every state now has an open city: Kaduna's address is its city page.
+  assert.equal(cityCatalogueEntry('kaduna')?.open, true)
+  assert.deepEqual(parsePath('/kaduna'), city('kaduna'))
 })
 
 test('the atlas levels and the panels', () => {
@@ -99,12 +99,12 @@ test('the nearest open city comes from the registry coordinates', () => {
   assert.equal(nearestCity(12.0, 8.52)?.id, 'kano')
   assert.equal(nearestCity(6.5, 3.4)?.id, 'lagos')
   assert.equal(nearestCity(9.07, 7.49)?.id, 'abuja')
-  // Kaduna is on the atlas but not open: from there the nearest open city is Abuja, and Kaduna is the nearest place that is coming.
+  // Every catalogue city is open: from Kaduna's marker the nearest open city is Kaduna, and no place is coming.
   const kaduna = cityCatalogueEntry('kaduna')
   assert.ok(kaduna)
-  assert.equal(nearestCity(kaduna.lat, kaduna.lon)?.id, 'abuja')
-  assert.equal(nearestCity(kaduna.lat, kaduna.lon, { open: false })?.id, 'kaduna')
-  assert.ok((nearestCity(kaduna.lat, kaduna.lon, { open: false })?.km ?? 99) < 1)
+  assert.equal(nearestCity(kaduna.lat, kaduna.lon)?.id, 'kaduna')
+  assert.ok((nearestCity(kaduna.lat, kaduna.lon)?.km ?? 99) < 1)
+  assert.equal(nearestCity(kaduna.lat, kaduna.lon, { open: false }), null)
   const three = nearestCities(6.5, 3.4, 3)
   assert.equal(three.length, 3)
   assert.deepEqual([...three].sort((a, b) => a.km - b.km), three, 'nearest first')

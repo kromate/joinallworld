@@ -271,7 +271,7 @@ test('unmapped kinds are rejected when placed, unsupported, or missing a note', 
 
 test('generated eager rules and content cannot statically reach the lazy map or topology data', () => {
   const modules: Readonly<Record<string, string>> = {
-    './index.ts': formulaIndexText(),
+    './index.ts': formulaIndexText('test-formula'),
     './rules.ts': formulaRulesText(),
     './content.ts': formulaContentText(),
     './scenes.ts': formulaScenesText(),
@@ -299,7 +299,7 @@ test('generated eager rules and content cannot statically reach the lazy map or 
     assert.equal(reached.has('./map.ts'), false, `${entry} eager closure must not contain map.ts`)
     for (const file of reached) assert.doesNotMatch(modules[file] ?? '', /map3d\/geo\/data|createFormulaCityGeometry/)
   }
-  assert.match(formulaIndexText(), /import\('\.\/map\.ts'\)/, 'map remains available only through the lazy module loader')
+  assert.match(formulaIndexText('test-formula'), /import\('#city-map\/test-formula'\)/, 'map remains available only through the lazy module loader')
   assert.match(formulaContentText(), /from '\.\/geography\.ts'/)
   assert.match(formulaRulesText(), /from '\.\/geography\.ts'/)
 })

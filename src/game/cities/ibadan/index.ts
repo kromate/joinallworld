@@ -6,7 +6,7 @@ export const ibadanCity = Object.freeze({
   id: 'ibadan',
   rules: IBADAN_RULES,
   loadContent: async () => (await import('./content.ts')).IBADAN_CONTENT,
-  loadMap: async () => (await import('./map.ts')).IBADAN_MAP,
+  loadMap: async () => (await import('#city-map/ibadan')).IBADAN_MAP,
   loadRoutes: async () => (await import('./rail.ts')).IBADAN_ROUTE_GEOMETRY,
 } satisfies CityModule<'ibadan', 'oyo', IbadanLocalGovernmentId, IbadanDistrictId, IbadanHubId>)
 

@@ -234,7 +234,7 @@ Workers: three Sonnet-class workers (rails, budgets, reliability), each in its o
 
 CI found on the way: every `main` CI run on 6 October was cancelled by the 10-minute job limit, not by a failure; the suite now takes longer. The limit is raised to 25 minutes in this pull request.
 
-**Baseline, before any realism work** (build `5e9515b`; scripts in `scripts/measure/`: Playwright driving Chrome over the DevTools protocol, phone viewport 390×844 at 2×, CPU throttled 6×, cache off).
+**Baseline, before any realism work** (build `5e9515b`; scripts in `bench/` (run from a folder with `playwright-core` installed; not part of the build or typecheck): Playwright driving Chrome over the DevTools protocol, phone viewport 390×844 at 2×, CPU throttled 6×, cache off).
 
 | Where | Network | First paint | Loading screen | Character creator ready | Bytes at ready | Bytes after 8 s |
 | --- | --- | --- | --- | --- | --- | --- |

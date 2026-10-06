@@ -49,7 +49,7 @@ export function setSound(patch: Partial<SoundSettings>): boolean {
 export const toggleMute = (): boolean => setSound({ on: !getSound().on })
 /** Listen for changes (this tab's and, through the storage event, other tabs'). Returns the unsubscribe. */
 export function onSoundChange(listener: () => void): () => void {
-  if (!listeners.size) addEventListener('storage', (event) => { if (event.key === SOUND_KEY) { current = readSound(store()); tell() } })
+  if (!listeners.size && typeof window !== 'undefined') window.addEventListener('storage', (event) => { if (event.key === SOUND_KEY) { current = readSound(store()); tell() } })
   listeners.add(listener)
   return () => { listeners.delete(listener) }
 }

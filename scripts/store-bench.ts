@@ -10,6 +10,7 @@
  * reads the phone, opens a thread, lists the people here, polls the civic pulse and sends messages. Measured: latency by kind,
  * the host process's CPU per request and memory, the rows written (Worker) by table, and the start-up cost (the first request,
  * which on `entries` includes the move of the legacy store when the layout asks for it).
+ * `--slow N` makes every player N times slower (the default load is about 0.45 requests a second a player, far above a real page's 0.07: it finds where a host saturates; `--slow 6` is nearer real use).
  * One host at a time, loopback, one machine: it compares layouts and sizes, it is not a promise about production.
  */
 import { spawn, execFileSync, type ChildProcess } from 'node:child_process';
@@ -25,7 +26,7 @@ import { legacySeed } from '../server/testing/legacySeed.ts';
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const args = process.argv.slice(2), option = (name: string, fallback: string): string => { const at = args.indexOf(`--${name}`); return at >= 0 ? args[at + 1] ?? fallback : fallback; };
 const host = option('host', 'node') as 'node' | 'worker', layout = option('layout', 'legacy'), sizes = option('registered', '1000').split(',').map(Number);
-const active = Number(option('active', '200')), seconds = Number(option('seconds', '30')), port = Number(option('port', '4187')), profileName = option('profile', 'typical') === 'heavy' ? 'heavy' : 'typical';
+const slow = Number(option('slow', '1')), active = Number(option('active', '200')), seconds = Number(option('seconds', '30')), port = Number(option('port', '4187')), profileName = option('profile', 'typical') === 'heavy' ? 'heavy' : 'typical';
 const sleep = (ms: number): Promise<void> => new Promise((done) => setTimeout(done, ms));
 const quantile = (sorted: number[], q: number): number => sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? NaN;
 const round = (value: number): number => Math.round(value * 10) / 10;
@@ -138,7 +139,7 @@ async function bench(registered: number): Promise<void> {
     const before = { usage: usageOf(running.pid), overview: await operator('/api/mod/overview'), at: performance.now() };
     measuring = true;
     const until = performance.now() + seconds * 1000, jitter = (ms: number): number => ms * (0.6 + Math.random() * 0.8);
-    const every = async (ms: number, work: () => Promise<unknown>): Promise<void> => { await sleep(Math.random() * ms); while (performance.now() < until) { await work(); await sleep(Math.min(jitter(ms), Math.max(0, until - performance.now()))); } };
+    const every = async (base: number, work: () => Promise<unknown>): Promise<void> => { const ms = base * slow; await sleep(Math.random() * ms); while (performance.now() < until) { await work(); await sleep(Math.min(jitter(ms), Math.max(0, until - performance.now()))); } };
     await Promise.all(players.flatMap((player) => [
       every(4000, () => call('overview (me)', player, '/api/social/me')),
       every(5000, () => player.convs[0] ? call('open thread', player, `/api/social/conversations/${encodeURIComponent(player.convs[0])}`) : Promise.resolve()),
@@ -153,7 +154,7 @@ async function bench(registered: number): Promise<void> {
     const summary = (kind: string): string => { const sorted = [...(latency[kind] ?? [])].sort((a, b) => a - b); return sorted.length ? `${round(quantile(sorted, 0.5))}/${round(quantile(sorted, 0.95))}/${round(quantile(sorted, 0.99))}` : '-'; };
     const byTable = Object.entries(rowsAfter.tables).map(([table, rows]) => [table, rows - (rowsBefore.tables[table] ?? 0)] as const).filter(([, rows]) => rows > 0).sort((a, b) => b[1] - a[1]).slice(0, 5);
     const stats = (after['store'] as Record<string, unknown> | null) ?? {};
-    console.log(JSON.stringify({ host, layout, profile: profileName, registered, active, seconds: Math.round(elapsed), startMs: Math.round(startMs), firstRequestMs: Math.round(firstMs), requests, perSecond: round(requests / elapsed),
+    console.log(JSON.stringify({ host, layout, profile: profileName, registered, active, slow, seconds: Math.round(elapsed), startMs: Math.round(startMs), firstRequestMs: Math.round(firstMs), requests, perSecond: round(requests / elapsed),
       cpuMsPerRequest: requests ? round(cpu * 1000 / requests) : null, cpuShare: round(cpu / elapsed), rssMb: Math.round(usage.rssMb),
       'p50/p95/p99 ms': Object.fromEntries(['overview (me)', 'open thread', 'send message', 'people list', 'civic pulse', 'search'].map((kind) => [kind, summary(kind)])),
       rowsWritten: rowsAfter.total - rowsBefore.total, rowsPerMessage: round((rowsAfter.total - rowsBefore.total) / Math.max(1, latency['send message']?.length ?? 1)), rowsByTable: Object.fromEntries(byTable),

@@ -82,5 +82,14 @@ export async function rideJourney(host: RideHost): Promise<RideResult> {
   conserved(owing)
   const lines = (owing.ledger as unknown[]).map(object).map((line) => String(line.reason))
   assert.ok(lines.some((reason) => reason.startsWith('Ride home on credit')) && lines.includes('Ride home repaid'))
+  // ---- a life that can comfortably afford the rest has it cleared at its next settlement, once, and the way is open ----------------------------------
+  const remaining = number(object(owing.travel).rideDebt)
+  await host.edit(ada, 'lagos', (state) => { state.cash = remaining + 5000 })
+  await host.elapse(ada, 'lagos', 60000)
+  const settled = await life(ada, 'lagos')
+  assert.deepEqual([number(settled.cash), 'rideDebt' in object(settled.travel)], [5000, false], 'the whole debt came out of cash')
+  assert.equal((settled.ledger as unknown[]).map(object).filter((line) => line.reason === 'Ride home repaid' && line.amount === -remaining).length, 1, 'as one ledger line')
+  const again = await life(ada, 'lagos')
+  assert.deepEqual([number(again.cash), 'rideDebt' in object(again.travel)], [5000, false], 'and not taken again')
   return { fare: back.fare, debt: number(object(owing.travel).rideDebt), cash: number(owing.cash) }
 }

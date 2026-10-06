@@ -59,6 +59,20 @@ export function repayFromEarnings(state: LifeState, earned: number, ctx: LifeCon
   return pay;
 }
 
+/**
+ * A life that can comfortably afford the whole debt simply has it cleared: cash of at least the debt plus RIDE_CREDIT.cushion, from any source
+ * (earnings, a gift, a stall, an operator's credit, a bonus), at any settlement. It is a sink of the whole debt, as one ledger line. Returns what was paid.
+ */
+export function settleRideDebt(state: LifeState, ctx: LifeContext): number {
+  const owed = rideDebtOf(state);
+  if (!owed || state.cash < owed + RIDE_CREDIT.cushion || !debit(state, owed, 'Ride home repaid', ctx)) return 0;
+  setRideDebt(state, 0);
+  const text = `Your ride home (${naira(owed)}) is paid.`;
+  state.message = text;
+  emit(state, 'notice.posted', { kind: 'loan', text }, ctx);
+  return owed;
+}
+
 /** 'travel.repay-ride': pay the debt from cash, as much as cash goes. */
 export function repayRide(state: LifeState, _payload: Record<string, unknown>, ctx: LifeContext) {
   const owed = rideDebtOf(state);

@@ -10,7 +10,7 @@ import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useAct } from '../kit/act.ts'
 import { money } from '../../ui/format.ts'
-import { rideDebtText } from '../../../game/relief.ts'
+import DebtPay from '../relief/DebtPay.vue'
 import LgaCard from '../world/LgaCard.vue'
 import { linkWords } from './travelBoundary.ts'
 import { visitorHome } from './visitorModel.ts'
@@ -60,10 +60,11 @@ watch(model, (now, was) => { const open = shell.sheet.value; if (was && !now && 
         <button type="button" class="ui-button is-block" data-visitor="credit" :disabled="pending !== null || Boolean(offline)" @click="rideOnCredit"><GameIcon inline name="bus" /><span>{{ askCredit ? 'Yes: ride home and owe it' : `Ride home on credit · ${money(estate.ride.offer.fare)} owed` }}</span></button>
         <p class="ui-note">{{ askCredit ? `You will owe ${money(estate.ride.offer.fare)}. It comes out of what you earn, half of each. No skipping the trip.` : 'Cannot pay the fare? It is advanced and you repay it from your earnings.' }}</p>
       </template>
-      <p v-if="estate.ride.debt" class="ui-why">{{ rideDebtText(estate.ride.debt) }}.</p>
+      <DebtPay v-if="estate.ride.debt" />
       <button type="button" class="ui-button is-block" data-visitor="things" @click="things"><GameIcon inline name="map" /><span>Things to do in {{ estate.cityName }}</span></button>
     </div>
     <h3>A home here, if you want one</h3>
+    <DebtPay v-if="estate.ride.debt" />
     <p class="ui-note">You do not need one. You can stay a visitor for as long as you like.</p>
     <div class="visitor-actions">
       <template v-if="choosing !== 'buy'">

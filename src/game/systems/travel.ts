@@ -86,7 +86,7 @@ import { lagosTime } from '../clock.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';
-import { cleanRideDebt, isReliefActivity, reliefActivities, reliefBlock, repayRide } from '../relief.ts';
+import { cleanRideDebt, isReliefActivity, reliefActivities, reliefBlock, repayRide, settleRideDebt } from '../relief.ts';
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
@@ -495,10 +495,14 @@ const play = PLAYS ? {
   actions: { travel, 'world.roadside': roadside, 'travel.skip': skipTrip, 'travel.repay-ride': repayRide },
   advance(state, dt, ctx) {
     const now = finite(ctx?.now) ? ctx.now : state.t;
+    // A life that already holds the whole ride debt (and the cushion) is cleared the next time it is settled.
+    settleRideDebt(state, ctx);
     if (state.travel.event && now - state.travel.event.at >= EVENT_TTL_SECONDS * 1000) state.travel.event = null;
     for (const [id, readyAt] of Object.entries(state.travel.cooldowns)) if (readyAt <= now) delete state.travel.cooldowns[id];
   },
   on: {
+    // Money from any source: when it makes the whole ride debt comfortably affordable, the debt is cleared before the earning's own half is taken.
+    'wallet.changed': (state, data, ctx) => { if (data.amount > 0) settleRideDebt(state, ctx); },
     'life.started': (state, data) => setHome(state, data?.house),
     'house.moved': (state, data) => setHome(state, data?.house ?? data?.id),
     'city.changed'(state, { from }, ctx) {

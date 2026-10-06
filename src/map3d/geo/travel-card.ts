@@ -51,3 +51,14 @@ export function travelWays(routes: readonly RouteInfo[], { cash = null, confirmi
   });
   return { shared, ways: ways.slice(0, MAX_WAYS) };
 }
+
+/**
+ * What a ride debt says on a card, and its one button: "Pay ₦X now" (data-atlas-repay) when cash covers the whole of what is STILL owed,
+ * otherwise the way to "What you can do now" (data-atlas-help). '' when nothing is owed. The sentence is whole: nothing in it is cut.
+ */
+export function debtHtml(owing: number, cash: number | null): string {
+  if (!(owing > 0)) return '';
+  return cash !== null && cash >= owing
+    ? `<div class="atlas-way-ask" role="group" aria-label="Your ride home is not paid" data-atlas-debt><p>You owe ${naira(owing)} for your ride home. Pay it and you can travel on.</p><div><button type="button" class="atlas-go is-small" data-atlas-repay>Pay ${naira(owing)} now</button></div></div>`
+    : `<div class="atlas-way-ask" role="group" aria-label="Your ride home is not paid" data-atlas-debt><p>You still owe ${naira(owing)} for your ride home${cash !== null ? ` and have ${naira(cash)}` : ''}. Half of each earning repays it.</p><div><button type="button" class="atlas-chip" data-atlas-help>What you can do now</button></div></div>`;
+}

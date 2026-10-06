@@ -363,3 +363,69 @@ test('stored shape: the field is absent without a debt, a legacy life loads unch
     assert.ok(!('rideDebt' in loaded.travel) || loaded.travel.rideDebt === RIDE_CREDIT.max, `${String(bad)} is not a debt`)
   }
 })
+
+function owing(debt = 12000) {
+  const l = life()
+  l.visit('port-harcourt', 0)
+  assert.equal(l.run('estate.relocate', { to: 'lagos', mode: 'road', credit: true }).code, 'departed')
+  l.arrival()
+  l.state.travel.rideDebt = debt
+  l.state.cash = 0
+  return l
+}
+const repaidLines = (l: ReturnType<typeof life>) => l.state.ledger.filter((line) => line.reason === 'Ride home repaid')
+
+test('a life that holds the whole debt plus the cushion has it cleared, from any source of money, exactly once', () => {
+  const need = 12000 + RIDE_CREDIT.cushion
+  const sources: [string, (l: ReturnType<typeof life>) => void][] = [
+    ['a gift', (l) => { assert.equal(l.run('social.server', { op: 'transfer-in', from: FRIEND, amount: need, name: 'Ada' }, { internal: true }).ok, true) }],
+    ['stall takings', (l) => { assert.equal(collect(l, need).ok, true) }],
+    ['an operator credit', (l) => { assert.equal(l.run('wallet.admin', { op: 'credit', amount: need, reason: 'x' }, { internal: true }).ok, true) }],
+  ]
+  for (const [what, pay] of sources) {
+    const l = owing()
+    pay(l)
+    assert.equal('rideDebt' in l.state.travel, false, `${what}: cleared`)
+    assert.equal(l.state.cash, need - 12000, `${what}: the whole debt came out of cash`)
+    assert.equal(repaidLines(l).length, 1, `${what}: one ledger line`)
+    assert.equal(repaidLines(l)[0]!.amount, -12000)
+    l.wait(60)
+    assert.equal(repaidLines(l).length, 1, `${what}: nothing is taken twice`)
+  }
+})
+
+test('just under the threshold the debt stands and the half of an earning still repays it', () => {
+  const l = owing()
+  l.run('wallet.admin', { op: 'credit', amount: 12000 + RIDE_CREDIT.cushion - 1, reason: 'x' }, { internal: true })
+  assert.equal(l.state.travel.rideDebt, 12000)
+  l.state.cash = 0
+  assert.equal(collect(l, 1000).ok, true)
+  assert.deepEqual([l.state.cash, l.state.travel.rideDebt], [500, 11500], 'the remaining debt, not the fare')
+  assert.equal(l.view().estate.ride.debt, 11500)
+})
+
+test('a life already holding the cash when it is loaded is cleared at its next settlement, once', () => {
+  const l = owing()
+  l.state.cash = 288200
+  l.wait(30)
+  assert.equal('rideDebt' in l.state.travel, false)
+  assert.equal(l.state.cash, 288200 - 12000)
+  assert.equal(repaidLines(l).length, 1)
+  assert.equal(l.state.message, 'Your ride home (₦12,000) is paid.')
+  assert.equal(l.run('estate.relocate', { to: 'ibadan', mode: 'road' }).code, 'departed', 'and the trip is open at once')
+})
+
+test('paying from the wallet opens the trip at once; a debt reduced by repayments is what remains', () => {
+  const l = owing()
+  l.state.cash = 14000
+  assert.equal(l.run('estate.relocate', { to: 'ibadan', mode: 'road' }).code, 'ride_debt')
+  assert.equal(l.run('travel.repay-ride').code, 'repaid')
+  assert.equal('rideDebt' in l.state.travel, false)
+  assert.equal(l.view().estate.ride.debt, 0)
+  l.state.cash = 100000
+  assert.equal(l.run('estate.relocate', { to: 'ibadan', mode: 'road' }).code, 'departed')
+  const m = owing()
+  m.state.cash = 5000
+  m.run('travel.repay-ride')
+  assert.deepEqual([m.state.travel.rideDebt, m.view().estate.ride.debt], [7000, 7000])
+})

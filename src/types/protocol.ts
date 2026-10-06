@@ -32,6 +32,7 @@ import type { AdminHttpRoutes } from './admin.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
 import type { PingHttpRoutes } from './ping.ts'
+import type { VisitHttpRoutes } from './visit.ts'
 import type { BusinessHttpRoutes } from './business.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
@@ -254,7 +255,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -529,6 +530,17 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/ping/cancel',
   'POST /api/social/ping/open',
   'POST /api/social/ping/join',
+  'GET /api/social/visit/door',
+  'POST /api/social/visit/door',
+  'POST /api/social/visit/close',
+  'POST /api/social/visit/end',
+  'POST /api/social/visit/enter',
+  'POST /api/social/visit/invite',
+  'POST /api/social/visit/link',
+  'GET /api/social/visit/links',
+  'POST /api/social/visit/link/end',
+  'POST /api/social/visit/peek',
+  'POST /api/social/visit/link/enter',
   'GET /api/civic/pulse',
   'GET /api/civic/gov',
   'POST /api/civic/gov/run',

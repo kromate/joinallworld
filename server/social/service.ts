@@ -66,6 +66,9 @@ import { cityName } from '../../src/game/cities/index.ts';
 import { DREAMS, TRAITS } from '../../src/game/content/traits.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
+import { VISIT, VISIT_MS } from '../../src/game/visit.ts';
+import type { VisitHow } from '../../src/game/visit.ts';
+import { invitesFor, noteLinkUse, removeFromLink } from './visit-book.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { clip, glyphs } from './clip.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
@@ -331,7 +334,7 @@ function buildService(ctx: RouteContext) {
     if (lives.length ? lives.every((o) => o?.required === true && o.done !== true) : session.onboarding === true) throw ctx.fail(403, 'onboarding_required');
     const s = col(db), id = session.publicId, t = now();
     const p = s.players[id] ||= { name: session.name, first: t, seen: t, friends: {}, in: {}, out: {}, blocked: {}, convs: {}, updates: [], reports: [],
-      baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 } };
+      baeIn: {}, bae: null, visiting: null, recv: { day: 0, amount: 0 }, chats: { day: 0, count: 0 }, door: { who: 'walk' } };
     p.name = session.name; p.seen = t;
     noteFounder(s, db, session);
     sweep(s, t);
@@ -587,15 +590,18 @@ function buildService(ctx: RouteContext) {
       if (knock.status === 'pending' ? knock.expires <= t : t - knock.answeredAt! > LIMITS.knockCooldownMs) delete house.knocks[visitor];
     }
     let changed = false;
+    for (const [guest, until] of Object.entries(house.barred ?? {})) if (until <= t) delete house.barred![guest];
+    if (house.barred && !Object.keys(house.barred).length) delete house.barred;
+    if (house.closed !== undefined && house.closed <= t) delete house.closed;
     for (const [guest, visit] of Object.entries(house.guests)) {
       // A visit ends when it expires, when either blocks the other, and when the host is no longer at home.
-      if (visit.expires > t && s.players[guest] && !blockedEither(s, hostId, guest) && hostAtHome(s, hostId, visit.cityId)) continue;
+      if (visit.expires > t && s.players[guest] && !blockedEither(s, hostId, guest) && (hostAtHome(s, hostId, visit.cityId) || s.players[hostId]?.door?.out === true)) continue;
       delete house.guests[guest]; changed = true;
       if (s.players[guest]?.visiting === hostId) s.players[guest].visiting = null;
       endedIn(s).push([hostId, guest]);
     }
     if (changed) syncHouseConv(s, hostId);
-    if (!Object.keys(house.knocks).length && !Object.keys(house.guests).length) { delete s.houses[hostId]; return null; }
+    if (!Object.keys(house.knocks).length && !Object.keys(house.guests).length && house.closed === undefined && !house.barred) { delete s.houses[hostId]; return null; }
     return house;
   }
   /** The house chat has exactly the host and the current guests as members. */
@@ -620,7 +626,37 @@ function buildService(ctx: RouteContext) {
     const host = presence.status(hostId);
     return { host: pub(s, hostId), capacity: LIMITS.guests, guests, role, cityId, conv: guests.length && role !== 'none' ? `h.${hostId}` : null,
       hostStatus: host.state !== 'online' ? host.state : host.rooms.some((room) => describeRoom(room).hostId === hostId) ? 'home' : 'out',
-      knocks: role === 'host' ? Object.entries(house?.knocks || {}).filter(([, knock]) => knock.status === 'pending').map(([id, knock]) => ({ from: pub(s, id), at: knock.at, expiresAt: knock.expires })) : [] };
+      ...(house?.closed !== undefined && house.closed > now() ? { closed: true as const } : {}),
+      knocks: role === 'host' ? Object.entries(house?.knocks || {}).filter(([, knock]) => knock.status === 'pending').map(([id, knock]) => ({ from: pub(s, id), at: knock.at, expiresAt: knock.expires, ...(knock.link ? { via: 'link' as const } : {}) })) : [] };
+  }
+  /**
+   * Put a guest inside: the one way anyone comes in (a knock the host let in, an invitation, a house link, a friend walking in).
+   * The caller has checked everything. The guest's earlier visit elsewhere ends, the house chat gains them and says so.
+   */
+  function admit(s: SocialCollection, hostId: string, guest: string, cityId: CityId, push: PushList, link?: string): void {
+    const house = s.houses[hostId] ||= { knocks: {}, guests: {} };
+    const visiting = s.players[guest]?.visiting;
+    if (visiting && visiting !== hostId && endVisit(s, visiting, guest)) housePush(s, visiting, push);
+    house.guests[guest] = { since: now(), expires: now() + LIMITS.visitMs, cityId, ...(link ? { link } : {}) };
+    if (house.barred) delete house.barred[guest];
+    if (s.players[guest]) s.players[guest].visiting = hostId;
+    syncHouseConv(s, hostId);
+    fanOut(s, s.convs[`h.${hostId}`]!, append(s, s.convs[`h.${hostId}`]!, null, `${pub(s, guest).name} came in.`, null, true), push, null);
+  }
+  /**
+   * WHAT A HOME'S DOOR IS TO ONE PLAYER (reads only). The host's own choice, narrowed by the rules that hold whatever it says:
+   * a player who has not chosen is 'knock' (as before the choice existed); nobody walks in to the founder's home or to a home
+   * whose owner has more than VISIT.walkFriendsMax friends; only an ORDINARY friendship (both listed each other) lets a friend
+   * walk in — the founder's automatic one never does — and a closed door is closed to everyone.
+   */
+  function doorFor(s: SocialCollection, hostId: string, viewer: string): VisitHow {
+    const them = s.players[hostId];
+    if (!them) return 'closed';
+    const who = them.door?.who ?? 'knock', closed = s.houses[hostId]?.closed;
+    if (who === 'nobody' || (closed !== undefined && closed > now())) return 'closed';
+    if (who === 'invited') return 'invited';
+    if (who === 'knock' || founderId(s) === hostId || friendCount(s, hostId) > VISIT.walkFriendsMax || !ordinary(s, hostId, viewer)) return 'knock';
+    return them.door?.out === true ? 'walk+' : 'walk';
   }
   function endVisit(s: SocialCollection, hostId: string, guest: string): boolean {
     const house = s.houses[hostId];
@@ -728,7 +764,7 @@ function buildService(ctx: RouteContext) {
     LIMITS,
     presence,
     /** For server/social/ping.ts: the same registration, lookups and notice every method here uses. */
-    kit: { enter, other, notify, pub, areFriends, whereabouts, founderId },
+    kit: { enter, other, notify, pub, areFriends, whereabouts, founderId, col, admit, endVisit, housePush, pruneHouse, houseView, hostAtHome, blockedEither, doorFor, ordinary, append, fanOut, syncHouseConv },
     /**
      * Call INSIDE the transaction, last: attaches the visits this transaction ended to its result
      * (hidden from JSON), so deliver() can announce exactly those after the commit.
@@ -799,7 +835,7 @@ function buildService(ctx: RouteContext) {
       const visit = p.visiting ? houseView(s, p.visiting, id) : null; // prunes first, so an ended visit is never reported
       // A friend whose record is gone (only an automatic friendship can outlive the other side) is dropped here.
       for (const other of Object.keys(p.friends)) if (!Object.hasOwn(s.players, other)) delete p.friends[other];
-      const friend = ([other, since]: [string, number]) => ({ ...person(other), since, bae: p.bae === other });
+      const friend = ([other, since]: [string, number]) => ({ ...person(other), since, bae: p.bae === other, visit: doorFor(s, other, id) });
       // The founder is first in everyone's list. The founder's own list is their friends by request, then the newest automatic ones.
       const friends = Object.entries(p.friends).map(friend).sort((a, b) => Number(b.founder === true) - Number(a.founder === true) || a.name.localeCompare(b.name));
       const automatic = founderId(s) === id ? founderFriends(s, id, null) : null;
@@ -817,6 +853,8 @@ function buildService(ctx: RouteContext) {
         house: houseView(s, id, id),
         visiting: visit?.role === 'guest' ? visit : null,
         invitePath: `/v/${id}`,
+        door: { who: p.door?.who ?? 'knock', out: p.door?.out === true, chosen: p.door !== undefined },
+        invites: invitesFor(db, id, now()).filter((invite) => s.players[invite.host] && !blockedEither(s, id, invite.host)).map((invite) => ({ from: pub(s, invite.host), expiresAt: invite.expires })),
         prefs: prefsOf(p),
         limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS, pins: LIMITS.pins, mentions: LIMITS.mentions,
           pictures: { on: settingsOf().mode !== 'off' && Boolean(ctx.images) && p.noPictures !== true, bytes: PICTURE_LIMITS.bytes, caption: PICTURE_LIMITS.caption } },
@@ -1464,6 +1502,10 @@ function buildService(ctx: RouteContext) {
       const { s, p, id } = enter(db, session);
       const { target, refusal } = other(s, id, hostId);
       if (refusal) return refusal.code === 'self' ? no('self', 'This is your own house. Share the link with someone else.') : refusal;
+      // A host who chose "Only people I invite" or "Nobody" is not knocked at: the link and the invitation are how people come in.
+      const choice = target.door?.who;
+      if (choice === 'nobody') return no('door_closed', `${target.name} is not taking visitors right now.`);
+      if (choice === 'invited' && !s.houses[hostId]?.guests[id]) return no('only_invited', `${target.name} only lets in people they invite.`);
       const house = pruneHouse(s, hostId) || (s.houses[hostId] = { knocks: {}, guests: {} });
       const done = <R>(result: R): R => { pruneHouse(s, hostId); return result; };
       if (house.guests[id]) return yes('inside', { house: houseView(s, hostId, id), duplicate: true });
@@ -1479,7 +1521,7 @@ function buildService(ctx: RouteContext) {
       if (!ctx.allow(`social:knock:${id}`, 6)) return done(no('rate_limited', 'You are knocking too often. Wait a minute.'));
       house.knocks[id] = { at: now(), expires: now() + LIMITS.knockMs, status: 'pending', cityId };
       const push: PushList = [[hostId, { type: 'invite-knock', from: pub(s, id), expiresAt: house.knocks[id].expires }]];
-      notify(s, hostId, 'invite-knock', `${p.name} is knocking at your door.`, { from: id }, push);
+      notify(s, hostId, 'invite-knock', `${p.name} is at your door.`, { from: id }, push);
       return yes('knocking', { expiresAt: house.knocks[id].expires, push });
     },
     /** Host answers a knock. Accepting is applied exactly once; repeating the same answer returns the same outcome. */
@@ -1500,12 +1542,8 @@ function buildService(ctx: RouteContext) {
       if (body.answer === 'accept') {
         if (!hostAtHome(s, id, knock.cityId)) return no('host_not_home', 'You are not at home, so nobody can come in. Go home first, then let them in.');
         if (Object.keys(house.guests).length >= LIMITS.guests) return no('house_full', `Your house is full (${LIMITS.guests} guests). Ask someone to leave first.`);
-        const visiting = s.players[visitor]?.visiting;
-        if (visiting && visiting !== id && endVisit(s, visiting, visitor)) housePush(s, visiting, push);
-        house.guests[visitor] = { since: now(), expires: now() + LIMITS.visitMs, cityId: knock.cityId };
-        if (s.players[visitor]) s.players[visitor].visiting = id;
-        syncHouseConv(s, id);
-        fanOut(s, s.convs[`h.${id}`]!, append(s, s.convs[`h.${id}`]!, null, `${pub(s, visitor).name} came in.`, null, true), push, null);
+        admit(s, id, visitor, knock.cityId, push, knock.link);
+        if (knock.link) noteLinkUse(db, knock.link, visitor, now());
       }
       knock.status = answered; knock.answeredAt = now();
       push.push([visitor, { type: 'invite-answer', host: pub(s, id), answer: answered, house: houseView(s, id, visitor) }]);
@@ -1516,11 +1554,19 @@ function buildService(ctx: RouteContext) {
     /** body: { host, guest? } — a guest leaves (guest omitted) or the host asks a guest to leave. */
     houseLeave(db: Db, session: SessionRecord, body: SocialBody) {
       const hostId = uuid(body.host), guest = body.guest === undefined ? null : uuid(body.guest);
-      const { s, id } = enter(db, session);
+      const { s, p, id } = enter(db, session);
       if (guest && hostId !== id) return no('host_only', 'Only the host can ask a guest to leave.');
       const leaving = guest ?? id;
       const push: PushList = [];
+      const via = s.houses[hostId]?.guests[leaving]?.link;
       if (!endVisit(s, hostId, leaving)) return yes('left', { duplicate: true });
+      // A guest the host asked to leave is not let back in by anything but the host's own answer to a knock, for a while, and never through the same link.
+      if (guest) {
+        const house = s.houses[hostId] ||= { knocks: {}, guests: {} };
+        (house.barred ||= {})[guest] = now() + VISIT_MS.barred;
+        if (via) removeFromLink(db, via, guest, now());
+        notify(s, guest, 'invite-answer', `${p.name} asked you to leave. You can knock again later.`, { host: hostId }, push);
+      }
       const conv = s.convs[`h.${hostId}`];
       if (conv) fanOut(s, conv, append(s, conv, null, `${pub(s, leaving).name} left.`, null, true), push, null);
       push.push([leaving, { type: 'invite-house', house: houseView(s, hostId, leaving) }]);

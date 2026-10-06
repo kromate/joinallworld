@@ -15,6 +15,7 @@
  * WORKER: none of this exists on the Cloudflare Worker (every path is 404, every frame `invalid_message`).
  */
 import type { PingServerFrame } from './ping.ts'
+import type { DoorWho, VisitHow } from '../game/visit.ts'
 import type { ApiEnvelope, CityId, HostErrorCode, JsonBodyErrorCode, Ok, OnceErrorCode, PlayerRef, Refusal, SessionErrorCode, StorageErrorCode, TimedId } from './protocol.ts'
 
 // ---- building blocks -----------------------------------------------------------------------------
@@ -129,7 +130,7 @@ export interface PictureView {
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction' | 'missed-call'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction' | 'missed-call' | 'visit'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -168,13 +169,17 @@ export interface HouseView {
   conv: ConversationId | null
   hostStatus: 'home' | 'out' | 'reconnecting' | 'offline'
   /** Pending knocks; only ever non-empty for the host. */
-  knocks: { from: PlayerRef; at: number; expiresAt: number }[]
+  knocks: { from: PlayerRef; at: number; expiresAt: number; /** The person came through a house link and the host is asked about them once. */ via?: 'link' }[]
+  /** The host closed the door: nobody new comes in (the guests inside stay). */
+  closed?: true
 }
 
 export interface Friend extends PlayerRef, Whereabouts {
   /** Server ms the friendship began. */
   since: number
   bae: boolean
+  /** What this friend's door is to the viewer (src/game/visit.ts VisitHow). */
+  visit?: VisitHow
 }
 
 export interface SocialLimits {
@@ -219,6 +224,10 @@ export interface SocialOverview {
   visiting: HouseView | null
   /** `/v/<publicId>`. */
   invitePath: string
+  /** The caller's own choice of who may come into their home; `chosen` is false for a player who has not chosen yet (they are offered the choice once). */
+  door: { who: DoorWho; out: boolean; chosen: boolean }
+  /** Invitations to come over that are still good. */
+  invites: { from: PlayerRef; expiresAt: number }[]
   prefs: ChatPrefs
   limits: SocialLimits
 }
@@ -497,7 +506,7 @@ export interface PeoplePresenceFrame { type: 'people-presence'; id: string; stat
 /** Who shares the player's venue room changed; carries no member data. Only to sockets that sent `people-list`. */
 export interface PeopleChangedFrame { type: 'people-changed'; cityId: string; venueId: string }
 export interface PeopleInteractionFrame { type: 'people-interaction'; from: PlayerRef; action: string; label: string; /** false: it flopped */ landed: boolean }
-export interface InviteKnockFrame { type: 'invite-knock'; from: PlayerRef; expiresAt: number }
+export interface InviteKnockFrame { type: 'invite-knock'; from: PlayerRef; expiresAt: number; via?: 'link' }
 /** To the visitor. Note the tense: the request says `accept`/`decline`, the push says `accepted`/`declined`. */
 export interface InviteAnswerFrame { type: 'invite-answer'; host: PlayerRef; answer: 'accepted' | 'declined'; house: HouseView }
 /** The house as the recipient now sees it: sent to host and guests when the guest list changes. */
@@ -555,7 +564,7 @@ export interface KnockState {
 // ---- runtime key lists (protocol.test.ts) --------------------------------------------------------
 
 export const SOCIAL_OVERVIEW_KEYS = [
-  'bae', 'baeRequests', 'blocked', 'code', 'conversations', 'friends', 'house', 'invitePath', 'limits', 'me', 'ok', 'prefs', 'reports',
+  'bae', 'baeRequests', 'blocked', 'code', 'conversations', 'door', 'friends', 'house', 'invitePath', 'invites', 'limits', 'me', 'ok', 'prefs', 'reports',
   'requests', 'serverTime', 'updates', 'visiting',
 ] as const satisfies readonly (keyof SocialOverview | keyof ApiEnvelope)[]
 export const HOUSE_VIEW_KEYS = ['capacity', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'role'] as const satisfies readonly (keyof HouseView)[]

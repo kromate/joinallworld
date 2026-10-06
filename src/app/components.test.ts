@@ -114,7 +114,7 @@ const player = (id: string, name: string) => ({ id, name })
 function overview(): SocialOverview {
   const me = player(server.session()?.id ?? 'me', 'Kunle'), ada = player('ada', 'Ada <b>bold</b>')
   return {
-    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null,
+    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null, door: { who: 'knock', out: false, chosen: true }, invites: [],
     requests: { in: [], out: [] }, baeRequests: [],
     conversations: [{ id: 'dm.ada.me', kind: 'dm', name: ada.name, members: [me, ada], owner: null, with: 'ada', unread: 2, last: { seq: 2, from: ada, body: 'How far? <script>x</script>', at: server.now() } }],
     updates: [], house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [] },

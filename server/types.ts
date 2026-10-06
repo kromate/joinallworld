@@ -224,6 +224,8 @@ export interface SocialPlayerRecord {
   recv: { day: number; amount: number }
   /** Chats started with non-friends on Lagos day `day`. */
   chats: { day: number; count: number }
+  /** Who may come into this player's home (server/social/visit.ts). Absent: knock first. */
+  door?: DoorRecord
   /** Who may ring this player (server/social/calls.ts); absent means the default, everyone. */
   calls?: 'everyone' | 'friends' | 'nobody'
   /** Who may add this player to a group: absent means friends; 'nobody' refuses every invitation (server/social/service.ts). */
@@ -323,13 +325,49 @@ export interface KnockRecord {
   // INCONSISTENT: `answeredAt` is written at server/social/service.ts:903 and read at :344, but is missing
   // from the collection shape documented at :21.
   answeredAt?: number
+  /** A knock made through a house link (db.visits.links): the id of the link. The host is told so, and an answer of yes counts a use of it. */
+  link?: string
 }
-export interface VisitRecord { since: number; expires: number; cityId: CityId }
+export interface VisitRecord { since: number; expires: number; cityId: CityId; /** Came through a house link (its id): a removed guest cannot come back through the same one. */ link?: string }
 export interface HouseRecord {
   /** Visitor id → knock. */
   knocks: Record<string, KnockRecord>
   /** Guest id → visit. */
   guests: Record<string, VisitRecord>
+  /** The host closed the door until this server time: nobody new comes in (the guests inside stay). */
+  closed?: number
+  /** Guests the host asked to leave, until when: nothing lets them back in by itself (a knock the host answers does). */
+  barred?: Record<string, number>
+}
+/** Who may come into a player's home (server/social/visit.ts). */
+export type DoorWho = 'walk' | 'knock' | 'invited' | 'nobody'
+/** A player's own choice. A record without one is a player who has not chosen: 'knock', as before the choice existed. */
+export interface DoorRecord { who: DoorWho; /** Friends may come in while the host is out: the home stays open without them. */ out?: true }
+/** One invitation to come over (db.visits.invites, keyed `<host>><guest>`). */
+export interface InviteRecord { host: string; guest: string; at: number; expires: number; cityId: CityId }
+/** One house link (db.visits.links). The link itself is signed (server/social/visit-token.ts); this is what the host can see and end. */
+export interface HouseLinkRecord {
+  id: string
+  host: string
+  at: number
+  expires: number
+  /** At most this many different people may come in through it. */
+  max?: number
+  /** Nobody is asked: the host ticked "Let anyone with the link in". */
+  open?: true
+  /** The host ended it. */
+  ended?: true
+  /** Who came in through it, and when (at most `max`, else LINK.members). */
+  members: Record<string, number>
+  /** Server times of the latest entries, for the hourly cap. */
+  log: number[]
+  /** Removed from the home by the host: this link never lets them in again. */
+  removed?: Record<string, number>
+}
+/** server/social/visit-book.ts: invitations and links, a collection of its own so that reading or answering them never rewrites the social collection. Created by the first one. */
+export interface VisitsCollection {
+  invites: Record<string, InviteRecord>
+  links: Record<string, HouseLinkRecord>
 }
 /** The payload of the server-only action 'social.server': `op` selects what it does to the life. */
 export type SocialEffectPayload =
@@ -627,6 +665,8 @@ export interface Database {
   support?: SupportCollection
   moderation?: ModerationCollection
   growth?: GrowthCollection
+  /** server/social/visit-book.ts: invitations to a home and house links. Created by the first one, so it is not in COLLECTION_NAMES. */
+  visits?: VisitsCollection
   /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
   business?: BusinessCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -639,7 +679,7 @@ export interface Database {
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]
@@ -803,6 +843,8 @@ export interface ContextChecks {
   homeGuest?: (db: Db, guestId: string, hostId: string, cityId: CityId) => boolean
   /** Social: the same with the visit's expiry (server ms), or 0. */
   homeGuestUntil?: (db: Db, guestId: string, hostId: string, cityId: CityId) => number
+  /** Social: this host keeps their home open to friends while they are out. */
+  homeOpenOut?: (db: Db, hostId: string) => boolean
   /** Social: either has blocked the other (in memory). */
   blocked?: (a: string, b: string) => boolean
   /** Social: is anybody blocked at all? */

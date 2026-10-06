@@ -5,7 +5,7 @@
 // Every disabled Move button says what is missing (view.property.houses[].blocked).
 //
 // "Your own house" at the top is MyHouse.vue (src/app/features/travel/).
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { MOVE_IN_WEEKS } from '../../../game/content/housing.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -13,6 +13,8 @@ import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { useAct } from '../kit/act.ts'
 import MyHouse from '../travel/MyHouse.vue'
+// Who can come in, invitations and the house link: fetched with the Home tab, not with the first download.
+const VisitHome = defineAsyncComponent(() => import('../visit/VisitHome.vue'))
 import HouseArt from './HouseArt.vue'
 import { housesRules, moveReason, nextHouse, savedPercent } from './homeModel.ts'
 import type { HouseId } from '../../../types/life.ts'
@@ -38,6 +40,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
   <p v-if="!property" class="ui-error">Houses could not be loaded. Close this app and open it again.</p>
   <div v-else class="houses-app">
     <MyHouse />
+    <VisitHome />
     <template v-if="rentals">
     <h3 class="ui-section">Homes to rent</h3>
     <section class="ui-hero houses-hero">

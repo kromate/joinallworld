@@ -8,7 +8,7 @@
 // The account section (features/account/AccountSettings.vue) draws itself only when accounts are
 // configured on this server. A guest is still told what a device session is, so nobody mistakes it
 // for a password-protected account; that explanation is left out once the device is signed in.
-import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
@@ -19,6 +19,7 @@ import { useGrowth } from '../growth/useGrowth.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import CallSettings from '../calls/CallSettings.vue'
+const VisitDoor = defineAsyncComponent(() => import('../visit/VisitDoor.vue'))
 import AccountSettings from '../account/AccountSettings.vue'
 import ResidenceCard from '../locate/ResidenceCard.vue'
 import { useAccount } from '../account/useAccount.ts'
@@ -106,6 +107,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <p v-if="warning" class="ui-error" role="alert">{{ warning }}</p>
 
     <CallSettings />
+    <VisitDoor />
     <ResidenceCard />
 
     <section v-if="olderLives.length || switchError" aria-label="Older characters">

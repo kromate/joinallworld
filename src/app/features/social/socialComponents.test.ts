@@ -33,7 +33,7 @@ const ref = (id: string, name: string) => ({ id, name })
 function overview(extra: Partial<SocialOverview> = {}): SocialOverview {
   const me = ref(server.session()?.id ?? 'me', 'Kunle')
   return {
-    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null,
+    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null, door: { who: 'knock', out: false, chosen: true }, invites: [],
     requests: { in: [], out: [] }, baeRequests: [], conversations: [], updates: [],
     house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [] },
     prefs: { groups: 'friends', mentions: 'on', pictures: 'friends', notify: { text: true, groups: 'mentions', pausedUntil: null, quietDm: false, quietGroups: true } },

@@ -12,7 +12,7 @@ import { civicTitle } from '../../../game/cities/terminology.ts'
 // The social state is the one the existing People, Contacts and Invite screens use
 // (src/app/features/social/useSocial.ts): a message sent here shows there. All text is rendered as text;
 // nothing a player typed is ever markup or a link.
-import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
 import type { Conversation, Message, SearchResult } from '../../../types/social.ts'
@@ -32,6 +32,7 @@ import { useGrowth } from '../growth/useGrowth.ts'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import PingButton from '../ping/PingButton.vue'
 import PingStrip from '../ping/PingStrip.vue'
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
@@ -317,6 +318,7 @@ defineExpose({
           </template>
         </header>
         <PingStrip v-if="partner && pingFor(partner)" inset :id="partner" :name="title" />
+        <div v-if="partner && conv?.kind === 'dm'" class="messages-visit"><VisitButton compact :id="partner" :name="title" /></div>
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
         <GroupManage v-if="conv?.kind === 'group' && ui.manage" :conv="conv" :me="me" @left="groupLeft" @player="openCard" />
@@ -460,6 +462,8 @@ defineExpose({
 .messages-note { margin: 6px 2px; font-size: 12px; line-height: 1.45; color: var(--c-muted); }
 .messages-note.is-warn { color: var(--c-red); }
 .messages-note.is-inset { margin: 6px 14px; }
+.messages-visit { display: flex; margin: 4px 14px 0; }
+.messages-visit:empty { display: none; }
 .messages-link { min-height: 32px; padding: 0 4px; border: 0; background: none; color: var(--c-green-dark); font: 600 12px var(--font); text-decoration: underline; cursor: pointer; }
 .messages-why { display: block; margin-top: 2px; font-size: 12px; line-height: 1.4; color: var(--c-red); }
 .messages-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--c-badge); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; }

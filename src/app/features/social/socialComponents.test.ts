@@ -36,7 +36,7 @@ function overview(extra: Partial<SocialOverview> = {}): SocialOverview {
     ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null,
     requests: { in: [], out: [] }, baeRequests: [], conversations: [], updates: [],
     house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [] },
-    prefs: { groups: 'friends', mentions: 'on', pictures: 'friends' },
+    prefs: { groups: 'friends', mentions: 'on', pictures: 'friends', notify: { text: true, groups: 'mentions', pausedUntil: null, quietDm: false, quietGroups: true } },
     limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam', 'offensive-name'], pins: 3, mentions: 5, pictures: { on: true, bytes: 250000, caption: 200 } }, ...extra,
   }
 }

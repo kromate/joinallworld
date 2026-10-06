@@ -19,6 +19,7 @@ interface Reply {
   status: number; error: string; ok: boolean; code: string; reason: string; duplicate: boolean
   conv: Conversation; conversations: Conversation[]; messages: Message[]; message: Message; updates: SocialOverview['updates']; prefs: SocialOverview['prefs']
   results: { id: string; name: string }[]; friends: SocialOverview['friends']; limits: SocialOverview['limits']; receipt: { id: string }; pictures: { id: string; reports: number; hidden: boolean; removed: boolean }[]
+  state: { cash: number }
   [key: string]: unknown
 }
 const HOUR = 3600000;
@@ -26,10 +27,10 @@ const get = async (f: Fixture, path: string, who?: Device): Promise<Reply> => { 
 const post = async (f: Fixture, path: string, body: unknown, who?: Device): Promise<Reply> => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json() as object) } as Reply; };
 const defined = <T>(value: T | null | undefined, what = 'value'): T => { if (value === null || value === undefined) throw new TypeError(`Expected ${what}`); return value; };
 const social = (f: Fixture): Promise<SocialCollection> => f.server.store.read((db) => structuredClone(defined(db.social, 'social')));
-async function people(f: Fixture, names: string[]): Promise<Device[]> {
+async function people<const N extends readonly string[]>(f: Fixture, names: N): Promise<{ [K in keyof N]: Device }> {
   const made: Device[] = [];
   for (const name of names) { const who = await f.device(name); await get(f, '/api/life?city=lagos', who); await get(f, '/api/social/me', who); made.push(who); }
-  return made;
+  return made as { [K in keyof N]: Device };
 }
 async function befriend(f: Fixture, a: Device, b: Device): Promise<void> {
   assert.equal((await post(f, '/api/social/friends/request', { to: b.id, cityId: 'lagos' }, a)).code, 'requested');
@@ -54,7 +55,7 @@ test('groups: who can add whom, roles, mute, pins, hide, hand-over and system li
   assert.equal((await group(f, ada, 'Crew', [dayo])).code, 'friends_only');
   await post(f, '/api/social/prefs', { groups: 'nobody' }, chi);
   assert.equal((await group(f, ada, 'Crew', [chi])).code, 'not_accepting');
-  assert.deepEqual((await get(f, '/api/social/me', chi)).prefs, { groups: 'nobody', mentions: 'on', pictures: 'friends' });
+  assert.equal((await get(f, '/api/social/me', chi)).prefs.groups, 'nobody');
   await post(f, '/api/social/prefs', { groups: 'friends' }, chi);
   assert.equal((await post(f, '/api/social/prefs', { groups: 'everyone' }, chi)).status, 400);
   const made = await group(f, ada, 'Weekend Crew', [bola]);
@@ -274,8 +275,9 @@ test('a gift is a money line in both threads at once, the recipient is told live
   assert.deepEqual(theirs?.gift, { amount: 1500 }); assert.deepEqual(mine?.gift, { amount: 1500 });
   assert.equal(theirs?.from?.name, 'Ada'); assert.equal(defined(dm).unread, 1);
   assert.equal((await get(f, '/api/life?city=lagos', bola)).state.cash, 6500);
-  assert.equal(defined(defined(await until(peer, 'transfer'))).type, 'transfer');
-  assert.ok(await until(peer, 'life-changed'));
+  const seen = new Set<string>();
+  for (let i = 0; i < 40 && !(seen.has('transfer') && seen.has('life-changed')); i += 1) seen.add((await peer.next()).type);
+  assert.ok(seen.has('transfer') && seen.has('life-changed'), `the recipient's devices were told live (${[...seen].join(', ')})`);
   assert.equal((await unreadUpdates(f, bola, 'transfer')).length, 1);
   // Offline recipient: the line is there at once; the money arrives with their next request, exactly once.
   const away = await send(chi, 500);
@@ -367,7 +369,7 @@ test('picture bytes: sniffed by magic number, metadata left out, hostile files r
 });
 
 async function pictureWorld(t: TestContext, options: FixtureOptions = {}) {
-  const f = await fixture(t, options);
+  const f = await fixture(t, { ...options, env: { CHAT_IMAGES: 'friends', ...options.env } });
   const [ada, bola, chi, dayo] = await people(f, ['Ada', 'Bola', 'Chidi', 'Dayo']);
   await befriend(f, ada, bola); await befriend(f, ada, chi);
   const upload = (who: Device, target: object, bytes: Uint8Array = jpeg(800, 600), extra: object = {}): Promise<Reply> =>
@@ -501,7 +503,7 @@ test('pictures in groups, the founder rule, reports that hide a picture, and ope
 test('the founder: strangers cannot add or mention him, he may add the players who hold his automatic friendship, pictures need him to write first', async (t) => {
   const PROJECT = 'allworld-test-project', ADDRESS = 'founder@example.com';
   const key = await makeKey('key-1'), provider = fakeProvider([key]);
-  const f = await fixture(t, { fetch: (url, init) => provider.fetch(String(url), init as { body?: unknown }), log: () => {}, env: { ACCOUNTS_FIREBASE_PROJECT_ID: PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'test-web-api-key-0000000000000000000000', FOUNDER_EMAIL_SHA256: emailHash(ADDRESS) } });
+  const f = await fixture(t, { fetch: (url, init) => provider.fetch(String(url), init as { body?: unknown }), log: () => {}, env: { ACCOUNTS_FIREBASE_PROJECT_ID: PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'test-web-api-key-0000000000000000000000', FOUNDER_EMAIL_SHA256: emailHash(ADDRESS), CHAT_IMAGES: 'friends' } });
   const page = (path: string, body: unknown, cookie?: string) => fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Origin: f.base, ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
   const device = await f.device('Zed'); await get(f, '/api/life?city=lagos', device);
   const csrf = ((await (await page('/api/account', null, device.cookie)).json()) as { csrf: string | null }).csrf;

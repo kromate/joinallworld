@@ -163,6 +163,8 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/groups/:id': mine((db, session, body, request) => service.groupUpdate(db, session, { ...body, conv: request.params.id })),
     'GET /api/social/friends/search': route((db, session, body, request) => service.friendSearch(db, session, request.query.get('q'))),
     'POST /api/social/conversations/:id/prefs': mine((db, session, body, request) => service.convPrefs(db, session, { ...body, conv: request.params.id })),
+    'POST /api/social/conversations/:id/react': route((db, session, body, request) => service.react(db, session, { ...body, conv: request.params.id })),
+    'POST /api/social/notify': mine((db, session, body) => service.notifyPrefs(db, session, body)),
     'POST /api/social/prefs': mine((db, session, body) => service.chatPrefs(db, session, body)),
     'POST /api/social/images': upload,
     'GET /api/social/images/:id': picture,

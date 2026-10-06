@@ -235,6 +235,8 @@ export interface SocialPlayerRecord {
   noPictures?: true
   /** Pictures sent on Lagos day `day`. */
   pics?: { day: number; count: number }
+  /** Phone notifications for messages (server/growth/message-push.ts). Absent fields are the defaults. */
+  notify?: { hide?: true; all?: true; until?: number; quietDm?: true; noQuiet?: true }
   /** This player was introduced to the founder (that character's id), once: never cleared (server/social/founder.ts). Absent: not yet. */
   founder?: { id: string; at: number }
   /** This player came through `by`'s invite link and the two were introduced, once: never cleared (server/social/service.ts meetInviter). Absent: not yet. */
@@ -257,6 +259,8 @@ export interface MessageRecord {
   re?: { seq: number; from: string; text: string }
   /** A gift of money sent from the chat: `n` naira, and `r` of it that went to a ride debt on arrival. Its words are in `body`. */
   gift?: { n: number; r?: number }
+  /** Reactions: player id → the one emoji they reacted with (at most REACTION_KINDS different emoji on a message). */
+  rx?: Record<string, string>
   /** A picture: the id of its bytes (kept apart from this collection), its size and what became of it. */
   img?: ImageRef
 }
@@ -540,7 +544,7 @@ export interface EmailContactRecord {
 }
 export interface PushContactRecord {
   /** At most 3 per player. */
-  subs: { endpoint: string; p256dh: string; auth: string; at: number }[]
+  subs: { endpoint: string; p256dh: string; auth: string; at: number; /** The device's offset from UTC in minutes, when its browser said (quiet hours for messages). */ tz?: number }[]
   sends: number[]
   periods: OutreachPeriods
 }
@@ -855,6 +859,8 @@ export interface ServerEvents {
   'invite-joined': { inviter: string; /** The player who joined (absent on a build that did not say). */ newcomer?: string }
   /** social: a block or unblock was committed. */
   'blocks-changed': { a: string; b: string }
+  /** social: a message reached a player's conversation (a direct message, a group message, a mention, a reply or a gift). The phone notification is decided from the stored state a few seconds later (growth/message-push.ts). */
+  'chat-notice': { to: string; from: string | null; conv: string; seq: number; kind: 'message' | 'group' | 'mention' | 'reply' | 'gift' }
   /** host: every heartbeat. */
   heartbeat: { now: number }
   /** rooms.js: the host's life left home. */

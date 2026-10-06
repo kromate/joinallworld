@@ -59,17 +59,17 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  * committed() raises 'blocks-changed' { a, b }.
  */
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
-import { lagosTime } from '../../src/game/clock.ts';
+import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityName } from '../../src/game/cities/index.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
-import { clip } from './clip.ts';
+import { clip, glyphs } from './clip.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
-import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView } from '../../src/types/social.ts';
+import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { AccountRecord, ConversationRecord, ImageRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
 
@@ -93,7 +93,7 @@ export const LIMITS = Object.freeze({
   updates: 50, reports: 2000, ownReports: 20, reportText: 300, pending: 50,
   guests: 5, knockMs: 60000, knockCooldownMs: 60000, visitMs: 30 * 60000,
   strangerMessages: 3, newChatsPerDay: 10, searchResults: 10,
-  pins: 3, mentions: 5, everyoneMs: 600000, groupAddsPerHour: 30, mentionMessages: 20, friendPicks: 20, quote: 80, giftLine: 40,
+  pins: 3, reactionKinds: 6, mentions: 5, everyoneMs: 600000, groupAddsPerHour: 30, mentionMessages: 20, friendPicks: 20, quote: 80, giftLine: 40,
   escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
 });
 export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReason[]>(['harassment', 'spam', 'cheating', 'offensive-name', 'other']);
@@ -305,7 +305,8 @@ function buildService(ctx: RouteContext) {
     const ids = start < 0 ? [] : all.slice(start, start + FOUNDER_PAGE), last = ids.at(-1);
     return { ids, total: all.length, next: last && start + ids.length < all.length ? `${last[1]}:${last[0]}` : null };
   }
-  const prefsOf = (p: SocialPlayerRecord): { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody' } => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends' });
+  const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends',
+    notify: { text: p.notify?.hide !== true, groups: p.notify?.all ? 'all' : 'mentions', pausedUntil: p.notify?.until && p.notify.until > now() ? p.notify.until : null, quietDm: p.notify?.quietDm === true, quietGroups: p.notify?.noQuiet !== true } });
   const bodyOf = (message: MessageRecord): string => (message.auto ? WELCOME_NOTE : message.body);
 
   const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
@@ -478,6 +479,18 @@ function buildService(ctx: RouteContext) {
     const since = friendsSince(s.players, viewer, message.from), fresh = since > 0 && now() - since < 86400000;
     return { ...base, ...(first || fresh ? { blur: true as const } : {}) };
   }
+  /** The reactions on a message, grouped by emoji, as this viewer sees them (a reaction of someone they blocked is left out). */
+  function reactionsOf(s: SocialCollection, message: MessageRecord, viewer: string): { emoji: string; count: number; mine?: true }[] | undefined {
+    if (!message.rx) return undefined;
+    const tally = new Map<string, { count: number; mine: boolean }>();
+    for (const [who, emoji] of Object.entries(message.rx)) {
+      if (who !== viewer && s.players[viewer]?.blocked[who]) continue;
+      const entry = tally.get(emoji) ?? { count: 0, mine: false };
+      entry.count += 1; entry.mine ||= who === viewer;
+      tally.set(emoji, entry);
+    }
+    return tally.size ? [...tally].map(([emoji, { count, mine }]) => ({ emoji, count, ...(mine ? { mine: true as const } : {}) })) : undefined;
+  }
   function messageView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string) {
     const quote = message.re && !s.players[viewer]?.blocked[message.re.from] ? { seq: message.re.seq, from: pub(s, message.re.from), text: message.re.text } : undefined;
     const picture = pictureView(s, conv, message, viewer);
@@ -485,6 +498,7 @@ function buildService(ctx: RouteContext) {
       ...(message.sys ? { sys: true as const } : {}), ...(message.auto ? { auto: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}),
       ...(message.men?.length ? { mentions: message.men.map(([id, start, length]): Mention => ({ id, start, end: start + length })) } : {}),
       ...(quote ? { replyTo: quote } : {}),
+      ...(reactionsOf(s, message, viewer) ? { reactions: reactionsOf(s, message, viewer) } : {}),
       ...(message.gift ? { gift: { amount: message.gift.n, ...(message.gift.r && message.from !== viewer ? { repaid: message.gift.r } : {}) } } : {}),
       ...(picture ? { image: picture } : {}) };
   }
@@ -626,6 +640,8 @@ function buildService(ctx: RouteContext) {
   // ---- groups, mentions, pictures: shared rules ----------------------------------------------
   /** Both listed each other: an ordinary friendship. The founder's automatic one is not (server/social/founder.ts). */
   const ordinary = (s: SocialCollection, a: string, b: string): boolean => s.players[a]?.friends[b] !== undefined && s.players[b]?.friends[a] !== undefined;
+  /** One emoji as a person counts it: a single character of pictographs, flags, keycaps and the joiners between them. */
+  const reactionOk = (value: string): boolean => value.length <= 32 && /^[\p{Extended_Pictographic}\p{Regional_Indicator}\p{Emoji_Modifier}\u200d\ufe0f\u20e3#*0-9\u{e0020}-\u{e007f}]+$/u.test(value) && /[\p{Extended_Pictographic}\p{Regional_Indicator}\u20e3]/u.test(value) && glyphs(value) === 1;
   const groupsOf = (s: SocialCollection, id: string): number => Object.keys(s.players[id]?.convs ?? {}).filter((key) => s.convs[key]?.kind === 'group').length;
   /**
    * May `adder` put `target` in a group? Only an ordinary friend (never a stranger, never the founder through the automatic
@@ -748,8 +764,17 @@ function buildService(ctx: RouteContext) {
         ctx.push(to, message);
         if (message.type === 'social-update' && message.update.kind === 'invite-joined') ctx.emit?.('invite-joined', { inviter: to, ...(message.update.data?.from ? { newcomer: message.update.data.from } : {}) });
       }
+      const noticed = (list: PushList): void => {
+        for (const [to, frame] of list) {
+          if (frame.type !== 'dm' || frame.message.sys || frame.message.auto || frame.message.from?.id === to || frame.conv.kind === 'house') continue;
+          const seen = frame.message, mentioned = seen.mentions?.some((item) => item.id === to || item.id === 'everyone');
+          ctx.emit?.('chat-notice', { to, from: seen.from?.id ?? null, conv: frame.conv.id, seq: seen.seq, kind: seen.gift ? 'gift' : mentioned ? 'mention' : seen.replyTo?.from?.id === to ? 'reply' : frame.conv.kind === 'group' ? 'group' : 'message' });
+        }
+      };
+      noticed((owed ?? []) as PushList);
       if (!result || !Array.isArray((result as { push?: unknown }).push)) return result as Delivered<R>;
       const { push, ...rest } = result as R & { push: PushList };
+      noticed(push);
       for (const [to, message] of push) ctx.push(to, message);
       return rest as Delivered<R>;
     },
@@ -1121,6 +1146,59 @@ function buildService(ctx: RouteContext) {
         say(`${p.name} removed ${pub(s, member).name}.`);
       } else throw bad('invalid_group_op');
       return yes('updated', { conv: summary(s, conv, id), push });
+    },
+    /** body: { conv, seq, emoji } — the caller's one reaction to a message; `emoji: null` takes it back. */
+    react(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv);
+      const seq = typeof body.seq === 'number' && Number.isSafeInteger(body.seq) && body.seq > 0 ? body.seq : -1;
+      const emoji = body.emoji === null ? null : typeof body.emoji === 'string' && reactionOk(body.emoji) ? body.emoji : undefined;
+      if (seq < 0 || emoji === undefined) throw bad('invalid_reaction');
+      const { s, id } = enter(db, session);
+      const conv = memberConv(s, id, key);
+      if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      const line = conv.messages.find((item) => item.seq === seq);
+      if (!line || line.sys || line.auto || !visibleTo(s, id, line)) return no('unknown_message', 'That message is not there any more.');
+      if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return no('blocked', 'You cannot react in this chat.');
+      if (!ctx.allow(`social:react:${id}`, 60)) return no('rate_limited', 'You are reacting too quickly. Wait a moment.');
+      const reactions = line.rx ??= {};
+      if (emoji === null) delete reactions[id];
+      else {
+        const kinds = new Set(Object.entries(reactions).filter(([who]) => who !== id).map(([, kept]) => kept));
+        if (!kinds.has(emoji) && kinds.size >= LIMITS.reactionKinds) { if (!Object.keys(reactions).length) delete line.rx; return no('too_many_reactions', `A message can have ${LIMITS.reactionKinds} different reactions. Use one that is already there.`); }
+        reactions[id] = emoji;
+      }
+      if (!Object.keys(reactions).length) delete line.rx;
+      const push: PushList = [];
+      for (const member of conv.members) if (visibleTo(s, member, line)) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      // The author is told quietly, in Updates, one line for the message: "Joy and 2 others reacted". Never a toast, mail or phone notification.
+      const author = line.from;
+      if (emoji !== null && author && author !== id && s.players[author] && !blockedEither(s, id, author)) {
+        const others = Object.keys(reactions).filter((who) => who !== author && !blockedEither(s, who, author));
+        const words = `${others.length > 1 ? `${pub(s, id).name} and ${others.length - 1} ${others.length === 2 ? 'other' : 'others'}` : pub(s, id).name} reacted to your message.`;
+        const kept = s.players[author]!.updates.find((item) => item.kind === 'reaction' && item.data?.conv === key && item.data.seq === seq);
+        if (kept) { kept.text = words; kept.at = now(); kept.read = false; push.push([author, { type: 'social-update', update: kept }]); }
+        else notify(s, author, 'reaction', words, { from: id, conv: key, seq }, push);
+      }
+      return yes('reacted', { message: messageView(s, conv, line, id), push });
+    },
+    /** body: { text?, groups?, pause?, quietDm?, quietGroups? } — what the phone is told about messages. */
+    notifyPrefs(db: Db, session: SessionRecord, body: SocialBody) {
+      const { p } = enter(db, session);
+      const n = p.notify ??= {};
+      if (body.text !== undefined) { if (typeof body.text !== 'boolean') throw bad('invalid_pref'); if (body.text) delete n.hide; else n.hide = true; }
+      if (body.groups !== undefined) { if (body.groups !== 'mentions' && body.groups !== 'all') throw bad('invalid_pref'); if (body.groups === 'all') n.all = true; else delete n.all; }
+      if (body.quietDm !== undefined) { if (typeof body.quietDm !== 'boolean') throw bad('invalid_pref'); if (body.quietDm) n.quietDm = true; else delete n.quietDm; }
+      if (body.quietGroups !== undefined) { if (typeof body.quietGroups !== 'boolean') throw bad('invalid_pref'); if (body.quietGroups) delete n.noQuiet; else n.noQuiet = true; }
+      if (body.pause !== undefined) {
+        const t = now();
+        if (body.pause === 'off') delete n.until;
+        else if (body.pause === '1h') n.until = t + 3600000;
+        else if (body.pause === '8h') n.until = t + 8 * 3600000;
+        else if (body.pause === 'tomorrow') n.until = lagosDayStart(lagosTime(t).day + 1) + 7 * 3600000;
+        else throw bad('invalid_pref');
+      }
+      if (!Object.keys(n).length) delete p.notify;
+      return yes('saved', { notify: prefsOf(p).notify });
     },
     /** body: { conv, mute?, pin?, hide? } — what one player keeps for themselves about a conversation. */
     convPrefs(db: Db, session: SessionRecord, body: SocialBody) {

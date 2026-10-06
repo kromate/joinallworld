@@ -112,6 +112,8 @@ export interface Message {
   replyTo?: ReplyQuote
   /** A gift of money sent from the chat: the amount, and how much of it paid a ride debt on arrival (shown to the one who received it). */
   gift?: { amount: number; repaid?: number }
+  /** Reactions, grouped: each emoji, how many reacted with it, and whether the viewer did. */
+  reactions?: { emoji: string; count: number; mine?: true }[]
   /** A picture. Its bytes are at GET /api/social/images/<id>, for members of the conversation only. */
   image?: PictureView
 }
@@ -127,7 +129,7 @@ export interface PictureView {
 
 export type SocialUpdateKind =
   | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
-  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention'
+  | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
   id: number
@@ -136,7 +138,7 @@ export interface SocialUpdate {
   at: number
   read: boolean
   /** `{ from }`, `{ host }`, `{ conv }`, `{ report }` or `{ from, amount }` depending on `kind`; absent for `moderation`. `invite-joined`: `from` is the player who joined. */
-  data?: { from?: string; host?: string; conv?: string; report?: string; amount?: number }
+  data?: { from?: string; host?: string; conv?: string; report?: string; amount?: number; seq?: number }
   // INCONSISTENT: src/ui/panels/inbox.js:52 keys a notification by `update.at` + `update.kind`, not by this
   // `id`, so two updates of one kind in the same millisecond share a key.
 }
@@ -190,7 +192,7 @@ export interface SocialLimits {
 }
 
 /** Who may add a player to a group, and whether a mention breaks through a muted group. */
-export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody' }
+export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody'; notify: NotifyPrefs }
 
 /** GET /api/social/me. */
 export interface SocialOverview {
@@ -284,6 +286,10 @@ export type SendMessageBody = ({ to: string } | { conv: ConversationId }) & {
 /** `type` names the bytes' content type; `data` is standard base64. `body` is an optional caption. */
 export type PictureUploadBody = ({ to: string } | { conv: ConversationId }) & { clientId: string; type: 'image/jpeg' | 'image/png' | 'image/webp'; data: string; body?: string; replyTo?: number; mentions?: { id: string; start: number }[] }
 export type PictureRefusal = 'pictures_off' | 'pictures_blocked' | 'pictures_refused' | 'friends_only' | 'rate_limited' | 'not_a_member' | 'picture_rejected' | OtherPlayerRefusal | TextRefusal
+/** Phone notifications for messages. `pause`: 'off' clears it. */
+export interface NotifyPrefsBody { text?: boolean; groups?: 'mentions' | 'all'; pause?: '1h' | '8h' | 'tomorrow' | 'off'; quietDm?: boolean; quietGroups?: boolean }
+export interface NotifyPrefs { text: boolean; groups: 'mentions' | 'all'; pausedUntil: number | null; quietDm: boolean; quietGroups: boolean }
+export interface ReactBody { seq: number; emoji: string | null }
 export interface ConvPrefsBody { mute?: boolean; pin?: boolean; hide?: true }
 export interface ChatPrefsBody { groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody' }
 export interface ReadBody { seq?: number }
@@ -412,6 +418,10 @@ export interface SocialHttpRoutes {
   /** Mute or pin a conversation, or remove it from the caller's list (`hide`): the caller's own copy only. */
   'POST /api/social/conversations/:id/prefs': { params: { id: ConversationId }; body: ConvPrefsBody; response: Ok<Done<'updated', { conv: Conversation }> | Done<'hidden'> | Refusal<'not_a_member' | 'not_allowed' | 'pin_limit'>>; errors: SocialPost | 'invalid_conversation' }
   /** Who may add the caller to groups, whether a mention breaks through a muted group, who may send them pictures. */
+  /** One reaction of the caller's on a message (`emoji: null` takes it back). */
+  'POST /api/social/conversations/:id/react': { params: { id: ConversationId }; body: ReactBody; response: Ok<Done<'reacted', { message: Message }> | Refusal<'not_a_member' | 'unknown_message' | 'too_many_reactions' | 'rate_limited' | 'blocked'>>; errors: SocialPost | 'invalid_conversation' | 'invalid_reaction' }
+  /** Phone notification settings for messages. */
+  'POST /api/social/notify': { body: NotifyPrefsBody; response: Ok<Done<'saved', { notify: NotifyPrefs }>>; errors: SocialPost | 'invalid_pref' }
   'POST /api/social/prefs': { body: ChatPrefsBody; response: Ok<Done<'saved', { prefs: ChatPrefs }>>; errors: SocialPost | 'invalid_pref' }
   /** One picture in a message: the body is JSON with the picture as base64 (at most 250 kB of picture). Answered like POST /api/social/messages. */
   'POST /api/social/images': { body: PictureUploadBody; response: Ok<SendMessageResult | Refusal<PictureRefusal>>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' | 'invalid_picture' | 'body_too_large' }

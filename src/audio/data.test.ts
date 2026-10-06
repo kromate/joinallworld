@@ -33,9 +33,10 @@ test('every event in the sound map has a recipe, and every recipe is used by som
 })
 
 test('every event name the game uses exists, and every event is raised by something', () => {
-  const literal = /(?<!stage\.)\bplay(?:Sound)?\(\s*(['"`])([^'"`$]+)\1/g
+  const literal = /\bplay(?:Sound)?\(\s*(['"`])([^'"`$]+)\1/g
   const raised = new Set<string>()
-  for (const [path, text] of code) for (const match of text.matchAll(literal)) {
+  // The guide's own play() calls name poses of its figure ('wave', 'point'), not sounds.
+  for (const [path, text] of code) if (!path.includes('/features/companion/')) for (const match of text.matchAll(literal)) {
     const name = match[2] as string
     raised.add(name)
     if (!name.startsWith('cmd:')) assert.ok(eventNames.has(name), `${relative(root, path)} plays unknown event "${name}"`)

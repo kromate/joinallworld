@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // People: the tab of the Sim sheet (also the E shortcut, and an app on the Phone). Who is in this
 // venue right now — real players (from the server's live presence, marked "Real player") and the
-// venue's NPC regulars (marked with their role) — then friends with their presence, friend
+// venue's NPC regulars (each carries the NPC badge; a real player carries none) — then friends with their presence, friend
 // requests, and every relationship with its closeness meter. A tap on a person opens the card.
 // Every disabled control says why. All names are rendered as text.
 import '../../../ui/controls.css'
@@ -14,6 +14,7 @@ import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import ClosenessMeter from './ClosenessMeter.vue'
 import FounderTag from './FounderTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
@@ -44,7 +45,7 @@ const summary = computed(() => {
 // One string: a space at the start of a conditional template child is trimmed by the compiler, which glued the two sentences together.
 const summaryLine = computed(() => {
   const count = here.value.length
-  return count ? `${summary.value} ${count} local${count === 1 ? '' : 's'} (NPCs) ${count === 1 ? 'is' : 'are'} always around.` : summary.value
+  return count ? `${summary.value} ${count} NPC${count === 1 ? '' : 's'} (game characters) ${count === 1 ? 'is' : 'are'} always around.` : summary.value
 })
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
 /** A friend in another city reads "in <city>": the reader's own city is what that is judged against. */
@@ -75,7 +76,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
         <PlayerAvatar :name="player.name" :seed="player.id" status="online" /><strong>{{ player.name }}<FounderTag v-if="player.founder" /><ResidentBadge :id="player.id" /></strong><small class="is-player">Real player{{ player.friend ? ' · Friend' : '' }}</small>
       </button>
       <button v-for="npc in here" :key="`n${npc.id}`" type="button" class="social-card" @click="shell.open('person', { npc: npc.id })">
-        <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="npc.name" :seed="npc.id" /></span><strong>{{ npc.name }}</strong><small>{{ npc.role }} · NPC</small>
+        <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="npc.name" :seed="npc.id" /></span><strong>{{ npc.name }}</strong><small><NpcBadge lead />{{ npc.role }}</small>
       </button>
     </div>
     <button v-if="life.location !== 'home' && view.connected" type="button" class="social-btn" @click="openVenueChat">Open venue chat</button>
@@ -120,12 +121,12 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
       <div v-for="rel in social.relationships" :key="rel.id" class="social-row">
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="rel.name" :seed="rel.id" /></span>
         <div>
-          <strong>{{ rel.name }}</strong><small>{{ rel.role }} · {{ closenessText(rel, social.maxCloseness) }}</small>
+          <strong>{{ rel.name }}</strong><small><NpcBadge v-if="rel.npc" lead />{{ rel.role }} · {{ closenessText(rel, social.maxCloseness) }}</small>
           <ClosenessMeter :points="rel.points" :max="rel.next ? rel.next.min : social.maxCloseness" :label="`Closeness with ${rel.name}`" />
         </div>
       </div>
     </div>
-    <EmptyState v-else icon="handshake" title="Nobody yet" text="Say hello to one of the regulars at a venue to start." />
+    <EmptyState v-else icon="handshake" title="Nobody yet" text="Say hello to an NPC at a venue to start." />
     <p class="preview-note">Closeness tiers (Acquaintance 5, Friend 20, Paddy Mi 40) and points are original beta values. {{ social.paddyCount }} Paddy Mi so far.</p>
   </div>
 </template>

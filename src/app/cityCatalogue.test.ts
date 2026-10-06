@@ -60,7 +60,7 @@ test('Vue game view, scene crowd and NPC card use the current city catalogue', a
   const component = (await load<{ default: Component }>('/src/app/features/social/NpcCard.vue')).default
   const html = await renderToString(createSSRApp({ render: () => h(component, { id: 'test-fictional-one' }) }))
   const words = text(html)
-  assert.ok(words.includes('One') && words.includes('Neighbour · NPC'))
+  assert.ok(words.includes('One') && words.includes('Neighbour') && html.includes('data-npc-badge') && words.includes('NPC, a game character, not a real player'))
   assert.equal(words.includes('Kunle') || words.includes('Freedom Park'), false)
 
   const RadioBanner = (await load<{ default: Component }>('/src/app/features/civic/RadioBanner.vue')).default
@@ -110,7 +110,7 @@ test('cold foreign NPC card uses the saved snapshot and offers no local interact
   const component = (await load<{ default: Component }>('/src/app/features/social/NpcCard.vue')).default
   const html = await renderToString(createSSRApp({ render: () => h(component, { id: 'test-fictional-one' }) }))
   const words = text(html)
-  assert.ok(words.includes('One') && words.includes('Neighbour · NPC'))
+  assert.ok(words.includes('One') && words.includes('Neighbour') && html.includes('data-npc-badge') && words.includes('NPC, a game character, not a real player'))
   assert.ok(words.includes('Fictional') && words.includes('Travel there to interact.'))
   assert.equal(html.includes('class="social-act"'), false)
   assert.equal(words.includes('Neighbour One') || words.includes('Neighbour Two'), false, 'a local neighbour does not replace the cold foreign identity')

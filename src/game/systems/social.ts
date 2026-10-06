@@ -56,6 +56,7 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
+import { NPC_WORD } from '../npc-mark.ts';
 import { freeOf, spendFree } from './wallet.ts';
 import { addMoodlet, addSkillXp, arrive, canAfford, canCredit, changeNeeds, credit, debit, skillLevel } from '../api.ts';
 import { repayFromEarnings } from '../relief.ts';
@@ -384,7 +385,7 @@ function familyCall(state: LifeState, member: FamilyMember, ctx: LifeContext): v
     if (!calledAnyoneToday) book.streak = { day, count: book.streak.day === day - 1 ? book.streak.count + 1 : 1 };
   }
   const quote = member.quotes[Math.floor(ctx.rng() * member.quotes.length)];
-  state.message = `${member.name}: “${quote}”${first ? '' : ' (You already checked in today.)'}`;
+  state.message = `${member.name} (${NPC_WORD}): “${quote}”${first ? '' : ' (You already checked in today.)'}`;
   emit(state, 'npc.interacted', { npc: member.id, action: 'call', success: true }, ctx);
 }
 
@@ -441,7 +442,7 @@ const play = PLAYS ? {
       const { landed, result } = interact(state, npc.id, action, { npc: true, npcDefinition: npc, cityId: ctx.cityId }, ctx, false);
       const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
       state.message = landed
-        ? `${npc.name}: “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
+        ? `${npc.name} (${NPC_WORD}): “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
         : `Your joke did not land. ${npc.name} just blinked at you.`;
       if (action.id === 'hello') emit(state, 'npc.greeted', { npc: npc.id }, ctx);
       emit(state, 'npc.interacted', { npc: npc.id, action: action.id, success: landed }, ctx);

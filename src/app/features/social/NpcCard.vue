@@ -10,6 +10,7 @@ import { cityRules } from '../../../game/cities/registry.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import ClosenessMeter from './ClosenessMeter.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { npcActionReason, npcMeterMax, npcReason } from './personModel.ts'
@@ -52,8 +53,8 @@ async function start(activity: string): Promise<void> {
 <template>
   <p v-if="!base" class="ui-error">That person is not around.</p>
   <div v-else>
-    <div class="social-head people-who"><span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="base.name" :seed="base.id" /></span><h3>{{ base.name }}</h3></div>
-    <p>{{ base.role }} · NPC<template v-if="here"> · {{ here.left }} of {{ view.social.dailyInteractions }} interactions left today</template></p>
+    <div class="social-head people-who"><span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="base.name" :seed="base.id" /></span><h3>{{ base.name }}</h3><NpcBadge /></div>
+    <p>{{ base.role }}<template v-if="here"> · {{ here.left }} of {{ view.social.dailyInteractions }} interactions left today</template></p>
     <p v-if="here" class="social-quote">“{{ here.quote }}”</p>
     <p>{{ rel ? closenessText(rel, view.social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="max" :label="`Closeness with ${base.name}`" />

@@ -8,6 +8,7 @@
 // the controller starts the stream muted. Nothing in this file asks for media.
 import { computed, nextTick, ref, watch } from 'vue'
 import type { CommunityStore } from './communityStore.ts'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import '../../../community.css'
 
 const props = defineProps<{ store: Pick<CommunityStore, 'state' | 'controller'> }>()
@@ -110,8 +111,8 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
       <div v-if="!s.privateHome" class="community-chat">
         <h3>Room chat</h3>
         <ol ref="messages" class="community-messages" aria-label="Room messages" aria-live="polite" aria-relevant="additions">
-          <li v-for="line in s.chat" :key="line.key">
-            <div><strong>{{ line.author }}</strong><small v-if="line.delivery">{{ line.delivery }}</small></div>
+          <li v-for="line in s.chat" :key="line.key" :class="{ 'is-npc': line.npc }" :data-npc-line="line.npc ? '' : undefined">
+            <div><strong><NpcBadge v-if="line.npc" lead />{{ line.author }}</strong><small v-if="line.delivery">{{ line.delivery }}</small></div>
             <p>{{ line.body }}</p>
             <button v-if="line.canRetry" type="button" data-community-retry-message @click="control()?.retryMessage(line.key)">Retry message</button>
           </li>
@@ -130,3 +131,8 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
     <button v-if="s.canReconnect" class="community-retry" type="button" @click="control()?.reconnect()">Reconnect</button>
   </section>
 </template>
+
+<style scoped>
+/* A game character's line: tinted, with a dashed rule down its left edge, besides the NPC badge before its name. A real player's line is plain. */
+.community-messages li.is-npc { background: var(--c-fill, #eef1ef); border-left: 3px dashed var(--c-faint, #6b737c); padding-left: 10px; }
+</style>

@@ -74,11 +74,11 @@ export function govOfScope(scope: PoliticsScopeRecord): GovScope {
 /** The ballots of a seat as a read sees them: nothing is created, so a read of an empty seat writes nothing. */
 export const peekGov = (scope: PoliticsScopeRecord): GovScope => (scope.gov ? govOfScope(scope) : { gov: { elections: {}, announcements: [] } });
 
-const emptyJustice = (): JusticeRecord => ({ offences: {}, jail: {}, police: {}, fights: {}, pairs: {} });
+const emptyJustice = (): JusticeRecord => ({ offences: {}, jail: {}, police: {}, judges: {}, lawyers: {}, cases: {}, fights: {}, pairs: {} });
 /** The justice record, created or repaired in place. */
 export function justiceOf(politics: PoliticsCollection): JusticeRecord {
   const found = record(politics.justice) ? politics.justice : (politics.justice = emptyJustice());
-  for (const key of ['offences', 'jail', 'police', 'fights', 'pairs'] as const) if (!record(found[key])) found[key] = {};
+  for (const key of ['offences', 'jail', 'police', 'judges', 'lawyers', 'cases', 'fights', 'pairs'] as const) if (!record(found[key])) found[key] = {};
   return found;
 }
 /** The justice record as a read sees it: nothing is created. */

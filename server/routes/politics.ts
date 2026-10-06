@@ -18,9 +18,9 @@
  */
 import { cityRules } from '../../src/game/cities/index.ts';
 import { AD_COLOURS, ELECTION } from '../../src/game/content/civic.ts';
-import { JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
+import { BAIL_LEVER, JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
 import { civicTitle } from '../../src/game/cities/terminology.ts';
-import type { JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId } from '../../src/types/politics.ts';
+import type { CaseRecord, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../src/types/politics.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import { lagosTime } from '../../src/game/clock.ts';
@@ -32,9 +32,9 @@ import type { Db, GovScope, RouteContext, RouteHandler, RouteKey, RouteRequest }
 import { governorAt, phaseAt } from '../civic/elections.ts';
 import { cleanLine } from '../civic/text.ts';
 import { govOfScope, justiceOf, peekGov, peekJustice, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
-import { arrestBlock, attackerWins, fightBlock, inJurisdiction, jail, jailOf, officersOf, policeIsValid, recordFight } from '../politics/justice.ts';
+import { appealBlock, applyRuling, arrestBlock, attackerWins, bailOf, escalate, escalateBlock, fightBlock, fileAppeal, inJurisdiction, jail, jailOf, judgesOf, nextTier, officersOf, policeIsValid, recordFight, ruleBlock } from '../politics/justice.ts';
 import type { Seat } from '../politics/data.ts';
-import { decreeBlock, drawSalary, found, foundBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, salaryBlock, salaryDue, setDecree } from '../politics/rules.ts';
+import { credit, decreeBlock, drawSalary, found, foundBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, salaryBlock, salaryDue, setDecree } from '../politics/rules.ts';
 
 export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, fail } = ctx;
@@ -97,13 +97,20 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
   const tierOfScope = (scope: string): TierId => (scope.startsWith('city:') ? 'city' : scope.startsWith('state:') ? 'state' : 'nation');
   const sittingOf = (db: Db, scope: string): { id: string; week: number } | null => { const sitting = governorAt(govOfId(db, scope), ctx.now(), QUORUM[tierOfScope(scope)]); return sitting ? { id: sitting.id, week: sitting.week } : null; };
   const daysLived = (life: LifeState): number => Math.max(0, lagosTime(ctx.now()).day - lagosTime(life.civic.since).day);
+  const caseView = (found: CaseRecord, justice: ReturnType<typeof peekJustice>, now: number): CaseView => {
+    const sentence = justice.jail[found.defendant.id];
+    return { id: found.id, defendant: found.defendant, officer: found.officer, offence: found.id, tier: found.tier, court: found.scope, filedAt: found.filedAt, statement: found.statement,
+      counsel: found.counsel ? { id: found.counsel.id, name: found.counsel.name, argument: found.counsel.argument ?? null } : null, appeals: found.appeals, status: found.status,
+      ruling: found.ruling ?? null, lower: found.lower ?? null, until: sentence && sentence.offence === found.id && sentence.until > now ? sentence.until : null };
+  };
   /** The seats' officers and the sentence in force, for the city the caller stands in. */
   function justiceOverview(db: Db, cityId: CityId, who: PlayerRef | null, life: LifeState | null): JusticeResponse {
     const now = ctx.now(), politics = peekPolitics(db), justice = peekJustice(politics);
     const seats = seatsOf(cityId, cityName(cityId)).map((seat): JusticeSeatView => {
       const sitting = sittingOf(db, seat.id), scope = peekScope(politics, seat.id);
       return { tier: seat.tier, scope: seat.id, title: titleOf(seat.tier, cityId), name: seat.name, officers: officersOf(justice, seat.id, sitting).map(([id, record]) => ({ id, name: record.name })),
-        capacity: JUSTICE.officers[seat.tier], canEnrol: !!who && sitting?.id === who.id, sentence: leverValue(scope, govOfId(db, seat.id), now, SENTENCE_LEVER[seat.tier]) };
+        judges: judgesOf(justice, seat.id, sitting).map(([id, record]) => ({ id, name: record.name })), capacity: JUSTICE.officers[seat.tier], judgeCapacity: JUSTICE.judges[seat.tier],
+        canEnrol: !!who && sitting?.id === who.id, sentence: leverValue(scope, govOfId(db, seat.id), now, SENTENCE_LEVER[seat.tier]), bail: bailOf(leverValue(scope, govOfId(db, seat.id), now, BAIL_LEVER[seat.tier])) };
     });
     const mine = who ? justice.police[who.id] : undefined;
     const officer = mine && policeIsValid(mine, sittingOf(db, mine.scope)) ? mine : null;
@@ -113,7 +120,23 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
     const open = Object.values(justice.offences).filter((offence) => offence.status === 'open' && now - offence.at <= JUSTICE.offenceMs).sort((a, b) => b.at - a.at);
     const reach = officer ? open.filter((offence) => offence.by.id !== who?.id && !jailOf(justice, offence.by.id, now) && inJurisdiction(officer.tier, officer.scope, offence.city, seatsOf(offence.city, offence.city).map((seat) => seat.id))).slice(0, 20).map(view) : [];
     const sentence = who ? jailOf(justice, who.id, now) : null;
-    return { city: cityId, seats,
+    const view_ = (found: CaseRecord): CaseView => caseView(found, justice, now);
+    const myJudge = who ? justice.judges[who.id] : undefined;
+    const judge = myJudge && policeIsValid(myJudge, sittingOf(db, myJudge.scope)) ? myJudge : null;
+    const mySentence = who ? jailOf(justice, who.id, now) : null;
+    const myCase = mySentence ? justice.cases[mySentence.offence] : undefined;
+    const sentenceBail = mySentence?.scope ? bailOf(leverValue(peekScope(politics, mySentence.scope), govOfId(db, mySentence.scope), now, BAIL_LEVER[mySentence.tier])) : 0;
+    const cases = Object.values(justice.cases);
+    const court: JusticeResponse['court'] = {
+      lawyer: !!who && Object.hasOwn(justice.lawyers, who.id), judge: judge ? { tier: judge.tier, scope: judge.scope } : null,
+      case: myCase && myCase.defendant.id === who?.id ? view_(myCase) : null, bail: sentenceBail,
+      counselFor: who ? cases.filter((item) => item.counsel?.id === who.id && item.status === 'open').slice(0, 10).map(view_) : [],
+      docket: judge && who ? cases.filter((item) => item.status === 'open' && item.scope === judge.scope && item.defendant.id !== who.id && item.officer.id !== who.id && item.counsel?.id !== who.id).slice(0, 20).map(view_) : [],
+      lawyers: Object.entries(justice.lawyers).sort((a, b) => a[1].at - b[1].at).slice(0, JUSTICE.lawyersListed).map(([id, record]) => ({ id, name: record.name })),
+      rulings: cases.filter((item) => item.status === 'decided' && item.ruling).sort((a, b) => (b.ruling?.at ?? 0) - (a.ruling?.at ?? 0)).slice(0, 10).map(view_),
+      fees: { appeal: JUSTICE.appealFee, escalate: JUSTICE.escalateFee },
+    };
+    return { city: cityId, seats, court,
       you: who ? { jail: sentence ? { until: sentence.until, minutes: sentence.minutes, by: sentence.by } : null, police: officer ? { tier: officer.tier, scope: officer.scope } : null, wanted: open.filter((offence) => offence.by.id === who.id).slice(0, 5).map(view) } : null,
       offences: reach, rules: { minDays: JUSTICE.minDays, minEnergy: JUSTICE.minEnergy, cooldownMinutes: JUSTICE.cooldownMs / 60000, offenceHours: JUSTICE.offenceMs / 3600000, arrestsPerHour: JUSTICE.arrestsPerHour } };
   }
@@ -272,9 +295,9 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         const sitting = sittingOf(db, seat.id), target = ctx.core.sessionByPublicId(db, player);
         if (!sitting || sitting.id !== who.id) return justiceWrite(db, cityId, who, life, noJustice('not_in_office', 'Only the sitting officeholder can enrol police.'));
         if (!target) return justiceWrite(db, cityId, who, life, noJustice('unknown_player', 'That player is not here.'));
-        const justice = justiceOf(politicsOf(ctx, db)), officers = officersOf(justice, seat.id, sitting);
-        if (!officers.some(([id]) => id === player) && officers.length >= JUSTICE.officers[tier]) return justiceWrite(db, cityId, who, life, noJustice('police_full', `A ${titleOf(tier, cityId)} can enrol at most ${JUSTICE.officers[tier]} officers.`));
-        justice.police[player] = { scope: seat.id, tier, week: sitting.week, by: { id: who.id, name: who.name }, name: ctx.publicSession(target).name, at: ctx.now() };
+        const justice = justiceOf(politicsOf(ctx, db)), judge = body.role === 'judge', roster = judge ? judgesOf(justice, seat.id, sitting) : officersOf(justice, seat.id, sitting), capacity = judge ? JUSTICE.judges[tier] : JUSTICE.officers[tier];
+        if (!roster.some(([id]) => id === player) && roster.length >= capacity) return justiceWrite(db, cityId, who, life, noJustice('police_full', `A ${titleOf(tier, cityId)} can enrol at most ${capacity} ${judge ? 'judges' : 'officers'}.`));
+        (judge ? justice.judges : justice.police)[player] = { scope: seat.id, tier, week: sitting.week, by: { id: who.id, name: who.name }, name: ctx.publicSession(target).name, at: ctx.now() };
         return justiceWrite(db, cityId, who, life, { ok: true, code: 'enrolled' });
       });
     },
@@ -285,10 +308,10 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
       return store.transact((db) => {
         const { who, life } = enter(db, request, cityId);
         limit('enrol', who.id, 30);
-        const justice = justiceOf(politicsOf(ctx, db)), record = justice.police[player], sitting = sittingOf(db, seat.id);
-        if (!record || record.scope !== seat.id) return justiceWrite(db, cityId, who, life, noJustice('not_police', 'That player is not one of this seat’s officers.'));
-        if (player !== who.id && sitting?.id !== who.id) return justiceWrite(db, cityId, who, life, noJustice('not_in_office', 'Only the sitting officeholder can dismiss an officer.'));
-        delete justice.police[player];
+        const justice = justiceOf(politicsOf(ctx, db)), roster = body.role === 'judge' ? justice.judges : justice.police, record = roster[player], sitting = sittingOf(db, seat.id);
+        if (!record || record.scope !== seat.id) return justiceWrite(db, cityId, who, life, noJustice('not_police', 'That player is not one of this seat’s officers or judges.'));
+        if (player !== who.id && sitting?.id !== who.id) return justiceWrite(db, cityId, who, life, noJustice('not_in_office', 'Only the sitting officeholder can dismiss an officer or a judge.'));
+        delete roster[player];
         return justiceWrite(db, cityId, who, life, { ok: true, code: 'dismissed' });
       });
     },
@@ -315,13 +338,148 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
           if (!presence.isIn(who.id, room) || !presence.isIn(offence.by.id, room)) return noJustice('not_here', `${offence.by.name} is not here with you. Find them first.`);
           if (!ctx.allow(`politics:arrests:${who.id}`, JUSTICE.arrestsPerHour, 3600000)) return noJustice('arrest_limit', `An officer can make ${JUSTICE.arrestsPerHour} arrests an hour.`);
           const scope = peekScope(politics, officer.scope), minutes = leverValue(scope, govOfId(db, officer.scope), now, SENTENCE_LEVER[officer.tier]);
-          const sentence = jail(justice, now, offence, who, officer.tier, minutes);
+          const sentence = jail(justice, now, offence, who, officer.tier, officer.scope, minutes);
           const offender = ctx.core.sessionByPublicId(db, offence.by.id);
           if (offender?.cities?.[cityId]?.state) ctx.act(ctx.settle(offender, cityId), { type: 'civic.news', cityId, payload: { items: [{ id: `arrest-${offence.id}`, title: 'You were arrested', text: `${who.name} arrested you. You are in jail for ${sentence.minutes} minutes.`, at: now }] } });
           after = () => { ctx.push(offence.by.id, { type: 'social-sync' }); };
           return { ok: true as const, code: 'arrested' };
         });
         return justiceWrite(db, cityId, who, life, outcome, after);
+      });
+    },
+
+    // ---- courts -----------------------------------------------------------------------------------
+    'POST /api/politics/justice/lawyer': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId);
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('bar', who.id, 20);
+        const justice = justiceOf(politicsOf(ctx, db));
+        if (body.on === true) {
+          if (!Object.hasOwn(justice.lawyers, who.id) && Object.keys(justice.lawyers).length >= JUSTICE.lawyersListed) return justiceWrite(db, cityId, who, life, noJustice('bar_full', 'The bar is full. Try again when a lawyer stops practising.'));
+          justice.lawyers[who.id] = { name: who.name, at: ctx.now() };
+          return justiceWrite(db, cityId, who, life, { ok: true, code: 'practising' });
+        }
+        delete justice.lawyers[who.id];
+        return justiceWrite(db, cityId, who, life, { ok: true, code: 'retired' });
+      });
+    },
+
+    'POST /api/politics/justice/appeal': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId);
+      const statement = cleanLine(body.statement, { min: 3, max: JUSTICE.statementMax, what: 'Your statement' });
+      return store.transact((db) => {
+        const { session, who, life } = enter(db, request, cityId);
+        limit('court', who.id, 20);
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'justice.appeal', fingerprint: [cityId, statement.ok ? statement.text : String(body.statement ?? ''), String(body.counsel ?? '')] }, () => {
+          const politics = politicsOf(ctx, db), justice = justiceOf(politics), now = ctx.now();
+          const block = appealBlock(justice, now, who.id);
+          if (block) return noJustice(block.code, block.reason);
+          if (!statement.ok) return noJustice(statement.code, statement.reason);
+          let counsel: PlayerRef | null = null;
+          if (body.counsel !== undefined && body.counsel !== null && body.counsel !== '') {
+            const id = playerId(body.counsel), lawyer = justice.lawyers[id];
+            if (!lawyer || id === who.id) return noJustice('not_a_lawyer', 'That player is not a practising lawyer.');
+            counsel = { id, name: lawyer.name };
+          }
+          const sentence = jailOf(justice, who.id, now);
+          if (!sentence?.scope) return noJustice('no_court', 'That arrest cannot be appealed.');
+          const paid = ctx.act(life, { type: 'civic.treasury', cityId, payload: { op: 'pay', amount: JUSTICE.appealFee, label: 'Court fee' } });
+          if (!paid.ok) return noJustice(paid.code, paid.reason ?? 'You cannot pay the court fee.');
+          credit(scopeRecord(politics, sentence.scope), now, 'fee', JUSTICE.appealFee, `Court fee: ${who.name}`);
+          fileAppeal(justice, now, who, sentence, justice.offences[sentence.offence]?.city ?? cityId, statement.text, counsel);
+          return { ok: true as const, code: 'appealed' };
+        });
+        return justiceWrite(db, cityId, who, life, outcome);
+      });
+    },
+
+    'POST /api/politics/justice/argue': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), offenceId = typeof body.offence === 'string' && /^o\d{1,12}$/.test(body.offence) ? body.offence : null;
+      if (!offenceId) throw fail(400, 'invalid_offence');
+      const argument = cleanLine(body.argument, { min: 3, max: JUSTICE.argumentMax, what: 'Your argument' });
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('court', who.id, 20);
+        const found = justiceOf(politicsOf(ctx, db)).cases[offenceId];
+        if (!found || found.status !== 'open' || found.counsel?.id !== who.id) return justiceWrite(db, cityId, who, life, noJustice('not_your_case', 'You are not the named lawyer on an open case.'));
+        if (found.counsel.argument) return justiceWrite(db, cityId, who, life, noJustice('already_argued', 'You have already made your argument.'));
+        if (!argument.ok) return justiceWrite(db, cityId, who, life, noJustice(argument.code, argument.reason));
+        found.counsel.argument = argument.text;
+        return justiceWrite(db, cityId, who, life, { ok: true, code: 'argued' });
+      });
+    },
+
+    'POST /api/politics/justice/rule': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), offenceId = typeof body.offence === 'string' && /^o\d{1,12}$/.test(body.offence) ? body.offence : null;
+      if (!offenceId) throw fail(400, 'invalid_offence');
+      const verdict: Verdict | undefined = (['upheld', 'reduced', 'quashed'] as const).find((item) => item === body.verdict);
+      const note = cleanLine(body.note, { min: 3, max: JUSTICE.noteMax, what: 'The reasons' });
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('court', who.id, 30);
+        const justice = justiceOf(politicsOf(ctx, db)), found = justice.cases[offenceId], now = ctx.now();
+        const judge = justice.judges[who.id];
+        const block = ruleBlock(found, who.id, judge ? sittingOf(db, judge.scope) : null, judge);
+        if (block || !found) return justiceWrite(db, cityId, who, life, noJustice(block?.code ?? 'no_such_case', block?.reason ?? 'That case is not before a court.'));
+        if (!verdict) return justiceWrite(db, cityId, who, life, noJustice('invalid_verdict', 'Choose upheld, reduced or quashed.'));
+        if (!note.ok) return justiceWrite(db, cityId, who, life, noJustice(note.code, note.reason));
+        applyRuling(justice, now, found, who, verdict, note.text);
+        const defendant = ctx.core.sessionByPublicId(db, found.defendant.id);
+        if (defendant?.cities?.[cityId]?.state) {
+          const said = verdict === 'quashed' ? 'The arrest was quashed. You are free.' : verdict === 'reduced' ? 'Your sentence was cut in half.' : 'The arrest was upheld. The sentence stands.';
+          ctx.act(ctx.settle(defendant, cityId), { type: 'civic.news', cityId, payload: { items: [{ id: `ruling-${found.id}-${found.appeals}`, title: 'The court ruled', text: `${who.name}: ${said}`, at: now }] }, stateGuard: 'only notices whose id is not yet in life.civic.news are posted' });
+        }
+        return justiceWrite(db, cityId, who, life, { ok: true, code: verdict }, () => { ctx.push(found.defendant.id, { type: 'social-sync' }); });
+      });
+    },
+
+    'POST /api/politics/justice/escalate': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId);
+      return store.transact((db) => {
+        const { session, who, life } = enter(db, request, cityId);
+        limit('court', who.id, 20);
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'justice.escalate', fingerprint: [cityId] }, () => {
+          const politics = politicsOf(ctx, db), justice = justiceOf(politics), now = ctx.now();
+          const block = escalateBlock(justice, now, who.id);
+          if (block) return noJustice(block.code, block.reason);
+          const sentence = jailOf(justice, who.id, now), found = sentence ? justice.cases[sentence.offence] : undefined, up = found ? nextTier(found.tier) : null;
+          const court = found && up ? seatsOf(found.city, found.city).find((seat) => seat.tier === up) : undefined;
+          if (!found || !up || !court) return noJustice('top_court', 'There is no higher court to go to.');
+          const paid = ctx.act(life, { type: 'civic.treasury', cityId, payload: { op: 'pay', amount: JUSTICE.escalateFee, label: 'Appeal fee' } });
+          if (!paid.ok) return noJustice(paid.code, paid.reason ?? 'You cannot pay the appeal fee.');
+          credit(scopeRecord(politics, court.id), now, 'fee', JUSTICE.escalateFee, `Appeal fee: ${who.name}`);
+          escalate(found, court.id, up);
+          return { ok: true as const, code: 'escalated' };
+        });
+        return justiceWrite(db, cityId, who, life, outcome);
+      });
+    },
+
+    'POST /api/politics/justice/bail': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId);
+      return store.transact((db) => {
+        const { session, who, life } = enter(db, request, cityId);
+        limit('court', who.id, 20);
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'justice.bail', fingerprint: [cityId] }, () => {
+          const politics = politicsOf(ctx, db), justice = justiceOf(politics), now = ctx.now();
+          const sentence = jailOf(justice, who.id, now);
+          if (!sentence) return noJustice('not_jailed', 'You are not in jail.');
+          const amount = sentence.scope ? bailOf(leverValue(scopeRecord(politics, sentence.scope), govOfId(db, sentence.scope), now, BAIL_LEVER[sentence.tier])) : 0;
+          if (!sentence.scope || amount <= 0) return noJustice('no_bail', 'No bail is set for this arrest. You will be released when the sentence ends.');
+          const paid = ctx.act(life, { type: 'civic.treasury', cityId, payload: { op: 'pay', amount, label: 'Bail' } });
+          if (!paid.ok) return noJustice(paid.code, paid.reason ?? 'You cannot pay the bail.');
+          credit(scopeRecord(politics, sentence.scope), now, 'bail', amount, `Bail: ${who.name}`);
+          delete justice.jail[who.id];
+          return { ok: true as const, code: 'bailed' };
+        });
+        return justiceWrite(db, cityId, who, life, outcome);
       });
     },
   };

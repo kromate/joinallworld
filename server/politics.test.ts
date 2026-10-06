@@ -27,7 +27,7 @@ test('levies set by a mayor, a governor and a president are added to a stall pur
   assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'nation', lever: 'vat', value: 15 }, president)).code, 'decreed');
   assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'nation', lever: 'tradeDuty', value: 25 }, president)).code, 'decreed');
   const seen = await overview(buyer);
-  assert.deepEqual(seen.seats.map((seat) => [seat.tier, seat.levers.map((lever) => [lever.id, lever.value])]), [['city', [['marketLevy', 10], ['citySentence', 10]]], ['state', [['salesTax', 5], ['stateSentence', 15]]], ['nation', [['vat', 15], ['nationSentence', 20], ['tradeDuty', 25]]]]);
+  assert.deepEqual(seen.seats.map((seat) => [seat.tier, seat.levers.map((lever) => [lever.id, lever.value])]), [['city', [['marketLevy', 10], ['citySentence', 10], ['cityBail', 0]]], ['state', [['salesTax', 5], ['stateSentence', 15], ['stateBail', 0]]], ['nation', [['vat', 15], ['nationSentence', 20], ['nationBail', 0], ['tradeDuty', 25]]]]);
   assert.deepEqual(seen.seats.map((seat) => seat.you?.isOfficeholder), [false, false, false]);
   assert.deepEqual((await overview(mayor)).seats.map((seat) => seat.you?.isOfficeholder), [true, false, false]);
 

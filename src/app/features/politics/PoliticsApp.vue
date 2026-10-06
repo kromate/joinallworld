@@ -7,7 +7,7 @@
 import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
-import type { JusticeResponse, LeverView, PoliticsResponse, TierId } from '../../../types/politics.ts'
+import type { CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -18,8 +18,8 @@ import CivicStatus from '../civic/CivicStatus.vue'
 import { colourOf, sloganTooShort, until, votes, PHASES, NEXT, voteWhy, runWhy, barWidth } from '../civic/civicModel.ts'
 import { AD_COLOURS, ELECTION } from '../civic/civicContent.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
-import { arrestRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
-import { TABS, arrestWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
+import { appealRequest, arrestRequest, bailRequest, escalateRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
+import { TABS, VERDICTS, arrestWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
 
 defineProps<{ params?: unknown }>()
 const { game } = useApp()
@@ -94,6 +94,33 @@ function doneLaw(result: Record<string, unknown>): void {
 async function arrest(id: string): Promise<void> {
   const result = await civic.send(`p-arrest:${id}`, '/api/politics/justice/arrest', { offence: id, requestId: civic.requestId(arrestRequest, [cityId.value, id]) }, { success: 'The arrest is made.' })
   civic.requestDone(arrestRequest, result)
+  doneLaw(result)
+}
+async function appeal(): Promise<void> {
+  const result = await civic.send('p-appeal', '/api/politics/justice/appeal', { statement: ui.court.statement, ...(ui.court.counsel ? { counsel: ui.court.counsel } : {}), requestId: civic.requestId(appealRequest, [cityId.value, ui.court.statement, ui.court.counsel]) }, { success: 'Your appeal is filed.' })
+  civic.requestDone(appealRequest, result)
+  if (result.ok) ui.court.statement = ''
+  doneLaw(result)
+}
+async function escalate(): Promise<void> {
+  const result = await civic.send('p-escalate', '/api/politics/justice/escalate', { requestId: civic.requestId(escalateRequest, [cityId.value]) }, { success: 'Your case is before the higher court.' })
+  civic.requestDone(escalateRequest, result)
+  doneLaw(result)
+}
+async function postBail(): Promise<void> {
+  const result = await civic.send('p-bail', '/api/politics/justice/bail', { requestId: civic.requestId(bailRequest, [cityId.value]) }, { success: 'Bail paid. You are free.' })
+  civic.requestDone(bailRequest, result)
+  doneLaw(result)
+}
+async function practise(on: boolean): Promise<void> { doneLaw(await civic.send('p-bar', '/api/politics/justice/lawyer', { on }, { success: on ? 'You are listed as a lawyer.' : 'You have stopped practising.' })) }
+async function argue(offence: string): Promise<void> {
+  const result = await civic.send(`p-argue:${offence}`, '/api/politics/justice/argue', { offence, argument: ui.court.argument }, { success: 'Your argument is filed.' })
+  if (result.ok) ui.court.argument = ''
+  doneLaw(result)
+}
+async function rule(found: CaseView, verdict: Verdict): Promise<void> {
+  const result = await civic.send(`p-rule:${found.id}`, '/api/politics/justice/rule', { offence: found.id, verdict, note: ui.court.note }, { success: 'Your ruling is made.' })
+  if (result.ok) ui.court.note = ''
   doneLaw(result)
 }
 async function dismissOfficer(tierId: string, player: string): Promise<void> { doneLaw(await civic.send(`p-dismiss:${player}`, '/api/politics/justice/dismiss', { tier: tierId, player }, { success: 'The officer is dismissed.' })) }
@@ -214,10 +241,11 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
         <section v-for="seat in law.seats" :key="seat.scope" class="ui-card politics-force">
           <strong>{{ seat.title }} of {{ seat.name }}</strong>
           <p class="politics-note">Assault sentence in force: <b>{{ seat.sentence }} minutes</b>. {{ seat.officers.length }} of {{ seat.capacity }} officers{{ seat.officers.length ? ':' : '.' }}</p>
+          <p class="politics-note">Bail: <b>{{ seat.bail > 0 ? money(seat.bail) : 'none' }}</b>. {{ seat.judges.length }} of {{ seat.judgeCapacity }} judges{{ seat.judges.length ? `: ${seat.judges.map((judge) => judge.name).join(', ')}` : '.' }}</p>
           <ul v-if="seat.officers.length" class="politics-officers">
             <li v-for="officer in seat.officers" :key="officer.id"><span>{{ officer.name }}</span><CivicAction v-if="seat.canEnrol" :working="civic.busy(`p-dismiss:${officer.id}`)" :reason="offline('dismiss') ?? ''" @click="dismissOfficer(seat.tier, officer.id)">Dismiss</CivicAction></li>
           </ul>
-          <p v-if="seat.canEnrol" class="politics-note">You hold this seat. Open a player’s card to make them an officer. An officer serves until your term ends.</p>
+          <p v-if="seat.canEnrol" class="politics-note">You hold this seat. Open a player’s card to make them an officer or a judge. An officer serves until your term ends.</p>
         </section>
         <template v-if="law.you?.police">
           <SectionTitle>Open offences</SectionTitle>
@@ -232,6 +260,57 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
           <SectionTitle>You are wanted</SectionTitle>
           <p class="politics-note">Police may arrest you for these fights if they find you.</p>
           <section v-for="offence in law.you.wanted" :key="offence.id" class="ui-card politics-offence"><strong>{{ offenceLine(offence) }}</strong><small>{{ dateOf(offence.at) }}</small></section>
+        </template>
+
+        <SectionTitle>Courts</SectionTitle>
+        <section v-if="law.you?.jail" class="ui-card politics-case">
+          <strong>Your case</strong>
+          <template v-if="law.court.case">
+            <p class="politics-note">{{ caseLine(law.court.case) }}. Before the {{ courtName(law.court.case.tier) }}.</p>
+            <q>{{ law.court.case.statement }}</q>
+            <p v-if="law.court.case.counsel" class="politics-note">Your lawyer: {{ law.court.case.counsel.name }}{{ law.court.case.counsel.argument ? `: “${law.court.case.counsel.argument}”` : ' (has not argued yet)' }}</p>
+            <p v-if="law.court.case.lower" class="politics-note">Lower court: {{ rulingLine({ ruling: law.court.case.lower }) }}</p>
+            <p v-if="law.court.case.ruling" class="politics-note"><strong>{{ rulingLine(law.court.case) }}</strong></p>
+            <p v-else class="politics-note">Waiting for a judge to rule.</p>
+            <CivicAction v-if="canEscalate(law.court.case)" :working="civic.busy('p-escalate')" :reason="offline('appeal') ?? ''" @click="escalate">Take it to the {{ higherCourt(law.court.case.tier) }} · {{ money(law.court.fees.escalate) }}</CivicAction>
+          </template>
+          <template v-else>
+            <label class="politics-field">Your statement (up to 140 characters, no links)<input v-model="ui.court.statement" maxlength="140" autocomplete="off"></label>
+            <label v-if="law.court.lawyers.length" class="politics-field">A lawyer to argue for you (optional)<select v-model="ui.court.counsel"><option value="">None</option><option v-for="lawyer in law.court.lawyers" :key="lawyer.id" :value="lawyer.id">{{ lawyer.name }}</option></select></label>
+            <CivicAction primary :working="civic.busy('p-appeal')" :reason="statementWhy(offline('appeal'), ui.court.statement)" @click="appeal">Appeal the arrest · {{ money(law.court.fees.appeal) }}</CivicAction>
+          </template>
+          <CivicAction v-if="law.court.bail > 0" :working="civic.busy('p-bail')" :reason="offline('post bail') ?? ''" @click="postBail">Pay bail · {{ money(law.court.bail) }}</CivicAction>
+          <p v-else class="politics-note">No bail is set for this arrest.</p>
+        </section>
+        <section class="ui-card politics-case">
+          <strong>Lawyers</strong>
+          <p class="politics-note">A lawyer argues for a jailed player who names them. Agree a fee in chat; the game does not move it.</p>
+          <CivicAction :working="civic.busy('p-bar')" :reason="offline('practise') ?? ''" @click="practise(!law.court.lawyer)">{{ law.court.lawyer ? 'Stop practising' : 'Practise as a lawyer' }}</CivicAction>
+          <p v-if="law.court.lawyers.length" class="politics-note">Practising: {{ law.court.lawyers.map((lawyer) => lawyer.name).join(', ') }}</p>
+          <div v-for="found in law.court.counselFor" :key="found.id" class="politics-docket">
+            <strong>{{ found.defendant.name }}</strong><q>{{ found.statement }}</q>
+            <template v-if="!found.counsel?.argument">
+              <label class="politics-field">Your argument (up to 200 characters)<input v-model="ui.court.argument" maxlength="200" autocomplete="off"></label>
+              <CivicAction primary :working="civic.busy(`p-argue:${found.id}`)" :reason="statementWhy(offline('argue'), ui.court.argument)" @click="argue(found.id)">Argue the case</CivicAction>
+            </template>
+            <p v-else class="politics-note">You argued: {{ found.counsel.argument }}</p>
+          </div>
+        </section>
+        <section v-if="law.court.judge" class="ui-card politics-case">
+          <strong>The bench · {{ courtName(law.court.judge.tier) }}</strong>
+          <p v-if="!law.court.docket.length" class="politics-note">No case is waiting for you.</p>
+          <div v-for="found in law.court.docket" :key="found.id" class="politics-docket">
+            <strong>{{ caseLine(found) }}</strong>
+            <q>{{ found.statement }}</q>
+            <p v-if="found.counsel" class="politics-note">Counsel {{ found.counsel.name }}: {{ found.counsel.argument ?? 'has not argued yet' }}</p>
+            <p v-if="found.lower" class="politics-note">Lower court: {{ rulingLine({ ruling: found.lower }) }}</p>
+            <label class="politics-field">Your reasons (public)<input v-model="ui.court.note" maxlength="100" autocomplete="off"></label>
+            <span class="politics-verdicts"><CivicAction v-for="verdict in VERDICTS" :key="verdict.id" :primary="verdict.id === 'quashed'" :working="civic.busy(`p-rule:${found.id}`)" :reason="noteWhy(offline('rule'), ui.court.note)" :title="verdict.about" @click="rule(found, verdict.id)">{{ verdict.label }}</CivicAction></span>
+          </div>
+        </section>
+        <template v-if="law.court.rulings.length">
+          <SectionTitle>Recent rulings</SectionTitle>
+          <section v-for="found in law.court.rulings" :key="found.id" class="ui-card politics-offence"><strong>{{ found.defendant.name }}</strong><small>{{ courtName(found.tier) }} · {{ rulingLine(found) }}</small></section>
         </template>
         <SectionTitle>How it works</SectionTitle>
         <section class="ui-card">
@@ -288,6 +367,11 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-jail p { margin: 2px 0 0 !important; font-size: 13px !important; }
 .politics-force, .politics-offence { display: grid; gap: 6px; margin-bottom: var(--s-2); }
 .politics-offence small { color: var(--c-muted); font-size: 12px; }
+.politics-case { display: grid; gap: 6px; margin-bottom: var(--s-2); }
+.politics-case q { font-size: 13px; color: var(--c-ink-2); overflow-wrap: anywhere; }
+.politics-docket { display: grid; gap: 6px; padding-top: var(--s-2); border-top: 1px solid var(--c-fill-2); }
+.politics-verdicts { display: flex; flex-wrap: wrap; gap: 4px; }
+.politics-field select { min-height: var(--tap); }
 .politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .politics-officers li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
 .politics-colours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s-2); }

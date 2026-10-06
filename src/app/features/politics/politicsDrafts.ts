@@ -4,11 +4,14 @@ import type { LeverId } from '../../../types/politics.ts'
 import type { TabId } from './politicsModel.ts'
 import { requestSlot } from '../civic/civicCore.ts'
 
-export const politicsUi = reactive<{ tab: TabId; slogan: string; levers: Partial<Record<LeverId, number>>; party: { name: string; motto: string; colour: string } }>({
-  tab: 'city', slogan: '', levers: {}, party: { name: '', motto: '', colour: 'green' },
+export const politicsUi = reactive<{ tab: TabId; slogan: string; levers: Partial<Record<LeverId, number>>; party: { name: string; motto: string; colour: string }; court: { statement: string; counsel: string; argument: string; note: string } }>({
+  tab: 'city', slogan: '', levers: {}, party: { name: '', motto: '', colour: 'green' }, court: { statement: '', counsel: '', argument: '', note: '' },
 })
 export const runRequest = requestSlot()
 export const salaryRequest = requestSlot()
 export const partyRequest = requestSlot()
 export const fightRequest = requestSlot()
 export const arrestRequest = requestSlot()
+export const appealRequest = requestSlot()
+export const escalateRequest = requestSlot()
+export const bailRequest = requestSlot()

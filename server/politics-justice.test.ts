@@ -134,3 +134,78 @@ test('an officer’s reach: not the offender’s city for a city officer elsewhe
   assert.equal((await arrest(chi, open)).code, 'not_police', 'a resigned officer cannot arrest');
   assert.equal((await arrest(rest[1]!, open)).code, 'arrested', 'a city officer arrests in their own city');
 });
+
+test('courts: bail, an appeal with a lawyer, a judge’s ruling, and one appeal to the state court', { timeout: 120000 }, async (t) => {
+  const { f, atPark, fight, arrest, enrol, elect, justice, post, get } = await scene(t);
+  const mayor = await atPark('Mayor'), governor = await atPark('Governor'), ada = await atPark('Ada', 100), bola = await atPark('Bola', 30), chi = await atPark('Chi'), judy = await atPark('Judy'), sam = await atPark('Sam'), lex = await atPark('Lex'), dayo = await atPark('Dayo', 30);
+  await elect(mayor, 'city:lagos', QUORUM.city); await elect(governor, 'state:lagos', QUORUM.state);
+  assert.equal((await enrol(mayor, chi, 'city')).code, 'enrolled');
+  const judge = (device: Device, tier: string, by: Device) => post('/api/politics/justice/enrol', { cityId: 'lagos', tier, player: device.id, role: 'judge' }, by);
+  assert.equal((await judge(judy, 'city', mayor)).code, 'enrolled');
+  assert.equal((await judge(sam, 'state', governor)).code, 'enrolled');
+  assert.equal((await judge(judy, 'city', chi)).code, 'not_in_office', 'only the officeholder makes judges');
+  assert.deepEqual((await justice(mayor)).seats[0]?.judges.map((item) => item.name), ['Judy']);
+  assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'city', lever: 'citySentence', value: 20 }, mayor)).code, 'decreed');
+  assert.equal((await post('/api/politics/decree', { cityId: 'lagos', tier: 'city', lever: 'cityBail', value: 3000 }, mayor)).code, 'decreed');
+  assert.equal((await post('/api/politics/justice/lawyer', { cityId: 'lagos', on: true }, lex)).code, 'practising');
+  assert.deepEqual((await justice(ada)).court.lawyers.map((item) => item.name), ['Lex']);
+
+  // Bail frees at once, for the price the Mayor set, paid into the city treasury.
+  assert.equal((await fight(ada, bola)).code, 'won');
+  const first = (await justice(ada)).you?.wanted[0]?.id ?? '';
+  assert.equal((await arrest(chi, first)).code, 'arrested');
+  assert.equal((await justice(ada)).court.bail, 3000);
+  const cash = (await get('/api/life?city=lagos', ada)).state?.cash ?? 0;
+  const bailed = await post('/api/politics/justice/bail', { cityId: 'lagos', requestId: f.id() }, ada);
+  assert.equal(bailed.code, 'bailed');
+  assert.equal(cash - (bailed.state?.cash ?? 0), 3000);
+  assert.equal((await justice(ada)).you?.jail, null);
+  assert.equal((await post('/api/politics/justice/bail', { cityId: 'lagos', requestId: f.id() }, ada)).code, 'not_jailed');
+  assert.equal(((await get('/api/politics/overview?city=lagos', ada)) as unknown as { seats: { treasury: { balance: number } }[] }).seats[0]?.treasury.balance, 3000);
+
+  // A second offence: appealed with a lawyer, cut by a city judge, then taken to the state court and quashed.
+  f.advance(6 * 60000);
+  assert.equal((await fight(ada, dayo)).code, 'won');
+  const second = (await justice(ada)).you?.wanted.find((offence) => offence.against.name === 'Dayo')?.id ?? '';
+  assert.equal((await arrest(chi, second)).code, 'arrested');
+  assert.equal((await post('/api/politics/justice/appeal', { cityId: 'lagos', statement: 'ab', requestId: f.id() }, ada)).code, 'text_too_short');
+  assert.equal((await post('/api/politics/justice/appeal', { cityId: 'lagos', statement: 'He swung first', counsel: bola.id, requestId: f.id() }, ada)).code, 'not_a_lawyer');
+  assert.equal((await post('/api/politics/justice/appeal', { cityId: 'lagos', statement: 'He swung first', requestId: f.id() }, bola)).code, 'not_jailed');
+  const cash2 = (await get('/api/life?city=lagos', ada)).state?.cash ?? 0;
+  const appealed = await post('/api/politics/justice/appeal', { cityId: 'lagos', statement: 'He swung first', counsel: lex.id, requestId: f.id() }, ada);
+  assert.equal(appealed.code, 'appealed'); assert.equal(cash2 - (appealed.state?.cash ?? 0), 500);
+  assert.equal((await post('/api/politics/justice/appeal', { cityId: 'lagos', statement: 'Again', requestId: f.id() }, ada)).code, 'already_appealed');
+  assert.deepEqual([(await justice(lex)).court.counselFor.length, (await justice(judy)).court.docket.length, (await justice(chi)).court.docket.length, (await justice(sam)).court.docket.length], [1, 1, 0, 0], 'the lawyer sees the case, the city judge has it on the docket, nobody else does');
+  assert.equal((await post('/api/politics/justice/argue', { cityId: 'lagos', offence: second, argument: 'My client was provoked' }, bola)).code, 'not_your_case');
+  assert.equal((await post('/api/politics/justice/argue', { cityId: 'lagos', offence: second, argument: 'My client was provoked' }, lex)).code, 'argued');
+  assert.equal((await post('/api/politics/justice/argue', { cityId: 'lagos', offence: second, argument: 'Once more' }, lex)).code, 'already_argued');
+  assert.equal((await justice(judy)).court.docket[0]?.counsel?.argument, 'My client was provoked');
+
+  const rule = (device: Device, verdict: string, note = 'Having heard both sides') => post('/api/politics/justice/rule', { cityId: 'lagos', offence: second, verdict, note }, device);
+  assert.equal((await rule(chi, 'quashed')).code, 'not_judge', 'the arresting officer cannot rule');
+  assert.equal((await rule(ada, 'quashed')).code, 'not_judge', 'nor the defendant');
+  assert.equal((await rule(sam, 'quashed')).code, 'not_judge', 'nor a judge of another court');
+  assert.equal((await rule(judy, 'banished')).code, 'invalid_verdict');
+  assert.equal((await rule(judy, 'reduced', 'ab')).code, 'text_too_short');
+  assert.equal((await rule(judy, 'reduced')).code, 'reduced');
+  const remaining = (await justice(ada)).you?.jail?.until ?? 0;
+  assert.ok(remaining - f.now() <= 10 * 60000 + 1000 && remaining - f.now() > 0, 'half of what was left');
+  assert.equal((await rule(judy, 'quashed')).code, 'no_such_case', 'one ruling for a hearing');
+  assert.equal((await justice(ada)).court.case?.ruling?.verdict, 'reduced');
+  assert.ok((await get('/api/life?city=lagos', ada)).state?.social.notices.some((notice) => notice.text.includes('Judy: Your sentence was cut in half')));
+
+  assert.equal((await post('/api/politics/justice/escalate', { cityId: 'lagos', requestId: f.id() }, bola)).code, 'no_case');
+  const up = await post('/api/politics/justice/escalate', { cityId: 'lagos', requestId: f.id() }, ada);
+  assert.equal(up.code, 'escalated');
+  assert.deepEqual([(await justice(judy)).court.docket.length, (await justice(sam)).court.docket.length], [0, 1], 'the state court has it now');
+  assert.equal((await rule(sam, 'quashed', 'The arrest was unsound')).code, 'quashed');
+  assert.equal((await justice(ada)).you?.jail, null, 'free');
+  const decided = (await justice(ada)).court.rulings[0];
+  assert.deepEqual([decided?.ruling?.verdict, decided?.lower?.verdict, decided?.appeals], ['quashed', 'reduced', 1]);
+  assert.equal((await post('/api/politics/justice/escalate', { cityId: 'lagos', requestId: f.id() }, ada)).code, 'no_case');
+
+  // Courts, like police, last a term.
+  f.advance(8 * 86400000);
+  assert.equal((await justice(judy)).court.judge, null);
+  assert.equal((await justice(mayor)).seats[0]?.judges.length, 0);
+});

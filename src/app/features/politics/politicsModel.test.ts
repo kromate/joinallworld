@@ -67,3 +67,25 @@ test('an officer is told when the offender is not here, and the officeholder see
   assert.equal(enrolSeats({ seats }).length, 1); assert.equal(enrolSeats(null).length, 0)
   assert.equal(officerOf(seats[1]!, 'x'), true); assert.equal(officerOf(seats[1]!, 'y'), false)
 })
+
+import { VERDICTS, canEscalate, courtName, higherCourt, noteWhy, rulingLine, statementWhy } from './politicsModel.ts'
+
+test('bail and sentences are shown with their own units', () => {
+  assert.equal(leverText({ unit: '₦' }, 3000), '₦3,000'); assert.equal(leverRange({ min: 0, max: 5000, unit: '₦' }), '₦0–₦5,000')
+  assert.equal(leverText({ unit: 'min' }, 15), '15 min'); assert.equal(leverText({ unit: '%' }, 5), '5%')
+})
+
+test('courts: who can go up, to which court, and what a ruling needs', () => {
+  assert.deepEqual([higherCourt('city'), higherCourt('state'), higherCourt('nation')], ['state court', 'federal court', null])
+  assert.equal(courtName('nation'), 'federal court')
+  const base = { status: 'decided' as const, appeals: 0, tier: 'city' as const, ruling: { by: { id: 'j', name: 'J' }, verdict: 'upheld' as const, note: 'x', at: 1, tier: 'city' as const } }
+  assert.equal(canEscalate(base), true)
+  assert.equal(canEscalate({ ...base, status: 'open' }), false, 'not ruled yet')
+  assert.equal(canEscalate({ ...base, appeals: 1 }), false, 'once')
+  assert.equal(canEscalate({ ...base, tier: 'nation' }), false, 'top court')
+  assert.equal(canEscalate({ ...base, ruling: { ...base.ruling, verdict: 'quashed' } }), false, 'already free')
+  assert.equal(rulingLine(base), 'J upheld it: x'); assert.equal(rulingLine({ ruling: null }), '')
+  assert.deepEqual(VERDICTS.map((verdict) => verdict.id), ['upheld', 'reduced', 'quashed'])
+  assert.match(noteWhy(null, 'ab'), /reasons first/); assert.equal(noteWhy(null, 'Fair and clear'), ''); assert.equal(noteWhy('Offline.', 'Fair'), 'Offline.')
+  assert.match(statementWhy(null, ''), /statement first/); assert.equal(statementWhy(null, 'I was provoked'), '')
+})

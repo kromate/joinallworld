@@ -46,20 +46,23 @@ Each seat has a treasury: a whole-naira balance and a public ledger of every cre
 
 ## 5. Justice
 
-Players can fight each other and can break the law; the arms of government answer. **Built:** fights, offences, police, arrest and jail. **Later:** courts, lawyers, appeals.
+Players can fight each other and can break the law; the arms of government answer. **Built:** fights, offences, police, arrest, jail, bail, courts, lawyers and one appeal. **Later:** audits and impeachment.
 
 - **Fights.** On another player's card, in the same public place, a player can press Fight. The server decides it: the fitter player usually wins, both lose energy (the loser more, and is left in a bad mood for an hour), and the fight is an *assault* on record for 24 hours. Limits that hold whoever is in office: a player who has lived in the city less than a day cannot fight or be fought; one fight every five minutes, and the same pair only every half hour; nobody is fought at home, offline, in another place, or when blocked; a fighter needs some energy left.
 - **Police.** The sitting officeholder of a seat enrols players as officers (city 3, state 8, nation 15). An officer serves only until that officeholder's term ends, so a new term means new decisions. An officer acts in their seat's reach: a city's police in that city, a state's anywhere in the state, the federal police anywhere.
 - **Arrest and jail.** An officer standing in the same place as the offender arrests them for an open offence. The sentence is the *assault sentence* lever of the officer's seat (city 1–60 minutes, state 1–120, nation 1–240; defaults 10, 15, 20) and never more than four hours. A jailed player cannot travel, work or fight; they can still message, call and use the Phone. An officer can make six arrests an hour; an offence is acted on once.
 - **Checks.** Everything is public to the player concerned: the offender sees they are wanted, is told of the arrest and sees the time left.
-- **Courts (later).** Lawyers represent a charged player; judges, appointed by the officeholder, hear a case and decide. A judgement can be appealed once, to the next tier up. Courts can strike down a decree that breaks the constitution.
+- **Bail.** Each seat has a bail lever (city up to ₦5,000, state ₦20,000, nation ₦50,000; default 0, which means none). A jailed player can pay the bail set by the seat that arrested them and go free at once; it goes to that seat's treasury.
+- **Courts.** A jailed player can appeal the arrest for a small court fee (₦500, into the arresting seat's treasury), with a statement and, if they choose, a lawyer. A judge of that seat's court reads the case and rules: uphold (the sentence stands), reduce (half of the time left comes off) or quash (the player goes free), and gives public reasons. A judge is enrolled like police (city 2, state 4, nation 6) by the officeholder, for their term, and can never rule on a case they are part of. After a ruling that is not a quash, the defendant can take the case once to the next court up (city to state, state to federal) for ₦1,500; that ruling is final. Rulings are public.
+- **Lawyers.** Any player can list themselves as a lawyer (the bar holds 40). A defendant names one when appealing; the lawyer files one written argument. The fee is agreed in chat; the game does not move it.
 - **Corruption (later).** Officials can skim the treasury, with a risk of audit and impeachment.
 
 ## 6. Order of work
 
 1. **Offices and parties.** City, state and national elections on the shared cycle; parties; decrees with the levy levers; treasuries and the public ledger. **next**
 2. **Justice.** Fights, offences, police, arrests, jail. **built**
-3. **Courts.** Lawyers, judges, appeals, audits, impeachment, assemblies. **later**
+3. **Courts.** Judges, lawyers, bail, appeals. **built**
+4. **Checks on the officeholders.** Audits, impeachment, assemblies. **later**
 
 ## 7. Where things live
 

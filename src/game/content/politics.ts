@@ -43,7 +43,7 @@ export interface LeverRules {
   base: number
   unit: LeverUnit
   /** What the lever acts on: a levy on a purchase at a stall, a levy on goods bought to carry between cities, or the length of a jail sentence. */
-  on: 'sale' | 'trade' | 'sentence'
+  on: 'sale' | 'trade' | 'sentence' | 'bail'
   about: string
 }
 export const LEVERS: Readonly<Record<LeverId, LeverRules>> = {
@@ -53,6 +53,9 @@ export const LEVERS: Readonly<Record<LeverId, LeverRules>> = {
   citySentence: { tier: 'city', label: 'Assault sentence', min: 1, max: 60, base: 10, unit: 'min', on: 'sentence', about: 'How long a player arrested by the city’s police for assault is held.' },
   stateSentence: { tier: 'state', label: 'Assault sentence', min: 1, max: 120, base: 15, unit: 'min', on: 'sentence', about: 'How long a player arrested by the state’s police for assault is held.' },
   nationSentence: { tier: 'nation', label: 'Assault sentence', min: 1, max: 240, base: 20, unit: 'min', on: 'sentence', about: 'How long a player arrested by the federal police for assault is held.' },
+  cityBail: { tier: 'city', label: 'Bail', min: 0, max: 5000, base: 0, unit: '₦', on: 'bail', about: 'What a player jailed by the city’s police pays to go free at once. 0 means no bail. It goes to the city treasury.' },
+  stateBail: { tier: 'state', label: 'Bail', min: 0, max: 20000, base: 0, unit: '₦', on: 'bail', about: 'What a player jailed by the state’s police pays to go free at once. 0 means no bail. It goes to the state treasury.' },
+  nationBail: { tier: 'nation', label: 'Bail', min: 0, max: 50000, base: 0, unit: '₦', on: 'bail', about: 'What a player jailed by the federal police pays to go free at once. 0 means no bail. It goes to the federal treasury.' },
   tradeDuty: { tier: 'nation', label: 'Trade duty', min: 0, max: 25, base: 0, unit: '%', on: 'trade', about: 'Added to the cost of goods bought to carry between cities. It goes to the federal treasury.' },
 };
 export const LEVER_IDS = Object.keys(LEVERS) as LeverId[];
@@ -67,6 +70,9 @@ export const PARTY = {
   /** Parties a single player may found. */
   perFounder: 1,
 };
+
+/** The bail lever of each seat. */
+export const BAIL_LEVER: Readonly<Record<TierId, LeverId>> = { city: 'cityBail', state: 'stateBail', nation: 'nationBail' };
 
 /** The sentence lever of each seat. */
 export const SENTENCE_LEVER: Readonly<Record<TierId, LeverId>> = { city: 'citySentence', state: 'stateSentence', nation: 'nationSentence' };
@@ -90,6 +96,17 @@ export const JUSTICE = {
   sentenceMaxMin: 240,
   /** Officers an officeholder may enrol. */
   officers: { city: 3, state: 8, nation: 15 } as Readonly<Record<TierId, number>>,
+  /** Judges an officeholder may enrol, like police, for their term. */
+  judges: { city: 2, state: 4, nation: 6 } as Readonly<Record<TierId, number>>,
+  /** Naira the court takes to hear an appeal, and a second appeal to the next court up. */
+  appealFee: 500,
+  escalateFee: 1500,
+  statementMax: 140,
+  argumentMax: 200,
+  noteMax: 100,
+  /** Lawyers listed, and rulings and cases kept. */
+  lawyersListed: 40,
+  rulingsKept: 30,
   /** Arrests one officer may make in an hour. */
   arrestsPerHour: 6,
   /** Offences and jail records kept. */

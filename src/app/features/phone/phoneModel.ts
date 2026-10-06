@@ -19,7 +19,7 @@ const BUILT_INS: readonly PhoneApp[] = [
 ]
 
 /** Every app the phone lists: Phone apps, and Sim tabs that are also apps (`phone: true`). */
-export const listedApps = (panels: readonly Panel[]): PhoneApp[] => panels.filter((panel) => panel.placement === 'phone' || panel.phone === true)
+export const listedApps = (panels: readonly Panel[]): PhoneApp[] => panels.filter((panel) => (panel.placement === 'phone' || panel.phone === true) && panel.hidden?.() !== true)
   .map((panel) => ({ id: panel.id, title: panel.title, short: panel.short, group: panel.group, tint: panel.tint, panel }))
 
 export interface PhonePage { label: string; groups: { id: PhoneGroup; label: string; apps: PhoneApp[] }[] }

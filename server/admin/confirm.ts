@@ -24,7 +24,7 @@ export async function issueConfirm(ctx: RouteContext, accountId: string, action:
   return { token: `${expiresAt}.${b64.encode(signature)}`, expiresAt };
 }
 export async function checkConfirm(ctx: RouteContext, token: unknown, accountId: string, action: string, target: string, params: string): Promise<boolean> {
-  const match = typeof token === 'string' ? /^(\d{10,16})\.([A-Za-z0-9_-]{43})$/.exec(token) : null;
+  const match = typeof token === 'string' ? /^(\d{1,16})\.([A-Za-z0-9_-]{43})$/.exec(token) : null;
   if (!match) return false;
   const expires = Number(match[1]);
   if (!(expires > ctx.now()) || expires > ctx.now() + CONFIRM_TTL_MS) return false;

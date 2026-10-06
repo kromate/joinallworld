@@ -74,7 +74,10 @@ export function worldService(ctx: RouteContext) {
       const total = list.length * input.amount, given = grantedToday(db);
       if (given + total > limits.grantTotalDay) throw refuse(409, 'over_grant_day_limit', `Grants may give out at most ${formatNaira(limits.grantTotalDay)} a day; ${formatNaira(given)} has gone out today.`);
       let paid = 0;
-      for (const session of list) {
+      for (const found of list) {
+        // The scan hands back records as stored; the transaction's own (writable) copy is the one that is changed.
+        const session = db.sessions[found.secret];
+        if (!session) continue;
         const city = characterCity(session);
         if (!city) continue;
         const life = ctx.settle(session, city), before = life.cash;

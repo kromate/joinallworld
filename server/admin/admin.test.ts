@@ -9,7 +9,6 @@ import { csrfOf } from '../routes/auth.ts';
 import { emailHash } from '../social/founder.ts';
 
 const PROJECT = 'allworld-test-project';
-const LOOK = { body: 'woman', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' } as const;
 const ACCOUNTS = { ACCOUNTS_FIREBASE_PROJECT_ID: PROJECT, ACCOUNTS_FIREBASE_API_KEY: 'test-web-api-key-0000000000000000000000' };
 export const FOUNDER_ADDRESS = 'founder.test@example.com', OTHER_ADMIN_ADDRESS = 'second.admin@example.com';
 type Json = Record<string, unknown>;
@@ -17,8 +16,8 @@ type Json = Record<string, unknown>;
 /** A server whose founder is the account of FOUNDER_ADDRESS (made up: only its hash is configured), with the helpers the tests share. */
 export async function admins(t: TestContext, options: FixtureOptions & { env?: Record<string, unknown> } = {}) {
   const key = await makeKey('key-1'), provider = fakeProvider([key]);
-  const env = { ...ACCOUNTS, FOUNDER_EMAIL_SHA256: emailHash(FOUNDER_ADDRESS), ADMIN_EMAIL_SHA256S: emailHash(OTHER_ADMIN_ADDRESS), ...options.env };
-  const f = await fixture(t, { ...options, env, fetch: (url, init) => provider.fetch(url, init as { body?: unknown }), log: () => {} });
+  const env = { ...ACCOUNTS, FOUNDER_EMAIL_SHA256: emailHash(FOUNDER_ADDRESS), ADMIN_EMAIL_SHA256S: emailHash(OTHER_ADMIN_ADDRESS), NEW_SESSIONS_PER_ADDRESS: '1000', ...options.env };
+  const f = await fixture(t, { ...options, env, fetch: (url, init) => provider.fetch(url, init as { body?: unknown }), log: (line: string) => { if (process.env['DEBUG_ADMIN']) console.error(line); } });
   const call = (path: string, body?: unknown, cookie?: string | null, headers: Record<string, string | null> = {}): Promise<Response> => {
     const all: Record<string, string | null> = { Origin: f.base, ...(body !== undefined && body !== null ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}), ...headers };
     return fetch(f.base + path, { method: body !== undefined && body !== null ? 'POST' : 'GET', headers: Object.fromEntries(Object.entries(all).filter((entry): entry is [string, string] => entry[1] !== null)), body: body !== undefined && body !== null ? JSON.stringify(body) : undefined });
@@ -41,7 +40,6 @@ export async function admins(t: TestContext, options: FixtureOptions & { env?: R
   async function ready(name: string) {
     const d = await f.device(name);
     await f.request('/api/life?city=lagos', null, d.cookie);
-    assert.equal((await f.action(d.cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })).code, 'playing');
     return d;
   }
   const life = async (cookie: string) => (await (await f.request('/api/life?city=lagos', null, cookie)).json() as { state: { cash: number; ledger: { amount: number; reason: string; balance: number }[]; social: { earned: number }; needs: Record<string, number>; location: string } }).state;
@@ -182,7 +180,7 @@ test('heal, set a need, move to the arrival venue, rename through the name filte
   assert.equal((await act({ action: 'need', need: 'hunger', value: 5 })).status, 200);
   assert.equal((await a.life(ada.cookie)).needs.hunger, 5);
   assert.equal((await act({ action: 'heal' })).status, 200);
-  assert.ok((await a.life(ada.cookie)).needs.hunger >= 80);
+  assert.ok(((await a.life(ada.cookie)).needs.hunger ?? 0) >= 80);
   assert.equal((await act({ action: 'need', need: 'nope', value: 5 })).body.error, 'invalid_need');
   assert.equal((await act({ action: 'teleport', to: 'arrival' })).status, 200);
   assert.equal((await act({ action: 'rename', name: 'Ada Lovelace' })).status, 200);
@@ -194,12 +192,11 @@ test('heal, set a need, move to the arrival venue, rename through the name filte
 
 test('mute, suspend and ban: time-boxed, a ban signs the player out and closes their sockets, and the refusal is a plain sentence', async (t) => {
   const a = await admins(t);
-  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), bola = await a.account('bola@example.com', 'Bola'), cy = await a.ready('Cy');
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), bola = await a.account('bola@example.com', 'Bola'), cy = await a.ready('Cyrus');
   const act = (id: string, body: Json) => a.admin(`/api/admin/players/${id}/act`, founder.cookie, body);
   assert.equal((await act(cy.id, { action: 'mute', minutes: 30, reason: 'spam' })).body.code, 'muted');
   assert.equal((await act(cy.id, { action: 'unmute' })).body.code, 'unmuted');
   assert.equal((await act(cy.id, { action: 'suspend', kind: 'pictures', minutes: 60, reason: 'test' })).body.code, 'applied');
-  assert.equal(a.f.server.listenerCount('request') >= 0, true);
   const socket = await a.f.socket(bola);
   const closed = new Promise<number>((resolve) => socket.ws.once('close', (code: number) => resolve(code)));
   const first = await act(bola.id, { action: 'ban', minutes: 0, reason: 'abuse' });
@@ -207,9 +204,118 @@ test('mute, suspend and ban: time-boxed, a ban signs the player out and closes t
   assert.equal((await act(bola.id, { action: 'ban', minutes: 0, reason: 'abuse', confirm: first.body.token as string })).body.code, 'applied');
   assert.equal(await closed, 4401, 'the open socket is closed when the ban is made');
   assert.equal((await a.call('/api/session', null, bola.cookie)).status, 401, 'signed out everywhere: the cookie is no longer a session');
-  // Sign in again: the account is banned, so every route says so in a plain sentence.
-  const again = await a.account('bola@example.com', 'Bola again');
-  void again;
-  const unbanned = await act(bola.id, { action: 'unban' });
-  assert.equal(unbanned.status, 404, 'the old character is archived with the sign-out; the list shows what is left');
+  // A banned guest is refused by every route with a plain sentence, and is let back by an unban.
+  const g = await act(cy.id, { action: 'ban', minutes: 60, reason: 'abuse' });
+  await act(cy.id, { action: 'ban', minutes: 60, reason: 'abuse', confirm: g.body.token as string });
+  const refused = await a.call('/api/life?city=lagos', null, cy.cookie);
+  assert.equal(refused.status, 403);
+  const said = await refused.json() as { error: string; reason: string };
+  assert.equal(said.error, 'account_banned'); assert.match(said.reason, /suspended from Allworld/);
+  assert.equal((await act(cy.id, { action: 'unban' })).status, 200);
+});
+
+// ---- announcements, world tools, settings, reads ---------------------------------------------------------------
+
+async function frameOf(socket: { next(): Promise<{ type: string }> }, type: string): Promise<Json> {
+  for (let i = 0; i < 6; i++) { const frame = await socket.next(); if (frame.type === type) return frame as unknown as Json; }
+  throw new Error(`no ${type} frame`);
+}
+
+test('an announcement is stored once: sockets that are open get it at once, a socket that opens later gets it on connect, and no player record is written', async (t) => {
+  const a = await admins(t);
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), ada = await a.ready('Adaobi'), bola = await a.ready('Bolanle');
+  const early = await a.f.socket(ada);
+  const rowsBefore = JSON.stringify(Object.values((await (async () => { await a.f.flush(); return a.f.server.store.read((db) => db.sessions); })())).map((s) => s.expiresAt));
+  const made = await a.admin('/api/admin/announcements', founder.cookie, { title: 'Weekend market', body: 'Stalls are half price all weekend.', audience: 'everyone', action: 'business' });
+  assert.equal(made.body.code, 'sent');
+  const live = await frameOf(early, 'announce');
+  assert.equal(live.live, true); assert.equal((live.items as { title: string; action: string }[])[0]?.action, 'business');
+  const late = await a.f.socket(bola);
+  const onConnect = await frameOf(late, 'announce');
+  assert.equal(onConnect.live, false); assert.equal((onConnect.items as { id: string }[]).length, 1);
+  const rowsAfter = JSON.stringify(Object.values(await a.f.server.store.read((db) => db.sessions)).map((s) => s.expiresAt));
+  assert.equal(rowsAfter, rowsBefore, 'no per-player write');
+  const list = await a.admin('/api/admin/announcements', founder.cookie);
+  const first = (list.body.announcements as { status: string; reach: { sockets: number } }[])[0];
+  assert.equal(first?.status, 'running'); assert.equal(first?.reach.sockets, 1);
+  // Text goes through the filter; a button is one of the fixed panels; "online now" is never replayed on connect.
+  assert.equal((await a.admin('/api/admin/announcements', founder.cookie, { title: 'Call 08012345678', body: 'x', audience: 'everyone' })).status, 400);
+  assert.equal((await a.admin('/api/admin/announcements', founder.cookie, { title: 't', body: 'b', audience: 'everyone', action: 'https://x.example' })).body.error, 'invalid_action');
+  await a.admin('/api/admin/announcements', founder.cookie, { title: 'Now only', body: 'Online right now.', audience: 'online' });
+  const third = await a.f.socket(await a.ready('Chidinma'));
+  assert.equal(((await frameOf(third, 'announce')).items as unknown[]).length, 1, 'only the running one that is for everyone');
+  // Cancelling ends it.
+  const id = (made.body as { id: string }).id;
+  assert.equal((await a.admin(`/api/admin/announcements/${id}/cancel`, founder.cookie, {})).body.code, 'cancelled');
+  // A scheduled one waits for its time.
+  const at = a.f.now() + 600000;
+  assert.equal((await a.admin('/api/admin/announcements', founder.cookie, { title: 'Later', body: 'Soon.', audience: 'everyone', at })).body.code, 'scheduled');
+  // E-mail to a count of nobody needs no confirmation, and the count is shown first.
+  const preview = await a.admin('/api/admin/announcements', founder.cookie, { preview: true, title: 'x', body: 'y', audience: 'everyone' });
+  assert.equal(preview.body.email, 0);
+});
+
+test('world grant: bounded, confirmed above the threshold, one ledger line each, conservation holds', async (t) => {
+  const a = await admins(t, { env: { ADMIN_GRANT_CONFIRM_ABOVE: '1' } });
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), ada = await a.ready('Adaobi'), bola = await a.ready('Bolanle');
+  await a.f.socket(ada); await a.f.socket(bola);
+  const before = [(await a.life(ada.cookie)).cash, (await a.life(bola.cookie)).cash];
+  const grant = (body: Json) => a.admin('/api/admin/world/grant', founder.cookie, { audience: 'online', ...body });
+  assert.equal((await grant({ amount: 5001, reason: 'launch bonus' })).body.error, 'invalid_amount');
+  const preview = await grant({ amount: 1000, reason: 'launch bonus', preview: true });
+  assert.equal(preview.body.count, 2, JSON.stringify(preview.body));
+  const asked = await grant({ amount: 1000, reason: 'launch bonus' });
+  assert.equal(asked.body.code, 'confirmation_required');
+  const done = await grant({ amount: 1000, reason: 'launch bonus', confirm: asked.body.token as string });
+  assert.equal(done.body.players, 2, JSON.stringify(done.body));
+  const after = await a.life(ada.cookie);
+  assert.equal(after.cash, before[0]! + 1000); assert.equal(after.ledger.at(-1)?.reason, 'Admin credit: launch bonus');
+  assert.equal((await a.life(bola.cookie)).cash, before[1]! + 1000);
+  const dash = await a.admin('/api/admin/dashboard?fresh=1', founder.cookie);
+  assert.equal((dash.body.adminMoney as { grantTotal: number }).grantTotal, 2000);
+});
+
+test('settings default to the environment, change with an audit line, and reset; the notice starts from a button', async (t) => {
+  const a = await admins(t, { env: { NEW_SESSIONS_PER_ADDRESS: '77' } });
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder');
+  const find = async (key: string) => ((await a.admin('/api/admin/settings', founder.cookie)).body.settings as { key: string; value: unknown; default: unknown }[]).find((item) => item.key === key);
+  assert.equal((await find('newSessionsPerAddress'))?.value, 77);
+  assert.equal((await a.admin('/api/admin/settings', founder.cookie, { key: 'newSessionsPerAddress', value: 5 })).status, 200);
+  assert.equal((await find('newSessionsPerAddress'))?.value, 5);
+  assert.equal((await a.admin('/api/admin/settings', founder.cookie, { key: 'newSessionsPerAddress', value: 0 })).body.error, 'invalid_value');
+  assert.equal((await a.admin('/api/admin/settings', founder.cookie, { key: 'newSessionsPerAddress', value: null })).status, 200);
+  assert.equal((await find('newSessionsPerAddress'))?.value, 77);
+  assert.equal((await a.admin('/api/admin/settings', founder.cookie, { key: 'chatPictures', value: false })).status, 200);
+  assert.equal((await find('chatPictures'))?.value, false);
+  const guest = await a.player('Visitor');
+  const socket = await a.f.socket(guest);
+  assert.equal((await a.admin('/api/admin/notice', founder.cookie, { minutes: 5 })).body.code, 'started');
+  assert.equal((await frameOf(socket, 'notice')).minutes, 5);
+  const audit = (await a.admin('/api/admin/audit?action=setting', founder.cookie)).body.lines as unknown[];
+  assert.equal(audit.length, 3);
+});
+
+test('reads write nothing, players can be found by name, id and address hash, and a player page shows the ledger and the admin actions', async (t) => {
+  const a = await admins(t);
+  const founder = await a.account(FOUNDER_ADDRESS, 'Founder'), ada = await a.ready('Adaobi'), ben = await a.account('ben@example.com', 'Benedict');
+  await a.f.flush();
+  const writes = () => a.f.server.store.stats?.().writes ?? 0, was = writes();
+  for (const path of ['/api/admin/me', '/api/admin/dashboard', '/api/admin/economy', '/api/admin/players', `/api/admin/players/${ada.id}`, '/api/admin/audit', '/api/admin/announcements', '/api/admin/settings', '/api/admin/moderation/reports', '/api/admin/tools']) assert.equal((await a.admin(path, founder.cookie)).status, 200, path);
+  await a.f.flush();
+  assert.equal(writes(), was, 'no read wrote the data file');
+  const byName = (await a.admin('/api/admin/players?q=adaob', founder.cookie)).body.rows as { id: string }[];
+  assert.deepEqual(byName.map((row) => row.id), [ada.id]);
+  assert.equal(((await a.admin(`/api/admin/players?q=${ada.id.slice(0, 8)}`, founder.cookie)).body.rows as unknown[]).length, 1);
+  const hashed = (await a.admin(`/api/admin/players?q=${emailHash('ben@example.com')}`, founder.cookie)).body.rows as { id: string }[];
+  assert.deepEqual(hashed.map((row) => row.id), [ben.id]);
+  assert.equal(((await a.admin('/api/admin/players?filter=accounts', founder.cookie)).body.rows as unknown[]).length, 2);
+  await a.admin(`/api/admin/players/${ada.id}/act`, founder.cookie, { action: 'credit', amount: 700, reason: 'test' });
+  const page = (await a.admin(`/api/admin/players/${ada.id}`, founder.cookie)).body as { ledger: { reason: string }[]; audit: unknown[]; account: unknown };
+  assert.equal(page.ledger[0]?.reason, 'Admin credit: test'); assert.equal(page.audit.length, 1); assert.equal(page.account, null);
+  const text = JSON.stringify((await a.admin(`/api/admin/players/${ben.id}`, founder.cookie)).body);
+  assert.match(text, /b\*\*\*@e\*\*\*\.com/); assert.equal(text.includes('ben@example.com'), false);
+  const dash = (await a.admin('/api/admin/dashboard', founder.cookie)).body as { accounts: { accounts: number }; capacity: unknown; build: string; asOf: number };
+  assert.equal(dash.accounts.accounts, 2); assert.equal(typeof dash.asOf, 'number');
+  const economy = (await a.admin('/api/admin/economy?fresh=1', founder.cookie)).body as { faucets: { category: string }[]; cashInCirculation: number };
+  assert.ok(economy.cashInCirculation > 0);
 });

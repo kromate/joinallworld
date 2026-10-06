@@ -47,6 +47,7 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { ActionOutcome, Db, RouteContext, RouteRequest, SessionRecord } from '../types.ts';
 import { canOccupyVenue } from '../protocol.ts';
+import { scanKeys } from '../keyed.ts';
 import { cleanLine } from '../civic/text.ts';
 import { socialService } from '../social/service.ts';
 

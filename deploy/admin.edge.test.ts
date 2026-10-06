@@ -9,6 +9,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { HTTP_ROUTE_KEYS } from '../src/types/protocol.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
@@ -28,7 +29,7 @@ test('on the Worker every admin route refuses a guest, a request without a sessi
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-admin-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-admin', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-admin' } };
+  const options = { name: 'joinallworld-admin', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { ...layoutBindings(), BUILD_ID: 'local-admin' } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} });
   t.after(async () => { await mf.dispose(); await rm(folder, { recursive: true, force: true }); });
   await mf.ready;

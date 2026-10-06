@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import { ENDPOINT } from './growth/email/zeptomail.ts';
 import { LIMITS } from './social/service.ts';
 import { RECONNECT_GRACE_MS } from './social/presence.ts';
@@ -63,7 +63,7 @@ async function harness(t: TestContext) {
   const run = async (): Promise<void> => { await (await fetch(`${f.base}/api/mod/growth/outreach/run`, { method: 'POST', headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }, body: '{}' })).text(); };
   /** Move the clock to a Lagos day and hour (day 0 is where the fixture starts, at one in the morning). */
   const go = (day: number, hour: number): void => { const target = Date.UTC(1970, 0, 1 + day, hour - 1); assert.ok(target >= f.now()); f.advance(target - f.now()); };
-  const social = (): Promise<SocialCollection> => f.server.store.read((db) => structuredClone(must(db.social, 'db.social')));
+  const social = (): Promise<SocialCollection> => f.server.store.read((db) => snapshot(must(db.social, 'db.social')));
   const edit = (fn: (db: Db) => void): Promise<void> => f.server.store.transact((db) => { fn(db); });
   return { f, post, get, me, hello, player, linkOf, join, mails, sent, optIn, run, go, social, edit };
 }

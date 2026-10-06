@@ -137,14 +137,15 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   const picture: RouteHandler = async (request) => {
     const id = request.params.id ?? '', images = ctx.images;
     if (!images || !PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(404, 'unknown_picture');
-    // Who may see it is decided from the stored conversation on every request; the picture is read only after that.
-    const allowed = await ctx.store.read((db) => {
+    // Who may see it is decided from the stored conversation on every request. The picture's own row says which conversation it
+    // belongs to (so no conversation is searched for it); its bytes are sent only when that conversation lets this player see it.
+    await ctx.store.read((db) => {
       const session = request.requireSession(db);
       if (!ctx.allow(`social:img:${session.publicId}`, 240)) throw ctx.fail(429, 'rate_limited');
-      const found = Object.values(ctx.collection(db, 'social').convs ?? {}).find((conv) => conv.messages.some((line) => line.img?.id === id));
-      return found ? service.pictureAllowed(db, session, found.id, id) : false;
     });
-    const found = allowed ? await images.get(id) : null;
+    const stored = await images.get(id);
+    const allowed = stored ? await ctx.store.read((db) => service.pictureAllowed(db, request.requireSession(db), stored.image.conv, id)) : false;
+    const found = allowed ? stored : null;
     if (!found) throw ctx.fail(404, 'unknown_picture');
     return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
   };

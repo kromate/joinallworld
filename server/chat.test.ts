@@ -4,7 +4,7 @@ import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import type { Device, FixtureOptions } from './test-fixture.ts';
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
 import { emailHash } from './social/founder.ts';
@@ -26,7 +26,7 @@ const HOUR = 3600000;
 const get = async (f: Fixture, path: string, who?: Device): Promise<Reply> => { const res = await f.request(path, null, who?.cookie); return { status: res.status, ...(await res.json() as object) } as Reply; };
 const post = async (f: Fixture, path: string, body: unknown, who?: Device): Promise<Reply> => { const res = await f.request(path, body, who?.cookie); return { status: res.status, ...(await res.json() as object) } as Reply; };
 const defined = <T>(value: T | null | undefined, what = 'value'): T => { if (value === null || value === undefined) throw new TypeError(`Expected ${what}`); return value; };
-const social = (f: Fixture): Promise<SocialCollection> => f.server.store.read((db) => structuredClone(defined(db.social, 'social')));
+const social = (f: Fixture): Promise<SocialCollection> => f.server.store.read((db) => snapshot(defined(db.social, 'social')));
 async function people<const N extends readonly string[]>(f: Fixture, names: N): Promise<{ [K in keyof N]: Device }> {
   const made: Device[] = [];
   for (const name of names) { const who = await f.device(name); await get(f, '/api/life?city=lagos', who); await get(f, '/api/social/me', who); made.push(who); }

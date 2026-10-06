@@ -13,6 +13,7 @@ import { createRequire } from 'node:module';
 import { gzipSync } from 'node:zlib';
 import { FIRST_LENGTH, PACKED, WORD_COUNTS } from '../src/words/data/dictionary.ts';
 import { unpackDictionary } from '../scripts/words/pack.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface MiniflareInstance { ready: Promise<URL>; dispose(): Promise<void>; dispatchFetch(url: string): Promise<Response> }
 interface MiniflareTooling { Miniflare: new (options: Record<string, unknown>) => MiniflareInstance; convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown> }
@@ -131,7 +132,7 @@ test('the Worker script starts under Miniflare with the list inside it', async (
   const options = {
     name: 'joinallworld-words', script: await readFile(files.real, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'),
-    bindings: { BUILD_ID: 'local-words', FOUNDER_EMAIL_SHA256: '' },
+    bindings: { ...layoutBindings(), BUILD_ID: 'local-words', FOUNDER_EMAIL_SHA256: '' },
   };
   const miniflare = new Miniflare(convertV4MiniflareOptions(options));
   t.after(() => miniflare.dispose());

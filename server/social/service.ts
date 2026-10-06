@@ -75,6 +75,7 @@ import { clip, glyphs } from './clip.ts';
 import { DIRECTORY_SCAN, PAGE_MAX, byNameOrder, cursorOf, directoryCache, firstAfter, newestFirst, pageLimit, readCursor } from './pages.ts';
 import type { Directory, DirectoryRow } from './pages.ts';
 import { playerIsAdmin } from '../admin/gate.ts';
+import { forEachValue, scanKeys } from '../keyed.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
@@ -154,7 +155,8 @@ function buildService(ctx: RouteContext) {
     ctx.checks.blocked = blocked;
     ctx.checks.anyBlocks = () => blockIndex.size > 0;
   }
-  ctx.startup?.push(ctx.store.read((db) => Object.entries(db.social?.players ?? {}).map(([id, player]): [string, string[]] => [id, Object.keys(player?.blocked ?? {})]))
+  // Who blocked whom, read from the players' index (server/keyed.ts: a player's blocked ids are kept beside the record), not from every record.
+  ctx.startup?.push(ctx.store.read((db): [string, string[]][] => (db.social?.players ? scanKeys(db.social.players, 'socialPlayer', { hasJ: true }).flatMap((hit): [string, string[]][] => { const blocked = hit.j ? (JSON.parse(hit.j) as { b?: string[] }).b : undefined; return blocked?.length ? [[hit.key, blocked]] : []; }) : []))
     .then((rows) => { for (const [id, list] of rows) for (const other of list) applyBlockChange(['block', id, other]); }));
   /** null, or the refusal for a muted sender. */
   const mutedRefusal = (id: string): Refused | null => { const mute = ctx.checks?.muted?.(id); return mute ? no(mute.code, mute.reason) : null; };
@@ -476,7 +478,10 @@ function buildService(ctx: RouteContext) {
   function sweep(s: SocialCollection, t: number): void {
     if (t - (s.sweptAt || 0) < LIMITS.sweepMs) return;
     s.sweptAt = t;
-    for (const [to, queue] of Object.entries(s.pending)) {
+    // Only the queues that may hold a stale effect (or hold none) are looked at: the index keeps each queue's oldest effect.
+    for (const { key: to } of scanKeys(s.pending, 'socialPending', { nBelow: t - LIMITS.escrowMs, missing: true })) {
+      const queue = s.pending[to];
+      if (!queue) continue;
       const keep: PendingEffect[] = [];
       for (const effect of queue) {
         const stale = t - effect.at > LIMITS.escrowMs;
@@ -490,7 +495,10 @@ function buildService(ctx: RouteContext) {
       if (keep.length) s.pending[to] = keep; else delete s.pending[to];
     }
     const founder = founderId(s);
-    for (const [id, p] of Object.entries(s.players)) {
+    // The players who may have gone idle, by the index of when each was last seen; each is judged again by its own record below.
+    for (const { key: id } of scanKeys(s.players, 'socialPlayer', { nBelow: t - LIMITS.playerIdleMs, missing: true })) {
+      const p = s.players[id];
+      if (!p) continue;
       // The founder is kept however long they are away: every player's first friendship points at their record.
       if (t - p.seen <= LIMITS.playerIdleMs || presence.status(id).state === 'online' || id === founder) continue;
       for (const friend of Object.keys(p.friends)) delete s.players[friend]?.friends[id];
@@ -1616,16 +1624,17 @@ function buildService(ctx: RouteContext) {
     /** For the operator: pictures that were reported or hidden, newest first, at most 100. */
     modPictures(db: Db) {
       const s = col(db), found: object[] = [];
-      for (const conv of Object.values(s.convs)) for (const line of conv.messages) {
+      forEachValue(s.convs, (conv) => { for (const line of conv.messages) {
         if (line.img && (line.img.rp?.length || line.img.hid || line.img.gone)) found.push({ id: line.img.id, conv: conv.id, seq: line.seq, from: line.from, fromName: line.from ? s.players[line.from]?.name ?? 'Former player' : null, at: line.at, reports: line.img.rp?.length ?? 0, hidden: line.img.hid === true, removed: line.img.gone === true, width: line.img.w, height: line.img.h, bytes: line.img.n });
-      }
+      } });
       return yes('ok', { pictures: found.sort((a, b) => Number(Reflect.get(b, 'at')) - Number(Reflect.get(a, 'at'))).slice(0, 100) });
     },
     /** Where a picture is, for the operator (any conversation): its conversation, or null. */
     modPictureConv(db: Db, imageId: string): string | null {
       const s = col(db);
-      for (const conv of Object.values(s.convs)) if (conv.messages.some((line) => line.img?.id === imageId)) return conv.id;
-      return null;
+      let found: string | null = null;
+      forEachValue(s.convs, (conv) => { if (conv.messages.some((line) => line.img?.id === imageId)) { found = conv.id; return true; } return undefined; });
+      return found;
     },
     /** The operator removes a picture (its bytes are deleted, the bubble says it expired) or puts a hidden one back. */
     modPicture(db: Db, imageId: string, action: 'remove' | 'restore') {

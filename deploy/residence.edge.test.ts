@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url'
 import { JOURNEY_TIME } from '../server/testing/cityJourney.ts'
 import { residenceJourney } from '../server/testing/residenceJourney.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 await loadCityContent('lagos')
 
@@ -50,7 +51,7 @@ test('Worker: a confirmation is recorded once, seen by another player, limited p
   })
   const options = {
     name: 'residence', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
-    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { BUILD_ID: 'local-residence' },
+    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-residence' },
   }
   const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} })
   const responses: WorkerResponse[] = []

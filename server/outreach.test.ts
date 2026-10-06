@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { stat } from 'node:fs/promises';
 import { join } from 'node:path';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import { OUTREACH, EMAIL_CONSENT, planMessage, checkEmail, maskEmail, channelUrl, inQuietHours } from '../src/game/outreach.ts';
 import { b64u, encrypt, cleanSubscription, validEndpoint, generateKeys, vapidAuthorization, sendPush } from './growth/webpush.ts';
 import { sendMail, ENDPOINT, RETRIES } from './growth/email/zeptomail.ts';
@@ -54,7 +54,7 @@ async function harness(t: TestContext, { env = {}, respond }: { env?: Record<str
   const hello = (who: Who) => post<Hello>('/api/growth/hello', { cityId: 'lagos' }, who);
   const player = async (name: string, age: string | null = 'adult') => { const who = await f.device(name); await f.request('/api/life?city=lagos', null, who.cookie); await hello(who); if (age) await post('/api/growth/consent', { cityId: 'lagos', age }, who); return who; };
   const run = () => mod<OutreachRunResponse>('/api/mod/growth/outreach/run', {});
-  const stored = () => f.server.store.read((db) => structuredClone<Partial<GrowthCollection>>(db.growth ?? {}));
+  const stored = () => f.server.store.read((db) => snapshot<Partial<GrowthCollection>>(db.growth ?? {}));
   const mails = (): Mail[] => calls.filter((call) => call.url === ENDPOINT).map((call) => ({ ...(JSON.parse(String(call.init.body)) as Omit<Mail, 'auth'>), auth: must(call.init.headers.Authorization, 'Authorization') }));
   const linkIn = (mail: Mail, path: string): string => must(new RegExp(`https://play\\.example(${path}\\?t=[A-Za-z0-9_.-]+)`).exec(must(mail.content[0], 'text part').value)?.[1], 'a link');
   const page = async (path: string, method = 'GET') => { const res = await fetch(f.base + path, { method }); return { status: res.status, html: await res.text(), cache: res.headers.get('cache-control') }; };

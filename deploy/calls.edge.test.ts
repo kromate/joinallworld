@@ -7,6 +7,7 @@ import { mkdtemp, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
@@ -32,7 +33,7 @@ async function fixture(t: TestContext, sleeps = false, extra: { bindings?: Recor
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-calls-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-calls', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}), ...(extra.bindings ?? {}) }, ...(extra.outboundService ? { outboundService: extra.outboundService } : {}), assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
+  const options = { name: 'joinallworld-calls', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { ...layoutBindings(), BUILD_ID: 'local-calls', ...(sleeps ? { SLEEP_BETWEEN_BEATS: '1' } : {}), ...(extra.bindings ?? {}) }, ...(extra.outboundService ? { outboundService: extra.outboundService } : {}), assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} });
   const sockets: StubSocket[] = [], handed: MiniflareResponse[] = [];
   const within = <T>(step: string, work: Promise<T>, ms = 30000) => { let timer: NodeJS.Timeout; return Promise.race([work, new Promise<never>((_, reject) => { timer = setTimeout(() => reject(Error(`${step} did not finish within ${ms} ms`)), ms); })]).finally(() => clearTimeout(timer)); };

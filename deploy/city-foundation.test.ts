@@ -9,6 +9,7 @@ import { ibadanJourney } from '../server/testing/ibadanJourney.ts'
 import { ogunJourney } from '../server/testing/ogunJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, object, qualifyState, seedLegacyRecords } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice, JourneyHost, JourneySocket } from '../server/testing/cityJourney.ts'
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface TestWebSocket {
   accept(): void
@@ -66,7 +67,7 @@ test('Worker city modules: complete city journey and lossless legacy switches su
   const options = {
     name: 'city-foundation', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
-    bindings: { BUILD_ID: 'local-city-contract' },
+    bindings: { ...layoutBindings(), BUILD_ID: 'local-city-contract' },
     assets: { directory: join(root, 'dist'), binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
   }
   const create = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true })

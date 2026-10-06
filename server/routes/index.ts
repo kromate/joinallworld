@@ -218,8 +218,9 @@ import residence from './residence.ts';
 import companion from './companion.ts';
 import admin from './admin.ts';
 import bonus from './bonus.ts';
+import storageMod from './storage-mod.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, visit, business, businessMod, notice, residence, companion, admin, bonus];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, visit, business, businessMod, notice, residence, companion, admin, bonus, storageMod];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /**

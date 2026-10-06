@@ -8,6 +8,7 @@ import { lagosTime } from '../../src/game/clock.ts';
 import { DISTRICTS, UNKNOWN_DISTRICT, OWN_DISTRICT, NEIGHBOURS, RICH_LIST } from '../../src/game/content/civic.ts';
 
 import type { LifeState } from '../../src/types/life.ts';
+import { scanKeys } from '../keyed.ts';
 import type { PlayerRef } from '../../src/types/protocol.ts';
 import type { CityCounters, District as DistrictView, NeighbourHome, HuntCounters, RichRow } from '../../src/types/civic.ts';
 import type { CivicCityRecord, CivicCollection, ResidentRecord } from '../types.ts';
@@ -53,7 +54,8 @@ export function checkIn(city: CivicCityRecord, now: number, who: PlayerRef, life
   resident.gems = gems; resident.claims = claims;
   if (now - city.prunedAt >= PRUNE_EVERY_MS) {
     city.prunedAt = now;
-    for (const [id, entry] of Object.entries(city.residents)) if (now - entry.lastSeen > ttlMs) delete city.residents[id];
+    // The index says who last checked in before the cut-off; each is judged again by its own record.
+    for (const { key: id } of scanKeys(city.residents, 'civicResident', { nBelow: now - ttlMs })) { const entry = city.residents[id]; if (entry && now - entry.lastSeen > ttlMs) delete city.residents[id]; }
   }
   return resident;
 }
@@ -65,8 +67,9 @@ const current = (city: CivicCityRecord, now: number, ttlMs: number): [string, Re
  * an open connection right now (the foundation's presence check); `visits` = resident-days.
  */
 export function counters(city: CivicCityRecord, now: number, ttlMs: number, online: (id: string) => boolean): CityCounters {
-  const residents = current(city, now, ttlMs);
-  return { players: residents.length, online: residents.filter(([id]) => online(id)).length, visits: count(city.visits) };
+  // Counted from the index of last check-ins: no resident's record is read.
+  const residents = scanKeys(city.residents, 'civicResident', { nAtLeast: now - ttlMs });
+  return { players: residents.length, online: residents.filter((hit) => online(hit.key)).length, visits: count(city.visits) };
 }
 
 /** Gem counter for the HUD chip: all finds ever recorded in this city, and those recorded today. */

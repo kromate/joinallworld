@@ -149,7 +149,7 @@ test('SQLite: a database made before accounts existed gains the account tables e
  db.prepare('INSERT INTO action_receipts VALUES(?,?,?,?)').run(old.publicId,'1:a',1,JSON.stringify({actionAt:1,ok:true,code:'saved',fingerprint:'f'}));
  db.prepare('INSERT INTO archived_lives VALUES(?,?)').run('gone',JSON.stringify({publicId:'gone',name:'Gone',cities:{},archivedAt:1}));
  db.prepare('INSERT INTO collections VALUES(?,?)').run('social',JSON.stringify({players:{ada:{name:'Ada'}}}));
- const schema=()=>(db.prepare("SELECT name,sql FROM sqlite_master WHERE tbl_name NOT LIKE 'account%' ORDER BY name").all() as {name:string;sql:string}[]).map(row=>`${row.name}:${row.sql}`);
+ const schema=()=>(db.prepare("SELECT name,sql FROM sqlite_master WHERE tbl_name NOT LIKE 'account%' AND tbl_name NOT IN ('entries','store_meta') ORDER BY name").all() as {name:string;sql:string}[]).map(row=>`${row.name}:${row.sql}`);
  const rows=()=>['sessions','archived_lives','action_receipts','once_receipts','collections','collection_parts'].map(table=>JSON.stringify(db.prepare(`SELECT * FROM ${table}`).all()));
  const schemaBefore=schema(),rowsBefore=rows();
  const store=open(storageOn(db));

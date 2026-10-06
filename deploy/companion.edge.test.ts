@@ -10,6 +10,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { fakeGateway } from '../server/testing/fakeGateway.ts';
+import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface MiniflareInstance { ready: Promise<URL>; dispose(): Promise<void>; dispatchFetch(url: string, init?: RequestInit & { headers?: Record<string, string> }): Promise<Response> }
 interface MiniflareTooling { Miniflare: new (options: Record<string, unknown>) => MiniflareInstance; convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown> }
@@ -31,7 +32,7 @@ async function fixture(t: TestContext, bindings: Record<string, string>) {
   const options = {
     name: 'joinallworld-companion', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'),
-    bindings: { BUILD_ID: 'local-companion', FOUNDER_EMAIL_SHA256: '', ...bindings },
+    bindings: { ...layoutBindings(), BUILD_ID: 'local-companion', FOUNDER_EMAIL_SHA256: '', ...bindings },
     // The Worker's call to the gateway's https address comes here and is forwarded to the fake on this machine.
     outboundService: async (request: Request): Promise<Response> => {
       const target = new URL(request.url);

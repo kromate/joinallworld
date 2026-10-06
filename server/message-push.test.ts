@@ -4,7 +4,7 @@ import test from 'node:test';
 import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { webcrypto } from 'node:crypto';
-import { fixture } from './test-fixture.ts';
+import { fixture, snapshot } from './test-fixture.ts';
 import type { Device } from './test-fixture.ts';
 import { b64u } from './growth/webpush.ts';
 import { MESSAGE_PUSH, hourOn, quietHour, tagOf } from './growth/message-push.ts';
@@ -58,7 +58,7 @@ async function world(t: TestContext, env: Record<string, string> = {}, answer = 
   }
   const dm = (from: Device, to: Device, body: string, extra: object = {}) => post('/api/social/messages', { to: to.id, body, clientId: f.id(), ...extra }, from);
   const say = (from: Device, conv: string, body: string, extra: object = {}) => post('/api/social/messages', { conv, body, clientId: f.id(), ...extra }, from);
-  const stored = async (): Promise<GrowthCollection> => f.server.store.read((db) => structuredClone(db.growth as GrowthCollection));
+  const stored = async (): Promise<GrowthCollection> => f.server.store.read((db) => snapshot(db.growth as GrowthCollection));
   return { f, sent, get, post, player, friends, subscribe, dm, say, stored, wait: () => pause(200) };
 }
 const noon = 12 * 3600000;

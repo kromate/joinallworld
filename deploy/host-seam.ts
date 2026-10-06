@@ -21,6 +21,7 @@ export interface SqliteStore extends Store {
   executing(): boolean
   flush(): Promise<void>
   close(): Promise<void>
+  layout: import('../server/types.ts').StoreLayoutTools
 }
 
 /** A socket's private state, carried through hibernation as its attachment. */

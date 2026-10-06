@@ -10,6 +10,8 @@ import { createRequire } from 'node:module';
 import { createHash, randomUUID } from 'node:crypto';
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts';
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts';
+import { layoutBindings, readStoredCollection, writeStoredCollection } from '../server/testing/sqliteStorage.ts';
+import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; addEventListener(type: 'close', listener: (event: { code: number }) => void): void; accept(): void; send(data: string): void; close(): void }
@@ -78,7 +80,8 @@ async function fixture(t: TestContext, { clockShiftMs = 0, sleeps = false, ...ov
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-do-test-'));
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
-  const options = { name: 'joinallworld-conformance', script: (clockShiftMs ? `Date.now = ((real) => () => real() + ${Math.round(clockShiftMs)})(Date.now.bind(Date));\n` : '') + await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'local-conformance' } as Record<string, string>, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
+  const options = { name: 'joinallworld-conformance', script: (clockShiftMs ? `Date.now = ((real) => () => real() + ${Math.round(clockShiftMs)})(Date.now.bind(Date));\n` : '') + await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'), bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance' } as Record<string, string>, assets: { directory: new URL('../dist', import.meta.url).pathname, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } }, ...overrides };
+  options.bindings = { ...layoutBindings(), ...options.bindings };
   if (sleeps) options.bindings = { ...options.bindings, SLEEP_BETWEEN_BEATS: '1' };
   // What the object wrote to its console is kept (and still shown): a test can say what must never be logged.
   const lines: string[] = [], handleStructuredLogs = ({ level, message }: { level: string; message: string }) => { lines.push(message); (level === 'error' || level === 'warn' ? console.error : console.log)(message); };
@@ -283,7 +286,7 @@ test('Cloudflare: voice cap, per-session socket cap, and a session’s request l
 
 test('Cloudflare: a short limiter full of other people’s live counts turns no newcomer away — it makes room, in memory; long windows and the operator’s rows are stored and survive', async t => {
   const token = 'worker-operator-token-0123456789-abcdef';
-  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage(), far = Date.now() + 3600000;
+  const f = await fixture(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage(), far = Date.now() + 3600000;
   const limits = async (): Promise<{ short: number; long: number; protected: number }> => (await (await f.request('/api/mod/overview', null, null, { authorization: `Bearer ${token}` })).json()).store.limits;
   await f.request('/api/health');
   // A long-window row and an operator row, as stored; then a flood: more live short counts than the class may hold, each from another address.
@@ -315,7 +318,7 @@ test('Cloudflare: a short limiter full of other people’s live counts turns no 
 
 test('Cloudflare: a flood of hour-long rows cannot erase the operator guard or a session’s limit, and a newcomer still gets a session', async t => {
   const token = 'worker-operator-token-0123456789-abcdef';
-  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage();
+  const f = await fixture(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } }), storage = await f.storage();
   const ip = (n: number) => ({ 'cf-connecting-ip': `203.0.${Math.floor(n / 250)}.${1 + (n % 250)}` });
   // The operator guard: 100 token-less tries from many addresses fill its window; the next one is refused with 429.
   for (let i = 0; i < 100; i++) assert.equal((await f.request('/api/mod/overview', null, null, ip(i))).status, 401, `try ${i}`);
@@ -473,7 +476,7 @@ test('Cloudflare: the page is strict until accounts are configured, then allows 
 
 test('Cloudflare: the game page, a deep link, module pages, the API and an asset carry their security headers', async t => {
   const telemetry = { TELEMETRY_ENV: 'production', SENTRY_DSN_CLIENT: 'https://abcdef0123456789@o123.ingest.example-sentry.test/456', POSTHOG_KEY: 'phc_fakefakefake', POSTHOG_HOST: 'https://eu.i.example-posthog.test' };
-  const plain = await fixture(t), configured = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', ...telemetry } });
+  const plain = await fixture(t), configured = await fixture(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', ...telemetry } });
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const hashes = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(match => `'sha256-${createHash('sha256').update(match[1] as string).digest('base64')}'`);
   assert.equal(hashes.length, 2);
@@ -729,7 +732,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const { MISSION_REWARDS } = await import('../src/game/content/missions.ts');
   const { NPCS } = await import('../src/game/cities/lagos/regulars.ts');
   const { joinIdFrom, linkParts } = await import('../src/quick-start/model.ts');
-  const f = await combined(t, { bindings: { BUILD_ID: 'local-conformance', PUBLIC_ORIGIN: 'https://play.example' } });
+  const f = await combined(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', PUBLIC_ORIGIN: 'https://play.example' } });
   const LGA = 'ikeja', TABLE = 'buka-corner', ORIGIN = 'https://play.example';
 
   // 1. landing → Play: a guest in the park, with no missions, no house, in no directory.
@@ -1042,7 +1045,7 @@ test('Worker host surface: operator routes are off without the token and bearer-
   // With the token: no Origin needed (a bearer header is never sent by a browser on its own), a wrong token is refused,
   // and the token is in no response.
   const token = 'worker-operator-token-0123456789-abcdef';
-  const f = await combined(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  const f = await combined(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
   assert.equal((await f.fetch('/api/mod/overview')).status, 401);
   assert.equal((await f.fetch('/api/mod/overview', { headers: { authorization: `Bearer ${token.slice(0, -1)}x` } })).status, 401);
   assert.equal((await f.fetch('/api/mod/overview', { headers: { cookie: `sid=${token}` } })).status, 401, 'never a cookie');
@@ -1582,16 +1585,16 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   const session = JSON.parse((await db.exec('SELECT value FROM sessions WHERE secret = ?', secret))[0].value);
   session.cities.lagos.updatedAt -= PAST; session.cities.lagos.state.needs.hunger = 5;
   await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), secret);
-  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const growth = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   growth.players[ada.id].seen -= PAST;
-  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+  await writeStoredCollection(execOf(db), 'growth', JSON.stringify(growth));
 
   // Three rounds at the same moment, then the object is evicted and two more.
   const first = await Promise.all([run(), run(), run()]);
   assert.equal(first.reduce((sum, round) => sum + (round.comeback?.jobs ?? 0), 0), 1, 'one of the concurrent rounds claimed it');
   await f.hibernate();
   await run(); await run();
-  const stored = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const stored = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.equal(comebackMails().length, 1, 'once, however many rounds and restarts');
   assert.equal(comebackMails()[0]?.subject, 'Ada is hungry');
   assert.equal(comebackMails()[0]?.post, 'List-Unsubscribe=One-Click');
@@ -1600,7 +1603,7 @@ test('Worker: comeback mail is claimed before it is sent — concurrent rounds a
   assert.equal(JSON.stringify(stored.comeback).includes('@'), false, 'no address in the comeback record');
 
   // An object without a mailer does nothing at all.
-  const dry = await fixture(t, { sleeps: true, bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  const dry = await fixture(t, { sleeps: true, bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
   const result = await (await dry.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: operator, body: '{}' })).json() as Round;
   assert.deepEqual(result.comeback, { ran: false, reason: 'not_configured' });
 });
@@ -1626,7 +1629,7 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   assert.deepEqual([view.source, view.on, mails[0]?.subject], ['account', true, 'Welcome to Allworld: your character is saved']);
   assert.ok(!view.address.includes('uidada'), 'only a masked address is shown');
   const db = await f.storage();
-  const growth = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const growth = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.equal(growth.comeback[ada.id].acct, true);
   assert.equal(JSON.stringify(growth.comeback).includes('@'), false, 'no address in the comeback record');
   // The welcome is in the ledger on the next look, so a character that is long away and hungry is still not written to within the day.
@@ -1634,15 +1637,18 @@ test('Worker: an account holder is a comeback recipient — on from the start, a
   const record = JSON.parse(row.value); record.cities.lagos.updatedAt -= 6 * DAY_MS; record.cities.lagos.state.needs.hunger = 5;
   await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(record), row.secret);
   growth.comeback[ada.id].next = 0;
-  await db.exec("UPDATE collections SET value = ? WHERE name = 'growth'", JSON.stringify(growth));
+  await writeStoredCollection(execOf(db), 'growth', JSON.stringify(growth));
   const run = () => f.fetch('/api/mod/growth/outreach/run', { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: '{}' });
   await run();
-  const after = JSON.parse((await db.exec("SELECT value FROM collections WHERE name = 'growth'"))[0].value);
+  const after = JSON.parse(await readStoredCollection(execOf(db), 'growth') as string);
   assert.deepEqual(after.comeback[ada.id].sent.map((entry: { type: string }) => entry.type), ['welcome'], 'the welcome holds the day');
   assert.equal(mails.length, 1);
 });
 
+const execOf = (db: ObjectStorage): AsyncExec => (query, ...bindings) => db.exec(query, ...bindings) as Promise<Record<string, unknown>[]>;
 async function storage_(f: { storage(): Promise<ObjectStorage> }, query: string): Promise<string> {
+  const layered = /^SELECT value FROM collections WHERE name = '(social|growth|civic|business)'$/.exec(query);
+  if (layered) { const text = await readStoredCollection(execOf(await f.storage()), layered[1] as string); return JSON.stringify(text === undefined ? [] : [{ value: text }]); }
   const rows = await (await f.storage()).exec(query).catch(() => []);
   return JSON.stringify(rows);
 }
@@ -1698,7 +1704,7 @@ test('Cloudflare: a character pin written by an earlier build is not trusted —
 
 test('Worker row budget: a connected player who only polls writes nothing; an action writes three rows; a restart keeps what was acknowledged and forgets only what was lazy', async t => {
   const token = 'worker-operator-token-0123456789-abcdef';
-  const f = await fixture(t, { bindings: { BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
+  const f = await fixture(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', MODERATOR_TOKEN: token } });
   type Rows = { total: number; tables: Record<string, number>; sources: Record<string, { rows: number }> };
   const overview = async (): Promise<{ rows: Rows; held: number; limits: { short: number; protected: number } }> => (await (await f.request('/api/mod/overview', null, null, { authorization: `Bearer ${token}` })).json()).store;
   /** Rows written between two readings, by table — without the operator's own budget row, which each reading costs. */

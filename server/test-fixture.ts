@@ -58,6 +58,12 @@ export function flakyDisk(): FlakyDisk {
   return disk;
 }
 
+/**
+ * A plain copy of stored data, for a test that wants to look at a whole collection after the transaction. `structuredClone`
+ * cannot copy a collection kept per entry (server/keyed.ts: its maps are lazy), and stored data is JSON anyway.
+ */
+export const snapshot = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
+
 export async function fixture(t: TestContext, { disk, ...options }: FixtureOptions = {}) {
   const dir = await mkdtemp(join(tmpdir(), 'joinallworld-test-'));
   let time = 100000;

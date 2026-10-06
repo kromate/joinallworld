@@ -14,6 +14,8 @@ import { businessJourney } from '../server/testing/businessJourney.ts'
 import type { BusinessHost } from '../server/testing/businessJourney.ts'
 import { lagosTime } from '../src/game/clock.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
+import { layoutBindings, readStoredCollection, writeStoredCollection } from '../server/testing/sqliteStorage.ts';
+import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
 
 await loadCityContent('lagos')
 
@@ -56,7 +58,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   })
   const options = {
     name: 'business', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
-    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { BUILD_ID: 'local-business' },
+    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-business' },
   }
   const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
   const responses: WorkerResponse[] = []
@@ -69,10 +71,11 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   const origin = 'https://business.test'
   const send = async (path: string, init: RequestInit): Promise<WorkerResponse> => { const response = await worker.dispatchFetch(origin + path, init); responses.push(response); return response }
   const keyOf = (device: JourneyDevice): string => device.cookie.slice(device.cookie.indexOf('=') + 1)
+  const execOf = (db: { exec(query: string, ...bindings: (string | number | null)[]): Promise<unknown[]> }): AsyncExec => (query, ...bindings) => db.exec(query, ...bindings) as Promise<Record<string, unknown>[]>
   const storage = () => worker.unsafeGetDurableObjectStorage('business', 'JoinAllworldState', { name: 'joinallworld-v1' })
   const stored = async (): Promise<Record<string, unknown> | null> => {
-    const rows = await (await storage()).exec("SELECT value FROM collections WHERE name = 'business'")
-    return rows.length ? object(JSON.parse(String(object(rows[0]).value))) : null
+    const text = await readStoredCollection(execOf(await storage()), 'business')
+    return text === undefined ? null : object(JSON.parse(text))
   }
   const host: BusinessHost = {
     now: () => JOURNEY_TIME,
@@ -96,7 +99,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
         for (const key of ['at', 'openedAt', 'paidUntil']) shop[key] = Number(shop[key]) - ms
         shop.day = lagosTime(Number(shop.at)).day
       }
-      await (await storage()).exec("UPDATE collections SET value = ? WHERE name = 'business'", JSON.stringify(business))
+      await writeStoredCollection(execOf(await storage()), 'business', JSON.stringify(business))
     },
   }
   const result = await businessJourney(host)

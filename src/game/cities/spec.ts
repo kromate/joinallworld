@@ -6,6 +6,7 @@ import type {
   ParametricSignStyle,
   ParametricVenueProp,
 } from '../../types/content.ts'
+import type { CityPersonSeed } from './contentBuilder.ts'
 
 export type PopulationTier = 'town' | 'small-city' | 'city' | 'major-city'
 
@@ -153,7 +154,15 @@ export interface CitySpec<City extends string = string> {
     readonly foods: readonly IdentityFact[]
     readonly crafts: readonly IdentityFact[]
     readonly industries: readonly IdentityFact[]
+    /** Sourced facts that are not a food, craft or industry: a festival, a language, a landmark. A regular's lines may cite them. */
+    readonly culture?: readonly IdentityFact[]
   }
+  /**
+   * Authored regulars, two for each place they cover. A place with no entries gets generated regulars
+   * (see formula/cast.ts). Characters are original fiction; what their lines say about food, festivals,
+   * language and landmarks must trace to an identity fact in this spec.
+   */
+  readonly cast?: readonly CastEntry[]
   /** Empty arrays make no claim. Only sourced, observed facilities belong here. */
   readonly transport: {
     readonly airports: readonly TransportPlaceFact[]
@@ -171,6 +180,14 @@ export interface CitySpec<City extends string = string> {
   readonly unmapped?: readonly UnmappedKindFact[]
   readonly origin?: { readonly x: number; readonly z: number }
 }
+
+/** One authored regular and the place they stand at. */
+export interface CastEntry extends CityPersonSeed {
+  readonly placeId: string
+}
+
+/** A name such as "calabar neighbour 3": the placeholder style the cast replaces. */
+export const NUMBERED_NEIGHBOUR = /neighbour \d+/i
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const SHA256 = /^[0-9a-f]{64}$/
@@ -227,6 +244,29 @@ const requiredKinds: readonly RealPlaceKind[] = ['church', 'eatery', 'garden', '
 const UNMAPPABLE_KINDS: ReadonlySet<RealPlaceKind> = new Set<UnmappableKind>(['church', 'eatery', 'garden', 'mosque', 'park', 'polling', 'road-hub', 'salon', 'savings', 'stadium'])
 
 export const unmappedKindsOf = (spec: CitySpec): ReadonlySet<RealPlaceKind> => new Set((spec.unmapped ?? []).map(fact => fact.kind))
+
+const validateCast = (spec: CitySpec, places: ReadonlyMap<string, RealPlaceFact>, identities: ReadonlyMap<string, IdentityFact>, errors: string[]): void => {
+  const cast = spec.cast ?? []
+  const perPlace = new Map<string, number>()
+  for (const entry of cast) {
+    const label = `cast ${entry.name || entry.placeId}`
+    if (!places.has(entry.placeId)) errors.push(`${label} references unknown place ${entry.placeId}`)
+    perPlace.set(entry.placeId, (perPlace.get(entry.placeId) ?? 0) + 1)
+    if (!entry.name.trim() || !entry.role.trim()) errors.push(`${label} needs a name and role`)
+    if (NUMBERED_NEIGHBOUR.test(entry.name)) errors.push(`${label} uses a numbered placeholder name`)
+    if (entry.quotes.some(quote => !quote.trim())) errors.push(`${label} has an empty line`)
+    if (entry.age === 'elder' && /^eka\b/i.test(entry.name)) errors.push(`${label} is an elder addressed as Eka`)
+    if (entry.greeting) {
+      if (!entry.greeting.text.trim() || !entry.greeting.meaning.trim()) errors.push(`${label} greeting needs its text and meaning`)
+      if (!identities.has(entry.greeting.identityId)) errors.push(`${label} greeting cites unknown identity ${entry.greeting.identityId}`)
+      if (!entry.note?.trim()) errors.push(`${label} greeting needs a note about its review status`)
+      if (!entry.quotes[0].includes(entry.greeting.text)) errors.push(`${label} must open with its greeting`)
+    }
+    for (const id of entry.facts ?? []) if (!identities.has(id)) errors.push(`${label} cites unknown identity ${id}`)
+  }
+  for (const [placeId, count] of perPlace) if (count !== 2) errors.push(`cast place ${placeId} needs exactly two regulars, found ${count}`)
+  for (const duplicate of duplicateValues(cast.map(entry => entry.name))) errors.push(`cast name ${duplicate} is used twice`)
+}
 
 export function validateCitySpec(spec: CitySpec): readonly string[] {
   const errors: string[] = []
@@ -321,7 +361,7 @@ export function validateCitySpec(spec: CitySpec): readonly string[] {
   const minimumHeritage = sparse ? 1 : 2
   if (heritage < minimumHeritage || heritage > 3) errors.push(`city needs ${minimumHeritage} to 3 sourced heritage, landmark or museum sites`)
 
-  const identityFacts = [...spec.identity.foods, ...spec.identity.crafts, ...spec.identity.industries]
+  const identityFacts = [...spec.identity.foods, ...spec.identity.crafts, ...spec.identity.industries, ...(spec.identity.culture ?? [])]
   for (const duplicate of duplicateValues(identityFacts.map(fact => fact.id))) errors.push(`duplicate identity id ${duplicate}`)
   const identities = new Map(identityFacts.map(fact => [fact.id, fact]))
   const foodIds = new Set(spec.identity.foods.map(fact => fact.id))
@@ -340,6 +380,8 @@ export function validateCitySpec(spec: CitySpec): readonly string[] {
     if (place.specialtyIds && new Set(place.specialtyIds).size !== place.specialtyIds.length) errors.push(`place ${place.id} repeats a specialty`)
     for (const id of place.specialtyIds ?? []) if (!identities.has(id)) errors.push(`place ${place.id} references unknown specialty ${id}`)
   }
+
+  validateCast(spec, places, identities, errors)
 
   const transport: readonly [string, readonly TransportPlaceFact[], RealPlaceKind][] = [
     ['airport', spec.transport.airports, 'airport'], ['rail', spec.transport.rail, 'rail-station'], ['port', spec.transport.ports, 'port'],

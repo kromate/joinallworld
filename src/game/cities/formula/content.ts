@@ -1,11 +1,12 @@
 import {
   activity, buildCityContent, hospitalSpots, spot, work,
-  type CityBounds, type CityHouseSeed, type CityPersonSeed, type CitySpotSeed, type CityVenueSeed,
+  type CityBounds, type CityHouseSeed, type CitySpotSeed, type CityVenueSeed,
 } from '../contentBuilder.ts'
 import type { ActivityDefinition, CityContent, CityMapOrigin, TravelModeDefinition, UnmappedService, VenueScene } from '../../../types/content.ts'
 import type { BusinessTypeId } from '../../../types/business.ts'
 import { unmappedKindsOf, type CitySpec, type IdentityFact, type PopulationTier, type RealPlaceFact, type RealPlaceKind } from '../spec.ts'
 import { formulaArrivalRecreation, formulaCareerPlan, formulaRoadArrival } from './careers.ts'
+import { castFor } from './cast.ts'
 import { sceneKindFor } from './scenes.ts'
 
 export interface FormulaContentInput<City extends string> {
@@ -65,7 +66,7 @@ const TREATMENTS: Readonly<Record<RealPlaceKind, PlaceTreatment>> = Object.freez
 const visitActivityId = (cityId: string, place: RealPlaceFact): string => `${cityId}-${place.id}-visit`
 
 interface FormulaIdentity {
-  readonly kind: 'food' | 'craft' | 'industry'
+  readonly kind: 'food' | 'craft' | 'industry' | 'culture'
   readonly fact: IdentityFact
 }
 
@@ -73,6 +74,7 @@ const identityIndex = (spec: CitySpec): ReadonlyMap<string, FormulaIdentity> => 
   ...spec.identity.foods.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'food', fact }]),
   ...spec.identity.crafts.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'craft', fact }]),
   ...spec.identity.industries.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'industry', fact }]),
+  ...(spec.identity.culture ?? []).map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'culture', fact }]),
 ])
 
 const businessTypeFor = (identity: FormulaIdentity): BusinessTypeId => {
@@ -142,11 +144,6 @@ const houseShape = (tier: PopulationTier): { readonly grid: number; readonly ren
   }
 }
 
-const peopleFor = (cityId: string, places: readonly RealPlaceFact[]): readonly CityPersonSeed[] => places.flatMap((place, index): readonly CityPersonSeed[] => [
-  { name: `${cityId} neighbour ${index * 2 + 1}`, role: `Visitor at ${place.name}`, quotes: [`I came to spend time at ${place.name}.`, 'Welcome. There is room for another neighbour here.'] },
-  { name: `${cityId} neighbour ${index * 2 + 2}`, role: `Neighbour near ${place.name}`, quotes: [place.description, 'Hello. I am glad you stopped to talk.'] },
-])
-
 export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes }: FormulaContentInput<City>): CityContent<City> {
   const unitNames = new Map(spec.localUnits.map(unit => [unit.id, unit.name]))
   const identities = identityIndex(spec)
@@ -205,7 +202,7 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
     localUnitDescriptions: Object.fromEntries(spec.localUnits.map(unit => [unit.id, unit.description])),
     scenes,
     venues,
-    people: peopleFor(spec.id, orderedPlaces),
+    people: castFor(spec, orderedPlaces),
     careerVenues: careers.venues,
     unavailableCareerIds: careers.unavailable,
     ...(unmappedServices.length ? { unmappedServices } : {}),

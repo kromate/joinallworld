@@ -1,4 +1,5 @@
 import { defineCitySpec } from '../spec.ts'
+import { CALABAR_CAST } from './cast.ts'
 
 export const CITY_SPEC = defineCitySpec({
   schemaVersion: 1,
@@ -128,6 +129,9 @@ export const CITY_SPEC = defineCitySpec({
     foods: [
       { id: 'edikang-ikong', name: 'Edikang Ikong', description: 'Edikang ikong is a vegetable soup that originated among the Efik people of Cross River State and the Ibibio people of Akwa Ibom State.', sourceIds: ['edikang-ikong'] },
       { id: 'afang-soup', name: 'Afang soup', description: 'Afang soup is a vegetable soup of the Ibibio people that is also common among the Efik people of Cross River State.', sourceIds: ['afang-soup'] },
+      { id: 'ekpang-nkukwo', name: 'Ekpang Nkukwo', description: 'Ekpang Nkukwo is an Efik cocoyam pottage that takes patient work to make.', sourceIds: ['efik-kitchen'] },
+      { id: 'abak-atama', name: 'Abak Atama', description: 'Abak Atama is an Efik palm-fruit soup made from boiled, pounded oil-palm fruit and flavoured with uyayak and atama.', sourceIds: ['efik-kitchen'] },
+      { id: 'fisherman-soup', name: 'Fisherman soup', description: 'Fisherman soup is a well-known Efik soup that, by one account, began with fishermen who were away for weeks and cooked with basic provisions and their catch.', sourceIds: ['efik-kitchen'] },
     ],
     crafts: [
       { id: 'carnival-costumes', name: 'Carnival costumes', description: 'The Calabar Carnival takes place every December and is known for imaginative costumes made by participating dance schools.', sourceIds: ['calabar-wiki'] },
@@ -136,7 +140,19 @@ export const CITY_SPEC = defineCitySpec({
       { id: 'calabar-harbour-trade', name: 'Harbour and trade', description: 'Wikipedia lists the state administration, naval base, harbour, airport and free trade zone as the main parts of the Calabar economy.', sourceIds: ['calabar-wiki'] },
       { id: 'watt-market-goods', name: 'Watt Market goods', description: 'Wikipedia says Watt Market sells food, clothes and electronics.', sourceIds: ['watt-market'] },
     ],
+    culture: [
+      { id: 'efik-greetings', name: 'Efik greetings', description: 'Emesiere is the Efik morning greeting and Emesiere nde is the reply; Idem fo? asks how someone is, and Sọsọñọ means thank you.', sourceIds: ['efik-phrases'] },
+      { id: 'efik-honorifics', name: 'Ete and Mma', description: 'A linguistics paper records Ete (father) and Mma (mother) put before a person\'s name to show respect, as in Ete Mkpang and Mma Effiom.', sourceIds: ['honorifics'] },
+      { id: 'calabar-carnival-season', name: 'Calabar Carnival', description: 'Calabar Carnival is held every December, and the 2025 programme held events at Millennium Park.', sourceIds: ['calabar-carnival', 'carnival-2025-itinerary'] },
+      { id: 'marina-resort', name: 'Marina Resort', description: 'The Marina Resort stands on the river below the National Museum and includes the slave museum.', sourceIds: ['wikivoyage-calabar'] },
+      { id: 'duke-town-church', name: 'Duke Town church', description: 'Duke Town church on Eyamba Street was built in 1846 and is one of the oldest churches in Nigeria.', sourceIds: ['wikivoyage-calabar'] },
+      { id: 'tinapa-resort', name: 'Tinapa Resort', description: 'Tinapa Resort lies on the north-west side of Calabar.', sourceIds: ['wikivoyage-calabar'] },
+      { id: 'obudu-resort', name: 'Obudu Mountain Resort', description: 'Obudu Mountain Resort is a few hours by road from Calabar.', sourceIds: ['wikivoyage-calabar'] },
+      { id: 'great-kwa-river', name: 'Great Kwa River', description: 'The Great Kwa River rises in the Oban Hills and drains the eastern side of Calabar; its artisanal fisheries are mainly for shrimp.', sourceIds: ['great-kwa-river'] },
+      { id: 'cross-river-national-park', name: 'Cross River National Park', description: 'Cross River National Park has two divisions, Oban and Okwangwo, and the Oban Division lies roughly 42 kilometres from Calabar.', sourceIds: ['cross-river-national-park'] },
+    ],
   },
+  cast: CALABAR_CAST,
   transport: {
     airports: [],
     rail: [],
@@ -157,6 +173,14 @@ export const CITY_SPEC = defineCitySpec({
     { id: 'watt-market', title: 'Wikipedia: Watt Market', url: 'https://en.wikipedia.org/wiki/Watt_Market', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/watt-market.json', bytes: 328, sha256: 'ac304ec88c2b8741c3df9a79c195b44568bf5b06bfa497b35e91dc218b653041' } },
     { id: 'edikang-ikong', title: 'Wikipedia: Edikang Ikong', url: 'https://en.wikipedia.org/wiki/Edikang_Ikong', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/edikang-ikong.json', bytes: 275, sha256: '5126ad8ae48b7feca0858e1539e8ba2554d96259e8ef35693eb0991da3ad9dff' } },
     { id: 'afang-soup', title: 'Wikipedia: Afang soup', url: 'https://en.wikipedia.org/wiki/Afang_soup', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/afang-soup.json', bytes: 270, sha256: '63056c56467a69b5410bfa8f1635955920fb44a3ebea75d62ee4e8001b8115c7' } },
+    { id: 'efik-phrases', title: 'Omniglot: Efik phrases', url: 'https://www.omniglot.com/language/phrases/efik.htm', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/calabar/reviewed/efik-phrases.json', bytes: 412, sha256: '36776e86ea3ab9fe8ad87b8ccfded92fe8c943c0ae84a38a697deed7e14dc4e9' } },
+    { id: 'honorifics', title: 'Honorifics and humilifics (Journal of Nigerian Languages and Linguistics)', url: 'https://www.jnlp.com.ng/index.php/home/article/download/23/22/29', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/calabar/reviewed/honorifics.json', bytes: 512, sha256: '43d8094add26aac97d8aed771ac8cd3f6158d49503c9ea05040e719871556bff' } },
+    { id: 'efik-kitchen', title: 'The Interview: Secrets of the Efik kitchen', url: 'https://theinterview.ng/2016/10/30/secrets-of-the-efik-kitchen/', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/calabar/reviewed/efik-kitchen.json', bytes: 674, sha256: 'b580a9b82a3ee1901a8717822682f226be0f92b6624ff0613ffb85a17222e97f' } },
+    { id: 'calabar-carnival', title: 'Wikipedia: Calabar Carnival', url: 'https://en.wikipedia.org/wiki/Calabar_Carnival', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/calabar-carnival.json', bytes: 336, sha256: 'd2189d863e5038abc04c124f9d79b640e8b2a7fab9f680c4c7bb284b1fffa8ed' } },
+    { id: 'carnival-2025-itinerary', title: 'Cross River Watch: Carnival Calabar 2025 itinerary', url: 'https://crossriverwatch.com/2025/12/cross-river-government-unveils-2025-carnival-calabar-trace-of-time-itinerary/', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/calabar/reviewed/carnival-2025-itinerary.json', bytes: 368, sha256: '7bbd1760df395f32377c573730ae1f013ff87a604b1c44670e3d3d5e6880d89b' } },
+    { id: 'wikivoyage-calabar', title: 'Wikivoyage: Calabar', url: 'https://en.wikivoyage.org/wiki/Calabar', checkedOn: '2026-10-06', supports: ['identity'], cache: { path: 'scripts/city/research/calabar/reviewed/wikivoyage-calabar.json', bytes: 469, sha256: '3fb375e3e096a58e5e991c0f9f9fddf756b3a2a5ecfdde03c38f8c421910ddc5' } },
+    { id: 'great-kwa-river', title: 'Wikipedia: Great Kwa River', url: 'https://en.wikipedia.org/wiki/Great_Kwa_River', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/great-kwa-river.json', bytes: 327, sha256: 'b8b0140408b47e50762f1862cd57c69a27cb4005db2e6e86f3f203fd2e5b25c3' } },
+    { id: 'cross-river-national-park', title: 'Wikipedia: Cross River National Park', url: 'https://en.wikipedia.org/wiki/Cross_River_National_Park', checkedOn: '2026-10-06', supports: ['identity'], licence: 'CC BY-SA 4.0', cache: { path: 'scripts/city/research/calabar/reviewed/cross-river-national-park.json', bytes: 327, sha256: '57bb3a54eca56b8c647939a15dcd34ebca6dcd2b63c3096bf0feea8ae04ec9cd' } },
   ],
   unmapped: [
     { kind: 'mosque', note: 'No named mosque with an exact OSM element or Wikidata P625 record was found in the selected LGAs on 2026-10-06.' },

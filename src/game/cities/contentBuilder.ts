@@ -3,9 +3,10 @@ import { toLocal } from '../../geo/frame.ts'
 import type {
   ActivityDefinition, CalendarEvent, CityContent, CityCultureCard, CityGuidePlace, CityVenueContent, CitySceneVariant,
   DreamDefinition, HouseDefinition, JobDefinition, NpcDefinition, SceneKind, SpotDefinition,
+  NpcAge, NpcGreeting,
   StarterGoal, TravelModeDefinition, VenueCategoryId, VenueDefinition, VenueScene, WishDefinition,
 } from '../../types/content.ts'
-import type { DreamId, LotteryId } from '../../types/life.ts'
+import type { DreamId, Look, LotteryId } from '../../types/life.ts'
 
 export interface CityPoint { readonly lon: number; readonly lat: number }
 export interface CityBounds { readonly minX: number; readonly maxX: number; readonly minZ: number; readonly maxZ: number }
@@ -17,7 +18,17 @@ export interface CityVenueSeed {
   readonly hours?: Readonly<{ open: number; close: number; days?: number[] }>
   readonly variant?: 'speakeasy' | 'church' | 'mosque' | CitySceneVariant; readonly beta?: boolean; readonly note?: string
 }
-export interface CityPersonSeed { readonly name: string; readonly role: string; readonly quotes: readonly [string, string] }
+export interface CityPersonSeed {
+  readonly name: string; readonly role: string; readonly quotes: readonly [string, string]
+  readonly age?: NpcAge
+  /** A local greeting. `identityId` must name a sourced identity fact in the city spec. */
+  readonly greeting?: NpcGreeting
+  readonly look?: Partial<Look>
+  /** Provenance note carried onto the regular. A greeting needs one until a native speaker has reviewed it. */
+  readonly note?: string
+  /** Ids of the sourced identity facts (foods, crafts, industries, culture) that the two lines draw on. */
+  readonly facts?: readonly string[]
+}
 export interface CityHouseSeed {
   readonly id: string; readonly label: string; readonly districtId: string; readonly district: string
   readonly rent: number; readonly grid: number; readonly point: CityPoint
@@ -111,7 +122,13 @@ export function buildCityContent<City extends string>(spec: CityContentSpec<City
   if (spec.people.length !== publicVenues.length * 2) throw new Error(`${spec.cityId} requires two authored regulars at every public venue`)
   const regulars = Object.freeze(publicVenues.flatMap((venue, venueIndex) => spec.people.slice(venueIndex * 2, venueIndex * 2 + 2).map((person, personIndex) => {
     const id = `${spec.cityId}-${venue.id}-${personIndex + 1}`
-    const definition: NpcDefinition = { id, venue: venue.id, name: person.name, role: person.role, emoji: personIndex ? 'neighbour' : 'person', quotes: [...person.quotes], at: null, beta: true }
+    const definition: NpcDefinition = {
+      id, venue: venue.id, name: person.name, role: person.role, emoji: personIndex ? 'neighbour' : 'person', quotes: [...person.quotes], at: null, beta: true,
+      ...(person.note ? { note: person.note } : {}),
+      ...(person.age ? { age: person.age } : {}),
+      ...(person.look ? { look: { ...person.look } } : {}),
+      ...(person.greeting ? { greeting: { ...person.greeting } } : {}),
+    }
     return Object.freeze({ cityId: spec.cityId, id, venueId: venue.id, definition: Object.freeze(definition) })
   })))
   const unavailable = new Set(spec.unavailableCareerIds ?? [])

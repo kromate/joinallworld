@@ -72,12 +72,14 @@ function setOpen(key: string | null): void {
   replying.value = null; fresh.value = 0; quoted.value = null
   if (key) void nextTick(() => composer.value?.focus())
 }
+/** Opened for a new group (the guide's "create a group"): the form opens as soon as the chats are there to pick friends from. */
+const wantGroup = ref(false)
 // Opened from a person card, a contact or a notification: { to, name } | { conv } | { tab }.
 watch(() => props.params, (params) => {
   const asked = (params ?? null) as { tab?: string; conv?: string; to?: string; name?: string; new?: string } | null
   if (!asked) return
   if (asked.tab === 'updates' || asked.tab === 'chats') { setOpen(null); ui.tab = asked.tab }
-  else if (asked.new === 'group') { setOpen(null); ui.tab = 'chats'; void nextTick(newGroup) }
+  else if (asked.new === 'group') { setOpen(null); ui.tab = 'chats'; wantGroup.value = true }
   else if (asked.conv) { setOpen(asked.conv); void openThread(asked.conv) }
   else if (asked.to) {
     const existing = social.me?.conversations.find((conv) => conv.with === asked.to)
@@ -208,6 +210,8 @@ async function sendMoneyTo(player: string, name: string): Promise<void> {
   if (personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
 }
 function newGroup(): void { Object.assign(group, { open: true, name: '', members: [], clientId: newClientId() }) }
+// Opened for a new group (the guide's "create a group"): the form opens as soon as the chats are there to pick friends from.
+watch([wantGroup, me], () => { if (wantGroup.value && me.value) { wantGroup.value = false; newGroup() } }, { immediate: true })
 async function createGroup(): Promise<void> {
   if (group.busy) return
   group.busy = true

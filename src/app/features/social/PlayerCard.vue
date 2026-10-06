@@ -45,6 +45,8 @@ watch([() => props.id, () => view.value.connected], ([id, connected]) => {
   // Opened to send a gift (the guide's "send money"): the form is open at once.
   if (props.form) openForm(props.form)
 }, { immediate: true })
+// Asked again for the same player (the guide's "send money" while the card is open): the form opens now.
+watch(() => props.form, (form) => { if (form) openForm(form) })
 // A card that is not here (never read, or dropped when a friendship changed) is read again.
 watch([() => props.id, () => state.profiles.has(props.id), () => view.value.connected], ([id, has, connected]) => {
   if (connected && !has && personUi.player === id) void client.loadProfile(id)

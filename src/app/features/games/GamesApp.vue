@@ -3,7 +3,7 @@
 // everybody, judged by the server) with unlimited practice words; chess and word tiles open a Phone
 // table against the computer (the Tables app, with no venue needed). Friends: sit at a table in a
 // park or lounge and play for real.
-import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -32,7 +32,7 @@ async function loadToday(): Promise<void> {
 onMounted(() => { void loadToday() })
 // Opened for one game ({ game: 'oro' | 'chess' | 'weave' }): Oro opens on today's word, the others are brought into view.
 const wanted = (): string => { const game = (props.params as { game?: unknown } | null | undefined)?.game; return typeof game === 'string' ? game : '' }
-if (wanted() === 'oro') screen.value = 'daily'
+watch(() => props.params, () => { if (wanted() === 'oro') screen.value = 'daily' }, { immediate: true })
 useSection(() => (wanted() === 'chess' || wanted() === 'weave' ? { section: wanted() } : null))
 function back(): void { screen.value = 'hub'; void loadToday() }
 function onState(next: OroView): void { today.value = next }

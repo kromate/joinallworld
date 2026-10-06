@@ -38,6 +38,7 @@ import { applyWhereabouts, freshLive, LIVE_GRACE_MS, takeMove, takeSnapshot, whe
 import type { LiveTable } from '../../../game/live-model.ts'
 import type { LiveServerFrame } from '../../../types/live.ts'
 import type { NoticeFrame } from '../../../types/notice.ts'
+import type { AnnounceFrame } from '../../../types/announce.ts'
 import type { ErrorFrame, PresenceFrame, PulseFrame } from '../../../types/protocol.ts'
 import type { Conversation, Friend, KnockState, Message, PeopleFrame, PeopleListing, PersonCard, SocialOverview, SocialPushFrame, ThreadItem } from '../../../types/social.ts'
 import type { ApiError } from '../../types/client.ts'
@@ -124,7 +125,7 @@ const browserEnv = (): SocialEnv => ({
 })
 
 /** What a server push may be: the social frames, the answer to people-list, and the room's presence and error frames. */
-type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame | LiveServerFrame | NoticeFrame | PulseFrame
+type Incoming = SocialPushFrame | PeopleFrame | PresenceFrame | ErrorFrame | LiveServerFrame | NoticeFrame | PulseFrame | AnnounceFrame
 
 /** The refusal sentence for a failed request (the server's own wording when it explained one). */
 export function failureReason(error: ApiError): string {
@@ -493,7 +494,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         // A friend's ping (features/ping): shown by its own notices, which listen beside the calls.
         for (const listener of [...frameListeners]) listener(message)
         return
-      case 'notice': case 'pulse':
+      case 'notice': case 'pulse': case 'announce':
         // An update is coming (features/notice), or the counts changed (features/hud, the online pill): shown by their own
         // components, which listen beside the calls.
         for (const listener of [...frameListeners]) listener(message)

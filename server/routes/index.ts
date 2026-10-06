@@ -197,6 +197,7 @@
  *   fixture(t, { routes: [myModule], wsModules: [myWs] }) replaces the registered modules.
  */
 import type { RouteContext, RouteHandler, RouteModule, RouteTable } from '../types.ts';
+import { banSentence } from '../admin/sanctions.ts';
 import core from './core.ts';
 import auth from './auth.ts';
 import social from './social.ts';
@@ -212,9 +213,29 @@ import ping from './ping.ts';
 import business from './business.ts';
 import businessMod from './business-mod.ts';
 import notice from './notice.ts';
+import admin from './admin.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod, notice];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod, notice, admin];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
+
+/**
+ * A BANNED PLAYER (server/admin/sanctions.ts) is refused by EVERY route, from one place: the first time a request resolves a session that is
+ * banned, it is answered 403 `account_banned` with a plain sentence. Only a path under /api/account/ (signing out) and the admin's own
+ * paths are left alone. The check is a lookup in memory, so it costs a request nothing.
+ */
+function refusingBanned(ctx: RouteContext, path: string, handler: RouteHandler): RouteHandler {
+  if (path.startsWith('/api/account') || path.startsWith('/api/admin/')) return handler;
+  return (request) => {
+    const resolve = request.session;
+    request.session = (db, options) => {
+      const found = resolve(db, options);
+      const verdict = found ? ctx.checks?.banned?.(found.publicId, found.account) : null;
+      if (verdict) throw Object.assign(ctx.fail(403, 'account_banned'), { reason: banSentence(verdict) });
+      return found;
+    };
+    return handler(request);
+  };
+}
 
 interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }
 
@@ -227,8 +248,9 @@ export function buildRoutes(ctx: RouteContext, modules: RouteModule[] = ROUTE_MO
       const parsed = KEY.exec(key);
       if (!parsed || typeof handler !== 'function') throw new Error(`Invalid route: ${key}`);
       if (exact.has(key) || patterns.some(route => route.key === key)) throw new Error(`Duplicate route: ${key}`);
-      if (!key.includes('/:')) { exact.set(key, handler); continue; }
-      patterns.push({ key, method: parsed[1] ?? '', segments: (parsed[2] ?? '').split('/'), handler });
+      const guarded = refusingBanned(ctx, parsed[2] ?? '', handler);
+      if (!key.includes('/:')) { exact.set(key, guarded); continue; }
+      patterns.push({ key, method: parsed[1] ?? '', segments: (parsed[2] ?? '').split('/'), handler: guarded });
     }
   }
   return {

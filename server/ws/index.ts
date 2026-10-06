@@ -87,9 +87,10 @@ import tables from './tables.ts';
 import calls from './calls.ts';
 import live from './live.ts';
 import notice from './notice.ts';
+import admin from './admin.ts';
 import type { RouteContext, WsConnection, WsDispatch, WsHandlerModule, WsLifecycle, WsMessageHandler } from '../types.ts';
 
-export const WS_MODULES: readonly WsHandlerModule[] = [rooms, social, world, tables, calls, live, notice];
+export const WS_MODULES: readonly WsHandlerModule[] = [rooms, social, world, tables, calls, live, notice, admin];
 
 const LIFECYCLE = ['validateMemberships', 'revalidate', 'roomStillValid', 'refreshNames'] as const satisfies readonly (keyof WsLifecycle)[];
 type LifecycleName = (typeof LIFECYCLE)[number];

@@ -50,6 +50,7 @@ import { growthOf, keyed, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
 import { pingMailService } from './ping-mail.ts';
+import { announceMailService } from './announce-mail.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -216,15 +217,17 @@ function buildService(ctx: RouteContext) {
     deliver: (id, kind, to, message) => deliverMail(id, kind, to, message),
   });
 
-  // A friend's ping (./ping-mail.ts) leaves through the same sender, under caps of its own.
-  const pingMail = pingMailService(ctx, {
-    contactLine, origin, cap, sentToday, token: (purpose, id, nonce, expires) => token(purpose, id, nonce, expires),
-    deliverMail: (id, kind, to, message) => deliverMail(id, kind, to, message), deliverPush: (id, kind, subs, payload) => deliverPush(id, kind, subs, payload),
-    pushSubs(g, id) {
+  // A friend's ping (./ping-mail.ts) and an admin's announcement (./announce-mail.ts) leave through the same sender, under caps of their own.
+  const mailing = {
+    contactLine, origin, cap, sentToday, token: (purpose: string, id: string, nonce: string, expires: number) => token(purpose, id, nonce, expires),
+    deliverMail: (id: string, kind: string, to: string, message: Omit<MailMessage, 'to'>) => deliverMail(id, kind, to, message), deliverPush: (id: string, kind: string, subs: PushSub[], payload: unknown) => deliverPush(id, kind, subs, payload),
+    pushSubs(g: GrowthCollection, id: string) {
       const o = book(g), player = playerOf(g, id, { create: false });
       return o.off.push || (o.pushPausedUntil ?? 0) > now() || player?.consent?.age !== 'adult' || player.consent.push !== true ? [] : pushOf(g)[id]?.subs ?? [];
     },
-  }, comeback);
+  };
+  const pingMail = pingMailService(ctx, mailing, comeback);
+  const announcements = announceMailService(ctx, mailing, comeback);
 
   // ---- e-mail: ask, confirm, remove ------------------------------------------------------------------
   /** Store an address the player consented to and send its confirmation. `address` is the request's, for the limit only. */
@@ -443,5 +446,5 @@ function buildService(ctx: RouteContext) {
     return { ok: true, channel, off };
   }
 
-  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, pingMail, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
+  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, pingMail, announcements, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
 }

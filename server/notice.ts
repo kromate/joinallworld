@@ -64,6 +64,10 @@ export interface NoticeService {
   frame(): NoticeFrame | null
   /** Check an announcement and, when good, start it and tell every open socket. Throws an HTTP error otherwise. */
   announce(body: unknown, ip: string): Promise<{ minutes: number; until: number }>
+  /** The same notice started from inside the server (the admin section, which has checked who is asking): no signature, no nonce; 1-15 minutes. */
+  start(minutes: number): { minutes: number; until: number }
+  /** End the running notice now. */
+  stop(): void
 }
 const services = new WeakMap<RouteContext, NoticeService>();
 export function noticeOf(ctx: RouteContext): NoticeService {
@@ -84,6 +88,16 @@ function build(ctx: RouteContext): NoticeService {
     if (current && ctx.now() >= current.until) current = null;
     return current ? { type: 'notice', kind: 'update', id: current.id, minutes: current.minutes, until: current.until, serverTime: ctx.now(), build: ctx.config.buildId } : null;
   };
+  /** Start the notice and tell every open socket. */
+  function begin(id: string, minutes: number): { minutes: number; until: number } {
+    current = { id, minutes, until: ctx.now() + minutes * 60000 };
+    const announced = frame();
+    if (announced) {
+      const open = ctx.core?.sockets?.() ?? [];
+      if (ctx.broadcast) ctx.broadcast(open, announced); else for (const ws of open) ctx.send(ws, announced);
+    }
+    return { minutes, until: current.until };
+  }
   const key = (): string => { const set = ctx.env('NOTICE_PUBLIC_KEY').trim(); return set || NOTICE_PUBLIC_KEY; };
   return {
     frame,
@@ -101,13 +115,12 @@ function build(ctx: RouteContext): NoticeService {
       for (const [used, expires] of seen) if (expires <= now) seen.delete(used);
       if (seen.has(nonce)) return failed(409, 'notice_replayed');
       seen.set(nonce, issuedAt + NOTICE_SKEW_MS + 1000);
-      current = { id: nonce, minutes, until: now + minutes * 60000 };
-      const announced = frame();
-      if (announced) {
-        const open = ctx.core?.sockets?.() ?? [];
-        if (ctx.broadcast) ctx.broadcast(open, announced); else for (const ws of open) ctx.send(ws, announced);
-      }
-      return { minutes, until: current.until };
+      return begin(nonce, minutes);
     },
+    start(minutes) {
+      if (!Number.isInteger(minutes) || minutes < NOTICE_MINUTES.min || minutes > NOTICE_MINUTES.max) throw refuse(ctx, 400, 'invalid_notice', 'Use 1 to 15 minutes.');
+      return begin(`admin-${ctx.randomId()}`, minutes);
+    },
+    stop() { current = null; },
   };
 }

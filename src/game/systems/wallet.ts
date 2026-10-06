@@ -10,7 +10,7 @@
  */
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts'
-import { cleanText } from '../util.ts'
+import { cleanText, fail, ok } from '../util.ts'
 import { lagosTime } from '../clock.ts'
 import type { SystemDefinition } from '../../types/registry.ts'
 import type { LedgerDay, LedgerLine, LifeContext, LifeState } from '../../types/life.ts'
@@ -81,7 +81,7 @@ const safeInteger = (value: unknown): value is number => Number.isSafeInteger(va
 const validAmount = (amount: unknown): amount is number => Number.isSafeInteger(amount) && (amount as number) >= 0
 
 /** Lines that say the same kind of thing share a group: "Rent: Yaba (due …)" → "Rent", "Danfo to X" → "Danfo". */
-const PREFIXES = ['Refund', 'Bought', 'Sold', 'Groceries', 'Boutique', 'Transfer from', 'Transfer to', 'Fixed deposit', 'Loan repayment', 'Rent arrears', 'Goal', 'Start cash', 'Fuel', 'Ride home on credit', 'Ride home repaid']
+const PREFIXES = ['Refund', 'Bought', 'Sold', 'Groceries', 'Boutique', 'Transfer from', 'Transfer to', 'Fixed deposit', 'Loan repayment', 'Rent arrears', 'Goal', 'Start cash', 'Fuel', 'Ride home on credit', 'Ride home repaid', 'Admin credit', 'Admin debit']
 export function reasonGroup(reason: unknown): string {
   const text = String(reason ?? '')
   const known = PREFIXES.find((prefix) => text.startsWith(prefix))
@@ -233,7 +233,22 @@ function sanitizeLines(saved: unknown): LedgerLine[] {
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
  */
 const play = PLAYS ? {
-  actions: {},
+  actions: {
+    /**
+     * SERVER ONLY. The operator's credit or debit (server/admin): a defined faucet and a defined sink, each one ledger line of its own
+     * ("Admin credit: <reason>", "Admin debit: <reason>"). It never touches `social.earned`, so money given this way does not unlock gifts or
+     * buying from players. A debit takes at most what the balance holds (cash never goes below zero); the caller reads the balance before and after.
+     */
+    'wallet.admin': { serverOnly: true, refusal: 'Balances are adjusted by the operator. Nothing was changed.',
+      run(state, payload, ctx) {
+        const amount = payload?.amount, reason = cleanText(payload?.reason, 56, 'Adjustment')
+        if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
+        const context = { now: finite(ctx?.now) ? ctx.now : state.t }
+        if (payload.op === 'credit') return credit(state, amount, `Admin credit: ${reason}`, context) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
+        if (payload.op === 'debit') { debit(state, amount, `Admin debit: ${reason}`, context, { partial: true }); return ok(state, 'debited') }
+        return fail(state, 'invalid_amount')
+      } },
+  },
   advance(): void {},
 } satisfies Pick<SystemDefinition<'wallet'>, 'actions' | 'advance'> : LEFT_OUT;
 

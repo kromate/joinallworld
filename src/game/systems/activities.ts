@@ -1,4 +1,4 @@
-import { contentFor, jobFor, venuesFor, venueFor } from '../cities/runtime.ts';
+import { contentFor, jobFor, publicArrivalVenue, venuesFor, venueFor } from '../cities/runtime.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Generic data-driven activity engine. Venue spots, job shifts and home furniture all run
@@ -406,6 +406,15 @@ const play = PLAYS ? {
       state.spot = id;
       return ok(state, 'selected');
     },
+    /** SERVER ONLY (server/admin): stand the player at the city's public arrival venue, or at home, ending a stuck timed action (never a trip between cities). */
+    'activity.admin': { serverOnly: true, refusal: 'Players are moved by the operator. Nothing was changed.',
+      run(state, payload, ctx) {
+        if (state.activeAction?.kind === 'intercity') return fail(state, 'travelling', 'A trip between cities is under way.');
+        const to = payload?.to === 'home' ? 'home' : payload?.to === 'arrival' ? publicArrivalVenue(ctx.cityId).id : null;
+        if (to === null) return fail(state, 'invalid_place');
+        state.activeAction = null;
+        return arrive(state, to, ctx) ? ok(state, 'moved') : fail(state, 'invalid_place');
+      } },
   },
   advance() {},
 } satisfies Pick<SystemDefinition<'activities'>, 'actions' | 'advance'> : LEFT_OUT;

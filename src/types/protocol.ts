@@ -26,6 +26,8 @@ import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, Ta
 import type { CampusHttpRoutes } from './campus.ts'
 import type { CallClientFrame, CallServerFrame } from './calls.ts'
 import type { NoticeFrame, NoticeHttpRoutes } from './notice.ts'
+import type { AnnounceFrame } from './announce.ts'
+import type { AdminHttpRoutes } from './admin.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
 import type { PingHttpRoutes } from './ping.ts'
@@ -247,7 +249,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, AdminHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -464,7 +466,7 @@ export interface PulseFrame { type: 'pulse'; online: number; visits: number; tod
  * socket and the social client's socket both receive every frame addressed to the player.
  * WORKER: also `HeartbeatFrame`.
  */
-export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame | CallServerFrame | LifeChangedFrame | LiveServerFrame | NoticeFrame | PulseFrame
+export type ServerFrame = RoomServerFrame | SocialServerFrame | TableServerFrame | CallServerFrame | LifeChangedFrame | LiveServerFrame | NoticeFrame | PulseFrame | AnnounceFrame
 export type ClientFrameType = ClientFrame['type']
 export type ServerFrameType = ServerFrame['type']
 
@@ -544,6 +546,27 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/mutes/:id/lift',
   'POST /api/mod/content/remove',
   'POST /api/notice',
+  'GET /api/admin/me',
+  'GET /api/admin/dashboard',
+  'GET /api/admin/economy',
+  'GET /api/admin/players',
+  'GET /api/admin/players/:id',
+  'POST /api/admin/players/:id/act',
+  'POST /api/admin/world/grant',
+  'GET /api/admin/announcements',
+  'POST /api/admin/announcements',
+  'POST /api/admin/announcements/:id/cancel',
+  'GET /api/admin/settings',
+  'POST /api/admin/settings',
+  'POST /api/admin/notice',
+  'GET /api/admin/moderation/reports',
+  'POST /api/admin/moderation/reports/:id/act',
+  'GET /api/admin/moderation/shops',
+  'POST /api/admin/moderation/shops/act',
+  'GET /api/admin/moderation/content',
+  'POST /api/admin/moderation/content/remove',
+  'GET /api/admin/audit',
+  'GET /api/admin/tools',
   'GET /api/world/me',
   'GET /api/world/pulse',
   'GET /api/world/city',
@@ -627,7 +650,7 @@ export const SERVER_FRAME_TYPES = [
   'life-changed', 'social-read', 'social-changed',
   'live-snapshot', 'live-move',
   'ping-incoming', 'ping-joined', 'ping-ended',
-  'notice', 'pulse',
+  'notice', 'pulse', 'announce',
 ] as const satisfies readonly ServerFrameType[]
 /** WORKER: every frame type the shared modules send, and its application heartbeat. */
 export const WORKER_SERVER_FRAME_TYPES: readonly (ServerFrameType | HeartbeatFrame['type'])[] = [...SERVER_FRAME_TYPES, 'heartbeat']

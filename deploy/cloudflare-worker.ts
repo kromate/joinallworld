@@ -42,6 +42,7 @@ import { DurableObject } from 'cloudflare:workers';
 import { oldCharacterLanding } from './legacy-bridge.ts';
 import { siteFile } from '../server/site-files.ts';
 import { createSqliteStore } from './sqlite-store.ts';
+import { createSqliteImages } from './sqlite-images.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { ALARM_TABLE, createWriteMeter, type WriteMeter } from './write-meter.ts';
@@ -60,7 +61,7 @@ import telemetryRoutes from '../server/telemetry/routes.ts';
 import { capacityConfig, type CapacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
 import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKET_BUSY_CODE } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
-import type { AccountDeviceRecord, Db, HttpError, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
+import type { AccountDeviceRecord, Db, HttpError, ImageStore, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
 
 /** How often connected sockets are asked for a sign of life (a timer in memory), and how often the alarm wakes the object whoever is connected. */
@@ -99,7 +100,7 @@ const digest = async (value: string): Promise<string> => [...new Uint8Array(awai
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
 const firstLine = (error: unknown): string => { try { return String((error as { message?: unknown } | null | undefined)?.message ?? error).split('\n')[0]?.slice(0, 300) ?? ''; } catch { return 'unprintable error'; } };
-async function bodyOf(request: Request): Promise<Record<string, unknown>> {
+async function bodyOf(request: Request, limit = 8192): Promise<Record<string, unknown>> {
   if (!request.headers.get('content-type')?.startsWith('application/json')) throw protocolError(415, 'json_required');
   const reader = request.body?.getReader();
   if (!reader) throw protocolError(400, 'invalid_json');
@@ -109,7 +110,7 @@ async function bodyOf(request: Request): Promise<Record<string, unknown>> {
     const chunk = await reader.read();
     if (chunk.done) break;
     size += chunk.value.byteLength;
-    if (size > 8192) { await reader.cancel(); throw protocolError(413, 'body_too_large'); }
+    if (size > limit) { await reader.cancel(); throw protocolError(413, 'body_too_large'); }
     chunks.push(chunk.value);
   }
   const bytes = new Uint8Array(size);
@@ -251,6 +252,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   booted: boolean;
   store: SqliteStore;
   shards: ShardStore;
+  images: ImageStore;
   sweepAt: number;
   expirySweepAt: number;
   shortLimits: ReturnType<typeof createMemoryLimiter>;
@@ -278,6 +280,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const storage: SqliteStorage = { sql: this.sql, transactionSync: fn => ctx.storage.transactionSync(fn), sync: () => ctx.storage.sync() };
     this.sleeps = env.SLEEP_BETWEEN_BEATS === '1';
     this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS });
+    this.images = createSqliteImages(storage);
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
     this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
     // THE LIMITER (server/limiter.ts), bounded per class. SHORT windows (a minute or less: every request, every socket frame) are
@@ -314,7 +317,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const open = (): HostSocket[] => [...this.held.all].filter(ws => ws.readyState === 1);
     const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
-      store: this.store, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
+      store: this.store, images: this.images, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       allow: (key: string, count = 120, windowMs = 60000) => this.allow(key, count, windowMs),
       peek: (key: string, count = 120) => this.peek(key, count),
@@ -572,7 +575,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       // `secret` becomes the stored session's key once session() resolves it; `cookie` stays what the browser presented.
       const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, cookie: secret, binding: mayBind(presentedSession(raw.headers.get('cookie')), true), params: {}, raw,
         strictOrigin: isStrictOrigin(raw.headers.get('origin'), url.host, raw.headers.get('sec-fetch-site'), overHttps(url)),
-        moderator: () => moderator, json: () => bodyOf(raw).then(body => (request.body = body)),
+        moderator: () => moderator, json: (limit?: number) => bodyOf(raw, limit).then(body => (request.body = body)),
         session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
         requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
       if (url.pathname === '/socket') return await this.upgrade(raw, request);
@@ -591,6 +594,11 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try { returned = await route.handler(request); }
       finally { for (const publicId of new Set(this.socketsOfSecret(request.secret).filter(ws => ws.room).map(ws => ws.session.id))) await this.context.core.revalidate(publicId); }
       const result: RouteResult = returned && typeof returned === 'object' ? returned : {}, status = result.status || 200;
+      if (result.file && status < 300) {
+        // Bytes a route hands over as they are (a chat picture): private to the caller, never sniffed, shown in the page.
+        this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId });
+        return new Response(result.file.bytes, { status, headers: headersOf({ 'content-type': result.file.type, 'cache-control': 'private, max-age=300', 'x-content-type-options': 'nosniff', 'content-disposition': 'inline', 'cross-origin-resource-policy': 'same-origin' }) });
+      }
       this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.['type'], code: (result.body as { code?: unknown } | undefined)?.code } });
       const plain = result.body && typeof result.body === 'object' && !Array.isArray(result.body);
       const body: Record<string, unknown> = status < 300 && (plain || result.body === undefined) ? { ...(result.body as object || {}), serverTime: Date.now(), ...(this.context.core.storageFailing() ? { storage: 'failing' } : {}) } : (result.body ?? {}) as Record<string, unknown>;

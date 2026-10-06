@@ -27,6 +27,8 @@
  *   /api/mod/problems?status=open|all|…     problem reports with their automatic context
  *   /api/mod/mutes                          active mutes
  *   /api/mod/content?city=                  live ads, announcements and radio shout-outs, with the ids to remove them by
+ *   /api/mod/pictures                       chat pictures that were reported, hidden or removed (id, conversation, sender, report count), newest first
+ *   /api/mod/pictures/:id                   the picture itself (the bytes, with their content type), for the operator to look at
  *   /api/mod/audit                          the last 200 audit lines, newest first
  * ACT (POST, JSON body). Every action writes one audit line.
  *   /api/mod/reports/:id/dismiss   { note? }                          no action taken; the reporter is told
@@ -34,6 +36,9 @@
  *   /api/mod/mutes                 { id, minutes, reason, report? }   mute a public id (1 minute – 30 days); with
  *                                                                     `report` that report is marked actioned
  *   /api/mod/mutes/:id/lift        {}
+ *   /api/mod/pictures/:id          { action: 'remove' | 'restore' }   remove deletes the bytes (the bubble says "Picture expired");
+ *                                                                     restore shows a picture that was hidden pending review
+ *   /api/mod/players/:id/pictures  { allowed: boolean }               stop (false) or allow (true) this player sending pictures
  *   /api/mod/content/remove        { cityId, kind: 'billboard'|'sea'|'announcement'|'radio', slot? | id?, venue?, reason? }
  * A mute never touches the player's session, life, money or belongings (moderation/service.js).
  * Removing content does not refund what was paid for it; the owner is told in their Updates.
@@ -41,6 +46,7 @@
 import { UUID_PATTERN } from '../protocol.ts';
 import { moderationService, LIMITS } from '../moderation/service.ts';
 import { socialService } from '../social/service.ts';
+import { CONTENT_TYPES, PICTURE_LIMITS } from '../social/images.ts';
 import { supportService, STATUSES } from '../support/service.ts';
 import { cityOf, emptyCivic } from '../civic/data.ts';
 import { AD_KINDS, liveAds, takeDown } from '../civic/ads.ts';
@@ -117,6 +123,13 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
     'GET /api/mod/reports': guarded((db, request) => ({ reports: social.modReports(db, statusParam(request, ['received', 'dismissed', 'actioned'])) })),
     'GET /api/mod/problems': guarded((db, request) => ({ problems: support.list(db, statusParam(request, STATUSES)) })),
     'GET /api/mod/mutes': guarded((db) => ({ mutes: moderation.mutes(db) })),
+    'GET /api/mod/pictures': guarded((db) => social.modPictures(db)),
+    'GET /api/mod/pictures/:id': async (request) => {
+      await gate(request);
+      const id = request.params.id ?? '', found = ctx.images && PICTURE_LIMITS.idPattern.test(id) ? await ctx.images.get(id) : null;
+      if (!found) throw ctx.fail(404, 'unknown_picture');
+      return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
+    },
     'GET /api/mod/audit': guarded((db) => ({ audit: moderation.trail(db) })),
     'GET /api/mod/content': guarded((db, request) => {
       const cityId = cityParam(request.query.get('city')), city = civicCity(db, cityId);
@@ -154,6 +167,22 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
     'POST /api/mod/mutes/:id/lift': mutating((db, request) => {
       const result = moderation.lift(db, publicId(request.params.id), request.ip);
       return { ok: true, code: result.lifted ? 'lifted' : 'not_muted', mutes: result.mutes };
+    }),
+    'POST /api/mod/pictures/:id': mutating((db, request, body) => {
+      const action = body.action;
+      if (action !== 'remove' && action !== 'restore') throw ctx.fail(400, 'invalid_action');
+      const id = request.params.id ?? '';
+      if (!PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(400, 'invalid_image');
+      const result = social.modPicture(db, id, action);
+      if (result.ok) moderation.audit(db, `picture-${action}`, id, '', request.ip);
+      return { ...result };
+    }),
+    'POST /api/mod/players/:id/pictures': mutating((db, request, body) => {
+      if (typeof body.allowed !== 'boolean') throw ctx.fail(400, 'invalid_action');
+      const id = publicId(request.params.id);
+      const result = social.modPictureBan(db, id, !body.allowed);
+      if (result.ok) moderation.audit(db, body.allowed ? 'picture-allow' : 'picture-ban', id, '', request.ip);
+      return { ...result };
     }),
     'POST /api/mod/content/remove': mutating((db, request, body) => {
       const cityId = cityParam(body.cityId), city = civicCity(db, cityId), reason = note(body.reason, LIMITS.reason);

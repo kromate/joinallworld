@@ -217,6 +217,15 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
       return { body: { ok: true, publicKey: await outreach.publicKey() }, headers: { 'Cache-Control': 'no-store' } };
     },
     'POST /api/growth/push/subscribe': route(({ g, session, body }) => outreach.subscribe(g, session, body)),
+    // A test notification to the caller's own subscribed browsers (three an hour): it shows the player what a message will look like.
+    'POST /api/growth/push/test': async (request) => {
+      const id = await ctx.store.read((db) => request.requireSession(db).publicId);
+      if (!ctx.allow(`growth:push-test:${id}`, 3, 3600000)) return { body: { ok: false, code: 'rate_limited', reason: 'A few test notifications an hour are enough. Try again later.' } };
+      const subs = await ctx.store.read((db) => outreach.pushSubsOf(growthOf(ctx, db), id).map((sub) => ({ ...sub })));
+      if (!subs.length) return { body: { ok: false, code: 'no_devices', reason: 'Notifications are not switched on for this phone. Turn them on first.' } };
+      const results = await outreach.deliverChatPush(id, subs, { title: 'Allworld', body: 'This is a test. Messages from your friends will look like this.', url: '/', tag: 'test', kind: 'test' }, 'test');
+      return { body: { ok: true, code: 'sent', devices: results.filter((result) => result.ok).length } };
+    },
     'POST /api/growth/push/unsubscribe': route(({ g, session, body }) => outreach.unsubscribePush(g, session.publicId, body.endpoint)),
 
     'POST /api/growth/client': async (request) => {

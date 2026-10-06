@@ -406,7 +406,7 @@ test('groups: friends only, capped, owner manages members, leaving hands over or
   assert.equal((await post(f, '/api/social/groups', { name: 'x'.repeat(33), members: [], clientId: f.id() }, ada)).status, 400);
   assert.equal((await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, ada)).code, 'left');
   const left = (await get(f, '/api/social/conversations', bola)).conversations.find((conv) => conv.id === gid);
-  assert.equal(defined(left).owner, bola.id); assert.equal(defined(defined(left).last).body, 'Ada left.');
+  assert.equal(defined(left).owner, bola.id); assert.equal(defined(defined(left).last).body, 'Ada left. Bola now runs the group.');
   await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, bola);
   assert.equal((await socialOf(f)).convs[gid], undefined);
 });

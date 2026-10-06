@@ -254,6 +254,8 @@ export interface PushSubscribeBody {
   cityId: CityId
   subscription: PushSubscriptionLike
   consent: true
+  /** The device's offset from UTC in minutes (east positive): messages are held back at night by it. */
+  tz?: number
 }
 export interface PushUnsubscribeBody {
   cityId: CityId
@@ -316,6 +318,8 @@ export interface GrowthHttpRoutes {
     response: Ok<Done<'subscribed'> | Refusal<'not_ready' | 'age_required' | 'under_18'>>
     errors: GrowthPost | 'consent_required' | 'invalid_subscription'
   }
+  /** A test notification to the caller's own browsers (three an hour). */
+  'POST /api/growth/push/test': { body: Record<string, never>; response: Ok<Done<'sent', { devices: number }> | Refusal<'no_devices' | 'rate_limited'>>; errors: GrowthPost }
   'POST /api/growth/push/unsubscribe': { body: PushUnsubscribeBody; response: Ok<Done<'unsubscribed'> | Refusal<'not_ready'>>; errors: GrowthPost }
   'POST /api/growth/tables/claim': { body: { cityId: CityId }; response: Ok<TablesClaimResult>; errors: GrowthPost }
   /** No session needed. At most 8 signals a request, 10 requests a minute per address; `counted` is how many were known. */

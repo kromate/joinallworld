@@ -118,7 +118,8 @@ function overview(): SocialOverview {
     requests: { in: [], out: [] }, baeRequests: [],
     conversations: [{ id: 'dm.ada.me', kind: 'dm', name: ada.name, members: [me, ada], owner: null, with: 'ada', unread: 2, last: { seq: 2, from: ada, body: 'How far? <script>x</script>', at: server.now() } }],
     updates: [], house: { host: me, capacity: 4, guests: [], role: 'host', cityId: null, conv: null, hostStatus: 'home', knocks: [] },
-    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'] },
+    prefs: { groups: 'friends', mentions: 'on', pictures: 'friends', notify: { text: true, groups: 'mentions', pausedUntil: null, quietDm: false, quietGroups: true } },
+    limits: { body: 500, groupSize: 8, groupName: 30, guests: 4, reportText: 300, reasons: ['spam'], pins: 3, mentions: 5, pictures: { on: true, bytes: 250000, caption: 200 } },
   }
 }
 
@@ -165,8 +166,8 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
     let html = await render(messages)
     assert.match(html, /<div class="messages panel-fill"/, 'a conversation takes the whole app area')
     assert.match(html, /<h3[^>]*><button[^>]*>Ada &lt;b&gt;bold&lt;\/b&gt;<\/button><small[^>]*>Direct message<\/small>/)
-    assert.match(html, /class="bubble"[^>]*>(?:<!--.*?-->)*<span[^>]*>How far\?<\/span>/)
-    assert.match(html, /class="is-mine bubble"[^>]*>(?:<!--.*?-->)*<span[^>]*>I dey<\/span><small[^>]*>[^<]*(?:<!--.*?-->)* · Sent/)
+    assert.match(html, /class="is-head bubble"[^>]*>(?:<!--.*?-->)*<span class="bubble-text"[^>]*>(?:<!--.*?-->)*How far\?/)
+    assert.match(html, /class="is-mine is-head bubble"[^>]*>(?:<!--.*?-->)*<span class="bubble-text"[^>]*>(?:<!--.*?-->)*I dey(?:<!--.*?-->)*<\/span><small[^>]*>[^<]*(?:<!--.*?-->)* · Sent/)
 
     send('dm.ada.me', { conv: 'dm.ada.me' }, 'On my way')
     html = await render(messages)

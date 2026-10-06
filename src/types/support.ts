@@ -288,6 +288,12 @@ export interface ModerationHttpRoutes {
     response: Ok<{ ok: true; code: 'lifted' | 'not_muted' }>
     errors: ModWrite | 'invalid_player'
   }
+  /** Chat pictures that were reported, hidden or removed: newest first, at most 100. */
+  'GET /api/mod/pictures': { response: Ok<{ ok: true; code: 'ok'; pictures: { id: string; conv: string; seq: number; from: string | null; fromName: string | null; at: number; reports: number; hidden: boolean; removed: boolean; width: number; height: number; bytes: number }[] }>; errors: ModCommon }
+  /** The picture itself (bytes, not JSON). */
+  'GET /api/mod/pictures/:id': { params: { id: string }; response: Ok<Record<string, never>>; errors: ModCommon | 'unknown_picture' }
+  'POST /api/mod/pictures/:id': { params: { id: string }; body: { action: 'remove' | 'restore' }; response: Ok<{ ok: true; code: 'removed' | 'restored' }>; errors: ModWrite | 'invalid_action' | 'invalid_image' | 'unknown_picture' }
+  'POST /api/mod/players/:id/pictures': { params: { id: string }; body: { allowed: boolean }; response: Ok<{ ok: true; code: 'banned' | 'allowed' }>; errors: ModWrite | 'invalid_action' | 'invalid_player' | 'unknown_player' }
   /** Removing content refunds nothing; the owner is told in their Updates. */
   'POST /api/mod/content/remove': {
     body: RemoveContentBody

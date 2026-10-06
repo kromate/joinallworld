@@ -50,6 +50,7 @@ import { growthOf, keyed, playerOf } from './data.ts';
 import { count } from './metrics.ts';
 import { comebackService } from './comeback.ts';
 import { pingMailService } from './ping-mail.ts';
+import { messagePushService } from './message-push.ts';
 import { mailConfig, sendMail } from './email/zeptomail.ts';
 import { awayMail, confirmMail, welcomeMail, weekMail } from './email/templates.ts';
 import { b64u, cleanSubscription, sendPush, vapidKeys } from './webpush.ts';
@@ -67,7 +68,7 @@ interface DeliveryResult { ok: boolean; off?: true; dryRun?: true; status?: numb
 type Job =
   | { channel: 'email'; kind: string; id: string; to: string; nonce: string; digest: Digest }
   | { channel: 'push'; kind: string; id: string; subs: { endpoint: string; p256dh: string; auth: string; at: number }[]; digest: Digest }
-type PushSub = { endpoint: string; p256dh: string; auth: string; at: number }
+type PushSub = { endpoint: string; p256dh: string; auth: string; at: number; tz?: number }
 /** The stored life a message is about. */
 export interface MessageLife { name: string; cityId: CityId; state: LifeState }
 
@@ -216,6 +217,25 @@ function buildService(ctx: RouteContext) {
     deliver: (id, kind, to, message) => deliverMail(id, kind, to, message),
   });
 
+  // A message on the phone (./message-push.ts): its own caps; it writes only to forget a subscription the push service dropped.
+  const pushSubsOf = (g: GrowthCollection, id: string): PushSub[] => {
+    const o = book(g), player = playerOf(g, id, { create: false });
+    return o.off.push || (o.pushPausedUntil ?? 0) > now() || player?.consent?.age !== 'adult' || player.consent.push !== true ? [] : pushOf(g)[id]?.subs ?? [];
+  };
+  async function deliverChatPush(id: string, subs: PushSub[], payload: unknown, topic: string): Promise<PushResult[]> {
+    const keys = await vapidKeys(ctx), subject = ctx.env('VAPID_SUBJECT') || (origin() ? origin() : 'mailto:operator@allworld.invalid');
+    const results: [string, PushResult][] = [];
+    for (const sub of subs) results.push([sub.endpoint, await sendPush(ctx, sub, payload, { ttl: 3600, urgency: 'normal', topic, keys, subject })]);
+    const gone = results.filter(([, result]) => result.gone).map(([endpoint]) => endpoint);
+    if (gone.length) await ctx.store.transact((db) => {
+      const g = growthOf(ctx, db), entry = pushOf(g)[id];
+      if (entry) entry.subs = entry.subs.filter((sub) => !gone.includes(sub.endpoint));
+      if (entry && !entry.subs.length) { delete pushOf(g)[id]; const player = playerOf(g, id, { create: false }); if (player?.consent) player.consent.push = false; }
+    });
+    return results.map(([, result]) => result);
+  }
+  const messagePush = messagePushService(ctx, { pushSubs: pushSubsOf, deliver: deliverChatPush });
+
   // A friend's ping (./ping-mail.ts) leaves through the same sender, under caps of its own.
   const pingMail = pingMailService(ctx, {
     contactLine, origin, cap, sentToday, token: (purpose, id, nonce, expires) => token(purpose, id, nonce, expires),
@@ -327,7 +347,9 @@ function buildService(ctx: RouteContext) {
     if (!player?.consent) return no('age_required', 'Answer the age question first.');
     if (player.consent.age !== 'adult') return no('under_18', 'Notifications are only for players who are 18 or older. Everything inside the game still works.');
     const entry = (pushOf(g)[session.publicId] ||= { subs: [], sends: [], periods: {} });
-    entry.subs = [...entry.subs.filter((item) => item.endpoint !== sub.endpoint), { ...sub, at: now() }].slice(-LIMITS.subs);
+    // The device's own offset from UTC in minutes, when the browser said it: quiet hours for messages follow it.
+    const tz = typeof body.tz === 'number' && Number.isInteger(body.tz) && Math.abs(body.tz) <= 840 ? body.tz : undefined;
+    entry.subs = [...entry.subs.filter((item) => item.endpoint !== sub.endpoint), { ...sub, at: now(), ...(tz !== undefined ? { tz } : {}) }].slice(-LIMITS.subs);
     if (!player.consent.push) count(g, now(), 'push.optin');
     player.consent.push = true;
     return { ok: true, code: 'subscribed' };
@@ -443,5 +465,5 @@ function buildService(ctx: RouteContext) {
     return { ok: true, channel, off };
   }
 
-  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, pingMail, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
+  return { requestEmail, confirmEmail, unsubscribe, unsubscribeScope, comeback, pingMail, messagePush, pushSubsOf, deliverChatPush, dropContact, subscribe, unsubscribePush, tick, mine, operatorView, setSwitch, publicKey: async () => (await vapidKeys(ctx)).publicKey };
 }

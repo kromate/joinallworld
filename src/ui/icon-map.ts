@@ -70,7 +70,7 @@ const BY_ID: Record<string, Record<string, string>> = {
   notice: { 'rent-due': 'calendar', rent: 'home', 'rent-missed': 'error', loan: 'bank', 'loan-missed': 'error', promotion: 'career', illness: 'sick', recovered: 'health',
     gov: 'governor', transfer: 'coin', bae: 'heart' },
   update: { transfer: 'coin', business: 'buy', report: 'shield', 'friend-request': 'handshake', 'friend-accepted': 'handshake', 'invite-joined': 'handshake', ping: 'bell', 'invite-knock': 'invite', 'invite-answer': 'invite',
-    'group-added': 'people', 'bae-request': 'heart', 'bae-answer': 'heart' },
+    'group-added': 'people', mention: 'people', reaction: 'heart', 'bae-request': 'heart', 'bae-answer': 'heart' },
 };
 /** What a kind is drawn as when neither its id nor its emoji is known. */
 const DEFAULTS: Record<string, string> = { venue: 'pin', spot: 'pin', activity: 'star', mode: 'compass', weather: 'cloud', mood: 'fun', health: 'health', need: 'health', track: 'jobs', furniture: 'box',

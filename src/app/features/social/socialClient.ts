@@ -57,6 +57,8 @@ export type SocialSocketState = 'idle' | 'connecting' | 'open' | 'reconnecting' 
 export type SocialResult<T> = ({ ok: true } & T) | { ok: false; code: string; reason: string; transport?: boolean }
 /** Where a message goes: a player (a new chat) or an existing conversation. */
 export type SendTarget = { to: string } | { conv: string }
+/** What rides along with a message: its mentions (a group) and the message it answers. */
+export interface SendExtra { mentions?: { id: string; start: number }[]; replyTo?: number }
 /** The who-is-here listing, or why it could not be read. */
 export type PeopleState = PeopleListing | { error: string }
 
@@ -335,11 +337,11 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
   /** The messages to show for a conversation key: confirmed ones, then anything still pending or failed. */
   function threadView(key: string): ThreadItem[] { void revision.value; return outbox.thread(key, state.threads.get(key)?.messages ?? []) }
 
-  async function deliver(entry: { clientId: string; key: string; body: string; target?: SendTarget }): Promise<void> {
+  async function deliver(entry: { clientId: string; key: string; body: string; target?: SendTarget; extra?: SendExtra }): Promise<void> {
     // The entry's key moves when a push adopts the new chat while this request is in flight, so the key it was sent under is read now.
     const sentUnder = entry.key
     const guard = env.setTimeout(() => { if (outbox.expire(env.now())) refresh() }, SEND_TIMEOUT_MS + 50)
-    const result = await call<{ conv: Conversation; message: Message }>('/api/social/messages', { ...entry.target, body: entry.body, clientId: entry.clientId })
+    const result = await call<{ conv: Conversation; message: Message }>('/api/social/messages', { ...entry.target, ...entry.extra, body: entry.body, clientId: entry.clientId })
     env.clearTimeout(guard)
     if (result.ok) {
       const thread = threadOf(result.conv.id)
@@ -353,9 +355,10 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
     refresh()
   }
   /** Queue a message: it shows at once as pending, then becomes sent or failed. `target` is { to } or { conv }. */
-  function send(key: string, target: SendTarget, body: string): void {
+  function send(key: string, target: SendTarget, body: string, extra?: SendExtra): void {
     const entry = outbox.add(key, body, newClientId(), env.now())
     entry.target = target
+    if (extra) entry.extra = extra
     refresh()
     void deliver(entry)
   }
@@ -408,7 +411,8 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         }
         const mine = message.message.from?.id === state.me?.me.id
         if (state.openConv === message.conv.id) { if (!mine) { void markRead(message.conv.id); play('message') } }
-        else if (!mine && !message.message.sys) { play('message'); api?.toast(`New message from ${message.message.from?.name ?? message.conv.name}`) }
+        // A muted group, a gift (its own update says so) and a system line make no sound; a mention in a muted group still does.
+        else if (!mine && !message.message.sys && !message.message.gift && (!message.conv.muted || message.conv.mentions)) { play('message'); api?.toast(`New message from ${message.message.from?.name ?? message.conv.name}`) }
         refresh()
         return
       }
@@ -416,7 +420,7 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         if (!message.update) return
         const update = message.update
         if (state.me) state.me.updates = [update, ...state.me.updates.filter((item) => item.id !== update.id)]
-        play('notify'); api?.toast(String(update.text ?? ''))
+        if (update.kind !== 'reaction') { play('notify'); api?.toast(String(update.text ?? '')) }
         refresh()
         return
       }
@@ -478,6 +482,15 @@ export function createSocialClient(overrides: Partial<SocialEnv> = {}) {
         const conv = message.conv
         if (conv) state.me.conversations = state.me.conversations.map((item) => (item.id === conv.id ? conv : item))
         if (message.updates) for (const update of state.me.updates) update.read = true
+        refresh()
+        return
+      }
+      case 'message-changed': {
+        // A reaction, a hidden picture or a gift's detail changed a message already shown: no sound, no toast.
+        if (!message.conv || !message.message) return
+        const thread = threadOf(message.conv.id)
+        thread.messages = mergeMessages(thread.messages, [message.message])
+        noteConv(message.conv)
         refresh()
         return
       }

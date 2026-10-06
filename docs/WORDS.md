@@ -38,13 +38,22 @@ rules, the answer list and the everyday additions are original to this project.
 | --- | --- |
 | `allowed5.ts` | every accepted five-letter guess, sorted, 5 characters each, no separator |
 | `answers.ts` | the daily answers in a fixed shuffled order, 5 characters each, no separator |
-| `dictionary.ts` | `Record<length, string>` for 2 to 13 letters, sorted, fixed width, no separator |
+| `dictionary.ts` | the 2 to 13 letter dictionary, packed: per length sorted, front-coded, raw-deflated, base64 (about 1 MB); `FIRST_LENGTH`, `WORD_COUNTS`, `PACKED` |
 | `letters.ts` | letter counts over dictionary words of 2 to 8 letters plus the answers |
 
-Lookup is a binary search over the fixed-width string (`src/words/guess.ts`, `src/words/dict.ts`); no Set is built.
-`guess.ts` (about 70 KB raw) is safe for the browser; `dict.ts` imports the dictionary (about 3.2 MB raw, 347,726 words) and is for the server host only.
+`guess.ts` (about 70 KB raw) is safe for the browser; `dict.ts` holds the packed dictionary (about 1.1 MB raw, 347,726 words once unpacked) and is for the server host only.
 
-The list is never parsed, split or indexed when a host starts: it stays one string per length. A lookup is a binary search over that string (about 0.2 µs). The Weave computer player reads each length's masks off the same strings the first time a Weave table is created (about 6 ms) and cuts a word out of them only when it looks at it. `deploy/words.edge.test.ts` holds the budgets: the Worker script's compressed size, its start-up time with the list inside it, the first-use cost and a lookup.
+The deploy pipeline takes at most 5 MiB per file, so the dictionary is not stored as plain text in the Worker script. Each word is one character
+(48 plus the number of leading letters it shares with the word before it) and then its remaining letters; the stream is deflated and base64 encoded
+(`scripts/words/pack.ts`, `src/words/pack.ts`). Plain fixed-width text deflated is about 1.55 MB as base64; front coding brings it to about 1.08 MB.
+`node --experimental-strip-types scripts/words/build-lists.ts --check` fails when the committed data differs from what the source list would produce
+(or, on a machine without the list, when the packed dictionary is damaged); `src/words/pack.test.ts` runs it.
+
+Nothing is unpacked when a host starts. `ready()` in `dict.ts` inflates the list once (`DecompressionStream('deflate-raw')`, about 25 to 40 ms), keeps one fixed-width
+string per length and retries on the next call if it failed. Every path that needs `isWord` awaits it first: starting a table of Weave
+(`server/growth/tables.ts` awaits `warm()` from `src/tables/weave.ts`, which also builds the computer player's tables, about 6 ms), and tests.
+A lookup before `ready()` throws. A lookup is a binary search over the length's string (about 0.2 µs); no Set is built. `deploy/words.edge.test.ts` holds the budgets:
+no file over 5,000,000 bytes, the Worker script's compressed size, start-up time and heap with the list inside it, the first inflate on Node and in the Worker runtime, and lookups.
 
 ## Daily answers
 

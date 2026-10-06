@@ -1,8 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import rules from './weave.ts';
+import rules, { warm } from './weave.ts';
 import { BAG_SIZE } from './weave-letters.ts';
 import { tilesOnBoard } from './weave-board.ts';
+
+await warm();
 
 function seeded(seed: number): () => number {
   let a = seed >>> 0;

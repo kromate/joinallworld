@@ -515,6 +515,8 @@ function buildService(ctx: RouteContext) {
     },
     async start(ws: WsConnection, message: Frame): Promise<{ humans: number }> {
       limit(ws);
+      // Weave looks words up synchronously, so its word list is unpacked (once) before anything else is decided.
+      if (tableOf(message.cityId, message.table, ws.session.id).place.game === 'weave') await warmWeave();
       const table = tableOf(message.cityId, message.table, ws.session.id), id = ws.session.id;
       if (table.status === 'playing') throw refuse('game_on', 'A game is already on.');
       // A finished or called-off match does not hold the table: whoever is still seated may start the next one without leaving.
@@ -527,7 +529,6 @@ function buildService(ctx: RouteContext) {
       for (let i = 0; i < bots; i++) table.seats.push({ id: `bot-${i}`, name: `${BOT_NAMES[i]} (bot)`, bot: true, away: 0 });
       const seed = `${ctx.randomId()}${ctx.randomId()}`;
       const matchId = ctx.randomId();
-      if (table.place.game === 'weave') warmWeave(); // builds the computer players' word tables once, not in the middle of a turn
       const engine = table.game.start(table.seats.length, makeRng(`${seed}|deal`), table.options);
       const match: Match = { id: matchId, seed, n: 0, log: [], last: null, deadline: 0, turnStart: 0, allowedMs: 0, botAt: null, engine };
       startTurn(table, match);

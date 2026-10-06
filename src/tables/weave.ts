@@ -6,12 +6,16 @@
  * whole word list, so the browser takes only types from here.
  */
 import { makeWeave, warmBot } from './weave-core.ts';
+import { ready } from '../words/dict.ts';
 import { wordList } from './weave-words.ts';
 
 export { side, SCORELESS_LIMIT, EXCHANGE_MIN_BAG, HISTORY_SHOWN, TURN_SECONDS, MISSED_TURNS_BEFORE_FORFEIT, leaveValue } from './weave-core.ts';
 export type { WeaveMove, WeaveOptions, WeaveRules, WeaveState, WeaveTurn, WeaveView } from './weave-core.ts';
 
 const rules = makeWeave(wordList);
-/** Prepare the computer player's tables at start-up (it takes about half a second the first time). */
-export const warm = (): void => warmBot(wordList);
+/** Inflate the word list (once) and prepare the computer player's tables. Await this before the first game of Weave: the rules look words up synchronously. */
+export async function warm(): Promise<void> {
+  await ready();
+  warmBot(wordList);
+}
 export default rules;

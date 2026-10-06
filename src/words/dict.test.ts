@@ -2,11 +2,13 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import allowed5 from './data/allowed5.ts'
 import answersPacked from './data/answers.ts'
-import dictionary from './data/dictionary.ts'
 import letters from './data/letters.ts'
-import { ANSWER_COUNT, MAX_WORD, MIN_WORD, answerAt, answerCount, isGuess5, isWord } from './dict.ts'
+import { ANSWER_COUNT, MAX_WORD, MIN_WORD, answerAt, answerCount, isGuess5, isWord, packedOf, ready } from './dict.ts'
 import { BLOCKED_WORDS } from '../../scripts/words/blocklist.ts'
 import { blockedCategory } from '../../server/moderation/text.ts'
+
+await ready()
+const dictionary: Record<number, string | undefined> = Object.fromEntries(Array.from({ length: MAX_WORD - MIN_WORD + 1 }, (_, i) => [MIN_WORD + i, packedOf(MIN_WORD + i)]))
 
 const chunks = (packed: string, width: number): string[] => {
   const out: string[] = []

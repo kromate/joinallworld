@@ -28,6 +28,7 @@ import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { readTelemetryConfig } from './telemetry/config.ts';
 import { appHeaders, pageHeaders, apiHeaders, inlineScriptHashes, telemetryOrigins, type RequestFacts } from './security-headers.ts';
 import { siteFile } from './site-files.ts';
+import { withPathMeta } from './path-meta.ts';
 import { createMemoryLimiter } from './limiter.ts';
 import telemetryRoutes from './telemetry/routes.ts';
 import { ACTION_WINDOW_MS, UUID_PATTERN as uuid, protocolError as fail, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, isSharedAddress, SOCKET_BUSY_CODE } from './protocol.ts';
@@ -417,7 +418,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       // The game's own page: its default link-preview image is made absolute here, from PUBLIC_ORIGIN (or this request's own
       // host when that is not set), because the crawlers of chat apps do not resolve a relative og:image.
       const isIndex = path === resolve(root, 'index.html');
-      const html = isIndex ? await serveIndex(req, path) : '';
+      // A short address (/games, /abuja, …) gets its own title, description and link-preview tags; the page's scripts are untouched.
+      const html = isIndex ? withPathMeta(await serveIndex(req, path), url.pathname, publicOrigin(req)) : '';
       const bytes = isIndex ? Buffer.from(html) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
       // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.

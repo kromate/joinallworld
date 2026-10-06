@@ -15,7 +15,7 @@
 // Every server rule is the engine's: this file chooses what to show and in which order to send.
 import '../../../ui/panels/quick-start.css'
 import '../../../ui/panels/creator.css'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { APPEARANCE, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { PreviewFocus } from '../../../scene/avatar-preview.ts'
 import type { DreamId, Look, TraitId } from '../../../types/life.ts'
@@ -29,9 +29,11 @@ import { signupShown } from '../account/shownOnce.ts'
 import AvatarFigure from './AvatarFigure.vue'
 import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
+import PathIntro from './PathIntro.vue'
+import type { PathIntent } from '../../../paths.ts'
 import StepHome from './StepHome.vue'
 import { lgasOf } from '../../../game/content/world.ts'
-import { isDefaultName } from '../../../game/cities/registry.ts'
+import { isDefaultName, loadCityContent } from '../../../game/cities/registry.ts'
 import StepLook from './StepLook.vue'
 import StepReady from './StepReady.vue'
 import StepSpirit from './StepSpirit.vue'
@@ -254,6 +256,14 @@ function playNow(settle = false): void {
   else shell.close()
   window.dispatchEvent(new CustomEvent('jaw:quick-start', { detail: { name: plan.name, look: plan.look, ...(cr.city ? { city: cr.city } : {}) } }))
 }
+/** "Start in <City>" (or the landing's own line): the character is born in that city when it is open, otherwise where the screen is. */
+async function startIn(city: string | null): Promise<void> {
+  if (city) { try { await loadCityContent(city); cr.city = city; (await import('../paths/intent.ts')).markLanding() } catch { /* the life starts in the city on screen */ } }
+  playNow(false)
+}
+let stopWaiting: (() => void) | null = null
+/** What a short address asked for, kept for this tab (src/app/features/paths): the landing's line for it. The chunk is fetched only when there is one. */
+const waiting = shallowRef<PathIntent | null>(null)
 /** The life exists (or Play failed): move in with the choices on screen. */
 async function runSettle(stay: boolean): Promise<void> {
   const draftNow = d()
@@ -302,6 +312,11 @@ function openSignUp(): void { account.openSignUp() }
 function openSave(): void { account.openSave() }
 
 onMounted(() => {
+  // An address kept earlier in this tab (the visitor came back to `/`): its line is shown, and it is carried out once the life exists.
+  if (isNew) void import('../paths/intent.ts').then(({ readIntent, waiting: kept }) => {
+    if (!kept.value) { const found = readIntent(); if (found) { kept.value = found.intent; void import('../paths/arrive.ts').then(({ startPaths }) => { startPaths() }) } }
+    stopWaiting = watch(kept, (now) => { waiting.value = now }, { immediate: true })
+  })
   // A link that carried a share code names who sent it, as text, before the life starts.
   const code = pendingRef()
   if (code && props.mode === 'new') void inviterName(game.fetchJson, code).then((name) => { inviter.value = name })
@@ -313,6 +328,7 @@ onMounted(() => {
   focus.value = cr.step === 'look' ? focusForTab(lookUi.section) : 'body'
 })
 onBeforeUnmount(() => {
+  stopWaiting?.()
   window.removeEventListener('jaw:quick-start-done', onStarted)
   cr.offered = false
   if (!play.sending) play.settling = false
@@ -343,6 +359,7 @@ onBeforeUnmount(() => {
 
       <div ref="scroller" class="cr-scroll">
         <p v-if="intro" class="cr-banner is-info"><span aria-hidden="true"><GameIcon :name="intro.kind === 'why' ? 'home' : 'star'" inline /></span><span><strong>{{ intro.strong }}</strong> {{ intro.text }}</span></p>
+        <PathIntro v-if="isNew && playable && cr.step === 'who' && !invited()" :intent="waiting" :busy="Boolean(cr.pending) || play.sending" @start="startIn" @signup="openSignUp" @login="openSignIn" />
         <p v-if="isNew && invited()" class="cr-banner is-good" role="status"><span aria-hidden="true"><GameIcon name="invite" inline /></span><span><strong>{{ invitedNote.title }}</strong> {{ inviter ? `Start your life and you land where ${inviter} is.` : 'Start your life and you land where they are.' }}</span></p>
         <p v-if="showNote && words" class="cr-banner is-warn" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}.</strong> {{ words.why }} Your character is kept on this device.</span><LinkAction class-name="cr-btn is-small" /></p>
         <p v-if="shown" :class="['cr-banner', calm ? 'is-info' : 'is-error']" :role="calm ? 'status' : 'alert'" data-cr-error>{{ shown }}</p>

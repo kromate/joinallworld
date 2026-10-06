@@ -1069,6 +1069,39 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   assert.ok((await deep.text()).includes('game'));
 });
 
+test('short addresses: /games, /abuja and an unknown path get their own head from the Worker, with the same policy hashes and a sitemap from the registry', async t => {
+  const dist = await mkdtemp(join(tmpdir(), 'joinallworld-dist-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  const index = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  await writeFile(join(dist, 'index.html'), index);
+  const f = await fixture(t, { assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } });
+  const title = (html: string) => /<title>([^<]*)<\/title>/.exec(html)?.[1];
+  const tag = (html: string, key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
+  const home = await f.fetch('/');
+  const homePolicy = home.headers.get('content-security-policy');
+  assert.ok(homePolicy);
+  assert.equal(title(await home.text()), title(index), 'the home page keeps its own head');
+  for (const [path, expected, canonical] of [['/games', 'Play chess, the daily word and more — Allworld', '/games'], ['/games/oro', 'Oro, a new word every day — Allworld', '/games/oro'], ['/abuja', 'Live in Abuja — Allworld', '/abuja'], ['/fct', 'Live in Abuja — Allworld', '/abuja'], ['/kano', 'Live in Kano — Allworld', '/kano']] as const) {
+    const response = await f.fetch(path);
+    const body = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.equal(title(body), expected, path);
+    assert.equal(tag(body, 'og:title'), expected);
+    assert.equal(tag(body, 'twitter:title'), expected);
+    assert.match(body, new RegExp(`<link rel="canonical" href="https?://[^"/]+${canonical}">`), path);
+    assert.equal(response.headers.get('content-security-policy'), homePolicy, `${path}: the script hashes are the home page's`);
+    assert.equal(response.headers.get('cache-control'), 'no-cache');
+  }
+  const head = await f.fetch('/abuja', { method: 'HEAD' });
+  assert.equal(head.headers.get('content-security-policy'), homePolicy, 'HEAD gets the same policy');
+  const unknown = await f.fetch('/some/deep/link');
+  const body = await unknown.text();
+  assert.deepEqual([unknown.status, tag(body, 'robots'), title(body)], [200, 'noindex,follow', title(index)]);
+  const sitemap = await (await f.fetch('/sitemap.xml')).text();
+  for (const path of ['/games', '/games/chess', '/lagos', '/abuja', '/kano', '/port-harcourt', '/ogun']) assert.ok(new RegExp(`<loc>https?://[^<]+${path}</loc>`).test(sitemap), path);
+  assert.ok(!sitemap.includes('/kaduna<'), 'a city that is not open is not listed');
+});
+
 // ---- accounts (server/routes/auth.ts) on the Worker: the same routes over the SQLite tables ----
 const ACCOUNT_PROJECT = 'allworld-edge-project';
 /** The 64 characters of base64url, in value order. */

@@ -71,7 +71,9 @@ test('public files: robots.txt, sitemap.xml, manifest and the images they name',
   const robots = await read('public/robots.txt'), sitemap = siteFile('/sitemap.xml', SITE_ORIGIN)?.body ?? '';
   assert.match(robots, /^User-agent: \*\nAllow: \/\n/); assert.match(robots, /Disallow: \/api\/\nDisallow: \/s\/\nDisallow: \/e\//);
   assert.match(robots, new RegExp(`Sitemap: ${SITE_ORIGIN}/sitemap\\.xml`));
-  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), [`${SITE_ORIGIN}/`]);
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+  assert.equal(locs[0], `${SITE_ORIGIN}/`);
+  assert.ok(locs.includes(`${SITE_ORIGIN}/games`) && locs.includes(`${SITE_ORIGIN}/abuja`), 'the games and the open cities are listed (server/path-meta.test.ts checks them all)');
   const manifest = JSON.parse(siteFile('/manifest.webmanifest', '')?.body ?? '') as { name: string; short_name: string; lang: string; start_url: string; display: string; theme_color: string; background_color: string; icons: { src: string; purpose: string; sizes: string }[] };
   assert.deepEqual([manifest.name, manifest.short_name, manifest.lang, manifest.start_url, manifest.display, manifest.theme_color, manifest.background_color], ['Allworld', 'Allworld', 'en-NG', '/', 'standalone', '#183b2a', '#183b2a']);
   assert.ok(manifest.icons.some(icon => icon.purpose === 'maskable') && manifest.icons.some(icon => icon.purpose === 'any' && icon.sizes === '512x512') && manifest.icons.some(icon => icon.sizes === '192x192'));

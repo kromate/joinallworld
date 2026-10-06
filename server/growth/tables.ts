@@ -232,6 +232,9 @@ export function tablesService(ctx: RouteContext) {
   return api;
 }
 
+/** What a Phone table is called, by game. */
+const PHONE_LABEL: Readonly<Record<TableGameId, string>> = { chess: 'Chess on your Phone', weave: 'Word tiles on your Phone', whot: 'Whot on your Phone', penalty: 'Penalties on your Phone' };
+
 function buildService(ctx: RouteContext) {
   const now = () => ctx.now();
   /** `${cityId}:${tableId}` → table */
@@ -247,10 +250,10 @@ function buildService(ctx: RouteContext) {
       return game ? [{ id: place.id, venue: place.venueId, game, label: place.label, seats: place.seats }] : [];
     });
   };
-  /** The Phone's own tables: a board game against the house's bots, anywhere, with no venue and no seat for anyone else. Yours alone; the id the screen uses is `phone-chess`, `phone-weave`. */
+  /** The Phone's own tables: a board game against the house's bots, anywhere, with no venue and no seat for anyone else. Yours alone; the id the screen uses is `phone-chess`, `phone-weave`, `phone-whot`, `phone-penalty`. */
   const phonePlace = (id: unknown): TableDef | null => {
     const game = typeof id === 'string' && id.startsWith('phone-') ? gameId(id.slice(6)) : null;
-    return game === 'chess' || game === 'weave' ? { id: `phone-${game}`, venue: PHONE_VENUE, game, label: game === 'chess' ? 'Chess on your Phone' : 'Word tiles on your Phone', seats: GAME_OF[game].seats.max } : null;
+    return game ? { id: `phone-${game}`, venue: PHONE_VENUE, game, label: PHONE_LABEL[game], seats: GAME_OF[game].seats.max } : null;
   };
   const venueName = (cityId: CityId, venueId: string): string => cityContent(cityId).venues.find((venue) => venue.id === venueId)?.name ?? venueLabel(venueId, cityId);
 

@@ -21,6 +21,7 @@
  * places[id] = { id, kind: 'venue' | 'home' | 'soon', x, z, ry, top, gate }
  */
 import type { BufferGeometry, Group, InstancedMesh, Material, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D } from 'three';
+import { CITY_TRIANGLES } from '../budgets.ts';
 import type { Kit } from '../scene/kit.ts';
 import { createBatch, sceneMaterials, hash } from '../scene/build.ts';
 import { sign, textWidth } from '../scene/props.ts';
@@ -123,7 +124,7 @@ export const WATER_Y = -0.5;
  * each of its few thousand vertices (the shallows, the wall and the top of the land), which is about 17,000 on its own, and the
  * fabric is spread over a state and not a city. Instancing and the merged meshes keep it to about forty draw calls, which is the limit that matters.
  */
-export const CITY_TRIANGLE_BUDGET = 90000;
+export const CITY_TRIANGLE_BUDGET = CITY_TRIANGLES.value;
 /** Landmarks are drawn a little larger than life, so each can be told apart on a view of the whole city. */
 export const LANDMARK_SCALE = 1.15;
 /** Footprint of a fabric house or block, as a share of its drawn size (see the fabric below). */

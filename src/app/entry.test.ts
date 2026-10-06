@@ -22,6 +22,7 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { gzipSync } from 'node:zlib'
 import test from 'node:test'
 import { fileURLToPath } from 'node:url'
+import { STARTUP_RAW, STARTUP_GZIP, LOADING_RAW, LOADING_GZIP } from '../budgets.ts'
 
 const root = resolve(fileURLToPath(new URL('../..', import.meta.url)))
 
@@ -144,10 +145,10 @@ test('Three.js, maps, scene hosts, campus world, models and telemetry SDKs remai
 // 225.9 kB. The budget was not raised: the capacity sentences left the landing model that carries the character presets, the completion of every
 // timed action became play-only (the campus rules with it, so the wallet's writers left the engine), and what only a lazily fetched screen reads
 // was moved to files of its own (the people and map-list sentences, the advert choices, Ping's wording, the campus trail). It measures 604.8 kB / 219.5 kB.
-const BUDGET = { raw: 609_000, gzip: 223_000 }
+const BUDGET = { raw: STARTUP_RAW.value, gzip: STARTUP_GZIP.value }
 // A player loads the shared shell, authored route table, and exactly one city's rules and content. Unopened cities contribute
 // only their compact catalogue row and loader thunk to that startup closure.
-const LOADING_BUDGET = { raw: 92_000, gzip: 37_000 }
+const LOADING_BUDGET = { raw: LOADING_RAW.value, gzip: LOADING_GZIP.value }
 
 function eagerChunks(dist: string, additional: readonly string[] = []): string[] {
   const html = readFileSync(join(dist, 'index.html'), 'utf8')

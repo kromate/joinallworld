@@ -34,6 +34,7 @@ import { lgaAt } from './lga.ts';
 import type * as THREE from 'three';
 import type { CityPack } from './types.ts';
 import type { WorldData, WorldHouse } from './world-data.ts';
+import { HOUSES_DETAIL_TRIANGLES, HOUSES_MAX_DETAILED } from '../budgets.ts';
 
 /** What createHouses needs of the scene kit (src/scene/kit.ts): Three.js itself, which is loaded lazily and so is never imported here as a value. */
 export interface Kit { THREE: typeof THREE }
@@ -77,9 +78,9 @@ const STYLE_OPTIONS: Readonly<Record<string, readonly { id: string; hex?: string
 export const BINS = 4;
 // With the city itself (about 67,000 triangles), the far blocks and the pads, this keeps the whole frame under CITY_TRIANGLE_BUDGET (city-build.ts):
 // one full estate of 196 houses, or several that are filling up.
-export const DETAIL_BUDGET = 10000;
+export const DETAIL_BUDGET = HOUSES_DETAIL_TRIANGLES.value;
 export const PAD_DISTANCE = 150;
-const MAX_DETAILED = 9;
+const MAX_DETAILED = HOUSES_MAX_DETAILED.value;
 const SHAPES = HOUSE_STYLE.shape.map((shape) => shape.id);
 /** How big a house is on its plot, by tier rank: the starter is small, a villa fills the plot. */
 const TIER_SCALE = [0.62, 0.7, 0.78, 0.86, 0.94], TIER_HEIGHT = [0.5, 0.56, 0.62, 0.86, 0.96];

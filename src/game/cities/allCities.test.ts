@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS } from '../../budgets.ts'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
@@ -92,8 +93,8 @@ test('every public venue uses a scene within the shared rendering budget', async
         try {
           scene.setCrowd(crowd)
           const stats = scene.stats()
-          assert.ok(stats.triangles <= 17_000, `${module.id}.${venue.id}: ${stats.triangles} triangles`)
-          assert.ok(stats.drawCalls <= 60, `${module.id}.${venue.id}: ${stats.drawCalls} draw calls`)
+          assert.ok(stats.triangles <= SCENE_TRIANGLES.value, `${module.id}.${venue.id}: ${stats.triangles} triangles`)
+          assert.ok(stats.drawCalls <= SCENE_DRAW_CALLS.value, `${module.id}.${venue.id}: ${stats.drawCalls} draw calls`)
         } finally { scene.dispose() }
       }
     }

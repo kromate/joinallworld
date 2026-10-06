@@ -6,6 +6,7 @@ import { fromLocal, toLocal } from '../../../map3d/geo/frame.ts'
 import { inLga } from '../../../map3d/lga.ts'
 import { flatModel, flatSvg } from '../../../map3d/flat.ts'
 import { buildCity, CITY_TRIANGLE_BUDGET } from '../../../map3d/city-build.ts'
+import { CITY_DRAW_CALLS } from '../../../budgets.ts'
 import { buildNetwork } from '../../../map3d/roads.ts'
 import { createKit } from '../../../scene/kit.ts'
 import { IBADAN_ROADS } from './roads.ts'
@@ -50,7 +51,7 @@ test('Ibadan has its real main roads and the land around it, and the built city 
   const city = buildCity(createKit(), pack, buildNetwork(pack), { venues: {}, soon: {} })
   assert.ok(city.triangles > 10000 && city.triangles < CITY_TRIANGLE_BUDGET, `${city.triangles} triangles`)
   const meshes = city.group.children.filter((child) => (child as { isMesh?: boolean }).isMesh).length
-  assert.ok(meshes <= 40, `${meshes} draw calls`)
+  assert.ok(meshes <= CITY_DRAW_CALLS.value, `${meshes} draw calls`)
 })
 
 test('Ibadan shows the polling centre beside Mapo Hall on the map while its data keeps the real point, and rivers keep a visible line', async () => {

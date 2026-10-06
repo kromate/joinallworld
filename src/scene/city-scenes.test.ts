@@ -10,6 +10,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SCENE_HOST_RAW, SCENE_HOST_GZIP } from '../budgets.ts';
 import type * as THREE from 'three';
 import { createKit } from './kit.ts';
 import type { SceneVenue } from './types.ts';
@@ -216,7 +217,7 @@ test('every venue of every city is drawn from its own city\'s download alone', a
 // ---- the built bundle ------------------------------------------------------------------------------------------------------------
 // The shared scene chunk (the host, the shared kinds, the figures' rig) measured 179.1 kB raw / 68.3 kB gzip once the cities' own
 // scenes had left it (532.9 kB / 183.9 kB with all nine cities' scenes inside). The budget is the measurement plus about 4%.
-const HOST_BUDGET = { raw: 186_000, gzip: 71_000 };
+const HOST_BUDGET = { raw: SCENE_HOST_RAW.value, gzip: SCENE_HOST_GZIP.value };
 test('the shared scene chunk holds no city\'s own scenes: each is a chunk of its own, fetched on demand', (t) => {
   const assets = join(root, 'dist', 'assets');
   if (!existsSync(assets)) { t.diagnostic('no dist/: run `npm run build` to check the scene chunks'); return; }

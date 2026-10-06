@@ -3,6 +3,7 @@ await preloadCityContent('lagos');
 // Scene modules: every venue kind builds headlessly, stays inside the rendering budget and
 // frees everything it made. Nothing here needs WebGL.
 import test from 'node:test';
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS, SCENE_LIGHTS, SCENE_MESHES, SCENE_MESHES_WITH_WALLS, SCENE_MESHES_NO_CROWD } from '../budgets.ts';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as THREE from 'three';
@@ -26,7 +27,7 @@ await loadAllCityScenes();
 
 const EXPECTED_KINDS = ['park', 'buka', 'hub', 'club', 'office', 'market', 'gym', 'mall', 'beach', 'hospital', 'salon', 'rooftop', 'police', 'worship', 'radio', 'polling', 'viewing', 'shrine', 'walk', 'statehouse', 'airport', 'refinery', 'quad', 'hilltop', 'lakeside'];
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail (up to ~2,700 triangles, once), on top.
-const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
+const TRIANGLE_BUDGET = SCENE_TRIANGLES.value, DRAW_CALL_BUDGET = SCENE_DRAW_CALLS.value;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
 // build() only reads the materials of meshes it makes; these tests look at geometry alone.
 // A partial game state, as the host's setState takes it in these tests.
@@ -69,8 +70,8 @@ test('each scene builds within budget with a full crowd, and disposes without le
       assert.ok(stats.triangles < TRIANGLE_BUDGET, `${kind} triangles ${stats.triangles}`);
       // Static (≤ 3) + sky + crowd (≤ 2) + the player's own figure (a rig: one mesh per part, ≤ 8 with its crown) + the spot ring; the two walking marks add at most 2 more.
       // A room's two walls are parts of their own (≤ 3 layers each), so that the scene can hide the wall the camera is behind.
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? 21 : 15), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
-      assert.ok(stats.lights <= 4, `${kind} lights ${stats.lights}`);
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.meshes <= (entry.walls ? SCENE_MESHES_WITH_WALLS.value : SCENE_MESHES.value), `${kind} draw calls ${stats.drawCalls}, meshes ${stats.meshes}`);
+      assert.ok(stats.lights <= SCENE_LIGHTS.value, `${kind} lights ${stats.lights}`);
       assert.equal(tags.length, MAX_CROWD, kind);
       for (const mesh of (entry.group.children as THREE.Mesh[]).filter((child) => child.isMesh)) {
         const { position, normal, color } = mesh.geometry.attributes as Record<'position' | 'normal' | 'color', THREE.BufferAttribute>;
@@ -366,7 +367,7 @@ test('a scene crowd is capped, placed and tagged; the player carries the crown',
   assert.equal(entry.tags()[0]!.text, 'Kromate');
   assert.equal(entry.setPlayer({ pose: 'wave' }), true);
   assert.deepEqual(entry.setCrowd([]), []);
-  assert.equal(entry.stats().meshes <= 13, true);
+  assert.equal(entry.stats().meshes <= SCENE_MESHES_NO_CROWD.value, true);
   kit.dispose();
 });
 
@@ -518,7 +519,7 @@ test('every Ibadan venue builds in budget with its own scene: each spot and game
     entry.setCrowd(crowd());
     const stats = entry.stats();
     assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
-    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}`);
+    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= SCENE_LIGHTS.value, `${authored.id} draw calls ${stats.drawCalls}`);
     const { grid, entrance } = entry.walk;
     const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
       const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);
@@ -560,7 +561,7 @@ test('every Ogun venue builds in budget with its own scene: each spot and game t
       const stats = entry.stats();
       report.push(`${city}/${authored.id} ${venue.scene!.kind}${variant ? `/${variant}` : ''} ${stats.triangles} ${stats.drawCalls}`);
       assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
-      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}`);
+      assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= SCENE_LIGHTS.value, `${authored.id} draw calls ${stats.drawCalls}`);
       const { grid, entrance } = entry.walk;
       const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
         const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);

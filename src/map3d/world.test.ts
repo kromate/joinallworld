@@ -13,6 +13,7 @@ import { lgaAt, landOf, onLand, rasterLgas, resolveLga } from './lga.ts';
 import { estateLayout, plotAt, SITE_CLEAR } from './estates.ts';
 import type { EstateLayout } from './estates.ts';
 import { createHouses, DETAIL_BUDGET } from './houses.ts';
+import { HOUSES_DRAW_CALLS } from '../budgets.ts';
 import { createWorldData, ESTATES_KEPT } from './world-data.ts';
 import { COUNTRIES, cityEntry } from './regions.ts';
 import { COMING_SOON } from '../game/content/venues.ts';
@@ -157,7 +158,7 @@ test('houses at city scale: two million residents cost one mesh of blocks; only 
   c = houses.counts();
   assert.equal(houses.level, 'close'); assert.ok(wanted.length >= 1 && wanted.length <= 9);
   assert.ok(c.detail > 5000 && c.detail <= DETAIL_BUDGET, `${c.detail} triangles of houses`);
-  assert.ok(c.calls <= 16, `${c.calls} draw calls`);
+  assert.ok(c.calls <= HOUSES_DRAW_CALLS.value, `${c.calls} draw calls`);
   assert.ok(city.triangles + houses.triangles < CITY_TRIANGLE_BUDGET, `${city.triangles + houses.triangles} triangles with the city`);
   const dots = houses.group.children.find((mesh) => mesh.name === 'houses-dots') as InstancedMesh, scaffold = houses.group.children.find((mesh) => mesh.name === 'houses-scaffold') as InstancedMesh;
   assert.equal(dots.count, c.estates * Math.ceil(PLOTS_PER_ESTATE / 3), 'one green light per owner who is online');

@@ -39,7 +39,8 @@ export interface LandingDeps {
   venueLabel(venueId: string): string
   /** The welcome the quick start held back: the venue the player stands in and their name. */
   welcomeText(): string
-  tableExists(id: string): boolean
+  /** Whether the city has a table by that id; the table lists are fetched on this first use, so it may answer later. */
+  tableExists(id: string): boolean | Promise<boolean>
   deviceToken(): string
   track(name: string, props?: Record<string, unknown>): void
   /** The address was handled: it is cleaned. */
@@ -146,7 +147,7 @@ export function createLanding(deps: LandingDeps): Landing {
     if (!shown && gift) shown = linkBanner(sharer || 'a friend')
     if (gift && sharer && host && !landed.value) landed.value = { kind, by: { id: host, name: sharer } }
     // A table the link named: the Tables app opens on it (the banner is shown over it).
-    if (table) { deps.forgetTable(); if (deps.tableExists(table)) deps.open('tables', { table }) }
+    if (table) { deps.forgetTable(); if (await deps.tableExists(table)) deps.open('tables', { table }) }
     // An e-mail's button: one panel from the fixed list, opened once. A table link, which names its own panel, wins.
     if (go) { deps.forgetGo(); const panel = deps.panelFor(go); if (panel && !table && !host) deps.open(panel) }
     if (shown) show(shown, shown.knock && !table ? host : null)

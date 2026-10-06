@@ -50,9 +50,32 @@ function browserSystems(): Plugin {
   };
 }
 
+/**
+ * PROVENANCE MARKS the page never reads. Content entries carry `note` (where a value came from) and `betaFields` (which fields are
+ * provisional): src/types/content.ts says they are "never read by the rules", and the view builders leave `note` out of every card
+ * (systems/activities.ts). They are for people reading the source; the browser's copy of the default city's content is smaller
+ * without them. Only the tables of the default city's engine chunk are touched, and only the literal forms the tables use.
+ */
+function leaveOutProvenance(): Plugin {
+  const text = String.raw`(?:'(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*"|`+'`[^`$]*`'+String.raw`|[A-Za-z_$][\w$]*(?=\s*[,}]))`;
+  const marks = [new RegExp(String.raw`\bnote:\s*${text}\s*,?\s*`, 'g'), /\bbetaFields:\s*\[[^\]]*\]\s*,?\s*/g];
+  const tables = /\/src\/(game\/(cities\/(lagos\/(venues|regulars)|registry)|content\/(food|npcs|furniture|jobs|venues-transport))|campus\/unilag\/content)\.ts$/;
+  return {
+    name: 'allworld:leave-out-provenance',
+    apply: 'build',
+    enforce: 'pre',
+    transform(code, id) {
+      if (!tables.test(id)) return null;
+      let out = code;
+      for (const mark of marks) out = out.replace(mark, '');
+      return out === code ? null : { code: out, map: null };
+    },
+  };
+}
+
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
-  plugins: [browserSystems(), vue(), ...(wantMaps ? [moveMaps()] : [])],
+  plugins: [browserSystems(), leaveOutProvenance(), vue(), ...(wantMaps ? [moveMaps()] : [])],
   // Every shipped component uses Composition API; omit the unused Options API runtime.
   define: { __VUE_OPTIONS_API__: false },
   server: {

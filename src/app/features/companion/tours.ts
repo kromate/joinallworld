@@ -52,5 +52,6 @@ const BUSINESS: TourStep[] = [
 const BASICS: TourStep[] = STEPS.map((step) => ({ ...step }))
 
 const BY_ID: Readonly<Record<TourId, readonly TourStep[]>> = { basics: BASICS, travel: TRAVEL, money: MONEY, friends: FRIENDS, business: BUSINESS }
-export const tourSteps = (id: TourId): readonly TourStep[] => BY_ID[id]
+/** The steps of a tour; a name that is not one is the basics (the page asks by the name in a window event). */
+export const tourSteps = (id: TourId): readonly TourStep[] => (Object.hasOwn(BY_ID, id) ? BY_ID[id] : BASICS)
 export const isTourId = (value: unknown): value is TourId => typeof value === 'string' && Object.hasOwn(TOUR_LABELS, value)

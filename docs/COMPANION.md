@@ -25,7 +25,7 @@ The only server-side change for the welcome is a few words kept with the founder
 
 ## Where the code is
 
-`src/app/features/companion/`. The first download holds only `CompanionHook.vue` and `companionState.ts` (a few hundred bytes); the 3D model, stage, brain, director, chat and tours are separate chunks fetched after the scene is up (`src/app/entry.test.ts` checks this and the size budget). Tests: `intents.test.ts` (about 230 phrasings), `companion.test.ts` (answers on crafted states, the director's limits, memory, every button, every tour anchor), `model.test.ts` (triangle and draw-call budget), `suggest.test.ts`.
+`src/app/features/companion/`. The first download holds nothing of it: one line in `App.vue` fetches `companionLoader.ts` after the first frame, which waits for the game to settle and then mounts the companion's own small Vue app; the 3D model, stage, brain, director, chat and tours are separate chunks fetched after the scene is up (`src/app/entry.test.ts` checks this and the size budget). Tests: `intents.test.ts` (about 230 phrasings), `companion.test.ts` (answers on crafted states, the director's limits, memory, every button, every tour anchor), `model.test.ts` (triangle and draw-call budget), `suggest.test.ts`.
 
 ## How a language model plugs in
 

@@ -23,7 +23,6 @@ import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
 import { createLanding } from '../features/landing/landingStore.ts'
 import { pingUi } from '../features/ping/pingLoader.ts'
-import { tableById } from '../../tables/city-places.ts'
 import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, socketWanted, takeLinkHost } from '../features/social/useSocial.ts'
 import { CONTINUED_TEXT, SESSION_CHANGED, continuedElsewhere } from './devices.ts'
 import { mapPeople } from '../../game/live-model.ts'
@@ -301,7 +300,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     toast: (text) => game.toast(text),
     venueLabel: (id) => cityVenueLabel(id, game.cityId.value),
     welcomeText: () => `Welcome to ${cityVenueLabel(game.state.value.location, game.cityId.value)}, ${game.state.value.name || game.client.identity.name}.`,
-    tableExists: (id) => tableById(game.cityId.value, id) !== null,
+    tableExists: (id) => import('../../tables/city-places.ts').then((places) => places.tableById(game.cityId.value, id) !== null),
     deviceToken,
     track,
     cleanAddress() { try { if (location.pathname !== '/' || location.search) history.replaceState(null, '', '/') } catch { /* the address stays as it was */ } },

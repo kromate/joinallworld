@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // The companion, alive: its small 3D stage floating over the game, the speech bubble, the chat sheet and the director that decides when
-// it speaks up. Fetched after the first frame (CompanionHook.vue). The 3D model has its own tiny canvas and loop (stage.ts) so the venue
+// it speaks up. Fetched after the first frame (companionLoader.ts). The 3D model has its own tiny canvas and loop (stage.ts) so the venue
 // scene can stay idle; if WebGL is missing the flat twin is shown instead. It never covers a control for long: it can be dragged, it steps
 // aside for calls and tours, and it can be turned off (Companion: lively / quiet / off, on this device).
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
@@ -24,7 +24,8 @@ import { contextFromGame, dayOf } from './contextFromGame.ts'
 import { afterEngaged, afterIgnored, afterShown, decide, detectEvents } from './director.ts'
 import type { GameEvent, Nudge } from './director.ts'
 import { TOUR_LABELS, TOUR_IDS } from './tours.ts'
-import { companionUi, signal } from './companionState.ts'
+import { companionUi } from './companionState.ts'
+import { signal } from './signal.ts'
 import type { CompanionAction, CompanionContext } from './types.ts'
 
 const CompanionSheet = defineAsyncComponent(() => import('./CompanionSheet.vue'))

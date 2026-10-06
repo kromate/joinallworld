@@ -26,7 +26,6 @@ import HudSidebar from './features/hud/HudSidebar.vue'
 import GuestBarSlot from './features/hud/GuestBarSlot.vue'
 import ConnectionNotice from './features/hud/ConnectionNotice.vue'
 import TourTrigger from './features/tour/TourTrigger.vue'
-import CompanionHook from './features/companion/CompanionHook.vue'
 import VenuePanel from './features/venue/VenuePanel.vue'
 import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
@@ -141,6 +140,8 @@ onMounted(() => {
   startSocial(api)
   void connect()
   if (new URLSearchParams(location.search).has('venue')) scene.mapsWanted.value = true
+  // The guide (src/app/features/companion): fetched once the first frame is up.
+  requestAnimationFrame(() => { void import('./features/companion/companionLoader.ts').then((loader) => loader.startCompanion()) })
 })
 onBeforeUnmount(() => { for (const [target, type, listener] of listeners) target.removeEventListener(type, listener) })
 // Connected (or connected again): the social client opens its socket and reads the overview.
@@ -174,7 +175,6 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
   </div>
   <SheetHost />
   <TourTrigger />
-  <CompanionHook />
   <CommunityHost />
   <CallsHost :host="sheetOpen ? '#life-dialog' : 'body'" />
   <PingHost :host="sheetOpen ? '#life-dialog' : 'body'" />

@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { FRESH_AFTER_MS, RELOAD_KEY, RELOAD_MAX, RELOAD_WINDOW_MS, SLOW_AFTER_MS, bootStage, nextStageIn, startFresh, takeAutoReload } from './bootWatch.ts'
+import { startFresh } from './bootFresh.ts'
+import { FRESH_AFTER_MS, RELOAD_KEY, RELOAD_MAX, RELOAD_WINDOW_MS, SLOW_AFTER_MS, bootStage, nextStageIn, takeAutoReload } from './bootWatch.ts'
 
 const memory = (): Pick<Storage, 'getItem' | 'setItem'> & { raw: Map<string, string> } => {
   const raw = new Map<string, string>()

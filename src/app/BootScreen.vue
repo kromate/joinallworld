@@ -5,7 +5,7 @@ import { nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 import type { Component, ShallowRef } from 'vue'
 import { noteBootResult } from './bootstrap.ts'
 import type { LoadedGame } from './bootstrap.ts'
-import { BOOT_WORDS, bootStage, nextStageIn, startFresh, takeAutoReload } from './state/bootWatch.ts'
+import { BOOT_WORDS, bootStage, nextStageIn, takeAutoReload } from './state/bootWatch.ts'
 import { isChunkLoadError, noteChunkFailure, updateAvailable } from './state/updateNotice.ts'
 
 const props = defineProps<{ load: () => Promise<LoadedGame> }>()
@@ -14,6 +14,9 @@ const busy = ref(false)
 const failed = ref(false)
 const stage = ref(bootStage(performance.now()))
 const clearing = ref(false)
+// The "Start fresh" code and words are fetched when the 40 s stage is reached; if that fetch fails on a bad network, a plain reload is offered instead.
+const fresh: ShallowRef<typeof import('./state/bootFresh.ts') | null> = shallowRef(null)
+const freshMissing = ref(false)
 let frame: number | null = null
 let timer: number | null = null
 let stageTimer: number | null = null
@@ -22,6 +25,7 @@ let disposed = false
 // Counted from when the page began loading, so a slow download of the first script counts too.
 function watchStage(): void {
   stage.value = bootStage(performance.now())
+  if (stage.value === 'fresh' && !fresh.value) void import('./state/bootFresh.ts').then((m) => { if (!disposed) fresh.value = m }, () => { freshMissing.value = true })
   const wait = nextStageIn(performance.now())
   if (wait !== null && !disposed) stageTimer = window.setTimeout(watchStage, wait)
 }
@@ -70,10 +74,10 @@ onBeforeUnmount(() => {
 // A failed module import stays rejected in the browser module cache until navigation.
 const reload = (): void => { window.location.reload() }
 // Clears this site's service worker and cached files, never localStorage or cookies (the guest identity lives there), then reloads.
-async function fresh(): Promise<void> {
-  if (clearing.value) return
+async function clearAndReload(): Promise<void> {
+  if (clearing.value || !fresh.value) return
   clearing.value = true
-  await startFresh({ serviceWorker: navigator.serviceWorker, caches: typeof caches === 'undefined' ? undefined : caches })
+  await fresh.value.startFresh({ serviceWorker: navigator.serviceWorker, caches: typeof caches === 'undefined' ? undefined : caches })
   window.location.reload()
 }
 </script>
@@ -93,8 +97,11 @@ async function fresh(): Promise<void> {
       <template v-else>
         <p class="boot-status" role="status">{{ stage === 'loading' ? BOOT_WORDS.loading : BOOT_WORDS.slow }}</p>
         <template v-if="stage === 'fresh'">
-          <p class="boot-note">{{ BOOT_WORDS.freshNote }}</p>
-          <button type="button" :disabled="clearing" @click="fresh">{{ clearing ? BOOT_WORDS.clearing : BOOT_WORDS.fresh }}</button>
+          <template v-if="fresh">
+            <p class="boot-note">{{ fresh.FRESH_WORDS.note }}</p>
+            <button type="button" :disabled="clearing" @click="clearAndReload">{{ clearing ? fresh.FRESH_WORDS.clearing : fresh.FRESH_WORDS.fresh }}</button>
+          </template>
+          <button v-else-if="freshMissing" type="button" @click="reload">Try again</button>
         </template>
       </template>
     </section>

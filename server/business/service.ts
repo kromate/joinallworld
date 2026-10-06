@@ -50,6 +50,7 @@ import { canOccupyVenue } from '../protocol.ts';
 import { scanKeys } from '../keyed.ts';
 import { cleanLine } from '../civic/text.ts';
 import { socialService } from '../social/service.ts';
+import { leviesFor, payLevies, totalLevy } from '../politics/levies.ts';
 
 const DAY_MS = 86400000;
 export const REPORT_REASONS = Object.freeze(['name', 'scam', 'other'] as const);
@@ -396,8 +397,10 @@ function buildService(ctx: RouteContext) {
         if (typeof units !== 'number' || !Number.isSafeInteger(units) || units < 1 || units > BAG_LIMIT) return no('invalid_units', `Buy 1 to ${BAG_LIMIT} units.`);
         const shop = ownShop(b, who.id);
         if (!shop || shop.status === 'closed' || shop.type !== product.type) return no('no_shop_for_it', `Only the owner of a ${typeOf(product.type).label.toLowerCase()} can buy ${product.label.toLowerCase()} wholesale.`);
-        const paid = act(life, cityId, { op: 'bag-add', product: product.id, units, amount: productCost(product, cityId) * units, label: product.label });
+        const cost = productCost(product, cityId) * units, levies = leviesFor(db, cityId, 'trade', now()), duty = totalLevy(cost, levies);
+        const paid = act(life, cityId, { op: 'bag-add', product: product.id, units, amount: cost, label: product.label, ...(duty > 0 ? { duty } : {}) });
         if (!paid.ok) return refuse(paid);
+        payLevies(ctx, db, levies, cost, now(), `${units} × ${product.label}`);
         return { ok: true as const, code: 'bagged' };
       });
       return { body: { ...outcome, state: life, ...mineBody(db, cityId, who, life) }, push };
@@ -454,8 +457,10 @@ function buildService(ctx: RouteContext) {
         if (!product) return no('unknown_product', 'That is not on this stall’s menu.');
         const amount = (shop.prices[product.id] ?? product.base) * units, label = productLabel(product, shop.city);
         if (addressSpent(shop.by.id, request.ip) + amount > BUSINESS.pairPerDay) return no('pair_limit', `Buyers on your network have spent all that one network may at this stall today (${naira(BUSINESS.pairPerDay)}). Try another stall.`);
-        const paid = act(life, cityId, { op: 'buy', amount, units, label, shop: shop.name, effects: product.effects ?? {}, ...(product.need ? { need: product.need } : {}), ...(product.mood ? { mood: product.mood } : {}) });
+        const levies = leviesFor(db, cityId, 'sale', now()), tax = totalLevy(amount, levies);
+        const paid = act(life, cityId, { op: 'buy', amount, units, label, shop: shop.name, effects: product.effects ?? {}, ...(tax > 0 ? { tax } : {}), ...(product.need ? { need: product.need } : {}), ...(product.mood ? { mood: product.mood } : {}) });
         if (!paid.ok) return refuse(paid);
+        payLevies(ctx, db, levies, amount, now(), `${units} × ${label} at ${shop.name}`);
         sellToPlayer(shop, who.id, product.id, units);
         addressSpent(shop.by.id, request.ip, amount);
         tell(db, shop.by.id, `${who.name} bought ${units} × ${label} at ${shop.name} (${naira(amount)}).`, push);

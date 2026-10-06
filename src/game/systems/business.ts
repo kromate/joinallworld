@@ -16,8 +16,8 @@
  *   spend       { amount, what, name }           pay for stock, rent or an upgrade
  *   collect     { amount, sales, name }          take the cash box
  *   refund      { amount, name }                 what closing pays back
- *   buy         { amount, units, label, shop, effects?, need?, mood? }   buy from ANOTHER player's shop (buyBlock)
- *   bag-add     { product, units, amount, label }   buy trade goods for the road
+ *   buy         { amount, units, label, shop, effects?, need?, mood?, tax? }   buy from ANOTHER player's shop (buyBlock); `tax` is what the officeholders' levies add, paid on top
+ *   bag-add     { product, units, amount, label, duty? }   buy trade goods for the road; `duty` is the trade duty, paid on top
  *   bag-take    { items: { [productId]: units } }   put carried goods on the shelves
  *   bag-return  { amount }                       sell the whole bag back to a supplier
  * A PURCHASE FOLLOWS THE GIFT RULE (content/npcs.ts TRANSFER_LIMITS): only a life that has earned TRANSFER_LIMITS.minEarned
@@ -81,6 +81,7 @@ function effectsOf(value: unknown): NeedMap {
 export function buyBlock(state: LifeState, payload: Payload, ctx: LifeContext): Refusal | null {
   const amount = amountOf(payload.amount);
   if (amount === null || amount <= 0) return fail(state, 'invalid_amount', 'That purchase has no price.');
+  const tax = amountOf(payload.tax) ?? 0;
   // The unrestricted part (an admin's credit) is drawn first and is exempt from the earned-from-work rule; the shop's own daily and need limits below still apply to the whole price.
   const ordinary = amount - Math.min(freeOf(state), amount);
   const why = ordinary > 0 ? buyingWhy({ ...state, social: { ...state.social, free: 0 } }) : '';
@@ -93,7 +94,7 @@ export function buyBlock(state: LifeState, payload: Payload, ctx: LifeContext): 
   if (need && state.needs[need] >= BUSINESS_BUYING.fullNeed) return fail(state, 'not_needed', need === 'hunger' ? 'You are full. Come back when you are hungry.' : `Your ${need} is already full. Come back when you need it.`);
   const mood = isRecord(payload.mood) && isId(payload.mood.id) ? payload.mood.id : null;
   if (mood && state.moodlets.some((item) => item.id === `shop-${mood}` && (item.expiresAt === null || item.expiresAt > nowOf(state, ctx)))) return fail(state, 'already_have', 'You bought one of these today and still feel good about it. Come back tomorrow.');
-  if (!canAfford(state, amount)) return fail(state, 'insufficient_funds', `You need ${naira(amount)}; you have ${naira(state.cash)}.`);
+  if (!canAfford(state, amount + tax)) return fail(state, 'insufficient_funds', `You need ${naira(amount + tax)}${tax ? ` (${naira(amount)} and ${naira(tax)} in tax)` : ''}; you have ${naira(state.cash)}.`);
   return null;
 }
 
@@ -145,6 +146,8 @@ const ops = {
     const free = Math.min(freeOf(state), amount);
     spendFree(state, free);
     if (!debit(state, amount, `Bought at ${shop}: ${units} × ${label}`, ctx)) return short(state, amount);
+    const tax = amountOf(payload.tax) ?? 0;
+    if (tax > 0 && !debit(state, tax, `Tax on purchase at ${shop}`, ctx)) return short(state, amount + tax);
     const book = state.business, day = lagosTime(nowOf(state, ctx)).day, effects = effectsOf(payload.effects);
     if (book.buys.day !== day) book.buys = { day, spent: 0, count: 0 };
     book.buys.spent += amount; book.buys.count += 1;
@@ -165,7 +168,10 @@ const ops = {
     if (amount === null || !isId(product) || !safeCount(units) || units <= 0) return fail(state, 'invalid_operation', 'Choose what to carry and how many.');
     const room = BAG_LIMIT - bagUnits(state.business.bag);
     if (units > room) return fail(state, 'bag_full', room > 0 ? `You can carry ${room} more unit${room === 1 ? '' : 's'} (${BAG_LIMIT} in all).` : `Your bag is full (${BAG_LIMIT} units). Stock your stall from it first.`);
+    const duty = amountOf(payload.duty) ?? 0;
+    if (!canAfford(state, amount + duty)) return short(state, amount + duty);
     if (!debit(state, amount, `Shop goods: ${units} × ${label}`, ctx)) return short(state, amount);
+    if (duty > 0) debit(state, duty, `Trade duty on ${units} × ${label}`, ctx);
     state.business.bag[product] = (state.business.bag[product] ?? 0) + units;
     state.message = `${units} × ${label} packed for the road.`;
     return ok(state, 'bagged');

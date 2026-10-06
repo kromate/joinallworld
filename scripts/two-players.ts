@@ -44,9 +44,10 @@ import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
 import type { LifeState, Look } from '../src/types/index.ts';
 import type { ActionResponse, LifeResponse } from '../src/types/protocol.ts';
+import type { Database } from '../server/types.ts';
 
 /** What this script uses of the server (server/server.ts is still untyped JavaScript). */
-interface TwoPlayersServer extends Server { store: { close(): Promise<void> } }
+interface TwoPlayersServer extends Server { store: { close(): Promise<void>; transact<R>(change: (db: Database) => R): Promise<R> } }
 type Json = Record<string, unknown>;
 /** What every HTTP answer carries beside its JSON body. */
 interface Meta { status: number; headers: Headers; error?: string }
@@ -461,12 +462,15 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     assert.deepEqual([voted.code, voted.gov.election.yourVote, voted.gov.election.totalVotes], ['voted', ada.id, 1]);
     assert.equal((await post<VoteBody>('/api/civic/gov/vote', { cityId: CITY, candidate: ada.id }, bola)).code, 'already_voted');
     assert.equal((await act(bola, 'civic.vote', {})).code, 'server_only');
+    // A city election counts only with its quorum (three votes). The script has two players, so two more residents' votes are written
+    // into the stored ballot, as if cast through the same route.
+    await server.store.transact((db) => { const election = Object.values(db.civic?.cities?.[CITY]?.gov.elections ?? {}).at(-1); assert.ok(election); election.votes['resident-2'] = ada.id; election.votes['resident-3'] = ada.id; });
     say('Thursday: Bola votes for Ada at the Polling Unit', 'refused from elsewhere; one vote, counted once');
 
     // ---- 10. Sunday: Ada is Governor; her announcement reaches Bola’s Updates -------------------------
     goTo(at(11, 0, 30));
     gov = await get<GovBody>(`/api/civic/gov?city=${CITY}`, ada);
-    assert.deepEqual([gov.phase, gov.governor.id, gov.governor.name, gov.you.isGovernor, gov.lastResult.winner.votes], ['results', ada.id, 'Ada', true, 1]);
+    assert.deepEqual([gov.phase, gov.governor.id, gov.governor.name, gov.you.isGovernor, gov.lastResult.winner.votes], ['results', ada.id, 'Ada', true, 3]);
     assert.equal((await post<AnnounceBody>('/api/civic/gov/announce', { cityId: CITY, text: 'Everybody is in charge' }, bola)).code, 'not_governor');
     const announced = await post<AnnounceBody>('/api/civic/gov/announce', { cityId: CITY, text: 'Sanitation day is <b>Saturday</b>' }, ada);
     assert.deepEqual([announced.code, must(announced.gov.announcements[0]).text], ['announced', 'Sanitation day is <b>Saturday</b>']);
@@ -474,7 +478,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const pulse = await get<PulseBody>(`/api/civic/pulse?city=${CITY}`, bola);
     assert.deepEqual([pulse.checkedIn, pulse.gov.governor.name, must(pulse.notices[0]).kind], [true, 'Ada', 'announcement']);
     const updates = (await life(bola)).social.notices.map((notice) => notice.text);
-    assert.ok(updates.includes('Ada is the new Governor of Lagos: Elected with 1 of 1 vote.'), 'the result is in Bola’s Updates');
+    assert.ok(updates.includes('Ada is the new Governor of Lagos: Elected with 3 of 3 votes.'), 'the result is in Bola’s Updates');
     assert.ok(updates.includes('Governor Ada announced: Sanitation day is <b>Saturday</b>'), 'the announcement is in Bola’s Updates, stored as text');
     wait(15000);
     await get<PulseBody>(`/api/civic/pulse?city=${CITY}`, bola);
@@ -498,7 +502,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     for (const who of [ada, bola]) assert.ok(!everything.includes(who.cookie.slice(4)), `${who.name}’s cookie secret never left the server`);
     const stored = JSON.parse(await readFile(join(dataDir, 'devices.json'), 'utf8'));
     for (const who of [ada, bola]) for (const key of ['social', 'civic']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
-    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'sessions', 'social', 'version']);
+    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version']);
 
     log(`Two players complete: ${step} steps. Ada ${naira((await life(ada)).cash)}, Bola ${naira((await life(bola)).cash)}.`);
     return { steps: step };

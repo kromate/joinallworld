@@ -46,7 +46,7 @@ test('city-owned civic title changes public panels and fees while preserving Lag
       assert.equal(current.ledger.at(-1)?.reason, cityId === 'lagos' ? 'Governorship filing fee' : 'Community Chair filing fee')
       const data = cityOf(emptyCivic(), cityId), person = { id: 'candidate', name: 'Ada' }
       declare(data, MONDAY, person, 'A shared garden')
-      vote(data, MONDAY + 3 * DAY, 'voter', person.id)
+      for (const voter of ['voter', 'voter2', 'voter3']) vote(data, MONDAY + 3 * DAY, voter, person.id)
       const sunday = MONDAY + 6 * DAY
       const view = govView(data, sunday)
       assert.equal(view.governor?.id, person.id, 'governor remains the saved/API key')

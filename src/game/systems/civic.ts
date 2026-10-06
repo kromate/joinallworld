@@ -55,6 +55,8 @@ import { lagosTime } from '../clock.ts';
 import { canAfford, canCredit, credit, debit, spotsOf } from '../api.ts';
 import { venueLabel } from '../content/venues.ts';
 import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.ts';
+import { SEATS, SEAT_TITLES, TIER_IDS } from '../content/politics.ts';
+import type { TierId } from '../../types/politics.ts';
 import { cityRules } from '../content/world.ts';
 import { isCityId } from '../cities/registry.ts';
 
@@ -253,14 +255,37 @@ export function claimHuntPrize(state: LifeState, payload: Record<string, unknown
   return ok(state, 'claimed');
 }
 
-/** Charge the filing fee for a candidacy the server has already accepted. */
+const tierOf = (value: unknown): TierId => TIER_IDS.find((tier) => tier === value) ?? 'city';
+const seatTitle = (tier: TierId, cityId: string): string => (tier === 'city' ? civicTitle(cityId) : SEAT_TITLES[tier]);
+
+/** Charge the filing fee for a candidacy the server has already accepted. payload: { tier? } — the seat's own fee; the city seat when absent. */
 export function fileCandidacy(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const blocked = firstUnmet(state, civicEligibility(state, ctx).run);
   if (blocked) return blocked;
-  debit(state, ELECTION.filingFee, civicTitle(ctx.cityId) === 'Governor' ? 'Governorship filing fee' : `${civicTitle(ctx.cityId)} filing fee`, ctx);
-  state.message = `You are on the ballot. The ${naira(ELECTION.filingFee)} filing fee was paid.`;
-  emit(state, 'candidacy.declared', { fee: ELECTION.filingFee }, ctx);
+  const tier = tierOf(payload?.tier), fee = tier === 'city' ? ELECTION.filingFee : SEATS[tier].fee;
+  if (!canAfford(state, fee)) return fail(state, 'insufficient_funds', `The filing fee is ${naira(fee)}; you have ${naira(state.cash)}.`);
+  const title = seatTitle(tier, ctx.cityId);
+  debit(state, fee, title === 'Governor' ? 'Governorship filing fee' : `${title} filing fee`, ctx);
+  state.message = `You are on the ballot. The ${naira(fee)} filing fee was paid.`;
+  emit(state, 'candidacy.declared', { fee }, ctx);
   return ok(state, 'declared');
+}
+
+/** Money between a life and a party or a treasury, once the server has checked the rule. payload: { op: 'pay' | 'receive', amount, label }. */
+export function treasuryMoney(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  const amount = payload?.amount, label = typeof payload?.label === 'string' && payload.label ? payload.label.slice(0, 60) : 'Civic payment';
+  if (!Number.isSafeInteger(amount) || (amount as number) <= 0) return fail(state, 'invalid_amount', 'That amount is not a whole number of naira.');
+  const sum = amount as number;
+  if (payload.op === 'receive') {
+    if (!canCredit(state, sum)) return fail(state, 'balance_limit', 'Your saved balance has reached its supported limit.');
+    credit(state, sum, label, ctx);
+    state.message = `${label}: +${naira(sum)}.`;
+    return ok(state, 'received');
+  }
+  if (!canAfford(state, sum)) return fail(state, 'insufficient_funds', `You need ${naira(sum)}; you have ${naira(state.cash)}.`);
+  debit(state, sum, label, ctx);
+  state.message = `${label}: −${naira(sum)}.`;
+  return ok(state, 'paid');
 }
 
 /** Confirm this life may vote now (age, and being at the polling unit once that venue exists). */
@@ -342,6 +367,7 @@ const play = PLAYS ? {
     'civic.run': serverOnly(fileCandidacy, 'Phone → Governor'),
     'civic.vote': serverOnly(castVote, 'Phone → Governor'),
     'civic.rent-ad': serverOnly(payForAd, 'Phone → Billboards'),
+    'civic.treasury': serverOnly(treasuryMoney, 'Phone → Politics'),
     'civic.shoutout': serverOnly(payForShoutout, 'Phone → Radio'),
   },
   on: {

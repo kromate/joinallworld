@@ -115,8 +115,8 @@ test('civic routes: registered under /api/civic, guarded by the host, and strict
 
 test('governor: a full weekly election with stated eligibility, one vote each, live tally, tie-break and announcements', async t => {
   const { f, get, post, life, goTo, wait, database } = await harness(t);
-  const ada = await f.device('Ada'), bola = await f.device('Bola'), chidi = await f.device('Chidi');
-  for (const device of [ada, bola, chidi]) await life(device);
+  const ada = await f.device('Ada'), bola = await f.device('Bola'), chidi = await f.device('Chidi'), femi = await f.device('Femi');
+  for (const device of [ada, bola, chidi, femi]) await life(device);
 
   // Thursday of week 0: polls are open but nobody stood, so there is nobody to vote for and nominations are shut.
   let gov = await get<GovResponse>('/api/civic/gov?city=lagos', ada);
@@ -126,7 +126,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(gov.rules.filingFee, 2000); assert.equal(gov.rules.pollingVenue, 'polling-unit', 'the merged city has a Polling Unit, so votes are cast there');
   const tooEarly = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
   assert.equal(tooEarly.ok, false); assert.equal(tooEarly.code, 'nominations_closed'); assert.match(reasonOf(tooEarly), /Monday/); assert.equal(tooEarly.state.cash, 5000);
-  // Ada and Bola are paid for work on two different Lagos days (Thursday and Friday); Chidi never works.
+  // Ada, Bola and Femi are paid for work on two different Lagos days (Thursday and Friday); Chidi never works.
   const workShift = async (device: Device) => {
     await f.action(device.cookie, { type: 'apply-job', payload: { id: 'community-helper' } });
     await f.action(device.cookie, { type: 'spot', payload: { id: 'work' } });
@@ -135,9 +135,9 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
     wait(21000);
     return life(device);
   };
-  for (const device of [ada, bola]) assert.equal((await workShift(device)).civic.work.days, 1);
+  for (const device of [ada, bola, femi]) assert.equal((await workShift(device)).civic.work.days, 1);
   goTo(START + DAY);
-  for (const device of [ada, bola]) assert.deepEqual([(await workShift(device)).civic.work.days, (await life(device)).cash], [2, 5600]);
+  for (const device of [ada, bola, femi]) assert.deepEqual([(await workShift(device)).civic.work.days, (await life(device)).cash], [2, 5600]);
 
   // Monday: nominations.
   goTo(MONDAY + 60000);
@@ -171,7 +171,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   const fromAfar = await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada);
   assert.equal(fromAfar.code, 'wrong_place'); assert.match(reasonOf(fromAfar), /Travel to Polling Unit/); assert.equal(fromAfar.gov.election.yourVote, null);
   goTo(MONDAY + 3 * DAY + 9 * HOUR);
-  for (const device of [ada, bola]) assert.equal((await f.action(device.cookie, { type: 'travel', payload: { id: 'polling-unit', mode: 'trek' } })).ok, true);
+  for (const device of [ada, bola, femi]) assert.equal((await f.action(device.cookie, { type: 'travel', payload: { id: 'polling-unit', mode: 'trek' } })).ok, true);
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: bola.id }, ada)).code, 'wrong_place', 'still on the road');
   wait(20000);
   assert.equal((await get<GovResponse>('/api/civic/gov?city=lagos', ada)).you?.vote.ok, true);
@@ -182,18 +182,19 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(voted.ok, true); assert.equal(voted.gov.election.yourVote, bola.id); assert.equal(codeOf(voted.gov.you?.vote), 'already_voted');
   assert.equal(voted.state.cash, 3600, 'voting is free');
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, bola)).ok, true);
+  assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, femi)).ok, true);
   const [again, parallel] = await Promise.all([post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, ada), post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, ada)]);
   assert.equal(again.code, 'already_voted'); assert.equal(parallel.code, 'already_voted');
   gov = await get<GovResponse>('/api/civic/gov?city=lagos');
-  assert.deepEqual(gov.election.candidates.map((item) => [item.name, item.votes]), [['Ada', 1], ['Bola', 1]], 'live tally; a tie lists the earlier declaration first');
-  assert.equal(gov.election.totalVotes, 2); assert.equal(gov.governor, null); assert.equal(gov.election.yourVote, null, 'a signed-out reader sees no ballot of their own');
+  assert.deepEqual(gov.election.candidates.map((item) => [item.name, item.votes]), [['Ada', 2], ['Bola', 1]], 'live tally');
+  assert.equal(gov.election.totalVotes, 3); assert.equal(gov.governor, null); assert.equal(gov.election.yourVote, null, 'a signed-out reader sees no ballot of their own');
   assert.equal((await post('/api/civic/gov/announce', { cityId: 'lagos', text: 'I am in charge' }, ada)).code, 'not_governor');
 
-  // Sunday: polls closed, the tie goes to the earlier declaration.
+  // Sunday: polls closed; three votes meet the quorum, so the election counts.
   goTo(MONDAY + 6 * DAY + 60000);
   gov = await get<GovResponse>('/api/civic/gov?city=lagos', bola);
   assert.equal(gov.phase, 'results'); assert.equal(gov.governor?.id, ada.id); assert.equal(gov.governor?.name, 'Ada'); assert.equal(gov.governor?.termEndsAt, MONDAY + 13 * DAY);
-  assert.equal(gov.lastResult?.winner?.votes, 1); assert.equal(gov.you?.isGovernor, false); assert.equal(codeOf(gov.you?.announce), 'not_governor');
+  assert.equal(gov.lastResult?.winner?.votes, 2); assert.equal(gov.you?.isGovernor, false); assert.equal(codeOf(gov.you?.announce), 'not_governor');
   assert.equal((await post('/api/civic/gov/vote', { cityId: 'lagos', candidate: ada.id }, chidi)).code, 'polls_closed');
   assert.equal((await post('/api/civic/gov/announce', { cityId: 'lagos', text: 'Coup!' }, bola)).code, 'not_governor');
   for (const [text, code] of [['', 'text_too_short'], ['x'.repeat(141), 'text_too_long'], ['see http://x.example', 'links_not_allowed']]) assert.equal((await post('/api/civic/gov/announce', { cityId: 'lagos', text }, ada)).code, code);
@@ -216,8 +217,8 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   const db = await database();
   const lagos = must(must(db.civic).cities.lagos);
   assert.deepEqual(Object.keys(lagos.gov.elections), ['1']);
-  assert.deepEqual(lagos.gov.elections[1]?.votes, { [ada.id]: bola.id, [bola.id]: ada.id });
-  for (const device of [ada, bola, chidi, dayo, eve]) assert.ok(!JSON.stringify(db.civic).includes(device.cookie.slice(4)), 'the civic collection never holds a session secret');
+  assert.deepEqual(lagos.gov.elections[1]?.votes, { [ada.id]: bola.id, [bola.id]: ada.id, [femi.id]: ada.id });
+  for (const device of [ada, bola, chidi, dayo, eve, femi]) assert.ok(!JSON.stringify(db.civic).includes(device.cookie.slice(4)), 'the civic collection never holds a session secret');
 });
 
 test('billboards and sea plots: rented with in-game naira, text + colour + icon only, listed in one response, expiring', async t => {

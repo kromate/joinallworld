@@ -18,6 +18,7 @@ import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
+import type { DecreeRecord, PartyRecord, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
@@ -463,7 +464,7 @@ export interface ResidentRecord {
   claims: number
 }
 export interface ElectionRecord {
-  candidates: Record<string, { name: string; slogan: string; at: number }>
+  candidates: Record<string, { name: string; slogan: string; at: number; /** party id, absent for an independent */ party?: string }>
   /** Voter id → candidate id. */
   votes: Record<string, string>
   /** Current election only: salted address key → votes counted from it. */
@@ -474,6 +475,8 @@ export interface ElectionRecord {
 export interface AnnouncementRecord { id: string; by: PlayerRef; text: string; at: number; /** week of the Governor's election */ term: number }
 export interface AdRecord { by: PlayerRef; text: string; colour: string; icon: string; at: number; expiresAt: number }
 export interface ShoutoutRecord { id: string; by: PlayerRef; title: string; artist: string; at: number; startsAt: number; endsAt: number; requestId: string | null }
+/** What the election functions read: the ballots and announcements of one seat. A city's lives in its civic record; a state's and the nation's in the politics collection. */
+export interface GovScope { gov: { elections: Record<string, ElectionRecord>; announcements: AnnouncementRecord[] } }
 export interface CivicCityRecord {
   /** When this city's civic record began (epoch ms); news is never dated before it. Absent in Lagos, whose record predates the field. */
   openedAt?: number
@@ -487,6 +490,25 @@ export interface CivicCityRecord {
   ads: { billboard: Record<string, AdRecord>; sea: Record<string, AdRecord> }
   hunt: { found: number; claims: number; byDay: Record<string, number> }
   radio: { queues: Record<string, ShoutoutRecord[]>; daily: Record<string, { day: number; n: number }> }
+}
+/** One seat's shared record: a city's, a state's or the nation's. */
+export interface PoliticsScopeRecord {
+  /** State and nation only: a city's ballots stay in its civic record. */
+  gov?: GovScope['gov']
+  decree?: DecreeRecord
+  treasury: TreasuryRecord
+  /** The week of the term whose salary was already drawn. */
+  drawn?: number
+}
+/** db.politics (server/politics/data.ts). Created by the first decree, party, fee or levy, so it is not in COLLECTION_NAMES. */
+export interface PoliticsCollection {
+  v: 1
+  seq: number
+  /** `city:<id>`, `state:<id>`, `nation:<id>`. */
+  scopes: Record<string, PoliticsScopeRecord>
+  parties: Record<string, PartyRecord>
+  /** Player id → the party they belong to. */
+  members: Record<string, string>
 }
 export interface CivicCollection {
   v: 1
@@ -675,6 +697,8 @@ export interface Database {
   visits?: VisitsCollection
   /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
   business?: BusinessCollection
+  /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
+  politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
   campus?: { election?: CampusElectionRecord }
   /** server/accounts/service.ts. Created by the first sign-in, so none of the three is in COLLECTION_NAMES. WORKER: `accounts` and `accountDevices` are tables of their own. */

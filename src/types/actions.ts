@@ -18,6 +18,7 @@ import type {
   TravelModeId, VenueId, WardrobeKind,
 } from './life.ts'
 import { CAMPUS_ACTION_TYPES } from './campus.ts'
+import type { TierId } from './politics.ts'
 import type { CampusActionMap, CampusActivityVetoCode, GuestCampusActionType } from './campus.ts'
 
 // ---- shared code groups -------------------------------------------------------------------
@@ -312,11 +313,13 @@ export interface ActionMap extends CampusActionMap {
   /** SERVER ONLY: post city news the life has not seen yet to its Updates feed. */
   'civic.news': { payload: { items: CivicNewsItem[] }; ok: 'posted' | 'nothing_new'; fail: never; serverOnly: true }
   /** SERVER ONLY: charge the filing fee for a candidacy the server has accepted. */
-  'civic.run': { payload: NoPayload; ok: 'declared'; fail: Exclude<CivicCheckCode, 'wrong_place'>; serverOnly: true }
+  'civic.run': { payload: { tier?: TierId }; ok: 'declared'; fail: Exclude<CivicCheckCode, 'wrong_place'>; serverOnly: true }
   /** SERVER ONLY: confirm this life may vote now. */
   'civic.vote': { payload: NoPayload; ok: 'voted'; fail: Exclude<CivicCheckCode, 'insufficient_funds'>; serverOnly: true }
   /** SERVER ONLY: charge the rent for an ad slot the server found free. `slot` is `bb-NN` or `sea-<row>-<col>`. */
   'civic.rent-ad': { payload: { kind: 'billboard' | 'sea'; slot: string }; ok: 'rented'; fail: 'invalid_slot' | 'insufficient_funds'; serverOnly: true }
+  /** SERVER ONLY: money between a life and a party or a treasury, after the server has checked the rule (server/routes/politics.ts). */
+  'civic.treasury': { payload: { op: 'pay' | 'receive'; amount: number; label: string }; ok: 'paid' | 'received'; fail: 'invalid_amount' | 'insufficient_funds' | 'balance_limit'; serverOnly: true }
   /** SERVER ONLY: charge for a club-radio shout-out; the player must be standing in a club. */
   'civic.shoutout': { payload: NoPayload; ok: 'queued'; fail: 'not_in_club' | 'insufficient_funds'; serverOnly: true }
 
@@ -456,7 +459,7 @@ export const ACTION_TYPES = [
   'onboarding.set-look', 'onboarding.boutique-buy',
   'goals.buy-perk', 'goals.reroll-wish', 'goals.set-dream',
   'social.call', 'social.sync', 'social.server',
-  'civic.hunt-search', 'civic.hunt-claim', 'civic.refresh', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout',
+  'civic.hunt-search', 'civic.hunt-claim', 'civic.refresh', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad', 'civic.treasury', 'civic.shoutout',
   'missions.claim', 'missions.reroll', 'missions.refresh',
   'events.spray',
   'growth.table-result', 'growth.referral',
@@ -468,7 +471,7 @@ export const ACTION_TYPES = [
 /** The action types declared `serverOnly` (registry.js serverOnlyReason(type) !== null). */
 export const SERVER_ONLY_ACTIONS = [
   'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
+  'civic.treasury', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */

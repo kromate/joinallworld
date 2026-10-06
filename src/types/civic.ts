@@ -17,6 +17,7 @@
  * WORKER: none of these routes exist on the Cloudflare Worker.
  */
 import type { LifeState } from './life.ts'
+import type { TierId } from './politics.ts'
 import type { ApiEnvelope, CityId, HostErrorCode, JsonBodyErrorCode, Ok, OnceErrorCode, PlayerRef, Refusal, SessionErrorCode, StorageErrorCode, TimedId } from './protocol.ts'
 
 // ---- governor ------------------------------------------------------------------------------------
@@ -124,9 +125,10 @@ export interface GovResponse extends GovView {
   you: GovYou | null
 }
 
-export interface RunBody { cityId: CityId; slogan: string; requestId: TimedId }
-export interface VoteBody { cityId: CityId; candidate: string }
-export interface AnnounceBody { cityId: CityId; text: string }
+/** `tier` names the seat (docs/POLITICS.md); the city seat when absent. */
+export interface RunBody { cityId: CityId; slogan: string; requestId: TimedId; tier?: TierId }
+export interface VoteBody { cityId: CityId; candidate: string; tier?: TierId }
+export interface AnnounceBody { cityId: CityId; text: string; tier?: TierId }
 
 /** cleanLine() refusals (server/civic/text.ts). */
 export type LineRefusal = 'text_required' | 'text_too_short' | 'text_too_long' | 'text_blocked' | 'links_not_allowed' | 'contact_not_allowed'
@@ -306,12 +308,12 @@ export interface PrefsResponse { ok: true; prefs: { richList: boolean; directory
 // ---- HTTP ----------------------------------------------------------------------------------------
 
 /** 429 `civic_rate_limited` is the per-player (or per-address) civic limit; `rate_limited` is the host's. */
-type CivicRead = HostErrorCode | 'invalid_city' | 'civic_rate_limited'
+type CivicRead = HostErrorCode | 'invalid_city' | 'civic_rate_limited' | 'invalid_tier' | 'no_such_seat'
 type CivicWrite = CivicRead | JsonBodyErrorCode | SessionErrorCode | StorageErrorCode
 
 export interface CivicHttpRoutes {
   'GET /api/civic/pulse': { query: { city: CityId }; response: Ok<PulseResponse>; errors: CivicRead | StorageErrorCode }
-  'GET /api/civic/gov': { query: { city: CityId }; response: Ok<GovResponse>; errors: CivicRead }
+  'GET /api/civic/gov': { query: { city: CityId; tier?: TierId }; response: Ok<GovResponse>; errors: CivicRead }
   'POST /api/civic/gov/run': { body: RunBody; response: Ok<RunResponse>; errors: CivicWrite | OnceErrorCode }
   'POST /api/civic/gov/vote': { body: VoteBody; response: Ok<VoteResponse>; errors: CivicWrite }
   'POST /api/civic/gov/announce': { body: AnnounceBody; response: Ok<AnnounceResponse>; errors: CivicWrite }

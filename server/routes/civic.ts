@@ -61,12 +61,16 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { ActionType } from '../../src/types/actions.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { CityCounters, EligibilityCheck, Gate, GovResponse, GovRules, GovYou, HuntResponse, PulseResponse } from '../../src/types/civic.ts';
-import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult, SessionRecord } from '../types.ts';
+import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, GovScope, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult, SessionRecord } from '../types.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { makeContext } from '../../src/game/util.ts';
 import { DEMONYMS, ELECTION, HUNT } from '../../src/game/content/civic.ts';
 import { cityContent, cityRules } from '../../src/game/cities/index.ts';
 import { civicEligibility, pollingVenueFor } from '../../src/game/systems/civic.ts';
+import { QUORUM, SEATS, SEAT_TITLES, TIER_IDS } from '../../src/game/content/politics.ts';
+import type { TierId } from '../../src/types/politics.ts';
+import { govOfScope, peekGov, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
+import { credit, partyOf } from '../politics/rules.ts';
 import { cityOf, emptyCivic, nextId, openedAtOf } from '../civic/data.ts';
 import { cleanLine } from '../civic/text.ts';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.ts';
@@ -96,6 +100,21 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   /** Run a server-completed civic action through the rules engine, inside the caller's transaction. */
   // Inside ctx.once the receipt covers the action; elsewhere `guard` says why a repeat cannot apply twice (ctx.act in server.js).
   const act = (life: LifeState, cityId: CityId, type: ActionType, payload: Record<string, unknown> = {}, guard?: string): ActionOutcome => ctx.act(life, { type, cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
+  /** `?tier=` / `tier`: which seat. The city seat when absent, so every call that does not name one is unchanged. */
+  const tierParam = (value: unknown): TierId => {
+    if (value === undefined || value === null || value === '') return 'city';
+    const tier = TIER_IDS.find((item) => item === value);
+    if (!tier) throw fail(400, 'invalid_tier');
+    return tier;
+  };
+  const tierTitle = (tier: TierId, cityId: CityId): string => (tier === 'city' ? civicTitle(cityId) : SEAT_TITLES[tier]);
+  /** The ballots of one seat as the viewer's city sees it. A write creates them; a read creates nothing. */
+  function seatGov(db: Db, city: CivicCityRecord, cityId: CityId, tier: TierId, write: boolean): GovScope {
+    if (tier === 'city') return city;
+    const seat = seatsOf(cityId, cityName(cityId)).find((item) => item.tier === tier);
+    if (!seat) throw fail(400, 'no_such_seat');
+    return write ? govOfScope(scopeRecord(politicsOf(ctx, db), seat.id)) : peekGov(peekScope(peekPolitics(db), seat.id));
+  }
   const refused = (block: Block, extra: object = {}): RouteResult => ({ body: { ok: false, code: block.code, reason: block.reason, ...extra }, renew: true });
   const muted = (who: PlayerRef): Block | null => ctx.checks?.muted?.(who.id) ?? null;
   const moderation = moderationService(ctx);
@@ -158,8 +177,8 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     pollingVenue: pollingVenueFor(cityId)?.id ?? null });
 
   /** Governor state plus, for a signed-in viewer, exactly why they can or cannot run, vote and announce. */
-  function govBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null): GovResponse {
-    const now = ctx.now(), view = govView(city, now, who?.id ?? null);
+  function govBody(city: GovScope, cityId: CityId, who: PlayerRef | null, life: LifeState | null, tier: TierId = 'city'): GovResponse {
+    const now = ctx.now(), view = govView(city, now, who?.id ?? null, QUORUM[tier]);
     let you: GovYou | null = null;
     if (who && life) {
       const eligibility = civicEligibility(life, engine(cityId, 'eligibility'));
@@ -169,7 +188,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         days: eligibility.days, isGovernor: view.governor?.id === who.id, isCandidate: view.election.candidates.some((item) => item.you), votedFor: view.election.yourVote,
         run: { ...gate(declareBlock(city, now, who.id) ?? unmet(eligibility.run)), checks: eligibility.run },
         vote: { ...gate(voteBlock(city, now, who.id, view.election.candidates[0]?.id ?? '') ?? unmet(eligibility.vote)), checks: eligibility.vote },
-        announce: gate(announceBlock(city, now, who.id, civicTitle(cityId))),
+        announce: gate(announceBlock(city, now, who.id, tierTitle(tier, cityId), QUORUM[tier])),
       };
       // With an empty ballot the only thing missing is a candidate; say that rather than "unknown candidate".
       if (!youBody.vote.ok && youBody.vote.code === 'unknown_candidate') youBody.vote.reason = 'Nobody is on the ballot yet, so there is no one to vote for.';
@@ -220,38 +239,45 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     // ---- governor -------------------------------------------------------------------------
     'GET /api/civic/gov': async (request) => {
       const cityId = cityParam(request.query.get('city'));
-      const body = await store.read(db => { const { who, life, city } = peek(db, request, cityId); limit('read', viewerKey(request, who), 120); return govBody(city, cityId, who, life); });
+      const tier = tierParam(request.query.get('tier'));
+      const body = await store.read(db => { const { who, life, city } = peek(db, request, cityId); limit('read', viewerKey(request, who), 120); return govBody(seatGov(db, city, cityId, tier, false), cityId, who, life, tier); });
       return { body };
     },
     'POST /api/civic/gov/run': async (request) => {
       const body = await request.json();
       const cityId = cityParam(body.cityId);
+      const tier = tierParam(body.tier);
       const slogan = cleanLine(body.slogan, { min: ELECTION.sloganMin, max: ELECTION.sloganMax, what: 'Your slogan' });
       return store.transact(db => {
-        const { session, who, life, city } = enter(db, request, cityId);
+        const { session, who, life, city: home } = enter(db, request, cityId);
+        const city = seatGov(db, home, cityId, tier, true);
         limit('gov-run', who.id, 12);
         // The filing fee and the ballot entry are one receipted step: a retry with the same id pays nothing more.
-        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.run', fingerprint: [cityId, slogan.ok ? slogan.text : String(body.slogan ?? '')] }, () => {
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'civic.run', fingerprint: [cityId, tier, slogan.ok ? slogan.text : String(body.slogan ?? '')] }, () => {
           const block = declareBlock(city, ctx.now(), who.id) ?? muted(who);
           if (block) return { ok: false, code: block.code, reason: block.reason };
           if (!slogan.ok) return { ok: false, code: slogan.code, reason: slogan.reason };
-          const paid = act(life, cityId, 'civic.run');
+          const paid = act(life, cityId, 'civic.run', { tier });
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
-          declare(city, ctx.now(), who, slogan.text);
-          checkIn(city, ctx.now(), who, life, ttl(), districts(cityId));
+          const politics = politicsOf(ctx, db);
+          declare(city, ctx.now(), who, slogan.text, partyOf(politics, who.id));
+          const seat = seatsOf(cityId, cityName(cityId)).find((item) => item.tier === tier);
+          if (seat) credit(scopeRecord(politics, seat.id), ctx.now(), 'fee', tier === 'city' ? ELECTION.filingFee : SEATS[tier].fee, `Filing fee: ${who.name}`);
+          checkIn(home, ctx.now(), who, life, ttl(), districts(cityId));
           return { ok: true, code: 'declared' };
         });
-        return { body: { ...outcome, state: life, gov: govBody(city, cityId, who, life) }, renew: true };
+        return { body: { ...outcome, state: life, gov: govBody(city, cityId, who, life, tier) }, renew: true };
       });
     },
     'POST /api/civic/gov/vote': async (request) => {
       const body = await request.json();
-      const cityId = cityParam(body.cityId);
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier);
       return store.transact(db => {
-        const { who, life, civic, city } = enter(db, request, cityId);
+        const { who, life, civic, city: home } = enter(db, request, cityId);
+        const city = seatGov(db, home, cityId, tier, true);
         limit('gov-vote', who.id, 12);
         const block = voteBlock(city, ctx.now(), who.id, body.candidate);
-        if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life) });
+        if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life, tier) });
         // Votes per network address (see the header). It applies only to a vote that would otherwise
         // count — an ineligible voter is told what they are missing instead — and it is decided BEFORE the
         // rules engine records the vote in the life, so a refused vote leaves no trace of having been cast.
@@ -261,35 +287,36 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           const shared = isSharedAddress(request.ip);
           const refuse = ctx.config.voteCapMode === 'refuse' && !shared;
           if (firstCapNotice(city, ctx.now(), key)) {
-            const week = `${cityId}:week ${govView(city, ctx.now()).election.week}`;
+            const week = `${cityId}${tier === 'city' ? '' : `:${tier}`}:week ${govView(city, ctx.now(), null, QUORUM[tier]).election.week}`;
             if (refuse) moderation.audit(db, 'vote-cap', week, `Votes over the cap of ${cap} from one address (key ${key}) are being refused (VOTE_CAP_MODE=refuse). Many real voters can share a public address; unset VOTE_CAP_MODE to count and flag instead.`, 'server');
             else if (ctx.config.voteCapMode === 'refuse') moderation.audit(db, 'vote-cap-shared', week, `More than ${cap} votes from one private or loopback address (key ${key}). They are being counted: the server cannot tell voters apart behind a shared address. Set TRUST_PROXY=1 behind a proxy, or raise VOTES_PER_ADDRESS.`, 'server');
             else moderation.audit(db, 'vote-cap-flag', week, `More than ${cap} votes from one address (key ${key}). They are all being counted: this is a signal to look at, not a refusal — it may be one person with several sessions, or many people behind one connection (a mobile carrier, a school).`, 'server');
           }
           if (refuse) {
             return refused({ code: 'address_vote_limit', reason: `${cap} votes have already been counted from your network connection in this election, which is the most this server allows from one connection. Your vote was not counted. If you share a connection (a mobile network, a school, an office, a hostel), ask whoever runs this server to lift the limit, or vote from another connection.` },
-              { state: life, gov: govBody(city, cityId, who, life) });
+              { state: life, gov: govBody(city, cityId, who, life, tier) });
           }
         }
         const allowed = act(life, cityId, 'civic.vote', {}, 'voteBlock refuses a second vote and the ballot entry is written in this transaction');
-        if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life) });
-        if (typeof body.candidate !== 'string') return refused({ code: 'unknown_candidate', reason: 'Choose a candidate from this week’s ballot.' }, { state: life, gov: govBody(city, cityId, who, life) }); // voteBlock has already refused this
+        if (!allowed.ok) return refused(allowed, { state: life, gov: govBody(city, cityId, who, life, tier) });
+        if (typeof body.candidate !== 'string') return refused({ code: 'unknown_candidate', reason: 'Choose a candidate from this week’s ballot.' }, { state: life, gov: govBody(city, cityId, who, life, tier) }); // voteBlock has already refused this
         vote(city, ctx.now(), who.id, body.candidate, key);
-        return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life) }, renew: true };
+        return { body: { ok: true, code: 'voted', state: life, gov: govBody(city, cityId, who, life, tier) }, renew: true };
       });
     },
     'POST /api/civic/gov/announce': async (request) => {
       const body = await request.json();
-      const cityId = cityParam(body.cityId);
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier);
       const text = cleanLine(body.text, { min: ELECTION.announcement.min, max: ELECTION.announcement.max, what: 'An announcement' });
       return store.transact(db => {
-        const { who, life, city } = enter(db, request, cityId);
+        const { who, life, city: home } = enter(db, request, cityId);
+        const city = seatGov(db, home, cityId, tier, true);
         limit('gov-announce', who.id, 6);
-        const block = announceBlock(city, ctx.now(), who.id, civicTitle(cityId)) ?? muted(who) ?? (text.ok ? null : text);
-        if (block) return refused(block, { gov: govBody(city, cityId, who, life) });
-        if (!text.ok) return refused(text, { gov: govBody(city, cityId, who, life) });
-        announce(city, ctx.now(), who, text.text, nextId(city, 'a'));
-        return { body: { ok: true, code: 'announced', gov: govBody(city, cityId, who, life) }, renew: true };
+        const block = announceBlock(city, ctx.now(), who.id, tierTitle(tier, cityId), QUORUM[tier]) ?? muted(who) ?? (text.ok ? null : text);
+        if (block) return refused(block, { gov: govBody(city, cityId, who, life, tier) });
+        if (!text.ok) return refused(text, { gov: govBody(city, cityId, who, life, tier) });
+        announce(city, ctx.now(), who, text.text, tier === 'city' ? nextId(home, 'a') : `a${(politicsOf(ctx, db).seq += 1)}`, QUORUM[tier]);
+        return { body: { ok: true, code: 'announced', gov: govBody(city, cityId, who, life, tier) }, renew: true };
       });
     },
 

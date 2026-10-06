@@ -35,6 +35,7 @@ import type { AccountHttpRoutes } from './account.ts'
 import type { PingHttpRoutes } from './ping.ts'
 import type { VisitHttpRoutes } from './visit.ts'
 import type { BusinessHttpRoutes } from './business.ts'
+import type { PoliticsHttpRoutes } from './politics.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -256,7 +257,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -674,6 +675,12 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/store/migrate',
   'POST /api/mod/store/layout',
   'POST /api/mod/store/safety',
+  'GET /api/politics/overview',
+  'POST /api/politics/decree',
+  'POST /api/politics/salary',
+  'POST /api/politics/party/found',
+  'POST /api/politics/party/join',
+  'POST /api/politics/party/leave',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

@@ -215,11 +215,11 @@ test('civic life state: registered, no public actions, hostile saves are rebuilt
   const system = must(systems().find((item) => item.id === 'civic'), 'civic system');
   const known: readonly string[] = actionTypes();
   const actions = must(system.actions, 'actions table');
-  assert.deepEqual(Object.keys(actions).sort(), ['civic.hunt-claim', 'civic.hunt-search', 'civic.news', 'civic.refresh', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.vote']);
+  assert.deepEqual(Object.keys(actions).sort(), ['civic.hunt-claim', 'civic.hunt-search', 'civic.news', 'civic.refresh', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.treasury', 'civic.vote']);
   assert.ok(Object.keys(actions).every((type) => known.includes(type)));
   // The four server-completed actions are declared serverOnly: a player's dispatch is refused whatever
   // the payload claims (including an `internal` or `grant` field), and nothing is charged.
-  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout', 'civic.news'] as const) {
+  for (const type of ['civic.run', 'civic.vote', 'civic.rent-ad', 'civic.shoutout', 'civic.news', 'civic.treasury'] as const) {
     const declared = actions[type];
     assert.equal(typeof declared === 'object' ? declared.serverOnly : undefined, true, type);
     for (const extra of [{}, { grant: true }, { grant: 'civic.server-grant' }, { internal: true }, { serverOnly: false }]) {

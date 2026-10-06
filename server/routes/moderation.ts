@@ -21,14 +21,15 @@
  *   - A device session gives no access here, and nothing here reads or returns a session secret.
  *
  * READ (GET)
- *   /api/mod/overview                       counts of open reports, problems, mutes; store counters; how full the host is
+ *   /api/mod/overview                       counts of open reports, problems, mutes; store counters; `companion` (the hosted language model's outcomes, today's requests, tokens, estimated cost); how full the host is
  *                                           (`capacity`: sessions held and sockets open beside their caps — docs/CAPACITY.md)
  *   /api/mod/reports?status=open|all|…      player reports (reason, text, up to five quoted messages)
  *   /api/mod/problems?status=open|all|…     problem reports with their automatic context
  *   /api/mod/mutes                          active mutes
  *   /api/mod/content?city=                  live ads, announcements and radio shout-outs, with the ids to remove them by
  *   /api/mod/audit                          the last 200 audit lines, newest first
- * ACT (POST, JSON body). Every action writes one audit line.
+ * ACT (POST, JSON body). Every action writes one audit line (except the self-test below, which changes nothing).
+ *   /api/mod/companion-test        {}                                 one tiny request to the language-model gateway → { ok, model, ms, usedFallback } or { ok: false, error: off|auth|model_not_found|timeout|other, ms }; 6 per 10 minutes
  *   /api/mod/reports/:id/dismiss   { note? }                          no action taken; the reporter is told
  *   /api/mod/problems/:id/status   { status: reviewing|resolved|dismissed, note? }   the player sees status and note
  *   /api/mod/mutes                 { id, minutes, reason, report? }   mute a public id (1 minute – 30 days); with
@@ -42,6 +43,7 @@ import { UUID_PATTERN } from '../protocol.ts';
 import { moderationService, LIMITS } from '../moderation/service.ts';
 import { socialService } from '../social/service.ts';
 import { supportService, STATUSES } from '../support/service.ts';
+import { companionService } from '../companion/service.ts';
 import { cityOf, emptyCivic } from '../civic/data.ts';
 import { AD_KINDS, liveAds, takeDown } from '../civic/ads.ts';
 import { liveShoutouts, removeShoutout } from '../civic/radio.ts';
@@ -63,6 +65,7 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
   const moderation = moderationService(ctx);
   const social = socialService(ctx);
   const support = supportService(ctx);
+  const companion = companionService(ctx);
   ctx.startup?.push(moderation.load());
 
   /** Guard, parse, run inside one transaction, then push what the change told players. */
@@ -113,7 +116,15 @@ export default function moderationRoutes(ctx: RouteContext): Record<RouteKey, Ro
       capacity: { sessions: { held: Object.keys(db.sessions).length, most: ctx.config.maxActiveSessions },
         sockets: { open: ctx.core.sockets().length, most: ctx.config.maxSockets, perAddress: ctx.config.socketsPerAddress, perPlayer: ctx.config.socketsPerPlayer } },
       store: ctx.core.storeStats?.() ?? null, build: ctx.config.buildId,
+      // The hosted companion: outcomes, today's requests, tokens and an estimated cost, from memory (server/companion/service.ts).
+      companion: companion.overview(),
     })),
+    // One tiny real request to the language-model gateway: a wrong key or model id shows up as a short class (auth, model_not_found, timeout, other).
+    'POST /api/mod/companion-test': async (request) => {
+      await gate(request);
+      if (!ctx.allow('mod:companion-test', 6, 600000)) throw ctx.fail(429, 'rate_limited');
+      return { body: await companion.selfTest(), headers: { 'Cache-Control': 'no-store' } };
+    },
     'GET /api/mod/reports': guarded((db, request) => ({ reports: social.modReports(db, statusParam(request, ['received', 'dismissed', 'actioned'])) })),
     'GET /api/mod/problems': guarded((db, request) => ({ problems: support.list(db, statusParam(request, STATUSES)) })),
     'GET /api/mod/mutes': guarded((db) => ({ mutes: moderation.mutes(db) })),

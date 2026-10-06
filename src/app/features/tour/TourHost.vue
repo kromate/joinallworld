@@ -12,7 +12,12 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch 
 import { useApp } from '../../state/app.ts'
 import { tour, track } from './tourState.ts'
 import { signupShown } from '../account/shownOnce.ts'
-import { STEPS, closes, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
+import { closes, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
+import { tourSteps } from '../companion/tours.ts'
+import { createMemory } from '../companion/memory.ts'
+import { COMPANION_NAME } from '../companion/identity.ts'
+import CompanionFace from '../companion/CompanionFace.vue'
+import type { TourId } from '../companion/types.ts'
 import { openWorld } from './tourWorld.ts'
 import { callStore } from '../calls/callState.ts'
 import { input, startInputMode } from '../../state/inputMode.ts'
@@ -20,10 +25,11 @@ import type { StepContext, TourStep } from './tourModel.ts'
 import { placeCard, spotlightOf } from './placement.ts'
 import type { Placement, Rect } from './placement.ts'
 
-const props = withDefaults(defineProps<{ replay?: boolean }>(), { replay: false })
+const props = withDefaults(defineProps<{ replay?: boolean; tour?: TourId }>(), { replay: false, tour: 'basics' })
 const emit = defineEmits<{ end: [] }>()
 const { game, shell } = useApp()
 
+const memory = createMemory(globalThis.localStorage ?? null, game.view.value.session?.id ?? '')
 const layer = ref<HTMLElement | null>(null)
 const probe = ref<HTMLElement | null>(null)
 const card = ref<HTMLElement | null>(null)
@@ -97,8 +103,15 @@ function measure(): void {
   }
   hole.value = box
   const shown = card.value?.getBoundingClientRect()
+  pointAt(node)
   const size = { width: cardWidth.value, height: shown && shown.height > 0 ? shown.height / z : 220 }
   spot.value = placeCard(box, size, view, { prefer: step.value.prefer })
+}
+/** Tell the companion where the lit thing and the card are (page pixels), so its character can stand by it and point. */
+function pointAt(node: HTMLElement | null): void {
+  const lit = node?.getBoundingClientRect(), shown = card.value?.getBoundingClientRect()
+  const rect = (box: DOMRect | undefined): { left: number; top: number; width: number; height: number } | null => (box && box.width > 0 ? { left: box.left, top: box.top, width: box.width, height: box.height } : null)
+  window.dispatchEvent(new CustomEvent('jaw:companion-point', { detail: { active: true, target: rect(lit), card: rect(shown) } }))
 }
 /** One measurement on the next frame, however many things asked for it. */
 function schedule(): void { if (!frame) frame = requestAnimationFrame(measure) }
@@ -152,12 +165,13 @@ function close(): void {
   ended = true
   leave()
   tour.active = false
+  window.dispatchEvent(new CustomEvent('jaw:companion-point', { detail: { active: false } }))
   const back = before
   if (back instanceof HTMLElement && back.isConnected) back.focus({ preventScroll: true })
   emit('end')
 }
-function finish(): void { track('tour_finished', { steps: list.value.length }); close() }
-function skip(): void { track('tour_skipped', { at: index.value }); close() }
+function finish(): void { track('tour_finished', { steps: list.value.length }); memory.tour(props.tour, 'done'); close() }
+function skip(): void { track('tour_skipped', { at: index.value }); memory.tour(props.tour, 'skipped'); const at = step.value?.id; if (at && props.tour !== 'basics') memory.resume(props.tour, at); close() }
 function shortcuts(): void { finish(); window.dispatchEvent(new CustomEvent('jaw:shortcuts', { detail: { from: 'tour' } })) }
 
 // ---- the player does the thing ---------------------------------------------------------------
@@ -208,14 +222,18 @@ function onKey(event: KeyboardEvent): void {
 onMounted(() => {
   before = document.activeElement
   if (props.replay) { shell.ui.clean = false; shell.ui.trayOpen = false }
-  list.value = playlist(STEPS, context()).filter((item, at, all) => at === 0 || at === all.length - 1 || showable(item, context()))
+  list.value = playlist(tourSteps(props.tour), context()).filter((item, at, all) => at === 0 || at === all.length - 1 || showable(item, context()))
   if (list.value.length < 2) { tour.active = false; emit('end'); return }
   tour.active = true
+  const resumeAt = props.tour === 'basics' ? undefined : memory.data.resume[props.tour]
+  const resumed = resumeAt ? list.value.findIndex((item) => item.id === resumeAt) : -1
+  if (resumed > 0) index.value = resumed
+  memory.tour(props.tour, 'started')
   observer = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null
   window.addEventListener('keydown', onKey, true)
   window.addEventListener('resize', schedule)
   window.addEventListener('scroll', schedule, { capture: true, passive: true })
-  track('tour_started', { replay: props.replay, steps: list.value.length })
+  track('tour_started', { replay: props.replay, steps: list.value.length, tour: props.tour })
   enter()
 })
 onBeforeUnmount(() => {
@@ -258,6 +276,7 @@ const waiting = computed(() => Boolean(step.value?.wait) && !done.value)
       <i v-else class="tour-dim" aria-hidden="true" />
       <section ref="card" class="tour-card" :class="spot?.side ? `is-${spot.side}` : undefined" role="dialog" aria-modal="false" aria-labelledby="tour-title" aria-describedby="tour-text" tabindex="-1" :style="cardStyle">
         <i v-if="spot && spot.side !== 'center' && spot.arrow !== null" class="tour-arrow" aria-hidden="true" />
+        <p class="tour-guide"><CompanionFace :size="34" :mood="done && step?.wait ? 'happy' : 'talk'" /><b>{{ COMPANION_NAME }}</b><small>AI guide</small></p>
         <p class="tour-count"><span>{{ index + 1 }} of {{ list.length }}</span><span class="tour-dots" aria-hidden="true"><i v-for="(_, at) in list" :key="at" :class="{ 'is-on': at === index, 'is-past': at < index }" /></span></p>
         <h2 id="tour-title">{{ words.title }}</h2>
         <p id="tour-text">{{ words.text }}</p>
@@ -265,7 +284,7 @@ const waiting = computed(() => Boolean(step.value?.wait) && !done.value)
         <p v-if="words.task" class="tour-task"><span aria-hidden="true">👉</span> {{ words.task }}</p>
         <p v-else-if="done && step?.wait" class="tour-task is-done"><span aria-hidden="true">✓</span> Nice.</p>
         <div class="tour-actions">
-          <button class="tour-skip" type="button" @click="skip">Skip tour</button>
+          <button class="tour-skip" type="button" @click="skip">{{ props.tour === 'basics' ? 'Skip tour' : 'Not now' }}</button>
           <button v-if="index > 0" class="tour-back" type="button" @click="go(-1)">Back</button>
           <button v-if="action" class="tour-back" type="button" @click="shortcuts">{{ action.label }}</button>
           <button class="tour-next" type="button" data-primary @click="go(1)">{{ last ? 'Done' : step?.wait && !done ? 'Skip this' : 'Next' }}</button>
@@ -292,6 +311,8 @@ const waiting = computed(() => Boolean(step.value?.wait) && !done.value)
 .is-top .tour-arrow { bottom: -7px; left: calc(var(--arrow) - 7px); }
 .is-left .tour-arrow { right: -7px; top: calc(var(--arrow) - 7px); }
 .is-right .tour-arrow { left: -7px; top: calc(var(--arrow) - 7px); }
+.tour-guide { display: flex; align-items: center; gap: 8px; margin: -6px 0 6px; font-size: var(--t-body); }
+.tour-guide small { padding: 1px 7px; border-radius: var(--r-pill); background: var(--c-green-soft); color: var(--c-green-dark); font-weight: 700; font-size: var(--t-micro); }
 .tour-count { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 6px; color: var(--c-muted); font-size: var(--t-small); font-weight: 700; letter-spacing: .02em; }
 .tour-dots { display: inline-flex; gap: 4px; }
 .tour-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--c-fill-2); }

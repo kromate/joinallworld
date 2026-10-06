@@ -26,6 +26,7 @@ import HudSidebar from './features/hud/HudSidebar.vue'
 import GuestBarSlot from './features/hud/GuestBarSlot.vue'
 import ConnectionNotice from './features/hud/ConnectionNotice.vue'
 import TourTrigger from './features/tour/TourTrigger.vue'
+import CompanionHook from './features/companion/CompanionHook.vue'
 import VenuePanel from './features/venue/VenuePanel.vue'
 import ActionProgress from './features/venue/ActionProgress.vue'
 import BottomNav from './features/nav/BottomNav.vue'
@@ -172,6 +173,7 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
   </div>
   <SheetHost />
   <TourTrigger />
+  <CompanionHook />
   <CommunityHost />
   <CallsHost :host="sheetOpen ? '#life-dialog' : 'body'" />
   <PingHost :host="sheetOpen ? '#life-dialog' : 'body'" />

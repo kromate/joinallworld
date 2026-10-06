@@ -29,10 +29,13 @@ export function listNames(names: readonly string[]): string {
 }
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 
+/** The game's guide speaks in the mails that are about the player's own character: a line, never a message from a person. */
+export const GUIDE = 'Lumo, the game’s AI guide, here.';
+
 const NEED_WORDS = {
-  hunger: { word: 'hungry', intro: (who: string) => `${who} has not eaten for a while. A meal sorts it out.`, button: (who: string) => `Feed ${who}` },
-  energy: { word: 'tired', intro: (who: string) => `${who} could do with a rest. A nap at home is all it takes.`, button: (who: string) => `Let ${who} rest` },
-  social: { word: 'lonely', intro: (who: string) => `${who} has not talked to anyone in a while. A friend is only a message away.`, button: () => 'Say hello' },
+  hunger: { word: 'hungry', intro: (who: string) => `${GUIDE} ${who} has not eaten for a while, and a meal sorts it out.`, button: (who: string) => `Feed ${who}` },
+  energy: { word: 'tired', intro: (who: string) => `${GUIDE} ${who} could do with a rest, and a nap at home is all it takes.`, button: (who: string) => `Let ${who} rest` },
+  social: { word: 'lonely', intro: (who: string) => `${GUIDE} ${who} has not talked to anyone in a while, and a friend is only a message away.`, button: () => 'Say hello' },
 } as const;
 
 /** "tonight at 7 pm" / "today at 2 pm" / "tomorrow at 10 am", in Lagos time, from `now`. */
@@ -44,8 +47,8 @@ export function whenWords(start: number, now: number): string {
 
 const AWAY = (name: string, step: number): { subject: string; intro: string; button: string } => {
   if (step >= 28) return { subject: 'One last note from Allworld', intro: `It has been four weeks, ${name}. Your character is still where you left them, and a life that goes a month without a visit is put away, so this is the last e-mail you will get unless you come back.`, button: 'Pick up where I left off' };
-  if (step >= 7) return { subject: `${name}, your world is still here`, intro: `It has been a week. Your character is where you left them, and a few things moved on without you:`, button: 'Pick up where I left off' };
-  return { subject: 'Your world is still here', intro: `It has been ${step === 3 ? 'three days' : `${step} days`}, ${name}. Here is some of what happened:`, button: 'See what happened' };
+  if (step >= 7) return { subject: `${name}, your world is still here`, intro: `${GUIDE} It has been a week. Your character is where you left them, and a few things moved on without you:`, button: 'Pick up where I left off' };
+  return { subject: 'Your world is still here', intro: `${GUIDE} It has been ${step === 3 ? 'three days' : `${step} days`}, ${name}. Here is some of what happened:`, button: 'See what happened' };
 };
 
 /** The words for one plan; `name` is the player's character. */

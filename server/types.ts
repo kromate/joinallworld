@@ -241,6 +241,8 @@ export interface MessageRecord {
   sys?: true
   /** The founder's welcome note: `body` is '' and the words come from server/social/founder.ts. */
   auto?: true
+  /** With `auto`: the player's start the note was written from (server/social/founder.ts welcomeNote). Absent on earlier notes. */
+  start?: { name: string; city?: string; trait?: string; dream?: string; v: number }
 }
 export interface ConversationRecord {
   id: string

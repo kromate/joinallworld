@@ -30,7 +30,7 @@
  *   }
  *
  * PATHS   must start with /api/<your area>/ (accounts → /api/account, social → /api/social/,
- *         civic → /api/civic/, support → /api/support/, moderation → /api/mod/, world → /api/world/, growth → /api/growth/ and,
+ *         civic → /api/civic/, support → /api/support/, companion → /api/companion/, moderation → /api/mod/, world → /api/world/, growth → /api/growth/ and,
  *         for its operator view, /api/mod/growth/; business → /api/business/ and /api/mod/business/). A ":name" segment captures into request.params. A duplicate
  *         "METHOD /path" aborts start-up.
  *
@@ -212,8 +212,9 @@ import ping from './ping.ts';
 import business from './business.ts';
 import businessMod from './business-mod.ts';
 import notice from './notice.ts';
+import companion from './companion.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod, notice];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, business, businessMod, notice, companion];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 interface PatternRoute { key: string; method: string; segments: string[]; handler: RouteHandler }

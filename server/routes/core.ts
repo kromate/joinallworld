@@ -18,6 +18,7 @@ import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../.
 import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { hasAction } from '../../src/game/registry.ts';
 import { validateName, validateActionPayload, publicSession, isSharedAddress, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
+import { companionConfig } from '../companion/gateway.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
@@ -102,8 +103,8 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
    */
   const ownSession = (session: SessionRecord): PublicSession & { cities: CityId[] } => ({ ...publicSession(session), cities: ctx.cityIds.filter(id => Boolean(session.cities?.[id]?.state)) });
   return {
-    // Which build is serving, for a local preview or a deploy check. No session is read or created.
-    'GET /api/health': () => ({ body: { ok: true, build: config.buildId } }),
+    // Which build is serving, for a local preview or a deploy check. No session is read or created. `companionAi`: the hosted companion is configured (a boolean; nothing of the key).
+    'GET /api/health': () => ({ body: { ok: true, build: config.buildId, companionAi: companionConfig((name) => ctx.env(name)) !== null } }),
     'POST /api/session': async (request) => {
       type Answer = { secret: string; session: PublicSession; own: PublicSession & { cities: CityId[] }; mute?: MuteVerdict; refused?: boolean };
       // The cookie to send back. A character that belongs to an account is filed under a key no browser may hold: its

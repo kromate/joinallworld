@@ -2,6 +2,7 @@
 // Pure (the page is passed in as `has`), so the sequencing is tested without a browser.
 import type { Side } from './placement.ts'
 import { capOf } from './shortcutsModel.ts'
+import { COMPANION_NAME } from '../companion/identity.ts'
 
 /** What the player has to do for a step to be done: start an activity, open the map, open the phone. */
 export type Wait = 'activity' | 'map' | 'phone'
@@ -65,7 +66,7 @@ function travelText(context: StepContext): string {
 }
 
 export const STEPS: readonly TourStep[] = [
-  { id: 'welcome', title: 'Welcome to Allworld', text: 'Let me show you around. It takes about two minutes, and you can skip any time.' },
+  { id: 'welcome', title: 'Welcome to Allworld', text: `Hi, I am ${COMPANION_NAME}, the world’s guide. Let me show you around. It takes about two minutes, and you can skip any time.` },
   { id: 'needs', title: 'Your needs', targets: ['needs'], prefer: 'bottom', text: 'These bars show how you are doing: energy, food and more. They fall slowly as time passes. The line under them always says what to do next: tap it and it takes you there.' },
   { id: 'hud', title: 'Time, mood and cash', targets: ['hud'], prefer: 'bottom', text: 'The clock shows the day and the hour, with your mood beside it. Your cash is on the right: tap it to open your Bank.' },
   { id: 'signup', title: 'Save your progress', targets: ['signup'], needs: ['signup'], prefer: 'bottom', text: 'You are playing as a guest, which is fine. Sign up free to keep your character and play on from any device. Log in is next to it if you have an account already.' },

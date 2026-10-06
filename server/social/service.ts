@@ -63,9 +63,10 @@ import { lagosTime } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityName } from '../../src/game/cities/index.ts';
+import { DREAMS, TRAITS } from '../../src/game/content/traits.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
-import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
+import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, WELCOME_NOTE, autoFriend, welcomeNote, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
@@ -203,6 +204,14 @@ function buildService(ctx: RouteContext) {
     if (!account || account.publicId !== session.publicId || !isFounderEmail(account.email)) return;
     if (s.founder?.account !== account.id || s.founder.id !== session.publicId) s.founder = { account: account.id, id: session.publicId };
   }
+  /** The start a welcome note is written from: the player's name, the city they began in, a trait and the dream if chosen, and a variation picked from their id. */
+  function startOf(session: SessionRecord | undefined, name: string, id: string): NonNullable<MessageRecord['start']> {
+    const lives = Object.entries(session?.cities ?? {});
+    const [cityId, record] = lives.find(([, entry]) => entry?.state?.onboarding?.traits?.length) ?? lives[0] ?? [];
+    const onboarding = record?.state?.onboarding, dream = record?.state?.goals?.dream;
+    const trait = onboarding?.traits?.[0], v = [...id].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    return { name: name.slice(0, 24), ...(cityId && cityName(cityId) ? { city: cityName(cityId) as string } : {}), ...(trait && TRAITS[trait] ? { trait: TRAITS[trait].label } : {}), ...(dream && DREAMS[dream] ? { dream: DREAMS[dream].label } : {}), v };
+  }
   /**
    * THE FIRST FRIEND, ONCE. Runs for every caller (a new player's first request, and an earlier player's next one):
    * with no founder yet nothing is marked, so it is tried again later. A block either way is respected, and the
@@ -211,7 +220,7 @@ function buildService(ctx: RouteContext) {
    * founder's welcome note is put in this player's Messages alone.
    * A player who still holds the friendship follows the founder to another character of the same account.
    */
-  function meetFounder(s: SocialCollection, p: SocialPlayerRecord, id: string): void {
+  function meetFounder(s: SocialCollection, p: SocialPlayerRecord, id: string, session?: SessionRecord): void {
     const founder = founderId(s), t = now();
     if (!founder || founder === id || p.founder?.id === founder) return;
     const them = s.players[founder]!, blockedHere = Boolean(p.blocked[founder] || them.blocked[id]);
@@ -233,7 +242,7 @@ function buildService(ctx: RouteContext) {
     }
     const key = dmId(id, founder);
     if (Object.hasOwn(s.convs, key)) return; // they have talked before: no note
-    const conv: ConversationRecord = s.convs[key] = { id: key, kind: 'dm', members: [id, founder].sort(), seq: 1, created: t, messages: [{ seq: 1, from: founder, body: '', at: t, auto: true }] };
+    const conv: ConversationRecord = s.convs[key] = { id: key, kind: 'dm', members: [id, founder].sort(), seq: 1, created: t, messages: [{ seq: 1, from: founder, body: '', at: t, auto: true, start: startOf(session, p.name, id) }] };
     index(s, id, conv);
   }
   /**
@@ -292,7 +301,7 @@ function buildService(ctx: RouteContext) {
     const ids = start < 0 ? [] : all.slice(start, start + FOUNDER_PAGE), last = ids.at(-1);
     return { ids, total: all.length, next: last && start + ids.length < all.length ? `${last[1]}:${last[0]}` : null };
   }
-  const bodyOf = (message: MessageRecord): string => (message.auto ? WELCOME_NOTE : message.body);
+  const bodyOf = (message: MessageRecord): string => (message.auto ? welcomeNote(message.start) : message.body);
 
   const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
   const blockedEither = (s: SocialCollection, a: string, b: string): boolean => Boolean(s.players[a]?.blocked[b] || s.players[b]?.blocked[a]);
@@ -313,7 +322,7 @@ function buildService(ctx: RouteContext) {
     sweep(s, t);
     meetInviter(s, db, session, p, id);
     claim(s, session);
-    meetFounder(s, p, id);
+    meetFounder(s, p, id, session);
     return { s, p, id };
   }
   /** The other player's record, or a refusal. Blocking is reported the same way in both directions. */

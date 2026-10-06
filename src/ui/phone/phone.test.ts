@@ -220,7 +220,16 @@ test('the level bar and the docked map panel are one column; the panel is never 
   assert.match(wide, /\.map-dock>\.map-panel\{[^}]*min-height:0/, 'the panel shrinks inside the column');
   assert.doesNotMatch(wide, /\.map-panel[^{]*\{[^}]*position:fixed/, 'no panel is fixed on its own');
   assert.doesNotMatch(css, /\.map-levels\{[^}]*top:calc\(\d+px \* var\(--ui-zoom/, 'the bar is not placed with the zoom applied twice');
-  assert.match(levels, /class="map-levels-cur"[^>]*data-tour="map-world"[^>]*:aria-expanded="open"/, 'the phone chip carries the tour anchor and says whether it is open');
+  assert.match(levels, /class="map-levels-cur level-menu-cur"[^>]*data-tour="map-world"[^>]*:aria-expanded="open"/, 'the chip carries the tour anchor and says whether it is open');
+  // One chip and one dropdown at every width: no breadcrumb row for the levels comes back (the chip is never hidden, the list is hidden unless open).
+  const menu = await read('../levelMenu.css'), atlasCss = await read('../../map3d/geo/atlas.css'), compact = await read('../compact.css');
+  assert.doesNotMatch(menu + css + atlasCss, /\.(map-levels|level-menu)[^{]*cur[^{]*\{[^}]*display:\s*none/, 'the level chip is never hidden');
+  assert.match(menu, /\.level-menu ol\{display:none;/, 'the list is hidden unless open');
+  assert.match(menu, /\.level-menu\[data-open\] ol\{position:absolute;[^}]*display:grid/, 'open, it floats over what is beneath');
+  assert.doesNotMatch(menu + css + atlasCss + compact, /li\+li::before\{content:"›"/, 'no › separators between levels');
+  assert.doesNotMatch(menu + css + atlasCss, /\.(map-levels|atlas-crumbs) ol\{display:flex/, 'the levels are not a row');
+  assert.doesNotMatch(compact, /body \.map-levels ol\{display:none\}/, 'the phone no longer has a look of its own for the list');
+  assert.match(await read('../../world-map.ts'), /levelMenu\.css/, 'the atlas loads the same rules');
 });
 
 test('the compact layout: a 45% panel, a 44px target for every small control, one stack of view buttons, no raw viewport units', async () => {

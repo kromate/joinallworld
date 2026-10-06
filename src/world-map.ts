@@ -17,6 +17,7 @@
  * The region registry (src/map3d/regions.ts) says what is open, planned or coming soon; the map
  * data (src/map3d/geo/data) is fetched level by level, the first time each is shown.
  */
+import './ui/levelMenu.css';
 import './map3d/geo/atlas.css';
 import { createAtlas } from './map3d/geo/atlas.ts';
 

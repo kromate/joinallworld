@@ -12,15 +12,8 @@
 @media(max-width:480px),(max-height:430px) and (max-width:900px){
   /* ---- the Map: level chip -------------------------------------------------------------------------------------------- */
   .life-ui .map-levels{top:calc(max(6px,env(safe-area-inset-top)) + 46px);left:max(8px,env(safe-area-inset-left));max-width:calc(100% - 16px)}
-  body .life-ui .map-levels .map-levels-cur{position:relative;display:inline-flex;align-items:center;gap:6px;max-width:100%;min-height:36px;padding:0 10px 0 9px;border:1px solid #fff;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:var(--e-2);color:var(--c-ink);font-size:var(--t-body);font-weight:700}
-  body .map-levels-cur::after{content:'';position:absolute;inset:-5px -2px}
-  body .map-levels-cur span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  body .map-levels-cur svg:last-child{width:14px;height:14px;color:var(--c-muted);transition:transform var(--m-fast)}
-  body .map-levels[data-open] .map-levels-cur svg:last-child{transform:rotate(180deg)}
-  body .map-levels ol{display:none}
-  body .map-levels[data-open] ol{position:absolute;left:0;top:calc(100% + 6px);display:grid;gap:2px;min-width:min(240px,calc(100vw - 16px));padding:6px;border-radius:var(--r-lg);overflow:visible;box-shadow:var(--e-3)}
-  body .map-levels li+li::before{display:none}
-  .life-ui .map-levels ol button{width:100%;min-height:var(--tap);justify-content:flex-start;padding:0 14px;font-size:var(--t-body)}
+  .level-menu-cur::after{content:'';position:absolute;inset:-5px -2px}
+  .level-menu ol button{min-height:var(--tap)}
 
   /* ---- the top row: the other small targets of the HUD -------------------------------------------------------------------- */
   body .life-ui .hud-bar .pulse-pill,body .life-ui .hud-bar .inv-button{position:relative}
@@ -117,7 +110,7 @@
 
 @media(max-width:480px),(max-height:430px) and (max-width:900px){
   /* The atlas's own bar and sheet: the same 44px targets. */
-  body .atlas-crumbs button,body .atlas-close,body .atlas-more{min-height:var(--tap);min-width:var(--tap)}
+  body .atlas-crumbs .level-menu-cur,body .atlas-crumbs .atlas-back,body .atlas-close,body .atlas-more{min-height:var(--tap);min-width:var(--tap)}
   body .atlas-close{width:var(--tap);height:var(--tap);margin:-4px -4px 0 0}
 }
 
@@ -188,5 +181,5 @@
 
 @media(prefers-reduced-motion:reduce){
   body .m3-hint,body .cmap-hint{animation-duration:.01s}
-  body .scene-stick,.map-levels-cur svg:last-child{transition:none}
+  body .scene-stick,.level-menu-cur svg:last-child{transition:none}
 }

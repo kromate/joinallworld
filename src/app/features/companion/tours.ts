@@ -20,7 +20,7 @@ const done = (text: string): TourStep => ({ id: 'done', title: 'That is it', tex
 const TRAVEL: TourStep[] = [
   intro('travel-intro', 'Travel', 'Let me show you how to get around the world. It takes a minute.'),
   { id: 'travel-map', title: 'The Map', targets: ['nav-map'], doneTargets: ['map-card'], wait: 'map', text: 'Everything starts from the Map. Pick a place to see the trip first: how long it takes and what each way costs.', task: 'Tap Map to open it.', doneText: 'Pick any place and its trip card shows the time and fare for each way of going.' },
-  { id: 'travel-world', title: 'Other cities', targets: ['map-world', 'nav-map'], keeps: 'map', text: 'Tap World at the top of the Map, then a city, then the bus, train or flight. Your home stays yours while you visit.' },
+  { id: 'travel-world', title: 'Other cities', targets: ['map-world', 'nav-map'], keeps: 'map', text: 'Tap the level chip on the Map, choose World, then a city, then the bus, train or flight. Your home stays yours while you visit.' },
   done('Trips take real time, and some can be skipped for a fee. Ask me about "skip a trip" any time.'),
 ]
 const MONEY: TourStep[] = [

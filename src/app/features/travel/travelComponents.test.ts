@@ -99,8 +99,9 @@ test('the Map overview: the handle, the filters, the layers and every place with
   assert.equal((html.match(/<li><button/g) ?? []).length, listed.length, 'every place is in the list')
   assert.ok(words.includes('You are here'))
   // The world is one tap from the Map: the level bar is on the city map itself, not at the end of the list.
-  assert.match(html, /<nav class="map-levels" aria-label="Map level\. You are in World › Africa › Nigeria › [^"]+">/)
-  assert.match(html, /<button[^>]*data-map-level="world"[^>]*data-tour="map-world"[^>]*title="World map · 9 cities open"/)
+  assert.match(html, /<nav class="map-levels level-menu" aria-label="Map level\. You are in World › Africa › Nigeria › [^"]+">/)
+  assert.match(html, /<button[^>]*data-map-level="world"[^>]*title="World map · 9 cities open"/)
+  assert.equal((html.match(/data-tour="map-world"/g) ?? []).length, 1, 'the tour points at the one chip')
   assert.deepEqual([...html.matchAll(/data-map-level="([a-z]+)"/g)].map((match) => match[1]), ['world', 'africa', 'nigeria', 'city'])
   assert.match(html, /<button[^>]*data-map-level="city"[^>]*aria-current="true"/, 'the level in view is marked')
   assert.doesNotMatch(html.slice(html.indexOf('id="map-list"')), /World map/, 'no second entry hidden at the end of the list')

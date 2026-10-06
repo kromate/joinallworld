@@ -569,3 +569,14 @@ test('a flick on the atlas glides a short way and stops; a press that moved litt
   assert.equal(isTap(2, 120), true); assert.equal(isTap(2, 400), false, 'a press held for 350 ms or more selects nothing');
   assert.equal(isTap(12, 100), false); assert.equal(isDrag(12), true); assert.equal(isDrag(8, 'touch'), false, 'a finger gets more room before a press is a drag');
 });
+
+test('the atlas shows its level as the shared chip and dropdown, with the way back to the city as the last item and a button beside it', () => {
+  const code = readFileSync(here('./atlas.ts'), 'utf8');
+  assert.match(code, /class="level-menu"[\s\S]*class="level-menu-cur" data-atlas-levels data-tour="map-world" aria-expanded=/, 'the chip carries the tour anchor');
+  assert.match(code, /<ol id="atlas-levels-list">[\s\S]*data-atlas-level="\$\{i\}"[\s\S]*atlas-back-item" data-atlas-city[\s\S]*back to the city/, 'World, Africa, Nigeria, then the city');
+  assert.match(code, /class="atlas-back" data-atlas-city/, 'the green button back to the city stays');
+  assert.match(code, /event\.key === 'Escape' && levelsOpen[\s\S]*closeLevels\(true\)/, 'Escape closes the list and returns focus to the chip');
+  assert.match(code, /ArrowDown: 1, ArrowUp: -1/, 'arrow keys move through the list');
+  assert.match(code, /addEventListener\('pointerdown', onAway\)/, 'a press outside closes it');
+  assert.doesNotMatch(code, /<ol>\$\{ATLAS_LEVELS/, 'no row of level buttons');
+});

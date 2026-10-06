@@ -1419,8 +1419,8 @@ interface MissionBase {
 
 /** A mission, counted one of four ways. */
 export type MissionDefinition =
-  /** The registry event fires. */
-  | (MissionBase & { on: 'event'; event: string })
+  /** The registry event fires (with `where`: only when that field of its data is true). */
+  | (MissionBase & { on: 'event'; event: string; where?: string })
   /** An activity completes that carries any of `tags`. */
   | (MissionBase & { on: 'tag'; tags: string[] })
   /** An activity that pays completes. */

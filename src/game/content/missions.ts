@@ -60,6 +60,8 @@ export const DAILY_MISSIONS: readonly MissionDefinition[] = Object.freeze([
   { id: 'd-gist', kind: 'social', label: 'Gist with three people', hint: 'Any chat with a regular counts', on: 'tag', tags: ['social'], count: 3, open: 'people' },
   { id: 'd-table', kind: 'social', label: 'Play a table game', hint: 'Whot at the buka, penalties at the viewing centre', on: 'event', event: 'table.played', open: 'tables' },
   { id: 'd-event', kind: 'social', label: 'Show up at an event', hint: 'See what is on in Events', on: 'event', event: 'event.attended', needs: 'event', open: 'events' },
+  { id: 'd-chess', kind: 'social', label: 'Win a game of chess', hint: 'At a park or lounge table, or against the computer on your Phone', on: 'event', event: 'table.played', where: 'chessWin', open: 'tables' },
+  { id: 'd-word', kind: 'social', label: 'Solve today’s word', hint: 'Phone → Games → Oro', on: 'event', event: 'table.played', where: 'wordSolved', open: 'games' },
 ]);
 
 export const WEEKLY_MISSIONS: readonly MissionDefinition[] = Object.freeze([

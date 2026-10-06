@@ -19,7 +19,8 @@ import { hasPlace } from '../../src/game/systems/estate.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { BRAND, TAGLINE, SHARE_KINDS, cleanFacts, isShareCode, sharePreview } from '../../src/game/share-model.ts';
 import { eventsBetween } from '../../src/game/calendar.ts';
-import { GAMES } from '../../src/tables/games.ts';
+import { GAME_LABELS } from '../../src/tables/places.ts';
+import { withBoardGames } from '../../src/tables/derive.ts';
 import { LIMITS, playerOf, sweep } from './data.ts';
 import { count } from './metrics.ts';
 import type { CityId } from '../../src/types/protocol.ts';
@@ -45,11 +46,11 @@ export function factsFor(kind: ShareKind, session: Pick<SessionRecord, 'name'>, 
   if (kind === 'week') return { ...base, stamps: view.missions.stamps.days, days: view.missions.activeDays, title: view.missions.title ?? '' };
   if (kind === 'table') {
     // With a table id: an invitation to that table. Without: the caller's last result.
-    const place = typeof tableId === 'string' ? cityContent(actualCity).tablePlaces.find((item) => item.id === tableId) ?? null : null;
+    const content = cityContent(actualCity), place = typeof tableId === 'string' ? withBoardGames(content.venues, content.tablePlaces).find((item) => item.id === tableId) ?? null : null;
     if (place) {
-      const game = place.game === 'whot' || place.game === 'penalty' ? GAMES[place.game] : null;
-      const venue = cityContent(actualCity).venues.find((item) => item.id === place.venueId);
-      return game && venue ? { ...base, game: game.label, tableId: place.id, venue: venue.name } : null;
+      const game = Object.hasOwn(GAME_LABELS, place.game) ? (GAME_LABELS as Readonly<Record<string, string>>)[place.game] : null;
+      const venue = content.venues.find((item) => item.id === place.venueId);
+      return game && venue ? { ...base, game, tableId: place.id, venue: venue.name } : null;
     }
     if (!player.table) return null;
     const tableCity = player.table.cityId ?? 'lagos';

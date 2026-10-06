@@ -77,6 +77,18 @@ export interface TableRules<State extends TableState = TableState, Move = unknow
   report?: (before: State, after: State) => string[]
   /** Real moves made per seat (a game is called off if someone never really played). */
   moved: (state: State) => number[]
+  /**
+   * Optional: true for a move that is not a turn of play (resign, offer a draw): any seated player may make it at any time, it
+   * does not stop or restart the clock, and it does not count as a real move for `moved`.
+   */
+  side?: (move: Move) => boolean
+  /** Optional: how many milliseconds the seat to move has for its move; without it `turnSeconds` is the limit of every move. */
+  clockMs?: (state: State) => number
+  /**
+   * Optional: the time the mover took, charged to a game that keeps its own clocks. The server calls it with its own measure
+   * just before it applies a real move; the state it returns may be a game already lost on time.
+   */
+  charge?: (state: State, seat: number, elapsedMs: number) => State
 }
 
 /** Thrown by a rules module for a move that is not allowed. `message` is shown to the player. */

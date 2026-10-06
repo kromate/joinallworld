@@ -9,8 +9,11 @@ import {
 import { penaltyRules as penaltyRulesJs } from '../../../tables/penalty-board.ts'
 import { ZONES as ZONES_JS } from '../../../tables/penalty.ts'
 import { whotRules as whotRulesJs } from '../../../tables/whot-board.ts'
+import { chessRules as chessRulesJs, weaveRules as weaveRulesJs } from '../../../tables/howto.ts'
 import { SHAPES as SHAPES_JS, SHAPE_NAMES as SHAPE_NAMES_JS, SPECIAL as SPECIAL_JS, cardName as cardNameJs } from '../../../tables/whot.ts'
 import type { TableGameId, TableOptionValue, TableRating, TableStateFrame, TableSummary } from '../../../types/growth.ts'
+import type { ChessMove, ChessView } from '../../../tables/chess.ts'
+import type { WeaveMove, WeaveView } from '../../../tables/weave.ts'
 import type { FetchJson } from '../../types/client.ts'
 import type { ToastKind } from '../../types/panel.ts'
 
@@ -64,7 +67,7 @@ export const leave = leaveJs as unknown as () => void
 export const begin = beginJs as unknown as (bots?: number) => void
 export const again = againJs as unknown as () => void
 export const setOption = setOptionJs as unknown as (name: string, value: TableOptionValue) => void
-export const play = playJs as unknown as (move: WhotMove | PenaltyMove) => void
+export const play = playJs as unknown as (move: WhotMove | PenaltyMove | ChessMove | WeaveMove) => void
 
 // ---- the two games ----------------------------------------------------------------------------
 
@@ -105,11 +108,16 @@ export type PenaltyView = {
   mine: number | null
   sudden: boolean
 }
+export type { ChessMove, ChessView, WeaveMove, WeaveView }
+export type ChessState = TableStateFrame & { view: ChessView }
+export type WeaveState = TableStateFrame & { view: WeaveView }
 export type WhotState = TableStateFrame & { view: WhotView }
 export type PenaltyState = TableStateFrame & { view: PenaltyView }
 
 const hasView = (state: TableStateFrame): boolean => state.view !== null && typeof state.view === 'object'
 export const isWhotState = (state: TableStateFrame): state is WhotState => state.table.game === 'whot' && hasView(state)
+export const isChessState = (state: TableStateFrame): state is ChessState => state.table.game === 'chess' && hasView(state)
+export const isWeaveState = (state: TableStateFrame): state is WeaveState => state.table.game === 'weave' && hasView(state)
 export const isPenaltyState = (state: TableStateFrame): state is PenaltyState => state.table.game === 'penalty' && hasView(state)
 
 export const SHAPES = SHAPES_JS as unknown as readonly WhotShape[]
@@ -120,3 +128,5 @@ export const cardName = cardNameJs as unknown as (card: WhotCardData) => string
 export const ZONES = ZONES_JS as unknown as readonly string[]
 export const whotRules = whotRulesJs as unknown as readonly string[]
 export const penaltyRules = penaltyRulesJs as unknown as readonly string[]
+export const chessRules = chessRulesJs
+export const weaveRules = weaveRulesJs

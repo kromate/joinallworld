@@ -557,6 +557,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/growth/referral/link',
   'POST /api/growth/consent',
   'POST /api/growth/tables/claim',
+  'POST /api/growth/oro/state',
+  'POST /api/growth/oro/guess',
   'POST /api/growth/email',
   'POST /api/growth/email/remove',
   'POST /api/growth/comeback',

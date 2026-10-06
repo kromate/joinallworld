@@ -361,6 +361,8 @@ export interface GameTableOptions { game?: string; ry?: number; accent?: Colour 
  * each). Drawn into the venue's own batch: no draw call of its own, about 150 triangles.
  *   'whot'      a low round table with a felt top, a fan of cards and four stools
  *   'penalty'   a small goal frame with a net line, a penalty spot and a ball
+ *   'chess'     a low table with a two-tone board and a few pieces, two stools
+ *   'weave'     a cloth-covered table with a woven board and a rack of tiles, four stools
  * `accent` is the venue's accent colour (the felt, the goal's bar), so the table belongs to its room.
  */
 export function gameTable(b: Batch, x: number, z: number, { game = 'whot', ry = 0, accent = '#2f8f55' }: GameTableOptions = {}): void {
@@ -371,6 +373,28 @@ export function gameTable(b: Batch, x: number, z: number, { game = 'whot', ry = 
       b.box(0, 0.8, -0.82, 2.3, 1.5, 0.04, '#dfe6ea', GLASS);
       b.disc(0, 0.09, 0.55, 0.14, WHITE, { seg: 8 });
       b.ball(0, 0.25, 0.55, 0.19, 0.19, 0.19, '#f4f2ea');
+      return;
+    }
+    // The board games are plain boxes: a few dozen triangles for the table, a few more for the stools, so a room near its budget can still hold them.
+    const box = (px: number, py: number, pz: number, w: number, h: number, d: number, colour: Colour) => b.box(px, py, pz, w, h, d, colour);
+    const seat = (px: number, pz: number) => { box(px, 0.5, pz, 0.5, 0.1, 0.5, WOOD); box(px, 0.25, pz, 0.12, 0.5, 0.12, METAL_DARK); };
+    if (game === 'chess') {
+      // A square table with a two-tone board (two dark squares on a light one read as a board from across the room), three pieces and two stools.
+      box(0, 0.78, 0, 1.4, 0.1, 1.4, WOOD_DARK);
+      box(0, 0.84, 0, 1.2, 0.04, 1.2, '#ead9b0');
+      for (const [px, pz] of [[-0.3, -0.3], [0.3, 0.3]] as [number, number][]) box(px, 0.865, pz, 0.6, 0.012, 0.6, '#6f5230');
+      for (const [px, pz, ph] of [[-0.3, 0.3, 0.26], [0.3, -0.3, 0.22], [0, 0, 0.3]] as [number, number, number][]) box(px, 0.87 + ph / 2, pz, 0.14, ph, 0.14, px > 0 ? '#f4efe0' : '#2a2c33');
+      box(0, 0.4, 0, 0.14, 0.8, 0.14, WOOD_DARK);
+      for (const side of [-1, 1]) seat(0, side * 1.25);
+      return;
+    }
+    if (game === 'weave') {
+      // A square table with a deep-blue cloth, a woven board and a few lettered tiles, four stools.
+      box(0, 0.8, 0, 1.5, 0.1, 1.5, '#24407a');
+      box(0, 0.86, 0, 1.0, 0.03, 1.0, '#f1e6c8');
+      for (const [px, pz] of [[-0.2, -0.1], [0.05, -0.1], [0.05, 0.15]] as [number, number][]) box(px, 0.89, pz, 0.2, 0.03, 0.2, '#d9a441');
+      box(0, 0.4, 0, 0.14, 0.8, 0.14, WOOD_DARK);
+      for (const [px, pz] of [[-1.15, 0], [1.15, 0], [0, -1.15], [0, 1.15]] as [number, number][]) seat(px, pz);
       return;
     }
     b.cyl(0, 0.82, 0, 0.9, 0.1, WOOD_DARK, { seg: 12 });

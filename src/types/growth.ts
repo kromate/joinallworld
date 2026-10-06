@@ -261,10 +261,36 @@ export interface PushUnsubscribeBody {
   endpoint?: string
 }
 
+// ---- Oro, the daily word puzzle (server/growth/oro.ts) ---------------------------------------------
+
+/** One letter of a guess: right place, elsewhere in the word, not in the word. */
+export type OroMark = 'c' | 'p' | 'a'
+/** The caller's totals; `streak` is already zero when yesterday's puzzle was missed. `dist[i]` puzzles were solved in i+1 guesses. */
+export interface OroStatsView { played: number; won: number; streak: number; best: number; dist: number[] }
+/** Today's puzzle for the caller. `answer` and `share` are present only once it is finished; the answer is never sent before. */
+export interface OroView {
+  ok: true
+  /** The puzzle number (the same for everyone on a Lagos day). */
+  no: number
+  status: 'playing' | 'won' | 'lost'
+  hard: boolean
+  rows: { word: string; marks: OroMark[] }[]
+  answer?: string
+  /** The result as text for a chat: a title and coloured squares, no letters. */
+  share?: string
+  stats: OroStatsView
+  /** The answer to a retry of the guess just made. */
+  repeat?: true
+  /** This answer finished the puzzle (the result was recorded now). */
+  finished?: true
+}
+
 // ---- table games: claiming results ----------------------------------------------------------------
 
 /** src/tables/games.ts GAMES. */
-export type TableGameId = 'whot' | 'penalty'
+export type TableGameId = 'whot' | 'penalty' | 'chess' | 'weave'
+/** A game that can leave a result to claim: a table game, or the daily word puzzle (src/words/oro.ts), which has no table. */
+export type ResultGameId = TableGameId | 'oro'
 
 /** The caller's rating in one game (two-player matches between two real players). */
 export interface TableRating {
@@ -318,6 +344,12 @@ export interface GrowthHttpRoutes {
   }
   'POST /api/growth/push/unsubscribe': { body: PushUnsubscribeBody; response: Ok<Done<'unsubscribed'> | Refusal<'not_ready'>>; errors: GrowthPost }
   'POST /api/growth/tables/claim': { body: { cityId: CityId }; response: Ok<TablesClaimResult>; errors: GrowthPost }
+  'POST /api/growth/oro/state': { body: { cityId: CityId }; response: Ok<OroView | Refusal<'not_ready'>>; errors: GrowthPost }
+  'POST /api/growth/oro/guess': {
+    body: { cityId: CityId; no: number; n: number; word: string; hard?: boolean }
+    response: Ok<OroView | (Refusal<'not_ready' | 'wrong_day' | 'already_done' | 'invalid_word' | 'invalid_guess' | 'stale_guess' | 'not_a_word' | 'hard_mode' | 'rate_limited' | 'server_full'> & { state?: OroView })>
+    errors: GrowthPost
+  }
   /** No session needed. At most 8 signals a request, 10 requests a minute per address; `counted` is how many were known. */
   'POST /api/growth/client': { body: { signals: ClientSignal[] }; response: Ok<{ ok: true; counted: number }>; errors: HostErrorCode | JsonBodyErrorCode }
 }

@@ -3,13 +3,14 @@
 // friends — and Find a player. All names are rendered as text.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { SearchResult } from '../../../types/social.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import CallButton from './CallButton.vue'
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import FounderTag from './FounderTag.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
@@ -78,7 +79,7 @@ async function find(): Promise<void> {
         <div v-for="friend in state.me.friends" :key="`f${friend.id}`" class="social-row">
           <PlayerAvatar :name="friend.name" :seed="friend.id" :status="friend.status" />
           <div><strong>{{ friend.name }}<FounderTag v-if="friend.founder" /></strong><small class="social-presence" :class="`is-${presenceClass(friend.status)}`">Friend · {{ presenceText(friend, venueName, view.now, place) }}</small></div>
-          <span class="social-actions"><button type="button" class="social-btn is-primary" @click="shell.open('messages', { to: friend.id, name: friend.name })">Chat</button></span>
+          <span class="social-actions"><VisitButton compact :id="friend.id" :name="friend.name" /><button type="button" class="social-btn is-primary" @click="shell.open('messages', { to: friend.id, name: friend.name })">Chat</button></span>
         </div>
       </template>
       <div v-for="rel in met" :key="`n${rel.id}`" class="social-row">

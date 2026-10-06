@@ -115,7 +115,7 @@ const player = (id: string, name: string) => ({ id, name })
 function overview(): SocialOverview {
   const me = player('me', 'Kunle'), ada = player('ada', 'Ada'), bola = player('bola', 'Bola')
   return {
-    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null,
+    ok: true, code: 'ok', me: { ...me, since: 1 }, friends: [], bae: null, blocked: [], reports: [], invitePath: '/v/me', visiting: null, door: { who: 'knock', out: false, chosen: true }, invites: [],
     requests: { in: [{ ...bola, at: 5 }], out: [] }, baeRequests: [],
     conversations: [
       { id: 'dm.ada.me', kind: 'dm', name: 'Ada', members: [me, ada], owner: null, with: 'ada', unread: 2, last: { seq: 3, from: ada, body: 'How far?', at: 900 } },

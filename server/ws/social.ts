@@ -93,6 +93,7 @@ export default function socialSocket(ctx: RouteContext): WsHandlers {
   // The room module admits a guest to a host's Home room only if this says so (see server/ws/rooms.ts).
   if (ctx.checks) {
     ctx.checks.homeGuest = (db, guestId, hostId, cityId) => service.homeGuest(db, guestId, hostId, cityId);
+    ctx.checks.homeOpenOut = (db, hostId) => ctx.collection(db, 'social').players?.[hostId]?.door?.out === true;
     // The same answer with the visit's own expiry (server ms), or 0 for "not a guest": the room module
     // remembers an entitlement only up to that instant, so an expired visit is refused exactly on time.
     ctx.checks.homeGuestUntil = (db, guestId, hostId, cityId) => {

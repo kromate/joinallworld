@@ -5,12 +5,14 @@
 // only the public player id and is shown as text to copy, never as markup from another player.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, watch } from 'vue'
+import { computed, defineAsyncComponent, watch } from 'vue'
 import { inviteIdFrom } from '../../../game/social-model.ts'
 import type { HouseView } from '../../../types/social.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import GateNote from './GateNote.vue'
+const GuestsStrip = defineAsyncComponent(() => import('../visit/GuestsStrip.vue'))
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import PlayerAvatar from './PlayerAvatar.vue'
 import { HOST_STATUS, homeLine, knockReason, knockView, roomLine, statusText } from './inviteModel.ts'
 import { inviteUi } from './socialState.ts'
@@ -131,6 +133,7 @@ function visit(): void {
           </span>
         </div>
       </div>
+      <GuestsStrip :house="me.visiting" />
     </template>
 
     <h3 class="ui-section">Visit a house</h3>
@@ -151,6 +154,7 @@ function visit(): void {
         </span>
       </template>
       <template v-else>
+        <VisitButton :id="house.host.id" :name="house.host.name" />
         <button type="button" class="ui-button is-primary is-block" :disabled="Boolean(why)" @click="doKnock(house.host.id, house.host.name)">Knock</button>
         <span v-if="why" class="social-why">{{ why }}</span>
         <p v-if="knock?.status === 'declined'" class="social-note is-warn">{{ house.host.name }} said not now. You can knock again in a minute.</p>

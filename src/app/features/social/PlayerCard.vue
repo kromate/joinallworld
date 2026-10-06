@@ -6,7 +6,7 @@
 // cannot send it twice.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onMounted, ref, watch } from 'vue'
 import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PersonCard } from '../../../types/social.ts'
@@ -21,6 +21,7 @@ import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import PingButton from '../ping/PingButton.vue'
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import type { SocialResult } from './socialClient.ts'
@@ -145,6 +146,7 @@ async function sendReport(): Promise<void> {
     <p>Real player · <span class="social-presence" :class="`is-${presenceClass(card.status)}`">{{ presenceText(card, venueName, view.now, place) }}</span><template v-if="together"> · here with you</template><template v-if="card.bae"> · your Bae <GameIcon name="heart" inline /></template><template v-else-if="card.friend"> · Friend</template></p>
     <button type="button" class="ui-button is-primary is-block" :disabled="card.blocked" @click="shell.open('messages', { to: id, name: card.name })">Chat</button>
     <span v-if="card.blocked" class="social-why">Unblock this player to chat.</span>
+    <VisitButton v-if="card.friend && !card.blocked" :id="id" :name="card.name" />
     <template v-if="pingInstead(card.status)">
       <PingButton :id="id" :name="card.name" :stranger="!card.friend" :blocked="card.blocked" />
       <PingStrip :id="id" :name="card.name" />

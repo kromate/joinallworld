@@ -98,6 +98,7 @@ import { newVenue, place, planMerge, seat, unseat } from './groups.ts';
 import type { Venue } from './groups.ts';
 import { presenceAudience } from '../social/founder.ts';
 import { watchLives } from '../life-service.ts';
+import { characterCity } from '../character.ts';
 import { checkLook } from '../../src/game/systems/onboarding.ts';
 import { screenText } from '../moderation/text.ts';
 import type { CityId, ChatFrame, GroupSummary, PresenceDeltaFrame, PresenceMember, PublicSession, RoomCounts, SignalData } from '../../src/types/protocol.ts';
@@ -107,7 +108,7 @@ import type { Db, IncomingFrame, RouteContext, ServerEvents, SessionRecord, WsCo
 /** The longest a guest's entitlement is remembered between checks (and never past the visit's expiry). */
 export const GUEST_RECHECK_MS = 3000;
 /** How long a host may have no socket in their own Home room before their guests are sent away (a page reload fits). */
-export const HOST_ABSENCE_GRACE_MS = 20000;
+export const HOST_ABSENCE_GRACE_MS = 60000;
 
 /** The retry receipts of one sender in one room: the Map this module keeps, or the one a host whose memory does not last keeps (ctx.core.chatHistory). */
 interface ChatHistory {
@@ -121,7 +122,7 @@ interface ChatHistory {
 /** What re-checking one socket against the stored document found. */
 type Verdict =
   | { stay: boolean }
-  | { hostId: string; city: string; live: boolean; until: number; hostOut: boolean }
+  | { hostId: string; city: string; live: boolean; until: number; hostOut: boolean; open: boolean }
 /** An event that ends a visit, raised once the verdicts are in. */
 type Ended =
   | { event: 'host-absent' | 'guest-expired'; detail: { hostId: string; guestId: string; cityId: string } }
@@ -415,6 +416,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
     }
     return ctx.checks?.homeGuest?.(db, guestId, hostId, cityId) === true ? now() : 0;
   }
+  /** Does the host keep their home open for friends while they are out ("Friends can visit while I am out")? Then an empty room is not a reason to end a visit. */
+  const openWhileOut = (db: Db, hostId: string): boolean => ctx.checks?.homeOpenOut?.(db, hostId) === true;
   /** Has this Home room been without its host for longer than the grace period? Starts the clock if nobody has. */
   function hostAbsent(room: string, hostId: string): boolean {
     if (hostPresent(room, hostId)) { hostGone.delete(room); return false; }
@@ -450,7 +453,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       if (!hostId) return { stay: live && occupies(ws, city, session ? lifeIn(session, city) : undefined) };
       const until = live && session ? guestUntil(db, session.publicId, hostId, city) : 0;
       // Why a visit is over, so the social module closes the stored visit with the right words.
-      return { hostId, city, live, until, hostOut: !until && typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false };
+      return { hostId, city, live, until, hostOut: !until && typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false, open: openWhileOut(db, hostId) };
     })); } catch { failClosed(); return Promise.resolve(); }
     return Promise.resolve(reading).then((verdicts) => {
       const ended: Ended[] = [];
@@ -459,7 +462,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
         if (!verdict || ws.room !== room) return;
         if (!('hostId' in verdict)) { if (verdict.stay) ws.stale = false; else drop(ws, 'venue_mismatch'); return; }
         const { hostId, city } = verdict, guestId = ws.session.id;
-        if (verdict.live && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push({ event: 'host-absent', detail: { hostId, guestId, cityId: city } }); return; }
+        if (verdict.live && !verdict.open && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push({ event: 'host-absent', detail: { hostId, guestId, cityId: city } }); return; }
         if (verdict.until) { ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, verdict.until); return; }
         drop(ws, 'visit_ended');
         if (!verdict.hostOut) ended.push({ event: 'guest-expired', detail: { hostId, guestId, cityId: city } });
@@ -573,10 +576,12 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       const hostId = rawHostId === undefined ? null : String(rawHostId).toLowerCase();
       const guestOf = hostId !== null && hostId !== ws.session.id ? hostId : null; // the host whose Home room a guest is joining
       const visiting = guestOf !== null;
-      const { until, look, friends, follow } = await store.transact(db => {
+      const { until, look, friends, follow, open } = await store.transact(db => {
         const session = core.sessionOf(ws, db);
         if (!session || session.expiresAt <= now()) throw Error('device_session_required');
-        const state = settle(session, cityId);
+        // A guest's own life is the one they play (a visit is a room, not a journey): in the host's city too, they need no life of theirs there.
+        const ownCity = guestOf !== null ? characterCity(session) ?? cityId : cityId;
+        const state = settle(session, ownCity);
         // A life still held for the quick start (Play not confirmed) is not in the city yet: no room, so no presence and no chat.
         if (state.onboarding?.required === true && state.onboarding.done !== true) throw Error('onboarding_required');
         // The look comes from the server-held life and is validated again: option ids only.
@@ -596,7 +601,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
             }
           }
         }
-        return { until: guestOf !== null ? guestUntil(db, session.publicId, guestOf, cityId) : canOccupyVenue(state, venueId) ? Infinity : 0, look, friends, follow };
+        return { until: guestOf !== null ? guestUntil(db, session.publicId, guestOf, cityId) : canOccupyVenue(state, venueId) ? Infinity : 0, look, friends, follow, open: guestOf !== null && openWhileOut(db, guestOf) };
       // ADMISSION FOLLOWS WHAT IS IN THE FILE. The check can read a permission that is applied in
       // memory but not yet written (a host's "let them in", an arrival). `waitForObserved` holds the
       // join until those changes are in the file and rejects it ('storage_unavailable') if their
@@ -607,7 +612,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       }, { durable: false, waitForObserved: true });
       const room = venueRoomKey(cityId, venueId, guestOf ?? ws.session.id);
       // A guest cannot come back into a Home room its host has been missing from for longer than the grace period.
-      if (!until || (guestOf !== null && hostAbsent(room, guestOf))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
+      if (!until || (guestOf !== null && !open && hostAbsent(room, guestOf))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
       if (!core.isOpen(ws)) return;
       leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = initialVenuePosition(venueId); ws.lastMoves = []; ws.look = look;
       ws.deltas = message.deltas === true;
@@ -763,7 +768,9 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
         if (typeof publicId === 'string') {
           const home = venueRoomKey(city, 'home', publicId);
           const guests = [...(rooms.get(home) || [])].filter(ws => ws.session.id !== publicId);
-          if (!canOccupyVenue(state, 'home')) {
+          // A host who left home sends their guests out, unless they keep the home open while they are out.
+          const open = guests.length > 0 && !canOccupyVenue(state, 'home') && await Promise.resolve(store.read((db) => openWhileOut(db, publicId))).catch(() => false);
+          if (!canOccupyVenue(state, 'home') && !open) {
             for (const ws of guests) drop(ws, 'visit_ended');
             if (guests.length) ctx.emit?.('home-closed', { hostId: publicId, cityId: city });
           } else visiting.push(...guests); // the host's own validation also re-checks the guests in their room
@@ -774,7 +781,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       /** Is this socket's room one the server would admit it to right now? Used by the voice-config route. */
       roomStillValid(ws, db, session, city, state) {
         const hostId = visitedHost(ws, city);
-        if (hostId) return !hostAbsent(ws.room ?? '', hostId) && guestUntil(db, session.publicId, hostId, city) > 0;
+        if (hostId) return (openWhileOut(db, hostId) || !hostAbsent(ws.room ?? '', hostId)) && guestUntil(db, session.publicId, hostId, city) > 0;
         return occupies(ws, city, state);
       },
       refreshNames(session: PublicSession) {

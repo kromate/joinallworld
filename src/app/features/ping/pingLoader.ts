@@ -40,17 +40,28 @@ export function captureToken(address: { pathname: string } | undefined = globalT
 }
 captureToken()
 
+/** A house link (/h/<token>, server/social/visit-token.ts) is kept the same way, under its own key, for the visit notices (features/visit). */
+export const HOUSE_KEY = 'allworld-visit-link'
+export function captureHouse(address: { pathname: string } | undefined = globalThis.location, now = Date.now()): boolean {
+  const token = /^\/h\/([\w-]{85})\/?$/.exec(String(address?.pathname ?? ''))?.[1]
+  if (!token) return false
+  try { store()?.setItem(HOUSE_KEY, JSON.stringify({ token, at: now })) } catch { /* the notices ask again */ }
+  try { globalThis.history?.replaceState(null, '', '/') } catch { /* the address stays as it was */ }
+  return true
+}
+const heldHouse = captureHouse() || Boolean(store()?.getItem(HOUSE_KEY))
+
 const isPingFrame = (frame: { type: string }): frame is PingServerFrame => frame.type === 'ping-incoming' || frame.type === 'ping-joined' || frame.type === 'ping-ended'
 let listening = false
 /** Start listening. Idempotent. */
 export function startPing(): void {
   if (listening) return
   listening = true
-  if (keptToken() !== null) pingUi.wanted = true
+  if (keptToken() !== null || heldHouse) pingUi.wanted = true
   onCallFrame((frame) => { if (isPingFrame(frame)) { pingUi.frames.push(frame); pingUi.wanted = true } })
   // Back after a ping, or after a friend came through the player's link: the line in Updates says so, and the notices then ask the server what is still live.
   watch(() => social.me?.updates, (updates) => {
     const hour = Date.now() - KEEP_MS
-    if (!pingUi.wanted && (updates ?? []).some((update) => !update.read && (update.kind === 'ping' || update.kind === 'invite-joined') && update.at > hour)) pingUi.wanted = true
+    if (!pingUi.wanted && (updates ?? []).some((update) => !update.read && (update.kind === 'ping' || update.kind === 'invite-joined' || update.kind === 'visit' || update.kind === 'invite-knock') && update.at > hour)) pingUi.wanted = true
   })
 }

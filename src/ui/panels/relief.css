@@ -1,7 +1,7 @@
 /* "What you can do now": the chip in the HUD, the card (a centred card, or a bottom sheet on a phone) and the same list in the wallet. Classes are prefixed relief-. */
 .relief-chip{display:flex;align-items:center;gap:8px;width:100%;min-height:var(--tap,44px);padding:6px 12px;border:1px solid #e8c46a;border-radius:var(--r-chip,14px);background:var(--c-amber-soft);color:var(--c-amber-dark);font:700 12px var(--font,inherit);text-align:left;box-shadow:var(--shadow-soft);cursor:pointer;pointer-events:auto}
 .relief-chip>span:first-child{flex:none;display:grid;place-items:center}
-.relief-sheet{position:fixed;inset:0;margin:auto;zoom:var(--ui-zoom,1);width:min(460px,calc(100% - 24px));max-height:min(78vh,720px);padding:0;border:0;outline:none;border-radius:var(--r-sheet,18px);background:var(--c-surface-solid,#fff);color:var(--c-ink);box-shadow:0 18px 50px #0004;overflow:auto;overscroll-behavior:contain}
+.relief-sheet{position:fixed;inset:0;margin:auto;zoom:var(--ui-zoom,1);width:min(460px,calc(100% - 24px));max-height:min(calc(78 * var(--ui-vh)),720px);padding:0;border:0;outline:none;border-radius:var(--r-sheet,18px);background:var(--c-surface-solid,#fff);color:var(--c-ink);box-shadow:0 18px 50px #0004;overflow:auto;overscroll-behavior:contain}
 .relief-sheet::backdrop{background:#10201866}
 .relief-card{display:grid;gap:var(--s-2);padding:var(--s-3) var(--s-3) var(--s-4,16px);text-align:left}
 .relief-card header{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2)}
@@ -25,5 +25,5 @@
 .relief-link p{margin:0;font-size:12px}
 /* A phone: the card is a bottom sheet. */
 @media(max-width:720px){
-  .relief-sheet{inset:auto 0 0 0;margin:0;width:100%;max-width:none;max-height:86vh;border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .relief-sheet{inset:auto 0 0 0;margin:0;width:100%;max-width:none;max-height:calc(86 * var(--ui-vh));border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
 }

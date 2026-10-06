@@ -23,7 +23,7 @@
  */
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { modify } from '../registry.ts';
-import { clamp, cleanText, finite, isId, isRecord } from '../util.ts';
+import { clamp, cleanText, fail, finite, isId, isRecord, ok } from '../util.ts';
 import type { SystemDefinition } from '../../types/registry.ts';
 import type { LifeContext, LifeState, Moodlet, NeedId, NeedMap } from '../../types/life.ts';
 import type { Feeling, Mood } from '../../types/view.ts';
@@ -89,7 +89,17 @@ export function moodOf(state: Pick<LifeState, 'needs' | 'moodlets'>): Mood {
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
  */
 const play = PLAYS ? {
-  actions: {},
+  actions: {
+    /** SERVER ONLY (server/admin): set one need, or lift every need that is below 80 to 80 ("heal"). Nothing else about the life changes. */
+    'needs.admin': { serverOnly: true, refusal: 'Needs are set by the operator. Nothing was changed.',
+      run(state, payload) {
+        if (payload?.op === 'heal') { for (const need of NEEDS) state.needs[need] = Math.max(state.needs[need], 80); return ok(state, 'healed') }
+        const need = payload?.need, value = payload?.value
+        if (payload?.op !== 'set' || !NEEDS.some((id) => id === need) || !finite(value)) return fail(state, 'invalid_need')
+        state.needs[need as NeedId] = clamp(Math.round(value))
+        return ok(state, 'set')
+      } },
+  },
   advance(state, dt, ctx) {
     const seconds = Math.min(dt, OFFLINE_DECAY_CAP_SECONDS);
     for (const need of NEEDS) {

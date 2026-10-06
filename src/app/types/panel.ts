@@ -109,6 +109,8 @@ export interface PanelMeta {
   /** The count for the red badge, from data already in the view. Never a fetch. */
   badge?(state: LifeState, view: PanelView): number | string | false | null | undefined
   notifications?(state: LifeState, view: PanelView): PhoneNotification[]
+  /** true = not listed on the Phone (until something says otherwise). */
+  hidden?(): boolean
   /** true, or the reason the entry is disabled. */
   enabled?(state: LifeState, view: PanelView): true | string | undefined
   /** 'modal' panels: the reason while the panel MUST be completed. */

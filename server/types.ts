@@ -809,6 +809,12 @@ export interface ContextChecks {
   venueCounts?: (room: string) => { total: number; groups: number } | null
   /** Moderation. */
   muted?: (publicId: string) => MuteVerdict | null
+  /** Admin (server/admin/sanctions.ts): the player, or the account they belong to, is banned. Enforced for every route by buildRoutes. */
+  banned?: (publicId: string, accountId?: string) => { code: 'account_banned'; until: number; reason: string } | null
+  /** Admin runtime settings (server/admin/settings.ts): the value in force for a key, or undefined for an unknown key. */
+  setting?: (key: string) => boolean | number | undefined
+  /** Admin: sending pictures or ringing players is suspended for this player. The features that send pictures and place calls ask it before they do. */
+  suspended?: (publicId: string, kind: 'pictures' | 'calls') => { code: 'suspended'; until: number; reason: string } | null
   /** World: throws 409 `city_moved` when the session's character travelled away from `cityId` and has no life left there. */
   cityGate?: (session: SessionRecord, cityId: string) => void
   /** Growth: that player answered the age question with "under 18" (the one home of the age answer). */

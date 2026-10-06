@@ -60,6 +60,7 @@ function onKey(event: KeyboardEvent): void {
   const target = event.target instanceof Element ? event.target : null
   const typing = target?.matches('input, textarea, select, [contenteditable]') ?? false
   if (typing && event.key !== 'Escape') return
+  if (event.altKey && event.shiftKey && event.code === 'KeyA') { void import('./features/admin/adminProbe.ts').then((m) => m.adminKey((id) => shell.open(id))); return }
   const shortcut = shortcutFor(event)
   if (!shortcut) return
   const [verb = '', arg = ''] = shortcut.run.split(':')

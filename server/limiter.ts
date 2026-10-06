@@ -13,7 +13,8 @@
  *   long       windows longer than a minute (an hour of e-mails, reports, groups). They live long, so they must not be able to
  *              fill the table the short rows share, and a flood of short rows must not erase them.
  *   protected  keys that must never be forgotten, whatever else is going on (PROTECTED_PREFIXES): the operator's budget and the
- *              failed-token guard (`mod:`, `mod-fail:`, including `mod-fail:all`), and the sign-in and reset limits of accounts.
+ *              failed-token guard (`mod:`, `mod-fail:`, including `mod-fail:all`), the sign-in and reset limits of accounts and
+ *              the admin section's budgets (`admin-ip:`, `admin-fail:`, `admin-r:`, `admin-w:`).
  *              Their rows are NEVER dropped to make room. The class has a generous bound of its own; when it is full of live
  *              rows a NEW protected key is refused (fail closed: only guessers and repeated sign-in attempts can fill it).
  *
@@ -22,7 +23,7 @@
  */
 export type LimiterClass = 'short' | 'long' | 'protected';
 /** Key prefixes that are never evicted. */
-export const PROTECTED_PREFIXES: readonly string[] = Object.freeze(['mod:', 'mod-fail:', 'account:sign-in', 'account:reset']);
+export const PROTECTED_PREFIXES: readonly string[] = Object.freeze(['mod:', 'mod-fail:', 'account:sign-in', 'account:reset', 'admin-']);
 export const limiterProtects = (key: string): boolean => PROTECTED_PREFIXES.some((prefix) => String(key).startsWith(prefix));
 /** The longest window that still counts as short. */
 export const SHORT_WINDOW_MS = 60000;

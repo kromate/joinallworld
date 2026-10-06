@@ -39,6 +39,7 @@ import ResidentBadge from '../locate/ResidentBadge.vue'
 import CompanionPin from '../companion/CompanionPin.vue'
 import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
 import { unreadChats, updatesCount } from './messagesModel.ts'
+import { announceLines, announceUi } from '../announce/announceStore.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { filterChats, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
@@ -251,7 +252,7 @@ const chats = computed(() => unreadChats(me.value))
 const updates = computed(() => { void tick.value; return me.value ? updatesCount(me.value, noticeMarks.fresh(view.value.cityId, notices.value)) : 0 })
 /** The mark from before the tab was opened: what was new stays marked "New" while it is read. */
 const seenBefore = ref<number | null>(null)
-const lines = computed(() => updateLines(me.value?.updates ?? [], notices.value, seenBefore.value ?? noticeMarks.seen(view.value.cityId)))
+const lines = computed(() => [...updateLines(me.value?.updates ?? [], notices.value, seenBefore.value ?? noticeMarks.seen(view.value.cityId)), ...announceLines(announceUi.items, announceUi.seen)].sort((a, b) => b.at - a.at))
 function readUpdates(): void {
   if (ui.tab !== 'updates' || ui.open || !me.value) { seenBefore.value = null; return }
   seenBefore.value ??= noticeMarks.seen(view.value.cityId)

@@ -33,7 +33,7 @@ test('every event in the sound map has a recipe, and every recipe is used by som
 })
 
 test('every event name the game uses exists, and every event is raised by something', () => {
-  const literal = /\bplay(?:Sound)?\(\s*(['"`])([^'"`$]+)\1/g
+  const literal = /(?<!stage\.)\bplay(?:Sound)?\(\s*(['"`])([^'"`$]+)\1/g
   const raised = new Set<string>()
   for (const [path, text] of code) for (const match of text.matchAll(literal)) {
     const name = match[2] as string

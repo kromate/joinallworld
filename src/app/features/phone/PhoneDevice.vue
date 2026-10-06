@@ -35,7 +35,7 @@ const STAMP = lagos({ weekday: 'short', hour: '2-digit', minute: '2-digit', hour
 const view = computed(() => { void shell.legacyTick.value; return shell.viewFor() })
 const now = computed(() => new Date(view.value.now))
 const power = computed(() => battery(state.value.needs?.energy))
-const pages = phonePages(shell.panels)
+const pages = computed(() => phonePages(shell.panels))
 const dock = dockApps(shell.panels)
 const badges = computed(() => { const current = view.value; return Object.fromEntries(shell.panels.map((panel) => [panel.id, badgeText(panel, state.value, current)])) as Record<string, string> })
 const notes = computed(() => notificationsOf(shell.panels, state.value, view.value))
@@ -91,6 +91,7 @@ watch(() => app.value?.id ?? '', (id) => {
   void nextTick(() => { if (id && appBody.value) appBody.value.scrollTop = 0; focusView() })
 })
 onMounted(() => {
+  void import('../admin/adminProbe.ts').then((m) => m.probeAdmin())
   // Opening the phone is the moment to look for a moderator's reply to a report (at most once a minute).
   checkReports(api)
   void nextTick(focusView)

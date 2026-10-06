@@ -117,13 +117,13 @@ const own = <T>(map: Record<string, T> | undefined, key: string): T | undefined 
 };
 const accountsOf = (db: Db): Record<string, AccountRecord> => { if (!db.accounts) db.accounts = {}; return db.accounts as Record<string, AccountRecord>; };
 const devicesOf = (db: Db): Record<string, AccountDeviceRecord> => { if (!db.accountDevices) db.accountDevices = {}; return db.accountDevices as Record<string, AccountDeviceRecord>; };
-function logOf(db: Db, deps: AccountDeps): AccountLogCollection {
+function logOf(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>): AccountLogCollection {
   if (!db.accountLog) db.accountLog = { salt: deps.newId(), seq: 0, audit: [], used: {} };
   return db.accountLog as AccountLogCollection;
 }
 /** The audit trail's name for an account: stable, and not the provider's subject id. */
 const refOf = (log: AccountLogCollection, id: string): string => hash53(`${log.salt}\n${id}`);
-function audit(db: Db, deps: AccountDeps, event: AccountEvent, account: AccountRecord, life?: string): void {
+function audit(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>, event: AccountEvent, account: AccountRecord, life?: string): void {
   const log = logOf(db, deps);
   log.seq += 1;
   const line: AccountAuditRecord = { n: log.seq, at: deps.now(), event, ref: refOf(log, account.id), ...(life ? { life } : {}) };
@@ -389,6 +389,13 @@ export function signOutEverywhere(db: Db, deps: AccountDeps, caller: Caller, ide
   const others = endOthers(db, bound.account, bound.cookie);
   audit(db, deps, 'signed_out_everywhere', bound.account);
   return { closeKeys: [], closeDevices: others, ended: others.length };
+}
+
+/** The operator's: end every browser of an account (server/admin). Returns the device bindings that were removed, so their sockets can be closed. */
+export function endAllDevices(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>, account: AccountRecord): string[] {
+  const ended = endOthers(db, account, null);
+  if (ended.length) audit(db, deps, 'signed_out_everywhere', account);
+  return ended;
 }
 
 /**

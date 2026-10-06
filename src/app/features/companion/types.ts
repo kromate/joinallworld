@@ -17,6 +17,8 @@ export interface PlaceFact {
   /** Labels of what can be done there. */
   activities: string[]
   description: string
+  /** A market that rents stalls to players. */
+  market?: boolean
 }
 export interface CityFact { id: string; name: string; open: boolean; here: boolean; home: boolean }
 export interface FriendFact { id: string; name: string; online: boolean; founder?: boolean }

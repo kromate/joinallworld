@@ -13,8 +13,9 @@ import SectionTitle from '../../ui/SectionTitle.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import type { OroView } from '../../../types/growth.ts'
 import { dailyLine } from './oroModel.ts'
+import { useSection } from '../kit/section.ts'
 
-defineProps<{ params?: unknown }>()
+const props = defineProps<{ params?: unknown }>()
 const OroGame = defineAsyncComponent(() => import('./OroGame.vue'))
 const { game, shell } = useApp()
 const growth = useGrowth()
@@ -29,6 +30,10 @@ async function loadToday(): Promise<void> {
   if (result.ok && 'rows' in result) today.value = result
 }
 onMounted(() => { void loadToday() })
+// Opened for one game ({ game: 'oro' | 'chess' | 'weave' }): Oro opens on today's word, the others are brought into view.
+const wanted = (): string => { const game = (props.params as { game?: unknown } | null | undefined)?.game; return typeof game === 'string' ? game : '' }
+if (wanted() === 'oro') screen.value = 'daily'
+useSection(() => (wanted() === 'chess' || wanted() === 'weave' ? { section: wanted() } : null))
 function back(): void { screen.value = 'hub'; void loadToday() }
 function onState(next: OroView): void { today.value = next }
 const openTable = (table: 'phone-chess' | 'phone-weave'): void => { shell.open('tables', { table }) }
@@ -50,7 +55,7 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
         </div>
       </div>
     </section>
-    <section class="gm-card" aria-labelledby="gm-chess">
+    <section class="gm-card" aria-labelledby="gm-chess" data-section="chess">
       <div class="gm-icon" aria-hidden="true"><GameIcon name="crown" inline /></div>
       <div class="gm-body">
         <h3 id="gm-chess">Chess <small>against the computer</small></h3>
@@ -58,7 +63,7 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
         <div class="gm-actions"><BaseButton variant="primary" @click="openTable('phone-chess')">Play chess</BaseButton></div>
       </div>
     </section>
-    <section class="gm-card" aria-labelledby="gm-weave">
+    <section class="gm-card" aria-labelledby="gm-weave" data-section="weave">
       <div class="gm-icon" aria-hidden="true"><GameIcon name="game" inline /></div>
       <div class="gm-body">
         <h3 id="gm-weave">Weave <small>word tiles</small></h3>

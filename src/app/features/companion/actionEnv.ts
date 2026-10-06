@@ -4,7 +4,7 @@ import { useCall } from '../calls/useCall.ts'
 import type { App } from '../../state/app.ts'
 import type { ActionEnv } from './actions.ts'
 
-export function actionEnv(app: App, handlers: { ask(text: string): void; setMode(mode: 'lively' | 'quiet' | 'off'): void; dismiss(): void; close(): void }): ActionEnv {
+export function actionEnv(app: App, handlers: { tell(text: string): void; ask(text: string): void; setMode(mode: 'lively' | 'quiet' | 'off'): void; dismiss(): void; close(): void }): ActionEnv {
   const { shell } = app
   // Whatever the companion's sheet covers is put away first, so the thing opened is what the player sees.
   const away = (): void => handlers.close()
@@ -18,6 +18,8 @@ export function actionEnv(app: App, handlers: { ask(text: string): void; setMode
     call: (friend, name) => { away(); void useCall().request({ id: friend, name }) },
     invite: () => { away(); void useGrowth().share('invite', { surface: 'prompt' }) },
     startTour: (id) => { away(); globalThis.window?.dispatchEvent(new CustomEvent('jaw:tour', { detail: { tour: id } })) },
-    ask: handlers.ask, setMode: handlers.setMode, dismiss: handlers.dismiss,
+    // The help card opens in place when it is on screen; otherwise the Bank, which carries the same card.
+    openRelief: () => { away(); const asked = new CustomEvent('jaw:relief', { cancelable: true }); window.dispatchEvent(asked); if (!asked.defaultPrevented) shell.open('bank') },
+    ask: handlers.ask, setMode: handlers.setMode, dismiss: handlers.dismiss, tell: handlers.tell,
   }
 }

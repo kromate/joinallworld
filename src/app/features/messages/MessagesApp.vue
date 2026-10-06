@@ -74,9 +74,10 @@ function setOpen(key: string | null): void {
 }
 // Opened from a person card, a contact or a notification: { to, name } | { conv } | { tab }.
 watch(() => props.params, (params) => {
-  const asked = (params ?? null) as { tab?: string; conv?: string; to?: string; name?: string } | null
+  const asked = (params ?? null) as { tab?: string; conv?: string; to?: string; name?: string; new?: string } | null
   if (!asked) return
   if (asked.tab === 'updates' || asked.tab === 'chats') { setOpen(null); ui.tab = asked.tab }
+  else if (asked.new === 'group') { setOpen(null); ui.tab = 'chats'; void nextTick(newGroup) }
   else if (asked.conv) { setOpen(asked.conv); void openThread(asked.conv) }
   else if (asked.to) {
     const existing = social.me?.conversations.find((conv) => conv.with === asked.to)

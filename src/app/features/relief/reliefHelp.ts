@@ -66,11 +66,11 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
 }
 
 /** The one line under the needs bars for such a moment: the first step of the card. Null when there is none. */
-export function helpStep(state: LifeState, ctx: LifeContext): { icon: string; title: string; hint: string; go?: [string, string]; open?: string } | null {
+export function helpStep(state: LifeState, ctx: LifeContext): { icon: string; title: string; hint: string; go?: [string, string]; open?: string; card?: string } | null {
   const help = helpOf(state, ctx), first = help?.actions.find((action) => !action.blocked && (action.activity || action.id === 'credit-ride'));
   if (!help || !first) return null;
   return first.activity && first.venue
-    ? { icon: first.id === 'odd-job' ? '🧹' : first.id === 'bench' ? '🪑' : '🥤', title: first.label, hint: first.detail, go: [first.venue, first.spot ?? ''] }
+    ? { icon: first.id === 'odd-job' ? '🧹' : first.id === 'bench' ? '🪑' : '🥤', title: first.label, hint: first.detail, go: [first.venue, first.spot ?? ''], card: first.label }
     : { icon: '🚌', title: first.label, hint: 'Open Home: the ride home on credit is the first button after the room.', open: 'visiting' };
 }
 

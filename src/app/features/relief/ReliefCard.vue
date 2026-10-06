@@ -3,7 +3,7 @@
 // with no money to treat it, no energy with no money for a room). It opens the options as a centred card on a screen with room, and
 // as a bottom sheet on a phone. The chip stays while the situation does; the options are what reliefHelp.ts works out.
 import '../../../ui/panels/relief.css'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import ReliefActions from './ReliefActions.vue'
@@ -15,6 +15,10 @@ const sheet = ref<HTMLDialogElement | null>(null)
 const open = ref(false)
 function show(): void { open.value = true }
 function hide(): void { open.value = false }
+// Asked for by name (the guide's "What can I do?"): open in place when there is something to show.
+function asked(event: Event): void { if (help.value) { event.preventDefault(); show() } }
+onMounted(() => window.addEventListener('jaw:relief', asked))
+onBeforeUnmount(() => window.removeEventListener('jaw:relief', asked))
 watch(open, async (now) => {
   await nextTick()
   const dialog = sheet.value

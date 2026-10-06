@@ -29,7 +29,7 @@ import { closenessText, presenceClass, reasonLabel, STRANGER_TEXT, tagLabel, ven
 import { personUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 
-const props = defineProps<{ id: string }>()
+const props = defineProps<{ id: string; form?: 'money' }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad } = useSocialScreen()
 const cityId = (): string => client.cityId()
 const growth = useGrowth()
@@ -42,6 +42,8 @@ watch([() => props.id, () => view.value.connected], ([id, connected]) => {
     personUi.player = id; personUi.form = null; personUi.amount = ''; personUi.text = ''
     state.profiles.delete(id); void client.loadProfile(id); void client.loadPeople()
   }
+  // Opened to send a gift (the guide's "send money"): the form is open at once.
+  if (props.form) openForm(props.form)
 }, { immediate: true })
 // A card that is not here (never read, or dropped when a friendship changed) is read again.
 watch([() => props.id, () => state.profiles.has(props.id), () => view.value.connected], ([id, has, connected]) => {

@@ -821,7 +821,7 @@ export type GoalChip =
     /** Parameters for the opened panel; only with `open`. */
     params?: Record<string, unknown>
   }
-  | { kind: 'guide'; icon: string; title: string; hint: string; go?: ChipTarget; open?: string }
+  | { kind: 'guide'; icon: string; title: string; hint: string; go?: ChipTarget; open?: string; /** The title of the activity card to mark on arrival. */ card?: string }
 
 export interface PerkCard {
   id: PerkId

@@ -7,13 +7,13 @@ import NpcCard from './NpcCard.vue'
 import PlayerCard from './PlayerCard.vue'
 
 const props = defineProps<{ params?: unknown }>()
-const asked = computed(() => (props.params ?? {}) as { npc?: unknown; player?: unknown })
+const asked = computed(() => (props.params ?? {}) as { npc?: unknown; player?: unknown; gift?: unknown })
 const npc = computed(() => (typeof asked.value.npc === 'string' ? asked.value.npc : null))
 const player = computed(() => (typeof asked.value.player === 'string' ? asked.value.player : null))
 </script>
 
 <template>
   <NpcCard v-if="npc" :id="npc" />
-  <PlayerCard v-else-if="player" :id="player" />
+  <PlayerCard v-else-if="player" :id="player" :form="asked.gift === true ? 'money' : undefined" />
   <p v-else class="ui-error">Nobody selected.</p>
 </template>

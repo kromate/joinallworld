@@ -1,6 +1,6 @@
 // The snapshot the brain reads, built from the live game: the rules engine's view of the life, the city registry and the social client.
 // Nothing here is sent anywhere. It is read each time the companion answers or the director looks.
-import { cityRules, playableCityIds } from '../../../game/cities/registry.ts'
+import { cachedCityContent, cityRules, playableCityIds } from '../../../game/cities/registry.ts'
 import { helpNow } from '../relief/reliefModel.ts'
 import { callStore } from '../calls/callState.ts'
 import { social } from '../social/useSocial.ts'
@@ -19,8 +19,10 @@ export function contextFromGame(app: App): CompanionContext {
   const view = game.view.value, state = game.state.value
   const goal = view.goals?.chip
   const step: StepFact | null = goal && goal.kind !== 'create' ? { title: goal.title, hint: goal.hint, ...(goal.go ? { go: goal.go as [string, string?] } : {}), ...(goal.open ? { open: goal.open } : {}), ...(goal.kind === 'goal' && goal.params ? { params: goal.params } : {}) } : null
+  const kinds = cachedCityContent(game.cityId.value)?.venues
   const places: PlaceFact[] = (view.travel?.destinations ?? []).filter((item) => item.kind !== 'soon').map((item) => ({
     id: item.id, label: item.label, district: item.district, category: item.category, open: item.open, status: item.status, here: item.here, activities: item.preview ?? [], description: item.description,
+    ...(kinds?.find((venue) => venue.id === item.id)?.kind === 'market' ? { market: true } : {}),
   }))
   const missions: MissionFact[] = (view.missions?.daily ?? []).filter((row) => !row.claimed).map((row) => ({ label: row.label, hint: row.hint, done: row.done, claimed: row.claimed, ...(row.go && row.go[0] ? { go: [row.go[0], row.go[1]] as [string, string?] } : {}), ...(row.open ? { open: row.open } : {}) }))
   const me = social.me

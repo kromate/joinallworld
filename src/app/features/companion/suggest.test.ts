@@ -20,7 +20,7 @@ test('every plain id maps to an action; a checked id and its action agree', () =
     assert.ok(action, id);
   }
   assert.equal(suggestToAction('call-friend', ctx()), null);
-  assert.deepEqual(suggestToAction('open-jobs', online), { kind: 'open', id: 'jobs', label: 'Open Jobs' });
+  assert.deepEqual(suggestToAction('open-jobs', online), { kind: 'open', id: 'jobs', label: 'Open Jobs', params: { section: 'list' } });
   assert.deepEqual(suggestToAction('start-trip:abuja', online), { kind: 'world', city: 'abuja', label: 'Take me there' });
   assert.deepEqual(suggestToAction('open-map-venue:park', online), { kind: 'map', venue: 'park', label: 'Show Freedom Park' });
   assert.deepEqual(suggestToAction('show-tour:travel', online), { kind: 'tour', tour: 'travel', label: 'Show me travel' });

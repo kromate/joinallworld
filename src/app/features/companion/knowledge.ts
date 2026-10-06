@@ -1,6 +1,7 @@
 // What the companion can explain: a small authored table of the game's own ideas, in its own voice.
 // Each entry names the labels a player will see on screen (`labels`); a test checks that every one exists in the interface, so an
 // explanation can never point at a button that was renamed. The words follow docs/REFERENCE.md and docs/BUSINESS.md.
+import { route } from './registry.ts'
 import type { CompanionAction } from './types.ts'
 
 export interface Concept {
@@ -40,7 +41,7 @@ export const CONCEPTS: readonly Concept[] = [
     labels: ['Bank'], action: { kind: 'open', id: 'bank', label: 'Open Bank' } },
   { id: 'stall', terms: ['stall', 'shop', 'kiosk', 'vendor', 'reputation', 'customer'],
     text: 'A stall is your own shop in a market. You stock it, set prices and collect the cash box; customers come while the market is open. Pay its rent or the market closes it.',
-    labels: ['Business'], action: { kind: 'open', id: 'business', label: 'Open Business' } },
+    labels: ['Business'], action: route.business() },
   { id: 'billboard', terms: ['billboard', 'advert', 'advertise', 'ads'],
     text: 'Billboards are roadside signs you can rent with game naira to put one short line on the city map. There are no pictures or links.',
     labels: ['Billboards'], action: { kind: 'open', id: 'ads', label: 'Open Billboards' } },
@@ -73,7 +74,7 @@ export const CONCEPTS: readonly Concept[] = [
     labels: ['Tables'], action: { kind: 'open', id: 'tables', label: 'Open Tables' } },
   { id: 'guest', terms: ['guest', 'settle', 'progress', 'signup'],
     text: 'A guest plays without an account. Sign up free and your character is kept so you can carry on from any device.',
-    labels: ['Account'], action: { kind: 'open', id: 'account', label: 'Save my progress' } },
+    labels: ['Account'], action: { ...route.signUp(), label: 'Save my progress' } },
   { id: 'community', terms: ['community', 'voice', 'circle', 'room'],
     text: 'Community is the chat of the place you are in, for everyone who is there. You can join its voice circle to talk to people nearby.',
     labels: ['Community'], action: { kind: 'ask', text: 'show me around friends', label: 'Show me' } },

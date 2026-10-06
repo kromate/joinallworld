@@ -17,12 +17,14 @@ import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import CivicAction from '../civic/CivicAction.vue'
 import CivicStatus from '../civic/CivicStatus.vue'
+import { useSection } from '../kit/section.ts'
 import { requestSlot } from '../civic/civicCore.ts'
 import type { SendResult } from '../civic/civicCore.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { buyWhy, changedPrices, collectWhy, mineKey, minePath, openWhy, orderOf, orderWhy, priceWords, pricesWhy, starMarks, starsLabel, untilWords, venueKey, venuePath } from './businessModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
+useSection(() => props.params)
 const { game, shell } = useApp()
 const server = useCivic()
 const offline = useOffline()
@@ -221,7 +223,7 @@ const rules = [
 
           <template v-if="!stalls.mine">
             <SectionTitle>Open a stall here</SectionTitle>
-            <div class="biz-card biz-form">
+            <div class="biz-card biz-form" data-section="rent">
               <div class="biz-types" role="group" aria-label="What to sell">
                 <button v-for="type in stalls.types" :key="type.id" type="button" :aria-pressed="draft.type === type.id" @click="draft.type = type.id">{{ type.label }}</button>
               </div>

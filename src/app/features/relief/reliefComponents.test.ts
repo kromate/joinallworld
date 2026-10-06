@@ -97,9 +97,7 @@ test('time is said the way a person says it, a row that cannot be done has a sho
   assert.equal(humanWait(224 * 60 + 52), '3 h 45 min')
   assert.equal(humanWait(3 * 3600), '3 h')
   assert.equal(humanWait(Number.NaN), 'under a minute')
-  assert.equal(shortReason('You did this recently. Odd jobs: carrying and sweeping is available again in 224m 52s.'), 'Again in 3 h 45 min')
-  assert.equal(shortReason('You did this recently. Odd jobs is available again in 45s.'), 'Again in under a minute')
-  assert.equal(shortReason('You did this recently. Bench is available again in 5m 0s.'), 'Again in 5 min')
+  assert.equal(shortReason('Again in 3 h 45 min.'), 'Again in 3 h 45 min.', 'the game says the wait in the words the card shows')
   assert.equal(shortReason('Hospital is closed right now. Opens in 2h 3m.'), 'Closed · opens in 2 h 3 min')
   assert.equal(shortReason('Something else entirely.'), 'Something else entirely.')
   const row = (id: ReliefAction['id'], blocked: string | null): ReliefAction => ({ id, label: id, detail: '', blocked, venue: null, here: false, activity: null, spot: null, to: null, mode: null })
@@ -110,7 +108,7 @@ test('a row that cannot be done now shows the reason in minutes and hours and ha
   await visitor(300, async () => {
     const { default: Actions } = await load('/src/app/features/relief/ReliefActions.vue')
     const help = { key: 'k', title: 't', chip: 'c', line: 'l', actions: [
-      { id: 'odd-job', label: 'Odd jobs', detail: 'Paid work', blocked: 'You did this recently. Odd jobs is available again in 224m 52s.', venue: 'pleasure-park', here: true, activity: 'relief-odd-jobs', spot: 'x', to: null, mode: null },
+      { id: 'odd-job', label: 'Odd jobs', detail: 'Paid work', blocked: 'Again in 3 h 45 min.', venue: 'pleasure-park', here: true, activity: 'relief-odd-jobs', spot: 'x', to: null, mode: null },
       { id: 'friend', label: 'Ask a friend', detail: 'A message is ready for you to send.', blocked: null, venue: null, here: false, activity: null, spot: null, to: null, mode: null },
     ] satisfies ReliefAction[] }
     const html = await renderToString(createSSRApp({ render: () => h(Actions as Component, { help }) }))

@@ -66,7 +66,7 @@ test('how-to answers name real buttons and real places', () => {
   assert.match(closed.text, /closed/i); assert.ok(closed.actions.some((a) => a.kind === 'map' && a.venue === 'quilox'))
   assert.match(say('where is freedom park').text, /already|are at/i)
   assert.match(say('i wan chop').text, /Amala Shitta/)
-  assert.equal(panelOf(say('how do i save my progress', { signedIn: false }).actions[0] as CompanionAction), 'account')
+  assert.equal(panelOf(say('how do i save my progress', { signedIn: false }).actions[0] as CompanionAction), 'account-sign-in')
   assert.match(say('how do i save my progress', { signedIn: true }).text, /signed in/)
   assert.equal(say('how do i call a friend', { friends: [{ id: 'f1', name: 'Tunde', online: true }] }).actions[0]?.kind, 'call')
   assert.equal(say('who is online', { friends: [{ id: 'f1', name: 'Tunde', online: true }] }).actions.length, 2)
@@ -141,11 +141,11 @@ test('the changelog and the explainers name labels that exist in the interface',
 })
 
 // ---- the buttons -------------------------------------------------------------------------------------------------------------
-const panelIds = (): Set<string> => new Set([...SOURCE.matchAll(/(?:definePanel|id)\(?\{?\s*id:\s*'([a-z-]+)'/g)].map((m) => m[1] as string).concat(['phone', 'help', 'sim', 'map']))
+const panelIds = (): Set<string> => new Set([...SOURCE.matchAll(/(?:definePanel|id)\(?\{?\s*id:\s*'([a-z-]+)'/g)].map((m) => m[1] as string).concat(['phone', 'help', 'sim', 'map', 'account-sign-in']))
 function recorder(): { env: ActionEnv; calls: string[] } {
   const calls: string[] = []
   const rec = (name: string) => (...args: unknown[]): void => { calls.push(`${name}:${args.map(String).join(',')}`) }
-  return { calls, env: { openPanel: rec('panel'), openMap: rec('map'), openWorld: rec('world'), goTo: rec('go'), openSim: rec('sim'), openChat: rec('chat'), call: rec('call'), invite: rec('invite'), startTour: rec('tour'), ask: rec('ask'), setMode: rec('mode'), dismiss: rec('dismiss') } }
+  return { calls, env: { openPanel: rec('panel'), openMap: rec('map'), openWorld: rec('world'), goTo: rec('go'), openSim: rec('sim'), openChat: rec('chat'), call: rec('call'), invite: rec('invite'), startTour: rec('tour'), ask: rec('ask'), setMode: rec('mode'), dismiss: rec('dismiss'), openRelief: rec('relief'), tell: rec('tell') } }
 }
 test('every button the brain, the director and the model path can make dispatches a real route to a panel, place or city that exists', () => {
   const states = [ctx({ newPlayer: true, guest: true, goal: { title: 'Play a round of Ayo', hint: 'Free.', go: ['park', 'trees'] } }), ctx(), ctx({ stuck: true, away: true, cash: 50 }), ctx({ friends: [{ id: 'f1', name: 'Tunde', online: true }, { id: 'zed', name: 'Zed', online: false, founder: true }], employed: true, rentArrears: 100, stallsOpened: 2, stallAlert: 'Rent due', unread: 2, goal: { title: 'Do it', hint: 'Now', open: 'jobs' }, missions: { locked: null, claimable: 1, open: [{ label: 'Eat', hint: 'Food', done: false, claimed: false, go: ['amala-shitta'] }] } }), ctx({ needs: { hunger: 5, energy: 5, fun: 5, social: 5, hygiene: 5, bladder: 5 } })]
@@ -162,7 +162,7 @@ test('every button the brain, the director and the model path can make dispatche
     all.push(...(dailyThree(state)?.actions ?? []))
     for (const action of all) {
       const { env, calls } = recorder()
-      runAction(action, env)
+      runAction(action, env, state)
       assert.equal(calls.length, 1, JSON.stringify(action))
       seen.add(action.kind)
       const panel = panelOf(action); if (panel) assert.ok(ids.has(panel), `${panel} is a panel`)

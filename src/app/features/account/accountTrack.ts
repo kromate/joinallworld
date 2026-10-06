@@ -5,4 +5,4 @@ export function track(name: string, props: Record<string, string | number | bool
   try { globalThis.window?.dispatchEvent(new CustomEvent('jaw:track', { detail: { name, props } })) } catch { /* no listener is fine */ }
 }
 /** Where a sign-up or log-in was started from. */
-export type SignupWhere = 'hud' | 'creator' | 'guestbar' | 'tour' | 'settings' | 'ready'
+export type SignupWhere = 'hud' | 'creator' | 'guestbar' | 'tour' | 'settings' | 'ready' | 'guide'

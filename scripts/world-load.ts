@@ -37,7 +37,8 @@ import { createServer } from '../server/server.ts';
 import { lagosTime } from '../src/game/clock.ts';
 import { createShardStore } from '../server/world/shards.ts';
 import * as registry from '../server/world/registry.ts';
-import { ESTATE, LAGOS_LGAS, PLOTS_PER_ESTATE } from '../src/game/content/world.ts';
+import { ESTATE, PLOTS_PER_ESTATE } from '../src/game/content/world.ts';
+import { LAGOS_LGAS } from '../src/game/cities/lagos/localUnits.ts';
 
 /** The session cookie a response set; a missing one is a failed setup, not an empty cookie. */
 const cookieOf = (headers: { get(name: string): string | null }): string => {

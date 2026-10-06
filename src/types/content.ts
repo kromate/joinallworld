@@ -176,12 +176,33 @@ export type PrefixedSceneVariant = `ph-${string}` | `fct-${string}` | `kano-${st
 
 export type CitySceneVariant = 'tower' | 'hill-hall' | 'campus' | 'stadium' | 'gallery' | 'bus-park' | 'rail' | 'foodstuff' | 'street' | 'cloth' | 'garden' | 'forest' | OgunSceneVariant | PrefixedSceneVariant
 
+export type ParametricRoofStyle = 'flat' | 'gable' | 'hipped'
+export type ParametricSignStyle = 'facade' | 'roadside'
+export type ParametricVenueProp = 'tree' | 'bench' | 'planter' | 'stall' | 'lamp'
+export type ParametricLandmark = 'rock' | 'hill' | 'tower' | 'gate' | 'river'
+
+/** A small identity layer drawn over the scene of the venue's kind. The venue label supplies the sign text. */
+export interface ParametricVenueDesign {
+  palette: {
+    wall: string
+    roof: string
+    accent: string
+    ground: string
+  }
+  roof: ParametricRoofStyle
+  sign: ParametricSignStyle
+  props?: readonly [] | readonly [ParametricVenueProp] | readonly [ParametricVenueProp, ParametricVenueProp]
+  landmark?: ParametricLandmark
+}
+
 export interface VenueScene {
   kind: SceneKind
   /** Picks the look where one kind has several (club: 'speakeasy'; worship: 'church' | 'mosque'). */
   variant?: 'speakeasy' | 'church' | 'mosque' | CitySceneVariant
   /** Pins a spot id — including spots other systems add, such as 'work' — to a landmark key of the scene. */
   anchors?: Record<SpotId, string>
+  /** Optional generated-city identity treatment. The underlying kind still owns the venue's layout and activity landmarks. */
+  design?: ParametricVenueDesign
 }
 
 /** Position in percent of the city map (which is 1000 × 700 map units). */
@@ -1308,6 +1329,12 @@ export interface CitySound { motif: string; ambience?: string; key?: number }
 
 export interface CityContent<City extends string = string> {
   cityId: City
+  /** Local market products and specialties; shared shop mechanics remain unchanged. */
+  business?: {
+    readonly plate: string
+    readonly markets: Readonly<Record<string, import('./business.ts').BusinessVenueRule>>
+    readonly localProductIds: readonly string[]
+  }
   /** Display prose, keyed by every local unit in this city's compact rules. */
   localUnitDescriptions: Readonly<Record<string, string>>
   /** Local names and beta quotes for the shared travel mechanics. */
@@ -1351,7 +1378,7 @@ export interface CityContent<City extends string = string> {
 /** The wall and floor colours of a home interior: data only, never stored in a life. */
 export interface HomePalette { readonly back: string; readonly left: string; readonly floor: readonly [string, string] }
 
-/** Eager metadata needed by validation, storage compatibility, prices and travel. */
+/** Rules loaded before synchronous validation, storage reconstruction, prices and travel. */
 export interface CityModuleRules<
   City extends string = string,
   State extends string = string,
@@ -1386,7 +1413,7 @@ export interface CityRouteGeometry extends Pick<CityLink, 'a' | 'b' | 'mode'> {
   points: readonly (readonly [number, number])[]
 }
 
-/** One folder supplies the eager rules and two independently lazy chunks for a playable city. */
+/** One lazily loaded folder supplies rules and independent content and map loaders. */
 export interface CityModule<
   City extends string = string,
   State extends string = string,

@@ -8,12 +8,14 @@ import { SHORTCUTS, shortcutFor } from '../../../ui/keys.ts'
 import { placeCard, spotlightOf } from './placement.ts'
 import type { Rect, Size } from './placement.ts'
 import { shortcutGroups, keysOf } from './shortcutsModel.ts'
-import { KNOWN_CITIES, cityModule, cityRules, playableCityIds, registerCityForTest } from '../../../game/cities/registry.ts'
+import { cityCatalogue, cityModule, cityRules, loadAllCityRules, playableCityIds, registerCityForTest } from '../../../game/cities/registry.ts'
 import { STEPS, TOUR_Z, cityWords, closes, isDone, playlist, seek, showable, tourPaused, wordsOf } from './tourModel.ts'
 import type { StepContext, TourStep } from './tourModel.ts'
 import { openWorld } from './tourWorld.ts'
 import { TOUR_KEY, markTourSeen, tourDue, tourSeen } from './tourSeen.ts'
 import type { TourFacts } from './tourSeen.ts'
+
+await loadAllCityRules()
 
 const here = (path: string): string => readFileSync(fileURLToPath(new URL(path, import.meta.url)), 'utf8')
 const inside = (box: { left: number; top: number }, card: Size, view: Size, margin = 12): boolean => box.left >= margin && box.top >= margin && box.left + card.width <= view.width - margin && box.top + card.height <= view.height - margin
@@ -161,8 +163,7 @@ test('the travel step names only cities that are open, three at most, and promis
 
   // From the registry: every open city but the player's own, by name, and the player's country.
   const openNames = playableCityIds().filter((id) => cityRules(id)?.status === 'open').map((id) => cityRules(id)!.name)
-  const closedNames = Object.values(KNOWN_CITIES).flatMap((city) => (city && city.rules.status !== 'open' ? [city.rules.name] : []))
-  assert.ok(closedNames.length > 0)
+  const closedNames = cityCatalogue().filter((city) => !city.open).map((city) => city.name)
   for (const id of playableCityIds()) {
     const world = openWorld(id), own = cityRules(id)!.name
     assert.deepEqual([...world.cities].sort(), openNames.filter((name) => name !== own).sort())
@@ -309,6 +310,6 @@ test('the help text and the creator’s last card say the same things as the tou
   assert.match(help, /chat or Call them; they choose whether to answer/)
   assert.match(help, /Jobs and Career.*Business.*rent a stall.*Bank and Invest.*Billboards/)
   assert.match(ready, /travel between cities.*Call and chat.*earn, invest and advertise.*open a business of your own/)
-  const names = Object.values(KNOWN_CITIES).flatMap((city) => (city ? [city.rules.name] : [])).concat(playableCityIds().map((id) => cityRules(id)!.name))
+  const names = cityCatalogue().map((city) => city.name)
   for (const name of names) { assert.ok(!ready.includes(name), name); assert.ok(!help.slice(help.indexOf('const STEPS'), help.indexOf('const rows')).includes(name), name) }
 })

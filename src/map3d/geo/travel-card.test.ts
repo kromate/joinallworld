@@ -1,6 +1,8 @@
 // The travel card of the atlas: the ways to a city as one button each, cheapest first, with the price and the seconds.
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { loadCityLinks } from '../../game/cities/registry.ts'
+await loadCityLinks()
 import { regionInfo } from './info.ts'
 import { TRAVEL_CONFIRM_SHARE, debtHtml, needsConfirm, travelWays } from './travel-card.ts'
 

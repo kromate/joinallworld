@@ -1,4 +1,4 @@
-import { knownCityIds, cityRules, cityModule, loadCityMap, KNOWN_CITIES, citiesInState } from '../game/cities/registry.ts';
+import { knownCityIds, cityRules, cityCatalogueEntry, loadCityMap, catalogueCitiesInState } from '../game/cities/registry.ts';
 /**
  * OWNER: world
  * Region registry: country → cities. Everything the country map (src/world-map.ts) and the 3D
@@ -58,11 +58,13 @@ export interface Continent { id: ContinentId; name: string; lon: number; lat: nu
 export type CityAccess = 'here' | 'enter' | 'preview' | 'soon';
 
 const cityDescriptor = (id: string): CityEntry | null => {
+  const catalogue = cityCatalogueEntry(id);
+  if (!catalogue) return null;
   const rules = cityRules(id);
-  if (!rules || rules.country.id !== 'ng') return null;
-  return { id, name: rules.name, region: rules.state.name, status: rules.status === 'open' ? 'playable' : 'soon', ...rules.atlas,
-    ...(KNOWN_CITIES[id]?.compatibility.acceptStoredLives && rules.status !== 'open' ? { legacy: true } : {}),
-    pack: cityModule(id) ? async () => (await loadCityMap(id)).loadScene() : null };
+  return { id, name: catalogue.name, region: catalogue.state.name, status: catalogue.open ? 'playable' : 'soon',
+    lon: catalogue.lon, lat: catalogue.lat, teaser: rules?.atlas.teaser ?? catalogue.teaser ?? `${catalogue.name}, ${catalogue.state.name}.`,
+    ...((rules?.atlas.preview ?? catalogue.preview) ? { preview: rules?.atlas.preview ?? catalogue.preview } : !catalogue.open ? { preview: [] } : {}),
+    pack: catalogue.open ? async () => (await loadCityMap(id)).loadScene() : null };
 };
 const nigeriaCities = (): Readonly<Record<string, CityEntry>> => Object.fromEntries(knownCityIds().flatMap(id => { const city = cityDescriptor(id); return city ? [[id, city]] : []; }));
 
@@ -235,7 +237,7 @@ export const ATLAS_LEVELS: readonly AtlasLevel[] = Object.freeze<AtlasLevel[]>([
 export function regionEntry(kind: RegionKind, id: string): RegionInfo {
   const entry = Object.hasOwn(ATLAS[kind] || {}, id) ? ATLAS[kind][id] : null;
   if (kind === 'state') {
-    const cities = citiesInState(id), open = cities.find(city => city.status === 'open'), city = open ?? cities[0];
+    const cities = catalogueCitiesInState(id), open = cities.find(city => city.open), city = open ?? cities[0];
     return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : city ? 'planned' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
   }
   return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
@@ -244,7 +246,7 @@ export const regionStatus = (kind: RegionKind, id: string) => regionEntry(kind, 
 /** Only an open region can be entered. For a state that means its city; for a country, its states level. */
 export const canEnter = (kind: RegionKind, id: string) => regionStatus(kind, id) === 'open';
 /** The state a city lies in, or null. */
-export const stateOfCity = (cityId: string) => cityRules(cityId)?.state.id ?? null;
+export const stateOfCity = (cityId: string) => cityCatalogueEntry(cityId)?.state.id ?? null;
 /** Planned routes between countries: from the open city to the hub of every country marked `planned`. */
 export interface PlannedRoute { id: string; from: Hub & { id: string }; to: Hub & { id: string }; mode: 'air' }
 export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {

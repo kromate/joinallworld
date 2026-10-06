@@ -94,6 +94,8 @@ npm run typecheck                          # about 10 seconds
 npm run check                              # typecheck, build, tests: what a pull request must pass
 ```
 
+Typechecks run one project at a time. `npm test` and `npm run test:edge` run one test file at a time. Run builds and browser checks separately on a machine shared with other work.
+
 A few tests read the built page in `dist/` (the first-load size budget, the release rules). They are skipped when there is no build and run against whatever build is there, so `npm run check` builds first.
 
 Scripted journeys print a transcript and are useful when you change the rules: `npm run first-minute`, `npm run first-day`, `npm run new-player`, `npm run two-players`, `npm run two-cities`, `npm run economy`.

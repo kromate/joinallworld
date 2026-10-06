@@ -37,9 +37,9 @@ export const typeOf = (id: BusinessTypeId): BusinessType => BUSINESS_TYPES[id];
 /** A product of a type, or undefined. */
 export const productOf = (type: BusinessTypeId, id: unknown): BusinessProduct | undefined => BUSINESS_TYPES[type].products.find((product) => product.id === id);
 /** What a product is called in a city (a food stall's plate of the day has the city's own name). */
-export const productLabel = (product: Pick<BusinessProduct, 'id' | 'label'>, city: string): string => (product.id === 'local-plate' ? LOCAL_PLATES[city] ?? product.label : product.label);
+export const productLabel = (product: Pick<BusinessProduct, 'id' | 'label'>, city: string): string => (product.id === 'local-plate' ? cachedCityContent(city)?.business?.plate ?? LOCAL_PLATES[city] ?? product.label : product.label);
 /** Does the supplier in this city sell the product at its origin price? */
-export const isLocal = (product: BusinessProduct, city: string): boolean => product.origin?.includes(city) === true;
+export const isLocal = (product: BusinessProduct, city: string): boolean => product.origin?.includes(city) === true || cachedCityContent(city)?.business?.localProductIds.includes(product.id) === true;
 /** The supplier's price of one unit in a city, in whole naira. */
 export const productCost = (product: BusinessProduct, city: string): number => Math.round(product.base * (isLocal(product, city) ? BUSINESS.originRate : BUSINESS.costRate) / 10) * 10;
 /** The lowest and highest price an owner may ask. */
@@ -58,7 +58,7 @@ export function businessVenue(city: unknown, venue: unknown): BusinessVenue | nu
   const content = cachedCityContent(city);
   const found = content?.venues.find((item) => item.id === venue);
   if (!content || !found || found.kind !== BUSINESS.hostKind) return null;
-  const rule = BUSINESS_VENUES[`${content.cityId}:${found.id}`];
+  const rule = content.business?.markets[found.id] ?? BUSINESS_VENUES[`${content.cityId}:${found.id}`];
   const hours = found.hours && found.hours.close > found.hours.open ? { open: found.hours.open, close: found.hours.close } : BUSINESS.hours;
   return { city: content.cityId, venue: found.id, name: found.name, known: rule?.known ?? [], footfall: rule?.footfall ?? 1, stalls: rule?.stalls ?? BUSINESS.stalls, hours };
 }

@@ -3,6 +3,7 @@
 // modules pass to each other lives here.
 import type * as THREE from 'three'
 import type { CrowdPerson as DrawnPerson } from './characters.ts'
+import type { ParametricVenueDesign } from '../types/content.ts'
 
 /** The `three` module as the scenes receive it (they are handed it, never import it themselves, so tests can run without WebGL). */
 export type ThreeModule = typeof THREE
@@ -127,6 +128,7 @@ export interface SceneOptions {
   look?: unknown
   seed?: unknown
   anchors?: Record<string, string>
+  design?: ParametricVenueDesign
 }
 /** The venue a scene builder is given (VenueDefinition satisfies it). */
 export interface SceneVenue {

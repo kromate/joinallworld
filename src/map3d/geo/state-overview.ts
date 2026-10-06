@@ -1,6 +1,6 @@
 import { project } from '../../geo/frame.ts'
 import { pointInPart } from '../lga.ts'
-import { cityRules } from '../../game/cities/registry.ts'
+import { cityName, cityRules } from '../../game/cities/registry.ts'
 import { cityUnit } from '../../game/cities/terminology.ts'
 import type { CityStateOverview, LonLatPolygon } from '../../types/content.ts'
 
@@ -62,7 +62,7 @@ export function stateOverviewHtml(overview: CityStateOverview, cities: readonly 
     if (!departure) return ''
     return departure.cityId === extras.current
       ? `<button type="button" data-atlas-departure="${escape(item.id)}">${escape(departure.label)}</button>`
-      : `<small>Departs from ${escape(cityRules(departure.cityId)?.name ?? departure.cityId)}.</small>`
+      : `<small>Departs from ${escape(cityName(departure.cityId) ?? departure.cityId)}.</small>`
   }
   const open = units.filter(unit => unit.city).length
   const title = (name: string, city?: OverviewCity): string => `${name} · ${city ? city.name : 'Coming soon'}`

@@ -11,7 +11,7 @@ import { isOpen } from './game/clock.ts';
 import * as venuesModule from './game/content/venues.ts';
 import { VENUES } from './game/cities/lagos/venues.ts';
 import * as transportModule from './game/content/venues-transport.ts';
-import { cityRules, linksFrom } from './game/cities/registry.ts';
+import { cityCatalogueEntry, linksFrom } from './game/cities/registry.ts';
 import { relocateBlock } from './game/systems/estate.ts';
 import * as travelModule from './game/systems/travel.ts';
 import { weatherAt } from './game/systems/health.ts';
@@ -66,13 +66,13 @@ test('the airport and the refinery are venues of the catalogue, and nothing in L
   assert.deepEqual(paid.map((def: any) => def.id), ['airport-carry-bags', 'refinery-load-drums']);
   for (const def of paid) { assert.ok(isGig(def) && def.cooldown >= 300 && def.effects.energy < 0 && def.minimumNeeds.energy >= 20 && def.reward <= 450, def.id); }
   // The information desk separates bookable routes from closed previews and never sells a ticket.
-  const flights = linksFrom('lagos').filter(link => link.mode === 'air').map(link => { const city = cityRules(link.to); assert.ok(city, 'flight destination is registered'); return city; });
+  const flights = linksFrom('lagos').filter(link => link.mode === 'air').map(link => { const city = cityCatalogueEntry(link.to); assert.ok(city, 'flight destination is registered'); return city; });
   assert.ok(flights.length >= 2);
   const caption: string = AIRPORT.spots.desk.caption;
   const [available = '', waiting = ''] = caption.split('Coming soon:');
   const context = at(MONDAY_NOON), traveller = createLife({ cash: 1_000_000 }, context);
   for (const city of flights) {
-    if (city.status === 'open') {
+    if (city.open) {
       assert.ok(available.includes(city.name), `${city.name} is shown as available`);
       assert.ok(!waiting.includes(city.name));
       assert.equal(relocateBlock(traveller, city.id, 'air', context), null);
@@ -82,7 +82,7 @@ test('the airport and the refinery are venues of the catalogue, and nothing in L
       assert.equal(relocateBlock(traveller, city.id, 'air', context)?.code, 'city_not_open');
     }
   }
-  if (flights.some(city => city.status === 'open')) assert.match(available, /country map/);
+  if (flights.some(city => city.open)) assert.match(available, /country map/);
   assert.ok(AIRPORT.spots.desk.activities.every((def: any) => !def.reward && !def.cost));
 });
 

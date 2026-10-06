@@ -32,7 +32,7 @@ import CreatorStage from './CreatorStage.vue'
 import LinkAction from './LinkAction.vue'
 import StepHome from './StepHome.vue'
 import { lgasOf } from '../../../game/content/world.ts'
-import { isDefaultName } from '../../../game/cities/registry.ts'
+import { cachedCityContent, isDefaultName } from '../../../game/cities/registry.ts'
 import StepLook from './StepLook.vue'
 import StepReady from './StepReady.vue'
 import StepSpirit from './StepSpirit.vue'
@@ -146,6 +146,7 @@ function tap(): void { qs.taps += 1; cr.error = '' }
 
 // ---- the stage ---------------------------------------------------------------------------------
 const focus = ref<PreviewFocus>('body')
+const homeReady = ref(cachedCityContent(cr.city ?? view.value.cityId) !== null)
 function setFocus(next: PreviewFocus): void { focus.value = next }
 function onTab(id: string): void { focus.value = focusForTab(id) }
 
@@ -154,7 +155,8 @@ const progress = computed(() => progressOf(steps.value, cr.step))
 const def = computed(() => stepDef(cr.step))
 const title = computed(() => (isNew && cr.step === 'who' ? 'Welcome to Allworld' : def.value.title))
 const lead = computed(() => (isNew && cr.step === 'who' ? 'A digital world you can live in, with your friends. Choose who you are to begin; you can play in seconds.' : def.value.lead))
-const blocked = computed(() => stepBlocked(cr.step, { nameProblem: nameProblem(draft.value.name.trim()), area: draft.value.area, traits: draft.value.traits.length }))
+const homePending = computed(() => cr.step === 'home' && !homeReady.value)
+const blocked = computed(() => homePending.value ? 'Load this city before continuing.' : stepBlocked(cr.step, { nameProblem: nameProblem(draft.value.name.trim()), area: draft.value.area, traits: draft.value.traits.length }))
 const last = computed(() => nextStep(steps.value, cr.step) === null)
 const previous = computed(() => previousStep(steps.value, cr.step))
 /** "Play now" belongs to a device that has not played yet; afterwards the same place says "Not now". */
@@ -167,6 +169,7 @@ watch(choices, (on) => { if (on) signupShown('creator') }, { immediate: true })
 
 function go(step: StepId): void {
   cr.error = ''
+  if (step === 'home') homeReady.value = false
   cr.step = step
   void nextTick(() => { if (scroller.value) scroller.value.scrollTop = 0; heading.value?.focus({ preventScroll: true }) })
 }
@@ -360,7 +363,7 @@ onBeforeUnmount(() => {
             <StepWho v-if="cr.step === 'who'" :look="draft.look" :preset="presetId" :name="draft.name" :error="shown" @preset="preset" @body="body" @shuffle="shuffle" @dice="dice" @name="typed" @submit="next" />
             <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
             <StepSpirit v-else-if="cr.step === 'spirit'" :city="cr.city ?? view.cityId" :traits="draft.traits" :dream="draft.dream" @trait="pickTrait" @dream="pickDream" @random="randomSpirit" />
-            <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" :choosable="isNew" />
+            <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" :choosable="isNew" @ready="homeReady = $event" />
             <StepReady v-else :city="cr.city ?? view.cityId" :name="draft.name" :look="draft.look" :traits="draft.traits" :dream="draft.dream" :area="areaName" @edit="go" />
             <p v-if="canStay" class="cr-stay"><button type="button" class="cr-link" data-key="stay" :disabled="Boolean(cr.pending)" @click="finish(true)">Move in, but stay here for now</button></p>
           </div>
@@ -386,7 +389,7 @@ onBeforeUnmount(() => {
             <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">I already have an account · Log in</button>
           </div>
           <template v-else>
-            <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" @click="playNow(false)">Play now</button>
+            <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" :disabled="homePending" @click="playNow(false)">Play now</button>
             <button v-else-if="last && account.available && !account.signedIn" type="button" class="cr-btn" data-key="save-character" @click="openSave">Save your character</button>
             <button v-else-if="!playable && o.guest" type="button" class="cr-btn" data-key="later" :disabled="Boolean(cr.pending)" @click="notNow">Not now</button>
             <button type="button" class="cr-btn is-primary" data-key="primary" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ cr.pending || (last ? 'Start your life' : nextLabel(steps, cr.step)) }}</button>

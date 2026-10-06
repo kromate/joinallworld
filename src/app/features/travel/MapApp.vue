@@ -23,7 +23,7 @@ import type { AdsResponse, GovResponse } from '../../../types/civic.ts'
 import { useApp } from '../../state/app.ts'
 import { adsKey, adsPath, govKey, govPath } from '../civic/civicModel.ts'
 import { useCivic } from '../civic/useCivic.ts'
-import { cityRules } from '../../../game/cities/registry.ts'
+import { cityName } from '../../../game/cities/registry.ts'
 import MapLevels from './MapLevels.vue'
 import MapOverview from './MapOverview.vue'
 import TripBar from './TripBar.vue'
@@ -51,7 +51,7 @@ function reconcile(): void {
 watch([() => game.cityId.value, () => props.params], reconcile, { immediate: true, flush: 'sync' })
 
 const item = computed(() => view.value.travel.destinations.find((entry) => entry.id === mapUi.destination) ?? null)
-const trip = computed(() => tripInfo(game.state.value, view.value, (id) => cityRules(id)?.name ?? id))
+const trip = computed(() => tripInfo(game.state.value, view.value, (id) => cityName(id) ?? id))
 
 // ---- telling the city map ----------------------------------------------------------------------
 const adsEntry = computed(() => civic.entry<AdsResponse>(adsKey(game.cityId.value)))

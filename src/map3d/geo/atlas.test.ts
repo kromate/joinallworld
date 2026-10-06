@@ -11,22 +11,46 @@ import { EXTENT, project, relLon, unproject } from './projection.ts';
 import { FRAME_MARGIN, HYSTERESIS, LEASH_FLOOR, crumbs, focusLevel, leashAt, levelAt, pitchAt, thresholds } from './levels.ts';
 import { EDGE_MARGIN, LABEL_CAP, placeLabels, textWidth } from './labels.ts';
 import { DOT_EXACT_PX, MIN_TOUCH_PX, cityHit } from './city-hit.ts';
+import { CITY_DETAIL_DISTANCE_SHARE, nigeriaMarkerDetail } from './atlas-scale.ts';
 import { AIRPORTS, HIGHWAYS, TOWNS, interCityTripOf, linkId, linkPath, measure, pointAlong, travelEase, tripPoint } from './routes.ts';
 import { listOrder, regionInfo } from './info.ts';
 import { createAtlas } from './atlas.ts';
 import * as THREE from 'three';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
-import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
-import { allCityLinks, cityRules, playableCityIds } from '../../game/cities/registry.ts';
+import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityAccess, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
+import { allCityLinks, cityCatalogue, cityCatalogueEntry, cityName, isOpenCityId, loadCityLinks, playableCityIds } from '../../game/cities/registry.ts';
 
 const here = (name: string) => new URL(name, import.meta.url);
 const world = decodeTopology(WORLD), africa = decodeTopology(AFRICA), nigeria = decodeTopology(NIGERIA), around = decodeTopology(AROUND);
+await loadCityLinks();
 const CITY_LINKS = allCityLinks();
+const ORIGINAL_OPEN = ['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'sagamu', 'port-harcourt', 'abuja', 'kano'] as const;
+const openStateGroups = (): [stateId: string, cityIds: string[]][] => {
+  const groups = new Map<string, string[]>();
+  for (const city of cityCatalogue().filter((item) => item.open)) groups.set(city.state.id, [...(groups.get(city.state.id) ?? []), city.id]);
+  return [...groups];
+};
 const STATES = ['Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'Federal Capital Territory', 'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi',
   'Kwara', 'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'];
 // The 54 member states of the African Union that are also UN members, by ISO code.
 const AFRICAN = 'dz ao bj bw bf bi cv cm cf td km cg cd ci dj eg gq er sz et ga gm gh gn gw ke ls lr ly mg mw ml mr mu ma mz na ne ng rw st sn sc sl so za ss sd tz tg tn ug zm zw'.split(' ');
+
+test('Nigeria marker scale keeps state dots at country scale and makes a 40+ city atlas tappable after one phone zoom', () => {
+  assert.equal(nigeriaMarkerDetail(500, 500), 'states');
+  assert.equal(nigeriaMarkerDetail(500, 500 * (CITY_DETAIL_DISTANCE_SHARE + 0.01)), 'states');
+  assert.equal(nigeriaMarkerDetail(500, 300), 'cities', 'one 0.6 zoom step reaches city detail');
+  assert.equal(nigeriaMarkerDetail(null, 300), 'states', 'measurement is required before city dots appear');
+
+  const southwest = [
+    ['lagos', 3.38, 6.52], ['ota', 3.2, 6.68], ['abeokuta', 3.35, 7.16], ['sagamu', 3.63, 6.84], ['ijebu-ode', 3.92, 6.82], ['ibadan', 3.9, 7.38],
+  ] as const;
+  const countrywide = Array.from({ length: 42 }, (_, index) => ({ id: `city-${index}`, x: 24 + (index % 7) * 52, y: 260 + Math.floor(index / 7) * 72, state: `state-${index}` }));
+  const dense = southwest.map(([id, lon, lat]) => ({ id, x: 190 + (lon - 3.4) * 30, y: 510 - (lat - 6.5) * 30, state: 'southwest' }));
+  const targets = [...countrywide, ...dense];
+  assert.ok(targets.length > 40);
+  for (const target of targets) assert.equal(cityHit({ x: target.x, y: target.y }, targets, { stateUnder: target.state }), target.id, `${target.id} is tappable at its dot on a 390px map`);
+});
 
 test('the data: 37 first-level units of Nigeria by name, every African country, and every feature with a name, an id and bounds', () => {
   assert.deepEqual(nigeria.features.map((feature) => feature.name).sort(), STATES);
@@ -125,14 +149,15 @@ test('pick() finds the right region at known places, at every level, through the
   assert.ok(all.candidates(relLon(8), 9).length < 12);
 });
 
-test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers are open', () => {
-  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)), ['lagos', 'oyo', 'fct', 'rivers', 'ogun', 'kano']);
+test('open versus coming soon is derived from the additive city catalogue', () => {
+  const openStates = [...new Set(cityCatalogue().filter((city) => city.open).map((city) => city.state.id))];
+  assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)).sort(), openStates.slice().sort());
   assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)), ['ng']);
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
     assert.equal(Boolean(info.action), feature.id === 'lagos', `${feature.id}: ${info.tag}`);
-    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : ['oyo', 'ogun', 'rivers', 'fct', 'kano'].includes(feature.id) ? 'Open' : 'Coming soon');
+    assert.equal(info.tag, feature.id === 'lagos' ? 'You are here' : openStates.includes(feature.id) ? 'Open' : 'Coming soon');
     assert.ok(info.teaser && info.type.includes(feature.id === 'fct' ? 'Territory' : 'State') && info.capital === feature.cap[0]);
     for (const route of info.routes) assert.equal(route.live, false, 'a route is not live until supplied by the server');
   }
@@ -143,23 +168,34 @@ test('open versus coming soon is the live registry: Lagos, Oyo, Ogun and Rivers 
   }
   const lagos = regionInfo({ kind: 'state', id: 'lagos' }, { ...context, feature: nigeria.byId.get('lagos') });
   assert.deepEqual([lagos.action!.kind, lagos.action!.label, lagos.tone], ['open-city', 'Enter Lagos', 'here']);
-  const isOpen = (id: string): boolean => cityRules(id)?.status === 'open';
+  const isOpen = isOpenCityId;
   // Only open destinations are listed with a fare; planned ones are named under "Opening soon" and carry none.
   assert.equal(lagos.routes.length, CITY_LINKS.filter((link) => (link.a === 'lagos' || link.b === 'lagos') && isOpen(link.a === 'lagos' ? link.b : link.a)).length);
   assert.ok(lagos.routes.every((route) => isOpen(route.to)));
   assert.deepEqual(lagos.soon, [], 'every city Lagos links to is open');
-  assert.deepEqual(regionInfo({ kind: 'state', id: 'fct' }, { ...context, current: 'abuja', feature: nigeria.byId.get('fct') }).soon, ['Kaduna'], 'a planned destination is named under "Opening soon"');
+  const kadunaOpen = cityCatalogueEntry('kaduna')?.open === true;
+  assert.deepEqual(regionInfo({ kind: 'state', id: 'fct' }, { ...context, current: 'abuja', feature: nigeria.byId.get('fct') }).soon, kadunaOpen ? [] : ['Kaduna'], 'the Kaduna destination follows its catalogue status');
   const oyo = regionInfo({ kind: 'state', id: 'oyo' }, { ...context, feature: nigeria.byId.get('oyo') });
   assert.equal(regionStatus('state', 'oyo'), 'open'); assert.equal(stateOfCity('ibadan'), 'oyo');
   assert.equal(oyo.preview, null); assert.equal(oyo.teaser, cityEntry('ibadan')!.teaser); assert.deepEqual(oyo.routes.map((route) => route.mode), ['road', 'rail']);
   assert.ok(oyo.routes.every((route) => route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub && route.why === null));
   assert.equal(regionStatus('state', 'ogun'), 'open');
-  // The planned cities keep their preview and their routes, with fare and time.
-  for (const [id, city, current] of [['kaduna', 'kaduna', 'abuja']] satisfies [string, string, string][]) {
-    const info = regionInfo({ kind: 'state', id }, { ...context, current, feature: nigeria.byId.get(id) });
-    assert.equal(regionStatus('state', id), 'planned'); assert.equal(stateOfCity(city), id);
-    assert.deepEqual(info.preview, cityEntry(city)!.preview); assert.ok(info.routes.length >= 1);
-    for (const route of info.routes) { assert.ok(route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub); assert.match(route.why!, /is not open yet, so nothing leaves for it\. Departures start the day it opens\./); }
+  // Closed catalogue cities remain planned until a CitySpec opens their state.
+  for (const city of cityCatalogue().filter((item) => !item.open && !openStates.includes(item.state.id))) {
+    const info = regionInfo({ kind: 'state', id: city.state.id }, { ...context, current: 'abuja', feature: nigeria.byId.get(city.state.id) });
+    assert.equal(regionStatus('state', city.state.id), 'planned'); assert.equal(stateOfCity(city.id), city.state.id);
+    assert.deepEqual(info.preview, cityEntry(city.id)!.preview);
+  }
+  // The Kaduna reservation keeps its preview/fare refusal while closed and becomes enterable when its CitySpec opens it.
+  const kaduna = regionInfo({ kind: 'state', id: 'kaduna' }, { ...context, current: 'abuja', feature: nigeria.byId.get('kaduna') });
+  if (kadunaOpen) {
+    assert.equal(regionStatus('state', 'kaduna'), 'open');
+    assert.equal(cityAccess('kaduna', { current: 'abuja', held: ['abuja'] }), 'enter');
+    assert.equal(cityEntry('kaduna')?.status, 'playable');
+  } else {
+    assert.equal(cityAccess('kaduna', { current: 'abuja', held: ['abuja'] }), 'soon');
+    assert.ok(kaduna.routes.length >= 1);
+    for (const route of kaduna.routes) { assert.ok(route.fare > 0 && route.minutes > 0 && route.km > 0 && route.hub); assert.match(route.why!, /is not open yet, so nothing leaves for it\. Departures start the day it opens\./); }
   }
   // A route is live only when the server says the trip may start.
   const mine = [{ to: 'ibadan', mode: 'road', blocked: null }];
@@ -274,6 +310,10 @@ test('a capital marker does not claim the character is there merely because its 
     await atlas.ready; atlas.resize(); await settle();
     atlas.setCity('ota'); run();
     assert.deepEqual(atlas.diagnostics().selected, { kind: 'state', id: 'ogun' });
+    assert.equal(atlas.diagnostics().markers, 'states');
+    assert.deepEqual(atlas.diagnostics().cityLabels, [], 'the whole-country view names states instead of crowding in cities');
+    atlas.zoomBy(0.6); run();
+    assert.equal(atlas.diagnostics().markers, 'cities');
     assert.deepEqual(atlas.diagnostics().cityLabels.find(label => label.id === 'city:abeokuta'), { id: 'city:abeokuta', text: 'Abeokuta', note: 'Open' });
     assert.deepEqual(atlas.diagnostics().cityLabels.filter(label => label.note === 'You are here').map(label => label.id), ['city:ota'], 'the note belongs to the city the player is in, not to the state’s marker');
     assert.deepEqual(atlas.diagnostics().cityLabels.filter(label => label.id.startsWith('city:') && label.note === 'Open').some(label => label.id === 'city:ota'), false);
@@ -420,15 +460,16 @@ test('the atlas stays out of the first download, and its one frame loop lives in
   }
 });
 
-test('a state with several open cities names each of them on the map', async () => {
+test('every catalogue state with several open cities names all of them on its state view', async () => {
   const { atlas, settle, run } = harness({ reducedMotion: true, width: 390, height: 844 });
   try {
     await atlas.ready; atlas.resize(); await settle();
-    atlas.select({ kind: 'state', id: 'ogun' }, { flyTo: true }); await settle(); run();
-    const names = atlas.diagnostics().cityLabels.map(label => label.text);
-    assert.ok(names.includes('Abeokuta'), 'the state’s own marker');
-    assert.ok(names.filter(name => ['Ota', 'Ijebu-Ode', 'Sagamu'].includes(name)).length >= 1, 'the other open cities of the state are named as soon as there is room');
-    assert.equal(new Set(atlas.diagnostics().cityLabels.map(label => label.id)).size, atlas.diagnostics().cityLabels.length);
+    for (const [stateId, cityIds] of openStateGroups().filter(([, cities]) => cities.length > 1)) {
+      atlas.select({ kind: 'state', id: stateId }, { flyTo: true }); await settle(); run();
+      const labels = atlas.diagnostics().cityLabels;
+      for (const cityId of cityIds) assert.ok(labels.some((label) => label.id === `city:${cityId}`), `${stateId}: ${cityId} is named`);
+      assert.equal(new Set(labels.map((label) => label.id)).size, labels.length);
+    }
   } finally { atlas.destroy(); }
 });
 
@@ -461,55 +502,57 @@ test('open cities that crowd on a phone keep every name, none on another city’
   }
 });
 
-test('all nine open cities are named on a phone-sized Nigeria: every name whole on screen, none over another name or another city’s dot', () => {
-  const alts = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const
-  const open = playableCityIds().map((id) => ({ id, name: cityRules(id)!.name }))
-  assert.equal(open.length, 9)
-  for (const current of ['lagos', 'kano', 'ota']) for (const pixels of [22, 26, 30]) {
-    // Nigeria fitted to a 390-pixel screen: its west edge (2.7°E) a few pixels in from the left, its north (13.9°N) under the top bar.
-    const point = (lon: number, lat: number) => ({ x: 14 + (lon - 2.7) * pixels, y: 190 + (13.9 - lat) * pixels })
-    const candidates = open.map((city) => { const entry = cityEntry(city.id)!; return { id: city.id, ...point(entry.lon, entry.lat), text: city.name, priority: city.id === current ? 2000 : ['abeokuta', 'lagos', 'ibadan', 'abuja', 'port-harcourt', 'kano'].includes(city.id) ? 1000 : 200, size: 13, anchor: 'above' as const, alts, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open', cls: 'is-city is-open' } })
-    const placed = placeLabels(candidates, { width: 390, height: 844 })
-    assert.deepEqual(placed.map((label) => label.id).sort(), open.map((city) => city.id).sort(), `${current} at ${pixels}px: every open city is named`)
-    for (const label of placed) {
-      assert.ok(label.box.left >= 0 && label.box.right <= 390 && label.box.top >= 0 && label.box.bottom <= 844, `${current} at ${pixels}px: ${label.id} is whole on screen`)
-      for (const other of placed) if (other !== label) {
-        if (!label.fixed && !other.fixed) assert.ok(label.box.right <= other.box.left || other.box.right <= label.box.left || label.box.bottom <= other.box.top || other.box.bottom <= label.box.top, `${current} at ${pixels}px: ${label.id} and ${other.id} do not overlap`)
-        assert.ok(!(other.home.x > label.box.left && other.home.x < label.box.right && other.home.y > label.box.top && other.home.y < label.box.bottom), `${current} at ${pixels}px: ${label.id} is not on the dot of ${other.id}`)
-      }
-    }
-  }
-})
+const PHONE_ALTS = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const;
+const phoneState = (cityIds: readonly string[]) => {
+  const cities = cityIds.map((id) => ({ id, name: cityName(id)!, entry: cityEntry(id)! }));
+  const lons = cities.map((city) => city.entry.lon), lats = cities.map((city) => city.entry.lat);
+  const midLon = (Math.min(...lons) + Math.max(...lons)) / 2, midLat = (Math.min(...lats) + Math.max(...lats)) / 2;
+  const scale = Math.min(300 / Math.max(0.18, Math.max(...lons) - Math.min(...lons)), 620 / Math.max(0.18, Math.max(...lats) - Math.min(...lats)));
+  const point = (lon: number, lat: number) => ({ x: 195 + (lon - midLon) * scale, y: 430 - (lat - midLat) * scale });
+  return { cities, point };
+};
 
-test('taps at 390 × 844: every open city is selectable by its dot and by its name from every other city’s view, and a tap on small Lagos is never Ota', () => {
-  const alts = ['right', 'left', 'below', 'far-above', 'far-below', 'far-right', 'far-left'] as const
-  const open = playableCityIds().map((id) => ({ id, name: cityRules(id)!.name, entry: cityEntry(id)! }))
-  const states = createPicker(nigeria, { slack: 0.05 })
-  assert.equal(MIN_TOUCH_PX, 44)
-  for (const current of open.map((city) => city.id)) for (const pixels of [22, 26, 30]) {
-    const point = (lon: number, lat: number) => ({ x: 14 + (lon - 2.7) * pixels, y: 190 + (13.9 - lat) * pixels })
-    const placed = placeLabels(open.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), text: city.name, priority: city.id === current ? 2000 : 1000, size: 13, anchor: 'above' as const, alts, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open' })), { width: 390, height: 844 })
-    const targets = open.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), state: stateOfCity(city.id), label: placed.find((label) => label.id === city.id)?.box ?? null }))
-    const under = (x: number, y: number) => { const lon = 2.7 + (x - 14) / pixels, lat = 13.9 - (y - 190) / pixels; return states.find(lon, lat)?.id ?? null }
-    for (const target of targets) {
-      assert.equal(cityHit(target, targets, { stateUnder: under(target.x, target.y) }), target.id, `${current} at ${pixels}px: the dot of ${target.id}`)
-      if (target.label) {
-        // Somewhere on the name that no other dot sits under (a name moved clear of its dot can lie across a neighbour's).
-        const y = (target.label.top + target.label.bottom) / 2, row = [0.5, 0.25, 0.75, 0.1, 0.9].map((share) => ({ x: target.label!.left + (target.label!.right - target.label!.left) * share, y }))
-        const spot = row.find((p) => targets.every((other) => other === target || Math.hypot(other.x - p.x, other.y - p.y) > DOT_EXACT_PX))
-        assert.ok(spot, `${current} at ${pixels}px: ${target.id}'s name has a free place to tap`)
-        assert.equal(cityHit(spot, targets, { stateUnder: under(spot.x, spot.y) }), target.id, `${current} at ${pixels}px: the name of ${target.id}`)
+test('the original nine stay open and every catalogue state names each open city on a phone state view', () => {
+  assert.ok(ORIGINAL_OPEN.every((id, index) => playableCityIds().includes(id) && (index === 0 || playableCityIds().indexOf(ORIGINAL_OPEN[index - 1]!) < playableCityIds().indexOf(id))), 'the original open-city order is preserved');
+  const covered = new Set<string>();
+  for (const [stateId, cityIds] of openStateGroups()) {
+    const { cities, point } = phoneState(cityIds), current = cityIds[0]!;
+    const candidates = cities.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), text: city.name, priority: city.id === current ? 2000 : 1000, size: 13, anchor: 'above' as const, alts: PHONE_ALTS, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open', cls: 'is-city is-open' }));
+    const placed = placeLabels(candidates, { width: 390, height: 844, cap: cities.length });
+    assert.deepEqual(placed.map((label) => label.id).sort(), cityIds.slice().sort(), `${stateId}: every open city is named`);
+    for (const label of placed) {
+      covered.add(label.id);
+      assert.ok(label.box.left >= 0 && label.box.right <= 390 && label.box.top >= 0 && label.box.bottom <= 844, `${stateId}: ${label.id} is whole on screen`);
+      for (const other of placed) if (other !== label) {
+        if (!label.fixed && !other.fixed) assert.ok(label.box.right <= other.box.left || other.box.right <= label.box.left || label.box.bottom <= other.box.top || other.box.bottom <= label.box.top, `${stateId}: ${label.id} and ${other.id} do not overlap`);
+        assert.ok(!(other.home.x > label.box.left && other.home.x < label.box.right && other.home.y > label.box.top && other.home.y < label.box.bottom), `${stateId}: ${label.id} is not on ${other.id}'s dot`);
       }
     }
-    // The little Lagos area, a few pixels from Ota's dot: any tap on Lagos's own ground that is nearer its dot than Ota's, or in no dot's reach, is Lagos.
-    const lagos = targets.find((target) => target.id === 'lagos')!
-    for (const [dx, dy] of [[0, 0], [3, 0], [-3, 4], [4, -4], [6, 6]] as const) {
-      const spot = { x: lagos.x + dx, y: lagos.y + dy }, toLagos = Math.hypot(dx, dy)
-      const onAName = targets.some((other) => other.label && spot.x >= other.label.left && spot.x <= other.label.right && spot.y >= other.label.top && spot.y <= other.label.bottom)
-      if (onAName || targets.some((other) => other !== lagos && Math.hypot(spot.x - other.x, spot.y - other.y) < toLagos) || under(spot.x, spot.y) !== 'lagos') continue
-      assert.equal(cityHit(spot, targets, { stateUnder: 'lagos' }), 'lagos', `${current} at ${pixels}px: ${dx},${dy}`)
+  }
+  assert.deepEqual(covered, new Set(playableCityIds()), 'every open city received phone label coverage');
+});
+
+test('phone state views: every open city is selectable by its dot and its name', () => {
+  assert.equal(MIN_TOUCH_PX, 44);
+  const covered = new Set<string>();
+  for (const [stateId, cityIds] of openStateGroups()) {
+    const { cities, point } = phoneState(cityIds);
+    for (const current of cityIds) {
+      const placed = placeLabels(cities.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), text: city.name, priority: city.id === current ? 2000 : 1000, size: 13, anchor: 'above' as const, alts: PHONE_ALTS, fixed: city.id === current, note: city.id === current ? 'You are here' : 'Open' })), { width: 390, height: 844, cap: cities.length });
+      const targets = cities.map((city) => ({ id: city.id, ...point(city.entry.lon, city.entry.lat), state: stateId, label: placed.find((label) => label.id === city.id)?.box ?? null }));
+      for (const target of targets) {
+        assert.equal(cityHit(target, targets, { stateUnder: stateId }), target.id, `${stateId}/${current}: the dot of ${target.id}`);
+        assert.ok(target.label, `${stateId}/${current}: ${target.id} has a label target`);
+        const label = target.label!, y = (label.top + label.bottom) / 2;
+        const row = [0.5, 0.25, 0.75, 0.1, 0.9].map((share) => ({ x: label.left + (label.right - label.left) * share, y }));
+        const spot = row.find((pointAt) => targets.every((other) => other === target || Math.hypot(other.x - pointAt.x, other.y - pointAt.y) > DOT_EXACT_PX));
+        assert.ok(spot, `${stateId}/${current}: ${target.id}'s name has a free place to tap`);
+        assert.equal(cityHit(spot, targets, { stateUnder: stateId }), target.id, `${stateId}/${current}: the name of ${target.id}`);
+        covered.add(target.id);
+      }
     }
   }
+  assert.deepEqual(covered, new Set(playableCityIds()), 'every open city received phone tap coverage');
   const dots = [{ id: 'a', x: 100, y: 100, state: 'one' }, { id: 'b', x: 105, y: 100, state: 'two' }]
   assert.equal(cityHit({ x: 100, y: 120 }, dots, { stateUnder: 'one' }), 'a', 'beyond a dot, the state under the finger decides between two near cities')
   assert.equal(cityHit({ x: 100, y: 120 }, dots, { stateUnder: 'two' }), 'b')

@@ -4,7 +4,7 @@
  * Their walkable descriptions (WALK) are with the other kinds in venue-scenes.js.
  */
 import { GLOW, GLASS } from './build.ts';
-import { cityRules, linksFrom } from '../game/cities/registry.ts';
+import { cityName, isOpenCityId, linksFrom } from '../game/cities/registry.ts';
 import type { Batch, Colour, SceneDef } from './types.ts';
 import {
   ground, table, chair, bench, counter, plant, lampPost, kiosk, ropeLine, fence, rug, sign, landmark, extra,
@@ -19,7 +19,7 @@ function flightRows(cityId: string): { name: string; open: boolean }[] {
   for (const link of linksFrom(cityId)) {
     if (link.mode !== 'air' || seen.has(link.to)) continue;
     seen.add(link.to);
-    rows.push({ name: (cityRules(link.to)?.name ?? link.to).toUpperCase(), open: cityRules(link.to)?.status === 'open' });
+    rows.push({ name: (cityName(link.to) ?? link.to).toUpperCase(), open: isOpenCityId(link.to) });
   }
   return rows.sort((a, c) => Number(c.open) - Number(a.open)).slice(0, 3);
 }

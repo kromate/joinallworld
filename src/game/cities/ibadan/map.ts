@@ -5,7 +5,7 @@ import { decodeTopology } from '../../../map3d/geo/topo.ts'
 import type { Feature } from '../../../map3d/geo/topo.ts'
 import { IBADAN_LGA_IDS, OYO_LGAS, OYO_STATE } from '../../../map3d/geo/data/oyo.ts'
 import { IBADAN_MAP_ORIGIN } from './rules.ts'
-import { citiesInState } from '../registry.ts'
+import { catalogueCitiesInState } from '../registry.ts'
 import type { ContextSpec } from '../../../map3d/context.ts'
 import type { IbadanLocalGovernmentId } from './rules.ts'
 
@@ -72,7 +72,7 @@ export const IBADAN_MAP: CityMapPack<'ibadan', IbadanLocalGovernmentId> = Object
   stateFeatureId: 'oyo-state',
   loadScene: async () => {
     const [{ createModulePack }, { IBADAN_ROADS }, { IBADAN_CHARACTER }] = await Promise.all([import('../../../map3d/cities/module.ts'), import('./roads.ts'), import('./character.ts')])
-    return createModulePack(ibadanCity, { landmarks: IBADAN_LANDMARK_POINTS, iconOffsets: IBADAN_ICON_OFFSETS, roads: IBADAN_ROADS, character: IBADAN_CHARACTER, surroundings: { spec: SURROUNDINGS, planned: ['ogun', 'osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).some((city) => city.status !== 'open')) } })
+    return createModulePack(ibadanCity, { landmarks: IBADAN_LANDMARK_POINTS, iconOffsets: IBADAN_ICON_OFFSETS, roads: IBADAN_ROADS, character: IBADAN_CHARACTER, surroundings: { spec: SURROUNDINGS, planned: ['ogun', 'osun', 'ondo', 'kwara'].filter((state) => catalogueCitiesInState(state).some((city) => !city.open)) } })
   },
   loadGeometry: async () => geometry(),
 })

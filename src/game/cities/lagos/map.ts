@@ -1,4 +1,4 @@
-import { LAGOS_LGAS } from './rules.ts'
+import { LAGOS_LGAS } from './localUnits.ts'
 import { ORIGINS } from '../../../map3d/geo/frame.ts'
 import type { CityMapPack } from '../../../types/content.ts'
 import type { LagosLocalGovernmentId } from './rules.ts'

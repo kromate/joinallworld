@@ -1,5 +1,5 @@
 import { initialCity } from './storage-city.ts';
-import { registeredCityIds, cityRules, cityDefaultName, loadCityContent, isCityId, isOpenCityId } from './game/cities/registry.ts';
+import { cityCatalogueEntry, registeredCityIds, cityRules, cityDefaultName, loadCityContent, isCityId, isOpenCityId } from './game/cities/registry.ts';
 import { STORAGE_KEY } from './storage-key.ts';
 /**
  * Client model: the browser's read-only mirror of the server-held life, plus networking.
@@ -10,16 +10,16 @@ import { STORAGE_KEY } from './storage-key.ts';
  * is shown read-only until the server is reachable again.
  */
 import { createLife, isDeparting } from './life.ts';
-import { loadLifeCities } from './game/cities/lifeCities.ts';
+import { lifeCities, loadLifeCities } from './game/cities/lifeCities.ts';
 import { campusFor } from './game/campus-gate.ts';
 import type { LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
 
 export interface City { id: CityId; name: string; region: string }
 export function clientCity(id: string): City {
-  const rules = cityRules(id);
-  if (!rules) throw new TypeError(`Unknown city ${id}`);
-  return { id, name: rules.name, region: rules.state?.name ?? rules.name };
+  const city = cityCatalogueEntry(id);
+  if (!city?.open) throw new TypeError(`Unknown city ${id}`);
+  return { id, name: city.name, region: city.state.name };
 }
 
 /** Why the game is or is not playable (see createClient). */
@@ -215,6 +215,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   // getItem may answer null (parses to null) or undefined (JSON.parse throws, caught): either way nothing was saved.
   try { cached = storage?.getItem(STORAGE_KEY) ?? null; saved = JSON.parse(cached ?? 'null') as SavedClient | null; } catch {}
   const cityId = initialCity(cached, isCityId);
+  const missingRules = lifeCities(saved?.state, [cityId]).filter((id) => cityRules(id) === null)
+  if (missingRules.length) throw new Error(`Saved life rules have not been loaded: ${missingRules.join(', ')}`)
   const client: Client = {
     // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
     state: createLife(campusFor(saved?.state) ? null : saved?.state, { cityId }),
@@ -304,7 +306,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   async function accept(next: unknown, rev?: number, askedAt = taken, cause: ChangeCause = 'own'): Promise<boolean> {
     const overtaken = (): boolean => typeof rev === 'number' && rev < revision && askedAt < taken;
     if (overtaken()) return false;
-    await loadLifeCities(next, [client.cityId]).catch(() => []); // every city the life refers to, before it is rebuilt
+    await loadLifeCities(next, [client.cityId]); // every city the life refers to, before it is rebuilt
     const waiting = campusFor(next);
     if (waiting) await waiting;
     if (overtaken()) return false;

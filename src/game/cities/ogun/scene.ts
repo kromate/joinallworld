@@ -1,5 +1,5 @@
 import type { ModuleCharacter, ModuleScene, RoadRows } from '../../../map3d/cities/module.ts'
-import { citiesInState } from '../registry.ts'
+import { catalogueCitiesInState } from '../registry.ts'
 import { OGUN_CHARACTER, OGUN_QUARTERS, OGUN_SCOPE, OGUN_SURROUNDINGS } from './character.ts'
 import type { OgunCityId } from './character.ts'
 import { OGUN_ROADS } from './roads.ts'
@@ -41,6 +41,6 @@ export function ogunScene(city: OgunCityId, landmarks: readonly OgunLandmarkPoin
     landmarks: [...landmarks, ...OGUN_QUARTERS[city].map((quarter) => ({ ...quarter, kind: 'quarter' }))],
     roads,
     character: { ...OGUN_CHARACTER[city], waters: waters(rowsWithin(OGUN_WATER, scope)) },
-    surroundings: { spec: OGUN_SURROUNDINGS[city], planned: ['osun', 'ondo', 'kwara'].filter((state) => citiesInState(state).some((city) => city.status !== 'open')) },
+    surroundings: { spec: OGUN_SURROUNDINGS[city], planned: ['osun', 'ondo', 'kwara'].filter((state) => catalogueCitiesInState(state).some((item) => !item.open)) },
   }
 }

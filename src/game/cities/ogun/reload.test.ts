@@ -42,6 +42,9 @@ test('a life with homes in Lagos, Ota and Abeokuta reloads cleanly in each of th
       for (const mode of ['trusted', 'untrusted']) {
         const probe = spawnSync(process.execPath, ['--experimental-strip-types', new URL('../../../../scripts/reload-probe.ts', import.meta.url).pathname, file, city, mode], { encoding: 'utf8' })
         assert.equal(probe.status, 0, `${city} (${mode}): ${probe.stderr.split('\n').filter(Boolean).slice(0, 3).join(' | ')}`)
+        const read = JSON.parse(probe.stdout) as { rules: boolean; cold: string[] }
+        assert.equal(read.rules, true, `${city} (${mode}): every referenced city's rules loaded before rebuild`)
+        assert.ok(read.cold.length >= 2, `${city} (${mode}): other city content stayed cold`)
       }
     }
   } finally { rmSync(dir, { recursive: true, force: true }) }

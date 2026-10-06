@@ -1,6 +1,6 @@
 # City modules
 
-A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: eager rules needed for validation and prices, a lazy content loader, and a lazy map loader. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
+A playable city is one folder under `src/game/cities`. The folder exports one `CityModule`: rules needed for validation and prices, a content loader, and a map loader. The registry loads the module on demand. Its startup catalogue holds city identity, state, atlas position, open status, and airport availability. Lagos is the reference module. The current open cities are Lagos, Ibadan, Abeokuta, Ota, Ijebu-Ode, Sagamu, Port Harcourt, Abuja and Kano.
 
 ## Catalogue states
 
@@ -16,7 +16,7 @@ Kaduna is the one closed preview: it is on the atlas, at the end of the Abuja ra
 
 ## Contract
 
-`CityModule<City, State, LocalUnit, District, Hub>` ties a city's id to its authored child ids. Its `rules` object is the small synchronous metadata boundary used by validation, housing prices and travel. The initial loading screen does not import the engine or city content. The prose and gameplay catalogue in `CityContent` loads only when a host enters or previews the city. Map metadata is a separate lazy chunk.
+`CityModule<City, State, LocalUnit, District, Hub>` ties a city's id to its authored child ids. Its `rules` object is synchronous after `loadCityRules(id)` resolves. Validation and housing prices use these loaded rules. Catalogue helpers provide names and open status before rules arrive. The initial loading screen does not import the engine or city content. The prose and gameplay catalogue in `CityContent` loads only when a host enters or previews the city. Map metadata is a separate lazy chunk.
 
 Rules provide:
 
@@ -40,7 +40,7 @@ Dream and family-outcome wording can be localized through `dreamWording` and `lo
 
 Travel visits and activity cooldowns are keyed by city outside Lagos; existing bare Lagos keys remain readable. Bounded references to an unloaded origin survive reload without loading its prose. Loaded catalogues validate the referenced IDs and cooldown duration. Daily earning and roadside-event caps remain global. The last local route and an unanswered roadside choice are transient and clear when the character changes city.
 
-The engine remains synchronous after startup. A host first awaits `loadCityContent(id)`, then reads `cityContent(id)`. Reading an unloaded city's content throws. `cachedCityContent(id)` is the non-throwing probe. Map hosts use the equivalent `loadCityMap` and `cityMap` pair.
+The engine remains synchronous after startup. A host first awaits `loadCityContent(id)`, which also loads the city rules and authored route table, then reads `cityContent(id)`. Before restoring a save, the host awaits `loadLifeCities(raw)`. That loads full rules for every referenced city and content for the current city. A download failure prevents reconstruction and leaves the saved copy intact. Reading an unloaded city's content throws. `cachedCityContent(id)` is the non-throwing probe. Map hosts use the equivalent `loadCityMap` and `cityMap` pair.
 
 The browser, servers, tests and command-line tools must cross this loading boundary before calling `createLife`. The shared engine never imports another city's venue or regular catalogue as a fallback. Lagos definitions live in `src/game/cities/lagos/venues.ts` and `regulars.ts`; import them directly only when inspecting that city's source data. A friend's bounded identity snapshot travels with the character, so loading a destination does not require the previous city's prose.
 
@@ -55,7 +55,7 @@ Map geometry follows the equirectangular Nigeria frame: 8 degrees east and 9 deg
 
 ### How the state view and the city maps relate
 
-- The atlas (Nigeria level) is the state view. A state with several open cities names each of them on the map; the city the player is in carries "You are here", the others "Open", and a state's own marker never claims the player is there. Labels collide-check by priority; only the player's city is always shown.
+- The atlas (Nigeria level) is the state view. At country scale the atlas shows state dots. At closer scales it shows open cities; the city the player is in carries "You are here", the others "Open", and a state's own marker never claims the player is there. Labels collide-check by priority; only the player's city is always shown.
 - Selecting such a state opens its card: one 44px chip per city, then the state's own map (`src/map3d/geo/state-overview.ts`): every local government of the state in the shared projection, open cities as pins, the unopened local governments grey and labelled "coming", and the travel links between cities (including those that leave for a city in another state, such as Lagos or Ibadan) as lines, dashed for rail. Tapping a pin selects the city; tapping a line or a row shows its mode, fare, time and distance. The overview loads with the state's map chunk when the card opens.
 - Choosing a city (its dot, its name, a pin of the state view or its chip) shows its travel card: its name and one line about it, then one button per way there, cheapest first, each with its price and its seconds ("Bus · ₦14,000 · 59 s"). One tap on a way leaves; a fare above half the cash in hand asks once, in place (`TRAVEL_CONFIRM_SHARE`, `src/map3d/geo/travel-card.ts`). A way that cannot leave says why: what stops every way alike is said once above them, a fare that cannot be paid names the amount missing. "Things to do in <city>" (the content's `thingsToDo`, fetched when the card opens) and the routes with their preview are folded under it.
 - The Map's level bar (World › Africa › Nigeria › the city) is on the city map itself and is the atlas's own breadcrumb on the atlas, so every level is one tap from the Map (`G` opens the world). A tap on an open country from further out goes straight in to its cities. A state with several open cities, tapped on the map, is flown to and names its cities; a tap on a city's dot is that city whichever state's ground is under the finger.
@@ -65,9 +65,11 @@ Map geometry follows the equirectangular Nigeria frame: 8 degrees east and 9 deg
 
 ## Adding a city
 
-1. Add one folder with rules, content and a lazy map loader. Keep generated, licensed geometry behind that loader. Links belong to the module; the registry combines both directions. Every provisional fare carries `beta: true`. A link is written with `timedLink({ …, mode, km })`: its `seconds` come from the one timetable (`INTERCITY_TIME` in `src/game/content/travel.ts`), never from a number of its own.
-2. Register the module once in `MODULES`. Its metadata supplies names, server validation, atlas markers, local units and travel without another city table. A module supersedes reserved closed-city metadata.
-3. Add its contract and journey tests. `cityContractTest(module)` checks the built scene registry, career coverage, goal and wish references, and both directions of every live registry link. It decodes the real polygons, proves that multi-unit data contains exact shared border segments, samples the union extent to ensure local units and local water tile `playArea`, checks that the footprint lies inside `state`, detects overlap and outside geometry within stated tolerances, and checks the shared-frame round trip. This is a bounded topology check, not a formal GIS proof that every possible neighbouring edge is complete. Host tests register the fictional modules before starting the host and await their content loaders.
+New cities use `src/game/cities/<id>/spec.ts` and pinned source records. Follow [City research](CITY-RESEARCH.md), then run `npm run cities:build -- <id>` and `npm run cities:build -- <id> --check`. The generator derives gameplay from place kinds and writes the runtime modules. Sagamu uses a separate legacy recipe to retain its existing authored content exactly.
+
+1. Review the spec and pinned sources, then generate the city. Keep generated, licensed geometry behind the map loader. The registry generates road and eligible air links automatically. Only verified rail lines need authored links, written with `timedLink({ …, mode, km })`; their seconds come from `INTERCITY_TIME`. Every provisional fare carries `beta: true`.
+2. City generation refreshes the compact catalogue, lazy loaders and authored route table. `npm run cities:catalogue` also refreshes these independently. A module supersedes reserved closed-city metadata.
+3. Run the registry-driven source, contract, journey, reload, scene, geometry and never-stuck checks. New cities are included automatically. `cityContractTest(module)` checks the built scene registry, career coverage, goal and wish references, and both directions of every live registry link. It decodes the real polygons, proves that multi-unit data contains exact shared border segments, samples the union extent to ensure local units and local water tile `playArea`, checks that the footprint lies inside `state`, detects overlap and outside geometry within stated tolerances, and checks the shared-frame round trip. This is a bounded topology check, not a formal GIS proof that every possible neighbouring edge is complete. Host tests register the fictional modules before starting the host and await their content loaders.
 
 The small fictional modules use `{ profile: 'test-fixture' }`, which skips only the full-city venue-kind minimum. The profile is refused for an id that does not start with `test-`; an opened module cannot use it. The negative contract suite holds broken examples for missing shared borders, overlaps, state coverage gaps, missing scene builders, incomplete career declarations, broken goal and wish references, and links that disagree with the registry.
 
@@ -83,7 +85,7 @@ A completed journey starts a new life, settles, works and travels out and back. 
 
 The character creator's list of places is read from the registry (`placesFrom` in `src/app/features/start/placesModel.ts`): a reserved city appears under its state as "coming" without another table, and opens when a module replaces the reservation. Ibadan, Abuja, Port Harcourt, Abeokuta and Kano are reserved today.
 
-The loading screen, the game shell and a city's content are separate downloads. The registry's rules (ids, prices, units, links) are eager; Lagos content is assembled in the engine chunk because the engine reads it synchronously, and any other module's content and map are their own chunks, fetched after the loading screen paints. The sizes are guarded by `src/app/entry.test.ts`.
+The loading screen, the game shell and a city's content are separate downloads. Each city has lazy rules, content, and map chunks. Automatic startup loads the selected city rules and content, plus the shared authored routes. It does not fetch other cities' rules or maps. `src/app/entry.test.ts` measures those automatic downloads, including dynamic city chunks, against the unchanged size budget.
 
 ## A visitor is never stuck
 

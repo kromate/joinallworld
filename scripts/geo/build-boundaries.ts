@@ -27,22 +27,32 @@
 // The lagoon is derived: Lagos State (ADM1, which includes the lagoon) minus the union of the 20 local governments
 // (ADM2, which are land only), found on a raster of 0.0002 degrees, traced, and simplified.
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { project } from '../../src/map3d/geo/frame.ts';
 import { LAGOS } from '../../src/map3d/geo/data/lagos.ts';
 import { decodeTopology, encodeArc } from '../../src/map3d/geo/topo.ts';
 import type { FeatureData, RawTopo } from '../../src/map3d/geo/topo.ts';
+import {
+  NIGERIA_BOUNDARY_RELEASE,
+  finite,
+  geometryPolygons,
+  isRecord,
+  loadNigeriaBoundarySource,
+  pointOf,
+  polygonsOf,
+} from './nigeria-boundaries.ts';
+import type {
+  BoundaryFeature as GeoFeature,
+  BoundaryFeatureCollection as GeoFeatureCollection,
+  Point as Pt,
+  Polygon,
+} from './nigeria-boundaries.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const cacheDir = join(root, '.cache', 'geo');
-const RELEASE = '9469f09';
+const RELEASE = NIGERIA_BOUNDARY_RELEASE;
 const ACCEPTED_LAGOS_SHA256 = 'e65bb768f638d863576bf64dc800fb4823777def95813e4ed8171678ec7ac1f9';
-const SOURCES = {
-  adm1: { url: `https://github.com/wmgeolab/geoBoundaries/raw/${RELEASE}/releaseData/gbOpen/NGA/ADM1/geoBoundaries-NGA-ADM1.geojson`, sha256: '64fa218ac3d453cc1e66412ff461c5dfa1a4a1ade0da93b239a9891b587d28f9', bytes: 2289696 },
-  adm2: { url: `https://github.com/wmgeolab/geoBoundaries/raw/${RELEASE}/releaseData/gbOpen/NGA/ADM2/geoBoundaries-NGA-ADM2.geojson`, sha256: 'bef7f2cfa45e012f4772eaa61c7b99e5188aeba4d5c6badae7e9f9aae8c02fcd', bytes: 9422551 },
-} as const;
 
 /** Tolerances. Effective areas are in square map units (1 unit = 100 m, so 1 unit² = 10 000 m²). */
 export const TOLERANCE = {
@@ -58,76 +68,7 @@ export const TOLERANCE = {
 /** The smallest lagoon pieces kept, and the smallest islands of land inside it that still cut a hole, in km². */
 const LAGOON_MIN_KM2 = 0.5, ISLAND_MIN_KM2 = 0.05;
 
-type Pt = [number, number];
-type Polygon = Pt[][];
-
-interface GeoFeature {
-  properties: { shapeName: string }
-  polygons: Polygon[]
-}
-interface GeoFeatureCollection { features: GeoFeature[] }
-
-const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
-const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
-
-function pointOf(value: unknown, label: string): Pt {
-  if (!Array.isArray(value) || !finite(value[0]) || !finite(value[1])) throw new TypeError(`${label}: expected a longitude/latitude position`);
-  return [value[0], value[1]];
-}
-
-function ringOf(value: unknown, label: string): Pt[] {
-  if (!Array.isArray(value) || value.length < 4) throw new TypeError(`${label}: expected a closed GeoJSON ring`);
-  const points = value.map((point, index) => pointOf(point, `${label}[${index}]`));
-  const first = points[0], last = points.at(-1);
-  if (!first || !last || first[0] !== last[0] || first[1] !== last[1]) throw new TypeError(`${label}: ring is not closed`);
-  const open = points.slice(0, -1);
-  if (open.length < 3) throw new TypeError(`${label}: ring has fewer than three vertices`);
-  return open;
-}
-
-function polygonOf(value: unknown, label: string): Polygon {
-  if (!Array.isArray(value) || value.length < 1) throw new TypeError(`${label}: expected polygon rings`);
-  return value.map((ring, index) => ringOf(ring, `${label}[${index}]`));
-}
-
-function geometryPolygons(value: unknown, label: string): Polygon[] {
-  if (!isRecord(value) || (value.type !== 'Polygon' && value.type !== 'MultiPolygon')) throw new TypeError(`${label}: expected Polygon or MultiPolygon geometry`);
-  if (!Array.isArray(value.coordinates)) throw new TypeError(`${label}: geometry coordinates are missing`);
-  return value.type === 'Polygon'
-    ? [polygonOf(value.coordinates, `${label}.coordinates`)]
-    : value.coordinates.map((polygon, index) => polygonOf(polygon, `${label}.coordinates[${index}]`));
-}
-
-function featureCollectionOf(value: unknown, label: string): GeoFeatureCollection {
-  if (!isRecord(value) || value.type !== 'FeatureCollection' || !Array.isArray(value.features)) throw new TypeError(`${label}: expected a GeoJSON FeatureCollection`);
-  return { features: value.features.map((feature, index): GeoFeature => {
-    if (!isRecord(feature) || feature.type !== 'Feature' || !isRecord(feature.properties) || typeof feature.properties.shapeName !== 'string') {
-      throw new TypeError(`${label}.features[${index}]: expected a named GeoJSON feature`);
-    }
-    return { properties: { shapeName: feature.properties.shapeName }, polygons: geometryPolygons(feature.geometry, `${label}.features[${index}].geometry`) };
-  }) };
-}
-
-// ---- sources -------------------------------------------------------------------------------------------------------
-
-async function load(key: keyof typeof SOURCES): Promise<GeoFeatureCollection> {
-  const source = SOURCES[key], path = join(cacheDir, `geoBoundaries-NGA-${key.toUpperCase()}-${RELEASE}.geojson`);
-  if (!existsSync(path)) {
-    mkdirSync(cacheDir, { recursive: true });
-    const response = await fetch(source.url);
-    if (!response.ok) throw new Error(`${source.url}: HTTP ${response.status}`);
-    // Written beside the cache file and moved into place, so a second run started at the same moment never reads half a file.
-    const partial = `${path}.${process.pid}.part`;
-    writeFileSync(partial, Buffer.from(await response.arrayBuffer()));
-    renameSync(partial, path);
-  }
-  const raw = readFileSync(path);
-  if (createHash('sha256').update(raw).digest('hex') !== source.sha256 || raw.length !== source.bytes) throw new Error(`${key}: the file does not match its pinned hash`);
-  const parsed: unknown = JSON.parse(raw.toString('utf8'));
-  return featureCollectionOf(parsed, key);
-}
-
-const polygonsOf = (feature: GeoFeature): Polygon[] => feature.polygons;
+const load = loadNigeriaBoundarySource;
 
 // ---- geometry helpers ----------------------------------------------------------------------------------------------
 

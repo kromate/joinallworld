@@ -31,3 +31,5 @@ export function play(name: string): void { if (engine) engine.play(name); else i
 export function observe(state: LifeState, view: PanelView): void { latest = [state, view]; engine?.observe(state, view) }
 /** A voice call is ringing or connected: ambience steps back and interface sounds soften. */
 export function setCallActive(on: boolean): void { calling = on; engine?.call(on) }
+// The call screens say when a call is ringing or connected (a window event, so neither side imports the other): ambience ducks under it.
+globalThis.window?.addEventListener('jaw:call-active', (event) => setCallActive((event as CustomEvent<boolean>).detail === true))

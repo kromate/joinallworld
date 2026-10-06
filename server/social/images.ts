@@ -28,7 +28,8 @@ export const PICTURE_DEFAULTS: PictureSettings = Object.freeze({ mode: 'friends'
 const whole = (text: string, fallback: number, min: number, max: number): number => { const value = Number(text); return text.trim() !== '' && Number.isFinite(value) ? Math.min(max, Math.max(min, Math.floor(value))) : fallback; };
 /** The settings, read from the host's environment (ctx.env). Anything missing or malformed is the default. */
 export function pictureSettings(env: (name: string) => string): PictureSettings {
-  const mode = env('CHAT_IMAGES').trim().toLowerCase() === 'off' ? 'off' : 'friends';
+  // Off unless an operator sets CHAT_IMAGES=friends: pictures are switched on deliberately, not by default.
+  const mode = env('CHAT_IMAGES').trim().toLowerCase() === 'friends' ? 'friends' : 'off';
   return {
     mode,
     perDay: whole(env('CHAT_IMAGES_PER_DAY'), PICTURE_DEFAULTS.perDay, 1, 200),

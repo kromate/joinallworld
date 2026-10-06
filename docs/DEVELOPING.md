@@ -102,6 +102,10 @@ Scripted journeys print a transcript and are useful when you change the rules: `
 
 A running copy can be checked in about a minute with `npm run smoke -- <origin>` (the origin defaults to `http://127.0.0.1:5173`; `npm start` and `npm run start:worker` print theirs). It reads the health answer and build id, the page with its security headers and every asset and script it references, makes one guest named "Zz Test", loads its life and the world pulse, opens the socket and waits for the counts frame, sends one harmless action and repeats its id to see it answered as a duplicate, and fetches the content and map chunk of every open city. It makes a few dozen requests, prints one line per check and a PASS summary, and exits non-zero with a single FAIL line at the first problem. Against `npm run dev` the security headers and the built chunks are not there, so those two checks are skipped.
 
+## Working with several agents
+
+Many agents can work in separate git worktrees of this repository at once, and a build, a full test run or a typecheck each takes a gigabyte or more, so those commands wait their turn in machine-wide "slots". `npm run slot -- <heavy|server|browser> [--wait-ms N] -- <command...>` runs the command once a slot of that kind is free (at most 3 `heavy`, 2 `server`, 1 `browser` at a time; change a limit with `AGENT_SLOT_HEAVY`, `AGENT_SLOT_SERVER` or `AGENT_SLOT_BROWSER`), prints a line such as `waiting for heavy slot (3/3 busy: ...)` while it waits, passes the command's output and exit code through, and gives the slot back when the command ends or is interrupted. `npm run check:slot`, `test:slot`, `build:slot` and `typecheck:slot` are the same commands as `check`, `test`, `build` and `typecheck` inside a `heavy` slot, and `npm run slot -- status` lists who holds what. The locks are files in `agent-slots/` inside the repository's shared git directory (`git rev-parse --git-common-dir`), so every worktree sees the same ones; a lock whose process is gone is reclaimed by the next caller. Running a single test file with `node --test` needs no slot.
+
 ## When something does not start
 
 | You see | Do |

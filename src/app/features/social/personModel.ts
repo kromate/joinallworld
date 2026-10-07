@@ -21,10 +21,11 @@ export function personTarget(params: { npc?: unknown; player?: unknown }, npcIds
   return known.has(id) ? { kind: 'npc', id } : { kind: 'player', id }
 }
 
-/** Why a person's interactions cannot start, or null. `base` is the NPC's content, `here` the regular at this venue. */
-export function npcReason(input: { connected: boolean; cannot: string; here: Pick<NpcSummary, 'blocked'> | null; name: string; venueLabel: string; busy: boolean }): string | null {
+/** Why a person's interactions cannot start, or null. `base` is the NPC's content, `here` the regular at this venue, `where` the line that says where they are now (empty before the routines load). */
+export function npcReason(input: { connected: boolean; cannot: string; here: Pick<NpcSummary, 'blocked'> | null; name: string; venueLabel: string; busy: boolean; where?: string }): string | null {
+  const line = input.where ?? ''
   return !input.connected ? input.cannot
-    : !input.here ? `${input.name} is at ${input.venueLabel}. Go there to interact.`
+    : !input.here ? line ? `${line}.${line.startsWith(`At ${input.venueLabel}`) ? ' Go there to interact.' : ''}` : `${input.name} is at ${input.venueLabel}. Go there to interact.`
       : input.here.blocked ? input.here.blocked
         : input.busy ? 'Finish or cancel your current action first.' : null
 }

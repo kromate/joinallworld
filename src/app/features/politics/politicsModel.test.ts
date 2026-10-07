@@ -89,3 +89,18 @@ test('courts: who can go up, to which court, and what a ruling needs', () => {
   assert.match(noteWhy(null, 'ab'), /reasons first/); assert.equal(noteWhy(null, 'Fair and clear'), ''); assert.equal(noteWhy('Offline.', 'Fair'), 'Offline.')
   assert.match(statementWhy(null, ''), /statement first/); assert.equal(statementWhy(null, 'I was provoked'), '')
 })
+
+import { FLAG_TEXT, auditLine, grantWhy, petitionWhy } from './politicsModel.ts'
+
+test('an audit is told in numbers and warnings; a petition and a grant say why they cannot be made', () => {
+  const audit = { at: 1, by: { id: 'a', name: 'Ada' }, income: 5000, salary: 800, granted: 300, grants: 1, flags: [] as ('concentration')[] }
+  assert.equal(auditLine(audit), 'This term ₦5,000 came in; ₦800 was drawn as salary and ₦300 granted in 1 grant.')
+  assert.match(auditLine({ ...audit, grants: 2 }), /in 2 grants\./)
+  assert.deepEqual(Object.keys(FLAG_TEXT).sort(), ['concentration', 'drained', 'party_favour'])
+  const petition = { signed: 1, needed: 3, mine: false, open: true }
+  assert.equal(petitionWhy(null, petition, true), ''); assert.equal(petitionWhy('No internet.', petition, true), 'No internet.')
+  assert.match(petitionWhy(null, { ...petition, open: false }, true), /audit of this term that found something/)
+  assert.equal(petitionWhy(null, { ...petition, mine: true }, true), 'You have signed.'); assert.equal(petitionWhy(null, petition, false), 'Connect to sign.')
+  assert.equal(grantWhy(null, 100, 'School desks', 500), ''); assert.match(grantWhy(null, 600, 'School desks', 500), /at most ₦500/)
+  assert.match(grantWhy(null, 1.5, 'x', 500), /whole number/); assert.match(grantWhy(null, 100, 'ab', 500), /what the grant is for/); assert.match(grantWhy(null, 5, 'abc', 0), /nothing to give/)
+})

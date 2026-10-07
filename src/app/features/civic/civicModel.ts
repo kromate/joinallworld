@@ -78,7 +78,7 @@ export const REFUSAL_TITLES: Readonly<Record<string, string>> = { address_vote_l
 export const refusalTitle = (code: string): string => REFUSAL_TITLES[code] ?? 'Your vote was not counted'
 
 /** What the State House sheet's button offers for each phase. */
-export const houseButton = (phase: ElectionPhase, title = 'Governor'): string => (phase === 'voting' ? `Vote for ${title}` : phase === 'nominations' ? 'Run for office' : 'See the election')
+export const houseButton = (phase: ElectionPhase, title = 'Chairman'): string => (phase === 'voting' ? `Vote for ${title}` : phase === 'nominations' ? 'Run for office' : 'See the election')
 
 const lagosDays = (n: number): string => `${n} day${Number(n) === 1 ? '' : 's'}`
 /** Every election rule, one line each: the body of "How elections work". */

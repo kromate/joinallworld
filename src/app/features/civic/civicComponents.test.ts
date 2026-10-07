@@ -107,11 +107,11 @@ test('Governor: the week, the ballot with a reason on every disabled vote, what 
   assert.ok(words.includes('Work two days first.'), 'the reason is printed under the button, not only in a tooltip')
   assert.match(html, /<i role="img" aria-label="Not met"[^>]*>/)
   assert.ok(buttons(html).includes('Open Jobs to find paid work'))
-  assert.match(buttonTag(html, /Run for Governor · ₦2,000/), /disabled/)
+  assert.match(buttonTag(html, /Run for Chairman · ₦2,000/), /disabled/)
   assert.ok(words.includes('Filing costs ₦2,000; you have less.'))
   assert.match(html, /<input[^>]*maxlength="60"[^>]*autocomplete="off"/)
-  assert.ok(!words.includes('Governor’s desk'), 'only the Governor has a desk')
-  assert.ok(words.includes('How elections work') && words.includes('Governor’s announcements'))
+  assert.ok(!words.includes('Chairman’s desk'), 'only the Chairman has a desk')
+  assert.ok(words.includes('How elections work') && words.includes('Chairman’s announcements'))
   assert.match(html, /<details[^>]*class="how is-page"(?![^>]*\sopen)/)
 })
 
@@ -149,9 +149,9 @@ test('Governor: the sitting Governor sees the desk, with the server\'s reason wh
   }))
   const html = await render('GovernorApp')
   const words = text(html)
-  assert.ok(words.includes('Governor Kunle (you)'))
+  assert.ok(words.includes('Chairman Kunle (you)'))
   assert.ok(words.includes('Kunle won with 4 of 5 votes.'))
-  assert.ok(words.includes('Governor’s desk'))
+  assert.ok(words.includes('Chairman’s desk'))
   assert.match(html, /<textarea[^>]*maxlength="140"/)
   assert.match(buttonTag(html, 'Post announcement'), /disabled/)
   assert.ok(words.includes('Wait an hour between announcements.'))
@@ -164,7 +164,7 @@ test('State House: the seat, the news and a button into the Governor app', async
   assert.ok(text(html).includes('Lagos State House') || text(html).includes('State House'))
   assert.ok(text(html).includes('No announcements yet'))
   assert.ok(text(html).includes('Polls are open: polls close in'))
-  assert.ok(buttons(html).includes('Vote for Governor'))
+  assert.ok(buttons(html).includes('Vote for Chairman'))
 })
 
 test('Neighbours: counts from the server, presence, a way to say hi, and the hide button', async () => {
@@ -306,7 +306,7 @@ test('registration: each civic Vue panel carries the static metadata the Phone, 
   const { CIVIC_PANELS } = await load<{ CIVIC_PANELS: readonly Record<string, unknown>[] }>('/src/app/features/civic/register.ts')
   assert.deepEqual(CIVIC_PANELS.map((panel) => panel.id), ['governor', 'state-house', 'neighbours', 'ads', 'hunt-sheet', 'radio', 'richlist', 'hunt', 'radio-banner'])
   const expected: Record<string, [string, string, number | undefined, string | undefined]> = {
-    governor: ['Governor', 'phone', 40, 'city'], 'state-house': ['State House', 'modal', undefined, undefined], neighbours: ['Neighbours', 'phone', 42, 'city'], ads: ['Billboards', 'phone', 44, 'city'],
+    governor: ['Chairman', 'phone', 40, 'city'], 'state-house': ['State House', 'modal', undefined, undefined], neighbours: ['Neighbours', 'phone', 42, 'city'], ads: ['Billboards', 'phone', 44, 'city'],
     'hunt-sheet': ['Gem hunt', 'phone', 45, 'city'], radio: ['Radio', 'phone', 46, 'city'], richlist: ['Rich List', 'phone', 48, 'money'],
   }
   for (const panel of CIVIC_PANELS) {

@@ -19,7 +19,7 @@ import { colourOf, sloganTooShort, until, votes, PHASES, NEXT, voteWhy, runWhy, 
 import { AD_COLOURS, ELECTION } from '../civic/civicContent.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { appealRequest, arrestRequest, bailRequest, escalateRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
-import { TABS, VERDICTS, arrestWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
+import { FLAG_TEXT, TABS, VERDICTS, arrestWhy, auditLine, petitionWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
 
 defineProps<{ params?: unknown }>()
 const { game } = useApp()
@@ -123,6 +123,14 @@ async function rule(found: CaseView, verdict: Verdict): Promise<void> {
   if (result.ok) ui.court.note = ''
   doneLaw(result)
 }
+async function audit(): Promise<void> { done(await civic.send('p-audit', '/api/politics/audit', { tier: tier.value }, { success: 'The audit is in.' })) }
+async function impeach(): Promise<void> {
+  const result = await civic.send('p-impeach', '/api/politics/impeach', { tier: tier.value }, { success: 'You signed the petition.' })
+  if (result.ok && result.code === 'removed') game.toast('The petition succeeded: the officeholder is removed.', 'good')
+  done(result)
+  const at = tier.value
+  if (at) civic.load(ballotKey(cityId.value, at), ballotPath(cityId.value, at), { force: true })
+}
 async function dismissOfficer(tierId: string, player: string): Promise<void> { doneLaw(await civic.send(`p-dismiss:${player}`, '/api/politics/justice/dismiss', { tier: tierId, player }, { success: 'The officer is dismissed.' })) }
 const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', { day: 'numeric', month: 'short' })
 </script>
@@ -204,6 +212,25 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
           <li v-for="(line, index) in seat.treasury.ledger" :key="index"><span>{{ ledgerKind(line.kind) }}<small>{{ line.note }}</small></span><b :class="{ 'is-out': line.amount < 0 }">{{ line.amount < 0 ? '−' : '+' }}{{ money(Math.abs(line.amount)) }}</b></li>
         </ul>
         <p v-else class="politics-note">Nothing has been paid in yet.</p>
+      </section>
+
+      <SectionTitle>Accountability</SectionTitle>
+      <section class="ui-card politics-case">
+        <p class="politics-note">This term: <b>{{ money(seat.accounts.income) }}</b> came in, <b>{{ money(seat.accounts.salary) }}</b> was drawn as salary and <b>{{ money(seat.accounts.granted) }}</b> was granted.</p>
+        <ul v-if="seat.grants.length" class="politics-ledger">
+          <li v-for="(grant, index) in seat.grants" :key="index"><span>{{ grant.to.name }}<small>{{ grant.purpose }}</small></span><b class="is-out">{{ money(grant.amount) }}</b></li>
+        </ul>
+        <p v-else class="politics-note">No grants this term.</p>
+        <CivicAction :working="civic.busy('p-audit')" :reason="offline('audit') ?? (gov?.governor ? '' : 'Nobody holds this seat.')" @click="audit">Ask for an audit</CivicAction>
+        <div v-if="seat.audit" class="politics-audit">
+          <p class="politics-note">{{ auditLine(seat.audit) }}</p>
+          <ul v-if="seat.audit.flags.length" class="politics-flags"><li v-for="flag in seat.audit.flags" :key="flag">{{ FLAG_TEXT[flag] }}</li></ul>
+          <p v-else class="politics-note">Nothing unusual was found.</p>
+        </div>
+        <template v-if="seat.petition">
+          <p class="politics-note">Petition to remove the {{ seat.title }}: <b>{{ seat.petition.signed }} of {{ seat.petition.needed }}</b> signatures. It takes more than half of the votes they won.</p>
+          <CivicAction :working="civic.busy('p-impeach')" :reason="petitionWhy(offline('sign'), seat.petition, !!seat.you)" @click="impeach">Sign to remove the {{ seat.title }}</CivicAction>
+        </template>
       </section>
     </template>
 
@@ -374,6 +401,8 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-field select { min-height: var(--tap); }
 .politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .politics-officers li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
+.politics-flags { margin: 0; padding-left: 18px; font-size: 13px; color: var(--c-red-dark); }
+.politics-audit { display: grid; gap: 4px; }
 .politics-colours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s-2); }
 .politics-colours button { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
 .politics-colours button.is-on { border-color: var(--c-ink); }

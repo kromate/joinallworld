@@ -112,3 +112,32 @@ export const JUSTICE = {
   /** Offences and jail records kept. */
   keepOffences: 200,
 };
+
+/** Grants: money the officeholder pays out of the treasury, in the open, within these limits. */
+export const GRANTS = {
+  /** One grant is at most this share of the treasury, and no more than the seat's salary cap. */
+  maxShare: 0.3,
+  /** Grants in a term, and the shortest and longest purpose. */
+  perTerm: 5,
+  purposeMin: 3,
+  purposeMax: 80,
+  /** A recipient must have lived in the city this many days. */
+  recipientDays: 1,
+};
+
+/** Audits: a report anyone can ask for, with warnings that follow from the numbers alone. */
+export const AUDIT = {
+  /** The most often a seat's audit can be asked for. */
+  cooldownMs: 10 * 60000,
+  /** A warning when one recipient got more than this share of what was granted (with at least two grants). */
+  concentration: 0.5,
+  /** A warning when more than this share of what was granted went to the officeholder's own party (with at least two grants). */
+  partyFavour: 0.7,
+  /** A warning when salary and grants took more than this share of what came in (once at least minIncome came in). */
+  drained: 0.9,
+  minIncome: 1000,
+  minGrants: 2,
+};
+
+/** Impeachment: needs an audit warning this term, and more than half of the votes the officeholder won (never fewer than the seat's quorum). */
+export const IMPEACH = { minDays: 1, minWorkDays: 2 };

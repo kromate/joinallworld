@@ -58,7 +58,7 @@ test('polling mechanics follow the city venue kind instead of the Lagos venue id
   const before = candidate.cash
   assert.equal(fileCandidacy(candidate, {}, ctx).code, 'declared')
   assert.equal(candidate.cash, before - ELECTION.filingFee)
-  assert.equal(candidate.ledger.at(-1)?.reason, 'Governorship filing fee')
+  assert.equal(candidate.ledger.at(-1)?.reason, 'Chairman filing fee')
 
   const day = lagosTime(now).day
   const saved = eligible()

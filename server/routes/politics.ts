@@ -6,6 +6,9 @@
  *   GET  /api/politics/overview?city=   { city, seats: SeatView[], parties, you | null, partyRules }   city, state and nation seats, narrowest first
  *   POST /api/politics/decree           { cityId, tier, lever, value }       the sitting officeholder sets a lever for their term
  *   POST /api/politics/salary           { cityId, tier, requestId }          the officeholder draws this term's salary from the treasury, once
+ *   POST /api/politics/grant    { cityId, tier, player, amount, purpose, requestId }   the officeholder pays a grant out of the treasury, in the open
+ *   POST /api/politics/audit    { cityId, tier }                     a resident asks for the audit of this term's accounts
+ *   POST /api/politics/impeach  { cityId, tier }                     a resident signs the petition to remove the officeholder (needs an audit warning)
  *   POST /api/politics/party/found      { cityId, name, motto, colour, requestId }   pays the fee; the founder joins
  *   POST /api/politics/party/join       { cityId, party }
  *   POST /api/politics/party/leave      { cityId }
@@ -18,7 +21,7 @@
  */
 import { cityRules } from '../../src/game/cities/index.ts';
 import { AD_COLOURS, ELECTION } from '../../src/game/content/civic.ts';
-import { BAIL_LEVER, JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
+import { BAIL_LEVER, GRANTS, IMPEACH, JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
 import { civicTitle } from '../../src/game/cities/terminology.ts';
 import type { CaseRecord, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../src/types/politics.ts';
 import type { LifeState } from '../../src/types/life.ts';
@@ -34,7 +37,7 @@ import { cleanLine } from '../civic/text.ts';
 import { govOfScope, justiceOf, peekGov, peekJustice, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
 import { appealBlock, applyRuling, arrestBlock, attackerWins, bailOf, escalate, escalateBlock, fightBlock, fileAppeal, inJurisdiction, jail, jailOf, judgesOf, nextTier, officersOf, policeIsValid, recordFight, ruleBlock } from '../politics/justice.ts';
 import type { Seat } from '../politics/data.ts';
-import { credit, decreeBlock, drawSalary, found, foundBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, salaryBlock, salaryDue, setDecree } from '../politics/rules.ts';
+import { auditBlock, credit, decreeBlock, drawSalary, found, foundBlock, grantBlock, grantRoom, impeachBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, payGrant, runAudit, salaryBlock, salaryDue, setDecree, signPetition, signaturesNeeded, termAccounts } from '../politics/rules.ts';
 
 export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const { store, fail } = ctx;
@@ -42,8 +45,7 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
   const cityParam = (value: unknown): CityId => { const found = ctx.cityIds.find((id) => id === value); if (typeof value !== 'string' || found === undefined) throw fail(400, 'invalid_city'); return found; };
   const tierParam = (value: unknown): TierId => { const tier = TIER_IDS.find((item) => item === value); if (!tier) throw fail(400, 'invalid_tier'); return tier; };
   const limit = (bucket: string, key: string, count: number): void => { if (!ctx.allow(`politics:${bucket}:${key}`, count)) throw fail(429, 'politics_rate_limited'); };
-  // A city whose seat is still called Governor would share the title with the state's: here it is the City Governor.
-  const titleOf = (tier: TierId, cityId: CityId): string => (tier === 'city' ? (civicTitle(cityId) === SEAT_TITLES.state ? `City ${SEAT_TITLES.state}` : civicTitle(cityId)) : SEAT_TITLES[tier]);
+  const titleOf = (tier: TierId, cityId: CityId): string => (tier === 'city' ? civicTitle(cityId) : SEAT_TITLES[tier]);
   const seatOf = (cityId: CityId, tier: TierId): Seat => { const seat = seatsOf(cityId, cityName(cityId)).find((item) => item.tier === tier); if (!seat) throw fail(400, 'no_such_seat'); return seat; };
   const colours = AD_COLOURS.map((item) => item.id);
   const refused = (block: { code: string; reason: string }) => ({ ok: false as const, code: block.code, reason: block.reason });
@@ -65,9 +67,15 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
       const held = sitting ? gov.gov.elections[String(sitting.week)]?.candidates[sitting.id]?.party ?? null : null;
       const levers = leversOf(seat.tier).map((id): LeverView => ({ id, label: LEVERS[id].label, about: LEVERS[id].about, min: LEVERS[id].min, max: LEVERS[id].max, base: LEVERS[id].base, unit: LEVERS[id].unit, value: leverValue(scope, gov, now, id) }));
       const decree = scope.decree && sitting && scope.decree.week === sitting.week && scope.decree.by.id === sitting.id ? { by: scope.decree.by, at: scope.decree.at } : null;
+      const accounts = scope.term?.week === (sitting?.week ?? -1) ? scope.term : { income: 0, salary: 0, granted: 0 };
+      const grants = sitting && scope.grants?.week === sitting.week ? [...scope.grants.items].reverse() : [];
+      const audit = sitting && scope.audit?.week === sitting.week ? scope.audit : null;
+      const petition = sitting ? { signed: scope.petition?.week === sitting.week ? Object.keys(scope.petition.signers).length : 0, needed: signaturesNeeded(seat.tier, sitting.votes), mine: !!who && scope.petition?.week === sitting.week && Object.hasOwn(scope.petition.signers, who.id), open: !!audit?.flags.length } : null;
       return { tier: seat.tier, id: seat.id, name: seat.name, title: titleOf(seat.tier, cityId), fee: seat.tier === 'city' ? ELECTION.filingFee : SEATS[seat.tier].fee, quorum, parties,
+        accounts: { income: accounts.income, salary: accounts.salary, granted: accounts.granted }, grants, petition,
+        audit: audit ? { at: audit.at, by: audit.by, income: audit.income, salary: audit.salary, granted: audit.granted, grants: audit.grants, flags: audit.flags } : null,
         officeholderParty: held && Object.hasOwn(politics.parties, held) ? held : null, decree, levers, treasury: { balance: scope.treasury.balance, ledger: scope.treasury.ledger.slice(-15).reverse() },
-        you: who ? { isOfficeholder: sitting?.id === who.id, salary: salaryDue(scope, gov, now, seat.tier, who.id) } : null };
+        you: who ? { isOfficeholder: sitting?.id === who.id, salary: salaryDue(scope, gov, now, seat.tier, who.id), grantRoom: sitting?.id === who.id ? grantRoom(scope, seat.tier) : 0 } : null };
     });
     const mine = who ? partyOf(politics, who.id) : null;
     const parties = Object.values(politics.parties).map((party): PartyView => ({ id: party.id, name: party.name, motto: party.motto, colour: party.colour, founder: party.founder, members: memberCount(politics, party.id), mine: party.id === mine }))
@@ -236,6 +244,70 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         limit('party', who.id, 30);
         const left = leave(politicsOf(ctx, db), who.id);
         return write(db, cityId, who, life, left ? { ok: true, code: 'left' } : { ok: false, code: 'no_party', reason: 'You do not belong to a party.' });
+      });
+    },
+
+    // ---- accountability ---------------------------------------------------------------------------
+    'POST /api/politics/grant': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), recipient = playerId(body.player), seat = seatOf(cityId, tier);
+      const purpose = cleanLine(body.purpose, { min: GRANTS.purposeMin, max: GRANTS.purposeMax, what: 'The purpose' });
+      return store.transact((db) => {
+        const { session, who, life } = enter(db, request, cityId);
+        limit('grant', who.id, 20);
+        const outcome = ctx.once(db, session, { id: body.requestId, kind: 'politics.grant', fingerprint: [cityId, tier, recipient, String(body.amount ?? '')] }, () => {
+          const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+          const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope);
+          const block = grantBlock(scope, gov, now, tier, who.id, recipient, body.amount);
+          if (block) return refused(block);
+          if (!purpose.ok) return refused(purpose);
+          const target = ctx.core.sessionByPublicId(db, recipient);
+          if (!target?.cities?.[cityId]?.state) return refused({ code: 'unknown_player', reason: 'That player does not live in this city.' });
+          const them = ctx.settle(target, cityId);
+          if (daysLived(them) < GRANTS.recipientDays) return refused({ code: 'too_new', reason: 'A grant goes to someone who has lived here for at least a day.' });
+          const amount = body.amount as number;
+          const paid = ctx.act(them, { type: 'civic.treasury', cityId, payload: { op: 'receive', amount, label: `Grant: ${purpose.text}` } });
+          if (!paid.ok) return refused({ code: paid.code, reason: paid.reason ?? 'They cannot take it now.' });
+          const name = ctx.publicSession(target).name;
+          payGrant(scope, gov, now, tier, { id: recipient, name }, amount, purpose.text, partyOf(politics, recipient));
+          ctx.act(them, { type: 'civic.news', cityId, payload: { items: [{ id: `grant-${seat.id.replace(/[^a-z0-9]/g, '')}-${now}`.slice(0, 40), title: 'You were paid a grant', text: `${who.name} paid you ${amount.toLocaleString('en-NG')} naira from the ${seat.name} treasury: ${purpose.text}`, at: now }] } });
+          return { ok: true as const, code: 'granted' };
+        });
+        return write(db, cityId, who, life, outcome);
+      });
+    },
+
+    'POST /api/politics/audit': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), seat = seatOf(cityId, tier);
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('audit', who.id, 20);
+        const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+        const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope);
+        const block = auditBlock(scope, gov, now, tier);
+        if (block) return write(db, cityId, who, life, refused(block));
+        const sitting = governorAt(gov, now, QUORUM[tier]);
+        runAudit(scope, gov, now, tier, who, sitting ? partyOf(politics, sitting.id) : null);
+        return write(db, cityId, who, life, { ok: true, code: 'audited' });
+      });
+    },
+
+    'POST /api/politics/impeach': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), seat = seatOf(cityId, tier);
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('impeach', who.id, 20);
+        const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+        const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope);
+        if (daysLived(life) < IMPEACH.minDays || life.civic.work.days < IMPEACH.minWorkDays) return write(db, cityId, who, life, refused({ code: 'not_eligible', reason: `Only a resident who has lived here for ${IMPEACH.minDays} day and been paid for work on ${IMPEACH.minWorkDays} different days can sign.` }));
+        const block = impeachBlock(scope, gov, now, tier, who.id) ?? ctx.checks?.muted?.(who.id) ?? null;
+        if (block) return write(db, cityId, who, life, refused({ code: block.code, reason: block.reason ?? 'You cannot do that now.' }));
+        const sitting = governorAt(gov, now, QUORUM[tier]);
+        if (!sitting) return write(db, cityId, who, life, refused({ code: 'empty_seat', reason: 'Nobody holds this seat.' }));
+        const result = signPetition(scope, gov, now, tier, who.id, sitting.week);
+        return write(db, cityId, who, life, { ok: true, code: result.removed ? 'removed' : 'signed' });
       });
     },
 

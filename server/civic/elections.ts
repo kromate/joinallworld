@@ -72,10 +72,11 @@ function resultOf(city: GovScope, week: number, now: number, quorum: number = QU
     winner: winner ? { id: winner.id, name: winner.name, slogan: winner.slogan, votes: winner.votes } : null };
 }
 
-/** The sitting Governor at `now`, or null. A term runs from one Sunday 00:00 to the next. */
+/** The sitting Governor at `now`, or null (also null once an impeachment has removed them). A term runs from one Sunday 00:00 to the next. */
 export function governorAt(city: GovScope, now: number, quorum: number = QUORUM.city): Governor | null {
   const week = Math.floor((lagosTime(now).day - 3) / 7);
-  const result = resultOf(city, week, now, quorum);
+  const result = resultOf(city, week, now, quorum), removedAt = electionOf(city, week)?.removedAt;
+  if (removedAt !== undefined && now >= removedAt) return null; // impeached
   return result?.winner && now < result.termEndsAt ? { ...result.winner, week, termStartedAt: result.closedAt, termEndsAt: result.termEndsAt } : null;
 }
 
@@ -152,7 +153,7 @@ export function removeAnnouncement(city: GovScope, id: string) {
 }
 
 /** Why the player cannot post a Governor's announcement right now, or null. */
-export function announceBlock(city: GovScope, now: number, playerId: string, title = 'Governor', quorum: number = QUORUM.city): Block | null {
+export function announceBlock(city: GovScope, now: number, playerId: string, title = 'Chairman', quorum: number = QUORUM.city): Block | null {
   const governor = governorAt(city, now, quorum);
   if (governor?.id !== playerId) return { code: 'not_governor', reason: `Only the sitting ${title} can post an announcement. Win this week’s election first.` };
   const rules = ELECTION.announcement, day = lagosTime(now).day;
@@ -192,7 +193,7 @@ export function govView(city: GovScope, now: number, viewerId: string | null = n
 }
 
 /** Recent civic news for the notice surface, newest first: results, phase changes and announcements. */
-export function notices(city: GovScope, now: number, cityName = 'Lagos', openedAt = 0, title = 'Governor'): CivicNotice[] {
+export function notices(city: GovScope, now: number, cityName = 'Lagos', openedAt = 0, title = 'Chairman'): CivicNotice[] {
   const phase = phaseAt(now), items: CivicNotice[] = [];
   for (const week of [phase.week, phase.week - 1]) {
     const before = items.length;

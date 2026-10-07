@@ -125,8 +125,8 @@ export const WORSHIP: Readonly<Record<'church' | 'mosque', Routine['days']>> = {
   mosque: { any: [[5, 6.25], [13, 14], [16.25, 17.25], [18.5, 19.5], [20, 21]], fri: [[5, 6.25], [12.75, 14.5], [16.25, 17.25], [18.5, 19.5], [20, 21]] },
 }
 
-/** The hours of the service that the day of rest is kept for: the windows in which a person who keeps it is at church or at the mosque. */
+/** The hours of the service that the day of rest is kept for: the windows in which a person who keeps it is at church or at the mosque. `shut`: a stall of that faith stays shut from midnight until the service ends (Sunday), rather than trading until the service starts (Friday). */
 export const SERVICE = {
-  church: { weekday: 0, from: 7.25, to: 12.5 },
-  mosque: { weekday: 5, from: 12.75, to: 14.5 },
+  church: { weekday: 0, from: 7.25, to: 12.5, shut: true },
+  mosque: { weekday: 5, from: 12.75, to: 14.5, shut: false },
 } as const

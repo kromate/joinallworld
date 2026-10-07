@@ -146,11 +146,11 @@ function inPlan(p: Profile, city: string, t: LagosTime, h: number, raining: bool
   return before.some(([a, b]) => b > 24 && h + 24 >= a && h + 24 < b)
 }
 
-/** The service of the day of rest a person keeps, if this moment is in it. A stall that closes for it does not open before it. */
+/** The service of the day of rest a person keeps, if this moment is in it. On the Sunday a stall does not open before it ends; on the Friday it trades until it starts. */
 function serviceAt(p: Profile, weekday: number, h: number): 'church' | 'mosque' | null {
   if (!p.attends) return null
   const place = p.faith === 'muslim' ? 'mosque' : 'church', service = SERVICE[place]
-  return weekday === service.weekday && h >= (p.routine.service ? 0 : service.from) && h < service.to ? place : null
+  return weekday === service.weekday && h >= (p.routine.service && service.shut ? 0 : service.from) && h < service.to ? place : null
 }
 
 /** Asleep by the clock of this sleeper: the lark sleeps early and wakes at first light, the owl is up after midnight. */

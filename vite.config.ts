@@ -206,6 +206,9 @@ export default defineConfig({
     // The sound engine (every recipe, the synth, the mixer) is fetched on the first tap; only src/audio/play.ts and settings.ts are in the first download.
     if (/\/src\/audio\/(engine|director|data|synth|scape)\.ts$/.test(id)) return 'audio'
     if (/\/src\/audio\/board\.ts$/.test(id)) return 'audio-board'
+    // The glTF loader, meshopt decoder and skeleton cloner are only for the skinned body (src/scene/body/skinned.ts, fetched after a scene's first
+    // frame): left to the bundler, they ride in that lazy chunk, so the three chunk every scene fetches is the bytes it was.
+    if (/node_modules\/three\/examples\/jsm\/(loaders\/GLTFLoader|libs\/meshopt_decoder\.module|utils\/SkeletonUtils)\.js$/.test(id)) return undefined
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The admin address's page (adminshell.html) is a second entry. The two small account modules both entries use (the state of accounts and the funnel

@@ -43,13 +43,25 @@
  *                          on-screen loading / empty / error message
  * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
  * are resolved with the exact camera the host used.
+ *
+ * SKINNED BODY (src/scene/body/; on for everyone, capability fallback only — see body/gate.ts)
+ *   On a device bodyAllowed() accepts and a WebGL2 renderer, the room's first frame starts loading one skinned body
+ *   (src/scene/body/skinned.ts). Until it is in, and for good if anything fails, the procedural figure stays. Once in,
+ *   it stands in for the player's own figure: idle at rest, the walk/jog clip at the host's stride phase, and on a
+ *   furniture activity it takes the furniture: sits on a chair or sofa, lies on a bed or mat (sleep, stay in bed, nap),
+ *   soaks in the tub, washes at a bucket or shower (sit-enter / lie-down play when the avatar walked there; sit-exit /
+ *   get-up play where it lay). It asks for its first frame with 'jaw:home-frame'; those clips run through `easing` /
+ *   stepCrowd / settleCrowd. Without WebGL2 (and in
+ *   Node tests) `body` stays null and the body module is never imported.
  */
-import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE } from '../game/content/furniture.ts';
+import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE, HOME_ACTIVITIES, PORTED_ACTIVITY_KIND } from '../game/content/furniture.ts';
 import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
 import { drawAvatar, buildAvatar, POSES } from './characters.ts';
 import type { Pose } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
+import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
+import type { BodyPose, SkinnedBody } from './body/skinned.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
 import { cachedCityContent } from '../game/cities/registry.ts';
@@ -95,6 +107,30 @@ const ROOM = 10;         // world units along each wall, whatever the grid size
 const WALL_HEIGHT = 3.4;
 const WALL_ITEM_Y = 1.95;
 const SHIFT = -2.5;      // the room sits up-screen so the bottom panels do not cover it
+/** Skinned body only: the body pose each furniture kind gives its activities, and those activities (engine id → kind). */
+export const REST_POSE: Readonly<Record<string, BodyPose | undefined>> = { seat: 'sit', bed: 'lie', tub: 'soak', bath: 'wash' };
+export const REST_KIND = new Map([...HOME_ACTIVITIES.map((activity) => [`home-${activity.id}`, activity.needs] as const), ...Object.entries(PORTED_ACTIVITY_KIND)]);
+/**
+ * Skinned body only: where the body goes on a piece, in the model's tile units (origin the footprint centre, facing
+ * +z, the backrest or pillow behind at −z): the seat or mattress top, how far forward of the centre the pelvis is,
+ * the places across the width, and a turn from +z (the tub's bather faces the tap). Read off SHAPES below; lying,
+ * the head (0.64 tiles behind the hips) is on the pillow.
+ */
+export function seatOf(shape: string, W: number, D: number): { top: number; z: number; xs: number[]; turn?: number } {
+  const across = (step: number) => Array.from({ length: W }, (_, i) => (i - (W - 1) / 2) * step);
+  if (shape === 'chair') return { top: 0.41, z: -0.08, xs: [0] };
+  if (shape === 'sofa') return { top: 0.5, z: -D * 0.25 + 0.13, xs: across(0.82) };
+  if (shape === 'beanbag') return { top: 0.45, z: 0.02, xs: [0] };
+  if (shape === 'bed') return { top: 0.56, z: 0.64 - D * 0.38, xs: across(0.8) };
+  if (shape === 'mat') return { top: 0.08, z: 0.64 - D * 0.36, xs: [0] };
+  if (shape === 'tub') return { top: 0.1, z: 0, xs: [W * 0.2], turn: -Math.PI / 2 };
+  return { top: 0.45, z: 0, xs: [0] };
+}
+/** Skinned body only: a spot on a piece (pelvis over x, z on a top at `top`, facing ry), and an activity's pose there. */
+interface Spot { x: number; top: number; z: number; ry: number }
+interface Rest { pose: BodyPose; at?: Spot }
+/** Skinned body only: the clip pose for each procedural pose. 'sit' needs a seat (else idle). */
+const BODY_POSE: Record<Pose, BodyPose> = { stand: 'idle', sit: 'sit', walk: 'walk', jog: 'jog', wave: 'interact', work: 'interact', dance: 'dance', relax: 'idle' };
 /** The shared room colours (Lagos): a city's content may give its own `homePalette`. */
 export const ROOM_PALETTE: HomePalette = Object.freeze({ back: '#d7ccb0', left: '#c3cbb6', floor: Object.freeze(['#d9cdb4', '#bfae8f'] as const) });
 const WOOD = '#7a5c40', DARK = '#33373d', WHITE = '#f3f1ea', STEEL = '#9aa3a8';
@@ -236,6 +272,9 @@ export function buildHomeScene(kit: Kit) {
   people.add(avatar);
   const figures = new Map<Pose, Figure>();
   let shownFigure: Figure | null = null, shownPose: Pose = 'stand', driven = false, walkGrid: ReturnType<typeof createWalkGrid> | null = null, gridKey = '', restAt: HomeRest | null = null, goalMark: THREE.Mesh | null = null;
+  // The skinned body (see the header): asked for on an allowed device; null until it loads, and for good without one.
+  const wantsBody = bodyAllowed();
+  let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: Rest | null = null, sat: Spot | undefined;
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const tools = (parent: THREE.Object3D): Tools => ({
     box: (x, y, z, w, h, d, c, lit) => kit.box(x, y, z, w, h, d, c, parent, lit),
@@ -271,7 +310,71 @@ export function buildHomeScene(kit: Kit) {
     left.box(-ROOM / 2 + 0.11, 1.1, dz + wide * 0.3, 0.05, 0.07, 0.07, '#d8c27a');
     room.add(wallGroups.back, wallGroups.left);
     // The floor reports the camera and canvas the host draws with, so taps can be resolved.
-    room.children[0]!.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); };
+    room.children[0]!.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); if (wantsBody) startBody(renderer); };
+  }
+
+  // ---- the skinned body (capability-gated) ---------------------------------------------------
+  /** After the room's first frame: fetch the body module and the body, once. Any failure keeps the procedural figure. */
+  function startBody(renderer: THREE.WebGLRenderer) {
+    if (body || bodyLoading || bodyFailed || gone) return;
+    if (!drawsWebGL2(renderer)) { bodyFailed = true; return; }
+    bodyLoading = true;
+    const look = who.look ?? lastState?.onboarding?.look ?? null, seed = who.seed;
+    setTimeout(() => {
+      importBody().then((module) => module.loadBody(kit, look, seed, tile * AVATAR_SCALE)).then((loaded) => {
+        bodyLoading = false;
+        if (gone) { loaded.dispose(); return; }
+        // The look changed while it loaded: recolour, or (the other body) start again on the next frame.
+        if (!loaded.wear(who.look ?? lastState?.onboarding?.look ?? null, who.seed)) { loaded.dispose(); globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-frame')); return; }
+        body = loaded;
+        body.fit(tile * AVATAR_SCALE);
+        people.add(body.object);
+        avatar.visible = false;
+        poseBody(shownPose, false);
+        // The host draws on request only: ask for the frame that shows it.
+        globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-frame'));
+      }).catch((error: unknown) => {
+        bodyLoading = false; bodyFailed = true;
+        console.warn('Skinned body unavailable; keeping the drawn avatar:', error);
+      });
+    }, 0);
+  }
+  /** Back to the procedural figure (a look that needs the other body file loads it again on the next frame). */
+  function dropBody() {
+    body?.dispose();
+    body = null;
+    avatar.visible = true;
+  }
+  /** Where the avatar is, unless the body is on its furniture (seated, lying, or getting up from either). */
+  function placeBody() { if (body && !body.seated) body.place(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); }
+  /** Pose the body like the procedural figure: on its furniture for a home activity that has some, else where the avatar is. */
+  function poseBody(pose: Pose, animate: boolean) {
+    if (!body) return;
+    const next = pose === 'work' && seatAt ? seatAt.pose : pose === 'sit' && !seatAt ? 'idle' : BODY_POSE[pose];
+    body.show(next, animate);
+    // Getting up (sit-exit, get-up) happens where it sat or lay: the last spot, until the clip ends (stepCrowd).
+    const at = next === seatAt?.pose ? seatAt.at : body.seated ? sat : undefined;
+    if (at) { sat = at; body.sitOn(at.x, at.top, at.z, at.ry); } else placeBody();
+  }
+  /** A home activity's body pose, and the piece it uses (the nearest of its kind to where the avatar stands). Null otherwise. */
+  function seatFor(state: LifeState | null, near: { x: number; y: number }): Rest | null {
+    const active = state?.activeAction, kind = active?.kind === 'activity' ? REST_KIND.get(active.id) : undefined, pose = kind && REST_POSE[kind];
+    if (!pose || (state!.location != null && state!.location !== 'home')) return null;
+    let best: (Spot & { d: number }) | undefined;
+    // Washing stands where the avatar does (at the bucket or in the shower).
+    for (const item of pose !== 'wash' && Array.isArray(state!.home?.items) ? state!.home.items : []) {
+      const def = FURNITURE[item?.itemId];
+      if (!def || def.wall || def.kind !== kind) continue;
+      const size = footprint(def, item.rot), seat = seatOf(def.shape, def.w, def.h), angle = -item.rot * Math.PI / 2;
+      const cx = along(item.x, size.w), cz = along(item.y, size.h), cos = Math.cos(angle), sin = Math.sin(angle);
+      for (const lx of seat.xs) {
+        const x = cx + (lx * cos + seat.z * sin) * tile, z = cz + (-lx * sin + seat.z * cos) * tile;
+        const d = Math.hypot(x - along(near.x), z - along(near.y));
+        if (!best || d < best.d) best = { x, top: 0.015 + seat.top * tile, z, ry: angle + (seat.turn ?? 0), d };
+      }
+    }
+    // Sitting and lying need the piece; without one (an old save, a sold bed) the body stands like the figure.
+    return best ? { pose, at: { x: best.x, top: best.top, z: best.z, ry: best.ry } } : pose === 'wash' ? { pose } : null;
   }
 
   /** A group holding one object's model, placed and rotated on its tile(s) or wall slot. */
@@ -393,6 +496,7 @@ export function buildHomeScene(kit: Kit) {
   function moveAvatar(x: number, y: number, z: number, ry: number) {
     avatar.position.set(x, y, z);
     avatar.rotation.y = ry;
+    placeBody();
     const top = y + (shownFigure?.userData.top ?? 2.95 * tile * AVATAR_SCALE);
     if (driven && selfTag) { selfTag.position.x = x; selfTag.position.y = top; selfTag.position.z = z; }
     else selfTag = { id: 'self', name: who.name, kind: 'self', text: who.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
@@ -431,14 +535,21 @@ export function buildHomeScene(kit: Kit) {
     let changed = false;
     refreshGrid(state);
     const dress = JSON.stringify([tile, who.look ?? state?.onboarding?.look ?? null, who.seed]);
-    if (dress !== dressKey) { dressKey = dress; clearFigures(); if (!rigOf(figure('stand'))) figure('walk'); if (driven) { show(shownPose); moveAvatar(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); } changed = true; }
+    if (dress !== dressKey) {
+      dressKey = dress; clearFigures(); if (!rigOf(figure('stand'))) figure('walk'); if (driven) { show(shownPose); moveAvatar(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); } changed = true;
+      if (body) { if (body.wear(who.look ?? state?.onboarding?.look ?? null, who.seed)) body.fit(tile * AVATAR_SCALE); else dropBody(); }
+    }
     restAt = { spot: state?.spot ?? null, x: along(mine.x), y: 0.03, z: along(mine.y), ry: mine.ry, pose, busy: Boolean(active) && !leaving && !who.pose, leaving, fixed: Boolean(who.pose) };
+    if (wantsBody) {
+      const seat = seatFor(state, mine);
+      if (JSON.stringify(seat) !== JSON.stringify(seatAt)) { seatAt = seat; if (body && !driven) changed = true; }
+    }
     const rest = JSON.stringify([grid, mine, pose, who.name]);
     if (rest !== restKey) {
       restKey = rest; changed = true;
       if (selfTag) { selfTag.name = who.name; selfTag.text = who.name; }
     }
-    if (changed && !driven) { show(pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); }
+    if (changed && !driven) { show(pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); poseBody(pose, false); }
     const guestsNow = JSON.stringify([grid, mine, guests]);
     if (guestsNow === guestKey) return changed;
     guestKey = guestsNow;
@@ -560,6 +671,10 @@ export function buildHomeScene(kit: Kit) {
     },
     tags: () => (selfTag ? [selfTag, ...guestTags] : [...guestTags]),
     look,
+    // The skinned body's sit-down (always false without the body): the host steps it in its motion loop.
+    get easing() { return Boolean(body?.easing); },
+    stepCrowd(dt: number) { const more = Boolean(body?.step(dt)); if (!more) placeBody(); return more; },
+    settleCrowd() { body?.settle(); placeBody(); },
     /** Which walls are showing right now: { back, left } (true = shown). */
     get walls() { return { back: !hiddenWalls.back, left: !hiddenWalls.left }; },
     /** True in Buy mode: taps place and pick furniture, and the host does not walk the avatar. */
@@ -580,15 +695,25 @@ export function buildHomeScene(kit: Kit) {
       // (the host already lifts the scene clear of the bottom panels through its insets).
       centre: [0, 0.7, 0] as Vec3,
       avatar,
-      drive(on: unknown) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); } },
+      drive(on: unknown) { driven = Boolean(on); if (!driven && restAt) { show(restAt.pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); poseBody(restAt.pose, false); } },
       rest: () => restAt,
       spots: () => [],
       people: () => guestTags.map((tag) => ({ id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y })),
       get solids() { return solids; },
       move: moveAvatar,
-      pose: (name: string) => { rigOf(figures.get('stand'))?.rest(); return show((POSES as readonly string[]).includes(name) ? name as Pose : 'stand'); },
+      pose: (name: string) => {
+        rigOf(figures.get('stand'))?.rest();
+        const pose = (POSES as readonly string[]).includes(name) ? name as Pose : 'stand';
+        const shown = show(pose);
+        // Straight off a walk the host's motion loop is running, so the sit-down can play out (easing).
+        if (body) { const walking = body.pose === 'walk' || body.pose === 'jog'; poseBody(pose, walking); return true; }
+        return shown;
+      },
       // With a rigged figure the limbs swing with `phase`; without one the two figures alternate (avatar-rig.js).
-      gait(step: boolean, phase = 0, jog = false) { const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1, jog); return show('stand'); } return show(step ? 'walk' : 'stand'); },
+      gait(step: boolean, phase = 0, jog = false) {
+        if (body) { body.stride(phase, jog); body.place(avatar.position.x, avatar.position.y, avatar.position.z, avatar.rotation.y); }
+        const rig = rigOf(figures.get('stand')); if (rig) { rig.stride(phase, 1, jog); return show('stand'); } return show(step ? 'walk' : 'stand');
+      },
       heightAt: () => 0.03,
       near: () => false,
       goal(x?: number, z?: number) {
@@ -613,6 +738,8 @@ export function buildHomeScene(kit: Kit) {
       releaseObjects(markMeshes);
       goalMark = null;
       clearFigures();
+      gone = true;
+      dropBody();
       globalThis.window?.removeEventListener?.('jaw:home-ui', onUi);
       globalThis.window?.removeEventListener?.('jaw:mode', onMode);
       canvas?.removeEventListener?.('click', onPick);

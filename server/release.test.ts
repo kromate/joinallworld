@@ -14,7 +14,7 @@ function files(dir: URL, prefix = ''): string[] {
 }
 
 /** The pipeline's own asset rule (scripts/guard-joinallworld-package.mjs), applied to what public/ ships. */
-const ASSET = /^[A-Za-z0-9_.-]+\.(?:html|js|css|svg|png|jpg|jpeg|webp|ico|woff2|txt)$/;
+const ASSET = /^[A-Za-z0-9_.-]+\.(?:html|js|css|svg|png|jpg|jpeg|webp|ico|woff2|txt|glb)$/;
 
 test('the only JavaScript is public/sw.js and the two files the release policy names', () => {
   const javascript = files(root).filter((file) => /\.(?:js|mjs|cjs)$/.test(file)).sort();

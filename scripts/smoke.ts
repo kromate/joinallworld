@@ -56,7 +56,7 @@ async function json<T>(path: string, body?: unknown): Promise<{ status: number; 
 
 const TYPES: Record<string, RegExp> = {
   '.js': /^(text|application)\/javascript/, '.mjs': /^(text|application)\/javascript/, '.css': /^text\/css/, '.svg': /^image\/svg\+xml/, '.png': /^image\/png/,
-  '.webmanifest': /^application\/(manifest\+json|json)/, '.json': /^application\/json/, '.woff2': /^font\/woff2/, '.ts': /^(text|application)\/(javascript|typescript)/,
+  '.webmanifest': /^application\/(manifest\+json|json)/, '.json': /^application\/json/, '.woff2': /^font\/woff2/, '.glb': /^model\/gltf-binary/, '.ts': /^(text|application)\/(javascript|typescript)/,
 };
 const REQUIRED_HEADERS = ['content-security-policy', 'x-content-type-options', 'x-frame-options', 'referrer-policy'];
 

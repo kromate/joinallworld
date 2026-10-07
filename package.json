@@ -22,6 +22,7 @@
     "build": "vite build",
     "check": "npm run typecheck && npm run build && npm test",
     "geo:boundaries": "node --experimental-strip-types scripts/geo/build-boundaries.ts",
+    "body:build": "node --experimental-strip-types scripts/body/build-body.ts",
     "typecheck": "node --experimental-strip-types scripts/typecheck.ts --serial",
     "test": "node --experimental-strip-types --test --test-concurrency=1 \"src/**/*.test.js\" \"src/**/*.test.ts\" \"server/**/*.test.js\" \"server/**/*.test.ts\" \"scripts/city/*.test.ts\" \"scripts/agent-slot.test.ts\" \"scripts/download-budget.test.ts\"",
     "slot": "node --experimental-strip-types scripts/agent-slot.ts",

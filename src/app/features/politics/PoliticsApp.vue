@@ -430,7 +430,7 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-week { margin: 0 0 var(--s-2); padding: 8px 12px; border-radius: var(--r-sm); background: var(--c-fill); font-size: 12px; line-height: 1.4; color: var(--c-ink-2); }
 .politics-week b { color: var(--c-ink); }
 .politics-tabs { display: flex; overflow-x: auto; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
-.politics-tabs button { flex: 1 0 auto; padding: 0 12px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-tabs button { flex: 1 0 auto; padding: 0 8px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
 .politics-tabs button.is-on { background: #fff; color: var(--c-ink); box-shadow: var(--e-1); }
 .politics-seat { display: grid; gap: 4px; }
 .politics-seat strong { font-size: 16px; }

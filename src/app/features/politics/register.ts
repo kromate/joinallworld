@@ -9,4 +9,10 @@ export const politics = definePanel({
   component: defineAsyncComponent(() => import('./PoliticsApp.vue')),
 })
 
-export const POLITICS_PANELS: readonly VuePanel[] = [politics]
+/** The card on the home screen: fetched with the HUD, so the player can see there is a government. */
+export const politicsChip = definePanel({
+  id: 'politics-chip', title: 'Politics', icon: 'governor', placement: 'hud', order: 25,
+  component: defineAsyncComponent(() => import('./PoliticsChip.vue')),
+})
+
+export const POLITICS_PANELS: readonly VuePanel[] = [politics, politicsChip]

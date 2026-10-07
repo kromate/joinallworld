@@ -2,7 +2,7 @@
 import { createApp } from 'vue'
 import BootScreen from './BootScreen.vue'
 import { loadGame } from './bootstrap.ts'
-import { isChunkLoadError, noteChunkFailure } from './state/updateNotice.ts'
+import { isChunkLoadError, noteChunkFailure, watchForUpdates } from './state/updateNotice.ts'
 
 const app = createApp(BootScreen, { load: loadGame })
 app.config.errorHandler = (error, _instance, info) => {
@@ -11,6 +11,7 @@ app.config.errorHandler = (error, _instance, info) => {
 }
 window.addEventListener('vite:preloadError', () => { void noteChunkFailure() })
 app.mount('#app')
+watchForUpdates()
 // A quick guess from the user agent; the real detection, the page marker and the tip are fetched only inside another app's browser.
 if (/Instagram|FBA[NV]|FB_IAB|FBIOS|musical_ly|Bytedance|TikTok|Snapchat|LinkedInApp|Twitter|; wv\)|(iPhone|iPad|iPod)(?!.*Safari\/)/i.test(navigator.userAgent)) {
   void import('./inAppMount.ts').then((m) => { m.mountInAppTip() }, () => undefined)

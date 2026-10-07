@@ -1,8 +1,10 @@
 // A tab left open across a deploy keeps its old JavaScript; its hashed chunks are gone from the host. When a lazy chunk fails to
 // load, ask once whether the app was updated (the entry script of a fresh `/` differs from this page's own): if so a small banner
 // offers a Reload, which only the player taps — a typed draft or a running activity is never lost to an automatic reload.
-// If nothing changed the failure is an ordinary network one and the existing retry behaviour stands. No polling: a check
-// happens only after a failed import.
+// If nothing changed the failure is an ordinary network one and the existing retry behaviour stands.
+// A tab that never loads another chunk would otherwise never learn of an update (its old code does not even know the new screens exist), so the
+// same check also runs, quietly, when the tab is shown again after a while and about every ten minutes while it stays visible
+// (`watchForUpdates`): one small request for the home page, never more often, and never an automatic reload.
 import { ref } from 'vue'
 
 export type ChunkFailureDecision = 'reload-banner' | 'retry'
@@ -41,10 +43,7 @@ export function noteChunkFailure(fetcher: typeof fetch = globalThis.fetch.bind(g
   if (updateAvailable.value || checking || now() - lastNegative < RECHECK_MS) return checking ?? Promise.resolve()
   checking = (async () => {
     try {
-      const current = doc ? entryScriptOf(Array.from(doc.querySelectorAll('script[type="module"]')).map((node) => node.outerHTML).join('')) : null
-      const response = await fetcher('/', { cache: 'no-store', headers: { accept: 'text/html' } })
-      const fresh = response.ok ? entryScriptOf(await response.text()) : null
-      if (decideChunkFailure({ failed: true, currentBuild: current, freshBuild: fresh }) === 'reload-banner') updateAvailable.value = true
+      if (await hostIsNewer(fetcher, doc)) updateAvailable.value = true
       else lastNegative = now()
     } catch { lastNegative = now() }
     finally { checking = null }
@@ -52,4 +51,32 @@ export function noteChunkFailure(fetcher: typeof fetch = globalThis.fetch.bind(g
   return checking
 }
 
-export function resetUpdateNotice(): void { updateAvailable.value = false; checking = null; lastNegative = -Infinity }
+/** Whether the host's home page names a different entry script than this page's own. Unknown on either side is "no". Throws when the host cannot be asked. */
+async function hostIsNewer(fetcher: typeof fetch, doc: Document | undefined): Promise<boolean> {
+  const current = doc ? entryScriptOf(Array.from(doc.querySelectorAll('script[type="module"]')).map((node) => node.outerHTML).join('')) : null
+  const response = await fetcher('/', { cache: 'no-store', headers: { accept: 'text/html' } })
+  const fresh = response.ok ? entryScriptOf(await response.text()) : null
+  return decideChunkFailure({ failed: true, currentBuild: current, freshBuild: fresh }) === 'reload-banner'
+}
+
+export function resetUpdateNotice(): void { updateAvailable.value = false; checking = null; lastNegative = -Infinity; lastLook = -Infinity }
+
+/** The least time between two quiet looks. */
+export const LOOK_EVERY_MS = 10 * 60_000
+let lastLook = -Infinity
+
+/**
+ * Look, now and then, whether the host serves a newer build than this page: when the tab comes back into view and on a slow timer while it is
+ * visible. Never while hidden, never more than once per LOOK_EVERY_MS, and it stops once the banner is up. Returns a function that stops it.
+ */
+export function watchForUpdates(doc: Document = globalThis.document, fetcher: typeof fetch = globalThis.fetch.bind(globalThis), now: () => number = Date.now, every = LOOK_EVERY_MS): () => void {
+  lastLook = now() // the page has just loaded: it is current
+  const look = (): void => {
+    if (updateAvailable.value || doc.visibilityState === 'hidden' || now() - lastLook < every) return
+    lastLook = now()
+    if (!checking) checking = hostIsNewer(fetcher, doc).then((newer) => { if (newer) updateAvailable.value = true }, () => undefined).finally(() => { checking = null })
+  }
+  doc.addEventListener('visibilitychange', look)
+  const timer = setInterval(look, every)
+  return () => { doc.removeEventListener('visibilitychange', look); clearInterval(timer) }
+}

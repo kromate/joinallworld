@@ -21,6 +21,8 @@ export function ready(): void {
   })
   preloadNext(Promise.all([landingCodeSettled(), sceneShown]))
   // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness; a short address (/games, /abuja, …): its chunk. Fetched only then (./startExtras.ts).
-  const diagnostics = new URLSearchParams(location.search).has('diagnostics')
-  if (diagnostics || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
+  // `?models=…`: the model flags (src/models/integration/flags.ts) that start something after ready; startExtras reads which.
+  const search = new URLSearchParams(location.search)
+  const diagnostics = search.has('diagnostics')
+  if (diagnostics || search.has('models') || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
 }

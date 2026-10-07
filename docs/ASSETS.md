@@ -138,7 +138,7 @@ Brotli sizes are at quality 11. `src/scene/body/body-assets.test.ts` holds the f
 | base-body-male.glb | 159,916 B | 138,098 B | ≤ 300 KB | 9,002 triangles (from 13,396), 23 bones, one primitive, one material |
 | base-body-female.glb | 157,992 B | 137,296 B | ≤ 300 KB | 9,002 triangles (from 13,642), 23 bones, one primitive, one material |
 | clip-pack.glb | 107,536 B | 28,055 B | ≤ 200 KB | 16 clips |
-| lazy chunk `skinned-*.js` | 71,016 B | 18,891 B | — | body module, GLTFLoader, meshopt decoder |
+| lazy chunk `skinned-*.js` | 71,462 B | 19,115 B | — | body module, GLTFLoader, meshopt decoder |
 
 A player fetches one body, the clips and the chunk: about 185 KB brotli after first paint, within the 500 KB budget. The first load is unchanged.
 

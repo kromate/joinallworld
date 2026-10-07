@@ -52,9 +52,9 @@ export const BODY_MANIFEST = {
     }
   },
   "clips": {
-    "sha": "42fbddbad0",
-    "bytes": 53896,
-    "brotli": 13984,
+    "sha": "b10c6b5799",
+    "bytes": 107536,
+    "brotli": 28055,
     "names": [
       "idle",
       "walk",
@@ -63,7 +63,15 @@ export const BODY_MANIFEST = {
       "sit",
       "sit-exit",
       "interact",
-      "dance"
+      "dance",
+      "door",
+      "lie-down",
+      "get-up",
+      "sleep",
+      "bathe-sit",
+      "bathe-stand",
+      "stairs-up",
+      "stairs-down"
     ],
     "pelvis": [
       0,

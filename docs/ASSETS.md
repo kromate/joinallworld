@@ -96,12 +96,20 @@ The pipeline also:
 | interact | Interact | 2.00 s | wave and work while standing |
 | dance | Dance_Loop | 1.00 s | dance |
 
-The free library has no clips for the following. They keep today's behaviour:
+The free library has no clips for doors, bathing, stairs or lying down. `scripts/body/author-clips.ts` authors these from UAL1 poses (CC0, same source as above). It blends and turns the library's joint rotations, bakes them at 20 fps onto the same 23 bones plus the pelvis translation, and writes them into the same `clip-pack.glb`:
 
-- opening or closing a door;
-- bathing;
-- stairs;
-- sleeping or lying down. The bed stays as it is today; the body is not used to lie on it.
+| Game name | Built from | Length | Used for |
+| --- | --- | --- | --- |
+| door | Interact push, then Walk | 1.80 s | arriving in a venue through its door |
+| lie-down | Idle → Crouch → sitting on the floor → lying | 2.20 s | getting onto a bed or sleeping mat |
+| get-up | lie-down, reversed | 2.20 s | getting off it |
+| sleep | lying, breathing | 4.00 s | Sleep, Stay in Bed and Nap: on the back, head on the pillow |
+| bathe-sit | Sitting_Idle_Loop plus a washing arm | 2.40 s | Long Soak: sitting low in the bathtub |
+| bathe-stand | Idle_Loop plus washing, one hand over the head | 3.20 s | Bath: at a bucket or in the shower |
+| stairs-up | Walk with higher knees and a forward lean | 1.33 s | walking up a stair or ramp in a venue |
+| stairs-down | Walk with deeper knees, lower hips and a backward lean | 1.33 s | walking down one |
+
+The stairs clips are as long as the walk cycle, so the stride phase carries across. `scripts/body/clip-check.ts --raw <dir>` prints each authored clip's joint positions in game axes at its start, middle, three quarters and end. Use it to check a pose without a renderer, for example that lying puts the pelvis 0.12 m up and the head towards the pillow.
 
 ### Look mapping
 
@@ -129,10 +137,10 @@ Brotli sizes are at quality 11. `src/scene/body/body-assets.test.ts` holds the f
 | --- | --- | --- | --- | --- |
 | base-body-male.glb | 159,916 B | 138,098 B | ≤ 300 KB | 9,002 triangles (from 13,396), 23 bones, one primitive, one material |
 | base-body-female.glb | 157,992 B | 137,296 B | ≤ 300 KB | 9,002 triangles (from 13,642), 23 bones, one primitive, one material |
-| clip-pack.glb | 53,896 B | 13,984 B | ≤ 200 KB | 8 clips |
+| clip-pack.glb | 107,536 B | 28,055 B | ≤ 200 KB | 16 clips |
 | lazy chunk `skinned-*.js` | 71,016 B | 18,891 B | — | body module, GLTFLoader, meshopt decoder |
 
-A player fetches one body, the clips and the chunk: about 171 KB brotli after first paint, within the 500 KB budget. The first load is unchanged.
+A player fetches one body, the clips and the chunk: about 185 KB brotli after first paint, within the 500 KB budget. The first load is unchanged.
 
 ### How the runtime falls back
 

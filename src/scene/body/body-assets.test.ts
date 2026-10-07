@@ -57,7 +57,7 @@ test('clip-pack.glb: the core clip pack, every clip with a length, within budget
   assert.ok(brotli(bytes) <= BUDGET.clips, `${brotli(bytes)} B brotli > ${BUDGET.clips}`);
   assert.equal(gltf.meshes, undefined, 'no mesh: clips only');
   const names = (gltf.animations ?? []).map((clip) => clip.name);
-  for (const name of ['idle', 'walk', 'sit-enter', 'sit', 'sit-exit']) assert.ok(names.includes(name), `has ${name}`);
+  for (const name of ['idle', 'walk', 'sit-enter', 'sit', 'sit-exit', 'door', 'lie-down', 'get-up', 'sleep', 'bathe-sit', 'bathe-stand', 'stairs-up', 'stairs-down']) assert.ok(names.includes(name), `has ${name}`);
   assert.deepEqual(names, [...BODY_MANIFEST.clips.names]);
   for (const clip of gltf.animations ?? []) {
     const length = Math.max(...clip.samplers.map((sampler) => gltf.accessors[sampler.input]!.max?.[0] ?? 0));

@@ -5,7 +5,7 @@ import { entryHash, verifyChain } from '../../../records/chain.ts'
 import type { ChainEntry } from '../../../records/chain.ts'
 import type { AssemblyView, AuditFlag, BillView, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../../types/politics.ts'
 import { PARTY } from '../../../game/content/politics.ts'
-import { govKey } from '../civic/civicModel.ts'
+import { govKey, until } from '../civic/civicModel.ts'
 
 export type TabId = TierId | 'parties' | 'justice' | 'records'
 export const TABS: readonly { id: TabId; label: string }[] = [
@@ -173,4 +173,15 @@ export const proposeWhy = (offline: string | null, lever: Pick<LeverView, 'min' 
   if (offline) return offline
   if (!assembly.you?.canPropose) return 'Only the officeholder or a member of the assembly can propose a bill.'
   return leverWhy(lever, value)
+}
+
+// ---- the card on the home screen ---------------------------------------------------------------------
+
+/** The two lines of the Politics card: where this week's election is, and what the player can do about it. */
+export function chipLines(data: Pick<PoliticsResponse, 'cycle' | 'seats'>, now: number): { first: string; second: string } {
+  const { phase, endsAt } = data.cycle
+  const first = phase === 'nominations' ? `Nominations are open · voting opens in ${until(endsAt, now)}` : phase === 'voting' ? `Polls are open · they close in ${until(endsAt, now)}` : `Results are in · nominations open in ${until(endsAt, now)}`
+  const held = data.seats.find((seat) => seat.you?.isOfficeholder)
+  if (held) return { first, second: `You are ${held.title} of ${held.name}` }
+  return { first, second: phase === 'voting' ? 'Cast your vote, one tap' : phase === 'nominations' ? 'Run for office, found a party, or look at the rules' : 'See who won, and the laws they set' }
 }

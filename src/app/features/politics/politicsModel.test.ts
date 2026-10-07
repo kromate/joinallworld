@@ -163,3 +163,14 @@ test('voting and proposing say why they cannot be done', () => {
   assert.match(billVoteWhy(null, { status: 'open', yourVote: null }, stranger), /Only a member/); assert.equal(billVoteWhy('Offline.', { status: 'open', yourVote: null }, member), 'Offline.')
   assert.equal(proposeWhy(null, lever, 5, member), ''); assert.match(proposeWhy(null, lever, 11, member), /0–10%/); assert.match(proposeWhy(null, lever, 5, stranger), /Only the officeholder or a member/)
 })
+
+import { chipLines } from './politicsModel.ts'
+
+test('the home-screen card says where the week’s election is and what the player can do, and who they are if they hold a seat', () => {
+  const seats = (held: boolean) => [{ title: 'Chairman', name: 'Lagos', you: { isOfficeholder: held, salary: 0, grantRoom: 0 } }, { title: 'Governor', name: 'Lagos State', you: { isOfficeholder: false, salary: 0, grantRoom: 0 } }] as unknown as Parameters<typeof chipLines>[0]['seats']
+  const hour = 3_600_000
+  assert.deepEqual(chipLines({ cycle: { phase: 'nominations', endsAt: 10 * hour, week: 1 }, seats: seats(false) }, 0), { first: 'Nominations are open · voting opens in 10h 0m', second: 'Run for office, found a party, or look at the rules' })
+  assert.deepEqual(chipLines({ cycle: { phase: 'voting', endsAt: 30 * hour, week: 1 }, seats: seats(false) }, 0), { first: 'Polls are open · they close in 30h 0m', second: 'Cast your vote, one tap' })
+  assert.deepEqual(chipLines({ cycle: { phase: 'results', endsAt: 5 * hour, week: 1 }, seats: seats(false) }, 0), { first: 'Results are in · nominations open in 5h 0m', second: 'See who won, and the laws they set' })
+  assert.equal(chipLines({ cycle: { phase: 'results', endsAt: 5 * hour, week: 1 }, seats: seats(true) }, 0).second, 'You are Chairman of Lagos')
+})

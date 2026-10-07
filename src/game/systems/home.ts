@@ -46,7 +46,7 @@
  *     exactly the listed amounts.
  *   - Selling returns half the list price. Moving house re-fits furniture; whatever does not
  *     fit goes to storage.
- *   - POWER: the district the home is in loses NEPA light for a few hours most days (conditions/conditions.ts,
+ *   - POWER: the district the home is in loses NEPA light for a few hours most days (conditions/grid.ts,
  *     the same for every host). While the light is off, the POWER_BONUS holds only if an inverter is placed (it
  *     carries the room through any cut and burns no petrol) or a generator is placed with petrol in the tank.
  *     A generator burns its petrol only while the light is off and the player is at home: a litre runs it
@@ -74,9 +74,8 @@ import type { HomePower, HomeView } from '../../types/view.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
 import { addItem, addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, findActivity, hasItems, removeItems } from '../api.ts';
-import { formatHour, lagosTime } from '../clock.ts';
-import { gridAt, outageSeconds } from '../conditions/conditions.ts';
-import { LITRE_PRICE, LITRE_SECONDS, TANK_LITRES, TANK_SECONDS, litresOf } from '../conditions/power.ts';
+import { conditionsKit, gridAt } from '../conditions/slot.ts';
+import { TANK_SECONDS, litresOf } from '../conditions/power.ts';
 import { FURNITURE, HOME_ACTIVITIES, HOME_SPOTS, KINDS, PORTED_ACTIVITY_KIND, POWERED_KINDS, POWER_BONUS, SELL_REFUND_RATE, STAR_MULTIPLIER, STARTER_FURNITURE } from '../content/furniture.ts';
 import { INGREDIENTS, INGREDIENT_ORDER, MAX_PACKS_PER_ORDER, RECIPES } from '../content/food.ts';
 import { homeOf } from '../content/housing.ts';
@@ -114,6 +113,7 @@ export const GROCERY_PACK_OPTIONS = Object.freeze([1, 3]);
 const storedCount = (state: LifeState): number => Object.values(state.home.storage).reduce((sum, count) => sum + count, 0);
 const placedOfKind = (state: LifeState, kind: string): PlacedItem[] => state.home.items.filter((item) => FURNITURE[item.itemId]?.kind === kind);
 
+const LENT = { canAfford, debit, emit };
 const hasPlaced = (state: LifeState, itemId: string): boolean => state.home.items.some((item) => item.itemId === itemId);
 /** The district the home stands in: power cuts are by district. */
 const homeDistrict = (state: LifeState): string => (houseFor(state.estate.city, state.property?.house) ?? defaultHouseFor(state.estate.city)).district;
@@ -124,7 +124,7 @@ export function powerOf(state: LifeState, now: number): HomePower {
   const grid = gridAt(state.estate.city, district, now);
   const generator = hasPlaced(state, 'generator');
   const source = grid.on ? 'grid' : hasPlaced(state, 'inverter') ? 'inverter' : generator && state.home.fuel > 0 ? 'generator' : 'none';
-  return { district, grid: grid.on, until: grid.until, source, generator, fuel: litresOf(state.home.fuel), tank: TANK_LITRES, litrePrice: LITRE_PRICE };
+  return { district, grid: grid.on, until: grid.until, source, generator, fuel: litresOf(state.home.fuel) };
 }
 
 /** Result multiplier for a furniture kind: best placed star rating, plus the power bonus. 1 when nothing of that kind is placed. */
@@ -298,37 +298,6 @@ function unpackKitchen(state: LifeState) {
   return ok(state, 'unpacked');
 }
 
-function refuel(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
-  const litres = payload?.litres;
-  if (typeof litres !== 'number' || !Number.isInteger(litres) || litres < 1 || litres > TANK_LITRES) return fail(state, 'invalid_quantity', `Buy between 1 and ${TANK_LITRES} litres of petrol at a time.`);
-  if (!hasPlaced(state, 'generator')) return fail(state, 'no_generator', 'There is no generator in your room. Buy a Small Petrol Generator in Buy mode first.');
-  const room = Math.floor((TANK_SECONDS - state.home.fuel) / LITRE_SECONDS);
-  if (room < 1) return fail(state, 'tank_full', 'The tank is full.');
-  if (litres > room) return fail(state, 'tank_full', `The tank has room for ${room} more ${room === 1 ? 'litre' : 'litres'}.`);
-  const price = litres * LITRE_PRICE;
-  if (!canAfford(state, price)) return fail(state, 'insufficient_funds', `${litres} ${litres === 1 ? 'litre' : 'litres'} of petrol costs ${naira(price)}; you have ${naira(state.cash)} (${naira(price - state.cash)} short).`);
-  debit(state, price, `Generator fuel: ${litres} ${litres === 1 ? 'litre' : 'litres'}`, ctx);
-  state.home.fuel += litres * LITRE_SECONDS;
-  state.message = `${litres} ${litres === 1 ? 'litre' : 'litres'} of petrol in the generator. ${naira(price)} paid.`;
-  return ok(state, 'fuelled');
-}
-
-const lightBack = (at: number | null): string => (at === null ? '' : ` Light is due back around ${formatHour(lagosTime(at).minuteOfDay / 60)}.`);
-
-/** Settles the grid against the seconds just passed: the cut that began, and the petrol the generator burned while the light was off and the player was home. */
-function settlePower(state: LifeState, dt: number, ctx: LifeContext): void {
-  if (state.location !== HOME) return;
-  const city = state.estate.city, district = homeDistrict(state);
-  const from = ctx.now - dt * 1000;
-  const before = gridAt(city, district, from).on, after = gridAt(city, district, ctx.now);
-  if (before && !after.on) emit(state, 'notice.posted', { kind: 'power', text: `NEPA has taken light in ${district}.${lightBack(after.until)}` }, ctx);
-  if (state.home.fuel <= 0 || !hasPlaced(state, 'generator') || hasPlaced(state, 'inverter')) return;
-  const burned = outageSeconds(city, district, from, ctx.now);
-  if (burned <= 0) return;
-  state.home.fuel = Math.max(0, state.home.fuel - burned);
-  if (state.home.fuel === 0 && !after.on) emit(state, 'notice.posted', { kind: 'power', text: 'The generator has run out of petrol and the light is still off. Buy petrol in Phone → Groceries.' }, ctx);
-}
-
 // ---- activities --------------------------------------------------------------------------------
 
 const furnitureActivities = HOME_ACTIVITIES.map(({ needs, ...def }) => ({
@@ -370,7 +339,7 @@ const play = PLAYS ? {
     'home.furniture-place': placeFromStorage,
     'home.grocery-buy': buyGroceries,
     'home.kitchen-unpack': unpackKitchen,
-    'home.refuel': refuel,
+    'home.refuel': (state, payload, ctx) => conditionsKit()?.refuel(state, payload, ctx, LENT) ?? fail(state, 'no_generator', ''),
   },
   on: {
     'life.started'(state) {
@@ -423,7 +392,7 @@ const play = PLAYS ? {
   },
   /** Pays out the quality bonus of a running per-second activity for the seconds just settled. */
   advance(state, dt, ctx) {
-    settlePower(state, dt, ctx);
+    if (state.location === HOME) conditionsKit()?.settlePower(state, dt, ctx, homeDistrict(state), LENT);
     const boost = state.home.boost;
     if (!boost) return;
     const def = findActivity(boost.id, state.estate.city)?.def;

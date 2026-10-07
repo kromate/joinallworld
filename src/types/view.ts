@@ -756,10 +756,8 @@ export interface HomePower {
   source: 'grid' | 'inverter' | 'generator' | 'none'
   /** A generator is placed in the room, so petrol matters. */
   generator: boolean
-  /** Litres in the tank (one decimal), the tank's size and the price of a litre. */
+  /** Litres in the tank, to one decimal (the tank and the price of a litre are in src/game/conditions/power.ts). */
   fuel: number
-  tank: number
-  litrePrice: number
 }
 
 // ---- onboarding ---------------------------------------------------------------------------

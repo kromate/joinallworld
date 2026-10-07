@@ -91,7 +91,7 @@ test('travel.arrived carries { venue, from, mode } for every listener, and arriv
   heard.length = 0;
   const state = createLife({}, at());
   act(state, 'travel', { id: 'library', mode: 'okada' });
-  advanceLife(state, 5, at(MONDAY_9AM + 5000));
+  advanceLife(state, 10, at(MONDAY_9AM + 10000)); // 9 am Monday is the morning go-slow: the road takes half as long again
   assert.deepEqual(heard, [{ venue: 'library', from: 'park', mode: 'okada' }]);
   // Systems registered before travel receive the very same payload object, so they see the mode too.
   const first: Record<string, unknown>[] = [];
@@ -378,8 +378,8 @@ test('one Updates feed: rent due, paid and missed, loan paid and missed, promoti
   // Saturday: rent and the loan instalment are collected, each with its own line.
   const saturday = lagosDayStart(lagosTime(MONDAY_9AM).day + 5) + 60000;
   advanceLife(state, 3600, at(saturday));
-  assert.deepEqual(kinds(), ['rent-due', 'rent', 'loan']);
-  assert.match(last('rent'), /^Rent paid: ₦6,000 for your Yaba self-contain \(due Sat 10 Jan\)\.$/);
+  assert.deepEqual(kinds(), ['rent-due', 'rent', 'loan', 'rent'], 'the last is the line that sums the week up');
+  assert.match(state.social.notices.findLast((notice) => notice.kind === 'rent' && notice.text.startsWith('Rent paid'))?.text ?? '', /^Rent paid: ₦6,000 for your Yaba self-contain \(due Sat 10 Jan\)\.$/);
   assert.match(last('loan'), /^Loan instalment paid: ₦12,000 \(due Sat 10 Jan\)\. ₦60,000 left\.$/);
   assert.equal(state.cash, 78000);
   // The next week the wallet is empty: both bills are missed and say what is owed.
@@ -387,7 +387,7 @@ test('one Updates feed: rent due, paid and missed, loan paid and missed, promoti
   advanceLife(state, 3600, at(saturday + 6 * DAY)); // Friday
   assert.match(last('rent-due'), /You have ₦0 — ₦18,000 short\.$/);
   advanceLife(state, 3600, at(saturday + 7 * DAY));
-  assert.deepEqual(kinds().slice(-3), ['rent-due', 'rent-missed', 'loan-missed']);
+  assert.deepEqual(kinds().slice(-4), ['rent-due', 'rent-missed', 'loan-missed', 'rent']);
   assert.match(last('rent-missed'), /Rent missed: ₦6,000 was due Sat 17 Jan\. You owe ₦6,000/);
   assert.match(last('loan-missed'), /Loan instalment missed: ₦12,000 was due Sat 17 Jan and you had ₦0\. A ₦500 fee was added\. ₦60,500 is now owed\./);
   // An early loan payment by the player is listed too.

@@ -4,7 +4,12 @@
  * (client.ts rebuilds each answer and derives its views; nothing there applies a rule), so the browser build replaces this module
  * with `export const PLAYS = false` (vite.config.ts) and the bundler leaves the code that only playing needs out of the page.
  * Nothing about how a life is rebuilt or viewed depends on it.
+ *
+ * A build that plays also has the rules of the city's conditions (the grid, the go-slow, the words of the bills; conditions/pack.ts), which the
+ * browser fetches as a chunk of its own once the page is up. Importing them here is what gives every host that plays a life the same rules.
  */
+import './conditions/pack.ts';
+
 export const PLAYS: boolean = true;
 
 /** Stands for the code a reading build leaves out. Typed as `never`, so a system keeps the type it has with the code in it. */

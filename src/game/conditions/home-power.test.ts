@@ -47,7 +47,7 @@ test('buying petrol charges the wallet, fills the tank and refuses what the tank
   const state = room([GENERATOR], 0, now)
   assert.equal(act(state, 'home.refuel', { litres: 5 }, now).ok, true)
   assert.deepEqual([state.home.fuel, state.cash], [5 * LITRE_SECONDS, 100000 - 5 * LITRE_PRICE])
-  assert.equal(state.ledger.at(-1)?.reason, 'Generator fuel: 5 litres')
+  assert.equal(state.ledger.at(-1)?.reason, 'Generator fuel')
   assert.equal(viewLife(state, ctxAt(now)).home.power.fuel, 5)
   const full = act(state, 'home.refuel', { litres: TANK_LITRES }, now)
   assert.deepEqual([full.ok, full.code], [false, 'tank_full'])
@@ -64,16 +64,16 @@ test('buying petrol charges the wallet, fills the tank and refuses what the tank
 test('the generator burns petrol only while the light is off, by the server clock, at any polling rhythm', () => {
   const cut = aCut()
   const start = cut.from - 600000
-  const whole = room([GENERATOR], 3 * 3600, start)
+  const whole = room([GENERATOR], 5 * 3600, start)
   advanceLife(whole, (cut.to + 3600000 - start) / 1000, ctxAt(cut.to + 3600000))
   const burned = (cut.to - cut.from) / 1000
-  assert.equal(whole.home.fuel, 3 * 3600 - burned)
-  const stepped = room([GENERATOR], 3 * 3600, start)
+  assert.equal(whole.home.fuel, 5 * 3600 - burned)
+  const stepped = room([GENERATOR], 5 * 3600, start)
   for (let t = start + 7000; t < cut.to + 3600000 + 7000; t += 7000) advanceLife(stepped, 7, ctxAt(Math.min(t, cut.to + 3600000)))
   assert.ok(Math.abs(stepped.home.fuel - whole.home.fuel) <= 7, `${stepped.home.fuel} vs ${whole.home.fuel}`)
-  const dry = room([GENERATOR], 3 * 3600, start)
+  const dry = room([GENERATOR], 5 * 3600, start)
   advanceLife(dry, 500, ctxAt(start + 500000))
-  assert.equal(dry.home.fuel, 3 * 3600, 'light is still on for the first 500 seconds: nothing burned')
+  assert.equal(dry.home.fuel, 5 * 3600, 'light is still on for the first 500 seconds: nothing burned')
 })
 
 test('no petrol is burned away from home, without a generator, or with an inverter', () => {
@@ -99,7 +99,7 @@ test('running out of petrol puts the light out, takes the power bonus, and says 
   assert.equal(qualityOf(state, 'tv', cut.to + 1000), 1.25 * 1.2, 'the light is back: powered again')
   const texts = state.social.notices.map((notice) => notice.text)
   assert.ok(texts.some((text) => /^NEPA has taken light in Yaba\. Light is due back around/.test(text)), texts.join(' | '))
-  assert.ok(texts.some((text) => /run out of petrol/.test(text)))
+  assert.ok(texts.some((text) => /out of petrol/.test(text)))
   assert.ok(state.social.notices.some((notice) => notice.kind === 'power'))
 })
 
@@ -112,5 +112,5 @@ test('an inverter carries the room through the cut with no petrol; a room with n
   assert.equal(qualityOf(bare, 'tv', during), 1.25, 'no power item: no bonus, as before')
   assert.equal(qualityOf(room([GENERATOR, TV], 0, cut.to + 60000), 'tv', cut.to + 60000), 1.25 * 1.2, 'on the grid a placed generator still gives the bonus')
   const view = viewLife(room([GENERATOR, TV], 7200, during), ctxAt(during)).home.power
-  assert.deepEqual([view.district, view.grid, view.until, view.source, view.generator, view.fuel, view.tank, view.litrePrice], ['Yaba', false, cut.to, 'generator', true, 3, TANK_LITRES, LITRE_PRICE])
+  assert.deepEqual([view.district, view.grid, view.until, view.source, view.generator, view.fuel], ['Yaba', false, cut.to, 'generator', true, 3])
 })

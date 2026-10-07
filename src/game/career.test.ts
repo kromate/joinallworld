@@ -570,7 +570,7 @@ test('bills are announced on Thursday and again on Friday, each once however the
   for (let i = 0; i < 6; i++) player.step(600);
   const thursday = notices('rent-due');
   assert.equal(thursday.length, 1);
-  assert.match(need(thursday[0]), /^Heads up: rent ₦6,000 and loan ₦12,000 due Saturday, in two days\. You have ₦4,000, ₦14,000 short\. Work a shift or two before then\.$/);
+  assert.match(need(thursday[0]), /^Heads up: rent ₦6,000 and loan ₦12,000 due Saturday\. You have ₦4,000, ₦14,000 short\. Work a shift or two\.$/);
   assert.equal(need(player.state.economy.headsUp), billingWeek(player.now) + 1);
   assert.equal(player.state.economy.reminded, null, 'the Friday reminder has not been used up');
   player.step(DAY);
@@ -582,7 +582,7 @@ test('bills are announced on Thursday and again on Friday, each once however the
   const covered = onboarded('yaba', 'none', { cash: 96000 });
   seen.length = 0;
   covered.step(DAY * 3 + 3600);
-  assert.match(need(notices('rent-due')[0]), /^Heads up: rent ₦6,000 due Saturday, in two days\. You have ₦96,000\.$/);
+  assert.match(need(notices('rent-due')[0]), /^Heads up: rent ₦6,000 due Saturday\. You have ₦96,000\.$/);
 });
 
 test('a missed Saturday gets louder each time in a row, nobody is evicted, and the arrears warning follows', () => {
@@ -593,9 +593,9 @@ test('a missed Saturday gets louder each time in a row, nobody is evicted, and t
     debtor.step(secondsUntil(debtor, week === 0 ? debtor.view().economy.nextDue : debtor.view().economy.nextDue));
     weeks.push(need(notices('rent-missed')[week]));
   }
-  assert.match(need(weeks[0]), /^Rent missed: ₦6,000 was due Sat 10 Jan\. You owe ₦6,000; pay it in Phone → Bank before next Saturday to avoid a late fee\.$/);
-  assert.match(need(weeks[1]), /^Rent missed again: .* second week running\. You owe ₦12,600 with a ₦600 late fee\. Your landlord is asking after you/);
-  assert.match(need(weeks[2]), /^Rent missed, third week running: .* but you keep your room in this beta/);
+  assert.match(need(weeks[0]), /^Rent missed: ₦6,000 was due Sat 10 Jan\. You owe ₦6,000\. Pay in Phone → Bank before next Saturday to avoid a late fee\.$/);
+  assert.match(need(weeks[1]), /^Rent missed again, second week running: you owe ₦12,600, with a ₦600 late fee\. Your landlord is asking after you/);
+  assert.match(need(weeks[2]), /^Rent missed, 3 weeks running: you owe .* but you keep your room in this beta/);
   const rent = need(debtor.view().economy.rent);
   assert.match(need(rent.warning), /^3 Saturdays missed in a row\. You owe ₦/);
   assert.match(need(rent.warning), /You keep your home in this beta\./);
@@ -631,7 +631,7 @@ test('rent the player cannot afford is missed in full, shown as arrears, and nev
   assert.equal(player.state.cash, 5999); assert.equal(player.state.ledger.length, 0);
   assert.deepEqual(player.state.economy.rent, { house: 'yaba', arrears: 6000, missed: 1 });
   assert.deepEqual(events('rent.missed'), [{ amount: 6000, house: 'yaba', arrears: 6000, missed: 1 }]);
-  assert.match(player.state.message, /Rent missed: ₦6,000 .* You now owe ₦6,000/);
+  assert.match(player.state.message, /Rent missed: ₦6,000 was due .* You owe ₦6,000/);
   assert.ok(player.state.moodlets.some((moodlet) => moodlet.id === 'rent-arrears' && moodlet.value < 0));
   let rent = need(player.view().economy.rent);
   assert.match(need(rent.warning), /You owe ₦6,000 in missed rent\. Pay it before Sat 17 Jan or a ₦600 late fee is added/);

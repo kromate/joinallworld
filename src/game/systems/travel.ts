@@ -83,7 +83,7 @@ import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, 
 import { lgaOf } from '../content/world.ts';
 import { COMING_SOON, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.ts';
 import { lagosTime } from '../clock.ts';
-import { slowedSeconds } from '../conditions/rush.ts';
+import { slowedSeconds } from '../conditions/slot.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';

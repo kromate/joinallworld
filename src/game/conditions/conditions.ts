@@ -14,6 +14,11 @@ import { weatherAt } from '../systems/health.ts'
 import { makeRng } from '../util.ts'
 import { daySeed } from '../world-time.ts'
 import { goSlowFactor, rushAt } from './rush.ts'
+import { powerCutAt } from './grid.ts'
+import type { Span } from './grid.ts'
+
+export { POWER_CUT_CHANCE, gridAt, outageSeconds, powerCutAt, powerCutsOn } from './grid.ts'
+export type { Span } from './grid.ts'
 
 export type ConditionKind = 'power-cut' | 'go-slow' | 'match-night' | 'rain'
 
@@ -29,65 +34,12 @@ export interface CityCondition {
   venues?: string[]
 }
 
-export interface Span { from: number; to: number }
-
 const MINUTE = 60000
-const DAY_MS = 86400000
-
-// ---- power ---------------------------------------------------------------------------------------------------------------------------------
-
-/** The chance that a district loses light at all on a given day, then the chance of a second cut. Original beta values. */
-export const POWER_CUT_CHANCE = 0.55
-const SECOND_CUT_CHANCE = 0.2
-/** A cut lasts between 1½ and 4 hours; 7 in 10 begin in the evening (16:00–23:00), the rest in the morning or the afternoon (05:00–14:00). */
-const CUT_MINUTES = [90, 240] as const
-const EVENING_SHARE = 0.7
 
 /** Venues with a generator of their own, by id (every city shares the ids): the lights stay on and a hum is heard. A venue definition may set `generator` itself. */
 const GENERATOR_VENUES: ReadonlySet<string> = new Set(['cchub', 'office', 'quilox', 'rooftop', 'palms', 'hospital', 'state-house', 'radio', 'i-fitness', 'airport', 'refinery', 'unilag',
   'police', 'salon', 'viewing-centre', 'church', 'shrine'])
 export const venueHasGenerator = (venue: { id: string; generator?: boolean }): boolean => venue.generator ?? GENERATOR_VENUES.has(venue.id)
-
-/** The cuts one district has on one Lagos day, in order and merged where they touch. A cut that begins late may run on into the next day. */
-export function powerCutsOn(cityId: string, district: string, day: number): Span[] {
-  const rng = makeRng(`power|${daySeed(cityId, day)}|${district}`)
-  if (rng() >= POWER_CUT_CHANCE) return []
-  const count = rng() < SECOND_CUT_CHANCE ? 2 : 1
-  const start = lagosDayStart(day)
-  const cuts: Span[] = []
-  for (let i = 0; i < count; i++) {
-    const evening = rng() < EVENING_SHARE
-    const begin = evening ? 960 + Math.floor(rng() * 28) * 15 : 300 + Math.floor(rng() * 37) * 15
-    const length = CUT_MINUTES[0] + Math.floor(rng() * ((CUT_MINUTES[1] - CUT_MINUTES[0]) / 15 + 1)) * 15
-    cuts.push({ from: start + begin * MINUTE, to: start + (begin + length) * MINUTE })
-  }
-  cuts.sort((a, b) => a.from - b.from)
-  const merged: Span[] = []
-  for (const cut of cuts) {
-    const last = merged[merged.length - 1]
-    if (last && cut.from <= last.to) last.to = Math.max(last.to, cut.to)
-    else merged.push(cut)
-  }
-  return merged
-}
-
-/** The cut a moment is inside, or null while the grid is on. Yesterday's late cut counts. */
-export function powerCutAt(cityId: string, district: string, now: number): Span | null {
-  const { day } = lagosTime(now)
-  for (const when of [day - 1, day]) for (const cut of powerCutsOn(cityId, district, when)) if (now >= cut.from && now < cut.to) return cut
-  return null
-}
-
-/** The seconds the grid was off in a district between two moments. Bounded to two weeks, so a long absence is settled in a few lookups. */
-export function outageSeconds(cityId: string, district: string, from: number, to: number): number {
-  const first = Math.max(from, to - 14 * DAY_MS)
-  if (!(to > first)) return 0
-  let total = 0
-  for (let day = lagosTime(first).day - 1; day <= lagosTime(to).day; day++) {
-    for (const cut of powerCutsOn(cityId, district, day)) total += Math.max(0, Math.min(to, cut.to) - Math.max(first, cut.from))
-  }
-  return Math.round(total / 1000)
-}
 
 // ---- match nights --------------------------------------------------------------------------------------------------------------------------
 
@@ -146,10 +98,4 @@ export function noticeLine(cityId: string, place: { id: string; district: string
   const match = matchOn(cityId, lagosTime(now).day)
   if (match && now >= match.from && now < match.to && MATCH_VENUES.includes(place.id)) return `Match on here until ${hourOf(match.to)}. Come early for a seat.`
   return ''
-}
-
-/** What a home or a venue sees of the grid at `now`: is the light on, and until when is it off. */
-export function gridAt(cityId: string, district: string, now: number): { on: boolean; until: number | null } {
-  const cut = powerCutAt(cityId, district, now)
-  return { on: !cut, until: cut ? cut.to : null }
 }

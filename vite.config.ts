@@ -217,8 +217,14 @@ export default defineConfig({
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
+    // The visit rules (the door choices and the visit button) are read only by the Visit screens, which are fetched on demand.
     // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, behind ?models=moments) until a feature of the first page needs them.
-    if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|world-time|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|world-time|visit|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    // The city's conditions. The grid, the go-slow, the venue card's line and the look of the light are read by the moments and the venue scenes, so they are a chunk
+    // of the first page. The words of the bills and of the generator, and the kit that hands them and the rules to the engine (pack.ts), are a lazy chunk of their own: a host that
+    // plays a life imports the pack with src/game/profile.ts, and the page fetches it when idle (src/app/state/idlePreload.ts). The engine keeps only slot.ts and power.ts.
+    if (/\/src\/game\/conditions\/(billing-words|power-words|generator|pack)\.ts$/.test(id)) return 'conditions-pack'
+    if (/\/src\/game\/conditions\/(grid|rush|conditions|look)\.ts$/.test(id)) return 'conditions'
     // The campus discovery trail is read by the campus rules and the Campus app.
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     // Short addresses (/games, /abuja, …): the table, what is kept for a visit and the routing are one chunk, fetched only when an address or the landing asks, so the first download lists one file for them.

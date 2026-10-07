@@ -3,11 +3,11 @@
 // content/traits.js BOUTIQUE_PRICES — original beta prices).
 import type { AccessoryId, Look } from '../../../types/life.ts'
 import type { BoutiqueItem } from '../../../types/view.ts'
-import { chooseAvatarWearable, keepAvatarAccessoryChoice } from '../../../scene/wardrobe/look.ts'
-import type { AvatarLook } from '../../../scene/wardrobe/look.ts'
-import { isAvatarWearableId } from '../../../scene/wardrobe/rules.ts'
-export { wearableCards } from '../../../scene/wardrobe/view.ts'
-export { removeAvatarWearable } from '../../../scene/wardrobe/look.ts'
+import { chooseAvatarWearable, keepAvatarAccessoryChoice } from '../../../game/wardrobe/look.ts'
+import type { AvatarLook } from '../../../game/wardrobe/look.ts'
+import { isAvatarWearableId } from '../../../game/wardrobe/rules.ts'
+export { wearableCards } from '../../../game/wardrobe/view.ts'
+export { removeAvatarWearable } from '../../../game/wardrobe/look.ts'
 
 export type BoutiqueChoice = Omit<BoutiqueItem, 'kind'> & { kind: BoutiqueItem['kind'] | 'wearables' }
 export const SECTIONS: readonly (readonly [BoutiqueChoice['kind'], string])[] = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['wearables', 'Layered clothing'], ['fabric', 'Fabrics'], ['accessories', 'Accessories']]

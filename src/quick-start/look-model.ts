@@ -9,8 +9,8 @@ import { APPEARANCE, ACCESSORY_BASICS, DREAMS, TRAITS, TRAITS_REQUIRED } from '.
 import type { AccessoryId, BodyId, ExpressionId, FaceId, HairId, Look, OutfitId } from '../types/life.ts';
 import type { Draft, DraftArea } from './model.ts';
 import type { DreamId, TraitId } from '../types/life.ts';
-import { avatarLookFields } from '../scene/wardrobe/look.ts';
-import { AVATAR_STARTER_WEARABLES } from '../scene/wardrobe/prices.ts';
+import { avatarLookFields } from '../game/wardrobe/look.ts';
+import { AVATAR_STARTER_WEARABLES } from '../game/wardrobe/prices.ts';
 
 // ---- names ---------------------------------------------------------------------------------
 /** Friendly suggestions for the name field: "<mood> <name>", always 3–24 ordinary characters. */

@@ -6,7 +6,7 @@
 import '../../../ui/panels/look-ui.css'
 import { computed, defineAsyncComponent, h, ref } from 'vue'
 import { APPEARANCE, BOUTIQUE_PRICES } from '../../../game/content/traits.ts'
-import type { AvatarLook } from '../../../scene/wardrobe/look.ts'
+import type { AvatarLook } from '../../../game/wardrobe/look.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { SECTIONS, chosen, lookUi, openLookTab, optionsOf, swatchLabel, titled, worn } from './lookModel.ts'

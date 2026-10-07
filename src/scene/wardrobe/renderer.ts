@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import type { AvatarBodyRegion } from './catalogue.ts';
+import type { AvatarBodyRegion } from '../../game/wardrobe/catalogue.ts';
 import { buildWardrobeGeometry, captureWardrobeRestFrame } from './geometry.ts';
 import type { ResolvedWardrobeLook, WardrobeGeometry, WardrobePresentation } from './geometry.ts';
 export type { WardrobePresentation } from './geometry.ts';

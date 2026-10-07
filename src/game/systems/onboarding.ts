@@ -1,10 +1,10 @@
 import { AVATAR_WEARABLE_IDS, AVATAR_STARTER_WEARABLES, isAvatarWearableId, avatarSavedFields, normalizeAvatarAppearance } from '../../types/avatar.ts';
 import type { AvatarWearableId } from '../../types/avatar.ts';
-import { AVATAR_WEARABLES } from '../../scene/wardrobe/catalogue.ts';
-import { validateAvatarWearables, resolveAvatarWearablesForRenderer } from '../../scene/wardrobe/rules.ts';
-import { AVATAR_WEARABLE_PRICES } from '../../scene/wardrobe/prices.ts';
-import { avatarLookFields, chooseAvatarWearable, keepAvatarAccessoryChoice } from '../../scene/wardrobe/look.ts';
-import { wearableCards } from '../../scene/wardrobe/view.ts';
+import { AVATAR_WEARABLES } from '../wardrobe/catalogue.ts';
+import { validateAvatarWearables, resolveAvatarWearablesForRenderer } from '../wardrobe/rules.ts';
+import { AVATAR_WEARABLE_PRICES } from '../wardrobe/prices.ts';
+import { avatarLookFields, chooseAvatarWearable, keepAvatarAccessoryChoice } from '../wardrobe/look.ts';
+import { wearableCards } from '../wardrobe/view.ts';
 import { dreamFor, dreamsFor, lotteryBulletsFor } from '../cities/characterContent.ts';
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 /**

@@ -5,7 +5,7 @@
 import { APPEARANCE, DREAM_REWARD, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { DreamId, Look, StartHomeId, TraitId } from '../../../types/life.ts'
 import { hairOptions, outfitOptions, slotOf, starterWardrobe } from './lookModel.ts'
-import { avatarLookFields } from '../../../scene/wardrobe/look.ts'
+import { avatarLookFields } from '../../../game/wardrobe/look.ts'
 import { money } from '../../ui/format.ts'
 import { cityUnit } from '../../../game/cities/terminology.ts'
 

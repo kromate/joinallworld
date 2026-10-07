@@ -41,8 +41,8 @@ import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW }
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { avatarProportions, normalizeAvatarAppearance } from '../types/avatar.ts';
 import type { AvatarLookExtensions } from '../types/avatar.ts';
-import { normalizeAvatarWearables, resolveAvatarWearablesForRenderer } from './wardrobe/rules.ts';
-import { AVATAR_WEARABLE_CATALOGUE } from './wardrobe/catalogue.ts';
+import { normalizeAvatarWearables, resolveAvatarWearablesForRenderer } from '../game/wardrobe/rules.ts';
+import { AVATAR_WEARABLE_CATALOGUE } from '../game/wardrobe/catalogue.ts';
 import { AVATAR_LOW_TRIANGLES } from '../budgets.ts';
 import type { Kit } from './kit.ts';
 import type { Batch, BatchOptions, Colour, ThreeModule, Vec3 } from './types.ts';

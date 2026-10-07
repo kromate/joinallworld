@@ -44,7 +44,7 @@ import { COLLECTION_NAMES, DATABASE_KEYS } from '../../server/types.ts'
 import type { ActionReceipt, CityLifeRecord, GrowthCollection, GrowthPlayerRecord, OnceReceipt, RouteContext, SessionRecord, ShareRecord } from '../../server/types.ts'
 
 /** A host-free context for the registries: modules only read it when they are called. */
-const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, cityIds: [] }) as unknown as RouteContext
+const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, checks: {}, cityIds: [] }) as unknown as RouteContext
 
 type Json = Record<string, unknown>
 const root = join(import.meta.dirname, '..', '..')
@@ -182,7 +182,8 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const freshCookie = String(fresh.headers.get('set-cookie')).split(';')[0] ?? ''
   assert.deepEqual(await get('/api/social/me', freshCookie), { error: 'onboarding_required' }, 'a life still in character creation has no social surface')
   const overview = sameKeys(await get('/api/social/me', cookie), SOCIAL_OVERVIEW_KEYS, 'GET /api/social/me')
-  sameKeys(overview.house, HOUSE_VIEW_KEYS, 'house')
+  const ownHouse = sameKeys(overview.house, HOUSE_VIEW_KEYS.filter(key => key !== 'myCapture'), 'house')
+  assert.equal(ownHouse.role, 'host', 'the host has no guest capture consent field')
   const limits = sameKeys(overview.limits, SOCIAL_LIMITS_KEYS, 'limits')
   assert.deepEqual(limits.reasons, [...REPORT_REASONS])
   assert.deepEqual([...SERVER_REPORT_REASONS], [...REPORT_REASONS])

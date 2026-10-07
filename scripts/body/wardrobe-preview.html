@@ -10,8 +10,8 @@ import {BODY_FILES} from '/src/scene/body/files.ts';
 import {BODY_MANIFEST} from '/src/scene/body/manifest.ts';
 import {normalizeLook,LOOK_OPTIONS} from '/src/scene/characters.ts';
 import {AVATAR_WEARABLE_IDS,LEGACY_AVATAR_WEARABLE_IDS} from '/src/types/avatar.ts';
-import {AVATAR_WEARABLE_CATALOGUE} from '/src/scene/wardrobe/catalogue.ts';
-import {resolveAvatarWearablesForRenderer} from '/src/scene/wardrobe/rules.ts';
+import {AVATAR_WEARABLE_CATALOGUE} from '/src/game/wardrobe/catalogue.ts';
+import {resolveAvatarWearablesForRenderer} from '/src/game/wardrobe/rules.ts';
 import {createWardrobeRenderer} from '/src/scene/wardrobe/renderer.ts';
 const $=id=>document.getElementById(id),controls=$('controls');
 function select(id,label,values,initial){const l=document.createElement('label');l.append(label);const s=document.createElement('select');s.id=id;for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=AVATAR_WEARABLE_CATALOGUE[value]?.label??value;s.append(o)}s.value=initial??values[0];l.append(s);controls.append(l);return s}

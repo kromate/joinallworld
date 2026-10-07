@@ -26,7 +26,7 @@ import type { BodyKey } from './manifest.ts';
 import { bodyTint } from './tint.ts';
 import { normalizeLook } from '../characters.ts';
 import { avatarProportions, normalizeAvatarAppearance } from '../../types/avatar.ts';
-import { resolveAvatarWearablesForRenderer } from '../wardrobe/rules.ts';
+import { resolveAvatarWearablesForRenderer } from '../../game/wardrobe/rules.ts';
 import { createWardrobeRenderer } from '../wardrobe/renderer.ts';
 import type { WardrobePresentation, WardrobeMetrics } from '../wardrobe/renderer.ts';
 import { createAvatarAppearanceController } from './appearance.ts';

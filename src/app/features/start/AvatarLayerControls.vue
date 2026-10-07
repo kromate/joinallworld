@@ -2,12 +2,12 @@
 import { computed } from 'vue'
 import { AVATAR_WEARABLE_IDS, normalizeAvatarAppearance } from '../../../types/avatar.ts'
 import type { AvatarAppearance, AvatarWearableId } from '../../../types/avatar.ts'
-import { AVATAR_WEARABLES } from '../../../scene/wardrobe/catalogue.ts'
-import type { AvatarWearableSlot } from '../../../scene/wardrobe/catalogue.ts'
-import { AVATAR_WEARABLE_PRICES } from '../../../scene/wardrobe/prices.ts'
+import { AVATAR_WEARABLES } from '../../../game/wardrobe/catalogue.ts'
+import type { AvatarWearableSlot } from '../../../game/wardrobe/catalogue.ts'
+import { AVATAR_WEARABLE_PRICES } from '../../../game/wardrobe/prices.ts'
 import { money } from '../../ui/format.ts'
-import { chooseAvatarAppearance, chooseAvatarWearable } from '../../../scene/wardrobe/look.ts'
-import type { AvatarLook } from '../../../scene/wardrobe/look.ts'
+import { chooseAvatarAppearance, chooseAvatarWearable } from '../../../game/wardrobe/look.ts'
+import type { AvatarLook } from '../../../game/wardrobe/look.ts'
 
 const props = defineProps<{ look: AvatarLook; owned: readonly AvatarWearableId[]; mode: 'layers' | 'appearance' }>()
 const emit = defineEmits<{ replace: [look: AvatarLook] }>()

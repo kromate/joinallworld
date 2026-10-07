@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import type { Look } from '../characters.ts';
 import type { ResolvedAvatarWearableId } from '../../types/avatar.ts';
-import type { AvatarBodyRegion } from './catalogue.ts';
-import { AVATAR_WEARABLE_CATALOGUE } from './catalogue.ts';
+import type { AvatarBodyRegion } from '../../game/wardrobe/catalogue.ts';
+import { AVATAR_WEARABLE_CATALOGUE } from '../../game/wardrobe/catalogue.ts';
 
 export interface ResolvedWardrobeLook {
   readonly look: Pick<Look, 'body' | 'hair' | 'hairColor' | 'outfit' | 'outfitColor' | 'bottomsColor' | 'skin' | 'fabric'>;

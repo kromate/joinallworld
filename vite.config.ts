@@ -178,7 +178,8 @@ export default defineConfig({
     terserOptions: { compress: { passes: 2 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
-    rollupOptions: { treeshake: { moduleSideEffects: (id) => !id.endsWith('/src/scene/home-scene.ts') && !/\/src\/scene\/wardrobe\/(catalogue|rules|look|view|prices)\.ts$/.test(id) }, input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {
+    rollupOptions: { treeshake: { moduleSideEffects: (id) => !id.endsWith('/src/scene/home-scene.ts') && !/\/src\/game\/wardrobe\/(catalogue|rules|look|view|prices)\.ts$/.test(id) }, input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {
+    if (/\/src\/game\/wardrobe\//.test(id)) return undefined
     if (/\/src\/types\/avatar\.ts$/.test(id)) return 'engine'
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city) return `city-${city[1]}-${city[2]}`

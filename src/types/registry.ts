@@ -20,13 +20,13 @@ import type { CampusEngineEvent, CampusEventMap } from './campus.ts'
 /**
  * `kind` of a line posted to the Updates feed through 'notice.posted':
  *   career 'promotion' · health 'illness' | 'recovered' · economy 'rent-due' | 'rent' |
- *   'rent-missed' | 'loan' | 'loan-missed' · civic 'gov' · estate 'house' | 'ground-rent' ·
+ *   'rent-missed' | 'loan' | 'loan-missed' · civic 'gov' · estate 'house' | 'ground-rent' · home 'power' ·
  *   missions 'mission' · growth 'referral'.
  * (The social system also writes 'transfer' and 'bae' notices directly, without the event.)
  */
 export type NoticeKind =
   | 'promotion' | 'illness' | 'recovered' | 'rent-due' | 'rent' | 'rent-missed' | 'loan' | 'loan-missed' | 'gov'
-  | 'house' | 'ground-rent' | 'mission' | 'referral'
+  | 'house' | 'ground-rent' | 'mission' | 'referral' | 'power'
 
 /**
  * Every event emitted through `emit(state, '<name>', data, ctx)` anywhere in src/game, with the

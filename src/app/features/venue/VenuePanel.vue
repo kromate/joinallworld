@@ -10,7 +10,7 @@ import { computed, nextTick, ref, watch } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
 import { cachedCityContent } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
-import { momentText } from '../../state/momentText.ts'
+import { momentText, noticeText } from '../../state/momentText.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { linkWording } from '../hud/hudModel.ts'
 import { activityFace, effectTags } from './venueModel.ts'
@@ -35,7 +35,7 @@ const district = computed(() => own.value?.lga?.name || house.value?.district ||
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient
-  return `${privateHome.value ? ' Private · ' : ''}${momentText.value || ambient || spot.value?.caption || 'Explore at your own pace'}`
+  return `${privateHome.value ? ' Private · ' : ''}${momentText.value || noticeText.value || ambient || spot.value?.caption || 'Explore at your own pace'}`
 })
 // Where this spot lists paid gigs, the day's counter sits above them (the limit is the server's).
 const gigs = computed(() => view.value.travel?.gigs)
@@ -75,7 +75,7 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
   <section class="life-venue-panel" data-tour="place" aria-label="Current venue">
     <header class="life-venue-header">
       <button class="life-avatar" type="button" aria-label="Open your character: profile, needs, goals and skills" @click="shell.open('sim')"><GameIcon inline name="person" /></button>
-      <div class="life-venue-heading"><h1><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ title }} <span>· {{ district }}</span></h1><p><GameIcon v-if="privateHome && view.connected" inline name="lock" />{{ line }}</p></div>
+      <div class="life-venue-heading"><h1><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ title }} <span>· {{ district }}</span></h1><p :title="line"><GameIcon v-if="privateHome && view.connected" inline name="lock" />{{ line }}</p></div>
       <button v-if="!privateHome && view.connected" class="life-icon-button" data-tour="community" type="button" aria-label="Open community chat" title="Community chat" @click="community.toggle(true)"><GameIcon name="chat" /></button>
       <button class="life-icon-button" type="button" aria-label="Open map" title="Map (M)" @click="shell.open('map')"><GameIcon name="map" /></button>
     </header>

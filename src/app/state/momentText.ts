@@ -3,3 +3,5 @@
 import { ref } from 'vue'
 
 export const momentText = ref('')
+/** What is going on at this venue that the player should know (the light is off, a match is on). Filled by the same timer, so it adds nothing to the first download. */
+export const noticeText = ref('')

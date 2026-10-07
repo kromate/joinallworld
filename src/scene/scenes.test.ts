@@ -17,6 +17,8 @@ import { createBatch, sceneMaterials } from './build.ts';
 import { sign, textWidth, table, chair, bench, stall, speaker, screen, plant, palm, lampPost, signBoard } from './props.ts';
 import { createVenueWorld, createHostLights, sceneVenue, HOST_LIGHTING } from '../venue-world.ts';
 import { VENUES } from '../game/cities/lagos/venues.ts';
+import { lagosTime } from '../game/clock.ts';
+import { powerCutsOn } from '../game/conditions/conditions.ts';
 
 import { NPCS } from '../game/cities/lagos/regulars.ts';
 
@@ -235,6 +237,25 @@ test('lighting presets exist for every mood and time; the scene reports its pres
   assert.equal(`#${lights.hemi.color.getHexString()}`, '#bdd4e7');
   kit.dispose();
 });
+
+test('a power cut in the venue\'s district dims its scene, a generator keeps most of the light, and the light comes back with the grid', () => {
+  let cutAt = 0
+  for (let day = lagosTime(Date.UTC(2026, 0, 1)).day; !cutAt && day < 400000; day++) { const cut = powerCutsOn('lagos', 'Yaba', day)[0]; if (cut) cutAt = cut.from + 60000 }
+  const kit = createKit()
+  const lit = (id: string, more: Partial<SceneVenue>, t: number) => {
+    const entry = buildVenueScene(kit, venueOf('rooftop', { time: 'night' }, { id, district: 'Yaba', ...more }))
+    entry.update({ t })
+    return entry
+  }
+  const dark = lit('plain-place', { generator: false }, cutAt), humming = lit('plain-place', { generator: true }, cutAt)
+  const normal = buildVenueScene(kit, venueOf('rooftop', { time: 'night' }))
+  assert.equal(normal.lighting(), LIGHTING.outdoor.night, 'a scene told nothing about conditions is lit as before')
+  assert.ok(dark.lighting().lamps < humming.lighting().lamps && humming.lighting().lamps < LIGHTING.outdoor.night.lamps)
+  assert.equal(dark.update({ t: cutAt }), false, 'the same moment again changes nothing')
+  assert.equal(dark.update({ t: cutAt + 12 * 3600000 }), true, 'the grid has come back by then, so the scene redraws')
+  assert.equal(dark.lighting().lamps, LIGHTING.outdoor.night.lamps)
+  kit.dispose()
+})
 
 test('every spot of every venue stands at a landmark of its scene, and every regular has a place', () => {
   const kit = createKit();

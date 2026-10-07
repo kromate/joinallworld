@@ -297,6 +297,8 @@ export interface TravelModeCard {
   /** Naira for this trip, after every modifier. */
   fare: number
   seconds: number
+  /** The road is in a go-slow, so `seconds` is longer than on an open road. */
+  slow: boolean
   /** Need deltas applied on arrival. */
   needs: NeedMap
   xp: SkillMap
@@ -739,6 +741,23 @@ export interface HomeView {
   kitchen: { id: ItemId; label: string; icon: string; count: number }[]
   /** Result multiplier per furniture kind that has actions (0 = none placed). */
   quality: Record<string, number>
+  /** The grid at the player's home now, and what is lighting the room. */
+  power: HomePower
+}
+
+export interface HomePower {
+  /** The district the home is in: power cuts are by district. */
+  district: string
+  /** NEPA light is on. */
+  grid: boolean
+  /** When the light comes back (server ms), or null while it is on. */
+  until: number | null
+  /** What is lighting the room now. */
+  source: 'grid' | 'inverter' | 'generator' | 'none'
+  /** A generator is placed in the room, so petrol matters. */
+  generator: boolean
+  /** Litres in the tank, to one decimal (the tank and the price of a litre are in src/game/conditions/power.ts). */
+  fuel: number
 }
 
 // ---- onboarding ---------------------------------------------------------------------------
@@ -1170,7 +1189,7 @@ export const VIEW_FIELD_KEYS = {
     'arrears', 'away', 'change', 'cheapest', 'city', 'cityName', 'home', 'lga', 'lgaConfirmed', 'lgaVia', 'lgas', 'links', 'living', 'lodging', 'makeMain', 'packed',
     'placed', 'plot', 'residence', 'ride', 'rules', 'settle', 'style', 'styles', 'tier', 'tiers', 'unit', 'upgrade', 'visiting',
   ],
-  home: ['ambience', 'atHome', 'door', 'grid', 'groceries', 'house', 'kitchen', 'placed', 'prices', 'quality', 'refundRate', 'stocked', 'stored', 'window'],
+  home: ['ambience', 'atHome', 'door', 'grid', 'groceries', 'house', 'kitchen', 'placed', 'power', 'prices', 'quality', 'refundRate', 'stocked', 'stored', 'window'],
   onboarding: [
     'activities', 'boutique', 'done', 'dream', 'feelings', 'guest', 'homes', 'house', 'legacy', 'look', 'lottery', 'mood', 'own',
     'required', 'settleReason', 'stage', 'step', 'steps', 'timing', 'traits', 'wardrobe',

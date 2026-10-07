@@ -3,7 +3,7 @@ import type { GovResponse } from '../../../types/civic.ts'
 import type { RecordEntryView, RecordKind } from '../../../types/records.ts'
 import { entryHash, verifyChain } from '../../../records/chain.ts'
 import type { ChainEntry } from '../../../records/chain.ts'
-import type { AuditFlag, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../../types/politics.ts'
+import type { AssemblyView, AuditFlag, BillView, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../../types/politics.ts'
 import { PARTY } from '../../../game/content/politics.ts'
 import { govKey } from '../civic/civicModel.ts'
 
@@ -125,7 +125,7 @@ export function grantWhy(offline: string | null, amount: unknown, purpose: strin
 // ---- the public record --------------------------------------------------------------------------------
 
 export const RECORD_FILTERS: readonly { id: RecordKind | 'all'; label: string }[] = [
-  { id: 'all', label: 'Everything' }, { id: 'term', label: 'Elections' }, { id: 'ruling', label: 'Rulings' }, { id: 'impeachment', label: 'Removals' }, { id: 'party', label: 'Parties' }, { id: 'operator', label: 'The operator' },
+  { id: 'all', label: 'Everything' }, { id: 'term', label: 'Elections' }, { id: 'law', label: 'Laws' }, { id: 'ruling', label: 'Rulings' }, { id: 'impeachment', label: 'Removals' }, { id: 'party', label: 'Parties' }, { id: 'operator', label: 'The operator' },
 ]
 export const recordsPath = (kind: RecordKind | 'all', before: number | null): string => `/api/world/records?limit=30${kind === 'all' ? '' : `&kind=${kind}`}${before === null ? '' : `&before=${before}`}`
 export const kindLabel = (kind: RecordKind): string => RECORD_FILTERS.find((item) => item.id === kind)?.label.replace(/s$/, '') ?? kind
@@ -148,3 +148,29 @@ export function checkRecords(entries: readonly RecordEntryView[], whole: boolean
   return broken ? { ok: false, line: `Entry ${broken.n} does not match its seal. This record has been changed.` } : { ok: true, line: `Checked in your browser: the seal of each of these ${ordered.length} entries holds.` }
 }
 export const shortHash = (hash: string): string => `${hash.slice(0, 8)}…${hash.slice(-6)}`
+
+// ---- assemblies --------------------------------------------------------------------------------------
+
+export const assemblyName = (tier: TierId, seatName: string): string => (tier === 'city' ? `${seatName} council` : tier === 'state' ? `${seatName} assembly` : 'National Assembly')
+/** "Sales tax 5%": what a bill would set. */
+export const billLine = (bill: Pick<BillView, 'label' | 'value' | 'unit'>): string => `${bill.label} ${leverText(bill, bill.value)}`
+export const BILL_STATUS: Readonly<Record<BillView['status'], string>> = { open: 'Open for votes', passed: 'Passed: now law for the week', failed: 'Failed', vetoed: 'Vetoed' }
+/** Where the vote stands, and what it still needs. */
+export const tallyLine = (bill: Pick<BillView, 'yes' | 'no' | 'needed' | 'byOffice' | 'signed' | 'status'>): string => {
+  const base = `${bill.yes} for · ${bill.no} against`
+  if (bill.status !== 'open') return base
+  return `${base} · needs ${bill.needed}${bill.byOffice ? '' : bill.signed ? ' (signed)' : ' (or a majority and the officeholder’s signature)'}`
+}
+/** Why the caller cannot vote on this bill, or ''. */
+export const billVoteWhy = (offline: string | null, bill: Pick<BillView, 'status' | 'yourVote'>, assembly: Pick<AssemblyView, 'you'>): string => {
+  if (offline) return offline
+  if (!assembly.you?.member) return 'Only a member of the assembly votes.'
+  if (bill.status !== 'open') return 'This bill is decided.'
+  return bill.yourVote === null ? '' : 'You have voted.'
+}
+/** Why a bill cannot be proposed with this value, or ''. */
+export const proposeWhy = (offline: string | null, lever: Pick<LeverView, 'min' | 'max' | 'unit' | 'label'>, value: unknown, assembly: Pick<AssemblyView, 'you'>): string => {
+  if (offline) return offline
+  if (!assembly.you?.canPropose) return 'Only the officeholder or a member of the assembly can propose a bill.'
+  return leverWhy(lever, value)
+}

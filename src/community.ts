@@ -409,7 +409,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
 
   // ---- chat --------------------------------------------------------------------------------------------------
   function appendChat(message: { body: string; from?: PublicSession }, delivery = 'Sent', key?: string): ChatLine {
-    const line: ChatLine = { key: key ?? `line-${++lineCounter}`, author: message.from?.name || session?.name || '', body: message.body, delivery, canRetry: false }
+    const line: ChatLine = { key: key ?? `line-${++lineCounter}`, author: message.from?.name || session?.name || '', ...(message.from?.id ? { authorId: message.from.id } : {}), body: message.body, delivery, canRetry: false }
     chat.push(line)
     while (chat.length > 80) chat.shift()
     emit()

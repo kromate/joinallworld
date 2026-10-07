@@ -92,6 +92,8 @@ import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './s
 import { createSceneControls } from './scene/controls.ts';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
 import { buildHomeScene } from './scene/home-scene.ts';
+import { bodyAllowed, drawsWebGL2 } from './scene/body/gate.ts';
+import type { StandIn } from './scene/body/stand-in.ts';
 import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
 import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson } from './scene/types.ts';
@@ -367,6 +369,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   container.appendChild(renderer.domElement);
   const camera = new THREE.PerspectiveCamera(43, 1, 0.1, 360);
   const lights = createHostLights(THREE, scene, { shadowMap: tier.shadowMap });
+  // The skinned body in place of the player's procedural figure in a venue (scene/body/stand-in.ts, fetched after the
+  // first frame on a device the gate allows; home has its own). Null until then, and for good without one.
+  let standIn: StandIn | null = null, standInAsked = false, gone = false;
   // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
   const sky = createSky(THREE), ground = createGround(THREE);
   scene.background = sky.texture;
@@ -453,6 +458,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     if (!walk) return;
     avatarY = walk.heightAt(walker.x, walker.z);
     walk.move(walker.x, avatarY + bob, walker.z, walker.ry);
+    standIn?.move(walker.x, avatarY + bob, walker.z, walker.ry);
   }
   function setPivot() {
     const walk = walkOf();
@@ -527,6 +533,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     const walk = walkOf();
     if (!walk) return;
     if (restPose) walk.pose(restPose.pose, restPose.seat); else walk.pose('stand');
+    standIn?.pose(restPose?.pose ?? 'stand', restPose?.seat, loop.running && !reduced());
   }
   /** One step of walking. Returns true while the avatar is still moving or turning. */
   function advance(dt: number) {
@@ -551,6 +558,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       stride += dt * (walker.jogging ? 9 : 6.5);
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
       walk.gait(still || Math.floor(stride) % 2 === 0, still ? 0 : stride * Math.PI, walker.jogging);
+      standIn?.gait(still ? 0 : stride * Math.PI, walker.jogging, avatarY);
       if (!still) bob = Math.abs(Math.sin(stride * Math.PI)) * 0.06 * walk.scale;
     } else if (wasMoving) { walk.goal(); showPose(); }
     applyAvatar(bob);
@@ -670,6 +678,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     more = advance(dt) || more;
     // Other players' figures on their way to a newly reported position.
     if (current?.easing) more = (reduced() ? (current.settleCrowd!(), false) : current.stepCrowd!(dt)) || more;
+    // The skinned body sitting down or getting up (bounded).
+    if (standIn?.easing) more = (reduced() ? (standIn.settle(), false) : standIn.step(dt)) || more;
     setPivot();
     keepInSight();
     if (reduced()) { orbit.snap(); ghost.now = ghost.goal; }
@@ -1126,7 +1136,12 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
   // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
-  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz); renderer.render(scene, camera); renderCount += 1; projectTags(); }
+  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz); renderer.render(scene, camera); renderCount += 1; projectTags(); if (!standInAsked) fetchStandIn(); else standIn?.start(renderer); }
+  function fetchStandIn() {
+    standInAsked = true;
+    if (bodyAllowed() && drawsWebGL2(renderer)) import('./scene/body/stand-in.ts').then((module) => { if (gone) return; standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); }); dressStandIn(); standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false); standIn.move(walker.x, avatarY, walker.z, walker.ry); standIn.start(renderer); }, () => {});
+  }
+  function dressStandIn() { standIn?.wear(player.look, player.seed); standIn?.attach(venueFor(cityId, currentLocation!)?.scene?.kind !== 'home' && current?.walk ? { group: current.group, avatar: current.walk.avatar, scale: current.walk.scale } : null); }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id: string) {
@@ -1210,6 +1225,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     current = sceneFor(id);
     current.group.visible = true;
     current.setPlayer?.(player);
+    dressStandIn();
     current.setCrowd?.(crowd);
     current.settleCrowd?.();
     if (lastState) current.update?.(lastState);
@@ -1225,7 +1241,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       cityId = state.estate.city;
       loop.stop();
       for (const builtScene of built.values()) { builtScene.dispose?.(); scene.remove(builtScene.group); }
-      built.clear(); current = null; currentLocation = null;
+      built.clear(); current = null; currentLocation = null; standIn?.attach(null);
       setLocation(state.location);
     }
     trackReward(state);
@@ -1241,6 +1257,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   function setPlayer(next: Partial<PlayerLook> = {}) {
     player = { ...next };
     const changed = current?.setPlayer?.(player);
+    standIn?.wear(player.look, player.seed);
     const moved = changed ? syncRest() : false;
     readTags();
     if ((changed || moved) && !loop.running) renderScene();
@@ -1352,7 +1369,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     /** Where the avatar stands right now, in presence units: { x, z, location } — what onMove reports while it moves. */
     position() { const k = presenceScale(); return { x: Math.round(walker.x * k * 100) / 100, z: Math.round(walker.z * k * 100) / 100, location: currentLocation }; },
     dispose() {
-      loop.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+      gone = true; loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
       win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);

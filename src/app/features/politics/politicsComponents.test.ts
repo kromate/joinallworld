@@ -43,7 +43,7 @@ const seat = (tier: SeatView['tier'], patch: Partial<SeatView> = {}): SeatView =
   levers: [{ id: 'marketLevy', label: 'Market levy', about: 'Added to the price of everything bought at a stall.', min: 0, max: 10, base: 0, unit: '%', value: 0 }],
   treasury: { balance: 4200, ledger: [{ at: 1, kind: 'levy', amount: 120, note: 'Market levy on 1 × Jollof' }] }, you: { isOfficeholder: false, salary: 0, grantRoom: 0 },
   accounts: { income: 5000, salary: 800, granted: 300 }, grants: [{ to: { id: 'g1', name: 'Gbenga' }, amount: 300, purpose: 'School desks', at: 1, party: null }],
-  audit: { at: 1, by: { id: 'a', name: 'Ada' }, income: 5000, salary: 800, granted: 300, grants: 1, flags: ['concentration'] }, petition: { signed: 1, needed: 3, mine: false, open: true }, ...patch,
+  audit: { at: 1, by: { id: 'a', name: 'Ada' }, income: 5000, salary: 800, granted: 300, grants: 1, flags: ['concentration'] }, petition: { signed: 1, needed: 3, mine: false, open: true }, assembly: { seats: 2, members: [], bills: [], you: { member: false, canPropose: false } }, ...patch,
 })
 const overview = (cityId: string, patch: Partial<SeatView> = {}): PoliticsResponse => ({
   city: cityId, cycle: { phase: 'voting', endsAt: server.now() + 3600000, week: 1 }, seats: [seat('city', patch), seat('state'), seat('nation')],
@@ -132,7 +132,34 @@ test('Records: the Hall of Records names what it holds, offers its filters, and 
     const html = await render()
     const words = text(html)
     assert.ok(words.includes('Hall of Records') && words.includes('Nothing is edited or removed, and each entry is sealed by the one before it'))
-    for (const label of ['Everything', 'Elections', 'Rulings', 'Removals', 'Parties', 'The operator']) assert.ok(words.includes(label), label)
+    for (const label of ['Everything', 'Elections', 'Laws', 'Rulings', 'Removals', 'Parties', 'The operator']) assert.ok(words.includes(label), label)
     assert.ok(['City', 'State', 'Nation', 'Parties', 'Justice', 'Records'].every((label) => words.includes(label)))
   } finally { politicsUi.tab = 'city' }
 })
+
+test('Assembly: its members, the bills with where each vote stands, and who can vote, sign or propose', async () => {
+  const cityId = app.game.view.value.cityId
+  const assembly = { seats: 2, members: [{ id: 'm1', name: 'Mara' }, { id: 'm2', name: 'Mide' }], you: { member: true, canPropose: true },
+    bills: [{ id: 'b2', lever: 'marketLevy' as const, label: 'Market levy', value: 6, unit: '%' as const, by: { id: 'm2', name: 'Mide' }, byOffice: false, at: 1, yes: 1, no: 0, needed: 2, signed: false, status: 'open' as const, via: null, yourVote: null },
+      { id: 'b1', lever: 'citySentence' as const, label: 'Assault sentence', value: 20, unit: 'min' as const, by: { id: 'o', name: 'Owner' }, byOffice: true, at: 1, yes: 2, no: 0, needed: 2, signed: false, status: 'passed' as const, via: 'majority' as const, yourVote: true }] }
+  civic.put(`politics:${cityId}`, overview(cityId, { assembly, you: { isOfficeholder: false, salary: 0, grantRoom: 0 } }))
+  civic.put(`gov:${cityId}`, ballot())
+  const html = await render()
+  const words = text(html)
+  assert.ok(words.includes('Lagos council') || words.includes('council'), words.slice(0, 200))
+  assert.ok(words.includes('Members (2 of 2): Mara, Mide'))
+  assert.ok(words.includes('Market levy 6%') && words.includes('Proposed by Mide') && words.includes('1 for · 0 against · needs 2 (or a majority and the officeholder’s signature)'))
+  assert.ok(words.includes('Assault sentence 20 min') && words.includes('Passed: now law for the week') && words.includes('Proposed by Owner (Chairman)'))
+  assert.ok(buttonsOf(html).includes('Vote for') && buttonsOf(html).includes('Vote against'), 'a member who has not voted can')
+  assert.ok(buttonsOf(html).includes('Propose a bill') && !buttonsOf(html).includes('Set'), 'with an assembly a rule changes by bill, not by decree')
+  assert.ok(!buttonsOf(html).includes('Sign it'), 'only the officeholder signs')
+
+  civic.put(`politics:${cityId}`, overview(cityId, { assembly: { ...assembly, you: { member: false, canPropose: true } }, you: { isOfficeholder: true, salary: 0, grantRoom: 0 } }))
+  const holder = await render()
+  assert.ok(buttonsOf(holder).includes('Sign it') && buttonsOf(holder).includes('Veto it'), 'the officeholder signs or vetoes a member’s bill')
+  assert.ok(!buttonsOf(holder).includes('Vote for'), 'and does not vote')
+
+  civic.put(`politics:${cityId}`, overview(cityId))
+  assert.ok(text(await render()).includes('No assembly sits this term, so the Chairman sets the rules directly'))
+})
+const buttonsOf = (html: string): string[] => [...html.matchAll(/<button\b[^>]*>(.*?)<\/button>/gs)].map((match) => text(match[0]))

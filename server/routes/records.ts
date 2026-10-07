@@ -11,7 +11,7 @@ import type { RecordKind } from '../../src/types/records.ts';
 import { page, peekRecords } from '../records/store.ts';
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts';
 
-const KINDS: readonly RecordKind[] = ['term', 'impeachment', 'ruling', 'party', 'operator'];
+const KINDS: readonly RecordKind[] = ['term', 'impeachment', 'ruling', 'party', 'operator', 'law'];
 const SCOPE = /^(city|state|nation):[a-z0-9-]{1,40}$|^world$/;
 
 export default function recordsRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {

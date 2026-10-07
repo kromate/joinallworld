@@ -59,8 +59,8 @@ export const ANYWHERE: Moment[] = [
 ]
 
 /**
- * Lines that wait for a condition of the city. Nothing supplies the conditions yet (the city-conditions lane will), so until then these
- * are only picked when a caller passes them in PickOptions.conditions.
+ * Lines that wait for a condition of the city. They are picked only when a caller passes the condition in PickOptions.conditions;
+ * the venue card does (src/moments/live.ts, from src/game/conditions).
  */
 export const CONDITIONED: Moment[] = [
   ...bank('cond-power-restored', { weight: 4, cond: 'power-restored' }, [

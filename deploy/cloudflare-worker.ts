@@ -60,6 +60,7 @@ import { createShardStoreOn } from '../server/world/shard-core.ts';
 import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions: every life the Worker plays has them
+import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
@@ -200,6 +201,7 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
     return new Response(request.method === 'HEAD' ? null : 'Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } });
   }
   if (inAssets && response.status === 200) headers.set('cache-control', 'public, max-age=31536000, immutable'); // hashed: the name changes when the content does
+  if (inAssets && response.status === 200 && assetPath.endsWith('.glb')) headers.set('content-type', 'model/gltf-binary'); // the skinned body and its clips
   if (!headers.get('content-type')?.includes('text/html')) return new Response(response.body, { status: response.status, headers });
   headers.set('cache-control', 'no-cache');
   // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as

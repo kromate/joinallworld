@@ -6,6 +6,9 @@
  *   GET  /api/politics/overview?city=   { city, seats: SeatView[], parties, you | null, partyRules }   city, state and nation seats, narrowest first
  *   POST /api/politics/decree           { cityId, tier, lever, value }       the sitting officeholder sets a lever for their term
  *   POST /api/politics/salary           { cityId, tier, requestId }          the officeholder draws this term's salary from the treasury, once
+ *   POST /api/politics/bill     { cityId, tier, lever, value }       the officeholder or a member of the assembly proposes a rule change
+ *   POST /api/politics/bill/vote { cityId, tier, bill, yes }         a member of the assembly votes, once
+ *   POST /api/politics/bill/sign { cityId, tier, bill, sign }        the officeholder signs a member's bill, or vetoes it
  *   POST /api/politics/grant    { cityId, tier, player, amount, purpose, requestId }   the officeholder pays a grant out of the treasury, in the open
  *   POST /api/politics/audit    { cityId, tier }                     a resident asks for the audit of this term's accounts
  *   POST /api/politics/impeach  { cityId, tier }                     a resident signs the petition to remove the officeholder (needs an audit warning)
@@ -21,9 +24,9 @@
  */
 import { cityRules } from '../../src/game/cities/index.ts';
 import { AD_COLOURS, ELECTION } from '../../src/game/content/civic.ts';
-import { BAIL_LEVER, GRANTS, IMPEACH, JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
+import { ASSEMBLY, BAIL_LEVER, GRANTS, IMPEACH, JUSTICE, LEVERS, PARTY, QUORUM, SEATS, SEAT_TITLES, SENTENCE_LEVER, TIER_IDS, leversOf } from '../../src/game/content/politics.ts';
 import { civicTitle } from '../../src/game/cities/terminology.ts';
-import type { CaseRecord, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../src/types/politics.ts';
+import type { AssemblyView, BillView, CaseRecord, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../src/types/politics.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import { lagosTime } from '../../src/game/clock.ts';
@@ -38,6 +41,7 @@ import { govOfId, govOfScope, justiceOf, peekGov, peekJustice, peekPolitics, pee
 import { appealBlock, applyRuling, arrestBlock, attackerWins, bailOf, escalate, escalateBlock, fightBlock, fileAppeal, inJurisdiction, jail, jailOf, judgesOf, nextTier, officersOf, policeIsValid, recordFight, ruleBlock } from '../politics/justice.ts';
 import type { Seat } from '../politics/data.ts';
 import { archiveCity } from '../records/city.ts';
+import { assemblyOf, billsOf, castVote, count, enact, leverBlock, needed, propose, proposeBlock, signBlock, signOrVeto, voteBlock } from '../politics/assembly.ts';
 import { append, recordsOf } from '../records/store.ts';
 import { auditBlock, credit, decreeBlock, drawSalary, found, foundBlock, grantBlock, grantRoom, impeachBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, payGrant, runAudit, salaryBlock, salaryDue, setDecree, signPetition, signaturesNeeded, termAccounts } from '../politics/rules.ts';
 
@@ -58,6 +62,26 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
     return peekGov(peekScope(peekPolitics(db), seat.id));
   }
 
+
+  /** The seat's assembly and this term's bills, as the caller sees them. */
+  function assemblyView(scope: ReturnType<typeof peekScope>, gov: GovScope, tier: TierId, who: PlayerRef | null, now: number): AssemblyView {
+    const assembly = assemblyOf(gov, now, tier), size = assembly.members.length;
+    const bills = [...billsOf(scope, now)].reverse().map((bill): BillView => ({ id: bill.id, lever: bill.lever, label: LEVERS[bill.lever].label, value: bill.value, unit: LEVERS[bill.lever].unit, by: bill.by, byOffice: bill.byOffice, at: bill.at,
+      ...count(bill), needed: needed(bill, size), signed: bill.signed, status: bill.status, via: bill.via ?? null, yourVote: who && Object.hasOwn(bill.votes, who.id) ? bill.votes[who.id] ?? null : null }));
+    const member = !!who && assembly.members.some((item) => item.id === who.id);
+    return { seats: ASSEMBLY.seats[tier], members: assembly.members, bills, you: who ? { member, canPropose: size > 0 && (member || assembly.executive?.id === who.id) } : null };
+  }
+
+
+  /** A bill became law: it holds for the term, and the public record says so. */
+  function lawPassed(db: Db, seat: Seat, tier: TierId, scope: ReturnType<typeof scopeRecord>, assembly: ReturnType<typeof assemblyOf>, bill: ReturnType<typeof billsOf>[number], now: number, cityId: CityId): void {
+    enact(scope, now, bill);
+    const lever = LEVERS[bill.lever], size = assembly.members.length, { yes } = count(bill);
+    const house = tier === 'city' ? `The ${seat.name} council` : tier === 'state' ? `The ${seat.name} assembly` : 'The National Assembly';
+    const unit = lever.unit === '%' ? '%' : lever.unit === 'min' ? ' minutes' : ' naira';
+    append(recordsOf(ctx, db), now, { kind: 'law', scope: seat.id, scopeName: seat.name, week: assembly.week, title: `${house} passed a law: ${lever.label} is ${bill.value}${unit} for the week (${yes} of ${size} votes${bill.via === 'signature' ? `, signed by ${assembly.executive?.name ?? 'the ' + titleOf(tier, cityId)}` : ''}).`, facts: { lever: bill.lever, value: bill.value, yes, size, via: bill.via ?? null, proposedBy: bill.by.name, byOffice: bill.byOffice } });
+  }
+
   function overview(db: Db, cityId: CityId, who: PlayerRef | null): PoliticsResponse {
     const now = ctx.now(), politics = peekPolitics(db);
     const seats = seatsOf(cityId, cityName(cityId)).map((seat): SeatView => {
@@ -74,7 +98,7 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
       const audit = sitting && scope.audit?.week === sitting.week ? scope.audit : null;
       const petition = sitting ? { signed: scope.petition?.week === sitting.week ? Object.keys(scope.petition.signers).length : 0, needed: signaturesNeeded(seat.tier, sitting.votes), mine: !!who && scope.petition?.week === sitting.week && Object.hasOwn(scope.petition.signers, who.id), open: !!audit?.flags.length } : null;
       return { tier: seat.tier, id: seat.id, name: seat.name, title: titleOf(seat.tier, cityId), fee: seat.tier === 'city' ? ELECTION.filingFee : SEATS[seat.tier].fee, quorum, parties,
-        accounts: { income: accounts.income, salary: accounts.salary, granted: accounts.granted }, grants, petition,
+        accounts: { income: accounts.income, salary: accounts.salary, granted: accounts.granted }, grants, petition, assembly: assemblyView(scope, gov, seat.tier, who, now),
         audit: audit ? { at: audit.at, by: audit.by, income: audit.income, salary: audit.salary, granted: audit.granted, grants: audit.grants, flags: audit.flags } : null,
         officeholderParty: held && Object.hasOwn(politics.parties, held) ? held : null, decree, levers, treasury: { balance: scope.treasury.balance, ledger: scope.treasury.ledger.slice(-15).reverse() },
         you: who ? { isOfficeholder: sitting?.id === who.id, salary: salaryDue(scope, gov, now, seat.tier, who.id), grantRoom: sitting?.id === who.id ? grantRoom(scope, seat.tier) : 0 } : null };
@@ -169,6 +193,7 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         const gov = tier === 'city' ? govOf(db, seat, cityId) : govOfScope(scope);
         const block = decreeBlock(gov, ctx.now(), tier, who.id, body.lever, body.value);
         if (block) return write(db, cityId, who, life, refused(block));
+        if (assemblyOf(gov, ctx.now(), tier).members.length) return write(db, cityId, who, life, refused({ code: 'needs_assembly', reason: `${seat.name} has an assembly this term: propose a bill and let it vote.` }));
         setDecree(scope, gov, ctx.now(), who, body.lever as keyof typeof LEVERS, body.value as number);
         return write(db, cityId, who, life, { ok: true, code: 'decreed' });
       });
@@ -244,6 +269,64 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         limit('party', who.id, 30);
         const left = leave(politicsOf(ctx, db), who.id);
         return write(db, cityId, who, life, left ? { ok: true, code: 'left' } : { ok: false, code: 'no_party', reason: 'You do not belong to a party.' });
+      });
+    },
+
+    // ---- the assembly ---------------------------------------------------------------------------
+    'POST /api/politics/bill': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), seat = seatOf(cityId, tier);
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('bill', who.id, 30);
+        const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+        const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope), assembly = assemblyOf(gov, now, tier);
+        const block = proposeBlock(scope, assembly, now, who.id) ?? leverBlock(tier, body.lever, body.value);
+        if (block) return write(db, cityId, who, life, refused(block));
+        const bill = propose(scope, assembly, now, who, body.lever as keyof typeof LEVERS, body.value as number);
+        // The members are told, in their Updates, that a bill waits for them (those who have a life in this city: the rest see it in Politics).
+        for (const member of assembly.members) {
+          if (member.id === who.id) continue;
+          const target = ctx.core.sessionByPublicId(db, member.id);
+          if (target?.cities?.[cityId]?.state) ctx.act(ctx.settle(target, cityId), { type: 'civic.news', cityId, payload: { items: [{ id: `bill-${tier}${assembly.week}-${bill.id}`, title: `A bill awaits your vote in ${seat.name}`, text: `${who.name} proposes ${LEVERS[bill.lever].label} at ${bill.value}${LEVERS[bill.lever].unit === '%' ? '%' : LEVERS[bill.lever].unit === 'min' ? ' minutes' : ' naira'}.`, at: now }] }, stateGuard: 'only notices whose id is not yet in life.civic.news are posted' });
+        }
+        return write(db, cityId, who, life, { ok: true, code: 'proposed' });
+      });
+    },
+
+    'POST /api/politics/bill/vote': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), seat = seatOf(cityId, tier), billId = typeof body.bill === 'string' && /^b\d{1,4}$/.test(body.bill) ? body.bill : null;
+      const yes = body.yes;
+      if (!billId || typeof yes !== 'boolean') throw fail(400, 'invalid_bill');
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('bill', who.id, 60);
+        const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+        const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope), assembly = assemblyOf(gov, now, tier), bill = billsOf(scope, now).find((item) => item.id === billId);
+        const block = voteBlock(bill, assembly, who.id);
+        if (block || !bill) return write(db, cityId, who, life, refused(block ?? { code: 'no_such_bill', reason: 'That bill is not before the assembly.' }));
+        const decided = castVote(bill, assembly.members.length, who.id, yes);
+        if (decided?.status === 'passed') lawPassed(db, seat, tier, scope, assembly, bill, now, cityId);
+        return write(db, cityId, who, life, { ok: true, code: decided ? decided.status : 'voted' });
+      });
+    },
+
+    'POST /api/politics/bill/sign': async (request) => {
+      const body = await request.json();
+      const cityId = cityParam(body.cityId), tier = tierParam(body.tier), seat = seatOf(cityId, tier), billId = typeof body.bill === 'string' && /^b\d{1,4}$/.test(body.bill) ? body.bill : null;
+      const sign = body.sign;
+      if (!billId || typeof sign !== 'boolean') throw fail(400, 'invalid_bill');
+      return store.transact((db) => {
+        const { who, life } = enter(db, request, cityId);
+        limit('bill', who.id, 60);
+        const politics = politicsOf(ctx, db), scope = scopeRecord(politics, seat.id), now = ctx.now();
+        const gov = tier === 'city' ? govOfId(db, seat.id) : govOfScope(scope), assembly = assemblyOf(gov, now, tier), bill = billsOf(scope, now).find((item) => item.id === billId);
+        const block = signBlock(bill, assembly, who.id);
+        if (block || !bill) return write(db, cityId, who, life, refused(block ?? { code: 'no_such_bill', reason: 'That bill is not before the assembly.' }));
+        const decided = signOrVeto(bill, assembly.members.length, sign);
+        if (decided?.status === 'passed') lawPassed(db, seat, tier, scope, assembly, bill, now, cityId);
+        return write(db, cityId, who, life, { ok: true, code: sign ? (decided ? 'passed' : 'signed') : 'vetoed' });
       });
     },
 

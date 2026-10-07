@@ -206,6 +206,9 @@ export default defineConfig({
     // The sound engine (every recipe, the synth, the mixer) is fetched on the first tap; only src/audio/play.ts and settings.ts are in the first download.
     if (/\/src\/audio\/(engine|director|data|synth|scape)\.ts$/.test(id)) return 'audio'
     if (/\/src\/audio\/board\.ts$/.test(id)) return 'audio-board'
+    // The glTF loader, meshopt decoder and skeleton cloner are only for the skinned body (src/scene/body/skinned.ts, fetched after a scene's first
+    // frame): left to the bundler, they ride in that lazy chunk, so the three chunk every scene fetches is the bytes it was.
+    if (/node_modules\/three\/examples\/jsm\/(loaders\/GLTFLoader|libs\/meshopt_decoder\.module|utils\/SkeletonUtils)\.js$/.test(id)) return undefined
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
     // The admin address's page (adminshell.html) is a second entry. The two small account modules both entries use (the state of accounts and the funnel
@@ -223,14 +226,24 @@ export default defineConfig({
     if (/\/src\/game\/visit\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
-    // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, fetched once the game is ready) until a feature of the first page needs them.
-    if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|world-time|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    // The world clock's bands, day seed and seasons ride in the routines chunk (below).
+    if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    // The trust rules (tiers, the no-fee filter, the link allow-list): read only by the community panel, the "leaving Allworld" sheet and the trust card, all fetched on demand.
+    if (/\/src\/game\/trust\//.test(id)) return undefined
+    // The city's conditions. The grid, the go-slow, the venue card's line and the look of the light are read by the moments and the venue scenes, so they are a chunk
+    // of the first page. The words of the bills and of the generator, and the kit that hands them and the rules to the engine (pack.ts), are a lazy chunk of their own: a host that
+    // plays a life imports the pack with src/game/profile.ts, and the page fetches it when idle (src/app/state/idlePreload.ts). The engine keeps only slot.ts and power.ts.
+    if (/\/src\/game\/conditions\/(billing-words|power-words|generator|pack)\.ts$/.test(id)) return 'conditions-pack'
+    if (/\/src\/game\/conditions\/(grid|rush|conditions|look)\.ts$/.test(id)) return 'conditions'
     // The campus discovery trail is read by the campus rules and the Campus app.
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     // Short addresses (/games, /abuja, …): the table, what is kept for a visit and the routing are one chunk, fetched only when an address or the landing asks, so the first download lists one file for them.
     if (/\/src\/(paths\.ts$|app\/features\/paths\/[\w-]+\.ts$)/.test(id)) return 'paths'
     // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched once the game is ready (src/app/startExtras.ts); the engine never imports them (src/game/features.ts).
     if (/\/src\/game\/(dilemma-pack|dilemmas|place-actions)\.ts$|\/src\/game\/content\/(dilemmas|place-actions)\.ts$/.test(id)) return 'dilemmas'
+    // Where the regulars are (their routines, the classifier and the resolver): fetched with the scene (src/campus/unilag/world-adapter.ts); the engine keeps only the hook (src/game/routines-hook.ts).
+    // The world clock's bands, day seed and seasons ride in it too (only these and the moment banks, fetched once the game is ready, read them): one lazy file instead of two.
+    if (/\/src\/game\/(routines\/[\w-]+|world-time)\.ts$/.test(id)) return 'routines'
     // Regulars talking to each other (REALISM R12) are fetched after the game is ready: their words, the picker and the bubbles are one chunk, never part of the first download.
     if (/\/src\/(game|app)\/chatter\//.test(id)) return 'chatter'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'

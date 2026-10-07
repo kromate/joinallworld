@@ -168,7 +168,7 @@ test('HUD insets re-centre the scene with one frame per change, never by themsel
 
 test('only the motion loop may name a frame callback; no scene, map or shell source holds an interval', async () => {
   const files = ['src/venue-world.ts', 'src/world-map.ts', 'src/city-map.ts', 'src/app/App.vue', 'src/app/state/app.ts', 'src/app/scene/ScenePane.vue', 'src/app/scene/MapPane.vue', 'src/client.ts',
-    ...(await readdir('src/scene')).map(name => `src/scene/${name}`)];
+    ...(await readdir('src/scene', { recursive: true, withFileTypes: true })).filter(entry => entry.isFile()).map(entry => `${entry.parentPath}/${entry.name}`)];
   const withLoop = [];
   for (const file of files) {
     if (file.endsWith('.test.js') || file.endsWith('.test.ts')) continue;

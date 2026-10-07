@@ -336,6 +336,7 @@ test('static files: a missing hashed asset is a 404 (never the app page); real a
   await mkdir(join(dist, 'assets'));
   await writeFile(join(dist, 'index.html'), '<!doctype html><body>game</body>');
   await writeFile(join(dist, 'assets', 'app-abc123.js'), 'console.log(1)');
+  await writeFile(join(dist, 'assets', 'clip-pack-abc123.glb'), Buffer.from('glTF\u0002\u0000\u0000\u0000'));
   const f = await fixture(t, { distDir: dist });
   const missing = await fetch(`${f.base}/assets/x-123.js`);
   assert.deepEqual([missing.status, missing.headers.get('content-type'), missing.headers.get('cache-control')], [404, 'text/plain; charset=utf-8', 'no-store']);
@@ -343,6 +344,8 @@ test('static files: a missing hashed asset is a 404 (never the app page); real a
   assert.equal((await fetch(`${f.base}/assets/nested/gone.css`)).status, 404);
   const real = await fetch(`${f.base}/assets/app-abc123.js`);
   assert.deepEqual([real.status, real.headers.get('content-type'), real.headers.get('cache-control')], [200, 'text/javascript', 'public, max-age=31536000, immutable']);
+  const body = await fetch(`${f.base}/assets/clip-pack-abc123.glb`);
+  assert.deepEqual([body.status, body.headers.get('content-type'), body.headers.get('cache-control')], [200, 'model/gltf-binary', 'public, max-age=31536000, immutable']);
   const deep = await fetch(`${f.base}/some/deep/link`);
   assert.deepEqual([deep.status, deep.headers.get('content-type'), deep.headers.get('cache-control')], [200, 'text/html', 'no-cache']);
   assert.ok((await deep.text()).includes('game'));

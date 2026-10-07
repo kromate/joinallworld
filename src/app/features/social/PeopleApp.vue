@@ -45,7 +45,7 @@ const summary = computed(() => {
 // One string: a space at the start of a conditional template child is trimmed by the compiler, which glued the two sentences together.
 const summaryLine = computed(() => {
   const count = here.value.length
-  return count ? `${summary.value} ${count} NPC${count === 1 ? '' : 's'} (game characters) ${count === 1 ? 'is' : 'are'} always around.` : summary.value
+  return count ? `${summary.value} ${count} NPC${count === 1 ? '' : 's'} (game characters) ${count === 1 ? 'is' : 'are'} around.` : summary.value
 })
 const venueName = (id: string): string => venueNameOf(view.value.venues, id)
 /** A friend in another city reads "in <city>": the reader's own city is what that is judged against. */
@@ -90,6 +90,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="npc.name" :seed="npc.id" /></span><strong>{{ npc.name }}</strong><small><NpcBadge lead />{{ npc.role }}</small>
       </button>
     </div>
+    <button v-for="npc in social.away" :key="`a${npc.id}`" type="button" class="social-btn is-away" @click="shell.open('person', { npc: npc.id })">{{ npc.name }} · {{ npc.where }}</button>
     <button v-if="life.location !== 'home' && view.connected" type="button" class="social-btn" @click="openVenueChat">Open venue chat</button>
 
     <h3 class="ui-section">Friends</h3>
@@ -132,7 +133,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
       <div v-for="rel in social.relationships" :key="rel.id" class="social-row">
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="rel.name" :seed="rel.id" /></span>
         <div>
-          <strong>{{ rel.name }}</strong><small><NpcBadge v-if="rel.npc" lead />{{ rel.role }} · {{ closenessText(rel, social.maxCloseness) }}</small>
+          <strong>{{ rel.name }}</strong><small><NpcBadge v-if="rel.npc" lead />{{ rel.role }} · {{ closenessText(rel, social.maxCloseness) }}<template v-if="rel.where"> · {{ rel.where }}</template></small>
           <ClosenessMeter :points="rel.points" :max="rel.next ? rel.next.min : social.maxCloseness" :label="`Closeness with ${rel.name}`" />
         </div>
       </div>

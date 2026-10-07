@@ -86,7 +86,9 @@ import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './s
 import type { GazeState } from './space.ts';
 import { spotMarker, gameTable } from './props.ts';
 import { tablesAt, GAME_LABELS } from '../tables/city-places.ts';
-import { DEFAULT_CITY_ID } from '../game/cities/registry.ts';
+import { CITY_RULES, DEFAULT_CITY_ID } from '../game/cities/registry.ts';
+import { CLEAR_LOOK, adjustLighting, lookAt, lookKey } from '../game/conditions/look.ts';
+import type { LookConditions } from '../game/conditions/look.ts';
 import { lagosTime } from '../game/clock.ts';
 import * as outdoor from './venues-outdoor.ts';
 import * as social from './venues-social.ts';
@@ -306,6 +308,8 @@ type LivePerson = CrowdPerson & { x: number; z: number };
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
+  /** The city's conditions at this place now (a power cut, the season): they change how the light looks. */
+  weather: LookConditions;
 }
 
 function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: string, defaultVariant?: string, cityId: string = DEFAULT_CITY_ID, drawnAs: string = cityId): SceneEntry {
@@ -342,8 +346,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     time: isTime(options.time) ? options.time : 'day',
     fixedTime: isTime(options.time),
     spot: null, look: options.look ?? null, lookKey: JSON.stringify(options.look ?? null), seed: options.seed ?? 'you', name: 'You',
-    pose: 'stand', poseFixed: false, crowd: [],
+    pose: 'stand', poseFixed: false, crowd: [], weather: CLEAR_LOOK,
   };
+  /** The preset in use: the mood's light for this time of day, as the city's conditions leave it. */
+  const lit = (): Lighting => adjustLighting(lightingFor(mood, view.time), view.weather);
   const hints: Record<string, string> = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
   let layout: SceneLayout | null = null, resolved: Resolved | null = null, live = false, disposed = false, footprints: FootprintShapes | null = null, grid: WalkGrid | null = null, entrance: SceneEntrance | null = null;
   const staticObjects: Releasable[] = [], actorObjects: Releasable[] = [], markObjects: Releasable[] = [];
@@ -734,7 +740,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id)!.at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
   }
   function applyLighting() {
-    const preset = lightingFor(mood, view.time);
+    const preset = lit();
     shared.materials.glow.color.setScalar(preset.glow);
     for (const object of staticObjects as THREE.PointLight[]) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
     if (sky) paintSky(THREE, sky, preset.sky);
@@ -878,13 +884,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const entry: SceneEntry = {
     group, kind, mood, walk,
     camera: def.camera || SCENE_CAMERA,
-    get background() { return lightingFor(mood, view.time).sky[0]; },
+    get background() { return lit().sky[0]; },
     /** [horizon, zenith] for the host's graded sky. */
-    get sky() { return lightingFor(mood, view.time).sky; },
+    get sky() { return lit().sky; },
     get anchors() { return resolved!.anchors; },
     get time() { return view.time; },
     get spot() { return view.spot; },
-    lighting: () => lightingFor(mood, view.time),
+    lighting: lit,
     setTime(time: string) {
       if (!isTime(time) || time === view.time) return false;
       view.time = time;
@@ -945,6 +951,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       if (!view.fixedTime && Number.isFinite(state.t)) {
         const time = timeOfDay(state.t!);
         if (time !== view.time) { view.time = time; changed = true; }
+      }
+      if (Number.isFinite(state.t)) {
+        const weather = lookAt(cityId, venue, CITY_RULES[cityId]?.climate, state.t!);
+        if (lookKey(weather) !== lookKey(view.weather)) { view.weather = weather; changed = true; }
       }
       const here = state.location == null || !venue?.id || state.location === venue.id;
       if (here && typeof state.spot === 'string' && state.spot !== view.spot) { anchorFor(state.spot); findRaised(); view.spot = state.spot; actors = true; }

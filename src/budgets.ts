@@ -155,9 +155,9 @@ export const LOADING_GZIP: Budget = {
   why: 'The loading screen gzipped: measured 35.5 kB plus about 4%.',
 }
 export const SCENE_HOST_RAW: Budget = {
-  value: 186_000, unit: 'raw bytes', limit: 'max', status: 'current',
+  value: 192_000, unit: 'raw bytes', limit: 'max', status: 'current',
   enforcedIn: 'src/scene/city-scenes.test.ts',
-  why: "The shared scene chunk without any city's own scenes: measured 179.1 kB plus about 4%.",
+  why: "The shared scene chunk without any city's own scenes: measured 186.3 kB plus about 3%. It was 179.1 kB until the skinned stand-in body's hooks and the home scene's body went into it. It is fetched with the scene, never part of the first download.",
 }
 export const SCENE_HOST_GZIP: Budget = {
   value: 71_000, unit: 'gzip bytes', limit: 'max', status: 'current',

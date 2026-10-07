@@ -8,12 +8,12 @@
  *     code 'contact_not_allowed'  a phone number, an e-mail address or a handle on another app
  *
  * WHERE IT IS APPLIED
- *   words only        venue chat (ws/rooms.js), direct, group and house messages (social/service.js)
- *   words + contact   nicknames (protocol.js validateName), group names, slogans, announcements,
- *                     ad text, song titles and artists (civic/text.js cleanLine)
- *   Links and contact details are refused only where they were already not allowed or where the
- *   text is a public label; a private message may still mention a website as plain text (nothing
- *   a player types is ever rendered as a link).
+ *   words only        direct, group and house messages (social/service.js)
+ *   words + contact   venue chat (ws/rooms.js: strangers read it), nicknames (protocol.js validateName),
+ *                     group names, slogans, announcements, ad text, song titles and artists
+ *                     (civic/text.js cleanLine)
+ *   Links and contact details are refused wherever strangers can read the text; a private message
+ *   may still mention a website as plain text (nothing a player types is ever rendered as a link).
  *
  * REFUSED, NEVER ALTERED. A blocked text is rejected with a reason the sender is shown. Nothing
  * is starred out, shortened or delivered in part, so a message is either exactly what was typed

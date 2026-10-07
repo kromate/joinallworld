@@ -105,7 +105,7 @@ export const LIMITS = Object.freeze({
   pins: 3, reactionKinds: 6, mentions: 5, everyoneMs: 600000, groupAddsPerHour: 30, mentionMessages: 20, friendPicks: 20, quote: 80, giftLine: 40,
   escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
 });
-export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReason[]>(['harassment', 'spam', 'cheating', 'offensive-name', 'other']);
+export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReason[]>(['harassment', 'scam', 'spam', 'cheating', 'offensive-name', 'other']);
 
 const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
 const CLIENT_ID = /^[A-Za-z0-9:_-]{8,80}$/;

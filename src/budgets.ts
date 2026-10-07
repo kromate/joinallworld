@@ -168,14 +168,14 @@ export const SCENE_HOST_GZIP: Budget = {
 // ---- Download budgets in brotli (scripts/download-budget.ts). PROVISIONAL: realism-plan targets -----------------------------------
 
 export const FIRST_PAINT_BROTLI: Budget = {
-  value: 36_000, unit: 'brotli bytes', limit: 'max', status: 'provisional',
+  value: 36_800, unit: 'brotli bytes', limit: 'max', status: 'provisional',
   enforcedIn: 'scripts/download-budget.ts',
-  why: 'Shell first paint may not grow: index.html, its stylesheet and the chunks it statically imports (baseline: the current build measures 35.7 kB, plus about 0.8%).',
+  why: 'Shell first paint may not grow: index.html, its stylesheet and the chunks it statically imports (baseline after phase 0, with the boot-recovery and old-browser notice: 36.6 kB, plus about 0.6%).',
 }
 export const STARTUP_BROTLI: Budget = {
-  value: 195_000, unit: 'brotli bytes', limit: 'max', status: 'provisional',
+  value: 195_600, unit: 'brotli bytes', limit: 'max', status: 'provisional',
   enforcedIn: 'scripts/download-budget.ts',
-  why: 'The automatic startup (shell, engine, the default city) may not grow (baseline: the largest of the cities, Lagos, measures 194.5 kB, plus about 0.3%).',
+  why: 'The automatic startup (shell, engine, the default city) may not grow (baseline after phase 0: the largest of the cities, Lagos, measures 195.4 kB, plus about 0.1%).',
 }
 export const BASE_BODY_BROTLI: Budget = {
   value: 300_000, unit: 'brotli bytes', limit: 'max', status: 'provisional',

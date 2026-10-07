@@ -34,9 +34,11 @@ import { presenceOf } from '../social/presence.ts';
 import type { Db, GovScope, RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
 import { governorAt, phaseAt } from '../civic/elections.ts';
 import { cleanLine } from '../civic/text.ts';
-import { govOfScope, justiceOf, peekGov, peekJustice, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
+import { govOfId, govOfScope, justiceOf, peekGov, peekJustice, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
 import { appealBlock, applyRuling, arrestBlock, attackerWins, bailOf, escalate, escalateBlock, fightBlock, fileAppeal, inJurisdiction, jail, jailOf, judgesOf, nextTier, officersOf, policeIsValid, recordFight, ruleBlock } from '../politics/justice.ts';
 import type { Seat } from '../politics/data.ts';
+import { archiveCity } from '../records/city.ts';
+import { append, recordsOf } from '../records/store.ts';
 import { auditBlock, credit, decreeBlock, drawSalary, found, foundBlock, grantBlock, grantRoom, impeachBlock, join, joinBlock, leave, leverValue, memberCount, partyOf, payGrant, runAudit, salaryBlock, salaryDue, setDecree, signPetition, signaturesNeeded, termAccounts } from '../politics/rules.ts';
 
 export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
@@ -81,13 +83,15 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
     const parties = Object.values(politics.parties).map((party): PartyView => ({ id: party.id, name: party.name, motto: party.motto, colour: party.colour, founder: party.founder, members: memberCount(politics, party.id), mine: party.id === mine }))
       .sort((a, b) => b.members - a.members || a.name.localeCompare(b.name)).slice(0, 60);
     const founded = who ? Object.values(politics.parties).filter((party) => party.founder.id === who.id).length : 0;
-    return { city: cityId, seats, parties, you: who ? { party: mine, canFound: founded < PARTY.perFounder } : null, partyRules: { fee: PARTY.fee, nameMin: PARTY.nameMin, nameMax: PARTY.nameMax, mottoMin: PARTY.mottoMin, mottoMax: PARTY.mottoMax, colours } };
+    const phase = phaseAt(now);
+    return { city: cityId, cycle: { phase: phase.phase, endsAt: phase.endsAt, week: phase.week }, seats, parties, you: who ? { party: mine, canFound: founded < PARTY.perFounder } : null, partyRules: { fee: PARTY.fee, nameMin: PARTY.nameMin, nameMax: PARTY.nameMax, mottoMin: PARTY.mottoMin, mottoMax: PARTY.mottoMax, colours } };
   }
 
   function enter(db: Db, request: RouteRequest, cityId: CityId) {
     const session = request.requireSession(db, { renew: true });
     const who = ctx.publicSession(session);
     const life = ctx.settle(session, cityId);
+    archiveCity(ctx, db, cityId, cityName(cityId), true);
     return { session, who, life };
   }
   const act = (life: LifeState, cityId: CityId, payload: { op: 'pay' | 'receive'; amount: number; label: string }, guard?: string) => ctx.act(life, { type: 'civic.treasury', cityId, payload, ...(guard ? { stateGuard: guard } : {}) });
@@ -97,11 +101,6 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
   const DAY = 86400000;
   const playerId = (value: unknown): string => { if (typeof value !== 'string' || !UUID_PATTERN.test(value)) throw fail(400, 'invalid_player'); return value; };
   const scopeNameOf = (cityId: CityId, scope: string): string => seatsOf(cityId, cityName(cityId)).find((seat) => seat.id === scope)?.name ?? scope;
-  /** The ballots of any seat by its scope id (a city's are in its civic record). */
-  function govOfId(db: Db, scope: string): GovScope {
-    if (scope.startsWith('city:')) { const gov = db.civic?.cities?.[scope.slice(5)]?.gov; return gov ? { gov } : { gov: { elections: {}, announcements: [] } }; }
-    return peekGov(peekScope(peekPolitics(db), scope));
-  }
   const tierOfScope = (scope: string): TierId => (scope.startsWith('city:') ? 'city' : scope.startsWith('state:') ? 'state' : 'nation');
   const sittingOf = (db: Db, scope: string): { id: string; week: number } | null => { const sitting = governorAt(govOfId(db, scope), ctx.now(), QUORUM[tierOfScope(scope)]); return sitting ? { id: sitting.id, week: sitting.week } : null; };
   const daysLived = (life: LifeState): number => Math.max(0, lagosTime(ctx.now()).day - lagosTime(life.civic.since).day);
@@ -215,7 +214,8 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
           if (block) return refused({ code: block.code, reason: block.reason ?? 'You cannot do that now.' });
           const paid = act(life, cityId, { op: 'pay', amount: PARTY.fee, label: `Founding the ${name.text}` });
           if (!paid.ok) return { ok: false as const, code: paid.code, reason: paid.reason };
-          found(politics, ctx.now(), who, name.text, motto.text, colour);
+          const partyId = found(politics, ctx.now(), who, name.text, motto.text, colour);
+          append(recordsOf(ctx, db), ctx.now(), { kind: 'party', scope: 'world', scopeName: 'Nigeria', week: null, title: `${who.name} founded the ${name.text}: “${motto.text}”`, facts: { party: name.text, partyId, founder: who.name, founderId: who.id, colour } });
           return { ok: true as const, code: 'founded' };
         });
         return write(db, cityId, who, life, outcome);
@@ -307,6 +307,7 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         const sitting = governorAt(gov, now, QUORUM[tier]);
         if (!sitting) return write(db, cityId, who, life, refused({ code: 'empty_seat', reason: 'Nobody holds this seat.' }));
         const result = signPetition(scope, gov, now, tier, who.id, sitting.week);
+        if (result.removed) append(recordsOf(ctx, db), now, { kind: 'impeachment', scope: seat.id, scopeName: seat.name, week: sitting.week, title: `${titleOf(tier, cityId)} ${sitting.name} of ${seat.name} was removed by petition, with ${result.signed} signatures.`, facts: { removed: sitting.name, removedId: sitting.id, signatures: result.signed, needed: result.needed, votesWon: sitting.votes } });
         return write(db, cityId, who, life, { ok: true, code: result.removed ? 'removed' : 'signed' });
       });
     },
@@ -501,6 +502,7 @@ export default function politicsRoutes(ctx: RouteContext): Record<RouteKey, Rout
         if (!verdict) return justiceWrite(db, cityId, who, life, noJustice('invalid_verdict', 'Choose upheld, reduced or quashed.'));
         if (!note.ok) return justiceWrite(db, cityId, who, life, noJustice(note.code, note.reason));
         applyRuling(justice, now, found, who, verdict, note.text);
+        append(recordsOf(ctx, db), now, { kind: 'ruling', scope: found.scope, scopeName: scopeNameOf(cityId, found.scope), week: null, title: `${who.name} of the ${found.tier === 'nation' ? 'federal' : found.tier} court ${verdict} the arrest of ${found.defendant.name} by ${found.officer.name}: ${note.text}`, facts: { verdict, judge: who.name, judgeId: who.id, defendant: found.defendant.name, officer: found.officer.name, court: found.tier, appeals: found.appeals, offence: found.id } });
         const defendant = ctx.core.sessionByPublicId(db, found.defendant.id);
         if (defendant?.cities?.[cityId]?.state) {
           const said = verdict === 'quashed' ? 'The arrest was quashed. You are free.' : verdict === 'reduced' ? 'Your sentence was cut in half.' : 'The arrest was upheld. The sentence stands.';

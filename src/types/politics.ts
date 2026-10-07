@@ -171,6 +171,8 @@ export interface SeatView {
 }
 export interface PoliticsResponse {
   city: CityId
+  /** Where the weekly cycle is, the same for all three seats: nominations, voting, results. */
+  cycle: { phase: 'nominations' | 'voting' | 'results'; endsAt: number; week: number }
   seats: SeatView[]
   parties: PartyView[]
   you: { party: string | null; canFound: boolean } | null

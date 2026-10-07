@@ -62,14 +62,24 @@ Players can fight each other and can break the law; the arms of government answe
 - **Courts.** A jailed player can appeal the arrest for a small court fee (₦500, into the arresting seat's treasury), with a statement and, if they choose, a lawyer. A judge of that seat's court reads the case and rules: uphold (the sentence stands), reduce (half of the time left comes off) or quash (the player goes free), and gives public reasons. A judge is enrolled like police (city 2, state 4, nation 6) by the officeholder, for their term, and can never rule on a case they are part of. After a ruling that is not a quash, the defendant can take the case once to the next court up (city to state, state to federal) for ₦1,500; that ruling is final. Rulings are public.
 - **Lawyers.** Any player can list themselves as a lawyer (the bar holds 40). A defendant names one when appealing; the lawyer files one written argument. The fee is agreed in chat; the game does not move it.
 
-## 6. Order of work
+## 6. The public record, and trust
+
+What a government did must be easy to read and hard to change. That is most of what makes a world worth belonging to, and it is the part a copy cannot bring along.
+
+- **The Hall of Records.** Every finished term (who won, how many voted, their party, whether the election counted or was void, whether they were removed), every ruling, every removal by petition, every party founded and every action of the operator is written once to a public list. Nothing is edited or removed. It holds names and counts only: never who voted for whom. Anyone can read it without signing in: `GET /api/world/records` (filter by `scope` and `kind`, page back with `before`), and `GET /api/world/records/proof` for the seal. In the game it is Politics → Records, or the address `/records`.
+- **Sealed.** Each entry carries the SHA-256 of the one before it and of its own facts (`src/records/chain.ts`). Change, remove or reorder any entry and every later seal stops matching. The Records screen checks what it was shown in the player's own browser and says so; anyone can run the same check on the JSON. The newest seal is published, so a player or a journalist can keep it and later prove the past was not rewritten.
+- **Written as it happens.** Terms are written lazily: a seat's ended terms are written the next time anyone passes through its city's civic pulse, and always before a new candidacy could prune old ballots (ballots are kept eight weeks). Nothing runs on a timer.
+- **The operator is on the record too.** In Admin → World → Government an operator can remove an officeholder for the rest of the term (they type the holder's name), release a jailed player, or dismiss an officer or judge. Each needs a reason of at least ten characters. Each is written to the admin audit log and to the public record as an *operator* entry that names the action, the person and the reason. The operator cannot rewrite a past entry. The dashboard has a Government card: seats held, petitions, audit warnings, money in the treasuries, people in jail, open offences, officers and judges, and the number of records.
+- **One calendar.** The Politics screen shows one weekly cycle for city, state and nation (nominations Monday to Wednesday, voting Thursday to Saturday, results on Sunday), and every resident's Updates carry the election news of all three seats, once each.
+
+## 7. Order of work
 
 1. **Offices and parties.** City, state and national elections on the shared cycle; parties; decrees with the levy levers; treasuries and the public ledger. **next**
 2. **Justice.** Fights, offences, police, arrests, jail. **built**
 3. **Courts.** Judges, lawyers, bail, appeals. **built**
 4. **Checks on the officeholders.** Grants, audits, impeachment. **built**. Assemblies that pass laws by vote. **later**
 
-## 7. Where things live
+## 8. Where things live
 
 | What | Where |
 | --- | --- |
@@ -78,4 +88,6 @@ Players can fight each other and can break the law; the arms of government answe
 | Elections | `server/civic/elections.ts`, used by every tier |
 | Routes | `server/routes/politics.ts` under `/api/politics/` |
 | The Phone app | `src/app/features/politics/` |
+| The public record: chain, store, archive, routes | `src/records/chain.ts`, `server/records/`, `server/routes/records.ts`, `src/types/records.ts` |
+| The operator's government tools | `server/admin/politics.ts`, Admin → World → Government |
 | Wire types | `src/types/politics.ts` |

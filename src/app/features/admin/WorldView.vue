@@ -36,6 +36,20 @@ async function set(key: string, value: boolean | number | null, confirm?: string
   asking.value = null
   note.value = r.ok ? 'Saved.' : r.error.reason; recordDone(r.ok ? `Setting ${key} saved` : r.error.reason, r.ok); void loadSettings()
 }
+// Government: what is held, who is jailed and who serves, and the three things an operator can undo. Every action needs a reason, which the public record shows.
+interface GovSeat { scope: string; tier: string; title: string; name: string; holder: { id: string; name: string; votes: number; termEndsAt: number } | null; treasury: number; officers: number; judges: number; petition: { signed: number; needed: number } | null; flags: string[] }
+interface Official { id: string; name: string; scope: string; tier: string; by: string }
+interface GovView { seats: GovSeat[]; jailed: { id: string; name: string; until: number; minutes: number; by: string; tier: string }[]; police: Official[]; judges: Official[]; openOffences: number; records: { count: number; head: string } }
+const gov = ref<GovView | null>(null), govReason = ref(''), govTyped = ref(''), govNote = ref<{ ok: boolean; text: string } | null>(null)
+async function loadGov(): Promise<void> { const r = await api.get<GovView>('/api/admin/politics'); if (r.ok) gov.value = r.data }
+async function undo(body: Record<string, unknown>): Promise<void> {
+  const r = await api.post<Record<string, unknown>>('/api/admin/politics/act', { ...body, reason: govReason.value, typed: govTyped.value }, `politics:${JSON.stringify(body)}:${govReason.value}`)
+  const ok = r.ok && r.data.ok === true
+  govNote.value = { ok, text: r.ok ? (ok ? String(r.data.summary) : String(r.data.reason ?? r.data.code)) : r.error.reason }
+  recordDone(govNote.value.text, ok)
+  if (ok) { govReason.value = ''; govTyped.value = ''; await loadGov() }
+}
+onMounted(loadGov)
 const minutes = ref(5)
 async function notice(m: number): Promise<void> { const r = await api.post('/api/admin/notice', { minutes: m }, `notice:${m}:${Date.now()}`); note.value = r.ok ? (m ? `The notice is showing for ${m} minutes.` : 'The notice ended.') : r.error.reason; recordDone(note.value, r.ok) }
 </script>
@@ -64,6 +78,29 @@ async function notice(m: number): Promise<void> { const r = await api.post('/api
         <p class="adm-sub">The same banner the release announcer starts, shown to everyone connected.</p>
         <h3 style="margin-top:14px">Event flags</h3><p class="adm-muted">Not available yet: the rules engine has no time-boxed event setting (for example double wages).</p>
       </div>
+    </div>
+    <div class="adm-card" style="margin-top:12px">
+      <h3>Government</h3>
+      <p class="adm-sub">What an operator does here is written to the audit log and to the public record, with the reason below. Give a reason of at least 10 characters; to remove an officeholder, type their name too.</p>
+      <div class="adm-row"><label style="flex:1">Reason (public)<input v-model="govReason" maxlength="160"></label><label>Officeholder’s name (to remove)<input v-model="govTyped" autocomplete="off"></label></div>
+      <p v-if="govNote" :class="govNote.ok ? 'adm-ok' : 'adm-error'" role="status">{{ govNote.text }}</p>
+      <template v-if="gov">
+        <p class="adm-sub">{{ gov.records.count }} public record entries · {{ gov.openOffences }} open offences · {{ gov.jailed.length }} in jail</p>
+        <table class="adm-table"><thead><tr><th>Seat</th><th>Holder</th><th>Treasury</th><th>Officers / judges</th><th>Petition</th><th></th></tr></thead><tbody>
+          <tr v-for="seat in gov.seats" :key="seat.scope"><td><b>{{ seat.title }}</b> of {{ seat.name }}</td><td>{{ seat.holder ? `${seat.holder.name} (${seat.holder.votes} votes)` : 'empty' }}</td><td>{{ naira(seat.treasury) }}</td><td>{{ seat.officers }} / {{ seat.judges }}</td>
+            <td>{{ seat.petition ? `${seat.petition.signed} of ${seat.petition.needed}` : '' }}<template v-if="seat.flags.length"> · audit: {{ seat.flags.join(', ') }}</template></td>
+            <td><button v-if="seat.holder" class="adm-btn danger" @click="undo({ action: 'remove-officeholder', scope: seat.scope })">Remove</button></td></tr>
+        </tbody></table>
+        <h3 style="margin-top:14px">In jail</h3>
+        <p v-if="!gov.jailed.length" class="adm-muted">Nobody.</p>
+        <table v-else class="adm-table"><tbody><tr v-for="item in gov.jailed" :key="item.id"><td><b>{{ item.name }}</b></td><td>{{ item.minutes }} minutes, arrested by {{ item.by }}</td><td><button class="adm-btn" @click="undo({ action: 'release', player: item.id })">Release</button></td></tr></tbody></table>
+        <h3 style="margin-top:14px">Officers and judges</h3>
+        <p v-if="!gov.police.length && !gov.judges.length" class="adm-muted">None enrolled.</p>
+        <table v-else class="adm-table"><tbody>
+          <tr v-for="item in gov.police" :key="`p${item.id}`"><td><b>{{ item.name }}</b></td><td>police · {{ item.scope }} · enrolled by {{ item.by }}</td><td><button class="adm-btn" @click="undo({ action: 'dismiss', role: 'police', player: item.id })">Dismiss</button></td></tr>
+          <tr v-for="item in gov.judges" :key="`j${item.id}`"><td><b>{{ item.name }}</b></td><td>judge · {{ item.scope }} · enrolled by {{ item.by }}</td><td><button class="adm-btn" @click="undo({ action: 'dismiss', role: 'judge', player: item.id })">Dismiss</button></td></tr>
+        </tbody></table>
+      </template>
     </div>
     <div class="adm-card" style="margin-top:12px">
       <h3>Settings</h3>

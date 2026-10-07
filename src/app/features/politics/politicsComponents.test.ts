@@ -46,7 +46,7 @@ const seat = (tier: SeatView['tier'], patch: Partial<SeatView> = {}): SeatView =
   audit: { at: 1, by: { id: 'a', name: 'Ada' }, income: 5000, salary: 800, granted: 300, grants: 1, flags: ['concentration'] }, petition: { signed: 1, needed: 3, mine: false, open: true }, ...patch,
 })
 const overview = (cityId: string, patch: Partial<SeatView> = {}): PoliticsResponse => ({
-  city: cityId, seats: [seat('city', patch), seat('state'), seat('nation')],
+  city: cityId, cycle: { phase: 'voting', endsAt: server.now() + 3600000, week: 1 }, seats: [seat('city', patch), seat('state'), seat('nation')],
   parties: [{ id: 'p1', name: 'Green Hands', motto: 'Plant more', colour: 'green', founder: { id: 'f', name: 'Femi' }, members: 3, mine: false }],
   you: { party: null, canFound: true }, partyRules: { fee: 5000, nameMin: 3, nameMax: 24, mottoMin: 3, mottoMax: 60, colours: ['green', 'gold'] },
 })
@@ -65,6 +65,7 @@ test('Politics: the seat, its quorum, candidates with their party, the treasury 
   const html = await render()
   const words = text(html)
   assert.ok(words.includes('Chairman of Lagos'), words.slice(0, 300))
+  assert.ok(words.includes('Polls are open · polls close in 1h 0m . City, state and national seats all follow this week.'), 'one weekly cycle on every tab')
   assert.ok(words.includes('An election needs at least 3 votes to count'))
   assert.ok(words.includes('Green Hands') && words.includes('Independent'), 'a candidate under a party, one without')
   assert.ok(words.includes('Treasury ₦4,200') && words.includes('Market levy on 1 × Jollof'))
@@ -120,5 +121,18 @@ test('Justice: a sentence in a banner, the force with its sentence, and an offen
     assert.ok(words.includes('The bench · city court') && words.includes('Dayo, arrested by Chi') && words.includes('Not me'))
     assert.ok(['Uphold', 'Reduce', 'Quash'].every((label) => words.includes(label)))
     assert.ok(words.includes('Give your reasons first'), 'a ruling needs its public reasons')
+  } finally { politicsUi.tab = 'city' }
+})
+
+test('Records: the Hall of Records names what it holds, offers its filters, and the tabs scroll instead of squeezing', async () => {
+  const { politicsUi } = await load<{ politicsUi: { tab: string } }>('/src/app/features/politics/politicsDrafts.ts')
+  civic.put(`politics:${app.game.view.value.cityId}`, overview(app.game.view.value.cityId))
+  politicsUi.tab = 'records'
+  try {
+    const html = await render()
+    const words = text(html)
+    assert.ok(words.includes('Hall of Records') && words.includes('Nothing is edited or removed, and each entry is sealed by the one before it'))
+    for (const label of ['Everything', 'Elections', 'Rulings', 'Removals', 'Parties', 'The operator']) assert.ok(words.includes(label), label)
+    assert.ok(['City', 'State', 'Nation', 'Parties', 'Justice', 'Records'].every((label) => words.includes(label)))
   } finally { politicsUi.tab = 'city' }
 })

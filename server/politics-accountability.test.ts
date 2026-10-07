@@ -102,6 +102,9 @@ test('impeachment: needs an audit that found something, then more than half the 
   assert.equal(((await get('/api/civic/gov?city=lagos&tier=state', bola)) as unknown as GovResponse).governor?.id, governor.id, 'one signature short');
   const last = await player('Last');
   assert.equal((await impeach(last)).code, 'removed');
+  const removal = (await (await fetch(`${f.base}/api/world/records?kind=impeachment`)).json()) as { entries: { title: string; facts: Record<string, unknown> }[] };
+  assert.deepEqual(removal.entries.map((entry) => [entry.facts.removed, entry.facts.signatures, entry.facts.needed]), [['Winner', needed, needed]], 'the removal is on the public record');
+  assert.match(removal.entries[0]?.title ?? '', /^Governor Winner of Lagos State was removed by petition, with \d+ signatures\.$/);
 
   const after = (await get('/api/civic/gov?city=lagos&tier=state', bola)) as unknown as GovResponse;
   assert.equal(after.governor, null, 'the seat is empty');

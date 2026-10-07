@@ -104,3 +104,39 @@ test('an audit is told in numbers and warnings; a petition and a grant say why t
   assert.equal(grantWhy(null, 100, 'School desks', 500), ''); assert.match(grantWhy(null, 600, 'School desks', 500), /at most ₦500/)
   assert.match(grantWhy(null, 1.5, 'x', 500), /whole number/); assert.match(grantWhy(null, 100, 'ab', 500), /what the grant is for/); assert.match(grantWhy(null, 5, 'abc', 0), /nothing to give/)
 })
+
+import { GENESIS as CHAIN_START, entryHash as sealOf } from '../../../records/chain.ts'
+import { RECORD_FILTERS, checkRecords, kindLabel, recordsPath, shortHash } from './politicsModel.ts'
+import type { RecordEntryView } from '../../../types/records.ts'
+
+function entries(count: number): RecordEntryView[] {
+  const list: RecordEntryView[] = []
+  let prev = CHAIN_START
+  for (let n = 1; n <= count; n++) {
+    const body = { n, at: 1000 * n, kind: 'term' as const, scope: 'state:lagos', scopeName: 'Lagos State', week: n, title: `Term ${n}`, facts: { votes: n } }
+    const hash = sealOf(body, prev)
+    list.push({ ...body, prev, hash }); prev = hash
+  }
+  return list.reverse() // newest first, as the route sends them
+}
+
+test('the record page checks what it was shown: the whole chain when unfiltered, each entry’s seal when filtered, and says so when it does not hold', () => {
+  const shown = entries(5)
+  assert.deepEqual(checkRecords(shown, true), { ok: true, line: 'Checked in your browser: 5 entries, each sealed by the one before.' })
+  assert.match(checkRecords(shown, false).line, /the seal of each of these 5 entries holds/)
+  assert.deepEqual(checkRecords([], true), { ok: true, line: 'Nothing has been recorded yet.' })
+  const altered = shown.map((entry) => (entry.n === 3 ? { ...entry, facts: { votes: 99 } } : entry))
+  assert.deepEqual([checkRecords(altered, true).ok, checkRecords(altered, false).ok], [false, false])
+  assert.match(checkRecords(altered, true).line, /Entry 3 does not match its seal\. This record has been changed\./)
+  const missing = shown.filter((entry) => entry.n !== 3)
+  assert.equal(checkRecords(missing, true).ok, false, 'a gap in an unfiltered list is caught')
+  assert.equal(checkRecords(missing, false).ok, true, 'a filtered list is not expected to be consecutive')
+})
+
+test('record pages are asked for with the filter and the place to go back from', () => {
+  assert.equal(recordsPath('all', null), '/api/world/records?limit=30')
+  assert.equal(recordsPath('ruling', 40), '/api/world/records?limit=30&kind=ruling&before=40')
+  assert.deepEqual(RECORD_FILTERS.map((item) => item.id), ['all', 'term', 'ruling', 'impeachment', 'party', 'operator'])
+  assert.equal(kindLabel('term'), 'Election'); assert.equal(kindLabel('impeachment'), 'Removal'); assert.equal(kindLabel('operator'), 'The operator')
+  assert.equal(shortHash('a'.repeat(64)), 'aaaaaaaa…aaaaaa')
+})

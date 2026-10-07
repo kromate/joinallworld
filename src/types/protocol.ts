@@ -36,6 +36,7 @@ import type { PingHttpRoutes } from './ping.ts'
 import type { VisitHttpRoutes } from './visit.ts'
 import type { BusinessHttpRoutes } from './business.ts'
 import type { PoliticsHttpRoutes } from './politics.ts'
+import type { RecordsHttpRoutes } from './records.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -257,7 +258,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -600,6 +601,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/admin/moderation/reports/:id/act',
   'GET /api/admin/moderation/shops',
   'POST /api/admin/moderation/shops/act',
+  'GET /api/admin/politics',
+  'POST /api/admin/politics/act',
   'GET /api/admin/moderation/content',
   'POST /api/admin/moderation/content/remove',
   'GET /api/admin/audit',
@@ -676,6 +679,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/mod/store/layout',
   'POST /api/mod/store/safety',
   'GET /api/politics/overview',
+  'GET /api/world/records',
+  'GET /api/world/records/proof',
   'POST /api/politics/decree',
   'POST /api/politics/salary',
   'POST /api/politics/grant',

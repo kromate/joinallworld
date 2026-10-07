@@ -1590,7 +1590,7 @@ export interface DepositTerm {
 /** TRAVEL_MODES: the five base modes by id. */
 export type BaseModeTable = Record<BaseTravelModeId, TravelModeDefinition>
 
-// ---- work dilemmas and place actions (behind the `dilemmas` switch, src/game/features.ts) ------------
+// ---- work dilemmas and place actions (the kit: src/game/features.ts) ------------
 
 /** One line in both wordings: English and Nigerian Pidgin. The ids and rules are shared; only these words are local. */
 export interface LocalText {

@@ -2,9 +2,11 @@
 // the footsteps and the rules of the mix. It knows nothing about the browser beyond the audio context it is given, so the same
 // code plays live and renders offline (the sound board and the measurements use that).
 import type { CitySound } from '../types/content.ts'
+import { lagosTime } from '../game/clock.ts'
+import { timeBand } from '../game/world-time.ts'
 import { levelFor } from './levels.ts'
 import type { SoundSettings } from './settings.ts'
-import { ACTIVITIES, COMMANDS, EVENTS, INDOORS, KEY_KINDS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES } from './data.ts'
+import { ACTIVITIES, COMMANDS, EVENTS, INDOORS, KEY_KINDS, MOMENTS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES, ZINC, type Moment } from './data.ts'
 import { Scape, type ScapeSpec } from './scape.ts'
 import { Synth, type PlayOptions } from './synth.ts'
 
@@ -19,6 +21,8 @@ export interface Seen {
   act: { kind: string; id: string; mode?: string } | null
   tags: readonly string[]
   raining: boolean
+  /** The power is out here (a NEPA cut): the generators come on by day too. Absent until the game reports it. */
+  outage?: boolean
   /** Newest first. */
   ledger: readonly { at: number; amount: number; reason: string }[]
   /** Server time, ms. */
@@ -29,6 +33,8 @@ export interface Deps {
   soundOf: (city: string) => CitySound | undefined
   /** The scene kind of a venue ('market', 'park', …), or '' when unknown. */
   kindOf: (city: string, venue: string) => string
+  /** The look of a venue's scene ('church', 'mosque', 'bus-park', …), or '' when it has none. */
+  variantOf?: (city: string, venue: string) => string
   /** Wall clock, ms. */
   now: () => number
   every: (run: () => void, ms: number) => () => void
@@ -36,9 +42,9 @@ export interface Deps {
   /** True for a live context (it can be suspended); false when rendering offline. */
   live: boolean
 }
-type Chan = 'place' | 'rain' | 'ride' | 'act'
-const CHANNELS: readonly Chan[] = ['place', 'rain', 'ride', 'act']
-const AMBIENT: ReadonlySet<Chan> = new Set<Chan>(['place', 'rain'])
+type Chan = 'place' | 'moment' | 'rain' | 'ride' | 'act'
+const CHANNELS: readonly Chan[] = ['place', 'moment', 'rain', 'ride', 'act']
+const AMBIENT: ReadonlySet<Chan> = new Set<Chan>(['place', 'moment', 'rain'])
 export const IDLE_MS = 180_000
 const TICK_MS = 1000
 const AHEAD = 2.6
@@ -48,12 +54,31 @@ const monthOf = (ms: number): number => new Date(ms + 3_600_000).getUTCMonth()
 /** Dark between 19:00 and 06:00 in Nigeria. */
 export const isNight = (ms: number): boolean => { const h = hourOf(ms); return h >= 19 || h < 6 }
 
+/** What a place is like right now, for the time of day. */
+export interface PlaceNow { kind: string; variant: string; now: number; outage: boolean }
+/** The scape the time of day adds to a place (see MOMENTS), or '' when it adds none: the first rule that fits. */
+export function pickMoment(at: PlaceNow, rules: readonly Moment[] = MOMENTS): string {
+  if (!at.kind) return ''
+  const t = lagosTime(at.now), band = timeBand(at.now), hour = t.minuteOfDay / 60
+  for (const rule of rules) {
+    if (!rule.kinds.includes(at.kind)) continue
+    if (rule.variants && !rule.variants.includes(at.variant)) continue
+    if (rule.except?.includes(at.variant)) continue
+    if (rule.bands && !rule.bands.includes(band)) continue
+    if (rule.days && !rule.days.includes(t.weekday)) continue
+    if (rule.hours && !rule.hours.some(([from, to]) => hour >= from && hour < to)) continue
+    if (rule.outage && !at.outage) continue
+    return rule.scape
+  }
+  return ''
+}
+
 export class Director {
   readonly synth: Synth
   private readonly ctx: BaseAudioContext
   private readonly deps: Deps
   private readonly trims = {} as Record<Chan, GainNode>
-  private readonly cur: Record<Chan, { key: string; scape: Scape } | null> = { place: null, rain: null, ride: null, act: null }
+  private readonly cur: Record<Chan, { key: string; scape: Scape } | null> = { place: null, moment: null, rain: null, ride: null, act: null }
   private seen: Seen | null = null
   private hidden = false
   private idle = false
@@ -117,7 +142,8 @@ export class Director {
   private tick(): void {
     const now = this.deps.now()
     if (now - this.lastInput > IDLE_MS) { this.idle = true; this.refresh(); return }
-    if (++this.ticks % 30 === 0) { const night = isNight(now); if (night !== this.night) { this.night = night; this.sync() } }
+    // Twice a minute: the clock may have crossed into another part of the day (a call to prayer, the evening, a Sunday service).
+    if (++this.ticks % 30 === 0) { this.night = isNight(now); this.sync() }
     const until = this.ctx.currentTime + AHEAD
     for (const chan of CHANNELS) this.cur[chan]?.scape.fill(until)
   }
@@ -171,6 +197,7 @@ export class Director {
   }
 
   private kind(s: Seen): string { return this.deps.kindOf(s.city, s.location) }
+  private variant(s: Seen): string { return this.deps.variantOf?.(s.city, s.location) ?? '' }
 
   private activity(s: Seen): void {
     const key = s.act?.kind === 'activity' ? s.act.id : ''
@@ -211,7 +238,9 @@ export class Director {
     if (chan === 'place') {
       const kind = s.mode === 'map' ? '' : this.kind(s)
       name = PLACES[kind] ?? this.cityScape(s)
-    } else if (chan === 'rain') name = s.raining ? 'rain' : ''
+    } else if (chan === 'moment') {
+      name = s.mode === 'map' ? '' : pickMoment({ kind: this.kind(s), variant: this.variant(s), now: this.deps.now(), outage: s.outage === true })
+    } else if (chan === 'rain') name = s.raining ? (ZINC.has(this.kind(s)) ? 'rain-zinc' : 'rain') : ''
     else if (chan === 'ride') name = s.act?.kind === 'travel' || s.act?.kind === 'intercity' ? RIDES[s.act.mode ?? '']?.scape ?? '' : ''
     else name = this.actScape && this.actKey ? this.actScape : ''
     const spec = SCAPES[name]
@@ -235,7 +264,8 @@ export class Director {
       this.cur[chan] = null
       if (!wanted) continue
       const trim = this.trims[chan]
-      trim.gain.value = chan === 'rain' && INDOORS.has(this.seen ? this.kind(this.seen) : '') ? 0.45 : 1
+      const kind = this.seen ? this.kind(this.seen) : ''
+      trim.gain.value = chan === 'rain' && !ZINC.has(kind) && INDOORS.has(kind) ? 0.45 : 1
       const scape = new Scape(this.synth, wanted[1], trim, wanted[0].endsWith('n'), FADE)
       scape.fill(this.ctx.currentTime + AHEAD)
       this.cur[chan] = { key: wanted[0], scape }
@@ -246,7 +276,7 @@ export class Director {
   preview(name: string, night = false): void {
     const spec = SCAPES[name]
     if (!spec) return
-    const chan: Chan = name.startsWith('ride-') ? 'ride' : name.startsWith('act-') ? 'act' : name === 'rain' ? 'rain' : 'place'
+    const chan: Chan = name.startsWith('ride-') ? 'ride' : name.startsWith('act-') ? 'act' : name.startsWith('rain') ? 'rain' : MOMENTS.some(m => m.scape === name) ? 'moment' : 'place'
     this.cur[chan]?.scape.stop(0.1)
     const scape = new Scape(this.synth, spec, this.trims[chan], night, 0.3)
     this.cur[chan] = { key: `${name}:${night ? 'n' : 'd'}`, scape }

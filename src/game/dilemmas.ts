@@ -3,7 +3,7 @@
  * Work dilemmas: choosing which one comes up after a shift, and settling the player's answer. Pure: nothing here reads or writes a
  * life. The career system (systems/career.ts) rolls one at the end of a shift and applies an outcome; this file decides what it is.
  *
- * Switched on by the host (src/game/features.ts). Off, nothing in this file is reached. It is part of the lazy `dilemmas` chunk (src/game/dilemma-pack.ts): the engine never imports it.
+ * Installed by the host (src/game/features.ts); until then nothing in this file is reached. It is part of the lazy `dilemmas` chunk (src/game/dilemma-pack.ts): the engine never imports it.
  *
  *   eligibleDilemmas(stats, seen, placeKind)  every dilemma that fits this player now, never one of the last few seen when another fits
  *   pickDilemma(stats, seed, seen, placeKind) one of them, by weight, from a seed

@@ -39,6 +39,8 @@ export interface AdminHttpRoutes {
   'POST /api/admin/moderation/reports/:id/act': Post<{ clientId: string; action: 'dismiss' | 'warn' | 'mute'; note?: string; minutes?: number }, AdminJson>
   'GET /api/admin/moderation/shops': Get<AdminJson>
   'POST /api/admin/moderation/shops/act': Post<{ clientId: string; shop: string; action: 'rename' | 'close'; reason?: string }, AdminJson>
+  'GET /api/admin/politics': Get<AdminJson>
+  'POST /api/admin/politics/act': Post<{ clientId: string; action: 'remove-officeholder' | 'release' | 'dismiss'; scope?: string; player?: string; role?: 'police' | 'judge'; typed?: string; reason: string }, AdminJson>
   'GET /api/admin/moderation/content': Get<AdminJson>
   'POST /api/admin/moderation/content/remove': Post<{ clientId: string; cityId: string; kind: string; slot?: string; id?: string; venue?: string; reason?: string }, AdminJson>
   'GET /api/admin/audit': Get<{ lines: AuditView[]; total: number; next: number | null }>

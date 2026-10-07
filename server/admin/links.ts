@@ -11,6 +11,7 @@ import { pictureSettings } from '../social/images.ts';
 import { linkBonus } from '../bonus/service.ts';
 import { registerAdminSetting } from './settings.ts';
 import { registerAdminStat, registerAdminTool } from './tools.ts';
+import { politicsOverview } from './politics.ts';
 import { forEachValue } from '../keyed.ts';
 import type { Db, RouteContext } from '../types.ts';
 
@@ -31,7 +32,21 @@ export function pictureCounts(db: Db): { stored: number; reported: number; hidde
   return { stored, reported, hidden };
 }
 
+/** Government in numbers: a card on the dashboard. One read of the politics and records collections each; nothing is written. */
+function governmentStats(ctx: RouteContext): void {
+  const stat = (id: string, label: string, read: (overview: ReturnType<typeof politicsOverview>) => number | string): void => registerAdminStat(ctx, { id: `government-${id}`, group: 'Government', label, cost: 'one read of the politics collection', read: (db) => read(politicsOverview(ctx, db)) });
+  stat('held', 'Seats held now', (overview) => overview.seats.filter((seat) => seat.holder).length);
+  stat('petitions', 'Seats with a petition open', (overview) => overview.seats.filter((seat) => seat.petition && seat.petition.signed > 0).length);
+  stat('warnings', 'Seats whose audit found something', (overview) => overview.seats.filter((seat) => seat.flags.length > 0).length);
+  stat('treasuries', 'In the treasuries (₦)', (overview) => overview.seats.reduce((sum, seat) => sum + seat.treasury, 0).toLocaleString('en-NG'));
+  stat('jailed', 'In jail now', (overview) => overview.jailed.length);
+  stat('offences', 'Open offences', (overview) => overview.openOffences);
+  stat('officials', 'Officers and judges', (overview) => `${overview.police.length} and ${overview.judges.length}`);
+  stat('records', 'Public record entries', (overview) => overview.records.count);
+}
+
 export function linkFeatures(ctx: RouteContext): void {
+  governmentStats(ctx);
   if (linked.has(ctx)) return;
   linked.add(ctx);
   const env = (name: string): string => (typeof ctx.env === 'function' ? ctx.env(name) : '');

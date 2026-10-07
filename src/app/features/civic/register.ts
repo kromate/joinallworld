@@ -14,7 +14,7 @@ import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicCore.ts'
 
 export const governor = definePanel({
-  id: 'governor', title: 'Governor', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
+  id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
   badge: (state, view) => civicNews(view, state),
   component: defineAsyncComponent(() => import('./GovernorApp.vue')),
 })

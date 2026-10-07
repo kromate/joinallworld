@@ -109,3 +109,98 @@ test('a candidate stands under a party, or as an independent', () => {
   assert.equal(Object.hasOwn(scope.gov.elections[1]?.candidates.bola ?? {}, 'party'), false);
   assert.equal(lagosTime(MONDAY).week, 1);
 });
+
+import { AUDIT, GRANTS } from '../../src/game/content/politics.ts';
+import { auditBlock, auditFlags, grantBlock, grantRoom, impeachBlock, payGrant, runAudit, signPetition, signaturesNeeded, termAccounts, termOf } from './rules.ts';
+
+const seat = () => scopeRecord(emptyPolitics(), 'state:lagos');
+const STATE = QUORUM.state;
+
+test('a term’s accounts count what came in, what the salary took and what was granted, and start again each term', () => {
+  const record = seat(), gov = ballot(STATE);
+  credit(record, SUNDAY, 'levy', 1000, 'VAT'); credit(record, SUNDAY, 'fee', 500, 'Fee');
+  drawSalary(record, gov, SUNDAY, 'state', ada);
+  payGrant(record, gov, SUNDAY, 'state', bola, 100, 'School desks', null);
+  assert.deepEqual([record.term?.income, record.term?.salary, record.term?.granted, record.treasury.balance], [1500, 300, 100, 1100]);
+  assert.equal(record.treasury.ledger.at(-1)?.kind, 'grant'); assert.equal(record.treasury.ledger.at(-1)?.amount, -100);
+  assert.equal(termAccounts(record, SUNDAY + 7 * DAY).income, 0, 'a new term starts clean');
+  assert.equal(termOf(SUNDAY), 1);
+});
+
+test('grants: only the officeholder, within a share of the treasury, a few a term, once to each player', () => {
+  const record = seat(), gov = ballot(STATE);
+  credit(record, SUNDAY, 'levy', 10000, 'VAT');
+  assert.equal(grantRoom(record, 'state'), 3000, '30% of the treasury');
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'bola', 'chi', 100)?.code, 'not_in_office');
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'ada', 100)?.code, 'self');
+  for (const amount of [0, -5, 2.5, '100', undefined]) assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'chi', amount)?.code, 'invalid_amount', String(amount));
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'chi', 3001)?.code, 'over_limit');
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'chi', 3000), null);
+  payGrant(record, gov, SUNDAY, 'state', { id: 'chi', name: 'Chi' }, 1000, 'Clinic roof', null);
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'chi', 100)?.code, 'already_granted');
+  for (let index = 0; index < GRANTS.perTerm - 1; index++) payGrant(record, gov, SUNDAY, 'state', { id: `p${index}`, name: 'P' }, 10, 'Small job', null);
+  assert.equal(grantBlock(record, gov, SUNDAY, 'state', 'ada', 'late', 10)?.code, 'grant_limit');
+  assert.equal(grantRoom(seat(), 'state'), 0); assert.equal(grantBlock(seat(), gov, SUNDAY, 'state', 'ada', 'chi', 1)?.code, 'over_limit');
+  const rich = seat(); credit(rich, SUNDAY, 'levy', 10_000_000, 'A windfall');
+  assert.equal(grantRoom(rich, 'state'), SEATS.state.salaryCap, 'never above the seat’s own limit');
+});
+
+test('an audit warns about concentration, favouring one’s own party, and a drained treasury, and says nothing for an honest term', () => {
+  const grant = (id: string, amount: number, party: string | null) => ({ to: { id }, amount, party });
+  assert.deepEqual(auditFlags({ income: 10000, salary: 1000, granted: 1000 }, [grant('a', 500, null), grant('b', 500, null)], null), []);
+  assert.deepEqual(auditFlags({ income: 10000, salary: 0, granted: 900 }, [grant('a', 800, null), grant('b', 100, null)], null), ['concentration']);
+  assert.deepEqual(auditFlags({ income: 10000, salary: 0, granted: 1000 }, [grant('a', 500, 'p1'), grant('b', 500, 'p1')], 'p1'), ['party_favour']);
+  assert.deepEqual(auditFlags({ income: 10000, salary: 2000, granted: 0 }, [], null), [], 'a salary alone is within the rules');
+  assert.deepEqual(auditFlags({ income: 10000, salary: 2000, granted: 7100 }, [grant('a', 3550, null), grant('b', 3550, null)], null), ['drained']);
+  assert.deepEqual(auditFlags({ income: AUDIT.minIncome - 1, salary: AUDIT.minIncome, granted: 0 }, [], null), [], 'too little came in to judge');
+  assert.deepEqual(auditFlags({ income: 10000, salary: 0, granted: 800 }, [grant('a', 800, 'p1')], 'p1'), [], 'one grant is not a pattern');
+});
+
+test('an audit is recorded for the term, can be asked for every few minutes, and needs someone in the seat', () => {
+  const record = seat(), gov = ballot(STATE);
+  assert.equal(auditBlock(record, empty(), SUNDAY, 'state')?.code, 'empty_seat');
+  assert.equal(auditBlock(record, gov, SUNDAY, 'state'), null);
+  credit(record, SUNDAY, 'levy', 5000, 'VAT');
+  const report = runAudit(record, gov, SUNDAY, 'state', bola, null);
+  assert.deepEqual([report.week, report.income, report.grants, report.flags, report.by.name], [1, 5000, 0, [], 'Bola']);
+  assert.equal(auditBlock(record, gov, SUNDAY + 60000, 'state')?.code, 'audit_cooldown');
+  assert.equal(auditBlock(record, gov, SUNDAY + AUDIT.cooldownMs + 1, 'state'), null);
+});
+
+test('impeachment needs an audit that found something, then more than half the votes the officeholder won', () => {
+  assert.equal(signaturesNeeded('state', 10), 10, 'never below the quorum');
+  assert.equal(signaturesNeeded('state', 40), 21, 'more than half of the votes won');
+  assert.equal(signaturesNeeded('city', 5), 3);
+  const record = seat(), gov = ballot(20);
+  assert.equal(impeachBlock(record, empty(), SUNDAY, 'state', 'x')?.code, 'empty_seat');
+  assert.equal(impeachBlock(record, gov, SUNDAY, 'state', 'x')?.code, 'no_grounds', 'nothing to go on');
+  credit(record, SUNDAY, 'levy', 5000, 'VAT');
+  payGrant(record, gov, SUNDAY, 'state', { id: 'a', name: 'A' }, 800, 'A', null); payGrant(record, gov, SUNDAY, 'state', { id: 'b', name: 'B' }, 100, 'B', null);
+  runAudit(record, gov, SUNDAY, 'state', bola, null);
+  assert.equal(impeachBlock(record, gov, SUNDAY, 'state', 'x'), null);
+  assert.equal(impeachBlock(record, gov, SUNDAY, 'state', 'ada')?.code, 'self');
+  const needed = signaturesNeeded('state', 20);
+  assert.equal(needed, 11);
+  for (let index = 0; index < needed - 1; index++) assert.deepEqual(signPetition(record, gov, SUNDAY, 'state', `s${index}`, 1).removed, false);
+  assert.equal(impeachBlock(record, gov, SUNDAY, 'state', 's0')?.code, 'already_signed');
+  assert.equal(governorAt(gov, SUNDAY, STATE)?.id, 'ada', 'one signature short');
+  const last = signPetition(record, gov, SUNDAY, 'state', 'last', 1);
+  assert.deepEqual([last.signed, last.needed, last.removed], [11, 11, true]);
+  assert.equal(governorAt(gov, SUNDAY + 1, STATE), null, 'removed');
+  assert.equal(leverValue(record, gov, SUNDAY + 1, 'salesTax'), 0, 'their decrees lapse with them');
+  assert.equal(salaryDue(record, gov, SUNDAY + 1, 'state', 'ada'), 0, 'and their salary');
+});
+
+test('an audit from an earlier term is no grounds for this term, and a petition starts again each term', () => {
+  const record = seat(), gov = ballot(STATE);
+  credit(record, SUNDAY, 'levy', 5000, 'VAT');
+  payGrant(record, gov, SUNDAY, 'state', { id: 'a', name: 'A' }, 800, 'A', null); payGrant(record, gov, SUNDAY, 'state', { id: 'b', name: 'B' }, 100, 'B', null);
+  runAudit(record, gov, SUNDAY, 'state', bola, null);
+  signPetition(record, gov, SUNDAY, 'state', 's0', 1);
+  const next = empty();
+  declare(next, MONDAY + 7 * DAY + 1000, ada, 'Again'); for (let index = 0; index < STATE; index++) vote(next, MONDAY + 10 * DAY + 1000, `v${index}`, ada.id);
+  const later = SUNDAY + 7 * DAY;
+  assert.equal(governorAt(next, later, STATE)?.week, 2);
+  assert.equal(impeachBlock(record, next, later, 'state', 'x')?.code, 'no_grounds', 'last term’s audit does not carry over');
+  assert.equal(signPetition(record, next, later, 'state', 'x', 2).signed, 1, 'a petition of an earlier term is dropped');
+});

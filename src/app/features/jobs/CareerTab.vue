@@ -3,7 +3,7 @@
 // the next promotion and what it still needs, weekday chips, today's status and the next step.
 //
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
-// The work-dilemma card is drawn only with `?models=dilemmas` (src/models/integration/flags.ts) and only while the life has one waiting
+// The work-dilemma card is drawn only while the life has one waiting
 // (view.career.dilemma is its id; the words are a lazy chunk fetched here, src/game/content/dilemmas.ts); a choice sends 'career.dilemma' { choice }.
 import { computed, ref, shallowRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
@@ -12,7 +12,6 @@ import { cap, money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { readOnlyReason, useAct } from '../kit/act.ts'
-import { modelFlags } from '../../../models/integration/flags.ts'
 import type { DilemmaDefinition } from '../../../types/content.ts'
 import { chipWords } from './jobsModel.ts'
 import { percent, promotionLine, stepLine } from './careerModel.ts'
@@ -25,8 +24,7 @@ const view = game.view
 const career = computed(() => view.value.career)
 const promotion = computed(() => promotionLine(career.value, cap))
 const offline = computed(() => readOnlyReason(view.value.connected ? null : linkWords(view.value)?.why))
-const showDilemmas = modelFlags().dilemmas
-const waiting = computed(() => (showDilemmas ? career.value.dilemma?.id ?? null : null))
+const waiting = computed(() => career.value.dilemma?.id ?? null)
 const dilemma = shallowRef<DilemmaDefinition | null>(null)
 const askedFor = ref<string | null>(null)
 watch(waiting, async (id) => {

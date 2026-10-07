@@ -372,14 +372,18 @@ const actions = {
     if (!isGuest(o)) return fail(state, 'not_a_guest', 'This life was not started with the quick start. Tap the "Create your character" goal to choose your look.');
     const { look, reason } = checkLook(payload?.look, { starter: true });
     if (!look) return fail(state, 'invalid_look', reason);
+    if (payload?.entry !== undefined && (payload.entry !== 'unilag' || ctx.cityId !== 'lagos' || !venueFor(ctx.cityId, 'unilag'))) return fail(state, 'invalid_entry', 'UNILAG is available in Lagos.');
     o.look = look;
     reach(state, 1);
     o.required = false;
     if (o.playedAt === null) {
       o.playedAt = finite(ctx.now) ? ctx.now : state.t;
       startNeeds(state);
+      if (payload?.entry === 'unilag') arrive(state, 'unilag', ctx, { spot: 'main-gate', mode: null });
+      else {
       const spot = WELCOME_SPOT[state.location];
       if (spot && !state.activeAction && spotsOf(state.location, ctx.cityId).some((item) => item.id === spot)) state.spot = spot;
+      }
     }
     // A visitor who came by a friend's link is welcomed by the one banner that says who they are joining (`joining`).
     state.message = payload?.joining === true ? '' : `Welcome to ${venueFor(ctx.cityId, state.location)?.label ?? 'the city'}, ${state.name}.`;

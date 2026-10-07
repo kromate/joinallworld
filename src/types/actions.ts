@@ -266,7 +266,7 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
    * Guests only: confirm the look and start playing (lifts the hold, hands out the starting needs).
    * Repeating it only changes the look. `joining: true` leaves the welcome message to the invite banner.
    */
-  'onboarding.quick-start': { payload: { look: Look; joining?: boolean }; ok: 'playing'; fail: 'already_onboarded' | 'not_a_guest' | 'invalid_look' }
+  'onboarding.quick-start': { payload: { look: Look; joining?: boolean; entry?: 'unilag' }; ok: 'playing'; fail: 'already_onboarded' | 'not_a_guest' | 'invalid_look' | 'invalid_entry' }
   /**
    * SERVER ONLY: put a guest who came by an invite in the inviter's public venue — once per life,
    * within JOIN_WINDOW_MS of its creation, free. The server chooses the venue (server/social).

@@ -32,6 +32,7 @@ import type { CampusHost, CampusHostOptions, HostPerson, HostPlayer, HostState, 
 import { cityScenesReady, loadCityScenes } from '../../scene/city-scenes.ts';
 import { createLazyLoader } from '../../lazy-load.ts';
 import type { LazyLoader, LazyOptions, LazyState } from '../../lazy-load.ts';
+import './world-adapter.css';
 import { DEFAULT_CITY_ID } from '../../game/cities/registry.ts';
 
 export const CAMPUS_VENUE = 'unilag';
@@ -118,6 +119,19 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
     return neighbourhoodPending;
   }
 
+  let status: HTMLElement | null = null;
+
+  function clearStatus(): void { status?.remove(); status = null; container.classList?.remove('campus-loading', 'campus-load-error'); }
+  function showStatus(mode: 'loading' | 'error', retry?: () => void): void {
+    clearStatus();
+    container.classList?.add(mode === 'loading' ? 'campus-loading' : 'campus-load-error');
+    const panel = document.createElement('div'); panel.className = 'campus-load-status'; panel.setAttribute('role', mode === 'error' ? 'alert' : 'status'); panel.setAttribute('aria-live', 'polite');
+    const title = document.createElement('strong'); title.textContent = mode === 'loading' ? 'Opening UNILAG campus…' : 'UNILAG campus could not open'; panel.append(title);
+    const detail = document.createElement('span'); detail.textContent = mode === 'loading' ? 'Loading the campus world.' : 'Check your connection, then try again.'; panel.append(detail);
+    if (retry) { const button = document.createElement('button'); button.type = 'button'; button.textContent = 'Try again'; button.addEventListener('click', retry, { once: true }); panel.append(button); }
+    container.append(panel); status = panel;
+  }
+
   function replay(): void {
     if (!host) return;
     if (state?.location === currentLocation) host.setState(displayState(state));
@@ -148,7 +162,7 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
   }
   function useVenueHost(id: string): void { kind = 'venue'; hostCity = cityNow(); host = createVenueWorld(container, { ...options, visitHome, buildHome: homeBuilder, buildNeighbourhood: neighbourhoodBuilder, cityId: hostCity, location: visitHome ? 'home' : id }); replay(); }
   function build(id: string): void {
-    host?.dispose(); host = null; kind = null; hostCity = null;
+    host?.dispose(); host = null; kind = null; hostCity = null; clearStatus();
     const mine = ++token;
     if (awaited) { container.classList?.remove('scenes-loading'); awaited = null; }
     if (id === 'city-street' && !visitHome) {
@@ -192,17 +206,19 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
       void scenesOf(city).load();
       return;
     }
-    container.classList?.add('campus-loading');
+    awaited = cityNow();
+    showStatus('loading');
+    onScenes?.({ status: 'loading', city: cityNow(), attempt: 1, attempts: 1, retryInMs: null, error: null });
     loadCampus().then(({ createCampusHost }) => {
       if (mine !== token || disposed) return;
-      kind = 'campus';
       host = createCampusHost(container, { onTag: options.onTag, onMove: options.onMove, onSpot: commitSpot, now, renderer: options.renderer });
-      replay();
+      kind = 'campus'; hostCity = cityNow(); awaited = null; clearStatus(); replay();
     }).catch((error) => {
       if (mine !== token || disposed) return;
-      console.error('The campus could not be loaded:', error);
-      useVenueHost(id);
-    }).finally(() => { if (mine === token) container.classList?.remove('campus-loading'); });
+      host?.dispose(); host = null; kind = null;
+      showStatus('error', () => { if (!disposed && currentLocation === id) build(id); });
+      onScenes?.({ status: 'failed', city: cityNow(), attempt: 1, attempts: 1, retryInMs: null, error: String(error) });
+    });
   }
   build(currentLocation);
 
@@ -242,7 +258,7 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
       host?.setState(displayState(next));
     },
     /** The scenes of the city being waited for: try again now (after 'failed' this also starts a new round of automatic attempts). */
-    retryScenes() { if (currentLocation === 'city-street' || ((visitHome || currentLocation === 'home') && !homeBuilder) || (currentLocation === 'neighbourhood' && !neighbourhoodBuilder)) { build(currentLocation); return true; } if (!awaited) return false; void scenesOf(awaited).load(); return true; },
+    retryScenes() { if (campus(currentLocation) || currentLocation === 'city-street' || ((visitHome || currentLocation === 'home') && !homeBuilder) || (currentLocation === 'neighbourhood' && !neighbourhoodBuilder)) { build(currentLocation); return true; } if (!awaited) return false; void scenesOf(awaited).load(); return true; },
     /** The city whose scenes are being waited for, or null. */
     get awaiting() { return awaited; },
     setPlayer(next: HostPlayer) { player = { ...next }; return host?.setPlayer(next); },
@@ -272,7 +288,7 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
      */
     walkToSpot(id: string): Promise<WalkResult> { return kind === 'campus' ? host!.walkTo(id) as Promise<WalkResult> : Promise.resolve({ ok: false, code: 'not_walkable' }); }, // the campus host answers a promise
     position() { return host?.position?.() || null; },
-    dispose() { disposed = true; token += 1; for (const loader of scenes.values()) loader.stop(); host?.dispose(); host = null; kind = null; awaited = null; },
+    dispose() { disposed = true; token += 1; for (const loader of scenes.values()) loader.stop(); host?.dispose(); host = null; kind = null; awaited = null; clearStatus(); },
   };
 }
 

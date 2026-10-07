@@ -5,7 +5,6 @@
  * are game rules, not a representation of a real UNILAG route or timetable.
  */
 import { arrive, debit, spotsOf } from '../../game/api.ts';
-import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { busy, fail, ok } from '../../game/util.ts';
 import { ANCHORS, ROADS } from './layout.ts';
 import type { CampusAnchor } from './layout.ts';
@@ -22,7 +21,7 @@ type Point = WalkPoint;
 export const SHUTTLE_FEE = 50;
 export const SHUTTLE_SPEED = 8;
 export const SHUTTLE_MAX_DURATION = 120;
-export const SHUTTLE_ROUTE_SOURCE = 'Synthetic internal beta route; not a real UNILAG route or timetable.';
+export const SHUTTLE_ROUTE_SOURCE = 'Geometry follows the pinned OpenStreetMap campus roads; stop service, fare and timetable remain fictional gameplay.';
 
 export interface ShuttleStop {
   /** Stable destination and venue-spot id. */
@@ -33,11 +32,7 @@ export interface ShuttleStop {
   anchor: CampusAnchor
 }
 
-const anchorOf = (id: ShuttleStopId): CampusAnchor => {
-  const anchor = ANCHORS[id];
-  if (!anchor) throw new Error(`No campus anchor for shuttle stop ${id}`); // every stop id is an anchor of layout.ts (the original stored undefined)
-  return anchor;
-};
+const anchorOf = (id: ShuttleStopId): CampusAnchor | null => ANCHORS[id] ?? null;
 
 const STOP_ROWS: readonly (readonly [ShuttleStopId, string])[] = [
   ['main-gate', 'Main Gate'],
@@ -49,7 +44,10 @@ const STOP_ROWS: readonly (readonly [ShuttleStopId, string])[] = [
   ['dli-building', 'Distance Learning Institute'],
   ['lagoon-front', 'Lagoon Front'],
 ];
-export const SHUTTLE_STOPS: readonly Readonly<ShuttleStop>[] = Object.freeze(STOP_ROWS.map(([id, label]): Readonly<ShuttleStop> => Object.freeze({ id, label, anchor: anchorOf(id) })));
+export const SHUTTLE_STOPS: readonly Readonly<ShuttleStop>[] = Object.freeze(STOP_ROWS.flatMap(([id, label]): Readonly<ShuttleStop>[] => {
+  const anchor = anchorOf(id);
+  return anchor ? [Object.freeze({ id, label, anchor })] : [];
+}));
 
 const stopById = new Map(SHUTTLE_STOPS.map((stop): [ShuttleStopId, Readonly<ShuttleStop>] => [stop.id, stop]));
 const isStopId = (value: unknown): value is ShuttleStopId => typeof value === 'string' && stopById.has(value as ShuttleStopId);
@@ -99,16 +97,16 @@ for (const road of ROADS) {
   }
 }
 
-function nearestRoad(point: Point): RoadProjection | null {
-  let best: RoadProjection | null = null;
+function roadCandidates(point: Point): RoadProjection[] {
+  const candidates: RoadProjection[] = [];
   for (const segment of roadSegments) {
     const dx = segment.b.x - segment.a.x, dz = segment.b.z - segment.a.z;
     const t = Math.max(0, Math.min(1, ((point.x - segment.a.x) * dx + (point.z - segment.a.z) * dz) / (dx * dx + dz * dz || 1)));
     const at = { x: segment.a.x + dx * t, z: segment.a.z + dz * t };
     const gap = distance(point, at);
-    if (!best || gap < best.distance) best = { ...segment, point: at, distance: gap };
+    candidates.push({ ...segment, point: at, distance: gap });
   }
-  return best;
+  return candidates.sort((a,b)=>a.distance-b.distance);
 }
 
 /** Shortest path on the continuous road graph between two projected road points. */
@@ -184,12 +182,12 @@ export function shuttleRoute(origin: string, destination: string): Readonly<Shut
   if (cached) return cached;
   const from = stopById.get(origin as ShuttleStopId), to = stopById.get(destination as ShuttleStopId);
   if (!from || !to || origin === destination) return null;
-  const startRoad = nearestRoad(from.anchor), endRoad = nearestRoad(to.anchor);
-  if (!startRoad || !endRoad) return null; // no roads at all (the original threw)
-  const first = campusWalk.route(from.anchor, startRoad.point);
-  const road = roadPath(startRoad, endRoad);
-  const last = campusWalk.route(endRoad.point, to.anchor);
-  if (!first || !road || !last) return null;
+  const usable=(projection:RoadProjection)=>{const zone=campusWalk.zoneAt(projection.point.x,projection.point.z);return !!zone&&campusWalk.grids.get(zone.id)?.free(projection.point.x,projection.point.z);};
+  const starts=roadCandidates(from.anchor).filter(usable).slice(0,30),ends=roadCandidates(to.anchor).filter(usable).slice(0,30);
+  let selected:{start:RoadProjection;end:RoadProjection;first:Point[];last:Point[];road:Point[]}|null=null;
+  for(const start of starts){for(const end of ends){const road=roadPath(start,end);if(!road)continue;const first=campusWalk.route(from.anchor,start.point),last=campusWalk.route(end.point,to.anchor);if(first&&last){selected={start,end,first,last,road};break;}}if(selected)break;}
+  if(!selected)return null;
+  const {start:startRoad,end:endRoad,first,last,road}=selected;
   const startConnector: Point[] = [];
   pushDistinct(startConnector, from.anchor);
   for (const point of first) pushDistinct(startConnector, point);
@@ -285,8 +283,6 @@ const activeShuttle = {
       || value.duration !== route.duration || !finite(value.start) || value.start < 0 || value.start > ctx.now) return null;
     return { origin, dest, start: value.start };
   },
-  // Arriving and cancelling are played by the server alone: the browser's build leaves them out (src/game/profile.ts).
-  ...(PLAYS ? {
   complete(state, active, ctx) {
     const legitimate = spotsOf('unilag', ctx.cityId).some((spot) => spot.id === active.dest);
     if (!legitimate || !arrive(state, 'unilag', ctx, { spot: active.dest, mode: 'campus-shuttle' })) {
@@ -300,7 +296,6 @@ const activeShuttle = {
     state.message = `Campus shuttle cancelled. The ₦${SHUTTLE_FEE} fare is not refundable.`;
     return null;
   },
-  } satisfies Pick<ActiveKindHandler<CampusShuttleAction>, 'complete' | 'cancel'> : LEFT_OUT),
 } satisfies ActiveKindHandler<CampusShuttleAction>;
 
 /** Registry-ready, server-authoritative campus shuttle system. */
@@ -312,9 +307,9 @@ const unilagShuttle = {
     const rides = typeof saved === 'object' && saved !== null && 'rides' in saved ? saved.rides : undefined;
     state.unilagShuttle = { rides: Number.isSafeInteger(rides) && (rides as number) >= 0 ? rides as number : 0 };
   },
+  actions: { 'campus-shuttle': board },
   active: { 'campus-shuttle': activeShuttle },
-  // Boarding is an action: only a host that plays lives applies one (src/game/profile.ts).
-  ...(PLAYS ? { actions: { 'campus-shuttle': board }, advance() {} } satisfies Pick<SystemDefinition<'unilagShuttle'>, 'actions' | 'advance'> : LEFT_OUT),
+  advance() {},
   view(state): UnilagShuttleView {
     return {
       fare: SHUTTLE_FEE, source: SHUTTLE_ROUTE_SOURCE,

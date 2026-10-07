@@ -18,7 +18,7 @@ import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
 import { linkWords } from '../../ui/link.ts'
-import { captureLink, cleanAddress, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
+import { captureLink, cleanAddress, forgetCampusEntry, forgetDraft, forgetGo, forgetJoin, forgetRef, forgetTable, joinTarget, keepPlay, pendingCampusEntry, pendingGo, pendingPlay, pendingRef, pendingTable, play, track } from '../../quick-start/entry.ts'
 import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
@@ -212,6 +212,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     if (state.activeAction?.kind === 'intercity' && state.activeAction.id !== warmedCity) { warmedCity = state.activeAction.id; void warmCityScenes(warmedCity) }
     const city = scene.city.value
     if (moved) {
+      if (previous.location === 'unilag' && state.location !== 'unilag') { try { if (location.pathname.replace(/\/+$/, '') === '/unilag') history.replaceState(null, '', '/') } catch { /* retain address */ } }
       if (state.estate.city !== previous.estate.city) scene.venue.value?.setState(state)
       scene.venue.value?.setLocation(state.location)
       // Arrived while watching the trip: the map shows the arrival for a moment, then the venue comes up.
@@ -282,6 +283,19 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   }
   game.on('session', (session) => { sessionChanged(session.id ?? null) })
 
+  /** Fulfil the public /unilag entry through the same player-controlled travel card as every in-game link. */
+  function landCampus(): void {
+    if (!pendingCampusEntry()) return
+    if (!game.connected.value) return
+    if (game.cityId.value !== 'lagos') {
+      shell.open('map', { layer: 'world' })
+      game.toast('UNILAG is in Lagos. Choose Lagos on the world map to continue.')
+      return
+    }
+    if (game.state.value.location === 'unilag') { forgetCampusEntry(); return }
+    forgetCampusEntry(); void goTo('unilag')
+  }
+
   // ---- one character on several devices -------------------------------------------------------------------------
   // The server tells every socket of a character when its life changed; the game reads it again unless this device
   // already holds that revision. A socket that opens again (the network came back, the phone was unlocked) reads at once.
@@ -312,7 +326,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     tableExists: (id) => import('../../tables/city-places.ts').then((places) => places.tableById(game.cityId.value, id) !== null),
     deviceToken,
     track,
-    cleanAddress,
+    cleanAddress() { if (location.pathname.replace(/\/+$/, '') !== '/unilag') cleanAddress() },
     takeLinkHost: () => { takeLinkHost() },
     joinTarget, forgetJoin, pendingRef, forgetRef, pendingTable, forgetTable, pendingGo, forgetGo,
     panelFor: (go) => (Object.hasOwn(GO_TARGETS, go) ? GO_TARGETS[go as GoTarget] : null),
@@ -335,18 +349,19 @@ function createApp(game: Game, native: readonly VuePanel[]) {
    */
   async function firstMinute(): Promise<void> {
     const onboarding = game.state.value.onboarding
-    if (onboarding.done || onboarding.stage !== 'guest') { play.sending = false; if (onboarding.done) forgetDraft(); await landing.land(); return }
+    if (onboarding.done || onboarding.stage !== 'guest') { play.sending = false; if (onboarding.done) forgetDraft(); await landing.land(); landCampus(); return }
     const kept = pendingPlay()
     if (!onboarding.required || !kept) {
       play.sending = false
       // A guest who is playing (the look is confirmed, the settling-in steps are not done) is landed too: a link they kept, or a button in an e-mail, is not left waiting for them to finish.
-      if (!onboarding.required) { keepPlay(null); await landing.land() }
+      if (!onboarding.required) { keepPlay(null); await landing.land(); landCampus() }
       return
     }
     const actionId = kept.actionId ?? game.newId()
     if (!kept.actionId) keepPlay({ ...kept, actionId })
     play.sending = true
-    const result = await game.resend(actionId, 'onboarding.quick-start', { look: kept.look, ...(kept.joining ? { joining: true } : {}) })
+    const campusEntry = pendingCampusEntry() && game.cityId.value === 'lagos'
+    const result = await game.resend(actionId, 'onboarding.quick-start', { look: kept.look, ...(kept.joining ? { joining: true } : {}), ...(campusEntry ? { entry: 'unilag' as const } : {}) })
     play.sending = false
     if (result.ok && kept.joining) landing.owe()
     if (result.ok) {
@@ -359,7 +374,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
       reopenLanding('That character could not be saved. Choose again and tap Play.')
     } else if (game.connected.value) reopenLanding(result.reason || 'Your character could not be saved yet. Tap Play to try again — nothing is lost.')
     shell.enforceRequired()
-    if (!game.state.value.onboarding.required) await landing.land()
+    if (!game.state.value.onboarding.required) { await landing.land(); landCampus() }
   }
   // ---- the view after a reload ----------------------------------------------------------------------------------
   // The place is the server's. What this remembers is how the player was looking: the venue or the map (layer, picked place,
@@ -449,7 +464,7 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     starting = true
     if (fullRetry !== null) { globalThis.clearTimeout(fullRetry); fullRetry = null }
     try {
-      const ok = await connect(true, name, startCity)
+      const ok = await connect(true, name, pendingCampusEntry() ? 'lagos' : startCity)
       if (ok) fullTries = 0
       // A refused name comes back through 'needName' with the server's sentence; anything else is the connection.
       if (!ok && game.link.value !== 'new') {

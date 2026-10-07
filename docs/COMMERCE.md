@@ -87,7 +87,9 @@ Implementation is local and uncommitted. No deployment, publication, provider on
 
 Rollback is to disable the configured commerce channel and hide/disconnect Allworld listings. Provider credentials/orders remain in their owning Goalmatic workspace. Do not delete merchant records or reset game state. Prior Store packages must be checked for compatibility with newly stored Bachs order/payment fields before rolling them back.
 
-## Verification ledger
+## Original commerce-unit verification
+
+These results describe the original commerce chat before consolidation. The current combined branch, namespace compatibility checks and remaining validation limits are recorded in [the integrated preview handoff](INTEGRATED-PREVIEW.md).
 
 | Check | Result | What it proves |
 | --- | --- | --- |

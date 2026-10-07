@@ -299,7 +299,7 @@ export async function runFirstDay({ log = console.log, salt = FIRST_DAY_SALT }: 
     say('Jollof, Dodo & Chicken to completion (8s)', state, 'meal −₦550 once, Fun +10, feeling Party Jollof');
 
     // ---- goal 9: make a friend — Say Hello to Amaka, who serves at the buka ---------------------
-    assert.deepEqual(view(state).social.here.map((npc) => [npc.name, npc.role]), [['Amaka', 'Serving'], ['Baba Sege', 'Regular customer']]);
+    assert.deepEqual(view(state).social.here.map((npc) => [npc.name, npc.role]), [['Amaka', 'Serving']]); // Baba Sege has had his lunch and is not back for supper yet
     assert.deepEqual([view(state).goals.chip.title, view(state).goals.chip.hint], ['Make a new friend', 'Tap someone at a venue']);
     await ok('spot', { id: 'people' }, 'selected');
     const hello = await ok('activity', { id: 'npc-amaka-hello' }, 'started');

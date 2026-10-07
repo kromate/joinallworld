@@ -35,7 +35,6 @@ import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { lagosTime } from '../src/game/clock.ts';
 import { EVENTS } from '../src/game/content/events.ts';
-import { NPCS } from '../src/game/cities/lagos/regulars.ts';
 
 import { HELPER_COOLDOWN_SECONDS } from '../src/game/content/jobs.ts';
 import { REFERRAL, TABLE_REWARDS } from '../src/game/content/growth.ts';
@@ -257,7 +256,8 @@ export async function runNewPlayer({ log = console.log, saltPrefix = SALT_PREFIX
     say('Play Ayo under the trees → the first reward', `+₦500 +1✨ ${Math.round((must(state.onboarding.firstAt) - landedAt) / 1000)}s after landing; chilling first did not count as the goal`);
 
     // ---- 3. say hello, then settle in with a local government picked from the list ----------------------------------------
-    const regular = must(Object.values(NPCS).find((npc) => npc.venue === 'park'));
+    // Whoever the park's regulars are doing right now: some are out of the rain, or not yet up, and cannot be spoken to.
+    const regular = must(view(state).social.here[0]);
     state = await run(ada, 'people', `npc-${regular.id}-hello`);
     assert.deepEqual([state.goals.chain, view(state).goals.chip.title, view(state).goals.chip.open], [2, 'Settle in', 'onboarding']);
     await ok(ada, 'onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }, 'traits_saved');

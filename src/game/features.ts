@@ -1,17 +1,12 @@
-// Engine-level feature switches. Every switch is OFF until the host that runs the engine turns it on at startup.
-//
-//   dilemmas   work dilemmas after a shift (src/game/dilemmas.ts) and the place actions of src/game/place-actions.ts.
-//              Host: the server reads DILEMMAS=1 (server/server.ts createServer option `dilemmas`, deploy/local.ts, the Worker).
-//              Browser: `?models=dilemmas` (src/models/integration/flags.ts) fetches the kit below (startExtras) and turns the switch on, so
-//              the page lists place actions and draws the card; the life is always played by the server, whose switch is the authority.
+// The engine's seam for work dilemmas and place actions. They are on for every player: there is no switch. What there is, is the kit.
 //
 // THE KIT. The words and rules of dilemmas and place actions (about 30 kB) are not part of the engine every page downloads: they sit in
 // their own chunk (vite.config.ts, `dilemmas`) behind src/game/dilemma-pack.ts, which installs the kit when it is imported. The servers
-// import it; the browser fetches it only with `?models=dilemmas`. With no kit installed a switch that is on does nothing. What a life needs
-// to carry a dilemma (src/game/dilemma-book.ts) and this file are all the engine keeps.
-//
-// With a switch off the engine behaves exactly as before: no new state is written, no new activity exists.
-// A switch is set once, before the first life is loaded (the activity catalogue notices a flip, so a test may flip one later).
+// and the Worker import it, so every life they play has dilemmas and place actions. The browser fetches it once the game is ready
+// (src/app/startExtras.ts), never in the first download, and the page lists place actions and draws the card once it is in. An engine that
+// has no kit installed (a test of the bare engine, a page before the chunk arrives) simply has none: no state is written and no activity
+// exists. What a life needs to carry a dilemma (src/game/dilemma-book.ts) and this file are all the engine keeps.
+// The activity catalogue notices the kit arriving, so a catalogue built before it is built again.
 import type { DilemmaChoice, DilemmaDefinition, DilemmaOutcome, DilemmaStats, NpcDefinition, PlaceAction } from '../types/content.ts';
 
 /** What the lazy pack gives the engine. Every member is pure. */
@@ -29,21 +24,12 @@ export interface DilemmaKit {
   isAfterService(kind: string | null, now: number): boolean
 }
 
-const switches = { dilemmas: false };
 let kit: DilemmaKit | null = null;
-export type FeatureSwitch = keyof typeof switches;
 
-/** The kit, only while the switch is on and a kit is installed. */
-export const dilemmaKit = (): DilemmaKit | null => (switches.dilemmas ? kit : null);
-/** The kit whether or not the switch is on: for finishing what a life already started (a place action begun before the switch went off). */
-export const loadedDilemmaKit = (): DilemmaKit | null => kit;
-export const dilemmasEnabled = (): boolean => dilemmaKit() !== null;
-export const featureEnabled = (name: FeatureSwitch): boolean => (name === 'dilemmas' ? dilemmasEnabled() : switches[name]);
-export function setFeature(name: FeatureSwitch, on: boolean): void { switches[name] = on === true; }
-/** Called by src/game/dilemma-pack.ts when it loads. Does not turn the switch on. */
+/** The kit, or null while none is installed. */
+export const dilemmaKit = (): DilemmaKit | null => kit;
+export const dilemmasEnabled = (): boolean => kit !== null;
+/** Called by src/game/dilemma-pack.ts when it loads. */
 export function installDilemmaKit(next: DilemmaKit): void { kit = next; }
-
-/** Reads an on/off environment value: only `1`, `true`, `on` or `yes` (any case) turn a feature on. */
-export function flagFromEnv(value: unknown): boolean {
-  return typeof value === 'string' && ['1', 'true', 'on', 'yes'].includes(value.trim().toLowerCase());
-}
+/** Removes the kit: for a test of the bare engine only. */
+export function uninstallDilemmaKit(): void { kit = null; }

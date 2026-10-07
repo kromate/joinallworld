@@ -225,6 +225,8 @@ export default defineConfig({
     if (/\/src\/(paths\.ts$|app\/features\/paths\/[\w-]+\.ts$)/.test(id)) return 'paths'
     // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched only with `?models=dilemmas`; the engine never imports them (src/game/features.ts).
     if (/\/src\/game\/(dilemma-pack|dilemmas|place-actions)\.ts$|\/src\/game\/content\/(dilemmas|place-actions)\.ts$/.test(id)) return 'dilemmas'
+    // Regulars talking to each other (REALISM R12) are fetched after the game is ready: their words, the picker and the bubbles are one chunk, never part of the first download.
+    if (/\/src\/(game|app)\/chatter\//.test(id)) return 'chatter'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },
   },

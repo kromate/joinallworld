@@ -64,6 +64,12 @@ const answer = async (from: string, accept: boolean): Promise<void> => {
   client.refreshLife()
 }
 const unblock = (id: string): Promise<unknown> => client.perform('/api/social/unblock', { id }, 'Unblocked')
+/** A regular's offer to introduce the player to someone in this venue (only present when both have introductions on). */
+const offer = computed(() => listing.value?.introduction ?? null)
+const introduce = async (to: string, accept: boolean): Promise<void> => {
+  await client.perform('/api/social/introduction', { to, cityId: client.cityId(), answer: accept ? 'accept' : 'decline' }, accept ? 'Friend request sent' : null)
+  void client.loadPeople()
+}
 function openVenueChat(): void { shell.close(); app.community.toggle(true) }
 </script>
 
@@ -71,6 +77,11 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
   <div class="people">
     <div class="social-head"><h3>Here at {{ venue }}</h3><button type="button" class="social-btn" :disabled="!view.connected" @click="client.loadPeople()">Refresh</button></div>
     <p class="social-note">{{ summaryLine }}</p>
+    <div v-if="offer" class="social-row is-ask">
+      <PlayerAvatar :name="offer.name" :seed="offer.id" />
+      <div><strong>Make I introduce you to {{ offer.name }}?</strong><small>A regular here has seen you both around. They are a real player.</small></div>
+      <span class="social-actions"><button type="button" class="social-btn is-primary" @click="introduce(offer.id, true)">Say hello</button><button type="button" class="social-btn" @click="introduce(offer.id, false)">Not now</button></span>
+    </div>
     <div v-if="listing?.players.length || here.length" class="social-cards">
       <button v-for="player in listing?.players ?? []" :key="`p${player.id}`" type="button" class="social-card" @click="shell.open('person', { player: player.id, name: player.name })">
         <PlayerAvatar :name="player.name" :seed="player.id" status="online" /><strong>{{ player.name }}<FounderTag v-if="player.founder" /><ResidentBadge :id="player.id" /></strong><small class="is-player">Real player{{ player.friend ? ' · Friend' : '' }}</small>

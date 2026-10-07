@@ -197,7 +197,7 @@ export interface SocialLimits {
 }
 
 /** Who may add a player to a group, and whether a mention breaks through a muted group. */
-export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody'; notify: NotifyPrefs }
+export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody'; /** Regulars may offer to introduce me to a real player. Off unless switched on. */ introductions: 'on' | 'off'; notify: NotifyPrefs }
 
 /** GET /api/social/me. */
 export interface SocialOverview {
@@ -260,6 +260,11 @@ export interface PeopleListing {
   here?: number
   total?: number
   groups?: number
+  /**
+   * REALISM R13: a regular offers to introduce the caller to this player. Present only when both have introductions on, the other player
+   * stands in this venue right now (so their name is already in `players`) and a regular saw them on a visit apart from the caller's.
+   */
+  introduction?: { id: string; name: string }
 }
 
 export interface SearchResult extends PlayerRef { friend: boolean }
@@ -302,7 +307,9 @@ export interface NotifyPrefsBody { text?: boolean; groups?: 'mentions' | 'all'; 
 export interface NotifyPrefs { text: boolean; groups: 'mentions' | 'all'; pausedUntil: number | null; quietDm: boolean; quietGroups: boolean }
 export interface ReactBody { seq: number; emoji: string | null }
 export interface ConvPrefsBody { mute?: boolean; pin?: boolean; hide?: true }
-export interface ChatPrefsBody { groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody' }
+export interface ChatPrefsBody { groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody'; introductions?: 'on' | 'off' }
+/** The caller's answer to an introduction a regular offered (PeopleListing.introduction): `accept` sends the friend request. */
+export interface IntroductionBody { to: string; cityId: CityId; answer: 'accept' | 'decline' }
 export interface ReadBody { seq?: number }
 export interface GroupCreateBody { name: string; members: string[]; clientId: TimedId }
 export type GroupUpdateBody = { op: 'rename'; name: string } | { op: 'add' | 'remove'; id: string } | { op: 'leave' }
@@ -450,6 +457,8 @@ export interface SocialHttpRoutes {
   /** Phone notification settings for messages. */
   'POST /api/social/notify': { body: NotifyPrefsBody; response: Ok<Done<'saved', { notify: NotifyPrefs }>>; errors: SocialPost | 'invalid_pref' }
   'POST /api/social/prefs': { body: ChatPrefsBody; response: Ok<Done<'saved', { prefs: ChatPrefs }>>; errors: SocialPost | 'invalid_pref' }
+  /** Answer a regular's introduction. Accepted: answered like POST /api/social/friends/request. No offer standing for that player: `no_introduction`. */
+  'POST /api/social/introduction': { body: IntroductionBody; response: Ok<Done<'declined'> | FriendRequestResult | Refusal<'no_introduction'>>; errors: SocialPost | 'invalid_player' | 'invalid_city' | 'invalid_answer' }
   /** One picture in a message: the body is JSON with the picture as base64 (at most 250 kB of picture). Answered like POST /api/social/messages. */
   'POST /api/social/images': { body: PictureUploadBody; response: Ok<SendMessageResult | Refusal<PictureRefusal>>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' | 'invalid_picture' | 'body_too_large' }
   /** The picture's bytes (not JSON): members of its conversation only, `Cache-Control: private`, `nosniff`, inline. 404 for anyone else. */

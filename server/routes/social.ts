@@ -36,7 +36,8 @@
  *   POST /api/social/groups/:id          { op: 'rename' | 'add' | 'remove' | 'leave', name?, id? }
  *   GET  /api/social/friends/search?q=                friends whose name has q in it (for picking group members)
  *   POST /api/social/conversations/:id/prefs { mute?, pin?, hide? }   the caller's own mute, pin, or removal of a chat
- *   POST /api/social/prefs               { groups?, mentions?, pictures? }   who may add me to groups, mentions through mute, who may send me pictures
+ *   POST /api/social/prefs               { groups?, mentions?, pictures?, introductions? }   who may add me to groups, mentions through mute, who may send me pictures, whether regulars may offer to introduce me (off unless on)
+ *   POST /api/social/introduction        { to, cityId, answer: 'accept' | 'decline' }   answer a regular's offer to introduce me to a player in this venue; accepting sends the friend request
  *   POST /api/social/images              { to | conv, clientId, type, data (base64), body? }   a message with one picture (server/social/images.ts)
  *   GET  /api/social/images/:id                       the picture's bytes, for members of its conversation only
  *   GET  /api/social/house/:host                      a house's guest list, as seen by me
@@ -178,6 +179,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/conversations/:id/react': route((db, session, body, request) => service.react(db, session, { ...body, conv: request.params.id })),
     'POST /api/social/notify': mine((db, session, body) => service.notifyPrefs(db, session, body)),
     'POST /api/social/prefs': mine((db, session, body) => service.chatPrefs(db, session, body)),
+    'POST /api/social/introduction': mine((db, session, body) => service.introduce(db, session, body)),
     'POST /api/social/images': upload,
     'GET /api/social/images/:id': picture,
     'GET /api/social/house/:host': route((db, session, body, request) => service.house(db, session, request.params.host)),

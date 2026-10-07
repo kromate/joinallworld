@@ -25,4 +25,6 @@ export function ready(): void {
   const search = new URLSearchParams(location.search)
   const diagnostics = search.has('diagnostics')
   if (diagnostics || search.has('models') || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
+  // The regulars talk to each other (R12): its own chunk, after the scene is up.
+  void sceneShown.then(() => import('./chatter/start.ts')).then(({ startChatter }) => { startChatter() }, () => undefined)
 }

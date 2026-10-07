@@ -241,6 +241,15 @@ export interface SocialPlayerRecord {
   mentions?: 'off'
   /** Pictures: 'nobody' refuses every picture sent to this player (server/social/images.ts). Absent: friends. */
   pictures?: 'nobody'
+  /**
+   * REALISM R13: 'on' lets a regular offer to introduce this player to another real player they have seen on a separate visit
+   * (server/social/introductions.ts). Absent: off, and nothing below is kept.
+   */
+  introductions?: 'on'
+  /** Introductions on only: per venue (`cityId:venueId`) visits counted `n`, the current one `from`..`at`, and the one before it `pf`..`pt`. At most 24 venues. */
+  introVisits?: Record<string, { n: number; from: number; at: number; pf?: number; pt?: number }>
+  /** Introductions on only: players already offered or turned down (other id → at), at most 20. */
+  introTold?: Record<string, number>
   /** An operator stopped this player sending pictures. */
   noPictures?: true
   /** Pictures sent on Lagos day `day`. */

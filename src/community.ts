@@ -415,6 +415,12 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     emit()
     return line
   }
+  /** A line a game character said, for this device's feed only: nothing is sent, and `npc` gives it the NPC mark in the panel. */
+  function npcLine(author: string, body: string): void {
+    chat.push({ key: `line-${++lineCounter}`, author: String(author).slice(0, 60), body: String(body).slice(0, 300), delivery: '', canRetry: false, npc: true })
+    while (chat.length > 80) chat.shift()
+    emit()
+  }
   function retryPending(): void {
     if (!roomReady) return
     for (const [clientId, message] of pending) {
@@ -704,7 +710,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
     get state() { return snapshot() },
     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } },
     getSession() { return session ? { ...session } : null },
-    getDiagnostics, moveTo, join, walk, saveName, sendChat, retryMessage, listGroups, closeGroups, joinGroup, joinFriendGroup, clearGroupNote, joinVoice, toggleMute,
+    getDiagnostics, moveTo, join, walk, saveName, sendChat, npcLine, retryMessage, listGroups, closeGroups, joinGroup, joinFriendGroup, clearGroupNote, joinVoice, toggleMute,
     leaveVoice: () => leaveVoice(), selectDevice, playPeer, reconnect, destroy,
   }
 }

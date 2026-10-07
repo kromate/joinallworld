@@ -25,6 +25,8 @@ import type { CallRelay } from './call-relay.ts';
 import { capacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
 import { trustHeaderConfig } from './trust/config.ts';
+import { createCommerceGateway } from './commerce/goalmatic.ts';
+import type { CommerceGateway } from './commerce/types.ts';
 import { nodeStreetAssets } from './street/node-assets.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
@@ -60,6 +62,7 @@ type ServerTelemetry = ReturnType<typeof createServerTelemetry>;
 export type Connection = WebSocket & WsConnection;
 /** The options of createServer; every one has a default. */
 export interface ServerOptions {
+  commerceGateway?: CommerceGateway
   streetAssets?: RouteContext['streetAssets']
   dataDir?: string
   distDir?: string
@@ -149,7 +152,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
   try { const value: unknown = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -546,6 +549,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
     //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
     env: envReader(env),
+    commerceGateway: commerceGateway ?? createCommerceGateway({ ...env, PUBLIC_ORIGIN: givenOrigin ?? env.PUBLIC_ORIGIN }, outboundFetch(outbound)),
     streetAssets: streetAssets ?? nodeStreetAssets([join(distDir, 'assets/street'), resolve('public/assets/street')]),
     callRelay: givenRelay ?? createCallRelay({ read: (name) => { const value = env?.[name]; return typeof value === 'string' ? value : undefined; }, now, ...(outbound ? { fetchImpl: outbound } : {}) }),
     // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (host-context.js).

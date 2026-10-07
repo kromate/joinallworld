@@ -17,6 +17,7 @@ import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, Soci
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
+import type { CommerceCollection, CommerceGateway } from './commerce/types.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
 import type { BillsRecord, DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, LawsRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
@@ -719,6 +720,8 @@ export interface Database {
   growth?: GrowthCollection
   /** server/social/visit-book.ts: invitations to a home and house links. Created by the first one, so it is not in COLLECTION_NAMES. */
   visits?: VisitsCollection
+  /** Real merchant listings and encrypted external grants, independent of simulated shops. */
+  commerce?: CommerceCollection
   /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
   business?: BusinessCollection
   /** server/trust/service.ts: checked tiers and complaints. Created by the first report or check, so it is not in COLLECTION_NAMES. */
@@ -1096,6 +1099,7 @@ export interface ContextCore {
 
 /** The server context every route and ws module receives once at start-up. */
 export interface RouteContext {
+  commerceGateway?: CommerceGateway | undefined
   streetAssets?: import('./street/types.ts').StreetAssetReader
   store: Store
   /** Server time in ms — never call Date.now(). */
@@ -1168,6 +1172,7 @@ export interface RouteContext {
  * WebSocket; only the fields the server reads or adds are listed.
  */
 export interface WsConnection {
+  closed?: boolean
   streetGateProof?: import('./street/gate.ts').StreetGateProof
   /** 1 = open. */
   readyState: number

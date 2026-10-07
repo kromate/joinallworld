@@ -54,6 +54,7 @@ import { createCallRelay } from '../server/call-relay.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
 import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
 import { trustHeaderConfig } from '../server/trust/config.ts';
+import { createCommerceGateway } from '../server/commerce/goalmatic.ts';
 import { streetAssetText } from '../server/street/asset-body.ts';
 import { buildSocketHandlers } from '../server/ws/index.ts';
 import { executeCommand } from '../server/routes/core.ts';
@@ -242,6 +243,9 @@ export interface WorkerEnv {
   ASSETS: Fetcher
   BUILD_ID?: string
   PUBLIC_ORIGIN?: string
+  GOALMATIC_COMMERCE_API_URL?: string
+  GOALMATIC_STORE_URL?: string
+  COMMERCE_CHANNEL_ID?: string
   /** The admin address's host name (server/admin/host.ts); unset: `admin.` + the public host. */
   ADMIN_HOST?: string
   MODERATOR_TOKEN?: string
@@ -393,6 +397,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       checks: {},
       pages: new Map(),
       env: envReader(env),
+      commerceGateway: createCommerceGateway(env, outboundFetch((url, init) => fetch(url, init), { refuseRedirect: 'manual' })),
       streetAssets: {
         async readManifest(city, version) {
           if (!/^[a-z][a-z0-9-]{0,60}$/.test(city) || (version !== undefined && !/^street-v1-[a-z0-9_-]{1,120}$/.test(version))) return null;

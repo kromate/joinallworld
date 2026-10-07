@@ -124,6 +124,7 @@ export const KEYED_SPECS: Readonly<Record<string, readonly KeyedSpec[]>> = Objec
   growth: [{ path: ['players'], project: 'growthPlayer' }, { path: ['shares'], project: 'growthShare' }, { path: ['comeback'], project: 'growthComeback' }, { path: ['push'] }, { path: ['contacts'] }],
   civic: [{ path: ['cities', '*', 'residents'], project: 'civicResident' }, { path: ['cities', '*', 'gov', 'elections'] }],
   business: [{ path: ['shops'], project: 'businessShop' }],
+  commerce: [{ path: ['stores'] }],
   records: [{ path: ['entries'] }, { path: ['terms'] }],
   realValue: [{ path: ['listings'] }, { path: ['contacts'] }, { path: ['analytics'] }],
   trustChecks: [{ path: ['checks'] }],

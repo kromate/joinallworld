@@ -82,6 +82,7 @@ function useDirectory(): LgaDirectory {
     </div>
     <LgaCard v-if="!yours" :heading="estate.placed ? 'Move here?' : 'Live here?'" compact @chosen="page.items = null" />
     <SectionTitle>Residents</SectionTitle>
+    <button class="ui-button is-block" type="button" @click="shell.open('commerce', { lga: id })">Explore shops in {{ unit.name }}</button>
     <form class="ui-stack is-tight" @submit.prevent="submitSearch">
       <div class="ui-search">
         <input name="q" type="search" maxlength="24" :value="page.q" autocomplete="off" aria-label="Search residents by name" placeholder="Search by name">

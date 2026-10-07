@@ -6,10 +6,18 @@
 //
 // The microphone: the Join voice button is the only control that can start it (a user gesture), and
 // the controller starts the stream muted. Nothing in this file asks for media.
-import { computed, nextTick, ref, watch } from 'vue'
+//
+// Links: the server lets an allow-listed link through only from a checked stall owner in their own venue
+// (server/trust/service.ts). Such a link is drawn as a button, never an <a>: it opens the lazy "You are leaving
+// Allworld" sheet (features/trust/LinkInterstitial.vue), which shows who sent it before anything opens.
+import { computed, defineAsyncComponent, nextTick, ref, watch } from 'vue'
 import type { CommunityStore } from './communityStore.ts'
 import NpcBadge from '../../ui/NpcBadge.vue'
+import { lineParts } from '../../../game/trust/links.ts'
+import type { OutboundLink } from '../../../game/trust/links.ts'
+import type { ChatLine } from '../../../types/community.ts'
 import '../../../community.css'
+const LinkInterstitial = defineAsyncComponent(() => import('../trust/LinkInterstitial.vue'))
 
 const props = defineProps<{ store: Pick<CommunityStore, 'state' | 'controller'> }>()
 const s = computed(() => props.store.state.value)
@@ -17,6 +25,9 @@ const control = () => props.store.controller()
 const nickname = ref('')
 const draft = ref('')
 const messages = ref<HTMLElement | null>(null)
+const leaving = ref<{ link: OutboundLink; line: ChatLine } | null>(null)
+const linkOpened = ref(false)
+function openLink(link: OutboundLink, line: ChatLine): void { linkOpened.value = true; leaving.value = { link, line } }
 
 async function saveName(): Promise<void> { await control()?.saveName(nickname.value) }
 function send(): void { if (control()?.sendChat(draft.value)) draft.value = '' }
@@ -113,7 +124,7 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
         <ol ref="messages" class="community-messages" aria-label="Room messages" aria-live="polite" aria-relevant="additions">
           <li v-for="line in s.chat" :key="line.key" :class="{ 'is-npc': line.npc }" :data-npc-line="line.npc ? '' : undefined">
             <div><strong><NpcBadge v-if="line.npc" lead />{{ line.author }}</strong><small v-if="line.delivery">{{ line.delivery }}</small></div>
-            <p>{{ line.body }}</p>
+            <p><template v-for="(part, i) in lineParts(line.body)" :key="i"><button v-if="part.link" type="button" class="community-link" data-community-link @click="openLink(part.link, line)">{{ part.text }}</button><template v-else>{{ part.text }}</template></template></p>
             <button v-if="line.canRetry" type="button" data-community-retry-message @click="control()?.retryMessage(line.key)">Retry message</button>
           </li>
         </ol>
@@ -129,10 +140,14 @@ watch(() => s.value?.chat.length ?? 0, async () => { await nextTick(); if (messa
 
     <div class="community-feedback" role="status">{{ s.feedback }}</div>
     <button v-if="s.canReconnect" class="community-retry" type="button" @click="control()?.reconnect()">Reconnect</button>
+    <LinkInterstitial v-if="linkOpened" :link="leaving?.link ?? null" :author-id="leaving?.line.authorId" :author-name="leaving?.line.author ?? ''" @close="leaving = null" />
   </section>
 </template>
 
 <style scoped>
 /* A game character's line: tinted, with a dashed rule down its left edge, besides the NPC badge before its name. A real player's line is plain. */
 .community-messages li.is-npc { background: var(--c-fill, #eef1ef); border-left: 3px dashed var(--c-faint, #6b737c); padding-left: 10px; }
+/* A shared link: underlined like a link, but a button, so it can only open the "leaving Allworld" sheet. */
+.community-link { all: unset; cursor: pointer; text-decoration: underline; color: var(--c-link, #0b5cad); overflow-wrap: anywhere; }
+.community-link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 </style>

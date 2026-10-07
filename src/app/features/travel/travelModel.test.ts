@@ -14,7 +14,7 @@ import {
   layoutKey, matchesFilter, needsLine, overviewLine, paidText, pickedMode, rideRows, rideRules, ridePlaces, signed, statusClass, tripInfo, tripLine, venueLink,
 } from './travelModel.ts'
 
-const mode = (extra: Partial<TravelModeCard> = {}): TravelModeCard => ({ id: 'danfo', label: 'Danfo', icon: '🚌', blurb: 'Cheap and slow', fuel: false, fare: 150, seconds: 8, needs: {}, xp: {}, blocked: null, ...extra })
+const mode = (extra: Partial<TravelModeCard> = {}): TravelModeCard => ({ id: 'danfo', label: 'Danfo', icon: '🚌', blurb: 'Cheap and slow', fuel: false, fare: 150, seconds: 8, slow: false, needs: {}, xp: {}, blocked: null, ...extra })
 const place = (extra: Partial<TravelDestination> = {}): TravelDestination => ({
   id: 'park', kind: 'venue', label: 'Freedom Park', district: 'Lagos Island', icon: '🌳', description: '', category: 'fun', x: 1, y: 1, zone: 'island', here: false, visited: false,
   open: true, hours: 'Open 24 hours', status: 'Open', band: null, ambient: '', preview: [], blocked: null, modes: [mode()], ...extra,

@@ -83,6 +83,7 @@ import { arrive, canAfford, credit, debit, changeNeeds, addSkillXp, addMoodlet, 
 import { lgaOf } from '../content/world.ts';
 import { COMING_SOON, DEFAULT_HOME, GIG_DAILY_LIMIT, venueLabel, venueDistrict } from '../content/venues.ts';
 import { lagosTime } from '../clock.ts';
+import { slowedSeconds } from '../conditions/rush.ts';
 import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_TIME, BAND_LABELS, NEAR_DISTANCE, MIN_TRIP_SECONDS, MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS, TRAVEL_DURATION } from '../content/travel.ts';
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';
@@ -97,7 +98,7 @@ const MAX_COLD_COOLDOWN_MS = 86_400_000;
 const MAX_TRIP_FARE = 1_000_000;
 
 /** Fare, trip time and need cost of one quoted trip. */
-interface TripQuote { mode: TravelModeId; band: RouteBand; fare: number; seconds: number; needs: NeedMap; xp: SkillMap }
+interface TripQuote { mode: TravelModeId; band: RouteBand; fare: number; seconds: number; /** The road is in a go-slow and this trip is longer for it. */ slow: boolean; needs: NeedMap; xp: SkillMap }
 
 // ---- places and routes ------------------------------------------------------------------
 
@@ -174,9 +175,11 @@ export function quote(state: LifeState, destination: VenueId, modeId: TravelMode
   const baseFare = waterRoute?.fare ?? (contentFor(state.estate.city).localModes ? mode.fare : fareBands[band]?.[modeId] ?? mode.fare);
   const fare = Math.max(0, Math.round(Number(modify(state, 'travel.fare', baseFare, data, ctx)) || 0));
   const baseSeconds = waterRoute?.seconds ?? Math.round(mode.seconds * BAND_TIME[band]);
-  const seconds = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, Math.min(MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS));
+  const open = clamp(Math.round(Number(modify(state, 'travel.duration', baseSeconds, data, ctx)) || baseSeconds), MIN_TRIP_SECONDS, Math.min(MAX_TRIP_SECONDS, LOCAL_TRIP_CAP_SECONDS));
+  // In the go-slow (conditions/rush.ts) a trip by road is longer than the cap above allows an open road; walking and the boat keep their time.
+  const seconds = Math.min(MAX_TRIP_SECONDS, Math.round(slowedSeconds(open, modeId, state.estate.city, ctx.now)));
   const needs = cleanNeeds(modify(state, 'travel.needCost', { ...mode.needs }, data, ctx), { ...mode.needs });
-  return { mode: modeId, band, fare, seconds, needs, xp: mode.xp || {} };
+  return { mode: modeId, band, fare, seconds, slow: seconds > open, needs, xp: mode.xp || {} };
 }
 
 /** Mode ids offered for a trip. Trek is always first, so there is always a free way to go. */
@@ -418,7 +421,7 @@ function modeCard(state: LifeState, destination: VenueId, modeId: TravelModeId, 
   const mode = modeFor(state.estate.city, modeId);
   const trip = quote(state, destination, modeId, ctx);
   const blocked = base || (!canAfford(state, trip.fare) ? travelBlock(state, destination, modeId, ctx) : null);
-  return { id: modeId, label: mode.label, icon: mode.icon, blurb: mode.blurb, fuel: Boolean(mode.fuel), fare: trip.fare, seconds: trip.seconds, needs: trip.needs, xp: trip.xp, blocked };
+  return { id: modeId, label: mode.label, icon: mode.icon, blurb: mode.blurb, fuel: Boolean(mode.fuel), fare: trip.fare, seconds: trip.seconds, slow: trip.slow, needs: trip.needs, xp: trip.xp, blocked };
 }
 
 function destinationCard(state: LifeState, venue: VenueDefinition, ctx: LifeContext): TravelDestination {

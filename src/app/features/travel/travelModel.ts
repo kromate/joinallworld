@@ -36,8 +36,8 @@ export const needsLine = (needs: Readonly<Record<string, number | undefined>> | 
 export const fareText = (mode: { fare?: number | null }): string => (mode.fare ? money(mode.fare) : 'Free')
 
 /** One-line summary of a trip: "Danfo · about 8s · −2 Hygiene, −2 Fun". */
-export function tripLine(mode: Pick<TravelModeCard, 'label' | 'seconds' | 'needs'> & Partial<Pick<TravelModeCard, 'xp' | 'fuel'>>): string {
-  const parts = [mode.label, `about ${mode.seconds}s`]
+export function tripLine(mode: Pick<TravelModeCard, 'label' | 'seconds' | 'needs'> & Partial<Pick<TravelModeCard, 'xp' | 'fuel' | 'slow'>>): string {
+  const parts = [mode.label, `about ${mode.seconds}s${mode.slow ? ' (go-slow)' : ''}`]
   const costs = needsLine(mode.needs)
   if (costs) parts.push(costs)
   for (const [skill, amount] of Object.entries(mode.xp ?? {})) parts.push(`+${amount} ${cap(skill)} XP`)

@@ -297,6 +297,8 @@ export interface TravelModeCard {
   /** Naira for this trip, after every modifier. */
   fare: number
   seconds: number
+  /** The road is in a go-slow, so `seconds` is longer than on an open road. */
+  slow: boolean
   /** Need deltas applied on arrival. */
   needs: NeedMap
   xp: SkillMap

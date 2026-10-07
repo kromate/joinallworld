@@ -25,7 +25,8 @@ function whereabouts(npc: Parameters<typeof where>[0], now: number, city: string
   const known = answers.get(key)
   if (known) return known
   const presence = where(npc, at, city, sky)
-  const answer: Whereabouts = { here: presence.here, line: presence.why === 'always' ? '' : whereLine(presence, venueFor(city, npc.venue)?.label ?? 'here', nextChange(npc, at, city, sky), at) }
+  const line = presence.why === 'always' ? '' : whereLine(presence, venueFor(city, npc.venue)?.label ?? 'here', nextChange(npc, at, city, sky), at)
+  const answer: Whereabouts = { here: presence.here, line, away: { id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, where: line }, refusal: `${npc.name} is not here right now. ${line}.` }
   if (answers.size > 4000) answers.clear()
   answers.set(key, answer)
   return answer

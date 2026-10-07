@@ -184,6 +184,7 @@ test('the venue view lists who is in and who is away, and an absent regular cann
   const view = viewLife(weekday, ctx(monday)).social
   const found = view.here.find((npc) => npc.id === 'mama-ronke')
   assert.ok(found, 'the zobo seller is selling on Monday')
-  assert.match(found.where, /^At /)
+  assert.equal(morning.away.some((npc) => npc.id === 'mama-ronke'), true)
+  assert.equal(view.away.some((npc) => npc.id === 'mama-ronke'), false, 'on Monday she is selling, not away')
   assert.equal(dispatch(weekday, { type: 'activity', payload: { id: 'npc-mama-ronke-hello' } }, ctx(monday)).ok, true)
 })

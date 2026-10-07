@@ -85,6 +85,8 @@ export interface WorldAdapterOptions {
 
 export function createWorldAdapter(container: HTMLElement, { location = 'park', commitSpot, now, onHost, onScenes, onError, loadCampus = () => import('./host.ts'), loadScenes = loadCityScenes, scenesReady = cityScenesReady, lazy, ...options }: WorldAdapterOptions = {}) {
   let currentLocation = location;
+  // Where the regulars are (their daily routines): a chunk of its own, fetched with the scene and not with the first page. Until it lands every regular of a venue is listed, as before.
+  void import('../../game/routines/pack.ts').then(undefined, () => undefined);
   let host: WorldHost | null = null, kind: HostKind | null = null, token = 0, disposed = false;
   let state: AdapterState | null = null, player: HostPlayer | null = null, crowd: HostPerson[] = [], insets: Insets | null = null, goal: unknown = null;
 

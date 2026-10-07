@@ -23,8 +23,8 @@ const rel = computed(() => view.value.social.relationships.find((item) => item.i
 const local = computed(() => regularFor(view.value.cityId, props.id) ?? null)
 const base = computed(() => local.value ?? (rel.value?.npc ? rel.value : null))
 const here = computed(() => view.value.social.here.find((npc) => npc.id === props.id) ?? null)
-/** Where this regular is now: from the venue's list, or from the relationship; empty before the routines are loaded. */
-const whereNow = computed(() => here.value?.where || view.value.social.away.find((npc) => npc.id === props.id)?.where || rel.value?.where || '')
+/** Where this regular is now: from the venue's away list, or from the relationship; empty before the routines are loaded. */
+const whereNow = computed(() => view.value.social.away.find((npc) => npc.id === props.id)?.where || rel.value?.where || '')
 const why = computed(() => {
   if (!base.value) return null
   if (!local.value) {

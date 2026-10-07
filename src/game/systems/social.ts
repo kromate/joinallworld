@@ -414,7 +414,6 @@ function npcSummary(state: LifeState, npc: NpcDefinition, day: number, ctx: Life
   return {
     id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, npc: true, beta: Boolean(npc.beta), at: npc.at ?? null,
     quote: npc.quotes[(day + npc.id.length) % npc.quotes.length] ?? '', // the index is in range
-    where: whereabouts(npc, nowOf(state, ctx), ctx.cityId)?.line ?? '',
     points, tier: tierAt(index).id, tierLabel: tierAt(index).label, next: next ? { label: next.label, min: next.min } : null, left,
     blocked: left ? null : `${npc.name} has heard enough from you today. Come back tomorrow.`,
     actions: [
@@ -539,7 +538,7 @@ export default {
       if (value || !def?.social) return value;
       const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc);
       const present = whereabouts(npc, nowOf(state, ctx), ctx.cityId);
-      if (present && !present.here) return { code: 'not_now', reason: `${npc.name} is not here right now. ${present.line}.` };
+      if (!present.here) return { code: 'not_now', reason: present.refusal };
       if (usedToday(state.social.rel[npc.id], dayOf(state, ctx)) >= DAILY_INTERACTIONS) {
         return { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` };
       }
@@ -559,21 +558,21 @@ export default {
   },
 
   view(state, ctx) {
-    const day = dayOf(state, ctx), now = nowOf(state, ctx), book = state.social, L = TRANSFER_LIMITS;
+    const day = dayOf(state, ctx), book = state.social, L = TRANSFER_LIMITS, there = (npc: NpcDefinition) => whereabouts(npc, nowOf(state, ctx), ctx.cityId);
     const relationships = Object.entries(book.rel).map(([id, rel]) => {
       const index = tierIndex(rel.p), isBae = book.bae === id, next = TIERS[index + 1] || null;
       const snapshot = rel.npcSnapshot, loaded = snapshot ? snapshotRegular(id, snapshot) : undefined, npc = rel.npc ? loaded ?? (snapshot ? undefined : knownRegular(id)) : undefined;
       return { id, npc: rel.npc, name: rel.npc ? npc?.name ?? snapshot?.name ?? 'Regular' : rel.name || 'Player', emoji: rel.npc ? npc?.emoji ?? snapshot?.emoji ?? '🧑🏾' : '🧑🏾', role: rel.npc ? npc?.role ?? snapshot?.role ?? 'Regular' : 'Real player',
         points: rel.p, tier: isBae ? BAE_TIER.id : tierAt(index).id, tierLabel: isBae ? BAE_TIER.label : tierAt(index).label, next: next ? { label: next.label, min: next.min } : null,
         friend: rel.npc ? index >= FRIEND_INDEX : rel.friend === true, left: Math.max(0, DAILY_INTERACTIONS - usedToday(rel, day)),
-        where: npc ? whereabouts(npc, now, ctx.cityId)?.line ?? '' : '' };
+        where: npc ? there(npc).line : '' };
     }).sort((a, b) => b.points - a.points || a.name.localeCompare(b.name));
     const today = book.transfer.day === day ? book.transfer : { sent: 0, count: 0 };
-    const cast = regularsFor(ctx.cityId).filter((npc) => npc.venue === state.location).map((npc) => [npc, whereabouts(npc, now, ctx.cityId)] as const);
+    const cast = regularsFor(ctx.cityId).filter((npc) => npc.venue === state.location);
     return {
       tiers: TIERS, maxCloseness: MAX_CLOSENESS, baeUnlock: BAE_UNLOCK, bae: book.bae, dailyInteractions: DAILY_INTERACTIONS,
-      here: cast.filter(([, where]) => where?.here !== false).map(([npc]) => npcSummary(state, npc, day, ctx)),
-      away: cast.flatMap(([npc, where]) => where?.here === false ? [{ id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, where: where.line }] : []),
+      here: cast.filter((npc) => there(npc).here).map((npc) => npcSummary(state, npc, day, ctx)),
+      away: cast.flatMap((npc) => there(npc).here ? [] : [there(npc).away]),
       relationships,
       friends: relationships.filter((rel) => rel.friend),
       paddyCount: relationships.filter((rel) => rel.points >= BAE_UNLOCK).length,

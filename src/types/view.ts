@@ -916,8 +916,6 @@ export interface NpcSummary {
   /** Interactions left today. */
   left: number
   blocked: string | null
-  /** Where the regular is, in one line ("At Balogun Market till 6PM"); empty before the routines are loaded. */
-  where: string
   actions: NpcActionCard[]
 }
 

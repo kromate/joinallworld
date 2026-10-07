@@ -3,7 +3,7 @@
  * it is tested on its own (tint.test.ts) and the body material (skinned.ts) only turns its numbers into uniforms.
  *
  * THE MAPPING (docs/ASSETS.md has the table)
- *   body          'woman' → female.glb, 'man' → male.glb
+ *   body          'woman' → base-body-female.glb, 'man' → base-body-male.glb
  *   skin          the texture's skin texels are multiplied by  look.skin / skinRef  (both linear RGB), so the painted
  *                 shading, lips, eyes and brows stay and only the tone moves. skinRef is the texture's own mean skin
  *                 colour, measured by the pipeline (manifest.ts).
@@ -14,6 +14,9 @@
  *   not mapped    hairstyle, outfit cut, fabric pattern, face, expression, accessories: the body has one hair cap and
  *                 one silhouette. The procedural avatar keeps all of them.
  * Colours are hex in the look and leave here as linear RGB, the space the shader works in.
+ *
+ * OLD SAVES go through normalizeLook like every look: legacy keys (gender, skinTone, hairstyle), named or numbered
+ * swatches, missing fields (the seed's) and junk (the seed's, never a throw) all give a body and five colours.
  */
 import { normalizeLook } from '../characters.ts';
 import { BODY_MANIFEST } from './manifest.ts';

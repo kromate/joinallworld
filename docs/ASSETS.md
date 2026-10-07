@@ -117,6 +117,8 @@ The mapping lives in `src/scene/body/tint.ts` and is tested in `tint.test.ts`.
 | (none) | Shoes: fixed dark leather, `#2e2622` |
 | hairstyle, outfit cut, fabric, face, expression, accessories | Not mapped. The body has one hair cap and one silhouette. The procedural avatar keeps all of these. |
 
+Old saves load the same way as new ones, through `normalizeLook`. The legacy keys `gender` and `skinTone` are read when `body` and `skin` are absent. Named (`skin1`…`skin7`) and numbered swatches read as their colours. A missing or unreadable field takes the player's seeded value, so no saved look fails to draw.
+
 Clothing regions come from bone weights, so the boundaries fall at joints. For example, a top ends at the elbow and the forearms are skin.
 
 ### Budgets and measured sizes

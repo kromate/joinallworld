@@ -13,7 +13,7 @@ import { emit } from '../registry.ts'
 import { cleanText, fail, ok } from '../util.ts'
 import { lagosTime } from '../clock.ts'
 import type { SystemDefinition } from '../../types/registry.ts'
-import type { LedgerDay, LedgerLine, LifeContext, LifeState } from '../../types/life.ts'
+import type { LedgerDay, LedgerLine, LifeContext, LifeState, MoneyEffect } from '../../types/life.ts'
 
 export const STARTING_CASH = 5000 // original beta value
 /** Full lines kept (original beta value; was 30). */
@@ -34,44 +34,12 @@ export type WalletState = LifeState
 /** What a wallet function needs from the engine context: the time of the change. */
 export interface WalletContext {
   now?: number
-}
-export interface StatementDay {
-  day: number
-  open: number
-  close: number
-  in: number
-  out: number
-  changes: number
-  groups: { group: string; net: number; count: number }[]
-}
-export interface StatementTotals {
-  in: number
-  out: number
-  changes: number
-  net: number
-}
-export interface Statement {
-  closing: number
-  /** Where the kept history starts. `day` is null when no daily summary is kept (only lines, or nothing). */
-  opening: { balance: number; day: number | null }
-  days: StatementDay[]
-  lines: LedgerLine[]
-  /** The balance before the oldest kept line. */
-  linesOpening: number
-  totals: StatementTotals
-  /** True when opening balance plus every kept change equals the closing balance at both levels. */
-  reconciled: boolean
-  /** What does not add up. Always empty for a life the engine built. */
-  problems: string[]
-  kept: { lines: number; days: number }
+  money?: (effect: MoneyEffect) => void
 }
 export interface WalletView {
   cash: number
   /** Newest first. */
   ledger: LedgerLine[]
-  /** Newest first. */
-  days: StatementDay[]
-  statement: Pick<Statement, 'opening' | 'closing' | 'totals' | 'reconciled' | 'problems' | 'kept' | 'linesOpening'>
 }
 
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
@@ -132,6 +100,7 @@ function record(state: WalletState, amount: number, reason: string, ctx?: Wallet
   state.ledger.push(line)
   if (state.ledger.length > LEDGER_LIMIT) state.ledger.splice(0, state.ledger.length - LEDGER_LIMIT)
   addToDay(state, line.at, amount, line.balance, line.reason)
+  ctx?.money?.({ at: line.at, amount: line.amount, balanceAfter: line.balance, reason: line.reason })
   // `ctx` is the engine's context at runtime and absent only in unit tests; WalletContext names just the part the wallet reads.
   emit(state, 'wallet.changed', { amount, reason, balance: state.cash }, ctx as LifeContext)
 }
@@ -175,40 +144,6 @@ export function debit(state: WalletState, amount: number, reason: string, ctx?: 
   clampFree(state)
   record(state, -taken, reason, ctx)
   return partial ? taken : true
-}
-
-/**
- * The statement: where the balance started within the kept history, every kept change, and
- * where it stands — with the arithmetic checked.
- */
-export function statementOf(state: WalletState): Statement {
-  const lines = state.ledger.map((line) => ({ ...line }))
-  const days: StatementDay[] = state.ledgerDays.map((day) => ({ day: day.day, open: day.open, close: day.close, in: day.in, out: day.out, changes: day.n,
-    groups: Object.entries(day.by).map(([group, [net, count]]) => ({ group, net, count })).sort((a, b) => Math.abs(b.net) - Math.abs(a.net) || (a.group < b.group ? -1 : 1)) }))
-  const problems: string[] = []
-  const first = lines[0], lastLine = lines.at(-1)
-  const linesOpening = first ? first.balance - first.amount : state.cash
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i], before = lines[i - 1]
-    if (line && before && line.balance - line.amount !== before.balance) problems.push(`Line ${i + 1} does not follow from the line before it.`)
-  }
-  if (lastLine && lastLine.balance !== state.cash) problems.push('The last recorded change does not end at the current balance.')
-  for (let i = 0; i < days.length; i++) {
-    const day = days[i], before = days[i - 1]
-    if (!day) continue
-    if (day.open + day.in - day.out !== day.close) problems.push(`Day ${day.day} does not add up.`)
-    if (before && day.open !== before.close) problems.push(`Day ${day.day} does not open where the day before closed.`)
-  }
-  const firstDay = days[0], lastDay = days.at(-1)
-  if (lastDay && lastDay.close !== state.cash) problems.push('The last day does not close at the current balance.')
-  const opening = firstDay ? { balance: firstDay.open, day: firstDay.day } : { balance: linesOpening, day: null }
-  const sums = firstDay
-    ? { in: days.reduce((sum, day) => sum + day.in, 0), out: days.reduce((sum, day) => sum + day.out, 0), changes: days.reduce((sum, day) => sum + day.changes, 0) }
-    : { in: lines.filter((line) => line.amount > 0).reduce((sum, line) => sum + line.amount, 0), out: -lines.filter((line) => line.amount < 0).reduce((sum, line) => sum + line.amount, 0), changes: lines.length }
-  const totals: StatementTotals = { ...sums, net: sums.in - sums.out }
-  if (opening.balance + totals.net !== state.cash) problems.push('Opening balance plus every change does not equal the closing balance.')
-  return { closing: state.cash, opening, days, lines, linesOpening, totals, reconciled: problems.length === 0, problems,
-    kept: { lines: LEDGER_LIMIT, days: LEDGER_DAYS } }
 }
 
 function sanitizeDays(saved: unknown): LedgerDay[] | null {
@@ -310,9 +245,7 @@ export default {
     }
   },
   view(state: WalletState): WalletView {
-    const statement = statementOf(state)
-    return { cash: state.cash, ledger: state.ledger.slice().reverse(), days: statement.days.slice().reverse(),
-      statement: { opening: statement.opening, closing: statement.closing, totals: statement.totals, reconciled: statement.reconciled, problems: statement.problems, kept: statement.kept, linesOpening: statement.linesOpening } }
+    return { cash: state.cash, ledger: state.ledger.slice().reverse() }
   },
   ...play,
 } satisfies SystemDefinition<'wallet'>;

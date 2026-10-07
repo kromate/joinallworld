@@ -7,9 +7,10 @@ import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { hudNotice } from './hudModel.ts'
 
-const { game, menu, startLife } = useApp()
-const notice = computed(() => hudNotice(game.view.value))
-const run = (action: 'new-life' | 'reconnect'): void => { if (action === 'new-life') startLife(null); else menu('reconnect') }
+const { game, shell, menu, startLife } = useApp()
+const notice = computed(() => game.pendingAction.value && game.view.value.connected ? { title: 'Check your last action',
+  text: 'The server answer was lost. Retry sends the exact same action ID, so it cannot be applied twice.', actions: [{ label: 'Retry the same action', run: 'retry-action' as const, primary: true }], storage: false } : hudNotice(game.view.value))
+const run = (action: 'new-life' | 'reconnect' | 'retry-action' | 'support'): void => { if (action === 'new-life') startLife(null); else if (action === 'retry-action') void game.retryPendingAction(); else if (action === 'support') shell.open('support', { category: 'money' }); else menu('reconnect') }
 </script>
 
 <template>

@@ -374,7 +374,7 @@ const played = PLAYS ? {
     for (const [item, count] of Object.entries(def.produces || {})) addItem(state, item, count);
     for (const moodlet of def.moodlets || []) addMoodlet(state, moodlet, ctx);
     state.message = paid ? `${def.label} completed. You earned ${naira(reward)}.` : `${def.label} completed.`;
-    emit(state, 'activity.completed', { id: def.id, def, tags: def.tags || [], choice: action.choice ?? null }, ctx);
+    emit(state, 'activity.completed', { id: def.id, def, tags: def.tags || [], choice: action.choice ?? null, cash: paid ? reward : 0 }, ctx);
   },
   cancel(state: LifeState, action: ActivityAction, ctx: LifeContext) {
     const def = runningDef(action, ctx.cityId);

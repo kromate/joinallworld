@@ -14,7 +14,7 @@ import type { LifeState } from './types/life.ts';
 import type { OwnSession } from './types/protocol.ts';
 
 /** What the tests read of a request body the client sent. */
-interface SentBody { actionId?: string; payload?: unknown }
+interface SentBody { actionId?: string; cityId?: string; type?: string; payload?: unknown }
 /** [method, path, parsed request body] of one fake request. */
 type Call = [string, string, SentBody | undefined]
 /** A fake fetch answer: only what the client reads. */
@@ -67,6 +67,219 @@ test('online commands carry a server-time action ID and a payload, and only serv
   assert.equal(h.client.state.cash, 4600);
   assert.equal(JSON.parse(h.memory.get(STORAGE_KEY)).state.cash, 4600, 'cache mirrors the server state');
 });
+
+test('a fresh visitor stays preview-only until its first authoritative life is accepted', async () => {
+  const h=harness();assert.equal(h.client.snapshotPhase,'preview');await h.client.connect();assert.equal(h.client.snapshotPhase,'available')
+  const saved=JSON.parse(h.memory.get(STORAGE_KEY));assert.equal(saved.ownerId,'public-1');assert.equal(saved.state.cash,5000)
+})
+
+test('a different confirmed identity cannot inherit a cached name, balance or scene when its wallet is quarantined', async () => {
+  const old=createLife({name:'Ada',cash:4600,location:'library'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>path==='/api/session'
+    ?json(200,{session:{id:'public-b',name:'Bola',cities:['lagos']},serverTime:1000}):json(409,{error:'economy_unavailable',reason:'Wallet recovery required.'})})
+  assert.equal(client.snapshotPhase,'unconfirmed');assert.equal(await client.connect(),false)
+  assert.deepEqual([client.session?.id,client.link,client.snapshotPhase,client.online],['public-b','recovery','unavailable',false])
+  const saved=JSON.parse(String(memory.get(STORAGE_KEY)));assert.equal('state'in saved,false);assert.equal('ownerId'in saved,false)
+})
+
+test('a confirmed same-owner cache remains last-known during wallet recovery', async () => {
+  const old=createLife({name:'Ada',cash:4600,location:'library'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>path==='/api/session'
+    ?json(200,{session:{id:'public-a',name:'Ada',cities:['lagos']},serverTime:1000}):json(409,{error:'economy_unavailable',reason:'Wallet recovery required.'})})
+  assert.equal(await client.connect(),false);assert.deepEqual([client.snapshotPhase,client.state.cash,client.state.location,client.link],['available',4600,'library','recovery'])
+})
+
+test('a mismatched cache becomes available only with the new identity authoritative life', async () => {
+  const old=createLife({name:'Ada',cash:4600,location:'library'}),next=createLife({name:'Bola',cash:7200,location:'park'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>path==='/api/session'
+    ?json(200,{session:{id:'public-b',name:'Bola',cities:['lagos']},serverTime:1000}):json(200,{state:next,rev:7,serverTime:1000})})
+  assert.equal(await client.connect(),true);assert.deepEqual([client.snapshotPhase,client.session?.id,client.state.name,client.state.cash,client.state.location],['available','public-b','Bola',7200,'park'])
+})
+
+test('a late saved-campus hydration cannot restore a cache after identity mismatch', async () => {
+  const old=createLife({name:'Ada',cash:4600,location:'library'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
+  let release:()=>void=()=>{},calls=0;const waiting=new Promise<void>(done=>{release=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},loadCampus:()=>calls++===0?waiting:null,fetch:async path=>path==='/api/session'
+    ?json(200,{session:{id:'public-b',name:'Bola',cities:['lagos']},serverTime:1000}):json(409,{error:'economy_unavailable'})})
+  await client.connect();const before=client.state.cash;release();await Promise.resolve();assert.equal(client.snapshotPhase,'unavailable');assert.equal(client.state.cash,before);assert.notEqual(client.state.cash,4600)
+})
+
+test('same-owner deferred campus cache stays masked until hydration after life recovery fails', async () => {
+  const old=createLife({name:'Ada',cash:4600}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
+  let release:()=>void=()=>{},calls=0;const waiting=new Promise<void>(done=>{release=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},loadCampus:()=>calls++===0?waiting:null,fetch:async path=>path==='/api/session'
+    ?json(200,{session:{id:'public-a',name:'Ada',cities:['lagos']},serverTime:1000}):json(409,{error:'economy_unavailable'})})
+  assert.equal(await client.connect(),false);assert.equal(client.snapshotPhase,'unconfirmed');assert.notEqual(client.state.cash,4600)
+  release();await Promise.resolve();assert.deepEqual([client.snapshotPhase,client.state.cash],['available',4600])
+})
+
+test('an older overlapping connect cannot replace the newer accepted session or snapshot', async () => {
+  const a=createLife({name:'Ada',cash:4600}),b=createLife({name:'Bola',cash:8000});let sessions=0,release:(value:ReturnType<typeof json>)=>void=()=>{}
+  const delayed=new Promise<ReturnType<typeof json>>(done=>{release=done}),client=createClient({storage:{getItem:()=>null,setItem(){}},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return sessions++===0?delayed:json(200,{session:{id:'public-b',name:'Bola',cities:['lagos']},serverTime:1000})
+    return json(200,{state:b,rev:2,serverTime:1000})
+  }})
+  const older=client.connect(),newer=client.connect();assert.equal(await newer,true);release(json(200,{session:{id:'public-a',name:'Ada',cities:['lagos']},serverTime:1000}));assert.equal(await older,false)
+  assert.deepEqual([client.session?.id,client.state.name,client.state.cash,client.snapshotPhase],['public-b','Bola',8000,'available']);assert.notEqual(client.state.cash,a.cash)
+})
+
+test('a late refresh from the previous identity cannot claim the replacement recovery session', async () => {
+  const a=createLife({name:'Ada',cash:4600}),b=createLife({name:'Bola',cash:9000});let sessionCalls=0,lifeCalls=0,release:(value:ReturnType<typeof json>)=>void=()=>{},started:()=>void=()=>{}
+  const delayed=new Promise<ReturnType<typeof json>>(done=>{release=done}),refreshStarted=new Promise<void>(done=>{started=done}),client=createClient({storage:{getItem:()=>null,setItem(){}},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:sessionCalls++===0?{id:'public-a',name:'Ada',cities:['lagos']}:{id:'public-b',name:'Bola',cities:['lagos']},serverTime:1000})
+    lifeCalls+=1;if(lifeCalls===1)return json(200,{state:a,rev:1,serverTime:1000});if(lifeCalls===2){started();return delayed}return json(409,{error:'economy_unavailable'})
+  }})
+  assert.equal(await client.connect(),true);const oldRefresh=client.refresh();await refreshStarted;assert.equal(await client.connect(),false);assert.deepEqual([client.session?.id,client.snapshotPhase,client.link],['public-b','unavailable','recovery'])
+  release(json(200,{state:{...a,cash:5000},rev:2,serverTime:1000}));assert.equal(await oldRefresh,false);assert.deepEqual([client.session?.id,client.snapshotPhase,client.link,client.state.cash],['public-b','unavailable','recovery',4600]);assert.notEqual(client.state.cash,b.cash)
+})
+
+test('an uncertain action survives reload and an exact retry cannot overwrite a newer accepted revision', async () => {
+  const memory=new Map<string,string>(),storage={getItem:(key:string)=>memory.get(key)??null,setItem:(key:string,value:string)=>memory.set(key,value)},timers={setTimeout:()=>0,clearTimeout:()=>{}}
+  let life=createLife({name:'Ada'}),firstBody:SentBody|null=null
+  const first=createClient({storage,...timers,now:()=>1000,randomUUID:()=> '11111111-1111-4111-8111-111111111111',fetch:async(path,options)=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:life,rev:1,serverTime:1000})
+    firstBody=JSON.parse(String(options.body)) as SentBody;throw new TypeError('response lost')
+  }})
+  await first.connect();assert.equal((await first.command('spot',{id:'trees'})).code,'network');assert.ok(first.pendingAction)
+  let resolveAction:(value:ReturnType<typeof json>)=>void=()=>{}, actionCalls=0, lifeRev=5
+  const delayed=new Promise<ReturnType<typeof json>>(done=>{resolveAction=done})
+  const second=createClient({storage,...timers,now:()=>1000,fetch:async(path,options)=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:{...life,cash:lifeRev===5?5000:6000},rev:lifeRev,serverTime:1000})
+    actionCalls+=1;assert.deepEqual(JSON.parse(String(options.body)),firstBody);return delayed
+  }})
+  await second.connect();assert.ok(second.pendingAction)
+  assert.equal((await second.command('cancel')).code,'action_recovery_required');assert.equal(actionCalls,0)
+  const retry=second.retryPendingAction();lifeRev=6;await second.refresh();resolveAction(json(200,{ok:true,code:'selected',state:{...life,cash:5100},rev:5,serverTime:1000}))
+  assert.equal((await retry).ok,true);assert.equal(second.state.cash,6000,'the crossed older action answer was definitive but did not replace revision 6');assert.equal(second.pendingAction,null)
+})
+
+test('pending action is identity-bound, ambiguous server errors keep it, and browser storage failure sends nothing', async () => {
+  const base={version:1,state:createLife({name:'Ada'}),identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(base)]]),timers={setTimeout:()=>0,clearTimeout:()=>{}};let mode:'ambiguous'|'ok'='ambiguous'
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},...timers,fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:base.state,rev:1,serverTime:1000})
+    return mode==='ambiguous'?json(503,{error:'storage_unavailable',reason:'Uncertain.'}):json(200,{ok:false,code:'idle',state:base.state,rev:1,serverTime:1000})
+  }})
+  await client.connect();assert.equal((await client.retryPendingAction()).code,'storage_unavailable');assert.ok(client.pendingAction)
+  mode='ok';assert.equal((await client.retryPendingAction()).code,'idle');assert.equal(client.pendingAction,null)
+  memory.set(STORAGE_KEY,JSON.stringify(base));const changed=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},...timers,fetch:async path=>path==='/api/session'?json(200,{session:{id:'public-2',name:'Bola'},serverTime:1000}):json(200,{state:base.state,rev:1,serverTime:1000})})
+  await changed.connect();assert.equal(changed.pendingAction,null)
+  let actions=0;const noStore=createClient({storage:{getItem:()=>null,setItem(){throw Error('full')}},...timers,fetch:async path=>{if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000});if(path.startsWith('/api/life'))return json(200,{state:base.state,rev:1,serverTime:1000});actions+=1;return json(500,{error:'unexpected'})}})
+  await noStore.connect();assert.equal((await noStore.command('cancel')).code,'browser_storage_unavailable');assert.equal(actions,0)
+})
+
+test('a stored moved-city action outcome follows the authoritative life and clears the uncertain intent', async () => {
+  const lagos=createLife({name:'Ada'}),ibadan=createLife({...lagos,location:'park',message:'You are in Ibadan.',estate:{...lagos.estate,city:'ibadan'}},{cityId:'ibadan'})
+  const base={version:1,state:lagos,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(base)]])
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async(path,options)=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:lagos,rev:1,serverTime:1000})
+    assert.deepEqual(JSON.parse(String(options?.body)),{actionId:base.pendingAction.actionId,cityId:'lagos',type:'cancel'})
+    return json(200,{ok:false,code:'city_moved',state:ibadan,rev:2,serverTime:1000})
+  }})
+  await client.connect()
+  const result=await client.retryPendingAction()
+  assert.equal(result.code,'city_moved')
+  assert.equal(client.cityId,'ibadan')
+  assert.equal(client.state.message,'You are in Ibadan.')
+  assert.equal(client.pendingAction,null,'the server has durably fenced this exact action id')
+})
+
+test('an old identity action cannot overwrite or clear the replacement identity during lazy city loading', async () => {
+  const a=createLife({name:'Ada'}),b=createLife({name:'Bola',cash:7777}),oldAnswer={...a,cash:5100}
+  const saved={version:1,state:a,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(saved)]])
+  let identity:'public-1'|'public-2'='public-1',releaseLoad:()=>void=()=>{},started:()=>void=()=>{},oldLoads=0
+  const loading=new Promise<void>(done=>{releaseLoad=done}),loadStarted=new Promise<void>(done=>{started=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},
+    loadLifeCities:async raw=>{if((raw as LifeState)?.cash===5100&&++oldLoads===2){started();await loading}return[]},fetch:async path=>{
+      if(path==='/api/session')return json(200,{session:{id:identity,name:identity==='public-1'?'Ada':'Bola'},serverTime:1000})
+      if(path.startsWith('/api/life'))return json(200,{state:identity==='public-1'?a:b,rev:identity==='public-1'?1:9,serverTime:1000})
+      return json(200,{ok:true,code:'idle',state:oldAnswer,rev:2,serverTime:1000})
+    }})
+  await client.connect();const retry=client.retryPendingAction();await loadStarted
+  identity='public-2';await client.connect();releaseLoad()
+  assert.equal((await retry).code,'stale_identity_response')
+  assert.deepEqual([client.session?.id,client.state.cash,client.revision,client.pendingAction,client.link],['public-2',7777,9,null,'online'])
+})
+
+test('legacy moved-city recovery cannot change the city or state after identity replacement', async () => {
+  const a=createLife({name:'Ada'}),ibadan=createLife({...a,cash:6000,estate:{...a.estate,city:'ibadan'}},{cityId:'ibadan'}),b=createLife({name:'Bola',cash:9999})
+  const saved={version:1,state:a,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(saved)]])
+  let identity:'public-1'|'public-2'='public-1',release:(answer:ReturnType<typeof json>)=>void=()=>{},started:()=>void=()=>{}
+  const recovery=new Promise<ReturnType<typeof json>>(done=>{release=done}),recoveryStarted=new Promise<void>(done=>{started=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:{id:identity,name:identity==='public-1'?'Ada':'Bola'},serverTime:1000})
+    if(path==='/api/life?city=ibadan'){started();return recovery}
+    if(path.startsWith('/api/life'))return json(200,{state:identity==='public-1'?a:b,rev:identity==='public-1'?1:11,serverTime:1000})
+    return json(409,{error:'city_moved',city:'ibadan',reason:'Your character moved.'})
+  }})
+  await client.connect();const retry=client.retryPendingAction();await recoveryStarted
+  identity='public-2';await client.connect();release(json(200,{state:ibadan,rev:2,serverTime:1000}))
+  assert.equal((await retry).code,'stale_identity_response')
+  assert.deepEqual([client.session?.id,client.cityId,client.state.cash,client.revision,client.pendingAction,client.link],['public-2','lagos',9999,11,null,'online'])
+})
+
+test('a late error from an old identity cannot expire or disconnect the replacement identity', async () => {
+  const a=createLife({name:'Ada'}),b=createLife({name:'Bola',cash:8888}),saved={version:1,state:a,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(saved)]])
+  let identity:'public-1'|'public-2'='public-1',finishOld:(answer:ReturnType<typeof json>)=>void=()=>{},finishNew:(answer:ReturnType<typeof json>)=>void=()=>{},actionCalls=0
+  const oldAction=new Promise<ReturnType<typeof json>>(done=>{finishOld=done}),newAction=new Promise<ReturnType<typeof json>>(done=>{finishNew=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:{id:identity,name:identity==='public-1'?'Ada':'Bola'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:identity==='public-1'?a:b,rev:identity==='public-1'?1:10,serverTime:1000})
+    return actionCalls++===0?oldAction:newAction
+  }})
+  await client.connect();const retry=client.retryPendingAction();identity='public-2';await client.connect()
+  const bAction=client.command('cancel');assert.equal(client.pendingAction?.sessionId,'public-2')
+  finishOld(json(401,{error:'device_session_required'}))
+  assert.equal((await retry).code,'stale_identity_response')
+  assert.deepEqual([client.session?.id,client.state.cash,client.revision,client.pendingAction?.sessionId,client.link],['public-2',8888,10,'public-2','online'])
+  finishNew(json(200,{ok:false,code:'idle',state:b,rev:10,serverTime:1000}));await bAction
+})
+
+for(const code of ['action_expired','action_id_conflict'] as const)test(`a delayed ${code} refresh cannot affect a replacement identity`,async()=>{
+  const a=createLife({name:'Ada'}),b=createLife({name:'Bola',cash:12345}),saved={version:1,state:a,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(saved)]])
+  let identity:'public-1'|'public-2'='public-1',lifeCalls=0,release:(answer:ReturnType<typeof json>)=>void=()=>{},started:()=>void=()=>{}
+  const delayed=new Promise<ReturnType<typeof json>>(done=>{release=done}),refreshStarted=new Promise<void>(done=>{started=done})
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:{id:identity,name:identity==='public-1'?'Ada':'Bola'},serverTime:1000})
+    if(path.startsWith('/api/life')){lifeCalls+=1;if(lifeCalls===2){started();return delayed}return json(200,{state:identity==='public-1'?a:b,rev:identity==='public-1'?1:12,serverTime:1000})}
+    return json(409,{error:code})
+  }})
+  await client.connect();const retry=client.retryPendingAction();await refreshStarted
+  identity='public-2';await client.connect();release(json(200,{state:{...a,cash:6000},rev:2,serverTime:1000}))
+  assert.equal((await retry).code,'stale_identity_response')
+  assert.deepEqual([client.session?.id,client.state.cash,client.revision,client.pendingAction,client.link],['public-2',12345,12,null,'online'])
+})
+
+test('a successful same-identity conflict refresh clears the intent without marking the client offline',async()=>{
+  const life=createLife({name:'Ada'}),saved={version:1,state:life,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}
+  const memory=new Map([[STORAGE_KEY,JSON.stringify(saved)]]);let lifeCalls=0
+  const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},fetch:async path=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000})
+    if(path.startsWith('/api/life'))return json(200,{state:{...life,cash:lifeCalls++?6000:5000},rev:lifeCalls,serverTime:1000})
+    return json(409,{error:'action_id_conflict',reason:'That action ID belongs to another request.'})
+  }})
+  await client.connect();const result=await client.retryPendingAction()
+  assert.equal(result.code,'action_id_conflict')
+  assert.deepEqual([client.state.cash,client.pendingAction,client.link,client.online],[6000,null,'online',true])
+})
+
+test('route cooldowns do not let an unrelated support 429 freeze actions', async () => {
+  let actions=0;const life=createLife({name:'Ada'}),client=createClient({storage:{getItem:()=>null,setItem(){}},setTimeout:()=>0,clearTimeout:()=>{},fetch:async(path)=>{
+    if(path==='/api/session')return json(200,{session:{id:'public-1',name:'Ada'},serverTime:1000});if(path.startsWith('/api/life'))return json(200,{state:life,rev:1,serverTime:1000})
+    if(path==='/api/support/reports')return json(429,{error:'rate_limited',retryAfter:60});actions+=1;return json(200,{ok:true,code:'idle',state:life,rev:1,serverTime:1000})
+  }})
+  await client.connect();await assert.rejects(client.api('/api/support/reports'),(error:ApiError)=>error.status===429)
+  assert.equal((await client.command('cancel')).ok,true);assert.equal(actions,1)
+})
 
 test('connection loss mid-session pauses changes with the recovery text and keeps the cached state', async () => {
   const h = harness();

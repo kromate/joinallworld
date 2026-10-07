@@ -17,8 +17,9 @@ import StarRating from './StarRating.vue'
 import { defOf, isBuying, objectOf, roomStatus } from './buyModel.ts'
 import { retryRoom, startHome } from './homeScene.ts'
 import { H, kitchenOpen, scene } from './homeState.ts'
+import { social } from '../social/useSocial.ts'
 
-const { game, shell, command } = useApp()
+const { game, shell, command, scene: world } = useApp()
 const state = game.state
 const view = game.view
 startHome()
@@ -26,6 +27,15 @@ startHome()
 const house = computed(() => houseOf(state.value))
 const headingHome = computed(() => isDeparting(state.value) && state.value.activeAction?.id === 'home')
 const atHome = computed(() => state.value.location === 'home')
+const outside = computed(() => state.value.location === 'neighbourhood')
+const doorReady = computed(() => game.connected.value && !state.value.activeAction && !game.saving.value)
+function useDoor(): void {
+  if (!doorReady.value) return
+  if (social.me?.visiting) { if (world.venue.value?.walkHomeDoor()) return; void import('../neighbourhood/neighbourhoodStore.ts').then((module) => module.leaveNeighbour()); return }
+  // The scene walks to the actual doorway. The ordinary action remains available without 3D.
+  if (world.venue.value?.walkHomeDoor()) return
+  void command('home.door', { direction: outside.value ? 'inside' : 'outside' })
+}
 const status = computed(() => roomStatus({ sceneStatus: scene.status, connected: view.value.connected, short: linkWords(view.value)?.short, placed: state.value.home?.items?.length ?? 0, grid: house.value.grid }))
 const object = computed(() => {
   const def = defOf(H.selected ? objectOf(state.value, H.selected)?.itemId : undefined)
@@ -38,11 +48,24 @@ const unpackWhy = computed(() => (canUnpack.value ? undefined : words.value ? wo
 </script>
 
 <template>
-  <div v-if="!atHome && headingHome" class="home-chip"><strong><GameIcon inline name="home" /> Heading home…</strong><small>{{ house.label }} · {{ house.district }}</small></div>
+  <div v-if="social.me?.visiting" class="home-chip">
+    <strong>{{ social.me.visiting.host.name }}'s home · Visiting</strong>
+    <button type="button" class="home-chip-button" @click="shell.open('invite')">House chat &amp; permissions</button>
+    <button type="button" class="home-chip-button" :disabled="!doorReady" @click="useDoor()">Leave through the door</button>
+  </div>
+  <div v-else-if="outside" class="home-chip">
+    <strong><GameIcon inline name="home" /> Outside your home</strong>
+    <small>Walk along the street or return through your front door.</small>
+    <button type="button" class="home-chip-button" :disabled="!doorReady" data-home-door="inside" @click="useDoor()">Go inside</button>
+    <button type="button" class="home-chip-button" @click="shell.open('neighbourhood')">Neighbours on this street</button>
+  </div>
+  <div v-else-if="!atHome && headingHome" class="home-chip"><strong><GameIcon inline name="home" /> Heading home…</strong><small>{{ house.label }} · {{ house.district }}</small></div>
   <div v-else-if="atHome && !isBuying(view)" class="home-chip">
     <strong><GameIcon inline name="home" /> {{ house.label }} · {{ house.district }}</strong>
     <small role="status">{{ status.text }}</small>
+    <button type="button" class="home-chip-button" @click="shell.open('houses')">Upgrade &amp; manage home</button>
     <button v-if="status.retry" type="button" class="home-chip-button" @click="retryRoom()">Try again</button>
+    <button type="button" class="home-chip-button" :disabled="!doorReady" data-home-door="outside" @click="useDoor()">Step outside</button>
     <span v-if="object" class="home-chip-object"><GameIcon inline kind="furniture" :id="object.def.id" :emoji="object.def.icon" /> {{ object.def.label }} <StarRating :count="object.def.stars" /><template v-if="object.here"> · actions are below</template></span>
     <div v-if="state.spot === 'kitchen'" class="home-kitchen">
       <button type="button" class="home-kitchen-toggle" :aria-expanded="kitchenOpen" @click="kitchenOpen = !kitchenOpen"><GameIcon inline name="groceries" /> In your kitchen ({{ kitchen.length }}) <i class="home-kitchen-caret" :class="{ 'is-open': kitchenOpen }" aria-hidden="true"><GameIcon inline name="chevron" /></i></button>

@@ -7,7 +7,7 @@ const require = createRequire(existsSync(owner)?owner:new URL('../../../package.
 const three = require.resolve('three').replace(/build\/three\.cjs$/, 'build/three.module.js');
 export default {
   root,
-  resolve:{alias:{three}},
+  resolve:{alias:[{find:/^three$/,replacement:three}]},
   server:{host:'127.0.0.1',port:3410,strictPort:true,fs:{allow:[root,fileURLToPath(new URL('../../../../JoinAllworld',import.meta.url))]}},
   build:{outDir:'src/campus/unilag/evidence/preview-build',emptyOutDir:true,rollupOptions:{input:root+'campus.html'}},
 };

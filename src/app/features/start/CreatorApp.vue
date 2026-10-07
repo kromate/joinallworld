@@ -20,7 +20,7 @@ import { APPEARANCE, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { PreviewFocus } from '../../../scene/avatar-preview.ts'
 import type { DreamId, Look, TraitId } from '../../../types/life.ts'
 import { linkWords } from '../../../ui/link.ts'
-import { keepPlay, play } from '../../../quick-start/entry.ts'
+import { keepPlay, pendingCampusEntry, play } from '../../../quick-start/entry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { track as worldTrack, worldChanged } from '../world/worldModel.ts'
@@ -62,6 +62,7 @@ const scroller = ref<HTMLElement | null>(null)
 const heading = ref<HTMLElement | null>(null)
 const wardrobe = starterWardrobe()
 const isNew = props.mode === 'new'
+const campusEntry = isNew && pendingCampusEntry()
 
 const o = computed(() => view.value.onboarding)
 const steps = computed(() => stepsFor(props.mode))
@@ -155,8 +156,8 @@ function onTab(id: string): void { focus.value = focusForTab(id) }
 // ---- the steps ---------------------------------------------------------------------------------
 const progress = computed(() => progressOf(steps.value, cr.step))
 const def = computed(() => stepDef(cr.step))
-const title = computed(() => (isNew && cr.step === 'who' ? 'Welcome to Allworld' : def.value.title))
-const lead = computed(() => (isNew && cr.step === 'who' ? 'A digital world you can live in, with your friends. Choose who you are to begin; you can play in seconds.' : def.value.lead))
+const title = computed(() => (isNew && cr.step === 'who' ? (campusEntry ? 'Explore UNILAG' : 'Welcome to Allworld') : def.value.title))
+const lead = computed(() => (isNew && cr.step === 'who' ? (campusEntry ? 'Create your Sim and enter the University of Lagos through Main Gate.' : 'A digital world you can live in, with your friends. Choose who you are to begin; you can play in seconds.') : def.value.lead))
 const homePending = computed(() => cr.step === 'home' && !homeReady.value)
 const blocked = computed(() => homePending.value ? 'Load this city before continuing.' : stepBlocked(cr.step, { nameProblem: nameProblem(draft.value.name.trim()), area: draft.value.area, traits: draft.value.traits.length }))
 const last = computed(() => nextStep(steps.value, cr.step) === null)
@@ -217,6 +218,7 @@ function choose(field: LookField, value: string): void {
   const near = focusForField(field)
   if (near) focus.value = near
 }
+function replaceLook(look: Look): void { tap(); setLook(look); focus.value = 'body' }
 function undo(): void {
   const previousLook = cr.history[cr.history.length - 1]
   if (!previousLook) return
@@ -379,7 +381,7 @@ onBeforeUnmount(() => {
             <h1 id="cr-title" ref="heading" tabindex="-1">{{ title }}</h1>
             <p class="cr-lead">{{ lead }}</p>
             <StepWho v-if="cr.step === 'who'" :look="draft.look" :preset="presetId" :name="draft.name" :error="shown" @preset="preset" @body="body" @shuffle="shuffle" @dice="dice" @name="typed" @submit="next" />
-            <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
+            <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @replace="replaceLook" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
             <StepSpirit v-else-if="cr.step === 'spirit'" :city="cr.city ?? view.cityId" :traits="draft.traits" :dream="draft.dream" @trait="pickTrait" @dream="pickDream" @random="randomSpirit" />
             <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" :choosable="isNew" @ready="homeReady = $event" />
             <StepReady v-else :city="cr.city ?? view.cityId" :name="draft.name" :look="draft.look" :traits="draft.traits" :dream="draft.dream" :area="areaName" @edit="go" />
@@ -399,7 +401,7 @@ onBeforeUnmount(() => {
           </template>
           <div v-else-if="choices" class="cr-choices" data-cr-choices>
             <div class="cr-actions">
-              <button type="button" class="cr-btn is-primary" data-qs="play" data-key="play-now" @click="playNow(false)">Play now</button>
+              <button type="button" class="cr-btn is-primary" data-qs="play" data-key="play-now" @click="playNow(false)">{{ campusEntry ? 'Explore UNILAG' : 'Play now' }}</button>
               <button type="button" class="cr-btn" data-key="next" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ nextLabel(steps, cr.step) }}</button>
             </div>
             <BonusLine v-if="account.available && !account.signedIn" />
@@ -407,13 +409,14 @@ onBeforeUnmount(() => {
             <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">I already have an account · Log in</button>
           </div>
           <template v-else>
-            <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" :disabled="homePending" @click="playNow(false)">Play now</button>
+            <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" :disabled="homePending" @click="playNow(false)">{{ campusEntry ? 'Explore UNILAG' : 'Play now' }}</button>
             <button v-else-if="last && account.available && !account.signedIn" type="button" class="cr-btn" data-key="save-character" @click="openSave">Save your character</button>
             <button v-else-if="!playable && o.guest" type="button" class="cr-btn" data-key="later" :disabled="Boolean(cr.pending)" @click="notNow">Not now</button>
             <button type="button" class="cr-btn is-primary" data-key="primary" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ cr.pending || (last ? 'Start your life' : nextLabel(steps, cr.step)) }}</button>
           </template>
         </div>
         <p v-if="choices" class="cr-fine">Play now needs no password or e-mail. You can sign up any time.</p>
+        <p v-if="campusEntry" class="cr-fine">Campus entry starts at Main Gate. Your life and choices stay with you.</p>
         <p v-else-if="playable && cr.step === 'who'" class="cr-fine">No password, no e-mail. Play now and finish your character later.</p>
         <p v-else-if="!playable && o.guest && !last" class="cr-fine">Not now keeps your game going. Your choices here are kept.</p>
       </footer>

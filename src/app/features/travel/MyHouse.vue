@@ -81,18 +81,8 @@ function showOnMap(): void {
       <p class="ui-note">Weekly rent stops. Your furniture comes with you; what does not fit goes to storage.</p>
     </template>
     <button v-if="estate.plot" type="button" class="ui-button is-block" @click="showOnMap">Show it on the map</button>
-    <h3>Look</h3>
-    <div v-for="field in STYLE_FIELDS" :key="field" class="world-style">
-      <b>{{ FIELD_NAMES[field] }}</b>
-      <div class="world-swatches">
-        <button
-          v-for="option in estate.styles[field]" :key="option.index" type="button" class="world-swatch" :class="{ 'is-chosen': option.chosen }" :aria-pressed="option.chosen"
-          :disabled="swatchOff(option, cash, offline) || pending !== null" :title="swatchTitle(option, cash)" @click="style(field, option.index)"
-        ><i v-if="option.hex" :style="{ background: option.hex }" />{{ swatchLabel(option) }}</button>
-      </div>
-    </div>
-    <ResidenceCard />
-    <h3>Bigger houses</h3>
+    <h3>Upgrade your house</h3>
+    <p class="ui-note">Choose a bigger home. Pay once with in-game cash; the builders finish even while you are away. Your furniture stays yours.</p>
     <div class="world-tiers">
       <article v-for="tier in tiers" :key="tier.id" class="world-tier">
         <header>
@@ -107,5 +97,17 @@ function showOnMap(): void {
         </template>
       </article>
     </div>
+    <h3>Look</h3>
+    <div v-for="field in STYLE_FIELDS" :key="field" class="world-style">
+      <b>{{ FIELD_NAMES[field] }}</b>
+      <div class="world-swatches">
+        <button
+          v-for="option in estate.styles[field]" :key="option.index" type="button" class="world-swatch" :class="{ 'is-chosen': option.chosen }" :aria-pressed="option.chosen"
+          :disabled="swatchOff(option, cash, offline) || pending !== null" :title="swatchTitle(option, cash)" @click="style(field, option.index)"
+        ><i v-if="option.hex" :style="{ background: option.hex }" />{{ swatchLabel(option) }}</button>
+      </div>
+    </div>
+    <ResidenceCard />
+
   </section>
 </template>

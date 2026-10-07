@@ -12,7 +12,7 @@ export function moodOf(view: Pick<PanelView, 'onboarding' | 'needs'>): HudMood {
   return { word: core.label, icon: core.icon, tone: core.score < 25 ? 'bad' : core.score < 45 ? 'warn' : 'good', score: core.score }
 }
 
-export interface LinkNotice { title: string; text: string; actions: { label: string; run: 'new-life' | 'reconnect'; primary: boolean }[] }
+export interface LinkNotice { title: string; text: string; actions: { label: string; run: 'new-life' | 'reconnect' | 'support'; primary: boolean }[] }
 export interface LinkWording {
   /** The top bar's short label. */
   pill: string
@@ -40,6 +40,8 @@ export const LINKS: Readonly<Record<Exclude<LinkState, 'online'>, LinkWording>> 
     notice: { title: 'You are offline', text: 'This device has no internet connection. You are looking at the last saved copy; nothing changes until you are back online.', actions: [{ label: 'Try again', run: 'reconnect', primary: true }] } },
   unreachable: { pill: 'Server unreachable', icon: 'cloud-off', tone: 'off', menu: 'Server unreachable · read-only',
     notice: { title: 'The game server is not answering', text: 'Your device is online, but the server could not be reached. Your life is safe there; this is the last copy kept on this device, read-only.', actions: [{ label: 'Try again', run: 'reconnect', primary: true }] } },
+  recovery: { pill: 'Wallet recovery', icon: 'error', tone: 'off', menu: 'Wallet needs recovery · read-only',
+    notice: { title: 'Your wallet needs recovery', text: 'Your saved progress is preserved, but changes are paused until the wallet record is repaired.', actions: [{ label: 'Report wallet problem', run: 'support', primary: true }, { label: 'Check again', run: 'reconnect', primary: false }] } },
 }
 /** The wording for the view's connection state, or null when connected. */
 export function linkWording(view: Pick<PanelView, 'connected' | 'link'>): LinkWording | null {

@@ -15,6 +15,7 @@ import { LIMITS } from './social/service.ts';
 import { RECONNECT_GRACE_MS } from './social/presence.ts';
 import { SHIFT_SECONDS } from '../src/game/content/jobs.ts';
 import { DEFAULT_LOOK } from '../src/game/content/traits.ts';
+import { peerTransferId } from './economy/effects.ts';
 
 const HOUR = 3600000;
 type Fixture = Awaited<ReturnType<typeof fixture>>;
@@ -434,10 +435,13 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
 
   // Bola is offline: the debit and the stored credit commit together; he is paid on his next request.
   const id = f.id();
+  const transferId = peerTransferId(ada.id, id);
   const sent = await send({ clientId: id });
   assert.deepEqual([sent.code, sent.amount, sent.credited, sent.balance], ['sent', 500, false, 7500]);
   const db = await database(f);
-  const effect = defined(defined(defined(db.social).pending[bola.id])[0]).payload; assert.equal(effect.op === 'transfer-in' ? effect.amount : undefined, 500);
+  const effect = defined(defined(defined(db.social).pending[bola.id])[0]).payload;
+  assert.deepEqual(effect.op === 'transfer-in' ? [effect.amount, effect.transferId] : undefined, [500, transferId]);
+  assert.deepEqual(db.walletEffects?.filter(row => row.transferId === transferId).map(row => [row.publicId,row.amount]),[[ada.id,-500]]);
   const replay = await send({ clientId: id });
   assert.deepEqual([replay.code, replay.duplicate, replay.balance], ['sent', true, 7500]);
   assert.equal((await send({ clientId: id, amount: 600 })).status, 409);
@@ -447,13 +451,16 @@ test('transfers: friends only, aged accounts, earned money, atomic, in both ledg
   let bolaLife = (await get(f, '/api/life?city=lagos', bola)).state;
   assert.equal(bolaLife.cash, 5500, 'credited exactly once');
   assert.deepEqual([defined(bolaLife.ledger.at(-1)).amount, defined(bolaLife.ledger.at(-1)).reason], [500, 'Transfer from Ada']);
+  assert.deepEqual((await database(f)).walletEffects?.filter(row => row.transferId === transferId).map(row => [row.publicId,row.amount]),[[ada.id,-500],[bola.id,500]]);
   assert.equal((await socialOf(f)).pending[bola.id], undefined);
   // Bola is online: credited in the same transaction.
   f.advance(61000);
   const b = await f.socket(bola);
-  const live = await send({ amount: 400 });
+  const liveClientId=f.id(),liveTransferId=peerTransferId(ada.id,liveClientId);
+  const live = await send({ amount: 400,clientId:liveClientId });
   assert.equal(live.credited, true);
   assert.deepEqual([(await until(b, 'transfer')).amount, (await get(f, '/api/life?city=lagos', bola)).state.cash], [400, 5900]);
+  assert.deepEqual((await database(f)).walletEffects?.filter(row=>row.transferId===liveTransferId).map(row=>[row.publicId,row.amount]),[[ada.id,-400],[bola.id,400]]);
   // Only earned money can be given, and only three gifts a day.
   refused = await send({ amount: 2200 });
   assert.equal(refused.code, 'gift_exceeds_earned'); assert.match(refused.reason, /You can still give ₦2,100/);
@@ -543,12 +550,14 @@ test('a gift nobody collects goes back to the sender after a week; nothing is lo
   await befriend(f, ada, bola);
   await earn(f, ada);
   f.advance(24 * HOUR);
-  assert.equal((await post(f, '/api/social/transfers', { to: bola.id, amount: 700, cityId: 'lagos', clientId: f.id() }, ada)).credited, false);
+  const clientId=f.id(),transferId=peerTransferId(ada.id,clientId);
+  assert.equal((await post(f, '/api/social/transfers', { to: bola.id, amount: 700, cityId: 'lagos', clientId }, ada)).credited, false);
   assert.equal((await get(f, '/api/life?city=lagos', ada)).state.cash, 7300);
   f.advance(LIMITS.escrowMs + HOUR);
   await get(f, '/api/social/me', ada); await get(f, '/api/social/me', ada);
   const life = (await get(f, '/api/life?city=lagos', ada)).state;
   assert.equal(life.cash, 8000); assert.equal(defined(life.ledger.at(-1)).reason, 'Refund: transfer to Bola');
+  assert.deepEqual((await database(f)).walletEffects?.filter(row=>row.transferId===transferId).map(row=>[row.publicId,row.amount]),[[ada.id,-700],[ada.id,700]]);
   await get(f, '/api/social/me', bola);
   assert.equal((await get(f, '/api/life?city=lagos', bola)).state.cash, 5000);
   assert.deepEqual((await socialOf(f)).pending, {});

@@ -16,22 +16,31 @@ import type { CheckKind } from '../trust/providers.ts';
 import { trustService } from '../trust/service.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts';
+import { phoneChecks } from '../trust/phone.ts';
+import { dojahChecks } from '../trust/dojah.ts';
 
 const NO_STORE = { 'Cache-Control': 'no-store' };
 
 export default function trustRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const trust = trustService(ctx);
+  const phone = phoneChecks(ctx);
+  const id = dojahChecks(ctx);
   (ctx.checks ??= {}).vendorLink = (db, publicId, room, body) => trust.vendorLink(db, publicId, room, body);
   const look = (key: string): void => { if (!ctx.allow(key, 60)) throw ctx.fail(429, 'rate_limited'); };
 
   return {
+    'POST /api/trust/phone/complete': async request => ({ body: await phone.complete(request), headers: NO_STORE }),
+    'POST /api/trust/id/start': async request => ({ body: await id.start(request), headers: NO_STORE }),
+    'GET /api/trust/id/result': async request => ({ body: await id.result(request), headers: NO_STORE }),
+    'POST /api/trust/dojah/webhook': async request => ({ body: await id.webhook(request), headers: NO_STORE }),
     'GET /api/trust/me': async (request) => {
       const body = await ctx.store.read((db) => {
         const session = request.requireSession(db);
         look(`trust:look:${session.publicId}`);
         const facts = trust.facts(db, session), mine = trust.complaints(db, session.publicId);
         const can = Object.fromEntries(POST_KINDS.map((kind) => [kind, trust.postBlock(db, session, kind)])) as Record<PostKind, TrustRefusal | null>;
-        return { tier: facts.tier, label: TIER_LABELS[facts.tier], adult: facts.adult, complaints: mine.count, held: mine.held, checks: checkStatus(), can };
+        if (!can.meetup && !trust.verifiedAdult(db, session.publicId)) can.meetup = { code: 'verified_adult_required', reason: 'Complete the ID and age check before hosting an in-person meetup.' };
+        return { tier: facts.tier, label: TIER_LABELS[facts.tier], adult: facts.adult, ...(trust.verifiedAdult(db, session.publicId) ? { adultVerified: true } : {}), complaints: mine.count, held: mine.held, checks: { ...checkStatus(), phone: phone.ready() ? 'ready' : 'unavailable', id: id.ready() ? 'ready' : 'unavailable' }, can };
       });
       return { body, headers: NO_STORE };
     },

@@ -6,13 +6,13 @@ import type { FurnitureDefinition } from '../../../types/content.ts'
 import type { LifeState, PlacedItem } from '../../../types/life.ts'
 import type { PanelView } from '../../types/panel.ts'
 import { FURNITURE, SELL_REFUND_RATE } from '../../../game/content/furniture.ts'
-import { checkPlacement, findFreeSpot, nudge } from '../../../game/home-layout.ts'
+import { checkPlacement, findFreeSpot, frontDoorBlocked, nudge, plotOf } from '../../../game/home-layout.ts'
 import { houseOf } from './houseOf.ts'
-import type { PlacementBlock as Refusal, Placement as Spot } from '../../../game/home-layout.ts'
+import type { Plot, PlacementBlock as Refusal, Placement as Spot } from '../../../game/home-layout.ts'
 
 export type GhostSource = 'buy' | 'move' | 'storage'
-/** The piece being placed: where it came from and where it is now. */
-export interface Ghost extends Spot { source: GhostSource; itemId: string; objectId?: string }
+/** The piece being placed: where it came from and where it is now (on which floor of the house). */
+export interface Ghost extends Spot { source: GhostSource; itemId: string; objectId?: string; floor?: number }
 
 export const MOVES: Readonly<Record<string, readonly [number, number]>> = { 'move-up': [0, -1], 'move-down': [0, 1], 'move-left': [-1, 0], 'move-right': [1, 0] }
 export const HINT = 'Arrow keys move · R rotates · Enter places · Esc cancels'
@@ -20,22 +20,25 @@ export const HINT = 'Arrow keys move · R rotates · Enter places · Esc cancels
 export const itemsOf = (state: Pick<LifeState, 'home'>): PlacedItem[] => (Array.isArray(state.home?.items) ? state.home.items : [])
 export const objectOf = (state: Pick<LifeState, 'home'>, id: string | null): PlacedItem | undefined => (id ? itemsOf(state).find((item) => item.id === id) : undefined)
 export const defOf = (itemId: string | undefined): FurnitureDefinition | undefined => (itemId ? FURNITURE[itemId] : undefined)
+/** Where the furniture goes: the rented room, or the rooms and floors of the player's own house. */
+export const plotIn = (state: LifeState): Plot => { const info = houseOf(state); return plotOf(info.grid, info.owned) }
 
 /** Why the ghost cannot be placed where it is, or null. */
 export const whyNot = (state: LifeState, ghost: Ghost): Refusal | null => {
   const def = defOf(ghost.itemId)
-  return def ? checkPlacement(houseOf(state).grid, itemsOf(state), def, ghost.x, ghost.y, ghost.rot, ghost.objectId ?? null) : null
+  return def ? frontDoorBlocked(plotIn(state).grid, def, ghost, ghost.floor ?? 0) ?? checkPlacement(plotIn(state), itemsOf(state), def, ghost.x, ghost.y, ghost.rot, ghost.objectId ?? null, ghost.floor ?? 0) : null
 }
 
-/** The ghost for a piece: where the object already stands (a move), else the first free spot, else the middle of the room. */
-export function startGhost(state: LifeState, source: GhostSource, itemId: string, objectId?: string): Ghost | null {
+/** The ghost for a piece: where the object already stands (a move), else the first free spot on the floor in view, else the middle of it. */
+export function startGhost(state: LifeState, source: GhostSource, itemId: string, objectId?: string, floor = 0): Ghost | null {
   const def = defOf(itemId)
   if (!def) return null
-  const grid = houseOf(state).grid
+  const plot = plotIn(state)
   const placed = objectId ? objectOf(state, objectId) : undefined
+  const on = placed ? placed.floor ?? 0 : Math.min(floor, plot.floors - 1)
   const at: Spot = placed ? { x: placed.x, y: placed.y, rot: placed.rot }
-    : findFreeSpot(grid, itemsOf(state), def) ?? nudge(grid, def, { x: Math.floor(grid / 2), y: Math.floor(grid / 2), rot: 0 }, 0, 0)
-  return { source, itemId, ...(objectId ? { objectId } : {}), ...at }
+    : findFreeSpot(plot, itemsOf(state), def, null, on) ?? nudge(plot, def, { x: Math.floor(plot.w / 2), y: Math.floor(plot.d / 2), rot: 0 }, 0, 0)
+  return { source, itemId, ...(objectId ? { objectId } : {}), ...at, floor: on }
 }
 
 export const size = (def: Pick<FurnitureDefinition, 'wall' | 'w' | 'h'>): string => (def.wall ? 'wall' : `${def.w}×${def.h}`)
@@ -67,7 +70,9 @@ export const selectedReason = (connected: boolean, short: string | null | undefi
 
 /** Storage as [furnitureId, count] for pieces the catalogue knows, and how many in all. */
 export function storageOf(state: Pick<LifeState, 'home'>): { entries: [string, number][]; stored: number } {
-  const entries = Object.entries(state.home?.storage ?? {}).filter(([id]) => FURNITURE[id])
+  const counts = { ...state.home?.storage }
+  for (const [id, count] of Object.entries(state.home?.overflow ?? {})) counts[id] = (counts[id] ?? 0) + count
+  const entries = Object.entries(counts).filter(([id]) => FURNITURE[id])
   return { entries, stored: entries.reduce((sum, [, count]) => sum + count, 0) }
 }
 
@@ -87,10 +92,10 @@ export const starsNote = (multipliers: readonly number[]): string => multipliers
 export const starsLabel = (count: number): string => `${count} star${count === 1 ? '' : 's'}`
 
 /** The state the scene is told about (window event 'jaw:home-ui'). */
-export interface HomeUi { selected: string | null; buy: boolean; ghost: { itemId: string; x: number; y: number; rot: number; valid: boolean } | null; retry?: true }
-export function homeUi(state: LifeState, home: { selected: string | null; inBuy: boolean; ghost: Ghost | null }): HomeUi {
+export interface HomeUi { selected: string | null; buy: boolean; floor: number; ghost: { itemId: string; x: number; y: number; rot: number; floor: number; valid: boolean } | null; retry?: true }
+export function homeUi(state: LifeState, home: { selected: string | null; inBuy: boolean; floor: number; ghost: Ghost | null }): HomeUi {
   const { ghost } = home
-  return { selected: home.selected, buy: home.inBuy, ghost: ghost ? { itemId: ghost.itemId, x: ghost.x, y: ghost.y, rot: ghost.rot, valid: !whyNot(state, ghost) } : null }
+  return { selected: home.selected, buy: home.inBuy, floor: home.floor, ghost: ghost ? { itemId: ghost.itemId, x: ghost.x, y: ghost.y, rot: ghost.rot, floor: ghost.floor ?? 0, valid: !whyNot(state, ghost) } : null }
 }
 
 /** The view says whether the room is Buy mode's. */

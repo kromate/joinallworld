@@ -3,14 +3,22 @@ import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { createSqliteStore } from './sqlite-store.ts';
+import { sqliteShardBackend } from './sqlite-shards.ts';
+import { SQLITE_SCHEMA_VERSION } from './sqlite-schema.ts';
+import { walletEffectSink } from '../server/economy/effects.ts';
 import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts';
 import type { Db, SessionRecord, TransactOptions } from '../server/types.ts';
 
 /** The document as these tests use it: sessions plus whatever collections a test invents (the real `Db` types the five known ones). */
-interface Draft { version: number; sessions: Record<string, SessionRecord | undefined>; readonly $store: { scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]; expiredSessionKeys(now: number): string[]; onceCounts(liveSince: number, lightKinds: readonly string[]): { money: number; light: number } }; [collection: string]: unknown }
+interface Draft { version: number; sessions: Record<string, SessionRecord | undefined>; readonly $store: { scanSessions(predicate: (record: SessionRecord, key: string) => boolean): string[]; expiredSessionKeys(now: number): string[]; onceCounts(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }; walletEffectsPage?(publicId:string,after:number,limit:number): {seq:number;amount:number;reason:string}[] }; [collection: string]: unknown }
 interface LooseStore {
   transact<T>(operation: (db: Draft) => T | Promise<T>, options?: TransactOptions<T>): Promise<T>
   read<T>(operation: (db: Draft) => T | Promise<T>): Promise<T>
+  flush(): Promise<void>
+  authority(): { epoch: number; writable: boolean; retiredFromEpoch: number | null; walletEffectWatermark: number | null }
+  assertWritable(): void
+  retire(expectedEpoch: number): Promise<{ epoch: number; walletEffectWatermark: number; duplicate?: true }>
+  layout: Required<ReturnType<typeof createSqliteStore>['layout']>
 }
 /** The store under test, seen through the looser document. */
 const open = (storage: SqliteStorage, options?: Parameters<typeof createSqliteStore>[1]): LooseStore => createSqliteStore(storage, options) as unknown as LooseStore;
@@ -61,6 +69,18 @@ test('SQLite: atomic wallet, feature and receipt rollback; retry once; separate 
  assert.ok(!sessionText(f.db).includes('actions'));
  assert.equal(count(f.db,'SELECT COUNT(*) AS n FROM action_receipts'),1);
 });
+test('SQLite: wallet effects are atomic and force a lazy transaction durable, including a net-zero state cycle',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());const store=open(storageOn(db),{lazyFlushMs:60000});await store.transact(d=>put(d,'secret',session()));
+ const recordEffect=(d:Draft,amount:number,balanceAfter:number,reason:string)=>{const record=d.sessions['secret'];assert.ok(record);walletEffectSink(record,'lagos','effect-op')({at:1000,amount,balanceAfter,reason});};
+ await store.transact(d=>{life(d).cities.lagos.cash=5100;recordEffect(d,100,5100,'Credit');},{durable:false});
+ assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,5100);assert.equal(count(db,'SELECT COUNT(*) AS n FROM wallet_effects'),1);
+ await store.transact(d=>{recordEffect(d,-50,5050,'Out');recordEffect(d,50,5100,'Back');},{durable:false});
+ assert.equal(count(db,'SELECT COUNT(*) AS n FROM wallet_effects'),3,'effects survive even when the saved life ends where it began');
+ assert.deepEqual(await store.read(d=>d.$store.walletEffectsPage?.('public',0,51).map(row=>[row.seq,row.amount,row.reason])),[[1,100,'Credit'],[2,-50,'Out'],[3,50,'Back']]);
+ db.exec("CREATE TRIGGER fail_effect BEFORE INSERT ON wallet_effects BEGIN SELECT RAISE(ABORT,'injected effect failure'); END");
+ await assert.rejects(store.transact(d=>{life(d).cities.lagos.cash=5200;recordEffect(d,100,5200,'Fails');}),error=>codedError(error).code==='storage_unavailable');
+ assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,5100);assert.equal(count(db,'SELECT COUNT(*) AS n FROM wallet_effects'),3);
+});
 test('SQLite: concurrent drafts serialize and failed callback leaves no state',async t=>{
  const f=fixture(t);await f.store.transact(db=>{put(db,'secret',session());});
  await Promise.all(Array.from({length:20},()=>f.store.transact(async db=>{const s=life(db);await Promise.resolve();s.cities.lagos.cash-=1;})));
@@ -73,6 +93,55 @@ test('SQLite: uncertain durability never acknowledges or continues serving cache
  await assert.rejects(f.store.transact(db=>{put(db,'secret',session());},{committed(){acknowledged=true;}}),error=>codedError(error).code==='storage_unavailable'&&/barrier failed/.test(codedError(error).cause?.message ?? ''));
  assert.equal(acknowledged,false);await assert.rejects(f.store.read(db=>db.sessions['secret']),/storage_unavailable/);
  const restarted=open(f.storage);assert.equal(await restarted.read(db=>db.sessions['secret']?.publicId),'public');
+});
+test('SQLite: versioned schema upgrades atomically, refuses newer or incomplete versions, and keeps the deliberate receipt-index removal',t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());
+ db.exec(TABLES_BEFORE_ACCOUNTS.join(';'));
+ const old=session();db.prepare('INSERT INTO sessions VALUES(?,?,?,?)').run(old.secret,old.publicId,old.expiresAt,JSON.stringify(old));
+ const rowsBefore=JSON.stringify(db.prepare('SELECT * FROM sessions').all());
+ const base=storageOn(db),broken:SqliteStorage={...base,sql:{exec<Row extends SqlRow>(query:string,...params:SqlBinding[]):SqlCursor<Row>{if(query.includes('CREATE TABLE IF NOT EXISTS main_store_authority'))throw Error('migration interrupted');return base.sql.exec<Row>(query,...params);}}};
+ assert.throws(()=>open(broken),/migration interrupted/);assert.equal(count(db,"SELECT COUNT(*) AS n FROM sqlite_master WHERE name='app_schema'"),0,'failed migration rolled back its version fence');
+ open(base);assert.equal((db.prepare('SELECT version FROM app_schema').get() as {version:number}).version,SQLITE_SCHEMA_VERSION);assert.equal(JSON.stringify(db.prepare('SELECT * FROM sessions').all()),rowsBefore);assert.equal(count(db,"SELECT COUNT(*) AS n FROM sqlite_master WHERE name='action_expiry'"),0);
+ const currentSchema=JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY name").all());open(base);assert.equal(JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY name").all()),currentSchema,'reopen changes no current schema object');
+ db.prepare('UPDATE app_schema SET version=99 WHERE singleton=1').run();assert.throws(()=>open(base),/newer than supported/);db.prepare('UPDATE app_schema SET version=? WHERE singleton=1').run(SQLITE_SCHEMA_VERSION);db.exec('DROP INDEX wallet_effects_transfer');assert.throws(()=>open(base),/incomplete: missing wallet_effects_transfer/);
+});
+test('SQLite: legacy entry rows gain current projection columns without changing their values',t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());db.exec('CREATE TABLE entries (coll TEXT NOT NULL,map TEXT NOT NULL,key TEXT NOT NULL,ord INTEGER NOT NULL,value TEXT NOT NULL,PRIMARY KEY(coll,map,key)) WITHOUT ROWID');db.prepare('INSERT INTO entries(coll,map,key,ord,value) VALUES(?,?,?,?,?)').run('social','players','ada',1,'{"name":"Ada"}');open(storageOn(db));
+ assert.deepEqual((db.prepare('PRAGMA table_info(entries)').all() as {name:string}[]).map(column=>column.name),['coll','map','key','ord','value','ix','tx','jx']);assert.deepEqual(db.prepare('SELECT coll,map,key,ord,value FROM entries').all().map(row=>({...row})),[{coll:'social',map:'players',key:'ada',ord:1,value:'{"name":"Ada"}'}]);
+});
+test('SQLite: malformed legacy shape rolls back schema metadata and every newly-created table',t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());db.exec('CREATE TABLE sessions (secret TEXT PRIMARY KEY)');const before=JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master ORDER BY name").all());assert.throws(()=>open(storageOn(db)),/sessions missing public_id, expires_at, value/);assert.equal(JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master ORDER BY name").all()),before);assert.equal(count(db,"SELECT COUNT(*) AS n FROM sqlite_master WHERE name='app_schema'"),0);
+});
+test('SQLite: retirement flushes held baseline, records the effect watermark, fences late commits, and reopens read-only',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());const storage=storageOn(db),first=open(storage,{lazyFlushMs:60000});
+ await first.transact(d=>put(d,'secret',session()));
+ await first.layout.setLayout('entries',true);
+ await first.transact(d=>{const record=d.sessions['secret'];assert.ok(record);walletEffectSink(record,'lagos','before-retire')({at:1,amount:100,balanceAfter:5100,reason:'Before retire'});life(d).cities.lagos.cash=5100;});
+ await first.transact(d=>{life(d).cities.lagos.cash=5200;},{durable:false});assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,5100);
+ let release:()=>void=()=>{};const gate=new Promise<void>(done=>{release=done});let began:()=>void=()=>{};const started=new Promise<void>(done=>{began=done});
+ const lateStore=open(storage),late=lateStore.transact(async d=>{began();await gate;life(d).cities.lagos.cash=9999;});await started;
+ const retired=await first.retire(1);assert.deepEqual(retired,{epoch:2,walletEffectWatermark:1});assert.equal(JSON.parse(sessionText(db)).cities.lagos.cash,5200,'held baseline was durable before retirement');release();
+ await assert.rejects(late,error=>codedError(error).code==='write_authority_retired');assert.deepEqual(await first.retire(1),{epoch:2,walletEffectWatermark:1,duplicate:true});await assert.rejects(first.retire(2),error=>codedError(error).code==='authority_epoch_conflict');
+ let called=false;await assert.rejects(first.transact(()=>{called=true;}),error=>codedError(error).code==='write_authority_retired');assert.equal(called,false);
+ db.exec('CREATE INDEX action_expiry ON action_receipts(action_at)');
+ const reopened=open(storage,{layout:'shadow',lazyFlushMs:1});const before=JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master ORDER BY name").all())+JSON.stringify(db.prepare('SELECT * FROM store_meta ORDER BY key').all());assert.equal(await reopened.read(d=>life(d).cities.lagos.cash),5200);await new Promise(done=>setTimeout(done,5));const after=JSON.stringify(db.prepare("SELECT name,sql FROM sqlite_master ORDER BY name").all())+JSON.stringify(db.prepare('SELECT * FROM store_meta ORDER BY key').all());assert.equal(after,before,'retired reads do not prepare, backfill or restart a flush loop');
+ assert.equal(count(db,"SELECT COUNT(*) AS n FROM sqlite_master WHERE name='action_expiry'"),1,'retired reopen performs no optional schema cleanup');
+ const rows=JSON.stringify(db.prepare("SELECT * FROM collections ORDER BY name").all())+JSON.stringify(db.prepare("SELECT * FROM entries ORDER BY coll,map,ord").all())+JSON.stringify(db.prepare("SELECT * FROM store_meta ORDER BY key").all());await assert.rejects(reopened.layout.migrate(),error=>codedError(error).code==='write_authority_retired');await assert.rejects(reopened.layout.setLayout('legacy'),error=>codedError(error).code==='write_authority_retired');await assert.rejects(reopened.layout.safety('drop',true),error=>codedError(error).code==='write_authority_retired');assert.equal(JSON.stringify(db.prepare("SELECT * FROM collections ORDER BY name").all())+JSON.stringify(db.prepare("SELECT * FROM entries ORDER BY coll,map,ord").all())+JSON.stringify(db.prepare("SELECT * FROM store_meta ORDER BY key").all()),rows);
+});
+test('SQLite: shard append, replace and metadata writes share the main-store authority while standalone shards remain usable',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());const storage=storageOn(db),main=open(storage),guarded=sqliteShardBackend(storage,{beforeWrite:()=>main.assertWritable()});
+ await guarded.append('lagos.ikeja','one');await guarded.replace('lagos.ikeja','compacted');await guarded.writeMeta({v:1});const before=[await guarded.read('lagos.ikeja'),JSON.stringify(await guarded.readMeta()),count(db,'SELECT COUNT(*) AS n FROM world_shards')];
+ await main.retire(1);for(const write of [()=>guarded.append('lagos.ikeja','late'),()=>guarded.replace('lagos.ikeja','late'),()=>guarded.writeMeta({v:2})])await assert.rejects(write(),error=>codedError(error).code==='write_authority_retired');assert.deepEqual([await guarded.read('lagos.ikeja'),JSON.stringify(await guarded.readMeta()),count(db,'SELECT COUNT(*) AS n FROM world_shards')],before);
+ const standaloneDb=new DatabaseSync(':memory:');t.after(()=>standaloneDb.close());const standalone=sqliteShardBackend(storageOn(standaloneDb));await standalone.append('test','ok');assert.equal(await standalone.read('test'),'ok');
+});
+test('SQLite: an uncertain retirement barrier fails closed and a reopen sees the persisted authority',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());let reject=false;const storage=storageOn(db,()=>reject),store=open(storage);reject=true;
+ await assert.rejects(store.retire(1),error=>codedError(error).code==='storage_unavailable');await assert.rejects(store.read(()=>true),error=>codedError(error).code==='storage_unavailable');
+ reject=false;const reopened=open(storage);assert.deepEqual(reopened.authority(),{epoch:2,writable:false,retiredFromEpoch:1,walletEffectWatermark:0});assert.equal(await reopened.read(()=>true),true);
+});
+test('SQLite: retirement by another instance refuses a stale held flush without changing stored rows',async t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());const storage=storageOn(db),stale=open(storage,{lazyFlushMs:60000}),tool=open(storage);await stale.transact(d=>put(d,'secret',session()));await stale.transact(d=>{life(d).cities.lagos.cash=4000;},{durable:false});
+ const before=JSON.stringify(db.prepare('SELECT * FROM sessions').all());await tool.retire(1);await assert.rejects(stale.flush(),error=>codedError(error).code==='write_authority_retired');assert.equal(JSON.stringify(db.prepare('SELECT * FROM sessions').all()),before);
 });
 test('SQLite: legacy inline receipts migrate without erasing dedupe metadata',async t=>{
  const f=fixture(t),s=session();s.actions['old']={actionAt:Date.now(),ok:true,code:'saved',fingerprint:'original'};
@@ -152,20 +221,30 @@ test('SQLite: a database made before accounts existed gains the account tables e
  const schema=()=>(db.prepare("SELECT name,sql FROM sqlite_master WHERE tbl_name NOT LIKE 'account%' AND tbl_name NOT IN ('entries','store_meta') ORDER BY name").all() as {name:string;sql:string}[]).map(row=>`${row.name}:${row.sql}`);
  const rows=()=>['sessions','archived_lives','action_receipts','once_receipts','collections','collection_parts'].map(table=>JSON.stringify(db.prepare(`SELECT * FROM ${table}`).all()));
  const schemaBefore=schema(),rowsBefore=rows();
+ const previousNames=new Set(schemaBefore.map(row=>row.slice(0,row.indexOf(':'))));
  const store=open(storageOn(db));
- assert.deepEqual(schema(),schemaBefore.filter(line=>!line.startsWith('action_expiry:')),'no existing table was altered; the one index no query reads is gone');
+ assert.deepEqual(schema().filter(row=>previousNames.has(row.slice(0,row.indexOf(':')))),schemaBefore.filter(line=>!line.startsWith('action_expiry:')),'no existing table was altered; the one index no query reads is gone');
  assert.deepEqual(rows(),rowsBefore,'no existing row was touched by opening the store');
  assert.deepEqual((db.prepare("SELECT name FROM sqlite_master WHERE name LIKE 'account%' ORDER BY name").all() as {name:string}[]).map(row=>row.name).filter(name=>!name.startsWith('sqlite_')),['account_devices','account_devices_account','accounts']);
  assert.equal(count(db,'SELECT COUNT(*) AS n FROM accounts'),0);assert.equal(count(db,'SELECT COUNT(*) AS n FROM account_devices'),0);
+ assert.deepEqual((db.prepare("SELECT name FROM sqlite_master WHERE name LIKE 'wallet_effects%' ORDER BY name").all() as {name:string}[]).map(row=>row.name),['wallet_effects','wallet_effects_operation','wallet_effects_player','wallet_effects_transfer']);
  // Everything that was there reads as before, and the new collections are there, empty.
  assert.deepEqual(await store.read(d=>[life(d).cities.lagos.cash,life(d).actions['1:a']?.code,(d['social'] as {players:object}).players,Object.keys(accountsOf(d)),Object.keys(devicesOf(d)),accountsOf(d)['fb:nobody'],devicesOf(d)['nobody']]),[5000,'saved',{ada:{name:'Ada'}},[],[],undefined,undefined]);
  // The first account is written beside the session it belongs to, in one transaction.
  await store.transact(d=>{accountsOf(d)['fb:ada']={id:'fb:ada',publicId:old.publicId,devices:['cookie-1']};devicesOf(d)['cookie-1']={account:'fb:ada',expiresAt:99};life(d).cities.lagos.cash-=1;});
  assert.deepEqual(db.prepare('SELECT id,public_id FROM accounts').all().map(row=>({...row})),[{id:'fb:ada',public_id:old.publicId}]);
  assert.deepEqual(db.prepare('SELECT secret,account_id,expires_at FROM account_devices').all().map(row=>({...row})),[{secret:'cookie-1',account_id:'fb:ada',expires_at:99}]);
- assert.deepEqual(schema(),schemaBefore.filter(line=>!line.startsWith('action_expiry:')));
+ assert.deepEqual(schema().filter(row=>previousNames.has(row.slice(0,row.indexOf(':')))),schemaBefore.filter(line=>!line.startsWith('action_expiry:')));
  // A second start finds what the first one wrote.
  assert.deepEqual(await open(storageOn(db)).read(d=>[accountsOf(d)['fb:ada']?.devices,devicesOf(d)['cookie-1']?.account,life(d).cities.lagos.cash]),[['cookie-1'],'fb:ada',4999]);
+});
+test('SQLite: an earlier local wallet effect table gains nullable transfer linkage without changing old rows',t=>{
+ const db=new DatabaseSync(':memory:');t.after(()=>db.close());
+ db.exec('CREATE TABLE wallet_effects (seq INTEGER PRIMARY KEY AUTOINCREMENT, public_id TEXT NOT NULL, city_id TEXT NOT NULL, operation_id TEXT, ordinal INTEGER NOT NULL, at INTEGER NOT NULL, amount INTEGER NOT NULL, balance_after INTEGER NOT NULL, reason TEXT NOT NULL)');
+ db.prepare('INSERT INTO wallet_effects(public_id,city_id,operation_id,ordinal,at,amount,balance_after,reason) VALUES(?,?,?,?,?,?,?,?)').run('public','lagos','old',0,1,100,5100,'Old credit');
+ open(storageOn(db));
+ assert.ok((db.prepare('PRAGMA table_info(wallet_effects)').all() as {name:string}[]).some(column=>column.name==='transfer_id'));
+ assert.deepEqual(db.prepare('SELECT public_id,amount,reason,transfer_id FROM wallet_effects').all().map(row=>({...row})),[{public_id:'public',amount:100,reason:'Old credit',transfer_id:null}]);
 });
 test('SQLite: account rows are read by key, change and disappear with their transaction, and a failed commit keeps none',async t=>{
  const f=fixture(t);await f.store.transact(db=>{put(db,'secret',session());});

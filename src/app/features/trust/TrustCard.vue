@@ -4,9 +4,10 @@
 // The phone and ID checks are offered as the server reports them: with no provider configured each says it is
 // coming soon, and asking answers with the server's own sentence. What the account may post comes from the same
 // rules every listing uses (src/game/trust/tiers.ts), each with its reason.
-import { computed, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { PostKind } from '../../../game/trust/index.ts'
+import { atLeast } from '../../../game/trust/index.ts'
 import type { TrustAnswer, TrustMe } from '../../../types/trust.ts'
 
 const { game } = useApp()
@@ -14,6 +15,11 @@ const me = ref<TrustMe | null>(null)
 const failed = ref(false)
 const said = ref('')
 const busy = ref(false)
+const checking = ref<'phone' | 'id' | null>(null)
+const PhoneCheck = defineAsyncComponent(() => import('./PhoneCheck.vue'))
+const IdCheck = defineAsyncComponent(() => import('./IdCheck.vue'))
+function finished(): void { checking.value = null; said.value = 'Verification complete.'; void load() }
+const checked = (kind: 'phone' | 'id'): boolean => Boolean(me.value && (kind === 'phone' ? atLeast(me.value.tier, 'phone') : me.value.adultVerified))
 
 const CHECKS = [{ kind: 'phone', label: 'Check my phone number' }, { kind: 'id', label: 'Check my ID' }] as const
 const POSTS: { kind: PostKind; label: string }[] = [{ kind: 'stall', label: 'Run a stall' }, { kind: 'gig', label: 'Offer a gig' }, { kind: 'class', label: 'Teach a class' }, { kind: 'meetup', label: 'Host a meetup' }]
@@ -28,6 +34,7 @@ async function load(): Promise<void> {
 }
 async function start(kind: 'phone' | 'id'): Promise<void> {
   if (busy.value) return
+  if (me.value?.checks[kind] === 'ready') { checking.value = kind; return }
   busy.value = true
   try { const answer = await game.fetchJson<TrustAnswer>(`/api/trust/check/${kind}/start`, { method: 'POST', body: {} }); said.value = answer.reason ?? '' } catch (error) { said.value = error instanceof Error ? error.message : 'Try again later.' }
   finally { busy.value = false }
@@ -38,12 +45,14 @@ onMounted(load)
 <template>
   <div class="trust-card" data-trust-card>
     <h3 class="ui-section">Trust and safety</h3>
+    <PhoneCheck v-if="checking === 'phone'" @done="finished" @cancel="checking = null" />
+    <IdCheck v-else-if="checking === 'id'" @done="finished" @cancel="checking = null" />
     <p v-if="failed" class="settings-note">Your badge could not be loaded. <button type="button" class="ui-button" @click="load">Try again</button></p>
-    <template v-else-if="me">
+    <template v-else-if="me && !checking">
       <div class="ui-rows">
         <div class="ui-row"><span class="ui-row-body"><b data-trust-tier>Your badge: {{ me.label }}</b><small>{{ complaints }}. Other players see this next to your links and listings, never your number or ID.</small></span></div>
-        <button v-for="check in CHECKS" :key="check.kind" type="button" class="ui-row" :data-trust-check="check.kind" :disabled="busy" @click="start(check.kind)">
-          <span class="ui-row-body"><b>{{ check.label }}</b><small>{{ me.checks[check.kind] === 'ready' ? 'Takes a minute' : 'Coming soon' }}</small></span>
+        <button v-for="check in CHECKS" :key="check.kind" type="button" class="ui-row" :data-trust-check="check.kind" :disabled="busy || checked(check.kind)" @click="start(check.kind)">
+          <span class="ui-row-body"><b>{{ check.label }}</b><small>{{ checked(check.kind) ? 'Already checked' : me.checks[check.kind] === 'ready' ? 'Start a secure verification' : 'Not configured yet' }}</small></span>
         </button>
       </div>
       <p v-if="said" class="settings-note" role="status" data-trust-said>{{ said }}</p>

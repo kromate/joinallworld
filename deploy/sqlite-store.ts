@@ -52,8 +52,11 @@
  * db.$store.sessionKeyByPublicId(id), db.$store.onceCounts(liveSince, lightKinds) → { money, light }.
  */
 import { storageError } from '../server/protocol.ts';
+import { drainWalletEffects } from '../server/economy/effects.ts';
+import { assertMainStoreWritable, mainStoreAuthority, migrateSqliteSchema, retireMainStore } from './sqlite-schema.ts';
 import type { SqlBinding, SqliteStorage } from './cf-types.ts';
 import type { AccountDeviceRecord, AccountRecord, ActionReceipt, Db, OnceReceipt, SessionRecord, StoreHelpers, TransactOptions } from '../server/types.ts';
+import type { CityId } from '../src/types/protocol.ts';
 import type { SqliteStore } from './host-seam.ts';
 import { Layer, KEYED_SPECS, assembleText, isKeyedCollection, matches, parseLayout, projectionOf, specOf, splitText } from '../server/keyed.ts';
 import type { CollectionWrite, LayerSource, ScanHit, ScanQuery, StoreLayout } from '../server/keyed.ts';
@@ -101,29 +104,17 @@ interface ReceiptEntry<R extends ReceiptRecord> { cache: Cache<R>; original: Map
 
 export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk = CHUNK, barrier = () => storage.sync(), lazyFlushMs = 0, layout: wantedLayout = 'legacy', log = () => {}, shadowSample = 50 }: SqliteStoreOptions = {}): SqliteStore {
   const sql = storage.sql;
-  sql.exec('CREATE TABLE IF NOT EXISTS sessions (secret TEXT PRIMARY KEY, public_id TEXT NOT NULL UNIQUE, expires_at INTEGER NOT NULL, value TEXT NOT NULL)');
-  sql.exec('CREATE TABLE IF NOT EXISTS archived_lives (public_id TEXT PRIMARY KEY, value TEXT NOT NULL)');
-  sql.exec('CREATE TABLE IF NOT EXISTS action_receipts (sender TEXT NOT NULL, action_id TEXT NOT NULL, action_at INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,action_id))');
-  // An index by action time was made here once and never read by any query: it only made every receipt cost a second
-  // index entry. Dropping it removes no row; a database that never had it is left as it is.
-  sql.exec('DROP INDEX IF EXISTS action_expiry');
-  sql.exec('CREATE TABLE IF NOT EXISTS once_receipts (sender TEXT NOT NULL, id TEXT NOT NULL, at INTEGER NOT NULL, kind TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(sender,id))');
-  sql.exec('CREATE INDEX IF NOT EXISTS once_expiry ON once_receipts(at)');
-  sql.exec('CREATE TABLE IF NOT EXISTS accounts (id TEXT PRIMARY KEY, public_id TEXT, value TEXT NOT NULL)');
-  sql.exec('CREATE TABLE IF NOT EXISTS account_devices (secret TEXT PRIMARY KEY, account_id TEXT NOT NULL, expires_at INTEGER NOT NULL, value TEXT NOT NULL)');
-  sql.exec('CREATE INDEX IF NOT EXISTS account_devices_account ON account_devices(account_id)');
-  sql.exec('CREATE TABLE IF NOT EXISTS collections (name TEXT PRIMARY KEY, value TEXT NOT NULL)');
-  sql.exec('CREATE TABLE IF NOT EXISTS collection_parts (name TEXT NOT NULL, part INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY(name,part))');
-  // The per-entry layout (server/keyed.ts, docs/STORAGE.md): one row per key of a keyed map, in the order the keys were added.
-  // ix, tx and jx are what a scan may ask without reading the entry (server/keyed.ts Projection). A root is a collection named `root:<name>`.
-  sql.exec('CREATE TABLE IF NOT EXISTS entries (coll TEXT NOT NULL, map TEXT NOT NULL, key TEXT NOT NULL, ord INTEGER NOT NULL, ix INTEGER, tx TEXT, jx TEXT, value TEXT NOT NULL, PRIMARY KEY(coll,map,key)) WITHOUT ROWID');
-  sql.exec('CREATE INDEX IF NOT EXISTS entries_order ON entries(coll,map,ord)');
-  sql.exec('CREATE TABLE IF NOT EXISTS store_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
+  migrateSqliteSchema(storage);
+  const openedEpoch = mainStoreAuthority(storage).epoch;
   let serial: Promise<unknown> = Promise.resolve(), failed = false, executing = false;
   const stats = { transactions: 0, reads: 0, writes: 0, aborted: 0, writeFailures: 0, lazy: 0 };
   // Lazy changes not yet written (LAZY above): the newest text of a session or a collection, by key.
   const held = { sessions: new Map<string, Held>(), collections: new Map<string, Held>(), entries: new Map<string, Held>() };
   let flushTimer: ReturnType<typeof setTimeout> | null = null;
+  const authorityCode = (error: unknown): boolean => typeof error === 'object' && error !== null && (Reflect.get(error, 'code') === 'write_authority_retired' || Reflect.get(error, 'code') === 'authority_epoch_conflict');
+  const assertWritable = (): void => { if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown')); assertMainStoreWritable(storage, openedEpoch); };
+  const writableNow = (): boolean => { const authority = mainStoreAuthority(storage); return !failed && authority.writable && authority.epoch === openedEpoch; };
+  const writeError = (error: unknown): Error => authorityCode(error) ? error as Error : toStorageError(error);
 
   /** A collection's JSON text, put together from its parts when it was split. */
   function collectionText(name: string): string | undefined {
@@ -294,7 +285,10 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   /** The collections whose rows in `entries` hold everything the legacy value holds (and are kept so while the layout is `entries`). */
   const synced = new Set<string>(sql.exec<{ key: string }>("SELECT key FROM store_meta WHERE key LIKE 'synced:%'").toArray().map(row => row.key.slice(7)));
   // The entry rows are only kept up to date while the layout is `entries`: after any other start they may be old.
-  if (layout === 'legacy' && synced.size) { sql.exec("DELETE FROM store_meta WHERE key LIKE 'synced:%'"); synced.clear(); }
+  if (layout === 'legacy' && synced.size) {
+    if (writableNow()) storage.transactionSync(() => { assertWritable(); sql.exec("DELETE FROM store_meta WHERE key LIKE 'synced:%'"); });
+    synced.clear();
+  }
   /** Is this collection read and written per entry now? */
   const isLayered = (name: string): boolean => layout === 'entries' && synced.has(name) && isKeyedCollection(name);
   const migrationErrors = new Map<string, string>();
@@ -307,6 +301,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     const began = Date.now();
     let entries = 0, rows = 0;
     storage.transactionSync(() => {
+      assertWritable();
       sql.exec('DELETE FROM entries WHERE coll = ?', coll);
       sql.exec('DELETE FROM collection_parts WHERE name >= ? AND name < ?', `entry:${coll}\u0000`, `entry:${coll}\u0001`);
       sql.exec('DELETE FROM collections WHERE name = ?', `root:${coll}`); sql.exec('DELETE FROM collection_parts WHERE name = ?', `root:${coll}`);
@@ -403,14 +398,14 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     } catch (error) { shadow.errors += 1; log(`Store: comparing the entry copy of ${coll} failed: ${error instanceof Error ? error.message : String(error)}`); }
   }
   /** Before a transaction runs: bring every collection the layout asks for into it. A failure leaves that collection legacy and is tried again at the next start. */
-  function prepare(): void {
+  async function prepare(): Promise<void> {
+    if (!writableNow()) { if (flushTimer !== null) { clearTimeout(flushTimer); flushTimer = null; } return; }
     if (layout === 'legacy') return;
     for (const coll of Object.keys(KEYED_SPECS)) {
       if (synced.has(coll) || migrationErrors.has(coll)) continue;
       if (!isKeyedCollection(coll)) continue;
       try {
-        if (holding()) writeHeld();
-        const result = backfill(coll);
+        const result = await commitTools(() => backfill(coll), true);
         log(`Store: ${coll} now kept per entry (${result.entries} entries, ${result.ms} ms)`);
       } catch (error) {
         migrationErrors.set(coll, error instanceof Error ? error.message : String(error));
@@ -429,6 +424,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   function writeHeld(): number {
     let wrote = 0;
     storage.transactionSync(() => {
+      assertWritable();
       for (const key of [...held.sessions.keys()]) {
         const text = heldText(held.sessions, key, sql.exec<{ value: string }>('SELECT value FROM sessions WHERE secret = ?', key).toArray()[0]?.value);
         if (text === undefined) continue;
@@ -458,18 +454,19 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     const accounts: Cache<AccountRecord> = new Map(), devices: Cache<AccountDeviceRecord> = new Map();
     /** The collections of server/keyed.ts that this store keeps per entry (STORE_LAYOUT), as this transaction sees them. */
     const layer = new Layer(entrySource);
+    const observedSessions = new Set<SessionRecord>();
     /** A map whose keys are read from a table on demand; `cache` holds what this transaction read or wrote (undefined = removed). */
-    function lazyMap<T>(cache: Cache<T>, keys: () => string[], load: (key: string) => T | undefined): Record<string, T | undefined> {
+    function lazyMap<T>(cache: Cache<T>, keys: () => string[], load: (key: string) => T | undefined, observe?: (value: T) => void): Record<string, T | undefined> {
       let known: Set<string> | undefined;
       const storedKeys = (): Set<string> => known ??= new Set(keys());
       const handler: ProxyHandler<Record<string, T | undefined>> = {
-        get(_, key) { if (typeof key !== 'string') return undefined; if (!cache.has(key)) cache.set(key, load(key)); return cache.get(key); },
-        set(_, key, value: T | undefined) { if (typeof key !== 'string') throw Error('invalid_store_key'); cache.set(key, value); return true; },
+        get(_, key) { if (typeof key !== 'string') return undefined; if (!cache.has(key)) cache.set(key, load(key)); const value = cache.get(key); if (value !== undefined) observe?.(value); return value; },
+        set(_, key, value: T | undefined) { if (typeof key !== 'string') throw Error('invalid_store_key'); if (value !== undefined) observe?.(value); cache.set(key, value); return true; },
         deleteProperty(_, key) { cache.set(key as string, undefined); return true; },
         ownKeys() { return [...new Set([...storedKeys(), ...cache.keys()])].filter(key => !cache.has(key) || cache.get(key) !== undefined); },
         // The descriptor READS NOTHING: its value is fetched when somebody asks for it. Listing or counting the keys of a table
         // (`Object.keys(db.sessions).length`) asks for every key's descriptor, and must not read and parse every record to answer.
-        getOwnPropertyDescriptor(target, key) { if ((cache.has(key as string) && cache.get(key as string) !== undefined) || (!cache.has(key as string) && storedKeys().has(key as string))) return { enumerable: true, configurable: true, get: () => handler.get?.(target, key, target) as T | undefined, set: (value: T | undefined) => { cache.set(key as string, value); } }; return undefined; },
+        getOwnPropertyDescriptor(target, key) { if ((cache.has(key as string) && cache.get(key as string) !== undefined) || (!cache.has(key as string) && storedKeys().has(key as string))) return { enumerable: true, configurable: true, get: () => handler.get?.(target, key, target) as T | undefined, set: (value: T | undefined) => { if (value !== undefined) observe?.(value); cache.set(key as string, value); } }; return undefined; },
         has(_, key) { return cache.has(key as string) ? cache.get(key as string) !== undefined : storedKeys().has(key as string); },
       };
       return new Proxy(Object.create(null) as Record<string, T | undefined>, handler);
@@ -512,7 +509,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       session.actions = actions.of(session.publicId, session.actions || {});
       session.once = once.of(session.publicId, session.once || {});
       return session;
-    });
+    }, session => observedSessions.add(session));
     const archiveMap = lazyMap<unknown>(archives, () => sql.exec<{ public_id: string }>('SELECT public_id FROM archived_lives').toArray().map(row => row.public_id), key => {
       const row = sql.exec<{ value: string }>('SELECT value FROM archived_lives WHERE public_id = ?', key).toArray()[0]; originals.archives.set(key, row?.value); return row ? JSON.parse(row.value) as unknown : undefined;
     });
@@ -566,6 +563,11 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         for (const row of sql.exec<{ kind: string; n: number }>('SELECT kind, COUNT(*) AS n FROM once_receipts WHERE at >= ? GROUP BY kind', liveSince).toArray()) sum[lightKinds.includes(row.kind) ? 'light' : 'money'] += Number(row.n);
         return sum;
       },
+      walletEffectsPage: (publicId, after, limit) => sql.exec<{ seq: number; public_id: string; city_id: string; operation_id: string | null; ordinal: number; at: number; amount: number; balance_after: number; reason: string; transfer_id: string | null }>(
+        'SELECT seq,public_id,city_id,operation_id,ordinal,at,amount,balance_after,reason,transfer_id FROM wallet_effects WHERE public_id=? AND seq>? ORDER BY seq LIMIT ?', publicId, after, limit).toArray().map(row => ({
+          seq: row.seq, publicId: row.public_id, cityId: row.city_id as CityId, operationId: row.operation_id, ordinal: row.ordinal, at: row.at,
+          amount: row.amount, balanceAfter: row.balance_after, reason: row.reason, ...(row.transfer_id ? { transferId: row.transfer_id } : {}),
+        })),
     };
     const base: Record<string, unknown> = { version: 1, sessions: sessionMap, archivedLives: archiveMap, accounts: accountMap, accountDevices: deviceMap };
     const db = new Proxy(base, {
@@ -617,6 +619,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     /** Write what this transaction changed. `lazy`: hold it in memory instead, when all of it may be held (answers 0: nothing was written). */
     function commit(lazy: boolean): number {
       beforeCommit?.();
+      const effects = drainWalletEffects(observedSessions), monetary = effects.length > 0;
       // Each session's text, without its receipts. Receipts a route put on a session it has just made (plain objects) join the tables too.
       const texts = new Map<string, string>();
       for (const [key, session] of sessions) {
@@ -629,8 +632,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       // A transaction that changed nothing writes nothing, whatever it read. One that changed something durably writes
       // that, and with it the held change of every session and collection it read: what it decided may rest on them.
       const layered = layer.changes(), softLayer = heldLayer(layered), soft = softLayer ? heldChanges(texts) : null;
-      if (soft && softLayer && soft.sessions.length === 0 && soft.collections.length === 0 && softLayer.roots.length === 0 && softLayer.entries.length === 0) return 0;
-      if (soft && softLayer && lazy) {
+      if (!monetary && soft && softLayer && soft.sessions.length === 0 && soft.collections.length === 0 && softLayer.roots.length === 0 && softLayer.entries.length === 0) return 0;
+      if (!monetary && soft && softLayer && lazy) {
+        assertWritable();
         for (const [key, change] of soft.sessions) { if (change) held.sessions.set(key, change); else held.sessions.delete(key); }
         for (const [key, change] of soft.collections) { if (change) held.collections.set(key, change); else held.collections.delete(key); }
         for (const [key, change] of softLayer.roots) { if (change) held.collections.set(key, change); else held.collections.delete(key); }
@@ -639,6 +643,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
       }
       let wrote = 0;
       storage.transactionSync(() => {
+        assertWritable();
         for (const [key, session] of sessions) {
           if (session === undefined) { if (originals.sessions.get(key) !== undefined) { sql.exec('DELETE FROM sessions WHERE secret = ?', key); wrote += 1; } continue; }
           const value = texts.get(key) as string, stored = originals.sessions.get(key);
@@ -676,6 +681,11 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
           const value = JSON.stringify(item); if (value !== originals.collections.get(key)) { writeLegacy(key, value, originals.collections.get(key)); wrote += 1; }
         }
         wrote += writeLayer(layered);
+        for (const effect of effects) {
+          sql.exec('INSERT INTO wallet_effects(public_id,city_id,operation_id,ordinal,at,amount,balance_after,reason,transfer_id) VALUES(?,?,?,?,?,?,?,?,?)',
+            effect.publicId, effect.cityId, effect.operationId, effect.ordinal, effect.at, effect.amount, effect.balanceAfter, effect.reason, effect.transferId ?? null);
+          wrote += 1;
+        }
       });
       // What this transaction held of a session or a collection is what is stored now: nothing of theirs is left to write.
       for (const key of sessions.keys()) held.sessions.delete(key);
@@ -693,7 +703,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
    * is lost to a sleep; with nothing left to write there is no timer, and the object may sleep.
    */
   function scheduleFlush(): void {
-    if (!holding() || lazyFlushMs <= 0) { if (flushTimer !== null) { clearTimeout(flushTimer); flushTimer = null; } return; }
+    if (!holding() || lazyFlushMs <= 0 || !writableNow()) { if (flushTimer !== null) { clearTimeout(flushTimer); flushTimer = null; } return; }
     if (flushTimer === null) flushTimer = setTimeout(() => { flushTimer = null; void flush().catch(() => {}).then(scheduleFlush); }, lazyFlushMs);
   }
   /** Everything held is written and durable when this resolves. A failed write keeps what is held; a failed barrier is uncertain, as for any commit. */
@@ -701,7 +711,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     const operation = serial.then(async (): Promise<void> => {
       if (!holding()) { scheduleFlush(); return; }
       if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown'));
-      try { writeHeld(); } catch (error) { stats.writeFailures += 1; throw toStorageError(error); } finally { scheduleFlush(); }
+      try { assertWritable(); writeHeld(); } catch (error) { stats.writeFailures += 1; throw writeError(error); } finally { scheduleFlush(); }
       stats.writes += 1;
       try { await barrier(); } catch (error) { failed = true; stats.writeFailures += 1; throw toStorageError(error); }
     });
@@ -711,7 +721,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   function run<T>(fn: (db: Db) => T | Promise<T>, options: TransactOptions<T> | null | undefined, write: boolean): Promise<T> {
     const operation = serial.then(async (): Promise<T> => {
       if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown'));
-      try { prepare(); } catch (error) { stats.writeFailures += 1; throw toStorageError(error); }
+      if (write) assertWritable();
+      try { await prepare(); } catch (error) { stats.writeFailures += 1; throw writeError(error); }
+      if (write) assertWritable();
       const draft = view();
       let result: T;
       // `executing` is true only while THIS store's callback runs, so a watcher can tell whose transaction announced a life.
@@ -723,7 +735,7 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
         const lazy = lazyFlushMs > 0 && options != null && (typeof options.durable === 'function' ? options.durable(result) === false : options.durable === false);
         let wrote: number;
         // A commit that fails wrote nothing (one SQLite transaction): the caller is told so in the store's own words.
-        try { wrote = draft.commit(lazy); } catch (error) { stats.writeFailures += 1; throw toStorageError(error); }
+        try { wrote = draft.commit(lazy); } catch (error) { stats.writeFailures += 1; throw writeError(error); }
         if (wrote) {
           stats.writes += 1;
           // Every acknowledgement is durable. A failed barrier is uncertain: fail closed until restart.
@@ -776,9 +788,13 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   /** Run `fn` as one durable write. `own`: `fn` opens its own SQLite transaction. */
   async function commitTools<T>(fn: () => T, own = false): Promise<T> {
     let result: T;
-    try { if (holding()) writeHeld(); result = own ? fn() : storage.transactionSync(fn); } catch (error) { stats.writeFailures += 1; throw toStorageError(error); }
+    try {
+      assertWritable();
+      if (holding()) writeHeld();
+      result = own ? fn() : storage.transactionSync(() => { assertWritable(); return fn(); });
+    } catch (error) { stats.writeFailures += 1; throw writeError(error); }
     stats.writes += 1;
-    try { await barrier(); } catch (error) { failed = true; throw toStorageError(error); }
+    try { await barrier(); } catch (error) { failed = true; stats.writeFailures += 1; throw toStorageError(error); }
     return result;
   }
   const refuse = (code: string, reason: string): Error => Object.assign(new Error(reason), { status: 409, code });
@@ -813,6 +829,27 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
   }
   /** Run `fn` between transactions, never inside one. */
   function exclusive<T>(fn: () => T): Promise<T> { const operation = serial.then(() => { if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown')); return fn(); }); serial = operation.catch(() => {}); return operation; }
+  function retire(expectedEpoch: number) {
+    const operation = serial.then(async () => {
+      if (failed) throw toStorageError(new Error('The durability of an earlier write is unknown'));
+      const authority = mainStoreAuthority(storage);
+      if (authority.writable) {
+        if (authority.epoch !== expectedEpoch) return retireMainStore(storage, expectedEpoch);
+        if (holding()) {
+          try { writeHeld(); } catch (error) { stats.writeFailures += 1; throw writeError(error); }
+          stats.writes += 1;
+          try { await barrier(); } catch (error) { failed = true; stats.writeFailures += 1; throw toStorageError(error); }
+        }
+      }
+      const result = retireMainStore(storage, expectedEpoch);
+      if (flushTimer !== null) { clearTimeout(flushTimer); flushTimer = null; }
+      stats.transactions += 1; if (!result.duplicate) stats.writes += 1;
+      try { await barrier(); } catch (error) { failed = true; stats.writeFailures += 1; throw toStorageError(error); }
+      return result;
+    });
+    serial = operation.catch(() => {});
+    return operation;
+  }
   /** Every layered collection as a plain value, whichever way it is stored (held changes included). Reads every entry: for the operator and the tests. */
   function logical(): Record<string, unknown> {
     const out: Record<string, unknown> = {};
@@ -828,6 +865,9 @@ export function createSqliteStore(storage: SqliteStorage, { beforeCommit, chunk 
     read: fn => run(fn, null, false),
     executing: () => executing,
     stats: () => ({ mode: 'sqlite', failed, failing: failed, ...stats, held: held.sessions.size + held.collections.size + held.entries.size }),
+    authority: () => mainStoreAuthority(storage),
+    assertWritable,
+    retire,
     flush, close: flush,
     layout: {
       status: () => exclusive(layoutStatus),

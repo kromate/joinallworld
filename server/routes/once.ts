@@ -59,7 +59,7 @@ export const ONCE = Object.freeze({
   fingerprintMax: 96,  // longest stored fingerprint
 });
 /** Kinds where no money moves. They have their own allowance; anything else is counted as money. */
-export const LIGHT_KINDS = Object.freeze(['interact']);
+export const LIGHT_KINDS = Object.freeze(['interact', 'trust.phone', 'trust.id.start', 'real-value.create', 'real-value.edit', 'real-value.close', 'real-value.report', 'real-value.event', 'real-value.contact-request', 'real-value.contact-answer', 'real-value.contact-revoke']);
 const isLight = (kind: unknown): boolean => LIGHT_KINDS.some((light) => light === kind);
 /** Action receipts kept per session inside the action window; a full history answers 429 until old ones expire. */
 export const MAX_RECEIPTS = 10000;

@@ -329,6 +329,7 @@ const inner = {
   }),
   events: ({ events: e }: LifeState) => ({ attended: e.attended, count: e.count, spray: e.spray, sprayed: e.sprayed }),
   growth: ({ growth: g }: LifeState) => ({ tables: g.tables, welcomed: g.welcomed, referrals: g.referrals }),
+  stories: ({ stories: s }: LifeState) => ({ running: s.running, scenes: s.scenes, seq: s.seq }),
   business: ({ business: b }: LifeState) => ({ opened: b.opened, sales: b.sales, spent: b.spent, buys: b.buys, bag: b.bag }),
   unilagStudent: ({ unilagStudent: u }: LifeState) => ({
     status: u.status, programme: u.programme, studentId: u.studentId, admittedDay: u.admittedDay, applicationCount: u.applicationCount, term: u.term, records: u.records,
@@ -354,20 +355,22 @@ const activeReaders = {
 } satisfies { [K in ActiveKind]: (action: Extract<ActiveAction, { kind: K }>) => object }
 
 /** Every field read is present (not undefined), and the fields read are exactly the keys that exist. */
-function complete(read: Record<string, unknown>, actual: object, what: string): void {
+function complete(read: Record<string, unknown>, actual: object, what: string, optional: readonly string[] = []): void {
   for (const [field, value] of Object.entries(read)) assert.notEqual(value, undefined, `${what}.${field} is declared in the types but missing from the state`)
-  assert.deepEqual(keys(read), keys(actual), `${what}: the declared fields are the fields that exist`)
+  for (const field of optional) if (Object.hasOwn(actual, field)) assert.notEqual(Reflect.get(actual, field), undefined, `${what}.${field} is present but undefined`)
+  assert.deepEqual(keys(read), keys(actual).filter((key) => !optional.includes(key)), `${what}: the declared fixed fields are the fixed fields that exist`)
 }
 
 function checkState(state: LifeState, what: string): void {
   assert.deepEqual(keys(state), sorted(LIFE_STATE_KEYS), `${what}: top-level keys`)
   for (const read of Object.values(readers)) for (const [field, value] of Object.entries(read(state))) assert.notEqual(value, undefined, `${what}: state.${field}`)
   // A field that is ABSENT until it has something to say (the ride debt, a location confirmation) is listed but need not exist.
-  const optional = ['rideDebt', 'confirmed', 'free', 'dilemmas', 'coupon']
+  const optional = ['rideDebt', 'confirmed', 'free', 'dilemmas', 'coupon', 'overflow', 'rumours', 'followUps']
   for (const [slice, list] of Object.entries(SLICE_FIELD_KEYS)) {
     assert.deepEqual(keys(state[slice as keyof typeof SLICE_FIELD_KEYS]).filter((key) => !optional.includes(key)), sorted(list).filter((key) => !optional.includes(key)), `${what}: keys of state.${slice}`)
   }
-  for (const [slice, read] of Object.entries(inner)) complete(read(state), state[slice as keyof typeof inner], `${what}: state.${slice}`)
+  const optionalInner: Readonly<Record<string, readonly string[] | undefined>> = { home: ['overflow'], social: ['coupon', 'free', 'rumours', 'followUps'] }
+  for (const [slice, read] of Object.entries(inner)) complete(read(state), state[slice as keyof typeof inner], `${what}: state.${slice}`, optionalInner[slice])
   assert.deepEqual(keys(state.needs), sorted(NEED_IDS), `${what}: state.needs`)
   assert.deepEqual(keys(state.decay), sorted(NEED_IDS), `${what}: state.decay`)
   assert.deepEqual(keys(state.skills), sorted(SKILL_IDS), `${what}: state.skills`)
@@ -435,7 +438,6 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   for (const mode of shown.travel.destinations.flatMap((destination) => destination.modes)) {
     assert.deepEqual(keys(mode), ['blocked', 'blurb', 'fare', 'fuel', 'icon', 'id', 'label', 'needs', 'seconds', 'slow', 'xp'], `${what}: mode card`)
   }
-  assert.deepEqual(keys(shown.wallet.statement), ['closing', 'kept', 'linesOpening', 'opening', 'problems', 'reconciled', 'totals'], `${what}: statement`)
   assert.deepEqual(keys(shown.needs.mood), ['icon', 'label', 'score'], `${what}: mood`)
   for (const card of shown.activities.cards) {
     assert.equal(typeof card.cost, 'number')
@@ -454,7 +456,7 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   assert.deepEqual(keys(shown.goals.chain), ['current', 'finished', 'index', 'started', 'total'], `${what}: goal chain`)
   assert.deepEqual(keys(shown.onboarding.timing), ['bornAt', 'firstAt', 'playedAt', 'settledAt'], `${what}: onboarding timing`)
   assert.deepEqual(keys(shown.onboarding.own), ['rent', 'startCash'], `${what}: the own-house start`)
-  assert.deepEqual(keys(shown.onboarding.wardrobe), ['accessories', 'fabric', 'hair', 'outfit'], `${what}: view wardrobe`)
+  assert.deepEqual(keys(shown.onboarding.wardrobe), ['accessories', 'fabric', 'hair', 'outfit', 'wearables'], `${what}: view wardrobe`)
   for (const item of shown.onboarding.boutique) {
     assert.deepEqual(keys(item).filter((key) => key !== 'slot'), ['blocked', 'id', 'kind', 'label', 'owned', 'price', 'wearing'], `${what}: boutique item`)
     assert.equal('slot' in item, item.kind === 'accessories', `${what}: only an accessory has a slot`)
@@ -742,9 +744,7 @@ test('the campus id unions are exactly the campus tables', () => {
   assert.deepEqual(sorted(DISCOVERY_TRAIL.map((stop) => stop.id)), idsOf<TrailStopId>({
     'main-gate': true, 'new-hall': true, library: true, engineering: true, sports: true, auditorium: true, lagoon: true, 'student-union': true,
   }))
-  assert.deepEqual(sorted(SHUTTLE_STOPS.map((stop) => stop.id)), idsOf<ShuttleStopId>({
-    'main-gate': true, 'new-hall-shopping': true, senate: true, engineering: true, 'sports-centre': true, 'second-gate': true, 'dli-building': true, 'lagoon-front': true,
-  }))
+  assert.deepEqual(sorted(SHUTTLE_STOPS.map((stop) => stop.id)), sorted(['main-gate', 'senate', 'engineering', 'sports-centre', 'dli-building', 'lagoon-front'] satisfies ShuttleStopId[]))
   assert.deepEqual(keys(LECTURE_SLOTS), idsOf<LectureSlotId>({ morning: true, afternoon: true, night: true }))
   assert.deepEqual(keys(UNILAG_BETA_RULES), idsOf<keyof UnilagBetaRules>({
     admissionFee: true, tuition: true, levy: true, hostelFee: true, hostelSleepSeconds: true, hostelSleepEnergy: true, semesterDays: true, lectureSeconds: true,

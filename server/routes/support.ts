@@ -16,8 +16,9 @@
  * they are still there after a reload. Operators read and answer reports through /api/mod/.
  */
 import { supportService } from '../support/service.ts';
-import { statementOf } from '../../src/game/systems/wallet.ts';
+import { statementOf } from '../../src/game/wallet-statement.ts';
 import { outcomeKey } from './core.ts';
+import { walletHistory } from '../economy/history.ts';
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts';
 
 export default function supportRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
@@ -52,6 +53,16 @@ export default function supportRoutes(ctx: RouteContext): Record<RouteKey, Route
         const session = request.requireSession(db);
         if (!ctx.allow(`support:http:${session.publicId}`, 30)) throw ctx.fail(429, 'rate_limited');
         return service.mine(db, session);
+      });
+      return { body: result };
+    },
+    'GET /api/support/history': async (request) => {
+      const raw = request.query.get('after'), after = raw === null || raw === '' ? 0 : Number(raw);
+      if (!Number.isSafeInteger(after) || after < 0) throw ctx.fail(400, 'invalid_cursor');
+      const result = await ctx.store.read((db) => {
+        const session = request.requireSession(db);
+        if (!ctx.allow(`support:history:${session.publicId}`, 60)) throw ctx.fail(429, 'rate_limited');
+        return walletHistory(db, session.publicId, after);
       });
       return { body: result };
     },

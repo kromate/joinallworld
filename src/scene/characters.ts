@@ -38,6 +38,11 @@
  */
 import type * as THREE from 'three';
 import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.ts';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { avatarProportions, normalizeAvatarAppearance } from '../types/avatar.ts';
+import type { AvatarLookExtensions } from '../types/avatar.ts';
+import { normalizeAvatarWearables, resolveAvatarWearablesForRenderer } from '../game/wardrobe/rules.ts';
+import { AVATAR_WEARABLE_CATALOGUE } from '../game/wardrobe/catalogue.ts';
 import { AVATAR_LOW_TRIANGLES } from '../budgets.ts';
 import type { Kit } from './kit.ts';
 import type { Batch, BatchOptions, Colour, ThreeModule, Vec3 } from './types.ts';
@@ -69,7 +74,7 @@ export interface LookOptions {
   outfitColor: readonly Swatch[];
 }
 /** A complete look: every field set, colours as '#rrggbb'. */
-export interface Look {
+export interface Look extends AvatarLookExtensions {
   body: Body;
   hair: string;
   outfit: string;
@@ -101,6 +106,7 @@ export interface Drawing {
 }
 /** Options of drawAvatar and buildAvatar. */
 export interface DrawOptions {
+  sleeping?: boolean;
   x?: number; y?: number; z?: number; ry?: number;
   pose?: Pose;
   /** The phase of 'walk' or 'jog', 0 … 1. */
@@ -109,6 +115,8 @@ export interface DrawOptions {
   seat?: number;
   seed?: unknown;
   scale?: number;
+  /** Internal buildAvatar fitting applies complete proportions after batching. */
+  appearanceFit?: boolean;
   marker?: Marker | null;
   detail?: DetailLevel;
 }
@@ -116,7 +124,8 @@ export interface AvatarOptions extends DrawOptions { rig?: boolean }
 export interface DrawnAvatar { look: Look; top: number }
 /** The movable parts of a rigged avatar (each a Group pivoted at its joint). */
 export type AvatarParts = Record<PartName | 'body', THREE.Group>;
-export interface AvatarUserData { look: Look; top: number; triangles: number; dispose: () => void; parts?: AvatarParts }
+interface Bend { geometry: THREE.BufferGeometry; start: number; position: Float32Array; normal: Float32Array; pivotY: number; angle: number; kind: 'calf' | 'fore'; side: 0 | 1 }
+export interface AvatarUserData { look: Look; top: number; triangles: number; dispose: () => void; parts?: AvatarParts; bends?: Bend[] }
 /** What buildAvatar returns. */
 export interface AvatarGroup extends THREE.Group { userData: AvatarUserData }
 /** An avatar built with `rig: true`: its parts are there. */
@@ -224,6 +233,8 @@ export function normalizeLook(look?: unknown, seed?: unknown): Look {
     accessories: pickAccessories(recorded ? source.accessories : SEEDED_ACCESSORIES[pick('accessories') % SEEDED_ACCESSORIES.length]),
     face: pickOption(source.face, LOOK_OPTIONS.face, recorded ? 0 : pick('face')),
     expression: pickOption(source.expression, LOOK_OPTIONS.expression, 0),
+    ...(source.wearables != null ? { wearables: normalizeAvatarWearables(source.wearables) } : {}),
+    ...(source.appearance != null ? { appearance: normalizeAvatarAppearance(source.appearance) } : {}),
   };
 }
 
@@ -287,6 +298,11 @@ const OUTFIT: Record<string, Outfit> & { casual: Outfit } = {
   agbada: { sleeve: 'long', legs: 'trousers', shoe: 'dress', hem: -0.2, robe: true },
   gown: { sleeve: 'cap', legs: 'dress', shoe: 'heel', hem: -0.1, dress: true },
 };
+OUTFIT['avatar-abaya'] = { sleeve: 'long', legs: 'dress', shoe: 'slide', hem: -0.13, bulk: 0.018 };
+OUTFIT['avatar-buba-iro'] = { sleeve: 'wide', legs: 'wrapper', shoe: 'slide', hem: -0.1, gown: true };
+OUTFIT['avatar-school'] = { sleeve: 'short', legs: 'trousers', shoe: 'dress', hem: -0.1, collar: true };
+OUTFIT['avatar-school-skirt'] = { sleeve: 'short', legs: 'skirt', shoe: 'dress', hem: -0.1, collar: true };
+OUTFIT['avatar-work'] = { sleeve: 'long', legs: 'trousers', shoe: 'boot', hem: -0.1, collar: true };
 // [upper, sole] colours.
 type Shoe = [Colour, Colour];
 const SHOES: Record<string, Shoe> & { sneaker: Shoe } = { sneaker: ['#2c3340', '#f1efe9'], dress: ['#1f1c1c', '#141212'], heel: ['#c9a13a', '#a8842a'], boot: ['#8a6a3c', '#2b2622'], slide: ['#3a342e', '#d9cfb8'] };
@@ -451,9 +467,10 @@ const weave = (look: Look, colours: Colours): Paint => ({ ankara: [colours[0], c
 // ---- Low detail (crowds, venue and home scenes): at most 600 triangles --------------------------
 
 const LOW_BUDGET = AVATAR_LOW_TRIANGLES.value;
-function headLow(b: Drawing, look: Look): void {
-  b.ball(0, HEAD.y, 0, 0.26, 0.27, 0.26, look.skin, { seg: 8 });
-  for (const side of [-1, 1]) b.quad(side * 0.095, 2.215, 0.249, 0.055, 0.065, INK, { ry: side * 0.3 });
+function headLow(b: Drawing, look: Look, sleeping = false): void {
+  const age = look.appearance?.ageAppearance === 'elder' ? 1 : look.appearance?.ageAppearance === 'mature' ? 0.55 : 0;
+  b.ball(0, HEAD.y - age * 0.004, 0, 0.26 + age * 0.002, 0.27 + age * 0.004, 0.26, look.skin, { seg: 8 });
+  for (const side of [-1, 1]) b.quad(side * 0.095, 2.215, 0.249, 0.055, sleeping ? 0.006 : 0.065, INK, { ry: side * 0.3 });
   b.quad(0, 2.07, 0.238, 0.11, 0.026, mix(look.skin, '#4a1d1a', 0.55), { rx: 0.25 });
 }
 const capLow = (b: Drawing, c: Colour) => b.ball(0, 2.32, -0.03, 0.275, 0.19, 0.27, c, { seg: 7 });
@@ -524,13 +541,84 @@ const HAIR_LOW: Record<string, HairDraw> & { lowcut: HairDraw } = {
 // Under a hat only hair that hangs below it is drawn in full; the rest is cut short.
 const HANGING = new Set(['braids', 'locs', 'long', 'ponytail', 'bald', 'cornrows', 'fade', 'lowcut']);
 
+/** Canonical wearable choices adapt the existing clothed figure, never remove its safe base. */
+function fallbackLook(look: Look): Look {
+  if (!look.wearables?.length) return look;
+  const ids = resolveAvatarWearablesForRenderer(look), full = ids.find(id => AVATAR_WEARABLE_CATALOGUE[id].slot === 'full');
+  const mapped = full === 'abaya' ? 'avatar-abaya' : full === 'buba-iro' ? 'avatar-buba-iro' : full === 'school-uniform' ? look.body === 'woman' ? 'avatar-school-skirt' : 'avatar-school' : full === 'work-uniform' ? 'avatar-work' : full ?? look.outfit;
+  const accessories = ids.filter(id => id.startsWith('legacy-')).map(id => id.slice(7));
+  if (ids.includes('wristwatch')) accessories.push('watch');
+  return { ...look, outfit: mapped, outfitColor: full === 'school-uniform' ? CLOTH_WHITE : look.outfitColor, accessories };
+}
+function fallbackHead(look: Look): string | undefined { return look.wearables?.find(id => AVATAR_WEARABLE_CATALOGUE[id].slot === 'head'); }
+function drawFallbackHead(b: Drawing, id: string, look: Look, fine: boolean): void {
+  const fabric = accessoryColour(look, fabricColours(look)), seg = fine ? 10 : 5;
+  if (id === 'hijab-drape' || id === 'hijab-wrap') {
+    b.ball(0, 2.43, -0.025, 0.292, 0.163, 0.29, fabric, { seg });
+    // Back and sides surround an open front face aperture.
+    b.quad(0, 2.22, -0.285, 0.55, 0.48, fabric, { ry: Math.PI });
+    for (const sign of [-1, 1]) b.quad(sign * 0.278, 2.2, -0.02, 0.44, 0.43, fabric, { ry: sign * Math.PI / 2 });
+    b.ball(0, 1.98, -0.025, id === 'hijab-drape' ? 0.39 : 0.29, 0.115, 0.29, fabric, { seg });
+    if (id === 'hijab-wrap') b.box(-0.18, 1.84, 0.19, 0.11, 0.35, 0.028, fabric);
+  } else if (id === 'turban') {
+    b.ball(0, 2.44, -0.03, 0.3, 0.19, 0.3, fabric, { seg });
+    b.cyl(0, 2.39, -0.025, 0.3, 0.06, shade(fabric, -0.12), { seg: fine ? 12 : 6, sz: 1.03, open: true });
+    b.box(0, 2.47, 0.27, 0.08, 0.1, 0.033, fabric);
+  } else if (id === 'gele-fan') {
+    b.ball(0, 2.39, -0.04, 0.28, 0.15, 0.28, fabric, { seg });
+    for (const sign of [-1, 0, 1]) b.quad(sign * 0.17, 2.7, -0.08, 0.3, 0.33, fabric, { rz: sign * -0.32 });
+  } else {
+    b.ball(0, 2.42, -0.035, 0.29, 0.16, 0.28, fabric, { seg });
+    for (let i = 0; i < 3; i++) b.cyl(0.12, 2.62, 0.02 + i * 0.012, 0.13 - i * 0.033, 0.025, i % 2 ? shade(fabric, -0.12) : fabric, { seg: fine ? 10 : 5, rx: Math.PI / 2, open: true });
+  }
+}
+function drawFallbackNeck(b: Drawing, look: Look, fine: boolean): void {
+  const id = look.wearables?.find(value => AVATAR_WEARABLE_CATALOGUE[value].slot === 'neck');
+  if (!id) return;
+  const cloth = accessoryColour(look, fabricColours(look)), seg = fine ? 12 : 6;
+  if (id === 'neck-scarf' || id === 'shoulder-wrap') {
+    b.cyl(0, 0.87, 0, BODY[look.body].neck + 0.052, 0.1, cloth, { seg, open: true });
+    if (id === 'neck-scarf') b.box(0.05, 0.63, 0.2, 0.11, 0.4, 0.025, cloth);
+    else b.cyl(0, 0.57, -0.02, BODY[look.body].shoulder + 0.065, 0.37, cloth, { seg, top: 0.7, sz: 0.85, open: true });
+  } else {
+    const beads = id === 'beads' || id === 'coral';
+    const tint = id === 'coral' ? CORAL : beads ? '#9c713b' : GOLD;
+    const points = Array.from({ length: fine ? 13 : 7 }, (_, i): Vec3 => {
+      const a = i / (fine ? 12 : 6) * TAU;
+      return [Math.sin(a) * 0.16, 0.86 - Math.max(0, Math.cos(a)) * 0.16, Math.cos(a) > 0 ? 0.235 : Math.cos(a) * 0.12];
+    });
+    chain(b, points, id === 'chain-cuban' ? 0.012 : 0.006, id === 'chain-cuban' ? 0.012 : 0.006, tint, fine ? 5 : 3);
+    if (beads) for (let i = 0; i < points.length - 1; i += fine ? 1 : 2) b.box(points[i]![0], points[i]![1], points[i]![2], 0.035, id === 'coral' ? 0.047 : 0.035, 0.035, tint);
+    if (id === 'chain-pendant') b.box(0, 0.66, 0.25, 0.055, 0.08, 0.015, GOLD);
+  }
+}
+function drawFallbackWrist(b: Drawing, look: Look, end: number): void {
+  if (!look.wearables?.includes('bangles')) return;
+  for (const y of [end + 0.02, end + 0.05]) b.cyl(0, y, 0, BODY[look.body].wrist + 0.012, 0.015, GOLD, { seg: 6, open: true });
+}
+function drawFallbackShoe(b: Drawing, look: Look, end: number, fine: boolean, simple = false): boolean {
+  const id = look.wearables?.find(value => AVATAR_WEARABLE_CATALOGUE[value].slot === 'shoes');
+  if (!id) return false;
+  if (id === 'sneakers' && simple) {
+    b.box(0, end - 0.09, 0.07, 0.19, 0.045, 0.36, CLOTH_WHITE);
+    b.box(0, end - 0.035, 0.07, 0.18, 0.085, 0.34, INK);
+    b.box(0, end + 0.01, 0.12, 0.12, 0.015, 0.095, CLOTH_WHITE); return true;
+  }
+  if (id === 'sneakers') { shoeHigh(b, 'sneaker', end, look.skin, SHOES.sneaker, fine); return true; }
+  b.box(0, end - 0.08, 0.07, 0.19, 0.045, 0.35, '#272724');
+  b.box(0, end - 0.046, 0.07, 0.16, 0.06, 0.31, look.skin);
+  b.box(0, end - 0.003, 0.09, 0.2, 0.025, id === 'slippers' ? 0.13 : 0.035, '#705539');
+  if (id === 'sandals') b.box(0, end + 0.018, -0.035, 0.18, 0.035, 0.03, '#705539');
+  return true;
+}
+
 /** One tube of a low-detail limb. */
 interface Tube { length: number; r0: number; r1: number; colour: Colour }
 function limbLow(b: Drawing, name: string, x: number, y: number, z: number, pitch: number, roll: number, upper: Tube, bend: number, lower: Tube, end?: (end: number) => void): void {
   const tube = (tube: Tube, open: boolean) => b.cyl(0, -tube.length / 2, 0, tube.r1, tube.length, tube.colour, { seg: 5, top: q3(tube.r0 / tube.r1), open });
   part(b, name, x, y, z, () => {
     tube(upper, false);
-    b.at(0, -upper.length, 0, 0, () => { tube(lower, true); end?.(-lower.length); }, bend);
+    part(b, name.replace('leg', 'calf').replace('arm', 'forearm'), 0, -upper.length, 0, () => { tube(lower, true); end?.(-lower.length); }, bend);
   }, pitch, roll);
 }
 
@@ -547,15 +635,15 @@ function markerOf(b: Drawing, marker: Marker | null | undefined): void {
 const accessoryColour = (look: Look, colours: Colours): Colour => (look.fabric === 'plain' ? shade(look.outfitColor, -0.25) : colours[1]);
 
 /** What drawLow and drawHigh need besides the look. */
-interface Stance { joints: Joints; sitting: boolean; marker: Marker | null | undefined }
-function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): void {
+interface Stance { joints: Joints; sitting: boolean; marker: Marker | null | undefined; sleeping?: boolean }
+function drawLow(b: Drawing, look: Look, { joints, sitting, marker, sleeping }: Stance): void {
   const style = OUTFIT[look.outfit] || OUTFIT.casual, m = BODY[look.body], woman = look.body === 'woman';
   const colours = fabricColours(look), top = look.outfitColor, bottoms = look.bottomsColor, skin = look.skin;
   // Accessories are drawn only while they fit the budget: `reserve` is what the rest of the body still needs.
   const start = b.triangles;
   let reserve = 84 + (marker ? (marker === 'crown' ? 32 : 20) : 0);
   const room = (cost: number) => b.triangles - start + cost + reserve <= LOW_BUDGET;
-  const skirt = woman && look.outfit === 'office', long = style.legs === 'wrapper' || style.legs === 'dress';
+  const skirt = woman && look.outfit === 'office' || style.legs === 'skirt', long = style.legs === 'wrapper' || style.legs === 'dress';
   const bareCalf = style.legs === 'shorts' || skirt, bulk = style.bulk || 0;
   const shoe = (SHOES[skirt ? 'dress' : style.shoe] || SHOES.sneaker)[style.shoe === 'slide' ? 1 : 0];
   const has = (id: string) => look.accessories.includes(id);
@@ -565,10 +653,10 @@ function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): v
         { length: 0.5, r0: m.leg + 0.008, r1: m.leg - 0.012, colour: long || skirt ? shade(bottoms, -0.12) : bottoms },
         joints.calf[side],
         { length: 0.46, r0: m.leg - 0.02, r1: m.leg - 0.04, colour: long ? bottoms : bareCalf ? (style.socks ? CLOTH_WHITE : skin) : bottoms },
-        (end) => b.box(0, end - 0.06, 0.07, 0.19, 0.13, 0.38, shoe));
+        (end) => { if (!drawFallbackShoe(b, look, end, false, true)) b.box(0, end - 0.06, 0.07, 0.19, 0.13, 0.38, shoe); });
     }
   } else {
-    for (const side of [-1, 1]) part(b, side > 0 ? 'legL' : 'legR', side * 0.14, 1.04, 0, () => b.box(0, -0.975, 0.07, 0.19, 0.13, 0.38, shoe));
+    for (const side of [-1, 1]) part(b, side > 0 ? 'legL' : 'legR', side * 0.14, 1.04, 0, () => { if (!drawFallbackShoe(b, look, -0.96, false, true)) b.box(0, -0.975, 0.07, 0.19, 0.13, 0.38, shoe); });
   }
   if (long) {
     const dress = style.dress, rings: Colours = dress ? [top, top, bottoms] : look.fabric === 'plain' ? [bottoms, bottoms, shade(bottoms, -0.15)] : [colours[0], colours[1], colours[2]];
@@ -616,10 +704,12 @@ function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): v
     if (style.dress) b.cyl(0, 0.2, 0, m.waist + 0.03 + bulk, 0.07, bottoms, { seg: 8, sz: aspect, open: true });
     b.cyl(0, 0.86, 0, m.neck, 0.18, skin, { seg: 6 });
     part(b, 'head', 0, 0.86, 0, () => b.at(0, -HIP_Y - 0.86, 0, 0, () => {
-      headLow(b, look);
+      headLow(b, look, sleeping);
       const head = style.helmet || look.hair === 'gele' ? null : look.accessories.find((id) => ACCESSORY_SLOTS[id] === 'head');
       const covered = style.helmet || head;
-      if (!head || HANGING.has(look.hair)) (covered && !HANGING.has(look.hair) ? HAIR_LOW.lowcut : HAIR_LOW[look.hair] || HAIR_LOW.lowcut)(b, look.hairColor, look, colours); // a hat or wrap hides short hair
+      const selectedHead = fallbackHead(look);
+      if (selectedHead) drawFallbackHead(b, selectedHead, look, false);
+      else if (!head || HANGING.has(look.hair)) (covered && !HANGING.has(look.hair) ? HAIR_LOW.lowcut : HAIR_LOW[look.hair] || HAIR_LOW.lowcut)(b, look.hairColor, look, colours); // a hat or wrap hides short hair
       if (style.helmet) {
         b.ball(0, 2.37, -0.01, 0.31, 0.2, 0.31, '#f2c230', { seg: 6 });
         b.box(0, 2.34, 0.22, 0.42, 0.04, 0.24, '#f2c230');
@@ -634,6 +724,7 @@ function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): v
       markerOf(b, marker);
       reserve = 84;
     }));
+    drawFallbackNeck(b, look, false);
     if (has('chain') && room(12)) b.box(0, 0.7, front(0.7) - 0.01, 0.2, 0.035, 0.02, GOLD);
     if (has('backpack') && room(12)) b.box(0, 0.42, -(depth + 0.09), 0.36, 0.46, 0.18, '#3b4658');
     if (has('handbag') && room(12)) b.box(m.hip + 0.13, -0.08, 0.02, 0.09, 0.2, 0.26, '#b5763a');
@@ -645,6 +736,7 @@ function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): v
         { length: 0.38, r0: m.arm, r1: m.arm - 0.016, colour: style.sleeve === 'long' ? top : skin },
         (end) => {
           b.box(0, end - 0.06, 0, 0.11, 0.14, 0.1, skin);
+          if (side) drawFallbackWrist(b, look, end);
           reserve = side ? 0 : 42;
           if (side && has('watch') && room(12)) b.box(0, end + 0.03, 0, 0.14, 0.05, 0.14, '#23262d');
           if (!side && has('beads') && room(12)) b.box(0, end + 0.03, 0, 0.14, 0.04, 0.14, CORAL);
@@ -656,12 +748,12 @@ function drawLow(b: Drawing, look: Look, { joints, sitting, marker }: Stance): v
 // ---- Medium and high detail: one model, drawn with fewer segments and fewer small parts at medium ----
 
 /** The same batch with every curved primitive drawn with fewer segments. */
-function coarse(b: Drawing, scale: number): Drawing {
+function coarse(b: Drawing, scale: number, minCylinder = 5): Drawing {
   const fewer = (o: BatchOptions | undefined, least: number): BatchOptions => ({ ...o, seg: Math.max(least, Math.round((o?.seg || 8) * scale)) });
   // The smallest spheres a sphere template allows are 5 round by 4 high.
   const lite: Drawing = Object.create(b);
   lite.ball = (x: number, y: number, z: number, rx: number, ry: number, rz: number, colour: Colour, o?: BatchOptions) => b.ball(x, y, z, rx, ry, rz, colour, fewer(o, 5));
-  lite.cyl = (x: number, y: number, z: number, r: number, h: number, colour: Colour, o?: BatchOptions) => b.cyl(x, y, z, r, h, colour, fewer(o, 5));
+  lite.cyl = (x: number, y: number, z: number, r: number, h: number, colour: Colour, o?: BatchOptions) => b.cyl(x, y, z, r, h, colour, fewer(o, minCylinder));
   return lite;
 }
 const cover = (b: Drawing, rings: Ring[], from: number, to: number, pad: number, colour: Colour, seg: number) => loft(b, padded(clip(rings, from, to), pad), colour, { seg });
@@ -692,24 +784,28 @@ function dome(count: number, coverage = 0.6): Vec3[] {
   });
 }
 
-function headHigh(b: Drawing, look: Look, woman: boolean, fine: boolean): void {
+function headHigh(b: Drawing, look: Look, woman: boolean, fine: boolean, sleeping = false): void {
   // A clean stylised face: every part is a deliberate shape (primitives cannot be blended into one another).
+  const age = look.appearance?.ageAppearance === 'elder' ? 1 : look.appearance?.ageAppearance === 'mature' ? 0.55 : 0;
   const skin = look.skin, F = FACES[look.face] || FACES.oval, mood = look.expression;
   const dark = channels(skin).reduce((sum, v) => sum + v, 0) < 250; // the two darkest tones: features are lifted, not darkened
   const deep = shade(skin, -0.22), white = '#f6f1e7', fz = (x: number, y: number) => faceZ(x, y, F), relief = shade(skin, dark ? 0.1 : -0.05);
-  b.ball(0, HEAD.y + HEAD.ry - F.ry, 0, HEAD.rx, F.ry, HEAD.rz, skin, { seg: 28 });
+  b.ball(0, HEAD.y + HEAD.ry - F.ry - age * 0.004, 0, HEAD.rx + age * 0.002, F.ry + age * 0.004, HEAD.rz, skin, { seg: 28 });
+  if (age) for (const sign of [-1, 1]) b.quad(sign * 0.115, 2.148, fz(sign * 0.115, 2.148) + 0.004, 0.048, 0.003 * age, mix(skin, INK, 0.2), { ry: sign * 0.3 });
   if (F.jaw) b.ball(0, JAW.y, JAW.z, F.jaw, JAW.ry, JAW.rz, skin, { seg: 24 });
   const brow = mix(look.hairColor, INK, 0.5), grin = mood === 'grin', flat = mood === 'neutral';
   for (const side of [-1, 1]) {
     const ex = side * 0.1, ey = 2.214, ez = fz(ex, ey), turn = side * 0.38;
+    if (!sleeping) {
     b.ball(ex, ey, ez - 0.01, 0.052, 0.05, 0.022, white, { seg: 10, ry: turn });
     b.ball(ex - side * 0.004, ey - 0.003, ez + 0.003, 0.032, 0.036, 0.013, '#3d2515', { seg: 9, ry: turn });
     if (fine) {
       b.ball(ex - side * 0.004, ey - 0.003, ez + 0.011, 0.017, 0.019, 0.007, '#0d0a09', { seg: 8, ry: turn });
       b.ball(ex + 0.012, ey + 0.012, ez + 0.017, 0.008, 0.008, 0.004, white, { seg: 6 });
     }
-    // Upper lid and lash line; a grin narrows the eye.
-    const lid = ey + (grin ? 0.046 : 0.06);
+    }
+    // Upper lid and lash line; sleeping removes whites and pupils without changing the saved expression.
+    const lid = sleeping ? ey : ey + (grin ? 0.046 : 0.06);
     b.ball(ex, lid, ez - 0.01, 0.054, 0.014, 0.024, skin, { seg: 9, ry: turn });
     b.box(ex + side * 0.004, lid - 0.012, ez + 0.011, 0.098, woman ? 0.009 : 0.005, 0.012, woman ? INK : mix(skin, INK, 0.7), { ry: turn, rz: side * -0.03 });
     if (woman && fine) b.box(ex + side * 0.054, lid - 0.006, ez + 0.002, 0.03, 0.01, 0.01, INK, { ry: turn, rz: side * 0.55 }); // lash flick
@@ -959,7 +1055,7 @@ function limbHigh(b: Drawing, name: string, x: number, y: number, z: number, pit
   const piece = (p: Piece) => { loft(b, p.rings, p.colour, { seg: 14 }); p.extra?.(); };
   part(b, name, x, y, z, () => {
     piece(upper);
-    b.at(0, -upper.length, 0, 0, () => {
+    part(b, name.replace('leg', 'calf').replace('arm', 'forearm'), 0, -upper.length, 0, () => {
       const r = upper.rings[0]![1] * 0.975; // just inside both tubes, so a bent joint is filled and a straight one shows no seam
       b.ball(0, 0, 0, r, r, r, upper.joint ?? upper.colour, { seg: 12 });
       piece(lower);
@@ -1014,13 +1110,13 @@ function eyewear(b: Drawing, kind: string, face: FaceShape, fine: boolean): void
 
 // ---- The model -----------------------------------------------------------------------------------
 
-function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, fine: boolean): void {
+function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker, sleeping }: Stance, fine: boolean): void {
   const b = fine ? b0 : coarse(b0, 0.36);
   const per = fine ? 3 : 1, SEG = 24;
   const style = OUTFIT[look.outfit] || OUTFIT.casual, m = BODY[look.body], woman = look.body === 'woman';
   const colours = fabricColours(look), top = look.outfitColor, bottoms = look.bottomsColor, skin = look.skin;
   const plain = look.fabric === 'plain', has = (id: string) => look.accessories.includes(id);
-  const skirt = woman && look.outfit === 'office', legs = skirt ? 'skirt' : style.legs;
+  const skirt = woman && look.outfit === 'office' || style.legs === 'skirt', legs = skirt ? 'skirt' : style.legs;
   const shoe = skirt ? 'heel' : style.shoe, shoeColours = skirt ? SHOES.dress : SHOES[shoe];
   const bulk = style.bulk || 0, aspect = m.aspect, trim = shade(top, -0.2);
   const wrapper: Colours = plain ? [bottoms, bottoms, shade(bottoms, -0.15)] : colours;
@@ -1055,10 +1151,10 @@ function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, 
             for (const y of [-0.225, -0.255]) b.cyl(0, y, 0, radiusAt(shin, y) + 0.011, 0.014, top, { seg: 16, open: true });
           }
         } },
-        (end) => shoeHigh(b, shoe, end, skin, shoeColours, fine));
+        (end) => { if (!drawFallbackShoe(b, look, end, fine)) shoeHigh(b, shoe, end, skin, shoeColours, fine); });
     }
   } else {
-    for (const side of [-1, 1]) part(b, side > 0 ? 'legL' : 'legR', side * m.legX, 1.04, 0, () => shoeHigh(b, shoe, -0.96, skin, shoeColours, fine));
+    for (const side of [-1, 1]) part(b, side > 0 ? 'legL' : 'legR', side * m.legX, 1.04, 0, () => { if (!drawFallbackShoe(b, look, -0.96, fine)) shoeHigh(b, shoe, -0.96, skin, shoeColours, fine); });
   }
   // The garment below the waist
   if (legs === 'wrapper') {
@@ -1236,6 +1332,7 @@ function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, 
       if (fine) band(b, vest, 0.055, 0.03, '#c9650f', { seg: SEG, aspect, lift: 0.002 });
     }
     // Things worn on the body
+    drawFallbackNeck(b, look, fine);
     if (has('chain')) {
       if (!fine) b.cyl(0, 0.77, 0.02, m.neck + 0.05, 0.02, GOLD, { seg: 14, sz: 1.1, rx: 0.5, open: true });
       for (let i = 0; i < (fine ? 30 : 0); i++) {
@@ -1266,10 +1363,12 @@ function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, 
     }
 
     part(b, 'head', 0, 0.86, 0, () => b.at(0, -HIP_Y - 0.86, 0, 0, () => {
-      headHigh(b, look, woman, fine);
+      headHigh(b, look, woman, fine, sleeping);
       const hat = style.helmet || look.hair === 'gele' ? null : look.accessories.find((id) => ACCESSORY_SLOTS[id] === 'head');
       const hair = (style.helmet || hat) && !HANGING.has(look.hair) ? 'lowcut' : look.hair;
-      (HAIR_HIGH[hair] || HAIR_HIGH.lowcut)(b, look.hairColor, look, colours, fine);
+      const selectedHead = fallbackHead(look);
+      if (selectedHead) drawFallbackHead(b, selectedHead, look, fine);
+      else (HAIR_HIGH[hair] || HAIR_HIGH.lowcut)(b, look.hairColor, look, colours, fine);
       if (hat) headwear(b, hat, accessoryColour(look, colours), fine);
       if (has('sunglasses')) eyewear(b, 'sunglasses', FACES[look.face], fine);
       else if (has('glasses')) eyewear(b, 'glasses', FACES[look.face], fine);
@@ -1298,6 +1397,7 @@ function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, 
       const sleeveColour = wide && !plain ? colours[1] : top;
       const cap = (r: number, colour: Colour) => b.ball(0, 0, 0, r, r * 0.92, r, colour, { seg: 14 });
       const worn = () => {
+        if (side) drawFallbackWrist(b, look, -0.38);
         if (side && has('watch')) {
           const r = radiusAt(foreArm, -0.325) + (covered ? sp : 0);
           b.cyl(0, -0.325, 0, r + 0.006, 0.028, '#23262d', { seg: 14 });
@@ -1354,14 +1454,16 @@ function drawHigh(b0: Drawing, look: Look, { joints, sitting, marker }: Stance, 
  * blue dot), detail ('low' — the default — | 'medium' | 'high'; see the top of this file) }
  * Returns { look, top } where top is the height just above the head, for a name tag.
  */
-export function drawAvatar(b: Drawing, input?: unknown, { x = 0, y = 0, z = 0, ry = 0, pose = 'stand', stride, seat = 0.6, seed, scale = 1, marker = null, detail = 'low' }: DrawOptions = {}): DrawnAvatar {
-  const look = normalizeLook(input, seed);
+export function drawAvatar(b: Drawing, input?: unknown, { x = 0, y = 0, z = 0, ry = 0, pose = 'stand', stride, seat = 0.6, seed, scale = 1, appearanceFit = true, sleeping = false, marker = null, detail = 'low' }: DrawOptions = {}): DrawnAvatar {
+  const look = normalizeLook(input, seed), rendered = fallbackLook(look), proportions = avatarProportions(look.appearance);
+  if (appearanceFit) scale *= proportions.height;
   // A rig is drawn upright and still: its pose is set afterwards by turning its parts (poseAvatar).
   const posed = jointsOf(pose, stride), joints = b.part ? { ...posed, lean: 0, bob: 0 } : posed, sitting = pose === 'sit';
   const lift = (sitting ? seat + 0.13 - 1.05 : 0) + (joints.bob || 0);
   b.at(x, y + lift * scale, z, ry, () => {
-    if (detail === 'high' || detail === 'medium') drawHigh(b, look, { joints, sitting, marker }, detail === 'high');
-    else drawLow(b, look, { joints, sitting, marker });
+    const selected = look.wearables?.length ? coarse(b, detail === 'low' ? 0.65 : 0.88, detail === 'low' ? 3 : 5) : b;
+    if (detail === 'high' || detail === 'medium') drawHigh(selected, rendered, { joints, sitting, marker, sleeping }, detail === 'high');
+    else drawLow(selected, rendered, { joints, sitting, marker, sleeping });
   }, 0, 0, scale);
   return { look, top: y + (lift + 2.95) * scale };
 }
@@ -1396,17 +1498,31 @@ function rigBatch(THREE: ThreeModule): RigBatch {
 /**
  * Pose a rigged avatar by turning its parts — no geometry is rebuilt, so this is what a scene
  * calls while its player walks. options: { pose (default 'stand'), stride (0 … 1 for 'walk' and
- * 'jog') }. Shoulders and hips turn, the torso leans and the whole body bobs; elbows and knees
- * keep the bend the rig was built with. Returns the avatar.
+ * 'jog') }. Shoulders, hips, elbows and knees turn, the torso leans and the whole body bobs.
+ * Returns the avatar.
  */
 export function poseAvatar<T extends { userData?: unknown } | null | undefined>(avatar: T, { pose = 'stand', stride }: { pose?: Pose; stride?: number } = {}): T {
-  const parts = (avatar?.userData as { parts?: AvatarParts } | null | undefined)?.parts;
+  const data = avatar?.userData as { parts?: AvatarParts; bends?: Bend[] } | null | undefined;
+  const parts = data?.parts;
   if (!parts) return avatar;
   const joints = jointsOf(pose, stride);
   parts.torso.rotation.x = joints.lean || 0;
   parts.body.position.y = joints.bob || 0;
   parts.legR.rotation.x = joints.leg[0]; parts.legL.rotation.x = joints.leg[1];
   parts.armR.rotation.set(joints.arm[0][0], 0, -joints.arm[0][1]); parts.armL.rotation.set(joints.arm[1][0], 0, joints.arm[1][1]);
+  for (const bend of data?.bends ?? []) {
+    const angle = joints[bend.kind][bend.side];
+    if (angle === bend.angle) continue;
+    const c = Math.cos(angle), s = Math.sin(angle), position = bend.geometry.getAttribute('position'), normal = bend.geometry.getAttribute('normal');
+    for (let i = 0; i < bend.position.length; i += 3) {
+      const y = bend.position[i + 1]! - bend.pivotY, z = bend.position[i + 2]!, ny = bend.normal[i + 1]!, nz = bend.normal[i + 2]!;
+      const vertex = bend.start + i / 3;
+      position.setXYZ(vertex, bend.position[i]!, bend.pivotY + y * c - z * s, y * s + z * c);
+      normal.setXYZ(vertex, bend.normal[i]!, ny * c - nz * s, ny * s + nz * c);
+    }
+    position.needsUpdate = true; normal.needsUpdate = true; bend.angle = angle;
+    bend.geometry.boundingBox = null; bend.geometry.boundingSphere = null;
+  }
   return avatar;
 }
 
@@ -1418,7 +1534,8 @@ export function poseAvatar<T extends { userData?: unknown } | null | undefined>(
  * it by rotating transforms only: userData.parts = { body, torso, head, armL, armR, legL, legR },
  * each a THREE.Group whose origin is its pivot (hips, neck, shoulders, hip joints; rotation order
  * 'YXZ'). `body` holds everything and is what bobs; head and arms are children of `torso`, so they
- * follow its lean. Use poseAvatar(avatar, { pose, stride }) to pose it. A rig costs one draw call
+ * follow its lean. Calves and forearms bend within their limb's mesh using cached rest vertices.
+ * Use poseAvatar(avatar, { pose, stride }) to pose it. A rig costs one draw call
  * per part (six, plus one for a marker) instead of one or two.
  */
 export function buildAvatar(kit: Kit, look: unknown, options: AvatarOptions & { rig: true }): RiggedAvatar;
@@ -1433,17 +1550,20 @@ export function buildAvatar(kit: Kit, look?: unknown, options: AvatarOptions = {
   const dispose = () => { registry.delete(dispose); releaseObjects(meshes); group.parent?.remove(group); if (group.userData.parts) group.clear(); };
   if (!rig) {
     const batch = createBatch(THREE);
-    const drawn = drawAvatar(batch, look, rest);
+    const drawn = drawAvatar(batch, look, { ...rest, appearanceFit: false });
+    const proportions = avatarProportions(drawn.look.appearance);
+    group.scale.set(proportions.height * proportions.width, proportions.height, proportions.height * proportions.depth);
+    if (rest.pose === 'sit') group.position.y += (rest.seat ?? 0.6) * (rest.scale ?? 1) * (1 - proportions.height);
     const built = batch.build(sceneMaterials(kit));
     built.meshes.forEach((mesh) => { meshes.push(mesh); group.add(mesh); });
     registry.add(dispose);
-    group.userData = { look: drawn.look, top: drawn.top, triangles: built.triangles, dispose };
+    group.userData = { look: drawn.look, top: drawn.top * proportions.height, triangles: built.triangles, dispose };
     return group;
   }
   const { scale = 1, pose = 'stand', stride, ...still } = rest;
   const batch = rigBatch(THREE);
-  // Built with the pose's elbow and knee bends, then posed by its transforms.
-  const drawn = drawAvatar(batch, look, { ...still, pose: pose === 'sit' ? 'stand' : pose, stride });
+  // Every joint is drawn neutral and posed by its transforms.
+  const drawn = drawAvatar(batch, look, { ...still, appearanceFit: false, pose: pose === 'sit' ? 'stand' : pose, stride });
   const materials = sceneMaterials(kit);
   const holder = (name: string, parent: THREE.Object3D, pivot: { x: number; y: number; z: number }, origin: { x: number; y: number; z: number }) => {
     const node = new THREE.Group();
@@ -1456,15 +1576,35 @@ export function buildAvatar(kit: Kit, look?: unknown, options: AvatarOptions = {
   const zero = { x: 0, y: 0, z: 0 }, hips = { x: 0, y: HIP_Y, z: 0 };
   const body = holder('body', group, zero, zero);
   const parts = { body, torso: holder('torso', body, hips, zero) } as AvatarParts; // the other five are set in the loop below
+  const bends: Bend[] = [];
   fill(parts.torso, batch.root, hips);
   for (const name of ['head', 'armL', 'armR', 'legL', 'legR'] as const) {
     const pivot = batch.pivots.get(name) ?? hips, upper = name === 'legL' || name === 'legR' ? body : parts.torso;
     parts[name] = holder(name, upper, pivot, upper === body ? zero : hips);
-    fill(parts[name], batch.parts.get(name), zero);
+    if (name === 'head') { fill(parts[name], batch.parts.get(name), zero); continue; }
+    const lowerName = name.replace('leg', 'calf').replace('arm', 'forearm'), lower = batch.parts.get(lowerName), joint = batch.pivots.get(lowerName);
+    if (!lower || !joint) { fill(parts[name], batch.parts.get(name), zero); continue; }
+    const upperMeshes = batch.parts.get(name)!.build(materials).meshes;
+    for (const mesh of lower.build(materials).meshes) {
+      mesh.geometry.translate(joint.x, joint.y, joint.z);
+      const upper = upperMeshes.find((candidate) => candidate.material === mesh.material);
+      const position = mesh.geometry.getAttribute('position'), normal = mesh.geometry.getAttribute('normal');
+      const restPosition = Float32Array.from(position.array), restNormal = Float32Array.from(normal.array);
+      const start = upper?.geometry.getAttribute('position').count ?? 0;
+      let geometry = mesh.geometry;
+      if (upper) {
+        const merged = mergeGeometries([upper.geometry, geometry]);
+        if (!merged) throw new Error('avatar limb attributes cannot merge');
+        upper.geometry.dispose(); geometry.dispose(); upper.geometry = merged; geometry = merged;
+      } else upperMeshes.push(mesh);
+      bends.push({ geometry, start, position: restPosition, normal: restNormal, pivotY: joint.y, angle: NaN, kind: name.startsWith('leg') ? 'calf' : 'fore', side: name.endsWith('R') ? 0 : 1 });
+    }
+    for (const mesh of upperMeshes) { mesh.frustumCulled = false; meshes.push(mesh); parts[name].add(mesh); }
   }
-  group.scale.setScalar(scale);
+  const proportions = avatarProportions(drawn.look.appearance);
+  group.scale.set(scale * proportions.height * proportions.width, scale * proportions.height, scale * proportions.height * proportions.depth);
   registry.add(dispose);
-  group.userData = { look: drawn.look, top: y + 2.95 * scale, triangles: batch.triangles, dispose, parts };
+  group.userData = { look: drawn.look, top: y + 2.95 * scale * proportions.height, triangles: batch.triangles, dispose, parts, bends };
   return poseAvatar(group, { pose: pose === 'sit' ? 'stand' : pose, stride });
 }
 

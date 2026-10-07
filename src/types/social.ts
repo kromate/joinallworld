@@ -1,3 +1,4 @@
+import type { AvatarLookExtensions } from './avatar.ts';
 /**
  * Social wire shapes: everything `/api/social/*` returns and accepts, the social frames on
  * `/socket`, and the browser's outbox entry.
@@ -46,7 +47,7 @@ export interface Whereabouts {
  * onboarding.js checkLook): eight ids always, plus the three optional fields exactly when the life's
  * look has them. The closed sets are life.ts `Look`.
  */
-export interface LookIds {
+export interface LookIds extends AvatarLookExtensions {
   body: string
   hair: string
   outfit: string
@@ -156,6 +157,8 @@ export interface PlayerReportReceipt {
 }
 
 export type HouseRole = 'host' | 'guest' | 'none'
+export interface HouseCaptureView { revision: string; ready: boolean; endsAt: number }
+export interface GuestCaptureView { visitId: string; allowed: boolean; expiresAt: number }
 /** A house as one viewer sees it (service.js houseView()). */
 export interface HouseView {
   host: PlayerRef
@@ -170,6 +173,10 @@ export interface HouseView {
   hostStatus: 'home' | 'out' | 'reconnecting' | 'offline'
   /** Pending knocks; only ever non-empty for the host. */
   knocks: { from: PlayerRef; at: number; expiresAt: number; /** The person came through a house link and the host is asked about them once. */ via?: 'link' }[]
+  /** Host-only summary: recording is allowed only when every active guest consented. */
+  capture?: HouseCaptureView
+  /** Guest-only consent for this accepted visit. It resets when this visit ends. */
+  myCapture?: GuestCaptureView
   /** The host closed the door: nobody new comes in (the guests inside stay). */
   closed?: true
 }
@@ -594,7 +601,7 @@ export const SOCIAL_OVERVIEW_KEYS = [
   'bae', 'baeRequests', 'blocked', 'code', 'conversations', 'door', 'friends', 'house', 'invitePath', 'invites', 'limits', 'me', 'ok', 'prefs', 'reports',
   'requests', 'serverTime', 'updates', 'visiting',
 ] as const satisfies readonly (keyof SocialOverview | keyof ApiEnvelope)[]
-export const HOUSE_VIEW_KEYS = ['capacity', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'role'] as const satisfies readonly (keyof HouseView)[]
+export const HOUSE_VIEW_KEYS = ['capacity', 'capture', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'myCapture', 'role'] as const satisfies readonly (keyof HouseView)[]
 export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'mentions', 'pictures', 'pins', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
 export const PEOPLE_LISTING_KEYS = ['cityId', 'code', 'count', 'groups', 'here', 'ok', 'players', 'self', 'serverTime', 'total', 'venue'] as const satisfies readonly (keyof PeopleListing | keyof ApiEnvelope)[]
 export const CONVERSATION_KEYS = ['id', 'kind', 'last', 'members', 'name', 'owner', 'unread', 'with'] as const satisfies readonly (keyof Conversation)[]

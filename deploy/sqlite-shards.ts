@@ -25,7 +25,8 @@ export interface ShardBackend {
   writeMeta(value: unknown): Promise<void>
 }
 
-export function sqliteShardBackend(storage: SqliteStorage, { chunk = SHARD_CHUNK, barrier = () => storage.sync() }: { chunk?: number; barrier?: () => Promise<void> } = {}): ShardBackend {
+export function sqliteShardBackend(storage: SqliteStorage, { chunk = SHARD_CHUNK, barrier = () => storage.sync(), beforeWrite = () => {} }:
+  { chunk?: number; barrier?: () => Promise<void>; beforeWrite?: () => void } = {}): ShardBackend {
   const sql = storage.sql;
   sql.exec('CREATE TABLE IF NOT EXISTS world_shards (seq INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, text TEXT NOT NULL)');
   sql.exec('CREATE INDEX IF NOT EXISTS world_shard_name ON world_shards(name, seq)');
@@ -33,10 +34,10 @@ export function sqliteShardBackend(storage: SqliteStorage, { chunk = SHARD_CHUNK
   const insert = (name: string, text: string): void => { for (let start = 0; start < text.length; start += chunk) sql.exec('INSERT INTO world_shards(name,text) VALUES(?,?)', name, text.slice(start, start + chunk)); };
   return {
     async read(name: string) { return sql.exec<{ text: string }>('SELECT text FROM world_shards WHERE name = ? ORDER BY seq', name).toArray().map(row => row.text).join(''); },
-    async append(name: string, text: string) { storage.transactionSync(() => insert(name, text)); await barrier(); },
-    async replace(name: string, text: string) { storage.transactionSync(() => { sql.exec('DELETE FROM world_shards WHERE name = ?', name); insert(name, text); }); await barrier(); },
+    async append(name: string, text: string) { storage.transactionSync(() => { beforeWrite(); insert(name, text); }); await barrier(); },
+    async replace(name: string, text: string) { storage.transactionSync(() => { beforeWrite(); sql.exec('DELETE FROM world_shards WHERE name = ?', name); insert(name, text); }); await barrier(); },
     async size(name: string) { return Number(sql.exec<{ bytes: number }>('SELECT COALESCE(SUM(LENGTH(CAST(text AS BLOB))), 0) AS bytes FROM world_shards WHERE name = ?', name).toArray()[0]?.bytes) || 0; },
     async readMeta() { const row = sql.exec<{ value: string }>("SELECT value FROM world_meta WHERE key = 'summary'").toArray()[0]; return row ? JSON.parse(row.value) as unknown : null; },
-    async writeMeta(value: unknown) { sql.exec("INSERT INTO world_meta(key,value) VALUES('summary',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value", JSON.stringify(value)); },
+    async writeMeta(value: unknown) { storage.transactionSync(() => { beforeWrite(); sql.exec("INSERT INTO world_meta(key,value) VALUES('summary',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value", JSON.stringify(value)); }); await barrier(); },
   };
 }

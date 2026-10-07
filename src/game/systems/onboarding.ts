@@ -1,3 +1,10 @@
+import { AVATAR_WEARABLE_IDS, AVATAR_STARTER_WEARABLES, isAvatarWearableId, avatarSavedFields, normalizeAvatarAppearance } from '../../types/avatar.ts';
+import type { AvatarWearableId } from '../../types/avatar.ts';
+import { AVATAR_WEARABLES } from '../wardrobe/catalogue.ts';
+import { validateAvatarWearables, resolveAvatarWearablesForRenderer } from '../wardrobe/rules.ts';
+import { AVATAR_WEARABLE_PRICES } from '../wardrobe/prices.ts';
+import { avatarLookFields, chooseAvatarWearable, keepAvatarAccessoryChoice } from '../wardrobe/look.ts';
+import { wearableCards } from '../wardrobe/view.ts';
 import { dreamFor, dreamsFor, lotteryBulletsFor } from '../cities/characterContent.ts';
 import { cityUnit, cityUnitArticle } from '../cities/terminology.ts';
 /**
@@ -252,13 +259,26 @@ export function checkLook(value: unknown, { starter = false }: { starter?: boole
     if (!known.includes(given)) return { reason: `Choose a ${label}: ${list(APPEARANCE[group])}.` };
     if (given !== known[0]) look[field] = given;
   }
+  const layers = PLAYS ? validateAvatarWearables(value.wearables) : { ok: true as const, ids: avatarSavedFields(value).wearables ?? [] };
+  if (!layers.ok) return { reason: 'Choose compatible clothing layers from the wardrobe.' };
+  if (starter && layers.ids.some(id => !AVATAR_STARTER_WEARABLES.includes(id))) return { reason: 'Buy this clothing in the Boutique after moving in.' };
+  if (PLAYS && resolveAvatarWearablesForRenderer({ accessories: worn.list, wearables: layers.ids }).length !== worn.list.length + layers.ids.length) return { reason: 'Choose one item for each clothing or accessory slot.' };
+  if (value.appearance !== undefined && value.appearance !== null) {
+    if (!isRecord(value.appearance)) return { reason: 'Choose body proportions from the available options.' };
+    const appearance = value.appearance;
+    const normalized = normalizeAvatarAppearance(appearance);
+    if (Object.entries(normalized).some(([key, selected]) => appearance[key] !== selected)) return { reason: 'Choose body proportions from the available options.' };
+  }
+  Object.assign(look, PLAYS ? avatarLookFields(value) : avatarSavedFields(value));
   // Every field above was checked against the catalogue before it was copied.
   return { look: look as Look };
 }
 /** Two looks are the same when every field matches (the accessories in any order). */
 const SAME_LOOK_FIELDS: (keyof Look)[] = [...KINDS, 'body', ...COLOUR_FIELD_IDS, 'face', 'expression'];
 const sameLook = (a: Look, b: Look): boolean => SAME_LOOK_FIELDS.every((field) => a[field] === b[field])
-  && [...(a.accessories ?? [])].sort().join() === [...(b.accessories ?? [])].sort().join();
+  && [...(a.accessories ?? [])].sort().join() === [...(b.accessories ?? [])].sort().join()
+  && [...(a.wearables ?? [])].sort().join() === [...(b.wearables ?? [])].sort().join()
+  && JSON.stringify(normalizeAvatarAppearance(a.appearance)) === JSON.stringify(normalizeAvatarAppearance(b.appearance));
 
 function randomLook(rng: () => number): Look {
   const pick = <T>(items: readonly T[]): T => items[Math.floor(rng() * items.length) % items.length]!; // the catalogue lists are not empty
@@ -277,7 +297,7 @@ function randomLook(rng: () => number): Look {
  * has none is exactly the three lists it always was.
  */
 function wardrobeOf(saved: unknown, look: Look | null | undefined): Wardrobe {
-  const wardrobe: Record<WardrobeKind, string[]> & { accessories?: string[] } = { hair: [], outfit: [], fabric: [] };
+  const wardrobe: Record<WardrobeKind, string[]> & { accessories?: string[]; wearables?: AvatarWearableId[] } = { hair: [], outfit: [], fabric: [] };
   for (const kind of KINDS) {
     const owned: unknown[] = [...WARDROBE_BASICS[kind], ...(isRecord(saved) && Array.isArray(saved[kind]) ? saved[kind].slice(0, 40) : []), look?.[kind]];
     wardrobe[kind] = [...new Set(owned.filter((id): id is string => typeof id === 'string' && Object.hasOwn(BOUTIQUE_PRICES[kind], id)))];
@@ -285,11 +305,15 @@ function wardrobeOf(saved: unknown, look: Look | null | undefined): Wardrobe {
   const extras: unknown[] = [...(isRecord(saved) && Array.isArray(saved.accessories) ? saved.accessories.slice(0, 40) : []), ...(look?.accessories ?? [])];
   const bought = [...new Set(extras.filter((id): id is string => typeof id === 'string' && ACCESSORIES.has(id) && !isOneOf(ACCESSORY_BASICS, id)))];
   if (bought.length) wardrobe.accessories = bought;
+  const layers: unknown[] = [...(isRecord(saved) && Array.isArray(saved.wearables) ? saved.wearables.slice(0, AVATAR_WEARABLE_IDS.length) : []), ...(look?.wearables ?? [])];
+  const purchased = [...new Set(layers.filter(isAvatarWearableId).filter(id => !AVATAR_STARTER_WEARABLES.includes(id)))];
+  if (purchased.length) wardrobe.wearables = purchased;
   // Every id was kept only if the Boutique sells it for that kind, so the lists hold ids of their own kind.
   return wardrobe as Wardrobe;
 }
 /** Every accessory the Sim owns: the free ones and the ones bought. */
 const ownedAccessories = (o: OnboardingState): AccessoryId[] => [...ACCESSORY_BASICS, ...(o.wardrobe.accessories ?? [])];
+const ownedWearables = (o: OnboardingState): AvatarWearableId[] => [...AVATAR_STARTER_WEARABLES, ...(o.wardrobe.wearables ?? [])];
 /** `list` with `id` put on: it replaces whatever shares its slot, and the oldest gives way at the limit. */
 function wearAccessory(worn: AccessoryId[] | undefined, id: string): AccessoryId[] {
   const item = ACCESSORIES.get(id)!; // a Boutique accessory is a catalogue accessory
@@ -348,14 +372,18 @@ const actions = {
     if (!isGuest(o)) return fail(state, 'not_a_guest', 'This life was not started with the quick start. Tap the "Create your character" goal to choose your look.');
     const { look, reason } = checkLook(payload?.look, { starter: true });
     if (!look) return fail(state, 'invalid_look', reason);
+    if (payload?.entry !== undefined && (payload.entry !== 'unilag' || ctx.cityId !== 'lagos' || !venueFor(ctx.cityId, 'unilag'))) return fail(state, 'invalid_entry', 'UNILAG is available in Lagos.');
     o.look = look;
     reach(state, 1);
     o.required = false;
     if (o.playedAt === null) {
       o.playedAt = finite(ctx.now) ? ctx.now : state.t;
       startNeeds(state);
+      if (payload?.entry === 'unilag') arrive(state, 'unilag', ctx, { spot: 'main-gate', mode: null });
+      else {
       const spot = WELCOME_SPOT[state.location];
       if (spot && !state.activeAction && spotsOf(state.location, ctx.cityId).some((item) => item.id === spot)) state.spot = spot;
+      }
     }
     // A visitor who came by a friend's link is welcomed by the one banner that says who they are joining (`joining`).
     state.message = payload?.joining === true ? '' : `Welcome to ${venueFor(ctx.cityId, state.location)?.label ?? 'the city'}, ${state.name}.`;
@@ -487,6 +515,8 @@ const actions = {
     }
     const missing = (look.accessories ?? []).find((id) => !ownedAccessories(o).includes(id));
     if (missing) return fail(state, 'not_owned', `You do not own the ${name(missing)} yet. Buy it in Phone → Boutique for ${naira(BOUTIQUE_PRICES.accessories[missing])}.`);
+    const missingLayer = (look.wearables ?? []).find(id => !ownedWearables(o).includes(id));
+    if (missingLayer) return fail(state, 'not_owned', `Buy ${AVATAR_WEARABLES[missingLayer].label} in the Boutique first.`);
     if (sameLook(look, o.look)) return ok(state, 'unchanged');
     o.look = look;
     state.message = 'Look updated.';
@@ -496,6 +526,17 @@ const actions = {
     const blocked = mustBeDone(state);
     if (blocked) return blocked;
     const o = state.onboarding, kind = payload?.kind, id = payload?.id;
+    if (kind === 'wearables') {
+      if (!isAvatarWearableId(id)) return fail(state, 'invalid_item', 'Choose clothing from the Boutique list.');
+      const label = AVATAR_WEARABLES[id].label, price = AVATAR_WEARABLE_PRICES[id];
+      if (ownedWearables(o).includes(id)) return fail(state, 'already_owned', `You already own ${label}. Put it on in your Profile.`);
+      if (!canAfford(state, price)) return fail(state, 'insufficient_funds', `${label} costs ${naira(price)}; you have ${naira(state.cash)}.`);
+      debit(state, price, `Boutique: ${label}`, ctx);
+      o.wardrobe.wearables = [...(o.wardrobe.wearables ?? []), id];
+      o.look = o.look.wearables?.includes(id) ? o.look : chooseAvatarWearable(o.look, id);
+      state.message = `Bought ${label} for ${naira(price)}. You are wearing it now.`;
+      return ok(state, 'bought');
+    }
     const extra = kind === 'accessories';
     if (!(isKind(kind) || extra) || typeof id !== 'string' || !Object.hasOwn(BOUTIQUE_PRICES[kind], id)) return fail(state, 'invalid_item', 'Choose a hairstyle, outfit, fabric or accessory from the Boutique list.');
     if (!extra && !optionsFor(kind, o.look.body).includes(id)) {
@@ -507,7 +548,7 @@ const actions = {
     debit(state, price, `Boutique: ${name(id)} ${kindWord(kind)}`, ctx);
     if (extra) {
       o.wardrobe.accessories = [...(o.wardrobe.accessories ?? []), ACCESSORIES.get(id)!.id]; // a Boutique accessory is a catalogue accessory
-      o.look = { ...o.look, accessories: wearAccessory(o.look.accessories, id) };
+      o.look = keepAvatarAccessoryChoice({ ...o.look, accessories: wearAccessory(o.look.accessories, id) }, id);
     } else {
       const owned: string[] = o.wardrobe[kind]; // `id` was checked against this kind's Boutique list above
       owned.push(id);
@@ -569,7 +610,7 @@ export default {
       Object.assign(base, { done: true, legacy: true, step: DONE_STEP, needsSet: true });
     } else {
       // A saved look keeps everything that is still valid: an unknown accessory, face or expression is dropped, not the whole look.
-      base.look = checkLook(isRecord(raw.look) ? { ...raw.look, accessories: tidyAccessories(raw.look.accessories),
+      base.look = checkLook(isRecord(raw.look) ? { ...raw.look, ...(PLAYS ? avatarLookFields(raw.look) : avatarSavedFields(raw.look)), wearables: (PLAYS ? avatarLookFields(raw.look) : avatarSavedFields(raw.look)).wearables, appearance: (PLAYS ? avatarLookFields(raw.look) : avatarSavedFields(raw.look)).appearance, accessories: tidyAccessories(raw.look.accessories),
         face: isOneOf(APPEARANCE.faces, raw.look.face) ? raw.look.face : undefined, expression: isOneOf(APPEARANCE.expressions, raw.look.expression) ? raw.look.expression : undefined } : raw.look).look ?? base.look;
       base.traits = Array.isArray(raw.traits) ? [...new Set(raw.traits.filter(isTraitId))].slice(0, TRAITS_REQUIRED) : [];
       base.dream = isDreamId(raw.dream) ? raw.dream : null;
@@ -634,7 +675,7 @@ export default {
         const locked = outcome ? homeLock(outcome, home.id) : null;
         return { ...home, startCash: outcome && !locked ? outcome.startCash[home.id]! : null, locked }; // not locked: homeLock found the start cash
       }),
-      wardrobe: { hair: [...o.wardrobe.hair], outfit: [...o.wardrobe.outfit], fabric: [...o.wardrobe.fabric], accessories: ownedAccessories(o) },
+      wardrobe: { hair: [...o.wardrobe.hair], outfit: [...o.wardrobe.outfit], fabric: [...o.wardrobe.fabric], accessories: ownedAccessories(o), wearables: ownedWearables(o) },
       boutique: KINDS.flatMap((kind) => optionsFor(kind, o.look.body).map((id): BoutiqueItem => {
         const owned = ownsStyle(o, kind, id), price = priceOfStyle(kind, id);
         const blocked = !o.done ? notYet : owned ? null
@@ -645,7 +686,7 @@ export default {
         const blocked = !o.done ? notYet : owned ? null
           : !canAfford(state, price) ? `Costs ${naira(price)}; you have ${naira(state.cash)}.` : null;
         return { kind: 'accessories', id, slot, label: name(id), price, owned, wearing: (o.look.accessories ?? []).includes(id), blocked };
-      })),
+      })).concat(PLAYS ? wearableCards(o, state.cash, notYet) : []),
       mood: { word: word.word, tone: word.tone, icon: word.icon, score: mood.score },
       feelings: feelingsOf(state).map((feeling) => ({ ...feeling, line: FEELING_LINES[feeling.id] ?? '' })),
     };

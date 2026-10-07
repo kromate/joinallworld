@@ -135,9 +135,9 @@ export const HOUSES_DRAW_CALLS: Budget = {
 // ---- Built JavaScript today: gzip and raw (src/app/entry.test.ts, src/scene/city-scenes.test.ts) --------------------------------
 
 export const STARTUP_RAW: Budget = {
-  value: 609_000, unit: 'raw bytes', limit: 'max', status: 'current',
+  value: 615_000, unit: 'raw bytes', limit: 'max', status: 'current',
   enforcedIn: 'src/app/entry.test.ts',
-  why: 'The automatic startup (entry, Vue, shell, engine with one city) measured 604.8 kB plus about 0.7%.',
+  why: 'Measured 614,121 bytes after the reviewed wallet audit, exact-action recovery and cross-identity snapshot mask. The 0.99% raw-only allowance over the former 609,000 ceiling covers those safety paths; gzip and Brotli limits remain unchanged.',
 }
 export const STARTUP_GZIP: Budget = {
   value: 223_000, unit: 'gzip bytes', limit: 'max', status: 'current',

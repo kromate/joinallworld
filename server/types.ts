@@ -17,9 +17,11 @@ import type { ConversationKind, LookIds, PlayerReportReceipt, ReportReason, Soci
 import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types/support.ts'
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
+import type { CommerceCollection, CommerceGateway } from './commerce/types.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
 import type { BillsRecord, DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, LawsRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
+import type { StoredWalletEffect } from './economy/effects.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
 //
@@ -344,8 +346,9 @@ export interface KnockRecord {
   /** A knock made through a house link (db.visits.links): the id of the link. The host is told so, and an answer of yes counts a use of it. */
   link?: string
 }
-export interface VisitRecord { since: number; expires: number; cityId: CityId; /** Came through a house link (its id): a removed guest cannot come back through the same one. */ link?: string }
+export interface VisitRecord { since: number; expires: number; cityId: CityId; captureId?: string; captureConsent?: true; /** Came through a house link (its id): a removed guest cannot come back through the same one. */ link?: string }
 export interface HouseRecord {
+  captureRevision?: number
   /** Visitor id → knock. */
   knocks: Record<string, KnockRecord>
   /** Guest id → visit. */
@@ -391,7 +394,7 @@ export type SocialEffectPayload =
   | { op: 'unfriend'; id: string }
   | { op: 'bae'; id: string; name: string }
   | { op: 'bae-end'; id: string }
-  | { op: 'transfer-in'; from: string; name: string; amount: number; refund?: true }
+  | { op: 'transfer-in'; from: string; name: string; amount: number; refund?: true; transferId?: string }
 /** A life effect owed to a player who was not connected (a gift waiting to be credited, a friendship to record). */
 export interface PendingEffect {
   n: number
@@ -533,6 +536,8 @@ export interface PoliticsCollection {
 }
 export interface CivicCollection {
   v: 1
+  /** Unfinished land transactions, independent of device-session lifetime. */
+  landPurchases?: Record<string, import('../src/types/land.ts').LandPurchase>
   /** `true` = hidden from that list; no entry = listed. */
   prefs: Record<string, { richList?: true; directory?: true }>
   /** Random; mixed into the address keys of the vote cap. Created by the first vote. */
@@ -705,6 +710,8 @@ export interface GrowthCollection {
 
 export interface Database {
   version: 1
+  /** Node's transaction-atomic player-wallet audit log; Worker stores rows separately. */
+  walletEffects?: StoredWalletEffect[]
   /** Keyed by cookie secret. */
   sessions: Record<string, SessionRecord>
   /** Keyed by public id. */
@@ -716,10 +723,15 @@ export interface Database {
   growth?: GrowthCollection
   /** server/social/visit-book.ts: invitations to a home and house links. Created by the first one, so it is not in COLLECTION_NAMES. */
   visits?: VisitsCollection
+  /** Real merchant listings and encrypted external grants, independent of simulated shops. */
+  commerce?: CommerceCollection
   /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
   business?: BusinessCollection
   /** server/trust/service.ts: checked tiers and complaints. Created by the first report or check, so it is not in COLLECTION_NAMES. */
   trust?: import('./trust/service.ts').TrustCollection
+  trustChecks?: import('./trust/dojah.ts').IdChecks
+  street?: import('./street/types.ts').StreetCollection
+  realValue?: import('../src/types/real-value.ts').RealValueCollection
   /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
   politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -732,7 +744,7 @@ export interface Database {
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits', 'walletEffects'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]
@@ -755,6 +767,8 @@ export interface StoreHelpers {
   expiredSessionKeys?(now: number): string[]
   /** WORKER: a store that keeps receipts apart from the session records counts the live ones itself (deploy/sqlite-store.ts). */
   onceCounts?(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }
+  /** Indexed Worker read; Node falls back to its append-only walletEffects array. */
+  walletEffectsPage?(publicId: string, after: number, limit: number): (StoredWalletEffect & { seq: number })[]
 }
 /** What `fn(db)` receives: private copies; nothing reaches the document unless the transaction returns. */
 export type Db = Database & { readonly $store?: StoreHelpers }
@@ -828,6 +842,9 @@ export interface RouteRequest {
   moderator(): boolean
   /** Rejects 415 / 413 / 400. The body may be at most `limit` bytes (default 8 KiB). */
   json(limit?: number): Promise<Record<string, unknown>>
+  /** Exact bounded bytes for provider signature verification; never attached to telemetry. */
+  rawBody?(limit: number): Promise<Uint8Array<ArrayBuffer>>
+  header?(name: string): string | null
   session(db: Db, options?: { renew?: boolean }): SessionRecord | undefined
   /** Throws 401 device_session_required. */
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
@@ -912,6 +929,8 @@ export interface MuteVerdict { code: 'muted'; reason: string; until: number }
 
 /** Checks one module provides for another; each is absent until its module has been built. */
 export interface ContextChecks {
+  streetGateReached?: (db: Db, session: SessionRecord) => boolean
+  streetPosition?: (db: Db, session: SessionRecord) => { x: number; z: number } | undefined
   /** Social: is `guestId` an accepted, unexpired guest of `hostId` whose life is at home in `cityId`? */
   homeGuest?: (db: Db, guestId: string, hostId: string, cityId: CityId) => boolean
   /** Social: the same with the visit's expiry (server ms), or 0. */
@@ -1085,6 +1104,8 @@ export interface ContextCore {
 
 /** The server context every route and ws module receives once at start-up. */
 export interface RouteContext {
+  commerceGateway?: CommerceGateway | undefined
+  streetAssets?: import('./street/types.ts').StreetAssetReader
   store: Store
   /** Server time in ms — never call Date.now(). */
   now(): number
@@ -1156,6 +1177,8 @@ export interface RouteContext {
  * WebSocket; only the fields the server reads or adds are listed.
  */
 export interface WsConnection {
+  closed?: boolean
+  streetGateProof?: import('./street/gate.ts').StreetGateProof
   /** 1 = open. */
   readyState: number
   /** The sender's PUBLIC identity. */

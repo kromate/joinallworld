@@ -5,8 +5,12 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { contentFor, regularFor } from '../../../game/cities/runtime.ts'
+import { contentFor, regularFor, regularsFor, venueFor } from '../../../game/cities/runtime.ts'
 import { cityRules } from '../../../game/cities/registry.ts'
+import { lagosTime } from '../../../game/clock.ts'
+import { venueLabel } from '../../../game/content/venues.ts'
+import { recall } from '../../../game/memory/mind.ts'
+import { recollectionLine } from '../../../game/memory/lines.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -23,6 +27,13 @@ const rel = computed(() => view.value.social.relationships.find((item) => item.i
 const local = computed(() => regularFor(view.value.cityId, props.id) ?? null)
 const base = computed(() => local.value ?? (rel.value?.npc ? rel.value : null))
 const here = computed(() => view.value.social.here.find((npc) => npc.id === props.id) ?? null)
+const greeting = computed(() => {
+  const npc = local.value, cityId = view.value.cityId, state = game.state.value.social
+  if (!here.value || !npc) return ''
+  const day = lagosTime(view.value.now).day, where = (venue: string) => venueFor(cityId, venue)?.district
+  const teller = (venue: string) => regularsFor(cityId).find((item) => item.venue === venue && item.id !== npc.id)?.name
+  return recollectionLine(recall(state.rel[npc.id]?.m, state.rumours, where(npc.venue), where, day), day, (venue: string) => venueLabel(venue, cityId), teller) || here.value.quote
+})
 /** Where this regular is now: from the venue's away list, or from the relationship; empty before the routines are loaded. */
 const whereNow = computed(() => view.value.social.away.find((npc) => npc.id === props.id)?.where || rel.value?.where || '')
 const why = computed(() => {
@@ -58,7 +69,7 @@ async function start(activity: string): Promise<void> {
     <div class="social-head people-who"><span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="base.name" :seed="base.id" /></span><h3>{{ base.name }}</h3><NpcBadge /></div>
     <p>{{ base.role }}<template v-if="here"> · {{ here.left }} of {{ view.social.dailyInteractions }} interactions left today</template></p>
     <p v-if="whereNow" class="social-note">{{ whereNow }}</p>
-    <p v-if="here" class="social-quote">“{{ here.quote }}”</p>
+    <p v-if="here" class="social-quote">“{{ greeting }}”</p>
     <p>{{ rel ? closenessText(rel, view.social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="max" :label="`Closeness with ${base.name}`" />
     <div v-if="here?.actions.length" class="social-grid">

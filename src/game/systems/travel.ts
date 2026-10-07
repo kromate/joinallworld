@@ -133,6 +133,7 @@ const homeId = (state: LifeState): HouseId => {
 
 /** Map position and landmass of a venue; Home depends on which house the player lives in. */
 export function placeOf(state: LifeState, venueId: VenueId): { x: number; y: number; zone: VenueZone } | null {
+  if ((venueId === 'neighbourhood' || venueId === 'city-street')) return placeOf(state, 'home');
   // Home in a house the player built: the landmass of its local government; the middle of the map for distance.
   if (venueId === 'home' && state?.estate?.living === 'own') return { x: 50, y: 50, zone: lgaOf(state.estate.city, state.estate.plot?.lga ?? state.estate.lga)?.zone ?? 'mainland' };
   const place = venueId === 'home' ? houseSpotFor(state.estate.city, homeId(state)) : venueFor(state.estate.city, venueId) || comingSoon[venueId];
@@ -142,6 +143,7 @@ export function placeOf(state: LifeState, venueId: VenueId): { x: number; y: num
 /** 'near' | 'standard' | 'far' for a trip between two venues. */
 export function routeBand(state: LifeState, from: VenueId, to: VenueId): RouteBand {
   const geographic = (id: string) => {
+    if (id === 'neighbourhood' || id === 'city-street') id = 'home';
     if (id === 'home' && state.estate.living === 'own') return undefined;
     if (id === 'home') return contentFor(state.estate.city).housing.find(home => home.definition.id === homeId(state))?.position;
     const position = contentFor(state.estate.city).venues.find(venue => venue.id === id)?.position;
@@ -204,6 +206,7 @@ export { openingInfo };
  * Codes: invalid_travel · coming_soon · already_here · travel_mode_unavailable · closed · insufficient_funds
  */
 export function travelBlock(state: LifeState, destination: unknown, modeId: unknown, ctx: LifeContext): Block<TravelBlockCode> | null {
+  if (destination === 'neighbourhood' || destination === 'city-street') return { code: 'invalid_travel', reason: 'Step outside through your own home door.' };
   if (destination === 'unilag' && state.estate.city !== 'lagos') {
     return { code: 'campus_lagos_only', reason: 'UNILAG is in Lagos. Choose Lagos from the world map to visit.' };
   }
@@ -448,7 +451,7 @@ function view(state: LifeState, ctx: LifeContext): TravelView {
   const trip = state.activeAction?.kind === 'travel' ? state.activeAction : null;
   // A visitor has no home in this city until it chooses a local government: Home is not offered as a place (unless the life stands in it).
   const placed = Boolean(state.estate.lga);
-  const venues = venuesFor(ctx.cityId).filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).filter((venue) => placed || venue.id !== 'home' || state.location === 'home').map((venue) => destinationCard(state, venue, ctx));
+  const venues = venuesFor(ctx.cityId).filter((venue) => venue.id !== 'neighbourhood').filter((venue) => !venue.cities || (venue.cities as readonly string[]).includes(ctx.cityId)).filter((venue) => placed || venue.id !== 'home' || state.location === 'home').map((venue) => destinationCard(state, venue, ctx));
   const soon = Object.values(COMING_SOON).map((place): TravelDestination => ({
     id: place.id, kind: 'soon', label: venueLabel(place.id, ctx.cityId), district: venueDistrict(place.id, ctx.cityId), icon: place.icon, description: place.description,
     category: 'soon', x: place.map.x, y: place.map.y, zone: place.zone, here: false, visited: false, open: false, hours: 'Coming soon', status: 'Coming soon',

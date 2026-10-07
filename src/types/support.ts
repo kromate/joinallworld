@@ -35,11 +35,18 @@ export interface SupportReceipt {
 /** One of the player's last actions, from their receipts. `type` is `'unknown'` for a receipt stored before types were kept. */
 export interface SupportActionLine { at: number; type: string; ok: boolean; code: string }
 export interface SupportLedgerLine { at: number; amount: number; reason: string; balance: number }
-/** Attached by the server when the report is filed, built field by field from the server-held life. */
-export interface SupportContext {
+interface SupportContextBase {
   build: string
   at: number
   cityId: CityId
+  /** Newest first, at most 10. */
+  actions: SupportActionLine[]
+  /** The newest of `actions` that was refused. */
+  lastError: SupportActionLine | null
+}
+/** Attached by the server when the report is filed, built field by field from the server-held life. */
+export type SupportContext = SupportContextBase & ({
+  unavailable?: never
   life: {
     cash: number
     location: string
@@ -48,13 +55,14 @@ export interface SupportContext {
     action: { kind: string; id: string; remaining: number } | null
     message: string
   }
-  /** Newest first, at most 10. */
-  actions: SupportActionLine[]
-  /** The newest of `actions` that was refused. */
-  lastError: SupportActionLine | null
   /** The last 10 wallet lines, oldest first. */
   ledger: SupportLedgerLine[]
-}
+} | {
+  /** The wallet failed the server boundary check; no balance or raw corrupt save is attached. */
+  unavailable: 'economy_unavailable'
+  life: null
+  ledger: []
+})
 /** The stored report, as the operator reads it (GET /api/mod/problems). `by` is the public id. */
 export interface SupportReport extends SupportReceipt {
   by: string
@@ -126,6 +134,15 @@ export interface StatementResponse {
   statement: Statement
 }
 
+export interface WalletHistoryEntry { seq: number; at: number; amount: number; balanceAfter: number; reason: string; cityId: CityId; operationId: string | null; transferId?: string }
+export interface WalletHistoryResponse {
+  ok: true
+  code: 'ok'
+  entries: WalletHistoryEntry[]
+  next: number | null
+  coverage: { kind: 'since-recording'; complete: false; label: string }
+}
+
 export interface SupportHttpRoutes {
   'POST /api/support/reports': {
     body: FileReportBody
@@ -137,6 +154,11 @@ export interface SupportHttpRoutes {
     query: { city: CityId }
     response: Ok<StatementResponse>
     errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'invalid_city'
+  }
+  'GET /api/support/history': {
+    query: { after?: number }
+    response: Ok<WalletHistoryResponse>
+    errors: HostErrorCode | SessionErrorCode | 'invalid_cursor'
   }
 }
 

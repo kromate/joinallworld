@@ -1,4 +1,4 @@
-import { regularsFor, regularFor, knownRegular, venueFor } from '../cities/runtime.ts';
+import { regularsFor, regularFor, knownRegular, venueFor, jobFor, jobsFor } from '../cities/runtime.ts';
 import { cachedCityContent, isCityId } from '../cities/registry.ts';
 /**
  * OWNER: social
@@ -69,6 +69,9 @@ import { cityRules, linksFrom } from '../content/world.ts';
 import { venueLabel } from '../content/venues.ts';
 import { NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLOSENESS, DAILY_INTERACTIONS, MAX_RELATIONSHIPS,
   JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS, COUPON_MAX_SAVING, MAX_RELATIONSHIP_TAGS } from '../content/npcs.ts';
+import { FOLLOW_UPS_KEPT, cleanMemory } from '../memory/facts.ts';
+import { AWAY_DAYS, DEED_POINTS, FAVOUR_AFTER, FAVOUR_NEEDS, TEASE_AFTER, gainFactor, isBadDeed, knows, recall, remember, reputation, schedule, settle, startRumour } from '../memory/mind.ts';
+import { awayLine, factLine, followUpLine, recollectionLine } from '../memory/lines.ts';
 
 export const MAX_NOTICES = 20;
 const FRIEND_INDEX = TIERS.findIndex((tier) => tier.id === 'friend');
@@ -148,7 +151,10 @@ function gain(state: LifeState, id: string, base: number, meta: Meta & { action:
   const rel = relation(state, id, meta, ctx);
   if (!rel) return null;
   const before = tierIndex(rel.p);
-  const amount = Math.max(0, Number(modify(state, 'social.gain', base, { id, npc: Boolean(meta.npc), action: meta.action }, ctx)) || 0);
+  const swayed = PLAYS && meta.npc && meta.npcDefinition
+    ? base * gainFactor(reputation(state.social.rumours, districtAt(ctx.cityId)(meta.npcDefinition.venue), districtAt(ctx.cityId), dayOf(state, ctx)))
+    : base;
+  const amount = Math.max(0, Number(modify(state, 'social.gain', swayed, { id, npc: Boolean(meta.npc), action: meta.action }, ctx)) || 0);
   rel.p = clamp(round1(rel.p + amount), 0, MAX_CLOSENESS);
   const after = tierIndex(rel.p);
   emit(state, 'relationship.changed', { id, value: rel.p, tier: tierAt(after).id }, ctx);
@@ -189,6 +195,69 @@ function pushNotice(state: LifeState, kind: unknown, text: unknown, ctx: LifeCon
   const last = list.at(-1);
   list.push({ id: (last?.id ?? 0) + 1, kind: isId(kind) ? kind : 'notice', text: clean, at: finite(ctx?.now) ? ctx.now : state.t });
   if (list.length > MAX_NOTICES) list.splice(0, list.length - MAX_NOTICES);
+}
+
+// ---- NPC memory, gossip and consequences ---------------------------------------------------------
+const districtAt = (cityId: string) => (venue: string): string | undefined => venueFor(cityId, venue)?.district;
+
+/** Gossip stays about the player's own actions and only starts at a public venue with regulars. */
+function startTalk(state: LifeState, kind: string, ctx: LifeContext): void {
+  const venue = state.location;
+  if (!venue || venue === 'home' || !regularsFor(ctx.cityId).some((npc) => npc.venue === venue)) return;
+  state.social.rumours = startRumour(state.social.rumours, kind, venue, dayOf(state, ctx));
+}
+
+/** A workplace regular can hear the newest dilemma outcome once. */
+function newDeed(state: LifeState, npc: NpcDefinition, ctx: LifeContext): string | null {
+  const deed = state.career.dilemmas?.memory.at(-1), job = state.job ? jobFor(ctx.cityId, state.job) : undefined;
+  return deed && job?.workplace.venue === npc.venue && !knows(state.social.rel[npc.id]?.m, 'deed', deed) ? deed : null;
+}
+
+/** Consume due follow-ups once, then pick one work consequence or recollection to open the meeting. */
+function meet(state: LifeState, npc: NpcDefinition, ctx: LifeContext): { say: string; extra: string } {
+  const day = dayOf(state, ctx), book = state.social, rel = book.rel[npc.id];
+  const { due, rest } = settle(book.followUps, npc.id, day);
+  let say = '', extra = '';
+  if (due.length) {
+    if (rest.length) book.followUps = rest; else delete book.followUps;
+  }
+  for (const item of due) {
+    say ||= followUpLine(item.k, day);
+    if (item.k === 'favour') { changeNeeds(state, FAVOUR_NEEDS); extra += ` ${npc.name} bought you a drink back.`; }
+    if (item.k === 'referral') {
+      pushNotice(state, 'tip', `${npc.name} put in a word for you at ${venueLabel(npc.venue, ctx.cityId)}. Open Jobs to apply.`, ctx);
+      extra += ' A job tip is in Updates.';
+    }
+  }
+  if (!say && rel && rel.d && tierIndex(rel.p) >= FRIEND_INDEX && day - rel.d >= AWAY_DAYS) say = awayLine(day);
+  const deed = newDeed(state, npc, ctx);
+  if (!say && deed) say = factLine({ k: 'deed', v: deed, day }, day);
+  if (!say) {
+    const where = districtAt(ctx.cityId), teller = (venue: string) => regularsFor(ctx.cityId).find((item) => item.venue === venue && item.id !== npc.id)?.name;
+    say = recollectionLine(recall(rel?.m, book.rumours, where(npc.venue), where, day), day, (venue) => venueLabel(venue, ctx.cityId), teller);
+  }
+  return { say, extra };
+}
+
+/** Save one observation and schedule any one-time consequence after an NPC interaction. */
+function observe(state: LifeState, npc: NpcDefinition, action: NpcAction | PlaceAction, place: PlaceAction | null, landed: boolean, first: boolean, ctx: LifeContext): void {
+  const day = dayOf(state, ctx), book = state.social, rel = book.rel[npc.id];
+  if (!rel) return;
+  const kind = action.id === 'drink' ? 'treat' : action.id === 'joke' ? (landed ? 'laugh' : 'flop')
+    : action.id === 'compliment' ? 'praise' : place && landed ? 'place' : null;
+  let facts = first ? remember(rel.m, 'met', undefined, day) : rel.m;
+  if (kind) facts = remember(facts, kind, kind === 'place' ? place?.grant?.memory ?? action.id : undefined, day);
+  const deed = newDeed(state, npc, ctx);
+  if (deed) {
+    facts = remember(facts, 'deed', deed, day);
+    rel.p = clamp(round1(rel.p + (isBadDeed(deed) ? -DEED_POINTS : DEED_POINTS)), 0, MAX_CLOSENESS);
+    emit(state, 'relationship.changed', { id: npc.id, value: rel.p, tier: tierOf(rel.p).id }, ctx);
+  }
+  if (facts) rel.m = facts;
+  if (kind === 'treat' || kind === 'laugh') startTalk(state, kind, ctx);
+  if (place?.id === 'haggle' && landed) startTalk(state, 'haggle', ctx);
+  if (kind === 'treat') book.followUps = schedule(book.followUps, 'favour', npc.id, day + FAVOUR_AFTER);
+  if (kind === 'flop') book.followUps = schedule(book.followUps, 'tease', npc.id, day + TEASE_AFTER);
 }
 
 // ---- server-only operations ('social.server', reached through ctx.act from server/social/service.ts) ----
@@ -291,6 +360,7 @@ const serverOps: ServerOps = {
       return fail(state, 'daily_limit', `You and ${name} have had ${DAILY_INTERACTIONS} interactions today. Come back tomorrow, or just chat.`);
     }
     const { landed, result } = interact(state, id, action, { npc: false, name }, ctx, true);
+    if (PLAYS && action.id === 'shade') startTalk(state, 'shade', ctx);
     state.message = landed ? `${action.label}: ${name} liked that.${result?.tierUp ? ` You are now ${result.tier.label}.` : ''}` : `Your joke did not land with ${name}.`;
     return ok(state, landed ? 'interacted' : 'flopped');
   },
@@ -452,25 +522,38 @@ const play = PLAYS ? {
         if (npc) rel.npcSnapshot = snapshotOf(npc, from);
       }
     },
-    'activity.completed'(state, { def }, ctx) {
-      const reward = def?.reward;
-      if (reward !== undefined && reward > 0) {
-        const paid = Math.max(0, Math.round(Number(modify(state, 'activity.reward', reward, { def }, ctx)) || 0));
-        state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
-      }
+    'activity.completed'(state, { def, cash }, ctx) {
+      if (cash > 0) state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + cash);
       if (!def?.social) return;
       const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action: NpcAction | PlaceAction | undefined = NPC_ACTIONS.find((item) => item.id === def.social?.action) ?? dilemmaKit()?.placeActionById(def.social.action);
       if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
+      const first = !state.social.rel[npc.id], { say, extra } = meet(state, npc, ctx);
       const { landed, result } = interact(state, npc.id, action, { npc: true, npcDefinition: npc, cityId: ctx.cityId }, ctx, false);
       const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
       const found = dilemmaKit()?.placeActionById(action.id);
       const place = found && found === action ? found : null;
       const granted = landed && place ? grantPlace(state, npc.id, place, ctx) : '';
+      observe(state, npc, action, place, landed, first, ctx);
       state.message = landed
-        ? `${npc.name} (NPC): “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}${granted}`
-        : place ? `${place.label}: ${npc.name} was not moved this time.` : `Your joke did not land. ${npc.name} just blinked at you.`;
+        ? `${npc.name} (NPC): “${say || quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}${granted}${extra}`
+        : `${say ? `${npc.name} (NPC): “${say}” ` : ''}${place ? `${place.label}: ${npc.name} was not moved this time.` : `Your joke did not land. ${npc.name} just blinked at you.`}${extra}`;
       if (action.id === 'hello') emit(state, 'npc.greeted', { npc: npc.id }, ctx);
       emit(state, 'npc.interacted', { npc: npc.id, action: action.id, success: landed }, ctx);
+    },
+    'friend.made'(state, { id, npc: isNpc }, ctx) {
+      const npc = isNpc ? regularFor(ctx.cityId, id) : undefined;
+      if (npc && jobsFor(ctx.cityId).some((job) => job.workplace.venue === npc.venue && job.id !== state.job)) {
+        state.social.followUps = schedule(state.social.followUps, 'referral', npc.id, dayOf(state, ctx) + 1);
+      }
+    },
+    'shift.completed'(state, { job }, ctx) {
+      const venue = state.location, day = dayOf(state, ctx);
+      if (venue === 'home') return;
+      startTalk(state, 'shift', ctx);
+      for (const npc of regularsFor(ctx.cityId)) {
+        const rel = npc.venue === venue ? state.social.rel[npc.id] : undefined;
+        if (rel) rel.m = remember(rel.m, 'job', job, day);
+      }
     },
     'item.bought'(state, { kind }) {
       if (kind === 'grocery' && state.social.coupon) delete state.social.coupon; // the coupon is for one order
@@ -503,9 +586,11 @@ export default {
           : state.estate.city !== 'lagos' && cachedCityContent('lagos')?.regulars.some(item => item.id === id) ? snapshotOf(authoritative, 'lagos') : null
         : snapshot;
       const tags = isNpc && Array.isArray(rel.tags) ? [...new Set(rel.tags.filter(isId))].slice(-MAX_RELATIONSHIP_TAGS) : [];
+      const memory = isNpc ? cleanMemory(rel.m) : [];
       next.rel[id] = { p: clamp(round1(rel.p), 0, MAX_CLOSENESS), d: safeCount(rel.d) ? rel.d : 0, n: safeCount(rel.n) ? Math.min(rel.n, DAILY_INTERACTIONS) : 0,
         npc: isNpc, at: finite(rel.at) ? rel.at : 0,
         ...(tags.length ? { tags } : {}),
+        ...(memory.length ? { m: memory } : {}),
         ...(isNpc && canonicalSnapshot ? { npcSnapshot: canonicalSnapshot } : {}),
         ...(!isNpc ? { name: cleanText(rel.name, 24, 'Player') } : {}), ...(!isNpc && rel.friend === true ? { friend: true } : {}) };
     }
@@ -521,6 +606,9 @@ export default {
     next.notices = (Array.isArray(saved.notices) ? saved.notices : []).slice(-MAX_NOTICES)
       .filter((item): item is Record<string, unknown> & { id: number; at: number; text: string } => isRecord(item) && safeCount(item.id) && finite(item.at) && typeof item.text === 'string')
       .map((item) => ({ id: item.id, kind: isId(item.kind) ? item.kind : 'notice', text: cleanText(item.text, 160, 'Notice'), at: item.at }));
+    const rumours = cleanMemory(saved.rumours), followUps = cleanMemory(saved.followUps, FOLLOW_UPS_KEPT);
+    if (rumours.length) next.rumours = rumours;
+    if (followUps.length) next.followUps = followUps;
   },
 
   active: {

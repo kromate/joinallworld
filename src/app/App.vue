@@ -42,6 +42,7 @@ import MapPane from './scene/MapPane.vue'
 const { game, ready, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing, showMapLayer } = useApp()
 const ui = shell.ui
 const mode = game.mode
+const snapshotAvailable = computed(() => game.snapshotPhase.value === 'available')
 const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
 const sheetOpen = computed(() => Boolean(shell.sheet.value))
 const root = ref<HTMLElement | null>(null)
@@ -151,17 +152,18 @@ watch(() => game.connected.value && game.view.value.onboarding?.required !== tru
 // Where the page's share link came from, once the landing knows (growth.state.landing).
 watch(landing.landed, (landed) => { if (landed) useGrowth().state.landing = landed })
 watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), { immediate: true })
+watch(game.snapshotPhase, (phase, before) => { if (phase === 'unavailable' && before === 'available') { shell.closeSheet(); shell.setMode('venue') } })
 </script>
 
 <template>
-  <ScenePane :top="topCover" :rows="hudRows" :bottom="() => bottom" :hidden="mode === 'map'" />
-  <MapPane />
-  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'has-coach': ui.coaching, 'is-resuming': !ready, 'is-guest': Boolean(game.view.value.onboarding?.guest), 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
+  <ScenePane v-if="snapshotAvailable" :top="topCover" :rows="hudRows" :bottom="() => bottom" :hidden="mode === 'map'" />
+  <MapPane v-if="snapshotAvailable" />
+  <div id="life-overlay" ref="root" class="life-ui" :class="{ 'has-coach': ui.coaching, 'is-resuming': !ready, 'is-guest': snapshotAvailable && Boolean(game.view.value.onboarding?.guest), 'is-clean': ui.clean, 'is-tray-open': ui.trayOpen, 'is-expanded': ui.expanded && mode === 'venue' }" :data-mode="mode">
     <p class="life-wordmark" aria-label="Allworld"><i aria-hidden="true"><GameIcon name="globe" :size="19" /></i><span><b>Allworld</b></span></p>
-    <HudBar />
+    <HudBar v-if="snapshotAvailable" />
     <ConnectionNotice />
-    <HudSidebar />
-    <div ref="bottom" class="life-bottom">
+    <HudSidebar v-if="snapshotAvailable" />
+    <div v-if="snapshotAvailable" ref="bottom" class="life-bottom">
       <div data-slot="notice"><NoticeHost /></div>
       <div data-slot="coach"><CoachTip /></div>
       <div data-slot="progress"><ActionProgress /></div>
@@ -174,10 +176,10 @@ watch(mode, (now) => document.body.classList.toggle('map-open', now === 'map'), 
     </div>
   </div>
   <SheetHost />
-  <TourTrigger />
-  <CommunityHost />
-  <CallsHost :host="sheetOpen ? '#life-dialog' : 'body'" />
-  <PingHost :host="sheetOpen ? '#life-dialog' : 'body'" />
+  <TourTrigger v-if="snapshotAvailable" />
+  <CommunityHost v-if="snapshotAvailable" />
+  <CallsHost v-if="snapshotAvailable" :host="sheetOpen ? '#life-dialog' : 'body'" />
+  <PingHost v-if="snapshotAvailable" :host="sheetOpen ? '#life-dialog' : 'body'" />
   <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
   <UpdateBanner />
   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />

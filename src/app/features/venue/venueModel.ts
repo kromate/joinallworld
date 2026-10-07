@@ -52,5 +52,6 @@ export function activityFace(card: ActivityCard, state: Pick<LifeState, 'activeA
   }
 }
 
-/** Is this timed action a trip (it takes the player out of the venue)? */
-export const isTrip = (active: { kind: string } | null | undefined): boolean => active?.kind === 'travel' || active?.kind === 'commute'
+// Existing consumers of the model keep the same public helper. HUD code imports its small
+// owner directly, so closed activities do not load card formatting.
+export { isTrip } from './tripModel.ts'

@@ -11,6 +11,7 @@ export interface TrustMe extends ApiEnvelope {
   label: string
   /** The age answer: true 18 or older, false under 18, null not answered. */
   adult: boolean | null
+  adultVerified?: true
   complaints: number
   held: boolean
   checks: { phone: CheckState; id: CheckState }
@@ -22,6 +23,11 @@ export interface TrustAnswer extends ApiEnvelope { ok: boolean; code: string; re
 type TrustRead = HostErrorCode | SessionErrorCode | 'rate_limited'
 type TrustWrite = TrustRead | JsonBodyErrorCode | StorageErrorCode
 export interface TrustHttpRoutes {
+  /** Provider-only signed raw bytes; unavailable through the player's JSON client. */
+  'POST /api/trust/dojah/webhook': { body: never; response: Ok<TrustAnswer>; errors: HostErrorCode | JsonBodyErrorCode | StorageErrorCode | 'provider_unavailable' | 'invalid_signature' | 'unsupported_verification_result' | 'verification_storage_invalid' }
+  'POST /api/trust/phone/complete': { body: { clientId: string; csrf: string; idToken: string }; response: Ok<TrustAnswer & { tier: TrustTier }>; errors: TrustWrite | 'provider_unavailable' | 'origin_required' | 'csrf_rejected' | 'account_required' | 'invalid_token' | 'linked_phone_required' | 'account_changed' }
+  'POST /api/trust/id/start': { body: { clientId: string; consent: true }; response: Ok<TrustAnswer & { ref: string; appId: string; publicKey: string; widgetId: string; environment: string }>; errors: TrustWrite | 'provider_unavailable' | 'origin_required' | 'verification_consent_required' | 'account_required' | 'verification_capacity' | 'verification_storage_invalid' }
+  'GET /api/trust/id/result': { response: Ok<{ ref: string; status: 'pending' | 'passed' | 'failed' | 'expired'; environment: string }>; errors: TrustRead | 'account_required' | 'verification_unavailable' }
   'GET /api/trust/me': { response: Ok<TrustMe>; errors: TrustRead }
   'GET /api/trust/profile/:id': { response: Ok<{ badge: TrustBadge }>; errors: TrustRead | 'invalid_player' | 'unknown_player' }
   'POST /api/trust/check/:kind/start': { body: Record<string, never>; response: Ok<TrustAnswer>; errors: TrustWrite | 'unknown_check' }

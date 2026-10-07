@@ -41,6 +41,7 @@ import type { VerifiedIdentity } from '../accounts/token.ts';
 import type { RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
 import { accountView, adoptNewSession, deleteAccount, exportAccount, signIn, signOut, signOutEverywhere, switchCharacter } from '../accounts/service.ts';
 import { KeysUnavailable, TOKEN_MAX_AGE_MS, TokenError, createTokenVerifier } from '../accounts/token.ts';
+import { commerceSecrets } from '../commerce/service.ts';
 import { welcomeService } from '../accounts/welcome.ts';
 import { bonusService } from '../bonus/service.ts';
 import { UUID_PATTERN, hash53 } from '../protocol.ts';
@@ -182,6 +183,11 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
       const identity = await identityOf(request, body.idToken);
       const result = await store.transact(db => deleteAccount(db, deps, { ...callerOf(request), identity, erase: body.erase === true }));
       closeSockets(result);
+      if (result.commerceRevocation && ctx.commerceGateway) {
+        const { accountId, secret } = result.commerceRevocation, gateway = ctx.commerceGateway;
+        const revocation = commerceSecrets(ctx).open(secret, accountId).then(token => gateway.revoke(token)).catch(() => core.log('Deleted account store grant revocation could not be confirmed.'));
+        ctx.waitUntil?.(revocation); await revocation;
+      }
       return { body: { ok: true, kept: result.cookie !== null }, headers: { 'Set-Cookie': result.cookie ? core.cookieHeader(request, result.cookie) : clearCookie(request) } };
     },
     'POST /api/account/password-reset': async (request) => {

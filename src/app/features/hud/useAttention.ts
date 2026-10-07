@@ -8,7 +8,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch 
 import { nextStep } from '../../../ui/attention.ts'
 import type { NextStep, Point, StepContext } from '../../../ui/attention.ts'
 import type { Attention } from '../../../ui/attention-dom.ts'
-import { isTrip } from '../venue/venueModel.ts'
+import { isTrip } from '../venue/tripModel.ts'
 import { useApp } from '../../state/app.ts'
 import { COACH_KEY } from './coachModel.ts'
 import { tour } from '../tour/tourState.ts'

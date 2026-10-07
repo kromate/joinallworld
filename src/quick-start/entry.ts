@@ -52,14 +52,15 @@ export interface PendingPlay { look: Look; actionId?: string; joining?: boolean 
 /** The share code a link carried, with when it was kept (ms). */
 interface KeptRef { code: string; at: number }
 /** What the address carried, for the funnel. */
-export interface CapturedLink { join: string | null; ref: string | null; table: string | null; go: GoTarget | null }
+export interface CapturedLink { join: string | null; ref: string | null; table: string | null; go: GoTarget | null; campus: boolean }
 
 /** A stored value, read as a record to look at its keys (nothing in it is trusted). */
 const recordOf = (value: unknown): Record<string, unknown> | null => (value && typeof value === 'object' ? value as Record<string, unknown> : null);
 
-const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref', go: 'joinallworld-quick-go' };
+const KEYS = { draft: 'joinallworld-quick-start', play: 'joinallworld-quick-play', join: 'joinallworld-quick-join', nudge: 'joinallworld-quick-nudge', landed: 'joinallworld-quick-landed', table: 'joinallworld-quick-table', ref: 'allworld-ref', go: 'joinallworld-quick-go', campus: 'joinallworld-campus-entry' };
 const REF_KEEP_MS = 7 * 86400000;
 const GO_KEEP_MS = 86400000;
+const CAMPUS_KEEP_MS = 86400000;
 const memory = new Map<string, unknown>(); // the fallback when storage is off
 let storage: Storage | null = null;
 try { storage = globalThis.localStorage ?? null; } catch { storage = null; }
@@ -109,7 +110,7 @@ export const forgetJoin = (): void => write(KEYS.join, null);
 let captured: CapturedLink | null = null;
 export function captureLink(): CapturedLink {
   if (captured) return captured;
-  const found: CapturedLink = captured = { join: null, ref: null, table: null, go: null };
+  const found: CapturedLink = captured = { join: null, ref: null, table: null, go: null, campus: false };
   if (typeof location === 'undefined') return found;
   found.join = joinIdFrom(location.pathname, location.search);
   if (found.join) write(KEYS.join, found.join);
@@ -118,10 +119,20 @@ export function captureLink(): CapturedLink {
   if (link.table) { found.table = link.table; write(KEYS.table, link.table); }
   const go = goFrom(location.search);
   if (go) { found.go = go; write(KEYS.go, { go, at: Date.now() }); }
+  found.campus = location.pathname.replace(/\/+$/, '') === '/unilag';
+  if (found.campus) write(KEYS.campus, { at: Date.now() });
   return found;
 }
 /** A link was handled: the address goes back to `/`, without a reload (the page's one way to clean its address). */
 export const cleanAddress = (): void => { history.replaceState(null, '', '/') }
+/** A visit to /unilag waits through guest creation, then opens the ordinary campus travel choice once. */
+export function pendingCampusEntry(): boolean {
+  const kept = recordOf(read(KEYS.campus));
+  if (typeof kept?.at === 'number' && Date.now() - kept.at < CAMPUS_KEEP_MS) return true;
+  write(KEYS.campus, null);
+  return false;
+}
+export const forgetCampusEntry = (): void => write(KEYS.campus, null);
 /** The share code waiting to be attached as a referral, or null (a code is kept for a week). */
 export function pendingRef(): string | null { const kept = recordOf(read(KEYS.ref)) as Partial<KeptRef> | null; if (!kept || typeof kept.code !== 'string') return null; if (!(Date.now() - Number(kept.at) < REF_KEEP_MS)) { write(KEYS.ref, null); return null; } return linkParts('/', `?ref=${kept.code}`).ref; }
 export const forgetRef = (): void => write(KEYS.ref, null);

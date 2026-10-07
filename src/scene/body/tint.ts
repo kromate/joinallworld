@@ -11,8 +11,8 @@
  *   bottoms       look.bottomsColor on the hips and legs (b region)
  *   hair          look.hairColor on the hair cap (a region)
  *   shoes         a fixed dark leather on the feet (what the regions leave)
- *   not mapped    hairstyle, outfit cut, fabric pattern, face, expression, accessories: the body has one hair cap and
- *                 one silhouette. The procedural avatar keeps all of them.
+ *   layers        wardrobe/renderer.ts supplies original cuts, hair, accessories and cloth patterns on the same rig.
+ *                 This shader retains the safe clothed base and its painted face below those layers.
  * Colours are hex in the look and leave here as linear RGB, the space the shader works in.
  *
  * OLD SAVES go through normalizeLook like every look: legacy keys (gender, skinTone, hairstyle), named or numbered

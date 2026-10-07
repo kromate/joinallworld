@@ -1,6 +1,7 @@
 import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
 import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions: every life this server plays has them
 import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
+import '../src/game/home-plan.ts';
 /**
  * Node host: HTTP + WebSocket plumbing, static files and the server context.
  * Everything Node-specific lives here and in store.js. Rules shared with the Cloudflare worker
@@ -23,6 +24,10 @@ import { createCallRelay } from './call-relay.ts';
 import type { CallRelay } from './call-relay.ts';
 import { capacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor as findPage, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from './host-context.ts';
 import { buildRoutes, ROUTE_MODULES } from './routes/index.ts';
+import { trustHeaderConfig } from './trust/config.ts';
+import { createCommerceGateway } from './commerce/goalmatic.ts';
+import type { CommerceGateway } from './commerce/types.ts';
+import { nodeStreetAssets } from './street/node-assets.ts';
 import { executeCommand } from './routes/core.ts';
 import { createOnce } from './routes/once.ts';
 import { buildSocketHandlers } from './ws/index.ts';
@@ -57,6 +62,8 @@ type ServerTelemetry = ReturnType<typeof createServerTelemetry>;
 export type Connection = WebSocket & WsConnection;
 /** The options of createServer; every one has a default. */
 export interface ServerOptions {
+  commerceGateway?: CommerceGateway
+  streetAssets?: RouteContext['streetAssets']
   dataDir?: string
   distDir?: string
   now?: () => number
@@ -127,17 +134,25 @@ function packageVersion(): string {
 /** Whether this connection is TLS (a direct HTTPS listener) or reached through a trusted proxy that spoke HTTPS. */
 const isSecure = (req: IncomingMessage, trustProxy: boolean): boolean => ('encrypted' in req.socket && Boolean(req.socket.encrypted)) || (trustProxy && req.headers['x-forwarded-proto'] === 'https');
 const errorDetail = (error: unknown): unknown => fieldOf(error, 'code') || fieldOf(error, 'message');
-async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<string, unknown>> {
+async function rawJsonBody(req: IncomingMessage, limit: number): Promise<Uint8Array<ArrayBuffer>> {
   if (!req.headers['content-type']?.startsWith('application/json')) throw fail(415, 'json_required');
-  let body = '';
+  const chunks: Uint8Array[] = []; let size = 0;
   for await (const chunk of req) {
-    body += String(chunk);
-    if (Buffer.byteLength(body) > limit) throw fail(413, 'body_too_large');
+    const bytes = typeof chunk === 'string' ? new TextEncoder().encode(chunk) : chunk as Uint8Array;
+    size += bytes.byteLength;
+    if (size > limit) throw fail(413, 'body_too_large');
+    chunks.push(bytes);
   }
-  try { const value: unknown = JSON.parse(body); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
+  const bytes = new Uint8Array(size); let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  return bytes;
+}
+async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<string, unknown>> {
+  const bytes = await rawJsonBody(req, limit);
+  try { const value: unknown = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -344,6 +359,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
           /** True only for a request carrying the operator's bearer token (never a cookie or a query value). */
           moderator: () => isModerator(req),
           json: (limit?: number) => jsonBody(req, limit).then(body => (request.body = body)),
+          rawBody: (limit: number) => rawJsonBody(req, limit),
+          header: (name: string) => { const value = req.headers[name.toLowerCase()]; return typeof value === 'string' ? value : null; },
           session: (db: Db, { renew = false }: { renew?: boolean } = {}) => { const session = sessionFor(req, db, renew); if (session) { request.publicId = session.publicId; request.secret = session.secret; } return session; },
           requireSession(db: Db, options?: { renew?: boolean }) { const session = this.session(db, options); if (!session) throw fail(401, 'device_session_required'); return session; },
           // Foundation-only: the stored session's key (the cookie until session() resolves it), the cookie as presented, and the raw request.
@@ -436,7 +453,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       const bytes = isIndex || isShell ? Buffer.from(html) : await readFile(path);
       if (res.headersSent || res.writableEnded) return;
       // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.
-      const security = isShell ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), accounts: accountsHeaderConfig, admin: true }) : isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, accounts: accountsHeaderConfig }) : adminKind ? { 'X-Robots-Tag': 'noindex, nofollow' } : {};
+      const security = isShell ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), accounts: accountsHeaderConfig, admin: true }) : isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, avatarAssets: html.includes('name="allworld-3d-assets"'), accounts: accountsHeaderConfig, trustProviders: trustHeaderConfig(envReader(env), accountsHeaderConfig) }) : adminKind ? { 'X-Robots-Tag': 'noindex, nofollow' } : {};
       // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
       const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff', ...security });
@@ -532,6 +549,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
     //   keyFile(name, make) → Promise<object>   a secret this server makes for itself (signing key, push keys), kept in
     //                      DATA_DIR/keys/<name>.json with file mode 0600 and never in the data file or a response
     env: envReader(env),
+    commerceGateway: commerceGateway ?? createCommerceGateway({ ...env, PUBLIC_ORIGIN: givenOrigin ?? env.PUBLIC_ORIGIN }, outboundFetch(outbound)),
+    streetAssets: streetAssets ?? nodeStreetAssets([join(distDir, 'assets/street'), resolve('public/assets/street')]),
     callRelay: givenRelay ?? createCallRelay({ read: (name) => { const value = env?.[name]; return typeof value === 'string' ? value : undefined; }, now, ...(outbound ? { fetchImpl: outbound } : {}) }),
     // An outside request is HTTPS, bounded in time whatever the caller passed, and never follows a redirect (host-context.js).
     fetch: outboundFetch(outbound),

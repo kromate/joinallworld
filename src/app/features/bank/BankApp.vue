@@ -67,6 +67,7 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
       </template>
       <template v-else>No weekly bills yet.</template>
     </HeroCard>
+    <p class="ui-note">Game money only. Real store earnings are shown in My Store.</p>
     <div v-if="offline" class="bank-why" role="status">{{ offline }}</div>
 
     <div class="bank-quick">

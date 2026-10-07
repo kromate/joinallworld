@@ -22,6 +22,9 @@ import { companionConfig } from '../companion/gateway.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 import { residenceGate } from './residence.ts';
 import { jailGate } from '../politics/gate.ts';
+import { landOf } from '../world/land.ts';
+import { characterCity } from '../character.ts';
+import { cityRules } from '../../src/game/content/world.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
 export { MAX_RECEIPTS, boundedFingerprint };
@@ -54,33 +57,54 @@ export const outcomeKey = (state: LifeState | null | undefined): string => (stat
  *                that belongs to the charge: throw and the charge, the receipt and every other change
  *                are discarded together. It must be synchronous and must not send anything.
  */
-export async function executeCommand(ctx: RouteContext, request: RouteRequest, body: ActionRequest, { internal = false, scope, afterAction }: CommandOptions = {}, withRevision = false): Promise<ActionOutcome> {
+export async function executeCommand(ctx: RouteContext, request: RouteRequest, body: ActionRequest, { internal = false, scope, afterAction }: CommandOptions = {}, withRevision = false, terminalCityMoved = false): Promise<ActionOutcome> {
   const { store, now, settle, core, config } = ctx;
   if (scope !== undefined && (typeof scope !== 'string' || !/^[a-z][a-z0-9_.-]{0,63}$/.test(scope))) throw new Error('A command scope is a fixed server string');
   if (afterAction !== undefined && (typeof afterAction !== 'function' || scope === undefined)) throw new Error('A command callback requires a fixed server scope');
   if (!body || typeof body !== 'object' || Array.isArray(body)) throw ctx.fail(400, 'invalid_action');
   validateActionPayload(body, now(), config.actionWindowMs);
   const authority = `${scope ? `scope:${scope}:` : ''}${internal === true ? 'internal:' : ''}`;
-  const { outcome, publicId } = await store.transact(db => {
+  const { outcome, publicId, responseCity } = await store.transact(db => {
     const session = request.requireSession(db, { renew: true });
     validateActionPayload(body, now(), config.actionWindowMs);
-    ctx.checks?.cityGate?.(session, body.cityId);
-    const state = settle(session, body.cityId);
+    let responseCity = body.cityId;
+    let state: LifeState | undefined;
+    if (!terminalCityMoved) {
+      ctx.checks?.cityGate?.(session, body.cityId);
+      state = settle(session, body.cityId);
+    }
     const result = core.actionOnce(session, body, () => {
+      if (terminalCityMoved) {
+        const current = characterCity(session);
+        if (current && current !== body.cityId) {
+          responseCity = current;
+          state = settle(session, current);
+          return { ok: false, code: 'city_moved', state, reason: `Your character is in ${cityRules(current)?.name ?? current}. Open that city to carry on.` };
+        }
+        ctx.checks?.cityGate?.(session, body.cityId);
+        state = settle(session, body.cityId);
+      }
+      if (!state) throw new Error('Action settlement produced no life');
       residenceGate(ctx, session, body);
       jailGate(ctx, db, session, body);
+      if (['estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type)) landOf(ctx).assertMovable(db, session.publicId);
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
+      if (done.ok && ['home.door', 'travel', 'estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type) && db.street?.journeys) delete db.street.journeys[session.publicId];
       if (done.ok && afterAction) {
         const pending: unknown = afterAction({ db, session, result: done });
         if (isThenable(pending)) throw new Error('A command callback must be synchronous');
       }
       return done;
     }, { authority });
+    if (!state) {
+      responseCity = characterCity(session) ?? body.cityId;
+      state = settle(session, responseCity);
+    }
     const outcome: ActionOutcome = result.duplicate ? { ok: result.ok, code: result.code, state, duplicate: true as const } : result;
     // POST /api/action answers with the character's revision, so a device can order this answer among its others.
-    return { publicId: session.publicId, outcome: withRevision ? { ...outcome, rev: session.rev ?? 0 } : outcome };
+    return { publicId: session.publicId, responseCity, outcome: withRevision ? { ...outcome, rev: session.rev ?? 0 } : outcome };
   });
-  await core.validateMemberships(request.secret, body.cityId, outcome.state, publicId);
+  await core.validateMemberships(request.secret, responseCity, outcome.state, publicId);
   return outcome;
 }
 
@@ -236,7 +260,7 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
       // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against
       // the stored life (core.revalidate, server.js).
-      return { body: await executeCommand(ctx, request, body, {}, true), renew: true };
+      return { body: await executeCommand(ctx, request, body, {}, true, true), renew: true };
     },
   };
 }

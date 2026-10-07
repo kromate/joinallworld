@@ -16,7 +16,8 @@
  * CONTEXT attached automatically (so a player never has to describe their own state)
  *   build        the server's build id
  *   at, cityId   server time and the city the report is about
- *   life         { cash, location, spot, job, action: { kind, id, remaining } | null, message }
+ *   life         { cash, location, spot, job, action: { kind, id, remaining } | null, message }, or null with
+ *                unavailable: 'economy_unavailable' when the stored wallet failed its boundary check
  *   actions      the player's last 10 actions, newest first: { at, type, ok, code }
  *   lastError    the newest of those that was refused, or null
  *   ledger       the last 10 wallet lines: { at, amount, reason, balance }
@@ -50,18 +51,17 @@ export function supportService(ctx: RouteContext) {
   }
   const receipt = (report: SupportReport): SupportReceipt => ({ id: report.id, at: report.at, cityId: report.cityId, category: report.category, text: report.text, status: report.status, note: report.note || '', updatedAt: report.updatedAt });
   /** Built from named fields only. Nothing here can carry the session secret. */
-  function contextOf(session: SessionRecord, cityId: CityId, state: LifeState): SupportContext {
+  function contextOf(session: SessionRecord, cityId: CityId, state: LifeState | null): SupportContext {
     const actions = Object.values(isRecord(session.actions) ? session.actions : {}).map((item) => item as Partial<ActionReceipt> | null)
       .filter((item): item is Partial<ActionReceipt> & { actionAt: number } => Boolean(item) && Number.isFinite(item?.actionAt))
       .sort((a, b) => b.actionAt - a.actionAt).slice(0, LIMITS.actions)
       .map((item) => ({ at: item.actionAt, type: typeof item.type === 'string' ? item.type.slice(0, 40) : 'unknown', ok: item.ok === true, code: String(item.code ?? '').slice(0, 40) }));
+    const base = { build: ctx.config?.buildId ?? 'unknown', at: ctx.now(), cityId, actions, lastError: actions.find((item) => !item.ok) ?? null };
+    if (state === null) return { ...base, unavailable: 'economy_unavailable', life: null, ledger: [] };
     const active = state.activeAction;
-    return {
-      build: ctx.config?.buildId ?? 'unknown', at: ctx.now(), cityId,
+    return { ...base,
       life: { cash: state.cash, location: state.location, spot: state.spot ?? null, job: state.job ?? null,
         action: active ? { kind: active.kind, id: active.id, remaining: Math.round(active.remaining) } : null, message: String(state.message ?? '').slice(0, 300) },
-      actions,
-      lastError: actions.find((item) => !item.ok) ?? null,
       ledger: (Array.isArray(state.ledger) ? state.ledger : []).slice(-LIMITS.ledger).map((line) => ({ at: line.at, amount: line.amount, reason: line.reason, balance: line.balance })),
     };
   }
@@ -89,9 +89,14 @@ export function supportService(ctx: RouteContext) {
           if (closed < 0) return no('inbox_full', 'The problem inbox is full right now. Nothing was filed; please try again later.');
           s.reports.splice(closed, 1);
         }
-        const state = ctx.settle(session, cityId);
+        let context: SupportContext;
+        try { context = contextOf(session, cityId, ctx.settle(session, cityId)); }
+        catch (error) {
+          if (typeof error !== 'object' || error === null || Reflect.get(error, 'code') !== 'economy_unavailable') throw error;
+          context = contextOf(session, cityId, null);
+        }
         const report: SupportReport = { id: `P-${++s.seq}`, by: id, name: session.name, cityId, category, text, at: ctx.now(), status: 'received', note: '', updatedAt: ctx.now(),
-          context: contextOf(session, cityId, state) };
+          context };
         s.reports.push(report);
         return { ok: true, code: 'filed', id: report.id };
       });

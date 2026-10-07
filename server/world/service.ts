@@ -44,6 +44,9 @@ import { ESTATE, PLOTS_PER_ESTATE, cityRules, lgaOf, lgasOf, packStyle } from '.
 import { hasPlace } from '../../src/game/systems/estate.ts';
 import { characterCity } from '../character.ts';
 import { watchLives } from '../life-service.ts';
+import { socialService } from '../social/service.ts';
+import { samePlot } from './street.ts';
+import type { WorldStreetHouse, WorldStreetResponse } from '../../src/types/world.ts';
 import * as registry from './registry.ts';
 import type { RegistryRecord, RegistryState, RegistryWho, PersonLine } from './registry.ts';
 import type { ShardStoreOn } from './shard-core.ts';
@@ -260,6 +263,36 @@ function buildWorld(ctx: RouteContext) {
   const service = {
     enabled: Boolean(shards),
     sync,
+    async ownsPlot(city: CityId, plot: import('../../src/types/life.ts').PlotAddress, owner: string): Promise<boolean> {
+      if (!shards) return false;
+      return shards.read(shardOf(city, plot.lga), state => state.houses.get(plot.estate)?.get(plot.plot)?.o === owner);
+    },
+    async street(cityId: CityId, viewerId: string): Promise<WorldStreetResponse> {
+      const anchor = await ctx.store.read((db) => {
+        const session = ctx.core.sessionByPublicId(db, viewerId), state = session?.cities[cityId]?.state;
+        if (!session || session.expiresAt <= ctx.now() || characterCity(session) !== cityId || state?.estate.city !== cityId || state.location !== 'neighbourhood') throw ctx.fail(409, 'not_on_street');
+        if (!hasPlace(state) || !state.estate.plot) throw ctx.fail(409, 'plot_unavailable');
+        return { ...state.estate.plot };
+      });
+      const row = Math.floor(anchor.plot / ESTATE.plots);
+      const { records, land } = await shards!.read(shardOf(cityId, anchor.lga), (state) => ({ records: registry.streetHouses(state, anchor.estate, row, viewerId), land: registry.landOf(state, viewerId).filter((claim) => claim.kind === 'owned' && claim.estate === anchor.estate && claim.anchor === anchor.plot).map((claim) => claim.plot) }));
+      return ctx.store.read((db) => {
+        const viewer = ctx.core.sessionByPublicId(db, viewerId), current = viewer?.cities[cityId]?.state;
+        if (!viewer || viewer.expiresAt <= ctx.now() || characterCity(viewer) !== cityId || current?.location !== 'neighbourhood' || !samePlot(current.estate.plot, anchor)) throw ctx.fail(409, 'not_on_street');
+        const kit = socialService(ctx).kit;
+        const houses: WorldStreetHouse[] = records.map((record) => {
+          const geometry = { plot: record.p, style: record.s, upgradeAt: record.u, land: record.land };
+          if (!record.id) return geometry;
+          const target = ctx.core.sessionByPublicId(db, record.id), home = target?.cities[cityId]?.state;
+          const address = { ...anchor, plot: record.p };
+          const own = record.id === viewerId;
+          if (!target || target.expiresAt <= ctx.now() || home?.estate.city !== cityId || !hasPlace(home) || !samePlot(home.estate.plot, address)) return geometry;
+          if (!own && (db.civic?.prefs[record.id]?.directory === true || (db.social && kit.blockedEither(db.social, viewerId, record.id)))) return geometry;
+          return { ...geometry, owner: { id: record.id, name: target.name, friend: Boolean(db.social && kit.ordinary(db.social, viewerId, record.id)), online: ctx.online(record.id) }, ...(own ? { you: true as const } : {}) };
+        });
+        return { city: cityId, anchor, street: { city: cityId, lga: anchor.lga, estate: anchor.estate, row }, houses, land };
+      });
+    },
     /** Everything in flight has finished (tests and the load generator wait on this). */
     async idle(): Promise<void> { for (let i = 0; i < 20 && (running.size || dirty.size); i++) await Promise.all([...running.values()]); await new Promise((done) => setTimeout(done, 0)); if (running.size) return service.idle(); },
     /** The city at a glance: per local government the counts and the houses-per-estate summary. `v` changes whenever any of it does. */
@@ -330,4 +363,3 @@ function buildWorld(ctx: RouteContext) {
   // Kept on the service so the weakly held watcher lives as long as the server does.
   return Object.assign(service, { onLife });
 }
-

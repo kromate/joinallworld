@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { createSqliteStore } from './sqlite-store.ts';
 import { testStorage } from '../server/testing/sqliteStorage.ts';
 import { legacySeed } from '../server/testing/legacySeed.ts';
+import { KEYED_SPECS } from '../server/keyed.ts';
 import type { SqlBinding, SqliteStorage, SqlCursor, SqlRow } from './cf-types.ts';
 import type { StoreLayoutTools, TransactOptions } from '../server/types.ts';
 
@@ -16,7 +17,7 @@ interface Loose {
   layout: Required<StoreLayoutTools>
 }
 const open = (storage: SqliteStorage, options: Parameters<typeof createSqliteStore>[1] = {}): Loose => createSqliteStore(storage, options) as unknown as Loose;
-const KEYED = ['social', 'growth', 'civic', 'business', 'records'];
+const KEYED = Object.keys(KEYED_SPECS);
 /** Put a seeded legacy store into the `collections` table the way the Worker wrote it before. */
 function seedLegacy(t: ReturnType<typeof testStorage>, players: number, seed = 1): Record<string, unknown> {
   const { collections } = legacySeed({ players, seed });

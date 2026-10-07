@@ -3,6 +3,7 @@ import { normalizeCharacter, requireCharacterCity, fileCharacter } from './chara
 import { cityRules } from '../src/game/content/world.ts';
 import { createLife, advanceLife, dispatch, hasAction } from '../src/life.ts';
 import { VENUES } from '../src/game/cities/lagos/venues.ts';
+import { isPeerTransferId, walletEffectSink } from './economy/effects.ts';
 
 import type { ActionType, ActionBody } from '../src/types/actions.ts';
 import type { LifeContextInit, LifeState } from '../src/types/life.ts';
@@ -22,7 +23,7 @@ export interface LifeActionBody {
 /** Called with a life that was just settled or acted on (watchLives). */
 export type LifeWatcher = (publicId: string, cityId: CityId, state: LifeState) => void
 /** The link from a settled state to its salt and owner. */
-interface LifeMeta { salt: string; publicId: string; cityId: CityId }
+interface LifeMeta { salt: string; publicId: string; cityId: CityId; session: SessionRecord }
 
 export { VENUES };
 
@@ -115,21 +116,26 @@ function announce(meta: LifeMeta | undefined, state: LifeState): void {
  * every session the Cloudflare worker makes — behaves as before.
  */
 export function settleCity(session: SessionRecord, cityId: CityId, now: number): LifeState {
+  const stored = session.cities?.[cityId];
+  if (Object.hasOwn(session.cities ?? {}, cityId) && (!stored?.state || !Number.isSafeInteger(stored.state.cash) || stored.state.cash < 0)) {
+    throw Object.assign(new Error('economy_unavailable'), { status: 409, code: 'economy_unavailable', reason: 'This wallet needs recovery before it can be used.' });
+  }
   session.cities ||= {};
   requireCharacterCity(session, cityId);
   normalizeCharacter(session);
   let entry: CityLifeRecord | undefined = session.cities[cityId];
+  const previous = entry?.updatedAt, money = walletEffectSink(session, cityId, `settle:${cityId}:${Number.isFinite(previous) ? previous : 'new'}:${now}`);
   if (!entry) {
     if (cityRules(cityId)?.status !== 'open') throw Object.assign(new Error('city_closed'), { status: 409, code: 'city_closed' });
     const salt = newSalt();
-    entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, quickStart: session.onboarding === true, salt }), updatedAt: now, salt };
+    entry = session.cities[cityId] = { state: createLife({ name: session.name }, { now, cityId, isNew: true, quickStart: session.onboarding === true, salt, money }), updatedAt: now, salt };
   }
   if (typeof entry.salt !== 'string' || !SALT_PATTERN.test(entry.salt)) entry.salt = newSalt();
   const { salt } = entry;
   // trustedSave: this is the server's own stored copy, so an action that can no longer run is settled here (src/life.ts createLife).
-  entry.state = createLife(entry.state, { now, cityId, isNew: false, salt, trustedSave: true });
+  entry.state = createLife(entry.state, { now, cityId, isNew: false, salt, trustedSave: true, money });
   const elapsed = Number.isFinite(entry.updatedAt) ? Math.max(0, (now - entry.updatedAt) / 1000) : 0;
-  if (elapsed > 0) advanceLife(entry.state, elapsed, { now, cityId, salt });
+  if (elapsed > 0) advanceLife(entry.state, elapsed, { now, cityId, salt, money });
   entry.state.t = now;
   entry.updatedAt = now;
   entry.state.name = session.name;
@@ -139,7 +145,7 @@ export function settleCity(session: SessionRecord, cityId: CityId, now: number):
   // the first settlement after that must still be later than any number a device was given — without a row written for it.
   const held = typeof session.rev === 'number' && Number.isSafeInteger(session.rev) && session.rev >= 0 ? session.rev : 0;
   session.rev = Math.max(held + 1, Number.isSafeInteger(Math.floor(now)) ? Math.floor(now) : 0);
-  const meta: LifeMeta = { salt, publicId: session.publicId, cityId: entry.state.estate.city as CityId };
+  const meta: LifeMeta = { salt, publicId: session.publicId, cityId: entry.state.estate.city as CityId, session };
   lives.set(entry.state, meta);
   announce(meta, entry.state);
   return entry.state;
@@ -165,7 +171,9 @@ export function applyLifeAction(state: LifeState, body: LifeActionBody, ctx?: Li
     // The generator is always built here, from the action ID and the life's salt: neither a salt
     // nor a ready-made generator from the caller is used for a stored life.
     const { salt: ignoredSalt, rng: ignoredRng, ...rest } = given;
-    context = { ...rest, salt: meta.salt };
+    const payload = body.payload, transferId = given.internal === true && body.type === 'social.server'
+      && payload && (payload.op === 'transfer-in' || payload.op === 'transfer-out') && isPeerTransferId(payload.transferId) ? payload.transferId : undefined;
+    context = { ...rest, salt: meta.salt, money: walletEffectSink(meta.session, meta.cityId, body.actionId ?? `internal:${body.type}:${state.t}`, transferId) };
   }
   // The engine reads every payload as untrusted (each system validates its own), so the envelope-checked body goes in as it is.
   const result = dispatch(state, body as ActionBody, context);

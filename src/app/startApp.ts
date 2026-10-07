@@ -5,12 +5,19 @@ import { telemetry } from '../telemetry/index.ts'
 import { landingCodeSettled } from './features/start/warmLanding.ts'
 import { preloadNext } from './state/idlePreload.ts'
 import { watch } from 'vue'
+import { takeStoreReturn } from './features/commerce/connectionReturn.ts'
 
 export default App
 
 /** Runs after the game shell has mounted. */
 export function ready(): void {
+  const commerceReturn = takeStoreReturn()
   telemetry.hudReady()
+  if (commerceReturn) {
+    const { game, shell } = useApp(), openStore = (): void => { shell.open('commerce', commerceReturn) }
+    if (game.view.value.connected) openStore()
+    else { const stop = watch(() => game.view.value.connected, connected => { if (connected) { stop(); openStore() } }) }
+  }
   // Then, when the browser is idle, what is opened next (the phone, the map, Jobs, Groceries, Buy mode, the Boutique).
   // The scene is what the first screen waits for: nothing is fetched beside it (or after ten seconds, when it never comes).
   const sceneShown = new Promise<void>((resolve) => {

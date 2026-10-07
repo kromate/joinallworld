@@ -2,7 +2,7 @@
 .sim-profile{display:grid;gap:var(--s-3);font-family:var(--font)}
 .sim-profile h3{margin:0}
 .sim-profile-top{display:grid;gap:var(--s-3);align-items:start}
-.sim-profile>.look-view{position:sticky;top:62px;z-index:2;background:#fff;box-shadow:0 0 0 9px #fff,0 18px 12px -10px #0004}
+.sim-profile>.look-view{position:relative;z-index:2;background:#fff;box-shadow:0 0 0 9px #fff,0 18px 12px -10px #0004}
 .sim-field{display:grid;gap:6px;font-size:13px;font-weight:600}
 .sim-field input{font:inherit;font-weight:400;padding:10px 12px;border:1px solid #cfd4cf;border-radius:12px;min-height:var(--tap);width:100%;box-sizing:border-box}
 .sim-hint{margin:4px 0 0!important;font-size:12px!important;color:var(--c-muted)}

@@ -18,6 +18,9 @@ import economy from './economy.ts';
 import property from './property.ts';
 import estate from './estate.ts';
 import home from './home.ts';
+import stories from './stories.ts';
+import land from './land.ts';
+import street from './street.ts';
 import onboarding from './onboarding.ts';
 import goals from './goals.ts';
 import social from './social.ts';
@@ -27,5 +30,5 @@ import events from './events.ts';
 import growth from './growth.ts';
 import business from './business.ts';
 
-export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, onboarding, goals, social, civic, missions, events, growth, business];
+export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, stories, land, street, onboarding, goals, social, civic, missions, events, growth, business];
 for (const system of BASE_SYSTEMS) registerSystem(system);

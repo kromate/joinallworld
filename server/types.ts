@@ -709,6 +709,8 @@ export interface Database {
   visits?: VisitsCollection
   /** server/business/service.ts: every player-owned shop. Created by the first shop, so it is not in COLLECTION_NAMES. */
   business?: BusinessCollection
+  /** server/trust/service.ts: checked tiers and complaints. Created by the first report or check, so it is not in COLLECTION_NAMES. */
+  trust?: import('./trust/service.ts').TrustCollection
   /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
   politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -928,6 +930,13 @@ export interface ContextChecks {
   cityGate?: (session: SessionRecord, cityId: string) => void
   /** Growth: that player answered the age question with "under 18" (the one home of the age answer). */
   minor?: (db: Db, publicId: string) => boolean
+  /** Growth: that player answered the age question with "18 or older". Neither this nor `minor`: not answered. */
+  adult?: (db: Db, publicId: string) => boolean
+  /**
+   * Trust (server/trust/service.ts): may this venue chat line, refused by the text filter only for its links, go out? Only a
+   * checked stall owner, in their own stall's venue room, with allow-listed links and nothing else the filter refuses.
+   */
+  vendorLink?: (db: Db, publicId: string, room: string, body: string) => { verdict: import('./moderation/text.ts').TextVerdict | null } | null
   /**
    * Accounts: a session POST /api/session has just created. When the presented cookie is a device binding of an account
    * that has no character yet, the new record becomes that account's character (and is returned re-keyed).

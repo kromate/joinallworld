@@ -29,6 +29,7 @@ import type { NoticeFrame, NoticeHttpRoutes } from './notice.ts'
 import type { CompanionHttpRoutes } from './companion.ts'
 import type { AnnounceFrame } from './announce.ts'
 import type { AdminHttpRoutes } from './admin.ts'
+import type { TrustHttpRoutes } from './trust.ts'
 import type { StoreHttpRoutes } from './store.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
@@ -258,7 +259,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes {}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -407,7 +408,9 @@ export type NodeSocketErrorCode =
   | 'invalid_room' | 'onboarding_required' | 'venue_mismatch' | 'not_a_guest' | 'visit_ended'
   | 'invalid_position' | 'move_rate_limited' | 'invalid_voice_state' | 'voice_room_full'
   | 'invalid_signal' | 'peer_not_in_room' | 'peer_out_of_range'
-  | 'invalid_chat' | 'text_blocked' | 'muted'
+  | 'invalid_chat' | 'text_blocked' | 'muted' | 'links_not_allowed' | 'contact_not_allowed'
+  // the no-fee filter on venue chat (src/game/trust/fees.ts)
+  | 'fee_request' | 'money_doubling'
   // venue groups (server/ws/rooms.ts)
   | 'group_full' | 'group_gone' | 'in_voice' | 'not_a_friend'
   // malformed social frames (server/social/service.ts throws ctx.fail(400, code))
@@ -703,6 +706,13 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/politics/justice/argue',
   'POST /api/politics/justice/rule',
   'POST /api/politics/justice/lawyer',
+  'GET /api/admin/trust/reports',
+  'POST /api/admin/trust/reports/:id/act',
+  'POST /api/admin/trust/players/:id/act',
+  'GET /api/trust/me',
+  'GET /api/trust/profile/:id',
+  'POST /api/trust/check/:kind/start',
+  'POST /api/trust/report',
 ] as const satisfies readonly HttpRouteKey[]
 
 /** WORKER: the same registry, so the same routes. (`/api/mod/*` answers only when the MODERATOR_TOKEN secret is set, as on Node.) */

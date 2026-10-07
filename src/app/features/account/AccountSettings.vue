@@ -13,7 +13,7 @@
 // more): the server takes a fresh sign-in for those, never this browser's cookie alone.
 //
 // Deleting says exactly what goes and what stays.
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import PasswordField from './PasswordField.vue'
@@ -24,6 +24,8 @@ import { useAccount } from './useAccount.ts'
 import ComebackSwitches from '../growth/ComebackSwitches.vue'
 import { COMEBACK_ACCOUNT_SENTENCE } from '../growth/touchModel.ts'
 import { useGrowth } from '../growth/useGrowth.ts'
+// The account's trust badge, phone and ID checks, and what it may post (lazy: its own chunk).
+const TrustCard = defineAsyncComponent(() => import('../trust/TrustCard.vue'))
 
 /** What is waiting for the person to prove who they are. */
 type Pending = { kind: 'everywhere' } | { kind: 'export' } | { kind: 'switch'; id: string; name: string } | { kind: 'delete' }
@@ -135,6 +137,7 @@ onBeforeUnmount(() => { removeGoogle?.() })
           <p class="settings-note" data-account-mail>They go to {{ mail.address }}, the address of your account. {{ COMEBACK_ACCOUNT_SENTENCE }}</p>
           <ComebackSwitches :view="mail" />
         </template>
+        <TrustCard />
         <template v-if="state.parked.length">
           <h3 class="ui-section">Set-aside characters</h3>
           <div class="ui-rows">

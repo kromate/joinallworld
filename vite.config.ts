@@ -225,6 +225,8 @@ export default defineConfig({
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
     // The world clock's bands, day seed and seasons ride in the routines chunk (below).
     if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    // The trust rules (tiers, the no-fee filter, the link allow-list): read only by the community panel, the "leaving Allworld" sheet and the trust card, all fetched on demand.
+    if (/\/src\/game\/trust\//.test(id)) return undefined
     // The city's conditions. The grid, the go-slow, the venue card's line and the look of the light are read by the moments and the venue scenes, so they are a chunk
     // of the first page. The words of the bills and of the generator, and the kit that hands them and the rules to the engine (pack.ts), are a lazy chunk of their own: a host that
     // plays a life imports the pack with src/game/profile.ts, and the page fetches it when idle (src/app/state/idlePreload.ts). The engine keeps only slot.ts and power.ts.

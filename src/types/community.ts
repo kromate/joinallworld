@@ -29,7 +29,8 @@ export interface MemberRow { id: string; label: string; state: string }
  * `npc` is true only for a line spoken by a game character: the panel gives it the NPC badge and its own look, so it can never pass for
  * a real player's line. Every line from the room's server is a real player's and leaves it unset.
  */
-export interface ChatLine { key: string; author: string; body: string; delivery: string; canRetry: boolean; npc?: boolean }
+/** `authorId`: the sender's public id, so a link's "leaving Allworld" screen can show who sent it. */
+export interface ChatLine { key: string; author: string; authorId?: string; body: string; delivery: string; canRetry: boolean; npc?: boolean }
 export interface MicrophoneChoice { id: string; label: string }
 /** A received voice the browser would not start by itself: the panel offers a button to play it. */
 export interface BlockedPlayback { id: string; name: string }

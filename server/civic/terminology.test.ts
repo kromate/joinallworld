@@ -21,13 +21,13 @@ test('city-owned civic title changes public panels and fees while preserving Lag
     await Promise.all([loadCityContent(council.id), loadCityContent('lagos')])
     let current = createLife(null, { cityId: 'lagos', now: MONDAY })
     const selected = shallowRef(current)
-    const panel = buildRegistry([definePanel({ id: 'governor', title: 'Governor', titleFor: state => civicTitle(state.estate.city), placement: 'phone', component: {} }) ], () => selected.value)[0]!
+    const panel = buildRegistry([definePanel({ id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', component: {} }) ], () => selected.value)[0]!
     const heading = computed(() => panel.title)
-    assert.equal(panel.title, 'Governor')
+    assert.equal(panel.title, 'Chairman')
     assert.equal(civicOffice('lagos'), 'State House')
     const areaLayer = LAYERS.find(layer => layer.id === 'lgas')!, officeLayer = LAYERS.find(layer => layer.id === 'gov')!
     assert.equal(layerLabel(areaLayer, 'lagos'), 'LGAs')
-    assert.equal(layerLabel(officeLayer, 'lagos'), 'Gov')
+    assert.equal(layerLabel(officeLayer, 'lagos'), 'Chairman')
     assert.equal(layerLabel(areaLayer, council.id), 'Area councils')
     assert.equal(layerLabel(officeLayer, council.id), 'Community Chair')
     for (const cityId of [council.id, 'lagos']) {
@@ -43,7 +43,7 @@ test('city-owned civic title changes public panels and fees while preserving Lag
       assert.equal(current.cash, 10000)
       assert.equal(fileCandidacy(current, {}, context).code, 'declared')
       assert.equal(current.cash, 10000 - ELECTION.filingFee)
-      assert.equal(current.ledger.at(-1)?.reason, cityId === 'lagos' ? 'Governorship filing fee' : 'Community Chair filing fee')
+      assert.equal(current.ledger.at(-1)?.reason, cityId === 'lagos' ? 'Chairman filing fee' : 'Community Chair filing fee')
       const data = cityOf(emptyCivic(), cityId), person = { id: 'candidate', name: 'Ada' }
       declare(data, MONDAY, person, 'A shared garden')
       for (const voter of ['voter', 'voter2', 'voter3']) vote(data, MONDAY + 3 * DAY, voter, person.id)

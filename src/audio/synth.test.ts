@@ -84,10 +84,12 @@ test('the output ceiling cannot pass -1 dBFS whatever is mixed', () => {
 test('every shipped recipe is well-formed: finite, positive times, gains in range, a decay that ends', () => {
   for (const [id, recipe] of Object.entries(RECIPES)) {
     assert.ok(recipe.l.length > 0, id)
+    // The call to prayer is one long phrase (about 17 s); everything else ends inside six seconds.
+    const limit = id.startsWith('azan') ? 20 : 6
     for (const layer of recipe.l) {
-      assert.ok(layer.d > 0 && layer.d < 6, `${id} length`)
+      assert.ok(layer.d > 0 && layer.d < limit, `${id} length`)
       assert.ok(layer.g > 0 && layer.g <= 0.6, `${id} gain ${layer.g}`)
-      assert.ok((layer.at ?? 0) >= 0 && (layer.at ?? 0) + layer.d < 6, `${id} offset`)
+      assert.ok((layer.at ?? 0) >= 0 && (layer.at ?? 0) + layer.d < limit, `${id} offset`)
       if (layer.w !== 'noise') assert.ok(Number.isFinite(layer.f) && (layer.f as number) > 20 && (layer.f as number) < 12000, `${id} frequency`)
     }
   }

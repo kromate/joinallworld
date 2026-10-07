@@ -160,8 +160,8 @@ test('the Map layers: the world layer on from the start, civic overlays off', ()
   assert.equal(layerNote(byId('billboards'), { data: ads, error: null }, true, '', 'lagos')?.text, '2 of 3 billboards rented')
   assert.equal(layerNote(byId('sea'), { data: ads, error: null }, true, '', 'lagos')?.text, '1 sea plot rented · shown in the water below the city')
   assert.deepEqual(layerNote(byId('sea'), { data: ads, error: null }, true, '', 'lagos')?.action, { label: 'Rent a sea plot', open: 'ads', params: { tab: 'sea' } })
-  assert.equal(layerNote(byId('gov'), { data: { governor: { name: 'Ada' } } as never, error: null }, true, '', 'lagos')?.text, 'Governor Ada')
-  assert.equal(layerNote(byId('gov'), { data: { governor: null } as never, error: null }, true, '', 'lagos')?.text, 'No Governor yet')
+  assert.equal(layerNote(byId('gov'), { data: { governor: { name: 'Ada' } } as never, error: null }, true, '', 'lagos')?.text, 'Chairman Ada')
+  assert.equal(layerNote(byId('gov'), { data: { governor: null } as never, error: null }, true, '', 'lagos')?.text, 'No Chairman yet')
 })
 
 test('the roadside prompt and chip', () => {

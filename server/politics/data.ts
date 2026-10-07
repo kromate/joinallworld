@@ -83,3 +83,9 @@ export function justiceOf(politics: PoliticsCollection): JusticeRecord {
 }
 /** The justice record as a read sees it: nothing is created. */
 export const peekJustice = (politics: PoliticsCollection): JusticeRecord => (record(politics.justice) ? justiceOf(politics) : emptyJustice());
+
+/** The ballots of any seat by its scope id: a city's are in its civic record, a state's and the nation's in the politics collection. Reads only. */
+export function govOfId(db: Db, scope: string): GovScope {
+  if (scope.startsWith('city:')) { const gov = db.civic?.cities?.[scope.slice(5)]?.gov; return gov ? { gov } : { gov: { elections: {}, announcements: [] } }; }
+  return peekGov(peekScope(peekPolitics(db), scope));
+}

@@ -110,8 +110,14 @@ test('a state and the atlas levels', async () => {
   for (const [path, level] of levels) { const next = fakeEnv(fakeAddress(path)); await arrive(next.env, waitFor(path)); assert.deepEqual(next.calls.layers, [['world', { level }]], path) }
 })
 
+test('/records opens Politics on the Hall of Records', async () => {
+  const { env, calls } = fakeEnv(fakeAddress('/'))
+  await arrive(env, waitFor('/records'))
+  assert.deepEqual(calls.opened, [['politics', { tab: 'records' }]])
+})
+
 test('the panels open the panels that exist', async () => {
-  const wanted: [string, string][] = [['/messages', 'messages'], ['/friends', 'people'], ['/invite', 'invite'], ['/business', 'business'], ['/jobs', 'jobs'], ['/help', 'help'], ['/sound', 'settings']]
+  const wanted: [string, string][] = [['/messages', 'messages'], ['/friends', 'people'], ['/invite', 'invite'], ['/business', 'business'], ['/jobs', 'jobs'], ['/help', 'help'], ['/sound', 'settings'], ['/politics', 'politics']]
   for (const [path, panel] of wanted) { const { env, calls } = fakeEnv(fakeAddress('/')); await arrive(env, waitFor(path)); assert.deepEqual(calls.opened, [[panel, undefined]], path); assert.equal(env.views.held(), null, 'an action keeps no address') }
   const { env, calls } = fakeEnv(fakeAddress('/'))
   await arrive(env, waitFor('/signup')); await arrive(env, waitFor('/login'))

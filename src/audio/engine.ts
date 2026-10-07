@@ -40,6 +40,7 @@ export function createEngine(): Engine | null {
   let ctx: AudioContext
   try { ctx = new Context({ latencyHint: 'playback' }) } catch { return null }
   const kinds = new Map<string, string>()
+  const variants = new Map<string, string>()
   const director = new Director(ctx, {
     settings: getSound,
     soundOf: (city): CitySound | undefined => { try { return contentFor(city).sound } catch { return undefined } },
@@ -48,6 +49,12 @@ export function createEngine(): Engine | null {
       let kind = kinds.get(key)
       if (kind === undefined) { try { kind = contentFor(city).venues.find(item => item.id === venue)?.kind ?? '' } catch { return '' } kinds.set(key, kind) }
       return kind
+    },
+    variantOf: (city, venue) => {
+      const key = `${city}/${venue}`
+      let variant = variants.get(key)
+      if (variant === undefined) { try { variant = contentFor(city).venues.find(item => item.id === venue)?.definition.scene.variant ?? '' } catch { return '' } variants.set(key, variant) }
+      return variant
     },
     now: () => Date.now(),
     every: (run, ms) => { const id = setInterval(run, ms); return () => clearInterval(id) },

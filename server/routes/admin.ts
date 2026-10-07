@@ -56,6 +56,7 @@ import { sanctionsOf } from '../admin/sanctions.ts';
 import { settingsOf } from '../admin/settings.ts';
 import { statsService } from '../admin/stats.ts';
 import { audit, peek } from '../admin/store.ts';
+import { politicsAct, politicsOverview } from '../admin/politics.ts';
 import { adminTools } from '../admin/tools.ts';
 import { worldService } from '../admin/world.ts';
 import type { CityId } from '../../src/types/protocol.ts';
@@ -357,6 +358,15 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       moderation.audit(db, `shop-${String(body.action)}`, done.by.id, `${name}${reason ? ` · ${reason}` : ''}`, 'admin');
       effects.after = [() => shops.deliver(push)];
       const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: `shop-${String(body.action)}`, target: done.by.id, targetName: done.by.name, params: { shop: String(body.shop) }, summary: `Shop “${name}” ${body.action === 'close' ? 'closed' : 'renamed to a plain name'}`, reason });
+      return { ok: true, code: String(body.action), summary: line.summary, line: line.n };
+    } })),
+
+    'GET /api/admin/politics': read((db) => politicsOverview(ctx, db)),
+    'POST /api/admin/politics/act': write('politics', (db, admin, body, _request, _effects) => ({ fingerprint: [body.action, body.scope, body.player, body.role, body.reason], run: () => {
+      let done: ReturnType<typeof politicsAct>;
+      try { done = politicsAct(ctx, db, body); } catch (error) { if (error !== null && typeof error === 'object' && 'code' in error && 'reason' in error) return { ok: false, code: String(error.code), reason: String(error.reason) }; throw error; }
+      moderation.audit(db, `politics-${String(body.action)}`, done.target, `${done.summary} · ${done.reason}`, 'admin');
+      const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: `politics-${String(body.action)}`, target: done.target, targetName: done.targetName, params: { scope: String(body.scope ?? ''), role: String(body.role ?? '') }, summary: done.summary, reason: done.reason });
       return { ok: true, code: String(body.action), summary: line.summary, line: line.n };
     } })),
 

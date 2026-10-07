@@ -123,6 +123,10 @@ A grant to everyone online or in a city (reason required, a preview of the count
 
 The reports queue with the reported player's quoted messages and the reporter's text; one tap to dismiss, warn (a system message in their Updates) or mute; reported shops (plain name, close); live ads, notices and radio shout-outs per city (remove). Suspend or ban from the player's page. Other features add queues and tools with `registerAdminTool` (`server/admin/tools.ts`), listed by `GET /api/admin/tools`; statistics with `registerAdminStat`; settings with `registerAdminSetting`.
 
+## Government
+
+Admin → World → Government lists every seat that has held an election (holder, treasury, officers and judges, petition, audit warnings), who is in jail, and who serves as police or judge. An operator can **remove an officeholder** for the rest of the term (type their name), **release** a jailed player, or **dismiss** an officer or a judge. Every action needs a reason of at least ten characters, is written to the audit log below, and is also written to the public record (`GET /api/world/records?kind=operator`) with the same reason, so players can read what was done to their government and why. The record is hash-chained: an operator cannot change a past entry. See docs/POLITICS.md.
+
 ## Audit log
 
 Append-only, the last 5000 lines (collection `adminAudit`), each `{ n, at, admin account, admin name, action, target, params, before-to-after summary, reason, amount }`, written in the same transaction as the change. Filters by action, admin reference, text; "Older" pages; **Export CSV** is made in the browser (a cell that begins like a formula is quoted so a spreadsheet does not run it). Responses show an admin by a short reference, never the account id.

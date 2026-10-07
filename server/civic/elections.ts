@@ -72,10 +72,11 @@ function resultOf(city: GovScope, week: number, now: number, quorum: number = QU
     winner: winner ? { id: winner.id, name: winner.name, slogan: winner.slogan, votes: winner.votes } : null };
 }
 
-/** The sitting Governor at `now`, or null. A term runs from one Sunday 00:00 to the next. */
+/** The sitting Governor at `now`, or null (also null once an impeachment has removed them). A term runs from one Sunday 00:00 to the next. */
 export function governorAt(city: GovScope, now: number, quorum: number = QUORUM.city): Governor | null {
   const week = Math.floor((lagosTime(now).day - 3) / 7);
-  const result = resultOf(city, week, now, quorum);
+  const result = resultOf(city, week, now, quorum), removedAt = electionOf(city, week)?.removedAt;
+  if (removedAt !== undefined && now >= removedAt) return null; // impeached
   return result?.winner && now < result.termEndsAt ? { ...result.winner, week, termStartedAt: result.closedAt, termEndsAt: result.termEndsAt } : null;
 }
 
@@ -152,7 +153,7 @@ export function removeAnnouncement(city: GovScope, id: string) {
 }
 
 /** Why the player cannot post a Governor's announcement right now, or null. */
-export function announceBlock(city: GovScope, now: number, playerId: string, title = 'Governor', quorum: number = QUORUM.city): Block | null {
+export function announceBlock(city: GovScope, now: number, playerId: string, title = 'Chairman', quorum: number = QUORUM.city): Block | null {
   const governor = governorAt(city, now, quorum);
   if (governor?.id !== playerId) return { code: 'not_governor', reason: `Only the sitting ${title} can post an announcement. Win this week’s election first.` };
   const rules = ELECTION.announcement, day = lagosTime(now).day;
@@ -192,20 +193,20 @@ export function govView(city: GovScope, now: number, viewerId: string | null = n
 }
 
 /** Recent civic news for the notice surface, newest first: results, phase changes and announcements. */
-export function notices(city: GovScope, now: number, cityName = 'Lagos', openedAt = 0, title = 'Governor'): CivicNotice[] {
+export function notices(city: GovScope, now: number, cityName = 'Lagos', openedAt = 0, title = 'Chairman', idPrefix = '', quorum: number = QUORUM.city): CivicNotice[] {
   const phase = phaseAt(now), items: CivicNotice[] = [];
   for (const week of [phase.week, phase.week - 1]) {
     const before = items.length;
-    const times = timeline(week), result = resultOf(city, week, now);
+    const times = timeline(week), result = resultOf(city, week, now, quorum);
     if (result) {
-      items.push({ id: `result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new ${title} of ${cityName}` : `${cityName} has no ${title} this week`,
-        text: result.winner ? `Elected with ${result.winner.votes} of ${result.totalVotes} vote${result.totalVotes === 1 ? '' : 's'}.` : result.totalVotes ? `Only ${result.totalVotes} vote${result.totalVotes === 1 ? ' was' : 's were'} cast and the election needs ${QUORUM.city}, so it does not count and the seat stays empty.` : result.candidates ? 'Nobody voted, so nobody took office.' : 'Nobody stood for election.' });
+      items.push({ id: `${idPrefix}result-${week}`, kind: 'result', at: times.closesAt, title: result.winner ? `${result.winner.name} is the new ${title} of ${cityName}` : `${cityName} has no ${title} this week`,
+        text: result.winner ? `Elected with ${result.winner.votes} of ${result.totalVotes} vote${result.totalVotes === 1 ? '' : 's'}.` : result.totalVotes ? `Only ${result.totalVotes} vote${result.totalVotes === 1 ? ' was' : 's were'} cast and the election needs ${quorum}, so it does not count and the seat stays empty.` : result.candidates ? 'Nobody voted, so nobody took office.' : 'Nobody stood for election.' });
     }
-    if (now >= times.votingAt) items.push({ id: `voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: `Voting for ${title} runs until midnight on Saturday, Nigerian time.` });
-    if (now >= times.nominationsAt) items.push({ id: `nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: `Run for ${title} before Thursday, Nigerian time.` });
+    if (now >= times.votingAt) items.push({ id: `${idPrefix}voting-${week}`, kind: 'voting', at: times.votingAt, title: 'Polls are open', text: `Voting for ${title} runs until midnight on Saturday, Nigerian time.` });
+    if (now >= times.nominationsAt) items.push({ id: `${idPrefix}nominations-${week}`, kind: 'nominations', at: times.nominationsAt, title: 'Nominations are open', text: `Run for ${title} before Thursday, Nigerian time.` });
     // Nothing is dated before the city opened: a notice of the week in progress starts at the opening, an earlier week's is left out.
     for (let i = items.length - 1; i >= before; i--) if (items[i]!.at < openedAt) { if (week === phase.week) items[i]!.at = openedAt; else items.splice(i, 1); }
   }
-  for (const item of city.gov.announcements) items.push({ id: `announcement-${item.id}`, kind: 'announcement', at: item.at, title: `${title} ${item.by.name} announced`, text: item.text });
+  for (const item of city.gov.announcements) items.push({ id: `${idPrefix}announcement-${item.id}`, kind: 'announcement', at: item.at, title: `${title} ${item.by.name} announced`, text: item.text });
   return items.filter((item) => item.at <= now && item.at > now - 8 * DAY_MS).sort((a, b) => b.at - a.at || (a.id < b.id ? -1 : 1)).slice(0, 12);
 }

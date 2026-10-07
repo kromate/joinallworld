@@ -20,7 +20,9 @@ export interface Bed {
 }
 /** A one-shot recipe at random intervals: [recipe, min s, max s, level, only 'day' | 'night']. */
 export type Shot = readonly [string, number, number, number, ('day' | 'night')?]
-export interface ScapeSpec { beds?: readonly Bed[]; shots?: readonly Shot[] }
+/** A pattern that repeats on the beat, exactly and without the random level, pan and pitch of a shot (music): [recipe, length s, level, only 'day' | 'night']. */
+export type Loop = readonly [string, number, number, ('day' | 'night')?]
+export interface ScapeSpec { beds?: readonly Bed[]; shots?: readonly Shot[]; loops?: readonly Loop[] }
 
 /** Beds sit well under the interface sounds: they are the room, not the event. */
 const BED_GAIN = 0.3
@@ -36,6 +38,7 @@ export class Scape {
   private readonly sources: AudioScheduledSourceNode[] = []
   private readonly nodes: AudioNode[] = []
   private readonly next: number[]
+  private readonly nextLoop: number[]
   private driftAt: number
   private stopped = false
 
@@ -46,6 +49,7 @@ export class Scape {
     this.out.connect(dest)
     for (const bed of spec.beds ?? []) this.addBed(bed, now)
     this.next = (spec.shots ?? []).map(shot => now + rand(0.2, Math.min(shot[2], 4)))
+    this.nextLoop = (spec.loops ?? []).map(() => now + 0.15)
     this.driftAt = now + DRIFT_STEP
   }
 
@@ -90,6 +94,18 @@ export class Scape {
         this.next[i] = at + rand(shot[1], shot[2])
         if (when && (when === 'night') !== this.night) continue
         this.synth.play(shot[0], { at, vel: shot[3] * rand(0.6, 1), pan: rand(-0.6, 0.6), pitch: rand(0.94, 1.06), dest: this.out })
+      }
+    }
+    const loops = this.spec.loops ?? []
+    for (let i = 0; i < loops.length; i++) {
+      const loop = loops[i] as Loop, when = loop[3]
+      while ((this.nextLoop[i] as number) < until) {
+        const at = this.nextLoop[i] as number
+        this.nextLoop[i] = at + loop[1]
+        // A context that was suspended comes back with the beat far behind: skip those bars rather than stack them.
+        if (at < this.synth.ctx.currentTime - 0.05) continue
+        if (when && (when === 'night') !== this.night) continue
+        this.synth.play(loop[0], { at, vel: loop[2], dest: this.out })
       }
     }
   }

@@ -2,6 +2,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import * as THREE from 'three'
+import { setFlagsFromString } from 'node:v8'
+import { runInNewContext } from 'node:vm'
 import { buildCompanion } from './model.ts'
 import type { CompanionPose } from './model.ts'
 import { COMPANION_COLOURS, COMPANION_NAME } from './identity.ts'
@@ -63,13 +65,18 @@ test('a timed pose returns to the held pose; reduced motion keeps the body still
 })
 
 test('update allocates (almost) nothing', () => {
+  // Collect before each reading, so garbage made by earlier tests does not count as this one's growth.
+  setFlagsFromString('--expose-gc')
+  const collect = runInNewContext('gc') as () => void
   const rig = buildCompanion(THREE)
   rig.setTalking(true); rig.play('celebrate', 100000)
   for (let i = 0; i < 2000; i++) rig.update(1 / 60, i / 60)
+  collect()
   const before = process.memoryUsage().heapUsed
   for (let i = 0; i < 20000; i++) rig.update(1 / 60, i / 60)
+  collect()
   const grown = process.memoryUsage().heapUsed - before
-  assert.ok(grown < 4_000_000, `heap grew ${grown}`)
+  assert.ok(grown < 1_000_000, `heap kept ${grown} bytes after 20000 updates`)
   rig.dispose()
 })
 

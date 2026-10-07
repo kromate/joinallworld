@@ -9,7 +9,7 @@ import type { AdColour, AdIcon } from '../../types/content.ts'
 /** Text on the State House sheet (Lagos). */
 export const STATE_HOUSE_TEXT = {
   title: 'Lagos State House',
-  empty: 'Lagos has no Governor yet. Sign up to vote, or run for office yourself.',
+  empty: 'Lagos has no Chairman yet. Sign up to vote, or run for office yourself.',
 };
 
 /** Fixed creative choices for billboards and sea plots: no uploads and no links in this wave. */

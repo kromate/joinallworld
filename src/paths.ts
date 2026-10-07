@@ -15,7 +15,7 @@ export type GameSlug = typeof GAME_SLUGS[number]
 /** The Phone table a board game opens (a private game against the computer). Oro is the daily puzzle, not a table. */
 export const PHONE_TABLE: Readonly<Record<Exclude<GameSlug, 'oro'>, string>> = Object.freeze({ chess: 'phone-chess', weave: 'phone-weave', whot: 'phone-whot', penalties: 'phone-penalty' });
 
-export const PANEL_WORDS = ['messages', 'friends', 'invite', 'business', 'jobs', 'help', 'sound', 'signup', 'login'] as const
+export const PANEL_WORDS = ['messages', 'friends', 'invite', 'business', 'jobs', 'help', 'sound', 'politics', 'records', 'signup', 'login'] as const
 export type PanelWord = typeof PANEL_WORDS[number]
 
 /** What an address asks for. */

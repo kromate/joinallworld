@@ -4,6 +4,13 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+    inputs:
+      full_checks:
+        description: Run the full Node 22, Node 24, and Worker checks
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -13,9 +20,37 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  typecheck-fast:
+    if: github.event_name != 'workflow_dispatch' || !inputs.full_checks
     runs-on: ubuntu-latest
-    # The full suite takes more than 10 minutes on a hosted runner (every run on main was cancelled at 10).
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+
+  build-and-smoke-fast:
+    if: github.event_name != 'workflow_dispatch' || !inputs.full_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npm run size:download
+      - run: npm run test:smoke
+
+  full:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+    runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
       fail-fast: false
@@ -27,9 +62,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-      - run: npm ci
+      - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
       - run: npm run build
       - run: npm run size:download
       - run: npm test
+      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - run: npm run test:edge

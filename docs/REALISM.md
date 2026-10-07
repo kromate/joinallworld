@@ -246,22 +246,26 @@ The ids are shared and the labels are local. Calabar's elder greeting uses the s
 
 **Design.**
 
-- Each venue can carry `exchanges`: short scripts of 3 or 4 lines between its two regulars.
-- When both regulars are present (feature 1) and the player is within 6 m, speech bubbles play the exchange once per band of time.
-- A "Join in" action runs Gist with both regulars and gives each half of the points.
+**Built.** `src/game/chatter/` (the picker and the bank) and `src/app/chatter/` (the bubbles and the visit loop), one lazy `chatter` chunk fetched after the scene is up (`src/app/startExtras.ts`). Nothing of it is in the first download.
 
-**Acceptance.** Standing near Mama Bisi and Funke at the salon plays their exchange. Join in raises closeness with both of them.
+- An exchange is two short lines: one regular says something, another answers 3.2 seconds later. The bank is wording only; it never changes game state. It reuses the two-voice lines of the moment banks (`src/moments`) and adds its own by place kind and by city (Ibadan Yoruba, Kano Hausa, Calabar Efik).
+- The pick is deterministic per Lagos day, city, venue and 90-second slot, so two players in one venue hear the same talk. About half the slots are quiet, no line repeats inside a cycle of the pool, and a visit hears at most 10 exchanges, none in its first 6 seconds.
+- Which two: two different regulars the scene is actually drawing a tag over (it reads the scene's name tags, so it follows whoever the scene shows; nothing is said with fewer than two). Nothing is said at home, on a trip, or while the page is hidden.
+- Each line shows as a bubble over its speaker, marked NPC, and is added to this device's venue feed as an NPC line (`community.npcLine`). It is never sent to the server and never reads as a player.
+- Pidgin, Hausa, Yoruba, Igbo and Efik lines are marked beta on the bubble until a native speaker has reviewed them.
+- "Join in" is not built.
+
+**Acceptance.** Standing in a venue with two regulars drawn, an exchange plays about every three minutes, in the same words for everyone there. Reduced-motion players get no animation.
 
 ### 13. Regulars introducing real players
 
-**Design.** This is server-side, built on the existing presence listing and friend graph.
+**Built.** Server-side (`server/social/introductions.ts`, `service.people`, `service.introduce`), off for everyone until they switch it on (Messages → Chat settings → "Let regulars offer to introduce me…", `POST /api/social/prefs { introductions }`).
 
-- When two real players are in the same venue room and both are at Friend tier with the same regular, the regular can offer "Let me introduce you to {name}".
-- The introduction is sent as a friend suggestion, and each player can accept or ignore it.
-- It is rate-limited to one per player per Lagos day, and blocked or private players are excluded.
-- Guests are not introduced until they have settled in.
+- For a player with it on, the server keeps, per venue (at most 24), how many visits, when the current one began and ended and the span of the one before; and the players already answered (at most 20). Switching it off deletes the visit record. Old saves have none of it.
+- The offer rides on the People listing (`GET /api/social/people` → `introduction: { id, name }`) and is only made when: the caller has it on and so has the other player; the other player is standing in the caller's own venue room right now (so their name is already in the list); neither blocked the other; they are not friends and have no open request; and the two were seen at that venue on separate earlier visits that did not overlap, so a new arrival is not offered anyone. Nobody who is not in the room is ever named.
+- "Say hello" calls `POST /api/social/introduction { to, cityId, answer: 'accept' | 'decline' }`. The server reads the offer again by the same rule (`no_introduction` if it has gone), remembers the answer, and an accept is an ordinary friend request (`service.friendRequest`, so every friend rule and refusal applies). The pair is not offered again for 7 days, and a player is offered at most one introduction a day after answering.
 
-**Acceptance.** This is exercised by the existing `two-players` script path. A blocked pair never receives an introduction.
+**Acceptance.** `server/introductions.test.ts`: both players on, seen apart, offered, accepted into a friend request; not offered when either has it off, when blocked, after an answer, or after it is switched off.
 
 ### 14. Consequences that come back later
 

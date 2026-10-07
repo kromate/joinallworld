@@ -84,6 +84,8 @@ test('an offer needs both players to have it on, skips anyone already told about
   assert.equal(introductionFor(off, [them('b')], 'k', 200), null, 'the caller has it off');
   markTold(me, 'b', 200);
   assert.equal(introductionFor(me, [them('b')], 'k', 300), null);
+  assert.equal(introductionFor(me, [them('d')], 'k', 300), null, 'one answered offer a day');
+  assert.equal(introductionFor(me, [them('d')], 'k', 200 + 86_400_000 + 1), 'd');
   assert.equal(introductionFor(me, [them('b')], 'k', 200 + TOLD_FOR_MS + 1), 'b', 'offered again a week on');
   for (let i = 0; i < INTRO_TOLD_KEPT + 8; i += 1) markTold(me, `p${i}`, 1000 + i);
   assert.equal(Object.keys(me.introTold ?? {}).length, INTRO_TOLD_KEPT);

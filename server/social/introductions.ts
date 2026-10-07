@@ -23,6 +23,8 @@ export const VENUES_KEPT = 24;
 export const INTRO_TOLD_KEPT = 20;
 /** How long before the same pair is offered again. */
 export const TOLD_FOR_MS = 7 * 86_400_000;
+/** After a player answers an offer, no other is made to them for this long (one introduction a day, docs/REALISM.md item 13). */
+export const ONE_A_DAY_MS = 86_400_000;
 
 type Book = NonNullable<SocialPlayerRecord['introVisits']>;
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
@@ -58,6 +60,7 @@ export interface IntroCandidate { id: string; record: SocialPlayerRecord }
 export function introductionFor(me: SocialPlayerRecord, candidates: readonly IntroCandidate[], key: string, t: number): string | null {
   if (me.introductions !== 'on') return null;
   const told = me.introTold ?? {};
+  if (Object.values(told).some((at) => finite(at) && t - at < ONE_A_DAY_MS)) return null;
   for (const { id, record } of [...candidates].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))) {
     if (record.introductions !== 'on') continue;
     const at = told[id];

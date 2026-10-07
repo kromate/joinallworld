@@ -591,3 +591,21 @@ test('room groups: a snapshot, then changes; the counts and header; notices; "Se
   ws.receive({ type: 'presence', members: [member('a', 'Alex')] })
   assert.equal(api.state.group, null)
 })
+
+test('a regular\'s line (REALISM R12) joins this device\'s feed with the NPC mark, is bounded, and is never sent', async (t) => {
+  const { start } = browserFor(t, { mediaDevices: {} })
+  const api = await start()
+  const ws = lastSocket()
+  ws.open()
+  ws.receive({ type: 'presence', members: [{ id: 'a', name: 'Alex', enabled: false, muted: false }] })
+  const before = ws.sent.length
+  api.npcLine?.('Mama Put', 'The rice is ready.')
+  api.npcLine?.('x'.repeat(200), 'y'.repeat(500))
+  const lines = api.state.chat.filter((line) => line.npc)
+  assert.equal(lines.length, 2)
+  assert.deepEqual([lines[0]?.author, lines[0]?.body, lines[0]?.canRetry], ['Mama Put', 'The rice is ready.', false])
+  assert.equal(lines[1]?.author.length, 60); assert.equal(lines[1]?.body.length, 300)
+  assert.equal(ws.sent.length, before, 'nothing was sent to the server')
+  for (let i = 0; i < 100; i += 1) api.npcLine?.('Chidi', `line ${i}`)
+  assert.ok(api.state.chat.length <= 80, 'the feed stays bounded')
+})

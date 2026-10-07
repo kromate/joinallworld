@@ -13,6 +13,7 @@ import type { CityView, PlayerLook, SceneWorld, WorldMap } from '../types/scene.
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { CommandArgs, CommandResult } from '../types/client.ts'
 import { contentFor, regularsFor } from '../../game/cities/runtime.ts'
+import { cachedCityContent } from '../../game/cities/registry.ts'
 import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
@@ -406,7 +407,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   // Panels and sheets open and close with a soft sound; the sound hook is inert until the first tap.
   watch(() => shell.sheet.value !== null, (open) => playSound(open ? 'open' : 'close'), { flush: 'post' })
   // A regular arrives or leaves as the hours pass, or when the routines have loaded: the scene follows the list.
-  watch(() => game.view.value.social.here.map((npc) => npc.id).join(), showCrowd)
+  const crowdIds = (): string => cachedCityContent(game.cityId.value) ? game.view.value.social.here.map((npc) => npc.id).join() : ''
+  watch(crowdIds, () => { if (cachedCityContent(game.cityId.value)) showCrowd() })
   watch(game.mode, (mode, was) => {
     if (was === 'map' && mode !== 'map') mapLeftAt = Date.now()
     else if (mode === 'map' && was !== 'map' && mapLeftAt && Date.now() - mapLeftAt >= CAMERA_KEEP_MS) { mapLeftAt = 0; scene.city.value?.recentre() }

@@ -24,7 +24,7 @@ export const CITY_ROUTINES: Readonly<Record<string, CityRoutine>> = {
       cook: { days: { any: [[5, 20]] } },
       transit: { days: { any: [[4.5, 22]] } },
     },
-    archetypes: { kunle: 'resident' },
+    archetypes: { kunle: 'student' },
   },
   abuja: {
     note: 'A civil-service city: the offices keep their hours and the markets are quiet in the evening.',

@@ -136,6 +136,9 @@ export interface SceneVenue {
   label?: string
   spots?: Record<string, SceneSpot>
   scene?: SceneOptions
+  /** Power cuts are by district, and a place with a generator keeps its light in one. */
+  district?: string
+  generator?: boolean
 }
 /** What a scene definition's build() is given. */
 export interface SceneContext {

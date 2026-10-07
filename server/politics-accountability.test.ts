@@ -9,7 +9,7 @@ import type { PoliticsResponse } from '../src/types/politics.ts';
 import { harness } from './testing/politicsHarness.ts';
 import type { Device } from './testing/politicsHarness.ts';
 import { credit } from './politics/rules.ts';
-import { politicsOf, scopeRecord } from './politics/data.ts';
+import { emptyPolitics, scopeRecord } from './politics/data.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent));
 
@@ -21,7 +21,7 @@ async function scene(t: Parameters<typeof harness>[0]) {
   const h = await harness(t);
   const { f, post, get, player, elect, overview, edit } = h;
   /** Put naira in the state treasury, as levies would. */
-  const fund = (amount: number) => f.server.store.transact((db) => { credit(scopeRecord(politicsOf({ collection: (database, name, initial) => { const shared = database as unknown as Record<string, unknown>; return (shared[name] ||= initial) as never; } }, db), 'state:lagos'), f.now(), 'levy', amount, 'Test levies'); });
+  const fund = (amount: number) => f.server.store.transact((db) => { credit(scopeRecord(db.politics ||= emptyPolitics(), 'state:lagos'), f.now(), 'levy', amount, 'Test levies'); });
   const grant = (by: Device, to: Device, amount: number, purpose = 'Clinic roof') => post('/api/politics/grant', { cityId: 'lagos', tier: 'state', player: to.id, amount, purpose, requestId: f.id() }, by);
   const audit = (by: Device) => post('/api/politics/audit', { cityId: 'lagos', tier: 'state' }, by);
   const impeach = (by: Device) => post('/api/politics/impeach', { cityId: 'lagos', tier: 'state' }, by);

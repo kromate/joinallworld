@@ -5,10 +5,14 @@ import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSyn
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { CITY_CATALOGUE, CITY_LOADERS } from '../../src/game/cities/catalogue.ts'
+import type { CityPersonSeed } from '../../src/game/cities/contentBuilder.ts'
+import { castFor } from '../../src/game/cities/formula/cast.ts'
+import { orderedPlacesOf } from '../../src/game/cities/formula/content.ts'
 import { isDefinedLegacyCityRecipe } from '../../src/game/cities/formula/legacy.ts'
 import type { LegacyCityRecipe } from '../../src/game/cities/formula/legacy.ts'
 import { isDefinedCitySpec } from '../../src/game/cities/spec.ts'
-import type { CitySpec, CoordinateReference, SourceGroup } from '../../src/game/cities/spec.ts'
+import type { CastEntry, CitySpec, CoordinateReference, SourceGroup } from '../../src/game/cities/spec.ts'
+import { validateCast } from '../../src/game/cities/specValidation.ts'
 import { isRecord } from '../geo/nigeria-boundaries.ts'
 import { assertNoOpenCityGeometryOverlap, buildCityGeometry } from './geometry.ts'
 
@@ -230,8 +234,29 @@ export function formulaScenesText(): string {
   return `// ${GENERATED}\nimport { buildFormulaScenes } from '../formula/scenes.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const CITY_SCENES = buildFormulaScenes(CITY_SPEC)\n`
 }
 
-export function formulaContentText(): string {
-  return `// ${GENERATED}\nimport { buildFormulaContent } from '../formula/content.ts'\nimport { CITY_LOCAL_UNIT_ANCHORS, CITY_MAP_ORIGIN, CITY_PLAY_BOUNDS } from './geography.ts'\nimport { CITY_SCENES } from './scenes.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const CITY_CONTENT = buildFormulaContent({\n  spec: CITY_SPEC,\n  origin: CITY_MAP_ORIGIN,\n  bounds: CITY_PLAY_BOUNDS,\n  localUnitAnchors: CITY_LOCAL_UNIT_ANCHORS,\n  scenes: CITY_SCENES,\n})\n`
+/** What the content builder reads of a regular: no place id and no list of source facts. */
+export function personSeedOf(entry: CastEntry): CityPersonSeed {
+  return {
+    name: entry.name,
+    role: entry.role,
+    quotes: entry.quotes,
+    ...(entry.age ? { age: entry.age } : {}),
+    ...(entry.greeting ? { greeting: entry.greeting } : {}),
+    ...(entry.look ? { look: entry.look } : {}),
+    ...(entry.note ? { note: entry.note } : {}),
+  }
+}
+
+/** Plain data written with bare keys, so the browser build can leave the `note:` fields out. */
+function literalText(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(literalText).join(', ')}]`
+  if (isRecord(value)) return `{ ${Object.entries(value).map(([key, item]) => `${/^[A-Za-z_$][\w$]*$/.test(key) ? key : JSON.stringify(key)}: ${literalText(item)}`).join(', ')} }`
+  return JSON.stringify(value)
+}
+
+export function formulaContentText(people: readonly CityPersonSeed[]): string {
+  const written = people.length ? `[\n${people.map(person => `    ${literalText(person)},`).join('\n')}\n  ]` : '[]'
+  return `// ${GENERATED}\nimport { buildFormulaContent } from '../formula/content.ts'\nimport { CITY_LOCAL_UNIT_ANCHORS, CITY_MAP_ORIGIN, CITY_PLAY_BOUNDS } from './geography.ts'\nimport { CITY_SCENES } from './scenes.ts'\nimport { CITY_SPEC } from './spec.ts'\n\nexport const CITY_CONTENT = buildFormulaContent({\n  spec: CITY_SPEC,\n  origin: CITY_MAP_ORIGIN,\n  bounds: CITY_PLAY_BOUNDS,\n  localUnitAnchors: CITY_LOCAL_UNIT_ANCHORS,\n  scenes: CITY_SCENES,\n  people: ${written},\n})\n`
 }
 
 export function formulaIndexText(cityId: string): string {
@@ -271,6 +296,17 @@ async function assertNoExistingCityOverlap(cityId: string, polygons: Parameters<
   }
 }
 
+/** Two regulars at every place: the city's authored cast.ts where it has one, a generated pair everywhere else. */
+export async function castOf(cityDirectory: string, spec: CitySpec): Promise<readonly CastEntry[]> {
+  const castPath = join(cityDirectory, 'cast.ts')
+  const authored: unknown = existsSync(castPath) ? (await moduleAt(castPath))['CITY_CAST'] : []
+  if (!Array.isArray(authored)) throw new TypeError(`${relative(root, castPath)} must export CITY_CAST as an array`)
+  const entries: readonly CastEntry[] = authored
+  const errors = validateCast(spec, entries)
+  if (errors.length) throw new Error(`${spec.id} cast is invalid:\n- ${errors.join('\n- ')}`)
+  return castFor(spec, orderedPlacesOf(spec), entries)
+}
+
 async function buildFormula(cityId: string, specPath: string, check: boolean): Promise<boolean> {
   const namespace = await moduleAt(specPath)
   const specs = Object.values(namespace).filter(isDefinedCitySpec)
@@ -293,10 +329,11 @@ async function buildFormula(cityId: string, specPath: string, check: boolean): P
   await assertNoExistingCityOverlap(cityId, geometry.playAreaPolygons)
 
   const cityDirectory = join(root, 'src', 'game', 'cities', cityId)
+  const people = (await castOf(cityDirectory, spec)).map(personSeedOf)
   const outputs: readonly (readonly [string, string])[] = [
     [join(cityDirectory, 'rules.ts'), formulaRulesText()],
     [join(cityDirectory, 'scenes.ts'), formulaScenesText()],
-    [join(cityDirectory, 'content.ts'), formulaContentText()],
+    [join(cityDirectory, 'content.ts'), formulaContentText(people)],
     [join(cityDirectory, 'geography.ts'), geometry.geographyModuleText],
     [join(cityDirectory, 'map.ts'), geometry.runtimeModuleText],
     [join(cityDirectory, 'index.ts'), formulaIndexText(cityId)],

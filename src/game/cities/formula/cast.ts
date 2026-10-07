@@ -1,6 +1,5 @@
 import type { NpcAge } from '../../../types/content.ts'
-import type { CityPersonSeed } from '../contentBuilder.ts'
-import type { CitySpec, IdentityFact, RealPlaceFact, RealPlaceKind } from '../spec.ts'
+import type { CastEntry, CitySpec, IdentityFact, RealPlaceFact, RealPlaceKind } from '../spec.ts'
 import { createNamer, nameRegionFor, type Gender } from './names.ts'
 
 /** A role and two lines for one of the two regulars at a place. `{place}` is the place name. */
@@ -164,22 +163,26 @@ const partsFor = (spec: CitySpec, place: RealPlaceFact): Pair => {
 const GENERATED = 'Generated regular. The name is drawn from a reviewed regional pool.'
 
 /**
- * Two regulars at every place, in the order of `places`. A place the spec's `cast` covers uses the authored
+ * Build-time only: build-city.ts runs this and writes the result into the city's generated content.ts, so the pools and
+ * templates below never ship to the browser.
+ *
+ * Two regulars at every place, in the order of `places`. A place the authored `cast` (the city's cast.ts) covers uses the authored
  * pair. Any other place gets a generated pair, named from the pool for the city's region. No name is
  * numbered, none repeats within the city, and the same city always generates the same people.
  */
-export function castFor(spec: CitySpec, places: readonly RealPlaceFact[]): readonly CityPersonSeed[] {
-  const authored = new Map<string, CityPersonSeed[]>()
-  for (const entry of spec.cast ?? []) authored.set(entry.placeId, [...(authored.get(entry.placeId) ?? []), entry])
+export function castFor(spec: CitySpec, places: readonly RealPlaceFact[], cast: readonly CastEntry[] = []): readonly CastEntry[] {
+  const authored = new Map<string, CastEntry[]>()
+  for (const entry of cast) authored.set(entry.placeId, [...(authored.get(entry.placeId) ?? []), entry])
   const region = nameRegionFor(spec.state.id)
-  const namer = createNamer(spec.id, region, (spec.cast ?? []).map(entry => entry.name))
-  return places.flatMap((place, index): readonly CityPersonSeed[] => {
+  const namer = createNamer(spec.id, region, cast.map(entry => entry.name))
+  return places.flatMap((place, index): readonly CastEntry[] => {
     const own = authored.get(place.id)
     if (own) return own
     const pair = partsFor(spec, place)
     // The visitor's age cycles through young, elder and adult so a city has a mix of ages.
     const visitorAge: NpcAge = (['young', 'elder', 'adult'] as const)[index % 3]!
-    const make = (part: Part, age: NpcAge, gender: Gender): CityPersonSeed => ({
+    const make = (part: Part, age: NpcAge, gender: Gender): CastEntry => ({
+      placeId: place.id,
       name: namer.next(gender, age === 'elder'),
       role: part.role,
       quotes: [fill(part.quotes[0], place), fill(part.quotes[1], place)],

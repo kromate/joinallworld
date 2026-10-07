@@ -119,16 +119,13 @@ export function buildCityContent<City extends string>(spec: CityContentSpec<City
     return Object.freeze({ cityId: spec.cityId, id: seed.id, kind: definition.scene?.kind ?? seed.kind, name: seed.name, district: seed.district, position: { kind: 'lon-lat' as const, ...seed.point }, whatYouCanDo: seed.description, definition: Object.freeze(definition), spotWording: Object.freeze({}), activityWording: Object.freeze({}) })
   }))
   const publicVenues = venues.filter((venue) => venue.id !== 'home')
-  if (spec.people.length !== publicVenues.length * 2) throw new Error(`${spec.cityId} requires two authored regulars at every public venue`)
+  if (spec.people.length !== publicVenues.length * 2) throw new Error(`${spec.cityId} needs two regulars at every public venue`)
   const regulars = Object.freeze(publicVenues.flatMap((venue, venueIndex) => spec.people.slice(venueIndex * 2, venueIndex * 2 + 2).map((person, personIndex) => {
     const id = `${spec.cityId}-${venue.id}-${personIndex + 1}`
-    const definition: NpcDefinition = {
-      id, venue: venue.id, name: person.name, role: person.role, emoji: personIndex ? 'neighbour' : 'person', quotes: [...person.quotes], at: null, beta: true,
-      ...(person.note ? { note: person.note } : {}),
-      ...(person.age ? { age: person.age } : {}),
-      ...(person.look ? { look: { ...person.look } } : {}),
-      ...(person.greeting ? { greeting: { ...person.greeting } } : {}),
-    }
+    // A regular carries what its seed carries: name and role, and when given age, look, greeting and note. The seeds written by
+    // scripts/city/build-city.ts hold no other field (their `facts` list stays in the city's cast.ts).
+    // name and role come first only to fix the key order of the definition (the legacy cities' snapshots are pinned byte for byte); the spread then repeats them.
+    const definition: NpcDefinition = { id, venue: venue.id, name: person.name, role: person.role, emoji: personIndex ? 'neighbour' : 'person', ...(person as Partial<CityPersonSeed>), quotes: [...person.quotes], at: null, beta: true }
     return Object.freeze({ cityId: spec.cityId, id, venueId: venue.id, definition: Object.freeze(definition) })
   })))
   const unavailable = new Set(spec.unavailableCareerIds ?? [])

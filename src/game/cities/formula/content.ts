@@ -1,12 +1,11 @@
 import {
   activity, buildCityContent, hospitalSpots, spot, work,
-  type CityBounds, type CityHouseSeed, type CitySpotSeed, type CityVenueSeed,
+  type CityBounds, type CityHouseSeed, type CityPersonSeed, type CitySpotSeed, type CityVenueSeed,
 } from '../contentBuilder.ts'
 import type { ActivityDefinition, CityContent, CityMapOrigin, TravelModeDefinition, UnmappedService, VenueScene } from '../../../types/content.ts'
 import type { BusinessTypeId } from '../../../types/business.ts'
 import { unmappedKindsOf, type CitySpec, type IdentityFact, type PopulationTier, type RealPlaceFact, type RealPlaceKind } from '../spec.ts'
 import { formulaArrivalRecreation, formulaCareerPlan, formulaRoadArrival } from './careers.ts'
-import { castFor } from './cast.ts'
 import { sceneKindFor } from './scenes.ts'
 
 export interface FormulaContentInput<City extends string> {
@@ -15,6 +14,8 @@ export interface FormulaContentInput<City extends string> {
   readonly bounds: CityBounds
   readonly localUnitAnchors: Readonly<Record<string, { readonly lon: number; readonly lat: number }>>
   readonly scenes: Readonly<Record<string, VenueScene>>
+  /** Two regulars for every place, in `orderedPlacesOf` order. build-city.ts writes them into the city's generated content.ts (see formula/cast.ts). */
+  readonly people: readonly CityPersonSeed[]
 }
 
 export const FORMULA_LOCAL_MODES: readonly TravelModeDefinition[] = Object.freeze([
@@ -144,7 +145,13 @@ const houseShape = (tier: PopulationTier): { readonly grid: number; readonly ren
   }
 }
 
-export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes }: FormulaContentInput<City>): CityContent<City> {
+/** The places in the order the city's venues are listed: the arrival park first. */
+export const orderedPlacesOf = (spec: CitySpec): readonly RealPlaceFact[] => {
+  const arrivalPark = formulaArrivalRecreation(spec.places)
+  return arrivalPark ? [arrivalPark, ...spec.places.filter(place => place !== arrivalPark)] : spec.places
+}
+
+export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes, people }: FormulaContentInput<City>): CityContent<City> {
   const unitNames = new Map(spec.localUnits.map(unit => [unit.id, unit.name]))
   const identities = identityIndex(spec)
   const roadHub = formulaRoadArrival(spec.places)
@@ -166,7 +173,7 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
   if (!spec.places.some(place => place.kind === 'garden' || place.kind === 'nightlife')) {
     addExtra(arrivalPark.id, activity(`${spec.id}-${arrivalPark.id}-evening`, 'Spend a quiet evening here', 'park', ['fun', 'nightlife']))
   }
-  const orderedPlaces = [arrivalPark, ...spec.places.filter(place => place !== arrivalPark)]
+  const orderedPlaces = orderedPlacesOf(spec)
   const venues = orderedPlaces.map(place => venueSeed(spec.id, unitNames.get(place.localUnitId) ?? place.localUnitId, place, identities, primaryHospitalId, extras.get(place.id) ?? []))
   const careers = formulaCareerPlan(spec.places)
   const unmappedServices: UnmappedService[] = [
@@ -202,7 +209,7 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
     localUnitDescriptions: Object.fromEntries(spec.localUnits.map(unit => [unit.id, unit.description])),
     scenes,
     venues,
-    people: castFor(spec, orderedPlaces),
+    people,
     careerVenues: careers.venues,
     unavailableCareerIds: careers.unavailable,
     ...(unmappedServices.length ? { unmappedServices } : {}),

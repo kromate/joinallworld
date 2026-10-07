@@ -1,5 +1,4 @@
 import { defineCitySpec } from '../spec.ts'
-import { CALABAR_CAST } from './cast.ts'
 
 export const CITY_SPEC = defineCitySpec({
   schemaVersion: 1,
@@ -152,7 +151,6 @@ export const CITY_SPEC = defineCitySpec({
       { id: 'cross-river-national-park', name: 'Cross River National Park', description: 'Cross River National Park has two divisions, Oban and Okwangwo, and the Oban Division lies roughly 42 kilometres from Calabar.', sourceIds: ['cross-river-national-park'] },
     ],
   },
-  cast: CALABAR_CAST,
   transport: {
     airports: [],
     rail: [],

@@ -12,7 +12,7 @@ const THANKS = { text: 'Sọsọñọ', meaning: 'Thank you', identityId: 'efik-
  * Every food, festival, landmark, greeting and honorific a line mentions is listed in `facts`
  * and traces to a sourced identity fact in the Calabar spec. Efik wording is beta and carries a note.
  */
-export const CALABAR_CAST: readonly CastEntry[] = [
+export const CITY_CAST: readonly CastEntry[] = [
   { placeId: 'sacred-heart-cathedral', name: 'Mma Affiong', role: 'Church volunteer', age: 'elder', greeting: MORNING, note: EFIK, facts: ['efik-greetings', 'efik-honorifics'],
     quotes: ['Emesiere! Come in, there is room on the bench.', 'I have swept this aisle for many years and I still enjoy it.'] },
   { placeId: 'sacred-heart-cathedral', name: 'Edikan Bassey', role: 'Youth choir singer', age: 'young', note: FICTION, facts: ['calabar-carnival-season'],

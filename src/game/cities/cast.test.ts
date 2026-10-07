@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { CITY_CAST as calabarCast } from './calabar/cast.ts'
 import { CITY_SPEC as CALABAR_SPEC } from './calabar/spec.ts'
 import { castFor } from './formula/cast.ts'
 import { createNamer, elderHonorific, nameRegionFor, NAME_POOLS } from './formula/names.ts'
 import { loadCityContent, playableCityIds } from './registry.ts'
-import { NUMBERED_NEIGHBOUR, validateCitySpec, type CitySpec } from './spec.ts'
+import { NUMBERED_NEIGHBOUR, validateCast } from './specValidation.ts'
+import type { CastEntry } from './spec.ts'
 
 const cityIds = [...playableCityIds()]
 const contents = await Promise.all(cityIds.map(async id => [id, await loadCityContent(id)] as const))
@@ -31,8 +33,6 @@ const CLAIMS: readonly (readonly [RegExp, string])[] = [
   [/watt market/i, 'watt-market-goods'],
   [/emesiere|idem fo|sọsọñọ/i, 'efik-greetings'],
 ]
-
-const calabarCast = CALABAR_SPEC.cast ?? []
 
 test('no regular in any city has a numbered neighbour name', () => {
   for (const [id, content] of contents) {
@@ -112,7 +112,7 @@ test('every Efik greeting and honorific is beta, noted as awaiting native-speake
 test('the cast validator rejects numbered names, an Eka elder, an unknown greeting source and a place with one regular', () => {
   const [first, second] = calabarCast
   assert.ok(first && second)
-  const withCast = (cast: CitySpec['cast']): readonly string[] => validateCitySpec({ ...CALABAR_SPEC, cast })
+  const withCast = (cast: readonly CastEntry[]): readonly string[] => validateCast(CALABAR_SPEC, cast)
   assert.deepEqual(withCast(calabarCast), [])
   assert.ok(withCast([{ ...first, name: 'calabar neighbour 3' }, second]).some(error => /numbered/.test(error)))
   assert.ok(withCast([{ ...first, name: 'Eka Affiong' }, second]).some(error => /Eka/.test(error)))
@@ -122,7 +122,7 @@ test('the cast validator rejects numbered names, an Eka elder, an unknown greeti
 })
 
 test('the generator names people from a regional pool without numbering or repeats', () => {
-  const { cast: _cast, ...bare } = CALABAR_SPEC
+  const bare = CALABAR_SPEC
   const generated = castFor(bare, bare.places)
   assert.equal(generated.length, bare.places.length * 2)
   const names = generated.map(person => person.name)
@@ -136,7 +136,7 @@ test('the generator names people from a regional pool without numbering or repea
 })
 
 test('generated food and market lines use only the sourced identity facts', () => {
-  const { cast: _cast, ...bare } = CALABAR_SPEC
+  const bare = CALABAR_SPEC
   const generated = castFor(bare, bare.places)
   const indexOf = (id: string): number => bare.places.findIndex(place => place.id === id)
   const eatery = generated.slice(indexOf('native-delicacies-food') * 2, indexOf('native-delicacies-food') * 2 + 2)
@@ -166,4 +166,13 @@ test('a namer is deterministic, unique and honours names already taken', () => {
   assert.equal(new Set(first).size, first.length)
   const avoided = draw(first.slice(0, 5))
   for (const name of first.slice(0, 5)) assert.ok(!avoided.includes(name))
+})
+
+test('every regular holds only the fields of an NPC definition, so nothing of the cast file leaks into the page', () => {
+  const allowed = new Set(['id', 'venue', 'name', 'role', 'emoji', 'quotes', 'at', 'beta', 'note', 'age', 'look', 'greeting'])
+  for (const [id, content] of contents) {
+    for (const { definition } of content.regulars) {
+      for (const key of Object.keys(definition)) assert.ok(allowed.has(key), `${id} ${definition.id} carries ${key}`)
+    }
+  }
 })

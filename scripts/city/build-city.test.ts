@@ -7,7 +7,8 @@ import { dirname, join, resolve } from 'node:path'
 import test from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { SAGAMU_LEGACY_RECIPE } from '../../src/game/cities/sagamu/recipe.ts'
-import { buildFormulaContent } from '../../src/game/cities/formula/content.ts'
+import { castFor } from '../../src/game/cities/formula/cast.ts'
+import { buildFormulaContent, orderedPlacesOf } from '../../src/game/cities/formula/content.ts'
 import { buildFormulaRules } from '../../src/game/cities/formula/rules.ts'
 import { buildFormulaScenes } from '../../src/game/cities/formula/scenes.ts'
 import { defineCitySpec, validateCitySpec } from '../../src/game/cities/spec.ts'
@@ -20,11 +21,14 @@ import {
   formulaScenesText,
   generatedTextIsCurrent,
   legacyGeneratedFiles,
+  personSeedOf,
   wikidataCoordinate,
 } from './build-city.ts'
 import { buildSelectedStateTopology } from './geometry.ts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..')
+
+const peopleOf = (spec: CitySpec): ReturnType<typeof personSeedOf>[] => castFor(spec, orderedPlacesOf(spec)).map(personSeedOf)
 
 const invalidSpec: CitySpec<'test-city'> = {
   schemaVersion: 1,
@@ -202,6 +206,7 @@ test('a valid synthetic CitySpec builds the playable formula skeleton without re
       'test-north': { lon: 3.02, lat: 7.02 },
     },
     scenes,
+    people: peopleOf(formulaSpec),
   })
 
   assert.equal(rules.id, 'test-formula')
@@ -246,6 +251,7 @@ test('a sparse CitySpec documents unmapped kinds and builds honest fallbacks', (
     bounds: { minX: -100, maxX: 100, minZ: -100, maxZ: 100 },
     localUnitAnchors: { 'test-centre': { lon: 3.01, lat: 7.01 }, 'test-north': { lon: 3.02, lat: 7.02 } },
     scenes: buildFormulaScenes(spec),
+    people: peopleOf(spec),
   })
   assert.equal(rules.hubs.find(hub => hub.mode === 'road')?.venueId, 'test-centre-market', 'road arrivals set down at the first sourced market')
   assert.equal(content.venues[1]?.id, 'test-stadium', 'the first recreation fallback becomes the arrival venue')
@@ -273,7 +279,7 @@ test('generated eager rules and content cannot statically reach the lazy map or 
   const modules: Readonly<Record<string, string>> = {
     './index.ts': formulaIndexText('test-formula'),
     './rules.ts': formulaRulesText(),
-    './content.ts': formulaContentText(),
+    './content.ts': formulaContentText([]),
     './scenes.ts': formulaScenesText(),
     './geography.ts': '// generated scalar metadata has no imports\n',
   }
@@ -300,7 +306,7 @@ test('generated eager rules and content cannot statically reach the lazy map or 
     for (const file of reached) assert.doesNotMatch(modules[file] ?? '', /map3d\/geo\/data|createFormulaCityGeometry/)
   }
   assert.match(formulaIndexText('test-formula'), /import\('#city-map\/test-formula'\)/, 'map remains available only through the lazy module loader')
-  assert.match(formulaContentText(), /from '\.\/geography\.ts'/)
+  assert.match(formulaContentText([]), /from '\.\/geography\.ts'/)
   assert.match(formulaRulesText(), /from '\.\/geography\.ts'/)
 })
 
@@ -348,4 +354,10 @@ test('Sagamu generated runtime preserves the exact original baseline', async () 
 
 test('Sagamu offline generator check accepts current generated files', () => {
   execFileSync(process.execPath, ['--experimental-strip-types', 'scripts/city/build-city.ts', 'sagamu', '--check'], { cwd: root, stdio: 'pipe' })
+})
+
+test('the generated content file writes the cast as plain data with bare keys, one regular to a line', () => {
+  const text = formulaContentText([{ name: 'Ima', role: 'Cook', quotes: ['One.', 'Two "quoted".'], age: 'adult', note: 'A note.' }])
+  assert.ok(text.includes('  people: [\n    { name: "Ima", role: "Cook", quotes: ["One.", "Two \\"quoted\\"."], age: "adult", note: "A note." },\n  ],\n'))
+  assert.ok(formulaContentText([]).includes('  people: [],\n'))
 })

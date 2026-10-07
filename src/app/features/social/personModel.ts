@@ -6,6 +6,21 @@ import { money } from '../../ui/format.ts'
 
 export type PlayerView = Pick<SocialView, 'dailyInteractions' | 'bae' | 'baeUnlock' | 'transfer'>
 
+/** The id prefix the scenes give an NPC's tag and crowd entry (src/scene/crowd.ts). */
+export const NPC_REF = 'npc:'
+/**
+ * Which card a person reference opens. Block, Report, Chat, Call and money belong to real players only, so a reference that is
+ * an NPC — asked for as an NPC, tagged `npc:<id>`, or the id of a character the life knows as one — always opens the NPC card.
+ */
+export function personTarget(params: { npc?: unknown; player?: unknown }, npcIds: ReadonlySet<string> | readonly string[]): { kind: 'npc' | 'player'; id: string } | null {
+  const known = npcIds instanceof Set ? npcIds : new Set(npcIds)
+  if (typeof params.npc === 'string') return { kind: 'npc', id: params.npc.replace(/^npc:/, '') }
+  if (typeof params.player !== 'string') return null
+  const id = params.player
+  if (id.startsWith(NPC_REF)) return { kind: 'npc', id: id.slice(NPC_REF.length) }
+  return known.has(id) ? { kind: 'npc', id } : { kind: 'player', id }
+}
+
 /** Why a person's interactions cannot start, or null. `base` is the NPC's content, `here` the regular at this venue. */
 export function npcReason(input: { connected: boolean; cannot: string; here: Pick<NpcSummary, 'blocked'> | null; name: string; venueLabel: string; busy: boolean }): string | null {
   return !input.connected ? input.cannot

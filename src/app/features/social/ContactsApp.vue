@@ -9,6 +9,7 @@ import { cityName } from '../../../game/cities/registry.ts'
 import type { SearchResult } from '../../../types/social.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import CallButton from './CallButton.vue'
 const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import FounderTag from './FounderTag.vue'
@@ -47,7 +48,7 @@ async function find(): Promise<void> {
     <div v-if="mummy" class="social-list contacts-fav">
       <div class="social-row">
         <span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="mummy.name" :seed="mummy.id" /></span>
-        <div><strong>{{ mummy.name }}</strong><small>{{ mummy.line }}{{ mummy.calledToday ? ' · checked in today' : '' }}</small></div>
+        <div><strong>{{ mummy.name }}</strong><small><NpcBadge lead />{{ mummy.line }}{{ mummy.calledToday ? ' · checked in today' : '' }}</small></div>
         <span class="social-actions"><CallButton :member="mummy" /></span>
       </div>
     </div>
@@ -84,7 +85,7 @@ async function find(): Promise<void> {
       </template>
       <div v-for="rel in met" :key="`n${rel.id}`" class="social-row">
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="rel.name" :seed="rel.id" /></span>
-        <div><strong>{{ rel.name }}</strong><small>{{ rel.role }} · NPC · {{ rel.tierLabel }}</small></div>
+        <div><strong>{{ rel.name }}</strong><small><NpcBadge lead />{{ rel.role }} · {{ rel.tierLabel }}</small></div>
         <span class="social-actions"><button type="button" class="social-btn" @click="shell.open('person', { npc: rel.id })">View</button></span>
       </div>
     </div>

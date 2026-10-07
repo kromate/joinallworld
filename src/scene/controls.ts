@@ -43,6 +43,8 @@ const CSS = `
 .scene-tag.is-hover{outline:2px solid #ffd34d;outline-offset:1px}
 .scene-tag svg{display:block;width:18px;height:18px}
 .scene-tag i{display:block;width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag.is-npc.has-npc-word{display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 7px;background:rgba(18,32,48,.82);box-shadow:0 1px 3px rgba(0,0,0,.35);text-shadow:none}
+.scene-tag .npc-word{color:#d6ebff;font:700 11px/1.2 var(--font,system-ui,sans-serif);letter-spacing:.03em}
 .scene-spot-hint{position:absolute;transform:translate(-50%,-100%);margin-top:-14px;padding:3px 9px;border-radius:999px;background:rgba(255,211,77,.96);color:#2a2410;font:700 12px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;white-space:nowrap;pointer-events:none;box-shadow:0 2px 6px rgba(0,0,0,.3)}
 .scene-spot-hint[hidden]{display:none}
 .scene-hint[hidden]{display:none}

@@ -341,3 +341,77 @@ test('People: the founder\'s Players view is there (search, sorts, a way to pick
   assert.ok(!html.includes('Message selected'), 'nobody is picked yet')
   client.state.me = null
 })
+
+// The NPC mark: every surface that shows a game character carries the one badge (and its spoken text); a real player never does.
+const badges = (html: string): number => (html.match(/data-npc-badge/g) ?? []).length
+const SPOKEN = 'NPC, a game character, not a real player'
+/** Stand at a venue that has regulars (and put the life back after). */
+async function atRegulars<T>(run: () => Promise<T>): Promise<T> {
+  const { regularsFor } = await load<{ regularsFor: (city: string) => readonly { venue: string }[] }>('/src/game/cities/runtime.ts')
+  const venue = regularsFor(app.game.cityId.value).find((npc) => npc.venue !== 'home')?.venue
+  assert.ok(venue, 'the city has regulars')
+  const before = app.game.state.value
+  app.game.state.value = { ...before, location: venue }
+  try { return await run() } finally { app.game.state.value = before }
+}
+
+test('NPC mark: People marks each local with the badge and a real player with none', () => atRegulars(async () => {
+  const { peopleUi } = await load<{ peopleUi: { loadedFor: string | null } }>('/src/app/features/social/socialState.ts')
+  const view = app.game.view.value
+  const place = app.game.state.value.location
+  peopleUi.loadedFor = `${view.cityId}:${place}:${Boolean(app.game.state.value.activeAction)}`
+  client.state.peopleAt = view.now
+  client.state.people = { ok: true, code: 'ok', cityId: view.cityId, venue: place, self: 'joined', count: 1, players: [{ id: 'p1', name: 'Zainab', friend: true, requested: false, incoming: false, look: null, here: true }] }
+  client.state.me = overview({ friends: [{ id: 'f1', name: 'Femi', since: 1, bae: false, status: 'online' }] })
+  try {
+    const html = await render('/src/app/features/social/PeopleApp.vue')
+    const locals = view.social.here.length
+    assert.ok(locals > 0, 'the test venue has regulars')
+    assert.equal(badges(html), locals + view.social.relationships.filter((rel) => rel.npc).length, 'one badge for each local and each saved NPC, none for the player or the friend')
+    assert.ok(text(html).includes(SPOKEN))
+    assert.match(html, /<span[^>]*class="npc-badge-sr"[^>]*>NPC, a game character, not a real player<\/span>/)
+    assert.ok(text(html).includes('Zainab Real player'), 'the player row is unchanged')
+    for (const row of html.match(/<button[^>]*class="social-card"[\s\S]*?<\/button>|<div class="social-row"[\s\S]*?<\/span><\/div>/g) ?? []) {
+      if (/<strong[^>]*>(Zainab|Femi)/.test(row)) assert.ok(!row.includes('data-npc-badge'), `no badge on ${row.match(/<strong[^>]*>(\w+)/)?.[1]}`)
+    }
+    assert.ok(text(html).includes(`${locals} NPC`) && text(html).includes('game character'), 'the summary names them NPCs')
+  } finally { client.state.me = null; client.state.people = null }
+}))
+
+test('NPC mark: the NPC card, Contacts (Mummy and saved NPCs) and Family carry the badge; found players do not', () => atRegulars(async () => {
+  const view = app.game.view.value
+  const npc = view.social.here[0]
+  assert.ok(npc, 'a local to open')
+  const card = await render('/src/app/features/social/NpcCard.vue', { id: npc.id })
+  assert.equal(badges(card), 1)
+  assert.ok(text(card).includes(SPOKEN) && text(card).includes(npc.name))
+  assert.ok(!text(card).includes('· NPC'), 'the word is the badge, not text in the role line')
+
+  const family = await render('/src/app/features/social/FamilyApp.vue')
+  assert.equal(badges(family), view.social.family.length, 'every family member')
+
+  client.state.me = overview()
+  const { contactsUi } = await load<{ contactsUi: { results: unknown } }>('/src/app/features/social/socialState.ts')
+  try {
+    const contacts = await render('/src/app/features/social/ContactsApp.vue')
+    assert.equal(badges(contacts), view.social.family.filter((member) => member.contact).length + view.social.relationships.filter((rel) => rel.npc).length, 'Mummy and each saved NPC')
+    contactsUi.results = [{ id: 'abcdef123456', name: 'Ada', friend: true }]
+    const found = await render('/src/app/features/social/ContactsApp.vue')
+    assert.ok(text(found).includes('Ada Real player'))
+    assert.equal(badges(found), badges(contacts), 'the found player adds no badge')
+  } finally { contactsUi.results = null; client.state.me = null }
+}))
+
+test('NPC mark: a person reference to an NPC always opens the NPC card, never Block or Report', () => atRegulars(async () => {
+  const view = app.game.view.value
+  const npc = view.social.here[0]
+  assert.ok(npc)
+  client.state.me = overview()
+  try {
+    for (const params of [{ npc: npc.id }, { player: `npc:${npc.id}` }, { player: npc.id }]) {
+      const html = await render('/src/app/features/social/PersonApp.vue', { params })
+      assert.equal(badges(html), 1, JSON.stringify(params))
+      assert.ok(!/Block|Report/.test(text(html)), `${JSON.stringify(params)} offers no Block or Report`)
+    }
+  } finally { client.state.me = null }
+}))

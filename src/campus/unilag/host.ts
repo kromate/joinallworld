@@ -12,6 +12,8 @@ import type { ShuttlePose } from './shuttle.ts';
 import type { CampusShuttleAction } from '../../types/campus.ts';
 import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.ts';
 import type { Kit } from '../../scene/kit.ts';
+import { npcWordsEnabled } from '../../models/integration/flags.ts';
+import { NPC_WORD, npcAria, npcTitle } from '../../ui/npc-mark.ts';
 
 export interface WalkResult { ok: boolean; code?: string; reason?: string }
 export interface SpotRequest { id: string; open: boolean }
@@ -131,6 +133,7 @@ export function createCampusHost(container: HTMLElement, {
   const keys = new Set<string>();
   const tagNodes = new Map<string, HTMLButtonElement>();
   const crowdKinds = new Map<string, 'npc' | 'player'>();
+  const npcWords = npcWordsEnabled();
   let crowd: HostPerson[] = [], state: HostState | null = null, player: HostPlayer = {}, playerKey = '', crowdKey = '[]';
   let insets = { top: 0, bottom: 0 }, size = { width: 0, height: 0 };
   let yaw = 0.55, tilt = 0.62, distance = 64, phase = 0, renderCount = 0;
@@ -235,7 +238,9 @@ export function createCampusHost(container: HTMLElement, {
       node.className = `campus-host-tag is-${tag.kind}`; node.dataset.kind = tag.kind;
       const label = String(tag.name || tag.text || id);
       if (node.textContent !== label) node.textContent = label;
-      node.setAttribute('aria-label', tag.kind === 'landmark' ? `Walk to ${label}` : tag.kind === 'npc' ? `${label}, a campus local` : `${label}, a player`);
+      node.setAttribute('aria-label', tag.kind === 'landmark' ? `Walk to ${label}` : tag.kind === 'npc' ? npcAria(label) : `${label}, a player`);
+      // A game character's tag says so: its tooltip always, and ?models=labels spells the word before the name (host.css, from data-npc-word).
+      if (tag.kind === 'npc') { node.title = npcTitle(label); if (npcWords) node.dataset.npcWord = NPC_WORD; } else { node.removeAttribute('title'); delete node.dataset.npcWord; }
       projected.set(tag.position.x, tag.position.y, tag.position.z).project(camera);
       const sx=Math.round((projected.x+1)*size.width/2),sy=Math.round((1-projected.y)*size.height/2);
       const visible = !placed.some(p=>Math.abs(p.x-sx)<105&&Math.abs(p.y-sy)<28)&&sy>insets.top+30&&sy<size.height-insets.bottom-8&&projected.z > -1 && projected.z < 1 && Math.abs(projected.x) <= 1 && Math.abs(projected.y) <= 1;

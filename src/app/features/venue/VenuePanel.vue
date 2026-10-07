@@ -10,6 +10,7 @@ import { computed, nextTick, ref, watch } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
 import { cachedCityContent } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
+import { momentText } from '../../state/momentText.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { linkWording } from '../hud/hudModel.ts'
 import { activityFace, effectTags } from './venueModel.ts'
@@ -34,7 +35,7 @@ const district = computed(() => own.value?.lga?.name || house.value?.district ||
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient
-  return `${privateHome.value ? ' Private · ' : ''}${ambient || spot.value?.caption || 'Explore at your own pace'}`
+  return `${privateHome.value ? ' Private · ' : ''}${momentText.value || ambient || spot.value?.caption || 'Explore at your own pace'}`
 })
 // Where this spot lists paid gigs, the day's counter sits above them (the limit is the server's).
 const gigs = computed(() => view.value.travel?.gigs)

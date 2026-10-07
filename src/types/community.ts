@@ -24,8 +24,12 @@ export interface CommunityStatus { connected: boolean; session: PublicSession | 
 
 /** One row of "In this room". */
 export interface MemberRow { id: string; label: string; state: string }
-/** One chat line. `delivery` is the words under it ("Sending…", "Sent", "Not sent"); `canRetry` shows its Retry button. */
-export interface ChatLine { key: string; author: string; body: string; delivery: string; canRetry: boolean }
+/**
+ * One chat line. `delivery` is the words under it ("Sending…", "Sent", "Not sent"); `canRetry` shows its Retry button.
+ * `npc` is true only for a line spoken by a game character: the panel gives it the NPC badge and its own look, so it can never pass for
+ * a real player's line. Every line from the room's server is a real player's and leaves it unset.
+ */
+export interface ChatLine { key: string; author: string; body: string; delivery: string; canRetry: boolean; npc?: boolean }
 export interface MicrophoneChoice { id: string; label: string }
 /** A received voice the browser would not start by itself: the panel offers a button to play it. */
 export interface BlockedPlayback { id: string; name: string }

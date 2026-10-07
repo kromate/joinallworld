@@ -101,6 +101,8 @@ import type { SceneControls } from './scene/controls.ts';
 import type { WalkPoint, WalkMode } from './scene/movement.ts';
 import type { LifeState } from './types/life.ts';
 import { inputMode, readFacts } from './ui/inputMode.ts';
+import { npcWordsEnabled } from './models/integration/flags.ts';
+import { addNpcWord, npcAria, npcTitle } from './ui/npc-mark.ts';
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). pose: set only by the host's own callers (a fixed pose). */
 export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }
@@ -379,6 +381,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
 
   // Name tags live in the DOM, above the canvas. There is none under `node --test`.
   const tagLayer = globalThis.document?.createElement ? globalThis.document.createElement('div') : null;
+  // ?models=labels spells "NPC" on every game character's tag; without it the tag is its green dot, with the NPC tooltip and spoken label.
+  const npcWords = npcWordsEnabled();
   if (tagLayer) {
     tagLayer.className = 'scene-tags';
     container.appendChild(tagLayer);
@@ -1087,10 +1091,10 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
         node.className = `scene-tag is-${tag.kind}`;
         node.dataset.tag = tag.id; node.dataset.kind = tag.kind;
         if (tag.marker === 'crown') node.innerHTML = CROWN_MARK;
-        else if (tag.marker === 'dot') node.appendChild(globalThis.document.createElement('i'));
+        else if (tag.marker === 'dot') { node.appendChild(globalThis.document.createElement('i')); if (npcWords && tag.kind === 'npc') addNpcWord(globalThis.document, node); }
         else node.textContent = tag.text;
-        node.title = tag.kind === 'self' ? 'You' : tag.name;
-        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'table' ? `${tag.name}. Walk up to sit, watch or invite a friend` : tag.kind === 'npc' ? `${tag.name}, a local` : `${tag.name}, a player`);
+        node.title = tag.kind === 'self' ? 'You' : tag.kind === 'npc' ? npcTitle(tag.name) : tag.name;
+        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'table' ? `${tag.name}. Walk up to sit, watch or invite a friend` : tag.kind === 'npc' ? npcAria(tag.name) : `${tag.name}, a player`);
         node.jawX = NaN; node.jawY = NaN; node.jawShown = true;
         return node;
       });

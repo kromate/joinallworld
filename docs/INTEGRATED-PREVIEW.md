@@ -33,6 +33,8 @@ Real commerce uses `server/commerce`, `/api/commerce`, `db.commerce` and the `co
 
 Before integration, dirty files, binary patches and staged patches were backed up under `/var/folders/3x/y9y7vtp934q97zk_sl810lj40000gn/T/allworld-consolidation-56vtdb3r`. SHA-256 comparison confirmed that the older Allworld, Goalmatic and Store Studio working files were unchanged after selective companion staging and commits.
 
+A later final comparison found new wallet-effect, life-command and socket-budget work appearing in the older primary checkout. Those later changes were left untouched and are outside the four-chat snapshot consolidated here. The Goalmatic and Store Studio working files still matched their backups exactly. Their unrelated uncommitted changes remain available on disk.
+
 ## Verification record
 
 - Exact staged Goalmatic backend snapshot: full TypeScript check passed (`/tmp/allworld-companion-core-types.log`).

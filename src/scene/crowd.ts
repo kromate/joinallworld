@@ -65,7 +65,7 @@ export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_
     // Where the player stands, when presence reports it (see the header): the scene places them there instead of at a spare place.
     const at = (positions && typeof positions === 'object' ? (positions as Record<string, { x?: unknown; z?: unknown } | null | undefined>)[player.id] : null);
     const placed = at && typeof at.x === 'number' && Number.isFinite(at.x) && typeof at.z === 'number' && Number.isFinite(at.z) ? { x: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.x)), z: Math.max(-SCENE_REACH, Math.min(SCENE_REACH, at.z)) } : null;
-    list.push({ id: player.id, name: String(player.name ?? 'Player'), kind: 'player', seed: player.id, look: player.look && typeof player.look === 'object' ? player.look as Record<string, unknown> : null, ...(player.friend === true ? { friend: true as const } : {}), ...placed });
+    list.push({ id: player.id, name: String(player.name ?? 'Player'), kind: 'player', seed: player.id, look: player.look && typeof player.look === 'object' ? player.look as Record<string, unknown> : null, ...(player.friend === true && { friend: true as const }), ...placed });
   }
   for (const npc of (Array.isArray(npcs) ? npcs : []) as (NpcIn | null)[]) {
     if (!npc || typeof npc.id !== 'string') continue;

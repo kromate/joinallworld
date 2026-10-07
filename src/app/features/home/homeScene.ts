@@ -4,6 +4,7 @@
 //   sends     'jaw:home-ui'     { selected, ghost, buy, retry? } — what the scene draws
 //   receives  'jaw:home-pick'   { id, cell } — a tapped object or floor tile
 //             'jaw:home-scene'  { status, placed } — ready / empty / error
+//             'jaw:home-frame'  — the scene changed on its own (the `?body=skinned` body arrived): draw one frame
 import { watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { KINDS } from '../../../game/content/furniture.ts'
@@ -70,6 +71,7 @@ export function startHome(): void {
   const { game } = useApp()
   window.addEventListener('jaw:home-pick', onPick)
   window.addEventListener('jaw:home-scene', onScene)
+  window.addEventListener('jaw:home-frame', () => useApp().api.redrawScene())
   watch([game.state, () => game.mode.value], ([state, mode]) => {
     const buying = mode === 'buy'
     const left = H.inBuy && !buying

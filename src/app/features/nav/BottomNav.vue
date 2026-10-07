@@ -4,7 +4,7 @@
 import { computed } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
-import { isTrip } from '../venue/venueModel.ts'
+import { isTrip } from '../venue/tripModel.ts'
 
 const { game, shell, goTo } = useApp()
 const NAV = [['home', 'Home'], ['buy', 'Buy'], ['map', 'Map'], ['phone', 'Phone']] as const

@@ -26,6 +26,7 @@ import { cityName } from './game/cities/registry.ts'
 import { fetchIceConfig } from './voice-config.ts'
 import { GROUP_CHAT_NOTE, groupHeader } from './game/roomGroups.ts'
 import type { IceConfig } from './voice-config.ts'
+import { STREET_NETWORK_SCALE } from './game/neighbourhood-space.ts'
 import type {
   BlockedPlayback, ChatLine, CommunityController, CommunityLinkStatus, CommunityRoom, CommunityState, DiagnosticsPeer,
   DiagnosticsSnapshot, GroupList, GroupView, ApartFriend, MemberRow, MicrophoneChoice, MembersEvent, CommunityStatus, RoomMember, VoicePosition,
@@ -192,7 +193,8 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   const selfMember = (): RoomMember | undefined => members.find((person) => person.id === session?.id)
   function distanceTo(member: RoomMember | null | undefined): number {
     const self = validPosition(selfMember()), other = validPosition(member)
-    return self && other ? Math.hypot(self.x - other.x, self.z - other.z) : Infinity
+    const distance = self && other ? Math.hypot(self.x - other.x, self.z - other.z) : Infinity
+    return room.venueId === 'neighbourhood' ? distance / STREET_NETWORK_SCALE : distance
   }
   function nearby(member: RoomMember | null | undefined): boolean {
     return room.venueId !== 'home' && Boolean(member) && !rejectedPeers.has(member?.id ?? '') && Boolean(member?.enabled) && member?.id !== session?.id && distanceTo(member) < VOICE_RADIUS

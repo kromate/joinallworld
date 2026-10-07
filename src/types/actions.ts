@@ -18,6 +18,8 @@ import type {
   TravelModeId, VenueId, WardrobeKind,
 } from './life.ts'
 import { CAMPUS_ACTION_TYPES } from './campus.ts'
+import type { StoryActionMap } from './stories.ts'
+import type { LandPayPayload } from './land.ts'
 import type { TierId } from './politics.ts'
 import type { CampusActionMap, CampusActivityVetoCode, GuestCampusActionType } from './campus.ts'
 
@@ -85,6 +87,7 @@ export type NoPayload = Record<string, never>
 
 /** Position of a furniture object: tile and quarter turns. `rot` defaults to 0 when omitted. */
 export interface PlacementPayload {
+  floor?: number
   x: number
   y: number
   /**
@@ -146,7 +149,9 @@ export interface CivicNewsItem {
 // ---- the action table ---------------------------------------------------------------------
 
 /** The campus actions (`unilag.*` and 'campus-shuttle', registered after growth) are declared in campus.ts CampusActionMap. */
-export interface ActionMap extends CampusActionMap {
+export interface ActionMap extends CampusActionMap, StoryActionMap {
+  'estate.land-pay': { payload: LandPayPayload; ok: 'land_paid'; fail: 'busy' | 'not_owned_home' | 'land_price_changed' | 'insufficient_funds'; serverOnly: true }
+  'street.place': { payload: { from: string; to: string }; ok: 'street_placed'; fail: 'busy' | 'street_location_changed' | 'invalid_street_transition'; serverOnly: true }
   // -- core --
   /**
    * Cancel the running timed action.
@@ -238,6 +243,8 @@ export interface ActionMap extends CampusActionMap {
   'estate.unconfirm-residence': { payload: NoPayload; ok: 'residence_removed' | 'unchanged'; fail: never }
 
   // -- home --
+  /** Own front door; no travel fare or arrival reward. */
+  'home.door': { payload: { direction: 'outside' | 'inside' }; ok: 'stepped_out' | 'stepped_in'; fail: 'busy' | 'not_at_door' | 'invalid_direction' }
   /** At home only; charged when placed. */
   'home.furniture-buy': { payload: { item: FurnitureId } & PlacementPayload; ok: 'bought'; fail: 'busy' | 'not_home' | 'invalid_item' | 'room_full' | 'insufficient_funds' | PlacementCode }
   /** `id` is the placed object's id (`f<n>`). */
@@ -285,7 +292,7 @@ export interface ActionMap extends CampusActionMap {
   /** After creation: change look using owned styles (colours are free). 'unchanged' is a success. */
   'onboarding.set-look': { payload: { look: Look }; ok: 'look_saved' | 'unchanged'; fail: 'onboarding_required' | 'invalid_look' | 'not_owned' }
   /** Buy a style or an accessory with cash and wear it. */
-  'onboarding.boutique-buy': { payload: { kind: WardrobeKind | 'accessories'; id: string }; ok: 'bought'; fail: 'onboarding_required' | 'invalid_item' | 'wrong_body' | 'already_owned' | 'insufficient_funds' }
+  'onboarding.boutique-buy': { payload: { kind: WardrobeKind | 'accessories' | 'wearables'; id: string }; ok: 'bought'; fail: 'onboarding_required' | 'invalid_item' | 'wrong_body' | 'already_owned' | 'insufficient_funds' }
 
   // -- goals --
   'goals.buy-perk': { payload: { id: PerkId }; ok: 'perk_bought'; fail: 'invalid_perk' | 'already_owned' | 'insufficient_stars' }
@@ -450,6 +457,8 @@ export type ActionBody<T extends ActionType = ActionType> = {
 
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
+  'estate.land-pay', 'street.place',
+  'stories.save', 'stories.remove', 'stories.publish', 'stories.start', 'stories.next', 'stories.end',
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
   'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
   'activity', 'spot', 'activity.admin',
@@ -458,7 +467,7 @@ export const ACTION_TYPES = [
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',
   'estate.confirm-residence', 'estate.unconfirm-residence',
-  'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
+  'home.door', 'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
   'home.grocery-buy', 'home.kitchen-unpack', 'home.refuel',
   'onboarding.quick-start', 'onboarding.arrive',
   'onboarding.look', 'onboarding.traits', 'onboarding.dream', 'onboarding.lottery', 'onboarding.home',
@@ -476,6 +485,7 @@ export const ACTION_TYPES = [
 
 /** The action types declared `serverOnly` (registry.js serverOnlyReason(type) !== null). */
 export const SERVER_ONLY_ACTIONS = [
+  'estate.land-pay', 'street.place',
   'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
   'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]

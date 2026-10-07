@@ -42,6 +42,7 @@ export interface SocketInfo {
   voice?: { enabled: boolean; muted: boolean }
   lastMoves?: number[]
   look?: WsConnection['look']
+  streetGateProof?: WsConnection['streetGateProof']
 }
 
 /** A socket as the modules see it: the attachment fields plus the live handle. */

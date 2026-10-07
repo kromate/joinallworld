@@ -29,7 +29,14 @@
  * is drawing anyway.
  */
 import * as characters from './characters.ts';
+import { avatarProportions } from '../types/avatar.ts';
 import type { DetailLevel, Pose } from './characters.ts';
+
+/** Relative authored stride distance after bounded cosmetic height/depth fitting. */
+export function avatarStrideScale(look: unknown): number {
+  const proportions = avatarProportions(characters.normalizeLook(look).appearance);
+  return proportions.height * proportions.depth;
+}
 
 /** The walk-cycle driver of a built figure: `stride` poses the limbs (phase in radians, amount 0 … 1), `rest` returns them to the built pose. */
 export interface AvatarRig {

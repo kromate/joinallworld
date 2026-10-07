@@ -8,7 +8,7 @@ import LookEditor from './LookEditor.vue'
 import type { LookField, Owned } from './lookModel.ts'
 
 defineProps<{ look: Look; owned: Owned; canUndo: boolean; canReset: boolean }>()
-const emit = defineEmits<{ choose: [field: LookField, value: string]; undo: []; reset: []; shuffle: []; tab: [id: string] }>()
+const emit = defineEmits<{ choose: [field: LookField, value: string]; replace: [look: Look]; undo: []; reset: []; shuffle: []; tab: [id: string] }>()
 function onTap(event: MouseEvent): void {
   const tab = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-look-tab]') : null
   if (tab?.dataset.lookTab) emit('tab', tab.dataset.lookTab)
@@ -22,6 +22,6 @@ function onTap(event: MouseEvent): void {
       <button type="button" class="cr-btn is-small" data-key="reset" :disabled="!canReset" @click="emit('reset')"><GameIcon name="refresh" inline /> Reset</button>
       <button type="button" class="cr-btn is-small" data-key="shuffle" @click="emit('shuffle')"><GameIcon name="game" inline /> Surprise me</button>
     </div>
-    <div class="cr-editor" @click="onTap"><LookEditor :look="look" :owned="owned" @choose="(field, value) => emit('choose', field, value)" /></div>
+    <div class="cr-editor" @click="onTap"><LookEditor :look="look" :owned="owned" @choose="(field, value) => emit('choose', field, value)" @replace="emit('replace', $event)" /></div>
   </div>
 </template>

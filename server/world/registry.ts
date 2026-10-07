@@ -27,6 +27,10 @@
  *   adding a resident      one binary search and one insertion into that index
  */
 import { ESTATE, PLOTS_PER_ESTATE, LGA_CAPACITY } from '../../src/game/content/world.ts';
+import { adjacentPlots, LAND } from '../../src/game/land.ts';
+
+type LandRecord = ['q' | 'a', number, number, string, number, string, string, number, number] | ['z' | 'k', number, number, string];
+export interface LandClaim { kind: 'reserved' | 'owned'; owner: string; anchor: number; token: string; id: string; price: number; at: number; settled: boolean }
 
 /** One log line. See RECORDS above. */
 export type RegistryRecord =
@@ -34,7 +38,8 @@ export type RegistryRecord =
   | ['r', string, string, number, number | boolean, string | null]
   | ['x', string]
   | ['h', number, number, string, number, number]
-  | ['f', number, number];
+  | ['f', number, number]
+  | LandRecord;
 interface ResidentLine { n: string; k: string; d: number; h: 0 | 1; t: string | null }
 interface HouseLine { o: string; s: number; u: number }
 /** The in-memory state of one local government's registry (what a shard holds). */
@@ -47,6 +52,10 @@ export interface RegistryState {
   names: string[];
   sorted: boolean;
   houses: Map<number, Map<number, HouseLine>>;
+  /** Adjoining claims live in the same ownership registry and occupy ordinary slots. */
+  land: Map<number, Map<number, LandClaim>>;
+  landOwners: Map<string, Set<number>>;
+  landCount: number;
   occ: Uint8Array;
   hint: Uint8Array;
   stamp: Uint32Array;
@@ -61,6 +70,7 @@ export interface PlotSpot { estate: number; plot: number }
 /** One row of a directory page, before presence is joined. */
 export interface PersonLine { id: string; name: string; home: string | null; estate?: number; plot?: number }
 export interface RegistryHouse { p: number; s: number; u: number; id?: string; name?: string; online?: boolean; you?: true }
+export interface RegistryStreetHouse extends RegistryHouse { land: number[] }
 
 export const PAGE = Object.freeze({ people: 25, houses: 98, scan: 200, estates: 128 });
 export const metrics = { steps: 0 };
@@ -78,7 +88,7 @@ function lowerBound(list: string[], key: string): number {
 
 export function empty(name = ''): RegistryState {
   return { name, rev: 0, loading: true, residents: new Map(), names: [], sorted: true, houses: new Map(), occ: new Uint8Array(ESTATE.estates), hint: new Uint8Array(ESTATE.estates),
-    stamp: new Uint32Array(ESTATE.estates), owners: new Map(), cursor: 0, houseCount: 0 };
+    stamp: new Uint32Array(ESTATE.estates), owners: new Map(), land: new Map(), landOwners: new Map(), landCount: 0, cursor: 0, houseCount: 0 };
 }
 
 /** Apply one record. The only code that changes a registry — live and when a shard file is replayed. */
@@ -101,6 +111,31 @@ export function reduce(state: RegistryState, record: RegistryRecord): void {
     const at = index(state, old.k);
     if (state.names[at] === old.k) state.names.splice(at, 1);
     state.residents.delete(record[1]);
+  } else if (record[0] === 'q' || record[0] === 'a') {
+    const [kind, estate, plot, owner, anchor, token, id, price, at] = record;
+    let claims = state.land.get(estate);
+    if (!claims) state.land.set(estate, claims = new Map());
+    if (!claims.has(plot)) { state.occ[estate] = (state.occ[estate] ?? 0) + 1; state.landCount += 1; }
+    claims.set(plot, { kind: kind === 'q' ? 'reserved' : 'owned', owner, anchor, token, id, price, at, settled: false });
+    let slots = state.landOwners.get(owner);
+    if (!slots) state.landOwners.set(owner, slots = new Set());
+    slots.add(estate * PLOTS_PER_ESTATE + plot);
+    state.stamp[estate] = state.rev;
+  } else if (record[0] === 'k') {
+    const [, estate, plot, token] = record, claim = state.land.get(estate)?.get(plot);
+    if (claim?.token === token && claim.kind === 'owned') claim.settled = true;
+    state.stamp[estate] = state.rev;
+  } else if (record[0] === 'z') {
+    const [, estate, plot, token] = record, claims = state.land.get(estate), claim = claims?.get(plot);
+    if (!claim || claim.token !== token) return;
+    claims!.delete(plot);
+    const slots = state.landOwners.get(claim.owner);
+    slots?.delete(estate * PLOTS_PER_ESTATE + plot);
+    if (!slots?.size) state.landOwners.delete(claim.owner);
+    state.occ[estate] = (state.occ[estate] ?? 0) - 1; state.landCount -= 1;
+    if (plot < (state.hint[estate] ?? 0)) state.hint[estate] = plot;
+    if (estate < state.cursor) state.cursor = estate;
+    state.stamp[estate] = state.rev;
   } else if (record[0] === 'h') {
     const [, estate, plot, id, style, until] = record;
     let plots = state.houses.get(estate);
@@ -135,10 +170,14 @@ export function snapshot(state: RegistryState): RegistryRecord[] {
   const out: RegistryRecord[] = [['v', state.rev]];
   for (const [id, r] of state.residents) out.push(['r', id, r.n, r.d, r.h, r.t]);
   for (const [estate, plots] of state.houses) for (const [plot, house] of plots) out.push(['h', estate, plot, house.o, house.s, house.u]);
+  for (const [estate, claims] of state.land) for (const [plot, claim] of claims) {
+    out.push([claim.kind === 'reserved' ? 'q' : 'a', estate, plot, claim.owner, claim.anchor, claim.token, claim.id, claim.price, claim.at]);
+    if (claim.settled) out.push(['k', estate, plot, claim.token]);
+  }
   return out;
 }
 /** How many records the state needs (the shard store compacts a file that holds more than twice this). */
-export const live = (state: RegistryState): number => state.residents.size + state.houseCount + 1;
+export const live = (state: RegistryState): number => state.residents.size + state.houseCount + state.landCount * 2 + 1;
 
 // ---- allocation --------------------------------------------------------------------------------
 
@@ -148,7 +187,7 @@ export function nextFree(state: RegistryState): PlotSpot | null {
   if (state.cursor >= ESTATE.estates) return null;
   const estate = state.cursor, plots = state.houses.get(estate);
   let plot = state.hint[estate] ?? 0;
-  while (plots?.has(plot)) { plot += 1; metrics.steps += 1; }
+  while (plots?.has(plot) || state.land.get(estate)?.has(plot)) { plot += 1; metrics.steps += 1; }
   state.hint[estate] = plot;
   return { estate, plot };
 }
@@ -181,9 +220,56 @@ export function settleIn(state: RegistryState, who: RegistryWho): { records: Reg
 /** The records that remove a player and their house from this local government (none if they are not here). */
 export function moveOut(state: RegistryState, id: string): { records: RegistryRecord[]; plot: PlotSpot | null } {
   const records: RegistryRecord[] = [], plot = plotOf(state, id);
+  const claims = landOf(state, id);
+  // Main-store reconciliation must decide payment first. A stale clock cannot release a reservation.
+  if (claims.some((claim) => !claim.settled)) return { records, plot };
+  for (const claim of claims) records.push(['z', claim.estate, claim.plot, claim.token]);
   if (plot) records.push(['f', plot.estate, plot.plot]);
   if (state.residents.has(id)) records.push(['x', id]);
   return { records, plot };
+}
+
+/** At most three purchased extensions and one unfinished reservation. */
+export function landOf(state: RegistryState, owner: string): (LandClaim & PlotSpot)[] {
+  const found: (LandClaim & PlotSpot)[] = [];
+  for (const key of state.landOwners.get(owner) ?? []) {
+    metrics.steps += 1;
+    const estate = Math.floor(key / PLOTS_PER_ESTATE), plot = key % PLOTS_PER_ESTATE, claim = state.land.get(estate)?.get(plot);
+    if (claim) found.push({ ...claim, estate, plot });
+  }
+  return found;
+}
+
+export function landCandidates(state: RegistryState, owner: string): number[] {
+  const anchor = plotOf(state, owner), claims = landOf(state, owner);
+  if (!anchor || claims.some((claim) => claim.kind === 'reserved')) return [];
+  return adjacentPlots(anchor.plot, claims.map((claim) => claim.plot)).filter((plot) => !state.houses.get(anchor.estate)?.has(plot) && !state.land.get(anchor.estate)?.has(plot));
+}
+
+export function reserveLand(state: RegistryState, owner: string, anchor: PlotSpot, plot: number, token: string, id: string, price: number, at: number): { records: RegistryRecord[]; code: 'reserved' | 'land_unavailable' } {
+  const old = state.land.get(anchor.estate)?.get(plot);
+  if (old?.owner === owner && old.token === token) return { records: [], code: 'reserved' };
+  const primary = plotOf(state, owner);
+  if (!primary || primary.estate !== anchor.estate || primary.plot !== anchor.plot || landOf(state, owner).length >= LAND.maxExtras || !landCandidates(state, owner).includes(plot)) return { records: [], code: 'land_unavailable' };
+  return { records: [['q', anchor.estate, plot, owner, anchor.plot, token, id, price, at]], code: 'reserved' };
+}
+
+export function finalizeLand(state: RegistryState, owner: string, estate: number, plot: number, token: string): { records: RegistryRecord[]; code: 'land_owned' | 'land_unavailable' } {
+  const claim = state.land.get(estate)?.get(plot);
+  if (!claim || claim.owner !== owner || claim.token !== token) return { records: [], code: 'land_unavailable' };
+  return { records: claim.kind === 'owned' ? [] : [['a', estate, plot, owner, claim.anchor, claim.token, claim.id, claim.price, claim.at]], code: 'land_owned' };
+}
+
+/** Only after the paid proof was durably marked finalized in the main store. */
+export function acknowledgeLand(state: RegistryState, owner: string, estate: number, plot: number, token: string): RegistryRecord[] {
+  const claim = state.land.get(estate)?.get(plot);
+  return claim?.owner === owner && claim.token === token && claim.kind === 'owned' && !claim.settled ? [['k', estate, plot, token]] : [];
+}
+
+/** Called only after the main-store intent was durably fenced as cancelled. */
+export function releaseLandReservation(state: RegistryState, owner: string, estate: number, plot: number, token: string): RegistryRecord[] {
+  const claim = state.land.get(estate)?.get(plot);
+  return claim?.owner === owner && claim.token === token && claim.kind === 'reserved' ? [['z', estate, plot, token]] : [];
 }
 
 /**
@@ -228,6 +314,28 @@ export function housesPage(state: RegistryState, estate: number, page = 0, viewe
     houses.push({ p: plot, s: house.s, u: house.u, ...(shown ? { id: house.o, name: resident.n } : {}) });
   }
   return { page: at, pages, rev: state.stamp[estate] ?? 0, houses };
+}
+
+/** One actual row of plots, with the same directory privacy as the map. */
+export function streetHouses(state: RegistryState, estate: number, row: number, viewerId: string): RegistryStreetHouse[] {
+  const plots = state.houses.get(estate), houses: RegistryStreetHouse[] = [];
+  for (let plot = row * ESTATE.plots; plot < (row + 1) * ESTATE.plots; plot++) {
+    metrics.steps += 1;
+    const house = plots?.get(plot);
+    if (!house) continue;
+    const resident = state.residents.get(house.o), shown = resident && (!resident.h || house.o === viewerId);
+    const land: number[] = [];
+    let inspected = 0;
+    for (const key of state.landOwners.get(house.o) ?? []) {
+      if (inspected++ >= LAND.maxExtras + 1 || land.length >= LAND.maxExtras) break;
+      metrics.steps += 1;
+      const extra = key % PLOTS_PER_ESTATE, claim = state.land.get(estate)?.get(extra);
+      if (Math.floor(key / PLOTS_PER_ESTATE) === estate && claim?.kind === 'owned' && claim.owner === house.o && claim.anchor === plot && Math.floor(extra / ESTATE.plots) === row) land.push(extra);
+    }
+    land.sort((a, b) => a - b);
+    houses.push({ p: plot, s: house.s, u: house.u, land, ...(shown ? { id: house.o, name: resident.n } : {}) });
+  }
+  return houses;
 }
 
 /**

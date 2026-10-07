@@ -59,6 +59,7 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  * committed() raises 'blocks-changed' { a, b }.
  */
 import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
+import { streetRoomKey } from '../../src/game/neighbourhood-space.ts';
 import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
 import { freeOf } from '../../src/game/systems/wallet.ts';
@@ -81,7 +82,8 @@ import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash,
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { AccountRecord, ConversationRecord, ImageRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, WsConnection } from '../types.ts';
+import type { AccountRecord, ConversationRecord, ImageRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, VisitRecord, WsConnection } from '../types.ts';
+import { captureProjection } from './capture.ts';
 
 /** A request body or socket frame: every field is untrusted until a validator below has read it. */
 export type SocialBody = Record<string, unknown>;
@@ -671,16 +673,28 @@ function buildService(ctx: RouteContext) {
     conv.members = members;
     for (const member of members) index(s, member, conv);
   }
+  function captureId(s: SocialCollection, visit: VisitRecord): string {
+    if (!visit.captureId || !UUID_PATTERN.test(visit.captureId)) { visit.captureId = ctx.randomId(); endedIn(s).material = true; }
+    else if (visit.captureId !== visit.captureId.toLowerCase()) { visit.captureId = visit.captureId.toLowerCase(); endedIn(s).material = true; }
+    return visit.captureId;
+  }
   function houseView(s: SocialCollection, hostId: string, viewer: string): HouseView {
     const house = pruneHouse(s, hostId);
-    const guests = Object.entries(house?.guests || {}).map(([id, visit]) => ({ ...pub(s, id), since: visit.since, expiresAt: visit.expires }));
+    const visits = Object.entries(house?.guests || {}).map(([id, visit]) => ({ id, visit }));
+    for (const item of visits) captureId(s, item.visit);
+    const guests = visits.map(({ id, visit }) => ({ ...pub(s, id), since: visit.since, expiresAt: visit.expires }));
     const cityId = house?.guests[viewer]?.cityId ?? Object.values(house?.guests || {})[0]?.cityId ?? null;
     const role = viewer === hostId ? 'host' : house?.guests[viewer] ? 'guest' : 'none';
     const host = presence.status(hostId);
+    const hostStatus = host.state !== 'online' ? host.state : host.rooms.some((room) => describeRoom(room).hostId === hostId) ? 'home' : 'out';
+    const capture = role === 'host' ? captureProjection(house?.captureRevision, visits, hostStatus === 'home', now()) : undefined;
+    const ownVisit = house?.guests[viewer];
     return { host: pub(s, hostId), capacity: LIMITS.guests, guests, role, cityId, conv: guests.length && role !== 'none' ? `h.${hostId}` : null,
-      hostStatus: host.state !== 'online' ? host.state : host.rooms.some((room) => describeRoom(room).hostId === hostId) ? 'home' : 'out',
+      hostStatus,
       ...(house?.closed !== undefined && house.closed > now() ? { closed: true as const } : {}),
-      knocks: role === 'host' ? Object.entries(house?.knocks || {}).filter(([, knock]) => knock.status === 'pending').map(([id, knock]) => ({ from: pub(s, id), at: knock.at, expiresAt: knock.expires, ...(knock.link ? { via: 'link' as const } : {}) })) : [] };
+      knocks: role === 'host' ? Object.entries(house?.knocks || {}).filter(([, knock]) => knock.status === 'pending').map(([id, knock]) => ({ from: pub(s, id), at: knock.at, expiresAt: knock.expires, ...(knock.link ? { via: 'link' as const } : {}) })) : [],
+      ...(capture ? { capture } : {}),
+      ...(role === 'guest' && ownVisit?.captureId ? { myCapture: { visitId: ownVisit.captureId, allowed: ownVisit.captureConsent === true, expiresAt: ownVisit.expires } } : {}) };
   }
   /**
    * Put a guest inside: the one way anyone comes in (a knock the host let in, an invitation, a house link, a friend walking in).
@@ -690,7 +704,7 @@ function buildService(ctx: RouteContext) {
     const house = s.houses[hostId] ||= { knocks: {}, guests: {} };
     const visiting = s.players[guest]?.visiting;
     if (visiting && visiting !== hostId && endVisit(s, visiting, guest)) housePush(s, visiting, push);
-    house.guests[guest] = { since: now(), expires: now() + LIMITS.visitMs, cityId, ...(link ? { link } : {}) };
+    house.guests[guest] = { since: now(), expires: now() + LIMITS.visitMs, cityId, captureId: ctx.randomId(), ...(link ? { link } : {}) };
     if (house.barred) delete house.barred[guest];
     if (s.players[guest]) s.players[guest].visiting = hostId;
     syncHouseConv(s, hostId);
@@ -1064,7 +1078,7 @@ function buildService(ctx: RouteContext) {
       const { s, p, id } = enter(db, session);
       const state = ctx.settle(session, cityId);
       const travelling = isDeparting(state);
-      const room = venueRoomKey(cityId, state.location, id);
+      const room = state.location === 'neighbourhood' ? streetRoomKey(cityId, state.estate.plot) ?? '' : venueRoomKey(cityId, state.location, id);
       const joined = !travelling && presence.isIn(id, room);
       // `look` (appearance option ids) and `here` come from the room module's own record of who is in the room.
       // A public venue is split into groups: the list is the caller's own group (a few people), read by name — never a walk over every
@@ -1081,7 +1095,7 @@ function buildService(ctx: RouteContext) {
       // player who has introductions on, and only about someone already in `players`.
       let introduction: { id: string; name: string } | null = null;
       if (joined && state.location !== 'home' && p.introductions === 'on') {
-        const key = `${cityId}:${state.location}`, t = now();
+        const key = state.location === 'neighbourhood' ? room : `${cityId}:${state.location}`, t = now();
         noteVisit(p, key, t);
         const found = introductionFor(p, players.flatMap((member) => {
           const record = s.players[member.id];
@@ -1838,7 +1852,7 @@ function buildService(ctx: RouteContext) {
         if (refusal) return refusal;
         if (!ctx.allow(`social:interact:${id}`, 30)) return no('rate_limited', 'Slow down a little. Try again in a moment.');
         const state = ctx.settle(session, cityId);
-        const room = venueRoomKey(cityId, state.location, id);
+        const room = state.location === 'neighbourhood' ? streetRoomKey(cityId, state.estate.plot) ?? '' : venueRoomKey(cityId, state.location, id);
         if (state.location === 'home' || isDeparting(state) || !presence.isIn(id, room)) return no('not_joined', 'You are not in a venue room right now. Go to a public venue and wait for it to connect.');
         if (!presence.isIn(target, room)) return no('not_here', `${them.name} is not at ${venueLabel(state.location, cityId)} with you right now.`);
         const result = act(session, cityId, 'interact', { id: target, name: them.name, action: action.id }, `social|interact|${id}|${cid}`);

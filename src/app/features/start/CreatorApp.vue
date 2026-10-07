@@ -217,6 +217,7 @@ function choose(field: LookField, value: string): void {
   const near = focusForField(field)
   if (near) focus.value = near
 }
+function replaceLook(look: Look): void { tap(); setLook(look); focus.value = 'body' }
 function undo(): void {
   const previousLook = cr.history[cr.history.length - 1]
   if (!previousLook) return
@@ -379,7 +380,7 @@ onBeforeUnmount(() => {
             <h1 id="cr-title" ref="heading" tabindex="-1">{{ title }}</h1>
             <p class="cr-lead">{{ lead }}</p>
             <StepWho v-if="cr.step === 'who'" :look="draft.look" :preset="presetId" :name="draft.name" :error="shown" @preset="preset" @body="body" @shuffle="shuffle" @dice="dice" @name="typed" @submit="next" />
-            <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
+            <StepLook v-else-if="cr.step === 'look'" :look="draft.look" :owned="wardrobe" :can-undo="cr.history.length > 0" :can-reset="cr.origin !== null && !sameLook(cr.origin, draft.look)" @choose="choose" @replace="replaceLook" @undo="undo" @reset="reset" @shuffle="shuffle" @tab="onTab" />
             <StepSpirit v-else-if="cr.step === 'spirit'" :city="cr.city ?? view.cityId" :traits="draft.traits" :dream="draft.dream" @trait="pickTrait" @dream="pickDream" @random="randomSpirit" />
             <StepHome v-else-if="cr.step === 'home'" v-model="draft.area" :choosable="isNew" @ready="homeReady = $event" />
             <StepReady v-else :city="cr.city ?? view.cityId" :name="draft.name" :look="draft.look" :traits="draft.traits" :dream="draft.dream" :area="areaName" @edit="go" />

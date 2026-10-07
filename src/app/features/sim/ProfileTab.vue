@@ -7,6 +7,7 @@
 // (LookStage, LookEditor); the local-government card is
 // the world feature's LgaCard.
 import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
+import type { Look } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
 import { dreamFor } from '../../../game/cities/characterContent.ts'
 import { START_HOMES, TRAITS } from '../../../game/content/traits.ts'
@@ -55,6 +56,7 @@ function onChoose(field: LookField, value: string): void {
   if (!current.value) return
   draft.value = { ...current.value, look: chooseLook(current.value.look, field, value, view.value.onboarding.wardrobe) }
 }
+function replaceLook(look: Look): void { if (current.value) draft.value = { ...current.value, look } }
 // A saved change from elsewhere replaces the draft: the pieces draw it again.
 watch([() => state.value.name, () => state.value.onboarding.look], () => { sync() })
 onBeforeUnmount(() => { focusKey = '' })
@@ -97,7 +99,7 @@ async function submit(): Promise<void> {
     </div>
     <h3>Appearance</h3>
     <p class="sim-hint">Colours are free. New hairstyles, outfits and fabrics come from Phone → Boutique.</p>
-    <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" />
+    <LookEditor :look="current.look" :owned="onboarding.wardrobe" @choose="onChoose" @replace="replaceLook" />
     <LgaCard v-if="onboarding.done && !view.estate.settle" />
     <ResidenceCard v-if="onboarding.done" />
     <p v-if="form.error" class="sim-error" role="alert">{{ form.error }}</p>

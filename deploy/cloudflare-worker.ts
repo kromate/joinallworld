@@ -53,6 +53,8 @@ import type { SqliteStorage, SqlStorageLike } from './cf-types.ts';
 import { createCallRelay } from '../server/call-relay.ts';
 import { relayTestAuthorized, mintCloudflareIce, TURN_DAILY_MINT_LIMIT } from './turn-provider.ts';
 import { buildRoutes, ROUTE_MODULES } from '../server/routes/index.ts';
+import { trustHeaderConfig } from '../server/trust/config.ts';
+import { streetAssetText } from '../server/street/asset-body.ts';
 import { buildSocketHandlers } from '../server/ws/index.ts';
 import { executeCommand } from '../server/routes/core.ts';
 import { createOnce } from '../server/routes/once.ts';
@@ -61,6 +63,7 @@ import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions: every life the Worker plays has them
 import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
+import '../src/game/home-plan.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
@@ -106,7 +109,7 @@ const digest = async (value: string): Promise<string> => [...new Uint8Array(awai
 /** Compare two digests of equal length without stopping at the first difference. */
 function sameDigest(a: unknown, b: unknown): boolean { if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false; let diff = 0; for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i); return diff === 0; }
 const firstLine = (error: unknown): string => { try { return String((error as { message?: unknown } | null | undefined)?.message ?? error).split('\n')[0]?.slice(0, 300) ?? ''; } catch { return 'unprintable error'; } };
-async function bodyOf(request: Request, limit = 8192): Promise<Record<string, unknown>> {
+async function rawBodyOf(request: Request, limit: number): Promise<Uint8Array<ArrayBuffer>> {
   if (!request.headers.get('content-type')?.startsWith('application/json')) throw protocolError(415, 'json_required');
   const reader = request.body?.getReader();
   if (!reader) throw protocolError(400, 'invalid_json');
@@ -122,6 +125,10 @@ async function bodyOf(request: Request, limit = 8192): Promise<Record<string, un
   const bytes = new Uint8Array(size);
   let offset = 0;
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
+  return bytes;
+}
+async function bodyOf(request: Request, limit = 8192): Promise<Record<string, unknown>> {
+  const bytes = await rawBodyOf(request, limit);
   try {
     const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
     if (!body || typeof body !== 'object' || Array.isArray(body)) throw Error();
@@ -210,7 +217,7 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   const origin = publicOrigin(env, url);
   // A short address (/games, /abuja, …) gets its own title, description and link-preview tags; the page's scripts are untouched, so the hashes below are the same.
   const text = withPathMeta(await (head ? await env.ASSETS.fetch(new Request(request.url, { method: 'GET' })) : response).text(), url.pathname, origin);
-  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })), accounts: accountsConfig(env) }))) headers.set(name, value);
+  for (const [name, value] of Object.entries(appHeaders({ ...factsOfUrl(url), scriptHashes: await inlineScriptHashes(text), telemetry: telemetryOrigins(readTelemetryConfig(env, { buildId: env.BUILD_ID })), avatarAssets: text.includes('name="allworld-3d-assets"'), accounts: accountsConfig(env), trustProviders: trustHeaderConfig(envReader(env), accountsConfig(env)) }))) headers.set(name, value);
   if (head || response.status !== 200) return new Response(head ? null : text, { status: response.status, headers });
   // The game's own page: its default link-preview image is made absolute, because the crawlers of chat apps do not
   // resolve a relative og:image. The length changes, so the asset's own validators no longer describe the body.
@@ -386,6 +393,18 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       checks: {},
       pages: new Map(),
       env: envReader(env),
+      streetAssets: {
+        async readManifest(city, version) {
+          if (!/^[a-z][a-z0-9-]{0,60}$/.test(city) || (version !== undefined && !/^street-v1-[a-z0-9_-]{1,120}$/.test(version))) return null;
+          const file = version ? `manifest-${version}.txt` : 'manifest.txt';
+          const text = await streetAssetText(await env.ASSETS.fetch(new Request(`https://allworld-assets.invalid/assets/street/${city}/${file}`, { redirect: 'manual' })), 4 * 1024 * 1024);
+          return text === null ? null : JSON.parse(text) as unknown;
+        },
+        async readTile(city, _version, file) {
+          if (!/^[a-z][a-z0-9-]{0,60}$/.test(city) || !/^[a-z0-9_-]{1,240}\.txt$/.test(file)) return null;
+          return streetAssetText(await env.ASSETS.fetch(new Request(`https://allworld-assets.invalid/assets/street/${city}/${file}`, { redirect: 'manual' })), 256 * 1024);
+        },
+      },
       // The Workers runtime cannot be told to fail on a redirect: it is not followed, and the answer is refused (host-context.js).
       fetch: outboundFetch((url: string, init?: RequestInit) => fetch(url, init), { refuseRedirect: 'manual' }),
       /** A secret this host makes for itself, once: a row of `host_keys` in the object's own storage. Never logged. */
@@ -585,7 +604,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       try {
         if (JSON.stringify(info).length > ATTACHMENT_BYTES) { info.look = null; info.lastMoves = []; }
         socket.serializeAttachment(info);
-      } catch { try { socket.serializeAttachment({ secret: ws.secret, ...(ws.device !== undefined ? { device: ws.device } : {}), session: ws.session, expiresAt: ws.expiresAt, ip: ws.ip, room: ws.room ?? null, closed: ws.closed === true, alive: ws.alive, pingedAt: ws.pingedAt, seenAt: ws.seenAt, lastSessionRenewedAt: ws.lastSessionRenewedAt, position: ws.position, voice: ws.voice }); } catch { /* the socket is gone */ } }
+      } catch { try { socket.serializeAttachment({ secret: ws.secret, ...(ws.device !== undefined ? { device: ws.device } : {}), session: ws.session, expiresAt: ws.expiresAt, ip: ws.ip, room: ws.room ?? null, closed: ws.closed === true, alive: ws.alive, pingedAt: ws.pingedAt, seenAt: ws.seenAt, lastSessionRenewedAt: ws.lastSessionRenewedAt, position: ws.position, voice: ws.voice, ...(ws.streetGateProof ? { streetGateProof: ws.streetGateProof } : {}) }); } catch { /* the socket is gone */ } }
     }
     this.unsaved.clear();
   }
@@ -624,6 +643,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       const request: WorkerRequest = { method: raw.method, path: url.pathname, query: url.searchParams, ip, secret, cookie: secret, binding: mayBind(presentedSession(raw.headers.get('cookie')), true), params: {}, raw,
         strictOrigin: isStrictOrigin(raw.headers.get('origin'), url.host, raw.headers.get('sec-fetch-site'), overHttps(url)),
         moderator: () => moderator, json: (limit?: number) => bodyOf(raw, limit).then(body => (request.body = body)),
+        rawBody: (limit: number) => rawBodyOf(raw, limit), header: (name: string) => raw.headers.get(name),
         session: (db, options = {}) => { const s = this.session(request, db, options.renew); if (s) request.publicId = s.publicId; return s; },
         requireSession: (db, options = {}) => { const s = request.session(db, options); if (!s) throw protocolError(401, 'device_session_required'); return s; } };
       if (url.pathname === '/socket') return await this.upgrade(raw, request);

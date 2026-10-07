@@ -3,8 +3,16 @@ import { cityContent, cachedCityContent, cityRules, knownCityIds } from './regis
 import type { CityContent, VenueDefinition, NpcDefinition, JobDefinition } from '../../types/content.ts'
 
 export const contentFor = (city: string): CityContent => cityContent(city)
-export const venuesFor = (city: string): readonly VenueDefinition[] => contentFor(city).venues.map(item => item.definition)
-export const venueFor = (city: string, id: unknown): VenueDefinition | undefined => contentFor(city).venues.find(item => item.id === id)?.definition
+/** The first frontage is private scenery around the player's own home, never a city-wide social room. */
+function neighbourhoodFor(city: string, id = 'neighbourhood'): VenueDefinition | undefined {
+  const home = contentFor(city).venues.find(item => item.id === 'home')?.definition
+  return home ? { ...home, id, label: id === 'neighbourhood' ? 'Outside your home' : 'City streets', description: 'Walk to a doorway to enter.', ambient: ['The city around you.'], scene: { kind: 'walk' }, spots: { street: { id: 'street', label: 'Outside', activities: [] } } } : undefined
+}
+export const venuesFor = (city: string): readonly VenueDefinition[] => {
+  const venues = contentFor(city).venues.map(item => item.definition), neighbourhood = neighbourhoodFor(city)
+  return neighbourhood ? [...venues, neighbourhood] : venues
+}
+export const venueFor = (city: string, id: unknown): VenueDefinition | undefined => id === 'neighbourhood' || id === 'city-street' ? neighbourhoodFor(city, id) : contentFor(city).venues.find(item => item.id === id)?.definition
 export const regularsFor = (city: string): readonly NpcDefinition[] => contentFor(city).regulars.map(item => item.definition)
 export const regularFor = (city: string, id: unknown): NpcDefinition | undefined => contentFor(city).regulars.find(item => item.id === id)?.definition
 export const jobsFor = (city: string): readonly JobDefinition[] => contentFor(city).workplaces.map(item => item.definition)

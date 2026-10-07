@@ -37,6 +37,7 @@ import { hasLife } from '../host-context.ts';
 import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
+import { eraseRealValue, exportRealValue } from '../real-value/privacy.ts';
 
 /** Browsers one account may be signed in on; the one unused longest makes room. */
 export const MAX_DEVICES = 10;
@@ -407,6 +408,11 @@ export function endAllDevices(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>, 
  */
 export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { identity: VerifiedIdentity; erase: boolean }): AfterChange & { cookie: string | null } {
   const { account } = prove(db, deps, input, input.identity);
+  const publicIds = [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)];
+  eraseRealValue(db, publicIds);
+  for (const id of publicIds) if (db.street && (input.erase || id !== account.publicId)) delete db.street.journeys[id];
+  for (const id of publicIds) if (db.trust?.players) delete db.trust.players[id];
+  if (db.trustChecks?.checks) for (const [ref, check] of Object.entries(db.trustChecks.checks)) if (check.account === account.id || publicIds.includes(check.player)) delete db.trustChecks.checks[ref];
   const devices = devicesOf(db), after: AfterChange = { closeKeys: [], closeDevices: [...account.devices] };
   const mine = activeCharacter(db, deps, account);
   for (const key of account.devices) delete devices[key];
@@ -451,6 +457,9 @@ export function exportAccount(db: Db, deps: AccountDeps, caller: Caller, identit
     devices: account.devices.flatMap((key) => { const device = own(db.accountDevices, key); return device ? [{ signedInAt: device.createdAt, lastSeenAt: device.seenAt, expiresAt: device.expiresAt, thisDevice: key === bound.cookie }] : []; }),
     character: record && record.account === account.id && record.expiresAt > now ? { id: record.publicId, name: record.name, cities: Object.keys(record.cities || {}) } : null,
     setAside: account.parked.map(item => ({ ...item })),
+    ...(db.street ? { streetJourneys: [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)].flatMap(player => { const journey = own(db.street?.journeys, player); return journey ? [{ player, ...structuredClone(journey) }] : []; }) } : {}),
+    ...(db.realValue ? { realValue: exportRealValue(db, [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)], now) } : {}),
+    ...(db.trustChecks ? { identityChecks: Object.values(db.trustChecks.checks).filter(check => check.account === account.id).map(check => ({ ref: check.ref, player: check.player, at: check.at, expiresAt: check.expiresAt, status: check.status, environment: check.environment, adultVerified: check.adult === true })) } : {}),
     history: (log?.audit ?? []).filter(line => line.ref === ref).map(line => ({ at: line.at, event: line.event, ...(line.life ? { character: line.life } : {}) })),
   };
 }

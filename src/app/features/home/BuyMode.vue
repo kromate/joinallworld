@@ -12,17 +12,20 @@
 // conversation with the scene is homeScene.ts (the chip is in the first download, this is fetched
 // the first time Buy is opened). The server validates every placement again; the ghost's
 // green/red state uses the same pure rules (src/game/home-layout.ts) so the player sees the answer
-// before pressing Place.
+// before pressing Place. In a house with floors, the floor buttons choose which one is furnished:
+// the scene shows that floor (the ones above lift off) and new pieces start on it.
 import { computed } from 'vue'
 import { CATEGORIES, FURNITURE, SELL_REFUND_RATE, STAR_MULTIPLIER } from '../../../game/content/furniture.ts'
 import { FURNITURE_BLURBS } from '../../../game/content/furniture-blurbs.ts'
+// The house's rooms, walls and stairs, so the ghost's green/red knows them as the server does.
+import '../../../game/home-plan.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import StarRating from './StarRating.vue'
-import { HINT, blockedReason, defOf, objectOf, placementReason, refund, selectedReason, size, starsNote, storageOf, storedReason, whyNot } from './buyModel.ts'
-import { buyKey, cancelGhost, deselect, moveGhost, pickItem, placeGhost, sellSelected, storeSelected } from './homeScene.ts'
+import { HINT, blockedReason, defOf, objectOf, placementReason, plotIn, refund, selectedReason, size, starsNote, startGhost, storageOf, storedReason, whyNot } from './buyModel.ts'
+import { buyKey, cancelGhost, deselect, moveGhost, pickItem, placeGhost, sellSelected, show, storeSelected } from './homeScene.ts'
 import { H, tab } from './homeState.ts'
 
 defineProps<{ params?: unknown }>()
@@ -59,6 +62,23 @@ const selectedWhy = computed(() => selectedReason(connected.value, short.value, 
 const ghostValid = computed(() => !H.ghost || (ghostDef.value && !(H.ghost.objectId && !objectOf(state.value, H.ghost.objectId))))
 async function storeIt(): Promise<void> { await storeSelected() }
 
+// The floors of the house, when it has more than one.
+const floors = computed(() => {
+  const count = plotIn(state.value).floors
+  return count < 2 ? [] : count === 3 ? ['Ground floor', 'First floor', 'Roof'] : ['Downstairs', 'Upstairs']
+})
+const onFloor = computed(() => Math.min(H.floor, Math.max(0, floors.value.length - 1)))
+/** Furnish another floor: the scene shows it, and a piece being placed goes to its first free spot there. */
+function goFloor(floor: number): void {
+  if (floor === onFloor.value) return
+  H.floor = floor
+  H.selected = null
+  const ghost = H.ghost
+  const next = ghost && startGhost(state.value, ghost.source, ghost.itemId, undefined, floor)
+  if (ghost && next) Object.assign(ghost, { x: next.x, y: next.y, rot: next.rot, floor: next.floor })
+  show()
+}
+
 defineExpose({ keys: (action: string): boolean => buyKey(action) })
 </script>
 
@@ -72,6 +92,9 @@ defineExpose({ keys: (action: string): boolean => buyKey(action) })
         <strong><GameIcon inline kind="furniture" :id="ghostDef.id" :emoji="ghostDef.icon" /> {{ ghostDef.label }}</strong>
         <span>{{ paying ? money(price) : H.ghost.source === 'move' ? 'Moving · free' : 'From storage · free' }}</span>
       </header>
+      <div v-if="floors.length" class="buy-tabs" role="group" aria-label="Floor">
+        <button v-for="(name, floor) in floors" :key="name" type="button" :aria-pressed="floor === onFloor" :class="{ 'is-selected': floor === onFloor }" @click="goFloor(floor)">{{ name }}</button>
+      </div>
       <p class="buy-why" :class="placeWhy ? 'is-bad' : 'is-good'" role="status">{{ placeWhy || (ghostDef.wall ? 'Fits on this wall.' : 'Fits here. Tap a tile to move it there.') }}</p>
       <div class="buy-row">
         <button type="button" class="ui-button is-primary" :disabled="Boolean(placeWhy)" @click="placeGhost()">{{ paying ? `Place · ${money(price)}` : 'Place' }}</button>
@@ -99,6 +122,9 @@ defineExpose({ keys: (action: string): boolean => buyKey(action) })
       <button type="button" :aria-expanded="!H.hidden" @click="H.hidden = !H.hidden">{{ H.hidden ? 'Show catalogue' : 'Hide' }}</button>
       <button type="button" class="buy-x" aria-label="Close Buy mode" @click="shell.close()"><GameIcon inline name="close" /></button>
     </header>
+    <div v-if="floors.length" class="buy-tabs" role="group" aria-label="Floor">
+      <button v-for="(name, floor) in floors" :key="name" type="button" :aria-pressed="floor === onFloor" :class="{ 'is-selected': floor === onFloor }" @click="goFloor(floor)">{{ name }}</button>
+    </div>
     <p v-if="H.hidden" class="buy-hint">Tap an object in your room to move, store or sell it. C shows the catalogue.</p>
     <template v-else>
       <div class="buy-tabs" role="tablist">

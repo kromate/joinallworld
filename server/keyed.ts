@@ -125,6 +125,9 @@ export const KEYED_SPECS: Readonly<Record<string, readonly KeyedSpec[]>> = Objec
   civic: [{ path: ['cities', '*', 'residents'], project: 'civicResident' }, { path: ['cities', '*', 'gov', 'elections'] }],
   business: [{ path: ['shops'], project: 'businessShop' }],
   records: [{ path: ['entries'] }, { path: ['terms'] }],
+  realValue: [{ path: ['listings'] }, { path: ['contacts'] }, { path: ['analytics'] }],
+  trustChecks: [{ path: ['checks'] }],
+  street: [{ path: ['journeys'] }],
 });
 export const isKeyedCollection = (name: string): boolean => Object.hasOwn(KEYED_SPECS, name);
 

@@ -9,13 +9,19 @@ import { lookUi } from './lookState.ts'
 export { lookUi, markSpun } from './lookState.ts'
 import { APPEARANCE } from '../../../game/content/traits.ts'
 import type { AccessoryId, BodyId, Look, Wardrobe } from '../../../types/life.ts'
+import type { AvatarLookExtensions, AvatarWearableId } from '../../../types/avatar.ts'
+import { normalizeAvatarAppearance } from '../../../types/avatar.ts'
+import { AVATAR_STARTER_WEARABLES } from '../../../scene/wardrobe/prices.ts'
+import { AVATAR_WEARABLES } from '../../../scene/wardrobe/catalogue.ts'
+import { avatarLookFields, keepAvatarAccessoryChoice } from '../../../scene/wardrobe/look.ts'
+import type { AvatarLook } from '../../../scene/wardrobe/look.ts'
 import type { PreviewFocus } from '../../../scene/avatar-preview.ts'
 
 export type SwatchGroup = 'skin' | 'hairColours' | 'outfitColours'
 /** The look fields an option button can set. */
 export type LookField = 'body' | 'hair' | 'outfit' | 'fabric' | 'skin' | 'hairColor' | 'outfitColor' | 'bottomsColor' | 'face' | 'expression' | 'accessories'
 /** What a Sim may wear: the shape of a wardrobe (the editor locks what is not in it). */
-export type Owned = Required<Wardrobe>
+export type Owned = Required<Pick<Wardrobe, 'hair' | 'outfit' | 'fabric' | 'accessories'>> & { wearables?: AvatarWearableId[] }
 
 const hexOf = (group: SwatchGroup, id: string | undefined): string => APPEARANCE[group].find((swatch) => swatch.id === id)?.hex ?? '#888888'
 export const lookLabel = (id: string): string => APPEARANCE.labels[id] ?? id
@@ -43,6 +49,7 @@ export function starterWardrobe(): Owned {
     outfit: free('outfit', [...new Set(APPEARANCE.bodies.flatMap((body) => outfitOptions(body.id)))]) as Owned['outfit'],
     fabric: [...APPEARANCE.fabrics],
     accessories: free('accessories', APPEARANCE.accessories.map((item) => item.id)) as Owned['accessories'],
+    wearables: [...AVATAR_STARTER_WEARABLES],
   }
 }
 
@@ -110,10 +117,10 @@ export const withField = (look: Look, field: string, value: string): Look => ({ 
  * when the new body has them, otherwise falls back to the first one allowed (and owned, when
  * `owned` — a wardrobe — is given). Also notes what was changed, so the preview knows where to look.
  */
-export function chooseLook(look: Look, group: string, value: string, owned?: Owned | null): Look {
+export function chooseLook(look: AvatarLook, group: string, value: string, owned?: Owned | null): AvatarLook {
   lookUi.lastField = group === 'accessories' ? (['eyes', 'head', 'ears', 'neck'].includes(SLOT[value] ?? '') ? 'hair' : 'body') : group
   lookUi.zoomOverride = null
-  if (group === 'accessories') return { ...look, accessories: (worn(look) as string[]).includes(value) ? withoutAccessory(look, value as AccessoryId) : withAccessory(look, value as AccessoryId) }
+  if (group === 'accessories') return keepAvatarAccessoryChoice({ ...look, accessories: (worn(look) as string[]).includes(value) ? withoutAccessory(look, value as AccessoryId) : withAccessory(look, value as AccessoryId) }, value)
   const next = withField(look, group, value)
   if (group !== 'body') return next
   const fit = (kind: 'hair' | 'outfit', options: string[]): string => {
@@ -125,15 +132,24 @@ export function chooseLook(look: Look, group: string, value: string, owned?: Own
 }
 
 /** "Woman · Braids · Owambe · Ankara · Glasses" */
-export const lookSummary = (look: Look): string => [look.body, look.hair, look.outfit, look.fabric, ...worn(look)].filter(Boolean).map(titled).join(' · ')
+export function lookSummary(look: AvatarLook): string {
+  const layers = avatarLookFields(look).wearables ?? []
+  const head = layers.find(id => AVATAR_WEARABLES[id].slot === 'head')
+  const outfit = layers.find(id => AVATAR_WEARABLES[id].slot === 'full')
+  return [titled(look.body), head ? AVATAR_WEARABLES[head].label : titled(look.hair),
+    outfit ? AVATAR_WEARABLES[outfit].label : titled(look.outfit), titled(look.fabric),
+    ...layers.filter(id => id !== head && id !== outfit).map(id => AVATAR_WEARABLES[id].label),
+    ...worn(look).map(titled)].join(' · ')
+}
 /** The preview's text alternative: everything the picture shows, in words. */
-export function lookAlt(look: Look, name = 'Your character'): string {
+export function lookAlt(look: AvatarLook, name = 'Your character'): string {
   const wearing = worn(look)
-  return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms${wearing.length ? `, wearing ${wearing.map((id) => titled(id).toLowerCase()).join(', ')}` : ''}.`
+  return `${name}: ${titled(look.body)}, ${swatchLabel('skin', look.skin).toLowerCase()} skin, ${titled(look.hair).toLowerCase()} hairstyle in ${swatchLabel('hairColours', look.hairColor).toLowerCase()}, ${titled(look.outfit).toLowerCase()} outfit in ${titled(look.fabric).toLowerCase()} ${swatchLabel('outfitColours', look.outfitColor).toLowerCase()}, ${swatchLabel('outfitColours', look.bottomsColor).toLowerCase()} bottoms${wearing.length ? `, wearing ${wearing.map((id) => titled(id).toLowerCase()).join(', ')}` : ''}${look.wearables?.length ? `, layered with ${avatarLookFields(look).wearables?.map(id => AVATAR_WEARABLES[id].label).join(', ')}` : ''}${look.appearance ? `, ${look.appearance.height} height, ${look.appearance.build} build, ${look.appearance.ageAppearance} appearance` : ''}.`
 }
 /** The look as the scene code takes it: style ids as they are, colours as hex values. */
-export interface SceneLook { body: string; hair: string; outfit: string; fabric: string; accessories: string[]; face: string; expression: string; skin: string; hairColor: string; outfitColor: string; bottomsColor: string }
-export const sceneLook = (look: Look): SceneLook => ({
+export interface SceneLook extends AvatarLookExtensions { body: string; hair: string; outfit: string; fabric: string; accessories: string[]; face: string; expression: string; skin: string; hairColor: string; outfitColor: string; bottomsColor: string }
+export const sceneLook = (look: AvatarLook): SceneLook => ({
+  ...avatarLookFields(look),
   body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, accessories: [...worn(look)], face: look.face ?? APPEARANCE.faces[0] ?? 'oval', expression: look.expression ?? APPEARANCE.expressions[0] ?? 'smile',
   skin: hexOf('skin', look.skin), hairColor: hexOf('hairColours', look.hairColor), outfitColor: hexOf('outfitColours', look.outfitColor), bottomsColor: hexOf('outfitColours', look.bottomsColor),
 })
@@ -156,8 +172,9 @@ export function randomLook(random: () => number = Math.random): Look {
 }
 
 /** The same look, whatever order the accessories are in and whether or not the optional fields are spelled out. */
-const canonical = (look: Look): string => JSON.stringify([look.body, look.hair, look.outfit, look.fabric, look.skin, look.hairColor, look.outfitColor, look.bottomsColor,
-  [...worn(look)].sort(), look.face ?? APPEARANCE.faces[0], look.expression ?? APPEARANCE.expressions[0]])
+const canonical = (look: AvatarLook): string => JSON.stringify([look.body, look.hair, look.outfit, look.fabric, look.skin, look.hairColor, look.outfitColor, look.bottomsColor,
+  [...worn(look)].sort(), look.face ?? APPEARANCE.faces[0], look.expression ?? APPEARANCE.expressions[0],
+  [...(avatarLookFields(look).wearables ?? [])].sort(), normalizeAvatarAppearance(look.appearance)])
 export const sameLook = (a: Look, b: Look): boolean => canonical(a) === canonical(b)
 
 // ---- the flat figure ------------------------------------------------------------------------

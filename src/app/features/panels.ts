@@ -68,6 +68,35 @@ export const houses = definePanel({
   component: defineAsyncComponent(() => import('./home/HousesApp.vue')),
 })
 
+export const landPanel = definePanel({
+  id: 'land', title: 'My land', icon: 'home', placement: 'phone', order: 30.5, group: 'life',
+  component: defineAsyncComponent(() => import('./neighbourhood/LandPanel.vue')),
+})
+
+export const neighbourhoodPanel = definePanel({
+  id: 'neighbourhood', title: 'My street', icon: 'home', placement: 'phone', order: 31, group: 'life',
+  component: defineAsyncComponent(() => import('./neighbourhood/NeighbourhoodPanel.vue')),
+})
+
+export const stories = definePanel({
+  id: 'stories', title: 'Story scenes', icon: 'sparkles', placement: 'phone', order: 53, group: 'life',
+  component: defineAsyncComponent(() => import('./stories/StoriesApp.vue')),
+})
+export const storyChip = definePanel({
+  id: 'story-chip', title: 'Story scene', placement: 'hud', order: 22,
+  component: defineAsyncComponent(() => import('./stories/StoryChip.vue')),
+})
+
+export const captureChip = definePanel({
+  id: 'capture-chip', title: 'Recording', placement: 'hud', slot: 'alert', order: 3,
+  component: defineAsyncComponent(() => import('./capture/CaptureChip.vue')),
+})
+
+export const capture = definePanel({
+  id: 'capture', title: 'Capture', icon: 'camera', placement: 'phone', order: 54, group: 'life',
+  component: defineAsyncComponent(() => import('./capture/CaptureApp.vue')),
+})
+
 export const cars = definePanel({
   id: 'cars', title: 'Cars', placement: 'phone', order: 34, group: 'life',
   component: defineAsyncComponent(() => import('./home/CarsApp.vue')),
@@ -140,8 +169,8 @@ export const homeChip = definePanel({
 export const buy = definePanel({
   id: 'buy', title: 'Buy', placement: 'nav',
   /** Buy is only available at home; elsewhere the nav button is disabled with this reason. */
-  enabled: (state) => state.location === 'home' || 'Go home to buy furniture',
+  enabled: (state) => social.me?.visiting ? 'Leave the visit before rearranging your furniture' : state.stories?.running ? 'End your scene before rearranging furniture' : state.location === 'home' || 'Go home to buy furniture',
   component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS]
+export const NATIVE_PANELS: readonly VuePanel[] = [captureChip, landPanel, stories, storyChip, neighbourhoodPanel, capture, bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS]

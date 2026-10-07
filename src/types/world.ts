@@ -11,7 +11,7 @@
  * 'estate.relocate'); each is rate limited per player (429 `world_rate_limited`, with a `reason`)
  * on top of the host's per-address limit; 503 `world_unavailable` on a host started without the
  * shard store. `v` is a version stamp: send it back as `?v=` and an unchanged answer is short.
- * WORKER: none of this exists on the Cloudflare Worker (every path is 404).
+ * Both Node and Worker use these routes; their registry shards use files and SQLite respectively.
  */
 import type { CityId, HostErrorCode, JsonBodyErrorCode, Ok, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { HouseId, LgaId, PlotAddress } from './life.ts'
@@ -99,6 +99,25 @@ export interface WorldHousesResponse {
   houses: WorldHouse[]
 }
 
+export interface WorldStreetHouse {
+  plot: number
+  style: number
+  upgradeAt: number
+  /** Public compound geometry, including for anonymous residents; never an owner identifier. */
+  land?: number[]
+  owner?: { id: string; name: string; friend: boolean; online: boolean }
+  you?: true
+}
+/** Only the caller's current street; identifiers are server-derived, not a shared-room admission token. */
+export interface WorldStreetResponse {
+  position?: { x: number; z: number }
+  city: CityId
+  anchor: PlotAddress
+  street: { city: CityId; lga: LgaId; estate: number; row: number }
+  houses: WorldStreetHouse[]
+  land: number[]
+}
+
 /** One row of a local government's directory. `home` is 'own' or the rented tier. `estate`/`plot` only once a plot is held. */
 export interface WorldPerson {
   id: string
@@ -123,6 +142,7 @@ export interface WorldBadge { lga: LgaId; name: string }
 export interface WorldBadgesResponse { badges: Record<string, WorldBadge> }
 export interface WorldPulseResponse { online: number; visits: number; today: number; cities: Record<string, number> }
 export interface WorldHttpRoutes {
+  'GET /api/world/street': { query: { city: CityId }; response: Ok<WorldStreetResponse>; errors: WorldCommon | StorageErrorCode | 'city_moved' | 'not_on_street' | 'plot_unavailable' }
   /** Settles (or creates) the caller's life in that city exactly as a poll would, so it can also answer 409 `city_moved` and 503 `storage_unavailable`. */
   'GET /api/world/me': { query: { city: CityId }; response: Ok<WorldMeResponse>; errors: WorldCommon | StorageErrorCode | 'city_moved' }
   /** Who is online now and how many visits there have been (server/pulse.ts); `cities` counts the online players whose character is in that city (visitors too); the caller is always counted. */

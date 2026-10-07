@@ -9,6 +9,8 @@ import { APPEARANCE, ACCESSORY_BASICS, DREAMS, TRAITS, TRAITS_REQUIRED } from '.
 import type { AccessoryId, BodyId, ExpressionId, FaceId, HairId, Look, OutfitId } from '../types/life.ts';
 import type { Draft, DraftArea } from './model.ts';
 import type { DreamId, TraitId } from '../types/life.ts';
+import { avatarLookFields } from '../scene/wardrobe/look.ts';
+import { AVATAR_STARTER_WEARABLES } from '../scene/wardrobe/prices.ts';
 
 // ---- names ---------------------------------------------------------------------------------
 /** Friendly suggestions for the name field: "<mood> <name>", always 3–24 ordinary characters. */
@@ -59,7 +61,10 @@ export function starterLook(value: unknown): Look | null {
   const extras: unknown = look.accessories === undefined || look.accessories === null ? [] : look.accessories;
   if (!Array.isArray(extras) || extras.length > APPEARANCE.accessoryLimit || !extras.every((id: AccessoryId) => ACCESSORY_BASICS.includes(id))
     || new Set(extras.map(slotOf)).size !== extras.length) return null;
+  const avatar = avatarLookFields(value);
+  if (avatar.wearables?.some(id => !AVATAR_STARTER_WEARABLES.includes(id))) return null;
   return { body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: look.skin, hairColor: look.hairColor, outfitColor: look.outfitColor, bottomsColor: look.bottomsColor,
+    ...avatar,
     // face/expression default to the list's first entry ('oval'/'smile') although Look documents the key as absent for the default; kept as the original result.
     accessories: [...extras] as AccessoryId[], face: (APPEARANCE.faces.includes(look.face as FaceId) ? look.face : APPEARANCE.faces[0]) as Look['face'],
     expression: (APPEARANCE.expressions.includes(look.expression as ExpressionId) ? look.expression : APPEARANCE.expressions[0]) as Look['expression'] };

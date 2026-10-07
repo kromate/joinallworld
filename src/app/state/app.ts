@@ -86,6 +86,13 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   /** The crowd in the scene, from real data only: the server's who-is-here listing and the venue's regulars. */
   function showCrowd(): void {
     const state = game.state.value
+    const visit = social.me?.visiting
+    if (visit) {
+      const guests = visit.guests.filter((person) => person.id !== game.session.value?.id).map((person) => ({ id: person.id, name: person.name, kind: 'player' }))
+      if (visit.hostStatus === 'home') guests.push({ id: visit.host.id, name: visit.host.name, kind: 'player' })
+      scene.venue.value?.setCrowd(guests)
+      return
+    }
     // The regulars the social view lists here now (their routine has them at the venue; every regular until the routines are loaded).
     const npcs = isDeparting(state) ? [] : game.view.value.social.here
     scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null, positions }))
@@ -122,13 +129,13 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   function reportPlace(): void {
     const at = scene.venue.value?.position?.()
     const state = game.state.value
-    if (!at || at.location !== state.location || at.location === 'home' || isDeparting(state)) return
+    if (!at || at.location !== state.location || at.location === 'home' || social.me?.visiting || isDeparting(state)) return
     if (community.moveTo(at.x, at.z)) placeSent = true
   }
   /** The avatar moved: that is where the player stands in the room. */
   function onMove(at: { location: string | null; x: number; z: number }): void {
     const state = game.state.value
-    if (at.location === state.location && at.location !== 'home' && !isDeparting(state) && community.moveTo(at.x, at.z)) placeSent = true
+    if (at.location === state.location && at.location !== 'home' && !social.me?.visiting && !isDeparting(state) && community.moveTo(at.x, at.z)) placeSent = true
   }
   /**
    * The room's member list arrived (or emptied): draw the others where they stand, and make sure the room knows where we do.

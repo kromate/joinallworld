@@ -7,7 +7,7 @@ import { cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
-import { isTrip } from './venueModel.ts'
+import { isTrip } from './tripModel.ts'
 
 // Paying to arrive now ('travel.skip') is fetched when a trip that offers it is running, not with the first screen.
 const SkipTrip = defineAsyncComponent(() => import('../travel/SkipTrip.vue'))

@@ -30,6 +30,8 @@ export interface StandIn {
   readonly easing: boolean;
   /** The body, once it is in and shown (tests, diagnostics). */
   readonly shown: boolean;
+  /** Name/crown position over the visible body's head, in the attached scene's coordinates. */
+  tagPosition(): { x: number; y: number; z: number } | null;
   /** The scene the player is in now; null where the body does not stand in (the home room, the map). A new scene is
    *  come into through its door: the next standing pose plays the door clip (when the host animates). */
   attach(scene: StandInScene | null): void;
@@ -50,10 +52,11 @@ export interface StandIn {
  * false or a fake device; the default reads navigator).
  */
 export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed()): StandIn {
+  const headAt = new kit.THREE.Vector3();
   let body: SkinnedBody | null = null, loading = false, failed = !allowed, gone = false, scene: StandInScene | null = null;
   let look: unknown = null, seed: unknown = null, posed: BodyPose = 'idle', seat = SEAT, at = { x: 0, y: 0, z: 0, ry: 0 };
   // Came into a scene and not yet posed there; the last walking frame (floor height, position) and the slope since.
-  let arrived = false, was = { x: 0, y: 0, z: 0 }, climb = 0;
+  let arrived = false, was: { x: number; y: number; z: number } | null = null, climb = 0;
 
   /** Put the body where the figure is, in its pose. */
   function put() {
@@ -78,12 +81,20 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
   return {
     get easing() { return Boolean(body?.easing && scene); },
     get shown() { return Boolean(body && scene && body.object.parent === scene.group); },
+    tagPosition() {
+      const head = body?.object.getObjectByName('Head');
+      if (!body || !scene || !head) return null;
+      body.object.updateWorldMatrix(true, true);
+      head.getWorldPosition(headAt); scene.group.worldToLocal(headAt); headAt.y += 0.32 * body.scale;
+      return headAt;
+    },
     attach(next) {
       if (next === scene || (next && scene && next.group === scene.group && next.avatar === scene.avatar)) { scene = next; return; }
       if (scene) scene.avatar.visible = true;
       body?.object.removeFromParent();
       scene = next;
       arrived = Boolean(next);
+      was = null; climb = 0;
       mount();
     },
     start(renderer) {
@@ -117,12 +128,14 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       arrived = false;
       if (!body) return;
       if (door) body.enter(animate);
-      else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.pose === 'sit'));
+      else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.seated || posed === 'sit'));
       put();
     },
     gait(phase, jog, y = at.y) {
-      const run = Math.hypot(at.x - was.x, at.z - was.z);
-      if (run > 1e-3) { climb = (y - was.y) / run; was = { x: at.x, y, z: at.z }; }
+      const run = was ? Math.hypot(at.x - was.x, at.z - was.z) : 0;
+      climb = was && run > 1e-3 ? (y - was.y) / run : 0;
+      was = { x: at.x, y, z: at.z };
+      posed = jog ? 'jog' : 'walk';
       if (body) { body.stride(phase, jog, Math.abs(climb) >= CLIMB ? climb : 0); put(); }
     },
     step(dt) { const more = body?.step(dt) ?? false; put(); return more && Boolean(scene); },

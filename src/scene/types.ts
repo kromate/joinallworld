@@ -224,6 +224,7 @@ export interface SceneRest {
 export interface SceneEntrance { x: number; y: number; z: number; ry: number }
 /** What the host needs to walk the avatar about. */
 export interface SceneWalk {
+  readonly onStairs?: boolean;
   readonly grid: ReturnType<typeof import('./movement.ts').createWalkGrid> | null
   readonly entrance: SceneEntrance | null
   readonly open: boolean
@@ -241,6 +242,7 @@ export interface SceneWalk {
   pose(name?: string, seat?: number): boolean
   gait(step: unknown, phase?: number, jog?: boolean): boolean
   heightAt(x: number, z: number): number
+  contactHeightAt?(x: number, z: number, expectedY?: number): number
   near(spot: { x: number; y: number; z: number } | null | undefined): boolean
   goal(x?: number, z?: number): boolean
 }

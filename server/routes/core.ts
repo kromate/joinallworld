@@ -22,6 +22,7 @@ import { companionConfig } from '../companion/gateway.ts';
 import { MAX_RECEIPTS, boundedFingerprint } from './once.ts';
 import { residenceGate } from './residence.ts';
 import { jailGate } from '../politics/gate.ts';
+import { landOf } from '../world/land.ts';
 
 // The receipt steps themselves live in ./once.js (core.actionOnce), shared with ctx.act.
 export { MAX_RECEIPTS, boundedFingerprint };
@@ -69,7 +70,9 @@ export async function executeCommand(ctx: RouteContext, request: RouteRequest, b
     const result = core.actionOnce(session, body, () => {
       residenceGate(ctx, session, body);
       jailGate(ctx, db, session, body);
+      if (['estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type)) landOf(ctx).assertMovable(db, session.publicId);
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
+      if (done.ok && ['home.door', 'travel', 'estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type) && db.street?.journeys) delete db.street.journeys[session.publicId];
       if (done.ok && afterAction) {
         const pending: unknown = afterAction({ db, session, result: done });
         if (isThenable(pending)) throw new Error('A command callback must be synchronous');

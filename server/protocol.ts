@@ -7,6 +7,8 @@ import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import { ENTRANCE } from '../src/campus/unilag/layout.ts';
 import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../src/types/protocol.ts';
 import type { AccountDeviceRecord, ActionReceipt, ArchivedLife, Collections, CollectionName, Db, HttpError, SessionRecord } from './types.ts';
+import type { PlotAddress } from '../src/types/life.ts';
+import { streetRoomKey } from '../src/game/neighbourhood-space.ts';
 
 /** A point on the ground: venue positions are x/z only. */
 type Point = { x: number; z: number };
@@ -268,7 +270,12 @@ export function validateVoiceConfig(config: unknown, now: number): { iceServers:
 }
 
 
-export function venueRoomKey(cityId: string, venueId: string, publicId: string): string {
+export function venueRoomKey(cityId: string, venueId: string, publicId: string, plot: PlotAddress | null = null): string {
+  if (venueId === 'neighbourhood') {
+    const room = streetRoomKey(cityId, plot);
+    if (!room) throw Error('invalid_room');
+    return room;
+  }
   return venueId === 'home' ? `${cityId}:home:${publicId}` : `${cityId}:${venueId}`;
 }
 

@@ -205,6 +205,7 @@ import civic from './civic.ts';
 import support from './support.ts';
 import moderation from './moderation.ts';
 import world from './world.ts';
+import land from './land.ts';
 import growth from './growth.ts';
 import growthMod from './growth-mod.ts';
 import campus from './campus.ts';
@@ -222,8 +223,10 @@ import politics from './politics.ts';
 import records from './records.ts';
 import storageMod from './storage-mod.ts';
 import trust from './trust.ts';
+import realValue from './real-value.ts';
+import street from './street.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, growth, growthMod, campus, pulse, ping, visit, business, businessMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, land, growth, growthMod, campus, pulse, ping, visit, business, businessMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust, realValue, street];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /**

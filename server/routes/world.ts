@@ -64,6 +64,16 @@ export default function worldRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   const unchanged = (request: RouteRequest, v: unknown) => (request.query.get('v') === String(v) ? { body: { v, unchanged: true } } : null);
 
   return {
+    'GET /api/world/street': async (request) => {
+      ready();
+      const cityId = cityParam(request), who = await caller(request, cityId);
+      limit('street', who.id, 60);
+      await store.read((db) => { const session = request.requireSession(db); cityGate(session, cityId); if (session.cities[cityId]?.state?.location !== 'neighbourhood') throw fail(409, 'not_on_street'); });
+      await world.sync(who.id, cityId);
+      const street = await world.street(cityId, who.id);
+      const position = await store.read(db => ctx.checks.streetPosition?.(db, request.requireSession(db)));
+      return { body: { ...street, ...(position ? { position } : {}) } };
+    },
     'GET /api/world/me': async (request) => {
       ready();
       const cityId = cityParam(request);

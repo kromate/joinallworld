@@ -94,23 +94,36 @@ export interface AppPolicy extends RequestFacts {
   telemetry?: readonly string[]
   /** The sign-in configuration (host-context.ts accountsConfig). Unset or null: accounts are off and the policy is the strict one. */
   accounts?: AccountsConfig | null
+  /** This entry declares the compressed avatar decoder and embedded GLB textures. */
+  avatarAssets?: boolean
+  trustProviders?: { phone: boolean; id: boolean }
   /** The admin address's page (server/admin/host.ts): no analytics beacon, no telemetry hosts, and the microphone and location are off. */
   admin?: boolean
 }
 
 /** The Content-Security-Policy of the game's page. */
-export function appContentSecurityPolicy({ scriptHashes, telemetry = [], accounts = null, admin = false, ...facts }: AppPolicy): string {
+export function appContentSecurityPolicy({ scriptHashes, telemetry = [], accounts = null, trustProviders, avatarAssets = false, admin = false, ...facts }: AppPolicy): string {
   const host = facts.host && /^[A-Za-z0-9.-]{1,253}(:\d{1,5})?$/.test(facts.host) ? facts.host : '';
   // 'self' covers a same-origin WebSocket in current browsers; older ones need the address spelled out.
   const sockets = host ? [`wss://${host}`, ...(facts.secure ? [] : [`ws://${host}`])] : [];
   const extra = accountsCspAdditions(accounts).csp;
+  if (!admin && trustProviders?.phone) {
+    extra['script-src'].push('https://www.google.com/recaptcha/', 'https://www.gstatic.com/recaptcha/');
+    extra['frame-src'].push('https://www.google.com/recaptcha/', 'https://recaptcha.google.com/recaptcha/');
+    extra['connect-src'].push('https://www.google.com/recaptcha/');
+  }
+  if (!admin && trustProviders?.id) {
+    extra['script-src'].push('https://widget.dojah.io/widget.js');
+    extra['frame-src'].push('https://identity.dojah.io', 'https://widget.dojah.io');
+    extra['connect-src'].push('https://widget.dojah.io', 'https://identity.dojah.io');
+  }
   const directives: string[] = [
     "default-src 'self'",
-    `script-src ${["'self'", ...scriptHashes, ...(admin ? [] : [BEACON_SCRIPT]), ...extra['script-src']].join(' ')}`,
+    `script-src ${["'self'", ...scriptHashes, ...(!admin && avatarAssets ? ["'wasm-unsafe-eval'"] : []), ...(admin ? [] : [BEACON_SCRIPT]), ...extra['script-src']].join(' ')}`,
     `style-src ${["'self'", "'unsafe-inline'", ...extra['style-src']].join(' ')}`,
     "img-src 'self' data: blob:",
     "font-src 'self'",
-    `connect-src ${["'self'", ...(admin ? [] : [...sockets, ...telemetry, BEACON_CONNECT]), ...extra['connect-src']].join(' ')}`,
+    `connect-src ${["'self'", ...(!admin && avatarAssets ? ['blob:'] : []), ...(admin ? [] : [...sockets, ...telemetry, BEACON_CONNECT]), ...extra['connect-src']].join(' ')}`,
     "media-src 'self' blob:",
     "worker-src 'self' blob:",
     ...(extra['frame-src'].length ? [`frame-src ${extra['frame-src'].join(' ')}`] : []),
@@ -132,7 +145,7 @@ const hsts = (facts: RequestFacts): Record<string, string> => (production(facts)
 /** Headers of the game's page (the Content-Type and caching are the host's). */
 export function appHeaders(policy: AppPolicy): Record<string, string> {
   if (policy.admin) return adminHeaders(policy);
-  return { ...BASE, 'Cross-Origin-Opener-Policy': accountsCspAdditions(policy.accounts).coop, ...hsts(policy), 'Content-Security-Policy': appContentSecurityPolicy(policy) };
+  return { ...BASE, ...(policy.trustProviders?.id && !policy.admin ? { 'Permissions-Policy': PERMISSIONS_POLICY.replace('camera=()', 'camera=("https://identity.dojah.io" "https://widget.dojah.io")') } : {}), 'Cross-Origin-Opener-Policy': accountsCspAdditions(policy.accounts).coop, ...hsts(policy), 'Content-Security-Policy': appContentSecurityPolicy(policy) };
 }
 
 /**

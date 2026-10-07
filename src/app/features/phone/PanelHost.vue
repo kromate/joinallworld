@@ -7,6 +7,7 @@ import type { Panel, PanelExposed } from '../../types/panel.ts'
 import { useApp } from '../../state/app.ts'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
 
+defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<{ panel: Panel; params?: unknown }>(), { params: undefined })
 const { shell } = useApp()
 const inner = ref<PanelExposed | null>(null)
@@ -17,7 +18,7 @@ onBeforeUnmount(() => { if (shell.keyHandlers.get(props.panel.id) === keys) shel
 
 <template>
   <Suspense>
-    <component :is="panel.component" ref="inner" :params="params" />
+    <component :is="panel.component" ref="inner" v-bind="$attrs" :params="params" />
     <template #fallback><SkeletonRows /></template>
   </Suspense>
 </template>

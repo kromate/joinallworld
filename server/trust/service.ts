@@ -24,7 +24,7 @@ import { screenText } from '../moderation/text.ts';
 import type { TextVerdict } from '../moderation/text.ts';
 import type { Db, RouteContext, SessionRecord } from '../types.ts';
 
-export interface TrustPlayer { tier: VerifiedTier; by: 'admin' | 'provider'; ref?: string; at: number; admin?: string }
+export interface TrustPlayer { tier: VerifiedTier; by: 'admin' | 'provider'; ref?: string; at: number; admin?: string; account?: string; adultVerified?: true }
 export type TrustReportStatus = 'received' | 'upheld' | 'dismissed';
 export interface TrustReport { id: string; about: string; aboutName: string; by: string; reason: TrustReportReason; note: string; at: number; status: TrustReportStatus; decided?: number }
 export interface TrustCollection { v: 1; players: Record<string, TrustPlayer>; reviewed: Record<string, number>; reports: TrustReport[]; seq: number }
@@ -67,9 +67,10 @@ export function trustService(ctx: RouteContext) {
 
   /** Guest without an account; `claimed` with one; the checked tier on top of an account. */
   function tierOf(db: Db, session: SessionRecord): TrustTier {
-    if (!accountOfSession(db, session)) return 'guest';
+    const account = accountOfSession(db, session);
+    if (!account) return 'guest';
     const stored = peekTrust(db).players[session.publicId];
-    return soundPlayer(stored) ? stored.tier : 'claimed';
+    return soundPlayer(stored) && (!stored.account || stored.account === account.id) ? stored.tier : 'claimed';
   }
   /** Upheld complaints in the window, and whether that holds the player's listings (until a moderator reviews them). */
   function complaints(db: Db, publicId: string): { count: number; held: boolean } {
@@ -83,6 +84,10 @@ export function trustService(ctx: RouteContext) {
   function adult(db: Db, publicId: string): boolean | null {
     if (ctx.checks?.minor?.(db, publicId)) return false;
     return ctx.checks?.adult?.(db, publicId) ? true : null;
+  }
+  function verifiedAdult(db: Db, publicId: string): boolean {
+    const session = sessionOf(db, publicId), account = session && accountOfSession(db, session), stored = peekTrust(db).players[publicId];
+    return Boolean(account && soundPlayer(stored) && stored.account === account.id && stored.adultVerified === true);
   }
   function facts(db: Db, session: SessionRecord): PosterFacts {
     const account = accountOfSession(db, session);
@@ -114,7 +119,7 @@ export function trustService(ctx: RouteContext) {
   }
 
   return {
-    tierOf, complaints, adult, facts, badge, postBlock, vendorLink,
+    tierOf, complaints, adult, verifiedAdult, facts, badge, postBlock, vendorLink,
     /** File a complaint. Throws on a malformed request; answers { ok: false, code, reason } for a refusal. */
     report(db: Db, session: SessionRecord, body: Record<string, unknown>) {
       const about = typeof body.about === 'string' ? body.about.toLowerCase() : '';

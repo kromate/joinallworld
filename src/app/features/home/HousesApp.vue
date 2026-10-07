@@ -21,7 +21,7 @@ import type { HouseId } from '../../../types/life.ts'
 
 defineProps<{ params?: unknown }>()
 
-const { game, command } = useApp()
+const { game, shell, command } = useApp()
 const { act, pending } = useAct()
 const view = game.view
 const cash = computed(() => game.state.value.cash)
@@ -39,6 +39,13 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
 <template>
   <p v-if="!property" class="ui-error">Houses could not be loaded. Close this app and open it again.</p>
   <div v-else class="houses-app">
+    <details class="ui-card">
+      <summary>Furniture, land, stories &amp; neighbours</summary>
+      <button type="button" class="ui-button is-block" @click="shell.open('buy')">Arrange furniture</button>
+      <button type="button" class="ui-button is-block" @click="shell.open('land')">Expand my land</button>
+      <button type="button" class="ui-button is-block" @click="shell.open('stories')">Create a story scene</button>
+      <button type="button" class="ui-button is-block" @click="shell.open('neighbourhood')">Visit my neighbours</button>
+    </details>
     <MyHouse />
     <VisitHome />
     <template v-if="rentals">

@@ -93,6 +93,9 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  *   cityId } (no host connection in the room) or 'guest-expired' with the same fields (anything else).
  */
 import { MAX_VOICE_MEMBERS, UUID_PATTERN, canOccupyVenue, initialVenuePosition, validatePosition, withinVoiceDistance, venueRoomKey } from '../protocol.ts';
+import { streetRoomKey, STREET_NETWORK_SCALE } from '../../src/game/neighbourhood-space.ts';
+import { createStreetGateProof } from '../street/gate.ts';
+import { VOICE_RADIUS } from '../protocol.ts';
 import { ROOM_CHAT_QUIET_MS, ROOM_FRIEND_NEAR, ROOM_GROUP_LIST, ROOM_GROUP_MAX, ROOM_GROUP_MIN, ROOM_GROUP_OVERFLOW, ROOM_GROUP_TARGET, ROOM_MOVE_FLUSH_MS, groupNotice } from '../../src/game/roomGroups.ts';
 import type { RoomGroupLimits } from '../../src/game/roomGroups.ts';
 import { newVenue, place, planMerge, seat, unseat } from './groups.ts';
@@ -123,8 +126,8 @@ interface ChatHistory {
 }
 /** What re-checking one socket against the stored document found. */
 type Verdict =
-  | { stay: boolean }
-  | { hostId: string; city: string; live: boolean; until: number; hostOut: boolean; open: boolean }
+  | { stay: boolean; look: WsConnection['look'] }
+  | { hostId: string; city: string; live: boolean; until: number; hostOut: boolean; open: boolean; look: WsConnection['look'] }
 /** An event that ends a visit, raised once the verdicts are in. */
 type Ended =
   | { event: 'host-absent' | 'guest-expired'; detail: { hostId: string; guestId: string; cityId: string } }
@@ -144,6 +147,24 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   const CHAT_HISTORIES = 5000;
   const inRooms = new Map<string, Set<WsConnection>>(); // public id → Set<ws> of that player's sockets that are in a room
   const hostGone = new Map<string, number>(); // Home room key → server ms since which its host has had no socket in it
+  const streetGate = createStreetGateProof();
+  ctx.checks.streetPosition = (db, session) => {
+    const city = characterCity(session), state = city ? session.cities[city]?.state : null, proof = streetGate.snapshot(session.publicId);
+    if (!city || !state || !canOccupyVenue(state, 'neighbourhood') || insideAnotherHome(db, session.publicId)) return undefined;
+    if (proof?.room === streetRoomKey(city, state.estate.plot)) return proof.point;
+    const journey = db.street?.journeys?.[session.publicId], plot = state.estate.plot;
+    return journey?.kind === 'estate' && journey.city === city && plot && journey.anchor.lga === plot.lga && journey.anchor.estate === plot.estate && journey.anchor.plot === plot.plot ? journey.estatePosition : undefined;
+  };
+  ctx.checks.streetGateReached = (db, session) => {
+    const city = characterCity(session), state = city ? session.cities[city]?.state : null;
+    if (!city || !state || !canOccupyVenue(state, 'neighbourhood') || insideAnotherHome(db, session.publicId)) return false;
+    const room = streetRoomKey(city, state.estate.plot);
+    return Boolean(room && [...(inRooms.get(session.publicId) ?? [])].some(ws => {
+      if (ws.room !== room || ws.readyState !== 1 || ws.closed === true) return false;
+      const active = core.sessionOf(ws, db);
+      return active !== undefined && active.expiresAt > now() && active.publicId === session.publicId && ws.session.id === session.publicId && occupies(ws, city, lifeIn(active, city));
+    }) && streetGate.reached(session.publicId, room, now()));
+  };
 
   // ---- groups (in memory only: nothing here is stored, and a host that lost its memory rebuilds it from the sockets) ----
   const limits: RoomGroupLimits = { target: ctx.config.roomGroupTarget ?? ROOM_GROUP_TARGET, max: ctx.config.roomGroupMax ?? ROOM_GROUP_MAX, min: ctx.config.roomGroupMin ?? ROOM_GROUP_MIN };
@@ -420,6 +441,11 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   }
   /** Does the host keep their home open for friends while they are out ("Friends can visit while I am out")? Then an empty room is not a reason to end a visit. */
   const openWhileOut = (db: Db, hostId: string): boolean => ctx.checks?.homeOpenOut?.(db, hostId) === true;
+  const insideAnotherHome = (db: Db, id: string): boolean => {
+    const host = db.social?.players[id]?.visiting;
+    const visit = host ? db.social?.houses[host]?.guests[id] : null;
+    return Boolean(visit && visit.expires > now());
+  };
   /** Has this Home room been without its host for longer than the grace period? Starts the clock if nobody has. */
   function hostAbsent(room: string, hostId: string): boolean {
     if (hostPresent(room, hostId)) { hostGone.delete(room); return false; }
@@ -431,7 +457,11 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
     return since !== undefined && now() - since >= HOST_ABSENCE_GRACE_MS;
   }
   /** Is this socket's own-venue room the one the life occupies right now? (Never true for a departing life.) */
-  const occupies = (ws: WsConnection, city: string, state: LifeState | null | undefined): boolean => state !== undefined && state !== null && canOccupyVenue(state, state.location) && ws.room === venueRoomKey(city, state.location, ws.session.id);
+  const occupies = (ws: WsConnection, city: string, state: LifeState | null | undefined): boolean => {
+    if (!state || !canOccupyVenue(state, state.location)) return false;
+    const room = state.location === 'neighbourhood' ? streetRoomKey(city, state.estate.plot) : venueRoomKey(city, state.location, ws.session.id);
+    return room !== null && ws.room === room;
+  };
 
   /**
    * Re-check sockets against the STORED document and drop the ones that are no longer allowed.
@@ -452,24 +482,37 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       const city = cityOf(ws), hostId = visitedHost(ws, city);
       const session = core.sessionOf(ws, db);
       const live = Boolean(session) && (session?.expiresAt ?? 0) > now();
-      if (!hostId) return { stay: live && occupies(ws, city, session ? lifeIn(session, city) : undefined) };
+      const lookCity = hostId && session ? characterCity(session) ?? city : city;
+      const look = session ? checkLook(lifeIn(session, lookCity)?.onboarding?.look).look ?? null : null;
+      if (!hostId) return { stay: live && occupies(ws, city, session ? lifeIn(session, city) : undefined) && !(room.split(':')[1] === 'neighbourhood' && insideAnotherHome(db, ws.session.id)), look };
       const until = live && session ? guestUntil(db, session.publicId, hostId, city) : 0;
       // Why a visit is over, so the social module closes the stored visit with the right words.
-      return { hostId, city, live, until, hostOut: !until && typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false, open: openWhileOut(db, hostId) };
+      return { hostId, city, live, until, hostOut: !until && typeof ctx.atHome === 'function' && ctx.atHome(db, hostId, city) === false, open: openWhileOut(db, hostId), look };
     })); } catch { failClosed(); return Promise.resolve(); }
     return Promise.resolve(reading).then((verdicts) => {
       const ended: Ended[] = [];
+      const looks = new Map<string, { room: string; group: string | null; ids: Set<string> }>();
+      const updateLook = (ws: WsConnection, room: string, look: WsConnection['look']) => {
+        if (JSON.stringify(ws.look) === JSON.stringify(look)) return;
+        ws.look = look;
+        const key = ws.group ? gkey(room, ws.group) : room, change = looks.get(key) ?? { room, group: ws.group ?? null, ids: new Set<string>() };
+        change.ids.add(ws.session.id); looks.set(key, change);
+      };
       items.forEach(({ ws, room }, index) => {
         const verdict = verdicts[index];
         if (!verdict || ws.room !== room) return;
-        if (!('hostId' in verdict)) { if (verdict.stay) ws.stale = false; else drop(ws, 'venue_mismatch'); return; }
+        if (!('hostId' in verdict)) { if (verdict.stay) { ws.stale = false; updateLook(ws, room, verdict.look); } else drop(ws, 'venue_mismatch'); return; }
         const { hostId, city } = verdict, guestId = ws.session.id;
         if (verdict.live && !verdict.open && hostAbsent(room, hostId)) { drop(ws, 'visit_ended'); ended.push({ event: 'host-absent', detail: { hostId, guestId, cityId: city } }); return; }
-        if (verdict.until) { ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, verdict.until); return; }
+        if (verdict.until) { ws.guestUntil = Math.min(now() + GUEST_RECHECK_MS, verdict.until); updateLook(ws, room, verdict.look); return; }
         drop(ws, 'visit_ended');
         if (!verdict.hostOut) ended.push({ event: 'guest-expired', detail: { hostId, guestId, cityId: city } });
         else if (!ended.some((item) => item.event === 'home-closed' && item.detail.hostId === hostId && item.detail.cityId === city)) ended.push({ event: 'home-closed', detail: { hostId, cityId: city } });
       });
+      for (const change of looks.values()) {
+        announce(change.room, change.group, { joined: [...change.ids], causes: [...change.ids] });
+        for (const id of change.ids) roomChanged(change.room, change.group, null, id);
+      }
       for (const item of ended) {
         if (item.event === 'home-closed') ctx.emit?.(item.event, item.detail);
         else ctx.emit?.(item.event, item.detail);
@@ -493,9 +536,16 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
     // The watcher list is process-wide. A life announced inside ANOTHER store's transaction (an earlier Durable Object instance in
     // this isolate that has not been collected) is not ours: re-checking sockets would read this instance's storage on that request's behalf.
     if (ctx.store.executing && !ctx.store.executing()) return;
+    if (!canOccupyVenue(state, 'neighbourhood') && [...(inRooms.get(publicId) ?? [])].some(ws => cityOf(ws) === city && !visitedHost(ws, city))) {
+      streetGate.clear(publicId);
+      for (const ws of inRooms.get(publicId) ?? []) delete ws.streetGateProof;
+    }
     let due = false;
     for (const ws of inRooms.get(publicId) || []) {
-      if (cityOf(ws) !== city || visitedHost(ws, city)) continue;
+      const visiting = visitedHost(ws, cityOf(ws));
+      if (!visiting && cityOf(ws) !== city) continue;
+      if (JSON.stringify(ws.look) !== JSON.stringify(state.onboarding?.look ?? null)) { ws.stale = true; if (visiting) ws.guestUntil = 0; due = true; }
+      if (visiting) continue;
       if (!occupies(ws, city, state)) { ws.stale = true; due = true; }
     }
     if (!canOccupyVenue(state, 'home')) {
@@ -571,6 +621,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
   const messages: Record<string, WsMessageEntry> = {
     async join(ws, message) {
       const cityId = ctx.cityIds.find((item) => item === message.cityId), venueId = message.venueId;
+      if (venueId === 'city-street') throw Error('invalid_room');
       if (cityId === undefined || typeof venueId !== 'string' || !venueFor(cityId, venueId)) throw Error('invalid_room');
       // hostId is only meaningful for Home, and only as a well-formed public id.
       const rawHostId = message.hostId;
@@ -578,12 +629,13 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       const hostId = rawHostId === undefined ? null : String(rawHostId).toLowerCase();
       const guestOf = hostId !== null && hostId !== ws.session.id ? hostId : null; // the host whose Home room a guest is joining
       const visiting = guestOf !== null;
-      const { until, look, friends, follow, open } = await store.transact(db => {
+      const { until, look, friends, follow, open, room, streetPlot, streetReturn } = await store.transact(db => {
         const session = core.sessionOf(ws, db);
         if (!session || session.expiresAt <= now()) throw Error('device_session_required');
         // A guest's own life is the one they play (a visit is a room, not a journey): in the host's city too, they need no life of theirs there.
         const ownCity = guestOf !== null ? characterCity(session) ?? cityId : cityId;
         const state = settle(session, ownCity);
+        if (venueId === 'neighbourhood' && insideAnotherHome(db, session.publicId)) throw Error('venue_mismatch');
         // A life still held for the quick start (Play not confirmed) is not in the city yet: no room, so no presence and no chat.
         if (state.onboarding?.required === true && state.onboarding.done !== true) throw Error('onboarding_required');
         // The look comes from the server-held life and is validated again: option ids only.
@@ -603,7 +655,10 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
             }
           }
         }
-        return { until: guestOf !== null ? guestUntil(db, session.publicId, guestOf, cityId) : canOccupyVenue(state, venueId) ? Infinity : 0, look, friends, follow, open: guestOf !== null && openWhileOut(db, guestOf) };
+        const room = venueRoomKey(cityId, venueId, guestOf ?? session.publicId, state.estate.plot);
+        const journey = db.street?.journeys?.[session.publicId], plot = state.estate.plot;
+        const streetReturn = journey?.kind === 'estate' && journey.city === cityId && plot && journey.anchor.lga === plot.lga && journey.anchor.estate === plot.estate && journey.anchor.plot === plot.plot ? journey.estatePosition : undefined;
+        return { until: guestOf !== null ? guestUntil(db, session.publicId, guestOf, cityId) : canOccupyVenue(state, venueId) ? Infinity : 0, look, friends, follow, room, open: guestOf !== null && openWhileOut(db, guestOf), streetPlot: plot, streetReturn };
       // ADMISSION FOLLOWS WHAT IS IN THE FILE. The check can read a permission that is applied in
       // memory but not yet written (a host's "let them in", an arrival). `waitForObserved` holds the
       // join until those changes are in the file and rejects it ('storage_unavailable') if their
@@ -612,11 +667,11 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       // nothing unwritten beneath it it is answered at once. Whatever took the permission away in
       // the meantime is caught below: by the absent-host check and by verify() after admission.
       }, { durable: false, waitForObserved: true });
-      const room = venueRoomKey(cityId, venueId, guestOf ?? ws.session.id);
       // A guest cannot come back into a Home room its host has been missing from for longer than the grace period.
       if (!until || (guestOf !== null && !open && hostAbsent(room, guestOf))) throw Error(visiting ? 'not_a_guest' : 'venue_mismatch');
       if (!core.isOpen(ws)) return;
       leave(ws); ws.voice = { enabled: false, muted: true }; ws.position = initialVenuePosition(venueId); ws.lastMoves = []; ws.look = look;
+      if (venueId === 'neighbourhood' && streetPlot) { streetGate.seed(ws.session.id, room, streetPlot, now(), streetReturn); ws.streetGateProof = streetGate.snapshot(ws.session.id); }
       ws.deltas = message.deltas === true;
       if (grouped(room)) friendsCache.set(ws.session.id, { at: now(), set: friends });
       const { apart } = enter(ws, room, { friends, follow });
@@ -631,13 +686,14 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       }
       // A visit that ended between the check above and this admission found no socket to drop:
       // look once more now that there is one, so the guest list and the room cannot disagree.
-      if (visiting) await verify([ws]);
+      if (visiting || venueId === 'neighbourhood') await verify([ws]);
     },
     move: guarded((ws, message, room) => {
       const position = validatePosition(message, room.split(':')[1]);
       ws.lastMoves = ws.lastMoves.filter(time => time > now() - 1000);
       if (ws.lastMoves.length >= 5) throw Error('move_rate_limited');
       ws.lastMoves.push(now());
+      if (room.split(':')[1] === 'neighbourhood' && streetGate.move(ws.session.id, room, position, now())) for (const peer of rooms.get(room) ?? []) if (peer.session.id === ws.session.id) peer.streetGateProof = streetGate.snapshot(ws.session.id);
       for (const peer of rooms.get(room) ?? []) if (peer.session.id === ws.session.id) peer.position = position;
       queueMove(ws, room, position);
     }),
@@ -655,7 +711,8 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       // A blocked pair cannot signal: the answer is the same as for a peer who is not there.
       const peers = hidden(ws.session.id, to) ? [] : [...audience(room, ws.group)].filter(peer => peer.session.id === to && peer !== ws);
       if (!peers.length) throw Error('peer_not_in_room');
-      const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position));
+      const radius = room.split(':')[1] === 'neighbourhood' ? VOICE_RADIUS * STREET_NETWORK_SCALE : VOICE_RADIUS;
+      const nearby = peers.filter(peer => withinVoiceDistance(ws.position, peer.position, radius));
       if (!nearby.length) throw Error('peer_out_of_range');
       // The server relays `data` untouched: any object of at most 12 000 characters of JSON. The protocol type SignalData
       // only says what the browser puts in it (the tests relay `{ probe }`), so this is the one place the object is named as it.
@@ -758,6 +815,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
     close: leave,
     /** A host that lost its memory hands a connected socket back: it is in its room again, exactly as it was (ws/index.js). Nothing is announced. */
     restore(ws) {
+      streetGate.restore(ws.session.id, ws.streetGateProof, now());
       ws.voice ||= { enabled: false, muted: true }; ws.position ||= { x: 0, z: 0 }; ws.lastMoves ||= []; ws.look ??= null; ws.guestUntil ||= 0;
       // What the room remembered about the stored life is gone with the memory: the next room message re-checks it.
       if (ws.room) { const room = ws.room; enter(ws, room); ws.stale = true; }
@@ -794,7 +852,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       roomStillValid(ws, db, session, city, state) {
         const hostId = visitedHost(ws, city);
         if (hostId) return (openWhileOut(db, hostId) || !hostAbsent(ws.room ?? '', hostId)) && guestUntil(db, session.publicId, hostId, city) > 0;
-        return occupies(ws, city, state);
+        return occupies(ws, city, state) && !(state?.location === 'neighbourhood' && insideAnotherHome(db, session.publicId));
       },
       refreshNames(session: PublicSession) {
         const told = new Set<string>();

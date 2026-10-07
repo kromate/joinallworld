@@ -1,3 +1,4 @@
+import { avatarProportions } from './types/avatar.ts';
 import { venueFor } from './game/cities/runtime.ts';
 import { DEFAULT_CITY_ID } from './game/cities/registry.ts';
 /**
@@ -80,6 +81,11 @@ import { DEFAULT_CITY_ID } from './game/cities/registry.ts';
  *                          setCrowd() takes other players' { x, z } in the same units.
  */
 import { createKit } from './scene/kit.ts';
+import type { Kit } from './scene/kit.ts';
+import type { WorldStreetResponse } from './types/world.ts';
+import { STREET_NETWORK_SCALE } from './game/neighbourhood-space.ts';
+import type { VisitHomeProjection } from './types/visit.ts';
+import type { PlotAddress } from './types/life.ts';
 import { createOrbit, followShare } from './scene/camera-controls.ts';
 import { dragKind, isDrag, isTap, twist } from './scene/gesture.ts';
 import type { DragKind } from './scene/gesture.ts';
@@ -88,7 +94,7 @@ import { sceneMaterials } from './scene/build.ts';
 import { createMotionLoop } from './scene/motion-loop.ts';
 import { rewardChips, cheer } from './scene/reward.ts';
 import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.ts';
-import { createWalker, createPositionReporter, WALK_SPEED, JOG_SPEED } from './scene/movement.ts';
+import { createWalker, createPositionReporter, gaitPhase, WALK_SPEED, JOG_SPEED } from './scene/movement.ts';
 import { createSceneControls } from './scene/controls.ts';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
 import { buildHomeScene } from './scene/home-scene.ts';
@@ -109,6 +115,7 @@ import { addNpcWord, npcAria, npcTitle } from './ui/npc-mark.ts';
 export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }
 /** What a tap on a name tag reports (options.onTag): a person ('npc' | 'player'), a game table, or the goal's flag. */
 export interface SceneTag { id: string; kind: 'npc' | 'player' | 'table' | 'goal' | (string & {}); text?: string }
+export interface NeighbourDoor { id: string; name: string; plot: PlotAddress; x: number; z: number; ry?: number }
 export interface SceneDiagnostics {
   /** Frames drawn since the host was created. Flat while nothing is happening. */
   renderCount: number
@@ -118,7 +125,7 @@ export interface SceneDiagnostics {
 /** What diagnostics() reports: the frame count, where the avatar and the camera are, and what each spot, person and tag is on the canvas (CSS pixels). */
 export interface VenueDiagnostics extends SceneDiagnostics {
   loop: { running: boolean; frames: number }
-  avatar: { x: number; z: number; y: number; facing: number; moving: boolean; mode: WalkMode; blocked: boolean; locked: boolean; near: string | null }
+  avatar: { x: number; z: number; y: number; facing: number; phase: number; moving: boolean; mode: WalkMode; blocked: boolean; locked: boolean; near: string | null }
   /** walls: which of a room's walls are showing; perch: standing on a raised place; hover: what a click would pick; solids: boxes the camera tests against. */
   walls: { back: boolean; left: boolean } | null
   perch: boolean
@@ -153,6 +160,9 @@ export interface SceneSpotRequest { id: string; open: boolean }
 /** Where the avatar stands, in presence units (options.onMove, 'jaw:avatar-move'). */
 export interface AvatarPosition { x: number; z: number; location: string | null }
 export interface VenueWorldOptions {
+  visitHome?: VisitHomeProjection | null
+  onNeighbourDoor?: (door: NeighbourDoor) => void
+  onStreetGate?: () => void
   cityId?: string
   location?: string
   /** A renderer to draw with (tests pass a stub); by default a WebGLRenderer is made. */
@@ -160,6 +170,9 @@ export interface VenueWorldOptions {
   onTag?: (tag: SceneTag) => void
   onSpot?: (spot: SceneSpotRequest) => void
   onMove?: (at: AvatarPosition) => void
+  onHomeDoor?: (direction: 'outside' | 'inside') => void
+  buildNeighbourhood?: (kit: Kit) => HostScene
+  buildHome?: (kit: Kit, options?: { visit?: VisitHomeProjection }) => HostScene
 }
 /** setGoal(): the spot the current goal points at. */
 export interface SceneGoal { venue: string; spot: string; text: string }
@@ -191,7 +204,12 @@ export interface HostWalk extends Omit<SceneWalk, 'rest' | 'things'> {
 }
 /** What a scene entry may offer the host (see the header). Venue scenes and the home room both satisfy it. */
 export interface HostScene {
+  readonly streetGate?: { x: number; z: number; ry?: number }
+  beginDoor?(done: () => void): void
+  setStreet?(street: WorldStreetResponse | null): boolean
+  neighbourDoors?(): NeighbourDoor[]
   group: THREE.Group
+  readonly homeDoor?: Place & { ry?: number; direction: 'outside' | 'inside' }
   camera?: SceneCamera
   update?(state: LifeState): boolean
   background?: Colour
@@ -201,6 +219,7 @@ export interface HostScene {
   setPlayer?(player: Partial<PlayerLook>): boolean
   setCrowd?(people: unknown): unknown
   readonly easing?: boolean
+  readonly bodyShown?: boolean
   stepCrowd?(dt: number): boolean
   settleCrowd?(): void
   look?(x: number, z: number): boolean
@@ -216,6 +235,11 @@ export interface HostScene {
 /** What createVenueWorld() returns. Every method draws at most one frame, and only when something changed. */
 export interface VenueWorld {
   update(): void
+  captureCanvas(): HTMLCanvasElement | null
+  setStreet(street: WorldStreetResponse | null): void
+  walkNeighbourDoor(host: string): boolean
+  walkStreetGate(): boolean
+  restorePosition(at: { x: number; z: number }): void
   readonly location: string | null
   prepare(id: string): boolean
   diagnostics(): VenueDiagnostics
@@ -230,6 +254,7 @@ export interface VenueWorld {
   zoom(direction: number): void
   recentre(): void
   walkTo(x: number, z: number): boolean
+  walkHomeDoor(): boolean
   walkBy(dx: number, dz: number): boolean
   position(): AvatarPosition
   dispose(): void
@@ -358,7 +383,12 @@ interface Hover { key: string; type: Target['type']; spot: WalkSpot | null; pers
 /** 'jaw:reward': { cash, needs, skills }. */
 interface RewardDetail { cash?: number; needs?: Record<string, number>; skills?: Record<string, number> }
 
-export function createVenueWorld(container: HTMLElement, { location = 'park', cityId = DEFAULT_CITY_ID, renderer: providedRenderer, onTag, onSpot, onMove }: VenueWorldOptions = {}): VenueWorld {
+/** Synchronous host for direct consumers. The app adapter injects its lazily loaded builders into createVenueHost. */
+export function createVenueWorld(container: HTMLElement, options: VenueWorldOptions = {}): VenueWorld {
+  return createVenueHost(container, { buildHome: buildHomeScene, ...options });
+}
+
+export function createVenueHost(container: HTMLElement, { location = 'park', cityId = DEFAULT_CITY_ID, renderer: providedRenderer, onTag, onSpot, onMove, onHomeDoor, onNeighbourDoor, onStreetGate, buildNeighbourhood, buildHome, visitHome }: VenueWorldOptions = {}): VenueWorld {
   // Cheaper scenery (Lambert in place of Standard) is behind a flag, default off: see matteScenery() in scene/look.js.
   const kit = createKit({ matte: matteScenery() });
   const { THREE } = kit;
@@ -393,6 +423,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       if (suppressClick && event.detail !== 0) return;
       const node = (event.target as Element | null)?.closest?.<HTMLElement>('[data-tag]');
       if (!node) return;
+      if (node.dataset.tag === 'home-door') { walkHomeDoor(); return; }
+      if (node.dataset.kind === 'city-gate') { walkStreetGate(); return; }
+      if (node.dataset.kind === 'neighbour-door') { walkNeighbourDoor((node.dataset.tag ?? '').slice(5)); return; }
       // A table's tag is the table: the avatar walks up to it, and arriving opens it (no frame loop: it is simply there).
       const thing = node.dataset.kind === 'table' ? thingList.find((item) => item.id === node.dataset.tag) : null;
       if (thing) { if (!(uiMode === 'venue' && !locked && walkToThing(thing))) onTag?.({ id: thing.id, kind: thing.kind }); else if (!loop.running) renderScene(); return; }
@@ -435,12 +468,15 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   const held: Record<HeldKey, boolean> = { up: false, down: false, left: false, right: false, jog: false, lookLeft: false, lookRight: false, lookUp: false, lookDown: false };
   const stick = { x: 0, z: 0, jog: false };
   let locked = false, restKey = '', restWas: { spot: string | null; busy: boolean; leaving: boolean; at?: string } = { spot: null, busy: false, leaving: false }, stride = 0, wasMoving = false, restPose: { pose: string; seat?: number | undefined } | null = null;
+  let afterPose: (() => void) | null = null;
   let nearSpot: WalkSpot | null = null, expected: { id: string; near: boolean } | null = null, dwell: ReturnType<typeof setTimeout> | null = null, lastSpotAt = -Infinity, spotList: WalkSpot[] = [], avatarY = 0, fresh = false, uiMode = 'venue';
+  let homeDoorEpoch = 0;
   // perch: the raised place the avatar stepped up on to, and the way back down ([{ x, z }, ...] ending on the floor).
   let perch: { down: WalkPoint[] } | null = null, hover: Hover | null = null, hintTop = 0, closeness = 1;
   const walkOf = (): HostWalk | null => current?.walk || null;
   /** Scene units → presence units (1 unless a scene's floor is larger than the room protocol's bounds). */
   function presenceScale() {
+    if (currentLocation === 'neighbourhood') return STREET_NETWORK_SCALE;
     const bounds = walkOf()?.grid?.bounds;
     if (!bounds) return 1;
     const reach = Math.max(Math.abs(bounds[0]), Math.abs(bounds[1]), Math.abs(bounds[2]), Math.abs(bounds[3]));
@@ -453,19 +489,19 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   });
 
   /** Put the avatar's figure where the walker is, and aim the camera's pivot at it. */
-  function applyAvatar(bob = 0) {
+  function applyAvatar() {
     const walk = walkOf();
     if (!walk) return;
     avatarY = walk.heightAt(walker.x, walker.z);
-    walk.move(walker.x, avatarY + bob, walker.z, walker.ry);
-    standIn?.move(walker.x, avatarY + bob, walker.z, walker.ry);
+    walk.move(walker.x, avatarY, walker.z, walker.ry);
+    standIn?.move(walker.x, avatarY, walker.z, walker.ry);
   }
   function setPivot() {
     const walk = walkOf();
     if (!walk) { orbit.follow(0, 0.7, 0); return; }
     // The closer the starting view, the more the pivot belongs to the avatar (closeness: see frame()).
     // Buy mode frames the whole room (the bed being placed must be in view), not the avatar's side of it.
-    const share = uiMode === 'buy' ? 0 : followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current!.group.position;
+    const share = currentLocation === 'neighbourhood' ? 1 : uiMode === 'buy' ? 0 : followShare(orbit.now.zoom * closeness), centre = walk.centre, offset = current!.group.position;
     orbit.follow(offset.x + centre[0] + (walker.x - centre[0]) * share, centre[1] + (avatarY + 1.55 * walk.scale - centre[1]) * share, offset.z + centre[2] + (walker.z - centre[2]) * share);
   }
   function nearestSpot() {
@@ -532,8 +568,13 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   function showPose() {
     const walk = walkOf();
     if (!walk) return;
+    applyAvatar();
     if (restPose) walk.pose(restPose.pose, restPose.seat); else walk.pose('stand');
-    standIn?.pose(restPose?.pose ?? 'stand', restPose?.seat, loop.running && !reduced());
+    standIn?.pose(restPose?.pose ?? 'stand', restPose?.seat, loop.available && !reduced());
+    if (current?.easing || standIn?.easing) {
+      if (!loop.available || reduced()) { current?.settleCrowd?.(); standIn?.settle(); }
+      else loop.wake();
+    }
   }
   /** One step of walking. Returns true while the avatar is still moving or turning. */
   function advance(dt: number) {
@@ -546,22 +587,26 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       walker.input(0, 0);
       if (walker.mode !== 'path') { const foot = perch.down[perch.down.length - 1]!; walkTo(foot.x, foot.z); }
     }
-    else walker.input(wantX, wantZ, held.jog || stick.jog);
+    else walker.input(wantX, wantZ, !walk.onStairs && (held.jog || stick.jog));
     if (walker.hasInput && walker.mode === 'path') walk.goal();
     const still = reduced();
+    const beforeX = walker.x, beforeZ = walker.z;
+    walker.jogSpeed = (walk.onStairs ? WALK_SPEED : JOG_SPEED) * walk.scale;
     const more = walker.step(dt, orbit.azimuth, still);
-    let bob = 0;
+    const distance = Math.hypot(walker.x - beforeX, walker.z - beforeZ);
+    const proportions = avatarProportions(lastState?.onboarding?.look.appearance);
+    const jogging = walker.jogging && !walk.onStairs;
+    stride += gaitPhase(distance, walk.scale * proportions.height * proportions.depth, jogging, Boolean(current?.bodyShown || standIn?.shown));
+    applyAvatar();
     if (walker.moving) {
       if (!wasMoving) { clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } controls?.learned('walk'); }
       // Walked away from the table it stood at: coming back to it opens it again.
       if (atThing && !thingList.some((thing) => thing.id === atThing && Math.hypot(thing.x - walker.x, thing.z - walker.z) < TABLE_REACH + 0.8)) atThing = null;
-      stride += dt * (walker.jogging ? 9 : 6.5);
+      if (walker.hasInput) afterPose = null;
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
-      walk.gait(still || Math.floor(stride) % 2 === 0, still ? 0 : stride * Math.PI, walker.jogging);
-      standIn?.gait(still ? 0 : stride * Math.PI, walker.jogging, avatarY);
-      if (!still) bob = Math.abs(Math.sin(stride * Math.PI)) * 0.06 * walk.scale;
+      walk.gait(still || Math.floor(stride / Math.PI) % 2 === 0, still ? 0 : stride, jogging);
+      standIn?.gait(still ? 0 : stride, jogging, avatarY);
     } else if (wasMoving) { walk.goal(); showPose(); }
-    applyAvatar(bob);
     showNear();
     // Back on the floor: the perch is behind it.
     if (perch && !walker.hopping && walk.grid?.free(walker.x, walker.z)) perch = null;
@@ -594,13 +639,17 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
    * The scene says where the avatar belongs (its spot, the seat of a running activity, the way out).
    * Walk there instead of jumping. Returns true when what is drawn changed.
    */
+  const actionKey = (action: LifeState['activeAction'] | undefined) => action ? [action.kind, action.id, action.duration,
+    'choice' in action ? action.choice : '', 'mode' in action ? action.mode : ''].join('|') : '';
+  const restIdentity = (rest: HostRest) => `${rest.spot}|${rest.busy}|${rest.leaving}|${rest.fixed}|${rest.pose}|${rest.x.toFixed(2)},${rest.z.toFixed(2)}|${rest.busy ? actionKey(lastState?.activeAction) : ''}`;
   function syncRest() {
     const walk = walkOf(), rest = walk?.rest();
     if (!rest) return false;
-    const key = `${rest.spot}|${rest.busy}|${rest.leaving}|${rest.fixed}|${rest.pose}|${rest.x.toFixed(2)},${rest.z.toFixed(2)}`;
+    const key = restIdentity(rest);
     // The first state for a scene just shown (the player has only now arrived): the avatar stays at the entrance.
     if (fresh && lastState && (lastState.location == null || lastState.location === currentLocation)) { fresh = false; arrive(rest); if (key === restKey) return false; restKey = key; return true; }
     if (key === restKey) return false;
+    afterPose = null;
     const before = restWas, moved = before.spot !== rest.spot || before.at !== `${rest.x.toFixed(2)},${rest.z.toFixed(2)}`;
     restKey = key;
     restWas = { spot: rest.spot, busy: rest.busy, leaving: rest.leaving, at: `${rest.x.toFixed(2)},${rest.z.toFixed(2)}` };
@@ -612,7 +661,14 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       restPose = null;
       const pose = { pose: rest.pose, seat: rest.seat };
       const settle = () => { restPose = pose; showPose(); };
-      if (away > 0.05) walkTo(rest.x, rest.z, { exact: true, face: rest.ry, jog: true, then: settle, ...wayUp(rest) }); else { walker.ry = rest.ry; settle(); applyAvatar(); }
+      const enter = () => {
+        if (away > 0.05) walkTo(rest.x, rest.z, { exact: true, face: rest.ry, jog: true, then: settle, ...wayUp(rest) });
+        else { walker.ry = rest.ry; settle(); applyAvatar(); }
+      };
+      if (current?.easing || standIn?.easing) {
+        if (loop.available && !reduced()) { afterPose = enter; loop.wake(); }
+        else { current?.settleCrowd?.(); standIn?.settle(); enter(); }
+      } else enter();
     } else if (rest.leaving) {
       // Setting off on a trip: walk to the way out.
       restPose = { pose: 'walk' };
@@ -621,7 +677,13 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       restPose = null;
       const sent = expected && expected.id === rest.spot ? expected : null;
       if (sent) expected = null;
-      if (before.busy) { showPose(); if (away > 0.05) walkTo(rest.x, rest.z, { exact: true, face: rest.ry, ...wayUp(rest) }); }
+      if (before.busy) {
+        applyAvatar(); showPose();
+        if (away > 0.05) {
+          const leave = () => walkTo(rest.x, rest.z, { exact: true, face: rest.ry, ...wayUp(rest) });
+          if (current?.easing || standIn?.easing) afterPose = leave; else leave();
+        }
+      }
       else if (before.leaving) { walker.stop(); showPose(); applyAvatar(); }
       // A spot chosen in the panel: walk to it. One the avatar wandered up to: it is already there.
       else if (moved && !sent?.near && away > SPOT_REACH) walkTo(rest.x, rest.z, { exact: true, face: rest.ry, ...wayUp(rest) });
@@ -648,7 +710,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   function enterScene() {
     const walk = walkOf();
     walker.stop(); clearDwell(); report.reset();
-    expected = null; nearSpot = null; restPose = null; wasMoving = false; stride = 0; spotList = []; thingList = []; atThing = null; perch = null; setHover(null);
+    expected = null; nearSpot = null; restPose = null; wasMoving = false; stride = 0; afterPose = null; spotList = []; thingList = []; atThing = null; perch = null; setHover(null);
     if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
     stick.x = 0; stick.z = 0; stick.jog = false;
     walker.setGrid(walk?.grid || null);
@@ -661,10 +723,10 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     thingList = walk.things?.() || [];
     // Arriving beside a table is not walking up to it: it opens when the player goes to it.
     atThing = null;
-    walker.speed = WALK_SPEED * clamp(walk.scale, 0.6, 1); walker.jogSpeed = JOG_SPEED * clamp(walk.scale, 0.6, 1);
+    walker.speed = WALK_SPEED * walk.scale; walker.jogSpeed = JOG_SPEED * walk.scale;
     walker.reach = 0.66 * walk.scale;
     const rest = walk.rest();
-    restKey = rest ? `${rest.spot}|${rest.busy}|${rest.leaving}|${rest.fixed}|${rest.pose}|${rest.x.toFixed(2)},${rest.z.toFixed(2)}` : '';
+    restKey = rest ? restIdentity(rest) : '';
     // Until the state for THIS venue has been seen, the next one only confirms the arrival (see syncRest).
     fresh = !(lastState && lastState.location === currentLocation);
     arrive(rest);
@@ -680,6 +742,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     if (current?.easing) more = (reduced() ? (current.settleCrowd!(), false) : current.stepCrowd!(dt)) || more;
     // The skinned body sitting down or getting up (bounded).
     if (standIn?.easing) more = (reduced() ? (standIn.settle(), false) : standIn.step(dt)) || more;
+    if (afterPose && !current?.easing && !standIn?.easing) { const next = afterPose; afterPose = null; next(); more = walker.mode === 'path' || Boolean(current?.easing || standIn?.easing) || more; }
     setPivot();
     keepInSight();
     if (reduced()) { orbit.snap(); ghost.now = ghost.goal; }
@@ -737,8 +800,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     stick.x = 0; stick.z = 0; stick.jog = false;
     controls?.release();
   }
-  // Hidden: stop and forget held keys. Visible again: only a walk that was cut short carries on.
-  const loop = createMotionLoop(tick, { onHidden: dropInput, onVisible: () => { if (walker.mode === 'path') loop.wake(); } });
+  // Hidden: stop and forget held keys. Visible again: resume a pending route or bounded furniture transition.
+  const loop = createMotionLoop(tick, { onHidden: dropInput, onVisible: () => { if (walker.mode === 'path' || current?.easing || standIn?.easing || afterPose) loop.wake(); } });
   /** The camera's goal changed: ease to it in the loop, or — with no loop or reduced motion — draw it at once. */
   function redrawView() {
     if (loop.available && !reduced()) { loop.wake(); return; }
@@ -925,12 +988,52 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     const id = thing.id, kind = thing.kind;
     return walkTo(stand.x, stand.z, { face: Math.atan2(thing.x - stand.x, thing.z - stand.z), then: () => { atThing = id; onTag?.({ id, kind }); } });
   }
+  function walkStreetGate(): boolean {
+    const gate = current?.streetGate, entry = current;
+    if (!gate || !onStreetGate || locked || uiMode !== 'venue' || currentLocation !== 'neighbourhood' || lastState?.activeAction) return false;
+    const epoch = ++homeDoorEpoch;
+    return walkTo(gate.x, gate.z, { exact: true, face: gate.ry, mark: true, then: () => {
+      if (!gone && epoch === homeDoorEpoch && current === entry && currentLocation === 'neighbourhood' && !lastState?.activeAction && uiMode === 'venue') onStreetGate();
+    } });
+  }
+  function walkHomeDoor(): boolean {
+    const door = current?.homeDoor, entry = current, state = lastState;
+    if (!door || !onHomeDoor || locked || uiMode !== 'venue' || current?.placing || state?.activeAction) return false;
+    const grid = walkOf()?.grid, stand = door.approach ? { x: door.x, z: door.z } : grid?.nearest(door.x, door.z);
+    const first = door.approach ?? stand;
+    if (!stand || !first || !grid?.path(walker.x, walker.z, first.x, first.z)) return false;
+    const location = currentLocation, epoch = ++homeDoorEpoch;
+    const ok = walkTo(stand.x, stand.z, { exact: true, face: door.ry, mark: true, ...wayUp(door), then: () => {
+      const valid = () => !gone && epoch === homeDoorEpoch && uiMode === 'venue' && !current?.placing && current === entry && currentLocation === location && lastState?.location === location && !lastState?.activeAction;
+      if (!valid()) return;
+      const finish = () => { if (valid()) onHomeDoor?.(door.direction); };
+      if (entry?.beginDoor) { entry.beginDoor(finish); loop.wake(); }
+      else finish();
+    } });
+    if (ok && !loop.running) renderScene();
+    return ok;
+  }
   /** A tap that was not a drag: walk to what was tapped, then do what tapping it does. */
+  function walkNeighbourDoor(id: string): boolean {
+    const door = current?.neighbourDoors?.().find((item) => item.id === id), entry = current;
+    if (!door || !onNeighbourDoor || locked || uiMode !== 'venue' || lastState?.activeAction) return false;
+    const grid = walkOf()?.grid, stand = grid?.nearest(door.x, door.z);
+    if (!stand || !grid?.path(walker.x, walker.z, stand.x, stand.z)) return false;
+    const epoch = ++homeDoorEpoch;
+    const ok = walkTo(stand.x, stand.z, { exact: true, face: door.ry, mark: true, then: () => {
+      if (!gone && epoch === homeDoorEpoch && current === entry && currentLocation === 'neighbourhood' && lastState?.location === 'neighbourhood' && !lastState.activeAction && uiMode === 'venue') onNeighbourDoor(door);
+    } });
+    if (ok && !loop.running) renderScene();
+    return ok;
+  }
   function tap(event: MouseEvent) {
     const walk = walkOf();
     if (!walk || !walk.grid || locked || uiMode !== 'venue' || current!.placing || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return false;
     const target = pick(event.clientX, event.clientY);
     if (!target) return false;
+    const door = current?.homeDoor;
+    const at = target.type === 'floor' ? target.at : target.type === 'object' ? target.hit : null;
+    if (door && at && Math.hypot(at.x - door.x, at.z - door.z) < Math.max(0.7, walk.scale)) return walkHomeDoor();
     if (target.type === 'spot') {
       const spot = target.spot, id = spot.id;
       return walkTo(spot.x, spot.z, { exact: true, face: spot.ry, mark: true, then: () => requestSpot(id, true), ...wayUp(spot) });
@@ -1048,7 +1151,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     tagLayer.append(node);
   }
   const onCheer = () => cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
-  function onMode(event: Event) { uiMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
+  function onMode(event: Event) { homeDoorEpoch++; uiMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
   uiMode = globalThis.document?.querySelector?.<HTMLElement>('.life-ui')?.dataset?.mode || 'venue';
   win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
@@ -1074,6 +1177,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   function projectTags() {
     camera.updateMatrixWorld(true);
     current?.group.updateMatrixWorld(true);
+    const self = tagSource.find((tag) => tag.kind === 'self');
+    const at = self && (standIn?.tagPosition() ?? current?.tags?.().find((tag) => tag.kind === 'self')?.position);
+    if (self && at) { self.position.x = at.x; self.position.y = at.y; self.position.z = at.z; }
     if (shownTags.length !== tagSource.length) shownTags = tagSource.map(() => ({} as ShownTag));
     for (let i = 0; i < tagSource.length; i++) {
       const tag = tagSource[i]!, shown = shownTags[i]!;
@@ -1101,7 +1207,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
         else if (tag.marker === 'dot') { node.appendChild(globalThis.document.createElement('i')); if (tag.kind === 'npc') addNpcWord(globalThis.document, node); }
         else node.textContent = tag.text;
         node.title = tag.kind === 'self' ? 'You' : tag.kind === 'npc' ? npcTitle(tag.name) : tag.name;
-        node.setAttribute('aria-label', tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'table' ? `${tag.name}. Walk up to sit, watch or invite a friend` : tag.kind === 'npc' ? npcAria(tag.name) : `${tag.name}, a player`);
+        node.setAttribute('aria-label', tag.kind === 'city-gate' ? 'Explore city streets. Walk to the estate gate' : tag.kind === 'home-door' || tag.kind === 'neighbour-door' ? `${tag.name}. Walk to the front door` : tag.kind === 'self' ? 'You' : tag.kind === 'goal' ? `Your goal: ${tag.name}. Walk there` : tag.kind === 'table' ? `${tag.name}. Walk up to sit, watch or invite a friend` : tag.kind === 'npc' ? npcAria(tag.name) : `${tag.name}, a player`);
         node.jawX = NaN; node.jawY = NaN; node.jawShown = true;
         return node;
       });
@@ -1128,7 +1234,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   /** One tag over each game table that stands here: its game and its name. A tap on it walks the avatar there. */
   const thingTags = () => thingList.map((thing) => ({ id: thing.id, kind: thing.kind, text: thing.label, name: thing.label, position: { x: thing.x, y: thing.top + 0.55, z: thing.z } }));
-  function readTags() { tagSource = [...(current?.tags?.() || []), ...thingTags(), ...goalTag()]; tagsRead = true; }
+  function readTags() { tagSource = [...(current?.tags?.() || []).filter((tag) => (tag.kind !== 'home-door' || onHomeDoor) && (tag.kind !== 'city-gate' || onStreetGate)), ...thingTags(), ...goalTag()]; tagsRead = true; }
   /** Tell the scene where the camera is, so a room can hide the walls it is behind. Flips visibility only. */
   function lookIn() {
     if (!current?.look) return;
@@ -1147,7 +1253,9 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   function sceneFor(id: string) {
     if (!built.has(id)) {
       const venue = venueFor(cityId, id);
-      const entry = venue?.scene?.kind === 'home' ? buildHomeScene(kit) : buildVenueScene(kit, sceneVenue(id, cityId), cityId);
+      if (id === 'neighbourhood' && !buildNeighbourhood) throw new Error('The neighbourhood scene has not loaded.');
+      if (venue?.scene?.kind === 'home' && !buildHome) throw new Error('The home scene has not loaded.');
+      const entry = id === 'neighbourhood' && buildNeighbourhood ? buildNeighbourhood(kit) : venue?.scene?.kind === 'home' && buildHome ? buildHome(kit, visitHome ? { visit: visitHome } : {}) : buildVenueScene(kit, sceneVenue(id, cityId), cityId);
       entry.group.visible = false;
       scene.add(entry.group);
       built.set(id, entry);
@@ -1236,6 +1344,8 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
   }
   /** Give the current scene the latest game state. Draws one frame only if the scene says it changed. */
   function setState(state: LifeState) {
+    // A poll replaces objects and updates remaining time; only a different action interrupts the arrival callback.
+    if (state.location !== lastState?.location || actionKey(state.activeAction) !== actionKey(lastState?.activeAction)) { walker.stop(); clearDwell(); }
     lastState = state;
     if (state.estate?.city && state.estate.city !== cityId) {
       cityId = state.estate.city;
@@ -1251,6 +1361,10 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     const moved = syncRest();
     readTags();
     if (changed) applyLook();
+    if (current?.easing || standIn?.easing) {
+      if (loop.available && !reduced()) loop.wake();
+      else { current?.settleCrowd?.(); standIn?.settle(); }
+    }
     if ((changed || moved) && !loop.running) { setPivot(); if (!loop.available || reduced()) settleView(); orbit.apply(camera); renderScene(); }
   }
   /** The player's avatar: { look, seed (the session's public id), name, pose? }. One frame if it changed. */
@@ -1305,7 +1419,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
         renderCount,
         // Movement and camera: where the avatar is, which way it faces, where the camera is, and whether frames are being drawn.
         loop: { running: loop.running, frames: loop.frames },
-        avatar: { x: Math.round(walker.x * 100) / 100, z: Math.round(walker.z * 100) / 100, y: Math.round(avatarY * 100) / 100, facing: Math.round(walker.ry * 1000) / 1000, moving: walker.moving, mode: walker.mode, blocked: walker.blocked, locked, near: nearSpot?.id ?? null },
+        avatar: { x: Math.round(walker.x * 100) / 100, z: Math.round(walker.z * 100) / 100, y: Math.round(avatarY * 100) / 100, facing: Math.round(walker.ry * 1000) / 1000, phase: Math.round(stride * 10000) / 10000, moving: walker.moving, mode: walker.mode, blocked: walker.blocked, locked, near: nearSpot?.id ?? null },
         // walls: which of a room's walls are showing; held: the share of the asked-for distance a collision holds the camera at; ghost: the see-through circle's strength.
         walls: current?.walls ?? null, perch: Boolean(perch), hover: hover ? hover.key : null, easing: Boolean(current?.easing), solids: occluders.count,
         camera: { yaw: Math.round(orbit.azimuth * 1000) / 1000, pitch: Math.round(orbit.pitch * 1000) / 1000, zoom: Math.round(orbit.now.zoom * 1000) / 1000, distance: Math.round(orbit.distance * 100) / 100,
@@ -1359,6 +1473,12 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
     /** Camera and walking, for the on-screen controls and for tests. */
     zoom, recentre,
     walkTo(x, z) { const ok = walkTo(x, z, { mark: true }); if (ok && !loop.running) renderScene(); return ok; },
+    walkHomeDoor,
+    walkStreetGate,
+    walkNeighbourDoor,
+    restorePosition(at) { const k = presenceScale(), point = walkOf()?.grid?.nearest(at.x / k, at.z / k); if (point) { walker.place(point.x, point.z, 0); applyAvatar(); settleView(); orbit.apply(camera); renderScene(); } },
+    setStreet(street) { if (current?.setStreet?.(street)) { walker.stop(); walker.setGrid(walkOf()?.grid ?? null); occluders.setStatic((walkOf()?.solids || []) as OccluderBox[]); readTags(); renderScene(); } },
+    captureCanvas() { if (gone || !current || renderer.getContext().isContextLost()) return null; renderScene(); return renderer.domElement; },
     /** Walk the avatar by (dx, dz) scene units — the community panel's keyboard-accessible Walk buttons. False when it cannot walk now. */
     walkBy(dx, dz) {
       if (!walkOf()?.grid || locked || uiMode !== 'venue' || current!.placing || !Number.isFinite(dx) || !Number.isFinite(dz)) return false;

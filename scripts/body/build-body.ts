@@ -34,6 +34,7 @@ import { fileURLToPath } from 'node:url';
 import { brotliCompressSync, constants } from 'node:zlib';
 import { authoredClips } from './author-clips.ts';
 import { GltfWriter, glbJson, loadGltf, readAccessor } from './gltf-io.ts';
+import { BODY_MANIFEST } from '../../src/scene/body/manifest.ts';
 import type { Loaded, Node } from './gltf-io.ts';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -86,7 +87,8 @@ function parents(nodes: Node[]): Map<number, number> {
   return map;
 }
 function gltfpack(input: string, output: string, extra: string[]): string {
-  return execFileSync('npx', [...GLTFPACK, '-i', input, '-o', output, ...extra, '-v'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  const cached = option('--gltfpack', '');
+  return execFileSync(cached ? process.execPath : 'npx', [...(cached ? [cached] : GLTFPACK), '-i', input, '-o', output, ...extra, '-v'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, npm_config_offline: 'true' } });
 }
 function need(path: string): void { if (!existsSync(path)) throw new Error(`missing raw asset: ${path}\nDownload the packs listed in docs/ASSETS.md into ${RAW} (see the README there).`); }
 
@@ -274,7 +276,9 @@ function buildClips(work: string) {
     g.animations.push({ name: to, channels, samplers });
   }
   // The authored clips: keyframed rotations on the same bones, built from the UAL rest pose and source clips.
-  for (const clip of authoredClips(doc, KEPT_BONES)) {
+  const authored = [...authoredClips(doc, KEPT_BONES, loadGltf(join(OUT, 'base-body-male.glb'))),
+    ...authoredClips(doc, KEPT_BONES, loadGltf(join(OUT, 'base-body-female.glb')), '-female').filter((clip) => clip.name.endsWith('-female'))];
+  for (const clip of authored) {
     present.push(clip.name);
     const channels: { sampler: number; target: { node: number; path: string } }[] = [], samplers: { input: number; output: number; interpolation: string }[] = [];
     for (const track of clip.tracks) {
@@ -308,11 +312,11 @@ function main(): void {
   mkdirSync(OUT, { recursive: true });
   const work = mkdtempSync(join(tmpdir(), 'aw-body-'));
   try {
-    const bodies = BODIES.map((source) => buildBody(source, work));
+    const clipsOnly = args.includes('--clips-only'), bodies = clipsOnly ? [] : BODIES.map((source) => buildBody(source, work));
     const clips = buildClips(work);
     if (args.includes('--verbose')) for (const entry of [...bodies, clips]) console.log(entry.log);
     const lines: string[] = [];
-    const record: Record<string, unknown> = {};
+    const record: Record<string, unknown> = clipsOnly ? { ...BODY_MANIFEST.bodies } : {};
     for (const body of bodies) {
       const facts = summary(body.target);
       lines.push(`base-body-${body.source.key}.glb  ${facts.bytes} B raw, ${facts.brotli} B brotli, ${facts.triangles} triangles (from ${body.sourceTriangles}), ${facts.bones} bones`);

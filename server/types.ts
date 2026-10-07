@@ -344,8 +344,9 @@ export interface KnockRecord {
   /** A knock made through a house link (db.visits.links): the id of the link. The host is told so, and an answer of yes counts a use of it. */
   link?: string
 }
-export interface VisitRecord { since: number; expires: number; cityId: CityId; /** Came through a house link (its id): a removed guest cannot come back through the same one. */ link?: string }
+export interface VisitRecord { since: number; expires: number; cityId: CityId; captureId?: string; captureConsent?: true; /** Came through a house link (its id): a removed guest cannot come back through the same one. */ link?: string }
 export interface HouseRecord {
+  captureRevision?: number
   /** Visitor id → knock. */
   knocks: Record<string, KnockRecord>
   /** Guest id → visit. */
@@ -533,6 +534,8 @@ export interface PoliticsCollection {
 }
 export interface CivicCollection {
   v: 1
+  /** Unfinished land transactions, independent of device-session lifetime. */
+  landPurchases?: Record<string, import('../src/types/land.ts').LandPurchase>
   /** `true` = hidden from that list; no entry = listed. */
   prefs: Record<string, { richList?: true; directory?: true }>
   /** Random; mixed into the address keys of the vote cap. Created by the first vote. */
@@ -720,6 +723,9 @@ export interface Database {
   business?: BusinessCollection
   /** server/trust/service.ts: checked tiers and complaints. Created by the first report or check, so it is not in COLLECTION_NAMES. */
   trust?: import('./trust/service.ts').TrustCollection
+  trustChecks?: import('./trust/dojah.ts').IdChecks
+  street?: import('./street/types.ts').StreetCollection
+  realValue?: import('../src/types/real-value.ts').RealValueCollection
   /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
   politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -828,6 +834,9 @@ export interface RouteRequest {
   moderator(): boolean
   /** Rejects 415 / 413 / 400. The body may be at most `limit` bytes (default 8 KiB). */
   json(limit?: number): Promise<Record<string, unknown>>
+  /** Exact bounded bytes for provider signature verification; never attached to telemetry. */
+  rawBody?(limit: number): Promise<Uint8Array<ArrayBuffer>>
+  header?(name: string): string | null
   session(db: Db, options?: { renew?: boolean }): SessionRecord | undefined
   /** Throws 401 device_session_required. */
   requireSession(db: Db, options?: { renew?: boolean }): SessionRecord
@@ -912,6 +921,8 @@ export interface MuteVerdict { code: 'muted'; reason: string; until: number }
 
 /** Checks one module provides for another; each is absent until its module has been built. */
 export interface ContextChecks {
+  streetGateReached?: (db: Db, session: SessionRecord) => boolean
+  streetPosition?: (db: Db, session: SessionRecord) => { x: number; z: number } | undefined
   /** Social: is `guestId` an accepted, unexpired guest of `hostId` whose life is at home in `cityId`? */
   homeGuest?: (db: Db, guestId: string, hostId: string, cityId: CityId) => boolean
   /** Social: the same with the visit's expiry (server ms), or 0. */
@@ -1085,6 +1096,7 @@ export interface ContextCore {
 
 /** The server context every route and ws module receives once at start-up. */
 export interface RouteContext {
+  streetAssets?: import('./street/types.ts').StreetAssetReader
   store: Store
   /** Server time in ms — never call Date.now(). */
   now(): number
@@ -1156,6 +1168,7 @@ export interface RouteContext {
  * WebSocket; only the fields the server reads or adds are listed.
  */
 export interface WsConnection {
+  streetGateProof?: import('./street/gate.ts').StreetGateProof
   /** 1 = open. */
   readyState: number
   /** The sender's PUBLIC identity. */

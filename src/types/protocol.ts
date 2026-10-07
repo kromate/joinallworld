@@ -22,6 +22,7 @@ import type { SocialClientFrame, SocialHttpRoutes, SocialServerFrame } from './s
 import type { CivicHttpRoutes } from './civic.ts'
 import type { ModerationHttpRoutes, SupportHttpRoutes } from './support.ts'
 import type { WorldHttpRoutes } from './world.ts'
+import type { LandBuyRequest, LandView } from './land.ts'
 import type { GrowthHttpRoutes, GrowthModerationHttpRoutes, TableClientFrame, TableErrorCode, TableServerFrame } from './growth.ts'
 import type { CampusHttpRoutes } from './campus.ts'
 import type { CallClientFrame, CallServerFrame } from './calls.ts'
@@ -30,6 +31,8 @@ import type { CompanionHttpRoutes } from './companion.ts'
 import type { AnnounceFrame } from './announce.ts'
 import type { AdminHttpRoutes } from './admin.ts'
 import type { TrustHttpRoutes } from './trust.ts'
+import type { RealValueHttpRoutes } from './real-value-http.ts'
+import type { StreetHttpRoutes } from './street-http.ts'
 import type { StoreHttpRoutes } from './store.ts'
 import type { LiveClientFrame, LiveServerFrame } from './live.ts'
 import type { AccountHttpRoutes } from './account.ts'
@@ -259,7 +262,10 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes {}
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes {
+  'GET /api/world/land': { query: { city: CityId }; response: Ok<LandView>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'invalid_city' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' }
+  'POST /api/world/land/buy': { body: LandBuyRequest; response: Ok<{ ok: boolean; code: string; duplicate?: true; pending?: true }>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | JsonBodyErrorCode | OnceErrorCode | 'invalid_city' | 'invalid_land_purchase' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' | 'land_pending' | 'not_owned_home' | 'land_price_changed' | 'land_intent_changed' }
+}
 export type HttpRouteKey = keyof HttpRoutes
 export type ResponseOf<K extends HttpRouteKey> = HttpRoutes[K]['response']
 export type ErrorCodeOf<K extends HttpRouteKey> = HttpRoutes[K]['errors']
@@ -487,6 +493,14 @@ export type ServerFrameType = ServerFrame['type']
 export { registeredCityIds } from '../game/cities/registry.ts'
 
 export const HTTP_ROUTE_KEYS = [
+  'POST /api/social/visit/capture-consent',
+  'GET /api/world/land',
+  'POST /api/world/land/buy',
+  'GET /api/world/street',
+  'GET /api/street/me', 'GET /api/street/tile',
+  'POST /api/street/begin', 'POST /api/street/move', 'POST /api/street/enter', 'POST /api/street/exit',
+  'POST /api/social/visit/plot/enter',
+  'GET /api/social/visit/home',
   'GET /api/health',
   'POST /api/session',
   'GET /api/session',
@@ -711,6 +725,16 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/admin/trust/reports/:id/act',
   'POST /api/admin/trust/players/:id/act',
   'GET /api/trust/me',
+  'GET /api/real-value/listings', 'GET /api/real-value/mine', 'GET /api/real-value/listings/:id',
+  'GET /api/real-value/share/:id', 'GET /api/real-value/link/:id', 'GET /api/real-value/analytics/:id',
+  'GET /api/real-value/contacts', 'GET /api/real-value/contacts/:id',
+  'POST /api/real-value/listings', 'POST /api/real-value/listings/:id/edit', 'POST /api/real-value/listings/:id/close',
+  'POST /api/real-value/listings/:id/report', 'POST /api/real-value/listings/:id/event', 'POST /api/real-value/listings/:id/contact-request',
+  'POST /api/real-value/contacts/:id/answer', 'POST /api/real-value/contacts/:id/revoke',
+  'POST /api/trust/phone/complete',
+  'POST /api/trust/dojah/webhook',
+  'POST /api/trust/id/start',
+  'GET /api/trust/id/result',
   'GET /api/trust/profile/:id',
   'POST /api/trust/check/:kind/start',
   'POST /api/trust/report',

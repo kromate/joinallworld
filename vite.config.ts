@@ -172,6 +172,10 @@ export default defineConfig({
   // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
   build: {
     chunkSizeWarningLimit: 800,
+    // Terser, two passes: the same program in about 3% fewer gzip bytes than the default esbuild minifier, for every chunk (the startup
+    // is the part that has a budget). It only compresses and renames; it does not change what the code does.
+    minify: 'terser',
+    terserOptions: { compress: { passes: 2 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {
@@ -215,6 +219,8 @@ export default defineConfig({
     if (/\/src\/ui\/npc-mark\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
+    // The visit rules (door words, how long a visit lasts): read only by the visit screens, which are fetched on demand.
+    if (/\/src\/game\/visit\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
     // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, fetched once the game is ready) until a feature of the first page needs them.

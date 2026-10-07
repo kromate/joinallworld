@@ -2,6 +2,7 @@
 // fetched on that gesture, see play.ts). It listens for the interface itself (taps, switches, tabs), for the avatar walking,
 // for the tab being hidden, and for the preferences changing, and hands everything to the director.
 import { contentFor } from '../game/cities/runtime.ts'
+import { powerCutAt } from '../game/conditions/grid.ts'
 import { toast } from '../app/state/toasts.ts'
 import type { LifeState } from '../types/life.ts'
 import type { PanelView } from '../app/types/panel.ts'
@@ -18,6 +19,15 @@ export interface Engine {
   unlock(): void
 }
 
+/** NEPA has taken light where the player is: at home the home's own grid, elsewhere the cut in the venue's district. Quiet when it cannot be told. */
+function outageAt(state: LifeState, view: PanelView): boolean {
+  try {
+    if (state.location === 'home') return view.home.power.grid === false
+    const district = contentFor(state.estate.city).venues.find(item => item.id === state.location)?.definition.district
+    return district ? powerCutAt(state.estate.city, district, view.now) !== null : false
+  } catch { return false }
+}
+
 /** The director's picture of a life. Exported for tests. */
 export function seenOf(state: LifeState, view: PanelView): Seen {
   const act = state.activeAction
@@ -26,6 +36,7 @@ export function seenOf(state: LifeState, view: PanelView): Seen {
     life: view.session?.id ?? '', city: state.estate.city, location: state.location, mode: view.mode === 'map' ? 'map' : 'venue',
     act: act ? { kind: act.kind, id: String(act.id), ...(mode ? { mode } : {}) } : null,
     tags: view.activities.active?.tags ?? [], raining: view.health.weather.raining === true,
+    outage: outageAt(state, view),
     ledger: view.wallet.ledger.slice(0, 8).map(line => ({ at: line.at, amount: line.amount, reason: line.reason })), now: view.now,
   }
 }

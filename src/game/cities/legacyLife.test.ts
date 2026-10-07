@@ -22,14 +22,16 @@ test('a Lagos life saved without the city fields is read as it was, with its job
   assert.equal(state.career.city, 'lagos')
   assert.equal(state.civic.hunt?.city, 'lagos')
   assert.equal(state.job, 'community-helper')
-  // Nothing else moved: with the new fields taken out (the job's city, its null last-move day, the not-yet-used free skip and the primary home, which is Lagos), the life is exactly what was stored.
-  const read = plain(state) as { t: number; business?: unknown; career: Record<string, unknown>; travel: Record<string, unknown>; estate: Record<string, unknown>; civic: { hunt: Record<string, unknown> | null } }
+  // Nothing else moved: with the new fields taken out (the job's city, its null last-move day, the not-yet-used free skip, the primary home, which is Lagos, the Thursday heads-up not yet posted and an empty generator tank), the life is exactly what was stored.
+  const read = plain(state) as { t: number; business?: unknown; career: Record<string, unknown>; travel: Record<string, unknown>; estate: Record<string, unknown>; economy: Record<string, unknown>; home: Record<string, unknown>; civic: { hunt: Record<string, unknown> | null } }
   assert.equal(read.travel.skipped, false)
   assert.equal(read.estate.home, 'lagos')
+  assert.equal(read.economy.headsUp, null)
+  assert.equal(read.home.fuel, 0)
   // A life saved before businesses existed gains the empty business slice and nothing else.
   assert.deepEqual(read.business, { opened: 0, sales: 0, spent: 0, buys: { day: 0, spent: 0, count: 0 }, bag: {} })
   delete read.business
-  delete read.career.city; delete read.career.transferDay; delete read.travel.skipped; delete read.estate.home; delete read.estate.homeAt; if (read.civic.hunt) delete read.civic.hunt.city
+  delete read.career.city; delete read.career.transferDay; delete read.travel.skipped; delete read.estate.home; delete read.estate.homeAt; delete read.economy.headsUp; delete read.home.fuel; if (read.civic.hunt) delete read.civic.hunt.city
   assert.deepEqual(read, { ...old, t: read.t })
   assert.deepEqual(plain(createLife(plain(state), { now: NOW, cityId: 'lagos' })), plain(state), 'reading it again changes nothing')
   assert.equal(viewLife(state, { now: NOW, cityId: 'lagos' }).career.employed, true)

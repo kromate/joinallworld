@@ -7,6 +7,8 @@
 type Loader = () => Promise<unknown>
 
 const NEXT: Loader[] = [
+  // The rules of the city's conditions (the grid, the go-slow; src/game/conditions/pack.ts): the Home, the Map and the Bank show what the server applies once they are in.
+  () => import('../../game/conditions/pack.ts'),
   () => import('../features/phone/PhoneDevice.vue'),
   () => import('../features/travel/MapApp.vue'),
   () => import('../features/jobs/JobsApp.vue'),

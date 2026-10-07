@@ -19,7 +19,7 @@ const saved = (name: string): Json => JSON.parse(readFileSync(new URL(`./testing
 const plain = (state: LifeState): Json => JSON.parse(JSON.stringify(state)) as Json
 const EMPTY_BUSINESS = { opened: 0, sales: 0, spent: 0, buys: { day: 0, spent: 0, count: 0 }, bag: {} }
 /** Everything a life from that build gains when it is read now. */
-const ADDED = { 'career.transferDay': null, 'travel.skipped': false, 'estate.home': 'lagos', 'estate.homeAt': null, business: EMPTY_BUSINESS }
+const ADDED = { 'career.transferDay': null, 'travel.skipped': false, 'economy.headsUp': null, 'estate.home': 'lagos', 'estate.homeAt': null, 'home.fuel': 0, business: EMPTY_BUSINESS }
 
 /** Every path at which two JSON values differ, with what the second one has there. */
 function differences(before: unknown, after: unknown, path = ''): Record<string, unknown> {

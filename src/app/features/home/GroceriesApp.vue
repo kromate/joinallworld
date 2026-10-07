@@ -15,6 +15,8 @@
 import { computed, nextTick, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../../game/content/food.ts'
+import { formatHour, lagosTime } from '../../../game/clock.ts'
+import { LITRE_PRICE, TANK_LITRES } from '../../../game/conditions/power.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -60,6 +62,22 @@ function keepFocus(selector: string): void {
   })
 }
 
+// Petrol for the generator in the room (action 'home.refuel'): shown only to a player who has one placed.
+const power = computed(() => view.value.home?.power)
+const fuelLine = computed(() => {
+  const info = power.value
+  if (!info?.generator) return ''
+  const light = info.grid ? '' : ` Light is off in ${info.district} until ${formatHour(lagosTime(info.until ?? 0).minuteOfDay / 60)}.`
+  return `Generator: ${info.fuel} of ${TANK_LITRES} litres in the tank · ${money(LITRE_PRICE)} a litre.${light}`
+})
+const fuelling = ref(false)
+const fuelRoom = computed(() => Math.max(0, Math.floor(TANK_LITRES - (power.value?.fuel ?? 0))))
+async function refuel(litres: number): Promise<void> {
+  if (fuelling.value || litres < 1) return
+  fuelling.value = true
+  try { if ((await command('home.refuel', { litres })).ok) game.toast(state.value.message, 'good') } finally { fuelling.value = false }
+}
+
 async function buyOne(id: string): Promise<void> {
   const item = catalogue[id]
   if (!item || buying.value || ordering.value) return
@@ -97,6 +115,9 @@ async function orderAll(): Promise<void> {
   <div class="groceries-app">
     <p class="groceries-intro">Balance <b>{{ money(state.cash) }}</b> · delivered to your kitchen at once.</p>
     <p v-if="offline" class="ui-why groceries-offline">{{ offline }}</p>
+    <p v-if="fuelLine" class="groceries-intro groceries-fuel" :data-groceries-fuel="power?.source">{{ fuelLine }}
+      <button type="button" class="ui-button is-small" :disabled="!view.connected || fuelling || fuelRoom < 1 || state.cash < LITRE_PRICE" @click="refuel(Math.min(5, fuelRoom))">{{ fuelling ? 'Buying…' : fuelRoom < 1 ? 'Tank full' : `Buy ${Math.min(5, fuelRoom)} ${Math.min(5, fuelRoom) === 1 ? 'litre' : 'litres'} · ${money(Math.min(5, fuelRoom) * LITRE_PRICE)}` }}</button>
+    </p>
     <HowItWorks id="groceries-rules" page label="How ordering works" :rules="groceriesRules" />
     <ul class="groceries-grid">
       <li v-for="card in cards" :key="card.id" class="groceries-card" :class="{ 'is-picked': card.packs }">

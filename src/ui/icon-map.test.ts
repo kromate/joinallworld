@@ -71,7 +71,7 @@ test('every piece of content that reaches the UI maps to a glyph of the first do
   for (const outcome of Object.values(((LOTTERY as unknown as { outcomes?: object }).outcomes || LOTTERY) as Record<string, { id?: string; icon?: string } | null>).filter((item): item is { id: string; icon?: string } => Boolean(item && item.id))) check('lottery', outcome.id, outcome.icon);
   // People are drawn as a lettered avatar or the person glyph — an emoji face is never shown.
   for (const person of [...Object.values(NPCS), ...Object.values(FAMILY)]) assert.equal(glyphNameFor('npc', person.id, person.emoji), 'person', person.id);
-  for (const kind of ['rent-due', 'rent', 'rent-missed', 'loan', 'loan-missed', 'promotion', 'illness', 'recovered', 'gov', 'transfer', 'bae']) assert.ok(drawn(glyphNameFor('notice', kind)), kind);
+  for (const kind of ['rent-due', 'rent', 'rent-missed', 'loan', 'loan-missed', 'promotion', 'illness', 'recovered', 'gov', 'transfer', 'bae', 'power']) assert.ok(drawn(glyphNameFor('notice', kind)), kind);
   for (const kind of ['transfer', 'report', 'friend-request', 'friend-accepted', 'invite-knock', 'invite-answer', 'group-added', 'bae-request', 'bae-answer']) assert.ok(drawn(glyphNameFor('update', kind)), kind);
   assert.ok(seen.length > 450, `walked the whole catalogue (${seen.length} icons)`);
   assert.ok(new Set(seen).size > 60, 'and it is drawn with a real vocabulary, not a handful of marks');

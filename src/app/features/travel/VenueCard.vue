@@ -63,9 +63,9 @@ const onAbout = (event: Event): void => { mapUi.aboutOpen = (event.currentTarget
         v-for="option in item.modes" :key="option.id" type="button" :aria-pressed="option === chosen"
         :class="{ 'is-selected': option === chosen, 'is-short': option.blocked && !item.blocked }"
         :disabled="Boolean(item.blocked)" :title="item.blocked ? item.blocked.reason : option.blurb || ''"
-        :aria-label="`${option.label}, ${fareText(option)}, ${option.seconds} seconds`" @click="mapUi.mode = option.id"
+        :aria-label="`${option.label}, ${fareText(option)}, ${option.seconds} seconds${option.slow ? ', go-slow on the road' : ''}`" @click="mapUi.mode = option.id"
       >
-        <span aria-hidden="true"><GameIcon inline kind="mode" :id="option.id" :emoji="option.icon" /></span><b>{{ option.label }}</b><small>{{ fareText(option) }}</small><small class="map-mode-time">{{ option.seconds }}s</small>
+        <span aria-hidden="true"><GameIcon inline kind="mode" :id="option.id" :emoji="option.icon" /></span><b>{{ option.label }}</b><small>{{ fareText(option) }}</small><small class="map-mode-time">{{ option.seconds }}s{{ option.slow ? ' · go-slow' : '' }}</small>
       </button>
     </div>
     <p v-if="chosen && !item.blocked" class="map-trip">{{ tripLine(chosen) }}</p>

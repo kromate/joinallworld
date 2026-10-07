@@ -241,6 +241,8 @@ export interface VenueDefinition {
   /** The first spot is where a player stands on arrival. Other systems attach activities by spot id. */
   spots: Record<SpotId, SpotDefinition>
   beta?: boolean
+  /** The place keeps its light in a power cut (a generator or an inverter). Omitted = the usual places that do (see game/conditions). */
+  generator?: boolean
   /**
    * The cities this venue exists in; omitted = every city. Only 'unilag' sets it (['lagos']): elsewhere the venue is left
    * out of `view.travel.destinations` and a trip to it is refused ('campus_lagos_only'; 'invalid_travel' for any other such venue).

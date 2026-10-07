@@ -353,16 +353,37 @@ test('modifiers: own car through travel.modes, and fare, duration and need cost 
   const plain = createLife(null, at(DRY_NOON));
   assert.deepEqual(modesFor(plain, 'library', at(DRY_NOON)), ['trek', 'keke', 'danfo', 'okada', 'cab']);
   const owner = createLife({ worldprobe: { car: true } }, at(DRY_NOON));
-  assert.deepEqual(viewLife(owner, at(DRY_NOON)).travel.destinations.find((item) => item.id === 'library')?.modes.at(-1), { id: 'car', label: 'Own car', icon: '🚗', blurb: ALL_MODES.car.blurb, fuel: true, fare: 120, seconds: 5, needs: {}, xp: {}, blocked: null });
+  assert.deepEqual(viewLife(owner, at(DRY_NOON)).travel.destinations.find((item) => item.id === 'library')?.modes.at(-1), { id: 'car', label: 'Own car', icon: '🚗', blurb: ALL_MODES.car.blurb, fuel: true, fare: 120, seconds: 5, slow: false, needs: {}, xp: {}, blocked: null });
   go(owner, 'home', 'car', DRY_NOON);
   assert.equal(owner.cash, 4820); assert.equal(owner.ledger.at(-1)?.reason, 'Fuel to Home');
   assert.deepEqual(modesFor(createLife({ worldprobe: { junk: true } }, at(DRY_NOON)), 'library', at(DRY_NOON)), ['trek', 'car'], 'unknown ids are dropped and trek is always offered');
   const tuned = createLife({ worldprobe: { halfFare: true, slow: true, comfy: true } }, at(DRY_NOON));
-  assert.deepEqual(quote(tuned, 'library', 'cab', at(DRY_NOON)), { mode: 'cab', band: 'standard', fare: 200, seconds: 12, needs: {}, xp: {} });
+  assert.deepEqual(quote(tuned, 'library', 'cab', at(DRY_NOON)), { mode: 'cab', band: 'standard', fare: 200, seconds: 12, slow: false, needs: {}, xp: {} });
   assert.deepEqual(quote(tuned, 'library', 'trek', at(DRY_NOON)).needs, { hygiene: -7 }, 'unknown needs and zeroes are dropped');
   go(tuned, 'library', 'trek', DRY_NOON);
   assert.deepEqual([tuned.needs.energy, tuned.needs.hygiene], [50, 43]);
   assert.equal(quote(createLife({ worldprobe: { slow: true } }, at(DRY_NOON)), 'home', 'trek', at(DRY_NOON)).seconds, 15, 'a slowed trek is still held to the longest a trip inside a city takes');
+});
+
+test('the go-slow lengthens road trips in the rush, says so on the card, and spares walking, the boat and Sunday', () => {
+  const lagosAt = (day: number, hour: number) => Date.UTC(2026, 9, day, hour - 1); // 5 October 2026 is a Monday
+  const state = createLife(null, at(lagosAt(5, 13)));
+  const rush = at(lagosAt(5, 8)), calm = at(lagosAt(5, 13)), sunday = at(lagosAt(4, 8));
+  for (const mode of ['danfo', 'cab', 'keke', 'okada'] as const) {
+    const open = quote(state, 'library', mode, calm), slow = quote(state, 'library', mode, rush);
+    assert.equal(open.slow, false);
+    assert.equal(slow.slow, true, mode);
+    assert.equal(slow.seconds, Math.round(open.seconds * 1.5), mode);
+    assert.equal(slow.fare, open.fare, 'the fare does not change, only the time');
+    assert.equal(quote(state, 'library', mode, sunday).seconds, open.seconds, 'Sunday morning is an open road');
+  }
+  assert.deepEqual([quote(state, 'library', 'trek', rush).seconds, quote(state, 'library', 'trek', rush).slow], [quote(state, 'library', 'trek', calm).seconds, false]);
+  const card = viewLife(state, rush).travel.destinations.find((item) => item.id === 'library')!.modes.find((item) => item.id === 'danfo')!;
+  assert.deepEqual([card.seconds, card.slow], [quote(state, 'library', 'danfo', rush).seconds, true]);
+  // The trip the player starts is the length the card showed.
+  const trip = createLife({ cash: 5000 }, rush);
+  assert.equal(dispatch(trip, { type: 'travel', payload: { id: 'library', mode: 'danfo' } }, rush).ok, true);
+  assert.equal(trip.activeAction?.duration, quote(createLife({ cash: 5000 }, rush), 'library', 'danfo', rush).seconds);
 });
 
 test('a save from before per-mode travel resumes and arrives; malformed trips are dropped', () => {

@@ -82,6 +82,7 @@ import { contentFor, jobFor, publicArrivalVenue, venuesFor, venueFor } from '../
  *   complete-charged activity whose price is still known is charged for the time used. This
  *   happens exactly once: the action is no longer in the state afterwards.
  */
+import { dilemmasEnabled } from '../features.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit, modify, systems } from '../registry.ts';
 import { busy, cap, fail, isRecord, naira, ok, safeCount } from '../util.ts';
@@ -124,7 +125,8 @@ const entriesOf = <K extends string, V>(table: Partial<Record<K, V>> | null | un
 
 /** The longest a non-cancellable activity may run (original beta value): the player cannot leave it, so it must be short. */
 export const MAX_LOCKED_SECONDS = 300;
-const catalogues = new Map<string, { content: ReturnType<typeof contentFor>; catalogue: Catalogue }>();
+/** `places`: whether the dilemmas switch was on when it was built (it adds place actions: src/game/features.ts), so a flip builds it again. */
+const catalogues = new Map<string, { content: ReturnType<typeof contentFor>; places: boolean; catalogue: Catalogue }>();
 
 /** Rebuild the merged venue/spot/activity index (tests that register extra systems call this). */
 export function rebuildCatalogue(cityId: string): Catalogue {
@@ -173,12 +175,12 @@ export function rebuildCatalogue(cityId: string): Catalogue {
     }
   }
   const catalogue = { byId, venues };
-  catalogues.set(cityId, { content: contentFor(cityId), catalogue });
+  catalogues.set(cityId, { content: contentFor(cityId), places: dilemmasEnabled(), catalogue });
   return catalogue;
 }
 const index = (cityId: string): Catalogue => {
   const content = contentFor(cityId), cached = catalogues.get(cityId);
-  return cached?.content === content ? cached.catalogue : rebuildCatalogue(cityId);
+  return cached?.content === content && cached.places === dilemmasEnabled() ? cached.catalogue : rebuildCatalogue(cityId);
 };
 
 /** Ordered spots of a venue, including spots and activities contributed by systems. */

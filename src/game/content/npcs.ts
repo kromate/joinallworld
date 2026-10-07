@@ -52,6 +52,11 @@ export const NPC_ACTIONS: NpcAction[] = [
     note: 'The ₦300 price is fixed; everything else is an original beta value.' },
 ];
 
+/** The most one grocery coupon may save (₦), whatever the order (original beta value). */
+export const COUPON_MAX_SAVING = 300;
+/** Closeness-memory tags a regular keeps about you (original beta value). */
+export const MAX_RELATIONSHIP_TAGS = 4;
+
 /**
  * Interactions between two real players standing in the same venue. Labels and tags are
  * fixed; all numbers are original beta values. These are instant and limited per day.

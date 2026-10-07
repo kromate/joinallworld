@@ -13,12 +13,15 @@ import { cachedCityContent, isCityId } from '../cities/registry.ts';
  *   family    { [memberId]: lagosDay }   last day each family member was called
  *   streak    { day, count }             consecutive days with at least one family call
  *   earned    naira earned from paid activities (the ceiling on lifetime gifts)
+ *   coupon    { pct, day }   a haggling coupon: pct off the next grocery order on Lagos day `day` (absent unless place actions are on)
  *   transfer  { day, sent, count, total }   gifts sent today / in this life
  *   notices   [{ id, kind, text, at }]   system notices shown in Messages → Updates
  *
  * NPC interactions are ordinary activities ('npc-<npc>-<action>') at the venue's People spot,
  * run by the foundation's activity engine (core 'activity' to start, 'cancel' to stop). Every
  * public venue has its regulars, so every public venue has a People spot.
+ * With the `dilemmas` switch on (src/game/features.ts) a regular also offers the place actions of src/game/place-actions.ts
+ * (Haggle, Greet with Respect, Join the Queue, …). They count toward the same four-a-day limit, and a regular remembers up to four tags (`rel.tags`).
  *
  * Actions
  *   'social.call'   { id }    phone a family contact (timed action kind 'call'; works anywhere)
@@ -50,9 +53,10 @@ import { cachedCityContent, isCityId } from '../cities/registry.ts';
  */
 import type {
   ActionFailure, ActionOutcome, ActionSuccess, ActiveKindHandler, AttachedActivity, CallAction, FamilyId, FamilyMember, LifeContext, LifeState, NpcAction, NpcDefinition, NpcSummary,
-  PlayerAction, Relationship, SocialServerOp, SocialServerOpMap, SocialState, SocialView, SystemDefinition, TierDefinition, TransferBlockCode, VenueId,
+  PlaceAction, PlayerAction, Relationship, SocialServerOp, SocialServerOpMap, SocialState, SocialView, SystemDefinition, TierDefinition, TransferBlockCode, VenueId,
 } from '../../types/index.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
+import { dilemmaKit, dilemmasEnabled, loadedDilemmaKit } from '../features.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -63,7 +67,7 @@ import { arriveInCity } from './estate.ts';
 import { cityRules, linksFrom } from '../content/world.ts';
 import { venueLabel } from '../content/venues.ts';
 import { NPC_ACTIONS, PLAYER_ACTIONS, TIERS, BAE_TIER, BAE_UNLOCK, MAX_CLOSENESS, DAILY_INTERACTIONS, MAX_RELATIONSHIPS,
-  JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS } from '../content/npcs.ts';
+  JOKE_FORMULA, FAMILY, FAMILY_CALL, TRANSFER_LIMITS, COUPON_MAX_SAVING, MAX_RELATIONSHIP_TAGS } from '../content/npcs.ts';
 
 export const MAX_NOTICES = 20;
 const FRIEND_INDEX = TIERS.findIndex((tier) => tier.id === 'friend');
@@ -82,7 +86,8 @@ const npcOf = (id: string): NpcDefinition => {
 };
 const isFamilyId = (value: unknown): value is FamilyId => typeof value === 'string' && Object.hasOwn(FAMILY, value);
 
-const dayOf = (state: LifeState, ctx: LifeContext | undefined): number => lagosTime(finite(ctx?.now) ? ctx.now : state.t).day;
+const nowOf = (state: LifeState, ctx: LifeContext | undefined): number => (finite(ctx?.now) ? ctx.now : state.t);
+const dayOf = (state: LifeState, ctx: LifeContext | undefined): number => lagosTime(nowOf(state, ctx)).day;
 const round1 = (value: number): number => Math.round(value * 10) / 10;
 export const tierIndex = (points: number): number => TIERS.reduce((best, tier, index) => (points >= tier.min ? index : best), 0);
 export const tierOf = (points: number): TierDefinition => tierAt(tierIndex(points));
@@ -363,12 +368,25 @@ export function serverOp(state: LifeState, op: unknown, payload: unknown, ctx: L
 // ---- content → activities ------------------------------------------------------------------------
 // The cast of every public venue in this build. Their interactions attach at that venue's People
 // spot, which the activity engine creates where the venue content does not declare one.
-const cityActivities = (cityId: string): AttachedActivity[] => regularsFor(cityId).filter((npc) => npc.venue !== 'home' && venueFor(cityId, npc.venue)).flatMap((npc) => NPC_ACTIONS.map((action) => ({
+const attachedAction = (npc: NpcDefinition, action: NpcAction): AttachedActivity => ({
   id: activityId(npc.id, action.id), label: `${action.label} · ${npc.name}`, icon: action.icon, duration: action.duration, cost: action.cost || 0,
   effects: action.effects, xp: action.xp, tags: ['social'], beta: Boolean(action.beta || npc.beta), note: action.note,
   social: { npc: npc.id, action: action.id },
   where: { venue: npc.venue, spot: 'people', spotLabel: 'People', spotIcon: '👥' },
-})));
+});
+/** The place actions a regular offers at its venue (none while the `dilemmas` switch is off). With `now` null the hour is ignored. */
+const placeActionsAt = (npc: NpcDefinition, cityId: string, now: number | null): PlaceAction[] => dilemmaKit()?.placeActionsFor(npc, cityId, now) ?? [];
+const cityActivities = (cityId: string): AttachedActivity[] => regularsFor(cityId).filter((npc) => npc.venue !== 'home' && venueFor(cityId, npc.venue))
+  .flatMap((npc) => [...NPC_ACTIONS, ...placeActionsAt(npc, cityId, null)].map((action) => attachedAction(npc, action)));
+
+/** What a landed place action also gives: a grocery coupon for today (one at a time, never stacked) and something the regular remembers. Returns a sentence about the coupon, or ''. */
+function grantPlace(state: LifeState, npcId: string, action: PlaceAction, ctx: LifeContext): string {
+  const rel = state.social.rel[npcId], memory = action.grant?.memory, pct = action.grant?.coupon;
+  if (rel && isId(memory)) rel.tags = [...(rel.tags ?? []).filter((tag) => tag !== memory), memory].slice(-MAX_RELATIONSHIP_TAGS);
+  if (!pct) return '';
+  state.social.coupon = { pct, day: dayOf(state, ctx) };
+  return ` You got ${pct}% off your next grocery order today (up to ${naira(COUPON_MAX_SAVING)}).`;
+}
 
 /** A finished call. The first call to each member per Lagos day is a check-in; later ones are just a quick hello. */
 function familyCall(state: LifeState, member: FamilyMember, ctx: LifeContext): void {
@@ -397,8 +415,12 @@ function npcSummary(state: LifeState, npc: NpcDefinition, day: number, ctx: Life
     quote: npc.quotes[(day + npc.id.length) % npc.quotes.length] ?? '', // the index is in range
     points, tier: tierAt(index).id, tierLabel: tierAt(index).label, next: next ? { label: next.label, min: next.min } : null, left,
     blocked: left ? null : `${npc.name} has heard enough from you today. Come back tomorrow.`,
-    actions: NPC_ACTIONS.map((action) => ({ id: action.id, activity: activityId(npc.id, action.id), label: action.label, icon: action.icon, duration: action.duration,
-      cost: action.cost || 0, tags: Object.keys({ ...action.effects, ...action.bonus }), chance: action.success ? jokeChance(state, npc.id, action, true, ctx) : null })),
+    actions: [
+      ...NPC_ACTIONS.map((action) => ({ id: action.id, activity: activityId(npc.id, action.id), label: action.label, icon: action.icon, duration: action.duration,
+        cost: action.cost || 0, tags: Object.keys({ ...action.effects, ...action.bonus }), chance: action.success ? jokeChance(state, npc.id, action, true, ctx) : null })),
+      ...placeActionsAt(npc, ctx.cityId, nowOf(state, ctx)).map((action) => ({ id: action.id, activity: activityId(npc.id, action.id), label: action.label, pcmLabel: action.pcmLabel, icon: action.icon,
+        duration: action.duration, cost: action.cost || 0, tags: Object.keys({ ...action.effects, ...action.bonus }), chance: action.success ? jokeChance(state, npc.id, action, true, ctx) : null })),
+    ],
   };
 }
 
@@ -436,15 +458,21 @@ const play = PLAYS ? {
         state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
       }
       if (!def?.social) return;
-      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action = NPC_ACTIONS.find((item) => item.id === def.social?.action);
+      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action: NpcAction | PlaceAction | undefined = NPC_ACTIONS.find((item) => item.id === def.social?.action) ?? loadedDilemmaKit()?.placeActionById(def.social.action);
       if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
       const { landed, result } = interact(state, npc.id, action, { npc: true, npcDefinition: npc, cityId: ctx.cityId }, ctx, false);
       const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
+      const found = loadedDilemmaKit()?.placeActionById(action.id);
+      const place = found && found === action ? found : null;
+      const granted = landed && place ? grantPlace(state, npc.id, place, ctx) : '';
       state.message = landed
-        ? `${npc.name} (NPC): “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}`
-        : `Your joke did not land. ${npc.name} just blinked at you.`;
+        ? `${npc.name} (NPC): “${quote}”${result?.tierUp ? ` You and ${npc.name} are now ${result.tier.label}.` : ''}${granted}`
+        : place ? `${place.label}: ${npc.name} was not moved this time.` : `Your joke did not land. ${npc.name} just blinked at you.`;
       if (action.id === 'hello') emit(state, 'npc.greeted', { npc: npc.id }, ctx);
       emit(state, 'npc.interacted', { npc: npc.id, action: action.id, success: landed }, ctx);
+    },
+    'item.bought'(state, { kind }) {
+      if (kind === 'grocery' && state.social.coupon) delete state.social.coupon; // the coupon is for one order
     },
     'notice.posted'(state, data, ctx) { if (isRecord(data)) pushNotice(state, data.kind, data.text, ctx); },
   },
@@ -473,8 +501,10 @@ export default {
         ? snapshot ? snapshotOf(authoritative, snapshot.city)
           : state.estate.city !== 'lagos' && cachedCityContent('lagos')?.regulars.some(item => item.id === id) ? snapshotOf(authoritative, 'lagos') : null
         : snapshot;
+      const tags = isNpc && Array.isArray(rel.tags) ? [...new Set(rel.tags.filter(isId))].slice(-MAX_RELATIONSHIP_TAGS) : [];
       next.rel[id] = { p: clamp(round1(rel.p), 0, MAX_CLOSENESS), d: safeCount(rel.d) ? rel.d : 0, n: safeCount(rel.n) ? Math.min(rel.n, DAILY_INTERACTIONS) : 0,
         npc: isNpc, at: finite(rel.at) ? rel.at : 0,
+        ...(tags.length ? { tags } : {}),
         ...(isNpc && canonicalSnapshot ? { npcSnapshot: canonicalSnapshot } : {}),
         ...(!isNpc ? { name: cleanText(rel.name, 24, 'Player') } : {}), ...(!isNpc && rel.friend === true ? { friend: true } : {}) };
     }
@@ -484,6 +514,7 @@ export default {
     if (isRecord(saved.streak) && safeCount(saved.streak.day) && safeCount(saved.streak.count)) next.streak = { day: saved.streak.day, count: Math.min(saved.streak.count, 100000) };
     next.earned = safeCount(saved.earned) ? saved.earned : 0;
     if (safeCount(saved.free) && saved.free > 0) next.free = saved.free;
+    if (isRecord(saved.coupon) && Number.isInteger(saved.coupon.pct) && (saved.coupon.pct as number) >= 1 && (saved.coupon.pct as number) <= 50 && safeCount(saved.coupon.day)) next.coupon = { pct: saved.coupon.pct as number, day: saved.coupon.day };
     const book = isRecord(saved.transfer) ? saved.transfer : {};
     for (const key of ['day', 'sent', 'count', 'total'] as const) if (safeCount(book[key])) next.transfer[key] = book[key];
     next.notices = (Array.isArray(saved.notices) ? saved.notices : []).slice(-MAX_NOTICES)
@@ -505,8 +536,21 @@ export default {
     'activity.block'(value, state, { def }, ctx) {
       if (value || !def?.social) return value;
       const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc);
-      return usedToday(state.social.rel[npc.id], dayOf(state, ctx)) >= DAILY_INTERACTIONS
-        ? { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` } : null;
+      if (usedToday(state.social.rel[npc.id], dayOf(state, ctx)) >= DAILY_INTERACTIONS) {
+        return { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` };
+      }
+      // After-service greetings only make sense just after a service (the catalogue lists them always; the hour is checked here).
+      const kit = loadedDilemmaKit();
+      if (kit?.placeActionById(def.social.action)?.afterService && !kit.isAfterService(kit.placeKindOf(ctx.cityId, npc.venue), nowOf(state, ctx))) {
+        return { code: 'not_now', reason: `${npc.name} is not greeting people right now. Come back just after a service ends.` };
+      }
+      return null;
+    },
+    // A haggling coupon takes a percentage off the grocery order it is spent on, up to COUPON_MAX_SAVING, on the day it was earned.
+    'shop.price'(value, state, data, ctx) {
+      const coupon = state.social.coupon;
+      if (!dilemmasEnabled() || !coupon || data?.kind !== 'grocery' || coupon.day !== dayOf(state, ctx) || !finite(value)) return value;
+      return Math.max(0, value - Math.min(COUPON_MAX_SAVING, Math.floor((value * coupon.pct) / 100)));
     },
   },
 

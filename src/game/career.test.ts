@@ -422,8 +422,8 @@ test('career sanitize rebuilds every field from hostile input', () => {
 });
 
 test('career and money commands are registered action types with an area prefix', () => {
-  for (const type of ['apply-job', 'career.switch', 'career.quit', 'career.auto', 'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit']) assert.ok(actionTypes().includes(type), type);
-  assert.equal(actionTypes().filter((type) => type.startsWith('career.') || type.startsWith('economy.')).length, 7);
+  for (const type of ['apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit']) assert.ok(actionTypes().includes(type), type);
+  assert.equal(actionTypes().filter((type) => type.startsWith('career.') || type.startsWith('economy.')).length, 8);
 });
 
 test('the starter job cannot be stacked on a career job to beat the one-shift-a-day rule', () => {

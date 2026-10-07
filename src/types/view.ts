@@ -191,9 +191,16 @@ export interface JobListing {
   transfer: boolean
 }
 
+/** The work dilemma waiting for an answer: its id only. The words and choices are in src/game/content/dilemmas.ts, fetched by the Career tab's card. */
+export interface DilemmaView {
+  id: string
+}
+
 export interface CareerView {
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
+  /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it with dilemmas switched off). */
+  dilemma?: DilemmaView | null
   completedShifts: number
   employed: boolean
   id: JobId | null
@@ -880,6 +887,8 @@ export interface NpcActionCard {
   /** The activity id to start (`npc-<npc>-<action>`). */
   activity: ActivityId
   label: string
+  /** Nigerian Pidgin wording of `label`. Only a place action (switched on by the host) carries one. */
+  pcmLabel?: string
   icon: string
   duration: number
   cost: number
@@ -1141,7 +1150,7 @@ export const VIEW_FIELD_KEYS = {
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [
-    'auto', 'busy', 'chips', 'completedShifts', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
+    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
     'levels', 'next', 'nextShift', 'pay', 'performance', 'role', 'rules', 'schedule', 'shift', 'shifts', 'step', 'today',
     'topOfLadder', 'weeklyPay', 'workplace',
   ],

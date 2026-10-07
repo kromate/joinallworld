@@ -59,6 +59,8 @@ import { createOnce } from '../server/routes/once.ts';
 import { createShardStoreOn } from '../server/world/shard-core.ts';
 import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
+import { flagFromEnv, setFeature } from '../src/game/features.ts';
+import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions; DILEMMAS decides whether it is used
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
@@ -258,6 +260,8 @@ export interface WorkerEnv {
    * Unset, the default: the beat is a timer, lazy changes are held, and the object stays in memory while anyone is connected.
    */
   SLEEP_BETWEEN_BEATS?: string
+  /** '1': work dilemmas and place actions are on (src/game/features.ts). Unset: off. */
+  DILEMMAS?: string
   /** How the big collections are stored: `legacy` (default), `shadow` or `entries` (docs/STORAGE.md). */
   STORE_LAYOUT?: string
   /** Replaces the built-in founder hash; empty: no founder (server/host-context.ts founderEmailHash). */
@@ -303,6 +307,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const log = (line: unknown): void => { try { console.error(String(line).slice(0, 500)); } catch { /* a failing logger changes nothing */ } };
     const buildId = String(env.BUILD_ID || 'unreleased').slice(0, 40);
     this.caps = capacityConfig(env, log);
+    setFeature('dilemmas', flagFromEnv(env.DILEMMAS));
     this.telemetry = createServerTelemetry({ env, buildId });
     this.booted = false;
     // THE DURABILITY BARRIER: every acknowledged write has passed storage.sync(). While the object is starting nothing can

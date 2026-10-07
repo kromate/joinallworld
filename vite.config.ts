@@ -223,6 +223,8 @@ export default defineConfig({
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     // Short addresses (/games, /abuja, …): the table, what is kept for a visit and the routing are one chunk, fetched only when an address or the landing asks, so the first download lists one file for them.
     if (/\/src\/(paths\.ts$|app\/features\/paths\/[\w-]+\.ts$)/.test(id)) return 'paths'
+    // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched only with `?models=dilemmas`; the engine never imports them (src/game/features.ts).
+    if (/\/src\/game\/(dilemma-pack|dilemmas|place-actions)\.ts$|\/src\/game\/content\/(dilemmas|place-actions)\.ts$/.test(id)) return 'dilemmas'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },
   },

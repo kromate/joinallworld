@@ -321,6 +321,18 @@ export interface CareerState {
   transferDay: LagosDay | null
   /** True once any career shift has been completed (ends the day-off "orientation" allowance). */
   oriented: boolean
+  /** Work dilemmas (src/game/dilemmas.ts). Absent until the `dilemmas` switch has given one; a life saved before it existed loads unchanged. */
+  dilemmas?: DilemmaBook
+}
+
+/** The work-dilemma record of a life: the one waiting for an answer, the last few seen, and the memory tags earned. */
+export interface DilemmaBook {
+  /** The dilemma waiting for a choice and the seed its dice are rolled from. */
+  pending: { id: string; seed: number } | null
+  /** Ids of the last few dilemmas seen (at most 8), oldest first, so they do not repeat at once. */
+  seen: string[]
+  /** Memory or reputation tags earned (at most 12), oldest first. */
+  memory: string[]
 }
 
 /** OWNER career. Legacy flat keys `job` and `completedShifts`, plus the `career` record. */
@@ -771,6 +783,8 @@ export interface Relationship {
   at: Ms
   /** Players only: display name, at most 24 characters. */
   name?: string
+  /** NPCs only: what they remember of you, as short ids (at most 4), e.g. `haggled`. Absent until something is remembered. */
+  tags?: string[]
   /** Players only, and only while friends (the key is deleted on unfriend). NPC friendship is derived from points. */
   friend?: true
   /** Non-Lagos NPCs only: bounded identity retained when the origin city's lazy content is not loaded. */
@@ -805,6 +819,8 @@ export interface SocialState {
    * brings it down to cash). The launch bonus is not part of it. Absent = 0; a life saved before it existed loads unchanged.
    */
   free?: number
+  /** A discount earned by haggling at the market: `pct` percent off the next grocery order, valid on Lagos day `day` only. Absent when none. */
+  coupon?: { pct: number; day: LagosDay }
   /** Gifts sent on `day` (`sent` naira over `count` gifts) and in this life (`total`). */
   transfer: { day: LagosDay; sent: number; count: number; total: number }
   /** At most 20, oldest first. */
@@ -1128,7 +1144,7 @@ export const SYSTEM_STATE_KEYS = {
  * (`inventory`) is not listed; `needs`/`decay` are keyed by NeedId and `skills` by SkillId.
  */
 export const SLICE_FIELD_KEYS = {
-  career: ['city', 'auto', 'autoDay', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
+  career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'rideDebt', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
@@ -1140,7 +1156,7 @@ export const SLICE_FIELD_KEYS = {
     'needsSet', 'playedAt', 'required', 'seed', 'stage', 'step', 'traits', 'wardrobe',
   ],
   goals: ['besties', 'chain', 'cv', 'dream', 'dreamDone', 'feed', 'granted', 'perks', 'rerolls', 'seen', 'seq', 'stars', 'started', 'stats', 'wishes'],
-  social: ['bae', 'earned', 'family', 'free', 'notices', 'rel', 'streak', 'transfer'],
+  social: ['bae', 'coupon', 'earned', 'family', 'free', 'notices', 'rel', 'streak', 'transfer'],
   civic: ['claims', 'gems', 'hunt', 'news', 'seed', 'since', 'week', 'work'],
   missions: ['active', 'claimed', 'daily', 'day', 'paidDay', 'rerolls', 'seed', 'sets', 'stamps', 'titles', 'visited', 'week', 'weekly'],
   events: ['attended', 'count', 'spray', 'sprayed'],

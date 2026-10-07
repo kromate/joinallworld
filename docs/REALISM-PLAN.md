@@ -76,7 +76,7 @@ That is at most about 9.5 GB for agent work, which leaves around 14 GB for macOS
   - Lanes rebase on `origin/main` at least daily and just before merging.
   - A pull request should be about 400 changed lines or less, apart from data and generated assets.
   - Lanes merge one at a time. The coordinator merges, never the workers.
-- **Everything new merges dark:** behind flags in `src/models/integration/flags.ts`, the one place flags are read. Main always stays releasable, even mid-phase.
+- **No feature flags (Anthony, 7 Oct 2026):** everything new is on for every player. Main always stays releasable, even mid-phase; a capability fallback (no WebGL, a model that fails to load) is allowed, a user-facing switch is not.
 - **Conflict rule:** if a lane's rebase conflicts with another agent's work, it stops and reports to the coordinator. It never resolves conflicts by rewriting another agent's code.
 
 ### From merge to production
@@ -88,21 +88,21 @@ That is at most about 9.5 GB for agent work, which leaves around 14 GB for macOS
 2. **Staging:** the release workflow runs on the exact main SHA with `publish_staging=true`.
 3. **Astra QA on staging:**
    - the guest path through to the world;
-   - the lane's feature, with the flag on and with it off;
+   - the lane's feature, and its fallback where it has one (no WebGL, a model that fails to load);
    - mobile width;
    - console errors;
    - loading, persistence after reload, money and identity.
    - Once phase 0 has a phone, add load time on throttled 3G and frame time on the real low-end Android.
-4. **Production:** the same SHA is released to production. Features go out dark, then their flag is turned on for everyone.
+4. **Production:** the same SHA is released to production. Features go out on for everyone.
 5. **Rollback:**
-   - A feature problem means turning the flag off, with no redeploy.
-   - A code problem means a reviewed forward fix. `deploy/README.md` forbids rolling back the server after new gameplay writes.
+   - A feature problem means a reviewed forward fix, like a code problem; there is no switch to turn it off.
+   - Either way `deploy/README.md` forbids rolling back the server after new gameplay writes.
    - Save-format changes (E-E) also require a recorded restore reference before release, and the old-to-new check described in `deploy/README.md`.
 6. **Cadence:** one release train per day while a phase is active, carrying whatever is merged and green. A failed gate drops that lane from the train; the train still goes.
 
 ## Phases
 
-Each phase lists its lanes. Lanes in the same phase run in parallel, with no more than 8 workers. A phase closes when its gate is met in production behind a flag, or when it is turned on.
+Each phase lists its lanes. Lanes in the same phase run in parallel, with no more than 8 workers. A phase closes when its gate is met in production, on for everyone.
 
 ### Phase 0: Base and rails (1–2 days, 3 workers)
 

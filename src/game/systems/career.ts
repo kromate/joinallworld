@@ -40,8 +40,8 @@ import { cachedCityContent, cityModule } from '../cities/registry.ts';
  *   'career.quit'    {}              leave the current job
  *   'career.auto'    { on: bool }    toggle "Go automatically"
  *
- *   'career.dilemma' { choice }      answer the work dilemma waiting after a shift. Only when the host has switched dilemmas on
- *                                    (src/game/features.ts); otherwise refused with 'dilemmas_off'. Always registered.
+ *   'career.dilemma' { choice }      answer the work dilemma waiting after a shift. Needs the dilemma kit
+ *                                    (src/game/features.ts); refused with 'dilemmas_off' while the kit is not installed. Always registered.
  *
  * STATE
  *   job              legacy top-level: job id | null (activities read it for requiresJob)
@@ -57,10 +57,10 @@ import { cachedCityContent, cityModule } from '../cities/registry.ts';
  *     oriented       true once any career shift has been completed
  *     dilemmas       { pending, seen, memory } work dilemmas (src/game/dilemmas.ts). The key is absent until a dilemma has come up.
  *
- * WORK DILEMMAS (behind the `dilemmas` switch, off by default)
+ * WORK DILEMMAS (on for every player; the kit seam is src/game/features.ts)
  *   After a completed shift (a career track or the starter job) with nothing pending, a dilemma comes up with DILEMMA_CHANCE percent.
  *   It waits in `career.dilemmas.pending` until answered; the answer moves a little money (a quarter of a shift at most), needs,
- *   skill XP and a memory tag. With the switch off nothing here is written and, there being no record, the view has no `dilemma` key.
+ *   skill XP and a memory tag. With no kit installed nothing here is written and, there being no record, the view has no `dilemma` key.
  *   The words and rules are the lazy kit (src/game/features.ts, src/game/dilemma-pack.ts): this file holds none. view.career.dilemma is just
  *   { id } while one waits (derived from the life, so a page that only reads lives shows it too); the Career tab's card fetches the words.
  *
@@ -343,7 +343,7 @@ function dilemmaStats(state: LifeState, job: JobDefinition | null, memory: reado
   return { job: job?.id ?? null, level: job?.track ? state.career.level : 1, cash: state.cash, needs: { ...state.needs }, skills, tags: memory };
 }
 
-/** After a completed shift: maybe set one dilemma waiting. Does nothing with the switch off, with one already waiting, or when none fits. */
+/** After a completed shift: maybe set one dilemma waiting. Does nothing with no kit, with one already waiting, or when none fits. */
 function rollDilemma(state: LifeState, job: JobDefinition | null, ctx: LifeContext): void {
   const kit = dilemmaKit();
   if (!kit || !job) return;
@@ -364,7 +364,7 @@ function rollDilemma(state: LifeState, job: JobDefinition | null, ctx: LifeConte
 /** Answers the waiting dilemma. */
 function answerDilemma(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   const kit = dilemmaKit();
-  if (!kit) return fail(state, 'dilemmas_off', 'Work dilemmas are not switched on.');
+  if (!kit) return fail(state, 'dilemmas_off', 'Work dilemmas are not ready yet.');
   const book = state.career.dilemmas;
   const pending = book?.pending;
   const dilemma = pending ? kit.byId(pending.id) : undefined;

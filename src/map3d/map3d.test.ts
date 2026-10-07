@@ -10,6 +10,8 @@ import { tripOf, createTripClock, tripPose, tripShares, TRIP_LOOKS } from './tri
 import type { TripMode, TripSource } from './trip.ts';
 import { createMap3D, timeOfDay } from './map3d.ts';
 import { createActor } from './actor.ts';
+import type { TravelVehicleBuilder } from './actor.ts';
+import { buildTravelVehicle } from '../models/integration/scene-models.ts';
 import { createKit } from '../scene/kit.ts';
 import type { MapRenderer } from './map3d.ts';
 import type * as THREE from 'three';
@@ -172,12 +174,12 @@ test('the place on the route is a pure function of progress: leave on foot, ride
 /** A hand-made stub standing in for a DOM or WebGL object: the map reads only the members the stub carries. */
 const stub = <T>(value: object): T => value as unknown as T;
 interface FakeContainer { hidden: boolean; appendChild(): void; getBoundingClientRect: () => { width: number; height: number; left: number; top: number } }
-function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 844 } = {}) {
+function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 844, travelVehicle = undefined as TravelVehicleBuilder | undefined } = {}) {
   const calls = { render: 0 }, queue: Array<() => void> = [];
   const renderer = { calls, shadowMap: {}, domElement: {}, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
   const container: FakeContainer = { hidden: false, appendChild() {}, getBoundingClientRect: () => ({ width, height, left: 0, top: 0 }) };
   const env = { now: 0, hidden: false, due: 0, arrived: 0 };
-  const map = createMap3D(stub<HTMLElement>(container), { pack, renderer: stub<MapRenderer>(renderer), reducedMotion, raf: (fn) => { queue.push(fn as () => void); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden, onTripDue: () => { env.due += 1; } });
+  const map = createMap3D(stub<HTMLElement>(container), { pack, renderer: stub<MapRenderer>(renderer), reducedMotion, travelVehicle, raf: (fn) => { queue.push(fn as () => void); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden, onTripDue: () => { env.due += 1; } });
   /** Run every frame that has been asked for, `step` ms apart, up to `limit` frames. Returns how many ran. */
   const pump = (limit = 1000, step = 16) => { let ran = 0; while (queue.length && ran < limit) { env.now += step; queue.shift()!(); ran += 1; } return ran; };
   const state = (more: Record<string, unknown> = {}) => ({ location: 'home', t: NOON, activeAction: null, travel: { home }, ...more });
@@ -329,8 +331,9 @@ test('reduced motion: the trip is a dot moved once per server report — no fram
   h.map.destroy();
 });
 
-test('render budget: the whole city, with every layer on and a trip running, stays under the triangle budget and 40 draw calls', () => {
-  const h = harness();
+// The game's own batch-drawn vehicle (a map whose library failed to load) and the model library's vehicle, which every player now rides.
+for (const [name, travelVehicle] of [['the map\'s own vehicle', undefined], ['the model-library vehicle', buildTravelVehicle as unknown as TravelVehicleBuilder]] as const) test(`render budget (${name}): the whole city, with every layer on and a trip running, stays under the triangle budget and 40 draw calls`, () => {
+  const h = harness({ travelVehicle });
   h.map.setState(h.state({ activeAction: travelling(10, 10, 'danfo', 'beach') })); h.map.resize();
   const ads = { palette: { colours: [{ id: 'green', bg: '#256b45', ink: '#ffffff' }], icons: [{ id: 'star', icon: '⭐' }] },
     billboards: { slots: Object.keys(pack.sites).slice(0, 12).map((near, i) => ({ slot: `bb-${i}`, near, road: 'Road', ad: i % 2 ? { text: '<b>Buy</b> <img src=x onerror=alert(1)>', colour: 'green', icon: 'star', by: { id: 'p', name: 'Ada' } } : null })) },
@@ -351,6 +354,8 @@ test('render budget: the whole city, with every layer on and a trip running, sta
   });
   assert.ok(triangles < CITY_TRIANGLE_BUDGET, `${Math.round(triangles)} triangles in view`);
   assert.ok(meshes <= CITY_DRAW_CALLS.value, `${meshes} draw calls`);
+  const root = h.map.city.group.parent!;
+  assert.equal(root.getObjectByName('vehicle:danfo') !== undefined, travelVehicle !== undefined, 'the ride is the library\'s vehicle exactly when the map was given its builder');
   assert.ok(d.counts.houses > 200 && d.counts.trees > 40 && d.counts.vehicles > 20, 'houses, trees and traffic are there');
   // What players typed is carried as plain text for DOM nodes; it is never turned into geometry or markup.
   assert.ok(d.overlayTriangles > 0);

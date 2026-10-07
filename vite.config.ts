@@ -217,13 +217,13 @@ export default defineConfig({
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
-    // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, behind ?models=moments) until a feature of the first page needs them.
+    // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, fetched once the game is ready) until a feature of the first page needs them.
     if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|world-time|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
     // The campus discovery trail is read by the campus rules and the Campus app.
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     // Short addresses (/games, /abuja, …): the table, what is kept for a visit and the routing are one chunk, fetched only when an address or the landing asks, so the first download lists one file for them.
     if (/\/src\/(paths\.ts$|app\/features\/paths\/[\w-]+\.ts$)/.test(id)) return 'paths'
-    // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched only with `?models=dilemmas`; the engine never imports them (src/game/features.ts).
+    // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched once the game is ready (src/app/startExtras.ts); the engine never imports them (src/game/features.ts).
     if (/\/src\/game\/(dilemma-pack|dilemmas|place-actions)\.ts$|\/src\/game\/content\/(dilemmas|place-actions)\.ts$/.test(id)) return 'dilemmas'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },

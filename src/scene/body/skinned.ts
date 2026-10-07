@@ -1,10 +1,11 @@
 /**
- * The skinned player body (phase 1 spike, behind `?body=skinned`; see flag.ts). Reached only through importBody(), so
- * this module, GLTFLoader and the meshopt decoder are one lazy chunk the first load never fetches.
+ * The skinned body every figure near the camera wears (the procedural avatar in src/scene/characters.ts is the
+ * fallback: no WebGL2, a low-tier device or Data Saver, a failed fetch; see gate.ts). Reached only through
+ * importBody(), so this module, GLTFLoader and the meshopt decoder are one lazy chunk fetched after a scene's first frame.
  *
  *   loadBody(kit, look, seed, scale) → SkinnedBody
- *     one SkinnedMesh (one primitive, one material, 23 bones, ≤ 4 weights a vertex) from public/body/<male|female>.glb,
- *     the core clips from public/body/clips.glb, and the look's colours (tint.ts) as material uniforms.
+ *     one SkinnedMesh (one primitive, one material, 23 bones, ≤ 4 weights a vertex) from assets/base-body-<male|female>.glb,
+ *     the clips from assets/clip-pack.glb, and the look's colours (tint.ts) as material uniforms.
  *
  * STATIC RENDERING (the battery rule). The body never asks for frames. A resting pose (idle, sit, interact, dance) is
  * one still frame of its clip. Walking and jogging sample the walk/jog clip at the stride phase the host already steps
@@ -17,6 +18,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type * as THREE from 'three';
 import type { Kit } from '../kit.ts';
+import { BODY_FILES } from './files.ts';
 import { BODY_MANIFEST } from './manifest.ts';
 import type { BodyKey } from './manifest.ts';
 import { bodyTint } from './tint.ts';
@@ -96,7 +98,7 @@ function gltfLoader(): GLTFLoader {
 }
 /** The clip pack, fetched once a session (the two bodies share it). A failed fetch can be tried again. */
 function loadClips(): Promise<THREE.AnimationClip[]> {
-  clipsOnce ??= gltfLoader().loadAsync(BODY_MANIFEST.clips.url).then((gltf) => gltf.animations).catch((error: unknown) => { clipsOnce = null; throw error; });
+  clipsOnce ??= gltfLoader().loadAsync(BODY_FILES.clips).then((gltf) => gltf.animations).catch((error: unknown) => { clipsOnce = null; throw error; });
   return clipsOnce;
 }
 
@@ -106,14 +108,14 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   let tint = bodyTint(look, seed);
   const key = tint.key, facts = BODY_MANIFEST.bodies[key];
   await MeshoptDecoder.ready;
-  const [gltf, clips] = await Promise.all([gltfLoader().loadAsync(facts.url), loadClips()]);
+  const [gltf, clips] = await Promise.all([gltfLoader().loadAsync(BODY_FILES[key]), loadClips()]);
   let mesh: THREE.SkinnedMesh | null = null;
   gltf.scene.traverse((node) => { if ((node as THREE.SkinnedMesh).isSkinnedMesh && !mesh) mesh = node as THREE.SkinnedMesh; });
-  if (!mesh) throw new Error(`no skinned mesh in ${facts.url}`);
+  if (!mesh) throw new Error(`no skinned mesh in ${BODY_FILES[key]}`);
   const skinned: THREE.SkinnedMesh = mesh;
   const loaded = skinned.material as THREE.MeshStandardMaterial;
   const map = loaded.map;
-  if (!map) throw new Error(`no base colour in ${facts.url}`);
+  if (!map) throw new Error(`no base colour in ${BODY_FILES[key]}`);
   // The scene's own material family (Lambert when scenery is matte), with the look as uniforms.
   const material = kit.matte ? new T.MeshLambertMaterial({ map }) : new T.MeshStandardMaterial({ map, roughness: 0.82, metalness: 0 });
   const uniforms = {

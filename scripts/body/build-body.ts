@@ -3,9 +3,11 @@
 //   --verbose  print gltfpack's report for each output
 //   --keep     keep the intermediate work folder in the system temp dir
 //
-// Turns the raw CC0 Quaternius downloads (docs/ASSETS.md) into what the game ships under public/body/:
-//   male.glb, female.glb   one skinned mesh each: one primitive, one material, 23 bones, ≤ 4 weights a vertex
-//   clips.glb              the core clip pack (no mesh): rotation tracks on the same 23 bones + the pelvis translation
+// Turns the raw CC0 Quaternius downloads (docs/ASSETS.md) into what the game ships from src/scene/body/assets/ (imported
+// with `?url`, so the build copies each to dist/assets/ under a content hash and the server caches it for a year):
+//   base-body-male.glb, base-body-female.glb   one skinned mesh each: one primitive, one material, 23 bones, ≤ 4 weights a vertex
+//   clip-pack.glb          the clip pack (no mesh): rotation tracks on the same 23 bones + the pelvis translation, the
+//                          UAL clips below plus the ones scripts/body/author-clips.ts makes (door, sleep, bathe, stairs)
 // and writes src/scene/body/manifest.ts (sizes, counts, colour references the runtime tints with).
 //
 // WHAT IT DOES TO THE SOURCE
@@ -30,6 +32,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { brotliCompressSync, constants } from 'node:zlib';
+import { authoredClips } from './author-clips.ts';
 import { GltfWriter, glbJson, loadGltf, readAccessor } from './gltf-io.ts';
 import type { Loaded, Node } from './gltf-io.ts';
 
@@ -37,7 +40,7 @@ const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const args = process.argv.slice(2);
 const option = (name: string, fallback: string): string => { const at = args.indexOf(name); return at >= 0 && args[at + 1] ? args[at + 1]! : fallback; };
 const RAW = resolve(option('--raw', '/tmp/aw-assets'));
-const OUT = join(repo, 'public', 'body');
+const OUT = join(repo, 'src', 'scene', 'body', 'assets');
 const MANIFEST = join(repo, 'src', 'scene', 'body', 'manifest.ts');
 const GLTFPACK = ['-y', 'gltfpack@1.3.0'];
 
@@ -62,8 +65,8 @@ export const CLIPS: Readonly<Record<string, string>> = Object.freeze({
   Sitting_Enter: 'sit-enter', Sitting_Idle_Loop: 'sit', Sitting_Exit: 'sit-exit',
   Interact: 'interact', Dance_Loop: 'dance',
 });
-/** Activities the game has that no CC0 clip in the pack covers (the procedural fallback stays for them). */
-export const MISSING_CLIPS = Object.freeze(['door (open/close)', 'bathe', 'stairs', 'sleep / lie down']);
+/** Activities the game has that no clip in the pack covers (the body holds its nearest still pose for them). */
+export const MISSING_CLIPS = Object.freeze([] as string[]);
 const HERO_TRIANGLES = 9000;
 const TEXTURE_PX = 1024, JPEG_QUALITY = 78;
 
@@ -228,7 +231,7 @@ function buildBody(source: BodySource, work: string) {
   g.scenes = [{ name: source.key, nodes: [g.nodes.length - 1] }]; g.scene = 0;
   const merged = out.save(work, `${source.key}-merged`);
   const sourceTriangles = indexCount / 3;
-  const target = join(OUT, `${source.key}.glb`);
+  const target = join(OUT, `base-body-${source.key}.glb`);
   // -si: the share of triangles to keep; -kn keeps the bone names the clips bind to; no texture recompression.
   const log = gltfpack(merged, target, ['-cc', '-kn', '-si', (HERO_TRIANGLES / sourceTriangles).toFixed(3)]);
   const pelvis = json.nodes[byName.get('pelvis')!]!.translation!;
@@ -270,8 +273,20 @@ function buildClips(work: string) {
     }
     g.animations.push({ name: to, channels, samplers });
   }
+  // The authored clips: keyframed rotations on the same bones, built from the UAL rest pose and source clips.
+  for (const clip of authoredClips(doc, KEPT_BONES)) {
+    present.push(clip.name);
+    const channels: { sampler: number; target: { node: number; path: string } }[] = [], samplers: { input: number; output: number; interpolation: string }[] = [];
+    for (const track of clip.tracks) {
+      const kept = keptIndex.get(track.bone);
+      if (kept === undefined || track.bone === 'root') continue;
+      samplers.push({ input: out.accessor(track.times, 'SCALAR', { bounds: true }), output: out.accessor(track.values, track.path === 'rotation' ? 'VEC4' : 'VEC3'), interpolation: 'LINEAR' });
+      channels.push({ sampler: samplers.length - 1, target: { node: kept, path: track.path } });
+    }
+    g.animations.push({ name: clip.name, channels, samplers });
+  }
   const merged = out.save(work, 'clips-merged');
-  const target = join(OUT, 'clips.glb');
+  const target = join(OUT, 'clip-pack.glb');
   // -af 20: resample at 20 Hz; -ar 12: 12-bit rotations; -ac keeps constant tracks so every clip poses every bone.
   const log = gltfpack(merged, target, ['-cc', '-kn', '-ac', '-af', '20', '-ar', '12']);
   return { target, log, present, pelvis: json.nodes[byName.get('pelvis')!]!.translation! };
@@ -300,21 +315,21 @@ function main(): void {
     const record: Record<string, unknown> = {};
     for (const body of bodies) {
       const facts = summary(body.target);
-      lines.push(`${body.source.key}.glb  ${facts.bytes} B raw, ${facts.brotli} B brotli, ${facts.triangles} triangles (from ${body.sourceTriangles}), ${facts.bones} bones`);
+      lines.push(`base-body-${body.source.key}.glb  ${facts.bytes} B raw, ${facts.brotli} B brotli, ${facts.triangles} triangles (from ${body.sourceTriangles}), ${facts.bones} bones`);
       record[body.source.key] = {
-        url: `/body/${body.source.key}.glb?v=${facts.hash}`, bytes: facts.bytes, brotli: facts.brotli, triangles: facts.triangles, bones: facts.bones,
+        sha: facts.hash, bytes: facts.bytes, brotli: facts.brotli, triangles: facts.triangles, bones: facts.bones,
         height: round(body.height, 3), pelvis: body.pelvis.map((value) => round(value)), ...body.reference,
       };
     }
     const clipFacts = summary(clips.target);
-    lines.push(`clips.glb  ${clipFacts.bytes} B raw, ${clipFacts.brotli} B brotli, clips: ${clips.present.join(', ')}`);
+    lines.push(`clip-pack.glb  ${clipFacts.bytes} B raw, ${clipFacts.brotli} B brotli, clips: ${clips.present.join(', ')}`);
     const manifest = {
       bodies: record,
-      clips: { url: `/body/clips.glb?v=${clipFacts.hash}`, bytes: clipFacts.bytes, brotli: clipFacts.brotli, names: clips.present, pelvis: clips.pelvis.map((value) => round(value)) },
+      clips: { sha: clipFacts.hash, bytes: clipFacts.bytes, brotli: clipFacts.brotli, names: clips.present, pelvis: clips.pelvis.map((value) => round(value)) },
       bones: KEPT_BONES, missing: MISSING_CLIPS,
     };
     const text = `// GENERATED by scripts/body/build-body.ts (npm run body:build). Do not edit by hand.\n`
-      + `// What public/body/ holds, and the texture colour references the body material tints from (linear RGB).\n`
+      + `// What src/scene/body/assets/ holds, and the texture colour references the body material tints from (linear RGB).\n`
       + `export const BODY_MANIFEST = ${JSON.stringify(manifest, null, 2)} as const;\n`
       + `export type BodyKey = keyof typeof BODY_MANIFEST.bodies;\n`;
     writeFileSync(MANIFEST, text);

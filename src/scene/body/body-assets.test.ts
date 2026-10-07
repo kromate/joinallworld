@@ -1,15 +1,16 @@
-// The shipped skinned-body assets (public/body/, made by scripts/body/build-body.ts) against the phase-1 budgets, read
+// The shipped skinned-body assets (src/scene/body/assets/, made by scripts/body/build-body.ts) against the phase-1 budgets, read
 // straight from the files: brotli bytes, triangles, bones, influences per vertex, one material, the clips.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { brotliCompressSync, constants } from 'node:zlib';
+import { ASSET_PATTERNS } from '../../../scripts/download-budget.ts';
 import { BODY_MANIFEST } from './manifest.ts';
 
 const KB = 1024;
 const BUDGET = { body: 300 * KB, clips: 200 * KB, phase: 500 * KB, triangles: 10_000, bones: 30 };
-const file = (name: string) => readFileSync(new URL(`../../../public/body/${name}`, import.meta.url));
+const file = (name: string) => readFileSync(new URL(`./assets/${name}`, import.meta.url));
 const brotli = (bytes: Buffer) => brotliCompressSync(bytes, { params: { [constants.BROTLI_PARAM_QUALITY]: 11 } }).length;
 interface Accessor { count: number; type: string; componentType: number; max?: number[] }
 interface Glb {
@@ -24,8 +25,8 @@ function json(bytes: Buffer): Glb {
 }
 
 for (const key of ['male', 'female'] as const) {
-  test(`${key}.glb: one skinned mesh within the hero budget`, () => {
-    const bytes = file(`${key}.glb`), gltf = json(bytes), facts = BODY_MANIFEST.bodies[key];
+  test(`base-body-${key}.glb: one skinned mesh within the hero budget`, () => {
+    const bytes = file(`base-body-${key}.glb`), gltf = json(bytes), facts = BODY_MANIFEST.bodies[key];
     assert.ok(brotli(bytes) <= BUDGET.body, `${key}: ${brotli(bytes)} B brotli > ${BUDGET.body}`);
     assert.equal(gltf.meshes?.length, 1, 'one mesh');
     assert.equal(gltf.meshes[0]!.primitives.length, 1, 'one primitive: one draw call');
@@ -47,12 +48,12 @@ for (const key of ['male', 'female'] as const) {
     assert.equal(facts.bytes, bytes.length);
     assert.equal(facts.triangles, triangles);
     assert.equal(facts.bones, bones);
-    assert.ok(facts.url.endsWith(`?v=${createHash('sha256').update(bytes).digest('hex').slice(0, 10)}`), 'the cache-busting hash is current');
+    assert.equal(facts.sha, createHash('sha256').update(bytes).digest('hex').slice(0, 10), 'the manifest was written from this file');
   });
 }
 
-test('clips.glb: the core clip pack, every clip with a length, within budget', () => {
-  const bytes = file('clips.glb'), gltf = json(bytes);
+test('clip-pack.glb: the core clip pack, every clip with a length, within budget', () => {
+  const bytes = file('clip-pack.glb'), gltf = json(bytes);
   assert.ok(brotli(bytes) <= BUDGET.clips, `${brotli(bytes)} B brotli > ${BUDGET.clips}`);
   assert.equal(gltf.meshes, undefined, 'no mesh: clips only');
   const names = (gltf.animations ?? []).map((clip) => clip.name);
@@ -63,13 +64,25 @@ test('clips.glb: the core clip pack, every clip with a length, within budget', (
     assert.ok(length > 0.5, `${clip.name} runs for ${length} s`);
   }
   assert.equal(BODY_MANIFEST.clips.bytes, bytes.length);
+  assert.equal(BODY_MANIFEST.clips.sha, createHash('sha256').update(bytes).digest('hex').slice(0, 10));
 });
 
 test('one body and the clips stay inside the after-first-paint phase gate', () => {
-  const clips = brotli(file('clips.glb'));
+  const clips = brotli(file('clip-pack.glb'));
   for (const key of ['male', 'female'] as const) {
-    const total = brotli(file(`${key}.glb`)) + clips;
+    const total = brotli(file(`base-body-${key}.glb`)) + clips;
     // The lazy chunk (skinned.ts + GLTFLoader + meshopt decoder) is about 60 KB brotli; leave it 150.
     assert.ok(total + 150 * KB <= BUDGET.phase, `${key} + clips: ${total} B brotli`);
   }
+});
+
+test('the files are shipped as hashed build assets the download budgets measure, and nothing reads public/body/ any more', () => {
+  const files = readFileSync(new URL('./files.ts', import.meta.url), 'utf8');
+  for (const name of ['base-body-male.glb', 'base-body-female.glb', 'clip-pack.glb']) assert.ok(files.includes(`./assets/${name}?url`), `${name} is a ?url import`);
+  // What the build writes: dist/assets/<name>-<hash>.glb.
+  assert.ok(ASSET_PATTERNS.BASE_BODY_BROTLI!.pattern.test('assets/base-body-male-0123abcd.glb'));
+  assert.ok(ASSET_PATTERNS.BASE_BODY_BROTLI!.pattern.test('assets/base-body-female-0123abcd.glb'));
+  assert.ok(ASSET_PATTERNS.CLIP_PACK_BROTLI!.pattern.test('assets/clip-pack-0123abcd.glb'));
+  assert.ok(!readFileSync(new URL('./skinned.ts', import.meta.url), 'utf8').includes('/body/'), 'no fixed /body/ address');
+  assert.throws(() => readFileSync(new URL('../../../public/body/male.glb', import.meta.url)));
 });

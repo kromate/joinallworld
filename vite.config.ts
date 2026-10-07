@@ -219,6 +219,8 @@ export default defineConfig({
     if (/\/src\/ui\/npc-mark\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
+    // The visit rules (door words, how long a visit lasts): read only by the visit screens, which are fetched on demand.
+    if (/\/src\/game\/visit\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
     // The world clock's bands, day seed and seasons: read only by the moment banks (src/moments, behind ?models=moments) until a feature of the first page needs them.

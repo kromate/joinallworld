@@ -308,7 +308,7 @@ const readers = {
 const inner = {
   career: ({ career: c }: LifeState) => ({ city: c.city, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
   travel: ({ travel: t }: LifeState) => ({ home: t.home, event: t.event, lastTrip: t.lastTrip, visited: t.visited, trips: t.trips, cooldowns: t.cooldowns, funded: t.funded, gigs: t.gigs, eventDays: t.eventDays, skipped: t.skipped }),
-  economy: ({ economy: e }: LifeState) => ({ billedWeek: e.billedWeek, started: e.started, rent: e.rent, loan: e.loan, deposits: e.deposits, seq: e.seq, reminded: e.reminded }),
+  economy: ({ economy: e }: LifeState) => ({ billedWeek: e.billedWeek, started: e.started, rent: e.rent, loan: e.loan, deposits: e.deposits, seq: e.seq, reminded: e.reminded, headsUp: e.headsUp }),
   onboarding: ({ onboarding: o }: LifeState) => ({
     stage: o.stage, done: o.done, legacy: o.legacy, required: o.required, step: o.step, seed: o.seed, look: o.look, traits: o.traits, dream: o.dream, lottery: o.lottery, house: o.house,
     wardrobe: o.wardrobe, completedAt: o.completedAt, bonusAt: o.bonusAt, bornAt: o.bornAt, playedAt: o.playedAt, firstAt: o.firstAt, activities: o.activities, needsSet: o.needsSet, joined: o.joined,

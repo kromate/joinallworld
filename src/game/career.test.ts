@@ -11,10 +11,11 @@ import { VENUES } from './cities/lagos/venues.ts';
 import { systems, registerSystem, emit, actionTypes } from './registry.ts';
 import { makeContext, isRecord } from './util.ts';
 import { lagosTime } from './clock.ts';
-import { xpForLevel } from './api.ts';
+import { credit, xpForLevel } from './api.ts';
 import { JOBS, TRACKS, SHIFT_SECONDS, START_PERFORMANCE, HELPER_COOLDOWN_SECONDS } from './content/jobs.ts';
 import { scheduleText, daysText, COMMUTE_SECONDS } from './systems/career.ts';
 import { RENTS, LOAN, billingWeek, dueAt, DEPOSIT_TOTAL_CAP, MAX_CATCHUP_WEEKS, LOAN_LATE_FEE } from './systems/economy.ts';
+import { headsUpLine, missedRentLine } from './conditions/billing-words.ts';
 import { fixture } from '../../server/test-fixture.ts';
 import type { EngineEvent, EngineEventMap } from '../types/registry.ts';
 import type { ActionBody, ActionType } from '../types/actions.ts';
@@ -31,7 +32,7 @@ const probe = { performance: 1 };
 registerSystem({
   id: 'career-probe' as unknown as SystemId, // a test-only system id outside the shipped SystemId union
   stateKeys: [], sanitize() {}, advance() {},
-  on: Object.fromEntries(['job.applied', 'job.quit', 'shift.completed', 'promotion', 'rent.due', 'rent.paid', 'rent.missed', 'loan.paid', 'loan.missed', 'deposit.closed']
+  on: Object.fromEntries(['job.applied', 'job.quit', 'shift.completed', 'promotion', 'rent.due', 'rent.paid', 'rent.missed', 'loan.paid', 'loan.missed', 'deposit.closed', 'notice.posted']
     .map((name: string) => [name, (_state: LifeState, data: unknown) => seen.push([name, data])])),
   modifiers: { 'career.performance': (value: number) => value * probe.performance },
 });
@@ -460,7 +461,7 @@ test('the exact onboarding payload — lottery "lapo-baby", house id string — 
   const player = life({ cash: 96000 });
   assert.deepEqual([player.state.economy.loan, need(player.state.economy.rent).house, player.state.economy.billedWeek], [null, null, null]);
   emitLoose(player.state, 'life.started', { body: { skin: 2 }, traits: ['neat', 'funny'], dream: 'mogul', lottery: 'lapo-baby', house: 'yaba' }, player.at('start'));
-  assert.deepEqual(player.state.economy, { billedWeek: billingWeek(MONDAY_9AM), started: true, rent: { house: 'yaba', arrears: 0, missed: 0 }, loan: { left: 72000, prepaid: 0, fees: 0 }, deposits: [], seq: 0, reminded: null });
+  assert.deepEqual(player.state.economy, { billedWeek: billingWeek(MONDAY_9AM), started: true, rent: { house: 'yaba', arrears: 0, missed: 0 }, loan: { left: 72000, prepaid: 0, fees: 0 }, deposits: [], seq: 0, reminded: null, headsUp: null });
   assert.equal(player.state.cash, 96000); assert.equal(player.state.ledger.length, 0);
   const view = player.view().economy;
   assert.deepEqual([need(view.rent).amount, need(view.rent).nextDueLabel, need(view.loan).left, need(view.loan).weekly, view.weeklyBills], [6000, 'Sat 10 Jan', 72000, 12000, 18000]);
@@ -558,6 +559,67 @@ test('offline catch-up is bounded, and a house move changes the rent from the ne
   assert.equal(need(player.view().economy.loan).cleared, true);
   assert.equal(player.state.ledger.filter((entry) => entry.reason.startsWith('Loan')).length <= 60, true);
   assert.equal(player.view().economy.weeklyBills, 17000);
+});
+
+const notices = (kind: string) => events('notice.posted').filter((data) => data.kind === kind).map((data) => String(data.text));
+
+test('bills are announced on Thursday and again on Friday, each once however the time is stepped', () => {
+  seen.length = 0;
+  const player = onboarded('yaba', 'lapo-baby', { cash: 4000 });
+  player.step(DAY * 3 + 3600); // Thursday 10:00 Lagos, in small steps
+  for (let i = 0; i < 6; i++) player.step(600);
+  const thursday = notices('rent-due');
+  assert.equal(thursday.length, 1);
+  assert.match(need(thursday[0]), /^Heads up: rent ₦6,000 and loan ₦12,000 due Saturday, in two days\. You have ₦4,000, ₦14,000 short\. Work a shift or two before then\.$/);
+  assert.equal(need(player.state.economy.headsUp), billingWeek(player.now) + 1);
+  assert.equal(player.state.economy.reminded, null, 'the Friday reminder has not been used up');
+  player.step(DAY);
+  player.step(600);
+  const both = notices('rent-due');
+  assert.equal(both.length, 2);
+  assert.match(need(both[1]), /^Due tomorrow \(Saturday\): rent ₦6,000 and loan ₦12,000\./);
+  assert.equal(player.state.economy.reminded, billingWeek(player.now) + 1);
+  const covered = onboarded('yaba', 'none', { cash: 96000 });
+  seen.length = 0;
+  covered.step(DAY * 3 + 3600);
+  assert.match(need(notices('rent-due')[0]), /^Heads up: rent ₦6,000 due Saturday, in two days\. You have ₦96,000\.$/);
+});
+
+test('a missed Saturday gets louder each time in a row, nobody is evicted, and the arrears warning follows', () => {
+  seen.length = 0;
+  const debtor = onboarded('yaba', 'none', { cash: 0 });
+  const weeks: string[] = [];
+  for (let week = 0; week < 3; week++) {
+    debtor.step(secondsUntil(debtor, week === 0 ? debtor.view().economy.nextDue : debtor.view().economy.nextDue));
+    weeks.push(need(notices('rent-missed')[week]));
+  }
+  assert.match(need(weeks[0]), /^Rent missed: ₦6,000 was due Sat 10 Jan\. You owe ₦6,000; pay it in Phone → Bank before next Saturday to avoid a late fee\.$/);
+  assert.match(need(weeks[1]), /^Rent missed again: .* second week running\. You owe ₦12,600 with a ₦600 late fee\. Your landlord is asking after you/);
+  assert.match(need(weeks[2]), /^Rent missed, third week running: .* but you keep your room in this beta/);
+  const rent = need(debtor.view().economy.rent);
+  assert.match(need(rent.warning), /^3 Saturdays missed in a row\. You owe ₦/);
+  assert.match(need(rent.warning), /You keep your home in this beta\./);
+  assert.equal(rent.house, 'yaba', 'no eviction: the house is still the rent house');
+  assert.equal(debtor.state.economy.rent.house, 'yaba');
+});
+
+test('every bill notice fits the Updates feed, even for the dearest house and the longest run of missed Saturdays', () => {
+  for (let missed = 1; missed <= 12; missed++) assert.ok(missedRentLine(missed, 1500000, 'Sat 14 Feb', 4725000, 150000).length <= 160, `missed ${missed}`);
+  assert.ok(headsUpLine(['rent ₦1,500,000', 'loan ₦12,000'], 1512000, 1234567).length <= 160);
+});
+
+test('the week is summed up on the Saturday bill, from the money that moved, and nothing about pay changes', () => {
+  seen.length = 0;
+  const player = onboarded('yaba', 'none', { cash: 20000 });
+  player.step(DAY * 2); // Wednesday
+  assert.ok(credit(player.state, 5000, 'Tech shift', player.at('pay')));
+  assert.equal(player.state.cash, 25000, 'money is in the balance at once; there is no wage day to wait for');
+  player.step(secondsUntil(player, player.view().economy.nextDue) + 60);
+  const sums = notices('rent').filter((text) => text.startsWith('Week ending'));
+  assert.equal(sums.length, 1);
+  assert.match(need(sums[0]), /^Week ending Fri 9 Jan: ₦5,000 came in and ₦0 went out\.$/);
+  assert.equal(player.state.cash, 25000 - 6000, 'only the rent left the balance');
+  assert.equal(createLife({ economy: { billedWeek: 1, rent: { house: 'yaba' } } }, ctx).economy.headsUp, null, 'an older save has no heads-up yet');
 });
 
 test('rent the player cannot afford is missed in full, shown as arrears, and never taken silently or in part', () => {
@@ -697,7 +759,7 @@ test('economy sanitize rebuilds every field from hostile input and cannot be use
     deposits: [{ id: 'fd-1', amount: 1e12, term: 'd1', openedAt: 0 }, { id: 'fd-2', amount: 50000, term: 'd7', openedAt: MONDAY_9AM + 9e9 }, { id: 'fd-3', amount: 5000, term: 'zz', openedAt: 0 },
       'x', null, { id: 'FD 4', amount: 5000, term: 'd1', openedAt: 0 }, { id: 'fd-5', amount: 60000, term: 'd1', openedAt: 0 }],
   } }, ctx);
-  assert.deepEqual(hostile.economy, { billedWeek: billingWeek(MONDAY_9AM), started: false, rent: { house: null, arrears: 0, missed: 0 }, loan: null, deposits: [], seq: 0, reminded: null });
+  assert.deepEqual(hostile.economy, { billedWeek: billingWeek(MONDAY_9AM), started: false, rent: { house: null, arrears: 0, missed: 0 }, loan: null, deposits: [], seq: 0, reminded: null, headsUp: null });
   const many = createLife({ t: MONDAY_9AM, economy: { rent: { house: 'yaba', arrears: 1e12, missed: 2 }, loan: { left: 80000, prepaid: 99, fees: 0 },
     deposits: Array.from({ length: 9 }, (_, i) => ({ id: `fd-${i}`, amount: 50000, term: 'd1', openedAt: 5 })).concat([{ id: 'fd-0', amount: 1000, term: 'd1', openedAt: 5 }]) } }, ctx);
   assert.equal(many.economy.deposits.length, 2, 'the total cap also binds saved deposits, and ids stay unique');

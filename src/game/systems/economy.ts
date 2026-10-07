@@ -42,13 +42,17 @@
  *   deposits     [{ id, amount, term, openedAt }]
  *   seq          counter for deposit ids
  *   reminded     billing week whose Friday reminder has been posted | null
+ *   headsUp      billing week whose Thursday heads-up has been posted | null (same numbering as `reminded`)
  * }
  *
  * LISTENS  'life.started' { house, lottery }   sets the rent house and, for the loan outcome, the loan
  *          'house.moved'  { id }               changes the rent from the next Saturday
  * UPDATES  Every bill posts one line to the Updates feed through 'notice.posted' { kind, text }:
- *          a reminder on Friday that names what falls due on Saturday ('rent-due'), then what was
- *          paid ('rent', 'loan') or missed ('rent-missed', 'loan-missed').
+ *          a heads-up on Thursday when rent or a loan instalment falls due on Saturday, a reminder
+ *          on Friday that names what falls due ('rent-due'), then what was paid ('rent', 'loan')
+ *          or missed ('rent-missed', 'loan-missed'), louder on each Saturday missed in a row, and
+ *          a one-line sum of the week's money ('rent'). That sum is the only "wage day": shifts pay as they
+ *          finish and nothing moves on Saturday but the bills (wording in ../conditions/billing-words.ts).
  * EMITS    'rent.due' { amount, house } · 'rent.paid' { amount, house, arrears } ·
  *          'rent.missed' { amount, house, arrears, missed } · 'loan.paid' { amount, left } ·
  *          'loan.missed' { amount, left } · 'deposit.opened' { id, amount, term } ·
@@ -58,6 +62,7 @@ import { LEFT_OUT, PLAYS } from '../profile.ts';
 import { emit } from '../registry.ts';
 import { fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, lagosDayStart, LAGOS_OFFSET_MS, WEEKDAYS } from '../clock.ts';
+import { arrearsWarning, headsUpLine, missedRentLine, weekLine, weekTotals } from '../conditions/billing-words.ts';
 import { addMoodlet, canAfford, canCredit, credit, debit, removeMoodlet } from '../api.ts';
 import { houseFor as cityHouseFor } from '../cities/housingRuntime.ts';
 import type { ActionMap } from '../../types/actions.ts';
@@ -132,6 +137,13 @@ function startBilling(state: LifeState, ctx: LifeContext): void {
   if (state.economy.billedWeek === null) state.economy.billedWeek = billingWeek(nowOf(state, ctx));
 }
 
+/** What falls due on the coming Saturday, as the Thursday heads-up and the Friday reminder name it. */
+function dueSoon(state: LifeState, ctx: LifeContext): { parts: string[]; total: number } {
+  const economy = state.economy, house = houseOf(cityOf(state, ctx), economy.rent.house), loan = economy.loan;
+  const instalment = loan && loan.left > 0 && !(loan.prepaid > 0) ? Math.min(LOAN.weekly, loan.left) : 0;
+  return { parts: [house ? `rent ${naira(house.rent)}` : '', instalment ? `loan ${naira(instalment)}` : ''].filter(Boolean), total: (house ? house.rent : 0) + instalment };
+}
+
 function setArrearsFeeling(state: LifeState, ctx: LifeContext): void {
   if (state.economy.rent.arrears > 0) addMoodlet(state, { id: 'rent-arrears', label: 'Owing rent', value: -8 }, ctx); // original beta value
   else removeMoodlet(state, 'rent-arrears');
@@ -157,9 +169,11 @@ function bill(state: LifeState, week: number, ctx: LifeContext): void {
     } else {
       rent.arrears = Math.min(arrearsCap(house), rent.arrears + house.rent);
       rent.missed += 1;
-      state.message = `Rent missed: ${naira(house.rent)} for ${house.label} was due ${due} and you had ${naira(state.cash)}. You now owe ${naira(rent.arrears)}. Pay it in Phone → Bank before next Saturday to avoid a late fee.`;
+      state.message = rent.missed <= 1
+        ? `Rent missed: ${naira(house.rent)} for ${house.label} was due ${due} and you had ${naira(state.cash)}. You now owe ${naira(rent.arrears)}. Pay it in Phone → Bank before next Saturday to avoid a late fee.`
+        : missedRentLine(rent.missed, house.rent, due, rent.arrears, lateFee(house));
       emit(state, 'rent.missed', { amount: house.rent, house: house.id, arrears: rent.arrears, missed: rent.missed }, ctx);
-      note(state, 'rent-missed', `Rent missed: ${naira(house.rent)} was due ${due}. You owe ${naira(rent.arrears)}; pay it in Phone → Bank before next Saturday to avoid a late fee.`, ctx);
+      note(state, 'rent-missed', missedRentLine(rent.missed, house.rent, due, rent.arrears, lateFee(house)), ctx);
     }
     setArrearsFeeling(state, ctx);
   }
@@ -316,13 +330,16 @@ const play = PLAYS ? {
       emit(state, 'deposit.closed', { id: deposit.id, amount: deposit.amount, interest }, ctx);
     }
     if (economy.billedWeek === null) return;
-    // Friday: one reminder of what falls due at midnight, so a bill is never a surprise.
-    if (lagosTime(now).weekday === 5 && economy.reminded !== billingWeek(now) + 1) {
-      economy.reminded = billingWeek(now) + 1;
-      const house = houseOf(cityOf(state, ctx), economy.rent.house), loan = economy.loan;
-      const instalment = loan && loan.left > 0 && !(loan.prepaid > 0) ? Math.min(LOAN.weekly, loan.left) : 0;
-      const parts = [house ? `rent ${naira(house.rent)}` : '', instalment ? `loan ${naira(instalment)}` : ''].filter(Boolean);
-      const total = (house ? house.rent : 0) + instalment;
+    // Thursday: a heads-up two days ahead, and Friday: one reminder of what falls due at midnight, so a bill is never a surprise.
+    const weekday = lagosTime(now).weekday, upcoming = billingWeek(now) + 1;
+    if (weekday === 4 && economy.headsUp !== upcoming) {
+      economy.headsUp = upcoming;
+      const due = dueSoon(state, ctx);
+      if (due.total > 0) note(state, 'rent-due', headsUpLine(due.parts, due.total, state.cash), ctx);
+    }
+    if (weekday === 5 && economy.reminded !== upcoming) {
+      economy.reminded = upcoming;
+      const { parts, total } = dueSoon(state, ctx);
       if (total > 0) note(state, 'rent-due', `Due tomorrow (Saturday): ${parts.join(' and ')}. You have ${naira(state.cash)}${state.cash < total ? ` — ${naira(total - state.cash)} short` : ''}.`, ctx);
     }
     const current = billingWeek(now);
@@ -330,6 +347,9 @@ const play = PLAYS ? {
     const first = Math.max(economy.billedWeek + 1, current - MAX_CATCHUP_WEEKS + 1);
     economy.billedWeek = current;
     for (let week = first; week <= current; week++) bill(state, week, ctx);
+    // The nearest thing to a wage day: one line that sums the pay week up. Shifts pay as they finish; this moves no money.
+    const sum = weekLine(weekTotals(state.ledgerDays, lagosTime(dueAt(current)).day), dateLabel(dueAt(current) - DAY_MS));
+    if (sum) note(state, 'rent', sum, ctx);
   },
 } satisfies Pick<SystemDefinition<'economy'>, 'actions' | 'on' | 'advance'> : LEFT_OUT;
 
@@ -363,6 +383,7 @@ export default {
       deposits: sanitizeDeposits(saved.deposits, now),
       seq: safeCount(saved.seq) ? saved.seq : 0,
       reminded: isSafeInt(saved.reminded) ? Math.min(saved.reminded, billingWeek(now) + 1) : null,
+      headsUp: isSafeInt(saved.headsUp) ? Math.min(saved.headsUp, billingWeek(now) + 1) : null,
     };
   },
   view(state, ctx): EconomyView {
@@ -388,7 +409,7 @@ export default {
         canPayArrears: economy.rent.arrears > 0 && canAfford(state, economy.rent.arrears),
         payBlocked: economy.rent.arrears <= 0 ? 'Nothing is overdue.' : canAfford(state, economy.rent.arrears) ? null : short(economy.rent.arrears),
         warning: economy.rent.arrears > 0
-          ? `You owe ${naira(economy.rent.arrears)} in missed rent. Pay it before ${nextDueLabel} or a ${naira(lateFee(house))} late fee is added. It is collected automatically on a Saturday when your balance covers it. You keep your home in this beta.`
+          ? arrearsWarning(economy.rent.arrears, economy.rent.missed, nextDueLabel, lateFee(house))
           : !canAfford(state, house.rent) ? `Your balance does not cover the ${naira(house.rent)} rent due ${nextDueLabel}. If it is missed it becomes arrears, with one week to pay before a late fee.` : null,
         rule: `Rent is collected automatically every Saturday (Nigerian time), even while you are away — at most ${MAX_CATCHUP_WEEKS} missed weeks are caught up. It is never taken in part.`,
       } : null,

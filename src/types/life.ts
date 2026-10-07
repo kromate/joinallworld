@@ -439,6 +439,8 @@ export interface EconomyState {
   seq: number
   /** Billing week whose Friday reminder has been posted. */
   reminded: number | null
+  /** Billing week whose Thursday heads-up has been posted (one more than the week index, like `reminded`). */
+  headsUp: number | null
 }
 
 /** OWNER career. */
@@ -1149,7 +1151,7 @@ export const SLICE_FIELD_KEYS = {
   career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'rideDebt', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
-  economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
+  economy: ['billedWeek', 'deposits', 'headsUp', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],
   estate: ['away', 'city', 'confirmed', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
   home: ['boost', 'custom', 'fuel', 'items', 'seq', 'stocked', 'storage'],

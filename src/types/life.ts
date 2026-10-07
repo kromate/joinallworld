@@ -581,6 +581,8 @@ export interface HomeState {
   /** The player has rearranged something (a fresh room is re-laid at 'life.started'). */
   custom: boolean
   boost: HomeBoost | null
+  /** Petrol in the generator, in seconds of running (0 – 48,000). Saves from before generators had fuel load as 0. */
+  fuel: number
 }
 
 /** OWNER home. */
@@ -1150,7 +1152,7 @@ export const SLICE_FIELD_KEYS = {
   economy: ['billedWeek', 'deposits', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],
   estate: ['away', 'city', 'confirmed', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
-  home: ['boost', 'custom', 'items', 'seq', 'stocked', 'storage'],
+  home: ['boost', 'custom', 'fuel', 'items', 'seq', 'stocked', 'storage'],
   onboarding: [
     'activities', 'bonusAt', 'bornAt', 'completedAt', 'done', 'dream', 'firstAt', 'house', 'joined', 'legacy', 'look', 'lottery',
     'needsSet', 'playedAt', 'required', 'seed', 'stage', 'step', 'traits', 'wardrobe',

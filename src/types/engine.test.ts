@@ -319,7 +319,7 @@ const inner = {
     city: e.city, lga: e.lga, lgaAt: e.lgaAt, lgaConfirmed: e.lgaConfirmed, lgaVia: e.lgaVia, plot: e.plot, old: e.old, tier: e.tier, style: e.style, upgrade: e.upgrade,
     living: e.living, ground: e.ground, away: e.away, nudged: e.nudged, home: e.home, homeAt: e.homeAt,
   }),
-  home: ({ home: h }: LifeState) => ({ items: h.items, storage: h.storage, seq: h.seq, stocked: h.stocked, custom: h.custom, boost: h.boost }),
+  home: ({ home: h }: LifeState) => ({ items: h.items, storage: h.storage, seq: h.seq, stocked: h.stocked, custom: h.custom, boost: h.boost, fuel: h.fuel }),
   goals: ({ goals: g }: LifeState) => ({ started: g.started, chain: g.chain, cv: g.cv, seen: g.seen, stars: g.stars, perks: g.perks, wishes: g.wishes, rerolls: g.rerolls, granted: g.granted, dream: g.dream, dreamDone: g.dreamDone, stats: g.stats, besties: g.besties, seq: g.seq, feed: g.feed }),
   social: ({ social: s }: LifeState) => ({ rel: s.rel, bae: s.bae, family: s.family, streak: s.streak, earned: s.earned, transfer: s.transfer, notices: s.notices }),
   civic: ({ civic: c }: LifeState) => ({ seed: c.seed, since: c.since, gems: c.gems, claims: c.claims, week: c.week, work: c.work, news: c.news, hunt: c.hunt }),
@@ -433,7 +433,7 @@ function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   for (const skill of Object.values(shown.skills)) assert.deepEqual(keys(skill), ['level', 'next', 'progress', 'xp'], `${what}: skill progress`)
   for (const destination of shown.travel.destinations) assert.deepEqual(keys(destination), sorted(TRAVEL_DESTINATION_KEYS), `${what}: destination ${destination.id}`)
   for (const mode of shown.travel.destinations.flatMap((destination) => destination.modes)) {
-    assert.deepEqual(keys(mode), ['blocked', 'blurb', 'fare', 'fuel', 'icon', 'id', 'label', 'needs', 'seconds', 'xp'], `${what}: mode card`)
+    assert.deepEqual(keys(mode), ['blocked', 'blurb', 'fare', 'fuel', 'icon', 'id', 'label', 'needs', 'seconds', 'slow', 'xp'], `${what}: mode card`)
   }
   assert.deepEqual(keys(shown.wallet.statement), ['closing', 'kept', 'linesOpening', 'opening', 'problems', 'reconciled', 'totals'], `${what}: statement`)
   assert.deepEqual(keys(shown.needs.mood), ['icon', 'label', 'score'], `${what}: mood`)

@@ -44,13 +44,13 @@
  * The camera and canvas are learned from the renderer at draw time (onBeforeRender), so taps
  * are resolved with the exact camera the host used.
  *
- * SKINNED BODY SPIKE (`?body=skinned`, src/scene/body/; off by default)
- *   With the flag, on a device bodyAllowed() accepts and a WebGL2 renderer, the room's first frame starts loading one
- *   skinned body (src/scene/body/skinned.ts). Until it is in, and for good if anything fails, the procedural figure
- *   stays. Once in, it stands in for the player's own figure: idle at rest, the walk/jog clip at the host's stride
- *   phase, and on 'Sit & Rest' it sits on the chair or sofa (sit-enter plays when the avatar walked there). It asks for
- *   its first frame with 'jaw:home-frame'; sit-enter runs through `easing` / stepCrowd / settleCrowd. Without the flag
- *   none of this runs: `body` stays null and the body module is never imported.
+ * SKINNED BODY (src/scene/body/; on for everyone, capability fallback only — see body/gate.ts)
+ *   On a device bodyAllowed() accepts and a WebGL2 renderer, the room's first frame starts loading one skinned body
+ *   (src/scene/body/skinned.ts). Until it is in, and for good if anything fails, the procedural figure stays. Once in,
+ *   it stands in for the player's own figure: idle at rest, the walk/jog clip at the host's stride phase, and on a
+ *   seated activity it sits on the chair or sofa (sit-enter plays when the avatar walked there). It asks for its first
+ *   frame with 'jaw:home-frame'; sit-enter runs through `easing` / stepCrowd / settleCrowd. Without WebGL2 (and in
+ *   Node tests) `body` stays null and the body module is never imported.
  */
 import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE, HOME_ACTIVITIES } from '../game/content/furniture.ts';
 import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
@@ -58,7 +58,7 @@ import { drawAvatar, buildAvatar, POSES } from './characters.ts';
 import type { Pose } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
-import { bodyAllowed, bodyWanted, drawsWebGL2, importBody } from './body/flag.ts';
+import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
 import type { BodyPose, SkinnedBody } from './body/skinned.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
@@ -261,8 +261,8 @@ export function buildHomeScene(kit: Kit) {
   people.add(avatar);
   const figures = new Map<Pose, Figure>();
   let shownFigure: Figure | null = null, shownPose: Pose = 'stand', driven = false, walkGrid: ReturnType<typeof createWalkGrid> | null = null, gridKey = '', restAt: HomeRest | null = null, goalMark: THREE.Mesh | null = null;
-  // The skinned body spike (see the header): asked for only with the flag on an allowed device; null otherwise.
-  const wantsBody = bodyWanted() && bodyAllowed();
+  // The skinned body (see the header): asked for on an allowed device; null until it loads, and for good without one.
+  const wantsBody = bodyAllowed();
   let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: { x: number; top: number; z: number; ry: number } | null = null;
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const tools = (parent: THREE.Object3D): Tools => ({
@@ -302,7 +302,7 @@ export function buildHomeScene(kit: Kit) {
     room.children[0]!.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); if (wantsBody) startBody(renderer); };
   }
 
-  // ---- the skinned body (flag only) ----------------------------------------------------------
+  // ---- the skinned body (capability-gated) ---------------------------------------------------
   /** After the room's first frame: fetch the body module and the body, once. Any failure keeps the procedural figure. */
   function startBody(renderer: THREE.WebGLRenderer) {
     if (body || bodyLoading || bodyFailed || gone) return;
@@ -656,7 +656,7 @@ export function buildHomeScene(kit: Kit) {
     },
     tags: () => (selfTag ? [selfTag, ...guestTags] : [...guestTags]),
     look,
-    // The skinned body's sit-down (flag only; always false without it): the host steps it in its motion loop.
+    // The skinned body's sit-down (always false without the body): the host steps it in its motion loop.
     get easing() { return Boolean(body?.easing); },
     stepCrowd(dt: number) { return body ? body.step(dt) : false; },
     settleCrowd() { body?.settle(); },

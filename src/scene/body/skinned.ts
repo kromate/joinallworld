@@ -1,7 +1,8 @@
 /**
- * The skinned body every figure near the camera wears (the procedural avatar in src/scene/characters.ts is the
+ * The skinned body the player's own figure wears (the procedural avatar in src/scene/characters.ts is the
  * fallback: no WebGL2, a low-tier device or Data Saver, a failed fetch; see gate.ts). Reached only through
- * importBody(), so this module, GLTFLoader and the meshopt decoder are one lazy chunk fetched after a scene's first frame.
+ * importBody(), so this module, GLTFLoader and the meshopt decoder are one lazy chunk fetched after a scene's first frame
+ * (home-scene.ts for the home room, stand-in.ts for venues, avatar-preview.ts once one of those has fetched it).
  *
  *   loadBody(kit, look, seed, scale) → SkinnedBody
  *     one SkinnedMesh (one primitive, one material, 23 bones, ≤ 4 weights a vertex) from assets/base-body-<male|female>.glb,

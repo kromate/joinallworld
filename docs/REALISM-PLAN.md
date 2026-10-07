@@ -117,7 +117,7 @@ Gate: slots work across two worktrees; baseline numbers are recorded; L7 is in p
 
 | Lane | Work |
 | --- | --- |
-| E-A body | Skinned body, CC0 clips retargeted offline (idle, walk, sit, door, sleep, bathe), compression pipeline, flag `?body=skinned` at home only |
+| E-A body | Skinned body, CC0 clips retargeted offline (idle, walk, sit, door, sleep, bathe), compression pipeline; on for every player (home, venues, look preview), capability fallback only |
 | E-A fallback | Keep the procedural avatar as the low-detail and 2G path; map old saved looks onto the new body |
 | R4 cast | City cast schema and generator; Calabar cast (Efik lines marked `beta` until a native speaker reviews them) |
 | L1 moments | Moment banks per place type and per city, as data, in local voice |

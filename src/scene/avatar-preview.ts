@@ -27,6 +27,11 @@
  * of them run: the final state is drawn once. diagnostics().renderCount proves it
  * (src/scene/avatar-preview.test.ts).
  *
+ * SKINNED BODY: once a world scene has fetched the skinned body (scene/body/gate.ts; never before the game is ready, so
+ * character creation at first run adds no bytes), the preview shows that body in the look instead of the drawn
+ * figure — the figure seen here is the figure walked about. Without WebGL2, on a device the gate refuses, or if it fails,
+ * the drawn figure stays.
+ *
  * ONE CONTEXT: creating a preview disposes the previous one, so at most one preview WebGL
  * context is alive (previewStats.live). A lost context stops drawing and calls onLost, so the
  * caller can show its 2D figure; if no WebGL context can be made at all, createAvatarPreview
@@ -37,6 +42,8 @@ import { createKit } from './kit.ts';
 import { buildAvatar } from './characters.ts';
 import type { AvatarGroup } from './characters.ts';
 import type { ThreeModule } from './types.ts';
+import { bodyAllowed, bodyImports, drawsWebGL2, importBody } from './body/gate.ts';
+import type { SkinnedBody } from './body/skinned.ts';
 
 export const ANIMATION_LIMIT_MS = 600;
 const FRAME_MS = 16;
@@ -189,6 +196,27 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   let inset = Math.max(0, options.inset ?? 0), yaw = START_YAW, focus: PreviewFocus = asFocus(options.focus), shown: PreviewFrame = { ...FRAMES[focus] };
   let size = { width: 0, height: 0 }, frameId = 0;
   const tweens = new Map<string, Tween>(); // name → { start, duration, step(t, dt) → false to stop early, last }
+  let body: SkinnedBody | null = null, bodyLook: unknown = null, bodyLoading = false, bodyFailed = !bodyAllowed();
+
+  /** Wear the look on the skinned body (see the header), fetching it once the world already has; else keep the drawn figure. */
+  function dress(look: unknown) {
+    bodyLook = look;
+    if (body && !body.wear(look, 'preview')) { body.dispose(); body = null; }
+    if (body) { if (avatar) avatar.visible = false; return; }
+    if (bodyLoading || bodyFailed || !bodyImports.count) return;
+    if (!drawsWebGL2(renderer)) { bodyFailed = true; return; }
+    bodyLoading = true;
+    importBody().then((module) => module.loadBody(kit, look, 'preview', 1)).then((loaded) => {
+      bodyLoading = false;
+      if (disposed) { loaded.dispose(); return; }
+      if (!loaded.wear(bodyLook, 'preview')) { loaded.dispose(); dress(bodyLook); return; }
+      body = loaded;
+      turntable.add(body.object);
+      body.place(0, 0, 0, 0);
+      if (avatar) avatar.visible = false;
+      render();
+    }).catch((error: unknown) => { bodyLoading = false; bodyFailed = true; console.warn('Skinned body unavailable; keeping the drawn figure:', error); });
+  }
 
   function frame() {
     // The subject sits in the top part of the view; the inset below it is left empty (the ground's front edge and a stage's buttons).
@@ -250,6 +278,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     avatar?.userData.dispose();
     avatar = buildAvatar(kit, look, { detail: 'high', pose: 'relax', seed: 'preview' });
     turntable.add(avatar);
+    dress(look);
     if (react && !reduced) {
       // A small turn and settle, so a change is felt as well as seen.
       animate('react', 420, (t: number) => { turntable.userData.swing = Math.sin(t * Math.PI) * (1 - t) * 0.55; turntable.position.y = Math.sin(t * Math.PI) * 0.035; });
@@ -360,6 +389,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
       for (const [type, fn, opts] of listeners) canvas.removeEventListener?.(type, fn, opts);
       listeners.length = 0;
       avatar = null;
+      body?.dispose(); body = null;
       ground.dispose();
       kit.dispose(); // the avatar's geometry and the shared materials
       renderer.dispose();

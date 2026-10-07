@@ -1,6 +1,6 @@
 import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
 await preloadCityContent('lagos');
-// The skinned-body switch (flag.ts): off by default, and with it off the home scene never reaches the body module.
+// The skinned body's capability gate (gate.ts): no flag; without WebGL2 the home scene never reaches the body module.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -9,15 +9,7 @@ import { createKit } from '../kit.ts';
 import { buildHomeScene } from '../home-scene.ts';
 import { createLife } from '../../life.ts';
 import type { LifeState } from '../../types/life.ts';
-import { bodyAllowed, bodyImports, bodyWanted, drawsWebGL2 } from './flag.ts';
-
-test('bodyWanted: only ?body=skinned', () => {
-  assert.equal(bodyWanted(''), false);
-  assert.equal(bodyWanted('?body=procedural'), false);
-  assert.equal(bodyWanted('?x=1&body=skinned'), true);
-  assert.equal(bodyWanted('?body=skinned'), true);
-  assert.equal(bodyWanted(), false, 'no page address (Node): off');
-});
+import { bodyAllowed, bodyImports, drawsWebGL2 } from './gate.ts';
 
 test('bodyAllowed: never on Data Saver, 2G or the low tier', () => {
   assert.equal(bodyAllowed({ hardwareConcurrency: 8, deviceMemory: 8 }), true);
@@ -35,15 +27,16 @@ test('drawsWebGL2: false without a WebGL2 context', () => {
   assert.equal(drawsWebGL2({ getContext: () => ({}) }), false);
 });
 
-test('the home scene imports only the switch; the body module is a dynamic import in flag.ts alone', () => {
+test('the home scene imports only the gate; the body module is a dynamic import in gate.ts alone', () => {
   const strip = (code: string) => code.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
   const home = strip(readFileSync(new URL('../home-scene.ts', import.meta.url), 'utf8'));
   const fromBody = [...home.matchAll(/^\s*import\s+(type\s+)?[^'";]*?from\s+['"](\.\/body\/[^'"]+)['"]/gm)].map((match) => `${match[1] ? 'type ' : ''}${match[2]}`);
-  assert.deepEqual(fromBody.sort(), ['./body/flag.ts', 'type ./body/skinned.ts']);
+  assert.deepEqual(fromBody.sort(), ['./body/gate.ts', 'type ./body/skinned.ts']);
   assert.doesNotMatch(home, /import\(/, 'no dynamic import in the scene itself');
-  const flag = strip(readFileSync(new URL('./flag.ts', import.meta.url), 'utf8'));
-  assert.doesNotMatch(flag, /^\s*import\s/m, 'flag.ts has no static imports');
-  assert.equal((flag.match(/(?<!typeof )import\(/g) ?? []).length, 1, 'one way in: importBody()');
+  const gate = strip(readFileSync(new URL('./gate.ts', import.meta.url), 'utf8'));
+  assert.doesNotMatch(gate, /^\s*import\s/m, 'gate.ts has no static imports');
+  assert.doesNotMatch(gate, /location|search|URLSearchParams|localStorage/, 'no switch: nothing a page address or setting can turn off');
+  assert.equal((gate.match(/(?<!typeof )import\(/g) ?? []).length, 1, 'one way in: importBody()');
 });
 
 /** Build the home room, update it and draw "frames" (the floor's onBeforeRender) the way the host would. */
@@ -58,7 +51,7 @@ function drawHome(renderer: { domElement: { addEventListener(): void }; getConte
 }
 const renderer = { domElement: { addEventListener() {} }, getContext: () => ({}) };
 
-test('flag off: drawing the home room never imports the body module, and the avatar is the drawn one', async () => {
+test('no WebGL2: drawing the home room never imports the body module, and the avatar is the drawn one', async () => {
   const before = bodyImports.count;
   const { home, kit } = drawHome(renderer);
   await new Promise((resolve) => setTimeout(resolve, 5));
@@ -70,17 +63,12 @@ test('flag off: drawing the home room never imports the body module, and the ava
   home.dispose(); kit.dispose();
 });
 
-test('flag on without WebGL2: still never imported, the drawn avatar stays', async () => {
+test('a page address cannot turn the body off or on: ?body=procedural is ignored', async () => {
   const g = globalThis as { location?: unknown };
   const had = Object.getOwnPropertyDescriptor(g, 'location');
-  Object.defineProperty(g, 'location', { value: { search: '?body=skinned' }, configurable: true });
+  Object.defineProperty(g, 'location', { value: { search: '?body=procedural' }, configurable: true });
   try {
-    const before = bodyImports.count;
-    const { home, kit } = drawHome(renderer);
-    await new Promise((resolve) => setTimeout(resolve, 5));
-    assert.equal(bodyImports.count, before);
-    assert.equal(home.walk.avatar.visible, true);
-    home.dispose(); kit.dispose();
+    assert.equal(bodyAllowed({ hardwareConcurrency: 8, deviceMemory: 8 }), true);
   } finally {
     if (had) Object.defineProperty(g, 'location', had); else delete g.location;
   }

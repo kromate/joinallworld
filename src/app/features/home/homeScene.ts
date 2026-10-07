@@ -4,7 +4,7 @@
 //   sends     'jaw:home-ui'     { selected, ghost, buy, retry? } — what the scene draws
 //   receives  'jaw:home-pick'   { id, cell } — a tapped object or floor tile
 //             'jaw:home-scene'  { status, placed } — ready / empty / error
-//             'jaw:home-frame'  — the scene changed on its own (the `?body=skinned` body arrived): draw one frame
+//             'jaw:home-frame'  — the scene changed on its own (the skinned body arrived): draw one frame
 import { watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { KINDS } from '../../../game/content/furniture.ts'

@@ -1,17 +1,12 @@
 /**
- * The skinned-body spike's switch (phase 1, E-A). OFF by default: the game draws its own procedural avatar
- * (src/scene/characters.ts). With `?body=skinned` in the page URL, the HOME scene alone swaps the player's own
- * figure for one skinned mesh with baked clips (src/scene/body/skinned.ts), loaded after the room's first frame.
+ * The skinned body's capability gate (E-A). Every player gets the skinned body (src/scene/body/skinned.ts) in place of
+ * the procedural avatar (src/scene/characters.ts) — there is no switch. The only ways out are what the device can do:
+ * no WebGL2, a low-tier device, Data Saver or 2G, or a body file that fails to fetch or parse.
  *
- * This file is the only part of the spike the home scene imports up front. It holds no Three.js and no assets: the
- * body module and its loaders are fetched by importBody(), and only when bodyWanted() and bodyAllowed() both say so.
- * Anything that fails on the way (no WebGL2, a fetch, a parse) leaves the procedural avatar exactly as it is.
+ * This file is the only part of the body the scenes import up front. It holds no Three.js and no assets: the body
+ * module and its loaders are fetched by importBody(), after the scene's first frame, and only when bodyAllowed() and
+ * drawsWebGL2() both say so. Anything that fails on the way leaves the procedural avatar exactly as it is.
  */
-
-/** True when the page asked for the skinned body: `?body=skinned`. */
-export function bodyWanted(search: string = globalThis.location?.search ?? ''): boolean {
-  try { return new URLSearchParams(search).get('body') === 'skinned'; } catch { return false; }
-}
 
 /** What the device check reads (navigator in a browser; a plain object in tests). */
 export interface BodyDevice {
@@ -39,7 +34,7 @@ export function drawsWebGL2(renderer: { getContext?: () => unknown } | null | un
   try { return Boolean(Context && renderer?.getContext && renderer.getContext() instanceof Context); } catch { return false; }
 }
 
-/** How many times the body module has been asked for (tests: none at all with the flag off). */
+/** How many times the body module has been asked for (tests: none at all without WebGL2). */
 export const bodyImports = { count: 0 };
 
 /** Fetch the body module. The only way the game reaches it. */

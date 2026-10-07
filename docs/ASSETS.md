@@ -2,9 +2,9 @@
 
 Assets the game ships that it did not make itself, where they came from, under what licence, and how they are rebuilt.
 
-## Skinned body spike (`public/body/`)
+## Skinned body (`src/scene/body/assets/`)
 
-Behind `?body=skinned`, in the home scene only, the player's own figure is one skinned mesh with baked clips instead of the procedural avatar (`src/scene/characters.ts`). Without the flag nothing below is fetched.
+For every player, with no switch, the player's own figure is one skinned mesh with baked clips instead of the procedural avatar (`src/scene/characters.ts`): in the home room, in every venue, and in the look preview once the world has fetched it. Other players and NPCs keep the procedural figure. The files are built into `dist/assets/` with hashed names (`base-body-male-<hash>.glb`, `base-body-female-<hash>.glb`, `clip-pack-<hash>.glb`), served as `model/gltf-binary` and cached as immutable. Nothing below is fetched before a scene's first frame, or at all on a device the fallback rules below exclude.
 
 ### Sources
 
@@ -80,7 +80,7 @@ For each body, the pipeline:
 
 The pipeline also:
 
-- writes `public/body/clips.glb`, which holds clips only (no mesh). Each clip keeps rotation tracks on the 23 bones plus the pelvis translation; scale tracks are dropped.
+- writes `src/scene/body/assets/clip-pack.glb`, which holds clips only (no mesh). Each clip keeps rotation tracks on the 23 bones plus the pelvis translation; scale tracks are dropped.
 - writes `src/scene/body/manifest.ts` with sizes, triangle and bone counts, the clip list, and the texture's measured skin colour, which the runtime tints from.
 
 ### Clips
@@ -109,7 +109,7 @@ The mapping lives in `src/scene/body/tint.ts` and is tested in `tint.test.ts`.
 
 | Saved look field | On the skinned body |
 | --- | --- |
-| `body` | `man` wears `male.glb`; anything else wears `female.glb` |
+| `body` | `man` wears `base-body-male.glb`; anything else wears `base-body-female.glb` |
 | `skin` | Skin texels are multiplied by `look.skin / skinRef` in linear RGB, where `skinRef` is the texture's measured mean skin colour. The painted shading, lips, eyes and brows stay; only the tone moves. |
 | `outfitColor` | Top: torso, clavicles and upper arms |
 | `bottomsColor` | Bottoms: hips and legs |
@@ -125,21 +125,20 @@ Brotli sizes are at quality 11. `src/scene/body/body-assets.test.ts` holds the f
 
 | File | Raw | Brotli | Budget (brotli) | Contents |
 | --- | --- | --- | --- | --- |
-| male.glb | 159,916 B | 138,098 B | ≤ 300 KB | 9,002 triangles (from 13,396), 23 bones, one primitive, one material |
-| female.glb | 157,992 B | 137,296 B | ≤ 300 KB | 9,002 triangles (from 13,642), 23 bones, one primitive, one material |
-| clips.glb | 53,896 B | 13,984 B | ≤ 200 KB | 8 clips |
+| base-body-male.glb | 159,916 B | 138,098 B | ≤ 300 KB | 9,002 triangles (from 13,396), 23 bones, one primitive, one material |
+| base-body-female.glb | 157,992 B | 137,296 B | ≤ 300 KB | 9,002 triangles (from 13,642), 23 bones, one primitive, one material |
+| clip-pack.glb | 53,896 B | 13,984 B | ≤ 200 KB | 8 clips |
 | lazy chunk `skinned-*.js` | 71,016 B | 18,891 B | — | body module, GLTFLoader, meshopt decoder |
 
-With the flag, a player fetches one body, the clips and the chunk: about 171 KB brotli after first paint, within the 500 KB budget. The first load is unchanged.
+A player fetches one body, the clips and the chunk: about 171 KB brotli after first paint, within the 500 KB budget. The first load is unchanged.
 
 ### How the runtime falls back
 
 The procedural avatar stays, byte for byte, in each of these cases:
 
-- the flag is off;
 - Data Saver is on, or the connection is 2G;
 - the device has 2 or fewer cores, or 2 GB of memory or less;
 - the renderer is not WebGL2;
 - any fetch, parse or build of the body fails. A console warning is logged and the body is not retried.
 
-These checks live in `src/scene/body/flag.ts` and the "SKINNED BODY SPIKE" section of `src/scene/home-scene.ts`.
+These checks live in `src/scene/body/gate.ts`, the "SKINNED BODY" section of `src/scene/home-scene.ts`, the venue stand-in `src/scene/body/stand-in.ts` (owned by `src/venue-world.ts`), and the look preview `src/scene/avatar-preview.ts`. There is no user setting and no address flag.

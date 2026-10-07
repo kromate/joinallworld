@@ -3,6 +3,7 @@ await preloadCityContent('lagos');
 // Abuja's scenes: every venue of the city builds headlessly inside the rendering budget with a place for each of its
 // spots, and every scene of src/scene/venues-fct.ts is a scene of its own. Nothing here needs WebGL.
 import test from 'node:test';
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS, SCENE_LIGHTS } from '../budgets.ts';
 import assert from 'node:assert/strict';
 import { createKit } from './kit.ts';
 import type { SceneVenue } from './types.ts';
@@ -14,7 +15,7 @@ import { loadAllCityScenes } from './city-scenes.ts';
 await loadAllCityScenes();
 
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail, once, on top.
-const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
+const TRIANGLE_BUDGET = SCENE_TRIANGLES.value, DRAW_CALL_BUDGET = SCENE_DRAW_CALLS.value;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
 const all = (): string[] => Object.entries(VARIANTS).flatMap(([kind, variants]) => Object.keys(variants).map((variant) => `${kind}/${variant}`));
 /** The venues that are drawn by a scene of their own, and the ones that keep the scene of their kind. */
@@ -42,7 +43,7 @@ test('every Abuja venue builds in budget with its own scene: each spot and game 
     const stats = entry.stats();
     report.push(`${authored.id} ${kind}${variant ? `/${variant}` : ''} ${stats.triangles} ${stats.drawCalls}`);
     assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
-    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
+    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= SCENE_LIGHTS.value, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
     const { grid, entrance } = entry.walk;
     assert.ok(grid && entrance, `${authored.id} has a floor and an entrance`);
     assert.ok(grid.path(entrance.x, entrance.z, entrance.x, entrance.z) !== null && grid.nearest(entrance.x, entrance.z), `${authored.id}: the entrance is on the floor`);

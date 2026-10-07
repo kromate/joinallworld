@@ -3,6 +3,7 @@ await preloadCityContent('lagos');
 // Port Harcourt's scenes: every venue of the city builds headlessly inside the rendering budget, with a place for each
 // of its spots and game tables and a way to it. Nothing here needs WebGL.
 import test from 'node:test';
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS, SCENE_LIGHTS } from '../budgets.ts';
 import assert from 'node:assert/strict';
 import { createKit } from './kit.ts';
 import type { SceneVenue } from './types.ts';
@@ -16,7 +17,7 @@ await loadAllCityScenes();
 
 const CITY = 'port-harcourt';
 // The scene and its crowd keep to 15,000; the player's own figure is drawn at medium detail, once, on top.
-const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
+const TRIANGLE_BUDGET = SCENE_TRIANGLES.value, DRAW_CALL_BUDGET = SCENE_DRAW_CALLS.value;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
 const everyVariant = (): string[] => Object.entries(VARIANTS).flatMap(([kind, variants]) => Object.keys(variants).map((variant) => `${kind}/${variant}`));
 
@@ -38,7 +39,7 @@ test('every Port Harcourt venue builds in budget with its own scene: each spot a
     const stats = entry.stats();
     report.push(`${authored.id} ${venue.scene!.kind}${variant ? `/${variant}` : ''} ${stats.triangles} ${stats.drawCalls}`);
     assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
-    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
+    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= SCENE_LIGHTS.value, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
     const { grid, entrance } = entry.walk;
     const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
       const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);

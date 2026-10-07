@@ -159,6 +159,14 @@ test('text filter: refused with a reason, never altered — names, venue chat, m
   assert.equal(refused.message, refused.reason, 'the sentence is also in `message`, the field the community panel prints');
   a.ws.send(JSON.stringify({ type: 'chat', body: 'How far? Niger State next week', clientId: 'ok-1' }));
   assert.equal((await until(b, 'chat')).body, 'How far? Niger State next week', 'the first chat line Bola receives is the clean one, unaltered');
+  // Venue chat is public, so a link, a phone or bank number, an e-mail address or a handle on another app is refused with a reason that says what to change.
+  for (const [body, code] of [['send ₦500 to 0801 234 5678', 'contact_not_allowed'], ['account 0123456789 GTB', 'contact_not_allowed'], ['mail me ada@example.org', 'links_not_allowed'], ['WhatsApp: adaplays', 'contact_not_allowed'], ['free naira at www.example.com', 'links_not_allowed'], ['https://x.y/win', 'links_not_allowed']] as const) {
+    a.ws.send(JSON.stringify({ type: 'chat', body, clientId: `pub-${body.length}` }));
+    const said = await until(a, 'error');
+    assert.deepEqual([said.code, said.clientId], [code, `pub-${body.length}`], body); assert.match(said.reason ?? '', /^Your message cannot contain/);
+  }
+  a.ws.send(JSON.stringify({ type: 'chat', body: 'Jollof ₦1,000,000 o, 24/7', clientId: 'ok-2' }));
+  assert.equal((await until(b, 'chat')).body, 'Jollof ₦1,000,000 o, 24/7', 'money and numbers that are not phone numbers still go through, and Bola saw none of the refused lines first');
   // Messages and group names.
   const dm = await post('/api/social/messages', { to: bola.id, body: 'k y s', clientId: clientId() }, ada);
   assert.deepEqual([dm.status, dm.ok, dm.code], [200, false, 'text_blocked']); assert.match(dm.reason ?? '', /Nothing was sent or saved/);

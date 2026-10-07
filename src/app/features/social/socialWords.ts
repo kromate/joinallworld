@@ -22,8 +22,9 @@ export const dotOf = (status: string | undefined): string => (status && status i
 export const dotHint = (status: string | undefined): string => (status && status in PRESENCE ? PRESENCE[status as PresenceStatus].hint : '')
 /** The presence class of a status word; an unknown word is offline. */
 export const presenceClass = (status: string | undefined): string => (status && status in PRESENCE ? status : 'offline')
-/** 'harassment' → 'Harassment', 'offensive-name' → 'Offensive name'. */
-export const reasonLabel = (reason: string): string => `${reason.charAt(0).toUpperCase()}${reason.slice(1).replace('-', ' ')}`
+const REASON_LABELS: Record<string, string> = { harassment: 'Insults or harassment', scam: 'Scam or begging', spam: 'Spam', cheating: 'Cheating', 'offensive-name': 'Offensive name', other: 'Something else' }
+/** 'harassment' → 'Insults or harassment', 'scam' → 'Scam or begging'; a reason without its own words is capitalised as it is. */
+export const reasonLabel = (reason: string): string => REASON_LABELS[reason] ?? `${reason.charAt(0).toUpperCase()}${reason.slice(1).replace('-', ' ')}`
 /** 'hunger' → '+Hunger', for an action's tags. */
 export const tagLabel = (tag: string): string => `+${tag.charAt(0).toUpperCase()}${tag.slice(1)}`
 /** Why the Call button is off, or null. `cannot` is the connection wording for "call". */

@@ -21,6 +21,8 @@ const ADA = '9d1c7e52-3b7a-4f0e-8a55-0c2d4e6f8a10', BOLA = '1f2e3d4c-5b6a-4788-9
 const ENV = { TELEMETRY_ENV: 'production', SENTRY_DSN_SERVER: 'https://serverkey@o1.ingest.sentry.example/42', SENTRY_DSN_CLIENT: 'https://clientkey@o1.ingest.sentry.example/41',
   POSTHOG_KEY: 'phc_projectkey123', POSTHOG_HOST: 'https://eu.i.posthog.com', BUILD_ID: 'build-7' };
 const CHAT = 'meet me at the bar tonight, call 0803 555 0199';
+/** Venue chat refuses contact details (strangers read it), so the public line carries none; the private one above does. */
+const VENUE_CHAT = 'meet me at the bar tonight';
 
 type Dict = Record<string, unknown>;
 type Fixture = Awaited<ReturnType<typeof fixture>>;
@@ -381,8 +383,8 @@ test('friends, chat and voice are counted exactly once for players who accepted 
 
   // Venue chat: one count for the sender, whatever the number of listeners; a resend of the same line is not a second message.
   const a = await f.joinRoom(ada), b = await f.joinRoom(bola), c = await f.joinRoom(chi);
-  a.ws.send(JSON.stringify({ type: 'chat', body: CHAT, clientId: 'line-1' })); await until(a, 'chat');
-  a.ws.send(JSON.stringify({ type: 'chat', body: CHAT, clientId: 'line-1' })); await until(a, 'chat');
+  a.ws.send(JSON.stringify({ type: 'chat', body: VENUE_CHAT, clientId: 'line-1' })); await until(a, 'chat');
+  a.ws.send(JSON.stringify({ type: 'chat', body: VENUE_CHAT, clientId: 'line-1' })); await until(a, 'chat');
   c.ws.send(JSON.stringify({ type: 'chat', body: 'hello from someone who rejected', clientId: 'line-2' })); await until(c, 'chat');
   // A direct message over the socket.
   a.ws.send(JSON.stringify({ type: 'dm-send', to: bola.id, body: CHAT, clientId: f.id() })); await until(a, 'dm-sent');

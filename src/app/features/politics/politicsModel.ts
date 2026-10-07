@@ -1,12 +1,15 @@
 // Politics: the keys and paths of what the app reads, and the sentences it shows. Pure: no application code, so the tests load it alone.
 import type { GovResponse } from '../../../types/civic.ts'
-import type { CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../../types/politics.ts'
+import type { RecordEntryView, RecordKind } from '../../../types/records.ts'
+import { entryHash, verifyChain } from '../../../records/chain.ts'
+import type { ChainEntry } from '../../../records/chain.ts'
+import type { AuditFlag, CaseView, JusticeResponse, JusticeSeatView, LeverView, OffenceView, PartyView, PoliticsResponse, SeatView, TierId, Verdict } from '../../../types/politics.ts'
 import { PARTY } from '../../../game/content/politics.ts'
 import { govKey } from '../civic/civicModel.ts'
 
-export type TabId = TierId | 'parties' | 'justice'
+export type TabId = TierId | 'parties' | 'justice' | 'records'
 export const TABS: readonly { id: TabId; label: string }[] = [
-  { id: 'city', label: 'City' }, { id: 'state', label: 'State' }, { id: 'nation', label: 'Nation' }, { id: 'parties', label: 'Parties' }, { id: 'justice', label: 'Justice' },
+  { id: 'city', label: 'City' }, { id: 'state', label: 'State' }, { id: 'nation', label: 'Nation' }, { id: 'parties', label: 'Parties' }, { id: 'justice', label: 'Justice' }, { id: 'records', label: 'Records' },
 ]
 export const overviewKey = (cityId: string): string => `politics:${cityId}`
 export const overviewPath = (cityId: string): string => `/api/politics/overview?city=${cityId}`
@@ -92,3 +95,56 @@ export const statementWhy = (offline: string | null, statement: string): string 
 export const noteWhy = (offline: string | null, note: string): string => offline ?? ([...note.trim()].length < 3 ? 'Give your reasons first (at least 3 characters). They are public.' : '')
 export const caseLine = (found: Pick<CaseView, 'defendant' | 'officer'>): string => `${found.defendant.name}, arrested by ${found.officer.name}`
 export const rulingLine = (found: Pick<CaseView, 'ruling'>): string => (found.ruling ? `${found.ruling.by.name} ${verdictText(found.ruling.verdict)} it: ${found.ruling.note}` : '')
+
+// ---- accountability ----------------------------------------------------------------------------------
+
+export const FLAG_TEXT: Readonly<Record<AuditFlag, string>> = {
+  concentration: 'Most of the money granted went to one person.',
+  party_favour: 'Most of the money granted went to the officeholder’s own party.',
+  drained: 'Salary and grants took almost everything that came in.',
+}
+/** The audit in a sentence: what came in and where it went, and whether anything stood out. */
+export function auditLine(audit: NonNullable<SeatView['audit']>): string {
+  return `This term ${naira(audit.income)} came in; ${naira(audit.salary)} was drawn as salary and ${naira(audit.granted)} granted in ${audit.grants} grant${audit.grants === 1 ? '' : 's'}.`
+}
+/** Why the petition cannot be signed now, or ''. */
+export function petitionWhy(offline: string | null, petition: NonNullable<SeatView['petition']>, signedIn: boolean): string {
+  if (offline) return offline
+  if (!signedIn) return 'Connect to sign.'
+  if (petition.mine) return 'You have signed.'
+  return petition.open ? '' : 'An impeachment needs an audit of this term that found something. Ask for an audit first.'
+}
+/** Why a grant cannot be paid yet, or ''. */
+export function grantWhy(offline: string | null, amount: unknown, purpose: string, room: number): string {
+  if (offline) return offline
+  if (typeof amount !== 'number' || !Number.isInteger(amount) || amount < 1) return 'Enter a whole number of naira.'
+  if (amount > room) return room > 0 ? `A grant can be at most ${naira(room)} now.` : 'The treasury has nothing to give.'
+  return [...purpose.trim()].length < 3 ? 'Say what the grant is for (at least 3 characters). It is public.' : ''
+}
+
+// ---- the public record --------------------------------------------------------------------------------
+
+export const RECORD_FILTERS: readonly { id: RecordKind | 'all'; label: string }[] = [
+  { id: 'all', label: 'Everything' }, { id: 'term', label: 'Elections' }, { id: 'ruling', label: 'Rulings' }, { id: 'impeachment', label: 'Removals' }, { id: 'party', label: 'Parties' }, { id: 'operator', label: 'The operator' },
+]
+export const recordsPath = (kind: RecordKind | 'all', before: number | null): string => `/api/world/records?limit=30${kind === 'all' ? '' : `&kind=${kind}`}${before === null ? '' : `&before=${before}`}`
+export const kindLabel = (kind: RecordKind): string => RECORD_FILTERS.find((item) => item.id === kind)?.label.replace(/s$/, '') ?? kind
+/** An entry's date, as a short Lagos-time day. */
+export const recordDate = (at: number): string => new Date(at).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Africa/Lagos' })
+
+export interface RecordCheck { ok: boolean; line: string }
+/**
+ * What the page can say it checked. A whole run of the chain (an unfiltered list) is checked link by link; a filtered list is not
+ * consecutive, so each entry's own seal is checked instead. Entries arrive newest first and are checked oldest first.
+ */
+export function checkRecords(entries: readonly RecordEntryView[], whole: boolean): RecordCheck {
+  if (!entries.length) return { ok: true, line: 'Nothing has been recorded yet.' }
+  const ordered: ChainEntry[] = [...entries].reverse().map((entry) => ({ ...entry }))
+  if (whole) {
+    const result = verifyChain(ordered)
+    return result.ok ? { ok: true, line: `Checked in your browser: ${ordered.length} entries, each sealed by the one before.` } : { ok: false, line: `Entry ${result.brokenAt} does not match its seal. This record has been changed.` }
+  }
+  const broken = ordered.find((entry) => entryHash(entry, entry.prev) !== entry.hash)
+  return broken ? { ok: false, line: `Entry ${broken.n} does not match its seal. This record has been changed.` } : { ok: true, line: `Checked in your browser: the seal of each of these ${ordered.length} entries holds.` }
+}
+export const shortHash = (hash: string): string => `${hash.slice(0, 8)}…${hash.slice(-6)}`

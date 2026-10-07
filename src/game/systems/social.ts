@@ -20,7 +20,7 @@ import { cachedCityContent, isCityId } from '../cities/registry.ts';
  * NPC interactions are ordinary activities ('npc-<npc>-<action>') at the venue's People spot,
  * run by the foundation's activity engine (core 'activity' to start, 'cancel' to stop). Every
  * public venue has its regulars, so every public venue has a People spot.
- * With the `dilemmas` switch on (src/game/features.ts) a regular also offers the place actions of src/game/place-actions.ts
+ * A regular also offers (once the dilemma kit is installed, src/game/features.ts) the place actions of src/game/place-actions.ts
  * (Haggle, Greet with Respect, Join the Queue, …). They count toward the same four-a-day limit, and a regular remembers up to four tags (`rel.tags`).
  *
  * Actions
@@ -56,7 +56,7 @@ import type {
   PlaceAction, PlayerAction, Relationship, SocialServerOp, SocialServerOpMap, SocialState, SocialView, SystemDefinition, TierDefinition, TransferBlockCode, VenueId,
 } from '../../types/index.ts';
 import { LEFT_OUT, PLAYS } from '../profile.ts';
-import { dilemmaKit, dilemmasEnabled, loadedDilemmaKit } from '../features.ts';
+import { dilemmaKit, dilemmasEnabled } from '../features.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, clamp, cleanText, fail, finite, isId, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime } from '../clock.ts';
@@ -374,7 +374,7 @@ const attachedAction = (npc: NpcDefinition, action: NpcAction): AttachedActivity
   social: { npc: npc.id, action: action.id },
   where: { venue: npc.venue, spot: 'people', spotLabel: 'People', spotIcon: '👥' },
 });
-/** The place actions a regular offers at its venue (none while the `dilemmas` switch is off). With `now` null the hour is ignored. */
+/** The place actions a regular offers at its venue (none while no dilemma kit is installed). With `now` null the hour is ignored. */
 const placeActionsAt = (npc: NpcDefinition, cityId: string, now: number | null): PlaceAction[] => dilemmaKit()?.placeActionsFor(npc, cityId, now) ?? [];
 const cityActivities = (cityId: string): AttachedActivity[] => regularsFor(cityId).filter((npc) => npc.venue !== 'home' && venueFor(cityId, npc.venue))
   .flatMap((npc) => [...NPC_ACTIONS, ...placeActionsAt(npc, cityId, null)].map((action) => attachedAction(npc, action)));
@@ -458,11 +458,11 @@ const play = PLAYS ? {
         state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
       }
       if (!def?.social) return;
-      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action: NpcAction | PlaceAction | undefined = NPC_ACTIONS.find((item) => item.id === def.social?.action) ?? loadedDilemmaKit()?.placeActionById(def.social.action);
+      const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action: NpcAction | PlaceAction | undefined = NPC_ACTIONS.find((item) => item.id === def.social?.action) ?? dilemmaKit()?.placeActionById(def.social.action);
       if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined
       const { landed, result } = interact(state, npc.id, action, { npc: true, npcDefinition: npc, cityId: ctx.cityId }, ctx, false);
       const quote = npc.quotes[Math.floor(ctx.rng() * npc.quotes.length)];
-      const found = loadedDilemmaKit()?.placeActionById(action.id);
+      const found = dilemmaKit()?.placeActionById(action.id);
       const place = found && found === action ? found : null;
       const granted = landed && place ? grantPlace(state, npc.id, place, ctx) : '';
       state.message = landed
@@ -540,7 +540,7 @@ export default {
         return { code: 'npc_daily_limit', reason: `${npc.name} has heard enough from you today (${DAILY_INTERACTIONS} interactions). Come back tomorrow.` };
       }
       // After-service greetings only make sense just after a service (the catalogue lists them always; the hour is checked here).
-      const kit = loadedDilemmaKit();
+      const kit = dilemmaKit();
       if (kit?.placeActionById(def.social.action)?.afterService && !kit.isAfterService(kit.placeKindOf(ctx.cityId, npc.venue), nowOf(state, ctx))) {
         return { code: 'not_now', reason: `${npc.name} is not greeting people right now. Come back just after a service ends.` };
       }

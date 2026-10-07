@@ -7,9 +7,9 @@
 import type { PlaceAction } from '../../types/content.ts';
 
 /**
- * Interactions a regular offers because of where they are, who they are or when it is (behind the `dilemmas` switch, src/game/features.ts; which regular
+ * Interactions a regular offers because of where they are, who they are or when it is (the kit: src/game/features.ts; which regular
  * offers which is decided in src/game/place-actions.ts). They run exactly like NPC_ACTIONS (the same activity engine, the same four-a-day limit per person)
- * and are listed apart from it so that, with the switch off, the catalogue is the one it always was. The ids are shared by every city; `label` is English and
+ * and are listed apart from it so that, with no kit installed, the catalogue is the one it always was. The ids are shared by every city; `label` is English and
  * `pcmLabel` Nigerian Pidgin (every one is `beta`: the Pidgin has not been reviewed by a speaker). Every number is an original beta value.
  *   places        kinds of place that offer it (placeKindOf: scene kinds, with 'worship' split into 'church' and 'mosque')
  *   elder         offered by regulars who are elders

@@ -54,7 +54,7 @@ test('entries layout: an existing legacy collection is moved when the layout ask
   const before = await legacy.layout.logical();
   const store = open(t.storage, { layout: 'entries' });
   assert.deepEqual(await store.read((db) => (db['social'] as Social).players['p3']?.name), 'Player 3 \u{1F600}');
-  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business']);
+  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business', 'records']);
   assert.deepEqual(await store.layout.logical(), before);
   assert.equal((t.db.prepare("SELECT value FROM collections WHERE name='social'").get() as { value: string }).value, stored, 'the legacy value is untouched');
   assert.equal(count(t, "SELECT COUNT(*) AS n FROM entries WHERE coll='social'"), 60);

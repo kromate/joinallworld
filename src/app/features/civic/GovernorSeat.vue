@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// The State House block: the sitting Governor, or the empty seat. Shared by the Governor app and
+// The council block: the sitting Chairman of the city, or the empty seat. Shared by the Governor app and
 // the State House sheet.
 import { computed } from 'vue'
 import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
@@ -16,14 +16,10 @@ const view = game.view
 const cityId = computed(() => props.data.city ?? view.value.cityId)
 const lagos = computed(() => cityId.value === 'lagos')
 const cityName = computed(() => cityRules(cityId.value)?.name ?? view.value.city.name)
-// A city is not a state: the house is named for the state the city is in ("Oyo State House"), not for the city.
-const stateName = computed(() => cityRules(cityId.value)?.state.name ?? cityName.value)
 const role = computed(() => civicTitle(cityId.value))
-// A city whose elected office is not a Governor's (the Federal Capital Territory has none) names its own office and says what it is.
-const governed = computed(() => role.value === 'Governor')
 const explanation = computed(() => cachedCityContent(cityId.value)?.civicExplanation)
-const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : governed.value ? `${stateName.value} House` : `${cityName.value} ${civicOffice(cityId.value)}`))
-const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${governed.value ? stateName.value : cityName.value} has no ${role.value} yet. Sign up to vote, or run for office yourself.`))
+const title = computed(() => (lagos.value ? STATE_HOUSE_TEXT.title : `${cityName.value} ${civicOffice(cityId.value)}`))
+const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${cityName.value} has no ${role.value} yet. Sign up to vote, or run for office yourself.`))
 </script>
 
 <template>

@@ -4,7 +4,7 @@
 // One screen for the three seats (city, state, nation) and the parties. The ballot of a seat is GET /api/civic/gov?tier=; the rest
 // (rules, treasury, parties) is GET /api/politics/overview. Every control that is off says why. Filing a candidacy, drawing the
 // salary and founding a party keep their request id until applied, so pressing again after a lost answer is the SAME request.
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
 import type { CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
@@ -19,16 +19,18 @@ import { colourOf, sloganTooShort, until, votes, PHASES, NEXT, voteWhy, runWhy, 
 import { AD_COLOURS, ELECTION } from '../civic/civicContent.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { appealRequest, arrestRequest, bailRequest, escalateRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
-import { TABS, VERDICTS, arrestWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
+import type { RecordEntryView, RecordKind, RecordsResponse } from '../../../types/records.ts'
+import { RECORD_FILTERS, checkRecords, kindLabel, recordDate, recordsPath, shortHash } from './politicsModel.ts'
+import { FLAG_TEXT, TABS, VERDICTS, arrestWhy, auditLine, petitionWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
 
-defineProps<{ params?: unknown }>()
+const props = defineProps<{ params?: unknown }>()
 const { game } = useApp()
 const civic = useCivic()
 const offline = useOffline()
 const view = game.view
 const cityId = computed(() => view.value.cityId)
 const overview = useLoaded<PoliticsResponse>({ key: () => overviewKey(cityId.value), path: () => overviewPath(cityId.value), maxAge: 20000 })
-const tier = computed<TierId | null>(() => (ui.tab === 'parties' || ui.tab === 'justice' ? null : ui.tab))
+const tier = computed<TierId | null>(() => (ui.tab === 'parties' || ui.tab === 'justice' || ui.tab === 'records' ? null : ui.tab))
 const justice = useLoaded<JusticeResponse>({ key: () => justiceKey(cityId.value), path: () => justicePath(cityId.value), maxAge: 15000, when: () => ui.tab === 'justice' })
 const law = computed(() => justice.item.value.data)
 const ballot = useLoaded<GovResponse>({ key: () => ballotKey(cityId.value, tier.value ?? 'city'), path: () => ballotPath(cityId.value, tier.value ?? 'city'), maxAge: 20000, when: () => tier.value !== null })
@@ -87,6 +89,22 @@ async function found(): Promise<void> {
 async function joinParty(id: string): Promise<void> { done(await civic.send(`p-join:${id}`, '/api/politics/party/join', { party: id }, { success: 'You joined the party.' })) }
 async function leaveParty(): Promise<void> { done(await civic.send('p-leave', '/api/politics/party/leave', {}, { success: 'You left your party.' })) }
 const bgOf = (id: string): string => colourOf(AD_COLOURS, id).bg
+// A link such as /records opens the app on its tab.
+watch(() => props.params, (given) => { const tab = typeof given === 'object' && given !== null ? Reflect.get(given, 'tab') : undefined; if (TABS.some((item) => item.id === tab)) ui.tab = tab as typeof ui.tab }, { immediate: true })
+
+// The public record: read without signing in, a page at a time, and checked here against its seals.
+const filter = ref<RecordKind | 'all'>('all')
+const hall = ref<{ entries: RecordEntryView[]; before: number | null; head: string; count: number; loading: boolean; error: string | null }>({ entries: [], before: null, head: '', count: 0, loading: false, error: null })
+async function loadRecords(more = false): Promise<void> {
+  if (hall.value.loading) return
+  hall.value.loading = true; hall.value.error = null
+  try {
+    const answer = await game.fetchJson<RecordsResponse>(recordsPath(filter.value, more ? hall.value.before : null))
+    hall.value = { entries: more ? [...hall.value.entries, ...answer.entries] : answer.entries, before: answer.before, head: answer.head, count: answer.count, loading: false, error: null }
+  } catch { hall.value.loading = false; hall.value.error = 'The record could not be loaded. Try again.' }
+}
+const hallCheck = computed(() => checkRecords(hall.value.entries, filter.value === 'all'))
+watch([() => ui.tab, filter], ([tab]) => { if (tab === 'records') void loadRecords() }, { immediate: true })
 function doneLaw(result: Record<string, unknown>): void {
   if (result.justice) civic.put(justiceKey(cityId.value), result.justice as JusticeResponse)
   civic.changed()
@@ -123,6 +141,14 @@ async function rule(found: CaseView, verdict: Verdict): Promise<void> {
   if (result.ok) ui.court.note = ''
   doneLaw(result)
 }
+async function audit(): Promise<void> { done(await civic.send('p-audit', '/api/politics/audit', { tier: tier.value }, { success: 'The audit is in.' })) }
+async function impeach(): Promise<void> {
+  const result = await civic.send('p-impeach', '/api/politics/impeach', { tier: tier.value }, { success: 'You signed the petition.' })
+  if (result.ok && result.code === 'removed') game.toast('The petition succeeded: the officeholder is removed.', 'good')
+  done(result)
+  const at = tier.value
+  if (at) civic.load(ballotKey(cityId.value, at), ballotPath(cityId.value, at), { force: true })
+}
 async function dismissOfficer(tierId: string, player: string): Promise<void> { doneLaw(await civic.send(`p-dismiss:${player}`, '/api/politics/justice/dismiss', { tier: tierId, player }, { success: 'The officer is dismissed.' })) }
 const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', { day: 'numeric', month: 'short' })
 </script>
@@ -132,6 +158,7 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
     <nav class="politics-tabs" role="tablist" aria-label="Politics">
       <button v-for="tab in TABS" :key="tab.id" type="button" role="tab" :aria-selected="ui.tab === tab.id" :class="{ 'is-on': ui.tab === tab.id }" @click="ui.tab = tab.id">{{ tab.label }}</button>
     </nav>
+    <p v-if="data" class="politics-week"><strong>{{ PHASES[data.cycle.phase] }}</strong> · {{ NEXT[data.cycle.phase] }} in <b>{{ until(data.cycle.endsAt, view.now) }}</b>. City, state and national seats all follow this week.</p>
     <CivicStatus :item="overview.item.value" @retry="overview.reload" />
 
     <template v-if="data && seat && tier">
@@ -205,6 +232,25 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
         </ul>
         <p v-else class="politics-note">Nothing has been paid in yet.</p>
       </section>
+
+      <SectionTitle>Accountability</SectionTitle>
+      <section class="ui-card politics-case">
+        <p class="politics-note">This term: <b>{{ money(seat.accounts.income) }}</b> came in, <b>{{ money(seat.accounts.salary) }}</b> was drawn as salary and <b>{{ money(seat.accounts.granted) }}</b> was granted.</p>
+        <ul v-if="seat.grants.length" class="politics-ledger">
+          <li v-for="(grant, index) in seat.grants" :key="index"><span>{{ grant.to.name }}<small>{{ grant.purpose }}</small></span><b class="is-out">{{ money(grant.amount) }}</b></li>
+        </ul>
+        <p v-else class="politics-note">No grants this term.</p>
+        <CivicAction :working="civic.busy('p-audit')" :reason="offline('audit') ?? (gov?.governor ? '' : 'Nobody holds this seat.')" @click="audit">Ask for an audit</CivicAction>
+        <div v-if="seat.audit" class="politics-audit">
+          <p class="politics-note">{{ auditLine(seat.audit) }}</p>
+          <ul v-if="seat.audit.flags.length" class="politics-flags"><li v-for="flag in seat.audit.flags" :key="flag">{{ FLAG_TEXT[flag] }}</li></ul>
+          <p v-else class="politics-note">Nothing unusual was found.</p>
+        </div>
+        <template v-if="seat.petition">
+          <p class="politics-note">Petition to remove the {{ seat.title }}: <b>{{ seat.petition.signed }} of {{ seat.petition.needed }}</b> signatures. It takes more than half of the votes they won.</p>
+          <CivicAction :working="civic.busy('p-impeach')" :reason="petitionWhy(offline('sign'), seat.petition, !!seat.you)" @click="impeach">Sign to remove the {{ seat.title }}</CivicAction>
+        </template>
+      </section>
     </template>
 
     <template v-else-if="data && ui.tab === 'parties'">
@@ -233,6 +279,20 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
       </section>
     </template>
 
+
+    <template v-else-if="ui.tab === 'records'">
+      <SectionTitle>Hall of Records</SectionTitle>
+      <p class="politics-note">Every election, ruling, removal and new party is written here for good. Nothing is edited or removed, and each entry is sealed by the one before it, so a change anywhere would show.</p>
+      <div class="politics-filters" role="group" aria-label="Filter the record"><button v-for="item in RECORD_FILTERS" :key="item.id" type="button" :class="{ 'is-on': filter === item.id }" @click="filter = item.id">{{ item.label }}</button></div>
+      <p v-if="hall.error" class="politics-note is-warn" role="alert">{{ hall.error }}</p>
+      <EmptyState v-else-if="!hall.entries.length && !hall.loading" icon="ballot" title="Nothing recorded yet" text="The first finished election will be written here." />
+      <section v-for="entry in hall.entries" :key="entry.n" class="ui-card politics-entry">
+        <small>{{ recordDate(entry.at) }} · {{ kindLabel(entry.kind) }} · {{ entry.scopeName }}</small>
+        <strong>{{ entry.title }}</strong>
+      </section>
+      <CivicAction v-if="hall.before !== null" :working="hall.loading" @click="loadRecords(true)">Older entries</CivicAction>
+      <p v-if="hall.entries.length" class="politics-note" :class="{ 'is-warn': !hallCheck.ok }">{{ hallCheck.line }} {{ hall.count }} entries so far; the latest seal is <code>{{ shortHash(hall.head) }}</code>.</p>
+    </template>
     <template v-else-if="ui.tab === 'justice'">
       <CivicStatus :item="justice.item.value" @retry="justice.reload" />
       <template v-if="law">
@@ -322,8 +382,10 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 </template>
 
 <style scoped>
-.politics-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
-.politics-tabs button { min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-week { margin: 0 0 var(--s-2); padding: 8px 12px; border-radius: var(--r-sm); background: var(--c-fill); font-size: 12px; line-height: 1.4; color: var(--c-ink-2); }
+.politics-week b { color: var(--c-ink); }
+.politics-tabs { display: flex; overflow-x: auto; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
+.politics-tabs button { flex: 1 0 auto; padding: 0 12px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
 .politics-tabs button.is-on { background: #fff; color: var(--c-ink); box-shadow: var(--e-1); }
 .politics-seat { display: grid; gap: 4px; }
 .politics-seat strong { font-size: 16px; }
@@ -374,6 +436,16 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-field select { min-height: var(--tap); }
 .politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .politics-officers li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
+.politics-filters { display: flex; flex-wrap: wrap; gap: 4px; margin: var(--s-2) 0; }
+.politics-filters button { min-height: 32px; padding: 0 10px; border: 0; border-radius: 16px; background: var(--c-fill); font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-filters button.is-on { background: var(--app-tint, var(--c-green-dark)); color: #fff; }
+.politics-entry { display: grid; gap: 3px; margin-bottom: var(--s-2); }
+.politics-entry small { color: var(--c-muted); font-size: 11px; }
+.politics-entry strong { font-size: 13px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.politics-note code { font-size: 11px; }
+.politics-note.is-warn { color: var(--c-red-dark); }
+.politics-flags { margin: 0; padding-left: 18px; font-size: 13px; color: var(--c-red-dark); }
+.politics-audit { display: grid; gap: 4px; }
 .politics-colours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s-2); }
 .politics-colours button { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
 .politics-colours button.is-on { border-color: var(--c-ink); }

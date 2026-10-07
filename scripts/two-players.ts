@@ -401,7 +401,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     assert.deepEqual([gov.phase, gov.you.days, gov.you.run.ok], ['nominations', 2, true]);
     const fee = (await life(ada)).cash;
     const declared = await post<StateBody>('/api/civic/gov/run', { cityId: CITY, slogan: 'Light for every street', requestId: clientId() }, ada);
-    assert.deepEqual([declared.code, declared.state.cash, must(declared.state.ledger.at(-1)).reason], ['declared', fee - 2000, 'Governorship filing fee']);
+    assert.deepEqual([declared.code, declared.state.cash, must(declared.state.ledger.at(-1)).reason], ['declared', fee - 2000, 'Chairman filing fee']);
     assert.equal((await post<StateBody>('/api/civic/gov/run', { cityId: CITY, slogan: 'Again', requestId: clientId() }, ada)).code, 'already_candidate');
     assert.equal((await act(ada, 'civic.run', {})).code, 'server_only', 'the fee cannot be paid outside the election route');
     assert.equal((await post<VoteBody>('/api/civic/gov/vote', { cityId: CITY, candidate: ada.id }, bola)).code, 'polls_closed');
@@ -478,12 +478,12 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const pulse = await get<PulseBody>(`/api/civic/pulse?city=${CITY}`, bola);
     assert.deepEqual([pulse.checkedIn, pulse.gov.governor.name, must(pulse.notices[0]).kind], [true, 'Ada', 'announcement']);
     const updates = (await life(bola)).social.notices.map((notice) => notice.text);
-    assert.ok(updates.includes('Ada is the new Governor of Lagos: Elected with 3 of 3 votes.'), 'the result is in Bola’s Updates');
-    assert.ok(updates.includes('Governor Ada announced: Sanitation day is <b>Saturday</b>'), 'the announcement is in Bola’s Updates, stored as text');
+    assert.ok(updates.includes('Ada is the new Chairman of Lagos: Elected with 3 of 3 votes.'), 'the result is in Bola’s Updates');
+    assert.ok(updates.includes('Chairman Ada announced: Sanitation day is <b>Saturday</b>'), 'the announcement is in Bola’s Updates, stored as text');
     wait(15000);
     await get<PulseBody>(`/api/civic/pulse?city=${CITY}`, bola);
     const again = (await life(bola)).social.notices.map((notice) => notice.text);
-    assert.equal(again.filter((text) => text.startsWith('Governor Ada announced')).length, 1, 'posted once, however often he checks in');
+    assert.equal(again.filter((text) => text.startsWith('Chairman Ada announced')).length, 1, 'posted once, however often he checks in');
     assert.ok(!again.some((text) => text.startsWith('Rent paid:') || text.startsWith('Rent missed:')), 'he lives in his own starter house: Saturday brought no rent');
     say('Sunday: Ada is Governor and posts an announcement', 'it and the result are in Bola’s Updates, once; no rent notice — he lives in his own house');
 

@@ -190,7 +190,7 @@ export interface MilestoneInput { now: number; cityId: string; /** Table wins no
 export function milestoneFacts(state: LifeState, input: MilestoneInput): Milestone[] {
   const found: Milestone[] = [];
   const { now } = input;
-  if (input.civic.elected !== null) found.push({ key: `elected:${input.civic.elected}`, what: 'elected', label: 'You were elected Governor' });
+  if (input.civic.elected !== null) found.push({ key: `elected:${input.civic.elected}`, what: 'elected', label: 'You were elected Chairman' });
   const up = state.estate?.upgrade;
   if (up && up.doneAt <= now) found.push({ key: `house:${up.doneAt}`, what: 'house', label: HOUSE_TIERS[up.to].label });
   for (const deposit of state.economy?.deposits ?? []) {
@@ -198,7 +198,7 @@ export function milestoneFacts(state: LifeState, input: MilestoneInput): Milesto
     if (term && deposit.openedAt + term.days * DAY <= now) found.push({ key: `deposit:${deposit.id}`, what: 'deposit', label: term.label });
   }
   for (const win of input.wins) if (win.won) found.push({ key: `table:${win.id}`, what: 'table', label: 'a table game' });
-  if (input.civic.voting !== null) found.push({ key: `vote:${input.civic.voting}`, what: 'vote', label: 'the Governor election' });
+  if (input.civic.voting !== null) found.push({ key: `vote:${input.civic.voting}`, what: 'vote', label: 'the Chairman election' });
   const job = typeof state.job === 'string' && Object.hasOwn(JOBS, state.job) ? JOBS[state.job] : null;
   // A shift is a milestone only for a job with fixed work days (the starter job is open every day).
   if (job && 'track' in job && job.track && shiftStatus(state, makeContext({ now, cityId: input.cityId })).code === 'available') found.push({ key: `shift:${lagosTime(now).day}`, what: 'shift', label: job.label });

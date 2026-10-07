@@ -99,7 +99,7 @@ test('the map actor seats the real avatar on a model anchor and poses one owned 
   kit.dispose();
 });
 
-test('with the flag off (the default) the actor rides the game\'s own batch-drawn vehicle and builds nothing of the library', () => {
+test('without a vehicle builder (the library failed to load) the actor rides the game\'s own batch-drawn vehicle', () => {
   const kit = createKit();
   const actor = createActor(kit);
   actor.setPlayer({ seed: 'default' });
@@ -130,7 +130,7 @@ test('a model trip vehicle stays inside the map\'s budget: at most 1,500 triangl
 });
 
 
-test('boat keeps a real vehicle and passenger when the optional road model library is enabled', () => {
+test('boat keeps a real vehicle and passenger when the road model library is loaded', () => {
   const kit = createKit();
   const actor = createActor(kit, { travelVehicle: buildTravelVehicle as unknown as TravelVehicleBuilder });
   actor.setPlayer({ seed: 'boat-passenger' });

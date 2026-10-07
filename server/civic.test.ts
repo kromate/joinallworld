@@ -152,7 +152,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(newcomer.code, 'too_new'); assert.match(reasonOf(newcomer), /at least 2 days/); assert.equal(newcomer.state.cash, 5000);
   const declared = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: '  Light <b>for</b> all  ' }, ada);
   assert.equal(declared.ok, true); assert.equal(declared.code, 'declared'); assert.equal(declared.state.cash, 3600);
-  assert.deepEqual(declared.state.ledger.at(-1), { at: MONDAY + 60000, amount: -2000, reason: 'Governorship filing fee', balance: 3600 });
+  assert.deepEqual(declared.state.ledger.at(-1), { at: MONDAY + 60000, amount: -2000, reason: 'Chairman filing fee', balance: 3600 });
   assert.deepEqual(declared.gov.election.candidates, [{ id: ada.id, name: 'Ada', slogan: 'Light <b>for</b> all', votes: 0, you: true }]);
   const twice = await post('/api/civic/gov/run', { cityId: 'lagos', slogan: 'Light for all' }, ada);
   assert.equal(twice.code, 'already_candidate'); assert.equal(twice.state.cash, 3600, 'a repeat is never charged again');
@@ -204,7 +204,7 @@ test('governor: a full weekly election with stated eligibility, one vote each, l
   assert.equal(cooling.code, 'announcement_cooldown'); assert.match(reasonOf(cooling), /more minutes/);
   const pulse = await get<PulseResponse>('/api/civic/pulse?city=lagos', chidi);
   assert.equal(pulse.gov.governor?.id, ada.id); assert.equal(pulse.notices[0]?.kind, 'announcement'); assert.equal(pulse.notices[0]?.text, 'Sanitation day is <i>Saturday</i>');
-  assert.ok(pulse.notices.some((item) => item.kind === 'result' && item.title === 'Ada is the new Governor of Lagos'));
+  assert.ok(pulse.notices.some((item) => item.kind === 'result' && item.title === 'Ada is the new Chairman of Lagos'));
 
   // Still Governor through Saturday; out of office when the next election closes without a winner.
   goTo(MONDAY + 12 * DAY);

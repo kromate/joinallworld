@@ -2,7 +2,7 @@
  * OWNER: social
  * Which place actions (PLACE_ACTIONS in content/place-actions.ts) a regular offers: by the kind of place they stand in, by who they are, and
  * for the worship ones by the hour. Pure: it reads a regular, a scene kind and a time, never a life. Used by systems/social.ts only
- * while the `dilemmas` switch is on (src/game/features.ts); off, no regular offers any.
+ * once the dilemma kit is installed (src/game/features.ts); with no kit, no regular offers any.
  *
  *   placeKindOf(city, venue)            the kind of place: the venue's scene kind, with worship split into 'church' and 'mosque'
  *   isElder(npc)                        whether a regular is an elder (matched defensively on emoji, title and role: the cast is another lane's data)

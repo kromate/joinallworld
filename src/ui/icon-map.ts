@@ -68,7 +68,7 @@ const BY_ID: Record<string, Record<string, string>> = {
   home: { mushin: 'houses', yaba: 'home', lekki: 'building' },
   lottery: { 'lapo-baby': 'statement', 'civil-servant': 'jobs', 'street-smart': 'cars', ajebutter: 'crown' },
   notice: { 'rent-due': 'calendar', rent: 'home', 'rent-missed': 'error', loan: 'bank', 'loan-missed': 'error', promotion: 'career', illness: 'sick', recovered: 'health',
-    gov: 'governor', transfer: 'coin', bae: 'heart' },
+    gov: 'governor', transfer: 'coin', bae: 'heart', power: 'light' },
   update: { transfer: 'coin', business: 'buy', report: 'shield', 'friend-request': 'handshake', 'friend-accepted': 'handshake', 'invite-joined': 'handshake', ping: 'bell', 'invite-knock': 'invite', 'invite-answer': 'invite', visit: 'home',
     'group-added': 'people', mention: 'people', reaction: 'heart', 'bae-request': 'heart', 'bae-answer': 'heart' },
 };

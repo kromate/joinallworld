@@ -19,6 +19,7 @@ import type { ScreenBox, GroundPoint } from './labels.ts';
 import { lgaAt } from './lga.ts';
 import { fromLocal, ORIGINS } from './geo/frame.ts';
 import { shimmer, createRaw, CITY_TRIANGLE_BUDGET } from './city-build.ts';
+import { CITY_DRAW_CALLS } from '../budgets.ts';
 import { pitchFloor, PITCH_MIN, FLAT_PITCH } from './camera.ts';
 import pack from './cities/lagos.ts';
 import { COMING_SOON, SCENE_KINDS } from '../game/content/venues.ts';
@@ -349,7 +350,7 @@ test('render budget: the whole city, with every layer on and a trip running, sta
     triangles += ((mesh.geometry.index ? mesh.geometry.index.count : mesh.geometry.attributes.position!.count) / 3) * (mesh.isInstancedMesh ? mesh.count! : 1);
   });
   assert.ok(triangles < CITY_TRIANGLE_BUDGET, `${Math.round(triangles)} triangles in view`);
-  assert.ok(meshes <= 40, `${meshes} draw calls`);
+  assert.ok(meshes <= CITY_DRAW_CALLS.value, `${meshes} draw calls`);
   assert.ok(d.counts.houses > 200 && d.counts.trees > 40 && d.counts.vehicles > 20, 'houses, trees and traffic are there');
   // What players typed is carried as plain text for DOM nodes; it is never turned into geometry or markup.
   assert.ok(d.overlayTriangles > 0);

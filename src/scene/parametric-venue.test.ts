@@ -1,4 +1,5 @@
 import test from 'node:test'
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS } from '../budgets.ts'
 import { loadParametricScenes } from './city-scenes.ts'
 import assert from 'node:assert/strict'
 import * as THREE from 'three'
@@ -12,8 +13,8 @@ await loadParametricScenes()
 
 await loadCityContent('lagos')
 
-const TRIANGLE_BUDGET = 17_000
-const DRAW_CALL_BUDGET = 60
+const TRIANGLE_BUDGET = SCENE_TRIANGLES.value
+const DRAW_CALL_BUDGET = SCENE_DRAW_CALLS.value
 const CROWD = Array.from({ length: MAX_CROWD }, (_, index) => ({ id: `person-${index}`, name: `Person ${index}`, kind: index % 3 ? 'player' : 'npc' }))
 
 const DESIGNS = [

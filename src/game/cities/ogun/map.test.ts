@@ -3,6 +3,7 @@ import test from 'node:test'
 import type * as THREE from 'three'
 import { cityModule, loadCityContent, loadCityMap } from '../registry.ts'
 import { CITY_TRIANGLE_BUDGET } from '../../../map3d/city-build.ts'
+import { CITY_DRAW_CALLS } from '../../../budgets.ts'
 import { createMap3D } from '../../../map3d/map3d.ts'
 import type { MapRenderer } from '../../../map3d/map3d.ts'
 import { flatModel, flatSvg } from '../../../map3d/flat.ts'
@@ -105,7 +106,7 @@ test('each Ogun city map stays under 90,000 triangles and 40 draw calls in its c
       h.map.city.setDetail(distance, 560 * 1.35)
       const view = drawn(h.map)
       assert.ok(view.triangles < CITY_TRIANGLE_BUDGET, `${id} ${name}: ${Math.round(view.triangles)} triangles`)
-      assert.ok(view.meshes <= 40, `${id} ${name}: ${view.meshes} draw calls`)
+      assert.ok(view.meshes <= CITY_DRAW_CALLS.value, `${id} ${name}: ${view.meshes} draw calls`)
       console.log(`${id} ${name}: ${Math.round(view.triangles)} triangles, ${view.meshes} draw calls`)
     }
     assert.ok(h.map.diagnostics().cityTriangles > 10000, `${id}: a city, not pins on a board`)

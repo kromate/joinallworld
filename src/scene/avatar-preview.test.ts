@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { createAvatarPreview, previewStats, frameCamera, ANIMATION_LIMIT_MS, PreviewUnavailable } from './avatar-preview.ts';
 import type { PreviewOptions } from './avatar-preview.ts';
 import { createBatch } from './build.ts';
+import { AVATAR_LOW_TRIANGLES, AVATAR_MEDIUM_TRIANGLES_MIN, AVATAR_MEDIUM_TRIANGLES, AVATAR_HIGH_TRIANGLES_MIN, AVATAR_HIGH_TRIANGLES } from '../budgets.ts';
 import { LOOK_OPTIONS, DETAILS, POSES, PARTS, ACCESSORY_SLOTS, drawAvatar, buildAvatar, poseAvatar, normalizeLook } from './characters.ts';
 import type { DetailLevel, DrawOptions, Pose } from './characters.ts';
 import { createKit } from './kit.ts';
@@ -227,9 +228,9 @@ test('three detail levels: the crowd budget holds at low, medium is a light vers
       range[detail] = [Math.min(range[detail][0], n), Math.max(range[detail][1], n)];
     }
   }
-  assert.ok(range.low[1] <= 600, `low detail: at most 600 triangles whatever is worn (${range.low})`);
-  assert.ok(range.medium[0] >= 1500 && range.medium[1] <= 4500, `medium detail: a couple of thousand triangles (${range.medium})`);
-  assert.ok(range.high[0] >= 10000 && range.high[1] <= 34000, `high detail: a full model (${range.high})`);
+  assert.ok(range.low[1] <= AVATAR_LOW_TRIANGLES.value, `low detail: at most 600 triangles whatever is worn (${range.low})`);
+  assert.ok(range.medium[0] >= AVATAR_MEDIUM_TRIANGLES_MIN.value && range.medium[1] <= AVATAR_MEDIUM_TRIANGLES.value, `medium detail: a couple of thousand triangles (${range.medium})`);
+  assert.ok(range.high[0] >= AVATAR_HIGH_TRIANGLES_MIN.value && range.high[1] <= AVATAR_HIGH_TRIANGLES.value, `high detail: a full model (${range.high})`);
   assert.equal(normalizeLook({ skin: 'skin-6' }, 'a').skin, '#5e3620', 'the game’s own skin ids keep their tone in a scene');
   assert.equal(normalizeLook({ skin: 'skin-1' }, 'b').skin, '#e0ac7e');
 });

@@ -3,6 +3,7 @@ await preloadCityContent('lagos');
 // Kano's scenes: every venue of the city builds headlessly inside the rendering budget, each spot and game table has a
 // place and a way to it, and the scenes the city draws for itself are each a scene of their own. Nothing here needs WebGL.
 import test from 'node:test';
+import { SCENE_TRIANGLES, SCENE_DRAW_CALLS, SCENE_LIGHTS } from '../budgets.ts';
 import assert from 'node:assert/strict';
 import { createKit } from './kit.ts';
 import type { SceneVenue } from './types.ts';
@@ -16,7 +17,7 @@ await loadAllCityScenes();
 
 const CITY = 'kano';
 // The same budget as src/scene/scenes.test.ts: the scene and a full crowd, with the player's own figure on top.
-const TRIANGLE_BUDGET = 15000 + 2000, DRAW_CALL_BUDGET = 60;
+const TRIANGLE_BUDGET = SCENE_TRIANGLES.value, DRAW_CALL_BUDGET = SCENE_DRAW_CALLS.value;
 const crowd = (count = MAX_CROWD) => Array.from({ length: count }, (_, i) => ({ id: `p${i}`, name: `Player${i}`, kind: i % 3 === 2 ? 'npc' : 'player' }));
 const allVariants = (): string[] => Object.entries(VARIANTS).flatMap(([kind, variants]) => Object.keys(variants).map((variant) => `${kind}/${variant}`));
 /** Places that must have a scene of their own: a visitor expects each of them to look like itself. */
@@ -41,7 +42,7 @@ test('every Kano venue builds in budget with its own scene: each spot and game t
     const stats = entry.stats();
     report.push(`${authored.id} ${venue.scene!.kind}${variant ? `/${variant}` : ''} ${stats.triangles} ${stats.drawCalls}`);
     assert.ok(stats.triangles > 1500 && stats.triangles < TRIANGLE_BUDGET, `${authored.id} triangles ${stats.triangles}`);
-    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= 4, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
+    assert.ok(stats.drawCalls <= DRAW_CALL_BUDGET && stats.lights <= SCENE_LIGHTS.value, `${authored.id} draw calls ${stats.drawCalls}, lights ${stats.lights}`);
     const { grid, entrance } = entry.walk;
     const reach = (what: string, x: number, z: number, approach?: { x: number; z: number } | null, within = 1.5) => {
       const at = grid!.nearest(approach?.x ?? x, approach?.z ?? z);

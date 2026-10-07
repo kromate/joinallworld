@@ -38,6 +38,7 @@
  */
 import type * as THREE from 'three';
 import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.ts';
+import { AVATAR_LOW_TRIANGLES } from '../budgets.ts';
 import type { Kit } from './kit.ts';
 import type { Batch, BatchOptions, Colour, ThreeModule, Vec3 } from './types.ts';
 
@@ -449,7 +450,7 @@ const weave = (look: Look, colours: Colours): Paint => ({ ankara: [colours[0], c
 
 // ---- Low detail (crowds, venue and home scenes): at most 600 triangles --------------------------
 
-const LOW_BUDGET = 600;
+const LOW_BUDGET = AVATAR_LOW_TRIANGLES.value;
 function headLow(b: Drawing, look: Look): void {
   b.ball(0, HEAD.y, 0, 0.26, 0.27, 0.26, look.skin, { seg: 8 });
   for (const side of [-1, 1]) b.quad(side * 0.095, 2.215, 0.249, 0.055, 0.065, INK, { ry: side * 0.3 });

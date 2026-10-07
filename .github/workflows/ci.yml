@@ -31,4 +31,5 @@ jobs:
       - run: npm run typecheck
       # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
       - run: npm run build
+      - run: npm run size:download
       - run: npm test

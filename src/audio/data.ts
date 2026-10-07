@@ -1,8 +1,10 @@
 // Every sound of the game as data. Recipes are lists of layers (see synth.ts); scapes are beds plus sparse one-shots (scape.ts).
 // The family: struck wooden bars and soft clicks for the interface, pentatonic phrases for rewards, filtered noise for the world.
-// Nothing is a recording, a melody that exists, or a voice. A few helpers below build the layers that repeat.
+// Nothing is a recording or a melody that exists. The human calls of a Lagos day (hawkers, conductors, the call to prayer) are
+// invented gestures of a buzzing wave through vowel filters: no words, no sample. A few helpers below build the layers that repeat.
 import type { Layer, Recipe } from './synth.ts'
 import type { ScapeSpec } from './scape.ts'
+import type { TimeBand } from '../game/world-time.ts'
 
 const hz = (m: number): number => 440 * 2 ** ((m - 69) / 12)
 /** A struck wooden bar at MIDI note `m`: a sine, a quick overtone and a faint click. */
@@ -23,6 +25,38 @@ const puff = (hzc: number, d: number, g: number, at = 0, q = 0.8, type: BiquadFi
 const seq = (notes: readonly number[], step: number, make: (m: number, at: number, i: number) => Layer[]): Layer[] => notes.flatMap((m, i) => make(m, i * step, i))
 const pent = [0, 2, 4, 7, 9]
 void pent
+/** A shouted or sung vowel: a buzzing wave through two formant filters, gliding from f to f2 (`f1` and `fb` are the formants). */
+const vowel = (f: number, f2: number, at: number, d: number, g: number, f1 = 750, fb = 1150, a = 0.03, consonant = true): Layer[] => [
+  { w: 'sawtooth', f, f2, at, a, d, g, fl: ['bandpass', f1, 4] },
+  { w: 'sawtooth', f, f2, at, a, d, g: g * 0.55, fl: ['bandpass', fb, 5] },
+  ...(consonant ? [{ w: 'noise', at, a: 0.004, d: 0.035, g: g * 0.2, fl: ['bandpass', 2300, 1.5] } as Layer] : []),
+]
+/** A vowel held for `len` s: two overlapping swells, so it stays up instead of dying away at once. */
+const held = (f: number, f2: number, at: number, len: number, g: number, f1?: number, fb?: number): Layer[] => [
+  ...vowel(f, f2, at, len * 0.8, g, f1, fb, len * 0.3),
+  ...vowel(f2, f2, at + len * 0.4, len * 0.6, g * 0.8, f1, fb, len * 0.2, false),
+]
+/** An invented call to prayer: one long phrase of held, gliding notes. `dark` scales the formants down (far away), `g` is the level. */
+const azanPhrase = (g: number, dark: number): Layer[] => [
+  [57, 62, 0, 3.0, 750, 1150], [62, 62, 2.7, 1.5, 350, 2000], [64, 62, 4.1, 1.5, 750, 1150], [62, 60, 5.5, 1.4, 600, 1000],
+  [60, 62, 6.8, 1.2, 750, 1150], [64, 66, 8.0, 2.2, 450, 1900], [66, 64, 10.0, 1.6, 750, 1150], [64, 62, 11.5, 1.8, 600, 1000],
+  [62, 57, 13.1, 3.6, 750, 1150],
+].flatMap(([a, b, at, len, f1, fb]) => held(hz(a as number), hz(b as number), at as number, len as number, g, (f1 as number) * dark, (fb as number) * dark))
+/** Two bars of a danceable pulse at 104 bpm, 32 sixteenth steps. `bright` is the hz the hats, claps and stabs reach: low for a bass heard through a wall. */
+export const BEAT_SECONDS = (60 / 104) * 8
+const beat = (bright: number, g: number): Layer[] => {
+  const step = 60 / 104 / 4, out: Layer[] = []
+  const kicks = [0, 6, 10, 16, 22, 26], bass = [45, 45, 48, 41, 41, 43]
+  kicks.forEach((s, i) => {
+    const at = s * step
+    out.push({ w: 'sine', f: 130, f2: 46, at, a: 0.002, d: 0.24, g: 0.5 * g })
+    out.push({ w: 'sine', f: hz(bass[i] as number), at, a: 0.01, d: 0.34, g: 0.3 * g })
+  })
+  for (const s of [8, 24]) out.push({ w: 'noise', at: s * step, a: 0.002, d: 0.16, g: 0.3 * g, fl: ['bandpass', bright * 0.5, 0.9] })
+  for (let s = 0; s < 32; s += 2) out.push({ w: 'noise', at: s * step, a: 0.001, d: s % 4 === 2 ? 0.06 : 0.035, g: (s % 4 === 2 ? 0.09 : 0.05) * g, fl: ['bandpass', bright * 1.3, 1.2] })
+  for (const s of [3, 11, 19, 27]) for (const m of [64, 69]) out.push({ w: 'triangle', f: hz(m), at: s * step, a: 0.004, d: 0.3, g: 0.07 * g, fl: ['lowpass', bright, 0.7] })
+  return out
+}
 
 export const RECIPES: Readonly<Record<string, Recipe>> = {
   // ---- interface: wood and soft clicks --------------------------------------------------------------------------
@@ -86,6 +120,20 @@ export const RECIPES: Readonly<Record<string, Recipe>> = {
   'campus-bell': { l: [...tink(67, 0, 0.12, 1.4, 0.5), { w: 'sine', f: hz(67) * 2, a: 0.002, d: 1, g: 0.05, rv: 0.4 }], pri: 0 },
   announce: { l: [...bar(84, 0, 0.14, 0.4, 0.5), ...bar(79, 0.42, 0.14, 0.4, 0.5), ...bar(72, 0.84, 0.16, 0.7, 0.5)], pri: 0 },
   'car-horn': { l: [{ w: 'square', f: 420, a: 0.02, d: 0.28, g: 0.04, fl: ['lowpass', 900, 0.7] }], pri: 0, j: 0.15 },
+  // ---- the calls and the music of the day: hawkers, danfo conductors, church, the call to prayer, rain on zinc, a bar ------------------
+  'hawk-a': { l: [...vowel(300, 255, 0, 0.26, 0.4), ...vowel(250, 215, 0.27, 0.34, 0.4, 600, 1000), ...vowel(300, 255, 0.85, 0.26, 0.4), ...vowel(250, 200, 1.12, 0.5, 0.4, 600, 1000)], pri: 0, j: 0.08 },
+  'hawk-b': { l: [...vowel(380, 420, 0, 0.2, 0.34, 800, 1300), ...vowel(430, 470, 0.22, 0.2, 0.34, 800, 1300), ...vowel(500, 400, 0.45, 0.6, 0.36, 450, 2000)], pri: 0, j: 0.08 },
+  conductor: { l: [[0, 200, 800], [0.13, 215, 560], [0.26, 200, 800], [0.39, 215, 560], [0.52, 230, 800], [0.8, 200, 450]].flatMap(([at, f, f1], i) => vowel(f as number, (f as number) * 0.92, at as number, i === 5 ? 0.7 : 0.12, 0.45, f1 as number, 1250, 0.012)), pri: 0, j: 0.06 },
+  azan: { l: azanPhrase(0.34, 1), pri: 0 },
+  'azan-far': { l: azanPhrase(0.2, 0.8), pri: 0 },
+  'church-bell': { l: [0, 1.2, 2.4, 3.6].flatMap(at => [...tink(65, at, 0.18, 1.5, 0.3), { w: 'sine', f: hz(65) * 2.4, at, a: 0.002, d: 0.9, g: 0.05 } as Layer]), pri: 0 },
+  hymn: { l: seq([67, 69, 72, 71, 69, 67, 64, 65, 64], 0.5, (m, at) => [
+    { w: 'triangle', f: hz(m), at, a: 0.06, d: 1.0, g: 0.1, fl: ['lowpass', 1200, 0.7] },
+    { w: 'sine', f: hz(m - 12), at, a: 0.06, d: 1.0, g: 0.07 },
+  ] as Layer[]), pri: 0 },
+  'zinc-tick': { l: [{ w: 'sine', f: 1800, f2: 1500, a: 0.001, d: 0.05, g: 0.07, fm: [2.3, 0.6] }, puff(5200, 0.02, 0.1, 0, 1.4)], pri: 0, j: 0.35, g: 0.7 },
+  'beat-club': { l: beat(5000, 0.9), pri: 0 },
+  'beat-low': { l: beat(1300, 0.7), pri: 0 },
   // ---- arrival motifs (one per kind of instrument; a city's key shifts them) -----------------------------------------------
   'motif-drum': { l: [[0, 57, 0.4], [0.17, 64, 0.36], [0.34, 60, 0.36], [0.51, 69, 0.4], [0.9, 64, 0.5]].flatMap(([at, m, g]) => {
     const f = hz(m as number)
@@ -155,6 +203,23 @@ export const SCAPES: Readonly<Record<string, ScapeSpec>> = {
   transit: { beds: [{ c: 'brown', fl: ['lowpass', 160, 0.7], g: 0.6, v: 0.2, lfo: [0.9, 0.15] }, { c: 'pink', fl: ['bandpass', 900, 0.6], g: 0.06, v: 0.6 }], shots: [['announce', 24, 55, 0.5], ['car-horn', 12, 30, 0.3]] },
   industry: { beds: [{ c: 'brown', fl: ['lowpass', 200, 0.7], g: 0.5, v: 0.15 }, { hum: 60, w: 'triangle', fl: ['lowpass', 300], g: 0.05 }] },
   rain: { beds: [{ c: 'pink', fl: ['bandpass', 2800, 0.4], g: 0.5, v: 0.25 }, { c: 'white', fl: ['highpass', 3500, 0.5], g: 0.05, v: 0.3 }, { c: 'brown', fl: ['lowpass', 250, 0.7], g: 0.2 }] },
+  // rain on a zinc roof: louder, brighter, with the ticks of single drops
+  'rain-zinc': { beds: [{ c: 'pink', fl: ['bandpass', 3400, 0.5], g: 0.55, v: 0.3 }, { c: 'white', fl: ['highpass', 4800, 0.5], g: 0.09, v: 0.35 }, { c: 'brown', fl: ['lowpass', 220, 0.7], g: 0.18 }], shots: [['zinc-tick', 0.05, 0.22, 0.5]] },
+  // the time of day, laid over the place (the `moment` channel: see MOMENTS)
+  hawkers: { beds: [{ c: 'pink', fl: ['bandpass', 900, 0.5], g: 0.1, v: 0.5 }], shots: [['hawk-a', 6, 14, 0.5], ['hawk-b', 8, 18, 0.45]] },
+  'hawkers-far': { shots: [['hawk-a', 14, 32, 0.22], ['hawk-b', 18, 40, 0.2]] },
+  conductors: { beds: [{ c: 'brown', fl: ['lowpass', 180, 0.7], g: 0.2, v: 0.3, lfo: [0.6, 0.2] }], shots: [['conductor', 5, 11, 0.55], ['hawk-a', 14, 30, 0.3]] },
+  // a generator two compounds away, and one in the yard
+  generator: { beds: [{ hum: 47, w: 'sawtooth', fl: ['lowpass', 260, 0.8], g: 0.09, lfo: [13, 0.5] }, { hum: 94, w: 'square', fl: ['lowpass', 320], g: 0.025, lfo: [13, 0.6] }, { c: 'brown', fl: ['lowpass', 380, 0.7], g: 0.16, v: 0.15 }] },
+  'generator-far': { beds: [{ hum: 47, w: 'sawtooth', fl: ['lowpass', 180, 0.8], g: 0.035, lfo: [13, 0.5] }, { c: 'brown', fl: ['lowpass', 260, 0.7], g: 0.08, v: 0.2 }] },
+  'church-service': { beds: [{ hum: 130.8, w: 'triangle', fl: ['lowpass', 700], g: 0.06, lfo: [0.11, 0.8] }, { hum: 164.8, w: 'triangle', fl: ['lowpass', 700], g: 0.045, lfo: [0.09, 0.8] }, { hum: 196, w: 'triangle', fl: ['lowpass', 700], g: 0.04, lfo: [0.13, 0.8] }, { c: 'brown', fl: ['lowpass', 300, 0.7], g: 0.15, v: 0.2 }], shots: [['hymn', 14, 22, 0.6], ['church-bell', 55, 90, 0.45, 'day'], ['murmur', 3, 8, 0.25]] },
+  'azan-near': { shots: [['azan', 38, 50, 0.7]] },
+  'azan-far': { shots: [['azan-far', 38, 50, 0.45]] },
+  jumuah: { beds: [{ c: 'pink', fl: ['bandpass', 420, 2.5], g: 0.18, lfo: [0.3, 0.8] }, { c: 'brown', fl: ['lowpass', 260, 0.7], g: 0.12, v: 0.2 }], shots: [['murmur', 6, 14, 0.25]] },
+  // a bar or a club at night: a pulse through the wall and a generator behind it
+  'club-night': { beds: [{ c: 'brown', fl: ['lowpass', 300, 0.7], g: 0.15 }, { hum: 47, w: 'sawtooth', fl: ['lowpass', 200, 0.8], g: 0.04, lfo: [13, 0.5] }], shots: [['crowd-swell', 10, 25, 0.35]], loops: [['beat-club', BEAT_SECONDS, 0.55]] },
+  'bar-night': { beds: [{ hum: 47, w: 'sawtooth', fl: ['lowpass', 200, 0.8], g: 0.04, lfo: [13, 0.5] }], shots: [['clink', 3, 8, 0.4]], loops: [['beat-low', BEAT_SECONDS, 0.5]] },
+  'viewing-night': { beds: [{ hum: 47, w: 'sawtooth', fl: ['lowpass', 200, 0.8], g: 0.05, lfo: [13, 0.5] }], shots: [['crowd-swell', 12, 30, 0.5], ['murmur', 1, 3, 0.4]] },
   // vehicles (effects bus)
   'ride-bus': { beds: [{ hum: 46, w: 'sawtooth', fl: ['lowpass', 200], g: 0.16, lfo: [23, 0.35] }, { c: 'brown', fl: ['lowpass', 260, 0.7], g: 0.5, v: 0.15 }] },
   'ride-keke': { beds: [{ hum: 75, w: 'sawtooth', fl: ['lowpass', 420], g: 0.12, lfo: [11, 0.6] }, { c: 'brown', fl: ['lowpass', 300, 0.7], g: 0.3, v: 0.2 }] },
@@ -186,6 +251,46 @@ export const PLACES: Readonly<Record<string, string>> = {
   worship: 'worship', shrine: 'worship', office: 'office', statehouse: 'office', police: 'hall', hospital: 'hall', radio: 'hall', polling: 'hall',
   salon: 'hall', gym: 'hall', club: 'hall', viewing: 'hall', home: 'home', hub: 'transit', airport: 'transit', refinery: 'industry',
 }
+/** Kinds with a roof of zinc, or open sheds: rain on them is loud and ticks. */
+export const ZINC: ReadonlySet<string> = new Set(['market', 'buka', 'hub', 'shrine'])
+/**
+ * What the time of day adds to a place: the first rule that fits wins, and its scape plays over the place scape (the `moment`
+ * channel), so the place itself never rebuilds. Clock fields are Lagos time. `variants` are the scene's looks (church, mosque, bus-park…).
+ */
+export interface Moment {
+  id: string
+  scape: string
+  kinds: readonly string[]
+  variants?: readonly string[]
+  /** Looks it is not for (a rail hub is not a bus park). */
+  except?: readonly string[]
+  bands?: readonly TimeBand[]
+  /** Weekdays, 0 = Sunday … 6 = Saturday. */
+  days?: readonly number[]
+  /** Windows of the Lagos clock, [from, to) in decimal hours. */
+  hours?: readonly (readonly [number, number])[]
+  /** Only while the power is out (the view reports it; nothing does yet). */
+  outage?: boolean
+}
+/** The five calls to prayer in Lagos, a few minutes each: fajr, dhuhr, asr, maghrib, isha. */
+const PRAYER: readonly (readonly [number, number])[] = [[5.5, 5.62], [13.2, 13.32], [16.45, 16.57], [18.7, 18.82], [19.9, 20.02]]
+const OUT: readonly string[] = ['walk', 'market', 'rooftop', 'park', 'hub', 'beach', 'home']
+const DUSK: readonly TimeBand[] = ['evening', 'night']
+export const MOMENTS: readonly Moment[] = [
+  { id: 'azan-mosque', scape: 'azan-near', kinds: ['worship'], variants: ['mosque'], hours: PRAYER },
+  { id: 'azan-street', scape: 'azan-far', kinds: OUT, hours: PRAYER },
+  { id: 'jumuah', scape: 'jumuah', kinds: ['worship'], variants: ['mosque'], days: [5], hours: [[13.3, 14.4]] },
+  { id: 'church-sunday', scape: 'church-service', kinds: ['worship'], variants: ['church'], days: [0], hours: [[7.5, 12.5]] },
+  { id: 'club', scape: 'club-night', kinds: ['club'], bands: DUSK },
+  { id: 'bar', scape: 'bar-night', kinds: ['buka', 'rooftop'], bands: DUSK },
+  { id: 'viewing', scape: 'viewing-night', kinds: ['viewing'], bands: DUSK },
+  { id: 'generator-cut', scape: 'generator', kinds: ['home', 'buka', 'market', 'mall', 'hub', 'walk', 'park'], outage: true },
+  { id: 'generator-yard', scape: 'generator', kinds: ['home'], bands: DUSK },
+  { id: 'hawkers-market', scape: 'hawkers', kinds: ['market'], bands: ['morning', 'afternoon', 'evening'] },
+  { id: 'hawkers-street', scape: 'hawkers-far', kinds: ['walk'], bands: ['morning', 'afternoon', 'evening'] },
+  { id: 'conductors', scape: 'conductors', kinds: ['hub'], except: ['rail'], bands: ['dawn', 'morning', 'afternoon', 'evening'] },
+  { id: 'generator-street', scape: 'generator-far', kinds: ['market', 'hub', 'walk', 'park'], bands: DUSK },
+]
 /** Kinds where a footstep is on grass / sand / a path; every other kind is a floor. */
 export const SURFACES: Readonly<Record<string, string>> = { park: 'grass', walk: 'path', rooftop: 'floor', beach: 'sand', hub: 'path', unilag: 'path', market: 'path', shrine: 'path' }
 /** Enclosed kinds: weather is quieter inside, and a door is heard on arriving. */

@@ -14,6 +14,8 @@ export interface FormulaContentInput<City extends string> {
   readonly bounds: CityBounds
   readonly localUnitAnchors: Readonly<Record<string, { readonly lon: number; readonly lat: number }>>
   readonly scenes: Readonly<Record<string, VenueScene>>
+  /** Two regulars for every place, in `orderedPlacesOf` order. build-city.ts writes them into the city's generated content.ts (see formula/cast.ts). */
+  readonly people: readonly CityPersonSeed[]
 }
 
 export const FORMULA_LOCAL_MODES: readonly TravelModeDefinition[] = Object.freeze([
@@ -65,7 +67,7 @@ const TREATMENTS: Readonly<Record<RealPlaceKind, PlaceTreatment>> = Object.freez
 const visitActivityId = (cityId: string, place: RealPlaceFact): string => `${cityId}-${place.id}-visit`
 
 interface FormulaIdentity {
-  readonly kind: 'food' | 'craft' | 'industry'
+  readonly kind: 'food' | 'craft' | 'industry' | 'culture'
   readonly fact: IdentityFact
 }
 
@@ -73,6 +75,7 @@ const identityIndex = (spec: CitySpec): ReadonlyMap<string, FormulaIdentity> => 
   ...spec.identity.foods.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'food', fact }]),
   ...spec.identity.crafts.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'craft', fact }]),
   ...spec.identity.industries.map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'industry', fact }]),
+  ...(spec.identity.culture ?? []).map((fact): [string, FormulaIdentity] => [fact.id, { kind: 'culture', fact }]),
 ])
 
 const businessTypeFor = (identity: FormulaIdentity): BusinessTypeId => {
@@ -142,12 +145,13 @@ const houseShape = (tier: PopulationTier): { readonly grid: number; readonly ren
   }
 }
 
-const peopleFor = (cityId: string, places: readonly RealPlaceFact[]): readonly CityPersonSeed[] => places.flatMap((place, index): readonly CityPersonSeed[] => [
-  { name: `${cityId} neighbour ${index * 2 + 1}`, role: `Visitor at ${place.name}`, quotes: [`I came to spend time at ${place.name}.`, 'Welcome. There is room for another neighbour here.'] },
-  { name: `${cityId} neighbour ${index * 2 + 2}`, role: `Neighbour near ${place.name}`, quotes: [place.description, 'Hello. I am glad you stopped to talk.'] },
-])
+/** The places in the order the city's venues are listed: the arrival park first. */
+export const orderedPlacesOf = (spec: CitySpec): readonly RealPlaceFact[] => {
+  const arrivalPark = formulaArrivalRecreation(spec.places)
+  return arrivalPark ? [arrivalPark, ...spec.places.filter(place => place !== arrivalPark)] : spec.places
+}
 
-export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes }: FormulaContentInput<City>): CityContent<City> {
+export function buildFormulaContent<City extends string>({ spec, origin, bounds, localUnitAnchors, scenes, people }: FormulaContentInput<City>): CityContent<City> {
   const unitNames = new Map(spec.localUnits.map(unit => [unit.id, unit.name]))
   const identities = identityIndex(spec)
   const roadHub = formulaRoadArrival(spec.places)
@@ -169,7 +173,7 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
   if (!spec.places.some(place => place.kind === 'garden' || place.kind === 'nightlife')) {
     addExtra(arrivalPark.id, activity(`${spec.id}-${arrivalPark.id}-evening`, 'Spend a quiet evening here', 'park', ['fun', 'nightlife']))
   }
-  const orderedPlaces = [arrivalPark, ...spec.places.filter(place => place !== arrivalPark)]
+  const orderedPlaces = orderedPlacesOf(spec)
   const venues = orderedPlaces.map(place => venueSeed(spec.id, unitNames.get(place.localUnitId) ?? place.localUnitId, place, identities, primaryHospitalId, extras.get(place.id) ?? []))
   const careers = formulaCareerPlan(spec.places)
   const unmappedServices: UnmappedService[] = [
@@ -205,7 +209,7 @@ export function buildFormulaContent<City extends string>({ spec, origin, bounds,
     localUnitDescriptions: Object.fromEntries(spec.localUnits.map(unit => [unit.id, unit.description])),
     scenes,
     venues,
-    people: peopleFor(spec.id, orderedPlaces),
+    people,
     careerVenues: careers.venues,
     unavailableCareerIds: careers.unavailable,
     ...(unmappedServices.length ? { unmappedServices } : {}),

@@ -1135,7 +1135,7 @@ test('no content entry carries a field that content.ts does not declare', () => 
   declared<DreamDefinition>()(['id', 'label', 'icon', 'goal', 'measure'])(Object.values(DREAMS), 'dream')
   declared<StartHomeDefinition>()(['id', 'label', 'district', 'rent', 'tag', 'icon', 'blurb'])(Object.values(START_HOMES), 'start home')
   declared<LotteryOutcome>()(['id', 'label', 'icon', 'tagline', 'odds', 'startCash', 'ownCash', 'locked', 'loan', 'skills', 'fx', 'bullets', 'beta', 'betaFields'])(Object.values(LOTTERY), 'lottery outcome')
-  declared<NpcDefinition>()(['id', 'venue', 'name', 'role', 'emoji', 'quotes', 'at', 'beta', 'note'])(Object.values(NPCS), 'npc')
+  declared<NpcDefinition>()(['id', 'venue', 'name', 'role', 'emoji', 'quotes', 'at', 'beta', 'note', 'age', 'look', 'greeting'])(Object.values(NPCS), 'npc')
   declared<NpcAction>()(['id', 'label', 'icon', 'duration', 'cost', 'effects', 'bonus', 'xp', 'points', 'success', 'beta', 'note'])(NPC_ACTIONS, 'npc action')
   declared<FamilyMember>()(['id', 'name', 'relation', 'emoji', 'line', 'contact', 'quotes', 'beta', 'note'])(Object.values(FAMILY), 'family member')
   declared<StarterGoal>()(['id', 'title', 'hint', 'icon', 'cash', 'stars', 'done', 'open', 'params', 'go', 'workplace', 'activity', 'here', 'beta', 'betaFields'])(STARTER_GOALS, 'starter goal')

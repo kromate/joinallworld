@@ -11,6 +11,7 @@ import type {
   AccessoryId, AccessorySlot, ActivityId, BaseTravelModeId, BodyId, CarId, WorldCityId, CityLinkMode, ComingSoonId, DepositTermId,
   DreamId, ExpressionId, FabricId, FaceId, FamilyId, FurnitureId, HairColourId, HairId, HouseId, HouseStyleField, HouseTierId, ItemId,
   JobId, LgaId, LotteryId, MissionId, MissionTitleId, NeedId, NeedMap, NpcId, OutfitColourId, OutfitId, PerkId, RoadsideEventId,
+  Look,
   SkillId, SkillMap, SkinId, SpotId, StarterGoalId, StartHomeId, TierId, TraitId, TravelModeId, VenueId, WardrobeKind, WishId,
 } from './life.ts'
 import type { CityPack } from '../map3d/types.ts'
@@ -695,6 +696,19 @@ export interface PlayerAction {
   beta?: boolean
 }
 
+/** A rough life stage for a regular. Shapes how the avatar is styled and how the person is addressed. */
+export type NpcAge = 'young' | 'adult' | 'elder'
+
+/** A local greeting a regular opens with. `identityId` points to the sourced identity fact that backs it. */
+export interface NpcGreeting {
+  /** The greeting as spoken, in the local language. */
+  text: string
+  /** What it means in English. */
+  meaning: string
+  /** Id of a sourced identity fact in the city spec (for example the Efik greetings fact). */
+  identityId: string
+}
+
 export interface NpcDefinition {
   id: NpcId
   /** Venue the regular is found at; an NPC whose venue is not in the build is simply absent. */
@@ -707,6 +721,12 @@ export interface NpcDefinition {
   at: string | null
   beta?: boolean
   note?: string
+  /** Optional life stage; older regulars are addressed with the local honorific in their name. */
+  age?: NpcAge
+  /** Optional avatar choices; any look field left out is seeded from the NPC id. */
+  look?: Partial<Look>
+  /** Optional local greeting backed by a sourced identity fact. */
+  greeting?: NpcGreeting
 }
 
 export interface FamilyMember {

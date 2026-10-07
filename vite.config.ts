@@ -172,6 +172,10 @@ export default defineConfig({
   // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
   build: {
     chunkSizeWarningLimit: 800,
+    // Terser, two passes: the same program in about 3% fewer gzip bytes than the default esbuild minifier, for every chunk (the startup
+    // is the part that has a budget). It only compresses and renames; it does not change what the code does.
+    minify: 'terser',
+    terserOptions: { compress: { passes: 2 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {
@@ -215,17 +219,20 @@ export default defineConfig({
     if (/\/src\/ui\/npc-mark\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
+    // The visit rules (door words, how long a visit lasts): read only by the visit screens, which are fetched on demand.
+    if (/\/src\/game\/visit\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
+    // The world clock's bands, day seed and seasons ride in the routines chunk (below).
     if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
     // The campus discovery trail is read by the campus rules and the Campus app.
     if (/\/src\/campus\/unilag\/trail\.ts$/.test(id)) return 'campus-rules'
     // Short addresses (/games, /abuja, …): the table, what is kept for a visit and the routing are one chunk, fetched only when an address or the landing asks, so the first download lists one file for them.
     if (/\/src\/(paths\.ts$|app\/features\/paths\/[\w-]+\.ts$)/.test(id)) return 'paths'
-    // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched only with `?models=dilemmas`; the engine never imports them (src/game/features.ts).
+    // Work dilemmas and place actions (their words and rules, and the kit that installs them) are fetched once the game is ready (src/app/startExtras.ts); the engine never imports them (src/game/features.ts).
     if (/\/src\/game\/(dilemma-pack|dilemmas|place-actions)\.ts$|\/src\/game\/content\/(dilemmas|place-actions)\.ts$/.test(id)) return 'dilemmas'
-    // Where the regulars are (their routines, the classifier and the resolver): fetched when the browser is idle (src/app/state/idlePreload.ts); the engine keeps only the hook (src/game/routines-hook.ts).
-    // The world clock's bands, day seed and seasons ride in it too (only these and the moment banks, behind ?models=moments, read them): one lazy file instead of two.
+    // Where the regulars are (their routines, the classifier and the resolver): fetched with the scene (src/campus/unilag/world-adapter.ts); the engine keeps only the hook (src/game/routines-hook.ts).
+    // The world clock's bands, day seed and seasons ride in it too (only these and the moment banks, fetched once the game is ready, read them): one lazy file instead of two.
     if (/\/src\/game\/(routines\/[\w-]+|world-time)\.ts$/.test(id)) return 'routines'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },

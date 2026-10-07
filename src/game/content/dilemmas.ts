@@ -1,7 +1,7 @@
 /**
  * OWNER: career
  * Work dilemmas: a short moment after a shift where the player picks one of two or three ways to handle something. Plain data
- * (the helpers below only build it). Rules live in src/game/dilemmas.ts; the switch that turns them on in src/game/features.ts.
+ * (the helpers below only build it). Rules live in src/game/dilemmas.ts; the kit seam in src/game/features.ts.
  *
  * Design rules (asserted in src/game/dilemmas.test.ts):
  *   - Ids and effects are shared; the words are local, in English and Nigerian Pidgin. EVERY line is `beta: true`: the Pidgin has not been reviewed by a speaker.

@@ -224,3 +224,7 @@ request, which is what this change removes. The way back is a one-time rewrite f
 - The whole server suite and the edge suite run under `STORE_LAYOUT=entries` (`STORE_LAYOUT=entries npm test`, `STORE_LAYOUT=entries npm run test:edge`).
 - `scripts/live-build-migration.ts --live <checkout of the live build>`: data written through the live build's own routes is moved by this build
   on both hosts and every collection reads back equal.
+
+## The public record (`records`)
+
+A collection of its own, kept one entry at a time like the others: `entries` (one stored entry each, by number) and `terms` (which terms are already written). It only grows: about eighty small entries a week once every seat is active, a few hundred bytes each. Pages read the newest entries first and look at no more than 1,500 entries a request. See docs/POLITICS.md.

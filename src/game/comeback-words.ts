@@ -83,11 +83,11 @@ export function mailWords(plan: Plan, { name, now }: { name: string; now: number
     }
     case 'milestone':
       switch (plan.what) {
-        case 'elected': return { subject: 'You were elected Governor', heading: 'You were elected Governor', intro: 'The votes are in and the seat is yours for the week. People will be watching for what you announce.', lines: [], button: { label: 'Open the State House', go: plan.go }, pref };
+        case 'elected': return { subject: 'You were elected Chairman', heading: 'You were elected Chairman', intro: 'The votes are in and the seat is yours for the week. People will be watching for what you announce.', lines: [], button: { label: 'Open the State House', go: plan.go }, pref };
         case 'house': return { subject: 'Your house upgrade is finished', heading: 'Your house upgrade is finished', intro: `Your ${plan.label} is ready. Come and have a look round.`, lines: [], button: { label: 'See my house', go: plan.go }, pref };
         case 'deposit': return { subject: 'Your savings have matured', heading: 'Your savings have matured', intro: `Your ${plan.label} fixed deposit has come to its end.`, lines: [], button: { label: 'Open the bank', go: plan.go }, pref };
         case 'table': return { subject: 'You won at the table', heading: 'You won at the table', intro: 'Your win is waiting to be collected.', lines: [], button: { label: 'Collect it', go: plan.go }, pref };
-        case 'vote': return { subject: 'Voting for Governor is open today', heading: 'Voting for Governor is open today', intro: 'The polls stay open until the end of Saturday. Everyone gets one vote.', lines: [], button: { label: 'See the candidates', go: plan.go }, pref };
+        case 'vote': return { subject: 'Voting for Chairman is open today', heading: 'Voting for Chairman is open today', intro: 'The polls stay open until the end of Saturday. Everyone gets one vote.', lines: [], button: { label: 'See the candidates', go: plan.go }, pref };
         case 'shift': return { subject: `Your ${plan.label} shift is open`, heading: `Your ${plan.label} shift is open`, intro: 'Today’s paid shift is there for you whenever you want it.', lines: [], button: { label: 'Open my career', go: plan.go }, pref };
       }
       break;

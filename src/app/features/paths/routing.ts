@@ -32,7 +32,7 @@ export interface Env {
   openAccount(which: 'signup' | 'login'): Promise<void>
 }
 
-const PANEL_OF: Readonly<Record<Exclude<PanelWord, 'signup' | 'login'>, string>> = { messages: 'messages', friends: 'people', invite: 'invite', business: 'business', jobs: 'jobs', help: 'help', sound: 'settings' }
+const PANEL_OF: Readonly<Record<Exclude<PanelWord, 'signup' | 'login'>, string>> = { messages: 'messages', friends: 'people', invite: 'invite', business: 'business', jobs: 'jobs', help: 'help', sound: 'settings', politics: 'politics', records: 'politics' }
 
 export async function arrive(env: Env, found: WaitingIntent | null): Promise<void> {
   if (!found) return
@@ -44,7 +44,7 @@ export async function arrive(env: Env, found: WaitingIntent | null): Promise<voi
   const map = (to: string, run: () => void): void => { views.hold(to, () => env.mapOpen(), 'replace'); run() }
   switch (intent.kind) {
     case 'panel':
-      if (intent.panel === 'signup' || intent.panel === 'login') await env.openAccount(intent.panel); else env.open(PANEL_OF[intent.panel])
+      if (intent.panel === 'signup' || intent.panel === 'login') await env.openAccount(intent.panel); else env.open(PANEL_OF[intent.panel], intent.panel === 'records' ? { tab: 'records' } : undefined)
       return
     case 'games': {
       const table = intent.game && intent.game !== 'oro' ? PHONE_TABLE[intent.game] : null

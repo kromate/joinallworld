@@ -45,6 +45,25 @@ interface RigData {
   stride?: (phase: number, amount: number) => void;
 }
 
+/** A head or torso that can be turned about its own vertical axis. */
+interface Yawable { rotation: { y: number } }
+const yawable = (part: unknown): Yawable | null => (part && typeof part === 'object' && 'rotation' in part && part.rotation && typeof part.rotation === 'object' && 'y' in part.rotation ? part as Yawable : null);
+const clampTo = (value: number, limit: number) => Math.max(-limit, Math.min(limit, value));
+/**
+ * Turn a rigged figure's head and a little of its torso by `yaw` radians from where it faces (0 puts them back).
+ * Returns false when the figure has no head and torso to turn (a plain, merged figure): the caller then turns the
+ * whole body instead. It only writes the two rotations, and poseAvatar never touches their y, so a pose and a look
+ * do not undo each other.
+ */
+export function lookAvatar(figure: { userData?: unknown } | null | undefined, yaw: number): boolean {
+  const parts = (figure?.userData as { parts?: Record<string, unknown> } | null | undefined)?.parts;
+  const head = yawable(parts?.head), torso = yawable(parts?.torso);
+  if (!head || !torso) return false;
+  head.rotation.y = clampTo(yaw * 0.65, 0.95);
+  torso.rotation.y = clampTo(yaw * 0.35, 0.5);
+  return true;
+}
+
 /** The detail level a scene builds the local player's figure with. */
 export function pickDetail(details: unknown): DetailLevel { return Array.isArray(details) && details.includes('medium') ? 'medium' : 'low'; }
 export const PLAYER_DETAIL = pickDetail(characters.DETAILS);

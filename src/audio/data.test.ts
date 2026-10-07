@@ -5,7 +5,8 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
 import test from 'node:test'
 import { fileURLToPath } from 'node:url'
-import { ACTIVITIES, COMMANDS, COMPANION_SOUNDS, EVENTS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES, TABLE_SOUNDS } from './data.ts'
+import { TIME_BANDS } from '../game/world-time.ts'
+import { ACTIVITIES, COMMANDS, COMPANION_SOUNDS, EVENTS, MOMENTS, MOTIFS, PLACES, RECIPES, RIDES, SCAPES, STEPS, SURFACES, TABLE_SOUNDS, ZINC } from './data.ts'
 
 const root = resolve(fileURLToPath(new URL('../..', import.meta.url)))
 function files(dir: string, found: string[] = []): string[] {
@@ -20,7 +21,7 @@ const sources = files(join(root, 'src')).filter(path => /\.(ts|vue|css|html)$/.t
 const read = (path: string): string => readFileSync(path, 'utf8')
 const code = sources.filter(path => /\.(ts|vue)$/.test(path) && !/\.test\./.test(path) && !path.endsWith('data.ts')).map(path => [path, read(path)] as const)
 
-const shotIds = Object.values(SCAPES).flatMap(spec => (spec.shots ?? []).map(shot => shot[0]))
+const shotIds = Object.values(SCAPES).flatMap(spec => [...(spec.shots ?? []).map(shot => shot[0]), ...(spec.loops ?? []).map(loop => loop[0])])
 const eventNames = new Set<string>(Object.keys(EVENTS))
 
 test('every event in the sound map has a recipe, and every recipe is used by something', () => {
@@ -81,4 +82,32 @@ test('no audio file is imported, linked or shipped: every sound is synthesised',
     for (const line of read(path).split('\n')) if (/\b(import|from|url\(|fetch\(|new Audio\(|new URL\(|src=|href=)/.test(line)) assert.ok(!extension.test(line), `${relative(root, path)} refers to an audio file: ${line.trim().slice(0, 100)}`)
   }
   for (const dir of [join(root, 'src'), join(root, 'public')]) if (existsSync(dir)) for (const path of files(dir)) assert.ok(!extension.test(path), `${relative(root, path)} is an audio file`)
+})
+
+test('the time of day: every moment points at a scape that exists, on a real band, weekday and window of the clock', () => {
+  const ids = new Set<string>()
+  for (const rule of MOMENTS) {
+    assert.ok(!ids.has(rule.id), `${rule.id} is listed twice`); ids.add(rule.id)
+    assert.ok(SCAPES[rule.scape], `${rule.id} -> ${rule.scape}`)
+    assert.ok(rule.kinds.length > 0, `${rule.id} has a place`)
+    for (const band of rule.bands ?? []) assert.ok(TIME_BANDS.includes(band), `${rule.id}: band ${band}`)
+    for (const day of rule.days ?? []) assert.ok(Number.isInteger(day) && day >= 0 && day <= 6, `${rule.id}: weekday ${day}`)
+    for (const [from, to] of rule.hours ?? []) assert.ok(from >= 0 && to <= 24 && from < to, `${rule.id}: window ${from}-${to}`)
+    for (const kind of rule.kinds) assert.ok(Object.keys(PLACES).includes(kind), `${rule.id}: unknown kind ${kind}`)
+  }
+  for (const kind of ZINC) assert.ok(Object.keys(PLACES).includes(kind), `zinc kind ${kind}`)
+})
+
+test('every recipe is well formed, and a looped pattern is over before it comes round again', () => {
+  for (const [id, recipe] of Object.entries(RECIPES)) for (const layer of recipe.l) {
+    assert.ok(Number.isFinite(layer.d) && layer.d > 0, `${id}: length`)
+    assert.ok(layer.g > 0 && layer.g <= 1, `${id}: level ${layer.g}`)
+    assert.ok(Number.isFinite(layer.at ?? 0) && (layer.at ?? 0) >= 0, `${id}: start`)
+  }
+  for (const [name, spec] of Object.entries(SCAPES)) for (const loop of spec.loops ?? []) {
+    const recipe = RECIPES[loop[0]]
+    assert.ok(recipe, `${name} loops missing recipe ${loop[0]}`)
+    const length = Math.max(...(recipe?.l ?? []).map(layer => (layer.at ?? 0) + layer.d))
+    assert.ok(length <= loop[1] + 0.05, `${name}: ${loop[0]} runs ${length.toFixed(2)} s into a ${loop[1].toFixed(2)} s loop`)
+  }
 })

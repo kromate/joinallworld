@@ -1,6 +1,5 @@
 import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
-import { flagFromEnv, setFeature } from '../src/game/features.ts';
-import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions; the switch below decides whether it is used
+import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions: every life this server plays has them
 import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
 /**
  * Node host: HTTP + WebSocket plumbing, static files and the server context.
@@ -62,8 +61,6 @@ export interface ServerOptions {
   distDir?: string
   now?: () => number
   sessionTtlMs?: number
-  /** Work dilemmas and place actions (src/game/features.ts). Unset: the `DILEMMAS` environment value (`1` turns them on); off by default. */
-  dilemmas?: boolean
   actionWindowMs?: number
   maxActiveSessions?: number
   maxSockets?: number
@@ -140,7 +137,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
   try { const value: unknown = JSON.parse(body); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, dilemmas: givenDilemmas, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -157,9 +154,6 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // Error monitoring and analytics (server/telemetry): off, and doing nothing at all, unless its environment keys are set.
   telemetry = createServerTelemetry({ env: process.env, buildId, now, log }) }: ServerOptions = {}): Promise<AllworldServer> {
   const configuredOrigin = cleanOrigin(givenOrigin);
-  // The one engine-level switch (src/game/features.ts): an explicit option always decides; the environment can only turn it on.
-  const dilemmasOn = givenDilemmas ?? flagFromEnv(env?.DILEMMAS);
-  if (givenDilemmas !== undefined || dilemmasOn) setFeature('dilemmas', dilemmasOn);
   // The admin address (server/admin/host.ts): the same server answering on admin.<domain> with a much smaller face.
   const adminName = adminHostName(env?.[ADMIN_HOST_ENV], configuredOrigin);
   const onAdminHost = (req: IncomingMessage): boolean => isAdminHost(req.headers.host, adminName);

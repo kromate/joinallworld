@@ -96,7 +96,18 @@ export interface JusticeRecord {
   pairs: Record<string, number>
 }
 
-export interface LedgerLine { at: number; kind: 'levy' | 'fee' | 'salary' | 'bail'; amount: number; note: string }
+export interface LedgerLine { at: number; kind: 'levy' | 'fee' | 'salary' | 'bail' | 'grant'; amount: number; note: string }
+// ---- accountability ----------------------------------------------------------------------------------
+
+/** A payment from the treasury to a player, for a stated purpose. Public. */
+export interface GrantRecord { to: PlayerRef; amount: number; purpose: string; at: number; /** The recipient's party at the time. */ party: string | null }
+/** What came in and went out of a seat's treasury in one term. */
+export interface TermAccounts { week: number; income: number; salary: number; granted: number }
+export type AuditFlag = 'concentration' | 'party_favour' | 'drained'
+export interface TermAudit { week: number; at: number; by: PlayerRef; income: number; salary: number; granted: number; grants: number; flags: AuditFlag[] }
+/** Residents asking for the officeholder to be removed this term. */
+export interface PetitionRecord { week: number; signers: Record<string, number> }
+
 export interface TreasuryRecord { balance: number; ledger: LedgerLine[] }
 
 export interface PartyRecord {
@@ -147,11 +158,21 @@ export interface SeatView {
   decree: { by: PlayerRef; at: number } | null
   levers: LeverView[]
   treasury: TreasuryRecord
-  /** Null for a visitor who is not signed in. */
-  you: { isOfficeholder: boolean; salary: number } | null
+  /** This term's money in and out. */
+  accounts: { income: number; salary: number; granted: number }
+  /** The grants paid this term, newest first. */
+  grants: GrantRecord[]
+  /** The latest audit of this term, if one was asked for. */
+  audit: { at: number; by: PlayerRef; income: number; salary: number; granted: number; grants: number; flags: AuditFlag[] } | null
+  /** The petition to remove the officeholder: null when the seat is empty. `open` once an audit has found something. */
+  petition: { signed: number; needed: number; mine: boolean; open: boolean } | null
+  /** Null for a visitor who is not signed in. `grantRoom` is the most a grant can be now. */
+  you: { isOfficeholder: boolean; salary: number; grantRoom: number } | null
 }
 export interface PoliticsResponse {
   city: CityId
+  /** Where the weekly cycle is, the same for all three seats: nominations, voting, results. */
+  cycle: { phase: 'nominations' | 'voting' | 'results'; endsAt: number; week: number }
   seats: SeatView[]
   parties: PartyView[]
   you: { party: string | null; canFound: boolean } | null
@@ -227,6 +248,9 @@ export interface PoliticsHttpRoutes {
   'GET /api/politics/overview': { query: { city: CityId }; response: Ok<PoliticsResponse>; errors: PoliticsRead }
   'POST /api/politics/decree': { body: { cityId: CityId; tier: TierId; lever: LeverId; value: number }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
   'POST /api/politics/salary': { body: { cityId: CityId; tier: TierId; requestId: TimedId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | OnceErrorCode | 'invalid_tier' | 'no_such_seat' }
+  'POST /api/politics/grant': { body: { cityId: CityId; tier: TierId; player: string; amount: number; purpose: string; requestId: TimedId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | OnceErrorCode | 'invalid_tier' | 'no_such_seat' | 'invalid_player' }
+  'POST /api/politics/audit': { body: { cityId: CityId; tier: TierId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
+  'POST /api/politics/impeach': { body: { cityId: CityId; tier: TierId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
   'POST /api/politics/party/found': { body: { cityId: CityId; name: string; motto: string; colour: string; requestId: TimedId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | OnceErrorCode }
   'POST /api/politics/party/join': { body: { cityId: CityId; party: string }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite }
   'GET /api/politics/justice/overview': { query: { city: CityId }; response: Ok<JusticeResponse>; errors: PoliticsRead }

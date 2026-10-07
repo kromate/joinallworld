@@ -40,6 +40,8 @@ test('the venue, home and campus tags say NPC (never "a local") in their label a
 })
 
 test('the engine\'s speech toast marks an NPC\'s line, so a quote cannot read as a player\'s', async () => {
-  const social = await readFile(new URL('./systems/social.ts', import.meta.url), 'utf8')
-  assert.match(social, /\(\$\{NPC_WORD\}\): /)
+  const social = await readFile(new URL('../game/systems/social.ts', import.meta.url), 'utf8')
+  // The engine carries the word as a literal (the first download must not take the badge module with it); this keeps the two the same.
+  assert.ok(social.includes(`(${NPC_WORD}): `))
+  assert.doesNotMatch(social, /npc-mark/)
 })

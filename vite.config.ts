@@ -174,6 +174,8 @@ export default defineConfig({
     if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|layout|register)\.ts$/.test(id)) return 'campus-rules'
     // Plain typed-array code shared by the campus rules and the scenes (never part of the first page): the walk grid included.
     if (/\/src\/scene\/(movement|build|walk-grid)\.ts$/.test(id)) return 'scene-core'
+    // The NPC mark's word and spoken text (the scene tags and the badge both read them): the scene is on screen before any panel, so it rides in the chunk the scene already loads instead of adding a file to the first download's list. The badge itself is a panel's, fetched with the first panel that shows a person.
+    if (/\/src\/ui\/npc-mark\.ts$/.test(id)) return 'scene-core'
     // Only the share sheet reads this (src/ui/share.ts, fetched on demand).
     if (/\/src\/game\/share-model\.ts$/.test(id)) return undefined
     // Read only by screens that are fetched on demand: the wording and numbers of Ping, the comeback switches, the sentences of the

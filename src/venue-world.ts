@@ -102,7 +102,7 @@ import type { WalkPoint, WalkMode } from './scene/movement.ts';
 import type { LifeState } from './types/life.ts';
 import { inputMode, readFacts } from './ui/inputMode.ts';
 import { npcWordsEnabled } from './models/integration/flags.ts';
-import { addNpcWord, npcAria, npcTitle } from './game/npc-mark.ts';
+import { addNpcWord, npcAria, npcTitle } from './ui/npc-mark.ts';
 
 /** The player's avatar in every scene: their saved look, seeded by the session's public id (never the cookie). pose: set only by the host's own callers (a fixed pose). */
 export interface PlayerLook { look: unknown; seed: string; name: string; pose?: string | null }

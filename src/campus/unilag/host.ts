@@ -13,7 +13,7 @@ import type { CampusShuttleAction } from '../../types/campus.ts';
 import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.ts';
 import type { Kit } from '../../scene/kit.ts';
 import { npcWordsEnabled } from '../../models/integration/flags.ts';
-import { NPC_WORD, npcAria, npcTitle } from '../../game/npc-mark.ts';
+import { NPC_WORD, npcAria, npcTitle } from '../../ui/npc-mark.ts';
 
 export interface WalkResult { ok: boolean; code?: string; reason?: string }
 export interface SpotRequest { id: string; open: boolean }

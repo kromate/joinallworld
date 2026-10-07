@@ -78,7 +78,7 @@ export class Director {
   private readonly ctx: BaseAudioContext
   private readonly deps: Deps
   private readonly trims = {} as Record<Chan, GainNode>
-  private readonly cur: Record<Chan, { key: string; scape: Scape } | null> = { place: null, rain: null, ride: null, act: null }
+  private readonly cur: Record<Chan, { key: string; scape: Scape } | null> = { place: null, moment: null, rain: null, ride: null, act: null }
   private seen: Seen | null = null
   private hidden = false
   private idle = false

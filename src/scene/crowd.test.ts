@@ -20,7 +20,15 @@ test('real players come first with their public id as seed and their look; regul
   assert.deepEqual(list.map((person) => [person.kind, person.name]), [['player', 'Player 1'], ['player', 'Player 2'], ['npc', 'Amaka'], ['npc', 'Baba Sege']]);
   assert.deepEqual([list[0]!.seed, list[0]!.look, list[1]!.look], [player(1).id, look, null], 'the public id seeds the avatar; an unknown look stays null and is derived from the seed');
   assert.deepEqual([list[2]!.id, list[2]!.spot, list[3]!.spot], ['npc:amaka', 'counter', 'table'], 'Amaka serves at the counter');
-  assert.ok(!JSON.stringify(list).includes('friend'), 'nothing but id, name, kind, seed, look and place is passed to the scene');
+  assert.ok(!JSON.stringify(list).includes('friend'), 'nothing but id, name, kind, seed, look, place and (for a friend only) friend: true is passed to the scene');
+});
+
+test('a friend is marked for the scene, as `friend: true` and nothing else about the friendship', () => {
+  const list = crowdList({ players: [player(1), player(2, { friend: true, lastSeen: 'yesterday', since: 'a year' })] });
+  assert.deepEqual(list.map((person) => person.id), [player(2).id, player(1).id], 'the friend is drawn first');
+  assert.equal(list[0]!.friend, true);
+  assert.ok(!('friend' in list[1]!), 'a stranger carries no friend key');
+  assert.deepEqual(Object.keys(list[0]!).sort(), ['friend', 'id', 'kind', 'look', 'name', 'seed']);
 });
 
 test('the list is capped without crowding real players out, and only the current venue’s listing is used', () => {

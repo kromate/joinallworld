@@ -70,6 +70,7 @@ import { screenText } from '../moderation/text.ts';
 import { VISIT, VISIT_MS } from '../../src/game/visit.ts';
 import type { VisitHow } from '../../src/game/visit.ts';
 import { invitesFor, noteLinkUse, removeFromLink } from './visit-book.ts';
+import { forgetVisits, introductionFor, markTold, noteVisit } from './introductions.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { clip, glyphs } from './clip.ts';
 import { DIRECTORY_SCAN, PAGE_MAX, byNameOrder, cursorOf, directoryCache, firstAfter, newestFirst, pageLimit, readCursor } from './pages.ts';
@@ -349,7 +350,7 @@ function buildService(ctx: RouteContext) {
     const accept = (other: string): boolean => !blockedEither(s, viewer, other) && (kind === 'admin' || friendsIn(s.players, viewer, other));
     return directories.get(`${kind}:${viewer}`, now(), directoryStamp, s.players, accept, viewer);
   }
-  const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends',
+  const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends', introductions: p.introductions ?? 'off',
     notify: { text: p.notify?.hide !== true, groups: p.notify?.all ? 'all' : 'mentions', pausedUntil: p.notify?.until && p.notify.until > now() ? p.notify.until : null, quietDm: p.notify?.quietDm === true, quietGroups: p.notify?.noQuiet !== true } });
   const bodyOf = (message: MessageRecord): string => (message.auto ? welcomeNote(message.start) : message.body);
 
@@ -1076,7 +1077,20 @@ function buildService(ctx: RouteContext) {
       let players: ReturnType<typeof card>[] = [];
       if (state.location === 'home') players = Object.keys(pruneHouse(s, id)?.guests || {}).map(card);
       else if (joined) players = [...inRoom.values()].filter((member) => member.id !== id && s.players[member.id] && !blockedEither(s, id, member.id)).map((member) => card(member.id));
+      // REALISM R13: a regular's offer to introduce two players who were seen here on separate visits. Only in a public venue, only for a
+      // player who has introductions on, and only about someone already in `players`.
+      let introduction: { id: string; name: string } | null = null;
+      if (joined && state.location !== 'home' && p.introductions === 'on') {
+        const key = `${cityId}:${state.location}`, t = now();
+        noteVisit(p, key, t);
+        const found = introductionFor(p, players.flatMap((member) => {
+          const record = s.players[member.id];
+          return record && !member.friend && !member.requested && !member.incoming && founderId(s) !== member.id ? [{ id: member.id, record }] : [];
+        }), key, t);
+        if (found) introduction = { id: found, name: s.players[found]?.name ?? 'Former player' };
+      }
       return yes('ok', { cityId, venue: state.location, self: travelling ? 'travelling' as const : joined ? 'joined' as const : 'not_joined' as const, players, count: players.length,
+        ...(introduction ? { introduction } : {}),
         ...(mates && counts ? { here: mates.length, total: counts.total, groups: counts.groups } : {}) });
     },
     search(db: Db, session: SessionRecord, query: unknown) {
@@ -1496,7 +1510,23 @@ function buildService(ctx: RouteContext) {
       if (body.groups !== undefined) { if (body.groups !== 'friends' && body.groups !== 'nobody') throw bad('invalid_pref'); if (body.groups === 'nobody') p.groups = 'nobody'; else delete p.groups; }
       if (body.mentions !== undefined) { if (body.mentions !== 'on' && body.mentions !== 'off') throw bad('invalid_pref'); if (body.mentions === 'off') p.mentions = 'off'; else delete p.mentions; }
       if (body.pictures !== undefined) { if (body.pictures !== 'friends' && body.pictures !== 'nobody') throw bad('invalid_pref'); if (body.pictures === 'nobody') p.pictures = 'nobody'; else delete p.pictures; }
+      if (body.introductions !== undefined) {
+        if (body.introductions !== 'on' && body.introductions !== 'off') throw bad('invalid_pref');
+        if (body.introductions === 'on') p.introductions = 'on'; else { delete p.introductions; forgetVisits(p); }
+      }
       return yes('saved', { prefs: prefsOf(p) });
+    },
+    /** body: { to, cityId, answer } — the answer to a regular's offer (people() carries it). Accepting sends an ordinary friend request. */
+    introduce(db: Db, session: SessionRecord, body: SocialBody) {
+      const to = uuid(body.to), cityId = city(body.cityId);
+      if (body.answer !== 'accept' && body.answer !== 'decline') throw bad('invalid_answer');
+      // The offer is read again now, by the same rule that made it: the other player must still be here, still opted in, and still a stranger.
+      const listing = service.people(db, session, cityId) as { introduction?: { id: string } };
+      if (listing.introduction?.id !== to) return no('no_introduction', 'That introduction is no longer on offer.');
+      const { p } = enter(db, session);
+      markTold(p, to, now());
+      if (body.answer === 'decline') return yes('declined');
+      return service.friendRequest(db, session, { to, cityId });
     },
     /** Friends whose name has the query in it, for picking people to add: at most LIMITS.friendPicks. The founder's automatic friends are searched too. */
     friendSearch(db: Db, session: SessionRecord, query: unknown) {

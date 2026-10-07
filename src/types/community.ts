@@ -137,6 +137,8 @@ export interface CommunityController {
   saveName(name: string): Promise<boolean>
   /** Send a chat line. True when it was accepted into the list (sent now or pending). */
   sendChat(body: string): boolean
+  /** Add a line a game character said to this device's feed only (REALISM R12). Never sent to the server; the panel gives it the NPC mark. */
+  npcLine?(author: string, body: string): void
   retryMessage(key: string): void
   /** Ask for the venue's groups (shown as `groupList`); close the list. */
   listGroups(): void

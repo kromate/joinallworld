@@ -244,6 +244,8 @@ export default defineConfig({
     // Where the regulars are (their routines, the classifier and the resolver): fetched with the scene (src/campus/unilag/world-adapter.ts); the engine keeps only the hook (src/game/routines-hook.ts).
     // The world clock's bands, day seed and seasons ride in it too (only these and the moment banks, fetched once the game is ready, read them): one lazy file instead of two.
     if (/\/src\/game\/(routines\/[\w-]+|world-time)\.ts$/.test(id)) return 'routines'
+    // Regulars talking to each other (REALISM R12) are fetched after the game is ready: their words, the picker and the bubbles are one chunk, never part of the first download.
+    if (/\/src\/(game|app)\/chatter\//.test(id)) return 'chatter'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },
   },

@@ -18,7 +18,7 @@ import { renderToString } from 'vue/server-renderer'
 import type { SocialOverview } from '../types/social.ts'
 import type { App } from './state/app.ts'
 import type { SocialState as SocialClientState } from './features/social/useSocial.ts'
-import { createFakeServer } from './testing/fakeServer.ts'
+import { createFakeServer, memoryStorage } from './testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../..', import.meta.url))
 const server = createFakeServer()
@@ -26,6 +26,7 @@ let vite: ViteDevServer
 let app: App
 let social: SocialClientState
 const realFetch = globalThis.fetch
+const realStorage = Reflect.get(globalThis, 'localStorage')
 
 /** Load a module through Vite, exactly as the build would compile it. */
 const load = async <T = { default: Component }>(path: string): Promise<T> => await vite.ssrLoadModule(path) as T
@@ -38,6 +39,7 @@ async function render(path: string, props: Record<string, unknown> = {}): Promis
 before(async () => {
   // The store creates its client from the page's fetch: point it at the fake server before any module loads.
   globalThis.fetch = server.fetch
+  Reflect.set(globalThis, 'localStorage', memoryStorage())
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../game/cities/registry.ts')
   await cityLoader.loadCityContent('lagos')
@@ -46,7 +48,7 @@ before(async () => {
   assert.equal(await app.game.connect(), true)
   app.game.stop()
 })
-after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
+after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch; if (realStorage === undefined) Reflect.deleteProperty(globalThis, 'localStorage'); else Reflect.set(globalThis, 'localStorage', realStorage) })
 
 test('base components: a disabled button says why; a meter and an empty state are labelled', async () => {
   const button = await render('/src/app/ui/BaseButton.vue', { variant: 'primary', reason: 'You need ₦500 more.' })
@@ -73,6 +75,20 @@ test('HUD: the top bar shows the clock, mood, name, saved state and wallet of th
   const needs = await render('/src/app/features/hud/NeedsStrip.vue')
   assert.match(needs, /role="group" aria-label="Your needs"/)
   for (const need of app.game.view.value.needs.order) assert.match(needs, new RegExp(`role="meter" aria-label="${need[0]?.toUpperCase()}${need.slice(1)}"[^>]*aria-valuenow="${Math.round(state.needs[need])}"`))
+})
+
+test('HUD: an uncertain action is available for an exact retry after reconnect', async () => {
+  server.fault.offline = true
+  await app.command('cancel')
+  server.fault.offline = false
+  assert.equal(await app.game.connect(), true)
+  try {
+    assert.ok(app.game.pendingAction.value)
+    const notice = text(await render('/src/app/features/hud/ConnectionNotice.vue'))
+    assert.ok(notice.includes('Retry the same action') && notice.includes('cannot be applied twice'), notice)
+    await app.game.retryPendingAction()
+    assert.equal(app.game.pendingAction.value, null)
+  } finally { server.fault.offline = false }
 })
 
 test('Bank: balance, rent, and the ledger with every change explained', async () => {

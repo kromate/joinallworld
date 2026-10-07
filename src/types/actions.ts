@@ -457,8 +457,6 @@ export type ActionBody<T extends ActionType = ActionType> = {
 
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
-  'estate.land-pay', 'street.place',
-  'stories.save', 'stories.remove', 'stories.publish', 'stories.start', 'stories.next', 'stories.end',
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
   'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
   'activity', 'spot', 'activity.admin',
@@ -469,6 +467,8 @@ export const ACTION_TYPES = [
   'estate.confirm-residence', 'estate.unconfirm-residence',
   'home.door', 'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
   'home.grocery-buy', 'home.kitchen-unpack', 'home.refuel',
+  'stories.save', 'stories.remove', 'stories.publish', 'stories.start', 'stories.next', 'stories.end',
+  'estate.land-pay', 'street.place',
   'onboarding.quick-start', 'onboarding.arrive',
   'onboarding.look', 'onboarding.traits', 'onboarding.dream', 'onboarding.lottery', 'onboarding.home',
   'onboarding.set-look', 'onboarding.boutique-buy',

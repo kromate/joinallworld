@@ -522,12 +522,8 @@ const play = PLAYS ? {
         if (npc) rel.npcSnapshot = snapshotOf(npc, from);
       }
     },
-    'activity.completed'(state, { def }, ctx) {
-      const reward = def?.reward;
-      if (reward !== undefined && reward > 0) {
-        const paid = Math.max(0, Math.round(Number(modify(state, 'activity.reward', reward, { def }, ctx)) || 0));
-        state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + paid);
-      }
+    'activity.completed'(state, { def, cash }, ctx) {
+      if (cash > 0) state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + cash);
       if (!def?.social) return;
       const npc = regularFor(ctx.cityId, def.social.npc) ?? npcOf(def.social.npc), action: NpcAction | PlaceAction | undefined = NPC_ACTIONS.find((item) => item.id === def.social?.action) ?? dilemmaKit()?.placeActionById(def.social.action);
       if (!action) throw new TypeError(`No NPC action ${def.social.action}`); // the original read a property of undefined

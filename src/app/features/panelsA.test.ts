@@ -19,6 +19,7 @@ import { glyphParts } from './kit/glyphText.ts'
 import { autoWords, chipWords, jobControl, jobsRules, openNow, otherJobs, validAsk } from './jobs/jobsModel.ts'
 import { percent, promotionLine, stepLine } from './jobs/careerModel.ts'
 import { changes, dayLabel, failedVerdict, sameStatement, verdictOf } from './money/statementModel.ts'
+import { statementOf } from '../../game/wallet-statement.ts'
 import { investRules, pickAmount } from './money/investModel.ts'
 import { housesRules, moveReason, nextHouse, ownedReason, buyReason, quicker, savedPercent } from './home/homeModel.ts'
 import { carArt, houseArt } from './home/artModel.ts'
@@ -279,9 +280,9 @@ test('Career: with no job it says where to find one', async () => {
 
 test('Statement: the closing balance, the sums that add up, every change with its reason', async () => {
   const html = await render('/src/app/features/money/StatementApp.vue')
-  const words = text(html), view = app.game.view.value
+  const words = text(html), view = app.game.view.value, statement = statementOf(app.game.state.value)
   assert.match(html, /<section[^>]*aria-label="Closing balance"/)
-  assert.ok(words.includes(`Closing balance · ${changes(view.wallet.statement.totals.changes)} ${money(view.wallet.statement.closing)}`), words.slice(0, 120))
+  assert.ok(words.includes(`Closing balance · ${changes(statement.totals.changes)} ${money(statement.closing)}`), words.slice(0, 120))
   assert.ok(words.includes('Every naira is accounted for.') && words.includes('Check with the server') && words.includes('Something here looks wrong'))
   for (const line of view.wallet.ledger) assert.ok(words.includes(line.reason))
 })

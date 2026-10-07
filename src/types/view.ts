@@ -73,10 +73,6 @@ export interface WalletView {
   cash: number
   /** NEWEST FIRST (the stored ledger is newest last). */
   ledger: LedgerLine[]
-  /** NEWEST FIRST. */
-  days: StatementDay[]
-  /** The statement without its `days` and `lines` (they are the two fields above, reversed). */
-  statement: Pick<WalletStatement, 'opening' | 'closing' | 'totals' | 'reconciled' | 'problems' | 'kept' | 'linesOpening'>
 }
 
 // ---- inventory ----------------------------------------------------------------------------
@@ -1169,7 +1165,7 @@ export const VIEW_KEYS = [
 
 /** The keys of each system's view, sorted. (`skills` is keyed by SkillId.) */
 export const VIEW_FIELD_KEYS = {
-  wallet: ['cash', 'days', 'ledger', 'statement'],
+  wallet: ['cash', 'ledger'],
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [

@@ -1008,12 +1008,13 @@ export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, Needs
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
-  | 'economy' | 'property' | 'estate' | 'home' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
-  | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle' | 'stories' | 'land'
+  | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
+  | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
   land: Record<never, never>
+  street: Record<never, never>
   stories: import('./stories.ts').StoriesSlice
   core: CoreSlice
   wallet: WalletSlice
@@ -1075,7 +1076,11 @@ export interface LifeContext {
   internal?: boolean
   /** createLife only: the input is the server's own stored copy, so an invalid saved action may be settled (refunded or charged). */
   trustedSave?: boolean
+  /** Server-only collector for exact player-wallet mutations. */
+  money?: (effect: MoneyEffect) => void
 }
+
+export interface MoneyEffect { at: number; amount: number; balanceAfter: number; reason: string }
 
 /**
  * What a caller may hand to createLife / dispatch / advanceLife / viewLife instead of a built
@@ -1132,7 +1137,6 @@ export const LIFE_STATE_KEYS = [
 
 /** Each system's `stateKeys`, in registration order. */
 export const SYSTEM_STATE_KEYS = {
-  land: [],
   core: ['v', 't', 'name', 'message', 'location', 'activeAction'],
   wallet: ['cash', 'ledger', 'ledgerDays'],
   inventory: ['inventory'],
@@ -1147,6 +1151,8 @@ export const SYSTEM_STATE_KEYS = {
   estate: ['estate'],
   home: ['home'],
   stories: ['stories'],
+  land: [],
+  street: [],
   onboarding: ['onboarding'],
   goals: ['goals'],
   social: ['social'],

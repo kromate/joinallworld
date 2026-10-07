@@ -21,6 +21,7 @@ import type { CommerceCollection, CommerceGateway } from './commerce/types.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
 import type { BillsRecord, DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, LawsRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
+import type { StoredWalletEffect } from './economy/effects.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
 //
@@ -393,7 +394,7 @@ export type SocialEffectPayload =
   | { op: 'unfriend'; id: string }
   | { op: 'bae'; id: string; name: string }
   | { op: 'bae-end'; id: string }
-  | { op: 'transfer-in'; from: string; name: string; amount: number; refund?: true }
+  | { op: 'transfer-in'; from: string; name: string; amount: number; refund?: true; transferId?: string }
 /** A life effect owed to a player who was not connected (a gift waiting to be credited, a friendship to record). */
 export interface PendingEffect {
   n: number
@@ -709,6 +710,8 @@ export interface GrowthCollection {
 
 export interface Database {
   version: 1
+  /** Node's transaction-atomic player-wallet audit log; Worker stores rows separately. */
+  walletEffects?: StoredWalletEffect[]
   /** Keyed by cookie secret. */
   sessions: Record<string, SessionRecord>
   /** Keyed by public id. */
@@ -741,7 +744,7 @@ export interface Database {
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits', 'walletEffects'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]
@@ -764,6 +767,8 @@ export interface StoreHelpers {
   expiredSessionKeys?(now: number): string[]
   /** WORKER: a store that keeps receipts apart from the session records counts the live ones itself (deploy/sqlite-store.ts). */
   onceCounts?(liveSince: number, lightKinds: readonly string[]): { money: number; light: number }
+  /** Indexed Worker read; Node falls back to its append-only walletEffects array. */
+  walletEffectsPage?(publicId: string, after: number, limit: number): (StoredWalletEffect & { seq: number })[]
 }
 /** What `fn(db)` receives: private copies; nothing reaches the document unless the transaction returns. */
 export type Db = Database & { readonly $store?: StoreHelpers }

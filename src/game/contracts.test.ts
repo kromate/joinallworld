@@ -11,7 +11,7 @@ import { createLife, dispatch, advanceLife, isDeparting, occupiesVenue, activeMo
 import { registerSystem, systems, activeHandler, undeclaredKeys, emit } from './registry.ts';
 import { makeContext, makeRng, keyedSeed, sha256Hex, isRecord } from './util.ts';
 import { rebuildCatalogue, usedShare, isMetered, MAX_LOCKED_SECONDS } from './systems/activities.ts';
-import { statementOf } from './systems/wallet.ts';
+import { statementOf } from './wallet-statement.ts';
 import { VENUES } from './cities/lagos/venues.ts';
 
 import type { ActionBody } from '../types/actions.ts';

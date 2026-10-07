@@ -13,7 +13,7 @@ import { fixture } from './test-fixture.ts';
 import { createServer } from './server.ts';
 import { presenceOf } from './social/presence.ts';
 import { isSharedAddress } from './protocol.ts';
-import { statementOf } from '../src/game/systems/wallet.ts';
+import { statementOf } from '../src/game/wallet-statement.ts';
 import { createLife } from '../src/life.ts';
 import type { AddressInfo } from 'node:net';
 import type { Socket } from 'node:net';
@@ -31,7 +31,7 @@ const MONDAY = 4 * DAY - HOUR; // the Monday after the fixture's start (a Thursd
 interface ReportRow { id: string; by: string; byName: string; about: string; reason: string; text: string; evidence: string[]; status: string; note: string }
 interface ProblemRow {
   id: string; by: string; name: string
-  context: { build: string; cityId: string; life: unknown; actions: { type: string; ok: boolean; code: string }[]; lastError: unknown; ledger: unknown }
+  context: { build: string; cityId: string; unavailable?: string; life: unknown; actions: { type: string; ok: boolean; code: string }[]; lastError: unknown; ledger: unknown }
 }
 interface Reply {
   status: number; error?: string; reason?: string; ok?: boolean; code?: string; duplicate?: boolean
@@ -39,6 +39,7 @@ interface Reply {
   state: LifeState
   conversations: unknown[]; conv: { id: string; name: string }
   receipt: { id: string; status: string; category: string; text: string }
+  problem: ProblemRow
   reports: ReportRow[]; problems: ProblemRow[]
   mute: { id: string; until: number }; mutes: { id: string; reason: string; report: string }[]
   update: { text: string }; updates: { text: string }[]
@@ -395,6 +396,40 @@ test('report a problem: a receipt with automatic context and a status the player
   const limited = await post('/api/support/reports', { cityId: 'lagos', category: 'bug', text: 'fourth', clientId: clientId() }, ada);
   assert.deepEqual([limited.ok, limited.code], [false, 'rate_limited']); assert.match(limited.reason ?? '', /the ones you filed are kept/);
   assert.deepEqual((await mod('/api/mod/overview')).problems, { total: 3, open: 2 });
+});
+
+test('a quarantined wallet can file and retry a bounded support report without repairing or exposing the corrupt save', async (t) => {
+  const { f, post, mod, clientId } = await harness(t, { buildId: 'support-recovery-test' });
+  for (const [name, corrupt] of [['Negative', -1], ['Malformed', null]] as const) {
+    const player = await f.device(name);
+    await f.request('/api/life?city=lagos', null, player.cookie);
+    let before = '';
+    await f.server.store.transact(db => {
+      const session = Object.values(db.sessions).find(item => item.publicId === player.id);
+      const entry = session?.cities.lagos;
+      if (!entry) throw new Error('test life missing');
+      if (corrupt === null) Reflect.set(entry, 'state', null); else entry.state.cash = corrupt;
+      before = JSON.stringify(entry.state);
+    });
+    const id = clientId(), body = { cityId: 'lagos', category: 'money', text: `Wallet recovery needed for ${name}`, clientId: id };
+    const filed = await post('/api/support/reports', body, player);
+    const duplicate = await post('/api/support/reports', body, player);
+    assert.deepEqual([filed.status, filed.code, duplicate.code, duplicate.duplicate, duplicate.receipt.id], [200, 'filed', 'filed', true, filed.receipt.id]);
+    const stored = await f.server.store.read(db => {
+      const session = Object.values(db.sessions).find(item => item.publicId === player.id);
+      return JSON.stringify(session?.cities.lagos?.state);
+    });
+    assert.equal(stored, before, 'support filing does not repair, default or otherwise rewrite the quarantined life');
+  }
+  const problems = (await mod('/api/mod/problems')).problems as ProblemRow[];
+  assert.equal(problems.length, 2);
+  for (const problem of problems) {
+    assert.deepEqual([problem.context.unavailable, problem.context.life, problem.context.ledger], ['economy_unavailable', null, []]);
+    assert.ok(problem.context.actions.length <= 10);
+    assert.ok(!JSON.stringify(problem.context).includes('sid='));
+  }
+  const updated = await mod(`/api/mod/problems/${problems[0]?.id}/status`, { status: 'reviewing', note: 'Wallet recovery queued.' });
+  assert.deepEqual([updated.code, updated.problem.context.unavailable, updated.problem.context.life], ['updated', 'economy_unavailable', null]);
 });
 
 test('statement: the server explains the balance — opening, every change, closing — and it reconciles', async (t) => {

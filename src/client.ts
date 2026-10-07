@@ -9,7 +9,7 @@ import { STORAGE_KEY } from './storage-key.ts';
  * without a session, command() refuses, sends nothing and changes nothing — the cached state
  * is shown read-only until the server is reachable again.
  */
-import { createLife, isDeparting } from './life.ts';
+import { createLife, hasAction, isDeparting } from './life.ts';
 import { lifeCities, loadLifeCities } from './game/cities/lifeCities.ts';
 import { campusFor } from './game/campus-gate.ts';
 import type { LifeState } from './types/life.ts';
@@ -23,7 +23,7 @@ export function clientCity(id: string): City {
 }
 
 /** Why the game is or is not playable (see createClient). */
-export type LinkState = 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable'
+export type LinkState = 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable' | 'recovery'
 /** Refusals of POST /api/session that are about the nickname itself. */
 export type NameRefusalCode = 'name_not_allowed' | 'invalid_name' | 'muted'
 /** What onNeedName gets when the server refused the nickname just tried. */
@@ -41,6 +41,8 @@ export type ChangeCause = 'own' | 'elsewhere' | 'wake'
 export interface LifeHint { rev: number; by?: readonly string[] }
 /** Outcome of command() and switchCity(). `ok: false` with `code: 'offline' | 'busy'` means nothing was sent. */
 export interface CommandResult { ok: boolean; code: string | undefined; reason?: string }
+export interface PendingActionIntent { sessionId: string; actionId: TimedId; cityId: CityId; type: ActionRequest['type']; payload?: Record<string, unknown> }
+export type SnapshotPhase = 'preview' | 'unconfirmed' | 'available' | 'unavailable'
 /** What api() rejects with. A network failure has neither status nor code. */
 export interface ApiError extends Error { status?: number; code?: string; reason?: string; city?: string; /** Seconds after which the server said trying again can succeed. */ retryAfter?: number }
 /** Options of api(): fetch's, except that `body` may be an object (sent as JSON). */
@@ -72,6 +74,10 @@ export interface ClientOptions {
   onNeedName?: (problem?: NameProblem) => void
   /** A session was established or replaced. */
   onSession?: (session: OwnSession, createdNew: boolean) => void
+  /** City-rule loader seam used by tests; production uses the registry loader. */
+  loadLifeCities?: typeof loadLifeCities
+  /** Campus-rule loader seam used by tests. */
+  loadCampus?: typeof campusFor
   /** False when the device itself has no network (navigator.onLine). */
   isOnline?: () => boolean
 }
@@ -98,10 +104,13 @@ export interface Client {
   newId(): TimedId
   storage: StorageProblem | null
   readonly online: boolean
+  readonly pendingAction: PendingActionIntent | null
+  readonly snapshotPhase: SnapshotPhase
   api: Api
   fetchJson: Api
   connect(createNew?: boolean, startCity?: string): Promise<boolean>
   command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult>
+  retryPendingAction(): Promise<CommandResult>
   switchLegacy(id: string, clientId: string): Promise<CommandResult>
   switchCity(id: string): Promise<CommandResult>
   refresh(lostText?: string): Promise<boolean>
@@ -120,7 +129,7 @@ export type Api = <T extends object = Record<string, unknown>>(path: string, opt
 /** What any answer body may carry, success or error. */
 interface Payload extends Partial<ApiEnvelope> { error?: string; code?: string; message?: string; reason?: unknown; retryAfter?: unknown }
 /** What the browser cache holds (nothing in it is trusted). */
-interface SavedClient { state?: unknown; identity?: { name?: string }; cityId?: unknown }
+interface SavedClient { state?: unknown; ownerId?: unknown; identity?: { name?: string }; cityId?: unknown; pendingAction?: unknown }
 export { STORAGE_KEY } from './storage-key.ts';
 export const TEXT = Object.freeze({
   connectionLost: 'Connection lost. Reconnect to check your saved progress.',
@@ -129,6 +138,7 @@ export const TEXT = Object.freeze({
   paused: Object.freeze({
     offline: 'This device has no internet. Nothing changes until you are back online.',
     unreachable: 'The game server is not answering. Nothing changes until it can be reached again.',
+    recovery: 'Your wallet needs recovery. Your saved progress is preserved and changes are paused.',
     expired: 'This device’s saved life is no longer on the server. Start a new life to play.',
     new: 'Choose a nickname to start playing.',
     connecting: 'Still connecting. Try again in a moment.',
@@ -171,6 +181,17 @@ const NAME_TEXT: Readonly<Record<NameRefusalCode, string>> = { name_not_allowed:
 
 const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
+const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
+function pendingIntent(value: unknown): PendingActionIntent | null {
+  if (!isRecord(value) || typeof value.sessionId !== 'string' || !value.sessionId || value.sessionId.length > 100 || typeof value.actionId !== 'string'
+    || !/^\d{1,16}:[0-9a-f-]{36}$/.test(value.actionId) || !isCityId(value.cityId) || !hasAction(value.type) || (value.payload !== undefined && !isRecord(value.payload))) return null
+  return { sessionId: value.sessionId, actionId: value.actionId as TimedId, cityId: value.cityId, type: value.type as ActionRequest['type'], ...(value.payload === undefined ? {} : { payload: structuredClone(value.payload) }) }
+}
+function canonical(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`
+  if (isRecord(value)) return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`
+  return JSON.stringify(value) ?? 'null'
+}
 
 /**
  * What this client may send for an action. One rule today: SETTLING IN ('onboarding.home') carries the local government
@@ -208,7 +229,7 @@ export function outgoing<P>(type: string, payload: P): P | Record<string, unknow
  *   'unreachable'  the device is online but the server did not answer (down, timed out, 5xx)
  */
 export function createClient({ fetch = globalThis.fetch?.bind(globalThis), storage, now = Date.now, setTimeout: later = globalThis.setTimeout, clearTimeout: cancel = globalThis.clearTimeout,
-  randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {} }: ClientOptions = {}): Client {
+  randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {}, loadLifeCities: loadLife = loadLifeCities, loadCampus = campusFor }: ClientOptions = {}): Client {
   const cancelTimer = cancel as (handle: unknown) => void;
   let saved: SavedClient | null | undefined;
   let cached: string | null = null;
@@ -217,9 +238,15 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   const cityId = initialCity(cached, isCityId);
   const missingRules = lifeCities(saved?.state, [cityId]).filter((id) => cityRules(id) === null)
   if (missingRules.length) throw new Error(`Saved life rules have not been loaded: ${missingRules.join(', ')}`)
+  let pendingAction = pendingIntent(saved?.pendingAction)
+  let snapshotOwner = typeof saved?.ownerId === 'string' && saved.ownerId ? saved.ownerId : null
+  let snapshotPhase: SnapshotPhase = saved?.identity ? 'unconfirmed' : 'preview'
+  let snapshotGeneration = 0, connectGeneration = 0
+  const savedSnapshotGeneration = snapshotGeneration, savedWaiting = loadCampus(saved?.state)
+  let cachedStateReady = !savedWaiting
   const client: Client = {
     // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
-    state: createLife(campusFor(saved?.state) ? null : saved?.state, { cityId }),
+    state: createLife(savedWaiting ? null : saved?.state, { cityId }),
     cityId,
     identity: { name: saved?.identity?.name || cityDefaultName(cityId) },
     hasSavedIdentity: Boolean(saved?.identity),
@@ -233,33 +260,66 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     /** null while the server is saving normally; { reason } from the moment it says it cannot (storage: "failing", or 503 storage_unavailable). */
     storage: null,
     get online() { return client.ready && Boolean(client.session); },
+    get pendingAction() { return pendingAction ? structuredClone(pendingAction) : null; },
+    get snapshotPhase() { return snapshotPhase; },
     get revision() { return revision; },
-    api, fetchJson: api, connect, command, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
+    api, fetchJson: api, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
   let pollTimer: unknown = null;
+  let identityGeneration = 0;
+  const routeCooldowns = new Map<string, { until: number; attempts: number }>()
+  let coreCooldown = { until: 0, attempts: 0 }
   // A saved life that uses the campus is rebuilt as soon as the campus rules have arrived, unless the server has answered first.
-  const savedWaiting = campusFor(saved?.state);
-  if (savedWaiting) void savedWaiting.then(() => { if (!accepted) { const previous = client.state; client.state = createLife(saved?.state); onChange(client.state, previous); } }, () => {});
+  if (savedWaiting) void savedWaiting.then(() => {
+    if (accepted || snapshotGeneration !== savedSnapshotGeneration || snapshotOwner === null || snapshotOwner !== saved?.ownerId || snapshotPhase === 'unavailable') return
+    try {
+      const previous = client.state, restored = createLife(saved?.state)
+      cachedStateReady = true; client.state = restored
+      if (client.session?.id === snapshotOwner) snapshotPhase = 'available'
+      onChange(client.state, previous)
+    } catch { cachedStateReady = false; snapshotPhase = 'unavailable'; onChange(client.state, client.state) }
+  }, () => {});
 
   function status(text: string, error = false): void { onStatus(text, error); }
-  function persist(): void {
+  function persist(): boolean {
     try {
       if (!storage) throw Error('storage');
-      storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, state: client.state, identity: client.identity, cityId: client.cityId }));
+      storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, identity: client.identity, cityId: client.cityId,
+        ...(snapshotPhase === 'available' && snapshotOwner ? { state: client.state, ownerId: snapshotOwner } : {}), ...(pendingAction ? { pendingAction } : {}) }));
       if (!client.session) status('Local preview · saved on this device');
-    } catch { status(client.session ? 'Server saved · browser cache unavailable' : 'Not saved · browser storage unavailable', true); }
+      return true
+    } catch { status(client.session ? 'Server saved · browser cache unavailable' : 'Not saved · browser storage unavailable', true); return false }
   }
 
+  const routeKey = (path: string): '/api/action' | '/api/life' | null => path === '/api/action' ? '/api/action' : path.startsWith('/api/life?') ? '/api/life' : null
+  const backoffMs = (attempt: number, retryAfter?: number): number => retryAfter ? Math.min(60000, Math.max(1000, retryAfter * 1000)) : Math.floor(Math.min(60000, 1000 * 2 ** Math.min(attempt, 6)) * (0.5 + Math.random() * 0.5))
+  function noteCooldown(path: string, shared: boolean, retryAfter?: number): void {
+    if (shared) { coreCooldown = { attempts: coreCooldown.attempts + 1, until: now() + backoffMs(coreCooldown.attempts, retryAfter) }; return }
+    const key = routeKey(path); if (!key) return
+    const old = routeCooldowns.get(key) ?? { until: 0, attempts: 0 }
+    routeCooldowns.set(key, { attempts: old.attempts + 1, until: now() + backoffMs(old.attempts, retryAfter) })
+  }
+  function cooldownError(path: string): ApiError | null {
+    const key = routeKey(path), local = key ? routeCooldowns.get(key)?.until ?? 0 : 0, shared = coreCooldown.until, until = Math.max(local, shared)
+    if (!(until > now())) return null
+    const error: ApiError = Error('The server is busy. Wait a moment and try again.'); error.status = shared >= local ? 503 : 429; error.code = shared >= local ? 'server_busy' : 'rate_limited'; error.retryAfter = Math.ceil((until - now()) / 1000); return error
+  }
+  const cooldownDelay = (path: string): number => { const key = routeKey(path); return Math.max(0, Math.max(coreCooldown.until, key ? routeCooldowns.get(key)?.until ?? 0 : 0) - now()) }
+  function resetIdentityCooldowns(): void { routeCooldowns.clear(); coreCooldown = { until: 0, attempts: 0 } }
+
   /** JSON request to the same origin. Rejects with Error{status, code, reason?}; a network failure reads as connection lost. */
-  async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}): Promise<T & ApiEnvelope> {
+  const staleIdentityResponse = (): ApiError => Object.assign(Error('Response belongs to a replaced identity'), { code: 'stale_identity_response' })
+  async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}, responseCurrent: () => boolean = () => true): Promise<T & ApiEnvelope> {
+    const cooling = cooldownError(path); if (cooling) throw cooling
     let response: FetchResponse;
     try {
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
         headers: { 'Content-Type': 'application/json', ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
-    } catch { throw Error(TEXT.connectionLost); }
+    } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
     let payload: Payload;
-    try { payload = await response.json() as Payload; } catch { throw Error('Server returned an unreadable response'); }
+    try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }
+    if (!responseCurrent()) throw staleIdentityResponse();
     if (payload === null || typeof payload !== 'object') throw Error('Server returned an unreadable response');
     if (typeof payload.serverTime === 'number' && Number.isFinite(payload.serverTime)) client.serverTimeOffset = payload.serverTime - now();
     // What the server says about its own storage, shown as it is: a success carrying storage "failing"
@@ -277,8 +337,11 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       if (typeof Reflect.get(payload, 'city') === 'string') error.city = String(Reflect.get(payload, 'city'));
       if (typeof payload.reason === 'string' && payload.reason) error.reason = payload.reason; // the sentence the server wrote for the player
       if (typeof payload.retryAfter === 'number' && Number.isFinite(payload.retryAfter) && payload.retryAfter > 0) error.retryAfter = payload.retryAfter;
+      if (response.status === 429) noteCooldown(path, false, error.retryAfter)
+      if (response.status === 503 && error.code === 'server_busy') noteCooldown(path, true, error.retryAfter)
       throw error;
     }
+    const key = routeKey(path); if (key) routeCooldowns.delete(key); coreCooldown = { until: 0, attempts: 0 }
     return payload as T & ApiEnvelope;
   }
 
@@ -303,14 +366,21 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
    * it as the life. `rev` is the answer's revision and `askedAt` the value of `taken` when it was asked for; an answer
    * that a newer one overtook is dropped (false).
    */
-  async function accept(next: unknown, rev?: number, askedAt = taken, cause: ChangeCause = 'own'): Promise<boolean> {
+  async function accept(next: unknown, rev: number | undefined, askedAt: number, cause: ChangeCause, responseCurrent: () => boolean, responseOwner: string | null): Promise<boolean> {
     const overtaken = (): boolean => typeof rev === 'number' && rev < revision && askedAt < taken;
-    if (overtaken()) return false;
-    await loadLifeCities(next, [client.cityId]); // every city the life refers to, before it is rebuilt
-    const waiting = campusFor(next);
+    if (!responseCurrent() || overtaken()) return false;
+    await loadLife(next, [client.cityId]); // every city the life refers to, before it is rebuilt
+    if (!responseCurrent()) return false;
+    const waiting = loadCampus(next);
     if (waiting) await waiting;
-    if (overtaken()) return false;
-    accepted = true;
+    if (!responseCurrent() || overtaken()) return false;
+    const stamp = (next as { t?: unknown } | null | undefined)?.t;
+    const snapshotTime = typeof stamp === 'number' ? stamp : Number.NaN;
+    const built = createLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
+    if (!responseCurrent()) return false
+    accepted = true; cachedStateReady = true
+    snapshotOwner = responseOwner
+    snapshotPhase = snapshotOwner ? 'available' : snapshotPhase
     // The change another device made arrived with this answer, whichever request carried it.
     const why: ChangeCause = typeof rev === 'number' && announcedElsewhere > revision && rev >= announcedElsewhere ? 'elsewhere' : cause;
     if (typeof rev === 'number') revision = rev;
@@ -318,9 +388,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     const previous = client.state;
     // A server snapshot is rebuilt at ITS time and city, not at time zero: a sanitiser that compares with the clock
     // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
-    const stamp = (next as { t?: unknown } | null | undefined)?.t;
-    const snapshotTime = typeof stamp === 'number' ? stamp : Number.NaN;
-    client.state = createLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
+    client.state = built;
     if (isCityId(client.state.estate.city)) client.cityId = client.state.estate.city as CityId;
     persist();
     onChange(client.state, previous, why);
@@ -338,8 +406,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
   const down = (): LinkState => (isOnline() ? 'unreachable' : 'offline');
   function lost(error: ApiError, text?: string): void {
-    client.ready = false; client.link = down();
-    status(text || error.message, true);
+    client.ready = false; client.link = error.code === 'economy_unavailable' ? 'recovery' : down();
+    status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : text || error.message, true);
     onChange(client.state, client.state);
   }
 
@@ -347,36 +415,47 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   function schedule(): void {
     cancelTimer(pollTimer);
     if (isHidden() || !client.online) return;
-    pollTimer = later(() => refresh('Disconnected · action will settle on server'), client.state.activeAction ? ACTIVE_POLL_MS : IDLE_POLL_MS);
+    pollTimer = later(() => refresh('Disconnected · action will settle on server'), Math.max(client.state.activeAction ? ACTIVE_POLL_MS : IDLE_POLL_MS, cooldownDelay('/api/life')));
   }
   function stop(): void { cancelTimer(pollTimer); }
 
-  async function loadedSnapshot<T extends { state: LifeState }>(response: T): Promise<T> {
-    await loadLifeCities(response.state);
+  async function loadedSnapshot<T extends { state: LifeState }>(response: T, responseCurrent: () => boolean = () => true): Promise<T> {
+    await loadLife(response.state);
+    if (!responseCurrent()) throw staleIdentityResponse();
     return response;
   }
 
-  async function fetchCurrentLife(city: string): Promise<LifeResponse> {
-    try { await loadCityContent(city); return await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${city}`)); }
+  async function fetchCurrentLife(city: string, responseCurrent: () => boolean = () => true): Promise<LifeResponse> {
+    try {
+      await loadCityContent(city);
+      if (!responseCurrent()) throw staleIdentityResponse();
+      return await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${city}`, {}, responseCurrent), responseCurrent);
+    }
     catch (error) {
       if (typeof error !== 'object' || error === null || Reflect.get(error, 'code') !== 'city_moved') throw error;
       const destination: unknown = Reflect.get(error, 'city');
       if (typeof destination !== 'string' || !isCityId(destination)) throw error;
       await loadCityContent(destination);
-      const response = await api<LifeResponse>(`/api/life?city=${destination}`);
+      if (!responseCurrent()) throw staleIdentityResponse();
+      const response = await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${destination}`, {}, responseCurrent), responseCurrent);
+      if (!responseCurrent()) throw staleIdentityResponse();
       client.cityId = destination as CityId;
-      return loadedSnapshot(response);
+      return response;
     }
   }
 
-  async function refresh(lostText = 'Reconnect to refresh progress', cause: ChangeCause = 'own'): Promise<boolean> {
-    if (!client.online) return false;
+  const lifeScope = () => { const generation = identityGeneration, owner = client.session?.id ?? null; return { owner, current: () => owner !== null && generation === identityGeneration && client.session?.id === owner } }
+  async function refresh(lostText = 'Reconnect to refresh progress', cause: ChangeCause = 'own', suppliedCurrent?: () => boolean, suppliedOwner?: string | null): Promise<boolean> {
+    const scope = lifeScope(), responseCurrent = suppliedCurrent ?? scope.current, responseOwner = suppliedOwner ?? scope.owner
+    if (!client.online || !responseCurrent()) return false;
     const askedAt = taken;
-    try { const response = await fetchCurrentLife(client.cityId); await accept(response.state, response.rev, askedAt, cause); return true; }
+    try { const response = await fetchCurrentLife(client.cityId, responseCurrent); return await accept(response.state, response.rev, askedAt, cause, responseCurrent, responseOwner); }
     catch (e) {
       const error = e as ApiError;
+      if (!responseCurrent() || error.code === 'stale_identity_response') return false;
       // The server answered, it just could not save this settlement: still connected, try again at the next poll.
       if (error.code === 'storage_unavailable') { schedule(); return false; }
+      if (error.code === 'server_busy' || error.status === 429) { status(error.reason || 'The server is busy. Progress will refresh shortly.', true); schedule(); return false; }
       if (error.status === 401) expired(); else lost(error, lostText); return false;
     }
   }
@@ -413,20 +492,23 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   }
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
+    const attempt = ++connectGeneration, current = (): boolean => attempt === connectGeneration
     client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
     status('Connecting…');
     try {
       if (createNew && startCity !== undefined) {
         if (!isOpenCityId(startCity)) throw new TypeError('Choose an open city to start.');
         await loadCityContent(startCity);
+        if (!current()) return false
         client.cityId = startCity;
       }
       let response: SessionResponse;
       // `onboarding: true` tells the server this client shows the quick start: a life made for this new session starts as a guest (its look is confirmed by one action, then it plays).
-      if (createNew) response = await api<SessionResponse>('/api/session', { method: 'POST', body: { name: client.identity.name, onboarding: true } satisfies SessionRequest });
+      if (createNew) response = await api<SessionResponse>('/api/session', { method: 'POST', body: { name: client.identity.name, onboarding: true } satisfies SessionRequest }, current);
       else {
-        try { response = await api<SessionResponse>('/api/session'); }
+        try { response = await api<SessionResponse>('/api/session', {}, current); }
         catch (e) {
+          if (!current()) return false
           const error = e as ApiError;
           if (error.status !== 401) throw error;
           if (client.hasSavedIdentity) { expired(); return false; }
@@ -436,20 +518,30 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
           return false;
         }
       }
-      if (client.session?.id !== response.session.id) forgetRevisions();
-      client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = true;
+      if (!current()) return false
+      const previousIdentity = client.session?.id ?? pendingAction?.sessionId
+      if (client.session?.id !== response.session.id) { identityGeneration += 1; client.busy = false; forgetRevisions(); }
+      const held = response.session.cities
+      const ownsIdentityCity = snapshotOwner === response.session.id && !(Array.isArray(held) && held.length === 1 && isCityId(held[0]) && client.state.estate.city !== held[0])
+      const ownsSnapshot = ownsIdentityCity && cachedStateReady
+      if (ownsSnapshot) snapshotPhase = 'available'
+      else if (ownsIdentityCity) snapshotPhase = 'unconfirmed'
+      else { snapshotOwner = null; snapshotPhase = 'unavailable'; snapshotGeneration += 1 }
+      if (previousIdentity && previousIdentity !== response.session.id) { pendingAction = null; resetIdentityCooldowns(); }
+      client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = false;
       // A new device asks for the default city first: when the session says its one life is elsewhere, ask for that one, not for a city that has moved on.
-      const held = response.session.cities;
-      if (!createNew && Array.isArray(held) && held.length === 1 && isCityId(held[0]) && held[0] !== client.cityId) { await loadCityContent(held[0]); client.cityId = held[0] as CityId; }
-      onSession(client.session, createNew);
-      client.link = 'online';
+      if (!createNew && Array.isArray(held) && held.length === 1 && isCityId(held[0]) && held[0] !== client.cityId) { client.cityId = held[0] as CityId; onSession(client.session, createNew); await loadCityContent(held[0]); if (!current()) return false }
+      else onSession(client.session, createNew)
+      if (!ownsSnapshot) persist()
       const askedAt = taken;
-      const first = await fetchCurrentLife(client.cityId);
-      await accept(first.state, first.rev, askedAt);
+      const first = await fetchCurrentLife(client.cityId, current);
+      if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id))) return false
+      client.ready = true; client.link = 'online';
       holdCity(client.cityId);
       status('Connected · progress saved');
       return true;
     } catch (e) {
+      if (!current()) return false
       const error = e as ApiError;
       client.ready = false;
       // The server refused the nickname (not allowed, malformed, or the player is muted): back to the form, with its reason.
@@ -460,13 +552,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
         onNeedName({ code: error.code as NameRefusalCode, reason: error.reason || NAME_TEXT[error.code as NameRefusalCode], name: client.identity.name });
         return false;
       }
-      client.link = error.status === 401 ? 'expired' : down();
+      client.link = error.code === 'economy_unavailable' ? 'recovery' : error.status === 401 ? 'expired' : down();
       // Every place is taken: the server is up and said so. The shell tells the visitor and tries again by itself.
       // The same for the limit on new players from one network address (429 when a session was being made).
       if (error.status === 503 && error.code === 'device_capacity') client.refusal = 'full';
       else if (createNew && error.status === 429) client.refusal = 'limit';
       if (client.refusal) client.retryAfter = error.retryAfter ?? null;
-      status(error.status === 401 ? 'Session expired · reconnect to review your options' : client.refusal === 'full' ? TEXT.worldFull : client.refusal === 'limit' ? TEXT.networkLimit : 'Connection unavailable · changes paused', true);
+      status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : error.status === 401 ? 'Session expired · reconnect to review your options' : client.refusal === 'full' ? TEXT.worldFull : client.refusal === 'limit' ? TEXT.networkLimit : 'Connection unavailable · changes paused', true);
       onChange(client.state, client.state);
       return false;
     }
@@ -489,50 +581,90 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
    * client.newId() and kept by the caller, so that a retry (also after a reload) is the SAME action
    * to the server and is applied exactly once.
    */
-  async function command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult> {
+  const sameIntent = (intent: PendingActionIntent, type: ActionRequest['type'], payload: Record<string, unknown> | undefined, actionId?: string): boolean =>
+    intent.type === type && intent.cityId === client.cityId && (actionId === undefined || actionId === intent.actionId) && canonical(intent.payload ?? null) === canonical(payload ?? null)
+  const isCurrentIntent = (intent: PendingActionIntent, generation: number): boolean => generation === identityGeneration && client.session?.id === intent.sessionId
+    && pendingAction !== null && canonical(pendingAction) === canonical(intent)
+  const clearPending = (intent: PendingActionIntent, generation: number): void => { if (isCurrentIntent(intent, generation)) { pendingAction = null; persist() } }
+  async function runPending(intent: PendingActionIntent): Promise<CommandResult> {
     if (client.busy) return { ok: false, code: 'busy' };
-    // A device that has just come back reads the life first: the action is then sent about what the server holds, not about a stale copy.
     if (waking) { await waking.catch(() => false); if (client.busy) return { ok: false, code: 'busy' }; }
-    // `code: 'offline'` is the machine code for "not sent"; the sentence says which of the reasons it really is.
     if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason }; }
+    if (client.session?.id !== intent.sessionId) return { ok: false, code: 'action_recovery_required', reason: 'Reconnect to the same character before retrying this action.' }
+    const generation = identityGeneration
+    const responseCurrent = (): boolean => isCurrentIntent(intent, generation)
     client.busy = true;
     try {
-      const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: typeof options?.actionId === 'string' ? options.actionId : client.newId(), cityId: client.cityId, type };
-      if (payload !== undefined && payload !== null) body.payload = outgoing(type, payload);
-      sentIds.push(body.actionId); if (sentIds.length > 32) sentIds.shift();
+      const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: intent.actionId, cityId: intent.cityId, type: intent.type, ...(intent.payload ? { payload: structuredClone(intent.payload) } : {}) }
+      if (!sentIds.includes(body.actionId)) { sentIds.push(body.actionId); if (sentIds.length > 32) sentIds.shift() }
       const askedAt = taken;
-      const response = await api<ActionResponse>('/api/action', { method: 'POST', body });
-      await loadedSnapshot(response);
-      await accept(response.state, response.rev, askedAt);
+      const response = await api<ActionResponse>('/api/action', { method: 'POST', body }, responseCurrent);
+      await loadedSnapshot(response, responseCurrent);
+      if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
+      await accept(response.state, response.rev, askedAt, 'own', responseCurrent, intent.sessionId);
+      if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
+      clearPending(intent, generation)
       if (!response.ok && client.state.message) status(client.state.message, true);
       return { ok: response.ok, code: response.code, reason: response.ok ? undefined : client.state.message };
     } catch (e) {
       const error = e as ApiError;
+      if (!responseCurrent() || error.code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' }
       if (error.code === 'city_moved' && isCityId(error.city)) {
-        // The character is in another city now (it travelled on another device): this device follows it there.
-        try { const askedAt = taken; const moved = await fetchCurrentLife(error.city); await accept(moved.state, moved.rev, askedAt, 'elsewhere'); }
-        catch { lost(error); }
+        try {
+          const askedAt = taken, moved = await fetchCurrentLife(error.city, responseCurrent);
+          if (!(await accept(moved.state, moved.rev, askedAt, 'elsewhere', responseCurrent, intent.sessionId))) return { ok: false, code: 'stale_identity_response' };
+        } catch (recoveryError) {
+          if (!responseCurrent() || (recoveryError as ApiError).code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
+          lost(recoveryError as ApiError);
+        }
         return { ok: false, code: 'city_moved', reason: error.reason ?? 'Your character moved. Review its current city before trying again.' };
       }
-      // Not saved means not done (the server undid it): the player is still connected and may try again.
+      if (error.code === 'action_expired' || error.code === 'action_id_conflict') {
+        const refreshed = await refresh(undefined, 'own', responseCurrent, intent.sessionId)
+        if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
+        if (refreshed) clearPending(intent, generation)
+        return { ok: false, code: error.code, reason: error.reason || error.message }
+      }
+      if (error.status !== undefined && error.status >= 400 && error.status < 500 && ['invalid_action', 'invalid_payload', 'invalid_action_id'].includes(error.code ?? '')) clearPending(intent, generation)
       if (error.code === 'storage_unavailable') return { ok: false, code: error.code, reason: error.reason || TEXT.notSaving };
+      if (error.code === 'server_busy' || error.status === 429) { schedule(); return { ok: false, code: error.code || 'rate_limited', reason: error.reason || 'The server is busy. Wait a moment before trying again.' } }
       if (error.status === 401) expired(); else lost(error);
-      return { ok: false, code: error.code || 'network', reason: error.message };
-    } finally { client.busy = false; void catchUp(); }
+      return { ok: false, code: error.code || 'network', reason: error.reason || error.message };
+    } finally { if (generation === identityGeneration) { client.busy = false; void catchUp(); } }
+  }
+  async function command(type: ActionRequest['type'], payload?: Record<string, unknown> | null, options?: { actionId?: string }): Promise<CommandResult> {
+    if (client.busy) return { ok: false, code: 'busy' }
+    if (waking) { await waking.catch(() => false); if (client.busy) return { ok: false, code: 'busy' } }
+    if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason } }
+    const sentPayload = payload === undefined || payload === null ? undefined : outgoing(type, payload) as Record<string, unknown>
+    if (pendingAction) {
+      if (!sameIntent(pendingAction, type, sentPayload, options?.actionId)) return { ok: false, code: 'action_recovery_required', reason: 'Retry the previous action before starting another.' }
+      return runPending(pendingAction)
+    }
+    const intent: PendingActionIntent = { sessionId: client.session!.id, actionId: (typeof options?.actionId === 'string' ? options.actionId : client.newId()) as TimedId,
+      cityId: client.cityId, type, ...(sentPayload ? { payload: structuredClone(sentPayload) } : {}) }
+    pendingAction = intent
+    if (!persist()) { pendingAction = null; return { ok: false, code: 'browser_storage_unavailable', reason: 'This action was not sent because its retry information could not be saved.' } }
+    return runPending(intent)
+  }
+  async function retryPendingAction(): Promise<CommandResult> {
+    return pendingAction ? runPending(pendingAction) : { ok: false, code: 'no_pending_action', reason: 'There is no action waiting to be recovered.' }
   }
 
   async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {
     if (client.busy || client.state.activeAction) return { ok: false, code: 'busy' };
+    const scope = lifeScope(), generation = identityGeneration
     client.busy = true;
     try {
-      const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } });
+      const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } }, scope.current);
       const askedAt = taken;
-      const current = await fetchCurrentLife(result.city);
-      await accept(current.state, current.rev, askedAt);
+      const current = await fetchCurrentLife(result.city, scope.current);
+      if (!(await accept(current.state, current.rev, askedAt, 'own', scope.current, scope.owner))) return { ok: false, code: 'stale_identity_response' };
       return { ok: true, code: 'switched' };
     } catch (error) {
+      if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       return { ok: false, code: error instanceof Error ? (error as ApiError).code ?? 'network' : 'network', reason: error instanceof Error ? error.message : 'Could not switch characters.' };
-    } finally { client.busy = false; }
+    } finally { if (generation === identityGeneration) client.busy = false; }
   }
 
   /** Move to another city's life. Refused mid-action and while offline. */
@@ -540,17 +672,22 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (typeof id !== 'string' || !isCityId(id)) return { ok: false, code: 'invalid_city' };
     if (client.state.activeAction) return { ok: false, code: 'busy', reason: 'Complete or cancel your current action before switching cities.' };
     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
+    const scope = lifeScope(), previousCity = client.cityId
     try {
       await loadCityContent(id);
+      if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       const askedAt = taken;
-      const data = await api<LifeResponse>(`/api/life?city=${id}`);
+      const data = await api<LifeResponse>(`/api/life?city=${id}`, {}, scope.current);
+      await loadedSnapshot(data, scope.current);
+      if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       client.cityId = id as CityId;
-      await loadedSnapshot(data);
-      await accept(data.state, data.rev, askedAt);
+      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner))) { if (scope.current()) client.cityId = previousCity; return { ok: false, code: 'stale_identity_response' }; }
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };
     } catch (e) {
       const error = e as ApiError;
+      if (!scope.current() || error.code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
+      client.cityId = previousCity
       if (error.status === 401) expired(); else status(error.message, true);
       return { ok: false, code: error.code || 'network', reason: error.message };
     }

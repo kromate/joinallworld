@@ -183,7 +183,7 @@ export default defineConfig({
     if (/\/src\/types\/avatar\.ts$/.test(id)) return 'engine'
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city) return `city-${city[1]}-${city[2]}`
-    if (/\/src\/game\/cities\/(?:routes\.generated|links)\.ts$/.test(id) || /\/src\/game\/cities\/[^/]+\/links\.ts$/.test(id)) return 'city-routes'
+    if (/\/src\/game\/cities\/routes\.generated\.ts$/.test(id)) return 'city-routes'
     if (/\/src\/game\/cities\/(spec|specValidation)\.ts$/.test(id)) return 'city-spec'
     if (/\/src\/game\/cities\/contentBuilder\.ts$/.test(id)) return 'city-content-builder'
     if (/\/src\/game\/cities\/ogun\/(contentBuilder)\.ts$/.test(id)) return 'city-ogun-content'
@@ -230,6 +230,8 @@ export default defineConfig({
     // people screens and of the Map's list, the creative choices of an advert, and the shop line of each piece of furniture.
     // The world clock's bands, day seed and seasons ride in the routines chunk (below).
     if (/\/src\/game\/(ping|comeback-prefs|social-lines|live-lines|content\/civic-ads|content\/furniture-blurbs)\.ts$/.test(id)) return undefined
+    // Full statement reconciliation is only read by the lazy Statement screen (and by the server build).
+    if (/\/src\/game\/wallet-statement\.ts$/.test(id)) return undefined
     // The trust rules (tiers, the no-fee filter, the link allow-list): read only by the community panel, the "leaving Allworld" sheet and the trust card, all fetched on demand.
     if (/\/src\/game\/trust\//.test(id)) return undefined
     // The city's conditions. The grid, the go-slow, the venue card's line and the look of the light are read by the moments and the venue scenes, so they are a chunk

@@ -329,7 +329,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS, layout: parseLayout(env.STORE_LAYOUT) ?? 'legacy', log });
     this.images = createSqliteImages(storage);
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
-    this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
+    this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier, beforeWrite: () => this.store.assertWritable() }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
     // THE LIMITER (server/limiter.ts), bounded per class. SHORT windows (a minute or less: every request, every socket frame) are
     // counted IN MEMORY: a stored row per request is a row billed per request, for a count that is worthless a minute later.
     // The object is in memory for as long as anyone is connected or asking, so the counts hold exactly when they matter; one

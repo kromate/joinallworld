@@ -68,6 +68,7 @@ import { cityName } from '../../src/game/cities/index.ts';
 import { DREAMS, TRAITS } from '../../src/game/content/traits.ts';
 import { presenceOf, describeRoom } from './presence.ts';
 import { screenText } from '../moderation/text.ts';
+import { peerTransferId } from '../economy/effects.ts';
 import { VISIT, VISIT_MS } from '../../src/game/visit.ts';
 import type { VisitHow } from '../../src/game/visit.ts';
 import { invitesFor, noteLinkUse, removeFromLink } from './visit-book.ts';
@@ -492,7 +493,8 @@ function buildService(ctx: RouteContext) {
         else if (effect.keep && !effect.refund && effect.payload.op === 'transfer-in' && s.players[effect.payload.from]) {
           // An unclaimed gift goes back to the sender, as a pending credit of their own.
           (s.pending[effect.payload.from] ||= []).push({ n: ++s.seq, at: t, cityId: effect.cityId, keep: true, refund: true,
-            payload: { op: 'transfer-in', from: to, name: s.players[to]?.name ?? 'your friend', amount: effect.payload.amount, refund: true } });
+            payload: { op: 'transfer-in', from: to, name: s.players[to]?.name ?? 'your friend', amount: effect.payload.amount, refund: true,
+              ...(effect.payload.transferId ? { transferId: effect.payload.transferId } : {}) } });
         } else if (effect.keep && effect.refund && s.players[to]) keep.push(effect);
       }
       if (keep.length) s.pending[to] = keep; else delete s.pending[to];
@@ -1925,6 +1927,7 @@ function buildService(ctx: RouteContext) {
       const push: PushList = [];
       const outcome = ctx.once(db, session, { id: cid, kind: 'transfer', fingerprint: [to, amount, cityId] }, () => {
         const L = TRANSFER_LIMITS, t = now();
+        const transferId = peerTransferId(id, cid as string);
         const { target, refusal } = other(s, id, to);
         if (refusal) return refusal;
         if (!ctx.allow(`social:transfer:${id}`, 5)) return no('rate_limited', 'Too many transfers in a minute. Wait, then try again.');
@@ -1944,14 +1947,14 @@ function buildService(ctx: RouteContext) {
         const theirs = ctx.core.sessionByPublicId(db, to);
         const creditCity = theirs && theirs.expiresAt > t ? lifeCity(theirs, cityId) : null;
         if (!creditCity) return no('recipient_no_life', `${target.name} has no life in any city right now, so there is nowhere to put the money. Nothing was sent.`);
-        const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount }, `social|transfer|${id}|${cid}`);
+        const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount, transferId }, `social|transfer|${id}|${cid}`);
         if (!sent.ok) return no(sent.code, sent.reason!);
         target.recv.amount += counted;
         // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
         const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [] };
         index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);
         const line = append(s, chat, id, `Sent ${naira(amount)}`, null, false, { gift: { n: amount } });
-        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount }, { keep: true, gift: { conv: gkey, seq: line.seq } });
+        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount, transferId }, { keep: true, gift: { conv: gkey, seq: line.seq } });
         fanOut(s, chat, line, push, null);
         push.push([to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]);
         notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);

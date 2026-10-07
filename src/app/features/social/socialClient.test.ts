@@ -84,7 +84,7 @@ test('failureReason: the server\'s own sentence for a refusal, fixed words for t
   assert.match(failureReason(failure(403, { code: 'onboarding_required' })), /^Choose your look and tap Play first/)
   assert.equal(failureReason(failure(409)), 'That was already sent with different details. Try again.')
   assert.equal(failureReason(failure(422)), 'That request was not accepted. Check what you typed.')
-  assert.equal(failureReason(failure(undefined)), 'Connection lost. Nothing was changed; try again.')
+  assert.equal(failureReason(failure(undefined)), 'Connection lost. Reconnect to check the latest state.')
 })
 
 test('start does nothing until the game is connected and the look is chosen', async () => {
@@ -146,7 +146,7 @@ test('a failed send is retried under the SAME client id; delete drops it', async
   await settle()
   const [failed] = ctx.client.threadView('dm.a.b')
   assert.ok(failed && 'status' in failed && failed.status === 'failed')
-  assert.equal(failed.reason, 'Connection lost. Nothing was changed; try again.')
+  assert.equal(failed.reason, 'Connection lost. Reconnect to check the latest state.')
   ctx.client.retry(failed.clientId)
   await settle()
   const ids = ctx.calls.filter((item) => item.path === '/api/social/messages').map((item) => (item.options?.body as { clientId: string }).clientId)
@@ -451,7 +451,7 @@ test('call never throws: a network failure and a server refusal both come back a
   const ctx = setup({ '/api/social/search': () => failure(undefined), '/api/social/block': () => failure(400, { reason: 'Nope.', code: 'x' }) })
   ctx.client.start(ctx.api)
   await settle()
-  assert.deepEqual(await ctx.client.call('/api/social/search?q=ab'), { ok: false, code: 'network', reason: 'Connection lost. Nothing was changed; try again.', transport: true })
+  assert.deepEqual(await ctx.client.call('/api/social/search?q=ab'), { ok: false, code: 'network', reason: 'Connection lost. Reconnect to check the latest state.', transport: true })
   assert.deepEqual(await ctx.client.call('/api/social/block', {}), { ok: false, code: 'x', reason: 'Nope.', transport: false })
 })
 

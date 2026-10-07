@@ -37,8 +37,8 @@ export type NoticeKind =
 export interface EngineEventMap {
   // -- foundation (activities, core, wallet, skills) --
   'activity.started': { id: ActivityId; def: ResolvedActivity }
-  /** `tags` is `def.tags || []`; `choice` is the chosen option id or null. */
-  'activity.completed': { id: ActivityId; def: ResolvedActivity; tags: string[]; choice: string | null }
+  /** `cash` is the naira actually credited (0 when the activity had no reward or the credit was refused). */
+  'activity.completed': { id: ActivityId; def: ResolvedActivity; tags: string[]; choice: string | null; cash: number }
   /** Finished but could no longer be paid for: none of its completion effects were applied. */
   'activity.unpaid': { id: ActivityId; def: ResolvedActivity }
   /** The timed action was cancelled by the player (any kind). */

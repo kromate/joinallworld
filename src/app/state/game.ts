@@ -12,7 +12,7 @@ import type { ComputedRef, Ref, ShallowRef } from 'vue'
 import type { LifeState } from '../../types/life.ts'
 import type { CityId, OwnSession } from '../../types/protocol.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
-import type { ChangeCause, ClientOptions, CommandArgs, LifeHint, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, StorageProblem, SwitchCityResult } from '../types/client.ts'
+import type { ChangeCause, ClientOptions, CommandArgs, LifeHint, CommandResult, FetchJson, GameClient, LinkState, NameProblem, NetStatus, PendingActionIntent, SnapshotPhase, StorageProblem, SwitchCityResult } from '../types/client.ts'
 import type { PanelView, ShellMode, ToastKind } from '../types/panel.ts'
 import { clientCity, createClient } from '../../client.ts'
 import { viewLife } from '../../life.ts'
@@ -50,6 +50,8 @@ export interface Game {
   net: Ref<NetStatus>
   storage: ShallowRef<StorageProblem | null>
   session: ShallowRef<OwnSession | null>
+  pendingAction: ShallowRef<PendingActionIntent | null>
+  snapshotPhase: Ref<SnapshotPhase>
   cityId: Ref<CityId>
   /** Actions sent and not yet answered. */
   saving: Ref<number>
@@ -62,6 +64,7 @@ export interface Game {
    * exactly once. A refusal is returned, not toasted: the caller decides how to say it.
    */
   resend<T extends PlayerActionType>(actionId: string, type: T, ...args: CommandArgs<T>): Promise<CommandResult<T>>
+  retryPendingAction(): Promise<CommandResult>
   connect(createNew?: boolean, name?: string | null, startCity?: string): Promise<boolean>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(): Promise<boolean>
@@ -115,19 +118,21 @@ export function createGame(options: GameOptions = {}): Game {
     ...clientOptions,
     ...(deviceStorage ? { storage: deviceStorage } : {}),
     onStatus(text, error) { net.value = { text, error }; telemetry.link(client.link) },
-    onChange(next, previous, cause = 'own') { publish(); announce(next, cause === 'own'); telemetry.state(next, previous, client); emit('accepted', next, previous, cause) },
+    onChange(next, previous, cause = 'own') { publish(); if (client.snapshotPhase === 'available') { announce(next, cause === 'own'); telemetry.state(next, previous, client); emit('accepted', next, previous, cause) } },
     onSessionExpired() { publish(); emit('expired') },
     onNeedName(problem) { publish(); telemetry.needName(); emit('needName', problem ?? null) },
     // The session is known a moment before its life is (GET /api/life follows): 'connected' is published with that life,
     // not here, so no panel is drawn as connected over the placeholder state (the goal chip would offer character creation
     // to a life that has long moved in).
-    onSession(session, created) { publish(false); telemetry.session(session, created, client.serverNow()); emit('session', session, created) },
+    onSession(session, created) { publish(); telemetry.session(session, created, client.serverNow()); emit('session', session, created) },
   }) as unknown as GameClient
 
   const state = shallowRef<LifeState>(client.state)
   const link = ref<LinkState>(client.link)
   const storage = shallowRef<StorageProblem | null>(client.storage)
   const session = shallowRef<OwnSession | null>(client.session)
+  const pendingAction = shallowRef<PendingActionIntent | null>(client.pendingAction)
+  const snapshotPhase = ref<SnapshotPhase>(client.snapshotPhase)
   const cityId = ref<CityId>(client.cityId)
   const online = ref(client.online)
   const connected = computed(() => online.value)
@@ -138,6 +143,8 @@ export function createGame(options: GameOptions = {}): Game {
     link.value = client.link
     storage.value = client.storage
     session.value = client.session
+    pendingAction.value = client.pendingAction
+    snapshotPhase.value = client.snapshotPhase
     cityId.value = client.cityId
     if (withOnline) online.value = client.online
   }
@@ -197,6 +204,11 @@ export function createGame(options: GameOptions = {}): Game {
       return result
     } finally { saving.value -= 1 }
   }
+  async function retryPendingAction(): Promise<CommandResult> {
+    saving.value += 1
+    try { const result = await client.retryPendingAction(); publish(); if (!result.ok && result.reason) toast(result.reason, 'error'); return result as CommandResult }
+    finally { saving.value -= 1 }
+  }
 
   let connecting = false
   async function connect(createNew = false, name: string | null = null, startCity?: string): Promise<boolean> {
@@ -220,8 +232,8 @@ export function createGame(options: GameOptions = {}): Game {
   }
 
   return {
-    state, view, link, connected, net, storage, session, cityId, saving, mode,
-    command, resend, connect, switchCity,
+    state, view, link, connected, net, storage, session, pendingAction, snapshotPhase, cityId, saving, mode,
+    command, resend, retryPendingAction, connect, switchCity,
     async refresh() { const ok = client.online ? await client.refresh() : false; publish(); return ok },
     lifeChanged: (hint) => client.lifeChanged(hint),
     async wake() { const ok = await client.wake(); publish(); return ok },

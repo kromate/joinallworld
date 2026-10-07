@@ -13,6 +13,7 @@
 import type { PublicSession } from '../src/types/protocol.ts'
 import type { StoreStats } from '../src/types/support.ts'
 import type { RouteRequest, Store, WsConnection } from '../server/types.ts'
+import type { MainStoreAuthority, RetireMainStoreResult } from './sqlite-schema.ts'
 
 export type { PublicSession }
 
@@ -22,6 +23,10 @@ export interface SqliteStore extends Store {
   flush(): Promise<void>
   close(): Promise<void>
   layout: import('../server/types.ts').StoreLayoutTools
+  authority(): MainStoreAuthority
+  /** Assert that this instance's captured epoch remains the writable main-store authority. */
+  assertWritable(): void
+  retire(expectedEpoch: number): Promise<RetireMainStoreResult>
 }
 
 /** A socket's private state, carried through hibernation as its attachment. */

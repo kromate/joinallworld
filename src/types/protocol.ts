@@ -582,6 +582,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/civic/prefs',
   'POST /api/support/reports',
   'GET /api/support/statement',
+  'GET /api/support/history',
   'GET /api/support/reports',
   'GET /api/mod/overview',
   'POST /api/mod/companion-test',

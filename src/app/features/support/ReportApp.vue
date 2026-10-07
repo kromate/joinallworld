@@ -27,7 +27,8 @@ const { game } = useApp()
 
 const support = useSupport()
 const { draft, list, sending, notice } = support
-const offline = computed(() => !game.connected.value)
+const canReport = computed(() => game.connected.value || (game.link.value === 'recovery' && game.session.value !== null))
+const offline = computed(() => !canReport.value)
 const offlineWhy = computed(() => linkWords(game.view.value)?.why ?? 'Not connected.')
 const limit = computed(() => list.value?.limits.text ?? DEFAULT_LIMITS.text)
 const reports = computed(() => list.value?.reports ?? [])

@@ -1,5 +1,7 @@
 # Combined local preview
 
+This is the 7 October 2026 consolidation record. Subsequent reliability integration and release verification are tracked in [RELIABILITY-IMPLEMENTATION.md](RELIABILITY-IMPLEMENTATION.md). The original test and publication status below describes that consolidation checkpoint, not a later release.
+
 This branch combines the implemented work from the neighbourhood chat, avatar chat, commerce chat and UNILAG chat for local testing. It is not a production release or completion of the remaining roadmap.
 
 ## Local branches
@@ -35,7 +37,7 @@ Before integration, dirty files, binary patches and staged patches were backed u
 
 A later final comparison found new wallet-effect, life-command and socket-budget work appearing in the older primary checkout. Those later changes were left untouched and are outside the four-chat snapshot consolidated here. The Goalmatic and Store Studio working files still matched their backups exactly. Their unrelated uncommitted changes remain available on disk.
 
-## Verification record
+## Original consolidation verification record (7 October 2026)
 
 - Exact staged Goalmatic backend snapshot: full TypeScript check passed (`/tmp/allworld-companion-core-types.log`).
 - Exact staged Store Studio snapshot: production build passed (`/tmp/allworld-companion-store-build.log`).

@@ -24,17 +24,17 @@ test('a scene tag gets the word as a hidden-from-readers span and a class, and n
   assert.equal(added.length, 1)
 })
 
-test('the venue, home and campus tags say NPC (never "a local") in their label and tooltip; the word on the tag is behind ?models=labels', async () => {
+test('the venue, home and campus tags say NPC (never "a local") in their label, tooltip and on the tag itself', async () => {
   const venue = await readFile(new URL('../venue-world.ts', import.meta.url), 'utf8')
   const campus = await readFile(new URL('../campus/unilag/host.ts', import.meta.url), 'utf8')
   for (const [name, source] of [['venue-world', venue], ['campus host', campus]] as const) {
     assert.match(source, /npcAria\(/, `${name} names an NPC tag with the shared spoken form`)
     assert.match(source, /npcTitle\(/, `${name} titles an NPC tag with the shared tooltip`)
     assert.doesNotMatch(source, /a local`|a campus local/, `${name} no longer calls an NPC "a local"`)
-    assert.match(source, /npcWordsEnabled\(\)/, `${name} reads the labels flag`)
+    assert.doesNotMatch(source, /npcWordsEnabled/, `${name} has no switch for the word`)
   }
-  assert.match(venue, /npcWords && tag\.kind === 'npc'/, 'the word is added only to NPC tags, and only with the flag')
-  assert.match(campus, /if \(npcWords\) node\.dataset\.npcWord = NPC_WORD/)
+  assert.match(venue, /if \(tag\.kind === 'npc'\) addNpcWord\(/, 'the word is added to NPC tags, and only to them')
+  assert.match(campus, /node\.dataset\.npcWord = NPC_WORD/)
   const css = await readFile(new URL('../campus/unilag/host.css', import.meta.url), 'utf8')
   assert.match(css, /\.campus-host-tag\[data-npc-word\]::before\{content:attr\(data-npc-word\)/)
 })

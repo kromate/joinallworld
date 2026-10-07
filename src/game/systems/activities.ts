@@ -125,7 +125,7 @@ const entriesOf = <K extends string, V>(table: Partial<Record<K, V>> | null | un
 
 /** The longest a non-cancellable activity may run (original beta value): the player cannot leave it, so it must be short. */
 export const MAX_LOCKED_SECONDS = 300;
-/** `places`: whether the dilemmas switch was on when it was built (it adds place actions: src/game/features.ts), so a flip builds it again. */
+/** `places`: whether the dilemma kit was installed when it was built (it adds place actions: src/game/features.ts), so the kit arriving builds it again. */
 const catalogues = new Map<string, { content: ReturnType<typeof contentFor>; places: boolean; catalogue: Catalogue }>();
 
 /** Rebuild the merged venue/spot/activity index (tests that register extra systems call this). */

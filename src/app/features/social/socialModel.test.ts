@@ -6,7 +6,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { HouseView, KnockState } from '../../../types/social.ts'
 import { knockReason, knockView, roomLine, statusText, homeLine } from './inviteModel.ts'
-import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, npcActionReason, npcMeterMax, npcReason, sendLine } from './personModel.ts'
+import { baeReason, friendControl, interactReason, moneyCeiling, moneyReason, npcActionReason, npcMeterMax, npcReason, personTarget, sendLine } from './personModel.ts'
 import { knocksWaiting, requestsWaiting } from './socialModel.ts'
 import { callNote, callReason, closenessText, dotHint, dotOf, gateOf, meterPercent, presenceClass, reasonLabel, staleSteps, STALE_MS, tagLabel, venueNameOf } from './socialWords.ts'
 
@@ -159,4 +159,16 @@ test('the invite card lines', () => {
   assert.equal(roomLine({ host: 'h', members: [{ name: 'A' }, { name: 'B' }] }, 'h'), 'in the room now: A, B')
   assert.equal(roomLine({ host: 'other', members: [] }, 'h'), 'joining the room…')
   assert.equal(roomLine(null, 'h'), 'joining the room…')
+})
+
+test('a person reference to an NPC never reaches the player card (Block, Report, Chat, Call, money)', () => {
+  const known = new Set(['amaka'])
+  assert.deepEqual(personTarget({ npc: 'amaka' }, known), { kind: 'npc', id: 'amaka' })
+  assert.deepEqual(personTarget({ npc: 'npc:amaka' }, known), { kind: 'npc', id: 'amaka' }, 'a scene tag id is unwrapped')
+  assert.deepEqual(personTarget({ player: 'npc:amaka' }, known), { kind: 'npc', id: 'amaka' }, 'asked for as a player, still an NPC')
+  assert.deepEqual(personTarget({ player: 'amaka' }, known), { kind: 'npc', id: 'amaka' }, 'the id of a character the life knows')
+  assert.deepEqual(personTarget({ player: 'abc123' }, known), { kind: 'player', id: 'abc123' }, 'a real player keeps the player card')
+  assert.deepEqual(personTarget({ player: 'abc123' }, []), { kind: 'player', id: 'abc123' })
+  assert.equal(personTarget({}, known), null)
+  assert.equal(personTarget({ player: 7 }, known), null)
 })

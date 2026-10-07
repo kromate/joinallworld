@@ -5,6 +5,7 @@ import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import { computed } from 'vue'
 import BaseChip from '../../ui/BaseChip.vue'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import CallButton from './CallButton.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { callNote } from './socialWords.ts'
@@ -27,7 +28,7 @@ const note = computed(() => callNote({ connected: view.value.connected, cannot: 
     <div class="social-list">
       <div v-for="member in social.family" :key="member.id" class="social-row">
         <span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="member.name" :seed="member.id" /></span>
-        <div><strong>{{ member.name }}<template v-if="member.calledToday"> <BaseChip tone="good">Checked in</BaseChip></template></strong><small>{{ member.relation }} · {{ member.line }}</small></div>
+        <div><strong>{{ member.name }}<template v-if="member.calledToday"> <BaseChip tone="good">Checked in</BaseChip></template></strong><small><NpcBadge lead />{{ member.relation }} · {{ member.line }}</small></div>
         <span class="social-actions"><CallButton :member="member" /></span>
       </div>
     </div>

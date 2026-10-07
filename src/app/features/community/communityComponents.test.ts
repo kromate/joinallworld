@@ -148,3 +148,17 @@ test('room groups: the header says who is with you and how many are in the place
   const home = await render('CommunityPanel', panel({ group: null }))
   assert.doesNotMatch(home, /data-group-header|data-groups-open/)
 })
+
+test('an NPC line in the room is badged and tinted so it cannot pass for a player; a player line has neither', async () => {
+  const html = await render('CommunityPanel', panel({ chat: [
+    { key: 'p', author: 'Bea', body: 'Hello', delivery: 'Sent', canRetry: false },
+    { key: 'n', author: 'Amaka', body: 'Welcome in', delivery: '', canRetry: false, npc: true },
+  ] }))
+  const lines = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g)?.filter((li) => /Hello|Welcome in/.test(li)) ?? []
+  assert.equal(lines.length, 2)
+  const [player, npc] = lines
+  assert.ok(player && !player.includes('data-npc') && !player.includes('is-npc'), 'a real player\'s line carries no mark')
+  assert.ok(npc?.includes('data-npc-line') && npc.includes('is-npc') && npc.includes('data-npc-badge'), 'an NPC line is marked')
+  assert.ok(text(npc ?? '').includes('NPC, a game character, not a real player') && text(npc ?? '').includes('Amaka'), 'a screen reader hears what it is')
+  assert.equal((html.match(/data-npc-badge/g) ?? []).length, 1)
+})

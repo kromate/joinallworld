@@ -121,7 +121,7 @@ test('Say Hello: needs, charisma XP, closeness, events; nothing on cancel', () =
   assert.deepEqual(names(), ['relationship.changed', 'npc.greeted', 'npc.interacted']);
   assert.deepEqual(probe.events[0]?.[1], { id: 'kunle', value: 2, tier: 'stranger' });
   assert.deepEqual(probe.events[2]?.[1], { npc: 'kunle', action: 'hello', success: true });
-  assert.match(state.message, /^Kunle: “/);
+  assert.match(state.message, /^Kunle \(NPC\): “/);
   const view = viewLife(state, ctxAt(NOW + 60000)).social;
   const kunle = need(view.here.find((npc) => npc.id === 'kunle'));
   assert.equal(kunle.points, 2); assert.equal(kunle.left, DAILY_INTERACTIONS - 1); assert.equal(kunle.next?.label, 'Acquaintance');
@@ -200,7 +200,7 @@ test('family calls work anywhere: first call of the day checks in, repeats give 
   assert.equal(call('mummy').ok, true);
   assert.equal(state.needs.social, 60); assert.equal(state.activeAction, null);
   assert.ok(state.moodlets.some((moodlet) => moodlet.id === 'family-checkin' && moodlet.value === 5));
-  assert.match(state.message, /^Mummy: “/);
+  assert.match(state.message, /^Mummy \(NPC\): “/);
   assert.deepEqual(probe.events.at(-1), ['npc.interacted', { npc: 'mummy', action: 'call', success: true }]);
   let view = viewLife(state, ctxAt(NOW + 60000)).social;
   assert.equal(view.family.find((member) => member.id === 'mummy')?.calledToday, true); assert.equal(view.streak, 1);

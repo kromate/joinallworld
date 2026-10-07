@@ -558,7 +558,7 @@ export function createVenueWorld(container: HTMLElement, { location = 'park', ci
       stride += dt * (walker.jogging ? 9 : 6.5);
       // Two prebuilt figures alternate for the stride; nothing is built while walking.
       walk.gait(still || Math.floor(stride) % 2 === 0, still ? 0 : stride * Math.PI, walker.jogging);
-      standIn?.gait(still ? 0 : stride * Math.PI, walker.jogging);
+      standIn?.gait(still ? 0 : stride * Math.PI, walker.jogging, avatarY);
       if (!still) bob = Math.abs(Math.sin(stride * Math.PI)) * 0.06 * walk.scale;
     } else if (wasMoving) { walk.goal(); showPose(); }
     applyAvatar(bob);

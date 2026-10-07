@@ -8,12 +8,13 @@
  *     one SkinnedMesh (one primitive, one material, 23 bones, ≤ 4 weights a vertex) from assets/base-body-<male|female>.glb,
  *     the clips from assets/clip-pack.glb, and the look's colours (tint.ts) as material uniforms.
  *
- * STATIC RENDERING (the battery rule). The body never asks for frames. A resting pose (idle, sit, interact, dance) is
- * one still frame of its clip. Walking and jogging sample the walk/jog clip at the stride phase the host already steps
- * every walking frame. The only clips that run in time are the bounded transitions (sit-enter, sit-exit), and only
- * when the caller says the host's motion loop is running (show(pose, true)): while one plays, `easing` is true, the
- * host steps it with step(dt), and settle() jumps to its end. Otherwise the pose is taken at once, so a still frame
- * never shows a half-sat body.
+ * STATIC RENDERING (the battery rule). The body never asks for frames. A resting pose (idle, sit, interact, dance,
+ * lie, soak, wash) is one still frame of its clip. Walking and jogging sample the walk/jog clip (stairs-up/-down on a
+ * slope) at the stride phase the host already steps every walking frame. The only clips that run in time are the
+ * bounded transitions (sit-enter, sit-exit, lie-down, get-up, door), and only when the caller says the host's motion
+ * loop is running (show(pose, true), enter(true)): while one plays, `easing` is true, the host steps it with
+ * step(dt), and settle() jumps to its end. Otherwise the pose is taken at once, so a still frame never shows a
+ * half-sat body.
  */
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
@@ -24,14 +25,11 @@ import { BODY_MANIFEST } from './manifest.ts';
 import type { BodyKey } from './manifest.ts';
 import { bodyTint } from './tint.ts';
 import type { BodyTint } from './tint.ts';
+import { DOOR, INTO, OUT, SEATED, STAIRS, STILL } from './poses.ts';
+import type { BodyPose } from './poses.ts';
 
-/** What the body can show. */
-export type BodyPose = 'idle' | 'walk' | 'jog' | 'sit' | 'interact' | 'dance';
-/** Where a resting pose's still frame is taken, as a share of its clip. */
-const STILL: Record<BodyPose, { clip: string; at: number }> = {
-  idle: { clip: 'idle', at: 0 }, walk: { clip: 'walk', at: 0.25 }, jog: { clip: 'jog', at: 0.25 },
-  sit: { clip: 'sit', at: 0 }, interact: { clip: 'interact', at: 0.4 }, dance: { clip: 'dance', at: 0.25 },
-};
+export type { BodyPose };
+
 /**
  * The seated pose in body units (metres), measured from the shipped clips at the end of sit-enter: the underside of
  * the thighs is this high, and the pelvis this far behind the body's origin. The home scene seats the body with them.
@@ -48,22 +46,30 @@ export interface SkinnedBody {
   readonly key: BodyKey;
   /** Scene units per body unit. */
   readonly scale: number;
-  /** True while a transition (sit-enter, sit-exit) is playing. */
+  /** True while a transition (sit-enter, sit-exit, lie-down, get-up, door) is playing. */
   readonly easing: boolean;
   readonly pose: BodyPose;
-  /** True while seated or getting up (placed by sitOn). */
+  /** True while seated, lying, soaking or getting up (placed by sitOn). */
   readonly seated: boolean;
-  /** Show a pose: a still frame, or, into and out of `sit` with `animate`, the bounded transition first. */
+  /** Show a pose: a still frame, or, into and out of `sit` and `lie` with `animate`, the bounded transition first. */
   show(pose: BodyPose, animate?: boolean): void;
-  /** One walking frame: the walk (or jog) clip at the stride phase (radians; 2π is a full left-right cycle). */
-  stride(phase: number, jog: boolean): void;
+  /** Just came in through a door: with `animate`, the push-and-step-through clip, then idle; else idle. */
+  enter(animate: boolean): void;
+  /**
+   * One walking frame: the walk (or jog) clip at the stride phase (radians; 2π is a full left-right cycle). `climb`
+   * > 0 walking up a stair or ramp, < 0 down it: the stairs clips (same length as the walk, so the phase holds).
+   */
+  stride(phase: number, jog: boolean, climb?: number): void;
   /** Advance a transition. True while more frames are needed. */
   step(dt: number): boolean;
   /** Jump to the end of a transition. */
   settle(): void;
   /** Stand (or walk) with the feet on a floor at height y. */
   place(x: number, y: number, z: number, ry: number): void;
-  /** Sit with the pelvis over (x, z) on a seat whose top is at height `top`, facing ry. */
+  /**
+   * Sit with the pelvis over (x, z) on a seat whose top is at height `top`, facing ry. Lying: the hips over (x, z) on
+   * a mattress whose top is `top`, the feet toward ry (the head the other way).
+   */
   sitOn(x: number, top: number, z: number, ry: number): void;
   fit(sceneScale: number): void;
   /** Wear another look. False when it needs the other body file (load again). */
@@ -164,28 +170,33 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
     transition = null;
     still(then);
   }
+  /** Run a bounded clip into the current pose, or (none, or not in the pack) take the pose at once. */
+  function play(clip: string | undefined) {
+    const length = clip ? actions.get(clip)?.getClip().duration ?? 0 : 0;
+    if (!clip || !length) { transition = null; return still(pose); }
+    transition = { clip, time: 0, length, then: pose };
+    sample(clip, 0);
+  }
   const body: SkinnedBody = {
     object, key,
     get scale() { return scale; },
     get easing() { return transition !== null; },
     get pose() { return pose; },
-    get seated() { return pose === 'sit' || transition?.clip === 'sit-exit'; },
+    get seated() { return SEATED.has(transition?.clip ?? pose); },
     show(next, animate = false) {
       if (next === pose && !transition) return still(next);
-      const into = next === 'sit' && pose !== 'sit', out = pose === 'sit' && next !== 'sit' && next !== 'walk' && next !== 'jog';
+      const into = next !== pose ? INTO[next] : undefined, out = next !== pose && next !== 'walk' && next !== 'jog' ? OUT[pose] : undefined;
       pose = next;
-      const clip = !animate ? null : into ? 'sit-enter' : out ? 'sit-exit' : null, length = clip ? actions.get(clip)?.getClip().duration ?? 0 : 0;
-      if (!clip || !length) { transition = null; return still(next); }
-      transition = { clip, time: 0, length, then: next };
-      sample(clip, 0);
+      play(animate ? into ?? out : undefined);
     },
-    stride(phase, jog) {
+    enter(animate) { pose = 'idle'; play(animate ? DOOR : undefined); },
+    stride(phase, jog, climb = 0) {
       transition = null;
       pose = jog ? 'jog' : 'walk';
-      const clip = actions.get(pose)?.getClip();
+      const name = jog || !climb ? pose : climb > 0 ? STAIRS.up : STAIRS.down, clip = actions.get(name)?.getClip();
       if (!clip) return;
       const turn = phase / (2 * Math.PI);
-      sample(pose, (turn - Math.floor(turn)) * clip.duration);
+      sample(name, (turn - Math.floor(turn)) * clip.duration);
     },
     step(dt) {
       if (!transition) return false;
@@ -197,8 +208,8 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
     settle: finish,
     place(x, y, z, ry) { object.position.set(x, y + LIFT * scale, z); object.rotation.y = ry; },
     sitOn(x, top, z, ry) {
-      const back = SIT.back * scale;
-      object.position.set(x + Math.sin(ry) * back, top - SIT.contact * scale, z + Math.cos(ry) * back);
+      const lying = (transition?.clip ?? pose) === 'get-up' || pose === 'lie', back = lying ? 0 : SIT.back * scale;
+      object.position.set(x + Math.sin(ry) * back, lying ? top : top - SIT.contact * scale, z + Math.cos(ry) * back);
       object.rotation.y = ry;
     },
     fit(sceneScale) { scale = fitScale(key, sceneScale); object.scale.setScalar(scale); },

@@ -24,7 +24,7 @@ test('no WebGL2: the body is never fetched and the figure stays', async () => {
   standIn.attach(scene);
   standIn.wear({ gender: 'woman' }, 'p1');
   for (let frame = 0; frame < 3; frame++) standIn.start(noWebGL2);
-  standIn.pose('sit', 0.6, true); standIn.move(1, 0, 2, 0.5); standIn.gait(1, false);
+  standIn.pose('sit', 0.6, true); standIn.move(1, 0, 2, 0.5); standIn.gait(1, false); standIn.gait(1.2, false, 0.4);
   await settle();
   assert.equal(bodyImports.count, before);
   assert.equal(scene.avatar.visible, true);

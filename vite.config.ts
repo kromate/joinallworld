@@ -172,6 +172,10 @@ export default defineConfig({
   // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
   build: {
     chunkSizeWarningLimit: 800,
+    // Terser, two passes: the same program in about 3% fewer gzip bytes than the default esbuild minifier, for every chunk (the startup
+    // is the part that has a budget). It only compresses and renames; it does not change what the code does.
+    minify: 'terser',
+    terserOptions: { compress: { passes: 2 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {

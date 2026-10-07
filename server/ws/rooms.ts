@@ -53,8 +53,9 @@ import { venueFor } from '../../src/game/cities/runtime.ts';
  * a join, leave, move or voice change of one sends no presence frame to the other, and the
  * 'room-changed' event names its cause so the who-is-here nudge skips them too. (One thing is
  * still shared: the room's voice cap counts everyone, so a blocked pair can fill it for each other.)
- * CHAT TEXT. A chat line passes the text filter (server/moderation/text.ts) and the sender's mute
- * state (ctx.checks.muted). A refused line is answered with an `error` carrying the code
+ * CHAT TEXT. A chat line passes the text filter (server/moderation/text.ts), the no-fee filter (src/game/trust/fees.ts)
+ * and the sender's mute state (ctx.checks.muted). Links are refused except from a checked stall owner in their own
+ * stall's venue (ctx.checks.vendorLink, server/trust/service.ts). A refused line is answered with an `error` carrying the code
  * ('text_blocked' | 'muted'), a `reason` sentence (repeated as `message`, the field the community
  * panel prints in its status line) and the line's clientId; it is delivered to nobody.
  * MEMBERSHIP IS RE-CHECKED AGAINST THE STORED LIFE, NOT REMEMBERED
@@ -101,6 +102,7 @@ import { watchLives } from '../life-service.ts';
 import { characterCity } from '../character.ts';
 import { checkLook } from '../../src/game/systems/onboarding.ts';
 import { screenText } from '../moderation/text.ts';
+import { screenFee } from '../../src/game/trust/fees.ts';
 import type { CityId, ChatFrame, GroupSummary, PresenceDeltaFrame, PresenceMember, PublicSession, RoomCounts, SignalData } from '../../src/types/protocol.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { Db, IncomingFrame, RouteContext, ServerEvents, SessionRecord, WsConnection, WsHandlers, WsMessageEntry } from '../types.ts';
@@ -705,7 +707,7 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       chatAt.set(me, now());
       tidy(room);
     }),
-    chat: guarded((ws, message, room) => {
+    chat: guarded(async (ws, message, room) => {
       const body = typeof message.body === 'string' ? message.body.trim() : '';
       const clientId = message.clientId;
       if (!body || body.length > 500 || /[\u0000-\u0008\u000b-\u001f\u007f]/.test(body) || (clientId !== undefined && (typeof clientId !== 'string' || clientId.length > 80 || !clientId))) throw Error('invalid_chat');
@@ -716,8 +718,17 @@ export default function roomSocket(ctx: RouteContext): WsHandlers {
       const history: ChatHistory = hosted || chatHistory.get(key) || new Map<string, ChatFrame>();
       if (clientId && history.has(clientId)) { const replay = history.get(clientId); if (isChatFrame(replay)) { send(ws, replay); return; } }
       // Refused, never altered: a muted sender or a blocked text gets a reason and nobody receives the line.
-      // Venue chat is public: strangers read it, so a link, a phone number, an e-mail address or another app's handle is refused too.
-      const refusal = ctx.checks?.muted?.(ws.session.id) ?? screenText(body, { contact: true, what: 'Your message' });
+      // Venue chat is public: strangers read it, so a link, a phone number, an e-mail address or another app's handle is refused too,
+      // and so is asking for a fee or deposit up front or promising to double money (src/game/trust/fees.ts).
+      // One exception: a checked stall owner may share allow-listed links (src/game/trust/links.ts) in their own stall's venue.
+      // A fee request is named first, so a line that both asks for a fee and carries a link is told why it matters.
+      let refusal: { code: string; reason: string } | null = ctx.checks?.muted?.(ws.session.id) ?? screenFee(body) ?? screenText(body, { contact: true, what: 'Your message' });
+      const vendorLink = ctx.checks?.vendorLink;
+      if (refusal?.code === 'links_not_allowed' && vendorLink) {
+        const vendor = await store.read(db => vendorLink(db, ws.session.id, room, body));
+        if (ws.room !== room) return;
+        if (vendor) refusal = vendor.verdict;
+      }
       if (refusal) throw Object.assign(Error(refusal.code), { reason: refusal.reason });
       const chat: ChatFrame = { type: 'chat', id: core.newId(), ...(typeof clientId === 'string' ? { clientId } : {}), from: { ...ws.session }, body, at: now() };
       if (clientId) {

@@ -80,6 +80,8 @@ export default function growthRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   // THE AGE ANSWER LIVES HERE AND NOWHERE ELSE (growth.players[id].consent.age). Whoever needs it asks this check: e-mail
   // and push eligibility below, and analytics (server/telemetry/routes.ts) — a player who said "under 18" gets none of them.
   (ctx.checks ??= {}).minor = (db: Db, publicId: string): boolean => typeof publicId === 'string' && ctx.collection(db, 'growth')?.players?.[publicId]?.consent?.age === 'minor';
+  // Meetups need an explicit "18 or older" (server/trust/service.ts): not answering is not the same as being an adult.
+  ctx.checks.adult = (db: Db, publicId: string): boolean => typeof publicId === 'string' && ctx.collection(db, 'growth')?.players?.[publicId]?.consent?.age === 'adult';
 
   /** Authenticate, rate limit, find the caller's created life in the city (never creating one), and run `call`. */
   const route = (call: (args: GrowthCall) => GrowthAnswer, { durable = true }: { durable?: boolean | ((result: GrowthAnswer) => boolean) } = {}): RouteHandler => async (request) => {

@@ -24,6 +24,10 @@
  *   GET/POST /api/admin/settings              runtime settings (server/admin/settings.ts) and the e-mail / push switches
  *   POST /api/admin/notice                    { clientId, minutes }  the "update is coming" notice from a button (0 ends it)
  *   GET  /api/admin/moderation/reports, POST …/reports/:id/act, GET/POST …/shops, GET/POST …/content
+ *   GET  /api/admin/trust/reports?status      complaints filed through /api/trust/report (server/trust/service.ts)
+ *   POST /api/admin/trust/reports/:id/act     { clientId, action: uphold | dismiss, note? }   the third upheld in 90 days holds listings
+ *   POST /api/admin/trust/players/:id/act     { clientId, action: verify | release, tier?: phone | id | business | none, reason }
+ *                                             verify: set a checked tier by hand (no provider is configured); release: lift a hold after review
  *   GET  /api/admin/audit?action&admin&target&q&before&limit
  *   GET  /api/admin/tools                     descriptors other features have registered (server/admin/tools.ts)
  */
@@ -58,16 +62,20 @@ import { statsService } from '../admin/stats.ts';
 import { audit, peek } from '../admin/store.ts';
 import { adminTools } from '../admin/tools.ts';
 import { worldService } from '../admin/world.ts';
+import { trustService } from '../trust/service.ts';
+import { TIER_LABELS, isVerifiedTier } from '../../src/game/trust/index.ts';
 import type { CityId } from '../../src/types/protocol.ts';
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest } from '../types.ts';
 
 const NO_STORE = { 'Cache-Control': 'no-store' };
 const BULK_MAX = 20;
 const REPORT_ACTIONS = ['dismiss', 'warn', 'mute'] as const;
+const TRUST_REPORT_ACTIONS = ['uphold', 'dismiss'] as const;
 
 export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const players = playersService(ctx), actions = actionsService(ctx), stats = statsService(ctx), announce = announceOf(ctx), settings = settingsOf(ctx), sanctions = sanctionsOf(ctx);
   const world = worldService(ctx), moderation = moderationService(ctx), social = socialService(ctx), outreach = outreachService(ctx), shops = businessService(ctx), notice = noticeOf(ctx);
+  const trust = trustService(ctx);
   linkFeatures(ctx);
   // The history of the dashboard: one small row per day, sampled by the heartbeat (server/admin/history.ts).
   const history = recorder(ctx, (db) => {
@@ -349,6 +357,44 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     } })),
 
     'GET /api/admin/moderation/shops': read((db) => shops.modReports(db)),
+    'GET /api/admin/trust/reports': read((db, _admin, request) => {
+      const status = request.query.get('status') ?? 'open';
+      if (status !== 'open' && status !== 'all' && status !== 'received' && status !== 'upheld' && status !== 'dismissed') throw ctx.fail(400, 'invalid_status');
+      return { reports: trust.modReports(db, status) };
+    }),
+    'POST /api/admin/trust/reports/:id/act': write('trust-report', (db, admin, body, request) => ({ fingerprint: [request.params.id, body.action, body.note], run: () => {
+      const action = TRUST_REPORT_ACTIONS.find((item) => item === body.action);
+      if (!action) throw ctx.fail(400, 'unknown_action');
+      const note = typeof body.note === 'string' ? body.note.replace(/\s+/g, ' ').trim().slice(0, 200) : '';
+      const before = trust.modReports(db, 'all', 100000).find((item) => item.id === request.params.id);
+      if (!before) throw ctx.fail(404, 'unknown_report');
+      const target = ctx.core.sessionByPublicId?.(db, before.about);
+      if (target) mayAct(ctx, db, admin, target);
+      const report = trust.modDecide(db, before.id, action);
+      if (!report) throw ctx.fail(404, 'unknown_report');
+      const after = trust.complaints(db, report.about);
+      const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: `trust-${action}`, target: report.about, targetName: report.aboutName, params: { report: report.id, reason: report.reason, upheld: after.count },
+        summary: `Complaint ${report.id} (${report.reason}) ${action === 'uphold' ? 'upheld' : 'dismissed'}${after.held ? '; listings now held' : ''}`, reason: note });
+      return { ok: true, code: report.status, upheld: after.count, held: after.held, summary: line.summary, line: line.n };
+    } })),
+    'POST /api/admin/trust/players/:id/act': write('trust-player', (db, admin, body, request) => ({ fingerprint: [request.params.id, body.action, body.tier, body.reason], run: () => {
+      const id = publicId(request.params.id), target = targetOf(db, id);
+      mayAct(ctx, db, admin, target);
+      const reason = typeof body.reason === 'string' ? body.reason.replace(/\s+/g, ' ').trim().slice(0, 200) : '';
+      if (reason.length < 3) throw refuse(400, 'reason_required', 'Say how you checked this player.');
+      if (body.action === 'release') {
+        trust.modRelease(db, id);
+        const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: 'trust-release', target: id, targetName: target.name, params: {}, summary: `Listings of ${target.name} released after review`, reason });
+        return { ok: true, code: 'released', summary: line.summary, line: line.n };
+      }
+      if (body.action !== 'verify') throw ctx.fail(400, 'unknown_action');
+      const tier = body.tier === 'none' ? 'none' : isVerifiedTier(body.tier) ? body.tier : null;
+      if (!tier) throw ctx.fail(400, 'invalid_tier');
+      const done = trust.modVerify(db, id, tier, admin.accountId);
+      if (!done.ok) return done;
+      const line = audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: 'trust-verify', target: id, targetName: target.name, params: { tier }, summary: `${target.name} is now: ${TIER_LABELS[done.tier]}`, reason });
+      return { ok: true, code: 'verified', tier: done.tier, summary: line.summary, line: line.n };
+    } })),
     'POST /api/admin/moderation/shops/act': write('shop', (db, admin, body, _request, effects) => ({ fingerprint: [body.shop, body.action, body.reason], run: () => {
       const push: [string, unknown][] = [], reason = typeof body.reason === 'string' ? body.reason.replace(/\s+/g, ' ').trim().slice(0, 200) : '';
       const done = body.action === 'close' ? shops.modClose(db, body.shop, push) : body.action === 'rename' ? shops.modRename(db, body.shop, push) : (() => { throw ctx.fail(400, 'unknown_action'); })();

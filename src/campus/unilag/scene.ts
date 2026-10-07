@@ -2,7 +2,7 @@ import type { Group, Mesh } from 'three';
 import type { Look } from '../../types/life.ts';
 import type { Kit } from '../../scene/kit.ts';
 import { kitResources } from '../../scene/build.ts';
-import { buildAvatar, poseAvatar } from '../../scene/characters.ts';
+import { buildAvatar, poseAvatar, normalizeLook } from '../../scene/characters.ts';
 import type { Pose } from '../../scene/characters.ts';
 import { lagosTime } from '../../game/clock.ts';
 import { ANCHORS, ENTRANCE } from './layout.ts';
@@ -89,7 +89,8 @@ export function buildUnilag(kit: Kit, venue: { scene?: { time?: string } } = {})
   group.add(player);
   let time = venue.scene?.time || 'day', disposed = false, playerKey = '';
   let crowd: CrowdPerson[] = [];
-  const peopleGroup = new THREE.Group(); group.add(peopleGroup);
+  const peopleGroup = new THREE.Group(); peopleGroup.name='Campus stationary peers'; group.add(peopleGroup);
+  const peopleCache = new Map<string, { key: string; body: ReturnType<typeof buildAvatar> }>();
   const position: PlayerPosition = { ...ENTRANCE };
   const grid: CampusGridView = {
     bounds: [...CAMPUS_MAP.bounds],
@@ -106,7 +107,7 @@ export function buildUnilag(kit: Kit, venue: { scene?: { time?: string } } = {})
     if(disposed||!zone||!grid.free(x,z))return false;
     position.x=x;position.z=z;position.zone=zone.id;player.position.set(x,0,z);mapped.update(x,z);return true;
   }
-  function clearPeople(){for(const child of [...peopleGroup.children]){child.userData.dispose?.();child.removeFromParent();}}
+  function clearPeople(){for(const peer of peopleCache.values())peer.body.userData.dispose();peopleCache.clear();peopleGroup.clear();}
   const walk:AvatarWalk={
     entrance:[ENTRANCE.x,ENTRANCE.z,ENTRANCE.ry],open:true,avatar:player,raised:[],scale:.60,
     get centre(){return [position.x,1,position.z];},get grid(){return grid;},
@@ -126,8 +127,14 @@ export function buildUnilag(kit: Kit, venue: { scene?: { time?: string } } = {})
     setPosition,setSpot(id){const a=ANCHORS[id];return !!a&&setPosition(a.x,a.z);},
     setPlayer({look,seed='campus-visitor',pose='stand'}:PlayerInput={}){const key=JSON.stringify([look,seed]);if(look&&key!==playerKey){playerKey=key;player.userData.dispose();player=buildAvatar(kit,look,{detail:'low',rig:true,scale:.60,seed});group.add(player);player.position.set(position.x,0,position.z);walk.avatar=player;}poseAvatar(player,{pose});return true;},
     setCrowd(people){
-      clearPeople();crowd=(people??[]).slice(0,CAMPUS_BUDGET.crowd).flatMap(p=>{const anchor=p.spot?ANCHORS[p.spot]:undefined;const at=typeof p.x==='number'&&typeof p.z==='number'?{x:p.x,z:p.z}:anchor?grid.nearest(anchor.x+2,anchor.z+2):null;return at&&grid.free(at.x,at.z)?[{id:String(p.id),name:String(p.name??''),kind:crowdKindOf(p),x:at.x,z:at.z,look:p.look}]:[];});
-      for(const person of crowd){const body=buildAvatar(kit,person.look,{detail:'low',rig:true,scale:.60,seed:person.id});body.position.set(person.x,0,person.z);peopleGroup.add(body);}
+      crowd=(people??[]).slice(0,CAMPUS_BUDGET.crowd).flatMap(p=>{const anchor=p.spot?ANCHORS[p.spot]:undefined;const at=typeof p.x==='number'&&typeof p.z==='number'?{x:p.x,z:p.z}:anchor?grid.nearest(anchor.x+2,anchor.z+2):null;return at&&grid.free(at.x,at.z)?[{id:String(p.id),name:String(p.name??''),kind:crowdKindOf(p),x:at.x,z:at.z,look:p.look}]:[];});
+      const present=new Set(crowd.map(person=>person.id));
+      for(const[id,peer]of peopleCache)if(!present.has(id)){peer.body.userData.dispose();peopleCache.delete(id);}
+      for(const person of crowd){
+        const look=normalizeLook(person.look,person.id),key=JSON.stringify(look);let peer=peopleCache.get(person.id);
+        if(!peer||peer.key!==key){peer?.body.userData.dispose();const body=buildAvatar(kit,look,{detail:'low',rig:false,scale:.60,seed:person.id});peer={key,body};peopleCache.set(person.id,peer);peopleGroup.add(body);}
+        peer.body.position.set(person.x,0,person.z);
+      }
       return scene.tags();
     },
     tags(){return Object.entries(ANCHORS).filter(([,a])=>Math.hypot(a.x-position.x,a.z-position.z)<220).map(([id,a])=>({id,name:a.label,kind:'landmark',position:{x:a.x,y:3.5,z:a.z}})).concat(crowd.map(p=>({id:p.id,name:p.name,kind:p.kind,position:{x:p.x,y:2.3,z:p.z}})));},

@@ -5,6 +5,7 @@
  * are game rules, not a representation of a real UNILAG route or timetable.
  */
 import { arrive, debit, spotsOf } from '../../game/api.ts';
+import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { busy, fail, ok } from '../../game/util.ts';
 import { ANCHORS, ROADS } from './layout.ts';
 import type { CampusAnchor } from './layout.ts';
@@ -283,6 +284,7 @@ const activeShuttle = {
       || value.duration !== route.duration || !finite(value.start) || value.start < 0 || value.start > ctx.now) return null;
     return { origin, dest, start: value.start };
   },
+  ...(PLAYS ? {
   complete(state, active, ctx) {
     const legitimate = spotsOf('unilag', ctx.cityId).some((spot) => spot.id === active.dest);
     if (!legitimate || !arrive(state, 'unilag', ctx, { spot: active.dest, mode: 'campus-shuttle' })) {
@@ -296,6 +298,7 @@ const activeShuttle = {
     state.message = `Campus shuttle cancelled. The ₦${SHUTTLE_FEE} fare is not refundable.`;
     return null;
   },
+  } satisfies Pick<ActiveKindHandler<CampusShuttleAction>, 'complete' | 'cancel'> : LEFT_OUT),
 } satisfies ActiveKindHandler<CampusShuttleAction>;
 
 /** Registry-ready, server-authoritative campus shuttle system. */
@@ -307,9 +310,8 @@ const unilagShuttle = {
     const rides = typeof saved === 'object' && saved !== null && 'rides' in saved ? saved.rides : undefined;
     state.unilagShuttle = { rides: Number.isSafeInteger(rides) && (rides as number) >= 0 ? rides as number : 0 };
   },
-  actions: { 'campus-shuttle': board },
   active: { 'campus-shuttle': activeShuttle },
-  advance() {},
+  ...(PLAYS ? { actions: { 'campus-shuttle': board }, advance() {} } satisfies Pick<SystemDefinition<'unilagShuttle'>, 'actions' | 'advance'> : LEFT_OUT),
   view(state): UnilagShuttleView {
     return {
       fare: SHUTTLE_FEE, source: SHUTTLE_ROUTE_SOURCE,

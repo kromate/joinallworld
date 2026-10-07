@@ -19,12 +19,11 @@ export function ready(): void {
     const stop = watch(scene.venue, (venue) => { if (venue) { stop(); resolve() } })
     globalThis.setTimeout(resolve, 10000)
   })
-  preloadNext(Promise.all([landingCodeSettled(), sceneShown]))
+  const settled = Promise.all([landingCodeSettled(), sceneShown])
+  preloadNext(settled)
+  // Once the scene is up: the moment lines, the work dilemmas and place actions. Never part of the first download (./startExtras.ts).
+  void settled.then(() => import('./startExtras.ts')).then(({ startAfterReady }) => { startAfterReady() }, () => undefined)
   // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness; a short address (/games, /abuja, …): its chunk. Fetched only then (./startExtras.ts).
-  // `?models=…`: the model flags (src/models/integration/flags.ts) that start something after ready; startExtras reads which.
-  const search = new URLSearchParams(location.search)
-  const diagnostics = search.has('diagnostics')
-  if (diagnostics || search.has('models') || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
-  // The regulars talk to each other (R12): its own chunk, after the scene is up.
-  void sceneShown.then(() => import('./chatter/start.ts')).then(({ startChatter }) => { startChatter() }, () => undefined)
+  const diagnostics = new URLSearchParams(location.search).has('diagnostics')
+  if (diagnostics || location.pathname !== '/') void import('./startExtras.ts').then(({ startExtras }) => { startExtras(diagnostics) })
 }

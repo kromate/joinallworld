@@ -1,5 +1,5 @@
 // The moment banks, assembled, and the one function the game calls. This file and everything under src/moments/ is loaded lazily
-// (a dynamic import behind the ?models=moments flag), so the lines never enter the startup bundle. The picker itself is in pick.ts.
+// (a dynamic import once the game is ready), so the lines never enter the startup bundle. The picker itself is in pick.ts.
 import { ANYWHERE, CONDITIONED, MINOR_KINDS } from './common.ts'
 import { MAIN_KINDS } from './kinds.ts'
 import { CITY_MOMENTS } from './cities.ts'

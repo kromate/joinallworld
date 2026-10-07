@@ -60,7 +60,7 @@ import { civicTitle } from '../../src/game/cities/terminology.ts';
 import type { LifeState } from '../../src/types/life.ts';
 import type { ActionType } from '../../src/types/actions.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
-import type { CityCounters, EligibilityCheck, Gate, GovResponse, GovRules, GovYou, HuntResponse, PulseResponse } from '../../src/types/civic.ts';
+import type { CityCounters, CivicNotice, EligibilityCheck, Gate, GovResponse, GovRules, GovYou, HuntResponse, PulseResponse } from '../../src/types/civic.ts';
 import type { ActionOutcome, CivicCityRecord, CivicCollection, Db, GovScope, RouteContext, RouteHandler, RouteKey, RouteRequest, RouteResult, SessionRecord } from '../types.ts';
 import { isGuestLife } from '../../src/game/systems/onboarding.ts';
 import { makeContext } from '../../src/game/util.ts';
@@ -69,8 +69,9 @@ import { cityContent, cityRules } from '../../src/game/cities/index.ts';
 import { civicEligibility, pollingVenueFor } from '../../src/game/systems/civic.ts';
 import { QUORUM, SEATS, SEAT_TITLES, TIER_IDS } from '../../src/game/content/politics.ts';
 import type { TierId } from '../../src/types/politics.ts';
-import { govOfScope, peekGov, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
+import { govOfId, govOfScope, peekGov, peekPolitics, peekScope, politicsOf, scopeRecord, seatsOf } from '../politics/data.ts';
 import { credit, partyOf } from '../politics/rules.ts';
+import { archiveCity } from '../records/city.ts';
 import { cityOf, emptyCivic, nextId, openedAtOf } from '../civic/data.ts';
 import { cleanLine } from '../civic/text.ts';
 import { addressVotes, announce, announceBlock, declare, declareBlock, firstCapNotice, govView, notices, vote, voteBlock } from '../civic/elections.ts';
@@ -204,14 +205,23 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       you: mine ? { found, total: mine.gems.length, claimed: mine.claimed, canClaim: found === mine.gems.length && !mine.claimed } : null };
   };
 
-  function pulseBody(city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null, checkedIn: boolean, viewer: Viewer | null): PulseResponse {
+  /** The city's own civic news and that of the state and the nation it votes in, newest first: one weekly calendar for all three seats. */
+  function allNotices(db: Db, city: CivicCityRecord, cityId: CityId, now: number): CivicNotice[] {
+    const openedAt = openedAtOf(city, cityId, now);
+    const own = notices(city, now, cityName(cityId), openedAt, civicTitle(cityId));
+    const wider = seatsOf(cityId, cityName(cityId)).filter((seat) => seat.tier !== 'city')
+      .flatMap((seat) => notices(govOfId(db, seat.id), now, seat.name, openedAt, SEAT_TITLES[seat.tier as Exclude<TierId, 'city'>], `${seat.tier}-`, QUORUM[seat.tier]));
+    return [...own, ...wider].sort((a, b) => b.at - a.at || (a.id < b.id ? -1 : 1)).slice(0, 12);
+  }
+
+  function pulseBody(db: Db, city: CivicCityRecord, cityId: CityId, who: PlayerRef | null, life: LifeState | null, checkedIn: boolean, viewer: Viewer | null): PulseResponse {
     const now = ctx.now(), view = govView(city, now, who?.id ?? null);
     const hunt = huntCounters(city, now);
     const venue = life && canOccupyVenue(life, life.location) ? life.location : null;
     return { city: cityId, checkedIn, counters: cityCounters(city, cityId, viewer),
       hunt: { ...hunt, prize: HUNT.prize, gemsPerDay: HUNT.gemsPerDay },
       gov: { phase: view.phase, phaseEndsAt: view.phaseEndsAt, governor: view.governor },
-      notices: notices(city, now, cityName(cityId), openedAtOf(city, cityId, now), civicTitle(cityId)),
+      notices: allNotices(db, city, cityId, now),
       radio: venue && isClub(venue, cityContent(cityId).radioVenueIds) ? radioView(city, now, venue, who?.id ?? null, cityContent(cityId).radioVenueIds) : null };
   }
 
@@ -226,14 +236,15 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         const body = await store.transact(db => {
           const { session, who, life, city, resident } = enter(db, request, cityId);
           counterCache.delete(cityId);
+          archiveCity(ctx, db, cityId, cityName(cityId), true);
           // City news the resident has not been told yet goes into their own Updates feed, once.
-          const fresh = resident ? notices(city, ctx.now(), cityName(cityId), openedAtOf(city, cityId, ctx.now()), civicTitle(cityId)).filter((item) => !life.civic.news.includes(item.id)) : [];
+          const fresh = resident ? allNotices(db, city, cityId, ctx.now()).filter((item) => !life.civic.news.includes(item.id)) : [];
           if (fresh.length) act(life, cityId, 'civic.news', { items: fresh.map(({ id, title, text, at }) => ({ id, title, text, at })) }, 'only notices whose id is not yet in life.civic.news are posted');
-          return pulseBody(city, cityId, who, life, resident, viewerOf(session));
+          return pulseBody(db, city, cityId, who, life, resident, viewerOf(session));
         }, { durable: false }); // a check-in acknowledges nothing: news not yet stored is simply posted again
         return { body, renew: true };
       }
-      return { body: await store.read(db => { const { session, who, life, city } = peek(db, request, cityId); return pulseBody(city, cityId, who, life, false, viewerOf(session)); }) };
+      return { body: await store.read(db => { const { session, who, life, city } = peek(db, request, cityId); return pulseBody(db, city, cityId, who, life, false, viewerOf(session)); }) };
     },
 
     // ---- governor -------------------------------------------------------------------------
@@ -259,6 +270,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
           if (!slogan.ok) return { ok: false, code: slogan.code, reason: slogan.reason };
           const paid = act(life, cityId, 'civic.run', { tier });
           if (!paid.ok) return { ok: false, code: paid.code, reason: paid.reason };
+          archiveCity(ctx, db, cityId, cityName(cityId)); // the ended terms go into the record before this week's candidacy can prune old ballots
           const politics = politicsOf(ctx, db);
           declare(city, ctx.now(), who, slogan.text, partyOf(politics, who.id));
           const seat = seatsOf(cityId, cityName(cityId)).find((item) => item.tier === tier);
@@ -275,6 +287,7 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
       return store.transact(db => {
         const { who, life, civic, city: home } = enter(db, request, cityId);
         const city = seatGov(db, home, cityId, tier, true);
+        archiveCity(ctx, db, cityId, cityName(cityId));
         limit('gov-vote', who.id, 12);
         const block = voteBlock(city, ctx.now(), who.id, body.candidate);
         if (block) return refused(block, { state: life, gov: govBody(city, cityId, who, life, tier) });

@@ -1,18 +1,19 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { FX_TRIM } from './synth.ts'
-import { Director, IDLE_MS, isNight, type Deps, type Seen } from './director.ts'
+import { Director, IDLE_MS, isNight, pickMoment, type Deps, type Seen } from './director.ts'
 import { FakeContext, asContext } from './fakeAudio.ts'
 import { SOUND_DEFAULTS, readSound, type SoundSettings } from './settings.ts'
 import { levelFor } from './levels.ts'
-import { MOTIFS } from './data.ts'
+import { BEAT_SECONDS, MOTIFS } from './data.ts'
 
 interface Rig { ctx: FakeContext; director: Director; settings: SoundSettings; clock: { ms: number }; timers: { run: () => void; ms: number; every: boolean }[] }
 const NOON = Date.UTC(2026, 9, 6, 11, 0, 0) // 12:00 in Nigeria
 function rig(patch: Partial<SoundSettings> = {}, sound: Deps['soundOf'] = () => undefined): Rig {
   const ctx = new FakeContext(), settings: SoundSettings = { ...SOUND_DEFAULTS, ...patch }, clock = { ms: NOON }, timers: Rig['timers'] = []
   const director = new Director(asContext(ctx), {
-    settings: () => settings, soundOf: sound, kindOf: (_city, venue) => ({ stall: 'market', gardens: 'park', flat: 'home' } as Record<string, string>)[venue] ?? '',
+    settings: () => settings, soundOf: sound, kindOf: (_city, venue) => ({ stall: 'market', gardens: 'park', flat: 'home', church: 'worship', mosque: 'worship', club: 'club', busPark: 'hub', rail: 'hub' } as Record<string, string>)[venue] ?? '',
+    variantOf: (_city, venue) => ({ church: 'church', mosque: 'mosque', rail: 'rail', busPark: 'bus-park' } as Record<string, string>)[venue] ?? '',
     now: () => clock.ms, live: true,
     every: (run, ms) => { const t = { run, ms, every: true }; timers.push(t); return () => { timers.splice(timers.indexOf(t), 1) } },
     after: (run, ms) => { const t = { run, ms, every: false }; timers.push(t); return () => { timers.splice(timers.indexOf(t), 1) } },
@@ -192,4 +193,97 @@ test('the stored preferences are read the way they were saved, and anything malf
   const s = readSound({ getItem: () => '{"on":false,"master":0.3,"effects":9,"ambience":"x"}' })
   assert.equal(s.master, 0.3); assert.equal(s.effects, SOUND_DEFAULTS.effects); assert.equal(s.ambience, SOUND_DEFAULTS.ambience)
   assert.deepEqual(readSound({ getItem: () => 'not json' }), SOUND_DEFAULTS); assert.deepEqual(readSound({ getItem: () => '[1]' }), SOUND_DEFAULTS)
+})
+
+// ---- the time of day ----------------------------------------------------------------------------------------------------
+/** A moment of the Lagos clock on a day of October 2026 (the 4th is a Sunday, the 6th a Tuesday, the 9th a Friday). */
+const lagos = (day: number, hour: number, minute = 0): number => Date.UTC(2026, 9, day, hour - 1, minute)
+const SUNDAY = 4, TUESDAY = 6, FRIDAY = 9
+/** Every one-shot or loop a scape plays (they carry a destination), by recipe and start time. */
+function recording(r: Rig): { id: string; at: number }[] {
+  const shots: { id: string; at: number }[] = []
+  const original = r.director.synth.play.bind(r.director.synth)
+  r.director.synth.play = (id, o) => { if (o?.dest) shots.push({ id, at: o.at ?? 0 }); return original(id, o) }
+  return shots
+}
+/** A director whose clock is at `now`, watching `location`, with the scapes primed for `seconds`. */
+function listen(now: number, location: string, patch: Partial<Seen> = {}, settings: Partial<SoundSettings> = {}, seconds = 30): { r: Rig; shots: { id: string; at: number }[] } {
+  const r = rig(settings)
+  r.clock.ms = now; r.director.touch()
+  const shots = recording(r)
+  r.director.observe(seen({ location, now, ...patch }))
+  r.director.prime(seconds)
+  return { r, shots }
+}
+
+test('the time of day picks what a place adds: the band, the weekday, prayer times and the look of the scene', () => {
+  const at = (kind: string, now: number, variant = '', outage = false): string => pickMoment({ kind, variant, now, outage })
+  assert.equal(at('worship', lagos(SUNDAY, 9), 'church'), 'church-service')
+  assert.equal(at('worship', lagos(TUESDAY, 9), 'church'), '', 'a church on a weekday morning is quiet')
+  assert.equal(at('worship', lagos(SUNDAY, 15), 'church'), '', 'and on Sunday afternoon')
+  assert.equal(at('worship', lagos(TUESDAY, 13, 15), 'mosque'), 'azan-near')
+  assert.equal(at('worship', lagos(TUESDAY, 11), 'mosque'), '')
+  assert.equal(at('worship', lagos(FRIDAY, 13, 30), 'mosque'), 'jumuah')
+  assert.equal(at('park', lagos(TUESDAY, 13, 15)), 'azan-far', 'the call carries into the street')
+  assert.equal(at('club', lagos(TUESDAY, 22)), 'club-night'); assert.equal(at('club', lagos(TUESDAY, 14)), '')
+  assert.equal(at('market', lagos(TUESDAY, 10)), 'hawkers'); assert.equal(at('market', lagos(TUESDAY, 23)), 'generator-far')
+  assert.equal(at('home', lagos(TUESDAY, 22)), 'generator'); assert.equal(at('home', lagos(TUESDAY, 12)), '')
+  assert.equal(at('home', lagos(TUESDAY, 12), '', true), 'generator', 'a power cut brings the generators on by day')
+  assert.equal(at('hub', lagos(TUESDAY, 8), 'bus-park'), 'conductors'); assert.equal(at('hub', lagos(TUESDAY, 8), 'rail'), '')
+  assert.equal(at('hub', lagos(TUESDAY, 22), 'bus-park'), 'generator-far', 'no conductors at night')
+  assert.equal(at('', lagos(TUESDAY, 22)), '')
+})
+
+test('a Sunday morning in church has a service, with hymns; a Tuesday has none', () => {
+  const sunday = listen(lagos(SUNDAY, 9), 'church')
+  assert.ok(sunday.shots.some(s => s.id === 'hymn'), 'hymns on Sunday')
+  const tuesday = listen(lagos(TUESDAY, 9), 'church')
+  assert.ok(!tuesday.shots.some(s => s.id === 'hymn'), 'none on a Tuesday')
+})
+
+test('the call to prayer sounds in a mosque at prayer time and not before; the clock crossing the time starts it without anyone moving', () => {
+  assert.ok(listen(lagos(TUESDAY, 13, 15), 'mosque').shots.some(s => s.id === 'azan'), 'at dhuhr')
+  assert.ok(!listen(lagos(TUESDAY, 11), 'mosque').shots.some(s => s.id === 'azan'), 'not at eleven')
+  const { r, shots } = listen(lagos(TUESDAY, 13, 11) + 30_000, 'mosque', {}, {}, 10)
+  assert.ok(!shots.some(s => s.id === 'azan'), 'half a minute before')
+  r.clock.ms += 60_000; r.director.touch()
+  const tick = r.timers.find(t => t.every)
+  for (let i = 0; i < 30; i++) tick?.run()
+  r.director.prime(20)
+  assert.ok(shots.some(s => s.id === 'azan'), 'a minute later the call has begun')
+})
+
+test('a market has hawkers by day and a distant generator at night; a bus park has conductors and a rail hub has none', () => {
+  assert.ok(listen(lagos(TUESDAY, 10), 'stall').shots.some(s => s.id === 'hawk-a' || s.id === 'hawk-b'), 'hawkers in the morning')
+  assert.ok(!listen(lagos(TUESDAY, 23), 'stall').shots.some(s => s.id === 'hawk-a'), 'none at eleven at night')
+  assert.ok(listen(lagos(TUESDAY, 8), 'busPark').shots.some(s => s.id === 'conductor'), 'conductors call in the bus park')
+  assert.ok(!listen(lagos(TUESDAY, 8), 'rail').shots.some(s => s.id === 'conductor'), 'not on the rail platform')
+})
+
+test('a generator hums at night in a home and, once the game reports a power cut, by day too', () => {
+  const gen = (r: Rig): boolean => r.ctx.sources.some(s => s.kind === 'osc' && s.frequency.value === 47)
+  assert.ok(gen(listen(lagos(TUESDAY, 22), 'flat').r), 'at night')
+  assert.ok(!gen(listen(lagos(TUESDAY, 12), 'flat').r), 'not at noon')
+  assert.ok(gen(listen(lagos(TUESDAY, 12), 'flat', { outage: true }).r), 'a cut at noon')
+})
+
+test('a club plays its beat exactly in time, bar after bar, in the evening and not at noon', () => {
+  const beats = listen(lagos(TUESDAY, 22), 'club', {}, {}, 20).shots.filter(s => s.id === 'beat-club').map(s => s.at)
+  assert.ok(beats.length >= 4, `${beats.length} bars`)
+  for (let i = 1; i < beats.length; i++) assert.ok(Math.abs((beats[i] as number) - (beats[i - 1] as number) - BEAT_SECONDS) < 1e-9, 'the bars follow each other with no drift')
+  assert.equal(listen(lagos(TUESDAY, 12), 'club', {}, {}, 20).shots.filter(s => s.id === 'beat-club').length, 0)
+})
+
+test('rain on a zinc roof ticks; rain on a flat does not', () => {
+  assert.ok(listen(lagos(TUESDAY, 12), 'stall', { raining: true }, {}, 5).shots.some(s => s.id === 'zinc-tick'), 'a market shed')
+  assert.ok(!listen(lagos(TUESDAY, 12), 'flat', { raining: true }, {}, 5).shots.some(s => s.id === 'zinc-tick'), 'a flat')
+})
+
+test('Quiet and mute keep the new sounds out as well: nothing is built for a service, a call or a beat', () => {
+  for (const patch of [{ quiet: true }, { on: false }]) {
+    for (const [now, where] of [[lagos(SUNDAY, 9), 'church'], [lagos(TUESDAY, 13, 15), 'mosque'], [lagos(TUESDAY, 22), 'club']] as const) {
+      const { r } = listen(now, where, {}, patch)
+      assert.equal(r.ctx.sources.length, 0, `${where} under ${JSON.stringify(patch)}`)
+    }
+  }
 })

@@ -43,7 +43,7 @@ export type TravelVehicleBuilder = (kind: string, options: { time: string }) => 
 
 export function createActor(kit: MapKit, { travelVehicle = null }: { travelVehicle?: TravelVehicleBuilder | null } = {}) {
   const { THREE } = kit;
-  // The model library's trip vehicles (src/models): OFF unless the host passes its builder (see src/models/integration/flags.ts).
+  // The model library's trip vehicles (src/models): used when the host passes its builder (src/map3d/index.ts always does); without it, or if the library fails to load, the map's own batch-drawn vehicle is drawn.
   const useModels = typeof travelVehicle === 'function';
   const group = new THREE.Group();
   group.name = 'actor';

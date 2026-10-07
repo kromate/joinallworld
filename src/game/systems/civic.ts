@@ -55,7 +55,7 @@ import { lagosTime } from '../clock.ts';
 import { addMoodlet, canAfford, canCredit, changeNeeds, credit, debit, spotsOf } from '../api.ts';
 import { venueLabel } from '../content/venues.ts';
 import { BILLBOARDS, ELECTION, HUNT, RADIO, SEA_PLOTS } from '../content/civic.ts';
-import { JUSTICE, SEATS, SEAT_TITLES, TIER_IDS } from '../content/politics.ts';
+import { LOSER_MOOD, SEATS, SEAT_TITLES, TIER_IDS } from '../content/politics-core.ts';
 import type { TierId } from '../../types/politics.ts';
 import { cityRules } from '../content/world.ts';
 import { isCityId } from '../cities/registry.ts';
@@ -279,7 +279,7 @@ export function justiceHurt(state: LifeState, payload: Record<string, unknown>, 
   const lost = payload?.energy;
   if (!Number.isSafeInteger(lost) || (lost as number) < 1 || (lost as number) > 50) return fail(state, 'invalid_amount', 'That is not an amount of energy.');
   changeNeeds(state, { energy: -(lost as number) });
-  if (payload.beaten === true) addMoodlet(state, { id: 'justice-beaten', label: 'Beaten up', value: JUSTICE.loserMood.value, duration: JUSTICE.loserMood.seconds }, ctx);
+  if (payload.beaten === true) addMoodlet(state, { id: 'justice-beaten', label: 'Beaten up', value: LOSER_MOOD.value, duration: LOSER_MOOD.seconds }, ctx);
   return ok(state, 'hurt');
 }
 
@@ -336,20 +336,22 @@ export function payForShoutout(state: LifeState, payload: Record<string, unknown
 const NEWS_LIMIT = 40;
 const NEWS_ID = /^[a-z]+-[a-z0-9-]{1,40}$/;
 
-/** Post city news this life has not been told yet. Each id is posted once; at most five a call. */
+/** Post city news this life has not been told yet. Each id is posted once; at most five a call (the five most recent). */
 export function postNews(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
   // Typed by the one field the sort reads; every item is validated by isRecord below.
   const items: ({ at?: number; [field: string]: unknown } | null | undefined)[] = Array.isArray(payload?.items) ? payload.items.slice(0, 12) : [];
-  let posted = 0;
+  // Every new item is remembered as seen; of those that are new to this life, the five most recent are posted to Updates, oldest of them first.
+  const fresh: { id: string; title: string; text: unknown; at: number }[] = [];
   for (const item of [...items].sort((a, b) => (a?.at ?? 0) - (b?.at ?? 0))) {
     if (!isRecord(item) || typeof item.id !== 'string' || !NEWS_ID.test(item.id) || typeof item.title !== 'string' || !finite(item.at)) continue;
     if (state.civic.news.includes(item.id)) continue;
     state.civic.news.push(item.id);
     // News from before this life existed is remembered as seen, not replayed.
-    if (item.at < state.civic.since || posted >= 5) continue;
-    emit(state, 'notice.posted', { kind: 'gov', text: `${item.title}${typeof item.text === 'string' && item.text ? `: ${item.text}` : ''}` }, ctx);
-    posted += 1;
+    if (item.at >= state.civic.since) fresh.push({ id: item.id, title: item.title, text: item.text, at: item.at });
   }
+  const shown = fresh.slice(-5);
+  for (const item of shown) emit(state, 'notice.posted', { kind: 'gov', text: `${item.title}${typeof item.text === 'string' && item.text ? `: ${item.text}` : ''}` }, ctx);
+  const posted = shown.length;
   if (state.civic.news.length > NEWS_LIMIT) state.civic.news.splice(0, state.civic.news.length - NEWS_LIMIT);
   return ok(state, posted ? 'posted' : 'nothing_new');
 }

@@ -100,7 +100,7 @@ test('an election end to end on the pure rules: gates name the phase, the term l
   assert.equal(announceBlock(data, sunday + 3 * ELECTION.announcement.cooldownMs, 'bola')?.code, 'announcement_limit');
   assert.equal(announceBlock(data, sunday + DAY, 'bola'), null);
   const news = notices(data, sunday + 1, 'Lagos');
-  assert.equal(news[0]?.kind, 'announcement'); assert.ok(news.some((item) => item.id === 'result-1' && /Bola is the new Governor of Lagos/.test(item.title)));
+  assert.equal(news[0]?.kind, 'announcement'); assert.ok(news.some((item) => item.id === 'result-1' && /Bola is the new Chairman of Lagos/.test(item.title)));
   for (let i = 0; i < 40; i++) announce(data, sunday + i, bola, `n${i}`, `x${i}`);
   assert.equal(data.gov.announcements.length, ELECTION.announcement.keep, 'announcements are capped');
   for (let week = 2; week < 14; week++) declare(data, MONDAY + (week - 1) * 7 * DAY, ada, 'Again');
@@ -356,7 +356,7 @@ test('civic payments: every refusal names what is missing and charges nothing', 
   state.location = 'park';
   const later = at(MONDAY + 2 * DAY);
   assert.equal(fileCandidacy(state, {}, later).code, 'declared');
-  assert.equal(state.cash, 5000 - ELECTION.filingFee); assert.equal(state.ledger.at(-1)?.reason, 'Governorship filing fee'); assert.equal(state.ledger.at(-1)?.amount, -ELECTION.filingFee);
+  assert.equal(state.cash, 5000 - ELECTION.filingFee); assert.equal(state.ledger.at(-1)?.reason, 'Chairman filing fee'); assert.equal(state.ledger.at(-1)?.amount, -ELECTION.filingFee);
   assert.equal(payForAd(state, { kind: 'billboard', slot: 'bb-01' }, later).code, 'rented'); assert.equal(state.cash, 1500);
   assert.equal(payForAd(state, { kind: 'billboard', slot: 'bb-02' }, later).code, 'rented'); assert.equal(state.cash, 0);
   const broke = payForAd(state, { kind: 'sea', slot: 'sea-9-9' }, later);

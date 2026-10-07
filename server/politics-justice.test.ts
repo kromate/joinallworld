@@ -188,6 +188,8 @@ test('courts: bail, an appeal with a lawyer, a judge’s ruling, and one appeal 
   assert.equal((await rule(judy, 'banished')).code, 'invalid_verdict');
   assert.equal((await rule(judy, 'reduced', 'ab')).code, 'text_too_short');
   assert.equal((await rule(judy, 'reduced')).code, 'reduced');
+  const rulings = (await (await fetch(`${f.base}/api/world/records?kind=ruling`)).json()) as { entries: { title: string; scope: string; facts: Record<string, unknown> }[] };
+  assert.deepEqual(rulings.entries.map((entry) => [entry.scope, entry.facts.verdict, entry.facts.judge, entry.facts.defendant]), [['city:lagos', 'reduced', 'Judy', 'Ada']], 'a ruling is on the public record as it is made');
   const remaining = (await justice(ada)).you?.jail?.until ?? 0;
   assert.ok(remaining - f.now() <= 10 * 60000 + 1000 && remaining - f.now() > 0, 'half of what was left');
   assert.equal((await rule(judy, 'quashed')).code, 'no_such_case', 'one ruling for a hearing');

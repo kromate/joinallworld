@@ -1,7 +1,7 @@
 import { loadCityContent as preloadCityContent } from './cities/registry.ts';
 await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // OWNER: career + social — tests for work dilemmas (src/game/dilemmas.ts, content/dilemmas.ts, systems/career.ts) and the place actions
-// of regulars (place-actions.ts, systems/social.ts). Both live behind the `dilemmas` switch (src/game/features.ts), off by default.
+// of regulars (place-actions.ts, systems/social.ts). Both are on for every player; the kit that carries them is the seam (src/game/features.ts).
 // Pattern and rules: see "HOW TO TEST" at the top of src/game/registry.ts.
 import test, { afterEach } from 'node:test';
 import assert from 'node:assert/strict';
@@ -9,8 +9,8 @@ import { createLife, dispatch, advanceLife, viewLife } from '../life.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
 import { makeContext, isId } from './util.ts';
 import { lagosTime } from './clock.ts';
-import './dilemma-pack.ts'; // installs the kit, as the servers do
-import { setFeature, dilemmasEnabled, flagFromEnv, dilemmaKit } from './features.ts';
+import { DILEMMA_KIT } from './dilemma-pack.ts'; // importing it installs the kit, as the servers do
+import { dilemmasEnabled, dilemmaKit, installDilemmaKit, uninstallDilemmaKit } from './features.ts';
 import { skillLevel } from './api.ts';
 import { DILEMMAS, dilemmaById, DILEMMA_CHANCE, MAX_DILEMMA_XP, MAX_MONEY_SHARE, MAX_SAFE_GAIN, SEEN_KEPT } from './content/dilemmas.ts';
 import { JOBS } from './content/jobs.ts';
@@ -31,9 +31,9 @@ const SUNDAY_11AM = Date.UTC(2026, 0, 4, 10); // 11:00 in Lagos, half an hour af
 const at = (now: number, seed = 'dilemma-test') => makeContext({ now, cityId: 'lagos', seed });
 const today = lagosTime(MONDAY_9AM).day;
 
-/** Turns the switch on or off and rebuilds the cached activity catalogue to match. */
-function setSwitch(on: boolean): void { setFeature('dilemmas', on); rebuildCatalogue('lagos'); }
-afterEach(() => setSwitch(false));
+/** The bare engine: no kit installed, so no dilemmas and no place actions. The catalogue is rebuilt to match. */
+function bareEngine(): void { uninstallDilemmaKit(); rebuildCatalogue('lagos'); }
+afterEach(() => { installDilemmaKit(DILEMMA_KIT); rebuildCatalogue('lagos'); });
 
 function need<T>(value: T | null | undefined, what = 'expected a value'): T { assert.ok(value !== null && value !== undefined, what); return value; }
 const send = (state: LifeState, type: string, payload: Record<string, unknown>, now: number, seed = 'send') => dispatch(state, { type, payload } as ActionBody<ActionType>, at(now, seed));
@@ -49,10 +49,13 @@ const PLAIN: DilemmaStats = {
 };
 const jobIds = Object.keys(JOBS) as JobId[];
 
-test('the switch is off by default and only 1/true/on/yes turn it on', () => {
-  assert.equal(dilemmasEnabled(), false);
-  assert.deepEqual(['1', 'true', 'ON', ' yes '].map(flagFromEnv), [true, true, true, true]);
-  assert.deepEqual(['', '0', 'no', 'false', undefined, 1].map(flagFromEnv), [false, false, false, false, false, false]);
+test('dilemmas and place actions are on by default: importing the pack is all it takes, with no switch', () => {
+  assert.equal(dilemmasEnabled(), true);
+  assert.equal(dilemmaKit(), DILEMMA_KIT);
+  const player = createLife({ t: MONDAY_9AM, job: 'tech', location: 'market', spot: 'people' }, at(MONDAY_9AM));
+  assert.ok(hereOf(player, MONDAY_9AM, 'iya-bose').actions.some((action) => action.id === 'haggle'), 'a regular at the market offers Haggle');
+  bareEngine();
+  assert.equal(dilemmasEnabled(), false, 'without the kit the engine has none');
 });
 
 test('content: every dilemma names real jobs, has two or three choices and keeps inside its money bounds', () => {
@@ -173,8 +176,8 @@ test('the saved record: junk is dropped, a well-formed record survives (ids are 
   assert.deepEqual(cleanBook({ pending: { id: real.id, seed: 5 }, seen: [real.id, 'gone', 4], memory: ['kind', 'Not ok'] }), { pending: { id: real.id, seed: 5 }, seen: [real.id, 'gone'], memory: ['kind'] });
 });
 
-test('switch off: no place actions, no dilemma, no new keys in the state or the view, and the action is refused', () => {
-  setSwitch(false);
+test('bare engine (no kit installed): no place actions, no dilemma, no new keys in the state or the view, and the action is refused', () => {
+  bareEngine();
   const player = createLife({ t: MONDAY_9AM, job: 'tech', location: 'market', spot: 'people' }, at(MONDAY_9AM));
   assert.equal('dilemmas' in player.career, false);
   assert.equal('coupon' in player.social, false);
@@ -190,13 +193,13 @@ test('switch off: no place actions, no dilemma, no new keys in the state or the 
     send(worker, 'activity', { id: JOBS.tech.shift.id }, MONDAY_9AM, `off-${i}`);
     advanceLife(worker, JOBS.tech.shift.duration, at(MONDAY_9AM + JOBS.tech.shift.duration * 1000, `off-${i}`));
     assert.equal(worker.completedShifts, 1);
-    assert.equal('dilemmas' in worker.career, false, 'a shift writes nothing new while the switch is off');
+    assert.equal('dilemmas' in worker.career, false, 'a shift writes nothing new without the kit');
   }
 });
 
-test('an old save without the new fields loads unchanged, with the switch on or off', () => {
+test('an old save without the new fields loads unchanged, with the kit or without it', () => {
   for (const on of [false, true]) {
-    setSwitch(on);
+    if (on) { installDilemmaKit(DILEMMA_KIT); rebuildCatalogue('lagos'); } else bareEngine();
     const old = createLife({ t: MONDAY_9AM, job: 'tech', career: { level: 2, performance: 40, shifts: 3, auto: true }, social: { rel: { 'iya-bose': { p: 5, npc: true } } } }, at(MONDAY_9AM));
     assert.equal(old.career.level, 2);
     assert.equal('dilemmas' in old.career, false);
@@ -219,8 +222,7 @@ function workShift(job: 'tech' | 'community-helper', seed: string, saved: Record
   return state;
 }
 
-test('switch on: a finished shift sometimes leaves one dilemma waiting, at about the set chance, never two', () => {
-  setSwitch(true);
+test('a finished shift sometimes leaves one dilemma waiting, at about the set chance, never two', () => {
   for (const job of ['tech', 'community-helper'] as const) {
     let waiting = 0; const runs = 200;
     for (let i = 0; i < runs; i++) {
@@ -242,8 +244,7 @@ test('switch on: a finished shift sometimes leaves one dilemma waiting, at about
   assert.deepEqual(next.career.dilemmas?.pending, kept, 'with one waiting a second shift leaves it alone');
 });
 
-test('switch on: answering a dilemma settles exactly what the resolver says, once', () => {
-  setSwitch(true);
+test('answering a dilemma settles exactly what the resolver says, once', () => {
   for (const item of DILEMMAS.filter((candidate) => !candidate.jobs || candidate.jobs.includes('tech'))) {
     for (const choice of item.choices) {
       const state = createLife({ t: MONDAY_9AM, job: 'tech', cash: 2000, career: { level: 1, performance: 10, shifts: 1, dilemmas: { pending: { id: item.id, seed: 77 }, seen: [item.id], memory: [] } } }, at(MONDAY_9AM));
@@ -270,7 +271,6 @@ test('switch on: answering a dilemma settles exactly what the resolver says, onc
 });
 
 test('a saved dilemma can never pay more than a quarter of a shift, however the life was edited', () => {
-  setSwitch(true);
   for (const item of DILEMMAS) {
     for (const choice of item.choices) {
       const state = createLife({ t: MONDAY_9AM, job: 'community-helper', cash: 10, career: { dilemmas: { pending: { id: item.id, seed: 3 }, seen: [], memory: [] } } }, at(MONDAY_9AM));
@@ -285,7 +285,6 @@ const regular = (id: string) => need(NPCS[id], id);
 const hereOf = (state: LifeState, now: number, id: string) => need(viewLife(state, at(now)).social.here.find((npc) => npc.id === id), `${id} is here`);
 
 test('place actions: the market offers Haggle, a church regular only offers the greeting just after a service, elders get respect', () => {
-  setSwitch(true);
   const market = createLife({ t: MONDAY_9AM, location: 'market', spot: 'people' }, at(MONDAY_9AM));
   for (const id of ['iya-bose', 'emeka']) assert.ok(hereOf(market, MONDAY_9AM, id).actions.some((action) => action.id === 'haggle' && action.pcmLabel === 'Bargain Price'), `${id} haggles`);
   assert.equal(hereOf(market, MONDAY_9AM, 'iya-bose').actions.slice(0, NPC_ACTIONS.length).map((action) => action.id).join(), NPC_ACTIONS.map((action) => action.id).join(), 'the usual actions come first');
@@ -316,7 +315,6 @@ test('place actions: the market offers Haggle, a church regular only offers the 
 });
 
 test('place actions count against the daily limit with the usual ones', () => {
-  setSwitch(true);
   const state = createLife({ t: MONDAY_9AM, location: 'market', spot: 'people' }, at(MONDAY_9AM));
   const plan = ['hello', 'haggle', 'gist', 'respect'];
   assert.equal(plan.length, DAILY_INTERACTIONS);
@@ -343,7 +341,6 @@ function haggle(seedBase: string, wantLanded: boolean): LifeState {
 }
 
 test('haggling: a success writes a coupon and the memory tag, a failure writes neither, and a grocery order uses the coupon once', () => {
-  setSwitch(true);
   const failed = haggle('lose-', false);
   assert.equal('coupon' in failed.social, false);
   assert.equal('tags' in need(failed.social.rel['iya-bose']), false);
@@ -364,8 +361,7 @@ test('haggling: a success writes a coupon and the memory tag, a failure writes n
   assert.equal(cashAfterFirst - won.cash, 1200, 'the next order is full price');
 });
 
-test('a coupon is worth at most ₦300, only on the day it was earned, and only while the switch is on', () => {
-  setSwitch(true);
+test('a coupon is worth at most ₦300, only on the day it was earned, and only while the kit is installed', () => {
   const big = createLife({ t: MONDAY_9AM, cash: 100000, social: { coupon: { pct: 50, day: today } } }, at(MONDAY_9AM));
   assert.deepEqual(big.social.coupon, { pct: 50, day: today });
   assert.equal(send(big, 'home.grocery-buy', { id: 'veg-oil', packs: 10 }, MONDAY_9AM).ok, true); // 10 × 800 = 8000
@@ -373,13 +369,13 @@ test('a coupon is worth at most ₦300, only on the day it was earned, and only 
   const stale = createLife({ t: MONDAY_9AM, cash: 5000, social: { coupon: { pct: 10, day: today - 1 } } }, at(MONDAY_9AM));
   assert.equal(send(stale, 'home.grocery-buy', { id: 'rice', packs: 1 }, MONDAY_9AM).ok, true);
   assert.equal(5000 - stale.cash, 600, 'yesterday’s coupon does nothing');
-  setSwitch(false);
+  bareEngine();
   const off = createLife({ t: MONDAY_9AM, cash: 5000, social: { coupon: { pct: 10, day: today } } }, at(MONDAY_9AM));
   assert.equal(send(off, 'home.grocery-buy', { id: 'rice', packs: 1 }, MONDAY_9AM).ok, true);
-  assert.equal(5000 - off.cash, 600, 'switched off, a saved coupon does nothing');
+  assert.equal(5000 - off.cash, 600, 'with no kit, a saved coupon does nothing');
 });
 
-test('the engine never imports the lazy kit, and a switch that is on does nothing without it', async () => {
+test('the engine never imports the lazy kit, which reaches it only through the seam', async () => {
   const here = new URL('.', import.meta.url);
   const { readFileSync } = await import('node:fs');
   const eager = ['features.ts', 'dilemma-book.ts', 'systems/career.ts', 'systems/social.ts', 'systems/activities.ts', 'content/npcs.ts'];
@@ -395,7 +391,6 @@ test('the engine never imports the lazy kit, and a switch that is on does nothin
 });
 
 test('a waiting dilemma that the kit no longer has is shown by id, cannot be answered, and does not hold the place', () => {
-  setSwitch(true);
   const state = createLife({ t: MONDAY_9AM, job: 'tech', career: { dilemmas: { pending: { id: 'removed-long-ago', seed: 4 }, seen: [], memory: [] } } }, at(MONDAY_9AM));
   assert.deepEqual(state.career.dilemmas?.pending, { id: 'removed-long-ago', seed: 4 });
   assert.deepEqual(viewLife(state, at(MONDAY_9AM)).career.dilemma, { id: 'removed-long-ago' });

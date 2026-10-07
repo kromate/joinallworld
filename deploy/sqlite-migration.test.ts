@@ -16,7 +16,7 @@ interface Loose {
   layout: Required<StoreLayoutTools>
 }
 const open = (storage: SqliteStorage, options: Parameters<typeof createSqliteStore>[1] = {}): Loose => createSqliteStore(storage, options) as unknown as Loose;
-const KEYED = ['social', 'growth', 'civic', 'business'];
+const KEYED = ['social', 'growth', 'civic', 'business', 'records'];
 /** Put a seeded legacy store into the `collections` table the way the Worker wrote it before. */
 function seedLegacy(t: ReturnType<typeof testStorage>, players: number, seed = 1): Record<string, unknown> {
   const { collections } = legacySeed({ players, seed });

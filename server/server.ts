@@ -1,5 +1,6 @@
 import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
 import { flagFromEnv, setFeature } from '../src/game/features.ts';
+import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions; the switch below decides whether it is used
 /**
  * Node host: HTTP + WebSocket plumbing, static files and the server context.
  * Everything Node-specific lives here and in store.js. Rules shared with the Cloudflare worker

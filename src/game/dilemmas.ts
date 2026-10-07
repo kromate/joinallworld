@@ -3,7 +3,7 @@
  * Work dilemmas: choosing which one comes up after a shift, and settling the player's answer. Pure: nothing here reads or writes a
  * life. The career system (systems/career.ts) rolls one at the end of a shift and applies an outcome; this file decides what it is.
  *
- * Switched on by the host (src/game/features.ts). Off, nothing in this file is reached.
+ * Switched on by the host (src/game/features.ts). Off, nothing in this file is reached. It is part of the lazy `dilemmas` chunk (src/game/dilemma-pack.ts): the engine never imports it.
  *
  *   eligibleDilemmas(stats, seen, placeKind)  every dilemma that fits this player now, never one of the last few seen when another fits
  *   pickDilemma(stats, seed, seen, placeKind) one of them, by weight, from a seed
@@ -15,11 +15,11 @@
  *   skills  at most one shift's XP in a skill, never negative; only existing skill ids
  *   tag     a short id or nothing
  */
-import { DILEMMAS, dilemmaById, MAX_DILEMMA_XP, MAX_MONEY_SHARE, MAX_SAFE_GAIN, MEMORY_KEPT, SEEN_KEPT } from './content/dilemmas.ts';
+import { DILEMMAS, MAX_DILEMMA_XP, MAX_MONEY_SHARE, MAX_SAFE_GAIN } from './content/dilemmas.ts';
 import { JOBS } from './content/jobs.ts';
-import { clamp, finite, isId, isRecord, makeRng, safeCount } from './util.ts';
+import { clamp, finite, isId, isRecord, makeRng } from './util.ts';
 import type { DilemmaChoice, DilemmaDefinition, DilemmaEffects, DilemmaOutcome, DilemmaStats } from '../types/content.ts';
-import type { DilemmaBook, JobId, NeedId, NeedMap, SkillId, SkillMap } from '../types/life.ts';
+import type { JobId, NeedId, NeedMap, SkillId, SkillMap } from '../types/life.ts';
 
 const NEED_IDS: readonly NeedId[] = ['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder'];
 const SKILL_IDS: readonly SkillId[] = ['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography'];
@@ -155,23 +155,5 @@ export function resolveDilemma(dilemma: DilemmaDefinition, choiceId: string, sta
   return { dilemma: dilemma.id, choice: choice.id, bad, money, needs, skills, tag, result: bad && risk ? risk.result : choice.result };
 }
 
-// ---- the record kept in a life (CareerState.dilemmas) ----------------------------------------------------
-
-export const emptyBook = (): DilemmaBook => ({ pending: null, seen: [], memory: [] });
-
-/** Pushes onto a list that keeps only its last `keep` entries, without repeats of the same entry (it moves to the end). */
-function remember(list: string[], value: string, keep: number): string[] {
-  return [...list.filter((item) => item !== value), value].slice(-keep);
-}
-export const markSeen = (book: DilemmaBook, id: string): void => { book.seen = remember(book.seen, id, SEEN_KEPT); };
-export const markMemory = (book: DilemmaBook, tag: string): void => { book.memory = remember(book.memory, tag, MEMORY_KEPT); };
-
-/** A saved record made safe, or undefined when it holds nothing worth keeping (the key stays absent, so a save from before it existed loads unchanged). */
-export function cleanBook(value: unknown): DilemmaBook | undefined {
-  if (!isRecord(value)) return undefined;
-  const pending = isRecord(value.pending) && typeof value.pending.id === 'string' && dilemmaById(value.pending.id) && safeCount(value.pending.seed)
-    ? { id: value.pending.id, seed: value.pending.seed } : null;
-  const seen = (Array.isArray(value.seen) ? value.seen : []).filter((id): id is string => typeof id === 'string' && Boolean(dilemmaById(id))).slice(-SEEN_KEPT);
-  const memory = (Array.isArray(value.memory) ? value.memory : []).filter(isId).slice(-MEMORY_KEPT);
-  return pending || seen.length || memory.length ? { pending, seen, memory } : undefined;
-}
+// The record a life keeps (emptyBook, markSeen, markMemory, cleanBook) is in src/game/dilemma-book.ts, which the engine always loads; re-exported for callers of this file.
+export { cleanBook, emptyBook, markMemory, markSeen } from './dilemma-book.ts';

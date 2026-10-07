@@ -10,7 +10,7 @@ import type {
   ActivityBlockCode, CivicCheckCode, TravelBlockCode,
 } from './actions.ts'
 import type {
-  ActivityDefinition, Block, CarDefinition, LocalText, CityLinkFrom, DayTitle, DreamDefinition, HealthCure, HouseDefinition, JobDefinition,
+  ActivityDefinition, Block, CarDefinition, CityLinkFrom, DayTitle, DreamDefinition, HealthCure, HouseDefinition, JobDefinition,
   MissionKind, OnboardingStep, StartHomeDefinition, TierDefinition, TransferLimits, TravelModeDefinition, VenueZone,
 } from './content.ts'
 import type {
@@ -191,18 +191,15 @@ export interface JobListing {
   transfer: boolean
 }
 
-/** The work dilemma waiting for an answer. Only present when the host has switched dilemmas on (src/game/features.ts). */
+/** The work dilemma waiting for an answer: its id only. The words and choices are in src/game/content/dilemmas.ts, fetched by the Career tab's card. */
 export interface DilemmaView {
   id: string
-  prompt: LocalText
-  beta: boolean
-  choices: { id: string; label: LocalText; /** True when the choice can go badly. */ risky: boolean }[]
 }
 
 export interface CareerView {
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
-  /** The dilemma waiting after a shift, or null. The key is absent unless dilemmas are switched on. */
+  /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it with dilemmas switched off). */
   dilemma?: DilemmaView | null
   completedShifts: number
   employed: boolean

@@ -3,9 +3,9 @@
 // the next promotion and what it still needs, weekday chips, today's status and the next step.
 //
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
-// The work-dilemma card is drawn only with `?models=dilemmas` (src/models/integration/flags.ts) and only while the server has one
-// waiting (view.career.dilemma, which the server leaves out unless it has dilemmas switched on); a choice sends 'career.dilemma' { choice }.
-import { computed } from 'vue'
+// The work-dilemma card is drawn only with `?models=dilemmas` (src/models/integration/flags.ts) and only while the life has one waiting
+// (view.career.dilemma is its id; the words are a lazy chunk fetched here, src/game/content/dilemmas.ts); a choice sends 'career.dilemma' { choice }.
+import { computed, ref, shallowRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { cap, money } from '../../ui/format.ts'
@@ -13,6 +13,7 @@ import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { readOnlyReason, useAct } from '../kit/act.ts'
 import { modelFlags } from '../../../models/integration/flags.ts'
+import type { DilemmaDefinition } from '../../../types/content.ts'
 import { chipWords } from './jobsModel.ts'
 import { percent, promotionLine, stepLine } from './careerModel.ts'
 
@@ -25,7 +26,15 @@ const career = computed(() => view.value.career)
 const promotion = computed(() => promotionLine(career.value, cap))
 const offline = computed(() => readOnlyReason(view.value.connected ? null : linkWords(view.value)?.why))
 const showDilemmas = modelFlags().dilemmas
-const dilemma = computed(() => (showDilemmas ? career.value.dilemma ?? null : null))
+const waiting = computed(() => (showDilemmas ? career.value.dilemma?.id ?? null : null))
+const dilemma = shallowRef<DilemmaDefinition | null>(null)
+const askedFor = ref<string | null>(null)
+watch(waiting, async (id) => {
+  askedFor.value = id
+  if (!id) { dilemma.value = null; return }
+  const words = (await import('../../../game/content/dilemmas.ts').catch(() => null))?.dilemmaById(id) ?? null
+  if (askedFor.value === id) dilemma.value = words
+}, { immediate: true })
 const choose = (choice: string): Promise<boolean> => act(`dilemma:${choice}`, () => command('career.dilemma', { choice }))
 function go(venue: string, spot?: string): void { shell.close(); void goTo(venue, spot) }
 </script>
@@ -56,7 +65,7 @@ function go(venue: string, spot?: string): void { shell.close(); void goTo(venue
       <p v-if="dilemma.prompt.pcm" class="career-legend">{{ dilemma.prompt.pcm }}<template v-if="dilemma.beta"> (Pidgin wording not yet reviewed)</template></p>
       <div class="career-actions">
         <button v-for="choice in dilemma.choices" :key="choice.id" type="button" class="ui-button" :disabled="pending !== null || !view.connected" @click="choose(choice.id)">
-          {{ choice.label.en }}<template v-if="choice.risky"> (risky)</template>
+          {{ choice.label.en }}<template v-if="choice.risk"> (risky)</template>
         </button>
       </div>
     </section>

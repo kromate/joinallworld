@@ -1,6 +1,6 @@
 /**
  * OWNER: social
- * Which place actions (PLACE_ACTIONS in content/npcs.ts) a regular offers: by the kind of place they stand in, by who they are, and
+ * Which place actions (PLACE_ACTIONS in content/place-actions.ts) a regular offers: by the kind of place they stand in, by who they are, and
  * for the worship ones by the hour. Pure: it reads a regular, a scene kind and a time, never a life. Used by systems/social.ts only
  * while the `dilemmas` switch is on (src/game/features.ts); off, no regular offers any.
  *
@@ -11,7 +11,7 @@
  */
 import { venueFor } from './cities/runtime.ts';
 import { lagosTime } from './clock.ts';
-import { PLACE_ACTIONS } from './content/npcs.ts';
+import { PLACE_ACTIONS } from './content/place-actions.ts';
 import type { NpcDefinition, PlaceAction } from '../types/content.ts';
 
 /** When services end, in Lagos time: weekday (0 = Sunday) and minute of the day. Original beta values. */

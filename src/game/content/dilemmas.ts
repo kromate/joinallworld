@@ -24,9 +24,8 @@ export const MAX_MONEY_SHARE = 0.25;
 export const MAX_SAFE_GAIN = 150;
 /** Percent chance that a shift is followed by a dilemma (original beta value). */
 export const DILEMMA_CHANCE = 35;
-/** How many recent dilemmas are not repeated, and how many memory tags a life keeps. */
-export const SEEN_KEPT = 8;
-export const MEMORY_KEPT = 12;
+/** How many recent dilemmas are not repeated, and how many memory tags a life keeps (src/game/dilemma-book.ts, which the engine always loads). */
+export { MEMORY_KEPT, SEEN_KEPT } from '../dilemma-book.ts';
 
 const t = (en: string, pcm: string): LocalText => ({ en, pcm });
 const risk = (chance: number, bad: DilemmaEffects, result: LocalText): DilemmaRisk => ({ chance, bad, result });

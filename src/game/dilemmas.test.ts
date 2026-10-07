@@ -9,11 +9,13 @@ import { createLife, dispatch, advanceLife, viewLife } from '../life.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
 import { makeContext, isId } from './util.ts';
 import { lagosTime } from './clock.ts';
-import { setFeature, dilemmasEnabled, flagFromEnv } from './features.ts';
+import './dilemma-pack.ts'; // installs the kit, as the servers do
+import { setFeature, dilemmasEnabled, flagFromEnv, dilemmaKit } from './features.ts';
 import { skillLevel } from './api.ts';
 import { DILEMMAS, dilemmaById, DILEMMA_CHANCE, MAX_DILEMMA_XP, MAX_MONEY_SHARE, MAX_SAFE_GAIN, SEEN_KEPT } from './content/dilemmas.ts';
 import { JOBS } from './content/jobs.ts';
-import { DAILY_INTERACTIONS, PLACE_ACTIONS, NPC_ACTIONS, COUPON_MAX_SAVING } from './content/npcs.ts';
+import { DAILY_INTERACTIONS, NPC_ACTIONS, COUPON_MAX_SAVING } from './content/npcs.ts';
+import { PLACE_ACTIONS } from './content/place-actions.ts';
 import { NEED_IDS, SKILL_IDS } from '../types/life.ts';
 import { eligibleDilemmas, pickDilemma, resolveDilemma, expectedMoney, moneyCap, shiftPay, cleanBook, markSeen, emptyBook } from './dilemmas.ts';
 import { placeKindOf, placeActionsFor, isAfterService } from './place-actions.ts';
@@ -163,12 +165,12 @@ test('picking: deterministic, fits the job and place, avoids the last few seen, 
   assert.equal(book.seen.length, SEEN_KEPT);
 });
 
-test('the saved record: junk is dropped, a valid record survives, and nothing worth keeping leaves the key absent', () => {
+test('the saved record: junk is dropped, a well-formed record survives (ids are checked where used), and nothing worth keeping leaves the key absent', () => {
   assert.equal(cleanBook(undefined), undefined);
   assert.equal(cleanBook('x'), undefined);
-  assert.equal(cleanBook({ pending: { id: 'no-such', seed: 1 }, seen: ['no-such', 4], memory: ['Bad Tag!', 7] }), undefined);
+  assert.equal(cleanBook({ pending: { id: 'Bad Id!', seed: -1 }, seen: ['Bad Id!', 4], memory: ['Bad Tag!', 7] }), undefined);
   const real = need(DILEMMAS[0]);
-  assert.deepEqual(cleanBook({ pending: { id: real.id, seed: 5 }, seen: [real.id, 'gone'], memory: ['kind', 'Not ok'] }), { pending: { id: real.id, seed: 5 }, seen: [real.id], memory: ['kind'] });
+  assert.deepEqual(cleanBook({ pending: { id: real.id, seed: 5 }, seen: [real.id, 'gone', 4], memory: ['kind', 'Not ok'] }), { pending: { id: real.id, seed: 5 }, seen: [real.id, 'gone'], memory: ['kind'] });
 });
 
 test('switch off: no place actions, no dilemma, no new keys in the state or the view, and the action is refused', () => {
@@ -230,10 +232,7 @@ test('switch on: a finished shift sometimes leaves one dilemma waiting, at about
       assert.ok(!picked.jobs || picked.jobs.includes(job), `${job} got ${pending.id}`);
       assert.deepEqual(state.career.dilemmas?.seen, [pending.id]);
       assert.match(state.message, /Something came up at work/);
-      const shown = need(viewLife(state, at(MONDAY_9AM)).career.dilemma);
-      assert.equal(shown.id, pending.id);
-      assert.deepEqual(shown.choices.map((choice) => choice.id), picked.choices.map((choice) => choice.id));
-      assert.deepEqual(shown.choices.map((choice) => choice.risky), picked.choices.map((choice) => Boolean(choice.risk)));
+      assert.deepEqual(viewLife(state, at(MONDAY_9AM)).career.dilemma, { id: pending.id }, 'the view carries the id; the words are the card\'s to fetch');
     }
     assert.ok(Math.abs((waiting / runs) * 100 - DILEMMA_CHANCE) < 12, `${job}: ${waiting}/${runs} shifts left a dilemma`);
   }
@@ -378,4 +377,31 @@ test('a coupon is worth at most ₦300, only on the day it was earned, and only 
   const off = createLife({ t: MONDAY_9AM, cash: 5000, social: { coupon: { pct: 10, day: today } } }, at(MONDAY_9AM));
   assert.equal(send(off, 'home.grocery-buy', { id: 'rice', packs: 1 }, MONDAY_9AM).ok, true);
   assert.equal(5000 - off.cash, 600, 'switched off, a saved coupon does nothing');
+});
+
+test('the engine never imports the lazy kit, and a switch that is on does nothing without it', async () => {
+  const here = new URL('.', import.meta.url);
+  const { readFileSync } = await import('node:fs');
+  const eager = ['features.ts', 'dilemma-book.ts', 'systems/career.ts', 'systems/social.ts', 'systems/activities.ts', 'content/npcs.ts'];
+  for (const file of eager) {
+    const code = readFileSync(new URL(file, here), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+    for (const match of code.matchAll(/^\s*(?:import|export)\s+(type\s+)?[^'";]*?from\s+['"]([^'"]+)['"]|^\s*import\s+['"]([^'"]+)['"]/gm)) {
+      if (match[1]) continue;
+      const specifier = match[2] ?? match[3] ?? '';
+      assert.ok(!/(^|\/)(dilemma-pack|dilemmas|place-actions)\.ts$/.test(specifier), `${file} imports ${specifier}`);
+    }
+  }
+  assert.equal(typeof dilemmaKit, 'function');
+});
+
+test('a waiting dilemma that the kit no longer has is shown by id, cannot be answered, and does not hold the place', () => {
+  setSwitch(true);
+  const state = createLife({ t: MONDAY_9AM, job: 'tech', career: { dilemmas: { pending: { id: 'removed-long-ago', seed: 4 }, seen: [], memory: [] } } }, at(MONDAY_9AM));
+  assert.deepEqual(state.career.dilemmas?.pending, { id: 'removed-long-ago', seed: 4 });
+  assert.deepEqual(viewLife(state, at(MONDAY_9AM)).career.dilemma, { id: 'removed-long-ago' });
+  assert.equal(send(state, 'career.dilemma', { choice: 'x' }, MONDAY_9AM).code, 'no_dilemma');
+  const replaced = Array.from({ length: 80 }, (_, i) => workShift('tech', `gone-${i}`, { career: { level: 1, performance: 0, shifts: 0, dilemmas: { pending: { id: 'removed-long-ago', seed: 4 }, seen: [], memory: [] } } }))
+    .find((life) => life.career.dilemmas?.pending?.id !== 'removed-long-ago');
+  assert.ok(replaced, 'a finished shift replaces it with one that exists');
+  assert.ok(dilemmaById(need(replaced.career.dilemmas?.pending).id));
 });

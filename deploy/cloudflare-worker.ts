@@ -60,6 +60,7 @@ import { createShardStoreOn } from '../server/world/shard-core.ts';
 import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { flagFromEnv, setFeature } from '../src/game/features.ts';
+import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions; DILEMMAS decides whether it is used
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';

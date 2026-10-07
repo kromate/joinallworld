@@ -60,7 +60,9 @@ import { cachedCityContent, cityModule } from '../cities/registry.ts';
  * WORK DILEMMAS (behind the `dilemmas` switch, off by default)
  *   After a completed shift (a career track or the starter job) with nothing pending, a dilemma comes up with DILEMMA_CHANCE percent.
  *   It waits in `career.dilemmas.pending` until answered; the answer moves a little money (a quarter of a shift at most), needs,
- *   skill XP and a memory tag. With the switch off nothing here is written and the view has no `dilemma` key.
+ *   skill XP and a memory tag. With the switch off nothing here is written and, there being no record, the view has no `dilemma` key.
+ *   The words and rules are the lazy kit (src/game/features.ts, src/game/dilemma-pack.ts): this file holds none. view.career.dilemma is just
+ *   { id } while one waits (derived from the life, so a page that only reads lives shows it too); the Career tab's card fetches the words.
  *
  * EMITS
  *   'job.applied'     { job }
@@ -83,10 +85,8 @@ import { emit, modify } from '../registry.ts';
 import { cap, clamp, fail, finite, isRecord, naira, ok, safeCount } from '../util.ts';
 import { lagosTime, openingInfo, WEEKDAYS } from '../clock.ts';
 import { addMoodlet, addSkillXp, arrive, canCredit, changeNeeds, credit, debit, skillLevel, spotsOf } from '../api.ts';
-import { dilemmasEnabled } from '../features.ts';
-import { cleanBook, emptyBook, markMemory, markSeen, pickDilemma, resolveDilemma, choiceOf } from '../dilemmas.ts';
-import { DILEMMA_CHANCE, dilemmaById } from '../content/dilemmas.ts';
-import { placeKindOf } from '../place-actions.ts';
+import { dilemmaKit } from '../features.ts';
+import { cleanBook, emptyBook, markMemory, markSeen } from '../dilemma-book.ts';
 import { JOBS, TRACKS, MAX_CAREER_LEVEL, START_PERFORMANCE, PERFORMANCE_PER_SHIFT, HELPER_COOLDOWN_SECONDS } from '../content/jobs.ts';
 import { venueLabel } from '../content/venues.ts';
 import type { LadderRung, JobDefinition, TrackJobDefinition } from '../../types/content.ts';
@@ -345,13 +345,14 @@ function dilemmaStats(state: LifeState, job: JobDefinition | null, memory: reado
 
 /** After a completed shift: maybe set one dilemma waiting. Does nothing with the switch off, with one already waiting, or when none fits. */
 function rollDilemma(state: LifeState, job: JobDefinition | null, ctx: LifeContext): void {
-  if (!dilemmasEnabled() || !job) return;
+  const kit = dilemmaKit();
+  if (!kit || !job) return;
   const book = state.career.dilemmas;
-  if (book?.pending) return;
-  if (ctx.rng() * 100 >= DILEMMA_CHANCE) return;
+  if (book?.pending && kit.byId(book.pending.id)) return; // one that no longer exists (a save from a build that had it) does not hold the place
+  if (ctx.rng() * 100 >= kit.chance) return;
   const seed = Math.floor(ctx.rng() * 2 ** 31);
   const memory = book?.memory ?? [];
-  const picked = pickDilemma(dilemmaStats(state, job, memory), seed, book?.seen ?? [], placeKindOf(ctx.cityId, job.workplace.venue));
+  const picked = kit.pick(dilemmaStats(state, job, memory), seed, book?.seen ?? [], kit.placeKindOf(ctx.cityId, job.workplace.venue));
   if (!picked) return;
   const next = book ? { pending: book.pending, seen: [...book.seen], memory: [...book.memory] } : emptyBook();
   next.pending = { id: picked.id, seed };
@@ -362,15 +363,16 @@ function rollDilemma(state: LifeState, job: JobDefinition | null, ctx: LifeConte
 
 /** Answers the waiting dilemma. */
 function answerDilemma(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
-  if (!dilemmasEnabled()) return fail(state, 'dilemmas_off', 'Work dilemmas are not switched on.');
+  const kit = dilemmaKit();
+  if (!kit) return fail(state, 'dilemmas_off', 'Work dilemmas are not switched on.');
   const book = state.career.dilemmas;
   const pending = book?.pending;
-  const dilemma = pending ? dilemmaById(pending.id) : undefined;
+  const dilemma = pending ? kit.byId(pending.id) : undefined;
   if (!book || !pending || !dilemma) return fail(state, 'no_dilemma', 'Nothing is waiting for a decision.');
-  const choice = choiceOf(dilemma, payload?.choice);
+  const choice = kit.choiceOf(dilemma, payload?.choice);
   if (!choice) return fail(state, 'invalid_choice', 'Choose one of the options.');
   const job = jobOf(state.job, state.career.city ?? state.estate.city);
-  const outcome = resolveDilemma(dilemma, choice.id, dilemmaStats(state, job, book.memory), pending.seed);
+  const outcome = kit.resolve(dilemma, choice.id, dilemmaStats(state, job, book.memory), pending.seed);
   const reason = `Work dilemma: ${dilemma.id}`;
   if (outcome.money > 0 && canCredit(state, outcome.money)) credit(state, outcome.money, reason, ctx);
   else if (outcome.money < 0) debit(state, -outcome.money, reason, ctx, { partial: true });
@@ -383,13 +385,8 @@ function answerDilemma(state: LifeState, payload: Record<string, unknown>, ctx: 
   return ok(state, outcome.bad ? 'went_badly' : 'resolved');
 }
 
-/** The waiting dilemma for the Career screen; null when none. */
-function dilemmaView(state: LifeState): DilemmaView | null {
-  const pending = state.career.dilemmas?.pending;
-  const dilemma = pending ? dilemmaById(pending.id) : undefined;
-  if (!dilemma) return null;
-  return { id: dilemma.id, prompt: dilemma.prompt, beta: dilemma.beta, choices: dilemma.choices.map((item) => ({ id: item.id, label: item.label, risky: Boolean(item.risk) })) };
-}
+/** The waiting dilemma for the Career screen (its id: the words are fetched by the card, src/game/content/dilemmas.ts); null when none. */
+const dilemmaView = (state: LifeState): DilemmaView | null => { const pending = state.career.dilemmas?.pending; return pending ? { id: pending.id } : null; };
 
 /**
  * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
@@ -509,7 +506,7 @@ export default {
     const pay = job ? payOf(state, job) : 0;
     return {
       job, // legacy field: the raw catalogue entry
-      ...(dilemmasEnabled() ? { dilemma: dilemmaView(state) } : {}),
+      ...(state.career.dilemmas ? { dilemma: dilemmaView(state) } : {}),
       completedShifts: state.completedShifts,
       employed: Boolean(shown),
       id: shown?.id ?? null,

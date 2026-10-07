@@ -188,6 +188,18 @@ social.rumours: Rumour[]       // cap 8, oldest dropped
 
 ### 8. City conditions
 
+**Status: built (Phase 2, branch `codex/realism-conditions`).** The code is in `src/game/conditions/`. What differs from the design below:
+
+- `conditionsAt(cityId, now, districts)` is pure and seeded as designed. A power cut is reported for each district the caller names, because a venue's district is its own label.
+- The rules (grid, go-slow, bill words, generator) are one lazy pack, `conditions/pack.ts`, reached through a slot (`slot.ts`). Every host that plays a life installs it from `profile.ts`; the page fetches it when idle. Until it arrives the browser shows the fallback (light on, open road) and the server stays authoritative.
+- Go-slow is on the road only: Monday to Friday 07:00–10:00, Monday to Thursday 16:00–20:00, Friday 15:00–21:00 and Saturday 17:00–20:00. Every trip but walking and the boat takes 1.5 times as long in Lagos and 1.25 times as long elsewhere. The trip card and the Map say "go-slow".
+- A power cut lasts 1½ to 4 hours, begins in the evening seven times in ten, and a district has one on about 55 in 100 days. A home with a generator and petrol keeps its light and burns petrol for the hours of the cut; a home with an inverter keeps it free. Petrol is bought in litres from Groceries ("Buy N litres", ₦900 a litre, a 20 litre tank, 40 minutes a litre). The ledger line is "Generator fuel".
+- Venue scenes dim in a power cut (a venue on a generator keeps most of its light), go hazy in harmattan and grey in the rains. The venue card adds one line when the light is off or a match is on.
+- Match night: viewing centres only, seeded by the day. The moments banks gain lines for a power cut, the light coming back, the go-slow and a match night, and a venue picks them while that condition holds.
+- Lagos has no climate record, so it gets no season tint. Jos does.
+- Saturday rent and wages: the rent and the late fee are unchanged. There is a Thursday heads-up and a louder notice for each Saturday of rent missed in a row, plus a one-line sum of the week's money. There is no eviction, and wage day is presentation only: shifts still pay as they finish.
+- Moments stay behind `?models=moments` until `codex/realism-unflag` is merged.
+
 **Design.** These are deterministic daily events seeded by `daySeed(cityId, day)`.
 
 ```ts

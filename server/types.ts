@@ -18,7 +18,7 @@ import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
-import type { DecreeRecord, JusticeRecord, PartyRecord, TreasuryRecord } from '../src/types/politics.ts'
+import type { DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
@@ -471,6 +471,8 @@ export interface ElectionRecord {
   addr?: Record<string, number>
   /** Current election only: address keys the audit trail already has a line for. */
   capLogged?: Record<string, true>
+  /** Server ms the winner was removed by an impeachment: from then the seat is empty. */
+  removedAt?: number
 }
 export interface AnnouncementRecord { id: string; by: PlayerRef; text: string; at: number; /** week of the Governor's election */ term: number }
 export interface AdRecord { by: PlayerRef; text: string; colour: string; icon: string; at: number; expiresAt: number }
@@ -499,6 +501,11 @@ export interface PoliticsScopeRecord {
   treasury: TreasuryRecord
   /** The week of the term whose salary was already drawn. */
   drawn?: number
+  /** This term's money in and out, and the grants paid. A new term starts them again. */
+  term?: TermAccounts
+  grants?: { week: number; items: GrantRecord[] }
+  audit?: TermAudit
+  petition?: PetitionRecord
 }
 /** db.politics (server/politics/data.ts). Created by the first decree, party, fee or levy, so it is not in COLLECTION_NAMES. */
 export interface PoliticsCollection {

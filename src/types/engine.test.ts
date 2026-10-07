@@ -427,7 +427,7 @@ function checkState(state: LifeState, what: string): void {
 function checkView(state: LifeState, ctx: LifeContext, what: string): LifeView {
   const shown = view(state, ctx)
   assert.deepEqual(Object.keys(shown), [...VIEW_KEYS], `${what}: view keys, in registration order`)
-  // `career.dilemma` exists only while the host has dilemmas switched on (src/game/features.ts), so it is listed but need not be present.
+  // `career.dilemma` exists only while a dilemma is waiting (src/game/features.ts), so it is listed but need not be present.
   for (const [id, list] of Object.entries(VIEW_FIELD_KEYS)) assert.deepEqual(keys(shown[id as keyof typeof VIEW_FIELD_KEYS]).filter((key) => key !== 'dilemma'), sorted(list).filter((key) => key !== 'dilemma'), `${what}: keys of view.${id}`)
   assert.deepEqual(keys(shown.skills), sorted(SKILL_IDS), `${what}: view.skills`)
   for (const skill of Object.values(shown.skills)) assert.deepEqual(keys(skill), ['level', 'next', 'progress', 'xp'], `${what}: skill progress`)

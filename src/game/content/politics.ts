@@ -7,27 +7,15 @@
  */
 import type { LeverId, LeverUnit, TierId } from '../../types/politics.ts';
 
-export const TIER_IDS: readonly TierId[] = ['city', 'state', 'nation'];
+export { SEATS, SEAT_TITLES, TIER_IDS, LOSER_MOOD } from './politics-core.ts';
+export type { SeatRules } from './politics-core.ts';
+import { LOSER_MOOD, SEATS } from './politics-core.ts';
 
-export interface SeatRules {
-  /** Naira, not refunded. */
-  fee: number
-  /** The most one draw of salary can be, in naira. */
-  salaryCap: number
-}
-export const SEATS: Readonly<Record<TierId, SeatRules>> = {
-  city: { fee: 2000, salaryCap: 20000 },
-  state: { fee: 10000, salaryCap: 100000 },
-  nation: { fee: 50000, salaryCap: 500000 },
-};
 /**
  * The fewest votes an election needs to count, per seat. Below it the election is void: nobody takes office and the seat stays
  * empty until the next one, so a lone player can never become president on one vote. Whole numbers, raised as the world fills.
  */
 export const QUORUM: Readonly<Record<TierId, number>> = { city: 3, state: 10, nation: 25 };
-
-/** What an officeholder is called outside a city (a city names its own seat: cities/terminology.ts). */
-export const SEAT_TITLES: Readonly<Record<Exclude<TierId, 'city'>, string>> = { state: 'Governor', nation: 'President' };
 
 /** The share of a treasury an officeholder may draw as one salary, once per term. */
 export const SALARY_SHARE = 0.2;
@@ -89,7 +77,7 @@ export const JUSTICE = {
   /** Energy each side loses, and the mood the loser is left with. */
   winnerEnergy: 10,
   loserEnergy: 25,
-  loserMood: { value: -3, seconds: 3600 },
+  loserMood: LOSER_MOOD,
   /** An offence can be acted on this long after it. */
   offenceMs: 24 * 3600000,
   /** The most a sentence can ever be, whatever a lever allows. */
@@ -112,3 +100,32 @@ export const JUSTICE = {
   /** Offences and jail records kept. */
   keepOffences: 200,
 };
+
+/** Grants: money the officeholder pays out of the treasury, in the open, within these limits. */
+export const GRANTS = {
+  /** One grant is at most this share of the treasury, and no more than the seat's salary cap. */
+  maxShare: 0.3,
+  /** Grants in a term, and the shortest and longest purpose. */
+  perTerm: 5,
+  purposeMin: 3,
+  purposeMax: 80,
+  /** A recipient must have lived in the city this many days. */
+  recipientDays: 1,
+};
+
+/** Audits: a report anyone can ask for, with warnings that follow from the numbers alone. */
+export const AUDIT = {
+  /** The most often a seat's audit can be asked for. */
+  cooldownMs: 10 * 60000,
+  /** A warning when one recipient got more than this share of what was granted (with at least two grants). */
+  concentration: 0.5,
+  /** A warning when more than this share of what was granted went to the officeholder's own party (with at least two grants). */
+  partyFavour: 0.7,
+  /** A warning when salary and grants took more than this share of what came in (once at least minIncome came in). */
+  drained: 0.9,
+  minIncome: 1000,
+  minGrants: 2,
+};
+
+/** Impeachment: needs an audit warning this term, and more than half of the votes the officeholder won (never fewer than the seat's quorum). */
+export const IMPEACH = { minDays: 1, minWorkDays: 2 };

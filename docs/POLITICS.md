@@ -8,7 +8,7 @@ This is the design and the order it ships in. Status marks: **built**, **next**,
 
 | Tier | Seat | Voters | Weekly term |
 | --- | --- | --- | --- |
-| City | Chairman of the city's local government (the seat the cities already elect each week) | residents of the city | yes |
+| City | Chairman of the city's local government (the seat cities already elect each week; a city may give it its own title) | residents of the city | yes |
 | State | Governor | residents of any open city in the state | yes |
 | Nation | President | every resident in the country | yes |
 
@@ -40,9 +40,15 @@ Levers, by seat:
 
 Defaults are 0 %: with no officeholder nothing changes from how the game plays today.
 
-## 4. Treasuries
+## 4. Treasuries, grants, audits and impeachment
 
-Each seat has a treasury: a whole-naira balance and a public ledger of every credit and debit. Levies and fees fill it. An officeholder draws a weekly salary of at most a fifth of the treasury (never more than a cap) and may fund the justice budget. Money in a treasury is money taken from players, so the sums are counted with the rest of the money in circulation.
+Each seat has a treasury: a whole-naira balance and a public ledger of every credit and debit. Levies, filing fees, court fees and bail fill it. The officeholder may draw a salary of at most a fifth of the treasury (never more than a cap), once a term.
+
+- **Grants.** The officeholder can also pay a grant out of the treasury to a resident who has lived in the city a day, for a purpose written in the open (3 to 80 characters). A grant is at most 30% of the treasury and never above the seat's salary cap; a term allows five, and a player gets one. Every grant is public.
+- **Audits.** Any resident can ask for an audit of the sitting officeholder's term, at most every ten minutes per seat. It reports what came in, what was drawn as salary and what was granted, and warns when the numbers alone look wrong: *concentration* (more than half of the money granted went to one person, with at least two grants), *party favour* (more than 70% went to the officeholder's own party), or *drained* (salary and grants took over 90% of what came in, once at least ₦1,000 came in).
+- **Impeachment.** Residents can sign a petition to remove the sitting officeholder, but only after an audit of that term has warned of something. It takes more than half of the votes the officeholder won, and never fewer than the seat's quorum. A signer has lived there a day and been paid for work on two days, and signs once. When the last signature lands the officeholder is removed at once: the seat is empty, their decrees lapse, and the police and judges they enrolled lose their posts, until the next election. A petition and an audit belong to one term.
+
+Money in a treasury is money taken from players, so every amount in and out is counted and shown.
 
 ## 5. Justice
 
@@ -55,16 +61,25 @@ Players can fight each other and can break the law; the arms of government answe
 - **Bail.** Each seat has a bail lever (city up to ₦5,000, state ₦20,000, nation ₦50,000; default 0, which means none). A jailed player can pay the bail set by the seat that arrested them and go free at once; it goes to that seat's treasury.
 - **Courts.** A jailed player can appeal the arrest for a small court fee (₦500, into the arresting seat's treasury), with a statement and, if they choose, a lawyer. A judge of that seat's court reads the case and rules: uphold (the sentence stands), reduce (half of the time left comes off) or quash (the player goes free), and gives public reasons. A judge is enrolled like police (city 2, state 4, nation 6) by the officeholder, for their term, and can never rule on a case they are part of. After a ruling that is not a quash, the defendant can take the case once to the next court up (city to state, state to federal) for ₦1,500; that ruling is final. Rulings are public.
 - **Lawyers.** Any player can list themselves as a lawyer (the bar holds 40). A defendant names one when appealing; the lawyer files one written argument. The fee is agreed in chat; the game does not move it.
-- **Corruption (later).** Officials can skim the treasury, with a risk of audit and impeachment.
 
-## 6. Order of work
+## 6. The public record, and trust
+
+What a government did must be easy to read and hard to change. That is most of what makes a world worth belonging to, and it is the part a copy cannot bring along.
+
+- **The Hall of Records.** Every finished term (who won, how many voted, their party, whether the election counted or was void, whether they were removed), every ruling, every removal by petition, every party founded and every action of the operator is written once to a public list. Nothing is edited or removed. It holds names and counts only: never who voted for whom. Anyone can read it without signing in: `GET /api/world/records` (filter by `scope` and `kind`, page back with `before`), and `GET /api/world/records/proof` for the seal. In the game it is Politics → Records, or the address `/records`.
+- **Sealed.** Each entry carries the SHA-256 of the one before it and of its own facts (`src/records/chain.ts`). Change, remove or reorder any entry and every later seal stops matching. The Records screen checks what it was shown in the player's own browser and says so; anyone can run the same check on the JSON. The newest seal is published, so a player or a journalist can keep it and later prove the past was not rewritten.
+- **Written as it happens.** Terms are written lazily: a seat's ended terms are written the next time anyone passes through its city's civic pulse, and always before a new candidacy could prune old ballots (ballots are kept eight weeks). Nothing runs on a timer.
+- **The operator is on the record too.** In Admin → World → Government an operator can remove an officeholder for the rest of the term (they type the holder's name), release a jailed player, or dismiss an officer or judge. Each needs a reason of at least ten characters. Each is written to the admin audit log and to the public record as an *operator* entry that names the action, the person and the reason. The operator cannot rewrite a past entry. The dashboard has a Government card: seats held, petitions, audit warnings, money in the treasuries, people in jail, open offences, officers and judges, and the number of records.
+- **One calendar.** The Politics screen shows one weekly cycle for city, state and nation (nominations Monday to Wednesday, voting Thursday to Saturday, results on Sunday), and every resident's Updates carry the election news of all three seats, once each.
+
+## 7. Order of work
 
 1. **Offices and parties.** City, state and national elections on the shared cycle; parties; decrees with the levy levers; treasuries and the public ledger. **next**
 2. **Justice.** Fights, offences, police, arrests, jail. **built**
 3. **Courts.** Judges, lawyers, bail, appeals. **built**
-4. **Checks on the officeholders.** Audits, impeachment, assemblies. **later**
+4. **Checks on the officeholders.** Grants, audits, impeachment. **built**. Assemblies that pass laws by vote. **later**
 
-## 7. Where things live
+## 8. Where things live
 
 | What | Where |
 | --- | --- |
@@ -73,4 +88,6 @@ Players can fight each other and can break the law; the arms of government answe
 | Elections | `server/civic/elections.ts`, used by every tier |
 | Routes | `server/routes/politics.ts` under `/api/politics/` |
 | The Phone app | `src/app/features/politics/` |
+| The public record: chain, store, archive, routes | `src/records/chain.ts`, `server/records/`, `server/routes/records.ts`, `src/types/records.ts` |
+| The operator's government tools | `server/admin/politics.ts`, Admin → World → Government |
 | Wire types | `src/types/politics.ts` |

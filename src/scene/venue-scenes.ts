@@ -80,8 +80,10 @@ import type {
   SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
 } from './types.ts';
 import { buildAvatar, drawCrowd } from './characters.ts';
-import { playerOptions, rigOf } from './avatar-rig.ts';
+import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
+import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
+import type { GazeState } from './space.ts';
 import { spotMarker, gameTable } from './props.ts';
 import { tablesAt, GAME_LABELS } from '../tables/city-places.ts';
 import { CITY_RULES, DEFAULT_CITY_ID } from '../game/cities/registry.ts';
@@ -296,7 +298,11 @@ interface Peer {
   id: string; lookKey: string; look: unknown; seed: unknown; group: THREE.Group; shown: AvatarGroup | null;
   x: number; z: number; y: number; ry: number; fromX: number; fromZ: number; toX: number; toZ: number;
   t: number; span: number; stride: number; top: number; tag: SceneTag; at: ScenePerson; stand: AvatarGroup; walk: AvatarGroup;
+  friend: boolean; gaze: GazeState;
 }
+/** Who a placed figure is to the others (src/scene/space.ts tieOf). */
+interface Tied { spot?: string | null; friend?: boolean }
+type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
 interface View {
@@ -465,10 +471,14 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
    * marker and of the ground in front of it, and not on top of someone already placed. Searched in
    * widening rings, so a crowd place that is already fine is kept exactly.
    */
-  function clearOfSpots(x: number, z: number, taken: Point[]): Point {
-    const fits = (px: number, pz: number) => (!grid || grid.free(px, pz)) && offMarkers(px, pz) && !taken.some((other) => Math.hypot(other.x - px, other.z - pz) < 0.9);
+  function clearOfSpots(x: number, z: number, taken: Placed[], who: Tied = {}): Point {
+    // Each pair keeps the distance its tie asks for (src/scene/space.ts): a group at one spot stands closer than strangers do.
+    const apart = (px: number, pz: number, floor: boolean) => !taken.some((other) => Math.hypot(other.x - px, other.z - pz) < (floor ? FIGURE_GAP : gapFor(tieOf(who, other))));
+    const fits = (px: number, pz: number, floor = false) => (!grid || grid.free(px, pz)) && offMarkers(px, pz) && apart(px, pz, floor);
     if (fits(x, z)) return { x, z };
-    for (let ring = 1; ring <= 14; ring++) {
+    // Where they were put is fine for a body: look only a little way for more room, and keep the place if there is none.
+    const reach = fits(x, z, true) ? 5 : 14;
+    for (let ring = 1; ring <= reach; ring++) {
       const radius = ring * 0.45;
       let best: Point | null = null, bestScore = Infinity;
       for (let step = 0; step < 16; step++) {
@@ -481,11 +491,21 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       }
       if (best) return best;
     }
+    // A crowded room cannot give everyone the distance they would like: then the place, or the nearest one, that only keeps bodies apart.
+    if (fits(x, z, true)) return { x, z };
+    for (let ring = 1; ring <= 14; ring++) {
+      const radius = ring * 0.45;
+      for (let step = 0; step < 16; step++) {
+        const angle = (step / 16) * Math.PI * 2 + ring * 0.37;
+        const px = x + Math.sin(angle) * radius, pz = z + Math.cos(angle) * radius;
+        if (fits(px, pz, true)) return { x: px, z: pz };
+      }
+    }
     return { x, z };
   }
   /** Where each person of the crowd stands. A player with a reported position stands there (`live`); everyone else is placed by the scene. */
   function placeCrowd(people: CrowdPerson[]): CrowdPerson[] {
-    const slots = layout!.crowd, base = resolved!.anchors.people || { x: 0, z: 3 }, taken: Point[] = [];
+    const slots = layout!.crowd, base = resolved!.anchors.people || { x: 0, z: 3 }, taken: Placed[] = [];
     return people.slice(0, MAX_CROWD).map((person, index) => {
       if (Number.isFinite(person.x) && Number.isFinite(person.z)) {
         const bounds = grid?.bounds;
@@ -504,10 +524,11 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       // Someone on a raised place (a stage, a walkway) stands at its height, where the scene put them; everyone else is on
       // the ground, clear of the markers.
       const deck = Math.max(walk.heightAt(wanted.x, wanted.z), index < slots.length && !at ? wanted.y || 0 : 0);
-      const clear = deck > 0.05 ? { x: wanted.x, z: wanted.z } : clearOfSpots(wanted.x, wanted.z, taken);
+      const who: Tied = { spot: person.spot ?? null, friend: person.friend === true };
+      const clear = deck > 0.05 ? { x: wanted.x, z: wanted.z } : clearOfSpots(wanted.x, wanted.z, taken, who);
       // Someone standing "at" a spot who had to step aside still faces it.
       const ry = at && (clear.x !== wanted.x || clear.z !== wanted.z) ? Math.atan2(at.x - clear.x, at.z - clear.z) : wanted.ry;
-      taken.push(clear);
+      taken.push({ ...clear, ...who });
       return { ...person, ...wanted, x: clear.x, y: deck > 0.05 ? deck : 0, z: clear.z, ry };
     });
   }
@@ -557,6 +578,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   function moveAvatar(x: number, y: number, z: number, ry: number) {
     avatar.position.set(x, y, z);
     avatar.rotation.y = ry;
+    noticeAvatar();
     const top = y + (shownFigure?.userData.top ?? 2.95);
     if (driven && selfTag) { selfTag.position.x = x; selfTag.position.y = top; selfTag.position.z = z; }
     else selfTag = { id: 'self', name: view.name, kind: 'self', text: view.name, marker: 'crown', colour: '#ffd34d', position: { x, y: top, z } };
@@ -606,7 +628,9 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   function placePeer(peer: Peer) {
     peer.y = walk.heightAt(peer.x, peer.z);
     peer.group.position.set(peer.x, peer.y, peer.z);
-    peer.group.rotation.y = peer.ry;
+    // A glance turns the head and a little of the torso of a rigged figure; a plain figure turns as a whole.
+    peer.group.rotation.y = peer.ry + (lookAvatar(peer.stand, peer.gaze.offset) ? 0 : peer.gaze.offset);
+    if (peer.walk !== peer.stand) lookAvatar(peer.walk, peer.gaze.offset);
     peer.tag.position.x = peer.x; peer.tag.position.y = peer.y + peer.top; peer.tag.position.z = peer.z;
     peer.at.x = peer.x; peer.at.z = peer.z; peer.at.top = peer.y + peer.top;
   }
@@ -627,7 +651,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       peer = { id, lookKey, look: person.look ?? null, seed: person.seed ?? id, group: holder, shown: null, x: person.x, z: person.z, y: 0, ry: Number.isFinite(person.ry) ? person.ry! : Math.atan2(-person.x, -person.z) || 0,
         fromX: person.x, fromZ: person.z, toX: person.x, toZ: person.z, t: 1, span: 0, stride: 0, top: 2.95,
         tag: { id, name, kind: 'player', text: `@${name}`, marker: 'tag', colour: '#6fb4ff', position: { x: person.x, y: 2.95, z: person.z } },
-        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 } } as Peer;
+        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 }, friend: person.friend === true, gaze: newGaze() } as Peer;
       peer.stand = peerFigure(peer, 'stand'); peer.walk = peerFigure(peer, 'walk');
       peer.top = peer.stand.userData.top ?? 2.95;
       showPeer(peer, false);
@@ -637,6 +661,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       return peer;
     }
     if (peer.tag.name !== name) { peer.tag.name = name; peer.tag.text = `@${name}`; }
+    peer.friend = person.friend === true;
     const distance = Math.hypot(person.x - peer.toX, person.z - peer.toZ);
     if (distance < 0.01) return peer;
     peer.fromX = peer.x; peer.fromZ = peer.z; peer.toX = person.x; peer.toZ = person.z;
@@ -651,7 +676,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (!easing) return false;
     let more = false;
     for (const peer of peers.values()) {
-      if (peer.t >= 1) continue;
+      if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
+      resetGlance(peer);
       peer.t = Math.min(1, peer.t + dt / peer.span);
       const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
       peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
@@ -667,8 +693,29 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   /** Put every figure where it is going, at once (reduced motion, or no frame loop). */
   function settleCrowd() {
-    for (const peer of peers.values()) { if (peer.t >= 1) continue; peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer); }
+    for (const peer of peers.values()) {
+      resetGlance(peer);
+      if (peer.t >= 1) { placePeer(peer); continue; }
+      peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer);
+    }
     easing = false;
+  }
+  /** Someone standing still looks at the player when they come close, then looks away (src/scene/space.ts). True while still turning. */
+  function stepGlance(peer: Peer, dt: number) {
+    if (!gazing(peer.gaze) && !watch(peer.gaze, peer, peer.ry, avatar.position)) return false;
+    stepGaze(peer.gaze, dt, peer, peer.ry, avatar.position, peer.friend ? 'friend' : 'stranger');
+    placePeer(peer);
+    return gazing(peer.gaze);
+  }
+  function resetGlance(peer: Peer) {
+    if (!gazing(peer.gaze)) return;
+    peer.gaze.phase = 'rest'; peer.gaze.offset = 0; peer.gaze.held = 0;
+    lookAvatar(peer.stand, 0); lookAvatar(peer.walk, 0);
+  }
+  /** The player moved: wake the crowd easing if someone near would notice, so the glance is drawn on a frame the host is running anyway. */
+  function noticeAvatar() {
+    if (easing || !driven || !peers.size) return;
+    for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
   function buildActors() {
     const placed = placeCrowd(view.crowd);

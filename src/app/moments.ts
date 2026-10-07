@@ -1,5 +1,5 @@
-// ?models=moments: now and then a line of local colour replaces the venue card's ambient line. Fetched only with the flag (startExtras.ts),
-// together with src/moments/, so nothing extra loads, and the first download carries nothing of it, while the flag is off.
+// Now and then a line of local colour replaces the venue card's ambient line. Fetched once the game is ready (startExtras.ts),
+// together with src/moments/, so the first download carries nothing of it.
 import { watch } from 'vue'
 import { momentLine, noticeAt, MOMENT_POLL_MS } from '../moments/live.ts'
 import { momentText, noticeText } from './state/momentText.ts'

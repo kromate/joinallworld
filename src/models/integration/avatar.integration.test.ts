@@ -1,23 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { modelFlags, modelLibraryEnabled, MODEL_FLAGS, npcWordsEnabled } from './flags.ts';
-
-test('every model-library integration is OFF by default; ?models=vehicles switches the trip vehicles on and nothing else', () => {
-  assert.deepEqual(MODEL_FLAGS, ['vehicles', 'moments', 'labels', 'dilemmas']);
-  assert.deepEqual(modelFlags(''), { vehicles: false, moments: false, labels: false, dilemmas: false });
-  assert.equal(modelLibraryEnabled(''), false);
-  assert.equal(modelLibraryEnabled('?models=legacy'), false);
-  assert.equal(modelLibraryEnabled('?models=library'), false, 'an unknown name switches nothing on');
-  assert.equal(modelLibraryEnabled('?models=vehicles'), true);
-  assert.deepEqual(modelFlags('?venue=park&models=avatars,vehicles'), { vehicles: true, moments: false, labels: false, dilemmas: false });
-  assert.deepEqual(modelFlags('?models=moments'), { vehicles: false, moments: true, labels: false, dilemmas: false });
-  assert.equal(modelLibraryEnabled('?models=moments'), false, 'the moments flag does not switch the trip vehicles on');
-  assert.equal(npcWordsEnabled(''), false, 'the NPC word on 3D tags is off by default');
-  assert.equal(npcWordsEnabled('?models=labels'), true);
-  assert.equal(modelLibraryEnabled('?models=labels'), false, 'labels does not switch the vehicles on');
-});
-
 test('the running game keeps its own avatars and atlas: neither loads the model library', async () => {
   // The library's people and geography are available to the workshop (models.html) and are tested in their own folders;
   // they are not wired into the game (docs/MODELS.md says what was adopted and why).
@@ -25,7 +8,9 @@ test('the running game keeps its own avatars and atlas: neither loads the model 
     const source = await readFile(new URL(file, import.meta.url), 'utf8');
     assert.doesNotMatch(source, /from '[^']*models\//, `${file} imports nothing from src/models`);
   }
-  // The one integration point: the city view fetches the trip vehicles only when the flag is on.
+  // The one integration point: the city view fetches the trip vehicles after its own pack, never in the startup chunk, and falls back to its own vehicle if the library fails to load.
   const index = await readFile(new URL('../../map3d/index.ts', import.meta.url), 'utf8');
-  assert.match(index, /modelFlags\(\)\.vehicles \? \(await import\('\.\.\/models\/integration\/scene-models\.ts'\)/);
+  assert.match(index, /import\('\.\.\/models\/integration\/scene-models\.ts'\)\.catch\(\(\) => null\)/);
+  assert.doesNotMatch(index, /^import .*models\//m, 'the city view imports the library lazily only');
+  assert.doesNotMatch(index, /modelFlags/);
 });

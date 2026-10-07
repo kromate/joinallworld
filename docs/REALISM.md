@@ -198,7 +198,7 @@ social.rumours: Rumour[]       // cap 8, oldest dropped
 - Match night: viewing centres only, seeded by the day. The moments banks gain lines for a power cut, the light coming back, the go-slow and a match night, and a venue picks them while that condition holds.
 - Lagos has no climate record, so it gets no season tint. Jos does.
 - Saturday rent and wages: the rent and the late fee are unchanged. There is a Thursday heads-up and a louder notice for each Saturday of rent missed in a row, plus a one-line sum of the week's money. There is no eviction, and wage day is presentation only: shifts still pay as they finish.
-- Moments stay behind `?models=moments` until `codex/realism-unflag` is merged.
+- Moments are on for everyone and read the condition lines unconditionally. The sound director's `Seen.outage` is set from the home's grid, or from the cut in the venue's district, so the generator hum comes on in a power cut.
 
 **Design.** These are deterministic daily events seeded by `daySeed(cityId, day)`.
 

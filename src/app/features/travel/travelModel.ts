@@ -208,11 +208,11 @@ export const LAYERS: readonly MapLayer[] = [
   { id: 'moving', label: 'Moving', icon: 'bus', note: 'Street traffic — decoration only, it changes nothing in the game.' },
   { id: 'billboards', label: 'Billboards', icon: 'megaphone', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'billboard' }, action: 'Rent a billboard' },
   { id: 'sea', label: 'Sea', icon: 'wave', key: 'ads', path: 'ads', open: 'ads', params: { tab: 'sea' }, action: 'Rent a sea plot' },
-  { id: 'gov', label: 'Gov', icon: 'governor', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
+  { id: 'gov', label: 'Chairman', icon: 'governor', key: 'gov', path: 'gov', open: 'state-house', action: 'Open the State House' },
 ]
 export function layerLabel(item: MapLayer, cityId: string): string {
   if (item.id === 'lgas' && cityUnit(cityId) !== 'local government') return cap(cityUnit(cityId, true))
-  if (item.id === 'gov' && civicTitle(cityId) !== 'Governor') return civicTitle(cityId)
+  if (item.id === 'gov') return civicTitle(cityId)
   return item.label
 }
 export const DATA_LAYERS: readonly MapLayer[] = LAYERS.filter((item) => item.path)

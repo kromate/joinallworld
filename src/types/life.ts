@@ -321,7 +321,7 @@ export interface CareerState {
   transferDay: LagosDay | null
   /** True once any career shift has been completed (ends the day-off "orientation" allowance). */
   oriented: boolean
-  /** Work dilemmas (src/game/dilemmas.ts). Absent until the `dilemmas` switch has given one; a life saved before it existed loads unchanged. */
+  /** Work dilemmas (src/game/dilemmas.ts). Absent until a dilemma has come up; a life saved before it existed loads unchanged. */
   dilemmas?: DilemmaBook
 }
 

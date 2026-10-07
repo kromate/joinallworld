@@ -199,7 +199,7 @@ export interface DilemmaView {
 export interface CareerView {
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
-  /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it with dilemmas switched off). */
+  /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it until a dilemma comes up). */
   dilemma?: DilemmaView | null
   completedShifts: number
   employed: boolean
@@ -906,7 +906,7 @@ export interface NpcActionCard {
   /** The activity id to start (`npc-<npc>-<action>`). */
   activity: ActivityId
   label: string
-  /** Nigerian Pidgin wording of `label`. Only a place action (switched on by the host) carries one. */
+  /** Nigerian Pidgin wording of `label`. Only a place action carries one. */
   pcmLabel?: string
   icon: string
   duration: number

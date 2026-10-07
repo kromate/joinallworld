@@ -461,7 +461,7 @@ const VENUES_DATA = {
   },
   'state-house': {
     id: 'state-house', label: 'Lagos State House', district: 'Marina', icon: '🏛️', category: 'civic',
-    description: 'White columns facing the lagoon. Tours, town halls and the Governor’s business.',
+    description: 'White columns facing the lagoon. Tours, town halls and the Chairman’s business.',
     hours: { open: 9, close: 17 },
     zone: 'island', map: { x: 35, y: 95 }, scene: { kind: 'statehouse', anchors: { gate: 'steps', gallery: 'office', gardens: 'gardens', press: 'podium' } },
     ambient: ['A convoy is idling at the gate', 'Gardeners are trimming the hedges', 'A town hall notice is pinned to the board', 'Press crews are setting up tripods'],

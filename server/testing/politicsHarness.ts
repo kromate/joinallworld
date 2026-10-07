@@ -17,7 +17,7 @@ export const DAY = 86400000;
 export const object = (value: unknown): Record<string, unknown> => { assert.ok(value !== null && typeof value === 'object' && !Array.isArray(value)); return value as Record<string, unknown>; };
 
 export async function harness(t: Parameters<typeof fixture>[0]) {
-  const f = await fixture(t);
+  const f = await fixture(t, { env: { NEW_SESSIONS_PER_ADDRESS: '1000' } });
   f.advance(JOURNEY_TIME - f.now());
   const send = async (path: string, init: RequestInit, device?: Device): Promise<Answer> => {
     const response = await fetch(f.base + path, { ...init, headers: { 'Content-Type': 'application/json', ...(device ? { Cookie: device.cookie } : {}) } });

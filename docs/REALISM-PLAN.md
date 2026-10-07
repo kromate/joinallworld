@@ -37,6 +37,8 @@ Status: plan, 6 October 2026. Nothing below is implemented. This plan combines t
 | E-E | Buy the next plot, merged lots, compounds with shared tap and generator | EMBODIMENT |
 | E-F | Streamed street tiles: door to street to venue, on foot | EMBODIMENT |
 | E-G | Motor park, expressway ride, arrival on foot in the next state | EMBODIMENT |
+| RV-T | Trust layer: phone and ID tiers, no-fee filter, public complaint counts, safe links, no home addresses | REAL-VALUE |
+| RV1–RV12 | Real-life value: verified stalls with share cards, Skills Passport, gigs and notice boards, classes and learning quests, paid visibility later | REAL-VALUE |
 
 ## Rules that keep the machine and the codebase healthy
 
@@ -74,7 +76,7 @@ That is at most about 9.5 GB for agent work, which leaves around 14 GB for macOS
   - Lanes rebase on `origin/main` at least daily and just before merging.
   - A pull request should be about 400 changed lines or less, apart from data and generated assets.
   - Lanes merge one at a time. The coordinator merges, never the workers.
-- **Everything new merges dark:** behind flags in `src/models/integration/flags.ts`, the one place flags are read. Main always stays releasable, even mid-phase.
+- **No feature flags (Anthony, 7 Oct 2026):** everything new is on for every player. Main always stays releasable, even mid-phase; a capability fallback (no WebGL, a model that fails to load) is allowed, a user-facing switch is not.
 - **Conflict rule:** if a lane's rebase conflicts with another agent's work, it stops and reports to the coordinator. It never resolves conflicts by rewriting another agent's code.
 
 ### From merge to production
@@ -86,21 +88,21 @@ That is at most about 9.5 GB for agent work, which leaves around 14 GB for macOS
 2. **Staging:** the release workflow runs on the exact main SHA with `publish_staging=true`.
 3. **Astra QA on staging:**
    - the guest path through to the world;
-   - the lane's feature, with the flag on and with it off;
+   - the lane's feature, and its fallback where it has one (no WebGL, a model that fails to load);
    - mobile width;
    - console errors;
    - loading, persistence after reload, money and identity.
    - Once phase 0 has a phone, add load time on throttled 3G and frame time on the real low-end Android.
-4. **Production:** the same SHA is released to production. Features go out dark, then their flag is turned on for everyone.
+4. **Production:** the same SHA is released to production. Features go out on for everyone.
 5. **Rollback:**
-   - A feature problem means turning the flag off, with no redeploy.
-   - A code problem means a reviewed forward fix. `deploy/README.md` forbids rolling back the server after new gameplay writes.
+   - A feature problem means a reviewed forward fix, like a code problem; there is no switch to turn it off.
+   - Either way `deploy/README.md` forbids rolling back the server after new gameplay writes.
    - Save-format changes (E-E) also require a recorded restore reference before release, and the old-to-new check described in `deploy/README.md`.
 6. **Cadence:** one release train per day while a phase is active, carrying whatever is merged and green. A failed gate drops that lane from the train; the train still goes.
 
 ## Phases
 
-Each phase lists its lanes. Lanes in the same phase run in parallel, with no more than 8 workers. A phase closes when its gate is met in production behind a flag, or when it is turned on.
+Each phase lists its lanes. Lanes in the same phase run in parallel, with no more than 8 workers. A phase closes when its gate is met in production, on for everyone.
 
 ### Phase 0: Base and rails (1–2 days, 3 workers)
 
@@ -190,6 +192,21 @@ Gate: walk from home to a venue door on the phone with no loading screen; each t
 
 Gate: Lagos to Ibadan on foot and by bus, end to end, on the phone; the old intercity action still works.
 
+### Phase R: Real-life value (runs alongside Phase 4, 4 workers)
+
+The full design is in `REAL-VALUE.md`. The aim is that time in Allworld helps a player in real life: sell, get hired, learn and be found, with trust built first.
+
+| Lane | Work |
+| --- | --- |
+| RV-T trust (Sol or Terra) | Phone OTP tier for stalls, ID check tier for gigs, classes and meetups (result only, 18+), no-fee filter, complaint counts, link interstitial with allow-list, vendor-link exception to chat blocking |
+| RV1 + RV7 stalls | Verified stalls that link out, stall analytics and a share card for WhatsApp, Instagram and X |
+| RV2 Skills Passport | Skill badges earned from real proof, shown on the player card |
+| RV3 + RV6 gigs | Gigs and errands board plus venue notice boards, free to post, organic only |
+| RV4 + RV8 classes | Classes held in venues, and learning quests |
+| RV-L1 ads (Luna) | Ad template with an ARCON approval reference field and a takedown control, built but switched off |
+
+Gate: only money level L0 (no money moves through Allworld) goes to production. L1 and above wait for Anthony's decisions and a lawyer. The trust layer ships before any stall, gig or class is public.
+
 ## How many agents, phase by phase
 
 | Phase | Workers at once | With Astra and a reviewer |
@@ -199,6 +216,7 @@ Gate: Lagos to Ibadan on foot and by bus, end to end, on the phone; the old inte
 | 2 | 8 | 10 |
 | 3 | 7 | 9 |
 | 4 | 5 | 7 |
+| 4 + R | 5 + 4 | 10 |
 | 5 | 6 | 8 |
 | 6 | 4 | 6 |
 
@@ -223,6 +241,7 @@ The phase-1 gate is the main risk. Phases 2–3 are the busiest. Phase 4 is narr
    - an online real-device service if a free tier allows it.
    - The emulator uses the Mac's GPU, so its frame times flatter a real Tecno. The throttled Chrome run is the gate for CPU and load time. GPU cost is held down by the triangle, draw-call and texture budgets, which are checked in tests.
 6. **Efik review:** still open. Calabar lines stay `beta` until a native speaker reviews them.
+7. **Real-money levels (pending Anthony):** whether a CAC company exists, which lawyer reviews the seven questions in `REAL-VALUE.md`, payment-gateway approval for virtual goods, and VAT registration. Until then Phase R ships L0 only.
 
 ## Run log
 
@@ -261,4 +280,4 @@ One worker in its own worktree (`codex/realism-conditions`, from `a4e1173`), nin
 
 Money per active second is the same, so the economy was not changed to absorb this. If the equal-effort comparison should stay fixed, the sim's budget would be set from the career player's open-road seconds; that is left for Astra to decide.
 
-**Known gaps.** No browser QA yet. Wage day is presentation only. Moments are still behind `?models=moments` until `codex/realism-unflag` (dcb396a) is merged. Lagos has no climate record, so it gets no season tint (Jos does). `server/tables.test.ts` ("a match that is over…") failed once in a full run under load and passes alone and on the base build.
+**Known gaps.** No browser QA yet. Wage day is presentation only. Moments are on for everyone since the unflag merge, and read the condition lines unconditionally. Lagos has no climate record, so it gets no season tint (Jos does). `server/tables.test.ts` ("a match that is over…") failed once in a full run under load and passes alone and on the base build.

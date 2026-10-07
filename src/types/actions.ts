@@ -172,7 +172,7 @@ export interface ActionMap extends CampusActionMap {
   'career.quit': { payload: NoPayload; ok: 'quit'; fail: 'no_job' | 'busy' }
   /** Toggle "Go automatically". */
   'career.auto': { payload: { on: boolean }; ok: 'auto_set'; fail: 'invalid_setting' }
-  /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' unless the host has switched dilemmas on. */
+  /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' while the dilemma kit is not installed. */
   'career.dilemma': { payload: { choice: string }; ok: 'resolved' | 'went_badly'; fail: 'dilemmas_off' | 'no_dilemma' | 'invalid_choice' }
 
   // -- activities --

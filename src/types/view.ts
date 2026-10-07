@@ -916,6 +916,8 @@ export interface NpcSummary {
   /** Interactions left today. */
   left: number
   blocked: string | null
+  /** Where the regular is, in one line ("At Balogun Market till 6PM"); empty before the routines are loaded. */
+  where: string
   actions: NpcActionCard[]
 }
 
@@ -933,6 +935,8 @@ export interface RelationshipCard {
   /** NPCs: closeness has reached the Friend tier. Players: a friendship exists. */
   friend: boolean
   left: number
+  /** Where the regular is now, in one line ("Asleep, back at 5:30AM"); empty for a player, or before the routines are loaded. */
+  where: string
 }
 
 export interface SocialView {
@@ -944,6 +948,8 @@ export interface SocialView {
   dailyInteractions: number
   /** The regulars of the venue the player is in. */
   here: NpcSummary[]
+  /** The regulars of this venue who are somewhere else right now, and where ("At church till 12:30PM"). Empty until the routines are loaded. */
+  away: { id: NpcId; name: string; role: string; emoji: string; where: string }[]
   /** Closest first. */
   relationships: RelationshipCard[]
   friends: RelationshipCard[]
@@ -1173,7 +1179,7 @@ export const VIEW_FIELD_KEYS = {
   ],
   goals: ['chain', 'chip', 'dream', 'dreams', 'feed', 'granted', 'perks', 'rerolls', 'seq', 'stars', 'wishes'],
   social: [
-    'bae', 'baeUnlock', 'calling', 'dailyInteractions', 'family', 'familyCall', 'friends', 'here', 'maxCloseness', 'notices',
+    'away', 'bae', 'baeUnlock', 'calling', 'dailyInteractions', 'family', 'familyCall', 'friends', 'here', 'maxCloseness', 'notices',
     'paddyCount', 'playerActions', 'relationships', 'streak', 'tiers', 'transfer',
   ],
   civic: ['earnedThisWeek', 'eligibility', 'gems', 'hunt', 'workDays'],

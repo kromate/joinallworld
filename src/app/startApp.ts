@@ -20,6 +20,8 @@ export function ready(): void {
     globalThis.setTimeout(resolve, 10000)
   })
   preloadNext(Promise.all([landingCodeSettled(), sceneShown]))
+  // Where the regulars are (their daily routines) is fetched once the scene is up; until it lands every regular of a venue is listed, as before.
+  void sceneShown.then(() => import('../game/routines/pack.ts')).then(() => undefined, () => undefined)
   // `?diagnostics`: the scene's frame counter, readable by a person and by a test harness; a short address (/games, /abuja, …): its chunk. Fetched only then (./startExtras.ts).
   // `?models=…`: the model flags (src/models/integration/flags.ts) that start something after ready; startExtras reads which.
   const search = new URLSearchParams(location.search)

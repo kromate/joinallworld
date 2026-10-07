@@ -61,6 +61,7 @@ import * as worldRegistry from '../server/world/registry.ts';
 import { createServerTelemetry } from '../server/telemetry/index.ts';
 import { flagFromEnv, setFeature } from '../src/game/features.ts';
 import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions; DILEMMAS decides whether it is used
+import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { appHeaders, apiHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';

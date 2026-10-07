@@ -85,7 +85,9 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   /** The crowd in the scene, from real data only: the server's who-is-here listing and the venue's regulars. */
   function showCrowd(): void {
     const state = game.state.value
-    const npcs = isDeparting(state) ? [] : regularsFor(game.cityId.value).filter((npc) => npc.venue === state.location)
+    // Only the regulars whose routine has them at the venue now (the social view's list; every regular until the routines are loaded).
+    const present = new Set(game.view.value.social.here.map((npc) => npc.id))
+    const npcs = isDeparting(state) ? [] : regularsFor(game.cityId.value).filter((npc) => npc.venue === state.location && present.has(npc.id))
     scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null, positions }))
   }
   onPeople(showCrowd)
@@ -403,6 +405,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   let mapLeftAt = 0
   // Panels and sheets open and close with a soft sound; the sound hook is inert until the first tap.
   watch(() => shell.sheet.value !== null, (open) => playSound(open ? 'open' : 'close'), { flush: 'post' })
+  // A regular arrives or leaves as the hours pass, or when the routines have loaded: the scene follows the list.
+  watch(() => game.view.value.social.here.map((npc) => npc.id).join(), showCrowd)
   watch(game.mode, (mode, was) => {
     if (was === 'map' && mode !== 'map') mapLeftAt = Date.now()
     else if (mode === 'map' && was !== 'map' && mapLeftAt && Date.now() - mapLeftAt >= CAMERA_KEEP_MS) { mapLeftAt = 0; scene.city.value?.recentre() }

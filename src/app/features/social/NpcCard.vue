@@ -23,6 +23,8 @@ const rel = computed(() => view.value.social.relationships.find((item) => item.i
 const local = computed(() => regularFor(view.value.cityId, props.id) ?? null)
 const base = computed(() => local.value ?? (rel.value?.npc ? rel.value : null))
 const here = computed(() => view.value.social.here.find((npc) => npc.id === props.id) ?? null)
+/** Where this regular is now: from the venue's list, or from the relationship; empty before the routines are loaded. */
+const whereNow = computed(() => here.value?.where || view.value.social.away.find((npc) => npc.id === props.id)?.where || rel.value?.where || '')
 const why = computed(() => {
   if (!base.value) return null
   if (!local.value) {
@@ -31,7 +33,7 @@ const why = computed(() => {
   }
   const place = contentFor(view.value.cityId).venues.find((venue) => venue.id === local.value?.venue)?.name ?? local.value.venue
   return npcReason({ connected: view.value.connected, cannot: linkWords(view.value)?.cannot('interact') ?? 'Not connected.', here: here.value,
-    name: base.value.name, venueLabel: place, busy: Boolean(game.state.value.activeAction) })
+    name: base.value.name, venueLabel: place, busy: Boolean(game.state.value.activeAction), where: whereNow.value })
 })
 const points = computed(() => rel.value?.points ?? 0)
 const max = computed(() => npcMeterMax(rel.value, view.value.social.maxCloseness))
@@ -55,6 +57,7 @@ async function start(activity: string): Promise<void> {
   <div v-else>
     <div class="social-head people-who"><span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="base.name" :seed="base.id" /></span><h3>{{ base.name }}</h3><NpcBadge /></div>
     <p>{{ base.role }}<template v-if="here"> · {{ here.left }} of {{ view.social.dailyInteractions }} interactions left today</template></p>
+    <p v-if="whereNow" class="social-note">{{ whereNow }}</p>
     <p v-if="here" class="social-quote">“{{ here.quote }}”</p>
     <p>{{ rel ? closenessText(rel, view.social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="max" :label="`Closeness with ${base.name}`" />

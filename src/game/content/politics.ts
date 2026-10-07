@@ -129,3 +129,18 @@ export const AUDIT = {
 
 /** Impeachment: needs an audit warning this term, and more than half of the votes the officeholder won (never fewer than the seat's quorum). */
 export const IMPEACH = { minDays: 1, minWorkDays: 2 };
+
+/**
+ * Assemblies: each seat has one beside its officeholder, filled by the runners-up of the same weekly election (each needs at least one vote),
+ * so nobody votes twice and a quiet week simply has a small one. Where a seat has no assembly, its officeholder decrees directly as before.
+ * Where it has, a rule changes only by a bill the assembly passes.
+ */
+export const ASSEMBLY = {
+  /** Members beside the officeholder, by seat. */
+  seats: { city: 2, state: 4, nation: 6 } as Readonly<Record<TierId, number>>,
+  /** Bills a term may see, in all. */
+  billsPerTerm: 8,
+  /** A member's bill passes without the officeholder's signature when this share of the assembly votes for it (and never fewer than two members do). */
+  supermajority: 2 / 3,
+  minSupermajority: 2,
+};

@@ -7,7 +7,7 @@
 import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
-import type { CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
+import type { BillView, CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -21,7 +21,7 @@ import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { appealRequest, arrestRequest, bailRequest, escalateRequest, partyRequest, politicsUi as ui, runRequest, salaryRequest } from './politicsDrafts.ts'
 import type { RecordEntryView, RecordKind, RecordsResponse } from '../../../types/records.ts'
 import { RECORD_FILTERS, checkRecords, kindLabel, recordDate, recordsPath, shortHash } from './politicsModel.ts'
-import { FLAG_TEXT, TABS, VERDICTS, arrestWhy, auditLine, petitionWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
+import { BILL_STATUS, FLAG_TEXT, TABS, assemblyName, billLine, billVoteWhy, proposeWhy, tallyLine, VERDICTS, arrestWhy, auditLine, petitionWhy, canEscalate, caseLine, courtName, higherCourt, noteWhy, rulingLine, statementWhy, ballotKey, jailLine, justiceKey, justicePath, offenceLine, officerOf, ballotPath, ledgerKind, leverRange, leverText, leverWhy, officeLine, overviewKey, overviewPath, partyMottoWhy, partyName, partyNameWhy, quorumLine, seatOf } from './politicsModel.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game } = useApp()
@@ -72,6 +72,23 @@ async function decree(lever: LeverView): Promise<void> {
   if (!at) return
   const result = await civic.send(`p-decree:${lever.id}`, '/api/politics/decree', { tier: at, lever: lever.id, value }, { success: `${lever.label} is now ${leverText(lever, value ?? lever.base)}.` })
   done(result)
+}
+async function proposeBill(lever: LeverView): Promise<void> {
+  const at = tier.value, value = ui.levers[lever.id]
+  if (!at) return
+  done(await civic.send(`p-bill:${lever.id}`, '/api/politics/bill', { tier: at, lever: lever.id, value }, { success: `A bill to set ${lever.label} is before the assembly.` }))
+}
+async function voteBill(bill: BillView, yes: boolean): Promise<void> {
+  const at = tier.value
+  if (!at) return
+  const result = await civic.send(`p-billvote:${bill.id}`, '/api/politics/bill/vote', { tier: at, bill: bill.id, yes }, { success: yes ? 'You voted for the bill.' : 'You voted against the bill.' })
+  if (result.ok && result.code === 'passed') game.toast('The bill passed: it is law for the week.', 'good')
+  done(result)
+}
+async function signBill(bill: BillView, signIt: boolean): Promise<void> {
+  const at = tier.value
+  if (!at) return
+  done(await civic.send(`p-billsign:${bill.id}`, '/api/politics/bill/sign', { tier: at, bill: bill.id, sign: signIt }, { success: signIt ? 'You signed the bill.' : 'You vetoed the bill.' }))
 }
 async function drawSalary(): Promise<void> {
   const at = tier.value
@@ -216,11 +233,39 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
         <div v-for="lever in seat.levers" :key="lever.id" class="politics-lever">
           <div><strong>{{ lever.label }}</strong><small>{{ lever.about }}</small></div>
           <b class="politics-value">{{ leverText(lever, lever.value) }}</b>
-          <template v-if="seat.you?.isOfficeholder">
+          <template v-if="seat.assembly.members.length && seat.assembly.you?.canPropose">
+            <label class="politics-set"><span>{{ leverRange(lever) }}</span><input v-model.number="ui.levers[lever.id]" type="number" :min="lever.min" :max="lever.max" step="1" inputmode="numeric"></label>
+            <CivicAction primary :working="civic.busy(`p-bill:${lever.id}`)" :reason="proposeWhy(offline('propose'), lever, ui.levers[lever.id], seat.assembly)" @click="proposeBill(lever)">Propose a bill</CivicAction>
+          </template>
+          <template v-else-if="seat.you?.isOfficeholder && !seat.assembly.members.length">
             <label class="politics-set"><span>{{ leverRange(lever) }}</span><input v-model.number="ui.levers[lever.id]" type="number" :min="lever.min" :max="lever.max" step="1" inputmode="numeric"></label>
             <CivicAction primary :working="civic.busy(`p-decree:${lever.id}`)" :reason="offline('decree') ?? leverWhy(lever, ui.levers[lever.id])" @click="decree(lever)">Set</CivicAction>
           </template>
         </div>
+      </section>
+
+      <SectionTitle>{{ assemblyName(seat.tier, seat.name) }}</SectionTitle>
+      <section class="ui-card politics-case">
+        <p v-if="!seat.assembly.members.length" class="politics-note">No assembly sits this term, so the {{ seat.title }} sets the rules directly. The runners-up of a weekly election who got at least one vote join it, up to {{ seat.assembly.seats }}.</p>
+        <template v-else>
+          <p class="politics-note">Members ({{ seat.assembly.members.length }} of {{ seat.assembly.seats }}): <b>{{ seat.assembly.members.map((member) => member.name).join(', ') }}</b>. A rule changes only by a bill. The {{ seat.title }}’s bill needs a majority of the assembly; a member’s needs two thirds, or a majority and the {{ seat.title }}’s signature. The {{ seat.title }} can veto a member’s bill.</p>
+          <p v-if="!seat.assembly.bills.length" class="politics-note">No bills this term. Propose one from “Rules in force” above.</p>
+          <div v-for="bill in seat.assembly.bills" :key="bill.id" class="politics-docket">
+            <strong>{{ billLine(bill) }}</strong>
+            <small>Proposed by {{ bill.by.name }}{{ bill.byOffice ? ` (${seat.title})` : '' }} · {{ BILL_STATUS[bill.status] }}</small>
+            <small>{{ tallyLine(bill) }}</small>
+            <template v-if="bill.status === 'open'">
+              <span v-if="seat.assembly.you?.member" class="politics-verdicts">
+                <CivicAction primary :working="civic.busy(`p-billvote:${bill.id}`)" :reason="billVoteWhy(offline('vote'), bill, seat.assembly)" @click="voteBill(bill, true)">Vote for</CivicAction>
+                <CivicAction :working="civic.busy(`p-billvote:${bill.id}`)" :reason="billVoteWhy(offline('vote'), bill, seat.assembly)" @click="voteBill(bill, false)">Vote against</CivicAction>
+              </span>
+              <span v-if="seat.you?.isOfficeholder && !bill.byOffice && !bill.signed" class="politics-verdicts">
+                <CivicAction primary :working="civic.busy(`p-billsign:${bill.id}`)" :reason="offline('sign') ?? ''" @click="signBill(bill, true)">Sign it</CivicAction>
+                <CivicAction :working="civic.busy(`p-billsign:${bill.id}`)" :reason="offline('veto') ?? ''" @click="signBill(bill, false)">Veto it</CivicAction>
+              </span>
+            </template>
+          </div>
+        </template>
       </section>
 
       <SectionTitle>Treasury</SectionTitle>

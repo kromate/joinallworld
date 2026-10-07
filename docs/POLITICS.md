@@ -40,6 +40,17 @@ Levers, by seat:
 
 Defaults are 0 %: with no officeholder nothing changes from how the game plays today.
 
+### Assemblies
+
+Each seat has an assembly beside its officeholder: a city council (up to 2 members), a state assembly (4) and a National Assembly (6). Nobody votes for it separately. It is filled by the **runners-up of the same weekly election**, best first, each with at least one vote, so a quiet week simply has a small one and a seat won with nobody else standing has none. An election that did not reach its quorum seats nobody. The assembly sits for the whole term, even if the officeholder is removed by petition.
+
+- **No assembly: no change.** A seat without members lets its officeholder decree directly, as in the table above.
+- **With an assembly, a rule changes only by a bill.** The officeholder or any member proposes setting one lever to a value inside its range (a term allows 8 bills; a newer bill on a lever replaces the open one). Members vote once each; the officeholder does not vote.
+- **The officeholder's bill** passes with a majority of the assembly (more than half of its members). The members who vote against can stop it.
+- **A member's bill** passes with two thirds of the assembly (never fewer than two members), or with a majority and the officeholder's signature. The officeholder can veto it, which ends it. A lone member can never pass a law alone: with an assembly of one, a member's bill needs the signature.
+- **A bill that can no longer pass fails** at once (even every vote still to come would not reach a majority).
+- **A law holds for the term**, whoever then sits, and ends with it. Laws go where decrees go (levies, sentences, bail) and are written to the public record as *law* entries with the vote.
+
 ## 4. Treasuries, grants, audits and impeachment
 
 Each seat has a treasury: a whole-naira balance and a public ledger of every credit and debit. Levies, filing fees, court fees and bail fill it. The officeholder may draw a salary of at most a fifth of the treasury (never more than a cap), once a term.
@@ -77,7 +88,7 @@ What a government did must be easy to read and hard to change. That is most of w
 1. **Offices and parties.** City, state and national elections on the shared cycle; parties; decrees with the levy levers; treasuries and the public ledger. **next**
 2. **Justice.** Fights, offences, police, arrests, jail. **built**
 3. **Courts.** Judges, lawyers, bail, appeals. **built**
-4. **Checks on the officeholders.** Grants, audits, impeachment. **built**. Assemblies that pass laws by vote. **later**
+4. **Checks on the officeholders.** Grants, audits, impeachment, and assemblies that pass laws by vote. **built**
 
 ## 8. Where things live
 

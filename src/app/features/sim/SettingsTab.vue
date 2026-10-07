@@ -147,6 +147,11 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <div class="ui-rows">
       <button type="button" class="ui-row" @click="shell.open('support')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="support" /></span><span class="ui-row-body"><b>Report a problem</b><small>File a report and get a receipt</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
     </div>
+    <h3 class="ui-section">About</h3>
+    <div class="ui-rows">
+      <!-- Allworld is free software under the GNU AGPL: people who use it over the network are offered its source (section 13). -->
+      <a class="ui-row" href="https://github.com/kromate/joinallworld" target="_blank" rel="noopener noreferrer"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Source code</b><small>Allworld is free software under the GNU AGPL</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></a>
+    </div>
   </div>
 </template>
 

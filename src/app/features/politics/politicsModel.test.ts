@@ -136,7 +136,30 @@ test('the record page checks what it was shown: the whole chain when unfiltered,
 test('record pages are asked for with the filter and the place to go back from', () => {
   assert.equal(recordsPath('all', null), '/api/world/records?limit=30')
   assert.equal(recordsPath('ruling', 40), '/api/world/records?limit=30&kind=ruling&before=40')
-  assert.deepEqual(RECORD_FILTERS.map((item) => item.id), ['all', 'term', 'ruling', 'impeachment', 'party', 'operator'])
+  assert.deepEqual(RECORD_FILTERS.map((item) => item.id), ['all', 'term', 'law', 'ruling', 'impeachment', 'party', 'operator'])
   assert.equal(kindLabel('term'), 'Election'); assert.equal(kindLabel('impeachment'), 'Removal'); assert.equal(kindLabel('operator'), 'The operator')
   assert.equal(shortHash('a'.repeat(64)), 'aaaaaaaa…aaaaaa')
+})
+
+import { BILL_STATUS, assemblyName, billLine, billVoteWhy, proposeWhy, tallyLine } from './politicsModel.ts'
+
+test('a bill is told by what it would set, where its vote stands and what it still needs', () => {
+  const bill = { label: 'Sales tax', value: 5, unit: '%' as const, yes: 1, no: 0, needed: 2, byOffice: true, signed: false, status: 'open' as const }
+  assert.equal(billLine(bill), 'Sales tax 5%'); assert.equal(billLine({ label: 'Bail', value: 3000, unit: '₦' as const }), 'Bail ₦3,000')
+  assert.equal(tallyLine(bill), '1 for · 0 against · needs 2')
+  assert.equal(tallyLine({ ...bill, byOffice: false }), '1 for · 0 against · needs 2 (or a majority and the officeholder’s signature)')
+  assert.equal(tallyLine({ ...bill, byOffice: false, signed: true }), '1 for · 0 against · needs 2 (signed)')
+  assert.equal(tallyLine({ ...bill, status: 'passed' }), '1 for · 0 against')
+  assert.deepEqual(Object.keys(BILL_STATUS), ['open', 'passed', 'failed', 'vetoed'])
+  assert.deepEqual([assemblyName('city', 'Lagos'), assemblyName('state', 'Lagos State'), assemblyName('nation', 'Nigeria')], ['Lagos council', 'Lagos State assembly', 'National Assembly'])
+})
+
+test('voting and proposing say why they cannot be done', () => {
+  const member = { you: { member: true, canPropose: true } }, stranger = { you: { member: false, canPropose: false } }
+  const lever = { label: 'Sales tax', min: 0, max: 10, unit: '%' as const }
+  assert.equal(billVoteWhy(null, { status: 'open', yourVote: null }, member), '')
+  assert.equal(billVoteWhy(null, { status: 'open', yourVote: true }, member), 'You have voted.')
+  assert.equal(billVoteWhy(null, { status: 'passed', yourVote: null }, member), 'This bill is decided.')
+  assert.match(billVoteWhy(null, { status: 'open', yourVote: null }, stranger), /Only a member/); assert.equal(billVoteWhy('Offline.', { status: 'open', yourVote: null }, member), 'Offline.')
+  assert.equal(proposeWhy(null, lever, 5, member), ''); assert.match(proposeWhy(null, lever, 11, member), /0–10%/); assert.match(proposeWhy(null, lever, 5, stranger), /Only the officeholder or a member/)
 })

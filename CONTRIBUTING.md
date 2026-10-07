@@ -115,7 +115,7 @@ Each of these is one file or two, and has a test you can run in seconds.
 
 - **No copied code or assets** from the older Allworld project or from any other game — no extracted scripts, models, textures, audio, icons or text.
 - Values that are guesses are marked as provisional (`beta: true` in content, or a placeholder note in code, the way `src/life.ts` does). Do not present guesses as verified.
-- Only contribute work you have the right to license under MIT. Note the licence of anything third-party you add.
+- Only contribute work you have the right to license under the GNU AGPL (version 3 or later). Note the licence of anything third-party you add, and check that it can be combined with the AGPL (MIT, BSD, ISC, Apache-2.0, CC0 and CC BY 4.0 can).
 
 ## Keep these out of the repository
 
@@ -133,4 +133,4 @@ Do not open a public issue for a vulnerability. Follow [SECURITY.md](SECURITY.md
 
 ## Licence
 
-By contributing you agree that your contribution is licensed under the [MIT License](LICENSE).
+By contributing you agree that your contribution is licensed under the [GNU Affero General Public License, version 3 or later](LICENSE).

@@ -5,7 +5,7 @@
 import type { CityId, Ok } from './protocol.ts'
 import type { HostErrorCode } from './protocol.ts'
 
-export type RecordKind = 'term' | 'impeachment' | 'ruling' | 'party' | 'operator'
+export type RecordKind = 'term' | 'impeachment' | 'ruling' | 'party' | 'operator' | 'law'
 /** Short facts of one entry: whole numbers, text and true/false, nothing nested. */
 export type RecordFacts = Record<string, string | number | boolean | null>
 

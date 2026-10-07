@@ -54,7 +54,11 @@ Allworld (this repository, `joinallworld`) is original work. No files, assets or
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE). Third-party data and dependency licences are listed in [NOTICE.md](NOTICE.md).
+GNU Affero General Public License, version 3 or (at your option) any later version (`AGPL-3.0-or-later`) — see [LICENSE](LICENSE). Third-party data and dependency licences are listed in [NOTICE.md](NOTICE.md).
+
+What that asks of you, in short: you may use, study, change and run Allworld, including for other people. If you run a changed version as a service that people reach over a network, you must offer those people the complete source of your version under the same licence (section 13): a link in the game to your public repository is enough. Unchanged copies need nothing more than the licence. This applies to Allworld's own code; the map data, fonts and dependencies keep the licences listed in NOTICE.md.
+
+Versions published before 7 October 2026 were released under the MIT licence and stay available under those terms.
 
 Direct dependencies: [Three.js](https://threejs.org/) (MIT), [Vite](https://vite.dev/) (MIT), [ws](https://github.com/websockets/ws) (MIT), [Vue](https://vuejs.org/) (MIT), and — downloaded by a browser only when telemetry is configured — [@sentry/browser](https://github.com/getsentry/sentry-javascript) (MIT) and [posthog-js](https://github.com/PostHog/posthog-js) (Apache-2.0 and MIT). The server sends telemetry with `fetch` and has no SDK. All scene and city-map geometry is written in code.
 

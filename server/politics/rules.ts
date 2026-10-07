@@ -14,6 +14,8 @@ const no = (code: string, reason: string): Block => ({ code, reason });
 
 /** The value of a lever now: the sitting officeholder's decree, else the base. A decree lapses with the term it was made in. */
 export function leverValue(scope: PoliticsScopeRecord, gov: GovScope, now: number, id: LeverId): number {
+  const law = scope.laws?.week === termOf(now) ? scope.laws.values[id] : undefined; // a law of the assembly holds for its term, whoever sits
+  if (law !== undefined) return law;
   const sitting = governorAt(gov, now, QUORUM[LEVERS[id].tier]), decree = scope.decree;
   const value = decree?.values[id];
   return sitting && decree && decree.week === sitting.week && decree.by.id === sitting.id && value !== undefined ? value : LEVERS[id].base;

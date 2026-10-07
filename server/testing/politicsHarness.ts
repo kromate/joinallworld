@@ -37,9 +37,16 @@ export async function harness(t: Parameters<typeof fixture>[0]) {
     await f.request('/api/social/me', null, device.cookie);
     return device;
   }
-  /** Seat `device` in a seat's current term as if it had won with `votes` votes last week. */
-  const elect = (device: Device, scope: 'city:lagos' | 'state:lagos' | 'nation:ng', votes: number) => f.server.store.transact((db) => {
-    const week = lagosTime(f.now()).week - 1, election = { candidates: { [device.id]: { name: 'Winner', slogan: 'Fair deal', at: JOURNEY_TIME - 8 * DAY } }, votes: Object.fromEntries(Array.from({ length: votes }, (_, index) => [`voter-${index}`, device.id])) };
+  /** Seat `device` in a seat's current term as if it had won with `votes` votes last week. `rivals` also stood and got the votes listed: they are its assembly. */
+  const elect = (device: Device, scope: 'city:lagos' | 'state:lagos' | 'nation:ng', votes: number, rivals: readonly (readonly [Device, number])[] = []) => f.server.store.transact((db) => {
+    const week = lagosTime(f.now()).week - 1;
+    const candidates: Record<string, { name: string; slogan: string; at: number }> = { [device.id]: { name: 'Winner', slogan: 'Fair deal', at: JOURNEY_TIME - 8 * DAY } };
+    const ballots: Record<string, string> = Object.fromEntries(Array.from({ length: votes }, (_, index) => [`voter-${index}`, device.id]));
+    rivals.forEach(([rival, count], position) => {
+      candidates[rival.id] = { name: rival.name, slogan: 'My plan', at: JOURNEY_TIME - 8 * DAY + 1000 * (position + 1) };
+      for (let index = 0; index < count; index++) ballots[`rival-${position}-${index}`] = rival.id;
+    });
+    const election = { candidates, votes: ballots };
     if (scope === 'city:lagos') { cityOf(db.civic ||= emptyCivic(), 'lagos').gov.elections[week] = election; return; }
     const politics = (db.politics ||= emptyPolitics());
     const record = (politics.scopes[scope] ||= { treasury: { balance: 0, ledger: [] } });

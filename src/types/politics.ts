@@ -108,6 +108,31 @@ export interface TermAudit { week: number; at: number; by: PlayerRef; income: nu
 /** Residents asking for the officeholder to be removed this term. */
 export interface PetitionRecord { week: number; signers: Record<string, number> }
 
+// ---- assemblies ---------------------------------------------------------------------------------------
+
+export type BillStatus = 'open' | 'passed' | 'failed' | 'vetoed'
+/** A proposal to set one lever, voted on by the seat's assembly. */
+export interface BillRecord {
+  id: string
+  lever: LeverId
+  value: number
+  by: PlayerRef
+  /** Proposed by the officeholder (it needs a majority of the assembly) rather than by a member (a supermajority, or a majority and the officeholder's signature). */
+  byOffice: boolean
+  at: number
+  /** Member id → voted for. */
+  votes: Record<string, boolean>
+  /** The officeholder signed it. */
+  signed: boolean
+  status: BillStatus
+  /** How it passed. */
+  via?: 'majority' | 'supermajority' | 'signature'
+}
+/** The bills of one term; a new term starts them again. */
+export interface BillsRecord { week: number; seq: number; items: BillRecord[] }
+/** What the assembly passed this term: lever → value. It holds for the term, whoever then sits as officeholder. */
+export interface LawsRecord { week: number; values: Partial<Record<LeverId, number>> }
+
 export interface TreasuryRecord { balance: number; ledger: LedgerLine[] }
 
 export interface PartyRecord {
@@ -166,9 +191,40 @@ export interface SeatView {
   audit: { at: number; by: PlayerRef; income: number; salary: number; granted: number; grants: number; flags: AuditFlag[] } | null
   /** The petition to remove the officeholder: null when the seat is empty. `open` once an audit has found something. */
   petition: { signed: number; needed: number; mine: boolean; open: boolean } | null
+  /** This seat's assembly. With no members the officeholder decrees directly. */
+  assembly: AssemblyView
   /** Null for a visitor who is not signed in. `grantRoom` is the most a grant can be now. */
   you: { isOfficeholder: boolean; salary: number; grantRoom: number } | null
 }
+export interface BillView {
+  id: string
+  lever: LeverId
+  label: string
+  value: number
+  unit: LeverUnit
+  by: PlayerRef
+  byOffice: boolean
+  at: number
+  yes: number
+  no: number
+  /** The votes it needs by the road it is on now. */
+  needed: number
+  signed: boolean
+  status: BillStatus
+  via: 'majority' | 'supermajority' | 'signature' | null
+  /** How the caller voted: true for, false against, null not yet (or not a member). */
+  yourVote: boolean | null
+}
+export interface AssemblyView {
+  /** Seats the constitution gives this assembly. */
+  seats: number
+  members: PlayerRef[]
+  /** This term's bills, newest first. */
+  bills: BillView[]
+  /** Null for a visitor who is not signed in. `canPropose`: a member or the officeholder, while there is an assembly. */
+  you: { member: boolean; canPropose: boolean } | null
+}
+
 export interface PoliticsResponse {
   city: CityId
   /** Where the weekly cycle is, the same for all three seats: nominations, voting, results. */
@@ -248,6 +304,9 @@ export interface PoliticsHttpRoutes {
   'GET /api/politics/overview': { query: { city: CityId }; response: Ok<PoliticsResponse>; errors: PoliticsRead }
   'POST /api/politics/decree': { body: { cityId: CityId; tier: TierId; lever: LeverId; value: number }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
   'POST /api/politics/salary': { body: { cityId: CityId; tier: TierId; requestId: TimedId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | OnceErrorCode | 'invalid_tier' | 'no_such_seat' }
+  'POST /api/politics/bill': { body: { cityId: CityId; tier: TierId; lever: LeverId; value: number }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
+  'POST /api/politics/bill/vote': { body: { cityId: CityId; tier: TierId; bill: string; yes: boolean }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' | 'invalid_bill' }
+  'POST /api/politics/bill/sign': { body: { cityId: CityId; tier: TierId; bill: string; sign: boolean }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' | 'invalid_bill' }
   'POST /api/politics/grant': { body: { cityId: CityId; tier: TierId; player: string; amount: number; purpose: string; requestId: TimedId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | OnceErrorCode | 'invalid_tier' | 'no_such_seat' | 'invalid_player' }
   'POST /api/politics/audit': { body: { cityId: CityId; tier: TierId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }
   'POST /api/politics/impeach': { body: { cityId: CityId; tier: TierId }; response: Ok<PoliticsWriteResponse>; errors: PoliticsWrite | 'invalid_tier' | 'no_such_seat' }

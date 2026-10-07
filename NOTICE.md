@@ -1,6 +1,6 @@
 # Third-party notices
 
-Allworld is released under the MIT licence (see [LICENSE](LICENSE)). It includes or depends on the following third-party material.
+Allworld's own code is released under the GNU Affero General Public License, version 3 or later (see [LICENSE](LICENSE)); versions published before 7 October 2026 were released under the MIT licence and stay available under those terms. The third-party data, fonts and dependencies below keep their own licences. It includes or depends on the following third-party material.
 
 ## Map and geographic data
 

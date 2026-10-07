@@ -18,7 +18,7 @@ import type { PlayerReportStatus, StoreStats, SupportReport } from '../src/types
 import type { ConsentView, OutreachLogLine, ResultGameId, ShareFacts, ShareKind, TableGameId, TelemetryConfigResponse } from '../src/types/growth.ts'
 import type { CampusElectionRecord } from '../src/types/campus.ts'
 import type { BusinessCollection } from '../src/types/business.ts'
-import type { DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
+import type { BillsRecord, DecreeRecord, GrantRecord, JusticeRecord, PartyRecord, PetitionRecord, LawsRecord, TermAccounts, TermAudit, TreasuryRecord } from '../src/types/politics.ts'
 import type { ComebackType, LedgerType, PrefKey } from '../src/game/comeback.ts'
 
 // ---- the stored document -------------------------------------------------------------------------
@@ -506,6 +506,9 @@ export interface PoliticsScopeRecord {
   grants?: { week: number; items: GrantRecord[] }
   audit?: TermAudit
   petition?: PetitionRecord
+  /** The assembly's bills this term, and the laws it passed. */
+  bills?: BillsRecord
+  laws?: LawsRecord
 }
 /** db.politics (server/politics/data.ts). Created by the first decree, party, fee or levy, so it is not in COLLECTION_NAMES. */
 export interface PoliticsCollection {

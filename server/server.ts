@@ -1,5 +1,6 @@
 import { registeredCityIds, loadCityContent } from '../src/game/cities/registry.ts';
 import '../src/game/dilemma-pack.ts'; // installs the kit of work dilemmas and place actions: every life this server plays has them
+import '../src/game/routines/pack.ts'; // installs the routines of the regulars: who is at their venue at what hour
 /**
  * Node host: HTTP + WebSocket plumbing, static files and the server context.
  * Everything Node-specific lives here and in store.js. Rules shared with the Cloudflare worker

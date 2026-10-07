@@ -12,7 +12,8 @@ import type { Panel, PanelApi, ShellMode, VuePanel } from '../types/panel.ts'
 import type { CityView, PlayerLook, SceneWorld, WorldMap } from '../types/scene.ts'
 import type { PlayerActionType } from '../../types/actions.ts'
 import type { CommandArgs, CommandResult } from '../types/client.ts'
-import { contentFor, regularsFor } from '../../game/cities/runtime.ts'
+import { contentFor } from '../../game/cities/runtime.ts'
+import { cachedCityContent } from '../../game/cities/registry.ts'
 import { isDeparting } from '../../life.ts'
 import { roomJoinNeeded } from '../../client.ts'
 import { crowdList, playersHere } from '../../scene/crowd.ts'
@@ -85,7 +86,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   /** The crowd in the scene, from real data only: the server's who-is-here listing and the venue's regulars. */
   function showCrowd(): void {
     const state = game.state.value
-    const npcs = isDeparting(state) ? [] : regularsFor(game.cityId.value).filter((npc) => npc.venue === state.location)
+    // The regulars the social view lists here now (their routine has them at the venue; every regular until the routines are loaded).
+    const npcs = isDeparting(state) ? [] : game.view.value.social.here
     scene.venue.value?.setCrowd(crowdList({ players: playersHere(social.people, state, game.cityId.value), npcs, selfId: game.session.value?.id ?? null, positions }))
   }
   onPeople(showCrowd)
@@ -403,6 +405,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   let mapLeftAt = 0
   // Panels and sheets open and close with a soft sound; the sound hook is inert until the first tap.
   watch(() => shell.sheet.value !== null, (open) => playSound(open ? 'open' : 'close'), { flush: 'post' })
+  // A regular arrives or leaves as the hours pass, or when the routines have loaded: the scene follows the list.
+  watch(() => cachedCityContent(game.cityId.value) && game.view.value.social.here.map((npc) => npc.id).join(), (ids) => { if (ids !== null) showCrowd() })
   watch(game.mode, (mode, was) => {
     if (was === 'map' && mode !== 'map') mapLeftAt = Date.now()
     else if (mode === 'map' && was !== 'map' && mapLeftAt && Date.now() - mapLeftAt >= CAMERA_KEEP_MS) { mapLeftAt = 0; scene.city.value?.recentre() }

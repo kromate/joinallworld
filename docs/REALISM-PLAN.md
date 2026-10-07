@@ -134,7 +134,7 @@ Gate: slots work across two worktrees; baseline numbers are recorded; L7 is in p
 | Lane | Work |
 | --- | --- |
 | R1 routines | Regulars follow schedules keyed by the world clock (day, weather, season) |
-| R7 + R8 + L3 | Day and night, harmattan and rain, NEPA and generator fuel, go-slow, Saturday rent and wages that really bite |
+| R7 + R8 + L3 | Day and night, harmattan and rain, NEPA and generator fuel, go-slow, Saturday rent and wages that really bite. **Built** on `codex/realism-conditions` (see the run log) |
 | E-B objects (2 lanes) | Anchors and the action sequence; door, chairs, bed, bath with the modesty rule, bucket bath, cooker |
 | E-C wardrobe (2 lanes) | Slots, hiding body regions and blocking slots; hijab, gele, turban, scarves, chains, agbada, abaya; morphs for height, build and age (with R6) |
 | R5 space | Personal space and gaze in crowds and seating |
@@ -266,3 +266,18 @@ Slow 3G reaches the creator at 23 s, inside the new 40 s "Start fresh" point but
 Frame time in the world (Freedom Park, guest after "Play now"), Android emulator: Android 15 arm64, 2 GB, Chrome 124, SwiftShader software GPU, 412 px wide at DPR 2.6. Character creator: median 16.7 ms, p95 16.8. World: median 16.7 ms, p95 33.4 ms, worst 49.9; JS heap 17 MB; no console errors. Software rendering is slower than a mid-range phone's GPU and faster than nothing, so this is the reference to compare against, not an absolute. On the Mac's GPU with 6× CPU throttle the world holds 8.3 ms median and 9.2 ms p95.
 
 Phase 1 gate reads these: the skinned body must not move the creator-ready time on fast 3G by more than 0.5 s, must not add to bytes at ready, and must keep the emulator world p95 at or under 33.4 ms.
+
+### Phase 2: city conditions (R7 + R8 + L3, 7 October 2026)
+
+One worker in its own worktree (`codex/realism-conditions`, from `a4e1173`), nine milestone commits. Built: seeded power cuts, match nights and go-slow windows as pure functions; go-slow trips with a "go-slow" label on the Map and the trip card; generator petrol (`home.refuel`, "Buy N litres" in Groceries) and power notices; dimmer or hazier venue light for a cut, harmattan and the rains; a venue-card line when the light is off or a match is on; a Thursday heads-up, louder missed-rent notices and a one-line weekly sum. No eviction, no change to any rent, fee or pay, and no feature flag.
+
+**First download.** The rules and words are one lazy pack the engine reaches through a slot, installed by `profile.ts` on every playing host and fetched by the page when idle; until it lands the browser shows light on and an open road. Lagos startup is 603,287 raw, 222,602 gzip and 195,212 brotli, inside the budgets (609,000, 223,000 and 195,600), and `src/budgets.ts` is untouched. The visit rules also moved to the lazily fetched modules, which paid for the new code.
+
+**Economy simulation** (`npm run economy`, 30 days, 112 lives, run before and after; the baseline repeats exactly, and so does the after run). Wages, goals, rent, loan and the career net worth are unchanged. Two things move, both from the go-slow:
+
+- "act s/d" (active seconds a day) rises for everything that travels, for example career 81 to 87 and best mix 340 to 378, because trips in the rush take longer and the sim counts the road as active time.
+- The "gigs (equal effort)" player is given the career player's active seconds a day, so it now has about 7% more time and earns a little more: gigs ₦36.0k to ₦37.1k and 30-day net worth ₦36.8k to ₦38.0k for the Lapo baby in their own home; best mix ₦406.7k to ₦411.4k.
+
+Money per active second is the same, so the economy was not changed to absorb this. If the equal-effort comparison should stay fixed, the sim's budget would be set from the career player's open-road seconds; that is left for Astra to decide.
+
+**Known gaps.** No browser QA yet. Wage day is presentation only. Moments are on for everyone since the unflag merge, and read the condition lines unconditionally. Lagos has no climate record, so it gets no season tint (Jos does). `server/tables.test.ts` ("a match that is over…") failed once in a full run under load and passes alone and on the base build.

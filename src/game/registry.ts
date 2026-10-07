@@ -271,11 +271,13 @@ export function completeSystem(def: SystemDefinition<string>): SystemDefinition 
   order[index] = registered;
   byId.set(def.id, registered);
   standIns.delete(def.id);
-  for (const listener of changeListeners) listener();
+  systemsChanged();
   return registered;
 }
 /** Told after a stand-in was replaced by its system: what was derived from the registry (views) is stale. Returns the unsubscribe. */
 export function onSystemsCompleted(listener: () => void): () => void { changeListeners.add(listener); return () => { changeListeners.delete(listener); }; }
+/** Tell the listeners that what was derived from the registry is stale (a stand-in was replaced, or a pack changed what the views say). */
+export function systemsChanged(): void { for (const listener of changeListeners) listener(); }
 
 export const systems = (): SystemDefinition[] => order;
 export const getSystem = (id: string): SystemDefinition | undefined => byId.get(id);

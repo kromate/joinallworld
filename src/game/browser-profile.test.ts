@@ -36,6 +36,8 @@ import { readFileSync } from 'node:fs';
 import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
 import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
 import { isStandIn } from '${url('./registry.ts')}';
+// The page fetches the rules of the city's conditions when it is idle (src/app/state/idlePreload.ts); until then it shows an open road and the light on.
+await import('${url('./conditions/pack.ts')}');
 // The fictional cities of the city contract: lives in them must read the same in the browser engine (the city's content comes through the registry).
 const { loadCityContent, registerCityForTest } = await import('${url('./cities/registry.ts')}');
 const fixtures = await import('${url('./cities/testing/fictionalCity.test-fixture.ts')}');

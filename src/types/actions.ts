@@ -251,6 +251,8 @@ export interface ActionMap extends CampusActionMap {
   'home.grocery-buy': { payload: { id: ItemId; packs?: number }; ok: 'delivered'; fail: 'invalid_item' | 'invalid_quantity' | 'insufficient_funds' | 'kitchen_full' }
   /** Hand out the starter ingredients if that has not happened. */
   'home.kitchen-unpack': { payload: NoPayload; ok: 'unpacked'; fail: 'already_unpacked' }
+  /** Buy petrol for the generator in your room (delivered at once, anywhere): 1 – 20 litres, as many as the tank has room for. */
+  'home.refuel': { payload: { litres: number }; ok: 'fuelled'; fail: 'invalid_quantity' | 'no_generator' | 'tank_full' | 'insufficient_funds' }
 
   // -- onboarding --
   /**
@@ -457,7 +459,7 @@ export const ACTION_TYPES = [
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',
   'estate.confirm-residence', 'estate.unconfirm-residence',
   'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
-  'home.grocery-buy', 'home.kitchen-unpack',
+  'home.grocery-buy', 'home.kitchen-unpack', 'home.refuel',
   'onboarding.quick-start', 'onboarding.arrive',
   'onboarding.look', 'onboarding.traits', 'onboarding.dream', 'onboarding.lottery', 'onboarding.home',
   'onboarding.set-look', 'onboarding.boutique-buy',

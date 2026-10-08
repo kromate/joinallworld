@@ -2,6 +2,25 @@
 
 Canonical repository: kromate/joinallworld. Agents on every computer read the latest GitHub/main copy before claiming files, integrating a phase, or releasing. Local chat messages supplement this record; they do not reach every computer.
 
+## WORLD index primitives and terminal local handoff — 9 October 2026
+
+Builder source73e090c9 and acceptancef7425943 are published to main after inspecting
+and merging coordination-only upstreamb6908997. Actual World compiler0 at1536MiB,
+67 Python/22 engine/5 clean-archive release-policy checks pass:94 focused checks.
+Cached Dakar replay retains2,283 ordinals/1,810 versions/473 duplicates,2,908,160DB
+bytes and0 network. Twenty actual tool-file pins and Node binary pin are retained;
+no real index reservation/opener/campaign hook or new world geometry was produced.
+Actual source/campaign/game/Nigeria state and productiona446/version64ed are preserved.
+
+WORLD compiler/test/profile/archive processes are terminal0, own scratch removed,
+shared heavy/server/browser slots0/1, no owned QA server/tab/child/acquisition/upload.
+**WORLD explicitly hands the next sole LOCAL intensive turn to LIVING**, then
+GRAPHICS, then WORLD. Keep caps1/heap1536/minifier1 and no new fanout. GRAPHICS's
+dense canonical crowds still fail original17k triangle budget and placement gates;
+source-only fixes can continue. This is builder-source publication, not a production
+runtime upload or full-world/playability claim. Exact gates/next opener/crash/raw
+audit tasks are in world/PROGRESS.md; no cap waiver or source quota reset.
+
 ## Production release ownership
 
 - Checkpoint: 2026-10-08 20:36 UTC.

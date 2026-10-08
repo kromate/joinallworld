@@ -46,7 +46,12 @@ Receipts `feature-index-opener-clean-policy-v1.{tap,stderr,json}` retain the exa
 source/command. Total **94 focused checks plus compiler**; no full game build or
 deployment. Fresh mainb6908997 was inspected and merged with only coordination-doc
 changes incoming; tested builder code and source pins remain unchanged. Normal main
-publication and terminal handoff are the remaining closeout tasks for this phase.
+publication succeeded b6908997→f7425943 without force. Compiler/tests/cached profile/
+source-pin/archive handles are terminal0; all three local slots0/1 and no owned
+server/browser/child/upload remains. WORLD explicitly hands the next intensive
+turn to LIVING, then GRAPHICS, then WORLD. This is builder source publication only,
+not a production map/runtime upload. Older prepared-only notes were consolidated
+into this measured checkpoint and the specification.
 
 Full objective remains active. Before unattended country rollout: stable pinned
 execution snapshot/complete worker closure, guarded canonical namespace opener and

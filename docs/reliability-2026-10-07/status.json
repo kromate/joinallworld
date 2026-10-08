@@ -1,0 +1,159 @@
+{
+  "scope": "Original checkout implementation only; port to approved newer target pending; no production closure",
+  "updated": "2026-10-07",
+  "details": "implementation-log.md",
+  "risks": {
+    "R01": {
+      "status": "partial-local",
+      "evidence": "Bounded SQLite queue only; singleton unchanged"
+    },
+    "R02": {
+      "status": "partial-local",
+      "evidence": "Shared durable frame leases reduce limiter writes; compare with newer base in-memory limiter before port"
+    },
+    "R03": {
+      "status": "partial-local",
+      "evidence": "Dirty attachment persistence verified; newer target already has its own implementation"
+    },
+    "R04": {
+      "status": "open",
+      "evidence": null
+    },
+    "R05": {
+      "status": "open",
+      "evidence": null
+    },
+    "R06": {
+      "status": "partial-local",
+      "evidence": "Jitter and stable-join retry reset implemented"
+    },
+    "R07": {
+      "status": "partial-local",
+      "evidence": "Explicit exact-intent retry added; broader reliable resync remains open"
+    },
+    "R08": {
+      "status": "open",
+      "evidence": null
+    },
+    "R09": {
+      "status": "open",
+      "evidence": null
+    },
+    "R10": {
+      "status": "partial-local",
+      "evidence": "Source cap inventory and bounded queue; live capacity unknown"
+    },
+    "R11": {
+      "status": "partial-local",
+      "evidence": "Atomic untrimmed effects, linked transfers and owner-scoped history API implemented; balanced journal/checkpoints pending"
+    },
+    "R12": {
+      "status": "partial-local",
+      "evidence": "Stored-cash fail-closed guard and recovery UI; reconstruction pending"
+    },
+    "R13": {
+      "status": "partial-local",
+      "evidence": "Existing atomicity retained; effect persistence joins same commit"
+    },
+    "R14": {
+      "status": "open",
+      "evidence": null
+    },
+    "R15": {
+      "status": "open",
+      "evidence": null
+    },
+    "R16": {
+      "status": "open",
+      "evidence": null
+    },
+    "R17": {
+      "status": "partial-local",
+      "evidence": "Main SQLite schema v2 atomic migration/version gate implemented; port to newer schema required"
+    },
+    "R18": {
+      "status": "open",
+      "evidence": null
+    },
+    "R19": {
+      "status": "partial-local",
+      "evidence": "Main store and world-shard write fence implemented; full cutover and all-writer fence pending"
+    },
+    "R20": {
+      "status": "open",
+      "evidence": null
+    },
+    "R21": {
+      "status": "open",
+      "evidence": null
+    },
+    "R22": {
+      "status": "open",
+      "evidence": null
+    },
+    "R23": {
+      "status": "open",
+      "evidence": null
+    },
+    "R24": {
+      "status": "partial-local",
+      "evidence": "Queue metrics available in store stats; live ingestion and alerting unknown"
+    },
+    "R25": {
+      "status": "open",
+      "evidence": null
+    },
+    "R26": {
+      "status": "open",
+      "evidence": null
+    },
+    "R27": {
+      "status": "open",
+      "evidence": null
+    },
+    "R28": {
+      "status": "open",
+      "evidence": null
+    },
+    "R29": {
+      "status": "open",
+      "evidence": null
+    },
+    "R30": {
+      "status": "partial-local",
+      "evidence": "Stale table callbacks rejected; protocol deployment work pending"
+    },
+    "R31": {
+      "status": "open",
+      "evidence": null
+    },
+    "R32": {
+      "status": "partial-local",
+      "evidence": "Identity-bound persisted pending action, explicit recovery HUD and overload cooldown implemented"
+    },
+    "R33": {
+      "status": "partial-local",
+      "evidence": "Existing local core/Worker suites run; production-shaped load pending"
+    },
+    "R34": {
+      "status": "open",
+      "evidence": null
+    },
+    "R35": {
+      "status": "open",
+      "evidence": null
+    },
+    "R36": {
+      "status": "verified-local",
+      "evidence": "Actual credited amount consumed by earnings and career display; real helper-shift overflow regression passes"
+    },
+    "R37": {
+      "status": "open",
+      "evidence": null
+    },
+    "R38": {
+      "status": "open",
+      "evidence": null
+    }
+  }
+}

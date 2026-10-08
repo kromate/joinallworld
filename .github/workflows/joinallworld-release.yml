@@ -1,0 +1,165 @@
+name: JoinAllworld release
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact reviewed public kromate/joinallworld commit
+        required: true
+        type: string
+      deploy:
+        description: Deploy reviewed candidate after the selected checks pass
+        type: boolean
+        default: false
+      full_checks:
+        description: Run exhaustive checks here only if they have not already passed locally for this source SHA
+        type: boolean
+        default: false
+      publish_staging:
+        description: Enable workers.dev only after independent runtime acceptance
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: joinallworld-next-release
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Build, check and seal new game
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      package-sha: ${{ steps.package.outputs.package-sha }}
+      archive-sha: ${{ steps.package.outputs.archive-sha }}
+    steps:
+      - name: Check out trusted deployment policy
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate immutable source identifier
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: node -e 'if (!/^[a-f0-9]{40}$/.test(process.argv[1])) process.exit(1)' "$SOURCE_SHA"
+      - name: Check out exact public game source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: kromate/joinallworld
+          ref: ${{ inputs.source_sha }}
+          path: new-source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up pinned Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22.18.0
+      - name: Install pinned deployment tools without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund --prefix .github/wrangler
+      - name: Validate deployment policy and guard negative controls
+        run: |
+          node --test scripts/guard-joinallworld-package.test.mjs
+      - name: Install exact public game source
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          test "$(git -C new-source rev-parse HEAD)" = "$SOURCE_SHA"
+          git -C new-source fetch --no-tags origin main
+          node scripts/check-joinallworld-source.mjs "$GITHUB_WORKSPACE/new-source" "$SOURCE_SHA"
+          npm ci --ignore-scripts --no-audit --no-fund --prefix new-source
+      - name: Build once and enforce download budgets
+        timeout-minutes: 3
+        run: |
+          npm run build --prefix new-source
+          npm run size:download --prefix new-source
+      - name: Fast source smoke checks
+        if: ${{ !inputs.full_checks }}
+        timeout-minutes: 1
+        working-directory: new-source
+        run: node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+      - name: Full source checks on request
+        if: inputs.full_checks
+        working-directory: new-source
+        run: |
+          npm run typecheck
+          npm test
+      - name: Fast Worker runtime checks
+        if: ${{ !inputs.full_checks }}
+        timeout-minutes: 1
+        working-directory: new-source
+        env:
+          JOINALLWORLD_TOOLS: ${{ github.workspace }}/.github/wrangler
+        run: |
+          node --experimental-strip-types --test --test-reporter=tap --test-name-pattern='^(Cloudflare: public IDs,|Cloudflare: settlement once|Cloudflare: real static HTML|Combined game on the Worker:|assets: a missing hashed file)' deploy/cloudflare.test.mjs | tee "$RUNNER_TEMP/worker-smoke.tap"
+          node -e 'const s=require("fs").readFileSync(process.argv[1],"utf8"); if(!/^# pass 5$/m.test(s)||!/^# fail 0$/m.test(s)) throw Error("Expected all five Worker smoke checks to pass")' "$RUNNER_TEMP/worker-smoke.tap"
+      - name: Full Worker runtime checks on request
+        if: inputs.full_checks
+        timeout-minutes: 15
+        working-directory: new-source
+        env:
+          JOINALLWORLD_TOOLS: ${{ github.workspace }}/.github/wrangler
+        run: node --experimental-strip-types --test --test-concurrency=1 "deploy/*.test.ts"
+      - name: Assemble and seal fixed new-worker package
+        id: package
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          PUBLISH: ${{ inputs.publish_staging }}
+        run: |
+          node scripts/package-joinallworld.mjs "$GITHUB_WORKSPACE/new-source" "$RUNNER_TEMP/joinallworld-package" "$SOURCE_SHA" "$PUBLISH" "$GITHUB_WORKSPACE/.github/wrangler"
+          DIGEST=$(node scripts/guard-joinallworld-package.mjs check "$RUNNER_TEMP/joinallworld-package" "$SOURCE_SHA" "$PUBLISH")
+          echo "package-sha=$DIGEST" >> "$GITHUB_OUTPUT"
+          tar --sort=name --owner=0 --group=0 --numeric-owner --mtime='UTC 2020-01-01' -C "$RUNNER_TEMP/joinallworld-package" -cf "$RUNNER_TEMP/joinallworld-package.tar" .
+          echo "archive-sha=$(sha256sum "$RUNNER_TEMP/joinallworld-package.tar" | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
+      - name: Upload sealed new-worker artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: joinallworld-package
+          path: ${{ runner.temp }}/joinallworld-package.tar
+          if-no-files-found: error
+          retention-days: 90
+
+  deploy:
+    name: Deploy only joinallworld-next
+    needs: package
+    if: inputs.deploy && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - name: Check out same trusted policy commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Refuse stale deployment policy
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse refs/remotes/origin/main)" = "$GITHUB_SHA"
+      - name: Set up pinned Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22.18.0
+      - name: Install trusted pinned tool without source build scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund --prefix .github/wrangler
+      - name: Download sealed artifact from this run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: joinallworld-package
+          path: ${{ runner.temp }}/sealed
+      - name: Verify archive and extract regular package files only
+        env:
+          ARCHIVE_SHA: ${{ needs.package.outputs.archive-sha }}
+        run: |
+          echo "$ARCHIVE_SHA  $RUNNER_TEMP/sealed/joinallworld-package.tar" | sha256sum --check --strict
+          python3 scripts/unpack-joinallworld.py "$RUNNER_TEMP/sealed/joinallworld-package.tar" "$RUNNER_TEMP/joinallworld-package"
+      - name: Revalidate fixed identity and deploy with existing protected credential
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          PUBLISH: ${{ inputs.publish_staging }}
+          PACKAGE_SHA: ${{ needs.package.outputs.package-sha }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.ALLWORLD_CF_ACCOUNT_ID }}
+        run: node scripts/guard-joinallworld-package.mjs deploy "$RUNNER_TEMP/joinallworld-package" "$SOURCE_SHA" "$PUBLISH" "$PACKAGE_SHA" "$GITHUB_WORKSPACE/.github/wrangler/node_modules/wrangler/bin/wrangler.js"

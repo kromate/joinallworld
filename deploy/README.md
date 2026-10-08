@@ -18,7 +18,7 @@ PORT=8787 npm run start:worker   # the same Worker on this machine (Miniflare), 
 
 Bindings: `BUILD_ID` (var); `PUBLIC_ORIGIN` (absolute links in previews and mail), `VOTES_PER_ADDRESS`, `VOTE_CAP_MODE`, `SLEEP_BETWEEN_BEATS` (`1`: the heartbeat runs on the alarm and no change is held in memory, so the object may sleep while sockets are connected; it then writes a row per beat); secrets `MODERATOR_TOKEN` (operator routes), the outreach settings (`ZEPTOMAIL_AUTH`, `EMAIL_FROM_ADDRESS`, `EMAIL_FROM_NAME`, `EMAIL_CONTACT_LINE`, `EMAIL_DAILY_CAP`, `WHATSAPP_CHANNEL_URL`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `PUSH_DAILY_CAP`), the hosted-companion settings (secret `AI_GATEWAY_API_KEY`; optional `AI_GATEWAY_BASE_URL`, `COMPANION_*` — `docs/COMPANION.md`, "Hosted language model"), the telemetry settings (README, "Telemetry"), the account settings (vars, not secrets: `ACCOUNTS_FIREBASE_PROJECT_ID`, `ACCOUNTS_FIREBASE_API_KEY`, `ACCOUNTS_GOOGLE_CLIENT_ID` — README, "Accounts", and `docs/ACCOUNTS.md`) and the relay-test settings below. With none of the optional ones set, mail and push stay in dry run, telemetry is off, there is no sign-in, there is no operator surface and voice is STUN-only.
 
-Use the reviewed release workflow in kromate/allworld, supplying an exact public kromate/joinallworld main ancestor SHA. It builds without provider secrets, runs core/edge tests, bundles and hashes the Worker and assets, then the protected deployment job rechecks a fixed new-worker configuration. Deploy and public staging default off. No domain routes are included. Roll back public staging exposure by releasing with publish_staging=false; retain the same new namespace to preserve its data.
+Use `.github/workflows/joinallworld-release.yml` in `kromate/joinallworld`, supplying an exact reviewed commit SHA that is an ancestor of this repository’s `main`. It builds without provider secrets, runs core/edge tests, bundles and hashes the Worker and assets, then the protected deployment job rechecks a fixed new-worker configuration. Deploy and public staging default off. No domain routes are included. Roll back public staging exposure by releasing with publish_staging=false; retain the same new namespace to preserve its data.
 
 Sessions use an HttpOnly secret cookie and a separate public peer ID. This is browser-device identity, not a recoverable account. Losing the cookie does not provide automatic access to archived life data. Authentication refreshes expiry; expired IDs are rejected. Accepted action IDs retain their receipt for the full24-hour replay window. At capacity, new actions fail safely rather than dropping live receipts.
 
@@ -55,3 +55,26 @@ A public workers.dev staging URL is publicly reachable, even when unadvertised. 
 Keep the same Worker namespace and Durable Object identity. The adapter adds tables beside the existing ones — feature collections and their overflow rows (`collection_parts`), exactly-once receipts (`once_receipts`), world shards (`world_shards`, `world_meta`), host keys (`host_keys`), accounts and their device bindings (`accounts`, `account_devices`) and rate-window metadata — without resetting existing sessions, archives or action receipts. A session row written by an earlier adapter is read as it is; receipts found inline in it move to their tables the first time it is written. Before a runtime upgrade, confirm this object supports SQLite point-in-time recovery and record a pre-upgrade UTC restore reference, then capture existing synthetic identities, balances and a no-cost receipt through normal APIs. A timestamp reference is not an executed export or restore. Check the same identities and receipt after upgrading.
 
 Do not roll back to the earlier core-only adapter after new gameplay writes: its old settlement code can discard newer life fields. Prefer a reviewed forward fix. An actual provider restore requires a separate approved operation and can lose later progress. Package-only CI does not perform these runtime checks.
+
+## Checked local release package
+
+GitHub deployment currently needs the missing production environment secret `CLOUDFLARE_API_TOKEN` and repository variable `ALLWORLD_CF_ACCOUNT_ID`. Configure them before selecting `deploy=true`. The workflow defaults to package-only checks and uses this repository for both policy and exact game source.
+
+For an explicitly authorized local release, finish source checks and build first. Use a fresh package directory, then assemble and inspect the sealed package with the pinned tooling:
+
+```sh
+npm ci --ignore-scripts --no-audit --no-fund --prefix .github/wrangler
+SOURCE_SHA=$(git rev-parse HEAD)
+RELEASE_PARENT=$(python3 -c "import pathlib,tempfile; print(pathlib.Path(tempfile.mkdtemp(prefix='joinallworld-release-')).resolve())")
+node scripts/check-joinallworld-source.mjs "$PWD" "$SOURCE_SHA"
+node scripts/package-joinallworld.mjs "$PWD" "$RELEASE_PARENT/package" "$SOURCE_SHA" false "$PWD/.github/wrangler"
+node scripts/guard-joinallworld-package.mjs check "$RELEASE_PARENT/package" "$SOURCE_SHA" false
+```
+
+Review the resulting manifest and fixed `wrangler.json`, confirm the intended Cloudflare account, retain the production secrets, and capture continuity evidence before deploying. Only then, with the authorized account ID and an existing authenticated Wrangler session or scoped API token, deploy the checked package:
+
+```sh
+node .github/wrangler/node_modules/wrangler/bin/wrangler.js deploy --config "$RELEASE_PARENT/package/wrangler.json" --no-bundle
+```
+
+Do not deploy the source checkout configuration. Keep the `joinallworld-next` Worker, `JOINALLWORLD` binding and SQLite migration unchanged. After deployment, verify live build identity and the same synthetic balances and receipt. Local checks and package sealing do not prove deployment or continuity.

@@ -54,7 +54,7 @@ const stopById = new Map(SHUTTLE_STOPS.map((stop): [ShuttleStopId, Readonly<Shut
 const isStopId = (value: unknown): value is ShuttleStopId => typeof value === 'string' && stopById.has(value as ShuttleStopId);
 /** The label of a stop. */
 const stopLabel = (id: ShuttleStopId): string => stopById.get(id)?.label ?? id; // every ShuttleStopId is a stop (the original would throw)
-const campusWalk = createCampusWalk();
+let cachedCampusWalk: ReturnType<typeof createCampusWalk> | undefined;
 const EPSILON = 1e-7;
 
 const distance = (a: Point, b: Point): number => Math.hypot(b.x - a.x, b.z - a.z);
@@ -183,6 +183,7 @@ export function shuttleRoute(origin: string, destination: string): Readonly<Shut
   if (cached) return cached;
   const from = stopById.get(origin as ShuttleStopId), to = stopById.get(destination as ShuttleStopId);
   if (!from || !to || origin === destination) return null;
+  const campusWalk = cachedCampusWalk ??= createCampusWalk();
   const usable=(projection:RoadProjection)=>{const zone=campusWalk.zoneAt(projection.point.x,projection.point.z);return !!zone&&campusWalk.grids.get(zone.id)?.free(projection.point.x,projection.point.z);};
   const starts=roadCandidates(from.anchor).filter(usable).slice(0,30),ends=roadCandidates(to.anchor).filter(usable).slice(0,30);
   let selected:{start:RoadProjection;end:RoadProjection;first:Point[];last:Point[];road:Point[]}|null=null;

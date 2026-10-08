@@ -243,6 +243,8 @@ export interface SocialPlayerRecord {
   mentions?: 'off'
   /** Pictures: 'nobody' refuses every picture sent to this player (server/social/images.ts). Absent: friends. */
   pictures?: 'nobody'
+  voiceNotes?: 'nobody'
+  voiceCount?: { day: number; count: number }
   /**
    * REALISM R13: 'on' lets a regular offer to introduce this player to another real player they have seen on a separate visit
    * (server/social/introductions.ts). Absent: off, and nothing below is kept.
@@ -286,6 +288,9 @@ export interface MessageRecord {
   rx?: Record<string, string>
   /** A picture: the id of its bytes (kept apart from this collection), its size and what became of it. */
   img?: ImageRef
+  voice?: VoiceRef
+  /** Retained after deletion so a retry cannot replace a voice note. */
+  voiceHash?: string
   version?: number
   editedAt?: number
   deletedAt?: number
@@ -319,6 +324,20 @@ export interface ImageStore {
   /** Delete pictures stored before `before` (server ms) and, while the total is over `maxBytes`, the oldest. Returns the ids removed. */
   trim(before: number, maxBytes: number): Promise<string[]>
   stats(): Promise<{ count: number; bytes: number }>
+}
+export interface VoiceRef {
+  id: string
+  durationMs: number
+  bytes: number
+  hash: string
+  reports?: string[]
+  hidden?: true
+  gone?: true
+}
+export interface StoredVoice { id: string; conv: string; at: number; size: number; durationMs: number; type: 'webm-opus' }
+export interface VoiceStore extends Pick<ImageStore, 'remove' | 'removeConv' | 'trim' | 'stats'> {
+  put(voice: StoredVoice, bytes: Uint8Array): Promise<void>
+  get(id: string): Promise<{ voice: StoredVoice; bytes: Uint8Array } | null>
 }
 export interface ConversationRecord {
   id: string
@@ -427,6 +446,7 @@ export interface PlayerReportRecord {
   evidence: string[]
   note?: string
   updatedAt?: number
+  voice?: string
   /** A report about a picture: its id and conversation. */
   image?: string
   conv?: string
@@ -881,7 +901,7 @@ export interface RouteResult {
   /** Runs once the answer is out; a throw is logged and goes no further. */
   after?: () => void | Promise<void>
   /** Instead of `body`: bytes to send as they are, with their content type. Always sent `private`, `nosniff` and `inline`. */
-  file?: { bytes: Uint8Array; type: string }
+  file?: { bytes: Uint8Array; type: string; cache?: 'no-store' }
 }
 export type RouteHandler = (request: RouteRequest) => RouteResult | void | Promise<RouteResult | void>
 export type RouteMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -1123,6 +1143,7 @@ export interface RouteContext {
   retryIn?(key: string): number
   /** The picture bytes (server/social/images.ts); null on a host built without them. */
   images: ImageStore | null
+  voices?: VoiceStore | null
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]
   collection(db: Db, name: string, initial?: object): Record<string, unknown>

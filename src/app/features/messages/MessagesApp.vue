@@ -287,8 +287,10 @@ const chatList = computed(() => sortChats(filterChats((me.value?.conversations ?
 const showSettings = ref(false)
 const lightbox = ref<Message | null>(null)
 /** The picture button shows where pictures are switched on and the chat takes them: a direct chat with a friend, or a group. */
+const voiceAllowed = computed(() => Boolean(me.value?.limits.voice?.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some(friend => friend.id === partner.value)))))
+async function reportVoice(line: Message): Promise<void> { if (line.voice && ui.open) await perform('/api/social/reports', { conv: ui.open, voice: line.voice.id, reason: 'other' }, 'Voice note reported and hidden for you.') }
 const pictureAllowed = computed(() => Boolean(me.value?.limits.pictures.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some((friend) => friend.id === partner.value))) && !readOnly.value))
-async function pictureSent(result: { conv: Conversation }): Promise<void> {
+async function pictureSent(result: { conv: Pick<Conversation, 'id'> }): Promise<void> {
   const real = result.conv.id
   if (ui.open !== real) setOpen(real)
   await openThread(real)
@@ -411,7 +413,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
@@ -425,7 +427,7 @@ defineExpose({
         <footer class="messages-foot">
           <span v-if="readOnly" class="messages-why">{{ readOnly }}</span>
           <MessageAction v-if="messageAction" :key="`${messageAction.kind}:${messageAction.item.id}`" :kind="messageAction.kind" :item="messageAction.item" :conversations="me.conversations" :disabled="Boolean(readOnly)" :max="me.limits.body" @close="messageAction = null" />
-          <Composer ref="composer" :pictures="pictureAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" />
+          <Composer ref="composer" :pictures="pictureAllowed" :voice="voiceAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" @sent-voice="pictureSent" />
         </footer>
       </div>
 

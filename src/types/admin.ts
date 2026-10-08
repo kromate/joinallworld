@@ -48,6 +48,9 @@ export interface AdminHttpRoutes {
   'GET /api/admin/trust/reports': Get<AdminJson>
   'POST /api/admin/trust/reports/:id/act': Post<{ clientId: string; action: 'uphold' | 'dismiss'; note?: string }, AdminJson>
   'POST /api/admin/trust/players/:id/act': Post<{ clientId: string; action: 'verify' | 'release'; tier?: 'phone' | 'id' | 'business' | 'none'; reason: string }, AdminJson>
+  /** Authenticated recording bytes, not a JSON envelope. */
+  'GET /api/admin/moderation/voice/:id': { params: { id: string }; response: Uint8Array; errors: AdminError | 'unknown_voice' }
+  'POST /api/admin/moderation/voice/:id/act': Post<{ clientId: string; action: 'remove' | 'restore' }, AdminJson>
   'GET /api/admin/moderation/pictures': Get<AdminJson>
   'GET /api/admin/moderation/pictures/:id': Get<AdminJson>
   'POST /api/admin/moderation/pictures/:id/act': Post<{ clientId: string; action: 'remove' | 'restore' }, AdminJson>

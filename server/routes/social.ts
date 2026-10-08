@@ -55,6 +55,8 @@ import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRec
 import { socialService, MATERIAL, LIMITS } from '../social/service.ts';
 import { pageLimit } from '../social/pages.ts';
 import { CONTENT_TYPES, FAULT_WORDS, PICTURE_LIMITS, cleanPicture, claimedType, fromBase64, pictureSettings } from '../social/images.ts';
+import { inspectVoiceNote, VOICE_POLICY } from '../social/voice-notes.ts';
+import { VOICE_NOTE_LIMITS, VOICE_NOTE_MIME } from '../../src/types/voice-note.ts';
 import type { ImageRef } from '../types.ts';
 
 type Service = ReturnType<typeof socialService>;
@@ -150,6 +152,39 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     if (!found) throw ctx.fail(404, 'unknown_picture');
     return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
   };
+  const uploadVoice: RouteHandler = async request => {
+    const me = await ctx.store.read(db => request.requireSession(db).publicId);
+    if (!ctx.allow(`social:voice-upload:${me}`, 6)) throw ctx.fail(429, 'rate_limited');
+    const voices = ctx.voices;
+    if (!voices || ctx.env?.('CHAT_VOICE_NOTES')?.trim().toLowerCase() === 'off') return { body: { ok: false, code: 'voice_off', reason: 'Voice notes are not available here.' }, renew: true };
+    const body = await request.json(Math.ceil(VOICE_NOTE_LIMITS.bytes / 3) * 4 + 8192);
+    const bytes = fromBase64(body.data, VOICE_NOTE_LIMITS.bytes + 4);
+    if (!bytes) throw ctx.fail(400, 'invalid_voice');
+    const voice = inspectVoiceNote(bytes);
+    if (!voice.ok) return { body: { ok: false, code: 'voice_rejected', reason: voice.reason === 'duration' ? 'Record a voice note of up to one minute.' : voice.reason === 'size' ? 'That recording is too large. Try a shorter voice note.' : 'That recording format could not be read. Please record it again.' }, renew: true };
+    const to = typeof body.to === 'string' ? body.to.toLowerCase() : null;
+    const conv = to !== null ? `dm.${[me, to].sort().join('.')}` : typeof body.conv === 'string' ? body.conv : '';
+    if (!/^(dm|g)\.[0-9a-f.-]{1,80}$/.test(conv)) throw ctx.fail(400, 'invalid_conversation');
+    const id = ctx.randomId().replaceAll('-', '');
+    if (!VOICE_NOTE_LIMITS.idPattern.test(id)) throw ctx.fail(500, 'internal_error');
+    const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', Uint8Array.from(voice.bytes).buffer)), byte => byte.toString(16).padStart(2, '0')).join('');
+    await voices.put({ id, conv, at: ctx.now(), size: voice.bytes.length, durationMs: voice.durationMs, type: voice.format }, voice.bytes);
+    try {
+      const result = await ctx.store.transact(db => service.finish(db, service.send(db, request.requireSession(db, { renew: true }), body, { voice: { id, durationMs: voice.durationMs, bytes: voice.bytes.length, hash } })), { durable: () => true, waitForObserved: true, committed: value => service.committed(value) });
+      const answer = service.deliver(result);
+      if (!answer.ok || 'duplicate' in answer) await voices.remove([id]);
+      else { const tidy = voices.trim(ctx.now() - VOICE_POLICY.retentionMs, VOICE_POLICY.ceilingBytes).catch(() => []); ctx.waitUntil?.(tidy); }
+      return { body: answer, renew: true };
+    } catch (error) { await voices.remove([id]).catch(() => {}); throw error; }
+  };
+  const readVoice: RouteHandler = async request => {
+    const id = request.params.id ?? '', voices = ctx.voices;
+    await ctx.store.read(db => { const me = request.requireSession(db).publicId; if (!ctx.allow(`social:voice-read:${me}`, 120)) throw ctx.fail(429, 'rate_limited'); });
+    if (!voices || !VOICE_NOTE_LIMITS.idPattern.test(id)) throw ctx.fail(404, 'unknown_voice');
+    const stored = await voices.get(id);
+    if (!stored || !(await ctx.store.read(db => service.voiceAllowed(db, request.requireSession(db), stored.voice.conv, id)))) throw ctx.fail(404, 'unknown_voice');
+    return { file: { bytes: stored.bytes, type: VOICE_NOTE_MIME[stored.voice.type], cache: 'no-store' } };
+  };
   return {
     // `lite=1`: a first page of chats (`conversationsMore` for the rest) and, for the founder, none of the automatic friends (the Players view reads them). Absent: as before, up to LIMITS.convs chats.
     'GET /api/social/me': route((db, session, body, request) => service.me(db, session, { lite: request.query.get('lite') === '1' })),
@@ -182,6 +217,8 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/prefs': mine((db, session, body) => service.chatPrefs(db, session, body)),
     'POST /api/social/introduction': mine((db, session, body) => service.introduce(db, session, body)),
     'POST /api/social/images': upload,
+    'POST /api/social/voice': uploadVoice,
+    'GET /api/social/voice/:id': readVoice,
     'GET /api/social/images/:id': picture,
     'GET /api/social/house/:host': route((db, session, body, request) => service.house(db, session, request.params.host)),
     'POST /api/social/join': route((db, session, body) => service.join(db, session, body)),

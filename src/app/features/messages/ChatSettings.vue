@@ -20,6 +20,7 @@ const save = (body: object): Promise<unknown> => perform('/api/social/prefs', bo
     <label class="switch"><input type="checkbox" :checked="prefs.mentions === 'on'" @change="save({ mentions: ($event.target as HTMLInputElement).checked ? 'on' : 'off' })"> Let a mention reach me even when a group is muted</label>
     <label class="switch"><input type="checkbox" :checked="prefs.introductions === 'on'" @change="save({ introductions: ($event.target as HTMLInputElement).checked ? 'on' : 'off' })"> Let regulars offer to introduce me to people I keep bumping into</label>
     <p>Only people who have this on too are ever offered, and only when they are standing in the same place as you. Switching it off deletes what was kept about your visits.</p>
+    <fieldset><legend>Voice notes</legend><label><input type="checkbox" :checked="prefs.voiceNotes !== 'nobody'" @change="save({ voiceNotes: ($event.target as HTMLInputElement).checked ? 'friends' : 'nobody' })"> Receive voice notes from friends and groups</label><p>Recordings only download when you press play. Turn this off to stop receiving them.</p></fieldset>
     <NotifySettings :notify="prefs.notify" />
   </section>
 </template>

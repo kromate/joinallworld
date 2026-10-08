@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VoiceComposer from './VoiceComposer.vue'
 // The message box: grows to four lines, keeps a draft per conversation on this device, offers an @ picker in groups, an emoji
 // picker, :shortcodes:, and the quoted message being answered.
 import { computed, nextTick, ref, watch } from 'vue'
@@ -24,11 +25,12 @@ const props = defineProps<{
   prefill: string
   /** Pictures may be sent here (switched on, and a chat that takes them): the picture button shows. */
   pictures: boolean
+  voice?: boolean
   /** Who a picture goes to. */
   target: { to: string } | { conv: string }
   newId: () => string
 }>()
-const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
+const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentVoice: [result: { conv: { id: string } }]; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
 
 const drafts = createDrafts((() => { try { return globalThis.localStorage ?? null } catch { return null } })())
 const text = ref('')
@@ -156,6 +158,7 @@ const lines = computed(() => composerLines(text.value))
         </span>
       </div>
     </div>
+    <VoiceComposer v-if="voice" :target="target" :conv="conv" :me-id="meId" :disabled="disabled || Boolean(photo)" :new-id="newId" :reply-to="reply?.seq" @sent="(result) => { emit('sentVoice', result); emit('cancelReply') }" />
     <EmojiPicker v-if="emoji" class="composer-emoji" @pick="insertEmoji" />
     <form class="composer-form" @submit.prevent="submit">
       <input v-if="pictures" ref="fileInput" type="file" accept="image/*" class="composer-file" aria-label="Choose a picture" tabindex="-1" @change="chosen">

@@ -1,15 +1,18 @@
-# Voice-note checkpoint
+# Voice-note integration checkpoint
 
-Local work began after the phone release, then the user made app-interior redesign the next release priority. Voice notes are unfinished and must not be claimed deployed.
+This branch publishes the complete tracked and untracked voice-note implementation preserved in stash `5860c8e5e0f350a01378ceb4b28cf9a9238daed1`, based on `9f9bed3616ac43e0989ce42d856490cb57d94dba`. It is a recovery/integration candidate, not a release. The original stash is retained.
 
-Untracked source: `server/social/voice-notes.ts`, `src/types/voice-note.ts`, `src/app/features/messages/voiceRecorder.ts`.
+## Implemented source
 
-Implemented boundaries: 60-second / 512,000-byte recording limit, 32kbps Opus hint, single Opus/WebM track parser with packet-derived duration and canonical container rewrite, and a browser recording state machine with microphone/object-URL ownership. The parser strips tags/seek metadata and rejects video, malformed/truncated containers and excessive duration/size. It does not decode or semantically moderate audio.
+- Private Node and SQLite voice stores and upload/read routes.
+- Opus/WebM validation and canonical container rewrite; 60-second/512,000-byte caps.
+- Membership/friend/block/recipient-preference checks, retry byte fingerprints, removal and report moderation paths.
+- Recorder review/send controls and lazy native playback with disposal on chat/identity changes.
 
-Evidence: a real Chrome MediaRecorder captured a synthetic tone without microphone access. Its 16,343-byte upload parsed and rewrote to 16,248 bytes / 3,900ms; FFmpeg decoded the cleaned recording. Independent short Opus fixtures passed; 61-second, video, truncated and oversized samples were rejected. A bounded 1,000-mutation diagnostic returned without uncaught errors; codec-payload mutations can remain accepted because this is container validation, not a codec decoder. Typecheck passed before the last small validator refinements.
+## Required integration
 
-Still required: private upload/retrieval routes, bounded Node/Worker blob lifecycle, authorization on every read, byte-fingerprint retry identity, history/removal/report cleanup, moderation handling, player controls, review/send/retry UI, lazy playback with no autoplay, identity/chat-change disposal wiring, codec compatibility (older Safari AAC path not implemented), end-to-end probes, full checks and deployment. No runtime caller imports these modules yet.
+Cherry-pick the single checkpoint commit onto fresh main, preserving Family routes/consent, message edits, current provider configuration, and save state. Resolve shared-file conflicts deliberately. Use main's current fail-closed compiler, release guards and budgets; the old base predates compiler-abort detection. Do not replace main with this older branch.
 
-References: https://www.w3.org/TR/mediastream-recording/ ; https://www.matroska.org/technical/elements.html ; https://www.matroska.org/technical/notes.html ; https://webkit.org/blog/16574/webkit-features-in-safari-18-4/ . Modern Safari supports Opus/WebM; older Safari's AAC/MP4 support requires a separate verified path.
+Historical local fast checks, 40 existing checks and an HTTP authorization/retry/removal probe passed before the stash. Those are not fresh acceptance for current main. Still required: exact merged type/build/budget checks; SQLite restart/blob lifecycle; two-actor recording/review/send/retry/playback; permission denial and offline behavior; group removal/block/report/delete; identity/chat-change cleanup; provider response headers; production continuity and live verification. Older Safari AAC/MP4 recording is not implemented; unsupported capture must remain explicit. The container validator does not decode or semantically moderate audio.
 
-Synthetic diagnostic files live in `/tmp/allworld-voice-probe/`; the original browser download is `/Users/anthonyakpan/Downloads/browser-voice.webm`. Temporary `voice-probe.html` was removed. This checkpoint does not reduce the full parity roadmap.
+No production upload, save migration, credential change or actual-user recording is authorized by this checkpoint itself. The human's current workflow assigns integration/conflict/follow-up bug handling to the agent on the other system.

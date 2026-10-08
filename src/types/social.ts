@@ -1,3 +1,4 @@
+import type { VoiceNoteView } from './voice-note.ts'
 import type { AvatarLookExtensions } from './avatar.ts';
 /**
  * Social wire shapes: everything `/api/social/*` returns and accepts, the social frames on
@@ -118,6 +119,7 @@ export interface Message {
   reactions?: { emoji: string; count: number; mine?: true }[]
   /** A picture. Its bytes are at GET /api/social/images/<id>, for members of the conversation only. */
   image?: PictureView
+  voice?: VoiceNoteView
   version?: number
   editedAt?: number
   deleted?: true
@@ -205,10 +207,11 @@ export interface SocialLimits {
   mentions: number
   /** Pictures: whether this player can send them now, the largest upload in bytes, the longest caption. */
   pictures: { on: boolean; bytes: number; caption: number }
+  voice?: { on: boolean; bytes: number; durationMs: number }
 }
 
 /** Who may add a player to a group, and whether a mention breaks through a muted group. */
-export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody'; /** Regulars may offer to introduce me to a real player. Off unless switched on. */ introductions: 'on' | 'off'; notify: NotifyPrefs }
+export interface ChatPrefs { groups: 'friends' | 'nobody'; mentions: 'on' | 'off'; pictures: 'friends' | 'nobody'; voiceNotes?: 'friends' | 'nobody'; /** Regulars may offer to introduce me to a real player. Off unless switched on. */ introductions: 'on' | 'off'; notify: NotifyPrefs }
 
 /** GET /api/social/me. */
 export interface SocialOverview {
@@ -301,7 +304,7 @@ export interface FriendRemoveBody { id: string; cityId: CityId }
 export interface BlockBody { id: string; cityId: CityId }
 export interface UnblockBody { id: string }
 /** A player, a group (`conv`) or one picture of a conversation (`conv` and `image`). */
-export type PlayerReportBody = ({ id: string } | { conv: ConversationId; image?: string }) & { reason: ReportReason; text?: string }
+export type PlayerReportBody = ({ id: string } | { conv: ConversationId; image?: string; voice?: string }) & { reason: ReportReason; text?: string }
 /** `clientId` here is any retry key of 8–80 characters `[A-Za-z0-9:_-]`; the browser sends a TimedId. */
 export type SendMessageBody = ({ to: string } | { conv: ConversationId }) & {
   body: string; clientId: string
@@ -319,7 +322,7 @@ export interface NotifyPrefsBody { text?: boolean; groups?: 'mentions' | 'all'; 
 export interface NotifyPrefs { text: boolean; groups: 'mentions' | 'all'; pausedUntil: number | null; quietDm: boolean; quietGroups: boolean }
 export interface ReactBody { seq: number; emoji: string | null }
 export interface ConvPrefsBody { mute?: boolean; pin?: boolean; hide?: true }
-export interface ChatPrefsBody { groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody'; introductions?: 'on' | 'off' }
+export interface ChatPrefsBody { voiceNotes?: 'friends' | 'nobody'; groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody'; introductions?: 'on' | 'off' }
 /** The caller's answer to an introduction a regular offered (PeopleListing.introduction): `accept` sends the friend request. */
 export interface IntroductionBody { to: string; cityId: CityId; answer: 'accept' | 'decline' }
 export interface ReadBody { seq?: number }
@@ -473,6 +476,8 @@ export interface SocialHttpRoutes {
   /** Answer a regular's introduction. Accepted: answered like POST /api/social/friends/request. No offer standing for that player: `no_introduction`. */
   'POST /api/social/introduction': { body: IntroductionBody; response: Ok<Done<'declined'> | FriendRequestResult | Refusal<'no_introduction'>>; errors: SocialPost | 'invalid_player' | 'invalid_city' | 'invalid_answer' }
   /** One picture in a message: the body is JSON with the picture as base64 (at most 250 kB of picture). Answered like POST /api/social/messages. */
+  'POST /api/social/voice': { body: ({ to: string } | { conv: ConversationId }) & { clientId: string; data: string; body?: string; replyTo?: number }; response: Ok<SendMessageResult | Refusal<'voice_off' | 'voice_refused' | 'voice_rejected'>>; errors: SocialPost | 'invalid_voice' | 'invalid_client_id' | 'invalid_conversation' | 'client_id_conflict' | 'body_too_large' }
+  'GET /api/social/voice/:id': { params: { id: string }; response: Uint8Array; errors: SocialCommon | 'unknown_voice' }
   'POST /api/social/images': { body: PictureUploadBody; response: Ok<SendMessageResult | Refusal<PictureRefusal>>; errors: SocialPost | 'invalid_client_id' | 'invalid_message' | 'invalid_player' | 'invalid_conversation' | 'client_id_conflict' | 'invalid_picture' | 'body_too_large' }
   /** The picture's bytes (not JSON): members of its conversation only, `Cache-Control: private`, `nosniff`, inline. 404 for anyone else. */
   'GET /api/social/images/:id': { params: { id: string }; response: Ok<Record<string, never>>; errors: SocialCommon | 'unknown_picture' }
@@ -608,7 +613,7 @@ export const SOCIAL_OVERVIEW_KEYS = [
   'requests', 'serverTime', 'updates', 'visiting',
 ] as const satisfies readonly (keyof SocialOverview | keyof ApiEnvelope)[]
 export const HOUSE_VIEW_KEYS = ['capacity', 'capture', 'cityId', 'conv', 'guests', 'host', 'hostStatus', 'knocks', 'myCapture', 'role'] as const satisfies readonly (keyof HouseView)[]
-export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'mentions', 'pictures', 'pins', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
+export const SOCIAL_LIMITS_KEYS = ['body', 'groupName', 'groupSize', 'guests', 'mentions', 'pictures', 'voice', 'pins', 'reasons', 'reportText'] as const satisfies readonly (keyof SocialLimits)[]
 export const PEOPLE_LISTING_KEYS = ['cityId', 'code', 'count', 'groups', 'here', 'ok', 'players', 'self', 'serverTime', 'total', 'venue'] as const satisfies readonly (keyof PeopleListing | keyof ApiEnvelope)[]
 export const CONVERSATION_KEYS = ['id', 'kind', 'last', 'members', 'name', 'owner', 'unread', 'with'] as const satisfies readonly (keyof Conversation)[]
 /** A sender's own message; someone else's has no `clientId`, a system line adds `sys`. */

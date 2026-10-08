@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VoiceNote from './VoiceNote.vue'
 // One message: its name and time, the quoted message it answers, its words with mention chips (or large emoji), a gift's money
 // line, reactions as counted chips, and the actions (Reply, react) behind a small button, a right-click or a long press.
 import { computed, onBeforeUnmount, ref } from 'vue'
@@ -9,11 +10,11 @@ import { QUICK_REACTIONS } from './emojiData.ts'
 import { emojiOnly, giftDetail, giftLine, pieces } from './messagesText.ts'
 import type { Message } from '../../../types/social.ts'
 
-const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean }>()
-const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message] }>()
+const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean; voiceEnabled?: boolean }>()
+const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; reportVoice: [item: Message]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message] }>()
 const mine = computed(() => props.item.from?.id === props.meId)
 const parts = computed(() => pieces(props.item.body, props.item.mentions))
-const big = computed(() => (props.item.mentions?.length || props.item.replyTo || props.item.image ? 0 : emojiOnly(props.item.body)))
+const big = computed(() => (props.item.mentions?.length || props.item.replyTo || props.item.image || props.item.voice ? 0 : emojiOnly(props.item.body)))
 const open = ref(false)
 const more = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
@@ -23,7 +24,7 @@ function hide(): void { open.value = false; more.value = false }
 let pointer: { x: number; y: number; id: number } | null = null
 function press(event: PointerEvent): void {
   cancel()
-  if (!props.canReact || !event.isPrimary || props.item.deleted || (event.target instanceof Element && event.target.closest('button, input, textarea, select'))) return
+  if (!props.canReact || !event.isPrimary || props.item.deleted || (event.target instanceof Element && event.target.closest('button, input, textarea, select, audio'))) return
   if (event.currentTarget instanceof HTMLElement) event.currentTarget.setPointerCapture(event.pointerId)
   pointer = { x: event.clientX, y: event.clientY, id: event.pointerId }
   if (props.canReact) timer = setTimeout(show, 450)
@@ -63,6 +64,7 @@ onBeforeUnmount(cancel)
       </button>
       <PictureView v-if="item.image" class="bubble-pic" :image="item.image" @open="emit('picture', item)" />
       <span v-if="item.body || !item.image" class="bubble-text" :class="{ 'is-big': big > 0 }" :style="big ? { fontSize: `${big === 1 ? 44 : big === 2 ? 36 : 30}px` } : undefined"><template v-for="(piece, index) in parts" :key="index"><button v-if="piece.mention && piece.mention.id !== 'everyone'" type="button" class="chip" :aria-label="`Open ${piece.text.slice(1)}'s card`" @click.stop="emit('player', piece.mention.id)">{{ piece.text }}</button><span v-else-if="piece.mention" class="chip is-all">{{ piece.text }}</span><template v-else>{{ piece.text }}</template></template></span>
+      <VoiceNote v-if="item.voice" :voice="item.voice" :off="!mine && voiceEnabled === false" />
       <small v-if="tail">{{ time }}<template v-if="item.editedAt && !item.deleted"> · Edited</template><template v-if="mine && !item.deleted"> · Sent</template></small>
     </div>
     <div v-if="item.reactions?.length" class="reactions" role="group" aria-label="Reactions">
@@ -76,9 +78,10 @@ onBeforeUnmount(cancel)
       </div>
       <EmojiPicker v-else-if="canReact && more" @pick="react" />
       <button type="button" role="menuitem" class="menu-item" @click="reply">Reply</button>
-      <button v-if="!item.image && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('forward')">Forward</button>
-      <button v-if="mine && !item.image && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('edit')">Edit</button>
+      <button v-if="!item.image && !item.voice && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('forward')">Forward</button>
+      <button v-if="mine && !item.image && !item.voice && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('edit')">Edit</button>
       <button v-if="mine && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('remove')">Delete for everyone</button>
+      <button v-if="item.voice && !mine" type="button" role="menuitem" class="menu-item" @click="emit('reportVoice', item); hide()">Report voice note</button>
       <button type="button" role="menuitem" class="menu-item is-quiet" @click="hide">Close</button>
     </div>
   </div>

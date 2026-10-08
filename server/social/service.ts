@@ -74,6 +74,9 @@ import { VISIT, VISIT_MS } from '../../src/game/visit.ts';
 import type { VisitHow } from '../../src/game/visit.ts';
 import { invitesFor, noteLinkUse, removeFromLink } from './visit-book.ts';
 import { forgetVisits, introductionFor, markTold, noteVisit } from './introductions.ts';
+import { VOICE_NOTE_LIMITS } from '../../src/types/voice-note.ts';
+import type { VoiceNoteView } from '../../src/types/voice-note.ts';
+import { VOICE_POLICY } from './voice-notes.ts';
 import { pictureSettings, PICTURE_LIMITS } from './images.ts';
 import { clip, glyphs } from './clip.ts';
 import { DIRECTORY_SCAN, PAGE_MAX, byNameOrder, cursorOf, directoryCache, firstAfter, newestFirst, pageLimit, readCursor } from './pages.ts';
@@ -84,7 +87,7 @@ import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash,
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
 import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { AccountRecord, ConversationRecord, ImageRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, VisitRecord, WsConnection } from '../types.ts';
+import type { AccountRecord, ConversationRecord, ImageRef, VoiceRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, VisitRecord, WsConnection } from '../types.ts';
 import { captureProjection } from './capture.ts';
 
 /** A request body or socket frame: every field is untrusted until a validator below has read it. */
@@ -97,7 +100,7 @@ type VisitEnd = [string, string];
 /** The visits and block changes one transaction made, kept per collection copy (see endedIn). */
 interface Ended extends Array<VisitEnd> { blocks: BlockChange[]; material?: boolean; pushes: PushList; drops: Drops }
 /** Pictures to delete from the image store once the transaction has committed: by id, and every picture of a conversation. */
-interface Drops { ids: string[]; convs: string[] }
+interface Drops { ids: string[]; voices: string[]; convs: string[] }
 type BlockChanges = BlockChange[] & { applied?: boolean };
 type Delivered<R> = R extends { push: unknown } ? Omit<R, 'push'> : R;
 
@@ -146,7 +149,7 @@ function buildService(ctx: RouteContext) {
   // in one shared list) because another transaction may run between this one's commit and its
   // deliver(): finish() moves the list onto the result inside the transaction, deliver() announces it.
   const endedOf = new WeakMap<SocialCollection, Ended>();
-  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList, drops: { ids: [], convs: [] } as Drops })); } return list; };
+  const endedIn = (s: SocialCollection): Ended => { let list = endedOf.get(s); if (!list) { endedOf.set(s, list = Object.assign([] as VisitEnd[], { blocks: [] as BlockChange[], pushes: [] as PushList, drops: { ids: [], voices: [], convs: [] } as Drops })); } return list; };
   // ---- blocks, in memory (see header) ----------------------------------------------------------
   const blockIndex = new Map<string, Set<string>>(); // blocker → Set<blocked>
   const blocked = (a: string, b: string): boolean => Boolean(blockIndex.get(a)?.has(b) || blockIndex.get(b)?.has(a));
@@ -354,9 +357,9 @@ function buildService(ctx: RouteContext) {
     const accept = (other: string): boolean => !blockedEither(s, viewer, other) && (kind === 'admin' || friendsIn(s.players, viewer, other));
     return directories.get(`${kind}:${viewer}`, now(), directoryStamp, s.players, accept, viewer);
   }
-  const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends', introductions: p.introductions ?? 'off',
+  const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends', ...(p.voiceNotes ? { voiceNotes: p.voiceNotes } : {}), introductions: p.introductions ?? 'off',
     notify: { text: p.notify?.hide !== true, groups: p.notify?.all ? 'all' : 'mentions', pausedUntil: p.notify?.until && p.notify.until > now() ? p.notify.until : null, quietDm: p.notify?.quietDm === true, quietGroups: p.notify?.noQuiet !== true } });
-  const bodyOf = (message: MessageRecord): string => (message.deletedAt ? 'Message deleted' : message.auto ? welcomeNote(message.start) : message.body);
+  const bodyOf = (message: MessageRecord): string => (message.deletedAt ? 'Message deleted' : message.auto ? welcomeNote(message.start) : message.body || (message.voice ? 'Voice note' : ''));
 
   const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
   const blockedEither = (s: SocialCollection, a: string, b: string): boolean => Boolean(s.players[a]?.blocked[b] || s.players[b]?.blocked[a]);
@@ -536,6 +539,17 @@ function buildService(ctx: RouteContext) {
     const since = friendsSince(s.players, viewer, message.from), fresh = since > 0 && now() - since < 86400000;
     return { ...base, ...(first || fresh ? { blur: true as const } : {}) };
   }
+  const voicesOn = (): boolean => Boolean(ctx.voices) && ctx.env?.('CHAT_VOICE_NOTES')?.trim().toLowerCase() !== 'off';
+  function voiceView(s: SocialCollection, message: MessageRecord, viewer: string): VoiceNoteView | undefined {
+    const voice = message.voice;
+    if (!voice) return undefined;
+    const base = { id: voice.id, durationMs: voice.durationMs };
+    if (voice.gone || now() - message.at > VOICE_POLICY.retentionMs) return { ...base, state: 'expired' };
+    if (!voicesOn() || viewer !== message.from && s.players[viewer]?.voiceNotes === 'nobody') return { ...base, state: 'off' };
+    if (voice.reports?.includes(viewer)) return { ...base, state: 'reported' };
+    if (voice.hidden || message.from && viewer !== message.from && blockedEither(s, viewer, message.from)) return { ...base, state: 'hidden' };
+    return base;
+  }
   /** The reactions on a message, grouped by emoji, as this viewer sees them (a reaction of someone they blocked is left out). */
   function reactionsOf(s: SocialCollection, message: MessageRecord, viewer: string): { emoji: string; count: number; mine?: true }[] | undefined {
     if (!message.rx) return undefined;
@@ -550,14 +564,14 @@ function buildService(ctx: RouteContext) {
   }
   function messageView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string) {
     const quote = message.re && !s.players[viewer]?.blocked[message.re.from] ? { seq: message.re.seq, from: pub(s, message.re.from), text: message.re.text } : undefined;
-    const picture = pictureView(s, conv, message, viewer);
+    const picture = pictureView(s, conv, message, viewer), voice = voiceView(s, message, viewer);
     return { seq: message.seq, id: `${conv.id}#${message.seq}`, conv: conv.id, from: message.from ? pub(s, message.from) : null, body: bodyOf(message), at: message.at,
       ...(message.sys ? { sys: true as const } : {}), ...(message.auto ? { auto: true as const } : {}), ...(message.from === viewer && message.cid ? { clientId: message.cid } : {}),
       ...(message.men?.length ? { mentions: message.men.map(([id, start, length]): Mention => ({ id, start, end: start + length })) } : {}),
       ...(quote ? { replyTo: quote } : {}),
       ...(reactionsOf(s, message, viewer) ? { reactions: reactionsOf(s, message, viewer) } : {}),
       ...(message.gift ? { gift: { amount: message.gift.n, ...(message.gift.r && message.from !== viewer ? { repaid: message.gift.r } : {}) } } : {}),
-      ...(picture ? { image: picture } : {}), ...(message.version ? { version: message.version } : {}),
+      ...(picture ? { image: picture } : {}), ...(voice ? { voice } : {}), ...(message.version ? { version: message.version } : {}),
       ...(message.editedAt ? { editedAt: message.editedAt } : {}), ...(message.deletedAt ? { deleted: true as const } : {}), ...(message.forwarded ? { forwarded: true as const } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
@@ -583,7 +597,7 @@ function buildService(ctx: RouteContext) {
     const mentions = conv.kind === 'group' && !(entry?.mute && s.players[viewer]?.mentions === 'off') ? unseen.filter((message) => mentionsViewer(message, viewer)).length : 0;
     return { id: conv.id, kind: conv.kind, name: conv.kind === 'dm' ? pub(s, others[0]!).name : conv.kind === 'house' ? `${pub(s, conv.owner!).name}’s house` : conv.name!,
       members: conv.members.map((id) => pub(s, id)), owner: conv.owner ?? null, with: conv.kind === 'dm' ? others[0]! : null,
-      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: clip(bodyOf(last) || (last.img ? 'Picture' : ''), LIMITS.quote), at: last.at } : null,
+      last: last ? { seq: last.seq, from: last.from ? pub(s, last.from) : null, body: clip(bodyOf(last) || (last.img ? 'Picture' : last.voice ? 'Voice note' : ''), LIMITS.quote), at: last.at } : null,
       unread: unseen.length,
       ...(mentions ? { mentions } : {}), ...(entry?.mute ? { muted: true as const } : {}), ...(entry?.pin ? { pinned: true as const } : {}) };
   }
@@ -591,7 +605,7 @@ function buildService(ctx: RouteContext) {
     const message: MessageRecord = { seq: ++conv.seq, from, body, at: now(), ...(cid ? { cid } : {}), ...(sys ? { sys: true as const } : {}), ...extra };
     conv.messages.push(message);
     if (conv.messages.length > LIMITS.history) {
-      for (const old of conv.messages.splice(0, conv.messages.length - LIMITS.history)) if (old.img && !old.img.gone) endedIn(s).drops.ids.push(old.img.id);
+      for (const old of conv.messages.splice(0, conv.messages.length - LIMITS.history)) { if (old.img && !old.img.gone) endedIn(s).drops.ids.push(old.img.id); if (old.voice && !old.voice.gone) endedIn(s).drops.voices.push(old.voice.id); }
     }
     if (from && s.players[from]?.convs[conv.id]) s.players[from]!.convs[conv.id]!.read = message.seq;
     return message;
@@ -813,7 +827,7 @@ function buildService(ctx: RouteContext) {
     }
   }
   /** The record's own words for a message in a quote: its text, or what it was instead. */
-  const quoteText = (message: MessageRecord): string => (clip(bodyOf(message), LIMITS.quote) || (message.img ? 'Picture' : ''));
+  const quoteText = (message: MessageRecord): string => (clip(bodyOf(message), LIMITS.quote) || (message.img ? 'Picture' : message.voice ? 'Voice note' : ''));
   const settingsOf = () => pictureSettings((name) => (typeof ctx.env === 'function' ? ctx.env(name) : ''), (key) => ctx.checks?.setting?.(key));
   /** The refusal for a picture this player may not send into this conversation, or null. */
   function pictureRefusal(s: SocialCollection, p: SocialPlayerRecord, id: string, conv: ConversationRecord | null, partner: string | null): Refused | null {
@@ -848,7 +862,7 @@ function buildService(ctx: RouteContext) {
       if (list.length) Object.defineProperty(result, ENDED, { value: list.splice(0), enumerable: false });
       if (list.blocks.length) Object.defineProperty(result, BLOCKS, { value: list.blocks.splice(0), enumerable: false });
       if (list.pushes.length) Object.defineProperty(result, PUSHES, { value: list.pushes.splice(0), enumerable: false });
-      if (list.drops.ids.length || list.drops.convs.length) { Object.defineProperty(result, DROPS, { value: { ids: list.drops.ids.splice(0), convs: list.drops.convs.splice(0) }, enumerable: false }); }
+      if (list.drops.ids.length || list.drops.voices.length || list.drops.convs.length) { Object.defineProperty(result, DROPS, { value: { ids: list.drops.ids.splice(0), voices: list.drops.voices.splice(0), convs: list.drops.convs.splice(0) }, enumerable: false }); }
       return result;
     },
     /**
@@ -873,6 +887,11 @@ function buildService(ctx: RouteContext) {
       if (dropped && ctx.images) {
         const { ids, convs } = dropped as Drops, images = ctx.images;
         const work = (async () => { if (ids.length) await images.remove(ids); if (convs.length) await images.removeConv(convs); })().catch(() => {});
+        ctx.waitUntil?.(work);
+      }
+      if (dropped && ctx.voices) {
+        const { voices: ids, convs } = dropped as Drops, voices = ctx.voices;
+        const work = (async () => { if (ids.length) await voices.remove(ids); if (convs.length) await voices.removeConv(convs); })().catch(() => {});
         ctx.waitUntil?.(work);
       }
       // What the transaction owed beside its own answer (an inviter told that a friend joined).
@@ -930,6 +949,7 @@ function buildService(ctx: RouteContext) {
         invites: invitesFor(db, id, now()).filter((invite) => s.players[invite.host] && !blockedEither(s, id, invite.host)).map((invite) => ({ from: pub(s, invite.host), expiresAt: invite.expires })),
         prefs: prefsOf(p),
         limits: { body: LIMITS.body, groupSize: LIMITS.groupSize, groupName: LIMITS.groupName, guests: LIMITS.guests, reportText: LIMITS.reportText, reasons: REPORT_REASONS, pins: LIMITS.pins, mentions: LIMITS.mentions,
+          voice: { on: voicesOn(), bytes: VOICE_NOTE_LIMITS.bytes, durationMs: VOICE_NOTE_LIMITS.durationMs },
           pictures: { on: settingsOf().mode !== 'off' && Boolean(ctx.images) && p.noPictures !== true, bytes: PICTURE_LIMITS.bytes, caption: PICTURE_LIMITS.caption } },
       });
     },
@@ -1300,18 +1320,19 @@ function buildService(ctx: RouteContext) {
      * `clientId`: a retry returns the stored message and nothing is stored or delivered twice.
      * `picture` is set only by the upload route, which has already checked and stored the bytes.
      */
-    send(db: Db, session: SessionRecord, body: SocialBody, picture?: { ref: ImageRef }) {
+    send(db: Db, session: SessionRecord, body: SocialBody, media?: { ref: ImageRef } | { voice: VoiceRef }) {
+      const picture = media && 'ref' in media ? media : undefined, voice = media && 'voice' in media ? media.voice : undefined;
       const cid = clientId(body.clientId);
       const { s, p, id } = enter(db, session);
       let forwarded: MessageRecord | undefined;
       if (body.forward !== undefined) {
-        if (picture || !isRecord(body.forward) || typeof body.forward.seq !== 'number' || !Number.isSafeInteger(body.forward.seq)) throw bad('invalid_message');
+        if (media || !isRecord(body.forward) || typeof body.forward.seq !== 'number' || !Number.isSafeInteger(body.forward.seq)) throw bad('invalid_message');
         const source = memberConv(s, id, convId(body.forward.conv));
         const sourceSeq = body.forward.seq;
         forwarded = source?.messages.find((item) => item.seq === sourceSeq);
-        if (!forwarded || forwarded.deletedAt || forwarded.sys || forwarded.auto || forwarded.gift || forwarded.img || !visibleTo(s, id, forwarded)) return no('unknown_message', 'Only an available text message can be forwarded.');
+        if (!forwarded || forwarded.deletedAt || forwarded.sys || forwarded.auto || forwarded.gift || forwarded.img || forwarded.voice || !visibleTo(s, id, forwarded)) return no('unknown_message', 'Only an available text message can be forwarded.');
       }
-      const message = forwarded ? text(forwarded.body, LIMITS.body, 'invalid_message') : picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
+      const message = forwarded ? text(forwarded.body, LIMITS.body, 'invalid_message') : voice ? caption(body.body) || 'Voice note' : picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
       const to = body.to !== undefined ? uuid(body.to) : null, key = to ? dmId(session.publicId, to) : convId(body.conv);
       const replyAsked = body.replyTo === undefined ? 0 : typeof body.replyTo === 'number' && Number.isSafeInteger(body.replyTo) && body.replyTo > 0 ? body.replyTo : -1;
       if (replyAsked < 0) throw bad('invalid_reply');
@@ -1322,7 +1343,7 @@ function buildService(ctx: RouteContext) {
         // member or a guest whose visit ended learns nothing about it by resending an old message.
         const still = conv.members.includes(id) && (conv.kind === 'dm' || Boolean(p.convs[key]));
         if (!still) return no('not_a_member', 'You are not in that conversation.');
-        if (sent.sendHash ? sent.sendHash !== sha256Hex(message) : sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
+        if ((sent.sendHash ? sent.sendHash !== sha256Hex(message) : sent.body !== message) || (sent.voiceHash ?? null) !== (voice?.hash ?? null)) throw ctx.fail(409, 'client_id_conflict');
         return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, sent, id), duplicate: true });
       }
       const refused = mutedRefusal(id) ?? (message ? screened(message, picture ? 'Your caption' : 'Your message') : null);
@@ -1331,15 +1352,21 @@ function buildService(ctx: RouteContext) {
       // A direct chat named by its id belongs to its two players: anyone else is answered as for a chat that does not exist.
       if (conv?.kind === 'dm' && !conv.members.includes(id)) return no('not_a_member', 'You are not in that conversation.');
       const partner = to ?? (conv?.kind === 'dm' ? conv.members.find((member) => member !== id) : null);
+      if (voice) {
+        if (!voicesOn() || conv?.kind === 'house') return no('voice_off', 'Voice notes are not available in this chat.');
+        const day = lagosTime(now()).day;
+        if (p.voiceCount?.day === day && p.voiceCount.count >= VOICE_POLICY.perDay) return no('rate_limited', `You can send ${VOICE_POLICY.perDay} voice notes a day.`);
+      }
       if (partner) {
         const { target, refusal } = other(s, id, partner);
         if (refusal) return refusal;
         const friends = areFriends(s, id, partner);
+        if (voice && (!friends || target.voiceNotes === 'nobody')) return no('voice_refused', 'Voice notes are for friends who accept them.');
         if (!conv) {
           const day = lagosTime(now()).day;
           if (p.chats.day !== day) p.chats = { day, count: 0 };
           if (!friends && p.chats.count >= LIMITS.newChatsPerDay) return no('new_chat_limit', `You can start ${LIMITS.newChatsPerDay} chats with new people a day. Add friends to message freely.`);
-          if (!friends && picture) return no('friends_only', 'Pictures can only be sent to friends.');
+          if (!friends && media) return no('friends_only', 'Attachments can only be sent to friends.');
           if (!friends) p.chats.count += 1;
           conv = s.convs[key] = { id: key, kind: 'dm', members: [id, partner].sort(), seq: 0, created: now(), messages: [] };
         }
@@ -1371,7 +1398,13 @@ function buildService(ctx: RouteContext) {
         const day = lagosTime(now()).day;
         p.pics = { day, count: (p.pics?.day === day ? p.pics.count : 0) + 1 };
       }
-      const stored = append(s, conv, id, message, cid, false, { ...(forwarded ? { forwarded: true as const } : {}), ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}) });
+      if (voice) {
+        const live = conv.messages.filter(item => item.voice && !item.voice.gone);
+        for (const old of live.slice(0, Math.max(0, live.length - VOICE_POLICY.perChat + 1))) { old.voice!.gone = true; endedIn(s).drops.voices.push(old.voice!.id); }
+        const day = lagosTime(now()).day;
+        p.voiceCount = { day, count: (p.voiceCount?.day === day ? p.voiceCount.count : 0) + 1 };
+      }
+      const stored = append(s, conv, id, message, cid, false, { ...(forwarded ? { forwarded: true as const } : {}), ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}), ...(voice ? { voice, voiceHash: voice.hash } : {}) });
       const push: PushList = [];
       fanOut(s, conv, stored, push, null);
       notifyMentions(s, conv, id, stored, push);
@@ -1469,7 +1502,7 @@ function buildService(ctx: RouteContext) {
       const outcome = ctx.once(db, session, { id: body.clientId, kind: 'message.update', fingerprint: [key, body.seq, body.op, body.version, sha256Hex(replacement)] }, () => {
         if (line.deletedAt) return no('not_allowed', 'That message has been deleted.');
         if ((line.version ?? 0) !== body.version) return no('message_changed', 'That message changed. Open it again before editing.');
-        if (body.op === 'edit' && (line.img || now() - line.at > 15 * 60000)) return no('edit_expired', 'Text messages can be edited for 15 minutes after sending.');
+        if (body.op === 'edit' && (line.img || line.voice || now() - line.at > 15 * 60000)) return no('edit_expired', 'Text messages can be edited for 15 minutes after sending.');
         if (body.op === 'edit') { const refusal = mutedRefusal(id) ?? screened(replacement, 'Your message'); if (refusal) return refusal; }
         if (!ctx.allow(`social:message-update:${id}`, 30)) return no('rate_limited', 'Wait a moment before changing another message.');
         line.sendHash ??= sha256Hex(line.body);
@@ -1479,6 +1512,7 @@ function buildService(ctx: RouteContext) {
         if (body.op === 'edit') line.editedAt = now();
         else {
           line.deletedAt = now(); delete line.rx; delete line.re;
+          if (line.voice) { endedIn(s).drops.voices.push(line.voice.id); delete line.voice; }
           if (line.img) { line.img.gone = true; endedIn(s).drops.ids.push(line.img.id); delete line.img; }
         }
         const changed = [line];
@@ -1576,6 +1610,7 @@ function buildService(ctx: RouteContext) {
       const { p } = enter(db, session);
       if (body.groups !== undefined) { if (body.groups !== 'friends' && body.groups !== 'nobody') throw bad('invalid_pref'); if (body.groups === 'nobody') p.groups = 'nobody'; else delete p.groups; }
       if (body.mentions !== undefined) { if (body.mentions !== 'on' && body.mentions !== 'off') throw bad('invalid_pref'); if (body.mentions === 'off') p.mentions = 'off'; else delete p.mentions; }
+      if (body.voiceNotes !== undefined) { if (body.voiceNotes !== 'friends' && body.voiceNotes !== 'nobody') throw bad('invalid_pref'); if (body.voiceNotes === 'nobody') p.voiceNotes = 'nobody'; else delete p.voiceNotes; }
       if (body.pictures !== undefined) { if (body.pictures !== 'friends' && body.pictures !== 'nobody') throw bad('invalid_pref'); if (body.pictures === 'nobody') p.pictures = 'nobody'; else delete p.pictures; }
       if (body.introductions !== undefined) {
         if (body.introductions !== 'on' && body.introductions !== 'off') throw bad('invalid_pref');
@@ -1670,6 +1705,7 @@ function buildService(ctx: RouteContext) {
     /** Set a report's status and tell the reporter, whose own receipt shows the same status. */
     /** A report about a group (`conv`), or about one picture in a conversation (`conv` and `image`). */
     reportConversation(db: Db, session: SessionRecord, body: SocialBody) {
+      if (body.voice !== undefined) return service.reportVoice(db, session, body);
       const key = convId(body.conv);
       const reason = REPORT_REASONS.find((item) => item === body.reason);
       if (!reason) throw bad('invalid_reason');
@@ -1717,6 +1753,45 @@ function buildService(ctx: RouteContext) {
       if (!line?.img || !visibleTo(s, id, line)) return false;
       if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return false;
       return pictureView(s, conv, line, id)?.state === undefined;
+    },
+    reportVoice(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv), reason = REPORT_REASONS.find(item => item === body.reason);
+      if (!reason || typeof body.voice !== 'string' || !VOICE_NOTE_LIMITS.idPattern.test(body.voice)) throw bad('invalid_report');
+      const detail = body.text === undefined || body.text === '' ? '' : text(body.text, LIMITS.reportText, 'invalid_report_text');
+      const { s, p, id } = enter(db, session), conv = memberConv(s, id, key);
+      if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      const line = conv.messages.find(item => item.voice?.id === body.voice);
+      if (!line?.voice || !line.from || line.from === id || !visibleTo(s, id, line)) return no('unknown_voice', 'That voice note is not available.');
+      if (line.voice.reports?.includes(id)) return no('already_reported', 'You already reported this voice note.');
+      if (!ctx.allow(`social:report:${id}`, 5, 3600000)) return no('rate_limited', 'You have filed several reports this hour. Try again later.');
+      line.voice.reports = [...(line.voice.reports ?? []), id].slice(0, 10);
+      if (line.voice.reports.length >= VOICE_POLICY.reportsToHide) line.voice.hidden = true;
+      line.version = (line.version ?? 0) + 1;
+      const report: PlayerReportRecord = { id: `R-${++s.seq}`, by: id, about: line.from, aboutName: pub(s, line.from).name, reason, text: detail, at: now(), status: 'received', evidence: [`Voice note ${line.voice.id} in ${conv.id}`], voice: line.voice.id, conv: conv.id };
+      s.reports.push(report); if (s.reports.length > LIMITS.reports) s.reports.splice(0, s.reports.length - LIMITS.reports);
+      const receipt: PlayerReportReceipt = { id: report.id, about: report.about, name: report.aboutName, reason, at: report.at, status: report.status };
+      p.reports.push(receipt); if (p.reports.length > LIMITS.ownReports) p.reports.shift();
+      const push: PushList = conv.members.map(member => [member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      notify(s, id, 'report', `Report ${report.id} was received. A moderator will review the voice note.`, { report: report.id }, push);
+      return yes('reported', { receipt, push });
+    },
+    voiceAllowed(db: Db, session: SessionRecord, convKey: string, voiceId: string): boolean {
+      const s = ctx.collection(db, 'social'), id = session.publicId;
+      const conv = Object.hasOwn(s.convs ?? {}, convKey) ? s.convs[convKey] : undefined;
+      if (!conv || !conv.members.includes(id) || !s.players[id]?.convs[convKey]) return false;
+      const line = conv.messages.find(item => item.voice?.id === voiceId);
+      return Boolean(line?.voice && visibleTo(s, id, line) && voiceView(s, line, id)?.state === undefined);
+    },
+    modVoice(db: Db, voiceId: string, action: 'remove' | 'restore') {
+      const s = col(db);
+      const conv = Object.values(s.convs).find(item => item.messages.some(line => line.voice?.id === voiceId));
+      const line = conv?.messages.find(item => item.voice?.id === voiceId);
+      if (!conv || !line?.voice) return no('unknown_voice', 'That voice note is not stored.');
+      if (action === 'remove') { line.voice.gone = true; endedIn(s).drops.voices.push(voiceId); }
+      else { if (line.voice.gone) return no('gone', 'That recording has expired.'); delete line.voice.hidden; delete line.voice.reports; }
+      line.version = (line.version ?? 0) + 1;
+      const push: PushList = conv.members.map(member => [member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      return yes(action === 'remove' ? 'removed' : 'restored', { push });
     },
     /** For the operator: pictures that were reported or hidden, newest first, at most 100. */
     modPictures(db: Db) {

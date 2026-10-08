@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, realpath, rm, symlink, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, realpath, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
@@ -70,13 +70,20 @@ test('honors pre-aborted cancellation without preview publication',async()=>fixt
   await assert.rejects(readFile(path.join(root,'.cache/world-build/output')),{code:'ENOENT'});
 }));
 
-test('aborts and closes a live inspection worker before releasing the shared lock',async()=>fixture(async({root,spec,pin})=>{
+test('cancels admitted inspection and closes worker before lock reuse',async()=>fixture(async({root,spec,pin})=>{
   const controller=new AbortController();const pending=inspectCountrySource({repositoryRoot:root,spec,baselinePin:pin,signal:controller.signal});
-  setTimeout(()=>controller.abort(new Error('synthetic worker cancellation')),100);
-  await assert.rejects(pending,/aborted|synthetic worker cancellation/);
   const audit=path.join(root,'.cache/world-build/country-inspections/attempts');
-  const attemptFiles=await (await import('node:fs/promises')).readdir(audit);
-  assert.equal(attemptFiles.length,1);const attempt=JSON.parse(await readFile(path.join(audit,attemptFiles[0]!),'utf8')) as Record<string,unknown>;
+  const admissionDeadline=Date.now()+5_000;let attemptFile:string|undefined;
+  while(Date.now()<admissionDeadline&&!attemptFile){
+    const files=await readdir(audit).catch(error=>{if((error as NodeJS.ErrnoException).code==='ENOENT')return[];throw error;});
+    const records=files.filter(name=>/^[a-f0-9-]{36}\.json$/.test(name));
+    if(records.length){attemptFile=path.join(audit,records[0]!);const row=JSON.parse(await readFile(attemptFile,'utf8')) as Record<string,unknown>;if(row.status!=='pending')throw new Error(`inspection finished before pending-attempt admission could be observed (${String(row.status)})`);break;}
+    await new Promise(resolve=>setTimeout(resolve,5));
+  }
+  assert.ok(attemptFile,'inspection did not durably admit an attempt within five seconds');
+  controller.abort(new Error('synthetic admitted inspection cancellation'));
+  await assert.rejects(pending,/aborted|synthetic admitted inspection cancellation/);
+  const attempt=JSON.parse(await readFile(attemptFile,'utf8')) as Record<string,unknown>;
   assert.equal(attempt.status,'aborted');
   const result=await inspectCountrySource({repositoryRoot:root,spec,baselinePin:pin});assert.equal(result.networkBytes,0);
 },{heavy:true}));

@@ -14,6 +14,12 @@ test('preview routes expose only hashed pack and inventory assets, including iso
   assert.deepEqual(outputRoute(`/fine/rw/adm1/topology/${hash}.json`), {
     rootParts: ['output'], assetParts: ['fine', 'rw', 'adm1', 'topology', `${hash}.json`], limit: 64 * 1024,
   });
+  for (const [category, limit] of [['manifests',1_000_000],['nodes',128_000],['outline-index',128_000],['outlines',512_000],['identity',256_000]] as const) {
+    assert.deepEqual(outputRoute(`/country-inventory/${category}/${hash}.json`), {
+      rootParts: ['output'], assetParts: ['country-inventory', category, `${hash}.json`], limit,
+    });
+  }
+  for (const pathname of [`/country-inventory/source/${hash}.geojson`,`/country-inventory/attempts/${hash}.json`,`/country-inventory/private/${hash}.json`,`/country-inventory/../fine/${hash}.json`]) assert.equal(outputRoute(pathname), null);
   for (const pathname of [`/fine/ng/adm1/outlines/${hash}.json`, `/fine/ng/adm1/topology/${hash}.json`, `/fine/rw/adm2/outlines/${hash}.json`,
     '/fine/rw/adm1/source.geojson', '/fine/rw/adm1/attempts/attempt.json', '/fine/rw/adm1/reports/private.json']) assert.equal(outputRoute(pathname), null);
   for (const pathname of ['/campaigns/accra/ledger.sqlite', '/campaigns/accra/source-cache/extract.geojson', `/campaigns/../tiles/${hash}.json`, `/campaigns/accra/tiles/${hash}.json/extra`, `/tiles/${hash.toUpperCase()}.json`, `/campaigns/accra\\evil/tiles/${hash}.json`]) {

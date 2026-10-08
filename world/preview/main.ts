@@ -11,6 +11,7 @@ import type { StreamingSnapshot } from './streaming.ts';
 import { geographicCircleBounds, groundFootprintRadius } from './view-bounds.ts';
 import { fetchInventoryAsset, inventoryGeometryPath, INVENTORY_LIMITS, validateInventoryGeometry, validateInventoryIndex, validateInventoryManifest, type InventoryGeometry, type InventoryManifest, type InventoryNodeIndex } from './inventory-view.ts';
 import { attachFinePanel } from './fine-panel.ts';
+import { attachCountryDirectoryPanel } from './country-directory-panel.ts';
 import './style.css';
 
 const root = document.querySelector<HTMLDivElement>('#app')!;
@@ -45,6 +46,7 @@ root.innerHTML = `
         <div id="inventorySelection" class="inventory-selection" aria-live="polite">No country selected.</div>
         <div id="finePanel"></div>
       </section>
+      <section class="panel" id="countryDirectoryPanel"></section>
       <section class="panel district-panel"><div class="section-head"><span class="section-number">03</span><h2>NEARBY VIEW</h2><span id="tileCount" class="count-pill">0</span></div><p class="section-copy">Preview only · not playable. Nearby tiles stream as you move the camera; choose a district to focus it.</p><div id="districtList" class="district-list"><div class="placeholder-row">No districts loaded</div></div>
         <div class="pager"><button id="prevTile" aria-label="Previous district" disabled>←</button><span id="pagerText">—</span><button id="nextTile" aria-label="Next district" disabled>→</button></div>
         <div id="streamingSummary" class="data-note" aria-live="polite">Loaded 0 · pending 0 · deferred 0 · over budget 0 · failed 0 · outside view 0</div><div id="streamingDetails" class="data-note">Nearby streamed geometry is a non-playable preview.</div><button id="retryTiles" class="secondary" type="button" disabled>Retry failed tiles</button>
@@ -130,12 +132,15 @@ let inventoryAbort: AbortController | null = null;
 let inventoryGeneration = 0;
 let inventoryDownloadedBytes = 0;
 const inventoryCache = new ByteLru<string, { value: InventoryManifest|InventoryNodeIndex|InventoryGeometry; bytes:number }>(INVENTORY_LIMITS.cacheBytes);
+let directoryPanel: { reset: () => void } | undefined;
+let selectingDirectory = false;
 const finePanel = attachFinePanel({
  host: $('finePanel'),
  binding: () => selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null,
  downloaded: bytes => {inventoryDownloadedBytes += bytes; updateCacheNote();},
- clear: () => { clearOutline('Choose a verified administrative division.'); },
+ clear: () => { if(!selectingDirectory)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
  draw: (geometry, node) => {
+  directoryPanel?.reset();
   const [w,s,east,n] = node.bounds, wraps = w > east, e = wraps ? east + 360 : east;
   $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps));
   $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps));
@@ -144,6 +149,30 @@ const finePanel = attachFinePanel({
   $('outlineSvg').setAttribute('aria-label', `${node.name} sourced administrative outline`);
   $('outlineName').textContent = node.name;
   $('outlineDetails').textContent = `${node.adminType} · ${node.adminLevel} · geographic outline only · not playable`;
+  setView('outline');
+ }
+});
+directoryPanel = attachCountryDirectoryPanel($('countryDirectoryPanel'), {
+ selected: () => {
+  inventoryAbort?.abort(); ++inventoryGeneration; selectedCountryIndex = null;
+  selectingDirectory = true;
+  try { finePanel.reset(); } finally { selectingDirectory = false; }
+  clearError();
+ },
+ clear: () => clearOutline('Choose a verified country outline.'),
+ draw: (geometry, node) => {
+  const wraps = !!node.bounds && node.bounds[0] > node.bounds[2];
+  $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps,5));
+  $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps,5));
+  if (node.bounds) {
+   const [w,s,rawEast,n] = node.bounds, east = wraps ? rawEast + 360 : rawEast;
+   const width = Math.max((east-w)*2,(n-s)*4,0.02)*1.2, height = width/2, cx = w+east+360, cy = 180-s-n;
+   $('outlineSvg').setAttribute('viewBox',`${cx-width/2} ${cy-height/2} ${width} ${height}`);
+  } else $('outlineSvg').setAttribute('viewBox','0 0 720 360');
+  $('outlineSvg').setAttribute('aria-label',`${node.name} sourced country outline`);
+  $('outlineName').textContent = node.name;
+  $('outlineDetails').textContent = 'Geographic outline only · conditions and playability are separate layers';
+  ($('show2d') as HTMLButtonElement).disabled = false;
   setView('outline');
  }
 });
@@ -447,6 +476,7 @@ function renderCountryList(index:InventoryNodeIndex){
 }
 function clearOutline(message:string){$('outlinePath').setAttribute('d','');$('outlineStroke').setAttribute('d','');$('outlineSvg').setAttribute('aria-label','Country geographic outline');$('outlineName').textContent='Country outline';$('outlineDetails').textContent=message;}
 async function selectInventoryCountry(child:{id:string;path:string}){
+ directoryPanel?.reset();
  selectedCountryIndex=null;finePanel.reset();clearError();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);setInventoryStatus('Loading selected country…');clearOutline('Fetching only this country’s outline.');
  try{
@@ -467,6 +497,7 @@ async function selectInventoryCountry(child:{id:string;path:string}){
  }catch(error){if(!inventoryIsCurrent(controller,generation))return;setInventoryStatus('Could not load selected source unit','error');$('inventorySelection').textContent=signal.aborted?'Country request timed out. Select it again.':error instanceof Error?error.message:String(error);showError(signal.aborted?'Country outline request timed out after 25 seconds.':error instanceof Error?error.message:String(error));}
 }
 async function selectInventoryContinent(id:string){
+ directoryPanel?.reset();
  const child=inventoryRootIndex?.children.find(item=>item.id===id);if(!child)return;
  selectedCountryIndex=null;finePanel.reset();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);selectedContinentIndex=null;$('inventorySelection').textContent='Select a country in this continent.';clearError();$('countryList').innerHTML='<div class="placeholder-row">Loading country index…</div>';clearOutline('Choose a country to fetch its outline.');setInventoryStatus('Loading continent index…');
@@ -475,6 +506,7 @@ async function selectInventoryContinent(id:string){
 }
 
 async function loadInventory(){
+ directoryPanel?.reset();
  selectedCountryIndex=null;finePanel.reset();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);clearError();setInventoryStatus('Fetching inventory manifest…');
  try{
@@ -699,7 +731,7 @@ document.querySelector('#loadPack')!.addEventListener('click', () => void loadMa
 document.querySelector('#loadInventory')!.addEventListener('click', () => void loadInventory());
 document.querySelector('#continentSelect')!.addEventListener('change', event => { const id=(event.target as HTMLSelectElement).value;if(id)void selectInventoryContinent(id); });
 document.querySelector('#show3d')!.addEventListener('click',()=>setView('pack'));
-document.querySelector('#show2d')!.addEventListener('click',()=>{if(inventoryManifest)setView('outline');});
+document.querySelector('#show2d')!.addEventListener('click',()=>setView('outline'));
 document.querySelector('#prevTile')!.addEventListener('click', () => focusTile(selectedIndex - 1));
 document.querySelector('#nextTile')!.addEventListener('click', () => focusTile(selectedIndex + 1));
 document.querySelector('#retryTiles')!.addEventListener('click', () => { tileStream?.retryFailed(); });
@@ -733,7 +765,8 @@ if (queriedManifest && /^[a-f0-9]{64}$/.test(queriedHash) && shareableManifestQu
 }
 const queriedInventory=initialQuery.get('inventory');const queriedInventoryHash=initialQuery.get('inventoryHash')?.toLowerCase()??'';
 if(queriedInventory&&/^\/world-output\/inventory\/manifests\/[a-f0-9]{64}\.json$/.test(queriedInventory)&&/^[a-f0-9]{64}$/.test(queriedInventoryHash)){
- ($('inventoryUrl') as HTMLInputElement).value=queriedInventory;($('inventoryHash') as HTMLInputElement).value=queriedInventoryHash;void loadInventory();
+ ($('inventoryUrl') as HTMLInputElement).value=queriedInventory;($('inventoryHash') as HTMLInputElement).value=queriedInventoryHash;
+ if(!initialQuery.has('directory'))void loadInventory();
 }
 new ResizeObserver(() => { const width = canvasHost.clientWidth, height = canvasHost.clientHeight; if(width<1||height<1)return;renderer.setSize(width, height); camera.aspect = width / height; camera.updateProjectionMatrix(); planNearbyTiles(); invalidate(); }).observe(canvasHost);
 function drawFrame() {

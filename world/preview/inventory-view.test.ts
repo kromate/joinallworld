@@ -55,3 +55,13 @@ test('verifies exact content hashes and caps asset bytes before JSON validation'
  assert.equal(fetched.value.sourceUnitCount,177);
  assert.equal(fetched.bytes,bytes.byteLength);
 });
+
+
+test('optional higher map precision retains tiny source polygons when zoomed',()=>{
+ const tiny=validateInventoryGeometry({type:'Polygon',coordinates:[[[12.45,41.90],[12.452,41.90],[12.452,41.902],[12.45,41.902],[12.45,41.90]]]});
+ const exact=inventoryGeometryPath(tiny,720,360,false,false,5);
+ const coordinates=[...exact.matchAll(/[ML](-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g)].map(match=>[Number(match[1]),Number(match[2])]);
+ assert.equal(new Set(coordinates.map(point=>point[0])).size,2);
+ assert.equal(new Set(coordinates.map(point=>point[1])).size,2);
+ assert.throws(()=>inventoryGeometryPath(tiny,720,360,false,false,20),/precision/);
+});

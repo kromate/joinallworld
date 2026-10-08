@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readdir, readFile, rm, realpath, mkdir, symlink, stat } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { mkdtemp, readdir, readFile, writeFile, rm, realpath, mkdir, symlink, stat } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { buildInventory, publishInventory, validateInventory } from './inventory.ts';
+import { buildInventory, INVENTORY_LIMITS, publishInventory, validateInventory } from './inventory.ts';
 import type { SourceRecord } from './types.ts';
 
 const source:SourceRecord={id:'natural-earth-admin0',url:'file:fixture.geojson',release:'pinned-test-release',license:'public-domain',attribution:'Natural Earth',sha256:'a'.repeat(64),bytes:321};
@@ -23,6 +24,7 @@ test('buildInventory accounts for each source feature once, preserves code ambig
  assert.deepEqual(inventory.nodes.filter(n=>n.kind==='country').flatMap(n=>n.sourceFeatureIds).sort(),['natural-earth-admin0:NE_ID:159','natural-earth-admin0:NE_ID:242','natural-earth-admin0:NE_ID:90'].sort());
  assert.equal(inventory.nodes.find(n=>n.id.startsWith('country:')&&n.name==='Fiji')?.bounds?.[0]! > inventory.nodes.find(n=>n.id.startsWith('country:')&&n.name==='Fiji')?.bounds?.[2]!,true);
  assert.equal(inventory.outlines.find(o=>o.nodeId.includes('242'))?.geometry.type,'Polygon');
+ assert.deepEqual(Object.keys(inventory.outlines[0]!.geometry).sort(),['coordinates','type']);
  assert.equal((inventory.outlines.find(o=>o.nodeId.includes('242'))?.geometry.coordinates as unknown[][]).length,2);
  assert.equal(inventory.nodes.find(n=>n.id==='legacy-ng')?.provider,'legacy-ng');
  assert.equal(inventory.nodes.find(n=>n.id==='legacy-ng')?.outline,'missing');
@@ -85,6 +87,8 @@ test('publishInventory writes independently addressed outline and node assets wi
  try {
   const canonicalTemp=await realpath(temp),root=path.join(canonicalTemp,'build'),out=path.join(root,'output','inventory');
   const result=await publishInventory(buildInventory(source,geo),out,root);
+  const repeated=await publishInventory(buildInventory(source,geo),out,root);
+  assert.deepEqual(repeated,result,'identical accepted input retains canonical manifest identity and byte accounting');
   assert.match(result.manifestHash,/^[a-f0-9]{64}$/);
   const manifest=JSON.parse(await readFile(path.join(out,result.manifestPath),'utf8')) as {sourceUnitCount:number;outlineCount:number;rootNodePath:string};
   assert.equal(manifest.sourceUnitCount,3);
@@ -93,6 +97,14 @@ test('publishInventory writes independently addressed outline and node assets wi
   const nodes=await readdir(path.join(out,'nodes'));
   assert.equal(outlines.length,2);
   assert.equal(nodes.length,6);
+  for(const file of outlines){const content=await readFile(path.join(out,'outlines',file));assert.equal(createHash('sha256').update(content).digest('hex'),file.slice(0,-5));}
+  const expectedGhanaBody='{"coordinates":[[[-3,4],[1,4],[1,11],[-3,11],[-3,4]]],"type":"Polygon"}';
+  const expectedGhanaHash=createHash('sha256').update(expectedGhanaBody).digest('hex');
+  assert.equal(await readFile(path.join(out,'outlines',`${expectedGhanaHash}.json`),'utf8'),expectedGhanaBody,'outline bytes retain the accepted schema-1 canonical body');
+  const damagedPath=path.join(out,'outlines',outlines[0]!);
+  await writeFile(damagedPath,'damaged existing immutable asset');
+  await assert.rejects(publishInventory(buildInventory(source,geo),out,root),/immutable output collision/);
+  assert.equal(await readFile(damagedPath,'utf8'),'damaged existing immutable asset','publication refuses to overwrite an existing content-addressed file');
   assert.ok(manifest.rootNodePath.startsWith('nodes/'));
   const rootIndex=JSON.parse(await readFile(path.join(out,manifest.rootNodePath),'utf8')) as {children:Array<{name:string;path:string}>};
   assert.deepEqual(rootIndex.children.map(child=>child.name),['Africa','Oceania']);
@@ -100,4 +112,50 @@ test('publishInventory writes independently addressed outline and node assets wi
   assert.deepEqual(africa.children.map(child=>child.name),['Ghana','Nigeria']);
   await assert.rejects(publishInventory(buildInventory(source,geo),path.join(canonicalTemp,'escape'),root),/inside allowed root/);
  } finally { await rm(temp,{recursive:true,force:true}); }
+});
+
+test('preflights aggregate source coordinate positions before any output directory is created',async()=>{
+ const sharedPosition=[1,1];
+ const makeFeature=(id:number)=>({type:'Feature',id:String(id),properties:{NE_ID:id,ADMIN:`Country ${id}`,CONTINENT:'Africa',ISO_A2_EH:'AA'},geometry:poly([new Array(1_000_001).fill(sharedPosition)])});
+ const overBudget={type:'FeatureCollection',features:[makeFeature(1),makeFeature(2)]};
+ const temp=await mkdtemp(path.join(os.tmpdir(),'world-inventory-position-cap-'));
+ try{
+  const canonicalTemp=await realpath(temp),root=path.join(canonicalTemp,'build'),out=path.join(root,'output','inventory');
+  assert.equal(INVENTORY_LIMITS.coordinatePositions,2_000_000);
+  await assert.rejects(Promise.resolve().then(()=>buildInventory(source,overBudget)),/aggregate geometry coordinate budget/);
+  await assert.rejects(stat(out),/ENOENT/);
+ }finally{await rm(temp,{recursive:true,force:true});}
+});
+
+test('preflights an oversized outline asset before creating output directories',async()=>{
+ const point=[0.123456789012345,0.123456789012345];
+ const ring=Array.from({length:16_000},()=>point);ring[0]=point;ring[ring.length-1]=point;
+ const large={type:'FeatureCollection',features:[{type:'Feature',id:'large-outline',properties:{NE_ID:777,ADMIN:'Large Outline',CONTINENT:'Test Continent',ISO_A2_EH:'TL'},geometry:poly([ring])}]};
+ const temp=await mkdtemp(path.join(os.tmpdir(),'world-inventory-outline-cap-'));
+ try{
+  const canonicalTemp=await realpath(temp),root=path.join(canonicalTemp,'build'),out=path.join(root,'output','inventory');
+  const inventory=buildInventory(source,large);
+  await assert.rejects(publishInventory(inventory,out,root),/outline exceeds 512000 byte cap/);
+  await assert.rejects(stat(out),/ENOENT/);
+  await assert.rejects(stat(root),/ENOENT/);
+ }finally{await rm(temp,{recursive:true,force:true});}
+});
+
+test('preflights an oversized child-reference node asset before creating output directories',async()=>{
+ const longName='C'.repeat(2_000);
+ const many={type:'FeatureCollection',features:Array.from({length:70},(_,index)=>({type:'Feature',id:`country-${index}`,properties:{NE_ID:index+1000,ADMIN:`${longName}${index}`,CONTINENT:'One Continent',ISO_A2_EH:'AA'},geometry:poly([[[1,1],[2,1],[2,2],[1,2],[1,1]]])}))};
+ const temp=await mkdtemp(path.join(os.tmpdir(),'world-inventory-node-cap-'));
+ try{
+  const canonicalTemp=await realpath(temp),root=path.join(canonicalTemp,'build'),out=path.join(root,'output','inventory');
+  const inventory=buildInventory(source,many);
+  await assert.rejects(publishInventory(inventory,out,root),/node index exceeds 128000 byte cap/);
+  await assert.rejects(stat(out),/ENOENT/);
+  await assert.rejects(stat(root),/ENOENT/);
+ }finally{await rm(temp,{recursive:true,force:true});}
+});
+
+test('rejects an outline that exceeds the browser vertex budget',()=>{
+ const point=[1,1],ring=new Array(INVENTORY_LIMITS.outlinePositions+1).fill(point);
+ const tooManyVertices={type:'FeatureCollection',features:[{type:'Feature',id:'too-many-vertices',properties:{NE_ID:999,ADMIN:'Too Many Vertices',CONTINENT:'One Continent',ISO_A2_EH:'TV'},geometry:poly([ring])}]};
+ assert.throws(()=>buildInventory(source,tooManyVertices),/outline exceeds 100000 coordinate positions/);
 });

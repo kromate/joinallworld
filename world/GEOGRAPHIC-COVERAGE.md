@@ -1,4 +1,4 @@
-# Country coverage expansion: measured candidate and implementation contract
+# Country coverage expansion: measured source and representation contract
 
 The accepted 110m inventory contains 177 Natural Earth map units. Its country IDs and coarse manifest remain unchanged. This is an explicit source denominator, not every country, territory, settlement or playable destination. Expand the geographic foundation before treating the ADM1 metadata catalogue as a global campaign denominator.
 
@@ -16,7 +16,11 @@ The captured metadata identifies:
 - Exact raw URL: `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_0_countries.geojson`.
 - `encoding: none` and empty embedded content. No geometry was downloaded by this research request.
 
-## Next bounded implementation
+## Implemented capture and inspection
+
+The candidate is now captured and frozen in `inventory-10m-sources.json`: 13,287,234 measured response bytes, raw SHA-256 `239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255`, and 258 actual source features. All 177 prior country IDs are retained; 81 are added and none are missing. First/repeated cache-only inspections reproduce report `f8fc7bed183b758c19255f1301bb759e035600f8b6630654eb400df1d3bffd74` with zero network. Source capture and inspection below are implemented; publication and lazy representation remain open. See [COUNTRY-OPERATIONS.md](COUNTRY-OPERATIONS.md) for commands, full limits, measured bytes/RSS/timings, source rights and independent verification.
+
+## Original implementation contract and remaining gates
 
 1. Build a separate supervised country-source acquisition path with a durable pre-contact reservation, identity encoding, exact host/full-commit URL, manual redirect rejection, measured response-body accounting, bounded retained partials, cumulative source allowance and no automatic retry. The 13.3 MB candidate exceeds the fine pilot's 8 MiB source cap; do not relax that cap or route it through fine acquisition. Derive explicit wall, disk, memory, traversal and audit limits before contact. Reuse verified metadata without another discovery request.
 2. Capture at most one complete payload, compute its actual SHA-256 and verify its exact byte length. Pin that result and source rights before compilation. Neither the metadata's Git blob ID nor the advertised product count is a geometry pin. Cache-only reruns must verify original bytes and retain acquisition accounting.
@@ -25,4 +29,10 @@ The captured metadata identifies:
 5. Publish a new immutable inventory version alongside the old one. Preserve old manifests and Rwanda's existing coarse binding. A new fine binding must be rebuilt explicitly against the verified new hierarchy; never silently change an old manifest's parent hash. Country-versus-map-unit distinctions, disputed boundaries and special regions remain disclosed.
 6. Reconstruct discovery joins against the new denominator, using exact source identities. Retain the invalid India metadata row and missing-level exceptions; never count discovered metadata, empty geometry or omitted units as completed geography. Then implement resumable fine campaigns, Africa first, with immutable reviewed pins and bounded partitions for larger layers.
 
-Acceptance requires real first/repeated cache-only reproduction, original-to-output identity conservation, hash/byte verification, interrupted-run recovery, explicit exceptions, and lazy browser inspection of a newly represented small map unit plus polar/antimeridian cases. Do not infer real performance or global completion from metadata or synthetic fixtures. This candidate has not yet passed those gates.
+Acceptance requires real first/repeated cache-only reproduction, original-to-output identity conservation, hash/byte verification, interrupted-run recovery, explicit exceptions, and lazy browser inspection of a newly represented small map unit plus polar/antimeridian cases. Do not infer real performance or global completion from metadata or synthetic fixtures. Capture, exact identity conservation and repeated private inspection have passed. The candidate has not yet passed bounded publication, lazy-browser representation or global topology gates. The original 177-unit published inventory remains active.
+
+## Next representation gate from measured geometry
+
+Four whole outlines exceed 512,000 bytes, but their largest individual polygons are Russia 510,427, United States 288,426, Canada 463,090 and Antarctica 372,523 bytes. Group complete polygons into deterministic bounded assets, preserving source polygon order, holes and every position; no clipping or simplification is needed for this pin. Give each country a hash-verified part index with original geometry type, polygon offsets/counts, per-part hashes/bytes/positions and source identity. Preflight all assets before writing and publish a new product/version alongside the old directory. Do not change the legacy reader or inflate its single-asset cap.
+
+The new reader must lazily load only the selected country, use at most two requests, cap each asset at the existing 512,000 bytes, cap country aggregate bytes/vertices explicitly, cancel stale selection and enforce the existing raw-cache limit. Aggregate reconstruction must conserve polygon order/type/holes and source positions exactly. Keep old coarse/fine bindings readable; fine layers require an explicit verified new binding. Browser acceptance covers an added small map unit, Antarctica and the antimeridian, plus cancellation, integrity failure and cache reuse. This remains geographic foundation rather than streets, climate, terrain or playable destinations.

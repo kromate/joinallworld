@@ -5,8 +5,17 @@ import type { SourceRecord, Bounds } from './types.ts';
 import type { InventoryNode, WorldInventory } from './production-types.ts';
 import { createOutputStore } from './storage.ts';
 
-const MAX_UNITS = 10_000;
-const MAX_COORDINATES = 2_000_000;
+export const INVENTORY_LIMITS = Object.freeze({
+  sourceUnits: 10_000,
+  coordinatePositions: 2_000_000,
+  outlinePositions: 100_000,
+  outlineBytes: 512_000,
+  nodeBytes: 128_000,
+  manifestBytes: 1_000_000,
+  publishedBytes: 16_000_000,
+});
+const MAX_UNITS = INVENTORY_LIMITS.sourceUnits;
+const MAX_COORDINATES = INVENTORY_LIMITS.coordinatePositions;
 
 const sha256 = (data: string | Uint8Array): string => createHash('sha256').update(data).digest('hex');
 const canonical = (value: unknown): string => Array.isArray(value) ? `[${value.map(canonical).join(',')}]` : value && typeof value === 'object' ? `{${Object.keys(value as object).sort().map(key => `${JSON.stringify(key)}:${canonical((value as Record<string, unknown>)[key])}`).join(',')}}` : JSON.stringify(value);
@@ -15,7 +24,7 @@ function obj(value: unknown, label: string): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError(`${label} must be an object`);
   return value as Record<string, unknown>;
 }
-function geometry(value: unknown): { type: 'Polygon'|'MultiPolygon'; coordinates: unknown } {
+function geometry(value: unknown): { type: 'Polygon'|'MultiPolygon'; coordinates: unknown; positions: number } {
   const g = obj(value, 'geometry');
   if ((g.type !== 'Polygon' && g.type !== 'MultiPolygon') || !Array.isArray(g.coordinates)) throw new TypeError('source geometry must be Polygon or MultiPolygon');
   const polygons = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
@@ -33,7 +42,7 @@ function geometry(value: unknown): { type: 'Polygon'|'MultiPolygon'; coordinates
       if (first[0] !== last[0] || first[1] !== last[1]) throw new TypeError('inventory polygon ring must be closed');
     }
   }
-  return { type: g.type, coordinates: g.coordinates };
+  return { type: g.type, coordinates: g.coordinates, positions: count };
 }
 function bounds(g: {type:string;coordinates:unknown}): Bounds {
   const points: number[][] = [];
@@ -64,6 +73,14 @@ export function buildInventory(source: SourceRecord, geojson: unknown): WorldInv
   const fc = obj(geojson, 'GeoJSON');
   if (fc.type !== 'FeatureCollection' || !Array.isArray(fc.features) || fc.features.length < 1 || fc.features.length > MAX_UNITS) throw new TypeError('GeoJSON must be a bounded non-empty FeatureCollection');
   if (!source || typeof source.id!=='string'||!source.id||typeof source.url!=='string'||!source.url||typeof source.release!=='string'||!source.release||typeof source.license!=='string'||!source.license||typeof source.attribution!=='string'||!source.attribution||!/^[a-f0-9]{64}$/.test(source.sha256) || !Number.isSafeInteger(source.bytes) || source.bytes < 1) throw new TypeError('source must pin exact bytes and SHA-256 with attribution and license');
+  // Reject oversized aggregate geometry before bounds computation or publisher work.
+  let aggregatePositions = 0;
+  for (const [index, raw] of (fc.features as unknown[]).entries()) {
+    const feature = obj(raw, `feature ${index}`);
+    const parsed = geometry(feature.geometry);
+    aggregatePositions += parsed.positions;
+    if (aggregatePositions > INVENTORY_LIMITS.coordinatePositions) throw new RangeError('inventory aggregate geometry coordinate budget exceeded');
+  }
   const rootId = 'world:earth';
   const nodes: InventoryNode[] = [{id:rootId,parentId:null,name:'World',kind:'world',countryCode:null,bounds:null,sourceFeatureIds:[],provider:'world',outline:'missing',exceptions:[]}];
   const outlines: WorldInventory['outlines'] = [];
@@ -93,12 +110,16 @@ export function buildInventory(source: SourceRecord, geojson: unknown): WorldInv
       if(countryIds.has(countryId)) throw new Error(`duplicate country node identity ${countryId}`); countryIds.add(countryId);
       const node:InventoryNode={id:countryId,parentId:cid,name,kind:'country',countryCode:isNigeria?'NG':code,bounds:bounds(geom),sourceFeatureIds:[featureId],provider:isNigeria?'legacy-ng':'world',outline:isNigeria?'missing':'available',exceptions:isNigeria?[...issue,'protected legacy Nigeria provider; no world content generation']:issue};
       nodes.push(node);
-      if(!isNigeria) outlines.push({nodeId:countryId,geometry:geom}); else {nigeriaSeen=true;exceptions.push('legacy-ng: protected legacy Nigeria provider; no world content generation');}
+      if(!isNigeria) {
+        if(geom.positions>INVENTORY_LIMITS.outlinePositions)throw new RangeError(`inventory outline exceeds ${INVENTORY_LIMITS.outlinePositions} coordinate positions`);
+        outlines.push({nodeId:countryId,geometry:{type:geom.type,coordinates:geom.coordinates}});
+      } else {nigeriaSeen=true;exceptions.push('legacy-ng: protected legacy Nigeria provider; no world content generation');}
       if(issue.length) exceptions.push(`${countryId}: ${issue.join('; ')}`);
     } else {
       const id=`country:natural-earth:${encodeURIComponent(ident.id)}`;
       nodes.push({id,parentId:rootId,name,kind:'country',countryCode:code,bounds:bounds(geom),sourceFeatureIds:[featureId],provider:'world',outline:'available',exceptions:[...issue,'no continent parent could be formed']});
-      outlines.push({nodeId:id,geometry:geom}); exceptions.push(`${id}: ${issue.join('; ')}`);
+      if(geom.positions>INVENTORY_LIMITS.outlinePositions)throw new RangeError(`inventory outline exceeds ${INVENTORY_LIMITS.outlinePositions} coordinate positions`);
+      outlines.push({nodeId:id,geometry:{type:geom.type,coordinates:geom.coordinates}}); exceptions.push(`${id}: ${issue.join('; ')}`);
     }
   });
   if(!nigeriaSeen) {
@@ -132,7 +153,8 @@ export function validateInventory(value: unknown): WorldInventory {
   const roots=nodes.filter(n=>n.kind==='world'); if(roots.length!==1||roots[0]!.parentId!==null) throw new Error('inventory needs one world root');
   const byId = new Map(nodes.map(n=>[n.id,n]));
   for(const n of nodes){if(n.kind==='world')continue;const parent=n.parentId===null?undefined:byId.get(n.parentId);if(!parent)throw new Error(`inventory node parent is missing: ${n.id}`);if(parent.kind!=='world'&&!(parent.kind==='continent'&&n.kind==='country'))throw new Error(`inventory hierarchy is cyclic or has an invalid parent: ${n.id}`);}
-  for(const o of v.outlines as WorldInventory['outlines']){if(!ids.has(o.nodeId)||outlineIds.has(o.nodeId))throw new Error(`orphan or duplicate outline: ${o.nodeId}`);geometry(o.geometry);outlineIds.add(o.nodeId);}
+  let aggregatePositions = 0;
+  for(const o of v.outlines as WorldInventory['outlines']){if(!ids.has(o.nodeId)||outlineIds.has(o.nodeId))throw new Error(`orphan or duplicate outline: ${o.nodeId}`);const parsed=geometry(o.geometry);if(parsed.positions>INVENTORY_LIMITS.outlinePositions)throw new RangeError(`inventory outline exceeds ${INVENTORY_LIMITS.outlinePositions} coordinate positions`);aggregatePositions += parsed.positions;if(aggregatePositions>INVENTORY_LIMITS.coordinatePositions)throw new RangeError('inventory aggregate geometry coordinate budget exceeded');outlineIds.add(o.nodeId);}
   const featureRefs=nodes.flatMap(n=>n.sourceFeatureIds); if(featureRefs.length!==v.sourceUnitCount||new Set(featureRefs).size!==featureRefs.length)throw new Error('inventory source denominator is incomplete or duplicated');
   for(const n of nodes) if(n.outline==='available'&&!outlineIds.has(n.id))throw new Error(`available outline missing: ${n.id}`);
   for(const n of nodes)if(n.outline==='missing'&&outlineIds.has(n.id))throw new Error(`missing or protected outline must not be generated: ${n.id}`);
@@ -153,18 +175,26 @@ export async function ensureInventoryDirectory(directory:string):Promise<void>{
 export async function publishInventory(inventoryValue: WorldInventory, outputRoot: string, allowedRoot: string): Promise<{manifestPath:string;manifestHash:string;bytes:number}> {
   const inventory=validateInventory(inventoryValue), out=path.resolve(outputRoot), allowed=path.resolve(allowedRoot);
   const rel=path.relative(allowed,out); if(!rel||rel==='..'||rel.startsWith(`..${path.sep}`)||path.isAbsolute(rel))throw new Error('inventory output must be inside allowed root');
-  await ensureInventoryDirectory(allowed);
-  const store=await createOutputStore(out,allowed);
+  const assets: Array<{ relative: string; body: Buffer }> = [];
   let totalOutput=0;
-  const write=async(relative:string,body:string):Promise<number>=>{const bytes=Buffer.from(body);totalOutput+=bytes.length;if(totalOutput>100_000_000)throw new RangeError('inventory publication exceeds 100 MB budget');await store.writeImmutable(relative,bytes);return bytes.length;};
-  let bytes=0;
+  const prepare=(relative:string,body:string,maxBytes:number,label:string):void=>{
+    const bytes=Buffer.from(body);
+    if(bytes.length>maxBytes)throw new RangeError(`inventory ${label} exceeds ${maxBytes} byte cap`);
+    totalOutput+=bytes.length;
+    if(totalOutput>INVENTORY_LIMITS.publishedBytes)throw new RangeError(`inventory publication exceeds ${INVENTORY_LIMITS.publishedBytes} byte budget`);
+    assets.push({relative,body:bytes});
+  };
   const outlinePaths=new Map<string,string>();
-  for(const outline of inventory.outlines){const body=canonical(outline.geometry),hash=sha256(body),relative=`outlines/${hash}.json`;bytes+=await write(relative,body);outlinePaths.set(outline.nodeId,relative);}
+  for(const outline of inventory.outlines){const body=canonical(outline.geometry),hash=sha256(body),relative=`outlines/${hash}.json`;prepare(relative,body,INVENTORY_LIMITS.outlineBytes,'outline');outlinePaths.set(outline.nodeId,relative);}
   const byParent=new Map<string|null,InventoryNode[]>();for(const node of inventory.nodes){const list=byParent.get(node.parentId)??[];list.push(node);byParent.set(node.parentId,list);}
-  const publishNode=async(node:InventoryNode):Promise<string>=>{const children=[...(byParent.get(node.id)??[])].sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:a.id<b.id?-1:a.id>b.id?1:0);const childRefs=[];for(const child of children)childRefs.push({id:child.id,name:child.name,path:await publishNode(child)});const body=canonical({node,outlinePath:outlinePaths.get(node.id)??null,children:childRefs});const hash=sha256(body),relative=`nodes/${hash}.json`;bytes+=await write(relative,body);return relative;};
-  const root=inventory.nodes.find(n=>n.kind==='world')!;const rootNodePath=await publishNode(root);
+  const publishNode=(node:InventoryNode):string=>{const children=[...(byParent.get(node.id)??[])].sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:a.id<b.id?-1:a.id>b.id?1:0);const childRefs=[];for(const child of children)childRefs.push({id:child.id,name:child.name,path:publishNode(child)});const body=canonical({node,outlinePath:outlinePaths.get(node.id)??null,children:childRefs});const hash=sha256(body),relative=`nodes/${hash}.json`;prepare(relative,body,INVENTORY_LIMITS.nodeBytes,'node index');return relative;};
+  const root=inventory.nodes.find(n=>n.kind==='world')!;const rootNodePath=publishNode(root);
   const rollups=(byParent.get(root.id)??[]).map(continent=>({id:continent.id,name:continent.name,countryCount:(byParent.get(continent.id)??[]).length,sourceUnitCount:(byParent.get(continent.id)??[]).reduce((sum,n)=>sum+n.sourceFeatureIds.length,0),exceptionCount:(byParent.get(continent.id)??[]).reduce((sum,n)=>sum+n.exceptions.length,0)}));
   const manifestBody=canonical({schemaVersion:inventory.schemaVersion,sources:inventory.sources,sourceUnitCount:inventory.sourceUnitCount,exceptions:inventory.exceptions,rollups,rootNodePath,outlineCount:outlinePaths.size}),manifestHash=sha256(manifestBody),manifestPath=`manifests/${manifestHash}.json`;
-  bytes+=await write(manifestPath,manifestBody);
-  return {manifestPath,manifestHash,bytes};
+  prepare(manifestPath,manifestBody,INVENTORY_LIMITS.manifestBytes,'manifest');
+  // No output directory is created until every immutable asset passes its own and aggregate cap.
+  await ensureInventoryDirectory(allowed);
+  const store=await createOutputStore(out,allowed);
+  for(const asset of assets)await store.writeImmutable(asset.relative,asset.body);
+  return {manifestPath,manifestHash,bytes:totalOutput};
 }

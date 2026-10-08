@@ -13,6 +13,7 @@ const { game, shell } = useApp()
 const cityId = computed(() => game.view.value.cityId)
 const contextKey = computed(() => JSON.stringify([cityId.value, game.state.value.location, game.view.value.session?.id ?? '']))
 const canvas = ref<HTMLCanvasElement | null>(null)
+const viewTarget = ref<HTMLDivElement | null>(null)
 const route = ref<DrivingRoute | null>(null)
 const session = ref<DrivingSessionView | null>(null)
 const serverState = ref<DrivingState | null>(null)
@@ -282,10 +283,20 @@ async function claimQualification(): Promise<void> {
     if (request === qualificationRequest && responseCurrent(token, key)) qualificationBusy.value = false
   }
 }
+async function revealDrivingView(token: number, key: string, journey: string): Promise<void> {
+  await nextTick()
+  const target = viewTarget.value, current = session.value
+  if (!mounted || disposed || !responseCurrent(token, key) || document.hidden || !online.value || needsRefresh.value
+    || current?.journeyId !== journey || current.state.status !== 'running' || (!boarding.value && !active.value)
+    || !target?.isConnected || !target.getClientRects().length) return
+  target.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'nearest' })
+  target.focus({ preventScroll: true })
+}
 function beginPresentation(): void {
   const current = session.value, journey = current?.journeyId, token = generation, key = contextKey.value
   if (!journey || !scene.value || current?.state.status !== 'running' || !online.value || document.hidden) return
   active.value = false; boarding.value = true
+  void revealDrivingView(token, key, journey)
   startControls() // neutral frames keep server timeout refreshed while door/walk/seat animates
   scene.value.begin(() => {
     if (disposed || !responseCurrent(token, key) || document.hidden || !online.value || session.value?.journeyId !== journey || session.value.state.status !== 'running' || !boarding.value) {
@@ -463,7 +474,7 @@ onBeforeUnmount(() => {
 <template>
   <main class="driving-app" aria-label="Driving practice">
     <p class="practice-label">{{ practiceLabel }}</p>
-    <div class="driving-view" :class="{ 'is-flat': webglUnavailable }">
+    <div ref="viewTarget" class="driving-view" :class="{ 'is-flat': webglUnavailable }" role="group" aria-label="Driving practice view" tabindex="-1">
       <canvas ref="canvas" aria-hidden="true" />
       <section v-if="!webglUnavailable" class="server-dashboard" role="group" aria-label="Server-confirmed driving gauges">
         <div class="gauge-grid">

@@ -7,7 +7,7 @@
 // played, or with Hints off. Phone → Help and Settings start it again ('jaw:tour'); ? opens the shortcuts ('jaw:shortcuts').
 import { defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { hintsOn } from '../sim/settingsModel.ts'
+import { coachHints } from '../hud/coachModel.ts'
 import { markTourSeen, tourDue, tourSeen } from './tourSeen.ts'
 import { track, tour } from './tourState.ts'
 import type { TourId } from '../companion/types.ts'
@@ -35,7 +35,7 @@ function verdict(): 'start' | 'wait' | 'never' {
   return tourDue({
     connected: view.connected, creating: onboarding?.required === true, who: who(),
     activities: onboarding?.activities ?? 0, firstAt: onboarding?.timing?.firstAt ?? null,
-    seen: held.has(who()) || tourSeen(store(), who()), hintsOff: !hintsOn(store()),
+    seen: held.has(who()) || tourSeen(store(), who()), hintsOff: !coachHints.value,
     busy: Boolean(shell.sheet.value) || Boolean(game.state.value.activeAction) || game.mode.value !== 'venue' || community.open.value || community.state.value?.voice.on === true || shortcuts.value || Boolean(document.querySelector('dialog[open]')),
     hudReady: hudReady(),
   })
@@ -75,7 +75,7 @@ function onShortcuts(event: Event): void {
   track('shortcuts_opened', { from: from === 'help' || from === 'tour' ? from : 'key' })
 }
 
-watch([() => game.view.value.connected, () => game.view.value.onboarding?.required, shell.sheet, game.mode, () => Boolean(game.state.value.activeAction), () => game.view.value.session?.id], () => { tries = 0; void nextTick(consider) }, { flush: 'post' })
+watch([coachHints, () => game.view.value.connected, () => game.view.value.onboarding?.required, shell.sheet, game.mode, () => Boolean(game.state.value.activeAction), () => game.view.value.session?.id], () => { tries = 0; void nextTick(consider) }, { flush: 'post' })
 onMounted(() => {
   window.addEventListener('jaw:tour', onTour as EventListener)
   window.addEventListener('jaw:shortcuts', onShortcuts)

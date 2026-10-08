@@ -23,7 +23,7 @@ const VisitDoor = defineAsyncComponent(() => import('../visit/VisitDoor.vue'))
 import AccountSettings from '../account/AccountSettings.vue'
 import ResidenceCard from '../locate/ResidenceCard.vue'
 import { useAccount } from '../account/useAccount.ts'
-import { HINTS_KEY, hintsOn } from './settingsModel.ts'
+import { COACH_KEY, coachHints } from '../hud/coachModel.ts'
 import { NOT_SAVED, SESSION_RULES, WALLPAPER_NOT_SAVED } from './settingsOptions.ts'
 import { SOUND_NOT_SAVED, SOUND_SLIDERS, SOUND_SWITCHES, change, percent, soundSummary } from './soundSettingsModel.ts'
 import { getSound, onSoundChange, setSound } from '../../../audio/settings.ts'
@@ -45,15 +45,17 @@ onBeforeUnmount(stopSound)
 function changeSound(id: Parameters<typeof change>[0], value: boolean | number | string): void {
   warning.value = setSound(change(id, value)) ? '' : SOUND_NOT_SAVED
 }
-const hints = ref(hintsOn(store()))
+const hints = coachHints
 const wall = ref(getWallpaper())
 const warning = ref('')
 const device = computed(() => (view.value.connected ? 'progress saved on the server' : `${linkWords(view.value)?.short ?? ''}: this is the last copy kept on this device`))
 
 function toggleHints(on: boolean): void {
   hints.value = on
-  try { if (on) store()?.removeItem(HINTS_KEY); else store()?.setItem(HINTS_KEY, '1') } catch { warning.value = NOT_SAVED }
-  window.dispatchEvent(new CustomEvent('jaw:hints'))
+  const storage = store()
+  warning.value = ''
+  if (!storage) { warning.value = NOT_SAVED; return }
+  try { if (on) storage.removeItem(COACH_KEY); else storage.setItem(COACH_KEY, '1') } catch { warning.value = NOT_SAVED }
 }
 function pickWall(id: string): void { warning.value = setWallpaper(id) ? '' : WALLPAPER_NOT_SAVED; wall.value = id }
 

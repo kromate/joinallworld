@@ -4,13 +4,13 @@
 // More, a card that has just appeared) are announced by a brief pill. It is silent on a Clean screen,
 // with Hints off, and it tapers: each situational pointer is shown a few times and then retired.
 // Nothing here keeps time: the movements are CSS animations that end by themselves.
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue'
 import { nextStep } from '../../../ui/attention.ts'
 import type { NextStep, Point, StepContext } from '../../../ui/attention.ts'
 import type { Attention } from '../../../ui/attention-dom.ts'
 import { isTrip } from '../venue/tripModel.ts'
 import { useApp } from '../../state/app.ts'
-import { COACH_KEY } from './coachModel.ts'
+import { COACH_KEY, coachHints } from './coachModel.ts'
 import { tour } from '../tour/tourState.ts'
 import { mapUi } from '../travel/travelState.ts'
 
@@ -22,11 +22,10 @@ const LOW_NEED = 35
 function readSeen(): Record<string, number> {
   try { const value: unknown = JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY) ?? 'null'); return value && typeof value === 'object' ? value as Record<string, number> : {} } catch { return {} }
 }
-function readOff(): boolean { try { return globalThis.localStorage?.getItem(COACH_KEY) === '1' } catch { return false } }
 
 export function useAttention() {
   const { game, shell } = useApp()
-  const off = ref(readOff())
+  const off = computed(() => !coachHints.value)
   const step = shallowRef<NextStep | null>(null)
   let attention: Attention | null = null
   let lastClick: (Point & { at: number }) | null = null
@@ -106,9 +105,8 @@ export function useAttention() {
   }
 
   const onClick = (event: PointerEvent): void => { lastClick = { x: event.clientX, y: event.clientY, at: Date.now() } }
-  const onHints = (): void => { off.value = readOff() }
   function dismiss(): void {
-    off.value = true
+    coachHints.value = false
     attention?.clear()
     try { globalThis.localStorage?.setItem(COACH_KEY, '1') } catch { /* still off for this visit */ }
   }
@@ -120,10 +118,9 @@ export function useAttention() {
       point(); notice()
     })
     document.addEventListener('pointerdown', onClick, true)
-    window.addEventListener('jaw:hints', onHints)
     void nextTick(() => { point(); notice() })
   })
-  onBeforeUnmount(() => { gone = true; document.removeEventListener('pointerdown', onClick, true); window.removeEventListener('jaw:hints', onHints); attention?.destroy(); attention = null })
+  onBeforeUnmount(() => { gone = true; document.removeEventListener('pointerdown', onClick, true); attention?.destroy(); attention = null })
   watch([game.state, game.mode, shell.sheet, off, () => shell.ui.clean, () => shell.ui.expanded, () => shell.ui.trayOpen, () => tour.active], () => { void nextTick(() => { point(); notice() }) }, { flush: 'post' })
   // Going up to the world map, or picking another place there, changes what Go there is to point at.
   watch([() => mapUi.layer, () => mapUi.destination], () => { void nextTick(point) }, { flush: 'post' })

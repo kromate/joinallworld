@@ -15,9 +15,9 @@ export const SEND_TIMEOUT_MS = 12000;
 export const FAILURE_TEXT = 'No answer from the server. Check your connection and retry.';
 
 /** Insert or replace server messages by sequence number; result is ordered and free of duplicates. */
-export function mergeMessages<M extends Pick<Message, 'seq'>>(existing: readonly M[] | null | undefined, incoming: readonly (M | null | undefined)[] | null | undefined): M[] {
+export function mergeMessages<M extends Pick<Message, 'seq'> & { version?: number }>(existing: readonly M[] | null | undefined, incoming: readonly (M | null | undefined)[] | null | undefined): M[] {
   const bySeq = new Map<number, M>((existing || []).map((message) => [message.seq, message]));
-  for (const message of incoming || []) if (message && Number.isSafeInteger(message.seq)) bySeq.set(message.seq, message);
+  for (const message of incoming || []) if (message && Number.isSafeInteger(message.seq) && (message.version ?? 0) >= (bySeq.get(message.seq)?.version ?? 0)) bySeq.set(message.seq, message);
   return [...bySeq.values()].sort((a, b) => a.seq - b.seq);
 }
 

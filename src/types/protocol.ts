@@ -537,6 +537,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/prefs',
   'POST /api/social/introduction',
   'POST /api/social/conversations/:id/react',
+  'POST /api/social/conversations/:id/message',
   'POST /api/social/notify',
   'POST /api/social/images',
   'GET /api/social/images/:id',

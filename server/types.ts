@@ -286,6 +286,11 @@ export interface MessageRecord {
   rx?: Record<string, string>
   /** A picture: the id of its bytes (kept apart from this collection), its size and what became of it. */
   img?: ImageRef
+  version?: number
+  editedAt?: number
+  deletedAt?: number
+  sendHash?: string
+  forwarded?: true
 }
 /** What a message holds of a picture. The bytes are in the image store (server/social/images.ts), never here. */
 export interface ImageRef {

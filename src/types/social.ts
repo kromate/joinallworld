@@ -118,6 +118,10 @@ export interface Message {
   reactions?: { emoji: string; count: number; mine?: true }[]
   /** A picture. Its bytes are at GET /api/social/images/<id>, for members of the conversation only. */
   image?: PictureView
+  version?: number
+  editedAt?: number
+  deleted?: true
+  forwarded?: true
 }
 /** What a picture is to the one looking at it. `state` is absent when it can be shown. */
 export interface PictureView {
@@ -305,6 +309,7 @@ export type SendMessageBody = ({ to: string } | { conv: ConversationId }) & {
   mentions?: { id: string; start: number }[]
   /** The `seq` of a message in the same conversation that this one answers. */
   replyTo?: number
+  forward?: { conv: ConversationId; seq: number }
 }
 /** `type` names the bytes' content type; `data` is standard base64. `body` is an optional caption. */
 export type PictureUploadBody = ({ to: string } | { conv: ConversationId }) & { clientId: string; type: 'image/jpeg' | 'image/png' | 'image/webp'; data: string; body?: string; replyTo?: number; mentions?: { id: string; start: number }[] }
@@ -370,7 +375,7 @@ export type ManyResult = Done<'sent', { results: ({ id: string; ok: true; duplic
 export type ReadResult = Done<'read', { conv: Conversation }> | Refusal<'not_a_member' | (string & {})>
 export type SendMessageResult =
   | Done<'sent', { conv: Conversation; message: Message } & Repeat>
-  | Refusal<OtherPlayerRefusal | TextRefusal | 'not_a_member' | 'rate_limited' | 'new_chat_limit' | 'awaiting_reply'>
+  | Refusal<OtherPlayerRefusal | TextRefusal | 'not_a_member' | 'rate_limited' | 'new_chat_limit' | 'awaiting_reply' | 'unknown_message'>
 export type GroupCreateResult =
   | Done<'created', { conv: Conversation } & Repeat>
   | Refusal<LabelRefusal | 'rate_limited' | 'too_many_groups' | 'group_full' | 'friends_only' | 'not_a_member'>
@@ -460,6 +465,7 @@ export interface SocialHttpRoutes {
   'POST /api/social/conversations/:id/prefs': { params: { id: ConversationId }; body: ConvPrefsBody; response: Ok<Done<'updated', { conv: Conversation }> | Done<'hidden'> | Refusal<'not_a_member' | 'not_allowed' | 'pin_limit'>>; errors: SocialPost | 'invalid_conversation' }
   /** Who may add the caller to groups, whether a mention breaks through a muted group, who may send them pictures. */
   /** One reaction of the caller's on a message (`emoji: null` takes it back). */
+  'POST /api/social/conversations/:id/message': { params: { id: ConversationId }; body: { seq: number; clientId: string; version: number } & ({ op: 'edit'; body: string } | { op: 'delete' }); response: Ok<Done<'updated', { message: Message }> | Refusal<'not_a_member' | 'unknown_message' | 'not_allowed' | 'message_changed' | 'edit_expired' | 'blocked' | 'rate_limited'> | Refusal<TextRefusal>>; errors: SocialPost | OnceErrorCode | 'invalid_conversation' | 'invalid_message' | 'invalid_message_op' }
   'POST /api/social/conversations/:id/react': { params: { id: ConversationId }; body: ReactBody; response: Ok<Done<'reacted', { message: Message }> | Refusal<'not_a_member' | 'unknown_message' | 'too_many_reactions' | 'rate_limited' | 'blocked'>>; errors: SocialPost | 'invalid_conversation' | 'invalid_reaction' }
   /** Phone notification settings for messages. */
   'POST /api/social/notify': { body: NotifyPrefsBody; response: Ok<Done<'saved', { notify: NotifyPrefs }>>; errors: SocialPost | 'invalid_pref' }

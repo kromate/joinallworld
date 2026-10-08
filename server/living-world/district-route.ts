@@ -119,8 +119,9 @@ export async function resolveDistrictRoute(reader?: StreetAssetReader): Promise<
     const matchingRoads = decoded.roads.filter(road => road.id === ROAD_ID)
     if (matchingRoads.length !== 1) return null
     const road = matchingRoads[0]
-    if (road.name !== 'Marina' || road.source !== 'authored' || road.width !== ROAD_WIDTH || road.bridge || road.points.length !== 2) return null
-    if (!samePoint(road.points[0], ROAD_START) || !samePoint(road.points[1], ROAD_END)) return null
+    if (!road || road.name !== 'Marina' || road.source !== 'authored' || road.width !== ROAD_WIDTH || road.bridge || road.points.length !== 2) return null
+    const [start, end] = road.points
+    if (!start || !end || !samePoint(start, ROAD_START) || !samePoint(end, ROAD_END)) return null
     return freezeProposal()
   } catch {
     return null

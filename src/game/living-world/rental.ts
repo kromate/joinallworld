@@ -86,7 +86,9 @@ export function readValidatedRentalState(value: unknown): RentalState | null {
   if ((trip && (!entitlement || trip.actor !== entitlement.actor || trip.resourceId !== entitlement.resourceId || trip.scope !== entitlement.scope || trip.qualificationId !== entitlement.qualificationId || (trip.status === 'active' && entitlement.status !== 'active')))
     || (value.generation === 0) !== (trip === null)) return null
   const validated: RentalState = { version: 1, revision: value.revision, generation: value.generation, entitlement, trip }
-  if (new TextEncoder().encode(JSON.stringify(validated)).length > MAX_RENTAL_RECORD_BYTES) return null
+  // All retained strings are validated ASCII IDs, fixed literals, or the exact
+  // fingerprint rebuilt from those IDs. JSON code-unit length equals UTF-8 bytes.
+  if (JSON.stringify(validated).length > MAX_RENTAL_RECORD_BYTES) return null
   return validated
   } catch { return null }
 }
@@ -180,5 +182,5 @@ function validEvidence(value: unknown): value is TrustedStarterEvidence {
     && typeof value.resourceAvailable === 'boolean' && time(value.at)
 }
 function validTripEvidence(value: unknown): value is TrustedTripEvidence {
-  return validEvidence(value) && id(value.cityId) && id(value.routeId) && id(value.routeVersion)
+  return obj(value) && id(value.cityId) && id(value.routeId) && id(value.routeVersion) && validEvidence(value)
 }

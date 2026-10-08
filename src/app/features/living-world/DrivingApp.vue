@@ -6,6 +6,7 @@ import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/liv
 import { stepDriving } from '../../../game/living-world/driving.ts'
 import type { Look } from '../../../types/life.ts'
 import type { DrivingScene } from './drivingScene.ts'
+import { validQualificationReply } from './qualificationReply.ts'
 
 defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
@@ -55,20 +56,6 @@ const qualificationClaimAvailable = computed(() => {
 const canClaimQualification = computed(() => qualificationClaimAvailable.value && !qualificationBusy.value)
 const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
 function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
-function isRecord(value: unknown): value is Record<string, unknown> { return typeof value === 'object' && value !== null && !Array.isArray(value) }
-function validQualificationReply(value: unknown): value is QualificationResponse {
-  if (!isRecord(value) || typeof value.ok !== 'boolean' || typeof value.code !== 'string' || value.code.length > 80 || typeof value.valid !== 'boolean'
-    || Object.keys(value).some(key => !['ok', 'code', 'reason', 'duplicate', 'qualification', 'valid'].includes(key))
-    || value.reason !== undefined && (typeof value.reason !== 'string' || value.reason.length > 500)
-    || value.duplicate !== undefined && value.duplicate !== true) return false
-  const q = value.qualification
-  const qualificationShape = q === null || isRecord(q) && Object.keys(q).sort().join(',') === 'earnedAt,evidenceJourneyId,id,status,version'
-    && q.id === 'district-driving' && q.version === 1
-    && typeof q.evidenceJourneyId === 'string' && /^[\w:-]{1,100}$/.test(q.evidenceJourneyId)
-    && Number.isSafeInteger(q.earnedAt) && (q.earnedAt as number) >= 0 && (q.earnedAt as number) <= Number.MAX_SAFE_INTEGER
-    && (q.status === 'active' || q.status === 'revoked')
-  return qualificationShape && (!value.valid || value.ok && value.code === 'qualified' && q !== null && isRecord(q) && q.status === 'active')
-}
 function clearHeld(): void {
   keys.clear(); touch.clear(); held.value = { throttle: 0, brake: 0, steer: 0 }
   scene.value?.setInput(held.value)
@@ -431,13 +418,22 @@ onBeforeUnmount(() => {
       <p v-if="webglUnavailable" class="scene-fallback">3D scene unavailable. Lesson status is available; reopen on a device with 3D support to practise.</p>
       <p class="course-caption">Fictional practice course · checkpoint lesson</p>
     </div>
+    <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
+      <div class="wheel-controls" aria-label="Steering">
+        <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
+        <button type="button" aria-label="Steer right" :disabled="!active" @pointerdown.prevent="touchDown('right', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">→</button>
+      </div>
+      <button type="button" class="drive-control throttle" aria-label="Hold to accelerate" :disabled="!active" @pointerdown.prevent="touchDown('throttle', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Throttle</button>
+      <button type="button" class="drive-control brake" aria-label="Hold to brake" :disabled="!active" @pointerdown.prevent="touchDown('brake', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Brake</button>
+    </section>
+    <p class="control-help">Keyboard: WASD or arrow keys. On touch screens, hold the steering, throttle and brake controls. The course is fictional and for practice only.</p>
     <section class="lesson-status" aria-live="polite">
       <strong>{{ complete ? (assessment === 'passed' ? 'Practice passed' : 'Practice needs another try') : boarding ? 'Getting into the car' : active ? 'Lesson in progress' : session ? 'Saved lesson' : 'Ready to practise' }}</strong>
       <p>{{ feedback }}</p>
       <small v-if="serverState">Assessment: {{ assessment }} · checkpoint {{ Math.min(serverState.checkpointIndex + 1, route?.checkpoints.length ?? 1) }} of {{ route?.checkpoints.length ?? '—' }}.</small>
       <small v-if="retainedPass || (complete && assessment === 'passed')">This passed result is retained; this course will not replace it with another attempt.</small>
     </section>
-    <section class="qualification-status" aria-live="polite">
+    <section v-if="!active && !boarding" class="qualification-status" aria-live="polite">
       <strong>Simulated driving qualification</strong>
       <p>This is an in-game qualification for simulated practice, not a real driving licence.</p>
       <p>{{ qualificationMessage }}</p>
@@ -451,22 +447,13 @@ onBeforeUnmount(() => {
       <button v-if="!online || needsRefresh" type="button" class="secondary" :disabled="busy" @click="load">Reconnect and check lesson</button>
       <button type="button" class="secondary" @click="shell.close()">Close</button>
     </div>
-    <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
-      <div class="wheel-controls" aria-label="Steering">
-        <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
-        <button type="button" aria-label="Steer right" :disabled="!active" @pointerdown.prevent="touchDown('right', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">→</button>
-      </div>
-      <button type="button" class="drive-control throttle" aria-label="Hold to accelerate" :disabled="!active" @pointerdown.prevent="touchDown('throttle', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Throttle</button>
-      <button type="button" class="drive-control brake" aria-label="Hold to brake" :disabled="!active" @pointerdown.prevent="touchDown('brake', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Brake</button>
-    </section>
-    <p class="control-help">Keyboard: WASD or arrow keys. On touch screens, hold the steering, throttle and brake controls. The course is fictional and for practice only.</p>
   </main>
 </template>
 
 <style scoped>
 .driving-app { display: grid; gap: 12px; color: var(--c-ink, #202830); }
 .practice-label, .control-help { margin: 0; color: var(--c-muted, #5d6870); font-size: 12px; line-height: 1.45; }
-.driving-view { position: relative; overflow: hidden; height: clamp(230px, 42vh, 410px); min-height: 220px; border-radius: 14px; background: #d8e8ee; }
+.driving-view { position: relative; overflow: hidden; height: clamp(220px, 35vh, 320px); height: clamp(220px, 35svh, 320px); min-height: 220px; border-radius: 14px; background: #d8e8ee; }
 .driving-view canvas { display: block; width: 100%; height: 100%; }
 .course-caption { position: absolute; inset: auto 10px 8px; margin: 0; padding: 5px 8px; border-radius: 8px; background: #132431d9; color: white; font-size: 11px; }
 .scene-fallback { position: absolute; inset: 25% 12px auto; text-align: center; color: #27333a; font-size: 13px; }

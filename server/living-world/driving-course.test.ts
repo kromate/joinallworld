@@ -6,6 +6,7 @@ import type { DrivingResponse, QualificationResponse } from '../../src/types/liv
 import type { DrivingPoint } from '../../src/game/living-world/driving.ts'
 import { PRACTICE_COURSE } from '../../src/game/living-world/course.ts'
 import { readDrivingQualificationEvidence } from './driving-service.ts'
+import { validQualificationReply } from '../../src/app/features/living-world/qualificationReply.ts'
 
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
 const path = '/api/living-world/driving'
@@ -92,10 +93,14 @@ test('actual control packets complete the authored stop-turn-park lesson; termin
   assert.deepEqual(loaded.session, terminal)
   const qualificationPath = '/api/living-world/qualification'
   const available = await (await f.request(qualificationPath + '?city=lagos', null, cookie)).json() as QualificationResponse
+  assert.ok(validQualificationReply(available), 'the UI accepts the actual server envelope, including serverTime')
   assert.deepEqual([available.code, available.valid, available.qualification], ['claim_available', false, null])
   const claimBody = { cityId: 'lagos', journeyId: terminal.journeyId, requestId: f.id() }
   const claim = async (body = claimBody) => await (await f.request(qualificationPath + '/claim', body, cookie)).json() as QualificationResponse
   const [claimed, duplicate] = await Promise.all([claim(), claim()])
+  assert.ok(validQualificationReply(claimed) && validQualificationReply(duplicate), 'real claim and retry replies pass the same reader as the panel')
+  assert.equal(validQualificationReply({ ...claimed, storage: 'failing' }), false, 'an unsaved reply cannot establish a saved qualification')
+  assert.equal(validQualificationReply({ ...claimed, qualification: { ...claimed.qualification, evidenceJourneyId: '' } }), false, 'malformed evidence cannot be displayed as valid')
   assert.ok(claimed.ok && claimed.valid && duplicate.ok && duplicate.valid)
   assert.equal([claimed.duplicate, duplicate.duplicate].filter(Boolean).length, 1)
   assert.deepEqual(claimed.qualification, duplicate.qualification)

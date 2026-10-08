@@ -20,6 +20,9 @@ WORKERS = {
     "capacity": HERE / "profile_feature_identity.ts",
     "witness": HERE / "index_resource_witness.ts",
     "identity-stress": HERE / "index_identity_stress.ts",
+    # Direct node:test module entry (no --test subprocess): sampled RSS covers the writer.
+    "index-engine-tests": HERE.parent / "feature-index.test.ts",
+    "index-engine-capacity": HERE / "profile_feature_index.ts",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 MIB = 1024 * 1024

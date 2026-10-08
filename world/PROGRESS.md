@@ -1,5 +1,92 @@
 # Implementation checkpoint — 8 October 2026
 
+## Compact engine and lease acceptance — 8 October 2026
+
+GRAPHICS explicitly completed its bounded lighting phase and closed its owned
+Chrome tab, Vite/browser leases (terminal130), with slots0/1; WORLD then announced
+its sole local intensive turn. New World compiler initially failed one tuple
+inference error, fixed with a const tuple; corrected and final compact compilers
+both terminated0 at1536MiB. Guarded engine22/22, writer lease10/10 and the changed
+resource guard12/12 all terminated0, with no skipped engine cases and owned scratch
+removed. The account lifecycle source proposal was published as documentation only
+in20398603 / mergef11ac78e after a safe main push rejection/fetch/merge, preserving
+fresh APP UI's source-only row. No account runtime change or remote acknowledgement.
+
+The real engine conserves cached Dakar2,283 ordinals,1,810 unique keys/versions,
+473 duplicates,0 exceptions/conflicts and0 network; an actual fresh SQLite3.50.4
+connection verifies exact raw replay after writer close. The initial layout used
+4,038,656 database bytes. Bounded remaining version metadata and WITHOUT ROWID key/
+version/conflict/occurrence tables reduce that to2,908,160 bytes (28% less), retaining
+identical counts/digests,0 WAL and32,768 shared-memory bytes. Compact worker264.24ms /
+guard406.64ms, Node peak152,496KiB. These are small cached measurements, not country
+coverage/global throughput or a frozen maximum-row quota. Earlier logs are retained.
+
+[FEATURE-INDEX-STORE-SPEC.md](FEATURE-INDEX-STORE-SPEC.md) records the engine/lease
+boundary. Evidence: `feature-index-engine-compact.json`, `feature-index-lock-final.*`,
+`feature-index-capacity-{v1,compact}.json`, `feature-index-resource-guard.*` and
+`feature-index-world-typecheck-{v1,corrected,compact}.*` under owned evidence.
+`feature-index-acceptance-binding.json` verifies current engine/helper/worker/resource
+source hashes against the actual receipts and retains final evidence hashes.
+Actual durable bootstrap/guard descriptor inheritance, aggregate reservations,
+same-version abrupt engine crash recovery, maximum-row/metadata/conflict pressure,
+fenced campaign completion and independent raw/index audit remain next; then country
+geometry/streaming and Nigeria renderer integration. Earlier prepared sections below
+are historical, superseded only for these executed focused gates. Full scope active.
+
+## Writer lease — additional prepared source
+
+Previous goal turn was source/integration progress: index corruption checks, 22
+pending fixtures, a cache-only real-engine capacity worker and safe fast-forward
+to main acf75450. This continuation adds `tooling/index_writer_lock.py` plus ten
+pending serial fixtures. The persistent-inode, private-directory POSIX flock lease
+avoids stale-PID deletion; the future parent/worker share a descriptor so a live
+worker retains exclusion after the coordinator closes its reference. Source/docs
+record inheritance and no-explicit-unlock semantics from primary Apple/Python
+documentation. No lock fixture, engine test, compiler, SQLite or browser ran.
+
+The helper remains unwired: canonical durable bootstrap, aggregate reservations,
+measured final quotas, supervisor descriptor inheritance and actual coordinator/
+worker crash tests are still required before unattended use. GRAPHICS still owns
+the sole local intensive turn; WORLD has no owned test/server/browser/child/upload
+running. On explicit GRAPHICS terminal handoff, run bounded compiler, 22 engine
+fixtures and ten lock fixtures sequentially, then cached engine capacity and
+same-version abrupt crash/pressure acceptance. No Nigeria, acquisition/game state,
+existing source usage or startup caps changed. Full objective remains active.
+
+## Compact durable index — prepared source, not accepted
+
+Previous goal turn made coordination/evidence progress: LIVING's current candidate
+354f8f55 is blocked by startup gzip 223,174 bytes (174 over the unchanged cap),
+with full CI suites skipped; production remains last accepted a44629b3. LIVING
+then explicitly reported owned QA/server/browser sessions terminal, and GRAPHICS
+acknowledged the next exclusive intensive turn. WORLD remains source-only until
+GRAPHICS's explicit terminal handoff; free locks or elapsed time do not transfer it.
+
+Prepared `feature-index.ts` retains pinned captures, every original ordinal,
+complete-body versions, explicit conflicts and separate campaign observations in
+one transaction. Exact raw replay checks stored dispositions and digest; no method
+completes a ledger job. The fixed resource registry has an unexecuted direct
+node:test entry with 22 disposable fixture cases. Source review prevents new bodies
+from concealing missing/spurious conflict markers or orphan keys, verifies separate
+key tuples on paged reads, fixes the literal internal-schema prefix match and
+reuses SQL statements within captures. **No new engine tests, compiler, SQLite
+experiment, country build or deployment has run.** Source is uncommitted. A fixed,
+unexecuted cached-capacity worker now uses the real engine and requires the known
+Dakar conservation counts followed by same-version close/reopen raw replay; it
+writes only owned disposable scratch. The worktree was fast-forwarded to fresh
+main acf75450, preserving all pending WORLD source/docs. Tracked diff whitespace
+checks pass; the fixture source contains 22 cases. Neither check is compiler or
+behavioral acceptance.
+
+See [FEATURE-INDEX-STORE-SPEC.md](FEATURE-INDEX-STORE-SPEC.md). Exact next steps on
+WORLD's intensive turn: bounded compiler and 22-fixture acceptance, cached real
+capture engine measurement, maximum-row/metadata/conflict pressure and same-version
+crash replay; then guarded canonical opener, shared writer lock, physical aggregate
+reservations and frozen measured quotas. Fenced campaign hook, independent raw/index
+audit, country geometry compilation/streaming and Nigeria renderer integration
+remain required. Existing acquisition inputs, reservations, ledgers, game data and
+Nigeria identities were not touched. Full objective remains active.
+
 ## Resource failure and near-byte-cap acceptance — 8 October 2026
 
 Final repository gate correction: GRAPHICS PR22 CI37845576239 identified the

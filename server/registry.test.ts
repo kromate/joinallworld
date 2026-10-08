@@ -31,7 +31,7 @@ const loose = (socket: TestSocket): LooseSocket => ({ ws: socket.ws, next: async
 /** A frame the feature module invents: it is outside the shipped frame union, so it travels under the union's own type. */
 const frameOf = (frame: object): ServerFrame => frame as ServerFrame;
 /** A bare context for the registries: modules only read it when they are called. */
-const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, cityIds: [] }) as unknown as RouteContext;
+const bareContext = (): RouteContext => ({ core: {}, config: {}, store: {}, cityIds: [], checks: {} }) as unknown as RouteContext;
 /** A route handler, a system or a module the type system would refuse: built to see the registry refuse it too. */
 const unchecked = <T>(value: unknown): T => value as T;
 /** The stored session of a device cookie (`sid=<secret>`). */
@@ -116,7 +116,7 @@ test('route registry rejects duplicate and malformed routes at start-up and list
   const CORE = ['GET /api/characters', 'GET /api/health', 'GET /api/life', 'GET /api/session', 'GET /api/voice-config', 'POST /api/action', 'POST /api/characters/switch', 'POST /api/session'];
   for (const key of CORE) assert.ok(keys.includes(key), `core route ${key} is registered`);
   // Every module registers only under its own namespace; the core module is exactly the core set.
-  const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse', '/api/social/ping', '/api/social/visit', '/api/business/', '/api/mod/business/', '/api/notice', '/api/world/badges', '/api/companion/', '/api/admin/', '/api/', '/api/mod/store', '/api/politics/', '/api/world/records', '/api/trust/'];
+  const NAMESPACES = ['', '/api/account', '/api/social/', '/api/civic/', '/api/support/', '/api/mod/', '/api/world/', '/api/world/land', '/api/growth/', '/api/mod/growth/', '/api/campus', '/api/world/pulse', '/api/social/ping', '/api/social/visit', '/api/business/', '/api/commerce', '/api/mod/business/', '/api/notice', '/api/world/badges', '/api/companion/', '/api/admin/', '/api/', '/api/mod/store', '/api/politics/', '/api/world/records', '/api/trust/', '/api/real-value/', '/api/street/', '/api/living-world/'];
   assert.equal(ROUTE_MODULES.length, NAMESPACES.length);
   ROUTE_MODULES.forEach((module, index) => {
     const own = Object.keys(module(ctx) || {});
@@ -242,7 +242,7 @@ test('server-only actions: the public /api/action can never run one; a route mod
   assert.throws(() => registerSystem(unchecked<SystemDefinition>({ id: 'bad-server-only', stateKeys: [], sanitize() {}, actions: { 'bad.thing': { serverOnly: true } } })), /needs a handler function/);
   assert.throws(() => registerSystem(unchecked<SystemDefinition>({ id: 'bad-plain', stateKeys: [], sanitize() {}, actions: { 'bad.other': { run() {} } } })), /needs a handler function/);
   const serverOnly = actionTypes().filter((type) => serverOnlyReason(type));
-  assert.deepEqual(serverOnly.sort(), ['activity.admin', 'business.server', 'civic.justice', 'civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.treasury', 'civic.vote', 'estate.assign', 'estate.released', 'growth.referral', 'growth.table-result', 'living-world.server', 'needs.admin', 'onboarding.arrive', 'social.server', 'unilag.election.nominate', 'unilag.election.vote', 'wallet.admin', 'wallet.bonus']);
+  assert.deepEqual(serverOnly.sort(), ['activity.admin', 'business.server', 'civic.justice', 'civic.news', 'civic.rent-ad', 'civic.run', 'civic.shoutout', 'civic.treasury', 'civic.vote', 'estate.assign', 'estate.land-pay', 'estate.released', 'growth.referral', 'growth.table-result', 'living-world.server', 'needs.admin', 'onboarding.arrive', 'social.server', 'street.place', 'unilag.election.nominate', 'unilag.election.vote', 'wallet.admin', 'wallet.bonus']);
   /** A route written against the contract: it names the type itself and runs it with server authority. */
   const grantRoutes: RouteModule = (ctx) => ({
     'POST /api/grant/gift': async (request) => ({ body: await ctx.store.transact((db) => {

@@ -99,3 +99,7 @@ Public health adopted `joinallworld-73549b8ad33b51f39c4b8d3dd27` after initial o
 
 WORLD closed only its temporary production tab5; browser lease6470 terminated130 and final continuity35858 terminated0. All shared slots were free at cleanup; memory41% free is a point-in-time observation. Sole local intensive turn explicitly handed to LIVING, then GRAPHICS, then WORLD. Other agents remain on small source work and no concurrent subagent/build/browser fan-out is authorized under the current memory instruction. WORLD retains production upload ownership. The user's existing preview tab/server and unknown processes are preserved.
 
+
+### Canonical compiler-regression inclusion — 8 October 2026
+
+WORLD sourcebfbec44f adds `scripts/typecheck.test.ts` to the canonical npm test list, preserving every prior glob and `--test-concurrency=1`. The actual wrapper/regression bytes match the source exercised in the direct17/17 acceptance; a structural JSON comparison confirmed no other package fields changed. This is test invocation only, with no runtime/upload. No fresh full-suite execution is claimed. LIVING retains the sole local intensive turn; WORLD has only performed small source/command reviews. New world feature-identity source/fixtures are local, unexecuted and outside this main publication; they await the explicit LIVING → GRAPHICS → WORLD handoff.

@@ -5,8 +5,8 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 ## Production release ownership
 
 - Checkpoint: 2026-10-08 19:10 UTC.
-- Release owner: **WORLD — Research automated world map system**, chat 01a118b7-2dc5-7ad1-b1cf-874647b3d348.
-- State: source73549b8a accepted in production versiond872e923 at100%; exact remote compiler CI and actual browser country outlines/Nigeria/Lagos/saved receipt passed. No upload in flight. WORLD retains sole upload ownership; local intensive turn handed explicitly to LIVING → GRAPHICS → WORLD after terminal cleanup.
+- Release owner: **APP UI — Family verification and release**, chat 01a11ae0-eea5-79e1-ae16-bc36056fbf4e, under the latest explicit human instruction to fix the build, finish verification and deploy.
+- State: source73549b8a remains the accepted production baseline. No upload was in flight at takeover. The human explicitly resumed APP UI with “Continue, fix the build issue, finish verification and deploy. Preserve existing saves and verify production afterwards.” APP UI owns the next serialized verification and upload phase. Shared slots were 0/1 before starting. Other owners should keep intensive work and uploads stopped until this phase returns the turn.
 - Other agents prepare and test reviewable source phases, coordinate integration with WORLD, and do not start concurrent production uploads.
 - A stale timestamp means contact the owner; it is not permission to take over a release.
 - User authorization: on 8 October 2026 the user requested cross-computer coordination, phased pushes, and pushes to production. Each phase still requires verification. Experiments and a dirty checkout are not release artifacts.

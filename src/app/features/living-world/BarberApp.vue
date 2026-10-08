@@ -434,12 +434,12 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.barber-app { display: grid; gap: 14px; max-width: 760px; margin: 0 auto; color: var(--c-ink, #202830); }
-.barber-heading { display: grid; gap: 5px; }
+.barber-app { display: grid; gap: 14px; max-width: 760px; min-width: 0; margin: 0 auto; color: var(--c-ink, #202830); }
+.barber-heading { display: grid; gap: 5px; min-width: 0; }
 .barber-heading .eyebrow { margin: 0; color: var(--c-muted, #5d6870); font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
 .barber-heading h2 { margin: 0; font-size: 21px; line-height: 1.2; }
 .barber-heading p:last-child, .keyboard-help, .economy-note { margin: 0; color: var(--c-muted, #5d6870); font-size: 13px; line-height: 1.45; }
-.practice-card, .record-card { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--c-line, #d9e1e5); border-radius: 16px; background: var(--c-surface, #fff); }
+.practice-card, .record-card { display: grid; gap: 10px; min-width: 0; padding: 14px; border: 1px solid var(--c-line, #d9e1e5); border-radius: 16px; background: var(--c-surface, #fff); }
 .surface-wrap { display: grid; justify-items: center; }
 .mannequin-surface { display: block; width: min(100%, 360px); max-height: 42svh; aspect-ratio: 1; border-radius: 16px; outline: 0; touch-action: pan-y; }
 .mannequin-surface.is-running { touch-action: none; cursor: crosshair; }
@@ -469,10 +469,6 @@ button:focus-visible { outline: 3px solid var(--c-blue, #176f91); outline-offset
   .tool-row button { padding-inline: 4px; font-size: 12px; }
 }
 @media (max-height: 430px) and (min-width: 481px) {
-  .barber-app { grid-template-columns: minmax(260px, .8fr) minmax(280px, 1.2fr); align-items: start; }
-  .barber-heading { grid-column: 1 / -1; }
-  .practice-card { grid-column: 2; grid-row: 2 / span 2; }
-  .record-card { grid-column: 1; }
   .mannequin-surface { width: min(100%, 190px); max-height: 42svh; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }

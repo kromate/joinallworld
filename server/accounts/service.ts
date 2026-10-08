@@ -40,6 +40,8 @@ import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
 import { eraseRealValue, exportRealValue } from '../real-value/privacy.ts';
+import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount } from '../living-world/privacy.ts';
+import type { LivingWorldPrivacyExport } from '../living-world/privacy.ts';
 
 /** Browsers one account may be signed in on; the one unused longest makes room. */
 export const MAX_DEVICES = 10;
@@ -135,6 +137,97 @@ function audit(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>, event: AccountE
   if (log.audit.length > MAX_AUDIT) log.audit.splice(0, log.audit.length - MAX_AUDIT);
 }
 const viewOf = (record: SessionRecord | undefined): CharacterView | null => (record ? { id: record.publicId, name: record.name } : null);
+const privacyPublicId = (value: unknown): value is string => typeof value === 'string' && value.length > 0 && value.length <= 100 && /^[\w:-]+$/.test(value);
+function privacyMap(value: unknown): value is Record<string, unknown> {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+/** Missing barber rows are a no-op; a present row/map must pass the privacy helper's strict same-owner check. */
+function hasBarberProgressRow(db: Db, publicId: string): boolean {
+  try {
+    if (!privacyPublicId(publicId)) throw new Error('invalid actor id');
+    if (!Object.hasOwn(db, 'livingWorld')) return false;
+    const root: unknown = Reflect.get(db, 'livingWorld');
+    if (root === undefined) return false;
+    if (!privacyMap(root)) throw new Error('malformed living-world root');
+    if (!Object.hasOwn(root, 'barber')) return false;
+    const rows: unknown = Reflect.get(root, 'barber');
+    if (!privacyMap(rows)) throw new Error('malformed barber rows');
+    return Object.hasOwn(rows, publicId);
+  } catch {
+    throw new Error('privacy-rebind-unavailable');
+  }
+}
+function rebindBarberProgress(db: Db, publicId: string, expectedOwner: string | null, nextOwner: string | null): void {
+  if (!hasBarberProgressRow(db, publicId)) return;
+  if (!rebindBarberAccount(db, publicId, expectedOwner, nextOwner)) throw new Error('privacy-rebind-unavailable');
+}
+/** An ownerless active archive is trusted only through account.publicId; its barber row may be legacy guest-bound or already account-bound. */
+function rebindLegacyActiveBarberProgress(db: Db, publicId: string, owner: string): void {
+  if (!hasBarberProgressRow(db, publicId)) return;
+  if (rebindBarberAccount(db, publicId, owner, owner) || rebindBarberAccount(db, publicId, null, owner)) return;
+  throw new Error('privacy-rebind-unavailable');
+}
+/** Only the active session and parked archive entries still owned by this account prove a living-world actor id. */
+function privacyActorIds(db: Db, account: AccountRecord, active: SessionRecord | undefined): string[] {
+  const ids = new Set<string>();
+  if (active?.account === account.id && privacyPublicId(active.publicId)) ids.add(active.publicId);
+  const indexedActiveId = account.publicId;
+  if (privacyPublicId(indexedActiveId) && !ids.has(indexedActiveId)) {
+    const entry = own(db.archivedLives, indexedActiveId);
+    if (entry?.publicId === indexedActiveId
+      && (entry.account === account.id || entry.account === undefined && account.publicId === indexedActiveId)) ids.add(indexedActiveId);
+  }
+  for (const item of account.parked) {
+    if (!privacyPublicId(item.id)) continue;
+    const entry = own(db.archivedLives, item.id);
+    if (entry?.account === account.id && entry.publicId === item.id) ids.add(item.id);
+  }
+  return [...ids];
+}
+interface PrivacyIndexSnapshot {
+  sessionPresent: boolean
+  session: SessionRecord | undefined
+  activeArchivePresent: boolean
+  activeArchive: ArchivedLife | undefined
+}
+/** Capture point-read ownership evidence before activeCharacter may restore an archive or clear a stale session key. */
+function privacyIndexSnapshot(db: Db, account: AccountRecord): PrivacyIndexSnapshot {
+  const indexedSessionKey = account.sessionKey;
+  const sessionKey = typeof indexedSessionKey === 'string' ? indexedSessionKey : null;
+  const sessionPresent = indexedSessionKey !== null && (sessionKey === null || Object.hasOwn(db.sessions, sessionKey));
+  const activeArchivePresent = privacyPublicId(account.publicId) && Boolean(db.archivedLives && Object.hasOwn(db.archivedLives, account.publicId));
+  return {
+    sessionPresent,
+    session: sessionPresent && typeof sessionKey === 'string' ? own(db.sessions, sessionKey) : undefined,
+    activeArchivePresent,
+    activeArchive: activeArchivePresent && privacyPublicId(account.publicId) ? own(db.archivedLives, account.publicId) : undefined,
+  };
+}
+/** Erase only server-indexed actors whose active/archived records do not contradict the account's ownership. */
+function privacyDeletionIds(db: Db, account: AccountRecord, active: SessionRecord | undefined, snapshot: PrivacyIndexSnapshot): string[] | null {
+  if (account.publicId !== null && !privacyPublicId(account.publicId)) return null;
+  if (snapshot.sessionPresent && (!snapshot.session || snapshot.session.account !== account.id || snapshot.session.publicId !== account.publicId)) return null;
+  if (snapshot.activeArchivePresent) {
+    const archive = snapshot.activeArchive;
+    if (!archive || archive.publicId !== account.publicId
+      || !(archive.account === account.id || archive.account === undefined && account.publicId === archive.publicId)) return null;
+  }
+  if (!Array.isArray(account.parked) || account.parked.length > MAX_PARKED) return null;
+  const ids = new Set(privacyActorIds(db, account, active));
+  if (privacyPublicId(account.publicId)) ids.add(account.publicId);
+  for (const item of account.parked) {
+    if (!item || !privacyPublicId(item.id)) return null;
+    const present = Boolean(db.archivedLives && Object.hasOwn(db.archivedLives, item.id));
+    const entry = present ? own(db.archivedLives, item.id) : undefined;
+    if (present && (!entry || entry.account !== account.id || entry.publicId !== item.id)) return null;
+    // The bounded account.parked list is a trusted index only when its archive row is absent.
+    ids.add(item.id);
+  }
+  if (ids.size > MAX_PARKED + 1) return null;
+  return [...ids];
+}
 /** On a host whose store keeps receipts in rows of their own, keyed by public id (the Worker), they stay there; elsewhere they travel with the record. */
 const receiptsInline = (db: Db): boolean => !db.$store?.onceCounts;
 
@@ -203,6 +296,8 @@ function fromArchive(db: Db, deps: AccountDeps, account: AccountRecord, publicId
   const archive = db.archivedLives, entry = own(archive, publicId);
   // An entry another account set aside is not this account's to take. One with no owner is taken only as the account's own expired character.
   if (!archive || !entry || (entry.account !== undefined ? entry.account !== account.id : account.publicId !== publicId)) return undefined;
+  if (entry.account === undefined) rebindLegacyActiveBarberProgress(db, publicId, account.id);
+  else rebindBarberProgress(db, publicId, entry.account, account.id);
   const key = deps.newId();
   const record: SessionRecord = { secret: key, publicId, name: entry.name, expiresAt: deps.now() + deps.ttlMs, cities: structuredClone(entry.cities || {}), actions: entry.actions ? structuredClone(entry.actions) : {}, account: account.id,
     ...(entry.once ? { once: structuredClone(entry.once) } : {}),
@@ -224,6 +319,7 @@ function activeCharacter(db: Db, deps: AccountDeps, account: AccountRecord): Ses
 /** A guest's session record becomes the account's active character: same record, same public id, a key no browser holds. */
 function adopt(db: Db, deps: AccountDeps, account: AccountRecord, record: SessionRecord): SessionRecord {
   const key = deps.newId();
+  rebindBarberProgress(db, record.publicId, null, account.id);
   delete db.sessions[record.secret];
   record.secret = key; record.account = account.id; record.expiresAt = deps.now() + deps.ttlMs;
   db.sessions[key] = record;
@@ -232,6 +328,7 @@ function adopt(db: Db, deps: AccountDeps, account: AccountRecord, record: Sessio
 }
 /** Set a played life aside: into the archive, marked as this account's, with everything a session record carries — its exactly-once receipts included. */
 function park(db: Db, deps: AccountDeps, account: AccountRecord, record: SessionRecord): ParkedLife {
+  rebindBarberProgress(db, record.publicId, record.account ?? null, account.id);
   db.archivedLives ||= {};
   const entry: ArchivedLife = { publicId: record.publicId, name: record.name, cities: structuredClone(record.cities || {}), archivedAt: deps.now(), account: account.id,
     ...(receiptsInline(db) ? { actions: structuredClone({ ...record.actions }), ...(record.once ? { once: structuredClone({ ...record.once }) } : {}) } : {}),
@@ -411,7 +508,17 @@ export function endAllDevices(db: Db, deps: Pick<AccountDeps, 'now' | 'newId'>, 
  */
 export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { identity: VerifiedIdentity; erase: boolean }): AfterChange & { cookie: string | null } {
   const { account } = prove(db, deps, input, input.identity);
+  const indexedPrivacy = privacyIndexSnapshot(db, account);
+  const mine = activeCharacter(db, deps, account);
   const publicIds = [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)];
+  const livingWorldIds = privacyDeletionIds(db, account, mine, indexedPrivacy);
+  if (!livingWorldIds) throw new Error('privacy-erasure-unavailable');
+  const retainedId = !input.erase && mine?.account === account.id && privacyPublicId(mine.publicId) ? mine.publicId : null;
+  if (retainedId) rebindBarberProgress(db, retainedId, account.id, null);
+  if (input.erase) eraseLivingWorldProgress(db, livingWorldIds);
+  else {
+    eraseLivingWorldProgress(db, livingWorldIds.filter(id => id !== retainedId));
+  }
   eraseRealValue(db, publicIds);
   if (db.social) for (const id of publicIds) if (input.erase || id !== account.publicId) clearPlayerFamily(db.social.players, id);
   for (const id of publicIds) if (db.street && (input.erase || id !== account.publicId)) delete db.street.journeys[id];
@@ -421,7 +528,6 @@ export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { ident
   const commerce = commerceOf(db, account.id);
   if (commerce?.grant) after.commerceRevocation = { accountId: account.id, secret: commerce.grant.secret };
   if (db.commerce) delete db.commerce.stores[account.id];
-  const mine = activeCharacter(db, deps, account);
   for (const key of account.devices) delete devices[key];
   for (const item of account.parked) { const entry = own(db.archivedLives, item.id); if (entry && entry.account === account.id && db.archivedLives) delete db.archivedLives[item.id]; }
   let cookie: string | null = null;
@@ -459,6 +565,10 @@ export function exportAccount(db: Db, deps: AccountDeps, caller: Caller, identit
   const bound = prove(db, deps, caller, identity), { account } = bound, now = deps.now();
   const log = db.accountLog, ref = log ? refOf(log, account.id) : '';
   const record = account.sessionKey ? db.sessions[account.sessionKey] : undefined;
+  const livingWorldIds = privacyActorIds(db, account, record);
+  const livingWorld: LivingWorldPrivacyExport | null = livingWorldIds.length
+    ? exportLivingWorldProgress(db, account.id, livingWorldIds)
+    : null;
   const commerce = commerceOf(db, account.id);
   return {
     ...(commerce ? { commerce: ownCommerce(commerce, record ? commerceAddress(record) : null, now) } : {}),
@@ -468,6 +578,7 @@ export function exportAccount(db: Db, deps: AccountDeps, caller: Caller, identit
     setAside: account.parked.map(item => ({ ...item })),
     ...(db.street ? { streetJourneys: [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)].flatMap(player => { const journey = own(db.street?.journeys, player); return journey ? [{ player, ...structuredClone(journey) }] : []; }) } : {}),
     ...(db.realValue ? { realValue: exportRealValue(db, [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)], now) } : {}),
+    ...(livingWorld ? { livingWorld } : {}),
     ...(db.trustChecks ? { identityChecks: Object.values(db.trustChecks.checks).filter(check => check.account === account.id).map(check => ({ ref: check.ref, player: check.player, at: check.at, expiresAt: check.expiresAt, status: check.status, environment: check.environment, adultVerified: check.adult === true })) } : {}),
     history: (log?.audit ?? []).filter(line => line.ref === ref).map(line => ({ at: line.at, event: line.event, ...(line.life ? { character: line.life } : {}) })),
   };

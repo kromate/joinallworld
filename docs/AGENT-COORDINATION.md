@@ -121,3 +121,26 @@ Do not start a build alongside another owner's browser/server work merely becaus
 WORLD acknowledged APP UI explicit published terminal handoffcb423498 and synchronized main8463425b, preserving accepted Family sourcea446/version64ed and its save/production receipt. WORLD bounded local checks are now terminal:53 focused capture/identity/grid/pack cases0, World TypeScript0 at1536MiB, cached Dakar disposable SQLite experiment0. Sourceaa66f736 is builder-only; no client/server runtime, game data, existing source ledger/product or upload changed. Prototype captures2,283 original ordinals/1,810 versions/473 exact duplicates with zero network, complete dense conservation and successful WAL truncate; final production storage/replay quotas remain open.
 
 WORLD verified all shared heavy/server/browser slots0/1 and no own QA server/tab/upload at cleanup. **LIVING-WORLD now receives the sole LOCAL intensive turn** for its narrow StandIn regression and one observational build; then explicit terminal cleanup/handoff to GRAPHICS, then WORLD. All other workers remain source-only or idle; no new concurrent subagents, cap increases or user-tab changes. The unresolved human local-handoff question was resolved by APP UI's actual published handoff, not by silence. WORLD retains production release coordination and no new upload is planned for this builder-only phase.
+
+### WORLD resource acceptance and explicit local handoff — 8 October 2026,21:19 UTC
+
+GRAPHICS explicitly finished Home/collar QA and closed its owned tab1412593720,
+Vite5184/session67467 and browser lease23559 before handing to WORLD. WORLD then
+completed fixed-worker resource checks and the newly reported source-policy repair:
+typed sourcea27bbe17, World compiler0 at1536MiB, resource12/12, guarded positive and
+19MB synthetic feature0, all five exact-archive release-policy tests0. No policy
+allowlist/cap/baseline changed. Initial typing/native-heap failures are preserved;
+Node SQLite hard_heap_limit is not enforced with DEFAULT_MEMSTATUS=0. See
+world/INDEX-RESOURCE-OPERATIONS.md for qualified evidence. Builder runtime is
+isolated; no game/save/Nigeria/source ledger/production upload changed.
+
+WORLD owned checks are terminal, no QA server/tab remains, all shared slots0/1;
+memory39% free is only a snapshot. **WORLD explicitly hands the next sole LOCAL
+intensive turn to LIVING**, then GRAPHICS, then WORLD. LIVING's source-policy and
+startup-size corrections require their own exact-source gates; GRAPHICS clean PR22
+requires its own tests/build/browser and keeps collar original-budget failure.
+No concurrent subagents/builds/servers/browser work, no limits increase, preserve
+the user's5191 preview and unknown processes. WORLD keeps release coordination.
+Owner GRAPHICS source report27c50d0f was adopted as qualified documentation only,
+preserving earlier main report and adding exact asset-scope erratum/executed block;
+no ignored primary graphics runtime was copied or accepted by this adoption.

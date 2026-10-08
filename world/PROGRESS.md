@@ -2,6 +2,17 @@
 
 ## Resource failure and near-byte-cap acceptance — 8 October 2026
 
+Final repository gate correction: GRAPHICS PR22 CI37845576239 identified the
+inherited capacity `.mjs` source-policy failure. WORLD converted capacity and both
+new workers to `.ts`, preserving the exact allowlist; initial three World typing
+errors were corrected. Sourcea27bbe17 passes World compiler0 at1536MiB, fresh12/12
+resource cases (3.001s), typed guarded capacity/stress0 and all five actual release
+policy tests on its clean committed archive0 (141.38ms). Archive133,352,146 logical
+bytes and its owned scratch were removed; ignored real caches were preserved.
+Current stress/cache peaks242,336/139,312KiB; earlier235/236MiB evidence below is
+historical. Actual binding `index-resource-typescript-binding.json` matches every
+executed source/receipt hash. No full runtime build, game-suite or new deploy claim.
+
 The previous goal turn completed coordination work: reachable GRAPHICS/LIVING chats
 were notified and all WORLD subagents stayed parked. GRAPHICS then explicitly
 closed its temporary QA tab, Vite5184 and browser lease and handed the sole local

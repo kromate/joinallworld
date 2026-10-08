@@ -25,7 +25,15 @@ workers to `.ts` and added strict types; no policy allowlist/cap changed. The
 initial World compiler exposed three typing errors, corrected before acceptance;
 earlier logs remain preserved. The clean release source gate is run on an exact
 committed Git archive to exclude real ignored caches without deleting them.
-This is a targeted repository-policy check, not a full game or release build.
+Actual typed sourcea27bbe170477e87739c8238eccc8d088508085d0 passes World TypeScript
+at1536MiB, all12 guard cases (3.001s), both guarded profiles and all five clean
+release-policy tests (141.38ms). The exact archive has133,352,146 logical bytes;
+its owned temporary archive/checkout were removed. Receipts include
+`index-resource-world-typecheck-corrected.{stdout,stderr}` (empty, exit0),
+`index-resource-clean-release-policy.{tap,stderr}` and
+`index-resource-typescript-binding.json` with actual source/evidence hashes.
+Initial compiler failure is retained separately. This is a targeted repository-
+policy check, not a full game or release build.
 
 ```sh
 node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_resource_limits.py -v
@@ -68,6 +76,9 @@ owner. The20,000,001byte input is rejected before decode/traversal. Observed pea
 RSS was241,888KiB (approximately236MiB) in the initial guarded receipt; the typed
 rerun records its own peak separately. This is a near-byte-cap string case, not maximum
 node/depth/geometry/capture-row/index or whole-world throughput acceptance.
+The current typed stress peak is242,336KiB (approximately237MiB); cached profile
+peak139,312KiB (approximately136MiB). Supervisor wall times377.96/296.53ms are
+distinct from inner profiling times and are not country throughput forecasts.
 
 ## Native heap capability correction
 

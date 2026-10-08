@@ -1,5 +1,52 @@
 # Implementation checkpoint — 8 October 2026
 
+## Resource failure and near-byte-cap acceptance — 8 October 2026
+
+Final repository gate correction: GRAPHICS PR22 CI37845576239 identified the
+inherited capacity `.mjs` source-policy failure. WORLD converted capacity and both
+new workers to `.ts`, preserving the exact allowlist; initial three World typing
+errors were corrected. Sourcea27bbe17 passes World compiler0 at1536MiB, fresh12/12
+resource cases (3.001s), typed guarded capacity/stress0 and all five actual release
+policy tests on its clean committed archive0 (141.38ms). Archive133,352,146 logical
+bytes and its owned scratch were removed; ignored real caches were preserved.
+Current stress/cache peaks242,336/139,312KiB; earlier235/236MiB evidence below is
+historical. Actual binding `index-resource-typescript-binding.json` matches every
+executed source/receipt hash. No full runtime build, game-suite or new deploy claim.
+
+The previous goal turn completed coordination work: reachable GRAPHICS/LIVING chats
+were notified and all WORLD subagents stayed parked. GRAPHICS then explicitly
+closed its temporary QA tab, Vite5184 and browser lease and handed the sole local
+intensive turn to WORLD. All shared slots were0/1 at admission; no free-slot or
+elapsed-time inference replaced that handoff.
+
+WORLD implemented a fixed-worker disposable Unix supervisor and12 passing focused
+cases. Kernel FSIZE caps a failing WAL at131,072bytes (SQLITE_IOERR_WRITE778);
+16-page SQL cap produces SQLITE_FULL13; SIGKILL leaves255,472bytes of actual
+uncommitted WAL and independent Python reopen retains only baseline/integrity=ok.
+CPU1s, wall1s, sampled native RSS, output-size and missing-live-RSS guards terminate
+owned workers and clean scratch. Node writerSQLite3.50.4 and independent Python
+reopenSQLite3.53.1 are explicit; real index/ledger and same-version crash replay are
+not accepted by these disposable checks.
+
+The actual native heap-capability experiment disproves the proposed assumption:
+Node22.19 SQLite DEFAULT_MEMSTATUS=0 returns an8MiB hard_heap_limit but still
+allocates8MiB text. Earlier failure evidence is retained; final tests record this
+unsupported enforcement rather than manufacture a pass. The process guard is
+sampled and has overshoot, not a kernel hard RSS promise. A19,000,177byte literal
+synthetic Feature parses/admitted/hash-matches at241,888KiB (about236MiB) peakRSS;20,000,001bytes
+reject before decode. Guarded cached Dakar still conserves2,283 ordinals/1,810
+versions/473duplicates/0 conflicts/0 network with a2MiB per-file cap and successful
+WAL truncate. [INDEX-RESOURCE-OPERATIONS.md](INDEX-RESOURCE-OPERATIONS.md) records
+commands, receipts, actual limits and remaining production quota/store gates.
+
+Only builder tooling/docs changed. No real captures, source counters/reservations,
+ledgers/output, Nigeria data, startup/runtime or production upload changed. The
+next WORLD step is the compact durable schema, maximum-row/conflict/checkpoint and
+same-version replay pressure, then final quotas/fenced completion/independent raw
+audit and country geometry. Hand the next intensive turn explicitly to LIVING
+after final terminal cleanup/publication, then GRAPHICS, then WORLD. Full global
+scope remains active; no country3D/foreign-playable/48-hour claim.
+
 ## Strict capture acceptance and positive overlap measurement — 8 October 2026
 
 Previous goal turn made primary-source/experiment-code progress. Fresh maincb423498/8463425b explicitly records completed APP UI release, stopped owned QA resources and coordination returned to WORLD. This resolved the pending human local-handoff question without interpreting silence/free locks as approval. WORLD merged latestmain as72b055c3 and announced its bounded intensive turn to LIVING/GRAPHICS. New live baseline is APP UI exacta44629b38be751a9ad446051564704f6c3c6ae1b/version64ed8462-6c2b-4c42-8d19-266bc93708e5; read PARITY-DELIVERY.md for owner-reported live/save evidence, not an independently rerun WORLD release.

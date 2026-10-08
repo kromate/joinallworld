@@ -6,6 +6,12 @@ source configuration. Use `bindConfiguredCapture` for the later ingestion hook.
 Existing acquisition/cache readers, game IDs/data, Nigeria and output pins are
 unchanged. This is builder acceptance, not a deployed gameplay change.
 
+Current tracked capacity tool is `tooling/profile_feature_identity.ts`, converted
+from the historical `.mjs` below to preserve the existing release source policy.
+The original measurements/command remain historical evidence; current World
+TypeScript, clean source policy and guarded profiles are recorded separately in
+[INDEX-RESOURCE-OPERATIONS.md](INDEX-RESOURCE-OPERATIONS.md). Use `.ts` for a new run.
+
 Focused capture/identity/country-grid/pack checks passed **53/53**, terminal0,
 1,069.44ms. This includes22 new capture cases and31 existing cases. World
 TypeScript passed at the unchanged1536MiB heap. Evidence:

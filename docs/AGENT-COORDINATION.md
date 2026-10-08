@@ -4,9 +4,9 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 
 ## Production release ownership
 
-- Checkpoint: 2026-10-08 15:10 UTC.
+- Checkpoint: 2026-10-08 17:00 UTC.
 - Release owner: **WORLD — Research automated world map system**, chat 01a118b7-2dc5-7ad1-b1cf-874647b3d348.
-- State: preparing its first country-map phase; WORLD explicitly confirmed no upload in flight at this checkpoint. Ownership remains until completion or explicit handoff is recorded here.
+- State: WORLD is preparing the sole production upload of source **049a3350bf52f29df3524f011e425542c7756b51**. The package, safe archive round trip, current runtime review, public source ancestry and fresh synthetic continuity reference are verified. No upload has started at this checkpoint; ownership remains WORLD through live adoption/continuity.
 - Other agents prepare and test reviewable source phases, coordinate integration with WORLD, and do not start concurrent production uploads.
 - A stale timestamp means contact the owner; it is not permission to take over a release.
 - User authorization: on 8 October 2026 the user requested cross-computer coordination, phased pushes, and pushes to production. Each phase still requires verification. Experiments and a dirty checkout are not release artifacts.
@@ -27,7 +27,7 @@ The shared Vite minifier is also limited to one worker on main at 6ba5d54c. WORL
 
 | Owner | Scope and boundary | Base / exact candidate | State and next gate |
 | --- | --- | --- | --- |
-| WORLD | Geography, world coordinates, ingestion, topology, country/region map data and additive country browser. Coordinate shared render interfaces, manifests and budgets with GRAPHICS. | Base 9f9bed3616ac43e0989ce42d856490cb57d94dba; phase SHA pending. | Query/range cache and country browser underway. Owns next production release. |
+| WORLD | Geography, ingestion and additive lazy country outlines. Preserve Nigeria and concurrent graphics/living-world work. | Published source **049a3350bf52f29df3524f011e425542c7756b51**; isolated codex/world-foundation. | Five-project typecheck/build/startup budgets, affected Node100/100 and Worker142/142 pass; public fast CI passes. Sealed package/archive/runtime reviewed; next sole upload and live adoption/continuity. |
 | GRAPHICS — Research character graphics and, chat 01a11908-b662-79f1-8bab-888716f77717 | Characters/NPCs, clothing/motion, scene buildings/interiors/props/materials/light and graphics measurements. Preserve WORLD geography and other feature work. | Published main phases: test helpers deb72936; Node campus03e520c3; **manifest-only5dad4476474d317f29f9dcf707ed7fd0475b36c4**. Isolated branch codex/graphics-phase-one clean. | Manifest phase preserves immutable tiles/doors/retained versions; no client renderer or world schema change. Node24/24, Worker52/52, type5projects, build/download pass; complete package saves6,840,045raw/687,087gzip/410,945Brotli bytes vs original. Nodecampus6/6. Public evidence: GRAPHICS-MANIFEST-PHASE.md. WORLD reviews/merges exact phase and reruns integrated checks/sealed package/continuity before its sole upload. Remaining renderer/LOD/clothing/foliage experiments stay local; whole-game/physical-phone acceptance incomplete. |
 | Feature parity/app interiors and agents on other computers | Register exact owner, owned files and branch before overlapping work. Preserve existing app/catalogue/reliability work. | Not independently registered here yet. | Add own checkpoint. Screenshots and summaries do not prove completion. |
 
@@ -55,3 +55,7 @@ Before upload record relevant checks/CI, visual/gameplay evidence, unchanged dat
 [PARITY-DELIVERY.md](PARITY-DELIVERY.md) reports historical app-interiors source cfbc133b36b5d4e8d071bb8223fbfc59e6a33289, Cloudflare version 77d0ab82-7f21-4431-9ad9-9d6e8d60740b, adoption at 2026-10-08 13:45:31 UTC. This linked receipt is not a fresh health check. GRAPHICS' HTTP health probe at this checkpoint returned 403, so current public adoption is not independently reverified here.
 
 Append each receipt with owner, integrated source SHA, scope, checks/CI/evidence, sealed-package digest, upload UTC times, provider version, observed public build, continuity/smoke results, limitations and explicit release-owner handoff. Preserve earlier receipts.
+
+### Prepared country release — 2026-10-08 17:00 UTC
+
+WORLD source049a3350bf52f29df3524f011e425542c7756b51 adds 257 requested geographic outlines and retains protected Nigeria. Digest3e7339088e4fc0f89022a1be5da29f71439b8547da72a6ec57c16ff15b4394a7; 6,103 files / 6,111 archive members / 100,770,682 logical bytes, largest4,508,691. Existing 5MiB/file, 6,500-member and 100MiB logical caps pass; safe Python3.12 extraction reproduces the exact package digest. Startup bytes/budgets are conserved. Complete dist is94,866,859bytes, which exceeds GRAPHICS' original84,369,438raw baseline by10,497,421; no full-distribution no-growth pass, baseline reset or new whole-compression claim. Current sealed-assets Node/browser review passes Senegal/Fiji/Nigeria/Lagos with balance5000 and zero console errors/warnings; current viewport override failed to apply (actual1280), so reuse prior390px evidence only because client bytes are identical. Current and immutable Lagos/Ibadan manifest HTTP/cache/resolver/tile checks pass. Broad core interrupted run is not a full-suite pass. Public [fast CI](https://github.com/kromate/joinallworld/actions/runs/37810320967) passes; full CI skipped. Fresh owned synthetic reference2026-10-08T16:58:53.265Z reads prior buildjoinallworld-cfbc133b36b5d4e8d071bb8223f and cash5000; credentials remain private. Upload/provider version/live continuity are pending. WORLD retains upload ownership.

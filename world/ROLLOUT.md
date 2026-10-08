@@ -1,5 +1,11 @@
 # Decisions and repeatable rollout after the first compiler
 
+## Authorized Nigeria rendering milestone — 8 October 2026
+
+The user also requested an implemented improvement to Nigeria's rendering. This is a parallel visual milestone in the managed `nigeria-rendering` worktree, based on primary commit `1a329026`, on `codex/nigeria-rendering`. The independent builder's Nigeria exclusion remains in force. Rendering work preserves existing geography, IDs, map data, saves, catalogue, routes and database behavior.
+
+Start by capturing the current game on isolated local test data, then improve material separation, day/dusk/night lighting and exposure within the existing merged/instanced renderer. Retain the simple-map fallback, demand rendering, resource disposal, water holes and existing triangle/draw-call/startup/download limits. Avoid additional real-time shadow passes or texture downloads for this first upgrade. Capture comparable before/after views of Lagos, an inland city and a narrow screen; run the map regressions and budget checks against the current game baseline. Character rigs remain outside this map-rendering change. The map and any future character renderer share local-coordinate and floor-sampling contracts rather than depending on a particular geographic data provider. Keep this work separate from the world source compiler and review it before any merge.
+
 The executable contract is in IMPLEMENTATION.md; RESEARCH.md preserves the game audit and source investigation. This document answers the operational questions that must not be left to each inexpensive worker to reinvent. Milestones below are future work unless confirmed by the checked-in validation report.
 
 ## Nigeria and database independence

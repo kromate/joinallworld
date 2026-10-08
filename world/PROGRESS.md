@@ -1,32 +1,29 @@
 # World builder checkpoint — 8 October 2026
 
-The full objective remains active. Work is isolated on `codex/world-foundation` at `/Users/anthonyakpan/.codex/worktrees/world-foundation/joinallworld`. All source changes are under `world/`; mutable assets are under this worktree's `.cache/world-build/`. The primary checkout was clean when inspected and is advancing independently; do not reset it or assume its earlier HEAD is current.
+The full objective remains active. Builder work is isolated on `codex/world-foundation` in `/Users/anthonyakpan/.codex/worktrees/world-foundation/joinallworld`; game data and the advancing primary checkout are untouched. Foundation commits are `c6e246e5` and `d45cd58d`. New production-ingestion work is undergoing final integration validation.
 
-## Verified foundation
+## Implemented and measured
 
-Commit `c6e246e`: pinned Accra GeoJSON, deterministic compiler, immutable packs, bounded resumable local queue, geometry/geodesy/time helpers and standalone 3D preview. Thirty-five foundation checks passed; see `VALIDATION.md` for measured bytes and browser evidence. No gameplay integration or global-detail completion is implied.
+- The pinned Natural Earth 110m inventory has 177 source units, 186 hierarchy nodes and 176 outlines, with Nigeria protected as `legacy-ng`. Latest manifest is `8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f`; logical published size is 354,201 bytes. Country identities are independent of source release. This coarse source omits microstates and small territories.
+- The preview lazily verifies and loads hierarchy nodes and outlines with byte limits and an LRU cache. Browser checks covered Fiji's dateline, Antarctica, protected Nigeria, desktop and narrow layouts. The current real Accra v2 pack was also checksum-verified and displayed. Only the selected tile is drawn; automatic camera-driven cell streaming is not implemented yet.
+- Overture `2026-09-23.1` acquisition uses a pinned static STAC index, bbox pushdown and exact intersection, a bounded range proxy, private DuckDB tooling, resource supervision, immutable receipts and append-only attempt evidence. Compiler v2 filters transportation to `subtype=road`; historical v1 extracts can contain rail/water tagged as roads and remain preserved.
+- The real v2 Accra extract is 113,357 bytes with 314 features, SHA `16fa23b6761af554a7cb11c9fa979bef5ddaed46cf2216b006e92094923fe26d`. It fetched 16,519,093 measured response bytes in 44,826 ms. The coordinator independently verified bytes, hash, feature count and upstream byte sum.
+- `representative-real-v2` compiled cached Accra into 12 tiles with 233 buildings / 81 roads / 127,539 serialized bytes, fetching no new network data. Manifest: `34442dbc40ed2db8d987370141f4e88fb3b1e58336347dbab5b5a72af067a847`. Its remaining six geographic probes and protected Nigeria entry have not yet been accepted. The campaign has bounded caps and resume journals; acquisition and shared-cache accounting serialize under one canonical-root lock.
+- Six pinned NASA POWER/MERRA2 point responses total 139,156 bytes and cover monthly 1991–2020 climate normals. They distinguish temperature, relative humidity, precipitation rate and scalar wind; Antarctica is cold and Sahara is dry in the measured samples. Profiles are published separately and not yet attached to world packs. Terrain metadata exists; terrain tiles have not been ingested.
 
-## Global coarse inventory
+## Nigeria rendering, explicitly authorized by the user
 
-Natural Earth source pinned to commit `ca96624a56bd078437bca8184e78163e5039ad19`, exact 838,726-byte GeoJSON SHA-256 `6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f`. There are 177 source units, 186 hierarchy nodes, 176 outlines; Nigeria is a protected `legacy-ng` entry. Source categories include Seven Seas separately from continents. The 1:110m source omits microstates and small territories; finer admin-0/admin-1/city inventories remain required.
+An independent worktree at `/Users/anthonyakpan/.codex/worktrees/nigeria-rendering/joinallworld`, branch `codex/nigeria-rendering`, now contains commit `6ad7579b`: filmic tone mapping, rebalanced lighting and clearer land/building/water colors. Map data, geometry, identities, saves, travel, catalogue and database behavior are unchanged. Builder ingestion still excludes Nigeria.
 
-`node --experimental-strip-types world/bootstrap-cli.ts` recreates or reuses the pinned source, verifies its denominator, and publishes lazy immutable inventory assets. Country node IDs are independent of source release; source feature references retain the release. Missing/corrupt source recovery quarantines exact damaged files with a repair cap. Hierarchy validation rejects cycles, unresolved references, malformed geometry and generated Nigeria outlines. Publication uses the existing fsynced atomic immutable store.
+All 24 map tests, five-project typecheck, production build and download budget checks pass there. Full-layer fixtures measure 84,643 triangles / 34 calls and 84,749 / 38, below 90,000 / 40. First paint is 35,421 bytes Brotli and Lagos startup 194,779 bytes Brotli. Browser checks covered Lagos at desktop and 390-pixel width, no horizontal overflow, flat-map fallback and restoration, with no console errors. Visual comparisons are night-only; controlled day/dusk and inland-city visual checks remain follow-ups. No merge or deployment occurred. See that worktree's `docs/NIGERIA-RENDERING.md`.
 
-Latest inventory manifest: `728224f88d4b5c2c7995d38a7e86af5ac2d6e3db74ef8ff1083e35305494500b`, at `.cache/world-build/output/inventory/manifests/`. Logical published size: 350,709 bytes. Eight focused inventory checks and the bootstrap acquisition/cache/repair check passed. Browser consumption is being implemented; the older manifest remains as an immutable earlier artifact.
+## Validation and next work
 
-## In progress, not yet accepted
+The current integrated world suite passes 78 tests; world TypeScript validation also passes after the abortable shared-lock fix. Python and preview build need a final settled run. See `M2-VALIDATION.md` for evidence and limits.
 
-- `acquire_m2`: real Overture adapter, TS orchestration, bounded static STAC item index, HTTP range proxy, receipts and tests. Official release `2026-09-23.1` verified; building collection has 512 items and road-segment collection 128. The coordinator reviewed real catalogue documents and asset URLs. A live extract remains an acceptance gate; current stub checks do not prove production acquisition.
-- `campaign_m2`: durable isolated campaigns, stage journals, interruption/resume, corruption quarantine, resource reservations, runner exclusion and focused tests. Eight focused checks were reported passing after review fixes; coordinator integration and real-acquisition testing remain outstanding.
-- `inventory_m2`: now owns standalone preview inventory UI, lazy hierarchy navigation, sourced outline view and bounded hash-verified fetching. Coordinator owns inventory/bootstrap code following review.
+1. Finish final Python/build checks, then commit the verified ingestion/environment/preview milestone.
+2. Observe the authorized remaining representative run, currently live under the 256 MB network / 90-minute campaign / 1.5 GB disk caps. It has exposed a queue-ordering bug: insertion priority is not respected by the existing claim query. Let this authorized probe run finish, then review a backwards-compatible durable priority fix before any changed-queue run; do not claim Africa-first scheduling yet. Review actual coverage exceptions and throughput before scaling.
+3. Ingest terrain with a declared vertical datum; complete finer global administrative/city inventory and stable aliases; attach climate profiles; add visible-cell streaming and eviction/disposal checks.
+4. Measure physical low-end device and real journey transfer costs, verify distribution licences, and implement the separately tested gameplay adapter. Preserve Nigeria and concurrent graphics work.
 
-Builder tooling: official DuckDB 1.5.6 arm64 Python 3.12 wheel, exact SHA-256 `dcccce20965e6986cd083fdf192c461685ad0b93cd1ccd0b2a8207f1185f078b`, installed in `.cache/world-build/tooling/venv`. Official `spatial` and `httpfs` extensions installed and successfully loaded from `.cache/world-build/tooling/extensions`. No game dependency changes. Tool installation traffic is separate from regional acquisition budgets.
-
-## Next actions
-
-1. Finish acquisition review: explicit Parquet bbox pushdown plus exact intersection, native geometry handling, extension path in nested campaigns, durable catalogue item cache, bounded upstream accounting and complete attribution. Run one capped real Accra extract; inspect source receipt and compiler compatibility before other pilots.
-2. Integrate campaign changes, verify failed/crashed-attempt reservations and source-cache reuse across reduced resource limits. Run real two-region campaign, interruption/resume and exact corruption recovery.
-3. Rerun world typecheck/tests/build on settled changes. Browser-QA lazy inventory, Nigeria protection, dateline/polar outlines and existing Accra preview at desktop/narrow viewport.
-4. Commit verified milestone(s), then finish all representative pilots and measured coverage/throughput report before scaling. Terrain/climate ingestion, finer global administrative/city inventory, automatic visible-cell streaming, device benchmarks and gameplay adapter remain incomplete.
-
-No paid jobs, deployment, merge or external publication has been started. A two-day run budget does not establish two-day world completion. Agents work while this session remains active; persistent execution needs the bounded resumable runner and an awake machine.
+No paid jobs, external publication, merge or deployment have started. Tiny-cell results do not establish whole-world completion in two days. Agents work only while the session is active; a persistent bounded runner also requires an awake machine. Failed acquisition attempts retain conservative reservations when exact response bytes are unavailable.

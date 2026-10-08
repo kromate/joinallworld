@@ -4,6 +4,8 @@ The builder creates immutable geographic packs and a lazy world inventory under 
 
 The expanded 258-unit directory supports explicit administrative bindings and resumable source preparation/compilation. Reviewed Rwanda, Djibouti and Libya compile against the full country denominator; all remaining exceptions and protected Nigeria stay visible. Read [PROGRESS.md](PROGRESS.md) for current checks and exact next tasks, [FINE-PROMOTION.md](FINE-PROMOTION.md) for source admission, and [FINE-CAMPAIGN.md](FINE-CAMPAIGN.md) for immutable campaign versions. Nigeria's visual upgrade is accepted separately on `codex/nigeria-rendering` through commit `01c4c8f1`, preserving game data and geography.
 
+Regional extract reuse is now accepted: four cached Dakar cells and a measured 16-cell larger derivation, exact independent ownership/part conservation, zero-network replay and **482/482 World tests**. See [REGIONAL-FANOUT-OPERATIONS.md](REGIONAL-FANOUT-OPERATIONS.md) for exact commands, source/product pins and incomplete country/global ownership gates.
+
 ## Local foundation and preview
 
 ```sh

@@ -1,5 +1,9 @@
 # Decisions and repeatable rollout after the first compiler
 
+## Current regional scaling milestone
+
+Regional fan-out is implemented and verified: cached Dakar four cells and a larger 16-cell extraction, immutable completion receipts, whole-feature conservation and existing local campaign resume. All 482 World tests and independent raw-source/product audits pass. See REGIONAL-FANOUT-OPERATIONS.md. Next freeze the full Senegal country grid, then connect bounded regional batches and cross-region ownership/reader dependencies. The two Dakar experiments are separate immutable versions, not combined national coverage. Existing country IDs, Nigeria and game data remain protected.
+
 ## Authorized Nigeria rendering milestone — 8 October 2026
 
 The user also requested an implemented improvement to Nigeria's rendering. This is a parallel visual milestone in the managed `nigeria-rendering` worktree, based on primary commit `1a329026`, on `codex/nigeria-rendering`. The independent builder's Nigeria exclusion remains in force. Rendering work preserves existing geography, IDs, map data, saves, catalogue, routes and database behavior.

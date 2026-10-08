@@ -601,7 +601,9 @@ function buildCar(context: VehicleContext, width: number, length: number, height
     [-width * 0.48, 0.39, front - 0.78], [width * 0.48, 0.39, front - 0.78],
     [-width * 0.48, 0.39, rear + 0.74], [width * 0.48, 0.39, rear + 0.74],
   ], style === 'suv' ? 0.43 : 0.37, 0.24, new Set([0, 1]));
-  addDoor(context, { x: width / 2 + 0.01, y: 0.93, z: -0.42, width: 0.08, height: 0.88, depth: 0.94, color: bodyColor, amount: -PI * 0.55 });
+  // Road cars face +Z and the driver sits on -X. The existing helper's `rear` option
+  // selects its +Z pivot, which is the physical front hinge here. Open outward on -X.
+  addDoor(context, { x: -width / 2 - 0.01, y: 0.93, z: 0.42, width: 0.08, height: 0.88, depth: 0.94, color: bodyColor, hinge: 'rear', amount: PI * 0.55 });
   addRoadLights(context, { width, frontZ: front + 0.035, rearZ: rear - 0.035, y: 0.7 });
   placeDriver(context, -width * 0.23, 0.74, 0.42);
   addSeat(context, width * 0.23, 0.74, 0.42);

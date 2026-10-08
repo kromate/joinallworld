@@ -1,6 +1,7 @@
 // The one Report a problem form of the page: the draft outlives the component (closing the phone
 // does not lose the text), and what loads is told to the Phone, whose red badge counts replies
 // not read yet (src/ui/phone/reports.ts).
+import { getCurrentScope, watch } from 'vue'
 import { markReportsRead, noteFiled, noteReports } from '../../../ui/phone/reports.ts'
 import { useApp } from '../../state/app.ts'
 import { createSupport } from './supportModel.ts'
@@ -17,5 +18,8 @@ export function useSupport(): Support {
     onLoaded(reports) { noteReports(reports); if (reports.length) noteFiled(); markReportsRead(); shell.bump() },
     onFiled: noteFiled,
   })
-  return shared
+  const support = shared
+  support.setIdentity(game.session.value?.id ?? null)
+  if (getCurrentScope()) watch(() => game.session.value?.id ?? null, (id) => { support.setIdentity(id); if (id) void support.load() }, { flush: 'sync' })
+  return support
 }

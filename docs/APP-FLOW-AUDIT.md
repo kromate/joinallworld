@@ -142,3 +142,11 @@ Home visitor controls now prevent overlapping invite/link/door actions, freeze a
 Acceptance for integration: delay each operation, verify repeated clicks do not launch concurrent requests; exercise offline/refused/successful door/end/revoke states; cancel native sharing and confirm clipboard stays unchanged; test 320/390px with long guest names and link actions. Preserve current guest permissions, invitation expiry and save state. This is pending UI protection, not a claim of new server-side retry identity after an ambiguous network failure. Real outbound shares must use synthetic QA recipients or explicit user authorization.
 
 Home-link copy fallback now has a visible read-only URL field that selects its value on focus. This makes the existing “select the link and copy it yourself” failure instruction actionable without changing link permissions or automatically sharing it. Verify with clipboard permission denied.
+
+### Report and Statement context handoff
+
+Report cache/draft/receipt state is now bound to the current character. Identity changes reset it and invalidate old in-flight responses; on reopening, the shared model checks its owner before exposing cached data. Same-character drafts remain across closing/reopening. Sending disables form edits, and the model also preserves any newer draft rather than clearing it when an older send completes. Unchanged retries reuse their id; changed city/category/text obtains a new id. Component completion feedback is suppressed after unmount/character change.
+
+Statement check results now retain their character identity as well as city. Character/city changes and unmount invalidate pending checks, preventing old results/toasts from appearing in a new context. This changes no wallet arithmetic or stored ledger. Report cards use flatter surfaces and 16px fields; statement summaries and daily/group rows wrap for large amounts.
+
+Acceptance: two identities with delayed report load/send and statement responses, same-account reopening, changed vs unchanged retry bodies, drafts edited during pending submit, 320/390px long report IDs/moderator replies/large balances. Existing model tests and exact-source CI are required; browser acceptance is still delegated. No support report may be submitted to real moderators solely for UI testing—use an isolated fixture.

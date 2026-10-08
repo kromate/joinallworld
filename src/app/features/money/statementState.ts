@@ -3,3 +3,5 @@ import { shallowRef } from 'vue'
 import type { Verdict } from './statementModel.ts'
 
 export const checked = shallowRef<Verdict | null>(null)
+
+export const checkedFor = shallowRef<string | null>(null)

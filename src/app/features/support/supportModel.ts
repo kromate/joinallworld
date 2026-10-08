@@ -46,18 +46,31 @@ export function createSupport(deps: SupportDeps) {
   const notice = shallowRef<SupportNotice | null>(null)
   /** The id of the report filed last, for the toast. */
   const lastReceipt = ref('')
+  let identity: string | null = null, generation = 0
+  let submittedFingerprint: string | null = null
+  function setIdentity(next: string | null): void {
+    if (next === identity) return
+    identity = next; generation += 1; submittedFingerprint = null
+    draft.category = 'bug'; draft.text = ''; draft.clientId = null
+    list.value = null; notice.value = null; lastReceipt.value = ''
+    loading.value = false; sending.value = false
+  }
+
 
   async function load(): Promise<void> {
     if (loading.value) return
     loading.value = true
+    const current = generation
     try {
       const reply = await deps.fetchJson<MyReportsResponse>('/api/support/reports')
+      if (current !== generation) return
       list.value = { reports: reply.reports, limits: reply.limits, failed: false }
       deps.onLoaded?.(reply.reports)
     } catch {
+      if (current !== generation) return
       // What was loaded before stays on screen, with the failure said beside it.
       list.value = { reports: list.value?.reports ?? [], limits: list.value?.limits ?? DEFAULT_LIMITS, failed: true }
-    } finally { loading.value = false }
+    } finally { if (current === generation) loading.value = false }
   }
 
   /** A category handed over by another screen is applied only while nothing has been typed. */
@@ -70,16 +83,21 @@ export function createSupport(deps: SupportDeps) {
     const problem = textProblem(text)
     if (problem) { notice.value = { kind: 'error', text: problem }; return false }
     // One id per report, reused if the send has to be retried, so a retry can never file it twice.
-    draft.clientId ||= deps.newId()
+    const fingerprint = JSON.stringify([deps.cityId(), draft.category, text])
+    if (!draft.clientId || submittedFingerprint !== fingerprint) draft.clientId = deps.newId()
+    submittedFingerprint = fingerprint
+    const current = generation, category = draft.category, submittedId = draft.clientId
     sending.value = true
     notice.value = null
     try {
       const body: FileReportBody = { cityId: deps.cityId(), category: draft.category, text, clientId: draft.clientId as FileReportBody['clientId'] }
       const reply = await deps.fetchJson<FileReportResponse>('/api/support/reports', { method: 'POST', body })
+      if (current !== generation) return false
       if (reply.ok) {
         lastReceipt.value = reply.receipt.id
         notice.value = { kind: 'good', text: `Report ${reply.receipt.id} was received. Its status will appear below; you can close this page.` }
-        draft.text = ''; draft.clientId = null
+        if (draft.text.trim() === text && draft.category === category) draft.text = ''
+        if (draft.clientId === submittedId) { draft.clientId = null; submittedFingerprint = null }
         deps.onFiled?.()
         list.value = null
         void load()
@@ -87,11 +105,12 @@ export function createSupport(deps: SupportDeps) {
       }
       notice.value = { kind: 'error', text: reply.reason || 'The report was not filed. Nothing was sent; try again.' }
     } catch (error) {
+      if (current !== generation) return false
       notice.value = { kind: 'error', text: sendFailure(error as ApiError) }
-    } finally { sending.value = false }
+    } finally { if (current === generation) sending.value = false }
     return false
   }
 
-  return { draft, list, loading, sending, notice, lastReceipt, load, preset, submit, reload(): void { list.value = null; void load() } }
+  return { draft, list, loading, sending, notice, lastReceipt, load, preset, submit, setIdentity, reload(): void { list.value = null; void load() } }
 }
 export type Support = ReturnType<typeof createSupport>

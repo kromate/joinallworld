@@ -1,6 +1,6 @@
 # App interiors redesign
 
-8 October 2026. User requested every app interior, including headers, with particular attention to chats, Jobs, Games, leaderboards and charts. This work follows the deployed 3D phone launcher. The UI release is being verified; no new deployment is claimed here yet.
+8 October 2026. User requested every app interior, including headers, with particular attention to chats, Jobs, Games, leaderboards and charts. This work follows the deployed 3D phone launcher. Deployed from source `cfbc133b36b5d4e8d071bb8223fbfc59e6a33289`; live build and assets were verified.
 
 ## Visual evidence and direction
 
@@ -35,10 +35,21 @@ Initial local identity had an unconfirmed look; a separate disposable `Interior 
 
 Desktop and 390×844 reviews found and corrected the cramped chat header. Chat send/list/actions were exercised. Charts were rendered from the real Vue component with clearly labeled synthetic data, including a missing day and zero-count funnel stage; table disclosure and keyboard readout were exercised. This does not claim a privileged production admin-session review or physical-device thermal testing.
 
-Existing focused checks passed 38/38; five-project typecheck and the first fast build/smoke passed. The selected layouts also passed the full fast check and 38 focused checks. Development-preview cross-app links became inert; an isolated server serving the compiled production assets confirmed Bank → Statement and Games → Chess navigation. A real local chess move (e2 to e4) was applied. The final release build still needs the battery foreground correction and final CSS cleanup.
+Existing focused checks passed 38/38; five-project typecheck and the first fast build/smoke passed. The selected layouts also passed the full fast check and 38 focused checks. Development-preview cross-app links became inert; an isolated server serving the compiled production assets confirmed Bank → Statement and Games → Chess navigation. A real local chess move (e2 to e4) was applied. The final release includes the battery foreground correction and final CSS cleanup.
 
 ## Assets
 
 `src/app/features/games/game-covers.webp`: 1536×1024, 163,734 bytes, loaded only with Games. Generated with the built-in image tool and encoded as WebP quality 82. Prompt: one equal 3×2 atlas of original tactile 3D game art with solid backgrounds, consistent studio light and three-quarter camera; word-puzzle tiles, chess pieces, woven letter board, geometric playing cards, football/goal, and carved Ayo board; no UI or logos. No runtime 3D scene or new image service.
 
 The app icon atlas stays in `src/ui/phone/app-icons.webp`. See PHONE-POLISH.md for its provenance.
+
+
+## Live release evidence
+
+Cloudflare version `77d0ab82-7f21-4431-9ad9-9d6e8d60740b` received 100% traffic at 13:39:32 UTC on 8 October 2026. Public health reported `joinallworld-cfbc133b36b5d4e8d071bb8223f` at 13:45:31 UTC. CI passed at https://github.com/kromate/joinallworld/actions/runs/37785436555 .
+
+Final startup download: 614,295 raw / 222,576 gzip / 194,713 Brotli bytes, all inside unchanged limits. First-paint Brotli: 35,393 bytes. Worker startup: 175ms (single provider measurement). Sealed package digest: `a8af452aa92b38f9be926ddb6df3e800449d61ce922e43c21ac54a6b74aa9400`. Package guards 17/17, Worker smoke 5/5, focused existing UI/model checks 38/38. Public smoke passed 9 checks / 282 requests / 40 cities in 76.0 seconds. Existing synthetic identity, balance and receipt continuity passed after propagation.
+
+Color contrast measurements: body on canvas 15.26:1; secondary text 5.95:1; chat text 7.21:1; wallet secondary text 9.59:1; blue focus on white 5.17:1. These cover the revised palette pairs, not a blanket accessibility certification for every possible user-generated state.
+
+The live game-cover asset returned HTTP 200 / 163,734 bytes and matched SHA-256 `825926a30e5025f45beafe8d54d7399c06d3ad354a0693fe82540dce965e2370`. Public Games and Bank screens were visually verified after deployment, including 3D header marks, white toolbar, battery contrast and real saved-state content. Public mobile-view document width equaled scroll width; the existing browser zoom was preserved.

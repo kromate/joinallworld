@@ -19,9 +19,10 @@ import { checkReports } from '../../../ui/phone/reports.ts'
 import { getWallpaper } from '../../../ui/phone/wallpapers.ts'
 import { tintOf } from '../../../ui/phone/icons-more.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import AppArtwork from './AppArtwork.vue'
 import HelpBody from '../help/HelpBody.vue'
 import PanelHost from './PanelHost.vue'
-import { PAGES, SHADE_MAX, badgeText, battery, dockApps, notificationsOf, phonePages } from './phoneModel.ts'
+import { SHADE_MAX, badgeText, battery, dockApps, notificationsOf, phonePages } from './phoneModel.ts'
 import type { PhoneApp } from './phoneModel.ts'
 
 const { game, shell, api, community } = useApp()
@@ -35,7 +36,7 @@ const STAMP = lagos({ weekday: 'short', hour: '2-digit', minute: '2-digit', hour
 const view = computed(() => { void shell.legacyTick.value; return shell.viewFor() })
 const now = computed(() => new Date(view.value.now))
 const power = computed(() => battery(state.value.needs?.energy))
-const pages = computed(() => phonePages(shell.panels))
+const pages = computed(() => phonePages(shell.panels).flatMap((section) => section.groups.map((group) => ({ label: group.label, groups: [group] }))))
 const dock = dockApps(shell.panels)
 const badges = computed(() => { const current = view.value; return Object.fromEntries(shell.panels.map((panel) => [panel.id, badgeText(panel, state.value, current)])) as Record<string, string> })
 const notes = computed(() => notificationsOf(shell.panels, state.value, view.value))
@@ -62,14 +63,14 @@ const device = ref<HTMLElement | null>(null)
 const pagesBox = ref<HTMLElement | null>(null)
 const appBody = ref<HTMLElement | null>(null)
 function goPage(next: number): void {
-  page.value = Math.max(0, Math.min(PAGES.length - 1, next))
-  const target = pagesBox.value?.children[page.value]
-  if (target instanceof HTMLElement) pagesBox.value?.scrollTo({ left: target.offsetLeft, behavior: 'auto' })
+  page.value = Math.max(0, Math.min(pages.value.length - 1, next))
+  const box = pagesBox.value
+  if (box) box.scrollTo({ left: page.value * box.clientWidth, behavior: 'auto' })
 }
 /** The page in view after a swipe: only the dots change. Fires on user scrolling, never on a timer. */
 function onScroll(): void {
   const box = pagesBox.value
-  if (box) page.value = Math.max(0, Math.min(PAGES.length - 1, Math.round(box.scrollLeft / (box.clientWidth || 1))))
+  if (box) page.value = Math.max(0, Math.min(pages.value.length - 1, Math.round(box.scrollLeft / (box.clientWidth || 1))))
 }
 
 /** Keyboard focus follows the view: the back button in an app, the app's own icon back on the home screen. */
@@ -130,7 +131,7 @@ function moveFocus(direction: 'left' | 'right' | 'up' | 'down'): void {
   if (best) { best.focus(); return }
   if (dx && !current.hasAttribute('data-ph-dock')) {
     const next = page.value + dx
-    if (next < 0 || next >= PAGES.length) return
+    if (next < 0 || next >= pages.value.length) return
     goPage(next)
     // Arrive on the row nearest to the one just left.
     let target: HTMLElement | null = null, gap = Infinity
@@ -183,7 +184,7 @@ defineExpose({
           <div class="ph-notifs">
             <template v-if="notes[0]">
               <button class="ph-note is-compact" :class="{ 'is-fresh': notes[0].fresh }" type="button" @click="openNote(notes[0])">
-                <span class="ph-icon" :style="{ '--tint': tintOf(shell.byId.get(notes[0].app) ?? { id: notes[0].app }) }"><GameIcon bare :name="glyphFor(notes[0].app)" /></span>
+                <AppArtwork :app="notes[0].app" />
                 <span><small>{{ shell.byId.get(notes[0].app)?.title ?? 'Update' }}<template v-if="notes[0].at"> · {{ STAMP.format(new Date(notes[0].at)) }}</template><template v-if="notes[0].fresh"> · New</template></small><b>{{ notes[0].text }}</b></span>
               </button>
               <button v-if="notes.length > 1" class="ph-more" type="button" :aria-expanded="shade" :aria-label="`Show all ${notes.length} notifications`" @click="setShade(!shade)"><GameIcon bare name="bell" /><span><template v-if="freshNotes > 1">{{ freshNotes }} new · </template>{{ notes.length - 1 }} more</span></button>
@@ -195,7 +196,7 @@ defineExpose({
                 <h3 class="ph-group">{{ group.label }}</h3>
                 <div class="ph-grid">
                   <button v-for="entry in group.apps" :key="entry.id" class="ph-appbtn" :class="{ 'is-running': lastApp === entry.id }" type="button" :data-ph-app="entry.id" :data-tour="`app-${entry.id}`" :aria-label="`${entry.title}${badges[entry.id] ? `, ${badges[entry.id]} new` : ''}`" @click="openApp(entry)">
-                    <span class="ph-icon" :style="{ '--tint': tintOf(entry) }"><GameIcon bare :name="glyphFor(entry.id)" /></span><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
+                    <AppArtwork :app="entry.id" /><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
                   </button>
                 </div>
               </template>
@@ -206,7 +207,7 @@ defineExpose({
           </div>
           <div class="ph-dock" data-tour="phone-dock" role="group" aria-label="Dock">
             <button v-for="entry in dock" :key="entry.id" class="ph-appbtn" :class="{ 'is-running': lastApp === entry.id }" type="button" data-ph-dock :data-ph-app="entry.id" :aria-label="`${entry.title}${badges[entry.id] ? `, ${badges[entry.id]} new` : ''}`" @click="openApp(entry)">
-              <span class="ph-icon" :style="{ '--tint': tintOf(entry) }"><GameIcon bare :name="glyphFor(entry.id)" /></span><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
+              <AppArtwork :app="entry.id" /><b v-if="badges[entry.id]" class="ph-badge" aria-hidden="true">{{ badges[entry.id] }}</b><span class="ph-label">{{ entry.short || entry.title }}</span>
             </button>
           </div>
         </section>
@@ -215,7 +216,7 @@ defineExpose({
           <header><h2>Notifications</h2><button class="ph-shade-close" type="button" aria-label="Close notifications" @click="setShade(false)"><GameIcon bare name="close" /></button></header>
           <div class="ph-shade-list">
             <button v-for="line in notes.slice(0, SHADE_MAX)" :key="line.id" class="ph-note" :class="{ 'is-fresh': line.fresh }" type="button" @click="openNote(line)">
-              <span class="ph-icon" :style="{ '--tint': tintOf(shell.byId.get(line.app) ?? { id: line.app }) }"><GameIcon bare :name="glyphFor(line.app)" /></span>
+              <AppArtwork :app="line.app" />
               <span><small>{{ shell.byId.get(line.app)?.title ?? 'Update' }}<template v-if="line.at"> · {{ STAMP.format(new Date(line.at)) }}</template><template v-if="line.fresh"> · New</template></small><b>{{ line.text }}</b></span>
             </button>
             <div v-if="!notes.length" class="ph-shade-empty"><GameIcon bare name="bell" /><p><b>No notifications</b>Rent and loan notices, messages, knocks at your door and city news land here.</p></div>

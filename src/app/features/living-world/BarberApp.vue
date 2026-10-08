@@ -44,7 +44,9 @@ const lessonNames: Record<BarberLessonId, string> = { basic: 'Mannequin basics',
 const payout = computed(() => barberLesson(currentSession.value?.lessonId ?? selectedLesson.value)?.payout ?? 80)
 type StartAttempt = { lessonId: BarberLessonId; requestId: string }
 type RequestAttempt = { lessonId: BarberLessonId; sessionId: string; requestId: string }
-let startAttempt: StartAttempt | null = null, claimAttempt: RequestAttempt | null = null, upgradeAttempt: { requestId: string } | null = null
+const startAttempt = ref<StartAttempt | null>(null)
+const claimAttempt = ref<RequestAttempt | null>(null)
+const upgradeAttempt = ref<{ requestId: string } | null>(null)
 let generation = 0, mounted = false, disposed = false, inputInFlight = false
 let pauseAfterInput: string | null = null
 let sampleTimer = 0, flushTimer = 0, pointerId: number | null = null
@@ -107,7 +109,7 @@ function acceptReply(answer: BarberApiReply, token: number, key: string, expecte
   }
   reply.value = answer
   online.value = true
-  if (answer.results.some(result => result.lessonId === 'basic') && upgradeAttempt && answer.starterTool) upgradeAttempt = null
+  if (answer.results.some(result => result.lessonId === 'basic') && upgradeAttempt.value && answer.starterTool) upgradeAttempt.value = null
   feedback.value = answer.reason || canonical?.practice.feedback || (answer.code === 'lesson_claimed' ? 'The mannequin result was recorded and its gross game-cash credit applied.' : 'Lesson state updated from the server.')
   if (kind === 'input' && (!answer.ok || !canonical || canonical.status !== 'running')) stopPractice(canonical?.practice.feedback || answer.reason || 'Practice stopped. Review the saved lesson before continuing.')
   if (canonical?.status === 'complete' || !canonical || canonical.status === 'paused') stopPractice(canonical?.practice.feedback || feedback.value)
@@ -126,9 +128,9 @@ async function load(): Promise<void> {
     if (acceptReply(answer, token, key, expected, 'load')) {
       needsRefresh.value = false; active.value = false; clearInput()
       if (answer.session?.status === 'running') await lifecycle('pause', answer.session, token, key)
-      if (startAttempt && (answer.session?.lessonId === startAttempt.lessonId
-        || results.value.some(result => result.lessonId === startAttempt?.lessonId))) startAttempt = null
-      if (claimAttempt && results.value.some(result => result.lessonId === claimAttempt?.lessonId)) claimAttempt = null
+      if (startAttempt.value && (answer.session?.lessonId === startAttempt.value.lessonId
+        || results.value.some(result => result.lessonId === startAttempt.value?.lessonId))) startAttempt.value = null
+      if (claimAttempt.value && results.value.some(result => result.lessonId === claimAttempt.value?.lessonId)) claimAttempt.value = null
     }
   } catch (error) {
     if (requestCurrent(token, key)) { online.value = false; needsRefresh.value = true; stopPractice(errorText(error, 'Offline. Reconnect to check the saved mannequin lesson.')) }
@@ -138,8 +140,12 @@ async function load(): Promise<void> {
 async function startLesson(lessonId: BarberLessonId): Promise<void> {
   if (lessonId === 'basic' ? !canStartBasic.value : !canStartAdvanced.value) return
   const token = generation, key = contextKey.value, expected = currentSession.value?.sessionId ?? null
-  if (!startAttempt || startAttempt.lessonId !== lessonId) startAttempt = { lessonId, requestId: game.newId() }
-  const body: BarberStartRequest = { cityId: cityId.value, lessonId, requestId: startAttempt.requestId }
+  let attempt = startAttempt.value
+  if (!attempt || attempt.lessonId !== lessonId) {
+    attempt = { lessonId, requestId: game.newId() }
+    startAttempt.value = attempt
+  }
+  const body: BarberStartRequest = { cityId: cityId.value, lessonId, requestId: attempt.requestId }
   busy.value = true
   try {
     const raw = await game.client.api<BarberResponse>('/api/living-world/barber/start', { method: 'POST', body })
@@ -147,9 +153,9 @@ async function startLesson(lessonId: BarberLessonId): Promise<void> {
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The start reply could not be verified. Reconnect before trying again.'); return }
     const accepted = acceptReply(answer, token, key, expected, 'start')
-    if (answer.ok && accepted && answer.session?.status === 'running') { startAttempt = null; selectedTool.value = answer.session.practice.plan.objectives[0]?.tool ?? 'comb'; beginPractice() }
-    else if (accepted && ['lesson_active', 'lesson_already_started', 'lesson_retained'].includes(answer.code)) { startAttempt = null; needsRefresh.value = true; feedback.value = 'A saved lesson or result already exists. Reconnect to review it before continuing.' }
-    else if (accepted && !answer.ok) startAttempt = null
+    if (answer.ok && accepted && answer.session?.status === 'running') { startAttempt.value = null; selectedTool.value = answer.session.practice.plan.objectives[0]?.tool ?? 'comb'; beginPractice() }
+    else if (accepted && ['lesson_active', 'lesson_already_started', 'lesson_retained'].includes(answer.code)) { startAttempt.value = null; needsRefresh.value = true; feedback.value = 'A saved lesson or result already exists. Reconnect to review it before continuing.' }
+    else if (accepted && !answer.ok) startAttempt.value = null
   } catch (error) {
     if (requestCurrent(token, key)) { online.value = false; needsRefresh.value = true; stopPractice(errorText(error, 'Start delivery is uncertain. Reconnect to check the saved lesson.')) }
   } finally { if (requestCurrent(token, key)) busy.value = false }
@@ -258,9 +264,9 @@ function blur(): void { releaseFocus(); if (active.value) void pausePractice(); 
 async function claimResult(): Promise<void> {
   const saved = currentSession.value
   if (!canClaim.value || !saved || busy.value) return
-  if (!claimAttempt || claimAttempt.sessionId !== saved.sessionId || claimAttempt.lessonId !== saved.lessonId)
-    claimAttempt = { lessonId: saved.lessonId, sessionId: saved.sessionId, requestId: game.newId() }
-  const attempt = claimAttempt, token = generation, key = contextKey.value
+  if (!claimAttempt.value || claimAttempt.value.sessionId !== saved.sessionId || claimAttempt.value.lessonId !== saved.lessonId)
+    claimAttempt.value = { lessonId: saved.lessonId, sessionId: saved.sessionId, requestId: game.newId() }
+  const attempt = claimAttempt.value!, token = generation, key = contextKey.value
   const body: BarberClaimRequest = { cityId: saved.cityId, lessonId: saved.lessonId, sessionId: saved.sessionId, requestId: attempt.requestId }
   busy.value = true; feedback.value = 'Submitting the one-time mannequin lesson payout…'
   try {
@@ -278,11 +284,11 @@ async function claimResult(): Promise<void> {
         needsRefresh.value = true
         feedback.value = 'The claim reply did not confirm this saved mannequin result. Reconnect to verify it before retrying.'
       } else {
-        claimAttempt = null
+        claimAttempt.value = null
         feedback.value = `Mannequin result recorded. Gross credit: ₦${payout.value} game cash. Automatic ride-debt repayment may reduce your spendable balance.`
       }
     }
-    else if (accepted && !answer.ok) { claimAttempt = null; feedback.value = answer.reason || claimMessage(answer.code) }
+    else if (accepted && !answer.ok) { claimAttempt.value = null; feedback.value = answer.reason || claimMessage(answer.code) }
   } catch (error) {
     if (requestCurrent(token, key)) { online.value = false; needsRefresh.value = true; feedback.value = errorText(error, 'Payout delivery is uncertain. Reconnect to check it before trying again.') }
   } finally {
@@ -302,8 +308,8 @@ function claimMessage(code: string): string {
 }
 async function upgradeTool(): Promise<void> {
   if (!canUpgrade.value || busy.value) return
-  if (!upgradeAttempt) upgradeAttempt = { requestId: game.newId() }
-  const attempt = upgradeAttempt, token = generation, key = contextKey.value, expected = currentSession.value?.sessionId ?? null
+  if (!upgradeAttempt.value) upgradeAttempt.value = { requestId: game.newId() }
+  const attempt = upgradeAttempt.value!, token = generation, key = contextKey.value, expected = currentSession.value?.sessionId ?? null
   const body: BarberUpgradeRequest = { cityId: cityId.value, requestId: attempt.requestId }
   busy.value = true; feedback.value = `Buying the starter clipper upgrade for ₦${BARBER_STARTER_TOOL_COST} game cash…`
   try {
@@ -312,8 +318,8 @@ async function upgradeTool(): Promise<void> {
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; feedback.value = 'The purchase reply could not be verified. Reconnect to check the tool status.'; return }
     const accepted = acceptReply(answer, token, key, expected, 'upgrade')
-    if (accepted && answer.ok && answer.starterTool) { upgradeAttempt = null; feedback.value = 'Starter clippers unlocked for advanced mannequin practice.' }
-    else if (accepted && !answer.ok) { upgradeAttempt = null; feedback.value = claimMessage(answer.code) }
+    if (accepted && answer.ok && answer.starterTool) { upgradeAttempt.value = null; feedback.value = 'Starter clippers unlocked for advanced mannequin practice.' }
+    else if (accepted && !answer.ok) { upgradeAttempt.value = null; feedback.value = claimMessage(answer.code) }
   } catch (error) {
     if (requestCurrent(token, key)) { online.value = false; needsRefresh.value = true; feedback.value = errorText(error, 'Purchase delivery is uncertain. Reconnect to check the tool status.') }
   } finally {
@@ -335,7 +341,7 @@ watch(contextKey, async () => {
   generation++; const token = generation
   stopPractice(); reply.value = null; selectedTool.value = 'comb'; selectedLesson.value = 'basic';
   needsRefresh.value = false; online.value = true; busy.value = false; feedback.value = 'Loading the mannequin lesson…'
-  startAttempt = null; claimAttempt = null; upgradeAttempt = null; pauseAfterInput = null
+  startAttempt.value = null; claimAttempt.value = null; upgradeAttempt.value = null; pauseAfterInput = null
   if (previous?.status === 'running') void lifecycle('pause', previous, token - 1, '')
   if (mounted) await load()
 })

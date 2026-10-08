@@ -59,10 +59,11 @@ export function readBarberReply(value: unknown): BarberApiReply | null {
   const seen = new Set<string>()
   for (const item of value.results) {
     if (!record(item) || !exactKeys(item, ['earnedAt', 'lessonId', 'styleId'])
-      || (item.lessonId !== 'basic' && item.lessonId !== 'advanced') || seen.has(item.lessonId)
-      || item.styleId !== barberLesson(item.lessonId)?.resultStyleId || !safeTime(item.earnedAt)) return null
+      || (item.lessonId !== 'basic' && item.lessonId !== 'advanced')) return null
+    const lesson = barberLesson(item.lessonId)
+    if (!lesson || seen.has(item.lessonId) || item.styleId !== lesson.resultStyleId || !safeTime(item.earnedAt)) return null
     seen.add(item.lessonId)
-    results.push({ lessonId: item.lessonId, styleId: item.styleId, earnedAt: item.earnedAt })
+    results.push({ lessonId: item.lessonId, styleId: lesson.resultStyleId, earnedAt: item.earnedAt })
   }
   if (value.starterTool && !seen.has('basic')) return null
   if (seen.has('advanced') && (!seen.has('basic') || !value.starterTool)) return null

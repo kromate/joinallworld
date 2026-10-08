@@ -22,7 +22,7 @@ const WHEEL_CIRCUMFERENCE = 2 * Math.PI * 0.37
 
 type Point = { x: number; y: number; z: number }
 type FlatPoint = { x: number; z: number }
-type Phase = 'idle' | 'enter-door' | 'enter-walk' | 'enter-seat' | 'drive' | 'exit-door' | 'exit-walk'
+type Phase = 'idle' | 'enter-door' | 'enter-walk' | 'enter-seat' | 'drive' | 'exit-door' | 'exit-seat' | 'exit-walk' | 'exit-close'
 type ActorPose = 'idle' | 'stand' | 'walk' | 'sit'
 
 /** The feature is lazy: Three, scene builders and the shared skinned body stay outside startup. */
@@ -76,6 +76,8 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
   let standIn: StandIn
 
   const driverAnchor = car.userData.anchors.driver, doorAnchor = car.userData.anchors.door
+  car.object3D.updateWorldMatrix(true, true)
+  const closedDoorLocal = car.object3D.worldToLocal(doorAnchor.getWorldPosition(new THREE.Vector3()))
   const first = route.roads[0]?.[0] ?? { x: 0, z: 0 }
   const next = route.roads[0]?.[1] ?? { x: first.x, z: first.z + 1 }
   const initialHeading = Math.atan2(next.x - first.x, next.z - first.z)
@@ -93,12 +95,19 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
   const sample = (point: FlatPoint, heading: number) => {
     car.object3D.position.set(point.x, 0, point.z); car.object3D.rotation.y = heading; car.object3D.updateWorldMatrix(true, true)
     followCamera(point, heading)
-    const driver = driverAnchor.getWorldPosition(new THREE.Vector3()), door = doorAnchor.getWorldPosition(new THREE.Vector3())
-    const outward = new THREE.Vector3(1.5, 0, 0).applyAxisAngle(new THREE.Vector3(0, 1, 0), heading)
-    const approach = door.add(outward); approach.y = 0
+    const driver = driverAnchor.getWorldPosition(new THREE.Vector3())
+    // Road sedans face +Z and put the driver door on local -X. Keep the authored closed-door
+    // anchor, then transform its side direction through the car's current world matrix.
+    const door = car.object3D.localToWorld(closedDoorLocal.clone())
+    const outward = new THREE.Vector3(-1, 0, 0).transformDirection(car.object3D.matrixWorld)
+    const approachAt = door.clone().addScaledVector(outward, 1.5); approachAt.y = 0
+    const thresholdAt = door.clone().addScaledVector(outward, 0.2); thresholdAt.y = 0
     const bodySeat: Point = { x: driver.x, y: driver.y - SEAT * BODY_SCALE, z: driver.z }
     const fallbackSeat: Point = { x: driver.x, y: driver.y + (0.13 - 1.05) * avatar.scale.y, z: driver.z }
-    return { driver, approach, bodySeat, fallbackSeat }
+    const thresholdSeat: Point = { x: thresholdAt.x, y: bodySeat.y, z: thresholdAt.z }
+    const fallbackThreshold: Point = { x: thresholdAt.x, y: fallbackSeat.y, z: thresholdAt.z }
+    const approach: Point = { x: approachAt.x, y: 0, z: approachAt.z }
+    return { driver, approach, thresholdSeat, fallbackThreshold, bodySeat, fallbackSeat }
   }
   const fallbackAt = (at: Point, heading: number, pose: ActorPose, stride = 0) => {
     avatar.position.set(at.x, at.y, at.z); avatar.rotation.y = heading
@@ -134,8 +143,10 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     if (phase === 'enter-door' && actorPose === 'idle') setActorPose('stand', true, true)
     else if (phase === 'enter-walk') setActorPose('walk', false, true)
     else if (phase === 'enter-seat' || phase === 'drive') setActorPose('sit', false, true)
-    else if (phase === 'exit-door') setActorPose('stand', true, true)
+    else if (phase === 'exit-door') setActorPose('sit', false, true)
+    else if (phase === 'exit-seat') setActorPose('stand', true, true)
     else if (phase === 'exit-walk') setActorPose('walk', false, true)
+    else if (phase === 'exit-close') setActorPose('stand', false, true)
     else if (phase === 'idle' && state && state.status !== 'running') setActorPose('sit', false, true)
     schedule()
   }
@@ -178,35 +189,47 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     if (phase === 'enter-door') {
       phaseTime += dt
       const at = state?.position ?? first, heading = state?.heading ?? initialHeading, anchors = sample(at, heading)
+      const doorOpenDuration = reduceMotion ? 0.08 : 0.2
       standIn.move(anchors.approach.x, anchors.approach.y, anchors.approach.z, heading)
       fallbackAt(anchors.approach, heading, 'stand')
-      poseCar({ door: Math.min(1, phaseTime / 0.2), time: clock })
-      if (phaseTime >= (reduceMotion ? 0.08 : 0.2) && !standIn.easing) { phase = 'enter-walk'; phaseTime = 0; setActorPose('walk', false, true) }
+      poseCar({ door: Math.min(1, phaseTime / doorOpenDuration), time: clock })
+      if (phaseTime >= doorOpenDuration && !standIn.easing) { phase = 'enter-walk'; phaseTime = 0; setActorPose('walk', false, true) }
       else if (phaseTime > 1.5 && standIn.easing) standIn.settle()
     } else if (phase === 'enter-walk') {
       phaseTime += dt; stridePhase += dt * 7
       const at = state?.position ?? first, heading = state?.heading ?? initialHeading, a = sample(at, heading)
       const t = Math.min(1, phaseTime / (reduceMotion ? 0.24 : 0.62))
-      const walking: Point = { x: a.approach.x + (a.bodySeat.x - a.approach.x) * t, y: a.bodySeat.y * t, z: a.approach.z + (a.bodySeat.z - a.approach.z) * t }
-      const fallback: Point = { x: a.approach.x + (a.fallbackSeat.x - a.approach.x) * t, y: a.fallbackSeat.y * t, z: a.approach.z + (a.fallbackSeat.z - a.approach.z) * t }
+      const walking: Point = { x: a.approach.x + (a.thresholdSeat.x - a.approach.x) * t, y: 0, z: a.approach.z + (a.thresholdSeat.z - a.approach.z) * t }
+      const fallback: Point = { x: a.approach.x + (a.fallbackThreshold.x - a.approach.x) * t, y: 0, z: a.approach.z + (a.fallbackThreshold.z - a.approach.z) * t }
       moveActor(walking, heading, 'walk', fallback, stridePhase)
       poseCar({ door: 1, time: clock })
-      if (t >= 1) { phase = 'enter-seat'; phaseTime = 0; standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, heading); fallbackAt(a.fallbackSeat, heading, 'sit'); setActorPose('sit', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle() }
+      if (t >= 1) { phase = 'enter-seat'; phaseTime = 0; standIn.move(a.thresholdSeat.x, a.thresholdSeat.y, a.thresholdSeat.z, heading); fallbackAt(a.fallbackThreshold, heading, 'sit'); setActorPose('sit', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle() }
     } else if (phase === 'enter-seat') {
       phaseTime += dt
       const at = state?.position ?? first, heading = state?.heading ?? initialHeading, a = sample(at, heading)
+      const seatMoveDuration = reduceMotion ? 0.18 : 0.38
       const doorCloseDuration = reduceMotion ? 0.1 : 0.22
-      moveActor(a.bodySeat, heading, 'sit', a.fallbackSeat)
-      poseCar({ door: Math.max(0, 1 - phaseTime / doorCloseDuration), time: clock })
+      const moveT = Math.min(1, phaseTime / seatMoveDuration)
+      const seated: Point = { x: a.thresholdSeat.x + (a.bodySeat.x - a.thresholdSeat.x) * moveT, y: a.bodySeat.y, z: a.thresholdSeat.z + (a.bodySeat.z - a.thresholdSeat.z) * moveT }
+      const fallback: Point = { x: a.fallbackThreshold.x + (a.fallbackSeat.x - a.fallbackThreshold.x) * moveT, y: a.fallbackSeat.y, z: a.fallbackThreshold.z + (a.fallbackSeat.z - a.fallbackThreshold.z) * moveT }
+      moveActor(seated, heading, 'sit', fallback)
+      poseCar({ door: Math.max(0, 1 - Math.max(0, phaseTime - seatMoveDuration) / doorCloseDuration), time: clock })
       if (phaseTime > (reduceMotion ? 0.25 : 1.5) && standIn.easing) standIn.settle()
-      if (phaseTime >= doorCloseDuration && !standIn.easing) { phase = 'drive'; phaseTime = 0; const callback = ready; ready = null; callback?.() }
+      if (phaseTime >= seatMoveDuration + doorCloseDuration && !standIn.easing) { phase = 'drive'; phaseTime = 0; const callback = ready; ready = null; callback?.() }
     } else if (phase === 'exit-door') {
       phaseTime += dt
       const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
-      moveActor(a.bodySeat, current.heading, 'stand', a.fallbackSeat)
-      poseCar({ door: Math.min(1, phaseTime / 0.2), time: clock })
-      if (phaseTime >= (reduceMotion ? 0.08 : 0.2) && !standIn.easing) { phase = 'exit-walk'; phaseTime = 0; setActorPose('walk', false, true) }
-      else if (phaseTime > 1.5 && standIn.easing) standIn.settle()
+      const doorOpenDuration = reduceMotion ? 0.08 : 0.2
+      moveActor(a.bodySeat, current.heading, 'sit', a.fallbackSeat)
+      poseCar({ door: Math.min(1, phaseTime / doorOpenDuration), time: clock })
+      if (phaseTime >= doorOpenDuration) { phase = 'exit-seat'; phaseTime = 0; setActorPose('stand', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle() }
+    } else if (phase === 'exit-seat') {
+      phaseTime += dt
+      const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
+      standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, current.heading)
+      poseCar({ door: 1, time: clock })
+      if (phaseTime > 1.5 && standIn.easing) standIn.settle()
+      if (phaseTime >= (reduceMotion ? 0.22 : 0.35) && !standIn.easing) { phase = 'exit-walk'; phaseTime = 0; setActorPose('walk', false, true) }
     } else if (phase === 'exit-walk') {
       phaseTime += dt; stridePhase += dt * 7
       const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
@@ -214,8 +237,13 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
       const walking: Point = { x: a.bodySeat.x + (a.approach.x - a.bodySeat.x) * t, y: a.bodySeat.y * (1 - t), z: a.bodySeat.z + (a.approach.z - a.bodySeat.z) * t }
       const fallback: Point = { x: a.fallbackSeat.x + (a.approach.x - a.fallbackSeat.x) * t, y: a.fallbackSeat.y * (1 - t), z: a.fallbackSeat.z + (a.approach.z - a.fallbackSeat.z) * t }
       moveActor(walking, current.heading, 'walk', fallback, stridePhase)
-      poseCar({ door: Math.max(0, 1 - Math.max(0, phaseTime - 0.3) / 0.2), time: clock })
-      if (t >= 1) { phase = 'idle'; phaseTime = 0; ready = null; setActorPose('stand', false, true); schedule() }
+      poseCar({ door: 1, time: clock })
+      if (t >= 1) { phase = 'exit-close'; phaseTime = 0; setActorPose('stand', false, true); fallbackAt(a.approach, current.heading, 'stand') }
+    } else if (phase === 'exit-close') {
+      phaseTime += dt
+      const doorCloseDuration = reduceMotion ? 0.08 : 0.22
+      poseCar({ door: Math.max(0, 1 - phaseTime / doorCloseDuration), time: clock })
+      if (phaseTime >= doorCloseDuration) { phase = 'idle'; phaseTime = 0; ready = null; schedule() }
     } else if (phase === 'drive' && state) {
       placeCar(state)
       const a = sample(state.position, state.heading)
@@ -243,7 +271,7 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
       schedule()
     },
     setInput(next) { input = next; if (phase === 'drive') poseCar({ steering: input.steer * 0.62, brake: input.brake, time: clock }); schedule() },
-    setReducedMotion(on) { reduceMotion = on; if (on && (phase === 'enter-door' || phase === 'enter-seat' || phase === 'exit-door') && standIn.easing) standIn.settle(); schedule() },
+    setReducedMotion(on) { reduceMotion = on; if (on && (phase === 'enter-door' || phase === 'enter-seat' || phase === 'exit-seat' || phase === 'exit-door') && standIn.easing) standIn.settle(); schedule() },
     begin(onReady) {
       phase = 'enter-door'; phaseTime = 0; ready = onReady ?? null
       const at = state?.position ?? first, heading = state?.heading ?? initialHeading, a = sample(at, heading)
@@ -254,7 +282,7 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     },
     exit() {
       phase = 'exit-door'; phaseTime = 0; ready = null
-      if (state) { const a = sample(state.position, state.heading); standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, state.heading); setActorPose('stand', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle(); fallbackAt(a.fallbackSeat, state.heading, 'sit') }
+      if (state) { const a = sample(state.position, state.heading); standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, state.heading); setActorPose('sit', false, true); fallbackAt(a.fallbackSeat, state.heading, 'sit') }
       poseCar({ door: 0, time: clock }); schedule()
     },
     setVisible(on) { visible = on; if (on) { lastDraw = 0; schedule() } else { if (frame) cancelAnimationFrame(frame); frame = 0; lastDraw = 0 } },

@@ -446,6 +446,8 @@ class RangeProxy:
         self.release = release
         self.etags: dict[str, str] = {}
         self.etag_lock = threading.Lock()
+        self.errors: list[dict[str, object]] = []
+        self.error_lock = threading.Lock()
         self.slots = threading.BoundedSemaphore(concurrency)
         self.httpd = ThreadingHTTPServer(("127.0.0.1", 0), self._handler())
         self.httpd.daemon_threads = True
@@ -471,11 +473,17 @@ class RangeProxy:
                 upstream = str(asset["url"])
                 try:
                     with proxy.slots:
-                        proxy._upstream(self, upstream, body, int(asset["fileBytes"]))
+                        proxy._upstream(self, upstream, body, int(asset["fileBytes"]), asset)
                 except BudgetExceeded:
-                    self.close_connection = True
+                    if not getattr(self, "_world_proxy_response_started", False):
+                        proxy._send_failure(self, 429, "network-budget-exceeded")
+                    else:
+                        self.close_connection = True
                 except Exception:
-                    self.close_connection = True
+                    if not getattr(self, "_world_proxy_response_started", False):
+                        proxy._send_failure(self, 502, "upstream-range-failure")
+                    else:
+                        self.close_connection = True
         return Handler
 
     @property
@@ -490,47 +498,101 @@ class RangeProxy:
     def close(self) -> None:
         self.httpd.shutdown(); self.httpd.server_close()
 
-    def _upstream(self, client: BaseHTTPRequestHandler, url: str, body: bool, file_bytes: int) -> None:
-        safe_url(url, self.host, self.release)
+    def first_error(self) -> dict[str, object] | None:
+        with self.error_lock:
+            return dict(self.errors[0]) if self.errors else None
+
+    def _record_error(self, asset: dict[str, object], url: str, method: str, range_header: str | None,
+                      phase: str, error: Exception, status: int | None, observed_bytes: int) -> None:
         parsed = urlsplit(url)
-        range_header = client.headers.get("Range")
-        expected_body = file_bytes if body else 0
-        if range_header:
-            match = re.fullmatch(r"bytes=(\d+)-(\d*)", range_header)
-            if not match:
-                raise ValueError("invalid byte range requested through proxy")
-            first = int(match.group(1))
-            last = int(match.group(2)) if match.group(2) else file_bytes - 1
-            if first >= file_bytes or last < first:
-                raise ValueError("requested byte range is outside the pinned asset")
-            expected_body = min(last, file_bytes - 1) - first + 1 if body else 0
-        # Reserve the full requested span and a conservative header allowance before
-        # contacting upstream. Concurrent DuckDB threads cannot overdraw the budget.
-        reservation = self.budget.reserve(expected_body + 8_192)
-        conn = http.client.HTTPSConnection(parsed.hostname, parsed.port or 443, timeout=30)
-        headers = {"Accept-Encoding": "identity", "User-Agent": "joinallworld-acquirer/1"}
-        with self.etag_lock:
-            known_etag = self.etags.get(url)
-        if known_etag:
-            headers["If-Match"] = known_etag
-        if range_header:
-            headers["Range"] = range_header
+        def clean(value: object, maximum: int) -> str:
+            return "".join(ch if ch >= " " and ch != "\x7f" else " " for ch in str(value))[:maximum]
+        record = {
+            "phase": phase[:40],
+            "errorType": type(error).__name__[:80],
+            "message": clean(error, 240),
+            "assetId": clean(asset.get("id", "unknown"), 160),
+            "layer": clean(asset.get("layer", "unknown"), 24),
+            "asset": clean(f"{parsed.hostname or ''}{parsed.path}", 240),
+            "method": method,
+            "range": clean(range_header or "", 128),
+            "upstreamStatus": status,
+            "networkBytesObserved": max(0, observed_bytes),
+        }
+        with self.error_lock:
+            if len(self.errors) < 8:
+                self.errors.append(record)
+
+    @staticmethod
+    def _send_failure(client: BaseHTTPRequestHandler, status: int, code: str) -> None:
+        body = canonical({"error": code})
         try:
-            conn.request("GET" if body else "HEAD", parsed.path, headers=headers)
+            client.send_response(status)
+            client.send_header("Content-Type", "application/json")
+            client.send_header("Content-Length", str(len(body)))
+            client.send_header("X-Joinallworld-Proxy-Error", code)
+            client.send_header("Connection", "close")
+            client.end_headers()
+            client.wfile.write(body)
+        except Exception:
+            pass
+        finally:
+            client.close_connection = True
+
+    def _upstream(self, client: BaseHTTPRequestHandler, url: str, body: bool, file_bytes: int,
+                  asset: dict[str, object]) -> None:
+        method = "GET" if body else "HEAD"
+        range_header = client.headers.get("Range")
+        phase = "validate_request"
+        status: int | None = None
+        observed_bytes = 0
+        reservation: int | None = None
+        conn: http.client.HTTPSConnection | None = None
+        try:
+            safe_url(url, self.host, self.release)
+            parsed = urlsplit(url)
+            expected_body = file_bytes if body else 0
+            if range_header:
+                match = re.fullmatch(r"bytes=(\d+)-(\d*)", range_header)
+                if not match:
+                    raise ValueError("invalid byte range requested through proxy")
+                first = int(match.group(1))
+                last = int(match.group(2)) if match.group(2) else file_bytes - 1
+                if first >= file_bytes or last < first:
+                    raise ValueError("requested byte range is outside the pinned asset")
+                expected_body = min(last, file_bytes - 1) - first + 1 if body else 0
+            # Reserve requested data and conservative headers before contacting upstream.
+            phase = "reserve_network_budget"
+            reservation = self.budget.reserve(expected_body + 8_192)
+            headers = {"Accept-Encoding": "identity", "User-Agent": "joinallworld-acquirer/1"}
+            with self.etag_lock:
+                known_etag = self.etags.get(url)
+            if known_etag:
+                headers["If-Match"] = known_etag
+            if range_header:
+                headers["Range"] = range_header
+            phase = "upstream_request"
+            conn = http.client.HTTPSConnection(parsed.hostname, parsed.port or 443, timeout=30)
+            conn.request(method, parsed.path, headers=headers)
+            phase = "upstream_headers"
             response = conn.getresponse()
+            status = response.status
             etag = response.getheader("ETag")
             version = "1.0" if response.version == 10 else "1.1"
             header_bytes = len(f"HTTP/{version} {response.status} {response.reason}\r\n")
             header_bytes += sum(len(k) + len(v) + 4 for k, v in response.getheaders()) + 2
+            observed_bytes += header_bytes
             self.budget.consume(reservation, url, header_bytes, etag)
             if etag:
                 with self.etag_lock:
                     previous = self.etags.setdefault(url, etag)
                     if previous != etag:
                         raise RuntimeError("upstream ETag changed between range requests")
+            phase = "validate_upstream_response"
             if response.status not in (200, 206, 416) or response.getheader("Content-Encoding", "identity").lower() not in ("", "identity"):
                 raise ValueError("upstream refused bounded identity Range response")
             declared = response.getheader("Content-Length")
+            payload = b""
             if body and response.status != 416:
                 if declared is None or int(declared) != expected_body or int(declared) > self.budget.token_remaining(reservation):
                     raise BudgetExceeded("upstream Range response exceeds its reserved byte span")
@@ -545,26 +607,45 @@ class RangeProxy:
                         raise ValueError("upstream Content-Range does not match the request")
                 elif not range_header and int(declared) != file_bytes:
                     raise ValueError("upstream full response size differs from the pinned STAC asset size")
-            client.send_response(response.status, response.reason)
-            for name in ("Content-Length", "Content-Range", "Accept-Ranges", "ETag", "Last-Modified", "Content-Type"):
-                value = response.getheader(name)
-                if value is not None:
-                    client.send_header(name, value)
-            client.send_header("Connection", "close")
-            client.end_headers()
-            if body and response.status != 416:
-                sent = 0
-                while sent < int(declared or 0):
-                    chunk = response.read(min(64 * 1024, int(declared) - sent))
+                # Buffer only the already-reserved bounded range so a read failure can
+                # return an explicit 502 before any success headers reach DuckDB.
+                phase = "read_upstream_body"
+                chunks: list[bytes] = []
+                received = 0
+                while received < int(declared):
+                    chunk = response.read(min(64 * 1024, int(declared) - received))
                     if not chunk:
                         raise RuntimeError("upstream Range body ended before Content-Length")
+                    observed_bytes += len(chunk)
                     self.budget.consume(reservation, url, len(chunk), etag)
-                    client.wfile.write(chunk)
-                    sent += len(chunk)
+                    chunks.append(chunk)
+                    received += len(chunk)
+                payload = b"".join(chunks)
+            phase = "send_proxy_response"
+            client.send_response(response.status, response.reason)
+            if response.status != 416:
+                for name in ("Content-Length", "Content-Range", "Accept-Ranges", "ETag", "Last-Modified", "Content-Type"):
+                    value = response.getheader(name)
+                    if value is not None:
+                        client.send_header(name, value)
+            else:
+                client.send_header("Content-Length", "0")
+            client.send_header("Connection", "close")
+            client.end_headers()
+            client._world_proxy_response_started = True  # type: ignore[attr-defined]
+            if payload:
+                client.wfile.write(payload)
             client.close_connection = True
+        except Exception as error:
+            self._record_error(asset, url, method, range_header, phase, error, status, observed_bytes)
+            raise
         finally:
-            conn.close()
-            self.budget.release(reservation)
+            try:
+                if conn is not None:
+                    conn.close()
+            finally:
+                if reservation is not None:
+                    self.budget.release(reservation)
 
 
 def normalize_sources(raw: object) -> list[str]:
@@ -788,6 +869,12 @@ def run(value: object) -> dict[str, object]:
             features.extend(read_layer(con, layer, selected[layer], proxy, request, exceptions, remaining_features))
             if len(features) > int(limits["features"]):
                 raise BudgetExceeded("combined feature row budget exceeded")
+    except Exception as error:
+        diagnostic = proxy.first_error()
+        if diagnostic is not None:
+            encoded = json.dumps(diagnostic, ensure_ascii=True, separators=(",", ":"))[:1_800]
+            raise RuntimeError(f"{error}; first range proxy failure: {encoded}") from error
+        raise
     finally:
         if con is not None:
             con.close()

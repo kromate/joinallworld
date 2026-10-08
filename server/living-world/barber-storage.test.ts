@@ -13,6 +13,7 @@ import { ROUTE_MODULES } from '../routes/index.ts'
 import livingWorldRoutes from '../routes/living-world.ts'
 import type { BarberResponse, BarberSessionView } from '../../src/types/living-world-barber.ts'
 import type { Look } from '../../src/types/life.ts'
+import type { TimedId } from '../../src/types/protocol.ts'
 
 const PATH = '/api/living-world/barber'
 const LOOK: Look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
@@ -42,7 +43,7 @@ async function openHost(dir: string, now: () => number, layout: StoreLayout, dis
   }
 }
 
-function requestId(now: number): string { return `${now}:${randomUUID()}` }
+function requestId(now: number): TimedId { return `${now}:${randomUUID()}` }
 async function post(host: Host, suffix: string, body: object, player: Player): Promise<{ status: number; body: Reply }> {
   const response = await host.request(PATH + suffix, body, player.cookie)
   return { status: response.status, body: await response.json() as Reply }
@@ -59,7 +60,7 @@ async function wallet(host: Host, player: Player): Promise<{ cash: number; ledge
 async function row(host: Host, player: Player): Promise<unknown> {
   return host.server.store.read(db => snapshot((db.livingWorld as { barber?: Record<string, unknown> } | undefined)?.barber?.[player.id]))
 }
-async function receipt(host: Host, player: Player, id: string): Promise<unknown> {
+async function receipt(host: Host, player: Player, id: TimedId): Promise<unknown> {
   return host.server.store.read(db => {
     const owner = Object.values(db.sessions).find(item => item.publicId === player.id)
     const saved = owner?.once?.[id]

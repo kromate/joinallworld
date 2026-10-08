@@ -55,11 +55,11 @@ test('strict server reader retains active measured strokes without stepping or a
 
 test('active ordered strokes cover each server-authored target with its required tool', () => {
   let state = active()
-  for (const point of [[0.25, 0.4], [0.4, 0.4], [0.55, 0.4]] as const) state = step(state, 'comb', ...point).state
+  for (const point of [[0.25, 0.4], [0.4, 0.4], [0.55, 0.4]] as const) state = step(state, 'comb', point[0], point[1]).state
   assert.equal(state.objectiveIndex, 1)
   assert.equal(state.status, 'running')
   assert.equal(state.pointerDown, false)
-  for (const point of [[0.35, 0.8], [0.5, 0.8], [0.65, 0.8]] as const) state = step(state, 'brush', ...point).state
+  for (const point of [[0.35, 0.8], [0.5, 0.8], [0.65, 0.8]] as const) state = step(state, 'brush', point[0], point[1]).state
   assert.equal(state.status, 'complete')
   assert.equal(state.objectiveIndex, 2)
   assert.equal(state.coverage, 0)
@@ -126,8 +126,8 @@ test('plan version changes fence progress; terminal completion remains stable ac
   assert.equal(fenced.objectiveIndex, 0)
 
   let complete = active()
-  for (const point of [[0.25, 0.4], [0.4, 0.4], [0.55, 0.4]] as const) complete = step(complete, 'comb', ...point).state
-  for (const point of [[0.35, 0.8], [0.5, 0.8], [0.65, 0.8]] as const) complete = step(complete, 'brush', ...point).state
+  for (const point of [[0.25, 0.4], [0.4, 0.4], [0.55, 0.4]] as const) complete = step(complete, 'comb', point[0], point[1]).state
+  for (const point of [[0.35, 0.8], [0.5, 0.8], [0.65, 0.8]] as const) complete = step(complete, 'brush', point[0], point[1]).state
   assert.equal(complete.status, 'complete')
   const loaded = readBarberPractice(JSON.parse(JSON.stringify(complete)), plan)
   assert.ok(loaded)

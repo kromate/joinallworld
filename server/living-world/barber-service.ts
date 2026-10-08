@@ -80,7 +80,7 @@ function parseLesson(value: unknown): LessonProgress | null {
   if (practice.status === 'complete' ? receipt === null || receipt.code !== 'lesson_completed'
     : receipt !== null && receipt.code === 'lesson_completed') return null
   return { lessonId, sessionId: value.sessionId, cityId: value.cityId as CityId, location: value.location,
-    createdAt: value.createdAt, updatedAt: value.updatedAt, lastInputAt: value.lastInputAt, creditMs: value.creditMs,
+    createdAt: value.createdAt, updatedAt: value.updatedAt, lastInputAt: value.lastInputAt, creditMs: value.creditMs as number,
     revision: value.revision as number, nextSequence: value.nextSequence as number, practice, lastPacket: value.lastPacket as Receipt | null, claimed: value.claimed }
 }
 function parseRecord(value: unknown, publicId: string, pauseRunning = false): BarberRecord | null {
@@ -213,7 +213,8 @@ export function createBarberService(ctx: RouteContext) {
         if (row !== null && !accessMatches(row, session)) return { ok: false, code: 'account_changed' }
         if (row !== null && row.currentLesson) return { ok: false, code: 'lesson_active' }
         if (row) {
-          const latest = Math.max(...(['basic', 'advanced'] as const).map(id => row.lessons[id] ? watermark(row.lessons[id]!) : 0))
+          const savedLessons = row.lessons
+          const latest = Math.max(...(['basic', 'advanced'] as const).map(id => savedLessons[id] ? watermark(savedLessons[id]!) : 0))
           if (now < latest) return { ok: false, code: 'clock_reversed' }
         }
         if (row?.lessons[lessonId]) return { ok: false, code: row.results[lessonId] ? 'lesson_retained' : 'lesson_already_started' }

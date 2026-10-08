@@ -146,7 +146,7 @@ async function createScene(token: number, key: string): Promise<void> {
   try {
     const { createDrivingScene } = await import('./drivingScene.ts')
     if (!responseCurrent(token, key) || !canvas.value || !route.value) return
-    const look = game.state.value.look as Look
+    const look: Look = game.state.value.onboarding.look
     const made = await createDrivingScene(canvas.value, route.value, look, reduced?.matches === true, game.view.value.session?.id ?? '')
     if (!responseCurrent(token, key)) { made.dispose(); return }
     scene.value = made

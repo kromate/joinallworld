@@ -110,7 +110,7 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
   } finally { globalThis.requestAnimationFrame = original.raf; globalThis.setInterval = original.interval; }
 });
 
-test('leaving a venue disposes its scene; home shows the player’s avatar and guests under the host’s default lighting', () => {
+test('leaving a venue disposes its scene; home shows the player’s avatar and guests under its clock lighting', () => {
   const live = new Set(), setIndex = THREE.BufferGeometry.prototype.setIndex;
   THREE.BufferGeometry.prototype.setIndex = function tracked(...args) {
     if (!live.has(this)) { live.add(this); this.addEventListener('dispose', () => live.delete(this)); }
@@ -131,7 +131,7 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
     const state = createLife({ location: 'home', spot: 'kitchen', name: 'Ada' }, { now: NOON, cityId: 'lagos' });
     world.setLocation('home');
     world.setState(state);
-    assert.deepEqual([world.diagnostics().lighting.hemi, world.diagnostics().lighting.sun], [HOST_LIGHTING.hemi[2], HOST_LIGHTING.sun[1]], 'a scene without lighting() gets the host defaults back');
+    assert.deepEqual([world.diagnostics().lighting.hemi, world.diagnostics().lighting.sun], [LIGHTING.indoor.day.hemi[2], LIGHTING.indoor.day.sun[1]], 'Home applies its daytime preset after leaving an outdoor venue');
     world.setCrowd([{ id: '00000009-2222-4333-8444-555555555555', name: 'Guest', kind: 'player' }]);
     assert.deepEqual(world.diagnostics().tags.map((tag) => [tag.kind, tag.text]), [['self', 'Ada'], ['player', '@Guest']], 'you and your guest stand in your home');
     const drawn = world.diagnostics().renderCount;
@@ -142,6 +142,18 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
     world.dispose();
     assert.equal(live.size, 0, 'the host disposes every scene it still holds');
   } finally { THREE.BufferGeometry.prototype.setIndex = setIndex; }
+});
+
+test('a supplied scene without a lighting preset restores host defaults after an outdoor venue', () => {
+  const world = makeWorld(container, {
+    location: 'park', renderer: stubRenderer(),
+    buildHome: () => ({ group: new THREE.Group(), camera: { landscape: [8, 10, 12], portrait: [8, 10, 12] }, update: () => false }),
+  });
+  try {
+    assert.equal(world.diagnostics().lighting.sun, LIGHTING.outdoor.day.sun[1]);
+    world.setLocation('home');
+    assert.deepEqual([world.diagnostics().lighting.hemi, world.diagnostics().lighting.sun], [HOST_LIGHTING.hemi[2], HOST_LIGHTING.sun[1]]);
+  } finally { world.dispose(); }
 });
 
 test('HUD insets re-centre the scene with one frame per change, never by themselves, and keep name tags on the canvas', () => {
@@ -185,6 +197,9 @@ test('only the motion loop may name a frame callback; no scene, map or shell sou
 function motionBench({ width = 1280, height = 800, location = 'park' } = {}) {
   const original = { raf: globalThis.requestAnimationFrame, caf: globalThis.cancelAnimationFrame, window: browser.window, document: browser.document, matchMedia: browser.matchMedia };
   let queue: ((time: number) => void)[] = [], time = 5000, reduce = false;
+  const originalClock = Object.getOwnPropertyDescriptor(globalThis.performance, 'now');
+  // wake() and the simulated RAF must share a clock; real suite duration must not alter the first step.
+  Object.defineProperty(globalThis.performance, 'now', { configurable: true, value: () => time });
   const docListeners = new Map<string, () => void>();
   globalThis.requestAnimationFrame = (fn) => { queue.push(fn); return queue.length; };
   globalThis.cancelAnimationFrame = () => { queue = []; };
@@ -208,7 +223,9 @@ function motionBench({ width = 1280, height = 800, location = 'park' } = {}) {
     send: (type: string, props: Record<string, unknown> = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, detail: 1, clientX: 0, clientY: 0, preventDefault() {}, stopImmediatePropagation() {}, ...props }),
     hide(hidden: boolean) { fakeDocument.visibilityState = hidden ? 'hidden' : 'visible'; docListeners.get('visibilitychange')?.(); },
     reduceMotion(on: boolean) { reduce = on; },
-    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; browser.window = original.window; browser.document = original.document; browser.matchMedia = original.matchMedia; },
+    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; browser.window = original.window; browser.document = original.document; browser.matchMedia = original.matchMedia;
+      if (originalClock) Object.defineProperty(globalThis.performance, 'now', originalClock); else Reflect.deleteProperty(globalThis.performance, 'now');
+    },
   };
 }
 const PARK = { location: 'park', spot: 'amphitheatre', t: NOON, name: 'Ada' };
@@ -228,9 +245,9 @@ test('RELEASE GATE: idle → zero frames; walking → frames; after arrival → 
     // A key is held: frames, one render each, and the avatar moves away from the camera.
     bench.key('walk-up');
     assert.equal(world.diagnostics().loop.running, true);
-    assert.equal(bench.pump(30), 30, 'walking: a frame every tick');
+    assert.equal(bench.pump(65), 65, 'walking: a frame every tick through 1040 ms at human walking speed');
     const walking = world.diagnostics();
-    assert.equal(walking.renderCount, idle.renderCount + 30, 'walking: exactly one render per frame');
+    assert.equal(walking.renderCount, idle.renderCount + 65, 'walking: exactly one render per frame');
     assert.ok(walking.avatar.moving && walking.avatar.mode === 'keys');
     assert.ok(walking.avatar.z < idle.avatar.z - 1.5, `W moved the avatar away from the camera (${idle.avatar.z} → ${walking.avatar.z})`);
     // Released: the avatar stops, the camera finishes easing after it, and the loop ends by itself.
@@ -352,7 +369,7 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
   try {
     const { world } = bench;
     world.setState(PARK);
-    const hold = (action: string, frames = 10, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
+    const hold = (action: string, frames = 24, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
     // The park camera looks from the front right (+x, +z): away is −x −z, the camera's right is +x −z.
     const yaw = world.diagnostics().camera.yaw;
     const away = [-Math.sin(yaw), -Math.cos(yaw)], right = [Math.cos(yaw), -Math.sin(yaw)];
@@ -368,7 +385,7 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
     world.walkTo(6, 4); bench.pump(2000);
     const walk = hold('walk-up');
     world.walkTo(6, 4); bench.pump(2000);
-    const jog = hold('walk-up', 10, true);
+    const jog = hold('walk-up', 24, true);
     assert.ok(Math.hypot(jog.dx, jog.dz) > Math.hypot(walk.dx, walk.dz) * 1.5, 'Shift jogs');
     // Rotate the camera: the same key follows the camera.
     bench.send('pointerdown', { clientX: 400, clientY: 300 }); bench.send('pointermove', { clientX: 150, clientY: 300 }); bench.send('pointerup', {});
@@ -552,7 +569,7 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     assert.equal(spawn.camera.limits.azimuth, null, 'the camera may orbit all the way round the room');
     assert.deepEqual(spawn.walls, { back: true, left: true }, 'from the composed view both walls are behind the room and showing');
     assert.ok(spawn.avatar.x < -4, 'the avatar appears by the door');
-    bench.key('walk-right'); bench.pump(30); bench.keyUp('walk-right'); bench.pump(400);
+    bench.key('walk-right'); bench.pump(60); bench.keyUp('walk-right'); bench.pump(400);
     const moved = world.diagnostics().avatar;
     assert.ok(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) > 0.8, 'walks in the room');
     assert.equal(world.diagnostics().loop.running, false);

@@ -1,8 +1,9 @@
 # Complete source-feature identity and global owner v1
 
-The pure contract below is implemented. Focused identity/country-grid/pack checks
-passed31/31; the World compiler passed after a test-helper narrowing correction.
-The body/owner implementation did not change between those checks. The durable index, campaign hook,
+Pure identity and strict pinned-capture binding are implemented. Current focused
+capture/identity/country-grid/pack checks passed53/53 and World TypeScript passed
+at the unchanged1536MiB heap. The cached positive overlap experiment passed; see
+[FEATURE-IDENTITY-OPERATIONS.md](FEATURE-IDENTITY-OPERATIONS.md). The durable index, campaign hook,
 independent capture/index verifier and country compilation are not implemented.
 This does not alter any existing pack ID, game entity, acquisition identity, grid,
 Nigeria map, save, database or published product.
@@ -57,6 +58,35 @@ An escaped string cannot expand beyond the bound before rejection. The actual
 encoder byte count must then agree, or ingestion fails closed. This does not
 replace the earlier raw-byte reader cap or the later store/WAL/resource limits.
 
+## Strict raw capture parsing
+
+`capture-json.ts` and its six fixtures pass in the focused53-case run. The reader
+is intended for the future index hook; it does not replace existing acquisition/cache parsing or rewrite old pins.
+It uses strict UTF8 and bounded JSON construction, rejecting duplicate decoded
+object keys (including escaped spellings), nonfinite numeric results, trailing
+data, malformed grammar and exceeded byte/node/depth limits. Native parsing of
+individual tokens preserves ECMAScript numeric/string semantics; no entire-object
+parse may silently discard an earlier field. `__proto__` remains an own data
+property for explicit feature admission rejection, without prototype mutation.
+
+Its hard reader bounds are20,000,000 bytes/3,000,000 values/depth64;
+caller-specific extract or receipt limits may only reduce these. It takes an
+unshared byte snapshot and has no filesystem/network/ledger operations. The
+future hook must first verify the exact pinned byte snapshot, then use this reader
+for both receipt and extract, validate their mutual binding, and account for every
+original Feature ordinal. Ambiguous/corrupt capture JSON must block capture commit
+and ledger completion; it is not a zero-row extract or a skippable feature.
+
+Capture records bind requestHash plus exact extract/receipt hashes and lengths.
+Feature occurrences bind that immutable capture and original zero-based ordinal.
+Campaign observations additionally bind campaign/plan/query job/address; they are
+many-to-one with occurrences and never become feature identities. A repeated
+request with different pinned bytes is a capture integrity conflict, not replay.
+No capture marker may be written for failed/subdivided/missing acquisitions. A
+future single immediate index transaction must commit all ordinal dispositions
+before the existing fenced ledger completion; indexed-but-incomplete jobs remain
+pending and require idempotent verified replay, never manufactured coverage.
+
 ## Deterministic owner, separate from coverage
 
 Scan every actual supported vertex: all polygon rings including holes, all
@@ -103,11 +133,77 @@ resource caps and integrity failures. The independent Python fixture oracle uses
 ASCII integer-only fixtures, avoiding an unsupported claim that Python JSON is a
 general ECMAScript canonicalizer. It is not a raw-capture/store verifier.
 
-Next, during WORLD's explicitly handed-back intensive turn: profile the already pinned
-positive overlapping Dakar extracts without network. Freeze measured index/transaction/WAL
-limits before implementing durable capture/observation/conflict transactions.
+The cached positive Dakar overlap experiment now passes with zero network:2,283
+ordinals,1,810 unique versions,473 duplicates and no conflicts. It is a disposable
+prototype, not the durable index. Next measure bounded worst-case and failure
+behavior before freezing index/transaction/WAL limits and implementing durable
+capture/observation/conflict transactions.
 Commit before marking the existing query job complete; replay after an index
 commit/ledger crash must conserve ordinals and never manufacture complete coverage.
 Independent raw-capture reconstruction and a cache-only overlapping-query pilot
 must pass before country geometry compilation. Existing unknown source reservations
 and immutable products remain untouched.
+
+## Pinned-snapshot binding
+
+`capture-binding.ts` composes the strict reader with exact extract/receipt
+byte pins and a supplied acquisition expectation. It preserves the original
+feature array order, including duplicates or unsupported rows for later explicit
+ordinal dispositions; it does not filter, deduplicate or admit geometry. The
+capture stamp includes the request hash and both exact byte pins. A changed receipt
+under the same request produces a different stamp; the future store must reject
+that changed-pair replay rather than silently replacing the prior capture.
+
+It checks receipt/extract request, selection, source-layer/attribution policy,
+historical upstream accounting, feature counts and metadata agreement. Current
+extract-size/feature bounds remain enforced. Historical network and duration
+counts use the original receipt request limits, because acquisition identity
+deliberately excludes execution budgets; lowering a cache-only job budget must
+not charge the historical transfer again. STAC item count640 matches the existing
+pinned acquisition policy, rather than inventing a new permissive bound.
+
+The supplied request hash is trusted only through the existing acquisition/plan
+pin chain: this helper does not reconstruct it from the historical source
+configuration or authenticate the referenced upstream contents. It has no I/O,
+network, clocks, database writes, ledger completion or game integration. Nine
+snapshot-binding fixtures, six reader and seven source/composition fixtures pass
+with the existing31 identity/grid/pack cases. World TypeScript and the cached
+positive capacity experiment pass. Durable quotas, store recovery and the
+ingestion hook still require their separate acceptance gates.
+
+## Retained source-configuration reconstruction
+
+`capture-request.ts` reconstructs the exact existing acquisition hash
+using `world-source-compiler-v2`, normalized request selection and the complete
+retained source configuration. It excludes execution limits, as `acquire.ts`
+does, and adds no newline. The strict reader rejects ambiguous fields before
+canonicalization. The current release schema is checked explicitly: both source
+collections,512 building and128 transportation items, pinned URLs/host, ODbL
+strings, attribution and official-static release status. It verifies a supplied
+raw configuration SHA/length first; the reader is bounded to64,000 bytes/1,000
+values/depth8. These are small configuration bounds, not proposed DB/WAL quotas.
+
+Seven source/composition fixtures include the independently retained positive Dakar
+request hash `9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe`
+and exact repository source-configuration pin1,297 bytes/SHA
+`7ac2f2babcab7e4dd330a2f2e3476708129653022ba7bd0a94c9cbf69184656c`.
+They test policy/attribution changes, duplicates/unsafe fields, raw-byte/key-order
+differences, wrong pins, selection changes and unchanged budget-only identity.
+Tests never read the actual acquisition cache/ledger/output; the fixed positive
+request values are copied into the fixture. All seven pass in the53-case run.
+
+The tracked capacity script `tooling/profile_feature_identity.mjs` invokes the
+`bindConfiguredCapture` entry point, which requires retained configuration
+bytes/pin and reconstructs source identity before snapshot binding. It returns
+compiler/configuration provenance with the capture; the future ingestion hook
+must use this composition. Standalone stages exist for isolated checks, not to
+bypass verification. The synthetic zero-row composition fixture is not evidence
+that the actual473-feature Dakar capture is empty. No upstream STAC content is
+downloaded or independently authenticated by these helpers.
+
+The measured disposable prototype conserves every ordinal as admitted/exception,
+binds capture and version foreign keys, and verifies a completed zero-byte WAL
+truncate. It does not accept a durable store, replay/crash recovery, country
+coverage or playability. Actual source hashes, commands and bounded measurements
+are in FEATURE-IDENTITY-OPERATIONS.md. Nigeria, acquisition ledgers, existing
+products and the game runtime are unchanged by this builder-only milestone.

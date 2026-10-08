@@ -1,5 +1,7 @@
 # Independent world-data builder
 
+Strict capture/source reconstruction now passes53 focused checks and World TypeScript; cached Dakar overlap measurement conserves2,283 observations as1,810 versions/473duplicates with zero network. See [FEATURE-IDENTITY-OPERATIONS.md](FEATURE-IDENTITY-OPERATIONS.md). Durable store/recovery/quotas and country detail remain open; this builder milestone changes no gameplay.
+
 [The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) now passes31 focused checks and World TypeScript. It separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Durable index/campaign-hook/audit and cache-positive capacity profiling are the next gates; no country building coverage is claimed.
 
 Latest production receipt: source73549b8a/versiond872e923 is accepted; exact remote compiler CI and actual Countries/Senegal/Fiji/Nigeria/Lagos/synthetic continuity passed. Desktop proof only; worldwide3D and foreign gameplay remain open. Local work is serialized LIVING → GRAPHICS → WORLD; see [PROGRESS.md](PROGRESS.md) and [WORLD-GAME-MAP-OPERATIONS.md](WORLD-GAME-MAP-OPERATIONS.md). Older pending-forward paragraphs below are historical and superseded by this accepted receipt.

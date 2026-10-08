@@ -1,7 +1,8 @@
 # SQLite index resource evidence — 8 October 2026
 
-Status: primary-source research and prepared experiment corrections; **no new
-SQLite process, measurement, store acceptance or quota freeze**.
+Status: primary-source research and accepted cached positive experiment. See
+FEATURE-IDENTITY-OPERATIONS.md for actual sizes. **No durable store acceptance or
+production quota freeze**.
 
 SQLite's `max_page_count` limits pages in the database file. `journal_size_limit`
 controls journal/WAL files retained after transactions or resets; it is not a
@@ -25,11 +26,12 @@ cap from an after-commit size check. Preserve a durable database and WAL togethe
 never delete an existing WAL to free a reservation. The final capacity/overshoot
 and recovery contract still needs measured positive and bounded failure tests.
 
-The prepared ignored `profile-feature-identity-positive.mjs` now verifies actual
+The tracked `tooling/profile_feature_identity.mjs` verifies actual
 WAL/FULL/foreign-key settings, records Node/SQLite versions and all three physical
 file sizes, and rejects measurement errors instead of returning fabricated zero.
 Only an absent optional WAL/shared-memory file maps to zero. It inspects checkpoint
 counters and physical truncation. Its disposable schema now includes capture pins
 and every original ordinal, with exactly one admitted or exception disposition,
-foreign-key binding and per-capture conservation checks. These source changes
-remain **unexecuted**, and the prototype is not the durable store or ledger hook.
+foreign-key binding and per-capture conservation checks. The cached positive run passed
+with completed truncation and conserved ordinals; the prototype is not the
+durable store or ledger hook.

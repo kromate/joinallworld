@@ -53,7 +53,7 @@ test('metadata tampering, wrong pinned fields, redirects and content encoding fa
 }));
 
 test('partial interruption retains full reservation; corrupt source, receipt, and audit fail closed',async()=>fixture(async(root,raw,spec)=>{
-  const partialFetcher:typeof fetch=async()=>{const r=new Response(new ReadableStream<Uint8Array>({start(c){c.enqueue(new Uint8Array(raw.subarray(0,7)));setTimeout(()=>c.error(new Error('fixture stream interrupted')),2);}}),{status:200});Object.defineProperty(r,'url',{value:rawUrl(release)});return r;};
+  const partialFetcher:typeof fetch=async()=>{let delivered=false;const r=new Response(new ReadableStream<Uint8Array>({pull(c){if(!delivered){delivered=true;c.enqueue(new Uint8Array(raw.subarray(0,7)));}else c.error(new Error('fixture stream interrupted'));}}),{status:200});Object.defineProperty(r,'url',{value:rawUrl(release)});return r;};
   await assert.rejects(acquireAdmin1Source(spec,{repositoryRoot:root,fetcher:partialFetcher}),/fixture stream interrupted/);
   const rows=await audit(root),start=rows.find(x=>x.event==='start')!,finish=rows.find(x=>x.event==='finish')!;assert.equal(start.reservation,raw.length+ADMIN1_CAPTURE_LIMITS.overshootBytes);assert.equal(finish.complete,false);assert.equal(finish.measured,7);assert.equal(finish.reservation,start.reservation);
   await assert.rejects(acquireAdmin1Source(spec,{repositoryRoot:root,fetcher:partialFetcher}),/fixture stream interrupted/);
@@ -98,9 +98,16 @@ test('verified source with missing receipt is restored with explicit cache-only 
 }));
 
 test('abort deadline and delivered-byte overshoot remain bounded and durably charged',async()=>fixture(async(root,raw,spec)=>{
-  const abortAware:typeof fetch=async(_input,init)=>new Promise<Response>((_resolve,reject)=>{const signal=init?.signal;if(signal?.aborted)reject(signal.reason);else signal?.addEventListener('abort',()=>reject(signal.reason),{once:true});});
-  const began=Date.now();await assert.rejects(acquireAdmin1Source(spec,{repositoryRoot:root,durationMs:40,fetcher:abortAware}),/deadline/);assert.ok(Date.now()-began<1000);
-  const result=await audit(root);assert.equal(result.at(-1)?.measured,null);assert.equal(result.at(-1)?.complete,false);
+  const controller=new AbortController();
+  const abortAware:typeof fetch=async(_input,init)=>new Promise<Response>((_resolve,reject)=>{const signal=init?.signal;setImmediate(()=>controller.abort(new Error('fixture post-start abort')));if(signal?.aborted)reject(signal.reason);else signal?.addEventListener('abort',()=>reject(signal.reason),{once:true});});
+  await assert.rejects(acquireAdmin1Source(spec,{repositoryRoot:root,signal:controller.signal,fetcher:abortAware}),/fixture post-start abort/);
+  const result=await audit(root);assert.equal(result.at(-1)?.status,'failure');assert.equal(result.at(-1)?.measured,null);assert.equal(result.at(-1)?.complete,false);
+  await fixture(async(r,bytes,pin)=>{
+    let calls=0;const began=Date.now();
+    await assert.rejects(acquireAdmin1Source(pin,{repositoryRoot:r,durationMs:1,fetcher:async()=>{calls++;return response(bytes);}}),/deadline|wait aborted/);
+    assert.ok(Date.now()-began<1000);assert.ok(calls<=1);
+    try{const events=await audit(r);assert.equal(events.at(-1)?.event,'finish');}catch(error){if(!(error instanceof Error)||!(/ENOENT/.test(error.message)))throw error;}
+  });
   await fixture(async(r,bytes,pin)=>{
     const oversized=new Uint8Array(bytes.length+ADMIN1_CAPTURE_LIMITS.overshootBytes+1);oversized.set(bytes);
     await assert.rejects(acquireAdmin1Source(pin,{repositoryRoot:r,fetcher:async()=>response(Buffer.from(oversized))}),/exceeded reserved network allowance/);

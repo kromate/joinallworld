@@ -36,3 +36,7 @@ python3 -m unittest discover -s world/tooling -p 'test_verify_fine_pilot.py'
 ```
 
 Success emits a JSON verification receipt to stdout; rejection emits JSON with exit code 2. Six isolated fixture tests cover source/asset corruption, count mismatch, safe paths/symlinks and complete geometry including holes. Actual Rwanda, Djibouti and Libya products passed read-only verification; evidence is retained under `.cache/world-build/evidence/`.
+
+## Selected-place raw/schema audit
+
+`audit_settlement_source.py` independently reads saved `world/settlement-sources.json`, `settlement-parent.json` and `settlement-capture.json` pins. It checks exact source bytes/SHA/Git blob, parent manifest/identity binding, duplicate JSON keys/nonfinite values, literal fields, key uniqueness, Point coordinates and country joins. It emits one bounded JSON report without network or filesystem writes. Run with the private Python and a shared heavy slot; preserve original hash-bound evidence and save replays under new filenames. See [SETTLEMENT-OPERATIONS.md](../SETTLEMENT-OPERATIONS.md). This is source admission evidence, not a published point product or complete-world claim.

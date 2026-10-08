@@ -1,5 +1,7 @@
 # Settlement point inventory: admission research
 
+Historical candidate review below is preserved. Subsequent bounded capture and independent schema admission are accepted in [SETTLEMENT-OPERATIONS.md](SETTLEMENT-OPERATIONS.md) and `settlement-admission.json`: 7,342 valid points, 7,257 direct linked / 68 protected Nigeria / 17 unmatched; literal uppercase NE_ID and ADM0_A3 verified. Exact bytes/blob/SHA and missing-parent/code exceptions are now known. The historical unknowns below are not current status. Compact publication and lazy reading remain next.
+
 ## Scope and evidence
 
 The next proposed geography layer is a compact global **city and town reference-point inventory**. It should support map labels and geographic orientation only. A point is not a building footprint, an address, a navigable destination, or a playable location. This is a candidate source review, not a claim that global settlements are complete.

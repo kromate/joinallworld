@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "scope": "Selected populated-place source admission; no published points, admin1 containment, buildings or playability.",
+  "source": {
+    "id": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_populated_places.geojson",
+    "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+    "license": "Public-domain",
+    "attribution": "Natural Earth; public domain map data; selected populated-place points",
+    "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+    "bytes": 19359003
+  },
+  "gitBlobSha1": "376fb028c390a7a23213800ae4babaa6f534a0f3",
+  "parentManifestHash": "b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501",
+  "independentAudit": {
+    "input": ".cache/world-build/evidence/settlement-admission/source-independent-audit.json",
+    "sha256": "77759261a374d35a492783f910d815cb21f2e355f4988c759b050d65c5a18024",
+    "bytes": 50711,
+    "elapsedMs": 1425,
+    "peakRssBytes": 327876608
+  },
+  "features": 7342,
+  "validPoints": 7342,
+  "geometryType": "Point",
+  "coordinateOrdinates": 2,
+  "propertyFields": 137,
+  "literalKeyField": "NE_ID",
+  "literalCountryCodeField": "ADM0_A3",
+  "keyAudit": {
+    "duplicates": 0,
+    "invalid": 0,
+    "missing": 0,
+    "present": 7342,
+    "unique": 7342,
+    "valid": 7342
+  },
+  "countryJoinCounts": {
+    "linked": 7257,
+    "missing-field": 0,
+    "protected": 68,
+    "unlinked": 17
+  },
+  "linkedCountries": 221,
+  "unmatchedCodes": [
+    {
+      "code": "SJM",
+      "countryId": null,
+      "rows": 1,
+      "status": "unlinked"
+    },
+    {
+      "code": "SSD",
+      "countryId": null,
+      "rows": 15,
+      "status": "unlinked"
+    },
+    {
+      "code": "TKL",
+      "countryId": null,
+      "rows": 1,
+      "status": "unlinked"
+    }
+  ],
+  "parentsWithoutSelectedPlaces": [
+    {
+      "code": "AIA",
+      "countryId": "country:natural-earth:NE_ID%3A1159320703"
+    },
+    {
+      "code": "ATC",
+      "countryId": "country:natural-earth:NE_ID%3A1159320353"
+    },
+    {
+      "code": "ATF",
+      "countryId": "country:natural-earth:NE_ID%3A1159320631"
+    },
+    {
+      "code": "BJN",
+      "countryId": "country:natural-earth:NE_ID%3A1159320425"
+    },
+    {
+      "code": "BLM",
+      "countryId": "country:natural-earth:NE_ID%3A1159320633"
+    },
+    {
+      "code": "BRI",
+      "countryId": "country:natural-earth:NE_ID%3A1729632181"
+    },
+    {
+      "code": "BRT",
+      "countryId": "country:natural-earth:NE_ID%3A1729635091"
+    },
+    {
+      "code": "CLP",
+      "countryId": "country:natural-earth:NE_ID%3A1159320635"
+    },
+    {
+      "code": "CNM",
+      "countryId": "country:natural-earth:NE_ID%3A1159320511"
+    },
+    {
+      "code": "CSI",
+      "countryId": "country:natural-earth:NE_ID%3A1159320359"
+    },
+    {
+      "code": "ESB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320709"
+    },
+    {
+      "code": "GGY",
+      "countryId": "country:natural-earth:NE_ID%3A1159320715"
+    },
+    {
+      "code": "HMD",
+      "countryId": "country:natural-earth:NE_ID%3A1159320361"
+    },
+    {
+      "code": "IOA",
+      "countryId": "country:natural-earth:NE_ID%3A1159320363"
+    },
+    {
+      "code": "IOT",
+      "countryId": "country:natural-earth:NE_ID%3A1159320723"
+    },
+    {
+      "code": "JEY",
+      "countryId": "country:natural-earth:NE_ID%3A1159320725"
+    },
+    {
+      "code": "KAB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320965"
+    },
+    {
+      "code": "KAS",
+      "countryId": "country:natural-earth:NE_ID%3A1159320963"
+    },
+    {
+      "code": "MAF",
+      "countryId": "country:natural-earth:NE_ID%3A1159320639"
+    },
+    {
+      "code": "MSR",
+      "countryId": "country:natural-earth:NE_ID%3A1159320727"
+    },
+    {
+      "code": "NFK",
+      "countryId": "country:natural-earth:NE_ID%3A1159320365"
+    },
+    {
+      "code": "NRU",
+      "countryId": "country:natural-earth:NE_ID%3A1159321123"
+    },
+    {
+      "code": "PCN",
+      "countryId": "country:natural-earth:NE_ID%3A1159320729"
+    },
+    {
+      "code": "PGA",
+      "countryId": "country:natural-earth:NE_ID%3A1159321165"
+    },
+    {
+      "code": "SCR",
+      "countryId": "country:natural-earth:NE_ID%3A1159321227"
+    },
+    {
+      "code": "SDS",
+      "countryId": "country:natural-earth:NE_ID%3A1159321235"
+    },
+    {
+      "code": "SER",
+      "countryId": "country:natural-earth:NE_ID%3A1159321245"
+    },
+    {
+      "code": "SHN",
+      "countryId": "country:natural-earth:NE_ID%3A1159320733"
+    },
+    {
+      "code": "SPI",
+      "countryId": "country:natural-earth:NE_ID%3A1729635141"
+    },
+    {
+      "code": "SPM",
+      "countryId": "country:natural-earth:NE_ID%3A1159320647"
+    },
+    {
+      "code": "SXM",
+      "countryId": "country:natural-earth:NE_ID%3A1159321103"
+    },
+    {
+      "code": "UMI",
+      "countryId": "country:natural-earth:NE_ID%3A1159321367"
+    },
+    {
+      "code": "USG",
+      "countryId": "country:natural-earth:NE_ID%3A1159320529"
+    },
+    {
+      "code": "VGB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320739"
+    },
+    {
+      "code": "WLF",
+      "countryId": "country:natural-earth:NE_ID%3A1159320649"
+    },
+    {
+      "code": "WSB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320741"
+    }
+  ],
+  "selectedFieldDistributions": {
+    "NE_ID": {
+      "maxTextBytes": 0,
+      "maximum": 1730025037,
+      "minimum": 1159112629,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "int": 7342
+      }
+    },
+    "ADM0_A3": {
+      "maxTextBytes": 3,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "str": 7342
+      }
+    },
+    "NAME": {
+      "maxTextBytes": 35,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "str": 7342
+      }
+    },
+    "NAMEASCII": {
+      "maxTextBytes": 33,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "str": 7342
+      }
+    },
+    "FEATURECLA": {
+      "maxTextBytes": 22,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "str": 7342
+      }
+    },
+    "SCALERANK": {
+      "maxTextBytes": 0,
+      "maximum": 10,
+      "minimum": 0,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "int": 7342
+      }
+    },
+    "ADM1NAME": {
+      "maxTextBytes": 44,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 119,
+      "present": 7342,
+      "types": {
+        "NoneType": 119,
+        "str": 7223
+      }
+    },
+    "ISO_A2": {
+      "maxTextBytes": 3,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "str": 7342
+      }
+    },
+    "MIN_ZOOM": {
+      "maxTextBytes": 0,
+      "maximum": 9,
+      "minimum": 1.7,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "float": 3769,
+        "int": 3573
+      }
+    },
+    "POP_MAX": {
+      "maxTextBytes": 0,
+      "maximum": 35676000,
+      "minimum": -99,
+      "missing": 0,
+      "null": 0,
+      "present": 7342,
+      "types": {
+        "int": 7342
+      }
+    },
+    "TIMEZONE": {
+      "maxTextBytes": 30,
+      "maximum": null,
+      "minimum": null,
+      "missing": 0,
+      "null": 1183,
+      "present": 7342,
+      "types": {
+        "NoneType": 1183,
+        "str": 6159
+      }
+    }
+  },
+  "limitations": [
+    "Literal ADM0_A3 join only; no name, ISO or casing fallback.",
+    "17 unlinked source rows need separately evidenced explicit crosswalk/source review.",
+    "68 Nigeria rows are protected source references, excluded from future generic point publication.",
+    "36 parent map units lack a direct source-code match; includes the South Sudan SDS/SSD code discrepancy.",
+    "ADM1NAME is descriptive text; no source-backed administrative parent relation established.",
+    "Coordinate source is Point geometry; no snapping or substitution from LATITUDE/LONGITUDE properties.",
+    "POP_MAX includes -99 and TIMEZONE has 1183 nulls; no census/timezone inference from those values.",
+    "Selective cartographic reference points, not all settlements or real buildings."
+  ]
+}

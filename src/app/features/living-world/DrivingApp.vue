@@ -86,13 +86,13 @@ async function createScene(token: number, key: string): Promise<void> {
     const { createDrivingScene } = await import('./drivingScene.ts')
     if (!responseCurrent(token, key) || !canvas.value || !route.value) return
     const look = game.state.value.look as Look
-    const made = await createDrivingScene(canvas.value, route.value, look, reduced?.matches === true)
+    const made = await createDrivingScene(canvas.value, route.value, look, reduced?.matches === true, game.view.value.session?.id ?? '')
     if (!responseCurrent(token, key)) { made.dispose(); return }
     scene.value = made
     const rect = canvas.value.getBoundingClientRect(); made.resize(rect.width, rect.height)
     if (visualState) made.present(visualState)
   } catch {
-    if (responseCurrent(token, key)) { webglUnavailable.value = true; feedback.value = '3D practice is unavailable on this device. You can still read the lesson status; no result was recorded.' }
+    if (responseCurrent(token, key)) { webglUnavailable.value = true; feedback.value = '3D practice is unavailable on this device. Lesson status is available; reopen on a device with 3D support to practise.' }
   }
 }
 async function load(): Promise<void> {
@@ -275,13 +275,13 @@ onBeforeUnmount(() => {
     <p class="practice-label">{{ practiceLabel }}</p>
     <div class="driving-view" :class="{ 'is-flat': webglUnavailable }">
       <canvas ref="canvas" aria-hidden="true" />
-      <p v-if="webglUnavailable" class="scene-fallback">3D scene unavailable. Lesson controls and server status remain available.</p>
-      <p class="course-caption">{{ route?.id ?? 'Practice course' }} · server-tracked checkpoint lesson</p>
+      <p v-if="webglUnavailable" class="scene-fallback">3D scene unavailable. Lesson status is available; reopen on a device with 3D support to practise.</p>
+      <p class="course-caption">Fictional practice course · checkpoint lesson</p>
     </div>
     <section class="lesson-status" aria-live="polite">
       <strong>{{ complete ? (assessment === 'passed' ? 'Practice passed' : 'Practice needs another try') : boarding ? 'Getting into the car' : active ? 'Lesson in progress' : session ? 'Saved lesson' : 'Ready to practise' }}</strong>
       <p>{{ feedback }}</p>
-      <small v-if="serverState">Server assessment: {{ assessment }} · checkpoint {{ Math.min(serverState.checkpointIndex + 1, route?.checkpoints.length ?? 1) }} of {{ route?.checkpoints.length ?? '—' }}. This result comes only from the server.</small>
+      <small v-if="serverState">Assessment: {{ assessment }} · checkpoint {{ Math.min(serverState.checkpointIndex + 1, route?.checkpoints.length ?? 1) }} of {{ route?.checkpoints.length ?? '—' }}.</small>
       <small v-if="retainedPass || (complete && assessment === 'passed')">This passed result is retained; this course will not replace it with another attempt.</small>
     </section>
     <div class="lesson-actions">

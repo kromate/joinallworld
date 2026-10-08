@@ -78,9 +78,14 @@ export async function skipJourney(host: SkipHost, { log = () => {} }: { log?: (t
   assert.deepEqual([object(arrived.estate).city, arrived.activeAction, number(arrived.cash), object(arrived.travel).skipped], ['ibadan', null, number(departed.cash), true], 'arrived at once; the first skip between cities is free')
   assert.equal(typeof free.rev, 'number', 'the answer carries the revision, as every action does')
   log('Skips the rest of the trip: in Ibadan at once', arrived, 'the first skip between cities is free')
-  // The same request again (a retry on a bad connection) runs nothing: the character has left Lagos, and the answer says where it is.
+  // The same action id is an exact-once replay: it returns the first answer, marks it duplicate, and changes no state.
   const repeat = await attempt(ada, 'lagos', { quote: 0 }, freeId)
-  assert.deepEqual([repeat.status, repeat.error, repeat.city], [409, 'city_moved', 'ibadan'])
+  assert.deepEqual([repeat.status, repeat.ok, repeat.code, repeat.duplicate], [200, true, 'skipped', true])
+  const replayState = object(repeat.state)
+  assert.deepEqual([object(replayState.estate).city, replayState.activeAction, replayState.cash, object(replayState.travel).skipped], ['ibadan', null, arrived.cash, true], 'replaying the successful skip leaves the arrival and balance unchanged')
+  // A distinct request from the departed city is independently told where the character is now.
+  const stale = await attempt(ada, 'lagos', { quote: 0 })
+  assert.deepEqual([stale.status, stale.ok, stale.code, object(object(stale.state).estate).city, object(stale.state).cash], [200, false, 'city_moved', 'ibadan', arrived.cash])
   // The life is filed under Ibadan by the skip itself: Ibadan answers, and Lagos says where the character went.
   const inIbadan = await life(ada, 'ibadan')
   assert.deepEqual([object(inIbadan.estate).city, inIbadan.location, inIbadan.cash], ['ibadan', arrived.location, arrived.cash])
@@ -109,7 +114,7 @@ export async function skipJourney(host: SkipHost, { log = () => {} }: { log?: (t
   // Two devices press Skip at the same moment, each with its own request: one arrives and pays; the other runs nothing and is told
   // the character is in Lagos now (a device follows it there).
   const pressed = await Promise.all([attempt(ada, 'ibadan', { quote: fee }), attempt(ada, 'ibadan', { quote: fee })])
-  assert.deepEqual(pressed.map((answer) => [answer.status, answer.code ?? answer.error, answer.city]).sort(), [[200, 'skipped', undefined], [409, 'city_moved', 'lagos']])
+  assert.deepEqual(pressed.map((answer) => [answer.status, answer.code ?? answer.error, answer.city]).sort(), [[200, 'city_moved', undefined], [200, 'skipped', undefined]])
   const after = await life(ada, 'lagos')
   assert.deepEqual([object(after.estate).city, after.location, after.activeAction, number(after.cash)], ['lagos', 'home', null, number(left.cash) - fee], 'charged once, exactly the price shown')
   const lines = (after.ledger as unknown[]).map(object)

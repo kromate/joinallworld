@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { loadCityContent, cachedCityContent } from '../../src/game/cities/registry.ts'
+import { spotsOf } from '../../src/game/systems/activities.ts'
 import { viewLife } from '../../src/life.ts'
 import type { LifeState } from '../../src/types/life.ts'
 import { driver, object } from './cityJourney.ts'
@@ -140,16 +141,42 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
       const venue = content.venues.find(item => item.id === gem.venue)
       assert.ok(venue)
       await go(player, city, venue.id)
-      await action(player, city, 'spot', { id: typeof gem.spot === 'string' ? gem.spot : Object.keys(venue.definition.spots)[0]! })
       if (gem.kind === 'activity') {
-        const activity = Object.values(venue.definition.spots).flatMap(item => item.activities ?? []).find(item => !item.cost)
-        assert.ok(activity)
-        await tryActivity(player, city, activity.id)
+        // Civic creates activity gems for any startable activity, including paid ones. Match the
+        // engine's startable rules, select its actual spot, and account for the real wallet/ledger
+        // result rather than assuming every venue offers a free activity.
+        const candidates = spotsOf(venue.id, city).flatMap(spot => spot.activities
+          .filter(activity => !activity.unavailable && !activity.requiresJob && !activity.requiresSkill)
+          .map(activity => ({ spot, activity })))
+          .sort((a, b) => (a.activity.cost ?? 0) - (b.activity.cost ?? 0))
+        const before = await life(player, city)
+        const picked = candidates.find(({ activity }) => (activity.cost ?? 0) <= Number(before.cash))
+        assert.ok(picked, `${city}/${venue.id}: an affordable startable activity exists for the activity gem`)
+        await action(player, city, 'spot', { id: picked.spot.id })
+        const ledgerBefore = list(before.ledger).length
+        const refusal = await tryActivity(player, city, picked.activity.id)
+        assert.equal(refusal, null, `${city}/${venue.id}/${picked.activity.id}: activity gem action succeeds${refusal ? ` (${refusal})` : ''}`)
+        const completed = await life(player, city)
+        const ledger = list(completed.ledger).slice(ledgerBefore).map(object)
+        const activityLedger = ledger.filter(entry => entry.reason === picked.activity.label)
+        const expectedNet = Number(picked.activity.reward ?? 0) - Number(picked.activity.cost ?? 0)
+        const charged = activityLedger.reduce((sum, entry) => sum + Math.max(0, -Number(entry.amount)), 0)
+        const credited = activityLedger.reduce((sum, entry) => sum + Math.max(0, Number(entry.amount)), 0)
+        assert.equal(charged, Number(picked.activity.cost ?? 0), `${picked.activity.id}: exact listed cost is recorded`)
+        assert.equal(credited, Number(picked.activity.reward ?? 0), `${picked.activity.id}: exact listed reward is recorded`)
+        assert.equal(activityLedger.reduce((sum, entry) => sum + Number(entry.amount), 0), expectedNet, `${picked.activity.id}: exact cost/reward is recorded in the ledger`)
+        assert.equal(Number(completed.cash) - Number(before.cash), ledger.reduce((sum, entry) => sum + Number(entry.amount), 0), `${picked.activity.id}: wallet state matches activity and any simultaneous goal rewards`)
+      } else {
+        const spot = typeof gem.spot === 'string' ? gem.spot : Object.keys(venue.definition.spots)[0]!
+        await action(player, city, 'spot', { id: spot })
       }
       const found = await host.request('/api/action', { cityId: city, type: 'civic.hunt-search', payload: {}, actionId: id() }, player.cookie)
       assert.equal(found.status, 200)
     }
     const beforeClaim = await life(player, city)
+    const completedHunt = list(object(object(beforeClaim.civic).hunt).gems).map(object)
+    assert.ok(completedHunt.length >= gems.length)
+    assert.ok(completedHunt.every(gem => gem.found === true), `${city}: every gem interaction found its named gem`)
     const claimed = object(await (await host.request('/api/action', { cityId: city, type: 'civic.hunt-claim', payload: {}, actionId: id() }, player.cookie)).json())
     assert.equal(claimed.ok, true, JSON.stringify(claimed))
     assert.equal(Number(object(claimed.state).cash) - Number(beforeClaim.cash), 3000)
@@ -271,6 +298,13 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
     }
     assert.fail(what)
   }
+  async function untilError(peer: JourneySocket, what: string): Promise<Record<string, unknown>> {
+    for (let attempts = 0; attempts < 14; attempts += 1) {
+      const frame = object(await peer.next())
+      if (frame.type === 'error') return frame
+    }
+    assert.fail(what)
+  }
   peerKemi.send({ type: 'join', cityId: 'ota', venueId: venue })
   await until(peerKemi, frame => frame.type === 'presence' && list(frame.members).length === 1, 'Kemi alone in the Ota room')
   peerAda.send({ type: 'join', cityId: 'ota', venueId: venue })
@@ -281,7 +315,11 @@ export async function ogunJourney(host: JourneyHost): Promise<void> {
   assert.ok(JSON.stringify(heard).includes('Good morning, Ota'))
   // a room in Ota is not a room in Abeokuta
   peerKemi.send({ type: 'join', cityId: 'abeokuta', venueId: venue })
-  assert.equal(object(await peerKemi.next()).type, 'error', 'an Ota venue is not an Abeokuta room')
+  const rejectedRoom = await untilError(peerKemi, 'the cross-city room join returns an error within the bounded socket deadline')
+  assert.equal(rejectedRoom.code, 'invalid_room', 'the Ota venue id is invalid in Abeokuta')
+  peerKemi.send({ type: 'chat', body: 'Still in Ota', clientId: id() })
+  const stillInOta = await until(peerAda, frame => frame.type === 'chat' && frame.body === 'Still in Ota', 'the rejected join leaves Kemi in the Ota room')
+  assert.equal(stillInOta.body, 'Still in Ota', 'the rejected cross-city join did not move Kemi out of Ota')
 
   // ---- a damaged or hostile stored record is cleaned on the next read, and never drops the life ---------------------------------------------------
   if (host.edit) {

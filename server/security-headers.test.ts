@@ -35,6 +35,23 @@ test('the game page policy: only what the app needs, scripts by hash, never unsa
   assert.deepEqual(policy.match(/https?:\/\/[^\s;]+/g), ['https://static.cloudflareinsights.com', 'https://cloudflareinsights.com'], 'without telemetry the only outside hosts are the edge analytics beacon\'s two');
 });
 
+test('avatar decoding opts into Wasm and blob connections without allowing JavaScript eval or widening other pages', () => {
+  const facts = { secure: true, host: 'joinallworld.com', scriptHashes: [] };
+  const plain = appContentSecurityPolicy(facts);
+  const avatars = appContentSecurityPolicy({ ...facts, avatarAssets: true });
+  const admin = appContentSecurityPolicy({ ...facts, avatarAssets: true, admin: true });
+  assert.equal(directive(avatars, 'script-src'), "script-src 'self' 'wasm-unsafe-eval' https://static.cloudflareinsights.com");
+  assert.equal(directive(avatars, 'connect-src'), "connect-src 'self' blob: wss://joinallworld.com https://cloudflareinsights.com");
+  for (const policy of [plain, avatars, admin]) {
+    assert.ok(!directive(policy, 'script-src').includes("'unsafe-eval'"));
+    assert.ok(!directive(policy, 'script-src').includes("'unsafe-inline'"));
+  }
+  for (const policy of [plain, admin]) {
+    assert.ok(!directive(policy, 'script-src').includes("'wasm-unsafe-eval'"));
+    assert.ok(!directive(policy, 'connect-src').includes('blob:'));
+  }
+});
+
 test('HTTPS adds Strict-Transport-Security and upgrade-insecure-requests; a developer machine and plain HTTP get neither', async () => {
   const base = { scriptHashes: [] };
   const live = appHeaders({ ...base, secure: true, host: 'joinallworld.com' });
@@ -92,8 +109,8 @@ test('the Node host: the page and its deep links, a module page, the API and a s
     const response = await fetch(`${f.base}${path}`);
     assert.equal(response.status, 200);
     const csp = response.headers.get('content-security-policy') as string;
-    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')} https://static.cloudflareinsights.com`, path);
-    assert.match(directive(csp, 'connect-src'), /^connect-src 'self' wss:\/\/127\.0\.0\.1:\d+ ws:\/\/127\.0\.0\.1:\d+ https:\/\/o123\.ingest\.example-sentry\.test https:\/\/eu\.i\.example-posthog\.test https:\/\/cloudflareinsights\.com$/, 'telemetry configured: its hosts are allowed');
+    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')} 'wasm-unsafe-eval' https://static.cloudflareinsights.com`, path);
+    assert.match(directive(csp, 'connect-src'), /^connect-src 'self' blob: wss:\/\/127\.0\.0\.1:\d+ ws:\/\/127\.0\.0\.1:\d+ https:\/\/o123\.ingest\.example-sentry\.test https:\/\/eu\.i\.example-posthog\.test https:\/\/cloudflareinsights\.com$/, 'telemetry configured: its hosts and the declared avatar decoder are allowed');
     assert.deepEqual([response.headers.get('x-frame-options'), response.headers.get('x-content-type-options'), response.headers.get('referrer-policy'), response.headers.get('cross-origin-opener-policy'), response.headers.get('strict-transport-security')], ['DENY', 'nosniff', 'strict-origin-when-cross-origin', 'same-origin', null], `${path}: localhost is not sent HSTS`);
     assert.match(response.headers.get('permissions-policy') as string, /microphone=\(self\)/);
     assert.equal(response.headers.get('cache-control'), 'no-cache');
@@ -102,7 +119,7 @@ test('the Node host: the page and its deep links, a module page, the API and a s
   const port = Number(new URL(f.base).port);
   const secure = await getAs(port, '/some/deep/link', { host: 'play.example', 'x-forwarded-proto': 'https' });
   assert.equal(secure.headers['strict-transport-security'], 'max-age=31536000; includeSubDomains');
-  assert.match(secure.headers['content-security-policy'] as string, /connect-src 'self' wss:\/\/play\.example https:\/\/o123/);
+  assert.match(secure.headers['content-security-policy'] as string, /connect-src 'self' blob: wss:\/\/play\.example https:\/\/o123/);
   assert.match(secure.headers['content-security-policy'] as string, /upgrade-insecure-requests$/);
   const head = await fetch(`${f.base}/`, { method: 'HEAD' });
   assert.equal(head.headers.get('content-security-policy'), (await fetch(`${f.base}/`).then(async (r) => { await r.arrayBuffer(); return r.headers.get('content-security-policy'); })), 'HEAD gets the same policy');

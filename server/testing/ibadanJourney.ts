@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { loadCityContent, cachedCityContent } from '../../src/game/cities/registry.ts'
+import { venueFor, venuesFor } from '../../src/game/cities/runtime.ts'
+import { spotsOf } from '../../src/game/systems/activities.ts'
 import { viewLife } from '../../src/life.ts'
 import type { LifeState } from '../../src/types/life.ts'
 import { driver, object, qualifyState } from './cityJourney.ts'
@@ -86,20 +88,39 @@ export async function ibadanJourney(host: JourneyHost): Promise<void> {
   const hunt = object(object(paid.civic).hunt)
   const gems = list(hunt.gems).map(object)
   assert.ok(gems.length >= 3)
-  for (const gem of gems) assert.ok(content.venues.some(venue => venue.id === gem.venue), `gem at ${String(gem.venue)} is an Ibadan place`)
+  const runtimeVenues = new Map(venuesFor('ibadan').map(venue => [venue.id, venue]))
+  for (const gem of gems) {
+    assert.ok(runtimeVenues.has(String(gem.venue)), `gem at ${String(gem.venue)} is an Ibadan runtime place`)
+    assert.ok(content.venues.some(venue => venue.id === gem.venue) || gem.venue === 'neighbourhood', `gem at ${String(gem.venue)} is authored or the supported home-frontage alias`)
+  }
   for (const gem of gems) {
     await recover(tunde)
-    const venue = content.venues.find(item => item.id === gem.venue)
-    assert.ok(venue)
-    await finish(tunde, 'ibadan', object((await action(tunde, 'ibadan', 'travel', { id: venue.id, mode: 'trek' })).state))
-    const spot = typeof gem.spot === 'string' ? gem.spot : Object.keys(venue.definition.spots)[0]!
-    await action(tunde, 'ibadan', 'spot', { id: spot })
+    const venue = venueFor('ibadan', gem.venue)
+    assert.ok(venue, `runtime definition exists for ${String(gem.venue)}`)
+    const runtimeSpots = spotsOf(venue.id, 'ibadan')
+    const authored = content.venues.find(item => item.id === gem.venue)
+    if (authored) {
+      await finish(tunde, 'ibadan', object((await action(tunde, 'ibadan', 'travel', { id: authored.id, mode: 'trek' })).state))
+    } else {
+      assert.equal(gem.venue, 'neighbourhood', 'only the home-frontage neighbourhood alias is not an authored travel destination')
+      assert.equal(gem.kind, 'visit', 'the neighbourhood frontage can only satisfy a visit gem')
+      assert.equal(gem.spot, 'street', 'the home-frontage gem uses its real street spot')
+      const outside = object((await action(tunde, 'ibadan', 'home.door', { direction: 'outside' })).state)
+      assert.equal(outside.location, 'neighbourhood', 'enter the synthetic frontage through the actual home door')
+    }
+    const spot = typeof gem.spot === 'string' ? gem.spot : runtimeSpots[0]?.id
+    assert.ok(spot && runtimeSpots.some(item => item.id === spot), `${String(gem.venue)} has gem spot ${String(spot)}`)
     if (gem.kind === 'activity') {
-      const activity = Object.values(venue.definition.spots).flatMap(item => item.activities ?? []).find(item => !item.cost)
-      assert.ok(activity)
+      const activitySpot = runtimeSpots.find(item => item.activities.some(activity => !activity.cost && !activity.unavailable && !activity.requiresJob && !activity.requiresSkill))
+      const activity = activitySpot?.activities.find(item => !item.cost && !item.unavailable && !item.requiresJob && !item.requiresSkill)
+      assert.ok(activity && activitySpot, `${String(gem.venue)} has an available activity for its activity gem`)
+      await action(tunde, 'ibadan', 'spot', { id: activitySpot.id })
       const response = await host.request('/api/action', { cityId: 'ibadan', type: 'activity', payload: { id: activity.id }, actionId: id() }, tunde.cookie)
       const answer = object(await response.json())
-      if (answer.ok === true) await finish(tunde, 'ibadan', object(answer.state))
+      assert.equal(answer.ok, true, `${activity.id} starts: ${JSON.stringify(answer)}`)
+      await finish(tunde, 'ibadan', object(answer.state))
+    } else {
+      await action(tunde, 'ibadan', 'spot', { id: spot })
     }
     // Activity gems come loose when the activity ends; visit gems on a search. Either way the answer is the engine's, never a failure of the host.
     const found = await host.request('/api/action', { cityId: 'ibadan', type: 'civic.hunt-search', payload: {}, actionId: id() }, tunde.cookie)

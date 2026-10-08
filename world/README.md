@@ -1,5 +1,7 @@
 # Independent world-data builder
 
+[The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) now passes31 focused checks and World TypeScript. It separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Durable index/campaign-hook/audit and cache-positive capacity profiling are the next gates; no country building coverage is claimed.
+
 Latest production receipt: source73549b8a/versiond872e923 is accepted; exact remote compiler CI and actual Countries/Senegal/Fiji/Nigeria/Lagos/synthetic continuity passed. Desktop proof only; worldwide3D and foreign gameplay remain open. Local work is serialized LIVING → GRAPHICS → WORLD; see [PROGRESS.md](PROGRESS.md) and [WORLD-GAME-MAP-OPERATIONS.md](WORLD-GAME-MAP-OPERATIONS.md). Older pending-forward paragraphs below are historical and superseded by this accepted receipt.
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.

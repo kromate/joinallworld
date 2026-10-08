@@ -48,11 +48,16 @@ async function accountHarness(t: Parameters<typeof fixture>[0], options: Fixture
   const proved = async (path: string, body: Json, cookie: string, subject: string): Promise<Response> =>
     change(path, { ...body, idToken: await token(subject) }, cookie)
   async function guest(name: string): Promise<Guest> {
-    const device = await f.device(name)
-    await f.request('/api/life?city=lagos', null, device.cookie)
-    const action = await f.action(device.cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })
+    const created = await f.request('/api/session', { name, onboarding: true })
+    assert.equal(created.status, 200)
+    const body = await created.json() as { session?: { id?: string } }
+    const cookie = (created.headers.get('set-cookie') ?? '').split(';')[0] ?? ''
+    const id = body.session?.id ?? ''
+    assert.ok(cookie && id)
+    await f.request('/api/life?city=lagos', null, cookie)
+    const action = await f.action(cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })
     assert.equal(action.code, 'playing')
-    return { cookie: device.cookie, id: device.id, name }
+    return { cookie, id, name }
   }
   async function signIn(subject: string, cookie: string) {
     const response = await change('/api/account/sign-in', { idToken: await token(subject) }, cookie)

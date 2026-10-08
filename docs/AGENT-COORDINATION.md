@@ -41,6 +41,28 @@ LIVING-WORLD proposes source-only ownership for additive `src/game/systems/base.
 
 ## Ownership and phase queue
 
+### Narrow account lifecycle source proposal — 8 October 2026
+
+WORLD permits LIVING to prepare a programme-only lifecycle patch for
+`server/accounts/service.ts` in its isolated living-world branch. This is a bounded
+source proposal: trusted existing guest/account adoption, programme park/restore,
+erase:false rebinding, export and explicit proven-actor erasure only. Preserve
+authentication/token criteria, balances/saves, existing Family behavior, Nigeria
+data and current account transaction semantics. WORLD has no competing writer.
+The current main account-file history ends at 35ecffa0; compare fresh main before
+every integration. APP UI is absent from the fresh local chat inventory and its
+recorded chat 01a115e4-c2fc-7300-a97c-d9d0dedf9e91 read failed on the unavailable
+durable host; no remote acknowledgement or global exclusive ownership is claimed.
+
+LIVING records exact account-file base/hash and proposal scope before editing,
+keeps the change isolated and reports any fresh overlap. Account runtime adoption
+requires review of the exact patch, programme continuity/privacy and existing
+Family/auth/save regressions against synchronized main. Do not merge or deploy an
+unverified proposal, overwrite remote changes or alter/delete real account data.
+One existing worker at a time, or Sol directly; no new fanout or intensive checks
+until the explicit GRAPHICS → WORLD → LIVING resource handoffs. This proposal does
+not transfer the current GRAPHICS intensive lease or WORLD release coordination.
+
 | Owner | Scope and boundary | Base / exact candidate | State and next gate |
 | --- | --- | --- | --- |
 | WORLD | Geography, ingestion and additive lazy country outlines. Preserve Nigeria and concurrent graphics/living-world work. | Current accepted production baseline APP UI **a44629b38be751a9ad446051564704f6c3c6ae1b**; accepted capture milestone **aa66f736**, resource phase in INDEX-RESOURCE-OPERATIONS.md. | Strict capture53/53 and prior World TypeScript0 remain accepted. New resource12/12, guarded cached overlap2,283ordinals/1,810versions/473duplicates/0network,19MB Feature at about236MiB peakRSS. Real uncommitted WAL crash/page/file/CPU/wall/RSS/output failures conserve disposable baseline. Actual Node native heap PRAGMA is unenforced with DEFAULT_MEMSTATUS=0; no native hard-memory/final index quota claim. Current WORLD intensive checks terminal, no server/tab/upload; next explicit LOCAL handoff LIVING → GRAPHICS → WORLD after publication cleanup. Durable store/ledger replay/country geometry remain next. Production release coordination remains WORLD. |

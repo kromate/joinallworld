@@ -2,7 +2,7 @@
 
 This is the current tracker for the combined work from the research chat and “Review thread for remaining work” (01a115e4-c2fc-7300-a97c-d9d0dedf9e91). Updated 8 October 2026.
 
-## Live release, 8 October 2026
+## Messaging release, 8 October 2026
 
 Source `bd69e765373e15a0e884b6406f7b4a06139a6acb` is deployed to `joinallworld-next`. Cloudflare version `2a557cac-ae7a-4a24-94eb-2a9be114b1ec` received 100% traffic at 11:13:50 UTC. Public health adopted `joinallworld-bd69e765373e15a0e884b6406f7` at 11:19:10 UTC. The existing provider binding names/types and SQLite namespace were verified unchanged.
 
@@ -31,7 +31,7 @@ Current source already has quoted replies, reactions, pictures, pin/search/group
 | Current message actions | Deployed at bd69e765 | Node/Worker/browser and live synthetic checks passed | Voice-note/media follow-up remains separate |
 | Groups view and swipe reply | Deployed at bd69e765 | Compiled-browser gesture check, phone-width layout and public navigation verified | Physical-device follow-up |
 | Recorded voice notes, video, stickers | Queued | Voice calls and pictures already exist; recordings are distinct | Bounded lazy media storage/recording design and authorization review |
-| Phone UI polish | Implemented locally | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Deploy with this phase and verify public assets |
+| Phone UI polish | Deployed at bb04c64f | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Public artwork and saved-state continuity verified |
 | HUD/recovery polish and sustained mobile performance | Queued | Prior linked-chat viewport check is not physical-device proof | Measure representative current build; preserve download budgets |
 | Housing, household/staff/family, economy and player work | Re-audit required | Historical parity inventory is stale | Reconcile current source before accepting a missing feature; deliver bounded complete loops |
 | City/travel/campus progression | Re-audit required | Prior deployed smoke recorded 40 city chunks; closed-city conclusions from old checkout are obsolete | Validate actual gameplay coverage city by city |
@@ -70,3 +70,17 @@ This tracker does not claim the entire parity roadmap is implemented. Source, lo
 User added phone polish before the next deployment. `PHONE-POLISH.md` records references, original artwork and the implementation. Every registered phone app has artwork; the atlas is lazy, 208 KiB. Existing phone/model checks passed 27/27; typecheck is clean. First design review covered desktop and 390×844. Final functional confirmation proved Money selects page 1 and Life page 0, with disjoint page-button hit targets and no document overflow at 390px. My land opened and returned to the phone.
 
 Voice notes remain the next substantial media phase; no voice-note implementation or deployment is claimed by the phone work. Live calls do not satisfy that requirement. Preserve the full gameplay and reliability programme above.
+
+
+## Rendered 3D phone release, 8 October 2026
+
+Source `bb04c64fd8f5ed0b2024df07da0b8de20adfc26d` deployed as Cloudflare version `fe6e4a0b-b0ff-4a1c-aeda-f22c4fc7b079`, receiving 100% traffic at 12:10:23 UTC. Public health confirmed `joinallworld-bb04c64fd8f5ed0b2024df07da0` at 12:16:11 UTC. The earlier flat icon generator was removed; all 42 app icons now use rendered 3D artwork.
+
+- CI passed: https://github.com/kromate/joinallworld/actions/runs/37774595734.
+- Local fast checks passed: five type-check projects, production build, unchanged download budgets, 15 smoke checks. Existing phone/model checks passed 27/27; package guards 17/17 and Worker smoke 5/5.
+- Sealed package digest: `0ad369a60b822be4311703cf3514ca47345d51d1bac67a5770188bafdb83b5eb`.
+- Public atlas `/assets/app-icons-488c8228.webp` returned 200 and 212,876 bytes; SHA-256 matched the source asset (`62d612c58e3f06849fa70bdc80e531b7e3ef8028381aae9120a457af1321357c`). Public browser inspection confirmed 3D icons, notification badges and dock; local desktop/mobile and City page were inspected.
+- Public smoke passed nine checks / 282 requests / 40 cities in 47.7 seconds during propagation. After the API switched, both existing synthetic release identities retained identity, balance and duplicate-action receipts.
+- Worker startup: 127 ms. Startup download: 614,173 raw / 222,534 gzip / 194,729 Brotli bytes, inside unchanged limits. Icon rendering uses a static lazy WebP, not runtime 3D rendering. Physical-device thermal performance remains unmeasured.
+
+The broader feature-parity roadmap remains open.

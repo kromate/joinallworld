@@ -42,8 +42,10 @@ Focused fault tests use temporary fixtures: cancellation during an admitted work
 
 ## Next implementation ownership
 
+The next source-promotion stage can use `parseFineLFSPointer(bytes, maxSourceBytes)` from `fine-lfs.ts` to read an immutable commit's expected SHA-256 and object length before fetching geometry. The implemented admission subset accepts exactly three LF-terminated lines, rejects malformed UTF-8, extensions and noncanonical numbers, limits pointer bodies to 4 KiB, and refuses objects above the existing 8 MiB source ceiling. This follows the fields in [GitHub's pointer format](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage#pointer-file-format). It is a pure parser: bounded pointer transport, metadata/source joins, licensing admission and durable preparation still need implementation. An admitted pointer alone cannot authorize a source or relax acquisition budgets.
+
 1. Freeze acquisition/promotion rules for additional exact African ADM1 pins, including bounded metadata and original-source licensing evidence; no Ghana fetch while its mismatch remains unresolved.
 2. Add resumable topology preparation and source capture stages ahead of this cache-only executor. Preserve attempt budgets and conservative accounting for unknown transfers.
 3. Implement a distinct bounded representation for layers exceeding source/unit/position caps. Preserve whole source features, identities and old fine products; do not simply raise pilot limits.
 4. Add deeper administrative/settlement coverage policies, then terrain datum conversion and climate/terrain attachment. Keep geography, city previews and gameplay completion separate.
-5. Keep Nigeria's authorized visual improvement on `codex/nigeria-rendering` (`6ad7579b`, documentation `31889c27`); reconcile it with current concurrent graphics changes in the eventual separate integration review. Do not regenerate Nigeria or modify its player/database records.
+5. Keep Nigeria's authorized visual improvements on `codex/nigeria-rendering` (`6ad7579b`, follow-up `01c4c8f1`): lighting/materials, correct lagoon visibility and controlled Lagos/Abuja/Kano renderer acceptance. Reconcile them with current concurrent graphics changes in the eventual separate integration review. Do not regenerate Nigeria or modify its player/database records.

@@ -17,10 +17,14 @@ import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { callNote, presenceClass, venueNameOf } from './socialWords.ts'
 import { contactsUi } from './socialState.ts'
+import { useFamily } from './useFamily.ts'
 import { useSocialScreen } from './useSocialScreen.ts'
 
 defineProps<{ params?: unknown }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad, cannot } = useSocialScreen()
+const { data: familyData } = useFamily(client)
+const PersonCallButton = defineAsyncComponent(() => import('../calls/PersonCallButton.vue'))
+const linkedMummy = computed(() => familyData.value?.slots.find(link => link.slot === 'mummy' && link.state === 'accepted'))
 const social = computed(() => view.value.social)
 // The earlier panel read `mummy.name` unchecked, so a life whose family list had no contact threw and showed its
 // error line. Here the card is left out instead (tested in socialComponents.test.ts).
@@ -45,7 +49,11 @@ async function find(): Promise<void> {
 
 <template>
   <div class="contacts">
-    <div v-if="mummy" class="social-list contacts-fav">
+    <div v-if="linkedMummy" class="social-list contacts-fav">
+      <div class="social-row"><PlayerAvatar :name="linkedMummy.other.name" :seed="linkedMummy.player" /><div><strong>{{ linkedMummy.other.name }}</strong><small>Mother · Real player</small></div></div>
+      <div class="social-actions"><BaseButton @click="shell.open('messages', { to: linkedMummy.player, name: linkedMummy.other.name })">Message</BaseButton><PersonCallButton :id="linkedMummy.player" :name="linkedMummy.other.name" :status="state.me?.friends.find(friend => friend.id === linkedMummy?.player)?.status" compact /></div>
+    </div>
+    <div v-else-if="mummy && familyData" class="social-list contacts-fav">
       <div class="social-row">
         <span class="social-avatar is-big" aria-hidden="true"><PlayerAvatar :name="mummy.name" :seed="mummy.id" /></span>
         <div><strong>{{ mummy.name }}</strong><small><NpcBadge lead />{{ mummy.line }}{{ mummy.calledToday ? ' · checked in today' : '' }}</small></div>

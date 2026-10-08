@@ -1,3 +1,4 @@
+import type { FamilyCommand, FamilyFailure, FamilyView } from './family.ts'
 import type { AvatarLookExtensions } from './avatar.ts';
 /**
  * Social wire shapes: everything `/api/social/*` returns and accepts, the social frames on
@@ -134,7 +135,7 @@ export interface PictureView {
 }
 
 export type SocialUpdateKind =
-  | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
+  | 'family' | 'friend-request' | 'friend-accepted' | 'report' | 'group-added' | 'invite-knock' | 'invite-answer'
   | 'bae-request' | 'bae-answer' | 'transfer' | 'moderation' | 'invite-joined' | 'ping' | 'business' | 'mention' | 'reaction' | 'missed-call' | 'visit'
 /** One line of Messages → Updates (service.js notify()). */
 export interface SocialUpdate {
@@ -433,6 +434,8 @@ type SocialCommon = HostErrorCode | SessionErrorCode | StorageErrorCode | 'onboa
 type SocialPost = SocialCommon | JsonBodyErrorCode
 
 export interface SocialHttpRoutes {
+  'GET /api/social/family': { response: Ok<Done<'ok', FamilyView>>; errors: SocialCommon }
+  'POST /api/social/family': { body: FamilyCommand & { clientId: TimedId }; response: Ok<Done<'saved', { id: string }> | Refusal<FamilyFailure | 'rate_limited'>>; errors: SocialPost | OnceErrorCode | 'invalid_player' | 'invalid_answer' | 'invalid_pref' }
   'GET /api/social/me': { response: Ok<SocialOverview>; errors: SocialCommon }
   /** The founder's next 50 automatic friends, newest first; `after` is the `next` of the page before. Anyone else: an empty page. */
   'GET /api/social/friends': { query: { after: string }; response: Ok<Done<'ok', { friends: Friend[]; total: number; next: string | null }>>; errors: SocialCommon | 'invalid_cursor' }

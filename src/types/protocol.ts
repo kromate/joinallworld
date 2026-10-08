@@ -521,6 +521,8 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/life',
   'POST /api/action',
   'GET /api/social/me',
+  'GET /api/social/family',
+  'POST /api/social/family',
   'GET /api/social/friends',
   'POST /api/social/updates/read',
   'GET /api/social/people',

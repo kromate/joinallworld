@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // A bounded loading state; the existing landing and game mount after their city's data arrives.
 import '../ui/tokens.css'
+import '../ui/boot-art.css'
 import { nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 import type { Component, ShallowRef } from 'vue'
 import { noteBootResult } from './bootstrap.ts'
@@ -61,7 +62,6 @@ async function open(): Promise<void> {
 }
 
 onMounted(() => {
-  void import('../ui/boot-art.css').catch(() => undefined)
   watchStage()
   // Yield one paint before starting the imports; this is not an idle render loop.
   frame = window.requestAnimationFrame(() => { timer = window.setTimeout(() => { void open() }, 0) })
@@ -117,9 +117,6 @@ h1 { margin: 0; color: var(--c-green-dark); font-size: clamp(2rem, 8vw, 3rem); l
 .boot-world { border-radius: 26px; margin-bottom: 20px; }
 .boot-lead { margin: 12px 0 32px; font-size: 20px; }
 .boot-status { color: var(--c-muted); }
-.boot-note { margin: 12px 0 0; color: var(--c-muted); font-size: 14px; }
 button { min-height: var(--tap); margin-top: 12px; padding: 10px 22px; border: 0; border-radius: var(--r-pill); background: var(--c-green-dark); color: var(--c-surface-solid); font: inherit; font-weight: 700; cursor: pointer; }
-button:disabled { opacity: .6; cursor: default; }
-button:hover { background: var(--c-night); }
 button:focus-visible { outline: var(--focus); outline-offset: 4px; }
 </style>

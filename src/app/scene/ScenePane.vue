@@ -12,6 +12,7 @@
 //
 // Three.js and every scene module are fetched after the HUD is on screen. A device that cannot
 // draw the scene still gets the whole game.
+import '../../ui/scene-loading.css'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../state/app.ts'
 import { cityScenesHere, loadSceneWorld, warmCityScenes } from './loaders.ts'
@@ -79,7 +80,6 @@ const waitLine = (): string => {
 const onResize = (): void => { if (game.mode.value !== 'map') scene.venue.value?.resize() }
 
 onMounted(() => {
-  void import('../../ui/scene-loading.css').catch(() => undefined)
   // After the first paint: the scene starts downloading with the HUD already on screen and usable.
   setTimeout(async () => {
     try {

@@ -5,3 +5,7 @@
 .boot-world.paused { animation: none; }
 @keyframes world-breathe { to { transform: translateY(-8px) rotate(3deg); } }
 @media(prefers-reduced-motion:reduce) { .boot-world { animation: none; } }
+
+.boot-screen .boot-note { margin: 12px 0 0; color: var(--c-muted); font-size: 14px; }
+.boot-screen button:disabled { opacity: .6; cursor: default; }
+.boot-screen button:hover { background: var(--c-night); }

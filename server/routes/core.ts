@@ -1,3 +1,4 @@
+import { isFamilySlot } from '../social/family.ts';
 import { normalizeCharacter, swapLegacyLife, legacyLifeCity } from '../character.ts';
 /**
  * OWNER: foundation
@@ -85,6 +86,8 @@ export async function executeCommand(ctx: RouteContext, request: RouteRequest, b
         state = settle(session, body.cityId);
       }
       if (!state) throw new Error('Action settlement produced no life');
+      const familySlot = body.type === 'social.call' ? body.payload?.id ?? body.id : null;
+      if (isFamilySlot(familySlot) && db.social?.players[session.publicId]?.familyLinks?.slots[familySlot]?.state === 'accepted') return { ok: false, code: 'invalid_contact', state, reason: 'This family role belongs to a real player. Open Family to message or ring them.' };
       residenceGate(ctx, session, body);
       jailGate(ctx, db, session, body);
       if (['estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type)) landOf(ctx).assertMovable(db, session.publicId);

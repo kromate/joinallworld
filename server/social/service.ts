@@ -1,3 +1,5 @@
+import type { FamilyCommand, FamilyFailure, FamilyLinkView } from '../../src/types/family.ts';
+import { answerFamily, inviteFamily, isFamilySlot, pruneFamily, removeFamilyLink, clearPlayerFamily, unlinkFamilyPair } from './family.ts';
 import { sha256Hex } from '../../src/game/util.ts';
 import { venueFor } from '../../src/game/cities/runtime.ts';
 /**
@@ -511,6 +513,7 @@ function buildService(ctx: RouteContext) {
       for (const key of Object.keys(p.in)) delete s.players[key]?.out[id];
       for (const key of Object.keys(p.out)) delete s.players[key]?.in[id];
       for (const key of Object.keys(p.convs)) leaveConv(s, s.convs[key], id, true);
+      clearPlayerFamily(s.players, id);
       delete s.houses[id]; delete s.players[id];
       endedIn(s).blocks.push(['forget', id]);
     }
@@ -742,6 +745,7 @@ function buildService(ctx: RouteContext) {
   const housePush = (s: SocialCollection, hostId: string, push: PushList): void => { for (const id of [hostId, ...Object.keys(s.houses[hostId]?.guests || {})]) push.push([id, { type: 'invite-house', house: houseView(s, hostId, id) }]); };
 
   function cut(s: SocialCollection, db: Db, a: string, b: string, cityId: CityId): void {
+    unlinkFamilyPair(s.players, a, b);
     const pa = s.players[a]!, pb = s.players[b]!;
     const were = Boolean(pa.friends[b] || pb.friends[a]);
     // An automatic friendship was never written to either life, so there is nothing to take out of one.
@@ -1137,6 +1141,56 @@ function buildService(ctx: RouteContext) {
     },
 
     // ---- friends ---------------------------------------------------------------------------
+    familyView(db: Db, session: SessionRecord) {
+      const { s, p, id } = enter(db, session);
+      const allowed = (a: string, b: string): boolean => areFriends(s, a, b) && !blockedEither(s, a, b);
+      if (pruneFamily(s.players, id, now(), allowed)) endedIn(s).material = true;
+      const slots: FamilyLinkView[] = Object.values(p.familyLinks?.slots ?? {}).map(link => ({ ...link, other: pub(s, link.player) }));
+      const incoming: FamilyLinkView[] = Object.values(p.familyLinks?.incoming ?? {}).map(link => ({ ...link, other: pub(s, link.owner) }));
+      return yes('ok', { slots, incoming });
+    },
+    familyChange(db: Db, session: SessionRecord, body: SocialBody) {
+      ctx.onceId(body.clientId);
+      let command: FamilyCommand;
+      if (body.op === 'invite') {
+        if (!isFamilySlot(body.slot)) throw bad('invalid_pref');
+        command = { op: 'invite', slot: body.slot, player: uuid(body.player) };
+      } else if (body.op === 'answer') {
+        if (typeof body.accept !== 'boolean') throw bad('invalid_answer');
+        command = { op: 'answer', id: uuid(body.id), accept: body.accept };
+      } else if (body.op === 'remove') command = { op: 'remove', id: uuid(body.id) };
+      else throw bad('invalid_pref');
+      const { s, p, id } = enter(db, session), push: PushList = [];
+      const allowed = (a: string, b: string): boolean => areFriends(s, a, b) && !blockedEither(s, a, b);
+      const words: Record<FamilyFailure, string> = {
+        not_friends: 'Choose a current friend. Family roles require their agreement.',
+        slot_occupied: 'Remove the current link or cancel its invitation before replacing this role.',
+        already_linked: 'This friend already has a role in your family.',
+        inbox_full: 'This player has no room for another family invitation.',
+        no_invitation: 'This invitation is no longer available. Refresh your family list.',
+      };
+      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'family', fingerprint: command }, () => {
+        if (!ctx.allow(`social:family:${id}`, 12, 3600000)) return no('rate_limited', 'You have made several family changes. Please try again later.');
+        if (pruneFamily(s.players, id, now(), allowed)) endedIn(s).material = true;
+        const result = command.op === 'invite'
+          ? inviteFamily(s.players, id, command.slot, command.player, ctx.randomId(), now(), allowed)
+          : command.op === 'answer'
+            ? answerFamily(s.players, id, command.id, command.accept, now(), allowed)
+            : null;
+        if (result && !result.ok) return no(result.code, words[result.code]);
+        const link = result?.ok ? result.link : command.op === 'remove'
+          ? [...Object.values(p.familyLinks?.slots ?? {}), ...Object.values(p.familyLinks?.incoming ?? {})].find(link => link.id === command.id)
+          : undefined;
+        if (!link) return no('no_invitation', words.no_invitation);
+        if (command.op === 'remove' && !removeFamilyLink(s.players, id, link)) return no('no_invitation', words.no_invitation);
+        if (command.op === 'invite') notify(s, link.player, 'family', `${p.name} invited you to a family role. Open Family to review it.`, { from: id }, push);
+        else if (command.op === 'answer') notify(s, link.owner, 'family', `${p.name} ${command.accept ? 'accepted' : 'declined'} your family invitation.`, { from: id }, push);
+        push.push([link.owner, { type: 'social-changed' }], [link.player, { type: 'social-changed' }]);
+        return yes('saved', { id: link.id });
+      });
+      return outcome.ok && !repeated(outcome) ? { ...outcome, push } : outcome;
+    },
+
     friendRequest(db: Db, session: SessionRecord, body: SocialBody) {
       const to = uuid(body.to), cityId = city(body.cityId);
       const { s, p, id } = enter(db, session);

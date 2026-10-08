@@ -1,0 +1,7 @@
+.boot-screen::before,.boot-screen::after { content: ""; position: absolute; left: 0; right: 0; pointer-events: none; background: url(/icons/loading-neighbours.webp) center top / min(100vw, 90vh, 720px) auto no-repeat; }
+.boot-screen::before { top: 0; height: min(32vh, 36vw); }
+.boot-screen::after { bottom: 0; height: min(44vh, 52vw); background-position: center bottom; }
+.boot-world { border-radius: 26px; margin-bottom: 20px; animation: world-breathe 2.4s ease-in-out infinite alternate; }
+.boot-world.paused { animation: none; }
+@keyframes world-breathe { to { transform: translateY(-8px) rotate(3deg); } }
+@media(prefers-reduced-motion:reduce) { .boot-world { animation: none; } }

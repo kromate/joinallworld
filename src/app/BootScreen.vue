@@ -61,6 +61,7 @@ async function open(): Promise<void> {
 }
 
 onMounted(() => {
+  void import('../ui/boot-art.css').catch(() => undefined)
   watchStage()
   // Yield one paint before starting the imports; this is not an idle render loop.
   frame = window.requestAnimationFrame(() => { timer = window.setTimeout(() => { void open() }, 0) })
@@ -86,6 +87,7 @@ async function clearAndReload(): Promise<void> {
   <component :is="game" v-if="game" />
   <main v-else class="boot-screen" aria-labelledby="boot-title" :aria-busy="busy">
     <section class="boot-content">
+      <img class="boot-world" src="/icons/world-loader.webp" width="96" height="96" alt="" :class="{ paused: failed }">
       <h1 id="boot-title">Allworld</h1>
       <p class="boot-lead">A whole world to live in.</p>
       <div v-if="failed" role="alert">
@@ -109,9 +111,10 @@ async function clearAndReload(): Promise<void> {
 </template>
 
 <style scoped>
-.boot-screen { position: fixed; inset: 0; display: grid; place-items: center; overflow: auto; padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom)); box-sizing: border-box; background: var(--c-canvas); color: var(--c-ink); font: 16px/1.5 var(--font); }
-.boot-content { width: min(100%, 32rem); margin: auto; text-align: center; }
+.boot-screen { position: fixed; inset: 0; display: grid; place-items: center; overflow: auto; padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom)); box-sizing: border-box; background: #ffec9b; color: var(--c-ink); font: 16px/1.5 var(--font); }
+.boot-content { position: relative; z-index: 1; width: min(100%, 25rem); margin: auto; text-align: center; }
 h1 { margin: 0; color: var(--c-green-dark); font-size: clamp(2rem, 8vw, 3rem); line-height: 1.15; letter-spacing: -.03em; }
+.boot-world { border-radius: 26px; margin-bottom: 20px; }
 .boot-lead { margin: 12px 0 32px; font-size: 20px; }
 .boot-status { color: var(--c-muted); }
 .boot-note { margin: 12px 0 0; color: var(--c-muted); font-size: 14px; }

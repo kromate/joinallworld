@@ -57,16 +57,16 @@
 .ui-labelled{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--c-ink);margin:0}
 .ui-labelled>span:first-child,.ui-labelled>label{font:inherit}
 .ui-help{font-size:12px;font-weight:400;line-height:1.45;color:var(--c-muted);margin:0}
-#life-dialog input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),#life-dialog select,#life-dialog textarea,
-.life-ui input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.life-ui select,.life-ui textarea,
-#community-panel input:not([type=checkbox]):not([type=radio]):not([type=range]),#community-panel select,#community-panel textarea,.ui-select{
+#life-dialog input:not(.app-field-input):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),#life-dialog select,#life-dialog textarea,
+.life-ui input:not(.app-field-input):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.life-ui select,.life-ui textarea,
+#community-panel input:not(.app-field-input):not([type=checkbox]):not([type=radio]):not([type=range]),#community-panel select,#community-panel textarea,.ui-select{
   box-sizing:border-box;width:100%;min-height:var(--control-h);padding:0 14px;border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);color:var(--c-ink);font:400 16px/1.4 var(--font);outline:none;transition:border-color var(--m-fast) ease-out,box-shadow var(--m-fast) ease-out;-webkit-appearance:none;appearance:none}
 #life-dialog textarea,.life-ui textarea,#community-panel textarea{padding:12px 14px;min-height:96px;line-height:1.45;resize:vertical}
 #life-dialog select,.life-ui select,#community-panel select{padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2339404b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:20px}
 #life-dialog input::placeholder,#life-dialog textarea::placeholder,.life-ui input::placeholder{color:var(--c-faint);font-weight:400}
-#life-dialog input:hover:not(:disabled),#life-dialog select:hover:not(:disabled),#life-dialog textarea:hover:not(:disabled),.ui-select:hover:not(:disabled){border-color:#9aa6a0}
-#life-dialog input:focus,#life-dialog select:focus,#life-dialog textarea:focus,.life-ui input:focus,.life-ui select:focus,#community-panel input:focus,#community-panel textarea:focus,.ui-select:focus-visible,.ui-select[aria-expanded=true]{border-color:var(--c-green-dark);box-shadow:0 0 0 3px #1d6b4326}
-#life-dialog input:disabled,#life-dialog select:disabled,#life-dialog textarea:disabled,.ui-select:disabled{background:var(--c-fill);color:var(--c-muted);cursor:not-allowed}
+#life-dialog input:not(.app-field-input):hover:not(:disabled),#life-dialog select:hover:not(:disabled),#life-dialog textarea:hover:not(:disabled),.ui-select:hover:not(:disabled){border-color:#9aa6a0}
+#life-dialog input:not(.app-field-input):focus,#life-dialog select:focus,#life-dialog textarea:focus,.life-ui input:not(.app-field-input):focus,.life-ui select:focus,#community-panel input:not(.app-field-input):focus,#community-panel textarea:focus,.ui-select:focus-visible,.ui-select[aria-expanded=true]{border-color:var(--c-green-dark);box-shadow:0 0 0 3px #1d6b4326}
+#life-dialog input:not(.app-field-input):disabled,#life-dialog select:disabled,#life-dialog textarea:disabled,.ui-select:disabled{background:var(--c-fill);color:var(--c-muted);cursor:not-allowed}
 [aria-invalid=true]{border-color:var(--c-critical)!important;box-shadow:0 0 0 3px #b3402a22!important}
 
 /* Search: the field and its button are one control */
@@ -82,7 +82,7 @@
 #life-dialog .social-form.is-search input{border:0!important;border-radius:0;box-shadow:none!important;background:none;min-height:0}
 .social-form.is-search .social-btn{border-radius:0;border-left:1.5px solid var(--c-line);min-height:0;padding:0 18px}
 /* Any label that wraps a field is laid out the same way: the words, a small gap, the control. */
-#life-dialog label:has(>input:not([type=checkbox]):not([type=radio])),#life-dialog label:has(>select),#life-dialog label:has(>textarea){display:grid;gap:6px;font-size:13px;font-weight:600;line-height:1.35}
+#life-dialog label:has(>input:not(.app-field-input):not([type=checkbox]):not([type=radio])),#life-dialog label:has(>select),#life-dialog label:has(>textarea){display:grid;gap:6px;font-size:13px;font-weight:600;line-height:1.35}
 
 /* Select: a button that opens a listbox (src/ui/controls.js) */
 .ui-select{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;cursor:pointer}

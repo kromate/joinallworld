@@ -14,6 +14,7 @@ import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { cap, money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import TextField from '../../ui/TextField.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { readOnlyReason, useAct } from '../kit/act.ts'
 import { useSection } from '../kit/section.ts'
@@ -93,7 +94,7 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
 
     <HowItWorks id="jobs-rules" page label="How work works" :rules="rules" />
     <h3 class="ui-section" data-section="list">{{ career.employed ? 'Other jobs' : 'Pick a job' }}</h3>
-    <label class="jobs-search" for="jobs-search">Find a role or skill<input id="jobs-search" v-model="search" type="search" name="job-search" autocomplete="off" placeholder="Try coding or nursing…"></label>
+    <TextField id="jobs-search" v-model="search" class="jobs-search" label="Find a role or skill" type="search" name="job-search" placeholder="Try coding or nursing…" clearable />
     <label class="jobs-filter"><input v-model="onlyOpen" type="checkbox"> Workplaces open now <span>{{ jobs.length }} roles</span></label>
     <p v-if="!jobs.length" class="ui-note" role="status">No roles match. Try another search or turn off the open-now filter.</p>
     <div class="jobs-list">

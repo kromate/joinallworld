@@ -1,7 +1,7 @@
 /* Boutique phone app. */
-.boutique-root{display:grid;gap:var(--s-2);font-family:var(--font)}
+.boutique-root{--button-primary:#78274e;--button-selected:#f8e8f0;--button-selected-ink:#682345;display:grid;gap:var(--s-2);font-family:var(--font)}
 .boutique-root h3{margin:var(--s-2) 0 0}
-.boutique-top{position:relative;z-index:2;display:grid;gap:var(--s-2);padding-bottom:var(--s-2);background:#fff;box-shadow:0 10px 10px -10px #0004}
+.boutique-top{position:relative;z-index:2;display:grid;gap:var(--s-2);padding-bottom:var(--s-2);background:#fff;border-bottom:1px solid var(--c-line)}
 .boutique-state{display:flex!important;align-items:center;justify-content:center;gap:4px}
 .boutique-top .look-view .look-stage{height:clamp(190px,calc(28 * var(--ui-vh)),240px)}
 .boutique-top p{margin:0!important;line-height:1.35!important}
@@ -12,11 +12,10 @@
 .boutique-item.is-wearing{background:var(--c-green-soft);border-color:#b9d8c4}
 .boutique-item.is-trying{border-color:var(--c-ink);box-shadow:inset 0 0 0 1px var(--c-ink)}
 .boutique-item strong{font-size:14px}
-.boutique-item small{font-size:11px;color:var(--c-muted)}
-.boutique-item .ui-button{padding:8px 10px;min-height:var(--tap);font-size:12px;width:100%}
-.boutique-item .ui-button:disabled{opacity:.6;cursor:not-allowed}
-.boutique-item .ui-button:focus-visible{outline:3px solid #247a49;outline-offset:2px}
-.boutique-try[aria-pressed=true]{background:var(--c-ink);color:#fff}
+.boutique-item small{font-size:13px;color:var(--c-muted)}
+.boutique-item .base-button{padding:8px 10px;min-height:var(--tap);font-size:13px;width:100%}
+.boutique-item .base-button:disabled{opacity:.6;cursor:not-allowed}
+.boutique-item .base-button:focus-visible{outline:3px solid #247a49;outline-offset:2px}
 .boutique-why{color:var(--c-red)!important}
 .boutique-state{font-style:normal;font-weight:600;font-size:12px;color:var(--c-green-dark);min-height:var(--tap);display:grid;place-items:center}
-@media(min-width:700px){.boutique-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ph.is-wide .boutique-grid{grid-template-columns:repeat(3,minmax(0,1fr))}

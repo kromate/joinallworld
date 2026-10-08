@@ -2,7 +2,7 @@
 // The game's button. A disabled button that has a reason shows it as its tooltip and its
 // accessible description, so "why can't I press this" is always answered.
 withDefaults(defineProps<{
-  variant?: 'default' | 'primary' | 'danger'
+  variant?: 'default' | 'primary' | 'danger' | 'selected'
   block?: boolean
   small?: boolean
   type?: 'button' | 'submit'
@@ -23,7 +23,8 @@ withDefaults(defineProps<{
 .base-button:hover:enabled { filter: brightness(.96); }
 .base-button:active:enabled { filter: brightness(.9); }
 .base-button:focus-visible { outline: var(--focus); outline-offset: 2px; }
-.base-button.is-primary { background: var(--c-green-dark); color: #fff; }
+.base-button.is-primary { background: var(--button-primary, var(--c-green-dark)); color: var(--button-primary-ink, #fff); }
+.base-button.is-selected { background: var(--button-selected, #e6edf9); color: var(--button-selected-ink, #193d7a); box-shadow: inset 0 0 0 1px currentColor; }
 .base-button.is-danger { background: var(--c-red-soft); color: var(--c-red-dark); }
 .base-button.is-block { display: block; width: 100%; }
 .base-button.is-small { padding: 8px 14px; font-size: 13px; }

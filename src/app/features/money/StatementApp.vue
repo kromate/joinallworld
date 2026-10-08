@@ -26,7 +26,7 @@ import LazyList from '../../ui/LazyList.vue'
 import { chunkedView } from '../../ui/lazyList.ts'
 import { changes, dayLabel, failedVerdict, sameStatement, statementRules, verdictOf } from './statementModel.ts'
 import type { Verdict } from './statementModel.ts'
-import { checked, checkedFor } from './statementState.ts'
+import { checked } from './statementState.ts'
 import { createStatementHistory } from './statementHistory.ts'
 import { statementOf } from '../../../game/wallet-statement.ts'
 
@@ -38,13 +38,13 @@ const wallet = computed(() => view.value.wallet)
 const summary = computed(() => statementOf(game.state.value))
 const days = computed(() => summary.value.days.slice().reverse())
 const since = computed(() => (summary.value.opening.day === null ? 'before your first change' : `at the start of ${dayLabel(summary.value.opening.day)}`))
-const verdict = computed<Verdict | null>(() => (checked.value && checkedFor.value === game.session.value?.id && checked.value.cityId === view.value.cityId ? checked.value : null))
+const verdict = computed<Verdict | null>(() => (checked.value && checked.value.identity === game.session.value?.id && checked.value.cityId === view.value.cityId ? checked.value : null))
 const offline = computed(() => (view.value.connected ? null : `${linkWords(view.value)?.why ?? ''} This check needs the server.`))
 const busy = ref(false)
 let checkRevision = 0
 watch([() => game.session.value?.id, () => view.value.cityId], () => {
   checkRevision += 1; busy.value = false
-  if (checkedFor.value !== game.session.value?.id) { checked.value = null; checkedFor.value = null }
+  if (checked.value?.identity !== game.session.value?.id) checked.value = null
 }, { immediate: true })
 // The wallet keeps a long log: it is drawn forty lines at a time as the reader goes down it.
 const lines = chunkedView(() => wallet.value.ledger)
@@ -64,13 +64,11 @@ async function check(): Promise<void> {
   try {
     const reply = await game.fetchJson<{ statement: WalletStatement }>(`/api/support/statement?city=${encodeURIComponent(cityId)}`)
     if (!current()) return
-    checkedFor.value = identity
     const server = reply.statement, mine = summary.value
-    checked.value = verdictOf(cityId, server, sameStatement(server, mine, game.state.value.cash))
+    checked.value = { ...verdictOf(cityId, server, sameStatement(server, mine, game.state.value.cash)), identity }
   } catch (error) {
     if (!current()) return
-    checkedFor.value = identity
-    checked.value = failedVerdict(cityId, error instanceof Object && 'status' in error ? error.status : undefined)
+    checked.value = { ...failedVerdict(cityId, error instanceof Object && 'status' in error ? error.status : undefined), identity }
   } finally { if (revision === checkRevision) busy.value = false }
   // The answer is also a toast, like every other action taken inside a sheet; the line under the button stays.
   const done = checked.value

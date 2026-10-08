@@ -3,6 +3,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { readBoundedLocalFile } from './inventory-reader.ts';
 import { acquireAdmin1Source } from './admin1-acquire.ts';
 import { inspectAdmin1Source } from './admin1-inspect.ts';
+import { publishAdmin1Source } from './admin1-publish.ts';
 import type { Admin1ParentPin, Admin1SourcePin } from './admin1-types.ts';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -27,14 +28,21 @@ function parentPin(value: unknown): Admin1ParentPin {
   return row as unknown as Admin1ParentPin;
 }
 async function main(): Promise<void> {
-  const [command, config, parent, ...extra] = process.argv.slice(2);
+  const [command, config, parent, inspection, ...extra] = process.argv.slice(2);
   const controller = new AbortController();
   const stop = (): void => controller.abort(new Error('Admin 1 operation interrupted by signal'));
   process.once('SIGINT', stop); process.once('SIGTERM', stop);
   try {
-    if (!config || extra.length || !['capture', 'cached', 'inspect'].includes(command ?? '') || (command === 'inspect' ? !parent : parent !== undefined)) throw new TypeError('usage: admin1-cli.ts capture|cached world/admin1-capture.json OR inspect world/admin1-sources.json world/admin1-parent.json');
+    if (!config || extra.length || !['capture', 'cached', 'inspect', 'publish'].includes(command ?? '')
+      || (command === 'publish' ? !parent || !inspection : command === 'inspect' ? !parent || inspection !== undefined : parent !== undefined || inspection !== undefined))
+      throw new TypeError('usage: admin1-cli.ts capture|cached world/admin1-capture.json OR inspect world/admin1-sources.json world/admin1-parent.json OR publish world/admin1-sources.json world/admin1-parent.json world/admin1-inspection.json');
     const value = await readNamedConfig(config);
-    const result = command === 'inspect'
+    let result: unknown;
+    if (command === 'publish') {
+      const pin = object(await readNamedConfig(inspection!), 'inspection pin');
+      if (Object.keys(pin).length !== 2 || typeof pin.reportHash !== 'string' || typeof pin.reportPath !== 'string') throw new TypeError('invalid inspection pin shape');
+      result = await publishAdmin1Source({ repositoryRoot, sourcePin: sourcePin(value), parentPin: parentPin(await readNamedConfig(parent!)), inspectionHash: pin.reportHash, inspectionPath: pin.reportPath, signal: controller.signal });
+    } else result = command === 'inspect'
       ? await inspectAdmin1Source({ repositoryRoot, sourcePin: sourcePin(value), parentPin: parentPin(await readNamedConfig(parent!)), signal: controller.signal })
       : await acquireAdmin1Source(value, { repositoryRoot, cacheOnly: command === 'cached', signal: controller.signal });
     process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);

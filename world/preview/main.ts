@@ -12,6 +12,8 @@ import { geographicCircleBounds, groundFootprintRadius } from './view-bounds.ts'
 import { fetchInventoryAsset, inventoryGeometryPath, INVENTORY_LIMITS, validateInventoryGeometry, validateInventoryIndex, validateInventoryManifest, type InventoryGeometry, type InventoryManifest, type InventoryNodeIndex } from './inventory-view.ts';
 import { attachFinePanel } from './fine-panel.ts';
 import { attachCountryDirectoryPanel } from './country-directory-panel.ts';
+import { attachAdmin1Panel } from './admin1-panel.ts';
+import { admin1AtlasFrame } from './admin1-framing.ts';
 import './style.css';
 
 const root = document.querySelector<HTMLDivElement>('#app')!;
@@ -47,6 +49,7 @@ root.innerHTML = `
         <div id="finePanel"></div>
       </section>
       <section class="panel" id="countryDirectoryPanel"></section>
+      <section class="panel" id="admin1Panel"></section>
       <section class="panel district-panel"><div class="section-head"><span class="section-number">03</span><h2>NEARBY VIEW</h2><span id="tileCount" class="count-pill">0</span></div><p class="section-copy">Preview only · not playable. Nearby tiles stream as you move the camera; choose a district to focus it.</p><div id="districtList" class="district-list"><div class="placeholder-row">No districts loaded</div></div>
         <div class="pager"><button id="prevTile" aria-label="Previous district" disabled>←</button><span id="pagerText">—</span><button id="nextTile" aria-label="Next district" disabled>→</button></div>
         <div id="streamingSummary" class="data-note" aria-live="polite">Loaded 0 · pending 0 · deferred 0 · over budget 0 · failed 0 · outside view 0</div><div id="streamingDetails" class="data-note">Nearby streamed geometry is a non-playable preview.</div><button id="retryTiles" class="secondary" type="button" disabled>Retry failed tiles</button>
@@ -133,13 +136,14 @@ let inventoryGeneration = 0;
 let inventoryDownloadedBytes = 0;
 const inventoryCache = new ByteLru<string, { value: InventoryManifest|InventoryNodeIndex|InventoryGeometry; bytes:number }>(INVENTORY_LIMITS.cacheBytes);
 let directoryPanel: { reset: () => void } | undefined;
+let admin1Panel: { reset: () => void } | undefined;
 let selectingDirectory = false;
 let selectedDirectoryBinding: { country: InventoryNodeIndex['node']; coarseHash: string } | null = null;
 const finePanel = attachFinePanel({
  host: $('finePanel'),
  binding: () => selectedDirectoryBinding ?? (selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null),
  downloaded: bytes => {inventoryDownloadedBytes += bytes; updateCacheNote();},
- clear: () => { if(!selectingDirectory && !selectedDirectoryBinding)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
+ clear: () => { admin1Panel?.reset(); if(!selectingDirectory && !selectedDirectoryBinding)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
  draw: (geometry, node) => {
   if(!selectedDirectoryBinding)directoryPanel?.reset();
   const [w,s,east,n] = node.bounds, wraps = w > east, e = wraps ? east + 360 : east;
@@ -151,6 +155,22 @@ const finePanel = attachFinePanel({
   $('outlineName').textContent = node.name;
   $('outlineDetails').textContent = `${node.adminType} · ${node.adminLevel} · geographic outline only · not playable`;
   setView('outline');
+ }
+});
+admin1Panel = attachAdmin1Panel({
+ host: $('admin1Panel'), binding: () => selectedDirectoryBinding,
+ activate: () => { finePanel.reset(); },
+ clear: () => { clearOutline('Choose a verified geographic source feature.'); },
+ downloaded: bytes => { inventoryDownloadedBytes += bytes; updateCacheNote(); },
+ draw: (feature, row) => {
+  const geometry = validateInventoryGeometry(feature.geometry), frame = admin1AtlasFrame(geometry);
+  $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,frame.wraps,5));
+  $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,frame.wraps,5));
+  $('outlineSvg').setAttribute('viewBox',frame.viewBox);
+  $('outlineSvg').setAttribute('aria-label',`${row.name ?? row.sourceKey} sourced geographic outline`);
+  $('outlineName').textContent = row.name ?? row.sourceKey;
+  $('outlineDetails').textContent = `${row.sourceTypeEn ?? row.sourceType ?? 'Type unknown'} · source level ${row.gadmLevel ?? 'unknown'} · structural checks only · topology unverified · not playable`;
+  ($('show2d') as HTMLButtonElement).disabled = false; setView('outline');
  }
 });
 directoryPanel = attachCountryDirectoryPanel($('countryDirectoryPanel'), {

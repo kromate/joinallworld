@@ -109,8 +109,10 @@ function analyze(input:Admin1BuildInput):Finding{
 
 export function inspectAdmin1Document(input:Admin1BuildInput):Admin1InspectionReport{return analyze(input).report;}
 
-export function planAdmin1Partitions(input:Admin1BuildInput):Admin1PartitionPlan{
+export function planAdmin1Partitions(input:Admin1BuildInput,observeLabels?:(sourceOrdinal:number,properties:Readonly<Record<string,unknown>>)=>void):Admin1PartitionPlan{
  const finding=analyze(input),entries:Admin1PartitionEntry[]=finding.rows.map(row=>({...row,partitionPath:null,exception:null})),featureTextByOrdinal=new Map(finding.featureBodies.map((body,index)=>[index,body]));
+ // Copy only small label fields in the publisher; do not parse the full geographic source twice.
+ if(observeLabels)for(const [ordinal,feature]of finding.features.entries())observeLabels(ordinal,feature.properties);
  const groups=new Map<string,Admin1PartitionEntry[]>();
  for(const entry of entries){
   if(entry.joinStatus==='protected'){entry.exception='protected-nigeria-no-geometry';continue;}

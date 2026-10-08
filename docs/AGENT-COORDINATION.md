@@ -2,6 +2,14 @@
 
 Canonical repository: kromate/joinallworld. Agents on every computer read the latest GitHub/main copy before claiming files, integrating a phase, or releasing. Local chat messages supplement this record; they do not reach every computer.
 
+## Current human concurrency amendment — 9 October 2026
+
+The user's latest direct instruction authorizes **multiple concurrent browser tabs and multiple agents**, with memory monitoring, to accelerate work. This supersedes the historical one-local-intensive-owner/no-fanout restriction below. Use bounded agents with explicit file ownership; simultaneous reviews use distinct owned tabs and ports. Do not change shared browser viewport/window/session state while another review depends on it. Keep one writer per file, preserve existing services/user tabs, and retain sole WORLD production-upload ownership.
+
+Initial resource policy: keep heavy jobs1, Node heap1536MiB and Vite minifier1; browser/server wrappers may use explicit `AGENT_SLOT_BROWSER=2` and `AGENT_SLOT_SERVER=2` for concurrent bounded review. These are cautious initial limits, not a permanent ban on further concurrency; expand only from actual measured headroom. Free per-kind slots are admission limits. The previous cross-kind handoff is no longer required for a narrow heavy check while another agent reviews in a browser.
+
+A separate GPT-6 Luna chat **Monitor Allworld development memory** (`01a11ddc-3607-7ba1-b778-9878f6a9646b`) now has the active **Allworld memory pressure watch** heartbeat every five minutes. It writes local snapshots/capped history under `/Users/anthonyakpan/.codex/allworld-memory-monitor/`, alerts the user and authorized GRAPHICS/WORLD/LIVING chats on material pressure changes or recovery, and stays quiet when healthy/unchanged. Its snapshots apply to this Mac, not other computers. Check live kernel memory pressure before starting optional expensive work; defer new work on warning/critical pressure and resume cautiously on normal. Cumulative swap alone is not current-pressure proof. Do not kill unknown processes or close user tabs automatically. Scheduled monitoring has observation gaps and does not guarantee admission safety.
+
 ## WORLD index primitives and terminal local handoff — 9 October 2026
 
 Builder source73e090c9 and acceptancef7425943 are published to main after inspecting

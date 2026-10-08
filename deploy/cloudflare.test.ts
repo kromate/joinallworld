@@ -1081,6 +1081,9 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   await mkdir(join(dist, 'assets'));
   await writeFile(join(dist, 'index.html'), '<!doctype html><head></head><body>game</body>');
   await writeFile(join(dist, 'assets', 'app-abc123.js'), 'console.log(1)');
+  await mkdir(join(dist, 'assets/street/lagos'), { recursive: true });
+  await writeFile(join(dist, 'assets/street/lagos/manifest.txt'), '{"p":1,"city":"lagos","targetVersion":"street-v1-test"}');
+  await writeFile(join(dist, 'assets/street/lagos/manifest-street-v1-test.txt'), '{"v":1}');
   await writeFile(join(dist, 'assets', 'base-body-male-abc123.glb'), Buffer.from('glTF\u0002\u0000\u0000\u0000'));
   const f = await fixture(t, { assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } });
   const missing = await f.fetch('/assets/x-123.js');
@@ -1088,6 +1091,10 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   assert.ok(!(await missing.text()).includes('<'));
   const real = await f.fetch('/assets/app-abc123.js');
   assert.equal(real.status, 200); assert.match(real.headers.get('content-type') as string, /javascript/); assert.equal(real.headers.get('cache-control'), 'public, max-age=31536000, immutable');
+  const currentManifest = await f.fetch('/assets/street/lagos/manifest.txt');
+  assert.equal(currentManifest.status, 200); assert.equal(currentManifest.headers.get('cache-control'), 'no-cache');
+  const immutableManifest = await f.fetch('/assets/street/lagos/manifest-street-v1-test.txt');
+  assert.equal(immutableManifest.status, 200); assert.equal(immutableManifest.headers.get('cache-control'), 'public, max-age=31536000, immutable');
   const body = await f.fetch('/assets/base-body-male-abc123.glb');
   assert.equal(body.status, 200); assert.equal(body.headers.get('content-type'), 'model/gltf-binary'); assert.equal(body.headers.get('cache-control'), 'public, max-age=31536000, immutable');
   const deep = await f.fetch('/some/deep/link');

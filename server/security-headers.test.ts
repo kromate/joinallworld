@@ -196,3 +196,22 @@ test('the edge analytics beacon is allowed by origin only: its script and its co
   assert.ok(!/\*|https:( |;|$)/.test(policy), 'no wildcard and no bare scheme');
   assert.ok(!/cloudflareinsights/.test(directive(policy, 'default-src') + directive(policy, 'img-src') + directive(policy, 'frame-src')), 'only the two directives');
 });
+
+
+test('mutable street manifest revalidates while its immutable version remains cached', async t => {
+  const dist = await mkdtemp(join(tmpdir(), 'allworld-street-cache-'));
+  t.after(() => rm(dist, { recursive: true, force: true }));
+  await mkdir(join(dist, 'assets/street/lagos'), { recursive: true });
+  await writeFile(join(dist, 'index.html'), INDEX);
+  await writeFile(join(dist, 'assets/street/lagos/manifest.txt'), '{"p":1,"city":"lagos","targetVersion":"street-v1-test"}');
+  await writeFile(join(dist, 'assets/street/lagos/manifest-street-v1-test.txt'), '{"v":1}');
+  const f = await fixture(t, { distDir: dist, env: {}, log: () => {} });
+  for (const path of ['/assets/street/lagos/manifest.txt', '/assets/street/lagos/%6danifest.txt']) {
+    const response = await fetch(`${f.base}${path}`);
+    assert.equal(response.status, 200); assert.equal(response.headers.get('cache-control'), 'no-cache');
+    await response.arrayBuffer();
+  }
+  const immutable = await fetch(`${f.base}/assets/street/lagos/manifest-street-v1-test.txt`);
+  assert.equal(immutable.status, 200); assert.equal(immutable.headers.get('cache-control'), 'public, max-age=31536000, immutable');
+  await immutable.arrayBuffer();
+});

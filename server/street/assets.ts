@@ -7,6 +7,14 @@ const token = (value: unknown): value is string => typeof value === 'string' && 
 const point = (value: unknown): MetrePoint | null => object(value) && typeof value.x === 'number' && Number.isFinite(value.x) && typeof value.z === 'number' && Number.isFinite(value.z) && Math.abs(value.x) < 128000000 && Math.abs(value.z) < 128000000 ? { x: value.x, z: value.z } : null
 interface Entry { tile: TileCoord; file: string; sha256: string; packKey?: string; packSha256?: string }
 export interface ParsedStreetManifest { city: string; version: string; tiles: Map<string, Entry>; doors: Map<string, StreetManifestDoor> }
+const streetVersion = (value: unknown): value is string => typeof value === 'string' && /^street-v1-[a-z0-9_-]{1,100}$/.test(value)
+/** Current-manifest pointers are deliberately tiny and may only name a version, never a path. Legacy full manifests return null. */
+export function parseStreetManifestPointer(value: unknown, city: string): string | null {
+  if (!object(value) || !('p' in value)) return null
+  const keys = Object.keys(value).sort()
+  if (keys.length !== 3 || keys[0] !== 'city' || keys[1] !== 'p' || keys[2] !== 'targetVersion' || value.p !== 1 || value.city !== city || !streetVersion(value.targetVersion)) throw Error('Invalid current street manifest pointer')
+  return value.targetVersion
+}
 function parseTarget(value: unknown): DoorTarget {
   if (object(value) && value.kind === 'venue' && token(value.venue)) return { kind: 'venue', venue: value.venue }
   if (object(value) && value.kind === 'estate' && token(value.lga) && typeof value.estate === 'number' && Number.isInteger(value.estate) && value.estate >= 0 && value.estate < 512) return { kind: 'estate', lga: value.lga, estate: value.estate }
@@ -30,22 +38,51 @@ export function parseStreetManifest(value: unknown, city: string): ParsedStreetM
 }
 /** Read-only immutable assets; no CityPack imports, geometry generation or Node dependencies. */
 export function createStreetAssets(reader: StreetAssetReader) {
-  const manifests = new Map<string, ParsedStreetManifest>(), current = new Map<string, { version: string; checked: number }>(), manifestPending = new Map<string, Promise<ParsedStreetManifest>>(), tiles = new Map<string, { decoded: ReturnType<typeof decodeImmutableStreetTile>; wire: Record<string, unknown> }>(), pending = new Map<string, Promise<{ decoded: ReturnType<typeof decodeImmutableStreetTile>; wire: Record<string, unknown> }>>()
+  const manifests = new Map<string, ParsedStreetManifest>(), current = new Map<string, { version: string; checked: number }>(), manifestPending = new Map<string, Promise<ParsedStreetManifest>>(), versionPending = new Map<string, Promise<ParsedStreetManifest>>(), tiles = new Map<string, { decoded: ReturnType<typeof decodeImmutableStreetTile>; wire: Record<string, unknown> }>(), pending = new Map<string, Promise<{ decoded: ReturnType<typeof decodeImmutableStreetTile>; wire: Record<string, unknown> }>>()
+  function cachedManifest(city: string, version: string): ParsedStreetManifest | undefined {
+    const id = `${city}:${version}`, cached = manifests.get(id)
+    if (cached) { manifests.delete(id); manifests.set(id, cached) }
+    return cached
+  }
+  function rememberManifest(value: ParsedStreetManifest): ParsedStreetManifest {
+    const id = `${value.city}:${value.version}`
+    if (manifests.size >= 4 && !manifests.has(id)) { const first = manifests.keys().next().value; if (first) manifests.delete(first) }
+    manifests.delete(id); manifests.set(id, value)
+    return value
+  }
+  async function versionManifest(city: string, version: string): Promise<ParsedStreetManifest> {
+    const cached = cachedManifest(city, version)
+    if (cached) return cached
+    const id = `${city}:${version}`, inFlight = versionPending.get(id)
+    if (inFlight) return inFlight
+    const work = (async () => {
+      const value: unknown = await reader.readManifest(city, version)
+      if (parseStreetManifestPointer(value, city) !== null) throw Error('Immutable street version cannot be a pointer')
+      const parsed = parseStreetManifest(value, city)
+      if (parsed.version !== version) throw Error('Retained street geometry version unavailable')
+      return rememberManifest(parsed)
+    })().finally(() => versionPending.delete(id))
+    versionPending.set(id, work)
+    return work
+  }
   async function manifest(city: string, version?: string): Promise<ParsedStreetManifest> {
     if (version !== undefined && !/^street-v1-[a-z0-9_-]{1,100}$/.test(version)) throw Error('Invalid street geometry version')
     const pointer = current.get(city), wanted = version ?? (pointer && Date.now() - pointer.checked < 60000 ? pointer.version : undefined)
-    const key = wanted ? `${city}:${wanted}` : null, cached = key ? manifests.get(key) : undefined
-    if (cached && key) { manifests.delete(key); manifests.set(key, cached); return cached }
+    const cached = wanted ? cachedManifest(city, wanted) : undefined
+    if (cached) return cached
     const pendingKey = `${city}:${version ?? 'current'}`, inFlight = manifestPending.get(pendingKey)
     if (inFlight) return inFlight
     if (manifestPending.size >= 4) throw Error('Street manifest reader is busy')
     const work = (async () => {
-    const value = parseStreetManifest(await reader.readManifest(city, version), city)
-    if (version && value.version !== version) throw Error('Retained street geometry version unavailable')
-    const id = `${city}:${value.version}`
-    if (!version) { if (current.size >= 4 && !current.has(city)) { const first = current.keys().next().value; if (first) current.delete(first) } current.set(city, { version: value.version, checked: Date.now() }) }
-    if (manifests.size >= 4 && !manifests.has(id)) { const first = manifests.keys().next().value; if (first) manifests.delete(first) }
-    manifests.set(id, value); return value
+      if (version !== undefined) return await versionManifest(city, version)
+      const currentValue: unknown = await reader.readManifest(city)
+      const targetVersion = parseStreetManifestPointer(currentValue, city)
+      let value: ParsedStreetManifest
+      if (targetVersion) value = await versionManifest(city, targetVersion)
+      else value = rememberManifest(parseStreetManifest(currentValue, city))
+      if (!current.has(city) && current.size >= 4) { const first = current.keys().next().value; if (first) current.delete(first) }
+      current.set(city, { version: value.version, checked: Date.now() })
+      return value
     })().finally(() => manifestPending.delete(pendingKey))
     manifestPending.set(pendingKey, work); return work
   }

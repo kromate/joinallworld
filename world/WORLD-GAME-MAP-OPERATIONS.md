@@ -1,5 +1,16 @@
 # Country outlines in the production game
 
+## Accepted production phase — 8 October 2026, 19:20 UTC
+
+Source `73549b8ad33b51f39c4b8d3dd27742f5dde4463d` is deployed at100% in provider version `d872e923-0c44-4a1b-bca6-1b3f43e4a954` (deployment `e1381ace-5a27-4b62-9c55-b2c5639eaa27`). [Exact fast CI37826623202](https://github.com/kromate/joinallworld/actions/runs/37826623202) passed, including the corrected fail-closed five-project compiler gate; full CI was skipped. Laptop client/test SIGABRT evidence remains qualified and the1536MiB cap was not raised. Affected Node134/134, Worker142/142, frozen runtime build and unchanged measurable startup/download caps passed. Seven wrapper regressions plus ten transport cases passed17/17 directly; the seven wrapper tests are not yet in the canonical npm test list, a narrow WORLD follow-up.
+
+Package digest `85095d3b8f39fe311100298846abae18639a42c429fbbe10b30bef4d0bbe72bf`, archive SHA256 `45acc50775cff82298f365fd6da139619ec6bf0ad52c551b1a8ef4b78e0e875d`:6,111 files,6,120 archive members,101,675,799 logical bytes, largest4,508,686bytes. Existing5MiB/file,6,500-member and100MiB aggregate caps pass; safe extraction reproduces the digest. Runtime build input8bd05cff is unchanged by the later tests/tooling/docs commits. JOINALLWORLD namespace/class, existing secrets and variables were preserved.
+
+Public health adopted `joinallworld-73549b8ad33b51f39c4b8d3dd27` after initial old-build observation. The same owned synthetic actor retained cash5000 and exact action replay returned duplicate with unchanged receipt code. Actual fresh production browser catalogue and Senegal/Fiji outlines load successfully; Nigeria delegates its existing map, return to Lagos and visible wallet5000 pass, captured warn/error list is empty. This resolves the original native decoded-response header rejection. Evidence: `.cache/world-build/evidence/game-map-forward-release-accepted.json`, `game-map-forward-browser-acceptance.json`, and `game-map-forward-{senegal,fiji}-production.png`. Credentials/identity receipts remain private. Desktop1280×720 proof does not certify physical-phone performance, whole-core acceptance, foreign gameplay, full-distribution no-growth or worldwide3D completion.
+
+WORLD closed only its temporary production tab5; browser lease6470 terminated130 and final continuity35858 terminated0. All shared slots were free at cleanup; memory41% free is a point-in-time observation. Sole local intensive turn explicitly handed to LIVING, then GRAPHICS, then WORLD. Other agents remain on small source work and no concurrent subagent/build/browser fan-out is authorized under the current memory instruction. WORLD retains production upload ownership. The user's existing preview tab/server and unknown processes are preserved.
+
+
 This phase adds the Countries chooser to the existing World/Africa map. Its 258 source units include 257 verified geographic outlines and protected Nigeria, which follows the existing Nigerian map. It does not open travel or make new countries playable. The next geographic phases will add administrative and settlement detail, then streamed buildings/roads and regional conditions.
 
 ## Reproduction and provenance

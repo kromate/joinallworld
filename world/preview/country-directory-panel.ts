@@ -3,9 +3,11 @@ import type { InventoryNode } from '../production-types.ts';
 import { CountryDirectoryJsonCache, directoryAssetUrl, fetchCountryOutline, validateCountryDirectoryIdentity, validateCountryDirectoryManifest, validateCountryDirectoryNodeIndex } from './country-directory-view.ts';
 import type { CountryDirectoryManifest, CountryDirectoryNodeIndex } from '../country-directory-types.ts';
 import type { InventoryGeometry } from './inventory-view.ts';
+import type { SourceRecord } from '../types.ts';
 
 interface CountryDirectoryCallbacks {
-  draw: (geometry: InventoryGeometry, node: InventoryNode, manifestHash: string) => void;
+  draw: (geometry: InventoryGeometry, node: InventoryNode, manifestHash: string, source: SourceRecord) => void;
+  protected?: (child: { id: string; name: string }, manifestHash: string, source: SourceRecord) => void;
   clear: () => void;
   selected: () => void;
 }
@@ -109,9 +111,12 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
   };
   const chooseCountry = async (child: { id: string; name: string; path: string }, parentId: string): Promise<void> => {
     const { epoch, signal } = operation(); callbacks.selected(); callbacks.clear();
-    if (child.id === 'legacy-ng') { status('Nigeria remains on its protected legacy provider; the separate directory contains no Nigeria outline.'); return; }
     const activeManifest = manifest, activeBase = base, activeHash = verifiedManifestHash;
     if (!activeManifest || !activeBase) { status('Load the country directory first.'); return; }
+    if (child.id === 'legacy-ng') {
+      callbacks.protected?.(child, activeHash, activeManifest.source);
+      status('Nigeria remains on its protected legacy provider; the separate directory contains no Nigeria outline.'); return;
+    }
     status(`Verifying ${child.name} country reference…`);
     try {
       const index = await getNode(child.path, child.id, parentId, activeManifest, signal);
@@ -124,7 +129,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
       status(`Loading ${index.node.name} outline…`);
       const geometry = await fetchCountryOutline(cache, activeBase, activeManifest, index.node, index.outlineIndexPath, signal);
       if (!current(epoch, signal)) return;
-      callbacks.draw(geometry, index.node, activeHash);
+      callbacks.draw(geometry, index.node, activeHash, activeManifest.source);
       status(`${index.node.name} · verified source geometry · geographic outline only, not playable.`);
     } catch (error) { if (epoch === generation) status(operationError(error, signal)); }
   };

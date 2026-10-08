@@ -8,6 +8,14 @@ test('preview routes expose only hashed pack and inventory assets, including iso
     rootParts: ['campaigns', 'accra-real-acceptance', 'output'], assetParts: ['manifests', `${hash}.json`], limit: 2_000_000,
   });
   assert.equal(outputRoute(`/tiles/${hash}.json`)?.limit, 10_000_000);
+  for (const [category, limit] of [['manifests',256 * 1024],['points',512_000]] as const) {
+    assert.deepEqual(outputRoute(`/selected-places/${category}/${hash}.json`), {
+      rootParts: ['output'], assetParts: ['selected-places',category,`${hash}.json`], limit,
+    });
+  }
+  for (const pathname of [`/selected-places/reports/${hash}.json`, `/selected-places/source/${hash}.geojson`,
+    `/selected-places/attempts/${hash}.json`, `/selected-places/points/${hash.toUpperCase()}.json`,
+    `/selected-places/../points/${hash}.json`, `/selected-places/points/${hash}.json/extra`]) assert.equal(outputRoute(pathname), null);
   assert.equal(outputRoute(`/inventory/nodes/${hash}.json`)?.limit, 128_000);
   assert.equal(outputRoute(`/fine/rw/adm1/outlines/${hash}.json`)?.limit, 2 * 1024 * 1024);
   assert.equal(outputRoute(`/fine/rw/adm1/node-index/${hash}.json`)?.limit, 128 * 1024);

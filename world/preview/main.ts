@@ -14,6 +14,10 @@ import { attachFinePanel } from './fine-panel.ts';
 import { attachCountryDirectoryPanel } from './country-directory-panel.ts';
 import { attachAdmin1Panel } from './admin1-panel.ts';
 import { admin1AtlasFrame } from './admin1-framing.ts';
+import { attachSettlementPanel } from './settlement-panel.ts';
+import { planSettlementMarkers, projectSettlementPoint } from './settlement-framing.ts';
+import type { SettlementAtlasFrame, SettlementBinding, SettlementReadResult } from './settlement-client-types.ts';
+import type { SettlementPointRecord } from '../settlement-product-types.ts';
 import './style.css';
 
 const root = document.querySelector<HTMLDivElement>('#app')!;
@@ -21,7 +25,7 @@ root.innerHTML = `
   <header class="topbar"><a class="brand" href="#"><span class="brandmark">W</span><span>WORLD<span class="brand-light"> / FOUNDATION</span></span></a><span class="preview-tag"><i></i> INDEPENDENT PREVIEW · NOT PLAYABLE</span></header>
   <main class="layout">
     <section class="viewer-wrap"><div id="viewport" aria-label="Interactive 3D city footprint preview"></div>
-      <div id="outlineView" class="outline-view hidden" aria-label="Sourced geographic outline map"><svg id="outlineSvg" viewBox="0 0 720 360" role="img" aria-label="Selected country outline on a world map"><path id="outlinePath" d="" fill-rule="evenodd"/><path id="outlineStroke" d="" fill="none"/></svg><div class="outline-caption"><strong id="outlineName">Country outline</strong><span id="outlineDetails">Geographic boundary only · not playable</span></div></div>
+      <div id="outlineView" class="outline-view hidden" aria-label="Sourced geographic outline map"><svg id="outlineSvg" viewBox="0 0 720 360" role="img" aria-label="Selected country outline on a world map"><path id="outlinePath" d="" fill-rule="evenodd"/><path id="outlineStroke" d="" fill="none"/><g id="settlementMarkers" aria-label="Selected source point markers"></g></svg><div class="outline-caption"><strong id="outlineName">Country outline</strong><span id="outlineDetails">Geographic boundary only · not playable</span></div></div>
       <div class="view-tabs" role="group" aria-label="Preview view"><button id="show3d" aria-pressed="true">3D pack</button><button id="show2d" aria-pressed="false" disabled>2D outline</button></div>
       <div class="view-overlay"><div class="eyebrow">GEOGRAPHIC FOOTPRINTS <span class="live-dot"></span></div><div id="sceneTitle" class="scene-title">Awaiting a world pack</div><div id="sceneMeta" class="scene-meta">Enter a manifest URL and its SHA-256 hash.</div></div>
       <div class="compass"><span>N</span><b id="compassArrow">↑</b></div><div class="keyboard-controls" aria-label="Keyboard camera controls"><button data-pan="0,-1" title="Pan north">↑</button><div><button data-pan="-1,0" title="Pan west">←</button><button data-pan="0,1" title="Pan south">↓</button><button data-pan="1,0" title="Pan east">→</button></div></div><div class="controls-hint"><kbd>Drag</kbd> orbit <kbd>Scroll</kbd> zoom <kbd>Arrows</kbd> move</div>
@@ -49,6 +53,7 @@ root.innerHTML = `
         <div id="finePanel"></div>
       </section>
       <section class="panel" id="countryDirectoryPanel"></section>
+      <section class="panel" id="settlementPanel"></section>
       <section class="panel" id="admin1Panel"></section>
       <section class="panel district-panel"><div class="section-head"><span class="section-number">03</span><h2>NEARBY VIEW</h2><span id="tileCount" class="count-pill">0</span></div><p class="section-copy">Preview only · not playable. Nearby tiles stream as you move the camera; choose a district to focus it.</p><div id="districtList" class="district-list"><div class="placeholder-row">No districts loaded</div></div>
         <div class="pager"><button id="prevTile" aria-label="Previous district" disabled>←</button><span id="pagerText">—</span><button id="nextTile" aria-label="Next district" disabled>→</button></div>
@@ -137,13 +142,78 @@ let inventoryDownloadedBytes = 0;
 const inventoryCache = new ByteLru<string, { value: InventoryManifest|InventoryNodeIndex|InventoryGeometry; bytes:number }>(INVENTORY_LIMITS.cacheBytes);
 let directoryPanel: { reset: () => void } | undefined;
 let admin1Panel: { reset: () => void } | undefined;
+let settlementPanel: { reset: () => void } | undefined;
 let selectingDirectory = false;
-let selectedDirectoryBinding: { country: InventoryNodeIndex['node']; coarseHash: string } | null = null;
+let selectedDirectoryBinding: { country: InventoryNodeIndex['node']; coarseHash: string; source: WorldManifest['sources'][number] } | null = null;
+let protectedSettlementBinding: SettlementBinding | null = null;
+let selectedDirectoryGeometry: InventoryGeometry | null = null;
+let settlementCurrent: { result: SettlementReadResult; frame: SettlementAtlasFrame } | null = null;
+function settlementBinding(): SettlementBinding | null {
+  const binding = selectedDirectoryBinding;
+  return binding ? { countryId: binding.country.id, countryName: binding.country.name, provider: binding.country.provider,
+    parentManifestHash: binding.coarseHash, parentSource: binding.source } : protectedSettlementBinding;
+}
+function clearSettlementMarkers(): void {
+  settlementCurrent = null;
+  const group = document.getElementById('settlementMarkers')!;
+  group.replaceChildren(); group.dataset.markerCount = '0'; group.dataset.deferred = '0'; group.dataset.outsideView = '0';
+}
+function renderDirectoryOutline(): SettlementAtlasFrame | null {
+  if (!selectedDirectoryGeometry || !selectedDirectoryBinding) return null;
+  const { country: node } = selectedDirectoryBinding;
+  const frame = admin1AtlasFrame(selectedDirectoryGeometry);
+  clearSettlementMarkers();
+  $('outlinePath').setAttribute('d', inventoryGeometryPath(selectedDirectoryGeometry,720,360,false,frame.wraps,5));
+  $('outlineStroke').setAttribute('d', inventoryGeometryPath(selectedDirectoryGeometry,720,360,true,frame.wraps,5));
+  $('outlineSvg').setAttribute('viewBox', frame.viewBox);
+  $('outlineSvg').setAttribute('aria-label', `${node.name} sourced country outline`);
+  $('outlineName').textContent = node.name;
+  $('outlineDetails').textContent = 'Geographic outline only · conditions and playability are separate layers';
+  ($('show2d') as HTMLButtonElement).disabled = false;
+  setView('outline');
+  return frame;
+}
+function renderSettlementMarkers(selectedId?: string): void {
+  const active = settlementCurrent;
+  if (!active?.result.points || !selectedDirectoryBinding) return;
+  const frame = { viewBox: $('outlineSvg').getAttribute('viewBox')!, wraps: active.frame.wraps };
+  const plan = planSettlementMarkers(active.result.points.rows, frame, selectedId);
+  const group = document.getElementById('settlementMarkers')!;
+  group.replaceChildren();
+  group.dataset.markerCount = String(plan.markers.length); group.dataset.deferred = String(plan.deferred); group.dataset.outsideView = String(plan.outsideView);
+  const radius = Math.max(0.001, Number(frame.viewBox.split(/\s+/)[2]) / 260);
+  for (const marker of plan.markers) {
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', String(marker.x)); circle.setAttribute('cy', String(marker.y)); circle.setAttribute('r', String(radius));
+    circle.dataset.placeId = marker.point.id;
+    if (marker.point.id === selectedId) circle.classList.add('selected');
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+    title.textContent = `${marker.point.name} · ${marker.point.sourceKey} · ${marker.point.coordinates.join(', ')}`;
+    circle.append(title); group.append(circle);
+  }
+  $('outlineDetails').textContent = `${active.result.points.rows.length} selected source points · ${plan.markers.length} markers · ${plan.deferred} deferred by display cap · ${plan.outsideView} outside view · not all settlements or playable destinations`;
+}
+function drawSettlementResult(result: SettlementReadResult): void {
+  const frame = renderDirectoryOutline();
+  if (!frame || result.status !== 'available' || !result.points) return;
+  if (result.points.countryId !== selectedDirectoryBinding!.country.id || result.points.parentManifestHash !== selectedDirectoryBinding!.coarseHash) throw new Error('Place view no longer belongs to the selected country.');
+  settlementCurrent = { result, frame }; renderSettlementMarkers();
+  $('outlineSvg').setAttribute('aria-label', `${selectedDirectoryBinding!.country.name} country outline with selected source place references`);
+}
+function focusSettlement(point: SettlementPointRecord): void {
+  if (!settlementCurrent?.result.points?.rows.some(row => row.id === point.id)) return;
+  const { x, y } = projectSettlementPoint(point, settlementCurrent.frame.wraps);
+  const width = Math.max(0.02, Math.min(8, Number(settlementCurrent.frame.viewBox.split(/\s+/)[2]) / 8));
+  $('outlineSvg').setAttribute('viewBox', `${x-width/2} ${y-width/4} ${width} ${width/2}`);
+  $('outlineName').textContent = `${point.name} · source coordinate focus`;
+  $('outlineSvg').setAttribute('aria-label', `${point.name} selected source coordinate on the geographic overview`);
+  renderSettlementMarkers(point.id); setView('outline');
+}
 const finePanel = attachFinePanel({
  host: $('finePanel'),
  binding: () => selectedDirectoryBinding ?? (selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null),
  downloaded: bytes => {inventoryDownloadedBytes += bytes; updateCacheNote();},
- clear: () => { admin1Panel?.reset(); if(!selectingDirectory && !selectedDirectoryBinding)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
+ clear: () => { settlementPanel?.reset(); admin1Panel?.reset(); if(!selectingDirectory && !selectedDirectoryBinding)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
  draw: (geometry, node) => {
   if(!selectedDirectoryBinding)directoryPanel?.reset();
   const [w,s,east,n] = node.bounds, wraps = w > east, e = wraps ? east + 360 : east;
@@ -176,28 +246,37 @@ admin1Panel = attachAdmin1Panel({
 directoryPanel = attachCountryDirectoryPanel($('countryDirectoryPanel'), {
  selected: () => {
   selectedDirectoryBinding = null;
+  selectedDirectoryGeometry = null; protectedSettlementBinding = null; settlementPanel?.reset();
   inventoryAbort?.abort(); ++inventoryGeneration; selectedCountryIndex = null;
   selectingDirectory = true;
   try { finePanel.reset(); } finally { selectingDirectory = false; }
   clearError();
  },
- clear: () => { selectedDirectoryBinding = null; clearOutline('Choose a verified country outline.'); },
- draw: (geometry, node, manifestHash) => {
-  selectedDirectoryBinding = { country: node, coarseHash: manifestHash };
-  const wraps = !!node.bounds && node.bounds[0] > node.bounds[2];
-  $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps,5));
-  $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps,5));
-  if (node.bounds) {
-   const [w,s,rawEast,n] = node.bounds, east = wraps ? rawEast + 360 : rawEast;
-   const width = Math.max((east-w)*2,(n-s)*4,0.02)*1.2, height = width/2, cx = w+east+360, cy = 180-s-n;
-   $('outlineSvg').setAttribute('viewBox',`${cx-width/2} ${cy-height/2} ${width} ${height}`);
-  } else $('outlineSvg').setAttribute('viewBox','0 0 720 360');
-  $('outlineSvg').setAttribute('aria-label',`${node.name} sourced country outline`);
-  $('outlineName').textContent = node.name;
-  $('outlineDetails').textContent = 'Geographic outline only · conditions and playability are separate layers';
-  ($('show2d') as HTMLButtonElement).disabled = false;
-  setView('outline');
+ clear: () => { selectedDirectoryBinding = null; selectedDirectoryGeometry = null; protectedSettlementBinding = null; settlementPanel?.reset(); clearOutline('Choose a verified country outline.'); },
+ protected: (child, manifestHash, source) => {
+  protectedSettlementBinding = { countryId: child.id, countryName: child.name, provider: 'legacy-ng', parentManifestHash: manifestHash, parentSource: source };
+  clearOutline('Protected legacy provider · no new country outline or place asset');
+  $('outlineName').textContent = `${child.name} · protected legacy`;
+  ($('show2d') as HTMLButtonElement).disabled = false; setView('outline');
+ },
+ draw: (geometry, node, manifestHash, source) => {
+  selectedDirectoryBinding = { country: node, coarseHash: manifestHash, source };
+  protectedSettlementBinding = null; selectedDirectoryGeometry = geometry;
+  renderDirectoryOutline();
  }
+});
+settlementPanel = attachSettlementPanel({ host: $('settlementPanel'), binding: settlementBinding,
+  activate: () => {
+    selectingDirectory = true;
+    try { finePanel.reset(); } finally { selectingDirectory = false; }
+    if (protectedSettlementBinding) {
+      $('outlineName').textContent = `${protectedSettlementBinding.countryName} · protected legacy`;
+      $('outlineDetails').textContent = 'Existing Nigeria map remains protected · no new outline or place asset';
+      setView('outline');
+    } else renderDirectoryOutline();
+  }, clear: clearSettlementMarkers,
+  draw: drawSettlementResult, focus: focusSettlement,
+  downloaded: bytes => { inventoryDownloadedBytes += bytes; updateCacheNote(); },
 });
 
 function safeText(node: HTMLElement, value: string) { node.textContent = value; }
@@ -434,6 +513,7 @@ function escapeHtml(value: string) { return value.replace(/[&<>"']/g, c => ({ '&
 function escapeAttribute(value: string) { return escapeHtml(value); }
 
 function clearPackUi() {
+  settlementPanel?.reset();
   manifestIdentity = '';
   tileStream?.setManifest(null);
   activeRenders.clear(); activeObjects = [];
@@ -497,7 +577,7 @@ function renderCountryList(index:InventoryNodeIndex){
  if(!index.children.length){list.innerHTML='<div class="placeholder-row">No source country units in this continent.</div>';return;}
  index.children.forEach((child,i)=>{const button=document.createElement('button');button.className='district-row inventory-country';button.type='button';button.innerHTML=`<span class="district-marker">${String(i+1).padStart(2,'0')}</span><span class="district-info"><strong>${escapeHtml(child.id==='legacy-ng'?'Nigeria · protected legacy':child.name??child.id.split('%3A').at(-1)??child.id)}</strong><small>${child.id==='legacy-ng'?'Existing Nigeria map remains protected':'Geographic outline · load on selection'}</small></span><span class="district-arrow">↗</span>`;button.addEventListener('click',()=>void selectInventoryCountry(child));list.appendChild(button);});
 }
-function clearOutline(message:string){$('outlinePath').setAttribute('d','');$('outlineStroke').setAttribute('d','');$('outlineSvg').setAttribute('aria-label','Country geographic outline');$('outlineName').textContent='Country outline';$('outlineDetails').textContent=message;}
+function clearOutline(message:string){clearSettlementMarkers();$('outlinePath').setAttribute('d','');$('outlineStroke').setAttribute('d','');$('outlineSvg').setAttribute('aria-label','Country geographic outline');$('outlineName').textContent='Country outline';$('outlineDetails').textContent=message;}
 async function selectInventoryCountry(child:{id:string;path:string}){
  directoryPanel?.reset();
  selectedCountryIndex=null;finePanel.reset();clearError();

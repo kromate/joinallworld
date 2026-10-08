@@ -6,11 +6,21 @@ export function admin1AtlasFrame(geometry: InventoryGeometry): { viewBox: string
   const longitudes: number[] = []; let south = 90, north = -90, polarLoop = false;
   for (const polygon of polygons) for (const ring of polygon) {
     let winding = 0;
+    let touchesNorthPole = false, touchesSouthPole = false;
     for (let i = 0; i < ring.length; ++i) {
       const [longitude, latitude] = ring[i]!;
       if (!Number.isFinite(longitude) || !Number.isFinite(latitude)) throw new TypeError('atlas coordinates must be finite');
       longitudes.push(longitude!); south = Math.min(south, latitude!); north = Math.max(north, latitude!);
+      // Some source coastlines explicitly trace the pole along meridians. Their
+      // normalized longitude winding can be zero, so winding alone misses them.
+      if (latitude! >= 90 - 1e-9) touchesNorthPole = true;
+      if (latitude! <= -90 + 1e-9) touchesSouthPole = true;
       if (i) { let delta = longitude! - ring[i - 1]![0]!; if (delta > 180) delta -= 360; else if (delta < -180) delta += 360; winding += delta; }
+    }
+    if (touchesNorthPole || touchesSouthPole) {
+      polarLoop = true;
+      if (touchesNorthPole) north = 90;
+      if (touchesSouthPole) south = -90;
     }
     if (Math.abs(winding) > 180) { polarLoop = true; if (ring.every(point => point[1]! > 0)) north = 90; else if (ring.every(point => point[1]! < 0)) south = -90; }
   }

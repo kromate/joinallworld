@@ -151,6 +151,7 @@ export function validateSettlementManifest(value: unknown): SettlementProductMan
   const exceptionUnits = count(row.exceptionUnits, 'exception row count', sourceUnits);
   if (sourceUnits !== linked + protectedCount + unlinked + ambiguous || exceptionUnits !== sourceUnits - emittedUnits
     || invalidRows < sourceUnits - validPoints || invalidRows > sourceUnits || emittedUnits > linked
+    || emittedUnits < Math.max(0, linked - invalidRows)
     || emittedUnits > validPoints || emittedUnits > sourceUnits - invalidRows) {
     throw new RangeError('settlement manifest count conservation failed');
   }

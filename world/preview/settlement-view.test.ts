@@ -36,7 +36,7 @@ function fixture(): SettlementProductManifest {
     joinPolicy: 'literal-ADM0_A3-v1', keyField: 'NE_ID', countryField: 'ADM0_A3',
     representation: 'selected-source-point-geometry', validation: 'source-bound-structural-with-explicit-exceptions',
     sourceUnits: 5, validPoints: 5, linked: 4, protected: 1,
-    unlinked: 0, ambiguous: 0, invalidRows: 0, emittedUnits: 1, exceptionUnits: 4,
+    unlinked: 0, ambiguous: 0, invalidRows: 3, emittedUnits: 1, exceptionUnits: 4,
     inspection: { path: `reports/${'a'.repeat(64)}.json`, sha256: 'a'.repeat(64), bytes: 1_024 },
     countries,
     limitations: [
@@ -97,7 +97,10 @@ test('rejects inconsistent global and country count conservation', () => {
   const valid = fixture();
   assert.throws(() => validateSettlementManifest({ ...valid, linked: 3 }), /count conservation/);
   assert.throws(() => validateSettlementManifest({ ...valid, exceptionUnits: 0 }), /count conservation/);
-  assert.throws(() => validateSettlementManifest({ ...valid, validPoints: 4 }), /count conservation/);
+  assert.throws(() => validateSettlementManifest({ ...valid, validPoints: 4, invalidRows: 0 }), /count conservation/);
+  const omittedLinked = fixture();
+  omittedLinked.invalidRows = 2;
+  assert.throws(() => validateSettlementManifest(omittedLinked), /count conservation/);
   const impossible = fixture();
   impossible.emittedUnits = 2; impossible.exceptionUnits = 3; impossible.invalidRows = 4; impossible.validPoints = 1;
   impossible.countries[0] = { ...impossible.countries[0]!, emittedUnits: 2 };

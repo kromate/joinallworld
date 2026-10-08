@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "milestone": "country-lazy-selected-place-preview",
+  "manifestHash": "17932383d2d75ce733a3cfae8e455d053be778fc09dcaa5ca06707416e55b61e",
+  "parentManifestHash": "b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501",
+  "checks": {
+    "worldNodeTests": 436,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "worldTypecheck": true,
+    "previewBuild": true,
+    "browser": true
+  },
+  "limits": {
+    "cacheBytes": 5242880,
+    "cacheEntries": 256,
+    "concurrentLoads": 2,
+    "queueEntries": 32,
+    "requestMs": 25000,
+    "markers": 256,
+    "pageRows": 50,
+    "manifestBytes": 262144,
+    "countryBytes": 512000
+  },
+  "observed": {
+    "decodedBytesFinalSixCountries": 275817,
+    "requestsFinalSixCountries": 7,
+    "nigeriaAdditionalRequests": 0,
+    "largestCountryRows": 769,
+    "largestCountryMarkers": 256,
+    "largestCountryDeferred": 513,
+    "largestPageRows": 50,
+    "polarRowsAndMarkers": 40,
+    "consoleErrors": 0,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "unloadedPackFrames": 2,
+    "previewJavaScriptReportedKB": 712.27,
+    "previewJavaScriptReportedGzipKB": 186.39
+  },
+  "sourceAuditSha256": "b7f506e785c136e3bfa0fd606b44d9d350538946a77ca58f2cea61e7e9dbdea2",
+  "failuresFixed": [
+    "default fetch receiver illegal invocation",
+    "explicit pole vertices with zero longitude winding"
+  ],
+  "evidence": [
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-accepted-tests.tap",
+      "bytes": 103064,
+      "sha256": "28608b52e686589326563da653ffa17f1d0306462e50ba4d7f80424dd44e47ad"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-accepted-typecheck.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-accepted-typecheck.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-accepted-build.log",
+      "bytes": 350,
+      "sha256": "9abff2017b4f11aca86e867b514b422a6cc792696cd2c727d1e8844ad957c51f"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-accepted-build.stderr",
+      "bytes": 332,
+      "sha256": "ccb6bf354a0674eeb1e49df9a880a000b75240079fdb849282bb899d81eeb58c"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-browser.json",
+      "bytes": 34769,
+      "sha256": "7b8b4403f66220cabdc4e0f998e36397039117cafff509a908c7d42fe476a6fe"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-us-1280.png",
+      "bytes": 83114,
+      "sha256": "ba6300db8510ec89f0395fe8823263c03e2a5203d8302cef2c71411625bcceab"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-fiji-390.png",
+      "bytes": 25221,
+      "sha256": "cee186252d9b619d840fe370c99ad2593c6c9ae9f0060da276472564ec33e71b"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-antarctica-1280.png",
+      "bytes": 68500,
+      "sha256": "b15ea66f17517ccf8b42907d29c0ffcaf144a7e168052b97a7c285a473598822"
+    },
+    {
+      "path": ".cache/world-build/evidence/settlement-preview-london-1280.png",
+      "bytes": 66671,
+      "sha256": "11d917f1e7d471d073cd1859859d40661fae0721544243779f4fe51e00992abf"
+    }
+  ],
+  "scope": "Independent preview only; unchanged immutable source/output/ledgers, no game/database/Nigeria edits, deployment, purchases, wire-byte, physical-device, soak or complete-world claims.",
+  "code": [
+    {
+      "path": "world/preview/settlement-reader.ts",
+      "sha256": "e6488c21eef4f3048b92217387deaf419b40590bb955d0a4d501d6d81a7a7947"
+    },
+    {
+      "path": "world/preview/settlement-reader.test.ts",
+      "sha256": "6597705a9c302bd87190977cfa4650e510077e68a4fb21d966c7e3c791c0f13e"
+    },
+    {
+      "path": "world/preview/settlement-client-types.ts",
+      "sha256": "30e1aceb263d4eea62e2d804b61c002840bb257609eac8bd7d6e34aec8fba408"
+    },
+    {
+      "path": "world/preview/settlement-panel.ts",
+      "sha256": "7093b3d79a9c7304e739032a58e800869e50f1ace9185009ed3e356b60d43146"
+    },
+    {
+      "path": "world/preview/settlement-framing.ts",
+      "sha256": "cb33b8aa40e35ac53bef6a5a6c547a34a1aa6202d68076c41519a66359df1d91"
+    },
+    {
+      "path": "world/preview/settlement-framing.test.ts",
+      "sha256": "e2ee75ef78afc4833ab8c271bd97411b7b38cddbea6c0b005d306792203e854e"
+    },
+    {
+      "path": "world/preview/settlement-view.ts",
+      "sha256": "a9ef72e1476f08c3220938a2559afa9222115eac131c08cb40137c82545c4048"
+    },
+    {
+      "path": "world/preview/settlement-view.test.ts",
+      "sha256": "572d7ee32af4f843331e5188404f23041448f023a52147ecf691acc197399313"
+    },
+    {
+      "path": "world/preview/admin1-framing.ts",
+      "sha256": "30bcfc9be83ba6093c65500b15f90adbcc7f69a6b5c1e9dce7cbc1d432d043f3"
+    },
+    {
+      "path": "world/preview/admin1-framing.test.ts",
+      "sha256": "8698fd3a1ecebc201acb310b521feff97c304c7a653049d8ea24e75c94904c91"
+    },
+    {
+      "path": "world/preview/country-directory-panel.ts",
+      "sha256": "fc8dcd85130c502b988976e5189aa7b7d80960530bb15e5662e16a4661ac1f7f"
+    },
+    {
+      "path": "world/preview/main.ts",
+      "sha256": "77a1a02b6095ce137750f728927ed2eeb95b20756d156cdc4a3f43297d2095b6"
+    },
+    {
+      "path": "world/preview/output-route.ts",
+      "sha256": "5935c1bbf108a80932700f28dca22347482e44e2136a806428deb026195e8e1b"
+    },
+    {
+      "path": "world/preview/output-route.test.ts",
+      "sha256": "687882d384f10f2522a68cf616b3f2e00d3ec5fb27466b90d1d0ad9a0a5d8691"
+    },
+    {
+      "path": "world/preview/style.css",
+      "sha256": "c0bf30a77d9486b0cdf96618b140fb3971914865388b18f5689852f66fdb54b0"
+    }
+  ]
+}

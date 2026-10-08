@@ -20,6 +20,9 @@ export function outputRoute(pathname: string): OutputRoute | null {
   if (admin1) return { rootParts: ['output'], assetParts: ['admin1-foundation', admin1[1]!, `${admin1[2]}.json`],
     limit: admin1[1] === 'partitions' ? 1024 * 1024 : admin1[1] === 'reports' || admin1[1] === 'indexes' ? 2 * 1024 * 1024 : 256 * 1024 };
   const campaign = /^\/campaigns\/([a-z0-9][a-z0-9-]{0,79})\/(manifests|tiles)\/([a-f0-9]{64})\.json$/.exec(pathname);
+  const settlements = /^\/selected-places\/(manifests|points)\/([a-f0-9]{64})\.json$/.exec(pathname);
+  if (settlements) return { rootParts: ['output'], assetParts: ['selected-places', settlements[1]!, `${settlements[2]}.json`],
+    limit: settlements[1] === 'manifests' ? 256 * 1024 : 512_000 };
   if (campaign) return { rootParts: ['campaigns', campaign[1]!, 'output'], assetParts: [campaign[2]!, `${campaign[3]}.json`], limit: campaign[2] === 'manifests' ? 2_000_000 : 10_000_000 };
   return null;
 }

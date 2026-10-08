@@ -96,6 +96,7 @@ watch(() => game.session.value?.id, () => {
   void loadOlderLives()
 }, { flush: 'sync' })
 
+watch(game.connected, (connected) => { if (connected) void loadOlderLives() })
 onMounted(() => { void growth.load(); void loadOlderLives() })
 </script>
 

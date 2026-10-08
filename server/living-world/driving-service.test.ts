@@ -102,6 +102,34 @@ test('stale lifecycle CAS and excessive or early control packets do not move the
   assert.deepEqual([replace.ok, replace.code, replace.session?.journeyId, replace.session?.revision, replace.session?.state.status], [false, 'journey_exists', session.journeyId, 2, 'paused'])
 })
 
+test('replaying a start receipt after a failed run is superseded by the canonical fresh journey', async t => {
+  const f = await livingFixture(t)
+  const player = await onboard(f)
+  const originalStart = { cityId: 'lagos', requestId: id(f) }
+  const first = await post(f, `${drivingPath}/start`, originalStart, player.cookie)
+  const failedJourneyId = first.session!.journeyId
+
+  // Seed a valid failed terminal assessment as if its final accepted control packet settled.
+  await f.server.store.transact(db => {
+    const rows = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving
+    const row = rows[player.id]!
+    row.revision = 2; row.nextSequence = 2
+    row.lastPacket = { sequence: 1, fingerprint: 'completed-failed-practice-packet', code: 'lesson_completed' }
+    row.state = { ...(row.state as object), speed: 0, checkpointIndex: 3, checkpointEntry: 'blocked', stopDwellMs: 0,
+      score: 69, status: 'complete', assessment: 'failed', feedback: 'Assessment not passed.' }
+  })
+  const fresh = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  assert.deepEqual([fresh.ok, fresh.code, fresh.session?.state.status], [true, 'started', 'running'])
+  assert.notEqual(fresh.session?.journeyId, failedJourneyId)
+  const beforeReplay = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+
+  const replay = await post(f, `${drivingPath}/start`, originalStart, player.cookie)
+  const afterReplay = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([replay.ok, replay.code, replay.duplicate, replay.session?.journeyId, replay.session?.revision, replay.session?.state.status],
+    [false, 'superseded_journey', true, fresh.session?.journeyId, fresh.session?.revision, 'running'])
+  assert.deepEqual(afterReplay, beforeReplay, 'an old start receipt cannot reset or move the newer journey')
+})
+
 test('server timeout and clock reversal pause without granting hidden simulation time', async t => {
   const f = await livingFixture(t)
   const player = await onboard(f)
@@ -187,6 +215,20 @@ test('malformed saved journey is left intact and a failed durable start leaves n
   const after = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
   assert.deepEqual([invalid.ok, invalid.code, invalid.session], [false, 'invalid_saved_journey', null])
   assert.deepEqual(after, before)
+
+  await f.server.store.transact(db => {
+    const rows = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving
+    const row = rows[player.id]!
+    row.revision = 2; row.nextSequence = 2
+    row.lastPacket = { sequence: 1, fingerprint: 'wrong-terminal-receipt', code: 'controls_accepted' }
+    row.state = { ...(row.state as object), speed: 0, checkpointIndex: 3, checkpointEntry: 'blocked', stopDwellMs: 0,
+      score: 69, status: 'complete', assessment: 'failed', feedback: 'Assessment not passed.' }
+  })
+  const terminalBefore = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const wrongTerminal = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  const terminalAfter = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([wrongTerminal.ok, wrongTerminal.code, wrongTerminal.session, terminalAfter],
+    [false, 'invalid_saved_journey', null, terminalBefore], 'a terminal save requires its matching completion receipt and stays quarantined')
 
   const disk = flakyDisk()
   const broken = await livingFixture(t, { disk })

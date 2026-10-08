@@ -47,6 +47,10 @@ function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
   if (!isRecord(value.state) || !exactKeys(value.state, stateKeys)) return null
   const state = readValidatedDrivingState(value.state, PRACTICE_COURSE)
   if (!state) return null
+  // A completed assessment is recorded only by the accepted packet that completed it.
+  // This prevents a corrupt/fabricated terminal save from being treated as a retryable run.
+  if (state.status === 'complete' ? value.lastPacket === null || (value.lastPacket as PacketReceipt).code !== 'lesson_completed'
+    : value.lastPacket !== null && (value.lastPacket as PacketReceipt).code === 'lesson_completed') return null
   let text: string
   try { text = JSON.stringify(value) } catch { return null }
   if (utf8Size(text) > MAX_RECORD_BYTES) return null
@@ -191,6 +195,7 @@ export function createDrivingService(ctx: RouteContext) {
       const found = existing(records, session.publicId)
       if (!found || found === false) return response(null, String(result.code ?? (found === false ? 'invalid_saved_journey' : 'driving_storage_unavailable')), false)
       if (result.ok !== true) return response(view(found), String(result.code ?? 'start_refused'), false)
+      if (result.journeyId !== found.journeyId) return response(view(found), 'superseded_journey', false, undefined, true)
       return response(view(found), String(result.code ?? 'started'), true, undefined, 'duplicate' in result && result.duplicate === true)
     })
   }

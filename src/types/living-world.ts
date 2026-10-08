@@ -1,6 +1,17 @@
 /** Internal practice protocol. The server owns every state and course field. */
 import type { CityId, CityGateErrorCode, HostErrorCode, JsonBodyErrorCode, Ok, OnceErrorCode, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { DrivingInput, DrivingRoute, DrivingState } from '../game/living-world/driving.ts'
+import type { Qualification } from '../game/living-world/journey.ts'
+
+export interface QualificationResponse {
+  ok: boolean
+  code: string
+  reason?: string
+  duplicate?: true
+  qualification: Qualification | null
+  valid: boolean
+}
+export interface QualificationClaimRequest { cityId: CityId; requestId: string; journeyId: string }
 
 export interface DrivingSessionView {
   journeyId: string
@@ -41,6 +52,8 @@ type DrivingHttpError = HostErrorCode | SessionErrorCode | StorageErrorCode | Ci
   | 'invalid_city' | 'rate_limited' | 'busy' | 'onboarding_required'
   | 'driving_location_unavailable' | 'driving_storage_unavailable' | 'driving_record_too_large'
 export interface LivingWorldHttpRoutes {
+  'GET /api/living-world/qualification': { query: { city: CityId }; response: Ok<QualificationResponse>; errors: DrivingHttpError | 'qualification_storage_unavailable' }
+  'POST /api/living-world/qualification/claim': { body: QualificationClaimRequest; response: Ok<QualificationResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'qualification_storage_unavailable' | 'invalid_qualification_request' }
   'GET /api/living-world/driving': { query: { city: CityId }; response: Ok<DrivingResponse>; errors: DrivingHttpError }
   'POST /api/living-world/driving/start': { body: DrivingStartRequest; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'invalid_driving_request' }
   'POST /api/living-world/driving/input': { body: DrivingControlPacket; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | 'invalid_driving_packet' }

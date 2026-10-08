@@ -148,7 +148,9 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     partialStandIn?.dispose(); car.userData.dispose(); avatar.userData.dispose(); kit.dispose(); renderer.dispose(); scene.clear(); throw error
   }
   standIn = partialStandIn!
-  followCamera(first, initialHeading)
+  const initialAnchors = sample(first, initialHeading)
+  standIn.move(initialAnchors.approach.x, initialAnchors.approach.y, initialAnchors.approach.z, initialHeading)
+  fallbackAt(initialAnchors.approach, initialHeading, 'stand')
   const clockNow = () => (typeof performance !== 'undefined' ? performance.now() : Date.now())
   const render = () => {
     if (!visible || disposed) return

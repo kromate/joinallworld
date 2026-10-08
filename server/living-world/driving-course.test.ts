@@ -2,9 +2,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { fixture } from '../test-fixture.ts'
-import type { DrivingResponse } from '../../src/types/living-world.ts'
+import type { DrivingResponse, QualificationResponse } from '../../src/types/living-world.ts'
 import type { DrivingPoint } from '../../src/game/living-world/driving.ts'
 import { PRACTICE_COURSE } from '../../src/game/living-world/course.ts'
+import { readDrivingQualificationEvidence } from './driving-service.ts'
 
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
 const path = '/api/living-world/driving'
@@ -34,8 +35,19 @@ test('actual control packets complete the authored stop-turn-park lesson; termin
   const f = await fixture(t)
   const created = await f.request('/api/session', { name: 'Course driver', onboarding: true })
   const cookie = (created.headers.get('set-cookie') ?? '').split(';')[0]!
+  const publicId = (await created.json() as { session: { id: string } }).session.id
   assert.equal((await f.action(cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })).code, 'playing')
+  // Synthetic fixture starts with an empty wallet; no existing player save is used.
+  await f.server.store.transact(db => {
+    const owner = Object.values(db.sessions).find(record => record.publicId === publicId)
+    assert.ok(owner?.cities.lagos)
+    owner.cities.lagos.state.cash = 0
+  })
   const lifeBefore = await (await f.request('/api/life?city=lagos', null, cookie)).json() as { state: { cash: number; ledger: unknown[] } }
+  assert.equal(lifeBefore.state.cash, 0, 'a confirmed guest can qualify from zero game cash')
+  assert.equal(await f.server.store.read(db => readDrivingQualificationEvidence(db, publicId)), null)
+  const unearned = await (await f.request('/api/living-world/qualification/claim', { cityId: 'lagos', requestId: f.id(), journeyId: 'client-claimed-pass' }, cookie)).json() as QualificationResponse
+  assert.deepEqual([unearned.ok, unearned.code, unearned.qualification], [false, 'assessment_required', null])
   const post = async (suffix: string, body: object) => await (await f.request(path + suffix, body, cookie)).json() as DrivingResponse
   let answer = await post('/start', { cityId: 'lagos', requestId: f.id() })
   assert.ok(answer.ok && answer.session)
@@ -66,6 +78,9 @@ test('actual control packets complete the authored stop-turn-park lesson; termin
   const terminal = answer.session!
   assert.equal(terminal.state.status, 'complete', `lesson did not finish after ${frame} control frames at ${JSON.stringify(terminal.state.position)}`)
   assert.equal(terminal.state.assessment, 'passed')
+  const evidence = await f.server.store.read(db => readDrivingQualificationEvidence(db, publicId))
+  assert.ok(evidence)
+  assert.deepEqual([evidence.journeyId, evidence.routeId, evidence.routeVersion], [terminal.journeyId, PRACTICE_COURSE.id, PRACTICE_COURSE.version])
   assert.deepEqual([...seen], [0, 1, 2])
   assert.ok(frame >= 20, 'the lesson needs actual driving and stopping inputs')
   assert.ok(lastPacket)
@@ -75,6 +90,20 @@ test('actual control packets complete the authored stop-turn-park lesson; termin
   assert.deepEqual([restart.ok, restart.code, restart.session], [false, 'assessment_retained', terminal])
   const loaded = await (await f.request(path + '?city=lagos', null, cookie)).json() as DrivingResponse
   assert.deepEqual(loaded.session, terminal)
+  const qualificationPath = '/api/living-world/qualification'
+  const available = await (await f.request(qualificationPath + '?city=lagos', null, cookie)).json() as QualificationResponse
+  assert.deepEqual([available.code, available.valid, available.qualification], ['claim_available', false, null])
+  const claimBody = { cityId: 'lagos', journeyId: terminal.journeyId, requestId: f.id() }
+  const claim = async (body = claimBody) => await (await f.request(qualificationPath + '/claim', body, cookie)).json() as QualificationResponse
+  const [claimed, duplicate] = await Promise.all([claim(), claim()])
+  assert.ok(claimed.ok && claimed.valid && duplicate.ok && duplicate.valid)
+  assert.equal([claimed.duplicate, duplicate.duplicate].filter(Boolean).length, 1)
+  assert.deepEqual(claimed.qualification, duplicate.qualification)
+  assert.equal(claimed.qualification?.evidenceJourneyId, terminal.journeyId, 'qualification consumes the actual control-derived assessment')
+  const newIdRetry = await claim({ ...claimBody, requestId: f.id() })
+  assert.deepEqual([newIdRetry.code, newIdRetry.qualification], ['qualification_retained', claimed.qualification])
+  const recovered = await (await f.request(qualificationPath + '?city=lagos', null, cookie)).json() as QualificationResponse
+  assert.deepEqual([recovered.code, recovered.valid, recovered.qualification], ['qualified', true, claimed.qualification])
   const lifeAfter = await (await f.request('/api/life?city=lagos', null, cookie)).json() as typeof lifeBefore
-  assert.deepEqual([lifeAfter.state.cash, lifeAfter.state.ledger], [lifeBefore.state.cash, lifeBefore.state.ledger], 'practice completion cannot mint a reward')
+  assert.deepEqual([lifeAfter.state.cash, lifeAfter.state.ledger], [lifeBefore.state.cash, lifeBefore.state.ledger], 'practice and qualification cannot mint a reward or debit a fee')
 })

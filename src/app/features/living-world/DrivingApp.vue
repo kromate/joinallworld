@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView } from '../../../types/living-world.ts'
+import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse } from '../../../types/living-world.ts'
 import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
 import { stepDriving } from '../../../game/living-world/driving.ts'
 import type { Look } from '../../../types/life.ts'
@@ -17,6 +17,10 @@ const session = ref<DrivingSessionView | null>(null)
 const serverState = ref<DrivingState | null>(null)
 const assessment = ref<DrivingState['assessment']>('pending')
 const feedback = ref('Loading the authored practice course…')
+const qualificationReply = ref<QualificationResponse | null>(null)
+const qualificationJourney = ref<string | null>(null)
+const qualificationMessage = ref('Checking simulated qualification status…')
+const qualificationBusy = ref(false)
 const busy = ref(false), active = ref(false), boarding = ref(false), online = ref(true), needsRefresh = ref(false), webglUnavailable = ref(false)
 const retainedPass = ref(false)
 type TouchControl = keyof DrivingInput | 'left' | 'right'
@@ -29,12 +33,42 @@ let generation = 0, mounted = false, disposed = false, controlInFlight = false
 let pauseAfterControl: { prior: DrivingSessionView; latest?: DrivingSessionView } | null = null
 let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
+let qualificationRequest = 0
+type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle'; expectedJourney?: string }
 
-const canStart = computed(() => !busy.value && online.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
+const canStart = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
 const canResume = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(session.value) && !active.value && !boarding.value && session.value?.state.status === 'paused')
 const complete = computed(() => serverState.value?.status === 'complete')
+const validQualification = computed(() => {
+  const answer = qualificationReply.value, qualification = answer?.qualification, current = session.value
+  let evidenceMatchesPass = true
+  if (current && current.state.status === 'complete' && current.state.assessment === 'passed') evidenceMatchesPass = qualification?.evidenceJourneyId === current.journeyId
+  return answer?.valid === true && answer.ok && answer.code === 'qualified' && qualification?.status === 'active'
+    && evidenceMatchesPass
+})
+const qualificationClaimAvailable = computed(() => {
+  const current = session.value
+  return online.value && !needsRefresh.value && qualificationReply.value?.code === 'claim_available'
+    && current !== null && qualificationJourney.value === current.journeyId
+    && current.state.status === 'complete' && current.state.assessment === 'passed'
+})
+const canClaimQualification = computed(() => qualificationClaimAvailable.value && !qualificationBusy.value)
 const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
 function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
+function isRecord(value: unknown): value is Record<string, unknown> { return typeof value === 'object' && value !== null && !Array.isArray(value) }
+function validQualificationReply(value: unknown): value is QualificationResponse {
+  if (!isRecord(value) || typeof value.ok !== 'boolean' || typeof value.code !== 'string' || value.code.length > 80 || typeof value.valid !== 'boolean'
+    || Object.keys(value).some(key => !['ok', 'code', 'reason', 'duplicate', 'qualification', 'valid'].includes(key))
+    || value.reason !== undefined && (typeof value.reason !== 'string' || value.reason.length > 500)
+    || value.duplicate !== undefined && value.duplicate !== true) return false
+  const q = value.qualification
+  const qualificationShape = q === null || isRecord(q) && Object.keys(q).sort().join(',') === 'earnedAt,evidenceJourneyId,id,status,version'
+    && q.id === 'district-driving' && q.version === 1
+    && typeof q.evidenceJourneyId === 'string' && /^[\w:-]{1,100}$/.test(q.evidenceJourneyId)
+    && Number.isSafeInteger(q.earnedAt) && (q.earnedAt as number) >= 0 && (q.earnedAt as number) <= Number.MAX_SAFE_INTEGER
+    && (q.status === 'active' || q.status === 'revoked')
+  return qualificationShape && (!value.valid || value.ok && value.code === 'qualified' && q !== null && isRecord(q) && q.status === 'active')
+}
 function clearHeld(): void {
   keys.clear(); touch.clear(); held.value = { throttle: 0, brake: 0, steer: 0 }
   scene.value?.setInput(held.value)
@@ -51,17 +85,34 @@ function updateHeld(): void {
   held.value = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: Number(right) - Number(left) }
   scene.value?.setInput(held.value)
 }
-function applyResponse(answer: DrivingResponse, token: number, key: string): boolean {
+function applyResponse(answer: DrivingResponse, token: number, key: string, origin: ResponseOrigin = { kind: 'load' }): boolean {
   if (!responseCurrent(token, key)) return false
   if (!answer || typeof answer.ok !== 'boolean' || !answer.course || typeof answer.course.id !== 'string') throw new Error('The practice lesson reply was incomplete.')
   if (!answer.ok) {
     const current = answer.session, previous = session.value
-    if (current && current.cityId === cityId.value && current.location === game.state.value.location
-      && (!previous || current.journeyId === previous.journeyId && current.revision >= previous.revision)) {
+    const expectedStillCurrent = origin.expectedJourney ? previous?.journeyId === origin.expectedJourney : !previous
+    if (!expectedStillCurrent) {
+      clearHeld(); active.value = false; boarding.value = false
+      needsRefresh.value = true; online.value = true
+      feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'
+      return false
+    }
+    const contextMatches = current?.cityId === cityId.value && current.location === game.state.value.location
+    const sameJourneyFresh = Boolean(current && previous && current.journeyId === previous.journeyId && current.revision >= previous.revision)
+    const freshLoad = Boolean(origin.kind === 'load' && expectedStillCurrent && contextMatches && current
+      && (!previous || current.journeyId !== previous.journeyId || current.revision >= previous.revision))
+    const startRefusal = origin.kind === 'start' && ['journey_active', 'journey_exists', 'superseded_journey', 'assessment_retained'].includes(answer.code)
+    const adoptCanonicalStart = Boolean(startRefusal && expectedStillCurrent && contextMatches && current
+      && (!previous || current.journeyId !== previous.journeyId || current.revision >= previous.revision))
+    if (current && contextMatches && (freshLoad || sameJourneyFresh && expectedStillCurrent || adoptCanonicalStart)) {
       session.value = current; serverState.value = current.state; assessment.value = current.state.assessment
       retainedPass.value = current.state.assessment === 'passed'
       visualState = current.state; scene.value?.present(current.state)
+    } else if (current && (!expectedStillCurrent || !contextMatches || current.journeyId !== previous?.journeyId)) {
+      needsRefresh.value = true
     }
+    clearHeld(); active.value = false; boarding.value = false
+    if (adoptCanonicalStart || origin.kind !== 'load' && current && current.journeyId !== origin.expectedJourney) needsRefresh.value = true
     if (answer.code === 'assessment_retained') { retainedPass.value = true; feedback.value = 'Your passed assessment is retained by the server; this course will not replace it with another attempt.' }
     else feedback.value = answer.reason || 'The server returned the current lesson state; controls remain stopped until you review it.'
     online.value = true
@@ -70,12 +121,35 @@ function applyResponse(answer: DrivingResponse, token: number, key: string): boo
   route.value = answer.course
   if (answer.session) {
     const previous = session.value
-    if (previous && previous.journeyId === answer.session.journeyId && answer.session.revision < previous.revision) return false
+    const expectedStillCurrent = origin.expectedJourney ? previous?.journeyId === origin.expectedJourney : !previous
+    if (!expectedStillCurrent) {
+      clearHeld(); active.value = false; boarding.value = false
+      needsRefresh.value = true
+      feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'
+      return false
+    }
+    const mayAdoptDifferentJourney = origin.kind === 'load' && expectedStillCurrent
+      || origin.kind === 'start' && expectedStillCurrent && ['started', 'superseded_journey'].includes(answer.code)
+    if (previous && previous.journeyId !== answer.session.journeyId && !mayAdoptDifferentJourney) {
+      clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+      feedback.value = 'The saved lesson changed in another session. Reconnect and check it before continuing.'
+      return false
+    }
+    if (previous && previous.journeyId === answer.session.journeyId && answer.session.revision < previous.revision) {
+      clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+      feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'
+      return false
+    }
     retainedPass.value = answer.session.state.assessment === 'passed'
     session.value = answer.session; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
     if (!visualState || previous?.journeyId !== answer.session.journeyId || answer.session.revision >= (previous?.revision ?? -1)) visualState = answer.session.state
     scene.value?.present(visualState ?? answer.session.state)
-  } else { retainedPass.value = false; session.value = null; serverState.value = null; visualState = null; assessment.value = 'pending' }
+  } else {
+    const previous = session.value
+    const expectedStillCurrent = origin.expectedJourney ? previous?.journeyId === origin.expectedJourney : !previous
+    if (!expectedStillCurrent) { needsRefresh.value = true; feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'; return false }
+    retainedPass.value = false; session.value = null; serverState.value = null; visualState = null; assessment.value = 'pending'
+  }
   feedback.value = answer.reason || answer.session?.state.feedback || 'Course ready. Start a lesson or explicitly resume your saved lesson.'
   online.value = true
   return true
@@ -96,24 +170,82 @@ async function createScene(token: number, key: string): Promise<void> {
   }
 }
 async function load(): Promise<void> {
-  const token = generation, key = contextKey.value
+  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId
   if (!game.view.value.session?.id) { feedback.value = 'Sign in to begin a server-tracked practice lesson.'; return }
   busy.value = true
   try {
     const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving?city=${encodeURIComponent(cityId.value)}`)
-    if (applyResponse(answer, token, key)) {
+    if (applyResponse(answer, token, key, { kind: 'load', expectedJourney })) {
       needsRefresh.value = false
       // A server record found running after reload/uncertain delivery is stopped first;
       // only an explicit user action can resume it in this view.
       if (answer.session?.state.status === 'running') await lifecycle('pause', answer.session)
       if (session.value?.state.status === 'paused') needsRefresh.value = false
       await nextTick(); await createScene(token, key)
+      void lookupQualification(session.value?.journeyId ?? null)
     }
   } catch (error) {
-    if (responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: reconnect to load the practice course. No result was recorded.') }
+    if (responseCurrent(token, key)) {
+      online.value = false; feedback.value = message(error, 'Offline: reconnect to load the practice course. No result was recorded.')
+      void lookupQualification(session.value?.journeyId ?? null)
+    }
   } finally { if (responseCurrent(token, key)) busy.value = false }
 }
 function message(error: unknown, fallback: string): string { return error instanceof Error && error.message ? error.message : fallback }
+function qualificationCurrent(token: number, key: string, expectedJourney: string | null, request: number): boolean {
+  return responseCurrent(token, key) && request === qualificationRequest && (session.value?.journeyId ?? null) === expectedJourney
+}
+function qualificationText(answer: QualificationResponse, expectedJourney: string | null): string {
+  if (answer.valid && answer.code === 'qualified') {
+    const current = session.value
+    if (current && current.journeyId === expectedJourney && current.state.status === 'complete' && current.state.assessment === 'passed'
+      && answer.qualification?.evidenceJourneyId !== current.journeyId) return 'A saved qualification belongs to a different practice run; it is not attached to this result.'
+    return 'A simulated qualification has been earned for a passed practice run.'
+  }
+  if (answer.code === 'claim_available') return 'A passed simulated practice result is ready for your explicit claim.'
+  if (answer.code === 'not_qualified' || answer.code === 'assessment_required') return 'Complete and pass the simulated practice course to qualify.'
+  if (answer.code === 'reassessment_required' || answer.code === 'qualification_revoked') return 'The saved qualification needs a new passed assessment.'
+  return answer.reason || 'The qualification status could not be verified.'
+}
+async function lookupQualification(expectedJourney: string | null = session.value?.journeyId ?? null): Promise<void> {
+  const token = generation, key = contextKey.value, request = ++qualificationRequest, city = cityId.value
+  qualificationBusy.value = true; qualificationJourney.value = expectedJourney; qualificationReply.value = null
+  qualificationMessage.value = 'Checking simulated qualification status…'
+  try {
+    const answer = await game.client.api<QualificationResponse>(`/api/living-world/qualification?city=${encodeURIComponent(city)}`)
+    if (!qualificationCurrent(token, key, expectedJourney, request)) return
+    if (!validQualificationReply(answer)) { qualificationMessage.value = 'The qualification status could not be verified.'; return }
+    qualificationReply.value = answer; qualificationMessage.value = qualificationText(answer, expectedJourney)
+  } catch (error) {
+    if (responseCurrent(token, key) && request === qualificationRequest && (session.value?.journeyId ?? null) === expectedJourney) {
+      qualificationReply.value = null; qualificationMessage.value = message(error, 'Qualification status is unavailable. Reconnect to check it.')
+    }
+  } finally {
+    if (request === qualificationRequest && responseCurrent(token, key)) {
+      if ((session.value?.journeyId ?? null) !== expectedJourney) { qualificationReply.value = null; qualificationMessage.value = 'The lesson changed; reconnect to check qualification status.' }
+      qualificationBusy.value = false
+    }
+  }
+}
+async function claimQualification(): Promise<void> {
+  const current = session.value
+  if (!canClaimQualification.value || !current || qualificationBusy.value) return
+  const expectedJourney = current.journeyId, token = generation, key = contextKey.value, request = ++qualificationRequest
+  const body: QualificationClaimRequest = { cityId: current.cityId, requestId: game.newId(), journeyId: expectedJourney }
+  qualificationBusy.value = true; qualificationMessage.value = 'Submitting the simulated qualification claim…'
+  try {
+    const answer = await game.client.api<QualificationResponse>('/api/living-world/qualification/claim', { method: 'POST', body })
+    if (!qualificationCurrent(token, key, expectedJourney, request)) return
+    qualificationMessage.value = validQualificationReply(answer) ? 'Claim checked. Reading the saved qualification status…' : 'Claim reply was unclear. Reading the saved qualification status…'
+    await lookupQualification(expectedJourney)
+  } catch (error) {
+    if (!qualificationCurrent(token, key, expectedJourney, request)) return
+    qualificationMessage.value = message(error, 'Claim delivery was uncertain. Reading the saved qualification status…')
+    await lookupQualification(expectedJourney)
+  } finally {
+    if (request === qualificationRequest && responseCurrent(token, key)) qualificationBusy.value = false
+  }
+}
 function beginPresentation(): void {
   const current = session.value, journey = current?.journeyId, token = generation, key = contextKey.value
   if (!journey || !scene.value || current?.state.status !== 'running' || !online.value || document.hidden) return
@@ -130,10 +262,10 @@ function beginPresentation(): void {
 
 async function startLesson(): Promise<void> {
   if (!canStart.value) return
-  const token = generation, key = contextKey.value; busy.value = true
+  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId; busy.value = true
   try {
     const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/start', { method: 'POST', body: { cityId: cityId.value, requestId: game.newId() } })
-    if (applyResponse(answer, token, key) && answer.session) beginPresentation()
+    if (applyResponse(answer, token, key, { kind: 'start', expectedJourney }) && answer.session) beginPresentation()
   } catch (error) { if (responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: the lesson did not start. No result was recorded.') } }
   finally { if (responseCurrent(token, key)) busy.value = false }
 }
@@ -143,17 +275,22 @@ async function lifecycle(action: 'resume' | 'pause', prior = session.value, allo
   const body: DrivingLifecycleRequest = { cityId: prior.cityId, journeyId: prior.journeyId, revision: prior.revision, requestId: game.newId() }
   try {
     const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving/${action}`, { method: 'POST', body })
+    const latest = session.value
     if (applyResult && (allowLeaving || responseCurrent(token, key))) {
-      if (answer.ok && answer.session && answer.session.revision >= prior.revision) {
+      if (answer.ok && answer.session && answer.session.journeyId === prior.journeyId && latest?.journeyId === prior.journeyId
+        && answer.session.revision >= prior.revision && answer.session.revision >= latest.revision) {
         session.value = answer.session; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
         visualState = answer.session.state; scene.value?.present(answer.session.state)
         if (action === 'resume') beginPresentation()
         else { active.value = false; needsRefresh.value = false; feedback.value = answer.reason || 'Lesson paused safely. Resume when ready.' }
       } else if (!answer.ok && !allowLeaving) {
-        applyResponse(answer, token, key); clearHeld(); active.value = false; boarding.value = false
-        if (action === 'resume' && answer.session?.state.status === 'running') void lifecycle('pause', answer.session)
+        applyResponse(answer, token, key, { kind: 'lifecycle', expectedJourney: prior.journeyId }); clearHeld(); active.value = false; boarding.value = false
+        if (action === 'resume' && answer.session?.journeyId === prior.journeyId && answer.session.state.status === 'running') void lifecycle('pause', answer.session)
         if (action === 'pause') needsRefresh.value = true
         feedback.value = answer.reason || `Could not ${action} the lesson; the server's current state is shown.`
+      } else if (applyResult && !allowLeaving && answer.ok) {
+        clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+        feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'
       }
       online.value = true
     }
@@ -190,14 +327,19 @@ async function sendFrames(): Promise<void> {
   try {
     const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/input', { method: 'POST', body: packet })
     if (pauseAfterControl?.prior.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.revision >= pauseAfterControl.prior.revision) pauseAfterControl.latest = answer.session
-    if (responseCurrent(token, key) && answer.ok && answer.session && answer.session.journeyId === current.journeyId && answer.session.revision >= current.revision) {
-      applyResponse(answer, token, key)
-      if (answer.session.state.status === 'complete') { clearHeld(); active.value = false; scene.value?.exit(); feedback.value = answer.session.state.feedback }
+    if (responseCurrent(token, key) && answer.ok && answer.session && answer.session.journeyId === current.journeyId
+      && session.value?.journeyId === current.journeyId && answer.session.revision >= session.value.revision) {
+      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId })
+      if (answer.session.state.status === 'complete') { clearHeld(); active.value = false; scene.value?.exit(); feedback.value = answer.session.state.feedback; void lookupQualification(answer.session.journeyId) }
       else if (answer.session.state.status !== 'running') { clearHeld(); active.value = false; boarding.value = false; feedback.value = answer.session.state.feedback || 'The server paused this lesson. Review its state before resuming.' }
     } else if (responseCurrent(token, key) && !answer.ok) {
-      applyResponse(answer, token, key); clearHeld(); active.value = false; boarding.value = false
-      if (answer.session?.state.status === 'running') void lifecycle('pause', answer.session)
+      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId }); clearHeld(); active.value = false; boarding.value = false
+      if (session.value?.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.state.status === 'running') void lifecycle('pause', answer.session)
       if (answer.code === 'assessment_retained') feedback.value = 'Your passed assessment is retained by the server; this course will not replace it with another attempt.'
+    } else if (responseCurrent(token, key) && answer.ok && answer.session
+      && (answer.session.journeyId !== current.journeyId || session.value?.journeyId !== current.journeyId || answer.session.revision < (session.value?.revision ?? 0))) {
+      clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+      feedback.value = 'The saved lesson changed while controls were in flight. Reconnect and check it before continuing.'
     }
   } catch (error) {
     if (responseCurrent(token, key)) {
@@ -206,18 +348,28 @@ async function sendFrames(): Promise<void> {
     }
   } finally {
     controlInFlight = false
-    if (pauseAfterControl) { const queued = pauseAfterControl; pauseAfterControl = null; void lifecycle('pause', queued.latest ?? queued.prior, true, false) }
+    if (pauseAfterControl) {
+      const queued = pauseAfterControl; pauseAfterControl = null
+      const pauseState = queued.latest ?? queued.prior
+      const canApplyPause = !disposed && responseCurrent(token, key) && session.value?.journeyId === queued.prior.journeyId
+      if (pauseState.state.status === 'running') void lifecycle('pause', pauseState, !canApplyPause, canApplyPause)
+    }
     // The buffer is a rolling window of at most five 100 ms frames, so old input is bounded and discarded.
   }
 }
 
 function onKey(event: KeyboardEvent, down: boolean): void {
   const key = event.key.length === 1 ? event.key.toLowerCase() : event.key
-  if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'w', 'a', 's', 'd'].includes(key) || !active.value) return
+  if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'w', 'a', 's', 'd'].includes(key)) return
+  if (!down) {
+    if (keys.delete(key)) updateHeld()
+    return
+  }
+  if (!active.value) return
   const target = event.target as HTMLElement | null
-  if (target?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(target?.tagName ?? '')) return
+  if (target?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName ?? '')) return
   event.preventDefault()
-  if (down) keys.add(key); else keys.delete(key)
+  keys.add(key)
   updateHeld()
 }
 function touchDown(control: TouchControl, event: PointerEvent): void {
@@ -235,6 +387,7 @@ function reducedChanged(): void { scene.value?.setReducedMotion(reduced?.matches
 watch(contextKey, async () => {
   const old = session.value
   clearHeld(); active.value = false; boarding.value = false; generation++
+  qualificationRequest++; qualificationReply.value = null; qualificationJourney.value = null; qualificationBusy.value = false; qualificationMessage.value = 'Checking simulated qualification status…'
   retainedPass.value = false; webglUnavailable.value = false; assessment.value = 'pending'; online.value = true
   scene.value?.dispose(); scene.value = null; route.value = null; session.value = null; serverState.value = null; visualState = null
   if (old && old.state.status === 'running') {
@@ -262,7 +415,7 @@ onBeforeUnmount(() => {
     if (controlInFlight) pauseAfterControl = { prior }
     else void lifecycle('pause', prior, true, false)
   }
-  disposed = true; mounted = false; generation++
+  disposed = true; mounted = false; generation++; qualificationRequest++
   clearHeld(); observer?.disconnect(); observer = null
   window.removeEventListener('keydown', keyDown); window.removeEventListener('keyup', keyUp); window.removeEventListener('blur', windowBlur)
   document.removeEventListener('visibilitychange', visibility); reduced?.removeEventListener?.('change', reducedChanged)
@@ -283,6 +436,13 @@ onBeforeUnmount(() => {
       <p>{{ feedback }}</p>
       <small v-if="serverState">Assessment: {{ assessment }} · checkpoint {{ Math.min(serverState.checkpointIndex + 1, route?.checkpoints.length ?? 1) }} of {{ route?.checkpoints.length ?? '—' }}.</small>
       <small v-if="retainedPass || (complete && assessment === 'passed')">This passed result is retained; this course will not replace it with another attempt.</small>
+    </section>
+    <section class="qualification-status" aria-live="polite">
+      <strong>Simulated driving qualification</strong>
+      <p>This is an in-game qualification for simulated practice, not a real driving licence.</p>
+      <p>{{ qualificationMessage }}</p>
+      <button v-if="qualificationClaimAvailable" type="button" :disabled="!canClaimQualification" @click="claimQualification">{{ qualificationBusy ? 'Checking…' : 'Claim simulated qualification' }}</button>
+      <small>Starter vehicle permissions and delivery are being connected.</small>
     </section>
     <div class="lesson-actions">
       <button v-if="(!session && !retainedPass) || (complete && assessment !== 'passed')" type="button" :disabled="!canStart" @click="startLesson">{{ busy ? 'Loading…' : complete ? 'Practise again' : 'Start practice' }}</button>
@@ -311,6 +471,11 @@ onBeforeUnmount(() => {
 .course-caption { position: absolute; inset: auto 10px 8px; margin: 0; padding: 5px 8px; border-radius: 8px; background: #132431d9; color: white; font-size: 11px; }
 .scene-fallback { position: absolute; inset: 25% 12px auto; text-align: center; color: #27333a; font-size: 13px; }
 .lesson-status { padding: 12px; border-radius: 12px; background: color-mix(in srgb, var(--app-tint, #3783a4) 7%, white); }
+.qualification-status { display: grid; gap: 6px; padding: 12px; border: 1px solid color-mix(in srgb, var(--app-tint, #3783a4) 22%, #d9e1e5); border-radius: 12px; background: #fff; }
+.qualification-status strong { font-size: 14px; }
+.qualification-status p { margin: 0; font-size: 12px; line-height: 1.45; }
+.qualification-status small { color: var(--c-muted, #5d6870); font-size: 11px; line-height: 1.45; overflow-wrap: anywhere; }
+.qualification-status button { justify-self: start; min-height: 44px; padding: 9px 13px; border: 0; border-radius: 10px; background: #216d84; color: white; font: inherit; font-weight: 700; }
 .lesson-status strong { display: block; font-size: 15px; }
 .lesson-status p { margin: 5px 0; line-height: 1.4; font-size: 13px; }
 .lesson-status small { display: block; font-size: 11px; line-height: 1.45; color: var(--c-muted, #5d6870); }

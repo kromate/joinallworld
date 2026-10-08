@@ -27,6 +27,26 @@ type DrivingRecord = {
 }
 type LivingWorldCollection = Record<string, unknown> & { driving?: Record<string, unknown> }
 
+/** Internal evidence reader: reads committed authority without pausing, repairing or creating a row.
+ * false means the original source must remain quarantined; null means no passed assessment.
+ * This is not a browser-supplied completion claim.
+ */
+export function readDrivingQualificationEvidence(db: Db, publicId: string): {
+  journeyId: string; cityId: CityId; location: string; routeId: string; routeVersion: string; earnedAt: number
+} | null | false {
+  const root = db.livingWorld
+  if (root === undefined) return null
+  if (!isRecord(root)) return false
+  if (!Object.hasOwn(root, 'driving')) return null
+  if (!isRecord(root.driving)) return false
+  if (!Object.hasOwn(root.driving, publicId)) return null
+  const row = savedRecord(root.driving[publicId], publicId)
+  if (!row) return false
+  if (row.state.status !== 'complete' || row.state.assessment !== 'passed') return null
+  return { journeyId: row.journeyId, cityId: row.cityId, location: row.location,
+    routeId: row.state.routeId, routeVersion: row.state.routeVersion, earnedAt: row.updatedAt }
+}
+
 /** Storage reader is intentionally strict. Invalid rows are refused, never silently reset. */
 function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
   const recordKeys = ['v', 'publicId', 'journeyId', 'cityId', 'location', 'createdAt', 'updatedAt', 'lastInputAt', 'creditMs', 'revision', 'nextSequence', 'state', 'lastPacket']

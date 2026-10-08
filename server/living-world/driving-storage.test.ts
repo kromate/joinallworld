@@ -32,3 +32,23 @@ test('livingWorld saves split losslessly and one actor update writes only its en
   restarted.ingest('livingWorld', JSON.stringify(committed))
   assert.deepEqual(JSON.parse(restarted.text('livingWorld')!), committed)
 })
+
+test('adding a qualification preserves existing driving and future fields; claim writes only its actor entry', () => {
+  const saved = { driving: { ada: { revision: 3 }, bola: { revision: 8 } }, qualifications: {}, future: { keep: true } }
+  const text = JSON.stringify(saved), split = splitText('livingWorld', text)
+  assert.deepEqual(markerIds(split.rootText), ['driving', 'qualifications'])
+  assert.equal(assembleText(split.rootText, id => split.maps.find(map => map.id === id)?.entries ?? []), text)
+  const layers = new MemoryLayers(); layers.ingest('livingWorld', text)
+  const layer = new Layer(layers)
+  const view = layer.get('livingWorld') as { qualifications: Record<string, unknown> }
+  Object.defineProperty(view.qualifications, 'ada', { value: { v: 1, publicId: 'ada', qualification: { id: 'district-driving', version: 1, evidenceJourneyId: 'passed-journey', earnedAt: 100, status: 'active' }, courseId: PRACTICE_COURSE.id, courseVersion: PRACTICE_COURSE.version, cityId: 'lagos' }, enumerable: true, configurable: true, writable: true })
+  const changes = layer.changes()
+  assert.deepEqual(changes.map(change => [change.root, change.maps.map(map => [map.id, map.puts.map(put => put.key), map.deletes])]), [[null, [['qualifications', ['ada'], []]]]])
+  const undo = layers.apply(changes)
+  const committed = JSON.parse(layers.text('livingWorld')!) as typeof saved
+  assert.deepEqual([committed.driving, committed.future], [saved.driving, saved.future])
+  const restarted = new MemoryLayers(); restarted.ingest('livingWorld', JSON.stringify(committed))
+  assert.deepEqual(JSON.parse(restarted.text('livingWorld')!), committed)
+  for (let i = undo.length - 1; i >= 0; i--) undo[i]?.()
+  assert.equal(layers.text('livingWorld'), text, 'failed claim restores the exact prior layout')
+})

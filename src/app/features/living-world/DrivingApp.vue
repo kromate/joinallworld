@@ -349,13 +349,14 @@ function onKey(event: KeyboardEvent, down: boolean): void {
   const key = event.key.length === 1 ? event.key.toLowerCase() : event.key
   if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'w', 'a', 's', 'd'].includes(key)) return
   if (!down) {
-    if (keys.delete(key)) updateHeld()
+    if (keys.delete(key)) { updateHeld(); event.preventDefault(); event.stopPropagation() }
     return
   }
   if (!active.value) return
+  if (event.ctrlKey || event.metaKey || event.altKey) return
   const target = event.target as HTMLElement | null
   if (target?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target?.tagName ?? '')) return
-  event.preventDefault()
+  event.preventDefault(); event.stopPropagation()
   keys.add(key)
   updateHeld()
 }
@@ -385,7 +386,7 @@ watch(contextKey, async () => {
 })
 onMounted(() => {
   mounted = true; disposed = false
-  window.addEventListener('keydown', keyDown); window.addEventListener('keyup', keyUp); window.addEventListener('blur', windowBlur)
+  window.addEventListener('keydown', keyDown, true); window.addEventListener('keyup', keyUp, true); window.addEventListener('blur', windowBlur)
   document.addEventListener('visibilitychange', visibility)
   reduced?.addEventListener?.('change', reducedChanged)
   if (typeof ResizeObserver !== 'undefined') { observer = new ResizeObserver(resize); if (canvas.value) observer.observe(canvas.value) }
@@ -404,7 +405,7 @@ onBeforeUnmount(() => {
   }
   disposed = true; mounted = false; generation++; qualificationRequest++
   clearHeld(); observer?.disconnect(); observer = null
-  window.removeEventListener('keydown', keyDown); window.removeEventListener('keyup', keyUp); window.removeEventListener('blur', windowBlur)
+  window.removeEventListener('keydown', keyDown, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', windowBlur)
   document.removeEventListener('visibilitychange', visibility); reduced?.removeEventListener?.('change', reducedChanged)
   scene.value?.dispose(); scene.value = null
 })
@@ -477,5 +478,6 @@ button:disabled { opacity: .48; }
 .controls .throttle { background: #26764e; }
 .controls .brake { background: #a33e3a; }
 @media (min-width: 720px) { .driving-app { max-width: 780px; margin: auto; } .driving-view { height: 390px; } .controls { grid-template-columns: 1fr 1fr 1fr; } .wheel-controls { grid-column: auto; } }
+@media (max-height: 430px) and (min-width: 481px) { .driving-view { height: clamp(120px, 35vh, 180px); height: clamp(120px, 35svh, 180px); min-height: 120px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
 </style>

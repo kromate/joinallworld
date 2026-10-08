@@ -1,0 +1,60 @@
+# Natural Earth 10m Admin 1 partition research
+
+This is a read-only feasibility review for a **separate global Admin 1 product**. It does not raise the existing per-country fine limits, add providers, change country IDs, or make any gameplay/source-currentness claim. The country directory and its IDs remain the parent identity source; a partition is a child product containing Natural Earth Admin 1 source features without clipping, dissolving, simplification, or relabeling.
+
+## Pinned source found
+
+Natural Earth's [official 10m Admin 1 page](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/) describes “over 4,500” first-order internal administrative divisions, offers the states/provinces product, and marks the theme beta. Its download page states these are boundaries/polygons for all but a few tiny countries. It also explicitly says the default view is de facto and that keeping the layer current is difficult because countries regularly divide and combine units.
+
+At the pinned repository commit `ca96624a56bd078437bca8184e78163e5039ad19`, GitHub has the source file at:
+
+```text
+https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_1_states_provinces.geojson
+```
+
+The GitHub file page advertises **38.8 MB** and identifies the exact full commit/path; it is a repository GeoJSON, so no shapefile conversion or ZIP fallback is needed for a future capture. GitHub's regular file page does **not** display the Git blob object SHA, and the Git tree/contents API endpoint could not be read through the permitted web reader. The page-reader could not establish the exact object pin; the subsequent bounded API capture below resolves that metadata. The display size remains distinct from the exact integer byte count.
+
+For comparison only, the same commit exposes the source shapefile family at `10m_cultural/ne_10m_admin_1_states_provinces.{shp,dbf,shx,prj}` with GitHub-advertised file sizes 20 MB, 14.5 MB, 36 KB, and 145 bytes respectively. The 145-byte `.prj` declares WGS 1984 geographic coordinates. The public Natural Earth download page currently lists a 14.22 MB 5.1.1 ZIP; that mutable download is not the pinned commit object and must not be substituted. At this commit the repository-level `VERSION` says `5.2.0-pre`, while the layer-specific `ne_10m_admin_1_states_provinces.VERSION.txt` says `5.1.1`; use the layer-specific version as the product version and retain the full commit as the immutable source release. The pinned [license file](https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/LICENSE.md) declares Natural Earth map data public domain. This package-level grant simplifies local capture, while its accuracy/content disclaimer still applies.
+
+## Coverage and semantics
+
+Natural Earth gives only a lower bound (“over 4,500”) on current public product coverage, not a frozen count for this commit. Some tiny countries, Antarctica, and some disputed areas are absent from Admin 1; the product page says so. No exact per-country count or denominator should be frozen from this page. The eventual bounded source audit must measure the actual feature count, exact byte count, geometry/position totals, number of country-code groups, null/unmatched identities, and final partition counts from the captured source. Output conservation must prove every valid input feature appears once in exactly one output partition or in an explicit retained exception bucket; no filtering by unit cap or name is allowed.
+
+The [Admin 1 product documentation](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/) identifies the theme as beta, states that it does not cover every small country, notes missing/uncertain names, and says statistical codes are incomplete. The same page warns that the default worldview is de facto (“who controls the territory”), while the broader Natural Earth page offers optional country POV variants. The source provider's own [issue example](https://github.com/nvkelso/natural-earth-vector/issues/926) shows the distinction concretely: a Crimea feature with `adm0_a3=RUS` and `iso_a2=RU` while `iso_3166_2=UA-43`. Such metadata is not an accidental conflict to auto-correct; preserve the source's competing fields and label the source's default POV. The layer is cartographic reference data, not a legal sovereignty determination.
+
+The same provider issue example exposes `NE_ID` and `adm1_code` among the feature properties. A Natural Earth forum post reports `adm1_code` present in all 3,632 features of the older v1.4 release, but says those codes can still be dirty; that is not proof of uniqueness or stability for this later commit. Natural Earth's docs call statistical codes incomplete. Treat the pinned feature key as a source-scoped key only: at ingestion, require `NE_ID` present/unique (or stop and request a different reviewed key), preserve `adm1_code` as a secondary source field, and do not use names, HASC, ISO 3166-2, FIPS, or `adm1_code` alone as implicit cross-release identity. A later release must be a new reviewed source snapshot; retain IDs for exact unchanged `NE_ID` keys and require explicit migration assignments/retirements for key changes, splits, merges, or disappearances. Never fuzzy-match or resurrect retired IDs.
+
+## Safe parent-country linkage
+
+An Admin 1 partition must attach a feature to a country by source codes, not name similarity or point-in-polygon inference:
+
+1. Bind the partition to the exact Natural Earth Admin 0 source release already represented by the immutable country-directory manifest. Require exactly one Admin 0 parent feature for a key and a valid existing country ID.
+2. Use the Admin 1 feature's exact `adm0_a3` code to match the same release's Admin 0 record's `ADM0_A3` code, then follow that exact Admin 0 record to its already-established country-directory identity. This is the source's intended alpha-3 linkage; it keeps the boundary's own de facto POV and does not change the country ID.
+3. If `adm0_a3` is null, nonstandard, unmatched, or maps to multiple Admin 0/country identities, retain the entire polygon under a machine-readable `unlinked`/`ambiguous` exception with the original properties and source key. Do not fall back to `adm1name`, `admin`, ISO2, another source's country code, or geographic containment to force a match. A future explicit code crosswalk needs review and its own provenance.
+4. A country may have any number of source features, including more than the current 32-unit country fine pilot cap. The global product partitions these features into bounded files while preserving one output record per source feature; file partition size is a storage/runtime bound, not a cap that drops or combines admin units.
+
+The provider example shows why the direct same-source join matters: country fields can intentionally follow the default de facto POV while other region codes suggest another state. That should remain visible in the output and in the country grouping evidence. Admin 0 identities and Admin 1 source feature IDs remain separate namespaces.
+
+## Recommended bounded product contract
+
+Use a separate, versioned source/manifest/product namespace such as `world/admin1-partition-v1`, with the full source commit, exact repository path, exact captured bytes/SHA-256, expected Git blob SHA/byte length once obtained, layer-specific version, Natural Earth public-domain evidence, source attribution, and declared default POV. Keep the country-directory manifest hash as parent context. Each partition file should store whole original geometries and untouched bounded properties keyed by `NE_ID`; a compact global index should bind each key to exactly one partition and record the `adm0_a3` → exact Admin 0 → parent country-ID join result. Keep unmatched/ambiguous source rows in an explicit exception collection and include them in total-feature conservation. Manifest publication should be immutable and manifest-last, with all index, geometry, receipt, and output size budgets preflighted before any write.
+
+The source is about 38.8 MB in GeoJSON, far beyond the existing per-country source cap. Before a one-time local capture, first read Git tree metadata to pin the exact Git blob SHA and byte size and then set explicit source/network/disk, parsed-feature, coordinate, sidecar, worker-memory, wall-time, and output-size caps based on that source. Exact advertised input bytes are now known from the captured GitHub metadata below, but no actual feature or output denominator is asserted before geometry capture. The ingest should use a streaming/feature-bounded parser or a supervised bounded worker; it should never create an uncapped extra copy. A future capture must independently verify raw bytes and content, measure actual feature and geometry denominators, validate all keys and joins, and produce the full source-index and partition hashes. Do not build or publish from the current research note alone.
+
+## Metadata-only resolution acceptance
+
+A single bounded GitHub contents request at the exact commit succeeded after the web reader could not retrieve the API. It measured **1,278 response-body bytes**, HTTP 200, with no redirect, compression or retry. Its 64 KiB pre-contact reservation was fsynced before contact; the completed response releases only the unused reservation. No geometry was downloaded. Evidence is `.cache/world-build/evidence/admin1-resolution-research/{source-api.json,receipt.json,attempt.jsonl}`. An initial local command failed absolute-path admission before any network or audit creation; it is not a second transport attempt.
+
+- Exact advertised GeoJSON size: **40,726,851 bytes**.
+- Git blob SHA-1: **`4a8438f98ac7dfec7dc1739b1eaf91398ad33f22`**, not a raw payload SHA-256.
+- Captured metadata SHA-256: **`74a41e9fa7961e9d790dd6c011c6531db10271a2ff307c78c1d89195e568f7ca`**.
+- Exact raw URL: `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_1_states_provinces.geojson`.
+- GitHub metadata uses `encoding: none` and an empty embedded content field. Actual geometry count, raw SHA-256, positions, topology and partitions remain unmeasured.
+
+`admin1-source-candidate.json` freezes these discovery facts with `rawSourceSha256: null`, `sourceUnitCount: null` and `geometryDownloaded: false`. Independent reconstruction verifies the metadata hash/body, size, blob ID and exact URL. Do not treat this candidate as a SourceRecord or compiled pack.
+
+## Next implementation
+
+Implement a separate pure partition planner/validator with labelled synthetic feature rows that exercises unique `NE_ID` admission; exact same-release `adm0_a3`→Admin 0 source-code joins; unmatched/ambiguous rows retained; protected Nigeria exclusion; >32 features for one country partitioned without loss; exact one-time feature conservation; immutable parent binding; and stable IDs/migration requirements under key changes. Freeze aggregate input/features/positions/properties, per-asset and output/index limits independently of the old fine product. Whole-feature/polygon grouping must preserve geometry; an individual geometry above asset limits needs its own bounded reconstruction/LOD representation or a named exception, never silent clipping or dropped units.
+
+Then implement separately bounded, audited one-time source capture and supervised inspection. Verify both the Git object digest (`sha1("blob " + decimalLength + NUL + rawBytes)`) and actual byte length, compute the raw SHA-256, freeze the resulting SourceRecord, and measure all source/key/join/geometry denominators before production partition budgets are accepted. Reuse the captured metadata instead of requerying it. Preserve country-directory IDs, existing geoBoundaries fine outputs and Nigeria; this is a new Natural Earth administrative representation, not an identity replacement or gameplay integration.

@@ -53,9 +53,15 @@ node --experimental-strip-types world/fine-campaign-cli.ts run world/fine-campai
 
 Current acceptance is 285 integrated Node tests and world TypeScript. The prior preview build remains accepted; no client import graph changed. Actual browser checks at 586×804 verify six Djibouti regions and visually inspect Arta, with zero console errors. First/repeat and independent receipts are `fine-africa-pilots-*.json`, preparation evidence is `fine-preparation-*.json`, and screenshot is `djibouti-arta-preview.jpg` under `.cache/world-build/evidence/`.
 
+## Libya expansion acceptance
+
+The separate `fine-campaign-africa-expansion.json` adds reviewed Libya while preserving the two earlier registry files and their immutable ledgers. Actual first/repeat reports match: **258 units, three compiled, 254 exceptions, one protected Nigeria, zero pending/network**. Plan `b0d1ec87ab2386ce3a7edec5da2c4bf72a7a7439694ae6f910be34e9962f3bc4`; report `cecbc1e802322b88b9bd4d1043e6e1f6c18bd22d6aa022caf66b5ce5c8544e20`. Libya manifest `3c8994beebc35240e405b38b7ffc8e90671eb22f03ae2493ce49b1117465d613` conserves 22 districts and 1,925 positions, 105,351 logical bytes in 27 referenced files. The reusable independent verifier checks full geometry, keys/names/IDs, assets, coverage, topology and the parent hierarchy without compiler imports; it also reproduces Rwanda and Djibouti. Browser at actual 586×804 verifies all 22 divisions and visually inspects Benghazi, with zero console errors.
+
+Replace the registry argument in the preceding campaign commands with `world/fine-campaign-africa-expansion.json` and use `--max-jobs 3` to verify this exact reviewed queue. No metadata/source refresh, old-output reinterpretation or Nigeria replacement occurs. Evidence is `fine-africa-expansion-{first,repeat,independent-verification}.json`, `libya-fine-independent-verification.json`, `libya-benghazi-preview.jpg` and `fine-independent-verifier-tests.*` under `.cache/world-build/evidence/`.
+
 ## Next implementation ownership
 
-1. Select another explicit, license-reviewed African batch within remaining aggregate acquisition/cache quotas. A candidate URL or pointer does not authorize geometry. Ghana remains excluded.
+1. Implement the distinct Natural Earth global Admin 1 partition product described in [ADMIN1-PARTITION-RESEARCH.md](ADMIN1-PARTITION-RESEARCH.md). Exact metadata is captured; synthetic contracts, bounded geometry capture and measured denominators remain next. Further per-country inputs need original-license evidence; [SOURCE-ADMISSION-RESEARCH.md](SOURCE-ADMISSION-RESEARCH.md) records the remaining World Bank/Census gaps. Ghana stays excluded.
 2. Research a replacement Namibia version with matching original metadata and source geometry. Preserve the old terminal record, hashes, attempts and source; a newly reviewed version gets a new request identity.
 3. Implement a distinct bounded representation for layers exceeding source/unit/position caps. Preserve whole features, identities and old products; do not simply raise pilot limits.
 4. Add deeper administrative/settlement coverage policies, terrain datum conversion and climate/terrain attachment, then a bounded resumable supervisor. Completed preparation does not automatically add a source to the reviewed compile registry.

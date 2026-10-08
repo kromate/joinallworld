@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "purpose": "local-fine-preparation-and-compilation",
+  "preparationConfig": {
+    "path": "world/fine-promotion-libya.json",
+    "sha256": "09d8ce7a44cfb0a1500deac9f4cfb9eb17eddc55ba111e8a0b76c6e8012e631c"
+  },
+  "seedCampaignConfig": {
+    "path": "world/fine-campaign-africa-pilots.json",
+    "sha256": "b139c4c8981987a165b054dc040a09e4ab6ed26f7651174c19ee9cb3cc7fcb34"
+  },
+  "lifetimeDurationMs": 600000,
+  "maxCycles": 4,
+  "stageDurationMs": 120000,
+  "preparationMaxJobs": 1,
+  "compilationMaxJobs": 3,
+  "retryWaitMs": 60000,
+  "cacheOnly": true
+}

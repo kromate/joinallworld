@@ -8,4 +8,9 @@ export const drivingPractice = definePanel({
   group: 'life', live: false,
   component: defineAsyncComponent(() => import('./DrivingApp.vue')),
 })
-export const LIVING_WORLD_PANELS: readonly VuePanel[] = [drivingPractice]
+export const barberPractice = definePanel({
+  id: 'barber-practice', title: 'Barber practice', icon: '✂️', placement: 'phone', order: 34.6,
+  group: 'life', live: false,
+  component: defineAsyncComponent(() => import('./BarberApp.vue')),
+})
+export const LIVING_WORLD_PANELS: readonly VuePanel[] = [drivingPractice, barberPractice]

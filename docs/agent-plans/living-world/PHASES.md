@@ -120,3 +120,10 @@ Maintain one tracker and link detailed logs/screenshots rather than duplicating 
 `Unit | outcome | owner/model/effort | branch/source SHA | implementation state | test/review evidence | preview status | production status | blocker | next action`
 
 Use `proposed`, `implementing`, `verified at named level`, or `blocked` for units; use `active`, `blocked`, `awaiting direction` or `paused by user` for the goal. Record production separately as `not released`, `released but verification pending`, `verified at build`, or `rolled back`. Each accepted unit records changed paths, contract versions, tested environment, elapsed time/retries where available, live observation results and unresolved risks. Token/cost data stays unknown when unavailable. Never close the programme using a subset of its acceptance requirements or claim unattended continuation without a real runtime facility.
+
+### Supplemental exact-source evidence — 8 October 2026
+
+| Unit | Outcome | Owner/model | Branch/source | Test/review evidence | Preview/production | Next action |
+| --- | --- | --- | --- | --- | --- | --- |
+| StandIn destination boundary / privacy helpers | Verified at narrow unit level | Sol gpt-6.1-sol; Luna gpt-6-luna implementation | codex/living-world c55156d6 | 13/13 Node24.19,291.84ms; fake body/plain-object only | Not released; no physical/account API acceptance | Pin actual pose assets; trusted lifecycle allocation and Node/Worker route checks |
+| Startup attribution | Observed size failure | Sol gpt-6.1-sol | c55156d6 | Ordinary observer build27.32s; [receipt](startup-attribution-c55156d6.json);615756 raw/24staticchunks,756 over | Not released | Changed two-file loader candidate through exact full CI; no cap waiver |

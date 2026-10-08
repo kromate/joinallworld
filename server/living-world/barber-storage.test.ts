@@ -153,7 +153,13 @@ test('barber result, once receipts, tool debit and wallet survive Node storage l
     assert.ok(owner?.cities.lagos)
     owner.cities.lagos.state.cash = 120
   })
+  const settledFunding = await host.request('/api/life?city=lagos', undefined, player.cookie)
+  assert.equal(settledFunding.status, 200)
+  assert.equal((await settledFunding.json() as { state: { cash: number } }).state.cash, 120,
+    'settle the fixture balance through the production life route before taking rollback snapshots')
   const fundedWallet = await wallet(host, player), upgradeRow = await row(host, player)
+  assert.equal((fundedWallet.ledger as unknown[]).length, (paidWallet.ledger as unknown[]).length + 1,
+    'wallet settlement records its correction before the upgrade transaction starts')
   const upgradeBody = { cityId: 'lagos', requestId: requestId(now.value) }
   const failedReceipt = await receipt(host, player, upgradeBody.requestId)
   assert.equal(failedReceipt, undefined)

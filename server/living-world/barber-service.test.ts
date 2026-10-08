@@ -132,6 +132,10 @@ test('NPC mannequin lessons require active strokes, then atomically pay once and
     assert.ok(owner?.cities.lagos)
     owner.cities.lagos.state.cash = 120
   })
+  // This deliberately seeded balance is only a purchase-path fixture, not proof of delivery earnings.
+  // Settle it through the canonical life reader before measuring the upgrade ledger: wallet.sanitize
+  // records the mismatch between this test-only balance and the prior ledger as a correction line.
+  assert.equal(await cash(f, player), 120, 'the fixture funding is visible after canonical settlement')
   const beforeUpgrade = await wallet(f, player), upgradeBody = { cityId: 'lagos', requestId: identifier(f) }
   const [upgraded, upgradeRetry] = await Promise.all([post(f, '/upgrade', upgradeBody, player), post(f, '/upgrade', upgradeBody, player)])
   assert.deepEqual([upgraded.ok, upgradeRetry.ok, [upgraded.duplicate, upgradeRetry.duplicate].filter(Boolean).length, upgraded.starterTool, upgradeRetry.starterTool], [true, true, 1, true, true])

@@ -13,11 +13,19 @@ witnesses plus invalid admission, stricter inherited limits and fail-closed live
 RSS-measurement failure. All checks are serialized through the existing heavy
 slot; no browser/server, acquisition, source-attempt increment or game write.
 Evidence is under `.cache/world-build/evidence/`; retain earlier failed experiments.
-Final receipts: `index-resource-exact.json` / `.stderr`,
-`index-guarded-positive-verified.json` / `.stderr`, and
-`index-identity-stress-verified.json` / `.stderr`. The focused receipt binds the
+Current typed-source receipts: `index-resource-typescript.json` / `.stderr`,
+`index-guarded-positive-typescript.json` / `.stderr`, and
+`index-identity-stress-typescript.json` / `.stderr`. The focused receipt binds the
 executed guard/witness/test sources; the separate acceptance binding records
 positive/stress receipt hashes and the unchanged feature helpers.
+
+GRAPHICS' distinct PR22 CI37845576239 caught the inherited tracked capacity `.mjs`
+outside the exact release JavaScript allowlist. WORLD converted all three fixed
+workers to `.ts` and added strict types; no policy allowlist/cap changed. The
+initial World compiler exposed three typing errors, corrected before acceptance;
+earlier logs remain preserved. The clean release source gate is run on an exact
+committed Git archive to exclude real ignored caches without deleting them.
+This is a targeted repository-policy check, not a full game or release build.
 
 ```sh
 node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_resource_limits.py -v
@@ -57,7 +65,8 @@ exit cannot strand uncharged temporary output outside that experiment directory.
 Synthetic stress:19,000,177byte complete Feature parses, admits and matches a
 separate literal canonical ASCII byte/hash vector, with four positions and stable
 owner. The20,000,001byte input is rejected before decode/traversal. Observed peak
-RSS is241,888KiB (approximately236MiB) in the final receipt. This is a near-byte-cap string case, not maximum
+RSS was241,888KiB (approximately236MiB) in the initial guarded receipt; the typed
+rerun records its own peak separately. This is a near-byte-cap string case, not maximum
 node/depth/geometry/capture-row/index or whole-world throughput acceptance.
 
 ## Native heap capability correction

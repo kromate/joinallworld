@@ -17,9 +17,9 @@ import time
 
 HERE = Path(__file__).resolve().parent
 WORKERS = {
-    "capacity": HERE / "profile_feature_identity.mjs",
-    "witness": HERE / "index_resource_witness.mjs",
-    "identity-stress": HERE / "index_identity_stress.mjs",
+    "capacity": HERE / "profile_feature_identity.ts",
+    "witness": HERE / "index_resource_witness.ts",
+    "identity-stress": HERE / "index_identity_stress.ts",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 MIB = 1024 * 1024

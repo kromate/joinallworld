@@ -199,7 +199,7 @@ differences, wrong pins, selection changes and unchanged budget-only identity.
 Tests never read the actual acquisition cache/ledger/output; the fixed positive
 request values are copied into the fixture. All seven pass in the53-case run.
 
-The tracked capacity script `tooling/profile_feature_identity.mjs` invokes the
+The tracked capacity script `tooling/profile_feature_identity.ts` invokes the
 `bindConfiguredCapture` entry point, which requires retained configuration
 bytes/pin and reconstructs source identity before snapshot binding. It returns
 compiler/configuration provenance with the capture; the future ingestion hook

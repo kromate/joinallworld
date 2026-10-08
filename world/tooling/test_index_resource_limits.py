@@ -16,7 +16,7 @@ class ResourceGuardTests(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        files = ["index_resource_limits.py", "index_resource_witness.mjs", "test_index_resource_limits.py"]
+        files = ["index_resource_limits.py", "index_resource_witness.ts", "test_index_resource_limits.py"]
         print(json.dumps({"scope": "disposable resource/recovery witnesses, not durable index acceptance",
                           "sourceHashes": {file: hashlib.sha256((Path(__file__).parent / file).read_bytes()).hexdigest() for file in files},
                           "results": cls.results}, sort_keys=True))

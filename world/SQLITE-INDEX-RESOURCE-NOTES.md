@@ -37,7 +37,7 @@ cap from an after-commit size check. Preserve a durable database and WAL togethe
 never delete an existing WAL to free a reservation. The final capacity/overshoot
 and recovery contract still needs measured positive and bounded failure tests.
 
-The tracked `tooling/profile_feature_identity.mjs` verifies actual
+The tracked `tooling/profile_feature_identity.ts` verifies actual
 WAL/FULL/foreign-key settings, records Node/SQLite versions and all three physical
 file sizes, and rejects measurement errors instead of returning fabricated zero.
 Only an absent optional WAL/shared-memory file maps to zero. It inspects checkpoint

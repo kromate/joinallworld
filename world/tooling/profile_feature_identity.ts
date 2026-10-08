@@ -10,6 +10,7 @@ import { bindConfiguredCapture } from '../capture-binding.ts';
 import { parseCaptureJson } from '../capture-json.ts';
 import { readBoundedLocalFile } from '../inventory-reader.ts';
 import { canonicalJson, sha256 } from '../pack.ts';
+import type { AcquisitionRequest } from '../production-types.ts';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const pinRecord = await readBoundedLocalFile(path.join(root, 'world/regional-fanout.json'), 1_000_000);
@@ -19,30 +20,33 @@ const sourceConfigurationPin = { bytes: 1297, sha256: '7ac2f2babcab7e4dd330a2f2e
 const sourceConfigurationBytes = await readBoundedLocalFile(path.join(root, 'world/acquisition-sources.json'), 64_000);
 const temp = await mkdtemp(path.join(tmpdir(), 'allworld-feature-capacity-'));
 const dbPath = path.join(temp, 'experiment.sqlite');
-let db;
+let db: DatabaseSync | undefined;
 const began = performance.now();
-const captures = [], exceptions = {}, maximum = { bodyBytes: 0, compactVersionBytes: 0, positions: 0 };
+const captures: Array<{ requestHash: string; rows: number; [key: string]: unknown }> = [];
+const exceptions: Record<string, number> = {}, maximum = { bodyBytes: 0, compactVersionBytes: 0, positions: 0 };
 let aggregateBytes = 0, observations = 0, admitted = 0, canonicalBodyBytes = 0;
-const bytes = async (file, allowMissing = false) => {
+const bytes = async (file: string, allowMissing = false) => {
   try {
     const info = await lstat(file);
     assert.ok(info.isFile() && !info.isSymbolicLink(), 'measurement requires a regular file');
     assert.ok(Number.isSafeInteger(info.size) && info.size >= 0);
     return info.size;
   } catch (error) {
-    if (allowMissing && error?.code === 'ENOENT') return 0;
+    if (allowMissing && error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') return 0;
     throw error;
   }
 };
 const physical = async () => ({ databaseBytes: await bytes(dbPath), walBytes: await bytes(dbPath + '-wal', true), sharedMemoryBytes: await bytes(dbPath + '-shm', true) });
 try {
-  db = new DatabaseSync(dbPath);
-  const journalMode = db.prepare('PRAGMA journal_mode=WAL').get();
+  const connection = new DatabaseSync(dbPath);
+  db = connection;
+  const journalMode = connection.prepare('PRAGMA journal_mode=WAL').get()!;
   assert.equal(journalMode.journal_mode, 'wal');
   db.exec('PRAGMA synchronous=FULL; PRAGMA foreign_keys=ON;');
-  assert.equal(db.prepare('PRAGMA synchronous').get().synchronous, 2);
-  assert.equal(db.prepare('PRAGMA foreign_keys').get().foreign_keys, 1);
-  const sqliteVersion = db.prepare('SELECT sqlite_version() AS version').get().version;
+  assert.equal(db.prepare('PRAGMA synchronous').get()!.synchronous, 2);
+  assert.equal(db.prepare('PRAGMA foreign_keys').get()!.foreign_keys, 1);
+  const sqliteVersion = db.prepare('SELECT sqlite_version() AS version').get()!.version;
+  assert.ok(typeof sqliteVersion === 'string');
   assert.match(sqliteVersion, /^\d+\.\d+\.\d+$/);
   db.exec(`CREATE TABLE captures(request TEXT PRIMARY KEY, capture TEXT NOT NULL,
       sourceConfiguration TEXT NOT NULL, inputHash TEXT NOT NULL, inputBytes INTEGER NOT NULL,
@@ -59,7 +63,7 @@ try {
   const observe = db.prepare('INSERT INTO dispositions VALUES(?,?,?,?,?)');
   const captureRecord = db.prepare('INSERT INTO captures VALUES(?,?,?,?,?,?,?,?)');
   for (const pin of pins) {
-    async function readPin(ref, cap) {
+    async function readPin(ref: { path: string; bytes: number; sha256: string }, cap: number) {
       assert.ok(Number.isSafeInteger(ref.bytes) && ref.bytes > 0 && ref.bytes <= cap);
       assert.match(ref.path, /^\.cache\/world-build\/acquisitions\/[a-f0-9]{64}\/(extract\.geojson|receipt\.json)$/);
       const data = await readBoundedLocalFile(path.resolve(root, ref.path), cap);
@@ -69,7 +73,7 @@ try {
     }
     const receiptBytes = await readPin(pin.parentReceipt, 1_000_000);
     const extractBytes = await readPin(pin.parentInput, 20_000_000);
-    const receipt = parseCaptureJson(receiptBytes, { bytes: 1_000_000 });
+    const receipt = parseCaptureJson(receiptBytes, { bytes: 1_000_000 }) as { request: AcquisitionRequest };
     const requestHash = pin.parentInput.path.match(/acquisitions\/([a-f0-9]{64})\/extract\.geojson$/)?.[1];
     assert.match(requestHash, /^[a-f0-9]{64}$/);
     assert.ok(pin.parentReceipt.path.endsWith('/' + requestHash + '/receipt.json'));
@@ -110,7 +114,7 @@ try {
       exceptions: captureExceptions, transactionMs: performance.now() - start,
       ...await physical() });
   }
-  const count = sql => Number(db.prepare(sql).get().n);
+  const count = (sql: string) => Number(connection.prepare(sql).get()!.n);
   const uniqueVersions = count('SELECT COUNT(*) n FROM versions');
   const uniqueKeys = count('SELECT COUNT(DISTINCT key) n FROM versions');
   const conflictedKeys = count('SELECT COUNT(*) n FROM (SELECT key FROM versions GROUP BY key HAVING COUNT(*)>1)');
@@ -118,12 +122,12 @@ try {
   assert.equal(observations, count('SELECT COUNT(*) n FROM dispositions'));
   assert.equal(observations, admitted + Object.values(exceptions).reduce((a, b) => a + b, 0));
   for (const capture of captures) {
-    const row = db.prepare('SELECT COUNT(*) n, MIN(ordinal) first, MAX(ordinal) last FROM dispositions WHERE request=?').get(capture.requestHash);
+    const row: { n?: unknown; first?: unknown; last?: unknown } = connection.prepare('SELECT COUNT(*) n, MIN(ordinal) first, MAX(ordinal) last FROM dispositions WHERE request=?').get(capture.requestHash)!;
     assert.equal(Number(row.n), capture.rows);
     assert.equal(row.first, capture.rows ? 0 : null); assert.equal(row.last, capture.rows ? capture.rows - 1 : null);
   }
   const preCheckpoint = await physical();
-  const checkpoint = db.prepare('PRAGMA wal_checkpoint(TRUNCATE)').get();
+  const checkpoint = db.prepare('PRAGMA wal_checkpoint(TRUNCATE)').get()!;
   assert.equal(checkpoint.busy, 0, 'blocked checkpoint is not accepted as a completed truncate');
   assert.equal(checkpoint.log, 0); assert.equal(checkpoint.checkpointed, 0);
   const checkpointed = await physical();

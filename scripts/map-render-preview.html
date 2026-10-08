@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>City renderer preview · Nigeria</title>
+    <style>
+      :root { font: 15px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172320; background: #eef1eb; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; padding: clamp(12px, 2vw, 28px); }
+      main { width: min(1480px, 100%); margin: 0 auto; }
+      header { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin: 0 0 16px; }
+      h1 { margin: 0; font-size: clamp(22px, 3vw, 34px); letter-spacing: -.035em; }
+      header p { margin: 5px 0 0; color: #58655f; }
+      .tag { flex: 0 0 auto; padding: 6px 10px; border-radius: 999px; background: #dce8df; color: #285d3d; font-size: 12px; font-weight: 700; }
+      .layout { display: grid; grid-template-columns: minmax(220px, 285px) minmax(0, 1fr); gap: 14px; align-items: stretch; }
+      aside, .stage { border: 1px solid #d9dfd8; border-radius: 18px; background: #fff; box-shadow: 0 10px 30px #263a2f0d; }
+      aside { padding: 18px; }
+      fieldset { border: 0; padding: 0; margin: 0 0 22px; }
+      legend { margin-bottom: 10px; color: #63716b; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      select, button { font: inherit; }
+      select { width: 100%; padding: 10px 12px; border: 1px solid #ccd5ce; border-radius: 10px; color: inherit; background: white; }
+      .presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .presets button { min-height: 40px; border: 1px solid #d3dbd4; border-radius: 10px; color: #34423a; background: #f5f7f4; cursor: pointer; }
+      .presets button[aria-pressed="true"] { border-color: #2e6544; background: #e3efe6; color: #214b33; font-weight: 700; }
+      .camera-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+      .camera-controls button { min-height: 40px; border: 1px solid #ccd5ce; border-radius: 10px; color: #285d3d; background: #f4f7f3; font-weight: 650; cursor: pointer; }
+      .note { margin: 0; color: #68756f; font-size: 12px; }
+      #status { min-height: 44px; padding: 10px 11px; border-radius: 10px; color: #43534a; background: #f1f4f0; font-size: 13px; }
+      #status[data-kind="error"] { color: #8b302b; background: #fff0ed; }
+      .stats { display: grid; gap: 8px; margin-top: 16px; }
+      .stat { display: flex; justify-content: space-between; gap: 8px; padding-bottom: 7px; border-bottom: 1px solid #edf0ec; font-size: 12px; }
+      .stat span { color: #66736c; }
+      .stat strong { font-variant-numeric: tabular-nums; text-align: right; }
+      .stage { overflow: hidden; min-width: 0; min-height: 650px; background: radial-gradient(ellipse at 50% 15%, #fff 0, #f5f6f1 70%); }
+      #map { position: relative; width: 100%; height: min(78vh, 850px); min-height: 650px; }
+      #map:empty::before { content: "Loading production city renderer…"; position: absolute; inset: 0; display: grid; place-items: center; color: #68756f; }
+      #map > .m3 { position: absolute; inset: 0; }
+      #map canvas { display: block; }
+      @media (max-width: 760px) { body { padding: 10px; } header { align-items: start; } .layout { grid-template-columns: 1fr; } aside { order: 0; } .stage { order: 1; min-height: 58vh; } #map { height: 66vh; min-height: 420px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div><h1>Nigeria city renderer</h1><p>Production map renderer · disposable local preview state</p></div>
+        <span class="tag">VISUAL QA</span>
+      </header>
+      <div class="layout">
+        <aside aria-label="Preview controls and diagnostics">
+          <fieldset><legend>City</legend><label for="city">Choose a city</label><select id="city"><option value="lagos">Lagos</option><option value="abuja">Abuja</option><option value="kano">Kano</option></select></fieldset>
+          <fieldset><legend>Lighting preset</legend><div class="presets" role="group" aria-label="Lighting preset">
+            <button type="button" data-preset="day" aria-pressed="true">Day</button><button type="button" data-preset="dusk" aria-pressed="false">Dusk</button><button type="button" data-preset="night" aria-pressed="false">Night</button>
+          </div><p class="note" style="margin-top:9px">A fixed fixture time is applied locally; no saved player state is loaded.</p></fieldset>
+          <fieldset><legend>Camera</legend><div class="camera-controls"><button type="button" id="whole-city">Whole city</button><button type="button" id="find-me">Find me</button></div></fieldset>
+          <p id="status" role="status" aria-live="polite">Starting…</p>
+          <div class="stats" aria-label="Renderer diagnostics">
+            <div class="stat"><span>Actual preset</span><strong id="actual-preset">—</strong></div>
+            <div class="stat"><span>Render count</span><strong id="render-count">0</strong></div>
+            <div class="stat"><span>Triangles</span><strong id="triangles">—</strong></div>
+            <div class="stat"><span>Draw calls</span><strong id="calls">—</strong></div>
+            <div class="stat"><span>Scene contents</span><strong id="contents">—</strong></div>
+          </div>
+        </aside>
+        <section class="stage" aria-label="Production city map"><div id="map"></div></section>
+      </div>
+    </main>
+    <script type="module" src="../src/map3d/preview/map-render-preview.ts"></script>
+  </body>
+</html>

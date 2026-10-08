@@ -414,8 +414,9 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (run.length) runs.push(run);
     return runs;
   }
-  // The land around the state: flat, muted, under everything else, with no shore or beach of its own.
-  for (const piece of pack.context?.land ?? []) raw.shape(piece.points, -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
+  // The coastal administrative base is a backdrop, not lagoon/sea fill: keep it below the water plane.
+  // Inland bases retain the regional-ground height; the source outline and every X/Z coordinate stay exact.
+  for (const piece of pack.context?.land ?? []) raw.shape(piece.points, piece.kind === 'base' && pack.inland !== true ? WATER_Y - 0.02 : -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
   // Two sources meet at a border (Natural Earth for the countries, geoBoundaries for the states): a band along every outline closes the gaps between them (the country outlines are coarser, so their band is wider).
   for (const piece of pack.context?.land ?? []) if (piece.kind !== 'base') raw.ribbon([...piece.points, piece.points[0]!].map(([x, z]) => ({ x, y: 0, z })), piece.kind === 'country' ? 60 : 12, -0.07, piece.kind === 'country' ? CONTEXT_COLOURS.country : CONTEXT_COLOURS.state);
   for (const road of pack.context?.roads ?? []) if (road.points.length > 1) raw.ribbon(road.points.map(([x, z]) => ({ x, y: 0, z })), 1.1 * (pack.roadScale ?? 1), -0.02, CONTEXT_COLOURS.road);

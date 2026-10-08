@@ -4,7 +4,7 @@
 //   node --experimental-strip-types scripts/agent-slot.ts <heavy|server|browser> [--wait-ms N] -- <command...>
 //   node --experimental-strip-types scripts/agent-slot.ts status
 //
-// Limits: heavy 3, server 2, browser 1 (override with AGENT_SLOT_HEAVY / AGENT_SLOT_SERVER /
+// Limits: heavy 1, server 1, browser 1 (override with AGENT_SLOT_HEAVY / AGENT_SLOT_SERVER /
 // AGENT_SLOT_BROWSER). Locks are files in `$(git rev-parse --git-common-dir)/agent-slots/<kind>/<n>.lock`,
 // which every worktree of the repository shares. AGENT_SLOT_DIR replaces that directory (the tests use it).
 // AGENT_SLOT_POLL_MS sets how often a waiting command looks for a free slot (default 1000).
@@ -21,7 +21,7 @@ import { linkSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, unlin
 import { constants as osConstants, hostname } from 'node:os'
 import { join, resolve } from 'node:path'
 
-const DEFAULT_LIMITS = { heavy: 3, server: 2, browser: 1 } as const
+const DEFAULT_LIMITS = { heavy: 1, server: 1, browser: 1 } as const
 type Kind = keyof typeof DEFAULT_LIMITS
 const KINDS = Object.keys(DEFAULT_LIMITS) as Kind[]
 const isKind = (value: string): value is Kind => (KINDS as string[]).includes(value)
@@ -182,7 +182,7 @@ function status(): void {
       } else if (isStale(lock)) {
         lines.push(`  ${number}  stale, will be reclaimed${lock.state === 'held' ? `: ${describe(lock.info)}` : ''}${beyond}`)
       } else {
-        if (number <= limit) busy += 1
+        busy += 1
         lines.push(`  ${number}  ${lock.state === 'held' ? describe(lock.info) : 'being written'}${beyond}`)
       }
     }
@@ -222,6 +222,36 @@ async function acquire(kind: Kind, limit: number, waitMs: number | undefined, co
   const deadline = waitMs === undefined ? Infinity : Date.now() + waitMs
   let lastAnnounced = ''
   for (;;) {
+    // During a limit reduction, old commands can still hold slots above the new cap. Wait for
+    // those locks to finish before taking slot 1; otherwise the machine briefly exceeds the
+    // newly configured limit. Reclaim only through the same guarded stale-owner path used below.
+    const higher: { number: number; file: string }[] = []
+    let names: string[] = []
+    try { names = readdirSync(dir) } catch { /* no higher slots have been used */ }
+    for (const name of names) {
+      const match = /^(\d+)\.lock$/.exec(name)
+      if (!match) continue
+      const number = Number(match[1])
+      if (number > limit && Number.isSafeInteger(number)) higher.push({ number, file: join(dir, name) })
+    }
+    const higherHolders: string[] = []
+    for (const { number, file } of higher.sort((a, b) => a.number - b.number)) {
+      const reclaimed = reclaimIfStale(file)
+      if (reclaimed) process.stderr.write(`agent-slot: reclaimed ${kind} slot ${number} from a process that is gone${reclaimed === 'corrupt' ? '' : ` (pid ${reclaimed.pid}: ${reclaimed.command})`}\n`)
+      const lock = readLock(file)
+      if (lock.state === 'free') continue
+      if (isStale(lock)) higherHolders.push(`slot ${number}: stale lock awaiting reclaim`)
+      else higherHolders.push(`slot ${number}: ${lock.state === 'held' ? describe(lock.info) : 'a lock being written'}`)
+    }
+    if (higherHolders.length) {
+      const announcement = `agent-slot: waiting for ${kind} slot (${higherHolders.length} higher-numbered slot${higherHolders.length === 1 ? '' : 's'} active: ${higherHolders.join('; ')})`
+      if (announcement !== lastAnnounced) process.stderr.write(`${announcement}\n`)
+      lastAnnounced = announcement
+      if (Date.now() >= deadline) return undefined
+      await sleep(Math.min(pollMs, Math.max(10, deadline - Date.now())))
+      continue
+    }
+
     const holders: string[] = []
     for (let number = 1; number <= limit; number += 1) {
       const file = join(dir, `${number}.lock`)

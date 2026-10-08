@@ -11,6 +11,16 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 - A stale timestamp means contact the owner; it is not permission to take over a release.
 - User authorization: on 8 October 2026 the user requested cross-computer coordination, phased pushes, and pushes to production. Each phase still requires verification. Experiments and a dirty checkout are not release artifacts.
 
+## Memory and local work serialization — 8 October 2026
+
+The human reported desktop slowdown and requested that local agents work one after another. The shared slot CLI now defaults to **one heavy job, one QA server, and one browser lease**. All worktrees must synchronize this tooling phase before starting new work, or explicitly use AGENT_SLOT_HEAVY=1, AGENT_SLOT_SERVER=1 and AGENT_SLOT_BROWSER=1 until synchronized. Do not increase these caps under the current instruction.
+
+Run builds, type checks, simulations, source acquisitions and test suites through `scripts/agent-slot.ts heavy`; run test/dev servers through its `server` lease. Acquire and hold its `browser` lease for a bounded UI review, then close temporary owned tabs and release it. Announce the owner and purpose to the other local agents before a resource-heavy phase. Keep other workers idle or on small source reviews; do not start several builders or test/browser sessions simultaneously. Queue the next check after the prior command is terminal.
+
+Live locks from the earlier larger limits remain visible and block new admission even when they occupy slot2/3 above the new cap. Stale locks are reclaimed only through the existing guarded owner-liveness path. The regression suite passes12/12, including live high-slot blocking, safe stale recovery, signal cleanup and nested leases. A slot is a concurrency limit, not a guarantee about total RAM or unwrapped processes: preserve ownership, stop owned idle servers/previews, monitor memory pressure, and defer work if the computer slows again. Never kill another agent's unknown process or stop the user's browser tabs.
+
+WORLD stopped its broad core test and queued checks; the living-world owner confirmed its heavy chain and5194 server stopped. GRAPHICS is closing its review and5183 server. Interrupted checks have no pass claim. Production upload ownership remains WORLD while its country phase is being verified.
+
 ## Ownership and phase queue
 
 | Owner | Scope and boundary | Base / exact candidate | State and next gate |

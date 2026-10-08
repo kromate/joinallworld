@@ -158,6 +158,43 @@ test('anchors are named, parented, finite, and never duplicate the driver as a p
   }
 });
 
+test('road-car boarding door reaches the driver side and opens outward around the front hinge', () => {
+  for (const type of ['sedan', 'hatchback', 'suv', 'cab'] as const) {
+    for (const detail of VEHICLE_DETAILS) {
+      const model = buildVehicle(type, { detail });
+      try {
+        // Public anchors must retain their meaning when a host places and scales the vehicle.
+        model.object3D.position.set(7, 0.3, -4);
+        model.object3D.rotation.y = 1.1;
+        model.object3D.scale.setScalar(0.8);
+        const vehiclePoint = (node: THREE.Object3D) => model.object3D.worldToLocal(node.getWorldPosition(new THREE.Vector3()));
+        poseVehicle(model, { door: 0 });
+        model.object3D.updateMatrixWorld(true);
+        const { driver, door } = model.userData.anchors;
+        const driverPoint = vehiclePoint(driver), closedDoor = vehiclePoint(door);
+        const pivot = door.parent!;
+        const panel = pivot.getObjectByName('door-panel') as THREE.Mesh<THREE.BoxGeometry>;
+        assert.ok(panel?.isMesh, `${type}/${detail}: public door belongs to the actual panel`);
+        const centre = vehiclePoint(panel), hinge = vehiclePoint(pivot);
+        assert.ok(driverPoint.x < 0 && closedDoor.x < driverPoint.x, `${type}/${detail}: boarding door is outside the driver on the same side`);
+        assert.ok(Math.abs(driverPoint.z - centre.z) < panel.geometry.parameters.depth / 2, `${type}/${detail}: driver lies within the doorway's longitudinal span`);
+        assert.ok(hinge.z > centre.z, `${type}/${detail}: hinge is at the car's forward end`);
+        assert.ok(closedDoor.distanceTo(new THREE.Vector3(centre.x, closedDoor.y, centre.z)) < 1e-6, `${type}/${detail}: closed public approach matches the panel centre`);
+        for (const amount of [0.1, 0.25, 0.5, 0.75, 0.9, 1]) {
+          poseVehicle(model, { door: amount });
+          model.object3D.updateMatrixWorld(true);
+          const opened = vehiclePoint(door);
+          assert.ok(opened.x <= closedDoor.x + 1e-6 && opened.x < 0, `${type}/${detail}/${amount}: door never opens across the cabin`);
+          assert.ok(vehiclePoint(panel).distanceTo(new THREE.Vector3(opened.x, vehiclePoint(panel).y, opened.z)) < 1e-6, `${type}/${detail}/${amount}: anchor tracks its panel`);
+        }
+        poseVehicle(model, { door: 0 });
+        model.object3D.updateMatrixWorld(true);
+        assert.ok(vehiclePoint(door).distanceTo(closedDoor) < 1e-6, `${type}/${detail}: closed approach resets exactly`);
+      } finally { model.userData.dispose(); }
+    }
+  }
+});
+
 test('pose is deterministic, resets backwards, and retains all allocated scene resources', () => {
   const pose: VehiclePose = { distance: 18.25, steering: -0.42, bounce: 0.13, door: 0.76, brake: 0.8, indicator: 'hazard', time: 3.625 };
   const otherPose: VehiclePose = { distance: -7, steering: 0.51, bounce: -0.08, door: 0, brake: false, indicator: false, time: 0.12 };

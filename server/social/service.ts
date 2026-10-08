@@ -1,3 +1,4 @@
+import { sha256Hex } from '../../src/game/util.ts';
 import { venueFor } from '../../src/game/cities/runtime.ts';
 /**
  * OWNER: social
@@ -355,7 +356,7 @@ function buildService(ctx: RouteContext) {
   }
   const prefsOf = (p: SocialPlayerRecord): ChatPrefs => ({ groups: p.groups ?? 'friends', mentions: p.mentions ?? 'on', pictures: p.pictures ?? 'friends', introductions: p.introductions ?? 'off',
     notify: { text: p.notify?.hide !== true, groups: p.notify?.all ? 'all' : 'mentions', pausedUntil: p.notify?.until && p.notify.until > now() ? p.notify.until : null, quietDm: p.notify?.quietDm === true, quietGroups: p.notify?.noQuiet !== true } });
-  const bodyOf = (message: MessageRecord): string => (message.auto ? welcomeNote(message.start) : message.body);
+  const bodyOf = (message: MessageRecord): string => (message.deletedAt ? 'Message deleted' : message.auto ? welcomeNote(message.start) : message.body);
 
   const pub = (s: SocialCollection, id: string): PlayerRef => ({ id, name: s.players[id]?.name ?? 'Former player', ...(founderId(s) === id ? { founder: true as const } : {}) });
   const blockedEither = (s: SocialCollection, a: string, b: string): boolean => Boolean(s.players[a]?.blocked[b] || s.players[b]?.blocked[a]);
@@ -556,7 +557,8 @@ function buildService(ctx: RouteContext) {
       ...(quote ? { replyTo: quote } : {}),
       ...(reactionsOf(s, message, viewer) ? { reactions: reactionsOf(s, message, viewer) } : {}),
       ...(message.gift ? { gift: { amount: message.gift.n, ...(message.gift.r && message.from !== viewer ? { repaid: message.gift.r } : {}) } } : {}),
-      ...(picture ? { image: picture } : {}) };
+      ...(picture ? { image: picture } : {}), ...(message.version ? { version: message.version } : {}),
+      ...(message.editedAt ? { editedAt: message.editedAt } : {}), ...(message.deletedAt ? { deleted: true as const } : {}), ...(message.forwarded ? { forwarded: true as const } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
   /** A line someone wrote: not the automatic welcome note and not a system line. A chat holding only those is not yet a conversation. */
@@ -1300,11 +1302,19 @@ function buildService(ctx: RouteContext) {
      */
     send(db: Db, session: SessionRecord, body: SocialBody, picture?: { ref: ImageRef }) {
       const cid = clientId(body.clientId);
-      const message = picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
+      const { s, p, id } = enter(db, session);
+      let forwarded: MessageRecord | undefined;
+      if (body.forward !== undefined) {
+        if (picture || !isRecord(body.forward) || typeof body.forward.seq !== 'number' || !Number.isSafeInteger(body.forward.seq)) throw bad('invalid_message');
+        const source = memberConv(s, id, convId(body.forward.conv));
+        const sourceSeq = body.forward.seq;
+        forwarded = source?.messages.find((item) => item.seq === sourceSeq);
+        if (!forwarded || forwarded.deletedAt || forwarded.sys || forwarded.auto || forwarded.gift || forwarded.img || !visibleTo(s, id, forwarded)) return no('unknown_message', 'Only an available text message can be forwarded.');
+      }
+      const message = forwarded ? text(forwarded.body, LIMITS.body, 'invalid_message') : picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
       const to = body.to !== undefined ? uuid(body.to) : null, key = to ? dmId(session.publicId, to) : convId(body.conv);
       const replyAsked = body.replyTo === undefined ? 0 : typeof body.replyTo === 'number' && Number.isSafeInteger(body.replyTo) && body.replyTo > 0 ? body.replyTo : -1;
       if (replyAsked < 0) throw bad('invalid_reply');
-      const { s, p, id } = enter(db, session);
       let conv = Object.hasOwn(s.convs, key) ? s.convs[key] : null;
       const sent = conv?.messages.find((item) => item.from === id && item.cid === cid);
       if (sent && conv) {
@@ -1312,7 +1322,7 @@ function buildService(ctx: RouteContext) {
         // member or a guest whose visit ended learns nothing about it by resending an old message.
         const still = conv.members.includes(id) && (conv.kind === 'dm' || Boolean(p.convs[key]));
         if (!still) return no('not_a_member', 'You are not in that conversation.');
-        if (sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
+        if (sent.sendHash ? sent.sendHash !== sha256Hex(message) : sent.body !== message) throw ctx.fail(409, 'client_id_conflict');
         return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, sent, id), duplicate: true });
       }
       const refused = mutedRefusal(id) ?? (message ? screened(message, picture ? 'Your caption' : 'Your message') : null);
@@ -1353,7 +1363,7 @@ function buildService(ctx: RouteContext) {
       }
       // The message this one answers: only one the sender can see and that is a person's own words. Anything else is sent without a quote.
       const target = replyAsked ? conv.messages.find((item) => item.seq === replyAsked) : undefined;
-      const quoted = target && target.from && !target.sys && !target.auto && visibleTo(s, id, target) ? { seq: target.seq, from: target.from, text: quoteText(target) } : null;
+      const quoted = target && !target.deletedAt && target.from && !target.sys && !target.auto && visibleTo(s, id, target) ? { seq: target.seq, from: target.from, text: quoteText(target) } : null;
       if (picture) {
         // Only the newest pictures of a conversation are kept.
         const live = conv.messages.filter((item) => item.img && !item.img.gone), keep = settingsOf().perChat;
@@ -1361,7 +1371,7 @@ function buildService(ctx: RouteContext) {
         const day = lagosTime(now()).day;
         p.pics = { day, count: (p.pics?.day === day ? p.pics.count : 0) + 1 };
       }
-      const stored = append(s, conv, id, message, cid, false, { ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}) });
+      const stored = append(s, conv, id, message, cid, false, { ...(forwarded ? { forwarded: true as const } : {}), ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}) });
       const push: PushList = [];
       fanOut(s, conv, stored, push, null);
       notifyMentions(s, conv, id, stored, push);
@@ -1443,6 +1453,46 @@ function buildService(ctx: RouteContext) {
       } else throw bad('invalid_group_op');
       return yes('updated', { conv: summary(s, conv, id), push });
     },
+    updateMessage(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv);
+      ctx.onceId(body.clientId);
+      if ((body.op !== 'edit' && body.op !== 'delete') || typeof body.seq !== 'number' || !Number.isSafeInteger(body.seq) || body.seq < 1 || typeof body.version !== 'number' || !Number.isSafeInteger(body.version) || body.version < 0) throw bad('invalid_message_op');
+      const replacement = body.op === 'edit' ? text(body.body, LIMITS.body, 'invalid_message') : '';
+      const { s, id } = enter(db, session);
+      const conv = memberConv(s, id, key);
+      if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      const line = conv.messages.find((item) => item.seq === body.seq);
+      if (!line || !visibleTo(s, id, line)) return no('unknown_message', 'That message is not available.');
+      if (line.from !== id || line.sys || line.auto || line.gift) return no('not_allowed', 'You can only change your own messages, not payment records.');
+      if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return no('blocked', 'You cannot change messages in this chat.');
+      const push: PushList = [];
+      const outcome = ctx.once(db, session, { id: body.clientId, kind: 'message.update', fingerprint: [key, body.seq, body.op, body.version, sha256Hex(replacement)] }, () => {
+        if (line.deletedAt) return no('not_allowed', 'That message has been deleted.');
+        if ((line.version ?? 0) !== body.version) return no('message_changed', 'That message changed. Open it again before editing.');
+        if (body.op === 'edit' && (line.img || now() - line.at > 15 * 60000)) return no('edit_expired', 'Text messages can be edited for 15 minutes after sending.');
+        if (body.op === 'edit') { const refusal = mutedRefusal(id) ?? screened(replacement, 'Your message'); if (refusal) return refusal; }
+        if (!ctx.allow(`social:message-update:${id}`, 30)) return no('rate_limited', 'Wait a moment before changing another message.');
+        line.sendHash ??= sha256Hex(line.body);
+        line.body = replacement;
+        line.version = (line.version ?? 0) + 1;
+        delete line.men;
+        if (body.op === 'edit') line.editedAt = now();
+        else {
+          line.deletedAt = now(); delete line.rx; delete line.re;
+          if (line.img) { line.img.gone = true; endedIn(s).drops.ids.push(line.img.id); delete line.img; }
+        }
+        const changed = [line];
+        for (const quoted of conv.messages) if (quoted.re?.seq === line.seq) {
+          quoted.re.text = body.op === 'delete' ? 'Message deleted' : quoteText(line);
+          quoted.version = (quoted.version ?? 0) + 1;
+          changed.push(quoted);
+        }
+        for (const member of conv.members) for (const message of changed) if (visibleTo(s, member, message)) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, message, member) }]);
+        return yes('updated');
+      });
+      if (!outcome.ok) return outcome;
+      return yes('updated', { message: messageView(s, conv, line, id), ...(repeated(outcome) ? { duplicate: true } : { push }) });
+    },
     /** body: { conv, seq, emoji } — the caller's one reaction to a message; `emoji: null` takes it back. */
     react(db: Db, session: SessionRecord, body: SocialBody) {
       const key = convId(body.conv);
@@ -1453,7 +1503,7 @@ function buildService(ctx: RouteContext) {
       const conv = memberConv(s, id, key);
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
       const line = conv.messages.find((item) => item.seq === seq);
-      if (!line || line.sys || line.auto || !visibleTo(s, id, line)) return no('unknown_message', 'That message is not there any more.');
+      if (!line || line.deletedAt || line.sys || line.auto || !visibleTo(s, id, line)) return no('unknown_message', 'That message is not there any more.');
       if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return no('blocked', 'You cannot react in this chat.');
       if (!ctx.allow(`social:react:${id}`, 60)) return no('rate_limited', 'You are reacting too quickly. Wait a moment.');
       const reactions = line.rx ??= {};
@@ -1464,6 +1514,7 @@ function buildService(ctx: RouteContext) {
         reactions[id] = emoji;
       }
       if (!Object.keys(reactions).length) delete line.rx;
+      line.version = (line.version ?? 0) + 1;
       const push: PushList = [];
       for (const member of conv.members) if (visibleTo(s, member, line)) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
       // The author is told quietly, in Updates, one line for the message: "Joy and 2 others reacted". Never a toast, mail or phone notification.

@@ -10,7 +10,7 @@ import { emojiOnly, giftDetail, giftLine, pieces } from './messagesText.ts'
 import type { Message } from '../../../types/social.ts'
 
 const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean }>()
-const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; picture: [item: Message] }>()
+const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message] }>()
 const mine = computed(() => props.item.from?.id === props.meId)
 const parts = computed(() => pieces(props.item.body, props.item.mentions))
 const big = computed(() => (props.item.mentions?.length || props.item.replyTo || props.item.image ? 0 : emojiOnly(props.item.body)))
@@ -20,7 +20,28 @@ let timer: ReturnType<typeof setTimeout> | null = null
 const mineReaction = computed(() => props.item.reactions?.find((entry) => entry.mine)?.emoji ?? null)
 function show(): void { open.value = true; more.value = false }
 function hide(): void { open.value = false; more.value = false }
-function press(): void { cancel(); timer = setTimeout(show, 450) }
+let pointer: { x: number; y: number; id: number } | null = null
+function press(event: PointerEvent): void {
+  cancel()
+  if (!props.canReact || !event.isPrimary || props.item.deleted || (event.target instanceof Element && event.target.closest('button, input, textarea, select'))) return
+  if (event.currentTarget instanceof HTMLElement) event.currentTarget.setPointerCapture(event.pointerId)
+  pointer = { x: event.clientX, y: event.clientY, id: event.pointerId }
+  if (props.canReact) timer = setTimeout(show, 450)
+}
+function move(event: PointerEvent): void {
+  if (pointer && (Math.abs(event.clientY - pointer.y) > 12 || Math.abs(event.clientX - pointer.x) > 12)) cancel()
+}
+function release(event: PointerEvent): void {
+  cancel()
+  if (pointer && event.pointerId === pointer.id && event.clientX - pointer.x > 65 && Math.abs(event.clientY - pointer.y) < 25 && !props.item.deleted) reply()
+  pointer = null
+}
+function action(kind: 'edit' | 'remove' | 'forward'): void {
+  if (kind === 'edit') emit('edit', props.item)
+  else if (kind === 'remove') emit('remove', props.item)
+  else emit('forward', props.item)
+  hide()
+}
 function cancel(): void { if (timer) clearTimeout(timer); timer = null }
 function react(emoji: string): void { emit('react', props.item, mineReaction.value === emoji ? null : emoji); hide() }
 function reply(): void { emit('reply', props.item); hide() }
@@ -28,39 +49,43 @@ onBeforeUnmount(cancel)
 </script>
 
 <template>
-  <div class="bubble-wrap" :class="{ 'is-mine': mine, 'is-tail': tail }" :data-seq="item.seq" @contextmenu.prevent="canReact && show()" @pointerdown="canReact && press()" @pointerup="cancel" @pointerleave="cancel" @pointercancel="cancel">
+  <div class="bubble-wrap" :class="{ 'is-mine': mine, 'is-tail': tail }" :data-seq="item.seq" @keydown.esc="hide" @contextmenu.prevent="canReact && !item.deleted && show()" @pointerdown="press" @pointermove="move" @pointerup="release" @pointerleave="cancel(); pointer = null" @pointercancel="cancel(); pointer = null">
     <div v-if="item.gift" class="bubble is-gift" :class="{ 'is-mine': mine }">
       <span class="gift-row"><GameIcon name="coin" :size="22" /><b>{{ giftLine(item, meId) }}</b></span>
       <span v-if="giftDetail(item, meId)" class="gift-detail">{{ giftDetail(item, meId) }}</span>
       <small>{{ time }}</small>
     </div>
     <div v-else class="bubble" :class="{ 'is-mine': mine, 'is-big': big > 0, 'is-head': head }">
+      <small v-if="item.forwarded && !item.deleted">Forwarded</small>
       <b v-if="group && head && !mine && item.from" class="bubble-name">{{ item.from.name }}</b>
       <button v-if="item.replyTo" type="button" class="bubble-quote" :aria-label="`Show the message from ${item.replyTo.from?.name ?? 'someone'}`" @click="emit('jump', item.replyTo.seq)">
         <b>{{ item.replyTo.from?.name ?? 'Message' }}</b><span>{{ item.replyTo.text || 'Picture' }}</span>
       </button>
       <PictureView v-if="item.image" class="bubble-pic" :image="item.image" @open="emit('picture', item)" />
       <span v-if="item.body || !item.image" class="bubble-text" :class="{ 'is-big': big > 0 }" :style="big ? { fontSize: `${big === 1 ? 44 : big === 2 ? 36 : 30}px` } : undefined"><template v-for="(piece, index) in parts" :key="index"><button v-if="piece.mention && piece.mention.id !== 'everyone'" type="button" class="chip" :aria-label="`Open ${piece.text.slice(1)}'s card`" @click.stop="emit('player', piece.mention.id)">{{ piece.text }}</button><span v-else-if="piece.mention" class="chip is-all">{{ piece.text }}</span><template v-else>{{ piece.text }}</template></template></span>
-      <small v-if="tail">{{ time }}<template v-if="mine"> · Sent</template></small>
+      <small v-if="tail">{{ time }}<template v-if="item.editedAt && !item.deleted"> · Edited</template><template v-if="mine && !item.deleted"> · Sent</template></small>
     </div>
     <div v-if="item.reactions?.length" class="reactions" role="group" aria-label="Reactions">
       <button v-for="entry in item.reactions" :key="entry.emoji" type="button" class="reaction" :class="{ 'is-mine': entry.mine }" :aria-pressed="Boolean(entry.mine)" :aria-label="`${entry.emoji} ${entry.count}${entry.mine ? ', yours' : ''}`" :disabled="!canReact" @click="react(entry.emoji)">{{ entry.emoji }}<small>{{ entry.count }}</small></button>
     </div>
-    <button v-if="canReact" type="button" class="bubble-more" aria-label="Reply or react" :aria-expanded="open" @click.stop="open ? hide() : show()">⋯</button>
+    <button v-if="canReact && !item.deleted" type="button" class="bubble-more" aria-label="Message actions" :aria-expanded="open" @click.stop="open ? hide() : show()">⋯</button>
     <div v-if="open" class="menu" role="menu" @click.stop>
-      <div v-if="!more" class="menu-row">
+      <div v-if="canReact && !more" class="menu-row">
         <button v-for="emoji in QUICK_REACTIONS" :key="emoji" type="button" role="menuitem" class="menu-emoji" :class="{ 'is-on': mineReaction === emoji }" :aria-label="`React ${emoji}`" @click="react(emoji)">{{ emoji }}</button>
         <button type="button" role="menuitem" class="menu-emoji" aria-label="More reactions" @click="more = true">＋</button>
       </div>
-      <EmojiPicker v-else @pick="react" />
+      <EmojiPicker v-else-if="canReact && more" @pick="react" />
       <button type="button" role="menuitem" class="menu-item" @click="reply">Reply</button>
+      <button v-if="!item.image && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('forward')">Forward</button>
+      <button v-if="mine && !item.image && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('edit')">Edit</button>
+      <button v-if="mine && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('remove')">Delete for everyone</button>
       <button type="button" role="menuitem" class="menu-item is-quiet" @click="hide">Close</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.bubble-wrap { position: relative; display: flex; flex-direction: column; align-items: flex-start; max-width: 86%; align-self: flex-start; -webkit-touch-callout: none; }
+.bubble-wrap { touch-action: pan-y; position: relative; display: flex; flex-direction: column; align-items: flex-start; max-width: 86%; align-self: flex-start; -webkit-touch-callout: none; }
 .bubble-wrap.is-mine { align-items: flex-end; align-self: flex-end; }
 .bubble { max-width: 100%; box-sizing: border-box; padding: 8px 12px 6px; border-radius: 18px 18px 18px 5px; background: #fff; box-shadow: var(--ring); font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; white-space: pre-wrap; }
 .bubble.is-mine { border-radius: 18px 18px 5px 18px; background: var(--app-tint, var(--c-green-dark)); color: #fff; box-shadow: none; }

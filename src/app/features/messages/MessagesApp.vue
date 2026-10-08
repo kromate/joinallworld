@@ -48,6 +48,7 @@ import type { UpdateLine } from './messagesThread.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { filterChats, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
+import MessageAction from './MessageAction.vue'
 import MessageBubble from './MessageBubble.vue'
 import FriendPicker from './FriendPicker.vue'
 import GroupManage from './GroupManage.vue'
@@ -83,7 +84,7 @@ const wantGroup = ref(false)
 watch(() => props.params, (params) => {
   const asked = (params ?? null) as { tab?: string; conv?: string; to?: string; name?: string; new?: string } | null
   if (!asked) return
-  if (asked.tab === 'updates' || asked.tab === 'chats') { setOpen(null); ui.tab = asked.tab }
+  if (asked.tab === 'updates' || asked.tab === 'chats' || asked.tab === 'groups') { setOpen(null); ui.tab = asked.tab }
   else if (asked.new === 'group') { setOpen(null); ui.tab = 'chats'; wantGroup.value = true }
   else if (asked.conv) { setOpen(asked.conv); void openThread(asked.conv) }
   else if (asked.to) {
@@ -129,6 +130,9 @@ const threadBox = ref<HTMLElement | null>(null)
 const composer = ref<InstanceType<typeof Composer> | null>(null)
 /** The message being answered, until it is sent or cancelled. */
 const replying = ref<Message | null>(null)
+const messageAction = ref<{ kind: 'edit' | 'delete' | 'forward'; item: Message } | null>(null)
+watch(() => ui.open, () => { messageAction.value = null })
+watch(() => me.value?.me.id, () => { messageAction.value = null; replying.value = null })
 // Of a long conversation only the newest lines are drawn; earlier ones are drawn as the reader scrolls up, and read from the server
 // when the kept lines run out (chunked rendering: a line's height is not known, so there is no fixed window).
 const FIRST_SHOWN = 60, SHOWN_STEP = 40
@@ -278,7 +282,7 @@ async function hideChat(): Promise<void> {
 }
 async function pinChat(on: boolean): Promise<void> { const key = ui.open; if (key) await perform(`/api/social/conversations/${encodeURIComponent(key)}/prefs`, { pin: on }) }
 const chatFilter = ref('')
-const chatList = computed(() => sortChats(filterChats(me.value?.conversations ?? [], chatFilter.value)))
+const chatList = computed(() => sortChats(filterChats((me.value?.conversations ?? []).filter((item) => ui.tab !== 'groups' || item.kind === 'group'), chatFilter.value)))
 const showSettings = ref(false)
 const lightbox = ref<Message | null>(null)
 /** The picture button shows where pictures are switched on and the chat takes them: a direct chat with a friend, or a group. */
@@ -313,7 +317,7 @@ function readUpdates(): void {
   seenBefore.value ??= noticeMarks.seen(view.value.cityId)
   if (noticeMarks.mark(view.value.cityId, notices.value)) shell.bump()
 }
-function showTab(tab: 'chats' | 'updates'): void {
+function showTab(tab: 'chats' | 'groups' | 'updates'): void {
   ui.tab = tab
   if (tab === 'updates' && (me.value?.updates ?? []).some((update) => !update.read)) void call('/api/social/updates/read', {}).then(sync)
 }
@@ -404,7 +408,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @picture="(line) => { lightbox = line }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
@@ -417,6 +421,7 @@ defineExpose({
         </div>
         <footer class="messages-foot">
           <span v-if="readOnly" class="messages-why">{{ readOnly }}</span>
+          <MessageAction v-if="messageAction" :key="`${messageAction.kind}:${messageAction.item.id}`" :kind="messageAction.kind" :item="messageAction.item" :conversations="me.conversations" :disabled="Boolean(readOnly)" :max="me.limits.body" @close="messageAction = null" />
           <Composer ref="composer" :pictures="pictureAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" />
         </footer>
       </div>
@@ -425,10 +430,11 @@ defineExpose({
       <template v-else>
         <div class="messages-tabs" role="tablist">
           <button role="tab" type="button" :aria-selected="ui.tab === 'chats'" @click="showTab('chats')">Chats<span v-if="chats" class="messages-badge">{{ chats }}</span></button>
+          <button role="tab" type="button" :aria-selected="ui.tab === 'groups'" @click="showTab('groups')">Groups</button>
           <button role="tab" type="button" :aria-selected="ui.tab === 'updates'" @click="showTab('updates')">Updates<span v-if="updates" class="messages-badge">{{ updates }}</span></button>
         </div>
 
-        <div v-if="ui.tab === 'chats'" role="tabpanel">
+        <div v-if="ui.tab !== 'updates'" role="tabpanel">
           <CompanionPin />
           <form class="messages-form is-search" role="search" @submit.prevent="search">
             <input v-model="find.text" name="q" maxlength="36" placeholder="Find a player by name" aria-label="Find a player by name" autocomplete="off">
@@ -444,7 +450,7 @@ defineExpose({
           </ListRows>
           <div v-else-if="find.results" class="messages-note" role="status">Nobody found with that name. Players appear here once they have opened the game.</div>
 
-          <SectionTitle>Chats<template #end><BaseButton v-if="!group.open" small @click="newGroup">New group</BaseButton></template></SectionTitle>
+          <SectionTitle>{{ ui.tab === 'groups' ? 'Groups' : 'Chats' }}<template #end><BaseButton v-if="!group.open" small @click="newGroup">New group</BaseButton></template></SectionTitle>
           <form v-if="group.open" class="messages-manage" @submit.prevent="createGroup">
             <input v-model="group.name" class="messages-field" name="name" :maxlength="me.limits.groupName" placeholder="Group name" aria-label="Group name" required>
             <FriendPicker v-model:selected="group.members" :exclude="[]" :max="me.limits.groupSize - 1" />
@@ -457,7 +463,7 @@ defineExpose({
 
           <input v-if="me.conversations.length > 4" v-model="chatFilter" class="messages-filter" type="search" name="chatfilter" placeholder="Search your chats" aria-label="Search your chats" autocomplete="off">
           <ListRows v-if="chatList.length" label="Chats">
-            <LazyList :items="chatList" :item-key="(chat: Conversation) => chat.id" :has-more="Boolean(me.conversationsMore?.next) && !chatFilter" :loading="chatsMore" :row-height="60" label="chats" memory="chats" @more="moreChats">
+            <LazyList :items="chatList" :item-key="(chat: Conversation) => chat.id" :has-more="Boolean(me.conversationsMore?.next) && !chatFilter" :loading="chatsMore" :row-height="60" label="chats" :key="ui.tab" :memory="ui.tab" @more="moreChats">
             <template #row="{ item }">
             <ListRow as="button" :data-conv="item.id" :title="`${item.pinned ? '📌 ' : ''}${item.name}${item.muted ? ' 🔕' : ''}`" :sub="lastLine(item, me.me.id)" :unread="item.unread > 0" @click="openConversation(item.id)">
               <template #icon>
@@ -472,8 +478,9 @@ defineExpose({
             </template>
             </LazyList>
           </ListRows>
-          <p v-else-if="me.conversations.length" class="messages-note" role="status">No chat has that name.</p>
-          <EmptyState v-else icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat. You can also make a group with your friends.">
+          <BaseButton v-if="!chatList.length && me.conversationsMore?.next && !chatFilter" small :disabled="chatsMore" @click="moreChats">Load more conversations</BaseButton>
+          <p v-if="!chatList.length && me.conversations.length" class="messages-note" role="status">{{ ui.tab === 'groups' ? 'No matching groups. Create a group with your friends.' : 'No chat has that name.' }}</p>
+          <EmptyState v-if="!me.conversations.length" icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat. You can also make a group with your friends.">
             <BaseButton @click="shell.open('people')">See who is here</BaseButton>
           </EmptyState>
           <BaseButton small class="messages-settings-toggle" :aria-expanded="showSettings" @click="showSettings = !showSettings">{{ showSettings ? 'Hide chat settings' : 'Chat settings' }}</BaseButton>

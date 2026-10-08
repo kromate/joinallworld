@@ -4,7 +4,7 @@ import { reactive } from 'vue'
 import { createNoticeMarks } from './messagesModel.ts'
 
 export const ui = reactive<{
-  tab: 'chats' | 'updates'
+  tab: 'chats' | 'groups' | 'updates'
   /** The conversation on screen: its id, or `to:<publicId>` for a chat the server has not created yet. */
   open: string | null
   /** The name to show for a provisional chat. */

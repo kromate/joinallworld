@@ -10,7 +10,7 @@ import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import GameIcon from '../../ui/GameIcon.vue'
-import HeroCard from '../../ui/HeroCard.vue'
+import GameCover from './GameCover.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import { useGrowth } from '../growth/useGrowth.ts'
 import type { OroView } from '../../../types/growth.ts'
@@ -64,46 +64,26 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
 <template>
   <p v-if="!view.connected" class="gm-note">{{ why }}</p>
   <div v-else-if="screen === 'hub'" class="gm">
-    <HeroCard label="Games" :figure="today?.stats.streak ? `${today.stats.streak} day streak` : 'Pick a game'">Play on your own, anywhere. Sit at a table in a park or lounge to play with friends.</HeroCard>
-    <section class="gm-card" aria-labelledby="gm-oro">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="note" inline /></div>
-      <div class="gm-body">
-        <h3 id="gm-oro">Oro <small>a word a day</small></h3>
-        <p>{{ dailyLine(today) }}</p>
-        <div class="gm-actions">
-          <BaseButton variant="primary" @click="screen = 'daily'">{{ dailyCta }}</BaseButton>
-          <BaseButton @click="screen = 'practice'">Practice words</BaseButton>
-          <BaseButton @click="share('/games/oro', 'Today’s word on Allworld:')">Share</BaseButton>
-        </div>
-      </div>
+    <header class="gm-library"><h3>Your next game</h3><p>Play a quick round, or find a table with friends.</p><span v-if="today?.stats.streak" class="gm-streak">{{ today.stats.streak }} day streak</span></header>
+    <section class="gm-daily" aria-labelledby="gm-oro">
+      <GameCover game="oro" />
+      <div><h3 id="gm-oro">Oro</h3><p>{{ dailyLine(today) }}</p><BaseButton variant="primary" @click="screen = 'daily'">{{ dailyCta }}</BaseButton></div>
+      <div class="gm-daily-links"><button type="button" @click="screen = 'practice'">Practice words</button><button type="button" @click="share('/games/oro', 'Today’s word on Allworld:')">Share today’s puzzle</button></div>
     </section>
-    <section class="gm-card" aria-labelledby="gm-chess" data-section="chess">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="crown" inline /></div>
-      <div class="gm-body">
-        <h3 id="gm-chess">Chess <small>against the computer</small></h3>
-        <p>Easy, medium or hard. Or sit at a chess table in a park and play a friend.</p>
-        <div class="gm-actions"><BaseButton variant="primary" @click="openTable('phone-chess')">Play chess</BaseButton><BaseButton @click="share('/games/chess', 'Play chess on Allworld:')">Share this game</BaseButton></div>
-      </div>
-    </section>
-    <section class="gm-card" aria-labelledby="gm-weave" data-section="weave">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="game" inline /></div>
-      <div class="gm-body">
-        <h3 id="gm-weave">Weave <small>word tiles</small></h3>
-        <p>Weave words across the cloth with your seven tiles, against one to three computer players.</p>
-        <div class="gm-actions"><BaseButton variant="primary" @click="openTable('phone-weave')">Play Weave</BaseButton><BaseButton @click="share('/games/weave', 'Play Weave on Allworld:')">Share this game</BaseButton></div>
-      </div>
-    </section>
-    <section class="gm-card" aria-labelledby="gm-whot">
-      <div class="gm-icon" aria-hidden="true"><GameIcon name="tables" inline /></div>
-      <div class="gm-body">
-        <h3 id="gm-whot">Whot and Penalties <small>against the computer</small></h3>
-        <p>The card game and the shootout, on your own.</p>
-        <div class="gm-actions">
-          <BaseButton variant="primary" @click="openTable('phone-whot')">Play Whot</BaseButton>
-          <BaseButton variant="primary" @click="openTable('phone-penalty')">Play penalties</BaseButton>
-        </div>
-      </div>
-    </section>
+    <SectionTitle>Play your way</SectionTitle>
+    <div class="gm-grid">
+      <section class="gm-game" data-section="chess">
+        <button type="button" class="gm-launch" aria-label="Play chess" @click="openTable('phone-chess')"><GameCover game="chess" /><strong>Chess</strong><span>Easy, medium or hard</span></button>
+        <button type="button" class="gm-share" @click="share('/games/chess', 'Play chess on Allworld:')">Share chess</button>
+      </section>
+      <section class="gm-game" data-section="weave">
+        <button type="button" class="gm-launch" aria-label="Play Weave" @click="openTable('phone-weave')"><GameCover game="weave" /><strong>Weave</strong><span>Seven tiles. Find your word.</span></button>
+        <button type="button" class="gm-share" @click="share('/games/weave', 'Play Weave on Allworld:')">Share Weave</button>
+      </section>
+      <section class="gm-game"><button type="button" class="gm-launch" aria-label="Play Whot" @click="openTable('phone-whot')"><GameCover game="whot" /><strong>Whot</strong><span>The classic card game</span></button></section>
+      <section class="gm-game"><button type="button" class="gm-launch" aria-label="Play penalties" @click="openTable('phone-penalty')"><GameCover game="penalty" /><strong>Penalties</strong><span>Pick your spot. Take the shot.</span></button></section>
+    </div>
+    <p class="gm-note">Play these games against the computer. For a match with friends, find a table below.</p>
     <SectionTitle>Tables near you</SectionTitle>
     <p v-if="!near" class="gm-note">Looking for tables…</p>
     <ul v-else-if="near.length" class="ui-rows">
@@ -125,14 +105,27 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
 </template>
 
 <style scoped>
-.gm { display: grid; gap: var(--s-3); }
+.gm { display: grid; gap: 16px; }
+.gm-library { padding: 4px 2px 12px; }
+.gm-library h3 { margin: 0; font-size: 26px; letter-spacing: -.025em; }
+.gm-library p { font-size: 14px; line-height: 1.5; color: var(--c-muted); margin: 8px 0 0; }
+.gm-streak { display: inline-block; margin-top: 10px; color: #8a4b0a; background: #fff0d1; padding: 5px 8px; border-radius: 6px; font-weight: 650; }
 .gm-note { font-size: 12px; line-height: 1.45; color: var(--c-muted); margin: var(--s-2) 2px; }
 .gm-back { justify-self: start; background: none; border: 0; color: var(--c-muted); font: inherit; font-size: 12px; text-decoration: underline; min-height: var(--tap, 44px); cursor: pointer; }
-.gm-card { display: grid; grid-template-columns: 40px 1fr; gap: 12px; background: #fff; border-radius: var(--r-md, 16px); box-shadow: var(--e-1), var(--ring); padding: 14px; }
-.gm-icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, var(--app-tint, #7a4fb0) 14%, #fff); color: var(--app-tint, #7a4fb0); }
-.gm-body h3 { margin: 0 0 2px; font-size: 15px; }
-.gm-body h3 small { font-weight: 400; font-size: 12px; color: var(--c-muted); margin-left: 4px; }
-.gm-body p { margin: 0 0 8px; font-size: 13px; line-height: 1.45; color: var(--c-ink-2); }
-.gm-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.gm-actions .base-button { min-height: var(--tap, 44px); }
+.gm-daily { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px; background: #e2f2e9; border-radius: 16px; }
+.gm-daily h3 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.025em; }
+.gm-daily p { font-size: 13px; margin: 0 0 10px; color: #294e3c; }
+.gm-daily .base-button { padding: 10px; width: 100%; }
+.gm-daily-links { grid-column: 1 / -1; display: flex; gap: 12px; justify-content: space-between; border-top: 1px solid #bdd9c9; padding-top: 4px; }
+.gm-daily-links button, .gm-share { border: 0; background: none; min-height: 44px; padding: 6px 0; font: 600 13px var(--font); color: #22543d; text-align: left; cursor: pointer; }
+.gm-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+.gm-game { min-width: 0; }
+.gm-launch { display: grid; gap: 6px; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 14px; color: var(--c-ink); }
+.gm-launch strong { font-size: 18px; margin-top: 4px; letter-spacing: -.02em; }
+.gm-launch > span:not(.game-cover) { font-size: 13px; line-height: 1.4; color: var(--c-muted); }
+.gm-launch:hover .game-cover { filter: brightness(.96); }
+.gm-share { color: var(--c-muted); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.ph.is-wide .gm-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ph.is-wide .gm-daily { grid-template-columns: 112px 1fr auto; }
+.ph.is-wide .gm-daily-links { grid-column: auto; border: 0; flex-direction: column; }
 </style>

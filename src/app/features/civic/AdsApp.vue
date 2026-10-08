@@ -180,7 +180,7 @@ const pick = (row: number, col: number): void => { ui.row = row; ui.col = col }
 .ads-slot > span { display: grid; gap: 3px; flex: 1; }
 .ads-slot strong { font-size: 14px; }
 .ads-slot :deep(.ads-preview) { margin: 4px 0; }
-.ads-sea { display: grid; grid-template-columns: repeat(16, 1fr); gap: 2px; background: linear-gradient(180deg, #d9c48f 0 6%, #8fd0e4 10%, #3f9cc4); padding: 10px 8px 8px; border-radius: var(--r-md); margin: var(--s-2) 0; box-shadow: var(--e-1); }
+.ads-sea { display: grid; grid-template-columns: repeat(16, 1fr); gap: 2px; background: #c6e7f3; padding: 10px 8px 8px; border-radius: var(--r-md); margin: var(--s-2) 0; box-shadow: var(--e-1); }
 .ads-sea button { aspect-ratio: 1; border: 0; border-radius: 3px; background: #ffffff55; padding: 0; font-size: 11px; line-height: 1; cursor: pointer; min-width: 0; overflow: hidden; }
 .ads-sea button.is-shore { background: #ffffff99; }
 .ads-sea button[aria-pressed=true] { outline: 2px solid var(--c-ink); outline-offset: 0; }

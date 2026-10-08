@@ -20,7 +20,7 @@ withDefaults(defineProps<{
 </template>
 
 <style scoped>
-.list-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; margin: 0; padding: 9px 14px; border: 0; border-bottom: 1px solid var(--c-line); background: none; text-align: left; font: inherit; color: inherit; list-style: none; }
+.list-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; margin: 0; padding: 12px 14px; border: 0; border-bottom: 1px solid var(--c-line); background: none; text-align: left; font: inherit; color: inherit; list-style: none; }
 .list-row:last-child { border-bottom: 0; }
 .list-row.is-control { cursor: pointer; }
 .list-row.is-control:hover { background: var(--c-fill); }
@@ -28,8 +28,8 @@ withDefaults(defineProps<{
 .list-row.is-unread { background: #f3faf5; }
 .list-row-icon { flex: none; display: grid; place-items: center; }
 .list-row-body { flex: 1; min-width: 0; display: grid; gap: 1px; }
-.list-row-body > b { font-size: 14px; font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list-row-body > b { font-size: 15px; font-weight: 650; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .list-row.is-unread .list-row-body > b { font-weight: 700; }
-.list-row-body > small { font-size: 12px; line-height: 1.35; color: var(--c-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list-row-body > small { font-size: 13px; line-height: 1.4; color: var(--c-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .list-row-end { flex: none; display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
 </style>

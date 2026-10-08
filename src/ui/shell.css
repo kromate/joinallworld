@@ -305,7 +305,7 @@ kbd{display:inline-block;min-width:26px;text-align:center;border:1px solid #cfd4
 .session-form{display:grid;gap:var(--s-2)}
 
 /* ---- shared ui-* pieces: one visual system for every panel and Phone app ------------------- */
-.ui-button{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-pill);padding:10px 18px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer;transition:filter var(--ease),background var(--ease)}
+.ui-button{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-sm);padding:10px 18px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer;transition:filter var(--ease),background var(--ease)}
 .ui-button:hover:enabled{filter:brightness(.96)}
 .ui-button:active:enabled{filter:brightness(.9)}
 .ui-button.is-primary{background:var(--c-green-dark);color:#fff}
@@ -332,7 +332,7 @@ kbd{display:inline-block;min-width:26px;text-align:center;border:1px solid #cfd4
 .ui-error{color:var(--c-red)}
 .ui-placeholder{padding:var(--s-4) 0;color:var(--c-muted)}.ui-placeholder h3{margin:0 0 4px;color:var(--c-ink)}
 /* Section title, quiet and small, above a card or a list */
-.ui-section{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:var(--s-4) 4px var(--s-2)!important;font-size:12px!important;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted)}
+.ui-section{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:var(--s-4) 4px var(--s-2)!important;font-size:15px!important;font-weight:700;letter-spacing:-.01em;text-transform:none;color:var(--c-ink)}
 .ui-section small{font-size:11px;font-weight:600;letter-spacing:0;text-transform:none}
 /* Grouped rows: leading icon, title and caption, trailing value / control / chevron */
 .ui-rows{list-style:none;margin:0 0 var(--s-2);padding:0;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
@@ -361,10 +361,10 @@ button.ui-row:hover{background:#f7f9f8}
 .ui-chip.is-bad{background:var(--c-red-soft);color:var(--c-red-dark)}
 .ui-chips{display:flex;flex-wrap:wrap;gap:5px;list-style:none;margin:0;padding:0}
 /* Hero: the one big number of a screen, on the app's colour */
-.ui-hero{--hero:var(--app-tint,var(--c-green-dark));display:grid;gap:2px;margin:0 0 var(--s-3);padding:16px 18px;border-radius:var(--r-lg);background:linear-gradient(150deg,color-mix(in srgb,var(--hero) 86%,#fff),var(--hero) 55%,color-mix(in srgb,var(--hero) 78%,#000));color:#fff;box-shadow:var(--e-1)}
-.ui-hero>small{font-size:12px;font-weight:600;opacity:.88}
+.ui-hero{--hero:var(--app-tint,var(--c-green-dark));display:grid;gap:2px;margin:0 0 var(--s-3);padding:16px 18px;border-radius:var(--r-lg);background:#fff;color:var(--c-ink);box-shadow:none;border-bottom:1px solid var(--c-line)}
+.ui-hero>small{font-size:14px;font-weight:600;color:var(--c-muted)}
 .ui-hero>strong{font-size:var(--t-display);font-weight:700;line-height:1.15;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
-.ui-hero>p{margin:4px 0 0!important;font-size:12.5px!important;line-height:1.4!important;opacity:.92}
+.ui-hero>p{margin:4px 0 0!important;font-size:14px!important;line-height:1.5!important;color:var(--c-ink-2)}
 /* Stat tiles */
 .ui-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:var(--s-2);list-style:none;margin:0 0 var(--s-3);padding:0}
 .ui-stats>li{display:grid;gap:1px;padding:10px 12px;border-radius:var(--r-sm);background:#fff;box-shadow:var(--e-1),var(--ring);font-size:11px;color:var(--c-muted)}
@@ -444,7 +444,7 @@ button.ui-row:hover{background:#f7f9f8}
 .ph-appbody .ui-card,.ph-appbody .ui-details{border-color:transparent;box-shadow:var(--e-1),var(--ring)}
 .ph-appbody>h3:not([class]),.ph-appbody>section>h3:not([class]),.ph-appbody>div>section>h3:not([class]){margin:var(--s-4) 4px var(--s-2);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted)}
 .ph-appbody .ui-button:not(.is-primary):not(.is-danger){background:#fff;box-shadow:inset 0 0 0 1px var(--c-line)}
-.ph-appbody .ui-button.is-primary{background:var(--app-tint)}
+.ph-appbody .ui-button.is-primary{background:color-mix(in srgb,var(--app-tint) 50%,#17212f)}
 .ph-appbody .ui-empty{background:#fff;border-style:solid;border-color:transparent;box-shadow:var(--e-1),var(--ring)}
 
 /* ---- community panel (content from src/community.js) ------------------------------------- */

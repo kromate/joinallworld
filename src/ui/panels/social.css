@@ -1,8 +1,8 @@
 /* OWNER: social — shared styles for People, Messages, Contacts, Family and Invite. */
-.social-note{font-size:12px!important;line-height:1.45!important;color:var(--c-muted);margin:6px 2px!important}.social-note.is-warn{color:var(--c-red)}
+.social-note{font-size:14px!important;line-height:1.5!important;color:var(--c-muted);margin:6px 2px!important}.social-note.is-warn{color:var(--c-red)}
 .social-link{border:0;background:none;color:var(--c-green-dark);font:600 12px var(--font);text-decoration:underline;cursor:pointer;min-height:40px;padding:0 8px}
 .social-tabs{display:flex;gap:6px;margin-bottom:var(--s-3)}
-.social-tabs button,.social-chip{border:0;background:var(--c-fill);border-radius:var(--r-chip);padding:9px 14px;min-height:var(--tap);font:600 12px var(--font);color:var(--c-ink);cursor:pointer}
+.social-tabs button,.social-chip{border:0;background:var(--c-fill);border-radius:var(--r-sm);padding:9px 14px;min-height:var(--tap);font:600 12px var(--font);color:var(--c-ink);cursor:pointer}
 .social-tabs .is-selected{background:var(--c-ink);color:#fff}
 .social-badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--c-badge);color:#fff;font-size:11px;font-weight:700;line-height:1}
 /* rows: a person or a thing, what it is, and what you can do with it */
@@ -28,7 +28,7 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .social-dot.is-wait{background:#fff;border-color:var(--c-amber)}
 .social-presence.is-reconnecting{color:var(--c-amber-dark);font-weight:600}
 .social-actions{display:flex;flex-wrap:wrap;gap:6px;flex:none!important}
-.social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-pill);padding:8px 14px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer}
+.social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-sm);padding:8px 14px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer}
 .social-btn.is-primary{background:var(--app-tint,var(--c-green-dark));color:#fff}.social-btn.is-danger{background:var(--c-red-soft);color:var(--c-red-dark)}
 .social-btn:disabled{opacity:.5;cursor:not-allowed}
 .social-why{display:block;font-size:12px;line-height:1.4;color:var(--c-red);margin-top:2px}
@@ -101,7 +101,7 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .ph-appbody .msg-foot{padding-bottom:22px}
 
 /* ---- Invite: the share card ---- */
-.invite-card{position:relative;display:grid;gap:4px;margin-bottom:var(--s-2);padding:18px;border-radius:var(--r-lg);background:linear-gradient(150deg,color-mix(in srgb,var(--app-tint,#d98200) 80%,#fff),var(--app-tint,#d98200) 55%,color-mix(in srgb,var(--app-tint,#d98200) 74%,#000));color:#fff;box-shadow:var(--e-1);overflow:hidden}
+.invite-card{position:relative;display:grid;gap:4px;margin-bottom:var(--s-2);padding:18px;border-radius:var(--r-lg);background:#74440d;color:#fff;box-shadow:var(--e-1);overflow:hidden}
 .invite-mark{position:absolute;right:-14px;top:-18px;opacity:.2}
 .invite-mark svg{width:120px;height:120px}
 .invite-card>small{font-size:12px;font-weight:600;opacity:.9}

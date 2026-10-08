@@ -13,7 +13,7 @@ const text = (row: FunnelRow): string => (row.count === null ? 'not measured' : 
   <div class="adm-funnel" role="group" :aria-label="title">
     <p v-for="row in rows" :key="row.id" class="adm-funnel-row" :title="row.note">
       <span class="adm-funnel-name">{{ row.label }}</span>
-      <span class="adm-funnel-bar" aria-hidden="true"><i :style="{ width: row.count === null ? '0%' : `${Math.max(2, Math.round((row.count / top) * 100))}%` }" /></span>
+      <span class="adm-funnel-bar" aria-hidden="true"><i :style="{ width: !row.count ? '0%' : `${Math.max(2, Math.round((row.count / top) * 100))}%` }" /></span>
       <span class="adm-funnel-n" :class="{ off: row.count === null }">{{ text(row) }}</span>
     </p>
   </div>

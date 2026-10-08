@@ -56,6 +56,7 @@ import ChatSettings from './ChatSettings.vue'
 import Lightbox from './Lightbox.vue'
 import { askedAboutNotifications, noteAskedAboutNotifications } from './notifyAsk.ts'
 
+const finding = ref(false)
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()
 const growth = useGrowth()
@@ -368,11 +369,10 @@ defineExpose({
           <h3 v-else><button v-if="partner" type="button" class="messages-name" :aria-label="`${title}: open profile`" @click="shell.open('person', { player: partner, name: title })">{{ title }}</button><template v-else>{{ title }}</template><small :class="partner && presenceOf(partner) ? `messages-presence is-${presenceOf(partner)}` : undefined">{{ (partner && presenceWord(partner)) || threadKind(conv) }}</small></h3>
           <BaseButton v-if="conv?.kind === 'group'" small :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">{{ ui.manage ? 'Done' : 'Group' }}</BaseButton>
           <template v-else-if="partner">
-            <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
             <!-- A friend who is not in the game cannot be rung: Ping takes Call's place, so the header never holds a fourth control. -->
             <PingButton v-if="pingFor(partner)" compact :id="partner" :name="title" />
             <PersonCallButton v-else compact :id="partner" :name="title" :status="presenceOf(partner) ?? undefined" />
-            <button v-if="conv" type="button" class="messages-kebab" aria-label="Chat options" :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">⋯</button>
+            <button type="button" class="messages-kebab" aria-label="Chat options" :aria-expanded="ui.manage" @click="ui.manage = !ui.manage">⋯</button>
           </template>
         </header>
         <PingStrip v-if="partner && pingFor(partner)" inset :id="partner" :name="title" />
@@ -380,10 +380,13 @@ defineExpose({
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
         <GroupManage v-if="conv?.kind === 'group' && ui.manage" :conv="conv" :me="me" @left="groupLeft" @player="openCard" />
-        <section v-else-if="conv?.kind === 'dm' && ui.manage" class="messages-manage" aria-label="Chat options">
+        <section v-else-if="partner && ui.manage" class="messages-manage" aria-label="Chat options">
+          <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
+          <template v-if="conv?.kind === 'dm'">
           <label class="messages-switch"><input type="checkbox" :checked="conv.pinned === true" @change="pinChat(($event.target as HTMLInputElement).checked)"> Pin to the top of my chats</label>
           <BaseButton small variant="danger" @click="hideChat">Delete this chat for me</BaseButton>
           <div class="messages-note">The other person keeps their copy. The chat comes back if either of you writes again.</div>
+          </template>
         </section>
 
         <div class="messages-body">
@@ -436,8 +439,10 @@ defineExpose({
 
         <div v-if="ui.tab !== 'updates'" role="tabpanel">
           <CompanionPin />
-          <form class="messages-form is-search" role="search" @submit.prevent="search">
-            <input v-model="find.text" name="q" maxlength="36" placeholder="Find a player by name" aria-label="Find a player by name" autocomplete="off">
+          <BaseButton class="messages-new" @click="finding = !finding" :aria-expanded="finding">{{ finding ? 'Close player search' : 'New message' }}</BaseButton>
+          <label v-if="finding" class="messages-find-label" for="message-player-search">Find a player</label>
+          <form v-if="finding" class="messages-form is-search" role="search" @submit.prevent="search">
+            <input id="message-player-search" v-model="find.text" name="q" maxlength="36" placeholder="Find a player by name" aria-label="Find a player by name" autocomplete="off">
             <BaseButton small type="submit" :disabled="find.busy">Find</BaseButton>
           </form>
           <div v-if="find.busy" class="messages-note" role="status">Searching…</div>
@@ -452,7 +457,8 @@ defineExpose({
 
           <SectionTitle>{{ ui.tab === 'groups' ? 'Groups' : 'Chats' }}<template #end><BaseButton v-if="!group.open" small @click="newGroup">New group</BaseButton></template></SectionTitle>
           <form v-if="group.open" class="messages-manage" @submit.prevent="createGroup">
-            <input v-model="group.name" class="messages-field" name="name" :maxlength="me.limits.groupName" placeholder="Group name" aria-label="Group name" required>
+            <label for="message-group-name">Group name</label>
+            <input id="message-group-name" v-model="group.name" class="messages-field" name="name" :maxlength="me.limits.groupName" placeholder="Group name" aria-label="Group name" required>
             <FriendPicker v-model:selected="group.members" :exclude="[]" :max="me.limits.groupSize - 1" />
             <div class="messages-note">{{ me.limits.groupSize }} people at most, including you. Only friends can be added, and you will be the admin.</div>
             <span class="bubble-actions is-start">
@@ -480,7 +486,7 @@ defineExpose({
           </ListRows>
           <BaseButton v-if="!chatList.length && me.conversationsMore?.next && !chatFilter" small :disabled="chatsMore" @click="moreChats">Load more conversations</BaseButton>
           <p v-if="!chatList.length && me.conversations.length" class="messages-note" role="status">{{ ui.tab === 'groups' ? 'No matching groups. Create a group with your friends.' : 'No chat has that name.' }}</p>
-          <EmptyState v-if="!me.conversations.length" icon="messages" title="No chats yet" text="Find a player by name above, or tap someone at a venue and press Chat. You can also make a group with your friends.">
+          <EmptyState v-if="!me.conversations.length" icon="messages" title="No chats yet" text="Tap New message to find a player, or tap someone at a venue and press Chat. You can also make a group with your friends.">
             <BaseButton @click="shell.open('people')">See who is here</BaseButton>
           </EmptyState>
           <BaseButton small class="messages-settings-toggle" :aria-expanded="showSettings" @click="showSettings = !showSettings">{{ showSettings ? 'Hide chat settings' : 'Chat settings' }}</BaseButton>
@@ -528,6 +534,8 @@ defineExpose({
 </template>
 
 <style scoped>
+.messages-new { margin: 10px 0; width: 100%; }
+.messages-find-label { display: block; margin: 10px 0 6px; font-size: 14px; font-weight: 650; }
 .messages-name { display: block; max-width: 100%; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
 .messages-presence { font-weight: 700; color: var(--c-muted); }
 .messages-presence::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: currentColor; vertical-align: 1px; }
@@ -544,14 +552,14 @@ defineExpose({
 .messages-link { min-height: 32px; padding: 0 4px; border: 0; background: none; color: var(--c-green-dark); font: 600 12px var(--font); text-decoration: underline; cursor: pointer; }
 .messages-why { display: block; margin-top: 2px; font-size: 12px; line-height: 1.4; color: var(--c-red); }
 .messages-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--c-badge); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; }
-.messages-tabs { display: flex; gap: 2px; margin: 0 0 var(--s-3); padding: 3px; border-radius: var(--r-sm); background: var(--c-fill-2); }
-.messages-tabs button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: var(--tap); padding: 0 10px; border: 0; border-radius: 9px; background: none; font: 600 13px var(--font); color: var(--c-ink-2); cursor: pointer; white-space: nowrap; }
-.messages-tabs button[aria-selected='true'] { background: #fff; color: var(--c-ink); box-shadow: var(--e-1); }
+.messages-tabs { display: flex; gap: 0; margin: 0 0 16px; padding: 0; border-bottom: 1px solid var(--c-line); background: #fff; }
+.messages-tabs button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: var(--tap); padding: 0 10px; border: 0; border-radius: 0; border-bottom: 3px solid transparent; background: none; font: 650 14px var(--font); color: var(--c-ink-2); cursor: pointer; white-space: nowrap; }
+.messages-tabs button[aria-selected='true'] { background: #fff; color: var(--c-green-dark); border-bottom-color: var(--c-green-dark); box-shadow: none; }
 .messages-tabs button:focus-visible, .messages-back:focus-visible, .messages-link:focus-visible, .messages-compose button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .messages-form { display: flex; gap: 6px; margin: 8px 0; }
 .messages-form input, .messages-field { flex: 1; min-width: 0; min-height: var(--tap); box-sizing: border-box; padding: 10px 14px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); background: #fff; font: inherit; font-size: 14px; }
 .messages-form.is-search { margin: 0 0 var(--s-2); }
-.messages-form.is-search input { border-radius: var(--r-pill); border-color: transparent; background: #fff; box-shadow: var(--ring); }
+.messages-form.is-search input { border-radius: var(--r-sm); border-color: var(--c-line); background: #fff; box-shadow: var(--ring); }
 .messages-field { width: 100%; margin: 4px 0; }
 .messages-manage { display: grid; gap: 6px; margin: 0 0 var(--s-2); padding: var(--s-3) var(--s-4); border: 1px solid var(--c-line); border-radius: var(--r-md); background: #fff; font-size: 13px; }
 .messages-chat .messages-manage { margin: 8px 12px; }
@@ -604,7 +612,7 @@ defineExpose({
 .messages-day span { padding: 3px 12px; border-radius: 12px; background: var(--c-fill-2); color: var(--c-muted); font-size: 11px; font-weight: 600; }
 .messages-latest { position: absolute; right: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; min-width: var(--tap); min-height: 40px; padding: 0 12px; border: 0; border-radius: 20px; background: #fff; box-shadow: var(--e-1), var(--ring); font: 700 16px var(--font); cursor: pointer; }
 .messages-quoted { margin: 0 12px 4px; padding: 6px 10px; border-left: 3px solid var(--c-line); border-radius: 6px; background: var(--c-fill); font-size: 12px; overflow-wrap: anywhere; }
-.messages-filter { box-sizing: border-box; width: 100%; min-height: 40px; margin: 0 0 var(--s-2); padding: 6px 14px; border: 1px solid #cfd5d1; border-radius: var(--r-pill); font: inherit; font-size: 14px; }
+.messages-filter { box-sizing: border-box; width: 100%; min-height: 40px; margin: 0 0 var(--s-2); padding: 6px 14px; border: 1px solid #cfd5d1; border-radius: var(--r-sm); font: inherit; font-size: 16px; }
 .messages-at { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--c-green-dark); color: #fff; font-size: 11px; font-weight: 700; }
 .messages-update > .bubble-actions { flex-basis: 100%; justify-content: flex-start; margin: -4px 0 2px; padding-left: 50px; }
 .messages-badge.is-quiet { background: var(--c-muted); }

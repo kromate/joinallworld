@@ -88,7 +88,7 @@ onBeforeUnmount(cancel)
 .bubble-wrap { touch-action: pan-y; position: relative; display: flex; flex-direction: column; align-items: flex-start; max-width: 86%; align-self: flex-start; -webkit-touch-callout: none; }
 .bubble-wrap.is-mine { align-items: flex-end; align-self: flex-end; }
 .bubble { max-width: 100%; box-sizing: border-box; padding: 8px 12px 6px; border-radius: 18px 18px 18px 5px; background: #fff; box-shadow: var(--ring); font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; white-space: pre-wrap; }
-.bubble.is-mine { border-radius: 18px 18px 5px 18px; background: var(--app-tint, var(--c-green-dark)); color: #fff; box-shadow: none; }
+.bubble.is-mine { border-radius: 18px 18px 5px 18px; background: #176347; color: #fff; box-shadow: none; }
 .bubble.is-big { background: none; box-shadow: none; padding: 2px 4px; color: inherit; }
 .bubble-name { display: block; font-size: 11px; color: var(--app-tint, var(--c-green-dark)); }
 .bubble small { display: block; margin-top: 2px; font-size: 10px; color: var(--c-muted); text-align: right; }

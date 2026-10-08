@@ -19,13 +19,13 @@ withDefaults(defineProps<{
 </template>
 
 <style scoped>
-.base-button { border: 0; background: var(--c-fill); color: var(--c-ink); border-radius: var(--r-pill); padding: 10px 18px; min-height: var(--tap); font: 600 13px var(--font); cursor: pointer; transition: filter var(--ease), background var(--ease); }
+.base-button { border: 0; background: var(--c-fill); color: var(--c-ink); border-radius: var(--r-sm); padding: 10px 18px; min-height: var(--tap); font: 650 14px var(--font); cursor: pointer; transition: filter var(--ease), background var(--ease); }
 .base-button:hover:enabled { filter: brightness(.96); }
 .base-button:active:enabled { filter: brightness(.9); }
 .base-button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .base-button.is-primary { background: var(--c-green-dark); color: #fff; }
 .base-button.is-danger { background: var(--c-red-soft); color: var(--c-red-dark); }
 .base-button.is-block { display: block; width: 100%; }
-.base-button.is-small { padding: 8px 14px; font-size: 12px; }
-.base-button:disabled { cursor: not-allowed; opacity: .5; }
+.base-button.is-small { padding: 8px 14px; font-size: 13px; }
+.base-button:disabled { cursor: not-allowed; opacity: .6; }
 </style>

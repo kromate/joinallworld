@@ -101,8 +101,8 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
       <HowItWorks id="governor-rules" page label="How elections work" :rules="electionRules(data.rules)" />
 
       <SectionTitle>{{ data.phase === 'results' ? 'This week’s result' : 'Candidates' }}</SectionTitle>
-      <EmptyState v-if="!data.election.candidates.length && data.phase === 'nominations'" icon="ballot" title="Nobody has declared yet" text="Be the first: see what you need under “Run for office” below." />
-      <EmptyState v-else-if="!data.election.candidates.length" icon="ballot" title="Nobody stood in this election" text="Nominations open again on Monday, Nigerian time." />
+      <EmptyState compact v-if="!data.election.candidates.length && data.phase === 'nominations'" icon="ballot" title="Nobody has declared yet" text="Be the first: see what you need under “Run for office” below." />
+      <EmptyState compact v-else-if="!data.election.candidates.length" icon="ballot" title="Nobody stood in this election" text="Nominations open again on Monday, Nigerian time." />
       <template v-else>
         <div class="governor-ballot">
           <div v-for="candidate in data.election.candidates" :key="candidate.id" class="governor-candidate" :class="{ 'is-chosen': data.election.yourVote === candidate.id }">

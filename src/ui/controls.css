@@ -60,7 +60,7 @@
 #life-dialog input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),#life-dialog select,#life-dialog textarea,
 .life-ui input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),.life-ui select,.life-ui textarea,
 #community-panel input:not([type=checkbox]):not([type=radio]):not([type=range]),#community-panel select,#community-panel textarea,.ui-select{
-  box-sizing:border-box;width:100%;min-height:var(--control-h);padding:0 14px;border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);color:var(--c-ink);font:500 15px/1.3 var(--font);outline:none;transition:border-color var(--m-fast) ease-out,box-shadow var(--m-fast) ease-out;-webkit-appearance:none;appearance:none}
+  box-sizing:border-box;width:100%;min-height:var(--control-h);padding:0 14px;border:1.5px solid var(--control-border);border-radius:var(--r-sm);background:var(--control-bg);color:var(--c-ink);font:400 16px/1.4 var(--font);outline:none;transition:border-color var(--m-fast) ease-out,box-shadow var(--m-fast) ease-out;-webkit-appearance:none;appearance:none}
 #life-dialog textarea,.life-ui textarea,#community-panel textarea{padding:12px 14px;min-height:96px;line-height:1.45;resize:vertical}
 #life-dialog select,.life-ui select,#community-panel select{padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2339404b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:20px}
 #life-dialog input::placeholder,#life-dialog textarea::placeholder,.life-ui input::placeholder{color:var(--c-faint);font-weight:400}
@@ -91,7 +91,7 @@
 .ui-select svg{flex:none;width:20px;height:20px;color:var(--c-ink-2);transition:transform var(--m-fast) ease-out}
 .ui-select[aria-expanded=true] svg{transform:rotate(180deg)}
 .ui-select-native{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;border:0!important;opacity:0;pointer-events:none}
-.ui-listbox{position:fixed;z-index:60;box-sizing:border-box;margin:0;padding:6px;list-style:none;max-height:min(320px,calc(46 * var(--ui-vh)));overflow-y:auto;overscroll-behavior:contain;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-3),0 0 0 1px var(--c-line);font:500 15px/1.3 var(--font);color:var(--c-ink);animation:ui-listbox-in var(--m-fast) var(--ease-out)}
+.ui-listbox{position:fixed;z-index:60;box-sizing:border-box;margin:0;padding:6px;list-style:none;max-height:min(320px,calc(46 * var(--ui-vh)));overflow-y:auto;overscroll-behavior:contain;border-radius:var(--r-md);background:#fff;box-shadow:var(--e-3),0 0 0 1px var(--c-line);font:400 16px/1.4 var(--font);color:var(--c-ink);animation:ui-listbox-in var(--m-fast) var(--ease-out)}
 .ui-listbox li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;cursor:pointer}
 .ui-listbox li[aria-selected=true]{font-weight:700;color:var(--c-green-dark)}
 .ui-listbox li[aria-selected=true]::after{content:'';flex:none;width:7px;height:12px;margin-right:4px;border:solid var(--c-green-dark);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translateY(-2px)}
@@ -117,7 +117,7 @@
 .ui-button.is-block{display:flex}
 .ui-button.is-small{min-height:36px;padding:0 14px;font-size:13px}
 .ui-button.is-large{min-height:54px;padding:0 26px;font-size:16px}
-.ui-button.is-primary{box-shadow:0 1px 2px #0d2b1c33}
+.ui-button.is-primary{box-shadow:none}
 .ui-button.is-quiet{background:none;color:var(--c-green-dark);padding:0 12px}
 .ui-button.is-quiet:hover:enabled{background:var(--c-green-soft);filter:none}
 .ui-button.is-icon{width:var(--control-h);padding:0;border-radius:50%}
@@ -135,7 +135,7 @@
 #life-dialog :focus:not(:focus-visible),.life-ui :focus:not(:focus-visible){outline:none}
 
 /* ---- section heading: one style everywhere ------------------------------------------------ */
-.ui-section{margin:var(--gap-section) 2px 10px!important;font-size:12px!important}
+.ui-section{margin:var(--gap-section) 2px 10px!important;font-size:15px!important}
 .sheet-body>.ui-section:first-child{margin-top:8px!important}
 
 @media(prefers-reduced-motion:reduce){.ui-listbox{animation:none}.ui-button.is-loading::after{animation-duration:1.6s}}

@@ -1,13 +1,22 @@
 <script setup lang="ts">
 // A line chart of one or more series over days, in plain SVG (no chart library): a labelled axis, gaps where a day was not measured, a
 // pointer or arrow-key crosshair that names the day and its values, and the same numbers as a table for anyone who cannot use the picture.
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { describe, linePath, niceMax, xAt, yAt } from './chartModel.ts'
 
 export interface Series { name: string; color: string; values: readonly (number | null)[] }
 const props = withDefaults(defineProps<{ title: string; labels: readonly string[]; series: readonly Series[]; height?: number; unit?: string }>(), { height: 180, unit: '' })
-const box = computed(() => ({ width: 600, height: props.height, left: 38, right: 10, top: 10, bottom: 22 }))
+const chart = ref<HTMLElement | null>(null)
+const width = ref(600)
+let observer: ResizeObserver | null = null
+onMounted(() => {
+  observer = new ResizeObserver(entries => { const measured = entries[0]?.contentRect.width; if (measured) width.value = Math.max(280, Math.round(measured)) })
+  if (chart.value) observer.observe(chart.value)
+})
+onBeforeUnmount(() => observer?.disconnect())
+const box = computed(() => ({ width: width.value, height: props.height, left: 38, right: 10, top: 10, bottom: 22 }))
 const top = computed(() => niceMax(Math.max(0, ...props.series.flatMap((one) => one.values.map((value) => value ?? 0)))))
+const axisNumber = new Intl.NumberFormat('en-GB', { notation: 'compact', maximumFractionDigits: 1 })
 const ticks = computed(() => [0, 0.5, 1].map((part) => ({ value: Math.round(top.value * part * 10) / 10, y: yAt(box.value, top.value * part, top.value) })))
 const xTicks = computed(() => { const n = props.labels.length; return n ? [0, Math.floor((n - 1) / 2), n - 1].filter((v, i, all) => all.indexOf(v) === i).map((index) => ({ index, x: xAt(box.value, index, n), text: props.labels[index] ?? '', anchor: index === 0 ? 'start' : index === n - 1 ? 'end' : 'middle' })) : [] })
 const paths = computed(() => props.series.map((one) => ({ ...one, d: linePath(box.value, one.values, top.value) })))
@@ -32,14 +41,19 @@ const label = computed(() => props.series.map((one) => describe(one.name, props.
 </script>
 
 <template>
-  <figure class="adm-chart">
+  <figure ref="chart" class="adm-chart">
     <figcaption>{{ props.title }}<span v-if="props.series.length > 1" class="adm-legend"><i v-for="one in props.series" :key="one.name"><b :style="{ background: one.color }" />{{ one.name }}</i></span></figcaption>
     <svg :viewBox="`0 0 ${box.width} ${box.height}`" role="img" tabindex="0" :aria-label="`${props.title}. ${label} Use the arrow keys to read a day.`" @pointermove="move" @pointerleave="at = null" @keydown="key" @blur="at = null">
       <g class="adm-grid-lines">
-        <g v-for="tick in ticks" :key="tick.y"><line :x1="box.left" :x2="box.width - box.right" :y1="tick.y" :y2="tick.y" /><text :x="box.left - 6" :y="tick.y + 3" text-anchor="end">{{ tick.value.toLocaleString('en-GB') }}</text></g>
+        <g v-for="tick in ticks" :key="tick.y"><line :x1="box.left" :x2="box.width - box.right" :y1="tick.y" :y2="tick.y" /><text :x="box.left - 6" :y="tick.y + 3" text-anchor="end">{{ axisNumber.format(tick.value) }}</text></g>
         <text v-for="tick in xTicks" :key="tick.index" :x="tick.x" :y="box.height - 5" :text-anchor="tick.anchor">{{ tick.text }}</text>
       </g>
-      <path v-for="one in paths" :key="one.name" :d="one.d" fill="none" :stroke="one.color" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      <path v-for="(one, index) in paths" :key="one.name" :d="one.d" fill="none" :stroke="one.color" :stroke-dasharray="index % 3 === 1 ? '6 4' : index % 3 === 2 ? '2 4' : undefined" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      <template v-for="one in props.series" :key="`${one.name}-points`">
+        <template v-for="(value, index) in one.values" :key="index">
+          <circle v-if="value !== null" :cx="xAt(box, index, props.labels.length)" :cy="yAt(box, value, top)" r="2.5" :fill="one.color" />
+        </template>
+      </template>
       <g v-if="at !== null">
         <line class="adm-cross" :x1="xAt(box, at, props.labels.length)" :x2="xAt(box, at, props.labels.length)" :y1="box.top" :y2="box.height - box.bottom" />
         <template v-for="one in props.series" :key="one.name"><circle v-if="one.values[at] !== null && one.values[at] !== undefined" :cx="xAt(box, at, props.labels.length)" :cy="yAt(box, one.values[at] as number, top)" r="3.5" :fill="one.color" /></template>
@@ -47,8 +61,8 @@ const label = computed(() => props.series.map((one) => describe(one.name, props.
     </svg>
     <p class="adm-readout" aria-live="polite">{{ readout || ' ' }}</p>
     <details class="adm-table-fallback"><summary>Show as a table</summary>
-      <div class="adm-scroll"><table class="adm-table"><thead><tr><th>Day</th><th v-for="one in props.series" :key="one.name">{{ one.name }}</th></tr></thead>
-        <tbody><tr v-for="(day, index) in props.labels" :key="day + index"><td>{{ day }}</td><td v-for="one in props.series" :key="one.name">{{ one.values[index] === null || one.values[index] === undefined ? '-' : (one.values[index] as number).toLocaleString('en-GB') }}</td></tr></tbody></table></div>
+      <div class="adm-scroll"><table class="adm-table"><thead><tr><th scope="col">Day</th><th v-for="one in props.series" :key="one.name" scope="col">{{ one.name }}</th></tr></thead>
+        <tbody><tr v-for="(day, index) in props.labels" :key="day + index"><th scope="row">{{ day }}</th><td v-for="one in props.series" :key="one.name">{{ one.values[index] === null || one.values[index] === undefined ? 'Not measured' : (one.values[index] as number).toLocaleString('en-GB') }}</td></tr></tbody></table></div>
     </details>
   </figure>
 </template>

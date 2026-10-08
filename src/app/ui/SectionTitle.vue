@@ -9,6 +9,6 @@ withDefaults(defineProps<{ note?: string }>(), { note: '' })
 
 <style scoped>
 /* !important because the sheet's own heading rule (#life-dialog .sheet-body h3) outranks a scoped class until that sheet is converted. */
-.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: var(--s-4) 4px var(--s-2) !important; font-size: 12px !important; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-muted); }
-.section-title small { font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: var(--s-4) 4px var(--s-2) !important; font-size: 15px !important; font-weight: 700; letter-spacing: -.01em; text-transform: none; color: var(--c-ink); }
+.section-title small { font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 </style>

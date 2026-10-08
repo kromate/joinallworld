@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: profile prisms are closed solids with every face wound toward the exterior
+ok 1 - profile prisms are closed solids with every face wound toward the exterior
+  ---
+  duration_ms: 1.473167
+  type: 'test'
+  ...
+# Subtest: every vehicle and detail level stays within its hard triangle budget
+ok 2 - every vehicle and detail level stays within its hard triangle budget
+  ---
+  duration_ms: 69.257667
+  type: 'test'
+  ...
+# Subtest: each LOD preserves solid vehicle massing and finite bounds
+ok 3 - each LOD preserves solid vehicle massing and finite bounds
+  ---
+  duration_ms: 37.022292
+  type: 'test'
+  ...
+# Subtest: anchors are named, parented, finite, and never duplicate the driver as a passenger seat
+ok 4 - anchors are named, parented, finite, and never duplicate the driver as a passenger seat
+  ---
+  duration_ms: 11.653
+  type: 'test'
+  ...
+# Subtest: road-car boarding door reaches the driver side and opens outward around the front hinge
+ok 5 - road-car boarding door reaches the driver side and opens outward around the front hinge
+  ---
+  duration_ms: 18.673458
+  type: 'test'
+  ...
+# Subtest: opening a road-car door clears its driver entry surface while the closed door fills it
+ok 6 - opening a road-car door clears its driver entry surface while the closed door fills it
+  ---
+  duration_ms: 29.544333
+  type: 'test'
+  ...
+# Subtest: pose is deterministic, resets backwards, and retains all allocated scene resources
+ok 7 - pose is deterministic, resets backwards, and retains all allocated scene resources
+  ---
+  duration_ms: 15.890375
+  type: 'test'
+  ...
+# Subtest: dispose releases each owned instanced mesh, geometry, and material once and is idempotent
+ok 8 - dispose releases each owned instanced mesh, geometry, and material once and is idempotent
+  ---
+  duration_ms: 10.731417
+  type: 'test'
+  ...
+# Subtest: day and night are explicit and invalid public inputs fail at the boundary
+ok 9 - day and night are explicit and invalid public inputs fail at the boundary
+  ---
+  duration_ms: 1.803958
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 332.948208

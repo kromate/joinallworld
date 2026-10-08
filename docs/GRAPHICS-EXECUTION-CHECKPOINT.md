@@ -23,3 +23,12 @@ Next: consistent canonical body/LOD integration for Home/venue/neighbourhood cro
 Original distribution1a329026:84,369,438 raw/11,639,126 gzip/9,148,382 BrotliQ11 bytes. Latest WORLD combined dist95,770,605raw (+11,401,167 original), startup614,996raw/222,925gzip; compression/journey comparison not complete and baseline not reset. Include all country/app-art adoption. Lazy loading does not erase downloaded bytes.
 
 WORLD remains sole production upload owner. Shared local one-intensive-owner rule spans heavy/server/browser/acquisition/generation, heap1536MiB, one slot each, minifier1, explicit terminal handoffs and selective owned cleanup. WORLD now owns the queued compiler/CI/sealed-release gate; GRAPHICS is source/docs-only. No renderer upload or whole-game/mobile completion claim.
+
+
+## Latest bounded phase: actual aperture and canonical Home guests
+
+See [physical aperture v2](GRAPHICS-DRIVER-APERTURE-PHASE.md) for exact source hashes,9/9 vehicle tests, frozen obstruction control, independent conservation/map-pane witnesses, unchanged other builders, targetedtypes and actualall4style pixels/zero-counter teardown. Full boarding, complete finish, bytes/build/phone acceptance remain open; no upload.
+
+Primary local Home candidate now shares canonical body/appearance/wardrobe with guests, serially loaded behind renderer/self readiness.14focused checks and targetedtypes pass. Actualtwo guest baseline14draws/8229tri vs canonicaltwo16draws/15833tri; fivecanonical22draws/31419tri,28geometries/10textures. Actualpublicwalk arrivesz3.23 unblocked/idle. This improves identity but is not mobile acceptance; lower source-derived detail remains required. Home night still uses daylight defaults; disposal0geometries/1texture leaves a residency gate. Home source remains unpublished/unintegrated; no original baseline/cap/asset/schema change.
+
+Latest primary main synccf6 preservedall67 sourcehashes. Isolatedmain599 merge06f77 preserves exact2model hashes. Resource handoff nowWORLD soleintensive/upload owner, thenLIVING/GRAPHICS on explicit next handoffs. Further source work is allowed; no new local tests/server/browser/build byGRAPHICS duringWORLD turn. Whole goalactive/incomplete.

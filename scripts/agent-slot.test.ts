@@ -74,11 +74,39 @@ describe('agent-slot', () => {
     assert.deepEqual(locks('heavy'), [])
   })
 
+  it('waits for a live higher-numbered legacy slot before admitting work at the new default limit', async () => {
+    const release = join(dir, 'release-high-slot')
+    const admitted = join(dir, 'admitted-after-high-slot')
+    mkdirSync(join(dir, 'heavy'), { recursive: true })
+    const lowSentinel = join(dir, 'heavy', '1.lock')
+    writeFileSync(lowSentinel, JSON.stringify({ token: 'test-sentinel', pid: process.pid, host: 'here', cwd: process.cwd(), command: 'test sentinel', kind: 'heavy', startedAt: new Date().toISOString() }))
+    const legacy = slot(['heavy', '--', ...holdUntil(release)], { AGENT_SLOT_HEAVY: '2' })
+    await until(() => existsSync(join(dir, 'heavy', '2.lock')), 'a legacy two-slot holder to acquire slot 2')
+    rmSync(lowSentinel)
+
+    const waiting = slot(['heavy', '--wait-ms', '4000', '--', 'node', '-e', `require('fs').writeFileSync(${JSON.stringify(admitted)},'ran')`])
+    await sleep(180)
+    assert.equal(existsSync(admitted), false, 'the one-slot-default command cannot pass the live slot-2 owner')
+    const status = await slot(['status']).done
+    assert.equal(status.code, 0, status.stderr)
+    assert.match(status.stdout, /heavy: 1\/1 busy/)
+    assert.match(status.stdout, /2 {2}pid \d+ in /)
+    assert.match(status.stdout, /beyond the current limit/)
+
+    writeFileSync(release, '')
+    const [legacyResult, waitingResult] = await Promise.all([legacy.done, waiting.done])
+    assert.equal(legacyResult.code, 0, legacyResult.stderr)
+    assert.equal(waitingResult.code, 0, waitingResult.stderr)
+    assert.equal(existsSync(admitted), true)
+    assert.match(waitingResult.stderr, /higher-numbered slot.*slot 2/)
+    assert.deepEqual(locks('heavy'), [])
+  })
+
   it('uses up to the limit at once and no more', async () => {
     const release = join(dir, 'release-2')
-    const holders = [1, 2].map(() => slot(['server', '--', ...holdUntil(release)]))
+    const holders = [1, 2].map(() => slot(['server', '--', ...holdUntil(release)], { AGENT_SLOT_SERVER: '2' }))
     await until(() => locks('server').length === 2, 'both server slots to be taken')
-    const third = await slot(['server', '--wait-ms', '150', '--', 'node', '-e', ''], {}).done
+    const third = await slot(['server', '--wait-ms', '150', '--', 'node', '-e', ''], { AGENT_SLOT_SERVER: '2' }).done
     assert.equal(third.code, 75)
     assert.match(third.stderr, /waiting for server slot \(2\/2 busy/)
     writeFileSync(release, '')
@@ -96,6 +124,18 @@ describe('agent-slot', () => {
     assert.equal(result.code, 0, result.stderr)
     assert.equal(result.stdout.trim(), 'ran')
     assert.match(result.stderr, /reclaimed browser slot 1/)
+    assert.deepEqual(locks('browser'), [])
+  })
+
+  it('reclaims a stale higher-numbered lock before admitting work at limit 1', async () => {
+    const gone = spawn(process.execPath, ['-e', ''])
+    await new Promise((resolve) => gone.on('close', resolve))
+    mkdirSync(join(dir, 'browser'), { recursive: true })
+    writeFileSync(join(dir, 'browser', '4.lock'), JSON.stringify({ token: 'old-high', pid: gone.pid, host: 'elsewhere', cwd: '/nowhere', command: 'dead high-slot command', kind: 'browser', startedAt: new Date(0).toISOString() }))
+    const completed = await slot(['browser', '--wait-ms', '1000', '--', 'node', '-e', 'console.log("ran")']).done
+    assert.equal(completed.code, 0, completed.stderr)
+    assert.equal(completed.stdout.trim(), 'ran')
+    assert.match(completed.stderr, /reclaimed browser slot 4/)
     assert.deepEqual(locks('browser'), [])
   })
 
@@ -140,8 +180,8 @@ describe('agent-slot', () => {
     await until(() => locks('heavy').length === 1, 'the slot to be taken')
     const result = await slot(['status']).done
     assert.equal(result.code, 0, result.stderr)
-    assert.match(result.stdout, /heavy: 1\/3 busy/)
-    assert.match(result.stdout, /server: 0\/2 busy/)
+    assert.match(result.stdout, /heavy: 1\/1 busy/)
+    assert.match(result.stdout, /server: 0\/1 busy/)
     assert.match(result.stdout, /browser: 0\/1 busy/)
     assert.match(result.stdout, /1 {2}pid \d+ in /)
     writeFileSync(release, '')

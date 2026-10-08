@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { BarberClaimRequest, BarberControlPacket, BarberLifecycleRequest, BarberResponse, BarberStartRequest, BarberUpgradeRequest } from '../../../types/living-world-barber.ts'
 import type { BarberLessonId } from '../../../game/living-world/barber-catalogue.ts'
@@ -153,7 +153,7 @@ async function startLesson(lessonId: BarberLessonId): Promise<void> {
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The start reply could not be verified. Reconnect before trying again.'); return }
     const accepted = acceptReply(answer, token, key, expected, 'start')
-    if (answer.ok && accepted && answer.session?.status === 'running') { startAttempt.value = null; selectedTool.value = answer.session.practice.plan.objectives[0]?.tool ?? 'comb'; beginPractice() }
+    if (answer.ok && accepted && answer.session?.status === 'running') { startAttempt.value = null; selectedTool.value = answer.session.practice.plan.objectives[0]?.tool ?? 'comb'; beginPractice(); void revealPracticeSurface(token, key, answer.session.sessionId) }
     else if (accepted && ['lesson_active', 'lesson_already_started', 'lesson_retained'].includes(answer.code)) { startAttempt.value = null; needsRefresh.value = true; feedback.value = 'A saved lesson or result already exists. Reconnect to review it before continuing.' }
     else if (accepted && !answer.ok) startAttempt.value = null
   } catch (error) {
@@ -164,6 +164,14 @@ async function startLesson(lessonId: BarberLessonId): Promise<void> {
 function beginPractice(): void {
   if (currentSession.value?.status !== 'running' || !online.value || needsRefresh.value) return
   active.value = true; startLoops(); feedback.value = 'Choose the highlighted tool and make short, slow strokes across the mannequin target.'
+}
+async function revealPracticeSurface(token: number, key: string, sessionId: string): Promise<void> {
+  await nextTick()
+  const svg = surface.value, saved = currentSession.value
+  if (!mounted || !requestCurrent(token, key) || document.hidden || !active.value || !online.value || needsRefresh.value
+    || saved?.sessionId !== sessionId || saved.status !== 'running' || !svg?.isConnected || !svg.getClientRects().length) return
+  svg.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'nearest' })
+  svg.focus({ preventScroll: true })
 }
 async function lifecycle(action: 'pause' | 'resume', saved = currentSession.value, token = generation, key = contextKey.value): Promise<void> {
   if (!saved) return
@@ -176,7 +184,10 @@ async function lifecycle(action: 'pause' | 'resume', saved = currentSession.valu
     if (!answer) { needsRefresh.value = true; stopPractice('The lesson state could not be verified. Reconnect before continuing.'); return }
     const accepted = acceptReply(answer, token, key, expected, 'lifecycle')
     if (!accepted) return
-    if (answer.ok && answer.session?.sessionId === expected && answer.session.status === 'running' && action === 'resume') beginPractice()
+    if (answer.ok && answer.session?.sessionId === expected && answer.session.status === 'running' && action === 'resume') {
+      beginPractice()
+      void revealPracticeSurface(token, key, answer.session.sessionId)
+    }
     else if (!answer.ok) {
       stopPractice(answer.reason || answer.session?.practice.feedback || 'The server changed the lesson. Reconnect and review it.')
       if (action === 'resume' && answer.session?.status === 'running') void lifecycle('pause', answer.session, token, key)

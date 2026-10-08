@@ -40,6 +40,55 @@ type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle'; expect
 const canStart = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
 const canResume = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(session.value) && !active.value && !boarding.value && session.value?.state.status === 'paused')
 const complete = computed(() => serverState.value?.status === 'complete')
+const dashboard = computed(() => {
+  const course = route.value, saved = serverState.value
+  if (!course) return {
+    speed: '—', limit: '—', distance: '—', target: 'No course', action: 'The practice course is unavailable.', state: 'Course unavailable',
+  }
+  if (!saved) return {
+    speed: '—', limit: `${(course.speedLimit * 3.6).toFixed(1)} km/h`, distance: '—', target: 'No active target',
+    action: 'Start practice to see server-confirmed gauges.', state: 'Waiting for saved lesson state',
+  }
+  if (saved.status === 'complete') return {
+    speed: `${(saved.speed * 3.6).toFixed(1)} km/h`, limit: `${(course.speedLimit * 3.6).toFixed(1)} km/h`, distance: '—', target: 'No remaining target',
+    action: saved.assessment === 'passed' ? 'Practice complete; the server saved a pass.' : 'Practice complete; review the result before trying again.',
+    state: saved.assessment === 'passed' ? 'Practice complete · passed' : 'Practice complete · try again',
+  }
+  const stoppedAction = saved.status === 'paused' ? 'Paused. Explicitly resume before driving.'
+    : !online.value || needsRefresh.value ? 'Controls are stopped. Reconnect and check the saved lesson before continuing.'
+      : boarding.value ? 'Wait for the car entry animation to finish before using the controls.'
+        : !active.value ? 'Controls are stopped. Check the saved lesson before driving.' : ''
+  const savedGaugeLabel = saved.status === 'paused' ? 'Lesson paused · saved gauges'
+    : stoppedAction ? 'Last server-confirmed gauges' : 'Server-confirmed gauges'
+  const checkpoint = course.checkpoints[saved.checkpointIndex]
+  if (!checkpoint) return {
+    speed: `${(saved.speed * 3.6).toFixed(1)} km/h`, limit: `${(course.speedLimit * 3.6).toFixed(1)} km/h`, distance: '—', target: 'No current target',
+    action: stoppedAction || 'The saved checkpoint target is unavailable; reconnect to check the lesson.',
+    state: stoppedAction ? savedGaugeLabel : 'Target unavailable',
+  }
+  const centerDistance = Math.hypot(saved.position.x - checkpoint.center.x, saved.position.z - checkpoint.center.z)
+  const zoneDistance = Math.max(0, centerDistance - checkpoint.radius)
+  const distance = `${zoneDistance.toFixed(1)} m`
+  const target = checkpoint.stopRequired ? 'Full-stop target' : 'Pass-through target'
+  let action: string
+  if (stoppedAction) {
+    action = saved.status === 'paused' && saved.checkpointEntry === 'blocked'
+      ? `${stoppedAction} Then leave this zone before approaching it again.`
+      : stoppedAction
+  } else if (saved.checkpointEntry === 'blocked') {
+    action = 'Leave this zone, then approach it again to record the checkpoint.'
+  } else if (checkpoint.stopRequired) {
+    action = saved.checkpointEntry === 'entered'
+      ? 'Brake and hold inside the marked zone; the server will confirm the stop.'
+      : 'Enter the marked zone and brake to a full stop.'
+  } else {
+    action = 'Drive through the marked zone in checkpoint order.'
+  }
+  return {
+    speed: `${(saved.speed * 3.6).toFixed(1)} km/h`, limit: `${(course.speedLimit * 3.6).toFixed(1)} km/h`, distance, target, action,
+    state: savedGaugeLabel,
+  }
+})
 const validQualification = computed(() => {
   const answer = qualificationReply.value, qualification = answer?.qualification, current = session.value
   let evidenceMatchesPass = true
@@ -416,9 +465,21 @@ onBeforeUnmount(() => {
     <p class="practice-label">{{ practiceLabel }}</p>
     <div class="driving-view" :class="{ 'is-flat': webglUnavailable }">
       <canvas ref="canvas" aria-hidden="true" />
+      <section v-if="!webglUnavailable" class="server-dashboard" role="group" aria-label="Server-confirmed driving gauges">
+        <div class="gauge-grid">
+          <div class="gauge"><span>Speed</span><strong>{{ dashboard.speed }}</strong></div>
+          <div class="gauge"><span>Limit</span><strong>{{ dashboard.limit }}</strong></div>
+          <div class="gauge"><span>Zone distance</span><strong>{{ dashboard.distance }}</strong></div>
+        </div>
+      </section>
       <p v-if="webglUnavailable" class="scene-fallback">3D scene unavailable. Lesson status is available; reopen on a device with 3D support to practise.</p>
       <p class="course-caption">Fictional practice course · checkpoint lesson</p>
     </div>
+    <section class="checkpoint-guidance" role="group" aria-label="Checkpoint and saved lesson guidance">
+      <strong>{{ dashboard.target }}</strong>
+      <p>{{ dashboard.action }}</p>
+      <small>{{ dashboard.state }} · Zone distance is straight-line to its edge, not distance along the road.</small>
+    </section>
     <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
       <div class="wheel-controls" aria-label="Steering">
         <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
@@ -456,6 +517,14 @@ onBeforeUnmount(() => {
 .practice-label, .control-help { margin: 0; color: var(--c-muted, #5d6870); font-size: 12px; line-height: 1.45; }
 .driving-view { position: relative; overflow: hidden; height: clamp(220px, 35vh, 320px); height: clamp(220px, 35svh, 320px); min-height: 220px; border-radius: 14px; background: #d8e8ee; }
 .driving-view canvas { display: block; width: 100%; height: 100%; }
+.server-dashboard { position: absolute; z-index: 2; inset: 8px 8px auto; box-sizing: border-box; display: grid; max-width: 430px; padding: 6px; border: 1px solid #ffffffa6; border-radius: 10px; background: #102431e8; color: white; pointer-events: none; }
+.gauge-grid { display: grid; grid-template-columns: .8fr .8fr 1.4fr; gap: 5px; }
+.gauge { display: grid; align-content: start; min-width: 0; gap: 2px; }
+.gauge span { color: #d3e3e9; font-size: 12px; line-height: 1.2; }
+.gauge strong { font-size: 14px; line-height: 1.15; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.checkpoint-guidance { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--app-tint, #3783a4) 22%, #d9e1e5); border-radius: 10px; background: #fff; font-size: 13px; line-height: 1.4; }
+.checkpoint-guidance p { margin: 0; }
+.checkpoint-guidance small { color: var(--c-muted, #5d6870); font-size: 12px; line-height: 1.4; }
 .course-caption { position: absolute; inset: auto 10px 8px; margin: 0; padding: 5px 8px; border-radius: 8px; background: #132431d9; color: white; font-size: 11px; }
 .scene-fallback { position: absolute; inset: 25% 12px auto; text-align: center; color: #27333a; font-size: 13px; }
 .lesson-status { padding: 12px; border-radius: 12px; background: color-mix(in srgb, var(--app-tint, #3783a4) 7%, white); }

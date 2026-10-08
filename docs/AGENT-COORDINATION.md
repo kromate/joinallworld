@@ -4,7 +4,7 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 
 ## Production release ownership
 
-- Checkpoint: 2026-10-08 18:43 UTC.
+- Checkpoint: 2026-10-08 19:10 UTC.
 - Release owner: **WORLD — Research automated world map system**, chat 01a118b7-2dc5-7ad1-b1cf-874647b3d348.
 - State: WORLD uploaded source049a3350 in provider version e60e68c5-0b5f-4b6b-9957-a6f6fc4b98b5. Public build adoption and synthetic continuity passed; actual browser country loading exposed a negotiated-zstd rejection. A forward correction is committed in84785af4 and fresh APP UI main83a is preserved in isolated merge8bd05cff. Combined affected Node134/134, Worker142/142, build and unchanged download caps pass. Earlier local compiler-clean reports are qualified; corrected wrapper exposes client/test SIGABRT at1536MiB, so a fresh exact remote CI compiler pass is required. Sealing, public CI and forward upload/browser acceptance remain pending. WORLD retains sole upload ownership; no upload is in flight.
 - Other agents prepare and test reviewable source phases, coordinate integration with WORLD, and do not start concurrent production uploads.
@@ -79,3 +79,12 @@ WORLD source049a3350bf52f29df3524f011e425542c7756b51 adds 257 requested geograph
 ### Country upload and forward-fix checkpoint — 2026-10-08 17:51 UTC
 
 Source049a3350 was uploaded in provider version e60e68c5-0b5f-4b6b-9957-a6f6fc4b98b5. Public health adopted prefix `joinallworld-049a3350bf52f29df3524f011e4` (the existing endpoint clamps BUILD_ID to 40 characters); provider binding retained the full source identity. The same owned synthetic balance5000 and duplicate action receipt survived. Live HTTP catalogue/Senegal/Fiji bodies matched their pins. Actual public browser Countries loading failed because Cloudflare negotiated zstd, which the reader whitelist rejected; this is not an accepted UI release. Native-decoded zstd/deflate support is committed in84785af4 with decoded bounds/hash/cancellation/cache checks intact. Incoming APP UI74bacbdc/loadingf57daede source is merged and preserved; it changes no world schema. Combined verification/release is underway with the resource limits unchanged. No second upload or upload-owner handoff has occurred.
+
+### Sealed forward release ready for sole WORLD upload — 2026-10-08 19:10 UTC
+
+Exact source **73549b8ad33b51f39c4b8d3dd27742f5dde4463d** is on public main and [CI37826623202](https://github.com/kromate/joinallworld/actions/runs/37826623202) is terminal success: canonical TypeScript, build/download/smoke and release-policy pass; full job skipped. Local affectedNode134/134, Worker142/142 and corrected wrapper/transport17/17 pass; original wrapper loses four completion-failure witnesses. The corrected local client/test compile aborts remain recorded, not reclassified as passes or retried at higher heap.
+
+Sealed/extracted digest **85095d3b8f39fe311100298846abae18639a42c429fbbe10b30bef4d0bbe72bf**, archive SHA **45acc50775cff82298f365fd6da139619ec6bf0ad52c551b1a8ef4b78e0e875d**:6111files/6120members/101,675,799logicalbytes/largest4,508,686. Unchanged5MiB-file/6500-member/100MiB-aggregate bounds pass. All258country public assets and complete Lagos/Ibadan street assets match; fixedno_bundle/find_additional_modules policy retained. Authenticated pinnedWrangler4.147.0 confirms intended existing account; actual provider latest by creation time remains e60e68c5 at100%, with JOINALLWORLD/JoinAllworldState namespace6b84e715f6c444f69971a0b6cde7868b. No concurrent upload is observed.
+
+Fresh owned synthetic pre-upgrade reference **2026-10-08T18:57:25.819Z** reads old049build and balance5000; credentials/receipt remain private. This timestamp is a recovery reference, not an executed backup/restore. WORLD retains sole intensive/upload ownership, preserves existing vars/secrets and uploads this checked unpacked artifact. Current countryUIpublic acceptance and post-upload adoption/continuity remain required. New living/vehicle/Family experiments are excluded. Canonical npmtest-list inclusion for new wrapper regressions is a separately owned WORLD follow-up; direct17/17 is the current execution evidence, not a claim that fullCI ran them.
+

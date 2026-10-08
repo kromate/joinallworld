@@ -454,8 +454,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (res.headersSent || res.writableEnded) return;
       // The game's page carries the full set of security headers; its inline scripts are admitted by hash, from the page as served.
       const security = isShell ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), accounts: accountsHeaderConfig, admin: true }) : isIndex ? appHeaders({ ...factsOf(req), scriptHashes: await inlineScriptHashes(html), telemetry: telemetryHosts, avatarAssets: html.includes('name="allworld-3d-assets"'), accounts: accountsHeaderConfig, trustProviders: trustHeaderConfig(envReader(env), accountsHeaderConfig) }) : adminKind ? { 'X-Robots-Tag': 'noindex, nofollow' } : {};
-      // Hashed files under /assets/ never change: cached for a year. The page itself is revalidated every time.
-      const cache = inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
+      // Immutable assets cache for a year; the page and mutable street version pointer revalidate.
+      const currentStreetManifest = /^\/assets\/street\/[a-z][a-z0-9-]{0,60}\/manifest\.txt$/.test(decodeURIComponent(url.pathname));
+      const cache = currentStreetManifest ? 'no-cache' : inAssets ? 'public, max-age=31536000, immutable' : path === resolve(root, 'index.html') ? 'no-cache' : 'public, max-age=3600';
       res.writeHead(200, { 'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': cache, 'X-Content-Type-Options': 'nosniff', ...security });
       res.end(method === 'HEAD' ? undefined : bytes);
     } catch (thrown) {

@@ -2,16 +2,20 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { constants, brotliCompressSync } from 'node:zlib'
 import { resolve } from 'node:path'
-import { parseStreetManifest, createStreetAssets } from '../../server/street/assets.ts'
+import { parseStreetManifest, parseStreetManifestPointer, createStreetAssets } from '../../server/street/assets.ts'
 import { decodeImmutableStreetTile, MAX_RAW_TILE_BYTES, tileGroundAt, localPoint, globalPoint } from '../../src/street/frame.ts'
 import { estimatedTileTriangles } from '../../src/street/generate.ts'
 import type { WireStreetTile } from '../../src/street/types.ts'
 
 /** All emitted immutable tiles, streamed one at a time; no browser, renderer or geography download. */
 export async function checkPrepared(city: string) {
-  const out = resolve('public/assets/street', city), text = await readFile(resolve(out, 'manifest.txt'), 'utf8'), value: unknown = JSON.parse(text), manifest = parseStreetManifest(value, city)
-  if (Buffer.byteLength(text) > 4 * 1024 * 1024) throw Error('Manifest exceeds bridge limit')
-  const immutable = await readFile(resolve(out, `manifest-${manifest.version}.txt`), 'utf8'); if (immutable !== text) throw Error('Current and versioned manifest differ')
+  const out = resolve('public/assets/street', city), text = await readFile(resolve(out, 'manifest.txt'), 'utf8'), value: unknown = JSON.parse(text);
+  const target = parseStreetManifestPointer(value, city);
+  const logicalText = target === null ? text : await readFile(resolve(out, `manifest-${target}.txt`), 'utf8');
+  const manifest = parseStreetManifest(JSON.parse(logicalText), city);
+  if (target !== null && manifest.version !== target) throw Error('Current street pointer version mismatch');
+  if (Buffer.byteLength(text) > 4 * 1024 * 1024 || Buffer.byteLength(logicalText) > 4 * 1024 * 1024) throw Error('Manifest exceeds bridge limit')
+  const immutable = await readFile(resolve(out, `manifest-${manifest.version}.txt`), 'utf8'); if (immutable !== logicalText) throw Error('Current and versioned manifest differ')
   const assets = createStreetAssets({ async readManifest(_city, version) { return JSON.parse(await readFile(resolve(out, version ? `manifest-${version}.txt` : 'manifest.txt'), 'utf8')) }, readTile: (_city, _version, file) => readFile(resolve(out, file), 'utf8') })
   const packs = new Set<string>()
   const doors = new Set<string>(); let maxRaw = 0, maxBrotli = 0, maxTriangles = 0, totalRaw = 0, totalBrotli = 0

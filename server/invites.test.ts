@@ -30,7 +30,8 @@ async function setup(t: Parameters<typeof fixture>[0]) {
   t.after(() => rm(dist, { recursive: true, force: true }));
   await mkdir(join(dist, 'og'));
   await writeFile(join(dist, 'index.html'), INDEX);
-  await writeFile(join(dist, 'og', 'allworld.png'), 'jpg');
+  await writeFile(join(dist, 'og', 'allworld.png'), 'legacy image');
+  await writeFile(join(dist, 'og', 'allworld.jpg'), 'jpeg image');
   const f = await fixture(t, { distDir: dist, publicOrigin: ORIGIN, env: {} });
   const call = async (path: string, body: Frame | null, who?: Who): Promise<Reply> => { const response = await f.request(path, body, who?.cookie); return replyOf(await response.json(), response.status); };
   const act = (who: Who, type: string, payload?: Frame) => call('/api/action', { actionId: f.id(), cityId: CITY, type, ...(payload ? { payload } : {}) }, who);
@@ -75,7 +76,7 @@ test('a house link and a share link: the game page for a person, a script-free p
   assert.ok(!/<script/i.test(html) && !/\son[a-z]+=/i.test(html));
   const meta = (key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
   assert.match(meta('og:title') ?? '', /Ada/);
-  assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card')], ['website', 'Allworld', `${ORIGIN}/s/${shared.share?.code}`, `${ORIGIN}/og/allworld.png`, 'summary_large_image']);
+  assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card')], ['website', 'Allworld', `${ORIGIN}/s/${shared.share?.code}`, `${ORIGIN}/og/allworld.jpg`, 'summary_large_image']);
   const target = (/<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html)?.[1] ?? '').replaceAll('&amp;', '&');
   const url = new URL(target, ORIGIN);
   assert.deepEqual({ join: joinIdFrom(url.pathname, url.search), ...linkParts(url.pathname, url.search) }, { join: ada.id, ref: shared.share?.code, table: null });

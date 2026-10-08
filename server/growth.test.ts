@@ -103,7 +103,7 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
   assert.equal(tag('og:title'), 'Come to Ada O&#39;Neil’s house in Yaba, Lagos');
   assert.match(must(tag('og:description')), /No sign-up/);
   assert.equal(tag('og:url'), `https://play.example/s/${share.code}`);
-  assert.equal(tag('og:image'), 'https://play.example/og/allworld.png');
+  assert.equal(tag('og:image'), 'https://play.example/og/allworld.jpg');
   assert.deepEqual([tag('og:image:width'), tag('og:image:height'), tag('twitter:card'), tag('og:type')], ['1200', '630', 'summary_large_image', 'website']);
   assert.ok(html.indexOf('og:title') < html.indexOf('</head>') && html.indexOf('</head>') < 300000, 'the tags are in <head>, well inside the first 300 KB');
   assert.equal(/<script/i.test(html), false, 'no script: the preview does not depend on one');
@@ -122,7 +122,7 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
   // The page is pure: hostile facts and a hostile origin cannot put markup into it.
   const hostile = sharePageHtml({ by: '"><script>', facts: cleanFacts({ kind: 'invite', name: '"><img src=x onerror=1>', district: '<i>' }) }, 'abcdefghij', 'https://evil.example/"><script>');
   assert.equal(/<img|<i>|<script|evil\.example/.test(hostile), false);
-  assert.match(hostile, /og:image" content="\/og\/allworld\.png"/);
+  assert.match(hostile, /og:image" content="\/og\/allworld\.jpg"/);
   // A share page is personal: not indexed, its canonical is itself, and a hostile nickname stays text.
   const nick = sharePageHtml({ by: ada.id, facts: cleanFacts({ kind: 'invite', name: '"><script>alert(1)</script>', district: 'Yaba' }) }, 'abcdefghij', 'https://play.example');
   assert.equal(/<script|"><script/i.test(nick), false, 'a hostile nickname is escaped');
@@ -130,7 +130,7 @@ test('share page: a crawler that runs no script gets correct Open Graph tags, es
   assert.match(nick, /<meta name="robots" content="noindex, nofollow">/);
   assert.match(nick, /<link rel="canonical" href="https:\/\/play\.example\/s\/abcdefghij">/);
   assert.match(nick, /<meta property="og:url" content="https:\/\/play\.example\/s\/abcdefghij">/);
-  assert.match(nick, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.png">/);
+  assert.match(nick, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.jpg">/);
   assert.equal(res.headers.get('x-robots-tag'), 'noindex, nofollow');
   // Opened links are counted for the operator.
   const metrics = (await (await fetch(`${f.base}/api/mod/growth/metrics`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json()) as GrowthMetricsResponse;

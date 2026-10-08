@@ -87,7 +87,9 @@ async function assertResponse(response: Response, path: string, signal: AbortSig
     if (response.status !== 200 || response.redirected || response.type === 'opaque' || response.type === 'opaqueredirect') throw new Error(`${label} request failed (${response.status})`);
     responseUrlIsSafe(response, path);
     const encoding = response.headers.get('content-encoding');
-    if (encoding !== null && !['identity', 'gzip', 'br'].includes(encoding.toLowerCase())) throw new Error(`${label} response encoding is unsupported`);
+    // Fetch exposes browser-decoded bytes but retains the transport encoding header. Cloudflare
+    // may negotiate Zstandard; integrity and size checks below still apply to the decoded body.
+    if (encoding !== null && !['identity', 'gzip', 'deflate', 'br', 'zstd'].includes(encoding.toLowerCase())) throw new Error(`${label} response encoding is unsupported`);
   } catch (error) {
     await cancelBody(response.body);
     throw error;

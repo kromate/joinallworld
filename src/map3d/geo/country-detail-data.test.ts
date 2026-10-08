@@ -128,16 +128,66 @@ test('bundle failures do not enter the cache and a later retry can succeed', asy
   assert.equal(bundleCalls, 2);
 });
 
-test('browser-decoded compressed transport uses the exact decoded byte pin', async () => {
+test('browser-decoded gzip, deflate, Brotli and Zstandard transport verifies catalogue and bundle bytes', async () => {
   const data = await fixture(1);
+  // These responses model Fetch's already-decoded body and retained wire headers. Decoding
+  // itself belongs to the browser and is separately exercised against the production CDN.
+  for (const encoding of ['gzip', 'deflate', 'br', 'zstd', 'ZSTD']) {
+    const service = createCountryDetailService({ pins: data.pins, fetcher: async input => {
+      const path = String(input);
+      const body = path === data.pins.cataloguePath ? data.catalogueBytes : data.bundleBodies.get(path)!;
+      return new Response(Buffer.from(body), { headers: { 'content-encoding': encoding, 'content-length': String(body.byteLength - 1) } });
+    } });
+    const catalogue = await service.catalogue(new AbortController().signal);
+    assert.equal(catalogue.countries.length, 2, encoding);
+    const outline = await service.load('country:natural-earth:NE_ID%3A1', new AbortController().signal);
+    assert.equal(outline.country.name, 'Country 1', encoding);
+  }
+});
+
+test('Zstandard headers cannot bypass decoded byte pins, hashes or cache admission', async () => {
+  const data = await fixture(1); let bundleCalls = 0;
+  const service = createCountryDetailService({ pins: data.pins, fetcher: async input => {
+    const path = String(input); if (path === data.pins.cataloguePath) return response(data.catalogueBytes);
+    const original = data.bundleBodies.get(path)!;
+    const body = new Uint8Array(original); bundleCalls++;
+    if (bundleCalls === 1) body[0] ^= 1;
+    const delivered = bundleCalls === 2 ? body.subarray(0, body.byteLength - 1) : body;
+    return new Response(Buffer.from(delivered), { headers: { 'content-encoding': 'zstd', 'content-length': '1' } });
+  } });
+  const signal = new AbortController().signal;
+  await assert.rejects(service.load('country:natural-earth:NE_ID%3A1', signal), /hash differs/);
+  await assert.rejects(service.load('country:natural-earth:NE_ID%3A1', signal), /exact byte pin/);
+  await service.load('country:natural-earth:NE_ID%3A1', signal);
+  await service.load('country:natural-earth:NE_ID%3A1', signal);
+  assert.equal(bundleCalls, 3, 'only the verified third response enters the cache');
+});
+
+test('unknown or stacked transport encodings are rejected and canceled before reading', async () => {
+  const data = await fixture(1);
+  for (const encoding of ['unknown', 'gzip, zstd']) {
+    let reads = 0, canceled = 0;
+    const service = createCountryDetailService({ pins: data.pins, fetcher: async () => new Response(
+      new ReadableStream<Uint8Array>({ pull() { reads++; }, cancel() { canceled++; } }, { highWaterMark: 0 }),
+      { headers: { 'content-encoding': encoding } },
+    ) });
+    await assert.rejects(service.catalogue(new AbortController().signal), /encoding is unsupported/);
+    assert.equal(reads, 0); assert.equal(canceled, 1);
+  }
+});
+
+test('compressed response cannot conceal an oversized decoded stream', async () => {
+  const data = await fixture(1); let canceled = 0;
   const service = createCountryDetailService({ pins: data.pins, fetcher: async input => {
     const path = String(input); if (path === data.pins.cataloguePath) return response(data.catalogueBytes);
     const body = data.bundleBodies.get(path)!;
-    return new Response(Buffer.from(body), { headers: { 'content-encoding': 'gzip', 'content-length': String(body.byteLength - 1) } });
+    return new Response(new ReadableStream<Uint8Array>({
+      start(controller) { controller.enqueue(body); controller.enqueue(new Uint8Array([0])); },
+      cancel() { canceled++; },
+    }), { headers: { 'content-encoding': 'zstd', 'content-length': '1' } });
   } });
-  await service.catalogue(new AbortController().signal);
-  const outline = await service.load('country:natural-earth:NE_ID%3A1', new AbortController().signal);
-  assert.equal(outline.country.name, 'Country 1');
+  await assert.rejects(service.load('country:natural-earth:NE_ID%3A1', new AbortController().signal), /exceeded its byte bound/);
+  assert.equal(canceled, 1);
 });
 
 test('raw bundle cache retains at most four verified entries and reloads the evicted least-recently-used entry', async () => {

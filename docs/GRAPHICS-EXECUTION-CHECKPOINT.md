@@ -1,6 +1,6 @@
 # Graphics execution checkpoint — 8 October 2026
 
-Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary main2cfeb5e1 plus preserved local graphics changes; isolated source phase merges latest mainbcc376a2. Ignored experiments are excluded from production packages.
+Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary and isolated source phase now include main6dc7f516; primary local graphics work is preserved. Ignored experiments are excluded from production packages. Latest status below supersedes historical checkpoints.
 
 ## User direction
 
@@ -31,4 +31,4 @@ See [physical aperture v2](GRAPHICS-DRIVER-APERTURE-PHASE.md) for exact source h
 
 Primary local Home candidate now shares canonical body/appearance/wardrobe with guests, serially loaded behind renderer/self readiness.14focused checks and targetedtypes pass. Actualtwo guest baseline14draws/8229tri vs canonicaltwo16draws/15833tri; fivecanonical22draws/31419tri,28geometries/10textures. Actualpublicwalk arrivesz3.23 unblocked/idle. This improves identity but is not mobile acceptance; lower source-derived detail remains required. Home night still uses daylight defaults; disposal0geometries/1texture leaves a residency gate. Home source remains unpublished/unintegrated; no original baseline/cap/asset/schema change.
 
-Latest primary main synccf6 preservedall67 sourcehashes. Isolatedmain599 merge06f77 preserves exact2model hashes. Resource handoff nowWORLD soleintensive/upload owner, thenLIVING/GRAPHICS on explicit next handoffs. Further source work is allowed; no new local tests/server/browser/build byGRAPHICS duringWORLD turn. Whole goalactive/incomplete.
+Latest primary main sync6dc7f516 preserved all67 local source hashes; isolated phase includes the same main and retains exact tested vehicle source/test hashes. Draft PR21 publishes db85161b physical aperture and evidence. WORLD confirms APP UI Family now owns the sole local intensive turn; prior WORLD→LIVING queue is superseded until explicit APP UI handoff. GRAPHICS remains source-only with no live owned QA sessions/tab. WORLD remains sole production uploader. No new local compiler/build/test/browser run after handback. Whole goal active/incomplete.

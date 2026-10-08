@@ -178,3 +178,5 @@ Settings audit still open: hints persistence currently uses optional storage wri
 ### Shared hints preference handoff
 
 Settings ce4d861e passed exact CI37859045285. Hints now have one reactive per-tab value initialized from storage. Settings, HUD attention, companion quiet mode and tour eligibility consume it; coach dismiss updates it too. This removes the legacy event/read mismatch and keeps the choice consistent when storage is blocked. Settings now warns for a null storage object as well as a thrown write, and clears stale warnings after a successful change. Existing storage key/default are retained; other tabs take the saved value on reload, with no claim of new cross-tab synchronization. Acceptance: toggle/dismiss/reopen, blocked storage, reload with persisted values, companion quiet mode and auto-tour eligibility; manual tour behavior and startup caps must remain intact.
+
+The hints storage-failure wording explicitly says reload or close, matching an in-memory page preference rather than promising persistence across a reload.

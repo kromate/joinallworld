@@ -2,6 +2,25 @@
 
 8 October 2026. Reopened by the user after the first app-interior release. The previous 41-app entry-screen sweep was insufficient evidence for complete app behavior. This is the current acceptance plan; do not mark the whole UI programme complete based on shared CSS or an app opening.
 
+## Current integration queue
+
+The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
+
+| Slice | Latest runtime checkpoint | Fast CI | Remaining acceptance |
+|---|---|---|---|
+| Store / Invest | c5f4c4cb | 37850351246 passed | Delayed directory/filter responses, cancel/save normalization, deposit actions, narrow layouts |
+| Business | 8129ed4f | 37851320078 passed | Stock/price pending edits, different-shop draft reset, mobile rows |
+| Home visiting / manual copy | 80e48a8b | 37853252819 passed | Refused/pending operations, native-share cancellation, clipboard denial, link wrapping |
+| Report / Statement identity guards | 9d1d488f | 37856165507 passed | Delayed cross-character responses, draft/retry identity, statement context, focused model checks |
+| Notification settings | 14e802de | 37856727022 passed | Paused selector, refused preference rollback, keyboard and mobile behavior |
+| Chat privacy | b29031f6 | 37857267550 passed | Delayed/refused toggles and cross-device settings |
+| Older-character Settings | ce4d861e | 37859045285 passed | Delayed identity changes, switch retries and reconnect |
+| Shared hints | e524bf55 | 37860276621 passed | Storage denial, all consumers, dismiss/reopen/reload and manual versus automatic tours |
+| Events / public records | 75ca35a9 | 37861362311 passed | Filter races, pagination/retry, offline calendar/actions and narrow cards |
+| Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
+
+Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
+
 ## Required scope
 
 | Area | Required implementation and states | Evidence required | Current state |

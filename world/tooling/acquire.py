@@ -7,6 +7,7 @@ import errno
 import http.client
 import json
 import math
+from contextlib import nullcontext
 from decimal import Decimal
 import os
 from pathlib import Path
@@ -21,6 +22,16 @@ from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urljoin, urlsplit
 import urllib.request
+
+import importlib.util
+
+_RANGE_CACHE_SPEC = importlib.util.spec_from_file_location("world_range_cache", Path(__file__).resolve().with_name("range_cache.py"))
+if _RANGE_CACHE_SPEC is None or _RANGE_CACHE_SPEC.loader is None:
+    raise RuntimeError("fixed range-cache helper is unavailable")
+_RANGE_CACHE_MODULE = importlib.util.module_from_spec(_RANGE_CACHE_SPEC)
+_RANGE_CACHE_SPEC.loader.exec_module(_RANGE_CACHE_MODULE)
+ExactRangeCache = _RANGE_CACHE_MODULE.ExactRangeCache
+RangeCacheError = _RANGE_CACHE_MODULE.RangeCacheError
 
 MAX_ITEM_LINKS = 640
 MAX_CATALOG_BYTES = 2_000_000
@@ -467,15 +478,27 @@ def quote_sql_text(value: str) -> str:
 
 
 class RangeProxy:
-    def __init__(self, assets: list[dict[str, object]], budget: NetworkBudget, host: str, release: str, concurrency: int = 2):
+    def __init__(self, assets: list[dict[str, object]], budget: NetworkBudget, host: str, release: str, concurrency: int = 2,
+                 *, range_cache: ExactRangeCache | None = None):
         self.assets = assets
         self.budget = budget
         self.host = host
         self.release = release
+        self.range_cache = range_cache
         self.etags: dict[str, str] = {}
         self.etag_lock = threading.Lock()
+        self.head_info: dict[str, dict[str, object]] = {}
+        self.head_locks: dict[str, threading.Lock] = {}
+        self.head_lock_guard = threading.Lock()
         self.errors: list[dict[str, object]] = []
         self.error_lock = threading.Lock()
+        self.audit_rows: list[dict[str, object]] = []
+        self.audit_counters: dict[str, int] = {"rangeRequests": 0, "cacheHits": 0, "cacheMisses": 0,
+                                               "cacheWriteSkips": 0, "savedBodyBytes": 0,
+                                               "headRequests": 0, "headResponseBytes": 0,
+                                               "rangeGetResponseBytes": 0, "measuredUpstreamBytes": 0}
+        self.audit_truncated = False
+        self.audit_lock = threading.Lock()
         self.slots = threading.BoundedSemaphore(concurrency)
         self.httpd = ThreadingHTTPServer(("127.0.0.1", 0), self._handler())
         self.httpd.daemon_threads = True
@@ -530,6 +553,148 @@ class RangeProxy:
         with self.error_lock:
             return dict(self.errors[0]) if self.errors else None
 
+    def _audit(self, row: dict[str, object] | None = None, **counts: int) -> None:
+        with self.audit_lock:
+            for key, value in counts.items():
+                self.audit_counters[key] = self.audit_counters.get(key, 0) + max(0, int(value))
+            if row is not None:
+                if len(self.audit_rows) < 64:
+                    self.audit_rows.append(row)
+                else:
+                    self.audit_truncated = True
+
+    def range_audit(self) -> dict[str, object]:
+        with self.audit_lock:
+            rows = list(self.audit_rows)
+            truncated = self.audit_truncated
+            value: dict[str, object] = {"schemaVersion": 1, "counters": dict(self.audit_counters), "ranges": rows, "truncated": truncated}
+            while len(canonical(value)) > 63_999 and rows:
+                rows.pop()
+                truncated = True
+                value = {"schemaVersion": 1, "counters": dict(self.audit_counters), "ranges": rows, "truncated": truncated}
+            return value
+
+    def _head_lock(self, url: str) -> threading.Lock:
+        with self.head_lock_guard:
+            lock = self.head_locks.get(url)
+            if lock is None:
+                if len(self.head_locks) >= 1_300:
+                    raise BudgetExceeded("range proxy exceeded bounded source HEAD identities")
+                lock = threading.Lock()
+                self.head_locks[url] = lock
+            return lock
+
+    def _observe_etag(self, url: str, etag: str | None) -> None:
+        if not etag:
+            return
+        with self.etag_lock:
+            previous = self.etags.setdefault(url, etag)
+            if previous != etag:
+                raise RuntimeError("upstream ETag changed between range requests")
+
+    @staticmethod
+    def _header_bytes(response: http.client.HTTPResponse) -> int:
+        version = "1.0" if response.version == 10 else "1.1"
+        return (len(f"HTTP/{version} {response.status} {response.reason}\r\n")
+                + sum(len(key) + len(value) + 4 for key, value in response.getheaders()) + 2)
+
+    @staticmethod
+    def _strong_etag(etag: object) -> bool:
+        return isinstance(etag, str) and len(etag) <= 512 and re.fullmatch(r'"[\x21\x23-\x7e\x80-\xff]*"', etag) is not None
+
+    def _origin_head(self, url: str, file_bytes: int, asset: dict[str, object], *, record_errors: bool = True) -> dict[str, object]:
+        safe_url(url, self.host, self.release)
+        parsed = urlsplit(url)
+        reservation = self.budget.reserve(8_192)
+        conn: http.client.HTTPSConnection | None = None
+        observed = 0
+        try:
+            conn = http.client.HTTPSConnection(parsed.hostname, parsed.port or 443, timeout=30)
+            headers = {"Accept-Encoding": "identity", "User-Agent": "joinallworld-acquirer/1"}
+            with self.etag_lock:
+                prior_etag = self.etags.get(url)
+            if self._strong_etag(prior_etag):
+                headers["If-Match"] = prior_etag
+            conn.request("HEAD", parsed.path, headers=headers)
+            response = conn.getresponse()
+            observed = self._header_bytes(response)
+            etag = response.getheader("ETag")
+            self.budget.consume(reservation, url, observed, etag)
+            if etag and (self._strong_etag(etag) or url in self.etags):
+                self._observe_etag(url, etag)
+            headers = {name: response.getheader(name) for name in ("Content-Length", "Content-Range", "Accept-Ranges", "ETag", "Last-Modified", "Content-Type", "Content-Encoding")}
+            content_length = headers.get("Content-Length")
+            cacheable = (response.status == 200 and (headers.get("Content-Encoding") or "identity").lower() in ("", "identity")
+                         and content_length is not None and content_length.isdigit() and int(content_length) == file_bytes
+                         and self._strong_etag(etag))
+            return {"status": response.status, "reason": response.reason, "headers": headers,
+                    "etag": etag, "cacheable": cacheable, "headerBytes": observed}
+        except Exception as error:
+            try:
+                setattr(error, "range_head_bytes_observed", observed)
+            except Exception:
+                pass
+            if record_errors:
+                self._record_error(asset, url, "HEAD", None, "upstream_head", error, None, observed)
+            raise
+        finally:
+            try:
+                if conn is not None:
+                    conn.close()
+            finally:
+                self._audit(headRequests=1, headResponseBytes=observed, measuredUpstreamBytes=observed)
+                if reservation:
+                    self.budget.release(reservation)
+
+    def _ensure_head(self, url: str, file_bytes: int, asset: dict[str, object], *, record_errors: bool = False) -> tuple[dict[str, object], int]:
+        lock = self._head_lock(url)
+        with lock:
+            cached = self.head_info.get(url)
+            if cached is not None and cached.get("cacheable") is True and cached.get("fileBytes") == file_bytes:
+                return cached, 0
+            current = self._origin_head(url, file_bytes, asset, record_errors=record_errors)
+            if current.get("cacheable") is True:
+                current["fileBytes"] = file_bytes
+                self.head_info[url] = current
+            return current, int(current.get("headerBytes", 0))
+
+    @staticmethod
+    def _range_bounds(range_header: str, file_bytes: int) -> tuple[int, int] | None:
+        match = re.fullmatch(r"bytes=(\d+)-(\d*)", range_header)
+        if not match:
+            return None
+        first = int(match.group(1))
+        last = int(match.group(2)) if match.group(2) else file_bytes - 1
+        if first >= file_bytes or last < first:
+            return None
+        return first, min(last, file_bytes - 1)
+
+    @staticmethod
+    def _send_cached_range(client: BaseHTTPRequestHandler, payload: bytes, file_bytes: int, first: int, last: int, etag: str) -> None:
+        client.send_response(206, "Partial Content")
+        client.send_header("Content-Length", str(len(payload)))
+        client.send_header("Content-Range", f"bytes {first}-{last}/{file_bytes}")
+        client.send_header("Accept-Ranges", "bytes")
+        client.send_header("ETag", etag)
+        client.send_header("Connection", "close")
+        client.end_headers()
+        client._world_proxy_response_started = True  # type: ignore[attr-defined]
+        client.wfile.write(payload)
+        client.close_connection = True
+
+    def _send_head(self, client: BaseHTTPRequestHandler, info: dict[str, object]) -> None:
+        client.send_response(int(info["status"]), str(info["reason"]))
+        headers = info.get("headers")
+        if isinstance(headers, dict):
+            for name in ("Content-Length", "Content-Range", "Accept-Ranges", "ETag", "Last-Modified", "Content-Type", "Content-Encoding"):
+                value = headers.get(name)
+                if isinstance(value, str):
+                    client.send_header(name, value)
+        client.send_header("Connection", "close")
+        client.end_headers()
+        client._world_proxy_response_started = True  # type: ignore[attr-defined]
+        client.close_connection = True
+
     def _record_error(self, asset: dict[str, object], url: str, method: str, range_header: str | None,
                       phase: str, error: Exception, status: int | None, observed_bytes: int) -> None:
         parsed = urlsplit(url)
@@ -567,8 +732,68 @@ class RangeProxy:
         finally:
             client.close_connection = True
 
+    def _audit_range(self, url: str, etag: str | None, file_bytes: int, first: int, last: int,
+                     result: str, body_sha256: str | None, saved: int, upstream: int, reason: str | None = None) -> None:
+        self._audit(rangeRequests=1,
+                    cacheHits=1 if result == "hit" else 0,
+                    cacheMisses=1 if result in ("miss", "write-skip", "uncacheable", "error") else 0,
+                    cacheWriteSkips=1 if result == "write-skip" else 0,
+                    savedBodyBytes=saved)
+        row: dict[str, object] = {"url": url, "etag": etag,
+            "fileBytes": file_bytes, "first": first, "last": last, "result": result,
+            "bodySha256": body_sha256, "savedBodyBytes": saved, "measuredUpstreamBytes": upstream}
+        if reason:
+            row["reason"] = reason[:80]
+        self._audit(row)
+
     def _upstream(self, client: BaseHTTPRequestHandler, url: str, body: bool, file_bytes: int,
                   asset: dict[str, object]) -> None:
+        range_header = client.headers.get("Range")
+        if self.range_cache is None:
+            return self._upstream_network(client, url, body, file_bytes, asset)
+        if not body and not range_header:
+            info, _ = self._ensure_head(url, file_bytes, asset, record_errors=True)
+            if int(info.get("status", 0)) not in (200, 206, 416):
+                error = RuntimeError("upstream refused bounded HEAD request")
+                self._record_error(asset, url, "HEAD", None, "validate_upstream_response", error,
+                                   int(info.get("status", 0)), int(info.get("headerBytes", 0)))
+                raise error
+            return self._send_head(client, info)
+        if not body or not range_header:
+            return self._upstream_network(client, url, body, file_bytes, asset)
+        bounds = self._range_bounds(range_header, file_bytes)
+        if bounds is None:
+            return self._upstream_network(client, url, body, file_bytes, asset)
+        first, last = bounds
+        if last - first + 1 > self.range_cache.max_entry_bytes:
+            return self._upstream_network(client, url, body, file_bytes, asset,
+                cache_info={"cacheable": False, "etag": None, "first": first, "last": last,
+                            "reason": "span-exceeds-entry-cap"})
+        try:
+            with self.range_cache.flight(url, file_bytes, first, last):
+                head_info, head_bytes = self._ensure_head(url, file_bytes, asset, record_errors=True)
+                cacheable = (head_info.get("cacheable") is True and isinstance(head_info.get("etag"), str))
+                if cacheable:
+                    etag = str(head_info["etag"])
+                    payload = self.range_cache.get(url, file_bytes, etag, first, last)
+                    if payload is not None:
+                        self._audit_range(url, etag, file_bytes, first, last, "hit", hashlib.sha256(payload).hexdigest(),
+                                          len(payload), head_bytes)
+                        self._send_cached_range(client, payload, file_bytes, first, last, etag)
+                        return
+                else:
+                    etag = None
+                cache_info = {"cacheable": bool(cacheable), "etag": etag, "first": first, "last": last,
+                              "reason": None if cacheable else "head-validator-unavailable"}
+                self._upstream_network(client, url, body, file_bytes, asset, cache_info=cache_info, head_bytes=head_bytes)
+        except Exception as error:
+            if self.first_error() is None:
+                self._record_error(asset, url, "GET", range_header, "range_cache", error, None, 0)
+            raise
+
+    def _upstream_network(self, client: BaseHTTPRequestHandler, url: str, body: bool, file_bytes: int,
+                          asset: dict[str, object], *, cache_info: dict[str, object] | None = None,
+                          head_bytes: int = 0) -> None:
         method = "GET" if body else "HEAD"
         range_header = client.headers.get("Range")
         phase = "validate_request"
@@ -576,6 +801,28 @@ class RangeProxy:
         observed_bytes = 0
         reservation: int | None = None
         conn: http.client.HTTPSConnection | None = None
+        audit_settled = False
+        audit_recorded = False
+
+        def settle_upstream() -> None:
+            nonlocal conn, reservation, audit_settled
+            current = conn
+            conn = None
+            try:
+                if current is not None:
+                    current.close()
+            finally:
+                if not audit_settled:
+                    if method == "HEAD":
+                        self._audit(headRequests=1, headResponseBytes=observed_bytes,
+                                    measuredUpstreamBytes=observed_bytes)
+                    else:
+                        self._audit(rangeGetResponseBytes=observed_bytes if range_header else 0,
+                                    measuredUpstreamBytes=observed_bytes)
+                    audit_settled = True
+                if reservation is not None:
+                    self.budget.release(reservation)
+                    reservation = None
         try:
             safe_url(url, self.host, self.release)
             parsed = urlsplit(url)
@@ -595,7 +842,7 @@ class RangeProxy:
             headers = {"Accept-Encoding": "identity", "User-Agent": "joinallworld-acquirer/1"}
             with self.etag_lock:
                 known_etag = self.etags.get(url)
-            if known_etag:
+            if known_etag and (self.range_cache is None or self._strong_etag(known_etag)):
                 headers["If-Match"] = known_etag
             if range_header:
                 headers["Range"] = range_header
@@ -622,7 +869,9 @@ class RangeProxy:
             declared = response.getheader("Content-Length")
             payload = b""
             if body and response.status != 416:
-                if declared is None or int(declared) != expected_body or int(declared) > self.budget.token_remaining(reservation):
+                if declared is None or not declared.isdigit() or int(declared) != expected_body:
+                    raise ValueError("upstream Content-Length does not match the requested byte span")
+                if int(declared) > self.budget.token_remaining(reservation):
                     raise BudgetExceeded("upstream Range response exceeds its reserved byte span")
                 content_range = response.getheader("Content-Range")
                 if range_header and response.status == 206:
@@ -649,6 +898,34 @@ class RangeProxy:
                     chunks.append(chunk)
                     received += len(chunk)
                 payload = b"".join(chunks)
+            if cache_info is not None:
+                etag_for_cache = cache_info.get("etag")
+                saved = 0
+                result = "uncacheable"
+                reason_value = cache_info.get("reason")
+                if (cache_info.get("cacheable") is True and response.status == 206
+                        and isinstance(etag_for_cache, str) and etag == etag_for_cache and range_header):
+                    content_range = response.getheader("Content-Range")
+                    match = re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)", content_range or "")
+                    if match and (int(match.group(1)), int(match.group(2)), int(match.group(3))) == (int(cache_info["first"]), int(cache_info["last"]), file_bytes):
+                        if self.range_cache is None:
+                            raise RuntimeError("range cache was disabled during a validated response")
+                        stored = self.range_cache.put(url, file_bytes, etag_for_cache, int(cache_info["first"]), int(cache_info["last"]), payload)
+                        saved = 0
+                        result = "miss" if stored else "write-skip"
+                        reason_value = None if stored else "cache-capacity"
+                    else:
+                        result = "uncacheable"
+                        reason_value = "content-range-mismatch"
+                digest = hashlib.sha256(payload).hexdigest() if payload else None
+                self._audit_range(url, etag if 'etag' in locals() else None, file_bytes,
+                                  int(cache_info["first"]), int(cache_info["last"]), result,
+                                  digest, saved, observed_bytes + head_bytes,
+                                  str(reason_value) if reason_value is not None else None)
+                audit_recorded = True
+            # A successful local response must never race ahead of network
+            # accounting or leave its conservative reservation outstanding.
+            settle_upstream()
             phase = "send_proxy_response"
             client.send_response(response.status, response.reason)
             if response.status != 416:
@@ -666,14 +943,13 @@ class RangeProxy:
             client.close_connection = True
         except Exception as error:
             self._record_error(asset, url, method, range_header, phase, error, status, observed_bytes)
+            if cache_info is not None and not audit_recorded:
+                self._audit_range(url, cache_info.get("etag") if isinstance(cache_info.get("etag"), str) else None,
+                                  file_bytes, int(cache_info["first"]), int(cache_info["last"]), "error",
+                                  None, 0, observed_bytes + head_bytes, type(error).__name__)
             raise
         finally:
-            try:
-                if conn is not None:
-                    conn.close()
-            finally:
-                if reservation is not None:
-                    self.budget.release(reservation)
+            settle_upstream()
 
 
 def normalize_sources(raw: object) -> list[str]:
@@ -859,6 +1135,8 @@ def run(value: object) -> dict[str, object]:
     for directory in (staging, index_dir):
         if not directory.is_relative_to(root) or directory == root:
             raise ValueError("adapter cache path escapes the configured build root")
+    if index_dir != root / "acquisition-index":
+        raise ValueError("source index path is not the canonical build-root acquisition index")
     check_cache_path(root, index_dir / str(request["release"]))
     apply_limits(request)
     start = time.monotonic()
@@ -870,9 +1148,31 @@ def run(value: object) -> dict[str, object]:
     selected_count = sum(len(selected[layer]) for layer in request["layers"])
     if selected_count > MAX_ITEM_LINKS:
         raise typed_budget_failure("selected-item-count", budget)
-    proxy = RangeProxy([], budget, host, str(request["release"]))
-    thread = proxy.start()
     import duckdb
+    range_cache: ExactRangeCache | None = None
+    range_allowance = 0
+    range_disk_budget = 0
+    range_growth_cap = min(8_000_000, int(limits["diskBytes"]) // 8,
+                           max(0, disk_budget.maximum - disk_budget.used - disk_budget.reserved))
+    if range_growth_cap > 0:
+        range_allowance = range_growth_cap
+        try:
+            disk_budget.reserve(range_allowance)
+            range_disk_budget = range_allowance
+            range_cache = ExactRangeCache(root, root, str(request["release"]),
+                max_growth_bytes=range_allowance, minimum_free_bytes=32_000_000)
+        except Exception:
+            if range_disk_budget:
+                disk_budget.release(range_disk_budget)
+                range_disk_budget = 0
+            raise
+    try:
+        proxy = RangeProxy([], budget, host, str(request["release"]), range_cache=range_cache)
+        thread = proxy.start()
+    except Exception:
+        if range_disk_budget:
+            disk_budget.release(range_disk_budget)
+        raise
     con = None
     exceptions: list[str] = []
     if "roads" in request["layers"]:
@@ -888,7 +1188,7 @@ def run(value: object) -> dict[str, object]:
         con.execute("SET threads=2")
         con.execute(f"SET memory_limit='{int(limits['memoryMb'])}MB'")
         output_reserve = int(limits["outputBytes"]) * 2 + 1_000_000
-        temp_limit = int(limits["diskBytes"]) - output_reserve - disk_budget.written
+        temp_limit = int(limits["diskBytes"]) - output_reserve - disk_budget.used - disk_budget.reserved
         if temp_limit < 1:
             raise BudgetExceeded("disk byte budget cannot cover output, index and temporary space")
         con.execute(f"SET max_temp_directory_size='{temp_limit}B'")
@@ -911,10 +1211,24 @@ def run(value: object) -> dict[str, object]:
             raise RuntimeError(f"{error}; first range proxy failure: {encoded}") from error
         raise
     finally:
-        if con is not None:
-            con.close()
-        proxy.close()
-        thread.join(timeout=2)
+        try:
+            if con is not None:
+                con.close()
+        finally:
+            try:
+                proxy.close()
+            finally:
+                try:
+                    thread.join(timeout=2)
+                finally:
+                    if range_disk_budget:
+                        actual_growth = range_cache.written if range_cache is not None else 0
+                        reserved_growth = range_disk_budget
+                        disk_budget.commit(min(actual_growth, reserved_growth))
+                        disk_budget.release(max(0, reserved_growth - actual_growth))
+                        range_disk_budget = 0
+                        if actual_growth > range_allowance:
+                            raise BudgetExceeded("range cache exceeded its reserved index growth")
     # Proxy handlers may finish or report a late transport failure while the
     # database and server are shutting down. Recheck only after cleanup so a
     # typed measurement cannot hide an asynchronous upstream diagnostic.
@@ -956,6 +1270,11 @@ def run(value: object) -> dict[str, object]:
     elapsed = max(1, int((time.monotonic() - start) * 1000))
     receipt = {"schemaVersion": 1, "inputSha256": sha(raw), "inputBytes": len(raw), "index": index_receipt}
     write_durable(receipt_path, canonical(receipt))
+    if range_cache is not None:
+        range_audit = canonical(proxy.range_audit()) + b"\n"
+        if len(range_audit) > 64_000:
+            raise BudgetExceeded("range audit exceeded its output reserve")
+        write_durable(staging / "range-audit.json", range_audit)
     sync_directory(staging)
     # Records only requests made during this job. STAC item-index bytes are present
     # on its first build; cached index reuse contributes zero upstream response bytes.

@@ -31,6 +31,23 @@ function requiredText(value: string, name: string): void {
 function finiteTime(value: number, name: string): void {
   if (!Number.isFinite(value)) throw new TypeError(`${name} must be finite`);
 }
+function assertJsonValue(value: unknown, stack = new Set<object>()): void {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
+  if (typeof value === 'number') { if (!Number.isFinite(value)) throw new TypeError('payload numbers must be finite'); return; }
+  if (typeof value !== 'object') throw new TypeError('payload must be JSON-serializable');
+  if (stack.has(value)) throw new TypeError('payload must not contain cycles');
+  stack.add(value);
+  try {
+    if (Array.isArray(value)) {
+      for (let index = 0; index < value.length; index++) {
+        if (!(index in value)) throw new TypeError('payload arrays must not contain holes');
+        assertJsonValue(value[index], stack);
+      }
+    } else {
+      for (const key of Object.keys(value)) assertJsonValue((value as Record<string, unknown>)[key], stack);
+    }
+  } finally { stack.delete(value); }
+}
 
 /** A local, crash-resumable job ledger. All mutations use short IMMEDIATE transactions. */
 export class Ledger {
@@ -141,6 +158,46 @@ export class Ledger {
     const encoded = canonical(result);
     return this.#write(() => Number(this.#db.prepare(`UPDATE jobs SET status='completed',result=?,lease_until=NULL,lease_token=NULL
       WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`).run(encoded, id, token, now).changes) === 1);
+  }
+  /** Atomically complete a live parent and enqueue up to four deterministic children. */
+  completeAndEnqueue(id: string, token: string, now: number, result: unknown, children: readonly EnqueueInput[]): boolean {
+    requiredText(id, 'id'); requiredText(token, 'token'); finiteTime(now, 'now');
+    if (!Array.isArray(children) || children.length > 4) throw new RangeError('completeAndEnqueue accepts at most four children');
+    assertJsonValue(result);
+    const encodedResult = canonical(result);
+    const ids = new Set<string>();
+    const prepared = children.map((child, index) => {
+      if (!child || typeof child !== 'object' || Array.isArray(child)) throw new TypeError(`child ${index} must be an enqueue record`);
+      requiredText(child.id, `child ${index} id`); requiredText(child.kind, `child ${index} kind`); requiredText(child.inputHash, `child ${index} inputHash`);
+      if (child.id === id || ids.has(child.id)) throw new Error('child IDs must be unique and different from the parent ID');
+      ids.add(child.id);
+      if (!Number.isSafeInteger(child.maxAttempts) || child.maxAttempts < 1) throw new RangeError(`child ${index} maxAttempts must be a positive safe integer`);
+      const priority = child.priority ?? 0;
+      if (!Number.isSafeInteger(priority) || priority < 0) throw new RangeError(`child ${index} priority must be a non-negative safe integer`);
+      assertJsonValue(child.payload);
+      return { id: child.id, kind: child.kind, inputHash: child.inputHash, payload: canonical(child.payload), maxAttempts: child.maxAttempts, priority };
+    });
+
+    return this.#transaction(() => {
+      const parent = this.#db.prepare(`SELECT 1 AS live FROM jobs WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`).get(id, token, now);
+      if (!parent) return false;
+      for (const child of prepared) {
+        const existing = this.#db.prepare('SELECT kind,input_hash,payload,max_attempts,priority FROM jobs WHERE id=?').get(child.id) as
+          { kind: string; input_hash: string; payload: string; max_attempts: number; priority: number } | undefined;
+        if (existing) {
+          if (existing.kind !== child.kind || existing.input_hash !== child.inputHash || existing.payload !== child.payload || existing.max_attempts !== child.maxAttempts || existing.priority !== child.priority) {
+            throw new Error(`child job ${child.id} already exists with a different payload`);
+          }
+        } else {
+          this.#db.prepare(`INSERT INTO jobs(id,kind,input_hash,payload,max_attempts,priority,status) VALUES(?,?,?,?,?,?,'queued')`)
+            .run(child.id, child.kind, child.inputHash, child.payload, child.maxAttempts, child.priority);
+        }
+      }
+      const updated = this.#db.prepare(`UPDATE jobs SET status='completed',result=?,lease_until=NULL,lease_token=NULL
+        WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`).run(encodedResult, id, token, now);
+      if (Number(updated.changes) !== 1) throw new Error('parent lease changed during atomic child enqueue');
+      return true;
+    });
   }
   fail(id: string, token: string, now: number, error: unknown, retryDelayMs: number): boolean {
     requiredText(id, 'id'); requiredText(token, 'token'); finiteTime(now, 'now');

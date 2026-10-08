@@ -35,6 +35,29 @@ class BudgetExceeded(RuntimeError):
     pass
 
 
+class FeatureRowLimitExceeded(BudgetExceeded):
+    pass
+
+
+class AdapterBudgetFailure(BudgetExceeded):
+    REASONS = {"selected-item-count", "feature-row-budget", "geojson-output-bytes"}
+
+    def __init__(self, reason: str, network_bytes_measured: int):
+        if reason not in self.REASONS or isinstance(network_bytes_measured, bool) or not isinstance(network_bytes_measured, int) or network_bytes_measured < 0:
+            raise ValueError("invalid typed acquisition budget failure")
+        super().__init__(reason)
+        self.reason = reason
+        self.network_bytes_measured = network_bytes_measured
+
+
+def typed_budget_failure(reason: str, budget: "NetworkBudget", proxy_error: dict[str, object] | None = None) -> AdapterBudgetFailure:
+    if proxy_error is not None:
+        raise BudgetExceeded(f"{reason} exceeded with an upstream proxy failure")
+    if not budget.settled:
+        raise BudgetExceeded(f"{reason} exceeded with unobserved network activity")
+    return AdapterBudgetFailure(reason, budget.total)
+
+
 def write_durable(path: Path, data: bytes) -> None:
     with path.open("xb") as stream:
         stream.write(data)
@@ -108,6 +131,11 @@ class NetworkBudget:
     def remaining(self) -> int:
         with self.lock:
             return self.maximum - self.total - sum(self.reservations.values())
+
+    @property
+    def settled(self) -> bool:
+        with self.lock:
+            return not self.reservations
 
     def add(self, url: str, count: int, etag: str | None = None) -> None:
         with self.lock:
@@ -701,7 +729,7 @@ def read_layer(con, layer: str, items: list[dict[str, object]], proxy: RangeProx
            "ST_Intersects(" + geom + ", ST_GeomFromText(" + quote_sql_text(wkt) + "))" + subtype_filter + " LIMIT " + str(row_limit + 1))
     rows = con.execute(sql).fetchall()
     if len(rows) > row_limit:
-        raise BudgetExceeded("feature row budget exceeded")
+        raise FeatureRowLimitExceeded("feature row budget exceeded")
     output: list[dict[str, object]] = []
     for row in rows:
         (feature_id, geojson, height, floors, level, subtype, road_class, sources, level_rules) = row
@@ -841,7 +869,7 @@ def run(value: object) -> dict[str, object]:
     selected, _, index_receipt = select_item_index(request, config, index_dir, budget, root, disk_budget)
     selected_count = sum(len(selected[layer]) for layer in request["layers"])
     if selected_count > MAX_ITEM_LINKS:
-        raise BudgetExceeded("selected item count exceeds fixed adapter cap")
+        raise typed_budget_failure("selected-item-count", budget)
     proxy = RangeProxy([], budget, host, str(request["release"]))
     thread = proxy.start()
     import duckdb
@@ -850,6 +878,7 @@ def run(value: object) -> dict[str, object]:
     if "roads" in request["layers"]:
         exceptions.append("road selection filters transportation subtype=road; regional rail/water omitted counts are unknown")
     features: list[dict[str, object]] = []
+    feature_row_failure: FeatureRowLimitExceeded | None = None
     try:
         con = duckdb.connect(database=":memory:")
         extension_dir = Path(__file__).resolve().parents[2] / ".cache" / "world-build" / "tooling" / "extensions"
@@ -868,7 +897,13 @@ def run(value: object) -> dict[str, object]:
             remaining_features = int(limits["features"]) - len(features)
             features.extend(read_layer(con, layer, selected[layer], proxy, request, exceptions, remaining_features))
             if len(features) > int(limits["features"]):
-                raise BudgetExceeded("combined feature row budget exceeded")
+                raise FeatureRowLimitExceeded("combined feature row budget exceeded")
+    except FeatureRowLimitExceeded as error:
+        diagnostic = proxy.first_error()
+        if diagnostic is not None:
+            encoded = json.dumps(diagnostic, ensure_ascii=True, separators=(",", ":"))[:1_800]
+            raise RuntimeError(f"{error}; first range proxy failure: {encoded}") from error
+        feature_row_failure = error
     except Exception as error:
         diagnostic = proxy.first_error()
         if diagnostic is not None:
@@ -880,6 +915,17 @@ def run(value: object) -> dict[str, object]:
             con.close()
         proxy.close()
         thread.join(timeout=2)
+    # Proxy handlers may finish or report a late transport failure while the
+    # database and server are shutting down. Recheck only after cleanup so a
+    # typed measurement cannot hide an asynchronous upstream diagnostic.
+    late_diagnostic = proxy.first_error()
+    if late_diagnostic is not None:
+        encoded = json.dumps(late_diagnostic, ensure_ascii=True, separators=(",", ":"))[:1_800]
+        raise RuntimeError(f"late range proxy failure after adapter cleanup: {encoded}")
+    if feature_row_failure is not None:
+        if thread.is_alive() or not budget.settled:
+            raise BudgetExceeded("feature row limit exceeded with unresolved upstream network activity") from feature_row_failure
+        raise typed_budget_failure("feature-row-budget", budget, proxy.first_error()) from feature_row_failure
     if (time.monotonic() - start) * 1000 > int(limits["durationMs"]):
         raise BudgetExceeded("acquisition duration budget exceeded")
     features.sort(key=lambda item: (str(item["properties"]["sourceLayer"]), str(item["id"])))
@@ -890,7 +936,12 @@ def run(value: object) -> dict[str, object]:
               "requestHash": request_hash, "stacIndex": index_receipt, "exceptions": exceptions}, "features": features}
     raw = canonical(output) + b"\n"
     if len(raw) > int(limits["outputBytes"]):
-        raise BudgetExceeded("GeoJSON output byte budget exceeded")
+        if thread.is_alive() or not budget.settled:
+            raise BudgetExceeded("GeoJSON output byte limit exceeded with unresolved upstream activity")
+        if proxy.first_error() is not None:
+            encoded = json.dumps(proxy.first_error(), ensure_ascii=True, separators=(",", ":"))[:1_800]
+            raise RuntimeError(f"late range proxy failure after adapter cleanup: {encoded}")
+        raise typed_budget_failure("geojson-output-bytes", budget, proxy.first_error())
     staging.mkdir(parents=True, exist_ok=True)
     output_path = staging / "adapter-output.geojson"
     receipt_path = staging / "adapter-receipt.json"
@@ -928,6 +979,10 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
+    except AdapterBudgetFailure as error:
+        print(json.dumps({"schemaVersion": 1, "kind": "budget-exceeded", "reason": error.reason,
+                          "networkBytesMeasured": error.network_bytes_measured}, separators=(",", ":")))
+        sys.exit(3)
     except Exception as error:
         print(f"acquisition adapter: {error}", file=sys.stderr)
         sys.exit(1)

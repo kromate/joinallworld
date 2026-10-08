@@ -22,7 +22,9 @@ export function createRegionalFanoutCampaign(product: RegionalFanoutPublished, i
     const plan = byId.get(cell.region.id);
     if (!plan || cell.ownedFeatureKeys.length || canonicalJson(plan) !== canonicalJson({ ...cell.plan, input: { ...cell.plan.input, path: path.join(root, cell.input.path) } })) throw new Error('empty-owned cell differs from pinned regional plan');
   }
-  return validateCampaign({ schemaVersion: 1, id, inventoryHash: product.index.request.inventoryHash,
+  const campaign = validateCampaign({ schemaVersion: 1, id, inventoryHash: product.index.request.inventoryHash,
     units: [...units, { id: 'legacy-ng', inventoryUnitId: 'legacy-ng', priority: units.length, kind: 'protected', reason: 'Nigeria remains with its existing map/provider; regional fan-out is isolated.' }],
     limits: { durationMs: 600_000, jobDurationMs: 60_000, networkBytes: 1, inputBytes: 30_000_000, outputBytes: 100_000_000, diskBytes: 256_000_000, memoryMb: 512, maxAttempts: 2 } });
+  if(campaign.schemaVersion!==1)throw new Error('regional fan-out requires the unchanged schema1 campaign');
+  return campaign;
 }

@@ -8,6 +8,14 @@ import { Ledger } from './ledger.ts';
 import { ALLOWED_ROOT, compileCampaignPlan, jobIdentity, OUTPUT_ROOT, REPOSITORY_ROOT, type WorldPlan } from './pipeline.ts';
 import { validateManifest, validateTile } from './validate.ts';
 import { sha256 } from './pack.ts';
+import { validateAcquisitionRequest } from './acquire.ts';
+import { AcquisitionBudgetError } from './acquisition-errors.ts';
+import { readBoundedLocalFile } from './inventory-reader.ts';
+import { readCountryDirectory } from './country-directory-reader.ts';
+import { validateGridQueryBinding, createGridQueryResolver, gridQueryCoverage } from './grid-query.ts';
+import { loadVerifiedGridQueryPlan, makeGridQueryUnit } from './grid-query-binding.ts';
+import type { CountryGridPlan } from './country-grid-types.ts';
+import type { GridQueryCampaign, GridQueryUnit, GridQueryCoverage, GridQueryJobView, GridQueryResult } from './grid-query-types.ts';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult, CampaignUnit, WorldCampaign } from './production-types.ts';
 
 const MAX_CAMPAIGN_MS = 48 * 60 * 60 * 1000;
@@ -17,14 +25,17 @@ const MODULE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.join(REPOSITORY_ROOT, '.cache', 'world-build', 'campaigns');
 const ID_RE = /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$/;
 export type Acquire = (request: AcquisitionRequest, options: AcquisitionOptions) => Promise<AcquisitionResult>;
+export type AnyWorldCampaign = WorldCampaign | GridQueryCampaign;
+type AnyCampaignUnit = CampaignUnit | GridQueryUnit;
 type AcquisitionBuildLock = <T>(root:string,operation:(acquire:Acquire)=>Promise<T>,options?:{signal?:AbortSignal;timeoutMs?:number})=>Promise<T>;
 type AcquireModule = { acquireRegion?:Acquire; withAcquisitionBuildLock?:AcquisitionBuildLock };
-export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; pythonExecutable?: string; inventoryManifestPath?: string }
+export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; pythonExecutable?: string; inventoryManifestPath?: string; countryGridPlanPath?: string }
 export interface CampaignReport {
   id: string; status: 'complete'|'exception'|'running'|'stopped';
   counts: { requested:number; sourceUnits:number; compiled:number; exception:number; protected:number; unknown:number };
   stages: { acquire:number; compile:number; validate:number };
   jobs: Array<Record<string, unknown>>; failures:string[]; stopped:string|null;
+  queryCoverage?: GridQueryCoverage;
 }
 function canonical(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -41,19 +52,30 @@ function positive(value: unknown, label: string, max = Number.MAX_SAFE_INTEGER):
   if (!Number.isSafeInteger(value) || (value as number) < 1 || (value as number) > max) throw new RangeError(`${label} must be a positive safe integer`);
   return value as number;
 }
-export function validateCampaign(value: unknown): WorldCampaign {
-  const raw = object(value, 'campaign'); keys(raw, ['schemaVersion','id','inventoryHash','units','limits'], 'campaign');
-  if (raw.schemaVersion !== 1) throw new TypeError('campaign schemaVersion must be 1');
+export function validateCampaign(value: unknown): AnyWorldCampaign {
+  const raw = object(value, 'campaign'), queryCampaign = raw.schemaVersion === 2;
+  keys(raw, queryCampaign ? ['schemaVersion','id','inventoryHash','units','limits','inventoryKind','gridQuery'] : ['schemaVersion','id','inventoryHash','units','limits'], 'campaign');
+  if (raw.schemaVersion !== 1 && !queryCampaign) throw new TypeError('campaign schemaVersion must be 1 or 2');
+  if (queryCampaign && raw.inventoryKind !== 'country-directory') throw new TypeError('query campaign requires country-directory inventory');
+  const gridQuery = queryCampaign ? validateGridQueryBinding(raw.gridQuery) : null;
   if (typeof raw.id !== 'string' || !ID_RE.test(raw.id)) throw new TypeError('campaign id is invalid');
   if (typeof raw.inventoryHash !== 'string' || !/^[a-f0-9]{64}$/.test(raw.inventoryHash)) throw new TypeError('campaign inventoryHash must be pinned SHA-256');
   if (!Array.isArray(raw.units) || raw.units.length === 0) throw new TypeError('campaign requires at least one explicit source unit');
+  if(queryCampaign && (raw.units.length > gridQuery!.maxJobs || raw.units.length > 100_000)) throw new RangeError('query root denominator exceeds job cap');
   const ids = new Set<string>();
   const units = raw.units.map((entry, index) => {
     const unit = object(entry, `unit ${index}`); const kind = unit.kind;
-    keys(unit, kind === 'local' ? ['id','inventoryUnitId','priority','kind','plan'] : kind === 'acquire' ? ['id','inventoryUnitId','priority','kind','request'] : ['id','inventoryUnitId','priority','kind','reason'], `unit ${index}`);
+    if(queryCampaign && kind !== 'grid-query') throw new TypeError('schema2 accepts only grid-query units');
+    if(!queryCampaign && kind === 'grid-query') throw new TypeError('grid-query requires schema2');
+    keys(unit, kind === 'grid-query' ? ['id','inventoryUnitId','priority','kind','query','request'] : kind === 'local' ? ['id','inventoryUnitId','priority','kind','plan'] : kind === 'acquire' ? ['id','inventoryUnitId','priority','kind','request'] : ['id','inventoryUnitId','priority','kind','reason'], `unit ${index}`);
     if (typeof unit.id !== 'string' || !unit.id.trim() || ids.has(unit.id)) throw new TypeError('campaign unit ids must be unique non-empty strings'); ids.add(unit.id);
     if (typeof unit.inventoryUnitId !== 'string' || !unit.inventoryUnitId.trim()) throw new TypeError(`unit ${unit.id} requires inventoryUnitId`);
     if (!Number.isSafeInteger(unit.priority) || (unit.priority as number) < 0) throw new RangeError(`unit ${unit.id} priority must be a non-negative safe integer`);
+    if (kind === 'grid-query') {
+      const request = validateAcquisitionRequest(unit.request), query=object(unit.query,'grid-query address');keys(query,['rootCellId','path'],'grid-query address');
+      if(typeof query.rootCellId!=='string'||query.path!==''||request.inventoryUnitId!==unit.inventoryUnitId||request.region.kind!=='cell'||request.region.timezone!==null)throw new TypeError('grid-query roots require exact country/cell identity and unknown timezone');
+      return {...unit,request} as unknown as GridQueryUnit;
+    }
     if (kind === 'local') {
       const plan = object(unit.plan, `unit ${unit.id} plan`);
       if (!plan.region || !plan.source || !plan.input) throw new TypeError(`unit ${unit.id} plan is incomplete`);
@@ -80,7 +102,8 @@ export function validateCampaign(value: unknown): WorldCampaign {
   positive(limits.inputBytes,'inputBytes',MAX_CAMPAIGN_INPUT_BYTES);
   positive(limits.memoryMb, 'memoryMb', 65_536);if((limits.memoryMb as number)<64)throw new RangeError('memoryMb must be at least 64');
   positive(limits.maxAttempts, 'maxAttempts', 10);
-  return { schemaVersion:1, id:raw.id, inventoryHash:raw.inventoryHash, units:units.sort((a,b)=>a.priority-b.priority || (a.id<b.id?-1:a.id>b.id?1:0)), limits:limits as unknown as WorldCampaign['limits'] };
+  const sorted=units.sort((a,b)=>a.priority-b.priority || (a.id<b.id?-1:a.id>b.id?1:0)),common={id:raw.id,inventoryHash:raw.inventoryHash,limits:limits as unknown as WorldCampaign['limits']};
+  return queryCampaign ? {...common,schemaVersion:2,inventoryKind:'country-directory',gridQuery:gridQuery!,units:sorted as GridQueryUnit[]} : {...common,schemaVersion:1,units:sorted as CampaignUnit[]};
 }
 function campaignPaths(id: string, root: string) { const dir=path.join(root,id); return {dir,ledger:path.join(dir,'ledger.sqlite'),config:path.join(dir,'campaign.json'),output:path.join(dir,'output'),quarantine:path.join(dir,'quarantine'),cache:path.join(dir,'source-cache')}; }
 async function ensureCanonicalDirectory(target:string):Promise<void>{
@@ -136,7 +159,8 @@ async function usageEntries(dir:string):Promise<Map<string,UsageEntry>>{
 }
 async function recordUsage(dir:string,entry:Omit<UsageEntry,'sequence'>):Promise<UsageEntry>{const rows=await usageEntries(dir),sequence=Math.max(0,...[...rows.values()].map(x=>x.sequence))+1,full={...entry,sequence};const handle=await open(path.join(dir,'usage.jsonl'),'a',0o600);try{await handle.writeFile(`${JSON.stringify(full)}\n`);await handle.sync();}finally{await handle.close();}return full;}
 function usageTotals(rows:Map<string,UsageEntry>){let networkBytes=0,outputBytes=0,acquisitionDiskBytes=0;for(const row of rows.values()){networkBytes+=row.networkBytes;outputBytes+=row.outputBytes;acquisitionDiskBytes+=row.diskBytes;}const unique=new Map<string,number>();for(const row of rows.values()){const key=row.inputPinKey??`reservation:${row.sourceKey}`;unique.set(key,Math.max(unique.get(key)??0,row.inputBytes));}return{networkBytes,outputBytes,inputBytes:[...unique.values()].reduce((a,b)=>a+b,0),acquisitionDiskBytes};}
-function coverageCounts(campaign:WorldCampaign,jobs:Array<Record<string,unknown>>):CampaignReport['counts']{
+function coverageCounts(campaign:AnyWorldCampaign,jobs:Array<Record<string,unknown>>):CampaignReport['counts']{
+  if(campaign.schemaVersion===2){const queryJobs=jobs.filter(j=>j.kind==='campaign-grid-query');return {requested:campaign.units.length,sourceUnits:1,compiled:0,exception:queryJobs.some(j=>j.status==='failed')?1:0,protected:0,unknown:1};}
   const byId=new Map(jobs.map(job=>[String(job.id),job])),sourceGroups=new Map<string,CampaignUnit[]>(),protectedGroups=new Map<string,CampaignUnit[]>();
   for(const unit of campaign.units){const groups=unit.kind==='protected'?protectedGroups:sourceGroups;const group=groups.get(unit.inventoryUnitId)??[];group.push(unit);groups.set(unit.inventoryUnitId,group);}
   let compiled=0,exception=0,protectedCount=0,unknown=0;
@@ -144,14 +168,15 @@ function coverageCounts(campaign:WorldCampaign,jobs:Array<Record<string,unknown>
   for(const units of protectedGroups.values()){const states=units.map(unit=>byId.get(`${campaign.id}:${unit.id}`));if(states.every(job=>job?.status==='completed'))protectedCount++;}
   return{requested:campaign.units.length,sourceUnits:sourceGroups.size,compiled,exception,protected:protectedCount,unknown};
 }
-const campaignHash = (campaign: WorldCampaign) => digest(campaign);
-async function ensureCampaign(campaign: WorldCampaign, root: string) {
+const campaignHash = (campaign: AnyWorldCampaign) => digest(campaign);
+async function ensureCampaign(campaign: AnyWorldCampaign, root: string) {
   await ensureCanonicalDirectory(root);
   const p=campaignPaths(campaign.id,root); await mkdir(p.dir,{recursive:false}).catch(e=>{if((e as NodeJS.ErrnoException).code!=='EEXIST')throw e;});
   await ensureCanonicalDirectory(p.dir);await ensureCanonicalDirectory(p.cache);await verifyRegularStateFile(p.config);
   let current:string|null=null;
   try{current=(await readFile(p.config,'utf8')).trim();}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
   const serialized=canonical(campaign);
+  if(campaign.schemaVersion===2&&Buffer.byteLength(serialized)>64_000_000)throw new RangeError('query campaign configuration exceeds64MB cap');
   if(current!==null&&current!==serialized)throw new Error(`campaign ${campaign.id} already exists with a different immutable configuration`);
   if(current===null){const temp=`${p.config}.${randomUUID()}.tmp`;await writeFile(temp,serialized,{flag:'wx',mode:0o600});await rename(temp,p.config);}
   return p;
@@ -168,20 +193,94 @@ async function resolvePython(value?:string):Promise<string>{
   for(const dir of (process.env.PATH??'').split(path.delimiter)){if(!dir)continue;const candidate=path.join(dir,'python3');try{await access(candidate,constants.X_OK);return candidate;}catch{}}
   throw new Error('Python 3.12 was not found on PATH; set campaign pythonExecutable to an absolute path');
 }
-async function verifyInventorySnapshot(filePath:string, expectedHash:string, requiredIds:string[], protectedIds:string[]=[]):Promise<void>{
+async function verifyInventorySnapshot(filePath:string, expectedHash:string, requiredIds:string[], protectedIds:string[]=[], inventoryKind:'coarse'|'country-directory'='coarse'):Promise<void>{
   const file=path.resolve(filePath),outputReal=await realpath(OUTPUT_ROOT).catch(()=>path.resolve(OUTPUT_ROOT)),tempReal=await realpath(tmpdir()),actualFile=await realpath(file);
   const base=inside(outputReal,actualFile)?outputReal:inside(tempReal,actualFile)?tempReal:null;
   if(!base)throw new Error('inventory manifest must be inside builder output or an isolated temporary directory');
   let cursor=base;for(const part of path.relative(base,actualFile).split(path.sep).filter(Boolean)){cursor=path.join(cursor,part);const info=await lstat(cursor);if(info.isSymbolicLink())throw new Error(`inventory manifest path contains a symlink: ${cursor}`);}
   const canonicalFile=actualFile;
-  const bytes=await readFile(canonicalFile);if(sha256(bytes)!==expectedHash)throw new Error('campaign inventory manifest does not match its pinned SHA-256');
-  const inventoryRoot=path.dirname(path.dirname(canonicalFile)),manifest=JSON.parse(bytes.toString('utf8')) as {schemaVersion?:number;sourceUnitCount?:number;rootNodePath?:string};
+  const bytes=inventoryKind==='country-directory'?await readBoundedLocalFile(canonicalFile,2_000_000):await readFile(canonicalFile);if(sha256(bytes)!==expectedHash)throw new Error('campaign inventory manifest does not match its pinned SHA-256');
+  const inventoryRoot=path.dirname(path.dirname(canonicalFile));
+  if(inventoryKind==='country-directory'){
+    const directory=await readCountryDirectory(inventoryRoot,expectedHash),byId=new Map(directory.nodes.map(node=>[node.id,node]));
+    for(const id of requiredIds){const node=byId.get(id);if(!node||node.kind!=='country'||node.provider!=='world'||node.countryCode==='NG')throw new Error('query inventory source unit is missing or protected');}
+    for(const id of protectedIds){if(byId.get(id)?.provider!=='legacy-ng')throw new Error('protected query inventory node is invalid');}
+    return;
+  }
+  const manifest=JSON.parse(bytes.toString('utf8')) as {schemaVersion?:number;sourceUnitCount?:number;rootNodePath?:string};
   if(manifest.schemaVersion!==1||!Number.isSafeInteger(manifest.sourceUnitCount)||!manifest.rootNodePath)throw new Error('campaign inventory manifest is invalid');
   const found=new Map<string,{kind?:string;provider?:string}>(),visited=new Set<string>();let denominator=0;
   const walk=async(relative:string,expectedId?:string):Promise<void>=>{if(!/^nodes\/[a-f0-9]{64}\.json$/.test(relative)||visited.has(relative))throw new Error('campaign inventory node path is invalid or cyclic');visited.add(relative);const nodePath=path.join(inventoryRoot,...relative.split('/')),data=await readFile(nodePath);if(sha256(data)!==path.basename(relative).slice(0,-5))throw new Error(`campaign inventory node hash mismatch: ${relative}`);const row=JSON.parse(data.toString('utf8')) as {node?:{id?:string;kind?:string;provider?:string;sourceFeatureIds?:string[]};children?:Array<{id:string;path:string}>};if(!row.node||typeof row.node.id!=='string'||(expectedId&&row.node.id!==expectedId)||!Array.isArray(row.node.sourceFeatureIds)||!Array.isArray(row.children))throw new Error(`campaign inventory node is invalid: ${relative}`);found.set(row.node.id,{kind:row.node.kind,provider:row.node.provider});denominator+=row.node.sourceFeatureIds.length;for(const child of row.children){await walk(child.path,child.id);}};
   await walk(manifest.rootNodePath,'world:earth');if(denominator!==manifest.sourceUnitCount)throw new Error('campaign inventory source-unit denominator is invalid');for(const id of requiredIds){const node=found.get(id);if(!node)throw new Error(`campaign inventory does not contain reachable source unit ${id}`);if(node.kind!=='country'||node.provider!=='world')throw new Error(`campaign source unit ${id} is not a world country node`);}for(const id of protectedIds){const node=found.get(id);if(!node||node.kind!=='country'||node.provider!=='legacy-ng')throw new Error(`protected campaign unit ${id} does not resolve to the legacy provider node`);}
 }
-function campaignInventoryUnits(campaign:WorldCampaign){return{source:[...new Set(campaign.units.filter(unit=>unit.kind!=='protected').map(unit=>unit.inventoryUnitId))],protected:[...new Set(campaign.units.filter(unit=>unit.kind==='protected').map(unit=>unit.inventoryUnitId))]};}
+function campaignInventoryUnits(campaign:AnyWorldCampaign){return{source:[...new Set(campaign.units.filter(unit=>unit.kind!=='protected').map(unit=>unit.inventoryUnitId))],protected:[...new Set(campaign.units.filter(unit=>unit.kind==='protected').map(unit=>unit.inventoryUnitId))]};}
+type QueryResolver = ReturnType<typeof createGridQueryResolver>;
+async function bindGridQueryPlan(campaign:GridQueryCampaign,dir:string,inventory:{path:string;hash:string}|null,requestedPath?:string,sourceCacheRoot?:string):Promise<CountryGridPlan>{
+  if(!inventory||inventory.hash!==campaign.inventoryHash)throw new Error('query campaign requires its exact country-directory inventory binding');
+  const file=path.join(dir,'grid-query-binding.json');await verifyRegularStateFile(file);
+  let binding:{path:string;hash:string;cacheRoot:string}|null=null;
+  try{binding=JSON.parse(await readBoundedLocalFile(file,16_000).then(bytes=>new TextDecoder('utf-8',{fatal:true}).decode(bytes))) as {path:string;hash:string;cacheRoot:string};}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
+  if(binding&&(Object.keys(binding).sort().join(',')!=='cacheRoot,hash,path'||binding.hash!==campaign.gridQuery.planHash))throw new Error('stored grid-query binding is invalid');
+  if(requestedPath){const candidate={path:requestedPath,hash:campaign.gridQuery.planHash,cacheRoot:sourceCacheRoot??binding?.cacheRoot??ALLOWED_ROOT};if(binding&&canonical(binding)!==canonical(candidate))throw new Error('grid-query plan binding is immutable');binding=candidate;}
+  if(!binding)throw new Error('query campaign requires --country-grid-plan with its completed immutable plan');
+  if((binding.cacheRoot!==ALLOWED_ROOT&&binding.cacheRoot!==path.join(dir,'source-cache'))||(sourceCacheRoot&&sourceCacheRoot!==binding.cacheRoot))throw new Error('query source cache binding is immutable and must use the approved cache');
+  const plan=await loadVerifiedGridQueryPlan(binding.path,binding.hash,inventory.path);
+  if(plan.request.directoryManifestHash!==campaign.inventoryHash||campaign.units.length!==plan.cells.length)throw new Error('query roots do not match the frozen complete country denominator');
+  const resolver=createGridQueryResolver(plan,campaign.gridQuery),roots=new Set<string>(),rootOrdinals=new Map(plan.cells.map((cell,i)=>[cell.id,i]));
+  for(const unit of campaign.units){
+    if(roots.has(unit.query.rootCellId)||unit.query.path!==''||unit.inventoryUnitId!==plan.country.id||unit.priority!==rootOrdinals.get(unit.query.rootCellId))throw new Error('query campaign has duplicate/missing/foreign/misordered root cells');
+    roots.add(unit.query.rootCellId);const resolved=resolver.resolve(unit.query);
+    if(unit.id!==`grid-query:${resolved.cellId}`||unit.request.id!==unit.id||unit.request.inventoryUnitId!==plan.country.id||canonical(unit.request.region)!==canonical({id:resolved.cellId,parentId:plan.country.id,name:`${plan.country.name} source query cell ${resolved.cellId}`,kind:'cell',countryCode:plan.country.countryCode,timezone:null,bounds:resolved.bounds}))throw new Error('query root request is not bound to its exact country/cell');
+  }
+  // Plan and directory are verified before publishing their local binding.
+  try{await writeFile(file,canonical(binding),{flag:'wx',mode:0o600});}catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;}
+  return plan;
+}
+function validateClaimedQueryUnit(campaign:GridQueryCampaign,plan:CountryGridPlan,job:Record<string,unknown>,hash:string,resolver:QueryResolver=createGridQueryResolver(plan,campaign.gridQuery),rootTemplates:Map<string,GridQueryUnit>=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]))):GridQueryUnit{
+  const payload=object(job.payload,'query job payload');keys(payload,['campaignId','campaignHash','inventoryHash','unit'],'query job payload');
+  if(payload.campaignId!==campaign.id||payload.campaignHash!==hash||payload.inventoryHash!==campaign.inventoryHash)throw new Error('query job configuration binding mismatch');
+  const candidate=object(payload.unit,'query unit') as unknown as GridQueryUnit;
+  const root=rootTemplates.get(candidate.query?.rootCellId);
+  if(!root)throw new Error('query job root is outside frozen campaign');
+  const unit=makeGridQueryUnit(plan,candidate.query,campaign.gridQuery,root,resolver);
+  if(canonical(candidate)!==canonical(unit)||job.id!==`${campaign.id}:${unit.id}`||job.kind!=='campaign-grid-query'||job.inputHash!==digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit})||('priority' in job&&job.priority!==unit.priority))throw new Error('query job identity or deterministic request mismatch');
+  return unit;
+}
+function queryCoverageForJobs(campaign:GridQueryCampaign,plan:CountryGridPlan,jobs:Array<Record<string,unknown>>,hash:string):GridQueryCoverage{
+  const resolver=createGridQueryResolver(plan,campaign.gridQuery),rootTemplates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
+  const views:GridQueryJobView[]=jobs.map(job=>{
+    const unit=validateClaimedQueryUnit(campaign,plan,job,hash,resolver,rootTemplates),result=job.result===null?null:object(job.result,'query result');
+    let projected:GridQueryResult|null=null;
+    if(result?.status==='query-captured')projected={status:'query-captured',features:result.features as number,requestHash:result.requestHash as string,inputSha256:result.inputSha256 as string,inputBytes:result.inputBytes as number,receiptSha256:result.receiptSha256 as string,receiptBytes:result.receiptBytes as number};
+    else if(result!==null)projected=result as unknown as GridQueryResult;
+    return{address:unit.query,status:job.status as GridQueryJobView['status'],result:projected};
+  });
+  return gridQueryCoverage(plan,campaign.gridQuery,views);
+}
+async function makeQueryCapture(result:AcquisitionResult,unit:GridQueryUnit,cacheRoot:string):Promise<Record<string,unknown>>{
+  const receipt=await readBoundedLocalFile(result.receiptPath,1_000_000);
+  const capture={status:'query-captured',features:result.metrics.features,requestHash:result.requestHash,inputSha256:result.plan.input.sha256,inputBytes:result.plan.input.bytes,receiptSha256:sha256(receipt),receiptBytes:receipt.byteLength,plan:result.plan,receiptPath:result.receiptPath,metrics:result.metrics,upstream:result.upstream,exceptions:result.exceptions};
+  await verifyQueryCapture(capture,unit,cacheRoot);return capture;
+}
+async function verifyQueryCapture(result:Record<string,unknown>,unit:GridQueryUnit,cacheRoot:string):Promise<void>{
+  keys(result,['status','features','requestHash','inputSha256','inputBytes','receiptSha256','receiptBytes','plan','receiptPath','metrics','upstream','exceptions'],'query capture');
+  const plan=object(result.plan,'query source plan') as unknown as WorldPlan;
+  if(result.status!=='query-captured'||typeof result.receiptPath!=='string'||!plan.input||typeof plan.input.path!=='string'||canonical(plan.region)!==canonical(unit.request.region))throw new Error('query capture identity is invalid');
+  for(const file of [plan.input.path,result.receiptPath])if(!path.isAbsolute(file)||!inside(cacheRoot,file)||await realpath(file)!==file)throw new Error('query capture source paths escape the approved cache');
+  const bytes=await readBoundedLocalFile(plan.input.path,Math.min(20_000_000,unit.request.limits.outputBytes)),receiptBytes=await readBoundedLocalFile(result.receiptPath,1_000_000);
+  if(result.inputBytes!==bytes.byteLength||plan.input.bytes!==bytes.byteLength||result.inputSha256!==sha256(bytes)||plan.input.sha256!==result.inputSha256||plan.source.sha256!==result.inputSha256||plan.source.bytes!==bytes.byteLength||result.receiptBytes!==receiptBytes.byteLength||result.receiptSha256!==sha256(receiptBytes))throw new Error('query capture source/receipt bytes are missing or corrupt');
+  const receipt=object(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(receiptBytes)),'query acquisition receipt');
+  keys(receipt,['schemaVersion','requestHash','selection','request','completedAt','inputSha256','inputBytes','metrics','upstream','sources','exceptions'],'query acquisition receipt');
+  const request=validateAcquisitionRequest(receipt.request),{limits:_limits,...selection}=unit.request;
+  const sourceConfig=JSON.parse(await readFile(path.join(MODULE_DIR,'acquisition-sources.json'),'utf8')) as unknown;
+  if(receipt.schemaVersion!==1||receipt.requestHash!==result.requestHash||receipt.requestHash!==digest({compiler:'world-source-compiler-v2',selection,sourceConfig})||canonical(receipt.selection)!==canonical(selection)||canonical({...request,limits:undefined})!==canonical({...unit.request,limits:undefined})||receipt.inputSha256!==result.inputSha256||receipt.inputBytes!==result.inputBytes||typeof receipt.completedAt!=='string'||!Number.isFinite(Date.parse(receipt.completedAt)))throw new Error('query acquisition receipt does not bind the frozen request');
+  const geo=object(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)),'query extract'),metrics=object(receipt.metrics,'query receipt metrics');
+  if(geo.type!=='FeatureCollection'||!Array.isArray(geo.features)||geo.features.length!==result.features||metrics.features!==result.features||metrics.outputBytes!==bytes.byteLength||geo.features.length>unit.request.limits.features||!Array.isArray(receipt.sources)||receipt.sources.length!==unit.request.layers.length||!Array.isArray(receipt.upstream)||!Array.isArray(receipt.exceptions))throw new Error('query extract or source coverage receipt is invalid');
+  const observed=object(result.metrics,'captured query metrics');keys(observed,['networkBytes','outputBytes','features','elapsedMs'],'captured query metrics');keys(metrics,['networkBytes','outputBytes','features','elapsedMs'],'query receipt metrics');
+  for(const values of [observed,metrics])for(const key of ['networkBytes','outputBytes','features','elapsedMs'])if(!Number.isSafeInteger(values[key])||(values[key] as number)<0)throw new Error('query capture contains invalid measured metrics');
+  if(metrics.networkBytes as number>request.limits.networkBytes||observed.networkBytes as number>unit.request.limits.networkBytes||observed.outputBytes!==bytes.byteLength||observed.features!==result.features||(observed.networkBytes!==0&&observed.networkBytes!==metrics.networkBytes)||canonical(result.exceptions)!==canonical(receipt.exceptions)||!Array.isArray(result.upstream)||(canonical(result.upstream)!==canonical(receipt.upstream)&&!(observed.networkBytes===0&&result.upstream.length===0)))throw new Error('query capture metrics/upstream/exceptions do not match its immutable receipt or verified cache semantics');
+
+}
 async function verifyCompleted(result:unknown,output:string,plan:WorldPlan):Promise<void>{
   const sourceStat=await stat(plan.input.path);if(!sourceStat.isFile()||sourceStat.size>20_000_000)throw new Error(`campaign source cache is corrupt (${plan.input.path})`);
   const input=await readFile(plan.input.path);
@@ -211,17 +310,23 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
   const campaign=validateCampaign(value),root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const paths=await ensureCampaign(campaign,root),hash=campaignHash(campaign),releaseLock=await acquireCampaignLock(root);
   const failures:string[]=[],start=Date.now(),deadline=start+campaign.limits.durationMs;let stopped:string|null=null,processed=0,ledger:Ledger|undefined;
   try{
-    const bindingFile=path.join(paths.dir,'inventory-binding.json'),requiresRealInventory=options.acquire===undefined&&campaign.units.some(unit=>unit.kind==='acquire');await verifyRegularStateFile(bindingFile);
+    const bindingFile=path.join(paths.dir,'inventory-binding.json'),requiresRealInventory=options.acquire===undefined&&campaign.units.some(unit=>(unit.kind==='acquire'||unit.kind==='grid-query'));await verifyRegularStateFile(bindingFile);
     if(requiresRealInventory&&!options.inventoryManifestPath)throw new Error('real acquisition requires --inventory-manifest with the pinned inventory snapshot');
     let binding:{path:string;hash:string}|null=null;try{binding=JSON.parse(await readFile(bindingFile,'utf8')) as {path:string;hash:string};}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
     const inventoryUnits=campaignInventoryUnits(campaign);
-    if(options.inventoryManifestPath){await verifyInventorySnapshot(options.inventoryManifestPath,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected);const candidate={path:await realpath(options.inventoryManifestPath),hash:campaign.inventoryHash};if(binding&&canonical(binding)!==canonical(candidate))throw new Error('campaign inventory binding is immutable');if(!binding){await writeFile(bindingFile,canonical(candidate),{flag:'wx',mode:0o600});binding=candidate;}}
-    if(binding)await verifyInventorySnapshot(binding.path,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected);
+    if(options.inventoryManifestPath){await verifyInventorySnapshot(options.inventoryManifestPath,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected,campaign.schemaVersion===2?'country-directory':'coarse');const candidate={path:await realpath(options.inventoryManifestPath),hash:campaign.inventoryHash};if(binding&&canonical(binding)!==canonical(candidate))throw new Error('campaign inventory binding is immutable');if(!binding){await writeFile(bindingFile,canonical(candidate),{flag:'wx',mode:0o600});binding=candidate;}}
+    if(binding)await verifyInventorySnapshot(binding.path,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected,campaign.schemaVersion===2?'country-directory':'coarse');
+    const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,paths.dir,binding,options.countryGridPlanPath,options.acquire?paths.cache:ALLOWED_ROOT):null,queryResolver=gridPlan&&campaign.schemaVersion===2?createGridQueryResolver(gridPlan,campaign.gridQuery):undefined,queryRoots=campaign.schemaVersion===2?new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit])):undefined;
     await verifyRegularStateFile(paths.ledger);
     ledger=new Ledger(paths.ledger);const db=ledger;
     for(const unit of campaign.units){const unitHash=digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit});ledger.enqueue({id:`${campaign.id}:${unit.id}`,kind:`campaign-${unit.kind}`,inputHash:unitHash,payload:{campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,unit},maxAttempts:campaign.limits.maxAttempts,priority:unit.priority});}
     // A completed receipt is not trusted across process restarts: revalidate every exact manifest/tile first.
     for(const completed of ledger.list().filter(j=>j.status==='completed'&&(j.result as {status?:string}|null)?.status!=='protected')){
+      if(campaign.schemaVersion===2){
+        const unit=validateClaimedQueryUnit(campaign,gridPlan!,completed,hash,queryResolver,queryRoots),stored=object(completed.result,'completed query result');
+        if(stored.status==='query-captured')await verifyQueryCapture(stored,unit,options.acquire?paths.cache:ALLOWED_ROOT);
+        continue;
+      }
       const completedId=String(completed.id),result=completed.result as Record<string,unknown>|null, plan=result?.plan as WorldPlan|undefined;
       if(!plan)throw new Error(`completed campaign job ${completedId} has no resumable plan receipt`);
       try{await verifyCompleted(result,paths.output,plan);}
@@ -239,7 +344,8 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
         if(!ledger.requeueCompleted(completedId))throw new Error(`could not requeue verified corrupt campaign job ${completedId}`);
       }
     }
-    while(processed<(options.maxJobs??campaign.units.length*campaign.limits.maxAttempts)){
+    if(campaign.schemaVersion===2)queryCoverageForJobs(campaign,gridPlan!,ledger.list(),hash);
+    while(processed<(options.maxJobs??(campaign.schemaVersion===2?campaign.gridQuery.maxJobs:campaign.units.length)*campaign.limits.maxAttempts)){
       if(options.signal?.aborted){stopped='campaign stopped by signal';break;}if(Date.now()>=deadline){stopped='campaign duration limit reached';break;}
       const leaseMs=Math.min(campaign.limits.jobDurationMs,60_000),claim=ledger.claim(`campaign-${process.pid}`,Date.now(),leaseMs);if(!claim)break;
       const heartbeat=setInterval(()=>{db.heartbeat(claim.id,claim.token,Date.now(),leaseMs);},Math.min(15_000,Math.max(1,Math.floor(leaseMs/3))));heartbeat.unref();
@@ -247,7 +353,8 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
       let activeAcquisitionUsage:{reservation:UsageEntry;sourceKey:string;root:string;realAdapter:boolean;beforeBytes:number}|null=null;
       try{
         const payload=object(claim.payload,'claimed campaign payload');if(payload.campaignId!==campaign.id||payload.campaignHash!==hash||payload.inventoryHash!==campaign.inventoryHash)throw new Error('claimed payload does not match immutable campaign configuration');
-        const unit=payload.unit as CampaignUnit;if(!unit||!campaign.units.some(u=>digest(u)===digest(unit)))throw new Error('claimed unit is not present in campaign configuration');
+        const unit=campaign.schemaVersion===2?validateClaimedQueryUnit(campaign,gridPlan!,claim as unknown as Record<string,unknown>,hash,queryResolver,queryRoots):payload.unit as CampaignUnit;
+        if(!unit||(campaign.schemaVersion!==2&&!campaign.units.some(u=>digest(u)===digest(unit))))throw new Error('claimed unit is not present in campaign configuration');
         if(claim.id!==`${campaign.id}:${unit.id}`||claim.inputHash!==digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit}))throw new Error('claimed job id or input hash does not match its unit payload');
         if(unit.kind==='protected'){ledger.complete(claim.id,claim.token,Date.now(),{status:'protected',reason:unit.reason});processed++;continue;}
         let plan:WorldPlan;let acquisition:{networkBytes:number;outputBytes:number;features:number}|null=null;
@@ -278,6 +385,7 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
             const signal=options.signal?AbortSignal.any([options.signal,controller.signal]):controller.signal;
             const pythonExecutable=options.acquire?(options.pythonExecutable??'<injected-acquisition>'):await resolvePython(options.pythonExecutable);
             let result:AcquisitionResult;try{result=await acquire(boundedRequest,{pythonExecutable,allowedRoot:acquisitionRoot,signal});}finally{clearTimeout(jobTimer);}
+            if(!result.metrics||Object.values(result.metrics).some(value=>!Number.isSafeInteger(value)||value<0)||Object.keys(result.metrics).sort().join(',')!=='elapsedMs,features,networkBytes,outputBytes')throw new Error('acquisition callback returned invalid measured metrics');
             if(!/^[a-f0-9]{64}$/.test(result.requestHash))throw new Error('acquisition callback returned invalid request identity');
             const inputPath=path.resolve(result.plan.input.path),receiptPath=path.resolve(result.receiptPath),cacheRoot=await realpath(acquisitionRoot);
             if(!inside(acquisitionRoot,inputPath)||!inside(acquisitionRoot,receiptPath)||await realpath(inputPath)!==inputPath||await realpath(receiptPath)!==receiptPath||await realpath(inputPath).then(real=>!inside(cacheRoot,real))||await realpath(receiptPath).then(real=>!inside(cacheRoot,real)))throw new Error('acquisition result paths must be canonical files inside the approved acquisition cache');
@@ -292,8 +400,8 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
             }catch(error){
               const active=activeAcquisitionUsage;
               if(active){
-                let suffix='';
-                try{const after=await acquisitionCacheBytes(active.root,active.realAdapter),growth=active.realAdapter?Math.max(0,after-active.beforeBytes):0;await recordUsage(paths.dir,{key:active.reservation.key,sourceKey:active.sourceKey,phase:'settled',networkBytes:active.reservation.networkBytes,inputBytes:active.reservation.inputBytes,outputBytes:active.reservation.outputBytes,diskBytes:growth});if(growth>active.reservation.diskBytes)suffix=`; shared acquisition cache grew ${growth} bytes past its ${active.reservation.diskBytes}-byte reservation`;}
+                let suffix='';const measured=unit.kind==='grid-query'&&error instanceof AcquisitionBudgetError&&error.networkBytesMeasured<=active.reservation.networkBytes?error.networkBytesMeasured:null;
+                try{const after=await acquisitionCacheBytes(active.root,active.realAdapter),growth=active.realAdapter?Math.max(0,after-active.beforeBytes):0;await recordUsage(paths.dir,{key:active.reservation.key,sourceKey:active.sourceKey,phase:'settled',networkBytes:measured??active.reservation.networkBytes,inputBytes:measured===null?active.reservation.inputBytes:0,outputBytes:measured===null?active.reservation.outputBytes:0,diskBytes:growth});if(growth>active.reservation.diskBytes)suffix=`; shared acquisition cache grew ${growth} bytes past its ${active.reservation.diskBytes}-byte reservation`;}
                 catch(accountingError){suffix=`; failed to settle shared acquisition disk usage: ${accountingError instanceof Error?accountingError.message:String(accountingError)}`;}
                 activeAcquisitionUsage=null;
                 if(suffix)throw new Error(`${error instanceof Error?error.message:String(error)}${suffix}`,{cause:error});
@@ -306,6 +414,11 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
           else{const adapter=await loadRealAcquireModule(),lockTimeout=Math.max(1,deadline-Date.now()),deadlineController=new AbortController(),deadlineTimer=setTimeout(()=>deadlineController.abort(new Error('campaign duration limit reached while waiting for acquisition lock')),lockTimeout);deadlineTimer.unref();const lockSignal=options.signal?AbortSignal.any([options.signal,deadlineController.signal]):deadlineController.signal;try{result=await adapter.withAcquisitionBuildLock(ALLOWED_ROOT,acquire=>executeAcquisition(acquire,ALLOWED_ROOT,true),{signal:lockSignal,timeoutMs:lockTimeout});}finally{clearTimeout(deadlineTimer);}}
           acquisition={networkBytes:result.metrics.networkBytes,outputBytes:result.metrics.outputBytes,features:result.metrics.features};plan=result.plan;
           await recordStage(paths.dir,unit.id,'acquire','complete');
+          if(unit.kind==='grid-query'){
+            const capture=await makeQueryCapture(result,unit,options.acquire?paths.cache:ALLOWED_ROOT);
+            if(!ledger.complete(claim.id,claim.token,Date.now(),capture))throw new Error('query lease lost before completion');
+            processed++;continue;
+          }
           activeStage='compile';
         }
         const identity=jobIdentity(plan);if(plan.region.countryCode==='NG')throw new Error('Nigeria region compilation is explicitly excluded');
@@ -323,7 +436,20 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
         if(!ledger.complete(claim.id,claim.token,Date.now(),{...result,plan,unitId:unit.id,inventoryUnitId:unit.inventoryUnitId,sourceHash:plan.source.sha256,regionId:plan.region.id,identityHash:identity.inputHash,acquisition}))throw new Error('campaign lease lost before completion');
       }catch(error){
         const message=error instanceof Error?error.message:String(error);
-        const claimedUnit=(claim.payload as {unit?:CampaignUnit}|null)?.unit;
+        const claimedUnit=(claim.payload as {unit?:AnyCampaignUnit}|null)?.unit;
+        if(campaign.schemaVersion===2&&claimedUnit?.kind==='grid-query'&&error instanceof AcquisitionBudgetError){
+          try{
+            const address=queryResolver!.resolve(claimedUnit.query),currentJobs=ledger.list();
+            if(address.depth<campaign.gridQuery.maxDepth&&currentJobs.length+4<=campaign.gridQuery.maxJobs){
+              const children=queryResolver!.subdivide(claimedUnit.query),rootTemplate=queryRoots!.get(claimedUnit.query.rootCellId)!;
+              const inputs=children.map(query=>{const unit=makeGridQueryUnit(gridPlan!,query,campaign.gridQuery,rootTemplate,queryResolver);return {id:`${campaign.id}:${unit.id}`,kind:'campaign-grid-query',inputHash:digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit}),payload:{campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,unit},maxAttempts:campaign.limits.maxAttempts,priority:unit.priority};});
+              if(!ledger.completeAndEnqueue(claim.id,claim.token,Date.now(),{status:'query-subdivided',reason:error.reason,children},inputs))throw new Error('query lease lost before atomic subdivision');
+              processed++;continue;
+            }
+            ledger.failPermanently(claim.id,claim.token,Date.now(),`${message}; query subdivision depth/job cap reached`);
+            failures.push(`${claim.id}: ${message}; query subdivision depth/job cap reached`);processed++;continue;
+          }catch(subdivisionError){ledger.failPermanently(claim.id,claim.token,Date.now(),subdivisionError);failures.push(`${claim.id}: ${String(subdivisionError)}`);processed++;continue;}
+        }
         if(claimedUnit&&claimedUnit.kind!=='protected')await recordStage(paths.dir,claimedUnit.id,activeStage,'exception');
         if(/corrupt campaign output/.test(message)){const relative=message.match(/corrupt campaign output (.+)$/)?.[1];if(relative){const file=path.resolve(paths.output,...relative.split('/')),rel=path.relative(paths.output,file);if(!rel.startsWith('..')&&!path.isAbsolute(rel)){await mkdir(paths.quarantine,{recursive:true});try{await rename(file,path.join(paths.quarantine,`${Date.now()}-${path.basename(file)}`));}catch{}}}}
         ledger.fail(claim.id,claim.token,Date.now(),message,0);failures.push(`${claim.id}: ${message}`);
@@ -331,12 +457,23 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
       processed++;
     }
     const jobs=ledger.list();if(!stopped&&jobs.some(j=>j.status==='queued'||j.status==='leased'))stopped='campaign work remains queued or leased';
-    const counts=coverageCounts(campaign,jobs);
+    const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,hash):undefined;
+    const counts=coverageCounts(campaign,jobs);if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
     if(!stopped&&counts.sourceUnits===0)throw new Error('campaign has no source-unit denominator; protected-only work is not world coverage');
-    return{id:campaign.id,status:stopped?'stopped':counts.exception?'exception':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped};
+    return{id:campaign.id,status:stopped?'stopped':counts.exception||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage&&queryCoverage.roots.pending>0?'stopped':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped,...(queryCoverage?{queryCoverage}:{})};
   }finally{ledger?.close();await releaseLock();}
 }
 export async function campaignStatus(id:string,options:Pick<CampaignOptions,'allowedRoot'>={}):Promise<CampaignReport>{
-  if(!ID_RE.test(id))throw new TypeError('campaign id is invalid');const root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const p=campaignPaths(id,root);await ensureCanonicalDirectory(p.dir);await verifyRegularStateFile(p.config);await verifyRegularStateFile(p.ledger);const campaign=validateCampaign(JSON.parse(await readFile(p.config,'utf8')) as unknown),bindingPath=path.join(p.dir,'inventory-binding.json');await verifyRegularStateFile(bindingPath);let binding:{path:string;hash:string}|null=null;try{binding=JSON.parse(await readFile(bindingPath,'utf8')) as {path:string;hash:string};}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}if(binding){const units=campaignInventoryUnits(campaign);await verifyInventorySnapshot(binding.path,campaign.inventoryHash,units.source,units.protected);}await usageEntries(p.dir);const ledger=new Ledger(p.ledger);
-  try{const jobs=ledger.list(),counts=coverageCounts(campaign,jobs),done=counts.compiled+counts.exception+counts.protected;return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')?'running':counts.exception?'exception':done===0?'stopped':'complete',counts,stages:await stageCounts(p.dir),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:null};}finally{ledger.close();}
+  if(!ID_RE.test(id))throw new TypeError('campaign id is invalid');const root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const p=campaignPaths(id,root);await ensureCanonicalDirectory(p.dir);await verifyRegularStateFile(p.config);await verifyRegularStateFile(p.ledger);const campaign=validateCampaign(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(await readBoundedLocalFile(p.config,64_000_000))) as unknown),bindingPath=path.join(p.dir,'inventory-binding.json');await verifyRegularStateFile(bindingPath);let binding:{path:string;hash:string}|null=null;try{binding=JSON.parse(await readFile(bindingPath,'utf8')) as {path:string;hash:string};}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}if(binding){const units=campaignInventoryUnits(campaign);await verifyInventorySnapshot(binding.path,campaign.inventoryHash,units.source,units.protected,campaign.schemaVersion===2?'country-directory':'coarse');}
+  const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,p.dir,binding):null;
+  await usageEntries(p.dir);const ledger=new Ledger(p.ledger);
+  try{const jobs=ledger.list(),counts=coverageCounts(campaign,jobs),done=counts.compiled+counts.exception+counts.protected;
+    if(campaign.schemaVersion===2){
+      const stored=JSON.parse(await readBoundedLocalFile(path.join(p.dir,'grid-query-binding.json'),16_000).then(bytes=>new TextDecoder('utf-8',{fatal:true}).decode(bytes))) as {cacheRoot:string},resolver=createGridQueryResolver(gridPlan!,campaign.gridQuery),templates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
+      for(const job of jobs.filter(job=>job.status==='completed'&&(job.result as {status?:string}|null)?.status==='query-captured'))await verifyQueryCapture(object(job.result,'completed query capture'),validateClaimedQueryUnit(campaign,gridPlan!,job,campaignHash(campaign),resolver,templates),stored.cacheRoot);
+    }
+    const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,campaignHash(campaign)):undefined;
+    if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
+    return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0?'running':counts.exception||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:null,...(queryCoverage?{queryCoverage}:{})};
+  }finally{ledger.close();}
 }

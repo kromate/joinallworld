@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult } from './production-types.ts';
 import type { Region, SourceRecord } from './types.ts';
 import type { WorldPlan } from './pipeline.ts';
+import { AcquisitionBudgetError, parseAcquisitionBudgetEnvelope, type AcquisitionBudgetReason } from './acquisition-errors.ts';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SOURCES_PATH = path.join(HERE, 'acquisition-sources.json');
@@ -108,7 +109,7 @@ async function assertTreeHasNoLinks(target: string): Promise<void> {
   if(info.isDirectory())for(const child of await readdir(target))await assertTreeHasNoLinks(path.join(target,child));
   else if(!info.isFile())throw new Error('cached acquisition contains a non-regular file');
 }
-function runAdapter(python: string, input: unknown, timeoutMs: number, memoryMb: number, signal?: AbortSignal): Promise<Record<string,unknown>> {
+function runAdapter(python: string, input: unknown, timeoutMs: number, memoryMb: number, networkBytesCap:number, signal?: AbortSignal): Promise<Record<string,unknown>> {
   return new Promise((resolve, reject) => {
     const child = spawn(python, ['-I', ADAPTER_PATH], { shell: false, stdio: ['pipe','pipe','pipe'], windowsHide: true, env: { PATH: path.dirname(python), PYTHONNOUSERSITE: '1', PYTHONDONTWRITEBYTECODE: '1' } });
     const stdout: Buffer[] = [], stderr: Buffer[] = []; let outBytes=0, errBytes=0, finished=false;
@@ -138,6 +139,17 @@ function runAdapter(python: string, input: unknown, timeoutMs: number, memoryMb:
     child.once('close', code => {
       if (finished) return;
       finished=true; clearTimeout(timer); clearInterval(memoryTimer); signal?.removeEventListener('abort', onAbort);
+      if (code === 3) {
+        try {
+          const parsed=JSON.parse(Buffer.concat(stdout).toString('utf8')) as unknown;
+          const envelope=parseAcquisitionBudgetEnvelope(parsed);
+          if(!envelope||envelope.networkBytesMeasured>networkBytesCap)throw new Error('invalid typed budget response');
+          reject(new AcquisitionBudgetError(envelope.reason,envelope.networkBytesMeasured));
+        } catch(error) {
+          reject(new Error(`acquisition adapter returned an invalid typed failure (${error instanceof Error?error.message:String(error)})`));
+        }
+        return;
+      }
       if (code !== 0) { reject(new Error(`acquisition adapter failed (${code}): ${Buffer.concat(stderr).toString('utf8').slice(0,4000)}`)); return; }
       try { const parsed=JSON.parse(Buffer.concat(stdout).toString('utf8')) as unknown; resolve(object(parsed,'adapter response')); } catch(e) { reject(new Error('acquisition adapter returned invalid JSON',{cause:e})); }
     });
@@ -161,7 +173,7 @@ function validateResultShape(raw: Record<string,unknown>, request: AcquisitionRe
   return {path:pathValue,receiptPath:receiptValue,upstream,metrics,exceptions:raw.exceptions as string[],sources};
 }
 function sourceConfigHosts():Set<string>{return new Set(['overturemaps-us-west-2.s3.us-west-2.amazonaws.com','stac.overturemaps.org']);}
-type AttemptRecord = {schemaVersion:1;requestHash:string;attempt:number;event:'started'|'finished';status:'pending'|'success'|'cache-hit'|'failure';startedAt:string;endedAt?:string;selection:unknown;caps:{networkBytes:number;diskBytes:number;durationMs:number};networkBytesMeasured:number|null;networkReservationUpperBoundBytes:number;metrics?:AcquisitionResult['metrics'];receiptPath?:string;reason?:string};
+type AttemptRecord = {schemaVersion:1;requestHash:string;attempt:number;event:'started'|'finished';status:'pending'|'success'|'cache-hit'|'failure';startedAt:string;endedAt?:string;selection:unknown;caps:{networkBytes:number;diskBytes:number;durationMs:number};networkBytesMeasured:number|null;networkReservationUpperBoundBytes:number;metrics?:AcquisitionResult['metrics'];receiptPath?:string;reason?:string;failureKind?:AcquisitionBudgetReason};
 async function appendAttempt(root:string,requestHash:string,record:AttemptRecord):Promise<{file:string;attempt:number}>{
   const dir=path.join(root,'acquisition-attempts',requestHash),file=path.join(dir,'attempts.jsonl');
   await assertNoLinks(root,path.dirname(dir));
@@ -186,17 +198,17 @@ async function appendAttempt(root:string,requestHash:string,record:AttemptRecord
   return {file,attempt};
 }
 function validateAttemptRecord(e:Record<string,unknown>,requestHash:string):void{
-  const started=e.event==='started',failure=e.status==='failure';
-  const keys=started?['schemaVersion','requestHash','attempt','event','status','startedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes']:failure?['schemaVersion','requestHash','attempt','event','status','startedAt','endedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes','reason']:['schemaVersion','requestHash','attempt','event','status','startedAt','endedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes','metrics','receiptPath'];
+  const started=e.event==='started',failure=e.status==='failure',typedFailure=failure&&Object.hasOwn(e,'failureKind');
+  const keys=started?['schemaVersion','requestHash','attempt','event','status','startedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes']:failure?['schemaVersion','requestHash','attempt','event','status','startedAt','endedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes','reason',...(typedFailure?['failureKind']:[])]:['schemaVersion','requestHash','attempt','event','status','startedAt','endedAt','selection','caps','networkBytesMeasured','networkReservationUpperBoundBytes','metrics','receiptPath'];
   exactKeys(e,keys,'attempt evidence');
   if(e.schemaVersion!==1||e.requestHash!==requestHash||!Number.isSafeInteger(e.attempt)||(e.attempt as number)<1||!['started','finished'].includes(String(e.event))||!(started?e.status==='pending':['success','cache-hit','failure'].includes(String(e.status)))||typeof e.startedAt!=='string'||!Number.isFinite(Date.parse(e.startedAt))||!e.selection||typeof e.selection!=='object'||Array.isArray(e.selection))throw new Error('acquisition attempt evidence has an invalid identity or status');
   const caps=object(e.caps,'attempt caps');exactKeys(caps,['networkBytes','diskBytes','durationMs'],'attempt caps');
   for(const key of ['networkBytes','diskBytes','durationMs'])if(!Number.isSafeInteger(caps[key])||(caps[key] as number)<1)throw new Error('acquisition attempt evidence has invalid requested caps');
   const reservation=e.networkReservationUpperBoundBytes,networkCap=caps.networkBytes;
-  if(typeof reservation!=='number'||!Number.isSafeInteger(reservation)||reservation<0||typeof networkCap!=='number'||reservation>networkCap||started&&e.networkBytesMeasured!==null||failure&&e.networkBytesMeasured!==null)throw new Error('acquisition attempt evidence has invalid network accounting');
+  if(typeof reservation!=='number'||!Number.isSafeInteger(reservation)||reservation<0||typeof networkCap!=='number'||reservation>networkCap||started&&e.networkBytesMeasured!==null)throw new Error('acquisition attempt evidence has invalid network accounting');
   if(started){if(e.networkReservationUpperBoundBytes!==caps.networkBytes)throw new Error('pending attempt does not reserve the requested network cap');return;}
   if(typeof e.endedAt!=='string'||!Number.isFinite(Date.parse(e.endedAt)))throw new Error('finished attempt lacks a valid end time');
-  if(failure){if(typeof e.reason!=='string'||e.reason.length>8_000||e.networkReservationUpperBoundBytes!==caps.networkBytes)throw new Error('failure attempt evidence is incomplete');return;}
+  if(failure){if(typeof e.reason!=='string'||e.reason.length>8_000||e.networkReservationUpperBoundBytes!==caps.networkBytes)throw new Error('failure attempt evidence is incomplete');if(typedFailure){if(typeof e.failureKind!=='string'||!['selected-item-count','feature-row-budget','geojson-output-bytes'].includes(e.failureKind)||typeof e.networkBytesMeasured!=='number'||!Number.isSafeInteger(e.networkBytesMeasured)||e.networkBytesMeasured<0||e.networkBytesMeasured>reservation)throw new Error('typed failure attempt evidence is invalid');}else if(e.networkBytesMeasured!==null)throw new Error('opaque failure must retain its full unknown network reservation');return;}
   if(typeof e.receiptPath!=='string'||!path.isAbsolute(e.receiptPath)||!e.metrics||typeof e.metrics!=='object')throw new Error('successful attempt lacks its receipt or metrics');
   const metrics=object(e.metrics,'attempt metrics');exactKeys(metrics,['networkBytes','outputBytes','features','elapsedMs'],'attempt metrics');
   for(const key of Object.keys(metrics))if(!Number.isSafeInteger(metrics[key])||(metrics[key] as number)<0)throw new Error('attempt metrics are invalid');
@@ -300,7 +312,7 @@ async function acquireRegionUnlocked(value: AcquisitionRequest, options: Acquisi
   const staging=path.join(root,`acquisitions/.${requestHash}.${process.pid}.${Date.now()}.tmp`);
   await assertNoLinks(root,staging); await mkdir(staging,{recursive:false});
   try {
-    const raw=await runAdapter(python,{request,sourceConfig,cacheDir:staging,allowedRoot:root,sourceIndexDir},request.limits.durationMs,request.limits.memoryMb,options.signal);
+    const raw=await runAdapter(python,{request,sourceConfig,cacheDir:staging,allowedRoot:root,sourceIndexDir},request.limits.durationMs,request.limits.memoryMb,request.limits.networkBytes,options.signal);
     const result=validateResultShape(raw,request,staging);
     if(!within(staging,result.path)||!within(staging,result.receiptPath))throw new TypeError('adapter outputs must stay inside its private staging directory');
     if(result.path!==path.join(staging,'adapter-output.geojson')||result.receiptPath!==path.join(staging,'adapter-receipt.json'))throw new TypeError('adapter output paths do not match the fixed contract');
@@ -336,8 +348,10 @@ async function acquireRegionUnlocked(value: AcquisitionRequest, options: Acquisi
   } catch(error) {
     const reason=(error instanceof Error?error.message:String(error)).slice(0,8_000);
     let evidencePath=attemptFile;
-    try { evidencePath= (await appendAttempt(root,requestHash,{schemaVersion:1,requestHash,attempt,event:'finished',status:'failure',startedAt,endedAt:new Date().toISOString(),selection,caps:{networkBytes:request.limits.networkBytes,diskBytes:request.limits.diskBytes,durationMs:request.limits.durationMs},networkBytesMeasured:null,networkReservationUpperBoundBytes:request.limits.networkBytes,reason})).file; }
+    const typed=error instanceof AcquisitionBudgetError&&error.networkBytesMeasured<=request.limits.networkBytes?error:null;
+    try { evidencePath= (await appendAttempt(root,requestHash,{schemaVersion:1,requestHash,attempt,event:'finished',status:'failure',startedAt,endedAt:new Date().toISOString(),selection,caps:{networkBytes:request.limits.networkBytes,diskBytes:request.limits.diskBytes,durationMs:request.limits.durationMs},networkBytesMeasured:typed?.networkBytesMeasured??null,networkReservationUpperBoundBytes:request.limits.networkBytes,reason,...(typed?{failureKind:typed.reason}:{})})).file; }
     catch(recordError){throw new Error(`${reason}; failed to persist acquisition failure evidence at ${attemptFile}: ${recordError instanceof Error?recordError.message:String(recordError)}`,{cause:error});}
+    if(typed)throw new AcquisitionBudgetError(typed.reason,typed.networkBytesMeasured,evidencePath,error);
     throw new Error(`${reason}; acquisition failure evidence: ${evidencePath}`,{cause:error});
   }
 }

@@ -35,8 +35,8 @@ Check the inventory path against actual storage before invoking; its hash is aut
 Independent verification uses a root-relative `index-path` and exact SHA. For larger Dakar:
 
 ```sh
-python3 world/tooling/verify_regional_fanout.py --root .cache/world-build --index-path regional-fanout/dakar-larger-fanout-v1/indices/737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4.json --index-hash 737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4
-python3 world/tooling/verify_regional_campaign.py --root .cache/world-build --index-path regional-fanout/dakar-larger-fanout-v1/indices/737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4.json --index-hash 737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4 --report-path evidence/regional-fanout-dakar-larger-campaign-first.json --report-hash 29c51067a59b8debbbf7014d7677e39af7c1ff1c29f1160b8e13af368de0b21b
+python3 world/tooling/verify_regional_fanout.py --root /Users/anthonyakpan/.codex/worktrees/world-foundation/joinallworld/.cache/world-build --index-path regional-fanout/dakar-larger-fanout-v1/indices/737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4.json --index-hash 737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4
+python3 world/tooling/verify_regional_campaign.py --root /Users/anthonyakpan/.codex/worktrees/world-foundation/joinallworld/.cache/world-build --index-path regional-fanout/dakar-larger-fanout-v1/indices/737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4.json --index-hash 737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4 --report-path evidence/regional-fanout-dakar-larger-campaign-first.json --report-hash 29c51067a59b8debbbf7014d7677e39af7c1ff1c29f1160b8e13af368de0b21b
 ```
 
 ## Verification and next gate

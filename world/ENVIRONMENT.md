@@ -32,11 +32,11 @@ Raw source bytes are content-addressed under `.cache/world-build/environment-sou
 
 NASA documents the [monthly point service](https://power.larc.nasa.gov/docs/services/api/temporal/monthly/) and its [custom climatology service](https://power.larc.nasa.gov/docs/services/api/temporal/climatology/). We request annual monthly records and calculate the 30-year monthly normals ourselves so the averaging and precipitation-total algorithm remain explicit. NASA asks users to avoid excessive synchronous requests and documents rate limiting; local batch caps are intentionally much smaller than bulk ingestion. Attribution is retained in every manifest. The response itself does not state a separate product license; follow the [NASA POWER citation/reference guidance](https://power.larc.nasa.gov/docs/referencing/) and [NASA Earthdata data-use policy](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/data-and-information-policy).
 
-## Terrain source contract (metadata only)
+## Terrain source contract and separate importer
 
 No elevation tiles are downloaded by this adapter. The [AWS registry entry](https://registry.opendata.aws/copernicus-dem/) describes Copernicus DEM GLO-90 as a public global 90 m product and GLO-30 as a public but limited-coverage 30 m product. The [official product readme](https://copernicus-dem-30m.s3.amazonaws.com/readme.html) identifies the product as a **digital surface model (DSM)**: buildings, infrastructure and vegetation can appear in the surface. It is not bare-earth terrain. The readme notes ocean tiles are absent; ocean elevation must not be silently treated as measured zero.
 
-The registry/readme checked for this contract do not establish a per-tile vertical datum or geoid conversion. Datum and geoid are therefore **unknown** here; do not claim ellipsoidal heights or convert them. Any later terrain ingestion must retain tile-level source metadata and state DSM versus bare-earth semantics, horizontal/vertical reference systems, processing, and unresolved datum explicitly.
+The initial registry/readme review did not establish the vertical datum. Subsequent official product-handbook research establishes EGM2008, while the Accra COG lacks a vertical GeoKey. The separate [terrain importer](TERRAIN.md) preserves that distinction and has verified one tile plus 25 native samples. Conversion to WGS84 ellipsoidal heights remains unapplied. This climate adapter still downloads no terrain and attaches neither sidecar to packs.
 
 ## Primary references
 

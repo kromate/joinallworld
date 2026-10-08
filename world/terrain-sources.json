@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "dataset": {
+    "provider": "Copernicus",
+    "product": "Copernicus DEM GLO-90",
+    "surfaceModel": "DSM",
+    "horizontalReference": {
+      "name": "WGS84-G1150",
+      "epsg": 4326
+    },
+    "verticalReference": {
+      "status": "source-stated-cog-vertical-key-absent",
+      "datum": "EGM2008",
+      "epsg": 3855,
+      "unit": "m",
+      "evidence": "The Copernicus Product Handbook specifies GLO-90 elevations relative to EGM2008; this AWS COG header probe contains no vertical GeoKey. The product-level datum is documented, while this tile is not self-describing in its TIFF GeoKeys."
+    },
+    "nominalLatitudeResolutionArcSeconds": 3,
+    "longitudeResolutionByLatitudeBand": [
+      { "minAbsoluteLatitude": 0, "maxAbsoluteLatitude": 50, "arcSeconds": 3 },
+      { "minAbsoluteLatitude": 50, "maxAbsoluteLatitude": 60, "arcSeconds": 4.5 },
+      { "minAbsoluteLatitude": 60, "maxAbsoluteLatitude": 70, "arcSeconds": 6 },
+      { "minAbsoluteLatitude": 70, "maxAbsoluteLatitude": 75, "arcSeconds": 9 },
+      { "minAbsoluteLatitude": 75, "maxAbsoluteLatitude": 85, "arcSeconds": 15 },
+      { "minAbsoluteLatitude": 85, "maxAbsoluteLatitude": 90, "arcSeconds": 30 }
+    ],
+    "attribution": "Produced using Copernicus WorldDEM-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.",
+    "licenseEvidence": "Copernicus Data Space usage and attribution terms; consult current official terms before redistribution."
+  },
+  "metadataProbes": [
+    {
+      "tileId": "Copernicus_DSM_COG_30_N05_00_W001_00_DEM",
+      "description": "Accra pilot geocell covering longitude -1 to 0 and latitude 5 to 6 degrees; metadata only, no DEM pixel values fetched.",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N05_00_W001_00_DEM/Copernicus_DSM_COG_30_N05_00_W001_00_DEM.tif",
+      "observedAt": "2026-10-08",
+      "metadataBytesInspected": 16384,
+      "cogObjectBytes": 3511272,
+      "sha256": null,
+      "etag": "\"572074de3b1b8b304208e1ec48ec0644\"",
+      "etagIsSha256": false,
+      "lastModified": "2022-05-09T12:44:58Z",
+      "contentType": "image/tiff",
+      "acceptsByteRanges": true,
+      "raster": {
+        "width": 1200,
+        "height": 1200,
+        "bitsPerSample": 32,
+        "samplesPerPixel": 1,
+        "compression": "DEFLATE",
+        "tileWidth": 2048,
+        "tileHeight": 2048,
+        "horizontalEpsg": 4326,
+        "rasterType": "PixelIsPoint",
+        "pixelScaleDegrees": [0.0008333333333333334, 0.0008333333333333334],
+        "tiepoint": [0, 0, 0, -1, 6, 0],
+        "verticalGeoKeyPresent": false
+      },
+      "sampleValuesInspected": false,
+      "evidence": [
+        "https://registry.opendata.aws/copernicus-dem/",
+        "https://copernicus-dem-90m.s3.amazonaws.com/readme.html",
+        "https://copernicus-dem-90m.s3.amazonaws.com/tileList.txt",
+        "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_N05_00_W001_00_DEM/Copernicus_DSM_COG_30_N05_00_W001_00_DEM.tif",
+        "https://dataspace.copernicus.eu/sites/default/files/media/files/2024-06/geo1988-copernicusdem-spe-002_producthandbook_i5.0.pdf"
+      ]
+    }
+  ],
+  "acquisitions": [
+    {
+      "tileId": "Copernicus_DSM_COG_30_N05_00_W001_00_DEM",
+      "requestHash": "399456881089dc86cfae71db0156e8cbad69ebd30a5c02853362d321e126002c",
+      "selectionBoundsWgs84": [-0.207, 5.552, -0.203, 5.556],
+      "status": "success",
+      "sourceBytes": 3511272,
+      "sourceSha256": "f500d585f5c4a8a780528d55179d411601c221b6bcf4e183d0a1e91cb1748a05",
+      "sourceCachePath": ".cache/world-build/terrain/sources/f500d585f5c4a8a780528d55179d411601c221b6bcf4e183d0a1e91cb1748a05.tif",
+      "sidecarBytes": 5181,
+      "sidecarSha256": "a3bf741c3e4536551a476058bc1b593b992e55ea20e6a0b7b58b8ea6a480376d",
+      "sidecarCachePath": ".cache/world-build/terrain/sidecars/a3bf741c3e4536551a476058bc1b593b992e55ea20e6a0b7b58b8ea6a480376d.json",
+      "responseHeaders": {
+        "contentLength": 3511272,
+        "contentType": "image/tiff",
+        "etag": "\"572074de3b1b8b304208e1ec48ec0644\"",
+        "lastModified": "Mon, 09 May 2022 12:44:58 GMT"
+      },
+      "networkBytesMeasured": 3511272,
+      "limits": {
+        "networkBytesAggregate": 5000000,
+        "diskBytes": 30000000,
+        "durationMs": 60000,
+        "rssBytes": 402653184
+      },
+      "raster": {
+        "width": 1200,
+        "height": 1200,
+        "bands": 1,
+        "dtype": "float32",
+        "crs": "EPSG:4326",
+        "rasterType": "PixelIsPoint",
+        "sampleWindow": { "columnOffset": 952, "rowOffset": 533, "width": 5, "height": 5 },
+        "validSamples": 25,
+        "invalidSamples": 0,
+        "validMinimumMeters": 18.89897918701172,
+        "validMaximumMeters": 28.763370513916016,
+        "verticalDatum": "product-stated EGM2008; COG vertical GeoKey absent; no conversion applied"
+      },
+      "evidencePath": ".cache/world-build/evidence/accra-terrain-acquisition.json"
+    }
+  ]
+}

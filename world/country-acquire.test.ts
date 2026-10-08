@@ -139,8 +139,17 @@ test('a complete wrong blob is retained as failed evidence and consumes measured
 }));
 
 test('interrupted transfer retains full reservation; valid cached source remains usable after exhausted audit', async () => fixture(async ({ root, raw, spec }) => {
-  const fetcher: typeof fetch = async () => new Response(new ReadableStream<Uint8Array>({ start(controller) {
-    controller.enqueue(new Uint8Array(raw.subarray(0, 4))); setTimeout(() => controller.error(new Error('synthetic interrupted stream')), 5);
+  // Deliver the measured prefix only when the acquisition reader pulls, then
+  // fail on its next pull. A timer in `start` races filesystem setup and can
+  // fail before the consumer observes the already-enqueued bytes.
+  let delivered = false;
+  const fetcher: typeof fetch = async () => new Response(new ReadableStream<Uint8Array>({ pull(controller) {
+    if (!delivered) {
+      delivered = true;
+      controller.enqueue(new Uint8Array(raw.subarray(0, 4)));
+    } else {
+      controller.error(new Error('synthetic interrupted stream'));
+    }
   } }), { status: 200 });
   await assert.rejects(acquireCountrySource(spec, { repositoryRoot: root, fetcher }), /synthetic interrupted stream/);
   const terminal = (await records(root, requestHash(spec))).at(-1)!;

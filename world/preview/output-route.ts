@@ -1,3 +1,5 @@
+import { CLIMATE_ATTACHMENT_LIMITS as CLIMATE } from '../climate-attachment-types.ts';
+
 export interface OutputRoute {
   rootParts: string[];
   assetParts: string[];
@@ -9,6 +11,9 @@ export function outputRoute(pathname: string): OutputRoute | null {
   if (pathname.includes('\\') || pathname.split('/').some(part => part === '.' || part === '..')) return null;
   const pack = /^\/(manifests|tiles)\/([a-f0-9]{64})\.json$/.exec(pathname);
   if (pack) return { rootParts: ['output'], assetParts: [pack[1]!, `${pack[2]}.json`], limit: pack[1] === 'manifests' ? 2_000_000 : 10_000_000 };
+  const climate = /^\/climate-packs\/(manifests|tiles)\/([a-f0-9]{64})\.json$/.exec(pathname);
+  if (climate) return { rootParts: ['output'], assetParts: ['climate-packs',climate[1]!,`${climate[2]}.json`],
+    limit: climate[1] === 'manifests' ? CLIMATE.manifestBytes : CLIMATE.tileBytes };
   const inventory = /^\/inventory\/(manifests|nodes|outlines)\/([a-f0-9]{64})\.json$/.exec(pathname);
   if (inventory) return { rootParts: ['output'], assetParts: ['inventory', inventory[1]!, `${inventory[2]}.json`], limit: inventory[1] === 'manifests' ? 1_000_000 : inventory[1] === 'nodes' ? 128_000 : 512_000 };
   const countryDirectory = /^\/country-inventory\/(manifests|nodes|outline-index|outlines|identity)\/([a-f0-9]{64})\.json$/.exec(pathname);

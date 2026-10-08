@@ -8,6 +8,14 @@ test('preview routes expose only hashed pack and inventory assets, including iso
     rootParts: ['campaigns', 'accra-real-acceptance', 'output'], assetParts: ['manifests', `${hash}.json`], limit: 2_000_000,
   });
   assert.equal(outputRoute(`/tiles/${hash}.json`)?.limit, 10_000_000);
+  for (const [category,limit] of [['manifests',128 * 1024],['tiles',1024 * 1024]] as const) {
+    assert.deepEqual(outputRoute(`/climate-packs/${category}/${hash}.json`), {
+      rootParts: ['output'],assetParts: ['climate-packs',category,`${hash}.json`],limit,
+    });
+  }
+  for (const pathname of [`/climate-packs/provenance/${hash}.json`,`/climate-packs/attachments/${hash}.json`,`/climate-packs/sources/${hash}.json`,
+    `/climate-packs/audit/${hash}.json`,`/climate-packs/../tiles/${hash}.json`,`/climate-packs/tiles/${hash.toUpperCase()}.json`,
+    `/climate-packs/manifests/${hash}.json/extra`]) assert.equal(outputRoute(pathname),null);
   for (const [category, limit] of [['manifests',256 * 1024],['points',512_000]] as const) {
     assert.deepEqual(outputRoute(`/selected-places/${category}/${hash}.json`), {
       rootParts: ['output'], assetParts: ['selected-places',category,`${hash}.json`], limit,

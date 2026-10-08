@@ -47,3 +47,7 @@ The initial registry/readme review did not establish the vertical datum. Subsequ
 - [NASA POWER referencing guidance](https://power.larc.nasa.gov/docs/referencing/)
 - [Copernicus DEM AWS registry](https://registry.opendata.aws/copernicus-dem/)
 - [Copernicus DEM official product readme](https://copernicus-dem-30m.s3.amazonaws.com/readme.html)
+
+## Accepted African attachment milestone
+
+The climate sidecar adapter remains separate. A new [city-associated publisher](CLIMATE-ATTACHMENT-OPERATIONS.md) derives immutable Accra, Nairobi and Cape Town packs from three reviewed modern sidecars and their raw sources. Independent reconstruction and browser month/source checks pass; original packs, sidecars, tile bytes and ledgers remain identical. Accra/Nairobi samples lie outside their small pack cells and their explicit association is disclosed. The other three profiles remain sidecars. Terrain is still unattached pending vertical conversion evidence; these historical monthly normals are not live weather or continent-wide climate.

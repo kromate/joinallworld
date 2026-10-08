@@ -14,6 +14,7 @@ import { attachFinePanel } from './fine-panel.ts';
 import { attachCountryDirectoryPanel } from './country-directory-panel.ts';
 import { attachAdmin1Panel } from './admin1-panel.ts';
 import { admin1AtlasFrame } from './admin1-framing.ts';
+import { climateAttachmentDisplay } from './climate-display.ts';
 import { attachSettlementPanel } from './settlement-panel.ts';
 import { planSettlementMarkers, projectSettlementPoint } from './settlement-framing.ts';
 import type { SettlementAtlasFrame, SettlementBinding, SettlementReadResult } from './settlement-client-types.ts';
@@ -61,7 +62,7 @@ root.innerHTML = `
       </section>
       <section class="panel stats-panel"><div class="section-head"><span class="section-number">04</span><h2>VISIBLE FOOTPRINTS</h2></div><div class="stats-grid"><div><strong id="buildingCount">—</strong><span>buildings drawn</span></div><div><strong id="roadCount">—</strong><span>road segments</span></div><div><strong id="triCount">—</strong><span>triangles drawn</span></div><div><strong id="callCount">—</strong><span>render calls</span></div></div><div id="loadBytes" class="data-note">Downloaded: 0 B · Cached: 0 B</div><div id="heightNote" class="height-note">Height provenance appears after loading a district.</div><div id="frameNote" class="data-note">Demand rendering · waiting for a frame</div></section>
       <section class="panel time-panel"><div class="section-head"><span class="section-number">05</span><h2>DAYLIGHT PREVIEW</h2></div><label for="clock">Date and time · UTC</label><input id="clock" type="datetime-local" value="2026-10-08T12:00"/><div class="sun-readout"><div><strong id="sunAltitude">—</strong><span>solar altitude</span></div><div><strong id="dayLength">—</strong><span>daylight length</span></div><div class="sun-glyph">☼</div></div><div id="timezoneNote" class="data-note">Sun position is approximate. Timezone is unknown until a source provides one.</div></section>
-      <section class="panel provenance-panel"><div class="section-head"><span class="section-number">06</span><h2>SOURCE & COVERAGE</h2></div><div id="coverage" class="coverage-badge">NO PACK</div><div id="provenance" class="provenance"><div class="placeholder-row">Source attribution will appear here.</div></div><div id="climateNote" class="climate-note">Climate: unknown — no sourced profile in this pack.</div></section>
+      <section class="panel provenance-panel"><div class="section-head"><span class="section-number">06</span><h2>SOURCE & COVERAGE</h2></div><div id="coverage" class="coverage-badge">NO PACK</div><div id="provenance" class="provenance"><div class="placeholder-row">Source attribution will appear here.</div></div><div id="climateNote" class="climate-note" aria-live="polite" data-mode="unknown">Climate: unknown — no sourced profile in this pack.</div><div id="climateSource" class="climate-source-note">No verified monthly climate source is available.</div></section>
       <footer><span>WGS84 · LOCAL ENU METRES</span><span>◌ PREVIEW TOOLING</span></footer>
     </aside>
   </main>`;
@@ -111,6 +112,7 @@ grid.position.y = -0.2;
 scene.add(grid);
 
 let manifest: WorldManifest | null = null;
+let previewView: 'pack' | 'outline' = 'pack';
 let selectedIndex = -1;
 let activeAbort: AbortController | null = null;
 let requestGeneration = 0;
@@ -464,14 +466,33 @@ function activateRenderedTile(tile: WorldTile, ref: TileRef): RenderedTile {
   return record;
 }
 
-function updateSun() {
-  if (!manifest) return;
-  const input = $('clock') as HTMLInputElement;
-  if (!input.value || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(input.value)) { safeText($('timezoneNote'), 'Enter a valid UTC date and time.'); return; }
-  const [date, time] = input.value.split('T');
-  const [year, month, day] = date!.split('-').map(Number);
-  const [hour, minute] = time!.split(':').map(Number);
+function clockEpoch(): number {
+  const value = ($('clock') as HTMLInputElement).value;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)) return NaN;
+  const [year, month, day, hour, minute] = value.split(/[-T:]/).map(Number);
   const epoch = Date.UTC(year!, month! - 1, day!, hour!, minute!);
+  const date = new Date(epoch);
+  return date.getUTCFullYear() === year && date.getUTCMonth() + 1 === month && date.getUTCDate() === day
+    && date.getUTCHours() === hour && date.getUTCMinutes() === minute ? epoch : NaN;
+}
+function renderClimateInfo(epoch = clockEpoch()): void {
+  const note = $('climateNote'), source = $('climateSource');
+  if (previewView === 'outline') {
+    note.textContent = 'Climate is unknown for this geographic layer: no sourced local profile is bound to the selected outline.';
+    note.dataset.mode = 'unknown'; delete note.dataset.month;
+    source.textContent = 'Monthly pack climate is shown only with its verified 3D pack.';
+    return;
+  }
+  const value = climateAttachmentDisplay(manifest, epoch);
+  note.textContent = value.text; note.dataset.mode = value.mode;
+  if (value.month === null) delete note.dataset.month; else note.dataset.month = String(value.month);
+  source.textContent = value.sourceText;
+}
+function updateSun() {
+  const epoch = clockEpoch();
+  renderClimateInfo(epoch);
+  if (!manifest) return;
+  if (!Number.isFinite(epoch)) { safeText($('timezoneNote'), 'Enter a valid UTC date and time.'); return; }
   const [longitude, latitude] = boundsCenter(manifest.region.bounds);
   const altitude = solarAltitude(epoch, latitude, longitude);
   const daylight = daylightHours(epoch, latitude);
@@ -499,7 +520,7 @@ function renderManifestInfo(value: WorldManifest, hash: string) {
     try { const parsed = new URL(source.url); if (parsed.protocol === 'http:' || parsed.protocol === 'https:') safeUrl = parsed.href; } catch { /* Invalid source links are shown as text only. */ }
     return `<article class="source-item"><strong>${escapeHtml(source.attribution)}</strong><span>${escapeHtml(source.release)} · ${escapeHtml(source.license)}</span>${safeUrl ? `<a href="${escapeAttribute(safeUrl)}" target="_blank" rel="noreferrer">View source ↗</a>` : ''}<code>${source.sha256.slice(0, 16)}…</code></article>`;
   }).join('') || '<div class="placeholder-row">No source records in this pack.</div>';
-  $('climateNote').textContent = value.climate ? `Climate: sourced profile · ${value.climate.period} · source ${value.climate.sourceId}` : 'Climate: unknown — no sourced profile in this pack.';
+  renderClimateInfo();
   const timezone = value.region.timezone;
   $('timezoneNote').textContent = timezone ? `Timezone: ${timezone}` : 'Timezone is unknown in this pack.';
   $('tileCount').textContent = String(value.tiles.length);
@@ -525,7 +546,7 @@ function clearPackUi() {
   ($('prevTile') as HTMLButtonElement).disabled = true; ($('nextTile') as HTMLButtonElement).disabled = true;
   $('coverage').className = 'coverage-badge'; $('coverage').textContent = 'NO PACK';
   $('provenance').innerHTML = '<div class="placeholder-row">Source attribution will appear here.</div>';
-  $('climateNote').textContent = 'Climate: unknown — no sourced profile in this pack.';
+  renderClimateInfo();
   $('timezoneNote').textContent = 'Sun position is approximate. Timezone is unknown until a source provides one.';
   $('sunAltitude').textContent = '—'; $('dayLength').textContent = '—';
   $('heightNote').textContent = 'Height provenance appears after loading a district.';
@@ -548,7 +569,7 @@ function checkRequest(controller: AbortController, generation: number, signal: A
 }
 
 function shareableManifestQuery(pathname: string, hash: string) {
-  const match = /^\/world-output\/(?:campaigns\/[a-z0-9][a-z0-9-]{0,79}\/)?manifests\/([a-f0-9]{64})\.json$/.exec(pathname);
+  const match = /^\/world-output\/(?:(?:campaigns\/[a-z0-9][a-z0-9-]{0,79}|climate-packs)\/)?manifests\/([a-f0-9]{64})\.json$/.exec(pathname);
   return match && match[1] === hash ? pathname : null;
 }
 
@@ -568,6 +589,7 @@ async function getInventoryOutline(path:string,controller:AbortController,genera
  if(!inventoryIsCurrent(controller,generation))throw new DOMException('Selection changed','AbortError');inventoryDownloadedBytes+=fetched.bytes;inventoryCache.set(key,{value:fetched.value,bytes:fetched.bytes},fetched.bytes);updateCacheNote();return fetched.value;
 }
 function setView(mode:'pack'|'outline'){
+ previewView = mode; renderClimateInfo();
  const outline=mode==='outline';$('viewport').classList.toggle('hidden',outline);$('outlineView').classList.toggle('hidden',!outline);($('show3d') as HTMLButtonElement).setAttribute('aria-pressed',String(!outline));($('show2d') as HTMLButtonElement).setAttribute('aria-pressed',String(outline));
  const viewer=document.querySelector<HTMLElement>('.viewer-wrap')!;viewer.dataset.view=mode;
  invalidate();
@@ -790,6 +812,7 @@ async function loadManifest() {
       button.innerHTML = `<span class="district-marker">${String(index + 1).padStart(2, '0')}</span><span class="district-info"><strong>${escapeHtml(ref.id)}</strong><small data-base-label="${escapeAttribute(`${(ref.triangles / 1000).toFixed(1)}k triangles · ${bytesLabel(ref.bytes)}`)}">${(ref.triangles / 1000).toFixed(1)}k triangles · ${bytesLabel(ref.bytes)}</small></span><span class="district-arrow">↗</span>`;
       button.addEventListener('click', () => focusTile(index)); $('districtList').appendChild(button);
     });
+    setView('pack');
     renderManifestInfo(validated, actual);
     updateSun();
     progress(null); setStatus(`Verified · ${actual.slice(0, 12)}…`, 'ok');
@@ -800,7 +823,7 @@ async function loadManifest() {
     if (validated.tiles.length) focusTile(0);
   } catch (error) {
     if (isRequestReplaced(controller, generation)) return;
-    tileStream?.setManifest(null); manifest = null; manifestBaseUrl = null; manifestIdentity = ''; packOrigin = null;
+    tileStream?.setManifest(null); manifest = null; manifestBaseUrl = null; manifestIdentity = ''; packOrigin = null; renderClimateInfo();
     progress(null); setStatus('Could not load pack', 'error');
     showError(signal.aborted ? 'Request timed out after 25 seconds. Check the local pack and try again.' : error instanceof Error ? error.message : String(error));
   }

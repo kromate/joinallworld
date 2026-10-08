@@ -148,6 +148,26 @@ async function validateAudits(auditRoot: string, reportRoot: string, currentRequ
   return {entries,bytes,starts};
 }
 interface Child { code:number|null; stdout:Buffer; stderr:Buffer; peakRssBytes:number|null; rssSamples:number }
+export type Admin1RssProbe = { kind:'measured'; rssBytes:number } | { kind:'exiting' };
+/** Parse `ps -o rss=,stat=` without treating a missing/zombie process as a zero-byte sample. */
+export function classifyAdmin1RssProbe(output:string,processPresent:boolean,childTerminal:boolean):Admin1RssProbe {
+  if(childTerminal)return {kind:'exiting'};
+  const line=output.trim();
+  if(!line){if(!processPresent)return {kind:'exiting'};throw new Error('invalid Admin1 topology child RSS measurement');}
+  const match=/^(\d+)\s+([A-Za-z<>?]+\+?)$/.exec(line);
+  if(!match)throw new Error('invalid Admin1 topology child RSS measurement');
+  const kib=Number(match[1]);
+  if(!Number.isSafeInteger(kib)||kib<0)throw new Error('invalid Admin1 topology child RSS measurement');
+  if(match[2]!.includes('Z'))return {kind:'exiting'};
+  if(kib<1){if(!processPresent)return {kind:'exiting'};throw new Error('invalid Admin1 topology child RSS measurement');}
+  const rssBytes=kib*1024;
+  if(!Number.isSafeInteger(rssBytes))throw new Error('invalid Admin1 topology child RSS measurement');
+  return {kind:'measured',rssBytes};
+}
+function processPresent(pid:number):boolean {
+  try { process.kill(pid,0);return true; }
+  catch(error) { const code=(error as NodeJS.ErrnoException).code;if(code==='ESRCH')return false;if(code==='EPERM')return true;throw error; }
+}
 async function runChild(executable:string,args:string[],cwd:string,input:Buffer,maxStdout:number,maxStderr:number,signal:AbortSignal,deadline:number,acceptedCodes:readonly number[]=[0],onSpawn?:(pid:number)=>void):Promise<Child> {
   check(signal,deadline);
   const child=spawn(executable,args,{cwd,shell:false,windowsHide:true,stdio:['pipe','pipe','pipe'],env:{PATH:path.dirname(executable),PYTHONNOUSERSITE:'1',PYTHONDONTWRITEBYTECODE:'1'}});
@@ -166,12 +186,14 @@ async function runChild(executable:string,args:string[],cwd:string,input:Buffer,
     if(closed||!child.pid||child.exitCode!==null||child.signalCode!==null)return Promise.resolve();
     probing=true;
     activeProbe=(async()=>{try {
-      const p=spawn('/bin/ps',['-o','rss=','-p',String(child.pid)],{shell:false,stdio:['ignore','pipe','ignore']});let s='';
+      const p=spawn('/bin/ps',['-o','rss=,stat=','-p',String(child.pid)],{shell:false,stdio:['ignore','pipe','ignore']});let s='';
       const done=new Promise<number|null>((resolve,reject)=>{p.stdout.on('data',(b:Buffer)=>{s+=b.toString('ascii');if(s.length>128)p.kill('SIGKILL');});p.once('error',reject);p.once('close',resolve);});
       const t=setTimeout(()=>p.kill('SIGKILL'),1000);let code:number|null;try{code=await done;}finally{clearTimeout(t);}
-      if(code!==0){if(closed||child.exitCode!==null||child.signalCode!==null)return;throw new Error('cannot measure Admin1 topology child RSS');}
-      const rss=Number(s.trim())*1024;if(!Number.isFinite(rss)||rss<1){if(closed||child.exitCode!==null||child.signalCode!==null)return;throw new Error('invalid Admin1 topology child RSS measurement');}
-      const combined=rss+process.memoryUsage().rss;peak=Math.max(peak??0,combined);samples++;
+      const terminal=closed||child.exitCode!==null||child.signalCode!==null;
+      const present=processPresent(child.pid!);
+      if(code!==0){if(terminal||!present)return;throw new Error('cannot measure Admin1 topology child RSS');}
+      const measurement=classifyAdmin1RssProbe(s,present,terminal);if(measurement.kind==='exiting')return;
+      const combined=measurement.rssBytes+process.memoryUsage().rss;peak=Math.max(peak??0,combined);samples++;
       if(combined>LIMITS.rssBytes)throw new RangeError('Admin1 topology controller plus child exceeded 512 MiB RSS');check(signal,deadline);
     }catch(e){if(!closed)fail(e instanceof Error?e:new Error(String(e)));}finally{probing=false;}})();
     return activeProbe;

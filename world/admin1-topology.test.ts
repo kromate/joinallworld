@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { mkdtemp, readFile, readdir, rm, unlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { runAdmin1Topology, topologyExitCode } from './admin1-topology.ts';
+import { classifyAdmin1RssProbe, runAdmin1Topology, topologyExitCode } from './admin1-topology.ts';
 import type { Admin1TopologyReport } from './admin1-topology-types.ts';
 import { createAdmin1TopologyFixture, installFixtureSpatialExtension } from './admin1-topology-fixtures.ts';
 
@@ -28,6 +28,17 @@ test('protected Nigeria alone does not turn topology findings into exit 2', () =
 test('invalid or unsupported nonprotected units produce exit 2', () => {
   assert.equal(topologyExitCode(report({ invalidUnits: 1 })), 2);
   assert.equal(topologyExitCode(report({ unsupportedUnits: 1 })), 2);
+});
+
+test('RSS probe distinguishes live invalid samples from a vanished or zombie child', () => {
+  assert.deepEqual(classifyAdmin1RssProbe('128000 S+', true, false), { kind: 'measured', rssBytes: 128_000 * 1024 });
+  assert.deepEqual(classifyAdmin1RssProbe('', false, false), { kind: 'exiting' }, 'empty ps output is an exit race only when the PID is gone');
+  assert.deepEqual(classifyAdmin1RssProbe('0 Z', true, false), { kind: 'exiting' }, 'a zombie is terminal even before Node emits close');
+  assert.deepEqual(classifyAdmin1RssProbe('0 R', false, false), { kind: 'exiting' }, 'zero RSS is ignored only after disappearance');
+  assert.deepEqual(classifyAdmin1RssProbe('', true, true), { kind: 'exiting' }, 'observed child close is authoritative');
+  assert.throws(() => classifyAdmin1RssProbe('', true, false), /invalid .*RSS/);
+  assert.throws(() => classifyAdmin1RssProbe('0 R', true, false), /invalid .*RSS/);
+  assert.throws(() => classifyAdmin1RssProbe('unparseable', false, false), /invalid .*RSS/);
 });
 
 test('rejects malformed manifest hashes and duration before touching repository state', async () => {

@@ -38,11 +38,21 @@ Exact tracked searches did not locate “Lost Parcel”, “Opening Shift”, �
 
 ## Goalmatic handoff
 
-[COMMERCE.md](../../COMMERCE.md) is the current in-repository commerce design; [the research pack](../../commerce-research-2026-10-07/README.md) and [INTEGRATED-PREVIEW.md](../../INTEGRATED-PREVIEW.md) provide historical contract and consolidation context. Their local paths and old SHAs must be translated into the owning repositories and verified branches with the integration owner.
+[COMMERCE.md](../../COMMERCE.md) is the current in-repository commerce design; [the research pack](../../commerce-research-2026-10-07/README.md) and [INTEGRATED-PREVIEW.md](../../INTEGRATED-PREVIEW.md) provide historical contract and consolidation context. Use accessible GitHub branches and published handoffs to resolve their old SHAs and local references. Another machine cannot depend on access to the original Mac or its local agents.
 
 The existing division is concrete: Allworld owns the listing and game/account relationship; Store Studio/Goalmatic owns catalogue, orders, customer and refund flows; payment providers own settlement. The adapter is the external HTTP boundary. Preserve that division and its explicit consent/account checks.
 
-Before changing integration behavior, obtain the owner's contract version, source SHA, sandbox/read-only probe, identity mapping, scopes, revocation behavior and acceptance evidence. Do not assume a general Goalmatic goals/tasks API exists because commerce or workspace APIs exist. An unavailable owner or API blocks the external activation slice only; local missions can use a mock contract behind an off-by-default flag.
+Before changing integration behavior, discover a published contract version/source SHA, authorized sandbox/read-only probe, identity mapping, scopes, revocation behavior and acceptance evidence. Do not assume a general Goalmatic goals/tasks API exists because commerce or workspace APIs exist. Missing access or a contract blocks external activation only; use an isolated mock behind an off-by-default flag and leave a precise handoff identifying missing operation/schema/version/permissions/evidence. Continue independent missions without claiming the integration owner was contacted.
+
+Repository metadata and public documents were verified on 8 October 2026:
+
+| Repository | Visibility and default branch | Remote-agent use |
+| --- | --- | --- |
+| [kromate/goalmatic](https://github.com/kromate/goalmatic) | Private; `dev` | Main Goalmatic source. First read using the supported browser and the user’s existing signed-in GitHub session; inspect `dev` and relevant published branches/PRs/contracts. A signed-out 404 can reflect privacy. No private code is reproduced here. |
+| [kromate/Store-Studio](https://github.com/kromate/Store-Studio) | Private; `preview` | Merchant-app source. Use the same existing authenticated GitHub browser session when its contracts are relevant; preserve private source. |
+| [kromate/goalmatic-cli](https://github.com/kromate/goalmatic-cli) | Public; `main` | Public developer contract entry point, inspected at `e1f8ad93f6662d88d4e571ad9d4b9b6951557914`. Its beta status and documented capability limits still apply. |
+
+Read the public [README](https://github.com/kromate/goalmatic-cli/blob/e1f8ad93f6662d88d4e571ad9d4b9b6951557914/README.md), [account/login contract](https://github.com/kromate/goalmatic-cli/blob/e1f8ad93f6662d88d4e571ad9d4b9b6951557914/docs/accounts-and-login.mdx), [Sites/Apps runtime distinction](https://github.com/kromate/goalmatic-cli/blob/e1f8ad93f6662d88d4e571ad9d4b9b6951557914/docs/sites-and-apps.mdx) and [CLI/MCP operation discovery](https://github.com/kromate/goalmatic-cli/blob/e1f8ad93f6662d88d4e571ad9d4b9b6951557914/docs/cli-reference.mdx). These establish documented account/runtime/discovery behavior, not a specific Goals schema or a deployed game integration. The user says the working agent can use their browser and signed-in GitHub account. Try the supported authenticated browser read before declaring either private repository unavailable. Browser access does not imply terminal git credentials: use an existing authorized connector/git session if available, otherwise inspect through the browser. Do not extract cookies/tokens, request secrets in chat, or create new grants. Respect an access denial and record the specific limitation if the supported read fails. Use verified operation descriptions before enabling a capability, and never publish private source in public documentation or handoffs.
 
 ## Initial verification targets
 

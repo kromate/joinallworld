@@ -1,16 +1,16 @@
 # Phases, tests and release sessions
 
-The implementation programme begins when the user assigns it. This published plan alone authorizes no gameplay edits or releases. Keep phases small enough to demonstrate and reverse without resetting player data. Independent preparatory work may run in parallel only with separate owners and files.
+The persistent implementation programme begins when the user assigns it. The user's implementation intent includes deployment to production in phases; record that assignment as standing scope. Publishing this plan is a docs-only task and does not launch implementation, merge or deploy. Keep delivery batches small enough to demonstrate and reverse without resetting player data. Parallel work requires separate write scopes.
 
 ## Phase 0: establish contracts and ownership
 
-Verify the repository URL/default branch, fetch the approved baseline, record branch/SHA/dirty state and read applicable `AGENTS.md`/repository instructions. Preserve all existing edits. Use an isolated branch/checkout for this programme; never use another agent's active working directory. Identify the current Goalmatic, graphics and worldbuilding owners, their branch SHAs and interface contracts. Record who owns shared types, routes, state migrations and integration.
+Verify the repository URL/default branch, fetch the chosen baseline, record branch/SHA/dirty state and read applicable `AGENTS.md`/repository instructions. Preserve existing edits. Use an isolated branch/checkout. Discover current Goalmatic, graphics and worldbuilding branches, PRs and interface contracts from published GitHub work. Record reserved paths and who integrates shared types, routes and migrations. Access to the original Mac or its local agents is neither available nor required.
 
-Inspect worktrees and open PRs as well as the default branch; an active owner may be ahead of `main`. Git worktrees share most refs and repository configuration. A local ownership file or worktree lock does not coordinate agents on separate computers. Use a mutually acknowledged remote ownership/handoff record, through an authorized channel, with scope, base SHA, owner and expiry/renewal. A local note alone cannot grant a conflicting lane.
+Inspect accessible branches and open PRs as well as the default branch; ongoing work may be ahead of `main`. Inspect worktrees on your own execution machine only. Git worktrees share most refs and repository configuration; local notes or locks do not coordinate separate computers. Use published scope/handoff records with base SHAs where available. If a scope is unresolved, preserve its paths and build an independent interface/fixture; do not claim an absent agent acknowledged a handoff.
 
-Audit the [source candidates](BASELINE.md) and identify runtime equivalents before adding modules. Define qualification, consent, rental, delivery and service state transitions, authority, transaction boundaries, event/version fields, save compatibility and recovery. Agree the district road/vehicle/appearance interfaces with their owners. Inspect historical prototype branches only when available and authorized.
+Audit the [source candidates](BASELINE.md) and identify runtime equivalents before adding modules. Define qualification, consent, rental, delivery and service state transitions, authority, transaction boundaries, event/version fields, save compatibility and recovery. Resolve district road/vehicle/appearance interfaces from current source and published contracts. For private Goalmatic repositories, first try the supported browser with the user's existing signed-in GitHub session, as described in [BASELINE.md](BASELINE.md#goalmatic-handoff). Do not declare access missing before that read. Browser access does not imply terminal git authentication; never extract cookies/tokens or create new grants to bridge it.
 
-**Exit evidence:** a baseline/ownership record, API and event examples, migration strategy, acceptance scenarios and a reproducible local Node/Worker baseline. Unknown external APIs are marked blocked with an owner/action; local game work uses contract fixtures and stays unblocked. No implementation starts in a file with unresolved write ownership.
+**Exit evidence:** a baseline/scope record, API and event examples, migration strategy, acceptance scenarios and a reproducible Node/Worker baseline. Unknown external APIs get a precise contract/access handoff and an off-by-default adapter; independent game work uses fixtures and continues. No implementation starts in a reserved file with unresolved write ownership. A fixture does not satisfy live integration or actual driving acceptance.
 
 ## Phase 1: one complete district
 
@@ -40,22 +40,31 @@ Implement separate place/profile/world-object links, opt-in claims and distinct 
 
 ## Phase 5: verified external capabilities
 
-Split this into independently accepted units: optional Goalmatic milestone sync, native booking/capacity, and provider-owned payment/refund. The existing integration owner supplies real transport/auth/contracts. The gameplay team supplies the agreed internal capability interface and mocks. Keep each feature disabled until its own gate passes; local missions remain available without it.
+Split this into independently accepted units: optional Goalmatic milestone sync, native booking/capacity, and provider-owned payment/refund. Reuse transport/auth/contracts from accessible published integration work; discover actual versioned operations through authorized source and capability reads. The gameplay team supplies the internal capability interface and mocks for unresolved dependencies. Keep each feature disabled until its own gate passes; local missions remain available without it.
 
-**Sync gate:** stable account/workspace/record mapping, explicit consent generation, minimal typed game observations, committed outbox, deduplication/reconciliation and revoke/reconnect behavior proven against the owner's approved sandbox. No invented endpoints or broad implicit scopes. External completion cannot grant a game reward by default.
+**Sync gate:** stable account/workspace/record mapping, explicit consent generation, minimal typed game observations, committed outbox, deduplication/reconciliation and revoke/reconnect behavior proven against an authorized sandbox and verified contract version. No invented endpoints or broad implicit scopes. External completion cannot grant a game reward by default.
 
 **Booking gate:** capacity/resource conflicts, timezone and daylight-saving cases, hold expiry, cancellation/no-show terms and refund obligations are tested. Only one authority can confirm a slot. A link click or mock is not a booking confirmation.
 
 **Payment gate:** a separately approved provider/environment, NGN minor-unit accounting, authenticated provider confirmation, reconciliation, refunds, incident/support ownership and legal/product review. Keep merchant NGN, simulated points and Goalmatic credits separate. Real charges/transfers require the relevant user/provider approvals; never run them as casual test probes.
 
+## Persistent goal and finite delivery batches
+
+The goal spans sessions and continues beyond the first accepted district. Work through the remaining phases and replenish the backlog from actual play, mission/simulation results, live observations and specific user goals within the living-world, real-business and Goalmatic programme. Rank reproducible failures, broken journeys, progression gaps and measurable usability/performance problems by player impact. Tie every proposed improvement to evidence and an acceptance criterion; do not invent busywork to keep a loop alive.
+
+If the runtime has a documented native persistent-goal facility, inspect its supported interface before setting the goal. Do not invent a `/goal` command or claim a scheduled/resumable runner exists. Otherwise maintain the plain-text goal and checkpoint in the branch, with an explicit resume action. A saved file preserves intent; it does not run while the agent is stopped.
+
+Choose one finite batch at a time, with a player outcome, bounded effort and release criterion. Complete its loop below, then play the released result and choose the next evidenced improvement or unmet requirement. Do not declare the programme complete because the first slice passed. If all current requirements pass and no valuable supported improvement remains, record `awaiting direction` and the evidence; if access or a safety boundary blocks a lane, record it and continue independent authorized work. User pause/stop directions end active execution.
+
 ## Required loop for every implementation unit
 
-1. Specify the player outcome, owned files/contracts and concrete pass/fail observations. Select a named baseline and authorized test environment.
+1. Play the current app and relevant missions, run appropriate simulations, and capture the observed issue or unmet planned journey. Specify the player outcome, owned files/contracts and concrete pass/fail observations. Select a named baseline and authorized test environment.
 2. Implement the smallest complete unit. Add meaningful behavioral tests requested by this programme, particularly for state/authorization/concurrency; avoid tests that merely restate the code.
 3. Run focused tests and relevant existing regressions. Exercise the real UI in an authorized browser on mobile and desktop sizes and the agreed physical device. A fixture-only pass is recorded as such.
 4. Investigate failures from evidence, repair the cause, rerun the failing cases and affected integration checks. Continue until acceptance passes or a real blocker is documented. An identical failure after one evidence-backed correction requires root-cause investigation or bounded escalation, not repeated blind retries.
 5. Have an independent reviewer inspect the diff and acceptance evidence. The implementer repairs accepted findings; the reviewer or lead rechecks the changed behavior. Review is not a substitute for tests, and a worker's summary is not acceptance.
-6. Integrate serially, resolve conflicts without discarding another owner's work, and test the integrated SHA. Record each unmet requirement explicitly. Only the release process below can change production status.
+6. Integrate serially, resolve conflicts without discarding another owner's work, and test the integrated SHA. Stage the candidate, complete the release process below, and verify the live journey and data continuity. Record unmet requirements and release status separately.
+7. Play the resulting app, review simulation/rollout evidence, update the ranked backlog and checkpoint, and start the next finite batch within standing scope. Keep precise blockers for unavailable evidence or external contracts.
 
 ## Acceptance matrix
 
@@ -92,20 +101,22 @@ Full checks are warranted for the planned storage/economy/authority changes. Val
 
 ## A production session for each accepted phase
 
-Prepare a concrete release packet: phase scope and acceptance table, repository and exact source SHA, tests/review, sealed artifact/digest, current target and bindings, data migration/continuity evidence, rollback plan, known limitations and proposed verification actions. Read current release instructions and workflows instead of copying old CLI commands or environment names.
+The implementation assignment's phased production deployment is standing authorization within this feature programme. Record its source and limits. Do not add a generic approval question before every release. Repository/environment rules and action-time tool/provider approvals still apply; this docs publication itself performs no release.
+
+Prepare a concrete release packet: finite phase/batch scope and acceptance table, repository and exact source SHA, tests/independent review, staging journey evidence, sealed artifact/digest, existing production target and bindings, data migration/continuity evidence, rollback plan, known limitations and verification actions. Read current release instructions and workflows instead of copying old CLI commands or environment names. A build or staging pass alone is not production success.
 
 Include the currently running version, flags, backup/restore evidence appropriate to the migration, and whether rollback is data-compatible or a roll-forward is required. A backup timestamp alone is not a restore proof. Define observation duration, error thresholds and the authorized recovery action before rollout.
 
-Obtain a user release-session **GO** naming the phase, artifact and environment, unless exact standing permission already covers them and is recorded. Respect any provider/tool approval required at action time. A broad implementation instruction, this docs publication, an old deployment, a changed goal or an approval for another phase does not supply release permission. Keep independent authorized preparation moving while a release gate is pending.
+Proceed through the existing release process when the candidate passes these checks and remains within recorded standing scope. Obtain the applicable explicit authorization for new secret access, new costs/provider commitments, destructive or incompatible data changes, security/auth/domain changes, or out-of-scope work. Do not overwrite user data, extract credentials, bypass provider limits or evade denied actions. Keep independent preparation moving while a specific required approval is pending.
 
-Within an authorized session, deploy only the reviewed sealed artifact through the existing pipeline. Verify live health/build ID and representative user flow after propagation, plus saved identity/balance/receipt/progress continuity. Report deployment, verification and any rollback independently. Health alone does not prove the new gameplay. A failed check triggers diagnosis and repair/reverification or the approved rollback; it does not justify resetting data, changing auth/domains, removing gates or bypassing a denial.
+Deploy only the reviewed sealed artifact through the existing pipeline. Verify live health/build ID and representative user flow after propagation, plus saved identity/balance/receipt/progress continuity. Use authorized synthetic accounts for writes and preserve real player data. Report deployment, verification and any recovery independently. Health alone does not prove the new gameplay. A failed check triggers diagnosis and repair/reverification or the preauthorized data-compatible recovery; it does not justify resetting data, changing auth/domains, removing gates or bypassing a denial.
 
-Coordinate all production workflows against one agreed environment lock; GitHub concurrency ordering is not guaranteed FIFO. Do not cancel an in-flight migration to admit a newer job. Recheck the approved SHA, artifact, current version and authorization after waiting for the lock. Material changes to scope, target, artifact, migration or risk require a new GO. Preserve tool/provider approval requirements regardless of queue state.
+Coordinate production workflows against the existing environment lock; GitHub concurrency ordering is not guaranteed FIFO. Do not cancel an in-flight migration to admit a newer job. Recheck the reviewed SHA, artifact, current version, compatibility and standing scope after waiting. Any candidate change requires updated evidence and revalidation; new authority, target, cost or destructive/security risk requires the relevant approval. Preserve tool/provider approval requirements regardless of queue state.
 
 ## Evidence record
 
-Maintain one tracker and link detailed logs/screenshots rather than duplicating them:
+Maintain one tracker and link detailed logs/screenshots rather than duplicating them. Record the persistent goal, user assignment/standing scope, runtime goal handle if one exists, ranked evidence-backed backlog and next resume action:
 
 `Unit | outcome | owner/model/effort | branch/source SHA | implementation state | test/review evidence | preview status | production status | blocker | next action`
 
-Use `proposed`, `implementing`, `verified at named level`, or `blocked` for implementation. Record production separately as `not released`, `released but verification pending`, `verified at build`, or `rolled back`. Each accepted unit records changed paths, contract versions, tested environment, elapsed time/retries where available, and unresolved risks. Token/cost data stays unknown when unavailable. Never close the programme using a subset of its acceptance requirements.
+Use `proposed`, `implementing`, `verified at named level`, or `blocked` for units; use `active`, `blocked`, `awaiting direction` or `paused by user` for the goal. Record production separately as `not released`, `released but verification pending`, `verified at build`, or `rolled back`. Each accepted unit records changed paths, contract versions, tested environment, elapsed time/retries where available, live observation results and unresolved risks. Token/cost data stays unknown when unavailable. Never close the programme using a subset of its acceptance requirements or claim unattended continuation without a real runtime facility.

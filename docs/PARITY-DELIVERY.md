@@ -34,7 +34,7 @@ Current source already has quoted replies, reactions, pictures, pin/search/group
 | Phone UI polish | Deployed at bb04c64f | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Public artwork and saved-state continuity verified |
 | App interiors and headers | Reopened; first pass deployed at cfbc133b | User reported Boutique selected-state failure and unfinished card/Family flows. APP-FLOW-AUDIT.md replaces entry-only acceptance | Complete component migrations and state/action verification across screens |
 | HUD/recovery polish and sustained mobile performance | Queued | Prior linked-chat viewport check is not physical-device proof | Measure representative current build; preserve download budgets |
-| Real-player Family roles | Local consent model, authenticated API and UI wired; not shipped | Acceptance remains unproven; resource handoff required for type/API/Worker/browser checks | Verify two-player invitation, accept/decline/unlink, retries, blocking, persistence and real calls |
+| Real-player Family roles | Deployed at a44629b3 | Node/SQLite restart probes, two-player browser flow and live synthetic consent/unlink/continuity passed | Existing call transport is reused; physical-device audio remains a separate check |
 | Housing, household/staff/family, economy and player work | Re-audit required | Historical parity inventory is stale | Reconcile current source before accepting a missing feature; deliver bounded complete loops |
 | City/travel/campus progression | Re-audit required | Prior deployed smoke recorded 40 city chunks; closed-city conclusions from old checkout are obsolete | Validate actual gameplay coverage city by city |
 | Feed/events/governance/fictional justice | Re-audit required | No new implementation claim | Compare current modules and select remaining complete loops |
@@ -91,3 +91,17 @@ The broader feature-parity roadmap remains open.
 ## App interiors release
 
 Source `cfbc133b36b5d4e8d071bb8223fbfc59e6a33289` deployed as `77d0ab82-7f21-4431-9ad9-9d6e8d60740b`. Public build confirmed at 13:45:31 UTC, 8 October 2026. See APP-INTERIORS.md for scope, real design references, comparison prototypes, all 41 regular app entries inspected, and validation. The shared system and headers apply across apps; Jobs, Messages, Bank, Games, Rich List, Neighbours and charts received specific layout/interaction changes. This release does not claim voice-note delivery or completion of the broad feature-parity roadmap.
+
+## Family and build-fix release — 8 October 2026
+
+Exact source `a44629b38be751a9ad446051564704f6c3c6ae1b` deployed as Cloudflare version `64ed8462-6c2b-4c42-8d19-266bc93708e5`, 100% traffic at 20:20:18 UTC. Public health adopted `joinallworld-a44629b38be751a9ad446051564` at 20:23:55 UTC. CI passed: https://github.com/kromate/joinallworld/actions/runs/37837874488.
+
+The build fix registered both Family routes in the exhaustive protocol list, corrected the optional input-error prop, and removed unnecessary JavaScript stylesheet loaders. The fail-closed compiler completed all five projects serially with a 3072 MiB heap after the 1536 MiB cap aborted two projects; no baseline or download cap was relaxed. Family adds consent-based real-player roles, invitation expiry and limits, unlink/restore, block/deletion cleanup and real message/call controls. Accepted real roles cannot earn rewards through simulated NPC calls.
+
+Verification: 15 smoke checks, 17 package guards, 5 focused Worker checks and 65 existing social/receipt/client/model checks passed. Separate Node and SQLite probes exercised auth, consent, duplicate requests, restart persistence, stale replies, unlinking, blocking and balance preservation. Browser QA used two disposable characters and verified recipient notifications, live acceptance, message delivery and NPC restoration. Final 320px layout had no card/body overflow and correct picker focus.
+
+The sealed package has 6,112 files, 100,298,010 bytes and largest file 4,515,249 bytes, within unchanged archive caps. Digest: `6b118baa0bd4115a86b238717170d65cedf8a1fa33ca546120e8ac6eaf5b86ed`. Worker startup: 170 ms. Startup JavaScript: 614,960 raw / 222,903 gzip; startup Brotli 195,228; first paint Brotli 35,697, all within unchanged limits.
+
+The existing `joinallworld-next` / `JOINALLWORLD` SQLite binding and `joinallworld-sqlite-v1` migration were retained. No save reset, migration replacement, provider-secret change or new database was performed. Before/after checks preserved the same two existing synthetic public identities, balances and duplicate-action receipts. The production Family consent/unlink/retry probe passed and cleaned up its links. After adoption, public smoke passed 9 checks / 281 requests / 40 cities in 54.9 seconds. Live Chrome loaded the existing user character and Family screen without console errors.
+
+Public Family JavaScript, loading backdrop and OG image returned 200 with exact source hashes. The broader app-flow audit, voice-note stash and reliability B roadmap remain open. This phase does not claim physical-phone thermal performance or a newly verified microphone/audio-device path. All owned QA servers, temporary tabs and resource leases were stopped.

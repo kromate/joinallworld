@@ -1,5 +1,12 @@
 # Independent world-data builder
 
+The compact feature-index engine now passes 22 guarded fixtures, ten writer-lock
+checks, World TypeScript and cached Dakar replay. It retains every original ordinal
+and conflicting body version. The same-data layout measurement reduced database
+bytes from 4,038,656 to 2,908,160. [FEATURE-INDEX-STORE-SPEC.md](FEATURE-INDEX-STORE-SPEC.md)
+records the focused evidence and remaining durable opener, aggregate quota,
+abrupt-crash, campaign-hook and independent raw-audit gates. No gameplay changed.
+
 The resource/recovery phase now passes12 focused cases, a guarded cached overlap
 profile and a19MB synthetic Feature. Kernel file/CPU and process wall/RSS/output
 checks preserve committed disposable SQL state. Actual Node SQLite native heap

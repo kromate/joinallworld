@@ -22,7 +22,7 @@ Next: consistent canonical body/LOD integration for Home/venue/neighbourhood cro
 
 Original distribution1a329026:84,369,438 raw/11,639,126 gzip/9,148,382 BrotliQ11 bytes. Latest WORLD combined dist95,770,605raw (+11,401,167 original), startup614,996raw/222,925gzip; compression/journey comparison not complete and baseline not reset. Include all country/app-art adoption. Lazy loading does not erase downloaded bytes.
 
-WORLD's prior upload ownership is historical; APP UI owns current verification and release under the newer human resume. Shared local one-intensive-owner rule spans heavy/server/browser/acquisition/generation, heap1536MiB, one slot each, minifier1, explicit terminal handoffs and selective owned cleanup. WORLD now owns the queued compiler/CI/sealed-release gate; GRAPHICS is source/docs-only. No renderer upload or whole-game/mobile completion claim.
+WORLD's prior upload ownership is historical; APP UI owns current verification and release under the newer human resume. Shared local one-intensive-owner rule spans heavy/server/browser/acquisition/generation, heap1536MiB, one slot each, minifier1, explicit terminal handoffs and selective owned cleanup. That earlier WORLD compiler/CI/sealed-release turn has ended; APP UI owns the current verification and release gate. GRAPHICS is source/docs-only. No renderer upload or whole-game/mobile completion claim.
 
 
 ## Latest bounded phase: actual aperture and canonical Home guests
@@ -49,3 +49,10 @@ LIVING exclusively owns additive StandIn exit-floor destination API/tests and dr
 APP UI remains sole intensive/release owner. GRAPHICS has no heavy/server/browser sessions or owned temporary tabs; all existing source audits terminal, no new fanout. APP UI owns current verification AND release; WORLD's preceding uploader turn is historical. Next GRAPHICS execution requires explicit resource handoff, not free locks. Whole goal active/incomplete.
 
 Source continuation: guarded primary Family maina44629b3 sync preserved all71 local source hashes. Hidden venue preparation was found to mutate the shared glow; local candidate restores the active look in finally without drawing, and its real-host regression checks the material reference/current+one-prepared invariant. This remains unexecuted. APP UI durable-host contact failed; no reply/ownership transfer claimed. Fresh main WORLD/APP rows retained while resolving only the GRAPHICS coordination row.
+
+
+## Exact remote CI and bounded controller source review
+
+[CI37838709506](https://github.com/kromate/joinallworld/actions/runs/37838709506) completed success on exact **e59f5e8e0ede5f99786f7d00f03df0a0b96ea56e**: release-policy, typecheck-fast and build-and-smoke-fast pass; full skipped. This is the vehicle branch plus Family maina446, preserving tested model7db039a0/testd4e2aa76. It excludes primary local Home/night/glow/shadow/prepare changes and certifies no new lighting tests or whole-game/mobile acceptance. No graphics upload.
+
+Root source-reviewed LIVING **50502578923ab457e95cafb448a2c23069fe6809** StandIn API/test/caller against existing SkinnedBody place/sitOn semantics. The separate exterior floor destination repairs the stale standing target and preserves ordinary seated placement; no blocking source issue found for this bounded proposal. No adoption or runtime execution by GRAPHICS. Pending-load, reduced-motion/repeated entry-exit, general venue behavior and actual body/roof/door clearance remain required. The 0.6 m staging distance is provisional. LIVING reports its separate full CI failed in the attribution script; that failure is not covered by graphics CI and does not transfer APP UI ownership.

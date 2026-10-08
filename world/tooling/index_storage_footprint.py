@@ -12,7 +12,7 @@ from index_writer_lock import IndexWriterLease
 MIB = 1024 * 1024
 DATABASE_FILES = frozenset({"features.sqlite", "features.sqlite-wal", "features.sqlite-shm",
                             "bootstrap.sqlite", "bootstrap.sqlite-wal", "bootstrap.sqlite-shm"})
-METADATA_FILES = frozenset({"binding.json", "reservation.json", "bootstrap.json"})
+METADATA_FILES = frozenset({"binding.json", "binding.pending", "reservation.json", "bootstrap.json"})
 KNOWN_FILES = DATABASE_FILES | METADATA_FILES | {"writer.lock", "audit.json"}
 
 

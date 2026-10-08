@@ -1,5 +1,13 @@
 # Independent world-data builder
 
+Charged directory/binding publication now passes **71 isolated Python checks**,
+including three actual abrupt binding-worker exits and recovery without a second
+storage charge. It reserves before allocation and refuses foreign/unreserved state;
+actual registry opening, source verification and atomic database bootstrap remain next.
+Read-only22-input tooling verification also passes; older20-file receipts below apply to73.
+New browser/agent concurrency is authorized with memory monitoring; heavy checks
+remain capped and defer while the monitor reports warning/critical pressure.
+
 Tooling pins, immutable binding, worker boundary, footprint and charge primitives
 now pass **94 focused checks plus World TypeScript**, including exact committed
 source73e090c9 release-policy checks. Cached Dakar replay preserves
@@ -29,7 +37,7 @@ Strict capture/source reconstruction now passes53 focused checks and World TypeS
 
 [The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Its capture composition and cached positive profiling are accepted above; durable index/campaign-hook/audit are the next gates. No country building coverage is claimed.
 
-Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; local intensive work stays serialized through explicit terminal handoffs in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
+Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; heavy work uses one shared slot, with monitored bounded browser/agent concurrency in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.
 

@@ -23,6 +23,8 @@ FILES = tuple(sorted([
     "world/tooling/index_resource_limits.py", "world/tooling/index_writer_lock.py",
     "world/tooling/index_storage_footprint.py", "world/tooling/index_reservations.py",
     "world/tooling/index_binding.py", "world/tooling/index_tooling.py",
+    "world/tooling/index_root.py",
+    "world/tooling/index_binding_publish.py",
     "world/tooling/index_lease_witness.ts",
 ]))
 

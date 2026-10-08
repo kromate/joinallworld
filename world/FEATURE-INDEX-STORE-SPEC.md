@@ -1,5 +1,12 @@
 # Compact feature-index engine — focused acceptance
 
+Charged-directory/binding publication passes **71 focused Python checks**, including
+11 root/9 publication cases and actual abrupt binding-worker exits at three boundaries.
+Read-only22-input tooling verification passes. This does not initialize the actual
+registry/engine or certify engine crash recovery. Older94-check acceptance below
+applies to73e090c9. Concurrent browsers/bounded agents are human-authorized;
+warning/critical memory defers new expensive work, with small measured serial checks.
+
 Latest continuation: the supervisor process/disposal split, inherited Node descriptor
 witness, tooling pins, binding, footprint and charge helpers now pass45 new fixtures,
 12 old resource/10 lease/22 engine cases and World TypeScript: **89 focused checks**.
@@ -110,6 +117,80 @@ remains a required promotion gate. Schema recognition/counts are not a corruptio
 or physical-device performance certificate.
 
 ## Resources and unresolved integration
+
+### Focused charge-before-create directory admission
+
+`tooling/index_root.py` prepares a context receiving the actual namespace lease,
+its existing IndexReservations connection and strict canonical binding bytes. The
+connection must name private reservations.sqlite with no attached/unexpected temporary
+state and retain actual WAL/FULL/page settings. A per-file kernel soft limit≤4MiB
+must already be applied; this helper does not alter process limits or initialize
+the registry. CPU/wall/RSS/native supervision remains caller-owned and mandatory.
+
+Bounded entry scans reject unknown/unreserved paths, linked/nonprivate registry
+files, contradictory charge/binding amounts and registry overhead beyond17MiB.
+Existing charged directories require their exact binding before data is accepted;
+an empty root/permanent lock alone may be an interrupted allocation. Every existing
+root is inventoried under its nonblocking writer lease and declared allowance.
+A live inherited child writer blocks new admission before its reservation write.
+This is cooperating local filesystem exclusion, not proof against a forged lease
+object or an uncooperative same-user filesystem writer.
+
+The new reservation must commit and strictly checkpoint before the SHA-named0700
+child is allocated/fsynced. Allocation failure preserves the charge; exact replay
+can create the missing root without charging twice. Per-index lease/inode and
+terminal footprint are checked before yielding and on normal scope exit. No binding,
+database, source snapshot, output or worker is created; new roots contain only their
+permanent lock. Incomplete/contradictory existing data is preserved, never adopted,
+deleted or repaired. The caller must actually wait for any inherited worker to be
+terminal before scope exit; the shared lease descriptor alone does not prove a
+writer gap. Namespace/root locks are not the shared agent memory slot.
+
+Eleven disposable fixtures cover ordering/replay/failure, unknown files, symlinks,
+changed binding, missing native cap, binding/amount mismatch, existing footprint
+overflow and an actual busy child lease. **All11 pass.** Registry canonical bootstrap,
+source/tool admission, stable execution tree, atomic binding/database initialization,
+physical worst-case quotas and engine/controller crash/ledger/raw audit gates remain.
+The tool manifest's fixed input list includes these new helpers (now22); old20-input
+accepted manifests are not silently normalized into this new local declaration.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_root.py -v
+```
+
+### Focused atomic binding publication
+
+`tooling/index_binding_publish.py` receives the actual ChargedIndexRoot and checks
+canonical binding/hash/amount against the private SHA-named root/lease. Only fixed
+binding.pending/binding.json are accessed. An owned600 single-link staged file with
+0–4096bytes may resume only if its bytes are the exact expected prefix, with no final
+or other data files present. A nonprefix, linked/unsafe file or mixed staging/data
+state is preserved and refused. The helper appends only missing expected bytes,
+fsyncs/verifies the complete file, checks target absence while the exclusive lease
+is held, renames and fsyncs the directory. This is atomic publication for cooperating
+writers in a private local directory, not an adversarial no-clobber syscall promise.
+
+Exact final replay flushes file/directory without rewriting its inode/bytes. Failure
+before rename retains the staged prefix; failure after rename retains the final file
+for exact replay. It never truncates or deletes a contradictory file. Root admission
+recognizes the narrowly defined staging prefix and rechecks binding on normal scope
+exit. The file inventory now bounds binding.pending to4KiB but does not parse or
+authenticate it; semantic recovery belongs to the binding barrier, before SQL/data.
+
+Nine fixtures cover new/replayed publication, empty/partial prefixes,
+contradictions, rename failure/retry, changed final bytes, root mismatch and symlink
+targets, replaced replay descriptors and three actual abrupt worker exits. **All9 pass.**
+The abrupt fixture worker inherits the actual root lease, exits77/78/79 after17
+prefix bytes, before rename after file fsync, or after rename before directory fsync.
+Its terminal status precedes reopened root/publication, conserving one charge and
+the original file inode. This is binding process-exit recovery, not power-loss or
+Node SQLite engine/controller crash acceptance. Publication itself does not verify actual source/tool pins,
+initialize SQLite, launch workers or complete a campaign job. Database bootstrap,
+stable source/runtime admission and same-version crash/ledger/raw audit remain next.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_binding_publish.py -v
+```
 
 ### Focused fixed tooling input verification
 

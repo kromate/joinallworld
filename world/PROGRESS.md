@@ -1,5 +1,93 @@
 # Implementation checkpoint — 9 October 2026
 
+## Charged root and binding publication — focused acceptance
+
+The previous status-report turn was **no progress**: it inspected state but made
+no implementation change. This continuation revalidated memory WARNING and took
+the next safe action: small serial isolated checks through the shared heavy slot,
+with Node wrapper heap128MiB and no build, acquisition, new browser or server.
+
+**71 Python checks pass**, terminal session85295 exit0, 0.923s unittest/1.14s process,
+maximum Python RSS34,570,240bytes. They comprise11 root,9 publication,7 tooling,
+9 binding,17 reservation,10 lease and8 footprint cases. The initial system-Python
+run failed two older hardlink fixtures because its pathlib lacks hardlink_to;
+the canonical pinned Python3.12.14/SQLite3.53.1 passes all71. This is not a compiler,
+engine crash, full release policy or runtime deployment check.
+
+Publication now ties the descriptor being written/flushed to the actual named
+inode, including exact replay. A fixture replaces the open replay inode and
+requires refusal while preserving the new named file. An actual fixed Python
+worker inherits the root lease and abruptly exits at three boundaries: after17
+prefix bytes, after complete file fsync before rename, and immediately after rename
+before directory fsync. Each worker is confirmed terminal (77/78/79), then exact
+root reopen/publication keeps one reservation, original file inode and complete
+expected bytes. These are process-exit binding recovery checks, not power-loss or
+Node SQLite engine/controller recovery acceptance.
+
+Actual read-only22-file tooling verification passes:215,212source bytes, manifest
+2,714bytes/SHA3204b9e9998c52ace75a89e0cffcd9e3fd47803b928f2837ab2b9bab470a3c91.
+Receipts under `.cache/world-build/evidence/`:
+`feature-index-root-tooling-manifest-v1.json` and
+`feature-index-root-source-acceptance-v1.json`. The latter records actual tooling
+pins, runtime versions, new fixture hashes and observed terminal test results.
+No real binding/registry/reservation/source/campaign output was created.
+
+Fetched main and fast-forwarded0e9fb859→29b53558; all three incoming commits changed
+only docs/AGENT-COORDINATION.md, preserving these local sources and primary checkout.
+Heavy compiler/build work remains deferred while pressure is WARNING. The small
+fixture process was measured, terminal and released its slot; no expensive handle
+remains owned by WORLD. Next: canonical registry initialization/supervision, actual
+source/runtime admission and atomic engine bootstrap, then fenced campaign hookup.
+
+### Retained preparation notes (superseded by focused acceptance above)
+
+Previous goal turn was implementation progress: charged directory admission and11
+fixtures were prepared and documented. Published source73e090c9/94 focused checks
+remain the last accepted phase; newer local source has not run.
+
+New `tooling/index_root.py` couples canonical binding/amount to an already initialized,
+caller-supervised private registry and actual namespace lease. It requires the kernel
+per-file cap already applied, recognizes the registry connection/path/settings,
+checks bounded namespace entries/registry overhead, refuses unknown/unreserved state,
+and inventories existing charged roots under nonblocking child leases. A live inherited
+writer blocks another allocation before its charge. Reservation commit/checkpoint
+precedes mkdir/fsync; failed allocation retains its charge for exact replay. Child
+roots are SHA-named/private and unbound data or changed binding bytes remain preserved.
+Only a permanent writer lock is created inside a new root; no database/binding/source
+file or worker is created. Normal scope exit checks the child footprint again.
+
+New `index_binding_publish.py` adds a first binding barrier under the actual charged
+root lease: bounded exact-prefix binding.pending may resume before any data/final
+file exists; complete bytes are fsynced then renamed to binding.json and the directory
+fsynced. Final exact replay flushes without rewriting. Unknown/contradictory staging,
+final bytes, links or root mismatches are preserved and refused. Atomic rename assumes
+cooperating writers respect the private lease. No database/worker is initialized.
+Root admission now recognizes this staging state and rechecks binding on normal exit;
+footprint adds the fixed4KiB staging name without parsing/admitting its content.
+
+The initial18 fixtures=11 root+7 publication were prepared without execution. They use synthetic
+namespaces and explicitly restore only their own process's temporary soft file limit;
+they never touch the real builder. The tooling input list is extended20→22 for these
+helpers and is locally unaccepted; measured20-file receipts below apply to73.
+No source manifest, binding, registry or reservation was regenerated. This is not
+the complete opener: registry initialization/process supervision, actual source/tool
+verification, stable execution snapshot, atomic binding/database bootstrap, measured
+space pressure and same-version crash/ledger/raw conservation remain required.
+
+Latest direct human instruction in GRAPHICS userMessage01a11ddb-9005-7490-bedc-0a99d46302f8
+authorizes concurrent browser tabs and bounded agents with memory monitoring, replacing
+the older all-browser serial rule. Root independently read that actual message. Keep
+heavy1/heap1536/minifier1, file ownership and sole WORLD upload; browser/server caps2
+are the current bounded practice. Luna monitor01a11ddc-3607-7ba1-b778-9878f6a9646b has
+the five-minute heartbeat. Latest23:35:12UTC snapshot is pressure mask2 WARNING,
+33% reported free and swap9,820.5MB used; memory percentages/swap alone are not pressure
+proof. WORLD has no expensive handle and defers new ones while WARNING persists.
+
+These pending fixture checks have now passed as expanded71-case acceptance above;
+next implement bootstrap/worker integration. Existing engine/guard code did not change, so its94
+accepted focused receipts remain historical evidence for73, not acceptance of these
+new sources. Nigeria/game/source/campaign state and production remain unchanged.
+
 ## Index source primitives — focused acceptance
 
 Previous goal turn was implementation progress: bounded fixed tool-file verification

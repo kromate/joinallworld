@@ -6,6 +6,25 @@
  */
 .atlas{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 95% at 50% 30%,#dff3f9 0,#b4dcec 52%,#86c0dc 100%);font-family:var(--font,system-ui,sans-serif);color:var(--c-ink,#1b1f27);-webkit-user-select:none;user-select:none}
 .atlas *{box-sizing:border-box}
+.atlas-country-panel{position:absolute;z-index:12;top:82px;right:18px;width:min(430px,calc(100% - 36px));max-height:calc(100% - 164px);overflow:auto;display:grid;align-content:start;gap:10px;padding:16px;background:var(--c-surface-solid,#fff);border:1px solid #fff;border-radius:22px;box-shadow:0 12px 38px #152b2c38;overscroll-behavior:contain;user-select:text;-webkit-user-select:text}
+.atlas-country-panel[hidden]{display:none}
+.atlas-country-panel header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}
+.atlas-country-panel h2{margin:0;font-size:var(--t-heading,20px);line-height:1.15}
+.atlas-country-panel header p,.atlas-country-note,.atlas-country-source,.atlas-country-figure figcaption{margin:4px 0 0;font-size:var(--t-caption,12px);line-height:1.45;color:var(--c-muted,#5f6770)}
+.atlas-country-panel a{color:var(--c-green-dark,#1d6b43);font-weight:650}
+.atlas-country-label{font-size:var(--t-caption,12px);font-weight:700}
+.atlas-country-panel select{width:100%;min-height:46px;padding:8px 38px 8px 12px;border:1px solid var(--c-line,#dce2dc);border-radius:12px;background:var(--c-surface-solid,#fff);font:inherit;color:var(--c-ink,#1b1f27)}
+.atlas-country-status{min-height:18px;margin:0;font-size:var(--t-caption,12px);line-height:1.45;color:var(--c-muted,#5f6770)}
+.atlas-country-note{margin:0}
+.atlas-country-source{margin:0;padding-top:8px;border-top:1px solid var(--c-line,#dce2dc)}
+.atlas-country-figure{margin:0;padding:8px;border-radius:14px;background:#edf6f5}
+.atlas .atlas-country-figure svg{display:block;width:100%;height:auto;max-height:260px}
+.atlas-country-figure path{fill:#72a99b;stroke:#315d58;stroke-width:.8;vector-effect:non-scaling-stroke}
+.atlas-country-figure figcaption{margin:4px 2px 0}
+.atlas-country-limitations{margin:0;padding-left:20px;font-size:var(--t-caption,12px);line-height:1.45;color:var(--c-muted,#5f6770)}
+.atlas-countries{display:flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid #fff;border-radius:999px;background:var(--c-surface,#fffffff7);box-shadow:var(--e-2);font-size:var(--t-body,13px);font-weight:700;white-space:nowrap}
+.atlas-countries[aria-expanded="true"]{background:var(--c-green-soft,#e8f5ec);color:var(--c-green-dark,#1d6b43)}
+.atlas-country-cta{justify-self:start;min-height:44px}
 .atlas-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .5s ease-out}
 .atlas.is-over .atlas-canvas{cursor:pointer}
 .atlas.is-dragging .atlas-canvas{cursor:grabbing}
@@ -163,6 +182,9 @@
   .atlas-crumbs .atlas-back{padding:0 10px;font-size:var(--t-caption,12px)}
   .atlas-crumbs .atlas-back span,.atlas-list-toggle span{display:none}
   .atlas-list-toggle{width:44px;padding:0;justify-content:center}
+  .atlas-countries{min-height:44px;padding:0 12px;font-size:12px}
+  .atlas-country-panel{top:auto;right:8px;bottom:8px;left:8px;width:auto;max-height:min(76dvh,680px);padding:14px;border-radius:20px}
+  .atlas-country-figure svg{max-height:220px}
   .atlas-rail{grid-column:1;width:100%;max-height:min(100%,calc(62 * var(--ui-vh)));background:var(--c-surface-solid,#fff)}
   .atlas-sheet{grid-column:1;grid-row:2;align-self:end;max-height:min(100%,calc(64 * var(--ui-vh)));padding:12px;gap:8px;border-radius:22px;z-index:4}
   .atlas-sheet h2{font-size:var(--t-title,17px)}

@@ -1,0 +1,23 @@
+# Country outlines in the production game
+
+This phase adds the Countries chooser to the existing World/Africa map. Its 258 source units include 257 verified geographic outlines and protected Nigeria, which follows the existing Nigerian map. It does not open travel or make new countries playable. The next geographic phases will add administrative and settlement detail, then streamed buildings/roads and regional conditions.
+
+## Reproduction and provenance
+
+Run `node --experimental-strip-types world/game-map-bundle-cli.ts check` for a read-only verification of the pinned cached source/directory and deterministic bundle bytes. The `build` subcommand publishes the immutable `.txt` files in `public/world-country-detail/` and generated browser pins; it does not touch the game database. Inputs are frozen in inventory-10m-sources.json/country-capture.json; source SHA239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255, original source13,287,234bytes, directory b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501, atlas file55f1c27403e3ebc639fd685b911b9e89c6c033f3e8e5202dd043ef7ae0c3b1f2. Original directory assets are wrapped byte-for-byte; no holes or coordinates are discarded.
+
+The actual build emits258 public files: catalogue202,168bytes plus257 bundles17,081,130bytes, total17,283,298bytes. CatalogueSHA3ea655c132699dbb81388dc9ed2ad2fc5cfd64127755a54acb64e34f3c6304fd. Independent Python reconstruction verifies every bundle against the original source, including546,699positions and12,602,976original asset bytes. It conserves the236 atlas two-letter IDs (232matched/4ambiguous) and all258 source units. Ambiguous/absent joins are disclosed; no name-based guessing or atlas highlight is introduced.
+
+`src/map3d/geo/country-detail-assets.test.ts` tests all257 actual shipped assets through the real adapter and bounded display, with zero startup fetch and no Nigeria bundle. Focused tests also cover exact hashes/path rejection, stale/cancelled requests, retries, compressed responses and the5MB/four-entry verified-byte LRU. User action opens the catalogue; Show outline loads only the selected country. Offline uncached requests report failure and permit retry; successful in-memory bundles can be reused while the panel service lives. There is no persistent offline-cache guarantee.
+
+## Game acceptance
+
+Actual local game uses a separate synthetic database, never the primary or production player data. At390×844 the catalogue has258 choices plus a placeholder and no horizontal overflow. Senegal, Fiji and Antarctica load; the outline frame stays bounded, north-up and dateline-aware. Nigeria delegates to its existing map; returning to Lagos opens its existing city map and preserves the synthetic₦5,000 balance. Actual browser testing caught and repaired an overlong global limitation list and a CSS rule that reduced the SVG to18px. The source remains intact; the UI receives shared limitations plus selected-country exceptions. No browser warning/error appeared in the measured journey. Phone viewport testing does not certify physical-phone performance.
+
+## Production release gates
+
+The user cancelled preview uploads and authorized verified direct-production phases on8October2026. WORLD owns the sole current upload slot; docs/AGENT-COORDINATION.md is the shared cross-computer record. Synchronize fresh main without resetting the dirty primary checkout. Complete canonical TypeScript, affected/full core and edge checks, frozen production build/download checks, source-main ancestry, sealed package/config and archive bounds, then capture fresh synthetic continuity through the existing private helper. Preserve joinallworld-next, JOINALLWORLD SQLite namespace/migration and provider secrets. No new external API, CSP origin, data schema or paid job is needed.
+
+The unchanged package caps are5MiB/file,6,500 archive members and100MiB aggregate. Standalone bundle sizing is not a final package pass. Record exact source SHA, package digest, measured counts/bytes and provider version before reporting a successful release; verify actual public health adoption and same synthetic balance/action receipt afterwards. Production upload, runtime continuity, built-game browser QA and actual package bounds remain pending at this source checkpoint. Follow deploy/README.md; never deploy a dirty ordinary source configuration.
+
+Next phases remain distinct: Nigeria rendering reconciliation and normal-game regression; source-bound administrative detail; deterministic shared feature ownership/dependencies; streamed settlement/building/road products; regional climate; bounded unattended compilation/recovery. Whole-world 3D/playability, photorealism, cadastral houses and48-hour completion are not claimed.

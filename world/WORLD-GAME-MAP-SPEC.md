@@ -1,0 +1,35 @@
+# World map country detail
+
+**Status:** the country-detail catalogue, 257 immutable outline bundles, browser adapter, and atlas panel are implemented and locally verified. The user cancelled preview deployment and authorized verified direct-to-production work. The release owner still owns final package/seal verification and any production release; this document does not say a deployment has happened.
+
+## Existing map and data scope
+
+`src/world-map.ts` hosts `createAtlas` from `src/map3d/geo/atlas.ts`, mounted by `src/app/scene/MapWorld.vue`. The atlas retains its World, Africa, and Nigeria levels and the existing city entry paths. Country detail is an additive view-only panel. It does not change `src/map3d/regions.ts`, travel, city loading, or playable status.
+
+The checked-in atlas is Natural Earth 1:50m. `src/map3d/geo/data/world.ts` contains 241 features, including 236 two-letter IDs, and is pinned by SHA-256 `55f1c27403e3ebc639fd685b911b9e89c6c033f3e8e5202dd043ef7ae0c3b1f2`. Five other IDs (`atc`, `cyn`, `ioa`, `kas`, `sol`) remain in the overview and are outside the country crosswalk. The 10m directory has 258 country units, 257 outlines, and one protected Nigeria unit without an outline. Its source pin is recorded in `world/inventory-10m-sources.json`; capture metadata is in `world/country-capture.json`.
+
+The crosswalk uses only a validated two-letter `ISO_A2_EH` value matched to an exact atlas feature ID. It has 232 unique matches, four ambiguous source codes (`au`, `br`, `fr`, `kz`), 13 source rows with `ISO_A2_EH: "-99"`, and three valid source codes (`gi`, `um`, `va`) absent from the atlas. These cases stay explicit: there are no name-based joins, overrides, or guessed highlights. The country chooser includes all 258 directory rows, is alphabetically ordered, and is not searchable.
+
+## Published data format and measured build
+
+The Vite `public/world-country-detail/` directory contains same-origin `.txt` catalogue and bundle assets. Vite copies them to `dist/`; the production packager serves them under `/world-country-detail/` through the existing asset route. The browser uses the generated catalogue pin in `src/map3d/geo/country-detail-pins.generated.ts`; it verifies catalogue and bundle hashes before validating the embedded directory data or displaying geometry. Requests are bounded, same-origin, cancellable, and cached in a bounded LRU. No bundle is added to the startup JavaScript chunk.
+
+The catalogue is canonical UTF-8 JSON plus one LF, capped at 256,000 bytes. It binds the checked-in atlas, source pin, directory manifest, complete 258-row directory denominator, and 236-row crosswalk. The embedded directory manifest hash is over canonical manifest JSON without a trailing LF, matching the existing directory publisher. Each bundle is canonical UTF-8 JSON plus one LF, capped at 5 MiB. It contains the exact original country node/index/outline-part bytes, base64-encoded and individually hash-bound; geometry is neither clipped nor simplified in the published asset. Per-source-asset, per-country decoded-byte, path, and part-count limits are enforced by the wire validator.
+
+The verified local build emitted 257 bundles plus a 202,168-byte catalogue: 17,283,298 logical bytes total, with a largest bundle of 2,102,124 bytes and 12,602,976 original source-asset bytes. The directory source has 789 files; packaging the country rows as individual files would exceed the existing package-entry allowance. The largest original part is 511,456 bytes, within the existing 512,000-byte read limit. The existing package guard allows `.txt` assets, limits an individual file to 5 MiB, and caps archives at 6,500 entries and 100 MiB. These local measurements fit the data-set limits; final sealed-package size, archive-entry count, and release verification remain pending with the release owner.
+
+## User-visible behavior
+
+The atlas has a global **Countries** control that opens the country-outline panel. The panel displays the alphabetic country chooser, source label and source link, and the boundary note. Choosing a mapped country shows a **Show outline** action; loading is explicit and only the selected bundle is requested. The displayed outline includes its attribution, source-position count, and applicable limitations. If display simplification is needed, the caption identifies it. The panel does not claim to highlight a corresponding atlas feature.
+
+Rows without an available outline remain in the chooser and show that no outline is available. Nigeria is marked protected and continues through the existing Nigeria map path; the country-detail service does not fetch a Nigeria bundle. `mapped` means only that a bounded, verified geographic reference is available. It does not mean the country is open, travel-ready, city-complete, or playable. Boundaries are display references, not legal boundaries, cadastral data, or a current administrative registry. Existing “coming soon” and travel states remain unchanged.
+
+The panel exposes the catalogue source label/link and boundary note, plus the selected outline's attribution and limitations. Internal source hashes, release identifiers, directory references, and bundle hashes are verified by the client but are not all presented as visible panel text. A missing or invalid catalogue/bundle produces an error state rather than unverified geometry.
+
+Nigeria's established map and fetch path is preserved. Selecting country detail cannot invoke city or travel callbacks or change region-entry status. The original source geometry remains hash-verified and unchanged; only the rendered display copy may be reduced to the UI's 30,000-position ceiling.
+
+## Verification and release boundary
+
+The contract and bundle builder validate the complete source/atlas crosswalk, exact asset bytes and hashes, fixed relative paths, Nigeria exclusion, and package bounds. The atlas adapter uses browser-safe validators and Web Crypto, with no preview panel, Node filesystem reader, or Node crypto in the game bundle. Production assets are same-origin under the existing asset route; no new origin, API, credential, paid service, or durable-object schema is required.
+
+Local source verification, generated assets, UI integration, and browser checks are complete. Final production package and seal checks are still root-owned and pending. They must verify the actual package entry count and bytes, existing package/archive guards, immutable asset hashes, and release configuration before release. A source, atlas, crosswalk, validator, or bundle-format change requires new content hashes and renewed verification. No gameplay-status change is implied by this data release.

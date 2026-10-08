@@ -62,3 +62,9 @@ Generated originals (not copied brand artwork):
 - ~/.codex/generated_images/01a11ae0-eea5-79e1-ae16-bc36056fbf4e/exec-a790387e-fa25-4893-9d78-c07d8ceafb01.png
 
 Existing source-shape tests have known mismatches with this requested redesign: phone.test.ts expects hidden mode names in one row; panelsA.test.ts expects the old Jobs copy and ui-button Boutique class; seo.test.ts expects an SVG favicon, the old PNG metadata and outdated nine-city wording. No tests were modified, following the standing preference. The initial PNG-size failure was resolved by using a separate 157KB JPEG; the legacy PNG remains within its existing size guard. Do not report the full historical suite green.
+
+### Loading backdrop correction
+
+User rejected the plain loading background. Replaced it with a warm yellow canvas and original 3D characters, danfo, house, palm, die and colourful doodles. Decorative art is static, placed at the top and bottom, with central copy kept clear. Alpha WebP avoids a visible rectangular background edge on desktop; sizing adapts to short/narrow screens. The illustration stylesheet loads after first paint. No extra renderer or animation library. Final composite and integrated budget verification recorded before publishing the candidate.
+
+Final loader overlay: public/icons/loading-neighbours.webp, 42,758 bytes, transparent 640px artwork derived from exec-3e137447-4288-45d7-aaaa-6676c05fefa5.png. Mobile 390x844 and desktop 1280x800 reviewed, including forced chunk-failure/retry layout; reduced-motion behavior verified in the earlier compiled flow. Integrated main build passes check:fast (15 smoke cases); startup 614,996 raw / 222,907 gzip / 194,997 Brotli. Decorative image bytes are additional on-demand media, explicitly outside the JavaScript budget. No production upload started: WORLD retains the coordinated release ownership.

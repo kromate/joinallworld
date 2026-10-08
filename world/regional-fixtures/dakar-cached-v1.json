@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "dakar-cached-fanout-v1",
+  "inventoryHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+  "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321243",
+  "parentPlan": {
+    "region": {
+      "id": "sn-dakar-urban-sample",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar Natural Earth populated-place sample cell",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076,
+        14.715777999999998,
+        -17.473076000000002,
+        14.719778
+      ]
+    },
+    "source": {
+      "attribution": "\u00a9 Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; \u00a9 Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/",
+      "bytes": 163385,
+      "id": "overture-2026-09-23.1-buildings-roads",
+      "license": "ODbL-1.0",
+      "release": "2026-09-23.1",
+      "sha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+      "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json"
+    },
+    "input": {
+      "path": ".cache/world-build/acquisitions/9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe/extract.geojson",
+      "sha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+      "bytes": 163385
+    },
+    "rawExtraction": {
+      "url": "overture:2026-09-23.1/9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe",
+      "fetched": "2026-10-08T11:43:24.918Z",
+      "sha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+      "bytes": 163385
+    }
+  },
+  "parentAcquisition": {
+    "requestHash": "9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe",
+    "receipt": {
+      "path": ".cache/world-build/acquisitions/9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe/receipt.json",
+      "sha256": "e4bbc005e5399ee5d91e63ef4a9ef718fed5033fef628969d3e7637acd221963",
+      "bytes": 2973
+    }
+  },
+  "children": [
+    {
+      "id": "sn-dakar-cached-cell-0-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar cached child cell 0,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076,
+        14.715777999999998,
+        -17.475076,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-cached-cell-1-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar cached child cell 1,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.715777999999998,
+        -17.473076000000002,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-cached-cell-0-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar cached child cell 0,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076,
+        14.717778,
+        -17.475076,
+        14.719778
+      ]
+    },
+    {
+      "id": "sn-dakar-cached-cell-1-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar cached child cell 1,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.717778,
+        -17.473076000000002,
+        14.719778
+      ]
+    }
+  ],
+  "limits": {
+    "inputBytes": 10000000,
+    "features": 5000,
+    "coordinates": 200000,
+    "children": 64,
+    "outputBytes": 30000000
+  }
+}

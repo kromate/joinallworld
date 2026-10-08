@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-local-climate-attachment",
+  "parentCheckpoint": "ef1b34b7",
+  "product": "city-associated-monthly-climate-v1",
+  "policy": "explicit-pinned-city-association-v1",
+  "pins": {
+    "path": "world/climate-attachment-pins.json",
+    "bytes": 7419,
+    "sha256": "e03828e5b87f6357f21327c32a03f7ace3976bfc3b803603da03c69e19736c65"
+  },
+  "code": [
+    {
+      "path": "world/climate-attachment-types.ts",
+      "bytes": 3249,
+      "sha256": "dee66d399e61c8d191239aca5f0fb5717e16366862ae587e734a1292423318f9"
+    },
+    {
+      "path": "world/climate-attachment-compile.ts",
+      "bytes": 22485,
+      "sha256": "4ad28953a36f16d81f018df713d04cec4b31d18670e1ad9c339a81a5b807340e"
+    },
+    {
+      "path": "world/climate-attachment-compile.test.ts",
+      "bytes": 14272,
+      "sha256": "fd220cc70f5a8566acd87d5002c5ae807dbcc434fc8dc740a8ec0099b344943d"
+    },
+    {
+      "path": "world/climate-attachment-publish.ts",
+      "bytes": 37857,
+      "sha256": "f1e37cad3f090335c7dad6be957350a2cab7054b0ca91463c5c57deb19bf2057"
+    },
+    {
+      "path": "world/climate-attachment-publish.test.ts",
+      "bytes": 15270,
+      "sha256": "33f1babb6c56f08352afad6c5a60ede3fc2f4850323b50fe38fd676d32849b02"
+    },
+    {
+      "path": "world/climate-attachment-worker.ts",
+      "bytes": 1757,
+      "sha256": "47f8c7db932a3d2493b398e6813a1d34d161314115125131daada65c955a66a7"
+    },
+    {
+      "path": "world/climate-attachment-cli.ts",
+      "bytes": 3516,
+      "sha256": "75e655fd5eec7c9aa7c568ec1feca54904f52ba0e642808d9a366df56ad819d4"
+    },
+    {
+      "path": "world/preview/climate-display.ts",
+      "bytes": 6957,
+      "sha256": "4b37d6c479f9132cf9684f4b9da7bad8bbc78c5870c28357ae9490791ac29fc8"
+    },
+    {
+      "path": "world/preview/climate-display.test.ts",
+      "bytes": 7032,
+      "sha256": "67e1e71ecdb99c8cbdfa4a969921ffb202fa207442863108d3b90d3bb2b9c128"
+    },
+    {
+      "path": "world/preview/main.ts",
+      "bytes": 69485,
+      "sha256": "59342f3fae7d6702db0922ce8d7f93126d619c59b08893cf23175aca589881b9"
+    },
+    {
+      "path": "world/preview/output-route.ts",
+      "bytes": 3155,
+      "sha256": "ba4a4627578e78535e3c3598f3b12147aebc73af86474ee1a609c1e1fae5b24f"
+    },
+    {
+      "path": "world/preview/output-route.test.ts",
+      "bytes": 4119,
+      "sha256": "0dc9d7ad60b9ea0cd8a0171010556a5d451f45db2450d80118c55192f2dba799"
+    },
+    {
+      "path": "world/preview/style.css",
+      "bytes": 12305,
+      "sha256": "d39a808964e7793a3a793d2c41cbdd8080f6290abbe72caadd80ce50d80b529d"
+    },
+    {
+      "path": "world/tooling/verify_climate_attachment.py",
+      "bytes": 40078,
+      "sha256": "f74fb049103a1c17f0958ca2f2f6d3c46326ab971c43449704edb8bc04fb50f9"
+    },
+    {
+      "path": "world/tooling/test_verify_climate_attachment.py",
+      "bytes": 20768,
+      "sha256": "d985f28ba3fbcfd51b3192c465337f646f39e44e5082702b9b7ca57805279660"
+    },
+    {
+      "path": "world/country-acquire.test.ts",
+      "bytes": 16311,
+      "sha256": "1d8cac1a052b9a56d37391756566b1fe52281d222da790300e8ecb1b6ac02892"
+    },
+    {
+      "path": "world/admin1-topology.ts",
+      "bytes": 35510,
+      "sha256": "48e6952a6ea61eae9a88d8d6078a3f9108fb4e7a4db987f97364215affd7892e"
+    },
+    {
+      "path": "world/admin1-topology.test.ts",
+      "bytes": 11004,
+      "sha256": "b06e2156687461bd7f289acbcdb31d2dd74c08ace988b78c4668305ffc6229d5"
+    }
+  ],
+  "products": [
+    {
+      "id": "accra",
+      "regionId": "gh-accra-overture-pilot",
+      "manifest": {
+        "path": ".cache/world-build/output/climate-packs/manifests/c8cb7d2cffc79d9aaa5451df9b04e5baa978b2f5be367a717484eace8402e3a4.json",
+        "bytes": 19601,
+        "sha256": "c8cb7d2cffc79d9aaa5451df9b04e5baa978b2f5be367a717484eace8402e3a4"
+      },
+      "provenance": {
+        "path": ".cache/world-build/output/climate-packs/provenance/1ab7cdbc4787250904eeaa3d0e3f7e0c0c7f1cccc7287da4bd5c111a098141d5.json",
+        "bytes": 10381,
+        "sha256": "1ab7cdbc4787250904eeaa3d0e3f7e0c0c7f1cccc7287da4bd5c111a098141d5"
+      },
+      "logicalBytes": 140740,
+      "tiles": 12,
+      "firstElapsedMs": 572,
+      "repeatElapsedMs": 331,
+      "independentElapsedMs": 43.083,
+      "networkBytes": 0,
+      "lifetimeAttempts": 1
+    },
+    {
+      "id": "nairobi",
+      "regionId": "ke-nairobi-kicc-cell",
+      "manifest": {
+        "path": ".cache/world-build/output/climate-packs/manifests/d3d6515085df93e227c603ad08426d966af98cdea3693604665770439b4d921d.json",
+        "bytes": 21741,
+        "sha256": "d3d6515085df93e227c603ad08426d966af98cdea3693604665770439b4d921d"
+      },
+      "provenance": {
+        "path": ".cache/world-build/output/climate-packs/provenance/63576fc194dcab53171f41070441fb999ec7544b66adeb8839c2e8476dba7424.json",
+        "bytes": 9483,
+        "sha256": "63576fc194dcab53171f41070441fb999ec7544b66adeb8839c2e8476dba7424"
+      },
+      "logicalBytes": 115217,
+      "tiles": 9,
+      "firstElapsedMs": 371,
+      "repeatElapsedMs": 269,
+      "independentElapsedMs": 33.866,
+      "networkBytes": 0,
+      "lifetimeAttempts": 1
+    },
+    {
+      "id": "cape-town",
+      "regionId": "za-cape-town-city-centre-cell",
+      "manifest": {
+        "path": ".cache/world-build/output/climate-packs/manifests/fb659e32319919e507513787e7917ab4051d5958aa8d32443b4c08e9488a0dfc.json",
+        "bytes": 20423,
+        "sha256": "fb659e32319919e507513787e7917ab4051d5958aa8d32443b4c08e9488a0dfc"
+      },
+      "provenance": {
+        "path": ".cache/world-build/output/climate-packs/provenance/3174fef69e59c7dcbdf2a3ef079664641d5396ba0885fc21a3982c3c11fd70f3.json",
+        "bytes": 8958,
+        "sha256": "3174fef69e59c7dcbdf2a3ef079664641d5396ba0885fc21a3982c3c11fd70f3"
+      },
+      "logicalBytes": 101902,
+      "tiles": 7,
+      "firstElapsedMs": 341,
+      "repeatElapsedMs": 236,
+      "independentElapsedMs": 34.273,
+      "networkBytes": 0,
+      "lifetimeAttempts": 1
+    }
+  ],
+  "outputTree": {
+    "bytes": 357859,
+    "files": 34,
+    "entriesIncludingDirectories": 37
+  },
+  "firstMaximumRssBytes": 132497408,
+  "repeatMaximumRssBytes": 140869632,
+  "preservation": {
+    "attempts": 3,
+    "filesUnchanged": 43,
+    "networkBytes": 0,
+    "sameCacheHashes": true,
+    "status": "verified-preserved",
+    "succeeded": 3
+  },
+  "verification": {
+    "worldNodeTests": 459,
+    "worldNodePassed": 459,
+    "worldNodeFailed": 0,
+    "worldTypeScript": "passed",
+    "independentPythonTests": 8,
+    "independentPythonPassed": 8,
+    "realIndependentJobs": 3,
+    "monthlyAbsoluteTolerance": 1e-10,
+    "browserCases": 16,
+    "browserConsoleErrors": 0,
+    "viewportSizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "initialFullSuite": "455/456; older timer-based country-transfer fixture raced before consumption; replaced with reader-phase interruption, preserving runtime behavior/caps",
+    "expandedFullSuite": "457/458; prior Admin1 RSS probe raced process exit; bounded process-state/PID classification fixes exit handling while live invalid samples and 512 MiB cap remain enforced",
+    "intermediateFullSuite": "456/456 before two additional publisher regressions",
+    "topologyFocusedTests": 9
+  },
+  "previewBuild": {
+    "modules": 33,
+    "javascriptMinifiedKb": 717.31,
+    "javascriptGzipKb": 188.15,
+    "cssMinifiedKb": 12.17,
+    "cssGzipKb": 3.52,
+    "existingChunkWarning": true,
+    "gameBootstrapChanged": false
+  },
+  "evidence": [
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-first.json",
+      "bytes": 2124,
+      "sha256": "90976d08edac340f41d2f790bb6c69cff7cde93beea1cfaf14ba8e00cdc1be71"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-first.stderr",
+      "bytes": 777,
+      "sha256": "3894061d0d8f72be1234e72c696eccf2baa31f6f5668f6c3c59de77a043ecb19"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-repeat.json",
+      "bytes": 2121,
+      "sha256": "4c788ceefa61db495f10ee43060584e747bd2681feebb769e6c876f9ffb1c967"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-repeat.stderr",
+      "bytes": 777,
+      "sha256": "4d2de2ee5da13b990fc6a6fb0556a26a6864a9b4bf5952236044569f321d3387"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-independent.json",
+      "bytes": 3401,
+      "sha256": "54224fe5183f2b1c0db503f3434b64dd29e5313c989a078762303079e06ba7df"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-independent-inputs.json",
+      "bytes": 1037,
+      "sha256": "19184588649f0225ee235dd2d4897e4690fa79c9f64226b1f29de07ab85fdc0b"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-preservation-before.json",
+      "bytes": 9555,
+      "sha256": "75b38f4e6f91a5da1c15da6bf34e9157c3d6f0396691540507e9c03dbde1b2e3"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-preservation-after.json",
+      "bytes": 119,
+      "sha256": "e4093e7795a06f532bf0f245c8081908c87d051d859ba9fb9f77feb1eb53a579"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-browser.json",
+      "bytes": 29440,
+      "sha256": "640db7d9c55c9c9db154ed013d5cdc7bb94882a4a00cd0039a5f67abccca281a"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-world-tests.tap",
+      "bytes": 108613,
+      "sha256": "68f32ca4e12b0b85f99e21ca278c597f5cb5a9d939b026e2e6dd012c8c170ecd"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-world-tests-final.tap",
+      "bytes": 107916,
+      "sha256": "c17dae7830e1d607d0b0501809d9f654f593313621e0bed5055ff661cb7b4209"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-typecheck.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-typecheck.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-python-tests.stderr",
+      "bytes": 1065,
+      "sha256": "d19e90618ee28080d027768964c769dd7f68ae8410bf5c37f5b1daf4853c8e2a"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-preview-build.stdout",
+      "bytes": 350,
+      "sha256": "433ad1bb3ee5d990c48a3c94772b1c39300f6cd6ddacfb7cfbf05a9caa96d542"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-preview-build.stderr",
+      "bytes": 332,
+      "sha256": "ccb6bf354a0674eeb1e49df9a880a000b75240079fdb849282bb899d81eeb58c"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-accra-1280.png",
+      "bytes": 106485,
+      "sha256": "fe91c75ab0e036e37f8230b860d6a76e69a5f8bbf680c1de6911191441423fc5"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-cape-town-390.png",
+      "bytes": 74077,
+      "sha256": "33e7ddc2111c5acfe9f5b272ba68d509e094e8fb7dee43526eee1368a4595522"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-cape-town-1280.png",
+      "bytes": 100094,
+      "sha256": "52eae0bd446be3bb2a419ab1ce6a049873d55ac85031571a2df3a5432a658ef1"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-repeat-final.json",
+      "bytes": 2122,
+      "sha256": "33f247c6c16a700dd93b664da9709da21b11d1b008861061ed6d319b91637c8f"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-repeat-final.stderr",
+      "bytes": 777,
+      "sha256": "1be3f9a6a59ad9be383a726a66ad372d80cd55fb9882cebd875b6ec5c9572190"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-world-tests-accepted.tap",
+      "bytes": 108749,
+      "sha256": "9d829794b05d05713b3dc39b5bfc3d98423b51a33ff20488ce3cf300742fc249"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-world-tests-checkpoint.tap",
+      "bytes": 108563,
+      "sha256": "a69ac3e63dc7eadcda7568c66292fdec56ebe7282ef1b90cc25d5ac39b87f639"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-world-tests-checkpoint.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-typecheck-checkpoint.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-typecheck-checkpoint.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/climate-attachment-preservation-checkpoint.json",
+      "bytes": 100,
+      "sha256": "c9b36264bc2d3e242f1d0a3b6f34b4abf992e5d78d26b64871eaff9db90fcfa0"
+    },
+    {
+      "path": ".cache/world-build/evidence/admin1-topology-rss-regression.tap",
+      "bytes": 2209,
+      "sha256": "b8b17db1ea88bc7f98542a72bcb1657dfb1f1e1aafa8e5e42caf0ede6e7fbeb3"
+    }
+  ],
+  "limitations": [
+    "Explicit city-associated single native-grid samples, not region-wide averages or live weather.",
+    "Accra and Nairobi climate points lie outside their tiny pack bounds; their association is disclosed.",
+    "Independent verification checks hashes and parsed semantics, not ECMAScript canonical number serialization equivalence or climate accuracy.",
+    "Browser counters describe rounded decoded-body bytes, not wire traffic or physical-device performance.",
+    "No terrain/geoid, country-complete urban coverage, gameplay integration, deployment or global completion is established."
+  ],
+  "finalCodeCacheReplay": {
+    "elapsedMs": [
+      2435,
+      409,
+      418
+    ],
+    "maximumRssBytes": 125353984,
+    "networkBytes": 0,
+    "extraAttempts": 0,
+    "sameProducts": true
+  }
+}

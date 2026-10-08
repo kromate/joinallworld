@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed-source-bound-sample-selection",
+  "campaignId": "africa-urban-samples-v1",
+  "campaignInventoryHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+  "countryDirectoryManifestHash": "b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501",
+  "selectedPlacesManifestHash": "17932383d2d75ce733a3cfae8e455d053be778fc09dcaa5ca06707416e55b61e",
+  "selectedPlacesInput": {
+    "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+    "bytes": 19359003,
+    "release": "ca96624a56bd078437bca8184e78163e5039ad19"
+  },
+  "parentDirectoryLineage": {
+    "baselineInventoryHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+    "baselineAdmin0SourceSha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+    "currentAdmin0SourceSha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+    "identityContinuity": "same NE_ID source keys verified in directory nodes; legacy-ng remains protected"
+  },
+  "samples": [
+    {
+      "unitId": "dakar-overture-sample",
+      "priority": 0,
+      "sourceKey": "NE_ID:1159151513",
+      "placeId": "place:natural-earth:NE_ID%3A1159151513",
+      "sourceOrdinal": 7234,
+      "featureSha256": "a235d08275092e7e26849178a1b9022a254d475cbc8bce7b718ceb150a223f8a",
+      "sourceName": "Dakar",
+      "sourceClass": "Admin-0 capital",
+      "scaleRank": 1,
+      "coordinates": [
+        -17.475076,
+        14.717778
+      ],
+      "countryId": "country:natural-earth:NE_ID%3A1159321243",
+      "countryCode": "SN",
+      "countryName": "Senegal",
+      "selectedPlacesPointsAsset": {
+        "path": "points/25141b43ac8a24b1af3e033720ababbd20b1f6b9eba4632896554e42d063c41d.json",
+        "sha256": "25141b43ac8a24b1af3e033720ababbd20b1f6b9eba4632896554e42d063c41d",
+        "bytes": 2769
+      },
+      "unitSourceCount": 11,
+      "knownClassificationCaveat": "Natural Earth source class says Admin-0 capital; this label describes the source classification, not a claim of official legal status or a verified current capital.",
+      "request": {
+        "schemaVersion": 1,
+        "id": "dakar-overture-sample",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321243",
+        "region": {
+          "id": "sn-dakar-urban-sample",
+          "parentId": "country:natural-earth:NE_ID%3A1159321243",
+          "name": "Dakar Natural Earth populated-place sample cell",
+          "kind": "cell",
+          "countryCode": "SN",
+          "timezone": "Africa/Dakar",
+          "bounds": [
+            -17.477076,
+            14.715777999999998,
+            -17.473076000000002,
+            14.719778
+          ]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": [
+          "buildings",
+          "roads"
+        ],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "requestHash": "9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe"
+    },
+    {
+      "unitId": "addis-ababa-overture-sample",
+      "priority": 1,
+      "sourceKey": "NE_ID:1159151549",
+      "placeId": "place:natural-earth:NE_ID%3A1159151549",
+      "sourceOrdinal": 7250,
+      "featureSha256": "70fbdad07dec0d66e6e41dafcec4b0595c31284a99eeffecc2a2f1a00e4cc518",
+      "sourceName": "Addis Ababa",
+      "sourceClass": "Admin-0 capital",
+      "scaleRank": 1,
+      "coordinates": [
+        38.698059,
+        9.035256
+      ],
+      "countryId": "country:natural-earth:NE_ID%3A1159320617",
+      "countryCode": "ET",
+      "countryName": "Ethiopia",
+      "selectedPlacesPointsAsset": {
+        "path": "points/01b2eea4b45a5683c5e2ed9126f5cc70d2effbe9df33183841c4a2f469358ee3.json",
+        "sha256": "01b2eea4b45a5683c5e2ed9126f5cc70d2effbe9df33183841c4a2f469358ee3",
+        "bytes": 7813
+      },
+      "unitSourceCount": 34,
+      "knownClassificationCaveat": "Natural Earth source class says Admin-0 capital; this label describes the source classification, not a claim of official legal status or a verified current capital.",
+      "request": {
+        "schemaVersion": 1,
+        "id": "addis-ababa-overture-sample",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320617",
+        "region": {
+          "id": "et-addis-ababa-urban-sample",
+          "parentId": "country:natural-earth:NE_ID%3A1159320617",
+          "name": "Addis Ababa Natural Earth populated-place sample cell",
+          "kind": "cell",
+          "countryCode": "ET",
+          "timezone": "Africa/Addis_Ababa",
+          "bounds": [
+            38.696059,
+            9.033256,
+            38.700059,
+            9.037256000000001
+          ]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": [
+          "buildings",
+          "roads"
+        ],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "requestHash": "43261222dc2fa2b5324728aa8f32759ea0c528a67de57c6d3371e65a20614032"
+    },
+    {
+      "unitId": "dar-es-salaam-overture-sample",
+      "priority": 2,
+      "sourceKey": "NE_ID:1159151305",
+      "placeId": "place:natural-earth:NE_ID%3A1159151305",
+      "sourceOrdinal": 7141,
+      "featureSha256": "a9ec1a2982bb2ef1594bdb99b51e87acdf10d789aea06f8150c1b4c6b1754935",
+      "sourceName": "Dar es Salaam",
+      "sourceClass": "Admin-0 capital",
+      "scaleRank": 2,
+      "coordinates": [
+        39.266396,
+        -6.798067
+      ],
+      "countryId": "country:natural-earth:NE_ID%3A1159321337",
+      "countryCode": "TZ",
+      "countryName": "United Republic of Tanzania",
+      "selectedPlacesPointsAsset": {
+        "path": "points/be6c85bea98362a744cb9dbdd36138489bf4a7be8a3f18bc4f19d21407361274.json",
+        "sha256": "be6c85bea98362a744cb9dbdd36138489bf4a7be8a3f18bc4f19d21407361274",
+        "bytes": 13336
+      },
+      "unitSourceCount": 59,
+      "knownClassificationCaveat": "Natural Earth source class says Admin-0 capital; Dar es Salaam is not Tanzania\u2019s current capital, so this is preserved source metadata and must not be displayed or inferred as a current-capital claim.",
+      "request": {
+        "schemaVersion": 1,
+        "id": "dar-es-salaam-overture-sample",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321337",
+        "region": {
+          "id": "tz-dar-es-salaam-urban-sample",
+          "parentId": "country:natural-earth:NE_ID%3A1159321337",
+          "name": "Dar es Salaam Natural Earth populated-place sample cell",
+          "kind": "cell",
+          "countryCode": "TZ",
+          "timezone": "Africa/Dar_es_Salaam",
+          "bounds": [
+            39.264396,
+            -6.800066999999999,
+            39.268396,
+            -6.796067
+          ]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": [
+          "buildings",
+          "roads"
+        ],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "requestHash": "6c77313dc020198d02d83147fdd2235c31533ec2357bcefd6172049968e99367"
+    }
+  ]
+}

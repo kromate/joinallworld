@@ -1,0 +1,12 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { readBoundedLocalFile } from './inventory-reader.ts';
+import { publishSettlementSource } from './settlement-publish.ts';
+import { SETTLEMENT_PRODUCT_LIMITS } from './settlement-product-types.ts';
+import type { SettlementSourcePin } from './settlement-types.ts';
+import type { SettlementParentPin } from './settlement-product-types.ts';
+
+const WORLD=path.dirname(fileURLToPath(import.meta.url));
+function args(values:string[]):{durationMs?:number}{if(values.shift()!=='build')throw new Error('usage: settlement-cli.ts build [--duration-ms <1..120000>]');let durationMs:number|undefined;while(values.length){const arg=values.shift();if(arg!=='--duration-ms'||durationMs!==undefined)throw new Error('unknown or duplicate settlement build option');const value=values.shift();if(!value||!/^\d+$/.test(value))throw new Error('--duration-ms must be an integer from 1 to 120000');durationMs=Number(value);if(!Number.isSafeInteger(durationMs)||durationMs<1||durationMs>SETTLEMENT_PRODUCT_LIMITS.durationMs)throw new Error('--duration-ms must be an integer from 1 to 120000');}return durationMs===undefined?{}:{durationMs};}
+async function main():Promise<void>{const options=args(process.argv.slice(2));const root=path.resolve(WORLD,'..');const [sourceBytes,parentBytes]=await Promise.all([readBoundedLocalFile(path.join(WORLD,'settlement-sources.json'),16*1024),readBoundedLocalFile(path.join(WORLD,'settlement-parent.json'),16*1024)]);const source=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(sourceBytes)) as unknown;const parent=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(parentBytes)) as unknown;const controller=new AbortController();const onInt=()=>controller.abort(new Error('settlement build interrupted by SIGINT')),onTerm=()=>controller.abort(new Error('settlement build interrupted by SIGTERM'));process.once('SIGINT',onInt);process.once('SIGTERM',onTerm);try{const result=await publishSettlementSource({repositoryRoot:root,sourcePin:source as SettlementSourcePin,parentPin:parent as SettlementParentPin,signal:controller.signal,...options});process.stdout.write(`${JSON.stringify(result)}\n`);}finally{process.removeListener('SIGINT',onInt);process.removeListener('SIGTERM',onTerm);}}
+main().catch(error=>{const message=error instanceof Error?error.message:String(error);process.stderr.write(`${Buffer.from(message).subarray(0,2048).toString('utf8')}\n`);process.exitCode=1;});

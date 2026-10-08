@@ -71,6 +71,8 @@ import type { TravelWay } from './travel-card.ts';
 import type { RegionContext, RegionInfo, RegionRef, RouteInfo } from './info.ts';
 import { arcSegments, mesher, outerEdges } from './build.ts';
 import type { RibbonLine } from './build.ts';
+import type { CountryDetailService, CountryDetailOutline } from './country-detail-types.ts';
+import { CountryDetailPanelModel, countryOutlineSvg } from './country-detail.ts';
 
 /** What a level's data module exports (the type of ATLAS_LEVELS[i].data()'s result). */
 export type LevelModule = Awaited<ReturnType<AtlasLevel['data']>>;
@@ -120,6 +122,8 @@ export interface AtlasOptions {
   onFriend?: (action: 'chat' | 'call' | 'ping', id: string, name: string) => void;
   /** Fetches a level's data module; the default imports it from the registry. */
   load?: (levelId: string) => Promise<LevelModule>;
+  /** Optional lazy country-outline service. The default service module is imported only after Countries is opened. */
+  countryDetail?: CountryDetailService;
 }
 /** A place the pointer or a reference names: what it is, which feature, and the sheet that holds it. */
 export interface Hit { kind: RegionKind; id: string; feature: Feature; sheet: Sheet }
@@ -153,7 +157,7 @@ interface Gesture { kind: 'pan' | 'pinch'; id: number; moved: boolean; from: Poi
 /** What the shell's `jaw:key` event carries. */
 interface KeyDetail { action?: string; mode?: string }
 interface Point { x: number; y: number }
-type UiName = 'labels' | 'friends' | 'fpanel' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet';
+type UiName = 'labels' | 'friends' | 'fpanel' | 'reticle' | 'marker' | 'crumbs' | 'rail' | 'stage' | 'wait' | 'controls' | 'legend' | 'sheet' | 'country-panel';
 /** What diagnostics() reports. */
 export interface AtlasDiagnostics {
   kind: 'atlas'; renderCount: number; loop: boolean; level: number; levelId: string; wanted: number; loading: string; loaded: string[]; fading: boolean;
@@ -180,6 +184,9 @@ export interface AtlasApi {
   setFriends(model: FriendsModel | null): void;
   /** Fly to a city and open the list of the friends there. False when no friend is shown there. */
   openFriends(cityId: string): boolean;
+  /** Explicitly open the separate geographic-detail chooser; does not change map/game selection. */
+  openCountries(atlasId?: string | null): void;
+  closeCountries(): void;
   screenOf(lon: number, lat: number): { x: number; y: number };
   pick(lon: number, lat: number): { kind: RegionKind; id: string; name: string } | null;
   diagnostics(): AtlasDiagnostics;
@@ -207,7 +214,7 @@ const naira = (value: unknown): string => `₦${Number(value).toLocaleString('en
 const ICON = (path: string): string => `<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 const GLYPH = { globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>', rail: '<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M8 17l-2 4m10-4 2 4M9 14h.1M15 14h.1"/>', bus: '<path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10H5zM5 11h14M8 16v2M16 16v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/>', plane: '<path d="M21 15.5 13.5 11V5.2a1.5 1.5 0 0 0-3 0V11L3 15.5V17l7.5-2.2V19l-2 1.5V22l3.5-1 3.5 1v-1.5l-2-1.5v-4.2L21 17z"/>' };
 
-export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, debt = () => 0, onRepay = () => {}, onHelp = () => {}, wallet = () => null, held = () => [],
+export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpenCity = () => {}, onEnterCity = () => {}, onInspectVenue = () => {}, onTravel = () => {}, credit = () => null, routes = () => null, debt = () => 0, onRepay = () => {}, onHelp = () => {}, wallet = () => null, held = () => [], countryDetail: providedCountryDetail,
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), tabHidden, load = (levelId) => ATLAS_LEVELS.find((level) => level.id === levelId)!.data() }: AtlasOptions = {}): AtlasApi {
   const doc = typeof globalThis.document?.createElement === 'function' ? globalThis.document : null;
@@ -281,6 +288,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     root.innerHTML = `<div class="atlas-labels" aria-hidden="true"></div>
       <div class="atlas-friends"></div>
       <div class="atlas-marker" aria-hidden="true" hidden></div>
+      <aside class="atlas-country-panel" id="atlas-country-panel" aria-label="Geographic country detail" aria-labelledby="atlas-country-title" hidden></aside>
       <div class="atlas-frame">
         <nav class="atlas-crumbs" aria-label="Map level"></nav>
         <div class="atlas-rail" role="search" aria-label="Find a place on the map"></div>
@@ -292,7 +300,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     root.prepend(canvas);
     canvas.classList?.add('atlas-canvas'); canvas.setAttribute?.('aria-hidden', 'true');
     container.appendChild(root);
-    for (const name of ['labels', 'friends', 'fpanel', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
+    for (const name of ['labels', 'friends', 'fpanel', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet', 'country-panel'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
     ui.controls!.innerHTML = `<div class="atlas-zoom"><button type="button" data-atlas-zoom="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-atlas-zoom="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div>
       <button type="button" class="atlas-pill" data-atlas-zoom="fit">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span data-atlas-fit></span></button>
       <button type="button" class="atlas-pill" data-atlas-layer aria-pressed="false">${ICON('<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>')}<span data-atlas-layer-name></span></button>`;
@@ -830,6 +838,71 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   // ---- the chrome: breadcrumb, list, sheet -------------------------------------------------------------
   const context = () => ({ current, held: held() || [], routes: routes() });
   const infoOf = (hit: Pick<Hit, 'kind' | 'id' | 'feature'>): RegionInfo => regionInfo({ kind: hit.kind, id: hit.id }, { ...context(), cityId: selectedCity, feature: hit.feature });
+  let countryDetailModel: CountryDetailPanelModel | null = null;
+  let countryPanelReturnFocus: HTMLElement | null = null;
+  function drawCountryPanel(state: ReturnType<CountryDetailPanelModel['snapshot']>) {
+    const panel = ui['country-panel'];
+    if (!panel) return;
+    const active = panel.ownerDocument.activeElement;
+    const wasFocused = active instanceof HTMLElement && panel.contains(active);
+    const focusChoice = wasFocused && active.matches('[data-country-choice]');
+    const focusClose = wasFocused && active.matches('[data-country-close]');
+    const focusStatus = wasFocused && (active.matches('[role="status"]') || active.matches('[data-country-show-outline], [data-country-retry]'));
+    panel.hidden = !state.open;
+    ui.crumbs?.querySelector('[data-atlas-countries]')?.setAttribute('aria-expanded', String(state.open));
+    if (!state.open) { panel.innerHTML = ''; return; }
+    const catalogue = state.catalogue;
+    const choice = catalogue?.countries.find((country) => country.countryId === state.selectedCountryId);
+    const safeSource = (() => { try { const url = new URL(catalogue?.sourceUrl ?? ''); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; } })();
+    let outline = '';
+    if (state.outline) {
+      try {
+        const svg = countryOutlineSvg(state.outline);
+        if (typeof state.outline.attribution !== 'string' || state.outline.attribution.length > 2048 || !Array.isArray(state.outline.limitations) || state.outline.limitations.length > 16 || state.outline.limitations.some((item) => typeof item !== 'string' || item.length > 2048)) throw new TypeError('Outline attribution or limitations are malformed');
+        outline = `<figure class="atlas-country-figure"><svg viewBox="${svg.viewBox}" role="img" aria-label="Geographic outline of ${esc(state.outline.country.name)}"><path d="${svg.path}" fill-rule="evenodd"/></svg><figcaption>${svg.sourcePositions.toLocaleString()} source positions${svg.simplified ? ' · simplified for display' : ''}</figcaption></figure><p class="atlas-country-source">${esc(state.outline.attribution)}</p>${state.outline.limitations.length ? `<ul class="atlas-country-limitations">${state.outline.limitations.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}`;
+      } catch (error) {
+        state = { ...state, state: 'outline-error', outline: null, message: error instanceof Error ? error.message : 'This outline cannot be displayed.' };
+      }
+    }
+    const choiceBody = choice ? isDetailProtected(choice)
+      ? `<p class="atlas-country-note">Nigeria uses its existing map.</p><button type="button" class="atlas-go is-small" data-country-view-nigeria>View Nigeria</button>`
+      : choice.status === 'missing'
+        ? `<p class="atlas-country-note">${esc(choice.continent)} · No outline is available for this country yet.</p>`
+        : `<p class="atlas-country-note">${esc(choice.continent)} · View-only geographic reference.</p><button type="button" class="atlas-go is-small" data-country-show-outline ${state.state === 'loading-outline' ? 'disabled' : ''}>${state.state === 'loading-outline' ? 'Loading outline…' : state.state === 'outline-error' ? 'Try outline again' : state.outline ? 'Reload outline' : 'Show outline'}</button>`
+      : catalogue ? '<p class="atlas-country-note">Choose a country to see whether a geographic outline is available.</p>' : '';
+    const options = catalogue ? `<option value="" disabled ${state.selectedCountryId === null ? 'selected' : ''}>Choose a country</option>${[...catalogue.countries].sort((a, b) => a.name.localeCompare(b.name, 'en') || a.countryId.localeCompare(b.countryId, 'en')).map((country) => `<option value="${esc(country.countryId)}" ${country.countryId === state.selectedCountryId ? 'selected' : ''}>${esc(country.name)}</option>`).join('')}` : '';
+    const source = catalogue ? `<p class="atlas-country-source">${esc(catalogue.sourceLabel)}${safeSource ? ` · <a href="${esc(safeSource)}" target="_blank" rel="noopener noreferrer">Source</a>` : ''}</p><p class="atlas-country-note">${esc(catalogue.boundaryNote)}</p>` : '';
+    const retry = state.state === 'catalogue-error' ? '<button type="button" class="atlas-chip" data-country-retry>Try again</button>' : '';
+    panel.innerHTML = `<header><div><h2 id="atlas-country-title">Explore country outlines</h2><p>Geographic reference · gameplay access varies</p></div><button type="button" class="atlas-close" data-country-close aria-label="Close country outlines">×</button></header>
+      ${catalogue ? `<label class="atlas-country-label" for="atlas-country-choice">Country</label><select id="atlas-country-choice" data-country-choice>${options}</select>` : ''}
+      <p class="atlas-country-status" role="status" aria-live="polite" tabindex="-1">${esc(state.message || (state.state === 'loading-catalogue' ? 'Loading country list…' : ''))}</p>
+      ${choiceBody}${retry}${outline}${source}`;
+    if (wasFocused) {
+      const next = focusChoice ? panel.querySelector<HTMLElement>('[data-country-choice]')
+        : focusClose ? panel.querySelector<HTMLElement>('[data-country-close]')
+          : focusStatus ? panel.querySelector<HTMLElement>('[role="status"]') : null;
+      next?.focus({ preventScroll: true });
+    }
+  }
+  function isDetailProtected(choice: { status: string; atlasId: string | null; countryId: string }): boolean {
+    return choice.status === 'protected' || choice.atlasId === 'ng' || choice.countryId === 'legacy-ng';
+  }
+  countryDetailModel = new CountryDetailPanelModel(async () => {
+    if (providedCountryDetail) return providedCountryDetail;
+    const module = await import('./country-detail-data.ts');
+    return module.createCountryDetailService();
+  }, drawCountryPanel);
+  function openCountries(atlasId: string | null = null) {
+    countryPanelReturnFocus = ui.crumbs?.querySelector<HTMLElement>('[data-atlas-countries]') ?? null;
+    void countryDetailModel?.open(atlasId).then(() => {
+      if (countryDetailModel?.snapshot().open) ui['country-panel']?.querySelector<HTMLElement>('[data-country-close]')?.focus({ preventScroll: true });
+    });
+  }
+  function closeCountries() {
+    countryDetailModel?.close();
+    (ui.crumbs?.querySelector<HTMLElement>('[data-atlas-countries]') ?? countryPanelReturnFocus)?.focus({ preventScroll: true });
+    countryPanelReturnFocus = null;
+  }
   function drawChrome() { drawCrumbs(); drawRail(); drawSheet(); drawHighlights(); }
   function drawCrumbs() {
     if (!ui.crumbs) return;
@@ -839,6 +912,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
         <ol id="atlas-levels-list">${ATLAS_LEVELS.map((entry, i) => `<li><button type="button" data-atlas-level="${i}" ${i === level ? 'aria-current="true"' : ''}>${i === WORLD ? ICON(GLYPH.globe) : ''}<span>${esc(entry.name)}</span></button></li>`).join('')}
           <li><button type="button" class="atlas-back-item" data-atlas-city="${esc(current)}">${esc(city?.name)} · back to the city</button></li></ol></div>
       <button type="button" class="atlas-back" data-atlas-city="${esc(current)}" aria-label="Back to ${esc(city?.name)}: open the city map">${esc(city?.name)}<span aria-hidden="true">Back to the city</span></button>
+      <button type="button" class="atlas-countries" data-atlas-countries aria-expanded="${Boolean(countryDetailModel?.snapshot().open)}" aria-controls="atlas-country-panel">Countries</button>
       <button type="button" class="atlas-list-toggle" data-atlas-list aria-expanded="${listOpen}">${ICON('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')}<span>Find a place</span></button>`;
     const fit = ui.controls!.querySelector<HTMLElement>('[data-atlas-fit]')!, layer = ui.controls!.querySelector<HTMLElement>('[data-atlas-layer]')!;
     fit.textContent = `Whole of ${level === WORLD ? 'the world' : ATLAS_LEVELS[level]!.name}`;
@@ -926,6 +1000,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       ${stateCities.length > 1 ? `<nav aria-label="Cities in this state">${stateCities.map(city => `<button type="button" data-atlas-inspect-city="${esc(city.id)}" aria-pressed="${city.id === info.city?.id}">${esc(city.name)}</button>`).join('')}</nav>` : ''}
       ${overviewCity ? `${stateOverviewToggleHtml(hit.id, overviewCity.id, stateOverviewShown === hit.id)}${overviewBody}` : ''}
       <p class="atlas-teaser">${esc(choosing ? regionEntry('state', hit.id).teaser || info.teaser : info.teaser)}</p>
+      ${hit.kind === 'country' && hit.id !== 'ng' ? '<button type="button" class="atlas-chip atlas-country-cta" data-country-open="' + esc(hit.id) + '">Geographic detail</button>' : ''}
       ${travelCard}
       ${info.action ? `<button type="button" class="atlas-go" data-atlas-action>${esc(info.action.label)}<span aria-hidden="true"> →</span></button>` : ''}
       ${more ? `<button type="button" class="atlas-more" data-atlas-expand aria-expanded="${sheetOpen}">${sheetOpen ? 'Less' : guide?.length && info.city ? `Things to do in ${esc(info.city.name)}` : info.routes.length ? 'Routes and details' : 'More'}</button>` : ''}
@@ -962,7 +1037,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   /** Choose a region (or nothing). `from`: 'map' | 'list' | 'key' — the list and the keyboard move focus to the sheet. */
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
-    if (!same(hit, selected)) { sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; creditAsk = false; }
+    if (!same(hit, selected)) { countryDetailModel?.mapSelectionChanged(); sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; creditAsk = false; }
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     const city = hit ? infoOf(hit).city : null;
@@ -1015,6 +1090,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   }
   /** Fly down into the open city, then hand over to the city map. */
   function enterCity(id: string) {
+    countryDetailModel?.close();
     const state = stateOfCity(id), hit = state ? find({ kind: 'state', id: state }) : null, city = cityEntry(id);
     const done = () => { root?.classList.remove('is-entering'); resetView = true; if (id === current) onOpenCity(id); else onEnterCity(id); };
     if (!hit || !city || reducedMotion || !raf || !shown()) { done(); return; }
@@ -1173,6 +1249,14 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   }
   function onClick(event: MouseEvent) {
     const hit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-atlas-${name}]`);
+    const detailHit = (name: string) => (event.target as Element).closest?.<HTMLElement>(`[data-country-${name}]`);
+    const countryOpen = detailHit('open'), countryClose = detailHit('close'), countryOutline = detailHit('show-outline'), countryRetry = detailHit('retry'), viewNigeria = detailHit('view-nigeria'), countries = hit('countries');
+    if (countryOpen) { openCountries(countryOpen.dataset.countryOpen ?? null); return; }
+    if (countryClose) { closeCountries(); return; }
+    if (countries) { if (countryDetailModel?.snapshot().open) closeCountries(); else openCountries(); return; }
+    if (countryOutline) { void countryDetailModel?.showOutline(); return; }
+    if (countryRetry) { countryDetailModel?.retry(); return; }
+    if (viewNigeria) { closeCountries(); goLevel(NIGERIA); return; }
     const friendOpen = hit('fb'), friendAct = hit('fact'), friendGo = hit('fgo');
     if (friendOpen || friendAct || friendGo || hit('fclose')) {
       if (friendAct) onFriend(friendAct.dataset.atlasFact as 'chat' | 'call' | 'ping', friendAct.dataset.id ?? '', friendAct.dataset.name ?? '');
@@ -1223,6 +1307,10 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     }
     else if (route) { const id = route.dataset.atlasRoute!; if (!preview && !trip) { routeShown = routeShown === id ? null : id; drawSheet(); drawHighlights(); request(); ui.sheet!.querySelector<HTMLElement>(`[data-atlas-route="${CSS.escape(id)}"]`)?.focus(); } }
   }
+  function onCountryChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    if (target.matches('[data-country-choice]')) countryDetailModel?.choose(target.value);
+  }
   const onInput = (event: Event) => { const target = event.target as HTMLInputElement; if (target.matches?.('[data-atlas-search]')) { query = target.value; drawRail(); } };
   /** The shell's keys: arrows pan, + and − zoom, 0 fits the level, Enter chooses what is under the crosshair. */
   function onKey(event: Event) {
@@ -1238,7 +1326,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   /** Esc, offered by the Map panel: close what is open, then go up one level. Says whether it did anything. */
   function onEscape(event: Event) {
     if (!shown() || !fits) return;
-    if (levelsOpen) closeLevels(true);
+    if (countryDetailModel?.snapshot().open) closeCountries();
+    else if (levelsOpen) closeLevels(true);
     else if (listOpen) { listOpen = false; drawCrumbs(); drawRail(); }
     else if (preview) { preview = null; routeShown = null; drawSheet(); drawHighlights(); request(); }
     else if (selected) select(null);
@@ -1253,7 +1342,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     canvas.addEventListener('pointerup', onUp); canvas.addEventListener('pointercancel', onUp);
     canvas.addEventListener('pointerleave', () => setHover(null));
     canvas.addEventListener('wheel', onWheel, { passive: false }); canvas.addEventListener('contextmenu', onContextMenu);
-    root!.addEventListener('click', onClick); root!.addEventListener('keydown', onMenuKey); doc.addEventListener('pointerdown', onAway); root!.addEventListener('input', onInput);
+    root!.addEventListener('click', onClick); root!.addEventListener('keydown', onMenuKey); doc.addEventListener('pointerdown', onAway); root!.addEventListener('input', onInput); root!.addEventListener('change', onCountryChange);
     window.addEventListener('jaw:key', onKey); window.addEventListener('jaw:atlas-escape', onEscape);
     watcher?.observe(container, { attributes: true, attributeFilter: ['hidden'] });
   }
@@ -1264,7 +1353,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   return {
     ready,
     /** The city the player is in: its state is "You are here" and the default selection. */
-    setCity(id) { if (!cityEntry(id)) return; current = id; selected = stateOfCity(id) ? { kind: 'state', id: stateOfCity(id)! } : null; routeShown = null; resetView = true; drawChrome(); request(); },
+    setCity(id) { if (!cityEntry(id)) return; countryDetailModel?.close(); current = id; selected = stateOfCity(id) ? { kind: 'state', id: stateOfCity(id)! } : null; routeShown = null; resetView = true; drawChrome(); request(); },
     /** The life's state: a trip between cities is shown where the server's timer says it is. */
     setState(state) {
       const next = interCityTripOf(state);
@@ -1278,7 +1367,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     },
     /** The held cities or the links may have changed. */
     refresh() { drawRail(); drawSheet(); },
-    resize, goLevel, previewTrip, selectCity, setFriends, openFriends,
+    resize, goLevel, previewTrip, selectCity, setFriends, openFriends, openCountries, closeCountries,
     warm() { void ensure(WORLD).then(() => ensure(AFRICA)); },
     select: (ref, options) => select(ref, options),
     zoomBy: (factor) => { if (fits) zoomBy(factor); },
@@ -1295,7 +1384,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
         view: { ...rig.view }, fits: fits ? distances() : null, cuts: [...cuts], layers: layers.map((entry) => entry.alpha) };
     },
     destroy() {
-      destroyed = true; stop(); watcher?.disconnect();
+      destroyed = true; countryDetailModel?.destroy(); stop(); watcher?.disconnect();
+      root?.removeEventListener('change', onCountryChange);
       if (doc) { window.removeEventListener('jaw:key', onKey); window.removeEventListener('jaw:atlas-escape', onEscape); doc.removeEventListener('pointerdown', onAway); root!.remove(); }
       for (const entry of layers) { entry.object.geometry.dispose(); for (const material of entry.materials) material.dispose(); }
       for (const object of [hoverMesh, selectMesh, selectLine, routeLine]) { object.geometry.dispose(); object.material.dispose(); }

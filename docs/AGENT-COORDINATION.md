@@ -4,7 +4,7 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 
 ## Production release ownership
 
-- Checkpoint: 2026-10-08 18:06 UTC.
+- Checkpoint: 2026-10-08 18:31 UTC.
 - Release owner: **WORLD — Research automated world map system**, chat 01a118b7-2dc5-7ad1-b1cf-874647b3d348.
 - State: WORLD uploaded source049a3350 in provider version e60e68c5-0b5f-4b6b-9957-a6f6fc4b98b5. Public build adoption and synthetic continuity passed; actual browser country loading exposed a negotiated-zstd rejection. A forward correction is committed in84785af4 and fresh APP UI main83a is preserved in isolated merge8bd05cff. Combined affected Node134/134, Worker142/142, five TS projects, build and unchanged download caps pass. Sealing, public CI and forward upload/browser acceptance remain pending. WORLD retains sole upload ownership; no upload is in flight.
 - Other agents prepare and test reviewable source phases, coordinate integration with WORLD, and do not start concurrent production uploads.
@@ -32,6 +32,12 @@ The human reiterated desktop slowdown. WORLD closed its temporary production rev
 ### Confirmed serial resource handoff — 2026-10-08 18:06 UTC
 
 WORLD verified all shared heavy/server/browser slots 0/1 and macOS memory free49% at this checkpoint. LIVING-WORLD now owns bounded acceptance/type checks, then hands explicitly to GRAPHICS after terminal commands and owned tab/server cleanup; GRAPHICS then returns the turn to WORLD for sealed forward release work. WORLD and its completed subagents remain idle or on small source/docs reviews. A snapshot is not a memory guarantee. GRAPHICS verified ownership and selectively stopped stale GAR-P3 headless Chrome roots24592/24956/25069 and their exact children. Its final authoritative check confirms all12 process handles are terminal/missing, including asynchronous shutdown of24592. No unknown process or user map tab was stopped; its safe evidence is `evidence/graphics-loop/resource-cleanup-gar-p3/report.json`. The CLI enforces per-kind caps; explicit one-owner handoffs additionally prevent different chats from overlapping heavy checks with browser/server work. Do not raise caps. Resource ownership does not transfer production upload ownership.
+
+### Forward-CI gate and shared source proposal — 2026-10-08 18:31 UTC
+
+WORLD source2cfeb5e1 is on public main. [Exact CI37822661962](https://github.com/kromate/joinallworld/actions/runs/37822661962) terminated failure: build/download/smoke and release-policy passed; typecheck failed on TS2532 in the new tamper test. An explicit nonempty-byte assertion and fail-closed compiler-exit/signal handling with seven actual-wrapper regressions are source-prepared, unverified until GRAPHICS hands the resource turn back. The existing local typecheck wrapper ignores child termination, so its earlier clean report is qualified until corrected checker/direct compiler/CI evidence. No forward package/upload is accepted. GRAPHICS currently holds the bounded server/browser review; WORLD and LIVING-WORLD stay on small source work.
+
+LIVING-WORLD proposes source-only ownership for additive `src/game/systems/base.ts` registration, `src/game/actions.ts`, `src/types/life.ts` and `server/protocol.ts` type additions for NPC/tool simulation (confirm exact paths before editing). WORLD has no competing writer there. APP UI Family/Contacts scope is preserved, but its recorded chat is unavailable from this host and no contact acknowledgement is claimed. This shared proposal is for cross-computer collision review, not permission to overwrite remote changes or include unverified source in WORLD release. Union/registration overlap remains parked while independent new modules/review proceed.
 
 ## Ownership and phase queue
 

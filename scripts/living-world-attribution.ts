@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const reportArgument = process.argv[2];
 if (process.argv.length !== 3 || typeof reportArgument !== 'string') {
-  throw new Error('Usage: node scripts/living-world-attribution.mjs /tmp/report.json');
+  throw new Error('Usage: node --experimental-strip-types scripts/living-world-attribution.ts /tmp/report.json');
 }
 
 const reportPath = resolve(reportArgument);
@@ -23,14 +23,12 @@ if (!reportPath.startsWith(`${tmpRoot}${sep}`) || reportRelative === '..' || rep
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 process.chdir(repoRoot);
 
-/** @param {string[]} args @returns {string} */
-const git = (args) => execFileSync('git', args, { cwd: repoRoot, encoding: 'utf8' }).trim();
+const git = (args: string[]): string => execFileSync('git', args, { cwd: repoRoot, encoding: 'utf8' }).trim();
 const dirty = git(['status', '--porcelain', '--untracked-files=all']);
 if (dirty) throw new Error('Refusing to build: the checkout has tracked or untracked changes.');
 const sha = git(['rev-parse', 'HEAD']);
 
-/** @param {string | null | undefined} value @returns {string | null} */
-function safeId(value) {
+function safeId(value: string | null | undefined): string | null {
   if (value === null || value === undefined) return null;
   if (value.startsWith('\0')) return `virtual:${safeId(value.slice(1))}`;
   if (value.startsWith('file://')) {

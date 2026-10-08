@@ -43,6 +43,7 @@ import type { BusinessHttpRoutes } from './business.ts'
 import type { PoliticsHttpRoutes } from './politics.ts'
 import type { RecordsHttpRoutes } from './records.ts'
 import type { LivingWorldHttpRoutes } from './living-world.ts'
+import type { LivingWorldBarberRoutes } from './living-world-barber.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -264,7 +265,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes, LivingWorldHttpRoutes {
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes, LivingWorldHttpRoutes, LivingWorldBarberRoutes {
   'GET /api/world/land': { query: { city: CityId }; response: Ok<LandView>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'invalid_city' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' }
   'POST /api/world/land/buy': { body: LandBuyRequest; response: Ok<{ ok: boolean; code: string; duplicate?: true; pending?: true }>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | JsonBodyErrorCode | OnceErrorCode | 'invalid_city' | 'invalid_land_purchase' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' | 'land_pending' | 'not_owned_home' | 'land_price_changed' | 'land_intent_changed' }
 }
@@ -495,6 +496,10 @@ export type ServerFrameType = ServerFrame['type']
 export { registeredCityIds } from '../game/cities/registry.ts'
 
 export const HTTP_ROUTE_KEYS = [
+  'GET /api/living-world/barber',
+  'POST /api/living-world/barber/start', 'POST /api/living-world/barber/input',
+  'POST /api/living-world/barber/pause', 'POST /api/living-world/barber/resume',
+  'POST /api/living-world/barber/claim', 'POST /api/living-world/barber/upgrade',
   'GET /api/living-world/qualification', 'POST /api/living-world/qualification/claim',
   'GET /api/living-world/driving',
   'POST /api/living-world/driving/start', 'POST /api/living-world/driving/input',

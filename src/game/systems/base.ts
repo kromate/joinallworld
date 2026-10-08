@@ -29,6 +29,7 @@ import missions from './missions.ts';
 import events from './events.ts';
 import growth from './growth.ts';
 import business from './business.ts';
+import livingWorld from './living-world.ts';
 
-export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, stories, land, street, onboarding, goals, social, civic, missions, events, growth, business];
+export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, stories, land, street, onboarding, goals, social, civic, missions, events, growth, business, livingWorld];
 for (const system of BASE_SYSTEMS) registerSystem(system);

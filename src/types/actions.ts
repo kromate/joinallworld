@@ -375,6 +375,14 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
     fail: BusinessBlockCode
     serverOnly: true
   }
+
+  /** SERVER ONLY: fixed mannequin result/reward or owned clipper upgrade, checked atomically by the apprenticeship service. */
+  'living-world.server': {
+    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' }
+    ok: 'barber_rewarded' | 'barber_tool_upgraded'
+    fail: 'invalid_barber_action' | 'balance_limit' | 'insufficient_funds'
+    serverOnly: true
+  }
 }
 
 /** The operations 'business.server' accepts (systems/business.ts). */
@@ -479,6 +487,7 @@ export const ACTION_TYPES = [
   'events.spray',
   'growth.table-result', 'growth.referral',
   'business.server',
+  'living-world.server',
   // the campus: unilagStudent, unilagCommunity, unilagShuttle (campus.ts)
   ...CAMPUS_ACTION_TYPES,
 ] as const satisfies readonly ActionType[]
@@ -487,7 +496,7 @@ export const ACTION_TYPES = [
 export const SERVER_ONLY_ACTIONS = [
   'estate.land-pay', 'street.place',
   'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
+  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'living-world.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */

@@ -1010,6 +1010,7 @@ export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
   | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
+  | 'livingWorld'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
@@ -1037,6 +1038,7 @@ export interface SliceBySystem {
   events: EventsSlice
   growth: GrowthSlice
   business: BusinessSlice
+  livingWorld: Record<never, never>
   unilagStudent: UnilagStudentSlice
   unilagCommunity: UnilagCommunitySlice
   unilagShuttle: UnilagShuttleSlice
@@ -1161,6 +1163,7 @@ export const SYSTEM_STATE_KEYS = {
   events: ['events'],
   growth: ['growth'],
   business: ['business'],
+  livingWorld: [],
   unilagStudent: ['unilagStudent'],
   unilagCommunity: ['unilagCommunity'],
   unilagShuttle: ['unilagShuttle'],

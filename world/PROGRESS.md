@@ -2,6 +2,13 @@
 
 ## Compact engine and lease acceptance — 8 October 2026
 
+Committed engine source86736a148a2cbba816ba94c6f9ee8ecab29f2ad1 also passes all five
+actual release-source policy tests on its exact clean Git archive (133,437,470
+logical bytes /139,939,840 tar bytes). Its owned scratch was removed, existing real
+caches preserved; `feature-index-clean-release-policy.{tap,stderr,json}` retains
+the exact SHA/command/terminal0. This is source policy, not a full game build or
+production deployment. No startup/runtime integration was added by this phase.
+
 GRAPHICS explicitly completed its bounded lighting phase and closed its owned
 Chrome tab, Vite/browser leases (terminal130), with slots0/1; WORLD then announced
 its sole local intensive turn. New World compiler initially failed one tuple

@@ -7,6 +7,10 @@ commands are terminal exit zero. **The engine and lease primitive are accepted;
 the durable opener, aggregate quotas, abrupt index crash recovery, fenced campaign
 hook and independent raw audit are not.** GRAPHICS explicitly closed its owned
 QA/server/browser resources and handed WORLD this sole intensive turn.
+Committed source `86736a148a2cbba816ba94c6f9ee8ecab29f2ad1` additionally passes all
+five actual release-source policy tests in its clean Git archive. Receipt paths
+and source/evidence bindings are recorded in PROGRESS.md. This does not certify a
+full runtime build or deployment.
 
 The prior published resource phase remains accepted at ba78e147. This source adds
 an engine-test entry to its fixed-worker registry. Run it only

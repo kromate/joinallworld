@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// The coloured card at the top of an app: a small label, one big figure, a line of context.
-// It takes the app's tint from --app-tint (set by the Phone for the app in front).
+// A readable app summary: context, a headline or amount, and supporting information.
 defineProps<{ label: string; figure: string }>()
 </script>
 
@@ -13,8 +12,8 @@ defineProps<{ label: string; figure: string }>()
 </template>
 
 <style scoped>
-.hero-card { --hero: var(--app-tint, var(--c-green-dark)); display: grid; gap: 2px; margin: 0 0 var(--s-3); padding: 16px 18px; border-radius: var(--r-lg); background: linear-gradient(150deg, color-mix(in srgb, var(--hero) 86%, #fff), var(--hero) 55%, color-mix(in srgb, var(--hero) 78%, #000)); color: #fff; box-shadow: var(--e-1); }
-.hero-card > small { font-size: 12px; font-weight: 600; opacity: .88; }
-.hero-card > strong { font-size: var(--t-display); font-weight: 700; line-height: 1.15; letter-spacing: -.2px; font-variant-numeric: tabular-nums; }
-.hero-card-note { margin-top: 4px; font-size: 12.5px; line-height: 1.4; opacity: .92; }
+.hero-card { display: grid; gap: 6px; margin: 0 0 20px; padding: 8px 2px 16px; background: none; color: var(--c-ink); border-bottom: 1px solid var(--c-line); }
+.hero-card > small { font-size: 14px; font-weight: 600; color: var(--c-muted); }
+.hero-card > strong { font-size: 30px; font-weight: 750; line-height: 1.15; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+.hero-card-note { margin-top: 2px; font-size: 14px; line-height: 1.5; color: var(--c-ink-2); }
 </style>

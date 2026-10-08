@@ -13,7 +13,7 @@ import BaseButton from '../../ui/BaseButton.vue'
 import BaseChip from '../../ui/BaseChip.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
-import HeroCard from '../../ui/HeroCard.vue'
+import AppArtwork from '../phone/AppArtwork.vue'
 import ListRow from '../../ui/ListRow.vue'
 import ListRows from '../../ui/ListRows.vue'
 import RowMark from '../../ui/RowMark.vue'
@@ -59,14 +59,14 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
 <template>
   <div class="bank">
     <ReliefLink />
-    <HeroCard label="Balance" :figure="money(state.cash)">
+    <section class="bank-wallet" aria-label="Your game wallet"><div class="bank-wallet-top"><span>Your game wallet</span><AppArtwork app="bank" /></div><strong>{{ money(state.cash) }}</strong><div class="bank-wallet-note">
       <template v-if="bills.due">
         Due every Saturday: <b>{{ money(economy.weeklyBills) }}</b> · next {{ economy.nextDueLabel }}.
         <template v-if="bills.tail === 'pay'"> Your job pays up to {{ money(career.weeklyPay) }} a week.</template>
         <template v-else-if="bills.tail === 'no-job'"> You have no job yet — open Jobs to start earning.</template>
       </template>
       <template v-else>No weekly bills yet.</template>
-    </HeroCard>
+    </div></section>
     <p class="ui-note">Game money only. Real store earnings are shown in My Store.</p>
     <div v-if="offline" class="bank-why" role="status">{{ offline }}</div>
 
@@ -140,6 +140,12 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
 </template>
 
 <style scoped>
+.bank-wallet { padding: 20px; margin: 0 0 16px; border-radius: 18px; background: #173d48; color: #fff; }
+.bank-wallet-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: #d6eee7; }
+.bank-wallet-top :deep(.ph-icon) { width: 46px; height: 46px; box-shadow: none; border-radius: 11px; }
+.bank-wallet > strong { display: block; margin: 14px 0 16px; font-size: 36px; line-height: 1.1; letter-spacing: -.025em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.bank-wallet-note { font-size: 13px; line-height: 1.5; color: #d6eee7; border-top: 1px solid #3e626c; padding-top: 12px; }
+
 .bank-quick { display: flex; gap: var(--s-2); margin: 0 0 var(--s-3); }
 .bank-quick > * { flex: 1; padding: 10px 8px; background: #fff; box-shadow: var(--ring); }
 /* Rent and loan: stacked on a phone, side by side when the phone is expanded on a desktop. */

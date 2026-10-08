@@ -119,8 +119,8 @@ function go(venue: string): void { shell.close(); void goTo(venue) }
 :global(.ph.is-wide) .civic-form input { max-width: 460px; }
 .ui-row.is-you { background: color-mix(in srgb, var(--app-tint, var(--c-green)) 8%, #fff); }
 .ui-row.is-you b { font-weight: 800; }
-.radio-now { position: relative; display: grid; gap: 3px; margin-bottom: var(--s-2); padding: 18px 18px 44px; border-radius: var(--r-lg); background: linear-gradient(150deg, #334155, #0f172a); color: #fff; overflow: hidden; overflow-wrap: anywhere; box-shadow: var(--e-1); }
-.radio-now.is-on { background: linear-gradient(150deg, #7c3aed, #1e1b4b); }
+.radio-now { position: relative; display: grid; gap: 3px; margin-bottom: var(--s-2); padding: 18px 18px 44px; border-radius: var(--r-lg); background: #18283e; color: #fff; overflow: hidden; overflow-wrap: anywhere; box-shadow: var(--e-1); }
+.radio-now.is-on { background: #442278; }
 .radio-now strong { display: block; font-size: 20px; letter-spacing: -.3px; }
 .radio-now small { font-size: 12px; line-height: 1.4; opacity: .85; }
 .radio-bars { position: absolute; left: 18px; bottom: 14px; display: flex; align-items: flex-end; gap: 4px; height: 20px; }

@@ -5,7 +5,7 @@ import { PHONE_ART, PHONE_ART_COLUMNS, PHONE_ART_X, PHONE_ART_Y } from '../../..
 const props = defineProps<{ app: string }>()
 const atlas = new URL('../../../ui/phone/app-icons.webp', import.meta.url).href
 const style = computed(() => {
-  const found = PHONE_ART.indexOf(props.app)
+  const found = PHONE_ART.indexOf(props.app === 'person' ? 'contacts' : props.app)
   const index = found < 0 ? PHONE_ART.indexOf('settings') : found
   const column = index % PHONE_ART_COLUMNS
   const row = Math.floor(index / PHONE_ART_COLUMNS)

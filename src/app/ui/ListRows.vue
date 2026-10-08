@@ -8,5 +8,5 @@ withDefaults(defineProps<{ as?: 'div' | 'ul'; label?: string }>(), { as: 'div', 
 </template>
 
 <style scoped>
-.list-rows { list-style: none; margin: 0 0 var(--s-2); padding: 0; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); overflow: hidden; }
+.list-rows { list-style: none; margin: 0 0 var(--s-2); padding: 0; border-radius: var(--r-sm); background: #fff; box-shadow: none; overflow: hidden; }
 </style>

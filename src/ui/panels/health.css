@@ -1,10 +1,10 @@
 /* Health app and HUD chip. Classes are prefixed health-. */
-.health-status{display:flex;gap:14px;align-items:center;margin-bottom:var(--s-2);padding:16px;border-radius:var(--r-lg);background:linear-gradient(150deg,#2fa866,#1d6b43);color:#fff;box-shadow:var(--e-1)}
+.health-status{display:flex;gap:14px;align-items:center;margin-bottom:var(--s-2);padding:16px;border-radius:var(--r-lg);background:#176c4a;color:#fff;box-shadow:var(--e-1)}
 .health-status>span{flex:none;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#ffffff33;font-size:30px;line-height:1}
 .health-status h3{margin:0 0 2px!important;font-size:19px!important;letter-spacing:0!important;text-transform:none!important;color:#fff!important}
 .health-status p{margin:0!important;font-size:13px!important;line-height:1.4!important;opacity:.95}
-.health-status.is-rundown{background:linear-gradient(150deg,#e8a643,#b8731a)}
-.health-status.is-sick{background:linear-gradient(150deg,#e5553f,#9c2b1c)}
+.health-status.is-rundown{background:#87520b}
+.health-status.is-sick{background:#ad3027}
 .health-feelings{margin:0 0 var(--s-3)}
 .health-risk .ui-bar{display:block;margin:6px 0}
 .ui-bar.is-low i{background:#d9822b}

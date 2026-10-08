@@ -3,26 +3,26 @@
  * values so the whole game reads as one system.
  *
  *   colour     ink / muted text, surfaces, lines, the brand greens, amber (attention), red (danger)
- *   radii      --r-xs 8 · --r-sm 12 · --r-md 16 · --r-lg 20 · --r-xl 24 · pill
- *   type       --t-micro 11 · --t-small 12 · --t-caption 12 · --t-body 13 · --t-lead 15 · --t-title 17 · --t-heading 20 · --t-display 28
+ *   radii      --r-xs 6 · --r-sm 8 · --r-md 12 · --r-lg 16 · --r-xl 20 · pill
+ *   type       --t-micro 11 · --t-small 12 · --t-caption 12 · --t-body 14 · --t-lead 16 · --t-title 17 · --t-heading 20 · --t-display 28
  *              Nothing is set smaller than 11px; 11 is for short labels only, anything read as a sentence is 12 or more.
  *   motion     --m-press 90ms (a tap answering) · --m-fast 140ms · --m-panel 200ms · --m-sheet 260ms · --m-pop 380ms (a reward);
  *              --ease-out for things arriving, --ease-pop (a small overshoot) for rewards only
  *   status     good = green + a plus or a tick · low = orange + “!” · critical = vermilion + “!!” — never colour alone
- *   elevation  --e-1 (chips, rows) · --e-2 (bars, cards over the scene) · --e-3 (sheets, the phone)
+ *   elevation  --e-1 (flat content) · --e-2 (bars over the scene) · --e-3 (sheets, the phone)
  */
 :root {
   /* colour */
-  --c-ink: #1b1f27;
-  --c-ink-2: #39404b;
-  --c-muted: #5f6770;
-  --c-faint: #6b737c;
-  --c-surface: rgba(253, 253, 252, .97);
+  --c-ink: #17212f;
+  --c-ink-2: #354356;
+  --c-muted: #526174;
+  --c-faint: #5b6878;
+  --c-surface: #fff;
   --c-surface-solid: #fff;
-  --c-canvas: #f2f4f3;
-  --c-line: #e3e6e4;
-  --c-fill: #eef1ef;
-  --c-fill-2: #e3e7e4;
+  --c-canvas: #f7f8fa;
+  --c-line: #dce2e9;
+  --c-fill: #edf1f5;
+  --c-fill-2: #e0e6ed;
   --c-green: #2fa866;
   --c-green-dark: #1d6b43;
   --c-green-soft: #e8f5ec;
@@ -47,20 +47,20 @@
   /* spacing */
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
   /* radii */
-  --r-xs: 8px; --r-sm: 12px; --r-md: 16px; --r-lg: 20px; --r-xl: 24px; --r-pill: 999px;
+  --r-xs: 6px; --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-pill: 999px;
   --r-chip: 22px; --r-card: 20px; --r-sheet: 24px; --r-round: 50%;
   /* type */
   --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --t-micro: 11px; --t-small: 12px; --t-caption: 12px; --t-body: 13px; --t-lead: 15px; --t-title: 17px; --t-heading: 20px; --t-display: 28px;
+  --t-micro: 11px; --t-small: 12px; --t-caption: 12px; --t-body: 14px; --t-lead: 16px; --t-title: 17px; --t-heading: 20px; --t-display: 28px;
   /* touch: every control is at least this tall and wide */
   --tap: 44px;
   /* elevation and motion */
-  --e-1: 0 1px 2px rgba(16, 24, 20, .06), 0 1px 3px rgba(16, 24, 20, .08);
+  --e-1: 0 0 transparent;
   --e-2: 0 2px 4px rgba(16, 24, 20, .06), 0 6px 18px rgba(16, 24, 20, .14);
   --e-3: 0 8px 20px rgba(8, 14, 11, .18), 0 24px 70px rgba(8, 14, 11, .38);
   --shadow: var(--e-2);
   --shadow-soft: var(--e-1);
-  --ring: 0 0 0 1px rgba(16, 24, 20, .06);
+  --ring: 0 0 transparent;
   --focus: 3px solid #1c5f3c;
   --ease: .16s ease-out;
   --m-press: 90ms; --m-fast: 140ms; --m-panel: 200ms; --m-sheet: 260ms; --m-pop: 380ms;

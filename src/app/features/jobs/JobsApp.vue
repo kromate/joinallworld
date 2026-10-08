@@ -1,14 +1,14 @@
 <script setup lang="ts">
 // Jobs app. It leads with your job (role, pay, days, workplace hours, next step, Go automatically,
 // Quit) or — with no job yet — the next step towards one, then "How work works" (the rules, folded
-// away), then one scannable card per job: role, pay, days, workplace hours and whether it is open
-// now, key skill, and Apply / Switch.
+// away), then searchable job rows: role and pay first; expand for schedule, workplace hours,
+// skill and Apply / Switch.
 //
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
 // Actions: 'apply-job' { id }, 'career.switch' { id }, 'career.quit' and 'career.auto' { on }.
 // Switching and quitting ask first, in place. A control that sent an action is disabled until the
 // server has answered.
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { ActivityId, JobId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -29,7 +29,12 @@ const view = game.view
 const career = computed(() => view.value.career)
 const offline = computed(() => readOnlyReason(view.value.connected ? null : linkWords(view.value)?.why))
 const ask = computed(() => validAsk(asking.value, career.value))
-const jobs = computed(() => otherJobs(career.value.jobs))
+const search = ref('')
+const onlyOpen = ref(false)
+const jobs = computed(() => {
+  const query = search.value.trim().toLocaleLowerCase('en')
+  return otherJobs(career.value.jobs).filter(job => (!onlyOpen.value || openNow(job) === true) && (!query || [job.label, job.entryRole, job.skill, job.summary].join(' ').toLocaleLowerCase('en').includes(query)))
+})
 const rules = computed(() => jobsRules(career.value.rules))
 const wait = computed(() => pending.value !== null)
 
@@ -84,20 +89,22 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
       </div>
       <button v-else type="button" class="jobs-link" @click="asking = 'quit'">Quit this job</button>
     </template>
-    <section v-else class="ui-hero" aria-label="Your next step"><small>No job yet</small><strong>Find work today</strong><p>{{ career.step.text }}</p></section>
+    <header v-else class="jobs-intro"><h3>Find your next role</h3><p>{{ career.step.text }}</p></header>
 
     <HowItWorks id="jobs-rules" page label="How work works" :rules="rules" />
     <h3 class="ui-section" data-section="list">{{ career.employed ? 'Other jobs' : 'Pick a job' }}</h3>
+    <label class="jobs-search" for="jobs-search">Find a role or skill<input id="jobs-search" v-model="search" type="search" name="job-search" autocomplete="off" placeholder="Try coding or nursing…"></label>
+    <label class="jobs-filter"><input v-model="onlyOpen" type="checkbox"> Workplaces open now <span>{{ jobs.length }} roles</span></label>
+    <p v-if="!jobs.length" class="ui-note" role="status">No roles match. Try another search or turn off the open-now filter.</p>
     <div class="jobs-list">
-      <article v-for="job in jobs" :key="job.id" class="jobs-track">
-        <header class="jobs-head">
-          <span class="jobs-icon" aria-hidden="true"><GameIcon inline kind="track" :id="job.id" :emoji="job.icon" /></span>
+      <details v-for="job in jobs" :key="job.id" class="jobs-track">
+        <summary class="jobs-head">
           <div>
             <h3>{{ job.label }}<template v-if="!job.track"> <span class="jobs-badge">Starter</span></template></h3>
             <p>{{ job.track ? `Start as ${job.entryRole}` : 'No ladder · work any day' }}</p>
           </div>
           <b class="jobs-pay">{{ money(job.pay) }}<small>per shift</small></b>
-        </header>
+        </summary>
         <ul class="jobs-facts">
           <li><span aria-hidden="true"><GameIcon inline name="calendar" /></span>{{ job.schedule }}</li>
           <li :class="openNow(job) === null ? '' : openNow(job) ? 'is-open' : 'is-closed'"><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.hours }}</li>
@@ -122,7 +129,7 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
           <button v-else-if="control.kind === 'transfer'" type="button" class="ui-button is-primary" :disabled="wait" @click="apply(job.id)">{{ control.label }} — free, keeps your level</button>
           <button v-else-if="control.kind === 'switch'" type="button" class="ui-button" @click="asking = job.id">Switch to this job</button>
         </template>
-      </article>
+      </details>
     </div>
   </div>
 </template>

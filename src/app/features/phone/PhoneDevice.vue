@@ -14,7 +14,6 @@
 import '../../../ui/phone/phone.css'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import { glyphFor } from '../../../ui/phone/icons.ts'
 import { checkReports } from '../../../ui/phone/reports.ts'
 import { getWallpaper } from '../../../ui/phone/wallpapers.ts'
 import { tintOf } from '../../../ui/phone/icons-more.ts'
@@ -228,7 +227,7 @@ defineExpose({
           <header class="ph-appbar">
             <template v-if="app">
               <button class="ph-back" type="button" aria-label="Back to the home screen" @click="shell.open('phone')"><GameIcon bare name="back" /></button>
-              <span class="ph-bar-icon" aria-hidden="true"><GameIcon bare :name="glyphFor(app.id)" /></span>
+              <AppArtwork class="ph-bar-icon" :app="app.id" />
               <h2>{{ app.title }}</h2>
               <button class="ph-wide" type="button" :aria-pressed="wide" :aria-label="wide ? 'Make the phone narrower' : 'Make the phone wider'" :title="wide ? 'Narrower' : 'Wider'" @click="wide = !wide"><GameIcon bare :name="wide ? 'shrink' : 'expand'" /></button>
             </template>

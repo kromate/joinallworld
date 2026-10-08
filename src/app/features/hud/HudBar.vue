@@ -103,7 +103,7 @@ function onSaved(): void {
 @media (max-width: 720px) { .hud-sound-slot { width: 100%; } }
 .hud-bar button { border: 0; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .hud-bar button:focus-visible { outline: var(--focus); outline-offset: 2px; }
-.hud-mark { display: none; flex: none; place-items: center; width: 26px; height: 26px; margin-left: -6px; border-radius: 9px; background: linear-gradient(150deg, #39c07a, #1d6b43); color: #fff; box-shadow: inset 0 1px 0 #ffffff59; }
+.hud-mark { display: none; flex: none; place-items: center; width: 26px; height: 26px; margin-left: -6px; border-radius: 9px; background: #1d6b43; color: #fff; box-shadow: inset 0 1px 0 #ffffff59; }
 .hud-clock { font-size: var(--t-body); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.1px; }
 .hud-mood { padding-left: 12px; border-left: 1px solid var(--c-line); color: var(--c-green-dark); font-weight: 600; }
 .hud-mood.is-warn { color: #8a5a12; }

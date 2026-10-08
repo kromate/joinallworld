@@ -7,7 +7,7 @@ import ResidentBadge from '../locate/ResidentBadge.vue'
 import { useConfirmedOnly } from '../locate/confirmedFilter.ts'
 import { useApp } from '../../state/app.ts'
 import type { NeighboursResponse } from '../../../types/civic.ts'
-import HeroCard from '../../ui/HeroCard.vue'
+import AppArtwork from '../phone/AppArtwork.vue'
 import BaseButton from '../../ui/BaseButton.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -45,7 +45,7 @@ function hi(player: { id: string; name: string }): void {
   <div class="neighbours">
     <CivicStatus :item="item" @retry="reload" />
     <template v-if="data">
-      <HeroCard :label="`${view.city.name} directory`" :figure="`${count(data.total)} home${data.total === 1 ? '' : 's'}`">{{ count(data.online) }} online now{{ data.hidden ? ' · your home is hidden' : '' }}</HeroCard>
+      <header class="directory-summary"><div><h3>{{ view.city.name }} neighbours</h3><p>{{ count(data.total) }} homes · {{ count(data.online) }} online now</p><small v-if="data.hidden">Your home is hidden</small></div><AppArtwork app="neighbours" /></header>
       <CivicStale :item="item" />
       <label v-if="groups.length" class="civic-note"><input v-model="confirmed.on.value" type="checkbox" data-confirmed-filter> Location-confirmed only</label>
       <template v-if="groups.length">
@@ -73,6 +73,12 @@ function hi(player: { id: string; name: string }): void {
 </template>
 
 <style scoped>
+.directory-summary { display: grid; grid-template-columns: minmax(0, 1fr) 64px; gap: 16px; align-items: center; padding: 4px 0 22px; margin-bottom: 6px; }
+.directory-summary h3 { margin: 0; font-size: 25px; line-height: 1.2; letter-spacing: -.025em; text-wrap: balance; }
+.directory-summary p { margin: 8px 0 0; color: var(--c-muted); font-size: 14px; }
+.directory-summary small { display: block; margin-top: 6px; font-size: 12px; color: var(--c-muted); }
+.directory-summary :deep(.ph-icon) { width: 64px; height: 64px; box-shadow: none; }
+
 .civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions .civic-action { flex: 1 1 140px; display: grid; margin: 0; }

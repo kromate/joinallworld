@@ -55,6 +55,8 @@
 
 /* ---- status bar ---------------------------------------------------------------------------- */
 .ph-status{position:absolute;z-index:7;top:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:space-between;padding:2px 22px 0 14px;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:#fff;pointer-events:none}
+.ph[data-view=app]:not(.is-shade) .ph-status{color:var(--c-ink)}
+.ph[data-view=app]:not(.is-shade) .ph-status-btn:focus-visible{outline:2px solid var(--c-blue)!important}
 .ph-status-btn{pointer-events:auto;min-width:var(--tap);height:var(--tap);padding:0 12px;border:0;border-radius:var(--r-pill);background:none;font-weight:700!important;letter-spacing:.2px}
 .ph-sys{display:flex;align-items:center;gap:5px;font-size:12px}
 .ph-sys b{font-weight:700}
@@ -62,9 +64,9 @@
 .ph-signal i{width:3px;border-radius:1px;background:currentColor}
 .ph-signal i:nth-child(1){height:4px}.ph-signal i:nth-child(2){height:6.5px}.ph-signal i:nth-child(3){height:9px}.ph-signal i:nth-child(4){height:12px}
 .ph-signal.is-off i{opacity:.32}
-.ph-batt{position:relative;width:26px;height:13px;margin-left:4px;border:1.5px solid #ffffffb3;border-radius:4.5px;padding:1.5px}
-.ph-batt::after{content:'';position:absolute;right:-4px;top:3px;width:2px;height:4px;border-radius:0 2px 2px 0;background:#ffffffb3}
-.ph-batt i{display:block;height:100%;width:var(--level);min-width:2px;border-radius:2px;background:#fff}
+.ph-batt{position:relative;width:26px;height:13px;margin-left:4px;border:1.5px solid currentColor;border-radius:4.5px;padding:1.5px}
+.ph-batt::after{content:'';position:absolute;right:-4px;top:3px;width:2px;height:4px;border-radius:0 2px 2px 0;background:currentColor}
+.ph-batt i{display:block;height:100%;width:var(--level);min-width:2px;border-radius:2px;background:currentColor}
 .ph-batt.is-mid i{background:#ffc94d}.ph-batt.is-low i{background:#ff6b5e}
 
 /* ---- home screen -------------------------------------------------------------------------- */
@@ -110,8 +112,8 @@
 .ph-homebar::after{content:'';position:absolute;inset:-12px -20px -7px}
 .ph[data-view=app] .ph-homebar{background:#1b1f2766}
 .ph button:focus-visible{outline:3px solid #fff!important;outline-offset:1px!important}
-.ph-app button:focus-visible,.ph-app a:focus-visible,.ph-app input:focus-visible,.ph-app select:focus-visible,.ph-app textarea:focus-visible,.ph-app summary:focus-visible{outline:3px solid var(--app-tint)!important;outline-offset:2px!important}
-.ph-appbar button:focus-visible{outline:3px solid #fff!important}
+.ph-app button:focus-visible,.ph-app a:focus-visible,.ph-app input:focus-visible,.ph-app select:focus-visible,.ph-app textarea:focus-visible,.ph-app summary:focus-visible{outline:3px solid var(--c-blue)!important;outline-offset:2px!important}
+.ph-appbar button:focus-visible{outline:2px solid var(--c-blue)!important;outline-offset:-2px!important}
 #life-dialog .ph-appbtn.is-coach{outline:0;box-shadow:none}
 #life-dialog .ph-appbtn.is-coach .ph-icon{box-shadow:0 0 0 3px #ffd34d,0 0 0 8px #ffd34d55}
 
@@ -136,15 +138,14 @@
 .ph-app{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;background:var(--c-canvas);color:var(--c-ink);opacity:0;visibility:hidden;transform:scale(.88);transform-origin:50% 62%;transition:opacity .18s ease-out,transform var(--ease-phone),visibility 0s .26s}
 .ph[data-view=app] .ph-app{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .ph[data-view=app] .ph-home{opacity:0;visibility:hidden;transform:scale(1.08);transition-delay:0s,0s,.26s}
-.ph-appbar{flex:none;display:flex;align-items:center;gap:8px;min-height:102px;padding:50px 8px 8px 6px;background:linear-gradient(180deg,color-mix(in srgb,var(--app-tint) 82%,#000) 0%,var(--app-tint) 100%);color:#fff;box-shadow:0 1px 0 #0000001a,0 4px 14px #0000001f;z-index:2}
+.ph-appbar{flex:none;display:flex;align-items:center;gap:8px;min-height:100px;padding:46px 12px 10px 8px;background:#fff;color:var(--c-ink);border-bottom:1px solid var(--c-line);box-shadow:none;z-index:2}
 .ph-appbar h2{flex:1;min-width:0;margin:0;font-size:18px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ph-back,.ph-wide{flex:none;display:grid;place-items:center;width:var(--tap);height:var(--tap);border:0;border-radius:50%;background:none}
-.ph-back:hover,.ph-wide:hover{background:#ffffff26}
+.ph-back,.ph-wide{flex:none;display:grid;place-items:center;width:var(--tap);height:var(--tap);border:0;border-radius:8px;background:none;color:var(--c-blue)}
+.ph-back:hover,.ph-wide:hover{background:var(--c-fill)}
 .ph-back svg{width:24px;height:24px}
 .ph-wide svg{width:19px;height:19px}
-.ph-bar-icon{flex:none;display:grid;place-items:center;width:30px;height:30px;margin-left:-4px;border-radius:9px;background:#ffffff2e}
-.ph-bar-icon svg{width:19px;height:19px}
-.ph-appbody{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:14px 14px 30px;font-size:14px;line-height:1.45;scrollbar-width:thin}
+.ph-appbar .ph-bar-icon{flex:none;width:32px;height:32px;margin:0 2px 0 0;border-radius:8px;box-shadow:none}
+.ph-appbody{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:20px 16px 30px;font-size:15px;line-height:1.5;scrollbar-width:thin}
 .ph-appbody>:first-child{margin-top:0!important}
 .ph.is-wide{width:min(780px,calc(100vw - 40px))}
 /* Expanded: running text keeps a readable measure instead of spanning the whole device. */

@@ -30,8 +30,9 @@ Current source already has quoted replies, reactions, pictures, pin/search/group
 | Reliability A1–A4 from linked chat | Integrated | Previous release 75d481cc recorded deployed; live build independently confirmed | Preserve wallet correctness, recorded history, account-generation guards and store authority fences |
 | Current message actions | Deployed at bd69e765 | Node/Worker/browser and live synthetic checks passed | Voice-note/media follow-up remains separate |
 | Groups view and swipe reply | Deployed at bd69e765 | Compiled-browser gesture check, phone-width layout and public navigation verified | Physical-device follow-up |
-| Recorded voice notes, video, stickers | Queued | Voice calls and pictures already exist; recordings are distinct | Bounded lazy media storage/recording design and authorization review |
+| Recorded voice notes, video, stickers | Voice boundaries started locally | Unwired Opus parser/recorder; see VOICE-NOTES-WIP.md. No voice-note release | Resume after the user-prioritized app redesign; finish the full private send/playback path |
 | Phone UI polish | Deployed at bb04c64f | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Public artwork and saved-state continuity verified |
+| App interiors and headers | Deployed at cfbc133b | APP-INTERIORS.md records real screenshots, three prototypes, 41-app inspection, compiled/live checks and release evidence | Preserve task-specific layouts and accessibility in subsequent feature phases |
 | HUD/recovery polish and sustained mobile performance | Queued | Prior linked-chat viewport check is not physical-device proof | Measure representative current build; preserve download budgets |
 | Housing, household/staff/family, economy and player work | Re-audit required | Historical parity inventory is stale | Reconcile current source before accepting a missing feature; deliver bounded complete loops |
 | City/travel/campus progression | Re-audit required | Prior deployed smoke recorded 40 city chunks; closed-city conclusions from old checkout are obsolete | Validate actual gameplay coverage city by city |
@@ -84,3 +85,8 @@ Source `bb04c64fd8f5ed0b2024df07da0b8de20adfc26d` deployed as Cloudflare version
 - Worker startup: 127 ms. Startup download: 614,173 raw / 222,534 gzip / 194,729 Brotli bytes, inside unchanged limits. Icon rendering uses a static lazy WebP, not runtime 3D rendering. Physical-device thermal performance remains unmeasured.
 
 The broader feature-parity roadmap remains open.
+
+
+## App interiors release
+
+Source `cfbc133b36b5d4e8d071bb8223fbfc59e6a33289` deployed as `77d0ab82-7f21-4431-9ad9-9d6e8d60740b`. Public build confirmed at 13:45:31 UTC, 8 October 2026. See APP-INTERIORS.md for scope, real design references, comparison prototypes, all 41 regular app entries inspected, and validation. The shared system and headers apply across apps; Jobs, Messages, Bank, Games, Rich List, Neighbours and charts received specific layout/interaction changes. This release does not claim voice-note delivery or completion of the broad feature-parity roadmap.

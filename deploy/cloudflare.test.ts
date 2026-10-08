@@ -809,7 +809,7 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const meta = (key: string) => new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`).exec(html)?.[1];
   assert.match(meta('og:title') as string, /Ada/); assert.match(meta('og:title') as string, /Whot/);
   assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card'), meta('twitter:image')],
-    ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.png`, 'summary_large_image', `${ORIGIN}/og/allworld.png`]);
+    ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.jpg`, 'summary_large_image', `${ORIGIN}/og/allworld.jpg`]);
   const target = (/<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html) as RegExpExecArray)[1]?.replaceAll('&amp;', '&');
   assert.equal(target, `/?join=${ada.id}&ref=${code}&table=${TABLE}`);
   assert.equal((await f.fetch(`/s/${code}`, { method: 'HEAD' })).status, 200);
@@ -820,10 +820,13 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   assert.equal(joinIdFrom(`/v/${ada.id}`, ''), ada.id);
   // The game's own page, as a crawler receives it from the Worker: the default preview image is absolute.
   const home = await (await f.fetch('/')).text();
-  assert.match(home, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.png"/);
-  assert.equal((await f.fetch('/og/allworld.png')).status, 200);
+  assert.match(home, /<meta property="og:image" content="https:\/\/play\.example\/og\/allworld\.jpg"/);
+  const previewImage = await f.fetch('/og/allworld.jpg');
+  assert.equal(previewImage.status, 200);
+  assert.match(previewImage.headers.get('content-type') ?? '', /^image\/jpeg/);
+  assert.equal((await f.fetch('/og/allworld.png')).status, 200, 'the old cached preview link remains valid');
   const headOf = (name: string) => new RegExp(`<(?:meta|link) (?:(?:property|name|rel)="${name}") (?:content|href)="([^"]*)"`).exec(home)?.[1];
-  assert.equal(headOf('canonical'), `${ORIGIN}/`); assert.equal(headOf('og:url'), `${ORIGIN}/`); assert.equal(headOf('og:image'), `${ORIGIN}/og/allworld.png`); assert.equal(headOf('twitter:image'), `${ORIGIN}/og/allworld.png`);
+  assert.equal(headOf('canonical'), `${ORIGIN}/`); assert.equal(headOf('og:url'), `${ORIGIN}/`); assert.equal(headOf('og:image'), `${ORIGIN}/og/allworld.jpg`); assert.equal(headOf('twitter:image'), `${ORIGIN}/og/allworld.jpg`);
   assert.ok(/<title>[^<]{1,60}<\/title>/.test(home) && (headOf('description') ?? '').length <= 155 && headOf('robots') === 'index,follow' && !home.includes('joinallworld.com'));
   const ld = [...home.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)].flatMap(m => JSON.parse(m[1] as string) as { '@type': string; url: string }[]);
   assert.deepEqual(ld.map(item => item['@type']), ['VideoGame', 'WebSite']); assert.ok(ld.every(item => item.url === `${ORIGIN}/`));

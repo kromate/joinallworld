@@ -36,7 +36,7 @@ test('the games pages: title, description, canonical, Open Graph and Twitter tag
   assert.deepEqual([hub.ogDescription, hub.twDescription], [hub.description, hub.description]);
   assert.equal(hub.ogUrl, `${SITE_ORIGIN}/games`);
   assert.equal(hub.robots, 'index,follow');
-  assert.equal(hub.image, `${SITE_ORIGIN}/og/allworld.png`, 'the existing preview image is reused');
+  assert.equal(hub.image, `${SITE_ORIGIN}/og/allworld.jpg`, 'the existing preview image is reused');
   for (const game of GAME_SLUGS) { const page = head(withPathMeta(INDEX, `/games/${game}`)); assert.equal(page.canonical, `${SITE_ORIGIN}/games/${game}`); assert.notEqual(page.title, hub.title, game); assert.match(page.title ?? '', /— Allworld$/) }
   // Aliases are one page under one address.
   for (const alias of ['/play', '/Games/']) assert.equal(head(withPathMeta(INDEX, alias)).canonical, `${SITE_ORIGIN}/games`, alias);
@@ -147,7 +147,7 @@ test('the Node host: the page for /games, /abuja and an unknown path, with the s
     assert.equal(response.headers.get('content-security-policy'), homePolicy, `${path}: the policy is the home page's`);
     assert.equal(response.headers.get('cache-control'), 'no-cache');
     assert.match(canonical(body) ?? '', /^https:\/\/play\.example\/[a-z/]+$/);
-    assert.equal(tag(body, 'og:image'), 'https://play.example/og/allworld.png');
+    assert.equal(tag(body, 'og:image'), 'https://play.example/og/allworld.jpg');
   }
   const head = await fetch(`${f.base}/abuja`, { method: 'HEAD' });
   assert.equal(head.headers.get('content-security-policy'), homePolicy, 'HEAD gets the same policy');

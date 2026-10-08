@@ -8,11 +8,12 @@ import { writeFileSync } from 'node:fs';
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-if (process.argv.length !== 3) {
+const reportArgument = process.argv[2];
+if (process.argv.length !== 3 || typeof reportArgument !== 'string') {
   throw new Error('Usage: node scripts/living-world-attribution.mjs /tmp/report.json');
 }
 
-const reportPath = resolve(process.argv[2]);
+const reportPath = resolve(reportArgument);
 const tmpRoot = resolve('/tmp');
 const reportRelative = relative(tmpRoot, reportPath);
 if (!reportPath.startsWith(`${tmpRoot}${sep}`) || reportRelative === '..' || reportRelative.startsWith(`..${sep}`) || isAbsolute(reportRelative)) {
@@ -22,13 +23,15 @@ if (!reportPath.startsWith(`${tmpRoot}${sep}`) || reportRelative === '..' || rep
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 process.chdir(repoRoot);
 
+/** @param {string[]} args @returns {string} */
 const git = (args) => execFileSync('git', args, { cwd: repoRoot, encoding: 'utf8' }).trim();
 const dirty = git(['status', '--porcelain', '--untracked-files=all']);
 if (dirty) throw new Error('Refusing to build: the checkout has tracked or untracked changes.');
 const sha = git(['rev-parse', 'HEAD']);
 
+/** @param {string | null | undefined} value @returns {string | null} */
 function safeId(value) {
-  if (typeof value !== 'string') return value ?? null;
+  if (value === null || value === undefined) return null;
   if (value.startsWith('\0')) return `virtual:${safeId(value.slice(1))}`;
   if (value.startsWith('file://')) {
     try { value = fileURLToPath(value); } catch { return 'external:file-url'; }

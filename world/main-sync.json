@@ -34,7 +34,7 @@
     "unknownReservationBytes": 19424539,
     "unchanged": true
   },
-  "next": "Implement three explicitly pinned African city-associated monthly climate attachments; fetch upstream at the next verified implementation checkpoint.",
+  "next": "Run the reviewed Dakar/Addis Ababa/Dar es Salaam batch one job at a time, then implement bounded regional acquisition reuse and local fan-out toward country coverage.",
   "latestFetchCheckpoint": {
     "worldCommit": "925d9edbf1d9d73de8842dea2104ebda80e51b99",
     "fetchedMain": "1a329026aee962405ab81b3851861c92182c3ca4",
@@ -42,5 +42,49 @@
     "newIncomingCommits": 0,
     "mergeNeeded": false,
     "observedAt": "2026-10-08T10:44:10.530436+00:00"
+  },
+  "latestSynchronization": {
+    "worldMilestone": "d02a201f18ac37bd00e8352708f87abaf5bbbe08",
+    "mergeCommit": "e3c1c3b61e4fe47343aa2aa7c838af7a320c4b58",
+    "incomingMain": "146b57e4034f79b63d1754f740488c3a66551973",
+    "incomingCommits": 2,
+    "conflicts": 0,
+    "behindFetchedMain": 0,
+    "incomingWorldOrDependencyChanges": [],
+    "worldCodeUnchangedByMerge": true,
+    "verification": {
+      "fullWorldSuiteBeforeMerge": {
+        "passed": 459,
+        "failed": 0,
+        "evidence": ".cache/world-build/evidence/climate-attachment-world-tests-checkpoint.tap"
+      },
+      "postMergeWorldTypeScript": "passed",
+      "postMergeReplay": [
+        {
+          "id": "accra",
+          "manifestHash": "c8cb7d2cffc79d9aaa5451df9b04e5baa978b2f5be367a717484eace8402e3a4",
+          "elapsedMs": 380,
+          "cacheHit": true,
+          "networkBytes": 0
+        },
+        {
+          "id": "nairobi",
+          "manifestHash": "d3d6515085df93e227c603ad08426d966af98cdea3693604665770439b4d921d",
+          "elapsedMs": 312,
+          "cacheHit": true,
+          "networkBytes": 0
+        },
+        {
+          "id": "cape-town",
+          "manifestHash": "fb659e32319919e507513787e7917ab4051d5958aa8d32443b4c08e9488a0dfc",
+          "elapsedMs": 229,
+          "cacheHit": true,
+          "networkBytes": 0
+        }
+      ],
+      "originalInputsAndLedgersUnchanged": 43,
+      "climatePublicationAttempts": 3
+    },
+    "observedAt": "2026-10-08T11:41:48.422283+00:00"
   }
 }

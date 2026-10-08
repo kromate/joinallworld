@@ -13,6 +13,12 @@ import { GROWTH_GLYPHS } from './icons-growth.ts';
 
 registerGlyphs({
   ...GROWTH_GLYPHS,
+  land: `<path d="m3 14 9-5 9 5-9 6Z" ${F}/><path d="M12 14V3h7l-2 3 2 3h-7"/>`,
+  neighbourhood: `<path d="M3 20V9h6v11M9 20V4h7v16M16 20V11h5v9" ${F}/><path d="M11.5 7h2M11.5 11h2M11.5 15h2M3 20h18"/>`,
+  stories: `<rect x="3" y="5" width="18" height="15" rx="2" ${F}/><path d="M3 10h18M5 5l4 5M11 5l4 5M17 5l4 5m-11 3 5 3-5 3Z"/>`,
+  capture: `<rect x="2.5" y="7" width="19" height="13" rx="3" ${F}/><circle cx="12" cy="13.5" r="4"/><path d="m7 7 2-3h6l2 3"/>`,
+  commerce: `<path d="M5 8h14l1 12H4Z" ${F}/><path d="M8 9V6a4 4 0 0 1 8 0v3"/>`,
+  games: `<path d="M7 7h10c3 0 4 4 5 10-1 4-4 2-7-1H9c-3 3-6 5-7 1 1-6 2-10 5-10Z" ${F}/><path d="M6 10v5M3.5 12.5h5M16 11h.01M19 14h.01"/>`,
   // The Campus app (UNILAG): a mortarboard.
   campus: `<path d="M2.5 9.5 12 5l9.5 4.5L12 14Z" ${F}/><path d="M6.5 11.6v4.4c1.6 1.5 3.4 2.2 5.5 2.2s3.9-.7 5.5-2.2v-4.4M21.5 9.5v5.5"/>`,
   contacts: `<rect x="5" y="3.5" width="14.5" height="17" rx="2.5" ${F}/><circle cx="12.2" cy="10" r="2.2"/><path d="M8.5 16.5c.5-2 2-3 3.7-3s3.2 1 3.7 3M3 8h2M3 12h2M3 16h2"/>`,
@@ -31,6 +37,7 @@ registerGlyphs({
 
 /** One colour per app: the icon's rounded square and the app bar. */
 export const TINTS: Record<string, string> = {
+  land: '#477b55', neighbourhood: '#397f9d', stories: '#776299', capture: '#4e657d', commerce: '#9d64a4', games: '#8065ba', admin: '#52687e',
   jobs: '#2563eb', messages: '#16a34a', bank: '#0f766e', ride: '#d97706',
   statement: '#475569', invest: '#7c3aed', career: '#0284c7', richlist: '#b7791f',
   goals: '#ea580c', health: '#e11d48', groceries: '#4d9a1a', boutique: '#db2777', houses: '#b45309', cars: '#334155', settings: '#6b7280', help: '#0e8fd6',

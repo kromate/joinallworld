@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { createDriving, pauseDriving, readDrivingState, stepDriving } from './driving.ts'
+import { createDriving, pauseDriving, readDrivingState, readValidatedDrivingState, stepDriving } from './driving.ts'
 import type { DrivingRoute, DrivingState } from './driving.ts'
 
 const COURSE: DrivingRoute = {
@@ -182,4 +182,17 @@ test('analytic road coverage catches a 1 cm gap that bounded sampling can miss',
   assert.deepEqual(result.position, state.position)
   assert.equal(result.speed, 0)
   assert.match(result.feedback, /left the road/)
+})
+
+// The route adapter must distinguish a corrupted save from a valid paused lesson.
+test('strict saved-state validation preserves live state without moving and rejects inconsistent records', () => {
+  const live = stepDriving(createDriving(COURSE), { throttle: 1, brake: 0, steer: 0 }, COURSE).state
+  const saved = JSON.stringify(live)
+  assert.deepEqual(readValidatedDrivingState(JSON.parse(saved), COURSE), live)
+  assert.equal(JSON.stringify(live), saved)
+  for (const value of [null, {}, { ...live, position: null }, { ...live, assessment: 'passed' },
+    { ...live, status: 'paused', speed: 1 }, { ...live, routeVersion: 'stale' },
+    { ...live, checkpointIndex: COURSE.checkpoints.length, status: 'complete', speed: 0, assessment: 'pending' }]) {
+    assert.equal(readValidatedDrivingState(value, COURSE), null)
+  }
 })

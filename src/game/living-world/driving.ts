@@ -270,30 +270,47 @@ export function readDrivingState(value: unknown, route: DrivingRoute): DrivingSt
   return readDrivingStateChecked(value, route, true)
 }
 
+/** Strict, non-stepping validation of a server-owned record. Invalid data is rejected so
+ * its caller can quarantine the original save rather than overwrite it with a new lesson.
+ * Live state is preserved; this function is never proof of client-submitted progress.
+ */
+export function readValidatedDrivingState(value: unknown, route: DrivingRoute): DrivingState | null {
+  return validateDrivingState(value, route, false)
+}
+
 function readDrivingStateChecked(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState {
-  if (!validRoute(route) || !record(value)) return safePaused(route, 'Saved lesson data was invalid; the vehicle is safely stopped.')
-  if (value.routeId !== route.id || value.routeVersion !== route.version) return safePaused(route, 'The route changed; start a new lesson after review.')
+  return validateDrivingState(value, route, pauseOnLoad) ?? safePaused(route,
+    validRoute(route) && record(value) && (value.routeId !== route.id || value.routeVersion !== route.version)
+      ? 'The route changed; start a new lesson after review.'
+      : 'Saved lesson data was invalid; the vehicle is safely stopped.')
+}
+
+function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState | null {
+  if (!validRoute(route) || !record(value)) return null
+  if (value.routeId !== route.id || value.routeVersion !== route.version) return null
   const point = value.position
   if (!validPoint(point) || !finite(value.heading) || Math.abs(value.heading) > Math.PI * 1_000 || !finite(value.speed) || value.speed < 0 || value.speed > MAX_SAVED_SPEED
     || !Number.isInteger(value.checkpointIndex) || (value.checkpointIndex as number) < 0 || (value.checkpointIndex as number) > route.checkpoints.length
-    || !['blocked', 'armed', 'entered'].includes(String(value.checkpointEntry))
+    || typeof value.checkpointEntry !== 'string' || !['blocked', 'armed', 'entered'].includes(value.checkpointEntry)
     || !finite(value.stopDwellMs) || value.stopDwellMs < 0 || value.stopDwellMs >= STOP_DWELL_MS || !finite(value.score) || value.score < 0 || value.score > MAX_SCORE
-    || !['running', 'paused', 'complete'].includes(String(value.status)) || !['pending', 'passed', 'failed'].includes(String(value.assessment))
-    || typeof value.feedback !== 'string' || value.feedback.length > 160) return safePaused(route, 'Saved lesson data was invalid; the vehicle is safely stopped.')
+    || typeof value.status !== 'string' || !['running', 'paused', 'complete'].includes(value.status)
+    || typeof value.assessment !== 'string' || !['pending', 'passed', 'failed'].includes(value.assessment)
+    || typeof value.feedback !== 'string' || value.feedback.length > 160) return null
+  if (value.status === 'paused' && (value.speed !== 0 || value.stopDwellMs !== 0)) return null
   const position = { x: point.x, z: point.z }
-  if (nearestRoad(position, route).distance > route.roadWidth / 2 + ROAD_MARGIN) return safePaused(route, 'Saved position was outside the road; the vehicle is safely stopped.')
+  if (nearestRoad(position, route).distance > route.roadWidth / 2 + ROAD_MARGIN) return null
   const savedStatus = value.status as DrivingStatus
   const checkpointIndex = value.checkpointIndex as number
   const entry = value.checkpointEntry as CheckpointEntry
   const currentCheckpoint = route.checkpoints[checkpointIndex]
   const entryConsistent = savedStatus === 'complete' ? entry === 'blocked'
     : currentCheckpoint && (entry === 'blocked' ? inside(position, currentCheckpoint) : entry === 'armed' ? !inside(position, currentCheckpoint) : currentCheckpoint.stopRequired && inside(position, currentCheckpoint))
-  if (!entryConsistent) return safePaused(route, 'Saved checkpoint entry data was inconsistent; the vehicle is safely stopped.')
+  if (!entryConsistent) return null
   const terminal = savedStatus === 'complete' && (value.checkpointIndex as number) === route.checkpoints.length
     && value.speed === 0 && value.stopDwellMs === 0
     && value.assessment === (value.score >= 70 ? 'passed' : 'failed')
   if (savedStatus === 'complete' && !terminal || savedStatus !== 'complete' && ((value.checkpointIndex as number) >= route.checkpoints.length || value.assessment !== 'pending')) {
-    return safePaused(route, 'Saved assessment data was inconsistent; the vehicle is safely stopped.')
+    return null
   }
   if (savedStatus === 'complete') return { routeId: route.id, routeVersion: route.version, position, heading: wrapHeading(value.heading), speed: 0,
     checkpointIndex, checkpointEntry: 'blocked', stopDwellMs: 0, score: value.score, status: 'complete', assessment: value.assessment as DrivingAssessment, feedback: value.feedback }

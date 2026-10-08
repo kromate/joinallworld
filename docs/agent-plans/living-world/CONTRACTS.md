@@ -7,12 +7,12 @@ Phase 0 contract boundary. These examples are internal proposals, not deployed r
 The driver sends controls, never coordinates, checkpoint counts, score or a passed flag:
 
 ```json
-{"journeyId":"server-issued","routeVersion":"authored-course-v1","sequence":12,"frames":[{"throttle":0.3,"brake":0,"steer":-0.2}]}
+{"cityId":"lagos","journeyId":"server-issued","sequence":12,"frames":[{"throttle":0.3,"brake":0,"steer":-0.2}]}
 ```
 
 Each frame is a fixed 100 ms step. At most five frames per packet; only server elapsed-time credit permits simulation. Reject nonfinite controls, unexpected fields, duplicate/conflicting sequence, impossible time catch-up and another actor's journey. The server computes metre position, speed, heading, ordered checkpoints, off-road/speed-limit violations and required stops. A stop is an actively reached checkpoint and stationary dwell, not a passive mission timer. Assessment criteria and route version are authored server-side. Paused/background/offline input stops safely; reconnect cannot replay held acceleration.
 
-Pure module proposed exports: `DrivingInput`, `DrivingState`, `DrivingRoute`, `createDriving`, `stepDriving`, `pauseDriving`, `readDrivingState`. Rule module accepts no clocks, DOM, RNG, network or wallet. A route is versioned, bounded road polylines plus ordered checkpoint/stop zones; authored training geometry is labelled as such. Consume actual street metre/tile/door geometry through an adapter for later city driving. A standalone fixture alone does not accept district driving.
+Pure module proposed exports: `DrivingInput`, `DrivingState`, `DrivingRoute`, `createDriving`, `stepDriving`, `pauseDriving`, `readDrivingState`, `readValidatedDrivingState`. The strict non-stepping reader returns null for invalid server-owned records, allowing unchanged quarantine; the reload reader safely pauses a valid live lesson. The service, rather than the client, binds the course version. Rule module accepts no clocks, DOM, RNG, network or wallet. A route is versioned, bounded road polylines plus ordered checkpoint/stop zones; authored training geometry is labelled as such. Consume actual street metre/tile/door geometry through an adapter for later city driving. A standalone fixture alone does not accept district driving.
 
 Visuals reuse `buildVehicle`/`poseVehicle` and published driver/door/seat anchors. Door opening, entering, seated steering, braking and exit are animated under a bounded host demand loop. Visual interpolation/prediction cannot award a qualification or advance a parcel. Reuse the canonical avatar, complete look and disposal lifecycle; avoid a second character family. Keyboard and touch controls include steering and separate throttle/brake. Lazy renderer/panel assets preserve existing budgets.
 

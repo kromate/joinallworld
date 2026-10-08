@@ -67,6 +67,9 @@ await build({
           facadeModuleId: safeId(chunk.facadeModuleId),
           imports: chunk.imports,
           dynamicImports: chunk.dynamicImports,
+          exportedBindings: [...chunk.exports].sort(),
+          importedBindings: Object.fromEntries(Object.entries(chunk.importedBindings)
+            .map(([source, names]) => [source, [...names].sort()])),
           importedCss: [...(chunk.viteMetadata?.importedCss ?? [])].sort(),
           modules: Object.entries(chunk.modules)
             .map(([id, rendered]) => {
@@ -75,6 +78,8 @@ await build({
                 id: safeId(id),
                 renderedLength: rendered.renderedLength,
                 originalLength: rendered.originalLength,
+                renderedExports: [...rendered.renderedExports].sort(),
+                removedExports: [...rendered.removedExports].sort(),
                 lengthMeaning: 'Rollup pre-minifier contribution; not final or compressed byte attribution.',
                 importedIds: (info?.importedIds ?? []).map(safeId),
                 dynamicallyImportedIds: (info?.dynamicallyImportedIds ?? []).map(safeId),

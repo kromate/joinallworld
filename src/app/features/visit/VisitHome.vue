@@ -74,6 +74,7 @@ async function share(path: string): Promise<void> {
   const copied = await copyText(url)
   game.toast(copied ? 'Link copied. Send it to a friend.' : 'Could not copy. Select the link and copy it yourself.', copied ? 'good' : 'error')
 }
+function selectLink(event: Event): void { if (event.target instanceof HTMLInputElement) event.target.select() }
 const whatsapp = (path: string): string => `https://wa.me/?text=${encodeURIComponent(words(path))}`
 const live = computed(() => visitState.links.filter((link) => !link.ended && link.expiresAt > game.view.value.now))
 const past = computed(() => visitState.links.filter((link) => link.ended || link.expiresAt <= game.view.value.now).slice(0, 3))
@@ -129,6 +130,7 @@ const usesLine = (link: { uses: number; max?: number }): string => `${link.uses}
           <a class="social-btn" :href="whatsapp(link.path)" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <button type="button" class="social-btn" data-visit="link-end" :disabled="pending || offline" @click="manage(() => endLink(link.id))">End</button>
         </span>
+        <input class="visit-link-url" :value="`${origin()}${link.path}`" aria-label="Home invitation link" readonly @focus="selectLink">
       </div>
       <div v-for="link in past" :key="link.id" class="social-row">
         <span class="social-avatar" aria-hidden="true"><GameIcon name="invite" inline /></span>
@@ -154,6 +156,7 @@ const usesLine = (link: { uses: number; max?: number }): string => `${link.uses}
 .visit-home .social-row > div { flex: 1 1 150px; min-width: 0; }
 .visit-home .social-actions { flex-wrap: wrap; }
 .visit-search { box-sizing: border-box; width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid var(--c-line, #d8d8d8); border-radius: 10px; font: 400 16px var(--font); }
+.visit-link-url { flex: 1 0 100%; min-width: 0; width: 100%; box-sizing: border-box; min-height: 44px; padding: 8px 10px; font: 400 16px var(--font); border: 1px solid var(--c-line); border-radius: 8px; background: var(--c-fill); color: var(--c-ink); }
 .visit-row { cursor: pointer; }
 .visit-row input { width: 22px; height: 22px; flex: none; }
 .visit-options { display: grid; gap: 6px; margin: 6px 0 10px; font-size: 13px; }

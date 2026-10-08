@@ -1,0 +1,166 @@
+{
+  "latestSource": "236a5fa0868d3a2f7e3f34d49d3c9228745798cb",
+  "lastBuiltPlayedSource": "6eb3409744cf7cc1c0d97d7ba1998374cbbfb28d",
+  "accountImplementation": "1e097504",
+  "reviewedMain": "d8602f510e108770e3b9e1f69852b544fc7818cc",
+  "accountBase": {
+    "pathCommit": "35ecffa08192c4f76629f04d77833473391b22cb",
+    "sha256": "917141d92866259c5125e30c8e07b590a3c7ce2ca0fc142125713e174dfad091"
+  },
+  "local": {
+    "runtime": "Node24.19",
+    "heapMiB": 1536,
+    "minifierWorkers": 1,
+    "canonicalCompilerAtA527": "exit1; client/test SIGABRT; not a compiler pass",
+    "existingAccountSocialStorePrivacyTests": {
+      "source": "a52707c5",
+      "passed": 82,
+      "total": 82
+    },
+    "newNodeHttpLifecycleTests": {
+      "source": "9840aff59a239bea75b33fed4eb471c02fd987ae",
+      "passed": 8,
+      "total": 8,
+      "elapsedMs": 1676.137958
+    },
+    "workerSqliteLifecycleTests": {
+      "source": "6eb3409744cf7cc1c0d97d7ba1998374cbbfb28d",
+      "passed": 2,
+      "total": 2,
+      "elapsedMs": 3034.885959,
+      "layouts": [
+        "legacy",
+        "shadow",
+        "entries"
+      ],
+      "restart": true
+    },
+    "buildSeconds": 27.4,
+    "startup": {
+      "raw": 614706,
+      "gzip": 223151,
+      "brotli": 195424,
+      "gzipOver": 151
+    }
+  },
+  "ci": [
+    {
+      "run": 37854248963,
+      "source": "9840aff59a239bea75b33fed4eb471c02fd987ae",
+      "status": "failure",
+      "compiler": "pass",
+      "releasePolicy": "pass",
+      "build": "pass",
+      "startup": {
+        "raw": 614758,
+        "gzip": 223141,
+        "brotli": 195359
+      },
+      "smoke": "skipped",
+      "full": "skipped"
+    },
+    {
+      "run": 37854863611,
+      "source": "6eb3409744cf7cc1c0d97d7ba1998374cbbfb28d",
+      "status": "failure",
+      "compiler": "pass",
+      "releasePolicy": "pass",
+      "build": "pass",
+      "startup": {
+        "raw": 614706,
+        "gzip": 223151,
+        "brotli": 195424
+      },
+      "smoke": "skipped",
+      "full": "skipped"
+    }
+  ],
+  "registryExperiment": {
+    "source": "f5185578",
+    "rawDelta": -52,
+    "gzipDelta": 10,
+    "brotliDelta": 65,
+    "accepted": false,
+    "revertedBy": "236a5fa0"
+  },
+  "browser": {
+    "source": "6eb3409744cf7cc1c0d97d7ba1998374cbbfb28d",
+    "environment": "disposable isolated guest preview, no inherited credentials",
+    "input": "Chrome native pointer/keyboard; viewport emulation, not physical phone",
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        740
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "barber": {
+      "nativeStrokeCoveragePercent": 42,
+      "pauseReloadRetained": true,
+      "explicitResumeFocused": true,
+      "portraitSurfaceVisible": true,
+      "landscapeSurfaceVisible": true,
+      "landscapePhoneBodyWidth": 370,
+      "landscapePhoneBodyScrollWidth": 570,
+      "landscapePhoneBodyScrollLeft": 155,
+      "landscapeAccepted": false
+    },
+    "driving": {
+      "nativeThrottleObservedSpeedKmh": 6.5,
+      "finalSpeedKmh": 0,
+      "limitKmh": 25.2,
+      "finalZoneEdgeDistanceM": 5.3,
+      "persistedPosition": {
+        "x": 0,
+        "z": 9.664199999999996
+      },
+      "pauseReloadRetained": true,
+      "reloadedControlsDisabled": true,
+      "manualScrollAfterStartRequired": true
+    },
+    "consoleWarningsErrors": [],
+    "initialFictionalWallet": 5000,
+    "completeCourseOrPayoutOrZeroMoneyJourney": false
+  },
+  "pendingLandscapeRepair": {
+    "source": "7120c89a",
+    "scope": "BarberApp.vue CSS only",
+    "browserBuildAcceptance": "unrun"
+  },
+  "production": {
+    "healthBuild": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791498871359,
+    "httpStatus": 200,
+    "providerPublished": "64ed8462-6c2b-4c42-8d19-266bc93708e5",
+    "programmeDeployed": false,
+    "goalmaticDeployed": false
+  },
+  "cleanup": {
+    "tab": "1412593764 closed; viewport reset",
+    "previewSession": {
+      "id": 70999,
+      "exit": 0
+    },
+    "browserLeaseSession": {
+      "id": 3183,
+      "exit": 130
+    },
+    "sharedSlots": "heavy/server/browser0/1; no root live local handle"
+  },
+  "remaining": [
+    "startup gzip gate",
+    "latest landscape source verification",
+    "full Node/Worker suites",
+    "exact-SHA staging/sealed release/live continuity",
+    "mapped vehicle/depot/recovery contracts and complete zero-money solo/multiplayer journey",
+    "Goalmatic workspace/installation field mapping and live consented adapter",
+    "later programme phases"
+  ]
+}

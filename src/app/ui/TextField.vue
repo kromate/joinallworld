@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const model = defineModel<string>({ required: true })
-const props = withDefaults(defineProps<{ id: string; label: string; name?: string; type?: 'text' | 'search' | 'email' | 'tel' | 'url'; placeholder?: string; help?: string; error?: string; disabled?: boolean; clearable?: boolean; autocomplete?: string }>(), { type: 'text', autocomplete: 'off', disabled: false, clearable: false })
+const props = withDefaults(defineProps<{ id: string; label: string; name?: string; type?: 'text' | 'search' | 'email' | 'tel' | 'url'; placeholder?: string; help?: string; error?: string; disabled?: boolean; clearable?: boolean; autocomplete?: string; required?: boolean; maxlength?: number }>(), { type: 'text', autocomplete: 'off', disabled: false, clearable: false })
 const field = ref<HTMLInputElement | null>(null)
 function clear(): void { model.value = ''; field.value?.focus() }
 </script>
@@ -9,7 +9,7 @@ function clear(): void { model.value = ''; field.value?.focus() }
   <div class="app-field">
     <label :for="id">{{ label }}</label>
     <div class="app-field-control" :class="{ 'is-invalid': error, 'is-disabled': disabled }">
-      <input :id="id" ref="field" v-model="model" class="app-field-input" :name="name ?? id" :type="type" :placeholder="placeholder" :autocomplete="autocomplete" :disabled="disabled" :aria-invalid="error ? true : undefined" :aria-describedby="error ? `${id}-error` : help ? `${id}-help` : undefined">
+      <input :id="id" ref="field" v-model="model" class="app-field-input" :name="name ?? id" :type="type" :placeholder="placeholder" :autocomplete="autocomplete" :disabled="disabled" :required="required" :maxlength="maxlength" :aria-invalid="error ? true : undefined" :aria-describedby="error ? `${id}-error` : help ? `${id}-help` : undefined">
       <button v-if="clearable && model && !disabled" type="button" :aria-label="type === 'search' ? 'Clear search' : `Clear ${props.label.toLocaleLowerCase()}`" @click="clear">Clear</button>
     </div>
     <p v-if="error" :id="`${id}-error`" class="app-field-error" role="alert">{{ error }}</p>

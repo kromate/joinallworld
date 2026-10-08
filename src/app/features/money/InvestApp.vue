@@ -11,6 +11,7 @@ import { formatClock } from '../../../game/clock.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { money } from '../../ui/format.ts'
+import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { readOnlyReason, useAct } from '../kit/act.ts'
@@ -62,11 +63,11 @@ const close = (id: string): Promise<boolean> => act(`close:${id}`, () => command
       <div v-if="closing === deposit.id" class="ui-confirm">
         <p>Close early? You get your {{ money(deposit.amount) }} back now and give up the {{ money(deposit.interest) }} interest.</p>
         <div>
-          <button type="button" class="ui-button is-danger" :disabled="Boolean(offline) || wait" :title="offline ?? undefined" @click="close(deposit.id)">Close without interest</button>
-          <button type="button" class="ui-button is-primary" @click="closing = null">Keep it</button>
+          <BaseButton variant="danger" :disabled="wait" :reason="offline" @click="close(deposit.id)">Close without interest</BaseButton>
+          <BaseButton variant="primary" :disabled="wait" @click="closing = null">Keep it</BaseButton>
         </div>
       </div>
-      <button v-else type="button" class="ui-button is-small" @click="closing = deposit.id">Close early (no interest)</button>
+      <BaseButton v-else small :disabled="wait" @click="closing = deposit.id">Close early (no interest)</BaseButton>
     </section>
     <EmptyState v-if="!economy.deposits.length" compact icon="invest" title="No open deposits" text="Pick an amount and a term above. The money comes back by itself, with interest, when the term ends." />
     <HowItWorks id="invest-rules" page label="How deposits work" :rules="investRules(savings, money)" />

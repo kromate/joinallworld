@@ -102,3 +102,25 @@ Final compiled 320px check: opening the invitation picker moved focus to family-
 ## Production acceptance
 
 Family shipped in source a44629b38be751a9ad446051564704f6c3c6ae1b / provider64ed8462-6c2b-4c42-8d19-266bc93708e5. Public build, saved identities/balances/receipts, live Family consent/unlink/non-resurrecting retry, actual production UI and exact asset bytes verified. The final receipt is in PARITY-DELIVERY.md. Earlier local/unverified checkpoints above are historical and superseded for this phase; the all-app audit remains open.
+
+## Next local slice: Store and Invest
+
+Source inspection found that Store's in-flight directory guard skipped the replacement fetch after a city switch, then allowed the old city's response into the new view. Directory requests now carry a generation; city/owner/LGA changes invalidate old responses and fetch the current selection. Pagination stays single-flight. Unmount invalidates pending reads. This change is not yet runtime-verified.
+
+Store earnings now stack each label above its amount, with wrapping headings/actions/addresses. Invest amount choices have a larger intrinsic width and wrap; term returns and deposit headings wrap instead of squeezing, supporting narrow screens and large values. Removed Invest card shadows. These are local source changes awaiting the next serialized verification turn; not part of the accepted a44629b3 release. Required checks: stale city/filter response, pagination, empty/error/retry; 320/390px layouts with large amounts; game-deposit open/early-close/maturity and unchanged ledger results. Real provider actions remain separate from game-money QA.
+
+Store name/service-area now use the shared TextField with native required and length limits retained; the component gained those explicit input props. Invest confirmation actions now use BaseButton and cannot dismiss/switch while a close request is pending. Verification must cover those consumer states before deployment.
+
+Store editor source review found that Cancel retained abandoned field values and profile refresh could overlap writes. Cancel/edit now restore saved fields; successful saves adopt normalized server values. Store writes/connect are blocked while profile loading, refresh is blocked while writing, and edit/cancel controls cannot race an in-flight save. Required verification includes cancel/reopen, normalized save response and delayed refresh/save ordering. Not yet executed or deployed.
+
+## Store/Invest handoff contract
+
+The human requested pushed implementation slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. This slice changes CommerceApp.vue, InvestApp.vue, TextField.vue and invest.css only; it does not alter schemas, balances, payment providers or save migration. Source whitespace checks pass. Runtime/browser checks remain outstanding; remote CI is requested on the exact pushed branch.
+
+Acceptance for the integration agent:
+- Delay directory response A, change city/owner/LGA to B, resolve B then A: only B remains. Repeat with pagination and errors.
+- Edit store fields, cancel/reopen: saved values return. Save normalized values: reopen shows the server values. Refresh and save/connect cannot overlap.
+- Verify required/max-length validation for Store fields and existing Jobs/Family TextField consumers.
+- At 320/390px and enlarged text, inspect large earnings, deposit amounts/returns, long addresses and action wrapping.
+- In disposable game data, open and close a deposit, check pending/insufficient/offline states and ledger continuity. Real commerce/provider consent or money movement needs its own authorized verification.
+- Preserve the existing release namespace, saves, immutable assets and the voice-note stash. Merge against fresh main and report exact-source checks before deployment.

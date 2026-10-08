@@ -14,19 +14,25 @@ const here = dirname(fileURLToPath(import.meta.url))
 const KEY = /^(?:"([^"]*)"|'([^']*)'|([A-Za-z0-9_./-]+)):(?: (.*))?$/
 const ITEM = /^ *-(?: |$)/
 
+/** @param {string} text @returns {any} Parsed YAML is validated by checkWorkflow. */
 export function parseYaml(text) {
   const lines = text.replace(/\r\n/g, '\n').split('\n')
   let at = 0
-  const indentOf = line => line.match(/^ */)[0].length
-  const skip = () => { while (at < lines.length && /^\s*(#.*)?$/.test(lines[at])) at++ }
+  /** @param {string} line */
+  const indentOf = line => line.length - line.trimStart().length
+  const skip = () => { while (at < lines.length && /^\s*(#.*)?$/.test(lineAt(at))) at++ }
+  /** @param {string} message @returns {never} */
   const err = message => { throw new Error(`YAML line ${at + 1}: ${message}`) }
+  /** @param {number} index @returns {string} */
+  const lineAt = index => lines[index] ?? err('missing line')
   lines.forEach((line, i) => { if (/^ *\t/.test(line)) { at = i; err('tab indentation') } })
 
+  /** @param {string} raw @returns {any} */
   function scalar(raw) {
     const s = raw.trim()
     let m
-    if (s.startsWith('"')) { m = s.match(/^("(?:[^"\\]|\\.)*")\s*(?:#.*)?$/); if (!m) err('malformed double-quoted scalar'); return JSON.parse(m[1]) }
-    if (s.startsWith("'")) { m = s.match(/^'((?:[^']|'')*)'\s*(?:#.*)?$/); if (!m) err('malformed single-quoted scalar'); return m[1].replace(/''/g, "'") }
+    if (s.startsWith('"')) { m = s.match(/^("(?:[^"\\]|\\.)*")\s*(?:#.*)?$/); if (!m) err('malformed double-quoted scalar'); return JSON.parse((m[1] ?? err('missing scalar'))) }
+    if (s.startsWith("'")) { m = s.match(/^'((?:[^']|'')*)'\s*(?:#.*)?$/); if (!m) err('malformed single-quoted scalar'); return (m[1] ?? err('missing scalar')).replace(/''/g, "'") }
     const plain = s.replace(/\s+#.*$/, '')
     if (/^[&*!%@`]/.test(plain) || /^[|>]/.test(plain)) err('anchors, aliases, tags and folded scalars are not supported')
     if (plain.startsWith('{')) err('flow maps are not supported')
@@ -42,64 +48,70 @@ export function parseYaml(text) {
     return plain
   }
 
+  /** @param {number} parentIndent @param {string} header */
   function blockScalar(parentIndent, header) {
     if (header.startsWith('>')) err('folded scalars are not supported')
+    /** @type {string[]} */
     const body = []
-    while (at < lines.length && (lines[at].trim() === '' || indentOf(lines[at]) > parentIndent)) body.push(lines[at++])
+    while (at < lines.length && (lineAt(at).trim() === '' || indentOf(lineAt(at)) > parentIndent)) body.push(lineAt(at++))
     const first = body.find(line => line.trim() !== '')
     const strip = first === undefined ? 0 : indentOf(first)
-    while (body.length && body[body.length - 1].trim() === '') body.pop()
+    while (body.length && body.at(-1)?.trim() === '') body.pop()
     return body.map(line => line.slice(Math.min(strip, indentOf(line)))).join('\n') + (/^\|-/.test(header) ? '' : '\n')
   }
 
+  /** @param {number} indent @returns {Record<string, any>} */
   function mapping(indent) {
+    /** @type {Record<string, any>} */
     const out = {}
     for (;;) {
       skip()
       if (at >= lines.length) break
-      const line = lines[at], here = indentOf(line)
+      const line = lineAt(at), here = indentOf(line)
       if (here < indent) break
       if (here > indent) err('unexpected indentation')
       if (ITEM.test(line)) err('a list at the same indent as its key is not supported')
       const match = line.slice(indent).match(KEY)
       if (!match) err('expected "key: value"')
-      const key = match[1] ?? match[2] ?? match[3]
+      const key = match[1] ?? match[2] ?? match[3] ?? err('missing key')
       if (Object.hasOwn(out, key)) err(`duplicate key "${key}"`)
       const rest = (match[4] ?? '').trim()
       at++
       if (rest === '' || rest.startsWith('#')) {
         skip()
-        out[key] = at < lines.length && indentOf(lines[at]) > indent ? block(indentOf(lines[at])) : null
+        out[key] = at < lines.length && indentOf(lineAt(at)) > indent ? block(indentOf(lineAt(at))) : null
       } else if (/^[|>][+-]?\s*(?:#.*)?$/.test(rest)) out[key] = blockScalar(indent, rest)
       else out[key] = scalar(rest)
     }
     return out
   }
 
+  /** @param {number} indent @returns {any[]} */
   function sequence(indent) {
     const out = []
     for (;;) {
       skip()
-      if (at >= lines.length || indentOf(lines[at]) < indent) break
-      if (indentOf(lines[at]) > indent || !ITEM.test(lines[at])) err('expected a list item')
-      const afterDash = lines[at].slice(indent + 1)
+      if (at >= lines.length || indentOf(lineAt(at)) < indent) break
+      if (indentOf(lineAt(at)) > indent || !ITEM.test(lineAt(at))) err('expected a list item')
+      const afterDash = lineAt(at).slice(indent + 1)
       const rest = afterDash.replace(/^ +/, ''), column = indent + 1 + (afterDash.length - rest.length)
-      if (rest === '' || rest.startsWith('#')) { at++; skip(); out.push(at < lines.length && indentOf(lines[at]) > indent ? block(indentOf(lines[at])) : null) }
+      if (rest === '' || rest.startsWith('#')) { at++; skip(); out.push(at < lines.length && indentOf(lineAt(at)) > indent ? block(indentOf(lineAt(at))) : null) }
       else if (KEY.test(rest)) { lines[at] = ' '.repeat(column) + rest; out.push(mapping(column)) }
       else { at++; out.push(scalar(rest)) }
     }
     return out
   }
 
+  /** @param {number} indent @returns {any} */
   function block(indent) {
     skip()
     if (at >= lines.length) return null
-    if (indentOf(lines[at]) !== indent) err('unexpected indentation')
-    return ITEM.test(lines[at]) ? sequence(indent) : mapping(indent)
+    if (indentOf(lineAt(at)) !== indent) err('unexpected indentation')
+    return ITEM.test(lineAt(at)) ? sequence(indent) : mapping(indent)
   }
 
   skip()
-  const document = at >= lines.length ? null : block(indentOf(lines[at]))
+  const document = at >= lines.length ? null : block(indentOf(lineAt(at)))
   skip()
   if (at < lines.length) err('unexpected content after the document')
   return document
@@ -107,20 +119,27 @@ export function parseYaml(text) {
 
 // ── Workflow policy ──
 
+/** @param {any} value */
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value)
 const TRIGGERS = ['pull_request', 'push', 'workflow_dispatch']
+/** @type {Record<string, string[]>} */
 const SECRETS_ALLOWED = { 'joinallworld-release.yml': ['CLOUDFLARE_API_TOKEN'] }
+/** @type {Record<string, string>} */
 const DEPLOY_COMMAND = { 'joinallworld-release.yml': 'node scripts/guard-joinallworld-package.mjs deploy "$RUNNER_TEMP/joinallworld-package" "$SOURCE_SHA" "$PUBLISH" "$PACKAGE_SHA" "$GITHUB_WORKSPACE/.github/wrangler/node_modules/wrangler/bin/wrangler.js"' }
 const LOCAL_PATH = /\/(?:Users|home|private\/tmp|tmp)\//
 
 /** Returns a list of problems. Empty means the workflow keeps every rule. */
+/** @param {string} file @param {any} document */
 export function checkWorkflow(file, document) {
+  /** @type {string[]} */
   const bad = []
+  /** @param {string} message */
   const say = message => bad.push(`${file}: ${message}`)
   if (!object(document) || typeof document.name !== 'string') { say('needs a name'); return bad }
   const triggers = object(document.on) ? Object.keys(document.on) : []
   if (!triggers.length) say('needs an "on" mapping')
   for (const trigger of triggers) if (!TRIGGERS.includes(trigger)) say(`trigger "${trigger}" is not allowed (pull_request_target and workflow_run run privileged code)`)
+  /** @param {any} permissions */
   const permissionsOk = permissions => object(permissions) && Object.values(permissions).every(value => value === 'read' || value === 'none')
   if (!permissionsOk(document.permissions)) say('top-level permissions must be an explicit read-only mapping')
   if (!object(document.concurrency) || typeof document.concurrency.group !== 'string') say('needs a concurrency group')
@@ -144,7 +163,7 @@ export function checkWorkflow(file, document) {
       if (document.concurrency?.['cancel-in-progress'] !== false) say('a deploying workflow must not cancel runs in progress')
     }
     const allowed = deploys ? SECRETS_ALLOWED[file] ?? [] : []
-    steps.forEach((step, n) => {
+    steps.forEach((/** @type {any} */ step, /** @type {number} */ n) => {
       const where = `${at} step ${n + 1}`
       if (!object(step)) { say(`${where} is not a mapping`); return }
       const uses = step.uses
@@ -169,7 +188,7 @@ export function checkWorkflow(file, document) {
       for (const [name, value] of Object.entries(step.env ?? {})) {
         if (/\bsecrets\b(?!\.[A-Z][A-Z0-9_]*\b)/.test(String(value))) say(`${where} env ${name} reads secrets as a whole`)
         for (const m of String(value).matchAll(/\bsecrets\.([A-Za-z0-9_]+)/g)) {
-          if (!allowed.includes(m[1])) say(`${where} reads secret ${m[1]} outside the reviewed deploy job`)
+          if (!allowed.includes(m[1] ?? '')) say(`${where} reads secret ${m[1]} outside the reviewed deploy job`)
           else if (!DEPLOY_COMMAND[file] || (file === 'release.yml' ? !String(step.run ?? '').includes(DEPLOY_COMMAND[file]) : String(step.run ?? '').trim() !== DEPLOY_COMMAND[file])) say(`${where} gives secret ${m[1]} to a step that is not the guarded deploy`)
         }
       }
@@ -180,25 +199,31 @@ export function checkWorkflow(file, document) {
 
 // ── Release pins and private-path exclusion ──
 
+/** @param {string} root */
 export function checkRepository(root) {
+  /** @param {string} path */
   const read = path => readFileSync(join(root, path), 'utf8')
+  /** @type {{name: string, detail: string, problems: string[]}[]} */
   const results = []
+  /** @param {string} name @param {string} detail @param {string[]} problems */
   const rule = (name, detail, problems) => results.push({ name, detail, problems })
 
   const dir = join(root, '.github/workflows')
+  /** @type {string[]} */
   const files = existsSync(dir) ? readdirSync(dir).filter(file => file === 'joinallworld-release.yml') : []
+  /** @type {Record<string, any>} */
   const parsed = {}
   const problems = []
   for (const required of ['joinallworld-release.yml']) if (!files.includes(required)) problems.push(`${required} is missing`)
   for (const file of files) {
     if (!/\.ya?ml$/.test(file)) { problems.push(`${file} is not a workflow`); continue }
-    try { parsed[file] = parseYaml(read(`.github/workflows/${file}`)); problems.push(...checkWorkflow(file, parsed[file])) } catch (error) { problems.push(`${file}: ${error.message}`) }
+    try { parsed[file] = parseYaml(read(`.github/workflows/${file}`)); problems.push(...checkWorkflow(file, parsed[file])) } catch (error) { problems.push(`${file}: ${error instanceof Error ? error.message : String(error)}`) }
     if (LOCAL_PATH.test(read(`.github/workflows/${file}`))) problems.push(`${file}: names a local absolute path`)
   }
   rule('workflows-keep-policy', `${files.length} workflows`, problems)
 
   const engines = JSON.parse(read('package.json')).engines?.node
-  const nodes = new Set(Object.values(parsed['joinallworld-release.yml']?.jobs ?? {}).flatMap(job => (job.steps ?? []).map(step => step.with?.['node-version']).filter(Boolean)))
+  const nodes = new Set(Object.values(parsed['joinallworld-release.yml']?.jobs ?? {}).flatMap(job => (job.steps ?? []).map((/** @type {any} */ step) => step.with?.['node-version']).filter(Boolean)))
   rule('node-pin-meets-engines', `${[...nodes].join(', ')} against ${engines}`, [...nodes].filter(version => `>=${version}` !== engines).map(version => `workflow Node ${version} is not the package.json minimum ${engines}`))
 
   const tool = JSON.parse(read('.github/wrangler/package.json')), lock = JSON.parse(read('.github/wrangler/package-lock.json'))

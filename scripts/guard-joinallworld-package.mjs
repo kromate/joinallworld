@@ -4,7 +4,9 @@ import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+/** @param {string | Uint8Array} bytes */
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+/** @param {string} sourceSha @param {boolean} publish */
 export function expectedConfig(sourceSha, publish) {
   if (!/^[a-f0-9]{40}$/.test(sourceSha) || typeof publish !== 'boolean') throw Error('Invalid release identity');
   return {
@@ -16,10 +18,13 @@ export function expectedConfig(sourceSha, publish) {
     vars: { BUILD_ID: `joinallworld-${sourceSha}` }, observability: { enabled: false },
   };
 }
+/** @param {string} root @param {string} sourceSha @param {boolean} publish */
 export function checkPackage(root, sourceSha, publish) {
   root = resolve(root);
   if (realpathSync(root) !== root) throw Error('Package path must be canonical');
+  /** @type {{path: string, bytes: number, sha256: string}[]} */
   const files = [];
+  /** @param {string} path */
   function walk(path) {
     for (const name of readdirSync(path).sort()) {
       const full = join(path, name), stat = lstatSync(full), rel = relative(root, full);
@@ -46,6 +51,7 @@ export function checkPackage(root, sourceSha, publish) {
 }
 // A binary glTF 2.0 file: "glTF" magic, version 2, a declared length equal to the file size, then a JSON chunk first.
 // Anything else under a .glb name (a renamed script, an HTML page, a truncated upload) is refused.
+/** @param {Uint8Array} bytes */
 export function isGlb(bytes) {
   if (bytes.length < 20 || bytes.length > 2 * 1024 * 1024) return false;
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
@@ -55,6 +61,7 @@ export function isGlb(bytes) {
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const [mode, root, sourceSha, publishing, expectedDigest, wrangler] = process.argv.slice(2);
+  if (!root || !sourceSha || !mode || !publishing) throw Error('Missing arguments');
   if (!['check', 'deploy'].includes(mode) || !['true', 'false'].includes(publishing)) throw Error('Invalid arguments');
   const digest = checkPackage(root, sourceSha, publishing === 'true');
   if (expectedDigest && expectedDigest !== digest) throw Error('Package digest changed');

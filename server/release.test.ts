@@ -16,9 +16,12 @@ function files(dir: URL, prefix = ''): string[] {
 /** The pipeline's own asset rule (scripts/guard-joinallworld-package.mjs), applied to what public/ ships. */
 const ASSET = /^[A-Za-z0-9_.-]+\.(?:html|js|css|svg|png|jpg|jpeg|webp|ico|woff2|txt|glb)$/;
 
-test('the only JavaScript is public/sw.js and the two files the release policy names', () => {
+test('JavaScript is limited to the service worker, release shims and reviewed release tooling', () => {
   const javascript = files(root).filter((file) => /\.(?:js|mjs|cjs)$/.test(file)).sort();
-  assert.deepEqual(javascript, ['deploy/cloudflare-worker.js', 'deploy/cloudflare.test.mjs', 'public/sw.js']);
+  assert.deepEqual(javascript, ['deploy/cloudflare-worker.js', 'deploy/cloudflare.test.mjs', 'public/sw.js',
+    'scripts/check-joinallworld-source.mjs', 'scripts/check-workflows.mjs',
+    'scripts/guard-joinallworld-package.mjs', 'scripts/guard-joinallworld-package.test.mjs',
+    'scripts/package-joinallworld.mjs']);
 });
 
 test('the two release shims only point at the TypeScript they stand for', () => {

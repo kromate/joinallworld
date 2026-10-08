@@ -113,7 +113,7 @@ export function enqueueMilestone(state: MilestoneSyncState, binding: MilestoneSy
 }
 
 /** Claims at most one item. A missing/mismatched operation contract can never reach a publisher. */
-export function leaseNextMilestone(state: MilestoneSyncState, binding: MilestoneSyncBinding, contract: VerifiedMilestoneContract | null, now: number, leaseMs = MILESTONE_SYNC.leaseMs): SyncResult {
+export function leaseNextMilestone(state: MilestoneSyncState, binding: MilestoneSyncBinding, contract: VerifiedMilestoneContract | null, now: number, leaseMs: number = MILESTONE_SYNC.leaseMs): SyncResult {
   const current = state.binding
   if (!current || current.status !== 'active' || !sameBinding(current, binding)) return { ok: false, state, code: 'stale_consent' }
   if (!current.contractVersion || !contract?.verified || !/^[a-f0-9]{40,64}$/.test(contract.sourceSha) || contract.version !== current.contractVersion) return { ok: false, state, code: 'unknown_contract' }

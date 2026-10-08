@@ -156,7 +156,15 @@ test('cancel wins a stale delivery race and expiry makes an active parcel termin
   assert.equal(cancelled.ok, true)
   if (cancelled.ok) {
     assert.equal(cancelled.state.deliveries['parcel-1']?.status, 'cancelled')
-    assert.equal(step(cancelled.state, 'deliver', 'carrier', 2, 4_000).code, 'delivery_terminal')
+    assert.equal(cancelled.state.deliveries['parcel-1']?.version, 3)
+    const stale = step(cancelled.state, 'deliver', 'carrier', 2, 4_000)
+    assert.equal(stale.code, 'version_conflict')
+    assert.equal(stale.state, cancelled.state)
+    assert.equal('effect' in stale, false)
+    const terminal = step(cancelled.state, 'deliver', 'carrier', 3, 4_000)
+    assert.equal(terminal.code, 'delivery_terminal')
+    assert.equal(terminal.state, cancelled.state)
+    assert.equal('effect' in terminal, false)
   }
   const expired = step(accepted.state, 'accept', 'carrier', 2, 50_000)
   assert.equal(expired.ok, true)

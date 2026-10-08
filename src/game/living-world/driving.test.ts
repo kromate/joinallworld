@@ -91,7 +91,7 @@ test('untrusted controls require exact finite bounded fields and fail safely', (
 
 test('a fast swept crossing records a checkpoint without trusting a client coordinate', () => {
   const narrow: DrivingRoute = { ...COURSE, checkpoints: [
-    { id: 'gate', center: { x: 0, z: 0.8 }, radius: 0.6, stopRequired: false },
+    { id: 'gate', center: { x: 0.9, z: 0.8 }, radius: 1, stopRequired: false },
     { id: 'next', center: { x: 0, z: 4 }, radius: 2, stopRequired: false },
   ] }
   const state: DrivingState = { ...createDriving(narrow), speed: 16 }

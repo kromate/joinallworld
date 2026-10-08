@@ -1,5 +1,11 @@
 # Implementation checkpoint — 8 October 2026
 
+## SQLite resource evidence and prepared experiment correction — 8 October 2026
+
+Previous goal turn was source progress (configured ingestion and integration fixture), not a verified process wait. This turn researched primary SQLite PRAGMA/WAL documentation and corrected the prepared ignored capacity script: check actual WAL/FULL/foreign-key settings, record engine versions and database/WAL/shared-memory bytes, propagate non-ENOENT measurement failures, inspect checkpoint counters and zero-byte truncation, and include capture metadata plus a dense admitted-or-exception ordinal table with conservation/foreign-key constraints. No SQLite process or experiment ran. [SQLITE-INDEX-RESOURCE-NOTES.md](SQLITE-INDEX-RESOURCE-NOTES.md) records the evidence and remaining hard-quota/recovery requirements.
+
+The human local-handoff question remains pending; elapsed time or free locks are not approval. APP UI retains recorded intensive/release ownership and direct contact failed on unavailable durable host. All22 capture fixtures, World compiler and positive capacity run remain pending; new source is uncommitted, only whitespace checks pass. This is progress toward reliable disk/memory evidence, not a validated store or world-completion claim. The full objective remains active, with country detail, streaming/playability, environment, unattended recovery and Nigeria integration still open.
+
 ## Pending configured capture entry point — 8 October 2026
 
 Previous goal turn made source progress: retained source-configuration reconstruction and six fixtures, checkpoint3e8f13f0. This turn adds `bindConfiguredCapture`/`ConfiguredCapture` to compose source reconstruction before snapshot binding, with mandatory source-configuration bytes/pin and fixed compiler provenance in the result. The prepared cached-capacity script uses this entry point rather than independently calling stages. One additional fixture tests the composed boundary, missing configuration, wrong reconstructed request and changed receipt bytes; its empty envelope is synthetic, not evidence that the actual473-feature Dakar capture is empty. Source review also replaced a Buffer.slice shared view with a real Buffer copy in the immutability fixture.

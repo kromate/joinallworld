@@ -24,10 +24,14 @@ const origin = 'https://joinallworld.test';
 /** A Worker over a folder that outlives it: `start` again with other settings to restart it on the same storage. */
 async function host(t: TestContext) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-driving-'));
+  let mf: MiniflareInstance | null = null, address = 0;
+  t.after(async () => {
+    try { await mf?.dispose(); }
+    finally { await rm(folder, { recursive: true, force: true }); }
+  });
   const bundle = join(folder, 'worker.mjs');
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] });
   const script = await readFile(bundle, 'utf8');
-  let mf: MiniflareInstance | null = null, address = 0;
   async function start(bindings: Record<string, string> = {}): Promise<void> {
     if (mf) await mf.dispose();
     const options = { name: 'joinallworld-driving', script, modules: true, compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, durableObjectsPersist: join(folder, 'storage'),
@@ -35,7 +39,6 @@ async function host(t: TestContext) {
     mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} });
     await mf.ready;
   }
-  t.after(async () => { await mf?.dispose(); await rm(folder, { recursive: true, force: true }); });
   const send = (path: string, init: RequestInit & { headers?: Record<string, string> } = {}): Promise<Response> => (mf as MiniflareInstance).dispatchFetch(origin + path, init);
   const post = (path: string, body: object, who?: Device) => send(path, { method: 'POST', headers: { origin, 'content-type': 'application/json', 'cf-connecting-ip': `198.51.100.${1 + (address++ % 200)}`, ...(who ? { cookie: who.cookie } : {}) }, body: JSON.stringify(body) });
   const get = (path: string, who: Device) => send(path, { headers: { origin, cookie: who.cookie, 'cf-connecting-ip': `198.51.100.${1 + (address++ % 200)}` } });
@@ -180,9 +183,21 @@ test('on the Worker: a free guest practice cursor survives shadow, entries resta
   assert.deepEqual([lifeAfter.state.cash, lifeAfter.state.ledger], [lifeBefore.state.cash, lifeBefore.state.ledger], 'practice and qualification leave the guest wallet and ledger unchanged')
 
   await h.start({ STORE_LAYOUT: 'shadow' })
+  const persistedLayout = await h.operator('/api/mod/store')
+  assert.equal(persistedLayout.status, 200)
+  assert.equal(persistedLayout.json['requested'], 'legacy', 'Worker restart respects the previously persisted legacy layout')
+  const enabledShadow = await h.operator('/api/mod/store/layout', { layout: 'shadow' })
+  assert.equal(enabledShadow.status, 200, `enable shadow layout: ${JSON.stringify(enabledShadow.json)}`)
+  const shadowLayout = await h.operator('/api/mod/store')
+  assert.equal(shadowLayout.status, 200)
+  assert.equal(shadowLayout.json['requested'], 'shadow')
   qualification = await qualified()
   assert.deepEqual([qualification.code, qualification.valid, qualification.qualification], ['qualified', true, claimed.qualification])
-  assert.equal(((await h.operator('/api/mod/store/compare')).json['collections'] as Record<string, { equal: boolean }>).livingWorld?.equal, true)
+  const postQualificationCompare = await h.operator('/api/mod/store/compare')
+  assert.equal(postQualificationCompare.status, 200, `store compare HTTP status: ${JSON.stringify(postQualificationCompare.json)}`)
+  const livingWorldComparison = (postQualificationCompare.json['collections'] as Record<string, { equal: boolean; synced?: boolean; legacy?: boolean; differences?: unknown[]; legacyChars?: number; entryChars?: number }>).livingWorld
+  assert.equal(livingWorldComparison?.equal, true,
+    `livingWorld shadow comparison after qualification: ${JSON.stringify(livingWorldComparison)}`)
   assert.equal((await h.operator('/api/mod/store/layout', { layout: 'entries' })).status, 200)
   await h.start({ STORE_LAYOUT: 'legacy' })
   qualification = await qualified()

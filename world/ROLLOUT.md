@@ -10,6 +10,8 @@ Accepted implementation: `6ad7579b` improves lighting/materials; `01c4c8f1` fixe
 
 The next Nigeria milestone is integration acceptance: reconcile the lagoon backdrop change with the concurrent primary water-shimmer/graphics changes, remeasure the combined startup closure against the existing 223,000-byte gzip cap, and run existing-save, simple/3D-map and normal inland-travel regressions. The isolated patch measured 222,553 bytes; the primary graphics owner subsequently reported only three bytes of headroom, so neither branch's separate result certifies the combined build. Keep source/data regeneration out of this visual integration. Then add sourced streamed footprints/roads through the provider adapter, followed by roof/landmark detail and licensed photorealistic representations within measured device budgets.
 
+The newer graphics-owner checkpoint T reports 26-byte headroom against its own frozen gzip baseline (222,500 versus 222,526 bytes) and an unresolved matched home→street→market→home served-download regression. These owner reports are not independently verified by the world branch; the normal journey and combined-build gates remain open. Coordinate with that owner before shared startup-budget, manifest or interface changes.
+
 The executable contract is in IMPLEMENTATION.md; RESEARCH.md preserves the game audit and source investigation. This document answers the operational questions that must not be left to each inexpensive worker to reinvent. Milestones below are future work unless confirmed by the checked-in validation report.
 
 ## Nigeria and database independence

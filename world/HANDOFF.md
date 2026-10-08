@@ -70,6 +70,8 @@ Preserve the game startup budgets. Nigeria's latest isolated build passes at 222
 
 Use `scripts/agent-slot.ts` for heavy/server/browser resource slots; preserve other owners' services. Inspect current processes before starting a duplicate. Review every worker diff and integrate appropriate isolated checks:
 
+Latest concurrent graphics-owner checkpoint T supersedes its earlier three-byte estimate: reported startup gzip 222,500 versus its frozen 222,526 baseline (26-byte headroom). Its actual matched home→street→market→home journey currently fails with +304,766 served static / +3,260 unique bytes, mainly repeated JavaScript downloads, and the owner is investigating. These are owner reports, not independent world measurements or combined-build acceptance. Its clothing/window edits reportedly preserve geography/interfaces; an over-budget NPC park proposal is not integrated. Preserve edits/services and coordinate before any shared startup-budget, manifest or interface change. Keep Nigeria’s accepted lighting/lagoon patch isolated until the combined build and normal journey gates pass.
+
 ```sh
 node node_modules/typescript/bin/tsc -p world/tsconfig.json --noEmit
 node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- node --experimental-strip-types --test --test-concurrency=1 'world/**/*.test.ts'

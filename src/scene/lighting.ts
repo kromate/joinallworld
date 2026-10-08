@@ -42,4 +42,3 @@ export function timeOfDay(ms: number): TimeOfDay {
   return 'night';
 }
 export const lightingFor = (mood: string, time: unknown): Lighting => (LIGHTING[mood as Mood] || LIGHTING.outdoor)[isTimeOfDay(time) ? time : 'day'];
-

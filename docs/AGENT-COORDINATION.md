@@ -4,9 +4,9 @@ Canonical repository: kromate/joinallworld. Agents on every computer read the la
 
 ## Production release ownership
 
-- Checkpoint: 2026-10-08 17:00 UTC.
+- Checkpoint: 2026-10-08 17:26 UTC.
 - Release owner: **WORLD — Research automated world map system**, chat 01a118b7-2dc5-7ad1-b1cf-874647b3d348.
-- State: WORLD is preparing the sole production upload of source **049a3350bf52f29df3524f011e425542c7756b51**. The package, safe archive round trip, current runtime review, public source ancestry and fresh synthetic continuity reference are verified. No upload has started at this checkpoint; ownership remains WORLD through live adoption/continuity.
+- State: WORLD uploaded source **049a3350bf52f29df3524f011e425542c7756b51**, provider version **e60e68c5-0b5f-4b6b-9957-a6f6fc4b98b5**. Public health adopted the expected build prefix and the same synthetic balance/action receipt survived. Actual production browser review then found a country catalogue response-encoding rejection. The country UI phase is not accepted yet; WORLD retains sole upload ownership for a verified forward fix. No upload is currently in flight.
 - Other agents prepare and test reviewable source phases, coordinate integration with WORLD, and do not start concurrent production uploads.
 - A stale timestamp means contact the owner; it is not permission to take over a release.
 - User authorization: on 8 October 2026 the user requested cross-computer coordination, phased pushes, and pushes to production. Each phase still requires verification. Experiments and a dirty checkout are not release artifacts.
@@ -22,6 +22,12 @@ Live locks from the earlier larger limits remain visible and block new admission
 WORLD stopped its broad core test and queued checks; the living-world owner confirmed its heavy chain and 5194 server stopped. GRAPHICS subsequently closed its two temporary tabs and stopped its 5183 server and browser lease. Interrupted checks have no pass claim. WORLD then completed one serialized turn: affected Node checks 100/100 and full Worker checks 142/142, both terminal exit 0; all leases were released and memory returned to 52% free. The agreed next owner is living-world for corrected narrow fixture/compiler checks, followed by GRAPHICS for bounded QA. WORLD waits for both terminal handoffs before packaging or browser review. Production upload ownership remains WORLD while its country phase is being verified.
 
 The shared Vite minifier is also limited to one worker on main at 6ba5d54c. WORLD verified its production build in 28.63 s with a 1536 MiB Node heap cap. These limits reduce concurrency; they do not replace the explicit single-owner turn across heavy, server and browser resources.
+
+### Latest local resource handoff — 2026-10-08 17:26 UTC
+
+The human reiterated desktop slowdown. WORLD closed its temporary production review tab, preserving the user's existing preview tab; browser lease session 20304 ended with exit 130. Shared heavy/server/browser status was 0/1 for each kind, and macOS reported 43% system-wide memory free. This is a point-in-time measurement, not a guarantee against future pressure.
+
+**LIVING-WORLD owns the next bounded intensive turn, then GRAPHICS, then WORLD.** Only one local owner may run builds, tests, acquisition, simulations, servers or browser review across all kinds. Separate per-kind locks do not enforce this cross-kind rule: every owner must wait for an explicit terminal handoff, announce its purpose, use the shared slot wrapper, and verify cleanup before handing over. Do not raise caps, start speculative servers, or fan out new concurrent subagents. Existing agents remain idle or perform only small source edits/reviews. Use a 1536 MiB Node heap cap and one Vite minifier worker. End temporary owned tabs and idle servers promptly; never kill unknown processes or close user tabs. Resource ownership does not transfer production upload ownership.
 
 ## Ownership and phase queue
 

@@ -10,6 +10,7 @@ import { selectVisibleTiles, TileStreamScheduler } from './streaming.ts';
 import type { StreamingSnapshot } from './streaming.ts';
 import { geographicCircleBounds, groundFootprintRadius } from './view-bounds.ts';
 import { fetchInventoryAsset, inventoryGeometryPath, INVENTORY_LIMITS, validateInventoryGeometry, validateInventoryIndex, validateInventoryManifest, type InventoryGeometry, type InventoryManifest, type InventoryNodeIndex } from './inventory-view.ts';
+import { attachFinePanel } from './fine-panel.ts';
 import './style.css';
 
 const root = document.querySelector<HTMLDivElement>('#app')!;
@@ -42,6 +43,7 @@ root.innerHTML = `
         <div class="inventory-coverage"><strong id="inventoryCount">—</strong><span>source units in this Natural Earth release</span></div>
         <div class="inventory-note">Geographic outlines only · climate, terrain and playability unknown. 1:110m source coverage omits some microstates and small territories.</div>
         <div id="inventorySelection" class="inventory-selection" aria-live="polite">No country selected.</div>
+        <div id="finePanel"></div>
       </section>
       <section class="panel district-panel"><div class="section-head"><span class="section-number">03</span><h2>NEARBY VIEW</h2><span id="tileCount" class="count-pill">0</span></div><p class="section-copy">Preview only · not playable. Nearby tiles stream as you move the camera; choose a district to focus it.</p><div id="districtList" class="district-list"><div class="placeholder-row">No districts loaded</div></div>
         <div class="pager"><button id="prevTile" aria-label="Previous district" disabled>←</button><span id="pagerText">—</span><button id="nextTile" aria-label="Next district" disabled>→</button></div>
@@ -123,10 +125,28 @@ let inventoryManifestHash = '';
 let inventoryBaseUrl: URL | null = null;
 let inventoryRootIndex: InventoryNodeIndex | null = null;
 let selectedContinentIndex: InventoryNodeIndex | null = null;
+let selectedCountryIndex: InventoryNodeIndex | null = null;
 let inventoryAbort: AbortController | null = null;
 let inventoryGeneration = 0;
 let inventoryDownloadedBytes = 0;
 const inventoryCache = new ByteLru<string, { value: InventoryManifest|InventoryNodeIndex|InventoryGeometry; bytes:number }>(INVENTORY_LIMITS.cacheBytes);
+const finePanel = attachFinePanel({
+ host: $('finePanel'),
+ binding: () => selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null,
+ downloaded: bytes => {inventoryDownloadedBytes += bytes; updateCacheNote();},
+ clear: () => { clearOutline('Choose a verified administrative division.'); },
+ draw: (geometry, node) => {
+  const [w,s,east,n] = node.bounds, wraps = w > east, e = wraps ? east + 360 : east;
+  $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps));
+  $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps));
+  const width = Math.max((e-w)*2,(n-s)*4,0.6)*1.2, height=width/2,cx=w+e+360,cy=180-s-n;
+  $('outlineSvg').setAttribute('viewBox',`${cx-width/2} ${cy-height/2} ${width} ${height}`);
+  $('outlineSvg').setAttribute('aria-label', `${node.name} sourced administrative outline`);
+  $('outlineName').textContent = node.name;
+  $('outlineDetails').textContent = `${node.adminType} · ${node.adminLevel} · geographic outline only · not playable`;
+  setView('outline');
+ }
+});
 
 function safeText(node: HTMLElement, value: string) { node.textContent = value; }
 function showError(message: string) { const box = $('error'); box.textContent = message; box.classList.remove('hidden'); }
@@ -425,8 +445,9 @@ function renderCountryList(index:InventoryNodeIndex){
  if(!index.children.length){list.innerHTML='<div class="placeholder-row">No source country units in this continent.</div>';return;}
  index.children.forEach((child,i)=>{const button=document.createElement('button');button.className='district-row inventory-country';button.type='button';button.innerHTML=`<span class="district-marker">${String(i+1).padStart(2,'0')}</span><span class="district-info"><strong>${escapeHtml(child.id==='legacy-ng'?'Nigeria · protected legacy':child.name??child.id.split('%3A').at(-1)??child.id)}</strong><small>${child.id==='legacy-ng'?'Existing Nigeria map remains protected':'Geographic outline · load on selection'}</small></span><span class="district-arrow">↗</span>`;button.addEventListener('click',()=>void selectInventoryCountry(child));list.appendChild(button);});
 }
-function clearOutline(message:string){$('outlinePath').setAttribute('d','');$('outlineStroke').setAttribute('d','');$('outlineName').textContent='Country outline';$('outlineDetails').textContent=message;}
+function clearOutline(message:string){$('outlinePath').setAttribute('d','');$('outlineStroke').setAttribute('d','');$('outlineSvg').setAttribute('aria-label','Country geographic outline');$('outlineName').textContent='Country outline';$('outlineDetails').textContent=message;}
 async function selectInventoryCountry(child:{id:string;path:string}){
+ selectedCountryIndex=null;finePanel.reset();clearError();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);setInventoryStatus('Loading selected country…');clearOutline('Fetching only this country’s outline.');
  try{
   const index=await getInventoryIndex(child.path,child.id,controller,generation,signal,selectedContinentIndex?.node.id);if(!inventoryIsCurrent(controller,generation))return;
@@ -436,6 +457,8 @@ async function selectInventoryCountry(child:{id:string;path:string}){
   }
   if(!index.outlinePath||node.outline!=='available'){clearOutline('No outline is available in this source release.');setInventoryStatus('Outline unavailable for this source unit','error');setView('outline');return;}
   const geometry=await getInventoryOutline(index.outlinePath,controller,generation,signal);if(!inventoryIsCurrent(controller,generation))return;
+  selectedCountryIndex=index;
+  $('outlineSvg').setAttribute('aria-label',`${node.name} sourced country outline`);
   const wraps=!!node.bounds&&node.bounds[0]>node.bounds[2];
   const d=inventoryGeometryPath(geometry,720,360,false,wraps);$('outlinePath').setAttribute('d',d);$('outlineStroke').setAttribute('d',inventoryGeometryPath(geometry,720,360,true,wraps));
   if(node.bounds){const[w,s,rawEast,n]=node.bounds,e=wraps?rawEast+360:rawEast,width=Math.max((e-w)*2,(n-s)*4,8)*1.2,height=width/2,cx=w+e+360,cy=180-s-n;$('outlineSvg').setAttribute('viewBox',`${cx-width/2} ${cy-height/2} ${width} ${height}`);}else $('outlineSvg').setAttribute('viewBox','0 0 720 360');
@@ -445,12 +468,14 @@ async function selectInventoryCountry(child:{id:string;path:string}){
 }
 async function selectInventoryContinent(id:string){
  const child=inventoryRootIndex?.children.find(item=>item.id===id);if(!child)return;
+ selectedCountryIndex=null;finePanel.reset();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);selectedContinentIndex=null;$('inventorySelection').textContent='Select a country in this continent.';clearError();$('countryList').innerHTML='<div class="placeholder-row">Loading country index…</div>';clearOutline('Choose a country to fetch its outline.');setInventoryStatus('Loading continent index…');
  try{const index=await getInventoryIndex(child.path,child.id,controller,generation,signal,'world:earth');if(!inventoryIsCurrent(controller,generation))return;selectedContinentIndex=index;renderCountryList(index);setInventoryStatus(`${index.children.length} source units · ${index.node.name}`,'ok');}
  catch(error){if(!inventoryIsCurrent(controller,generation))return;setInventoryStatus('Could not load continent index','error');$('countryList').innerHTML=`<div class="placeholder-row">${escapeHtml(error instanceof Error?error.message:String(error))}</div>`;}
 }
 
 async function loadInventory(){
+ selectedCountryIndex=null;finePanel.reset();
  const generation=++inventoryGeneration;inventoryAbort?.abort();const controller=new AbortController();inventoryAbort=controller;const signal=AbortSignal.any([controller.signal,AbortSignal.timeout(25_000)]);clearError();setInventoryStatus('Fetching inventory manifest…');
  try{
   const url=($('inventoryUrl') as HTMLInputElement).value.trim(),expected=($('inventoryHash') as HTMLInputElement).value.trim().toLowerCase();if(!url)throw new Error('Enter an inventory manifest URL.');if(!/^[a-f0-9]{64}$/.test(expected))throw new Error('Enter the inventory manifest SHA-256 hash.');

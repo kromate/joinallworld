@@ -1,6 +1,26 @@
-# Finer geographic inventory: source contract and Ghana pilot
+# Finer geographic inventory: Rwanda pilot and rollout contract
 
-This is the next-source contract, not a claim that the pilot data has been downloaded or accepted. It extends the coarse inventory without changing existing country IDs or the protected Nigeria provider. `inventory.ts` currently accepts only world/continent/country nodes (schema 1); `world/types.ts` already names `admin` and `city` as region kinds, but that does not make them inventory node kinds. The ROLLOUT contract calls for release-pinned administrative layers, typed units, aliases/tombstones, and explicit source coverage.
+The implemented pilot uses a separate schema-1 ADM1 directory bound to the exact coarse inventory hash and existing country ID. It does not loosen `inventory.ts`, which remains world/continent/country only. The earlier Ghana candidate below is retained as historical research and is excluded from ingestion because its OSM licensing metadata conflicts with the official OSM data license. Rwanda is the selected source. This is one country/level pilot, not global administrative or city coverage.
+
+## Implemented local contract
+
+`fine-sources.json` pins Rwanda's five source divisions, represented year 2020, full Git commit `9469f09592ced973a3448cf66b6100b741b64c0d`, source SHA-256 `60a4fe6a0ff35e3dd4a4ad0dcdf312d56fe72631dd0542edd5a965d090d49e8b` and 2,473,581 bytes. The coordinator independently checked that payload, the 1,759-byte API metadata/hash, CRS84, 58,470 positions and existing parent `country:natural-earth:NE_ID%3A1159321219`. See [FINE-SOURCE-EVIDENCE.md](FINE-SOURCE-EVIDENCE.md) for network accounting, the Git LFS pointer resolution and upstream-license evidence limitations. The accessible source portal did not independently confirm license metadata; public distribution remains a separate gate.
+
+`fine.ts` compiles deterministic internal IDs, source references, retained names, explicit migration assignments and retirement chains. Provider-key changes require explicit mapping; renames with retained keys keep their ID. Split/merge replacements must resolve to retained IDs and remain acyclic. Names are display data, not join keys. Explicit CRS must be the exact CRS84 declaration; absent CRS follows GeoJSON longitude/latitude. Rings must be closed, finite, in range, nondegenerate and bounded. These are structural checks: complete self-intersection/hole-containment topology is not established and is disclosed in the manifest.
+
+`inventory-reader.ts` independently verifies the frozen coarse manifest and every hierarchy index before returning a unique matching country. It checks the source denominator and protected Nigeria provider without altering any country identity or loading outlines. Limits are 10,100 nodes and 16 MiB hierarchy bytes, with 1 MB manifests and 128 KB indexes; local reads refuse symlink ancestors and oversized/growing files.
+
+The cache-only `fine-cli.ts`/`fine-run.ts` uses the shared builder lock and an actual terminable worker. Source bytes are limited to 8 MiB; source units to 32; positions to 150,000 total / 40,000 per feature; publication to 16 MiB; worker heap to 256 MiB plus 32 MiB young generation; process RSS to 512 MiB; total run to 120 seconds including lock wait. Disk admission keeps 100 MiB free plus the maximum publication allowance; the fine output subtree is limited to 40 MiB, with bounded entry/depth scans. Attempt evidence is local, capped, durably written before worker execution, and retains interrupted state. The worker must exit before the shared lock is released. No network, game database or model calls occur during compilation.
+
+Output under `.cache/world-build/output/fine/rw/adm1/` contains independently hashed `outlines`, `node-index`, `registries`, `coverage` and a manifest published last. Outlines are capped at 2 MiB each; every other fine file at 128 KiB. Identical-input repeats reconstruct and verify immutable assets; collisions fail without replacement. Retained partial assets can be reused by a later run. This is not yet a durable all-country campaign queue.
+
+```sh
+node --experimental-strip-types world/fine-cli.ts build world/fine-sources.json --inventory-hash 8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f
+```
+
+The independent browser preview accepts the matching local country manifest/hash only after selecting Rwanda in the coarse inventory. It verifies provenance and loads one division outline on selection. A separate 5 MiB raw-byte LRU reuses fine assets; this is not a decoded-memory or physical-device measurement. Switching country/inventory cancels old requests and clears the administrative display. Nigeria has no fine-data route. Exact measured build/hash and browser results are recorded in PROGRESS.md after acceptance.
+
+The current 32-unit/8-MiB pilot bounds cannot admit every country's ADM1 layer. Production expansion needs a frozen country/territory denominator, bounded partition strategy for larger layers, complete topology QA and explicit missing/no-ADM1 policies. Deeper administration and selected settlements require separate source contracts. The earlier Ghana acceptance limits below are historical, not current instructions to fetch that layer.
 
 ## What the sources actually cover
 
@@ -39,9 +59,9 @@ For Natural Earth country linkage, map Admin-1 parent to the **existing** countr
 
 City nodes are a separate point-directory coverage tier, not children implied by every admin polygon. A city source must publish its selection method/denominator, time/version, feature identity policy and omissions. For Natural Earth populated places, define coverage as “all rows in pinned Natural Earth populated-places extract after declared filters,” report row/accepted/rejected counts, and label the result selected places. Do not infer that each administrative unit has a city, nor claim “all cities,” complete census population, or complete Admin-1 capitals.
 
-## Bounded Ghana ADM1 pilot acceptance
+## Historical Ghana candidate acceptance — excluded
 
-Use Ghana (`GHA`) gbOpen `ADM1` only, with the current metadata above as a candidate. Preserve the coarse inventory’s source pin, country IDs and Nigeria legacy provider. No Admin-2, cities, all-country endpoint, simplification, auto-update, or additional source download belongs to this pilot.
+The earlier proposal selected Ghana (`GHA`) gbOpen `ADM1` as a candidate. It was replaced by Rwanda after source review. Preserve the coarse inventory’s source pin, country IDs and Nigeria legacy provider. No Ghana geometry is admitted. The following candidate checklist is retained to explain the earlier decision boundary.
 
 Before fetching geometry, save the API JSON as small discovery evidence (maximum 64 KiB), validate required metadata fields, resolve the metadata commit to a full 40-hex commit, and construct the fixed commit-addressed GeoJSON URL. A coordinator-reviewed source pin must then contain URL, full release/commit, source represented year/build date, upstream source/license URL, attribution text, byte count and computed SHA-256. Verify licensing against the source terms and intended distribution; do not redistribute or admit derived geometry until that license gate is resolved. Stop if the metadata moved between review and fetch, the commit cannot be resolved, licensing is ambiguous, redirects escape the approved GitHub host, or any pin field is missing. API/current is never an input at compile time.
 

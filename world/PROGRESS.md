@@ -1,5 +1,11 @@
 # Implementation checkpoint — 8 October 2026
 
+## Pending retained source configuration — 8 October 2026
+
+Previous goal turn was progress: local strict-reader/binding implementation,15 prepared fixtures and isolated checkpointc09ce52e; no unexecuted plan is counted as validation. This turn adds local `capture-request.ts` and six fixtures to reconstruct the existing request hash from retained source configuration, with exact byte pins and explicit release/collection/license/attribution policy. The known positive Dakar request vector is copied into isolated test data; tests read repository configuration only, not the actual cache/ledger/output. Source/config inspection established the current raw pin1,297 bytes/SHA7ac2f2babcab7e4dd330a2f2e3476708129653022ba7bd0a94c9cbf69184656c, not a passing reconstruction test.
+
+The prepared cache-only capacity script now runs source reconstruction before snapshot binding and records every helper source hash. All21 capture fixtures and the experiment remain UNEXECUTED/uncommitted; whitespace check passed only. The exact next intensive gate remains explicit APP UI terminal handoff, then21new+31existing focused fixtures, World TypeScript and measured positive SQLite capacity/conservation. No local heavy test/compiler/server/browser/acquisition/index write/upload or new subagent fanout occurred. Maina446 remains synchronized; current APP UI ownership is preserved. Full objective remains active: these are provenance prerequisites, not whole-world geometry/playability or unattended-store acceptance.
+
 ## Pending strict capture ingestion — 8 October 2026
 
 Previous turn made authoritative progress: memory coordination30d57f9b is on shared main, and local GRAPHICS/LIVING acknowledged no owned intensive sessions. WORLD retains no owned intensive/server/browser work; APP UI recorded verification/release ownership remains in force. This turn added local source `capture-binding.ts` and nine prepared fixtures to the existing strict `capture-json.ts` and six fixtures. These files and the pending contract changes are uncommitted/unexecuted; `git diff --check` passed, which is only a whitespace check. No test, compiler, acquisition, database, browser or deployment was started. Existing immutable sources/output, reservations, Nigeria and concurrent files are preserved.

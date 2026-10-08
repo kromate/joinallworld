@@ -4,7 +4,7 @@
 // One screen for the three seats (city, state, nation) and the parties. The ballot of a seat is GET /api/civic/gov?tier=; the rest
 // (rules, treasury, parties) is GET /api/politics/overview. Every control that is off says why. Filing a candidacy, drawing the
 // salary and founding a party keep their request id until applied, so pressing again after a lost answer is the SAME request.
-import { computed, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
 import type { BillView, CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
@@ -112,16 +112,28 @@ watch(() => props.params, (given) => { const tab = typeof given === 'object' && 
 // The public record: read without signing in, a page at a time, and checked here against its seals.
 const filter = ref<RecordKind | 'all'>('all')
 const hall = ref<{ entries: RecordEntryView[]; before: number | null; head: string; count: number; loading: boolean; error: string | null }>({ entries: [], before: null, head: '', count: 0, loading: false, error: null })
+let recordsRevision = 0
+onBeforeUnmount(() => { recordsRevision += 1 })
 async function loadRecords(more = false): Promise<void> {
-  if (hall.value.loading) return
-  hall.value.loading = true; hall.value.error = null
+  if (more && (hall.value.loading || hall.value.before === null)) return
+  const revision = ++recordsRevision
+  const path = recordsPath(filter.value, more ? hall.value.before : null)
+  hall.value = more ? { ...hall.value, loading: true, error: null } : { entries: [], before: null, head: '', count: 0, loading: true, error: null }
   try {
-    const answer = await game.fetchJson<RecordsResponse>(recordsPath(filter.value, more ? hall.value.before : null))
+    const answer = await game.fetchJson<RecordsResponse>(path)
+    if (revision !== recordsRevision) return
     hall.value = { entries: more ? [...hall.value.entries, ...answer.entries] : answer.entries, before: answer.before, head: answer.head, count: answer.count, loading: false, error: null }
-  } catch { hall.value.loading = false; hall.value.error = 'The record could not be loaded. Try again.' }
+  } catch {
+    if (revision !== recordsRevision) return
+    hall.value.loading = false; hall.value.error = 'The record could not be loaded. Try again.'
+  }
 }
 const hallCheck = computed(() => checkRecords(hall.value.entries, filter.value === 'all'))
-watch([() => ui.tab, filter], ([tab]) => { if (tab === 'records') void loadRecords() }, { immediate: true })
+watch([() => ui.tab, filter], ([tab]) => {
+  recordsRevision += 1; hall.value.loading = false
+  if (tab === 'records') void loadRecords()
+}, { immediate: true })
+
 function doneLaw(result: Record<string, unknown>): void {
   if (result.justice) civic.put(justiceKey(cityId.value), result.justice as JusticeResponse)
   civic.changed()
@@ -328,8 +340,9 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
     <template v-else-if="ui.tab === 'records'">
       <SectionTitle>Hall of Records</SectionTitle>
       <p class="politics-note">Every election, ruling, removal and new party is written here for good. Nothing is edited or removed, and each entry is sealed by the one before it, so a change anywhere would show.</p>
-      <div class="politics-filters" role="group" aria-label="Filter the record"><button v-for="item in RECORD_FILTERS" :key="item.id" type="button" :class="{ 'is-on': filter === item.id }" @click="filter = item.id">{{ item.label }}</button></div>
-      <p v-if="hall.error" class="politics-note is-warn" role="alert">{{ hall.error }}</p>
+      <div class="politics-filters" role="group" aria-label="Filter the record"><button v-for="item in RECORD_FILTERS" :key="item.id" type="button" :class="{ 'is-on': filter === item.id }" :aria-pressed="filter === item.id" @click="filter = item.id">{{ item.label }}</button></div>
+      <p v-if="hall.loading" class="politics-note" role="status">Loading records…</p>
+      <div v-if="hall.error"><p class="politics-note is-warn" role="alert">{{ hall.error }}</p><CivicAction @click="loadRecords()">Try again</CivicAction></div>
       <EmptyState v-else-if="!hall.entries.length && !hall.loading" icon="ballot" title="Nothing recorded yet" text="The first finished election will be written here." />
       <section v-for="entry in hall.entries" :key="entry.n" class="ui-card politics-entry">
         <small>{{ recordDate(entry.at) }} · {{ kindLabel(entry.kind) }} · {{ entry.scopeName }}</small>
@@ -431,21 +444,21 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-week b { color: var(--c-ink); }
 .politics-tabs { display: flex; overflow-x: auto; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
 .politics-tabs button { flex: 1 0 auto; padding: 0 8px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
-.politics-tabs button.is-on { background: #fff; color: var(--c-ink); box-shadow: var(--e-1); }
+.politics-tabs button.is-on { background: #fff; color: var(--c-ink); }
 .politics-seat { display: grid; gap: 4px; }
 .politics-seat strong { font-size: 16px; }
 .politics-seat p { margin: 0 !important; font-size: 13px !important; color: var(--c-ink-2); }
 .politics-treasury b { color: var(--c-ink); font-variant-numeric: tabular-nums; }
-.politics-cycle { display: grid; gap: 1px; margin: var(--s-2) 0; padding: 10px 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.politics-cycle { display: grid; gap: 1px; margin: var(--s-2) 0; padding: 10px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--c-line); min-width: 0; }
 .politics-cycle strong { font-size: 15px; }
 .politics-cycle span { font-size: 12px; color: var(--c-muted); }
 .politics-cycle span b { color: var(--c-ink); }
 .politics-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .politics-ballot { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
 :global(.ph.is-wide) .politics-ballot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.politics-candidate, .politics-partycard { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); align-content: start; }
+.politics-candidate, .politics-partycard { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--c-line); min-width: 0; align-content: start; }
 .politics-partycard { margin-bottom: var(--s-2); }
-.politics-candidate.is-chosen { box-shadow: var(--e-1), inset 0 0 0 2px var(--c-green); }
+.politics-candidate.is-chosen { box-shadow: inset 0 0 0 2px var(--c-green); }
 .politics-who { display: flex; align-items: center; gap: 10px; }
 .politics-who strong { flex: 1; min-width: 0; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .politics-who > span:last-child { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--c-ink-2); }
@@ -465,7 +478,7 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-set { grid-column: 1; display: grid; gap: 4px; font-size: 12px; color: var(--c-muted); }
 .politics-lever :deep(.civic-action) { grid-column: 2; }
 .politics-ledger { list-style: none; margin: var(--s-2) 0 0; padding: 0; display: grid; gap: 6px; }
-.politics-ledger li { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.politics-ledger li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; }
 .politics-ledger small { display: block; font-size: 11px; color: var(--c-muted); overflow-wrap: anywhere; }
 .politics-ledger b { font-variant-numeric: tabular-nums; color: var(--c-green-dark); }
 .politics-ledger b.is-out { color: var(--c-red-dark); }
@@ -480,9 +493,9 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-verdicts { display: flex; flex-wrap: wrap; gap: 4px; }
 .politics-field select { min-height: var(--tap); }
 .politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.politics-officers li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
+.politics-officers li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
 .politics-filters { display: flex; flex-wrap: wrap; gap: 4px; margin: var(--s-2) 0; }
-.politics-filters button { min-height: 32px; padding: 0 10px; border: 0; border-radius: 16px; background: var(--c-fill); font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-filters button { min-height: 44px; padding: 0 10px; border: 0; border-radius: 16px; background: var(--c-fill); font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
 .politics-filters button.is-on { background: var(--app-tint, var(--c-green-dark)); color: #fff; }
 .politics-entry { display: grid; gap: 3px; margin-bottom: var(--s-2); }
 .politics-entry small { color: var(--c-muted); font-size: 11px; }

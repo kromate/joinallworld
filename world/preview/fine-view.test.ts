@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { FINE_VIEW_LIMITS, fetchFineJson, validateFineIndex, validateFineIndexProvenance, validateFineManifest, validateFineOutline } from './fine-view.ts';
+import type { FineAdminNode } from '../fine-types.ts';
+import { FINE_VIEW_LIMITS, fetchFineJson, validateFineIndex, validateFineIndexProvenance, validateFineManifest, validateFineOutline, validateFineTopology } from './fine-view.ts';
+import type { FineIndex } from './fine-view.ts';
+import { FINE_PLANAR_EXCEPTION } from '../fine-quality.ts';
 
 const commit = 'a'.repeat(40), sourceHash = 'b'.repeat(64), coarseHash = 'c'.repeat(64), metadataHash = 'd'.repeat(64);
 const countryId = 'country:natural-earth%3ANE_ID%3A123';
@@ -13,8 +16,15 @@ const pin = {
 };
 const manifest = { schemaVersion: 1, countryId, coarseInventoryHash: coarseHash, source: pin, sourceUnitCount: 1,
   nodeIndexPath: `node-index/${'e'.repeat(64)}.json`, registryPath: `registries/${'f'.repeat(64)}.json`, coveragePath: `coverage/${'1'.repeat(64)}.json`, exceptions: [] };
-const node = { id: `admin:geoBoundaries:${'2'.repeat(64)}`, parentId: countryId, countryCode: 'RW', name: 'North', kind: 'admin', adminLevel: 'ADM1', adminType: 'Province', bounds: [28,-3,31,-1], aliases: [], sourceRef: { sourceId: pin.source.id, release: commit, layerId: pin.layerId, featureKey: '91480417B1' }, coverage: 'geographic-outline', exceptions: ['source boundary depiction'] } as const;
-const index = { schemaVersion: 1, countryId, nodes: [{ node, outlinePath: `outlines/${'3'.repeat(64)}.json` }] };
+const manifestV2 = { schemaVersion: 2, compiler: 'fine-inventory-compiler-v2', countryId, coarseInventoryHash: coarseHash, source: pin, sourceUnitCount: 1,
+  nodeIndexPath: `node-index/${'e'.repeat(64)}.json`, registryPath: `registries/${'f'.repeat(64)}.json`, coveragePath: `coverage/${'1'.repeat(64)}.json`,
+  topologyPath: `topology/${'4'.repeat(64)}.json`, exceptions: [FINE_PLANAR_EXCEPTION] };
+const node: FineAdminNode = { id: `admin:geoBoundaries:${'2'.repeat(64)}`, parentId: countryId, countryCode: 'RW', name: 'North', kind: 'admin', adminLevel: 'ADM1', adminType: 'Province', bounds: [28,-3,31,-1], aliases: [], sourceRef: { sourceId: pin.source.id, release: commit, layerId: pin.layerId, featureKey: '91480417B1' }, coverage: 'geographic-outline', exceptions: ['source boundary depiction'] };
+const index: FineIndex = { schemaVersion: 1, countryId, nodes: [{ node, outlinePath: `outlines/${'3'.repeat(64)}.json` }] };
+const topology = { schemaVersion: 1, validator: 'duckdb-spatial-ogc-planar-v1', sourceSha256: sourceHash, sourceBytes: 1000, expectedUnits: 1,
+  checkedUnits: 1, validUnits: 1, invalidUnits: 0, unsupportedUnits: 0,
+  tooling: { duckdbVersion: '1.5.6', spatialVersion: '04270fe', spatialSha256: 'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9' },
+  rows: [{ featureKey: '91480417B1', status: 'valid', valid: true, empty: false, reason: null }], exceptions: [FINE_PLANAR_EXCEPTION] };
 const square = { type: 'Polygon', coordinates: [[[29,-2],[30,-2],[30,-1],[29,-1],[29,-2]], [[29.2,-1.8],[29.4,-1.8],[29.4,-1.6],[29.2,-1.6],[29.2,-1.8]]] };
 
 test('validates exact fine manifest/source pins and parent inventory identity', () => {
@@ -26,6 +36,32 @@ test('validates exact fine manifest/source pins and parent inventory identity', 
   assert.throws(() => validateFineManifest({ ...manifest, nodeIndexPath: `nodes/${'e'.repeat(64)}.json` }, coarseHash, countryId), /node index path/);
   assert.throws(() => validateFineManifest({ ...manifest, registryPath: '../secret' }, coarseHash, countryId), /registry path/);
   assert.throws(() => validateFineManifest({ ...manifest, coveragePath: `coverage/${'G'.repeat(64)}.json` }, coarseHash, countryId), /coverage path/);
+});
+
+test('admits schema 2 only with exact compiler, hashed topology path and the planar limitation', () => {
+  const parsed = validateFineManifest(manifestV2, coarseHash, countryId);
+  assert.equal(parsed.schemaVersion, 2);
+  assert.equal(parsed.topologyPath, manifestV2.topologyPath);
+  assert.equal(validateFineTopology(topology, parsed, index).validUnits, 1);
+  assert.throws(() => validateFineManifest({ ...manifestV2, compiler: 'fine-inventory-compiler-v1' }, coarseHash, countryId), /compiler/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, topologyPath: '../private.json' }, coarseHash, countryId), /topology path/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, topologyPath: `topology/${'A'.repeat(64)}.json` }, coarseHash, countryId), /topology path/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, exceptions: [] }, coarseHash, countryId), /planar topology limitation/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, exceptions: [FINE_PLANAR_EXCEPTION, 'structural validation only'] }, coarseHash, countryId), /obsolete or unsupported/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, unknown: true }, coarseHash, countryId), /missing or unknown fields/);
+  assert.throws(() => validateFineManifest({ ...manifestV2, schemaVersion: 3 }, coarseHash, countryId), /unsupported/);
+});
+
+test('binds topology findings to the exact index keys and rejects invalid, unsupported or forged report claims', () => {
+  const parsed = validateFineManifest(manifestV2, coarseHash, countryId);
+  if (parsed.schemaVersion !== 2) throw new Error('schema 2 fixture was not parsed');
+  assert.throws(() => validateFineTopology({ ...topology, sourceSha256: '0'.repeat(64) }, parsed, index), /does not match/);
+  assert.throws(() => validateFineTopology(topology, parsed, { ...index, nodes: [{ ...index.nodes[0]!, node: { ...node, sourceRef: { ...node.sourceRef, featureKey: 'other' } } }] }), /not exact/);
+  assert.throws(() => validateFineTopology({ ...topology, validUnits: 0, invalidUnits: 1, checkedUnits: 1,
+    rows: [{ featureKey: '91480417B1', status: 'invalid', valid: false, empty: false, reason: 'self-intersection' }], exceptions: [FINE_PLANAR_EXCEPTION] }, parsed, index), /every indexed source division/);
+  assert.throws(() => validateFineTopology({ ...topology, validUnits: 0, invalidUnits: 0, unsupportedUnits: 1, checkedUnits: 0,
+    rows: [{ featureKey: '91480417B1', status: 'unsupported', valid: null, empty: null, reason: 'polar' }], exceptions: [FINE_PLANAR_EXCEPTION, 'Polar, global-span, or ambiguous longitude geometries are reported unsupported, not valid.'] }, parsed, index), /every indexed source division/);
+  assert.throws(() => validateFineTopology({ ...topology, exceptions: ['topology was fully validated'] }, parsed, index), /exact validator contract/);
 });
 
 test('rejects malformed pin provenance, unhashed inputs and protected Nigeria', () => {

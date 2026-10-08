@@ -1,8 +1,8 @@
-import type { FineAdminNode, FineSourcePin } from '../fine-types.ts';
+import type { FineAdminNode, FineSourcePin, FineTopologyReport } from '../fine-types.ts';
+import { FINE_PLANAR_EXCEPTION, validateFineTopologyReport } from '../fine-quality.ts';
 import { fetchInventoryAsset } from './inventory-view.ts';
 
-export interface FineManifest {
-  schemaVersion: 1;
+interface FineManifestBase {
   countryId: string;
   coarseInventoryHash: string;
   source: FineSourcePin;
@@ -12,12 +12,19 @@ export interface FineManifest {
   coveragePath: string;
   exceptions: string[];
 }
+export interface FineManifestV1 extends FineManifestBase { schemaVersion: 1 }
+export interface FineManifestV2 extends FineManifestBase {
+  schemaVersion: 2;
+  compiler: 'fine-inventory-compiler-v2';
+  topologyPath: string;
+}
+export type FineManifest = FineManifestV1 | FineManifestV2;
 
 export interface FineIndexEntry { node: FineAdminNode; outlinePath: string }
 export interface FineIndex { schemaVersion: 1; countryId: string; nodes: FineIndexEntry[] }
 export interface FineGeometry { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown }
 
-export const FINE_VIEW_LIMITS = Object.freeze({ manifestBytes: 128 * 1024, indexBytes: 128 * 1024, outlineBytes: 2 * 1024 * 1024, nodes: 32, positions: 40_000, requestTimeoutMs: 25_000 });
+export const FINE_VIEW_LIMITS = Object.freeze({ manifestBytes: 128 * 1024, indexBytes: 128 * 1024, topologyBytes: 64 * 1024, outlineBytes: 2 * 1024 * 1024, nodes: 32, positions: 40_000, requestTimeoutMs: 25_000 });
 const HASH = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
 const COUNTRY_ID = /^(?!legacy-ng$)[A-Za-z0-9][A-Za-z0-9:_%.-]{0,255}$/;
@@ -25,6 +32,7 @@ const HASH_PATHS = {
   nodeIndexPath: /^node-index\/[a-f0-9]{64}\.json$/,
   registryPath: /^registries\/[a-f0-9]{64}\.json$/,
   coveragePath: /^coverage\/[a-f0-9]{64}\.json$/,
+  topologyPath: /^topology\/[a-f0-9]{64}\.json$/,
   outlinePath: /^outlines\/[a-f0-9]{64}\.json$/,
 } as const;
 const own = (value: unknown, label: string): Record<string, unknown> => {
@@ -80,16 +88,36 @@ function validateSourcePin(value: unknown): FineSourcePin {
 export function validateFineManifest(value: unknown, expectedCoarseHash: string, expectedCountryId: string): FineManifest {
   if (!HASH.test(expectedCoarseHash) || !COUNTRY_ID.test(expectedCountryId)) throw new TypeError('expected coarse inventory identity is invalid');
   const manifest = own(value, 'fine manifest');
-  exact(manifest, ['schemaVersion','countryId','coarseInventoryHash','source','sourceUnitCount','nodeIndexPath','registryPath','coveragePath','exceptions'], 'fine manifest');
-  if (manifest.schemaVersion !== 1 || manifest.countryId !== expectedCountryId || manifest.coarseInventoryHash !== expectedCoarseHash) throw new TypeError('fine manifest is for a different country or coarse inventory');
+  if (manifest.countryId !== expectedCountryId || manifest.coarseInventoryHash !== expectedCoarseHash) throw new TypeError('fine manifest is for a different country or coarse inventory');
+  if (manifest.schemaVersion === 1) exact(manifest, ['schemaVersion','countryId','coarseInventoryHash','source','sourceUnitCount','nodeIndexPath','registryPath','coveragePath','exceptions'], 'fine manifest');
+  else if (manifest.schemaVersion === 2) exact(manifest, ['schemaVersion','countryId','coarseInventoryHash','source','sourceUnitCount','nodeIndexPath','registryPath','coveragePath','exceptions','compiler','topologyPath'], 'fine manifest');
+  else throw new TypeError('fine manifest schema version is unsupported');
   const source = validateSourcePin(manifest.source);
   if (!Number.isSafeInteger(manifest.sourceUnitCount) || manifest.sourceUnitCount !== source.expectedUnits) throw new TypeError('fine manifest source count does not match its source pin');
   const nodeIndexPath = hashPath(manifest.nodeIndexPath, HASH_PATHS.nodeIndexPath, 'fine node index path');
   const registryPath = hashPath(manifest.registryPath, HASH_PATHS.registryPath, 'fine registry path');
   const coveragePath = hashPath(manifest.coveragePath, HASH_PATHS.coveragePath, 'fine coverage path');
   const exceptions = stringArray(manifest.exceptions, 'fine manifest exceptions', 256);
-  return { schemaVersion: 1, countryId: expectedCountryId, coarseInventoryHash: expectedCoarseHash, source,
+  const base = { countryId: expectedCountryId, coarseInventoryHash: expectedCoarseHash, source,
     sourceUnitCount: Number(manifest.sourceUnitCount), nodeIndexPath, registryPath, coveragePath, exceptions };
+  if (manifest.schemaVersion === 1) return { schemaVersion: 1, ...base };
+  if (manifest.compiler !== 'fine-inventory-compiler-v2') throw new TypeError('fine manifest compiler is unsupported');
+  const topologyPath = hashPath(manifest.topologyPath, HASH_PATHS.topologyPath, 'fine topology path');
+  if (!exceptions.includes(FINE_PLANAR_EXCEPTION)) throw new TypeError('fine manifest is missing the exact planar topology limitation');
+  if (exceptions.some(exception => /structural|not (?:yet )?(?:validated|checked|established)|topology (?:is )?not/i.test(exception))) throw new TypeError('fine manifest contains an obsolete or unsupported topology claim');
+  return { schemaVersion: 2, ...base, compiler: 'fine-inventory-compiler-v2', topologyPath };
+}
+
+/** A schema-2 manifest is not admitted until its report proves every indexed source unit valid. */
+export function validateFineTopology(value: unknown, manifest: FineManifestV2, index: FineIndex): FineTopologyReport {
+  if (index.countryId !== manifest.countryId || index.nodes.length !== manifest.sourceUnitCount) throw new TypeError('fine topology index/manifest binding is invalid');
+  const expectedKeys = index.nodes.map(({ node }) => node.sourceRef.featureKey);
+  const report = validateFineTopologyReport(value, manifest.source, expectedKeys);
+  if (report.validUnits !== manifest.sourceUnitCount || report.checkedUnits !== manifest.sourceUnitCount || report.invalidUnits !== 0 || report.unsupportedUnits !== 0) {
+    throw new Error('fine topology report must pass every indexed source division with no invalid or unsupported units');
+  }
+  if (JSON.stringify(manifest.exceptions) !== JSON.stringify(report.exceptions)) throw new Error('fine topology report limitations differ from the manifest');
+  return report;
 }
 
 function bounds(value: unknown, label: string): number[] {

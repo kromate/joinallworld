@@ -4,7 +4,8 @@ import path from 'node:path';
 import type { Bounds } from './types.ts';
 import type { InventoryNode } from './production-types.ts';
 import { createOutputStore } from './storage.ts';
-import { FINE_LIMITS, type FineAdminNode, type FineIdentityEntry, type FineIdentityMigration, type FineIdentityRegistry, type FineInventory, type FineSourcePin } from './fine-types.ts';
+import { FINE_LIMITS, type FineAdminNode, type FineIdentityEntry, type FineIdentityMigration, type FineIdentityRegistry, type FineInventory, type FineSourcePin, type FineTopologyReport } from './fine-types.ts';
+import { FINE_PLANAR_EXCEPTION, validateFineTopologyReport } from './fine-quality.ts';
 
 const HEX64 = /^[a-f0-9]{64}$/;
 const HEX40 = /^[a-f0-9]{40}$/;
@@ -13,7 +14,6 @@ const ISO3 = /^[A-Z]{3}$/;
 const ADMIN_ID = /^admin:geoBoundaries:[a-f0-9]{64}$/;
 const rawPrefix = 'https://raw.githubusercontent.com/wmgeolab/geoBoundaries/';
 const mediaPrefix = 'https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/';
-const TOPOLOGY_LIMITATION = 'Structural coordinate checks do not establish complete polygon topology (including self-intersection or hole containment).';
 
 function sha256(value: string | Uint8Array): string { return createHash('sha256').update(value).digest('hex'); }
 function compareText(a: string, b: string): number { return a < b ? -1 : a > b ? 1 : 0; }
@@ -314,7 +314,7 @@ function validCoarseCountry(value: InventoryNode, pin: FineSourcePin): Inventory
 
 /** Build a separate, deterministic ADM1 directory without changing the coarse inventory. */
 export function buildFineInventory(pinValue: FineSourcePin, rawBytes: Uint8Array, coarseCountry: InventoryNode, coarseInventoryHash: string,
-  options: { previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration } = {}): FineInventory {
+  options: { previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration; topologyReport?: FineTopologyReport } = {}): FineInventory {
   const pin = validateFineSourcePin(pinValue);
   validCoarseCountry(coarseCountry, pin);
   if (typeof coarseInventoryHash !== 'string' || !HEX64.test(coarseInventoryHash)) throw new TypeError('coarse inventory hash must be SHA-256');
@@ -352,6 +352,16 @@ export function buildFineInventory(pinValue: FineSourcePin, rawBytes: Uint8Array
     features.push({ key, name, geometry: { type: geometry.type, coordinates: geometry.coordinates }, bounds: geometry.bounds, positions: geometry.positions });
   });
   features.sort((a, b) => compareText(a.key, b.key));
+  if (!options.topologyReport) throw new Error('fine topology report is required for publication');
+  const expectedKeys = features.map(feature => feature.key).sort((a, b) => {
+    const left = Array.from(a, character => character.codePointAt(0)!), right = Array.from(b, character => character.codePointAt(0)!);
+    for (let index = 0; index < Math.min(left.length, right.length); index++) if (left[index] !== right[index]) return left[index]! - right[index]!;
+    return left.length - right.length;
+  });
+  const topology = validateFineTopologyReport(options.topologyReport, pin, expectedKeys);
+  if (topology.validUnits !== pin.expectedUnits || topology.checkedUnits !== pin.expectedUnits || topology.invalidUnits !== 0 || topology.unsupportedUnits !== 0) {
+    throw new Error('fine topology evidence must report every expected source unit valid with no invalid or unsupported units');
+  }
   const identity = registryFor(features, coarseCountry.id, options.previousRegistry, options.migration);
   const nodes: FineAdminNode[] = features.map<FineAdminNode>(feature => ({
     id: identity.ids.get(feature.key)!, parentId: coarseCountry.id, countryCode: pin.countryCode, name: feature.name,
@@ -364,14 +374,14 @@ export function buildFineInventory(pinValue: FineSourcePin, rawBytes: Uint8Array
   const outlines = features.map(feature => ({ nodeId: identity.ids.get(feature.key)!, geometry: feature.geometry })).sort((a, b) => compareText(a.nodeId, b.nodeId));
   if (outlines.length !== nodes.length || new Set(outlines.map(outline => outline.nodeId)).size !== nodes.length || nodes.some(node => !nodeById.has(node.id))) throw new Error('fine source conservation check failed');
   const coverage = { expectedUnits: pin.expectedUnits, sourceUnits: features.length, acceptedUnits: nodes.length,
-    rejectedUnits: features.length - nodes.length, coordinatePositions: totalPositions, exceptions: [TOPOLOGY_LIMITATION] };
+    rejectedUnits: features.length - nodes.length, coordinatePositions: totalPositions, exceptions: [...topology.exceptions] };
   if (coverage.acceptedUnits + coverage.rejectedUnits !== coverage.sourceUnits || coverage.rejectedUnits !== 0) throw new Error('fine source count conservation failed');
-  return { schemaVersion: 1, coarseInventoryHash, countryId: coarseCountry.id, source: pin, nodes, outlines,
-    registry: identity.registry, coverage };
+  return { schemaVersion: 2, compiler: 'fine-inventory-compiler-v2', coarseInventoryHash, countryId: coarseCountry.id, source: pin, nodes, outlines,
+    registry: identity.registry, coverage, topology };
 }
 
 function validateFineInventory(value: FineInventory): FineInventory {
-  if (!value || value.schemaVersion !== 1 || !HEX64.test(value.coarseInventoryHash) || !Array.isArray(value.nodes) || !Array.isArray(value.outlines) || value.nodes.length < 1 || value.nodes.length > FINE_LIMITS.units) throw new TypeError('fine inventory schema is invalid');
+  if (!value || value.schemaVersion !== 2 || value.compiler !== 'fine-inventory-compiler-v2' || !HEX64.test(value.coarseInventoryHash) || !Array.isArray(value.nodes) || !Array.isArray(value.outlines) || value.nodes.length < 1 || value.nodes.length > FINE_LIMITS.units) throw new TypeError('fine inventory schema is invalid');
   const pin = validateFineSourcePin(value.source);
   if (value.countryId === 'legacy-ng' || value.countryId !== value.nodes[0]?.parentId) throw new Error('fine inventory country parent is invalid');
   const seen = new Set<string>(), outlineIds = new Set<string>(), currentFeatureKeys = new Set<string>();
@@ -411,8 +421,56 @@ function validateFineInventory(value: FineInventory): FineInventory {
     if (!entry.sourceFeatureKeys.includes(node.sourceRef.featureKey) || !entry.names.includes(node.name)) throw new Error('fine identity registry does not bind current feature key/name');
   }
   const coverage = value.coverage;
-  if (!coverage || coverage.expectedUnits !== pin.expectedUnits || coverage.sourceUnits !== value.nodes.length || coverage.acceptedUnits !== value.nodes.length || coverage.rejectedUnits !== 0 || !Number.isSafeInteger(coverage.coordinatePositions) || coverage.coordinatePositions < 1 || coverage.coordinatePositions > FINE_LIMITS.coordinatePositions || !Array.isArray(coverage.exceptions) || !coverage.exceptions.includes(TOPOLOGY_LIMITATION) || coverage.exceptions.some(exception => typeof exception !== 'string' || exception.length > 2048 || !exception.trim() || /[\u0000-\u001f\u007f]/.test(exception))) throw new Error('fine coverage conservation is invalid');
-  return value;
+  const expectedKeys = [...currentFeatureKeys].sort((a, b) => {
+    const left = Array.from(a, character => character.codePointAt(0)! ), right = Array.from(b, character => character.codePointAt(0)!);
+    for (let index = 0; index < Math.min(left.length, right.length); index++) if (left[index] !== right[index]) return left[index]! - right[index]!;
+    return left.length - right.length;
+  });
+  const topology = validateFineTopologyReport(value.topology, pin, expectedKeys);
+  if (topology.validUnits !== pin.expectedUnits || topology.checkedUnits !== pin.expectedUnits || topology.invalidUnits !== 0 || topology.unsupportedUnits !== 0) throw new Error('fine publication requires all-valid source-bound topology evidence');
+  if (!coverage || coverage.expectedUnits !== pin.expectedUnits || coverage.sourceUnits !== value.nodes.length || coverage.acceptedUnits !== value.nodes.length || coverage.rejectedUnits !== 0 || !Number.isSafeInteger(coverage.coordinatePositions) || coverage.coordinatePositions < 1 || coverage.coordinatePositions > FINE_LIMITS.coordinatePositions || canonical(coverage.exceptions) !== canonical(topology.exceptions) || !coverage.exceptions.includes(FINE_PLANAR_EXCEPTION) || coverage.exceptions.some(exception => typeof exception !== 'string' || exception.length > 2048 || !exception.trim() || /[\u0000-\u001f\u007f]/.test(exception))) throw new Error('fine coverage conservation is invalid');
+  return { ...value, topology, coverage: { ...coverage, exceptions: [...topology.exceptions] } };
+}
+
+function validatePublishedOutlinesMatchSource(inventory: FineInventory, rawSourceBytes: Uint8Array): void {
+  const pin = inventory.source;
+  if (!(rawSourceBytes instanceof Uint8Array) || rawSourceBytes.byteLength !== pin.source.bytes || sha256(rawSourceBytes) !== pin.source.sha256) {
+    throw new Error('publication source bytes do not match pinned length and SHA-256');
+  }
+  let document: unknown;
+  try { document = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(rawSourceBytes)) as unknown; }
+  catch (error) { throw new TypeError(`publication source is invalid UTF-8 or JSON: ${error instanceof Error ? error.message : String(error)}`); }
+  const collection = object(document, 'publication GeoJSON');
+  if (collection.type !== 'FeatureCollection' || !Array.isArray(collection.features) || collection.features.length !== pin.expectedUnits || collection.features.length > FINE_LIMITS.units) {
+    throw new Error('publication source feature count differs from its pin');
+  }
+  if (collection.crs !== undefined) {
+    const crs = object(collection.crs, 'publication GeoJSON CRS'), properties = object(crs.properties, 'publication GeoJSON CRS properties');
+    exactKeys(crs, ['type', 'properties'], 'publication GeoJSON CRS'); exactKeys(properties, ['name'], 'publication GeoJSON CRS properties');
+    if (crs.type !== 'name' || properties.name !== 'urn:ogc:def:crs:OGC:1.3:CRS84') throw new Error('publication source CRS is not the pinned WGS84 CRS84 contract');
+  }
+  const sourceGeometries = new Map<string, string>();
+  for (const [index, raw] of collection.features.entries()) {
+    const feature = object(raw, `publication feature ${index}`), properties = object(feature.properties, `publication feature ${index} properties`);
+    if (feature.type !== 'Feature' || properties.shapeGroup !== pin.countryIso3 || properties.shapeType !== pin.adminLevel) throw new Error(`publication feature ${index} does not match pinned country/admin level`);
+    const key = text(properties.shapeID, `publication feature ${index} shapeID`, 256);
+    const parsed = parseGeometry(feature.geometry);
+    if (sourceGeometries.has(key)) throw new Error('publication source contains duplicate feature keys');
+    sourceGeometries.set(key, canonical({ type: parsed.type, coordinates: parsed.coordinates }));
+  }
+  const nodeByKey = new Map(inventory.nodes.map(node => [node.sourceRef.featureKey, node]));
+  if (nodeByKey.size !== pin.expectedUnits || sourceGeometries.size !== pin.expectedUnits
+      || [...sourceGeometries.keys()].some(key => !nodeByKey.has(key)) || [...nodeByKey.keys()].some(key => !sourceGeometries.has(key))) {
+    throw new Error('published node feature keys do not exactly match pinned source keys');
+  }
+  const outlineByNode = new Map(inventory.outlines.map(outline => [outline.nodeId, outline]));
+  for (const [key, sourceGeometry] of sourceGeometries) {
+    const node = nodeByKey.get(key)!;
+    const outline = outlineByNode.get(node.id);
+    if (!outline || canonical({ type: outline.geometry.type, coordinates: outline.geometry.coordinates }) !== sourceGeometry) {
+      throw new Error(`published outline geometry differs from pinned source feature ${key}`);
+    }
+  }
 }
 
 async function requireExistingNoSymlinkPath(target: string): Promise<void> {
@@ -429,8 +487,9 @@ async function requireExistingNoSymlinkPath(target: string): Promise<void> {
 }
 
 /** Publish all hash-addressed fine assets, with the success manifest written last. */
-export async function publishFineInventory(value: FineInventory, outputRoot: string, allowedRoot: string): Promise<{ manifestHash: string; manifestPath: string; bytes: number; units: number }> {
+export async function publishFineInventory(value: FineInventory, outputRoot: string, allowedRoot: string, rawSourceBytes: Uint8Array): Promise<{ manifestHash: string; manifestPath: string; bytes: number; units: number }> {
   const inventory = validateFineInventory(value);
+  validatePublishedOutlinesMatchSource(inventory, rawSourceBytes);
   const allowed = path.resolve(allowedRoot), output = path.resolve(outputRoot);
   const rel = path.relative(allowed, output);
   if (!path.isAbsolute(allowedRoot) || !path.isAbsolute(outputRoot) || !rel || rel === '..' || rel.startsWith(`..${path.sep}`) || path.isAbsolute(rel)) throw new Error('fine inventory output must be a dedicated child of allowedRoot');
@@ -456,9 +515,13 @@ export async function publishFineInventory(value: FineInventory, outputRoot: str
   if (assets.at(-1)!.bytes.length > 128 * 1024) throw new RangeError('fine identity registry exceeds 128 KiB cap');
   const coveragePath = add('coverage', inventory.coverage);
   if (assets.at(-1)!.bytes.length > 128 * 1024) throw new RangeError('fine coverage report exceeds 128 KiB cap');
-  const manifest = { schemaVersion: inventory.schemaVersion, coarseInventoryHash: inventory.coarseInventoryHash,
+  const topologyBytes = Buffer.from(`${canonical(inventory.topology)}\n`);
+  if (topologyBytes.length > 64 * 1024) throw new RangeError('fine topology report exceeds 64 KiB cap');
+  const topologyHash = sha256(topologyBytes), topologyPath = `topology/${topologyHash}.json`;
+  assets.push({ relative: topologyPath, bytes: topologyBytes });
+  const manifest = { schemaVersion: inventory.schemaVersion, compiler: inventory.compiler, coarseInventoryHash: inventory.coarseInventoryHash,
     countryId: inventory.countryId, source: inventory.source, sourceUnitCount: inventory.coverage.sourceUnits,
-    nodeIndexPath, registryPath, coveragePath, exceptions: inventory.coverage.exceptions };
+    nodeIndexPath, registryPath, coveragePath, topologyPath, exceptions: inventory.coverage.exceptions };
   const manifestBytes = Buffer.from(canonical(manifest));
   if (manifestBytes.length > 128 * 1024) throw new RangeError('fine manifest exceeds 128 KiB cap');
   const manifestHash = sha256(manifestBytes), manifestPath = `manifests/${manifestHash}.json`;

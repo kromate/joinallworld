@@ -11,8 +11,8 @@ export function outputRoute(pathname: string): OutputRoute | null {
   if (pack) return { rootParts: ['output'], assetParts: [pack[1]!, `${pack[2]}.json`], limit: pack[1] === 'manifests' ? 2_000_000 : 10_000_000 };
   const inventory = /^\/inventory\/(manifests|nodes|outlines)\/([a-f0-9]{64})\.json$/.exec(pathname);
   if (inventory) return { rootParts: ['output'], assetParts: ['inventory', inventory[1]!, `${inventory[2]}.json`], limit: inventory[1] === 'manifests' ? 1_000_000 : inventory[1] === 'nodes' ? 128_000 : 512_000 };
-  const fine = /^\/fine\/([a-z]{2})\/adm1\/(manifests|node-index|registries|coverage|outlines)\/([a-f0-9]{64})\.json$/.exec(pathname);
-  if (fine && fine[1] !== 'ng') return { rootParts: ['output'], assetParts: ['fine', fine[1]!, 'adm1', fine[2]!, `${fine[3]}.json`], limit: fine[2] === 'outlines' ? 2 * 1024 * 1024 : 128 * 1024 };
+  const fine = /^\/fine\/([a-z]{2})\/adm1\/(manifests|node-index|registries|coverage|outlines|topology)\/([a-f0-9]{64})\.json$/.exec(pathname);
+  if (fine && fine[1] !== 'ng') return { rootParts: ['output'], assetParts: ['fine', fine[1]!, 'adm1', fine[2]!, `${fine[3]}.json`], limit: fine[2] === 'outlines' ? 2 * 1024 * 1024 : fine[2] === 'topology' ? 64 * 1024 : 128 * 1024 };
   const campaign = /^\/campaigns\/([a-z0-9][a-z0-9-]{0,79})\/(manifests|tiles)\/([a-f0-9]{64})\.json$/.exec(pathname);
   if (campaign) return { rootParts: ['campaigns', campaign[1]!, 'output'], assetParts: [campaign[2]!, `${campaign[3]}.json`], limit: campaign[2] === 'manifests' ? 2_000_000 : 10_000_000 };
   return null;

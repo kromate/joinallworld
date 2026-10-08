@@ -3,13 +3,14 @@ import { lstat, opendir, statfs } from 'node:fs/promises';
 import path from 'node:path';
 import type { InventoryNode } from './production-types.ts';
 import { buildFineInventory, publishFineInventory } from './fine.ts';
-import { FINE_LIMITS, type FineIdentityMigration, type FineIdentityRegistry, type FineSourcePin } from './fine-types.ts';
+import { FINE_LIMITS, type FineIdentityMigration, type FineIdentityRegistry, type FineSourcePin, type FineTopologyReport } from './fine-types.ts';
 
 interface FineWorkerInput {
   pin: FineSourcePin;
   rawBuffer: ArrayBuffer;
   coarseCountry: InventoryNode;
   coarseInventoryHash: string;
+  topologyReport:FineTopologyReport;
   previousRegistry?: FineIdentityRegistry;
   migration?: FineIdentityMigration;
   buildRoot: string;
@@ -45,14 +46,14 @@ async function run(): Promise<void> {
   const input = workerData as FineWorkerInput;
   const rawBytes = new Uint8Array(input.rawBuffer);
   const inventory = buildFineInventory(input.pin, rawBytes, input.coarseCountry, input.coarseInventoryHash,
-    { ...(input.previousRegistry ? { previousRegistry: input.previousRegistry } : {}), ...(input.migration ? { migration: input.migration } : {}) });
+    { ...(input.previousRegistry ? { previousRegistry: input.previousRegistry } : {}), ...(input.migration ? { migration: input.migration } : {}),topologyReport:input.topologyReport });
 
   const disk = await statfs(input.buildRoot);
   if (disk.bavail * disk.bsize < (100 + 16) * 1024 * 1024) throw new RangeError('fine build free disk space fell below the 100 MiB reserve plus 16 MiB publication allowance');
   const currentFineBytes = await treeBytes(path.join(input.buildRoot, 'output', 'fine'));
   if (currentFineBytes + 16 * 1024 * 1024 > 40 * 1024 * 1024) throw new RangeError('fine output subtree lacks room for the maximum 16 MiB publication within its 40 MiB cumulative cap');
 
-  const published = await publishFineInventory(inventory, input.outputRoot, input.buildRoot);
+  const published = await publishFineInventory(inventory, input.outputRoot, input.buildRoot, rawBytes);
   if (published.bytes > FINE_LIMITS.publishedBytes || published.units !== input.pin.expectedUnits) throw new Error('fine publisher result differs from its byte or unit cap');
   parentPort.postMessage({ ok: true, result: published });
 }

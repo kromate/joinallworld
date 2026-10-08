@@ -5,10 +5,17 @@ import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import type { InventoryNode } from './production-types.ts';
-import type { FineIdentityMigration, FineIdentityRegistry, FineSourcePin } from './fine-types.ts';
+import type { FineIdentityMigration, FineIdentityRegistry, FineSourcePin, FineTopologyReport } from './fine-types.ts';
 import { buildFineInventory, publishFineInventory, validateFineSourcePin } from './fine.ts';
+import { FINE_PLANAR_EXCEPTION } from './fine-quality.ts';
 
 const hash = (bytes: Uint8Array | string) => createHash('sha256').update(bytes).digest('hex');
+function canonical(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
+  const record = value as Record<string, unknown>;
+  return `{${Object.keys(record).sort().map(key => `${JSON.stringify(key)}:${canonical(record[key])}`).join(',')}}`;
+}
 const country: InventoryNode = { id: 'country:natural-earth:fixture-rw', parentId: 'continent:africa', name: 'Rwanda', kind: 'country', countryCode: 'RW', bounds: [28, -3, 31, -1], sourceFeatureIds: ['ne:fixture'], provider: 'world', outline: 'available', exceptions: [] };
 const polygon = (west = 29, south = -2, east = 30, north = -1) => ({ type: 'Polygon', coordinates: [[[west, south], [east, south], [east, north], [west, north], [west, south]]] });
 type FeatureInput = { key?: string; name?: string; group?: string; shapeType?: string; geometry?: unknown };
@@ -31,9 +38,24 @@ function sourceFixture(features: FeatureInput[] = [{ key: 'RWA-ADM1-a', name: 'N
   return { raw, pin, document };
 }
 const generatedId = (countryId: string, key: string) => `admin:geoBoundaries:${hash(`${countryId}\0ADM1\0geoBoundaries\0${key}`)}`;
-function build(features: FeatureInput[], options: { previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration } = {}) {
-  const fixture = sourceFixture(features);
-  return { fixture, inventory: buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64), options) };
+function syntheticTopology(pin: FineSourcePin, keys: string[], status: 'valid' | 'invalid' | 'unsupported' = 'valid'): FineTopologyReport {
+  const rows = [...keys].sort().map(featureKey => status === 'valid'
+    ? { featureKey, status, valid: true, empty: false, reason: null }
+    : status === 'invalid' ? { featureKey, status, valid: false, empty: false, reason: 'Synthetic invalid topology fixture.' }
+      : { featureKey, status, valid: null, empty: null, reason: 'Synthetic unsupported topology fixture.' });
+  const validUnits = status === 'valid' ? keys.length : 0;
+  const invalidUnits = status === 'invalid' ? keys.length : 0;
+  const unsupportedUnits = status === 'unsupported' ? keys.length : 0;
+  return { schemaVersion: 1, validator: 'duckdb-spatial-ogc-planar-v1', sourceSha256: pin.source.sha256, sourceBytes: pin.source.bytes,
+    expectedUnits: pin.expectedUnits, checkedUnits: validUnits + invalidUnits, validUnits, invalidUnits, unsupportedUnits,
+    tooling: { duckdbVersion: '1.5.6', spatialVersion: '04270fe', spatialSha256: 'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9' }, rows,
+    exceptions: [FINE_PLANAR_EXCEPTION, ...(unsupportedUnits ? ['Polar, global-span, or ambiguous longitude geometries are reported unsupported, not valid.'] : [])] };
+}
+function build(featureInputs: FeatureInput[], options: { previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration; topologyReport?: FineTopologyReport } = {}) {
+  const fixture = sourceFixture(featureInputs);
+  const features = fixture.document.features as Array<{ properties: { shapeID: string } }>;
+  const keys = features.map(feature => feature.properties.shapeID);
+  return { fixture, inventory: buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64), { ...options, topologyReport: options.topologyReport ?? syntheticTopology(fixture.pin, keys) }) };
 }
 
 test('source pin requires immutable raw/media URL, full commit, exact hash/length and license evidence', () => {
@@ -57,7 +79,8 @@ test('initial IDs are deterministic across feature reorder and source-release ch
   const nextRelease = 'd'.repeat(40);
   next.pin.source.release = nextRelease;
   next.pin.source.url = `https://raw.githubusercontent.com/wmgeolab/geoBoundaries/${nextRelease}/releaseData/gbOpen/RWA/ADM1/geoBoundaries-RWA-ADM1.geojson`;
-  const refreshed = buildFineInventory(next.pin, next.raw, country, 'd'.repeat(64), { previousRegistry: first.registry });
+  const refreshed = buildFineInventory(next.pin, next.raw, country, 'd'.repeat(64), { previousRegistry: first.registry,
+    topologyReport: syntheticTopology(next.pin, rows.map(feature => feature.key!)) });
   assert.deepEqual(refreshed.nodes.map(node => node.id), first.nodes.map(node => node.id));
 });
 
@@ -131,13 +154,35 @@ test('coarse hierarchy input requires the matching world provider and unique sou
   assert.throws(() => buildFineInventory(fixture.pin, fixture.raw, { ...country, sourceFeatureIds: ['same', 'same'] }, 'c'.repeat(64)), /source feature IDs.*unique/);
 });
 
+test('fine compilation requires matching all-valid topology evidence for exact source keys', () => {
+  const fixture = sourceFixture();
+  assert.throws(() => buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64)), /topology report is required/);
+  const correct = syntheticTopology(fixture.pin, ['RWA-ADM1-a']);
+  assert.throws(() => buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64), {
+    topologyReport: { ...correct, sourceSha256: '0'.repeat(64) },
+  }), /does not match its pinned source/);
+  assert.throws(() => buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64), {
+    topologyReport: { ...correct, sourceBytes: correct.sourceBytes + 1 },
+  }), /does not match its pinned source/);
+  assert.throws(() => buildFineInventory(fixture.pin, fixture.raw, country, 'c'.repeat(64), {
+    topologyReport: syntheticTopology(fixture.pin, ['different-source-key']),
+  }), /feature keys are not exact/);
+  assert.throws(() => build([{ key: 'invalid', name: 'Invalid' }], {
+    topologyReport: syntheticTopology(sourceFixture([{ key: 'invalid', name: 'Invalid' }]).pin, ['invalid'], 'invalid'),
+  }), /every expected source unit valid/);
+  const unsupportedFixture = sourceFixture([{ key: 'unsupported', name: 'Unsupported' }]);
+  assert.throws(() => build([{ key: 'unsupported', name: 'Unsupported' }], {
+    topologyReport: syntheticTopology(unsupportedFixture.pin, ['unsupported'], 'unsupported'),
+  }), /every expected source unit valid/);
+});
+
 test('only the exact CRS84 declaration is accepted when a GeoJSON CRS is present', () => {
   const exact = sourceFixture();
   exact.document.crs = { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } };
   exact.raw = Buffer.from(JSON.stringify(exact.document));
   exact.pin.source.bytes = exact.raw.length; exact.pin.source.sha256 = hash(exact.raw);
   exact.pin.input = `.cache/world-build/fine-source-cache/${hash(exact.raw)}.geojson`;
-  assert.equal(buildFineInventory(exact.pin, exact.raw, country, 'c'.repeat(64)).nodes.length, 1);
+  assert.equal(buildFineInventory(exact.pin, exact.raw, country, 'c'.repeat(64), { topologyReport: syntheticTopology(exact.pin, ['RWA-ADM1-a']) }).nodes.length, 1);
 
   const rejected = [
     { type: 'name', properties: { name: 'EPSG:4326' } },
@@ -198,20 +243,26 @@ test('enforces per-feature and whole-inventory coordinate-position budgets', () 
 });
 
 test('publisher writes deterministic immutable assets and manifest last within its byte cap', async () => {
-  const { inventory } = build([{ key: 'publish', name: 'Publish', geometry: polygon() }]);
+  const { fixture, inventory } = build([{ key: 'publish', name: 'Publish', geometry: polygon() }]);
   const temp = await mkdtemp(path.join(await realpath(os.tmpdir()), 'fine-publish-'));
   try {
     const allowed = path.join(temp, 'build'); await mkdir(allowed);
-    const first = await publishFineInventory(inventory, path.join(allowed, 'fine-a'), allowed);
-    const second = await publishFineInventory(inventory, path.join(allowed, 'fine-b'), allowed);
+    const first = await publishFineInventory(inventory, path.join(allowed, 'fine-a'), allowed, fixture.raw);
+    const second = await publishFineInventory(inventory, path.join(allowed, 'fine-b'), allowed, fixture.raw);
     assert.equal(first.manifestHash, second.manifestHash);
     assert.equal(first.bytes, second.bytes);
-    const manifest = JSON.parse(await readFile(first.manifestPath, 'utf8')) as { nodeIndexPath: string; registryPath: string; coveragePath: string };
+    const manifest = JSON.parse(await readFile(first.manifestPath, 'utf8')) as { nodeIndexPath: string; registryPath: string; coveragePath: string; topologyPath: string; compiler: string; schemaVersion: number };
+    assert.equal(manifest.schemaVersion, 2);
+    assert.equal(manifest.compiler, 'fine-inventory-compiler-v2');
     for (const relative of [manifest.nodeIndexPath, manifest.registryPath, manifest.coveragePath]) {
       const digest = path.basename(relative, '.json');
       assert.match(digest, /^[a-f0-9]{64}$/);
       assert.equal(hash(await readFile(path.join(path.dirname(first.manifestPath), '..', relative))), digest);
     }
+    const topologyBytes = await readFile(path.join(path.dirname(first.manifestPath), '..', manifest.topologyPath));
+    assert.equal(topologyBytes.at(-1), 10);
+    assert.equal(hash(topologyBytes), path.basename(manifest.topologyPath, '.json'));
+    assert.deepEqual(topologyBytes, Buffer.from(`${canonical(inventory.topology)}\n`));
     assert.equal((await lstat(first.manifestPath)).isFile(), true);
     assert.equal(first.units, 1);
 
@@ -223,13 +274,13 @@ test('publisher writes deterministic immutable assets and manifest last within i
     }));
     oversized.registry.entries.push(...retired);
     const output = path.join(allowed, 'too-large');
-    await assert.rejects(publishFineInventory(oversized, output, allowed), /128 KiB/);
+    await assert.rejects(publishFineInventory(oversized, output, allowed, fixture.raw), /128 KiB/);
     await assert.rejects(lstat(output), { code: 'ENOENT' });
   } finally { await rm(temp, { recursive: true, force: true }); }
 });
 
 test('publisher rejects forged counts, bounds, duplicate current keys and malformed text before creating output', async () => {
-  const { inventory } = build([
+  const { fixture, inventory } = build([
     { key: 'publish-a', name: 'A', geometry: polygon() },
     { key: 'publish-b', name: 'B', geometry: polygon(30, -2, 31, -1) },
   ]);
@@ -242,24 +293,46 @@ test('publisher rejects forged counts, bounds, duplicate current keys and malfor
       ['key', value => { value.nodes[1]!.sourceRef.featureKey = value.nodes[0]!.sourceRef.featureKey; }, /source feature keys are duplicated/],
       ['alias', value => { value.nodes[0]!.aliases = ['bad\u0001alias']; }, /aliases are invalid/],
       ['exception', value => { value.coverage.exceptions.push('bad\u0001exception'); }, /coverage conservation/],
+      ['topology source', value => { value.topology.sourceSha256 = '0'.repeat(64); }, /does not match its pinned source/],
+      ['topology key', value => { value.topology.rows[0]!.featureKey = 'wrong-key'; }, /feature keys are not exact/],
+      ['topology invalid', value => { value.topology.rows = value.topology.rows.map(row => ({ featureKey: row.featureKey, status: 'invalid', valid: false, empty: false, reason: 'forged invalid' })); value.topology.validUnits = 0; value.topology.invalidUnits = 2; value.topology.checkedUnits = 2; }, /all-valid source-bound topology evidence/],
     ];
     for (const [name, mutate, expected] of mutations) {
       const forged = structuredClone(inventory); mutate(forged);
       const output = path.join(allowed, `forged-${name}`);
-      await assert.rejects(publishFineInventory(forged, output, allowed), expected);
+      await assert.rejects(publishFineInventory(forged, output, allowed, fixture.raw), expected);
       await assert.rejects(lstat(output), { code: 'ENOENT' });
     }
   } finally { await rm(temp, { recursive: true, force: true }); }
 });
 
 test('publisher refuses symlinked allowed-root ancestors before writing', async () => {
-  const { inventory } = build([{ key: 'symlink', name: 'Symlink test', geometry: polygon() }]);
+  const { fixture, inventory } = build([{ key: 'symlink', name: 'Symlink test', geometry: polygon() }]);
   const temp = await mkdtemp(path.join(await realpath(os.tmpdir()), 'fine-symlink-'));
   try {
     const realAllowed = path.join(temp, 'real-build'); await mkdir(realAllowed);
     const linkedAllowed = path.join(temp, 'linked-build'); await symlink(realAllowed, linkedAllowed, 'dir');
     const output = path.join(linkedAllowed, 'fine');
-    await assert.rejects(publishFineInventory(inventory, output, linkedAllowed), /allowedRoot ancestor contains a symlink/);
+    await assert.rejects(publishFineInventory(inventory, output, linkedAllowed, fixture.raw), /allowedRoot ancestor contains a symlink/);
     await assert.rejects(lstat(output), { code: 'ENOENT' });
+  } finally { await rm(temp, { recursive: true, force: true }); }
+});
+
+test('publisher binds outline geometry and source bytes to the topology-checked source before creating output', async () => {
+  const { fixture, inventory } = build([{ key: 'fidelity', name: 'Fidelity', geometry: polygon() }]);
+  const temp = await mkdtemp(path.join(await realpath(os.tmpdir()), 'fine-source-fidelity-'));
+  try {
+    const allowed = path.join(temp, 'build'); await mkdir(allowed);
+    const forged = structuredClone(inventory);
+    const ring = forged.outlines[0]!.geometry.coordinates as number[][][];
+    ring[0]![1]![0] = 29.75; // Interior vertex change preserves the original bounds and position count.
+    const output = path.join(allowed, 'mutated-outline');
+    await assert.rejects(publishFineInventory(forged, output, allowed, fixture.raw), /outline geometry differs from pinned source feature/);
+    await assert.rejects(lstat(output), { code: 'ENOENT' });
+
+    const wrongBytes = Buffer.from(fixture.raw), mutateAt = wrongBytes.length - 2; wrongBytes[mutateAt] = wrongBytes[mutateAt]! ^ 1;
+    const wrongSourceOutput = path.join(allowed, 'wrong-source');
+    await assert.rejects(publishFineInventory(inventory, wrongSourceOutput, allowed, wrongBytes), /source bytes do not match pinned length and SHA-256/);
+    await assert.rejects(lstat(wrongSourceOutput), { code: 'ENOENT' });
   } finally { await rm(temp, { recursive: true, force: true }); }
 });

@@ -1,0 +1,28 @@
+# Country coverage expansion: measured candidate and implementation contract
+
+The accepted 110m inventory contains 177 Natural Earth map units. Its country IDs and coarse manifest remain unchanged. This is an explicit source denominator, not every country, territory, settlement or playable destination. Expand the geographic foundation before treating the ADM1 metadata catalogue as a global campaign denominator.
+
+## Primary evidence captured once
+
+[Natural Earth's official 10m country product](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/) describes 258 country map units and default de facto boundaries. Map units are not a count of sovereign states. That product description does not independently establish the feature count of our pinned payload.
+
+The existing Natural Earth commit is `ca96624a56bd078437bca8184e78163e5039ad19`. One bounded GitHub contents request at that exact commit returned HTTP 200, 1,229 response-body bytes in 1,475 ms, with no retries. Metadata SHA-256 is `600d9ccec030a557495454dca53fdd62605d61341068439b1e9ca4fd6e038629`. The 64 KiB reservation was durably recorded before contact and released only after complete measured capture. Evidence lives under `.cache/world-build/evidence/country-resolution-research/` in `ne-10m-countries-api.json` and `ne-10m-countries-audit.jsonl`.
+
+The captured metadata identifies:
+
+- Path: `geojson/ne_10m_admin_0_countries.geojson`.
+- Advertised raw length: **13,287,234 bytes**.
+- Git blob SHA-1: `5ebc66e25fc1af01edaebe9375c546655e04cf1e`; this is **not** the raw payload SHA-256.
+- Exact raw URL: `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_0_countries.geojson`.
+- `encoding: none` and empty embedded content. No geometry was downloaded by this research request.
+
+## Next bounded implementation
+
+1. Build a separate supervised country-source acquisition path with a durable pre-contact reservation, identity encoding, exact host/full-commit URL, manual redirect rejection, measured response-body accounting, bounded retained partials, cumulative source allowance and no automatic retry. The 13.3 MB candidate exceeds the fine pilot's 8 MiB source cap; do not relax that cap or route it through fine acquisition. Derive explicit wall, disk, memory, traversal and audit limits before contact. Reuse verified metadata without another discovery request.
+2. Capture at most one complete payload, compute its actual SHA-256 and verify its exact byte length. Pin that result and source rights before compilation. Neither the metadata's Git blob ID nor the advertised product count is a geometry pin. Cache-only reruns must verify original bytes and retain acquisition accounting.
+3. Supervise parsing and compilation in a terminable worker. Bound aggregate coordinate positions as well as each feature, emitted outline bytes, complete index bytes and worker RSS. The existing bootstrap input cap alone does not provide these guarantees. A large source is not permission to emit an oversized country outline; use a deterministic bounded representation or explicit exception, preserving the original source separately.
+4. Compare every retained 110m `NE_ID` against the 10m feature keys exactly, with count conservation and explicit added, retained, missing, duplicate or changed identities. Preserve current IDs; do not match by display names or reset registries. A missing retained key requires a reviewed migration or recorded exception. Nigeria remains `legacy-ng` with no generated replacement outline.
+5. Publish a new immutable inventory version alongside the old one. Preserve old manifests and Rwanda's existing coarse binding. A new fine binding must be rebuilt explicitly against the verified new hierarchy; never silently change an old manifest's parent hash. Country-versus-map-unit distinctions, disputed boundaries and special regions remain disclosed.
+6. Reconstruct discovery joins against the new denominator, using exact source identities. Retain the invalid India metadata row and missing-level exceptions; never count discovered metadata, empty geometry or omitted units as completed geography. Then implement resumable fine campaigns, Africa first, with immutable reviewed pins and bounded partitions for larger layers.
+
+Acceptance requires real first/repeated cache-only reproduction, original-to-output identity conservation, hash/byte verification, interrupted-run recovery, explicit exceptions, and lazy browser inspection of a newly represented small map unit plus polar/antimeridian cases. Do not infer real performance or global completion from metadata or synthetic fixtures. This candidate has not yet passed those gates.

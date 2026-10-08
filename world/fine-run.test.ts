@@ -7,9 +7,13 @@ import path from 'node:path';
 import { buildInventory, publishInventory } from './inventory.ts';
 import { runFineBuild } from './fine-run.ts';
 import type { FineSourcePin } from './fine-types.ts';
+import type { FineTopologyReport } from './fine-types.ts';
+import { FINE_PLANAR_EXCEPTION, FINE_UNSUPPORTED_EXCEPTION } from './fine-quality.ts';
 import type { SourceRecord } from './types.ts';
 
 const hash = (bytes: Uint8Array | string) => createHash('sha256').update(bytes).digest('hex');
+const canonical=(value:unknown):string=>value===null||typeof value==='string'||typeof value==='boolean'?JSON.stringify(value):typeof value==='number'?JSON.stringify(value):Array.isArray(value)?`[${value.map(canonical).join(',')}]`:`{${Object.keys(value as Record<string,unknown>).sort().map(key=>`${JSON.stringify(key)}:${canonical((value as Record<string,unknown>)[key])}`).join(',')}}`;
+const compareCodepoints=(a:string,b:string)=>{const left=Array.from(a,c=>c.codePointAt(0)!),right=Array.from(b,c=>c.codePointAt(0)!);for(let i=0;i<Math.min(left.length,right.length);i++)if(left[i]!==right[i])return left[i]!-right[i]!;return left.length-right.length;};
 const release = 'a'.repeat(40);
 const pinFor = (raw: Buffer): FineSourcePin => {
   const sourceHash = hash(raw);
@@ -41,7 +45,21 @@ const coarseGeo = { type: 'FeatureCollection', features: [
   { type: 'Feature', properties: { NE_ID: 1, ADMIN: 'Rwanda', CONTINENT: 'Africa', ISO_A2_EH: 'RW' }, geometry: coarseGeometry(28, -3, 31, -1) },
   { type: 'Feature', properties: { NE_ID: 2, ADMIN: 'Nigeria', CONTINENT: 'Africa', ISO_A2_EH: 'NG' }, geometry: coarseGeometry(3, 4, 15, 14) },
 ] };
-async function makeFixture<T>(run: (fixture: { repoRoot: string; buildRoot: string; sourcePath: string; raw: Buffer; pin: FineSourcePin; coarseHash: string }) => Promise<T>, raw = fineBytes()) {
+type RunnerFixture={repoRoot:string;buildRoot:string;sourcePath:string;raw:Buffer;pin:FineSourcePin;coarseHash:string;topologyReportPath:string;topologyRequestHash:string;topologyReportHash:string};
+function syntheticTopologyReport(raw:Buffer,pin:FineSourcePin,kind:'valid'|'invalid'|'unsupported'='valid',mutate?:(report:FineTopologyReport)=>void):{requestHash:string;reportHash:string;bytes:Buffer}{
+ const document=JSON.parse(raw.toString('utf8')) as {features:Array<{properties:{shapeID:string}}>} ;
+ const expectedKeys=document.features.map(feature=>feature.properties.shapeID).sort(compareCodepoints);
+ const unsupported=kind==='unsupported',invalid=kind==='invalid';
+ const report:FineTopologyReport={schemaVersion:1,validator:'duckdb-spatial-ogc-planar-v1',sourceSha256:pin.source.sha256,sourceBytes:pin.source.bytes,expectedUnits:pin.expectedUnits,
+  checkedUnits:unsupported?0:pin.expectedUnits,validUnits:kind==='valid'?pin.expectedUnits:0,invalidUnits:invalid?pin.expectedUnits:0,unsupportedUnits:unsupported?pin.expectedUnits:0,
+  tooling:{duckdbVersion:'1.5.6',spatialVersion:'04270fe',spatialSha256:'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9'},
+  rows:expectedKeys.map(featureKey=>kind==='valid'?{featureKey,status:'valid',valid:true,empty:false,reason:null}:kind==='invalid'?{featureKey,status:'invalid',valid:false,empty:false,reason:'synthetic invalid geometry'}:{featureKey,status:'unsupported',valid:null,empty:null,reason:'synthetic unsupported geometry'}),
+  exceptions:unsupported?[FINE_PLANAR_EXCEPTION,FINE_UNSUPPORTED_EXCEPTION]:[FINE_PLANAR_EXCEPTION]};
+ mutate?.(report);
+ const requestHash=hash(canonical({validator:'duckdb-spatial-ogc-planar-v1',sourceSha256:pin.source.sha256,sourceBytes:pin.source.bytes,expectedUnits:pin.expectedUnits,expectedKeys,spatialSha256:'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9'}));
+ const bytes=Buffer.from(`${canonical(report)}\n`);return {requestHash,reportHash:hash(bytes),bytes};
+}
+async function makeFixture<T>(run: (fixture: RunnerFixture) => Promise<T>, raw = fineBytes()) {
   const temp = await mkdtemp(path.join(await realpath(os.tmpdir()), 'fine-runner-'));
   try {
     const repoRoot = path.join(await realpath(temp), 'repo'); await mkdir(repoRoot);
@@ -51,11 +69,19 @@ async function makeFixture<T>(run: (fixture: { repoRoot: string; buildRoot: stri
     const published = await publishInventory(inventory, inventoryRoot, buildRoot);
     const pin = pinFor(raw), sourcePath = path.join(repoRoot, pin.input);
     await mkdir(path.dirname(sourcePath), { recursive: true }); await writeFile(sourcePath, raw);
-    return await run({ repoRoot, buildRoot, sourcePath, raw, pin, coarseHash: published.manifestHash });
+    const evidence=syntheticTopologyReport(raw,pin);
+    const topologyReportPath=path.join(buildRoot,'fine-topology','reports',evidence.requestHash,`${evidence.reportHash}.json`);
+    await mkdir(path.dirname(topologyReportPath),{recursive:true});await writeFile(topologyReportPath,evidence.bytes);
+    return await run({ repoRoot, buildRoot, sourcePath, raw, pin, coarseHash: published.manifestHash,topologyReportPath,topologyRequestHash:evidence.requestHash,topologyReportHash:evidence.reportHash });
   } finally { await rm(temp, { recursive: true, force: true }); }
 }
-const run = (f: { repoRoot: string; pin: FineSourcePin; coarseHash: string; registry?: string; migration?: string; signal?: AbortSignal; durationMs?: number }) => runFineBuild({
-  repositoryRoot: f.repoRoot, coarseInventoryHash: f.coarseHash, pin: f.pin,
+async function installTopologyVariant(fixture:RunnerFixture,kind:'valid'|'invalid'|'unsupported'='valid',mutate?:(report:FineTopologyReport)=>void,parentHash=fixture.topologyRequestHash):Promise<string>{
+ const evidence=syntheticTopologyReport(fixture.raw,fixture.pin,kind,mutate);
+ const filename=path.join(fixture.buildRoot,'fine-topology','reports',parentHash,`${evidence.reportHash}.json`);
+ await mkdir(path.dirname(filename),{recursive:true});await writeFile(filename,evidence.bytes);return filename;
+}
+const run = (f: Pick<RunnerFixture,'repoRoot'|'pin'|'coarseHash'|'topologyReportPath'> & { registry?: string; migration?: string; signal?: AbortSignal; durationMs?: number }) => runFineBuild({
+  repositoryRoot: f.repoRoot, coarseInventoryHash: f.coarseHash, pin: f.pin,topologyReportPath:f.topologyReportPath,
   ...(f.registry ? { previousRegistryPath: f.registry } : {}), ...(f.migration ? { migrationPath: f.migration } : {}),
   ...(f.signal ? { signal: f.signal } : {}), ...(f.durationMs ? { durationMs: f.durationMs } : {}),
 });
@@ -70,8 +96,9 @@ test('cache-only runner publishes immutable fine assets, reuses them determinist
   const attempts = await readdir(path.join(fixture.buildRoot, 'fine-attempts'));
   assert.equal(attempts.length, 2);
   for (const name of attempts) {
-    const attempt = JSON.parse(await readFile(path.join(fixture.buildRoot, 'fine-attempts', name), 'utf8')) as { status: string; networkBytes: number; requestHash: string };
+    const attempt = JSON.parse(await readFile(path.join(fixture.buildRoot, 'fine-attempts', name), 'utf8')) as { status: string; networkBytes: number; requestHash: string; topologyReportHash:string };
     assert.equal(attempt.status, 'succeeded'); assert.equal(attempt.networkBytes, 0); assert.match(attempt.requestHash, /^[a-f0-9]{64}$/);
+    assert.equal(attempt.topologyReportHash,fixture.topologyReportHash);
   }
   const fineRoot = path.join(fixture.buildRoot, 'output', 'fine');
   const walk = async (directory: string): Promise<string[]> => {
@@ -85,11 +112,42 @@ test('cache-only runner publishes immutable fine assets, reuses them determinist
 
 test('source tampering fails closed and retains a final failure audit record', async () => makeFixture(async fixture => {
   const changed = Buffer.from(fixture.raw); changed[changed.length - 2] = changed[changed.length - 2]! ^ 1; await writeFile(fixture.sourcePath, changed);
-  await assert.rejects(run(fixture), /pinned length and SHA-256/);
+  await assert.rejects(run(fixture), /immutable length and SHA-256 pin/);
   const attempts = await readdir(path.join(fixture.buildRoot, 'fine-attempts'));
   const record = JSON.parse(await readFile(path.join(fixture.buildRoot, 'fine-attempts', attempts[0]!), 'utf8')) as { status: string };
   assert.equal(record.status, 'failed');
   assert.equal(await readdir(path.join(fixture.buildRoot, 'output', 'fine')).then(() => true, () => false), false);
+}));
+
+test('hash-addressed topology report is part of compiler identity and is tamper checked before publication',async()=>makeFixture(async fixture=>{
+ const changed=Buffer.from(await readFile(fixture.topologyReportPath));changed[0]=changed[0]!^1;await writeFile(fixture.topologyReportPath,changed);
+ await assert.rejects(run(fixture),/report bytes do not match/);
+ const records=await readdir(path.join(fixture.buildRoot,'fine-attempts'));
+ const audit=JSON.parse(await readFile(path.join(fixture.buildRoot,'fine-attempts',records[0]!), 'utf8')) as {status:string;topologyReportHash:string;requestHash:string};
+ assert.equal(audit.status,'failed');assert.equal(audit.topologyReportHash,fixture.topologyReportHash);assert.match(audit.requestHash,/^[a-f0-9]{64}$/);
+ await assert.rejects(readdir(path.join(fixture.buildRoot,'output','fine')));
+}));
+
+test('source-mismatched, key-mismatched, invalid and unsupported topology reports fail without fine output',async()=>makeFixture(async fixture=>{
+ const cases:Array<{kind?:'invalid'|'unsupported';mutate?:(report:FineTopologyReport)=>void;error:RegExp}>=[
+  {mutate:report=>{report.sourceSha256='c'.repeat(64);},error:/pinned source or validator contract/},
+  {mutate:report=>{report.rows[0]!.featureKey='not-the-pinned-key';},error:/feature keys are not exact/},
+  {kind:'invalid',error:/all-valid topology evidence/},
+  {kind:'unsupported',error:/all-valid topology evidence/},
+ ];
+ for(const item of cases){const topologyReportPath=await installTopologyVariant(fixture,item.kind??'valid',item.mutate);await assert.rejects(run({...fixture,topologyReportPath}),item.error);}
+ await assert.rejects(readdir(path.join(fixture.buildRoot,'output','fine')));
+ const audits=await readdir(path.join(fixture.buildRoot,'fine-attempts'));
+ assert.equal(audits.length,cases.length);for(const name of audits)assert.equal((JSON.parse(await readFile(path.join(fixture.buildRoot,'fine-attempts',name),'utf8')) as {status:string}).status,'failed');
+}));
+
+test('report parent request hash, missing report and path escapes fail before publication',async()=>makeFixture(async fixture=>{
+ const wrongParent=await installTopologyVariant(fixture,'valid',undefined,'f'.repeat(64));
+ await assert.rejects(run({...fixture,topologyReportPath:wrongParent}),/request directory does not match/);
+ await rm(fixture.topologyReportPath);
+ await assert.rejects(run(fixture));
+ await assert.rejects(run({...fixture,topologyReportPath:path.join(fixture.repoRoot,'elsewhere','report.json')}),/inside \.cache\/world-build/);
+ await assert.rejects(readdir(path.join(fixture.buildRoot,'output','fine')));
 }));
 
 test('symlinked cache ancestors are refused before creating data outside the repository', async () => makeFixture(async fixture => {

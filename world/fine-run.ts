@@ -7,17 +7,21 @@ import { readBoundedLocalFile, readCoarseInventoryCountry } from './inventory-re
 import type { InventoryNode } from './production-types.ts';
 import { withAcquisitionBuildLock } from './acquire.ts';
 import { validateFineSourcePin } from './fine.ts';
-import { FINE_LIMITS, type FineIdentityMigration, type FineIdentityRegistry, type FineSourcePin } from './fine-types.ts';
+import { validateFineTopologyReport } from './fine-quality.ts';
+import { FINE_LIMITS, type FineIdentityMigration, type FineIdentityRegistry, type FineSourcePin, type FineTopologyReport } from './fine-types.ts';
 
 const HARD = Object.freeze({ durationMs: 120_000, processRssBytes: 512 * 1024 * 1024, freeBytes: 100 * 1024 * 1024, outputReserveBytes: FINE_LIMITS.publishedBytes, fineTreeBytes: 40 * 1024 * 1024, workerOldMb: 256, workerYoungMb: 32, auditRecordBytes: 8 * 1024, auditReplacementReserveBytes: 16 * 1024 });
 const SHA256 = /^[a-f0-9]{64}$/;
 const MAX_AUDIT_ERROR = 2_000;
-const FINE_COMPILER = 'fine-inventory-compiler-v1';
+const FINE_COMPILER = 'fine-inventory-compiler-v2';
+const TOPOLOGY_VALIDATOR = 'duckdb-spatial-ogc-planar-v1';
+const TOPOLOGY_SPATIAL_SHA256 = 'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9';
 
 export interface FineBuildOptions {
   repositoryRoot: string;
   coarseInventoryHash: string;
   pin: FineSourcePin;
+  topologyReportPath: string;
   previousRegistryPath?: string;
   migrationPath?: string;
   signal?: AbortSignal;
@@ -84,6 +88,53 @@ function canonical(value: unknown): string {
     return `{${Object.keys(record).sort().map(key => `${JSON.stringify(key)}:${canonical(record[key])}`).join(',')}}`;
   }
   throw new TypeError('fine run identity is not JSON data');
+}
+function compareCodepoints(left: string, right: string): number {
+  const a = Array.from(left, character => character.codePointAt(0)!);
+  const b = Array.from(right, character => character.codePointAt(0)!);
+  for (let index=0;index<Math.min(a.length,b.length);index++) if(a[index]!==b[index]) return a[index]!-b[index]!;
+  return a.length-b.length;
+}
+function expectedTopologyKeys(rawBytes: Uint8Array, pin: FineSourcePin): string[] {
+  let parsed: unknown;
+  try { parsed = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(rawBytes)) as unknown; }
+  catch (error) { throw new TypeError(`cached fine source is invalid UTF-8 or JSON: ${error instanceof Error ? error.message : String(error)}`); }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new TypeError('cached fine source must be a GeoJSON FeatureCollection');
+  const collection=parsed as Record<string,unknown>;
+  if(collection.type!=='FeatureCollection'||!Array.isArray(collection.features)||collection.features.length!==pin.expectedUnits||collection.features.length>FINE_LIMITS.units) throw new Error('cached fine source feature count differs from pin');
+  const keys:string[]=[];
+  for(const [index,raw] of collection.features.entries()){
+    if(!raw||typeof raw!=='object'||Array.isArray(raw))throw new TypeError(`fine source feature ${index} must be an object`);
+    const feature=raw as Record<string,unknown>,properties=feature.properties;
+    if(feature.type!=='Feature'||!properties||typeof properties!=='object'||Array.isArray(properties))throw new TypeError(`fine source feature ${index} is malformed`);
+    const props=properties as Record<string,unknown>;
+    if(props.shapeGroup!==pin.countryIso3||props.shapeType!==pin.adminLevel)throw new Error(`fine source feature ${index} does not match pinned country/admin level`);
+    if(typeof props.shapeID!=='string'||!props.shapeID.trim()||props.shapeID.length>256||/[\u0000-\u001f\u007f]/.test(props.shapeID))throw new TypeError(`fine source feature ${index} key is invalid`);
+    keys.push(props.shapeID);
+  }
+  if(new Set(keys).size!==keys.length)throw new Error('cached fine source contains duplicate feature keys');
+  return keys.sort(compareCodepoints);
+}
+function topologyRequestHash(pin: FineSourcePin, expectedKeys: readonly string[]): string {
+  return createHash('sha256').update(canonical({ validator:TOPOLOGY_VALIDATOR,sourceSha256:pin.source.sha256,sourceBytes:pin.source.bytes,
+    expectedUnits:pin.expectedUnits,expectedKeys:[...expectedKeys],spatialSha256:TOPOLOGY_SPATIAL_SHA256 })).digest('hex');
+}
+function topologyReportComponents(reportPath: string, reportsRoot: string): { reportHash:string } {
+  const relative=path.relative(reportsRoot,reportPath).split(path.sep);
+  if(relative.length!==2||!/^[a-f0-9]{64}$/.test(relative[0]??'')||!/^([a-f0-9]{64})\.json$/.test(relative[1]??'')) throw new Error('topologyReportPath must be reports/<requestHash>/<reportHash>.json under .cache/world-build/fine-topology');
+  return {reportHash:relative[1]!.slice(0,-5)};
+}
+async function readTopologyReport(reportPath:string,expectedRequestHash:string,reportHash:string,pin:FineSourcePin,keys:readonly string[]):Promise<FineTopologyReport>{
+  const relative=path.relative(path.dirname(path.dirname(reportPath)),reportPath).split(path.sep);
+  if(relative.length!==2||relative[0]!==expectedRequestHash||relative[1]!==`${reportHash}.json`)throw new Error('topology report request directory does not match the pinned source/key/tool request hash');
+  const bytes=await readBoundedLocalFile(reportPath,64*1024);
+  if(createHash('sha256').update(bytes).digest('hex')!==reportHash)throw new Error('topology report bytes do not match their immutable reportHash filename');
+  let parsed:unknown;
+  try{parsed=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)) as unknown;}
+  catch(error){throw new TypeError(`topology report is invalid UTF-8 or JSON: ${error instanceof Error?error.message:String(error)}`);}
+  const report=validateFineTopologyReport(parsed,pin,keys);
+  if(report.checkedUnits!==pin.expectedUnits||report.validUnits!==pin.expectedUnits||report.invalidUnits!==0||report.unsupportedUnits!==0)throw new Error('fine publication requires all-valid topology evidence for every source unit');
+  return report;
 }
 function parseBoundedJson<T>(bytes: Uint8Array, label: string): T {
   try { return JSON.parse(Buffer.from(bytes).toString('utf8')) as T; }
@@ -162,13 +213,14 @@ function makeError(value: unknown, fallback: string): Error {
 
 async function runWorker(data: {
   pin: FineSourcePin; rawBytes: Uint8Array; coarseCountry: InventoryNode; coarseInventoryHash: string;
-  previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration; buildRoot: string; outputRoot: string;
+  topologyReport:FineTopologyReport; previousRegistry?: FineIdentityRegistry; migration?: FineIdentityMigration; buildRoot: string; outputRoot: string;
 }, signal: AbortSignal, onOnline?: () => Promise<void>): Promise<Published> {
   if (process.memoryUsage().rss > HARD.processRssBytes) throw new RangeError('fine runner process RSS already exceeds 512 MiB');
   const transferable = Uint8Array.from(data.rawBytes);
   const worker = new Worker(new URL('./fine-worker.ts', import.meta.url), {
     workerData: {
       pin: data.pin, rawBuffer: transferable.buffer, coarseCountry: data.coarseCountry, coarseInventoryHash: data.coarseInventoryHash,
+      topologyReport:data.topologyReport,
       ...(data.previousRegistry ? { previousRegistry: data.previousRegistry } : {}), ...(data.migration ? { migration: data.migration } : {}),
       buildRoot: data.buildRoot, outputRoot: data.outputRoot,
     },
@@ -268,12 +320,16 @@ export async function runFineBuild(options: FineBuildOptions): Promise<FineBuild
     const buildRoot = path.join(repoRoot, '.cache', 'world-build');
     const pin = validateFineSourcePin(options.pin);
     const sourcePath = resolveBuildLocalPath(pin.input, repoRoot, buildRoot, 'fine source input');
+    const topologyReportPath = resolveBuildLocalPath(options.topologyReportPath, repoRoot, buildRoot, 'topologyReportPath');
+    const topologyReportsRoot = path.join(buildRoot,'fine-topology','reports');
+    const {reportHash:topologyReportHash}=topologyReportComponents(topologyReportPath,topologyReportsRoot);
     const registryPath = options.previousRegistryPath ? resolveBuildLocalPath(options.previousRegistryPath, repoRoot, buildRoot, 'previousRegistryPath') : undefined;
     const migrationPath = options.migrationPath ? resolveBuildLocalPath(options.migrationPath, repoRoot, buildRoot, 'migrationPath') : undefined;
     if (migrationPath && !registryPath) throw new Error('migrationPath requires previousRegistryPath');
     const outputRoot = path.join(buildRoot, 'output', 'fine', pin.countryCode.toLowerCase(), 'adm1');
     const attemptDirectory = path.join(buildRoot, 'fine-attempts');
     await inspectAncestors(buildRoot); await inspectAncestors(sourcePath); await inspectAncestors(attemptDirectory);
+    await inspectAncestors(topologyReportPath);
     if (registryPath) await inspectAncestors(registryPath);
     if (migrationPath) await inspectAncestors(migrationPath);
 
@@ -290,21 +346,25 @@ export async function runFineBuild(options: FineBuildOptions): Promise<FineBuild
       const migrationHash = migrationBytes ? createHash('sha256').update(migrationBytes).digest('hex') : null;
       const requestHash = createHash('sha256').update(canonical({
         compiler: FINE_COMPILER, coarseInventoryHash: options.coarseInventoryHash, pin,
-        previousRegistryHash: registryHash, migrationHash,
+        previousRegistryHash: registryHash, migrationHash, topologyReportHash,
       })).digest('hex');
       const attemptId = randomUUID();
       attemptPath = path.join(attemptDirectory, `${attemptId}.json`);
-      attemptRecord = { schemaVersion: 1, attemptId, requestHash, compiler: FINE_COMPILER, status: 'pending', startedAt: new Date(started).toISOString(), countryCode: pin.countryCode, coarseInventoryHash: options.coarseInventoryHash, sourceHash: pin.source.sha256, previousRegistryHash: registryHash, migrationHash, networkBytes: 0 };
+      attemptRecord = { schemaVersion: 1, attemptId, requestHash, compiler: FINE_COMPILER, status: 'pending', startedAt: new Date(started).toISOString(), countryCode: pin.countryCode, coarseInventoryHash: options.coarseInventoryHash, sourceHash: pin.source.sha256, topologyReportHash, previousRegistryHash: registryHash, migrationHash, networkBytes: 0 };
       if (usage.entries + 1 > 512 || usage.bytes + HARD.auditReplacementReserveBytes > 2 * 1024 * 1024) throw new RangeError('fine attempt audit has no capacity for another bounded attempt');
       await writeAttempt(attemptPath, attemptRecord, true);
       try {
       await inspectAncestors(sourcePath); await inspectAncestors(outputRoot);
       await preflightBudgets(buildRoot);
       const rawBytes = await readBoundedLocalFile(sourcePath, FINE_LIMITS.sourceBytes);
-      if (rawBytes.byteLength !== pin.source.bytes) throw new Error('cached fine source byte length differs from its immutable pin');
+      if (rawBytes.byteLength !== pin.source.bytes || createHash('sha256').update(rawBytes).digest('hex')!==pin.source.sha256) throw new Error('cached fine source bytes differ from their immutable length and SHA-256 pin');
+      const sourceKeys=expectedTopologyKeys(rawBytes,pin);
+      const expectedTopologyRequestHash=topologyRequestHash(pin,sourceKeys);
+      const topologyReport=await readTopologyReport(topologyReportPath,expectedTopologyRequestHash,topologyReportHash,pin,sourceKeys);
       const coarseCountry = await readCoarseInventoryCountry(path.join(buildRoot, 'output', 'inventory'), options.coarseInventoryHash, pin.countryCode);
       if (signal.aborted) throw makeError(signal.reason, 'fine build was aborted');
       const published = await runWorker({ pin, rawBytes, coarseCountry, coarseInventoryHash: options.coarseInventoryHash,
+        topologyReport,
         ...(previousRegistry ? { previousRegistry } : {}), ...(migration ? { migration } : {}), buildRoot, outputRoot }, signal, async () => {
           attemptRecord = { ...attemptRecord!, status: 'running', workerStartedAt: new Date().toISOString() };
           await writeAttempt(attemptPath!, attemptRecord, false);

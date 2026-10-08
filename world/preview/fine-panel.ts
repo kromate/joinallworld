@@ -1,7 +1,7 @@
 import type { InventoryNode } from '../production-types.ts';
 import type { FineAdminNode } from '../fine-types.ts';
 import { ByteLru } from './cache.ts';
-import { fetchFineJson, FINE_VIEW_LIMITS, validateFineIndex, validateFineIndexProvenance, validateFineManifest, validateFineOutline, type FineGeometry, type FineIndex, type FineManifest } from './fine-view.ts';
+import { fetchFineJson, FINE_VIEW_LIMITS, validateFineIndex, validateFineIndexProvenance, validateFineManifest, validateFineOutline, validateFineTopology, type FineGeometry, type FineIndex, type FineManifest } from './fine-view.ts';
 
 interface Binding { country: InventoryNode; coarseHash: string }
 interface FinePanelOptions {
@@ -29,6 +29,11 @@ export function attachFinePanel(options: FinePanelOptions): { reset: () => void 
     element('fineList').replaceChildren();
     element('fineSource').textContent = 'Administrative outlines only · no city, climate or playability claim.';
     status('Select a country and load its separate administrative manifest.');
+  };
+  const sameBinding = (expected: Binding): boolean => {
+    const actual = options.binding();
+    return actual?.country.id === expected.country.id && actual.coarseHash === expected.coarseHash
+      && actual.country.provider === 'world' && actual.country.countryCode === expected.country.countryCode;
   };
   const start = () => { controller?.abort(); controller = new AbortController(); return { epoch: ++generation, signal: AbortSignal.any([controller.signal, AbortSignal.timeout(25_000)]) }; };
   const current = (epoch: number, signal: AbortSignal) => epoch === generation && !signal.aborted;
@@ -62,16 +67,26 @@ export function attachFinePanel(options: FinePanelOptions): { reset: () => void 
       const match = /^\/world-output\/fine\/([a-z]{2})\/adm1\/manifests\/([a-f0-9]{64})\.json$/.exec(url.pathname);
       if (url.origin !== location.origin || !match || match[1] !== binding.country.countryCode.toLowerCase() || match[2] !== hash) throw new Error('Use this country’s local immutable administrative manifest URL and matching hash.');
       const manifest = validateFineManifest(await get(url, hash, FINE_VIEW_LIMITS.manifestBytes, signal), binding.coarseHash, binding.country.id);
+      if (!current(epoch, signal) || !sameBinding(binding)) throw new Error('Selected country changed while the fine manifest was loading.');
       const base = new URL('../', url);
       const index = validateFineIndexProvenance(validateFineIndex(await get(new URL(manifest.nodeIndexPath, base), assetHash(manifest.nodeIndexPath), FINE_VIEW_LIMITS.indexBytes, signal), binding.country.id, manifest.sourceUnitCount), manifest, binding.country.countryCode);
-      if (!current(epoch, signal)) return;
-      element('fineSource').textContent = `${manifest.source.source.attribution} · ${manifest.source.source.license} · ${manifest.source.originalLicense} · represented ${manifest.source.representedYear}. Source-described boundaries; geographic outlines only, not playable. ${manifest.exceptions.join(' ')}`;
+      if (!current(epoch, signal) || !sameBinding(binding)) throw new Error('Selected country changed while the fine index was loading.');
+      let qualityText: string;
+      if (manifest.schemaVersion === 2) {
+        const topology = validateFineTopology(await get(new URL(manifest.topologyPath, base), assetHash(manifest.topologyPath), FINE_VIEW_LIMITS.topologyBytes, signal), manifest, index);
+        if (!current(epoch, signal) || !sameBinding(binding)) throw new Error('Selected country changed while topology evidence was loading.');
+        qualityText = `${topology.validUnits}/${manifest.sourceUnitCount} divisions passed planar polygon checks; spherical validity and real-world boundary correctness are not established.`;
+      } else {
+        qualityText = 'Structural checks only; complete polygon topology has not been established.';
+      }
+      if (!current(epoch, signal) || !sameBinding(binding)) throw new Error('Selected country changed before the fine directory could be shown.');
+      element('fineSource').textContent = `${manifest.source.source.attribution} · ${manifest.source.source.license} · ${manifest.source.originalLicense} · represented ${manifest.source.representedYear}. ${qualityText} Geographic outlines only, not playable. ${manifest.exceptions.join(' ')}`;
       status(`${index.nodes.length}/${manifest.sourceUnitCount} divisions verified · outlines load on selection`);
       for (const row of index.nodes) {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'district-row'; button.textContent = `${row.node.name} · ${row.node.adminType}`;
         button.addEventListener('click', () => { void outline(base, manifest, index, row); }); element('fineList').appendChild(button);
       }
-    } catch (error) { if (epoch === generation) { element('fineList').replaceChildren(); element('fineSource').textContent = 'No verified administrative directory is loaded.'; status(error instanceof Error ? error.message : String(error)); } }
+    } catch (error) { if (epoch === generation) { options.clear(); element('fineList').replaceChildren(); element('fineSource').textContent = 'No verified administrative directory is loaded.'; status(error instanceof Error ? error.message : String(error)); } }
   };
   element('loadFine').addEventListener('click', () => { void load(); });
   return { reset };

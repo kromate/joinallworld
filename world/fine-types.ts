@@ -68,8 +68,29 @@ export interface FineCoverage {
   exceptions: string[];
 }
 
-export interface FineInventory {
+/** Hash-bound planar topology evidence; higher dimensions and spherical validity remain outside its scope. */
+export interface FineTopologyReport {
   schemaVersion: 1;
+  validator: 'duckdb-spatial-ogc-planar-v1';
+  sourceSha256: string;
+  sourceBytes: number;
+  expectedUnits: number;
+  checkedUnits: number;
+  validUnits: number;
+  invalidUnits: number;
+  unsupportedUnits: number;
+  tooling: {
+    duckdbVersion: '1.5.6';
+    spatialVersion: '04270fe';
+    spatialSha256: 'e326286e0ff4651680bfa2918fb22990fed50cb7d27d79dd21143ac7e74b0da9';
+  };
+  rows: Array<{ featureKey: string; status: 'valid' | 'invalid' | 'unsupported'; valid: boolean | null; empty: boolean | null; reason: string | null }>;
+  exceptions: string[];
+}
+
+export interface FineInventory {
+  schemaVersion: 2;
+  compiler: 'fine-inventory-compiler-v2';
   coarseInventoryHash: string;
   countryId: string;
   source: FineSourcePin;
@@ -77,6 +98,7 @@ export interface FineInventory {
   outlines: Array<{ nodeId: string; geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown } }>;
   registry: FineIdentityRegistry;
   coverage: FineCoverage;
+  topology: FineTopologyReport;
 }
 
 export const FINE_LIMITS = Object.freeze({

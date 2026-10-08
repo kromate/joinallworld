@@ -11,7 +11,7 @@ const repoRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const SHA256 = /^[a-f0-9]{64}$/;
 
 function usage(): never {
-  console.error('Usage: node --experimental-strip-types world/fine-cli.ts build <fine-sources.json> --inventory-hash <sha256> [--registry <cache-file> --migration <cache-file>]\n       node --experimental-strip-types world/fine-cli.ts acquire <fine-sources.json> [--duration-ms <1..120000>]\n       node --experimental-strip-types world/fine-cli.ts verify-source <fine-sources.json>\n       node --experimental-strip-types world/fine-cli.ts topology <fine-sources.json> [--duration-ms <1..60000>]');
+  console.error('Usage: node --experimental-strip-types world/fine-cli.ts build <fine-sources.json> --inventory-hash <sha256> --topology-report <cached-report-file> [--registry <cache-file> --migration <cache-file>]\n       node --experimental-strip-types world/fine-cli.ts acquire <fine-sources.json> [--duration-ms <1..120000>]\n       node --experimental-strip-types world/fine-cli.ts verify-source <fine-sources.json>\n       node --experimental-strip-types world/fine-cli.ts topology <fine-sources.json> [--duration-ms <1..60000>]');
   process.exit(2);
 }
 function insideRepository(target: string): boolean {
@@ -22,7 +22,7 @@ function insideRepository(target: string): boolean {
 try {
   const [command, pinFilename, ...args] = process.argv.slice(2);
   if (!['build', 'acquire', 'verify-source', 'topology'].includes(command ?? '') || !pinFilename) usage();
-  const allowedFlags = command === 'build' ? ['--inventory-hash', '--registry', '--migration'] : ['acquire', 'topology'].includes(command!) ? ['--duration-ms'] : [];
+  const allowedFlags = command === 'build' ? ['--inventory-hash', '--topology-report', '--registry', '--migration'] : ['acquire', 'topology'].includes(command!) ? ['--duration-ms'] : [];
   const flags = new Map<string, string>();
   for (let i = 0; i < args.length; i += 2) {
     const flag = args[i], value = args[i + 1];
@@ -52,10 +52,11 @@ try {
     if (result.report.invalidUnits || result.report.unsupportedUnits) process.exitCode = 2;
   } else {
     const inventoryHash = flags.get('--inventory-hash');
-    if (!inventoryHash || !SHA256.test(inventoryHash)) usage();
+    const topologyReportPath = flags.get('--topology-report');
+    if (!inventoryHash || !SHA256.test(inventoryHash) || !topologyReportPath) usage();
     if (flags.has('--migration') && !flags.has('--registry')) throw new Error('--migration requires --registry');
     const result = await runFineBuild({
-      repositoryRoot: repoRoot, coarseInventoryHash: inventoryHash, pin,
+      repositoryRoot: repoRoot, coarseInventoryHash: inventoryHash, pin, topologyReportPath,
       ...(flags.has('--registry') ? { previousRegistryPath: flags.get('--registry')! } : {}),
       ...(flags.has('--migration') ? { migrationPath: flags.get('--migration')! } : {}),
     });

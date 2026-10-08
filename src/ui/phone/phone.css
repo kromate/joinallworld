@@ -112,7 +112,7 @@
 .ph-homebar::after{content:'';position:absolute;inset:-12px -20px -7px}
 .ph[data-view=app] .ph-homebar{background:#1b1f2766}
 .ph button:focus-visible{outline:3px solid #fff!important;outline-offset:1px!important}
-.ph-app button:focus-visible,.ph-app a:focus-visible,.ph-app input:focus-visible,.ph-app select:focus-visible,.ph-app textarea:focus-visible,.ph-app summary:focus-visible{outline:3px solid var(--c-blue)!important;outline-offset:2px!important}
+.ph-app button:focus-visible,.ph-app a:focus-visible,.ph-app input:not(.app-field-input):focus-visible,.ph-app select:focus-visible,.ph-app textarea:focus-visible,.ph-app summary:focus-visible{outline:3px solid var(--c-blue)!important;outline-offset:2px!important}
 .ph-appbar button:focus-visible{outline:2px solid var(--c-blue)!important;outline-offset:-2px!important}
 #life-dialog .ph-appbtn.is-coach{outline:0;box-shadow:none}
 #life-dialog .ph-appbtn.is-coach .ph-icon{box-shadow:0 0 0 3px #ffd34d,0 0 0 8px #ffd34d55}

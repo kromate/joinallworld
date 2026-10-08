@@ -3,7 +3,7 @@
 // Actions: 'property.car-buy', 'property.car-use', 'property.car-sell'. An owned car adds a
 // "Drive" travel mode that costs fuel only (systems/property.js contributes it to the travel
 // system). Every disabled button says what is missing.
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { CarId } from '../../../types/life.ts'
 import { useApp } from '../../state/app.ts'
 import { CAR_RESALE_RATE } from '../../../game/content/cars.ts'
@@ -12,6 +12,8 @@ import { money } from '../../ui/format.ts'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { useAct } from '../kit/act.ts'
 import CarArt from './CarArt.vue'
+import CatalogueCard from '../../ui/CatalogueCard.vue'
+import BaseButton from '../../ui/BaseButton.vue'
 import { buyReason, carsRules, ownedReason, quicker } from './homeModel.ts'
 
 defineProps<{ params?: unknown }>()
@@ -22,6 +24,8 @@ const view = game.view
 const property = computed(() => view.value.property)
 const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.value)?.short ?? ''} — trading needs the server`))
 const owned = computed(() => ownedReason(offline.value, game.state.value.activeAction))
+const garageOnly = ref(false)
+const listedCars = computed(() => property.value?.cars.filter(car => !garageOnly.value || car.owned) ?? [])
 const driving = computed(() => (property.value?.car ? `Choose Drive on the map and pay ${money(property.value.car.fuel)} of fuel per trip.` : 'Own a car and every trip costs fuel only — no fares.'))
 const buy = (id: CarId): Promise<boolean> => act(`buy:${id}`, () => command('property.car-buy', { id }))
 const use = (id: CarId): Promise<boolean> => act(`use:${id}`, () => command('property.car-use', { id }))
@@ -37,29 +41,19 @@ const sell = (id: CarId): Promise<boolean> => act(`sell:${id}`, () => command('p
       <p>{{ driving }}</p>
     </section>
     <HowItWorks id="cars-rules" page label="How cars work" :rules="carsRules(CAR_RESALE_RATE)" />
+    <div class="cars-tabs" role="group" aria-label="Vehicle catalogue"><BaseButton :variant="garageOnly ? 'default' : 'selected'" :aria-pressed="!garageOnly" @click="garageOnly = false">Showroom</BaseButton><BaseButton :variant="garageOnly ? 'selected' : 'default'" :aria-pressed="garageOnly" @click="garageOnly = true">Your garage</BaseButton></div>
+    <p v-if="!listedCars.length" class="ui-note">Your garage is empty. Open the showroom to compare vehicles.</p>
     <div class="cars-list">
-      <article v-for="(car, index) in property.cars" :key="car.id" class="cars-card" :class="{ 'is-owned': car.owned }">
-        <CarArt :id="car.id" :label="car.label" :index="index" />
-        <div class="cars-body">
-          <header>
-            <div><h3>{{ car.label }}</h3><p>“{{ car.nickname }}”</p></div>
-            <b :class="car.owned ? '' : car.affordable ? 'is-afford' : 'is-short'"><template v-if="car.price < car.listPrice"><s>{{ money(car.listPrice) }}</s> </template>{{ money(car.price) }}</b>
-          </header>
-          <ul class="ui-chips cars-facts"><li class="ui-chip">Fuel {{ money(car.fuel) }} / trip</li><li class="ui-chip">{{ quicker(car.speed) }}% quicker</li><li v-if="car.owned" class="ui-chip is-good">Owned</li></ul>
-          <template v-if="car.owned">
-            <div class="cars-row">
-              <span v-if="car.driving" class="ui-chip is-good cars-driving">Driving this</span>
-              <button v-else type="button" class="ui-button is-primary" :disabled="Boolean(owned) || pending !== null" @click="use(car.id)">Drive this</button>
-              <button type="button" class="ui-button" :disabled="Boolean(owned) || pending !== null" @click="sell(car.id)">Sell · +{{ money(car.resale) }}</button>
-            </div>
-            <p v-if="owned" class="ui-why">{{ owned }}</p>
-          </template>
-          <template v-else>
-            <button type="button" class="ui-button is-primary is-block" :disabled="Boolean(buyReason(car, offline)) || pending !== null" @click="buy(car.id)">Buy · {{ money(car.price) }}</button>
-            <p v-if="buyReason(car, offline)" class="ui-why">{{ buyReason(car, offline) }}</p>
-          </template>
-        </div>
-      </article>
+      <CatalogueCard v-for="(car, index) in listedCars" :key="car.id" :title="car.label" :subtitle="car.nickname" :selected="car.driving">
+        <template #media><CarArt :id="car.id" :label="car.label" :index="index" /></template>
+        <template #status><span v-if="car.owned" class="ui-chip is-good">{{ car.driving ? 'Driving' : 'Owned' }}</span></template>
+        <dl class="cars-specs"><div><dt>Purchase price</dt><dd><s v-if="car.price < car.listPrice">{{ money(car.listPrice) }}</s> {{ money(car.price) }}</dd></div><div><dt>Fuel per trip</dt><dd>{{ money(car.fuel) }}</dd></div><div><dt>Travel time</dt><dd>{{ quicker(car.speed) }}% quicker</dd></div></dl>
+        <template #actions>
+          <template v-if="car.owned"><BaseButton v-if="!car.driving" variant="primary" :reason="owned" :disabled="pending !== null" @click="use(car.id)">Drive this</BaseButton><BaseButton :reason="owned" :disabled="pending !== null" @click="sell(car.id)">Sell for {{ money(car.resale) }}</BaseButton></template>
+          <BaseButton v-else variant="primary" :reason="buyReason(car, offline)" :disabled="pending !== null" @click="buy(car.id)">Buy for {{ money(car.price) }}</BaseButton>
+        </template>
+        <template v-if="car.owned ? owned : buyReason(car, offline)" #note><p class="ui-why">{{ car.owned ? owned : buyReason(car, offline) }}</p></template>
+      </CatalogueCard>
     </div>
   </div>
 </template>

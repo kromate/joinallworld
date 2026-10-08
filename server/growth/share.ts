@@ -29,7 +29,7 @@ import type { LifeState } from '../../src/types/life.ts';
 import type { ShareFacts, ShareKind } from '../../src/types/growth.ts';
 import type { GrowthCollection, GrowthPlayerRecord, RouteContext, SessionRecord, ShareRecord } from '../types.ts';
 
-export const OG_IMAGE = '/og/allworld.png';
+export const OG_IMAGE = '/og/allworld.jpg';
 const ESCAPES: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 const esc = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c] ?? c);
 const no = <Code extends string>(code: Code, reason: string): { ok: false; code: Code; reason: string } => ({ ok: false, code, reason });
@@ -120,7 +120,7 @@ export function sharePageHtml(share: Pick<ShareRecord, 'by' | 'facts'> | null, c
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title>
 <meta name="description" content="${description}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="${esc(BRAND)}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}">
-<link rel="canonical" href="${esc(url)}"><meta property="og:locale" content="en_NG"><meta property="og:url" content="${esc(url)}"><meta property="og:image" content="${esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:type" content="image/png"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(BRAND)}: a yellow danfo crossing a cable-stayed bridge over the Lagos skyline">
+<link rel="canonical" href="${esc(url)}"><meta property="og:locale" content="en_NG"><meta property="og:url" content="${esc(url)}"><meta property="og:image" content="${esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(BRAND)}: friends, homes and a yellow danfo in a miniature waterfront neighbourhood">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${esc(image)}">
 <meta name="robots" content="noindex, nofollow"><meta http-equiv="refresh" content="0;url=${esc(target)}">
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#183b2a;color:#fff;font:16px/1.5 system-ui,sans-serif;text-align:center}main{padding:24px;max-width:420px}a{display:inline-block;margin-top:16px;padding:12px 22px;border-radius:999px;background:#e8a643;color:#20232c;font-weight:700;text-decoration:none}</style></head>

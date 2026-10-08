@@ -13,3 +13,5 @@ Still required: private upload/retrieval routes, bounded Node/Worker blob lifecy
 References: https://www.w3.org/TR/mediastream-recording/ ; https://www.matroska.org/technical/elements.html ; https://www.matroska.org/technical/notes.html ; https://webkit.org/blog/16574/webkit-features-in-safari-18-4/ . Modern Safari supports Opus/WebM; older Safari's AAC/MP4 support requires a separate verified path.
 
 Synthetic diagnostic files live in `/tmp/allworld-voice-probe/`; the original browser download is `/Users/anthonyakpan/Downloads/browser-voice.webm`. Temporary `voice-probe.html` was removed. This checkpoint does not reduce the full parity roadmap.
+
+Update: integration work is preserved in stash `5860c8e5e0f350a01378ceb4b28cf9a9238daed1`. It now includes private stores/routes, reporting/removal, recipient controls and recording/playback components; fast checks and 40 existing checks passed. Worker persistence/browser integration remain unverified. UI remediation is the current priority. See APP-FLOW-AUDIT.md.

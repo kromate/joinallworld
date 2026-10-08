@@ -26,11 +26,15 @@ test('index.html head: one title, one description, a canonical, Open Graph and T
   assert.match(head, new RegExp(`<link rel="canonical" href="${SITE_ORIGIN}/">`));
   const og = Object.fromEntries(['og:title', 'og:description', 'og:type', 'og:url', 'og:site_name', 'og:locale', 'og:image', 'og:image:width', 'og:image:height', 'og:image:alt'].map(key => [key, tag(head, key)]));
   assert.deepEqual([og['og:type'], og['og:url'], og['og:site_name'], og['og:locale'], og['og:image'], og['og:image:width'], og['og:image:height']],
-    ['website', `${SITE_ORIGIN}/`, 'Allworld', 'en_NG', `${SITE_ORIGIN}/og/allworld.png`, '1200', '630']);
+    ['website', `${SITE_ORIGIN}/`, 'Allworld', 'en_NG', `${SITE_ORIGIN}/og/allworld.jpg`, '1200', '630']);
   assert.equal(og['og:title'], titles[0]); assert.equal(og['og:description'], description); assert.ok(og['og:image:alt']);
-  assert.deepEqual([tag(head, 'twitter:card'), tag(head, 'twitter:title'), tag(head, 'twitter:description'), tag(head, 'twitter:image')], ['summary_large_image', titles[0], description, `${SITE_ORIGIN}/og/allworld.png`]);
+  assert.equal(tag(head, 'og:image:type'), 'image/jpeg');
+  assert.deepEqual([tag(head, 'twitter:card'), tag(head, 'twitter:title'), tag(head, 'twitter:description'), tag(head, 'twitter:image')], ['summary_large_image', titles[0], description, `${SITE_ORIGIN}/og/allworld.jpg`]);
   for (const rel of ['manifest', 'icon', 'apple-touch-icon']) assert.match(head, new RegExp(`<link rel="${rel}" href="/`));
-  assert.match(head, /href="\/favicon\.svg" type="image\/svg\+xml"/); assert.match(head, /href="\/icons\/favicon-32\.png" type="image\/png"/);
+  assert.match(head, /href="\/icons\/favicon-32\.png" type="image\/png" sizes="32x32"/);
+  const favicon = await readFile(new URL('public/icons/favicon-32.png', root));
+  assert.equal(favicon.subarray(1, 4).toString(), 'PNG');
+  assert.deepEqual([favicon.readUInt32BE(16), favicon.readUInt32BE(20)], [32, 32]);
   assert.match(html, /<noscript>.*Allworld.*Lagos.*<\/noscript>/);
   assert.ok(!/Lagos life/i.test(head), 'the home page head does not present the game as a Lagos life'); assert.ok(!/Lagos/.test(titles[0] ?? ''), 'the title leads with the world, not a city');
   assert.ok(!/Lagos/.test(og['og:image:alt'] ?? ''), 'the share image does not mention Lagos');
@@ -43,7 +47,7 @@ test('index.html JSON-LD parses: a VideoGame and a WebSite', async () => {
   assert.equal(blocks.length, 1);
   assert.ok(game && site);
   assert.deepEqual([game['@type'], game.name, game.gamePlatform, game.applicationCategory, game.operatingSystem, game.inLanguage], ['VideoGame', 'Allworld', 'Web browser', 'Game', 'Any', 'en']);
-  assert.deepEqual([(game.offers as { price: string }).price, game.url, game.image], ['0', `${SITE_ORIGIN}/`, `${SITE_ORIGIN}/og/allworld.png`]);
+  assert.deepEqual([(game.offers as { price: string }).price, game.url, game.image], ['0', `${SITE_ORIGIN}/`, `${SITE_ORIGIN}/og/allworld.jpg`]);
   assert.ok(typeof game.description === 'string' && game.genre);
   assert.deepEqual([site['@type'], site.name, site.url], ['WebSite', 'Allworld', `${SITE_ORIGIN}/`]);
   assert.equal(JSON.stringify(blocks).includes('"price":"0"'), true);
@@ -53,7 +57,7 @@ test('the host writes the page for its own origin: canonical, og:url, og:image a
   const html = await read('index.html'), local = absolutePreviewImage(html, 'http://localhost:3699');
   assert.ok(!local.includes('joinallworld.com'));
   assert.match(local, /<link rel="canonical" href="http:\/\/localhost:3699\/">/);
-  assert.equal(tag(local, 'og:image'), 'http://localhost:3699/og/allworld.png');
+  assert.equal(tag(local, 'og:image'), 'http://localhost:3699/og/allworld.jpg');
   const ld = /<script type="application\/ld\+json">([^<]*)<\/script>/.exec(local)?.[1] ?? '';
   assert.doesNotThrow(() => JSON.parse(ld));
   assert.equal(absolutePreviewImage(html, ''), html, 'with no origin the page is unchanged');
@@ -82,6 +86,24 @@ test('public files: robots.txt, sitemap.xml, manifest and the images they name',
   assert.equal(png.subarray(1, 4).toString(), 'PNG');
   assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [1200, 630]);
   assert.ok(png.length < 300 * 1024, `${png.length} bytes`);
+  const jpeg = await readFile(new URL('public/og/allworld.jpg', root));
+  assert.equal(jpeg.readUInt16BE(0), 0xffd8, 'new preview is a JPEG, not a renamed PNG');
+  assert.ok(jpeg.length < 300 * 1024, `${jpeg.length} bytes`);
+  let dimensions: number[] | null = null;
+  for (let offset = 2; offset + 4 < jpeg.length;) {
+    assert.equal(jpeg[offset], 0xff, 'JPEG segment marker');
+    const marker = jpeg[offset + 1]; offset += 2;
+    if (marker === 0xda || marker === 0xd9) break;
+    const length = jpeg.readUInt16BE(offset);
+    assert.ok(length >= 2 && offset + length <= jpeg.length, 'bounded JPEG segment');
+    if (marker === 0xc0 || marker === 0xc2) {
+      assert.ok(length >= 7);
+      dimensions = [jpeg.readUInt16BE(offset + 5), jpeg.readUInt16BE(offset + 3)];
+      break;
+    }
+    offset += length;
+  }
+  assert.deepEqual(dimensions, [1200, 630], 'new metadata dimensions match actual JPEG bytes');
 });
 
 test('the workshop pages are not for search engines', async () => {
@@ -93,7 +115,7 @@ test('the page, the manifest and the readme say which cities are open, and say i
   const manifest = (JSON.parse(siteFile('/manifest.webmanifest', '')?.body ?? '') as { description: string }).description;
   const description = tag(head, 'description') ?? '';
   for (const text of [description, tag(head, 'og:description') ?? '', tag(head, 'twitter:description') ?? '', manifest]) {
-    assert.match(text, /Nine cities are open, from Lagos to Kano; more places are opening\./, text);
+    assert.match(text, /Explore open cities across Nigeria, from Lagos to Kano\./, text);
   }
   assert.ok(description.length <= 155 && ((/<title>([^<]*)<\/title>/.exec(head)?.[1] ?? '').length <= 60), 'title at most 60 and description at most 155 characters');
   assert.match(html, /<noscript>[^]*nine cities of Nigeria, from Lagos to Abuja and Kano[^]*<\/noscript>/);

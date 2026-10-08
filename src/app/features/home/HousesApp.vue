@@ -16,6 +16,8 @@ import MyHouse from '../travel/MyHouse.vue'
 // Who can come in, invitations and the house link: fetched with the Home tab, not with the first download.
 const VisitHome = defineAsyncComponent(() => import('../visit/VisitHome.vue'))
 import HouseArt from './HouseArt.vue'
+import CatalogueCard from '../../ui/CatalogueCard.vue'
+import BaseButton from '../../ui/BaseButton.vue'
 import { housesRules, moveReason, nextHouse, savedPercent } from './homeModel.ts'
 import type { HouseId } from '../../../types/life.ts'
 
@@ -62,26 +64,14 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
     <p class="ui-note houses-note">Moving in costs {{ MOVE_IN_WEEKS }} weeks of rent up front. Rent is then due every Saturday.</p>
     <HowItWorks id="houses-rules" page label="How moving works" :rules="housesRules(MOVE_IN_WEEKS, smallest)" />
     <div class="houses-list">
-      <article v-for="(house, tier) in property.houses" :key="house.id" class="houses-card" :class="{ 'is-current': house.current }">
-        <HouseArt :tier="tier" :grid="house.grid" />
-        <div class="houses-body">
-          <header>
-            <h3>{{ house.label }}<small>{{ house.district }}</small></h3>
-            <span v-if="house.current" class="ui-chip is-good">You live here</span>
-            <span v-else-if="house.tag" class="ui-chip">{{ house.tag }}</span>
-          </header>
-          <p>{{ house.description }}</p>
-          <dl>
-            <div><dt>Room</dt><dd>{{ house.grid }} × {{ house.grid }}</dd></div>
-            <div><dt>Rent / week</dt><dd>{{ money(house.rent) }}</dd></div>
-            <div><dt>Move in</dt><dd :class="house.current ? '' : house.affordable ? 'is-afford' : 'is-short'">{{ money(house.moveIn) }}</dd></div>
-          </dl>
-          <template v-if="!house.current">
-            <button type="button" class="ui-button is-primary is-block" :disabled="Boolean(moveReason(house, offline)) || pending !== null" @click="move(house.id)">Move in · {{ money(house.moveIn) }}</button>
-            <p v-if="moveReason(house, offline)" class="ui-why">{{ moveReason(house, offline) }}</p>
-          </template>
-        </div>
-      </article>
+      <CatalogueCard v-for="(house, tier) in property.houses" :key="house.id" :title="house.label" :subtitle="house.district" :selected="house.current">
+        <template #media><HouseArt :tier="tier" :grid="house.grid" /></template>
+        <template #status><span v-if="house.current" class="ui-chip is-good">Your home</span><span v-else-if="house.tag" class="ui-chip">{{ house.tag }}</span></template>
+        <p class="houses-description">{{ house.description }}</p>
+        <dl class="houses-specs"><div><dt>Move-in cost</dt><dd>{{ money(house.moveIn) }}</dd></div><div><dt>Weekly rent</dt><dd>{{ money(house.rent) }}</dd></div><div><dt>Room size</dt><dd>{{ house.grid }} × {{ house.grid }}</dd></div></dl>
+        <template v-if="!house.current" #actions><BaseButton variant="primary" :reason="moveReason(house, offline)" :disabled="pending !== null" @click="move(house.id)">Move in for {{ money(house.moveIn) }}</BaseButton></template>
+        <template v-if="!house.current && moveReason(house, offline)" #note><p class="ui-why">{{ moveReason(house, offline) }}</p></template>
+      </CatalogueCard>
     </div>
     </template>
   </div>

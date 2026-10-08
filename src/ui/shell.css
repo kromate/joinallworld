@@ -15,14 +15,9 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 [hidden]{display:none!important}
 .life-scene{position:absolute;inset:0}
 .life-scene canvas{display:block;width:100%;height:100%}
-/* First 3D load: a small inline progress note in the middle of the scene, never a blocking page. It is removed when the scene arrives. */
-/* First 3D load: the Allworld mark and a slim bar in the middle of the calm backdrop — it takes no space from the layout and is
-   removed when the scene arrives, which then fades in. The bar moves by transform only, so it stays smooth while the scene is being built. */
-.scene-wait{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);margin:0;padding:54px 6px 16px;min-width:150px;color:var(--c-green-dark);font:700 13px var(--font);letter-spacing:.1px;pointer-events:none;overflow:hidden;max-width:min(320px,80vw);text-align:center}
-.scene-wait::before{content:'';position:absolute;left:50%;top:0;width:44px;height:44px;margin-left:-22px;border-radius:14px;background:linear-gradient(150deg,#39c07a,#1d6b43);box-shadow:inset 0 1px 0 #ffffff59,var(--e-2)}
-.scene-wait::after{content:'';position:absolute;left:0;bottom:4px;width:40%;height:3px;border-radius:3px;background:var(--c-green-dark);opacity:.75;animation:ui-progress 1.1s ease-in-out infinite alternate}
-/* A city's own scenes did not arrive: the line says so, the bar stops, and the one button asks again. */
-.scene-wait.is-stuck::after{display:none}
+.scene-wait{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);text-align:center;color:var(--c-green-dark);max-width:80vw}
+.scene-wait img{border-radius:24px}
+.scene-wait strong,.scene-wait small{display:block}
 .scene-retry{display:block;margin:10px auto 0;pointer-events:auto;border:0;border-radius:var(--r-pill);padding:10px 18px;min-height:var(--tap);background:var(--c-green-dark);color:#fff;font:600 13px var(--font);cursor:pointer}
 .scene-retry:focus-visible{outline:var(--focus);outline-offset:2px}
 @keyframes ui-progress{from{transform:translateX(0)}to{transform:translateX(150%)}}
@@ -32,7 +27,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-ui button,.life-ui input{font:inherit}
 .life-ui button{cursor:pointer;border:0;color:inherit;pointer-events:auto;-webkit-tap-highlight-color:transparent}
 .life-ui button:disabled{cursor:not-allowed;opacity:.5}
-.life-ui button:focus-visible,#life-dialog button:focus-visible,#life-dialog a:focus-visible,#life-dialog input:focus-visible,#life-dialog select:focus-visible,#life-dialog textarea:focus-visible,#community-panel button:focus-visible{outline:var(--focus);outline-offset:2px}
+.life-ui button:focus-visible,#life-dialog button:focus-visible,#life-dialog a:focus-visible,#life-dialog input:not(.app-field-input):focus-visible,#life-dialog select:focus-visible,#life-dialog textarea:focus-visible,#community-panel button:focus-visible{outline:var(--focus);outline-offset:2px}
 .life-ui svg{width:20px;height:20px;display:block}
 .life-ui h1,.life-ui p{margin:0}
 

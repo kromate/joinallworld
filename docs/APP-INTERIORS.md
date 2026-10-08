@@ -27,7 +27,7 @@ Colors: ink #17212f, canvas #f7f8fa, paper #ffffff, muted #526174, action green 
 - Health, goals, campus, calls, radio, invitations and billboard surfaces use solid colors in place of ornamental gradients. Actual game-board patterns and avatar lighting are not treated as decorative UI washes.
 - Charts size their SVG viewBox to the actual container, keep axis labels readable, format large tick values compactly, distinguish series with line patterns and show isolated data points. Missing observations remain gaps and are named in the table. Table headers are semantic. A zero-count funnel stage has no filled bar.
 
-## Coverage and evidence
+## Entry-screen coverage and evidence
 
 Opened all 41 regular phone apps in local Chrome: Messages, Jobs, Bank, Ride; Missions, Groceries, Health, Houses, Goals, My land, My street, Boutique, Cars, Story scenes, Capture, Settings, Stay in touch, Help; Business, My Store, Statement, Rich List, Invest, Career; Contacts, Family, Invite, Bring a friend, People; Chairman, Events, Politics, Neighbours, Tables, Games, Billboards, Gem hunt, Radio, Campus, Report a problem, Community. Community intentionally opens a separate panel.
 
@@ -53,3 +53,7 @@ Final startup download: 614,295 raw / 222,576 gzip / 194,713 Brotli bytes, all i
 Color contrast measurements: body on canvas 15.26:1; secondary text 5.95:1; chat text 7.21:1; wallet secondary text 9.59:1; blue focus on white 5.17:1. These cover the revised palette pairs, not a blanket accessibility certification for every possible user-generated state.
 
 The live game-cover asset returned HTTP 200 / 163,734 bytes and matched SHA-256 `825926a30e5025f45beafe8d54d7399c06d3ad354a0693fe82540dce965e2370`. Public Games and Bank screens were visually verified after deployment, including 3D header marks, white toolbar, battery contrast and real saved-state content. Public mobile-view document width equaled scroll width; the existing browser zoom was preserved.
+
+## Reopened after user feedback
+
+The user found unreadable Boutique selected controls and unfinished catalogue/Family behavior after this release. The entry-screen sweep above is not complete-flow acceptance. APP-FLOW-AUDIT.md now owns the remaining UI and functional acceptance plan.

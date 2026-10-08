@@ -1,0 +1,9 @@
+/* Downloaded after the shell, never ahead of the playable UI. */
+.scene-wait{box-sizing:border-box;width:300px;padding:24px 18px 28px;border-radius:28px;background:#fffdf5;font:600 16px/1.4 var(--font);pointer-events:none;overflow:hidden}
+.scene-wait img{display:block;margin:0 auto 18px;animation:scene-world 2.4s ease-in-out infinite alternate}
+.scene-wait small{margin-top:8px;font-size:13px;font-weight:400;color:#52605c}
+.scene-wait::after{content:'';position:absolute;bottom:0;left:0;width:40%;height:4px;background:#20704c;animation:ui-progress 1.8s ease-in-out infinite alternate}
+.scene-wait.is-stuck img,.scene-wait.is-stuck::after{animation:none}
+.scene-wait.is-stuck::after{display:none}
+@keyframes scene-world{to{transform:translateY(-6px) rotate(3deg)}}
+@media(prefers-reduced-motion:reduce){.scene-wait img,.scene-wait::after{animation:none}}

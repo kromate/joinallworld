@@ -8,7 +8,7 @@
 // The account section (features/account/AccountSettings.vue) draws itself only when accounts are
 // configured on this server. A guest is still told what a device session is, so nobody mistakes it
 // for a password-protected account; that explanation is left out once the device is signed in.
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
@@ -61,24 +61,40 @@ function showTour(): void { window.dispatchEvent(new CustomEvent('jaw:tour')) }
 function openPrivacy(): void { window.dispatchEvent(new CustomEvent('jaw:privacy')) }
 
 const olderLives = ref<{ id: string; city: string; cash: number }[]>([])
-const switching = ref(false)
+const switching = ref(false), loadingOlder = ref(false)
+let olderRevision = 0, gone = false
+onBeforeUnmount(() => { gone = true; olderRevision += 1 })
 const switchError = ref('')
 const switchReceipts = new Map<string, string>()
 async function loadOlderLives(): Promise<void> {
-  if (!game.client.online) return
-  try { olderLives.value = (await game.client.api<{ legacy: typeof olderLives.value }>('/api/characters')).legacy }
-  catch { switchError.value = 'Older characters could not be loaded. Try again.' }
+  const identity = game.session.value?.id
+  if (!game.client.online || !identity) return
+  const revision = ++olderRevision
+  loadingOlder.value = true; switchError.value = ''
+  try {
+    const answer = await game.client.api<{ legacy: typeof olderLives.value }>('/api/characters')
+    if (!gone && revision === olderRevision && identity === game.session.value?.id) olderLives.value = answer.legacy
+  } catch {
+    if (!gone && revision === olderRevision && identity === game.session.value?.id) switchError.value = 'Older characters could not be loaded. Try again.'
+  } finally { if (revision === olderRevision) loadingOlder.value = false }
 }
 async function switchOlderLife(id: string): Promise<void> {
-  if (switching.value) return
-  switching.value = true
+  if (switching.value || !game.client.online) return
+  const identity = game.session.value?.id
+  switching.value = true; switchError.value = ''
   const receipt = switchReceipts.get(id) ?? game.client.newId()
   switchReceipts.set(id, receipt)
   const result = await game.client.switchLegacy(id, receipt)
+  if (gone || identity !== game.session.value?.id) return
   switching.value = false
   switchError.value = result.ok ? '' : result.reason ?? 'Could not switch characters. Try again.'
   if (result.ok) { switchReceipts.delete(id); await loadOlderLives() }
 }
+watch(() => game.session.value?.id, () => {
+  olderRevision += 1; olderLives.value = []; switchError.value = ''
+  switching.value = false; loadingOlder.value = false; switchReceipts.clear()
+  void loadOlderLives()
+}, { flush: 'sync' })
 
 onMounted(() => { void growth.load(); void loadOlderLives() })
 </script>
@@ -112,12 +128,14 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <VisitDoor />
     <ResidenceCard />
 
-    <section v-if="olderLives.length || switchError" aria-label="Older characters">
+    <section v-if="olderLives.length || switchError || loadingOlder" class="settings-legacy" aria-label="Older characters">
       <h3 class="ui-section">Older characters</h3>
       <p class="settings-note">Switch to a character kept from an earlier visit. Your current character is saved here to return to.</p>
-      <button v-for="life in olderLives" :key="life.id" type="button" :disabled="switching || Boolean(game.state.value.activeAction)" @click="switchOlderLife(life.id)">Open character in {{ life.city }} · ₦{{ life.cash.toLocaleString() }}</button>
+      <button v-for="life in olderLives" :key="life.id" type="button" :disabled="switching || loadingOlder || !game.client.online || Boolean(game.state.value.activeAction)" @click="switchOlderLife(life.id)">Open character in {{ life.city }} · ₦{{ life.cash.toLocaleString() }}</button>
+      <p v-if="loadingOlder" role="status">Loading older characters…</p>
+      <p v-if="switching" role="status">Opening your character…</p>
       <p v-if="switchError" role="alert">{{ switchError }}</p>
-      <button v-if="switchError" type="button" @click="loadOlderLives">Retry</button>
+      <button v-if="switchError" type="button" :disabled="loadingOlder || !game.client.online" @click="loadOlderLives">Retry</button>
     </section>
     <h3 class="ui-section" data-section="account">This device</h3>
     <div class="ui-rows">

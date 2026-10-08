@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { fixture, flakyDisk, snapshot } from '../test-fixture.ts'
 import { ROUTE_MODULES } from '../routes/index.ts'
 import livingWorldRoutes from '../routes/living-world.ts'
+import { PRACTICE_COURSE } from '../../src/game/living-world/course.ts'
 import type { DrivingResponse } from '../../src/types/living-world.ts'
 import type { Look } from '../../src/types/life.ts'
 
@@ -35,6 +36,12 @@ async function cash(f: Awaited<ReturnType<typeof fixture>>, cookie: string): Pro
 }
 async function ledger(f: Awaited<ReturnType<typeof fixture>>, publicId: string): Promise<unknown> {
   return f.server.store.read(db => snapshot(Object.values(db.sessions).find(record => record.publicId === publicId)?.cities.lagos?.state.ledger))
+}
+async function qualificationSlice(f: Awaited<ReturnType<typeof fixture>>, publicId: string): Promise<{ present: true; value: unknown } | { present: false }> {
+  return f.server.store.read(db => {
+    const rows = (db.livingWorld as { qualifications?: Record<string, unknown> } | undefined)?.qualifications
+    return rows && Object.hasOwn(rows, publicId) ? { present: true as const, value: snapshot(rows[publicId]) } : { present: false as const }
+  })
 }
 
 test('driving packets are server-stepped, sequenced, retryable and bootstrap always pauses', async t => {
@@ -100,6 +107,179 @@ test('stale lifecycle CAS and excessive or early control packets do not move the
   assert.deepEqual([stale.ok, stale.code, stale.session?.revision, stale.session?.state.status], [false, 'revision_conflict', 2, 'paused'])
   const replace = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
   assert.deepEqual([replace.ok, replace.code, replace.session?.journeyId, replace.session?.revision, replace.session?.state.status], [false, 'journey_exists', session.journeyId, 2, 'paused'])
+})
+
+test('paused pending attempt can restart once; old journey receipts and packets cannot affect its replacement', async t => {
+  const f = await livingFixture(t)
+  const player = await onboard(f)
+  await f.server.store.transact(db => {
+    const owner = Object.values(db.sessions).find(record => record.publicId === player.id)
+    assert.ok(owner?.cities.lagos)
+    owner.cities.lagos.state.cash = 0
+  })
+  const beforeCash = await cash(f, player.cookie), beforeLedger = await ledger(f, player.id)
+  const startRequest = { cityId: 'lagos', requestId: id(f) }
+  const initial = await post(f, `${drivingPath}/start`, startRequest, player.cookie)
+  const firstJourney = initial.session!
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: firstJourney.journeyId, revision: firstJourney.revision }, player.cookie)
+  const oldResumeRequest = { cityId: 'lagos', requestId: id(f), journeyId: firstJourney.journeyId, revision: paused.session!.revision }
+  const resumed = await post(f, `${drivingPath}/resume`, oldResumeRequest, player.cookie)
+  const pausedAgain = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: firstJourney.journeyId, revision: resumed.session!.revision }, player.cookie)
+  assert.deepEqual([paused.code, resumed.code, pausedAgain.code], ['paused', 'resumed', 'paused'])
+
+  const qualificationBefore = await qualificationSlice(f, player.id)
+  const request = { cityId: 'lagos', requestId: id(f), journeyId: firstJourney.journeyId, revision: pausedAgain.session!.revision }
+  const [one, two] = await Promise.all([
+    post(f, `${drivingPath}/restart`, request, player.cookie),
+    post(f, `${drivingPath}/restart`, request, player.cookie),
+  ])
+  const fresh = one.session!
+  assert.deepEqual([one.ok, two.ok, one.code, two.code, [one.duplicate, two.duplicate].filter(Boolean).length], [true, true, 'restarted', 'restarted', 1])
+  assert.notEqual(fresh.journeyId, firstJourney.journeyId)
+  assert.deepEqual([fresh.revision, fresh.nextSequence, fresh.state.status, fresh.state.speed, fresh.state.checkpointIndex],
+    [pausedAgain.session!.revision + 1, 1, 'running', 0, 0])
+  assert.equal(one.session?.journeyId, two.session?.journeyId)
+  assert.deepEqual(await qualificationSlice(f, player.id), qualificationBefore, 'restart does not award or alter qualification state')
+  assert.deepEqual([await cash(f, player.cookie), await ledger(f, player.id)], [beforeCash, beforeLedger])
+
+  const changedRetry = await f.request(`${drivingPath}/restart`, { ...request, journeyId: 'changed-journey' }, player.cookie)
+  assert.deepEqual([changedRetry.status, (await changedRetry.json() as { error: string }).error], [409, 'client_id_conflict'])
+  const oldInput = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: firstJourney.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)
+  assert.deepEqual([oldInput.ok, oldInput.code, oldInput.session?.journeyId], [false, 'journey_mismatch', fresh.journeyId])
+  const oldResumeReplay = await post(f, `${drivingPath}/resume`, oldResumeRequest, player.cookie)
+  assert.deepEqual([oldResumeReplay.ok, oldResumeReplay.duplicate, oldResumeReplay.session?.journeyId], [false, true, fresh.journeyId])
+  const oldStartReplay = await post(f, `${drivingPath}/start`, startRequest, player.cookie)
+  assert.deepEqual([oldStartReplay.ok, oldStartReplay.code, oldStartReplay.session?.journeyId], [false, 'superseded_journey', fresh.journeyId])
+  const staleNewResume = await post(f, `${drivingPath}/resume`, { ...oldResumeRequest, requestId: id(f) }, player.cookie)
+  assert.deepEqual([staleNewResume.ok, staleNewResume.code, staleNewResume.session?.journeyId], [false, 'journey_mismatch', fresh.journeyId])
+  const persisted = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.equal((persisted as { journeyId: string }).journeyId, fresh.journeyId)
+  assert.deepEqual([await cash(f, player.cookie), await ledger(f, player.id)], [beforeCash, beforeLedger])
+
+  const pauseFresh = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: fresh.journeyId, revision: fresh.revision }, player.cookie)
+  const secondRestartRequest = { cityId: 'lagos', requestId: id(f), journeyId: fresh.journeyId, revision: pauseFresh.session!.revision }
+  const qualificationBeforeSupersededReplay = await qualificationSlice(f, player.id)
+  const secondRestart = await post(f, `${drivingPath}/restart`, secondRestartRequest, player.cookie)
+  const beforeOldReceiptReplay = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const oldRestartReplay = await post(f, `${drivingPath}/restart`, request, player.cookie)
+  const afterOldReceiptReplay = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([oldRestartReplay.ok, oldRestartReplay.code, oldRestartReplay.duplicate, oldRestartReplay.session?.journeyId],
+    [false, 'superseded_journey', true, secondRestart.session?.journeyId])
+  assert.deepEqual(afterOldReceiptReplay, beforeOldReceiptReplay, 'an old restart receipt cannot claim or replace a later journey')
+  assert.deepEqual(await qualificationSlice(f, player.id), qualificationBeforeSupersededReplay, 'superseded receipts do not alter qualifications')
+})
+
+test('distinct concurrent restart IDs against one paused revision have one winner', async t => {
+  const f = await livingFixture(t)
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, player.cookie)
+  const body = (requestId: string) => ({ cityId: 'lagos', requestId, journeyId: started.session!.journeyId, revision: paused.session!.revision })
+  const [left, right] = await Promise.all([
+    post(f, `${drivingPath}/restart`, body(id(f)), player.cookie),
+    post(f, `${drivingPath}/restart`, body(id(f)), player.cookie),
+  ])
+  const results = [left, right]
+  assert.equal(results.filter(result => result.ok && result.code === 'restarted').length, 1)
+  assert.equal(results.filter(result => !result.ok && result.code === 'journey_mismatch').length, 1)
+  const canonical = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])) as { journeyId: string; revision: number; nextSequence: number }
+  assert.equal(canonical.revision, paused.session!.revision + 1, 'the loser cannot advance the record a second time')
+  assert.equal(canonical.nextSequence, 1)
+  assert.ok(results.some(result => result.ok && result.session?.journeyId === canonical.journeyId))
+})
+
+test('malformed restart payload and reversed server time leave the paused save unchanged', async t => {
+  const f = await livingFixture(t)
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, player.cookie)
+  const request = { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: paused.session!.revision }
+  const before = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const malformed = await f.request(`${drivingPath}/restart`, { ...request, extra: true }, player.cookie)
+  assert.deepEqual([malformed.status, (await malformed.json() as { error: string }).error], [400, 'invalid_driving_request'])
+  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), before)
+
+  f.advance(-1)
+  const reversed = await post(f, `${drivingPath}/restart`, { ...request, requestId: id(f) }, player.cookie)
+  assert.deepEqual([reversed.ok, reversed.code], [false, 'clock_reversed'])
+  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), before)
+})
+
+test('restart refuses running, moved, failed-terminal, and passed attempts without replacing their record', async t => {
+  const f = await livingFixture(t)
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  const runningRow = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const running = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, player.cookie)
+  const afterRunning = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([running.ok, running.code, afterRunning], [false, 'journey_active', runningRow])
+  const foreign = await onboard(f)
+  const foreignRestart = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, foreign.cookie)
+  const afterForeign = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([foreignRestart.ok, foreignRestart.code, foreignRestart.session], [false, 'no_journey', null])
+  assert.deepEqual(afterForeign, runningRow, 'another actor cannot restart or alter the owner’s row')
+
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, player.cookie)
+  await f.server.store.transact(db => {
+    const life = Object.values(db.sessions).find(record => record.publicId === player.id)!.cities.lagos!.state
+    life.location = 'library' as typeof life.location
+  })
+  const moved = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: paused.session!.revision }, player.cookie)
+  assert.deepEqual([moved.ok, moved.code, moved.session?.journeyId, moved.session?.revision], [false, 'location_changed', started.session!.journeyId, paused.session!.revision])
+
+  for (const assessment of ['failed', 'passed'] as const) {
+    const terminalPlayer = await onboard(f)
+    const attempt = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, terminalPlayer.cookie)
+    // This is a structurally valid fabricated terminal refusal fixture, not a course run or pass-evidence claim.
+    await f.server.store.transact(db => {
+      const rows = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving
+      const row = rows[terminalPlayer.id]!
+      row.revision = 2; row.nextSequence = 2
+      row.lastPacket = { sequence: 1, fingerprint: 'valid-terminal-fixture-packet', code: 'lesson_completed' }
+      row.state = { ...(row.state as object), speed: 0, checkpointIndex: PRACTICE_COURSE.checkpoints.length, checkpointEntry: 'blocked', stopDwellMs: 0,
+        score: assessment === 'passed' ? 70 : 69, status: 'complete', assessment, feedback: assessment === 'passed' ? 'Assessment passed.' : 'Assessment not passed.' }
+    })
+    const before = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[terminalPlayer.id]))
+    const response = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: attempt.session!.journeyId, revision: 2 }, terminalPlayer.cookie)
+    const after = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[terminalPlayer.id]))
+    assert.deepEqual([response.ok, response.code, after], [false, assessment === 'passed' ? 'assessment_retained' : 'restart_unavailable', before])
+  }
+
+  const exhausted = await onboard(f)
+  const exhaustedStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, exhausted.cookie)
+  const exhaustedPause = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: exhaustedStart.session!.journeyId, revision: exhaustedStart.session!.revision }, exhausted.cookie)
+  await f.server.store.transact(db => {
+    const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[exhausted.id]!
+    row.revision = Number.MAX_SAFE_INTEGER
+  })
+  const exhaustedBefore = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[exhausted.id]))
+  const overflow = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: exhaustedStart.session!.journeyId, revision: Number.MAX_SAFE_INTEGER }, exhausted.cookie)
+  const exhaustedAfter = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[exhausted.id]))
+  assert.deepEqual([overflow.ok, overflow.code, exhaustedAfter], [false, 'revision_exhausted', exhaustedBefore])
+  assert.ok(exhaustedPause.session)
+})
+
+test('failed restart transaction leaves the paused attempt intact and permits the same-ID retry', async t => {
+  const disk = flakyDisk()
+  const f = await livingFixture(t, { disk })
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: started.session!.revision }, player.cookie)
+  const request = { cityId: 'lagos', requestId: id(f), journeyId: started.session!.journeyId, revision: paused.session!.revision }
+  const before = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const qualificationBefore = await qualificationSlice(f, player.id)
+  disk.fail = 'ENOSPC'
+  const failure = await f.request(`${drivingPath}/restart`, request, player.cookie)
+  assert.deepEqual([failure.status, (await failure.json() as { error: string }).error], [503, 'storage_unavailable'])
+  disk.fail = null
+  const unchanged = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual(unchanged, before)
+  assert.deepEqual(await qualificationSlice(f, player.id), qualificationBefore, 'failed restart does not alter qualification state')
+  const retry = await post(f, `${drivingPath}/restart`, request, player.cookie)
+  assert.deepEqual([retry.ok, retry.code, retry.session?.revision, retry.session?.state.status], [true, 'restarted', paused.session!.revision + 1, 'running'])
+  assert.notEqual(retry.session?.journeyId, started.session?.journeyId)
+  assert.deepEqual(await qualificationSlice(f, player.id), qualificationBefore)
 })
 
 test('replaying a start receipt after a failed run is superseded by the canonical fresh journey', async t => {
@@ -200,6 +380,9 @@ test('malformed saved journey is left intact and a failed durable start leaves n
     rows[player.id]!.lastPacket = { sequence: 1, fingerprint: 'fabricated-first-receipt', code: 'controls_accepted' }
   })
   const receiptBefore = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const malformedRestart = await post(f, `${drivingPath}/restart`, { cityId: 'lagos', requestId: id(f), journeyId: start.session!.journeyId, revision: start.session!.revision }, player.cookie)
+  const afterMalformedRestart = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual([malformedRestart.ok, malformedRestart.code, afterMalformedRestart], [false, 'invalid_saved_journey', receiptBefore])
   const badReceipt = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
   const receiptAfter = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
   assert.deepEqual([badReceipt.code, badReceipt.session, receiptAfter], ['invalid_saved_journey', null, receiptBefore])

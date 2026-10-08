@@ -20,6 +20,7 @@ export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, R
     'POST /api/living-world/qualification/claim': async request => ({ body: await qualification.claim(request, await request.json()), renew: true }),
     'GET /api/living-world/driving': async request => ({ body: await driving.current(request, request.query.get('city')), renew: true }),
     'POST /api/living-world/driving/start': async request => ({ body: await driving.start(request, await request.json()), renew: true }),
+    'POST /api/living-world/driving/restart': async request => ({ body: await driving.restart(request, await request.json()), renew: true }),
     'POST /api/living-world/driving/input': async request => ({ body: await driving.input(request, await request.json()), renew: true }),
     'POST /api/living-world/driving/resume': async request => ({ body: await driving.resume(request, await request.json()), renew: true }),
     'POST /api/living-world/driving/pause': async request => ({ body: await driving.pause(request, await request.json()), renew: true }),

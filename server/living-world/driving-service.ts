@@ -221,6 +221,55 @@ export function createDrivingService(ctx: RouteContext) {
     })
   }
 
+  /** Replace only an explicitly paused, still-pending attempt. The stored revision remains monotonic. */
+  function restart(request: RouteRequest, body: unknown): Promise<DrivingResponse> {
+    if (!lifecycle(body, true)) throw ctx.fail(400, 'invalid_driving_request')
+    const cityId = cityOf(ctx, body.cityId)
+    if (!cityId) throw ctx.fail(400, 'invalid_city')
+    const onceAt = ctx.onceId(body.requestId)
+    return ctx.store.transact((db) => {
+      const { session, location } = access(db, request, cityId)
+      const { records } = collection(ctx, db)
+      const result = ctx.once(db, session, { id: body.requestId, kind: 'living-world.driving.restart', fingerprint: { ...body, location } }, (_at) => {
+        const found = existing(records, session.publicId)
+        if (found === null || found === false) return { ok: false, code: found === false ? 'invalid_saved_journey' : 'no_journey' }
+        const now = ctx.now()
+        if (!safeTime(now) || !safeTime(onceAt)) return { ok: false, code: 'invalid_server_clock', journeyId: found.journeyId, revision: found.revision }
+        if (found.journeyId !== body.journeyId) return { ok: false, code: 'journey_mismatch', journeyId: found.journeyId, revision: found.revision }
+        if (found.revision !== body.revision) return { ok: false, code: 'revision_conflict', journeyId: found.journeyId, revision: found.revision }
+        if (found.cityId !== cityId || found.location !== location) {
+          if (found.state.status === 'running') {
+            if (now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
+            if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
+            pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
+            writeRecord(records, found, ctx)
+          }
+          return { ok: false, code: found.cityId !== cityId ? 'city_mismatch' : 'location_changed', journeyId: found.journeyId, revision: found.revision }
+        }
+        if (found.state.status === 'complete' && found.state.assessment === 'passed') return { ok: false, code: 'assessment_retained', journeyId: found.journeyId, revision: found.revision }
+        if (found.state.status !== 'paused' || found.state.assessment !== 'pending') {
+          return { ok: false, code: found.state.status === 'running' ? 'journey_active' : 'restart_unavailable', journeyId: found.journeyId, revision: found.revision }
+        }
+        if (now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
+        if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
+        const journeyId = ctx.randomId()
+        if (!identifier(journeyId) || journeyId === found.journeyId) return { ok: false, code: 'journey_id_unavailable', journeyId: found.journeyId, revision: found.revision }
+        const revision = found.revision + 1
+        const fresh: DrivingRecord = { v: 1, publicId: session.publicId, journeyId, cityId, location,
+          createdAt: now, updatedAt: now, lastInputAt: now, creditMs: 0, revision, nextSequence: 1,
+          state: createDriving(PRACTICE_COURSE), lastPacket: null }
+        if (fresh.state.status !== 'running') return { ok: false, code: 'course_unavailable', journeyId: found.journeyId, revision: found.revision }
+        writeRecord(records, fresh, ctx)
+        return { ok: true, code: 'restarted', journeyId: fresh.journeyId, revision: fresh.revision }
+      })
+      const found = existing(records, session.publicId)
+      if (found === null || found === false) return response(null, String(result.code ?? (found === false ? 'invalid_saved_journey' : 'no_journey')), false)
+      if (result.ok !== true) return response(view(found), String(result.code ?? 'restart_refused'), false, undefined, 'duplicate' in result && result.duplicate === true)
+      if (result.journeyId !== found.journeyId) return response(view(found), 'superseded_journey', false, undefined, true)
+      return response(view(found), String(result.code ?? 'restarted'), true, undefined, 'duplicate' in result && result.duplicate === true)
+    })
+  }
+
   function input(request: RouteRequest, body: unknown): Promise<DrivingResponse> {
     if (!packet(body)) throw ctx.fail(400, 'invalid_driving_packet')
     const cityId = cityOf(ctx, body.cityId)
@@ -326,6 +375,7 @@ export function createDrivingService(ctx: RouteContext) {
   return {
     current,
     start,
+    restart,
     input,
     resume: (request: RouteRequest, body: unknown) => transition(request, body, 'running'),
     pause: (request: RouteRequest, body: unknown) => transition(request, body, 'paused'),

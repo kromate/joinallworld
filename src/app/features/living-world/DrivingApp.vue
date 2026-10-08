@@ -3,7 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse } from '../../../types/living-world.ts'
 import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
-import { stepDriving } from '../../../game/living-world/driving.ts'
+import { createDriving, stepDriving } from '../../../game/living-world/driving.ts'
 import type { Look } from '../../../types/life.ts'
 import type { DrivingScene } from './drivingScene.ts'
 import { validQualificationReply } from './qualificationReply.ts'
@@ -25,6 +25,8 @@ const qualificationMessage = ref('Checking simulated qualification status…')
 const qualificationBusy = ref(false)
 const busy = ref(false), active = ref(false), boarding = ref(false), online = ref(true), needsRefresh = ref(false), webglUnavailable = ref(false)
 const retainedPass = ref(false)
+const restartConfirmation = ref(false)
+const pendingControls = ref(false), lifecyclePending = ref(0)
 type TouchControl = keyof DrivingInput | 'left' | 'right'
 const touch = new Map<number, TouchControl>()
 const keys = new Set<string>()
@@ -36,10 +38,19 @@ let pauseAfterControl: { prior: DrivingSessionView; latest?: DrivingSessionView 
 let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
 let qualificationRequest = 0
-type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle'; expectedJourney?: string }
+type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle' | 'restart'; expectedJourney?: string }
 
 const canStart = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
 const canResume = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(session.value) && !active.value && !boarding.value && session.value?.state.status === 'paused')
+const canRestart = computed(() => {
+  const current = session.value
+  return !busy.value && !pendingControls.value && lifecyclePending.value === 0 && online.value && !needsRefresh.value
+    && !active.value && !boarding.value && !retainedPass.value && Boolean(game.view.value.session?.id)
+    && Boolean(scene.value) && !webglUnavailable.value && Boolean(route.value)
+    && current?.state.status === 'paused' && current.state.assessment === 'pending'
+    && current.cityId === cityId.value && current.location === game.state.value.location
+})
+watch(canRestart, eligible => { if (!eligible) restartConfirmation.value = false })
 const complete = computed(() => serverState.value?.status === 'complete')
 const dashboard = computed(() => {
   const course = route.value, saved = serverState.value
@@ -207,6 +218,7 @@ async function createScene(token: number, key: string): Promise<void> {
   }
 }
 async function load(): Promise<void> {
+  restartConfirmation.value = false
   const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId
   if (!game.view.value.session?.id) { feedback.value = 'Sign in to begin a server-tracked practice lesson.'; return }
   busy.value = true
@@ -308,6 +320,7 @@ function beginPresentation(): void {
 }
 
 async function startLesson(): Promise<void> {
+  restartConfirmation.value = false
   if (!canStart.value) return
   const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId; busy.value = true
   try {
@@ -316,10 +329,69 @@ async function startLesson(): Promise<void> {
   } catch (error) { if (responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: the lesson did not start. No result was recorded.') } }
   finally { if (responseCurrent(token, key)) busy.value = false }
 }
+function isNeutralRestart(answer: DrivingResponse, previous: DrivingSessionView): boolean {
+  const course = route.value, next = answer.session
+  if (!course || !next || !answer.ok || answer.code !== 'restarted' || next.journeyId === previous.journeyId
+    || !next.journeyId || next.revision !== previous.revision + 1 || next.nextSequence !== 1
+    || next.cityId !== previous.cityId || next.location !== previous.location
+    || next.cityId !== cityId.value || next.location !== game.state.value.location
+    || JSON.stringify(answer.course) !== JSON.stringify(course)) return false
+  const initial = createDriving(course), state = next.state
+  return state.routeId === initial.routeId && state.routeVersion === initial.routeVersion
+    && state.status === 'running' && state.assessment === 'pending'
+    && state.position.x === initial.position.x && state.position.z === initial.position.z
+    && state.heading === initial.heading && state.speed === 0 && state.checkpointIndex === 0
+    && state.checkpointEntry === initial.checkpointEntry && state.stopDwellMs === 0 && state.score === initial.score
+}
+async function restartLesson(): Promise<void> {
+  if (!canRestart.value || !session.value) return
+  const prior = session.value, token = generation, key = contextKey.value
+  restartConfirmation.value = false
+  clearHeld(); active.value = false; boarding.value = false
+  busy.value = true; lifecyclePending.value++
+  const body: DrivingLifecycleRequest = {
+    cityId: prior.cityId, requestId: game.newId(), journeyId: prior.journeyId, revision: prior.revision,
+  }
+  try {
+    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/restart', { method: 'POST', body })
+    if (!responseCurrent(token, key)) return
+    if (session.value?.journeyId !== prior.journeyId || session.value.revision !== prior.revision) {
+      clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+      feedback.value = 'The saved lesson changed while restart was in flight. Reconnect and check it before continuing.'
+      return
+    }
+    if (!answer.ok) {
+      applyResponse(answer, token, key, { kind: 'restart', expectedJourney: prior.journeyId })
+      clearHeld(); active.value = false; boarding.value = false
+      return
+    }
+    if (!isNeutralRestart(answer, prior)) {
+      clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
+      feedback.value = 'The restart reply could not be confirmed. Controls remain stopped; reconnect to check the saved lesson.'
+      return
+    }
+    const next = answer.session!
+    session.value = next; serverState.value = next.state; assessment.value = next.state.assessment
+    retainedPass.value = false; route.value = answer.course; visualState = next.state; scene.value?.present(next.state)
+    needsRefresh.value = false; online.value = true
+    feedback.value = answer.reason || 'A new practice attempt is ready. Follow the route and stop inside marked zones.'
+    beginPresentation()
+    void lookupQualification(next.journeyId)
+  } catch (error) {
+    if (responseCurrent(token, key)) {
+      clearHeld(); active.value = false; boarding.value = false; online.value = false; needsRefresh.value = true
+      feedback.value = message(error, 'Restart delivery is uncertain. Controls stopped; reconnect to check the saved lesson before trying again.')
+    }
+  } finally {
+    lifecyclePending.value = Math.max(0, lifecyclePending.value - 1)
+    if (responseCurrent(token, key)) busy.value = false
+  }
+}
 async function lifecycle(action: 'resume' | 'pause', prior = session.value, allowLeaving = false, applyResult = true): Promise<void> {
   if (!prior) return
   const token = generation, key = contextKey.value
   const body: DrivingLifecycleRequest = { cityId: prior.cityId, journeyId: prior.journeyId, revision: prior.revision, requestId: game.newId() }
+  lifecyclePending.value++
   try {
     const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving/${action}`, { method: 'POST', body })
     const latest = session.value
@@ -342,13 +414,16 @@ async function lifecycle(action: 'resume' | 'pause', prior = session.value, allo
       online.value = true
     }
   } catch (error) { if (!allowLeaving && responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: lesson state is uncertain. Controls stopped; reconnect before continuing.') } }
+  finally { lifecyclePending.value = Math.max(0, lifecyclePending.value - 1) }
 }
 async function resumeLesson(): Promise<void> {
+  restartConfirmation.value = false
   if (!canResume.value || !session.value) return
   busy.value = true; clearHeld()
   try { await lifecycle('resume') } finally { busy.value = false }
 }
 async function pauseLesson(): Promise<void> {
+  restartConfirmation.value = false
   clearHeld(); active.value = false; boarding.value = false
   if (controlInFlight && session.value) { pauseAfterControl = { prior: session.value }; feedback.value = 'Stopping controls; the server will pause after its current reply.'; return }
   await lifecycle('pause')
@@ -370,7 +445,7 @@ async function sendFrames(): Promise<void> {
   const frames = pendingFrames.slice(-5); pendingFrames = []
   const packet: DrivingControlPacket = { cityId: current.cityId, journeyId: current.journeyId, sequence: current.nextSequence, frames }
   const token = generation, key = contextKey.value
-  controlInFlight = true
+  controlInFlight = true; pendingControls.value = true
   try {
     const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/input', { method: 'POST', body: packet })
     if (pauseAfterControl?.prior.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.revision >= pauseAfterControl.prior.revision) pauseAfterControl.latest = answer.session
@@ -394,7 +469,7 @@ async function sendFrames(): Promise<void> {
       feedback.value = message(error, 'Delivery was uncertain. Controls stopped; reconnect before resuming. No local result counts.')
     }
   } finally {
-    controlInFlight = false
+    controlInFlight = false; pendingControls.value = false
     if (pauseAfterControl) {
       const queued = pauseAfterControl; pauseAfterControl = null
       const pauseState = queued.latest ?? queued.prior
@@ -434,7 +509,7 @@ function resize(): void { if (!canvas.value || !scene.value) return; const box =
 function reducedChanged(): void { scene.value?.setReducedMotion(reduced?.matches === true) }
 watch(contextKey, async () => {
   const old = session.value
-  clearHeld(); active.value = false; boarding.value = false; generation++
+  restartConfirmation.value = false; clearHeld(); active.value = false; boarding.value = false; generation++
   qualificationRequest++; qualificationReply.value = null; qualificationJourney.value = null; qualificationBusy.value = false; qualificationMessage.value = 'Checking simulated qualification status…'
   retainedPass.value = false; webglUnavailable.value = false; assessment.value = 'pending'; online.value = true
   scene.value?.dispose(); scene.value = null; route.value = null; session.value = null; serverState.value = null; visualState = null
@@ -457,6 +532,7 @@ function keyUp(event: KeyboardEvent): void { onKey(event, false) }
 function windowBlur(): void { clearHeld(); if (active.value || boarding.value) void pauseLesson() }
 onBeforeUnmount(() => {
   const prior = session.value
+  restartConfirmation.value = false
   if ((active.value || boarding.value) && prior) {
     clearHeld(); active.value = false; boarding.value = false
     // Try to pause on close; the server still owns elapsed-time checks and the resulting state.
@@ -516,10 +592,18 @@ onBeforeUnmount(() => {
     <div class="lesson-actions">
       <button v-if="(!session && !retainedPass) || (complete && assessment !== 'passed')" type="button" :disabled="!canStart" @click="startLesson">{{ busy ? 'Loading…' : complete ? 'Practise again' : 'Start practice' }}</button>
       <button v-else-if="canResume" type="button" :disabled="busy" @click="resumeLesson">{{ busy ? 'Resuming…' : 'Resume saved lesson' }}</button>
+      <button v-if="canRestart && !restartConfirmation" type="button" class="secondary" @click="restartConfirmation = true">Restart practice</button>
       <button v-if="active || boarding" type="button" class="secondary" @click="pauseLesson">Pause safely</button>
       <button v-if="!online || needsRefresh" type="button" class="secondary" :disabled="busy" @click="load">Reconnect and check lesson</button>
       <button type="button" class="secondary" @click="shell.close()">Close</button>
     </div>
+    <section v-if="restartConfirmation && canRestart" class="restart-confirmation" role="group" aria-label="Confirm restart practice">
+      <p>Starting a new attempt replaces this incomplete lesson and its checkpoint progress. Any results or in-game cash already earned remain saved.</p>
+      <div class="restart-actions">
+        <button type="button" class="secondary" @click="restartConfirmation = false">Cancel</button>
+        <button type="button" :disabled="!canRestart || busy" @click="restartLesson">Start new attempt</button>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -547,9 +631,14 @@ onBeforeUnmount(() => {
 .lesson-status strong { display: block; font-size: 15px; }
 .lesson-status p { margin: 5px 0; line-height: 1.4; font-size: 13px; }
 .lesson-status small { display: block; font-size: 11px; line-height: 1.45; color: var(--c-muted, #5d6870); }
+.restart-confirmation { display: grid; gap: 8px; padding: 12px; border: 1px solid color-mix(in srgb, var(--app-tint, #3783a4) 28%, #d9e1e5); border-radius: 12px; background: #fff; }
+.restart-confirmation p { margin: 0; font-size: 13px; line-height: 1.45; }
+.restart-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .lesson-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .lesson-actions button, .controls button { min-width: 44px; min-height: 44px; padding: 9px 13px; border: 0; border-radius: 10px; background: #216d84; color: white; font: inherit; font-weight: 700; touch-action: none; }
 .lesson-actions button.secondary { background: #e7edf0; color: #25323a; }
+.restart-actions button { min-width: 44px; min-height: 44px; padding: 9px 13px; border: 0; border-radius: 10px; background: #216d84; color: white; font: inherit; font-weight: 700; }
+.restart-actions button.secondary { background: #e7edf0; color: #25323a; }
 button:disabled { opacity: .48; }
 .controls { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 10px; }
 .wheel-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }

@@ -17,7 +17,7 @@ export interface DrivingSessionView {
   journeyId: string
   cityId: CityId
   location: string
-  /** Increases for accepted controls, pause and resume; late views cannot rewind a newer one. */
+  /** Increases for controls, lifecycle and explicit restart; late views cannot rewind a newer one. */
   revision: number
   /** Monotonic packet sequence, rather than a client frame counter. */
   nextSequence: number
@@ -39,7 +39,7 @@ export interface DrivingControlPacket {
   sequence: number
   frames: DrivingInput[]
 }
-/** Start uses cityId/requestId. Pause/resume also require this exact journeyId/revision. */
+/** Start uses cityId/requestId. Pause/resume/restart require this exact journeyId/revision. */
 export interface DrivingLifecycleRequest {
   cityId: CityId
   requestId: string
@@ -56,6 +56,7 @@ export interface LivingWorldHttpRoutes {
   'POST /api/living-world/qualification/claim': { body: QualificationClaimRequest; response: Ok<QualificationResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'qualification_storage_unavailable' | 'invalid_qualification_request' }
   'GET /api/living-world/driving': { query: { city: CityId }; response: Ok<DrivingResponse>; errors: DrivingHttpError }
   'POST /api/living-world/driving/start': { body: DrivingStartRequest; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'invalid_driving_request' }
+  'POST /api/living-world/driving/restart': { body: DrivingLifecycleRequest; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'invalid_driving_request' }
   'POST /api/living-world/driving/input': { body: DrivingControlPacket; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | 'invalid_driving_packet' }
   'POST /api/living-world/driving/resume': { body: DrivingLifecycleRequest; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'invalid_driving_request' }
   'POST /api/living-world/driving/pause': { body: DrivingLifecycleRequest; response: Ok<DrivingResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'invalid_driving_request' }

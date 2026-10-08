@@ -31,7 +31,7 @@ Current source already has quoted replies, reactions, pictures, pin/search/group
 | Current message actions | Deployed at bd69e765 | Node/Worker/browser and live synthetic checks passed | Voice-note/media follow-up remains separate |
 | Groups view and swipe reply | Deployed at bd69e765 | Compiled-browser gesture check, phone-width layout and public navigation verified | Physical-device follow-up |
 | Recorded voice notes, video, stickers | Queued | Voice calls and pictures already exist; recordings are distinct | Bounded lazy media storage/recording design and authorization review |
-| Phone UI polish | Implemented locally | 42 original raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Deploy with this phase and verify public assets |
+| Phone UI polish | Implemented locally | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Deploy with this phase and verify public assets |
 | HUD/recovery polish and sustained mobile performance | Queued | Prior linked-chat viewport check is not physical-device proof | Measure representative current build; preserve download budgets |
 | Housing, household/staff/family, economy and player work | Re-audit required | Historical parity inventory is stale | Reconcile current source before accepting a missing feature; deliver bounded complete loops |
 | City/travel/campus progression | Re-audit required | Prior deployed smoke recorded 40 city chunks; closed-city conclusions from old checkout are obsolete | Validate actual gameplay coverage city by city |
@@ -67,6 +67,6 @@ This tracker does not claim the entire parity roadmap is implemented. Source, lo
 
 ## Phone UI phase
 
-User added phone polish before the next deployment. `PHONE-POLISH.md` records references, original artwork and the implementation. Every registered phone app has artwork; the atlas is lazy, about 82 KiB. Existing phone/model checks passed 27/27; typecheck is clean. First design review covered desktop and 390×844. Final functional confirmation proved Money selects page 1 and Life page 0, with disjoint page-button hit targets and no document overflow at 390px. My land opened and returned to the phone.
+User added phone polish before the next deployment. `PHONE-POLISH.md` records references, original artwork and the implementation. Every registered phone app has artwork; the atlas is lazy, 208 KiB. Existing phone/model checks passed 27/27; typecheck is clean. First design review covered desktop and 390×844. Final functional confirmation proved Money selects page 1 and Life page 0, with disjoint page-button hit targets and no document overflow at 390px. My land opened and returned to the phone.
 
 Voice notes remain the next substantial media phase; no voice-note implementation or deployment is claimed by the phone work. Live calls do not satisfy that requirement. Preserve the full gameplay and reliability programme above.

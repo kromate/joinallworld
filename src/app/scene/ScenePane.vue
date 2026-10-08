@@ -34,6 +34,7 @@ const { game, ready, shell, scene, command, showPlayer, showCrowd, showGoal, rep
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 const waiting = ref(true)
+const phase = ref('Preparing your world…')
 /** The city's own scenes are not here: the fetch is waiting to try again, or has stopped until the player asks. */
 const stuck = ref<ScenesState | null>(null)
 let drawn = false
@@ -73,11 +74,12 @@ const waitLine = (): string => {
   if (failed.value) return 'The 3D scene could not be drawn on this device. Everything else still works.'
   if (stuck.value?.status === 'retrying') return `This place did not load · trying again in ${Math.round((stuck.value.retryInMs ?? 0) / 1000)} s`
   if (stuck.value?.status === 'failed') return 'This place could not be loaded. Check your connection, then try again. Everything else still works.'
-  return 'Drawing the scene…'
+  return phase.value
 }
 const onResize = (): void => { if (game.mode.value !== 'map') scene.venue.value?.resize() }
 
 onMounted(() => {
+  void import('../../ui/scene-loading.css').catch(() => undefined)
   // After the first paint: the scene starts downloading with the HUD already on screen and usable.
   setTimeout(async () => {
     try {
@@ -90,10 +92,13 @@ onMounted(() => {
       // in the same turn as it always was — before anything else the answer brings up.
       void warmCityScenes(game.cityId.value)
       void settled.then(() => { if (!cityScenesHere(game.state.value.estate.city)) void warmCityScenes(game.state.value.estate.city) })
+      phase.value = 'Loading the neighbourhood…'
       const createVenueWorld = await loadSceneWorld()
+      phase.value = 'Restoring your place…'
       await settled
       if (!cityScenesHere(game.state.value.estate.city)) await warmCityScenes(game.state.value.estate.city)
       if (disposed || !container.value) return
+      phase.value = 'Drawing the scene…'
       const venue = createVenueWorld(container.value, { location: game.state.value.location, cityId: game.state.value.estate.city, onTag(tag) {
         // A name tag opens that person's card: a regular (npc:<id>) or a real player (public id).
         if (tag.kind === 'goal') void goTo(game.state.value.location, tag.id.replace(/^goal:/, ''))
@@ -156,9 +161,11 @@ defineExpose({ layout })
 
 <template>
   <div id="venue-scene" ref="container"  class="life-scene" :hidden="hidden">
-    <p v-if="waiting" class="scene-wait" :class="{ 'is-stuck': failed || stuck }" role="status">
-      {{ waitLine() }}
+    <div v-if="waiting" class="scene-wait" :class="{ 'is-stuck': failed || stuck }" role="status">
+      <img src="/icons/world-loader.webp" width="96" height="96" alt="" />
+      <strong>{{ waitLine() }}</strong>
+      <small v-if="!failed && !stuck">Your next chapter is almost here.</small>
       <button v-if="stuck && !failed" type="button" class="scene-retry" @click="scene.venue.value?.retryScenes()">Try again</button>
-    </p>
+    </div>
   </div>
 </template>

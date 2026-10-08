@@ -1,23 +1,14 @@
-/* Houses app. Class names are prefixed with the panel id. */
-.houses-hero{--hero:var(--app-tint,#b45309)}
+/* Rental listings share the catalogue card; game costs and room sizes remain authoritative. */
+.houses-app{--button-primary:#7c3d18}
 .houses-hero strong{font-size:20px}
-.houses-progress{height:8px;margin-top:8px;border-radius:8px;background:#ffffff40;overflow:hidden}
-.houses-progress i{display:block;height:100%;border-radius:8px;background:#fff}
+.houses-progress{height:8px;margin-top:8px;border-radius:8px;background:var(--c-fill-2);overflow:hidden}
+.houses-progress i{display:block;height:100%;border-radius:8px;background:#176347}
 .houses-note{margin-bottom:0!important}
-/* One house per row on a phone; a grid when the phone is expanded on a desktop (the drawing keeps its shape). */
-.houses-list{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin-top:var(--s-2)}
-.houses-list .houses-card{margin:0;display:flex;flex-direction:column}
-.houses-list .houses-body{flex:1;display:flex;flex-direction:column}
-.houses-list .houses-body>dl{margin-top:auto}
+.houses-list{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:16px}
 .ph.is-wide .houses-list{grid-template-columns:repeat(2,minmax(0,1fr))}
-.houses-card{margin:0 0 var(--s-3);border-radius:var(--r-lg);background:#fff;box-shadow:var(--e-1),var(--ring);overflow:hidden}
-.houses-card.is-current{box-shadow:var(--e-1),inset 0 0 0 2px var(--c-green)}
-.houses-art{display:block;width:100%;height:104px}
-.houses-body{padding:var(--s-3) var(--s-4) var(--s-4)}
-.houses-card header{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s-2)}
-.houses-card h3{margin:0!important;font-size:16px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
-.houses-card h3 small{display:block;font-size:12px;font-weight:500;color:var(--c-muted)}
-.houses-card p{margin:6px 0 var(--s-2)!important;font-size:13px!important;line-height:1.4!important;color:var(--c-ink-2)}
-.houses-card dl{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-2);margin:0 0 var(--s-3);padding:10px 12px;border-radius:var(--r-sm);background:var(--c-fill)}
-.houses-card dt{font-size:var(--t-small);color:var(--c-muted)}.houses-card dd{margin:0;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
-.houses-card dd.is-afford{color:var(--c-green-dark)}.houses-card dd.is-short{color:var(--c-red)}
+.houses-description{margin:0;font-size:14px;line-height:1.5;color:var(--c-ink-2)}
+.houses-specs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0}
+.houses-specs>div:first-child{grid-column:1/-1}
+.houses-specs dt{font-size:13px;color:var(--c-muted)}
+.houses-specs dd{margin:4px 0 0;font-size:16px;font-weight:650;font-variant-numeric:tabular-nums}
+.houses-specs>div:first-child dd{font-size:24px;letter-spacing:-.02em}

@@ -1,8 +1,8 @@
 /* Ride app. Classes are prefixed ride-. */
 .ride-intro,.ride-blurb{font-size:13px!important;margin:0 0 var(--s-2)}
 .ride-blurb{color:var(--c-muted)}
-.ride-modes{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:var(--s-1)}
-.ride-modes button{flex:1 0 auto;display:grid;justify-items:center;gap:2px;min-width:58px;min-height:56px;padding:6px 8px;border:2px solid var(--c-line);border-radius:14px;background:var(--c-surface-solid);font:600 12px var(--font);color:var(--c-ink);cursor:pointer}
+.ride-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,88px),1fr));gap:6px;padding:3px;margin-bottom:var(--s-1)}
+.ride-modes button{flex:1 0 auto;display:grid;justify-items:center;gap:2px;min-width:0;min-height:56px;padding:6px 8px;border:2px solid var(--c-line);border-radius:14px;background:var(--c-surface-solid);font:600 12px var(--font);color:var(--c-ink);cursor:pointer}
 .ride-modes button span{font-size:20px;line-height:1}
 .ride-modes button.is-selected{border-color:var(--c-green-dark);background:var(--c-green-soft)}
 .ride-modes button:focus-visible,.ride-go:focus-visible{outline:3px solid #247a49;outline-offset:2px}
@@ -10,10 +10,10 @@
 /* Expanded on a desktop: two columns of places, and the mode picker stops stretching. */
 .ph.is-wide .ride-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ph.is-wide .ride-modes{max-width:520px}
-.ride-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--c-line);border-radius:16px}
+.ride-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--c-line);border-radius:16px}
 .ride-row.is-closed{background:var(--c-fill)}
 .ride-icon{flex:none;width:36px;height:36px;border-radius:12px;background:var(--c-green-soft);display:grid;place-items:center;font-size:19px}
-.ride-place{flex:1;min-width:0;display:grid;gap:1px}
+.ride-place{flex:1 1 130px;min-width:0;overflow-wrap:anywhere;display:grid;gap:1px}
 .ride-place b{font-size:14px}
 .ride-place small{font-size:11px;color:var(--c-muted)}
 .ride-place .ride-why{color:#7a3c12}

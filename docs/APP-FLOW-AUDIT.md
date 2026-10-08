@@ -1,0 +1,64 @@
+# App flow remediation
+
+8 October 2026. Reopened by the user after the first app-interior release. The previous 41-app entry-screen sweep was insufficient evidence for complete app behavior. This is the current acceptance plan; do not mark the whole UI programme complete based on shared CSS or an app opening.
+
+## Required scope
+
+| Area | Required implementation and states | Evidence required | Current state |
+|---|---|---|---|
+| Shared controls | Owned foreground/background pairs for default, hover, selected, loading and disabled buttons; labeled reusable fields with clear, help and error states | Computed colors and keyboard behavior in real consumers | BaseButton selected variant and TextField implemented locally |
+| Boutique | Distinct shop presentation, usable card spacing, actual try-on preview, reset, purchase, wear/take-off, insufficient funds, offline, pending | Exercise preview/reset and real purchase/equip using an isolated QA life; verify selected-button contrast | White-on-white root cause fixed locally; flow verification pending |
+| Cars | Rendered vehicle artwork, catalogue and garage views, clear price/fuel/speed, buy/drive/sell, ownership and disabled reasons | Buy a vehicle on funded QA life, drive it, reopen/reload, sell; verify balances and state | Shared catalogue cards and original vehicle atlas implemented locally |
+| Houses | Property cards with meaningful hierarchy/artwork; own home versus rentals; rent/move cost; move/upgrade/furniture links; unavailable/insufficient funds | Complete a QA move and check home, balance, rent and reload; verify all cross-app links | Pending |
+| Jobs | Reusable search field, clear/filter/empty states, role disclosure, apply, current job, switch confirmation, quit, pending/offline | Search/clear/filter and actual QA apply/switch/quit; verify salary and role state | Search component extracted locally; action coverage pending |
+| Family | NPC roles can be replaced by consenting real players; invitation, accept/decline, unlink/restore NPC; genuine message/call entry points | Two synthetic users complete invitation/acceptance and unlink; declined/blocked/removed users gain no role/access | Missing feature; queued implementation below |
+| Other app screens | Nested screens, forms and conditional states across Messages, Bank, Invest, Statement, business/store, civic/politics, household/land/street, games, travel, settings, support and onboarding | Per-screen action/state ledger. Privileged, external-provider and permission-dependent flows must be explicitly separated | Entry-screen sweep exists; deeper coverage remains open |
+
+## Boutique diagnosis
+
+`.boutique-try[aria-pressed=true]` set dark background and white text. The more-specific `.ph-appbody .ui-button:not(.is-primary):not(.is-danger)` rule replaced only its background with white. The result was white on white. Boutique now uses BaseButton for try-on and purchase/equip actions; its selected variant owns the color pair. Its compact-phone layout must not use a desktop viewport breakpoint to squeeze three columns into a 392px simulated phone.
+
+TextField owns its input styles. Legacy global input rules exclude its class, avoiding a new specificity conflict. CatalogueCard owns the card structure; Cars and Houses should use it with domain-specific media/specifications/actions rather than duplicating ad hoc cards.
+
+## Real-player Family implementation
+
+1. Model a family slot as the existing NPC default or an accepted player link. Retain stable slot ids and distinguish game roles from assertions about real-world family relationships.
+2. Let the player choose a friend for a slot and send an in-game invitation. The recipient sees the inviter and proposed role, and must accept. Do not silently assign a real person or contact anyone outside the game.
+3. Persist pending/accepted/declined states with server-side membership, block and rate checks and idempotent commands. Cross-device updates must agree.
+4. Replace only the accepted slot's presentation. Real-player entries open the existing direct-message and real-call flows, with online/offline/call-permission states. Do not run an NPC's eight-second simulation or mark a real call complete merely because its button was clicked.
+5. Either participant can unlink; the owner can restore the NPC role. Blocking, account removal and declined invitations must not leave stale access or a hidden active relationship.
+6. Preserve existing balances, household possessions and other roles. Any daily check-in reward for a real interaction needs a server-verified, bounded rule; no reward for invite spam or unanswered calls.
+7. Verify the complete two-player lifecycle in isolated data, then run release checks and live synthetic acceptance before marking this feature shipped.
+
+## Voice-note work preserved
+
+Voice work is saved in Git stash `5860c8e5e0f350a01378ceb4b28cf9a9238daed1` (message: Voice-note integration checkpoint before app interaction audit). A tracked-change backup is `/tmp/allworld-voice-integration.patch`; the stash also holds new files. It passed `check:fast`, 40 existing focused checks and the temporary API probe for friends-only sending, authorized reads, retries, changed-byte conflicts, deletion, reports, group removal and blocking. It is not deployed and still needs Worker persistence and browser integration verification. Restore deliberately after checking overlap with Family/social changes; do not blindly pop it over later work.
+
+## Added acceptance: mobile and first impressions
+
+- Inspect narrow 320/390px screens and enlarged text; repair actual horizontal overflow, compressed controls, wrapping labels and inaccessible actions across app interiors.
+- Map travel choices: replace six compressed chips with wrapping, named choices; separate venue title and status. Ride choices must wrap too. Verify selection, fare, trip action and scroll access on a small screen.
+- Refresh original raster OG/share artwork, favicon and installed-app icons; verify public metadata and actual served images.
+- Animate boot and board-loading presentation with lightweight artwork, accurate lifecycle labels and reduced-motion support. Preserve slow/error/retry states and startup download budgets.
+
+## Local evidence, 8 October — remediation candidate
+
+Compiled browser preview at localhost:5186, synthetic Release UI QA life:
+- Boutique: Afro preview had foreground rgb(104,35,69) on rgb(248,232,240); purchased for 2,500; previewed Bun and reset to owned Afro.
+- Cars: bought Agama for 350,000 and Tokunbo for 900,000, switched driving vehicle, sold Agama for 210,000; Garage retained Tokunbo.
+- Rental house: moved to Lekki mini-flat for 51,000, then reloaded; home and 17,000 weekly rent persisted. Bank and five transaction rows reconciled to 906,500 from the initial 2,000,000. Later manual QA travel spent another 200.
+- Jobs: searched, expanded Tech, applied to Intern; switched to Marketer with confirmation; quit with confirmation; empty search and clear/open-workplace filters worked.
+- Map: 390px and 320px screenshots show named modes, fares and time in two rows. At 320px, sheet and every mode button had scrollWidth equal to clientWidth. Selection/travel engine is unchanged; full enlarged-text and all-app audit remains open. Ride picker now wraps and destination rows wrap their action.
+- Boot: compiled Chrome screenshot showed the rendered globe; simulated slow loading recovered via Try again with saved balance intact. Computed animationName was none under reduced motion. Temporary network, media and viewport overrides were cleared. Scene lifecycle labels now follow actual host/session loading, never invented percentages.
+
+These are specific exercised flows, not proof that every screen/state is finished. Family implementation and voice integration remain pending.
+
+## First-impression assets
+
+New original 3D social preview at /og/allworld.jpg (1200 by 630, 157,036 bytes); old PNG retained for existing cached links. JPEG preserves detail with half the PNG size budget. Root and referral metadata both use the new image and matching alt text. Updated raster favicon, touch and install icons. Loader reuses a 3,032-byte WebP; the decorative scene stylesheet is fetched after the playable shell. No additional WebGL context or animation library.
+
+Generated originals (not copied brand artwork):
+- ~/.codex/generated_images/01a11ae0-eea5-79e1-ae16-bc36056fbf4e/exec-d875d73a-de4d-46a2-9ff4-fa78c090b8d6.png
+- ~/.codex/generated_images/01a11ae0-eea5-79e1-ae16-bc36056fbf4e/exec-a790387e-fa25-4893-9d78-c07d8ceafb01.png
+
+Existing source-shape tests have known mismatches with this requested redesign: phone.test.ts expects hidden mode names in one row; panelsA.test.ts expects the old Jobs copy and ui-button Boutique class; seo.test.ts expects an SVG favicon, the old PNG metadata and outdated nine-city wording. No tests were modified, following the standing preference. The initial PNG-size failure was resolved by using a separate 157KB JPEG; the legacy PNG remains within its existing size guard. Do not report the full historical suite green.

@@ -15,6 +15,7 @@ import LookStage from '../start/LookStage.vue'
 import { lookSummary, withAccessory, withoutAccessory } from '../start/lookModel.ts'
 import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import BaseButton from '../../ui/BaseButton.vue'
 import { useAct } from '../kit/act.ts'
 import { SECTIONS, itemLabel, itemControl, itemNote, nextTrying, triedItem, wearing, wearableCards, removeAvatarWearable } from './boutiqueModel.ts'
 import { trying } from './boutiqueState.ts'
@@ -54,19 +55,19 @@ const isTrying = (item: BoutiqueItem): boolean => tried.value === item
         <article v-for="item in section.items" :key="`${item.kind}:${item.id}`" class="boutique-item" :class="{ 'is-wearing': item.wearing, 'is-trying': isTrying(item) }">
           <strong>{{ itemLabel(item) }}</strong>
           <small>{{ itemNote(item, money) }}</small>
-          <button v-if="!item.wearing" type="button" class="ui-button boutique-try" :data-key="`try:${item.kind}:${item.id}`" :aria-pressed="isTrying(item)" @click="tryOn(item)"><template v-if="isTrying(item)"><GameIcon inline name="check" /> Trying on</template><template v-else>Try on</template></button>
+          <BaseButton v-if="!item.wearing" class="boutique-try" :variant="isTrying(item) ? 'selected' : 'default'" :data-key="`try:${item.kind}:${item.id}`" :aria-pressed="isTrying(item)" @click="tryOn(item)"><template v-if="isTrying(item)"><GameIcon inline name="check" /> Trying on</template><template v-else>Try on</template></BaseButton>
           <template v-for="control in [itemControl(item, { offline, done: onboarding.done })]" :key="control.kind">
             <template v-if="control.kind === 'take-off'">
-              <button type="button" class="ui-button" :disabled="Boolean(control.why) || pending !== null" @click="takeOff(item)"><GameIcon inline name="check" /> Wearing · take off</button>
+              <BaseButton :disabled="pending !== null" :reason="control.why" @click="takeOff(item)"><GameIcon inline name="check" /> Wearing · take off</BaseButton>
               <small v-if="control.why" class="boutique-why">{{ control.why }}</small>
             </template>
             <em v-else-if="control.kind === 'worn'" class="boutique-state"><GameIcon inline name="check" /> Wearing</em>
             <template v-else-if="control.kind === 'wear'">
-              <button type="button" class="ui-button" :class="{ 'is-primary': !control.why }" :disabled="Boolean(control.why) || pending !== null" @click="wear(item)">Wear</button>
+              <BaseButton :variant="control.why ? 'default' : 'primary'" :disabled="pending !== null" :reason="control.why" @click="wear(item)">Wear</BaseButton>
               <small v-if="control.why" class="boutique-why">{{ control.why }}</small>
             </template>
             <template v-else>
-              <button type="button" class="ui-button" :class="{ 'is-primary': !control.why }" :disabled="Boolean(control.why) || pending !== null" @click="buy(item)">Buy · {{ money(item.price) }}</button>
+              <BaseButton :variant="control.why ? 'default' : 'primary'" :disabled="pending !== null" :reason="control.why" @click="buy(item)">Buy · {{ money(item.price) }}</BaseButton>
               <small v-if="control.why" class="boutique-why">{{ control.why }}</small>
             </template>
           </template>

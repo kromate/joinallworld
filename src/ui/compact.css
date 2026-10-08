@@ -55,26 +55,20 @@
   .life-ui .map-more .map-filters{-webkit-mask-image:none;mask-image:none}
 
   /* ---- the Map: venue card ---------------------------------------------------------------------------------------------- */
-  /* Collapsed, the card is four rows: back + title + status + link; the modes as one row of chips (icon and price, the chosen one adds its time); Go; About. */
-  .life-ui .map-card{display:grid;grid-template-columns:var(--tap) minmax(0,1fr) auto var(--tap);align-items:center;max-height:calc(45 * var(--ui-vh));padding:6px;gap:4px 6px}
-  .life-ui .map-card>*{grid-column:1/-1}
-  .life-ui .map-card-head{display:contents}
-  .life-ui .map-card-head>:first-child{grid-column:1;grid-row:1}
-  .life-ui .map-card-head>div{grid-column:2;grid-row:1}
-  .life-ui .map-card-head>:last-child{grid-column:4;grid-row:1}
-  .life-ui .map-card .map-card-icon,.life-ui .map-card-head p{display:none}
-  .life-ui .map-card>.map-status{grid-column:3;grid-row:1;justify-self:end}
-  body .map-card-head h1{font-size:var(--t-lead)}
-  body .map-status{padding:3px 10px;white-space:nowrap}
-  body .map-status span{display:none}
-  .life-ui .map-modes{display:flex;gap:4px}
-  .life-ui .map-modes button{flex:1 1 0;min-width:0;display:grid;grid-template-columns:auto auto;grid-template-areas:"i f" "i t";column-gap:4px;justify-content:center;align-items:center;justify-items:start;min-height:var(--tap);padding:2px 4px;border-radius:var(--r-sm);border-width:1.5px}
-  .life-ui .map-modes button.is-selected{flex-grow:1.7}
+  /* Keep every fare and mode name readable without widening the sheet. */
+  .life-ui .map-card{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;max-height:calc(55 * var(--ui-vh));padding:8px;gap:8px}
+  .life-ui .map-card-head{display:flex;gap:8px}
+  .life-ui .map-card-head>div{flex:1;min-width:0}
+  .life-ui .map-card .map-card-icon{display:none}
+  body .map-card-head h1{font-size:var(--t-lead);white-space:normal;overflow-wrap:anywhere}
+  .life-ui .map-card>.map-status{justify-self:start;max-width:100%;box-sizing:border-box}
+  body .map-status{padding:5px 10px;white-space:normal}
+  .life-ui .map-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,88px),1fr));gap:6px}
+  .life-ui .map-modes button{min-width:0;display:grid;grid-template-columns:24px minmax(0,1fr);grid-template-areas:"i n" "f f" "t t";gap:3px 4px;align-items:center;justify-items:center;min-height:var(--tap);padding:8px 5px;border-radius:var(--r-sm);border-width:1.5px}
   body .map-modes button>span{grid-area:i;font-size:18px}
-  body .map-modes b{display:none}
-  body .map-modes small{grid-area:f;font-size:12px;line-height:1.1}
-  body .map-modes small.map-mode-time{display:none;grid-area:t}
-  body .map-modes button.is-selected small.map-mode-time{display:block}
+  body .map-modes b{grid-area:n;justify-self:start;font-size:12px;overflow-wrap:anywhere;text-align:left}
+  body .map-modes small{grid-area:f;font-size:13px;line-height:1.25;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+  body .map-modes small.map-mode-time{grid-area:t;font-size:12px}
   .life-ui .map-card .map-go{min-height:var(--tap);padding:4px 16px}
   .life-ui .map-card>.map-trip{display:none}
   .life-ui .map-card .map-about{margin:0}

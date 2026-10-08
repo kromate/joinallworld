@@ -12,6 +12,7 @@ export function expectedConfig(sourceSha, publish) {
   return {
     name: 'joinallworld-next', main: 'worker.js', compatibility_date: '2026-10-01',
     workers_dev: publish, preview_urls: false,
+    no_bundle: true, find_additional_modules: false,
     assets: { directory: './assets', binding: 'ASSETS', not_found_handling: 'single-page-application', run_worker_first: true },
     durable_objects: { bindings: [{ name: 'JOINALLWORLD', class_name: 'JoinAllworldState' }] },
     migrations: [{ tag: 'joinallworld-sqlite-v1', new_sqlite_classes: ['JoinAllworldState'] }],

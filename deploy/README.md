@@ -71,6 +71,8 @@ node scripts/package-joinallworld.mjs "$PWD" "$RELEASE_PARENT/package" "$SOURCE_
 node scripts/guard-joinallworld-package.mjs check "$RELEASE_PARENT/package" "$SOURCE_SHA" false
 ```
 
+The sealed config disables rebundling and additional module discovery: `worker.js` is already self-contained, and the street-pack text files belong only in the Assets upload.
+
 Review the resulting manifest and fixed `wrangler.json`, confirm the intended Cloudflare account, retain the production secrets, and capture continuity evidence before deploying. Only then, with the authorized account ID and an existing authenticated Wrangler session or scoped API token, deploy the checked package:
 
 ```sh

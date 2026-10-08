@@ -28,6 +28,8 @@ test('accepts exact separate-worker package and rejects content changes', t => {
   writeFileSync(join(f.root, 'worker.js'), 'tampered'); assert.throws(() => checkPackage(f.root, sha, false), /manifest mismatch/);
 });
 for (const [name, change] of [
+  ['rebundling the sealed Worker', config => { config.no_bundle = false; }],
+  ['static assets included as Worker modules', config => { config.find_additional_modules = true; }],
   ['old Worker identity', config => { config.name = 'allworld'; }],
   ['old namespace binding', config => { config.durable_objects.bindings[0].script_name = 'allworld'; }],
   ['apex route', config => { config.routes = ['joinallworld.com/*']; }],

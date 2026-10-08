@@ -32,4 +32,4 @@ This is a physical-surface correction, **not accepted complete boarding or visua
 
 User target: expressive warm3D with human proportions across the entire game. Modest measured growth is allowed conditional on mobile playability; no numeric cap changed. Source/runtime/download/build/whole-journey bytes, construction/frame/input timing, memory/thermal and real Android/iPhone gates remain unverified. Original baselines remain immutable. Evidence under docs is not a new runtime asset.
 
-WORLD remains sole uploader. Owned review tab1412593695 closed; Vite5514/browser71368 terminal130, last bounds job terminal0; all slots0/1 and port5184empty. Explicit intensive handoff sent toWORLD. No graphics upload or main integration.
+The preceding graphics-to-WORLD resource handback is historical. Current main599/30d57 assigns APP UI both verification and release until explicit terminal handoff; no graphics upload is authorized by the old receipt. Owned review tab1412593695 closed; Vite5514/browser71368 terminal130, last bounds job terminal0; all slots0/1 and port5184empty. Explicit intensive handoff sent toWORLD. No graphics upload or main integration.

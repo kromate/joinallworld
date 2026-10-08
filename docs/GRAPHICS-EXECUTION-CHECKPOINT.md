@@ -1,6 +1,6 @@
 # Graphics execution checkpoint — 8 October 2026
 
-Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary and isolated source phase now include main6dc7f516; primary local graphics work is preserved. Ignored experiments are excluded from production packages. Latest status below supersedes historical checkpoints.
+Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary and isolated source phase now include maina44629b3; primary local graphics work is preserved. Ignored experiments are excluded from production packages. Latest status below supersedes historical checkpoints.
 
 ## User direction
 
@@ -22,7 +22,7 @@ Next: consistent canonical body/LOD integration for Home/venue/neighbourhood cro
 
 Original distribution1a329026:84,369,438 raw/11,639,126 gzip/9,148,382 BrotliQ11 bytes. Latest WORLD combined dist95,770,605raw (+11,401,167 original), startup614,996raw/222,925gzip; compression/journey comparison not complete and baseline not reset. Include all country/app-art adoption. Lazy loading does not erase downloaded bytes.
 
-WORLD remains sole production upload owner. Shared local one-intensive-owner rule spans heavy/server/browser/acquisition/generation, heap1536MiB, one slot each, minifier1, explicit terminal handoffs and selective owned cleanup. WORLD now owns the queued compiler/CI/sealed-release gate; GRAPHICS is source/docs-only. No renderer upload or whole-game/mobile completion claim.
+WORLD's prior upload ownership is historical; APP UI owns current verification and release under the newer human resume. Shared local one-intensive-owner rule spans heavy/server/browser/acquisition/generation, heap1536MiB, one slot each, minifier1, explicit terminal handoffs and selective owned cleanup. WORLD now owns the queued compiler/CI/sealed-release gate; GRAPHICS is source/docs-only. No renderer upload or whole-game/mobile completion claim.
 
 
 ## Latest bounded phase: actual aperture and canonical Home guests
@@ -31,7 +31,7 @@ See [physical aperture v2](GRAPHICS-DRIVER-APERTURE-PHASE.md) for exact source h
 
 Primary local Home candidate now shares canonical body/appearance/wardrobe with guests, serially loaded behind renderer/self readiness.14focused checks and targetedtypes pass. Actualtwo guest baseline14draws/8229tri vs canonicaltwo16draws/15833tri; fivecanonical22draws/31419tri,28geometries/10textures. Actualpublicwalk arrivesz3.23 unblocked/idle. This improves identity but is not mobile acceptance; lower source-derived detail remains required. Home night still uses daylight defaults; disposal0geometries/1texture leaves a residency gate. Home source remains unpublished/unintegrated; no original baseline/cap/asset/schema change.
 
-Latest primary main sync6dc7f516 preserved all67 local source hashes; isolated phase includes the same main and retains exact tested vehicle source/test hashes. Draft PR21 publishes db85161b physical aperture and evidence. WORLD confirms APP UI Family now owns the sole local intensive turn; prior WORLD→LIVING queue is superseded until explicit APP UI handoff. GRAPHICS remains source-only with no live owned QA sessions/tab. WORLD remains sole production uploader. No new local compiler/build/test/browser run after handback. Whole goal active/incomplete.
+Latest primary main sync6dc7f516 preserved all67 local source hashes; isolated phase includes the same main and retains exact tested vehicle source/test hashes. Draft PR21 publishes db85161b physical aperture and evidence. WORLD confirms APP UI Family now owns the sole local intensive turn; prior WORLD→LIVING queue is superseded until explicit APP UI handoff. GRAPHICS remains source-only with no live owned QA sessions/tab. APP UI owns current production release; a later WORLD upload requires explicit terminal handoff. No new local compiler/build/test/browser run after handback. Whole goal active/incomplete.
 
 
 ## Queued source phase: time-driven Home / street and shadow ownership
@@ -46,4 +46,6 @@ Six meaningful regressions plus affected Home/street/host/scene suites and targe
 
 LIVING exclusively owns additive StandIn exit-floor destination API/tests and driving caller; existing SkinnedBody.place already provides the separate standing target. No shared skinned.ts overwrite or roof/scale/new-clip/pose-reset workaround. Runtime/general-venue/contact checks are queued.
 
-APP UI remains sole intensive/release owner. GRAPHICS has no heavy/server/browser sessions or owned temporary tabs; all existing source audits terminal, no new fanout. WORLD sole production uploader. Next GRAPHICS execution requires explicit resource handoff, not free locks. Whole goal active/incomplete.
+APP UI remains sole intensive/release owner. GRAPHICS has no heavy/server/browser sessions or owned temporary tabs; all existing source audits terminal, no new fanout. APP UI owns current verification AND release; WORLD's preceding uploader turn is historical. Next GRAPHICS execution requires explicit resource handoff, not free locks. Whole goal active/incomplete.
+
+Source continuation: guarded primary Family maina44629b3 sync preserved all71 local source hashes. Hidden venue preparation was found to mutate the shared glow; local candidate restores the active look in finally without drawing, and its real-host regression checks the material reference/current+one-prepared invariant. This remains unexecuted. APP UI durable-host contact failed; no reply/ownership transfer claimed. Fresh main WORLD/APP rows retained while resolving only the GRAPHICS coordination row.

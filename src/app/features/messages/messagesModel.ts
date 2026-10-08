@@ -9,7 +9,7 @@ import type { PhoneNotification } from '../../types/panel.ts'
 const REQUEST_KINDS: readonly string[] = ['friend-request', 'bae-request']
 /** Which app a line of Updates belongs to: where tapping it in the Phone's notification list goes. */
 const NOTICE_APPS: Readonly<Record<string, string>> = { 'rent-due': 'bank', rent: 'bank', 'rent-missed': 'bank', loan: 'bank', 'loan-missed': 'bank', promotion: 'jobs', illness: 'health', recovered: 'health', gov: 'governor', transfer: 'statement', bae: 'people', power: 'groceries' }
-const UPDATE_APPS: Readonly<Record<string, string>> = { mention: 'messages', 'group-added': 'messages', reaction: 'messages', transfer: 'statement', business: 'business', 'friend-request': 'people', 'friend-accepted': 'contacts', 'invite-knock': 'invite', 'invite-answer': 'invite', visit: 'invite', 'bae-request': 'people', 'bae-answer': 'people' }
+const UPDATE_APPS: Readonly<Record<string, string>> = { family: 'family', mention: 'messages', 'group-added': 'messages', reaction: 'messages', transfer: 'statement', business: 'business', 'friend-request': 'people', 'friend-accepted': 'contacts', 'invite-knock': 'invite', 'invite-answer': 'invite', visit: 'invite', 'bae-request': 'people', 'bae-answer': 'people' }
 const UPDATES_TAB = { tab: 'updates' } as const
 export const SEEN_KEY = 'joinallworld-notices-seen'
 

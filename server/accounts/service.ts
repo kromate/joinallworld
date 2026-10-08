@@ -1,3 +1,4 @@
+import { clearPlayerFamily } from '../social/family.ts';
 import { commerceAddress, commerceOf, ownCommerce } from '../commerce/service.ts';
 /**
  * OWNER: accounts
@@ -412,6 +413,7 @@ export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { ident
   const { account } = prove(db, deps, input, input.identity);
   const publicIds = [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)];
   eraseRealValue(db, publicIds);
+  if (db.social) for (const id of publicIds) if (input.erase || id !== account.publicId) clearPlayerFamily(db.social.players, id);
   for (const id of publicIds) if (db.street && (input.erase || id !== account.publicId)) delete db.street.journeys[id];
   for (const id of publicIds) if (db.trust?.players) delete db.trust.players[id];
   if (db.trustChecks?.checks) for (const [ref, check] of Object.entries(db.trustChecks.checks)) if (check.account === account.id || publicIds.includes(check.player)) delete db.trustChecks.checks[ref];

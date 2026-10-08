@@ -120,9 +120,9 @@ const socket = computed(() => { void tick.value; return social.socket })
 const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversations.find((item) => item.id === ui.open) ?? null : null))
 const thread = computed(() => { void tick.value; const now = ui.open ? social.threads.get(ui.open) : undefined; return now ? { loaded: now.loaded, error: now.error } : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
-const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, ui.openName) : ''))
 /** The other player of the direct chat on screen, also before its first message (messagesThread.ts partnerOf). */
 const partner = computed(() => partnerOf(ui.open, conv.value))
+const title = computed(() => (ui.open ? threadTitle(ui.open, conv.value, me.value?.friends.find(friend => friend.id === partner.value)?.name ?? ui.openName) : ''))
 /** A direct chat with the founder: the server marked that member. */
 const withFounder = computed(() => conv.value?.kind === 'dm' && conv.value.members.some((member) => member.id === conv.value?.with && member.founder === true))
 const readOnly = computed(() => (ui.open && me.value ? readOnlyReason(ui.open, me.value, connected.value ? null : linkWords(view.value)?.cannot('send messages') ?? 'Not connected.') : null))

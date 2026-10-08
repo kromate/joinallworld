@@ -153,6 +153,8 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   return {
     // `lite=1`: a first page of chats (`conversationsMore` for the rest) and, for the founder, none of the automatic friends (the Players view reads them). Absent: as before, up to LIMITS.convs chats.
     'GET /api/social/me': route((db, session, body, request) => service.me(db, session, { lite: request.query.get('lite') === '1' })),
+    'GET /api/social/family': route((db, session) => service.familyView(db, session)),
+    'POST /api/social/family': mine((db, session, body) => service.familyChange(db, session, body)),
     'GET /api/social/friends': route((db, session, body, request) => service.friendsPage(db, session, request.query.get('after'))),
     'POST /api/social/updates/read': route((db, session) => service.readUpdates(db, session)),
     'GET /api/social/people': route((db, session, body, request) => service.people(db, session, request.query.get('city'))),

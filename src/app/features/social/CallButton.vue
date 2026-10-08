@@ -10,7 +10,7 @@ import type { FamilyId } from '../../../types/life.ts'
 import { useAct } from '../kit/act.ts'
 import { callReason } from './socialWords.ts'
 
-const props = defineProps<{ member: { id: FamilyId; name: string } }>()
+const props = defineProps<{ member: { id: FamilyId; name: string }; disabled?: boolean }>()
 const { game } = useApp()
 const { act, pending } = useAct()
 const reason = computed(() => callReason({
@@ -24,5 +24,5 @@ const call = (): Promise<boolean> => act(`call:${props.member.id}`, () => game.c
 </script>
 
 <template>
-  <button type="button" class="social-btn is-primary" :disabled="Boolean(reason) || pending !== null" :title="reason ?? undefined" :aria-label="`Call ${member.name}${reason ? `. ${reason}` : ''}`" @click="call">Call</button>
+  <button type="button" class="social-btn is-primary" :disabled="disabled || Boolean(reason) || pending !== null" :title="reason ?? undefined" :aria-label="`Call ${member.name}${reason ? `. ${reason}` : ''}`" @click="call">Call</button>
 </template>

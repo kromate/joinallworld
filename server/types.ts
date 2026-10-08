@@ -9,6 +9,7 @@
  *
  * Nothing here is sent to a browser as it stands: a SessionRecord holds the cookie secret.
  */
+import type { FamilyBook } from '../src/types/family.ts'
 import type { CallRelay } from './call-relay.ts';
 import type { LifeState } from '../src/types/life.ts'
 import type { ActionType } from '../src/types/actions.ts'
@@ -209,6 +210,8 @@ export interface AccountsConfig { projectId: string; apiKey: string; googleClien
 // ---- social collection (db.social) ---------------------------------------------------------------
 
 export interface SocialPlayerRecord {
+  /** Consented in-game family roles; absent for existing players. */
+  familyLinks?: FamilyBook
   name: string
   /** First and latest social request, server ms. */
   first: number

@@ -30,5 +30,5 @@ export type CampaignUnit = {
 } & ({kind:'local';plan:WorldPlan}|{kind:'acquire';request:AcquisitionRequest}|{kind:'protected';reason:string});
 export interface WorldCampaign {
   schemaVersion:1; id:string; inventoryHash:string; units:CampaignUnit[];
-  limits: {durationMs:number;jobDurationMs:number;networkBytes:number;outputBytes:number;diskBytes:number;memoryMb:number;maxAttempts:number};
+  limits: {durationMs:number;jobDurationMs:number;networkBytes:number;inputBytes:number;outputBytes:number;diskBytes:number;memoryMb:number;maxAttempts:number};
 }

@@ -110,15 +110,19 @@ export function jobIdentity(plan: WorldPlan): { id: string; inputHash: string; p
   const inputHash = digest({ compilerVersion: COMPILER_VERSION, schemaVersion: 1, config, sourceHash: plan.source.sha256, inputHash: plan.input.sha256 });
   return { id: `world-${inputHash.slice(0,40)}`, inputHash, payload: { ...config, compilerVersion: COMPILER_VERSION, schemaVersion: 1 } };
 }
-export async function compileInWorker(plan: WorldPlan, timeoutMs: number): Promise<{ manifest: unknown; tiles: unknown[] }> {
+export async function compileInWorker(plan: WorldPlan, timeoutMs: number, memoryMb = 512, signal?: AbortSignal): Promise<{ manifest: unknown; tiles: unknown[] }> {
   // The worker is terminated at the actual per-job wall-clock boundary, including synchronous geometry work.
   const source = `import { parentPort, workerData } from 'node:worker_threads';\nimport { pathToFileURL } from 'node:url';\nimport { stat, readFile } from 'node:fs/promises';\nimport { createHash } from 'node:crypto';\nconst info=await stat(workerData.plan.input.path);if(info.size!==workerData.plan.input.bytes||info.size>workerData.maxBytes)throw new Error('input size does not match plan or exceeds byte limit');\nconst bytes=await readFile(workerData.plan.input.path);const hash=createHash('sha256').update(bytes).digest('hex');if(bytes.byteLength!==info.size||hash!==workerData.plan.input.sha256)throw new Error('input changed after size check or SHA-256 mismatch');\nconst geojson=JSON.parse(bytes.toString('utf8'));const { manifest, tiles } = await (await import(pathToFileURL(workerData.ingest).href)).compileRegion(workerData.plan.region, workerData.plan.source, geojson);\nparentPort.postMessage({ manifest, tiles });`;
   return await new Promise((resolve, reject) => {
-    const worker = new Worker(new URL(`data:text/javascript,${encodeURIComponent(source)}`), { workerData: { ingest: path.join(MODULE_DIR, 'ingest.ts'), plan, maxBytes: RUN_LIMITS.inputBytes }, execArgv: ['--experimental-strip-types'] });
-    const timer = setTimeout(() => { void worker.terminate(); reject(new Error(`compile exceeded ${timeoutMs} ms job duration`)); }, timeoutMs);
-    worker.once('message', (value: { manifest: unknown; tiles: unknown[] }) => { clearTimeout(timer); void worker.terminate(); resolve(value); });
-    worker.once('error', error => { clearTimeout(timer); reject(error); });
-    worker.once('exit', code => { if (code !== 0) { clearTimeout(timer); reject(new Error(`compile worker exited ${code}`)); } });
+    const worker = new Worker(new URL(`data:text/javascript,${encodeURIComponent(source)}`), { workerData: { ingest: path.join(MODULE_DIR, 'ingest.ts'), plan, maxBytes: RUN_LIMITS.inputBytes }, resourceLimits: { maxOldGenerationSizeMb: Math.max(32, Math.floor(memoryMb * 0.75)), maxYoungGenerationSizeMb: Math.max(16, Math.floor(memoryMb * 0.2)) }, execArgv: ['--experimental-strip-types'] });
+    let finished=false;
+    const finish=(error?:Error,value?:{manifest:unknown;tiles:unknown[]})=>{if(finished)return;finished=true;clearTimeout(timer);signal?.removeEventListener('abort',abort);if(error)reject(error);else resolve(value!);};
+    const abort=()=>{void worker.terminate();finish(new Error('compile aborted by campaign signal'));};
+    const timer=setTimeout(()=>{void worker.terminate();finish(new Error(`compile exceeded ${timeoutMs} ms job duration`));},timeoutMs);
+    signal?.addEventListener('abort',abort,{once:true});if(signal?.aborted){abort();return;}
+    worker.once('message',(value:{manifest:unknown;tiles:unknown[]})=>{finish(undefined,value);void worker.terminate();});
+    worker.once('error',error=>finish(error));
+    worker.once('exit',code=>{if(code!==0)finish(new Error(`compile worker exited ${code}`));});
   });
 }
 async function publish(plan: WorldPlan, durationMs: number, deadline: number): Promise<{ manifestHash: string; manifestPath: string; bytes: number }> {
@@ -140,6 +144,32 @@ async function publish(plan: WorldPlan, durationMs: number, deadline: number): P
   if (Date.now() >= deadline) throw new Error('job duration limit reached before manifest publication');
   total += encoded.bytes.byteLength;
   if (total > RUN_LIMITS.perJobOutputBytes) throw new RangeError('per-job output exceeds byte budget');
+  const manifestPath = `manifests/${encoded.hash}.json`;
+  await store.writeImmutable(manifestPath, encoded.bytes);
+  return { manifestHash: encoded.hash, manifestPath, bytes: total };
+}
+
+/** Compile one campaign job into its isolated immutable output store. */
+export async function compileCampaignPlan(planValue: WorldPlan, outputRoot: string, allowedRoot: string, timeoutMs: number, outputLimitBytes: number, memoryMb = 512, signal?: AbortSignal): Promise<{ manifestHash: string; manifestPath: string; bytes: number }> {
+  const plan = assertPlan(planValue);
+  if (!Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || !Number.isSafeInteger(outputLimitBytes) || outputLimitBytes < 1) throw new RangeError('campaign compile limits must be positive safe integers');
+  const deadline = Date.now() + timeoutMs;
+  const disk = await statfs(allowedRoot);
+  if (disk.bavail * disk.bsize < RUN_LIMITS.freeDiskReserveBytes) throw new RangeError('free disk space is below world-build reserve');
+  const store = await createOutputStore(outputRoot, allowedRoot);
+  const compiled = await compileInWorker(plan, timeoutMs, memoryMb, signal);
+  let total = 0;
+  for (const value of compiled.tiles) {
+    if (Date.now() >= deadline) throw new Error('campaign job duration limit reached before output publication');
+    const { ref, bytes } = encodeTile(value as never);
+    total += bytes.byteLength;
+    if (total > outputLimitBytes) throw new RangeError('campaign job output exceeds byte budget');
+    await store.writeImmutable(ref.path, bytes);
+  }
+  const encoded = encodeManifest(compiled.manifest as never);
+  if (Date.now() >= deadline) throw new Error('campaign job duration limit reached before manifest publication');
+  total += encoded.bytes.byteLength;
+  if (total > outputLimitBytes) throw new RangeError('campaign job output exceeds byte budget');
   const manifestPath = `manifests/${encoded.hash}.json`;
   await store.writeImmutable(manifestPath, encoded.bytes);
   return { manifestHash: encoded.hash, manifestPath, bytes: total };

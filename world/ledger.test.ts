@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, rm, readFile, symlink, mkdir, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
 import { Ledger } from './ledger.ts';
 import { createOutputStore } from './storage.ts';
 
@@ -46,6 +47,36 @@ test('fail supports bounded retry then completion', async () => {
     assert.equal(ledger.complete(two.id, two.token, 22, { ok: true }), true);
     assert.equal(ledger.list()[0]?.status, 'completed');
   } finally { ledger.close(); await rm(dir, { recursive: true, force: true }); }
+});
+
+test('durable priorities sort claims first and migrate old jobs with priority zero', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'world-ledger-priority-'));
+  const file = path.join(dir, 'queue.sqlite');
+  try {
+    const legacy = new DatabaseSync(file);
+    legacy.exec(`CREATE TABLE jobs (
+      id TEXT PRIMARY KEY, kind TEXT NOT NULL, input_hash TEXT NOT NULL, payload TEXT NOT NULL,
+      max_attempts INTEGER NOT NULL CHECK(max_attempts > 0), attempt INTEGER NOT NULL DEFAULT 0,
+      token_seq INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL CHECK(status IN ('queued','leased','completed','failed')),
+      available_at REAL NOT NULL DEFAULT 0, lease_until REAL, lease_token TEXT, result TEXT, error TEXT
+    ); INSERT INTO jobs(id,kind,input_hash,payload,max_attempts,status) VALUES('legacy','compile','h','null',2,'queued');`);
+    legacy.close();
+    let ledger = new Ledger(file);
+    try {
+      assert.equal(ledger.list()[0]?.priority, 0);
+      ledger.enqueue({ id: 'later', kind: 'compile', inputHash: 'h', payload: null, maxAttempts: 2, priority: 3 });
+      ledger.enqueue({ id: 'first', kind: 'compile', inputHash: 'h', payload: null, maxAttempts: 2, priority: 1 });
+      ledger.enqueue({ id: 'legacy', kind: 'compile', inputHash: 'h', payload: null, maxAttempts: 2, priority: 4 });
+    } finally { ledger.close(); }
+    ledger = new Ledger(file);
+    try {
+      assert.equal(ledger.claim('worker', 0, 100)?.id, 'first');
+      assert.throws(() => ledger.enqueue({ id: 'first', kind: 'compile', inputHash: 'h', payload: null, maxAttempts: 2, priority: 2 }), /cannot change while leased/);
+      assert.equal(ledger.claim('worker', 0, 100)?.id, 'later');
+      assert.equal(ledger.claim('worker', 0, 100)?.id, 'legacy');
+      assert.equal(ledger.claim('worker', 0, 100), null);
+    } finally { ledger.close(); }
+  } finally { await rm(dir, { recursive: true, force: true }); }
 });
 
 test('output store contains paths, verifies immutable collisions and refuses symlinks', async () => {

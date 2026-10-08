@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "inventoryManifestHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+  "inventoryManifestPath": ".cache/world-build/output/inventory/manifests/8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f.json",
+  "provider": "overture",
+  "release": "2026-09-23.1",
+  "limits": {
+    "networkBytes": 32000000,
+    "outputBytes": 10000000,
+    "features": 5000,
+    "durationMs": 600000,
+    "memoryMb": 1536,
+    "diskBytes": 128000000
+  },
+  "requests": [
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "accra-overture-pilot",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320793",
+        "region": {
+          "id": "gh-accra-overture-pilot",
+          "parentId": "country:natural-earth:NE_ID%3A1159320793",
+          "name": "Accra bounded Overture pilot",
+          "kind": "cell",
+          "countryCode": "GH",
+          "timezone": "Africa/Accra",
+          "bounds": [-0.207, 5.552, -0.203, 5.556]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Accra city reference; cache-preserving pilot bounds retained exactly",
+        "coordinates": {"longitude": -0.1969, "latitude": 5.55602},
+        "urls": [
+          "https://www.geonames.org/2306104/accra.html",
+          "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/"
+        ],
+        "note": "The request selection ID, region ID, parent, name, timezone, layer set, and four bounds match the completed cache selection. The city reference point is nearby but outside this deliberately unchanged 0.004-degree cached cell; do not move the cell to recenter it."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "nairobi-overture-pilot",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320971",
+        "region": {
+          "id": "ke-nairobi-kicc-cell",
+          "parentId": "country:natural-earth:NE_ID%3A1159320971",
+          "name": "Nairobi Kenyatta International Convention Centre cell",
+          "kind": "cell",
+          "countryCode": "KE",
+          "timezone": "Africa/Nairobi",
+          "bounds": [36.82074, -1.29092, 36.82474, -1.28692]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Kenyatta International Convention Centre",
+        "coordinates": {"longitude": 36.82274, "latitude": -1.28892},
+        "urls": [
+          "https://www.openstreetmap.org/way/123414930",
+          "https://www.geonames.org/184742/nairobi.html"
+        ],
+        "note": "The OSM way identifies the KICC building; the cell is centered on its published mapped coordinate and is near the Nairobi NASA POWER sample."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "cape-town-overture-pilot",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321431",
+        "region": {
+          "id": "za-cape-town-city-centre-cell",
+          "parentId": "country:natural-earth:NE_ID%3A1159321431",
+          "name": "Cape Town city-centre cell",
+          "kind": "cell",
+          "countryCode": "ZA",
+          "timezone": "Africa/Johannesburg",
+          "bounds": [18.42122, -33.92784, 18.42522, -33.92384]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Cape Town populated-place reference point",
+        "coordinates": {"longitude": 18.42322, "latitude": -33.92584},
+        "urls": [
+          "https://www.geonames.org/3369157/cape-town.html",
+          "https://www.capetown.gov.za/Work%20and%20business/See-all-City-facilities/our-signature-venues/cape-town-city-hall"
+        ],
+        "note": "GeoNames supplies the WGS84 populated-place coordinate and Africa/Johannesburg timezone; the City of Cape Town identifies the central civic landmark."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "london-overture-pilot",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320713",
+        "region": {
+          "id": "gb-london-trafalgar-square-cell",
+          "parentId": "country:natural-earth:NE_ID%3A1159320713",
+          "name": "London Trafalgar Square cell",
+          "kind": "cell",
+          "countryCode": "GB",
+          "timezone": "Europe/London",
+          "bounds": [-0.130039, 51.506025, -0.126039, 51.510025]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Trafalgar Square authoritative mapped point",
+        "coordinates": {"longitude": -0.128039, "latitude": 51.508025},
+        "urls": [
+          "https://www.planning.data.gov.uk/entity/11101255",
+          "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/trafalgar-square",
+          "https://www.geonames.org/advanced-search.html?country=GB&q=Trafalgar+Square"
+        ],
+        "note": "The UK Planning Data entity identifies an authoritative mapped point for Trafalgar Square; the Greater London Authority confirms the public place. The cell is near the London NASA POWER sample."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "fiji-antimeridian-geographic-probe",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320625",
+        "region": {
+          "id": "fj-antimeridian-geographic-probe",
+          "parentId": "country:natural-earth:NE_ID%3A1159320625",
+          "name": "Fiji 180th-meridian geographic probe candidate",
+          "kind": "cell",
+          "countryCode": "FJ",
+          "timezone": "Pacific/Fiji",
+          "bounds": [179.998, -16.8004, -179.998, -16.7964]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Fiji antimeridian geographic probe candidate",
+        "coordinates": {"longitude": 180, "latitude": -16.7984},
+        "urls": [
+          "https://www.fijivillage.com/documents/North_%20Evacuation_Centres.pdf",
+          "https://www.geonames.org/4035893/taveuni-island.html",
+          "https://www.electricscotland.com/independence/sip/fiji.pdf"
+        ],
+        "note": "A Fiji evacuation-centre gazetteer places Waiyevo Methodist School at 16.7984°S, 179.997°W. This query candidate is centered on the 180th meridian at that latitude and exercises wrapped Fiji bounds; it does not claim to locate a marker, settlement, or built-up coverage."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "antarctica-10e-80s-geographic-probe",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320335",
+        "region": {
+          "id": "aq-10e-80s-geographic-probe",
+          "parentId": "country:natural-earth:NE_ID%3A1159320335",
+          "name": "Antarctica 10°E 80°S uninhabited geographic probe",
+          "kind": "cell",
+          "countryCode": "AQ",
+          "timezone": null,
+          "bounds": [9.998, -80.002, 10.002, -79.998]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Antarctica NASA POWER sample geographic probe; not a settlement",
+        "coordinates": {"longitude": 10, "latitude": -80},
+        "urls": [
+          "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=10&latitude=-80&start=1991&end=2020&format=JSON",
+          "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/"
+        ],
+        "note": "This bounded cell probes Overture's behavior at the existing polar climate coordinate. It makes no claim about inhabited area or expected buildings/roads; an empty result will be recorded as measured coverage."
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "sahara-20e-23n-geographic-probe",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321017",
+        "region": {
+          "id": "ly-sahara-20e-23n-geographic-probe",
+          "parentId": "country:natural-earth:NE_ID%3A1159321017",
+          "name": "Sahara 20°E 23°N uninhabited geographic probe",
+          "kind": "cell",
+          "countryCode": "LY",
+          "timezone": null,
+          "bounds": [19.998, 22.998, 20.002, 23.002]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 5000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      },
+      "reference": {
+        "label": "Sparse Sahara NASA POWER sample geographic probe; not a settlement",
+        "coordinates": {"longitude": 20, "latitude": 23},
+        "urls": [
+          "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=20&latitude=23&start=1991&end=2020&format=JSON",
+          "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/"
+        ],
+        "note": "This bounded cell probes Overture at the existing sparse climate coordinate. It makes no claim about settlement or expected buildings/roads; an empty result will be recorded as measured coverage. The inventory resolves the point to Libya."
+      }
+    }
+  ],
+  "coverageExceptions": []
+}

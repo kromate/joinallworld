@@ -94,6 +94,10 @@ test('publishInventory writes independently addressed outline and node assets wi
   assert.equal(outlines.length,2);
   assert.equal(nodes.length,6);
   assert.ok(manifest.rootNodePath.startsWith('nodes/'));
+  const rootIndex=JSON.parse(await readFile(path.join(out,manifest.rootNodePath),'utf8')) as {children:Array<{name:string;path:string}>};
+  assert.deepEqual(rootIndex.children.map(child=>child.name),['Africa','Oceania']);
+  const africa=JSON.parse(await readFile(path.join(out,rootIndex.children[0]!.path),'utf8')) as {children:Array<{name:string}>};
+  assert.deepEqual(africa.children.map(child=>child.name),['Ghana','Nigeria']);
   await assert.rejects(publishInventory(buildInventory(source,geo),path.join(canonicalTemp,'escape'),root),/inside allowed root/);
  } finally { await rm(temp,{recursive:true,force:true}); }
 });

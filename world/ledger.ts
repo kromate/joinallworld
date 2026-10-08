@@ -1,7 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 
 export interface EnqueueInput {
-  id: string; kind: string; inputHash: string; payload: unknown; maxAttempts: number;
+  id: string; kind: string; inputHash: string; payload: unknown; maxAttempts: number; priority?: number;
 }
 export interface ClaimedJob {
   id: string; kind: string; inputHash: string; payload: unknown;
@@ -43,10 +43,22 @@ export class Ledger {
         id TEXT PRIMARY KEY, kind TEXT NOT NULL, input_hash TEXT NOT NULL, payload TEXT NOT NULL,
         max_attempts INTEGER NOT NULL CHECK(max_attempts > 0), attempt INTEGER NOT NULL DEFAULT 0,
         token_seq INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL CHECK(status IN ('queued','leased','completed','failed')),
-        available_at REAL NOT NULL DEFAULT 0, lease_until REAL, lease_token TEXT,
+        available_at REAL NOT NULL DEFAULT 0, priority INTEGER NOT NULL DEFAULT 0, lease_until REAL, lease_token TEXT,
         result TEXT, error TEXT
       );
       CREATE INDEX IF NOT EXISTS jobs_claim ON jobs(status, available_at, id);`);
+    // Backward-compatible migration for ledgers created before durable priorities.
+    // Serialize schema inspection and ALTER so concurrent constructors cannot race.
+    this.#db.exec('BEGIN IMMEDIATE');
+    try {
+      const columns = this.#db.prepare('PRAGMA table_info(jobs)').all() as Array<{name:string}>;
+      if (!columns.some((column) => column.name === 'priority')) this.#db.exec('ALTER TABLE jobs ADD COLUMN priority INTEGER NOT NULL DEFAULT 0');
+      this.#db.exec('CREATE INDEX IF NOT EXISTS jobs_claim_priority ON jobs(status, priority, available_at, id)');
+      this.#db.exec('COMMIT');
+    } catch (error) {
+      this.#db.exec('ROLLBACK');
+      throw error;
+    }
   }
   #transaction<T>(fn: () => T): T {
     this.#db.exec('BEGIN IMMEDIATE');
@@ -56,17 +68,25 @@ export class Ledger {
   enqueue(input: EnqueueInput): void {
     requiredText(input.id, 'id'); requiredText(input.kind, 'kind'); requiredText(input.inputHash, 'inputHash');
     if (!Number.isSafeInteger(input.maxAttempts) || input.maxAttempts < 1) throw new RangeError('maxAttempts must be a positive safe integer');
+    const priority = input.priority ?? 0;
+    if (!Number.isSafeInteger(priority) || priority < 0) throw new RangeError('priority must be a non-negative safe integer');
     const payload = canonical(input.payload);
     this.#transaction(() => {
-      const existing = this.#db.prepare('SELECT kind,input_hash,payload,max_attempts FROM jobs WHERE id=?').get(input.id) as Pick<JobRow,'kind'|'input_hash'|'payload'|'max_attempts'> | undefined;
+      const existing = this.#db.prepare('SELECT kind,input_hash,payload,max_attempts,priority,status FROM jobs WHERE id=?').get(input.id) as (Pick<JobRow,'kind'|'input_hash'|'payload'|'max_attempts'|'status'> & {priority:number}) | undefined;
       if (existing) {
         if (existing.kind !== input.kind || existing.input_hash !== input.inputHash || existing.payload !== payload || existing.max_attempts !== input.maxAttempts) {
           throw new Error(`job ${input.id} already exists with a different payload`);
         }
+        // Scheduling metadata can be refreshed on resume while the job identity and payload stay pinned.
+        // A leased job must retain its current scheduling metadata until its worker releases the lease.
+        if (existing.priority !== priority) {
+          if (existing.status === 'leased') throw new Error(`job ${input.id} priority cannot change while leased`);
+          this.#db.prepare('UPDATE jobs SET priority=? WHERE id=?').run(priority, input.id);
+        }
         return;
       }
-      this.#db.prepare(`INSERT INTO jobs(id,kind,input_hash,payload,max_attempts,status) VALUES(?,?,?,?,?,'queued')`)
-        .run(input.id, input.kind, input.inputHash, payload, input.maxAttempts);
+      this.#db.prepare(`INSERT INTO jobs(id,kind,input_hash,payload,max_attempts,priority,status) VALUES(?,?,?,?,?,?,'queued')`)
+        .run(input.id, input.kind, input.inputHash, payload, input.maxAttempts, priority);
     });
   }
   claim(worker: string, now: number, leaseMs: number): ClaimedJob | null {
@@ -75,7 +95,7 @@ export class Ledger {
     return this.#transaction(() => {
       this.#db.prepare(`UPDATE jobs SET status=CASE WHEN attempt>=max_attempts THEN 'failed' ELSE 'queued' END,
         lease_until=NULL, lease_token=NULL, available_at=? WHERE status='leased' AND lease_until<=?`).run(now, now);
-      const row = this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY available_at,id LIMIT 1`).get(now) as JobRow | undefined;
+      const row = this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY priority,available_at,id LIMIT 1`).get(now) as JobRow | undefined;
       if (!row) return null;
       const attempt = row.attempt + 1, seq = row.token_seq + 1;
       const token = `${seq}:${worker}`;
@@ -105,8 +125,13 @@ export class Ledger {
       error=?,available_at=?,lease_until=NULL,lease_token=NULL WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`)
       .run(message, now + retryDelayMs, id, token, now).changes) === 1);
   }
+  /** Requeue a completed record only after its owning pipeline quarantines verified corrupt output. */
+  requeueCompleted(id: string): boolean {
+    requiredText(id, 'id');
+    return Number(this.#db.prepare(`UPDATE jobs SET status='queued',attempt=0,available_at=0,result=NULL,error='verified output quarantined',lease_until=NULL,lease_token=NULL WHERE id=? AND status='completed'`).run(id).changes) === 1;
+  }
   list(): Array<Record<string, unknown>> {
-    return (this.#db.prepare(`SELECT id,kind,input_hash AS inputHash,payload,max_attempts AS maxAttempts,attempt,status,
+    return (this.#db.prepare(`SELECT id,kind,input_hash AS inputHash,payload,max_attempts AS maxAttempts,priority,attempt,status,
       available_at AS availableAt,lease_until AS leaseUntil,result,error FROM jobs ORDER BY id`).all() as Array<Record<string, unknown>>)
       .map((row) => ({ ...row, payload: JSON.parse(String(row.payload)), result: row.result === null ? null : JSON.parse(String(row.result)) }));
   }

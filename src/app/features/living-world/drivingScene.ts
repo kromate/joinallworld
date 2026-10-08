@@ -22,7 +22,7 @@ const WHEEL_CIRCUMFERENCE = 2 * Math.PI * 0.37
 
 type Point = { x: number; y: number; z: number }
 type FlatPoint = { x: number; z: number }
-type Phase = 'idle' | 'enter-door' | 'enter-walk' | 'enter-seat' | 'drive' | 'exit-door' | 'exit-seat' | 'exit-walk' | 'exit-close'
+type Phase = 'idle' | 'enter-door' | 'enter-walk' | 'enter-seat' | 'drive' | 'exit-door' | 'exit-slide' | 'exit-seat' | 'exit-walk' | 'exit-close'
 type ActorPose = 'idle' | 'stand' | 'walk' | 'sit'
 
 /** The feature is lazy: Three, scene builders and the shared skinned body stay outside startup. */
@@ -106,8 +106,15 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     const fallbackSeat: Point = { x: driver.x, y: driver.y + (0.13 - 1.05) * avatar.scale.y, z: driver.z }
     const thresholdSeat: Point = { x: thresholdAt.x, y: bodySeat.y, z: thresholdAt.z }
     const fallbackThreshold: Point = { x: thresholdAt.x, y: fallbackSeat.y, z: thresholdAt.z }
+    // Provisional staging point for the reverse path: move the seated actor 0.6 m
+    // beyond the authored closed-door anchor before standing. This is not a
+    // certified body-clearance distance; contact bounds still need runtime proof.
+    const exitAt = door.clone().addScaledVector(outward, 0.6)
+    const exitSeat: Point = { x: exitAt.x, y: bodySeat.y, z: exitAt.z }
+    const fallbackExitSeat: Point = { x: exitAt.x, y: fallbackSeat.y, z: exitAt.z }
+    const exitGround: Point = { x: exitAt.x, y: 0, z: exitAt.z }
     const approach: Point = { x: approachAt.x, y: 0, z: approachAt.z }
-    return { driver, approach, thresholdSeat, fallbackThreshold, bodySeat, fallbackSeat }
+    return { driver, approach, thresholdSeat, fallbackThreshold, bodySeat, fallbackSeat, exitSeat, fallbackExitSeat, exitGround }
   }
   const fallbackAt = (at: Point, heading: number, pose: ActorPose, stride = 0) => {
     avatar.position.set(at.x, at.y, at.z); avatar.rotation.y = heading
@@ -144,7 +151,8 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     else if (phase === 'enter-walk') setActorPose('walk', false, true)
     else if (phase === 'enter-seat' || phase === 'drive') setActorPose('sit', false, true)
     else if (phase === 'exit-door') setActorPose('sit', false, true)
-    else if (phase === 'exit-seat') setActorPose('stand', true, true)
+    else if (phase === 'exit-slide') setActorPose('sit', false, true)
+    else if (phase === 'exit-seat') { setActorPose('stand', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle() }
     else if (phase === 'exit-walk') setActorPose('walk', false, true)
     else if (phase === 'exit-close') setActorPose('stand', false, true)
     else if (phase === 'idle' && state && state.status !== 'running') setActorPose('sit', false, true)
@@ -222,11 +230,38 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
       const doorOpenDuration = reduceMotion ? 0.08 : 0.2
       moveActor(a.bodySeat, current.heading, 'sit', a.fallbackSeat)
       poseCar({ door: Math.min(1, phaseTime / doorOpenDuration), time: clock })
-      if (phaseTime >= doorOpenDuration) { phase = 'exit-seat'; phaseTime = 0; setActorPose('stand', !reduceMotion, true); if (reduceMotion && standIn.easing) standIn.settle() }
+      if (phaseTime >= doorOpenDuration) { phase = 'exit-slide'; phaseTime = 0 }
+    } else if (phase === 'exit-slide') {
+      phaseTime += dt
+      const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
+      const t = Math.min(1, phaseTime / (reduceMotion ? 0.22 : 0.5))
+      const seated: Point = {
+        x: a.bodySeat.x + (a.exitSeat.x - a.bodySeat.x) * t,
+        y: a.bodySeat.y,
+        z: a.bodySeat.z + (a.exitSeat.z - a.bodySeat.z) * t,
+      }
+      const fallback: Point = {
+        x: a.fallbackSeat.x + (a.fallbackExitSeat.x - a.fallbackSeat.x) * t,
+        y: a.fallbackSeat.y,
+        z: a.fallbackSeat.z + (a.fallbackExitSeat.z - a.fallbackSeat.z) * t,
+      }
+      moveActor(seated, current.heading, 'sit', fallback)
+      poseCar({ door: 1, time: clock })
+      if (t >= 1) {
+        // Prime the shared body's get-up destination while it is still seated.
+        // The seat stays put; the authored sit-exit clip blends to this exterior floor point.
+        standIn.standingAt(a.exitGround.x, a.exitGround.y, a.exitGround.z, current.heading)
+        phase = 'exit-seat'; phaseTime = 0
+        setActorPose('stand', !reduceMotion, true)
+        if (reduceMotion && standIn.easing) standIn.settle()
+      }
     } else if (phase === 'exit-seat') {
       phaseTime += dt
       const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
-      standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, current.heading)
+      const t = Math.min(1, phaseTime / (reduceMotion ? 0.22 : 0.35))
+      const standing: Point = { x: a.exitGround.x, y: a.bodySeat.y * (1 - t), z: a.exitGround.z }
+      const fallback: Point = { x: a.exitGround.x, y: a.fallbackSeat.y * (1 - t), z: a.exitGround.z }
+      moveActor(standing, current.heading, 'stand', fallback)
       poseCar({ door: 1, time: clock })
       if (phaseTime > 1.5 && standIn.easing) standIn.settle()
       if (phaseTime >= (reduceMotion ? 0.22 : 0.35) && !standIn.easing) { phase = 'exit-walk'; phaseTime = 0; setActorPose('walk', false, true) }
@@ -234,8 +269,8 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
       phaseTime += dt; stridePhase += dt * 7
       const current = state ?? initialState(first, initialHeading), a = sample(current.position, current.heading)
       const t = Math.min(1, phaseTime / (reduceMotion ? 0.24 : 0.62))
-      const walking: Point = { x: a.bodySeat.x + (a.approach.x - a.bodySeat.x) * t, y: a.bodySeat.y * (1 - t), z: a.bodySeat.z + (a.approach.z - a.bodySeat.z) * t }
-      const fallback: Point = { x: a.fallbackSeat.x + (a.approach.x - a.fallbackSeat.x) * t, y: a.fallbackSeat.y * (1 - t), z: a.fallbackSeat.z + (a.approach.z - a.fallbackSeat.z) * t }
+      const walking: Point = { x: a.exitGround.x + (a.approach.x - a.exitGround.x) * t, y: 0, z: a.exitGround.z + (a.approach.z - a.exitGround.z) * t }
+      const fallback: Point = { x: a.exitGround.x + (a.approach.x - a.exitGround.x) * t, y: 0, z: a.exitGround.z + (a.approach.z - a.exitGround.z) * t }
       moveActor(walking, current.heading, 'walk', fallback, stridePhase)
       poseCar({ door: 1, time: clock })
       if (t >= 1) { phase = 'exit-close'; phaseTime = 0; setActorPose('stand', false, true); fallbackAt(a.approach, current.heading, 'stand') }
@@ -273,14 +308,17 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     setInput(next) { input = next; if (phase === 'drive') poseCar({ steering: input.steer * 0.62, brake: input.brake, time: clock }); schedule() },
     setReducedMotion(on) { reduceMotion = on; if (on && (phase === 'enter-door' || phase === 'enter-seat' || phase === 'exit-seat' || phase === 'exit-door') && standIn.easing) standIn.settle(); schedule() },
     begin(onReady) {
+      standIn.clearStandingDestination()
       phase = 'enter-door'; phaseTime = 0; ready = onReady ?? null
       const at = state?.position ?? first, heading = state?.heading ?? initialHeading, a = sample(at, heading)
       standIn.move(a.approach.x, a.approach.y, a.approach.z, heading)
+      standIn.standingAt(a.approach.x, a.approach.y, a.approach.z, heading)
       if (standIn.shown || actorPose !== 'idle') setActorPose('stand', !reduceMotion, true)
       if (reduceMotion && standIn.easing) standIn.settle()
       fallbackAt(a.approach, heading, 'stand'); poseCar({ door: 0, time: clock }); schedule()
     },
     exit() {
+      standIn.clearStandingDestination()
       phase = 'exit-door'; phaseTime = 0; ready = null
       if (state) { const a = sample(state.position, state.heading); standIn.move(a.bodySeat.x, a.bodySeat.y, a.bodySeat.z, state.heading); setActorPose('sit', false, true); fallbackAt(a.fallbackSeat, state.heading, 'sit') }
       poseCar({ door: 0, time: clock }); schedule()

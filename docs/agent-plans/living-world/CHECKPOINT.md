@@ -1,0 +1,45 @@
+# Living-world implementation checkpoint
+
+Goal active, assigned by the user on 8 October 2026. Native `create_goal` succeeded for chat `01a11c35-ad88-7aa3-ac5b-6b7d910724ad`. This record preserves the backlog and evidence; it does not run while the runtime is stopped. Standing scope includes phased production releases after PHASES.md gates, with exceptional approvals retained for new access, costs, destructive data changes, security/auth/domain changes and work outside this programme.
+
+## Source and ownership
+
+- Canonical origin: https://github.com/kromate/joinallworld.git; GitHub default main. Initial checkout main `1a1bd5d0d712e22970d7c45dda13b6def5407608`, behind two commits with extensive unrelated dirty graphics/world/server changes. No dirty changes were staged, reset or copied.
+- Isolated implementation branch `codex/living-world`, base `a026e11ec242cfc9b769742a9c021da9a531b6b3`. No AGENTS.md found in this checkout/ancestors. Read CONTRIBUTING, DEVELOPING, FAST-CHECKS, deployment and current coordination instructions. Imported only the six pinned plan documents from `3b51ff0ae87d43a7b425e29fde3900a1cfeb49b7`; did not merge that branch.
+- Published inventory: 21 JoinAllworld branches, no open PRs at inspection; inspected source delta from pinned baseline `9f9bed3616ac43e0989ce42d856490cb57d94dba`. Recent main phases are manifest deduplication and test/helper changes; they are not a connected journey.
+- Root assignment independently verified from session turn_context and app metadata: `gpt-6.1-sol`, high. Three worker session records match this parent and paths `/root/luna_driving`, `/root/luna_journeys`, `/root/luna_goalmatic`; all record `gpt-6-luna`, high. Actual records, not names, establish assignment. Costs unknown.
+- Programme issue: https://github.com/kromate/joinallworld/issues/20. Sol exclusively wires shared life/types/events/system/route/panel registration, integrates and releases this programme. Workers may write only explicitly assigned new modules.
+- GRAPHICS confirmed reserved scene/avatar/model/venue renderer scope and agreed additive shared wiring. Preserve its future `NpcSummary.look` addition. WORLD owns geography/map/city/world/street contracts. Current programme scope: new `src/game/living-world/`, `server/living-world/`, `src/app/features/living-world/`, and these docs. Existing commerce transport remains reserved.
+- WORLD retains existing sole upload ownership until its country phase completes and it records explicit handoff. No upload from this programme may race it. Both active chats were actually contacted and replied; remote/unidentified agents were not claimed contacted.
+
+## Phase 0 findings
+
+Read-only authenticated Chrome successfully opened private Goalmatic on default `dev`; existing GitHub connector also succeeded. Default source observed `0533aac3000c038143064b82403db9701140110c`. Worker inspected published platform/booking branches and Goals implementation contracts without copying private source, creating credentials or executing external operations. A stable consented game-milestone mapping/export schema, target installation/release/scopes, authorized sandbox/read-only probe and activation acceptance evidence remain unresolved. Preserve integration lane; use only an explicit disabled/mock adapter until those gates pass. Commerce authority does not imply Goals access.
+
+Current car ownership unlocks timed travel and fuel charges. No actual player steering, road-test qualification, vehicle rental or barber service equivalent was found. Existing career shifts are timed. Wallet functions are the only cash authority. Shared business is per-owner shops with stock/till; request receipts last 24 hours and cannot replace terminal domain state. Appearance catalogue/body validation and authoritative wardrobe actions are reusable; no third-party consented appearance apply API exists yet.
+
+WORLD supplied existing versioned street interfaces: `src/street/types.ts`, metre frame, immutable tile/door assets, `server/street/authority.ts`. Venue and world geometry use different coordinate frames; never treat presentation map positions as authoritative street coordinates. GRAPHICS supplied current avatar preview/apply boundaries and will publish vehicle anchors. These are consumed interfaces, not permission to edit reserved files.
+
+## Evidence tracker
+
+Use PHASES.md A1–A10 unchanged. Exact candidate/release SHA must be recorded after integration; worker completion is not acceptance.
+
+| Unit | Outcome | Owner/model/effort | Branch/source SHA | Implementation state | Test/review evidence | Preview status | Production status | Blocker | Next action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P0 | Source, ownership, contracts and reproducible baseline | Sol/gpt-6.1-sol/high; three audited gpt-6-luna/high workers | codex/living-world; base a026e11e | implementing | Typecheck + first-minute/two-player/economy queued/running on Node24.19; focused baseline and Worker evidence pending | Isolated QA5194 starting; live Cars read-only audit confirms timed-travel UI | not released | Baseline evidence incomplete | Finish baseline/contract record before implementation |
+| P1a | Free active driving practice and server-derived assessment | Luna driving; Sol authority/UI integration | pending | proposed | Deterministic steering/braking/checkpoints, hostile input and replay tests required | pending | not released | Road/vehicle adapter acceptance | Implement bounded practice with touch/keyboard and animated enter/exit |
+| P1b | Qualification/rental/depot-to-shop stock and reward | Luna journey; Sol integration | pending | proposed | Race/receipt-expiry/restart/accounting and zero-money scenarios required | pending | not released | P1a authority, existing shop integration | Versioned terminal contract in one transaction |
+| P1c | Consented active barber practice/service, improvement and reload | Luna journey; Sol graphics boundary | pending | proposed | Consent/version/cancellation/once-only settlement and appearance reload required | pending | not released | Appearance commit service contract | Reuse approved catalogue and wardrobe authority |
+| P5 sync | Optional consented Goalmatic milestone sync | Luna integration audit; Sol local boundary | pinned provider source above | blocked for activation | Source audit only; no live/sandbox writes | disabled/mock proposed | not released | Explicit mapping/export contract + target grants/probe/evidence | Preserve lane, continue local gameplay |
+
+## Ranked backlog and resume action
+
+1. Finish phase 0 baseline on Node and Worker; classify pre-existing failures with exact source/evidence. Publish scope/contracts and obtain independent review of P0.
+2. Implement active practice driving, then connect qualification/rental/delivery/barber/reward/improvement/reload. These remain one district acceptance, not disconnected feature claims.
+3. Add recurring replenishment/borrowing/refund missions from observed play and economy simulation, then fictional decision-based law/medicine/civic subphases.
+4. Curated opt-in business identities/verification/link pilot, separately accepted Goalmatic sync, booking and payment activation. No real medical/legal business pilot.
+5. Physical phone input/frame/thermal measurement remains required and unavailable from viewport emulation alone. Record it separately; do not manufacture device evidence.
+
+Live browser inspection on 8 October: existing signed-in player's Cars page displays dealer/fuel-per-trip controls; no steering/assessment. No purchase or other consequential action was taken on that existing save. A fresh public health/build marker and synthetic rollout continuity are still required; historical provider receipts are not fresh verification. No production changes made by this programme.
+
+Current local evidence: `/tmp/joinallworld-living-world-baseline.log`, `/tmp/joinallworld-living-world-baseline-focused.log`. Disposable QA data is separate from every existing save. Resume by reading this file and fresh main coordination, checking goal/worker state and exact branch, then completing the current bounded batch.

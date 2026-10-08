@@ -254,6 +254,8 @@ export default defineConfig({
     if (/\/src\/game\/memory\/(mind|lines)\.ts$/.test(id)) return undefined
     if (/\/src\/game\/neighbourhood-space\.ts$/.test(id)) return undefined
     if (/\/src\/game\/home-plan\.ts$/.test(id)) return undefined
+    // Active living-world course rules are consumed by their lazy panels, not by the always-loaded life engine.
+    if (/\/src\/game\/living-world\//.test(id)) return undefined
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },
   },

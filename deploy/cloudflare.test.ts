@@ -664,7 +664,7 @@ async function combined(t: TestContext, overrides?: Record<string, unknown>) {
   const call = async (path: string, body?: object | null, who?: Device) => { const response = await f.request(path, body, who?.cookie); const data = await response.json(); return { status: response.status, headers: response.headers, ...data }; };
   const get = (path: string, who?: Device) => call(path, null, who), post = (path: string, body: object, who?: Device) => call(path, body, who);
   const life = async (who: Device) => (await get(`/api/life?city=${CITY}`, who)).state;
-  const act = (who: Device, type: string, payload?: object) => post('/api/action', { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type, ...(payload ? { payload } : {}) }, who);
+  const act = (who: Device, type: string, payload?: object) => post('/api/action', { actionId: `${Date.now() + (typeof overrides?.clockShiftMs === 'number' ? overrides.clockShiftMs : 0)}:${randomUUID()}`, cityId: CITY, type, ...(payload ? { payload } : {}) }, who);
   async function ok(who: Device, type: string, payload?: object, code?: string) {
     const result = await act(who, type, payload);
     assert.equal(result.ok, true, `${who.name} ${type} was refused: ${result.status} ${result.error ?? result.code} — ${result.reason ?? ''}`);
@@ -705,7 +705,7 @@ async function combined(t: TestContext, overrides?: Record<string, unknown>) {
     const held = await life(who);
     assert.deepEqual([held.onboarding.stage, held.onboarding.required, held.location], ['guest', true, 'park']);
     assert.equal((await act(who, 'spot', { id: 'trees' })).code, 'onboarding_required', 'nothing can be done before Play');
-    const request = { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type: 'onboarding.quick-start', payload: { look: presetLook(preset), ...(joining ? { joining: true } : {}) } };
+    const request = { actionId: `${Date.now() + (typeof overrides?.clockShiftMs === 'number' ? overrides.clockShiftMs : 0)}:${randomUUID()}`, cityId: CITY, type: 'onboarding.quick-start', payload: { look: presetLook(preset), ...(joining ? { joining: true } : {}) } };
     const first = await post('/api/action', request, who), again = await post('/api/action', request, who);
     assert.deepEqual([first.code, again.code, again.duplicate], ['playing', 'playing', true], 'a double tap on Play is one start');
     assert.equal((await get('/api/social/me', who)).me.name, name);
@@ -732,7 +732,9 @@ test('Combined game on the Worker: quick start, settle in with a plot, a mission
   const { MISSION_REWARDS } = await import('../src/game/content/missions.ts');
   const { NPCS } = await import('../src/game/cities/lagos/regulars.ts');
   const { joinIdFrom, linkParts } = await import('../src/quick-start/model.ts');
-  const f = await combined(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', PUBLIC_ORIGIN: 'https://play.example' } });
+  const now = Date.now(), daytime = new Date(now);
+  daytime.setUTCHours(11, 0, 0, 0); // Noon in Lagos: the park regular used below is present.
+  const f = await combined(t, { clockShiftMs: daytime.getTime() - now, bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', PUBLIC_ORIGIN: 'https://play.example' } });
   const LGA = 'ikeja', TABLE = 'buka-corner', ORIGIN = 'https://play.example';
 
   // 1. landing → Play: a guest in the park, with no missions, no house, in no directory.

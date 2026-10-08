@@ -91,6 +91,26 @@ test('offline: the form is disabled, the send says why and that the text is kept
   }
 })
 
+test('wallet recovery keeps authenticated support reporting enabled', async () => {
+  let recovery = true
+  server.route('GET /api/life', () => recovery
+    ? ({ status: 409, body: { error: 'economy_unavailable', reason: 'This wallet needs recovery before it can be used.' } })
+    : ({ status: 200, body: { state: structuredClone(server.life()) } }))
+  await app.game.refresh()
+  try {
+    assert.equal(app.game.link.value, 'recovery')
+    assert.ok(app.game.session.value)
+    const html = await render()
+    assert.doesNotMatch(html, /<select[^>]*name="category"[^>]*disabled/)
+    assert.doesNotMatch(html, /<textarea[^>]*name="text"[^>]*disabled/)
+    assert.doesNotMatch(html, /<button[^>]*type="submit"[^>]*disabled/)
+  } finally {
+    recovery = false
+    assert.equal(await app.game.connect(), true)
+    app.game.stop()
+  }
+})
+
 test('filing: the receipt id is kept for the toast, and a retry reuses the same key', async () => {
   const local = createFakeServer()
   const game = createGame({ fetch: local.fetch, storage: memoryStorage(), now: () => local.now(), setTimeout: () => 0, clearTimeout: () => {}, toast: () => {} })

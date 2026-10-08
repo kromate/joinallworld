@@ -36,6 +36,14 @@
  *   close the door / end the visit       1  social
  */
 import { characterCity } from '../character.ts';
+import { readPlot, samePlot, sameStreet } from '../world/street.ts';
+import { hasPlace } from '../../src/game/systems/estate.ts';
+import { homeOf } from '../../src/game/content/housing.ts';
+import { housesFor } from '../../src/game/cities/housingRuntime.ts';
+import { HOUSE_DESIGNS } from '../../src/game/content/world.ts';
+import type { VisitHomeItem, VisitHomeProjection, VisitHomeResult } from '../../src/types/visit.ts';
+import { isDeparting } from '../../src/game/registry.ts';
+import { cloneItems, layoutFailure } from '../../src/game/stories/model.ts';
 import { UUID_PATTERN } from '../protocol.ts';
 import { VISIT, VISIT_MS, isDoorWho } from '../../src/game/visit.ts';
 import { houseTokens } from './visit-token.ts';
@@ -118,7 +126,91 @@ function build(ctx: RouteContext) {
     return yes('inside', { house: kit.houseView(s, hostId, id) });
   }
 
+  function enter(db: Db, session: SessionRecord, body: Record<string, unknown>) {
+    const hostId = uuid(body.host);
+    const { s, id } = kit.enter(db, session);
+    const { refusal } = kit.other(s, id, hostId);
+    if (refusal) return refusal.code === 'self' ? no('self', 'This is your own home.') : refusal;
+    const target = s.players[hostId]!, push: PushList = [];
+    const invite = liveInvite(db, hostId, id, now());
+    if (invite) {
+      if (target.door?.who === 'nobody') return no('door_closed', `${target.name} is not taking visitors right now.`);
+      const done = letIn(db, s, id, hostId, 'invite', push);
+      if (done.ok && !('duplicate' in done)) { const book = peekBook(db); if (book) delete book.invites[inviteKey(hostId, id)]; }
+      return { ...done, push };
+    }
+    const how = kit.doorFor(s, hostId, id);
+    if (how === 'closed') return no(target.door?.who === 'nobody' ? 'door_closed' : 'door_shut', target.door?.who === 'nobody' ? `${target.name} is not taking visitors right now.` : `${target.name} has closed the door for now.`);
+    if (how === 'invited') return no('only_invited', `${target.name} only lets in people they invite.`);
+    if (how === 'knock') {
+      const home = hostHome(s, hostId);
+      if (home.state !== 'home') return notHome(target.name, home.state);
+      return social.knock(db, session, { host: hostId, cityId: home.cityId });
+    }
+    const done = letIn(db, s, id, hostId, 'friend', push);
+    return { ...done, push };
+  }
+
   return {
+    /** Physical entry never retargets a stale door to a different plot owner. */
+    enterPlot(db: Db, session: SessionRecord, body: Record<string, unknown>) {
+      const hostId = uuid(body.host), city = ctx.cityIds.find(id => id === body.city);
+      if (!city) throw bad('invalid_city');
+      const plot = readPlot(body.plot, city);
+      if (!plot) throw bad('invalid_plot');
+      const { s, id } = kit.enter(db, session), state = session.cities[city]?.state;
+      if (characterCity(session) !== city || state?.estate.city !== city || state.location !== 'neighbourhood' || !hasPlace(state) || !sameStreet(state.estate.plot, plot)) return no('not_on_street', 'Go to that street through your own home door first.');
+      if (state.activeAction) return no('busy', 'Finish or cancel your current action before visiting a home.');
+      const target = ctx.core.sessionByPublicId(db, hostId), home = target?.cities[city]?.state;
+      if (!target || target.expiresAt <= now() || home?.estate.city !== city || !hasPlace(home) || !samePlot(home.estate.plot, plot) || db.civic?.prefs[hostId]?.directory === true || kit.blockedEither(s, id, hostId)) return no('door_unavailable', 'That door is no longer available. Refresh the street.');
+      const where = hostHome(s, hostId);
+      if (where.state === 'home' ? where.cityId !== city : mainHomeCity(db, hostId) !== city) return no('door_unavailable', 'That door is no longer available. Refresh the street.');
+      return enter(db, session, { host: hostId });
+    },
+    /** An accepted guest sees a whitelist of home scene data, never the host's life. */
+    homeProjection(db: Db, session: SessionRecord, host: unknown): VisitHomeResult {
+      const hostId = uuid(host), { s, id } = kit.enter(db, session);
+      const visit = kit.pruneHouse(s, hostId)?.guests[id];
+      if (!visit || s.players[id]?.visiting !== hostId || kit.blockedEither(s, id, hostId)) return no('visit_required', 'You need an accepted visit to see this home.');
+      const city = visit.cityId, target = ctx.core.sessionByPublicId(db, hostId), state = target?.cities[city]?.state;
+      if (!target || target.expiresAt <= now() || !state || state.estate.city !== city || !hasPlace(state)) return no('home_unavailable', 'This home is unavailable.');
+      const homeNow = state.location === 'home' && !isDeparting(state) && kit.hostAtHome(s, hostId, city);
+      const allowedWhileOut = visit.link === undefined && kit.ordinary(s, hostId, id) && s.players[hostId]?.door?.out === true && kit.doorFor(s, hostId, id) === 'walk+';
+      if (!homeNow && !allowedWhileOut) return no('visit_ended', 'The host left home, so this visit has ended.');
+      const items: VisitHomeItem[] = state.home.items.map(item => ({ id: item.id, itemId: item.itemId, x: item.x, y: item.y, rot: item.rot, ...('floor' in item && typeof item.floor === 'number' && Number.isInteger(item.floor) && item.floor >= 0 ? { floor: item.floor } : {}) }));
+      const home: VisitHomeProjection = { host: { id: hostId, name: target.name }, city, plot: state.estate.plot ? { ...state.estate.plot } : null, owned: state.estate.living === 'own', grid: homeOf(state, HOUSE_DESIGNS, housesFor(city)).grid, style: { ...state.estate.style }, items };
+      const run = state.stories?.running, moment = run?.content.moments[run.step];
+      if (run && moment && state.location === 'home' && !isDeparting(state) && !layoutFailure(state, run.content.items)) {
+        home.items = cloneItems(run.content.items);
+        home.story = { title: run.content.title, description: run.content.description, moment: { title: moment.title, prompt: moment.prompt }, step: run.step, total: run.content.moments.length, revision: run.revision };
+      }
+      return yes('home', { home });
+    },
+    /** A guest grants or revokes silent scene capture for this accepted visit only. */
+    captureConsent(db: Db, session: SessionRecord, body: Record<string, unknown>) {
+      const hostId = uuid(body.host), { s, id } = kit.enter(db, session);
+      const { visitId: rawVisitId, allow } = body;
+      if (typeof rawVisitId !== 'string' || !UUID_PATTERN.test(rawVisitId) || typeof allow !== 'boolean') throw bad('invalid_capture_consent');
+      const visitId = rawVisitId.toLowerCase();
+      // Build the viewer projection first so an older accepted visit gets a fresh, default-off id.
+      kit.houseView(s, hostId, id);
+      const house = kit.pruneHouse(s, hostId);
+      if (!house) return no('visit_required', 'You need an accepted visit to change capture permission.');
+      const visit = house.guests[id];
+      if (!visit || s.players[id]?.visiting !== hostId || kit.blockedEither(s, id, hostId)) return no('visit_required', 'You need an accepted visit to change capture permission.');
+      if (visit.captureId !== visitId) return no('visit_changed', 'This visit has changed. Refresh before changing permission.');
+      if (visit.expires <= now()) return no('visit_ended', 'This visit has ended.');
+      const host = hostHome(s, hostId);
+      if (host.state !== 'home' || host.cityId !== visit.cityId) return no('host_not_home', 'The host must be home to record this visit.');
+      const already = visit.captureConsent === true;
+      if (already === allow) return yes(allow ? 'consented' : 'revoked', { house: kit.houseView(s, hostId, id), duplicate: true });
+      if (allow) visit.captureConsent = true; else delete visit.captureConsent;
+      const previousRevision = house.captureRevision;
+      house.captureRevision = Number.isSafeInteger(previousRevision) && (previousRevision ?? 0) >= 0 && (previousRevision ?? 0) < Number.MAX_SAFE_INTEGER ? (previousRevision ?? 0) + 1 : 1;
+      const push: PushList = [];
+      kit.housePush(s, hostId, push);
+      return yes(allow ? 'consented' : 'revoked', { house: kit.houseView(s, hostId, id), push });
+    },
     // ---- who may come in -----------------------------------------------------------------------
     /** The caller's own door, for the Home tab and Settings. */
     door(db: Db, session: SessionRecord) {
@@ -169,30 +261,7 @@ function build(ctx: RouteContext) {
      * body: { host }. What the button on a friend's card does. An invitation the host made is used first; then the host's door:
      * 'walk' puts the caller inside, 'knock' rings (the social module's knock), the rest refuse with a plain sentence.
      */
-    enter(db: Db, session: SessionRecord, body: Record<string, unknown>) {
-      const hostId = uuid(body.host);
-      const { s, id } = kit.enter(db, session);
-      const { refusal } = kit.other(s, id, hostId);
-      if (refusal) return refusal.code === 'self' ? no('self', 'This is your own home.') : refusal;
-      const target = s.players[hostId]!, push: PushList = [];
-      const invite = liveInvite(db, hostId, id, now());
-      if (invite) {
-        if (target.door?.who === 'nobody') return no('door_closed', `${target.name} is not taking visitors right now.`);
-        const done = letIn(db, s, id, hostId, 'invite', push);
-        if (done.ok && !('duplicate' in done)) { const book = peekBook(db); if (book) delete book.invites[inviteKey(hostId, id)]; }
-        return { ...done, push };
-      }
-      const how = kit.doorFor(s, hostId, id);
-      if (how === 'closed') return no(target.door?.who === 'nobody' ? 'door_closed' : 'door_shut', target.door?.who === 'nobody' ? `${target.name} is not taking visitors right now.` : `${target.name} has closed the door for now.`);
-      if (how === 'invited') return no('only_invited', `${target.name} only lets in people they invite.`);
-      if (how === 'knock') {
-        const home = hostHome(s, hostId);
-        if (home.state !== 'home') return notHome(target.name, home.state);
-        return social.knock(db, session, { host: hostId, cityId: home.cityId });
-      }
-      const done = letIn(db, s, id, hostId, 'friend', push);
-      return { ...done, push };
-    },
+    enter,
 
     // ---- invitations -------------------------------------------------------------------------
     /** body: { to: [ids] } (at most VISIT.inviteAll). Each friend is told "<name> invited you over"; it is good for VISIT.inviteMinutes. */

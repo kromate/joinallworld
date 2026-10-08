@@ -180,6 +180,35 @@ function legs(rig: Rig, pose: Pose, thigh: Vec, calf: Vec, foot: Vec) {
   }
 }
 
+/** Offline two-bone solve in the canonical rig. Targets use game axes (x, up, forward); no solver ships at runtime. */
+function reach(rig: Rig, pose: Pose, side: 'l' | 'r', target: Vec) {
+  const at = joints(rig, pose), shoulder = at.get(`upperarm_${side}`)!, elbow = at.get(`lowerarm_${side}`)!, hand = at.get(`hand_${side}`)!;
+  const sub = (a: Vec, b: Vec): Vec => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot = (a: Vec, b: Vec) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const goal: Vec = [target[0], -target[2], target[1]], delta = sub(goal, shoulder), distance = Math.hypot(...delta);
+  const a = Math.hypot(...sub(elbow, shoulder)), b = Math.hypot(...sub(hand, elbow)), d = Math.min(distance, a + b - 1e-5);
+  const dir: Vec = delta.map((v) => v / distance) as Vec, pole: Vec = [side === 'l' ? 1 : -1, 0, -0.25];
+  const projection = dot(pole, dir), perpendicular: Vec = pole.map((v, i) => v - projection * dir[i]!) as Vec;
+  const norm = Math.hypot(...perpendicular), along = (a * a - b * b + d * d) / (2 * d), height = Math.sqrt(Math.max(0, a * a - along * along));
+  const bend: Vec = dir.map((v, i) => v * along + perpendicular[i]! / norm * height) as Vec;
+  aim(rig, pose, `upperarm_${side}`, `lowerarm_${side}`, bend);
+  const reached = joints(rig, pose).get(`lowerarm_${side}`)!;
+  const end: Vec = dir.map((v, i) => shoulder[i]! + v * d - reached[i]!) as Vec;
+  aim(rig, pose, `lowerarm_${side}`, `hand_${side}`, end);
+}
+
+/** Wrist trajectories in body metres, also read by contact probes and the original spoon/water props. */
+export function objectHands(kind: 'cook' | 'cook-low' | 'bucket' | 'eat' | 'drink' | 'shower' | 'soak', seconds: number, head: Vec = [0, 1.5, 0.15]): { left: Vec; right: Vec } {
+  const phase = seconds / 2 * Math.PI * 2;
+  const raise = ease(Math.max(0, Math.sin(phase)));
+  if (kind === 'eat') return { left: [0.12, 1.08, 0.26], right: lerp3([0.04, 1.15, 0.18], [head[0] - 0.10, head[1] - 0.05, head[2] + 0.075], raise) };
+  if (kind === 'drink') return { left: [0.23, 1.04, 0.1], right: lerp3([-0.16, 1, 0.30], [head[0], head[1] - 0.04, head[2] + 0.10], raise) };
+  if (kind === 'shower') return { left: [0.1, 1.18, 0.2], right: [-0.12, 1.2 + 0.35 * raise, 0.2 - 0.12 * raise] };
+  if (kind === 'soak') return { left: [0.14, 0.84, 0.1 + 0.04 * Math.sin(phase)], right: [-0.14, 0.87, 0.1 - 0.04 * Math.sin(phase)] };
+  if (kind !== 'bucket') { const y = kind === 'cook-low' ? 0.79 : 1.0; return { left: [0.08, y, 0.48], right: [-0.16 + 0.05 * Math.cos(phase), y + 0.14, 0.48 + 0.05 * Math.sin(phase)] }; }
+  const up = ease(Math.max(0, Math.sin(phase)));
+  return { left: [0.14, 0.65, 0.24], right: [-0.08, 0.37 + 0.25 * up, 0.52 - 0.3 * up] };
+}
+
 // ---- writing tracks -------------------------------------------------------------------------------------
 const FPS = 20;
 /** Sample `frame(t)` at 20 Hz over [0, length]: a rotation track for every bone and the pelvis translation. */
@@ -235,8 +264,44 @@ function floorSit(rig: Rig, bent: boolean): Pose {
   return pose;
 }
 
-export function authoredClips(doc: Loaded, bones: readonly string[]): AuthoredClip[] {
+export function authoredClips(doc: Loaded, bones: readonly string[], canonicalBody?: Loaded, suffix = ''): AuthoredClip[] {
   const rig = rigOf(doc, bones), clips: AuthoredClip[] = [];
+  const workRig = rigOf(doc, bones);
+  if (canonicalBody) for (const node of canonicalBody.json.nodes) {
+    if (node.name && node.translation && workRig.offsets.has(node.name)) workRig.offsets.set(node.name, node.translation as Vec);
+  }
+  for (const kind of ['cook', 'cook-low', 'bucket', 'eat', 'drink', 'shower', 'soak'] as const) {
+    const frame = (seconds: number) => {
+      const pose = copy(workRig.at(kind === 'bucket' ? 'Crouch_Idle_Loop' : kind === 'soak' ? 'Sitting_Idle_Loop' : 'Idle_Loop', 0));
+      if (kind === 'soak') for (const side of ['l', 'r'] as const) deepen(workRig, pose, `calf_${side}`, 0.2);
+      turn(workRig, pose, 'spine_01', pitch(kind === 'eat' || kind === 'drink' ? -15 : kind === 'shower' ? -6 : kind === 'soak' ? -8 : kind === 'cook-low' ? -50 : suffix ? -40 : -35));
+      const p = joints(workRig, pose).get('Head')!, hands = objectHands(kind, seconds, [p[0], p[2], -p[1]]);
+      reach(workRig, pose, 'l', hands.left); reach(workRig, pose, 'r', hands.right);
+      return pose;
+    };
+    const name = kind === 'bucket' || kind === 'shower' || kind === 'soak' ? `${kind}-wash` : kind, idle = rig.at('Idle_Loop', 0), use = frame(0), duration = kind === 'soak' ? 1.4 : 0.8;
+    clips.push(bake(rig, name + suffix, 2, frame));
+    clips.push(bake(rig, `${name}-enter${suffix}`, duration, (t) => blend(idle, use, ease(t / duration))));
+    clips.push(bake(rig, `${name}-exit${suffix}`, duration, (t) => blend(use, idle, ease(t / duration))));
+  }
+  {
+    const idle = workRig.at('Idle_Loop', 0), walk = workRig.length('Walk_Loop');
+    const grip = (u: number) => {
+      const opening = u < 0.22 ? 0 : u < 0.5 ? ease((u - 0.22) / 0.28) : 1;
+      const angle = -Math.PI / 2 * opening, pose = copy(idle);
+      turn(workRig, pose, 'spine_01', pitch(-45));
+      reach(workRig, pose, 'r', [-0.34 + 0.44 * Math.cos(angle), 0.92, 0.2 + 0.16 * opening]);
+      return pose;
+    };
+    clips.push(bake(workRig, `home-door${suffix}`, 2.4, (t) => {
+      const u = t / 2.4;
+      if (u < 0.22) return blend(idle, grip(0.22), ease(u / 0.22));
+      if (u < 0.65) return grip(u);
+      const step = copy(workRig.at('Walk_Loop', (u - 0.65) / 0.35 * walk * 0.75));
+      turn(workRig, step, 'spine_01', pitch(-45));
+      return blend(grip(0.65), step, ease(Math.min(1, (u - 0.65) / 0.2)));
+    }));
+  }
 
   // door: Interact's reach-and-push (its first second, at 1.25× pace), then the stride through.
   {

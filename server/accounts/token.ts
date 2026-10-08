@@ -49,7 +49,7 @@ export class KeysUnavailable extends Error {
   constructor() { super('The sign-in keys could not be fetched'); this.name = 'KeysUnavailable'; }
 }
 /** What a verified token proves. Times are server milliseconds. */
-export interface VerifiedIdentity { subject: string; email: string; emailVerified: boolean; provider: AccountProviderId; issuedAt: number; authAt: number; expiresAt: number; /** What a used token is remembered by (see above). */ digest: string }
+export interface VerifiedIdentity { subject: string; email: string; emailVerified: boolean; provider: AccountProviderId; issuedAt: number; authAt: number; expiresAt: number; /** Derived from the signed claim; the number itself is never returned. */ phoneLinked?: true; /** What a used token is remembered by (see above). */ digest: string }
 
 export interface TokenVerifierOptions {
   projectId: string
@@ -173,7 +173,7 @@ export function createTokenVerifier({ projectId, fetch, now, maxAgeMs = TOKEN_MA
       const provider: AccountProviderId | null = via === 'google.com' ? 'google' : via === 'password' ? 'password' : null;
       if (!provider) throw new TokenError('provider');
       if (!isAddress(claims.email)) throw new TokenError('email');
-      return { subject: claims.sub, email: claims.email, emailVerified: claims.email_verified === true, provider, issuedAt: iat, authAt: auth, expiresAt: exp, digest: await tokenDigest(claims.sub, iat, signed) };
+      return { subject: claims.sub, email: claims.email, emailVerified: claims.email_verified === true, provider, issuedAt: iat, authAt: auth, expiresAt: exp, ...(typeof claims.phone_number === 'string' && /^\+[1-9]\d{7,14}$/.test(claims.phone_number) ? { phoneLinked: true as const } : {}), digest: await tokenDigest(claims.sub, iat, signed) };
     },
     /** For tests: how many keys are held and until when. */
     cache: (): { keys: number; expiresAt: number } => ({ keys: keys.size, expiresAt }),

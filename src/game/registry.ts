@@ -131,7 +131,7 @@
  *
  * Events emitted by the foundation:
  *   'activity.started'   { id, def }
- *   'activity.completed' { id, def, tags, choice }
+ *   'activity.completed' { id, def, tags, choice, cash }  cash is the naira actually credited
  *   'activity.unpaid'    { id, def }  (finished but could no longer be paid for; no effects)
  *   'action.cancelled'   { kind, id }
  *   'wallet.changed'     { amount, reason, balance }

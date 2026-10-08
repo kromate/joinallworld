@@ -12,7 +12,8 @@ import { lagosTime, isOpen, minutesUntilOpen, formatClock } from './clock.ts';
 import { rebuildCatalogue } from './systems/activities.ts';
 import { NEEDS, DECAY_FLOOR, OFFLINE_DECAY_CAP_SECONDS, NEED_DECAY_PER_HOUR } from './systems/needs.ts';
 import { credit, debit, addMoodlet, moodOf, addSkillXp, skillLevel, setSkillLevel, xpForLevel, addItem, removeItems, countItem, SKILLS } from './api.ts';
-import { statementOf, reasonGroup, LEDGER_LIMIT, LEDGER_DAYS, LEDGER_DAY_GROUPS } from './systems/wallet.ts';
+import { reasonGroup, LEDGER_LIMIT, LEDGER_DAYS, LEDGER_DAY_GROUPS } from './systems/wallet.ts';
+import { statementOf } from './wallet-statement.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { EngineEvent, ModifierKey, SystemDefinition } from '../types/registry.ts';
 import type { ActionOutcome, ActivityAction, LedgerDay, LedgerLine, LifeContext, LifeContextInit, LifeState, NeedId } from '../types/life.ts';
@@ -489,5 +490,5 @@ test('wallet history: full recent lines, a summary per day, bounded, and a state
   assert.deepEqual(['Rent: Yaba self-contain (due Sat 10 Jan)', 'Danfo to Freedom Park', 'Goal: Eat something', 'Bought Plastic chair', 'Transfer from Ada', 'Refund: Test Show', 'Tech shift', 'Groceries: 2 × Rice', '', 'Billboard · Marina · 7 days'].map(reasonGroup),
     ['Rent', 'Danfo', 'Goal', 'Bought', 'Transfer from', 'Refund', 'Tech shift', 'Groceries', 'Other', 'Billboard']);
   const view = viewLife(state).wallet;
-  assert.equal(found(view.days[0], 'a view day').day, found(state.ledgerDays.at(-1), 'a ledger day').day, 'the view lists the newest day first'); assert.equal(view.statement.reconciled, true);
+  assert.equal(found(view.ledger[0], 'a view line').at, found(state.ledger.at(-1), 'a ledger line').at, 'the eager view lists the newest line first'); assert.equal(statementOf(state).reconciled, true);
 });

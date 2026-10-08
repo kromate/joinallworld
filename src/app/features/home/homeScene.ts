@@ -1,16 +1,15 @@
 // Buy mode's and the home chip's side of the conversation with the home scene (window events), and
 // the actions that change the room. Components call these; the pure decisions are in buyModel.ts.
 //
-//   sends     'jaw:home-ui'     { selected, ghost, buy, retry? } — what the scene draws
+//   sends     'jaw:home-ui'     { selected, ghost, buy, floor, retry? } — what the scene draws
 //   receives  'jaw:home-pick'   { id, cell } — a tapped object or floor tile
 //             'jaw:home-scene'  { status, placed } — ready / empty / error
 //             'jaw:home-frame'  — the scene changed on its own (the skinned body arrived): draw one frame
 import { watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { KINDS } from '../../../game/content/furniture.ts'
-import { houseOf } from './houseOf.ts'
 import { nudge, turn } from '../../../game/home-layout.ts'
-import { MOVES, defOf, homeUi, objectOf, startGhost, whyNot } from './buyModel.ts'
+import { MOVES, defOf, homeUi, objectOf, plotIn, startGhost, whyNot } from './buyModel.ts'
 import type { Ghost, GhostSource } from './buyModel.ts'
 import { H, scene } from './homeState.ts'
 import type { SceneStatus } from './homeState.ts'
@@ -35,10 +34,10 @@ function onPick(event: Event): void {
   if (H.inBuy) {
     if (H.ghost) {
       const def = defOf(H.ghost.itemId)
-      if (cell && def && !def.wall) { Object.assign(H.ghost, nudge(houseOf(state).grid, def, { x: cell.x, y: cell.y, rot: H.ghost.rot }, 0, 0)); show() }
+      if (cell && def && !def.wall) { Object.assign(H.ghost, nudge(plotIn(state), def, { x: cell.x, y: cell.y, rot: H.ghost.rot }, 0, 0)); show() }
       return
     }
-    if ((id || null) !== H.selected) { H.selected = id || null; show() }
+    if ((id || null) !== H.selected) { H.selected = id || null; const placed = objectOf(state, H.selected); if (placed) H.floor = placed.floor ?? 0; show() }
     return
   }
   const def = defOf(objectOf(state, id ?? null)?.itemId)
@@ -76,6 +75,8 @@ export function startHome(): void {
     const buying = mode === 'buy'
     const left = H.inBuy && !buying
     H.inBuy = buying
+    const floor = Math.min(H.floor, plotIn(state).floors - 1)
+    if (floor !== H.floor) { H.floor = floor; H.ghost = null; H.selected = null; show(false) }
     // A ghost whose piece is gone is dropped.
     if (H.ghost && (!defOf(H.ghost.itemId) || (H.ghost.objectId && !objectOf(state, H.ghost.objectId)))) H.ghost = null
     const chosen = H.selected ? objectOf(state, H.selected) : null
@@ -95,8 +96,9 @@ export function retryRoom(): void {
 
 export function pickItem(source: GhostSource, itemId: string, objectId?: string): void {
   const { game } = useApp()
-  const ghost = startGhost(game.state.value, source, itemId, objectId)
+  const ghost = startGhost(game.state.value, source, itemId, objectId, H.floor)
   if (!ghost) return
+  H.floor = ghost.floor ?? 0
   H.ghost = ghost
   H.hidden = false
   show()
@@ -110,15 +112,15 @@ export function moveGhost(action: string): void {
   const { game } = useApp()
   const state = game.state.value
   const selected = H.selected ? objectOf(state, H.selected) : undefined
-  if (!H.ghost && selected && H.selected) { const ghost = startGhost(state, 'move', selected.itemId, H.selected); if (ghost) { H.ghost = ghost; H.hidden = false } }
+  if (!H.ghost && selected && H.selected) { const ghost = startGhost(state, 'move', selected.itemId, H.selected); if (ghost) { H.ghost = ghost; H.floor = ghost.floor ?? 0; H.hidden = false } }
   const ghost = H.ghost
   if (!ghost) return
   const def = defOf(ghost.itemId)
   if (!def) return
-  const grid = houseOf(state).grid
+  const plot = plotIn(state)
   const step = MOVES[action]
   const here = { x: ghost.x, y: ghost.y, rot: ghost.rot }
-  Object.assign(ghost, action === 'rotate' ? turn(grid, def, here) : step ? nudge(grid, def, here, step[0], step[1]) : here)
+  Object.assign(ghost, action === 'rotate' ? turn(plot, def, here) : step ? nudge(plot, def, here, step[0], step[1]) : here)
   show()
 }
 
@@ -127,7 +129,7 @@ export async function placeGhost(): Promise<void> {
   const state = game.state.value
   const ghost: Ghost | null = H.ghost
   if (!ghost || whyNot(state, ghost)) return
-  const at = { x: ghost.x, y: ghost.y, rot: ghost.rot }
+  const at = { x: ghost.x, y: ghost.y, rot: ghost.rot, floor: ghost.floor ?? 0 }
   const result = ghost.source === 'move' && ghost.objectId ? await command('home.furniture-move', { id: ghost.objectId, ...at })
     : ghost.source === 'storage' ? await command('home.furniture-place', { item: ghost.itemId, ...at }) : await command('home.furniture-buy', { item: ghost.itemId, ...at })
   if (!result.ok) return

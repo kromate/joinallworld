@@ -10,6 +10,7 @@
  * seat is kept on the server, not here. No timer repeats while nothing is happening.
  */
 import type { PanelApi } from '../app/types/panel.ts';
+import { reconnectDelay, STABLE_CONNECTION_MS } from '../reconnect.ts';
 import type { TableGameId, TableOptionValue, TableRating, TableServerFrame, TableStateFrame, TableSummary, TablesClaimResult } from '../types/growth.ts';
 
 /** A refusal frame: only `code` and `reason` are read here, the socket also carries other modules' errors. */
@@ -44,6 +45,7 @@ export const T: TablesStore = {
   claimed: null, ratings: null,
 };
 let ws: WebSocket | null = null, attempts = 0, timer: ReturnType<typeof setTimeout> | null = null, sent = 0;
+let joinedAt: number | null = null;
 const MAX_ATTEMPTS = 6;
 const refresh = () => T.api?.refresh();
 /** The panel's API: the app is started (T.api set) before anything here runs. */
@@ -76,7 +78,7 @@ async function claim(): Promise<void> {
 function onMessage(message: ServerMessage): void {
   // The Worker host cannot ping a hibernating socket: it asks, and the answer proves this connection is alive.
   if (message.type === 'heartbeat') { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'heartbeat-ack' })); return; }
-  if (message.type === 'tables') { T.list = message.tables; T.listAt = Date.now(); }
+  if (message.type === 'tables') { T.list = message.tables; T.listAt = Date.now(); joinedAt ??= Date.now(); }
   else if (message.type === 'tables-changed') send('table-list', { venue: undefined, table: undefined });
   else if (message.type === 'table-state') {
     if (message.table.id !== T.tableId) return;
@@ -99,19 +101,23 @@ function connect(): void {
   if (ws || !T.api?.view().connected) return;
   T.socket = 'connecting';
   const socket = ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/socket`);
+  joinedAt = null;
   socket.onopen = () => {
-    attempts = 0; T.socket = 'open';
+    if (ws !== socket) return;
+    T.socket = 'open';
     send('table-list', { table: undefined });
     if (T.tableId) send('table-watch');
     void claim();
     refresh();
   };
-  socket.onmessage = (event: MessageEvent<string>) => { try { onMessage(JSON.parse(event.data)); } catch { /* not ours */ } };
+  socket.onmessage = (event: MessageEvent<string>) => { if (ws !== socket) return; try { onMessage(JSON.parse(event.data)); } catch { /* not ours */ } };
   socket.onclose = () => {
-    if (ws === socket) ws = null;
+    if (ws !== socket) return;
+    if (joinedAt !== null && Date.now() - joinedAt >= STABLE_CONNECTION_MS) attempts = 0;
+    joinedAt = null; ws = null;
     T.socket = 'closed'; T.pending = false;
     // Try again while a table is on screen; otherwise wait until the app is used again.
-    if (T.tableId && attempts < MAX_ATTEMPTS && !timer) timer = setTimeout(() => { timer = null; attempts += 1; connect(); }, Math.min(8000, 500 * 2 ** attempts));
+    if (T.tableId && attempts < MAX_ATTEMPTS && !timer) timer = setTimeout(() => { timer = null; attempts += 1; connect(); }, reconnectDelay(attempts, 500, 8000));
     refresh();
   };
   socket.onerror = () => {};

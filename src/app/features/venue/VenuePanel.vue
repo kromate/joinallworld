@@ -6,41 +6,57 @@
 //
 // The layout still comes from the existing stylesheet (src/ui/shell.css, .life-venue-panel and
 // below), so this panel is the same size as the one the scene's camera is framed around.
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, ref, shallowRef, watch } from 'vue'
+import type { Component, ShallowRef } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
 import { cachedCityContent } from '../../../game/cities/registry.ts'
+import { venueDistrict, venueLabel } from '../../../game/content/venues.ts'
+import { social } from '../social/useSocial.ts'
+import { cityWalk } from '../neighbourhood/cityWalkState.ts'
 import { useApp } from '../../state/app.ts'
 import { momentText, noticeText } from '../../state/momentText.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { linkWording } from '../hud/hudModel.ts'
-import { activityFace, effectTags } from './venueModel.ts'
 
 const { game, shell, command, community } = useApp()
 const ui = shell.ui
 const state = game.state
+const cityStreet = computed(() => state.value.location === 'city-street')
+const streetExit = computed(() => !social.me?.visiting && cityWalk.value?.kind === 'venue' && cityWalk.value.venue === state.value.location)
+function leaveStreetVenue(): void { void import('../neighbourhood/neighbourhoodStore.ts').then(module => module.leaveCityVenue()) }
 const view = game.view
 const privateHome = computed(() => state.value.location === 'home')
-const venue = computed(() => view.value.venues.find((item) => item.id === state.value.location) ?? { id: state.value.location, label: state.value.location, district: '', icon: '' })
+const outside = computed(() => state.value.location === 'neighbourhood')
+const visiting = computed(() => social.me?.visiting)
+const venue = computed(() => view.value.venues.find((item) => item.id === state.value.location) ?? { id: state.value.location, label: venueLabel(state.value.location, view.value.cityId), district: venueDistrict(state.value.location, view.value.cityId), icon: '' })
 const activities = computed(() => view.value.activities)
 // A market rents stalls to players: its shops, and opening one, are in the Business app (fetched when opened).
 const market = computed(() => cachedCityContent(view.value.cityId)?.venues.find((item) => item.id === state.value.location)?.kind === 'market')
-const spots = computed(() => activities.value.spots.filter((spot) => !privateHome.value || spot.id !== 'people'))
+const spots = computed(() => visiting.value ? [] : activities.value.spots.filter((spot) => !privateHome.value || spot.id !== 'people'))
 const spot = computed(() => spots.value.find((item) => item.id === state.value.spot))
 // Home shows the player's own house.
 const house = computed(() => (privateHome.value ? view.value.property?.house : null))
 // A life living in its own house is told so, with the local government it chose (the same rule as src/ui/shell.js).
 const own = computed(() => (privateHome.value && state.value.estate?.living === 'own' && view.value.estate?.lgaConfirmed && view.value.estate.tier && view.value.estate.lga ? view.value.estate : null))
-const title = computed(() => own.value?.tier.label || house.value?.label || venue.value.label)
-const district = computed(() => own.value?.lga?.name || house.value?.district || venue.value.district)
+const title = computed(() => visiting.value ? `${visiting.value.host.name}'s home` : own.value?.tier.label || house.value?.label || venue.value.label)
+const district = computed(() => visiting.value ? 'Visiting' : own.value?.lga?.name || (outside.value ? view.value.estate?.lga?.name : null) || house.value?.district || venue.value.district)
 const line = computed(() => {
   if (!view.value.connected) return linkWording(view.value)?.menu ?? 'Not connected · read-only'
   const ambient = view.value.travel?.destinations?.find((item) => item.id === state.value.location)?.ambient
   return `${privateHome.value ? ' Private · ' : ''}${momentText.value || noticeText.value || ambient || spot.value?.caption || 'Explore at your own pace'}`
 })
-// Where this spot lists paid gigs, the day's counter sits above them (the limit is the server's).
-const gigs = computed(() => view.value.travel?.gigs)
-const showGigs = computed(() => Boolean(gigs.value) && activities.value.cards.some((card) => (view.value.travel?.gigsHere ?? []).includes(card.id)))
-const cards = computed(() => activities.value.cards.map((card) => ({ card, face: activityFace(card, state.value, view.value.connected), tags: effectTags(card) })))
+// The closed rail has no activity-card download. A remembered expanded rail loads itself.
+const activityPanel: ShallowRef<Component | null> = shallowRef(null)
+const activityError = ref(false)
+let activityLoad: Promise<void> | null = null
+function loadActivities(): Promise<void> {
+  if (activityPanel.value) return Promise.resolve()
+  if (activityLoad) return activityLoad
+  activityError.value = false
+  activityLoad = import('./VenueActions.vue').then(module => { activityPanel.value = module.default }, () => { activityError.value = true }).finally(() => { activityLoad = null })
+  return activityLoad
+}
+watch(() => ui.expanded, expanded => { if (expanded) void loadActivities() }, { immediate: true })
 
 /** The control that was pressed, until the server answers. */
 const pending = ref<string | null>(null)
@@ -76,36 +92,21 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
     <header class="life-venue-header">
       <button class="life-avatar" type="button" aria-label="Open your character: profile, needs, goals and skills" @click="shell.open('sim')"><GameIcon inline name="person" /></button>
       <div class="life-venue-heading"><h1><GameIcon inline kind="venue" :id="venue.id" :emoji="venue.icon" /> {{ title }} <span>· {{ district }}</span></h1><p :title="line"><GameIcon v-if="privateHome && view.connected" inline name="lock" />{{ line }}</p></div>
-      <button v-if="!privateHome && view.connected" class="life-icon-button" data-tour="community" type="button" aria-label="Open community chat" title="Community chat" @click="community.toggle(true)"><GameIcon name="chat" /></button>
+      <button v-if="!privateHome && !visiting && !cityStreet && view.connected" class="life-icon-button" data-tour="community" type="button" aria-label="Open community chat" title="Community chat" @click="community.toggle(true)"><GameIcon name="chat" /></button>
       <button class="life-icon-button" type="button" aria-label="Open map" title="Map (M)" @click="shell.open('map')"><GameIcon name="map" /></button>
     </header>
     <div ref="rail" class="life-spots">
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
       <button v-if="market" type="button" data-shops title="Players’ stalls at this market, and renting one" @click="shell.open('business', { venue: venue.id })"><GameIcon inline name="buy" /><span>Shops here</span></button>
       <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
-      <button v-if="!privateHome && !spots.some((item) => item.id === 'people')" type="button" @click="community.toggle(true)"><GameIcon inline name="people" /><span>People</span></button>
+      <button v-if="streetExit" type="button" :disabled="!view.connected || Boolean(state.activeAction)" @click="leaveStreetVenue">Leave to street</button>
+      <button v-if="cityStreet" type="button" @click="shell.open('neighbourhood')">Walking help</button>
+      <button v-if="!privateHome && !visiting && !cityStreet && !spots.some((item) => item.id === 'people')" type="button" @click="community.toggle(true)"><GameIcon inline name="people" /><span>People</span></button>
     </div>
     <template v-if="ui.expanded">
-      <p v-if="state.activeAction" class="life-actions-note" role="note">Finish or cancel what you are doing to start something else.</p>
-      <p v-if="showGigs && gigs" class="life-actions-note life-gigs" :class="{ 'is-out': !gigs.left }" role="note" title="Paid gigs are limited each day. Your job’s shift does not count."><b>Gigs today: {{ gigs.used }}/{{ gigs.limit }}</b> · {{ gigs.left ? `${gigs.left} left` : 'open again at midnight, Nigerian time' }}</p>
-      <div class="life-actions">
-        <template v-for="{ card, face, tags } in cards" :key="card.id">
-          <div v-if="card.choices && face.state !== 'unavailable'" class="life-action has-choices" :class="face.state === 'ready' ? undefined : `is-${face.state}`" role="group" :aria-label="face.label">
-            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
-            <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
-            <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
-            <span class="life-choices"><button v-for="choice in card.choices" :key="choice.id" type="button" :disabled="face.disabled || pending !== null" :title="face.full || undefined" @click="start(card, choice.id)">{{ choice.label }}</button></span>
-          </div>
-          <button v-else class="life-action" :class="face.state === 'ready' ? undefined : `is-${face.state}`" type="button" :disabled="face.disabled || pending !== null" :title="face.full || undefined" :aria-label="face.label" :aria-busy="pending === `start:${card.id}`" @click="start(card)">
-            <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
-            <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
-            <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
-          </button>
-        </template>
-        <div v-if="!cards.length" class="ui-empty is-inline"><p>{{ spot ? 'Nothing to do at this spot yet.' : 'Pick a spot above to see what you can do there.' }}</p></div>
-      </div>
+      <component :is="activityPanel" v-if="activityPanel" :pending="pending" @start="start" />
+      <p v-else-if="activityError" class="life-actions-note" role="alert">Activities could not load. <button type="button" @click="loadActivities">Try again</button></p>
+      <p v-else class="life-actions-note" role="status">Loading activities…</p>
     </template>
   </section>
 </template>

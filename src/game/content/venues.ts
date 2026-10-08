@@ -46,5 +46,5 @@ const displayVenue = (venueId: string, cityId: string) => {
   const venues = cachedCityContent(cityId)?.venues;
   return venues?.find(item => item.id === venueId) ?? venues?.find(item => item.id === cityRules(cityId)?.legacyVenueAliases?.[venueId]);
 };
-export const venueLabel = (venueId: string, cityId: string): string => displayVenue(venueId, cityId)?.name ?? COMING_SOON[venueId]?.label ?? venueId;
-export const venueDistrict = (venueId: string, cityId: string): string => displayVenue(venueId, cityId)?.district ?? COMING_SOON[venueId]?.district ?? '';
+export const venueLabel = (venueId: string, cityId: string): string => venueId === 'neighbourhood' ? 'Outside your home' : venueId === 'city-street' ? 'City streets' : displayVenue(venueId, cityId)?.name ?? COMING_SOON[venueId]?.label ?? venueId;
+export const venueDistrict = (venueId: string, cityId: string): string => venueId === 'city-street' ? cityRules(cityId)?.name ?? '' : displayVenue(venueId === 'neighbourhood' ? 'home' : venueId, cityId)?.district ?? COMING_SOON[venueId]?.district ?? '';

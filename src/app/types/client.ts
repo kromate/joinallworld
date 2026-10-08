@@ -4,8 +4,8 @@
 import type { ActionMap, ActionType, PlayerActionType } from '../../types/actions.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { CityId, OwnSession } from '../../types/protocol.ts'
-import type { ChangeCause, LifeHint } from '../../client.ts'
-export type { ChangeCause, LifeHint }
+import type { ChangeCause, LifeHint, PendingActionIntent, SnapshotPhase } from '../../client.ts'
+export type { ChangeCause, LifeHint, PendingActionIntent, SnapshotPhase }
 
 /**
  * WHY the game is or is not playable. "Offline" is said only for 'offline'.
@@ -16,8 +16,8 @@ export type { ChangeCause, LifeHint }
  *   offline      this device has no network
  *   unreachable  the device is online but the server did not answer (down, timed out, 5xx)
  */
-export type LinkState = 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable'
-export const LINK_STATES = ['connecting', 'online', 'new', 'expired', 'offline', 'unreachable'] as const satisfies readonly LinkState[]
+export type LinkState = 'connecting' | 'online' | 'new' | 'expired' | 'offline' | 'unreachable' | 'recovery'
+export const LINK_STATES = ['connecting', 'online', 'new', 'expired', 'offline', 'unreachable', 'recovery'] as const satisfies readonly LinkState[]
 
 /** Set from the moment the server says it cannot save (`storage: "failing"`, or 503 storage_unavailable). */
 export interface StorageProblem { reason: string }
@@ -81,6 +81,8 @@ export interface ClientOptions {
   /** No session yet: ask for a nickname, then call connect(true). */
   onNeedName?: (problem?: NameProblem) => void
   onSession?: (session: OwnSession, created: boolean) => void
+  loadLifeCities?: (raw: unknown, extra?: readonly unknown[]) => Promise<string[]>
+  loadCampus?: (raw: unknown) => Promise<unknown> | null
 }
 
 /** The object `createClient()` returns. Fields change in place; nothing here is reactive by itself. */
@@ -101,6 +103,8 @@ export interface GameClient {
   retryAfter: number | null
   storage: StorageProblem | null
   readonly online: boolean
+  readonly pendingAction: PendingActionIntent | null
+  readonly snapshotPhase: SnapshotPhase
   serverNow(): number
   /** A retry key for an exactly-once write: `<server ms>:<uuid>`. One per thing the player does; reuse it on a retry. */
   newId(): string
@@ -112,6 +116,7 @@ export interface GameClient {
    * after a reload) is the SAME action to the server and is applied exactly once. Without it each call gets a fresh id.
    */
   command(type: string, payload?: unknown, options?: { actionId?: string }): Promise<{ ok: boolean; code: string; reason?: string }>
+  retryPendingAction(): Promise<{ ok: boolean; code: string; reason?: string }>
   switchLegacy(id: string, clientId: string): Promise<SwitchCityResult>
   switchCity(id: string): Promise<SwitchCityResult>
   refresh(lostText?: string): Promise<boolean>

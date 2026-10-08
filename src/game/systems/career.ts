@@ -407,12 +407,12 @@ const play = PLAYS ? {
     'action.cancelled'(state, { kind, id }) {
       if (kind === 'activity' && jobOf(state.job, state.career.city ?? state.estate.city)?.shift.id === id) state.career.shiftStartDay = null;
     },
-    'activity.completed'(state, { def }, ctx) {
+    'activity.completed'(state, { def, cash }, ctx) {
       if (!def?.requiresJob) return;
       const job = jobOf(def.requiresJob, state.career.city ?? state.estate.city);
       state.completedShifts += 1;
       const career = state.career, level = job?.track ? career.level : 1;
-      const pay = Math.max(0, Math.round(modify(state, 'activity.reward', def.reward || 0, { def }, ctx)));
+      const pay = cash;
       if (job?.track) {
         career.lastShiftDay = career.shiftStartDay ?? lagosTime(nowOf(state, ctx)).day;
         career.shiftStartDay = null;

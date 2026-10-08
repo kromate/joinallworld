@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Allworld avatar motion preview</title>
+  <style>
+    :root { color-scheme: dark; font: 14px/1.4 system-ui, sans-serif; background: #111821; color: #e8edf5 }
+    * { box-sizing: border-box }
+    body { margin: 0; padding: 18px; max-width: 1440px; margin-inline: auto }
+    h1 { margin: 0 0 4px; font-size: 20px }
+    p { margin: 0; color: #aeb9c8 }
+    header { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 14px }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; padding: 12px; border: 1px solid #303b49; border-radius: 10px; background: #19222d }
+    label { display: grid; gap: 4px; color: #bdc8d6; font-size: 12px }
+    select, input, button { font: inherit; color: #edf3fb; background: #222e3b; border: 1px solid #435267; border-radius: 6px; padding: 6px 8px }
+    input[type=range] { padding: 6px 0; width: 138px }
+    button { cursor: pointer }
+    button[aria-pressed=true] { background: #28605a; border-color: #57b7a9 }
+    .stage { position: relative; margin-top: 12px; overflow: hidden; border: 1px solid #303b49; border-radius: 10px; background: #e8e8e5; min-height: 420px }
+    canvas { display: block; width: 100%; height: min(67vh, 640px); min-height: 420px }
+    .legend { position: absolute; top: 10px; left: 12px; right: 12px; display: flex; justify-content: space-between; pointer-events: none; color: #1d2933; font-weight: 650 }
+    pre { margin: 10px 0 0; padding: 10px; overflow: auto; border-radius: 8px; background: #0b1118; color: #b9d5ce; font: 11px/1.5 ui-monospace, monospace; min-height: 72px }
+    .hint { font-size: 12px }
+    @media (max-width: 650px) { body { padding: 10px } header { display: block } .stage canvas { height: 58vh; min-height: 340px } .stage { min-height: 340px } }
+  </style>
+</head>
+<body>
+  <header><div><h1>Avatar motion preview</h1><p>Procedural rig and skinned body, driven by the same pose and phase.</p></div><p class="hint">Fallback supports sit, walk, jog, interact and wash. Lie and soak are unsupported there. A cadence of 1 cycle/s approximates the repaired walk; 3.25 reproduces the old cadence.</p></header>
+  <section class="controls" aria-label="Preview controls">
+    <label>Body<select id="body"><option value="woman">Woman</option><option value="man">Man</option></select></label>
+    <label>Pose<select id="pose"><option>idle</option><option>walk</option><option>jog</option><option>sit</option><option>lie</option><option>soak</option><option>wash</option><option>interact</option></select></label>
+    <label>Camera<select id="cameraView"><option value="front">Front</option><option value="side">Side</option><option value="three-quarter">Three-quarter</option></select></label>
+    <label>Visible<select id="visible"><option value="both">Both</option><option value="fallback">Fallback only</option><option value="full">Full body only</option></select></label>
+    <label>Stride phase<input id="phase" type="range" min="0" max="6.2832" step="0.01" value="0"><span id="phaseValue">0.00 rad</span></label>
+    <label>Cadence cycles/s<input id="cadence" type="number" min="0.2" max="8" step="0.05" value="1.00"></label>
+    <label>Transition speed<input id="duration" type="range" min="0.25" max="2.5" step="0.05" value="1"><span id="durationValue">1.00×</span></label>
+    <button id="play">Play sit enter / exit</button>
+    <button id="playLie">Play lie / get up</button>
+    <button id="run">Play</button>
+    <button id="reset">Reset pose</button>
+  </section>
+  <div class="stage"><canvas id="view" aria-label="Synchronized avatar pose comparison"></canvas><div class="legend"><span>PROCEDURAL FALLBACK</span><span>SKINNED BODY</span></div></div>
+  <pre id="stats" aria-live="polite">Loading body assets…</pre>
+  <script type="module">
+import * as THREE from 'three';
+import { buildAvatar, poseAvatar } from '/src/scene/characters.ts';
+import { createKit } from '/src/scene/kit.ts';
+import { loadBody } from '/src/scene/body/skinned.ts';
+const $ = (id) => document.getElementById(id);
+const canvas = $('view');
+const kit = createKit();
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#e8e8e5');
+const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+const target = new THREE.Vector3(0, 1, 0);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+scene.add(new THREE.HemisphereLight('#ffffff', '#8a8175', 2.1));
+const key = new THREE.DirectionalLight('#fff4e4', 2.4);
+key.position.set(-3, 6, 5);
+scene.add(key);
+const fill = new THREE.DirectionalLight('#d7e5ff', 1.3);
+fill.position.set(4, 4, -3);
+scene.add(fill);
+const ground = new THREE.GridHelper(12, 24, '#758278', '#c2c9c2');
+ground.position.y = 0.002;
+scene.add(ground);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.MeshStandardMaterial({ color: '#e4e4df', roughness: 1 }));
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -0.01;
+scene.add(floor);
+const lane = 1.35;
+let cameraView = 'front';
+let actors = [new THREE.Vector3(-lane, 0, 0), new THREE.Vector3(lane, 0, 0)];
+const lookFor = (body) => ({ body, outfit: 'casual', fabric: 'ankara', skin: '#845236', hairColor: '#1c1917', outfitColor: '#3f72c4', bottomsColor: '#243a66', hair: body === 'woman' ? 'braids' : 'lowcut' });
+function landmark(x, lie) {
+    const seat = new THREE.Group(), bed = new THREE.Group();
+    seat.position.x = bed.position.x = x;
+    scene.add(seat, bed);
+    const wood = new THREE.MeshStandardMaterial({ color: '#907457', roughness: 0.9 });
+    const cushion = new THREE.MeshStandardMaterial({ color: lie ? '#6e8e9a' : '#a08a68', roughness: 1 });
+    const add = (parent, w, h, d, x0, y, z, mat) => {
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+        mesh.position.set(x0, y, z);
+        parent.add(mesh);
+    };
+    add(seat, 0.95, 0.12, 0.48, 0, 0.48, 0, cushion);
+    for (const dx of [-0.38, 0.38])
+        for (const dz of [-0.16, 0.16])
+            add(seat, 0.07, 0.48, 0.07, dx, 0.24, dz, wood);
+    add(bed, 1.12, 0.12, 2.4, 0, 0.28, -1.05, cushion);
+    for (const dx of [-0.48, 0.48])
+        for (const dz of [-2.15, 0.05])
+            add(bed, 0.07, 0.28, 0.07, dx, 0.14, dz, wood);
+    return { seat, bed };
+}
+const landmarks = [landmark(-lane, false), landmark(lane, true)];
+function setCameraView() {
+    cameraView = $('cameraView').value;
+    const side = cameraView === 'side';
+    actors = side
+        ? [new THREE.Vector3(0, 0, lane), new THREE.Vector3(0, 0, -lane)]
+        : [new THREE.Vector3(-lane, 0, 0), new THREE.Vector3(lane, 0, 0)];
+    actors.forEach((position, index) => {
+        const { seat, bed } = landmarks[index];
+        seat.position.set(position.x, 0, position.z);
+        bed.position.set(position.x, 0, position.z);
+    });
+    const direction = cameraView === 'side' ? new THREE.Vector3(1, 0, 0)
+        : cameraView === 'three-quarter' ? new THREE.Vector3(0.62, 0, 0.78).normalize()
+            : new THREE.Vector3(0, 0, 1);
+    const box = canvas.getBoundingClientRect(), aspect = Math.max(box.width / Math.max(box.height, 1), 0.35);
+    camera.fov = aspect < 0.85 ? 52 : 32;
+    const neededHeight = (4.7 / aspect) * 1.08;
+    const distance = Math.max(8, neededHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))));
+    camera.position.copy(target).addScaledVector(direction, distance);
+    camera.position.y = 2.8;
+    camera.lookAt(target);
+    camera.aspect = aspect;
+    camera.updateProjectionMatrix();
+    fallback.position.set(actors[0].x, 0, actors[0].z);
+    fallbackSeat.position.set(actors[0].x, 0, actors[0].z);
+    if (full) {
+        full.object.position.set(actors[1].x, 0, actors[1].z);
+        placeFull(pose);
+    }
+    updateLandmarks();
+    render();
+}
+function updateLandmarks() {
+    const shownPose = transitionKind ?? pose;
+    landmarks.forEach(({ seat, bed }, index) => {
+        seat.visible = shownPose === 'sit' || (index === 1 && shownPose === 'soak');
+        bed.visible = index === 1 && shownPose === 'lie';
+    });
+}
+let bodyKind = 'woman', pose = 'idle', playing = false, phase = 0, last = performance.now();
+let transitionKind = null, transitionLeg = 0, raf = null;
+let fallback = buildAvatar(kit, lookFor(bodyKind), { rig: true, detail: 'medium', scale: 0.82 });
+fallback.position.copy(actors[0]);
+scene.add(fallback);
+let fallbackSeat = buildAvatar(kit, lookFor(bodyKind), { detail: 'medium', pose: 'sit', seat: 0.6, scale: 0.82 });
+fallbackSeat.position.copy(actors[0]);
+fallbackSeat.visible = false;
+scene.add(fallbackSeat);
+let full = null;
+function render() {
+    updateLandmarks();
+    renderer.render(scene, camera);
+    updateStats();
+    $('run').textContent = shouldAnimate() ? 'Pause' : 'Play';
+    $('pose').value = pose;
+}
+function updateStats() {
+    const world = new THREE.Vector3();
+    full?.object.getWorldPosition(world);
+    const bones = [];
+    full?.object.traverse((node) => { if (node.isBone && bones.length < 5) {
+        const p = new THREE.Vector3();
+        node.getWorldPosition(p);
+        bones.push(`${node.name} ${p.x.toFixed(2)},${p.y.toFixed(2)},${p.z.toFixed(2)}`);
+    } });
+    const fallbackState = pose === 'lie' || pose === 'soak' ? 'unsupported pose; shown as relax' : pose === 'sit' ? 'production sit figure' : 'production rig';
+    $('stats').textContent = [
+        `pose=${pose}  playing=${playing}  phase=${phase.toFixed(2)}rad  cadence=${Number($('cadence').value).toFixed(2)} cycles/s  transition=${transitionKind ?? 'none'}`,
+        `fallback: ${fallbackState}  position=${fallback.position.x.toFixed(2)},${fallback.position.y.toFixed(2)},${fallback.position.z.toFixed(2)}`,
+        `skinned: ${full ? `key=${full.key} easing=${full.easing} seated=${full.seated} world=${world.x.toFixed(2)},${world.y.toFixed(2)},${world.z.toFixed(2)}` : 'loading'}  bones: ${bones.join(' | ')}`,
+        `whole viewer: ${renderer.info.render.calls} draw calls  ${renderer.info.render.triangles} triangles  ${renderer.info.render.lines} lines  buffers=${renderer.info.memory.geometries}`,
+    ].join('\n');
+}
+function setVisible() {
+    const value = $('visible').value;
+    const showFallback = value !== 'full';
+    fallback.visible = showFallback && pose !== 'sit';
+    fallbackSeat.visible = showFallback && pose === 'sit';
+    if (full)
+        full.object.visible = value !== 'fallback';
+    render();
+}
+function placeFull(next) {
+    if (!full)
+        return;
+    if (next === 'sit' || next === 'soak')
+        full.sitOn(actors[1].x, 0.54, actors[1].z, 0);
+    else if (next === 'lie')
+        full.sitOn(actors[1].x, 0.34, actors[1].z - 1.05, 0);
+    else
+        full.place(actors[1].x, 0, actors[1].z, 0);
+}
+function applyFallbackPose(next) {
+    pose = next;
+    fallback.rotation.set(0, 0, 0);
+    fallback.position.copy(actors[0]);
+    fallbackSeat.position.copy(actors[0]);
+    if (next === 'walk' || next === 'jog')
+        poseAvatar(fallback, { pose: next, stride: phase / (Math.PI * 2) });
+    else if (next === 'sit') { /* the separate non-rig product figure carries the seated shape */ }
+    else {
+        const mapped = next === 'interact' ? 'wave' : next === 'wash' ? 'work' : next === 'lie' || next === 'soak' ? 'relax' : 'stand';
+        poseAvatar(fallback, { pose: mapped });
+    }
+    setVisible();
+}
+function applyPose(next) {
+    applyFallbackPose(next);
+    if (full) {
+        full.show(next, false);
+        placeFull(next);
+    }
+    if (next === 'walk' || next === 'jog')
+        updateStride();
+    render();
+}
+function updateStride() {
+    const jog = pose === 'jog';
+    poseAvatar(fallback, { pose: jog ? 'jog' : 'walk', stride: phase / (Math.PI * 2) });
+    full?.stride(phase, jog);
+}
+function shouldAnimate() { return (playing && (pose === 'walk' || pose === 'jog')) || Boolean(transitionKind); }
+function schedule() { if (raf === null && shouldAnimate())
+    raf = requestAnimationFrame(frame); }
+function cancelMotion() {
+    playing = false;
+    transitionKind = null;
+    transitionLeg = 0;
+    if (raf !== null)
+        cancelAnimationFrame(raf);
+    raf = null;
+    if (full?.easing)
+        full.settle();
+    render();
+}
+function beginTransition(kind) {
+    if (!full)
+        return;
+    cancelMotion();
+    transitionKind = kind;
+    transitionLeg = 0;
+    // Match the scene caller: establish standing, start the transition, then place its seated target.
+    full.show('idle', false);
+    full.place(actors[1].x, 0, actors[1].z, 0);
+    const target = kind === 'sit' ? 'sit' : 'lie';
+    full.show(target, true);
+    full.sitOn(actors[1].x, kind === 'sit' ? 0.54 : 0.34, kind === 'sit' ? actors[1].z : actors[1].z - 1.05, 0);
+    applyFallbackPose(target);
+    transitionKind = kind;
+    transitionLeg = 0;
+    last = performance.now();
+    schedule();
+}
+function frame(now) {
+    raf = null;
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    if (playing && (pose === 'walk' || pose === 'jog')) {
+        phase = (phase + dt * Number($('cadence').value) * Math.PI * 2) % (Math.PI * 2);
+        $('phase').value = String(phase);
+        $('phaseValue').textContent = `${phase.toFixed(2)} rad`;
+        updateStride();
+    }
+    if (transitionKind && full?.easing) {
+        const speed = Number($('duration').value);
+        full.step(dt * speed);
+    }
+    else if (transitionKind && full && !full.easing) {
+        if (transitionLeg === 0) {
+            transitionLeg = 1;
+            full.place(actors[1].x, 0, actors[1].z, 0);
+            full.show('idle', true);
+            applyFallbackPose('idle');
+        }
+        else
+            transitionKind = null;
+    }
+    updateLandmarks();
+    render();
+    schedule();
+}
+function playWalking() {
+    if (pose !== 'walk' && pose !== 'jog') {
+        $('pose').value = 'walk';
+        applyPose('walk');
+    }
+    playing = true;
+    last = performance.now();
+    schedule();
+    render();
+}
+$('body').addEventListener('change', async () => {
+    cancelMotion();
+    bodyKind = $('body').value;
+    fallback.userData.dispose();
+    fallbackSeat.userData.dispose();
+    scene.remove(fallback, fallbackSeat);
+    fallback = buildAvatar(kit, lookFor(bodyKind), { rig: true, detail: 'medium', scale: 0.82 });
+    fallback.position.copy(actors[0]);
+    scene.add(fallback);
+    fallbackSeat = buildAvatar(kit, lookFor(bodyKind), { detail: 'medium', pose: 'sit', seat: 0.6, scale: 0.82 });
+    fallbackSeat.position.copy(actors[0]);
+    scene.add(fallbackSeat);
+    full?.dispose();
+    full = null;
+    try {
+        full = await loadBody(kit, lookFor(bodyKind), 'motion-preview', 0.82);
+        full.object.position.copy(actors[1]);
+        scene.add(full.object);
+        applyPose(pose);
+    }
+    catch (error) {
+        $('stats').textContent = `Skinned body failed to load: ${String(error)}`;
+    }
+});
+$('pose').addEventListener('change', () => { const next = $('pose').value; cancelMotion(); applyPose(next); });
+$('visible').addEventListener('change', setVisible);
+$('cameraView').addEventListener('change', setCameraView);
+$('phase').addEventListener('input', () => { phase = Number($('phase').value); $('phaseValue').textContent = `${phase.toFixed(2)} rad`; if (!playing && (pose === 'walk' || pose === 'jog')) {
+    updateStride();
+    render();
+} });
+$('duration').addEventListener('input', () => { $('durationValue').textContent = `${Number($('duration').value).toFixed(2)}×`; });
+$('run').addEventListener('click', () => { if (shouldAnimate())
+    cancelMotion();
+else
+    playWalking(); });
+$('play').addEventListener('click', () => beginTransition('sit'));
+$('playLie').addEventListener('click', () => beginTransition('lie'));
+$('reset').addEventListener('click', () => { cancelMotion(); phase = 0; $('phase').value = '0'; applyPose('idle'); });
+const resize = new ResizeObserver(() => { const box = canvas.getBoundingClientRect(); renderer.setSize(box.width, box.height, false); setCameraView(); });
+resize.observe(canvas);
+setCameraView();
+void loadBody(kit, lookFor(bodyKind), 'motion-preview', 0.82).then((body) => { full = body; full.object.position.copy(actors[1]); scene.add(full.object); applyPose('idle'); }).catch((error) => { $('stats').textContent = `Skinned body failed to load: ${String(error)}`; render(); });
+window.addEventListener('pagehide', () => { cancelMotion(); full?.dispose(); fallback.userData.dispose(); fallbackSeat.userData.dispose(); kit.dispose(); renderer.dispose(); });
+</script>
+</body>
+</html>

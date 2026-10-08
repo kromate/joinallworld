@@ -141,7 +141,7 @@ export function failureReason(error: ApiError): string {
           : error.code === 'onboarding_required' ? 'Choose your look and tap Play first. People and messages open as soon as you are in the city.'
             : status === 409 ? 'That was already sent with different details. Try again.'
               : status >= 400 && status < 500 ? 'That request was not accepted. Check what you typed.'
-                : 'Connection lost. Nothing was changed; try again.'
+                : 'Connection lost. Reconnect to check the latest state.'
 }
 
 export function createSocialClient(overrides: Partial<SocialEnv> = {}) {

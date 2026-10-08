@@ -6,6 +6,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import * as ts from './wallet.ts'
 import type { LedgerDay, WalletState } from './wallet.ts'
+import { statementOf } from '../wallet-statement.ts'
 import { makeContext, makeRng } from '../util.ts'
 import { createLife, viewLife } from '../../life.ts'
 
@@ -27,7 +28,7 @@ test('credit and debit refuse what would break the balance', () => {
   assert.equal(state.cash, 0)
   assert.equal(ts.credit(state, 0, 'nothing'), true)
   assert.equal(state.ledger.length, 1, 'a change of zero leaves no line')
-  assert.deepEqual(ts.statementOf(state).problems, [])
+  assert.deepEqual(statementOf(state).problems, [])
 })
 
 test('reason groups: the kind of change, not the detail', () => {
@@ -51,8 +52,8 @@ test('4,000 seeded changes keep the statement reconciled and the history trimmed
   }
   assert.ok(a.ledger.length === ts.LEDGER_LIMIT && a.ledgerDays.length === ts.LEDGER_DAYS, 'both histories are full, so trimming was exercised')
   assert.ok(a.ledgerDays.some((day: LedgerDay) => Object.hasOwn(day.by, 'Other')), 'folding small groups into Other was exercised')
-  assert.equal(ts.statementOf(a).reconciled, true)
-  assert.equal(ts.statementOf(a).problems.length, 0)
+  assert.equal(statementOf(a).reconciled, true)
+  assert.equal(statementOf(a).problems.length, 0)
 })
 
 test('sanitize: clean, old-format and hostile saves all rebuild a reconciled wallet', () => {
@@ -72,7 +73,7 @@ test('sanitize: clean, old-format and hostile saves all rebuild a reconciled wal
   for (const [index, save] of saves.entries()) {
     const a = { t: START }
     ts.default.sanitize(structuredClone(save), a)
-    assert.deepEqual(ts.statementOf(a as WalletState).problems, [], `save ${index} reconciles`)
+    assert.deepEqual(statementOf(a as WalletState).problems, [], `save ${index} reconciles`)
   }
 })
 

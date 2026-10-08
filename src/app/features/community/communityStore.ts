@@ -31,6 +31,7 @@
 import { computed, readonly, ref, shallowRef, watch } from 'vue'
 import type { ComputedRef, Ref, ShallowRef } from 'vue'
 import { roomJoinNeeded } from '../../../client.ts'
+import { social } from '../social/useSocial.ts'
 import { createLazyLoader } from '../../../lazy-load.ts'
 import type { LazyLoader, LazyOptions, LazyState } from '../../../lazy-load.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -131,6 +132,7 @@ export function createCommunityStore(deps: CommunityDeps): CommunityStore {
   const recovery = shallowRef<CommunityRecovery | null>(null)
   let instance: CommunityController | null = null
   let starting = false, startProblem = false, lastRefusal = 0, epoch = 0
+  const separateRoom = (location = game.state.value.location): boolean => Boolean(social.me?.visiting) || location === 'city-street'
 
   const loader: LazyLoader<CommunityModule> = createLazyLoader<CommunityModule>(
     () => (deps.loadModule ? deps.loadModule() : import('../../../community.ts')),
@@ -177,12 +179,12 @@ export function createCommunityStore(deps: CommunityDeps): CommunityStore {
   }
 
   async function start(): Promise<void> {
-    if (instance || starting || !game.connected.value) return
+    if (instance || starting || !game.connected.value || separateRoom()) return
     starting = true
     const mine = epoch
     try {
       const module = await loader.load()
-      if (!module || instance || !game.connected.value || mine !== epoch) return
+      if (!module || instance || !game.connected.value || mine !== epoch || separateRoom()) return
       const created = await module.createCommunity({
         cityId: game.cityId.value, venueId: game.state.value.location,
         onMembers: handleMembers,
@@ -209,6 +211,8 @@ export function createCommunityStore(deps: CommunityDeps): CommunityStore {
 
   function toggle(force?: boolean): void {
     if (force === false) { open.value = false; return }
+    if (social.me?.visiting) { deps.toast('Use the house chat while you are visiting.'); return }
+    if (game.state.value.location === 'city-street') { deps.toast('Use People to message friends while you walk.'); return }
     if (game.state.value.location === 'home') { deps.toast('Your home is private. Visit a public venue to meet people.'); return }
     if (!instance) {
       if (!game.connected.value) { deps.toast(notConnected(game.link.value, 'open the community'), 'error'); return }
@@ -238,10 +242,13 @@ export function createCommunityStore(deps: CommunityDeps): CommunityStore {
 
   // The room follows the life: arrival, a cancelled departure, a new city. The join puts the player back with voice off.
   game.on('accepted', (next, previous) => {
+    if (separateRoom(next.location)) { open.value = false; destroy(); return }
+    if (previous.location === 'city-street') { void start(); return }
     if (next.location === 'home') open.value = false
     if (roomJoinNeeded(previous, next)) instance?.join(game.cityId.value, next.location)
   })
-  watch(game.cityId, (city) => { instance?.join(city, game.state.value.location) })
+  watch(game.cityId, (city) => { if (separateRoom()) destroy(); else instance?.join(city, game.state.value.location) })
+  watch(() => social.me?.visiting?.host.id, (host) => { if (host) { open.value = false; destroy() } else void start() })
   game.on('expired', destroy)
   game.on('session', (_session, created) => { if (created) destroy() })
 

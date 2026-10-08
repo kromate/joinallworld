@@ -19,6 +19,7 @@ import type { ScenesState } from '../types/scene.ts'
 import { landingCodeSettled } from '../features/start/warmLanding.ts'
 import { telemetry } from '../../telemetry/index.ts'
 import { noteChunkFailure } from '../state/updateNotice.ts'
+import { social } from '../features/social/useSocial.ts'
 
 const props = defineProps<{
   /** Elements whose bottom edge marks how far the HUD covers the top of the scene. */
@@ -29,7 +30,7 @@ const props = defineProps<{
   rows: () => (Element | null)[]
   hidden: boolean
 }>()
-const { game, ready, shell, scene, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
+const { game, ready, shell, scene, command, showPlayer, showCrowd, showGoal, reportPlace, onMove, commitSpot, goTo } = useApp()
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 const waiting = ref(true)
@@ -103,11 +104,16 @@ onMounted(() => {
       },
       // The avatar moved: that is where the player stands in the room (presence, and so proximity voice).
       onMove,
+      onHomeDoor: (direction) => { if (social.me?.visiting) void import('../features/neighbourhood/neighbourhoodStore.ts').then((module) => module.leaveNeighbour()); else void command('home.door', { direction }) },
+      onNeighbourDoor: (door) => { void import('../features/neighbourhood/neighbourhoodStore.ts').then((module) => module.enterNeighbour(door)) },
+      onStreetGate: () => { void import('../features/neighbourhood/neighbourhoodStore.ts').then(module => module.beginCityWalk()) },
+      onStreetJourney: journey => { void import('../features/neighbourhood/neighbourhoodStore.ts').then(module => module.acceptCityJourney(journey)).catch(sceneFailed) },
       // The campus: its host walks the avatar to a landmark and then asks for the game's ordinary `spot` action; its shuttle runs on server time.
       commitSpot: ({ id }: { id: string }) => commitSpot(id), now: () => game.serverNow(),
       onScenes, onError: sceneFailed,
       onHost: () => { if (scene.venue.value) hostUp(); layout(); reportPlace() } })
       scene.venue.value = venue
+      void import('../features/neighbourhood/neighbourhoodStore.ts').then((module) => module.startNeighbourhood())
       venue.setState(game.state.value)
       showPlayer(); showCrowd(); showGoal()
       venue.resize()

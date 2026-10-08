@@ -6,14 +6,16 @@ export type { CityView, CityViewOptions } from '../../map3d/index.ts'
 export type { WorldMap, WorldMapOptions } from '../../world-map.ts'
 import type { VenueWorld, VenueWorldOptions } from '../../venue-world.ts'
 import type { LazyState } from '../../lazy-load.ts'
+import type { VisitHomeProjection } from '../../types/visit.ts'
 
 /** Where the fetch of a city's own scenes stands (src/scene/city-scenes.ts): the lazy-load state, with the city. */
 export type ScenesState = LazyState & { city: string }
 
 /** What the campus world adapter (src/campus/unilag/world-adapter) adds to the venue host's API: one scene API over two hosts. */
 export interface SceneWorld extends VenueWorld {
+  setVisitHome(home: VisitHomeProjection | null): void
   /** Which host is drawing: 'venue', 'campus', or null while the campus or a city's own scenes are on their way. */
-  readonly host: 'venue' | 'campus' | null
+  readonly host: 'venue' | 'campus' | 'street' | null
   /** The city whose scenes are being waited for (nothing is drawn meanwhile), or null. */
   readonly awaiting: string | null
   /** Ask for the awaited city's scenes again now. False when nothing is awaited. */
@@ -22,6 +24,7 @@ export interface SceneWorld extends VenueWorld {
   walkToSpot(id: string): Promise<{ ok: boolean; code?: string; reason?: string }>
 }
 export interface SceneWorldOptions extends VenueWorldOptions {
+  onStreetJourney?: (journey: import('../../street/types.ts').StreetJourney) => void
   /** The campus host calls this once the avatar reached the landmark it was sent to: the ordinary `spot` action. */
   commitSpot?: (spot: { id: string }) => Promise<unknown>
   /** Server time, for the campus shuttle. */

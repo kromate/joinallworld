@@ -13,7 +13,7 @@ import { makeRng } from './util.ts';
 import { serverOnlyReason } from './registry.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState, StartHomeId } from '../types/life.ts';
-import { statementOf } from './systems/wallet.ts';
+import { statementOf } from './wallet-statement.ts';
 import { MAX_STACK } from './systems/inventory.ts';
 import { VENUES } from './cities/lagos/venues.ts';
 

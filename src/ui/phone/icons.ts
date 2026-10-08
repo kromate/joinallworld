@@ -180,7 +180,7 @@ export function registerGlyphs(set: Record<string, string>): void {
 export function onGlyphs(listener: () => void): () => boolean { listeners.add(listener); return () => listeners.delete(listener); }
 
 /** Panel ids whose glyph has another name. */
-const ALIAS: Record<string, string> = { 'hunt-sheet': 'hunt', 'state-house': 'governor', roadside: 'barrier', 'roadside-chip': 'barrier', needs: 'health', profile: 'person', skills: 'book',
+const ALIAS: Record<string, string> = { commerce: 'business', 'hunt-sheet': 'hunt', 'state-house': 'governor', roadside: 'barrier', 'roadside-chip': 'barrier', needs: 'health', profile: 'person', skills: 'book',
   session: 'globe', city: 'globe', onboarding: 'star', account: 'key', 'goal-chip': 'goals', 'home-chip': 'home', 'social-inbox': 'messages', 'radio-banner': 'radio',
   'health-chip': 'health', 'weather-chip': 'sun' };
 /** Glyphs that arrive with ./icons-more.js: known by name before they can be drawn. */

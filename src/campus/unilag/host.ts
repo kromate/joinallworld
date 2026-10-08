@@ -3,16 +3,17 @@ import type { Group, WebGLRenderer } from 'three';
 import { createKit } from '../../scene/kit.ts';
 import { createMotionLoop } from '../../scene/motion-loop.ts';
 import type { MotionLoop } from '../../scene/motion-loop.ts';
-import { createPositionReporter, createWalker } from '../../scene/movement.ts';
+import { createPositionReporter, createWalker, gaitPhase, WALK_SPEED, JOG_SPEED } from '../../scene/movement.ts';
 import { buildUnilag, crowdKindOf } from './scene.ts';
 import type { CampusTag, CrowdInput, CrowdPerson, PlayerInput, Point } from './scene.ts';
 import { shuttlePose } from './shuttle.ts';
 import { buildShuttle } from './shuttle-scene.ts';
 import type { ShuttlePose } from './shuttle.ts';
 import type { CampusShuttleAction } from '../../types/campus.ts';
-import { ANCHORS, BUILDINGS, ENTRANCE } from './layout.ts';
-import type { Kit } from '../../scene/kit.ts';
+import { ANCHORS, ENTRANCE } from './layout.ts';
+import { CAMPUS_MAP } from './map.generated.ts';
 import { NPC_WORD, npcAria, npcTitle } from '../../ui/npc-mark.ts';
+import type { Kit } from '../../scene/kit.ts';
 
 export interface WalkResult { ok: boolean; code?: string; reason?: string }
 export interface SpotRequest { id: string; open: boolean }
@@ -90,9 +91,12 @@ export function createCampusHost(container: HTMLElement, {
   const world = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 1800);
   const renderer: WebGLRenderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 1.5));
+  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.shadowMap.enabled = false;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
   container.classList.add('campus-host');
   container.appendChild(renderer.domElement);
 
@@ -103,7 +107,13 @@ export function createCampusHost(container: HTMLElement, {
   const hemi = new THREE.HemisphereLight('#c6e0e6', '#68765a', 2);
   const sun = new THREE.DirectionalLight('#fff0d2', 2.4);
   sun.position.set(80, 140, 50);
-  world.add(hemi, sun);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.camera.left = -120; sun.shadow.camera.right = 120;
+  sun.shadow.camera.top = 120; sun.shadow.camera.bottom = -120;
+  sun.shadow.camera.near = 1; sun.shadow.camera.far = 420;
+  sun.shadow.normalBias = .3;
+  world.add(hemi, sun, sun.target);
 
   const tagLayer = document.createElement('div');
   tagLayer.className = 'campus-host-tags';
@@ -122,9 +132,14 @@ export function createCampusHost(container: HTMLElement, {
     button.textContent = { up: '↑', left: '←', down: '↓', right: '→' }[move];
     button.setAttribute('aria-label', label); controls.appendChild(button);
   }
-  container.append(tagLayer, miniMap, zoneLabel, controls);
+  const attribution = document.createElement('a');
+  attribution.className = 'campus-host-attribution';
+  attribution.href = 'https://www.openstreetmap.org/copyright';
+  attribution.target = '_blank'; attribution.rel = 'noopener';
+  attribution.textContent = 'Map © OpenStreetMap contributors';
+  container.append(tagLayer, miniMap, zoneLabel, controls, attribution);
 
-  const walker: Walker = createWalker({ speed: 8, jogSpeed: 18 });
+  const walker: Walker = createWalker({ speed: WALK_SPEED * .60, jogSpeed: JOG_SPEED * .60 });
   walker.setGrid(campus.walk.grid);
   walker.place(ENTRANCE.x, ENTRANCE.z, ENTRANCE.ry);
   campus.walk.move(walker.x, 0, walker.z, walker.ry);
@@ -134,7 +149,7 @@ export function createCampusHost(container: HTMLElement, {
   const crowdKinds = new Map<string, 'npc' | 'player'>();
   let crowd: HostPerson[] = [], state: HostState | null = null, player: HostPlayer = {}, playerKey = '', crowdKey = '[]';
   let insets = { top: 0, bottom: 0 }, size = { width: 0, height: 0 };
-  let yaw = 0.55, tilt = 0.62, distance = 64, phase = 0, renderCount = 0;
+  let yaw = -Math.PI/2, tilt = 0.32, distance = 32, phase = 0, renderCount = 0;
   let locked = false, wasMoving = false, disposed = false, drag: { id: number; x: number; y: number } | null = null, walkTask: WalkTask | null = null;
   let shuttleActive = false, shuttleAt: ShuttlePose | null = null, shuttleClock: ShuttleClock | null = null;
   const projected = new THREE.Vector3();
@@ -193,31 +208,35 @@ export function createCampusHost(container: HTMLElement, {
     if (!ctx) return;
     const zone = currentZone();
     if (!zone) return;
-    const [x0, z0, x1, z1] = zone.bounds;
+    const focusAt = shuttleActive && shuttleAt ? shuttleAt : walker;
+    const span = 360, x0 = focusAt.x-span/2, z0 = focusAt.z-span/2, x1 = x0+span, z1 = z0+span;
     const width = miniMap.width, height = miniMap.height, pad = 18;
     const point = (x: number, z: number): [number, number] => [pad + ((x - x0) / (x1 - x0)) * (width - pad * 2), pad + ((z - z0) / (z1 - z0)) * (height - pad * 2)];
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = zone.kind === 'waterfront' ? '#dbe8df' : '#e9ead8'; ctx.fillRect(0, 0, width, height);
-    ctx.strokeStyle = '#bdc8aa'; ctx.lineWidth = 2; ctx.strokeRect(pad, pad, width - pad * 2, height - pad * 2);
-    for (const building of BUILDINGS.filter((item) => item.zone === zone.id)) {
-      const [x, z] = point(building.x - building.w / 2, building.z - building.d / 2);
-      ctx.fillStyle = '#819078';
-      ctx.fillRect(x, z, Math.max(2, building.w / (x1 - x0) * (width - pad * 2)), Math.max(2, building.d / (z1 - z0) * (height - pad * 2)));
+    ctx.fillStyle = '#dae1cb'; ctx.fillRect(0, 0, width, height);
+    ctx.save(); ctx.beginPath(); ctx.rect(pad,pad,width-pad*2,height-pad*2);ctx.clip();
+    for(const road of CAMPUS_MAP.roads){
+      ctx.beginPath();road.points.forEach(([x,z],i)=>{const p=point(x,z);if(i===0)ctx.moveTo(...p);else ctx.lineTo(...p);});
+      ctx.strokeStyle='#fbf5df';ctx.lineWidth=Math.max(1.5,road.width/span*width);ctx.stroke();
     }
+    for(const building of CAMPUS_MAP.buildings){
+      ctx.beginPath();building.ring.forEach(([x,z],i)=>{const p=point(x,z);if(i===0)ctx.moveTo(...p);else ctx.lineTo(...p);});ctx.closePath();ctx.fillStyle='#899386';ctx.fill();
+    }
+    ctx.restore();ctx.fillStyle='#314838';ctx.font='bold 15px system-ui';ctx.fillText('N ↑',width-45,17);
     for (const peer of crowd.filter((person) => crowdKindOf(person) === 'player' && finite(person.x) && campus.navigation.zoneAt(person.x, person.z!)?.id === zone.id)) {
       const [x, z] = point(peer.x!, peer.z!); ctx.fillStyle = '#575da7'; ctx.beginPath(); ctx.arc(x, z, 5, 0, Math.PI * 2); ctx.fill();
     }
     const focus = shuttleActive && shuttleAt ? shuttleAt : walker;
     const [px, pz] = point(focus.x, focus.z); ctx.fillStyle = shuttleActive ? '#8f2434' : '#d45f36'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(px, pz, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    zoneLabel.textContent = zone.label;
+    zoneLabel.textContent = Object.values(ANCHORS).sort((a,b)=>Math.hypot(a.x-walker.x,a.z-walker.z)-Math.hypot(b.x-walker.x,b.z-walker.z))[0]?.label ?? 'UNILAG Akoka';
     miniMap.setAttribute('aria-label', `${zone.label} mini-map. You and ${crowd.filter((person) => crowdKindOf(person) === 'player' && finite(person.x) && campus.navigation.zoneAt(person.x, person.z!)?.id === zone.id).length} other players are marked.`);
   }
 
   function syncTags(): void {
     const zone = campus.zone;
     const candidates = campus.tags().map((tag): TagView => ({ ...tag, kind: crowdKinds.get(String(tag.id)) || tag.kind }))
-      .filter((tag) => campus.navigation.zoneAt(tag.position.x, tag.position.z)?.id === zone)
+      .filter((tag) => Math.hypot(tag.position.x-walker.x,tag.position.z-walker.z)<150)
       .sort((a, b) => Math.hypot(a.position.x - walker.x, a.position.z - walker.z) - Math.hypot(b.position.x - walker.x, b.position.z - walker.z))
       .slice(0, size.width <= 420 ? 6 : 12);
     const live = new Set<string>(), placed: Array<{ x: number; y: number }> = [];
@@ -236,9 +255,8 @@ export function createCampusHost(container: HTMLElement, {
       node.className = `campus-host-tag is-${tag.kind}`; node.dataset.kind = tag.kind;
       const label = String(tag.name || tag.text || id);
       if (node.textContent !== label) node.textContent = label;
-      node.setAttribute('aria-label', tag.kind === 'landmark' ? `Walk to ${label}` : tag.kind === 'npc' ? npcAria(label) : `${label}, a player`);
-      // A game character's tag says so: its tooltip, and the word before the name (host.css, from data-npc-word).
       if (tag.kind === 'npc') { node.title = npcTitle(label); node.dataset.npcWord = NPC_WORD; } else { node.removeAttribute('title'); delete node.dataset.npcWord; }
+      node.setAttribute('aria-label', tag.kind === 'landmark' ? `Walk to ${label}` : tag.kind === 'npc' ? npcAria(label) : `${label}, a player`);
       projected.set(tag.position.x, tag.position.y, tag.position.z).project(camera);
       const sx=Math.round((projected.x+1)*size.width/2),sy=Math.round((1-projected.y)*size.height/2);
       const visible = !placed.some(p=>Math.abs(p.x-sx)<105&&Math.abs(p.y-sy)<28)&&sy>insets.top+30&&sy<size.height-insets.bottom-8&&projected.z > -1 && projected.z < 1 && Math.abs(projected.x) <= 1 && Math.abs(projected.y) <= 1;
@@ -252,7 +270,8 @@ export function createCampusHost(container: HTMLElement, {
     if (disposed) return;
     updateCamera();
     world.background = new THREE.Color(campus.background);
-    world.fog = new THREE.Fog(campus.background, 260, 1000);
+    world.fog = new THREE.Fog(campus.background, 450, 2200);
+    sun.position.set(walker.x-70,140,walker.z+60); sun.target.position.set(walker.x,0,walker.z);
     const night = campus.time === 'night'; hemi.intensity = night ? 0.9 : 2; sun.intensity = night ? 0.65 : 2.4;
     sun.color.set(night ? '#9ebadb' : '#fff0d2');
     renderer.render(world, camera); renderCount += 1;
@@ -294,10 +313,11 @@ export function createCampusHost(container: HTMLElement, {
     const forward = Number(keys.has('up')) - Number(keys.has('down'));
     if ((right || forward) && walkTask) { cancelTask(); walker.stop(); }
     walker.input(canWalk() ? right : 0, canWalk() ? forward : 0, keys.has('jog'));
+    const fromX = walker.x, fromZ = walker.z;
     const moving = walker.step(dt, yaw, reduced());
-    phase += dt * (walker.jogging ? 9 : 5);
+    phase += gaitPhase(Math.hypot(walker.x - fromX, walker.z - fromZ), .60, walker.jogging, false);
     campus.walk.move(walker.x, 0, walker.z, walker.ry);
-    if (walker.moving) { campus.walk.gait(true, phase); report.report(walker.x, walker.z, now()); }
+    if (walker.moving) { campus.walk.gait(true, phase, walker.jogging); report.report(walker.x, walker.z, now()); }
     else campus.walk.rest();
     if (wasMoving && !walker.moving) report.rest(walker.x, walker.z, now());
     wasMoving = walker.moving;
@@ -342,11 +362,11 @@ export function createCampusHost(container: HTMLElement, {
   const pointerDown = (event: PointerEvent): void => { if (event.button !== 0) return; drag = { id: event.pointerId, x: event.clientX, y: event.clientY }; try { canvas.setPointerCapture(event.pointerId); } catch {} };
   const pointerMove = (event: PointerEvent): void => {
     if (!drag || drag.id !== event.pointerId) return;
-    yaw -= (event.clientX - drag.x) * 0.006; tilt = clamp(tilt + (event.clientY - drag.y) * 0.004, 0.25, 1.35);
+    yaw -= (event.clientX - drag.x) * 0.006; tilt = clamp(tilt + (event.clientY - drag.y) * 0.004, 0.10, 1.35);
     drag.x = event.clientX; drag.y = event.clientY; event.preventDefault(); draw();
   };
   const pointerUp = (event: PointerEvent): void => { if (drag?.id === event.pointerId) drag = null; };
-  const wheel = (event: WheelEvent): void => { if (!Number.isFinite(event.deltaY)) return; event.preventDefault(); distance = clamp(distance + event.deltaY * 0.07, 14, 220); draw(); };
+  const wheel = (event: WheelEvent): void => { if (!Number.isFinite(event.deltaY)) return; event.preventDefault(); distance = clamp(distance + event.deltaY * 0.07, 8, 900); draw(); };
   canvas.addEventListener('pointerdown', pointerDown); canvas.addEventListener('pointermove', pointerMove);
   canvas.addEventListener('pointerup', pointerUp); canvas.addEventListener('pointercancel', pointerUp);
   canvas.addEventListener('wheel', wheel, { passive: false });
@@ -473,7 +493,7 @@ export function createCampusHost(container: HTMLElement, {
       canvas.removeEventListener('pointerdown', pointerDown); canvas.removeEventListener('pointermove', pointerMove);
       canvas.removeEventListener('pointerup', pointerUp); canvas.removeEventListener('pointercancel', pointerUp); canvas.removeEventListener('wheel', wheel);
       campus.dispose(); shuttle.dispose(); kit.dispose(); renderer.dispose();
-      canvas.remove(); tagLayer.remove(); miniMap.remove(); zoneLabel.remove(); controls.remove();
+      canvas.remove(); tagLayer.remove(); miniMap.remove(); zoneLabel.remove(); controls.remove(); attribution.remove();
       container.classList.remove('campus-host'); container.style.removeProperty('--campus-top'); container.style.removeProperty('--campus-bottom');
     },
   };

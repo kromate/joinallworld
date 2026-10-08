@@ -39,7 +39,8 @@
  */
 import type * as THREE from 'three';
 import { createKit } from './kit.ts';
-import { buildAvatar } from './characters.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { buildAvatar, normalizeLook } from './characters.ts';
 import type { AvatarGroup } from './characters.ts';
 import type { ThreeModule } from './types.ts';
 import { bodyAllowed, bodyImports, drawsWebGL2, importBody } from './body/gate.ts';
@@ -196,11 +197,13 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   let inset = Math.max(0, options.inset ?? 0), yaw = START_YAW, focus: PreviewFocus = asFocus(options.focus), shown: PreviewFrame = { ...FRAMES[focus] };
   let size = { width: 0, height: 0 }, frameId = 0;
   const tweens = new Map<string, Tween>(); // name → { start, duration, step(t, dt) → false to stop early, last }
+  let previewProportions = avatarProportions(undefined);
   let body: SkinnedBody | null = null, bodyLook: unknown = null, bodyLoading = false, bodyFailed = !bodyAllowed();
 
   /** Wear the look on the skinned body (see the header), fetching it once the world already has; else keep the drawn figure. */
   function dress(look: unknown) {
     bodyLook = look;
+    previewProportions = avatarProportions(normalizeLook(look, 'preview').appearance);
     if (body && !body.wear(look, 'preview')) { body.dispose(); body = null; }
     if (body) { if (avatar) avatar.visible = false; return; }
     if (bodyLoading || bodyFailed || !bodyImports.count) return;
@@ -222,7 +225,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     // The subject sits in the top part of the view; the inset below it is left empty (the ground's front edge and a stage's buttons).
     const reserved = clamp(inset / Math.max(1, size.height), 0, 0.45);
     const height = shown.height / (1 - reserved);
-    frameCamera(camera, { y: shown.y + shown.height / 2 - height / 2, height, width: shown.width }, size.width / Math.max(1, size.height) || 1);
+    frameCamera(camera, { y: (shown.y + shown.height / 2 - height / 2) * previewProportions.height, height: height * previewProportions.height, width: shown.width * previewProportions.height * previewProportions.width }, size.width / Math.max(1, size.height) || 1);
   }
   function render() {
     if (disposed || lost || !size.width || !size.height) return;

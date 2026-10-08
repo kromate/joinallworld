@@ -23,6 +23,9 @@ import { HTTP_PER_MINUTE } from './social.ts';
 import { socialService, MATERIAL } from '../social/service.ts';
 import { visitService } from '../social/visit.ts';
 import { VISIT } from '../../src/game/visit.ts';
+import { worldOf } from '../world/service.ts';
+import { readPlot } from '../world/street.ts';
+import { UUID_PATTERN } from '../protocol.ts';
 import type { Db, HouseLinkRecord, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 
 export default function visitRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
@@ -40,6 +43,20 @@ export default function visitRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   const alone = (request: RouteRequest, key: string): void => { if (!ctx.allow(`${key}:${request.ip}`, VISIT.perAddressPerMinute)) throw ctx.fail(429, 'rate_limited'); };
 
   return {
+    'POST /api/social/visit/plot/enter': async (request) => {
+      const body = await request.json(), city = ctx.cityIds.find(id => id === body.city);
+      await ctx.store.read(db => request.requireSession(db));
+      if (!city) throw ctx.fail(400, 'invalid_city');
+      const plot = readPlot(body.plot, city);
+      if (!plot) throw ctx.fail(400, 'invalid_plot');
+      if (typeof body.host !== 'string' || !UUID_PATTERN.test(body.host)) throw ctx.fail(400, 'invalid_player');
+      const world = worldOf(ctx);
+      if (!world.enabled) throw ctx.fail(503, 'world_unavailable');
+      const owns = await world.ownsPlot(city, plot, body.host.toLowerCase());
+      return { body: await run(request, (db, session) => owns ? visit.enterPlot(db, session, body) : { ok: false, code: 'door_unavailable', reason: 'That door is no longer available. Refresh the street.' }), renew: true };
+    },
+    'GET /api/social/visit/home': async (request) => ({ body: await run(request, (db, session) => visit.homeProjection(db, session, request.query.get('host'))), renew: true }),
+    'POST /api/social/visit/capture-consent': async (request) => { const body = await request.json(); return { body: await run(request, (db, session) => visit.captureConsent(db, session, body)), renew: true }; },
     'GET /api/social/visit/door': async (request) => ({ body: await run(request, (db, session) => visit.door(db, session)), renew: true }),
     'POST /api/social/visit/door': async (request) => { const body = await request.json(); return { body: await run(request, (db, session) => visit.setDoor(db, session, body)), renew: true }; },
     'POST /api/social/visit/close': async (request) => { const body = await request.json(); return { body: await run(request, (db, session) => visit.closeDoor(db, session, body)), renew: true }; },

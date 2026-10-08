@@ -73,7 +73,8 @@ import type { SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { HomePower, HomeView } from '../../types/view.ts';
 import { emit, modify } from '../registry.ts';
 import { busy, fail, finite, isRecord, naira, ok } from '../util.ts';
-import { addItem, addMoodlet, addSkillXp, canAfford, canCredit, changeNeeds, countItem, credit, debit, findActivity, hasItems, removeItems } from '../api.ts';
+import { addItem, addMoodlet, addSkillXp, defaultSpot, canAfford, canCredit, changeNeeds, countItem, credit, debit, findActivity, hasItems, removeItems } from '../api.ts';
+import { venueFor } from '../cities/runtime.ts';
 import { conditionsKit, gridAt } from '../conditions/slot.ts';
 import { TANK_SECONDS, litresOf } from '../conditions/power.ts';
 import { FURNITURE, HOME_ACTIVITIES, HOME_SPOTS, KINDS, PORTED_ACTIVITY_KIND, POWERED_KINDS, POWER_BONUS, SELL_REFUND_RATE, STAR_MULTIPLIER, STARTER_FURNITURE } from '../content/furniture.ts';
@@ -81,18 +82,21 @@ import { INGREDIENTS, INGREDIENT_ORDER, MAX_PACKS_PER_ORDER, RECIPES } from '../
 import { homeOf } from '../content/housing.ts';
 import { defaultHouseFor, houseFor, housesFor } from '../cities/housingRuntime.ts';
 import { HOUSE_DESIGNS } from '../content/world.ts';
-import type { WantedItem } from '../home-layout.ts';
-import { MAX_PLACED, MAX_STORED_PER_ITEM, checkPlacement, doorSlot, fitInto, normalise, starterLayout, windowSlot } from '../home-layout.ts';
+import type { Plot, WantedItem } from '../home-layout.ts';
+import { MAX_PLACED, MAX_STORED_PER_ITEM, checkPlacement, doorSlot, fitInto, frontDoorBlocked, normalise, plotOf, starterLayout, windowSlot } from '../home-layout.ts';
 
 const HOME: VenueId = 'home';
 const ID_PATTERN = /^f[1-9]\d{0,8}$/;
+// A refit's spill can accumulate across moves. Bound saves by the furniture ID namespace,
+// rather than MAX_PLACED (which counts only the pieces standing in the current house).
+const MAX_OVERFLOW_PER_ITEM = 1e9;
 const SPOT_META: Record<string, { spotLabel?: string; spotIcon?: string }> = { kitchen: {}, bathroom: {}, bedroom: {}, ...Object.fromEntries(Object.entries(HOME_SPOTS).map(([id, spot]) => [id, { spotLabel: spot.label, spotIcon: spot.icon }])) };
 /** Ambience: stars of decor, light, comfort and pet items; a pleasant room lifts the mood on arrival (original beta rule). */
 const AMBIENCE_CATEGORIES = ['decor', 'light', 'comfort', 'pets'];
 const AMBIENCE_MINIMUM = 3;
 
 /** A position of a placed object. */
-type Placement = Pick<PlacedItem, 'x' | 'y' | 'rot'>;
+type Placement = Pick<PlacedItem, 'x' | 'y' | 'rot' | 'floor'>;
 /** Kinds that work better with power, as plain strings so any kind name can be looked up. */
 const poweredKinds: readonly string[] = POWERED_KINDS;
 
@@ -103,6 +107,11 @@ const furnitureDef = (id: FurnitureId): FurnitureDefinition => FURNITURE[id]!; /
 const ingredientDef = (id: ItemId): IngredientDefinition => INGREDIENTS[id]!; // callers pass INGREDIENT_ORDER ids or recipe ingredient ids
 /** The room's size: the rented tier's, or the design's while the player lives in a house they built. */
 export const gridOf = (state: LifeState): number => homeOf(state, HOUSE_DESIGNS, housesFor(state.estate.city)).grid;
+/** Where objects go: room one alone, or an owned house's rooms and floors. */
+export const plotFor = (state: LifeState): Plot => {
+  const info = homeOf(state, HOUSE_DESIGNS, housesFor(state.estate.city));
+  return plotOf(info.grid, info.owned);
+};
 const whole = (value: unknown, fallback: number): number => (finite(value) ? Math.max(0, Math.round(value)) : fallback);
 const priceOf = (state: LifeState, item: FurnitureDefinition, ctx: LifeContext): number => whole(modify(state, 'shop.price', item.price, { item, kind: 'furniture' }, ctx), item.price);
 const refundOf = (item: FurnitureDefinition): number => Math.floor(item.price * SELL_REFUND_RATE);
@@ -110,8 +119,8 @@ const refundOf = (item: FurnitureDefinition): number => Math.floor(item.price * 
 export const groceryPrice = (state: LifeState, item: IngredientDefinition, packs: number, ctx: LifeContext): number => whole(modify(state, 'shop.price', item.price * packs, { item, kind: 'grocery' }, ctx), item.price * packs);
 /** Pack counts the Groceries app offers per row. */
 export const GROCERY_PACK_OPTIONS = Object.freeze([1, 3]);
-const storedCount = (state: LifeState): number => Object.values(state.home.storage).reduce((sum, count) => sum + count, 0);
-const placedOfKind = (state: LifeState, kind: string): PlacedItem[] => state.home.items.filter((item) => FURNITURE[item.itemId]?.kind === kind);
+const storedCount = (state: LifeState): number => [...Object.values(state.home.storage), ...Object.values(state.home.overflow ?? {})].reduce((sum, count) => sum + count, 0);
+const placedOfKind = (state: LifeState, kind: string): PlacedItem[] => (state.stories?.running?.content.items ?? state.home.items).filter((item) => FURNITURE[item.itemId]?.kind === kind);
 
 const LENT = { canAfford, debit, emit };
 const hasPlaced = (state: LifeState, itemId: string): boolean => state.home.items.some((item) => item.itemId === itemId);
@@ -161,19 +170,37 @@ function freshHome(grid: number, stocked = false): HomeState {
 }
 
 function store(state: LifeState, itemId: FurnitureId, count = 1): void {
-  state.home.storage[itemId] = Math.min(MAX_STORED_PER_ITEM, (state.home.storage[itemId] ?? 0) + count);
+  const held = state.home.storage[itemId] ?? 0, fits = Math.min(count, MAX_STORED_PER_ITEM - held);
+  if (fits) state.home.storage[itemId] = held + fits;
+  if (count > fits) {
+    state.home.overflow ??= {};
+    state.home.overflow[itemId] = Math.min(MAX_OVERFLOW_PER_ITEM, (state.home.overflow[itemId] ?? 0) + count - fits);
+  }
+}
+/** Keep every displaced piece available through the ordinary Storage controls. */
+function refillStorage(state: LifeState, itemId: FurnitureId): void {
+  const waiting = state.home.overflow?.[itemId] ?? 0;
+  if (!waiting) return;
+  const held = state.home.storage[itemId] ?? 0, moved = Math.min(waiting, MAX_STORED_PER_ITEM - held);
+  if (moved) state.home.storage[itemId] = held + moved;
+  if (waiting > moved) state.home.overflow![itemId] = waiting - moved;
+  else {
+    delete state.home.overflow![itemId];
+    if (!Object.keys(state.home.overflow!).length) delete state.home.overflow;
+  }
 }
 function unstore(state: LifeState, itemId: FurnitureId): boolean {
   const held = state.home.storage[itemId] ?? 0;
   if (!(held > 0)) return false;
   state.home.storage[itemId] = held - 1;
   if (held - 1 <= 0) delete state.home.storage[itemId];
+  refillStorage(state, itemId);
   return true;
 }
 
 /** Re-fit everything into the current house's grid; what does not fit goes to storage. */
 function refit(state: LifeState): number {
-  const { items, stored } = fitInto(gridOf(state), state.home.items);
+  const { items, stored } = fitInto(plotFor(state), state.home.items);
   state.home.items = items;
   for (const itemId of stored) store(state, itemId);
   return stored.length;
@@ -181,8 +208,26 @@ function refit(state: LifeState): number {
 
 // ---- actions ---------------------------------------------------------------------------------
 
+function homeDoor(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  const blocked = busy(state, 'Finish or cancel your current action before using the door.');
+  if (blocked) return blocked;
+  const direction = payload.direction;
+  if (direction !== 'outside' && direction !== 'inside') return fail(state, 'invalid_direction', 'Choose whether to step outside or return home.');
+  const from = direction === 'outside' ? HOME : 'neighbourhood';
+  if (state.location !== from) return fail(state, 'not_at_door', 'Go to your own home door first.');
+  const destination = direction === 'outside' ? 'neighbourhood' : HOME;
+  if (!venueFor(ctx.cityId, destination)) return fail(state, 'not_at_door', 'Your home door is unavailable.');
+  // A doorstep round trip is not a venue visit: it must not earn missions or renew arrival bonuses.
+  state.location = destination;
+  if (direction === 'outside' && state.stories) state.stories.running = null;
+  state.spot = defaultSpot(destination, ctx.cityId);
+  state.message = direction === 'outside' ? 'You stepped outside your home.' : 'You returned home.';
+  return ok(state, direction === 'outside' ? 'stepped_out' : 'stepped_in');
+}
+
 /** Shared guards for changing the room. */
 function guard(state: LifeState, verb: string) {
+  if (state.stories?.running) return fail(state, 'busy', 'End your story scene before rearranging furniture.');
   const blocked = busy(state, `Finish or cancel your current action before you ${verb} furniture.`);
   if (blocked) return blocked;
   if (state.location !== HOME) return fail(state, 'not_home', `Go home to ${verb} furniture.`);
@@ -191,10 +236,13 @@ function guard(state: LifeState, verb: string) {
 function placeable(state: LifeState, def: FurnitureDefinition, payload: Record<string, unknown>, ignoreId?: string): { at?: undefined; why: Block<PlacementCode> } | { at: Placement; why: Block<PlacementCode> | null } {
   const at = normalise(def, payload?.x, payload?.y, payload?.rot ?? 0);
   if (!at) return { why: { code: 'invalid_position', reason: 'Choose a tile inside your room.' } };
-  return { at, why: checkPlacement(gridOf(state), state.home.items, def, at.x, at.y, at.rot, ignoreId) };
+  const floor = payload?.floor ?? 0;
+  if (typeof floor !== 'number' || !Number.isInteger(floor)) return { why: { code: 'invalid_position', reason: 'Choose a tile inside your room.' } };
+  return { at: { ...at, floor }, why: frontDoorBlocked(gridOf(state), def, at, floor) ?? checkPlacement(plotFor(state), state.home.items, def, at.x, at.y, at.rot, ignoreId, floor) };
 }
 function put(state: LifeState, def: FurnitureDefinition, at: Placement): PlacedItem {
-  const placed = { id: `f${state.home.seq}`, itemId: def.id, ...at };
+  const { floor, ...spot } = at!; // placeable() returns a null `why` only together with a position
+  const placed = { id: `f${state.home.seq}`, itemId: def.id, ...spot, ...(floor ? { floor } : {}) };
   state.home.seq += 1;
   state.home.items.push(placed);
   state.home.custom = true;
@@ -225,8 +273,11 @@ function moveFurniture(state: LifeState, payload: Record<string, unknown>) {
   if (!placed) return fail(state, 'invalid_object', 'That object is not in your room.');
   const def = furnitureDef(placed.itemId);
   const { at, why } = placeable(state, def, payload, placed.id);
-  if (why) return fail(state, why.code, why.reason);
-  Object.assign(placed, at);
+  if (why || !at) return fail(state, why?.code ?? 'invalid_position', why?.reason ?? 'Choose a tile inside your room.');
+  const { floor, ...spot } = at;
+  Object.assign(placed, spot);
+  if (floor) placed.floor = floor;
+  else delete placed.floor;
   state.home.custom = true;
   state.message = `${def.label} moved.`;
   return ok(state, 'moved');
@@ -332,6 +383,7 @@ function sanitizeBoost(value: unknown, cityId: string): HomeState['boost'] {
  */
 const play = PLAYS ? {
   actions: {
+    'home.door': homeDoor,
     'home.furniture-buy': buyFurniture,
     'home.furniture-move': moveFurniture,
     'home.furniture-sell': sellFurniture,
@@ -421,18 +473,26 @@ export default {
       if (!isRecord(raw) || typeof raw.itemId !== 'string' || !itemOf(raw.itemId)) continue;
       const id = typeof raw.id === 'string' && ID_PATTERN.test(raw.id) && !seen.has(raw.id) ? raw.id : '';
       if (id) seen.add(id);
-      wanted.push({ id, itemId: raw.itemId, x: raw.x, y: raw.y, rot: raw.rot });
+      wanted.push({ id, itemId: raw.itemId, x: raw.x, y: raw.y, rot: raw.rot, floor: raw.floor });
     }
     let seq = typeof saved.seq === 'number' && Number.isSafeInteger(saved.seq) && saved.seq > 0 && saved.seq < 1e9 ? saved.seq : 1;
     for (const id of seen) seq = Math.max(seq, Number(id.slice(1)) + 1);
     for (const entry of wanted) if (!entry.id) { entry.id = `f${seq}`; seq += 1; }
-    const { items, stored } = fitInto(grid, wanted);
+    const { items, stored } = fitInto(plotFor(state), wanted);
     const fuel = typeof saved.fuel === 'number' && Number.isFinite(saved.fuel) ? Math.min(TANK_SECONDS, Math.max(0, Math.round(saved.fuel))) : 0;
     state.home = { items, storage: {}, seq, stocked: saved.stocked === true, custom: saved.custom === true, boost: sanitizeBoost(saved.boost, ctx.cityId), fuel };
     if (isRecord(saved.storage)) {
       for (const [itemId, count] of Object.entries(saved.storage)) {
         if (itemOf(itemId) && typeof count === 'number' && Number.isSafeInteger(count) && count > 0) state.home.storage[itemId] = Math.min(count, MAX_STORED_PER_ITEM);
       }
+    }
+    if (isRecord(saved.overflow)) {
+      for (const [itemId, count] of Object.entries(saved.overflow)) {
+        if (!itemOf(itemId) || typeof count !== 'number' || !Number.isSafeInteger(count) || count <= 0) continue;
+        state.home.overflow ??= {};
+        state.home.overflow[itemId] = Math.min(count, MAX_OVERFLOW_PER_ITEM);
+      }
+      for (const itemId of Object.keys(state.home.overflow ?? {})) refillStorage(state, itemId);
     }
     for (const itemId of stored) store(state, itemId);
   },

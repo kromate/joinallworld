@@ -54,6 +54,8 @@ export function createAccount(deps: AccountDeps, lite: AccountLite = createAccou
   const state = lite.state, load = lite.load
   // The tokens of a sign-in that is waiting for its address to be confirmed: in memory only, never reactive, never stored.
   let held: ProviderTokens | null = null, changed = false
+  let phoneHeld: { tokens: ProviderTokens; session: string } | null = null
+  let phoneEpoch = 0
   let provider: Promise<IdentityProvider> | null = null
 
   const theProvider = (): Promise<IdentityProvider> => (provider ??= deps.loadProvider().then((module) => module.createIdentityProvider({ apiKey: lite.key(), origin: deps.origin() })).catch((error: unknown) => { provider = null; throw error }))
@@ -90,6 +92,37 @@ export function createAccount(deps: AccountDeps, lite: AccountLite = createAccou
   }
 
   return {
+    async phoneChallenge(host: HTMLElement, onToken: (token: string) => void): Promise<() => void> {
+      return (await import('../trust/phoneProvider.ts')).mountPhoneCaptcha(host, lite.key(), onToken)
+    },
+    beginPhone(reauth: Reauth, number: string, captcha: string): Promise<boolean> {
+      return attempt(async () => {
+        const epoch = ++phoneEpoch
+        phoneHeld = null
+        const tokens = await proofOf(reauth), api = (await import('../trust/phoneProvider.ts')).phoneProvider(lite.key())
+        if (epoch !== phoneEpoch) return
+        const session = await api.send(number.trim(), captcha)
+        if (epoch === phoneEpoch) phoneHeld = { tokens, session }
+      })
+    },
+    confirmPhone(code: string): Promise<boolean> {
+      return attempt(async () => {
+        const held = phoneHeld, epoch = phoneEpoch
+        if (!held) throw Error('Start a new phone check.')
+        await (await import('../trust/phoneProvider.ts')).phoneProvider(lite.key()).link(held.session, code.trim(), held.tokens.idToken)
+        if (epoch !== phoneEpoch) return
+        const proof = await (await theProvider()).refresh(held.tokens.refreshToken)
+        if (epoch !== phoneEpoch) return
+        await post('/api/trust/phone/complete', { clientId: `${Date.now()}:${crypto.randomUUID()}`, idToken: proof.idToken }).catch(error => {
+          if (codeOf(error) === 'linked_phone_required') throw Error('Google has not confirmed this number on your existing account. Start a new phone check.')
+          if (codeOf(error) === 'provider_unavailable') throw Error('Phone verification is unavailable right now. Try again later.')
+          if (codeOf(error) === 'account_changed') throw Error('Your account changed. Close this check and sign in again.')
+          throw error
+        })
+        phoneHeld = null
+      })
+    },
+    cancelPhone(): void { phoneEpoch++; phoneHeld = null },
     state, load,
     /** The sign-in screen was opened: start from the form with nothing left over from last time. */
     begin(): void { held = null; changed = false; state.step = 'form'; state.error = ''; state.errorField = ''; state.notice = ''; state.pendingEmail = ''; state.result = null },

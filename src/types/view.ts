@@ -73,10 +73,6 @@ export interface WalletView {
   cash: number
   /** NEWEST FIRST (the stored ledger is newest last). */
   ledger: LedgerLine[]
-  /** NEWEST FIRST. */
-  days: StatementDay[]
-  /** The statement without its `days` and `lines` (they are the two fields above, reversed). */
-  statement: Pick<WalletStatement, 'opening' | 'closing' | 'totals' | 'reconciled' | 'problems' | 'kept' | 'linesOpening'>
 }
 
 // ---- inventory ----------------------------------------------------------------------------
@@ -770,7 +766,7 @@ export interface StartHomeCard extends StartHomeDefinition {
 }
 
 export interface BoutiqueItem {
-  kind: WardrobeKind | 'accessories'
+  kind: WardrobeKind | 'accessories' | 'wearables'
   id: string
   /** Accessories only: where it is worn. */
   slot?: AccessorySlot
@@ -807,7 +803,7 @@ export interface OnboardingView {
   /** The rented starting homes (not offered by the game's own settle-in screens any more). */
   homes: StartHomeCard[]
   /** `accessories` is always present here and lists EVERY accessory owned, the free basics included (unlike the state's). */
-  wardrobe: Required<Wardrobe>
+  wardrobe: Required<Pick<Wardrobe, 'hair' | 'outfit' | 'fabric' | 'accessories'>> & Pick<Wardrobe, 'wearables'>
   /** Every style the current body can wear, then every accessory. */
   boutique: BoutiqueItem[]
   /** The five-word mood scale (MOODS) — a different scale from `view.needs.mood.label`. */
@@ -1169,7 +1165,7 @@ export const VIEW_KEYS = [
 
 /** The keys of each system's view, sorted. (`skills` is keyed by SkillId.) */
 export const VIEW_FIELD_KEYS = {
-  wallet: ['cash', 'days', 'ledger', 'statement'],
+  wallet: ['cash', 'ledger'],
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [

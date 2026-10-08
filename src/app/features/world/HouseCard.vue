@@ -34,10 +34,12 @@ function openOwner(): void {
     <template v-if="house.you">
       <p class="world-now"><b>Your house</b><small>This is where you live.</small></p>
       <button class="ui-button is-primary is-block" type="button" @click="shell.open('houses')">Style or upgrade it</button>
+      <button class="ui-button is-block" type="button" @click="shell.open('commerce')">Open my store</button>
     </template>
     <template v-else-if="house.id">
       <p class="world-now"><b><i class="world-dot" :class="{ 'is-on': house.online }" />{{ house.name }}</b><small>{{ house.online ? 'Online now' : 'Not online' }}</small></p>
       <button class="ui-button is-primary is-block" type="button" @click="openOwner">Open their card · chat, add friend, knock</button>
+      <button class="ui-button is-block" type="button" @click="shell.open('commerce', { owner: house.id })">Visit their shops</button>
     </template>
     <template v-else>
       <p class="world-now"><b>A neighbour</b><small>This player is not listed in the directory, so their name is not shown.</small></p>

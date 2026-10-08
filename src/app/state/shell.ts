@@ -74,6 +74,10 @@ export function createShell(game: Game, panels: readonly Panel[], hooks: ShellHo
   function open(id: string, params?: unknown): boolean {
     const lock = lockOf()
     if (lock && id !== lock.panel.id && byId.get(id)?.role !== 'session-gate') { game.toast(lock.reason); return false }
+    if (game.snapshotPhase.value !== 'available') {
+      const panel = byId.get(id), safe = id === 'help' || id === 'support' || id === 'account' || id === 'session' || panel?.role === 'session-gate'
+      if (!safe) { game.toast('Reconnect to load this life before opening it.', 'error'); return false }
+    }
     // Anything opened while the phone is up stays in the phone.
     const from = phoneHosts(sheet.value) ? 'phone' as const : null
     if (id === 'phone') sheet.value = { kind: 'phone' }

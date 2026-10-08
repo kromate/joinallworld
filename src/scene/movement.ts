@@ -36,7 +36,13 @@ import type { WalkGrid, WalkPoint, WalkRect } from './walk-grid.ts';
 export { AVATAR_RADIUS, CELL, createWalkGrid } from './walk-grid.ts';
 export type { WalkCircle, WalkDescription, WalkGrid, WalkPoint, WalkRect, WalkShape } from './walk-grid.ts';
 
-export const WALK_SPEED = 4.6, JOG_SPEED = 8;
+/** A 2.45-unit avatar represents a 1.75 m person: walking 1.3 m/s, jogging 2.8 m/s, before scene scale. */
+export const WALK_SPEED = 1.82, JOG_SPEED = 3.92;
+/** Full left/right cycle: shipped feet travel 0.675 m walking, 1.24 m jogging, at body-to-scene scale 2.45/1.81.
+ * The procedural jog has a shorter reach; both visible rigs consume the same distance-derived phase. */
+export function gaitPhase(distance: number, scale: number, jog: boolean, skinned = true): number {
+  return 2 * Math.PI * distance / ((jog ? skinned ? 3.36 : 2.7 : 1.83) * scale);
+}
 /** A path longer than this is jogged unless the caller says otherwise. */
 export const LONG_WALK = 9;
 const TURN_RATE = 14; // radians per second the avatar turns towards where it is going

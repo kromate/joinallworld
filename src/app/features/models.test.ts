@@ -58,6 +58,7 @@ test('HUD: each connection state has its own truthful wording', async () => {
     assert.equal(/internet|offline/i.test(`${LINKS[link].pill} ${LINKS[link].notice?.title ?? ''}`), link === 'offline')
   }
   assert.deepEqual(hudNotice({ ...view, connected: false, link: 'expired' })?.actions.map((action) => action.run), ['new-life', 'reconnect'])
+  assert.deepEqual(hudNotice({ ...view, connected: false, link: 'recovery' })?.actions.map((action) => action.run), ['support', 'reconnect'])
   assert.equal(hudNotice({ ...view, connected: false, link: 'connecting' }), null)
 })
 

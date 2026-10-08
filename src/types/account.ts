@@ -52,6 +52,7 @@ export interface SignInResponse extends ApiEnvelope {
 }
 export interface SwitchCharacterResponse extends ApiEnvelope { character: AccountCharacter; parked: ParkedCharacter[] }
 export interface AccountExportResponse extends ApiEnvelope {
+  commerce?: import('./commerce.ts').OwnCommerce
   account: { provider: AccountProviderId; email: string; createdAt: number; lastSeenAt: number }
   devices: { signedInAt: number; lastSeenAt: number; expiresAt: number; thisDevice: boolean }[]
   character: (AccountCharacter & { cities: string[] }) | null

@@ -5,6 +5,7 @@
 import { APPEARANCE, DREAM_REWARD, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { DreamId, Look, StartHomeId, TraitId } from '../../../types/life.ts'
 import { hairOptions, outfitOptions, slotOf, starterWardrobe } from './lookModel.ts'
+import { avatarLookFields } from '../../../game/wardrobe/look.ts'
 import { money } from '../../ui/format.ts'
 import { cityUnit } from '../../../game/cities/terminology.ts'
 
@@ -39,6 +40,7 @@ export function storedLook(key: string, storage: Storage | null = deviceStorage(
       && extras.length <= APPEARANCE.accessoryLimit && extras.every((id) => (free.accessories as string[]).includes(id)) && slots.size === extras.length
     if (!valid) return null
     return {
+      ...avatarLookFields(look),
       body: look.body, hair: look.hair as Look['hair'], outfit: look.outfit as Look['outfit'], fabric: look.fabric as Look['fabric'], skin: look.skin as Look['skin'],
       hairColor: look.hairColor as Look['hairColor'], outfitColor: look.outfitColor as Look['outfitColor'], bottomsColor: look.bottomsColor as Look['bottomsColor'],
       accessories: [...extras], face: (APPEARANCE.faces as string[]).includes(look.face as string) ? look.face as Look['face'] : APPEARANCE.faces[0] as Look['face'],

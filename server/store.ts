@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 import { storageError } from './protocol.ts';
+import { drainWalletEffects, type StoredWalletEffect } from './economy/effects.ts';
 import type { NodeStoreStats, StoreStats } from '../src/types/support.ts';
 import type { Db, SessionRecord, Store, StoreHelpers, StoreLayoutTools, TransactOptions } from './types.ts';
 import { KEYED_SPECS, Layer, isKeyedCollection, parseLayout } from './keyed.ts';
@@ -203,6 +204,7 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
     const keyed: Partial<Record<KeyedName, KeyedPart>> = {};
     const parts = new Map<string, unknown>(), removed = new Set<string>();
     const layer = new Layer(layers);
+    const observedSessions = new Set<unknown>();
     let scanned = false; // looked across every session (a scan, a lookup by public id, a key listing)
     const peeked = new Set<string>(); // asked "is it there?" without reading it
     function keyedPart(name: KeyedName): KeyedPart {
@@ -214,13 +216,14 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
       part.proxy = new Proxy<Record<string, unknown>>({}, {
         get(target, key) {
           if (typeof key !== 'string' || part.deleted.has(key)) return undefined;
-          if (part.copies.has(key)) return part.copies.get(key);
+          if (part.copies.has(key)) { const value = part.copies.get(key); if (name === 'sessions' && value) observedSessions.add(value); return value; }
           if (!Object.hasOwn(source(), key)) { peeked.add(`${name}/${key}`); return undefined; }
           const copy = structuredClone(source()[key]);
           part.copies.set(key, copy);
+          if (name === 'sessions' && copy) observedSessions.add(copy);
           return copy;
         },
-        set(target, key, value) { if (typeof key !== 'string') return false; part.copies.set(key, value); part.deleted.delete(key); return true; },
+        set(target, key, value) { if (typeof key !== 'string') return false; if (name === 'sessions' && value) observedSessions.add(value); part.copies.set(key, value); part.deleted.delete(key); return true; },
         has: (target, key) => has(key),
         deleteProperty(target, key) { if (typeof key !== 'string') return true; part.copies.delete(key); if (Object.hasOwn(source(), key)) part.deleted.add(key); return true; },
         ownKeys() { scanned = true; return [...Object.keys(source()).filter((key) => !part.deleted.has(key)), ...[...part.copies.keys()].filter((key) => !Object.hasOwn(source(), key))]; },
@@ -273,7 +276,7 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
           // Replacing the whole map: everything stored is dropped and the given entries take its place.
           for (const old of Object.keys(mapOf(key))) part.deleted.add(old);
           part.copies.clear(); part.created = true;
-          for (const [entry, record] of Object.entries(value)) { part.copies.set(entry, record); part.deleted.delete(entry); }
+          for (const [entry, record] of Object.entries(value)) { if (key === 'sessions') observedSessions.add(record); part.copies.set(entry, record); part.deleted.delete(entry); }
           return true;
         }
         if (isLayered(key)) { peeked.add(key); layer.set(key, value); return true; }
@@ -326,6 +329,15 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
       }
       return undo.length ? undo : null;
     }
+    /** Move transaction-local wallet effects into the same document draft before commit. */
+    function prepare(): boolean {
+      const effects = drainWalletEffects(observedSessions);
+      if (!effects.length) return false;
+      const existing = parts.has('walletEffects') ? parts.get('walletEffects') : base['walletEffects'];
+      if (existing !== undefined && !Array.isArray(existing)) throw new Error('Invalid wallet effect journal');
+      const journal: StoredWalletEffect[] = existing === undefined ? [] : structuredClone(existing) as StoredWalletEffect[];
+      journal.push(...effects); parts.set('walletEffects', journal); return true;
+    }
     /**
      * What this view has looked at, as names like 'sessions/<key>' or 'social' — or null when it
      * looked across all sessions. Used to decide which unsaved changes of others it may have seen.
@@ -337,7 +349,7 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
       for (const name of KEYED) { const part = keyed[name]; if (!part) continue; if (part.created) return null; for (const key of part.copies.keys()) names.add(`${name}/${key}`); for (const key of part.deleted) names.add(`${name}/${key}`); }
       return names;
     }
-    return { db, commit, touched };
+    return { db, prepare, commit, touched };
   }
 
   function serialise(): string {
@@ -474,7 +486,8 @@ export async function createStore<D extends object = Db>(dataDir: string, { lazy
         if (epoch !== began) { stats.aborted += 1; throw storageError(lastError); }
         // `durable` may be a function of the result, so a request can decide after it has run
         // whether it acknowledged anything (a poll that completed an activity did; a quiet one did not).
-        const wait = typeof durable === 'function' ? durable(value) !== false : durable !== false;
+        const monetary = view.prepare();
+        const wait = monetary || (typeof durable === 'function' ? durable(value) !== false : durable !== false);
         const names = view.touched();
         const observed = observedBy(names); // unsaved durable changes of earlier transactions this one may have read
         const undo = view.commit();

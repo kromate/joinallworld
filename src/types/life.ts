@@ -1,3 +1,4 @@
+import type { AvatarLookExtensions, AvatarWearableId } from './avatar.ts';
 /**
  * The saved state of one life, as built by `createLife()` in src/life.ts.
  *
@@ -558,6 +559,8 @@ export interface PlacedItem {
   y: number
   /** Quarter turns 0–3 (an odd value swaps the footprint); wall items use only 0 (back wall) and 1 (side wall). */
   rot: number
+  /** Storey, 1 and up (left out on the ground floor, which every save from before storeys is on). */
+  floor?: number
 }
 
 /** Bookkeeping for the star-quality bonus on a running per-second activity (sleep, a nap). */
@@ -576,6 +579,8 @@ export interface HomeState {
   items: PlacedItem[]
   /** Owned but not placed: `{ [furnitureId]: count }`, 1–99 each. */
   storage: Record<FurnitureId, number>
+  /** Pieces displaced by a refit after storage filled. Refill storage as pieces are used or sold. */
+  overflow?: Record<FurnitureId, number>
   /** Next number for a placed object's id. */
   seq: number
   /** The starter kitchen ingredients have been handed out. */
@@ -624,7 +629,7 @@ export type ExpressionId = 'smile' | 'neutral' | 'grin'
  * content/traits.js APPEARANCE; the hex of each swatch id is looked up there.
  * (The field names use American `Color`; the APPEARANCE lists use British `Colours`.)
  */
-export interface Look {
+export interface Look extends AvatarLookExtensions {
   body: BodyId
   hair: HairId
   outfit: OutfitId
@@ -643,6 +648,8 @@ export interface Look {
 
 /** Owned styles: the basics, the look chosen at creation, and boutique purchases. */
 export interface Wardrobe {
+  /** Purchased layers; free layers are supplied by the catalogue. */
+  wearables?: AvatarWearableId[]
   hair: HairId[]
   outfit: OutfitId[]
   fabric: FabricId[]
@@ -774,7 +781,9 @@ export interface GoalsSlice {
 // ---- social -------------------------------------------------------------------------------
 
 /** Closeness with one NPC or one real player. Short keys keep the save small. */
+export interface MemoryFact { k: string; v?: string; day: LagosDay }
 export interface Relationship {
+  m?: MemoryFact[]
   /** Closeness points 0–100, one decimal. */
   p: number
   /** Lagos day of the last interaction. */
@@ -807,6 +816,8 @@ export interface Notice {
 }
 
 export interface SocialState {
+  rumours?: MemoryFact[]
+  followUps?: MemoryFact[]
   /** Keyed by NPC id or player public id; at most 200. */
   rel: Record<string, Relationship>
   /** The Bae's player public id. */
@@ -990,16 +1001,21 @@ export interface BusinessSlice {
  */
 export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, NeedsSlice, SkillsSlice, CareerSlice, ActivitiesSlice,
   TravelSlice, HealthSlice, EconomySlice, PropertySlice, EstateSlice, HomeSlice, OnboardingSlice, GoalsSlice, SocialSlice, CivicSlice,
-  MissionsSlice, EventsSlice, GrowthSlice, BusinessSlice, UnilagStudentSlice, UnilagCommunitySlice, UnilagShuttleSlice {}
+  MissionsSlice, EventsSlice, GrowthSlice, BusinessSlice, UnilagStudentSlice, UnilagCommunitySlice, UnilagShuttleSlice {
+  stories: import('./stories.ts').StoryState
+}
 
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
-  | 'economy' | 'property' | 'estate' | 'home' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
+  | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
+  land: Record<never, never>
+  street: Record<never, never>
+  stories: import('./stories.ts').StoriesSlice
   core: CoreSlice
   wallet: WalletSlice
   inventory: InventorySlice
@@ -1060,7 +1076,11 @@ export interface LifeContext {
   internal?: boolean
   /** createLife only: the input is the server's own stored copy, so an invalid saved action may be settled (refunded or charged). */
   trustedSave?: boolean
+  /** Server-only collector for exact player-wallet mutations. */
+  money?: (effect: MoneyEffect) => void
 }
+
+export interface MoneyEffect { at: number; amount: number; balanceAfter: number; reason: string }
 
 /**
  * What a caller may hand to createLife / dispatch / advanceLife / viewLife instead of a built
@@ -1111,7 +1131,7 @@ export interface AdvanceOutcome {
 export const LIFE_STATE_KEYS = [
   'activeAction', 'business', 'career', 'cash', 'civic', 'completedShifts', 'decay', 'economy', 'estate', 'events', 'goals', 'growth',
   'health', 'home', 'homeOwned', 'inventory', 'job', 'ledger', 'ledgerDays', 'location', 'message', 'missions', 'moodlets',
-  'name', 'needs', 'onboarding', 'property', 'skills', 'social', 'spot', 't', 'travel', 'unilagCommunity', 'unilagShuttle',
+  'name', 'needs', 'onboarding', 'property', 'skills', 'social', 'spot', 'stories', 't', 'travel', 'unilagCommunity', 'unilagShuttle',
   'unilagStudent', 'v',
 ] as const satisfies readonly (keyof LifeState)[]
 
@@ -1130,6 +1150,9 @@ export const SYSTEM_STATE_KEYS = {
   property: ['homeOwned', 'property'],
   estate: ['estate'],
   home: ['home'],
+  stories: ['stories'],
+  land: [],
+  street: [],
   onboarding: ['onboarding'],
   goals: ['goals'],
   social: ['social'],
@@ -1154,13 +1177,14 @@ export const SLICE_FIELD_KEYS = {
   economy: ['billedWeek', 'deposits', 'headsUp', 'loan', 'reminded', 'rent', 'seq', 'started'],
   property: ['car', 'cars', 'house'],
   estate: ['away', 'city', 'confirmed', 'ground', 'home', 'homeAt', 'lga', 'lgaAt', 'lgaConfirmed', 'lgaVia', 'living', 'nudged', 'old', 'plot', 'style', 'tier', 'upgrade'],
-  home: ['boost', 'custom', 'fuel', 'items', 'seq', 'stocked', 'storage'],
+  home: ['boost', 'custom', 'fuel', 'items', 'overflow', 'seq', 'stocked', 'storage'],
+  stories: ['running', 'scenes', 'seq'],
   onboarding: [
     'activities', 'bonusAt', 'bornAt', 'completedAt', 'done', 'dream', 'firstAt', 'house', 'joined', 'legacy', 'look', 'lottery',
     'needsSet', 'playedAt', 'required', 'seed', 'stage', 'step', 'traits', 'wardrobe',
   ],
   goals: ['besties', 'chain', 'cv', 'dream', 'dreamDone', 'feed', 'granted', 'perks', 'rerolls', 'seen', 'seq', 'stars', 'started', 'stats', 'wishes'],
-  social: ['bae', 'coupon', 'earned', 'family', 'free', 'notices', 'rel', 'streak', 'transfer'],
+  social: ['bae', 'coupon', 'earned', 'family', 'followUps', 'free', 'notices', 'rel', 'rumours', 'streak', 'transfer'],
   civic: ['claims', 'gems', 'hunt', 'news', 'seed', 'since', 'week', 'work'],
   missions: ['active', 'claimed', 'daily', 'day', 'paidDay', 'rerolls', 'seed', 'sets', 'stamps', 'titles', 'visited', 'week', 'weekly'],
   events: ['attended', 'count', 'spray', 'sprayed'],

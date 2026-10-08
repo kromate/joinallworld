@@ -14,7 +14,9 @@ export const H = reactive<{
   hidden: boolean
   /** Buy mode is the nav panel in front. */
   inBuy: boolean
-}>({ ghost: null, selected: null, hidden: false, inBuy: false })
+  /** The floor of the house Buy mode is furnishing (0, the ground floor, in a rented room). */
+  floor: number
+}>({ ghost: null, selected: null, hidden: false, inBuy: false, floor: 0 })
 
 export type SceneStatus = 'loading' | 'ready' | 'empty' | 'error'
 /** What the home scene last said about the room. */

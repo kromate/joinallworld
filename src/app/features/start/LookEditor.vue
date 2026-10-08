@@ -4,21 +4,35 @@
 // (it calls chooseLook with the wardrobe it wants). With `owned` (a wardrobe) styles not owned are
 // disabled and say where to buy them.
 import '../../../ui/panels/look-ui.css'
-import { computed } from 'vue'
+import { computed, defineAsyncComponent, h, ref } from 'vue'
 import { APPEARANCE, BOUTIQUE_PRICES } from '../../../game/content/traits.ts'
-import type { Look } from '../../../types/life.ts'
+import type { AvatarLook } from '../../../game/wardrobe/look.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { SECTIONS, chosen, lookUi, openLookTab, optionsOf, swatchLabel, titled, worn } from './lookModel.ts'
 import type { ChipsGroup, LookField, Owned, SwatchGroup } from './lookModel.ts'
 
 const props = withDefaults(defineProps<{
-  look: Look
+  look: AvatarLook
   owned?: Owned | null
 }>(), { owned: null })
-const emit = defineEmits<{ choose: [field: LookField, value: string] }>()
+const emit = defineEmits<{ choose: [field: LookField, value: string]; replace: [look: AvatarLook] }>()
+const LayerControls = defineAsyncComponent({
+  loader: () => import('./AvatarLayerControls.vue'),
+  loadingComponent: { render: () => h('p', { role: 'status' }, 'Loading appearance options…') },
+  errorComponent: { render: () => h('div', { role: 'alert' }, [
+    h('p', 'Appearance options could not load. Check your connection, then reload. Unsaved choices will be reset.'),
+    h('button', { type: 'button', class: 'ui-button', onClick: () => window.location.reload() }, 'Reload appearance options'),
+  ]) },
+  onError(_error, retry, fail, attempts) { if (attempts < 2) retry(); else fail() },
+})
+const appearanceOpen = ref(false)
+const layered = computed(() => props.owned?.wearables !== undefined || props.look.wearables !== undefined || props.look.appearance !== undefined)
+const sections = computed(() => layered.value ? [...SECTIONS, { id: 'layers', title: 'Layers', icon: 'boutique', focus: 'body', groups: [] }] : SECTIONS)
+function openTab(id: string): void { if (id === 'layers') { lookUi.section = id; lookUi.lastField = 'body'; lookUi.zoomOverride = null } else openLookTab(id) }
+function appearanceToggle(event: Event): void { appearanceOpen.value = event.target instanceof HTMLDetailsElement && event.target.open }
 
-const current = computed(() => SECTIONS.find((item) => item.id === lookUi.section) ?? SECTIONS[0])
+const current = computed(() => sections.value.find((item) => item.id === lookUi.section) ?? sections.value[0])
 const carrying = computed(() => worn(props.look).length)
 
 /** Why an option cannot be chosen: where to buy it. '' when it can. */
@@ -35,12 +49,13 @@ const chips = (group: ChipsGroup): string[] => optionsOf(group.field, props.look
 
 <template>
   <div v-if="current" class="look-editor">
-    <div class="look-tabs" role="tablist" aria-label="What to change">
-      <button v-for="item in SECTIONS" :id="`look-tab-${item.id}`" :key="item.id" type="button" role="tab" class="look-tab" :data-look-tab="item.id" :data-key="`tab:${item.id}`" :aria-selected="item.id === current.id" aria-controls="look-panel" @click="openLookTab(item.id)">
+    <div class="look-tabs" :style="{ '--look-tab-count': sections.length }" role="tablist" aria-label="What to change">
+      <button v-for="item in sections" :id="`look-tab-${item.id}`" :key="item.id" type="button" role="tab" class="look-tab" :data-look-tab="item.id" :data-key="`tab:${item.id}`" :aria-selected="item.id === current.id" aria-controls="look-panel" @click="openTab(item.id)">
         <span aria-hidden="true"><GameIcon :name="item.icon" inline /></span>{{ item.title }}<b v-if="item.id === 'extras' && carrying">{{ carrying }}</b>
       </button>
     </div>
     <div id="look-panel" class="look-panel" role="tabpanel" :aria-labelledby="`look-tab-${current.id}`">
+      <LayerControls v-if="current.id === 'layers'" :look="look" :owned="owned?.wearables ?? []" mode="layers" @replace="emit('replace', $event)" />
       <template v-for="group in current.groups" :key="group.field">
         <fieldset v-if="group.kind === 'chips'" class="look-group">
           <legend>{{ group.title }}</legend>
@@ -55,6 +70,10 @@ const chips = (group: ChipsGroup): string[] => optionsOf(group.field, props.look
           </div>
         </fieldset>
       </template>
+      <details v-if="layered && current.id === 'body'" class="look-group" @toggle="appearanceToggle">
+        <summary>Height, build and age appearance</summary>
+        <LayerControls v-if="appearanceOpen" :look="look" :owned="owned?.wearables ?? []" mode="appearance" @replace="emit('replace', $event)" />
+      </details>
     </div>
   </div>
 </template>

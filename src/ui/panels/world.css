@@ -1,5 +1,6 @@
 /* OWNER: world — the local-government card, the local-government page, the house card and "your house". */
-.world-card{display:grid;gap:10px;padding:14px;border:1px solid #dfe5e1;border-radius:16px;background:#fff}
+.world-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:10px;padding:14px;border:1px solid #dfe5e1;border-radius:16px;background:#fff}
+.world-card>*{min-width:0;overflow-wrap:anywhere}
 .world-card h3{margin:0;font-size:15px}
 .world-card.is-compact{padding:10px}
 .world-now{display:grid;gap:2px;margin:0}
@@ -26,9 +27,10 @@
 .world-swatch:focus-visible{outline:3px solid #14532d;outline-offset:2px}
 .world-style{display:grid;gap:6px}
 .world-style>b{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#59616b}
-.world-tiers{display:grid;gap:8px}
-.world-tier{display:grid;gap:6px;padding:12px;border:1px solid #dfe5e1;border-radius:14px;background:#fff}
-.world-tier header{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.world-tiers{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:0}
+.world-tier{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:6px;padding:12px;border:1px solid #dfe5e1;border-radius:14px;background:#fff}
+.world-tier header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.world-tier .ui-button{white-space:normal}
 .world-tier h4{margin:0;font-size:14px}
 .world-tier p{margin:0;font-size:12px;color:#59616b}
 .world-bar{height:8px;border-radius:4px;background:#e4e9e6;overflow:hidden}

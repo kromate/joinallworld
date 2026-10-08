@@ -22,10 +22,12 @@
  * is revoked (`venue_mismatch`, `visit_ended`) or refused (`not_a_guest`) stops voice.
  */
 import type { PublicSession } from './types/protocol.ts'
+import { reconnectDelay, STABLE_CONNECTION_MS } from './reconnect.ts'
 import { cityName } from './game/cities/registry.ts'
 import { fetchIceConfig } from './voice-config.ts'
 import { GROUP_CHAT_NOTE, groupHeader } from './game/roomGroups.ts'
 import type { IceConfig } from './voice-config.ts'
+import { STREET_NETWORK_SCALE } from './game/neighbourhood-space.ts'
 import type {
   BlockedPlayback, ChatLine, CommunityController, CommunityLinkStatus, CommunityRoom, CommunityState, DiagnosticsPeer,
   DiagnosticsSnapshot, GroupList, GroupView, ApartFriend, MemberRow, MicrophoneChoice, MembersEvent, CommunityStatus, RoomMember, VoicePosition,
@@ -109,6 +111,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   let destroyed = false, connected = false, roomReady = false, roomRevoked = false, voice = false, muted = false, joiningVoice = false
   let reconnectTimer: ReturnType<typeof setTimeout> | null = null
   let attempts = 0, busyTries = 0, voiceGeneration = 0, selectedDevice = ''
+  let joinedAt: number | null = null
   let diagnosticsTimer: ReturnType<typeof setInterval> | null = null
   let iceConfig: IceConfig | null = null
   let iceConfigRequest: Promise<IceConfig> | null = null
@@ -192,7 +195,8 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   const selfMember = (): RoomMember | undefined => members.find((person) => person.id === session?.id)
   function distanceTo(member: RoomMember | null | undefined): number {
     const self = validPosition(selfMember()), other = validPosition(member)
-    return self && other ? Math.hypot(self.x - other.x, self.z - other.z) : Infinity
+    const distance = self && other ? Math.hypot(self.x - other.x, self.z - other.z) : Infinity
+    return room.venueId === 'neighbourhood' ? distance / STREET_NETWORK_SCALE : distance
   }
   function nearby(member: RoomMember | null | undefined): boolean {
     return room.venueId !== 'home' && Boolean(member) && !rejectedPeers.has(member?.id ?? '') && Boolean(member?.enabled) && member?.id !== session?.id && distanceTo(member) < VOICE_RADIUS
@@ -465,6 +469,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
       counts = message.counts ?? null
       if (roomRevoked && !members.some((member) => member.id === session?.id)) return
       roomRevoked = false
+      if (joinedAt === null && members.some((member) => member.id === session?.id)) joinedAt = Date.now()
       if (wasRevoked) feedbackText = ''
       if (connected && members.some((member) => member.id === session?.id)) connection = 'Connected'
       composeDisabled = false
@@ -522,13 +527,15 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   function connect(): void {
     if (destroyed || roomRevoked || !session || socket?.readyState === WebSocket.OPEN || socket?.readyState === WebSocket.CONNECTING) return
     if (reconnectTimer !== null) clearTimeout(reconnectTimer)
-    roomReady = false; canReconnect = false; report(attempts ? 'Reconnecting…' : 'Connecting…'); voiceStatus()
+    roomReady = false; joinedAt = null; canReconnect = false; report(attempts ? 'Reconnecting…' : 'Connecting…'); voiceStatus()
     const current = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/socket`)
     socket = current
-    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; attempts = 0; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room, deltas: true }) }
+    current.onopen = () => { if (destroyed || socket !== current) return; connected = true; report('Connected'); if (!roomRevoked) send({ type: 'join', ...room, deltas: true }) }
     current.onmessage = (event) => { if (!destroyed && socket === current) { busyTries = 0; receive(event) } }
     current.onclose = (event?: { code?: number }) => {
       if (destroyed || socket !== current) return
+      if (joinedAt !== null && Date.now() - joinedAt >= STABLE_CONNECTION_MS) attempts = 0
+      joinedAt = null
       socket = null; connected = false; roomReady = false; members = []; counts = null; groupList = null; renderMembers(); leaveVoice(false)
       for (const message of pending.values()) { message.sent = false; if (!message.failed) message.line.delivery = 'Pending reconnection' }
       report('Disconnected')
@@ -537,7 +544,7 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
       // keeps trying for as long as it takes — a place opens when somebody leaves. The pause grows from about 5 to 30 seconds
       // (such a socket opens before it is closed, so it is the first frame received that ends the count, not the opening).
       if (event?.code === SOCKET_BUSY_CODE) { feedback('The world is very busy right now, so this room is not connected yet. Trying again shortly — your game is not affected.'); reconnectTimer = setTimeout(connect, Math.min(5000 * 2 ** Math.min(busyTries, 3), 30000) * (0.8 + 0.4 * Math.random())); busyTries++; return }
-      if (attempts < 5) { const delay = Math.min(1000 * 2 ** attempts, 15000); attempts++; reconnectTimer = setTimeout(connect, delay) }
+      if (attempts < 5) { const delay = reconnectDelay(attempts, 1000, 15000); attempts++; reconnectTimer = setTimeout(connect, delay) }
       else { canReconnect = true; feedback('The room is offline. Reconnect when the server is available.') }
     }
     current.onerror = () => report('Connection unavailable')

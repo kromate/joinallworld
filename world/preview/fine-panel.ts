@@ -17,7 +17,7 @@ export function attachFinePanel(options: FinePanelOptions): { reset: () => void 
   options.host.innerHTML = `<label for="fineUrl">Administrative manifest URL</label><input id="fineUrl" spellcheck="false" placeholder="/world-output/fine/rw/adm1/manifests/&lt;hash&gt;.json"/>
     <label for="fineHash">Administrative SHA-256</label><input id="fineHash" spellcheck="false" placeholder="64 character content hash"/>
     <button id="loadFine" class="secondary" type="button">Load selected country’s divisions <span>↗</span></button>
-    <div id="fineStatus" class="inventory-selection" aria-live="polite">Select a country in the geographic inventory first.</div>
+    <div id="fineStatus" class="inventory-selection" aria-live="polite">Select a country in either geographic directory first.</div>
     <div id="fineList" class="inventory-list"></div><div id="fineSource" class="inventory-note">Administrative outlines only · no city, climate or playability claim.</div>`;
   const element = <T extends HTMLElement>(id: string) => options.host.querySelector<T>(`#${id}`)!;
   const cache = new ByteLru<string, { value: unknown; bytes: number }>(5 * 1024 * 1024);
@@ -80,7 +80,7 @@ export function attachFinePanel(options: FinePanelOptions): { reset: () => void 
         qualityText = 'Structural checks only; complete polygon topology has not been established.';
       }
       if (!current(epoch, signal) || !sameBinding(binding)) throw new Error('Selected country changed before the fine directory could be shown.');
-      element('fineSource').textContent = `${manifest.source.source.attribution} · ${manifest.source.source.license} · ${manifest.source.originalLicense} · represented ${manifest.source.representedYear}. ${qualityText} Geographic outlines only, not playable. ${manifest.exceptions.join(' ')}`;
+      element('fineSource').textContent = `${manifest.source.source.attribution} · ${manifest.source.source.license} · ${manifest.source.originalLicense} · represented ${manifest.source.representedYear}. Parent directory ${manifest.coarseInventoryHash.slice(0, 12)}…. ${qualityText} Geographic outlines only, not playable. ${manifest.exceptions.join(' ')}`;
       status(`${index.nodes.length}/${manifest.sourceUnitCount} divisions verified · outlines load on selection`);
       for (const row of index.nodes) {
         const button = document.createElement('button'); button.type = 'button'; button.className = 'district-row'; button.textContent = `${row.node.name} · ${row.node.adminType}`;

@@ -18,6 +18,8 @@ The current all-pairs travel generator remains limited to legacy Nigeria. New pr
 
 ## Geographic production pipeline
 
+The separate 258-unit directory and its lazy preview are accepted. Administrative metadata has been rejoined against that full denominator; explicit new-parent binding and a durable cache-only campaign have passed real first/repeat Rwanda runs. This is the reviewed-input execution milestone. Next add bounded source capture/promotion and topology preparation for more African countries, then partition over-limit administrative layers without changing old products. See [FINE-CAMPAIGN.md](FINE-CAMPAIGN.md) for admission rules and exact next tasks.
+
 1. Freeze a release inventory: Natural Earth overview, gbOpen administrative release, Overture Buildings release, OSM/Overture transportation choice, terrain and climate releases. Include country/territory source coverage and disputed-boundary source policy. Administrative units have types rather than assuming state/city/LGA everywhere.
 2. Resolve source URLs once, checksum downloads, record source timestamp and extraction tool version. Freeze the inventory for the run. A moving `latest` URL is discovery only. Use bounded regional queries or one regional extract followed by spatial indexing. Do not repeat a whole national PBF scan per city.
 3. Build coarse global geographic coverage first. Source absence is an exception with a count, not an empty successful country. Then deepen Africa by country, then other continents. Country completion is relative to a frozen list and coverage level; inhabited cities, uninhabited cells and Antarctic stations have different requirements.

@@ -5,7 +5,7 @@ import type { CountryDirectoryManifest, CountryDirectoryNodeIndex } from '../cou
 import type { InventoryGeometry } from './inventory-view.ts';
 
 interface CountryDirectoryCallbacks {
-  draw: (geometry: InventoryGeometry, node: InventoryNode) => void;
+  draw: (geometry: InventoryGeometry, node: InventoryNode, manifestHash: string) => void;
   clear: () => void;
   selected: () => void;
 }
@@ -32,6 +32,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
   const cache = new CountryDirectoryJsonCache({ downloaded: bytes => { downloadedBytes += bytes; cachedBytes = cache.byteLength; updateCache(); } });
   let generation = 0, controller: AbortController | null = null;
   let manifest: CountryDirectoryManifest | null = null, base: URL | null = null, rootIndex: CountryDirectoryNodeIndex | null = null;
+  let verifiedManifestHash = '';
   const row = (label: string, detail: string, action: () => void): HTMLButtonElement => {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'district-row inventory-country';
     const marker = document.createElement('span'); marker.className = 'district-marker'; marker.textContent = '◎';
@@ -82,7 +83,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
     if (!current(epoch, signal)) return;
     clearList();
     const back = document.createElement('button'); back.type = 'button'; back.className = 'secondary'; back.textContent = 'Back to continents and regions';
-    back.addEventListener('click', () => { const next = operation(); callbacks.clear(); showContinents(next.epoch, next.signal); });
+    back.addEventListener('click', () => { const next = operation(); callbacks.selected(); callbacks.clear(); showContinents(next.epoch, next.signal); });
     element('countryDirectoryList').append(back);
     for (const child of index.children) {
       const protectedNigeria = child.id === 'legacy-ng';
@@ -109,7 +110,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
   const chooseCountry = async (child: { id: string; name: string; path: string }, parentId: string): Promise<void> => {
     const { epoch, signal } = operation(); callbacks.selected(); callbacks.clear();
     if (child.id === 'legacy-ng') { status('Nigeria remains on its protected legacy provider; the separate directory contains no Nigeria outline.'); return; }
-    const activeManifest = manifest, activeBase = base;
+    const activeManifest = manifest, activeBase = base, activeHash = verifiedManifestHash;
     if (!activeManifest || !activeBase) { status('Load the country directory first.'); return; }
     status(`Verifying ${child.name} country reference…`);
     try {
@@ -123,7 +124,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
       status(`Loading ${index.node.name} outline…`);
       const geometry = await fetchCountryOutline(cache, activeBase, activeManifest, index.node, index.outlineIndexPath, signal);
       if (!current(epoch, signal)) return;
-      callbacks.draw(geometry, index.node);
+      callbacks.draw(geometry, index.node, activeHash);
       status(`${index.node.name} · verified source geometry · geographic outline only, not playable.`);
     } catch (error) { if (epoch === generation) status(operationError(error, signal)); }
   };
@@ -138,7 +139,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
       const fetched = await cache.getJson(url.href, hash, COUNTRY_DIRECTORY_LIMITS.manifestBytes, signal);
       const parsed = validateCountryDirectoryManifest(fetched.value);
       if (!current(epoch, signal)) return;
-      manifest = parsed; base = new URL('/world-output/country-inventory/', location.href);
+      manifest = parsed; verifiedManifestHash = hash; base = new URL('/world-output/country-inventory/', location.href);
       const rootHash = parsed.rootNodePath.slice(parsed.rootNodePath.lastIndexOf('/') + 1, -5);
       const identityHash = parsed.identityPath.slice(parsed.identityPath.lastIndexOf('/') + 1, -5);
       const [rootAsset, identityAsset] = await Promise.all([
@@ -158,7 +159,7 @@ export function attachCountryDirectoryPanel(host: HTMLElement, callbacks: Countr
       rootIndex = root;
       showContinents(epoch, signal);
     } catch (error) {
-      if (epoch === generation) { manifest = null; base = null; rootIndex = null; callbacks.clear(); clearList(); clearExceptions(); element('countryDirectoryAttribution').textContent = 'No verified country directory is loaded.'; status(operationError(error, signal)); }
+      if (epoch === generation) { manifest = null; verifiedManifestHash = ''; base = null; rootIndex = null; callbacks.clear(); clearList(); clearExceptions(); element('countryDirectoryAttribution').textContent = 'No verified country directory is loaded.'; status(operationError(error, signal)); }
     }
   };
   element<HTMLButtonElement>('loadCountryDirectory').addEventListener('click', () => { void load(); });

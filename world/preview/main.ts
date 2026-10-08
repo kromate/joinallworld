@@ -134,13 +134,14 @@ let inventoryDownloadedBytes = 0;
 const inventoryCache = new ByteLru<string, { value: InventoryManifest|InventoryNodeIndex|InventoryGeometry; bytes:number }>(INVENTORY_LIMITS.cacheBytes);
 let directoryPanel: { reset: () => void } | undefined;
 let selectingDirectory = false;
+let selectedDirectoryBinding: { country: InventoryNodeIndex['node']; coarseHash: string } | null = null;
 const finePanel = attachFinePanel({
  host: $('finePanel'),
- binding: () => selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null,
+ binding: () => selectedDirectoryBinding ?? (selectedCountryIndex && inventoryManifest ? {country: selectedCountryIndex.node, coarseHash: inventoryManifestHash} : null),
  downloaded: bytes => {inventoryDownloadedBytes += bytes; updateCacheNote();},
- clear: () => { if(!selectingDirectory)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
+ clear: () => { if(!selectingDirectory && !selectedDirectoryBinding)directoryPanel?.reset(); clearOutline('Choose a verified administrative division.'); },
  draw: (geometry, node) => {
-  directoryPanel?.reset();
+  if(!selectedDirectoryBinding)directoryPanel?.reset();
   const [w,s,east,n] = node.bounds, wraps = w > east, e = wraps ? east + 360 : east;
   $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps));
   $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps));
@@ -154,13 +155,15 @@ const finePanel = attachFinePanel({
 });
 directoryPanel = attachCountryDirectoryPanel($('countryDirectoryPanel'), {
  selected: () => {
+  selectedDirectoryBinding = null;
   inventoryAbort?.abort(); ++inventoryGeneration; selectedCountryIndex = null;
   selectingDirectory = true;
   try { finePanel.reset(); } finally { selectingDirectory = false; }
   clearError();
  },
- clear: () => clearOutline('Choose a verified country outline.'),
- draw: (geometry, node) => {
+ clear: () => { selectedDirectoryBinding = null; clearOutline('Choose a verified country outline.'); },
+ draw: (geometry, node, manifestHash) => {
+  selectedDirectoryBinding = { country: node, coarseHash: manifestHash };
   const wraps = !!node.bounds && node.bounds[0] > node.bounds[2];
   $('outlinePath').setAttribute('d', inventoryGeometryPath(geometry,720,360,false,wraps,5));
   $('outlineStroke').setAttribute('d', inventoryGeometryPath(geometry,720,360,true,wraps,5));

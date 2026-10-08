@@ -1,10 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { mkdir, mkdtemp, readFile, readdir, realpath, rm, symlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { buildInventory, publishInventory } from './inventory.ts';
+import { compileCountryDirectory, publishCountryDirectory } from './country-directory.ts';
 import { runFineBuild } from './fine-run.ts';
 import type { FineSourcePin } from './fine-types.ts';
 import type { FineTopologyReport } from './fine-types.ts';
@@ -45,7 +48,7 @@ const coarseGeo = { type: 'FeatureCollection', features: [
   { type: 'Feature', properties: { NE_ID: 1, ADMIN: 'Rwanda', CONTINENT: 'Africa', ISO_A2_EH: 'RW' }, geometry: coarseGeometry(28, -3, 31, -1) },
   { type: 'Feature', properties: { NE_ID: 2, ADMIN: 'Nigeria', CONTINENT: 'Africa', ISO_A2_EH: 'NG' }, geometry: coarseGeometry(3, 4, 15, 14) },
 ] };
-type RunnerFixture={repoRoot:string;buildRoot:string;sourcePath:string;raw:Buffer;pin:FineSourcePin;coarseHash:string;topologyReportPath:string;topologyRequestHash:string;topologyReportHash:string};
+type RunnerFixture={repoRoot:string;buildRoot:string;sourcePath:string;raw:Buffer;pin:FineSourcePin;coarseHash:string;directoryHash:string;topologyReportPath:string;topologyRequestHash:string;topologyReportHash:string};
 function syntheticTopologyReport(raw:Buffer,pin:FineSourcePin,kind:'valid'|'invalid'|'unsupported'='valid',mutate?:(report:FineTopologyReport)=>void):{requestHash:string;reportHash:string;bytes:Buffer}{
  const document=JSON.parse(raw.toString('utf8')) as {features:Array<{properties:{shapeID:string}}>} ;
  const expectedKeys=document.features.map(feature=>feature.properties.shapeID).sort(compareCodepoints);
@@ -65,14 +68,20 @@ async function makeFixture<T>(run: (fixture: RunnerFixture) => Promise<T>, raw =
     const repoRoot = path.join(await realpath(temp), 'repo'); await mkdir(repoRoot);
     const buildRoot = path.join(repoRoot, '.cache', 'world-build'); await mkdir(buildRoot, { recursive: true });
     const inventoryRoot = path.join(buildRoot, 'output', 'inventory');
-    const inventory = buildInventory(coarseSource, coarseGeo);
+    const coarseRaw=Buffer.from(JSON.stringify(coarseGeo));
+    const pinnedCoarseSource:SourceRecord={...coarseSource,sha256:hash(coarseRaw),bytes:coarseRaw.byteLength};
+    const inventory = buildInventory(pinnedCoarseSource, coarseGeo);
     const published = await publishInventory(inventory, inventoryRoot, buildRoot);
+    const directorySource:SourceRecord={id:'natural-earth-admin0-10m-fixture',url:'https://example.invalid/ne-10m.geojson',release,license:'Public-domain',attribution:'Synthetic test fixture only',sha256:hash(Buffer.from(JSON.stringify(coarseGeo))),bytes:Buffer.byteLength(JSON.stringify(coarseGeo))};
+    const directoryRaw=Buffer.from(JSON.stringify(coarseGeo));directorySource.sha256=hash(directoryRaw);directorySource.bytes=directoryRaw.byteLength;
+    const directory=compileCountryDirectory(directorySource,directoryRaw,pinnedCoarseSource,coarseRaw,published.manifestHash);
+    const publishedDirectory=await publishCountryDirectory(directory,path.join(buildRoot,'output','country-inventory'),buildRoot);
     const pin = pinFor(raw), sourcePath = path.join(repoRoot, pin.input);
     await mkdir(path.dirname(sourcePath), { recursive: true }); await writeFile(sourcePath, raw);
     const evidence=syntheticTopologyReport(raw,pin);
     const topologyReportPath=path.join(buildRoot,'fine-topology','reports',evidence.requestHash,`${evidence.reportHash}.json`);
     await mkdir(path.dirname(topologyReportPath),{recursive:true});await writeFile(topologyReportPath,evidence.bytes);
-    return await run({ repoRoot, buildRoot, sourcePath, raw, pin, coarseHash: published.manifestHash,topologyReportPath,topologyRequestHash:evidence.requestHash,topologyReportHash:evidence.reportHash });
+    return await run({ repoRoot, buildRoot, sourcePath, raw, pin, coarseHash: published.manifestHash,directoryHash:publishedDirectory.manifestHash,topologyReportPath,topologyRequestHash:evidence.requestHash,topologyReportHash:evidence.reportHash });
   } finally { await rm(temp, { recursive: true, force: true }); }
 }
 async function installTopologyVariant(fixture:RunnerFixture,kind:'valid'|'invalid'|'unsupported'='valid',mutate?:(report:FineTopologyReport)=>void,parentHash=fixture.topologyRequestHash):Promise<string>{
@@ -80,8 +89,8 @@ async function installTopologyVariant(fixture:RunnerFixture,kind:'valid'|'invali
  const filename=path.join(fixture.buildRoot,'fine-topology','reports',parentHash,`${evidence.reportHash}.json`);
  await mkdir(path.dirname(filename),{recursive:true});await writeFile(filename,evidence.bytes);return filename;
 }
-const run = (f: Pick<RunnerFixture,'repoRoot'|'pin'|'coarseHash'|'topologyReportPath'> & { registry?: string; migration?: string; signal?: AbortSignal; durationMs?: number }) => runFineBuild({
-  repositoryRoot: f.repoRoot, coarseInventoryHash: f.coarseHash, pin: f.pin,topologyReportPath:f.topologyReportPath,
+const run = (f: Pick<RunnerFixture,'repoRoot'|'pin'|'coarseHash'|'topologyReportPath'> & { registry?: string; migration?: string; signal?: AbortSignal; durationMs?: number;inventoryProduct?:'legacy-inventory'|'country-directory' }) => runFineBuild({
+  repositoryRoot: f.repoRoot, coarseInventoryHash: f.coarseHash, pin: f.pin,topologyReportPath:f.topologyReportPath,...(f.inventoryProduct?{inventoryProduct:f.inventoryProduct}:{}),
   ...(f.registry ? { previousRegistryPath: f.registry } : {}), ...(f.migration ? { migrationPath: f.migration } : {}),
   ...(f.signal ? { signal: f.signal } : {}), ...(f.durationMs ? { durationMs: f.durationMs } : {}),
 });
@@ -96,9 +105,11 @@ test('cache-only runner publishes immutable fine assets, reuses them determinist
   const attempts = await readdir(path.join(fixture.buildRoot, 'fine-attempts'));
   assert.equal(attempts.length, 2);
   for (const name of attempts) {
-    const attempt = JSON.parse(await readFile(path.join(fixture.buildRoot, 'fine-attempts', name), 'utf8')) as { status: string; networkBytes: number; requestHash: string; topologyReportHash:string };
+    const attempt = JSON.parse(await readFile(path.join(fixture.buildRoot, 'fine-attempts', name), 'utf8')) as { status: string; networkBytes: number; requestHash: string; topologyReportHash:string;inventoryProduct?:string };
     assert.equal(attempt.status, 'succeeded'); assert.equal(attempt.networkBytes, 0); assert.match(attempt.requestHash, /^[a-f0-9]{64}$/);
     assert.equal(attempt.topologyReportHash,fixture.topologyReportHash);
+    assert.equal(attempt.inventoryProduct,undefined);
+    assert.equal(attempt.requestHash,hash(canonical({compiler:'fine-inventory-compiler-v2',coarseInventoryHash:fixture.coarseHash,pin:fixture.pin,previousRegistryHash:null,migrationHash:null,topologyReportHash:fixture.topologyReportHash})));
   }
   const fineRoot = path.join(fixture.buildRoot, 'output', 'fine');
   const walk = async (directory: string): Promise<string[]> => {
@@ -109,6 +120,30 @@ test('cache-only runner publishes immutable fine assets, reuses them determinist
   const files = await walk(fineRoot);
   assert.equal(files.some(name => /\.(?:sqlite|db)$/i.test(name)), false, 'fine builder does not create a database');
 }));
+
+test('country-directory product is explicit, fully verified, and bound into fine output identity',async()=>makeFixture(async fixture=>{
+  const result=await run({...fixture,coarseHash:fixture.directoryHash,inventoryProduct:'country-directory'});
+  assert.equal(result.networkBytes,0);
+  const manifest=JSON.parse(await readFile(result.manifestPath,'utf8')) as Record<string,unknown>;
+  assert.equal(manifest.coarseInventoryHash,fixture.directoryHash);
+  assert.equal(manifest.countryId,'country:natural-earth:NE_ID%3A1');
+  const [attemptName]=await readdir(path.join(fixture.buildRoot,'fine-attempts'));
+  const attempt=JSON.parse(await readFile(path.join(fixture.buildRoot,'fine-attempts',attemptName!),'utf8')) as Record<string,unknown>;
+  assert.equal(attempt.inventoryProduct,'country-directory');
+  assert.equal(attempt.requestHash,hash(canonical({compiler:'fine-inventory-compiler-v2',coarseInventoryHash:fixture.directoryHash,pin:fixture.pin,previousRegistryHash:null,migrationHash:null,topologyReportHash:fixture.topologyReportHash,inventoryProduct:'country-directory'})));
+}));
+
+test('inventory product never autodetects or falls back across namespaces',async()=>makeFixture(async fixture=>{
+  await assert.rejects(run({...fixture,coarseHash:fixture.coarseHash,inventoryProduct:'country-directory'}),/country directory|manifest|hash|asset/i);
+  await assert.rejects(run({...fixture,coarseHash:fixture.directoryHash}),/inventory|manifest|hash|country/i);
+  await assert.rejects(readdir(path.join(fixture.buildRoot,'output','fine')));
+}));
+
+test('fine CLI accepts only the two explicit inventory products',()=>{
+  const repoRoot=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+  const child=spawnSync(process.execPath,['--experimental-strip-types','world/fine-cli.ts','build','world/fine-sources.json','--inventory-hash','a'.repeat(64),'--topology-report','.cache/world-build/no-report.json','--inventory-product','other'],{cwd:repoRoot,encoding:'utf8'});
+  assert.notEqual(child.status,0);assert.match(child.stderr,/inventory-product must be legacy-inventory or country-directory/);
+});
 
 test('source tampering fails closed and retains a final failure audit record', async () => makeFixture(async fixture => {
   const changed = Buffer.from(fixture.raw); changed[changed.length - 2] = changed[changed.length - 2]! ^ 1; await writeFile(fixture.sourcePath, changed);

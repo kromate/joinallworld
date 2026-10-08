@@ -1,5 +1,7 @@
 # Production ingestion checkpoint
 
+Latest administrative campaign checks: **236 integrated Node tests**, full world TypeScript and preview build pass. JS is **648.99 KB minified / 169.68 KB gzip**, with the existing >500 KB warning and unchanged CSS size. Real cache-only catalogue and campaign first/repeat runs are accepted; one Rwanda country is compiled, 256 exceptions remain explicit and Nigeria is protected. All old manifest bytes/IDs remain intact. Commands, bounded execution, independent verification and browser limitations are in [FINE-CAMPAIGN.md](FINE-CAMPAIGN.md).
+
 Latest directory checks: **211 integrated Node tests** pass, followed by **11 focused reader tests** after the final aggregate preflight guard; world TypeScript passes. The final independent preview build is **648.79 KB minified / 169.57 KB gzip JS**, 11.40 KB CSS / 3.34 KB gzip, with the existing >500 KB warning. This preview bundle is separate from the game and its startup budgets. Browser QA at actual 586×804 and original-to-part/audit evidence are in COUNTRY-OPERATIONS.md and `.cache/world-build/evidence/country-directory-*`.
 
 This extends the historical M1 report in `VALIDATION.md`. It records small real-source pilots, not global detailed or playable coverage.

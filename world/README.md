@@ -2,6 +2,8 @@
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.
 
+The expanded 258-unit directory now supports explicit administrative bindings and a durable cache-only campaign. Its first/repeat run verified Rwanda and recorded every remaining country exception; see [FINE-CAMPAIGN.md](FINE-CAMPAIGN.md) for exact commands, evidence and next tasks. Latest integrated checks: 236 Node tests, world TypeScript and preview build pass (648.99 KB minified / 169.68 KB gzip JS). Nigeria's requested visual improvement is implemented separately on `codex/nigeria-rendering`, commit `6ad7579b`, with 24 map tests passing.
+
 ## Local foundation and preview
 
 ```sh

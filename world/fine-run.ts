@@ -4,6 +4,7 @@ import { lstat, mkdir, open, opendir, rename, statfs, unlink } from 'node:fs/pro
 import path from 'node:path';
 import { Worker } from 'node:worker_threads';
 import { readBoundedLocalFile, readCoarseInventoryCountry } from './inventory-reader.ts';
+import { readCountryDirectoryCountry } from './country-directory-reader.ts';
 import type { InventoryNode } from './production-types.ts';
 import { withAcquisitionBuildLock } from './acquire.ts';
 import { validateFineSourcePin } from './fine.ts';
@@ -22,6 +23,7 @@ export interface FineBuildOptions {
   coarseInventoryHash: string;
   pin: FineSourcePin;
   topologyReportPath: string;
+  inventoryProduct?: 'legacy-inventory' | 'country-directory';
   previousRegistryPath?: string;
   migrationPath?: string;
   signal?: AbortSignal;
@@ -319,6 +321,8 @@ export async function runFineBuild(options: FineBuildOptions): Promise<FineBuild
     const repoRoot = await assertCanonicalRepoRoot(options.repositoryRoot);
     const buildRoot = path.join(repoRoot, '.cache', 'world-build');
     const pin = validateFineSourcePin(options.pin);
+    const inventoryProduct = options.inventoryProduct ?? 'legacy-inventory';
+    if (inventoryProduct !== 'legacy-inventory' && inventoryProduct !== 'country-directory') throw new TypeError('inventoryProduct must be legacy-inventory or country-directory');
     const sourcePath = resolveBuildLocalPath(pin.input, repoRoot, buildRoot, 'fine source input');
     const topologyReportPath = resolveBuildLocalPath(options.topologyReportPath, repoRoot, buildRoot, 'topologyReportPath');
     const topologyReportsRoot = path.join(buildRoot,'fine-topology','reports');
@@ -347,10 +351,12 @@ export async function runFineBuild(options: FineBuildOptions): Promise<FineBuild
       const requestHash = createHash('sha256').update(canonical({
         compiler: FINE_COMPILER, coarseInventoryHash: options.coarseInventoryHash, pin,
         previousRegistryHash: registryHash, migrationHash, topologyReportHash,
+        ...(inventoryProduct==='country-directory'?{inventoryProduct}:{}),
       })).digest('hex');
       const attemptId = randomUUID();
       attemptPath = path.join(attemptDirectory, `${attemptId}.json`);
-      attemptRecord = { schemaVersion: 1, attemptId, requestHash, compiler: FINE_COMPILER, status: 'pending', startedAt: new Date(started).toISOString(), countryCode: pin.countryCode, coarseInventoryHash: options.coarseInventoryHash, sourceHash: pin.source.sha256, topologyReportHash, previousRegistryHash: registryHash, migrationHash, networkBytes: 0 };
+      attemptRecord = { schemaVersion: 1, attemptId, requestHash, compiler: FINE_COMPILER, status: 'pending', startedAt: new Date(started).toISOString(), countryCode: pin.countryCode, coarseInventoryHash: options.coarseInventoryHash, sourceHash: pin.source.sha256, topologyReportHash, previousRegistryHash: registryHash, migrationHash, networkBytes: 0,
+        ...(inventoryProduct==='country-directory'?{inventoryProduct}:{}), };
       if (usage.entries + 1 > 512 || usage.bytes + HARD.auditReplacementReserveBytes > 2 * 1024 * 1024) throw new RangeError('fine attempt audit has no capacity for another bounded attempt');
       await writeAttempt(attemptPath, attemptRecord, true);
       try {
@@ -361,7 +367,9 @@ export async function runFineBuild(options: FineBuildOptions): Promise<FineBuild
       const sourceKeys=expectedTopologyKeys(rawBytes,pin);
       const expectedTopologyRequestHash=topologyRequestHash(pin,sourceKeys);
       const topologyReport=await readTopologyReport(topologyReportPath,expectedTopologyRequestHash,topologyReportHash,pin,sourceKeys);
-      const coarseCountry = await readCoarseInventoryCountry(path.join(buildRoot, 'output', 'inventory'), options.coarseInventoryHash, pin.countryCode);
+      const coarseCountry = inventoryProduct==='country-directory'
+        ? await readCountryDirectoryCountry(path.join(buildRoot,'output','country-inventory'),options.coarseInventoryHash,pin.countryCode,signal)
+        : await readCoarseInventoryCountry(path.join(buildRoot, 'output', 'inventory'), options.coarseInventoryHash, pin.countryCode);
       if (signal.aborted) throw makeError(signal.reason, 'fine build was aborted');
       const published = await runWorker({ pin, rawBytes, coarseCountry, coarseInventoryHash: options.coarseInventoryHash,
         topologyReport,

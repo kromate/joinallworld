@@ -7,7 +7,9 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { setTimeout as delay } from 'node:timers/promises';
-import type { DrivingResponse } from '../src/types/living-world.ts';
+import type { DrivingResponse, QualificationResponse } from '../src/types/living-world.ts';
+import type { DrivingPoint } from '../src/game/living-world/driving.ts';
+import { PRACTICE_COURSE } from '../src/game/living-world/course.ts';
 
 interface MiniflareInstance { ready: Promise<URL>; dispose(): Promise<void>; dispatchFetch(url: string, init?: RequestInit & { headers?: Record<string, string> }): Promise<Response> }
 interface MiniflareTooling { Miniflare: new (options: Record<string, unknown>) => MiniflareInstance; convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown> }
@@ -55,6 +57,28 @@ async function host(t: TestContext) {
 const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
 const requestId = () => `${Date.now()}:${crypto.randomUUID()}`
 const path = '/api/living-world/driving'
+const qualificationPath = '/api/living-world/qualification'
+const road = PRACTICE_COURSE.roads[0]!
+const clamp = (n: number, low: number, high: number) => Math.max(low, Math.min(high, n))
+function projection(point: DrivingPoint): number {
+  let distance = Infinity, progress = 0, total = 0
+  for (let i = 1; i < road.length; i++) {
+    const a = road[i - 1]!, b = road[i]!, dx = b.x - a.x, dz = b.z - a.z, length = Math.hypot(dx, dz)
+    const fraction = clamp(((point.x - a.x) * dx + (point.z - a.z) * dz) / (length * length), 0, 1)
+    const separation = Math.hypot(point.x - a.x - dx * fraction, point.z - a.z - dz * fraction)
+    if (separation < distance) { distance = separation; progress = total + length * fraction }
+    total += length
+  }
+  return progress
+}
+function pointAt(progress: number): DrivingPoint {
+  for (let i = 1; i < road.length; i++) {
+    const a = road[i - 1]!, b = road[i]!, length = Math.hypot(b.x - a.x, b.z - a.z)
+    if (progress <= length) return { x: a.x + (b.x - a.x) * progress / length, z: a.z + (b.z - a.z) * progress / length }
+    progress -= length
+  }
+  return road[road.length - 1]!
+}
 
 test('on the Worker: a free guest practice cursor survives shadow, entries restart and layout reversal; retries step once', async t => {
   const h = await host(t)
@@ -70,6 +94,8 @@ test('on the Worker: a free guest practice cursor survives shadow, entries resta
   assert.equal(started.ok, true)
   assert.ok(started.session)
   const session = started.session!
+  const premature = await (await h.post(qualificationPath + '/claim', { cityId: 'lagos', requestId: requestId(), journeyId: session.journeyId }, ada)).json() as QualificationResponse
+  assert.deepEqual([premature.ok, premature.code, premature.qualification], [false, 'assessment_required', null], 'Worker authority rejects qualification before control-derived evidence exists')
   await delay(250)
   const packet = { cityId: 'lagos', journeyId: session.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }
   const [a, b] = await Promise.all([h.post(path + '/input', packet, ada), h.post(path + '/input', packet, ada)])
@@ -109,4 +135,64 @@ test('on the Worker: a free guest practice cursor survives shadow, entries resta
   await h.start()
   assert.deepEqual((await (await h.get(path + '?city=lagos', ada)).json() as DrivingResponse).session, stop.session)
   assert.equal((await h.operator('/api/mod/store')).json['requested'], 'legacy')
+
+  const lifeBefore = await (await h.get('/api/life?city=lagos', ada)).json() as { state: { cash: number; ledger: unknown[] } }
+  const courseResumed = await (await h.post(path + '/resume', { cityId: 'lagos', journeyId: session.journeyId, revision: stop.session!.revision, requestId: requestId() }, ada)).json() as DrivingResponse
+  assert.ok(courseResumed.ok && courseResumed.session?.state.status === 'running')
+  let answer = courseResumed
+  let packets = 0
+  while (answer.session!.state.status === 'running' && packets < 500) {
+    const state = answer.session!.state
+    const progress = projection(state.position)
+    const target = pointAt(progress + 3.5)
+    const targetHeading = Math.atan2(target.x - state.position.x, target.z - state.position.z)
+    const headingError = Math.atan2(Math.sin(targetHeading - state.heading), Math.cos(targetHeading - state.heading))
+    const steer = clamp(Math.atan2(2 * 2.6 * Math.sin(headingError), 3.5) / 0.62, -1, 1)
+    const checkpoint = PRACTICE_COURSE.checkpoints[state.checkpointIndex]!
+    const stopping = checkpoint.stopRequired && Math.hypot(state.position.x - checkpoint.center.x, state.position.z - checkpoint.center.z) <= checkpoint.radius - 0.2 + state.speed * state.speed / 16
+    const control = { throttle: stopping ? 0 : state.speed < 3 ? 1 : 0, brake: stopping || state.speed > 3.3 ? 1 : 0, steer }
+    // Wait for real server-side 100 ms frame credit. No clock is injected; each request
+    // advances only from this client control through the real HTTP endpoint.
+    await delay(125)
+    answer = await (await h.post(path + '/input', {
+      cityId: 'lagos', journeyId: answer.session!.journeyId, sequence: answer.session!.nextSequence,
+      frames: [control],
+    }, ada)).json() as DrivingResponse
+    assert.equal(answer.ok, true, `Worker control packet ${packets}: ${answer.code}`)
+    packets++
+  }
+  assert.equal(answer.session?.state.status, 'complete', `actual Worker controls must pass within the bounded ${packets}-packet loop`)
+  assert.equal(answer.session?.state.assessment, 'passed')
+  assert.ok(packets <= 500)
+
+  const claimBody = { cityId: 'lagos', requestId: requestId(), journeyId: answer.session!.journeyId }
+  const claim = async (body: object) => await (await h.post(qualificationPath + '/claim', body, ada)).json() as QualificationResponse
+  const [claimed, duplicate] = await Promise.all([claim(claimBody), claim(claimBody)])
+  assert.ok(claimed.ok && claimed.valid && duplicate.ok && duplicate.valid)
+  assert.equal([claimed.duplicate, duplicate.duplicate].filter(Boolean).length, 1)
+  assert.equal(claimed.qualification?.evidenceJourneyId, answer.session!.journeyId)
+  const retained = await claim({ ...claimBody, requestId: requestId() })
+  assert.deepEqual([retained.code, retained.qualification], ['qualification_retained', claimed.qualification])
+  const qualified = async () => await (await h.get(qualificationPath + '?city=lagos', ada)).json() as QualificationResponse
+  let qualification = await qualified()
+  assert.deepEqual([qualification.code, qualification.valid], ['qualified', true])
+  const lifeAfter = await (await h.get('/api/life?city=lagos', ada)).json() as typeof lifeBefore
+  assert.deepEqual([lifeAfter.state.cash, lifeAfter.state.ledger], [lifeBefore.state.cash, lifeBefore.state.ledger], 'practice and qualification leave the guest wallet and ledger unchanged')
+
+  await h.start({ STORE_LAYOUT: 'shadow' })
+  qualification = await qualified()
+  assert.deepEqual([qualification.code, qualification.valid, qualification.qualification], ['qualified', true, claimed.qualification])
+  assert.equal(((await h.operator('/api/mod/store/compare')).json['collections'] as Record<string, { equal: boolean }>).livingWorld?.equal, true)
+  assert.equal((await h.operator('/api/mod/store/layout', { layout: 'entries' })).status, 200)
+  await h.start({ STORE_LAYOUT: 'legacy' })
+  qualification = await qualified()
+  assert.deepEqual([qualification.code, qualification.valid, qualification.qualification], ['qualified', true, claimed.qualification])
+  assert.equal((await h.operator('/api/mod/store')).json['requested'], 'entries')
+  assert.equal((await h.operator('/api/mod/store/layout', { layout: 'legacy' })).status, 200)
+  await h.start()
+  qualification = await qualified()
+  assert.deepEqual([qualification.code, qualification.valid, qualification.qualification], ['qualified', true, claimed.qualification])
+  assert.equal((await h.operator('/api/mod/store')).json['requested'], 'legacy')
+  const recoveredReceipt = await claim(claimBody)
+  assert.deepEqual([recoveredReceipt.ok, recoveredReceipt.valid, recoveredReceipt.duplicate, recoveredReceipt.qualification], [true, true, true, claimed.qualification], 'the original claim receipt and retained record survive Worker restart and layout reversal')
 })

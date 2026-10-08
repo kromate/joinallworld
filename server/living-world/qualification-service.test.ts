@@ -150,12 +150,13 @@ test('durable write failure leaves no partial qualification; the same evidence i
   const { f, evidence } = await mountedFixture(t, { disk })
   const player = await onboard(f)
   evidence.set(player.id, evidenceFor('durable-pass', await location(f, player.id)))
+  const request = claimBody(f, 'durable-pass')
   disk.fail = 'ENOSPC'
-  const failed = await f.request(TEST_CLAIM, claimBody(f, 'durable-pass'), player.cookie)
+  const failed = await f.request(TEST_CLAIM, request, player.cookie)
   assert.deepEqual([failed.status, (await failed.json() as { error: string }).error], [503, 'storage_unavailable'])
   disk.fail = null
-  const absent = await f.server.store.read(db => Object.hasOwn((db.livingWorld as { qualifications?: Record<string, unknown> }).qualifications ?? {}, player.id))
+  const absent = await f.server.store.read(db => Object.hasOwn((db.livingWorld as { qualifications?: Record<string, unknown> } | undefined)?.qualifications ?? {}, player.id))
   assert.equal(absent, false)
-  const recovered = await post(f, claimBody(f, 'durable-pass'), player.cookie)
-  assert.deepEqual([recovered.ok, recovered.code, recovered.qualification?.evidenceJourneyId], [true, 'qualified', 'durable-pass'])
+  const recovered = await post(f, request, player.cookie)
+  assert.deepEqual([recovered.ok, recovered.code, recovered.qualification?.evidenceJourneyId, recovered.duplicate ?? false], [true, 'qualified', 'durable-pass', false], 'failed writes roll back the once receipt as well as the qualification')
 })

@@ -213,7 +213,7 @@ export function createDrivingService(ctx: RouteContext) {
         return { ok: true, code: 'started', journeyId: row.journeyId, revision: row.revision, nextSequence: row.nextSequence, state: row.state }
       })
       const found = existing(records, session.publicId)
-      if (!found || found === false) return response(null, String(result.code ?? (found === false ? 'invalid_saved_journey' : 'driving_storage_unavailable')), false)
+      if (found === null || found === false) return response(null, String(result.code ?? (found === false ? 'invalid_saved_journey' : 'driving_storage_unavailable')), false)
       if (result.ok !== true) return response(view(found), String(result.code ?? 'start_refused'), false)
       if (result.journeyId !== found.journeyId) return response(view(found), 'superseded_journey', false, undefined, true)
       return response(view(found), String(result.code ?? 'started'), true, undefined, 'duplicate' in result && result.duplicate === true)
@@ -229,7 +229,7 @@ export function createDrivingService(ctx: RouteContext) {
       const { session, location } = access(db, request, cityId)
       const { records } = collection(ctx, db)
       const found = existing(records, session.publicId)
-      if (!found || found === false) return response(null, found === false ? 'invalid_saved_journey' : 'no_journey', false)
+      if (found === null || found === false) return response(null, found === false ? 'invalid_saved_journey' : 'no_journey', false)
       if (found.cityId !== cityId || found.location !== location) {
         if (found.state.status === 'running') {
           const now = ctx.now()
@@ -288,7 +288,7 @@ export function createDrivingService(ctx: RouteContext) {
       const { records } = collection(ctx, db)
       const result = ctx.once(db, session, { id: body.requestId, kind: `living-world.driving.${target}`, fingerprint: body }, (_at) => {
         const found = existing(records, session.publicId)
-        if (!found || found === false) return { ok: false, code: found === false ? 'invalid_saved_journey' : 'no_journey' }
+        if (found === null || found === false) return { ok: false, code: found === false ? 'invalid_saved_journey' : 'no_journey' }
         const now = ctx.now()
         if (!safeTime(now)) return { ok: false, code: 'invalid_server_clock' }
         if (found.journeyId !== body.journeyId) return { ok: false, code: 'journey_mismatch' }
@@ -315,7 +315,7 @@ export function createDrivingService(ctx: RouteContext) {
         return { ok: true, code: target === 'paused' ? 'paused' : 'resumed', journeyId: found.journeyId, revision: found.revision }
       })
       const found = existing(records, session.publicId)
-      if (!found || found === false) return response(null, String(result.code ?? 'journey_unavailable'), false)
+      if (found === null || found === false) return response(null, String(result.code ?? 'journey_unavailable'), false)
       const matching = result.journeyId === found.journeyId
       return response(view(found), String(result.code ?? 'transition_refused'), result.ok === true && matching,
         result.ok === true && matching ? undefined : undefined, 'duplicate' in result && result.duplicate === true)

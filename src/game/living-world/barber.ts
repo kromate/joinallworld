@@ -79,7 +79,7 @@ function samePlan(a: unknown, b: unknown): boolean {
         && item.target.minX === other.target.minX && item.target.minY === other.target.minY && item.target.maxX === other.target.maxX && item.target.maxY === other.target.maxY
     })
 }
-function idleState(plan: BarberPracticePlan, status: 'paused' | 'complete', feedback: string, objectiveIndex = 0, coverage = 0): BarberPracticeState {
+function idleState(plan: BarberPracticePlan, status: BarberPracticeStatus, feedback: string, objectiveIndex = 0, coverage = 0): BarberPracticeState {
   return { v: 1, plan, objectiveIndex, coverage, cursor: null, pointerDown: false, status, feedback }
 }
 /** Starts only from a server-authored, closed-schema plan. styleId is opaque and server-owned. */

@@ -7,3 +7,6 @@
 #settlementMarkers circle{fill:#174e52;stroke:#f5ead3;stroke-width:.6;vector-effect:non-scaling-stroke;opacity:.9}#settlementMarkers circle.selected{fill:#b14626;stroke:#fff2cf;stroke-width:1.5;opacity:1}.settlement-paging{display:flex;align-items:center;gap:6px}.settlement-paging .secondary{width:auto;justify-content:center;margin-top:8px}.settlement-paging .inventory-note{flex:1;text-align:center;padding:6px}#settlementSelected{overflow-wrap:anywhere}#settlementSource{overflow-wrap:anywhere}.outline-caption{max-width:calc(100% - 45px)}.outline-caption span{line-height:1.5}.secondary:disabled{opacity:.45;cursor:not-allowed}
 
 .climate-note,.climate-source-note{white-space:pre-line;overflow-wrap:anywhere}.climate-source-note{font:10px/1.6 'DM Mono',monospace;color:#a0adaf;margin-top:10px}
+
+.view-overlay{right:190px;overflow-wrap:anywhere}
+@media(max-width:850px){.view-tabs{top:14px;left:18px;right:auto}.view-overlay{top:62px;right:18px}}

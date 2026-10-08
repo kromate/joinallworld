@@ -1,6 +1,6 @@
 # Graphics execution checkpoint — 8 October 2026
 
-Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary and isolated source phase now include maina44629b3; primary local graphics work is preserved. Ignored experiments are excluded from production packages. Latest status below supersedes historical checkpoints.
+Whole-game graphics acceptance remains incomplete. Owner: GRAPHICS, chat01a11908-b662-79f1-8bab-888716f77717. Primary source now includes main3f4a857a; primary local graphics work is preserved. Ignored experiments are excluded from production packages. Latest status below supersedes historical checkpoints.
 
 ## User direction
 
@@ -56,3 +56,15 @@ Source continuation: guarded primary Family maina44629b3 sync preserved all71 lo
 [CI37838709506](https://github.com/kromate/joinallworld/actions/runs/37838709506) completed success on exact **e59f5e8e0ede5f99786f7d00f03df0a0b96ea56e**: release-policy, typecheck-fast and build-and-smoke-fast pass; full skipped. This is the vehicle branch plus Family maina446, preserving tested model7db039a0/testd4e2aa76. It excludes primary local Home/night/glow/shadow/prepare changes and certifies no new lighting tests or whole-game/mobile acceptance. No graphics upload.
 
 Root source-reviewed LIVING **50502578923ab457e95cafb448a2c23069fe6809** StandIn API/test/caller against existing SkinnedBody place/sitOn semantics. The separate exterior floor destination repairs the stale standing target and preserves ordinary seated placement; no blocking source issue found for this bounded proposal. No adoption or runtime execution by GRAPHICS. Pending-load, reduced-motion/repeated entry-exit, general venue behavior and actual body/roof/door clearance remain required. The 0.6 m staging distance is provisional. LIVING reports its separate full CI failed in the attribution script; that failure is not covered by graphics CI and does not transfer APP UI ownership.
+
+
+## Local collar topology continuation — unexecuted
+
+Ignored collarv5 splits connected leaves on emitted shirt triangles, preserves original seam/outline and small fold field, and supplies an independent rest-space support lookup plus shipped-clip face-interior witness. Original leaf24/collar+tie48 limits and v4 penetration failures remain intact. Source-only guarded control/runner/types/viewer are prepared, not executed or adopted. Exact c3f4cd8b CI37839532199 passed fast gates/full skipped; it excludes this candidate and local Home/light. LIVING separately reports startup-size failure in1f fullCI and public health adoption of Familya446; neither certifies graphics or transfers APP UI intensive/release ownership. One existing garment auditor is doing only a bounded small source review, no new fanout/intensive work.
+
+
+## Current ownership supersedes earlier APP queue
+
+Fresh main3f4a857a records APP UI's explicit terminal release/handoff: exacta446 source/version64ed8462-6c2b-4c42-8d19-266bc93708e5 at100%, reported adoption/continuity/Family/smoke/browser receipt, owned resources stopped. GRAPHICS source-read that record and fast-forwarded primary with all72 local file hashes exact; this is not independent provider/gameplay verification by GRAPHICS. WORLD explicitly assigned itself the bounded capture/identity/World compiler/cached capacity turn, then LIVING narrow StandIn/observer gates, then GRAPHICS. WORLD coordinates release; no graphics upload or intensive start until explicit terminal handoff. Earlier APP ownership entries are historical.
+
+Existing garment auditor source review led to added transported-normal orientation, seam/dedup support-field checks, unique structured failure receipts and post-subprocess/report hash guards. Candidate flags now cover sampled collar-leaf clearance only; tie, other folded surfaces, continuous intersections, pixels/cost/mobile remain unverified. No v5 execution or original-limit waiver.

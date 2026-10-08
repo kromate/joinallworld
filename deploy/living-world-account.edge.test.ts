@@ -269,7 +269,10 @@ test('Worker account erase deletes account actors only and leaves an unrelated g
   const accountCookie = (signInResponse.headers.get('set-cookie') ?? '').split(';')[0] ?? ''
   const erased = await h.prove('/api/account/delete', { confirm: 'delete', erase: true }, accountCookie, 'UidErase')
   assert.equal(erased.status, 200)
-  assert.deepEqual(await h.json<{ ok: boolean; kept: boolean }>(erased), { ok: true, kept: false })
+  const eraseBody = await h.json<{ ok: boolean; kept: boolean; serverTime: number }>(erased)
+  assert.deepEqual([eraseBody.ok, eraseBody.kept], [true, false])
+  assert.deepEqual(Object.keys(eraseBody).sort(), ['kept', 'ok', 'serverTime'])
+  assert.ok(Number.isSafeInteger(eraseBody.serverTime) && eraseBody.serverTime > 0)
   assert.equal((erased.headers.get('set-cookie') ?? '').split(';')[0], '__Host-sid=')
   assert.equal(await h.barberRow(player.id), null)
   assert.deepEqual(await h.barberRow(unrelated.id), unrelatedProgress, 'unrelated guest row remains byte-for-byte equivalent')

@@ -164,3 +164,5 @@ Corrected Report/Statement commit9d1d488fed07c5d8b299d2ec188c96491df0e5f4 passed
 ### Chat privacy controls handoff
 
 Notification commit14e802dea7459487e0e00a74a5235c60d8d159b2 passed exact CI37856727022. Chat group/mention/introduction preferences now use serialized writes, pending/error feedback and temporary displayed choices that revert to server preferences on refusal. Controls have 44px label targets, and long explanations wrap. Backend permission semantics and default values are unchanged. Integration acceptance: delayed success/refusal, rapid toggles, keyboard focus, cross-device refresh and 320px layout; use synthetic accounts.
+
+Chat privacy commitb29031f6 passed exact remote CI37857267550 (type/build/download/smoke/policy). Voice source is now available to the integration agent as checkpointb193bd77 on codex/voice-notes-checkpoint; see VOICE-NOTES-WIP.md for the older-base warning and remaining acceptance. The UI integration branch and production saves were not altered by checkpoint export.

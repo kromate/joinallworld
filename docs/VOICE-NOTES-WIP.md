@@ -1,17 +1,27 @@
-# Voice-note checkpoint
+# Voice-note integration handoff
 
-Local work began after the phone release, then the user made app-interior redesign the next release priority. Voice notes are unfinished and must not be claimed deployed.
+The complete saved implementation is published on `codex/voice-notes-checkpoint`, commit `b193bd771c744ae0ce5b007180f36eb5838e704e`. It includes 21 implementation files plus its handoff document, including all seven previously untracked modules. The original stash `5860c8e5e0f350a01378ceb4b28cf9a9238daed1` is retained.
 
-Untracked source: `server/social/voice-notes.ts`, `src/types/voice-note.ts`, `src/app/features/messages/voiceRecorder.ts`.
+This is an older-base checkpoint, not a release. Its parent is `9f9bed3616ac43e0989ce42d856490cb57d94dba`. Cherry-pick its single implementation commit onto fresh main, preserving current Family consent/routes, shared controls, chat preference feedback, message actions and save contracts. Resolve shared-file conflicts deliberately. Do not deploy the older branch directly.
 
-Implemented boundaries: 60-second / 512,000-byte recording limit, 32kbps Opus hint, single Opus/WebM track parser with packet-derived duration and canonical container rewrite, and a browser recording state machine with microphone/object-URL ownership. The parser strips tags/seek metadata and rejects video, malformed/truncated containers and excessive duration/size. It does not decode or semantically moderate audio.
+## Source included
 
-Evidence: a real Chrome MediaRecorder captured a synthetic tone without microphone access. Its 16,343-byte upload parsed and rewrote to 16,248 bytes / 3,900ms; FFmpeg decoded the cleaned recording. Independent short Opus fixtures passed; 61-second, video, truncated and oversized samples were rejected. A bounded 1,000-mutation diagnostic returned without uncaught errors; codec-payload mutations can remain accepted because this is container validation, not a codec decoder. Typecheck passed before the last small validator refinements.
+- Private Node file and SQLite voice stores, upload and authorized retrieval routes.
+- Opus/WebM validation with packet-derived duration and canonical container rewriting; 60 seconds and 512,000 bytes maximum.
+- Friend/membership/block/recipient checks, byte-fingerprint retry identity, message history, removal and report handling.
+- Recorder review/send UI, lazy native playback, and chat/identity-change cleanup.
 
-Still required: private upload/retrieval routes, bounded Node/Worker blob lifecycle, authorization on every read, byte-fingerprint retry identity, history/removal/report cleanup, moderation handling, player controls, review/send/retry UI, lazy playback with no autoplay, identity/chat-change disposal wiring, codec compatibility (older Safari AAC path not implemented), end-to-end probes, full checks and deployment. No runtime caller imports these modules yet.
+## Evidence boundary
 
-References: https://www.w3.org/TR/mediastream-recording/ ; https://www.matroska.org/technical/elements.html ; https://www.matroska.org/technical/notes.html ; https://webkit.org/blog/16574/webkit-features-in-safari-18-4/ . Modern Safari supports Opus/WebM; older Safari's AAC/MP4 support requires a separate verified path.
+Before the checkpoint, local fast checks, 40 existing checks and HTTP authorization/retry/removal probes passed. A Chrome MediaRecorder synthetic tone was parsed, rewritten and decoded by FFmpeg. These are historical results, not acceptance of an integration with current main. The old base predates the compiler-abort detection fix; use current main's fail-closed compiler and unchanged budgets.
 
-Synthetic diagnostic files live in `/tmp/allworld-voice-probe/`; the original browser download is `/Users/anthonyakpan/Downloads/browser-voice.webm`. Temporary `voice-probe.html` was removed. This checkpoint does not reduce the full parity roadmap.
+## Remaining acceptance
 
-Update: integration work is preserved in stash `5860c8e5e0f350a01378ceb4b28cf9a9238daed1`. It now includes private stores/routes, reporting/removal, recipient controls and recording/playback components; fast checks and 40 existing checks passed. Worker persistence/browser integration remain unverified. UI remediation is the current priority. See APP-FLOW-AUDIT.md.
+1. Exact merged type/build/budget and existing focused checks.
+2. SQLite restart/blob persistence, authorized reads, deletion, report handling and bounded cleanup.
+3. Two synthetic actors recording/reviewing/sending/retrying/playing; permission denial, offline behavior and switching account/chat during recording or playback.
+4. Block/group-removal/recipient-setting changes and stale response disposal.
+5. Codec compatibility: the older Safari AAC/MP4 recording path is not implemented. Unsupported capture must be explicit. Container validation does not decode or semantically moderate audio.
+6. Sealed release, retained production namespace/migration/secrets, pre/post synthetic save continuity and live verification.
+
+The human's current workflow assigns integration, conflict resolution and follow-up bug fixing to the agent on the other system. No production deployment or actual-user audio capture is claimed by this handoff.

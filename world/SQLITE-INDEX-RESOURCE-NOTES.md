@@ -1,8 +1,19 @@
 # SQLite index resource evidence — 8 October 2026
 
-Status: primary-source research and accepted cached positive experiment. See
-FEATURE-IDENTITY-OPERATIONS.md for actual sizes. **No durable store acceptance or
+Status: primary-source research, accepted cached positive experiment and measured
+kernel/process/SQL failure witnesses. See FEATURE-IDENTITY-OPERATIONS.md for actual
+sizes and [INDEX-RESOURCE-OPERATIONS.md](INDEX-RESOURCE-OPERATIONS.md) for terminal
+resource/recovery checks. **No durable store acceptance or
 production quota freeze**.
+
+Actual Node22.19/SQLite3.50.4 has DEFAULT_MEMSTATUS=0: hard_heap_limit readback8MiB
+did not prevent the controlled8MiB text allocation. Do not use this PRAGMA as an
+enforced native memory cap on this runtime. The fixed-worker supervisor instead
+uses V8 bounds, CPU/wall limits and fail-closed sampled RSS with explicit overshoot
+limitations. [SQLite heap-limit conditions](https://www.sqlite.org/c3ref/hard_heap_limit64.html)
+explain this measured behavior. File-size and page-limit witnesses preserve the
+committed baseline; SIGKILL with real uncommitted WAL frames also recovers it.
+These are disposable SQL witnesses, not actual index/ledger crash acceptance.
 
 SQLite's `max_page_count` limits pages in the database file. `journal_size_limit`
 controls journal/WAL files retained after transactions or resets; it is not a
@@ -26,7 +37,7 @@ cap from an after-commit size check. Preserve a durable database and WAL togethe
 never delete an existing WAL to free a reservation. The final capacity/overshoot
 and recovery contract still needs measured positive and bounded failure tests.
 
-The tracked `tooling/profile_feature_identity.mjs` verifies actual
+The tracked `tooling/profile_feature_identity.ts` verifies actual
 WAL/FULL/foreign-key settings, records Node/SQLite versions and all three physical
 file sizes, and rejects measurement errors instead of returning fabricated zero.
 Only an absent optional WAL/shared-memory file maps to zero. It inspects checkpoint

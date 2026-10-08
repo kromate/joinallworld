@@ -37,8 +37,16 @@ Evidence under owned `.cache/world-build/evidence/`:
 `feature-index-opener-{tooling-manifest,binding}-v1.json`, and
 `feature-index-opener-source-acceptance-v1.json`. The last file verifies exact test/
 tool/profile/source hashes and evidence pins, TAP/Python counts, raw configuration,
-ordinary replay counts/digests and physical sizes. Source policy/main publication
-and terminal handoff remain the closeout tasks for this coherent source phase.
+ordinary replay counts/digests and physical sizes.
+
+Coherent source is committed as73e090c97f09b8a31dbb96e6f1b65ac3ff77b2f8. Its exact
+clean archive passes all5 release-source policy tests (129.86ms, terminal0):
+133,523,450logical/140,032,000tar bytes,8,262 tracked files, owned scratch removed.
+Receipts `feature-index-opener-clean-policy-v1.{tap,stderr,json}` retain the exact
+source/command. Total **94 focused checks plus compiler**; no full game build or
+deployment. Fresh mainb6908997 was inspected and merged with only coordination-doc
+changes incoming; tested builder code and source pins remain unchanged. Normal main
+publication and terminal handoff are the remaining closeout tasks for this phase.
 
 Full objective remains active. Before unattended country rollout: stable pinned
 execution snapshot/complete worker closure, guarded canonical namespace opener and

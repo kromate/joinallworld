@@ -1,7 +1,8 @@
 # Independent world-data builder
 
 Tooling pins, immutable binding, worker boundary, footprint and charge primitives
-now pass **89 focused checks plus World TypeScript**. Cached Dakar replay preserves
+now pass **94 focused checks plus World TypeScript**, including exact committed
+source73e090c9 release-policy checks. Cached Dakar replay preserves
 2,283 ordinals/1,810 versions with0 network and2,908,160 database bytes. Actual20-file
 tooling and Node-binary pin verification are recorded in PROGRESS.md.
 The charge ledger detects deleted reservations using transactionally stored totals

@@ -6,6 +6,8 @@ witness, tooling pins, binding, footprint and charge helpers now pass45 new fixt
 Cached real-engine replay remains exact with0 network. Actual20-file tooling and
 Node-binary pin reads pass; declared binding is not a real allocation. See PROGRESS.md
 for exact receipts and outstanding opener/bootstrap/crash/campaign/raw-audit gates.
+Source73e090c9 also passes5 actual release-source policy checks in its clean archive:
+**94 focused checks plus compiler** for this phase. No full runtime build/deployment.
 
 `feature-index.ts` passes 22 guarded isolated fixture cases, the World compiler at
 1536 MiB, ten writer-lock cases and cached real-engine Dakar replay. The modified

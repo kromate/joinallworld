@@ -1,5 +1,12 @@
 # Compact feature-index engine — focused acceptance
 
+Latest continuation: the supervisor process/disposal split, inherited Node descriptor
+witness, tooling pins, binding, footprint and charge helpers now pass45 new fixtures,
+12 old resource/10 lease/22 engine cases and World TypeScript: **89 focused checks**.
+Cached real-engine replay remains exact with0 network. Actual20-file tooling and
+Node-binary pin reads pass; declared binding is not a real allocation. See PROGRESS.md
+for exact receipts and outstanding opener/bootstrap/crash/campaign/raw-audit gates.
+
 `feature-index.ts` passes 22 guarded isolated fixture cases, the World compiler at
 1536 MiB, ten writer-lock cases and cached real-engine Dakar replay. The modified
 fixed resource registry passes all twelve existing resource cases again. All
@@ -101,6 +108,144 @@ remains a required promotion gate. Schema recognition/counts are not a corruptio
 or physical-device performance certificate.
 
 ## Resources and unresolved integration
+
+### Focused fixed tooling input verification
+
+`tooling/index_tooling.py` prepares canonical manifest recognition and actual byte
+comparison for20 fixed engine/source-validator/runtime-helper files, including its
+own file. It requires exact paths and pin fields, no extra/missing entries, per-file
+length1–1,048,576bytes, aggregate≤16MiB and retained manifest≤64,000bytes. Decode checks
+the actual manifest pin before parsing, duplicate decoded keys and exact canonical
+ASCII. It never derives a new pin from damaged source or executes imported source.
+
+Read-only verification traverses directories by no-follow descriptors and reads
+bounded64KiB chunks. Owned directories/files may be readable but cannot be writable
+by group/world; files must be regular and single-link. Exact source length/hash,
+stable descriptor/named inode, timestamps, modes and observed directory/root identity
+are checked. Links, missing source or contradictory bytes are preserved and refused.
+These checks are for a cooperating local owned filesystem, not an adversarial code
+attestation or a promise that every file stays immutable after its check returns.
+
+Seven disposable synthetic source-tree fixtures pass. Actual current20-file byte
+verification also passes (200,768source/2,461manifest bytes); the retained manifest
+has not been admitted to a durable worker or namespace. The fixed input list is scoped from
+current imports; it does not discover new imports, include a future ingestion worker,
+verify the Node binary/runtime or prove a stable snapshot for later module execution.
+Before wiring, pin/review the actual complete worker closure and execute only from
+a stable verified source snapshot. Changing dependencies or code changes its binding;
+it cannot silently reuse an old charged index. Source-config admission still belongs
+to bindConfiguredCapture. This helper changes no acquisition/campaign/game state.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_tooling.py -v
+```
+
+### Focused immutable binding codec
+
+`tooling/index_binding.py` prepares a strict ≤4096byte canonical ASCII config with
+exact field sets. It pins engine/identity/capture/source-compiler versions, Overture
+release spelling and canonical buildings/roads receipt layers, source configuration
+and tooling-manifest bytes/SHA-256, Node executable bytes/SHA-256 and exact runtime
+versions, explicit engine/process limits and declared reservation bytes. Pin payloads
+are bounded to64,000bytes; executable size to256MiB. Canonical layer order is required,
+not silently normalized. Canonical bytes/hash are independent of object insertion order;
+alternate raw JSON, duplicate decoded keys and drift do not reopen the same index.
+
+Nine fixtures pass; a932byte declared binding has also been encoded from measured
+current tool/configuration/Node pins. No real index reservation was created.
+Shape validation is not actual pin
+authentication, cross-language equivalence, source admission or runtime support.
+The codec permits bounded Node22/SQLite3 version spellings; the actual opener must
+match the measured installed versions and binary, not infer compatibility from the
+major version. Engine limit ceilings mirror current exports but must be checked
+against the actual pinned engine before launch. A source release that passes syntax
+still requires existing source-config/request admission. All relevant engine, owner,
+canonicalization, validator, worker and supervisor dependencies must be represented
+and verified in the future pinned tooling manifest. No manifest reader or real-index
+worker exists in this phase. There is no query/campaign identity in the global index
+binding: the existing engine stores each fenced campaign observation separately.
+
+Database≤file≤reservedBytes is a necessary shape relation, not worst-case physical
+admission. Registry, WAL/SHM, bootstrap, metadata, directory and audit allowances must
+be measured, charged and checked by the guarded opener before launch. Changing a
+bound requires a distinct index binding, never a quota reset in an existing namespace.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_binding.py -v
+```
+
+### Focused retained-process and file-inventory boundary
+
+Private `_run_fixed_process` retains its caller-owned directory and reports owned
+worker terminal state before inventory. Public `run_worker` still creates/removes
+only disposable scratch. The private helper accepts only fixed repository workers,
+checks canonical owned 0700 roots, applies private worker umask, inherits a checked
+permanent lease descriptor via pass_fds and rechecks root identity before inventory.
+Descriptor/inode equality does not prove a flock is held: its trusted caller must
+supply the actual `index_writer_lease`. The fixed Node witness checks descriptor
+survival across exec; all four boundary fixtures pass. No public
+real-index CLI or durable worker request has been exposed.
+
+`index_storage_footprint.py` passes eight file-only fixtures. It accepts
+the actual lease, checks fixed final/bootstrap DB/WAL/SHM and bounded metadata/audit
+names, and totals max(logical, allocated) file bytes plus directory allocation.
+Unknown files, orphan sidecars, links, nonprivate state and overflow stop explicitly,
+preserving every file. Missing/empty sidecars are reported as inventory states; no
+row, format, geometry or source completeness is inferred. It never opens SQLite,
+parses a binding/reservation or repairs/deletes state. Use it only after the actual
+writer is terminal or before launch while the exclusive writer gap is established.
+
+Neither this inventory nor its candidate file/aggregate argument ceilings freezes
+production quotas or provides a hard in-transaction aggregate cap. The namespace
+reservation registry, immutable binding and guarded atomic bootstrap are still
+required, followed by actual same-version engine/parent-worker crash tests and
+independent raw conservation. These helpers and modified guard pass the focused
+checks above; no durable cache, ledger, game/Nigeria data or source usage changed.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_process_boundary.py -v
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_storage_footprint.py -v
+```
+
+### Focused immutable namespace charges
+
+`tooling/index_reservations.py` prepares an append-only charge primitive on a
+caller-owned idle autocommit Python SQLite connection. It recognizes exact schema,
+application/version and six metadata records, refuses unrelated state before
+journal mutation, and applies actual WAL/FULL plus a4MiB database page cap.
+The immutable aggregate argument includes a candidate17MiB registry overhead;
+individual allowances are64KiB–512MiB, binding bytes1–4096, at most256 rows.
+These ceilings need measured pressure/physical acceptance and parent process/file
+limits before production use. This is not the acquisition/source budget or a queue.
+
+An index hash is the exact SHA-256 of its opaque binding bytes. Each record also
+stamps its byte length, amount and binding under this format. Exact replay charges
+once; changing the amount or namespace budget is refused. Held-byte total, row count
+and a sorted-record digest are updated in the same immediate transaction as the
+new reservation. Row deletion or damaged summary is rejected; no reconciliation
+operation silently releases or reconstructs the charge. These hashes detect
+contradictory state, not an attacker rewriting all database records and metadata.
+
+A failed writer must reopen; a post-commit checkpoint failure leaves its reservation
+committed. Strict successful TRUNCATE is required before returning success. A caller's
+already active transaction is refused and preserved. Snapshot is a bounded integrity
+read, not permission to continue a poisoned writer. Seventeen fixtures cover replay,
+overflow, row limits, changed/deleted records, damaged totals, foreign state and
+checkpoint/transaction behavior, including a partial summary-write fault;
+**all17 pass**. The injected fault is not actual process-crash acceptance.
+They own only disposable synthetic
+databases and do not admit a real production binding.
+
+The primitive does not own a path, lease, connection close, filesystem allocation or
+worker launch. A future guarded namespace opener must authenticate binding semantics,
+reserve before creating an index root, hold the actual namespace lease, supervise
+registry file/WAL/SHM/journal bounds and preserve uncertain committed state. Index
+terminal footprints must fit their own charged allowance. A failed reservation or
+unrecognized file is not authorization to reset, delete or retry source acquisition.
+
+```sh
+node --experimental-strip-types scripts/agent-slot.ts heavy --wait-ms 60000 -- env NODE_OPTIONS=--max-old-space-size=1536 .cache/world-build/tooling/venv/bin/python -I -m unittest discover -s world/tooling -p test_index_reservations.py -v
+```
 
 ### Accepted writer lease primitive
 

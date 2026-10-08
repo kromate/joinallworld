@@ -1,4 +1,53 @@
-# Implementation checkpoint — 8 October 2026
+# Implementation checkpoint — 9 October 2026
+
+## Index source primitives — focused acceptance
+
+Previous goal turn was implementation progress: bounded fixed tool-file verification
+and seven fixtures were added; Lagos immutable manifest76cd9b6.../versionc0dd6f...
+was read and confirmed unchanged for LIVING. This continuation received GRAPHICS's
+explicit terminal cleanup (owned tabs closed/reset, four server/browser handles
+terminal130 and slots0/1) and took the sole local intensive turn, with LIVING next.
+No new fanout, server, browser, acquisition or upload was started.
+
+Actual World TypeScript passed0 at1536MiB. All **67 Python fixtures** passed in3.668s:
+45 new tooling/binding/reservation/boundary/footprint checks plus12 existing resource
+and10 lease cases. The refactored guard then passed all **22 engine cases** (429.09ms
+inside /575.13ms guarded, sampled worker RSS115,572,736bytes, owned scratch removed).
+Thus **89 focused checks plus compiler** pass on this actual source; no full game or
+worldwide acceptance is inferred. Initial source-only sections below are historical.
+
+Cached real-engine replay also passed0: unchanged2,283 ordinals/1,810 keys+versions/
+473 duplicates/0 conflicts,2,908,160 database bytes/0 WAL/32,768 shared-memory bytes,
+0 network and identical same-version reopen digests. Worker276.33ms/guard416.61ms,
+Node peak153,360KiB. This is two captures, not maximum-row/world throughput or
+abrupt-engine-crash proof. Guarded workers and fixtures removed only owned scratch.
+
+An actual read-only tooling verification passed0 for20 fixed files/200,768 source
+bytes. Retained manifest is2,461bytes/SHA000d7ccb509724a2bcef5d818dff2c495d6c6695e3d7200d76287343031648f3.
+Actual configuration pin matches the cached capture profile; resolved Node binary
+was bounded, hashed and checked unchanged. Canonical declared binding is932bytes/
+SHAd4bd05b8745c24d7c8e897fce62c3c95b3fcf8ac32d095409c95d4d8b361b31a.
+It declares32MiB for demonstration but **does not charge/create a real reservation**.
+Python3.12.14/SQLite3.53.1 fixture results do not prove Node3.50.4 engine crash recovery.
+
+Evidence under owned `.cache/world-build/evidence/`:
+`feature-index-opener-source-typecheck-v1.{stdout,stderr}`,
+`feature-index-opener-python-v1.{stdout,stderr}`,
+`feature-index-opener-{engine,capacity}-v1.{json,stderr}`,
+`feature-index-opener-{tooling-manifest,binding}-v1.json`, and
+`feature-index-opener-source-acceptance-v1.json`. The last file verifies exact test/
+tool/profile/source hashes and evidence pins, TAP/Python counts, raw configuration,
+ordinary replay counts/digests and physical sizes. Source policy/main publication
+and terminal handoff remain the closeout tasks for this coherent source phase.
+
+Full objective remains active. Before unattended country rollout: stable pinned
+execution snapshot/complete worker closure, guarded canonical namespace opener and
+actual allocation, atomic database bootstrap, measured registry/index physical
+pressure, Node binding/runtime checks, same-version abrupt engine/parent-worker
+recovery, fenced campaign hook and independent raw/index conservation. Then compile
+and stream country geometry, integrate Nigeria renderer and deploy verified playable
+phases. Current primitives remain unwired; actual source/campaign reservations,
+captures, game/Nigeria/account data and production were not modified.
 
 ## Compact engine and lease acceptance — 8 October 2026
 

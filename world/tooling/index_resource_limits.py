@@ -23,6 +23,7 @@ WORKERS = {
     # Direct node:test module entry (no --test subprocess): sampled RSS covers the writer.
     "index-engine-tests": HERE.parent / "feature-index.test.ts",
     "index-engine-capacity": HERE / "profile_feature_index.ts",
+    "lease-witness": HERE / "index_lease_witness.ts",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 MIB = 1024 * 1024
@@ -83,8 +84,13 @@ def recovered_witness(root):
         connection.close()
 
 
-def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
-               wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB):
+def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
+                       wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None):
+    """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
+
+    Caller supplies the actual held kernel lease; inode checks cannot prove flock
+    ownership. This is not a public durable opener or aggregate-budget admission.
+    """
     if worker not in WORKERS or (worker != "witness" and case is not None) or (worker == "witness" and case not in CASES):
         raise ValueError("only a registered worker and its fixed cases are accepted")
     bounded_integer(file_bytes, 65536, 64*MIB, "file bytes")
@@ -92,6 +98,23 @@ def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
     bounded_integer(wall_seconds, 1, 60, "wall seconds")
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
+    root = Path(root)
+    if not root.is_absolute() or root.resolve(strict=True) != root:
+        raise ValueError("worker root must be an existing canonical absolute path")
+    root_info = root.lstat()
+    if not stat.S_ISDIR(root_info.st_mode) or root_info.st_uid != os.getuid() or stat.S_IMODE(root_info.st_mode) != 0o700:
+        raise ValueError("worker root must be an owned private 0700 directory")
+    inherited = ()
+    if lease_descriptor is not None:
+        if type(lease_descriptor) is not int or lease_descriptor <= 2:
+            raise ValueError("worker lease must be a dedicated descriptor")
+        lease = os.fstat(lease_descriptor)
+        named = (root / "writer.lock").lstat()
+        if (not stat.S_ISREG(lease.st_mode) or lease.st_uid != os.getuid()
+                or stat.S_IMODE(lease.st_mode) != 0o600 or lease.st_nlink != 1 or lease.st_size != 0
+                or (lease.st_dev, lease.st_ino) != (named.st_dev, named.st_ino)):
+            raise ValueError("worker lease descriptor differs from the private permanent inode")
+        inherited = (lease_descriptor,)
     node = Path(node)
     if not node.is_absolute():
         raise ValueError("Node executable must be absolute")
@@ -106,6 +129,7 @@ def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
               resource.RLIMIT_CORE: (0, 0)}
 
     def apply_limits():
+        os.umask(0o077)
         for kind, limit in limits.items():
             resource.setrlimit(kind, limit)
             if resource.getrlimit(kind) != limit:
@@ -113,78 +137,98 @@ def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
         signal.signal(signal.SIGXFSZ, signal.SIG_DFL)
         signal.signal(signal.SIGXCPU, signal.SIG_DFL)
 
-    with tempfile.TemporaryDirectory(prefix="allworld-index-guard-") as temporary:
-        root = Path(temporary)
-        # No inherited NODE_OPTIONS, loader, shell, credentials or ambient worker flags.
-        environment = {"PATH": str(node.parent), "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "TMPDIR": str(root)}
-        command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
-        if case is not None:
-            command.append(case)
-        started = time.monotonic()
-        process = subprocess.Popen(command, cwd=HERE.parent.parent, env=environment,
-                                   stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                   start_new_session=True, preexec_fn=apply_limits)
-        output = {"stdout": bytearray(), "stderr": bytearray()}
-        maximum_rss = 0
-        reason = "exit"
-        selector = selectors.DefaultSelector()
-        for name, stream in (("stdout", process.stdout), ("stderr", process.stderr)):
-            selector.register(stream, selectors.EVENT_READ, name)
-        next_rss = started
-        try:
-            while selector.get_map() or process.poll() is None:
-                now = time.monotonic()
-                if process.poll() is None and now - started >= wall_seconds:
-                    reason = "wall-limit"
-                    break
-                if process.poll() is None and now >= next_rss:
-                    try:
-                        maximum_rss = max(maximum_rss, rss_bytes(process.pid))
-                    except Exception:
-                        if process.poll() is None:
-                            reason = "RSS-measurement-failed"
-                            break
-                    if maximum_rss > rss_limit_bytes:
-                        reason = "sampled-RSS-limit"
-                        break
-                    next_rss = now + 0.1
-                for key, _ in selector.select(0.05):
-                    data = os.read(key.fileobj.fileno(), 8192)
-                    if not data:
-                        selector.unregister(key.fileobj)
-                        continue
-                    cap = 1_000_000 if key.data == "stdout" else 64_000
-                    if len(output[key.data]) + len(data) > cap:
-                        reason = "output-limit"
-                        break
-                    output[key.data].extend(data)
-                if reason != "exit":
-                    break
-        finally:
-            # This process group was created exclusively by this call. No generic kill.
-            if process.poll() is None:
+    # No inherited NODE_OPTIONS, loader, shell, credentials or ambient worker flags.
+    environment = {"PATH": str(node.parent), "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "TMPDIR": str(root)}
+    if lease_descriptor is not None:
+        environment["WORLD_INDEX_LEASE_DESCRIPTOR"] = str(lease_descriptor)
+    command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
+    if case is not None:
+        command.append(case)
+    started = time.monotonic()
+    process = subprocess.Popen(command, cwd=HERE.parent.parent, env=environment,
+                               stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                               start_new_session=True, preexec_fn=apply_limits, pass_fds=inherited)
+    output = {"stdout": bytearray(), "stderr": bytearray()}
+    maximum_rss = 0
+    reason = "exit"
+    selector = selectors.DefaultSelector()
+    for name, stream in (("stdout", process.stdout), ("stderr", process.stderr)):
+        selector.register(stream, selectors.EVENT_READ, name)
+    next_rss = started
+    try:
+        while selector.get_map() or process.poll() is None:
+            now = time.monotonic()
+            if process.poll() is None and now - started >= wall_seconds:
+                reason = "wall-limit"
+                break
+            if process.poll() is None and now >= next_rss:
                 try:
-                    os.killpg(process.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    # The worker may finish between poll and kill. Still wait/reap it.
-                    pass
-            process.wait(timeout=3)
-            selector.close()
-            process.stdout.close()
-            process.stderr.close()
-        physical = scratch_sizes(root)
-        if any(size > limits[resource.RLIMIT_FSIZE][0] for size in physical.values()):
-            raise RuntimeError("a scratch file exceeded the applied kernel file limit")
-        result = {"worker": worker, "case": case, "returnCode": process.returncode,
-                  "terminationSignal": signal.Signals(-process.returncode).name if process.returncode < 0 else None,
-                  "reason": reason, "elapsedMs": (time.monotonic() - started)*1000,
-                  "maximumObservedWorkerRssBytes": maximum_rss,
-                  "limits": {"fileBytes": limits[resource.RLIMIT_FSIZE][0], "cpuSeconds": limits[resource.RLIMIT_CPU][0],
-                             "coreBytes": 0, "wallSeconds": wall_seconds, "v8HeapMiB": heap_mib,
-                             "sampledRssBytes": rss_limit_bytes},
-                  "scratchFilesBeforeRecovery": physical,
-                  "stdout": output["stdout"].decode("utf-8", errors="strict"),
-                  "stderr": output["stderr"].decode("utf-8", errors="replace")}
+                    maximum_rss = max(maximum_rss, rss_bytes(process.pid))
+                except Exception:
+                    if process.poll() is None:
+                        reason = "RSS-measurement-failed"
+                        break
+                if maximum_rss > rss_limit_bytes:
+                    reason = "sampled-RSS-limit"
+                    break
+                next_rss = now + 0.1
+            for key, _ in selector.select(0.05):
+                data = os.read(key.fileobj.fileno(), 8192)
+                if not data:
+                    selector.unregister(key.fileobj)
+                    continue
+                cap = 1_000_000 if key.data == "stdout" else 64_000
+                if len(output[key.data]) + len(data) > cap:
+                    reason = "output-limit"
+                    break
+                output[key.data].extend(data)
+            if reason != "exit":
+                break
+    finally:
+        # This process group was created exclusively by this call. No generic kill.
+        if process.poll() is None:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                # The worker may finish between poll and kill. Still wait/reap it.
+                pass
+        process.wait(timeout=3)
+        selector.close()
+        process.stdout.close()
+        process.stderr.close()
+    # A caller-owned durable directory may never be silently replaced or followed
+    # through a changed root before inventory/recovery.
+    after = root.lstat()
+    if (root.resolve(strict=True) != root or not stat.S_ISDIR(after.st_mode)
+            or after.st_uid != root_info.st_uid or stat.S_IMODE(after.st_mode) != 0o700
+            or (after.st_dev, after.st_ino) != (root_info.st_dev, root_info.st_ino)):
+        raise RuntimeError("worker root changed; preserve state for explicit recovery")
+    physical = scratch_sizes(root)
+    if any(size > limits[resource.RLIMIT_FSIZE][0] for size in physical.values()):
+        raise RuntimeError("a scratch file exceeded the applied kernel file limit")
+    result = {"worker": worker, "case": case, "returnCode": process.returncode,
+              "inheritedLease": lease_descriptor is not None,
+              "terminationSignal": signal.Signals(-process.returncode).name if process.returncode < 0 else None,
+              "reason": reason, "elapsedMs": (time.monotonic() - started)*1000,
+              "maximumObservedWorkerRssBytes": maximum_rss,
+              "limits": {"fileBytes": limits[resource.RLIMIT_FSIZE][0], "cpuSeconds": limits[resource.RLIMIT_CPU][0],
+                         "coreBytes": 0, "wallSeconds": wall_seconds, "v8HeapMiB": heap_mib,
+                         "sampledRssBytes": rss_limit_bytes},
+              "scratchFilesBeforeRecovery": physical,
+              "stdout": output["stdout"].decode("utf-8", errors="strict"),
+              "stderr": output["stderr"].decode("utf-8", errors="replace")}
+    return result
+
+
+def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
+               wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB):
+    # Public experiment runner owns disposal. The private process boundary does
+    # not delete its caller's root, enabling future durable crash/replay wiring.
+    with tempfile.TemporaryDirectory(prefix="allworld-index-guard-") as temporary:
+        root = Path(temporary).resolve(strict=True)
+        result = _run_fixed_process(node, worker, root, case=case, file_bytes=file_bytes,
+                                    cpu_seconds=cpu_seconds, wall_seconds=wall_seconds,
+                                    heap_mib=heap_mib, rss_limit_bytes=rss_limit_bytes)
         if worker == "witness":
             result["recovery"] = recovered_witness(root)
     if root.exists():

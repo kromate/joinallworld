@@ -1,5 +1,15 @@
 # Independent world-data builder
 
+Tooling pins, immutable binding, worker boundary, footprint and charge primitives
+now pass **89 focused checks plus World TypeScript**. Cached Dakar replay preserves
+2,283 ordinals/1,810 versions with0 network and2,908,160 database bytes. Actual20-file
+tooling and Node-binary pin verification are recorded in PROGRESS.md.
+The charge ledger detects deleted reservations using transactionally stored totals
+and a digest; it does not yet open or allocate a real namespace. Stable execution
+snapshot, full worker closure, guarded atomic bootstrap, pressure/crash acceptance,
+fenced campaign completion and independent raw audit remain required. These source
+primitives change no gameplay, actual source reservations, Nigeria data or production.
+
 The compact feature-index engine now passes 22 guarded fixtures, ten writer-lock
 checks, World TypeScript and cached Dakar replay. It retains every original ordinal
 and conflicting body version. The same-data layout measurement reduced database

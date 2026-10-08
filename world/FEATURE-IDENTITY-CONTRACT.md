@@ -8,6 +8,13 @@ independent capture/index verifier and country compilation are not implemented.
 This does not alter any existing pack ID, game entity, acquisition identity, grid,
 Nigeria map, save, database or published product.
 
+[Fixed resource/recovery witnesses](INDEX-RESOURCE-OPERATIONS.md) now pass12/12,
+including real spilled-WAL interruption, per-file/page limits and CPU/wall/RSS/output
+guards. Near-byte-cap19MB identity and guarded cached overlap also pass. Actual
+Node SQLite hard_heap_limit is unenforced with DEFAULT_MEMSTATUS=0; no native hard
+heap or final store/quota acceptance is claimed. The durable schema, maximum-row/
+conflict/blocked-checkpoint and same-version replay gates remain next.
+
 ## Inputs and authority
 
 `identifySourceFeature(feature, binding)` is a pure, synchronous function in

@@ -32,3 +32,18 @@ See [physical aperture v2](GRAPHICS-DRIVER-APERTURE-PHASE.md) for exact source h
 Primary local Home candidate now shares canonical body/appearance/wardrobe with guests, serially loaded behind renderer/self readiness.14focused checks and targetedtypes pass. Actualtwo guest baseline14draws/8229tri vs canonicaltwo16draws/15833tri; fivecanonical22draws/31419tri,28geometries/10textures. Actualpublicwalk arrivesz3.23 unblocked/idle. This improves identity but is not mobile acceptance; lower source-derived detail remains required. Home night still uses daylight defaults; disposal0geometries/1texture leaves a residency gate. Home source remains unpublished/unintegrated; no original baseline/cap/asset/schema change.
 
 Latest primary main sync6dc7f516 preserved all67 local source hashes; isolated phase includes the same main and retains exact tested vehicle source/test hashes. Draft PR21 publishes db85161b physical aperture and evidence. WORLD confirms APP UI Family now owns the sole local intensive turn; prior WORLD→LIVING queue is superseded until explicit APP UI handoff. GRAPHICS remains source-only with no live owned QA sessions/tab. WORLD remains sole production uploader. No new local compiler/build/test/browser run after handback. Whole goal active/incomplete.
+
+
+## Queued source phase: time-driven Home / street and shadow ownership
+
+GRAPHICS primary local candidate is unexecuted and not part of this branch's tested physical-aperture source. Existing canonical Home was verified before these new edits; do not carry its14/type/browser passes forward to changed source.
+
+The candidate extracts numerically identical clock/light presets to lightweight scene/lighting.ts with venue-scenes public exports preserved. Home and neighbourhood expose existing indoor/outdoor day/dusk/night presets. Home's same warm point light follows lamps; optional LightPreset.glow lets the host set its existing shared emissive material from the active scene/default1. No new light/material/texture/asset, world coordinates or budget changes.
+
+Root and independent Luna source review identify missing sun-shadow ownership as the likely residual texture: DirectionalLight.dispose frees shadow map/mapPass; renderer.dispose does not. The candidate adds idempotent host-light disposal before renderer teardown and host double-dispose protection. Source attribution requires actual WebGL confirmation.
+
+Six meaningful regressions plus affected Home/street/host/scene suites and targeted types are prepared, unexecuted. Frozen actual-host controls must fail nightfall/teardown event-order witnesses. Same-state actual-host A/B observer records shadow events and counters before renderer teardown, explicitly labels fixture cleanup of old orphans, and records local lamp/glow response. Day/dusk/night pixels, movement/front-door transitions, five guests, transfers and physical devices remain unverified for this candidate.
+
+LIVING exclusively owns additive StandIn exit-floor destination API/tests and driving caller; existing SkinnedBody.place already provides the separate standing target. No shared skinned.ts overwrite or roof/scale/new-clip/pose-reset workaround. Runtime/general-venue/contact checks are queued.
+
+APP UI remains sole intensive/release owner. GRAPHICS has no heavy/server/browser sessions or owned temporary tabs; all existing source audits terminal, no new fanout. WORLD sole production uploader. Next GRAPHICS execution requires explicit resource handoff, not free locks. Whole goal active/incomplete.

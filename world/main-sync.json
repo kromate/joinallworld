@@ -34,7 +34,7 @@
     "unknownReservationBytes": 19424539,
     "unchanged": true
   },
-  "next": "Freeze the full Senegal country grid and source-query coverage denominator; regional fan-out is accepted. Connect bounded batches, country-wide owner rules and runtime owner dependencies.",
+  "next": "Implement bounded exact-range caching, then durable cross-query feature ownership and dedup before country geometry compilation.",
   "latestFetchCheckpoint": {
     "worldCommit": "925d9edbf1d9d73de8842dea2104ebda80e51b99",
     "fetchedMain": "1a329026aee962405ab81b3851861c92182c3ca4",
@@ -44,30 +44,27 @@
     "observedAt": "2026-10-08T10:44:10.530436+00:00"
   },
   "latestSynchronization": {
-    "worldMilestone": "e55761a4dad7cd152419902bf6d5555597fea01a",
-    "mergeCommit": "e7432eba02b12c84c52207617f6a0747516b830e",
-    "incomingMain": "48e2a3c9318103f87ac0c118eca74c0778b7075f",
-    "incomingCommits": 3,
+    "worldMilestone": "8bddb415816ccd79722d26434f9d9f7d872af355",
+    "mergeCommit": "240c163eecce8136068bcde194734ca78660001b",
+    "incomingMain": "9f9bed3616ac43e0989ce42d856490cb57d94dba",
+    "incomingCommits": 2,
     "conflicts": 0,
     "behindFetchedMain": 0,
     "incomingWorldOrDependencyChanges": [],
     "worldCodeUnchangedByMerge": true,
     "verification": {
-      "fullWorldSuiteBeforeMerge": {
-        "passed": 482,
-        "failed": 0,
-        "evidence": ".cache/world-build/evidence/regional-fanout-world-tests.tap"
-      },
-      "postMergeWorldTypeScript": "passed",
-      "postMergeLargerPublicationIdentical": true,
-      "postMergeLargerCampaignTerminalReportIdentical": true,
-      "postMergeIndependentSourceOwnership": "passed",
-      "postMergeIndependentCompiledPartAudit": "passed",
-      "newNetworkBytes": 0,
-      "campaignAttemptsEach": 1,
-      "originalInputsAndLedgersUnchanged": 43
+      "schemaVersion": 1,
+      "verified": true,
+      "worldCodeUnchangedByMerge": true,
+      "preservedPriorFiles": 877,
+      "queryProductPinsUnchanged": 19,
+      "queryPausedReportIdentical": true,
+      "queryAttemptsUnchanged": true,
+      "schema1RegionalTerminalReportIdentical": true,
+      "networkBytes": 0,
+      "worldTypeScript": "passed"
     },
-    "observedAt": "2026-10-08T12:58:41.944314+00:00"
+    "observedAt": "2026-10-08T14:29:12.651933+00:00"
   },
   "synchronizationHistory": [
     {
@@ -113,6 +110,32 @@
         "climatePublicationAttempts": 3
       },
       "observedAt": "2026-10-08T11:41:48.422283+00:00"
+    },
+    {
+      "worldMilestone": "e55761a4dad7cd152419902bf6d5555597fea01a",
+      "mergeCommit": "e7432eba02b12c84c52207617f6a0747516b830e",
+      "incomingMain": "48e2a3c9318103f87ac0c118eca74c0778b7075f",
+      "incomingCommits": 3,
+      "conflicts": 0,
+      "behindFetchedMain": 0,
+      "incomingWorldOrDependencyChanges": [],
+      "worldCodeUnchangedByMerge": true,
+      "verification": {
+        "fullWorldSuiteBeforeMerge": {
+          "passed": 482,
+          "failed": 0,
+          "evidence": ".cache/world-build/evidence/regional-fanout-world-tests.tap"
+        },
+        "postMergeWorldTypeScript": "passed",
+        "postMergeLargerPublicationIdentical": true,
+        "postMergeLargerCampaignTerminalReportIdentical": true,
+        "postMergeIndependentSourceOwnership": "passed",
+        "postMergeIndependentCompiledPartAudit": "passed",
+        "newNetworkBytes": 0,
+        "campaignAttemptsEach": 1,
+        "originalInputsAndLedgersUnchanged": 43
+      },
+      "observedAt": "2026-10-08T12:58:41.944314+00:00"
     }
   ]
 }

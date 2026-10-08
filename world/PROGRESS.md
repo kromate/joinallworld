@@ -1,5 +1,7 @@
 # Implementation checkpoint — 8 October 2026
 
+
+Latest checkpoint: schema2 query milestone committed as **8bddb415**. Authorized main synchronization **240c163e** incorporates the two app-interior commits through **9f9bed36**, with no conflicts or World/dependency changes. Post-merge TypeScript, identical query/schema1 cache replay, all877 prior files and19 query product checkpoint pins verify with zero new network or attempts; see main-sync.json. Bounded exact-range caching is now in implementation under RANGE-CACHE-SPEC.md; no new real query has run.
 Status: active implementation; geographic foundation and measured pilots exist. Worldwide administration, explorable detail and playable destinations are distinct unfinished milestones. Work is isolated on `codex/world-foundation`; preserve every existing commit and immutable product. Previous checkpoints: `476a3431` / `87eabeb9` / `d6edad10`. Current milestone accepts cached regional fan-out and a measured larger Dakar extraction, preserving all existing products and protected Nigeria. No deployment, game/database write or paid service occurred. The user now authorizes occasional synchronization from `main` into this isolated branch; this does not authorize merging WORLD into main or touching primary uncommitted work.
 
 ## Current country-query acceptance

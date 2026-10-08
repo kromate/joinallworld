@@ -1,5 +1,86 @@
 # Implementation checkpoint — 8 October 2026
 
+## Resource failure and near-byte-cap acceptance — 8 October 2026
+
+Final repository gate correction: GRAPHICS PR22 CI37845576239 identified the
+inherited capacity `.mjs` source-policy failure. WORLD converted capacity and both
+new workers to `.ts`, preserving the exact allowlist; initial three World typing
+errors were corrected. Sourcea27bbe17 passes World compiler0 at1536MiB, fresh12/12
+resource cases (3.001s), typed guarded capacity/stress0 and all five actual release
+policy tests on its clean committed archive0 (141.38ms). Archive133,352,146 logical
+bytes and its owned scratch were removed; ignored real caches were preserved.
+Current stress/cache peaks242,336/139,312KiB; earlier235/236MiB evidence below is
+historical. Actual binding `index-resource-typescript-binding.json` matches every
+executed source/receipt hash. No full runtime build, game-suite or new deploy claim.
+
+The previous goal turn completed coordination work: reachable GRAPHICS/LIVING chats
+were notified and all WORLD subagents stayed parked. GRAPHICS then explicitly
+closed its temporary QA tab, Vite5184 and browser lease and handed the sole local
+intensive turn to WORLD. All shared slots were0/1 at admission; no free-slot or
+elapsed-time inference replaced that handoff.
+
+WORLD implemented a fixed-worker disposable Unix supervisor and12 passing focused
+cases. Kernel FSIZE caps a failing WAL at131,072bytes (SQLITE_IOERR_WRITE778);
+16-page SQL cap produces SQLITE_FULL13; SIGKILL leaves255,472bytes of actual
+uncommitted WAL and independent Python reopen retains only baseline/integrity=ok.
+CPU1s, wall1s, sampled native RSS, output-size and missing-live-RSS guards terminate
+owned workers and clean scratch. Node writerSQLite3.50.4 and independent Python
+reopenSQLite3.53.1 are explicit; real index/ledger and same-version crash replay are
+not accepted by these disposable checks.
+
+The actual native heap-capability experiment disproves the proposed assumption:
+Node22.19 SQLite DEFAULT_MEMSTATUS=0 returns an8MiB hard_heap_limit but still
+allocates8MiB text. Earlier failure evidence is retained; final tests record this
+unsupported enforcement rather than manufacture a pass. The process guard is
+sampled and has overshoot, not a kernel hard RSS promise. A19,000,177byte literal
+synthetic Feature parses/admitted/hash-matches at241,888KiB (about236MiB) peakRSS;20,000,001bytes
+reject before decode. Guarded cached Dakar still conserves2,283 ordinals/1,810
+versions/473duplicates/0 conflicts/0 network with a2MiB per-file cap and successful
+WAL truncate. [INDEX-RESOURCE-OPERATIONS.md](INDEX-RESOURCE-OPERATIONS.md) records
+commands, receipts, actual limits and remaining production quota/store gates.
+
+Only builder tooling/docs changed. No real captures, source counters/reservations,
+ledgers/output, Nigeria data, startup/runtime or production upload changed. The
+next WORLD step is the compact durable schema, maximum-row/conflict/checkpoint and
+same-version replay pressure, then final quotas/fenced completion/independent raw
+audit and country geometry. Hand the next intensive turn explicitly to LIVING
+after final terminal cleanup/publication, then GRAPHICS, then WORLD. Full global
+scope remains active; no country3D/foreign-playable/48-hour claim.
+
+## Strict capture acceptance and positive overlap measurement — 8 October 2026
+
+Previous goal turn made primary-source/experiment-code progress. Fresh maincb423498/8463425b explicitly records completed APP UI release, stopped owned QA resources and coordination returned to WORLD. This resolved the pending human local-handoff question without interpreting silence/free locks as approval. WORLD merged latestmain as72b055c3 and announced its bounded intensive turn to LIVING/GRAPHICS. New live baseline is APP UI exacta44629b38be751a9ad446051564704f6c3c6ae1b/version64ed8462-6c2b-4c42-8d19-266bc93708e5; read PARITY-DELIVERY.md for owner-reported live/save evidence, not an independently rerun WORLD release.
+
+WORLD checks are terminal and accepted: capture/identity/grid/pack53/53 in1,069.44ms; World TypeScript0 at1536MiB; tracked cache-only `tooling/profile_feature_identity.mjs`0. Both retained Dakar captures conserve2,283 admitted ordinals,1,810 unique keys/body versions,473 duplicates,0 exceptions/conflicts,0 network bytes. SQLite prototype151.17ms/133,664KiB peakRSS; pre-checkpoint DB/WAL/SHM4,096/1,800,472/32,768 bytes; after completed TRUNCATE1,630,208/0/32,768. Current helper hashes agree with the actual receipt. [FEATURE-IDENTITY-OPERATIONS.md](FEATURE-IDENTITY-OPERATIONS.md) records exact commands/scope/evidence. Full game/world suites, maximum-capture memory, durable quotas/store/recovery/index audit/coverage remain unproven.
+
+All own heavy/server/browser slots were0/1 at terminal cleanup, no owned server/tab/upload, memory37% free snapshot. WORLD next hands the sole LOCAL intensive turn to LIVING (narrow StandIn thenoneobservationalbuild), then GRAPHICS; release coordination remains WORLD, with no builder-only upload needed. Next source work: bounded worst-case/failure resource evidence, enforceable quota contract and durable capture/ordinal/conflict transactions before existing fenced query-job completion. Preserve Nigeria, actual ledgers/output, unknown reservations, startup caps and concurrent owners. Full objective remains active. Older pending-capture sections below are historical, superseded by this acceptance.
+
+## SQLite resource evidence and prepared experiment correction — 8 October 2026
+
+Previous goal turn was source progress (configured ingestion and integration fixture), not a verified process wait. This turn researched primary SQLite PRAGMA/WAL documentation and corrected the prepared ignored capacity script: check actual WAL/FULL/foreign-key settings, record engine versions and database/WAL/shared-memory bytes, propagate non-ENOENT measurement failures, inspect checkpoint counters and zero-byte truncation, and include capture metadata plus a dense admitted-or-exception ordinal table with conservation/foreign-key constraints. No SQLite process or experiment ran. [SQLITE-INDEX-RESOURCE-NOTES.md](SQLITE-INDEX-RESOURCE-NOTES.md) records the evidence and remaining hard-quota/recovery requirements.
+
+The human local-handoff question remains pending; elapsed time or free locks are not approval. APP UI retains recorded intensive/release ownership and direct contact failed on unavailable durable host. All22 capture fixtures, World compiler and positive capacity run remain pending; new source is uncommitted, only whitespace checks pass. This is progress toward reliable disk/memory evidence, not a validated store or world-completion claim. The full objective remains active, with country detail, streaming/playability, environment, unattended recovery and Nigeria integration still open.
+
+## Pending configured capture entry point — 8 October 2026
+
+Previous goal turn made source progress: retained source-configuration reconstruction and six fixtures, checkpoint3e8f13f0. This turn adds `bindConfiguredCapture`/`ConfiguredCapture` to compose source reconstruction before snapshot binding, with mandatory source-configuration bytes/pin and fixed compiler provenance in the result. The prepared cached-capacity script uses this entry point rather than independently calling stages. One additional fixture tests the composed boundary, missing configuration, wrong reconstructed request and changed receipt bytes; its empty envelope is synthetic, not evidence that the actual473-feature Dakar capture is empty. Source review also replaced a Buffer.slice shared view with a real Buffer copy in the immutability fixture.
+
+Current gate:22 new capture fixtures (6 reader,9 binding,7 source/composition) plus31 accepted identity/grid/pack cases, World TypeScript, then the disposable cached positive capacity experiment after explicit APP UI terminal handoff. No new fixture/compiler/profile has executed, and the new source remains uncommitted; whitespace checks only pass. No resource-owner handoff appeared in fresh maina446; no local heavy/server/browser/DB/acquisition/upload or fanout started. The full world pipeline remains active and incomplete; durable index/WAL capacities still require measurement, with crash/replay/conservation, country geometry, environment, rendering and foreign gameplay gates open.
+
+## Pending retained source configuration — 8 October 2026
+
+Previous goal turn was progress: local strict-reader/binding implementation,15 prepared fixtures and isolated checkpointc09ce52e; no unexecuted plan is counted as validation. This turn adds local `capture-request.ts` and six fixtures to reconstruct the existing request hash from retained source configuration, with exact byte pins and explicit release/collection/license/attribution policy. The known positive Dakar request vector is copied into isolated test data; tests read repository configuration only, not the actual cache/ledger/output. Source/config inspection established the current raw pin1,297 bytes/SHA7ac2f2babcab7e4dd330a2f2e3476708129653022ba7bd0a94c9cbf69184656c, not a passing reconstruction test.
+
+The prepared cache-only capacity script now runs source reconstruction before snapshot binding and records every helper source hash. All21 capture fixtures and the experiment remain UNEXECUTED/uncommitted; whitespace check passed only. The exact next intensive gate remains explicit APP UI terminal handoff, then21new+31existing focused fixtures, World TypeScript and measured positive SQLite capacity/conservation. No local heavy test/compiler/server/browser/acquisition/index write/upload or new subagent fanout occurred. Maina446 remains synchronized; current APP UI ownership is preserved. Full objective remains active: these are provenance prerequisites, not whole-world geometry/playability or unattended-store acceptance.
+
+## Pending strict capture ingestion — 8 October 2026
+
+Previous turn made authoritative progress: memory coordination30d57f9b is on shared main, and local GRAPHICS/LIVING acknowledged no owned intensive sessions. WORLD retains no owned intensive/server/browser work; APP UI recorded verification/release ownership remains in force. This turn added local source `capture-binding.ts` and nine prepared fixtures to the existing strict `capture-json.ts` and six fixtures. These files and the pending contract changes are uncommitted/unexecuted; `git diff --check` passed, which is only a whitespace check. No test, compiler, acquisition, database, browser or deployment was started. Existing immutable sources/output, reservations, Nigeria and concurrent files are preserved.
+
+Pinned snapshot binding now retains original feature ordinals and verifies exact extract/receipt hashes, mutual request/selection/count bindings, fixed source-layer policy and historical transfer accounting. Review corrected cache-resume semantics: changed execution budgets do not change acquisition identity; current extract/feature limits still apply, while original receipt limits govern historical network/duration. This is source progress, not accepted ingestion/store/coverage evidence. The supplied request hash still depends on the existing pinned acquisition chain; the helper does not independently reconstruct historical source configuration or verify upstream contents.
+
+Exact next gate after explicit APP UI terminal handoff: six reader+nine binding+15 identity+16 grid/pack fixtures sequentially through the unchanged shared heavy wrapper; World TypeScript; then cached473/1810-feature Dakar overlap capacity experiment with disposable SQLite only. Measure actual DB/WAL growth and conservation before freezing durable index quotas. The prepared ignored capacity script now uses the strict reader/binding and records their source hashes; it remains unexecuted. Fresh APP Family maina44629b3 was inspected (21 files, no WORLD overlap) and fast-forwarded into the isolated branch; no fresh integrated acceptance is claimed. New code remains outside game startup/runtime. Global3D, deeper African country geometry, unattended replay, terrain/environment attachment, Nigeria renderer integration and foreign gameplay remain incomplete.
+
 Deployment policy — latest human instruction,8 October2026: preview deployments are cancelled. Completed verified phases may go directly to production, coordinated with the other agents on this computer. Preserve Nigeria/game data, affected checks, startup/resource limits and sealed-release identity. One coordinator announces the exact synchronized main revision and owns each upload; no concurrent dirty-checkout deployments. WORLD must first implement and verify the production map adapter before builder output can be user-visible. The human authorizes necessary integration/release work; no purchase or provider-plan upgrade is authorized. Older no-deployment/preview paragraphs below describe earlier instructions and are superseded by this policy.
 
 

@@ -1,8 +1,17 @@
 # Independent world-data builder
 
-[The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) now passes31 focused checks and World TypeScript. It separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Durable index/campaign-hook/audit and cache-positive capacity profiling are the next gates; no country building coverage is claimed.
+The resource/recovery phase now passes12 focused cases, a guarded cached overlap
+profile and a19MB synthetic Feature. Kernel file/CPU and process wall/RSS/output
+checks preserve committed disposable SQL state. Actual Node SQLite native heap
+accounting is disabled, so PRAGMA readback is not treated as enforcement. See
+[INDEX-RESOURCE-OPERATIONS.md](INDEX-RESOURCE-OPERATIONS.md) for scope, measured limits
+and next durable-index gates. No acquisition/game data, Nigeria or gameplay changed.
 
-Latest production receipt: source73549b8a/versiond872e923 is accepted; exact remote compiler CI and actual Countries/Senegal/Fiji/Nigeria/Lagos/synthetic continuity passed. Desktop proof only; worldwide3D and foreign gameplay remain open. Local work is serialized LIVING → GRAPHICS → WORLD; see [PROGRESS.md](PROGRESS.md) and [WORLD-GAME-MAP-OPERATIONS.md](WORLD-GAME-MAP-OPERATIONS.md). Older pending-forward paragraphs below are historical and superseded by this accepted receipt.
+Strict capture/source reconstruction now passes53 focused checks and World TypeScript; cached Dakar overlap measurement conserves2,283 observations as1,810 versions/473duplicates with zero network. See [FEATURE-IDENTITY-OPERATIONS.md](FEATURE-IDENTITY-OPERATIONS.md). Durable store/recovery/quotas and country detail remain open; this builder milestone changes no gameplay.
+
+[The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Its capture composition and cached positive profiling are accepted above; durable index/campaign-hook/audit are the next gates. No country building coverage is claimed.
+
+Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; local intensive work stays serialized through explicit terminal handoffs in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.
 

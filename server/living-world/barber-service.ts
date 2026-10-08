@@ -121,6 +121,7 @@ function parseRecord(value: unknown, publicId: string, pauseRunning = false): Ba
   return { v: 1, publicId, account: value.account as string | null, starterTool: value.starterTool,
     currentLesson: value.currentLesson as BarberLessonId | null, results, lessons }
 }
+export { parseRecord as readValidatedBarberRecord }
 function existing(rows: Record<string, unknown>, publicId: string, pauseRunning = false): BarberRecord | null | false {
   return Object.hasOwn(rows, publicId) ? parseRecord(rows[publicId], publicId, pauseRunning) ?? false : null
 }

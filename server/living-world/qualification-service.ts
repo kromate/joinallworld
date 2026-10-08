@@ -72,6 +72,7 @@ function savedRecord(value: unknown, publicId: string): QualificationRecord | nu
     cityId: value.cityId as CityId,
   }
 }
+export { savedRecord as readValidatedQualificationRecord }
 function collection(ctx: RouteContext, db: Db): Record<string, unknown> {
   const raw = ctx.collection(db, 'livingWorld', { qualifications: {} })
   if (!isRecord(raw)) throw ctx.fail(503, 'qualification_storage_unavailable')

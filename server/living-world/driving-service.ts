@@ -76,6 +76,7 @@ function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
   if (utf8Size(text) > MAX_RECORD_BYTES) return null
   return { ...value, state } as unknown as DrivingRecord
 }
+export { savedRecord as readValidatedDrivingRecord }
 
 function collection(ctx: RouteContext, db: Db): { root: LivingWorldCollection; records: Record<string, unknown> } {
   const raw = ctx.collection(db, 'livingWorld', { driving: {} })

@@ -132,3 +132,11 @@ Business stock rows previously let the price field and quantity stepper consume 
 Business controls now freeze stock quantities while a stock purchase is pending and price fields while a price save is pending, preventing success handling from discarding edits made during the request. A different shop id clears the previous shop's price/quantity draft; same-shop refreshes preserve unfinished edits. Close confirmation cannot be dismissed during its request. Verify delayed requests and close/reopen with overlapping product ids. These remain source-level changes awaiting exact-commit CI and browser acceptance.
 
 Store/Invest exact commit c5f4c4cb0b85449c0aed61ed0ba66d1a78e98ee1 passed remote CI (typecheck-fast, build/download/smoke-fast and release policy): https://github.com/kromate/joinallworld/actions/runs/37850351246. The full suite was not requested by this workflow. Browser/interaction acceptance remains outstanding and is explicitly delegated in the human's push-and-integrate workflow.
+
+### Home visitor controls handoff
+
+Business commit8129ed4f5e345d01d3c244765df01880ddc8eea2 passed remote CI37851320078 (type/build/download/smoke/policy).
+
+Home visitor controls now prevent overlapping invite/link/door actions, freeze affected choices while pending, and display refusal reasons for closing a door, ending a visit and revoking a link. endLink now returns its refusal instead of silently discarding it. Native-share cancellation no longer falls through to copying the link; failed clipboard copy gets an error tone. Existing door permissions and backend payloads are unchanged. Link rows wrap, search/number/select controls have 44px targets with 16px input text, and house-style swatches have 44px targets.
+
+Acceptance for integration: delay each operation, verify repeated clicks do not launch concurrent requests; exercise offline/refused/successful door/end/revoke states; cancel native sharing and confirm clipboard stays unchanged; test 320/390px with long guest names and link actions. Preserve current guest permissions, invitation expiry and save state. This is pending UI protection, not a claim of new server-side retry identity after an ambiguous network failure. Real outbound shares must use synthetic QA recipients or explicit user authorization.

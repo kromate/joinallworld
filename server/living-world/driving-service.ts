@@ -39,7 +39,7 @@ function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
     || !(value.lastPacket === null || (isRecord(value.lastPacket) && exactKeys(value.lastPacket, ['sequence', 'fingerprint', 'code'])
       && Number.isSafeInteger(value.lastPacket.sequence) && (value.lastPacket.sequence as number) > 0
       && typeof value.lastPacket.fingerprint === 'string' && value.lastPacket.fingerprint.length <= 800
-      && typeof value.lastPacket.code === 'string' && ['controls_accepted', 'lesson_completed'].includes(value.lastPacket.code))) return null
+      && typeof value.lastPacket.code === 'string' && ['controls_accepted', 'lesson_completed'].includes(value.lastPacket.code)))) return null
   if ((value.createdAt as number) > (value.updatedAt as number) || (value.lastInputAt as number) > (value.updatedAt as number)
     || (value.nextSequence as number) > (value.revision as number)
     || (value.lastPacket === null ? value.nextSequence !== 1 : (value.lastPacket as PacketReceipt).sequence !== (value.nextSequence as number) - 1)) return null

@@ -49,6 +49,7 @@ const exactKeys = (value: Record<string, unknown>, keys: readonly string[]): boo
   return own.length === keys.length && own.every(key => typeof key === 'string' && keys.includes(key))
 }
 const unit = (value: unknown): value is number => finite(value) && value >= 0 && value <= 1
+const statusOf = (value: unknown): value is BarberPracticeStatus => value === 'running' || value === 'paused' || value === 'complete'
 
 function parseBounds(value: unknown): BarberBounds | null {
   if (!record(value) || !exactKeys(value, ['maxX', 'maxY', 'minX', 'minY']) || !unit(value.minX) || !unit(value.minY) || !unit(value.maxX) || !unit(value.maxY)) return null
@@ -95,11 +96,12 @@ export function readBarberPractice(saved: unknown, expectedPlanInput: unknown): 
   const storedPlan = parsePlan(saved.plan)
   if (!storedPlan || !Number.isSafeInteger(saved.objectiveIndex) || Number(saved.objectiveIndex) < 0 || Number(saved.objectiveIndex) > storedPlan.objectives.length
     || !finite(saved.coverage) || saved.coverage < 0 || saved.coverage > 0.5 || typeof saved.pointerDown !== 'boolean'
-    || !['running', 'paused', 'complete'].includes(String(saved.status)) || typeof saved.feedback !== 'string' || saved.feedback.length > 160) return null
+    || !statusOf(saved.status) || typeof saved.feedback !== 'string' || saved.feedback.length > 160) return null
   const cursor = saved.cursor === null ? null : parsePoint(saved.cursor)
-  if (saved.cursor !== null && !cursor) return null
+  if ((saved.cursor !== null && !cursor) || saved.pointerDown !== (cursor !== null)) return null
   const complete = saved.status === 'complete'
   if (complete !== (Number(saved.objectiveIndex) === storedPlan.objectives.length) || (Number(saved.objectiveIndex) < storedPlan.objectives.length && saved.coverage >= storedPlan.objectives[Number(saved.objectiveIndex)]!.coverageRequired)) return null
+  if ((complete && (saved.coverage !== 0 || saved.pointerDown || cursor !== null)) || (saved.status === 'paused' && (saved.pointerDown || cursor !== null))) return null
   if (!samePlan(storedPlan, expectedPlan)) return idleState(expectedPlan, 'paused', 'The practice plan changed. Start the current approved plan again.')
   if (complete) return idleState(storedPlan, 'complete', saved.feedback, Number(saved.objectiveIndex), Number(saved.coverage))
   const status = saved.status === 'running' || saved.pointerDown || cursor ? 'paused' : saved.status as 'paused' | 'complete'
@@ -114,11 +116,23 @@ function validState(state: unknown, plan: BarberPracticePlan): state is BarberPr
   const storedPlan = parsePlan(state.plan), index = state.objectiveIndex, coverage = state.coverage
   if (!storedPlan || !samePlan(storedPlan, plan) || typeof index !== 'number' || !Number.isSafeInteger(index) || index < 0 || index > storedPlan.objectives.length
     || !finite(coverage) || coverage < 0 || coverage > 0.5) return false
-  if (typeof state.pointerDown !== 'boolean' || !['running', 'paused', 'complete'].includes(String(state.status)) || typeof state.feedback !== 'string' || state.feedback.length > 160) return false
+  if (typeof state.pointerDown !== 'boolean' || !statusOf(state.status) || typeof state.feedback !== 'string' || state.feedback.length > 160) return false
   if (state.cursor !== null && !parsePoint(state.cursor)) return false
   if (state.pointerDown !== (state.cursor !== null)) return false
   if ((state.status === 'complete') !== (index === storedPlan.objectives.length)) return false
+  if ((state.status === 'complete' && (coverage !== 0 || state.pointerDown || state.cursor !== null)) || (state.status === 'paused' && (state.pointerDown || state.cursor !== null))) return false
   return index === storedPlan.objectives.length || coverage < storedPlan.objectives[index]!.coverageRequired
+}
+
+/** Strict non-stepping server reader. Invalid/changed source is quarantined by the caller unchanged. */
+export function readValidatedBarberPractice(saved: unknown, expectedPlanInput: unknown): BarberPracticeState | null {
+  const plan = parsePlan(expectedPlanInput)
+  if (!plan || !validState(saved, plan)) return null
+  return {
+    v: 1, plan, objectiveIndex: saved.objectiveIndex, coverage: saved.coverage,
+    cursor: saved.cursor === null ? null : { x: saved.cursor.x, y: saved.cursor.y },
+    pointerDown: saved.pointerDown, status: saved.status, feedback: saved.feedback,
+  }
 }
 
 /** Lift the tool while pausing. Partial measured coverage may resume; no cursor or pressure survives. */

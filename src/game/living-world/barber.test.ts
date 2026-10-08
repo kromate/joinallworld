@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import {
   readBarberPractice,
+  readValidatedBarberPractice,
   resumeBarberPractice,
   startBarberPractice,
   stepBarberPractice,
@@ -27,6 +28,30 @@ const step = (state: BarberPracticeState, tool: 'comb' | 'brush' | 'scissors' | 
   assert.ok(result.state)
   return { state: result.state, feedback: result.feedback }
 }
+
+test('strict server reader retains active measured strokes without stepping or accepting coercible saved status', () => {
+  const moving = step(active(), 'comb', 0.25, 0.4).state
+  const snapshot = JSON.stringify(moving)
+  const validated = readValidatedBarberPractice(moving, plan)
+  assert.deepEqual(validated, moving)
+  assert.notEqual(validated, moving)
+  assert.notEqual(validated?.cursor, moving.cursor)
+  assert.equal(JSON.stringify(moving), snapshot)
+  assert.equal(readBarberPractice(moving, plan)?.status, 'paused', 'bootstrap alone clears held controls')
+  for (const status of [['running'], { toString: () => 'running' }, new String('running')]) {
+    assert.equal(readValidatedBarberPractice({ ...moving, status }, plan), null)
+    assert.equal(readBarberPractice({ ...moving, status }, plan), null)
+  }
+  assert.equal(readValidatedBarberPractice({ ...moving, pointerDown: false }, plan), null)
+  assert.equal(readValidatedBarberPractice({ ...moving, status: 'paused' }, plan), null)
+  assert.equal(readValidatedBarberPractice(moving, { ...plan, version: 2 }), null, 'a new plan cannot use old live progress')
+  const complete = { ...moving, status: 'complete', objectiveIndex: plan.objectives.length, cursor: null, pointerDown: false, coverage: 0 }
+  assert.ok(readValidatedBarberPractice(complete, plan))
+  for (const corrupt of [{ ...complete, coverage: 0.01 }, { ...complete, cursor: moving.cursor, pointerDown: true }]) {
+    assert.equal(readValidatedBarberPractice(corrupt, plan), null)
+    assert.equal(readBarberPractice(corrupt, plan), null)
+  }
+})
 
 test('active ordered strokes cover each server-authored target with its required tool', () => {
   let state = active()

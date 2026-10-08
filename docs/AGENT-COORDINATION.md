@@ -19,7 +19,9 @@ Run builds, type checks, simulations, source acquisitions and test suites throug
 
 Live locks from the earlier larger limits remain visible and block new admission even when they occupy slot2/3 above the new cap. Stale locks are reclaimed only through the existing guarded owner-liveness path. The regression suite passes12/12, including live high-slot blocking, safe stale recovery, signal cleanup and nested leases. A slot is a concurrency limit, not a guarantee about total RAM or unwrapped processes: preserve ownership, stop owned idle servers/previews, monitor memory pressure, and defer work if the computer slows again. Never kill another agent's unknown process or stop the user's browser tabs.
 
-WORLD stopped its broad core test and queued checks; the living-world owner confirmed its heavy chain and5194 server stopped. GRAPHICS is closing its review and5183 server. Interrupted checks have no pass claim. Production upload ownership remains WORLD while its country phase is being verified.
+WORLD stopped its broad core test and queued checks; the living-world owner confirmed its heavy chain and 5194 server stopped. GRAPHICS subsequently closed its two temporary tabs and stopped its 5183 server and browser lease. Interrupted checks have no pass claim. WORLD then completed one serialized turn: affected Node checks 100/100 and full Worker checks 142/142, both terminal exit 0; all leases were released and memory returned to 52% free. The agreed next owner is living-world for corrected narrow fixture/compiler checks, followed by GRAPHICS for bounded QA. WORLD waits for both terminal handoffs before packaging or browser review. Production upload ownership remains WORLD while its country phase is being verified.
+
+The shared Vite minifier is also limited to one worker on main at 6ba5d54c. WORLD verified its production build in 28.63 s with a 1536 MiB Node heap cap. These limits reduce concurrency; they do not replace the explicit single-owner turn across heavy, server and browser resources.
 
 ## Ownership and phase queue
 

@@ -10,6 +10,8 @@ Primary world worktree:
 `/Users/anthonyakpan/.codex/worktrees/world-foundation/joinallworld`
 Branch: `codex/world-foundation`. Previous accepted checkpoints: `476a3431` / `87eabeb9`; preserve later changes, including bounded global Admin 1 capture, inspection, partition planning, publication, independent verification and the source-bound planar sidecar. Foundation commit `c6e246e5` is historical, not a reset target.
 
+Latest point milestone **0542b6e6** and authorized main merge **7e3cf74d** are accepted. Exact fetched upstream **1a329026aee962405ab81b3851861c92182c3ca4** is an ancestor; all 15 incoming commits merged without conflicts. Post-merge combined **419/419** World tests, full World TypeScript, exact cache replay and independent source/output reconstruction pass. Source ledger and one publication attempt are unchanged. Read `main-sync.json` and PROGRESS.md; repeat upstream inspection at a future stable checkpoint, not before every small edit.
+
 Protect the concurrent primary checkout:
 `/Users/anthonyakpan/Desktop/joinallworld`
 Do not edit its game data, database, catalogue, maps, saves, identities, travel or graphics work. Keep builder state/output under the world worktree's `.cache/world-build/`. Never import bulk-builder dependencies into the game. Game/content reader integration is a separate tested adapter milestone.

@@ -14,6 +14,8 @@ Root's independent read-only reconstruction passes all source ordinals, keys, co
 
 Receipts live under `.cache/world-build/evidence/settlement-publication-{first,repeat,independent}.{json,stderr}`. `settlement-publication.json` records the accepted manifest and measurements. Integration/preview tests pass **411/411**, existing independent product fixtures **8/8**; full World TypeScript passes. The new focused suites cover 11 compiler, ten publisher and nine browser-validator cases, including hostile rehashed coordinates, exact attempt boundaries, empty input, charged interruption/resume, corrupt/missing assets and unsafe paths. Tests use synthetic temporary repositories and do not change actual output or ledgers. A typecheck during an in-progress fixture edit failed; its inferred-object type was fixed before final verification.
 
+The authorized main merge **7e3cf74d** subsequently integrated upstream **1a329026** without conflicts. Post-merge combined **419/419** tests and full World TypeScript pass. Cache replay takes **3,796 ms**, retains the exact manifest/bytes and one publication attempt, and uses zero network. Independent reconstruction again passes (**1,092 ms / 346,406,912 sampled RSS bytes**, zero network). Source accounting is unchanged. `main-sync.json` and PROGRESS.md bind this checkpoint; no gameplay integration or deployment occurred.
+
 ## Run from the world worktree
 
 ```sh

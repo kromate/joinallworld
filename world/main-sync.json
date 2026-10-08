@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "scope": "Authorized main-to-WORLD synchronization and builder-only verification; no deployment or WORLD-to-main integration.",
+  "worldMilestone": "0542b6e601ea57e3e684c498a4240c594f0b711f",
+  "mergeCommit": "7e3cf74d7fe5d95ca76e6eadb809962db2adf45b",
+  "incomingMain": "1a329026aee962405ab81b3851861c92182c3ca4",
+  "incomingCommits": 15,
+  "behindFetchedMain": 0,
+  "conflicts": 0,
+  "incomingWorldOrDependencyChanges": [],
+  "tests": {
+    "passed": 419,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "evidence": ".cache/world-build/evidence/main-sync-world-tests.tap"
+  },
+  "worldTypeScript": "passed",
+  "settlement": {
+    "manifestHash": "17932383d2d75ce733a3cfae8e455d053be778fc09dcaa5ca06707416e55b61e",
+    "bytes": 4202369,
+    "cacheHit": true,
+    "cacheElapsedMs": 3796,
+    "independentElapsedMs": 1092,
+    "independentSampledPeakRssBytes": 346406912,
+    "publicationAttempts": 1,
+    "networkBytes": 0
+  },
+  "sourceLedger": {
+    "sha256": "b7f506e785c136e3bfa0fd606b44d9d350538946a77ca58f2cea61e7e9dbdea2",
+    "attempts": 2,
+    "chargedFamilyBytes": 38783542,
+    "measuredBytes": 19359003,
+    "unknownReservationBytes": 19424539,
+    "unchanged": true
+  },
+  "next": "Country-lazy selected-place reader and independent preview; inspect upstream again at a future verified checkpoint."
+}

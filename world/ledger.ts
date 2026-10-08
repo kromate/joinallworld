@@ -150,6 +150,13 @@ export class Ledger {
       error=?,available_at=?,lease_until=NULL,lease_token=NULL WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`)
       .run(message, now + retryDelayMs, id, token, now).changes) === 1);
   }
+  /** Terminalize verified immutable input failures without pretending every allowed attempt ran. */
+  failPermanently(id: string, token: string, now: number, error: unknown): boolean {
+    requiredText(id, 'id'); requiredText(token, 'token'); finiteTime(now, 'now');
+    const message = error instanceof Error ? error.message : String(error);
+    return this.#write(() => Number(this.#db.prepare(`UPDATE jobs SET status='failed',error=?,lease_until=NULL,lease_token=NULL
+      WHERE id=? AND status='leased' AND lease_token=? AND lease_until>?`).run(message, id, token, now).changes) === 1);
+  }
   /** Requeue a completed record only after its owning pipeline quarantines verified corrupt output. */
   requeueCompleted(id: string): boolean {
     requiredText(id, 'id');

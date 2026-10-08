@@ -209,3 +209,64 @@ test('admits an attempt with exactly two audit entries remaining and persists it
   assert.equal(result.cacheHit, false);
   assert.equal((await auditRecords(attempts)).length, 512);
 }));
+
+test('aggregate 64 MiB lifetime network cap spans distinct source hashes and preserves verified cache hits', async () => fixture(async ({ root, bytes, pin, attempts }) => {
+  const cached = await acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => response(bytes) });
+  let calls = 0;
+  for (let index = 0; index < 8; index++) {
+    const distinct = pinFor(Buffer.from(`distinct synthetic source ${index}`));
+    await assert.rejects(acquireFineSource(distinct, { repositoryRoot: root, fetcher: async () => { calls++; throw new Error('synthetic interrupted transfer'); } }), /synthetic interrupted transfer/);
+  }
+  assert.equal(calls, 8);
+  const cachedAgain = await acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => { throw new Error('valid cache must survive exhausted aggregate cap'); } });
+  assert.equal(cachedAgain.cacheHit, true);
+  assert.equal(cachedAgain.networkBytes, 0);
+  const next = pinFor(Buffer.from('ninth synthetic source')); calls = 0;
+  await assert.rejects(acquireFineSource(next, { repositoryRoot: root, fetcher: async () => { calls++; return response(bytes); } }), /aggregate 64 MiB lifetime geometry-network budget is exhausted/);
+  assert.equal(calls, 0);
+  const starts = (await auditRecords(attempts)).filter(record => record.event === 'started');
+  assert.equal(starts.length, 9);
+  const terminals = (await auditRecords(attempts)).filter(record => record.event === 'finished');
+  assert.equal(terminals.reduce((total, record) => total + Number(record.networkReservationUpperBoundBytes), 0), 64 * 1024 * 1024);
+  assert.ok(cached.inputPath.endsWith(`${pin.source.sha256}.geojson`));
+}));
+
+test('aggregate cap counts unresolved started reservations before a new attempt', async () => fixture(async ({ root, bytes, pin, attempts }) => {
+  const complete = await acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => response(bytes) });
+  const rows: Array<Record<string, unknown>> = [];
+  for (let index = 0; index < 8; index++) rows.push({ schemaVersion: 1, attemptId: `pending-${index}`, event: 'started', sourceSha256: (index + 1).toString(16).padStart(64, '0'), networkReservationUpperBoundBytes: 8 * 1024 * 1024 });
+  await appendFile(path.join(attempts, 'attempts.jsonl'), `${rows.map(row => JSON.stringify(row)).join('\n')}\n`);
+  const hit = await acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => { throw new Error('cached body is allowed after budget exhaustion'); } });
+  assert.equal(hit.cacheHit, true);
+  let calls = 0;
+  await assert.rejects(acquireFineSource(pinFor(Buffer.from('new pending cap source')), { repositoryRoot: root, fetcher: async () => { calls++; return response(bytes); } }), /aggregate 64 MiB lifetime geometry-network budget is exhausted/);
+  assert.equal(calls, 0);
+  assert.equal(complete.cacheHit, false);
+}));
+
+test('known measured aggregate overshoot above 64 MiB remains charged and blocks later sources', async () => fixture(async ({ root, pin, attempts }) => {
+  const overCap = new Uint8Array(64 * 1024 * 1024 + 1);
+  const stream = new ReadableStream<Uint8Array>({ start(controller) { controller.enqueue(overCap); controller.close(); } });
+  const responseWithOvershoot = new Response(stream, { status: 200, headers: { 'content-length': '1' } });
+  await assert.rejects(acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => responseWithOvershoot }), /remaining per-source network budget/);
+  const terminal = (await auditRecords(attempts)).at(-1)!;
+  assert.equal(terminal.networkBytesMeasured, overCap.byteLength);
+  assert.equal(terminal.networkReservationUpperBoundBytes, 8 * 1024 * 1024);
+  assert.equal(terminal.responseComplete, false);
+  let calls = 0;
+  const next = pinFor(Buffer.from('fresh hash after global overshoot'));
+  await assert.rejects(acquireFineSource(next, { repositoryRoot: root, fetcher: async () => { calls++; return response(Buffer.from('x')); } }), /aggregate 64 MiB lifetime geometry-network budget is exhausted/);
+  assert.equal(calls, 0);
+}));
+
+test('malformed UTF-8 and truncated source audits fail closed before fetch', async () => fixture(async ({ root, pin, attempts }) => {
+  await mkdir(attempts, { recursive: true });
+  const auditPath = path.join(attempts, 'attempts.jsonl');
+  await writeFile(auditPath, Buffer.from([0xff, 0x0a]));
+  let calls = 0;
+  await assert.rejects(acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => { calls++; return response(Buffer.from('unused')); } }), /malformed UTF-8/);
+  assert.equal(calls, 0);
+  await writeFile(auditPath, '{"schemaVersion":1');
+  await assert.rejects(acquireFineSource(pin, { repositoryRoot: root, fetcher: async () => { calls++; return response(Buffer.from('unused')); } }), /incomplete trailing record/);
+  assert.equal(calls, 0);
+}));

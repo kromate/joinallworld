@@ -7,7 +7,7 @@ import { readBoundedLocalFile } from './inventory-reader.ts';
 import { FINE_LIMITS, type FineSourcePin } from './fine-types.ts';
 import { validateFineSourcePin } from './fine.ts';
 
-const LIMITS = Object.freeze({ durationMs: 120_000, freeBytes: 100 * 1024 * 1024, networkBytes: FINE_LIMITS.sourceBytes,
+const LIMITS = Object.freeze({ durationMs: 120_000, freeBytes: 100 * 1024 * 1024, networkBytes: FINE_LIMITS.sourceBytes, aggregateNetworkBytes: 64 * 1024 * 1024,
   cacheBytes: 40 * 1024 * 1024, auditBytes: 2 * 1024 * 1024, auditEntries: 512, auditRecordBytes: 8 * 1024,
   auditReserveBytes: 16 * 1024, scanEntries: 4_096, scanDepth: 8 });
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -97,13 +97,20 @@ async function boundedTreeBytes(directory: string, limit: number): Promise<numbe
   return walk(directory, 0);
 }
 type AuditRecord = Record<string, unknown> & { attemptId: string; event: 'started' | 'finished'; sourceSha256: string };
-async function auditState(directory: string): Promise<{ entries: AuditRecord[]; bytes: number; networkBySource: Map<string, number> }> {
+async function auditState(directory: string): Promise<{ entries: AuditRecord[]; bytes: number; networkBySource: Map<string, number>; aggregateNetworkBytes: number }> {
   const filename = path.join(directory, 'attempts.jsonl');
   let previous: Buffer<ArrayBufferLike> = Buffer.alloc(0);
   try { previous = await readBoundedLocalFile(filename, LIMITS.auditBytes); }
   catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
-  const lines = previous.length ? previous.toString('utf8').split('\n').filter(Boolean) : [];
-  const entries = lines.map(line => JSON.parse(line) as AuditRecord);
+  let text: string;
+  try { text = new TextDecoder('utf-8', { fatal: true }).decode(previous); }
+  catch { throw new Error('fine source attempt audit is malformed UTF-8'); }
+  if (text && !text.endsWith('\n')) throw new Error('fine source attempt audit has an incomplete trailing record');
+  const lines = text ? text.slice(0, -1).split('\n') : [];
+  if (lines.some(line => !line || Buffer.byteLength(line) > LIMITS.auditRecordBytes)) throw new Error('fine source attempt audit contains an empty or oversized record');
+  let entries: AuditRecord[];
+  try { entries = lines.map(line => JSON.parse(line) as AuditRecord); }
+  catch { throw new Error('fine source attempt audit contains malformed JSON'); }
   const starts = new Map<string, AuditRecord>(), finished = new Set<string>(), networkBySource = new Map<string, number>();
   for (const record of entries) {
     if (!record || typeof record !== 'object' || record.schemaVersion !== 1 || !['started', 'finished'].includes(String(record.event))
@@ -134,7 +141,12 @@ async function auditState(directory: string): Promise<{ entries: AuditRecord[]; 
       : start.networkReservationUpperBoundBytes as number;
     networkBySource.set(start.sourceSha256, (networkBySource.get(start.sourceSha256) ?? 0) + reservation);
   }
-  return { entries, bytes: previous.length, networkBySource };
+  const aggregateNetworkBytes = [...networkBySource.values()].reduce((sum, bytes) => {
+    const total = sum + bytes;
+    if (!Number.isSafeInteger(total)) throw new RangeError('fine source aggregate network audit exceeds safe integer range');
+    return total;
+  }, 0);
+  return { entries, bytes: previous.length, networkBySource, aggregateNetworkBytes };
 }
 async function appendAudit(directory: string, record: Record<string, unknown>): Promise<void> {
   const bytes = Buffer.from(`${JSON.stringify(record)}\n`);
@@ -297,14 +309,17 @@ export async function acquireFineSource(pinValue: FineSourcePin, options: FineSo
         return cached;
       }
       if (options.cacheOnly) throw new Error('fine source verification is cache-only; reviewed pinned source is not cached');
-      const disk = await statfs(cacheRoot);
-      if (disk.bavail * disk.bsize < LIMITS.freeBytes + LIMITS.networkBytes) throw new RangeError('fine source acquisition requires 100 MiB free reserve plus an 8 MiB response allowance');
-      if (current + LIMITS.networkBytes + LIMITS.auditReserveBytes > LIMITS.cacheBytes) throw new RangeError('fine source cache requires room for one 8 MiB response within its 40 MiB cap');
       const audit = await auditState(attemptsDirectory);
       if (audit.entries.length + 2 > LIMITS.auditEntries || audit.bytes + LIMITS.auditReserveBytes > LIMITS.auditBytes) throw new RangeError('fine source attempt audit exceeds its 512-entry / 2 MiB cap');
       const previouslyCharged = audit.networkBySource.get(pin.source.sha256) ?? 0;
-      const allowance = LIMITS.networkBytes - previouslyCharged;
-      if (allowance <= 0) throw new RangeError('fine source cumulative 8 MiB network budget for this source SHA-256 is exhausted');
+      const perSourceRemaining = LIMITS.networkBytes - previouslyCharged;
+      if (perSourceRemaining <= 0) throw new RangeError('fine source cumulative 8 MiB network budget for this source SHA-256 is exhausted');
+      const aggregateRemaining = LIMITS.aggregateNetworkBytes - audit.aggregateNetworkBytes;
+      if (aggregateRemaining <= 0) throw new RangeError('fine source aggregate 64 MiB lifetime geometry-network budget is exhausted');
+      const allowance = Math.min(perSourceRemaining, aggregateRemaining);
+      const disk = await statfs(cacheRoot);
+      if (disk.bavail * disk.bsize < LIMITS.freeBytes + allowance) throw new RangeError('fine source acquisition requires 100 MiB free reserve plus the bounded response allowance');
+      if (current + allowance + LIMITS.auditReserveBytes > LIMITS.cacheBytes) throw new RangeError('fine source cache lacks room for the bounded response and audit reserve within its 40 MiB cap');
 
       const attemptId = randomUUID(), tempPath = path.join(cacheDirectory, `.${pin.source.sha256}.${attemptId}.partial`);
       const startRecord = { schemaVersion: 1, attemptId, event: 'started', status: 'pending', startedAt: new Date().toISOString(), pinHash,

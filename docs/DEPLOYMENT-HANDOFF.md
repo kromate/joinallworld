@@ -1,12 +1,25 @@
 # Deployment handoff — 8 October 2026
 
-## Correct repository and live state
+## Production deployment completed — 8 October 2026
+
+Deployed source **`75d481cc9e8f4fe214485c9e2622f61061861e84`** to `joinallworld-next`. Cloudflare version **`aa48a416-2356-419d-a077-e82c29fac45d`** was deployed at 00:42:16 UTC; public `/api/health` subsequently confirmed `joinallworld-75d481cc9e8f4fe214485c9e262` (the runtime truncates build IDs to 40 characters). The public Durable Object took several minutes to adopt the release after the frontend assets propagated.
+
+- Release tooling type checks and source allow-list were repaired in `dc48d3f6`; CI passed. A first upload was rejected because no-bundle module discovery included static street-pack files. `75d481cc` disables rebundling and additional module discovery in the sealed configuration; CI passed for this final release too: https://github.com/kromate/joinallworld/actions/runs/37709089940.
+- Cloudflare accepted the final package: 4,397.90 KiB Worker / 1,704.29 KiB gzip, **184 ms startup**, 5,844 static asset files. Package guard: 17/17; source smoke: 15/15; focused reliability: 46/46; Worker release checks: 5/5; build and download budgets passed.
+- Existing `JOINALLWORLD` SQLite namespace `6b84e715f6c444f69971a0b6cde7868b`, class, migration and all existing provider bindings/secrets were preserved. No data restore or namespace replacement occurred.
+- Pre-upgrade UTC recovery reference: **2026-10-08T00:41:54.381Z**. This is a reference, not an executed backup. After public propagation, the same synthetic session identity, ₦5,000 balance and duplicate-action receipt passed continuity checks.
+- Final live smoke passed **9 checks / 282 requests**, including WebSocket, action replay and 201 city chunks across 40 cities. A browser guest reconnected, retained its name/balance, and loaded Messages after a fresh reload.
+- Local evidence: `/tmp/allworld-production-deploy-final.log`, `/tmp/allworld-production-smoke-final.log`, `/tmp/allworld-deploy-guard-python.log`. Synthetic credentials remain private in mode-600 `/tmp/allworld-release-continuity-private.json`; never publish that file.
+
+The historical handoff below describes the state before this deployment. Its roadmap and unverified physical-device/full-suite limitations still apply.
+
+## Historical pre-deployment state
 
 Use **https://github.com/kromate/joinallworld** for source AND releases. Do not use `kromate/v1-allworld`. That repository formerly held the deployment policy; the reviewed policy and pinned tools are now copied into this repository.
 
 All combined gameplay and reliability work was merged through PR #19, merge `4b883d99399eb0d47f86d8f42678b3af1e61d80f`. This follow-up adds the startup correction, self-repository release workflow and this handoff. Use the actual current `origin/main` SHA, not the earlier merge SHA.
 
-**The new release has NOT reached production.** Last verified public `/api/health` still reported `joinallworld-4832b7e7507914db8a4d721a7f6`. Release run https://github.com/kromate/v1-allworld/actions/runs/37705444185 passed packaging but Cloudflare rejected upload with error 10021, “Script startup exceeded CPU time limit.” No data restore or namespace replacement was performed. The user requested that another agent perform deployment; this task stopped deployment work at handoff.
+**At the original handoff, the new release had not reached production.** Last verified public `/api/health` still reported `joinallworld-4832b7e7507914db8a4d721a7f6`. Release run https://github.com/kromate/v1-allworld/actions/runs/37705444185 passed packaging but Cloudflare rejected upload with error 10021, “Script startup exceeded CPU time limit.” No data restore or namespace replacement was performed. The user requested that another agent perform deployment; this task stopped deployment work at handoff.
 
 ## Startup correction
 

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "scope": "Authorized main-to-WORLD synchronization and builder-only verification; no deployment or WORLD-to-main integration.",
+  "worldMilestone": "0542b6e601ea57e3e684c498a4240c594f0b711f",
+  "mergeCommit": "7e3cf74d7fe5d95ca76e6eadb809962db2adf45b",
+  "incomingMain": "1a329026aee962405ab81b3851861c92182c3ca4",
+  "incomingCommits": 15,
+  "behindFetchedMain": 0,
+  "conflicts": 0,
+  "incomingWorldOrDependencyChanges": [],
+  "tests": {
+    "passed": 419,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "evidence": ".cache/world-build/evidence/main-sync-world-tests.tap"
+  },
+  "worldTypeScript": "passed",
+  "settlement": {
+    "manifestHash": "17932383d2d75ce733a3cfae8e455d053be778fc09dcaa5ca06707416e55b61e",
+    "bytes": 4202369,
+    "cacheHit": true,
+    "cacheElapsedMs": 3796,
+    "independentElapsedMs": 1092,
+    "independentSampledPeakRssBytes": 346406912,
+    "publicationAttempts": 1,
+    "networkBytes": 0
+  },
+  "sourceLedger": {
+    "sha256": "b7f506e785c136e3bfa0fd606b44d9d350538946a77ca58f2cea61e7e9dbdea2",
+    "attempts": 2,
+    "chargedFamilyBytes": 38783542,
+    "measuredBytes": 19359003,
+    "unknownReservationBytes": 19424539,
+    "unchanged": true
+  },
+  "next": "Implement bounded exact-range caching, then durable cross-query feature ownership and dedup before country geometry compilation.",
+  "latestFetchCheckpoint": {
+    "worldCommit": "925d9edbf1d9d73de8842dea2104ebda80e51b99",
+    "fetchedMain": "1a329026aee962405ab81b3851861c92182c3ca4",
+    "behind": 0,
+    "newIncomingCommits": 0,
+    "mergeNeeded": false,
+    "observedAt": "2026-10-08T10:44:10.530436+00:00"
+  },
+  "latestSynchronization": {
+    "worldMilestone": "8bddb415816ccd79722d26434f9d9f7d872af355",
+    "mergeCommit": "240c163eecce8136068bcde194734ca78660001b",
+    "incomingMain": "9f9bed3616ac43e0989ce42d856490cb57d94dba",
+    "incomingCommits": 2,
+    "conflicts": 0,
+    "behindFetchedMain": 0,
+    "incomingWorldOrDependencyChanges": [],
+    "worldCodeUnchangedByMerge": true,
+    "verification": {
+      "schemaVersion": 1,
+      "verified": true,
+      "worldCodeUnchangedByMerge": true,
+      "preservedPriorFiles": 877,
+      "queryProductPinsUnchanged": 19,
+      "queryPausedReportIdentical": true,
+      "queryAttemptsUnchanged": true,
+      "schema1RegionalTerminalReportIdentical": true,
+      "networkBytes": 0,
+      "worldTypeScript": "passed"
+    },
+    "observedAt": "2026-10-08T14:29:12.651933+00:00"
+  },
+  "synchronizationHistory": [
+    {
+      "worldMilestone": "d02a201f18ac37bd00e8352708f87abaf5bbbe08",
+      "mergeCommit": "e3c1c3b61e4fe47343aa2aa7c838af7a320c4b58",
+      "incomingMain": "146b57e4034f79b63d1754f740488c3a66551973",
+      "incomingCommits": 2,
+      "conflicts": 0,
+      "behindFetchedMain": 0,
+      "incomingWorldOrDependencyChanges": [],
+      "worldCodeUnchangedByMerge": true,
+      "verification": {
+        "fullWorldSuiteBeforeMerge": {
+          "passed": 459,
+          "failed": 0,
+          "evidence": ".cache/world-build/evidence/climate-attachment-world-tests-checkpoint.tap"
+        },
+        "postMergeWorldTypeScript": "passed",
+        "postMergeReplay": [
+          {
+            "id": "accra",
+            "manifestHash": "c8cb7d2cffc79d9aaa5451df9b04e5baa978b2f5be367a717484eace8402e3a4",
+            "elapsedMs": 380,
+            "cacheHit": true,
+            "networkBytes": 0
+          },
+          {
+            "id": "nairobi",
+            "manifestHash": "d3d6515085df93e227c603ad08426d966af98cdea3693604665770439b4d921d",
+            "elapsedMs": 312,
+            "cacheHit": true,
+            "networkBytes": 0
+          },
+          {
+            "id": "cape-town",
+            "manifestHash": "fb659e32319919e507513787e7917ab4051d5958aa8d32443b4c08e9488a0dfc",
+            "elapsedMs": 229,
+            "cacheHit": true,
+            "networkBytes": 0
+          }
+        ],
+        "originalInputsAndLedgersUnchanged": 43,
+        "climatePublicationAttempts": 3
+      },
+      "observedAt": "2026-10-08T11:41:48.422283+00:00"
+    },
+    {
+      "worldMilestone": "e55761a4dad7cd152419902bf6d5555597fea01a",
+      "mergeCommit": "e7432eba02b12c84c52207617f6a0747516b830e",
+      "incomingMain": "48e2a3c9318103f87ac0c118eca74c0778b7075f",
+      "incomingCommits": 3,
+      "conflicts": 0,
+      "behindFetchedMain": 0,
+      "incomingWorldOrDependencyChanges": [],
+      "worldCodeUnchangedByMerge": true,
+      "verification": {
+        "fullWorldSuiteBeforeMerge": {
+          "passed": 482,
+          "failed": 0,
+          "evidence": ".cache/world-build/evidence/regional-fanout-world-tests.tap"
+        },
+        "postMergeWorldTypeScript": "passed",
+        "postMergeLargerPublicationIdentical": true,
+        "postMergeLargerCampaignTerminalReportIdentical": true,
+        "postMergeIndependentSourceOwnership": "passed",
+        "postMergeIndependentCompiledPartAudit": "passed",
+        "newNetworkBytes": 0,
+        "campaignAttemptsEach": 1,
+        "originalInputsAndLedgersUnchanged": 43
+      },
+      "observedAt": "2026-10-08T12:58:41.944314+00:00"
+    }
+  ]
+}

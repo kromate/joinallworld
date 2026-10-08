@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-local-african-urban-samples",
+  "parentCheckpoint": "45ecf001",
+  "campaignId": "africa-urban-samples-v1",
+  "campaignCounts": {
+    "requested": 4,
+    "sourceUnits": 3,
+    "compiled": 3,
+    "exception": 0,
+    "protected": 1,
+    "unknown": 0
+  },
+  "codeAndSelectionPins": [
+    {
+      "path": "world/campaign-fixtures/africa-urban-samples-v1.json",
+      "bytes": 4071,
+      "sha256": "81317ecd4ae9180baf9ca50d222700258a2a3531d4f8a8f0acef588aba5d8245"
+    },
+    {
+      "path": "world/africa-urban-samples-anchors.json",
+      "bytes": 7556,
+      "sha256": "02270630d02633636e2ca41522368b8a3bd480617b79dc0aafbcb3ef63e1be90"
+    },
+    {
+      "path": "world/africa-urban-samples.test.ts",
+      "bytes": 5866,
+      "sha256": "bdf9f5e3de0fb14ef34a997abda4b549f1c22cccb5aa095f723520aa4e19e824"
+    },
+    {
+      "path": "world/preview/style.css",
+      "bytes": 12457,
+      "sha256": "afcc06f3b78f62e52c0a89c40c2ea33e8d53a1946b060d74ac1866bb9605216a"
+    }
+  ],
+  "products": [
+    {
+      "status": "verified-exact-source-part-id-coordinate-conservation",
+      "id": "dakar-overture-sample",
+      "manifestHash": "7c885b4c127b29047d91bbde14ed8866169232f7b8753e77e772f41821e817f0",
+      "inputSha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+      "features": 473,
+      "emittedParts": 473,
+      "tiles": 19,
+      "logicalBytes": 187937,
+      "networkBytes": 8862456,
+      "counts": {
+        "buildings": 409,
+        "roads": 64,
+        "sourceHeights": 0,
+        "estimatedHeights": 409
+      },
+      "limitations": [
+        "Checks exact captured source parts/coordinates/identities and output hashes; not independent source completeness, topology, height accuracy, source intersection or legality."
+      ],
+      "requestHash": "9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe",
+      "manifest": {
+        "path": ".cache/world-build/campaigns/africa-urban-samples-v1/output/manifests/7c885b4c127b29047d91bbde14ed8866169232f7b8753e77e772f41821e817f0.json",
+        "bytes": 25578,
+        "sha256": "7c885b4c127b29047d91bbde14ed8866169232f7b8753e77e772f41821e817f0"
+      },
+      "acquisitionElapsedMs": 40754,
+      "acquisitionAttempts": 1,
+      "campaignAttempts": 1
+    },
+    {
+      "status": "verified-exact-source-part-id-coordinate-conservation",
+      "id": "addis-ababa-overture-sample",
+      "manifestHash": "b427bd5514021f266419072f9c2c0899460ac7c1c31eeaafccbcedf7108ca688",
+      "inputSha256": "cc6df583e7aa819be011721363d99c9969141e3cb905f39ada86d49c92cb9112",
+      "features": 909,
+      "emittedParts": 909,
+      "tiles": 35,
+      "logicalBytes": 324184,
+      "networkBytes": 8878866,
+      "counts": {
+        "buildings": 858,
+        "roads": 51,
+        "sourceHeights": 0,
+        "estimatedHeights": 858
+      },
+      "limitations": [
+        "Checks exact captured source parts/coordinates/identities and output hashes; not independent source completeness, topology, height accuracy, source intersection or legality."
+      ],
+      "requestHash": "43261222dc2fa2b5324728aa8f32759ea0c528a67de57c6d3371e65a20614032",
+      "manifest": {
+        "path": ".cache/world-build/campaigns/africa-urban-samples-v1/output/manifests/b427bd5514021f266419072f9c2c0899460ac7c1c31eeaafccbcedf7108ca688.json",
+        "bytes": 26464,
+        "sha256": "b427bd5514021f266419072f9c2c0899460ac7c1c31eeaafccbcedf7108ca688"
+      },
+      "acquisitionElapsedMs": 38034,
+      "acquisitionAttempts": 1,
+      "campaignAttempts": 1
+    },
+    {
+      "status": "verified-exact-source-part-id-coordinate-conservation",
+      "id": "dar-es-salaam-overture-sample",
+      "manifestHash": "3935e3be0d66b7fac0f618a139404e667a56413f7759a541f6fd231c087a1a97",
+      "inputSha256": "40093d5262b5121b6aaf438b66fddee5599e43c647096da6213d90bd3479bcb8",
+      "features": 1590,
+      "emittedParts": 1590,
+      "tiles": 59,
+      "logicalBytes": 650254,
+      "networkBytes": 19549513,
+      "counts": {
+        "buildings": 1414,
+        "roads": 176,
+        "sourceHeights": 0,
+        "estimatedHeights": 1414
+      },
+      "limitations": [
+        "Checks exact captured source parts/coordinates/identities and output hashes; not independent source completeness, topology, height accuracy, source intersection or legality."
+      ],
+      "requestHash": "6c77313dc020198d02d83147fdd2235c31533ec2357bcefd6172049968e99367",
+      "manifest": {
+        "path": ".cache/world-build/campaigns/africa-urban-samples-v1/output/manifests/3935e3be0d66b7fac0f618a139404e667a56413f7759a541f6fd231c087a1a97.json",
+        "bytes": 47289,
+        "sha256": "3935e3be0d66b7fac0f618a139404e667a56413f7759a541f6fd231c087a1a97"
+      },
+      "acquisitionElapsedMs": 48710,
+      "acquisitionAttempts": 1,
+      "campaignAttempts": 1
+    }
+  ],
+  "totals": {
+    "sourceFeatures": 2972,
+    "buildingFootprints": 2681,
+    "roadLines": 291,
+    "inputBytes": 1087971,
+    "packBytes": 1162375,
+    "outputFiles": 116,
+    "tiles": 113,
+    "measuredSourceResponseBytes": 37290835,
+    "unknownNetworkReservationBytes": 0
+  },
+  "repeat": {
+    "sameReport": true,
+    "newSourceAttempts": 0,
+    "networkBytes": 0
+  },
+  "originalCapturedFilesUnchanged": 43,
+  "verification": {
+    "precedingClimateFullSuite": {
+      "passed": 459,
+      "failed": 0
+    },
+    "newSelectionFixturePassed": 1,
+    "worldTypeScript": "passed",
+    "independentConservationJobs": 3,
+    "browserAcceptedCases": 10,
+    "browserConsoleErrors": 0,
+    "actualViewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "previewBuild": "passed",
+    "previewJavascriptMinifiedKb": 717.31,
+    "previewJavascriptGzipKb": 188.15,
+    "previewCssMinifiedKb": 12.32,
+    "previewCssGzipKb": 3.56,
+    "gameStartupChanged": false
+  },
+  "evidence": [
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-addis-1280.png",
+      "bytes": 98855,
+      "sha256": "f60eb61f38da450cb45f2c6a497b53886ad3eeea89511760a9896594a0c546b9"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-addis-390.png",
+      "bytes": 37213,
+      "sha256": "d3e975a875c1227297674700087147987314310239fe6017952bcd7719af90a5"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-anchor-independent.json",
+      "bytes": 1980,
+      "sha256": "f38f9f278670a08a23ba3486bbec3f866a054703bd2842f3f467c7a4251e0a81"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-browser.json",
+      "bytes": 10105,
+      "sha256": "a7a8f765926b43a8641beeae80c9bf82e08dfa4b9b4f3002402b392cf7754ce0"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dakar-1280.png",
+      "bytes": 84059,
+      "sha256": "519839b2006962c093bcd306238a4413798b72151cf0dfb73356cc1aee3c6aa1"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dakar-390-before-layout.png",
+      "bytes": 48517,
+      "sha256": "25478e138cf59169c7552a380be2525ffd2df970144a9bfbbd2b408b43520f71"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dakar-390.png",
+      "bytes": 50027,
+      "sha256": "6a356971ad18265cfbab25975a5a052598792add80cfccffa91050d327bfb283"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dakar-independent.json",
+      "bytes": 700,
+      "sha256": "e1cfbe1d0abe8f66246f64151b00217fcdf1d03695edf25a1d7ee458a5180f34"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dar-1280.png",
+      "bytes": 86225,
+      "sha256": "cfe2a1c7069c7021e54aa134f70b0668690e8da395f6501e50d985bec05913a3"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dar-390.png",
+      "bytes": 46155,
+      "sha256": "7002445570f33a8c3ff5a6d2d48bdb7338cf0ee4fdb8e6a08153808931333f18"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-dar-final.png",
+      "bytes": 86700,
+      "sha256": "b6d3c2019384e8999580284ba0c63a45182042e9cfdf36c8d88e1b17f75c0de2"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-final-independent.json",
+      "bytes": 2246,
+      "sha256": "c56a9fe2edd654107f94d049e1c1f21cf88f3d7eceff19227bb83cc7edb08ef9"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-final.json",
+      "bytes": 15132,
+      "sha256": "1c2ef8068af168a8cf157c2dac0ad31eb61e795003ebc991ffd4e40c7e6c4da0"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-final.stderr",
+      "bytes": 168,
+      "sha256": "25b3d090e0ef2e8f4243c3d15c6ee9f08c2a14fd7207d25963044cda51787a0d"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-first.json",
+      "bytes": 9752,
+      "sha256": "20e775d0379b75d301b0d1272b3a719bfe35710104366dcac5c8d09397b2d2aa"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-first.stderr",
+      "bytes": 168,
+      "sha256": "2b480f55639c57e7594740ccb575decb0e4ab50538853bde9eefc5fb3494e036"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-preview-build.stderr",
+      "bytes": 332,
+      "sha256": "ccb6bf354a0674eeb1e49df9a880a000b75240079fdb849282bb899d81eeb58c"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-preview-build.stdout",
+      "bytes": 350,
+      "sha256": "15088ba2d4e55a0e97254ba45b00784601a9b2eac4a03631e63fdac457565f13"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-repeat.json",
+      "bytes": 15132,
+      "sha256": "1c2ef8068af168a8cf157c2dac0ad31eb61e795003ebc991ffd4e40c7e6c4da0"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-repeat.stderr",
+      "bytes": 168,
+      "sha256": "e1c9488f233b11eec455a9882831e3738fe7c28a5d3c80959d0d42307b982c0f"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-second-independent.json",
+      "bytes": 1491,
+      "sha256": "caa08a11e79d5cb26da0383b4a5fd1cfe09a82f803171d55f91062e83571f223"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-second.json",
+      "bytes": 12391,
+      "sha256": "7fcf893639c70120c7ea1eded20c4ccee88669dd1ad1130cdcd4852bdd056760"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-second.stderr",
+      "bytes": 168,
+      "sha256": "bc0b686be9f7463ee6eae5e8f662e7aa79a3dd3f584bdd03bc764dc6a046ecbe"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-selection-test.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-selection-test.tap",
+      "bytes": 550,
+      "sha256": "c234813945dae8f560615d2e64306ad0967dfeef3c3502a8e91a8f20084377d3"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-third-independent.json",
+      "bytes": 2246,
+      "sha256": "c56a9fe2edd654107f94d049e1c1f21cf88f3d7eceff19227bb83cc7edb08ef9"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-third.json",
+      "bytes": 15044,
+      "sha256": "7fa181bd9817b0b35656c804e282011b4f7c61c34aa801cd5432762963a22a16"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-third.stderr",
+      "bytes": 168,
+      "sha256": "65a23ee9abc65004cec33e2f867a8937559ff61873cf698b1453ea7e452d1239"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-typecheck.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/africa-urban-samples-typecheck.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".cache/world-build/evidence/verify-africa-sample-conservation.py",
+      "bytes": 2828,
+      "sha256": "74063f19ef5888677b78d32094ba56d32dfa91b9bb046525e8aa2ae96bbcb9ad"
+    }
+  ],
+  "limitations": [
+    "Three source-selected 0.004-degree cells, not complete cities/countries or playable destinations.",
+    "All 2681 building heights are estimated; terrain/climate remain unknown in these new packs.",
+    "Independent audit verifies captured source-part identity/coordinates and output hashes, not source completeness/topology/height accuracy/distribution rights.",
+    "Runtime memory caps were enforced; actual peak RSS was not recorded for these acquisitions.",
+    "Browser counters are rounded decoded-body bytes, not wire/device/soak performance."
+  ]
+}

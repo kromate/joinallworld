@@ -1,0 +1,660 @@
+{
+  "schemaVersion": 2,
+  "milestone": "bounded-country-grid-source-query-senegal-v1",
+  "campaign": {
+    "id": "senegal-grid-query-v1",
+    "schemaVersion": 2,
+    "inventoryKind": "country-directory",
+    "campaignHash": "bcfed3dd91f74ca1c00787281b1ed9597483277379a25a29170b463cac3e58db",
+    "countryId": "country:natural-earth:NE_ID%3A1159321243",
+    "countryCode": "SN",
+    "directoryManifestHash": "b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501",
+    "gridPlanHash": "cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c",
+    "gridPlanPath": ".cache/world-build/country-grids/senegal-country-grid-v1/plans/cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c.json",
+    "provider": "overture",
+    "release": "2026-09-23.1",
+    "layers": [
+      "buildings",
+      "roads"
+    ]
+  },
+  "coverage": {
+    "kind": "source-query-only",
+    "geometryCoverage": "not-compiled",
+    "roots": {
+      "captured": 0,
+      "exception": 0,
+      "pending": 100,
+      "requested": 100
+    },
+    "jobs": {
+      "captured": 3,
+      "failed": 0,
+      "leased": 0,
+      "queued": 103,
+      "subdivided": 2,
+      "total": 108,
+      "zeroFeatureQueries": 3
+    },
+    "supportedFeatureRowsAcrossOverlappingQueries": 0,
+    "compiled": 0,
+    "threeCapturedQueriesAllZeroSupportedFeatures": true
+  },
+  "accounting": {
+    "measuredNetworkBytes": 23687479,
+    "inputBytes": 1272,
+    "outputBytes": 1272,
+    "sharedAcquisitionCacheGrowthBytes": 19264,
+    "attemptReservations": 5,
+    "unknownOrReservedAttempts": 0,
+    "typedBudgetFailures": [
+      {
+        "address": {
+          "path": "",
+          "rootCellId": "geo-grid-v1:l1:x324:y209"
+        },
+        "networkBytesMeasured": 5960788,
+        "reason": "feature-row-budget",
+        "requestHash": "4f889fa06a6fac3bd11f22534306e11af6b31511c38131c8fa63f2a2aafb2a73"
+      },
+      {
+        "address": {
+          "path": "1",
+          "rootCellId": "geo-grid-v1:l1:x324:y209"
+        },
+        "networkBytesMeasured": 5960764,
+        "reason": "feature-row-budget",
+        "requestHash": "a8229f51d6071822e05548194de7b3ffdb3866a24be74feb5802d85f43dc986f"
+      }
+    ],
+    "zeroRowCaptureNetworkBytes": {
+      "geo-grid-v1:l1:x324:y209:0": 4545131,
+      "geo-grid-v1:l1:x324:y209:10": 3610388,
+      "geo-grid-v1:l1:x324:y209:11": 3610408
+    }
+  },
+  "limits": {
+    "perRequest": {
+      "networkBytes": 16000000,
+      "outputBytes": 1000000,
+      "features": 5000,
+      "durationMs": 90000,
+      "memoryMb": 1024,
+      "diskBytes": 128000000
+    },
+    "campaign": {
+      "networkBytes": 64000000,
+      "inputBytes": 32000000,
+      "outputBytes": 32000000,
+      "diskBytes": 256000000,
+      "durationMsPerInvocation": 120000,
+      "jobDurationMs": 90000,
+      "memoryMb": 1024,
+      "maxAttempts": 1,
+      "maxJobs": 10000,
+      "maxDepth": 4
+    }
+  },
+  "validation": {
+    "worldTests": 529,
+    "focusedCampaignTests": 9,
+    "worldTypeScript": "passed",
+    "pythonAcquisitionAndQueryProtocolTests": 11,
+    "independentCampaignTests": 14,
+    "cacheReplayNetworkBytes": 0,
+    "cacheReplayIdentical": true,
+    "schema1RegionalReplayIdentical": true,
+    "preservedPriorFiles": 877,
+    "preservationVerified": true,
+    "factoryScaleOnly": true
+  },
+  "scopeAndLimitations": [
+    "Checkpoint has 108 retained jobs: 2 completed density subdivisions, 3 captured zero-supported-feature queries, 103 queued, 0 failed and 0 leased.",
+    "All 100 roots remain pending; rootpending100 is a source-query accounting state, not evidence of complete coverage.",
+    "The three zero-row captures do not prove physically empty geography. The two dense requests ended in typed feature-row-budget failures before extracts or receipts were published.",
+    "No feature ownership/deduplication, geometry compilation, boundary completeness, playable/world completion or 48-hour completion is claimed.",
+    "Campaign ledger, usage and stage journals are mutable checkpoint state; future valid continuation can append records. Historical source extracts/receipts and grid plan/completion are immutable."
+  ],
+  "preservation": {
+    "baselinePath": ".cache/world-build/evidence/grid-query-preservation-before.json",
+    "baselineFiles": 877,
+    "verifiedUnchanged": 877,
+    "verificationMethod": "read-only SHA-256 and byte-length comparison of every snapshot path"
+  },
+  "codePins": [
+    {
+      "path": "world/GRID-QUERY-EFFICIENCY-RESEARCH.md",
+      "sha256": "55afecbe97122963bca1ddf557dc64be7fa9da516b9612e7ce6be74c84dd42e3",
+      "bytes": 8003
+    },
+    {
+      "path": "world/GRID-QUERY-OPERATIONS.md",
+      "sha256": "cef308165e15719e3d02987d4fc51d80f61821233ef410a9efce52f7f661f5bb",
+      "bytes": 7720
+    },
+    {
+      "path": "world/GRID-QUERY-SPEC.md",
+      "sha256": "1cdc9cdaaeaa97454f3786ae41a2daa05a8737e6f07699aedd172dd36475c062",
+      "bytes": 7340
+    },
+    {
+      "path": "world/acquire.test.ts",
+      "sha256": "72e2019f45657b5d5d21910f8c76b951fc1ee1826c199e99a8158ee8c4e7bcba",
+      "bytes": 12332
+    },
+    {
+      "path": "world/acquire.ts",
+      "sha256": "191a7665d899f3f5b7af7ac885ec782a98a7cde153f701b0985fe4ccc19697c1",
+      "bytes": 43958
+    },
+    {
+      "path": "world/acquisition-errors.test.ts",
+      "sha256": "ddb9dc58fa2d2130739a2d8ad361e15941c353b141ccf9e201e1e800b75f4218",
+      "bytes": 5406
+    },
+    {
+      "path": "world/acquisition-errors.ts",
+      "sha256": "7012aeea20cedeedabd318936cc8b174018d8fe571ba30edc9013370b9824e10",
+      "bytes": 2282
+    },
+    {
+      "path": "world/acquisition-sources.json",
+      "sha256": "7ac2f2babcab7e4dd330a2f2e3476708129653022ba7bd0a94c9cbf69184656c",
+      "bytes": 1297
+    },
+    {
+      "path": "world/campaign-cli.ts",
+      "sha256": "780981482756c7094bb33bc221734640b8a4aac11c65f3c0a7219404775c20b4",
+      "bytes": 2736
+    },
+    {
+      "path": "world/campaign.test.ts",
+      "sha256": "288fb3cad0940a47907c758bab0e1dd0ce51fd57ab7d6b0de72c147ad3a8dc80",
+      "bytes": 20102
+    },
+    {
+      "path": "world/campaign.ts",
+      "sha256": "96b9445ea4e9ce91441af3b31efd8b18efd3047bddd3f9a41874ec8c62d11072",
+      "bytes": 65164
+    },
+    {
+      "path": "world/grid-query-binding.test.ts",
+      "sha256": "9c3f589cdb54a995fd35fcad75bf2c3413dca3282775796a40af4a3f8e6863e9",
+      "bytes": 8140
+    },
+    {
+      "path": "world/grid-query-binding.ts",
+      "sha256": "c0a85a5d327f419d44da9e97a3e6fb4697479293520fc9944fec50503780279a",
+      "bytes": 12501
+    },
+    {
+      "path": "world/grid-query-campaign.test.ts",
+      "sha256": "3885b91e9b746fd7af64ac01bcdf0cc1edddfebac2c379f77dfa4bbb4a898567",
+      "bytes": 20876
+    },
+    {
+      "path": "world/grid-query-fixtures/senegal-v1.json",
+      "sha256": "d387f96067e2ad231c916327ddf228173b8322bc8c0494536d17f4a1e8301674",
+      "bytes": 122293
+    },
+    {
+      "path": "world/grid-query-types.ts",
+      "sha256": "f78925751ea255fae0205abc69715a33ddab832714d68d5c5d17feac690b5d10",
+      "bytes": 1887
+    },
+    {
+      "path": "world/grid-query.test.ts",
+      "sha256": "634efe47d0ada07a67dbc8a948656c9d2560b456dde22947ee201ceac79dacf3",
+      "bytes": 9168
+    },
+    {
+      "path": "world/grid-query.ts",
+      "sha256": "0ec6d28df9dff4a3f34ae44a60ca8bd5fe4c2518315ad38abc2ec397a9cb5ff3",
+      "bytes": 12853
+    },
+    {
+      "path": "world/ledger-subdivision.test.ts",
+      "sha256": "6e4cdc8e08e04c6d4d2d7eebc7d72d1177c2098bdd700d313126790047b5d71d",
+      "bytes": 3773
+    },
+    {
+      "path": "world/ledger.ts",
+      "sha256": "108815b8d95ae8b659349da0e29a20c81e0caf7750a0ae503e334948f7abbc8f",
+      "bytes": 15122
+    },
+    {
+      "path": "world/production-types.ts",
+      "sha256": "9757c9cc13582204c5a821f0d9a238622341514516f2f1e81279504c26b12466",
+      "bytes": 1829
+    },
+    {
+      "path": "world/regional-fanout-campaign.ts",
+      "sha256": "c3845b1da25ff599e52821807d638b158727315d4195359539112de4ace9df99",
+      "bytes": 2688
+    },
+    {
+      "path": "world/tooling/README.md",
+      "sha256": "9d206e80d03d22a422454d58c45d1d1487ec4226a146115199b081b2aebec79e",
+      "bytes": 11953
+    },
+    {
+      "path": "world/tooling/acquire.py",
+      "sha256": "1905a0bf5f624f0921903b42df36af634f15f2d721f73eaef096120c555949d0",
+      "bytes": 52709
+    },
+    {
+      "path": "world/tooling/test_acquire.py",
+      "sha256": "4d9b8ac8db2dab85edd30c60dc6e0b9c34eb59f5a743eb0fd6e570b935c576e9",
+      "bytes": 17866
+    },
+    {
+      "path": "world/tooling/test_acquisition_errors.py",
+      "sha256": "5aaaf0cefe2ca0c73c4f68208e1249d0f4f8feadf61d54ddedaeaf20f397564c",
+      "bytes": 2434
+    },
+    {
+      "path": "world/tooling/test_verify_grid_query_campaign.py",
+      "sha256": "8791b786add684ecae5229225f3a0dff03653ded91ebd26b8de8b01afdedbd77",
+      "bytes": 24691
+    },
+    {
+      "path": "world/tooling/verify_grid_query_campaign.py",
+      "sha256": "a6650f33752ff04daaaba65f274a095ee7618e2a50d8317bbf140727692635e0",
+      "bytes": 51780
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": ".cache/world-build/evidence/grid-query-campaign-final.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-command-stderr-or-warning-channel"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-campaign-final.tap",
+      "sha256": "4817afaa58c4eb0dac940093bf80232289ec4921db576cb3c4df5c52efd788d0",
+      "bytes": 2577,
+      "role": "authoritative-focused-tests-passed-9-of-9"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-factory-scale.json",
+      "sha256": "5fd0fe2cb976153f169d919cc70cdc1feb226e02dd04e91d7943017f66d0b401",
+      "bytes": 2320,
+      "role": "authoritative-read-only-factory-profile"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-independent-tests-final.stderr",
+      "sha256": "597247327e0ae270e64852dc04a43e23521268724a989d3355085c498df4dd11",
+      "bytes": 113,
+      "role": "authoritative-independent-tests-passed-14-of-14"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-independent-tests-final.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-independent-tests-passed-14-of-14"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-independent-tests.stderr",
+      "sha256": "5242282c3d0ff39d08c5347b42d9685877827f91df811cf854bdc45619ea2cf1",
+      "bytes": 3418,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-independent-tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-preservation-and-replay.json",
+      "sha256": "fbcf7acabecd596c620104746984176d0988752411dcd7c1397813035d8b2fb6",
+      "bytes": 188,
+      "role": "preservation-and-replay-authoritative"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-preservation-before.json",
+      "sha256": "b4ed62cb1030d219ed5a794f4b380440f9a05656d9808136a3ef2f0764312f0e",
+      "bytes": 225900,
+      "role": "preservation-and-replay-authoritative"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-python-original.stderr",
+      "sha256": "8c52bc317a891cfd21aa3cfcde03adca958d97b0769ba7e04370f9876fddf623",
+      "bytes": 106,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-python-original.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-python.stderr",
+      "sha256": "33060fd73862c5e1af97335504d5b45211fce6d229657f556d8deceeadc52ce4",
+      "bytes": 101,
+      "role": "protocol-python-tests-passed-3-of-3; combined-with-8-acquisition-tests-equals-11"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-python.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "protocol-python-tests-passed-3-of-3; combined-with-8-acquisition-tests-equals-11"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-replay.mjs",
+      "sha256": "48405ba4c569e8b6d43b73ef63fac93f8705a1233244c2071c8b412186029d42",
+      "bytes": 1386,
+      "role": "retained-query-evidence; not a final acceptance authority"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-schema1-regional-replay-final.json",
+      "sha256": "9449de556efa980b11cce49b5f6c1986071b95e651048e697ad67ba766ac1735",
+      "bytes": 144,
+      "role": "authoritative-zero-network-replay"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-schema1-regional-replay-final.stderr",
+      "sha256": "0775cfe51836624ab757c017a409fe71e2b7fd78674290ba94cecd2132ba5ff9",
+      "bytes": 169,
+      "role": "authoritative-command-stderr-or-warning-channel"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-schema1-regional-replay.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-cache-replay-final.json",
+      "sha256": "4b87ffaa55d9f98d7a71aab9156e25a0adb22d38d85e34c4bc94b9e270228af6",
+      "bytes": 525,
+      "role": "authoritative-zero-network-replay"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-cache-replay-final.stderr",
+      "sha256": "83f4d7efed2676404bf4aa233c3a110649288dc5ad24740fddb3e634e6f974ef",
+      "bytes": 169,
+      "role": "authoritative-command-stderr-or-warning-channel"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-cache-replay.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-cache-replay.stderr",
+      "sha256": "88698abc272c4edb017daaae2d95e49b077b9d5b91decb4c0d3929bc2bc2cc71",
+      "bytes": 1121,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-first.json",
+      "sha256": "4f6139943010ba560abd8f56c67b5877206194ee4c326a5ab1075e6c688d1735",
+      "bytes": 214669,
+      "role": "historical-campaign-invocation-evidence"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-first.stderr",
+      "sha256": "01dfb28c8653b3f74a3475c1a35f18c39af734474b2a02cc460bcc30926334d1",
+      "bytes": 169,
+      "role": "historical-campaign-invocation-evidence"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-final.json",
+      "sha256": "a29ed1b6be0ca4056da58fd03f870e1f70e3a17a55cce56f03dcb7d998cd0f6c",
+      "bytes": 3970,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-final.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-final2.json",
+      "sha256": "93b3f0d2f424ab797616a7d764018b3e65e79b1e57169709ade3903f061c40a8",
+      "bytes": 3970,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-final2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-root-final.json",
+      "sha256": "f0585fe85228b366394f16e5d59624e2db2f512973fd05d1c7f0e9cda873e129",
+      "bytes": 3970,
+      "role": "authoritative-independent-final-audit"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-root-final.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-command-stderr-or-warning-channel"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-root.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent-root.stderr",
+      "sha256": "baa18ce6c0f95b3f75cdcbaa58719dc8797be9b4eb3538ca9fad82891b8dbfa1",
+      "bytes": 937,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent.json",
+      "sha256": "ad596ff0e8aff584e3987143f26c1e1240e15c419ca17390a5670eee88de4c25",
+      "bytes": 2849,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-independent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "historical-not-authoritative; failures/intermediate attempts retained, not counted as passes"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-resume.json",
+      "sha256": "c5f14fc22cba80f2b50965c53c8db63bde90cb8e2f77712f2b3d5291741f44bc",
+      "bytes": 233836,
+      "role": "historical-campaign-invocation-evidence"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-senegal-resume.stderr",
+      "sha256": "bec125fdfe87eceb9d2235df926eb3d338d54d9ea09bd081a9c96d438b86d88a",
+      "bytes": 169,
+      "role": "historical-campaign-invocation-evidence"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-typecheck.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-typescript-check"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-typecheck.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-typescript-check"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-world-tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "authoritative-command-stderr-or-warning-channel"
+    },
+    {
+      "path": ".cache/world-build/evidence/grid-query-world-tests.tap",
+      "sha256": "2648380262b9574da9b15b0e6e5494938528b6757afc00c25b730880c6d2d533",
+      "bytes": 126422,
+      "role": "authoritative-full-world-tests-passed-529-of-529"
+    },
+    {
+      "path": ".cache/world-build/evidence/acquisition-python-tests.stderr.log",
+      "sha256": "cfd9ec1439facd83154d5741d6cbbf78e5b9b939018d2a586e16b12c736fc9a1",
+      "bytes": 106,
+      "role": "acquisition-python-suite-passed-8-of-8; together with query protocol suite 3-of-3 equals 11"
+    },
+    {
+      "path": ".cache/world-build/evidence/acquisition-python-tests.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "acquisition-python-suite-passed-8-of-8; together with query protocol suite 3-of-3 equals 11"
+    }
+  ],
+  "productPins": [
+    {
+      "path": ".cache/world-build/country-grids/senegal-country-grid-v1/plans/cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c.json",
+      "sha256": "cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c",
+      "bytes": 16859,
+      "kind": "immutable-grid-plan",
+      "mutableAtFutureCheckpoint": false
+    },
+    {
+      "path": ".cache/world-build/country-grids/senegal-country-grid-v1/completions/f81fac45e2ed3a0f3f578cdbec4bc34b1779a9e9143d39cbeae8f385fc9358c8.json",
+      "sha256": "c2e2fb7b0f607cfdf8eec5a9b6e7dd6b9d1c080ecee5dab21ebd3243a5c53438",
+      "bytes": 282,
+      "kind": "immutable-grid-plan-completion",
+      "mutableAtFutureCheckpoint": false
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/campaign.json",
+      "sha256": "bcfed3dd91f74ca1c00787281b1ed9597483277379a25a29170b463cac3e58db",
+      "bytes": 78182,
+      "kind": "campaign-config",
+      "mutableAtFutureCheckpoint": false
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/grid-query-binding.json",
+      "sha256": "473380cbf1844df117071cf72d6f1ee58424fc5106363eacbd5afd9003ca79e7",
+      "bytes": 384,
+      "kind": "query-binding",
+      "mutableAtFutureCheckpoint": false
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/inventory-binding.json",
+      "sha256": "b05505ea1953aa3881f09ea3220785b2c1c6e8f9293ee40a1f4faa9c94c137c7",
+      "bytes": 275,
+      "kind": "inventory-binding",
+      "mutableAtFutureCheckpoint": false
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/ledger.sqlite",
+      "sha256": "a4428dde1ed1dbc5997a7d33b5a7039832a4642ce0b5ab47ff152306755b0749",
+      "bytes": 204800,
+      "kind": "mutable-campaign-ledger-checkpoint",
+      "mutableAtFutureCheckpoint": true
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/usage.jsonl",
+      "sha256": "49b2af1806ee216f921ec65ac89c0dd8181f96fca242ea3c76d52a2e0459f9ee",
+      "bytes": 3545,
+      "kind": "mutable-campaign-usage-checkpoint",
+      "mutableAtFutureCheckpoint": true
+    },
+    {
+      "path": ".cache/world-build/campaigns/senegal-grid-query-v1/stages.jsonl",
+      "sha256": "a2c01cbb8a279143da9933e9458f52e380d1dc44d214defedd6d68f42268af30",
+      "bytes": 860,
+      "kind": "mutable-campaign-stage-checkpoint",
+      "mutableAtFutureCheckpoint": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10/extract.geojson",
+      "sha256": "f85f60713d616c9f3e16f11244f209f04ee2a6d427056dd3cc7956d2d099f7e8",
+      "bytes": 424,
+      "kind": "captured-extract",
+      "requestHash": "ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10/receipt.json",
+      "sha256": "22a06475d031f4efc079bb9ae00518e22848010494ef5938cef011afbe1eaef7",
+      "bytes": 2916,
+      "kind": "captured-acquisition-receipt",
+      "requestHash": "ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01/extract.geojson",
+      "sha256": "b297739818ea2069b016a7a6b96c63aa84dfb783d2c9f098b48268df82e85e5c",
+      "bytes": 424,
+      "kind": "captured-extract",
+      "requestHash": "edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01/receipt.json",
+      "sha256": "5054c59d828affd0d26e5a5ac9848ad1e39d7fde62fa58a83bacd84a7fca0834",
+      "bytes": 2932,
+      "kind": "captured-acquisition-receipt",
+      "requestHash": "edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7/extract.geojson",
+      "sha256": "800dd9c62e471fa04f4574a4a58c4da5d17ec48391625e8e6470423a3bec7a24",
+      "bytes": 424,
+      "kind": "captured-extract",
+      "requestHash": "6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisitions/6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7/receipt.json",
+      "sha256": "72a795b0cd8b3eb15dd6a82c7068c8c37014cd04d22ceba5e01f94851e83f532",
+      "bytes": 2930,
+      "kind": "captured-acquisition-receipt",
+      "requestHash": "6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7",
+      "immutable": true
+    },
+    {
+      "path": ".cache/world-build/acquisition-attempts/4f889fa06a6fac3bd11f22534306e11af6b31511c38131c8fa63f2a2aafb2a73/attempts.jsonl",
+      "sha256": "e031a5292f23678ed29bfe4c7a61f7b1a1f66a95ac43cd4e290a629bf2ca0611",
+      "bytes": 1706,
+      "kind": "immutable-acquisition-attempt-journal-snapshot",
+      "requestHash": "4f889fa06a6fac3bd11f22534306e11af6b31511c38131c8fa63f2a2aafb2a73",
+      "observedOutcome": "typed-feature-row-budget-failure"
+    },
+    {
+      "path": ".cache/world-build/acquisition-attempts/ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10/attempts.jsonl",
+      "sha256": "27c800bc07a634bb53cb5550e236a365591162026004434540a96ec5f1def113",
+      "bytes": 1914,
+      "kind": "immutable-acquisition-attempt-journal-snapshot",
+      "requestHash": "ea9b0d79b5cb8511f89ce2baa1703b2382c2b9609efd240a3f75c8eaba416b10",
+      "observedOutcome": "successful-zero-row-capture"
+    },
+    {
+      "path": ".cache/world-build/acquisition-attempts/a8229f51d6071822e05548194de7b3ffdb3866a24be74feb5802d85f43dc986f/attempts.jsonl",
+      "sha256": "5953a87a3c289e3a3b09176c1a9dd9e165da859f3c6797901489e20e80060057",
+      "bytes": 1736,
+      "kind": "immutable-acquisition-attempt-journal-snapshot",
+      "requestHash": "a8229f51d6071822e05548194de7b3ffdb3866a24be74feb5802d85f43dc986f",
+      "observedOutcome": "typed-feature-row-budget-failure"
+    },
+    {
+      "path": ".cache/world-build/acquisition-attempts/edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01/attempts.jsonl",
+      "sha256": "67f663945e9a60d775860ac3d9a7dc7700282230c24c7ae0dd4f1616e5361fe6",
+      "bytes": 1930,
+      "kind": "immutable-acquisition-attempt-journal-snapshot",
+      "requestHash": "edb6c13f0d76ef6df0c76642b5779a5f218b2136de04a6f1d2765990a7d42a01",
+      "observedOutcome": "successful-zero-row-capture"
+    },
+    {
+      "path": ".cache/world-build/acquisition-attempts/6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7/attempts.jsonl",
+      "sha256": "a708cc6101e7bd3011d4be610d1449d06d5446c1c49ac6094fad550d5cca4496",
+      "bytes": 1928,
+      "kind": "immutable-acquisition-attempt-journal-snapshot",
+      "requestHash": "6fba2a2586e91a2525a394dcc8f71f32a9e81428a9091237a0aa7dd67f92f9b7",
+      "observedOutcome": "successful-zero-row-capture"
+    }
+  ]
+}

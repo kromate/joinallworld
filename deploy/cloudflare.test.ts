@@ -11,6 +11,8 @@ import { createHash, randomUUID } from 'node:crypto';
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts';
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts';
 import { layoutBindings, readStoredCollection, writeStoredCollection } from '../server/testing/sqliteStorage.ts';
+import { MAIN_GATE_APPROACH } from '../src/campus/unilag/layout.ts';
+import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
@@ -457,13 +459,15 @@ test('Cloudflare: real static HTML receives response security and cache headers'
 
 test('Cloudflare: the page is strict until accounts are configured, then allows the identity endpoints and Google\'s button, and the popup-friendly opener policy', async t => {
   const directive = (policy: string, name: string) => policy.split('; ').find(part => part.startsWith(`${name} `)) ?? '';
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const avatarAssets = html.includes('name="allworld-3d-assets"');
   const plain = await fixture(t);
   const off = await plain.request('/'); await off.arrayBuffer();
   assert.ok(!/google/.test(off.headers.get('content-security-policy') as string));
   assert.equal(off.headers.get('cross-origin-opener-policy'), 'same-origin');
   const bindings = { BUILD_ID: 'local-conformance', ACCOUNTS_FIREBASE_PROJECT_ID: 'demo-allworld-test', ACCOUNTS_FIREBASE_API_KEY: 'AIzaFakeFakeFakeFakeFakeFakeFakeFake1' };
   const email = await fixture(t, { bindings }), withEmail = await email.request('/'); await withEmail.arrayBuffer();
-  assert.equal(directive(withEmail.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://cloudflareinsights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com");
+  assert.equal(directive(withEmail.headers.get('content-security-policy') as string, 'connect-src'), `connect-src 'self' ${avatarAssets ? 'blob: ' : ''}wss://joinallworld.test https://cloudflareinsights.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com`);
   assert.equal(withEmail.headers.get('cross-origin-opener-policy'), 'same-origin', 'no Google client id: no popup');
   const google = await fixture(t, { bindings: { ...bindings, ACCOUNTS_GOOGLE_CLIENT_ID: '123456789012-fakefakefake.apps.googleusercontent.com' } });
   const response = await google.request('/some/deep/link'); await response.arrayBuffer();
@@ -478,6 +482,7 @@ test('Cloudflare: the game page, a deep link, module pages, the API and an asset
   const telemetry = { TELEMETRY_ENV: 'production', SENTRY_DSN_CLIENT: 'https://abcdef0123456789@o123.ingest.example-sentry.test/456', POSTHOG_KEY: 'phc_fakefakefake', POSTHOG_HOST: 'https://eu.i.example-posthog.test' };
   const plain = await fixture(t), configured = await fixture(t, { bindings: { ...layoutBindings(), BUILD_ID: 'local-conformance', ...telemetry } });
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const avatarAssets = html.includes('name="allworld-3d-assets"');
   const hashes = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(match => `'sha256-${createHash('sha256').update(match[1] as string).digest('base64')}'`);
   assert.equal(hashes.length, 2);
   const directive = (policy: string, name: string) => policy.split('; ').find(part => part.startsWith(`${name} `)) ?? '';
@@ -485,8 +490,10 @@ test('Cloudflare: the game page, a deep link, module pages, the API and an asset
     const response = await plain.request(path); await response.arrayBuffer();
     assert.equal(response.status, 200);
     const csp = response.headers.get('content-security-policy') as string;
-    assert.equal(directive(csp, 'script-src'), `script-src 'self' ${hashes.join(' ')} https://static.cloudflareinsights.com`, 'the built page\'s inline scripts, by hash');
-    assert.equal(directive(csp, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://cloudflareinsights.com", 'no telemetry host unless configured');
+    const scriptSrc = directive(csp, 'script-src');
+    assert.equal(scriptSrc, `script-src 'self' ${hashes.join(' ')}${avatarAssets ? " 'wasm-unsafe-eval'" : ''} https://static.cloudflareinsights.com`, 'the built page\'s inline scripts, by hash and only the avatar decoder WebAssembly allowance when declared');
+    assert.doesNotMatch(scriptSrc, /(?:^|\s)'unsafe-eval'(?:\s|$)/, 'WebAssembly support must not allow JavaScript eval');
+    assert.equal(directive(csp, 'connect-src'), `connect-src 'self' ${avatarAssets ? 'blob: ' : ''}wss://joinallworld.test https://cloudflareinsights.com`, 'blob connections are limited to pages declaring avatar assets');
     assert.match(csp, /default-src 'self'; /); assert.match(csp, /frame-ancestors 'none'; upgrade-insecure-requests$/);
     assert.deepEqual([response.headers.get('strict-transport-security'), response.headers.get('x-frame-options'), response.headers.get('x-content-type-options'), response.headers.get('referrer-policy'), response.headers.get('cross-origin-opener-policy'), response.headers.get('cache-control')],
       ['max-age=31536000; includeSubDomains', 'DENY', 'nosniff', 'strict-origin-when-cross-origin', 'same-origin', 'no-cache'], path);
@@ -495,7 +502,7 @@ test('Cloudflare: the game page, a deep link, module pages, the API and an asset
   const head = await plain.fetch('/', { method: 'HEAD' });
   assert.match(head.headers.get('content-security-policy') as string, /script-src 'self' 'sha256-/, 'HEAD gets the policy too');
   const withTelemetry = await configured.request('/'); await withTelemetry.arrayBuffer();
-  assert.equal(directive(withTelemetry.headers.get('content-security-policy') as string, 'connect-src'), "connect-src 'self' wss://joinallworld.test https://o123.ingest.example-sentry.test https://eu.i.example-posthog.test https://cloudflareinsights.com");
+  assert.equal(directive(withTelemetry.headers.get('content-security-policy') as string, 'connect-src'), `connect-src 'self' ${avatarAssets ? 'blob: ' : ''}wss://joinallworld.test https://o123.ingest.example-sentry.test https://eu.i.example-posthog.test https://cloudflareinsights.com`);
   const share = await plain.request('/s/unknown-code'); await share.arrayBuffer();
   assert.match(share.headers.get('content-security-policy') as string, /^default-src 'none'; .*upgrade-insecure-requests$/);
   assert.deepEqual([share.headers.get('referrer-policy'), share.headers.get('strict-transport-security'), share.headers.get('cross-origin-opener-policy')], ['no-referrer', 'max-age=31536000; includeSubDomains', 'same-origin']);
@@ -983,18 +990,27 @@ test('UNILAG on the Worker: a visitor walks the campus, rides the shuttle once, 
   assert.notEqual((await f.act(ada, 'unilag.apply', { programme: 'computer' })).code, 'settle_required');
   assert.equal((await f.ok(ada, 'unilag.trail.visit', {}, 'trail_visited')).unilagCommunity.trail.length, 1);
   // Campus positions: a join starts at the main gate; a walkable point is relayed in campus coordinates, the lagoon is refused.
+  const campusWalk = createCampusWalk(), gateZone = campusWalk.zoneAt(MAIN_GATE_APPROACH.x, MAIN_GATE_APPROACH.z);
+  assert.ok(gateZone && campusWalk.grids.get(gateZone.id)?.free(MAIN_GATE_APPROACH.x, MAIN_GATE_APPROACH.z), 'the authoritative main-gate approach is currently walkable');
+  const adaMove = { x: 6, z: 8 }, guestMove = { x: 4, z: 8 }, lagoon = { x: 120, z: -160 };
+  const isCampusWalkable = (point: { x: number; z: number }) => {
+    const zone = campusWalk.zoneAt(point.x, point.z);
+    return Boolean(zone && campusWalk.grids.get(zone.id)?.free(point.x, point.z));
+  };
+  assert.ok(isCampusWalkable(adaMove) && isCampusWalkable(guestMove), 'the selected movement points are walkable in the current campus source');
+  assert.ok(!isCampusWalkable(lagoon), 'the selected lagoon point is outside current walkable campus geometry');
   const a = await f.peer(ada), g = await f.peer(guest);
   a.send({ type: 'join', cityId: CITY, venueId: 'unilag' });
-  assert.deepEqual((await a.until('presence')).members[0].position, { x: -286, z: -112 });
+  assert.deepEqual((await a.until('presence')).members[0].position, { x: MAIN_GATE_APPROACH.x, z: MAIN_GATE_APPROACH.z });
   g.send({ type: 'join', cityId: CITY, venueId: 'unilag' }); await g.until('presence'); await a.until('presence');
-  a.send({ type: 'move', x: 120, z: -160 });
-  assert.deepEqual((await g.until('presence')).members.find(member => member.id === ada.id)?.position, { x: 120, z: -160 });
-  a.send({ type: 'move', x: 360, z: 0 });
+  a.send({ type: 'move', ...adaMove });
+  assert.deepEqual((await g.until('presence')).members.find(member => member.id === ada.id)?.position, adaMove);
+  a.send({ type: 'move', ...lagoon });
   assert.equal((await a.until('error')).code, 'invalid_position');
   await f.hibernate();
-  g.send({ type: 'move', x: -280, z: -110 });
-  let after = await a.until('presence'); while (after.members.find(member => member.id === guest.id)?.position.x !== -280) after = await a.until('presence');
-  assert.deepEqual(after.members.map(member => [member.name, member.position]).sort(), [['Ada', { x: 120, z: -160 }], ['Guest', { x: -280, z: -110 }]], 'positions survive the sleep');
+  g.send({ type: 'move', ...guestMove });
+  let after = await a.until('presence'); while (after.members.find(member => member.id === guest.id)?.position.x !== guestMove.x) after = await a.until('presence');
+  assert.deepEqual(after.members.map(member => [member.name, member.position]).sort(), [['Ada', adaMove], ['Guest', guestMove]], 'positions survive the sleep');
   // The shuttle: one fare for one action id, and the ride ends at the stop it was bought for.
   const fare = { actionId: `${Date.now()}:${randomUUID()}`, cityId: CITY, type: 'campus-shuttle', payload: { destination: 'senate' } };
   const before = (await f.life(ada)).cash, ride = await f.post('/api/action', fare, ada), replay = await f.post('/api/action', fare, ada);
@@ -1065,6 +1081,9 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   await mkdir(join(dist, 'assets'));
   await writeFile(join(dist, 'index.html'), '<!doctype html><head></head><body>game</body>');
   await writeFile(join(dist, 'assets', 'app-abc123.js'), 'console.log(1)');
+  await mkdir(join(dist, 'assets/street/lagos'), { recursive: true });
+  await writeFile(join(dist, 'assets/street/lagos/manifest.txt'), '{"p":1,"city":"lagos","targetVersion":"street-v1-test"}');
+  await writeFile(join(dist, 'assets/street/lagos/manifest-street-v1-test.txt'), '{"v":1}');
   await writeFile(join(dist, 'assets', 'base-body-male-abc123.glb'), Buffer.from('glTF\u0002\u0000\u0000\u0000'));
   const f = await fixture(t, { assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } } });
   const missing = await f.fetch('/assets/x-123.js');
@@ -1072,6 +1091,10 @@ test('assets: a missing hashed file is a 404 (never index.html); a real one is i
   assert.ok(!(await missing.text()).includes('<'));
   const real = await f.fetch('/assets/app-abc123.js');
   assert.equal(real.status, 200); assert.match(real.headers.get('content-type') as string, /javascript/); assert.equal(real.headers.get('cache-control'), 'public, max-age=31536000, immutable');
+  const currentManifest = await f.fetch('/assets/street/lagos/manifest.txt');
+  assert.equal(currentManifest.status, 200); assert.equal(currentManifest.headers.get('cache-control'), 'no-cache');
+  const immutableManifest = await f.fetch('/assets/street/lagos/manifest-street-v1-test.txt');
+  assert.equal(immutableManifest.status, 200); assert.equal(immutableManifest.headers.get('cache-control'), 'public, max-age=31536000, immutable');
   const body = await f.fetch('/assets/base-body-male-abc123.glb');
   assert.equal(body.status, 200); assert.equal(body.headers.get('content-type'), 'model/gltf-binary'); assert.equal(body.headers.get('cache-control'), 'public, max-age=31536000, immutable');
   const deep = await f.fetch('/some/deep/link');

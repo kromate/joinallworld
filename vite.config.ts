@@ -175,7 +175,8 @@ export default defineConfig({
     // Terser, two passes: the same program in about 3% fewer gzip bytes than the default esbuild minifier, for every chunk (the startup
     // is the part that has a budget). It only compresses and renames; it does not change what the code does.
     minify: 'terser',
-    terserOptions: { compress: { passes: 2 }, format: { comments: false } },
+    // Keep one minifier worker on the shared development computer as well as one outer build lease.
+    terserOptions: { maxWorkers: 1, compress: { passes: 2 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { treeshake: { moduleSideEffects: (id) => !id.endsWith('/src/scene/home-scene.ts') && !/\/src\/game\/wardrobe\/(catalogue|rules|look|view|prices)\.ts$/.test(id) }, input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {

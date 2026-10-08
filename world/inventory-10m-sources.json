@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "id": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_0_countries.geojson",
+    "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+    "license": "Public-domain",
+    "attribution": "Natural Earth; public domain map data",
+    "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+    "bytes": 13287234
+  },
+  "input": ".cache/world-build/country-source-cache/e51c4d047ed2867b34faea4e17c102ead4f3fee558a84a942619ee2cb1abdceb.geojson",
+  "sourceFeatureCount": 258,
+  "resolutionLimitations": [
+    "Natural Earth 1:10m admin-0 country map units include territories and disputed units; 258 source features are not a count of sovereign states, cities or playable destinations.",
+    "Boundaries reflect this immutable Natural Earth release and default de facto policy; source-coordinate checks do not establish complete polygon topology or spherical validity.",
+    "The raw 10m pin is retained for bounded representation work; Russia, United States, Canada and Antarctica exceed the current 512000-byte outline asset limit and are not silently omitted or published through the legacy reader."
+  ]
+}

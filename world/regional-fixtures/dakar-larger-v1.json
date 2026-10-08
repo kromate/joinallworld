@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "dakar-larger-fanout-v1",
+  "inventoryHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+  "inventoryUnitId": "country:natural-earth:NE_ID%3A1159321243",
+  "parentPlan": {
+    "region": {
+      "id": "sn-dakar-parent-008-v1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar bounded regional reuse measurement",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.479076000000003,
+        14.713778,
+        -17.471076,
+        14.721777999999999
+      ]
+    },
+    "source": {
+      "id": "overture-2026-09-23.1-buildings-roads",
+      "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+      "release": "2026-09-23.1",
+      "license": "ODbL-1.0",
+      "attribution": "\u00a9 Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; \u00a9 Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/",
+      "sha256": "c6856ff9e613671c1bb4aeb3ea1d748f24cfa022f750a2037ea2612f14390a2a",
+      "bytes": 624174
+    },
+    "input": {
+      "path": ".cache/world-build/acquisitions/484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720/extract.geojson",
+      "sha256": "c6856ff9e613671c1bb4aeb3ea1d748f24cfa022f750a2037ea2612f14390a2a",
+      "bytes": 624174
+    },
+    "rawExtraction": {
+      "url": "overture:2026-09-23.1/484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720",
+      "fetched": "2026-10-08T12:36:49.113Z",
+      "sha256": "c6856ff9e613671c1bb4aeb3ea1d748f24cfa022f750a2037ea2612f14390a2a",
+      "bytes": 624174
+    }
+  },
+  "parentAcquisition": {
+    "requestHash": "484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720",
+    "receipt": {
+      "path": ".cache/world-build/acquisitions/484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720/receipt.json",
+      "sha256": "3f9d3f92f873cf6548aef51c69dff29b7961c3b220f673849250d37e7ac4720f",
+      "bytes": 3262
+    }
+  },
+  "children": [
+    {
+      "id": "sn-dakar-larger-cell-0-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 0,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.479076000000003,
+        14.713778,
+        -17.477076000000004,
+        14.715778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-0-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 0,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.479076000000003,
+        14.715778,
+        -17.477076000000004,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-0-2",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 0,2",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.479076000000003,
+        14.717778,
+        -17.477076000000004,
+        14.719777999999998
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-0-3",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 0,3",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.479076000000003,
+        14.719777999999998,
+        -17.477076000000004,
+        14.721777999999999
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-1-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 1,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076000000004,
+        14.713778,
+        -17.475076,
+        14.715778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-1-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 1,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076000000004,
+        14.715778,
+        -17.475076,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-1-2",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 1,2",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076000000004,
+        14.717778,
+        -17.475076,
+        14.719777999999998
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-1-3",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 1,3",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.477076000000004,
+        14.719777999999998,
+        -17.475076,
+        14.721777999999999
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-2-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 2,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.713778,
+        -17.473076,
+        14.715778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-2-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 2,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.715778,
+        -17.473076,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-2-2",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 2,2",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.717778,
+        -17.473076,
+        14.719777999999998
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-2-3",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 2,3",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.475076,
+        14.719777999999998,
+        -17.473076,
+        14.721777999999999
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-3-0",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 3,0",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.473076,
+        14.713778,
+        -17.471076,
+        14.715778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-3-1",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 3,1",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.473076,
+        14.715778,
+        -17.471076,
+        14.717778
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-3-2",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 3,2",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.473076,
+        14.717778,
+        -17.471076,
+        14.719777999999998
+      ]
+    },
+    {
+      "id": "sn-dakar-larger-cell-3-3",
+      "parentId": "country:natural-earth:NE_ID%3A1159321243",
+      "name": "Dakar regional child cell 3,3",
+      "kind": "cell",
+      "countryCode": "SN",
+      "timezone": "Africa/Dakar",
+      "bounds": [
+        -17.473076,
+        14.719777999999998,
+        -17.471076,
+        14.721777999999999
+      ]
+    }
+  ],
+  "limits": {
+    "inputBytes": 10000000,
+    "features": 5000,
+    "coordinates": 200000,
+    "children": 64,
+    "outputBytes": 30000000
+  }
+}

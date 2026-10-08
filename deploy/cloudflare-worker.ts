@@ -208,7 +208,7 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   if (inAssets && (response.status === 404 || response.headers.get('content-type')?.includes('text/html'))) {
     return new Response(request.method === 'HEAD' ? null : 'Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } });
   }
-  if (inAssets && response.status === 200) headers.set('cache-control', 'public, max-age=31536000, immutable'); // hashed: the name changes when the content does
+  if (inAssets && response.status === 200) headers.set('cache-control', /^\/assets\/street\/[a-z][a-z0-9-]{0,60}\/manifest\.txt$/.test(assetPath) ? 'no-cache' : 'public, max-age=31536000, immutable'); // mutable version pointer revalidates; hashed assets do not change
   if (inAssets && response.status === 200 && assetPath.endsWith('.glb')) headers.set('content-type', 'model/gltf-binary'); // the skinned body and its clips
   if (!headers.get('content-type')?.includes('text/html')) return new Response(response.body, { status: response.status, headers });
   headers.set('cache-control', 'no-cache');

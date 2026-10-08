@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "provider": "NASA POWER",
+  "product": "monthly point",
+  "community": "SB",
+  "source": "MERRA2 + POWER",
+  "baseline": {
+    "startYear": 1991,
+    "endYear": 2020
+  },
+  "parameters": [
+    "T2M",
+    "RH2M",
+    "PRECTOTCORR",
+    "WS10M"
+  ],
+  "spatialResolution": {
+    "latitudeDegrees": 0.5,
+    "longitudeDegrees": 0.625
+  },
+  "requestLimits": {
+    "maxParametersPerPoint": 20,
+    "regionalParameters": 1,
+    "maxResponseBytes": 1000000,
+    "timeoutMs": 30000,
+    "retries": 2,
+    "maxPilots": 6,
+    "maxBatchResponseBytes": 6000000,
+    "serialRequests": true
+  },
+  "pilots": [
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "accra",
+        "regionId": "pilot:accra",
+        "name": "Accra",
+        "longitude": -0.2,
+        "latitude": 5.55,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=-0.2&latitude=5.55&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/accra-power-monthly-1991-2020.json",
+      "bytes": 23168,
+      "sha256": "b92a1deeaf4b4f61eeee3971aefc302c5adebb4a89e4cf74616a6ddaea98aed8",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "nairobi",
+        "regionId": "pilot:nairobi",
+        "name": "Nairobi",
+        "longitude": 36.8219,
+        "latitude": -1.2921,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=36.8219&latitude=-1.2921&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/nairobi-power-monthly-1991-2020.json",
+      "bytes": 23213,
+      "sha256": "a14540ec142b97df62b2de9eb5ed16b5405daa98d27686b5a1b90553b6177760",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "cape-town",
+        "regionId": "pilot:cape-town",
+        "name": "Cape Town",
+        "longitude": 18.4241,
+        "latitude": -33.9249,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=18.4241&latitude=-33.9249&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/cape-town-power-monthly-1991-2020.json",
+      "bytes": 23158,
+      "sha256": "95baf14b0392faae7c9e0173e80394987bbe80ac7ec4a92909df44078c39231b",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "london",
+        "regionId": "pilot:london",
+        "name": "London",
+        "longitude": -0.1278,
+        "latitude": 51.5072,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=-0.1278&latitude=51.5072&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/london-power-monthly-1991-2020.json",
+      "bytes": 23013,
+      "sha256": "4e1943c8de33d861a2ec0a0b66d6e3879a398902fbc0d806dbd349ffa5810e5d",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "antarctic-80s-10e",
+        "regionId": "pilot:antarctic-80s-10e",
+        "name": "Antarctic point 10°E, 80°S",
+        "longitude": 10,
+        "latitude": -80,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=10&latitude=-80&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/antarctic-80s-10e-power-monthly-1991-2020.json",
+      "bytes": 23638,
+      "sha256": "0e78a8f8b213e5ca6fd7afcc8158f5d7032d95c7b0a1cb546d011c4456688c7d",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    },
+    {
+      "request": {
+        "schemaVersion": 1,
+        "id": "sahara-20e-23n",
+        "regionId": "pilot:sahara-20e-23n",
+        "name": "Sparse Sahara point 20°E, 23°N",
+        "longitude": 20,
+        "latitude": 23,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=20&latitude=23&start=1991&end=2020&format=JSON",
+      "cacheFile": ".cache/world-build/environment-source-cache/sahara-20e-23n-power-monthly-1991-2020.json",
+      "bytes": 22966,
+      "sha256": "aa1b162f7ee12fbe17b1842e34958e731c6eab939282896124b3ea4c76a3b094",
+      "apiVersion": "v2.10.0",
+      "sources": [
+        "MERRA2",
+        "POWER"
+      ],
+      "fillValue": -999,
+      "timeStandard": "LST",
+      "start": "19910101",
+      "end": "20201231",
+      "units": {
+        "PRECTOTCORR": {
+          "units": "mm/day",
+          "longname": "Precipitation Corrected"
+        },
+        "RH2M": {
+          "units": "%",
+          "longname": "Relative Humidity at 2 Meters"
+        },
+        "T2M": {
+          "units": "C",
+          "longname": "Temperature at 2 Meters"
+        },
+        "WS10M": {
+          "units": "m/s",
+          "longname": "Wind Speed at 10 Meters"
+        }
+      },
+      "records": {
+        "PRECTOTCORR": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "RH2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "T2M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        },
+        "WS10M": {
+          "count": 390,
+          "monthlyRecords": 360,
+          "annualRecords": 30
+        }
+      }
+    }
+  ],
+  "officialReferences": {
+    "monthlyApi": "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/",
+    "customClimatology": "https://power.larc.nasa.gov/docs/services/api/temporal/climatology/",
+    "dataProcessing": "https://power.larc.nasa.gov/docs/methodology/data/processing/",
+    "meteorology": "https://power.larc.nasa.gov/docs/methodology/meteorology/",
+    "dataSources": "https://power.larc.nasa.gov/docs/methodology/data/sources/",
+    "spatialResolution": "https://power.larc.nasa.gov/docs/faqs/solar/",
+    "requestGuidance": "https://power.larc.nasa.gov/docs/tutorials/service-data-request/api/",
+    "referencing": "https://power.larc.nasa.gov/docs/referencing/",
+    "earthdataUsePolicy": "https://www.earthdata.nasa.gov/engage/open-data-services-software/data-use-policy",
+    "copernicusDemRegistry": "https://registry.opendata.aws/copernicus-dem/",
+    "copernicusReadme": "https://copernicus-dem-30m.s3.amazonaws.com/readme.html"
+  }
+}

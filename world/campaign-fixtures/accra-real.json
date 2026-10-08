@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "accra-real-acceptance",
+  "inventoryHash": "8c40558c7cd6eff38be2c6d94bdaaafc04bfdc3f601fb45c4441d16b4b7d0a4f",
+  "units": [
+    {
+      "id": "ghana-accra-overture",
+      "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320793",
+      "priority": 0,
+      "kind": "acquire",
+      "request": {
+        "schemaVersion": 1,
+        "id": "accra-overture-pilot",
+        "inventoryUnitId": "country:natural-earth:NE_ID%3A1159320793",
+        "region": {
+          "id": "gh-accra-overture-pilot",
+          "parentId": "country:natural-earth:NE_ID%3A1159320793",
+          "name": "Accra bounded Overture pilot",
+          "kind": "cell",
+          "countryCode": "GH",
+          "timezone": "Africa/Accra",
+          "bounds": [-0.207, 5.552, -0.203, 5.556]
+        },
+        "provider": "overture",
+        "release": "2026-09-23.1",
+        "layers": ["buildings", "roads"],
+        "limits": {
+          "networkBytes": 32000000,
+          "outputBytes": 10000000,
+          "features": 1000,
+          "durationMs": 600000,
+          "memoryMb": 1536,
+          "diskBytes": 128000000
+        }
+      }
+    },
+    {
+      "id": "nigeria-protected",
+      "inventoryUnitId": "legacy-ng",
+      "priority": 1,
+      "kind": "protected",
+      "reason": "Protected legacy Nigeria provider; no world content generation."
+    }
+  ],
+  "limits": {
+    "durationMs": 900000,
+    "jobDurationMs": 600000,
+    "networkBytes": 32000000,
+    "inputBytes": 64000000000,
+    "outputBytes": 20000000,
+    "diskBytes": 400000000,
+    "memoryMb": 1536,
+    "maxAttempts": 2
+  }
+}

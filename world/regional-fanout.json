@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local immutable regional derivation and existing campaign compilation, not completed country/global/playable coverage. Two overlapping Dakar versions are separate experiments, never additive world geometry.",
+  "products": [
+    {
+      "id": "dakar-cached-fanout-v1",
+      "index": {
+        "path": ".cache/world-build/regional-fanout/dakar-cached-fanout-v1/indices/41f2e68e972b8aeb557edc1e1545484f060a90732b0a691d165cd4cd2dc63794.json",
+        "sha256": "41f2e68e972b8aeb557edc1e1545484f060a90732b0a691d165cd4cd2dc63794",
+        "bytes": 350531
+      },
+      "publication": {
+        "path": ".cache/world-build/regional-fanout/dakar-cached-fanout-v1/publications/4b6cc2a35b31ea65571bd591d798e064e078b71faff89fbb7c517f672dab4d55.json",
+        "sha256": "af3e36d292d7d5999bf53f16c93a2c69307150ffcdddf869c2f991dfb77bd17e",
+        "bytes": 1029
+      },
+      "parentInput": {
+        "path": ".cache/world-build/acquisitions/9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe/extract.geojson",
+        "sha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+        "bytes": 163385
+      },
+      "parentReceipt": {
+        "path": ".cache/world-build/acquisitions/9bc75fe39e8bde3be9394b941776939c7bb6a13acd03172f773acf91267d8bbe/receipt.json",
+        "sha256": "e4bbc005e5399ee5d91e63ef4a9ef718fed5033fef628969d3e7637acd221963",
+        "bytes": 2973
+      },
+      "counts": {
+        "sourceRows": 473,
+        "uniqueFeatures": 473,
+        "duplicateRows": 0,
+        "owned": 416,
+        "outsideDenominator": 57,
+        "unsupported": 0,
+        "emittedParts": 416,
+        "coordinates": 2669
+      },
+      "ownedKinds": {
+        "building": 370,
+        "road": 46
+      },
+      "declaredCells": 4,
+      "nonemptyOwnerJobs": 4,
+      "packBytes": 154555,
+      "tiles": 19,
+      "campaign": {
+        "path": ".cache/world-build/regional-fanout/dakar-cached-fanout-v1/campaigns/242574a11b9b6e3a481331ee36ed902658a625a86bf5364f60a1389d1fd5c3ee.json",
+        "sha256": "242574a11b9b6e3a481331ee36ed902658a625a86bf5364f60a1389d1fd5c3ee",
+        "bytes": 6709
+      },
+      "terminalReport": {
+        "path": ".cache/world-build/evidence/regional-fanout-dakar-campaign-first.json",
+        "sha256": "e76639627de259f1c223eb83f4a3180a3b1fdc25657baebe2b27afa7d2347173",
+        "bytes": 22744
+      },
+      "campaignCounts": {
+        "requested": 5,
+        "sourceUnits": 1,
+        "compiled": 1,
+        "exception": 0,
+        "protected": 1,
+        "unknown": 0
+      },
+      "attemptsEach": 1,
+      "newNetworkOnDerivationOrReplay": 0,
+      "builderLogicalBytes": 496462,
+      "manifests": [
+        {
+          "cellId": "sn-dakar-cached-cell-0-0",
+          "sha256": "f22d2dbe0da3155cb7ba65b61c1c3f87906982b8a0b1f2a43e1375f6c5dcdbd7",
+          "bytesIncludingTiles": 27576
+        },
+        {
+          "cellId": "sn-dakar-cached-cell-0-1",
+          "sha256": "e4b7e6c6c27892f077b9a54477830c7d87ab5c0a534f753cb4fe5869a2c80fdd",
+          "bytesIncludingTiles": 21035
+        },
+        {
+          "cellId": "sn-dakar-cached-cell-1-0",
+          "sha256": "3f603bdc76920c6d2b1e7e648745e01c78b9d3a1435938a28c759317d8a87503",
+          "bytesIncludingTiles": 78996
+        },
+        {
+          "cellId": "sn-dakar-cached-cell-1-1",
+          "sha256": "3f95cd9c3b39529fa7931b5f2423e02bdc8ed7a8f3534a3e84289e06a7749d80",
+          "bytesIncludingTiles": 26948
+        }
+      ]
+    },
+    {
+      "id": "dakar-larger-fanout-v1",
+      "index": {
+        "path": ".cache/world-build/regional-fanout/dakar-larger-fanout-v1/indices/737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4.json",
+        "sha256": "737721a5531b8a6056d99ec8e0bc4ee1389e41f2ed35c358fa32732f45e59cc4",
+        "bytes": 1355655
+      },
+      "publication": {
+        "path": ".cache/world-build/regional-fanout/dakar-larger-fanout-v1/publications/edd3555535046b3cc963f87fa12b38f5be6ea8f2103137987181167ae0a2324d.json",
+        "sha256": "4d7235c4e7088c29d721fd17a3a5b79613072ae2642797e030a0442afec71f1b",
+        "bytes": 3200
+      },
+      "parentInput": {
+        "path": ".cache/world-build/acquisitions/484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720/extract.geojson",
+        "sha256": "c6856ff9e613671c1bb4aeb3ea1d748f24cfa022f750a2037ea2612f14390a2a",
+        "bytes": 624174
+      },
+      "parentReceipt": {
+        "path": ".cache/world-build/acquisitions/484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720/receipt.json",
+        "sha256": "3f9d3f92f873cf6548aef51c69dff29b7961c3b220f673849250d37e7ac4720f",
+        "bytes": 3262
+      },
+      "counts": {
+        "sourceRows": 1810,
+        "uniqueFeatures": 1810,
+        "duplicateRows": 0,
+        "owned": 1732,
+        "outsideDenominator": 78,
+        "unsupported": 0,
+        "emittedParts": 1732,
+        "coordinates": 10192
+      },
+      "ownedKinds": {
+        "building": 1432,
+        "road": 300
+      },
+      "declaredCells": 16,
+      "nonemptyOwnerJobs": 16,
+      "packBytes": 640327,
+      "tiles": 72,
+      "campaign": {
+        "path": ".cache/world-build/regional-fanout/dakar-larger-fanout-v1/campaigns/c0193761d5080ab3947a36bda5b7166a63060cf6df9fe57108db0800c8157fff.json",
+        "sha256": "c0193761d5080ab3947a36bda5b7166a63060cf6df9fe57108db0800c8157fff",
+        "bytes": 25491
+      },
+      "terminalReport": {
+        "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-campaign-first.json",
+        "sha256": "29c51067a59b8debbbf7014d7677e39af7c1ff1c29f1160b8e13af368de0b21b",
+        "bytes": 87129
+      },
+      "campaignCounts": {
+        "requested": 17,
+        "sourceUnits": 1,
+        "compiled": 1,
+        "exception": 0,
+        "protected": 1,
+        "unknown": 0
+      },
+      "attemptsEach": 1,
+      "newNetworkOnDerivationOrReplay": 0,
+      "builderLogicalBytes": 1965822,
+      "manifests": [
+        {
+          "cellId": "sn-dakar-larger-cell-0-0",
+          "sha256": "a77426545a869259ff534c0999db2ba868e7db9d79ced47d7e0795e795ea5355",
+          "bytesIncludingTiles": 9891
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-0-1",
+          "sha256": "428937e15869d84b98a8d966e475147581c785e636a760851932f7632b002e13",
+          "bytesIncludingTiles": 43111
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-0-2",
+          "sha256": "d14ba0d13a37797dc8ef0cb4ffe6838e6aa758aca4ed25be6d11b74a108b29ca",
+          "bytesIncludingTiles": 68446
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-0-3",
+          "sha256": "cbed82f8bf4b7f4d7ff038374b3bad4530e292f29dd6b7b40e57dbb58df9f80b",
+          "bytesIncludingTiles": 74837
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-1-0",
+          "sha256": "56db6c2e473f11b039e8d44e47051f9f3c2ce902a9c00f6c8cce8af0e9536a54",
+          "bytesIncludingTiles": 44047
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-1-1",
+          "sha256": "428cf4622adb99b3bf525941761f747fe2bec164c83e8ba05436eb64e8ae5be4",
+          "bytesIncludingTiles": 28011
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-1-2",
+          "sha256": "416552d3b71c6dd33bf6f5f9754c8d998688e8bc18c0d5c11d14d953cfc73754",
+          "bytesIncludingTiles": 21438
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-1-3",
+          "sha256": "182aa37b718f473e545dc948c26b0e686f8b2bbf87294dc1b9f59b06fb23919a",
+          "bytesIncludingTiles": 6403
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-2-0",
+          "sha256": "837e1ce6fedbfe8843f7ad67e0861e1e67fcb7130564459290fb2d8d1b5c89aa",
+          "bytesIncludingTiles": 56514
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-2-1",
+          "sha256": "6acbceb6b6a12ee40bd28c84444d7c9131511063ed2b802a129564b8e5cf661c",
+          "bytesIncludingTiles": 79301
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-2-2",
+          "sha256": "819fc7845709c93c2463763fcfe4e65f0713751e4d7e6d1f265c9f3f2733a771",
+          "bytesIncludingTiles": 27253
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-2-3",
+          "sha256": "3f0be3689fd419964c3d35db28eb059e658a724351bba64b3ff5449f6a456b8f",
+          "bytesIncludingTiles": 22136
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-3-0",
+          "sha256": "248543def79a0f8bb33ff5a6c8274f83fc9fd1c20199a7c6d10182d4195fa20d",
+          "bytesIncludingTiles": 34461
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-3-1",
+          "sha256": "619f09312e96da57babfc7c5dd8fd6b861a12ee3c69ec5e0033689fbf912bf14",
+          "bytesIncludingTiles": 42016
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-3-2",
+          "sha256": "133c910498eae7a085e6f208dfb5dda58cd1dfbb777b61ca32172f154ee8034b",
+          "bytesIncludingTiles": 40915
+        },
+        {
+          "cellId": "sn-dakar-larger-cell-3-3",
+          "sha256": "cb7911d44d0d87b18a1b713e0e089fc06f1234659efa1b9c753dcb41870afddb",
+          "bytesIncludingTiles": 41547
+        }
+      ]
+    }
+  ],
+  "newLargerParentAcquisition": {
+    "requestHash": "484ed82e2f5dc9a91b2c5e6a74cb44ee87a6e34573c5cebce5a0b0e05e95d720",
+    "attempts": 1,
+    "measuredResponseBytes": 9110946,
+    "features": 1810,
+    "benchmark": {
+      "exitCode": 0,
+      "wallMs": 46888,
+      "sampledDescendantPeakRssBytes": 165953536,
+      "rssSamples": 192,
+      "maxObservedProcesses": 3,
+      "method": "ps rss KiB summed over observed non-zombie acquisition-node descendants; ~200ms samples, not guaranteed peak or physical-device metric"
+    }
+  },
+  "validation": {
+    "worldTests": {
+      "passed": 482,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "worldTypeScript": "passed",
+    "independentPythonFixtures": 12,
+    "campaignIntegrationFixtures": 1,
+    "preservationAndReplay": {
+      "regional-fanout-dakar": {
+        "publicationIdentical": true,
+        "campaignReportIdentical": true,
+        "campaignJobs": 5,
+        "campaignAttemptsEach": 1,
+        "networkBytes": 0
+      },
+      "regional-fanout-dakar-larger": {
+        "publicationIdentical": true,
+        "campaignReportIdentical": true,
+        "campaignJobs": 17,
+        "campaignAttemptsEach": 1,
+        "networkBytes": 0
+      },
+      "preservedOriginalFiles": 43,
+      "newParentAcquisitionAttempts": 1,
+      "newParentMeasuredBytes": 9110946
+    },
+    "browserScope": "One derived child, desktop and narrow viewport, no physical-device/soak/global dependency test"
+  },
+  "limitations": [
+    "Ownership is local to the requested child denominator; outside owners remain explicit.",
+    "Conservative whole-feature bounds are candidates, not exact intersections.",
+    "Empty-owned cells remain in the index; existing zero-tile campaign policy is preserved.",
+    "Campaign country rollups count one Senegal source unit, not the number of cells.",
+    "Country grid, ownership across regional extracts, runtime owner loading, source-query completeness, terrain/geoid, regional conditions, rights and gameplay integration remain open.",
+    "Python shortest-roundtrip canonicalization can reject rare cross-runtime decimal ties; acceptance proves these captured products.",
+    "Pinned acquisition receipts are validated records, not independent reconstruction of original acquisition request hashing or remote capture completeness."
+  ],
+  "codePins": [
+    {
+      "path": "world/REGIONAL-FANOUT-SPEC.md",
+      "sha256": "176c4fcf2215488cf32c28d52b397cc01a22580f185988957fb872b57066c1f1",
+      "bytes": 11060
+    },
+    {
+      "path": "world/regional-fanout-campaign.test.ts",
+      "sha256": "a23fd18b3c714a75d3d8081e2208e7cdb36e0f4b5d73a3e3050b0a646b97e1c2",
+      "bytes": 6480
+    },
+    {
+      "path": "world/regional-fanout-campaign.ts",
+      "sha256": "6936a91be81d423108c29b73588268d9c4a08699640f282d44fcb7fff9596e2c",
+      "bytes": 2550
+    },
+    {
+      "path": "world/regional-fanout-cli.ts",
+      "sha256": "29f72e6d65679b445209fb1fea9b7bff9592ef7f9989e2eb9f45646c44b0ac04",
+      "bytes": 2738
+    },
+    {
+      "path": "world/regional-fanout-publish.test.ts",
+      "sha256": "371f77a69c1cff5cee1b0fd4f07e29348017087ef52def4d4350ba7fa2cccf00",
+      "bytes": 14433
+    },
+    {
+      "path": "world/regional-fanout-publish.ts",
+      "sha256": "7f4f8f4ec5fba23747b3143d86600779391291e5d636ac650d3f2915723a50c2",
+      "bytes": 26788
+    },
+    {
+      "path": "world/regional-fanout-types.ts",
+      "sha256": "18ba4428ecf57d0e8d545346a30a0b4bea715481c658c0ee8d6ae9622aa82b2b",
+      "bytes": 3047
+    },
+    {
+      "path": "world/regional-fanout-worker.ts",
+      "sha256": "b0ea67375bbd3eef2f974d3a47da17656326d0d1ae0a7b87575ab17395336f2c",
+      "bytes": 1243
+    },
+    {
+      "path": "world/regional-fanout.test.ts",
+      "sha256": "a6541a1198c678f856ff5c41d1ce457fe9bbd57d18233cb849a1da430cff0823",
+      "bytes": 17875
+    },
+    {
+      "path": "world/regional-fanout.ts",
+      "sha256": "5b73d530dcb1f2b768c0c2c6637b20787eab9d0ae8bce5081149d413be5be850",
+      "bytes": 26968
+    },
+    {
+      "path": "world/regional-fixtures/dakar-cached-v1.json",
+      "sha256": "df5f4c2264a57b07f868197c6a3f3b2c8b35c61b07c39b56a3375f214e06a835",
+      "bytes": 3817
+    },
+    {
+      "path": "world/regional-fixtures/dakar-larger-v1.json",
+      "sha256": "d5d66b78ab1d02f4e8daa7a98b0795cc0fcf12920c078827a2475b84a77b24e1",
+      "bytes": 8175
+    },
+    {
+      "path": "world/regional-fixtures/dakar-parent-008-request-v1.json",
+      "sha256": "317349c95567ecc772472a72babeb6fbcba8936cff274ed0e4dbeec5321002a2",
+      "bytes": 756
+    },
+    {
+      "path": "world/tooling/verify_regional_fanout.py",
+      "sha256": "226649bd2d43a426328a0d9392c502014104e9c755115f887779203597e1a6bd",
+      "bytes": 33058
+    },
+    {
+      "path": "world/tooling/test_verify_regional_fanout.py",
+      "sha256": "3489904ebb631ed80392e8879723f8ee7e62b9d95af80a645e3f85f1cb28f1f3",
+      "bytes": 14865
+    },
+    {
+      "path": "world/tooling/verify_regional_campaign.py",
+      "sha256": "e6d1a5f7ac1b2812eeac6331b98c7c43bffbf9e769c0184fe85c443ffec6467b",
+      "bytes": 9354
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-browser.json",
+      "sha256": "2c3085d7d0084d533729245eab8cce7a7d02815e4e674ce90ce86de83ef5cc91",
+      "bytes": 3332
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-campaign-test-v6.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-campaign-test-v6.tap",
+      "sha256": "e6775d43adaaafed6e82bb807dbec75d243bc86caa5e36ef4cc3edbc179067df",
+      "bytes": 625
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-campaign-first.json",
+      "sha256": "e76639627de259f1c223eb83f4a3180a3b1fdc25657baebe2b27afa7d2347173",
+      "bytes": 22744
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-campaign-independent.json",
+      "sha256": "781ba975b509d9ae3c69c95c0a045a5ae3ca0d424752a2f02f6aac67d4c06409",
+      "bytes": 1397
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-campaign-repeat.json",
+      "sha256": "e76639627de259f1c223eb83f4a3180a3b1fdc25657baebe2b27afa7d2347173",
+      "bytes": 22744
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-desktop.png",
+      "sha256": "d824204fa8128236f3ed7d3c49ab7f7483cd3ea74c77455804f44d0a0ae49195",
+      "bytes": 77934
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-final.png",
+      "sha256": "e6409b7e00db5ee6ef9f2fee83b1c91f014fe4a106f538f959a89a657aedc33d",
+      "bytes": 77727
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-first.json",
+      "sha256": "50e7b3654755c63edcdda2e95fbcf20cecb96168cdeb6f320c12c764335955d3",
+      "bytes": 357231
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-independent.json",
+      "sha256": "ac0bc6ce7704b991c74a82b77be0db8c31f10074d0194803e7e5d9cf1175722b",
+      "bytes": 751
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-benchmark.json",
+      "sha256": "290af0ce0ae52dda68746710fa9804b05478c504a281db11b9c6691576284dc3",
+      "bytes": 285
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-campaign-first.json",
+      "sha256": "29c51067a59b8debbbf7014d7677e39af7c1ff1c29f1160b8e13af368de0b21b",
+      "bytes": 87129
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-campaign-independent.json",
+      "sha256": "72e29bc584b0f4d6cfc28f6dae6d0c3ff1da68a3cb4085830194b2f5eb1402c7",
+      "bytes": 3864
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-campaign-repeat.json",
+      "sha256": "29c51067a59b8debbbf7014d7677e39af7c1ff1c29f1160b8e13af368de0b21b",
+      "bytes": 87129
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-first.json",
+      "sha256": "32870dca699a43511500b3ace1fcbfbe7003aa61025982bed6a20c44a30240a0",
+      "bytes": 1379572
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-independent.json",
+      "sha256": "16d34f29d8805ba2d19721389c3367135dc409cc22abf9b8d735e7ef615ec667",
+      "bytes": 759
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-larger-repeat.json",
+      "sha256": "32870dca699a43511500b3ace1fcbfbe7003aa61025982bed6a20c44a30240a0",
+      "bytes": 1379572
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-mobile.png",
+      "sha256": "3342e03141f8ab8e4144e5787338948f0c0f0e815d82fcd9f6fed710aa3ad70d",
+      "bytes": 41475
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-dakar-repeat.json",
+      "sha256": "50e7b3654755c63edcdda2e95fbcf20cecb96168cdeb6f320c12c764335955d3",
+      "bytes": 357231
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-overlap-source-conservation.json",
+      "sha256": "78d64b1cc464d36dd85ea0f5701432b056f325eb34421923f053321c29093720",
+      "bytes": 240
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-preservation-and-replay.json",
+      "sha256": "58020fe43bba1ea507281368c51018cb48446b6ef76e20d3695d75f76e5a0d6b",
+      "bytes": 479
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-python.stderr",
+      "sha256": "6389ed2e16cc4ee9a6de24bcaef1e1c340973aa1a86b87c5be3d39daa9959182",
+      "bytes": 1670
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-python.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-typecheck.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-typecheck.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/regional-fanout-world-tests.tap",
+      "sha256": "216ae2d4a8429b015cc5820e552c7df9d558be5bb8cc61d45cd31698094a29ce",
+      "bytes": 114670
+    }
+  ]
+}

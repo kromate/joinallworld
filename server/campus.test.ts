@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { fixture } from './test-fixture.ts';
 import { validatePosition, initialVenuePosition } from './protocol.ts';
+import { MAIN_GATE_APPROACH } from '../src/campus/unilag/layout.ts';
+import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import { createLife } from '../src/life.ts';
 import { lagosTime } from '../src/game/clock.ts';
 import type { Device } from './test-fixture.ts';
@@ -137,8 +139,9 @@ test('public action dispatch cannot invoke the server-only campus vote', async (
 });
 
 test('position validation uses campus walkability while retaining ordinary venue bounds', () => {
-  assert.deepEqual(initialVenuePosition('unilag'), { x: -286, z: -112 });
-  assert.deepEqual(validatePosition({ x: -286, z: -112 }, 'unilag'), { x: -286, z: -112 });
+  const gate = { x: MAIN_GATE_APPROACH.x, z: MAIN_GATE_APPROACH.z };
+  assert.deepEqual(initialVenuePosition('unilag'), gate);
+  assert.deepEqual(validatePosition(gate, 'unilag'), gate);
   assert.throws(() => validatePosition({ x: 500, z: 0 }, 'unilag'), /invalid_position/);
   assert.throws(() => validatePosition({ x: 25, z: 0 }, 'park'), /invalid_position/);
   assert.deepEqual(validatePosition({ x: 14, z: -3.5 }, 'park'), { x: 14, z: -3.5 });
@@ -148,12 +151,24 @@ test('two campus room members receive full-sized movement and reject lagoon wate
   const f=await fixture(t);f.advance(MONDAY-f.now());
   const ada=await f.device('Ada Walking'),bola=await f.device('Bola Walking');
   await seedStudent(f,ada,{studentId:'ULG-2026-000011'});await seedStudent(f,bola,{studentId:'ULG-2026-000012'});
+  const campusWalk = createCampusWalk();
+  const isCampusWalkable = (point: { x: number; z: number }) => {
+    const zone = campusWalk.zoneAt(point.x, point.z);
+    return Boolean(zone && campusWalk.grids.get(zone.id)?.free(point.x, point.z));
+  };
+  const adaMove = { x: 6, z: 8 }, bolaMove = { x: 4, z: 8 }, lagoon = { x: 120, z: -160 };
+  assert.ok(isCampusWalkable(adaMove) && isCampusWalkable(bolaMove), 'movement points are free in the current campus source');
+  assert.ok(!isCampusWalkable(lagoon), 'the lagoon point is outside current walkable campus geometry');
   const a=await f.socket(ada);a.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));
-  const arrival=presence(await a.next());assert.deepEqual(arrival.members[0]?.position,{x:-286,z:-112});
+  const arrival=presence(await a.next());assert.deepEqual(arrival.members[0]?.position,{x:MAIN_GATE_APPROACH.x,z:MAIN_GATE_APPROACH.z});
   const b=await f.socket(bola);b.ws.send(JSON.stringify({type:'join',cityId:'lagos',venueId:'unilag'}));await b.next();await a.next();
-  a.ws.send(JSON.stringify({type:'move',x:120,z:-160}));
+  a.ws.send(JSON.stringify({type:'move',...adaMove}));
   const own=presence(await a.next()),remote=presence(await b.next());
-  assert.deepEqual(own.members.find(p=>p.id===ada.id)?.position,{x:120,z:-160});
-  assert.deepEqual(remote.members.find(p=>p.id===ada.id)?.position,{x:120,z:-160});
-  a.ws.send(JSON.stringify({type:'move',x:360,z:0}));assert.equal(errorCode(await a.next()),'invalid_position');
+  assert.deepEqual(own.members.find(p=>p.id===ada.id)?.position,adaMove);
+  assert.deepEqual(remote.members.find(p=>p.id===ada.id)?.position,adaMove);
+  b.ws.send(JSON.stringify({type:'move',...bolaMove}));
+  const adaSeesBola=presence(await a.next()),bolaSeesOwn=presence(await b.next());
+  assert.deepEqual(adaSeesBola.members.find(p=>p.id===bola.id)?.position,bolaMove);
+  assert.deepEqual(bolaSeesOwn.members.find(p=>p.id===bola.id)?.position,bolaMove);
+  a.ws.send(JSON.stringify({type:'move',...lagoon}));assert.equal(errorCode(await a.next()),'invalid_position');
 });

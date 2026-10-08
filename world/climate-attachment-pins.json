@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "policy": "explicit-pinned-city-association-v1",
+  "bindings": [
+    {
+      "schemaVersion": 1,
+      "id": "accra",
+      "campaignId": "representative-real-v2",
+      "baseManifest": {
+        "sha256": "34442dbc40ed2db8d987370141f4e88fb3b1e58336347dbab5b5a72af067a847",
+        "bytes": 16781,
+        "path": ".cache/world-build/campaigns/representative-real-v2/output/manifests/34442dbc40ed2db8d987370141f4e88fb3b1e58336347dbab5b5a72af067a847.json"
+      },
+      "expectedRegion": {
+        "bounds": [
+          -0.207,
+          5.552,
+          -0.203,
+          5.556
+        ],
+        "countryCode": "GH",
+        "id": "gh-accra-overture-pilot",
+        "kind": "cell",
+        "name": "Accra bounded Overture pilot",
+        "parentId": "country:natural-earth:NE_ID%3A1159320793",
+        "timezone": "Africa/Accra"
+      },
+      "environmentManifest": {
+        "sha256": "346e419c610d9079f5143ae0c0f84fb15258ed4a3bd9f39079d0f7217ded9be7",
+        "bytes": 3822,
+        "path": ".cache/world-build/output/environment/manifests/346e419c610d9079f5143ae0c0f84fb15258ed4a3bd9f39079d0f7217ded9be7.json"
+      },
+      "environmentRequest": {
+        "schemaVersion": 1,
+        "id": "accra",
+        "regionId": "pilot:accra",
+        "name": "Accra",
+        "longitude": -0.2,
+        "latitude": 5.55,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "rawSource": {
+        "sha256": "b92a1deeaf4b4f61eeee3971aefc302c5adebb4a89e4cf74616a6ddaea98aed8",
+        "bytes": 23168,
+        "path": ".cache/world-build/environment-source-cache/accra-power-monthly-1991-2020.json",
+        "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=-0.2&latitude=5.55&start=1991&end=2020&format=JSON"
+      },
+      "expectedSample": {
+        "longitude": -0.2,
+        "latitude": 5.55
+      },
+      "association": {
+        "mode": "explicit-city-associated-native-grid-point",
+        "sampleInsidePackBounds": false,
+        "centreOffsetDegrees": {
+          "longitude": 0.0050000000000000044,
+          "latitude": -0.004000000000000448
+        },
+        "maximumAbsoluteCentreOffsetDegrees": 0.01,
+        "disclosure": "A named city-associated MERRA-2 grid sample; not a measurement or spatial average of this small pack cell. Explicit association is required even when coordinates fall inside the cell."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "nairobi",
+      "campaignId": "representative-real-v2",
+      "baseManifest": {
+        "sha256": "cb20b544be34c3762b04ba4f135d4b2ae0854f7403c54f8106a79bd11c102180",
+        "bytes": 18937,
+        "path": ".cache/world-build/campaigns/representative-real-v2/output/manifests/cb20b544be34c3762b04ba4f135d4b2ae0854f7403c54f8106a79bd11c102180.json"
+      },
+      "expectedRegion": {
+        "bounds": [
+          36.82074,
+          -1.29092,
+          36.82474,
+          -1.28692
+        ],
+        "countryCode": "KE",
+        "id": "ke-nairobi-kicc-cell",
+        "kind": "cell",
+        "name": "Nairobi Kenyatta International Convention Centre cell",
+        "parentId": "country:natural-earth:NE_ID%3A1159320971",
+        "timezone": "Africa/Nairobi"
+      },
+      "environmentManifest": {
+        "sha256": "1603186223fcf61db560005280bfb2a409f477512921bf9211baf4a664f4f392",
+        "bytes": 3806,
+        "path": ".cache/world-build/output/environment/manifests/1603186223fcf61db560005280bfb2a409f477512921bf9211baf4a664f4f392.json"
+      },
+      "environmentRequest": {
+        "schemaVersion": 1,
+        "id": "nairobi",
+        "regionId": "pilot:nairobi",
+        "name": "Nairobi",
+        "longitude": 36.8219,
+        "latitude": -1.2921,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "rawSource": {
+        "sha256": "a14540ec142b97df62b2de9eb5ed16b5405daa98d27686b5a1b90553b6177760",
+        "bytes": 23213,
+        "path": ".cache/world-build/environment-source-cache/nairobi-power-monthly-1991-2020.json",
+        "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=36.8219&latitude=-1.2921&start=1991&end=2020&format=JSON"
+      },
+      "expectedSample": {
+        "longitude": 36.822,
+        "latitude": -1.292
+      },
+      "association": {
+        "mode": "explicit-city-associated-native-grid-point",
+        "sampleInsidePackBounds": false,
+        "centreOffsetDegrees": {
+          "longitude": -0.0007399999999933016,
+          "latitude": -0.0030799999999999716
+        },
+        "maximumAbsoluteCentreOffsetDegrees": 0.01,
+        "disclosure": "A named city-associated MERRA-2 grid sample; not a measurement or spatial average of this small pack cell. Explicit association is required even when coordinates fall inside the cell."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "id": "cape-town",
+      "campaignId": "representative-real-v2",
+      "baseManifest": {
+        "sha256": "9d991555b3ed7b2806d39b6c0329dd3826837a359c161a57b02fb12f1ae6c098",
+        "bytes": 17579,
+        "path": ".cache/world-build/campaigns/representative-real-v2/output/manifests/9d991555b3ed7b2806d39b6c0329dd3826837a359c161a57b02fb12f1ae6c098.json"
+      },
+      "expectedRegion": {
+        "bounds": [
+          18.42122,
+          -33.92784,
+          18.42522,
+          -33.92384
+        ],
+        "countryCode": "ZA",
+        "id": "za-cape-town-city-centre-cell",
+        "kind": "cell",
+        "name": "Cape Town city-centre cell",
+        "parentId": "country:natural-earth:NE_ID%3A1159321431",
+        "timezone": "Africa/Johannesburg"
+      },
+      "environmentManifest": {
+        "sha256": "bf04aa0201ee91718c12e1208c0848fb0c3762647661e164f841c7823de51608",
+        "bytes": 3851,
+        "path": ".cache/world-build/output/environment/manifests/bf04aa0201ee91718c12e1208c0848fb0c3762647661e164f841c7823de51608.json"
+      },
+      "environmentRequest": {
+        "schemaVersion": 1,
+        "id": "cape-town",
+        "regionId": "pilot:cape-town",
+        "name": "Cape Town",
+        "longitude": 18.4241,
+        "latitude": -33.9249,
+        "baseline": {
+          "startYear": 1991,
+          "endYear": 2020
+        }
+      },
+      "rawSource": {
+        "sha256": "95baf14b0392faae7c9e0173e80394987bbe80ac7ec4a92909df44078c39231b",
+        "bytes": 23158,
+        "path": ".cache/world-build/environment-source-cache/cape-town-power-monthly-1991-2020.json",
+        "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CPRECTOTCORR%2CWS10M&community=SB&longitude=18.4241&latitude=-33.9249&start=1991&end=2020&format=JSON"
+      },
+      "expectedSample": {
+        "longitude": 18.424,
+        "latitude": -33.925
+      },
+      "association": {
+        "mode": "explicit-city-associated-native-grid-point",
+        "sampleInsidePackBounds": true,
+        "centreOffsetDegrees": {
+          "longitude": 0.0007799999999988927,
+          "latitude": 0.0008400000000037267
+        },
+        "maximumAbsoluteCentreOffsetDegrees": 0.01,
+        "disclosure": "A named city-associated MERRA-2 grid sample; not a measurement or spatial average of this small pack cell. Explicit association is required even when coordinates fall inside the cell."
+      }
+    }
+  ]
+}

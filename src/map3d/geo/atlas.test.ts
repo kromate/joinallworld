@@ -21,6 +21,7 @@ import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
 import { ATLAS, ATLAS_LEVELS, ZONES, AFRICA_GROUPS, canEnter, cityAccess, cityEntry, plannedRoutes, regionEntry, regionStatus, stateOfCity, MORE_REGIONS } from '../regions.ts';
 import { allCityLinks, cityCatalogue, cityCatalogueEntry, cityName, isOpenCityId, loadCityLinks, playableCityIds } from '../../game/cities/registry.ts';
+import type { CountryDetailCatalogue, CountryDetailOutline, CountryDetailService } from './country-detail-types.ts';
 
 const here = (name: string) => new URL(name, import.meta.url);
 const world = decodeTopology(WORLD), africa = decodeTopology(AFRICA), nigeria = decodeTopology(NIGERIA), around = decodeTopology(AROUND);
@@ -295,12 +296,12 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
 });
 
 // ---- the view: a fake renderer and a hand-cranked frame queue, as in ../map3d.test.ts ----
-function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>() } = {}) {
+function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>(), countryDetail }: { reducedMotion?: boolean; width?: number; height?: number; delay?: number; failures?: Set<string>; countryDetail?: CountryDetailService } = {}) {
   const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0 };
   const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
   const container = { hidden: false, getBoundingClientRect: () => ({ left: 0, top: 0, right: width, bottom: height, width, height }) };
   const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
-  const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
+  const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, countryDetail, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
     onOpenCity: (id) => env.opened.push(id), onEnterCity: (id) => env.entered.push(id) });
   /** Run frames until nothing asks for another (or the limit). Returns how many ran. */
   const run = (limit = 2000, step = 16) => { let frames = 0; while (queue.length && frames < limit) { env.now += step; queue.shift()!(); frames += 1; } return frames; };
@@ -364,6 +365,57 @@ test('battery rule: nothing renders while idle, a level change is a bounded burs
   assert.equal(atlas.diagnostics().levelId, 'africa');
   assert.ok(calls.render - before < 60, `the cross-fade took ${calls.render - before} frames`);
   atlas.destroy();
+});
+
+test('country detail is explicit, isolated from map selection and idle rendering, and keeps Nigeria protected', async () => {
+  const catalogue: CountryDetailCatalogue = {
+    countries: [
+      { countryId: 'country:ne:1', name: 'France', continent: 'Europe', atlasId: 'fr', status: 'mapped' },
+      { countryId: 'legacy-ng', name: 'Nigeria', continent: 'Africa', atlasId: 'ng', status: 'protected' },
+    ], sourceLabel: 'Synthetic', sourceUrl: 'https://example.test/', boundaryNote: 'Reference only.',
+  };
+  const outline: CountryDetailOutline = { country: catalogue.countries[0]!, geometry: { type: 'Polygon', coordinates: [[[-1, 1], [1, 1], [1, -1], [-1, -1], [-1, 1]]] }, attribution: 'test', limitations: [] };
+  let catalogues = 0, loads = 0;
+  const countryDetail: CountryDetailService = {
+    async catalogue() { catalogues++; return catalogue; },
+    async load() { loads++; return outline; },
+  };
+  const { atlas, settle, run, calls } = harness({ reducedMotion: true, countryDetail });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    const initial = atlas.diagnostics();
+    assert.equal(catalogues, 0, 'opening the map does not request the country catalogue');
+    atlas.openCountries('fr');
+    await new Promise((resolve) => setImmediate(resolve));
+    assert.equal(catalogues, 1, 'the catalogue is loaded only after Countries is activated');
+    assert.equal(loads, 0, 'selecting a country is not a bundle request');
+    assert.deepEqual(atlas.diagnostics().selected, initial.selected, 'the overlay does not select on the game map');
+    assert.equal(atlas.diagnostics().levelId, initial.levelId);
+    assert.equal(run(), 0, 'the panel does not start an atlas frame loop');
+    atlas.closeCountries();
+    atlas.openCountries('ng');
+    await new Promise((resolve) => setImmediate(resolve));
+    assert.equal(catalogues, 1, 'the verified catalogue may be reused');
+    assert.equal(loads, 0, 'Nigeria is always protected from a separate outline load');
+    assert.deepEqual(atlas.diagnostics().selected, initial.selected);
+    assert.equal(calls.render, atlas.diagnostics().renderCount);
+  } finally { atlas.destroy(); }
+});
+
+test('changing the map selection aborts an outstanding country catalogue read', async () => {
+  let signal: AbortSignal | undefined;
+  const countryDetail: CountryDetailService = {
+    catalogue(_signal) { signal = _signal; return new Promise<CountryDetailCatalogue>(() => {}); },
+    async load() { throw new Error('unexpected country bundle request'); },
+  };
+  const { atlas, settle } = harness({ reducedMotion: true, countryDetail });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    atlas.openCountries(); await new Promise((resolve) => setImmediate(resolve));
+    assert.ok(signal && !signal.aborted);
+    atlas.select({ kind: 'state', id: 'kano' });
+    assert.equal(signal?.aborted, true, 'a later map selection cancels the country read');
+  } finally { atlas.destroy(); }
 });
 
 test('each level fetches its data the first time it is wanted, with the map already on screen kept meanwhile', async () => {
@@ -458,10 +510,14 @@ test('the atlas stays out of the first download, and its one frame loop lives in
   for (const name of readdirSync(here('./')).filter((item) => item.endsWith('.ts') && !item.endsWith('.test.ts'))) {
     const code = readFileSync(here(`./${name}`), 'utf8'), bare = code.replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
     assert.doesNotMatch(bare, /^import[^;]*data\/(world|africa|nigeria)\.ts/m, `${name} must not import map data statically`);
-    assert.doesNotMatch(bare, /setInterval|setAnimationLoop|setTimeout/, name);
+    if (name !== 'country-detail-data.ts') assert.doesNotMatch(bare, /setInterval|setAnimationLoop|setTimeout/, name);
     if (name !== 'atlas.ts') assert.doesNotMatch(bare, /requestAnimationFrame/, name);
-    if (!['atlas.ts', 'build.ts'].includes(name)) assert.doesNotMatch(bare, /from 'three'|document\.|window\./, `${name} is pure`);
+    if (!['atlas.ts', 'build.ts', 'country-detail-data.ts'].includes(name)) assert.doesNotMatch(bare, /from 'three'|document\.|window\./, `${name} is pure`);
   }
+  const atlas = readFileSync(here('./atlas.ts'), 'utf8');
+  assert.match(atlas, /import\('\.\/country-detail-data\.ts'\)/, 'country detail stays in its own on-demand module');
+  assert.ok(atlas.includes(`value="" disabled \${state.selectedCountryId === null ? 'selected' : ''}>Choose a country`), 'an unselected catalogue never appears to select its first country');
+  assert.ok(atlas.includes("[...catalogue.countries].sort((a, b) => a.name.localeCompare(b.name, 'en')"), 'the chooser is displayed in English alphabetical order');
 });
 
 test('every catalogue state with several open cities names all of them on its state view', async () => {

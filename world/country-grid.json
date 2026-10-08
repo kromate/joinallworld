@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "milestone": "source-bound-country-grid-v1",
+  "directoryManifestHash": "b3fb51b5660ed22b2ee354235c60291d6857b3dd9245afbabec3fc15918c8501",
+  "coverage": "geographic-planning-denominator",
+  "geometryCoverage": "not-acquired",
+  "products": [
+    {
+      "country": "senegal",
+      "planHash": "cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c",
+      "planPath": ".cache/world-build/country-grids/senegal-country-grid-v1/plans/cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c.json",
+      "bytes": 16859,
+      "completion": {
+        "path": ".cache/world-build/country-grids/senegal-country-grid-v1/completions/f81fac45e2ed3a0f3f578cdbec4bc34b1779a9e9143d39cbeae8f385fc9358c8.json",
+        "sha256": "c2e2fb7b0f607cfdf8eec5a9b6e7dd6b9d1c080ecee5dab21ebd3243a5c53438",
+        "bytes": 282
+      },
+      "counts": {
+        "polygons": 1,
+        "positions": 1378,
+        "bboxCandidates": 140,
+        "selectedCells": 100,
+        "operations": 44109
+      },
+      "networkBytes": 0,
+      "cacheIdentical": true
+    },
+    {
+      "country": "fiji",
+      "planHash": "8da802c0029ee9626fb9851f2b8c5234c3c199e617e6c1cd1f3ae7b898221ae8",
+      "planPath": ".cache/world-build/country-grids/fiji-country-grid-v1/plans/8da802c0029ee9626fb9851f2b8c5234c3c199e617e6c1cd1f3ae7b898221ae8.json",
+      "bytes": 10233,
+      "completion": {
+        "path": ".cache/world-build/country-grids/fiji-country-grid-v1/completions/95e6fadd13fc3affa2635adc79c984f71893ee1dca66a0bd567798cc5d6e7af3.json",
+        "sha256": "25c8cc3955f6d2a0e14fba0e8309c52a1f3553a93f243c2f1235fb06559850ad",
+        "bytes": 282
+      },
+      "counts": {
+        "polygons": 44,
+        "positions": 1476,
+        "bboxCandidates": 53,
+        "selectedCells": 51,
+        "operations": 12664
+      },
+      "networkBytes": 0,
+      "cacheIdentical": true
+    },
+    {
+      "country": "antarctica",
+      "planHash": "2af1cdccd6d86bd680e93608755fda67e295c6e9f390d39baf3479a6dca0a263",
+      "planPath": ".cache/world-build/country-grids/antarctica-country-grid-v1/plans/2af1cdccd6d86bd680e93608755fda67e295c6e9f390d39baf3479a6dca0a263.json",
+      "bytes": 3513554,
+      "completion": {
+        "path": ".cache/world-build/country-grids/antarctica-country-grid-v1/completions/a3ca88899716824af3add379c325e73889d7f8e16bbe94ccc2d3d4d334f4cef6.json",
+        "sha256": "70313bb3b002ddeb94716f25bcbaa9259fb9f24753b10b5589f398c8ffc190df",
+        "bytes": 284
+      },
+      "counts": {
+        "polygons": 179,
+        "positions": 23815,
+        "bboxCandidates": 38909,
+        "selectedCells": 25467,
+        "operations": 38989654
+      },
+      "networkBytes": 0,
+      "cacheIdentical": true
+    }
+  ],
+  "globalCatalogueProfile": {
+    "totalMapUnits": 258,
+    "compiledInMemory": 257,
+    "protectedNigeria": 1,
+    "failures": 0,
+    "networkBytes": 0,
+    "productsPublished": 0,
+    "elapsedMs": 155135,
+    "selectedCells": 99780,
+    "estimatedPlanBytesSum": 14579350,
+    "sampledMaxRssBytes": 216956928,
+    "nullCountryCodes": 13
+  },
+  "validation": {
+    "worldTests": 503,
+    "worldTypeScript": "passed",
+    "independentPythonFixtures": 11,
+    "preservedFiles": 860,
+    "actualProductsIndependentlyVerified": 3,
+    "cacheReplayIdentical": true,
+    "networkBytes": 0
+  },
+  "limitations": [
+    "All cells remain not-started; no source-query/building completeness or playable coverage.",
+    "Global profile compiled plans in memory only; no global publication.",
+    "Source-cut planar contact does not establish spherical topology or current official boundaries.",
+    "CountryCode may be null; no invented codes.",
+    "Source-query accounting/subdivision, cross-query ownership/dedup, runtime owner loading and gameplay integration remain subsequent milestones.",
+    "No worldwide acquisition throughput or48-hour guarantee."
+  ],
+  "codePins": [
+    {
+      "path": "world/COUNTRY-GRID-OPERATIONS.md",
+      "sha256": "8e2046d03ffe289d8ea907294828cd28beed962d21238ce7a4ceb27ea8fce0a4",
+      "bytes": 5180
+    },
+    {
+      "path": "world/COUNTRY-GRID-SPEC.md",
+      "sha256": "7911afa57443edfafd05dc455783df7ab183903e1e6429f4e83710f41e57a0c1",
+      "bytes": 13307
+    },
+    {
+      "path": "world/country-grid-cli.ts",
+      "sha256": "952e508424b137ec0323ffc7705665e14c1ea8e891f24a00a8e9ce9604beeb66",
+      "bytes": 1699
+    },
+    {
+      "path": "world/country-grid-fixtures/antarctica-v1.json",
+      "sha256": "ad82980219086fd2f1bf638d09b8863e56b0e42aa78da31f65b2d799f15048e4",
+      "bytes": 378
+    },
+    {
+      "path": "world/country-grid-fixtures/fiji-v1.json",
+      "sha256": "ab14dc0fc3b4dd75654a4f2cda2ffde7eec94a9cbdb360ad01cf5dc21bcc2712",
+      "bytes": 372
+    },
+    {
+      "path": "world/country-grid-fixtures/senegal-v1.json",
+      "sha256": "81b3e068b2026a4b2598df7651ac19f3c602d37727c2d2ba4beb37b9cd3ed498",
+      "bytes": 375
+    },
+    {
+      "path": "world/country-grid-publish.test.ts",
+      "sha256": "8d58d2a6fb536f723f223370ea2e6062add12f56cc704766004f73392fd3dcdb",
+      "bytes": 10864
+    },
+    {
+      "path": "world/country-grid-publish.ts",
+      "sha256": "e275ab2e8b282d7b7c290c8b04650b3fe500c510f448cbe08e6d1e96ba15d06b",
+      "bytes": 24502
+    },
+    {
+      "path": "world/country-grid-types.ts",
+      "sha256": "1eb2d49b7d02b124fa6a0cd0b66714f2a5acadd5682b3c7e1940d2b6e4672741",
+      "bytes": 2731
+    },
+    {
+      "path": "world/country-grid-worker.ts",
+      "sha256": "cb7449c880cc410c4f035b5cd2d60134f2ce4c588cedb1bd04c6c5ad2d5ef578",
+      "bytes": 814
+    },
+    {
+      "path": "world/country-grid.test.ts",
+      "sha256": "3e1dd065b0f6229f0004988eff72ad24abf355d45bf767a2d6592dbfb6d63fae",
+      "bytes": 12788
+    },
+    {
+      "path": "world/country-grid.ts",
+      "sha256": "59cce820b790441cfe58c1b7e8724b515a4d75f907352564de0021a19226c999",
+      "bytes": 23455
+    },
+    {
+      "path": "world/tooling/test_verify_country_grid.py",
+      "sha256": "2ba34cacada38db4c80d02596c10ba987915c46d6a58c6d232d1f41c5df313ce",
+      "bytes": 14669
+    },
+    {
+      "path": "world/tooling/verify_country_grid.py",
+      "sha256": "5533f4b5f66b12ac9201edccd1dfe3c5c6a781b5e0c9c8357c828bfc40b56bfc",
+      "bytes": 55330
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-first.json",
+      "sha256": "15b4369e0bd0e4478496fd612c206c001bc3ce35dd7a75d3c16c8ed0954a5f2d",
+      "bytes": 3514228
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-first.stderr",
+      "sha256": "cceedf5990ded563295874b887e880dfd934eb0a5cbad8678abf242e7b08d4a9",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-independent.json",
+      "sha256": "319a010e436120a912d887c02eb168920004eb7d4fbc6004c8df1a56748bd104",
+      "bytes": 693
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-independent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-repeat.json",
+      "sha256": "99666b815d8ed66c4d689345a19387521b7d9dc01775f86031ac3c6d4904fe73",
+      "bytes": 3514227
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-antarctica-repeat.stderr",
+      "sha256": "997c5075a81a85dd6fc40b74c8c10f4d9409cbd6fe48fd85a045c9c65921da27",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-first.json",
+      "sha256": "3d0ebd6c762fea5c98a1b2bfd6300e19550240855e28e462ef2e4d5e15ce20d9",
+      "bytes": 10893
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-first.stderr",
+      "sha256": "0ac663205d37d890ed7ce08df94654958592a807bbf8bec6c609a0a8bdc74c41",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-independent.json",
+      "sha256": "b1ef6f6b6f4fb53208632974e387c9b15d0e588fc961d507bf7bbe379b50f18c",
+      "bytes": 681
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-independent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-repeat.json",
+      "sha256": "1bd0cb3b75c477609c3f52c61daf1410d0452afd76a7846381f4a174e612bdd7",
+      "bytes": 10892
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-fiji-repeat.stderr",
+      "sha256": "eeab347d013d0a172d8ca927293e949b3ba93c41aac4191805efd21015785803",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-global-catalogue-profile.json",
+      "sha256": "3865c36273d4826aa48998895a3ff3fad8261de4a83f6733a5a7d2d05005b5e9",
+      "bytes": 194443
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-global-scale-indexed.json",
+      "sha256": "654532dd60bf5f319c175b672ce97138e1f9c85e07871c8f9ff4e84c84ccc06c",
+      "bytes": 2199
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-global-scale.json",
+      "sha256": "2956bde7381064836eacf78489c206179947a16ce4a0ad03ca48086a34dba452",
+      "bytes": 1908
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-preservation-and-replay.json",
+      "sha256": "99f2da6da955b6d7015e7f5c89eb332f1b9bdfc79d77a9b22662b82805a87097",
+      "bytes": 803
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-preservation-before.json",
+      "sha256": "afa58e6112920cff8c01bfc86721d42a37a17d85008ba3df77fb940a451df922",
+      "bytes": 221673
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-python.stderr",
+      "sha256": "d456a37332e12746e93450f1b3a4b1bcf201b8cf4504e739a860c2bdc017a5db",
+      "bytes": 3766
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-python.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-first.json",
+      "sha256": "c9770c14c78eead3a7c8df1e154c452575951e0da586e38fa87bb5a5b167efd8",
+      "bytes": 17525
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-first.stderr",
+      "sha256": "33fec0edf7fcc8117065faf3846f1a14874cbc9072d1b45b74ef5f259c9a7a12",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-independent-initial.stderr",
+      "sha256": "8d1afd564c99c0563c1e5f7ef7d96e681ac8ff8e979ce49b735baa440163d368",
+      "bytes": 85
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-independent.json",
+      "sha256": "0227e19ae400af022a1e876597a1bcb42da4d7adf2039222e82598f5946db351",
+      "bytes": 682
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-independent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-repeat.json",
+      "sha256": "9ed2896a7cdb19c78f379288eb518b520b7c852b38451f965e108a49fddde9c3",
+      "bytes": 17524
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal-repeat.stderr",
+      "sha256": "99baf4a350e9df6a5d9004f10f2a5b3c83d7dc798daa6a74bf5e438646e76316",
+      "bytes": 169
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal.png",
+      "sha256": "29e342f46c5cf0430a914b61e380d448d23e7b678ce7609dd80a9411e31b3e43",
+      "bytes": 98603
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-senegal.svg",
+      "sha256": "6531b6e2c656066a462726df2073d2c19afa39496c0a679ebfa55046e8da1299",
+      "bytes": 41239
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-typecheck.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-typecheck.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-world-tests-final.stderr",
+      "sha256": "f97e22eb7157e68423091b0328d503c4959bf835460e07e411068d131414d026",
+      "bytes": 5052
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-world-tests-final.tap",
+      "sha256": "5995386b5139d8ee194641a71ceff45c55bcc0b86b569b6e0c5da32a72914efa",
+      "bytes": 119894
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-world-tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".cache/world-build/evidence/country-grid-world-tests.tap",
+      "sha256": "d1ee65e2c6139d7b66f8dc9a4fd332f7ef298bfb9447239a660a64f1e07f8d61",
+      "bytes": 119536
+    }
+  ],
+  "productPins": [
+    {
+      "path": ".cache/world-build/country-grids/senegal-country-grid-v1/plans/cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c.json",
+      "sha256": "cee5d9a270d5daa263c3ee56497e797e3acd04a302675a54e4098b2860061d9c",
+      "bytes": 16859
+    },
+    {
+      "path": ".cache/world-build/country-grids/senegal-country-grid-v1/completions/f81fac45e2ed3a0f3f578cdbec4bc34b1779a9e9143d39cbeae8f385fc9358c8.json",
+      "sha256": "c2e2fb7b0f607cfdf8eec5a9b6e7dd6b9d1c080ecee5dab21ebd3243a5c53438",
+      "bytes": 282
+    },
+    {
+      "path": ".cache/world-build/country-grids/fiji-country-grid-v1/plans/8da802c0029ee9626fb9851f2b8c5234c3c199e617e6c1cd1f3ae7b898221ae8.json",
+      "sha256": "8da802c0029ee9626fb9851f2b8c5234c3c199e617e6c1cd1f3ae7b898221ae8",
+      "bytes": 10233
+    },
+    {
+      "path": ".cache/world-build/country-grids/fiji-country-grid-v1/completions/95e6fadd13fc3affa2635adc79c984f71893ee1dca66a0bd567798cc5d6e7af3.json",
+      "sha256": "25c8cc3955f6d2a0e14fba0e8309c52a1f3553a93f243c2f1235fb06559850ad",
+      "bytes": 282
+    },
+    {
+      "path": ".cache/world-build/country-grids/antarctica-country-grid-v1/plans/2af1cdccd6d86bd680e93608755fda67e295c6e9f390d39baf3479a6dca0a263.json",
+      "sha256": "2af1cdccd6d86bd680e93608755fda67e295c6e9f390d39baf3479a6dca0a263",
+      "bytes": 3513554
+    },
+    {
+      "path": ".cache/world-build/country-grids/antarctica-country-grid-v1/completions/a3ca88899716824af3add379c325e73889d7f8e16bbe94ccc2d3d4d334f4cef6.json",
+      "sha256": "70313bb3b002ddeb94716f25bcbaa9259fb9f24753b10b5589f398c8ffc190df",
+      "bytes": 284
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { outputRoute } from './output-route.ts';
+
+test('preview routes expose only hashed pack and inventory assets, including isolated campaigns', () => {
+  const hash = 'a'.repeat(64);
+  assert.deepEqual(outputRoute(`/campaigns/accra-real-acceptance/manifests/${hash}.json`), {
+    rootParts: ['campaigns', 'accra-real-acceptance', 'output'], assetParts: ['manifests', `${hash}.json`], limit: 2_000_000,
+  });
+  assert.equal(outputRoute(`/tiles/${hash}.json`)?.limit, 10_000_000);
+  for (const [category,limit] of [['manifests',128 * 1024],['tiles',1024 * 1024]] as const) {
+    assert.deepEqual(outputRoute(`/climate-packs/${category}/${hash}.json`), {
+      rootParts: ['output'],assetParts: ['climate-packs',category,`${hash}.json`],limit,
+    });
+  }
+  for (const pathname of [`/climate-packs/provenance/${hash}.json`,`/climate-packs/attachments/${hash}.json`,`/climate-packs/sources/${hash}.json`,
+    `/climate-packs/audit/${hash}.json`,`/climate-packs/../tiles/${hash}.json`,`/climate-packs/tiles/${hash.toUpperCase()}.json`,
+    `/climate-packs/manifests/${hash}.json/extra`]) assert.equal(outputRoute(pathname),null);
+  for (const [category, limit] of [['manifests',256 * 1024],['points',512_000]] as const) {
+    assert.deepEqual(outputRoute(`/selected-places/${category}/${hash}.json`), {
+      rootParts: ['output'], assetParts: ['selected-places',category,`${hash}.json`], limit,
+    });
+  }
+  for (const pathname of [`/selected-places/reports/${hash}.json`, `/selected-places/source/${hash}.geojson`,
+    `/selected-places/attempts/${hash}.json`, `/selected-places/points/${hash.toUpperCase()}.json`,
+    `/selected-places/../points/${hash}.json`, `/selected-places/points/${hash}.json/extra`]) assert.equal(outputRoute(pathname), null);
+  assert.equal(outputRoute(`/inventory/nodes/${hash}.json`)?.limit, 128_000);
+  assert.equal(outputRoute(`/fine/rw/adm1/outlines/${hash}.json`)?.limit, 2 * 1024 * 1024);
+  assert.equal(outputRoute(`/fine/rw/adm1/node-index/${hash}.json`)?.limit, 128 * 1024);
+  assert.deepEqual(outputRoute(`/fine/rw/adm1/topology/${hash}.json`), {
+    rootParts: ['output'], assetParts: ['fine', 'rw', 'adm1', 'topology', `${hash}.json`], limit: 64 * 1024,
+  });
+  for (const [category, limit] of [['manifests',1_000_000],['nodes',128_000],['outline-index',128_000],['outlines',512_000],['identity',256_000]] as const) {
+    assert.deepEqual(outputRoute(`/country-inventory/${category}/${hash}.json`), {
+      rootParts: ['output'], assetParts: ['country-inventory', category, `${hash}.json`], limit,
+    });
+  }
+  for (const pathname of [`/country-inventory/source/${hash}.geojson`,`/country-inventory/attempts/${hash}.json`,`/country-inventory/private/${hash}.json`,`/country-inventory/../fine/${hash}.json`]) assert.equal(outputRoute(pathname), null);
+  for (const [category, limit] of [['manifests',256 * 1024],['countries',256 * 1024],['partitions',1024 * 1024],['reports',2 * 1024 * 1024],['indexes',2 * 1024 * 1024]] as const) {
+    assert.deepEqual(outputRoute(`/admin1-foundation/${category}/${hash}.json`), {
+      rootParts: ['output'], assetParts: ['admin1-foundation',category,`${hash}.json`], limit,
+    });
+  }
+  for (const pathname of [`/admin1-foundation/attempts/${hash}.json`,`/admin1-foundation/source/${hash}.geojson`,`/admin1-foundation/countries/ng.json`,`/admin1-foundation/../manifests/${hash}.json`]) assert.equal(outputRoute(pathname), null);
+  for (const pathname of [`/fine/ng/adm1/outlines/${hash}.json`, `/fine/ng/adm1/topology/${hash}.json`, `/fine/rw/adm2/outlines/${hash}.json`,
+    '/fine/rw/adm1/source.geojson', '/fine/rw/adm1/attempts/attempt.json', '/fine/rw/adm1/reports/private.json']) assert.equal(outputRoute(pathname), null);
+  for (const pathname of ['/campaigns/accra/ledger.sqlite', '/campaigns/accra/source-cache/extract.geojson', `/campaigns/../tiles/${hash}.json`, `/campaigns/accra/tiles/${hash}.json/extra`, `/tiles/${hash.toUpperCase()}.json`, `/campaigns/accra\\evil/tiles/${hash}.json`]) {
+    assert.equal(outputRoute(pathname), null, pathname);
+  }
+});

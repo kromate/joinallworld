@@ -1,5 +1,11 @@
 # Implementation checkpoint — 8 October 2026
 
+## Pending configured capture entry point — 8 October 2026
+
+Previous goal turn made source progress: retained source-configuration reconstruction and six fixtures, checkpoint3e8f13f0. This turn adds `bindConfiguredCapture`/`ConfiguredCapture` to compose source reconstruction before snapshot binding, with mandatory source-configuration bytes/pin and fixed compiler provenance in the result. The prepared cached-capacity script uses this entry point rather than independently calling stages. One additional fixture tests the composed boundary, missing configuration, wrong reconstructed request and changed receipt bytes; its empty envelope is synthetic, not evidence that the actual473-feature Dakar capture is empty. Source review also replaced a Buffer.slice shared view with a real Buffer copy in the immutability fixture.
+
+Current gate:22 new capture fixtures (6 reader,9 binding,7 source/composition) plus31 accepted identity/grid/pack cases, World TypeScript, then the disposable cached positive capacity experiment after explicit APP UI terminal handoff. No new fixture/compiler/profile has executed, and the new source remains uncommitted; whitespace checks only pass. No resource-owner handoff appeared in fresh maina446; no local heavy/server/browser/DB/acquisition/upload or fanout started. The full world pipeline remains active and incomplete; durable index/WAL capacities still require measurement, with crash/replay/conservation, country geometry, environment, rendering and foreign gameplay gates open.
+
 ## Pending retained source configuration — 8 October 2026
 
 Previous goal turn was progress: local strict-reader/binding implementation,15 prepared fixtures and isolated checkpointc09ce52e; no unexecuted plan is counted as validation. This turn adds local `capture-request.ts` and six fixtures to reconstruct the existing request hash from retained source configuration, with exact byte pins and explicit release/collection/license/attribution policy. The known positive Dakar request vector is copied into isolated test data; tests read repository configuration only, not the actual cache/ledger/output. Source/config inspection established the current raw pin1,297 bytes/SHA7ac2f2babcab7e4dd330a2f2e3476708129653022ba7bd0a94c9cbf69184656c, not a passing reconstruction test.

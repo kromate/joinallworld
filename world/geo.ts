@@ -1,4 +1,14 @@
-import type { Anchor } from './types.ts';
+import type { Anchor, Bounds, Position } from './types.ts';
+
+/** Midpoint of a geographic interval, retaining the short wrapped longitude span. */
+export function boundsCenter(bounds: Bounds): Position {
+  const [west, south, east, north] = bounds;
+  if (!bounds.every(Number.isFinite) || west < -180 || west > 180 || east < -180 || east > 180 || south < -90 || north > 90 || south >= north || west === east) {
+    throw new RangeError('bounds must be a valid WGS84 interval');
+  }
+  const unwrappedEast = east < west ? east + 360 : east;
+  return [((west + unwrappedEast) / 2 + 540) % 360 - 180, (south + north) / 2];
+}
 
 /** WGS84 topocentric frame. ENU is returned as scene east, up, negative-north. */
 const A = 6_378_137;

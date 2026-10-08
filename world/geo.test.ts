@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { fromLocal, toLocal } from './geo.ts';
+import { boundsCenter, fromLocal, toLocal } from './geo.ts';
+
+test('solar and camera centres follow geographic bounds across the antimeridian', () => {
+  assert.deepEqual(boundsCenter([179.998, -16.8004, -179.998, -16.7964]), [-180, -16.7984]);
+  assert.deepEqual(boundsCenter([-180, -90, 180, -60]), [0, -75]);
+  const [longitude, latitude] = boundsCenter([-0.207, 5.552, -0.203, 5.556]);
+  assert.ok(Math.abs(longitude + 0.205) < 1e-10);
+  assert.ok(Math.abs(latitude - 5.554) < 1e-10);
+  assert.throws(() => boundsCenter([20, 10, 20, 15]), /valid WGS84/);
+});
 
 test('WGS84 equatorial longitude reference and scene axes', () => {
   const origin = { longitude: 0, latitude: 0, height: 0 };

@@ -1,11 +1,12 @@
 import { defineConfig, type Plugin } from 'vite';
 import { createReadStream } from 'node:fs';
-import { realpath, stat } from 'node:fs/promises';
+import { lstat, realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { outputRoute } from './output-route.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const outputRoot = path.resolve(here, '../../.cache/world-build/output');
+const buildRoot = path.resolve(here, '../../.cache/world-build');
 
 function worldOutput(): Plugin {
   return {
@@ -17,14 +18,24 @@ function worldOutput(): Plugin {
           let raw = decodeURIComponent(new URL(req.url ?? '/', 'http://localhost').pathname);
           if (raw.startsWith('/world-output/')) raw = raw.slice('/world-output'.length);
           if (raw.includes('\\') || raw.split('/').some(part => part === '..' || part === '.')) { res.statusCode = 400; res.end('Invalid path'); return; }
-          if (!raw.startsWith('/manifests/') && !raw.startsWith('/tiles/')) { res.statusCode = 404; res.end('Not found'); return; }
+          const route = outputRoute(raw);
+          if (!route) { res.statusCode = 404; res.end('Not found'); return; }
+          const outputRoot = path.join(buildRoot, ...route.rootParts);
           const root = await realpath(outputRoot);
-          const candidate = path.resolve(root, `.${raw}`);
+          if (root !== outputRoot) { res.statusCode = 403; res.end('Output root resolves through a symlink'); return; }
+          const candidate = path.join(root, ...route.assetParts);
           if (candidate !== root && !candidate.startsWith(root + path.sep)) { res.statusCode = 403; res.end('Forbidden'); return; }
+          let cursor = root;
+          for (const segment of path.relative(root, candidate).split(path.sep)) {
+            cursor = path.join(cursor, segment);
+            const component = await lstat(cursor);
+            if (component.isSymbolicLink()) { res.statusCode = 403; res.end('Symlink output is forbidden'); return; }
+          }
           const resolved = await realpath(candidate);
           if (!resolved.startsWith(root + path.sep)) { res.statusCode = 403; res.end('Forbidden'); return; }
           const info = await stat(resolved);
           if (!info.isFile()) { res.statusCode = 404; res.end('Not found'); return; }
+          if (info.size > route.limit) { res.statusCode = 413; res.end('Output exceeds size limit'); return; }
           res.setHeader('Content-Type', 'application/json; charset=utf-8');
           res.setHeader('Content-Length', info.size);
           res.setHeader('Cache-Control', 'no-store');

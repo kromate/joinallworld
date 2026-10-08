@@ -33,7 +33,7 @@ type Codes = Record<string, number>
 type Files = Record<string, Codes>
 interface Baseline { note?: string; projects: Record<string, Files> }
 interface TypeError { project: string; file: string; line: number; column: number; code: string; message: string }
-interface RunResult { project: string; out: string; status: number | null }
+interface RunResult { project: string; out: string; status: number | null; signal: NodeJS.Signals | null }
 
 /** Which files each project answers for. */
 export const PROJECTS: Record<string, (file: string) => boolean> = {
@@ -54,7 +54,7 @@ function run(project: string): Promise<RunResult> {
     let out = ''
     child.stdout.on('data', (chunk: Buffer) => { out += chunk })
     child.stderr.on('data', (chunk: Buffer) => { out += chunk })
-    child.on('close', (status: number | null) => done({ project, out, status }))
+    child.on('close', (status: number | null, signal: NodeJS.Signals | null) => done({ project, out, status, signal }))
   })
 }
 
@@ -110,8 +110,13 @@ async function main(): Promise<number> {
   const owned: Record<string, TypeError[]> = {}
   const failures: string[] = []
   const notes: string[] = []
-  for (const { project, out } of results) {
+  for (const { project, out, status, signal } of results) {
     const { errors, stray } = parse(project, out)
+    // Non-owned imported diagnostics may legitimately yield exit 1 and are reconciled in their
+    // owning project. A killed compiler or a failure without diagnostics never proves clean code.
+    if (signal || status === null) failures.push(`${project}: compiler did not complete (${signal ?? 'missing exit status'})`)
+    else if (status !== 0 && status !== 1 && status !== 2) failures.push(`${project}: compiler exited unexpected status ${status}`)
+    else if (status !== 0 && !errors.length && !stray.length) failures.push(`${project}: compiler exited ${status} without readable TypeScript diagnostics${out.trim() ? `: ${out.trim().split('\n')[0]}` : ''}`)
     // A configuration error (a missing file, a bad option) has no path: never baselined.
     for (const line of stray) failures.push(`${project}: ${line}`)
     if (!errors.length && !stray.length && out.trim() && !/^\s*$/.test(out)) notes.push(`${project}: ${out.trim().split('\n')[0]}`)

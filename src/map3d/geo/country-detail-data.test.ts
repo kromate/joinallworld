@@ -151,7 +151,10 @@ test('Zstandard headers cannot bypass decoded byte pins, hashes or cache admissi
     const path = String(input); if (path === data.pins.cataloguePath) return response(data.catalogueBytes);
     const original = data.bundleBodies.get(path)!;
     const body = new Uint8Array(original); bundleCalls++;
-    if (bundleCalls === 1) body[0] ^= 1;
+    if (bundleCalls === 1) {
+      const first = body[0]; assert.notEqual(first, undefined, 'tamper fixture requires a nonempty bundle');
+      body[0] = first! ^ 1;
+    }
     const delivered = bundleCalls === 2 ? body.subarray(0, body.byteLength - 1) : body;
     return new Response(Buffer.from(delivered), { headers: { 'content-encoding': 'zstd', 'content-length': '1' } });
   } });

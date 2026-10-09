@@ -98,8 +98,9 @@ test('the road graph is continuous and every stop pair gets a safe road-led rout
       const source = roadSegment(a, b);
       assert.ok(source, `${from.id} -> ${to.id} contains a segment outside the pinned OSM road edges`);
       for (const building of CAMPUS_MAP.buildings) {
-        assert.ok(segmentToBuilding(a, b, building.ring) + 1e-9 >= source.width / 2,
-          `${from.id} -> ${to.id} road corridor overlaps OSM building ${building.id} (way ${building.osm.id})`);
+        const clearance = segmentToBuilding(a, b, building.ring), halfWidth = source.width / 2;
+        assert.ok(clearance + 1e-9 >= halfWidth,
+          `${from.id} -> ${to.id} road ${source.id} segment (${a.x},${a.z})->(${b.x},${b.z}) corridor overlaps OSM building ${building.id} (way ${building.osm.id}); clearance ${clearance}m < half-width ${halfWidth}m`);
       }
     }
     for (const connector of [route.connectors.start, route.connectors.end]) {

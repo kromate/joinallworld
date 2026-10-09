@@ -7,8 +7,9 @@ import { createRenderer, nextTick, ssrContextKey } from 'vue'
 import type { Component } from 'vue'
 import type { Api, ApiOptions } from '../../../client.ts'
 import type { ApiEnvelope, CityId, OwnSession } from '../../../types/protocol.ts'
+import type { DrivingSessionView } from '../../../types/living-world.ts'
 import type { App } from '../../state/app.ts'
-import type { DrivingInput, DrivingRoute, DrivingSessionView, DrivingState } from '../../../game/living-world/driving.ts'
+import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
 import { createDriving, stepDriving } from '../../../game/living-world/driving.ts'
 import { barberLesson } from '../../../game/living-world/barber-catalogue.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
@@ -275,6 +276,8 @@ test('Driving fences an unmounted in-flight control and reconciles only while it
   const oldStorage = app.game.storage.value, oldClientStorage = app.game.client.storage, oldOffset = app.game.client.serverTimeOffset
   let mounted: ReturnType<typeof mount> | null = null
   let traced: ReturnType<typeof traceApi> | null = null
+  const mountedForCleanup = (): ReturnType<typeof mount> | null => mounted
+  const tracedForCleanup = (): ReturnType<typeof traceApi> | null => traced
 
   async function beginPendingControl(actor: string): Promise<{ input: Promise<void> }> {
     pending.clear(); intervalCallbacks.clear()
@@ -382,7 +385,10 @@ test('Driving fences an unmounted in-flight control and reconciles only while it
     assert.equal(traced!.calls.find(call => call.path === '/api/living-world/driving/input' && call.actor === oldActor)?.current(), false)
     resolveAt('/api/living-world/driving', 1, drivingReply(server.now() + 260_000))
   } finally {
-    mounted?.unmount(); traced?.restore(); intervalCallbacks.clear()
+    const mountedAtCleanup = mountedForCleanup(), tracedAtCleanup = tracedForCleanup()
+    if (mountedAtCleanup) mountedAtCleanup.unmount()
+    if (tracedAtCleanup) tracedAtCleanup.restore()
+    intervalCallbacks.clear()
     restoreIdentity(oldIdentity)
     app.game.storage.value = oldStorage; app.game.client.storage = oldClientStorage; app.game.client.serverTimeOffset = oldOffset
   }

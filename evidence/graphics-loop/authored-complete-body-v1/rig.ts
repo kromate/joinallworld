@@ -38,6 +38,8 @@ export interface CompleteCharacter {
   readonly metrics: CompleteCharacterMetrics;
   sample(seconds: number, pose: CompleteCharacterPose): void;
   setExpression(name: CompleteCharacterExpression, seconds: number): void;
+  /** Same-family authored geometry update; callers preflight garment/age capabilities before committing. */
+  updateIdentity(look: unknown, seed?: unknown): boolean;
   dispose(): void;
 }
 
@@ -340,6 +342,7 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
   const meshes = actorMeshes(object);
   const bodyMesh = meshes.find((mesh) => mesh.name === 'Body')!;
   const ownedMaterials: THREE.Material[] = [];
+  const ownedSkeletons = new Set(meshes.map(mesh=>mesh.skeleton));
   let mixer: THREE.AnimationMixer | null = null;
   let disposed = false;
   let unregisterKitDispose: (() => boolean) | null = null;
@@ -381,6 +384,20 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
         setMorph(bodyMesh, 'nativeFacialBlinkRight', 1);
       }
     };
+    const updateIdentity = (look: unknown, nextSeed: unknown = seed): boolean => {
+      if (disposed) return false;
+      const wanted=normalizeLook(look,nextSeed);
+      if(wanted.body!==normalized.body)return false;
+      const identity=staticMorphValues(wanted);
+      if(identity.unsupported.length)return false;
+      for(const mesh of meshes){
+        mesh.morphTargetInfluences?.fill(0);
+        for(const [name,value]of Object.entries(identity.values))setMorph(mesh,name,value);
+        baseInfluences.get(mesh)?.set(mesh.morphTargetInfluences??[]);
+      }
+      setExpression(wanted.expression,0);
+      return true;
+    };
     const sample = (seconds: number, pose: CompleteCharacterPose) => {
       if (disposed) return;
       const action = actions.get(pose);
@@ -407,6 +424,8 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
       object.removeFromParent();
       for (const material of ownedMaterials) material.dispose();
       ownedMaterials.length = 0;
+      for(const skeleton of ownedSkeletons)skeleton.dispose();
+      ownedSkeletons.clear();
       cache.actors.delete(dispose);
     };
     cleanupActor = dispose;
@@ -428,13 +447,15 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
       unsupportedAppearance: Object.freeze(staticMorph.unsupported),
       morphNames: Object.freeze(Object.keys(bodyMesh.morphTargetDictionary ?? {})),
     });
-    return { object, metrics, sample, setExpression, dispose };
+    return { object, metrics, sample, setExpression, updateIdentity, dispose };
   } catch (error) {
     if (cleanupActor) cleanupActor();
     else {
       mixer?.stopAllAction();
       if (mixer) mixer.uncacheRoot(bodyMesh);
       for (const material of ownedMaterials) material.dispose();
+      for(const skeleton of ownedSkeletons)skeleton.dispose();
+      ownedSkeletons.clear();
       object.removeFromParent();
     }
     throw error;

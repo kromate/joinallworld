@@ -1,0 +1,13 @@
+# Authored footwear presentation contract
+
+presentation.ts exports applyAuthoredFootwear(root). It verifies and parses the pinned shoes01-mobile.glb once, validates the source geometry/material/morph/joint contract, remaps each source skin index to the actor's exact bijective 52-bone Mixamo ordering, clones geometry and material per actor, binds the new SkinnedMesh to that actor's existing skeleton, and copies bodyFeminine / bodyMasculine at creation and before each render. It returns the attached mesh, source/fit metrics, and idempotent dispose(). It does not change the Body index, add a skeleton, or apply the footwear hide list; body-hide union and presentation remain with the viewer adapter.
+
+The bounded CPU checker loads the real authored body and motion clip pack, then creates one male and one female actor through loadCompleteCharacter. It hash-checks the body, clip pack, and shoe GLB. It checks all 52 source joint names map bijectively to actor bones and every one of the 1,904 shoe vertices has four nonnegative, normalized weights with exact per-lane remapping. It also checks private shoe geometry/material and actor bones, family morph synchronization, finite skinned shoe positions through real idle/rest and walk samples plus a manual seated leg pose, and exactly-once disposal of both actors' shoe geometry/material.
+
+Run with:
+
+    node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-footwear/presentation-check.mjs
+
+The last run passed in 0.24 seconds with V8 old space capped at 32 MiB; macOS time -l reported 101,876,288 bytes peak memory footprint. TypeScript-only validation of presentation.ts passed with the local tsc; no browser or project build was run. Result details and finite pose bounds are in presentation-check-result.json.
+
+The GLB contract pins the mobile asset SHA-256 8f4060a275356489205f298bed9874da83920c166aeacffd36746e760a465557. Its material points base color at the opaque sRGB diffuse JPEG and normal texture at the linear tangent-space normal JPEG; the CPU harness replaces pixel textures with 1×1 placeholders after verifying the full file hash and raw image/material slots, so it makes no rendered material claim. The shoes retain 3,320 triangles and two family morphs. Their authored maximum fit discrepancy is 4.73 cm on the feminine shape and 0.80 cm on the masculine shape; the binding check does not fix or visually accept that fit. The seated test only verifies finite skinning, not footwear appearance. Root-viewer integration must still render the shoes and decide whether body-hide indices need unioning with clothing.

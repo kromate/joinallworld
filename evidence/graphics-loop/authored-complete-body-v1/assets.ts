@@ -17,15 +17,17 @@ export function completeCharacterKit(kit: Kit): CompleteCharacterKit {
   function release(root: THREE.Group) {
     const geometries = new Set<THREE.BufferGeometry>();
     const materials = new Set<THREE.Material>();
+    const skeletons=new Set<THREE.Skeleton>();
     root.traverse(node => {
       const mesh = node as THREE.Mesh;
       if (!mesh.isMesh) return;
       geometries.add(mesh.geometry);
       for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) materials.add(material);
-      if ((mesh as THREE.SkinnedMesh).isSkinnedMesh) ownedSkeletons.add((mesh as THREE.SkinnedMesh).skeleton);
+      if ((mesh as THREE.SkinnedMesh).isSkinnedMesh) skeletons.add((mesh as THREE.SkinnedMesh).skeleton);
     });
     for (const geometry of geometries) geometry.dispose();
     for (const material of materials) material.dispose();
+    for(const skeleton of skeletons){skeleton.dispose();ownedSkeletons.delete(skeleton);}
   }
   async function load(url: string) {
     const gltf = await loader.loadAsync(url);

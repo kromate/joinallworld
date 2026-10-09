@@ -3,6 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type { Look } from '../../../src/scene/avatar-look.ts';
 import { createAuthoredClothingPalette } from './clothing-palette.ts';
+import { createAuthoredHairPalette } from './hair-palette.ts';
 import casualSuitUrl from './authored-clothing/out/male_casualsuit01.glb?url';
 import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';
 import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';
@@ -37,6 +38,7 @@ export interface AuthoredPresentationMetrics {
 
 export interface AuthoredPresentation {
   readonly metrics: AuthoredPresentationMetrics;
+  setColors(shirt: THREE.ColorRepresentation, trousers: THREE.ColorRepresentation, hairColor: THREE.ColorRepresentation): void;
   dispose(): void;
 }
 
@@ -468,7 +470,7 @@ function paletteColor(value: THREE.ColorRepresentation, name: string): THREE.Col
 function describeUnsupported(body: THREE.SkinnedMesh, look: AuthoredPresentationLook, hairLoaded: boolean): string[] {
   const unsupported: string[] = [];
   if (look.hair && !hairLoaded) unsupported.push(`hair:${look.hair} (no authored hair asset selected)`);
-  if (look.hairColor && hairLoaded) unsupported.push('hairColor (source hair texture retained without palette tint)');
+
   if (look.fabric !== 'plain') unsupported.push(`fabric:${look.fabric} (the authored suit has no fabric variants)`);
   if (look.accessories?.length) unsupported.push(`accessories:${look.accessories.join(',')}`);
   if (look.wearables?.length) unsupported.push(`wearables:${look.wearables.join(',')}`);
@@ -589,6 +591,7 @@ export async function applyAuthoredPresentation(
   let hairEntry: OutfitGeometryEntry | undefined;
   let clothingPalette: ReturnType<typeof createAuthoredClothingPalette> | undefined;
   let hairMaterial: THREE.MeshStandardMaterial | undefined;
+  let hairPalette: ReturnType<typeof createAuthoredHairPalette> | undefined;
   let clothing: THREE.SkinnedMesh | undefined;
   let hair: THREE.SkinnedMesh | undefined;
   let mask: THREE.BufferGeometry | undefined;
@@ -609,7 +612,8 @@ export async function applyAuthoredPresentation(
     };
     const copiedHairMorphs: string[] = [];
     if (hairTemplate && hairEntry) {
-      hairMaterial = hairTemplate.material.clone();
+      hairPalette = createAuthoredHairPalette(hairTemplate.material, hairName!, look.hairColor ?? '#1c1917');
+      hairMaterial = hairPalette.material;
       hair = createSkinnedSibling(sourceBody, hairEntry.geometry, hairMaterial, `Authored hair ${hairName}`, hairTemplate.targetNames);
       copiedHairMorphs.push(...copyMorphValues(sourceBody, hair, hairTemplate.targetNames));
       const previousHairOnBeforeRender = hair.onBeforeRender;
@@ -636,6 +640,12 @@ export async function applyAuthoredPresentation(
         unsupported: describeUnsupported(sourceBody, look, Boolean(hairEntry)),
         ...(hairEntry && hairHash ? { hairSha256: hairHash } : {}),
       },
+      setColors(shirt, trousers, hairColor) {
+        check(!disposed, 'cannot update disposed presentation');
+        const top=paletteColor(shirt,'outfitColor'),bottom=paletteColor(trousers,'bottomsColor'),hair=paletteColor(hairColor,'hairColor');
+        clothingPalette!.setColors({shirt:top,trousers:bottom});
+        hairPalette?.setColor(hair);
+      },
       dispose() {
         if (disposed) return;
         disposed = true;
@@ -643,7 +653,7 @@ export async function applyAuthoredPresentation(
         if (hair) hair.parent?.remove(hair);
         if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
         clothingPalette?.dispose();
-        hairMaterial?.dispose();
+        hairPalette?.dispose();
         if (entry) releaseOutfitGeometry(template, entry);
         if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
       },
@@ -653,7 +663,7 @@ export async function applyAuthoredPresentation(
     if (hair) hair.parent?.remove(hair);
     if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
     clothingPalette?.dispose();
-    hairMaterial?.dispose();
+    hairPalette?.dispose();
     if (entry) releaseOutfitGeometry(template, entry);
     if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
     throw error;

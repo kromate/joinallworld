@@ -8,6 +8,8 @@ import { applyAuthoredPresentation } from './authored-presentation.ts';
 import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
 import { applySkinMaterial } from './skin-material.ts';
+import { applyAuthoredFootwear } from './authored-footwear/presentation.ts';
+import { createNativeHandPoseController } from './native-hand-pose.ts';
 import { createNativeActionController, type NativeActionPose, type NativeActionSnapshot } from './native-actions.ts';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
@@ -50,6 +52,8 @@ const seatBack=new THREE.Mesh(new THREE.BoxGeometry(.55,.50,.05),seatMaterial);
 seatFixture.add(seatBack);
 const seatLegs=Array.from({length:4},()=>new THREE.Mesh(new THREE.BoxGeometry(.04,1,.04),seatMaterial));
 seatLegs.forEach(leg=>seatFixture.add(leg));scenes[1]!.add(seatFixture);
+let footwear:Awaited<ReturnType<typeof applyAuthoredFootwear>>|null=null;
+let hands:ReturnType<typeof createNativeHandPoseController>|null=null;
 let state={body:'woman',expression:'grin',pose:'idle',focus:'body'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
@@ -58,8 +62,8 @@ function fitAuthoredHeight(object:THREE.Group){
   const body=object.getObjectByName('Body') as THREE.SkinnedMesh;
   body.skeleton.update();
   const point=new THREE.Vector3(),bounds=new THREE.Box3();
-  for(let vertex=0;vertex<body.geometry.getAttribute('position').count;vertex++){
-    body.getVertexPosition(vertex,point);body.localToWorld(point);bounds.expandByPoint(point);
+  for(const mesh of [body,...(footwear?[footwear.object]:[])])for(let vertex=0;vertex<mesh.geometry.getAttribute('position').count;vertex++){
+    mesh.getVertexPosition(vertex,point);mesh.localToWorld(point);bounds.expandByPoint(point);
   }
   const height=bounds.max.y-bounds.min.y;
   if(!Number.isFinite(height)||height<1||height>2.5)throw new Error(`Invalid authored standing height ${height}`);
@@ -89,6 +93,7 @@ function draw(){
       seatBack.position.set(0,top/scale+.25,-.34);
       seatLegs.forEach((leg,i)=>{leg.scale.y=(top-.06*scale)/scale;leg.position.set(i%2?.23:-.23,(top-.06*scale)/2/scale,i<2?.14:-.30);});
     }
+    hands?.apply(state.pose==='walk'?'walk':['cook','eat','drink'].includes(state.pose)?'grip':'relaxed',seconds);
     candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);
   }
   scenes.forEach((scene,index)=>{
@@ -111,19 +116,22 @@ async function set(next:Partial<typeof state>){
   const seed='complete-authored-human';
   const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body){
-    const ticket=++generation;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
+    const ticket=++generation;hands?.dispose();footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
-    const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin);
+    const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin,kits[1]!);
     if(ticket!==generation){loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
     const loadedPresentation=await applyAuthoredPresentation(loaded[1].object,look);
     if(ticket!==generation){loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
-    baseline=loaded[0];candidate=loaded[1];skin=loadedSkin;
+    const loadedShoes=await applyAuthoredFootwear(loaded[1].object);
+    if(ticket!==generation){loadedShoes.dispose();loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
+    baseline=loaded[0];candidate=loaded[1];skin=loadedSkin;footwear=loadedShoes;
     presentation=loadedPresentation;
     eyes=applyAuthoredEyeMaterial(candidate.object);
     const nativeBody=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
     nativeBody.skeleton.pose();candidate.object.updateMatrixWorld(true);
     nativePose=createNativeActionController(candidate.object);nativePose.apply(0,'idle',{kind:'floor'});
+    hands=createNativeHandPoseController(candidate.object);
     fitAuthoredHeight(candidate.object);
     scenes[0]!.add(baseline.object);scenes[1]!.add(candidate.object);
   }else baseline!.wear(look,seed);
@@ -139,5 +147,5 @@ let drag:number|null=null;
 canvas.addEventListener('pointerdown',event=>{drag=event.clientX;canvas.setPointerCapture(event.pointerId);});
 canvas.addEventListener('pointermove',event=>{if(drag===null)return;yaw+=(event.clientX-drag)*.012;drag=event.clientX;draw();});
 for(const type of['pointerup','pointercancel'])canvas.addEventListener(type,()=>{drag=null;});window.addEventListener('resize',draw);
-Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
+Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,footwear:footwear?.metrics,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
 await set({});Object.assign(window,{characterReady:true});

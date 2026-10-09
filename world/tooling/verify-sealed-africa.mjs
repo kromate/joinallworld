@@ -82,7 +82,7 @@ function citySceneAssets(files) {
   return selected;
 }
 
-async function checkPackagedAssets(send, packageRoot, files, evidence, within) {
+async function checkPackagedAssets(send, packageRoot, files, evidence, within, absolutePreviewImage) {
   const toCheck = [files.get('assets/index.html'), ...citySceneAssets(files)];
   for (const entry of toCheck) {
     assert.ok(entry, 'asset record is missing from package manifest');
@@ -91,11 +91,17 @@ async function checkPackagedAssets(send, packageRoot, files, evidence, within) {
     try {
       assert.equal(response.status, 200, `${entry.path} must be served by packaged ASSETS`);
       const body = Buffer.from(await within(`asset body ${entry.path}`, response.arrayBuffer(), LIMITS.requestMs));
-      assert.equal(body.length, entry.bytes, `${entry.path} byte count differs from its manifest`);
-      assert.equal(sha256(body), entry.sha256, `${entry.path} SHA differs from its manifest`);
       const disk = await readFile(join(packageRoot, entry.path));
       assert.equal(sha256(disk), entry.sha256, `${entry.path} on disk differs from its manifest`);
-      evidence.assets.push({ path: entry.path, status: 'passed', bytes: entry.bytes, sha256: entry.sha256 });
+      assert.equal(disk.length, entry.bytes, `${entry.path} on-disk byte count differs from its manifest`);
+      // The real Worker makes the HTML preview-image URLs absolute for its request origin.
+      const expected = entry.path === 'assets/index.html'
+        ? Buffer.from(absolutePreviewImage(disk.toString('utf8'), ORIGIN)) : disk;
+      assert.equal(body.length, expected.length, `${entry.path} served byte count differs from the exact expected body`);
+      assert.equal(sha256(body), sha256(expected), `${entry.path} served SHA differs from the exact expected body`);
+      evidence.assets.push({ path: entry.path, status: 'passed', bytes: entry.bytes, sha256: entry.sha256,
+        servedBytes: body.length, servedSha256: sha256(body),
+        transform: entry.path === 'assets/index.html' ? 'canonical-preview-image-origin' : 'none' });
     } finally {
       if (response.body && !response.bodyUsed) await response.body.cancel().catch(() => {});
     }
@@ -340,17 +346,19 @@ async function main(args) {
       handleStructuredLogs: () => {},
     };
     const sourceUrl = directory => pathToFileURL(join(args.source, directory)).href;
-    const [journeys, testTokens, tokenModule] = await within('canonical fixture imports', Promise.all([
+    const [journeys, testTokens, tokenModule, hostContext] = await within('canonical fixture imports', Promise.all([
       import(sourceUrl('server/testing/africaJourney.ts')),
       import(sourceUrl('server/accounts/test-tokens.ts')),
       import(sourceUrl('server/accounts/token.ts')),
+      import(sourceUrl('server/host-context.ts')),
     ]), LIMITS.startMs);
     const control = { testTokens, tokenModule, getWorker: () => workerGetter(), setWorker: null };
     control.setWorker = getter => { workerGetter = getter; };
     fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs });
     evidence.outcomes.push({ check: 'sealed-worker-start-and-sqlite', status: 'passed' });
     currentCheck = 'packaged-assets';
-    await checkPackagedAssets(fixture.send, args.packageRoot, checked.files, evidence, within);
+    assert.equal(typeof hostContext.absolutePreviewImage, 'function', 'canonical HTML preview transform is unavailable');
+    await checkPackagedAssets(fixture.send, args.packageRoot, checked.files, evidence, within, hostContext.absolutePreviewImage);
     evidence.outcomes.push({ check: 'packaged-assets', status: 'passed', count: evidence.assets.length, cities: [...FIRST_FIVE] });
     currentCheck = 'first-five-air-travel-save-reload-meal-return';
     await within('first-five journey', journeys.africaJourney(fixture.host), 145_000);

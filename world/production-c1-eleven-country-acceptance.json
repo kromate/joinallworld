@@ -1,0 +1,120 @@
+{
+  "decision": "ACCEPT scoped live map and read-only continuity witness",
+  "operator": "/root/astra_native",
+  "model": "gpt-6-astra",
+  "url": "https://joinallworld.com/",
+  "healthBuild": "joinallworld-c1f7c1f7369139ce559292318ba",
+  "source": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "bundle": "https://joinallworld.com/assets/app-36da1f57.js",
+  "observedAtUtc": "2026-10-09T21:38:36.859575+00:00",
+  "countries": {
+    "total": 56,
+    "open": 11,
+    "names": [
+      "Algeria",
+      "Benin",
+      "Cameroon",
+      "Côte d’Ivoire",
+      "Ethiopia",
+      "Ghana",
+      "Kenya",
+      "Nigeria",
+      "Senegal",
+      "South Africa",
+      "Togo"
+    ],
+    "evidence": "Actual rows plus desktop green polygons; west-African labels overlap at continent scale."
+  },
+  "quotes": [
+    {
+      "city": "Cotonou",
+      "fare": 29000,
+      "seconds": 12
+    },
+    {
+      "city": "Abidjan",
+      "fare": 86000,
+      "seconds": 20
+    },
+    {
+      "city": "Dakar",
+      "fare": 217000,
+      "seconds": 20
+    },
+    {
+      "city": "Cape Town",
+      "fare": 401000,
+      "seconds": 20
+    },
+    {
+      "city": "Addis Ababa",
+      "fare": 332000,
+      "seconds": 20
+    }
+  ],
+  "geographicDetail": "Ethiopia real public outline loaded; 1074 source positions. Country names and regions verified on five cards. ISO codes not exposed on reviewed cards and not independently UI-certified.",
+  "responsive": {
+    "desktop": [
+      1440,
+      812
+    ],
+    "mobile": [
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        720
+      ]
+    ],
+    "result": "Country list and Cotonou card/footer reachable. Unowned 100x overlay overlaps flight duration at both mobile widths; preserved. Immediate 390 capture during map animation showed Nigeria context; settled follow-up showed Africa and Benin polygon; no persistent stale-card defect reproduced."
+  },
+  "continuity": {
+    "existingActorRetained": true,
+    "homeLimitation": "Observed after map pass; no independent before home snapshot or raw persistence comparison.",
+    "finalMap": "Lagos city map, Home Lagos Mainland you are here",
+    "displayedWalletAndBankBalanceUnchanged": true
+  },
+  "actions": "Read-only map/card/geographic-outline, Home and Bank views only. No flight, game action, provider prompt, new actor, account mutation, or private message/history read. Bank transaction rows not extracted.",
+  "cleanup": {
+    "ownedTab": "1412594338 closed",
+    "viewport": "reset",
+    "leaseSession": 93777,
+    "leaseExitCode": 130
+  },
+  "limits": [
+    "Map evidence is not production travel completion; local ten-leg native packet is separate.",
+    "No physical device, Safari, native zoom or mounted actor-switch claim.",
+    "No backend authority, receipt or full save-byte equality inferred from UI."
+  ],
+  "operatorArtifactSha256": "5eb24851dbdbecea3b93855ebff59a91892f5d0a776f4f0e35e1443359554438",
+  "productionContinuity": {
+    "format": "world-consolidated-continuity-check-v1",
+    "checkedAt": "2026-10-09T21:35:43.630950+00:00",
+    "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "expectedPublicBuild": "joinallworld-c1f7c1f7369139ce559292318ba",
+    "scope": "retained synthetic actor and original same-spot receipt only",
+    "status": "passed",
+    "newActorCreated": false,
+    "sameOriginalIdentity": true,
+    "sameIdReceiptDuplicate": true,
+    "stableFields": [
+      "cash",
+      "home",
+      "homeOwned",
+      "property",
+      "estate",
+      "inventory",
+      "business",
+      "location",
+      "spot"
+    ],
+    "privateWitnessSha256": "e64720ae8af21e9f30cc7ed74564a7bd3e80bc7d27a616922837c48575097c87",
+    "limitations": [
+      "not a game-wide export or restore",
+      "not provider full-source identity proof",
+      "not bundle, browser, reconnect or physical-phone acceptance"
+    ]
+  }
+}

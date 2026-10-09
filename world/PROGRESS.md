@@ -2376,3 +2376,27 @@ are stopped, original store checkpointed, uploader exited, no local server.
 Root report records exact receipts under .cache/world-build/evidence.
 The remaining generated sources are not playable admission; full goal remains
 active and the next reserved runtime window belongs to LIVING.
+
+
+21:41UTC current evidence: scoped production map acceptance is complete in
+[production-c1-eleven-country-acceptance.json](production-c1-eleven-country-acceptance.json),
+operator artifact SHA5eb24851... with actual56countries/11open, green polygons,
+five new destination cards and correct fares. Original player displayed wallet
+and Bank balance unchanged; no production game action was performed. Mobile
+390/320 checks remain qualified by an unowned overlay covering duration;
+physical phones and production paid journeys remain unproven. Owned browser
+tab closed, viewport reset, browser93777 terminal130. Next runtime phase
+handoff is LIVING, no new WORLD runtime phase displacing it.
+
+Fetched exactC1 main was merged cleanly into WORLD at9a9a1ccf. Three actual
+source extent revisions SO/TZ/BW completed and resumed with zero new downloads.
+Independent no-compiler audit finds previous37/64/11outside vertices now zero,
+all retained roads/buildings coordinate-identical, old payloads archived, all
+source/request ledger hashes unchanged. See
+[starter-extent-revisions-acceptance.json](starter-extent-revisions-acceptance.json).
+All seven current isolated map/content/flight/save engine checks pass in3.814s.
+Source-review finding: v1 revision identity omitted the transitive geography
+compiler hash. Preserve completed v1 evidence; prospective pin correction
+is in progress. Seventh-five source packet is being prepared from actual
+current receipts, historical acquisition evidence and correctedSO audit.
+None of these source changes increases the eleven-country production count.

@@ -173,3 +173,19 @@ Observed driving has digital direction buttons but lacks the requested analog wh
 Parcel is deliberately UNREGISTERED. Its pure CAS tests model a caller using the latest retained state; they are not evidence of concurrent database settlement. No stock, cash or recipient record is changed. Future settlement must atomically commit parcel, bounded NPC stock/source budget, fixed ledger wage and once receipt using the existing store transaction and internal wallet authority. A2/A3/A4/A7/A8/A10 remain open.
 
 Restart Node HTTP suite at exact implementationff403583 (docs-only HEAD e5a464ba) now passes12/12, duration1216.227916ms, exit0 under Node24.19/heap1536/heavy1. Includes different request-ID races, old-generation fencing, failed transaction/same-ID recovery, actor/location/payload/clock refusal and unchanged wallet/qualification evidence. Worker restart fixture and current browser restart confirmation remain UNRUN. Log: /tmp/joinallworld-living-world-restart-ff403583-node.log.
+
+
+### Current exact-source tracker — 9 October 2026
+
+[Current bounded receipt](candidate-78eb7893-evidence.json) identifies implementation HEAD **78eb78934a5b58d8dcdc0f7a3b4ed9ca52836c18** and preserves each test/CI/browser source separately. This supersedes historical UNRUN/current-candidate rows above without broadening their evidence. Native goal ACTIVE; A1–A10 and all full phase requirements remain incomplete.
+
+| Unit | Current implementation/review | Executed evidence | Preview/release | Next action |
+| --- | --- | --- | --- | --- |
+| Paused pending restart | ff403583, independently reviewed | Node HTTP12/12 atff; real WorkerSQLite1/1 at9d with actual input before restart, CAS/layout/restart/replay | Current browser confirmation UNRUN; not released | Exact current compile and desktop/mobile restart/stale-context QA |
+| Analog wheel | 9d393a57, source independently reviewed and keyboard-focus defect repaired | Current c1 compiler/build pass includes wheel; pointer/device tests UNRUN | Not played/staged/released | Native analog/pedals/manual override/keyboard/focus/cancel/pause/context and320/390/844 layout checks |
+| Parcel custody/recovery | d650 plusa70 portable ASCII-bound fix; strict/frozen source reviewed | Pure7/7 at9d beforea70; c1 canonical compiler/build PASS | Unregistered; no settlement | Retest current reader; authenticated atomic NPC stock/wage/receipt service, actual races/rollback/restart/privacy |
+| Rental/district | Foundations unchanged through78; district disabled | Pure/resolver11/11 at28b; actual pinned four generated entry crossings observed | No mapped gameplay/permission acceptance | Vehicle/door/terrain/yield/boarding clearance, trusted pose and bounded NPC allocation |
+| Startup factory reuse | Rejected and revert78 accepted | Exact c1:614930raw/223160gzip/195396Brotli vs9d614758/223155/195410; raw+172/gzip+5 | No size waiver; current reverted source not freshly measured | Different supported architecture/ownership hypothesis; no unchanged retries |
+| Goalmatic | Existing inspected contract plus disabled adapter | No authorized live mapping/probe | Disabled, no release | Actual target installation/workspace/schema/consent mapping |
+
+Current final reverted source has no new exact CI or full-suite/staging acceptance. c1 compiler/build PASS proves the ASCII repair at that candidate; it does not make c1's failed factory trial acceptable or prove a final source-wide pass. Keep all source and receipt attribution explicit.

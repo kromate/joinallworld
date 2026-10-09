@@ -105,10 +105,13 @@ function createFixture() {
   let readyState: FixtureSnapshot['readyState'] = 'loading';
   let stage = 'Loading Lagos office game slice';
   let currentCamera = 'scene';
+  let closeCameraActor: THREE.Object3D | null = null;
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
   let frame = 0;
+  let walkPhase = 0;
+  let walkFrames = 0;
   let startedAt = 0;
   let mode: 'idle' | 'walk' | 'interact' = 'idle';
   let animationHandle = 0;
@@ -130,9 +133,9 @@ function createFixture() {
   const sceneVenue: SceneVenue = {
     id: 'office', label: 'Lagoon Towers office', district: 'lagos-island',
     scene: { kind: 'office', time: 'day', spots: [
-      { id: 'reception', label: 'Reception', activities: [] },
-      { id: 'lounge', label: 'Tea lounge', activities: [] },
-      { id: 'desks', label: 'Office desks', activities: [] },
+      { id: 'reception', label: 'Reception' },
+      { id: 'lounge', label: 'Tea lounge' },
+      { id: 'desks', label: 'Office desks' },
     ] },
   };
 
@@ -159,8 +162,37 @@ function createFixture() {
   function draw() {
     if (disposed || !entry) return;
     resize();
+    if (closeCameraActor && currentCamera.endsWith('-close')) placeCloseCamera(closeCameraActor);
     entry.look(camera.position.x, camera.position.z);
     renderer.render(world, camera);
+  }
+
+  function placeCloseCamera(actor: THREE.Object3D) {
+    actor.updateWorldMatrix(true, true);
+    const origin = actor.getWorldPosition(new THREE.Vector3());
+    const forward = actor.getWorldDirection(new THREE.Vector3()).normalize();
+    camera.fov = 45;
+    camera.updateProjectionMatrix();
+    camera.position.copy(origin).addScaledVector(forward, 3.8).add(new THREE.Vector3(0, 1.4, 0));
+    camera.lookAt(origin.clone().add(new THREE.Vector3(0, 1.2, 0)));
+  }
+
+  function actorFrame(actor: THREE.Object3D | null) {
+    if (!actor) return null;
+    actor.updateWorldMatrix(true, true);
+    camera.updateMatrixWorld(true);
+    const bounds = new THREE.Box3().setFromObject(actor);
+    const corners = [
+      new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
+      new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
+      new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
+      new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
+    ].map((point) => point.project(camera));
+    const minX = Math.min(...corners.map((point) => point.x)), maxX = Math.max(...corners.map((point) => point.x));
+    const minY = Math.min(...corners.map((point) => point.y)), maxY = Math.max(...corners.map((point) => point.y));
+    const allCornersInFrustum = corners.every((point) => point.z > -1 && point.z < 1);
+    return { ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
+      wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96 };
   }
 
   const playerLoader = async (owner: Kit, look: unknown, seed: unknown, scale: number): Promise<SkinnedBody> => {
@@ -280,6 +312,11 @@ function createFixture() {
     }
     entry?.update(lifeState);
     const npcPoseDuringInteraction = inspectNpc(npcId).gamePose;
+    interaction = { npcId, activityId, label: offered.label, started: { ok: started.ok, code: started.code }, completed: false,
+      npcPoseDuringInteraction, npcPoseAfterCompletion: null, npcPoseLifecyclePass: false };
+    stage = `${offered.label} with ${npc.name}`;
+    updateDom(); draw();
+    await new Promise<void>((resolve) => window.setTimeout(resolve, 1100));
     draw();
     const completed = advanceLife(lifeState, offered.duration, {
       cityId: 'lagos', now: lifeState.t + offered.duration * 1000,
@@ -317,10 +354,18 @@ function createFixture() {
 
   function setCamera(name: string) {
     currentCamera = name;
-    if (name === 'scene') camera.position.set(13.5, 10.2, 17.2);
-    else if (name === 'front') camera.position.set(7.8, 5.4, 13.2);
-    else camera.position.set(-6.8, 5.2, 12.8);
-    camera.lookAt(0, 1.05, 0);
+    closeCameraActor = name === 'player-close' ? actors.get('player')?.body.object ?? null
+      : name === 'mrs-okafor-close' ? entry?.group.getObjectByName('canonical-crowd:npc:mrs-okafor') ?? null
+        : name === 'dapo-close' ? entry?.group.getObjectByName('canonical-crowd:npc:dapo') ?? null : null;
+    if (closeCameraActor) placeCloseCamera(closeCameraActor);
+    else {
+      camera.fov = 39;
+      camera.updateProjectionMatrix();
+      if (name === 'scene') camera.position.set(13.5, 10.2, 17.2);
+      else if (name === 'front') camera.position.set(7.8, 5.4, 13.2);
+      else camera.position.set(-6.8, 5.2, 12.8);
+      camera.lookAt(0, 1.05, 0);
+    }
     draw(); updateDom();
   }
 
@@ -333,9 +378,32 @@ function createFixture() {
       standIn.pose('stand', undefined, false);
     } else if (next === 'interact') {
       standIn.pose('wave', undefined, false);
+    } else if (next === 'walk') {
+      walkPhase = Math.PI / 2;
+      const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
+      const x = start.x + 0.62, z = start.z - 0.62, y = entry.walk.heightAt(x, z);
+      standIn.move(x, y, z, 0);
+      standIn.gait(walkPhase, false, y);
+      walkFrames += 1;
     }
     frame = 0;
     draw(); updateDom();
+  }
+
+  function setWalkPhase(phase: number) {
+    if (!standIn || !entry || !Number.isFinite(phase)) throw new Error('Cannot sample requested walk phase');
+    mode = 'walk';
+    walkPhase = phase;
+    const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
+    const x = start.x + Math.sin(phase) * 0.62;
+    const z = start.z - (1 - Math.cos(phase)) * 0.62;
+    const y = entry.walk.heightAt(x, z);
+    standIn.move(x, y, z, Math.atan2(Math.cos(phase), Math.sin(phase)));
+    standIn.gait(phase, false, y);
+    walkFrames += 1;
+    draw(); updateDom();
+    return { phase, frames: walkFrames, pose: actors.get('player')?.body.pose ?? null,
+      root: actors.get('player')?.body.object.position.toArray() ?? null };
   }
 
   function poll() {
@@ -348,7 +416,7 @@ function createFixture() {
     if (mode === 'walk' && standIn && entry) {
       frame += 1;
       const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
-      const phase = frame * 0.12;
+      const phase = ++walkPhase;
       const x = start.x + Math.sin(phase) * 0.62;
       const z = start.z - (1 - Math.cos(phase)) * 0.62;
       standIn.move(x, entry.walk.heightAt(x, z), z, Math.atan2(Math.cos(phase), Math.sin(phase)));
@@ -394,7 +462,10 @@ function createFixture() {
         authoredRig: playerEvidence.authoredRig,
         meshes: playerEvidence.meshes,
         morphs: playerEvidence.morphs,
-        pose: mode,
+        pose: playerAudit?.body.pose ?? 'missing',
+        requestedMode: mode,
+        walkFrames,
+        rootPosition: playerAudit?.body.object.position.toArray() ?? null,
         standInShown: standIn?.shown ?? false,
         sampleCount: playerAudit?.contacts ?? 0,
         contact: contact ? { limited: contact.limited, maxError: contact.maxError } : null,
@@ -407,6 +478,7 @@ function createFixture() {
       unsupportedProbe: unsupported,
       interaction,
       currentCamera,
+      cameraActorFrame: actorFrame(closeCameraActor),
       viewport: {
         width: document.documentElement.clientWidth,
         height: document.documentElement.clientHeight,
@@ -484,6 +556,7 @@ function createFixture() {
     sample,
     setMode,
     setCamera,
+    setWalkPhase,
     probeUnsupportedPose,
     performNpcAction,
     scenePoses: NATIVE_GAME_BODY_CAPABILITIES,

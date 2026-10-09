@@ -127,13 +127,49 @@ try {
   const front = await capture('front-angle');
   await evaluate("window.nativeGameFixture.setCamera('profile')");
   const profileView = await capture('profile-angle');
+  await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setMode('idle')");
+  const playerCloseIdle = await capture('player-close-idle', 300);
+  await evaluate("window.nativeGameFixture.setMode('interact')");
+  const playerCloseInteract = await capture('player-close-interact', 300);
+  await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setWalkPhase(Math.PI / 2)");
+  const walkA = await capture('player-close-walk-a', 100);
+  const phaseA = await evaluate('window.nativeGameFixture.sample()');
+  const phaseBState = await evaluate("window.nativeGameFixture.setWalkPhase(3 * Math.PI / 2); window.nativeGameFixture.sample()");
+  const walkB = await capture('player-close-walk-b', 100);
+  const walkPhaseEvidence = {
+    phaseA: { pose: phaseA.player?.pose, root: phaseA.player?.rootPosition, frames: phaseA.player?.walkFrames },
+    phaseB: { pose: phaseBState.player?.pose, root: phaseBState.player?.rootPosition, frames: phaseBState.player?.walkFrames },
+    imageHashesDiffer: walkA.screenshot.sha256 !== walkB.screenshot.sha256,
+  };
   await evaluate("window.nativeGameFixture.setCamera('scene'); window.nativeGameFixture.setMode('walk')");
   const walk = await capture('walk-cycle', 1400);
   await evaluate("window.nativeGameFixture.setMode('interact')");
   const interact = await capture('interaction-pose', 700);
-  const npcInteraction = await evaluate("document.querySelector('#npc-action-mrs-okafor-hello')?.click(); window.nativeGameFixture.sample().interaction");
+  await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close'); window.nativeGameFixture.setMode('idle')");
+  const mrsIdle = await capture('mrs-okafor-close-idle', 250);
+  await evaluate("document.querySelector('#npc-action-mrs-okafor-hello')?.click()");
+  const mrsInteract = await capture('mrs-okafor-close-interact', 100);
+  let npcInteraction = null;
+  const actionDeadline = Date.now() + 8000;
+  while (Date.now() < actionDeadline) {
+    npcInteraction = await evaluate('window.nativeGameFixture.sample().interaction');
+    if (npcInteraction?.completed !== false) break;
+    await delay(100);
+  }
   const interactionState = await evaluate('window.nativeGameFixture.sample()');
-  const npcAction = await capture('npc-real-action-response', 500);
+  const npcAction = await capture('mrs-okafor-close-completed-idle', 250);
+  await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
+  const dapoIdle = await capture('dapo-close-idle', 250);
+  await evaluate("[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()");
+  const dapoInteract = await capture('dapo-close-interact', 100);
+  let dapoInteraction = null;
+  const dapoDeadline = Date.now() + 8000;
+  while (Date.now() < dapoDeadline) {
+    dapoInteraction = await evaluate('window.nativeGameFixture.sample().interaction');
+    if (dapoInteraction?.completed !== false) break;
+    await delay(100);
+  }
+  const dapoCompleted = await capture('dapo-close-completed-idle', 250);
   const unsupported = await evaluate('window.nativeGameFixture.probeUnsupportedPose()');
   const afterUnsupported = await evaluate('window.nativeGameFixture.sample()');
   await cdp('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -161,7 +197,13 @@ try {
     nativeActorsExactGeometry: npcActorsPrepared,
     nativePlayerThroughStandIn: ready.player?.prepared === true && ready.player?.authoredRig === true && ready.player?.standInShown === true,
     sameCreatorSeedAndSavedLook: ready.player?.seed === 'creator-fixture-same-seed-v1' && ready.player?.look?.outfit === 'casual',
-    walkSample: walk.snapshot.player?.pose === 'walk',
+    walkSample: walk.snapshot.player?.pose === 'walk' && walk.snapshot.player?.walkFrames > 0,
+    deterministicWalkPhases: walkPhaseEvidence.phaseA.pose === 'walk' && walkPhaseEvidence.phaseB.pose === 'walk'
+      && walkPhaseEvidence.phaseA.frames < walkPhaseEvidence.phaseB.frames
+      && JSON.stringify(walkPhaseEvidence.phaseA.root) !== JSON.stringify(walkPhaseEvidence.phaseB.root)
+      && walkPhaseEvidence.imageHashesDiffer,
+    closeupsFrameWholeActor: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
+      .every((sample) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -173,7 +215,9 @@ try {
     afterUnsupportedStillReady: afterUnsupported.readyState === 'ready',
     mobileLayoutSingleColumn: mobile.snapshot?.viewport?.width <= 430 && mobile.snapshot?.viewport?.mobileBreakpoint === true
       && mobile.snapshot?.viewport?.layoutColumns === 1 && mobile.snapshot?.viewport?.scrollWidth <= mobile.snapshot?.viewport?.width,
-    snapshotsHaveNoRuntimeErrors: [idle, front, profileView, walk, interact, npcAction, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
+    dapoRealActivityCompleted: dapoInteraction?.npcId === 'dapo' && dapoInteraction?.completed === true
+      && dapoInteraction?.npcPoseDuringInteraction === 'interact' && dapoInteraction?.npcPoseAfterCompletion === 'idle',
+    snapshotsHaveNoRuntimeErrors: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
       && afterUnsupported.errors?.length === 0,
     teardownReleasesActorsAndContext: disposal?.playerUnmounted === true && disposal?.noCanonicalActorsRemain === true
       && disposal?.rendererContextLost === true && disposalAgain?.crowdAfter?.canonical === 0
@@ -189,12 +233,14 @@ try {
     checks,
     unsupported,
     npcInteraction,
+    dapoInteraction,
+    walkPhaseEvidence,
     interactionState,
     afterUnsupported,
     disposal,
     consoleErrors: pageErrors,
-    screenshots: [idle, front, profileView, walk, interact, npcAction, mobile].map(({ name, screenshot, snapshot }) => ({
-      name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose,
+    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot }) => ({
+      name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose, cameraActorFrame: snapshot.cameraActorFrame,
       nativeCrowd: snapshot.crowd?.canonical, proceduralCrowd: snapshot.crowd?.procedural,
     })),
     finalSnapshot: afterUnsupported,

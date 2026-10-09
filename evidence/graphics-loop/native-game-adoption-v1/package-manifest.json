@@ -1,0 +1,404 @@
+{
+  "schema": "joinallworld.native-game-adoption-package.v1",
+  "adoptionParent": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "prototypeSourceHead": "4c0899d240ace4818bca6b45f437c1ac9a4bca62",
+  "workingTreeSourceSnapshot": true,
+  "existingContractFiles": {
+    "src/scene/body/gate.ts": {
+      "parentSha256": "0217b20637f77717a1fda754bd465a8ca47b4028cdef70ad68c227785e101204",
+      "overlaySha256": "2f7a4b8bc839409692a03dc5a63604ee4284951f4244c9e149d1b221c6bbaa55"
+    },
+    "src/scene/body/skinned.ts": {
+      "parentSha256": "971a080a5d52bbe351f6b59e5377116d605a8a5c73d8c5e63e146db73a445aab",
+      "overlaySha256": null
+    },
+    "src/scene/body/poses.ts": {
+      "parentSha256": "7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e",
+      "overlaySha256": null
+    },
+    "src/scene/kit.ts": {
+      "parentSha256": "5f7f32f8993bbd6892857584c0c34624c09597470e90f7bfc0ae6183c837d287",
+      "overlaySha256": "ae0b85eb3478706fc4aeaafed9bc3c4c6964e4efbbf9840bc342b5b9b917553c"
+    },
+    "src/scene/characters.ts": {
+      "parentSha256": "3d5990a1dd7a01098a1ab37f820e5f27027d4336090972b56f1e96c44ada55b6",
+      "overlaySha256": null
+    },
+    "src/types/avatar.ts": {
+      "parentSha256": "612d9ccf82dbd32a06926ca79dc837bbc3179ffa11ddb8ec45a9f312ec76eb6d",
+      "overlaySha256": null
+    }
+  },
+  "factorySource": "evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+  "files": [
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/assets-fetch-v6.ts",
+      "staged": "owned-src/src/scene/body/native/assets-fetch-v6.ts",
+      "bytes": 5992,
+      "sha256": "fc05969bee1032b564a52bd29fa9d90b740def68e2fe0e948104921dfe57c754",
+      "sourceSha256": "3e016bc17494a8b6a5359fd121de6681090bfb7dec687ff157d0179641db3447",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
+      "staged": "owned-src/src/scene/body/native/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
+      "bytes": 1600800,
+      "sha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
+      "sourceSha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/casual-female-export/out/casual-female-body-hide-map.json",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/casual-female-export/out/casual-female-body-hide-map.json",
+      "bytes": 148659,
+      "sha256": "4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753",
+      "sourceSha256": "4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/casual-female-export/out/casual-female.glb",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/casual-female-export/out/casual-female.glb",
+      "bytes": 557900,
+      "sha256": "7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd",
+      "sourceSha256": "7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/office-export/out/office-female-body-hide-map.json",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/office-export/out/office-female-body-hide-map.json",
+      "bytes": 128704,
+      "sha256": "47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66",
+      "sourceSha256": "47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/office-export/out/office-female.glb",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/office-export/out/office-female.glb",
+      "bytes": 547732,
+      "sha256": "fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053",
+      "sourceSha256": "fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/office-export/out/office-male-body-hide-map.json",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/office-export/out/office-male-body-hide-map.json",
+      "bytes": 180703,
+      "sha256": "337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3",
+      "sourceSha256": "337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/office-export/out/office-male.glb",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/office-export/out/office-male.glb",
+      "bytes": 1155968,
+      "sha256": "74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db",
+      "sourceSha256": "74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/out/body-hide-map.json",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/out/body-hide-map.json",
+      "bytes": 301657,
+      "sha256": "dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099",
+      "sourceSha256": "dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/out/male_casualsuit01.glb",
+      "staged": "owned-src/src/scene/body/native/authored-clothing/out/male_casualsuit01.glb",
+      "bytes": 1120612,
+      "sha256": "1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f",
+      "sourceSha256": "1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-footwear/out/shoes01-body-hide-map.json",
+      "staged": "owned-src/src/scene/body/native/authored-footwear/out/shoes01-body-hide-map.json",
+      "bytes": 73664,
+      "sha256": "ba75d7ab36418434c40ad7c8c41d3723740782714e45890c3183d582b507ad71",
+      "sourceSha256": "ba75d7ab36418434c40ad7c8c41d3723740782714e45890c3183d582b507ad71",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-footwear/out/shoes01-mobile.glb",
+      "staged": "owned-src/src/scene/body/native/authored-footwear/out/shoes01-mobile.glb",
+      "bytes": 467864,
+      "sha256": "8f4060a275356489205f298bed9874da83920c166aeacffd36746e760a465557",
+      "sourceSha256": "8f4060a275356489205f298bed9874da83920c166aeacffd36746e760a465557",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-footwear/presentation.ts",
+      "staged": "owned-src/src/scene/body/native/authored-footwear/presentation.ts",
+      "bytes": 14459,
+      "sha256": "d6fbb7193f475700d16070eae8715cf8861961c1ae0c081c3c4f510bb4e429fe",
+      "sourceSha256": "d6fbb7193f475700d16070eae8715cf8861961c1ae0c081c3c4f510bb4e429fe",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-hair/out/afro01-mobile.glb",
+      "staged": "owned-src/src/scene/body/native/authored-hair/out/afro01-mobile.glb",
+      "bytes": 659456,
+      "sha256": "3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474",
+      "sourceSha256": "3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-hair/out/short02-mobile.glb",
+      "staged": "owned-src/src/scene/body/native/authored-hair/out/short02-mobile.glb",
+      "bytes": 504432,
+      "sha256": "a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0",
+      "sourceSha256": "a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-look-bridge.ts",
+      "staged": "owned-src/src/scene/body/native/authored-look-bridge.ts",
+      "bytes": 8053,
+      "sha256": "0beaf2a9ad7a130a6d1941add9e5a06f87ef30347e1b0e4218d53cb8598cdb07",
+      "sourceSha256": "41a35d893a11ff4af9441cf8f19b523e57168df4d006e80f45cb3dadcf7e458f",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/authored-presentation.ts",
+      "staged": "owned-src/src/scene/body/native/authored-presentation.ts",
+      "bytes": 42077,
+      "sha256": "441bc72fb504db43bf3a273b1b5c60ab4886f94a837e901864d16bbdc1645c50",
+      "sourceSha256": "675385b2f1f0ae5d80d2668723d2a2574bf7e96e2bf2eb4a293b40d351c18224",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/body-mask-union.ts",
+      "staged": "owned-src/src/scene/body/native/body-mask-union.ts",
+      "bytes": 8088,
+      "sha256": "e0fd166198ca49f7451b6ae5e81a61a24632a3a704dba2f3a5cd33194d0e8c78",
+      "sourceSha256": "e0fd166198ca49f7451b6ae5e81a61a24632a3a704dba2f3a5cd33194d0e8c78",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/clothing-palette.ts",
+      "staged": "owned-src/src/scene/body/native/clothing-palette.ts",
+      "bytes": 5739,
+      "sha256": "7440e64477ab051eb3f343dc78451c5b621a9423fcf8df3e071e042b756979ef",
+      "sourceSha256": "7440e64477ab051eb3f343dc78451c5b621a9423fcf8df3e071e042b756979ef",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/eye-material.ts",
+      "staged": "owned-src/src/scene/body/native/eye-material.ts",
+      "bytes": 5680,
+      "sha256": "b734c9d671f8d76f1f8a0400b2eea5a91a316755160eb9178b8da6bc785a2cf1",
+      "sourceSha256": "b734c9d671f8d76f1f8a0400b2eea5a91a316755160eb9178b8da6bc785a2cf1",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/hair-palette.ts",
+      "staged": "owned-src/src/scene/body/native/hair-palette.ts",
+      "bytes": 4185,
+      "sha256": "740abeb62c007761541edd58cbc8baa26747c68f42316c83774b9bbb5fe5a7cd",
+      "sourceSha256": "740abeb62c007761541edd58cbc8baa26747c68f42316c83774b9bbb5fe5a7cd",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-body-surface.ts",
+      "staged": "owned-src/src/scene/body/native/native-body-surface.ts",
+      "bytes": 13174,
+      "sha256": "1d7091862e15440a363c7af632e10f16b144f323ab14e772a8cbd4e55679939b",
+      "sourceSha256": "1d7091862e15440a363c7af632e10f16b144f323ab14e772a8cbd4e55679939b",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-clip-solver.ts",
+      "staged": "owned-src/src/scene/body/native/native-clip-solver.ts",
+      "bytes": 25744,
+      "sha256": "ce0bebd25b471affc0300edb82151469deb6c8c28511d30dd9ade141c16d28a3",
+      "sourceSha256": "ce0bebd25b471affc0300edb82151469deb6c8c28511d30dd9ade141c16d28a3",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-direction-retarget.ts",
+      "staged": "owned-src/src/scene/body/native/native-direction-retarget.ts",
+      "bytes": 14951,
+      "sha256": "e8637e141ca4e814f547ec1ab7ef608365cad2a9b14eb86cd401901a0626ab0d",
+      "sourceSha256": "e8637e141ca4e814f547ec1ab7ef608365cad2a9b14eb86cd401901a0626ab0d",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-family-rig-audit/family-anchor-coefficients.json",
+      "staged": "owned-src/src/scene/body/native/native-family-rig-audit/family-anchor-coefficients.json",
+      "bytes": 27541,
+      "sha256": "e8903d356e3333d8ab9dc918980160fdc60d35b7520c6f03e28b000eb8f44e35",
+      "sourceSha256": "e8903d356e3333d8ab9dc918980160fdc60d35b7520c6f03e28b000eb8f44e35",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-family-rig-correction.ts",
+      "staged": "owned-src/src/scene/body/native/native-family-rig-correction.ts",
+      "bytes": 10431,
+      "sha256": "b1af46f9fe97d6e02a5bb5ac4792e792ffa450a0cdfe3749fef0b965379d05c0",
+      "sourceSha256": "b1af46f9fe97d6e02a5bb5ac4792e792ffa450a0cdfe3749fef0b965379d05c0",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/apply-authored-clothing-packet-v1.ts",
+      "staged": "owned-src/src/scene/body/native/native-full-runtime-v1/apply-authored-clothing-packet-v1.ts",
+      "bytes": 8818,
+      "sha256": "8b62a29483f4718add0f7fbd6eb56f5942c17a7e49ba21181f8d2d56ebbc50d7",
+      "sourceSha256": "8b62a29483f4718add0f7fbd6eb56f5942c17a7e49ba21181f8d2d56ebbc50d7",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-fix-packets-v1.json",
+      "staged": "owned-src/src/scene/body/native/native-full-runtime-v1/clothing-fix-packets-v1.json",
+      "bytes": 58539,
+      "sha256": "20f8f987b95d24dc7e6f90aee562ffc95c6d87cbbfd3d729e1b5323080164f9e",
+      "sourceSha256": "20f8f987b95d24dc7e6f90aee562ffc95c6d87cbbfd3d729e1b5323080164f9e",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-hand-pose.ts",
+      "staged": "owned-src/src/scene/body/native/native-hand-pose.ts",
+      "bytes": 9170,
+      "sha256": "09dce24a6f3891320a526ee0d1cbb704e677e0f153c247aa87b9460abcc6a8d7",
+      "sourceSha256": "09dce24a6f3891320a526ee0d1cbb704e677e0f153c247aa87b9460abcc6a8d7",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+      "staged": "owned-src/src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+      "bytes": 29733,
+      "sha256": "905d49af21d73eea6d3162a53f61181a8c2ce0243ae9797bf84f83318e813aee",
+      "sourceSha256": "3d9e14266f9088dc0090dcc191b18c5c8c968873ca0b2ad75f853ebb350514e8",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+      "staged": "owned-src/src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+      "bytes": 72908,
+      "sha256": "aef751bdcced8a805b12b5dfb42f14502f50c59bd5c3b510b7b9095b66ae52c8",
+      "sourceSha256": "bc95a185c9b6f41a6dd9f6c199316b2ad9ec78220b2a1bc197120a6b16a74fd7",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v15/native-rest-contact.ts",
+      "staged": "owned-src/src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts",
+      "bytes": 17905,
+      "sha256": "2e8e55be0020bb9d8b86e0173bac35fde453b1bcc665f761e75427fc02db575e",
+      "sourceSha256": "e1100a233995f14f74801cf57d2a252a399c0785116050c99488dbde65e9289a",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v15/rest-pose-adapter.ts",
+      "staged": "owned-src/src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
+      "bytes": 38669,
+      "sha256": "96fc33ded2e52c0180ecf8792153ec55613fd9aa6b0cb2e382e0661a72742147",
+      "sourceSha256": "2e92f29717192048e1423704b5a33239caa9219db51fc80a49b0c07b381c9bfa",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-seat-pose-adapter.ts",
+      "staged": "owned-src/src/scene/body/native/native-seat-pose-adapter.ts",
+      "bytes": 3904,
+      "sha256": "9e8b80444f01629fd9cadd31efa6c65ab82eb81303b479fcae031b9680f2e934",
+      "sourceSha256": "9e8b80444f01629fd9cadd31efa6c65ab82eb81303b479fcae031b9680f2e934",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-seat-surface.ts",
+      "staged": "owned-src/src/scene/body/native/native-seat-surface.ts",
+      "bytes": 14550,
+      "sha256": "429719751fe194e1e92fd5569d5be86124d80ba8d4faa64bc590742826ad981b",
+      "sourceSha256": "429719751fe194e1e92fd5569d5be86124d80ba8d4faa64bc590742826ad981b",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-source-pose.ts",
+      "staged": "owned-src/src/scene/body/native/native-source-pose.ts",
+      "bytes": 23776,
+      "sha256": "e3bd40bd34cc8fe92872ec07ebb8052f864d9bb9eb8d85bb84d7525a67abb9a1",
+      "sourceSha256": "e3bd40bd34cc8fe92872ec07ebb8052f864d9bb9eb8d85bb84d7525a67abb9a1",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-source-sampler.ts",
+      "staged": "owned-src/src/scene/body/native/native-source-sampler.ts",
+      "bytes": 8453,
+      "sha256": "9df4ca4cc656c5b1cf08bcb217f3ddd29d8f1417f738f3da702027d803eb691c",
+      "sourceSha256": "9df4ca4cc656c5b1cf08bcb217f3ddd29d8f1417f738f3da702027d803eb691c",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-controller.ts",
+      "staged": "owned-src/src/scene/body/native/native-wrist-orientation/native-wrist-controller.ts",
+      "bytes": 5352,
+      "sha256": "dfa3fff282cfeeded2f770dc3593f38fadf2edcae43c14d1cf99c59639707555",
+      "sourceSha256": "dfa3fff282cfeeded2f770dc3593f38fadf2edcae43c14d1cf99c59639707555",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-orientation.ts",
+      "staged": "owned-src/src/scene/body/native/native-wrist-orientation/native-wrist-orientation.ts",
+      "bytes": 3530,
+      "sha256": "903f625c536c41b3a719f5eb0c1963f1cbfb1773a5d13682a29fd98142ba10ef",
+      "sourceSha256": "903f625c536c41b3a719f5eb0c1963f1cbfb1773a5d13682a29fd98142ba10ef",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/rig.ts",
+      "staged": "owned-src/src/scene/body/native/rig.ts",
+      "bytes": 23348,
+      "sha256": "b844d70d15937bfc0924eae49c5b786323aa33ce81c67708505cc2a4cfc0682f",
+      "sourceSha256": "ee6962088ae2fd3d9e7a6b08f187c18dce483637fc46dc940890dcde1b5f25e4",
+      "kind": "source"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/skin-assets/mobile/1024/middleage_african_female_q90.jpg",
+      "staged": "owned-src/src/scene/body/native/skin-assets/mobile/1024/middleage_african_female_q90.jpg",
+      "bytes": 124599,
+      "sha256": "d2f3d02e63a705173e888578ea91ecfb56ffdc207f59b6407687f1fe66cbd3c1",
+      "sourceSha256": "d2f3d02e63a705173e888578ea91ecfb56ffdc207f59b6407687f1fe66cbd3c1",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/skin-assets/mobile/1024/middleage_african_male_q90.jpg",
+      "staged": "owned-src/src/scene/body/native/skin-assets/mobile/1024/middleage_african_male_q90.jpg",
+      "bytes": 126259,
+      "sha256": "c8d69c3d8eb5232833599c5d8bfe12b03a85cf430d6b76cbf63a1fa026c3ea65",
+      "sourceSha256": "c8d69c3d8eb5232833599c5d8bfe12b03a85cf430d6b76cbf63a1fa026c3ea65",
+      "kind": "asset-or-data"
+    },
+    {
+      "source": "evidence/graphics-loop/authored-complete-body-v1/skin-material.ts",
+      "staged": "owned-src/src/scene/body/native/skin-material.ts",
+      "bytes": 4713,
+      "sha256": "610c04656887b127226608091d6749b6a78c85dff15354567e6b5ea81174329d",
+      "sourceSha256": "610c04656887b127226608091d6749b6a78c85dff15354567e6b5ea81174329d",
+      "kind": "source"
+    },
+    {
+      "source": null,
+      "staged": "owned-src/src/scene/body/native/native-expression-controller.ts",
+      "bytes": 3766,
+      "sha256": "bd466aea6aa8897a43b3b1526f8677a6a597c78488ea7af8de7cac1eb4b8d613",
+      "kind": "source"
+    },
+    {
+      "source": null,
+      "staged": "owned-src/src/scene/body/native/native-expression-controller.test.ts",
+      "bytes": 2692,
+      "sha256": "201bc7aecc91650f95b4e4051f8085af463600a9a5e59d260f1105367ffa1c60",
+      "kind": "source"
+    },
+    {
+      "source": null,
+      "staged": "owned-src/src/scene/body/provider.ts",
+      "bytes": 1851,
+      "sha256": "c6a4c94c498a2c2956479e34d7648cdbcd1783d6677ba13dad42890e9b0dbce1",
+      "kind": "provider"
+    }
+  ],
+  "totalBytes": 8216800,
+  "assetBytes": 7785089,
+  "nativePurePreflight": "supportsNativeLook(input, seed)",
+  "releaseCandidateStatus": "Unaccepted V5 correct shortest rearward lie alignment bend; no contact or movement limits relaxed."
+}

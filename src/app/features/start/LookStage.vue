@@ -7,6 +7,7 @@
 import '../../../ui/panels/look-ui.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { Look } from '../../../types/life.ts'
+import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import AvatarFigure from './AvatarFigure.vue'
 import { leaveLookPreview, setPreviewFocus, showLookPreview } from './lookPreview.ts'
@@ -22,6 +23,9 @@ const props = withDefaults(defineProps<{
 }>(), { variant: 'hero', name: 'Your character', caption: '' })
 
 const mini = computed(() => props.variant === 'mini')
+const { game } = useApp()
+const identitySeed = computed(() => game.session.value?.id ?? 'you')
+
 const mode = ref<StageMode>('loading')
 const host = ref<HTMLElement | null>(null)
 const focus = computed(() => lookFocus())
@@ -30,7 +34,7 @@ let handle: StageHandle | null = null
 
 function request(): void {
   if (!handle) return
-  showLookPreview({ stage: handle, look: sceneLook(props.look), focus: focus.value, label: `${alt.value} Drag, or use the left and right arrow keys, to turn.` })
+  showLookPreview({ stage: handle, look: { ...sceneLook(props.look), seed: identitySeed.value }, focus: focus.value, label: `${alt.value} Drag, or use the left and right arrow keys, to turn.` })
 }
 onMounted(() => {
   const element = host.value
@@ -39,7 +43,7 @@ onMounted(() => {
   request()
 })
 // A look that changed costs one frame; so does a change of where the preview looks.
-watch([() => JSON.stringify(sceneLook(props.look)), focus, alt], request)
+watch([identitySeed, () => JSON.stringify(sceneLook(props.look)), focus, alt], request)
 onBeforeUnmount(() => { if (handle) leaveLookPreview(handle); handle = null })
 
 function zoom(): void { setPreviewFocus(toggleZoom()) }

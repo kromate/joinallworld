@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Native home lifecycle diagnostic</title>
+  <style>
+    :root { color: #17232b; background: #edf0ed; font: 14px/1.45 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1450px; margin: auto; padding: 16px; }
+    h1 { margin: 0 0 4px; font-size: clamp(1.25rem, 2vw, 1.8rem); }
+    p { color: #52616a; margin: 0 0 12px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 12px; align-items: start; }
+    .layout > *, aside, section { min-width: 0; }
+    section, aside > div { background: #fff; border: 1px solid #d4dbd9; border-radius: 10px; overflow: hidden; }
+    canvas { display: block; width: 100%; height: min(74vh, 760px); min-height: 480px; background: #d6e9ef; }
+    aside { display: grid; gap: 10px; }
+    aside > div { padding: 12px; }
+    h2 { font-size: 1rem; margin: 0 0 8px; }
+    .buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+    button { border: 1px solid #c8d2ce; background: #f4f7f6; color: #17232b; border-radius: 7px; padding: 6px 9px; cursor: pointer; font: inherit; }
+    button:disabled { opacity: .45; cursor: wait; }
+    #status { border-left: 3px solid #4c9b72; padding-left: 8px; font-weight: 650; }
+    #audit { max-height: 42vh; overflow: auto; overflow-wrap: anywhere; white-space: pre-wrap; font: 11px/1.4 ui-monospace, monospace; margin: 0; }
+    @media (max-width: 760px) { main { padding: 9px; } .layout { grid-template-columns: minmax(0, 1fr); } canvas { height: 58svh; min-height: 340px; } #audit { max-height: 25vh; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Home · same saved person through furniture actions</h1>
+    <p>Actual home scene and rule-engine activities. Native body support, contact and pose transitions are measured; unsupported poses stay visible as limitations.</p>
+    <div class="layout">
+      <section aria-label="Rendered actual home room and player"><canvas id="home-stage"></canvas></section>
+      <aside>
+        <div><h2>Journey controls</h2>
+          <div class="buttons">
+            <button id="run-journey">Run finite home journey</button>
+            <button id="reset-standing">Return to standing</button>
+            <button id="swap-look">Switch saved player look</button>
+          </div>
+          <p id="status">Preparing saved Lagos home…</p>
+        </div>
+        <div><h2>Actual scene and pose evidence</h2><pre id="audit">Waiting for the home scene's first rendered frame.</pre></div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./home-journey.bundle.js"></script>
+  <script type="module">
+    const f = () => window.nativeHomeJourney;
+    document.querySelector('#run-journey')?.addEventListener('click', () => void f()?.runJourney());
+    document.querySelector('#reset-standing')?.addEventListener('click', () => void f()?.returnStanding());
+    document.querySelector('#swap-look')?.addEventListener('click', () => void f()?.swapLook());
+  </script>
+</body>
+</html>

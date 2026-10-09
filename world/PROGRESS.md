@@ -1,5 +1,82 @@
 # Implementation checkpoint — 9 October 2026
 
+## Durable capture attempts and actual controller-loss recovery
+
+Previous goal turn was a status restatement (no build progress). This continuation
+publishes supervised admission main **ca71ae09** after its exact-source policy
+acceptance, then implements real per-request ingestion ownership. The existing
+campaign Ledger remains the scheduler; no parallel scheduler or AI per feature.
+Read [FEATURE-INDEX-CAPTURE-OPERATIONS.md](FEATURE-INDEX-CAPTURE-OPERATIONS.md).
+
+`ingest_capture_job` binds immutable canonical capture-expectation SHA/length and
+both retained raw paths before snapshot allocation/launch. Each bounded index shard
+has at most256 requests/eight lifetime ingestion attempts per request, plus a
+512,000-byte record ceiling. Limits/root identities have a permanent quota seal;
+lost initialized record/anchor or changed input/limits refuse without resetting.
+Namespace admission's original16 lifetime attempts remain separate and unchanged.
+One readonly persistent execution slot and deterministic pending/reclaim prefixes
+are accounted inside the original reservation; no cap increased. The explicit
+current owner avoids ambiguity after legitimate directory inode reuse. A terminal
+digest settles the attempt only; every successful call actually raw-replays the
+index in a fresh fixed worker, including previously terminal requests.
+
+**209 Python checks pass**, terminal9474 exit0,63.152s unittest/63.32s process,
+186,531,840B maxRSS. **17 unique new checks** pass, terminal92948 exit0,
+21.567s/162,054,144B maxRSS. Actual ingestion SIGKILL before transaction, after
+COMMIT/nonempty WAL and after checkpoint preserves one index reservation, same
+SQLite inode and charged attempt; fresh raw replay becomes attempt2. Two native
+controller SIGKILL fixtures confirm surviving actual Node workers retain both
+locks, anonymous input and frozen execution: a fresh controller is busy before
+allocation; after known terminal exit/new real leases it settles the old charge,
+replays473 rows and retains two attempts. The after-COMMIT controller-loss case
+actually observes live nonempty WAL and subsequently zero inserted versions.
+No remembered PID is supplied to recovery. Unconfirmed-guard fixture verifies
+same-lease poisoning, retained descriptors/record/snapshot and fresh-lease recovery.
+
+Initial focused command used a wrong relative wrapper path and exited1 before
+any tests. Corrected61638 ran34 discovered cases (18 duplicated historical
+admission cases); one new test incorrectly assumed sorted record order equalled
+input order. Changed only its assertion to compare by request hash and changed
+test imports to avoid duplicate discovery. Its33/34 receipt remains retained;
+final17 unique focused and209 combined cases pass. Source review also corrected
+missing pure-fixture import, post-transition byte-bound validation and the durable
+current-owner contract before final acceptance. No failure is relabelled success.
+
+Separate actual verifier **84451 exit0**,4.93s/161,431,552B maxRSS proves two
+held sessions with two cached Dakar captures, persistent independent attempts1→2,
+2captures/2,283ordinals/1,810versions/0conflicted keys, one reservation and the
+same registry/index inodes. Parent SQLite is forbidden. Nine actual capture/ledger
+files and **877 historical pins** remain byte-identical before/after; zero network
+or actual acquisition/campaign/output/Nigeria/game writes. Guarded **23 engine
+checks** pass:232 focused before clean-source policy. Current44-input source
+closure is431,085bytes;5,602-byte manifest SHA
+`f04f61233ac0dae6f85b1471fec5abee071debd71ff60a575b22290d24043511`.
+Actual capture execution charges512,000bytes/envelope4,096bytes. Source acceptance
+receipt binds44 execution files and23 test files (67pins), completed209-case
+receipt, actual evidence and limitations; all finalized before committing.
+
+Fresh **full World TypeScript passes**, terminal85656 exit0,3.67s,
+384MiB heap/461,783,040B process maxRSS. This is a compiler check, not a new game
+build, phone test or runtime upload. GRAPHICS explicitly handed off all server/
+browser groups before actual WORLD checks; LIVING remains source/hosted CI.
+Heavy1, existing Node/registry/test/compiler limits stay unchanged. Pressure
+briefly NORMAL with paging still active; no concurrency expansion.
+
+Evidence: `feature-index-capture-focused-v{2,3}.{stdout,stderr}`,
+`feature-index-capture-all-v1.{stdout,stderr}`, `feature-index-capture-{actual,
+engine,source-acceptance,tooling-manifest}-v1.json`,
+`feature-index-capture-acceptance-v1.{stdout,stderr}` and
+`feature-index-capture-typecheck-v1.{stdout,stderr}`. Source commit, exact committed
+archive policy and main synchronization follow this checkpoint.
+
+**Next:** validate frozen campaign/grid query membership, bind atomic index
+observations and fence campaign completion with the current claim token after
+actual raw replay. Reconcile indexed-but-pending and legacy captured jobs without
+refunding acquisition charges. Then independently audit raw/index conservation,
+compile owned full-country geometry and publish streamed shards. Whole-world
+unattended building, Nigeria combined rendering, terrain/regional conditions and
+phone-visible global detail remain incomplete; geography is not playability.
+
 ## Supervised admission into actual ingestion — persistent operation acceptance
 
 Previous goal turn made progress: verified-capture ingestion ef4ca355 was accepted

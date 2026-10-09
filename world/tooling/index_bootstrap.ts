@@ -104,8 +104,16 @@ export function bootstrapFeatureIndex(onBoundary: (name: string) => void = () =>
   const replayed = present(final);
   const allowed = new Set(['writer.lock', 'binding.json', 'features.sqlite', 'features.sqlite-wal', 'features.sqlite-shm',
     'features.sqlite-journal', 'bootstrap.sqlite', 'bootstrap.sqlite-wal', 'bootstrap.sqlite-shm',
-    'bootstrap.sqlite-journal', 'audit.json']);
+    'bootstrap.sqlite-journal', 'audit.json', 'capture.json', 'capture.anchor.json', 'capture.execution']);
   for (const name of readdirSync(root)) assert.ok(allowed.has(name), 'Unknown bootstrap state is preserved.');
+  for (const [name, maximum] of [['capture.json', 512000], ['capture.anchor.json', 4096]] as const) {
+    if (present(path.join(root, name))) boundedRead(path.join(root, name), maximum, 0o600);
+  }
+  if (present(path.join(root, 'capture.execution'))) {
+    const execution = path.join(root, 'capture.execution'), info = lstatSync(execution);
+    assert.ok(info.isDirectory() && info.uid === process.getuid!() && (info.mode & 0o777) === 0o700
+      && realpathSync(execution) === execution, 'Persistent capture execution must remain private and canonical.');
+  }
   for (const base of [final, staged]) {
     for (const ending of ['-wal', '-shm', '-journal']) {
       if (present(base + ending)) { assert.ok(present(base), 'Orphan bootstrap sidecar is preserved.'); privateFile(base + ending, binding.engineLimits.databaseBytes); }

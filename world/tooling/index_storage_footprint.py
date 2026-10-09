@@ -14,7 +14,9 @@ DATABASE_FILES = frozenset({"features.sqlite", "features.sqlite-wal", "features.
                             "features.sqlite-journal", "bootstrap.sqlite", "bootstrap.sqlite-wal",
                             "bootstrap.sqlite-shm", "bootstrap.sqlite-journal"})
 METADATA_FILES = frozenset({"binding.json", "binding.pending", "reservation.json", "bootstrap.json"})
-KNOWN_FILES = DATABASE_FILES | METADATA_FILES | {"writer.lock", "audit.json"}
+CAPTURE_FILES = frozenset({"capture.json", "capture.pending", "capture.anchor.json", "capture.anchor.pending"})
+CAPTURE_DIRECTORIES = frozenset({"capture.execution", "capture.reclaim"})
+KNOWN_FILES = DATABASE_FILES | METADATA_FILES | CAPTURE_FILES | CAPTURE_DIRECTORIES | {"writer.lock", "audit.json"}
 
 
 def _bound(value, minimum, maximum, label):
@@ -64,13 +66,16 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
             if database not in names and any(database + ending in names for ending in ["-wal", "-shm", "-journal"]):
                 raise ValueError("orphan index sidecar is preserved; explicit recovery is required")
         for name in sorted(names):
+            if name in CAPTURE_DIRECTORIES:
+                continue  # Inventory both fixed slots together below, including partial copies.
             descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)
             try:
                 info = os.fstat(descriptor)
                 if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 1
                         or stat.S_IMODE(info.st_mode) != 0o600 or info.st_size < 0 or info.st_blocks < 0):
                     raise ValueError("index inventory refuses symlink/nonregular/nonprivate/linked files")
-                maximum = 0 if name == "writer.lock" else 4096 if name in METADATA_FILES else MIB if name == "audit.json" else file_bytes
+                maximum = (0 if name == "writer.lock" else 4096 if name in METADATA_FILES or name in {"capture.anchor.json", "capture.anchor.pending"}
+                           else 512_000 if name in CAPTURE_FILES else MIB if name == "audit.json" else file_bytes)
                 if info.st_size > maximum:
                     raise ValueError("index file exceeds its explicit byte bound")
                 named = os.stat(name, dir_fd=directory, follow_symlinks=False)
@@ -85,6 +90,14 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
                     raise ValueError("index files exceed their terminal aggregate bound; preserve all files")
             finally:
                 os.close(descriptor)
+        if any(name in names for name in CAPTURE_DIRECTORIES):
+            from index_capture_snapshot import capture_execution_footprint
+            snapshot = capture_execution_footprint(root)
+            files["captureExecution"] = {"logicalBytes": snapshot["logicalBytes"], "allocatedBytes": snapshot["chargedBytes"]}
+            logical += snapshot["logicalBytes"]
+            charged += snapshot["chargedBytes"]
+            if charged > aggregate_bytes:
+                raise ValueError("index files and capture execution exceed their terminal aggregate bound; preserve all files")
         after = root.lstat()
         if (root.resolve(strict=True) != root or (after.st_dev, after.st_ino, after.st_mtime_ns, after.st_ctime_ns) != (
                 directory_info.st_dev, directory_info.st_ino, directory_info.st_mtime_ns, directory_info.st_ctime_ns)):

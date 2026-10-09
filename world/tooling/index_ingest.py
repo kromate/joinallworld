@@ -4,7 +4,7 @@ No acquisition, observation, campaign completion or quota refund. Caller still
 owns namespace admission and durable job/attempt fencing. Raw cache files are
 readonly inputs, not copied into the index allowance. This is not a sandbox.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 import hashlib
 import json
 import os
@@ -16,7 +16,8 @@ import tempfile
 from index_binding import decode_index_binding, _pairs, _nonfinite
 from index_binding_publish import publish_index_binding
 from index_bootstrap import _node_pin
-from index_execution_snapshot import verified_execution_snapshot, _identity, _pin
+from index_execution_snapshot import verified_execution_snapshot, VerifiedIndexExecution, _identity, _pin, _capture, _inventory, CONFIGURATION
+from index_tooling import verify_index_tooling
 from index_resource_limits import _run_fixed_process, IndexWorkerUnreaped
 from index_root import ChargedIndexRoot, _binding, _lease
 from index_storage_footprint import index_storage_footprint
@@ -121,7 +122,7 @@ def capture_descriptors(extract_path, receipt_path, expected):
 
 
 def ingest_index(admitted, repository_root, manifest_bytes, source_configuration, node,
-                 extract_path, receipt_path, expected):
+                 extract_path, receipt_path, expected, *, _execution=None):
     """Ingest one pinned capture; successful return proves neither campaign coverage nor playability."""
     if type(admitted) is not ChargedIndexRoot:
         raise TypeError("capture ingestion requires its actual charged root")
@@ -133,14 +134,27 @@ def ingest_index(admitted, repository_root, manifest_bytes, source_configuration
         raise ValueError("capture ingestion root, paired namespace or allowance differs")
     _binding(root, admitted.binding_bytes)
     executable, runtime_before = _node_pin(node, config["runtime"])
+    if _execution is not None:
+        if (type(_execution) is not VerifiedIndexExecution or _execution.root != root/"capture.execution"
+                or _execution.manifest_bytes != manifest_bytes or _execution.manifest_pin != config["toolingManifest"]
+                or _execution.source_configuration != source_configuration
+                or _execution.source_pin != config["source"]["configuration"]):
+            raise ValueError("persistent capture execution differs from its fixed admitted slot/pins")
+        verify_index_tooling(_execution.root, manifest_bytes, config["toolingManifest"])
+        if (_capture(_execution.root, CONFIGURATION, config["source"]["configuration"]) != source_configuration
+                or _inventory(_execution.root) != _execution.charged_bytes):
+            raise ValueError("persistent capture execution bytes or charge changed")
     with capture_descriptors(extract_path, receipt_path, expected) as (capture, metadata_charged):
-        with verified_execution_snapshot(repository_root, manifest_bytes, config["toolingManifest"],
-                source_configuration, config["source"]["configuration"]) as execution:
+        with (nullcontext(_execution) if _execution is not None else verified_execution_snapshot(
+                repository_root, manifest_bytes, config["toolingManifest"], source_configuration,
+                config["source"]["configuration"])) as execution:
             limits = config["processLimits"]
             live_inputs = execution.charged_bytes+metadata_charged
             if 4*limits["fileBytes"]+live_inputs+2*MIB > admitted.reserved_bytes:
                 raise ValueError("index allowance cannot hold sidecars, execution and capture envelope")
-            available = admitted.reserved_bytes-live_inputs
+            # A persistent slot is already inventoried beneath this index root.
+            # Only the anonymous envelope is external; do not double charge it.
+            available = admitted.reserved_bytes-(metadata_charged if _execution is not None else live_inputs)
             index_storage_footprint(admitted.lease, file_bytes=limits["fileBytes"], aggregate_bytes=available)
             publish_index_binding(admitted)
             result = _run_fixed_process(executable, "index-capture-ingest", root,

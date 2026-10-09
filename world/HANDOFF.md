@@ -1,6 +1,21 @@
 # Copy-and-paste continuation prompt
 
-Latest admission checkpoint: supervised charge-before-create admission now feeds
+Latest capture checkpoint: durable per-request raw-input/attempt ownership now feeds
+real fixed-worker replay inside a held supervised index session.209 Python/23 guarded
+engine checks and fresh full World TypeScript pass. Actual controller SIGKILL before
+input processing and after COMMIT/nonempty WAL blocks fresh acquisition while the
+worker lives, then replays exactly under new kernel leases with two charges. Read
+first PROGRESS.md section and FEATURE-INDEX-CAPTURE-OPERATIONS.md. Separate capture
+ceilings256 requests/eight attempts/512000-byte record and one1MiB source slot fit
+original index reservation; namespace16 lifetime admissions remain unchanged.
+Do not reset quotas or call namespace admission per capture/building. Every successful
+capture call raw-replays actual index state; settlement alone is not completion.
+Next wire frozen campaign/grid membership, atomic observations and live-token-fenced
+completion, then independent raw/index audit and full-country streamed geometry.
+No actual campaign/acquisition/output/Nigeria/game writes or runtime release thisphase.
+
+
+Previous admission checkpoint: supervised charge-before-create admission now feeds
 verified ingestion without any parent SQLite connection. It passes192 Python/23
 guarded engine checks, including actual controller loss with surviving anonymous
 input/namespace lease and fresh admission→raw ingest/replay. New namespaces use
@@ -12,7 +27,7 @@ independent raw/index conservation and country geometry/sharding/streaming.
 Do not run the bounded admission controller for every building or capture.
 Preserve all source/ledger/witness identities, attempt limits and Nigeria.
 
-Latest ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
+Previous ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
 23 guarded engine checks and full World TypeScript. Actual retained Dakar inputs
 give2captures/2,283ordinals/1,810versions; fresh workers replay without duplicate
 versions. Actual SIGKILL after COMMIT leaves WAL which a fresh worker recovers and

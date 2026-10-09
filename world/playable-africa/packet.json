@@ -12,7 +12,7 @@
   "registeredInProduction": false,
   "sourceFiles": [
     {
-      "path": "src/game/cities/africa/content.ts",
+      "path": "src/game/cities/africa/contentBuilder.ts",
       "bytes": 12742,
       "sha256": "5c171e62c306cb7778ec90c8a5f2b2921a5a1d8dbb91b66bed76d5e32f03dbba"
     },
@@ -33,8 +33,8 @@
     },
     {
       "path": "src/game/cities/africa/module.ts",
-      "bytes": 1690,
-      "sha256": "87cc96df4cb3dbfe8502744e6734272963be97faafdc38edb5ef1b96fbcdfa34"
+      "bytes": 1769,
+      "sha256": "471d08873ef432337a2b3096569d2f4d843028dc69022a188da02ab6e00a432d"
     },
     {
       "path": "src/game/cities/africa/rules.ts",
@@ -43,8 +43,8 @@
     },
     {
       "path": "src/game/cities/africa/starter.test.ts",
-      "bytes": 4349,
-      "sha256": "866095ba17a43e8c3d9c1d29898e0f27b09527e7909f3be4dd3d27a0db65b56a"
+      "bytes": 4356,
+      "sha256": "c38e890f2314ddf1b4cc6c602e0b3a9e5d4e8f26d4806b24dfa0efc611aad87c"
     },
     {
       "path": "src/game/cities/africa/types.ts",
@@ -63,8 +63,8 @@
     },
     {
       "path": "src/game/cities/yaounde/index.ts",
-      "bytes": 206,
-      "sha256": "4917a310d1ca33d4b6bcf6ef9d091ae625b78ff23608360398839688fae2dcb0"
+      "bytes": 258,
+      "sha256": "7560e80348496b83e60352ba93913dfa5398d897f2afffaaf0087f6f0058a4e2"
     },
     {
       "path": "src/game/cities/yaounde/map.ts",
@@ -83,8 +83,8 @@
     },
     {
       "path": "src/game/cities/lome/index.ts",
-      "bytes": 203,
-      "sha256": "a00e2caad5b03922fde3598c10d256613fd7d457a7af47fc87fb10ddc4a6940e"
+      "bytes": 255,
+      "sha256": "d53c538e3fbc97ea750afad8239ff69a6497ecd67908b6abb223d882188bcf30"
     },
     {
       "path": "src/game/cities/lome/map.ts",
@@ -103,8 +103,8 @@
     },
     {
       "path": "src/game/cities/accra/index.ts",
-      "bytes": 204,
-      "sha256": "6c29e140a960178198d84e652b7dfa7164ef6199ff58294d439bc8edb009c402"
+      "bytes": 256,
+      "sha256": "3bcaffbfb2e9ee48d2afc38ce23d3fe4a743cec3628dd4d2b04621f3bb52eed0"
     },
     {
       "path": "src/game/cities/accra/map.ts",
@@ -123,8 +123,8 @@
     },
     {
       "path": "src/game/cities/nairobi/index.ts",
-      "bytes": 206,
-      "sha256": "341123551edf53863a5fb97352846b1c69abbf2a74f550f85b178f7241c3312f"
+      "bytes": 258,
+      "sha256": "13868a81087b688123a59574c14fd4247bd4a3e7ef9bf39ae5d82ff3b1fb198d"
     },
     {
       "path": "src/game/cities/nairobi/map.ts",
@@ -143,8 +143,8 @@
     },
     {
       "path": "src/game/cities/algiers/index.ts",
-      "bytes": 206,
-      "sha256": "73a658bae35287943db46feaf1ae7777952daccf8ffac40c751a18a6450a2d41"
+      "bytes": 258,
+      "sha256": "b00568219834a88a1aaba6393c14b1dc1f5fe862c2f659277a548937989be759"
     },
     {
       "path": "src/game/cities/algiers/map.ts",
@@ -153,18 +153,18 @@
     },
     {
       "path": "scripts/world/build-playable-africa.py",
-      "bytes": 13114,
-      "sha256": "627dc6b8966977320ac0d3107d0f6136221f8005dde21d8d4321c520c328886a"
+      "bytes": 13389,
+      "sha256": "e6bff0cb63f2b2bb159fe6baa6bc08456662a1a18aafebdd45e8821f472a62c3"
     },
     {
       "path": "world/playable-africa/README.md",
-      "bytes": 5642,
-      "sha256": "b05e7f8672835df47837f28be3fa4183876c46002b04fbaf02dd661e4d5751f6"
+      "bytes": 5825,
+      "sha256": "255bef2ecdc73b0a34fe1399be31e6af19f09bb33f08ebbdacbe91a4a99b307c"
     },
     {
       "path": "world/playable-africa/accra-sources.json",
-      "bytes": 4047,
-      "sha256": "1a2dfcfec692010c52d3cc5e5313d6c57d7fd21e636af54565c15f2791508485"
+      "bytes": 4150,
+      "sha256": "585b744108bdf025bc8b663267898a1a9000c7d7aef724cb1046a73a484c482a"
     },
     {
       "path": "world/playable-africa/airports.json",
@@ -173,8 +173,8 @@
     },
     {
       "path": "world/playable-africa/algiers-sources.json",
-      "bytes": 4071,
-      "sha256": "48713a8f4da01cf0503f4a637aa11f7f43c5cf03dd0f0a1d6e84d30ae77f048e"
+      "bytes": 4174,
+      "sha256": "c2e1223845490ff9a2fa135dae8ea19173d3e80753050c208ca9dbe216690c94"
     },
     {
       "path": "world/playable-africa/data-inventory.json",
@@ -183,8 +183,8 @@
     },
     {
       "path": "world/playable-africa/integration-notes.md",
-      "bytes": 2993,
-      "sha256": "5253744739daae37d0d3812cf0f6c1b5f44d86be6190bfb926fd3c64a56f0bfa"
+      "bytes": 3399,
+      "sha256": "8a7b18cff86796f4048514d8b0bb85cad80a2003de58b25f3510ed4dcf8f030f"
     },
     {
       "path": "world/playable-africa/integration.patch",
@@ -193,23 +193,48 @@
     },
     {
       "path": "world/playable-africa/lome-sources.json",
-      "bytes": 3752,
-      "sha256": "925c87c50c0c62a1b47c097a487dff7e16cf43d24fcc1e200dd4031e575d1de9"
+      "bytes": 3855,
+      "sha256": "0f829d6ad78f6a2131a6639362377d76e2f74dc0fe035645473afa9b0e815389"
     },
     {
       "path": "world/playable-africa/nairobi-sources.json",
-      "bytes": 3732,
-      "sha256": "8645371eeb076a799b0d5c2a449cd49c0181c5bba5ee3343ff4f4d2253378a12"
+      "bytes": 3835,
+      "sha256": "bcc3c24bd1e45f1b044118d3d3d996d94138371b269eaa07d51783e931042344"
     },
     {
       "path": "world/playable-africa/yaounde-sources.json",
-      "bytes": 3911,
-      "sha256": "3d4ecc6851954a8090416aeb7aca4762de84c5002752614f6ccb9fcaa4582289"
+      "bytes": 4014,
+      "sha256": "9f833eed3f33b7546ffaead657c5d0768fbd2c04d18ee647bc6a3c051963ac91"
     },
     {
       "path": ".github/workflows/africa-starter-audit-ci.yml",
       "bytes": 1668,
       "sha256": "84645f4bec75f289444b5ffad0f75773ad85513e7b0dab1941924e95c22cded6"
+    },
+    {
+      "path": "src/game/cities/yaounde/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/lome/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/accra/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/nairobi/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/algiers/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
     }
   ],
   "validation": {
@@ -218,14 +243,19 @@
     "failed": 0,
     "node": "22.19.0",
     "heapMb": 256,
-    "logSha256": "02301c8b07b5e04e053e52e1e72a60393d32bdb514dcd3e3106d454754ec3782",
-    "remoteTypecheck": "pending",
+    "logSha256": "01ed8226cda537014e48710741d21830ef823ff27ebe389f15a85e6e84021c30",
+    "remoteTypecheck": "pending on content-wrapper follow-up",
     "scope": "Source map/content contracts and isolated engine admission. Production/shared registry/browser/host-receipt acceptance remains pending.",
     "priorRemoteAudit": {
       "source": "f2b9c9ab44919c3db34577130e8beaa42fee27c0",
       "url": "https://github.com/kromate/joinallworld/actions/runs/37938113594",
       "runtime": "16/16 and pinned assets PASS on Node 22 and 24",
       "typecheck": "FAIL missing Node ambient types; compiler invocation corrected, fresh audit pending"
+    },
+    "priorRemoteAcceptedAudit": {
+      "source": "dca60279d60aed40466daa752ee7c295b9229502",
+      "url": "https://github.com/kromate/joinallworld/actions/runs/37939357327",
+      "status": "PASS Node22/24 assets,16engine/map/content cases and strict types. Browser bundle follow-up adds separate per-city content wrappers; exact new source requires fresh audit."
     }
   },
   "preservation": [
@@ -246,6 +276,7 @@
     "Foreign atlas selection/reopen uses real country on Africa level",
     "Nigeria country key normalized to ng for atlas grouping",
     "Planned route callback binds its country ID",
-    "Strict audit explicitly includes installed Node typings"
+    "Strict audit explicitly includes installed Node typings",
+    "Each capital now has its own lazy content chunk; shared contentBuilder no longer masquerades as another city content chunk"
   ]
 }

@@ -16,3 +16,5 @@ Integration follow-ups after applying the patch:
 The final patch keeps foreign internal starter units out of Nigeria atlas states. Foreign capital selection and map reopen use the real country on the Africa level. Nigeria remains at its existing state level. The source map core includes the real airport as well as the central sample, so the arrival point is inside the initial city camera frame. `plannedRoutes` uses derived country status and binds its country ID.
 
 No regional climate is authored in this starter slice. Existing fallback game weather is provisional; it must not be presented as real local weather or uniform African humidity. Source-backed monthly conditions can be integrated separately.
+
+Each capital also has a lazy `content.ts` wrapper. Shared starter content lives in `africa/contentBuilder.ts`, so the existing browser entry and download-budget checks can find exactly one selected `city-<id>-content` chunk without treating the reusable builder as another city. Do not relax the startup or no-other-city assertions. All five real geometry hashes are unchanged by this wrapper correction.

@@ -1,0 +1,62 @@
+name: Office exposed-neck skin semantics (strict GLB lifecycle review v9)
+on:
+  push:
+    branches:
+      - codex/graphics-office-neck-semantic-v9
+permissions:
+  contents: read
+concurrency:
+  group: office-neck-semantic-v9-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_SNAPSHOT_SHA256: c5e32def1b38589ba61a4bd042318bb7a11a081e901614431a9698c1cb16e892
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable snapshot before dependency install
+        run: node --max-old-space-size=32 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify local imports and asset URLs resolve inside the snapshot
+        run: node --max-old-space-size=32 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/verify-import-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Record preinstalled Chrome binary
+        shell: bash
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_BIN"
+          CHROME_REAL="$(readlink -f "$CHROME_BIN")"
+          test -n "$CHROME_REAL"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Bundle under 96 MiB heap, 220 MiB RSS, 25 seconds
+        id: bundle
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node --max-old-space-size=32 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/run-bounded-linux.mjs build "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Run geometry/domain, skin-weight, CDP request lifecycle, monitor and browser contract tests under 96 MiB heap, 220 MiB RSS, 25 seconds
+        id: synthetic
+        if: always() && steps.bundle.outcome == 'success'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node --max-old-space-size=32 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/run-bounded-linux.mjs synthetic "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Capture matched body-material neck A/B under 2 GiB and 60 seconds
+        if: always() && steps.bundle.outcome == 'success' && steps.synthetic.outcome == 'success'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node --max-old-space-size=32 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/run-bounded-linux.mjs browser "$EXPECTED_SNAPSHOT_SHA256"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-neck-semantic-v9-${{ github.run_id }}
+          path: evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v9/remote-ci-v9/remote-results/${{ github.run_id }}/
+          if-no-files-found: warn
+          retention-days: 14

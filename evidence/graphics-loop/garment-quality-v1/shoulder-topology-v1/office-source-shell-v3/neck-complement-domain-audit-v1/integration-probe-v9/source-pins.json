@@ -1,0 +1,35 @@
+{
+  "status": "prepared-for-root-review-not-published",
+  "candidate": "v9: topology-limited exposed-neck COLOR_0 edit plus unchanged v7 geometric complement",
+  "classification": "visible spine_03 vertices in source triangles adjoining neck_01, with neighboring dominant bones limited to neck_01/spine_02/spine_03; only existing green top contribution moves to red skin",
+  "protection": "No source positions, normals, skin indices/weights, index data, shell fabric, attribute layout, or production body mask may change. Complement geometry and excluded neck residuals remain separate measures.",
+  "visualInputs": {
+    "skin": "#845236",
+    "top": "#243a66",
+    "outfit": "office",
+    "poses": [
+      "idle",
+      "interact@0.6s"
+    ],
+    "yawDegrees": [
+      0,
+      45,
+      90
+    ]
+  },
+  "remoteWorkflow": "codex/graphics-office-neck-semantic-v9",
+  "bodyGlbSha256": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clipPack": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "execution": "Only the focused three-test COLOR_0 helper suite ran locally with Node 22.19.0, --max-old-space-size=32; all 3 passed. No fixture build, actual GLB processing, or browser review has occurred.",
+  "candidateFileSha256": {
+    "fixture.ts": "5c221c98e0c880fa29c86342ae4c1577ac66ffd1ec73e38db176f15a2b7ae362",
+    "viewer.ts": "37b02e07678ccf93a37a09a310536135e697917215dc4d3ed91158910e58a14b",
+    "neck-skin-semantics.ts": "ed1248089478956ce6aefbc6ff1c33cf76d25b4bbead80543a960e03d059b66e",
+    "neck-skin-semantics.test.ts": "e0a57de731d456e5e828a6c344a0dfa9b330e354bdfc4a8279040bb9e586348b",
+    "neck-complement-v7.ts": "f70c8d7d224c1d5715956df5c63ba0c8ab3f585ced2596759e2441ec7d7da7cd",
+    "index.html": "d731673340d7df8e7c4c337123914b1cf7b5c570e70bf67bf0898d51cd9adbdc"
+  }
+}

@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Actual furniture source handoff - 2026-10-09T19:13:02.669484+00:00
+
+GRAPHICS requested actualchair/bed/worktop/door contracts for itsnewbody. One existingRoot worker completedboundedread-only inventory; actuallatestparentbound metadata independently confirmsgpt-6-luna/high. Root verifiedfrozen3af sourceblobs and concretegeometry/formulas, corrected decorativevenue slab versus realopening and preservedexactseatedoffsetformula. [Finite fixture source handoff](furniture-support-source-handoff.json) has5boundedinstances and explicittransforms/poseanchorversusmesh contact distinctions. Beddeclared0.56 differsfrommattress0.52/blanket0.575/pillow0.63; currentclipoffsetscannottransfer tonewbody. Renderedcontact/continuousclearance/generationproof stillrequired. No sharedruntime edit/tests/build/GPU/browser or newcurrentreleasegate; GRAPHICS ownsadoptionpacket.
+
+Currentfive-country stage scopedaccepted/source3af/fullCI14PASS; WORLD productionrelease andlive savesnext. Rootrecordsleave fullphysical/later/business/liveGoal scopeopen, goalACTIVE.
+
 ## Funded five-country native milestone accepted - 2026-10-09T19:11:25.359192+00:00
 
 Read/hashed sanitized finalcomparison07d76433 and verified22declared checks alltrue, exact3af/f776 and aggregatefictionalbalance200000+2000000-1604000=596000. Integration independently reconciled private snapshots; actualverifiedAstra finalcapture19:08:16.723/source51ac51bb afterfive roundtrips/localwalks/meals/reloads/returns and finalApapa/SpringBed UI. Root didnotreadrawsnapshot/browser/store. All10distinct paidactions/receipts/matchingledgers, walletchain, originalhome/inventory/cars/estate/ownership/oldreceipts/founder audit retained in qualifiedreport. [Exact review](sealed-africa-3af-review.json). QAgrant is explicit; this doesnotprove ordinary-earnedprogression, ONteaching, physicalphone or fullphysicaljourney. Offline namedoperator table requested; no repeatstage justforreview.

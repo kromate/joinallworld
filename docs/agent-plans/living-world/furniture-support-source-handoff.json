@@ -1,0 +1,140 @@
+{
+  "observedAt": "2026-10-09T19:13:02.669484+00:00",
+  "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "status": "Source-only geometry handoff; not actual scene/contact/clearance acceptance",
+  "authority": {
+    "canBoard": false,
+    "routeAuthorized": false,
+    "wholeBodyAdoption": false
+  },
+  "workerModelVerification": {
+    "sessionId": "01a11c38-2958-7d33-8e67-3d75ef0f8428",
+    "parentId": "01a11c35-ad88-7aa3-ac5b-6b7d910724ad",
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "turnContextAt": "2026-10-09T19:09:06.880Z",
+    "method": "Root actualparent-bound session_meta/turn_context only; worker could not introspect own model"
+  },
+  "sourceBlobs": {
+    "src/scene/home-scene.ts": "6da700565a86564d1ac3d3e66cb7bcbb697fa544",
+    "src/scene/body/skinned.ts": "30a84b20e7d7953c27e20ec316dae34b371e178e",
+    "src/scene/props.ts": "593b7183d766d0380e8a16c18f0c7cf28d3ba5db",
+    "src/scene/venues-work.ts": "cc1dde53412ba3c12641879c573467b31d15dc1b",
+    "src/scene/venue-scenes.ts": "e14035777a3467e6fab59be6861001307e9632ba",
+    "src/scene/smart-objects/door.ts": "aad911ea7b13587361f3228ed604541331b479da"
+  },
+  "homeTransform": {
+    "source": "src/scene/home-scene.ts:130-153,284,324,368,607-620",
+    "units": "Source scene units; furniture local dimensions multiplied by tile=10/grid. Do not assume an unscaled global metre/contact plane.",
+    "roomWidth": 10,
+    "floorLift": 3.4,
+    "groupTranslation": [
+      -2.5,
+      0,
+      -2.5
+    ],
+    "along": "-5 + (index + footprintSpan/2)*tile",
+    "floorFurnitureMount": "x=along(item.x,rotatedFootprint.w), y=3.4*floor+0.015, z=along(item.y,rotatedFootprint.h), ry=-rot*pi/2, scale=tile; compose fullparent transforms",
+    "wallFurniture": "Separate mountOf branch, scale=max(tile,0.8), wall mounting/rotation; not interchangeable with floor fixture"
+  },
+  "fixtures": [
+    {
+      "id": "home-chair",
+      "source": "home-scene.ts:147,209",
+      "localSeatBox": {
+        "center": [
+          0,
+          0.38,
+          0
+        ],
+        "size": [
+          0.5,
+          0.06,
+          0.5
+        ]
+      },
+      "localSeatTop": 0.41,
+      "declaredPelvisAnchor": {
+        "top": 0.41,
+        "z": -0.08,
+        "xs": [
+          0
+        ]
+      },
+      "qualification": "Literal renderedbox and anchor; no general collision/contact contract."
+    },
+    {
+      "id": "home-bed",
+      "source": "home-scene.ts:150,174-179",
+      "declaredTop": 0.56,
+      "mattressTop": 0.52,
+      "blanketTop": 0.575,
+      "pillowTop": 0.63,
+      "pelvisZ": "0.64-D*0.38",
+      "acrossX": "(i-(W-1)/2)*0.8",
+      "qualification": "Declared support0.56 is not a single rendered top; fixture must measure mattress/blanket/pillow and actorhead/clothing separately."
+    },
+    {
+      "id": "office-chair-desk",
+      "source": "props.ts:43,57-63,230-235; venues-work.ts:127-132",
+      "deskPosition": [
+        4.2,
+        0,
+        1.6
+      ],
+      "chairPosition": [
+        4.2,
+        0,
+        2.55
+      ],
+      "chairYaw": "pi",
+      "seatBoxSize": [
+        0.62,
+        0.1,
+        0.6
+      ],
+      "seatTop": 0.6,
+      "tableTop": 1.05,
+      "counterTopDefault": 1.35,
+      "qualification": "Compose venue scene and parent transforms. Default propvalues do not prove all callers use them; actualoffice actor/renderedchair should bind sameinstance."
+    },
+    {
+      "id": "home-worktops",
+      "source": "home-scene.ts:237-240,575-577,587-592",
+      "deskRenderedLocalTop": 0.65,
+      "deskDeclaredWorldY": "3.4*floor+0.015+0.65*tile",
+      "stoveDeclaredWorldY": "3.4*floor+0.015+0.73*tile",
+      "cookerDeclaredWorldY": "3.4*floor+0.015+0.94*tile",
+      "qualification": "Bind actualshape, tools and fulltransform; separate overlay plane from visibleworktop. Table hand/toolreach remains unverified."
+    },
+    {
+      "id": "home-moving-door",
+      "source": "home-scene.ts:450-463,517-535,1028-1037; smart-objects/door.ts:4-32",
+      "openingWidth": "min(tile*0.86,1.5)",
+      "openingHeight": "min(3.4-0.08,max(2.3,1.81*bodyScale+0.45))",
+      "leafBox": "center(0.03,height/2,width/2), size(0.07,height,width); hinge(x,0,z-width/2)",
+      "durationSeconds": 2.4,
+      "yawAtFullOpen": "-pi/2",
+      "qualification": "Actualanimatedhome door, but actor/leaf/frame/wall sweptvolume notverified. props.ts decorativedoor1.5x3 is a framedslab, not a traversable aperture."
+    }
+  ],
+  "bodyPlacement": {
+    "source": "src/scene/body/skinned.ts:43-46,211-215,322-326",
+    "seatedOrigin": "back=0.332*scale*proportions.depth; x=seat.x+sin(yaw)*back,y=top-0.47*scale,z=seat.z+cos(yaw)*back",
+    "lyingOrigin": "y=top,back=0; actualpose/get-up conditions apply",
+    "qualification": "Clip-derived currentactor constants; newactor/clothing cannot assume samecontact offsets."
+  },
+  "contactBoundary": {
+    "source": "src/scene/venue-scenes.ts:254-305; home-scene.ts:1094-1106",
+    "existing": "Upward solid triangles limited to groundband/declareddecks; excludes seat/table/roof/foliage tops. Home object-use phases suppress footsolver.",
+    "missing": "Generalchair/bed/worktop contact and continuousfullbody/doorclearance authority; generation-boundfurniture+actor+clothing+pose fixture."
+  },
+  "producerAcceptance": [
+    "Renderactualsame-source furnitureinstance/actor/clothing/fulltransform, notsyntheticplane",
+    "Verifyseat/back, mattress/pillow/head, hand/toolreach and door/frame/wall threshold throughtransition+settledposes",
+    "Use actualmesh contact oracle includingcompletegeometry and pose/generation binding",
+    "Failclosed on stale/incompleteactor/pose/furniture/scene evidence; preserveNPC/family/residence/editconsent",
+    "Independent actualAstra scene review and exacttests/build/budgets beforefutureadoption"
+  ],
+  "rootActions": "Read-only source verification at frozencommit, actualLuna model metadata and private/report documentation. No sharedruntime/test/build/browser/GPU/server/upload."
+}

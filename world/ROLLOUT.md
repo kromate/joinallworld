@@ -1,5 +1,98 @@
 # Decisions and repeatable rollout after the first compiler
 
+9 October2026: exact3880c17f/run37915503802 accepts the actual Linux/macOS
+shared-OFD campaign lease bridge and complete bounded processing windows:
+495 distinct tests, three policy checks and World TypeScript, with11 repeated
+actual macOS lease tests. Read CAMPAIGN-LEASE-WINDOW-OPERATIONS.md and its receipt.
+The original45-source/1MiB control limits are unchanged. Next replace actual
+campaign/acquisition ownership and forward it through every surviving mutating
+worker, add finite cumulative accounting, verify terminal V3 admission without
+another attempt, then execute/audit every V2 window against the full source union.
+Temporary legacy PID markers alone do not establish mixed-version crash safety.
+Country geometry, Nigeria rendering/adapter and physical-phone proof remain open;
+this source phase releases no new map detail.
+
+9 October2026: exact cfb5c3b1/run37908535625 accepts an in-process sealed batch
+handoff and actual source-to-plan engine-capacity gate:478 tests, three policy
+checks and World TypeScript, unchanged45-source/1MiB control limits. Read
+INDEX-SHARD-HANDOFF-OPERATIONS.md. Next explicitly integrate V2 child workers,
+restartable256-capture/600s windows after one admission, a real inherited campaign
+lease and finite cumulative namespace accounting. Source membership/union audit,
+geometry, Nigeria integration and physical phones remain required; no map release.
+The session and global-accounting documents are unimplemented designs, not proof.
+
+9 October 2026: supervised full-plan admission is accepted on exact ab0589e67,
+run37905609552:467 tests, three policy checks and World TypeScript. Actual
+SIGKILL/recovery and 4096-request/16-shard admission retain the original limits.
+See INDEX-SHARD-BATCH-OPERATIONS.md. Next integrate bounded authority-gated child
+capture/audit sessions and same-campaign global namespace charges, then compile
+and stream real country geometry. No runtime release or phone acceptance is
+claimed. Earlier checkpoints below are historical where superseded.
+
+Latest builder checkpoint — 9 October2026: exact019f9179/run37898985723 is terminal
+SUCCESS with432 tests, three policy checks and World TypeScript. Complete plan
+validation, anonymous bounded transport, immutable controller records and actual
+4096-request/every-binding TS/Python conformance are accepted; source/control caps
+are unchanged. See INDEX-SHARD-PLAN-VALIDATION.md and latest PROGRESS.md. Connected
+batch/root admission with real frozen descriptor evidence and finite global
+accounting remain next. No runtime/map release or whole-world completion claim.
+Older checkpoints below are historical where superseded.
+
+Latest builder scaling checkpoint —9 October2026: exactcb562c69/run37895287687
+is terminal SUCCESS:413 tests+3 release-policy checks and World TypeScript.
+Connected campaign audit, read-only evidence and bounded namespace shard planning
+pass, as does opaque atomic batch reservation with actual before/after-commit
+SIGKILL recovery and separate v2 binding codecs; raw/storage caps are unchanged.
+Legacy openers remain v1-only. Connected plan admission, controller/transport
+execution and finite global aggregate
+admission are next. Planner status is explicitly not-admitted/not-compiled;
+country geometry, all specified interruption/corruption fixtures and physical
+phones remain open. Source witness allowlist repaired without wildcard expansion;
+no production runtime or map detail is released by this builder phase. Read
+PROGRESS.md, INDEX-SHARD-RESERVATION-OPERATIONS.md and INDEX-SHARD-PLAN-SPEC.md;
+older paragraphs below are historical.
+
+Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
+on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443
+is in progress, not accepted. It uses six exact pinned raw copies and fixed
+Node22.19.0/Python3.12.14 runtime selection. The current small suite passes32;
+these checks do not replace actual worker/session/SDK/compiler acceptance.
+No main/runtime publication or new map detail accompanies this diagnostic.
+Keep the same-Ledger campaign gate, global shards, compiled country streaming,
+Nigeria renderer integration and phone proof open. See latest PROGRESS.md.
+
+Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
+frozen query membership and live-token completion are implemented.228 Python +43
+Node tests and full World TypeScript pass. Implementationa75c59af also passes
+five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next gate, now in
+local implementation and not yet accepted: raw/SQL kernel, fixed worker,
+charged WAL-aware copies and durable controller recovery. File-only inventory
+checks pass11; current small no-worker suite passes30 including14 capture-record,
+7 codec/file,2 capacity and7 tooling checks. Registry/capture/audit use shared8KiB-rounding
+preflight with unchanged storage caps. Earlier logical kernel7 and World
+TypeScript pass. Final-source kernel/compiler, real audit execution,
+the drafted terminal session/SDK bridge, campaign integration and the
+independent acceptance fixtures remain open. Read the first PROGRESS.md section
+and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+Next independent raw/index audit, deterministic globally admitted shards/operator
+materials and compiled streamed country geometry. Geographic foundation remains
+distinct from explorable/playable coverage; no runtime upload/map detail thisphase.
+Older checkpoint paragraphs below are historical where superseded. Existing memory
+caps and serialized intensive-work handoffs remain in force while pressure warns.
+
+Current builder checkpoint — 9 October 2026: canonical namespace recovery and paired
+worker leases pass126 Python/23 engine checks plus World TypeScript; see PROGRESS.md.
+Global outlines/places and regional pilots remain distinct from national3D coverage.
+Next complete bounded persistent controller/registry supervision and verified capture
+campaign hookup before country geometry/streaming promotion. No new runtime deployed
+in this builder phase; latest accepted APP UI production receipt is sourcea446/version64ed
+in the shared coordination record. Older production and regional-next-step paragraphs
+below are historical where superseded. The current human concurrency amendment in
+AGENT-COORDINATION.md permits bounded source agents/tabs; retain heavy1/minifier1,
+check actual memory pressure and do not increase concurrency on WARNING.
+
+
 Latest production receipt: source73549b8a/versiond872e923 is accepted; exact remote compiler CI and actual Countries/Senegal/Fiji/Nigeria/Lagos/synthetic continuity passed. Desktop proof only; worldwide3D and foreign gameplay remain open. Local work is serialized LIVING → GRAPHICS → WORLD; see [PROGRESS.md](PROGRESS.md) and [WORLD-GAME-MAP-OPERATIONS.md](WORLD-GAME-MAP-OPERATIONS.md). Older pending-forward paragraphs below are historical and superseded by this accepted receipt.
 
 Latest checkpoint: the additive Countries chooser and 257 exact outlines were uploaded from source `049a3350`, with sealed package bounds, public build adoption and synthetic continuity verified. Actual production browser QA found a negotiated Zstandard response-header rejection; the native Fetch transport correction `84785af4` is integrated with fresh APP UI/loading main `83a672a2` in `8bd05cff`. Combined affected Node134/134, full Worker142/142, production build and unchanged download caps pass. Source-main/CI, a fresh sealed release/continuity and actual public-browser acceptance remain required; startup raw/gzip headroom is only4/75bytes. Read WORLD-GAME-MAP-OPERATIONS.md and WORLD-GAME-MAP-SPEC.md. Direct verified production deployment is authorized; WORLD retains sole upload ownership. The human reiterated desktop slowdown: intensive work follows explicit LIVING-WORLD → GRAPHICS → WORLD handoffs with one owner across builds/tests/servers/browsers, 1536 MiB Node heaps and one minifier worker. Bounded exact-range caching remains accepted at `158ce56a`; global feature ownership, compiled country detail, unattended recovery and Nigeria rendering integration remain open.

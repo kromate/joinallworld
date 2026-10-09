@@ -1,0 +1,139 @@
+{
+  "format": "index-shard-reservation-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "19dbfe1664c533c1f667badd12eb8934fc02c2f7",
+  "runId": 37893670937,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37893670937",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11,
+    "python-regression.stderr": 77,
+    "python-boundary.stderr": 158
+  },
+  "nodeTests": {
+    "node-audit.tap": 22,
+    "node-contracts.tap": 58,
+    "sdk-audit.tap": 8,
+    "campaign-regression.tap": 39,
+    "shard-plan.tap": 9,
+    "release-source.tap": 5
+  },
+  "distinctTests": 406,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "sourceFiles": {
+    "world/tooling/index_reservations.py": {
+      "sha256": "ac9189406cbd280f3ecd142f72d56a4d10e54193091d8a5246f18871ee030ab8",
+      "bytes": 14039
+    },
+    "world/tooling/test_index_reservations.py": {
+      "sha256": "4192c52a8cd011b91f387d953b39a13915ac6c3af7ae3443da6fb4c107485628",
+      "bytes": 25230
+    }
+  },
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "5a5f52bd651cf6e47d898e1bbe67f0e7d642a27bb35090ab786b5bef51a927fe",
+      "bytes": 10428
+    },
+    "node-audit.tap": {
+      "sha256": "18de63e02b4336183144da3a50414bc23d7605cd1d793ec94a07c4b898fb4fe2",
+      "bytes": 5847
+    },
+    "node-contracts.tap": {
+      "sha256": "5d74a21fa2d6f89711f9b3975a506fb51433caccbb3226b1b1211e83194299eb",
+      "bytes": 14346
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "707d98b135fde7169c22014892a18eb4380b9fff98646eb912bd2cf0e9064cd9",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "db93bc98291c61cd87870298e4cd02726e360b78e51ca726eddb9097e8253b17",
+      "bytes": 1418
+    },
+    "python-boundary.stdout": {
+      "sha256": "329e22f0e30e6dd1f839b498bb6833b440e753c9c99b592299275b79585382dc",
+      "bytes": 6830
+    },
+    "python-regression.stderr": {
+      "sha256": "0f9565b61aab717a72933d953caa0ce85285388b8c09237357ef3cb12e7c43b3",
+      "bytes": 1133
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "9ae2a3d402e897265985486777e3d6520dd64c3337b3dd7e4b8ec80ec5562e28",
+      "bytes": 890
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "22d79e1cc2026070f11d2cea941d6c6f072a6f0919d0a8282d9b57b8bc55cb31",
+      "bytes": 1360
+    },
+    "sdk-audit.tap": {
+      "sha256": "8429b0da77f691f9d2bf102ac1d1ef74330d189e74d74a9b30ad5bfabb5b4344",
+      "bytes": 2501
+    },
+    "shard-plan.tap": {
+      "sha256": "1924a4738b578ee6baa808e2e400dc81d8a821816718f65ac72523b0fc3c2fa5",
+      "bytes": 2486
+    },
+    "source-sha.txt": {
+      "sha256": "911d87017fc0997d368f050991524b150325372c277d359dcbeee01fe1ce8cf5",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limitations": [
+    "Opaque reservation only: not frozen plan admission, semantic binding validation or allocation.",
+    "Current v1 schema and aggregate/slot ceilings unchanged; no refunds, resize or quota reset.",
+    "Explicit membership-bound child bindings, held controller batch execution and finite global aggregate admission remain open.",
+    "SIGKILL cases use private disposable registries; they do not prove whole-country/global unattended completion.",
+    "Country owner/reference compilation, streamed geometry, Nigeria integration and physical phone proof remain open.",
+    "No production runtime upload or new playable destination."
+  ]
+}

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { Ledger } from './ledger.ts';
 import { ALLOWED_ROOT, compileCampaignPlan, jobIdentity, OUTPUT_ROOT, REPOSITORY_ROOT, type WorldPlan } from './pipeline.ts';
 import { validateManifest, validateTile } from './validate.ts';
-import { sha256 } from './pack.ts';
+import { canonicalJson, sha256 } from './pack.ts';
 import { validateAcquisitionRequest } from './acquire.ts';
 import { AcquisitionBudgetError } from './acquisition-errors.ts';
 import { readBoundedLocalFile } from './inventory-reader.ts';
@@ -17,6 +17,15 @@ import { loadVerifiedGridQueryPlan, makeGridQueryUnit } from './grid-query-bindi
 import type { CountryGridPlan } from './country-grid-types.ts';
 import type { GridQueryCampaign, GridQueryUnit, GridQueryCoverage, GridQueryJobView, GridQueryResult } from './grid-query-types.ts';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult, CampaignUnit, WorldCampaign } from './production-types.ts';
+import { openFeatureIndexSession, prepareFeatureIndexSessionConfiguration, FeatureIndexSessionUnreaped, FeatureIndexSessionTerminated,
+  readFeatureIndexSessionAuditEvidence, type FeatureIndexSessionAuditInput,
+  type FeatureIndexSession, type FeatureIndexSessionConfiguration } from './feature-index-session.ts';
+import { bindCampaignIndex, readCampaignIndexBinding, campaignIndexInput, campaignIndexJob, campaignIndexCompletion, verifyCampaignIndexCompletion, verifyCampaignIndexFiles, freezeCampaignIndexConfiguration, type CampaignIndexBinding, type CampaignIndexCoverage } from './campaign-index-state.ts';
+import { runCampaignIndexAuditPhase } from './campaign-index-audit.ts';
+import { CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
+  campaignIndexAuditJob, validateQualifiedCampaignIndexAuditCompletion, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
+import { FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT, FEATURE_INDEX_SHARD_PLAN_MAX_REQUESTS, encodeFeatureIndexShardPlan, type FeatureIndexShardPlanInput } from './index-shard-plan.ts';
+import { assertFeatureIndexShardEngineCapacity, calculateFeatureIndexShardEnvelopeOverhead, prepareFeatureIndexShardPlanRequest } from './index-shard-evidence.ts';
 
 const MAX_CAMPAIGN_MS = 48 * 60 * 60 * 1000;
 // Source input is a campaign-wide unique-pin budget, hard capped at 64 GB.
@@ -29,13 +38,22 @@ export type AnyWorldCampaign = WorldCampaign | GridQueryCampaign;
 type AnyCampaignUnit = CampaignUnit | GridQueryUnit;
 type AcquisitionBuildLock = <T>(root:string,operation:(acquire:Acquire)=>Promise<T>,options?:{signal?:AbortSignal;timeoutMs?:number})=>Promise<T>;
 type AcquireModule = { acquireRegion?:Acquire; withAcquisitionBuildLock?:AcquisitionBuildLock };
-export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; pythonExecutable?: string; inventoryManifestPath?: string; countryGridPlanPath?: string }
+export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; maxIndexJobs?: number; maxAuditJobs?: 0 | 1; featureIndex?: FeatureIndexSessionConfiguration; pythonExecutable?: string; inventoryManifestPath?: string; countryGridPlanPath?: string }
+export interface CampaignIndexAuditCoverage {
+  scope: 'raw-index-and-campaign-observations'; geometryCoverage: 'not-compiled';
+  enabled: boolean; status: 'disabled'|'incomplete'|'pending'|'leased'|'failed'|'exhausted'|'complete';
+  jobId: string|null; attempts: number;
+  qualifications: { rawIndexConservation: 'complete'|'incomplete'; readOnlyStatePreserved: 'complete'|'incomplete'; campaignObservationCompleteness: 'complete'|'incomplete' };
+  reasons: string[];
+}
 export interface CampaignReport {
   id: string; status: 'complete'|'exception'|'running'|'stopped';
   counts: { requested:number; sourceUnits:number; compiled:number; exception:number; protected:number; unknown:number };
   stages: { acquire:number; compile:number; validate:number };
   jobs: Array<Record<string, unknown>>; failures:string[]; stopped:string|null;
   queryCoverage?: GridQueryCoverage;
+  indexCoverage?: CampaignIndexCoverage;
+  auditCoverage?: CampaignIndexAuditCoverage;
 }
 function canonical(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -117,16 +135,17 @@ async function ensureCanonicalDirectory(target:string):Promise<void>{
 }
 async function verifyRegularStateFile(target:string):Promise<void>{try{const info=await lstat(target);if(info.isSymbolicLink()||!info.isFile())throw new Error(`campaign state file must be a regular file without symlinks: ${target}`);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}}
 function inside(parent:string,child:string):boolean{const relative=path.relative(parent,child);return relative===''||(!relative.startsWith(`..${path.sep}`)&&relative!=='..'&&!path.isAbsolute(relative));}
-async function validateCampaignRoot(root:string):Promise<string>{
-  const requested=path.resolve(root),production=path.resolve(DEFAULT_ROOT),tempLexical=path.resolve(tmpdir());
-  if(!inside(production,requested)&&!inside(tempLexical,requested))throw new Error('campaign state root must be inside .cache/world-build/campaigns or an isolated system temporary directory');
+async function validateCampaignRoot(root:string,readOnly=false):Promise<string>{
+  const requested=path.resolve(root),production=path.resolve(DEFAULT_ROOT),tempLexical=path.resolve(tmpdir()),tempReal=await realpath(tmpdir());
+  if(!inside(production,requested)&&!inside(tempLexical,requested)&&!inside(tempReal,requested))throw new Error('campaign state root must be inside .cache/world-build/campaigns or an isolated system temporary directory');
   if(inside(production,requested)&&requested!==production)throw new Error('production campaigns must use the shared canonical campaigns root');
-  let check=requested;while(check!==production&&check!==tempLexical){try{const info=await lstat(check);if(info.isSymbolicLink())throw new Error(`campaign state path contains a symlink: ${check}`);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}const parent=path.dirname(check);if(parent===check)break;check=parent;}
+  let check=requested;while(check!==production&&check!==tempLexical&&check!==tempReal){try{const info=await lstat(check);if(info.isSymbolicLink())throw new Error(`campaign state path contains a symlink: ${check}`);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}const parent=path.dirname(check);if(parent===check)break;check=parent;}
   let ancestor=requested;const missing:string[]=[];
   while(true){try{await lstat(ancestor);break;}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;const parent=path.dirname(ancestor);if(parent===ancestor)throw e;missing.unshift(path.basename(ancestor));ancestor=parent;}}
-  const canonical=path.join(await realpath(ancestor),...missing),productionReal=path.join(await realpath(REPOSITORY_ROOT),'.cache','world-build','campaigns'),tempReal=await realpath(tmpdir());
+  const canonical=path.join(await realpath(ancestor),...missing),productionReal=path.join(await realpath(REPOSITORY_ROOT),'.cache','world-build','campaigns');
   if(!inside(productionReal,canonical)&&!inside(tempReal,canonical))throw new Error('campaign state root resolves outside its approved builder or temporary root');
-  await ensureCanonicalDirectory(canonical);return canonical;
+  if(readOnly){const info=await lstat(canonical);if(!info.isDirectory()||info.isSymbolicLink()||await realpath(canonical)!==canonical)throw new Error('campaign status requires an existing canonical state directory');}
+  else await ensureCanonicalDirectory(canonical);return canonical;
 }
 async function acquireCampaignLock(root:string):Promise<()=>Promise<void>>{
   const file=path.join(root,'.campaign-runner.lock'),owner=`${process.pid}:${randomUUID()}`;
@@ -139,10 +158,11 @@ async function acquireCampaignLock(root:string):Promise<()=>Promise<void>>{
 async function recordStage(dir:string,unitId:string,stage:'acquire'|'compile'|'validate',state:'started'|'complete'|'exception'):Promise<void>{
   const handle=await open(path.join(dir,'stages.jsonl'),'a',0o600);try{await handle.writeFile(`${JSON.stringify({unitId,stage,state,at:Date.now()})}\n`);await handle.sync();}finally{await handle.close();}
 }
-async function stageCounts(dir:string):Promise<{acquire:number;compile:number;validate:number}>{
+async function stageCounts(dir:string,repair=true):Promise<{acquire:number;compile:number;validate:number}>{
   let data='';try{data=await readFile(path.join(dir,'stages.jsonl'),'utf8');}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
   const completed=new Set<string>(),lines=data.split('\n');let validLines=lines;
   if(data&&!data.endsWith('\n')){
+    if(!repair)throw new Error('campaign stage journal needs recovery by run/resume; status is read-only');
     const tail=lines.at(-1)!;let valid=true;try{JSON.parse(tail);}catch{valid=false;}
     if(valid){validLines=[...lines.slice(0,-1),tail];await writeFile(path.join(dir,'stages.jsonl'),`${validLines.join('\n')}\n`);}
     else{const audit=path.join(dir,'stage-journal-repair.jsonl'),handle=await open(audit,'a',0o600);try{await handle.writeFile(`${JSON.stringify({action:'discard-truncated-final-stage-record',tail,at:Date.now()})}\n`);await handle.sync();}finally{await handle.close();}validLines=lines.slice(0,-1);await writeFile(path.join(dir,'stages.jsonl'),validLines.length?`${validLines.join('\n')}\n`:'');}
@@ -151,10 +171,10 @@ async function stageCounts(dir:string):Promise<{acquire:number;compile:number;va
   return{acquire:[...completed].filter(x=>x.endsWith(':acquire')).length,compile:[...completed].filter(x=>x.endsWith(':compile')).length,validate:[...completed].filter(x=>x.endsWith(':validate')).length};
 }
 type UsageEntry={key:string;sequence:number;sourceKey:string;inputPinKey?:string;phase:'reserved'|'settled';networkBytes:number;inputBytes:number;outputBytes:number;diskBytes:number;requestHash?:string;receiptPath?:string};
-async function usageEntries(dir:string):Promise<Map<string,UsageEntry>>{
+async function usageEntries(dir:string,repair=true):Promise<Map<string,UsageEntry>>{
   let data='';try{data=await readFile(path.join(dir,'usage.jsonl'),'utf8');}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
   const rows=new Map<string,UsageEntry>(),lines=data.split('\n');let valid=lines;
-  if(data&&!data.endsWith('\n')){const tail=lines.at(-1)!;try{JSON.parse(tail);valid=lines;await writeFile(path.join(dir,'usage.jsonl'),`${data}\n`);}catch{const audit=await open(path.join(dir,'usage-journal-repair.jsonl'),'a',0o600);try{await audit.writeFile(`${JSON.stringify({action:'discard-truncated-final-usage-record',tail,at:Date.now()})}\n`);await audit.sync();}finally{await audit.close();}valid=lines.slice(0,-1);await writeFile(path.join(dir,'usage.jsonl'),valid.length?`${valid.join('\n')}\n`:'');}}
+  if(data&&!data.endsWith('\n')){if(!repair)throw new Error('campaign usage journal needs recovery by run/resume; status is read-only');const tail=lines.at(-1)!;try{JSON.parse(tail);valid=lines;await writeFile(path.join(dir,'usage.jsonl'),`${data}\n`);}catch{const audit=await open(path.join(dir,'usage-journal-repair.jsonl'),'a',0o600);try{await audit.writeFile(`${JSON.stringify({action:'discard-truncated-final-usage-record',tail,at:Date.now()})}\n`);await audit.sync();}finally{await audit.close();}valid=lines.slice(0,-1);await writeFile(path.join(dir,'usage.jsonl'),valid.length?`${valid.join('\n')}\n`:'');}}
   for(const line of valid.filter(Boolean)){const row=JSON.parse(line) as UsageEntry;if(!Number.isSafeInteger(row.sequence)||row.sequence<1)throw new Error('campaign usage journal has invalid sequence');rows.set(row.key,row);}return rows;
 }
 async function recordUsage(dir:string,entry:Omit<UsageEntry,'sequence'>):Promise<UsageEntry>{const rows=await usageEntries(dir),sequence=Math.max(0,...[...rows.values()].map(x=>x.sequence))+1,full={...entry,sequence};const handle=await open(path.join(dir,'usage.jsonl'),'a',0o600);try{await handle.writeFile(`${JSON.stringify(full)}\n`);await handle.sync();}finally{await handle.close();}return full;}
@@ -215,7 +235,7 @@ async function verifyInventorySnapshot(filePath:string, expectedHash:string, req
 }
 function campaignInventoryUnits(campaign:AnyWorldCampaign){return{source:[...new Set(campaign.units.filter(unit=>unit.kind!=='protected').map(unit=>unit.inventoryUnitId))],protected:[...new Set(campaign.units.filter(unit=>unit.kind==='protected').map(unit=>unit.inventoryUnitId))]};}
 type QueryResolver = ReturnType<typeof createGridQueryResolver>;
-async function bindGridQueryPlan(campaign:GridQueryCampaign,dir:string,inventory:{path:string;hash:string}|null,requestedPath?:string,sourceCacheRoot?:string):Promise<CountryGridPlan>{
+async function bindGridQueryPlan(campaign:GridQueryCampaign,dir:string,inventory:{path:string;hash:string}|null,requestedPath?:string,sourceCacheRoot?:string,readOnly=false):Promise<CountryGridPlan>{
   if(!inventory||inventory.hash!==campaign.inventoryHash)throw new Error('query campaign requires its exact country-directory inventory binding');
   const file=path.join(dir,'grid-query-binding.json');await verifyRegularStateFile(file);
   let binding:{path:string;hash:string;cacheRoot:string}|null=null;
@@ -233,7 +253,7 @@ async function bindGridQueryPlan(campaign:GridQueryCampaign,dir:string,inventory
     if(unit.id!==`grid-query:${resolved.cellId}`||unit.request.id!==unit.id||unit.request.inventoryUnitId!==plan.country.id||canonical(unit.request.region)!==canonical({id:resolved.cellId,parentId:plan.country.id,name:`${plan.country.name} source query cell ${resolved.cellId}`,kind:'cell',countryCode:plan.country.countryCode,timezone:null,bounds:resolved.bounds}))throw new Error('query root request is not bound to its exact country/cell');
   }
   // Plan and directory are verified before publishing their local binding.
-  try{await writeFile(file,canonical(binding),{flag:'wx',mode:0o600});}catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;}
+  if(!readOnly)try{await writeFile(file,canonical(binding),{flag:'wx',mode:0o600});}catch(error){if((error as NodeJS.ErrnoException).code!=='EEXIST')throw error;}
   return plan;
 }
 function validateClaimedQueryUnit(campaign:GridQueryCampaign,plan:CountryGridPlan,job:Record<string,unknown>,hash:string,resolver:QueryResolver=createGridQueryResolver(plan,campaign.gridQuery),rootTemplates:Map<string,GridQueryUnit>=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]))):GridQueryUnit{
@@ -248,7 +268,7 @@ function validateClaimedQueryUnit(campaign:GridQueryCampaign,plan:CountryGridPla
 }
 function queryCoverageForJobs(campaign:GridQueryCampaign,plan:CountryGridPlan,jobs:Array<Record<string,unknown>>,hash:string):GridQueryCoverage{
   const resolver=createGridQueryResolver(plan,campaign.gridQuery),rootTemplates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
-  const views:GridQueryJobView[]=jobs.map(job=>{
+  const views:GridQueryJobView[]=jobs.filter(job=>job.kind==='campaign-grid-query').map(job=>{
     const unit=validateClaimedQueryUnit(campaign,plan,job,hash,resolver,rootTemplates),result=job.result===null?null:object(job.result,'query result');
     let projected:GridQueryResult|null=null;
     if(result?.status==='query-captured')projected={status:'query-captured',features:result.features as number,requestHash:result.requestHash as string,inputSha256:result.inputSha256 as string,inputBytes:result.inputBytes as number,receiptSha256:result.receiptSha256 as string,receiptBytes:result.receiptBytes as number};
@@ -281,6 +301,160 @@ async function verifyQueryCapture(result:Record<string,unknown>,unit:GridQueryUn
   if(metrics.networkBytes as number>request.limits.networkBytes||observed.networkBytes as number>unit.request.limits.networkBytes||observed.outputBytes!==bytes.byteLength||observed.features!==result.features||(observed.networkBytes!==0&&observed.networkBytes!==metrics.networkBytes)||canonical(result.exceptions)!==canonical(receipt.exceptions)||!Array.isArray(result.upstream)||(canonical(result.upstream)!==canonical(receipt.upstream)&&!(observed.networkBytes===0&&result.upstream.length===0)))throw new Error('query capture metrics/upstream/exceptions do not match its immutable receipt or verified cache semantics');
 
 }
+type IndexDescriptor = ReturnType<typeof campaignIndexJob>;
+async function campaignIndexProjection(campaign:GridQueryCampaign,plan:CountryGridPlan,jobs:Array<Record<string,unknown>>,hash:string,
+                                       cacheRoot:string,binding:CampaignIndexBinding|null,enqueue?:Ledger,
+                                       auditInputs?:FeatureIndexSessionAuditInput[]):Promise<CampaignIndexCoverage>{
+  const coverage:CampaignIndexCoverage={scope:'recorded-source-feature-index',geometryCoverage:'not-compiled',integrity:'independent-raw-index-audit-required',enabled:binding!==null,jobLimit:256,capacityBlocked:false,captured:0,indexed:0,pending:0,leased:0,failed:0,untracked:0};
+  const existingRows=jobs.filter(job=>job.kind==='campaign-index-capture'),existingIds=new Set(existingRows.map(job=>String(job.id)));
+  if(existingRows.length>256)throw new Error('campaign feature index scheduler exceeds the admitted shard job capacity');
+  let scheduled=existingRows.length;
+  const resolver=createGridQueryResolver(plan,campaign.gridQuery),templates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
+  const expected=new Map<string,{descriptor:IndexDescriptor;input:ReturnType<typeof campaignIndexInput>;features:unknown}>();
+  for(const source of jobs.filter(job=>job.kind==='campaign-grid-query'&&job.status==='completed'&&(job.result as {status?:string}|null)?.status==='query-captured')){
+    const unit=validateClaimedQueryUnit(campaign,plan,source,hash,resolver,templates),capture=object(source.result,'eligible query capture');
+    await verifyQueryCapture(capture,unit,cacheRoot);coverage.captured++;
+    if(!binding){coverage.untracked++;continue;}
+    const input=campaignIndexInput(campaign,hash,unit,source),descriptor=campaignIndexJob(campaign,binding,unit,source,input);
+    expected.set(descriptor.id,{descriptor,input,features:capture.features});
+    if(enqueue&&(existingIds.has(descriptor.id)||scheduled<256)){
+      enqueue.enqueue(descriptor);
+      if(!existingIds.has(descriptor.id)){scheduled++;existingIds.add(descriptor.id);}
+    }
+  }
+  const indexRows=(enqueue?enqueue.list():jobs).filter(job=>job.kind==='campaign-index-capture');
+  for(const row of indexRows){
+    const entry=expected.get(String(row.id));
+    if(!binding||!entry)throw new Error('feature index scheduler row has no eligible frozen source query');
+    const {descriptor,input,features}=entry;
+    if(row.inputHash!==descriptor.inputHash||canonical(row.payload)!==canonical(descriptor.payload)||row.priority!==descriptor.priority||row.maxAttempts!==descriptor.maxAttempts)throw new Error('feature index scheduler row binding differs from its frozen source');
+    if(row.status==='completed'){
+      verifyCampaignIndexCompletion(row.result,input,binding.indexHash,features);coverage.indexed++;
+      if(auditInputs){
+        const prior=auditInputs.find(item=>item.expected.requestHash===input.expected.requestHash);
+        if(prior){
+          if(prior.extractPath!==input.extractPath||prior.receiptPath!==input.receiptPath||canonical(prior.expected)!==canonical(input.expected))throw new Error('Shared audit request has inconsistent frozen raw input membership');
+          const context=input.observation!;
+          if(!prior.requiredObservations.some(item=>canonical(item)===canonical(context))){
+            if(prior.requiredObservations.length>=8)throw new Error('Campaign audit required contexts exceed the fixed per-request history bound');
+            prior.requiredObservations=[...prior.requiredObservations,context];
+          }
+        }else auditInputs.push({extractPath:input.extractPath,receiptPath:input.receiptPath,expected:input.expected,requiredObservations:[input.observation!]});
+      }
+    }
+    else if(row.status==='queued')coverage.pending++;
+    else if(row.status==='leased')coverage.leased++;
+    else if(row.status==='failed')coverage.failed++;
+    else throw new Error('unknown feature index scheduler state');
+    expected.delete(String(row.id));
+  }
+  coverage.untracked+=expected.size;
+  coverage.capacityBlocked=coverage.enabled&&coverage.untracked>0&&indexRows.length===256;
+  if(coverage.indexed&&binding)await verifyCampaignIndexFiles(binding);
+  auditInputs?.sort((a,b)=>a.expected.requestHash<b.expected.requestHash?-1:a.expected.requestHash>b.expected.requestHash?1:0);
+  return coverage;
+}
+
+function campaignAuditEligible(query:GridQueryCoverage,index:CampaignIndexCoverage,inputs:readonly FeatureIndexSessionAuditInput[]):boolean{
+  return index.enabled&&query.roots.requested>0&&query.roots.captured===query.roots.requested
+    &&query.roots.exception===0&&query.roots.pending===0&&query.jobs.failed===0&&query.jobs.queued===0&&query.jobs.leased===0
+    &&index.captured>0&&index.indexed===index.captured&&index.pending+index.leased+index.failed+index.untracked===0
+    &&!index.capacityBlocked&&inputs.length>0;
+}
+
+/** Status only reads saved control/file evidence. It never opens admission/SQL,
+ * enqueues an audit child, repairs a namespace, or treats query/index progress as
+ * compiled geometry. Inputs come from the fully revalidated source projection.
+ */
+async function campaignAuditProjection(campaign:GridQueryCampaign,hash:string,jobs:Array<Record<string,unknown>>,
+    binding:CampaignIndexBinding|null,inputs:readonly FeatureIndexSessionAuditInput[],eligible:boolean):Promise<CampaignIndexAuditCoverage>{
+  const result:CampaignIndexAuditCoverage={scope:'raw-index-and-campaign-observations',geometryCoverage:'not-compiled',
+    enabled:binding!==null,status:binding?'incomplete':'disabled',jobId:null,attempts:0,
+    qualifications:{rawIndexConservation:'incomplete',readOnlyStatePreserved:'incomplete',campaignObservationCompleteness:'incomplete'},reasons:[]};
+  const rows=jobs.filter(row=>row.kind===CAMPAIGN_INDEX_AUDIT_KIND||String(row.id).startsWith(`${campaign.id}:feature-index-audit:`));
+  if(!binding){if(rows.length)throw new Error('Campaign audit row has no frozen index binding');result.reasons=['feature indexing is disabled'];return result;}
+  if(rows.length>1)throw new Error('Campaign audit exceeds its fixed single-job identity');
+  const row=rows[0];
+  if(!row){result.reasons=[eligible?'final campaign index audit has not run':'complete captured/indexed leaf membership is required before the final audit'];return result;}
+  const payload=object(row.payload,'campaign audit payload');
+  if(payload.format!==CAMPAIGN_INDEX_AUDIT_JOB_FORMAT)throw new Error('Campaign audit payload format differs');
+  const frozen:CampaignIndexAuditFrozenInput={campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,
+    planHash:campaign.gridQuery.planHash,indexHash:binding.indexHash,configurationHash:sha256(canonical(binding.configuration)),
+    captureControllerRecord:payload.captureControllerRecord as CampaignIndexAuditFrozenInput['captureControllerRecord'],
+    completeCaptureSetSha256:payload.completeCaptureSetSha256 as string,requiredObservationSetSha256:payload.requiredObservationSetSha256 as string,
+    auditInputSha256:payload.auditInputSha256 as string,auditFormat:FEATURE_INDEX_AUDIT_FORMAT};
+  const descriptor=campaignIndexAuditJob(frozen,campaign.limits.maxAttempts);
+  if(row.id!==descriptor.id||row.kind!==descriptor.kind||row.inputHash!==descriptor.inputHash||row.maxAttempts!==descriptor.maxAttempts
+      ||row.priority!==descriptor.priority||canonical(payload)!==canonical(descriptor.payload))throw new Error('Campaign audit row differs from the frozen source/index job');
+  if(!Number.isSafeInteger(row.attempt)||(row.attempt as number)<0||(row.attempt as number)>descriptor.maxAttempts)throw new Error('Campaign audit scheduler attempt count differs');
+  result.jobId=descriptor.id;result.attempts=row.attempt as number;
+  if(!eligible){result.reasons=['complete captured/indexed leaf membership is required; previous audit cannot qualify this projection'];return result;}
+  if(row.status!=='completed'){
+    result.status=row.status==='queued'?'pending':row.status==='leased'?'leased':row.status==='failed'?(result.attempts>=descriptor.maxAttempts?'exhausted':'failed'):(()=>{throw new Error('Unknown campaign audit scheduler status');})();
+    result.reasons=['audit is not completed by a live scheduler claim'];return result;
+  }
+  try{
+    const evidence=await readFeatureIndexSessionAuditEvidence({namespaceRoot:binding.configuration.namespaceRoot,indexHash:binding.indexHash,binding:binding.configuration.binding},inputs,descriptor.maxAttempts);
+    const actual:CampaignIndexAuditFrozenInput={...frozen,captureControllerRecord:evidence.snapshot.captureControllerRecord,
+      completeCaptureSetSha256:evidence.snapshot.captureSetSha256,requiredObservationSetSha256:evidence.snapshot.requiredObservationsSha256,auditInputSha256:evidence.snapshot.auditInputSha256};
+    if(canonical(actual)!==canonical(frozen))throw new Error('Current complete capture/context evidence differs from the frozen campaign audit job');
+    const receipt=validateQualifiedCampaignIndexAuditCompletion(row.result,actual,evidence.proof,evidence.workerReport,evidence.attempts,descriptor.maxAttempts);
+    result.status='complete';result.qualifications=receipt.qualifications;result.reasons=[];
+  }catch(error){
+    result.status='incomplete';result.reasons=[(error instanceof Error?error.message:String(error)).slice(0,1024)];
+  }
+  return result;
+}
+
+async function runCampaignIndexPhase(campaign:GridQueryCampaign,plan:CountryGridPlan,ledger:Ledger,hash:string,cacheRoot:string,
+                                    binding:CampaignIndexBinding,config:FeatureIndexSessionConfiguration|undefined,
+                                    options:CampaignOptions,deadline:number,failures:string[]):Promise<string|null>{
+  const max=options.maxIndexJobs??256;
+  if(max===0)return null;
+  const queued=ledger.list().some(job=>job.kind==='campaign-index-capture'&&(job.status==='queued'||job.status==='leased'));
+  if(!queued)return null;
+  if(!config)return 'feature index work remains; supply the original immutable feature index configuration to resume';
+  let session:FeatureIndexSession|undefined,stopped:string|null=null;
+  const resolver=createGridQueryResolver(plan,campaign.gridQuery),templates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
+  try{
+    for(let processed=0;processed<max;processed++){
+      if(options.signal?.aborted){stopped='feature index stopped by signal';break;}
+      if(Date.now()>=deadline){stopped='campaign duration limit reached before indexing';break;}
+      const leaseMs=Math.min(campaign.limits.jobDurationMs,60000),claim=ledger.claim(`campaign-index-${process.pid}`,Date.now(),leaseMs,{kind:'campaign-index-capture'});
+      if(!claim)break;
+      let live=true;
+      const heartbeat=setInterval(()=>{try{live=ledger.heartbeat(claim.id,claim.token,Date.now(),leaseMs)&&live;}catch{live=false;}},Math.min(15000,Math.max(1,Math.floor(leaseMs/3))));heartbeat.unref();
+      try{
+        const payload=object(claim.payload,'index claim payload'),source=ledger.list().find(job=>job.id===payload.sourceJobId);
+        if(!source||source.kind!=='campaign-grid-query'||source.status!=='completed'||(source.result as {status?:string}|null)?.status!=='query-captured')throw new Error('index claim has no completed source capture');
+        const unit=validateClaimedQueryUnit(campaign,plan,source,hash,resolver,templates),capture=object(source.result,'index source capture');
+        await verifyQueryCapture(capture,unit,cacheRoot);
+        const input=campaignIndexInput(campaign,hash,unit,source),descriptor=campaignIndexJob(campaign,binding,unit,source,input);
+        if(claim.id!==descriptor.id||claim.inputHash!==descriptor.inputHash||canonical(claim.payload)!==canonical(descriptor.payload))throw new Error('live index claim differs from its frozen source descriptor');
+        if(!session)session=await openFeatureIndexSession(config,{signal:options.signal,durationMs:Math.min(600000,Math.max(1,deadline-Date.now()))});
+        if(session.indexHash!==binding.indexHash)throw new Error('live session differs from campaign index binding');
+        const report=await session.ingestCapture(input),result=campaignIndexCompletion(report,binding.indexHash);
+        verifyCampaignIndexCompletion(result,input,binding.indexHash,capture.features);
+        // A committed SQL observation does not authorize a stale scheduler token.
+        if(!live||!ledger.complete(claim.id,claim.token,Date.now(),result)){stopped='feature index lease lost after ingestion; a later live claim must raw-replay';break;}
+      }catch(error){
+        if(error instanceof FeatureIndexSessionUnreaped)throw error;
+        if(error instanceof FeatureIndexSessionTerminated)session=undefined;
+        const message=error instanceof Error?error.message:String(error);
+        if(live)ledger.fail(claim.id,claim.token,Date.now(),message,0);
+        failures.push(`${claim.id}: ${message}`);stopped='feature index phase stopped after a failed attempt';break;
+      }finally{clearInterval(heartbeat);}
+    }
+  }catch(error){
+    // Unconfirmed worker handles and lease state are authoritative. A second
+    // close/termination attempt here would obscure the original owned handle.
+    if(error instanceof FeatureIndexSessionUnreaped){session=undefined;throw error;}
+    throw error;
+  }finally{
+    if(session)await session.close();
+  }
+  return stopped;
+}
 async function verifyCompleted(result:unknown,output:string,plan:WorldPlan):Promise<void>{
   const sourceStat=await stat(plan.input.path);if(!sourceStat.isFile()||sourceStat.size>20_000_000)throw new Error(`campaign source cache is corrupt (${plan.input.path})`);
   const input=await readFile(plan.input.path);
@@ -307,6 +481,10 @@ async function acquisitionTreeBytes(target:string):Promise<number>{let total=0;l
 async function acquisitionCacheBytes(root:string,realAdapter:boolean):Promise<number>{if(!realAdapter)return acquisitionTreeBytes(root);let total=0;for(const name of ['acquisitions','acquisition-index','acquisition-attempts'])total+=await acquisitionTreeBytes(path.join(root,name));return total;}
 export async function runCampaign(value:unknown,options:CampaignOptions={}):Promise<CampaignReport>{
   if(options.maxJobs!==undefined&&(!Number.isSafeInteger(options.maxJobs)||options.maxJobs<0))throw new RangeError('maxJobs must be a non-negative safe integer');
+  if(options.maxIndexJobs!==undefined&&(!Number.isSafeInteger(options.maxIndexJobs)||options.maxIndexJobs<0||options.maxIndexJobs>256))throw new RangeError('maxIndexJobs must be a safe integer from 0 through 256');
+  if(options.maxAuditJobs!==undefined&&options.maxAuditJobs!==0&&options.maxAuditJobs!==1)throw new RangeError('maxAuditJobs must be zero or one');
+  const featureIndex=options.featureIndex===undefined?undefined:prepareFeatureIndexSessionConfiguration(options.featureIndex);
+  if(featureIndex&&object(value,'campaign').schemaVersion!==2)throw new Error('feature indexing requires the frozen schema2 grid-query campaign');
   const campaign=validateCampaign(value),root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const paths=await ensureCampaign(campaign,root),hash=campaignHash(campaign),releaseLock=await acquireCampaignLock(root);
   const failures:string[]=[],start=Date.now(),deadline=start+campaign.limits.durationMs;let stopped:string|null=null,processed=0,ledger:Ledger|undefined;
   try{
@@ -317,11 +495,13 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
     if(options.inventoryManifestPath){await verifyInventorySnapshot(options.inventoryManifestPath,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected,campaign.schemaVersion===2?'country-directory':'coarse');const candidate={path:await realpath(options.inventoryManifestPath),hash:campaign.inventoryHash};if(binding&&canonical(binding)!==canonical(candidate))throw new Error('campaign inventory binding is immutable');if(!binding){await writeFile(bindingFile,canonical(candidate),{flag:'wx',mode:0o600});binding=candidate;}}
     if(binding)await verifyInventorySnapshot(binding.path,campaign.inventoryHash,inventoryUnits.source,inventoryUnits.protected,campaign.schemaVersion===2?'country-directory':'coarse');
     const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,paths.dir,binding,options.countryGridPlanPath,options.acquire?paths.cache:ALLOWED_ROOT):null,queryResolver=gridPlan&&campaign.schemaVersion===2?createGridQueryResolver(gridPlan,campaign.gridQuery):undefined,queryRoots=campaign.schemaVersion===2?new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit])):undefined;
+    const indexBinding=campaign.schemaVersion===2?await bindCampaignIndex(paths.dir,campaign,hash,featureIndex):null;
+    const cacheRoot=options.acquire?paths.cache:ALLOWED_ROOT;
     await verifyRegularStateFile(paths.ledger);
     ledger=new Ledger(paths.ledger);const db=ledger;
     for(const unit of campaign.units){const unitHash=digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit});ledger.enqueue({id:`${campaign.id}:${unit.id}`,kind:`campaign-${unit.kind}`,inputHash:unitHash,payload:{campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,unit},maxAttempts:campaign.limits.maxAttempts,priority:unit.priority});}
     // A completed receipt is not trusted across process restarts: revalidate every exact manifest/tile first.
-    for(const completed of ledger.list().filter(j=>j.status==='completed'&&(j.result as {status?:string}|null)?.status!=='protected')){
+    for(const completed of ledger.list().filter(j=>(campaign.schemaVersion!==2||j.kind==='campaign-grid-query')&&j.status==='completed'&&(j.result as {status?:string}|null)?.status!=='protected')){
       if(campaign.schemaVersion===2){
         const unit=validateClaimedQueryUnit(campaign,gridPlan!,completed,hash,queryResolver,queryRoots),stored=object(completed.result,'completed query result');
         if(stored.status==='query-captured')await verifyQueryCapture(stored,unit,options.acquire?paths.cache:ALLOWED_ROOT);
@@ -345,9 +525,10 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
       }
     }
     if(campaign.schemaVersion===2)queryCoverageForJobs(campaign,gridPlan!,ledger.list(),hash);
+    if(campaign.schemaVersion===2)await campaignIndexProjection(campaign,gridPlan!,ledger.list(),hash,cacheRoot,indexBinding,indexBinding?ledger:undefined);
     while(processed<(options.maxJobs??(campaign.schemaVersion===2?campaign.gridQuery.maxJobs:campaign.units.length)*campaign.limits.maxAttempts)){
       if(options.signal?.aborted){stopped='campaign stopped by signal';break;}if(Date.now()>=deadline){stopped='campaign duration limit reached';break;}
-      const leaseMs=Math.min(campaign.limits.jobDurationMs,60_000),claim=ledger.claim(`campaign-${process.pid}`,Date.now(),leaseMs);if(!claim)break;
+      const leaseMs=Math.min(campaign.limits.jobDurationMs,60_000),claim=ledger.claim(`campaign-${process.pid}`,Date.now(),leaseMs,campaign.schemaVersion===2?{kind:'campaign-grid-query'}:undefined);if(!claim)break;
       const heartbeat=setInterval(()=>{db.heartbeat(claim.id,claim.token,Date.now(),leaseMs);},Math.min(15_000,Math.max(1,Math.floor(leaseMs/3))));heartbeat.unref();
       let activeStage:'acquire'|'compile'|'validate'='acquire';
       let activeAcquisitionUsage:{reservation:UsageEntry;sourceKey:string;root:string;realAdapter:boolean;beforeBytes:number}|null=null;
@@ -440,7 +621,7 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
         if(campaign.schemaVersion===2&&claimedUnit?.kind==='grid-query'&&error instanceof AcquisitionBudgetError){
           try{
             const address=queryResolver!.resolve(claimedUnit.query),currentJobs=ledger.list();
-            if(address.depth<campaign.gridQuery.maxDepth&&currentJobs.length+4<=campaign.gridQuery.maxJobs){
+            if(address.depth<campaign.gridQuery.maxDepth&&currentJobs.filter(job=>job.kind==='campaign-grid-query').length+4<=campaign.gridQuery.maxJobs){
               const children=queryResolver!.subdivide(claimedUnit.query),rootTemplate=queryRoots!.get(claimedUnit.query.rootCellId)!;
               const inputs=children.map(query=>{const unit=makeGridQueryUnit(gridPlan!,query,campaign.gridQuery,rootTemplate,queryResolver);return {id:`${campaign.id}:${unit.id}`,kind:'campaign-grid-query',inputHash:digest({campaignHash:hash,inventoryHash:campaign.inventoryHash,unit}),payload:{campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,unit},maxAttempts:campaign.limits.maxAttempts,priority:unit.priority};});
               if(!ledger.completeAndEnqueue(claim.id,claim.token,Date.now(),{status:'query-subdivided',reason:error.reason,children},inputs))throw new Error('query lease lost before atomic subdivision');
@@ -456,24 +637,253 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
       }finally{clearInterval(heartbeat);}
       processed++;
     }
+    if(campaign.schemaVersion===2&&indexBinding){
+      await campaignIndexProjection(campaign,gridPlan!,ledger.list(),hash,cacheRoot,indexBinding,ledger);
+      const indexStopped=await runCampaignIndexPhase(campaign,gridPlan!,ledger,hash,cacheRoot,indexBinding,featureIndex,options,deadline,failures);
+      stopped=stopped??indexStopped;
+      if((options.maxAuditJobs??1)>0){
+        const inputs:FeatureIndexSessionAuditInput[]=[],current=ledger.list();
+        const query=queryCoverageForJobs(campaign,gridPlan!,current,hash);
+        const indexed=await campaignIndexProjection(campaign,gridPlan!,current,hash,cacheRoot,indexBinding,undefined,inputs);
+        const auditStopped=await runCampaignIndexAuditPhase({campaign,campaignHash:hash,binding:indexBinding,config:featureIndex,
+          inputs,eligible:campaignAuditEligible(query,indexed,inputs),deadline,signal:options.signal},ledger,failures);
+        stopped=stopped??auditStopped;
+      }
+    }
     const jobs=ledger.list();if(!stopped&&jobs.some(j=>j.status==='queued'||j.status==='leased'))stopped='campaign work remains queued or leased';
     const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,hash):undefined;
+    const auditInputs:FeatureIndexSessionAuditInput[]=[];
+    const indexCoverage=campaign.schemaVersion===2?await campaignIndexProjection(campaign,gridPlan!,jobs,hash,cacheRoot,indexBinding,undefined,auditInputs):undefined;
+    const auditCoverage=campaign.schemaVersion===2?await campaignAuditProjection(campaign,hash,jobs,indexBinding,auditInputs,
+      campaignAuditEligible(queryCoverage!,indexCoverage!,auditInputs)):undefined;
+    if(!stopped&&indexCoverage?.enabled&&(indexCoverage.pending+indexCoverage.leased+indexCoverage.untracked)>0)stopped=indexCoverage.capacityBlocked?'feature index shard capacity reached; remaining captures are untracked and require bounded deterministic sharding':'feature index work remains queued, leased or untracked';
+    if(!stopped&&auditCoverage?.enabled&&auditCoverage.status!=='complete')stopped=auditCoverage.reasons[0]??'campaign index audit is incomplete';
     const counts=coverageCounts(campaign,jobs);if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
     if(!stopped&&counts.sourceUnits===0)throw new Error('campaign has no source-unit denominator; protected-only work is not world coverage');
-    return{id:campaign.id,status:stopped?'stopped':counts.exception||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage&&queryCoverage.roots.pending>0?'stopped':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped,...(queryCoverage?{queryCoverage}:{})};
+    return{id:campaign.id,status:stopped?'stopped':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage&&queryCoverage.roots.pending>0?'stopped':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{}),...(auditCoverage?{auditCoverage}:{})};
   }finally{ledger?.close();await releaseLock();}
 }
 export async function campaignStatus(id:string,options:Pick<CampaignOptions,'allowedRoot'>={}):Promise<CampaignReport>{
-  if(!ID_RE.test(id))throw new TypeError('campaign id is invalid');const root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const p=campaignPaths(id,root);await ensureCanonicalDirectory(p.dir);await verifyRegularStateFile(p.config);await verifyRegularStateFile(p.ledger);const campaign=validateCampaign(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(await readBoundedLocalFile(p.config,64_000_000))) as unknown),bindingPath=path.join(p.dir,'inventory-binding.json');await verifyRegularStateFile(bindingPath);let binding:{path:string;hash:string}|null=null;try{binding=JSON.parse(await readFile(bindingPath,'utf8')) as {path:string;hash:string};}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}if(binding){const units=campaignInventoryUnits(campaign);await verifyInventorySnapshot(binding.path,campaign.inventoryHash,units.source,units.protected,campaign.schemaVersion===2?'country-directory':'coarse');}
-  const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,p.dir,binding):null;
-  await usageEntries(p.dir);const ledger=new Ledger(p.ledger);
-  try{const jobs=ledger.list(),counts=coverageCounts(campaign,jobs),done=counts.compiled+counts.exception+counts.protected;
+  if(!ID_RE.test(id))throw new TypeError('campaign id is invalid');
+  const root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT),true),p=campaignPaths(id,root),info=await lstat(p.dir);
+  if(!info.isDirectory()||info.isSymbolicLink()||await realpath(p.dir)!==p.dir)throw new Error('campaign status requires existing canonical campaign state');
+  await verifyRegularStateFile(p.config);await verifyRegularStateFile(p.ledger);
+  const campaign=validateCampaign(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(await readBoundedLocalFile(p.config,64_000_000))) as unknown),hash=campaignHash(campaign),bindingPath=path.join(p.dir,'inventory-binding.json');
+  await verifyRegularStateFile(bindingPath);let binding:{path:string;hash:string}|null=null;
+  try{binding=JSON.parse(await readFile(bindingPath,'utf8')) as {path:string;hash:string};}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
+  if(binding){const units=campaignInventoryUnits(campaign);await verifyInventorySnapshot(binding.path,campaign.inventoryHash,units.source,units.protected,campaign.schemaVersion===2?'country-directory':'coarse');}
+  const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,p.dir,binding,undefined,undefined,true):null;
+  await usageEntries(p.dir,campaign.schemaVersion!==2);
+  const jobs=Ledger.readOnlyList(p.ledger),counts=coverageCounts(campaign,jobs),done=counts.compiled+counts.exception+counts.protected;
+  let indexCoverage:CampaignIndexCoverage|undefined,auditCoverage:CampaignIndexAuditCoverage|undefined;
+  const auditInputs:FeatureIndexSessionAuditInput[]=[];
     if(campaign.schemaVersion===2){
       const stored=JSON.parse(await readBoundedLocalFile(path.join(p.dir,'grid-query-binding.json'),16_000).then(bytes=>new TextDecoder('utf-8',{fatal:true}).decode(bytes))) as {cacheRoot:string},resolver=createGridQueryResolver(gridPlan!,campaign.gridQuery),templates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
-      for(const job of jobs.filter(job=>job.status==='completed'&&(job.result as {status?:string}|null)?.status==='query-captured'))await verifyQueryCapture(object(job.result,'completed query capture'),validateClaimedQueryUnit(campaign,gridPlan!,job,campaignHash(campaign),resolver,templates),stored.cacheRoot);
+      for(const job of jobs.filter(job=>job.kind==='campaign-grid-query'&&job.status==='completed'&&(job.result as {status?:string}|null)?.status==='query-captured'))await verifyQueryCapture(object(job.result,'completed query capture'),validateClaimedQueryUnit(campaign,gridPlan!,job,hash,resolver,templates),stored.cacheRoot);
+      const indexBinding=await readCampaignIndexBinding(p.dir,campaign,hash);
+      indexCoverage=await campaignIndexProjection(campaign,gridPlan!,jobs,hash,stored.cacheRoot,indexBinding,undefined,auditInputs);
+      auditCoverage=await campaignAuditProjection(campaign,hash,jobs,indexBinding,auditInputs,
+        campaignAuditEligible(queryCoverageForJobs(campaign,gridPlan!,jobs,hash),indexCoverage,auditInputs));
     }
-    const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,campaignHash(campaign)):undefined;
+    const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,hash):undefined;
     if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
-    return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0?'running':counts.exception||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:null,...(queryCoverage?{queryCoverage}:{})};
-  }finally{ledger.close();}
+    const indexingPending=indexCoverage?.enabled&&indexCoverage.pending+indexCoverage.leased+indexCoverage.untracked>0;
+    const auditPending=auditCoverage?.enabled&&auditCoverage.status!=='complete';
+    return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0||indexingPending?'running':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':auditPending?'stopped':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir,campaign.schemaVersion!==2),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:auditPending?auditCoverage!.reasons[0]??'campaign index audit is incomplete':null,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{}),...(auditCoverage?{auditCoverage}:{})};
+}
+
+/**
+ * Reconstruct a bounded shard plan from the exact currently retained source
+ * leaves. This is a point-in-time, read-only receipt: it does not bind the
+ * configuration, enqueue jobs, admit a namespace, or establish country-wide
+ * index/geometry coverage. A later dispatcher must repeat this verification
+ * while holding its campaign and namespace leases.
+ */
+export async function prepareCampaignIndexShardPlan(
+  id: string,
+  configuration: FeatureIndexSessionConfiguration,
+  policyValue: FeatureIndexShardPlanInput['policy'],
+  options: { allowedRoot?: string; expectedHash?: string } = {},
+): Promise<{ plan: ReturnType<typeof encodeFeatureIndexShardPlan>['plan']; hash: string; bytes: Uint8Array;
+  sourceEvidence: { format: 'campaign-feature-index-source-evidence-v1'; scope: 'source-plan-snapshot';
+    status: 'not-admitted'; geometryCoverage: 'not-compiled'; campaignHash: string; inventoryHash: string;
+    countryGridPlanHash: string; verifiedLeafCount: number; requestCount: number; requiredObservationCount: number;
+    sourceMembershipSha256: string } }> {
+  if (!ID_RE.test(id)) throw new TypeError('campaign id is invalid');
+  const rawOptions = object(options, 'source-plan options');
+  if (Reflect.ownKeys(rawOptions).some(key => typeof key !== 'string')) throw new TypeError('source-plan options reject symbol fields');
+  keys(rawOptions, ['allowedRoot','expectedHash'], 'source-plan options');
+  const optionValue = (key: 'allowedRoot' | 'expectedHash'): unknown => {
+    const descriptor = Object.getOwnPropertyDescriptor(rawOptions, key);
+    if (!descriptor) return undefined;
+    if (!descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) throw new TypeError('source-plan options require data properties');
+    return descriptor.value;
+  };
+  const allowedRootValue = optionValue('allowedRoot'), expectedHash = optionValue('expectedHash');
+  if (allowedRootValue !== undefined && typeof allowedRootValue !== 'string') throw new TypeError('allowedRoot must be a string');
+  if (expectedHash !== undefined && (typeof expectedHash !== 'string' || !/^[a-f0-9]{64}$/.test(expectedHash))) throw new TypeError('expectedHash must be a lowercase SHA-256');
+  // Snapshot flat policy primitives and the session buffers before the first
+  // await, so caller mutation cannot change the plan midway through source IO.
+  const policyKeys = ['aggregateBytes','registryControlBytes','shardReservedBytes','maxCaptures','descriptorBytes',
+    'envelopeOverheadBytes','maxShards','maxAttempts'] as const;
+  const rawPolicy = object(policyValue, 'shard policy');
+  if (Reflect.ownKeys(rawPolicy).length !== policyKeys.length) throw new TypeError('shard policy has missing or unknown fields');
+  const policy = {} as FeatureIndexShardPlanInput['policy'];
+  for (const key of policyKeys) {
+    const descriptor = Object.getOwnPropertyDescriptor(rawPolicy, key);
+    if (!descriptor || !descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) throw new TypeError('shard policy requires exact data properties');
+    Object.defineProperty(policy, key, { value: descriptor.value, enumerable: true, writable: false });
+  }
+  const preparedConfig = prepareFeatureIndexSessionConfiguration(configuration);
+  const config = freezeCampaignIndexConfiguration({
+    pythonExecutable: preparedConfig.pythonExecutable, pythonRuntime: preparedConfig.pythonRuntime,
+    nodeExecutable: preparedConfig.nodeExecutable, namespaceRoot: preparedConfig.namespaceRoot,
+    aggregateBytes: preparedConfig.aggregateBytes, repositoryRoot: preparedConfig.repositoryRoot,
+    manifestBytes: preparedConfig.manifestBytes, sourceConfiguration: preparedConfig.sourceConfiguration,
+    bindingBytes: preparedConfig.bindingBytes,
+  });
+  const manifestBytes = Buffer.from(config.manifestBytes), sourceConfigBytes = Buffer.from(config.sourceConfiguration),
+    baseBytes = Buffer.from(config.bindingBytes);
+  const deadline = Date.now() + 60_000;
+  const checkTime = () => { if (Date.now() >= deadline) throw new Error('source-derived shard planning exceeded its 60-second bound'); };
+  const root = await validateCampaignRoot(path.resolve((allowedRootValue as string | undefined) ?? DEFAULT_ROOT), true);
+  const paths = campaignPaths(id, root), dirInfo = await lstat(paths.dir);
+  if (!dirInfo.isDirectory() || dirInfo.isSymbolicLink() || await realpath(paths.dir) !== paths.dir) throw new Error('campaign plan requires existing canonical state');
+  await verifyRegularStateFile(paths.config); await verifyRegularStateFile(paths.ledger);
+  const campaignConfigBytes = await readBoundedLocalFile(paths.config, 64_000_000);
+  const campaign = validateCampaign(JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(campaignConfigBytes)) as unknown);
+  if (campaign.schemaVersion !== 2 || campaign.id !== id) throw new Error('source-derived sharding requires the exact schema2 grid-query campaign');
+  const campaignHashValue = campaignHash(campaign);
+  if (campaign.limits.maxAttempts > 8 || policy.maxAttempts !== campaign.limits.maxAttempts) throw new Error('shard policy must preserve the original campaign retry limit of at most eight');
+  if (policy.aggregateBytes !== config.aggregateBytes) throw new Error('shard aggregate policy differs from the actual immutable namespace configuration');
+
+  const bindingPath = path.join(paths.dir, 'inventory-binding.json'); await verifyRegularStateFile(bindingPath);
+  let inventoryBinding: { path: string; hash: string } | null = null;
+  let inventoryBindingBytes: Buffer | undefined;
+  try {
+    const bytes = await readBoundedLocalFile(bindingPath, 16_000), text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    inventoryBindingBytes = Buffer.from(bytes);
+    const value = JSON.parse(text) as unknown, raw = object(value, 'inventory binding');
+    keys(raw, ['path','hash'], 'inventory binding');
+    if (canonical(raw) !== text || typeof raw.path !== 'string' || typeof raw.hash !== 'string') throw new Error('inventory binding is not canonical');
+    inventoryBinding = raw as { path: string; hash: string };
+  }
+  catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
+  if (!inventoryBinding || inventoryBinding.hash !== campaign.inventoryHash) throw new Error('campaign lacks its exact pinned inventory binding');
+  const inventoryUnits = campaignInventoryUnits(campaign);
+  await verifyInventorySnapshot(inventoryBinding.path, campaign.inventoryHash, inventoryUnits.source, inventoryUnits.protected, 'country-directory');
+  const gridPlan = await bindGridQueryPlan(campaign, paths.dir, inventoryBinding, undefined, undefined, true);
+  await usageEntries(paths.dir, false);
+  const gridBindingBytes = await readBoundedLocalFile(path.join(paths.dir, 'grid-query-binding.json'), 16_000);
+  const gridBindingText = new TextDecoder('utf-8', { fatal: true }).decode(gridBindingBytes), gridBindingRaw = object(JSON.parse(gridBindingText), 'grid-query binding');
+  keys(gridBindingRaw, ['path','hash','cacheRoot'], 'grid-query binding');
+  if (canonical(gridBindingRaw) !== gridBindingText || gridBindingRaw.hash !== campaign.gridQuery.planHash
+      || typeof gridBindingRaw.path !== 'string' || typeof gridBindingRaw.cacheRoot !== 'string') throw new Error('stored grid-query binding is invalid');
+  const gridBinding = gridBindingRaw as { path: string; hash: string; cacheRoot: string };
+  const jobs = Ledger.readOnlyList(paths.ledger) as Array<Record<string, unknown>>;
+  const sourceJobs = jobs.filter(job => job.kind === 'campaign-grid-query');
+  const initialSourceProjection = canonical(sourceJobs);
+  const queryCoverage = queryCoverageForJobs(campaign, gridPlan, jobs, campaignHashValue);
+  checkTime();
+  if (queryCoverage.roots.requested !== campaign.units.length
+      || queryCoverage.roots.captured !== queryCoverage.roots.requested || queryCoverage.roots.exception !== 0 || queryCoverage.roots.pending !== 0
+      || queryCoverage.jobs.failed !== 0 || queryCoverage.jobs.queued !== 0 || queryCoverage.jobs.leased !== 0) {
+    throw new Error('source-derived shard plan requires the exact complete captured grid-root denominator');
+  }
+  const currentSource = await readFile(path.join(MODULE_DIR, 'acquisition-sources.json'));
+  if (sha256(sourceConfigBytes) !== sha256(currentSource)) throw new Error('feature index source configuration differs from the current source verifier configuration');
+  const resolver = createGridQueryResolver(gridPlan, campaign.gridQuery), templates = new Map(campaign.units.map(unit => [unit.query.rootCellId, unit]));
+  const prepared = new Map<string, ReturnType<typeof prepareFeatureIndexShardPlanRequest>>();
+  const members: Array<{ jobId: string; requestHash: string; observation: NonNullable<ReturnType<typeof campaignIndexInput>['observation']> }> = [];
+  let totalContexts = 0;
+  for (const source of sourceJobs) {
+    checkTime();
+    if (source.status === 'completed' && (source.result as { status?: string } | null)?.status === 'query-subdivided') continue;
+    if (source.status !== 'completed' || (source.result as { status?: string } | null)?.status !== 'query-captured') {
+      throw new Error('source-derived shard plan found a nonterminal or noncapture source row');
+    }
+    const unit = validateClaimedQueryUnit(campaign, gridPlan, source, campaignHashValue, resolver, templates);
+    const capture = object(source.result, 'captured source result');
+    await verifyQueryCapture(capture, unit, gridBinding.cacheRoot);
+    const input = campaignIndexInput(campaign, campaignHashValue, unit, source);
+    const next = prepareFeatureIndexShardPlanRequest({ extractPath: input.extractPath, receiptPath: input.receiptPath,
+      expected: input.expected, requiredObservations: [input.observation!] }, campaign.limits.maxAttempts);
+    const prior = prepared.get(input.expected.requestHash);
+    if (prior) {
+      if (prior.input.extractPath !== next.input.extractPath || prior.input.receiptPath !== next.input.receiptPath
+          || canonical(prior.input.expected) !== canonical(next.input.expected)) throw new Error('identical request hashes name conflicting retained raw inputs');
+      const contexts = new Map(prior.input.requiredObservations.map(context => [canonical(context), context]));
+      contexts.set(canonical(input.observation), input.observation!);
+      if (contexts.size > 8 || contexts.size > campaign.limits.maxAttempts) throw new Error('one request exceeds the fixed unique observation-attempt bound');
+      if (contexts.size !== prior.input.requiredObservations.length) {
+        const grouped = prepareFeatureIndexShardPlanRequest({ ...prior.input, requiredObservations: [...contexts.values()] }, campaign.limits.maxAttempts);
+        prepared.set(input.expected.requestHash, grouped);
+      }
+    } else {
+      if (prepared.size >= FEATURE_INDEX_SHARD_PLAN_MAX_REQUESTS) throw new Error('source-derived shard plan exceeds 4096 unique request hashes');
+      prepared.set(input.expected.requestHash, next);
+    }
+    if (++totalContexts > 32_768) throw new Error('source-derived shard plan exceeds the fixed 32768-context bound');
+    members.push({ jobId: String(source.id), requestHash: input.expected.requestHash, observation: input.observation! });
+  }
+  checkTime();
+  if (members.length !== queryCoverage.jobs.captured || !members.length) throw new Error('verified source leaves do not equal the complete captured query denominator');
+
+  const baseText = new TextDecoder('ascii', { fatal: true }).decode(baseBytes);
+  const base = JSON.parse(baseText) as Record<string, unknown>;
+  if (canonicalJson(base) !== baseText || base.format !== 'feature-index-binding-v1' || base.reservedBytes !== policy.shardReservedBytes
+      || canonicalJson(base.toolingManifest) !== canonicalJson({ sha256: sha256(manifestBytes), bytes: manifestBytes.byteLength })
+      || canonicalJson((base.source as Record<string, unknown> | undefined)?.configuration)
+        !== canonicalJson({ sha256: sha256(sourceConfigBytes), bytes: sourceConfigBytes.byteLength })) {
+    throw new Error('feature index base binding does not match the exact pinned manifest/source/reservation');
+  }
+  const baseSource = base.source as { provider?: unknown; release?: unknown; layers?: unknown; configuration?: unknown };
+  if (baseSource.provider !== 'overture' || !Array.isArray(baseSource.layers)
+      || campaign.units.some(unit => unit.request.release !== baseSource.release || canonical(unit.request.layers) !== canonical(baseSource.layers))) {
+    throw new Error('feature index base binding source release/layers differ from the frozen campaign');
+  }
+  const fileBytes = (base.processLimits as { fileBytes?: unknown } | undefined)?.fileBytes;
+  const databaseBytes = (base.engineLimits as { databaseBytes?: unknown } | undefined)?.databaseBytes;
+  if (!Number.isSafeInteger(fileBytes) || !Number.isSafeInteger(databaseBytes)) throw new Error('feature index base binding omits actual process/database limits');
+  const physicalMinimum = 4 * (fileBytes as number) + 2 * 512_000 + 3 * 1024 * 1024 + 65_536;
+  if (!Number.isSafeInteger(physicalMinimum) || physicalMinimum > (base.reservedBytes as number)) throw new Error('base shard reservation does not satisfy the fixed physical preflight minimum');
+  const overhead = calculateFeatureIndexShardEnvelopeOverhead(config.namespaceRoot, fileBytes as number, databaseBytes as number);
+  if (policy.envelopeOverheadBytes < overhead) throw new Error('shard envelope overhead policy is below the conservative actual wrapper bound');
+
+  const requests = [...prepared.values()].sort((a, b) => a.request.requestHash < b.request.requestHash ? -1 : a.request.requestHash > b.request.requestHash ? 1 : 0);
+  const input: FeatureIndexShardPlanInput = {
+    format: FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT,
+    bindings: { campaignHash: campaignHashValue, countryGridPlanHash: campaign.gridQuery.planHash,
+      sourceConfigurationHash: sha256(sourceConfigBytes), toolingManifestHash: sha256(manifestBytes), baseIndexBindingHash: sha256(baseBytes) },
+    policy, requests: requests.map(entry => entry.request),
+  };
+  const encoded = encodeFeatureIndexShardPlan(input);
+  assertFeatureIndexShardEngineCapacity(encoded.plan, base.engineLimits);
+  checkTime();
+  if (expectedHash !== undefined && expectedHash !== encoded.hash) throw new Error('source-derived shard plan differs from its expected immutable hash');
+  if (encoded.plan.shards.some(shard => shard.descriptorBytes + overhead > 512_000)) throw new Error('a source-derived shard envelope exceeds the fixed 512000-byte limit');
+  const requestsByHash = new Map(requests.map(entry => [entry.request.requestHash, entry.request]));
+  const sourceMembershipSha256 = sha256(canonicalJson(members.map(member => ({ jobId: member.jobId, requestHash: member.requestHash,
+    captureInputHash: requestsByHash.get(member.requestHash)!.captureInputHash, observation: member.observation }))
+    .sort((a, b) => a.jobId < b.jobId ? -1 : a.jobId > b.jobId ? 1 : 0)));
+  checkTime();
+  const campaignBytesAfter = await readBoundedLocalFile(paths.config, 64_000_000);
+  const inventoryBytesAfter = await readBoundedLocalFile(bindingPath, 16_000);
+  const gridBindingBytesAfter = await readBoundedLocalFile(path.join(paths.dir, 'grid-query-binding.json'), 16_000);
+  const sourceJobsAfter = (Ledger.readOnlyList(paths.ledger) as Array<Record<string, unknown>>).filter(job => job.kind === 'campaign-grid-query');
+  if (!campaignBytesAfter.equals(campaignConfigBytes) || canonical(sourceJobsAfter) !== initialSourceProjection
+      || !inventoryBindingBytes?.equals(inventoryBytesAfter) || !gridBindingBytes.equals(gridBindingBytesAfter)) {
+    throw new Error('campaign source bindings or source-job projection changed during plan preparation');
+  }
+  if (sha256(await readFile(path.join(MODULE_DIR, 'acquisition-sources.json'))) !== sha256(currentSource)) {
+    throw new Error('source verification configuration changed during plan preparation');
+  }
+  await verifyInventorySnapshot(inventoryBinding.path, campaign.inventoryHash, inventoryUnits.source, inventoryUnits.protected, 'country-directory');
+  await bindGridQueryPlan(campaign, paths.dir, inventoryBinding, undefined, undefined, true);
+  const sourceEvidence = Object.freeze({ format: 'campaign-feature-index-source-evidence-v1' as const, scope: 'source-plan-snapshot' as const,
+    status: 'not-admitted' as const, geometryCoverage: 'not-compiled' as const, campaignHash: campaignHashValue, inventoryHash: campaign.inventoryHash,
+    countryGridPlanHash: campaign.gridQuery.planHash, verifiedLeafCount: members.length, requestCount: requests.length,
+    requiredObservationCount: requests.reduce((sum, entry) => sum + entry.request.requiredObservationCount, 0), sourceMembershipSha256 });
+  checkTime();
+  return { ...encoded, sourceEvidence };
 }

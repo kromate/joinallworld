@@ -1,0 +1,154 @@
+{
+  "format": "index-shard-binding-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "cb562c69b9c239cf9294d9c3deaa0ee1541401d0",
+  "runId": 37895287687,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37895287687",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11,
+    "python-regression.stderr": 77,
+    "python-boundary.stderr": 162
+  },
+  "nodeTests": {
+    "node-audit.tap": 25,
+    "node-contracts.tap": 58,
+    "sdk-audit.tap": 8,
+    "campaign-regression.tap": 39,
+    "shard-plan.tap": 9,
+    "release-source.tap": 5
+  },
+  "distinctTests": 413,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "sourceFiles": {
+    "world/tooling/index_binding.py": {
+      "sha256": "113ed730865cf461ab484f33ab7deaeeeec979e66b483dcdbb99bcdca1a1b3d1",
+      "bytes": 8133
+    },
+    "world/tooling/test_index_binding.py": {
+      "sha256": "651e1b83ee1ae3903f5997c2be095dec7deb17d0de8b3c0a1cb29b1b23c43faf",
+      "bytes": 12899
+    },
+    "world/feature-index-session.ts": {
+      "sha256": "8644b5bfdf465771e7e602db1e4d730640c11d16eb8232056117fcc5e58b13a4",
+      "bytes": 106070
+    },
+    "world/feature-index-session.test.ts": {
+      "sha256": "e59ec8936c408823dbecf8f375dfe80b41a4d36fceebf30df93c06ed04a7ddca",
+      "bytes": 26482
+    }
+  },
+  "wireFixture": {
+    "baseBytes": 933,
+    "baseSha256": "809e15436e4348618c91f21a228cbccfdf9827d5d42559690e7a30d84ba2c418",
+    "shardBytes": 1272,
+    "shardSha256": "7f37bcf935126aa36331b9144d976d5ec590618fd526beb6485554b337bfd09f",
+    "scope": "Synthetic static common Python/TypeScript codec fixture, not a live source binding."
+  },
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "7e213e52a8cebbe1abb5f8c0123b5e0102053cd918a0a53fabe7c073059b96d4",
+      "bytes": 10437
+    },
+    "node-audit.tap": {
+      "sha256": "1f43e80b907e74e70256542e50f1422ae2a7879e270c3a2c75ddcbc971989cb6",
+      "bytes": 6638
+    },
+    "node-contracts.tap": {
+      "sha256": "878d2ec2be328c3dbebdb3f0759103be984f989edc4dc5b369147f7b0e673a05",
+      "bytes": 14360
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "47c18d37ca50bd5ea4dcd4a9ec24108a1a37c741c25d184933a90b7fbcac0f3d",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "137014c0141ad421278c67e8468a8733824a21862a0840963f62e5b30a2d27a9",
+      "bytes": 1422
+    },
+    "python-boundary.stdout": {
+      "sha256": "91411a9be5db06bfdd1081e51b7fa0e0d5ab0b6c1ce23478110dc554e366b3ba",
+      "bytes": 6832
+    },
+    "python-regression.stderr": {
+      "sha256": "59bb6614248bbe613b1616147c2362dd24d0a4ccfb9c033d5cf1c274b3eaebdc",
+      "bytes": 1133
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "4a2bb12dc5a01ff86e63f7089935bf2aa5e1f6a8c238befee2c6f80aeb553785",
+      "bytes": 890
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "f79fa04c769e468fbfe401e0991de203def36d3e79a8798aed2b0a7a40a9c53c",
+      "bytes": 1362
+    },
+    "sdk-audit.tap": {
+      "sha256": "96c7a64a2eb3f34231a8318d1df9ab6df6f856a34a6b72f4053a7e79a8f9da7d",
+      "bytes": 2501
+    },
+    "shard-plan.tap": {
+      "sha256": "74cb0a96221d519e9c080ae2dfdf78f0260b7aba70b799a1026620d20e747f8b",
+      "bytes": 2487
+    },
+    "source-sha.txt": {
+      "sha256": "754ddb395ada9a5967c144b97f873e891de107751b475e7b45e8dc34391a40ce",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limitations": [
+    "Separate pure v2 codecs only; actual legacy namespace/root/admission/session paths remain v1-only.",
+    "Four shard pins are syntactic and exact base-byte identity; a valid codec is not proof of frozen plan/membership or descriptor reconstruction.",
+    "Immutable plan operation, held batch controller/transport, complete charge-before-root creation and finite global accounting remain open.",
+    "New v3 controller record source is outside this tested candidate and not accepted.",
+    "Country geometry/streaming, Nigeria rendering integration, phones and full unattended global acceptance remain open.",
+    "No game data change, production runtime upload or new playable destination."
+  ]
+}

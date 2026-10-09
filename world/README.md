@@ -1,5 +1,109 @@
 # Independent world-data builder
 
+The shared-OFD campaign lease bridge and complete bounded windows pass **495
+distinct tests, three policy checks and World TypeScript** on exact3880c17f,
+run37915503802; macOS repeats11 actual lease tests successfully. See
+[CAMPAIGN-LEASE-WINDOW-OPERATIONS.md](CAMPAIGN-LEASE-WINDOW-OPERATIONS.md) and
+[campaign-lease-window-acceptance.json](campaign-lease-window-acceptance.json).
+Original45-source/1MiB control and worker limits remain unchanged. Actual
+campaign/acquisition ownership, global accounting, V2 window execution, country
+geometry and gameplay/phone integration remain next. This builder phase adds no
+production map detail. Earlier checkpoints below are historical.
+
+Latest admitted-child handoff and source-capacity milestone passes **478 tests,
+three policy checks and World TypeScript**, exact cfb5c3b1/run37908535625. Real
+admitted children open sequentially under the original held namespace lease
+without registry SQL or extra attempts. Source-derived plans must fit each
+child's original capture/observation row caps. See
+[INDEX-SHARD-HANDOFF-OPERATIONS.md](INDEX-SHARD-HANDOFF-OPERATIONS.md).
+Durable multi-session windows, V2 ingest/audit, global accounting and country
+geometry remain next. This source phase adds no production map detail.
+
+Latest supervised batch milestone passes **467 tests, three policy checks and
+World TypeScript**, exact ab0589e67/run37905609552. It atomically charges complete
+plans, publishes their roots and recovers actual interrupted workers, including
+an actual 4,096-request/16-shard admission. See
+[INDEX-SHARD-BATCH-OPERATIONS.md](INDEX-SHARD-BATCH-OPERATIONS.md). Shard capture/audit
+integration, finite global budgets and country geometry remain next. This phase
+adds no production map detail. Earlier checkpoints are historical.
+
+Latest source-plan milestone passes **457 tests, three policy checks and World
+TypeScript**, exact2597acb7/run37903828130. It derives bounded plans from every
+verified captured campaign leaf and refuses missing/corrupt source state. See
+[INDEX-SHARD-SOURCE-OPERATIONS.md](INDEX-SHARD-SOURCE-OPERATIONS.md). Actual V3 batch
+dispatch/recovery, finite global accounting and country geometry remain next;
+this source phase adds no production map detail. Earlier checkpoints follow.
+
+
+Latest planned namespace/root/publication checkpoint passes **448 tests, three
+policy checks and World TypeScript**, exact87dff05f/run37901132435. Explicit V2
+storage primitives require the complete frozen batch charge before allocating
+children; both published bindings reopen exactly. Source/control caps and V1
+defaults remain unchanged. See [INDEX-SHARD-ROOT-OPERATIONS.md](INDEX-SHARD-ROOT-OPERATIONS.md).
+Real source-derived planning, supervised batch dispatch/recovery and finite global
+admission remain next; this builder phase adds no production map detail.
+
+
+Latest complete-plan transport/semantic-validation milestone passes **432 tests,
+three policy checks and World TypeScript** on exact source019f9179/run37898985723.
+See [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md) and its acceptance
+receipt. A complete 2MiB plan transfers within the unchanged limits; actual
+TS/Python comparison covers all4096 requests and every derived binding. Source
+consolidation retains the original1MiB control ceiling. Connected batch/root
+admission and finite global accounting remain next, followed by country geometry,
+streaming and gameplay/rendering integration. No new runtime/map detail is released
+by this source phase. Older checkpoint paragraphs below are historical.
+
+Current campaign audit/session integration, bounded shard-plan codec, atomic
+opaque reservations and separate v2 binding codecs pass413 tests, three
+release-policy checks and World TypeScript on exact sourcecb562c69/run37895287687.
+See [index-shard-binding-acceptance.json](index-shard-binding-acceptance.json) and
+[INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
+See [INDEX-SHARD-PLAN-SPEC.md](INDEX-SHARD-PLAN-SPEC.md),
+[CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md) and latest
+[PROGRESS.md](PROGRESS.md). The planner remains unadmitted/uncompiled; actual
+plan admission, controller/transport integration and finite global accounting
+are next. Legacy openers remain v1-only. Country geometry, full interruption/corruption acceptance,
+rendering integration and phone proof remain open. No gameplay/Nigeria data
+changed. Counts below are historical stages.
+
+Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
+checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries
+preserves one charge and the database inode. Fixed26-input snapshots are verified,
+private, readonly and removed after the worker is reaped; an unconfirmed reap preserves
+them and exposes the process handle. Cached real-source replay
+still conserves2,283ordinals/1,810versions with0 network. This is startup acceptance;
+registry supervision, capture/controller crash recovery, measured quotas, campaign
+fencing, independent raw audit and country rollout remain required.
+Exact committed source21a68dd5 also passes5 clean-archive release policy checks:
+**131 focused checks plus compiler**. This phase changes no production gameplay.
+
+Charged directory/binding publication now passes **71 isolated Python checks**,
+including three actual abrupt binding-worker exits and recovery without a second
+storage charge. It reserves before allocation and refuses foreign/unreserved state;
+actual registry opening/process supervision remains next. The22-input verification
+below is retained historical evidence; the current declaration has26 inputs.
+New browser/agent concurrency is authorized with memory monitoring; heavy checks
+remain capped and defer while the monitor reports warning/critical pressure.
+
+Tooling pins, immutable binding, worker boundary, footprint and charge primitives
+now pass **94 focused checks plus World TypeScript**, including exact committed
+source73e090c9 release-policy checks. Cached Dakar replay preserves
+2,283 ordinals/1,810 versions with0 network and2,908,160 database bytes. Actual20-file
+tooling and Node-binary pin verification are recorded in PROGRESS.md.
+The charge ledger detects deleted reservations using transactionally stored totals
+and a digest; it does not yet open or allocate a real namespace. Stable execution
+snapshot, full worker closure, guarded atomic bootstrap, pressure/crash acceptance,
+fenced campaign completion and independent raw audit remain required. These source
+primitives change no gameplay, actual source reservations, Nigeria data or production.
+
+The compact feature-index engine now passes 22 guarded fixtures, ten writer-lock
+checks, World TypeScript and cached Dakar replay. It retains every original ordinal
+and conflicting body version. The same-data layout measurement reduced database
+bytes from 4,038,656 to 2,908,160. [FEATURE-INDEX-STORE-SPEC.md](FEATURE-INDEX-STORE-SPEC.md)
+records the focused evidence and remaining durable opener, aggregate quota,
+abrupt-crash, campaign-hook and independent raw-audit gates. No gameplay changed.
+
 The resource/recovery phase now passes12 focused cases, a guarded cached overlap
 profile and a19MB synthetic Feature. Kernel file/CPU and process wall/RSS/output
 checks preserve committed disposable SQL state. Actual Node SQLite native heap
@@ -11,7 +115,7 @@ Strict capture/source reconstruction now passes53 focused checks and World TypeS
 
 [The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Its capture composition and cached positive profiling are accepted above; durable index/campaign-hook/audit are the next gates. No country building coverage is claimed.
 
-Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; local intensive work stays serialized through explicit terminal handoffs in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
+Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; heavy work uses one shared slot, with monitored bounded browser/agent concurrency in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.
 

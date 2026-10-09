@@ -1,5 +1,99 @@
 # Isolated index resource and recovery witnesses — 8 October 2026
 
+## Persistent fixed-registry controller — 9 October 2026
+
+Use `tooling/index_registry_controller.py:restartable_registry_startup` with the
+same explicit pins and runtime as `startup_index_namespace`. The additional
+`attempt_limit` defaults16; CPU10s/wall15s/RSS96MiB limits and source/budget/runtime
+bindings are immutable for this namespace. Each admitted attempt retains its full
+wall reservation, even after controller death. No actual source capture or campaign
+job is dispatched by this API. Source/version changes need explicit migration,
+not quota reset or overwriting the existing record with new pins.
+
+Records, execution and reclaim have fixed namespace-relative names. The parent
+holds the permanent namespace flock before copying and the fixed native worker
+inherits it. Busy means preserve and wait; no remembered-PID signalling. After
+reacquiring the lease, incomplete record/source prefixes resume only against the
+same pinned bytes. A complete owned execution slot is verified before reclamation;
+partial deletion verifies its surviving subset. The initialized-registry witness
+prevents missing/replaced ledger files from becoming an empty successful registry.
+Lost attempt/witness files and identity-free witness prefixes fail closed; never
+delete them to regain an attempt budget. Initial legacy adoption interrupted after
+the ledger witness but before its attempt record is deliberately preserved for
+explicit reconciliation. No arbitrary snapshot directory is removed.
+
+Current acceptance is167 Python/23 engine checks and the actual controller-loss/
+fresh-controller fixture; exact source pins, measurements and failed historical
+receipts are in PROGRESS.md. This is cooperative local POSIX ownership, not an OS
+sandbox or proof against manual valid-record rollback. It does not establish
+power-loss durability, native capture transaction/campaign recovery, global
+throughput, physical-phone performance or a background service while the app sleeps.
+
+## Fixed registry startup — 9 October 2026
+
+The latest phase passes146 Python and23 engine checks. See PROGRESS.md for exact
+source pins, receipts and measurements; older counts below describe prior phases.
+
+Use `tooling/index_registry_startup.py:startup_index_namespace` for a supervised
+initialize/reopen report. Supply the existing canonical owned0700 namespace,
+immutable aggregate allowance, repository root, canonical complete tooling manifest
+and exact bytes/SHA pins, retained source configuration and its pin, absolute Python
+executable, and exact Python/SQLite versions/executable bytes/SHA. CPU and wall
+limits default10/15seconds; sampled RSS defaults96MiB, per-file ceiling4MiB. The API
+acquires the actual namespace lease before frozen snapshot creation and delegates
+SQL to the fixed Python worker. It returns only after the worker exits; it does
+not yield a live writer for later campaign operations. Do not wrap an unsupervised
+long-lived `open_index_namespace` around production work and call that this API.
+
+An actual controller-death fixture verifies inherited lease/snapshot survival and
+replacement refusal. The fixed lease witness is test-only, not an acquisition/job
+endpoint. Selector setup/cleanup failures preserve reaping/retention semantics;
+leader exit with open inherited pipes is bounded and fails with
+`IndexWorkerUnreaped`. That exception retains its actual process handle and frozen
+snapshot while this controller lives. A terminal leader alone does not establish
+descendant exit. Never delete a preserved namespace, snapshot or lock based only
+on that leader's return code or a vanished controller.
+
+Persistent pre/post-spawn records and orphan reconciliation remain unimplemented.
+Do not claim unattended recovery until that durable mechanism and real controller
+loss are exercised together. CPU/file/core limits are kernel enforced; RSS remains
+sampled plus worker-reported peak, not a kernel hard group-memory bound. The Python
+binary/version pin does not hermetically bind every imported runtime file. No paid
+jobs, new country captures or production runtime artifacts are involved.
+
+## Current namespace opener and worker integration — 9 October 2026
+
+Latest focused implementation adds `tooling/index_namespace.py` and paired namespace
+and child descriptor inheritance to the fixed bootstrap worker.126 Python/23 engine
+checks and World compiler pass; exact receipts and measured bounds are in PROGRESS.md.
+The older experiment descriptions below are historical, not the current complete
+worker list or acceptance count.
+
+Use `open_index_namespace(existing_private_root, immutable_aggregate_bytes)` only
+inside the eventual bounded controller. It requires an existing owned0700 directory
+and a finite kernel per-file limit no greater than4MiB. It acquires the permanent
+namespace lock, verifies/resumes canonical metadata and the staged/final registry,
+and yields its actual lease and live `IndexReservations`. Pass those directly to
+`charged_index_root`, then the resulting admission to `bootstrap_index`. Do not
+fabricate descriptors or rename/delete lock inodes. A live native worker inherits
+both references; only confirmed worker termination permits normal release/reopen.
+
+Metadata pins the actual Python SQLite runtime as well as format/schema and budget.
+A runtime/schema/budget change is a separate explicit migration namespace, never a
+silent update/refund of the existing ledger. Foreign, mixed, unbound, oversized,
+or corrupt state fails closed. Interrupted expected prefixes and valid bootstrap
+files resume in place; neither caller nor helper deletes unknown SQLite sidecars.
+SQLite read-only connections occur after the kernel lease because shared-memory
+sidecar changes are possible even with mode=ro.
+
+**Still external/unaccepted:** persistent controller state and PID/snapshot recovery,
+registry CPU/wall/RSS process supervision, controller SIGKILL recovery, capture
+transaction crash/blocked-checkpoint pressure, measured global/shard limits,
+fenced campaign completion and independent source/index audits. Passing the library
+fixtures is not permission to run an unbounded real namespace or claim unattended
+country coverage. Power-loss durability is not established by process-exit tests.
+
+
 The fixed-worker Unix supervisor in `tooling/index_resource_limits.py` now applies
 kernel file-size/CPU limits, disables core files, caps V8 old-space, samples the
 owned process RSS, bounds stdout/stderr and waits for terminal cleanup. It accepts

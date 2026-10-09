@@ -1,5 +1,88 @@
 # Copy-and-paste continuation prompt
 
+Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
+frozen query membership and live-token completion are implemented.228 Python +43
+Node tests and full World TypeScript pass. Implementationa75c59af also passes
+five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next unimplemented
+gate, including failed-attempt observation handling and charged WAL-aware copies. Read the first PROGRESS.md section and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+Next independent raw/index audit, deterministic globally admitted shards/operator
+materials and compiled streamed country geometry. Geographic foundation remains
+distinct from explorable/playable coverage; no runtime upload/map detail thisphase.
+Older checkpoint paragraphs below are historical where superseded. Existing memory
+caps and serialized intensive-work handoffs remain in force while pressure warns.
+
+Latest observation checkpoint: optional pinned campaign/query context now travels
+through the real durable capture worker and atomic feature transaction.221 Python,
+32 engine/Ledger checks and full World TypeScript pass; actual raw replay retains
+two synthetic associations across fresh held sessions and unchanged877 historical
+pins. Exact-kind Ledger.claim is additive; current campaign orchestration still
+needs integration. Read first PROGRESS.md section, FEATURE-INDEX-CAPTURE-OPERATIONS.md
+and CAMPAIGN-FEATURE-INDEX-SPEC.md. Preserve V1 bytes/quotas; V2 pins each attempt's
+observation separately from immutable raw capture inputs and never resets charges.
+Next implement real persistent JSONL held-session bridge plus same-Ledger indexing
+phase with frozen query membership and current live-token completion. Backfill
+legacy captures without changing source rows/results/usage. Synthetic contexts
+do not prove actual campaign membership. Then independently audit raw/index and
+compile/publish owned country shards; no new runtime upload/map detail thisphase.
+
+Latest capture checkpoint: durable per-request raw-input/attempt ownership now feeds
+real fixed-worker replay inside a held supervised index session.209 Python/23 guarded
+engine checks and fresh full World TypeScript pass. Actual controller SIGKILL before
+input processing and after COMMIT/nonempty WAL blocks fresh acquisition while the
+worker lives, then replays exactly under new kernel leases with two charges. Read
+first PROGRESS.md section and FEATURE-INDEX-CAPTURE-OPERATIONS.md. Separate capture
+ceilings256 requests/eight attempts/512000-byte record and one1MiB source slot fit
+original index reservation; namespace16 lifetime admissions remain unchanged.
+Do not reset quotas or call namespace admission per capture/building. Every successful
+capture call raw-replays actual index state; settlement alone is not completion.
+Next wire frozen campaign/grid membership, atomic observations and live-token-fenced
+completion, then independent raw/index audit and full-country streamed geometry.
+No actual campaign/acquisition/output/Nigeria/game writes or runtime release thisphase.
+
+
+Previous admission checkpoint: supervised charge-before-create admission now feeds
+verified ingestion without any parent SQLite connection. It passes192 Python/23
+guarded engine checks, including actual controller loss with surviving anonymous
+input/namespace lease and fresh admission→raw ingest/replay. New namespaces use
+pinned v2 admission operations; existing v1 records/data remain unchanged and
+refuse implicit migration. Read the first PROGRESS.md section and
+FEATURE-INDEX-ADMISSION-OPERATIONS.md. Next implement persistent capture job/
+attempt/input ownership and frozen campaign observation/completion fences, then
+independent raw/index conservation and country geometry/sharding/streaming.
+Do not run the bounded admission controller for every building or capture.
+Preserve all source/ledger/witness identities, attempt limits and Nigeria.
+
+Previous ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
+23 guarded engine checks and full World TypeScript. Actual retained Dakar inputs
+give2captures/2,283ordinals/1,810versions; fresh workers replay without duplicate
+versions. Actual SIGKILL after COMMIT leaves WAL which a fresh worker recovers and
+verifies against every raw ordinal. All877 historical pins remain unchanged.
+Read the first PROGRESS.md section and FEATURE-INDEX-INGEST-OPERATIONS.md.
+Next implement supervised admission and persistent capture attempt/input ownership,
+then fenced campaign observation/completion and independent raw/index audit before
+country geometry/sharding/streaming. This endpoint still consumes external charged
+admission; it does not complete the unattended country pipeline or deploy new
+playable detail. Preserve raw inputs, attempts, namespace witnesses and Nigeria.
+
+Latest recovery checkpoint: persistent fixed-registry startup passes167 Python and
+23 engine checks, including actual controller loss and a fresh recovery API using
+the inherited namespace lock. Read the first PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md
+sections. Next implement supervised verified-capture ingestion and fenced campaign
+completion using these durable records, not another registry initializer. Preserve
+all attempts, initialized-ledger witnesses and frozen source/runtime pins; ambiguous
+record loss remains fail-closed. Country geometry, streaming and actual production
+map-detail improvements remain the full next programme, not completed by this phase.
+
+Latest builder checkpoint,9 October: fixed Python registry startup is implemented
+and passes146 Python/23 engine checks, including actual controller SIGKILL lease
+survival and bounded live-descendant pipe retention. Read the first section of
+PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md. Next implement persistent bounded
+attempt/worker/snapshot ownership and reconciliation, then supervised capture
+ingestion/fenced campaign completion; the controller fixture alone is not that
+service. Do not restart finished source acquisition or refund existing charges.
+No new map-detail runtime deployment accompanies this builder phase.
+
 Deployment policy — latest human instruction,8 October2026: preview deployments are cancelled. Completed verified phases may go directly to production, coordinated with the other agents on this computer. Preserve Nigeria/game data, affected checks, startup/resource limits and sealed-release identity. One coordinator announces the exact synchronized main revision and owns each upload; no concurrent dirty-checkout deployments. WORLD must first implement and verify the production map adapter before builder output can be user-visible. The human authorizes necessary integration/release work; no purchase or provider-plan upgrade is authorized. Older no-deployment/preview paragraphs below describe earlier instructions and are superseded by this policy.
 
 

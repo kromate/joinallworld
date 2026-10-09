@@ -16,7 +16,7 @@ class ResourceGuardTests(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        files = ["index_resource_limits.py", "index_resource_witness.ts", "test_index_resource_limits.py"]
+        files = ["index_resource_limits.py", "index_resource_witness.mjs", "test_index_resource_limits.py"]
         print(json.dumps({"scope": "disposable resource/recovery witnesses, not durable index acceptance",
                           "sourceHashes": {file: hashlib.sha256((Path(__file__).parent / file).read_bytes()).hexdigest() for file in files},
                           "results": cls.results}, sort_keys=True))
@@ -68,6 +68,8 @@ class ResourceGuardTests(unittest.TestCase):
 
     def test_sampled_process_guard_covers_native_allocation(self):
         result = self.witness("rss-limit", rss_limit_bytes=64*MIB, wall_seconds=5)
+        self.assertEqual(json.loads(result["stdout"]), {"caseName": "rss-limit",
+            "stage": "native-allocation", "allocationRequestedBytes": 96*MIB})
         self.assertEqual(result["reason"], "sampled-RSS-limit")
         self.assertEqual(result["terminationSignal"], "SIGKILL")
         self.assertGreater(result["maximumObservedWorkerRssBytes"], 64*MIB)

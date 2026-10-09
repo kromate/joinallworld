@@ -1,0 +1,182 @@
+{
+  "format": "index-shard-source-plan-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "2597acb7892042cc0d2a3f32ad9fe48912679991",
+  "runId": 37903828130,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37903828130",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11,
+    "python-regression.stderr": 78,
+    "python-boundary.stderr": 193
+  },
+  "nodeTests": {
+    "node-audit.tap": 27,
+    "node-contracts.tap": 58,
+    "sdk-audit.tap": 11,
+    "campaign-regression.tap": 39,
+    "shard-plan.tap": 16,
+    "release-source.tap": 5
+  },
+  "distinctTests": 457,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 884736,
+    "registryControlWithOperation": 1040384
+  },
+  "fixedSourceInputs": 45,
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "3dff327a36ef91486b5db95d5bf6165acca01ef599f89a834a83b1a371104421",
+      "bytes": 8223
+    },
+    "world/campaign-feature-index.test.ts": {
+      "sha256": "ca3d03540a35d6254bcd61455da1379dcb17e5ec47682f25746771b73e63b722",
+      "bytes": 58084
+    },
+    "world/campaign.ts": {
+      "sha256": "688f612b2c50019e605eb7a1d398dd4959902abc55e4d1eaff255d1cd66bc2f1",
+      "bytes": 102152
+    },
+    "world/feature-index-session.ts": {
+      "sha256": "8d7f2e13de60a212d8e9cfcbe1a05e39f8afb2e78e771d668f96976cb2e906a1",
+      "bytes": 110440
+    },
+    "world/index-shard-evidence.ts": {
+      "sha256": "aace9107c38092fb01d7ae995a2cd1c13e65a98d75fb3b4db9c51823b1a2c63f",
+      "bytes": 6740
+    },
+    "world/index-shard-evidence.test.ts": {
+      "sha256": "bb61492f5d639daff8277032d1640752b78919e895239db7df1a00decf02efaf",
+      "bytes": 8297
+    },
+    "world/tooling/index_admission_worker.py": {
+      "sha256": "5e189ac3d0d186344adf775a238a255652eb9999897ef13aa85a1e91a738a49e",
+      "bytes": 5946
+    },
+    "world/tooling/index_resource_limits.py": {
+      "sha256": "1e9bfc46a530f2a64c3483a448a27630890f5e2d8ce97c4f479580625d361c23",
+      "bytes": 32732
+    },
+    "world/tooling/index_tooling.py": {
+      "sha256": "ce9ab11be98fb78110060701c44b6d342fab9ec1769880bdccd21a372c9d76e9",
+      "bytes": 8711
+    },
+    "world/tooling/test_index_admission.py": {
+      "sha256": "c72c1dedf5fd62df2335bf7fceb3bf8e49ec371183cfedd9ea1a3a9969becfa1",
+      "bytes": 19251
+    }
+  },
+  "removedSourceFiles": [
+    "world/tooling/index_admission_crash.py"
+  ],
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "fc81b72bb486e017619a15911f9eb5d0a3c9ce4d9245e6dba80fd3dc1a3a3eed",
+      "bytes": 10426
+    },
+    "node-audit.tap": {
+      "sha256": "153a0cc6aaa72930c41a7b14252eccda2007eced7347488d0b52b8ba6d5c0af7",
+      "bytes": 7205
+    },
+    "node-contracts.tap": {
+      "sha256": "b150051ca19cd82db913a96272f8193e336c67176cfaff395c0ea58a37f01e49",
+      "bytes": 14354
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "57aabc1d490e3349011fb831f1b3b468e8ef8ea9f288a0f3492285f9da6d274b",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "4203139dbd4ee13d3c7d4d71e343a7879bbec1c82d60d0c8be521924b17e2878",
+      "bytes": 901
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "8e11f830f5f7ed2ec19f4143dacd6910aa0adfe757e57c5f8ec3b4a8cbcc3d22",
+      "bytes": 1453
+    },
+    "python-boundary.stdout": {
+      "sha256": "472e29cbb09283aaa7241032bda3c312698fb8faf42d4ecc21e19a948b27bd47",
+      "bytes": 6827
+    },
+    "python-regression.stderr": {
+      "sha256": "71bc2e36c56ae45639681d1dbd9495d15221c395b97e85e533831e8ca7f52954",
+      "bytes": 1134
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "601f92961b0d0de5165b53b722ae92dcd87cd8dd2c840669083c0a2add7fe8ce",
+      "bytes": 889
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "a6df6d8007bb84fec748fd552581b4af487b88f3191c73a2f30bcf51248d12da",
+      "bytes": 1362
+    },
+    "sdk-audit.tap": {
+      "sha256": "44bb2703506a6a78b81244dfa02f9c829a3a1007af15d1bcc5c4a679415ffbde",
+      "bytes": 3315
+    },
+    "shard-plan.tap": {
+      "sha256": "ac2292a11789f57b3019d754e9494aad6440723c0b8314ae6738ce185d213bcb",
+      "bytes": 4641
+    },
+    "source-sha.txt": {
+      "sha256": "3a52d575995d5b532195943351b841bcf394833b1896862fcfd264844c95be81",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "acceptedScope": [
+    "Read-only complete captured campaign leaf reconstruction with pinned inventory/grid/source/configuration",
+    "Canonical request/context/descriptor and actual wire/envelope byte planning",
+    "Frozen caller policy and final source-row/binding stability recheck",
+    "Positive and missing/corrupt zero-row synthetic source fixtures",
+    "Exact fixed legacy admission SIGKILL witness consolidation with recovery regression"
+  ],
+  "notEstablished": [
+    "Actual supervised V3 batch admission and recovery",
+    "Held-source campaign dispatch qualification",
+    "Real whole-country/global coverage",
+    "Finite global accounting across namespaces",
+    "Country geometry streaming or gameplay integration",
+    "Runtime/map deployment or physical-phone acceptance"
+  ]
+}

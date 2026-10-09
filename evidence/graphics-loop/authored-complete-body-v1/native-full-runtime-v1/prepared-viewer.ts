@@ -189,18 +189,19 @@ function probeUnsupportedPose() {
   let result: Record<string, unknown>;
   try {
     const poseResult = setPose('npc', 'lie');
-    const support = npc.solveFeet(() => 0);
-    result = { ...poseResult, contact: support, declaredLimitations: npc.preparedMetrics.contactLimitations };
-    if (support.limited || support.maxError > 0.004) addEvent(`Lie pose contact is limited: ${support.maxError.toFixed(3)} m residual`);
-    else addEvent('Lie clip sampled; contact is only a feet-on-floor diagnostic');
+    result = { ...poseResult, negativeControl: 'unsupported-pose', declaredLimitations: npc.preparedMetrics.contactLimitations };
+    if (!poseResult.accepted && poseResult.error) {
+      addEvent('Unsupported lie pose request was rejected and surfaced');
+      setStatus('Unsupported pose request rejected; NPC restored to idle');
+    }
   } catch (error) {
-    result = { accepted: false, error: reportError(error), declaredLimitations: npc.preparedMetrics.contactLimitations };
+    result = { accepted: false, error: reportError(error), negativeControl: 'unsupported-pose', declaredLimitations: npc.preparedMetrics.contactLimitations };
   } finally {
     try {
       npc.show('idle', false);
       npc.solveFeet(() => 0);
       interactUntil = 0;
-      addEvent('NPC restored to idle after lie/contact probe');
+      addEvent('NPC restored to idle after lie-pose probe');
     } catch (error) {
       reportError(`Failed to restore NPC idle after lie/contact probe: ${error instanceof Error ? error.message : String(error)}`);
     }

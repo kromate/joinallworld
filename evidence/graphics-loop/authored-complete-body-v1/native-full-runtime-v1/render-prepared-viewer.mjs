@@ -119,12 +119,20 @@ try {
     throw new Error(`Prepared viewer did not become ready (${readyState}): ${JSON.stringify(failure)}`);
   }
   const appearanceChange = await evaluate('window.nativePreparedReview.changeNpcIdentityAndPalette()');
-  const interaction = await evaluate('window.nativePreparedReview.interact()');
-  await delay(1_200);
-  const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, fromSurface: true });
-  const screenshotBytes = Buffer.from(screenshot.data, 'base64');
-  const screenshotPath = path.join(resultDir, 'prepared-viewer.png');
-  await writeFile(screenshotPath, screenshotBytes);
+  await evaluate('window.nativePreparedReview.toggleWalking()');
+  await evaluate('window.nativePreparedReview.toggleExpressionCycle()');
+  await evaluate("window.nativePreparedReview.setPose('npc', 'idle')");
+  await delay(500);
+  async function captureState(name, settleMs = 700) {
+    await delay(settleMs);
+    const state = await evaluate('window.nativePreparedReview.sample()');
+    const image = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, fromSurface: true });
+    const bytes = Buffer.from(image.data, 'base64');
+    const filename = `prepared-${name}.png`;
+    await writeFile(path.join(resultDir, filename), bytes);
+    return { actors: state.actors, screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
+  }
+  const idleReview = await captureState('idle');
   const preProbeSnapshot = await evaluate('window.nativePreparedReview.sample()');
   const contactGate = Object.fromEntries(['player', 'npc'].map((key) => {
     const diagnostic = preProbeSnapshot.actors?.[key]?.contactDiagnostics;
@@ -135,9 +143,20 @@ try {
       passed: Number.isFinite(diagnostic?.maxError) && diagnostic.maxError <= 0.004 && diagnostic.limitedSamples === 0 && diagnostic.samples > 0,
     }];
   }));
+  await evaluate('window.nativePreparedReview.toggleWalking()');
+  const walkReview = await captureState('walk');
+  const interaction = await evaluate('window.nativePreparedReview.interact()');
+  const interactionReview = await captureState('interaction', 900);
   const unsupportedProbe = await evaluate('window.nativePreparedReview.probeUnsupportedPose()');
   const postProbeSnapshot = await evaluate('window.nativePreparedReview.sample()');
   const npcRestoredIdle = postProbeSnapshot.actors?.npc?.pose === 'idle';
+  const expectedProbeError = typeof unsupportedProbe?.error === 'string'
+    && /Native lie (?:requires verified furniture\/body support|pose is not contact-supported)/i.test(unsupportedProbe.error);
+  const expectedProbeSurfaced = unsupportedProbe?.accepted === false
+    && unsupportedProbe?.negativeControl === 'unsupported-pose'
+    && expectedProbeError
+    && postProbeSnapshot.errors?.length === (preProbeSnapshot.errors?.length ?? 0) + 1
+    && postProbeSnapshot.errors?.at(-1) === unsupportedProbe.error;
   const pageStatus = await evaluate('document.querySelector("#status")?.textContent ?? "missing status"');
   const success = preProbeSnapshot?.state === 'ready'
     && preProbeSnapshot.errors?.length === 0
@@ -147,14 +166,22 @@ try {
     && preProbeSnapshot.actors?.player?.preparedMetrics?.clothingTriangles > 0
     && preProbeSnapshot.actors?.npc?.preparedMetrics?.clothingTriangles > 0
     && preProbeSnapshot.actors?.npc?.look?.face === 'round'
+    && idleReview.actors?.player?.pose === 'idle'
+    && idleReview.actors?.npc?.pose === 'idle'
+    && walkReview.actors?.player?.pose === 'walk'
+    && walkReview.actors?.npc?.pose === 'idle'
+    && interactionReview.actors?.player?.pose === 'interact'
+    && interactionReview.actors?.npc?.pose === 'interact'
     && npcRestoredIdle
+    && expectedProbeSurfaced
     && appearanceChange?.accepted === true
     && interaction?.accepted === true
     && consoleErrors.length === 0;
   report = {
     status: success ? 'PASS' : 'FAIL',
     pageUrl,
-    screenshot: { path: path.basename(screenshotPath), bytes: screenshotBytes.length, sha256: createHash('sha256').update(screenshotBytes).digest('hex') },
+    screenshot: interactionReview.screenshot,
+    screenshots: { idle: idleReview.screenshot, walk: walkReview.screenshot, interaction: interactionReview.screenshot },
     pageStatus,
     appearanceChange,
     interaction,
@@ -165,6 +192,7 @@ try {
     contactLimitEvents: preProbeSnapshot?.contactLimitEvents ?? [],
     npcRestoredIdle,
     unsupportedProbe,
+    expectedProbeSurfaced,
     surfacedFactoryLimits: preProbeSnapshot?.actors?.player?.preparedMetrics?.contactLimitations,
     shaderConsoleErrors: consoleErrors,
     browserConsoleErrors: consoleErrors,
@@ -173,7 +201,7 @@ try {
   };
   await writeFile(path.join(resultDir, 'prepared-review.json'), `${JSON.stringify(report, null, 2)}\n`);
   if (!success) throw new Error(`Prepared viewer contract failed: ${JSON.stringify({ pageStatus, contactGate, npcRestoredIdle, errors: preProbeSnapshot?.errors, actors: preProbeSnapshot?.actors })}`);
-  console.log(JSON.stringify({ status: report.status, resultDir, screenshot: report.screenshot, pageStatus, unsupportedProbe }));
+  console.log(JSON.stringify({ status: report.status, resultDir, screenshots: report.screenshots, pageStatus, unsupportedProbe }));
 } catch (error) {
   const message = error instanceof Error ? error.stack ?? error.message : String(error);
   report = report ? { ...report, status: 'FAIL', error: message } : { status: 'FAIL', error: message, browserConsoleErrors: consoleErrors, chromeStderr };

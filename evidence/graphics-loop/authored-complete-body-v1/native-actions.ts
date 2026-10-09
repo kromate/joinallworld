@@ -64,6 +64,7 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
   const torsoProfile = new Map<number, { min: number; max: number; count: number }>();
   const profileLateral = new THREE.Vector3();
   const footSoleOffsets: Record<'left' | 'right', number> = { left: 0, right: 0 };
+  const neutralFootPoints: Record<'left' | 'right', THREE.Vector3> = { left: new THREE.Vector3(), right: new THREE.Vector3() };
   let disposed = false;
 
   function point(name: string): THREE.Vector3 {
@@ -271,6 +272,19 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
         const outward = lateral.clone().multiplyScalar(side === 'left' ? -1 : 1);
         handClearance[side] = placeHandOutsideTorso(side, outward);
       }
+      if (pose === 'walk') {
+        // The authored-rig joint axes make the small native leg rotations asymmetric at the ankle.
+        // Drive each ankle to a measured, mirrored root-local target so both feet visibly alternate.
+        const phase = seconds * Math.PI * 2;
+        for (const side of ['left', 'right'] as const) {
+          const swing = Math.sin(phase) * (side === 'left' ? 1 : -1);
+          const target = neutralFootPoints[side].clone().addScaledVector(forward, swing * 0.095);
+          target.y += Math.max(0, swing) * 0.025;
+          footErrors[side] = solveLeg(side, target, forward);
+          aimSegment(side === 'left' ? 'mixamorigLeftFoot' : 'mixamorigRightFoot',
+            side === 'left' ? 'mixamorigLeftToeBase' : 'mixamorigRightToeBase', forward);
+        }
+      }
     } else if (pose === 'sit') {
       if (support.kind !== 'seat') throw new Error('Native sit requires seat support');
       const hip = bones.get('mixamorigHips')!;
@@ -326,6 +340,8 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
   const { forward: soleForward } = axes();
   aimSegment('mixamorigLeftFoot', 'mixamorigLeftToeBase', soleForward);
   aimSegment('mixamorigRightFoot', 'mixamorigRightToeBase', soleForward);
+  neutralFootPoints.left.copy(point('mixamorigLeftFoot'));
+  neutralFootPoints.right.copy(point('mixamorigRightFoot'));
   footSoleOffsets.left = measureFootSoleOffset('left');
   footSoleOffsets.right = measureFootSoleOffset('right');
   native.restore();

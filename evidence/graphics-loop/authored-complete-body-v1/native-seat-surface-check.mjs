@@ -11,7 +11,7 @@ import { clone as cloneSkinnedHierarchy } from 'three/examples/jsm/utils/Skeleto
 import { applyNativeFamilyRigCorrection } from './native-family-rig-correction.ts';
 import { createNativeSourceLandmarkSampler } from './native-source-sampler.ts';
 import { createNativeClipSolver } from './native-clip-solver.ts';
-import { createNativeSeatSurfaceProbe, seatAnchorDelta } from './native-seat-surface.ts';
+import { createNativeSeatSurfaceProbe, solveNativeSeatSurface } from './native-seat-surface.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../..');
@@ -30,6 +30,24 @@ const pins = {
   femaleCasual: '7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd',
   femaleOffice: 'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053',
 };
+// Cheap controller contract checks run before decoding any GLB. These prove the correction is
+// bounded and that a zero residual cannot hide an unsupported final foot solve.
+{
+  let currentHipY = 0.55;
+  const converged = solveNativeSeatSurface({ seatTopY: 0.55, initialHipWorldY: 0.55, maximumPasses: 3,
+    applyAtHipWorldY(hipWorldY) { currentHipY = hipWorldY; return { supportStatus: 'seat-anchored-contact-unverified', feetStatus: 'supported' }; },
+    sample() { return { minY: currentHipY - 0.006 + (currentHipY - 0.55) * 0.2, maxY: currentHipY + 0.1 }; } });
+  assert.equal(converged.converged, true, 'fixed-point correction converges after the re-fit changes the surface');
+  assert.equal(converged.passes.length, 3, 'seat correction remains bounded to three solver passes');
+  assert.ok(Math.abs(converged.residualY) <= 0.001, 'fixed-point result obeys the 1 mm seat gate');
+  const unsupported = solveNativeSeatSurface({ seatTopY: 0.55, initialHipWorldY: 0.55, maximumPasses: 2,
+    applyAtHipWorldY(hipWorldY) { currentHipY = hipWorldY; return { supportStatus: 'seat-anchored-contact-unverified', feetStatus: 'unreachable' }; },
+    sample() { return { minY: currentHipY, maxY: currentHipY + 0.1 }; } });
+  assert.equal(unsupported.converged, false, 'a zero seat residual cannot override unreachable feet');
+  assert.throws(() => solveNativeSeatSurface({ seatTopY: 0.55, initialHipWorldY: 0.55, maximumPasses: 4,
+    applyAtHipWorldY() { return { supportStatus: 'diagnostic', feetStatus: 'supported' }; },
+    sample() { return { minY: 0.55, maxY: 0.65 }; } }), /from 1 to 3/);
+}
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 function imageFreeGlb(input) {
   const bytes = new Uint8Array(input), view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
@@ -224,25 +242,47 @@ try {
       for (let phase = 0; phase < phases; phase++) {
         const seconds = duration * phase / (phases - 1);
         const frame = sourceSampler.sampleClip('sit', seconds, 'clamp');
-        const applyStart = performance.now();
-        const anchored = solver.applyFrame(frame, { kind: 'seat-anchor', hipWorld: [0, SEAT_TOP, 0], floorY: FLOOR_Y });
-        const applyMs = performance.now() - applyStart;
-        const before = seatProbe.sample();
-        const beforeOracle = fullSeatRegionOracle(root, oracleRegion);
-        assert(Math.abs(before.minY - beforeOracle.minY) <= 1e-7, `${key}/${phase}: cached seat min matches independent full region oracle before adjustment`);
-        const requestedPelvisDelta = seatAnchorDelta(SEAT_TOP, before.minY);
-        const corrected = solver.applyFrame(frame, { kind: 'seat-anchor', hipWorld: [0, SEAT_TOP + requestedPelvisDelta, 0], floorY: FLOOR_Y });
-        const after = seatProbe.sample();
-        const afterOracle = fullSeatRegionOracle(root, oracleRegion);
-        assert(Math.abs(after.minY - afterOracle.minY) <= 1e-7, `${key}/${phase}: cached seat min matches independent full region oracle after adjustment`);
-        const row = { phase, seconds, anchoredHipY: SEAT_TOP, supportStatus: anchored.supportStatus,
-          feetStatus: anchored.seatFeetStatus ?? null, seatRegionBefore: before, fullRegionOracleBefore: beforeOracle, requestedPelvisDelta,
-          correctedHipY: SEAT_TOP + requestedPelvisDelta, seatRegionAfter: after,
-          fullRegionOracleAfter: afterOracle,
-          remainingSeatSurfaceError: after.minY - SEAT_TOP, correctedFeetStatus: corrected.seatFeetStatus ?? null,
-          solverReach: corrected.reach, applyWallMs: applyMs };
+        const passWitnesses = [];
+        const appliedResults = [];
+        const solveStart = performance.now();
+        const seated = solveNativeSeatSurface({
+          seatTopY: SEAT_TOP,
+          initialHipWorldY: SEAT_TOP,
+          maximumPasses: 3,
+          toleranceY: 0.001,
+          applyAtHipWorldY(hipWorldY) {
+            const applied = solver.applyFrame(frame, { kind: 'seat-anchor', hipWorld: [0, hipWorldY, 0], floorY: FLOOR_Y });
+            appliedResults.push(applied);
+            return { supportStatus: applied.supportStatus, feetStatus: applied.seatFeetStatus ?? null };
+          },
+          sample() {
+            const cached = seatProbe.sample();
+            const oracle = fullSeatRegionOracle(root, oracleRegion);
+            assert(Math.abs(cached.minY - oracle.minY) <= 1e-7,
+              `${key}/${phase}/pass-${passWitnesses.length}: cached seat min matches independent full region oracle`);
+            passWitnesses.push({ cached, fullRegionOracle: oracle });
+            return cached;
+          },
+        });
+        const solveWallMs = performance.now() - solveStart;
+        const lastPass = seated.passes[seated.passes.length - 1];
+        const lastApplied = appliedResults[appliedResults.length - 1];
+        assert(lastApplied && lastPass, `${key}/${phase}: bounded seat solve produced at least one applied pass`);
+        const after = seatProbe.sample(), afterOracle = fullSeatRegionOracle(root, oracleRegion);
+        assert(Math.abs(after.minY - afterOracle.minY) <= 1e-7, `${key}/${phase}: final cached seat min matches independent full region oracle`);
+        const row = { phase, seconds, initialHipWorldY: SEAT_TOP, seatTopY: SEAT_TOP,
+          iterations: seated.passes.map((pass, index) => ({ ...pass, fullRegionOracle: passWitnesses[index]?.fullRegionOracle ?? null,
+            proposedCorrectionY: pass.residualY, proposedNextHipWorldY: pass.hipWorldY + pass.residualY })),
+          converged: seated.converged, finalHipWorldY: seated.hipWorldY, finalSeatRegion: after,
+          finalFullRegionOracle: afterOracle, finalSeatResidualY: after.minY - SEAT_TOP,
+          finalFeetStatus: lastApplied.seatFeetStatus ?? lastPass?.feetStatus ?? null,
+          finalSupportStatus: lastApplied.supportStatus, solverReach: lastApplied.reach, solveWallMs };
         phaseRows.push(row);
-        if (Math.abs(row.remainingSeatSurfaceError) > 0.001) failures.push({ outfit: key, phase, kind: 'seat-surface-anchor-residual', metres: row.remainingSeatSurfaceError });
+        if (!seated.converged || Math.abs(row.finalSeatResidualY) > 0.001) {
+          failures.push({ outfit: key, phase, kind: 'seat-surface-fixed-point-residual', metres: row.finalSeatResidualY,
+            passes: row.iterations, feetStatus: row.finalFeetStatus });
+        }
+        if (row.finalFeetStatus !== 'supported') failures.push({ outfit: key, phase, kind: 'seat-surface-final-feet-unsupported', feetStatus: row.finalFeetStatus });
       }
       cases.push({ key, family: outfit.family, outfit: outfit.outfit, sourceClip: 'sit', duration, phaseCount: phases,
         virtualSeatOnly: { topY: SEAT_TOP, floorY: FLOOR_Y, note: 'Diagnostic plane; not a measured in-game chair.' },
@@ -270,7 +310,7 @@ try {
 
 const result = {
   status: failures.length ? 'DIAGNOSTIC_REJECTED' : 'DIAGNOSTIC_ONLY',
-  method: 'CPU-only actual GLTFLoader run using image-stripped pinned body/clip GLBs, family rig correction, shipped authored outfit and shoe adapters, and a cached indexed pelvis/proximal-thigh weight region. For 40 clamped samples of the source sit clip, solve seat anchoring at a stated virtual plane, measure the region, derive the vertical pelvis correction, and resample at the corrected anchor.',
+  method: 'CPU-only actual GLTFLoader run using image-stripped pinned body/clip GLBs, family rig correction, shipped authored outfit and shoe adapters, and a cached indexed pelvis/proximal-thigh weight region. For 40 clamped samples of the source sit clip, apply the exact frame at the seat anchor, resample the region after the solver re-fits both feet, then feed the measured pelvis residual into at most three fixed-point passes. Each pass independently checks cached membership against the full indexed-region oracle; acceptance requires ≤1 mm seat residual and the existing supported-foot result on the final pass.',
   inputs: { body: { path: path.relative(repo, bodyPath), bytes: bodyBytes.length, sha256: pins.body },
     clips: { path: path.relative(repo, clipPath), bytes: clipBytes.length, sha256: pins.clips },
     shoes: { path: path.relative(repo, shoePath), bytes: shoeBytes.length, sha256: pins.shoes },
@@ -295,7 +335,8 @@ writeFileSync(outputPath, JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify({ status: result.status, sampleCount: cases.reduce((sum, row) => sum + row.phaseCount, 0),
   cases: cases.map((row) => ({ family: row.family, outfit: row.outfit, cachedVertices: row.supportRegion.candidateVertices,
     sourceVertices: row.supportRegion.sourceIndexedVertices,
-    deltaRange: [Math.min(...row.phases.map((phase) => phase.requestedPelvisDelta)), Math.max(...row.phases.map((phase) => phase.requestedPelvisDelta))],
-    correctedErrorMaxMm: Math.max(...row.phases.map((phase) => Math.abs(phase.remainingSeatSurfaceError) * 1000)) })),
+    passRange: [Math.min(...row.phases.map((phase) => phase.iterations.length)), Math.max(...row.phases.map((phase) => phase.iterations.length))],
+    correctedErrorMaxMm: Math.max(...row.phases.map((phase) => Math.abs(phase.finalSeatResidualY) * 1000)),
+    unsupportedFeet: row.phases.filter((phase) => phase.finalFeetStatus !== 'supported').length })),
   failureCount: failures.length, outputPath }, null, 2));
 if (failures.length) process.exitCode = 1;

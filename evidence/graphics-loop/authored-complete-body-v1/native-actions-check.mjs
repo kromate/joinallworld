@@ -178,7 +178,7 @@ for (const actor of actors) {
     assert.ok(sample.head[1] > sample.hips[1] + 0.2, `${actor.family}/${pose}: head stays above hips`);
     if (pose === 'idle' || pose === 'walk') {
       assert.ok(geometry.armSurfaceOutsideTorso.left >= 0.90 && geometry.armSurfaceOutsideTorso.right >= 0.90,
-        `${actor.family}/${pose}: arm-weighted surface remains outside measured torso envelope`);
+        `${actor.family}/${pose}: arm-weighted surface remains outside measured torso envelope ${JSON.stringify(geometry.armSurfaceOutsideTorso)}`);
     }
     let seatBoundsNearSupport = null, feetBelowPelvis = null, pelvisClearanceOk = null;
     if (pose === 'sit') {
@@ -213,8 +213,10 @@ for (const actor of actors) {
     const walking = actor.controller.apply(time,'walk',{kind:'floor'});
     const advances = Object.fromEntries(['left','right'].map(side => [side,
       new THREE.Vector3().fromArray(walking.feet[side]).sub(new THREE.Vector3().fromArray(standing.feet[side])).dot(forward)]));
-    assert.ok(advances.left*advances.right < -.0025, `${actor.family}: feet advance in opposing directions at ${time}s`);
-    gait.push({time,advances});
+    assert.ok(advances.left * advances.right < -0.0025, `${actor.family}: feet advance in opposing directions at ${time}s ${JSON.stringify(advances)}`);
+    assert.ok(walking.footTargetError.left < 0.005 && walking.footTargetError.right < 0.005,
+      `${actor.family}: mirrored walk targets are reachable within 5mm ${JSON.stringify(walking.footTargetError)}`);
+    gait.push({time,advances,footTargetError:walking.footTargetError});
   }
   let rejectedNoSeat = false, rejectedMissingFloor = false, rejectedUnsupportedPose = false;
   try { actor.controller.apply(0, 'sit', { kind: 'floor' }); } catch { rejectedNoSeat = true; }
@@ -233,6 +235,7 @@ for (const actor of actors) {
     actor.controller = createNativeActionController(actor.root);
   }
   actor.controller.restore();
+  actor.controller.dispose();
   actor.presentation.dispose(); actor.familyRig.dispose();
   assert.equal(actor.body.geometry, sourceGeometry, `${actor.family}: presentation restored owned body geometry`);
   output.push({ family: actor.family, states, gait, femaleArmClearanceSweep, presentation: actor.presentation.metrics, rejectedNoSeat, rejectedMissingFloor, rejectedUnsupportedPose });
@@ -253,7 +256,7 @@ const result = {
     'CPU skinning and landmark evidence only; no rendered naturalness, seat collision, prop contact, or user-facing interaction acceptance.',
     'Sit uses supplied seat/floor heights, two-leg IK and proximal-thigh hand targets. Actual knee landmarks remain about 0.38–0.40m from the hands; this is not hands-to-knees acceptance. No enter/exit transitions or external contact solver is implemented.',
     'Interact is a right-hand reach; cook is a two-hand waist reach; eat/drink use a head-bone mouth proxy. These are pose landmarks, not task choreography or prop attachment.',
-    'Walk is a constrained in-place cycle; no root travel or foot IK is implemented.',
+    'Walk is a constrained in-place cycle with mirrored two-link ankle targets; it has no root travel, terrain adaptation, or ground-contact solver.',
     'The arm-vs-torso metric counts arm-weighted vertices outside the same-height lateral body/clothing envelope; it is a silhouette proxy, not triangle-intersection or visual proof. The adaptive clearance still needs rendered review.',
     'Only the authored casual suit and short02 hair are checked. This does not establish all look, wardrobe, hair, accessory, or fallback parity.',
   ],

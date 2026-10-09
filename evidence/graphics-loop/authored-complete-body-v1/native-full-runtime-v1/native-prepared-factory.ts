@@ -375,6 +375,9 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
       if (frame.clipName !== resolveClip(context.clip)) return false;
+      if (['sit', 'lie', 'soak', 'wash'].includes(context.pose)) {
+        throw new Error(`Native ${context.pose} requires verified furniture/body support; this prepared factory has no accepted support for that pose`);
+      }
       const applied = solver.applyFrame(frame, worldSupport(root, context.support));
       if (applied.supportStatus !== 'feet-supported') {
         throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus}; clip ${frame.clipName})`);

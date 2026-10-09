@@ -115,7 +115,7 @@ for(const family of ['man','woman']){
     const frame=sampler.sampleClip(clipName,time,'loop');
     for(const actor of actors){
       const applied=actor.variant==='position'
-        ? actor.controller.apply(frame,{kind:'flat-feet',floorY:0})
+        ? actor.controller.applyFrame(frame,{kind:'flat-feet',floorY:0})
         : actor.controller.apply(frame);
       actor.parent.updateWorldMatrix(true,false);actor.parent.updateMatrixWorld(true);
       const errors=[];

@@ -17,6 +17,23 @@ export interface NativeSeatSurfaceProbe {
   sample(): Readonly<{ minY: number; maxY: number }>;
 }
 
+export interface NativeSeatSurfacePass {
+  readonly hipWorldY: number;
+  readonly seatMinY: number;
+  readonly seatMaxY: number;
+  readonly residualY: number;
+  readonly supportStatus: string;
+  readonly feetStatus: 'supported' | 'unreachable' | null;
+}
+
+export interface NativeSeatSurfaceSolveResult {
+  readonly converged: boolean;
+  readonly seatTopY: number;
+  readonly hipWorldY: number;
+  readonly residualY: number;
+  readonly passes: readonly NativeSeatSurfacePass[];
+}
+
 const SEAT_SUPPORT_BONES = [
   'mixamorigHips',
 ] as const;
@@ -211,4 +228,54 @@ export function createNativeSeatSurfaceProbe(
 export function seatAnchorDelta(seatTopY: number, measuredSeatMinimumY: number): number {
   if (![seatTopY, measuredSeatMinimumY].every(Number.isFinite)) fail('seat top and sampled minimum must be finite');
   return seatTopY - measuredSeatMinimumY;
+}
+
+/**
+ * Bounded fixed-point solve for a seat surface after the solver has re-fit the feet. Each pass
+ * reapplies the same sampled pose at the requested hip anchor, then measures the cached posterior
+ * surface. The next hip anchor corrects the measured residual; it never moves the actor root.
+ * A result is successful only when both the seat surface and final foot solve satisfy their
+ * existing tolerances. Callers should still treat the solver's seat support status as diagnostic
+ * until a host has independently accepted the actual seat/continuous pose path.
+ */
+export function solveNativeSeatSurface(options: Readonly<{
+  seatTopY: number;
+  initialHipWorldY: number;
+  applyAtHipWorldY(hipWorldY: number): Readonly<{
+    supportStatus: string;
+    feetStatus: 'supported' | 'unreachable' | null;
+  }>;
+  sample(): Readonly<{ minY: number; maxY: number }>;
+  maximumPasses?: number;
+  toleranceY?: number;
+}>): NativeSeatSurfaceSolveResult {
+  const maximumPasses = options.maximumPasses ?? 3;
+  const toleranceY = options.toleranceY ?? 0.001;
+  if (![options.seatTopY, options.initialHipWorldY, toleranceY].every(Number.isFinite) || toleranceY <= 0) {
+    fail('seat solve anchors and tolerance must be finite, with positive tolerance');
+  }
+  if (!Number.isInteger(maximumPasses) || maximumPasses < 1 || maximumPasses > 3) {
+    fail('seat solve pass count must be an integer from 1 to 3');
+  }
+
+  const passes: NativeSeatSurfacePass[] = [];
+  let hipWorldY = options.initialHipWorldY;
+  for (let attempt = 0; attempt < maximumPasses; attempt++) {
+    const applied = options.applyAtHipWorldY(hipWorldY);
+    const measured = options.sample();
+    if (![measured.minY, measured.maxY].every(Number.isFinite) || measured.maxY < measured.minY) {
+      fail(`seat pass ${attempt} returned invalid surface bounds`);
+    }
+    const residualY = options.seatTopY - measured.minY;
+    passes.push(Object.freeze({ hipWorldY, seatMinY: measured.minY, seatMaxY: measured.maxY, residualY,
+      supportStatus: applied.supportStatus, feetStatus: applied.feetStatus }));
+    if (Math.abs(residualY) <= toleranceY && applied.feetStatus === 'supported') {
+      return Object.freeze({ converged: true, seatTopY: options.seatTopY, hipWorldY, residualY, passes: Object.freeze(passes) });
+    }
+    hipWorldY += residualY;
+    if (!Number.isFinite(hipWorldY)) fail(`seat pass ${attempt} produced a non-finite pelvis correction`);
+  }
+  const last = passes[passes.length - 1]!;
+  return Object.freeze({ converged: false, seatTopY: options.seatTopY, hipWorldY: last.hipWorldY,
+    residualY: last.residualY, passes: Object.freeze(passes) });
 }

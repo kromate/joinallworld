@@ -14,6 +14,10 @@ test('the level bar: World › Africa › Nigeria › the city, the level in vie
   assert.deepEqual(city.map((level) => [level.id, level.label, level.atlas, level.current]), [['world', 'World', 0, false], ['africa', 'Africa', 1, false], ['nigeria', 'Nigeria', 2, false], ['city', 'Lagos', null, true]])
   assert.equal(mapCrumbText('Abuja'), 'World › Africa › Nigeria › Abuja')
   for (const [index, id] of ['world', 'africa', 'nigeria'].entries()) assert.deepEqual(mapLevels('Kano', 'world', index).filter((level) => level.current).map((level) => level.id), [id])
+  const accra = mapLevels('Accra', 'city', 2, 'accra')
+  assert.deepEqual(accra.map((level) => [level.id, level.label, level.atlas, level.current]), [['world', 'World', 0, false], ['africa', 'Africa', 1, false], ['country', 'Ghana', 1, false], ['city', 'Accra', null, true]])
+  assert.equal(mapCrumbText('Accra', 'accra'), 'World › Africa › Ghana › Accra')
+  assert.deepEqual(mapLevels('Accra', 'world', 1, 'accra').filter((level) => level.current).map((level) => level.id), ['country'], 'the selected country step is current on its Africa map')
   assert.deepEqual(asMapParams({ layer: 'world', level: 0, city: 'abuja' }), { layer: 'world', level: 0, city: 'abuja' })
 })
 
@@ -21,6 +25,7 @@ test('the bar is on the city map itself, the world is one key away, and arriving
   const [app, bar, levels, keys, shell, pane, mapRuntime] = await Promise.all([here('./MapApp.vue'), here('./MapLevels.vue'), here('./MapOverview.vue'), here('../../../ui/keys.ts'), here('../../state/app.ts'), here('../../scene/MapPane.vue'), here('../../scene/MapWorld.vue')])
   assert.match(app, /<div class="map-dock">\s*<MapLevels \/>/, 'drawn with the city map whatever else the panel shows, as the top of the one docked column')
   assert.match(bar, /showMapLayer\('world', \{ level: level\.atlas \}\)/)
+  assert.match(bar, /showMapLayer\('world', \{ level: 1, city: cityId\.value \}\)/, 'choosing a foreign country opens Africa with the current city selected')
   assert.doesNotMatch(levels, /World map|showWorld/, 'the entry at the end of the list is gone')
   assert.match(keys, /\{ keys: \['g'\], label: 'G', run: 'world' \}/)
   assert.match(await here('../../App.vue'), /verb === 'world'\) showMapLayer\('world', \{ level: 0 \}\)/)

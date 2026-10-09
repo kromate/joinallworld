@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T14:01:36.261739+00:00",
+  "updatedAt": "2026-10-09T14:25:17.705280+00:00",
   "branch": "codex/allworld-consolidated-delivery",
   "assemblyOwner": "Integration",
   "uploadOwner": "WORLD",
@@ -1449,8 +1449,8 @@
     "phase": "First five starter capitals in next verified consolidated release",
     "manifest": "world/playable-africa/packet.json",
     "countries": [
-      "Cameroon / Yaoundé",
-      "Togo / Lomé",
+      "Cameroon / Yaound\u00e9",
+      "Togo / Lom\u00e9",
       "Ghana / Accra",
       "Kenya / Nairobi",
       "Algeria / Algiers"
@@ -1459,5 +1459,28 @@
     "ownerAudit": "https://github.com/kromate/joinallworld/actions/runs/37940263790",
     "acceptance": "Owner16 source/engine cases and strict22/24 audit pass; real Node/Worker receipts/restart/refusal and browser arrival/reload/return plus exact combined full/compiler/budget gates still required. Not production registration.",
     "coverage": "Bounded central OSM samples and sourced airport points, fictional visitor services; no whole-city/country, local climate, real airline schedule or venue claim."
+  },
+  "focusedCountryAcceptance": {
+    "node": {
+      "source": "95d4ea6da724185e776ca4fe7a682e851f911853",
+      "journey": "passed",
+      "overall": "82/84; missing owned Miniflare and stale planned-route fixture failed, later repaired",
+      "log": "/tmp/allworld-africa-focused-95d4.log"
+    },
+    "worker": {
+      "source": "9648dbd5e593d55f9f8cda13effd728c21aac9a2",
+      "journey": "passed",
+      "overall": "35/36; stale Ghana planned-card assertion later repaired",
+      "log": "/tmp/allworld-africa-worker-atlas-9648.log"
+    },
+    "atlas": {
+      "source": "23c9d232d4311219b92cca8169ca17a64e410c5c",
+      "tests": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/tmp/allworld-atlas-country-final.log"
+    },
+    "scope": "Five capitals; real disposable Node/SQLite Worker stores, exact fares, journal/receipt replay,10 restarts and original-home return. Not provider/browser/production acceptance."
   }
 }

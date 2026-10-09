@@ -1,4 +1,5 @@
 import { civicTitle, civicOffice, cityUnit } from '../../../game/cities/terminology.ts'
+import { cityCatalogueEntry } from '../../../game/cities/registry.ts'
 // Getting around without a DOM: the one place that decides what a trip costs, why Go is off, what
 // the trip bar says, which places the Map lists and what each Ride row offers. It is the typed
 // port of src/ui/panels/world-ui.js (the helpers the Map card and the Ride app shared, so the two
@@ -120,18 +121,24 @@ export interface TripMode { id: string; label: string; icon?: string | null }
 export const INTERCITY_MODES: Readonly<Record<string, TripMode>> = { road: { id: 'danfo', label: 'Bus', icon: '🚌' }, rail: { id: 'rail', label: 'Train', icon: '🚆' }, air: { id: 'air', label: 'Flight', icon: '✈️' } }
 
 // ---- the levels of the Map: the city, its country, the world ------------------------------------
-/** One step of the bar at the top of the Map: World › Africa › Nigeria › the city the player is in. */
-export interface MapLevel { id: 'world' | 'africa' | 'nigeria' | 'city'; label: string; /** The atlas level it opens (widest first), or null for the city map. */ atlas: number | null; current: boolean }
+/** One step of the bar at the top of the Map: World › Africa › the home country › the city. */
+export interface MapLevel { id: 'world' | 'africa' | 'nigeria' | 'country' | 'city'; label: string; /** The atlas level it opens (widest first), or null for the city map. */ atlas: number | null; current: boolean }
 /**
- * The bar's steps. `layer` is what the Map shows ('city' or the atlas); on the atlas the level in view is `atlasLevel`
- * (the atlas draws its own bar there, so this is what the city map shows and what the keyboard reads).
+ * The bar's steps. `layer` is what the Map shows ('city' or the atlas); on the atlas the level in view is `atlasLevel`.
  */
-export function mapLevels(cityName: string, layer: 'city' | 'world', atlasLevel = 2): MapLevel[] {
-  const wide = (['world', 'africa', 'nigeria'] as const).map((id, index): MapLevel => ({ id, label: id === 'world' ? 'World' : id === 'africa' ? 'Africa' : 'Nigeria', atlas: index, current: layer === 'world' && atlasLevel === index }))
+export function mapLevels(cityName: string, layer: 'city' | 'world', atlasLevel = 2, cityId?: string): MapLevel[] {
+  const catalogue = cityCatalogueEntry(cityId)
+  const foreign = Boolean(catalogue?.countryISO && catalogue.countryISO !== 'ng')
+  const country = foreign ? catalogue?.countryName || catalogue?.countryISO?.toUpperCase() || 'Country' : 'Nigeria'
+  const wide: MapLevel[] = [
+    { id: 'world', label: 'World', atlas: 0, current: layer === 'world' && atlasLevel === 0 },
+    { id: 'africa', label: 'Africa', atlas: 1, current: layer === 'world' && atlasLevel === 1 && !foreign },
+    { id: foreign ? 'country' : 'nigeria', label: country, atlas: foreign ? 1 : 2, current: layer === 'world' && atlasLevel === (foreign ? 1 : 2) },
+  ]
   return [...wide, { id: 'city', label: cityName, atlas: null, current: layer === 'city' }]
 }
 /** "World › Africa › Nigeria › Lagos": where the player is, as words. */
-export const mapCrumbText = (cityName: string): string => mapLevels(cityName, 'city').map((level) => level.label).join(' › ')
+export const mapCrumbText = (cityName: string, cityId?: string): string => mapLevels(cityName, 'city', 2, cityId).map((level) => level.label).join(' › ')
 export interface TripInfo {
   from: { id: string; label: string }
   to: { id: string; label: string }

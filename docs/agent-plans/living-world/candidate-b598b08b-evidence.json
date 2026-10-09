@@ -1,0 +1,185 @@
+{
+  "candidateSha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+  "observedAt": "2026-10-09T13:47:26.473550+00:00",
+  "runId": 37937692605,
+  "accepted": false,
+  "sourceOnlyRepairSha": "4d7a8958ee7764d2c2a88c66412f361dd733fbae",
+  "compiler": {
+    "status": "failure",
+    "diagnostics": 14,
+    "code": "TS2345",
+    "path": "scripts/living-world-browser-qa.mjs",
+    "cause": "First extracted Set-Cookie token inferred string|undefined; source boundary fix published4d7, unverified"
+  },
+  "build": "pass on Node22/24",
+  "downloadBudgets": {
+    "rawFirstPaintJs": 91174,
+    "firstPaintJsGzip": 35514,
+    "firstPaintBrotli": 35689,
+    "startupRaw": 614732,
+    "startupGzip": 222955,
+    "startupBrotli": 195413,
+    "unchangedCaps": "pass"
+  },
+  "fullNode22": "running original handle113843795948",
+  "fullNode24": "running original handle113843795894",
+  "fullWorker22": {
+    "tests": 153,
+    "pass": 153,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 508557.976533
+  },
+  "fullWorker24": {
+    "tests": 153,
+    "pass": 153,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 496151.475319
+  },
+  "focused": {
+    "tests": 133,
+    "pass": 133,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 173962.426423
+  },
+  "cityRegression": {
+    "scope": "source+Node, not browser/production",
+    "tests": 43,
+    "pass": 43,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 1472.244417
+  },
+  "browser": {
+    "runId": 37938109323,
+    "ref": "codex/living-world-browser-qa-b598b08b",
+    "sourceSha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+    "functionalWorkflow": "success",
+    "visualAcceptance": "failure",
+    "operatorModel": "gpt-6-astra",
+    "operatorEffort": "medium",
+    "operatorSession": "01a120e0-ae9b-79d1-9ba0-45ef035a1025",
+    "modelProof": "parent-bound session_meta and turn_context2026-10-09T13:36:00.873Z independently read",
+    "legacyTests": 7,
+    "defaultOffNodePolicyTests": 5,
+    "nativeTests": 1,
+    "receipt": {
+      "result": "passed",
+      "scope": "disposable local Node HTTP fixture; rendered teaching practice only",
+      "sourceSha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+      "health": {
+        "ok": true,
+        "buildId": "joinallworld-b598b08b8d8e7d563b97de4600d"
+      },
+      "browser": "Chrome/154.0.8037.97",
+      "node": "v24.19.0",
+      "platform": "linux",
+      "viewportObservations": {
+        "desktop": {
+          "width": 1280,
+          "scrollWidth": 1280,
+          "buttons": [
+            {
+              "width": 410,
+              "height": 44
+            },
+            {
+              "width": 410,
+              "height": 44
+            },
+            {
+              "width": 410,
+              "height": 44
+            }
+          ]
+        },
+        "mobile390": {
+          "width": 390,
+          "scrollWidth": 390,
+          "buttons": [
+            {
+              "width": 324,
+              "height": 44
+            },
+            {
+              "width": 324,
+              "height": 44
+            },
+            {
+              "width": 324,
+              "height": 44
+            }
+          ]
+        }
+      },
+      "screenshots": [
+        "teaching-desktop-before.png",
+        "teaching-desktop-reloaded.png",
+        "teaching-desktop-after.png",
+        "teaching-mobile-before.png",
+        "teaching-mobile-after.png"
+      ],
+      "qualification": "headless Chromium desktop and 390px touch emulation; not a physical-device or whole-journey result"
+    },
+    "artifactId": 11620455829,
+    "artifactBytes": 1062725,
+    "artifactSha256": "5b6715348835a0db8d0bdea84d29141bd389221836e32e1a121be84de23b3381",
+    "visualFindings": [
+      "Desktop title/header above viewport/HUD, worse on reload",
+      "Mobile teacher/board/header above viewport",
+      "More toast covers mobile question",
+      "Three answer buttons visible but generic CSS reduces48px authored controls to44px"
+    ],
+    "evidenceLimit": "Functional ON rendered checks and separate OFF Node policy; not OFF render, physical device, interactive onboarding, Worker staging or production",
+    "cleanup": "Normal successful exit and cleanup hooks, no independent post-removal enumeration",
+    "readOnlySourceClues": [
+      "App.vue166\u2013169 absolute bottom progress placement",
+      "shell.css166 no height/scroll bound",
+      "shell.css226 generic label truncation",
+      "shell.css228 generic button override",
+      "useAttention.ts104 More toast during lesson",
+      "QA waitRendered344\u2013363 checks buttons/wallet but not title/prompt/board visibility"
+    ]
+  },
+  "logs": [
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-node24-gates.log",
+      "sha256": "33249c65110442d21537a55366e16a03a440e9a71145780001249da2388eee37"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-worker22.log",
+      "sha256": "3070961b6a8d89dc0d373003ae059ba375e21a21197f254f52bf378623a2a28b"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-worker24.log",
+      "sha256": "f8be6a0e4e2c01b6b8ce90bcf425854bd90688eaf1a2227738a39d9968dff695"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-focused.log",
+      "sha256": "83f3ac68f09e7e2880ba1f0703a53c3525576d279c8274d73edaec4dcb445d46"
+    },
+    {
+      "path": "/tmp/joinallworld-browser-b598b08b/raw-run.log",
+      "sha256": "c2f0dcd58a7245cecb64fad30b14f20c2f47db6170072269eb7bd63ca93496a0"
+    },
+    {
+      "path": "/tmp/joinallworld-browser-b598b08b/qa-review.txt",
+      "sha256": "04e645e640e4ea4eada18db116ee03886e5ff6cd27aab6e63fb9589ec3d2ec00"
+    },
+    {
+      "path": "/tmp/joinallworld-browser-b598b08b/file-manifest.json",
+      "sha256": "e85eee43effb7bf6a64e99da6bd6918133c648e3d7ea939047d08757c0bfe2de"
+    },
+    {
+      "path": "/tmp/joinallworld-browser-b598b08b/run-manifest.json",
+      "sha256": "2fadb648adf457c39930e4cd983846df15b5dc3f1019172a145ae5549391af72"
+    }
+  ],
+  "production": {
+    "source": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeRelease": false
+  },
+  "next": "Integration alone repairs proven visual layout/helper boundary; freeze exact changed source, pass compiler/caps and native readable/reachable UI without hidden-control substitutes before release gates"
+}

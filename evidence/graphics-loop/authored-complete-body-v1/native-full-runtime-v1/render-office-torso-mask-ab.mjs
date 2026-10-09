@@ -90,6 +90,39 @@ async function capture(name) {
   await writeFile(path.join(resultDir, filename), bytes);
   return { state, screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
 }
+function chromeProcessesForProfile() {
+  const result = spawnSync('ps', ['-axo', 'pid=,stat=,command='], { encoding: 'utf8', timeout: 2000 });
+  if (result.status !== 0) throw new Error(`Could not verify Chrome cleanup: ${result.stderr || result.error || result.status}`);
+  return result.stdout.split('\n').flatMap((line) => {
+    if (!line.includes(profile) || line.includes('ps -axo')) return [];
+    const match = line.trim().match(/^(\d+)\s+(\S+)\s+(.*)$/);
+    return match ? [{ pid: Number(match[1]), state: match[2], command: match[3] }] : [];
+  });
+}
+async function stopChromeAndWait() {
+  if (chrome.exitCode === null) chrome.kill('SIGTERM');
+  if (chrome.exitCode === null) {
+    await Promise.race([new Promise((resolve) => chrome.once('exit', resolve)), delay(2500)]);
+  }
+  const waitUntilClear = async (timeoutMs) => {
+    const deadline = Date.now() + timeoutMs;
+    while (Date.now() < deadline) {
+      const live = chromeProcessesForProfile().filter((process) => !process.state.startsWith('Z'));
+      if (!live.length) return [];
+      await delay(100);
+    }
+    return chromeProcessesForProfile().filter((process) => !process.state.startsWith('Z'));
+  };
+  let remaining = await waitUntilClear(1800);
+  for (const child of remaining) try { globalThis.process.kill(child.pid, 'SIGTERM'); } catch {}
+  if (remaining.length) {
+    await delay(500);
+    remaining = chromeProcessesForProfile().filter((process) => !process.state.startsWith('Z'));
+    for (const child of remaining) try { globalThis.process.kill(child.pid, 'SIGKILL'); } catch {}
+    remaining = await waitUntilClear(1800);
+  }
+  if (remaining.length) throw new Error(`Chrome left processes using its private profile: ${JSON.stringify(remaining)}`);
+}
 
 try {
   const debugPort = await readDebugPort();
@@ -175,9 +208,8 @@ try {
   process.exitCode = 1;
 } finally {
   socket?.close();
-  chrome.kill('SIGTERM');
-  await new Promise((resolve) => { if (chrome.exitCode !== null) resolve(); else { chrome.once('exit', resolve); setTimeout(resolve, 2500); } });
+  await stopChromeAndWait();
   server.close();
-  await rm(profile, { recursive: true, force: true });
+  await rm(profile, { recursive: true, force: true, maxRetries: 12, retryDelay: 100 });
   await rm(bundlePath, { force: true });
 }

@@ -171,10 +171,11 @@ async function prepare(): Promise<void> {
     }
 
     await MeshoptDecoder.ready;
-    const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-    const response = await fetch(bodyAssetUrl);
+  const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+    const absoluteBodyUrl = new URL(bodyAssetUrl, window.location.href);
+    const response = await fetch(absoluteBodyUrl);
     if (!response.ok) throw new Error(`Source GLB request failed (${response.status})`);
-    const rawGltf = await loader.parseAsync(await response.arrayBuffer(), new URL('.', bodyAssetUrl).href);
+    const rawGltf = await loader.parseAsync(await response.arrayBuffer(), new URL('.', absoluteBodyUrl).href);
     rawRoot = rawGltf.scene;
     const rawBody = skinned(rawRoot, 'Body');
     const rawIndex = rawBody.geometry.getIndex();
@@ -268,7 +269,7 @@ window.addEventListener('beforeunload', () => {
   if (candidate) candidate.parent?.remove(candidate);
   candidateSourceGeometry?.dispose();
   rawRoot?.traverse((node) => {
-    if (!node.isMesh) return;
+    if (!(node instanceof THREE.Mesh)) return;
     node.geometry.dispose();
     for (const material of Array.isArray(node.material) ? node.material : [node.material]) material.dispose();
   });

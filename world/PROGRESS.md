@@ -1,3 +1,19 @@
+# Country runtime correction checkpoint, 9 October 2026 at 23:14 UTC
+
+Actual source CI38002712142 built successfully within unchanged download budgets,
+then found four new TypeScript errors and rejected the JSON asset extension.
+The typing errors are corrected in source; strict compiler acceptance still
+requires a fresh run. Hashed metadata now uses permitted `.txt` assets containing
+UTF-8 JSON. All 16 focused fixtures, actual text/plain HTTP comparison of all
+50 C1 rows, and the existing public-asset smoke test pass. Actual HTTP transfer
+is now 6,840 bytes. No release guard, compiler baseline or startup cap changed.
+The separate historical WORLD tooling allowlist failure remains disclosed.
+
+Exact eec sealed run38002567221 passed with pinned fa8 tooling. The downloaded
+original archive and local package guard agree on digest96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad.
+Native original-store upgrade, teaching ON/OFF and messaging checks remain open;
+no upload or extra green country is claimed.
+
 # Country runtime proposal checkpoint, 9 October 2026 at 23:03 UTC
 
 The explicit-admission generator and portable browser country reader now pass

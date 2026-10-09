@@ -87,7 +87,11 @@ test('accepts only a declared, source-pinned extension after the unchanged C1 pr
   const cities = catalogueCities(rows)
   const built = buildCountryDirectory({ cities, admissionSha256: manifest.admissionSha256 })
   assert.equal(built.directories.length, 12)
-  assert.equal(built.index.source.admissionSha256, manifest.admissionSha256)
+  assert.deepEqual(built.index.source, {
+    c1Commit: manifest.baseline.c1Commit,
+    inventorySha256: manifest.inventorySha256,
+    admissionSha256: manifest.admissionSha256,
+  })
   assert.equal(built.directories.every((entry) => entry.content.toString('utf8').includes('containsGeometry":false')), true)
 })
 

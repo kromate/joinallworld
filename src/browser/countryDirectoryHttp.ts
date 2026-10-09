@@ -9,8 +9,8 @@ export const COUNTRY_DIRECTORY_LIMITS = Object.freeze({
 
 const HASH256 = /^[a-f0-9]{64}$/u
 const ISO2 = /^[A-Z]{2}$/u
-const HASHED_PATH = /^countries\/([a-z]{2})-([a-f0-9]{64})\.json$/u
-const INDEX_PATH = /^index-([a-f0-9]{64})\.json$/u
+const HASHED_PATH = /^countries\/([a-z]{2})-([a-f0-9]{64})\.txt$/u
+const INDEX_PATH = /^index-([a-f0-9]{64})\.txt$/u
 const INDEX_KEYS = new Set(['schemaVersion', 'source', 'legacy', 'countries'])
 const SOURCE_KEYS = new Set(['c1Commit', 'inventorySha256', 'admissionSha256'])
 const LEGACY_KEYS = new Set(['countryISO', 'countryName', 'directoryPreservesAllCatalogueRows'])
@@ -239,7 +239,7 @@ function parseIndex(value: unknown, expected: CountryDirectoryReaderOptions): { 
   for (const item of value.countries) {
     if (!isRecord(item) || !hasExactKeys(item, INDEX_ENTRY_KEYS) || typeof item.iso2 !== 'string' || !ISO2.test(item.iso2) || entries.has(item.iso2.toLowerCase())
         || typeof item.name !== 'string' || !item.name.trim() || typeof item.status !== 'string' || !item.status.trim()
-        || typeof item.path !== 'string' || !HASH256.test(typeof item.sha256 === 'string' ? item.sha256 : '')
+        || typeof item.path !== 'string' || typeof item.sha256 !== 'string' || !HASH256.test(item.sha256)
         || !Number.isSafeInteger(item.bytes) || typeof item.bytes !== 'number' || item.bytes < 0 || item.bytes > COUNTRY_DIRECTORY_LIMITS.countryBytes
         || !Number.isSafeInteger(item.cityCount) || typeof item.cityCount !== 'number' || item.cityCount < 0) {
       throw new Error('country directory index entry is invalid')
@@ -297,7 +297,7 @@ export async function openHttpCountryDirectory(
 ): Promise<CountryDirectoryReader> {
   if (!HASH256.test(descriptor.indexSha256) || !HASH256.test(descriptor.admissionSha256)
       || !HASH256.test(descriptor.inventorySha256) || !/^[a-f0-9]{40}$/u.test(descriptor.c1Commit)
-      || !INDEX_PATH.test(descriptor.indexPath) || descriptor.indexPath !== `index-${descriptor.indexSha256}.json`) {
+      || !INDEX_PATH.test(descriptor.indexPath) || descriptor.indexPath !== `index-${descriptor.indexSha256}.txt`) {
     throw new TypeError('country directory descriptor pins are invalid')
   }
   if (!Number.isSafeInteger(options.maxResidentBytes ?? COUNTRY_DIRECTORY_LIMITS.residentBytes)

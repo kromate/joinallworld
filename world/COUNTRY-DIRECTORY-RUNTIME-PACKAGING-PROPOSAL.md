@@ -1,6 +1,6 @@
 # Country directory implementation proposal
 
-Checked 9 October 2026 at 23:03 UTC. This is reviewed implementation source,
+Checked 9 October 2026 at 23:14 UTC. This is reviewed implementation source,
 not an accepted combined game release. Production still has 11 open countries.
 
 The country generator now uses an explicit admission manifest rather than
@@ -39,6 +39,12 @@ The four baseline `.txt` files are exact C1 source snapshots with fixed hashes.
 They allow generation from a shallow checkout without consulting Git history.
 No CI checkout settings were changed.
 
+The metadata assets contain UTF-8 JSON and use hashed `.txt` filenames. The
+existing release package rejects `.json` assets. The reader parses verified
+bytes and works with `text/plain; charset=utf-8`; no package extension rule or
+release guard was widened. The original generated `.json` assets were retired
+only after their exact committed paths, sizes and hashes were checked.
+
 ## Actual verification
 
 - All 16 focused generator and browser-reader tests passed, with no failures or
@@ -50,8 +56,9 @@ No CI checkout settings were changed.
   unchanged legacy catalogue, loader and route outputs.
 - Independent packaging audit verified all 11 country shards, the index hashes
   and all 50 catalogue rows.
-- A real loopback HTTP run compared all 50 rows to C1. It made 11 requests and
-  transferred 6,851 bytes for the index and ten foreign shards. Nigeria caused
+- A real loopback HTTP run compared all 50 rows to C1. After the filename change,
+  it made 11 requests and transferred 6,840 bytes for the index and ten foreign
+  shards with `text/plain` responses. Nigeria caused
   no shard request. Repeated selection used the cache; disposal cleared it.
 
 Evidence is retained under `.cache/world-build/evidence/`:
@@ -59,7 +66,10 @@ Evidence is retained under `.cache/world-build/evidence/`:
 `runtime-country-directory-gitless-check.log`,
 `runtime-country-directory-baseline-snapshot-audit.json`,
 `runtime-country-directory-actual-packaging-audit.json`, and
-`runtime-country-directory-actual-http.json`.
+`runtime-country-directory-actual-http.json`. The corrected filename run uses
+`runtime-country-directory-txt-types-fixed-tests.log` and
+`runtime-country-directory-txt-actual-http.json`. The actual public asset smoke
+test also passes in `runtime-country-directory-txt-public-asset-smoke.log`.
 
 ## Remaining acceptance
 
@@ -67,7 +77,14 @@ Strict TypeScript acceptance is still missing. The whole-tree check was stopped
 after more than 120 seconds without output. Two scoped checks each timed out
 after 30 seconds. These are incomplete compiler checks, not passes. Their logs
 and owned-process termination receipts are retained. No compiler environment,
-heap limit, startup budget or baseline was relaxed.
+heap limit, startup budget or baseline was relaxed. Actual CI run 38002712142
+completed the build and unchanged download budgets, then found four TypeScript
+errors in these new files and two smoke failures. The four typing errors were
+corrected in source. One smoke failure concerned the now-corrected asset suffix;
+the other lists older WORLD tooling absent from the shared release allowlist.
+That historical whole-branch issue reinforces the requirement to integrate only
+the reviewed country diff. A new compiler run is required for the corrections;
+the failed run is retained and does not count as a pass.
 
 Before release, Integration must migrate the callers, complete exact combined
 TypeScript/build/startup gates, verify native Nigeria/save/travel continuity and

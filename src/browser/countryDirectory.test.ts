@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { createHash, webcrypto } from 'node:crypto'
 import { test } from 'node:test'
-import type { CityCatalogueEntry } from './catalogue.ts'
+import type { CityCatalogueEntry } from '../game/cities/catalogue.ts'
 import {
   openRuntimeCountryDirectory,
   type AdmittedForeignCity,
@@ -81,7 +81,7 @@ function createFixture(
     }
     const bytes = encode(body)
     const hash = sha(bytes)
-    const path = `countries/${iso2}-${hash}.json`
+    const path = `countries/${iso2}-${hash}.txt`
     route.set(`/world-country-directory/${path}`, bytes)
     shardPaths.set(iso2, path)
     return { iso2: countryISO, name, status, path, sha256: hash, bytes: bytes.byteLength, cityCount: declaredCityCount(iso2, cities.length) }
@@ -90,7 +90,7 @@ function createFixture(
     const body = encode({ schemaVersion: 1, country: { iso2: extraIndexCountry.iso2, name: extraIndexCountry.name, status: extraIndexCountry.status }, cities: [], containsGeometry: false, containsRules: false, containsContent: false, containsTravelEdges: false })
     const hash = sha(body)
     const iso2 = extraIndexCountry.iso2.toLowerCase()
-    const path = `countries/${iso2}-${hash}.json`
+    const path = `countries/${iso2}-${hash}.txt`
     route.set(`/world-country-directory/${path}`, body)
     indexCountries.push({ ...extraIndexCountry, path, sha256: hash, bytes: body.byteLength })
   }
@@ -103,7 +103,7 @@ function createFixture(
     countries: indexCountries,
   })
   const indexSha256 = sha(indexBytes)
-  const indexPath = `index-${indexSha256}.json`
+  const indexPath = `index-${indexSha256}.txt`
   route.set(`/world-country-directory/${indexPath}`, indexBytes)
   const descriptor: CountryDirectoryDescriptor = {
     // An absolute same-origin fixture URL keeps these tests portable in Node;
@@ -120,7 +120,7 @@ function createFixture(
     const url = input instanceof Request ? new URL(input.url) : new URL(input)
     calls.push(url.pathname)
     const bytes = route.get(url.pathname)
-    return bytes ? new Response(bytes, { status: 200 }) : new Response('not found', { status: 404 })
+    return bytes ? new Response(Uint8Array.from(bytes).buffer, { status: 200 }) : new Response('not found', { status: 404 })
   }
   return {
     config: { descriptor, admittedForeignCities, nigeriaCatalogue: nigeria },

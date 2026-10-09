@@ -245,7 +245,7 @@ export function buildCountryDirectory({ cities, admissionSha256 }: { cities: rea
     if (content.byteLength > 128 * 1024) throw new RangeError(`${entry.iso2} metadata shard exceeds 128 KiB`)
     const hash = sha256(content)
     return Object.freeze({ iso2: entry.iso2, name: entry.name, status: entry.status,
-      path: `countries/${entry.iso2.toLowerCase()}-${hash}.json`, sha256: hash,
+      path: `countries/${entry.iso2.toLowerCase()}-${hash}.txt`, sha256: hash,
       bytes: content.byteLength, cityCount: entry.cities.length, content })
   })
   const index = {
@@ -258,5 +258,5 @@ export function buildCountryDirectory({ cities, admissionSha256 }: { cities: rea
   if (indexContent.byteLength > 128 * 1024) throw new RangeError('country directory index exceeds 128 KiB')
   if (indexContent.byteLength + directories.reduce((sum, entry) => sum + entry.bytes, 0) > 512 * 1024) throw new RangeError('country directory exceeds the 512 KiB total raw metadata limit')
   const indexSha256 = sha256(indexContent)
-  return Object.freeze({ index, indexContent, indexSha256, indexPath: `index-${indexSha256}.json`, directories: Object.freeze(directories) })
+  return Object.freeze({ index, indexContent, indexSha256, indexPath: `index-${indexSha256}.txt`, directories: Object.freeze(directories) })
 }

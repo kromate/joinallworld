@@ -180,7 +180,8 @@ async function loadTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHi
   ]);
   const hideMap = validateHideMap(JSON.parse(new TextDecoder().decode(hideBytes)) as unknown);
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-  const baseUrl = new URL('.', new URL(casualSuitUrl, import.meta.url)).href;
+  const suitAssetUrl = new URL(casualSuitUrl, import.meta.url);
+  const baseUrl = new URL('.', suitAssetUrl.protocol === 'data:' ? import.meta.url : suitAssetUrl).href;
   const gltf = await loader.parseAsync(outfitBytes, baseUrl);
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
@@ -229,10 +230,9 @@ async function loadTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHi
 async function loadHairTemplate(url: string, expectedHash: string, assetName: 'short02' | 'afro01'): Promise<OutfitTemplate> {
   check(/^[0-9a-f]{64}$/i.test(expectedHash), 'hair asset requires its pinned SHA-256');
   const assetUrl = new URL(url, import.meta.url);
-  check(assetUrl.origin === new URL(import.meta.url).origin, 'hair asset URL must be same-origin');
   const bytes = await fetchPinnedBytes(assetUrl.href, expectedHash.toLowerCase(), 'authored hair');
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-  const gltf = await loader.parseAsync(bytes, new URL('.', assetUrl).href);
+  const gltf = await loader.parseAsync(bytes, new URL('.', assetUrl.protocol === 'data:' ? import.meta.url : assetUrl).href);
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
     if ((node as THREE.Mesh).isMesh) {
@@ -606,6 +606,10 @@ export async function applyAuthoredPresentation(
     : look.hair === 'lowcut' || look.hair === 'low-cut' || look.hair === 'fade' || look.hair === 'classic' ? 'short02' : undefined;
   check(Boolean(options.hairAssetUrl) === Boolean(options.hairSha256), 'custom hair URL and SHA-256 must be supplied together');
   check(Boolean(options.hairAssetUrl) === Boolean(options.hairAssetName), 'custom hair URL and asset name must be supplied together');
+  if (options.hairAssetUrl) {
+    check(new URL(options.hairAssetUrl, import.meta.url).origin === new URL(import.meta.url).origin,
+      'custom hair asset URL must be same-origin');
+  }
   if ((options.hairAssetUrl || options.hairSha256 || options.hairAssetName) && !requestedHair) {
     fail(`no authored hair mapping is available for ${look.hair ?? 'this look'}`);
   }

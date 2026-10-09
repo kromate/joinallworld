@@ -66,3 +66,12 @@ No browser, build, large-pack download, or visual render was used. The evidence 
 - [Pinned repository LFS attributes](https://github.com/s20220526/makehuman-assets/blob/8cf9645b975a98eea056b140df11a1d278da0d10/.gitattributes)
 - [Official MakeHuman FAQ on asset use and copying](https://static.makehumancommunity.org/makehuman/faq/are_makehuman_files_free.html)
 - [Official individual asset mirror directory and per-file sizes](https://free.downloads.tuxfamily.net/makehuman/assets/1.1/base/clothes/male_casualsuit01/)
+
+
+## Follow-up verification, 2026-10-09
+
+Primary Three.js SkinnedMesh documentation confirms bone-weight normalization, but simple normalization does not repair negative barycentric extrapolation lanes. Actual pinned-output tests identified 37 negative source suit lanes; offline exporter now clamps blended bone weights before strongest-four normalization, retains exact spatial barycentric anchors and reports fallback (zero uses in current suit). https://threejs.org/docs/pages/SkinnedMesh.html
+
+Official MPFB export-copy guidance explicitly separates identity shape baking, retained facial targets and clothing body masks. This supports keeping the native authored body/neck/rig instead of transplanting a head onto incompatible generated clothing. https://static.makehumancommunity.org/mpfb/docs/exporting/export_copy.html
+
+Reddit discovery threads (https://www.reddit.com/r/threejs/comments/xfi5pq and https://www.reddit.com/r/threejs/comments/1v68epk/worried_about_performance/) raised texture dimensions, material slots and resource cleanup as mobile concerns. These are anecdotal leads only, not evidence for a phone budget. Current diagnostic commits retain measured small skin/hair rasters and test independent actor cleanup; actual phone input/frame/thermal gates stay unverified.

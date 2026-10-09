@@ -1,0 +1,67 @@
+name: Environment whole-slice v5 diagnostic package (split compiler v3)
+
+on:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v5-review-v3-fix1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: environment-whole-slice-v5-reviewed-v3-fix1-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify exact root source snapshot before dependency install
+        env:
+          EXPECTED_SOURCE_SNAPSHOT_SHA256: 9ad3c3484f5f6e24ebd3bd3e5264fc8bdf3a42755b02fba6ddb897ea411c44c3
+        run: python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v3-fix1/verify-root-source-snapshot-v3.py
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run v3 serial split compilation and one-copy finalization
+        env:
+          EXPECTED_SOURCE_SNAPSHOT_SHA256: 9ad3c3484f5f6e24ebd3bd3e5264fc8bdf3a42755b02fba6ddb897ea411c44c3
+        run: |
+          python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v3-fix1/verify-root-source-snapshot-v3.py
+          python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v3-fix1/run-bounded-linux-reviewed-v3-fix1.py
+          python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v3-fix1/verify-root-source-snapshot-v3.py
+
+      - name: Upload v3 source pins, phase receipts, static routes, and bounded result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-whole-slice-v5-reviewed-v3-fix1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v5/source-pins-v3.json
+            evidence/graphics-loop/environment-next-phase-v5/source-precompile-v3.json
+            evidence/graphics-loop/environment-next-phase-v5/source-postcompile-v3.json
+            evidence/graphics-loop/environment-next-phase-v5/vendor-v3-record.json
+            evidence/graphics-loop/environment-next-phase-v5/addons-v3-record.json
+            evidence/graphics-loop/environment-next-phase-v5/app-v3-record.json
+            evidence/graphics-loop/environment-next-phase-v5/compile-v3-record.json
+            evidence/graphics-loop/environment-next-phase-v5/static-v3/**
+            evidence/graphics-loop/environment-next-phase-v5/static-fixture-v3/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v5/finalizer-pins-v3.json
+            evidence/graphics-loop/environment-next-phase-v5/finalization-v3-observed.json
+            evidence/graphics-loop/environment-next-phase-v5/review-host-v3-staged.json
+            evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v3-fix1/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14

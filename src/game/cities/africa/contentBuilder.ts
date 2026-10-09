@@ -164,7 +164,8 @@ export function buildDestinationContent(facts: DestinationFacts): CityContent<st
     thingsToDo: venues.map(venue => ({ venueId: venue.id, name: venue.name, line: venue.description })),
     culture: { greeting: 'Welcome, traveller.', food: [], knownFor: [] },
     localModes,
-    radioVenueIds: [ids.recreation], billboardRoads: [], tablePlaces: [],
+    radioVenueIds: [ids.recreation], billboardRoads: [],
+    tablePlaces: [{ id: `${ids.recreation}-chess`, venueId: ids.recreation, game: 'chess', label: 'Starter chess table (game venue)', seats: 2 }],
     dreamWording: {}, lotteryWording: {},
     unitLabel: 'starter play zone', wishPrefix: valid.id,
   })

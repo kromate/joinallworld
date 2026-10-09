@@ -13,6 +13,7 @@ import { createDestinationModule } from './module.ts'
 import { buildDestinationRules } from './rules.ts'
 import { validateDestinationFacts } from './types.ts'
 import type { DestinationFacts } from './types.ts'
+import { withBoardGames } from '../../../tables/derive.ts'
 
 const facts: DestinationFacts = {
   id: 'accra-starter',
@@ -76,7 +77,15 @@ test('destination factory builds foreign-timed starter rules and playable source
 })
 
 for (const module of [accra, lome, yaounde, nairobi, algiers]) test(`${module.id}: opened content contract`, async () => {
-  assertCityContentContract(module, await module.loadContent(), { profile: 'opened' })
+  const content = await module.loadContent()
+  assertCityContentContract(module, content, { profile: 'opened' })
+  const table = content.tablePlaces.find(place => place.game === 'chess')
+  assert.ok(table, 'each playable starter authors a shared chess table')
+  assert.equal(table.id, `${module.id}-recreation-chess`, 'the fictional table has a stable city-prefixed id')
+  assert.equal(table.seats, 2)
+  assert.ok(content.venues.some(venue => venue.id === table.venueId && venue.kind === 'park'), 'the table belongs to an authored public recreation venue')
+  const available = withBoardGames(content.venues, content.tablePlaces)
+  assert.equal(available.filter(place => place.id === table.id).length, 1, 'shared derived tables do not duplicate the authored chess table')
 })
 
 

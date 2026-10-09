@@ -10,9 +10,9 @@ import { pathToFileURL } from 'node:url';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
-       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--seconds 600] [--retain-store]
+       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted] [--seconds 600] [--retain-store]
 
-Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. A new stage gets a fresh SQLite store; --resume-control reopens only a safely stopped retained checkpoint on its original port and store. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGHUP restarts the Worker on the same port and store without renewing the stage deadline. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
+Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. A new stage gets a fresh SQLite store; --resume-control reopens a safely stopped retained checkpoint on its original port and store. --recover-interrupted additionally permits an unfinished running checkpoint only after both its prior owner and owned process group are absent. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGWINCH restarts the Worker on the same port and store without renewing the stage deadline. The internal deadline stops gracefully; Miniflare's own HUP/INT/TERM exit hooks can interrupt cleanup. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
 
 This is a local synthetic staging fixture, not production continuity, deployment, or release approval.`;
 const SOURCE_SHA = /^[a-f0-9]{40}$/;
@@ -29,7 +29,7 @@ function argumentsOf(argv) {
   const result = {};
   for (let index = 0; index < argv.length; index += 1) {
     const flag = argv[index];
-    if (flag === '--retain-store') {
+    if (flag === '--retain-store' || flag === '--recover-interrupted') {
       if (Object.hasOwn(result, flag)) throw new Error(`duplicate argument: ${flag}`);
       result[flag] = true;
       continue;
@@ -48,7 +48,8 @@ function argumentsOf(argv) {
   const control = resolve(result['--control']);
   const resumeControl = result['--resume-control'] ? resolve(result['--resume-control']) : undefined;
   if (resumeControl && resumeControl !== control) throw new Error('--control must be the exact same checkpoint path as --resume-control');
-  return { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, seconds, retainStore: result['--retain-store'] === true };
+  if (result['--recover-interrupted'] && !resumeControl) throw new Error('--recover-interrupted requires --resume-control');
+  return { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, seconds, retainStore: result['--retain-store'] === true, recoverInterrupted: result['--recover-interrupted'] === true };
 }
 
 async function within(label, operation, limitMs = REQUEST_LIMIT_MS) {
@@ -156,7 +157,8 @@ async function validateCheckpoint(args, checked) {
   const { value: checkpoint, identity } = await readPrivateJson(args.resumeControl, 16 * 1024, 'resume checkpoint');
   assert.ok(isRecord(checkpoint), 'resume checkpoint must be a JSON object');
   assert.equal(checkpoint.schemaVersion, 1, 'unsupported resume checkpoint version');
-  assert.equal(checkpoint.stageStatus, 'stopped', 'only a cleanly stopped stage can be resumed');
+  if (args.recoverInterrupted) assert.equal(checkpoint.stageStatus, 'running', 'interrupted recovery requires an unfinished running checkpoint');
+  else assert.equal(checkpoint.stageStatus, 'stopped', 'only a cleanly stopped stage can be resumed');
   assert.equal(checkpoint.sourceSha, args.sha, 'resume checkpoint source SHA differs from requested source');
   assert.equal(checkpoint.packageManifestSourceSha, args.sha, 'resume checkpoint manifest SHA is inconsistent');
   assert.equal(checkpoint.packageDigest, checked.packageDigest, 'resume checkpoint package digest differs from the verified package');
@@ -167,6 +169,16 @@ async function validateCheckpoint(args, checked) {
   assert.ok(typeof checkpoint.storeId === 'string' && /^[0-9a-f-]{36}$/.test(checkpoint.storeId), 'invalid store identity');
   assertPublicFixtureJwk(checkpoint.fixtureProviderJwk);
   assertPriorOwnerStopped(checkpoint.ownerChildPid);
+  if (args.recoverInterrupted) {
+    // The watchdog creates the helper's own process group. A killed owner alone
+    // is insufficient: its old group must contain no surviving Worker children.
+    try {
+      process.kill(-checkpoint.ownerChildPid, 0);
+      assert.fail('previous stage process group is still live; refusing interrupted recovery');
+    } catch (error) {
+      if (error?.code !== 'ESRCH') throw error;
+    }
+  }
   assert.ok(Number.isSafeInteger(checkpoint.restartCount) && checkpoint.restartCount >= 0, 'invalid checkpoint restart count');
   assert.ok(typeof checkpoint.deadline === 'string' && Number.isFinite(Date.parse(checkpoint.deadline)), 'invalid prior stage deadline');
   const url = new URL(checkpoint.stageUrl);
@@ -302,7 +314,7 @@ async function main(args) {
       resolveFinished();
     }).finally(() => { restarting = false; restartTask = undefined; });
   };
-  for (const [signal, handler] of [['SIGINT', () => onStop('SIGINT')], ['SIGTERM', () => onStop('SIGTERM')], ['SIGHUP', onHangup]]) {
+  for (const [signal, handler] of [['SIGINT', () => onStop('SIGINT')], ['SIGTERM', () => onStop('SIGTERM')], ['SIGHUP', () => onStop('SIGHUP')], ['SIGWINCH', onHangup]]) {
     process.on(signal, handler);
     removeSignals.push(() => process.removeListener(signal, handler));
   }

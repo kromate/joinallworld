@@ -1,0 +1,118 @@
+{
+  "caveats": [
+    "The Natural Earth place class is Admin-0 capital while ADM0CAP is 0; the packet does not assert a current official capital designation.",
+    "Natural Earth country ADM0_A3/SOV_A3 are SDS while place ADM0_A3/SOV_A3 and country ISO_A3/ADM0_ISO are SSD; exact ISO_A2 SS plus strict geometric containment is the selection basis, and no three-letter alias is applied.",
+    "Natural Earth place TIMEZONE is Africa/Khartoum; the selected Africa/Juba value is the IANA zone.tab result already recorded in the pinned rollout inventory.",
+    "The emitted GeoJSON contains only the city point. The country polygon was read to validate topology and containment and is not emitted as acquired city geometry."
+  ],
+  "citySelection": {
+    "admin0A3MismatchPreserved": {
+      "country": "SDS",
+      "place": "SSD"
+    },
+    "coordinatesWgs84": [
+      31.580026,
+      4.829975
+    ],
+    "countryAdm0Iso": "SSD",
+    "countryId": "country:natural-earth:NE_ID%3A1159321235",
+    "countryIsoA3": "SSD",
+    "countrySovA3": "SDS",
+    "iso2JoinAccepted": true,
+    "name": "Juba",
+    "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149449",
+    "noThreeLetterCodeAlias": true,
+    "placeSovA3": "SSD",
+    "selectedIanaTimezone": "Africa/Juba",
+    "timezoneSelectionEvidence": {
+      "nearestZoneTabPointDistanceKm": 4.6,
+      "source": "system zone.tab",
+      "status": "nearest zone.tab coordinate in matching ISO country",
+      "zoneTabPath": ".cache/world-build/timezone-source-cache/4d8e389e5f4b0ec0466d5b14f42e5dfb0308c4376165fcf478339afd9ddcb00c.tab",
+      "zoneTabSha256": "4d8e389e5f4b0ec0466d5b14f42e5dfb0308c4376165fcf478339afd9ddcb00c"
+    }
+  },
+  "geometryEvidence": {
+    "containmentAccepted": true,
+    "containmentMethod": "strict interior of an exterior ring and exterior to every hole",
+    "coordinatePositions": 1158,
+    "countryFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321235",
+    "countryId": "country:natural-earth:NE_ID%3A1159321235",
+    "countryPolygonIsValidationInputOnly": true,
+    "matchingPolygonIndex": 0,
+    "outlineOutputReference": {
+      "bytes": 24260,
+      "coordinatePositions": 1158,
+      "path": ".cache/world-build/output/country-inventory/outlines/04e11f2d505ffddab1af7b40de54afe5523409a6f8809cf5db72c7353d8bb07c.json",
+      "polygonCount": 1,
+      "sha256": "04e11f2d505ffddab1af7b40de54afe5523409a6f8809cf5db72c7353d8bb07c"
+    },
+    "pointRelation": [
+      {
+        "accepted": true,
+        "polygonIndex": 0,
+        "relation": "inside_outer_outside_holes"
+      }
+    ],
+    "polygonCount": 1,
+    "ringCount": 1,
+    "sourceGeometryType": "Polygon",
+    "topologyValid": true
+  },
+  "identityEvidence": {
+    "countryAdm0A3": "SDS",
+    "countryAdm0Iso": "SSD",
+    "countryId": "country:natural-earth:NE_ID%3A1159321235",
+    "countryIso2": "SS",
+    "countryIso2Eh": "SS",
+    "countryIsoA3": "SSD",
+    "countrySovA3": "SDS",
+    "iso2JoinAccepted": true,
+    "noThreeLetterAliasApplied": true,
+    "placeAdm0A3": "SSD",
+    "placeId": "place:natural-earth:NE_ID%3A1159149449",
+    "placeIso2": "SS",
+    "placeSovA3": "SSD",
+    "threeLetterCodeDiscrepancyRetained": true
+  },
+  "inventory": {
+    "bytes": 173999,
+    "countryId": "country:natural-earth:NE_ID%3A1159321235",
+    "countryIso2": "SS",
+    "path": "world/playable-africa-rollout/inventory.json",
+    "placeId": "place:natural-earth:NE_ID%3A1159149449",
+    "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+  },
+  "output": {
+    "bytes": 1635,
+    "featureCount": 1,
+    "geometryType": "Point",
+    "path": "world/playable-africa-rollout/south-sudan/point.geojson",
+    "sha256": "874e4f78070182ec8cad24f3b75989d96a3d30808bca38fd2fbabd699ffd8345"
+  },
+  "packetKind": "versioned-natural-earth-city-point-source-packet",
+  "schemaVersion": 1,
+  "scope": "Source point and selection evidence only; no runtime admission, city geometry acquisition, or city-completeness assertion.",
+  "sources": [
+    {
+      "bytes": 13287234,
+      "featureCanonicalSha256": "031d6f1250675e782f488e3b78f5597ae234ab2555ccc71900480265e4cbd3e1",
+      "featureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321235",
+      "license": "Public-domain",
+      "path": ".cache/world-build/country-source-cache/e51c4d047ed2867b34faea4e17c102ead4f3fee558a84a942619ee2cb1abdceb.geojson",
+      "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+      "sourceId": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_0_countries.geojson"
+    },
+    {
+      "bytes": 19359003,
+      "featureCanonicalSha256": "003249ab02ea04806825a161f200220d53e077194e74a5a91e091b13440f0adf",
+      "featureRef": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159149449",
+      "license": "Public-domain",
+      "path": ".cache/world-build/settlement-source-cache/42132340ed32bed7cf7be4b52f15d451eb81f235ceea042871e3b10f0117fc99.geojson",
+      "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+      "sourceId": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_populated_places.geojson"
+    }
+  ]
+}

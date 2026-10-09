@@ -321,13 +321,16 @@ test('nothing is fetched before a scene is attached (the home room and the map h
   standIn.dispose(); kit.dispose();
 });
 
-test('the venue host owns the stand-in; the scene modules never reach the body module', () => {
+test('the venue host owns the player stand-in and native NPC assets stay demand loaded', () => {
   const strip = (code: string) => code.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
   const host = strip(readFileSync(new URL('../../venue-world.ts', import.meta.url), 'utf8'));
   assert.match(host, /import\('\.\/scene\/body\/stand-in\.ts'\)/, 'the stand-in is a lazy chunk, fetched after the first frame');
   assert.doesNotMatch(host, /^import (?!type)[^;]*'\.\/scene\/body\/(stand-in|skinned)\.ts'/m, 'never a static import in the shared scene chunk');
   const venue = strip(readFileSync(new URL('../venue-scenes.ts', import.meta.url), 'utf8'));
-  assert.doesNotMatch(venue, /body\//, 'venue-scenes.ts (the shared scene chunk) knows nothing of the body');
+  assert.doesNotMatch(venue, /^import (?!type)[^;]*'\.\/body\/(stand-in|skinned|provider|native\/)/m, 'native actor factories and assets never load with the shared scene chunk');
+  assert.match(venue, /await import\('\.\/body\/provider\.ts'\)/, 'the NPC body provider is loaded only by the deferred queue');
+  assert.match(venue, /if \(!bodyAllowed\(\) \|\| !drawsWebGL2\(renderer\)\)/, 'queue startup preserves the body/device renderer gate');
+  assert.doesNotMatch(venue, /createStandIn\(/, 'the venue host still owns the player stand-in');
   const standIn = strip(readFileSync(new URL('./stand-in.ts', import.meta.url), 'utf8'));
   assert.doesNotMatch(standIn, /import\(/, 'the body module is reached through importBody() only');
   assert.doesNotMatch(standIn, /^import (?!type)[^;]*'\.\/skinned\.ts'/m, 'skinned.ts is a type import only');

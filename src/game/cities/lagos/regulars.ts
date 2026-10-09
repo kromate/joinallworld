@@ -22,7 +22,12 @@ const NPC_PLACES: Record<string, string> = {
   'protocol-segun': 'steps', 'madam-secretary': 'office',
   'agent-bimpe': 'desk', 'porter-sule': 'arrivals', 'engineer-chioma': 'control', 'driver-mustapha': 'loading',
 };
-const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...extra });
+// These two regulars have recorded, stable outfits across every visit and view.
+const OFFICE_LOOKS: Partial<Record<NpcId, NpcDefinition['look']>> = {
+  'mrs-okafor': { body: 'woman', hair: 'afro', outfit: 'office', fabric: 'plain', skin: 'skin-4', hairColor: 'dark-brown', outfitColor: 'blue', bottomsColor: 'navy', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+  dapo: { body: 'man', hair: 'low-cut', outfit: 'office', fabric: 'plain', skin: 'skin-5', hairColor: 'black', outfitColor: 'cream', bottomsColor: 'navy', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+};
+const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note' | 'look'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...(OFFICE_LOOKS[id] ? { look: OFFICE_LOOKS[id] } : {}), ...extra });
 export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([
   npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role are fixed; quotes are original.' }),
   npc('baba-sege', 'amala-shitta', 'Baba Sege', 'Regular customer', '👴🏾', ['I have eaten here since before you were born.', 'Abula first, wahala later.'],),

@@ -1,0 +1,112 @@
+{
+  "schema": "joinallworld.native-game-release-fixture-inputs.v1",
+  "branch": "codex/graphics-native-release-v2",
+  "purpose": "Exact fixture/publisher input pins for the four-job native release candidate. The nested runtime overlay manifest pins the staged source/assets closure; this file does not certify visual quality or mobile performance.",
+  "fileCount": 18,
+  "files": [
+    {
+      "path": ".github/workflows/native-graphics-release-v7.yml",
+      "bytes": 9247,
+      "sha256": "0b8b544b7059922709c3b37285c25fb1892f17206d03200706eed7cb05daf897"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+      "bytes": 39545,
+      "sha256": "2d620716e1b1e120260030c055e2f33b0d949fd2217afda4c5a6c897f5ac2f81"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/game-fixture.html",
+      "bytes": 5721,
+      "sha256": "a895815655f4d7ad13d88fb2fcbfb5dc906f2a77734f80d9fe21779c3b50f29d"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/bundle-game-fixture.mjs",
+      "bytes": 1993,
+      "sha256": "adb7586fe1a32953ed50c9b37b7ffe1dd984cea9c12d99c8f3ce69f90a6063a9"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs",
+      "bytes": 21379,
+      "sha256": "c096cf709408d10993a7a67c74a3cfcf756f26b962fbb17466bffd3ccb033461"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/fixture.typecheck.json",
+      "bytes": 242,
+      "sha256": "42410836687a9c310fead68a48a7df78ec2186e133404ac70090f8a52a86004c"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/home-journey.ts",
+      "bytes": 22022,
+      "sha256": "60290fe744609d3b62bf13104d4a1aa9a2cbb0e2567fe4b86e2738e8f846b398"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/home-journey.html",
+      "bytes": 3174,
+      "sha256": "5a4a6db3ce0ace224ff3d578446c7748062b375b5f0f679334a37b4460a42650"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/bundle-home-journey.mjs",
+      "bytes": 2043,
+      "sha256": "6e41447c5ee599c1f6bc6df361bbadbe64196d26ae0c51ba0ae97ffa6db9013b"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs",
+      "bytes": 15582,
+      "sha256": "3b2a781a2d4cee1a13b4e0e9d9b29024d9616dd4bf219e16cc76fb1dbf50fb92"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json",
+      "bytes": 242,
+      "sha256": "8d3de7ec8c021f1ba6bc807a361dcac20b89a0e9dfc8962285cc51503c3a5c56"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/creator-identity.ts",
+      "bytes": 12883,
+      "sha256": "8137063a0921c058f48680b8ae45d2cf74cb7fe1b6b14c177ad7e35a5ccd358d"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/creator-identity.html",
+      "bytes": 2000,
+      "sha256": "316e724842bcd2ad0f63f817116640e4c7f045a075b0a74875b4c0b93407b4a5"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/bundle-creator-identity.mjs",
+      "bytes": 3650,
+      "sha256": "6dd13415f602c219eda00d32ee1f102d4f1b9f4124a801ca71dc5a1879f8b475"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/render-creator-identity.mjs",
+      "bytes": 11189,
+      "sha256": "249fb4fa0be5f319f0d6806dc13da8cb06ef26df0cf5609779ccf29ef338724d"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/creator-identity.typecheck.json",
+      "bytes": 196,
+      "sha256": "c68ebdeae474c6bfedf508ab4fdb5452551219f08c2fcb1add2d40e8634da999"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/bounded-render.py",
+      "bytes": 1963,
+      "sha256": "9f9b1f7e112f03ec50fb86fc46f10b17d5d6bba50b0f1c4fd5cf90709464a74b"
+    },
+    {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/measure-native-distribution.mjs",
+      "bytes": 2016,
+      "sha256": "404e0dc69d90da0334634b32efdbb8281daed408fd2b7c1bec125f0ea8351cb2"
+    }
+  ],
+  "runtimeOverlayManifest": {
+    "path": "evidence/graphics-loop/native-game-adoption-v1/package-manifest.json",
+    "bytes": 21187,
+    "sha256": "2943a63e8ef4e7802855e777fabc2fded37d1fe4cf1d331d0b5d9a4dce3d14b7",
+    "stagedFileCount": 46,
+    "stagedTotalBytes": 8217666
+  },
+  "gates": {
+    "office": "actual player plus named social NPC interactions; native-only checks in render report",
+    "home": "actual home journey; male and female saved looks must return native bodies and home-pose contact acceptance must be explicitly true",
+    "creator": "same seed/look in creator preview and venue provider; ALLWORLD_REQUIRE_NATIVE=1",
+    "size": "scripts/download-budget.ts nonzero budget results fail the job"
+  },
+  "validation": "The release workflow verifies all fixture-file hashes and the runtime overlay manifest hash before the candidate build."
+}

@@ -7,12 +7,34 @@ Ghana, Kenya and Algeria, with actual visits, reloads and return to the original
 home. Integration owns the combined branch; WORLD remains the sole uploader of
 the exact accepted package.
 
-Integration's uncommitted panel-loader repair builds in 39.23 seconds and passes
-startup limits at 610476 raw, 221594 gzip and 194663 Brotli bytes. Its 57 focused
-app checks pass with no skips. A failed app import can leave a blank selected
-panel, so visible failure/retry recovery is being repaired before freezing.
-Exact-commit compiler, complete required suites, rendered journeys, sealed
-package and production continuity remain pending. Production is unchanged.
+The frozen Integration candidate is
+`3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`.
+[Full CI](https://github.com/kromate/joinallworld/actions/runs/37970635606)
+completed successfully with all 14 required jobs passing on Node 22 and 24.
+The two fast-mode jobs were skipped because the full jobs replaced them.
+Startup passed at 611402 raw, 221884 gzip and 194866 Brotli bytes, within the
+unchanged 615000/223000/195600 limits. Scene output also passed its existing limit.
+
+The exact sealed package passed remote Worker/SQLite startup, 11 served assets,
+first-five travel/save/reload/meal/return, homeward recovery and SQLite restart in
+43.514 seconds. Archive SHA-256 is
+`84a1b13e6aff3a0c8538627f2b4a814ee4e19cfa0e5a6df4b741c97e2a375e36`;
+package guard digest is
+`f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc`.
+The same archive was downloaded, safely extracted and verified locally without
+rebuilding. These synthetic checks do not establish rendered journeys or
+production save continuity.
+
+The finite native stage started on the same package at 18:36 UTC, with one shared
+heavy slot, one server slot, a 384 MB Node heap and a 900-second owned process-group
+watchdog. Integration's explicit Astra operator owns the single browser slot.
+The initial startup failed because the fixture founder name exceeded the existing
+24-character limit; helper `2947dbd3` uses the passing verifier's valid name and
+checks the response status. The second startup passed actual founder authentication,
+HTTP health and all 11 served asset hashes. Browser journeys remain in progress.
+The private store/checkpoint retain the same origin, player, public fixture key
+and funding intent across interruption. Resume refuses mismatched or unsafe
+checkpoints and failed cleanup. No new production country is claimed.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its
@@ -24,8 +46,8 @@ recovery rules but remained over budget. All 47 selected WORLD source pins match
 that immutable candidate. The newer local loader measurement is diagnostic,
 not a frozen release acceptance.
 
-All 45 first-five packet files and both selected airport-desk files match that
-immutable candidate. The reusable check in
+All 45 first-five packet files and both selected airport-desk files now match the
+exact frozen `3af17a01` candidate. The reusable check in
 [SOURCE-PACKET-HANDOFF.md](SOURCE-PACKET-HANDOFF.md) has ten isolated CLI tests;
 its output always keeps `releaseReady: false`. Twenty starter cities retain
 source assets across four batches. At WORLD source

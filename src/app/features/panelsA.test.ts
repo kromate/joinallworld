@@ -358,7 +358,11 @@ test('Boutique: the wallet, a section per kind and a Try on button on what is no
   const words = text(html)
   assert.ok(words.includes('Hairstyles') && words.includes('Outfits') && words.includes('Fabrics') && words.includes('Accessories'))
   assert.ok(words.includes(`Wallet ${money(app.game.state.value.cash)}`))
-  assert.match(html, /class="ui-button boutique-try"[^>]*aria-pressed="false"/)
+  const tryButton = [...html.matchAll(/<button\b[^>]*>/g)].map(([tag]) => tag).find((tag) => tag.includes('boutique-try'))
+  assert.ok(tryButton, 'an unworn item has a Try on button')
+  const classes = /\bclass="([^"]*)"/.exec(tryButton)?.[1]?.split(/\s+/) ?? []
+  assert.ok(classes.includes('base-button') && classes.includes('boutique-try'), 'the shared button keeps the boutique hook regardless of class order')
+  assert.match(tryButton, /\baria-pressed="false"/)
 })
 
 test('HUD chips: the goal chip carries the step and its reward; nothing is drawn for a healthy life', async () => {

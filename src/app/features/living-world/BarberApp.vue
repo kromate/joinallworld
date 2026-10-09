@@ -121,7 +121,7 @@ async function load(): Promise<void> {
   const token = generation, key = contextKey.value, expected = currentSession.value?.sessionId ?? null
   busy.value = true
   try {
-    const raw = await game.client.api<BarberResponse>(`/api/living-world/barber?city=${encodeURIComponent(cityId.value)}`)
+    const raw = await game.client.api<BarberResponse>(`/api/living-world/barber?city=${encodeURIComponent(cityId.value)}`, undefined, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The saved barber lesson could not be verified. Reconnect to check it.'); return }
@@ -148,7 +148,7 @@ async function startLesson(lessonId: BarberLessonId): Promise<void> {
   const body: BarberStartRequest = { cityId: cityId.value, lessonId, requestId: attempt.requestId }
   busy.value = true
   try {
-    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/start', { method: 'POST', body })
+    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/start', { method: 'POST', body }, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The start reply could not be verified. Reconnect before trying again.'); return }
@@ -178,7 +178,7 @@ async function lifecycle(action: 'pause' | 'resume', saved = currentSession.valu
   const expected = saved.sessionId
   const body: BarberLifecycleRequest = { cityId: saved.cityId, requestId: game.newId(), sessionId: saved.sessionId, revision: saved.revision }
   try {
-    const raw = await game.client.api<BarberResponse>(`/api/living-world/barber/${action}`, { method: 'POST', body })
+    const raw = await game.client.api<BarberResponse>(`/api/living-world/barber/${action}`, { method: 'POST', body }, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The lesson state could not be verified. Reconnect before continuing.'); return }
@@ -220,7 +220,7 @@ async function sendFrames(): Promise<void> {
   const token = generation, key = contextKey.value, expected = saved.sessionId
   inputInFlight = true
   try {
-    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/input', { method: 'POST', body: packet })
+    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/input', { method: 'POST', body: packet }, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; stopPractice('The stroke reply could not be verified. Reconnect to check saved progress.'); pauseAfterInput = expected; return }
@@ -281,7 +281,7 @@ async function claimResult(): Promise<void> {
   const body: BarberClaimRequest = { cityId: saved.cityId, lessonId: saved.lessonId, sessionId: saved.sessionId, requestId: attempt.requestId }
   busy.value = true; feedback.value = 'Submitting the one-time mannequin lesson payout…'
   try {
-    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/claim', { method: 'POST', body })
+    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/claim', { method: 'POST', body }, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; feedback.value = 'The payout reply could not be verified. Reconnect to check the saved result.'; return }
@@ -324,7 +324,7 @@ async function upgradeTool(): Promise<void> {
   const body: BarberUpgradeRequest = { cityId: cityId.value, requestId: attempt.requestId }
   busy.value = true; feedback.value = `Buying the starter clipper upgrade for ₦${BARBER_STARTER_TOOL_COST} game cash…`
   try {
-    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/upgrade', { method: 'POST', body })
+    const raw = await game.client.api<BarberResponse>('/api/living-world/barber/upgrade', { method: 'POST', body }, () => requestCurrent(token, key))
     if (!requestCurrent(token, key)) return
     const answer = replyFrom(raw)
     if (!answer) { needsRefresh.value = true; feedback.value = 'The purchase reply could not be verified. Reconnect to check the tool status.'; return }
@@ -355,7 +355,7 @@ watch(contextKey, async () => {
   startAttempt.value = null; claimAttempt.value = null; upgradeAttempt.value = null; pauseAfterInput = null
   if (previous?.status === 'running') void lifecycle('pause', previous, token - 1, '')
   if (mounted) await load()
-})
+}, { flush: 'sync' })
 onMounted(() => {
   mounted = true; disposed = false
   window.addEventListener('blur', blur); window.addEventListener('keyup', keyUp, true)

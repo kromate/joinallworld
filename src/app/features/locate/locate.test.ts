@@ -163,7 +163,15 @@ function sources(folder: string): string[] {
 }
 
 test('only the on-device check reads a position, and those files hold no way to send, log or store it', () => {
-  const reading = sources('src').concat(sources('server'), sources('deploy')).filter((file) => /getCurrentPosition|watchPosition|\.coords\b|GeolocationPosition|navigator\.geolocation/.test(readFileSync(join(root, file), 'utf8')))
+  // Keep detecting aliased coordinate reads, but don't treat a spread's final
+  // dot in `...coords.values()` as a property access.
+  const coordinateRead = /(?<!\.)\.coords\b/
+  assert.equal(coordinateRead.test('alias.coords.latitude'), true)
+  assert.equal(coordinateRead.test('...coords.values()'), false)
+  const reading = sources('src').concat(sources('server'), sources('deploy')).filter((file) => {
+    const source = readFileSync(join(root, file), 'utf8')
+    return /getCurrentPosition|watchPosition|GeolocationPosition|navigator\.geolocation/.test(source) || coordinateRead.test(source)
+  })
   assert.deepEqual(reading.sort(), ['src/app/features/locate/locateModel.ts', 'src/app/features/start/findCity.ts', 'src/app/features/world/lgaCardModel.ts'])
   for (const file of reading) {
     const code = readFileSync(join(root, file), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')

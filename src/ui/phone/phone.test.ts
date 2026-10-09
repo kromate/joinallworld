@@ -204,7 +204,15 @@ test('the zoomed interface sizes itself with --ui-vh: every rule that sets the i
   // (creator.css is the full-screen creator: it resets the zoom and divides by its own.)
   const files = [...(await readdir(panels)).filter((name) => name.endsWith('.css') && name !== 'creator.css').map((name) => `../panels/${name}`), '../shell.css', '../compact.css', '../controls.css', './phone.css', '../../map3d/geo/atlas.css', '../../app/ui/BaseSheet.vue'];
   for (const path of files) {
-    const css = (await read(path)).replace(/--ui-vh:\s*calc\(1dvh[^;]*;/g, '');
+    let css = (await read(path)).replace(/--ui-vh:\s*calc\(1dvh[^;]*;/g, '');
+    if (path === '../../map3d/geo/atlas.css') {
+      // This panel is a sibling of the zoomed .atlas-frame, so its own sheet height must use the
+      // actual dynamic viewport. Only descendants of the zoomed frame need the divided unit.
+      const atlas = await read('../../map3d/geo/atlas.ts');
+      assert.match(atlas, /<aside class="atlas-country-panel"[\s\S]*?<\/aside>\s*<div class="atlas-frame">/, 'the country panel is a closed sibling before the zoomed frame');
+      assert.match(css, /\.atlas-country-panel\{[^}]*max-height:min\(76dvh,680px\)/, 'the unzoomed country sheet follows the dynamic viewport');
+      css = css.replace('max-height:min(76dvh,680px)', 'max-height:min(76 * var(--ui-vh),680px)');
+    }
     assert.doesNotMatch(css, /\d(dvh|svh|lvh|vh)\b/, `${path} sizes with --ui-vh, not with a viewport height unit`);
   }
 });
@@ -243,13 +251,27 @@ test('the compact layout: a 45% panel, a 44px target for every small control, on
   assert.doesNotMatch(css, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
 });
 
-test('the venue card on a phone is four short rows: title with its status, one row of mode chips, Go, About; every target stays 44px', async () => {
-  const css = await readFile(new URL('../compact.css', import.meta.url), 'utf8'), card = css.slice(css.indexOf('the Map: venue card'), css.indexOf('the Map: venue card') + 3200);
-  assert.match(card, /\.map-card-head\{display:contents\}/, 'the title and the status share a row');
-  assert.match(card, /\.life-ui \.map-modes\{display:flex;/, 'the modes are one row');
-  assert.match(card, /\.map-modes b\{display:none\}/, 'a chip is an icon and a price');
-  assert.match(card, /button\.is-selected small\.map-mode-time\{display:block\}/, 'the chosen mode says its time');
-  assert.match(card, /\.map-modes button\{[^}]*min-height:var\(--tap\)/, 'a chip is a full-size target');
-  assert.match(card, /\.map-go\{min-height:var\(--tap\)/, 'Go is a full-size target');
-  assert.doesNotMatch(card, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'no text below 12px');
+test('the venue card on a phone wraps named travel choices with readable fares and times', async () => {
+  const compact = await readFile(new URL('../compact.css', import.meta.url), 'utf8');
+  const mapCss = await readFile(new URL('../panels/map.css', import.meta.url), 'utf8');
+  const venue = await readFile(new URL('../../app/features/travel/VenueCard.vue', import.meta.url), 'utf8');
+  const tokens = await readFile(new URL('../tokens.css', import.meta.url), 'utf8');
+  const card = compact.slice(compact.indexOf('the Map: venue card'), compact.indexOf('the Map: venue card') + 3200);
+
+  assert.match(card, /\.life-ui \.map-card\{[^}]*grid-template-columns:minmax\(0,1fr\)[^}]*max-height:calc\(55 \* var\(--ui-vh\)\)/, 'the card stays inside a bounded viewport-height panel');
+  assert.match(mapCss, /\.map-card\{[^}]*overflow-y:auto;/, 'long content remains vertically reachable inside the card');
+  assert.match(card, /\.life-ui \.map-card-head\{display:flex;/, 'the venue title keeps its own wrapping row');
+  assert.match(card, /body \.map-card-head h1\{[^}]*white-space:normal;overflow-wrap:anywhere/, 'long venue names can wrap');
+  assert.match(card, /body \.map-status\{[^}]*white-space:normal/, 'status stays separate and wraps instead of overflowing');
+
+  assert.match(card, /\.life-ui \.map-modes\{display:grid;grid-template-columns:repeat\(auto-fit,minmax\(min\(100%,88px\),1fr\)\)/, 'travel choices wrap into a responsive grid');
+  assert.match(card, /\.life-ui \.map-modes button\{[^}]*min-width:0;[^}]*min-height:var\(--tap\)/, 'each choice can shrink without losing its 44px target');
+  assert.match(card, /body \.map-modes b\{[^}]*overflow-wrap:anywhere/, 'mode names remain visible and wrap');
+  assert.match(card, /body \.map-modes small\{[^}]*overflow-wrap:anywhere/, 'fares remain readable and wrap');
+  assert.match(card, /body \.map-modes small\.map-mode-time\{grid-area:t;font-size:12px/, 'every mode keeps its travel time visible');
+  assert.match(venue, /<b>\{\{ option\.label \}\}<\/b>[\s\S]*<small>\{\{ fareText\(option\) \}\}<\/small><small class="map-mode-time">\{\{ option\.seconds \}\}s/, 'each button presents its name, fare and time');
+  assert.match(tokens, /--tap:\s*44px/, 'the shared touch target is 44px');
+  assert.match(card, /\.life-ui \.map-card \.map-go\{min-height:var\(--tap\)/, 'Go remains a full-size target');
+  assert.match(venue, /<details[^>]*class="ui-details map-about"/, 'About remains available below the choices');
+  assert.doesNotMatch(card, /font-size:\s*(?:[0-9]|1[01])(?:\.\d+)?px/, 'the compact card does not shrink text below 12px');
 });

@@ -40,8 +40,10 @@ const held = ref<DrivingInput>({ throttle: 0, brake: 0, steer: 0 })
 const wheelSteer = ref(0)
 const scene = ref<DrivingScene | null>(null)
 const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')
-let generation = 0, mounted = false, disposed = false, controlInFlight = false
-let pauseAfterControl: { prior: DrivingSessionView; latest?: DrivingSessionView } | null = null
+let generation = 0, mounted = false, disposed = false, controlInFlight = false, loadRequest = 0
+let controlActor: string | null = null
+let sessionActor: string | null = game.view.value.session?.id ?? null
+let pauseAfterControl: { prior: DrivingSessionView; actor: string | null; leaving: boolean; latest?: DrivingSessionView } | null = null
 let wheelGesture: { pointerId: number; startX: number; initialSteer: number; target: HTMLElement } | null = null
 let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
@@ -207,7 +209,7 @@ function applyResponse(answer: DrivingResponse, token: number, key: string, orig
     const adoptCanonicalStart = Boolean(startRefusal && expectedStillCurrent && contextMatches && current
       && (!previous || current.journeyId !== previous.journeyId || current.revision >= previous.revision))
     if (current && contextMatches && (freshLoad || sameJourneyFresh && expectedStillCurrent || adoptCanonicalStart)) {
-      session.value = current; serverState.value = current.state; assessment.value = current.state.assessment
+      session.value = current; sessionActor = game.view.value.session?.id ?? null; serverState.value = current.state; assessment.value = current.state.assessment
       retainedPass.value = current.state.assessment === 'passed'
       visualState = current.state; scene.value?.present(current.state)
     } else if (current && (!expectedStillCurrent || !contextMatches || current.journeyId !== previous?.journeyId)) {
@@ -243,14 +245,14 @@ function applyResponse(answer: DrivingResponse, token: number, key: string, orig
       return false
     }
     retainedPass.value = answer.session.state.assessment === 'passed'
-    session.value = answer.session; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
+    session.value = answer.session; sessionActor = game.view.value.session?.id ?? null; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
     if (!visualState || previous?.journeyId !== answer.session.journeyId || answer.session.revision >= (previous?.revision ?? -1)) visualState = answer.session.state
     scene.value?.present(visualState ?? answer.session.state)
   } else {
     const previous = session.value
     const expectedStillCurrent = origin.expectedJourney ? previous?.journeyId === origin.expectedJourney : !previous
     if (!expectedStillCurrent) { needsRefresh.value = true; feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'; return false }
-    retainedPass.value = false; session.value = null; serverState.value = null; visualState = null; assessment.value = 'pending'
+    retainedPass.value = false; session.value = null; sessionActor = null; serverState.value = null; visualState = null; assessment.value = 'pending'
   }
   feedback.value = answer.reason || answer.session?.state.feedback || 'Course ready. Start a lesson or explicitly resume your saved lesson.'
   online.value = true
@@ -273,26 +275,39 @@ async function createScene(token: number, key: string): Promise<void> {
 }
 async function load(): Promise<void> {
   restartConfirmation.value = false
-  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId
-  if (!game.view.value.session?.id) { feedback.value = 'Sign in to begin a server-tracked practice lesson.'; return }
+  const token = generation, key = contextKey.value, request = ++loadRequest
+  const expectedJourney = session.value?.journeyId, actor = game.view.value.session?.id ?? null, city = cityId.value
+  const requestCurrent = (): boolean => responseCurrent(token, key) && request === loadRequest && actor === (game.view.value.session?.id ?? null)
+  const responseIsCurrent = (): boolean => requestCurrent() && (session.value?.journeyId ?? undefined) === expectedJourney
+  if (!actor) { if (requestCurrent()) feedback.value = 'Sign in to begin a server-tracked practice lesson.'; return }
   busy.value = true
   try {
-    const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving?city=${encodeURIComponent(cityId.value)}`)
+    const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving?city=${encodeURIComponent(city)}`, {}, responseIsCurrent)
+    if (!responseIsCurrent()) return
     if (applyResponse(answer, token, key, { kind: 'load', expectedJourney })) {
       needsRefresh.value = false
       // A server record found running after reload/uncertain delivery is stopped first;
       // only an explicit user action can resume it in this view.
       if (answer.session?.state.status === 'running') await lifecycle('pause', answer.session)
+      if (!requestCurrent()) return
       if (session.value?.state.status === 'paused') needsRefresh.value = false
-      await nextTick(); await createScene(token, key)
+      await nextTick(); if (!requestCurrent()) return
+      await createScene(token, key)
+      if (!requestCurrent()) return
       void refreshPracticeCredentials(session.value?.journeyId ?? null)
     }
   } catch (error) {
-    if (responseCurrent(token, key)) {
+    if (responseIsCurrent()) {
       online.value = false; feedback.value = message(error, 'Offline: reconnect to load the practice course. No result was recorded.')
       void lookupQualification(session.value?.journeyId ?? null)
     }
-  } finally { if (responseCurrent(token, key)) busy.value = false }
+  } finally { if (requestCurrent()) busy.value = false }
+}
+function reconcileLeaving(prior: DrivingSessionView, actor: string | null): void {
+  if (prior.state.status !== 'running' || !actor || actor !== game.view.value.session?.id) return
+  if (mounted && !disposed) { void load(); return }
+  // A closing panel may ask the server to pause the saved run, but never applies this reply to the client model.
+  void game.client.api<DrivingResponse>(`/api/living-world/driving?city=${encodeURIComponent(cityId.value)}`, {}, () => false).catch(() => {})
 }
 function message(error: unknown, fallback: string): string { return error instanceof Error && error.message ? error.message : fallback }
 function qualificationCurrent(token: number, key: string, expectedJourney: string | null, request: number): boolean {
@@ -315,7 +330,8 @@ async function lookupQualification(expectedJourney: string | null = session.valu
   qualificationBusy.value = true; qualificationJourney.value = expectedJourney; qualificationReply.value = null
   qualificationMessage.value = 'Checking simulated qualification status…'
   try {
-    const answer = await game.client.api<QualificationResponse>(`/api/living-world/qualification?city=${encodeURIComponent(city)}`)
+    const answer = await game.client.api<QualificationResponse>(`/api/living-world/qualification?city=${encodeURIComponent(city)}`, {},
+      () => qualificationCurrent(token, key, expectedJourney, request))
     if (!qualificationCurrent(token, key, expectedJourney, request)) return
     if (!validQualificationReply(answer)) { qualificationMessage.value = 'The qualification status could not be verified.'; return }
     qualificationReply.value = answer; qualificationMessage.value = qualificationText(answer, expectedJourney)
@@ -358,7 +374,8 @@ async function lookupStarterPermission(expectedJourney: string | null = session.
     return
   }
   try {
-    const answer = await game.client.api<StarterRentalResponse>(`/api/living-world/rental?city=${encodeURIComponent(city)}`)
+    const answer = await game.client.api<StarterRentalResponse>(`/api/living-world/rental?city=${encodeURIComponent(city)}`, {},
+      () => rentalCurrent(token, key, snapshot, request) && (session.value?.journeyId ?? null) === expectedJourney && actor === game.view.value.session?.id)
     if ((session.value?.journeyId ?? null) !== expectedJourney || !rentalCurrent(token, key, snapshot, request) || actor !== game.view.value.session?.id) return
     if (!validStarterRentalReply(answer, actor)) {
       rentalMessage.value = 'Starter permission status could not be verified. Reconnect to check it.'
@@ -397,7 +414,9 @@ async function claimStarterPermission(): Promise<void> {
   const body: StarterRentalClaimRequest = { cityId: current.cityId, requestId: game.newId(), qualificationJourneyId: current.journeyId, qualificationVersion: 1 }
   rentalBusy.value = true; rentalMessage.value = 'Submitting the free in-game permission claim…'
   try {
-    const answer = await game.client.api<StarterRentalResponse>('/api/living-world/rental/claim', { method: 'POST', body })
+    const answer = await game.client.api<StarterRentalResponse>('/api/living-world/rental/claim', { method: 'POST', body },
+      () => rentalCurrent(token, key, snapshot, request) && session.value?.journeyId === current.journeyId
+        && rentalEvidenceSnapshot() === evidenceSnapshot && actor === game.view.value.session?.id)
     if (!rentalCurrent(token, key, snapshot, request) || session.value?.journeyId !== current.journeyId || rentalEvidenceSnapshot() !== evidenceSnapshot || actor !== game.view.value.session?.id) return
     rentalMessage.value = validStarterRentalReply(answer, actor) && answer.ok
       ? 'Claim checked. Reading the saved permission status…'
@@ -419,7 +438,8 @@ async function claimQualification(): Promise<void> {
   const body: QualificationClaimRequest = { cityId: current.cityId, requestId: game.newId(), journeyId: expectedJourney }
   qualificationBusy.value = true; qualificationMessage.value = 'Submitting the simulated qualification claim…'
   try {
-    const answer = await game.client.api<QualificationResponse>('/api/living-world/qualification/claim', { method: 'POST', body })
+    const answer = await game.client.api<QualificationResponse>('/api/living-world/qualification/claim', { method: 'POST', body },
+      () => qualificationCurrent(token, key, expectedJourney, request))
     if (!qualificationCurrent(token, key, expectedJourney, request)) return
     qualificationMessage.value = validQualificationReply(answer) ? 'Claim checked. Reading the saved qualification status…' : 'Claim reply was unclear. Reading the saved qualification status…'
     await refreshPracticeCredentials(expectedJourney)
@@ -458,9 +478,11 @@ function beginPresentation(): void {
 async function startLesson(): Promise<void> {
   restartConfirmation.value = false
   if (!canStart.value) return
-  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId; busy.value = true
+  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId
+  const city = cityId.value, requestId = game.newId(); busy.value = true
   try {
-    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/start', { method: 'POST', body: { cityId: cityId.value, requestId: game.newId() } })
+    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/start', { method: 'POST', body: { cityId: city, requestId } },
+      () => responseCurrent(token, key) && cityId.value === city && (session.value?.journeyId ?? undefined) === expectedJourney)
     if (applyResponse(answer, token, key, { kind: 'start', expectedJourney }) && answer.session) beginPresentation()
   } catch (error) { if (responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: the lesson did not start. No result was recorded.') } }
   finally { if (responseCurrent(token, key)) busy.value = false }
@@ -489,7 +511,8 @@ async function restartLesson(): Promise<void> {
     cityId: prior.cityId, requestId: game.newId(), journeyId: prior.journeyId, revision: prior.revision,
   }
   try {
-    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/restart', { method: 'POST', body })
+    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/restart', { method: 'POST', body },
+      () => responseCurrent(token, key) && session.value?.journeyId === prior.journeyId && session.value?.revision === prior.revision)
     if (!responseCurrent(token, key)) return
     if (session.value?.journeyId !== prior.journeyId || session.value.revision !== prior.revision) {
       clearHeld(); active.value = false; boarding.value = false; needsRefresh.value = true
@@ -507,7 +530,7 @@ async function restartLesson(): Promise<void> {
       return
     }
     const next = answer.session!
-    session.value = next; serverState.value = next.state; assessment.value = next.state.assessment
+    session.value = next; sessionActor = game.view.value.session?.id ?? null; serverState.value = next.state; assessment.value = next.state.assessment
     retainedPass.value = false; route.value = answer.course; visualState = next.state; scene.value?.present(next.state)
     needsRefresh.value = false; online.value = true
     feedback.value = answer.reason || 'A new practice attempt is ready. Follow the route and stop inside marked zones.'
@@ -529,12 +552,13 @@ async function lifecycle(action: 'resume' | 'pause', prior = session.value, allo
   const body: DrivingLifecycleRequest = { cityId: prior.cityId, journeyId: prior.journeyId, revision: prior.revision, requestId: game.newId() }
   lifecyclePending.value++
   try {
-    const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving/${action}`, { method: 'POST', body })
+    const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving/${action}`, { method: 'POST', body },
+      () => !allowLeaving && responseCurrent(token, key) && session.value?.journeyId === prior.journeyId)
     const latest = session.value
     if (applyResult && (allowLeaving || responseCurrent(token, key))) {
       if (answer.ok && answer.session && answer.session.journeyId === prior.journeyId && latest?.journeyId === prior.journeyId
         && answer.session.revision >= prior.revision && answer.session.revision >= latest.revision) {
-        session.value = answer.session; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
+        session.value = answer.session; sessionActor = game.view.value.session?.id ?? null; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
         visualState = answer.session.state; scene.value?.present(answer.session.state)
         if (action === 'resume') beginPresentation()
         else { active.value = false; needsRefresh.value = false; feedback.value = answer.reason || 'Lesson paused safely. Resume when ready.' }
@@ -561,7 +585,7 @@ async function resumeLesson(): Promise<void> {
 async function pauseLesson(): Promise<void> {
   restartConfirmation.value = false
   clearHeld(); active.value = false; boarding.value = false
-  if (controlInFlight && session.value) { pauseAfterControl = { prior: session.value }; feedback.value = 'Stopping controls; the server will pause after its current reply.'; return }
+  if (controlInFlight && session.value) { pauseAfterControl = { prior: session.value, actor: controlActor, leaving: false }; feedback.value = 'Stopping controls; the server will pause after its current reply.'; return }
   await lifecycle('pause')
 }
 function startControls(): void {
@@ -581,9 +605,13 @@ async function sendFrames(): Promise<void> {
   const frames = pendingFrames.slice(-5); pendingFrames = []
   const packet: DrivingControlPacket = { cityId: current.cityId, journeyId: current.journeyId, sequence: current.nextSequence, frames }
   const token = generation, key = contextKey.value
+  const actor = game.view.value.session?.id ?? null
+  controlActor = actor
   controlInFlight = true; pendingControls.value = true
   try {
-    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/input', { method: 'POST', body: packet })
+    const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/input', { method: 'POST', body: packet },
+      () => responseCurrent(token, key) && session.value?.journeyId === packet.journeyId
+        && session.value?.nextSequence === packet.sequence && actor === (game.view.value.session?.id ?? null))
     if (pauseAfterControl?.prior.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.revision >= pauseAfterControl.prior.revision) pauseAfterControl.latest = answer.session
     if (responseCurrent(token, key) && answer.ok && answer.session && answer.session.journeyId === current.journeyId
       && session.value?.journeyId === current.journeyId && answer.session.revision >= session.value.revision) {
@@ -606,11 +634,15 @@ async function sendFrames(): Promise<void> {
     }
   } finally {
     controlInFlight = false; pendingControls.value = false
+    controlActor = null
     if (pauseAfterControl) {
       const queued = pauseAfterControl; pauseAfterControl = null
-      const pauseState = queued.latest ?? queued.prior
-      const canApplyPause = !disposed && responseCurrent(token, key) && session.value?.journeyId === queued.prior.journeyId
-      if (pauseState.state.status === 'running') void lifecycle('pause', pauseState, !canApplyPause, canApplyPause)
+      if (queued.leaving || !queued.latest) reconcileLeaving(queued.prior, queued.actor)
+      else {
+        const pauseState = queued.latest
+        const canApplyPause = !disposed && responseCurrent(token, key) && session.value?.journeyId === queued.prior.journeyId
+        if (pauseState.state.status === 'running') void lifecycle('pause', pauseState, !canApplyPause, canApplyPause)
+      }
     }
     // The buffer is a rolling window of at most five 100 ms frames, so old input is bounded and discarded.
   }
@@ -665,13 +697,13 @@ watch(contextKey, async () => {
   rentalMessage.value = !game.view.value.session?.id ? 'Sign in to check starter permission status.'
     : cityId.value === 'lagos' ? 'Checking starter permission status…' : 'Starter permission is currently unavailable in this city.'
   retainedPass.value = false; webglUnavailable.value = false; assessment.value = 'pending'; online.value = true
-  scene.value?.dispose(); scene.value = null; route.value = null; session.value = null; serverState.value = null; visualState = null
+  scene.value?.dispose(); scene.value = null; route.value = null; session.value = null; sessionActor = null; serverState.value = null; visualState = null
   if (old && old.state.status === 'running') {
-    if (controlInFlight) pauseAfterControl = { prior: old }
-    else void lifecycle('pause', old, true, false)
+    if (controlInFlight) pauseAfterControl = { prior: old, actor: controlActor, leaving: true }
+    // Otherwise the fresh load below reconciles same-actor state under the current scope; it never posts as the prior actor.
   }
   if (mounted) await load()
-})
+}, { flush: 'sync' })
 onMounted(() => {
   mounted = true; disposed = false
   window.addEventListener('keydown', keyDown, true); window.addEventListener('keyup', keyUp, true); window.addEventListener('blur', windowBlur)
@@ -685,14 +717,15 @@ function keyUp(event: KeyboardEvent): void { onKey(event, false) }
 function windowBlur(): void { clearHeld(); if (active.value || boarding.value) void pauseLesson() }
 onBeforeUnmount(() => {
   const prior = session.value
+  const priorActor = sessionActor
   restartConfirmation.value = false
+  disposed = true; mounted = false; generation++; qualificationRequest++; rentalRequest++; loadRequest++
   if ((active.value || boarding.value) && prior) {
     clearHeld(); active.value = false; boarding.value = false
-    // Try to pause on close; the server still owns elapsed-time checks and the resulting state.
-    if (controlInFlight) pauseAfterControl = { prior }
-    else void lifecycle('pause', prior, true, false)
+    // A closing panel only asks for a server-side reconcile; it never applies a stale response.
+    if (controlInFlight) pauseAfterControl = { prior, actor: controlActor, leaving: true }
+    else reconcileLeaving(prior, priorActor)
   }
-  disposed = true; mounted = false; generation++; qualificationRequest++; rentalRequest++
   clearHeld(); observer?.disconnect(); observer = null
   window.removeEventListener('keydown', keyDown, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', windowBlur)
   document.removeEventListener('visibilitychange', visibility); reduced?.removeEventListener?.('change', reducedChanged)

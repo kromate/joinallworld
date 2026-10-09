@@ -18,7 +18,7 @@ test('the level bar: World › Africa › Nigeria › the city, the level in vie
 })
 
 test('the bar is on the city map itself, the world is one key away, and arriving opens no sheet', async () => {
-  const [app, bar, levels, keys, shell, pane] = await Promise.all([here('./MapApp.vue'), here('./MapLevels.vue'), here('./MapOverview.vue'), here('../../../ui/keys.ts'), here('../../state/app.ts'), here('../../scene/MapPane.vue')])
+  const [app, bar, levels, keys, shell, pane, mapRuntime] = await Promise.all([here('./MapApp.vue'), here('./MapLevels.vue'), here('./MapOverview.vue'), here('../../../ui/keys.ts'), here('../../state/app.ts'), here('../../scene/MapPane.vue'), here('../../scene/MapWorld.vue')])
   assert.match(app, /<div class="map-dock">\s*<MapLevels \/>/, 'drawn with the city map whatever else the panel shows, as the top of the one docked column')
   assert.match(bar, /showMapLayer\('world', \{ level: level\.atlas \}\)/)
   assert.doesNotMatch(levels, /World map|showWorld/, 'the entry at the end of the list is gone')
@@ -29,8 +29,9 @@ test('the bar is on the city map itself, the world is one key away, and arriving
   assert.match(shell, /!state\.estate\.lga && !state\.estate\.home && !away\) shell\.open\('city'/)
   assert.match(shell, /estate\.lga === null && !game\.state\.value\.estate\.home\) shell\.open\('city'\)/)
   assert.match(shell, /else if \(!away && state\.message\.startsWith\('Welcome to '\)\) game\.toast\(state\.message\)/, 'the welcome notice is shown on arrival')
-  assert.match(pane, /wallet: \(\) => game\.state\.value\.cash/)
-  assert.match(pane, /scene\.world\.value\?\.warm\(\)/, 'the wider levels are fetched while the device is idle')
+  assert.match(pane, /import\('\.\/MapWorld\.vue'\)/, 'the map runtime remains a lazy feature download')
+  assert.match(mapRuntime, /wallet: \(\) => game\.state\.value\.cash/)
+  assert.match(mapRuntime, /scene\.world\.value\?\.warm\(\)/, 'the wider levels are fetched while the device is idle')
 })
 
 test('a trip between cities has its own trip bar: the two cities, the way, what was paid, and no Cancel', () => {

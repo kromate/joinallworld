@@ -69,7 +69,7 @@ jobs:
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
-        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
+        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest test_index_shard_startup test_index_shard_admission_worker test_index_shard_controller > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
       - name: Remaining process, bootstrap, lease and recovery regression checks
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:

@@ -11,6 +11,22 @@ from pathlib import Path
 import stat
 
 
+def verify_index_lease_report(child, value):
+    """Check reported root/lock identity after the owned worker has been reaped.
+
+    This validates named private inodes; it does not acquire or prove a flock.
+    The caller must separately validate the report's exact fields and integers.
+    """
+    info = child.lstat(); lock = (child/"writer.lock").lstat()
+    if (child.resolve(strict=True) != child or not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+            or stat.S_IMODE(info.st_mode) != 0o700
+            or (info.st_dev, info.st_ino) != (value["rootDevice"], value["rootInode"])
+            or not stat.S_ISREG(lock.st_mode) or lock.st_uid != os.getuid() or lock.st_nlink != 1
+            or stat.S_IMODE(lock.st_mode) != 0o600 or lock.st_size != 0
+            or (lock.st_dev, lock.st_ino) != (value["lockDevice"], value["lockInode"])):
+        raise ValueError("actual admitted root/lease differs from its report")
+
+
 class IndexWriterBusy(RuntimeError):
     pass
 

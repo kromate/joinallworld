@@ -3,6 +3,7 @@
 This module validates durable controller facts only. It performs no filesystem,
 process, namespace, reservation or source-tooling operations.
 """
+import hashlib
 import json
 import re
 
@@ -193,6 +194,23 @@ def decode_controller_record(raw):
 
 def _clone(record):
     return decode_controller_record(encode_controller_record(record))
+
+
+def settlement(record, *, initialized=False):
+    """Bind settlement to the immutable attempt; this is not a success proof."""
+    tag = b"supervised-initialized-registry-v1" if initialized else b"namespace-lease-settlement-v1"
+    return hashlib.sha256(encode_controller_record(record) + tag).hexdigest()
+
+
+def _has_initialized_result(record):
+    for index, attempt in enumerate(record["attempts"]):
+        if attempt["phase"] != "terminal": continue
+        previous = _clone(record)
+        previous["attempts"] = previous["attempts"][:index + 1]
+        last = previous["attempts"][-1]
+        last["phase"] = "prepared"; last["workerPid"] = None; last["resultSha256"] = None
+        if settlement(previous, initialized=True) == attempt["resultSha256"]: return True
+    return False
 
 
 def start_attempt(record, operation=None):

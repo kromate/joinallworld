@@ -14,6 +14,7 @@ from index_binding import decode_index_binding, _pairs, _nonfinite
 from index_controller_record import decode_controller_record, FORMAT_V2
 from index_controller_state import RECORD, read_private
 from index_resource_limits import IndexWorkerUnreaped
+from index_tooling import _private_plan_pipe, _plan_pipe_flags
 
 MAX_BYTES = 4096
 
@@ -126,10 +127,9 @@ def create_plan_pipe(namespace_descriptor):
         identities = []
         for descriptor, access in pairs:
             os.set_blocking(descriptor, False)
-            info = os.fstat(descriptor); flags = fcntl.fcntl(descriptor, fcntl.F_GETFL)
-            if (not stat.S_ISFIFO(info.st_mode) or info.st_uid != os.getuid()
-                    or stat.S_IMODE(info.st_mode) != 0o600 or info.st_nlink not in {0, 1}
-                    or flags & os.O_ACCMODE != access or not flags & os.O_NONBLOCK):
+            info = os.fstat(descriptor); flags = _plan_pipe_flags(fcntl.fcntl(descriptor, fcntl.F_GETFL))
+            if (not _private_plan_pipe(info) or flags & os.O_ACCMODE != access
+                    or not flags & os.O_NONBLOCK):
                 raise ValueError("invalid plan pipe endpoint")
             identities.append((info.st_dev, info.st_ino, info.st_uid, info.st_mode, info.st_nlink, flags))
         return SimpleNamespace(readChild=read_child, writeParent=write_parent, readParent=read_parent,
@@ -146,7 +146,7 @@ def verify_plan_parent_pipes(state):
     """Check surviving pipe identities."""
     for position, descriptor in ((1, state.writeParent), (2, state.readParent)):
         if descriptor is None: continue
-        info = os.fstat(descriptor); flags = fcntl.fcntl(descriptor, fcntl.F_GETFL)
+        info = os.fstat(descriptor); flags = _plan_pipe_flags(fcntl.fcntl(descriptor, fcntl.F_GETFL))
         identity = (info.st_dev, info.st_ino, info.st_uid, info.st_mode, info.st_nlink, flags)
         if identity != state.identities[position]: raise ValueError("plan parent pipe changed")
 

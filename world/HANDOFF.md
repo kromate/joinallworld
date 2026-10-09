@@ -1,5 +1,31 @@
 # Copy-and-paste continuation prompt
 
+9 October 2026: terminal shard reopen and paired worker lease transport are
+accepted at exact e9eb7bbf/run37923993054: 504 distinct tests, three policy checks
+and World TypeScript; 20 macOS repetitions. All 35 artifacts, 16 changed source
+files and 45 fixed inputs are verified. Original resource limits are unchanged.
+See INDEX-SHARD-REOPEN-OPERATIONS.md and index-shard-reopen-acceptance.json.
+One active WORLD feature is macOS campaign pipe/lease recovery. Submit this exact
+verified source phase to Integration's consolidated delivery; WORLD uploads only
+the final agreed passing package. Actual generation and Nigeria rendering remain
+queued. No new runtime/map upload or full-world completion is implied. Older
+checkpoints below are historical.
+
+Current ownership: WORLD writes only the geospatial campaign pipe/lease recovery
+phase and its acceptance docs in the isolated world-foundation checkout. All Luna
+assignments are completed. Preserve Nigeria rendering6ad7579b/01c4c8f1 and source
+proofs; hand them to Integration without blind adoption into GRAPHICS changes.
+No new character, lesson, purchase, physical-actor or shared-host implementation.
+Integration is the sole writer of codex/allworld-consolidated-delivery. Original
+feature owners repair their semantics; WORLD is sole uploader of the final
+Integration-approved package after exact combined gates and continuity checks.
+Keep the full world objective active; current finite scope does not remove its
+Africa/continents/geometry/streaming/conditions/rights/gameplay/phone requirements.
+Update the shared world report after pushes, CI, deployment and public checks.
+Use existing previews with exact receipt versions; do not invent deployment ETA
+or start local heavy renders while memory warns. The text below is historical.
+
+
 Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
 frozen query membership and live-token completion are implemented.228 Python +43
 Node tests and full World TypeScript pass. Implementationa75c59af also passes

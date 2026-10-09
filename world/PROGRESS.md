@@ -1,3 +1,86 @@
+# Accepted worker recovery phase — 9 October 2026
+
+Exact e9eb7bbfd915e6e4d5fbb7c1b8bf96add66ebd27 is accepted on Linux and macOS.
+[Run 37923993054](https://github.com/kromate/joinallworld/actions/runs/37923993054)
+passed 504 distinct tests, three policy checks and World TypeScript. macOS repeats
+20 checks; those repetitions are not additional distinct tests. All 35 artifacts,
+16 changed source/workflow files and 45 fixed inputs match the exact tested source.
+Read [INDEX-SHARD-REOPEN-OPERATIONS.md](INDEX-SHARD-REOPEN-OPERATIONS.md) and
+[index-shard-reopen-acceptance.json](index-shard-reopen-acceptance.json).
+
+The fixed read-only worker verifies complete terminal V3 admission under the
+original caller-held lease without another startup attempt, parent SQL or repairs.
+Paired FD6/FD7 transport retains actual surviving-worker ownership. macOS adds
+kernel FWASWRITTEN after a pipe write; only that Darwin anonymous-pipe history bit
+is excluded from comparisons. Access, nonblocking, other flags and identities
+remain checked. All original source, storage, worker, output, time and attempt
+limits remain unchanged. Actual campaign hookup is still queued.
+
+WORLD's one active feature is macOS geospatial campaign pipe/lease recovery.
+Next publish this verified source checkpoint and hand its exact patch to Integration
+for the consolidated delivery. Integration alone writes the assembly branch;
+WORLD uploads only the final agreed passing candidate. No new feature expansion
+before consolidation. Nigeria rendering source/evidence and actual campaign
+integration remain preserved queued work. No character, lesson, purchase,
+physical-actor or shared-host edits belong to this phase.
+
+This builder acceptance adds no runtime map detail. The full world goal remains
+active: complete country geometry/streaming, finite accounting, actual V2 windows,
+source union, gameplay, Nigeria reconciliation and physical phones remain open.
+Direct public health at 11:33 UTC confirms joinallworld-a44629b38be751a9ad446051564;
+this is build identity evidence only. Local heavy work stays deferred under
+WARNING2/severe paging. All current child agents are completed. Older checkpoints
+and candidate chronology below are historical, not current pending work.
+
+## Historical candidate chronology
+
+Diagnostic **e9eb7bbfd915e6e4d5fbb7c1b8bf96add66ebd27**, remote run
+[37923993054](https://github.com/kromate/joinallworld/actions/runs/37923993054),
+is LIVE and unaccepted. Prior diagnostic0cda3150/run37923223595 is terminal
+FAILURE: Linux checks pass; six Mac parent write endpoints change only flags5
+to65541 after actual writes. All35 artifacts retained. Apple XNU defines and
+sets kernel-only FWASWRITTEN0x10000, exposed by F_GETFL. Current candidate masks
+only that Darwin anonymous-pipe history bit, retaining all other flags/identities
+and the actual changed-nonblocking refusal case. Runtime caps remain unchanged.
+Regular file/lock checks are unchanged. Mac CI records actual before/after raw
+pipe metadata and a one-byte write/read before complete real reopen cases.
+Prior f56cc62a/run37922418093 is terminal FAILURE: Linux329Python/175Node +3policy
+and World TypeScript pass. macOS inherited-helper and Node surviving-worker
+checks pass, and the new changed-nonblocking case passes. Six real startup cases
+fail after input ACK at the parent pipe comparison. All35 retained artifacts
+match the exact source marker; .cache/world-build/evidence/reopen-v39-provisional.json
+records their hashes. No main/production promotion follows. Direct source-only
+diagnosis is one coupled file; no extra agent is started under severe paging.
+Prior64afe6ca/run37920863778 passed Linux
+328Python/175Node+3policy/WorldTS, but Mac's six real reopen cases refused Linux's
+0600 anonymous-pipe guard; all34 artifacts retained provisionally. Apple XNU
+source defines Darwin0660/device0/link0 anonymous-pipe metadata. New candidate
+recognizes only that exact shape, keeps UID/FIFO/access/nonblocking/identity checks,
+records actual Mac pipe metadata and adds a real changed-flag refusal test.
+Admission input8135/8192 and registry worker24519/24576 fit original buckets. Candidate49523377/run37920336338 completed
+with only two reopen fixture assertion failures: expected handoff summary shape
+and earlier complete-header refusal. Other executable regressions and WorldTS
+passed; Mac skipped. Successor changes only that test file, checking the actual
+sealed aggregate plus independently reconstructed child-identity hash. Earlier
+21388c45/run37919534518 source-path/fixture/error-context/paired-type failures and
+both failed runs'23 artifacts each remain provisional. No caps or state reset. Candidate source
+adds exact terminal V3 reopening without another startup attempt, immutable
+read-only full reservation verification and paired campaign/acquisition FD6/FD7
+transport. Seven new Python cases and two Node cases run with existing Linux
+regressions; macOS repeats real reopen and transport after Linux. Static source
+review corrected missing references, saved-limit checks, duplicate plan reads and
+an unused verifier seam. All45 original inputs and source892928/control1048576B
+remain unchanged. No local heavy tests/build/browser/server/upload. Production
+runtime/maps unchanged. See [candidate operations](INDEX-SHARD-REOPEN-OPERATIONS.md).
+
+The complete goal remains active: actual campaign/acquisition integration,
+finite cumulative accounting, V2 capture/audit sessions, complete source union,
+geometry/streaming, Nigeria rendering/gameplay adapter and physical-phone checks
+remain open. Latest memory monitor11:14 UTC reports WARNING2/~11.53GB swap and
+only ~762MB swap free. WORLD acknowledged source/remote-only work, no local
+heavy starts and no process/tab termination. Luna assignments are completed;
+no new agent started for the user status report.
+
 # Implementation checkpoint — 9 October 2026
 
 Exact **3880c17f25509ab13175784d5b1a794923bafa78**, run
@@ -23,9 +106,10 @@ state14500/16384 fit original buckets; source allowance892928/control1048576
 and all worker/output/wall/attempt limits remain unchanged. Retained v30–v34
 failures/provisional receipts are ignored local diagnostics, not acceptance.
 
-Previous main/world-foundation e294f974 passes mainCI37910151391 fast typecheck,
-build/download/smoke and policy (full skipped). This source milestone adds no
-runtime/map upload. Paired FD6/FD7 transport/lifecycle fixture source remains
+Main/world-foundation **d2c4796993f00387a901f0db4953e471a34f797b** now passes
+[mainCI37916439330](https://github.com/kromate/joinallworld/actions/runs/37916439330):
+fast typecheck, build/download/smoke and policy (full skipped). This source
+milestone adds no runtime/map upload. Paired FD6/FD7 transport/lifecycle fixture source remains
 untested and excluded. Next replace actual campaign/acquisition ownership and
 propagate it through all mutating children, then finite same-campaign accounting
 and no-attempt terminal V3 reopen/V2 windows. Snapshot relocation4887B fits5606B

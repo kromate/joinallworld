@@ -69,7 +69,7 @@ jobs:
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
-        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest test_index_shard_startup test_index_shard_admission_worker test_index_shard_controller test_index_shard_handoff test_campaign_inherited_lease > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
+        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest test_index_shard_startup test_index_shard_admission_worker test_index_shard_controller test_index_shard_handoff test_index_shard_reopen test_campaign_inherited_lease > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
       - name: Remaining process, bootstrap, lease and recovery regression checks
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
@@ -95,7 +95,7 @@ jobs:
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
-        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts world/index-shard-window.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
+        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts world/campaign-worker-leases.test.ts world/index-shard-window.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
       - name: Exact reviewed JavaScript and public-release source boundary
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
@@ -143,6 +143,7 @@ jobs:
         id: runtimes
         run: |
           python -c 'import hashlib,json,os,pathlib,stat,sys; p=pathlib.Path(sys.executable).resolve(strict=True); s=p.lstat(); print(json.dumps({"path":str(p),"uid":s.st_uid,"gid":s.st_gid,"runnerUid":os.getuid(),"mode":oct(stat.S_IMODE(s.st_mode)),"links":s.st_nlink,"bytes":s.st_size,"device":s.st_dev,"inode":s.st_ino,"sha256":hashlib.file_digest(p.open("rb"),"sha256").hexdigest()}))' > diagnostic-evidence/python-installed-file-identity.json
+          printf 'WORLD_TEST_NODE=%s\n' "$(node -p 'require("node:fs").realpathSync(process.execPath)')" >> "$GITHUB_ENV"
           test ! -e "$RUNNER_TEMP/world-lease-python"
           python -m venv --copies --without-pip "$RUNNER_TEMP/world-lease-python"
           printf 'WORLD_TEST_PYTHON=%s\n' "$("$RUNNER_TEMP/world-lease-python/bin/python" -c 'import os,sys; print(os.path.realpath(sys.executable))')" >> "$GITHUB_ENV"
@@ -158,7 +159,34 @@ jobs:
         if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
-        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
+        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts world/campaign-worker-leases.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
+      - name: Retain actual macOS anonymous-pipe identities
+        if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
+        run: |
+          "$WORLD_TEST_PYTHON" - <<'PY' > diagnostic-evidence/anonymous-pipe-identities.json
+          import fcntl,json,os,stat
+          fds=os.pipe()
+          def identities():
+              return [{"fd":fd,"device":os.fstat(fd).st_dev,"inode":os.fstat(fd).st_ino,
+                  "uid":os.fstat(fd).st_uid,"mode":oct(stat.S_IMODE(os.fstat(fd).st_mode)),
+                  "links":os.fstat(fd).st_nlink,"fifo":stat.S_ISFIFO(os.fstat(fd).st_mode),
+                  "flags":fcntl.fcntl(fd,fcntl.F_GETFL)} for fd in fds]
+          try:
+              for fd in fds: os.set_blocking(fd,False)
+              before=identities()
+              if os.write(fds[1],b"x")!=1: raise RuntimeError("short diagnostic write")
+              returned=os.read(fds[0],1)
+              if returned!=b"x": raise RuntimeError("diagnostic pipe bytes differ")
+              print(json.dumps({"before":before,"after":identities(),"returnedHex":returned.hex()}))
+          finally:
+              for fd in fds: os.close(fd)
+          PY
+      - name: Actual macOS terminal shard verification without another attempt
+        if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: '"$WORLD_TEST_PYTHON" -B -m unittest test_index_shard_reopen > diagnostic-evidence/python-reopen.stdout 2> diagnostic-evidence/python-reopen.stderr'
       - name: Retain exact macOS lease diagnostics
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

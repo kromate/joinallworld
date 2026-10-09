@@ -1,5 +1,17 @@
 # Independent world-data builder
 
+9 October 2026: terminal shard reopen and paired worker lease transport are
+accepted at exact e9eb7bbf/run37923993054: 504 distinct tests, three policy checks
+and World TypeScript; 20 macOS repetitions. All 35 artifacts, 16 changed source
+files and 45 fixed inputs are verified. Original resource limits are unchanged.
+See INDEX-SHARD-REOPEN-OPERATIONS.md and index-shard-reopen-acceptance.json.
+One active WORLD feature is macOS campaign pipe/lease recovery. Submit this exact
+verified source phase to Integration's consolidated delivery; WORLD uploads only
+the final agreed passing package. Actual generation and Nigeria rendering remain
+queued. No new runtime/map upload or full-world completion is implied. Older
+checkpoints below are historical.
+
+
 The shared-OFD campaign lease bridge and complete bounded windows pass **495
 distinct tests, three policy checks and World TypeScript** on exact3880c17f,
 run37915503802; macOS repeats11 actual lease tests successfully. See

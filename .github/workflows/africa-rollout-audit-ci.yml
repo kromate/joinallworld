@@ -7,6 +7,7 @@ on:
       - 'src/game/cities/**'
       - 'world/playable-africa-rollout/**'
       - 'scripts/world/build-africa-starters.py'
+      - 'world/tooling/test_africa_starter_selection.py'
       - 'scripts/world/build-playable-africa.py'
       - 'scripts/world/verify-playable-destination.ts'
       - '.github/workflows/africa-rollout-audit-ci.yml'
@@ -27,6 +28,8 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - run: npm ci
+      - name: Pinned settlement selection and compact city generation
+        run: python3 -B -m unittest world.tooling.test_africa_starter_selection -v
       - name: Tracked generated assets and source identities
         run: |
           python3 - <<'PYTHON'
@@ -42,7 +45,11 @@ jobs:
                   raise SystemExit('Invalid receipt identity: ' + str(path))
               if path.stem != row['cityId'] or row['cityId'] in cities:
                   raise SystemExit('Changed or duplicated receipt identity: ' + str(path))
-              subprocess.run(['python3', 'scripts/world/build-africa-starters.py', '--country', row['countryIso2'], '--check-assets'], check=True)
+              command = ['python3', 'scripts/world/build-africa-starters.py', '--country', row['countryIso2'], '--check-assets']
+              selection = row.get('jubaSelection')
+              if selection is not None:
+                  command.extend(['--juba-selection', selection['packetPath'], '--juba-selection-sha256', selection['packetSha256']])
+              subprocess.run(command, check=True)
               cities.append(row['cityId'])
           Path('rollout-city-list.txt').write_text('\n'.join(cities) + '\n')
           PYTHON

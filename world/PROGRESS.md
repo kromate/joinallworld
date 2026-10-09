@@ -7,15 +7,22 @@ Ghana, Kenya and Algeria, with actual visits, reloads and return to the original
 home. Integration owns the combined branch; WORLD remains the sole uploader of
 the exact accepted package.
 
-Integration candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130
-focused checks and 12 overlapping checks. Its
+Integration's uncommitted panel-loader repair builds in 39.23 seconds and passes
+startup limits at 610476 raw, 221594 gzip and 194663 Brotli bytes. Its 57 focused
+app checks pass with no skips. A failed app import can leave a blank selected
+panel, so visible failure/retry recovery is being repaired before freezing.
+Exact-commit compiler, complete required suites, rendered journeys, sealed
+package and production continuity remain pending. Production is unchanged.
+
+Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
+checks and 12 overlapping checks. Its
 [fast CI](https://github.com/kromate/joinallworld/actions/runs/37962397132)
-passed compiler, build and policy, but startup downloads failed unchanged caps:
-627208/615000 raw, 226993/223000 gzip and 198637/195600 Brotli bytes. Full suites
-were skipped. Vite grouped the dynamically imported recovery reader and planner
-into the eager game chunk; Integration is repairing that grouping. Final size,
-complete required suites, rendered journeys, sealed package and production
-continuity remain unaccepted. No new upload has occurred.
+passed compiler, build and policy, but failed startup size at
+627208/615000 raw, 226993/223000 gzip and 198637/195600 Brotli bytes; full suites
+were skipped. Candidate `2a34897c4ba781fda70cdab6d4496dbd591b3117` separated
+recovery rules but remained over budget. All 47 selected WORLD source pins match
+that immutable candidate. The newer local loader measurement is diagnostic,
+not a frozen release acceptance.
 
 All 45 first-five packet files and both selected airport-desk files match that
 immutable candidate. The reusable check in
@@ -34,8 +41,14 @@ pinned South Sudan polygon. It retains the internal SDS/SSD discrepancy and
 capital/timezone caveats. Its reproducible point generator passed 17 synthetic
 checks and a real cached-data check in 1.43 seconds at 225 MB peak RSS, zero swaps,
 under the shared heavy-one slot. Existing inventory and city receipts are
-unchanged. This point is not a new playable destination; a future generation
-adapter must consume it explicitly.
+unchanged. The starter generator now consumes it only through paired explicit
+`--juba-selection` and SHA-256 flags for SS. Its 12 isolated selection/generation
+tests pass, including compact-city generation and idempotent rerun. The real
+Juba read-only plan is ready at 132 catalogue bytes; all ten prior receipts and
+asset sets still match. No new geometry was acquired or city generated. The
+existing remote rollout audit now runs these tests and passes selection pins
+from any future Juba receipt into the normal asset check. This point is not a
+new playable destination.
 
 Keep the full world goal active: country and city depth, efficient unattended
 acquisition/compilation/streaming, sourced regional conditions, Nigeria rendering

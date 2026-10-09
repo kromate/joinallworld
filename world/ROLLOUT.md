@@ -1,5 +1,17 @@
 # Decisions and repeatable rollout after the first compiler
 
+Current builder checkpoint — 9 October 2026: canonical namespace recovery and paired
+worker leases pass126 Python/23 engine checks plus World TypeScript; see PROGRESS.md.
+Global outlines/places and regional pilots remain distinct from national3D coverage.
+Next complete bounded persistent controller/registry supervision and verified capture
+campaign hookup before country geometry/streaming promotion. No new runtime deployed
+in this builder phase; latest accepted APP UI production receipt is sourcea446/version64ed
+in the shared coordination record. Older production and regional-next-step paragraphs
+below are historical where superseded. The current human concurrency amendment in
+AGENT-COORDINATION.md permits bounded source agents/tabs; retain heavy1/minifier1,
+check actual memory pressure and do not increase concurrency on WARNING.
+
+
 Latest production receipt: source73549b8a/versiond872e923 is accepted; exact remote compiler CI and actual Countries/Senegal/Fiji/Nigeria/Lagos/synthetic continuity passed. Desktop proof only; worldwide3D and foreign gameplay remain open. Local work is serialized LIVING → GRAPHICS → WORLD; see [PROGRESS.md](PROGRESS.md) and [WORLD-GAME-MAP-OPERATIONS.md](WORLD-GAME-MAP-OPERATIONS.md). Older pending-forward paragraphs below are historical and superseded by this accepted receipt.
 
 Latest checkpoint: the additive Countries chooser and 257 exact outlines were uploaded from source `049a3350`, with sealed package bounds, public build adoption and synthetic continuity verified. Actual production browser QA found a negotiated Zstandard response-header rejection; the native Fetch transport correction `84785af4` is integrated with fresh APP UI/loading main `83a672a2` in `8bd05cff`. Combined affected Node134/134, full Worker142/142, production build and unchanged download caps pass. Source-main/CI, a fresh sealed release/continuity and actual public-browser acceptance remain required; startup raw/gzip headroom is only4/75bytes. Read WORLD-GAME-MAP-OPERATIONS.md and WORLD-GAME-MAP-SPEC.md. Direct verified production deployment is authorized; WORLD retains sole upload ownership. The human reiterated desktop slowdown: intensive work follows explicit LIVING-WORLD → GRAPHICS → WORLD handoffs with one owner across builds/tests/servers/browsers, 1536 MiB Node heaps and one minifier worker. Bounded exact-range caching remains accepted at `158ce56a`; global feature ownership, compiled country detail, unattended recovery and Nigeria rendering integration remain open.

@@ -17,7 +17,7 @@ from index_storage_footprint import KNOWN_FILES, index_storage_footprint
 from index_writer_lock import IndexWriterLease, index_writer_lease
 
 REGISTRY_FILES = frozenset({"writer.lock", "reservations.sqlite", "reservations.sqlite-wal",
-                            "reservations.sqlite-shm", "reservations.sqlite-journal"})
+                            "reservations.sqlite-shm", "reservations.sqlite-journal", "namespace.json"})
 
 
 @dataclass(frozen=True)
@@ -27,6 +27,7 @@ class ChargedIndexRoot:
     binding_bytes: bytes
     reserved_bytes: int
     replayed_reservation: bool
+    namespace_lease: IndexWriterLease | None = None
 
 
 def _names(directory, maximum):
@@ -88,10 +89,15 @@ def _namespace(lease, registry):
     for name in _names(root, MAX_RESERVATIONS+len(REGISTRY_FILES)):
         file = root/name; entry = file.lstat()
         if name in REGISTRY_FILES:
+            maximum = 0 if name == "writer.lock" else 4096 if name == "namespace.json" else DATABASE_BYTES
             if (not stat.S_ISREG(entry.st_mode) or entry.st_uid != os.getuid()
                     or entry.st_nlink != 1 or stat.S_IMODE(entry.st_mode) != 0o600
-                    or not 0 <= entry.st_size <= (0 if name == "writer.lock" else DATABASE_BYTES)):
+                    or not 0 <= entry.st_size <= maximum):
                 raise ValueError("unsafe or oversized namespace registry file is preserved")
+            if name == "namespace.json":
+                # Lazy import avoids the canonical opener's dependency on this inventory.
+                from index_namespace import namespace_binding, _read_owned
+                _read_owned(root, name, 4096, exact=namespace_binding(registry.aggregate_bytes))
             overhead += max(entry.st_size, entry.st_blocks*512)
         else:
             if (not re.fullmatch("[a-f0-9]{64}", name) or name not in held
@@ -182,7 +188,8 @@ def charged_index_root(namespace_lease, registry, binding_bytes):
             _binding(root, binding_bytes)
             index_storage_footprint(lease, file_bytes=config["processLimits"]["fileBytes"],
                                     aggregate_bytes=config["reservedBytes"])
-            yield ChargedIndexRoot(lease, index_hash, binding_bytes, config["reservedBytes"], reserved["replayed"])
+            yield ChargedIndexRoot(lease, index_hash, binding_bytes, config["reservedBytes"],
+                                   reserved["replayed"], namespace_lease)
             _binding(root, binding_bytes)
             index_storage_footprint(lease, file_bytes=config["processLimits"]["fileBytes"],
                                     aggregate_bytes=config["reservedBytes"])

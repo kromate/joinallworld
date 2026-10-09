@@ -1,5 +1,38 @@
 # Isolated index resource and recovery witnesses — 8 October 2026
 
+## Current namespace opener and worker integration — 9 October 2026
+
+Latest focused implementation adds `tooling/index_namespace.py` and paired namespace
+and child descriptor inheritance to the fixed bootstrap worker.126 Python/23 engine
+checks and World compiler pass; exact receipts and measured bounds are in PROGRESS.md.
+The older experiment descriptions below are historical, not the current complete
+worker list or acceptance count.
+
+Use `open_index_namespace(existing_private_root, immutable_aggregate_bytes)` only
+inside the eventual bounded controller. It requires an existing owned0700 directory
+and a finite kernel per-file limit no greater than4MiB. It acquires the permanent
+namespace lock, verifies/resumes canonical metadata and the staged/final registry,
+and yields its actual lease and live `IndexReservations`. Pass those directly to
+`charged_index_root`, then the resulting admission to `bootstrap_index`. Do not
+fabricate descriptors or rename/delete lock inodes. A live native worker inherits
+both references; only confirmed worker termination permits normal release/reopen.
+
+Metadata pins the actual Python SQLite runtime as well as format/schema and budget.
+A runtime/schema/budget change is a separate explicit migration namespace, never a
+silent update/refund of the existing ledger. Foreign, mixed, unbound, oversized,
+or corrupt state fails closed. Interrupted expected prefixes and valid bootstrap
+files resume in place; neither caller nor helper deletes unknown SQLite sidecars.
+SQLite read-only connections occur after the kernel lease because shared-memory
+sidecar changes are possible even with mode=ro.
+
+**Still external/unaccepted:** persistent controller state and PID/snapshot recovery,
+registry CPU/wall/RSS process supervision, controller SIGKILL recovery, capture
+transaction crash/blocked-checkpoint pressure, measured global/shard limits,
+fenced campaign completion and independent source/index audits. Passing the library
+fixtures is not permission to run an unbounded real namespace or claim unattended
+country coverage. Power-loss durability is not established by process-exit tests.
+
+
 The fixed-worker Unix supervisor in `tooling/index_resource_limits.py` now applies
 kernel file-size/CPU limits, disables core files, caps V8 old-space, samples the
 owned process RSS, bounds stdout/stderr and waits for terminal cleanup. It accepts

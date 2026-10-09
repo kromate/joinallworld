@@ -71,6 +71,18 @@ export function bootstrapFeatureIndex(onBoundary: (name: string) => void = () =>
   const held = fstatSync(descriptor), named = lstatSync(path.join(root, 'writer.lock'));
   privateFile(path.join(root, 'writer.lock'), 0);
   assert.equal(held.dev, named.dev); assert.equal(held.ino, named.ino);
+  // Keep both leases across exec/controller death; only close after the writer exits.
+  const namespace = path.dirname(root), namespaceDirectory = lstatSync(namespace);
+  assert.equal(realpathSync(namespace), namespace);
+  assert.ok(namespaceDirectory.isDirectory() && namespaceDirectory.uid === process.getuid!()
+    && (namespaceDirectory.mode & 0o777) === 0o700);
+  const namespaceDescriptor = Number(process.env.WORLD_INDEX_NAMESPACE_DESCRIPTOR);
+  assert.ok(Number.isSafeInteger(namespaceDescriptor) && namespaceDescriptor > 2 && namespaceDescriptor !== descriptor);
+  const namespaceHeld = fstatSync(namespaceDescriptor), namespaceNamed = lstatSync(path.join(namespace, 'writer.lock'));
+  privateFile(path.join(namespace, 'writer.lock'), 0);
+  assert.ok(namespaceHeld.isFile() && namespaceHeld.uid === process.getuid!() && namespaceHeld.nlink === 1
+    && (namespaceHeld.mode & 0o777) === 0o600 && namespaceHeld.size === 0);
+  assert.equal(namespaceHeld.dev, namespaceNamed.dev); assert.equal(namespaceHeld.ino, namespaceNamed.ino);
   const raw = boundedRead(path.join(root, 'binding.json'), 4096, 0o600);
   assert.equal(sha256(raw), path.basename(root));
   const binding = parseCaptureJson(raw, { bytes: 4096, nodes: 1000, depth: 16 }) as Binding;
@@ -140,6 +152,8 @@ export function bootstrapFeatureIndex(onBoundary: (name: string) => void = () =>
   assert.equal(lstatSync(root).dev, directory.dev);
   const retainedLease = lstatSync(path.join(root, 'writer.lock'));
   assert.equal(retainedLease.dev, held.dev); assert.equal(retainedLease.ino, held.ino);
+  const retainedNamespace = lstatSync(path.join(namespace, 'writer.lock'));
+  assert.equal(retainedNamespace.dev, namespaceHeld.dev); assert.equal(retainedNamespace.ino, namespaceHeld.ino);
   return { format: 'feature-index-bootstrap-v1', indexHash: path.basename(root), replayed,
     nodeVersion: process.version, sqliteVersion: process.versions.sqlite, stats,
     databaseBytes: lstatSync(final).size, maximumRssKiB: process.resourceUsage().maxRSS };

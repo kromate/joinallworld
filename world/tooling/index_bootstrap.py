@@ -60,6 +60,9 @@ def bootstrap_index(admitted, repository_root, manifest_bytes, source_configurat
         raise TypeError("engine bootstrap requires its actual charged root")
     config = decode_index_binding(admitted.binding_bytes)
     root, _ = _lease(admitted.lease)
+    namespace, _ = _lease(admitted.namespace_lease)
+    if root.parent != namespace:
+        raise ValueError("bootstrap namespace lease differs from its charged root parent")
     if (hashlib.sha256(admitted.binding_bytes).hexdigest() != admitted.index_hash
             or root.name != admitted.index_hash or config["reservedBytes"] != admitted.reserved_bytes):
         raise ValueError("engine bootstrap root/hash/allowance differs")
@@ -76,10 +79,11 @@ def bootstrap_index(admitted, repository_root, manifest_bytes, source_configurat
         publish_index_binding(admitted)
         result = _run_fixed_process(executable, "index-engine-bootstrap", root,
             lease_descriptor=admitted.lease.descriptor, execution_root=execution.root,
+            namespace_descriptor=admitted.namespace_lease.descriptor,
             file_bytes=limits["fileBytes"], cpu_seconds=limits["cpuSeconds"],
             wall_seconds=limits["wallSeconds"], heap_mib=limits["heapMiB"], rss_limit_bytes=limits["rssBytes"])
         # Guard has reaped its only worker before snapshots may be cleaned up.
-        _binding(root, admitted.binding_bytes); _lease(admitted.lease)
+        _binding(root, admitted.binding_bytes); _lease(admitted.lease); _lease(admitted.namespace_lease)
         footprint = index_storage_footprint(admitted.lease, file_bytes=limits["fileBytes"], aggregate_bytes=available)
         _, runtime_after = _node_pin(executable, config["runtime"])
         if runtime_after != runtime_before:

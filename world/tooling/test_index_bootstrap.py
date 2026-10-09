@@ -1,5 +1,6 @@
 """Actual fixed Node bootstrap in disposable charged roots; no real output writes."""
 from contextlib import contextmanager
+from dataclasses import replace
 import hashlib
 import json
 import os
@@ -14,6 +15,7 @@ from index_binding_publish import publish_index_binding
 from index_bootstrap import bootstrap_index
 from index_resource_limits import _run_fixed_process
 from index_root import charged_index_root
+from index_namespace import open_index_namespace
 from index_tooling import FILES, FORMAT, encode_tooling_manifest
 from test_index_root import fixture, binding
 
@@ -69,6 +71,7 @@ class IndexBootstrapTests(unittest.TestCase):
                 self.assertFalse(first["bootstrap"]["replayed"])
                 self.assertEqual(set(first["bootstrap"]["stats"].values()), {0})
                 self.assertTrue(first["guard"]["inheritedLease"])
+                self.assertTrue(first["guard"]["inheritedNamespaceLease"])
                 self.assertFalse((final.parent/"bootstrap.sqlite").exists())
                 self.assertFalse((final.parent/"features.sqlite-wal").exists())
                 second = bootstrap_index(admitted, source, manifest, config, self.node)
@@ -76,6 +79,31 @@ class IndexBootstrapTests(unittest.TestCase):
                 self.assertEqual(final.stat().st_ino, inode)
                 self.assertEqual(second["bootstrap"]["stats"], first["bootstrap"]["stats"])
             self.assertEqual(registry.snapshot()["reservations"], 1)
+
+    def test_canonical_namespace_and_actual_engine_reopen_preserve_charge_and_database_inode(self):
+        with source_fixture() as (source, manifest, config), fixture() as (parent, _, __):
+            namespace = parent/"canonical"; namespace.mkdir(mode=0o700)
+            raw = self.bound(manifest, config)
+            inode = None
+            for iteration in range(2):
+                with open_index_namespace(namespace, 64*1024*1024) as opened:
+                    with charged_index_root(opened.lease, opened.registry, raw) as admitted:
+                        report = bootstrap_index(admitted, source, manifest, config, self.node)
+                        self.assertEqual(report["bootstrap"]["replayed"], iteration == 1)
+                        final = admitted.lease.root/"features.sqlite"
+                        if inode is None: inode = final.stat().st_ino
+                        self.assertEqual(final.stat().st_ino, inode)
+                    self.assertEqual(opened.registry.snapshot()["reservations"], 1)
+
+    def test_missing_or_wrong_namespace_lease_refuses_before_publication_or_launch(self):
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                for lease in [None, admitted.lease]:
+                    with self.subTest(lease=lease), patch("index_bootstrap._run_fixed_process") as launch:
+                        with self.assertRaises((TypeError, ValueError)):
+                            bootstrap_index(replace(admitted, namespace_lease=lease), source, manifest, config, self.node)
+                        launch.assert_not_called()
+                        self.assertFalse((admitted.lease.root/"binding.json").exists())
 
     def test_empty_interrupted_stage_initializes_and_publishes_same_inode(self):
         with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):

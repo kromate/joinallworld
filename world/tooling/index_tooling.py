@@ -24,6 +24,7 @@ FILES = tuple(sorted([
     "world/tooling/index_storage_footprint.py", "world/tooling/index_reservations.py",
     "world/tooling/index_binding.py", "world/tooling/index_tooling.py",
     "world/tooling/index_root.py",
+    "world/tooling/index_namespace.py",
     "world/tooling/index_binding_publish.py",
     "world/tooling/index_execution_snapshot.py",
     "world/tooling/index_bootstrap.py",

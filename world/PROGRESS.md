@@ -1,5 +1,77 @@
 # Implementation checkpoint — 9 October 2026
 
+## Canonical registry recovery and paired worker leases — focused acceptance
+
+The preceding status-report turn was **no progress**: it inspected existing state
+and requested repairs, without accepting new implementation. This continuation
+revalidated the isolated worktree and memory WARNING, reviewed one narrow Luna
+source assignment and implemented the next registry/worker integration phase.
+
+`open_index_namespace` now opens only an existing canonical owned0700 namespace,
+under its permanent private lock and an already enforced4MiB-or-stricter per-file
+kernel limit. Canonical metadata binds registry format/schema, immutable budget,
+page size and actual Python SQLite version. Exact pending prefixes resume in place;
+metadata and registry are fsynced, renamed and directory-fsynced. An initialized
+empty final registry reopens; a missing/empty final is not silently initialized.
+Bootstrap initialization/recovery retains its inode and never refunds reservations.
+
+Before lock creation, bounded file/header inspection refuses foreign, unbound,
+mixed and orphan state. SQLite connections occur only after the actual namespace
+lease: even mode=ro can update shared memory. Read-only admission reuses the exact
+reservation schema/row/stamp/totals verifier; charged child bindings and footprints
+are checked before the registry writer is initialized. Corrupt empty staging is
+integrity-checked before initialization. Fixed-file physical overhead is checked
+before new registry writes. Unknown/contradictory files and all charges remain held.
+
+Actual fixed Node bootstrap now inherits **both namespace and index leases**.
+Bootstrap requires the real charged parent relationship before publication/launch;
+the guard and worker verify both permanent inode descriptors. Actual live Node
+keeps both flock locks after the original coordinator references close, and both
+can be reacquired after that owned worker exits. This is reference-lifetime evidence,
+not a complete killed-controller/persistent-worker recovery experiment.
+
+**126 Python checks and23 engine checks pass; World TypeScript passes**. Python
+terminal16366 exit0:13.361s unittest/13.49s process,186,433,536B maxRSS. Compiler
+terminal14623 exit0 at384MiB heap:6.02s/422,871,040B maxRSS; empty stdout. Initial
+123-case run refused mixed state but failed its expected classification; corrected
+125-case run passed, then Luna review found the empty-stage integrity gap. Final
+126 includes that correction/regression. Earlier failed receiptv1 stays preserved.
+Seven actual abrupt registry-worker exits cover metadata prefix/before/after rename,
+empty staging, schema checkpoint and registry before/after rename. All resume exact
+metadata/database inodes with zero fabricated charges. The previously accepted four
+Node bootstrap SIGKILL recovery cases also pass in this final suite.
+
+Current27-input manifest:273,842source bytes/3,362manifest bytes,
+SHAc5b527362785c2390396035684e834f693896d7849d801a1d297e50c189483f6.
+Actual frozen snapshot charges319,488B and is removed on confirmed return. Current
+guarded engine tests complete in533.60ms, sampled112,427,008B RSS. Cached Dakar
+replay completes in446.96ms guard/289.56ms worker, sampled137,773,056B RSS: unchanged
+2captures/2,283ordinals/1,810versions/473duplicates/0conflicts/0network,
+2,908,160DB/0WAL/32,768SHM bytes. Neither measurement establishes country throughput.
+
+Receipts under `.cache/world-build/evidence/`:
+`feature-index-namespace-python-v3.{stdout,stderr}`,
+`feature-index-namespace-typecheck-v1.{stdout,stderr}`,
+`feature-index-namespace-{engine,capacity}-v1.json`,
+`feature-index-namespace-tooling-manifest-v1.json`, and
+`feature-index-namespace-source-acceptance-v1.json`. The acceptance binds actual
+source/test/evidence bytes. A final docstring and unused local-result cleanup after
+test import did not change helper behavior. No new test expectation waives a limit.
+
+Fresh origin/main8d5d6aef changed only docs/AGENT-COORDINATION.md and was fast-forwarded;
+no foreign runtime source was adopted. Actual builder output, campaign ledger,
+acquisition charges, Nigeria/game data and production remain untouched. All tests
+use disposable sources/namespaces/databases. No new server/tab/runtime build/upload.
+Memory remained raw2 WARNING; heavy1 checks were serial and no caps increased.
+
+Next required gate: fixed registry/controller CPU/wall/RSS supervision, persistent
+unconfirmed-worker/snapshot ownership and actual controller SIGKILL recovery;
+then supervised verified-capture ingestion + fenced existing campaign completion,
+independent raw/index conservation and measured whole-country geometry/streaming.
+This context manager is not an unattended process/campaign runner. Global detail,
+photorealism, gameplay integration and verified production map phases remain open.
+
+
 ## Frozen execution and atomic engine startup — focused acceptance
 
 Previous goal turn was **progress**:67da9429 implemented/reviewed/published charged

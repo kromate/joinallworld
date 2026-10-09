@@ -101,7 +101,7 @@ def recovered_witness(root):
 
 def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
                        wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None,
-                       execution_root=None):
+                       execution_root=None, namespace_descriptor=None):
     """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
 
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
@@ -132,6 +132,21 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 or (lease.st_dev, lease.st_ino) != (named.st_dev, named.st_ino)):
             raise ValueError("worker lease descriptor differs from the private permanent inode")
         inherited = (lease_descriptor,)
+    if namespace_descriptor is not None:
+        if (lease_descriptor is None or type(namespace_descriptor) is not int
+                or namespace_descriptor <= 2 or namespace_descriptor == lease_descriptor):
+            raise ValueError("worker namespace lease requires a distinct dedicated descriptor and child lease")
+        parent = root.parent
+        info = parent.lstat()
+        if (parent.resolve(strict=True) != parent or not stat.S_ISDIR(info.st_mode)
+                or info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o700):
+            raise ValueError("worker namespace must remain owned and private")
+        held = os.fstat(namespace_descriptor); named = (parent/"writer.lock").lstat()
+        if (not stat.S_ISREG(held.st_mode) or held.st_uid != os.getuid() or held.st_nlink != 1
+                or stat.S_IMODE(held.st_mode) != 0o600 or held.st_size != 0
+                or (held.st_dev, held.st_ino) != (named.st_dev, named.st_ino)):
+            raise ValueError("worker namespace lease descriptor differs from its permanent inode")
+        inherited += (namespace_descriptor,)
     node = Path(node)
     if not node.is_absolute():
         raise ValueError("Node executable must be absolute")
@@ -168,6 +183,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     environment = {"PATH": str(node.parent), "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "TMPDIR": str(root)}
     if lease_descriptor is not None:
         environment["WORLD_INDEX_LEASE_DESCRIPTOR"] = str(lease_descriptor)
+    if namespace_descriptor is not None:
+        environment["WORLD_INDEX_NAMESPACE_DESCRIPTOR"] = str(namespace_descriptor)
     command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
     if case is not None:
         command.append(case)
@@ -242,6 +259,7 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         raise RuntimeError("a scratch file exceeded the applied kernel file limit")
     result = {"worker": worker, "case": case, "returnCode": process.returncode,
               "inheritedLease": lease_descriptor is not None,
+              "inheritedNamespaceLease": namespace_descriptor is not None,
               "terminationSignal": signal.Signals(-process.returncode).name if process.returncode < 0 else None,
               "reason": reason, "elapsedMs": (time.monotonic() - started)*1000,
               "maximumObservedWorkerRssBytes": maximum_rss,

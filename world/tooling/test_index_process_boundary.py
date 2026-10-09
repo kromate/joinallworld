@@ -3,17 +3,71 @@ import json
 import os
 from pathlib import Path
 import shutil
+import select
 import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
 
 from index_resource_limits import _run_fixed_process, run_worker, IndexWorkerUnreaped
-from index_writer_lock import index_writer_lease
+from index_writer_lock import index_writer_lease, IndexWriterBusy
 
 
 class IndexProcessBoundaryTests(unittest.TestCase):
     node = os.environ.get("WORLD_TEST_NODE") or shutil.which("node") or "/missing-node-runtime"
+
+    def test_fixed_guard_inherits_both_namespace_and_child_leases(self):
+        with tempfile.TemporaryDirectory(prefix="allworld-index-boundary-fixture-") as temporary:
+            namespace = Path(temporary).resolve(strict=True); root = namespace/"child"; root.mkdir(mode=0o700)
+            with index_writer_lease(namespace) as parent, index_writer_lease(root) as child:
+                result = _run_fixed_process(self.node, "lease-witness", root,
+                    lease_descriptor=child.descriptor, namespace_descriptor=parent.descriptor, heap_mib=64)
+                self.assertEqual(result["returnCode"], 0, result["stderr"])
+                self.assertTrue(result["inheritedNamespaceLease"])
+                self.assertEqual(json.loads(result["stdout"])["namespace"], {"dev": parent.device, "ino": parent.inode})
+
+    def test_live_node_keeps_both_leases_after_coordinator_references_close(self):
+        # Actual Node and actual flock, but reference closure rather than controller SIGKILL.
+        process = None
+        with tempfile.TemporaryDirectory(prefix="allworld-index-boundary-fixture-") as temporary:
+            namespace = Path(temporary).resolve(strict=True); root = namespace/"child"; root.mkdir(mode=0o700)
+            try:
+                with index_writer_lease(namespace) as parent, index_writer_lease(root) as child:
+                    script = Path(__file__).resolve().parent/"index_lease_witness.ts"
+                    process = subprocess.Popen([self.node, "--max-old-space-size=64", "--experimental-strip-types", str(script), "hold"],
+                        env={"TMPDIR": str(root), "WORLD_INDEX_LEASE_DESCRIPTOR": str(child.descriptor),
+                             "WORLD_INDEX_NAMESPACE_DESCRIPTOR": str(parent.descriptor)},
+                        pass_fds=(parent.descriptor, child.descriptor), stdin=subprocess.PIPE,
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    self.assertTrue(select.select([process.stdout], [], [], 3)[0], "Node did not confirm readiness")
+                    report = json.loads(process.stdout.readline(4096))
+                    self.assertEqual(report["namespace"], {"dev": parent.device, "ino": parent.inode})
+                self.assertIsNone(process.poll())
+                for directory in [namespace, root]:
+                    with self.assertRaises(IndexWriterBusy), index_writer_lease(directory):
+                        self.fail("live Node lost an inherited lease")
+                stdout, stderr = process.communicate(b"X", timeout=3)
+                self.assertEqual((process.returncode, stdout), (0, b""), stderr)
+                with index_writer_lease(namespace), index_writer_lease(root): pass
+            finally:
+                if process is not None:
+                    if process.poll() is None: process.kill()
+                    process.communicate(timeout=3)
+
+    def test_wrong_namespace_descriptor_refuses_before_launch(self):
+        with tempfile.TemporaryDirectory(prefix="allworld-index-boundary-fixture-") as temporary:
+            namespace = Path(temporary).resolve(strict=True); root = namespace/"child"; root.mkdir(mode=0o700)
+            other = namespace/"other"; other.mkdir(mode=0o700)
+            with index_writer_lease(namespace) as parent, index_writer_lease(root) as child, index_writer_lease(other) as unrelated:
+                for descriptor in [unrelated.descriptor, child.descriptor, True, 2]:
+                    with self.subTest(descriptor=descriptor), patch("index_resource_limits.subprocess.Popen") as launch:
+                        with self.assertRaises(ValueError):
+                            _run_fixed_process(self.node, "lease-witness", root,
+                                lease_descriptor=child.descriptor, namespace_descriptor=descriptor)
+                        launch.assert_not_called()
+                with self.assertRaises(ValueError), patch("index_resource_limits.subprocess.Popen") as launch:
+                    _run_fixed_process(self.node, "lease-witness", root, namespace_descriptor=parent.descriptor)
+                launch.assert_not_called()
 
     def test_fixed_node_receives_held_lease_and_private_root_is_retained(self):
         with tempfile.TemporaryDirectory(prefix="allworld-index-boundary-fixture-") as temporary:

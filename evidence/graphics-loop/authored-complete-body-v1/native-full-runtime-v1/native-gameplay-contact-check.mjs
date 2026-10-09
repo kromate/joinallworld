@@ -135,7 +135,7 @@ try {
     const kit = createKit(); kits.push(kit);
     const chairParent = new THREE.Group();
     chairParent.position.set(1.1, 0.35, -0.8); chairParent.rotation.y = 0.41; chairParent.scale.setScalar(0.9);
-    const floor = meshBox(chairParent, 'actual-floor', [8, 0.1, 8], [0, -0.05, 0]);
+    const floor = meshBox(chairParent, 'actual-floor', [10, 0.1, 10], [0, -0.05, 0]);
     const officeChair = meshBox(chairParent, 'venue-office-chair-seat', [0.62, 0.1, 0.6], [0, 0.55, -0.08]); // top .60
     const homeChair = meshBox(chairParent, 'home-molded-chair-seat', [0.5, 0.06, 0.5], [0, 0.38, -0.08]); // top .41
     const impossibleChair = meshBox(chairParent, 'unreachable-test-seat', [0.7, 0.1, 0.7], [0, 4.95, -0.08]); // top 5.0
@@ -155,10 +155,15 @@ try {
     }
     const stairs = makeSourceHomeStairs(chairParent);
     const stairSurfaceMeshes = [...stairs.meshes, ...floorMeshes];
+    const missingStairSamples = [];
     const actor = await prepareNativeSkinnedBody({
       kit, seed: `contact-${family}`, look: savedLook(family, family === 'woman' ? 'office' : 'casual'), sceneScale: 1,
       seatSupport: chairSupport,
-      stairContactHeightAt: (contact) => parentYAt(chairParent, stairSurfaceMeshes, contact.x, contact.z, contact.y + 3),
+      stairContactHeightAt: (contact) => {
+        const height = parentYAt(chairParent, stairSurfaceMeshes, contact.x, contact.z, contact.y + 3);
+        if (height === null) missingStairSamples.push({ ...contact });
+        return height;
+      },
     });
     actors.push(actor); chairParent.add(actor.object); actor.place(0, 0, 0, 0);
     for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable/i);
@@ -186,7 +191,9 @@ try {
       const x = stairs.xStart + (step + 0.5) * stairs.run;
       actor.place(x, (step + 1) * stairs.rise, stairs.z, 0);
       const phase = stairPhases[index];
-      actor.stride(phase * 2 * Math.PI, false, climb * 0.18);
+      try { actor.stride(phase * 2 * Math.PI, false, climb * 0.18); } catch (error) {
+        throw new Error(`${family}/stairs direction=${climb} step=${step} phase=${phase}: ${error.message}; missing=${JSON.stringify(missingStairSamples)}`, { cause: error });
+      }
       const contacts = assertSolesOnFloor(actor, (point) => parentYAt(chairParent, stairSurfaceMeshes, point.x, point.z, point.y + 3), `${family}/stairs ${climb > 0 ? 'up' : 'down'}@${phase}`);
       assert.equal(contacts.length, 2);
     }

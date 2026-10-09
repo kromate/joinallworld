@@ -1,5 +1,5 @@
 // The browser's engine (campus stand-ins, nothing that only playing needs: profile.ts) must rebuild and view every life exactly as the
-// full engine does. A child process runs it on lives the full engine played, with two module hooks that do what vite.config.ts does to the
+// full engine does after the actual lazy Boutique composition completes its catalogue. A child process runs it on lives the full engine played, with two module hooks that do what vite.config.ts does to the
 // browser build: the systems come from systems/browser.ts (campus stand-ins), and profile.ts says PLAYS = false.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -68,7 +68,13 @@ for (const { raw, ctx } of input.lives) {
   const waiting = campusFor(raw);
   if (waiting) { try { createLife(raw, ctx); } catch (error) { refused = error.name; } await waiting; }
   const state = createLife(raw, ctx);
-  results.push({ waited: waiting !== null, refused, state, view: viewLife(state, ctx) });
+  const baseView = viewLife(state, ctx);
+  const wearablesDeferred = !baseView.onboarding.boutique.some(item => item.kind === 'wearables');
+  // Same helper used by BoutiqueApp after opening: keep the catalogue out of startup,
+  // then compare its complete projection against the full engine without dropping any expected entries.
+  const { withWearableBoutique } = await import('${url('../app/features/life/boutiqueModel.ts')}');
+  results.push({ waited: waiting !== null, refused, state, wearablesDeferred,
+    view: { ...baseView, onboarding: withWearableBoutique(baseView.onboarding, state) } });
 }
 await loadCampus();
 process.stdout.write(JSON.stringify({ playing, standInsLeft: isStandIn('unilagStudent'), results }));`;
@@ -119,6 +125,14 @@ function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
   settled.act({ type: 'onboarding.lottery', payload: {} });
   settled.act({ type: 'onboarding.home', payload: { house: 'yaba' } });
   keep('settled at home', settled);
+  const wearable = viewLife(settled.state, settled.ctx()).onboarding.boutique.find(item => item.kind === 'wearables' && !item.owned && item.blocked === null);
+  assert.ok(wearable, 'the fixture can buy an offered wearable through the full engine');
+  const beforeWearable = settled.state.cash;
+  settled.act({ type: 'onboarding.boutique-buy', payload: { kind: 'wearables', id: wearable.id } });
+  assert.equal(settled.state.cash, beforeWearable - wearable.price);
+  assert.ok(settled.state.onboarding.wardrobe.wearables?.some(id => id === wearable.id));
+  assert.ok(settled.state.onboarding.look.wearables?.some(id => id === wearable.id));
+  keep('settled with a bought and worn layer', settled);
   for (const venue of ['park', 'market', 'gym']) { settled.act({ type: 'travel', id: venue, mode: 'okada' }); settled.wait(600); }
   settled.act({ type: 'travel', id: 'park', mode: 'okada' }); settled.wait(600);
   settled.act({ type: 'spot', payload: { id: 'trees' } }); settled.act({ type: 'activity', id: 'chill' }); settled.wait(5);
@@ -172,7 +186,7 @@ test('the browser engine rebuilds and views every life as the full engine does, 
     const probe = (input: string): string => execFileSync(process.execPath, ['--experimental-strip-types', '--no-warnings', '--import', `data:text/javascript,${encodeURIComponent(REGISTER)}`, '--input-type=module', '--eval', PROBE, input], { encoding: 'utf8', maxBuffer: 1 << 28 });
     const clientRun = JSON.parse(probe(clientFile)) as { client: Record<string, unknown> };
     const output = JSON.parse(probe(file)) as
-      { playing: boolean; standInsLeft: boolean; results: { waited: boolean; refused: string | null; state: unknown; view: unknown }[] };
+      { playing: boolean; standInsLeft: boolean; results: { waited: boolean; refused: string | null; wearablesDeferred: boolean; state: unknown; view: unknown }[] };
     const campusLife = given.find((life) => life.name === 'a student at the campus');
     const savedStudent = (campusLife?.raw as { unilagStudent: { status: string; programme: string }; unilagShuttle: { rides: number }; unilagCommunity: { clubs: string[] } }) ;
     assert.deepEqual(clientRun.client, { standInAtStart: true, before: 'none', connected: true, standIn: false, status: savedStudent.unilagStudent.status, programme: savedStudent.unilagStudent.programme,
@@ -187,14 +201,15 @@ test('the browser engine rebuilds and views every life as the full engine does, 
       const full = createLife(life.raw, life.ctx);
       assert.deepEqual(result.state, JSON.parse(JSON.stringify(full)), `${life.name}: the rebuilt life`);
       const fullView = JSON.parse(JSON.stringify(viewLife(full, life.ctx))) as Record<string, unknown>;
+      assert.equal(result.wearablesDeferred, true, `${life.name}: wearables remain deferred until Boutique opens`);
       const uses = needsCampusRules(life.raw), loadedBefore = loaded;
       assert.equal(result.waited, uses && !loaded, `${life.name}: waits for the campus rules the first time a life uses the campus, and never again`);
       loaded ||= uses;
       const holdsCampusState = CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]));
       assert.equal(result.refused, holdsCampusState && !loadedBefore ? 'CampusNotLoaded' : null, `${life.name}: a stand-in refuses what only the campus rules can rebuild`);
-      // The first campus life is refused before its lazy rules load, so that view must still omit campus data.
-      // Only later lives have the rules available before the view is rebuilt.
-      if (loadedBefore) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
+      // Refusal is observed before awaiting the lazy rules; the final view is built after that await.
+      // Once this input has loaded the rules, its own view and all subsequent views include campus data.
+      if (loaded) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
       else assert.deepEqual(result.view, withoutCampus(fullView), `${life.name}: the view (the campus views arrive with the campus rules)`);
     });
     t.diagnostic(`${given.length} lives, ${given.filter((life) => needsCampusRules(life.raw)).length} using the campus, ${given.filter((life) => life.ctx.cityId === FICTIONAL_CITY_ID).length} in the test city`);

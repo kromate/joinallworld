@@ -99,7 +99,9 @@ test('Family: the household, shared NPC labels, and a Call button for each game 
   assert.ok(words.includes(`Game-family streak: ${social.streak} days`))
   assert.equal((html.match(/aria-label="Call /g) ?? []).length, social.family.length)
   assert.equal((html.match(/data-npc-badge/g) ?? []).length, social.family.length)
-  for (const member of social.family) assert.ok(words.includes(member.name) && words.includes(`${member.relation} · ${member.line}`))
+  const cards = Array.from(html.matchAll(/<article\b[^>]*class="family-card"[^>]*>([\s\S]*?)<\/article>/g), match => text(match[1]!))
+  assert.equal(cards.length, social.family.length)
+  for (const member of social.family) assert.ok(cards.some(card => card.includes(member.name) && card.includes(member.relation) && card.includes(member.line)), `one card contains ${member.name}'s relation and line`)
   assert.ok(words.includes(`A game-character call takes ${social.familyCall.duration} seconds.`))
   assert.ok(words.includes('Invitations and unanswered calls earn no check-in rewards.'))
   assert.match(html, /<button[^>]*class="social-btn is-primary"[^>]*>(?:<!--.*?-->)*Call<\/button>/)
@@ -150,7 +152,7 @@ test('Contacts waits for server family ownership, reports read failure with retr
     familyReply = { status: 503, body: { error: 'family_unavailable', reason: 'Family contacts could not be loaded.' } }
     const failed = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
     assert.ok(text(failed).includes('Could not load family contacts: Family contacts could not be loaded.'))
-    assert.match(failed, /<button[^>]*>Try again<\/button>/)
+    assert.match(failed, /<button[^>]*>(?:<!--.*?-->)*Try again(?:<!--.*?-->)*<\/button>/)
     assert.ok(!text(failed).includes('Mummy'), 'an unresolved accepted human role cannot fall back to the NPC')
   } finally {
     client.state.me = null

@@ -408,7 +408,9 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     say('Monday: Ada declares for Governor', `refused until she had been paid for work on two different days; filing fee ₦2,000 paid once (${naira(declared.state.cash)}); voting is not open yet`);
 
     // ---- 8. Tuesday: Bola completes the daily gem hunt and is paid once ------------------------------
-    goTo(at(6, 9));
+    // Start at the beginning of the authored Lagos day so the schedule below has the full day
+    // to reach each actual venue/NPC routine without letting a previous section consume the hunt.
+    goTo(at(6, 0));
     let hunter = await life(bola);
     const huntDay = huntOf(hunter).day;
     assert.equal(huntOf(hunter).gems.length, 3);
@@ -416,14 +418,27 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
       hunter = await life(bola);
       const left = huntOf(hunter).gems.filter((gem) => !gem.found);
       if (!left.length) break;
-      let gem = left.find((item) => isOpen(must(VENUES[item.venue], 'registered venue').hours, time));
-      if (!gem) {
-        gem = left.reduce((best, item) => (minutesUntilOpen(must(VENUES[item.venue], 'registered venue').hours, time) < minutesUntilOpen(must(VENUES[best.venue], 'registered venue').hours, time) ? item : best));
+      // A visit gem has only its venue's opening window; an activity gem may need us to wait
+      // for a real regular's authored routine. Finish visits first so that presence waits do not
+      // push a closing-time visit into tomorrow and silently replace today's hunt.
+      const ordered = [...left].sort((a, b) => {
+        const activityPriority = Number(a.kind === 'activity') - Number(b.kind === 'activity');
+        if (activityPriority) return activityPriority;
+        return minutesUntilOpen(must(VENUES[a.venue], 'registered venue').hours, time)
+          - minutesUntilOpen(must(VENUES[b.venue], 'registered venue').hours, time);
+      });
+      const gem = ordered[0];
+      assert.ok(gem, 'an unfinished authored hunt gem exists');
+      if (!isOpen(must(VENUES[gem.venue], 'registered venue').hours, time)) {
         assert.equal((await act(bola, 'travel', { id: gem.venue, mode: 'trek' })).code, 'closed');
         wait(minutesUntilOpen(must(VENUES[gem.venue], 'registered venue').hours, time) * 60000);
+        assert.equal(lagosTime(time).day, huntDay, `the ${gem.venue} opening at ${stamp()} must still fit inside the original hunt day`);
       }
       if (hunter.location !== gem.venue) hunter = await travel(bola, gem.venue, 'danfo');
+      assert.equal(lagosTime(time).day, huntDay, 'travel for a gem stays inside its original Lagos day');
+      assert.equal(huntOf(hunter).day, huntDay, 'the settled life still holds the original hunt after travel');
       const index = huntOf(hunter).gems.findIndex((item) => item.venue === gem.venue && item.kind === gem.kind && item.spot === gem.spot);
+      assert.notEqual(index, -1, `the selected ${gem.venue} ${gem.kind} gem is still in the original hunt`);
       if (!must(huntOf(hunter).gems[index]).found) {
         if (gem.kind === 'activity') {
           assert.equal((await act(bola, 'civic.hunt-search')).code, 'activity_needed');

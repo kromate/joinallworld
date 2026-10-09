@@ -9,7 +9,7 @@ import { HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS } from './campusContent.ts'
 import { allocationOf, at, clampCount, first, storedLine, title } from './campusModel.ts'
 import { choices, useCampus } from './useCampus.ts'
 
-const { state, blocked, student, act } = useCampus()
+const { state, blocked, student, act, walkReason } = useCampus()
 const allocation = computed(() => allocationOf(student.value))
 const senate = computed(() => at(state.value, 'senate'))
 const requestWhy = computed(() => first(blocked.value, !senate.value ? 'Go to Senate House to request a room.' : ''))
@@ -17,6 +17,7 @@ const requestWhy = computed(() => first(blocked.value, !senate.value ? 'Go to Se
 const roomSpot = computed(() => (allocation.value ? `${allocation.value.hall}-hall` : ''))
 const inRoom = computed(() => at(state.value, roomSpot.value))
 const roomWhy = computed(() => first(blocked.value, !inRoom.value ? `Go to ${title(roomSpot.value)} to use the room.` : ''))
+const roomWalkWhy = computed(() => walkReason(roomSpot.value))
 const storage = computed(() => student.value?.hostel?.storage ?? {})
 const stored = computed(() => storedLine(storage.value))
 const fee = computed(() => student.value?.betaRules?.hostelFee ?? 300)
@@ -38,7 +39,8 @@ function store(direction: 'in' | 'out'): void {
       <p>This room is the active allocation for semester {{ allocation.semester }}, attempt {{ allocation.attempt }}.</p>
       <div class="campus-storage"><span v-for="item in stored" :key="item.id">{{ item.text }}</span><span v-if="!stored.length">Nothing stored</span></div>
       <template #extra>
-        <CampusGo v-if="!inRoom" :spot="roomSpot" label="Go to my room" />
+        <CampusControl v-if="!inRoom && roomWalkWhy" label="Go to my room" :reason="roomWalkWhy" />
+        <CampusGo v-else-if="!inRoom" :spot="roomSpot" label="Go to my room" />
         <CampusControl primary label="Sleep · energy +20" :reason="roomWhy" @press="act('unilag.hostel.sleep')" />
       </template>
     </CampusCard>

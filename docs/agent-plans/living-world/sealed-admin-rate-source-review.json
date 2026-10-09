@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-09T20:44:26.385095+00:00",
+  "checkedAt": "2026-10-09T20:58:00.095725+00:00",
   "sourceState": "Frozen corrected caller fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
   "sourcePins": [
     {
@@ -23,7 +23,7 @@
       "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
     }
   ],
-  "verdict": "Source accepted for identified fixed-address/authenticated-bucket corrections. Actual changed Worker lookup/transport, final Astra source and fresh exact sealed acceptance remain required.",
+  "verdict": "Corrected frozen source accepted, final verified Astra APPROVE, both remote source audits pass, and fresh exact sealed Worker verifies actual lookup/transport/all ten journeys. Native original-store/browser/production acceptance remains separate.",
   "observedDiagnostic": {
     "runId": 37987303569,
     "httpStatus": 429,
@@ -98,8 +98,61 @@
     {
       "sourceSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
       "runId": 37988762213,
-      "status": "in_progress",
-      "qualification": "Official run list confirmed live; no acceptance transfer."
+      "status": "completed",
+      "qualification": "Official run list confirmed live; no acceptance transfer.",
+      "conclusion": "success",
+      "testsPerNode": 21,
+      "failPerNode": 0,
+      "skipPerNode": 0,
+      "logs": [
+        {
+          "node": "24",
+          "bytes": 33505,
+          "sha256": "bcf633455ffa293c33b10529e56cb1bf57b3ff5d73ed5cdb6cae2a91a10e3f4a"
+        },
+        {
+          "node": "22",
+          "bytes": 39258,
+          "sha256": "a256e22e0a80d5ea52ee82a32a4bfdd4bf8a4bf5582d63ee4a2b625d97394191"
+        }
+      ]
     }
-  ]
+  ],
+  "finalAstraReview": {
+    "sourceSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "disposition": "APPROVE one fresh exact-c1 seal after source audit passes",
+    "reportSha256": "2f9699b7b255b0ab53e02a38a89da57be38a78ad4fa1472b6b6299ec67ab5e16",
+    "actualModel": "gpt-6-astra",
+    "effort": "medium",
+    "modelMetadataTimestamp": "2026-10-09T20:43:11.936Z",
+    "parentThreadId": "01a12069-9bd0-7eb1-bfe9-150d8af9cd46",
+    "qualification": "Source only, no tests/UI/funding/stage/upload performed in this review."
+  },
+  "actualSealedRun": {
+    "runId": 37989411458,
+    "status": "completed",
+    "conclusion": "success",
+    "gameSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+    "observationSha256": "9a105497b269251bfb0acd79354bce1241c646a94cf31cf16c77e7c00afdefd0",
+    "elapsedMs": 76001,
+    "actualRateWaits": [
+      {
+        "status": 429,
+        "code": "rate_limited",
+        "bucketCount": 31,
+        "windowMs": 60000,
+        "waitNumber": 1,
+        "remainingMs": 134980,
+        "phase": "receipt-replay",
+        "delayMs": 28686,
+        "intentSha256": "be88824829a2e2125190a0b12dbb1131574f22d742baec0fc19e5b06b5b8f93a",
+        "sameIntentRetried": true,
+        "sameAdminAddress": true,
+        "authenticatedFounderBucket": true
+      }
+    ],
+    "syntheticScopedAcceptance": true,
+    "releaseReady": false
+  }
 }

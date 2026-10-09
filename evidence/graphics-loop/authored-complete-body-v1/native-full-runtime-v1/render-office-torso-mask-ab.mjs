@@ -177,11 +177,13 @@ try {
     assert.deepEqual(a.candidateMatrixWorld, b.candidateMatrixWorld);
     assert.deepEqual(b.candidateMatrixWorld, b.bodyMatrixWorld);
     assert.deepEqual(a.garmentMatrixWorld, b.garmentMatrixWorld);
-    assert.equal(b.bodyTriangles, a.bodyTriangles - 26, 'candidate should hide exactly 26 additional source triangles');
+    assert.equal(b.candidateTriangles, a.bodyTriangles - 26, 'candidate overlay should hide exactly 26 additional source triangles');
+    assert.equal(b.candidateMaskMetrics.hiddenTriangles, a.existingMaskTriangles + 26,
+      'candidate hide union must include the exact existing office/shoe union plus 26 new source IDs');
     assert.equal(a.activeBodyVisible, true); assert.equal(a.candidateVisible, false);
     assert.equal(b.activeBodyVisible, false); assert.equal(b.candidateVisible, true);
     captures.push(baseline, candidate);
-    comparisons.push({ pose, view, sameActorPoseAndTransforms: true, sameLook: JSON.stringify(baseline.state.look) === JSON.stringify(candidate.state.look), sourceTriangles: a.bodyTriangles, candidateTriangles: b.bodyTriangles, images: [baseline.screenshot, candidate.screenshot] });
+    comparisons.push({ pose, view, sameActorPoseAndTransforms: true, sameLook: JSON.stringify(baseline.state.look) === JSON.stringify(candidate.state.look), sourceTriangles: a.bodyTriangles, candidateTriangles: b.candidateTriangles, originalMaskHiddenTriangles: a.existingMaskTriangles, candidateMaskHiddenTriangles: b.candidateMaskMetrics.hiddenTriangles, images: [baseline.screenshot, candidate.screenshot] });
   }
   const success = captures.length === 18 && comparisons.every((pair) => pair.sameActorPoseAndTransforms && pair.sameLook)
     && failedRequests.length === 0 && consoleErrors.length === 0;

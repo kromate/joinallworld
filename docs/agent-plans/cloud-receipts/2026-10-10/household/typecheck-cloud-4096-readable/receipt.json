@@ -1,0 +1,51 @@
+{
+  "sha": "35731140a32da445b8bfd95075f79c0948010694",
+  "branch": "codex/allworld-household-foundation",
+  "parent": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "checkout": "/workspace/remote-verification/repositories/household-35731140",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "typecheck"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 27197,
+  "started_at_utc": "2026-10-09T23:37:19.342337+00:00",
+  "ended_at_utc": "2026-10-09T23:40:07.589788+00:00",
+  "duration_seconds": 168.247451,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "log": "/workspace/remote-verification/receipts/35731140a32da445b8bfd95075f79c0948010694/typecheck-cloud-4096-readable/command.log",
+  "log_sha256": "d99e305a49dec04c936af5bc6897aa37f8cec31c47d34020b49f9a98762fbd4c",
+  "source_pins_before": {
+    "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "source_pins_after": {
+    "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "head_after": "35731140a32da445b8bfd95075f79c0948010694",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

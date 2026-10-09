@@ -1,0 +1,106 @@
+{
+  "recorded_at_utc": "2026-10-09T23:39:46.992394+00:00",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "hostname": "96cc63a2f9d2",
+  "node": "v24.19.0",
+  "capacity": {
+    "memory_limit_bytes": 34359738368,
+    "cpu_quota": 4,
+    "total_agent_slots": 7,
+    "shared_heavy_slots": 1
+  },
+  "publication": "unconfirmed; Settings review/save then Publish required",
+  "model_attestation": "spawn tool requests recorded; shell variables and codex_app worker thread response expose no actual model/reasoning metadata",
+  "workers": [
+    {
+      "worker_id": "/root/graphics_rest_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "inherited/default",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-rest",
+      "branch": "codex/cloud-graphics-rest-v9-20261010",
+      "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "scope": [
+        "rest-pose-adapter.ts",
+        "native-rest-contact.ts"
+      ],
+      "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
+      "runtime_model_id": "not independently exposed"
+    },
+    {
+      "worker_id": "/root/graphics_stairs_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "inherited/default",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-stairs",
+      "branch": "codex/cloud-graphics-stairs-v9-20261010",
+      "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "scope": [
+        "native-clip-solver.ts",
+        "dedicated stair module/tests"
+      ],
+      "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
+      "runtime_model_id": "not independently exposed"
+    },
+    {
+      "worker_id": "/root/household_consent_view_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "inherited/default",
+      "checkout": "/workspace/remote-verification/repositories/worker-household-identity",
+      "branch": "codex/cloud-household-consent-view-20261010",
+      "base_sha": "35731140a32da445b8bfd95075f79c0948010694",
+      "scope": [
+        "server/households/consentView.ts"
+      ],
+      "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
+      "runtime_model_id": "not independently exposed"
+    },
+    {
+      "worker_id": "/root/world_country_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "inherited/default",
+      "checkout": "/workspace/remote-verification/repositories/worker-world-country",
+      "branch": "codex/cloud-country-admission-20261010",
+      "base_sha": "5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf",
+      "scope": [
+        "country admission owned proposal/test scope"
+      ],
+      "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
+      "runtime_model_id": "not independently exposed",
+      "pushed_sha": "d173b2c4c3d28e4323c169d88521236abef710ee",
+      "status": "source checkpoint completed/pushed; read-only Senegal diagnosis active",
+      "latest_test_result": "17 named assertions passed, zero failed/skipped in escalated execution",
+      "latest_log": "/workspace/remote-verification/worker-results/world-country/focused-tests-escalated.log",
+      "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8"
+    },
+    {
+      "worker_id": "/root/living_driving_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "high",
+      "checkout": "/workspace/remote-verification/repositories/worker-living-driving",
+      "branch": "codex/cloud-living-reverse-20261010",
+      "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+      "scope": [
+        "driving service/client/response type hunks"
+      ],
+      "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
+      "runtime_model_id": "not independently exposed",
+      "app_thread_id": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+      "overlay_hashes": "all seven frozen overlay hashes independently verified by worker"
+    },
+    {
+      "worker_id": "/root/graphics_head_cloud",
+      "configured_spawn_model": "gpt-6-luna",
+      "configured_reasoning": "inherited/default",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-head",
+      "branch": "codex/cloud-graphics-head-v9-20261010",
+      "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "scope": [
+        "native-source-sampler.ts",
+        "native-direction-retarget.ts",
+        "head module/tests"
+      ],
+      "checkout_receipt": "worker acknowledged clean exact base",
+      "runtime_model_id": "not independently exposed",
+      "status": "typed source head/rest quaternion and controller implementation, focused readable rerun requested"
+    }
+  ]
+}

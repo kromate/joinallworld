@@ -1,5 +1,19 @@
 # Phases, tests and release sessions
 
+## Current exact-source acceptance - 2026-10-09T15:14:00Z
+
+Candidate `c42a06b5fc4442cea748afeb132027524174dbd3` is terminal FAILURE. [Exact receipt](candidate-c42a06b5-evidence.json) and [independent review](candidate-c42a06b5-review.json) supersede older current/live statements. Both full Workers154/154pass, UI/host partitions pass; fullNode24 has13failures/4existing skips; fullNode22 exceeds the unchanged25-minute limit and lacks a full summary. Compiler and three startup budgets fail. Owner repairs `3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6` are source-reviewed only.
+
+| Unit | Evidence at named source | Release state | Remaining acceptance |
+| --- | --- | --- | --- |
+| Active teaching and compatible reader | c42 teaching Node12/12 and Worker10/10 scoped passes; corrected native helper source reviewed | New starts OFF; unreleased | Exact compiler/caps/full checks, readable native desktop/mobile, compatible recovery and live observations |
+| First five African capitals | c42 Node/Worker flight/reload/return cases pass; 3c fictional chess tables retain every-city gate | Unreleased | Real zero-cash multi-hop return, current caption/NPC content, all-city relief, native journeys and sealed staging |
+| Mobile download and provider limits | c42 first-paint passes; startup raw/gzip/Brotli fail; Node22 times out | Unaccepted | Measured startup graph, actual reduction and complete exhaustive checks under unchanged limits |
+| Physical connected journey and later careers/business | Existing bounded foundations and independent handoffs only | Disabled/queued | Full school/licence/rental/animated entry/driving/restocking/barber/earnings/improvement/reload and later programme criteria |
+| Goalmatic | Published private contracts inspected; disabled/mock lane | No live integration | Consented target workspace/install, actual Goals schema, event/reconciliation/revocation contracts and live verification |
+
+Phase0 remains accepted only at its named discovery/contracts baseline. The A1-A10 matrix below and all phases1-5 retain their full scope. No scoped pass establishes whole-programme acceptance, staging or production continuity. Integration alone assembles; WORLD alone packages/uploads. No foreign test exclusion, invented route or limit waiver is accepted.
+
 ## Current verified evidence and next batch - 2026-10-09T14:37:39Z
 
 Previous goal turn made progress: terminal b598 Node/Worker evidence and hosted-country review were published `cc0737260b9e3391fdae66412c88546a35210513`; reviewed source proposal `4fd323213691bed9aa48bc736f6db80a0cd76903` was actually delivered; checkpoint `b539918c742c17a1d9166dfb2e5b095c407425fb` preserves remaining full programme work. This continuation found and retained a material review correction, verified its corrected source semantics and prepared the dependent activation contract. The goal remains ACTIVE.

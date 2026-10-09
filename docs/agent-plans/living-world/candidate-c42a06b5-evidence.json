@@ -1,0 +1,428 @@
+{
+  "candidateSha": "c42a06b5fc4442cea748afeb132027524174dbd3",
+  "observedAt": "2026-10-09T15:14:30.465905+00:00",
+  "runId": 37946528681,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37946528681",
+  "accepted": false,
+  "runStatus": "completed",
+  "compiler": {
+    "remote": "failure on Node22/24",
+    "diagnostics": [
+      {
+        "path": "server/africa-host.test.ts",
+        "line": 47,
+        "column": 74,
+        "code": "TS18048",
+        "message": "server is possibly undefined"
+      }
+    ],
+    "remoteOomProven": false,
+    "local": {
+      "sourceSha": "c42a06b5fc4442cea748afeb132027524174dbd3",
+      "node": "v24.19.0",
+      "heapMiB": 1536,
+      "minifierMaxWorkers": 1,
+      "stages": [
+        {
+          "title": "preflight",
+          "log": "/tmp/allworld-final-c42a06-preflight.log",
+          "status": "passed",
+          "startedAt": 1791556953.886013,
+          "exitCode": 0,
+          "durationSeconds": 0.25
+        },
+        {
+          "title": "catalogue",
+          "log": "/tmp/allworld-final-c42a06-catalogue.log",
+          "status": "passed",
+          "startedAt": 1791556954.186365,
+          "exitCode": 0,
+          "durationSeconds": 0.21
+        },
+        {
+          "title": "compiler",
+          "log": "/tmp/allworld-final-c42a06-compiler.log",
+          "status": "failed",
+          "startedAt": 1791556954.446099,
+          "exitCode": 1,
+          "durationSeconds": 78.984
+        }
+      ],
+      "status": "failed"
+    },
+    "localCompilerLog": {
+      "path": "/tmp/allworld-final-c42a06-compiler.log",
+      "bytes": 19176,
+      "sha256": "92430883b0ac89c1eb5e7a8c014f4ae77364fe7542afb5edffec84d5795c73f4",
+      "cause": "client/test heap exhaustion at unchanged1536MiB; captured stderr proves local cause only"
+    }
+  },
+  "build": "pass Node22/24",
+  "downloadBudgets": {
+    "firstPaintJsRaw": 91213,
+    "firstPaintJsGzip": 35527,
+    "firstPaintBrotli": 35698,
+    "startupFiles": 28,
+    "cities": 45,
+    "largestCity": "lagos",
+    "startupRaw": {
+      "actual": 616685,
+      "cap": 615000
+    },
+    "startupGzip": {
+      "actual": 223537,
+      "cap": 223000
+    },
+    "startupBrotli": {
+      "actual": 195790,
+      "cap": 195600
+    },
+    "status": "failure; caps unchanged; per-file attribution unresolved"
+  },
+  "logs": {
+    "node22-gates": {
+      "path": "/tmp/joinallworld-consolidated-c42-node22-gates.log",
+      "bytes": 173101,
+      "sha256": "08030f08c19da169ddff9eeee3b58a554578e6a94e6f38e0bde214446addcec6",
+      "summaries": [],
+      "failures": []
+    },
+    "node24-gates": {
+      "path": "/tmp/joinallworld-consolidated-c42-node24-gates.log",
+      "bytes": 173734,
+      "sha256": "14a2e355209ea619e1f753a1d46906a3d612f554eb5109dec5ccc4078c17b0ee",
+      "summaries": [],
+      "failures": []
+    },
+    "worker22": {
+      "path": "/tmp/joinallworld-consolidated-c42-worker22.log",
+      "bytes": 268643,
+      "sha256": "289437d5501b59afbba6d965c6a5c75b8d84bed029f0f9428752c84267b0ca10",
+      "summaries": [
+        {
+          "tests": 154,
+          "pass": 154,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 532119.157944
+        }
+      ],
+      "failures": []
+    },
+    "worker24": {
+      "path": "/tmp/joinallworld-consolidated-c42-worker24.log",
+      "bytes": 214789,
+      "sha256": "b92f45b665ae582c2e2b00a27a703880b53d93ea185526bc65ffa305a7beae5a",
+      "summaries": [
+        {
+          "tests": 154,
+          "pass": 154,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 502328.920374
+        }
+      ],
+      "failures": []
+    },
+    "host": {
+      "path": "/tmp/joinallworld-consolidated-c42-host.log",
+      "bytes": 40751,
+      "sha256": "3e7b5bee0fd5a0c88e9163a17d98f58abecf457b390f4bf815c21e7632691473",
+      "summaries": [
+        {
+          "tests": 88,
+          "pass": 88,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 20035.159205
+        },
+        {
+          "tests": 3,
+          "pass": 3,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 1465.736177
+        },
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 1932.920759
+        },
+        {
+          "tests": 12,
+          "pass": 12,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 2389.541724
+        },
+        {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 11383.704308
+        },
+        {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 5383.688315
+        },
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 8395.981076
+        },
+        {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 101994.036787
+        }
+      ],
+      "failures": []
+    },
+    "ui": {
+      "path": "/tmp/joinallworld-consolidated-c42-ui.log",
+      "bytes": 256420,
+      "sha256": "0733af97a5ad88a62972fcff1175c509d084bbae58ae92f81378e26f6b1784eb",
+      "summaries": [
+        {
+          "tests": 434,
+          "pass": 434,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 46051.134043
+        },
+        {
+          "tests": 43,
+          "pass": 43,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 7638.959141
+        },
+        {
+          "tests": 90,
+          "pass": 90,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 25828.50747
+        },
+        {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 9935.557184
+        },
+        {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 3353.223921
+        }
+      ],
+      "failures": []
+    },
+    "integration-repairs": {
+      "path": "/tmp/joinallworld-consolidated-c42-integration-repairs.log",
+      "bytes": 195374,
+      "sha256": "fa2a602384c7f8dac5baf60963ade5d2be1622e6a388a1fe4e4ca9a179a63087",
+      "summaries": [
+        {
+          "tests": 133,
+          "pass": 130,
+          "fail": 3,
+          "skipped": 0,
+          "duration_ms": 328990.699245
+        }
+      ],
+      "failures": [
+        {
+          "location": "src/app/entry.test.ts:203:1",
+          "title": "\u2716 automatic game startup, including one selected city, stays within the original first-load budget (30.807045ms)",
+          "error": "AssertionError [ERR_ASSERTION]: automatic startup for lagos is 616685 bytes (budget 615000)"
+        },
+        {
+          "location": "src/app/features/tour/tour.test.ts:151:1",
+          "title": "\u2716 the travel step names only cities that are open, three at most, and promises nothing when there is one (10.777075ms)",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+        },
+        {
+          "location": "src/game/cities/allCities.test.ts:124:1",
+          "title": "\u2716 every playable city exposes market, table and arrival relief contracts (2.993549ms)",
+          "error": "AssertionError [ERR_ASSERTION]: accra: table place"
+        }
+      ]
+    },
+    "node24-tests": {
+      "path": "/tmp/joinallworld-consolidated-c42-node24-tests.log",
+      "bytes": 683514,
+      "sha256": "a99ce3b4a7428b0025ea34e1b757314967fb6856e92391bda1d4d50cd0f7b7a3",
+      "summaries": [
+        {
+          "tests": 3598,
+          "pass": 3581,
+          "fail": 13,
+          "skipped": 4,
+          "duration_ms": 837977.793483
+        }
+      ],
+      "failures": [
+        {
+          "location": "server/companion.test.ts:54:1",
+          "title": "\u2716 success: the exact request, the tags, a hashed user, and the key only in the header; health holds no key text (25.595484ms)",
+          "error": "AssertionError [ERR_ASSERTION]: about 900 tokens or fewer"
+        },
+        {
+          "location": "src/airport-refinery.test.ts:53:1",
+          "title": "\u2716 the airport and the refinery are venues of the catalogue, and nothing in Lagos is coming soon (9.787723ms)",
+          "error": "AssertionError [ERR_ASSERTION]: Lom\u00e9 is shown as available"
+        },
+        {
+          "location": "src/app/entry.test.ts:203:1",
+          "title": "\u2716 automatic game startup, including one selected city, stays within the original first-load budget (22.481822ms)",
+          "error": "AssertionError [ERR_ASSERTION]: automatic startup for lagos is 616685 bytes (budget 615000)"
+        },
+        {
+          "location": "src/app/features/tour/tour.test.ts:151:1",
+          "title": "\u2716 the travel step names only cities that are open, three at most, and promises nothing when there is one (6.179652ms)",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+        },
+        {
+          "location": "src/game/business.test.ts:78:1",
+          "title": "\u2716 every open city rents stalls at a market, and every market the table names is one (1.417737ms)",
+          "error": "AssertionError [ERR_ASSERTION]: accra has a plate of its own"
+        },
+        {
+          "location": "src/game/cities/allCities.test.ts:124:1",
+          "title": "\u2716 every playable city exposes market, table and arrival relief contracts (2.036254ms)",
+          "error": "AssertionError [ERR_ASSERTION]: accra: table place"
+        },
+        {
+          "location": "src/game/cities/cast.test.ts:37:1",
+          "title": "\u2716 no regular in any city has a numbered neighbour name (1.529497ms)",
+          "error": "AssertionError [ERR_ASSERTION]: accra accra-accra-airport-accra-airport-1"
+        },
+        {
+          "location": "src/game/cities/combinedRules.test.ts:45:1",
+          "title": "\u2716 skipping a trip between cities: on every route of every open city the price is the timetable\u2019s, at most half the fare, charged once, and it falls as the trip goes on (6247.780097ms)",
+          "error": "AssertionError [ERR_ASSERTION]: sokoto \u2192 enugu by road"
+        },
+        {
+          "location": "src/game/cities/generatedLinks.test.ts:13:1",
+          "title": "\u2716 every open city reaches every other open city in both directions, by at least one bookable way (11.608016ms)",
+          "error": "AssertionError [ERR_ASSERTION]: abeokuta to algiers"
+        },
+        {
+          "location": "src/game/relief.test.ts:123:1",
+          "title": "\u2716 a visitor whose home is anywhere can always get home: every pair of open cities has a road, and the home is open (2.014581ms)",
+          "error": "AssertionError [ERR_ASSERTION]: lagos to algiers has an open road"
+        },
+        {
+          "location": "src/game/relief.test.ts:218:1",
+          "title": "\u2716 odd jobs: in every city, at every hour, with the worst needs, for anyone short of money, as a floor (61.57954ms)",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+        },
+        {
+          "location": "src/game/relief.test.ts:264:1",
+          "title": "\u2716 the bench and the tap: free, in every city, slowly, only for someone who needs them, with a break (30.639888ms)",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+        },
+        {
+          "location": "src/game/stuck.test.ts:27:3",
+          "title": "\u2716 each playable city gets its own bounded dead-end sample (16492.547557ms)",
+          "error": "Error: no way from accra to maiduguri: no_route"
+        }
+      ]
+    },
+    "node22-tests": {
+      "path": "/tmp/joinallworld-consolidated-c42-node22-tests.log",
+      "bytes": 1647633,
+      "sha256": "201bdd84532efaeb551ff372fe7b3f8a00a862a37830cb6042e0f127ea2beef3",
+      "summaries": []
+    }
+  },
+  "geometryTypeBoundary": {
+    "priorSha": "ab6a7a16517090237bb0ec652e6797cb7a847e9c",
+    "payloadBytes": 510895,
+    "files": [
+      {
+        "city": "accra",
+        "path": "src/game/cities/accra/geometry.ts",
+        "payloadBytes": 103293,
+        "payloadSha256": "3559c801a391f306e23ed229cf43e37027df644ee750ce85a0d49eb0462deaa9",
+        "identicalToPrior": true
+      },
+      {
+        "city": "algiers",
+        "path": "src/game/cities/algiers/geometry.ts",
+        "payloadBytes": 117569,
+        "payloadSha256": "4fbe488b042ec2a92d6f365ff587f9d4ef626f1c549a9b48e305fa217e744108",
+        "identicalToPrior": true
+      },
+      {
+        "city": "lome",
+        "path": "src/game/cities/lome/geometry.ts",
+        "payloadBytes": 101955,
+        "payloadSha256": "88e823762c0dea17bb6efbe307292583de8d475bb2ad40d2cee86f92ae69bc15",
+        "identicalToPrior": true
+      },
+      {
+        "city": "nairobi",
+        "path": "src/game/cities/nairobi/geometry.ts",
+        "payloadBytes": 92250,
+        "payloadSha256": "62b60ccf773cc1b2e44217f3518fd76b623f1dc36509fba9bf8a8d4a1196bd30",
+        "identicalToPrior": true
+      },
+      {
+        "city": "yaounde",
+        "path": "src/game/cities/yaounde/geometry.ts",
+        "payloadBytes": 95828,
+        "payloadSha256": "c517a896116933d6a69004c2c1aa2eff607457389d6ca7e66a55ffc9aca680be",
+        "identicalToPrior": true
+      }
+    ],
+    "scope": "source payload parity only, not physical gameplay or memory acceptance"
+  },
+  "browser": {
+    "status": "unrun for this SHA",
+    "historicalVisualFailureSha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+    "helperSourceSha": "ab6a7a16517090237bb0ec652e6797cb7a847e9c",
+    "helperSha256": "1a7afb50705589198cc98ff21505e6585984713fc787e6d8b8a1aeaf5f75068b"
+  },
+  "release": {
+    "staging": "unrun; sealed synthetic local Worker plan only",
+    "deployed": false,
+    "productionSource": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "healthServerTime": 1791557847151,
+    "healthScope": "build/availability only, not gameplay/save proof"
+  },
+  "ownership": "Integration sole shared source assembler; WORLD sole package/upload owner; Root and two verified Luna workers perform read-only diagnosis",
+  "next": "Repair actual foreign return/recovery/content/prompt failures without reducing coverage or inventing roads, obtain exact startup attribution, freeze changed source and pass gates before Astra native QA/staging/release.",
+  "runConclusion": "failure",
+  "fullNode22": {
+    "jobId": 113874119915,
+    "status": "completed",
+    "conclusion": "cancelled",
+    "startedAt": "2026-10-09T14:45:14Z",
+    "completedAt": "2026-10-09T15:10:33Z",
+    "providerAnnotation": "The job has exceeded the maximum execution time of 25m0s",
+    "fullSummary": null,
+    "lastProgress": "Scrabble bot/turn-accounting tests at15:10:29UTC",
+    "scope": "Incomplete exhaustive Node22 coverage; no full-pass claim"
+  },
+  "sourceOnlyRepairSha": "3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6",
+  "sourceOnlyRepairs": [
+    "Immutable host cleanup capture",
+    "Tour current-country rules/catalogue fallback",
+    "Fictional starter chess table with original all-playable-city gate retained; tentative country exclusion dropped"
+  ]
+}

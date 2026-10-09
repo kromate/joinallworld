@@ -1,0 +1,112 @@
+{
+  "candidateSha": "c42a06b5fc4442cea748afeb132027524174dbd3",
+  "reviewedAt": "2026-10-09T15:14:30.465905+00:00",
+  "accepted": false,
+  "sourceOnlyRepairSha": "3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6",
+  "reviewer": {
+    "role": "Sol",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "workers": [
+    {
+      "task": "luna_driving",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "scope": "read-only prompt/caption/NPC/business diagnosis",
+      "modelProof": "parent-bound session01a11c38-2958-7d33-8e67-3d75ef0f8428 latestturn2026-10-09T14:58:59.570Z independently read"
+    },
+    {
+      "task": "luna_journeys",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "scope": "read-only route/recovery/fare diagnosis; prior parent-bound model proof retained"
+    }
+  ],
+  "findings": [
+    {
+      "priority": 1,
+      "kind": "real recovery gap",
+      "paths": [
+        "src/game/systems/estate.ts",
+        "src/game/stuckSearch.ts"
+      ],
+      "finding": "Direct-only credit cannot finance a multi-hop return for a cashless visitor whose main home lacks a direct route. Outstanding ride debt blocks further credit and ordinary departures. Sparse topology alone is not a missing-road defect.",
+      "acceptance": "Use actual open bookable route legs, preserve the original home and once-only fare/credit ledgers; prove zero-cash nonairport-home recovery, interrupted hub arrival, reload/host restart and cancellation. A naive first-hop loan must not leave the visitor stranded in debt. Integration owns runtime repair; Astra reviews authority."
+    },
+    {
+      "priority": 1,
+      "kind": "performance gates",
+      "paths": [
+        "src/budgets.ts",
+        ".github/workflows/ci.yml"
+      ],
+      "finding": "Three exact startup caps fail and fullNode22 exceeds25m provider limit. Local stale dist cannot be used as c42 attribution.",
+      "acceptance": "Exact changed-source compiler/build and all unchanged raw/gzip/Brotli caps pass; obtain actual startup graph attribution. Complete exhaustive Node22/24 coverage under existing provider limits without dropping cases or unchanged retries."
+    },
+    {
+      "priority": 2,
+      "kind": "real caption initialization bug",
+      "paths": [
+        "src/game/content/venues-transport.ts",
+        "src/game/cities/registry.ts"
+      ],
+      "finding": "Airport caption snapshots routes before authored links load. Lagos-Lome243km is below generated-air250km threshold, so the real authored open route is absent from the caption.",
+      "acceptance": "Current loaded route registry drives available/preview caption; Lom\u00e9 remains discoverable after cold load/reload without inventing new links."
+    },
+    {
+      "priority": 2,
+      "kind": "real placeholder NPC defect",
+      "paths": [
+        "src/game/cities/africa/contentBuilder.ts",
+        "src/game/cities/cast.test.ts"
+      ],
+      "finding": "Starter displayed names are numbered Neighbour placeholders. Redundant ID prefixes are secondary and must not provoke unrelated save-identity changes.",
+      "acceptance": "Use distinct clearly fictional displayed names with authored dialogue; preserve IDs and all-city cast coverage, avoid invented factual biographies or Nigerian name borrowing."
+    },
+    {
+      "priority": 2,
+      "kind": "input context budget",
+      "paths": [
+        "server/companion/context.ts",
+        "server/companion/service.ts",
+        "server/companion.test.ts"
+      ],
+      "finding": "Context includes all playable cities and up to40venues; new cities overflow the existing3600character input assertion. Reply220token limit does not constrain input context.",
+      "acceptance": "Bound context by relevance while retaining current city/state, matched place/home and safety/privacy instructions. Existing budget passes without widening provider limits."
+    },
+    {
+      "priority": 2,
+      "kind": "fixture topology and funding",
+      "paths": [
+        "src/game/cities/generatedLinks.test.ts",
+        "src/game/relief.test.ts",
+        "src/game/stuckSearch.ts",
+        "src/game/cities/combinedRules.test.ts"
+      ],
+      "finding": "Direct-every-pair/road-only helpers cannot represent real multi-hop travel. Exhaustive route fares also exhaust one shared50M fixture balance.",
+      "acceptance": "Use actual bookable graph paths and isolated setup funding; retain every city, symmetry/mode rules, free relief, exact fares/skips/ledgers and meaningful dead-end sampling."
+    },
+    {
+      "priority": 3,
+      "kind": "bounded foreign cuisine contract",
+      "paths": [
+        "src/game/content/business.ts",
+        "src/game/business.test.ts",
+        "src/game/cities/africa/contentBuilder.ts"
+      ],
+      "finding": "Foreign starter has explicit generic fictional meal and no sourced local business/cuisine data; all-city localized-plate assumption is unsupported.",
+      "acceptance": "Preserve generic Plate of the day and Nigerian authored commercial assertions, with explicit foreign fallback coverage. Full future business programme remains required."
+    }
+  ],
+  "withdrawnHypothesis": {
+    "proposal": "Move teaching sizing from RunningActionProgress to TeachingShift for startup savings",
+    "reason": "Root traced ActionProgress already dynamically importing RunningActionProgress; both components are deferred. Move cannot establish startup savings. Luna interrupted; no shared source edits or submitted patch."
+  },
+  "stagingReview": {
+    "existingLocalRunner": "deploy/local.ts rebuilds Worker and inherits optional provider environment, so is not sealed package proof",
+    "required": "Unchanged package worker.js/assets checked against approved digest, explicit synthetic bindings/ownedSQLite store, ordinaryOFF Worker desktop/mobile/reconnect/restart observations, then WORLD release/live continuity"
+  },
+  "release": "No deployment; production sourcea44629b38be751a9ad446051564704f6c3c6ae1b; full programme incomplete",
+  "next": "Integration owns actual repairs and source freeze; Root reviews exact artifacts and submits no concurrent runtime changes."
+}

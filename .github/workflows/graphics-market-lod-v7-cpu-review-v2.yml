@@ -1,0 +1,43 @@
+name: Market LOD v7 CPU package diagnostic
+
+on:
+  push:
+    branches: [codex/graphics-market-lod-v7-cpu-review-v2]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v7-cpu-package-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact v7 snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 7fc60957864f3bd82edfa00bcfa5c083574de8cd4ad42998d5281bbc161b5313
+        run: node evidence/graphics-loop/crowd-lod-market-v7/remote-ci-reviewed-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build static fixture under bounded Linux process group
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 7fc60957864f3bd82edfa00bcfa5c083574de8cd4ad42998d5281bbc161b5313
+        run: python3 evidence/graphics-loop/crowd-lod-market-v7/remote-ci-reviewed-v1/run-bounded-linux.py
+      - name: Preserve package/receipt on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v7-cpu-package-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v7/static-fixture-market-gpu-v7/**
+            evidence/graphics-loop/crowd-lod-market-v7/remote-ci-reviewed-v1/remote-results/**
+          if-no-files-found: warn

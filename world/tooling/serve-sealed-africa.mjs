@@ -10,12 +10,13 @@ import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
 import { assertOwnedGroupGone, checkpointPolicy, validateUpgradeArguments } from './stage-checkpoint-policy.mjs';
+import { assertPinnedStageToolingSha, interactiveTeachingBindings, resolveInteractiveTeachingStarts } from './stage-capability-policy.mjs';
 import { publishControlState, replacePrivateControl } from './stage-control-file.mjs';
 
-const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
-       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted | --upgrade-from EXACT40_SHA] [--seconds 600] [--retain-store]
+const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source GAME_SOURCE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE --stage-helper-sha256 64_HEX --stage-capability-policy-sha256 64_HEX [--interactive-teaching-starts 1|0] [--seconds 600] [--retain-store]
+       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source GAME_SOURCE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT --stage-helper-sha256 64_HEX --stage-capability-policy-sha256 64_HEX [--interactive-teaching-starts 1|0] [--recover-interrupted | --upgrade-from EXACT40_SHA] [--seconds 600] [--retain-store]
 
-Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. A new stage gets a fresh SQLite store; --resume-control reopens a safely stopped retained checkpoint on its original port and store. --recover-interrupted additionally permits an unfinished running checkpoint only after both its prior owner and owned process group are absent. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGWINCH restarts the Worker on the same port and store without renewing the stage deadline. The internal deadline stops gracefully; Miniflare's own HUP/INT/TERM exit hooks can interrupt cleanup. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
+Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. The stage helper and capability policy each require explicit SHA-256 pins, separate from the clean game checkout supplied as --source. A new stage gets a fresh SQLite store; --resume-control reopens a safely stopped retained checkpoint on its original port and store. --recover-interrupted additionally permits an unfinished running checkpoint only after both its prior owner and owned process group are absent. Interactive teaching starts default off for every process window; pass --interactive-teaching-starts 1 to explicitly enable the Worker binding, or 0 to explicitly disable it. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGWINCH restarts the Worker on the same port and store without renewing the stage deadline. The internal deadline stops gracefully; Miniflare's own HUP/INT/TERM exit hooks can interrupt cleanup. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
 
 This is a local synthetic staging fixture, not production continuity, deployment, or release approval.`;
 const SOURCE_SHA = /^[a-f0-9]{40}$/;
@@ -27,6 +28,24 @@ const isRecord = value => typeof value === 'object' && value !== null && !Array.
 const object = value => { assert.ok(isRecord(value), 'expected object response'); return value; };
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
+async function boundedRegularFileSha256(path, label) {
+  assert.equal(typeof constants.O_NOFOLLOW, 'number', 'this platform must support O_NOFOLLOW for stage-tooling pins');
+  const flags = constants.O_RDONLY | constants.O_NOFOLLOW | (constants.O_NONBLOCK ?? 0);
+  const file = await open(path, flags);
+  try {
+    const stat = await file.stat();
+    assert.ok(stat.isFile(), `${label} must be a regular file`);
+    assert.ok(stat.size <= 256 * 1024, `${label} exceeds the 256 KiB pin-read limit`);
+    const bytes = Buffer.alloc(256 * 1024 + 1);
+    const { bytesRead } = await file.read(bytes, 0, bytes.byteLength, 0);
+    assert.ok(bytesRead <= 256 * 1024, `${label} exceeds the 256 KiB pin-read limit`);
+    assert.equal(bytesRead, stat.size, `${label} changed while its pin was being read`);
+    return sha256(bytes.subarray(0, bytesRead));
+  } finally {
+    await file.close();
+  }
+}
+
 function argumentsOf(argv) {
   if (argv.includes('--help') || argv.includes('-h')) return { help: true };
   const result = {};
@@ -37,7 +56,7 @@ function argumentsOf(argv) {
       result[flag] = true;
       continue;
     }
-    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds', '--resume-control', '--upgrade-from'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
+    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds', '--resume-control', '--upgrade-from', '--interactive-teaching-starts', '--stage-helper-sha256', '--stage-capability-policy-sha256'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
     const value = argv[index + 1];
     if (!value || value.startsWith('--')) throw new Error(`missing value for ${flag}`);
     result[flag] = value;
@@ -46,13 +65,18 @@ function argumentsOf(argv) {
   for (const flag of ['--source', '--package', '--sha', '--tools', '--control']) if (!result[flag]) throw new Error(`missing ${flag}`);
   for (const flag of ['--source', '--package', '--tools', '--control', ...(result['--resume-control'] ? ['--resume-control'] : [])]) if (!isAbsolute(result[flag])) throw new Error(`${flag} must be absolute`);
   if (!SOURCE_SHA.test(result['--sha'])) throw new Error('--sha must be exactly 40 lowercase hexadecimal characters');
+  const SHA256 = /^[a-f0-9]{64}$/;
+  for (const flag of ['--stage-helper-sha256', '--stage-capability-policy-sha256']) {
+    if (!SHA256.test(result[flag] ?? '')) throw new Error(`${flag} must be exactly 64 lowercase hexadecimal characters`);
+  }
   const seconds = result['--seconds'] === undefined ? 600 : Number(result['--seconds']);
   if (!Number.isInteger(seconds) || seconds < 1 || seconds > 900) throw new Error('--seconds must be an integer from 1 to 900');
+  resolveInteractiveTeachingStarts(result['--interactive-teaching-starts'], undefined);
   const control = resolve(result['--control']);
   const resumeControl = result['--resume-control'] ? resolve(result['--resume-control']) : undefined;
   if (resumeControl && resumeControl !== control) throw new Error('--control must be the exact same checkpoint path as --resume-control');
   if (result['--recover-interrupted'] && !resumeControl) throw new Error('--recover-interrupted requires --resume-control');
-  const args = { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, upgradeFrom: result['--upgrade-from'], seconds, retainStore: result['--retain-store'] === true, recoverInterrupted: result['--recover-interrupted'] === true };
+  const args = { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, upgradeFrom: result['--upgrade-from'], seconds, retainStore: result['--retain-store'] === true, recoverInterrupted: result['--recover-interrupted'] === true, requestedInteractiveTeachingStarts: result['--interactive-teaching-starts'], expectedStageHelperSha256: result['--stage-helper-sha256'], expectedStageCapabilityPolicySha256: result['--stage-capability-policy-sha256'] };
   validateUpgradeArguments(args);
   return args;
 }
@@ -235,6 +259,10 @@ async function validateCheckpoint(args, checked) {
 async function main(args) {
   assert.ok(Number(process.versions.node.split('.')[0]) >= 24, 'run with Node 24 or newer and --experimental-strip-types');
   const checked = verifySourceAndPackage(args);
+  const stageHelperSha256 = await boundedRegularFileSha256(new URL('./serve-sealed-africa.mjs', import.meta.url), 'running stage helper');
+  const stageCapabilityPolicySha256 = await boundedRegularFileSha256(new URL('./stage-capability-policy.mjs', import.meta.url), 'running stage capability policy');
+  assertPinnedStageToolingSha(args.expectedStageHelperSha256, stageHelperSha256, 'stage helper');
+  assertPinnedStageToolingSha(args.expectedStageCapabilityPolicySha256, stageCapabilityPolicySha256, 'stage capability policy');
   const require = createRequire(join(args.tools, 'package.json'));
   const { Miniflare, convertV4MiniflareOptions } = require('miniflare');
   assert.equal(typeof Miniflare, 'function', 'pinned Miniflare is unavailable from --tools');
@@ -245,6 +273,8 @@ async function main(args) {
     import(pathToFileURL(join(args.source, 'server/accounts/token.ts')).href),
   ]);
   const resumed = args.resumeControl ? await validateCheckpoint(args, checked) : undefined;
+  const interactiveTeachingStarts = resolveInteractiveTeachingStarts(args.requestedInteractiveTeachingStarts, resumed?.checkpoint.interactiveTeachingStarts);
+  const resumedFromInteractiveTeachingStarts = resumed?.checkpoint.interactiveTeachingStarts ?? null;
   const key = resumed ? undefined : await within('synthetic provider key generation', testTokens.makeKey('africa-native-stage-test-key'));
   const fixtureProviderJwk = resumed?.checkpoint.fixtureProviderJwk ?? key?.jwk;
   assertPublicFixtureJwk(fixtureProviderJwk);
@@ -274,6 +304,9 @@ async function main(args) {
   let stageReady = false;
   let restarting = false;
   let stopRequested = false;
+  let founderCookie;
+  let verifyLifeCapabilityResponse;
+  let lifeCapabilityEvidence;
   const requestControllers = new Set();
   const removeSignals = [];
   const finished = new Promise(resolveFinishedFn => { resolveFinished = resolveFinishedFn; });
@@ -328,9 +361,11 @@ async function main(args) {
       worker = makeWorker(boundPort);
       const ready = await withinStageLife('Miniflare restart startup', worker.ready, REQUEST_LIMIT_MS);
       origin = assertLoopbackReady(ready, boundPort).origin;
+      assert.equal(typeof verifyLifeCapabilityResponse, 'function', 'actual /api/life capability verifier is unavailable');
+      lifeCapabilityEvidence = await withinStageLife('actual /api/life capability after restart', verifyLifeCapabilityResponse(), REQUEST_LIMIT_MS);
       stageReady = true;
       restartCount += 1;
-      process.stdout.write(`${JSON.stringify({ event: 'restart', sourceSha: args.sha, packageDigest: checked.packageDigest, stageUrl: origin, storeReused: true, count: restartCount })}\n`);
+      process.stdout.write(`${JSON.stringify({ event: 'restart', sourceSha: args.sha, packageDigest: checked.packageDigest, stageHelperSha256, stageCapabilityPolicySha256, interactiveTeachingStarts, interactiveTeachingBinding: interactiveTeachingStarts === '1' ? '1' : 'omitted', apiLifeInteractiveTeachingStartsPresent: lifeCapabilityEvidence.present, apiLifeInteractiveTeachingStarts: lifeCapabilityEvidence.value, stageUrl: origin, storeReused: true, count: restartCount })}\n`);
     })().catch(error => {
       process.exitCode = 1;
       const message = error instanceof Error ? error.message.replace(/[\r\n]+/g, ' ').slice(0, 240) : 'restart failed';
@@ -353,7 +388,8 @@ async function main(args) {
       durableObjectsPersist: storagePath, resourcePersistencePath: storagePath,
       bindings: { BUILD_ID: `joinallworld-${args.sha}`, ACCOUNTS_FIREBASE_PROJECT_ID: PROJECT,
         ACCOUNTS_FIREBASE_API_KEY: 'africa-edge-test-api-key-0000000000000000000000',
-        FOUNDER_EMAIL_SHA256: sha256(FOUNDER) },
+        FOUNDER_EMAIL_SHA256: sha256(FOUNDER),
+        ...interactiveTeachingBindings(interactiveTeachingStarts) },
       assets: { directory: join(args.packageRoot, 'assets'), binding: 'ASSETS', run_worker_first: true,
         routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
       outboundService: async request => {
@@ -393,7 +429,6 @@ async function main(args) {
       assert.equal(response.status, 200, `${label} returned ${response.status}`);
       return object(await within(`${label} response body`, response.json()));
     };
-    let founderCookie;
     if (resumed) {
       founderCookie = resumed.checkpoint.founderCookieForAdminCredit;
     } else {
@@ -422,6 +457,21 @@ async function main(args) {
     ensureStarting();
     assert.equal(root.level, 'root', 'control cookie belongs to the synthetic founder admin');
 
+    verifyLifeCapabilityResponse = async () => {
+      const life = await json('actual /api/life teaching capability', await send('/api/life?city=lagos', undefined, founderCookie));
+      ensureStarting();
+      const present = Object.hasOwn(life, 'interactiveTeachingStarts');
+      const value = present ? life.interactiveTeachingStarts : null;
+      if (interactiveTeachingStarts === '1') {
+        assert.equal(present, true, 'ON /api/life response must include the top-level interactiveTeachingStarts flag');
+        assert.equal(value, true, 'ON /api/life top-level interactiveTeachingStarts must be true');
+      } else {
+        assert.equal(present, false, 'OFF /api/life response must omit the top-level interactiveTeachingStarts flag');
+      }
+      return { present, value };
+    };
+    lifeCapabilityEvidence = await verifyLifeCapabilityResponse();
+
     deadlineAt = Date.now() + args.seconds * 1000;
     const deadline = new Date(deadlineAt).toISOString();
     checkpointState.controlState = {
@@ -432,6 +482,13 @@ async function main(args) {
       sourceSha: args.sha,
       packageDigest: checked.packageDigest,
       packageManifestSourceSha: checked.manifest.sourceSha,
+      stageHelperSha256,
+      stageCapabilityPolicySha256,
+      interactiveTeachingStarts,
+      interactiveTeachingBinding: interactiveTeachingStarts === '1' ? '1' : 'omitted',
+      resumedFromInteractiveTeachingStarts,
+      apiLifeInteractiveTeachingStartsPresent: lifeCapabilityEvidence.present,
+      apiLifeInteractiveTeachingStarts: lifeCapabilityEvidence.value,
       ownerChildPid: process.pid,
       storagePath,
       storeMarkerPath,
@@ -452,7 +509,7 @@ async function main(args) {
     else checkpointState.controlIdentity = await writeControl(args.control, checkpointState.controlState);
     checkpointState.stageStarted = true;
     stageReady = true;
-    process.stdout.write(`${JSON.stringify({ stageUrl: origin, buildId: `joinallworld-${args.sha}`, sourceSha: args.sha, packageDigest: checked.packageDigest, deadline })}\n`);
+    process.stdout.write(`${JSON.stringify({ stageUrl: origin, buildId: `joinallworld-${args.sha}`, sourceSha: args.sha, packageDigest: checked.packageDigest, stageHelperSha256, stageCapabilityPolicySha256, interactiveTeachingStarts, interactiveTeachingBinding: interactiveTeachingStarts === '1' ? '1' : 'omitted', resumedFromInteractiveTeachingStarts, apiLifeInteractiveTeachingStartsPresent: lifeCapabilityEvidence.present, apiLifeInteractiveTeachingStarts: lifeCapabilityEvidence.value, deadline })}\n`);
     deadlineTimer = setTimeout(() => onStop('deadline'), args.seconds * 1000);
     await finished;
   } finally {

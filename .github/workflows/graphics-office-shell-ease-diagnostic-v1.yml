@@ -1,0 +1,47 @@
+name: Office shell ease pose diagnostic
+on:
+  push:
+    branches:
+      - codex/graphics-office-shell-ease-diagnostic-v1
+permissions:
+  contents: read
+concurrency:
+  group: office-shell-ease-diagnostic-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        body: [man, woman]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 8ce3c7d01caa0f362df525784f3541ad89474d1161d1b3d95c4cf0d83b9ab455
+        run: >-
+          node evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/pose-diagnostic-v1/verify-snapshot-reviewed.mjs
+          "$EXPECTED_SNAPSHOT_SHA256"
+      - run: npm ci --no-audit --no-fund
+      - name: Probe one family under fixed 220 MiB RSS / 20 second guard
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 8ce3c7d01caa0f362df525784f3541ad89474d1161d1b3d95c4cf0d83b9ab455
+        run: >-
+          python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/pose-diagnostic-v1/run-bounded-linux-reviewed.py
+          "${{ matrix.body }}"
+          "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/pose-diagnostic-v1/remote-results/${{ matrix.body }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-shell-ease-diagnostic-${{ matrix.body }}-${{ github.run_id }}
+          path: evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/pose-diagnostic-v1/remote-results/${{ matrix.body }}*
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,33 @@
+{
+  "schema": "allworld-market-lod-v7-remote-gpu-review-pin-v1",
+  "githubRunId": 37888890296,
+  "commit": "e603cd25be04b350d63001b1d6ecbe2e1c82db28",
+  "artifactName": "market-lod-v7-cpu-package-37888890296",
+  "packageManifestSha256": "40bfda2011fd585e2fb2e21469a2baf80e5247bcb3314aeb75c54483e9c01460",
+  "packageStatus": "static-packaging-only-not-visual-or-runtime-acceptance",
+  "outputs": {
+    "index.html": { "bytes": 3266, "sha256": "38c2c5a10191dc2e37feb0433091dfdf8ee6c96996f556968c42c2c89c9c7c5f" },
+    "viewer.js": { "bytes": 2002160, "sha256": "941eec5c6b7f050a66ead11dee249b73d62fe33ef6f381a13379299b31ec2828" },
+    "assets/base-body-male-M7EPTVJF.glb": { "bytes": 133756, "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686" },
+    "assets/base-body-female-FCFDQK6E.glb": { "bytes": 132296, "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c" },
+    "assets/clip-pack-MH5ZQFHK.glb": { "bytes": 338060, "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47" },
+    "assets/candidate-market-day-12.json": { "bytes": 15145, "sha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b" }
+  },
+  "actors": [
+    { "id": "graphics-host-crowd-02", "seed": "graphics-host-crowd-02", "family": "male", "body": "man", "outfit": "hoodie" },
+    { "id": "graphics-host-crowd-03", "seed": "graphics-host-crowd-03", "family": "female", "body": "woman", "outfit": "owambe" }
+  ],
+  "captureMatrix": {
+    "modes": ["source", "compact"],
+    "yawsDegrees": [0, 90],
+    "poses": ["idle", "walk", "interact"],
+    "walkPhase": 0.5,
+    "expectedPngCount": 24
+  },
+  "limits": {
+    "scope": "diagnostic remote headless Linux Chrome/ANGLE SwiftShader only",
+    "groupRssMiB": 768,
+    "wallSeconds": 60,
+    "doesNotProve": ["hardware GPU fidelity", "mobile performance", "battery", "whole-market frame budget", "production acceptance"]
+  }
+}

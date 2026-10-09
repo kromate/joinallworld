@@ -1,0 +1,45 @@
+{
+  "schema": "allworld-market-lod-v7-remote-gpu-source-snapshot-v1",
+  "purpose": "Exact review recipe pin consumed by verify-source-snapshot.mjs before artifact download or Chrome launch.",
+  "excludedSelfReferentialFiles": [
+    "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/source-snapshot.json",
+    "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/workflow.yml"
+  ],
+  "files": [
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/README.md",
+      "bytes": 2539,
+      "sha256": "6dae953372abf2730815296f3dda32ef62d9e5a9a4e71ca28722677195e559b2"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/artifact-pin.json",
+      "bytes": 1931,
+      "sha256": "cfb5fcd4c9876ff359cc4f88b8a657af6a30d46a84086299a0b997a31839422f"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 65844,
+      "sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"
+    },
+    {
+      "path": "package.json",
+      "bytes": 4579,
+      "sha256": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/review-cdp.mjs",
+      "bytes": 20702,
+      "sha256": "a75680ff8471ae9066dc8797ca72ba493b59bb09095293bb0ee7b55357898546"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/run-bounded-linux.py",
+      "bytes": 9169,
+      "sha256": "8865f9f0b0129040daf36b50bced9cd72b445d043ce76b029863e696786a3a17"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v1/verify-source-snapshot.mjs",
+      "bytes": 1944,
+      "sha256": "85bf9ff49fc90c4092a479e260bc32f93672fcecf8d875dfd39318fabcd2ee95"
+    }
+  ]
+}

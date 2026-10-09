@@ -419,3 +419,7 @@ Verification6e3faf88 passed all474 focused checks but its smoke gate rejected th
 ### Original-launch research checkpoint — 9 October
 
 Published the first original-launch root/20-branch pass:490 distinct descendant-inclusive replies,66 deduplicated reader findings, all3 discovered truncated root posts expanded. Exact historical continuation:161 branch pages and66 image-bearing posts. The current-source comparison maps these findings to existing implementation, named local proof and unresolved gaps; same-day bail contradictions and quoted third-party gameplay remain explicit. Further branch/image review is active. This documentation unit changes no runtime, save, limits or production.
+
+### Original-launch continuation and source corrections — 9 October
+
+Forty then fifty further branch pages raise captured replies to601 and completed scheduled branches to110. Seven additional screenshot posts were interpreted; resolved signup/recovery reports are corrected. X loading failure persisted after one reload and an independent page; exact104-branch/61-image/one-long-text continuation published. Current-source comparison corrects historical outages/courts/policies/Ask/replay/business/auto-work/pets classifications, with source-only versus runtime boundaries. No runtime/save/production changes in this documentation unit. Mobile reflow QA is the next independent unit while X remains unavailable.

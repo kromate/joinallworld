@@ -1,0 +1,45 @@
+name: Market LOD v8 bounded CPU package
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-lod-v8-cpu-review-v1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v8-cpu-package-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact v8 source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: edceefce8e2697f875caab53fcf69ec72ef934b27e0007f3a39f879b42e436e0
+        run: node evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build v8 package under bounded process group
+        env:
+          EXPECTED_SNAPSHOT_SHA256: edceefce8e2697f875caab53fcf69ec72ef934b27e0007f3a39f879b42e436e0
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/run-bounded-linux.py
+      - name: Preserve package and receipt even if the build fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v8-cpu-package-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/static-fixture-market-gpu-v8/**
+            evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/remote-results/**
+          if-no-files-found: warn

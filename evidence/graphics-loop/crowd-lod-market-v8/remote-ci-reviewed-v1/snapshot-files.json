@@ -1,0 +1,135 @@
+{
+  "schema": "allworld-market-lod-v8-cpu-snapshot-v1",
+  "scope": "Pinned v8 static package source, its builder inputs, and bounded remote CPU runner. Browser execution and visual review are separate.",
+  "excludedSelfReferentialFiles": [
+    "evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/snapshot-files.json",
+    "evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/workflow-template.yml"
+  ],
+  "files": [
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/README.md",
+      "bytes": 2557,
+      "sha256": "b4fc3b8af035d703bb372c23362f592d6a9c1c7f553429e1ce7a60e643359365"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/market-gpu-v8.html",
+      "bytes": 3675,
+      "sha256": "3d320869566c7ea1fb76a0c41aa850745a06dde07ce6382b605689b212e194af"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/prepare-market-gpu-v8.mjs",
+      "bytes": 10628,
+      "sha256": "41a391a056f03341b9cd0a594af9dc957c0fef4d75858e08ef223ee6ba11f3d7"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/README.md",
+      "bytes": 1225,
+      "sha256": "614f0a56ca7464a99243e4d0f360efbc610fc6cd3a372388d28c792cf6aca965"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/run-bounded-linux.py",
+      "bytes": 12047,
+      "sha256": "0b81d8456acdf7b57519cb836c04f509635f13506e92b988476afc7cb30c4095"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v1/verify-snapshot.mjs",
+      "bytes": 2122,
+      "sha256": "e314565be59995485ce97b8f63b30e412aa4dd25ebc6c9c605bd68b08d1fff06"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/remote-compile.yml",
+      "bytes": 1299,
+      "sha256": "138114d55dcef68c5bf7319d916996f1d625b8d931890aab8657ca0b2db8f0ee"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/source-snapshot.json",
+      "bytes": 3777,
+      "sha256": "968416353ab00473ea46ce08f386765f4fae2aaab7e268da64ddeada5bf477a2"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/static-market-gpu-v8-server.py",
+      "bytes": 9182,
+      "sha256": "3e6a4002d8826591f6f4c5bc8002b4f57e1695511c6c7d19cc3368ddc35539b6"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/verify-source-snapshot.mjs",
+      "bytes": 1945,
+      "sha256": "e107b6da6315dc703234ca045a6b8e059499e23e4cc07ee346a248e5b0a02552"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/viewer-market-gpu-v8.ts",
+      "bytes": 44797,
+      "sha256": "18fbd8b444d8b7366e2221e207a4ef4a4bdaec232a3d194bfc30cc6feab9a39d"
+    },
+    {
+      "path": "evidence/graphics-loop/venue-authored-people-browser-v1/candidate-market-day-12.json",
+      "bytes": 15145,
+      "sha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 65844,
+      "sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"
+    },
+    {
+      "path": "package.json",
+      "bytes": 4579,
+      "sha256": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9"
+    },
+    {
+      "path": "src/game/wardrobe/rules.ts",
+      "bytes": 4867,
+      "sha256": "1f8bcbd76da268032f0f33dccf8318d218086679cb4aaf384581ec1f7854780d"
+    },
+    {
+      "path": "src/scene/avatar-look.ts",
+      "bytes": 7467,
+      "sha256": "cf65f259386708d80be763e0a068e1e767433a73978fd30a2fbf7b2bbd80c257"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-female.glb",
+      "bytes": 132296,
+      "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-male.glb",
+      "bytes": 133756,
+      "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686"
+    },
+    {
+      "path": "src/scene/body/assets/clip-pack.glb",
+      "bytes": 338060,
+      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+    },
+    {
+      "path": "src/scene/body/poses.ts",
+      "bytes": 2415,
+      "sha256": "7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e"
+    },
+    {
+      "path": "src/scene/body/skinned.ts",
+      "bytes": 24451,
+      "sha256": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb"
+    },
+    {
+      "path": "src/scene/kit.ts",
+      "bytes": 5238,
+      "sha256": "c1d88627e7c4c7a9418c28f3e716215465e6c9fced1c4b85c5e44a4c751b064a"
+    },
+    {
+      "path": "src/scene/wardrobe/geometry.ts",
+      "bytes": 49067,
+      "sha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec"
+    },
+    {
+      "path": "src/scene/wardrobe/renderer.ts",
+      "bytes": 11138,
+      "sha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/live-motion-cdp-review-protocol.md",
+      "bytes": 3529,
+      "sha256": "6ca35637d17e73aaa98ceeb7974603fb9bf1a10309238fb636d1120c1184959b"
+    }
+  ]
+}

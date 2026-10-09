@@ -1,0 +1,37 @@
+name: Market LOD v8 live-walk viewer package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v8-live-walk-package
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact v8 source recipe
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 968416353ab00473ea46ce08f386765f4fae2aaab7e268da64ddeada5bf477a2
+        run: node evidence/graphics-loop/crowd-lod-market-v8/verify-source-snapshot.mjs "$EXPECTED_SOURCE_MANIFEST_SHA256"
+      - name: Install exact lockfile dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package pinned viewer with bounded Node heap
+        run: timeout 120s node --max-old-space-size=96 evidence/graphics-loop/crowd-lod-market-v8/prepare-market-gpu-v8.mjs
+      - name: Upload static viewer package for separate review
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v8-live-walk-static-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/static-fixture-market-gpu-v8/**
+          if-no-files-found: error

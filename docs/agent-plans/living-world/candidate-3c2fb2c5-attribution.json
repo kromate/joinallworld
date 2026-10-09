@@ -1,0 +1,71 @@
+{
+  "recordedAt": "2026-10-09T15:29:57Z",
+  "sourceSha": "3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6",
+  "scope": "immutable source attribution diagnostic; not compiler, test, native, staging or release acceptance",
+  "build": {
+    "node": "24.19.0",
+    "vite": "7.3.6",
+    "exitCode": 0,
+    "elapsedSeconds": 37.33,
+    "modules": 2067,
+    "heapMiB": 1536,
+    "minifierWorkers": 1,
+    "originalSession": 17437,
+    "originalPids": [
+      1298,
+      1308
+    ],
+    "pidsIndependentlyAbsent": true
+  },
+  "firstPaintAllFiles": {
+    "fileCount": 5,
+    "raw": 101794,
+    "gzip": 40053,
+    "brotli": 35693,
+    "warning": "raw/gzip include HTML and CSS; do not compare against JS-only caps"
+  },
+  "largestStartup": {
+    "city": "Lagos",
+    "citiesMeasured": 45,
+    "files": 28,
+    "rawJs": 616685,
+    "gzipJs": 223543,
+    "wholeClosureBrotli": 195867,
+    "rawJsCap": 615000,
+    "gzipJsCap": 223000,
+    "wholeClosureBrotliCap": 195600,
+    "overage": {
+      "rawJs": 1685,
+      "gzipJs": 543,
+      "brotli": 267
+    }
+  },
+  "artifacts": {
+    "report.json": {
+      "path": "/tmp/living-world-attribution-3c2-ElBjvN/node24/report.json",
+      "sha256": "58e27cc725fad0488d4a7a82764ab4cb0f4f48a31e6b2b4a41437611195283de",
+      "bytes": 100490
+    },
+    "build.log": {
+      "path": "/tmp/living-world-attribution-3c2-ElBjvN/node24/build.log",
+      "sha256": "907568937071630eba48de2470f8a005c418deeeff7852b579a61979c7ed7519",
+      "bytes": 83149
+    },
+    "output.json": {
+      "path": "/tmp/living-world-attribution-3c2-ElBjvN/node24/output.json",
+      "sha256": "8749d6d2dd94e06594f7d6609ce2a354edf0cca4bc7f7505ff0079018b883381",
+      "bytes": 1424007
+    }
+  },
+  "attributionLimit": "Emitted chunk module records omit removed SFC wrapper nodes. Naive static reachability does not prove modules unnecessary; renderedLength is a pre-minifier estimate.",
+  "liveHealth": {
+    "checkedAt": "2026-10-09T15:29:57Z",
+    "ok": true,
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791559798169,
+    "scope": "health only; no new gameplay or saved-progress continuity proof"
+  },
+  "releaseAccepted": false,
+  "goalStatus": "active",
+  "nextAction": "Integration completes exclusive source repairs and measured startup reduction, freezes next SHA, then compiler/unchanged caps/exhaustive partitioned Node22/24 and Worker checks; verified native desktop/mobile and exact sealed staging precede WORLD release and live continuity."
+}

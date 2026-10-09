@@ -1,0 +1,130 @@
+{
+  "status": "pass",
+  "source": {
+    "bodySha256": "9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd",
+    "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+    "bridgeSha256": "41a35d893a11ff4af9441cf8f19b523e57168df4d006e80f45cb3dadcf7e458f",
+    "checkerSha256": "e47336ef899f717472722e85216f45e11c1bfad430db7c5e8430332c4efee0e0"
+  },
+  "records": [
+    {
+      "family": "man",
+      "seedKey": "look-bridge-man-fixed-seed",
+      "rejected": [
+        "body",
+        "hair",
+        "outfit",
+        "fabric",
+        "accessories",
+        "wearables",
+        "ageAppearance",
+        "build",
+        "height"
+      ],
+      "acceptedFields": [
+        "face",
+        "expression",
+        "skin",
+        "outfitColor",
+        "bottomsColor",
+        "hairColor"
+      ],
+      "identityMorphBefore": {
+        "oval": 0.5799999833106995,
+        "round": 0
+      },
+      "identityMorphAfter": {
+        "oval": 0,
+        "round": 0.7200000286102295
+      },
+      "skinColorBefore": [
+        0.19461783043107173,
+        0.06847816983662762,
+        0.025186859622305935
+      ],
+      "skinColorAfter": [
+        0.5840784178830671,
+        0.2704977910022518,
+        0.12213877222015301
+      ],
+      "presentationColors": {
+        "shirt": "#c9423a",
+        "trousers": "#8055c2",
+        "hair": "#5a3a26"
+      },
+      "calls": {
+        "identityCalls": 1,
+        "expressionCalls": 1,
+        "skinCalls": 1,
+        "paletteCalls": 1
+      }
+    },
+    {
+      "family": "woman",
+      "seedKey": "look-bridge-woman-fixed-seed",
+      "rejected": [
+        "body",
+        "hair",
+        "outfit",
+        "fabric",
+        "accessories",
+        "wearables",
+        "ageAppearance",
+        "build",
+        "height"
+      ],
+      "acceptedFields": [
+        "face",
+        "expression",
+        "skin",
+        "outfitColor",
+        "bottomsColor",
+        "hairColor"
+      ],
+      "identityMorphBefore": {
+        "oval": 0.5799999833106995,
+        "round": 0
+      },
+      "identityMorphAfter": {
+        "oval": 0,
+        "round": 0.7200000286102295
+      },
+      "skinColorBefore": [
+        0.19461783043107173,
+        0.06847816983662762,
+        0.025186859622305935
+      ],
+      "skinColorAfter": [
+        0.5840784178830671,
+        0.2704977910022518,
+        0.12213877222015301
+      ],
+      "presentationColors": {
+        "shirt": "#c9423a",
+        "trousers": "#8055c2",
+        "hair": "#5a3a26"
+      },
+      "calls": {
+        "identityCalls": 1,
+        "expressionCalls": 1,
+        "skinCalls": 1,
+        "paletteCalls": 1
+      }
+    }
+  ],
+  "checks": {
+    "actualCharacterUpdateIdentity": true,
+    "faceExpressionSkinAndPaletteUpdates": true,
+    "preparedBodyMismatchRefused": true,
+    "structuralChangesRejectedBeforeAnyMutation": true,
+    "exactSeedEnforced": true,
+    "incompleteLookRejected": true,
+    "deadPresentationRejectedBeforeMutation": true,
+    "kitCleanup": true
+  },
+  "limitations": [
+    "The check uses real authored GLB body morphs and materials; skin and presentation setter ports are instrumented adapters, not the texture-backed browser presentation implementation.",
+    "No render, asset swap, different outfit, fabric, hairstyle, accessory, wearable, height, build, or age change is supported by this bridge.",
+    "Preflight rejection is mutation-free. An arbitrary port throwing after commit begins is not claimed to be rolled back."
+  ]
+}

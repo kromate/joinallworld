@@ -29,15 +29,15 @@ const ANGLES: Readonly<Record<NativeHandMode, Readonly<Record<Digit, readonly [n
   relaxed: Object.freeze({
     Thumb: [0.07, 0.10, 0.07], Index: [0.10, 0.14, 0.10], Middle: [0.12, 0.16, 0.12],
     Ring: [0.14, 0.17, 0.13], Pinky: [0.16, 0.18, 0.14],
-  }),
+  } as const),
   walk: Object.freeze({
     Thumb: [0.09, 0.12, 0.08], Index: [0.12, 0.17, 0.12], Middle: [0.14, 0.19, 0.14],
     Ring: [0.16, 0.20, 0.15], Pinky: [0.18, 0.21, 0.16],
-  }),
+  } as const),
   grip: Object.freeze({
     Thumb: [0.28, 0.48, 0.32], Index: [0.54, 0.78, 0.58], Middle: [0.61, 0.86, 0.66],
     Ring: [0.67, 0.91, 0.70], Pinky: [0.72, 0.94, 0.72],
-  }),
+  } as const),
 });
 
 function needBone(root: THREE.Group, name: string): THREE.Bone {

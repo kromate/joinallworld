@@ -8,8 +8,12 @@ import type { CompleteCharacterKit } from './rig.ts';
 
 const sourceJointNames = ['pelvis', 'spine_01', 'spine_02', 'spine_03', 'neck_01', 'Head', 'clavicle_l', 'upperarm_l', 'lowerarm_l', 'hand_l', 'clavicle_r', 'upperarm_r', 'lowerarm_r', 'hand_r', 'thigh_l', 'calf_l', 'foot_l', 'ball_l', 'thigh_r', 'calf_r', 'foot_r', 'ball_r'];
 
+const kitAssets = new WeakMap<Kit, CompleteCharacterKit>();
+
 /** Own the two immutable templates once per comparison Kit. Actors own only their clones. */
 export function completeCharacterKit(kit: Kit): CompleteCharacterKit {
+  const existing=kitAssets.get(kit);
+  if(existing)return existing;
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   const ownedRoots = new Set<THREE.Group>();
   const ownedSkeletons = new Set<THREE.Skeleton>();
@@ -43,12 +47,12 @@ export function completeCharacterKit(kit: Kit): CompleteCharacterKit {
     for (const skeleton of ownedSkeletons) skeleton.dispose();
     ownedRoots.clear(); ownedSkeletons.clear();
   });
-  return {
+  const result:CompleteCharacterKit = {
     onDispose: callback => kit.onDispose(callback),
     authoredCharacterAssets: {
       async loadTemplate() {
         if (closed) throw new Error('Complete character assets were disposed');
-        template ??= load(authoredUrl);
+        template ??= load(authoredUrl).catch((error: unknown)=>{template=undefined;throw error;});
         return (await template).scene;
       },
       loadMotionRig() {
@@ -64,9 +68,11 @@ export function completeCharacterKit(kit: Kit): CompleteCharacterKit {
           ownedSkeletons.add(skeleton);
           const root = Object.assign(gltf.scene, {skeleton});
           return {root, clips: gltf.animations};
-        });
+        }).catch((error: unknown)=>{motion=undefined;throw error;});
         return motion;
       },
     },
   };
+  kitAssets.set(kit,result);
+  return result;
 }

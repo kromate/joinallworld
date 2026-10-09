@@ -74,7 +74,11 @@ try {
       await evaluate('window.characterReview.sample(.4, -.2)');
       await capture(body + '-face-' + expression);
     }
-    await evaluate("window.characterReview.set({expression:'talk',pose:'walk',focus:'body'})");
+    if(body==='woman')for(const hairMode of ['singlepass','cutout']){
+      await evaluate(`window.characterReview.set(${JSON.stringify({hairMode,expression:'neutral',focus:'head'})})`);
+      await evaluate('window.characterReview.sample(.4,-.2)');await capture('woman-hair-'+hairMode);
+    }
+    await evaluate("window.characterReview.set({hairMode:'source',expression:'talk',pose:'walk',focus:'body'})");
     await evaluate('window.characterReview.sample(0,-.2)');
     await evaluate(`(() => {
       const stream=document.querySelector('#canvas').captureStream(24);

@@ -54,7 +54,7 @@ const seatLegs=Array.from({length:4},()=>new THREE.Mesh(new THREE.BoxGeometry(.0
 seatLegs.forEach(leg=>seatFixture.add(leg));scenes[1]!.add(seatFixture);
 let footwear:Awaited<ReturnType<typeof applyAuthoredFootwear>>|null=null;
 let hands:ReturnType<typeof createNativeHandPoseController>|null=null;
-let state={body:'woman',expression:'grin',pose:'idle',focus:'body'};
+let state={body:'woman',expression:'grin',pose:'idle',focus:'body',hairMode:'source'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
 function fitAuthoredHeight(object:THREE.Group){
@@ -93,6 +93,14 @@ function draw(){
       seatBack.position.set(0,top/scale+.25,-.34);
       seatLegs.forEach((leg,i)=>{leg.scale.y=(top-.06*scale)/scale;leg.position.set(i%2?.23:-.23,(top-.06*scale)/2/scale,i<2?.14:-.30);});
     }
+    const hairMesh=candidate.object.getObjectByName(`Authored hair ${state.body==='woman'?'afro01':'short02'}`) as THREE.SkinnedMesh|undefined;
+    if(hairMesh&&!Array.isArray(hairMesh.material)){
+      const material=hairMesh.material as THREE.MeshStandardMaterial,cutout=state.hairMode==='cutout';
+      const alphaTest=cutout?.5:0;
+      if(material.transparent===cutout||material.alphaTest!==alphaTest)material.needsUpdate=true;
+      material.transparent=!cutout;material.depthWrite=cutout;material.alphaTest=alphaTest;
+      material.forceSinglePass=state.hairMode!=='source';
+    }
     hands?.apply(state.pose==='walk'?'walk':['cook','eat','drink'].includes(state.pose)?'grip':'relaxed',seconds);
     candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);
   }
@@ -112,7 +120,7 @@ function draw(){
 }
 async function set(next:Partial<typeof state>){
   const previous=state;state={...state,...next};
-  for(const key of['body','expression','pose','focus']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
+  for(const key of['body','expression','pose','focus','hairMode']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
   const seed='complete-authored-human';
   const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body){
@@ -137,7 +145,7 @@ async function set(next:Partial<typeof state>){
   }else baseline!.wear(look,seed);
   seconds=0;draw();
 }
-for(const key of['body','expression','pose','focus']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
+for(const key of['body','expression','pose','focus','hairMode']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
 document.querySelector('#turn')!.addEventListener('click',()=>{yaw+=Math.PI/2;draw();});
 document.querySelector('#play')!.addEventListener('click',()=>{
   if(running)return;running=true;frames=[];const start=performance.now();

@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "source": {
+    "bodySha256": "9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd",
+    "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "codePins": {
+    "facadeSha256": "a852715ee60c033382ee3072b0ad37223fa549487ad293cc2fb9b3c36a83fdd4",
+    "nativeActionsSha256": "ff9e2ab0f98400dc855f1b884b7f756ff71b864d207124adb7b9ea1331dfcad5",
+    "rigSha256": "b0c4c9beb5e6691cbf33efc61fb289f706bac774c99510414d877c527f5e6d78",
+    "checkerSha256": "99e3c67af80a64238b2f513bda247dd3a7c8a35dae91b74eda6c516363829be6"
+  },
+  "actors": [
+    {
+      "family": "man",
+      "standingHeight": 1.693811529132779,
+      "repeatedFitDelta": 0,
+      "rigMeshes": 4,
+      "triangles": 27676
+    },
+    {
+      "family": "woman",
+      "standingHeight": 1.5576111137807078,
+      "repeatedFitDelta": 0,
+      "rigMeshes": 4,
+      "triangles": 27676
+    }
+  ],
+  "checks": {
+    "actualMaleFemaleGLTF": true,
+    "actualRigBonesAndLegacyLocatorAliases": true,
+    "immutableLookDescriptor": true,
+    "repeatedFitStableUnderParentAndWrapperTransforms": true,
+    "invalidSupportDoesNotSampleRig": true,
+    "unsupportedPoseAndLookRejectWithoutFallback": true,
+    "independentActorSkeletons": true,
+    "kitDisposedAndRepeatedDispose": true,
+    "postDisposeMethodsReject": true
+  },
+  "limitations": [
+    "Image-free CPU geometry and pose check only; no rendering or face/hair/clothing visual acceptance.",
+    "The look-support callback in this check admits only casual/lowcut/plain/no-accessory looks; it is a test policy, not production coverage.",
+    "No general same-actor lookBridge is implemented, so skin/body-shape/outfit updates are correctly unavailable here.",
+    "The facade is not a SkinnedBody replacement and is not routed into creator/player/NPC scenes."
+  ]
+}

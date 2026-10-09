@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v14]
+    branches: [codex/graphics-complete-authored-body-v15]
 permissions:
   contents: read
 jobs:
@@ -39,6 +39,11 @@ jobs:
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-footwear/presentation-check.mjs > /tmp/footwear-check.log
           node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/skin-material-check.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/hair-palette-check.mjs
+      - name: Check native look bridge and runtime resource contracts
+        run: |
+          node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-look-bridge-check.mjs > /tmp/look-bridge.log
+          node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/runtime-facade-check.mjs > /tmp/runtime-facade.log
+          node --max-old-space-size=24 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/assets-cache-check.mjs
       - name: Build complete human comparison
         run: node --max-old-space-size=192 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
       - name: Capture real whole-body poses and expressions

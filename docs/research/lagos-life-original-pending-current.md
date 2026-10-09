@@ -1,117 +1,54 @@
-# Original-launch current continuation queue
+# Original-launch final continuation queue
 
-9 October 2026, after 110 completed scheduled branch pages and 601 captured descendant-inclusive replies. This replaces the first 20 snapshot for continuation; it is not a count of unread comments. The next60 attempt completed 50 pages before X stopped loading. No account workaround or repeated retries followed. See [exact evidence](lagos-life-original-launch-next60-2026-10-09.md). The separate city 129 queue is unchanged.
+9 October 2026, user-requested handoff. Capture739 distinct descendant-inclusive replies;254 scheduled page traversals. Six newly discovered branch pages remain. Thirteen of28 residual URLs received scoped observations;15 were not revisited. This ledger does not mean those trees exhausted. Root sort offers Relevant, Recent, Likes; no Recent sweep was performed. [Final scoped report](lagos-life-original-scoped-final-2026-10-09.md) supersedes the older unscoped loading interpretation.
 
-## Known pending branch pages
+The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and58 image-status queue remain separate. Known long-text queue is empty.
 
-1. [Reply branch](https://x.com/Crystal28974295/status/2105623377851691058)
-2. [Reply branch](https://x.com/OwenRayhamen/status/2105630512882831860)
-3. [Reply branch](https://x.com/el_shadda1/status/2106302518045356153)
-4. [Reply branch](https://x.com/NaijaSoftBoy/status/2105966890426462421)
-5. [Reply branch](https://x.com/HAMMAD_FAWY/status/2105748042100121917)
-6. [Reply branch](https://x.com/_oaraobari/status/2105673757495009646)
-7. [Reply branch](https://x.com/callmerhodah/status/2105707835501752823)
-8. [Reply branch](https://x.com/Habibibillionzz/status/2106723137555476981)
-9. [Reply branch](https://x.com/fortuneify22/status/2106293773286224129)
-10. [Reply branch](https://x.com/luvt0lu/status/2105674370366759027)
-11. [Reply branch](https://x.com/AYOMI40/status/2105646723854938278)
-12. [Reply branch](https://x.com/HIMzu0c/status/2106090624319451369)
-13. [Reply branch](https://x.com/hanish__/status/2106465240447684644)
-14. [Reply branch](https://x.com/MrSpackKing/status/2107139635524907248)
-15. [Reply branch](https://x.com/Summerlair1/status/2107044504184209539)
-16. [Reply branch](https://x.com/bwgreyarea/status/2106003273333301419)
-17. [Reply branch](https://x.com/thatnggarhodes/status/2106358222256783754)
-18. [Reply branch](https://x.com/Sandra__mo/status/2107032262575640828)
-19. [Reply branch](https://x.com/Big_briggs25/status/2106081338868572238)
-20. [Reply branch](https://x.com/X_mplary_Chris/status/2107709085978145269)
-21. [Reply branch](https://x.com/MemeRetire/status/2106544660470714754)
-22. [Reply branch](https://x.com/SokeyeA/status/2105742615144513619)
-23. [Reply branch](https://x.com/MhiztaLOEL/status/2106759793339768973)
-24. [Reply branch](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
-25. [Reply branch](https://x.com/l3ngman/status/2105789582239252711)
-26. [Reply branch](https://x.com/warboy_m/status/2106347394027885023)
-27. [Reply branch](https://x.com/potato_jpy/status/2106336269202493671)
-28. [Reply branch](https://x.com/boysammy0/status/2106009592299987259)
-29. [Reply branch](https://x.com/love4odin/status/2105679919682572292)
-30. [Reply branch](https://x.com/Uno_dewanted1/status/2107078199834243451)
-31. [Reply branch](https://x.com/Phayvourcore/status/2105791417989705753)
-32. [Reply branch](https://x.com/HelloMkay/status/2106519546781716501)
-33. [Reply branch](https://x.com/ola_is_realll/status/2106723123630330284)
-34. [Reply branch](https://x.com/preciousoma_/status/2105927295080788168)
-35. [Reply branch](https://x.com/tifezay001/status/2105736302377451945)
-36. [Reply branch](https://x.com/caspady1/status/2105765384540303372)
-37. [Reply branch](https://x.com/only1ochacho/status/2106454663335981391)
-38. [Reply branch](https://x.com/HeLoner/status/2105870087471427718)
-39. [Reply branch](https://x.com/is_ur_boi_Davis/status/2106206585823359205)
-40. [Reply branch](https://x.com/AmeenAyodeji/status/2106466476399923666)
-41. [Reply branch](https://x.com/missSLM4/status/2106645050583318933)
-42. [Reply branch](https://x.com/1girllikethat/status/2107042551253422501)
-43. [Reply branch](https://x.com/dickshawnharry/status/2106440060551987460)
-44. [Reply branch](https://x.com/visionbyangelic/status/2105784716435861622)
-45. [Reply branch](https://x.com/laolu_afolabi/status/2106481277071483321)
-46. [Reply branch](https://x.com/iam_Haitee/status/2105939663873601539)
-47. [Reply branch](https://x.com/Muayo_Mikun/status/2105658658998657468)
-48. [Reply branch](https://x.com/W3bstax/status/2107056738642137103)
-49. [Reply branch](https://x.com/sharrscore/status/2107278827496132708)
-50. [Reply branch](https://x.com/tundelawal01/status/2106135906277101754)
-51. [Reply branch](https://x.com/onye_penils/status/2106208102995447880)
-52. [Reply branch](https://x.com/zabell_aa/status/2106699371093848066)
-53. [Reply branch](https://x.com/Assured_mili/status/2106038786501075033)
-54. [Reply branch](https://x.com/Samsondamian_/status/2106416925312000421)
-55. [Reply branch](https://x.com/real__samsmile/status/2106694391871979537)
-56. [Reply branch](https://x.com/improspercee/status/2106923351469928721)
-57. [Reply branch](https://x.com/sisi_maradona/status/2105654490569322738)
-58. [Reply branch](https://x.com/linux_mode/status/2105716917025538312)
-59. [Reply branch](https://x.com/caspady1/status/2105728813766414397)
-60. [Reply branch](https://x.com/Razzie_Dml/status/2105697105222287390)
-61. [Reply branch](https://x.com/Deking423206/status/2105918415122665945)
-62. [Reply branch](https://x.com/zaza_IBE/status/2106922887198503336)
-63. [Reply branch](https://x.com/sexyhybridangel/status/2105964529972908507)
-64. [Reply branch](https://x.com/Diamond_PGX/status/2105971486653636615)
-65. [Reply branch](https://x.com/mayeshimself/status/2106108161320997030)
-66. [Reply branch](https://x.com/Russia_dot_Z/status/2106286819562094705)
-67. [Reply branch](https://x.com/IamnotaNigerian/status/2106076743274467373)
-68. [Reply branch](https://x.com/u_joseph6/status/2107191617467691509)
-69. [Reply branch](https://x.com/10psdawg/status/2106080454197793179)
-70. [Reply branch](https://x.com/rulystweet/status/2106101713438736470)
-71. [Reply branch](https://x.com/_lumivibes/status/2106108138940227657)
-72. [Reply branch](https://x.com/OfcitsMuby/status/2106062643697955264)
-73. [Reply branch](https://x.com/NnaemekaMagnus/status/2106065825778069953)
-74. [Reply branch](https://x.com/Naviz_btw/status/2106131460679975248)
-75. [Reply branch](https://x.com/notyourtems/status/2106057912984502565)
-76. [Reply branch](https://x.com/Shalom_HeyEliy/status/2106058215708618828)
-77. [Reply branch](https://x.com/Zodiac_ya/status/2105992217340813741)
-78. [Reply branch](https://x.com/Ijwannafqck/status/2106001011693527341)
-79. [Reply branch](https://x.com/kurtseyban/status/2106344731672301787)
-80. [Reply branch](https://x.com/bejaay24/status/2105572515661689238)
-81. [Reply branch](https://x.com/badfendibarbie/status/2105731239428685900)
-82. [Reply branch](https://x.com/That_GreyManX/status/2107164794403143887)
-83. [Reply branch](https://x.com/chiomaerica7/status/2106341196985401408)
-84. [Reply branch](https://x.com/BabaRoyan/status/2106094675589292316)
-85. [Reply branch](https://x.com/Shalom_HeyEliy/status/2106083797544681880)
-86. [Reply branch](https://x.com/EzealaGodswill/status/2106025793591685461)
-87. [Reply branch](https://x.com/EzealaGodswill/status/2106039380041503062)
-88. [Reply branch](https://x.com/thetallmide23/status/2106126608369152310)
-89. [Reply branch](https://x.com/Iszy_08/status/2106013685739147731)
-90. [Reply branch](https://x.com/nimmylo_/status/2106012691663835361)
-91. [Reply branch](https://x.com/Shalom_HeyEliy/status/2106013077003231267)
-92. [Reply branch](https://x.com/JimmyToba/status/2106020367818993845)
-93. [Reply branch](https://x.com/Shalom_HeyEliy/status/2106021900170490008)
-94. [Reply branch](https://x.com/cha_nelllll/status/2106200378278617572)
-95. [Reply branch](https://x.com/Deyborhlarh/status/2106110011474677862)
-96. [Reply branch](https://x.com/Shalom_HeyEliy/status/2106123939227574744)
-97. [Reply branch](https://x.com/JayyyJamal/status/2107014766145446002)
-98. [Reply branch](https://x.com/Kwinkiki1/status/2105747779544875055)
-99. [Reply branch](https://x.com/iinii_oluwa/status/2105776153915170883)
-100. [Reply branch](https://x.com/badboylexxy/status/2105778047471206888)
-101. [Reply branch](https://x.com/Ewo_ma/status/2105881848626724953)
-102. [Reply branch](https://x.com/onokorame/status/2105579235729441233)
-103. [Reply branch](https://x.com/nxsii_xx/status/2105753266684330257)
-104. [Reply branch](https://x.com/madisaacson21/status/2106357780621762736)
+## Known untraversed branch pages
+
+1. [Reply branch](https://x.com/Zodiac_ya/status/2105998306551664879)
+2. [Reply branch](https://x.com/badfendibarbie/status/2105992079285403999)
+3. [Reply branch](https://x.com/iGiftGod/status/2106398395757998554)
+4. [Reply branch](https://x.com/Ewo_ma/status/2106002743303258511)
+5. [Reply branch](https://x.com/badboylexxy/status/2106008235618505116)
+6. [Reply branch](https://x.com/Kwinkiki1/status/2105751356820570313)
+
+## Residual URLs requiring scoped review
+
+Observed means a scoped recheck happened; it does not assert all descendants read. See the private scoped log and the public final report for interpretation.
+
+1. [Residual page](https://x.com/iam_Haitee/status/2105939663873601539) — scoped observation saved
+2. [Residual page](https://x.com/W3bstax/status/2107056738642137103) — scoped observation saved
+3. [Residual page](https://x.com/sharrscore/status/2107278827496132708) — scoped observation saved
+4. [Residual page](https://x.com/tundelawal01/status/2106135906277101754) — scoped observation saved
+5. [Residual page](https://x.com/onye_penils/status/2106208102995447880) — scoped observation saved
+6. [Residual page](https://x.com/zabell_aa/status/2106699371093848066) — scoped observation saved
+7. [Residual page](https://x.com/Assured_mili/status/2106038786501075033) — scoped observation saved
+8. [Residual page](https://x.com/Samsondamian_/status/2106416925312000421) — scoped observation saved
+9. [Residual page](https://x.com/real__samsmile/status/2106694391871979537) — scoped observation saved
+10. [Residual page](https://x.com/caspady1/status/2105728813766414397) — scoped observation saved
+11. [Residual page](https://x.com/Deking423206/status/2105918415122665945) — scoped observation saved
+12. [Residual page](https://x.com/mayeshimself/status/2106108161320997030) — scoped observation saved
+13. [Residual page](https://x.com/Russia_dot_Z/status/2106286819562094705) — scoped observation saved
+14. [Residual page](https://x.com/IamnotaNigerian/status/2106076743274467373) — not revisited
+15. [Residual page](https://x.com/u_joseph6/status/2107191617467691509) — not revisited
+16. [Residual page](https://x.com/10psdawg/status/2106080454197793179) — not revisited
+17. [Residual page](https://x.com/Shalom_HeyEliy/status/2106083797544681880) — not revisited
+18. [Residual page](https://x.com/cha_nelllll/status/2106200378278617572) — not revisited
+19. [Residual page](https://x.com/iinii_oluwa/status/2105776153915170883) — not revisited
+20. [Residual page](https://x.com/badboylexxy/status/2105778047471206888) — not revisited
+21. [Residual page](https://x.com/Ewo_ma/status/2105881848626724953) — not revisited
+22. [Residual page](https://x.com/onokorame/status/2105579235729441233) — not revisited
+23. [Residual page](https://x.com/OfficerJaney/status/2106092442160189441) — not revisited
+24. [Residual page](https://x.com/abbiedaniaa/status/2105708403188216276) — not revisited
+25. [Residual page](https://x.com/SarahBamideleb/status/2106126852704088425) — not revisited
+26. [Residual page](https://x.com/Big_briggs25/status/2106130826953904463) — not revisited
+27. [Residual page](https://x.com/UgwuagbaBenard/status/2105890311704551789) — not revisited
+28. [Residual page](https://x.com/MooBarh/status/2106519853024551077) — not revisited
 
 ## Image-bearing posts awaiting visual review
 
-Available text does not resolve these images. The Raaee loading witness shows X failing to open the image; it does not show the contents of that attachment.
+Text does not resolve unseen attachments. Private witnesses require privacy review before any publication.
 
 1. [Image-bearing post](https://x.com/Shalom_HeyEliy/status/2105553826543493397)
 2. [Image-bearing post](https://x.com/caspady1/status/2105641326708707466)
@@ -132,49 +69,42 @@ Available text does not resolve these images. The Raaee loading witness shows X 
 17. [Image-bearing post](https://x.com/jxs3phszn/status/2106377877230878739)
 18. [Image-bearing post](https://x.com/D_deevin/status/2106354578899820889)
 19. [Image-bearing post](https://x.com/da_luffy001/status/2106006005834453108)
-20. [Image-bearing post](https://x.com/NaijaSoftBoy/status/2105966890426462421)
-21. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105748042100121917)
-22. [Image-bearing post](https://x.com/cherryadevan/status/2106074360628793753)
-23. [Image-bearing post](https://x.com/Creek1606/status/2105985265512693832)
-24. [Image-bearing post](https://x.com/callmerhodah/status/2105707835501752823)
-25. [Image-bearing post](https://x.com/Beebulahi/status/2106462198503723288)
-26. [Image-bearing post](https://x.com/GibsonJohn_Dev/status/2106486599445831693)
-27. [Image-bearing post](https://x.com/Hundredd_C/status/2106022045788033071)
-28. [Image-bearing post](https://x.com/megumi855/status/2107087831977832479)
-29. [Image-bearing post](https://x.com/AYOMI40/status/2105646723854938278)
-30. [Image-bearing post](https://x.com/nkwummuo1of/status/2106752184104648803)
-31. [Image-bearing post](https://x.com/Mistersabii/status/2106116556581433814)
-32. [Image-bearing post](https://x.com/HIMzu0c/status/2106090624319451369)
-33. [Image-bearing post](https://x.com/cantbemac/status/2106142104133185640)
-34. [Image-bearing post](https://x.com/Big_briggs25/status/2106081338868572238)
-35. [Image-bearing post](https://x.com/X_mplary_Chris/status/2107709085978145269)
-36. [Image-bearing post](https://x.com/DePaytez/status/2107551079856541874)
-37. [Image-bearing post](https://x.com/SokeyeA/status/2105742615144513619)
-38. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348)
-39. [Image-bearing post](https://x.com/SokeyeA/status/2105939482226946210)
-40. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
-41. [Image-bearing post](https://x.com/notsegun/status/2105564411079581867)
-42. [Image-bearing post](https://x.com/Thefuvknfeather/status/2106310477139878253)
-43. [Image-bearing post](https://x.com/Tee__Elle/status/2105615986829521074)
-44. [Image-bearing post](https://x.com/tifezay001/status/2105736302377451945)
-45. [Image-bearing post](https://x.com/caspady1/status/2105612570946404377)
-46. [Image-bearing post](https://x.com/Pixeltale10/status/2106082724314267672)
-47. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
-48. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
-49. [Image-bearing post](https://x.com/iam_Haitee/status/2105939663873601539)
-50. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
-51. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
-52. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
-53. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
-54. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
-55. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
-56. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
-57. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
-58. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
-59. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
-60. [Image-bearing post](https://x.com/thetallmide23/status/2106126608369152310)
-61. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
-
-## Truncated text
-
-- [Open full message-input/jail-time feedback](https://x.com/EzealaGodswill/status/2106025793591685461)
+20. [Image-bearing post](https://x.com/cherryadevan/status/2106074360628793753)
+21. [Image-bearing post](https://x.com/Creek1606/status/2105985265512693832)
+22. [Image-bearing post](https://x.com/callmerhodah/status/2105707835501752823)
+23. [Image-bearing post](https://x.com/Beebulahi/status/2106462198503723288)
+24. [Image-bearing post](https://x.com/GibsonJohn_Dev/status/2106486599445831693)
+25. [Image-bearing post](https://x.com/Hundredd_C/status/2106022045788033071)
+26. [Image-bearing post](https://x.com/megumi855/status/2107087831977832479)
+27. [Image-bearing post](https://x.com/nkwummuo1of/status/2106752184104648803)
+28. [Image-bearing post](https://x.com/Mistersabii/status/2106116556581433814)
+29. [Image-bearing post](https://x.com/HIMzu0c/status/2106090624319451369)
+30. [Image-bearing post](https://x.com/cantbemac/status/2106142104133185640)
+31. [Image-bearing post](https://x.com/Big_briggs25/status/2106081338868572238)
+32. [Image-bearing post](https://x.com/X_mplary_Chris/status/2107709085978145269)
+33. [Image-bearing post](https://x.com/DePaytez/status/2107551079856541874)
+34. [Image-bearing post](https://x.com/SokeyeA/status/2105742615144513619)
+35. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348)
+36. [Image-bearing post](https://x.com/SokeyeA/status/2105939482226946210)
+37. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
+38. [Image-bearing post](https://x.com/notsegun/status/2105564411079581867)
+39. [Image-bearing post](https://x.com/Thefuvknfeather/status/2106310477139878253)
+40. [Image-bearing post](https://x.com/Tee__Elle/status/2105615986829521074)
+41. [Image-bearing post](https://x.com/tifezay001/status/2105736302377451945)
+42. [Image-bearing post](https://x.com/caspady1/status/2105612570946404377)
+43. [Image-bearing post](https://x.com/Pixeltale10/status/2106082724314267672)
+44. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
+45. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
+46. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
+47. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
+48. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
+49. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
+50. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
+51. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
+52. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
+53. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
+54. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
+55. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
+56. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
+57. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
+58. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)

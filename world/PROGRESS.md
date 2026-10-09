@@ -50,7 +50,14 @@ are unchanged; no new compiler/game build or runtime upload is claimed.
 All root test/verifier handles are terminal. Local work followed explicit
 LIVING/GRAPHICS handoffs with heavy1,128MiB Node and96MiB registry workers. Pressure
 continues alternating NORMAL/WARNING with paging; no concurrency/cap expansion.
-Source commit, clean-source policy and main synchronization follow this checkpoint.
+Source commit **2f82acb6e7b3ef3a3be9244850015e217af4d202** passes all **five exact
+clean-source release-policy tests**, terminal56073 exit0. Owned Git archive is
+140,503,040 bytes / 133,972,062 logical bytes / 8,576 members, below unchanged
+256MiB / 10,000-member bounds; owned temporary archive/checkout is removed.
+Receipt: `feature-index-admission-clean-policy-v1.{tap,stderr,json}`. Total
+**220 focused checks** (192 Python + 23 guarded engine + five source policy).
+This is committed-source policy, not a new compiler/build or runtime upload.
+Main synchronization follows this acceptance checkpoint.
 
 **Next:** persistent capture job/attempt/input ownership and frozen campaign
 observation/completion fences, then independent raw/index ordinal audit and

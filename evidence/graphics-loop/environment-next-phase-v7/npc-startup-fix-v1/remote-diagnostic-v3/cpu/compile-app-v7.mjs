@@ -139,7 +139,7 @@ for (const { from, specifier } of cssRefs) {
   const target = specifier.startsWith('/') ? path.posix.normalize(specifier.slice(1)) : path.posix.normalize(path.posix.join(path.posix.dirname(from), specifier))
   if (!outputRel.has(target)) throw new Error(`Unresolved CSS runtime reference: ${from} -> ${specifier} (${target})`)
 }
-if (hasStylesheet && !outputRel.has('app/viewer.css')) throw new Error('HTML stylesheet link target was not emitted')
+if (cssOutput && !outputRel.has(cssOutput)) throw new Error(`HTML stylesheet link target was not emitted: ${cssOutput}`)
 const record = {
   schema: 'environment-next-phase-v7-app-record/2', status: 'APPLICATION_COMPILED', sourcePinsSha256, entryOutput, htmlEntry: `./${entryOutput}`,
   consumedInputs, externalSpecifiers: [...external].sort(), importMap, importClosureVerified: true,

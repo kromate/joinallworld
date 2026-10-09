@@ -66,8 +66,13 @@ Evidence: `feature-index-capture-focused-v{2,3}.{stdout,stderr}`,
 `feature-index-capture-all-v1.{stdout,stderr}`, `feature-index-capture-{actual,
 engine,source-acceptance,tooling-manifest}-v1.json`,
 `feature-index-capture-acceptance-v1.{stdout,stderr}` and
-`feature-index-capture-typecheck-v1.{stdout,stderr}`. Source commit, exact committed
-archive policy and main synchronization follow this checkpoint.
+`feature-index-capture-typecheck-v1.{stdout,stderr}`. Source commit **a35bec9ed820220a2861e1c2fd57dcb6b1dfa366** passes allfive exact
+committed-source release-policy checks, terminal82844 exit0:140,605,440archive
+bytes/134,060,985logical bytes/8,584members, below unchanged256MiB/10,000bounds.
+Owned temporary source archive/checkout is removed. Receipt:
+`feature-index-capture-clean-policy-v1.{tap,stderr,json}`. Total **237 focused
+checks** (209Python+23engine+fivepolicy), plus fresh full World TypeScript.
+Main synchronization follows this accepted source milestone.
 
 **Next:** validate frozen campaign/grid query membership, bind atomic index
 observations and fence campaign completion with the current claim token after

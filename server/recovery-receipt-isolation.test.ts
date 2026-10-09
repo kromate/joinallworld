@@ -85,10 +85,10 @@ const count = (list: Held[], kind: string) => list.filter((item) => item.kind ==
 const holds = (list: Held[], who: Who, id: string) => list.some((item) => item.owner === who.id && item.id === id);
 
 test('the light class contains only the explicitly approved non-money operations', () => {
-  // The published Family, message editing, trust and real-value metadata routes use the
+  // The published Family, message editing and pinning, trust and real-value metadata routes use the
   // same isolated allowance. Transfers, rewards and unknown kinds remain in the money class.
   assert.deepEqual([...LIGHT_KINDS], [
-    'interact', 'message.update', 'family', 'trust.phone', 'trust.id.start',
+    'interact', 'message.update', 'message.pin', 'family', 'trust.phone', 'trust.id.start',
     'real-value.create', 'real-value.edit', 'real-value.close', 'real-value.report', 'real-value.event',
     'real-value.contact-request', 'real-value.contact-answer', 'real-value.contact-revoke',
   ]);

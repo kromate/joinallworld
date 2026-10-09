@@ -88,7 +88,7 @@ onBeforeUnmount(cancel)
       <button v-if="mine && !item.image && !item.voice && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('edit')">Edit</button>
       <button v-if="mine && !item.gift" type="button" role="menuitem" class="menu-item" @click="action('remove')">Delete for everyone</button>
       <button v-if="item.voice && !mine" type="button" role="menuitem" class="menu-item" @click="emit('reportVoice', item); hide()">Report voice note</button>
-      <button type="button" role="menuitem" class="menu-item is-quiet" @click="hide">Close</button>
+      <button type="button" role="menuitem" class="menu-item is-quiet" @click="hide(true)">Close</button>
     </div>
   </div>
 </template>

@@ -63,7 +63,7 @@ export function createMessagePins(options: {
     const code = 'code' in error && typeof error.code === 'string' ? error.code : ''
     return status === 401 || status === 403 || status === 404 || ['actor_changed', 'device_session_required', 'not_a_member', 'blocked', 'invalid_conversation'].includes(code)
   }
-  const authorityRefusal = (result: PinMutationResult): result is Extract<PinMutationResult, { ok: false }> => !result.ok && AUTHORITY_REFUSALS.has(result.code)
+  const authorityRefusal = (result: PinMutationResult): boolean => !result.ok && AUTHORITY_REFUSALS.has(result.code)
   function acceptAuthoritative(nextConv: Conversation, next: MessagePinsView): void {
     const nextKey = authorityKey(nextConv)
     if (!nextConv.members.some((member) => member.id === actor)) { contextKey = nextKey; invalidateAuthority('You are not in that conversation.'); return }

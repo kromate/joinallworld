@@ -18,6 +18,7 @@ const view = (revision: number, seqs: number[] = [], canManage = true, scope = '
 const history = (pins: MessagePinsView, conv = conversation()): HistoryResult => ({ ok: true, code: 'ok', conv, messages: [], read: 0, pins })
 const frame = (pins: MessagePinsView): MessagePinsChangedFrame => ({ type: 'message-pins', conv: conversation(), pins })
 const turn = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 0))
+const currentView = (pins: ReturnType<typeof createMessagePins>): MessagePinsView | null => pins.state.view
 
 function fixture() {
   let actor: string | null = 'a', id = 0
@@ -94,7 +95,7 @@ test('A to B to A and role removal synchronously fence every earlier load and mu
   oldMutation.resolve({ ok: true, code: 'updated', pins: view(2, [1]) }); await turn()
   assert.equal(f.pins.state.view, null)
   roleLoad.resolve(history(view(1, [], false), conversation('b'))); await turn()
-  assert.equal(f.pins.state.view?.canManage, false)
+  assert.equal(currentView(f.pins)?.canManage, false)
 })
 
 test('history for a new scope drops an ambiguous old-incarnation retry before showing the fresh projection', async () => {

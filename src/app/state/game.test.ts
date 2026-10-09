@@ -47,12 +47,14 @@ test('the store clears teaching display immediately during a held city switch an
   const waiting = new Promise<void>(resolve => { release = resolve })
   const started = new Promise<void>(resolve => { reached = resolve })
   const game = createGame({
-    fetch: async (path, init) => {
+    fetch: async (input, init) => {
+      const url = new URL(input instanceof Request ? input.url : String(input), 'http://game.test')
+      const path = `${url.pathname}${url.search}`
       if (path === '/api/life?city=ibadan' && holdSwitch) {
         holdSwitch = false
         reached()
         await waiting
-        return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
+        return Response.json({ error: 'server_busy', reason: 'Try again shortly.' }, { status: 503 })
       }
       const response = await server.fetch(path, init)
       if (path.startsWith('/api/life') || path === '/api/action') {
@@ -61,7 +63,7 @@ test('the store clears teaching display immediately during a held city switch an
           const life = body.state as LifeState
           body.state = { ...life, estate: { ...life.estate, city: 'ibadan' }, location: 'agodi-gardens' }
         }
-        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
+        return Response.json({ ...body, interactiveTeachingStarts: true }, { status: response.status, headers: response.headers })
       }
       return response
     },
@@ -100,21 +102,23 @@ test('a direct legacy-character switch clears display, blocks overlapping refres
   const successfulSwitchWait = new Promise<void>(resolve => { releaseSuccessfulSwitch = resolve })
   const successfulSwitchStarted = new Promise<void>(resolve => { successfulSwitchReached = resolve })
   const game = createGame({
-    fetch: async (path, init) => {
+    fetch: async (input, init) => {
+      const url = new URL(input instanceof Request ? input.url : String(input), 'http://game.test')
+      const path = `${url.pathname}${url.search}`
       if (path === '/api/characters/switch') {
         if (!refused) {
           reached()
           await waiting
           refused = true
-          return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
+          return Response.json({ error: 'server_busy', reason: 'Try again shortly.' }, { status: 503 })
         }
         if (holdSuccessfulSwitch) { holdSuccessfulSwitch = false; successfulSwitchReached(); await successfulSwitchWait }
-        return { ok: true, status: 200, json: async () => ({ ok: true, city: 'lagos' }) }
+        return Response.json({ ok: true, city: 'lagos' })
       }
       const response = await server.fetch(path, init)
       if (path.startsWith('/api/life')) {
         const body = await response.json() as Record<string, unknown>
-        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
+        return Response.json({ ...body, interactiveTeachingStarts: true }, { status: response.status, headers: response.headers })
       }
       return response
     },

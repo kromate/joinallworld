@@ -30,10 +30,11 @@ function conversationFrame(value: unknown): value is Conversation {
   return last === null || record(last) && Number.isSafeInteger(last.seq) && (last.from === null || playerRef(last.from)) && typeof last.body === 'string' && typeof last.at === 'number'
 }
 
-export function isMessagePinsFrame(frame: { type: string }): frame is MessagePinsChangedFrame {
-  if (frame.type !== 'message-pins' || !record(frame) || !conversationFrame(frame.conv) || !record(frame.pins)) return false
-  const view = frame.pins
+export function isMessagePinsFrame(frame: unknown): frame is MessagePinsChangedFrame {
+  if (!record(frame) || frame.type !== 'message-pins') return false
+  const conversation = frame.conv, view = frame.pins
+  if (!conversationFrame(conversation) || !record(view)) return false
   return typeof view.scope === 'string' && view.scope.length > 0 && view.scope.length <= 80 && Number.isSafeInteger(view.revision) && Number(view.revision) >= 0 &&
     typeof view.canManage === 'boolean' && Array.isArray(view.items) && view.items.length <= 3 &&
-    view.items.every((entry) => record(entry) && messageFrame(entry.message) && entry.message.conv === frame.conv.id)
+    view.items.every((entry: unknown) => record(entry) && messageFrame(entry.message) && entry.message.conv === conversation.id)
 }

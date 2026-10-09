@@ -15,7 +15,7 @@ import { civicTitle } from '../../../game/cities/terminology.ts'
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
-import type { Conversation, Message, SearchResult } from '../../../types/social.ts'
+import type { Conversation, Message, SearchResult, ThreadItem } from '../../../types/social.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
 import { call, cityId as socialCityId, discard, newClientId, onCallFrame, onSocketOpen, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -66,6 +66,7 @@ const growth = useGrowth()
 const pins = createMessagePins({ fetchJson: game.fetchJson, newId: () => game.newId(), actor: () => game.session.value?.id ?? null, connected: () => game.connected.value })
 const pinPreview = ref<number | null>(null)
 const previewedPin = computed(() => pins.state.view?.items.find((entry) => entry.message.seq === pinPreview.value)?.message ?? null)
+const isPinned = (item: ThreadItem): boolean => !isOutbox(item) && Boolean(pins.state.view?.items.some((entry) => entry.message.seq === item.seq))
 
 /**
  * The social client is reactive (useSocial), and it also calls api.refresh() on every change,
@@ -414,7 +415,7 @@ defineExpose({
 
         <PinnedMessages v-if="conv && pins.state.view" :pins="pins.state.view" :kind="conv.kind" :loading="pins.state.loading" :pending="pins.state.pending" :retryable="pins.state.retryable" :disabled="!connected" :error="pins.state.error" @open="(message) => { pinPreview = message?.seq ?? null }" @clear="pins.change({ clearAll: true })" @retry="pins.retryChange" @dismiss="pins.dismissRetry" />
         <div v-else-if="conv && (pins.state.loading || pins.state.error)" class="messages-note is-inset" :class="{ 'is-warn': pins.state.error }" :role="pins.state.error ? 'alert' : 'status'">
-          {{ pins.state.error || 'Loading pinned messages…' }} <button v-if="pins.state.error" type="button" class="messages-link" @click="pins.load">Try again</button>
+          {{ pins.state.error || 'Loading pinned messages…' }} <button v-if="pins.state.error" type="button" class="messages-link" @click="pins.load()">Try again</button>
         </div>
         <section v-if="previewedPin" class="messages-pin-preview" aria-label="Pinned message">
           <MessageBubble :item="previewedPin" :me-id="me.me.id" :group="isGroup" :head="true" :tail="true" :time="time(previewedPin.at)" :can-react="false" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(previewedPin))" :pinned="true" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" preview @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @player="openCard" @jump="jump" @report-voice="reportVoice" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
@@ -453,7 +454,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="Boolean(pins.state.view?.items.some((entry) => entry.message.seq === row.item.seq))" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="isPinned(row.item)" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>

@@ -68,7 +68,7 @@ test('shared message pins: DM members and group owners manage exact current proj
   await befriend(f, ada, bola);
 
   const made = await group(f, ada, 'Pin crew', [bola, chi]), gid = made.conv.id;
-  const lines = [];
+  const lines: Message[] = [];
   for (const body of ['one', 'two', 'three', 'four']) lines.push((await say(f, ada, gid, body)).message);
   let pins = defined((await get(f, `/api/social/conversations/${gid}`, ada)).pins);
   for (const line of lines.slice(0, 3)) {

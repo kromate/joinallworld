@@ -1,11 +1,13 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createHash, randomUUID } from 'node:crypto'
-import { mkdtemp, rm } from 'node:fs/promises'
+import { mkdtemp, rm, readFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { once } from 'node:events'
 import { createServer } from './server.ts'
+import { createStore } from './store.ts'
+import { flakyDisk } from './test-fixture.ts'
 import type { AllworldServer } from './server.ts'
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts'
 import { africaJourney, homewardJourney } from './testing/africaJourney.ts'
@@ -26,6 +28,7 @@ const ENV = {
 
 test('Node HTTP host: all five capital trips and cashless homeward journeys preserve original homes across restart', { timeout: 60000 }, async t => {
   const folder = await mkdtemp(join(tmpdir(), 'africa-capitals-node-'))
+  const disk = flakyDisk()
   let time = Date.now()
   let server: AllworldServer | undefined
   let base = ''
@@ -33,7 +36,8 @@ test('Node HTTP host: all five capital trips and cashless homeward journeys pres
   const key = await makeKey('africa-node-founder')
   const provider = fakeProvider([key])
   async function start(): Promise<void> {
-    server = await createServer({ dataDir: folder, now: () => time, env: ENV, telemetry: createServerTelemetry({ env: {}, now: () => time }), fetch: (url, init) => provider.fetch(url, init) })
+    const store = await createStore(folder, { io: disk.io })
+    server = await createServer({ store, dataDir: folder, now: () => time, env: ENV, telemetry: createServerTelemetry({ env: {}, now: () => time }), fetch: (url, init) => provider.fetch(url, init) })
     server.listen(0, '127.0.0.1')
     await once(server, 'listening')
     const address = server.address()
@@ -70,7 +74,55 @@ test('Node HTTP host: all five capital trips and cashless homeward journeys pres
   const founderMe = object(await (await request('/api/admin/me', undefined, founderCookie)).json())
   assert.equal(founderMe.level, 'root', 'fixture funding is authorized through the existing founder boundary')
 
+  const current = (): AllworldServer => { assert.ok(server); return server }
+  const keyOf = (device: JourneyDevice): string => {
+    const separator = device.cookie.indexOf('=')
+    assert.ok(separator > 0)
+    return device.cookie.slice(separator + 1)
+  }
   const host: AfricaJourneyHost = {
+    storageFaults: {
+      kinds: ['disk'],
+      failCommit: async kind => {
+        assert.equal(kind, 'disk')
+        await current().store.flush?.()
+        disk.fail = 'ENOSPC'
+      },
+      recoverCommit: async () => { disk.fail = null },
+      inspect: async (device, actionId) => {
+        await current().store.flush?.()
+        const bytes = await readFile(join(folder, 'devices.json'), 'utf8')
+        const database = object(JSON.parse(bytes))
+        const session = object(object(database.sessions)[keyOf(device)])
+        const effects = database.walletEffects
+        assert.ok(Array.isArray(effects))
+        const receipts = object(session.actions), receipt = receipts[actionId]
+        return { bytes, session: JSON.stringify(session), effects: JSON.stringify(effects.filter(entry => object(entry).publicId === device.id)),
+          hasReceipt: Object.hasOwn(receipts, actionId), receipt: receipt === undefined ? null : JSON.stringify(receipt) }
+      },
+      replaceLiabilityField: async (device, city, field, value) => current().store.transact(db => {
+        const session = db.sessions[keyOf(device)]
+        assert.ok(session)
+        const state = object(object(object(session.cities)[city]).state)
+        assert.equal(object(state.activeAction).kind, 'homeward')
+        const target = field === 'travel' ? state : object(state.travel)
+        const previous = target[field]
+        if (value === undefined) delete target[field]
+        else target[field] = value
+        return previous
+      }),
+      replaceTicketKey: async (device, city, key) => current().store.transact(db => {
+        const session = db.sessions[keyOf(device)]
+        assert.ok(session)
+        const state = object(object(object(session.cities)[city]).state)
+        const active = object(state.activeAction)
+        assert.equal(active.kind, 'homeward')
+        const ticket = object(active.ticket), previous = ticket.key
+        assert.ok(typeof previous === 'string')
+        ticket.key = key
+        return previous
+      }),
+    },
     now: () => time,
     request,
     elapse: async (_device: JourneyDevice, _city: string, ms: number) => { time += ms },

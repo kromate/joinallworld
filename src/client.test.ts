@@ -109,8 +109,32 @@ test('same-owner deferred campus cache stays masked until hydration after life r
   let release:()=>void=()=>{},calls=0;const waiting=new Promise<void>(done=>{release=done})
   const client=createClient({storage:{getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)},setTimeout:()=>0,clearTimeout:()=>{},loadCampus:()=>calls++===0?waiting:null,fetch:async path=>path==='/api/session'
     ?json(200,{session:{id:'public-a',name:'Ada',cities:['lagos']},serverTime:1000}):json(409,{error:'economy_unavailable'})})
+  const original = memory.get(STORAGE_KEY)
   assert.equal(await client.connect(),false);assert.equal(client.snapshotPhase,'unconfirmed');assert.notEqual(client.state.cash,4600)
+  assert.equal(memory.get(STORAGE_KEY), original, 'confirmation cannot replace unresolved raw cache with the preview')
   release();await Promise.resolve();assert.deepEqual([client.snapshotPhase,client.state.cash],['available',4600])
+})
+
+test('cached or answered unsupported homeward markers cannot become available or overwrite retry data', async () => {
+  // Malformed transport input only; this does not fund a character or certify an actual issued ticket.
+  const plain = createLife({ name: 'Ada', cash: 4600 })
+  const unsupported = { ...plain, activeAction: { kind: 'homeward', id: 'maiduguri', duration: 20, remaining: 20, ticket: { version: 2 } } }
+  const pendingAction = { sessionId: 'public-a', actionId: '1000:11111111-1111-4111-8111-111111111111', cityId: 'lagos', type: 'homeward.accept', payload: { quote: 'original-quote' } }
+  for (const cached of [true, false]) {
+    const raw = JSON.stringify({ version: 1, state: unsupported, ownerId: 'public-a', identity: { name: 'Ada' }, cityId: 'lagos', pendingAction })
+    const memory = new Map<string, string>(cached ? [[STORAGE_KEY, raw]] : [])
+    const client = createClient({ storage: { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) },
+      setTimeout: () => 0, clearTimeout: () => {}, fetch: async path => path === '/api/session'
+        ? json(200, { session: { id: 'public-a', name: 'Ada', cities: ['lagos'] }, serverTime: 1000 })
+        : cached ? json(500, { error: 'internal_error' }) : json(200, { state: unsupported, rev: 1, serverTime: 1000 }) })
+    assert.equal(await client.connect(), false, 'unsupported ticket data cannot be accepted as a successful connection')
+    assert.equal(client.snapshotPhase, 'unavailable')
+    if (cached) {
+      assert.equal(memory.get(STORAGE_KEY), raw, 'the original malformed copy is preserved for safe reconciliation')
+      assert.deepEqual(client.pendingAction, pendingAction, 'the original retry ID and quote are retained')
+    } else assert.equal(JSON.parse(memory.get(STORAGE_KEY) ?? '{}').state, undefined)
+    client.stop()
+  }
 })
 
 test('an older overlapping connect cannot replace the newer accepted session or snapshot', async () => {

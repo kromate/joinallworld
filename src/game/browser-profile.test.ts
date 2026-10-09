@@ -13,7 +13,8 @@ import { makeContext } from './util.ts';
 import { lagosTime } from './clock.ts';
 import { CAMPUS_SLICES, isFreshSlice, needsCampusRules } from '../campus/unilag/slices.ts';
 import { DEFAULT_LOOK } from './content/traits.ts';
-import { loadCityContent, registerCityForTest } from './cities/registry.ts';
+import { loadCityContent, registerCityForTest, linksFrom, isOpenCityId, cityRules, loadCityLinks } from './cities/registry.ts';
+import { planHomewardRoute } from './cities/homewardRoute.ts';
 import { jobFor } from './cities/runtime.ts';
 import { FICTIONAL_CITY_ID, FICTIONAL_NEIGHBOUR_CITY_ID, fictionalCity, fictionalNeighbourCity } from './cities/testing/fictionalCity.test-fixture.ts';
 import type { ActionBody } from '../types/actions.ts';
@@ -23,6 +24,8 @@ const HOOKS = `
 import { writeFileSync, writeSync } from 'node:fs';
 let failedTeachingImport = false;
 let teachingResolveCount = 0;
+let failedHomewardImport = false;
+let homewardResolveCount = 0;
 let hookTraceCount = 0;
 function hookTrace(event, data) {
   if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && hookTraceCount < 24) {
@@ -32,6 +35,19 @@ function hookTrace(event, data) {
 }
 export async function resolve(specifier, context, next) {
   let teachingState = false;
+  let homewardRules = false;
+  if (specifier.endsWith('homeward-rules.ts') && context.parentURL?.endsWith('/src/game/homeward-gate.ts')) {
+    homewardRules = true;
+    homewardResolveCount++;
+    const requestMarker = process.env.HOMEWARD_GATE_REQUEST_MARKER;
+    if (requestMarker) writeFileSync(requestMarker, String(homewardResolveCount));
+    if (process.env.HOMEWARD_GATE_FAIL_FIRST === '1' && !failedHomewardImport) {
+      failedHomewardImport = true;
+      const marker = process.env.HOMEWARD_GATE_FAIL_MARKER;
+      if (marker) writeFileSync(marker, 'failed once');
+      throw new Error('injected first homeward-rules resolution failure');
+    }
+  }
   if (specifier.endsWith('living-world/teaching-state.ts') && context.parentURL?.endsWith('/src/game/teaching-gate.ts')) {
     teachingState = true;
     teachingResolveCount++;
@@ -47,10 +63,30 @@ export async function resolve(specifier, context, next) {
   }
   const resolved = await next(specifier, context);
   if (teachingState) return { ...resolved, url: resolved.url + '?teaching-gate-fixture=' + teachingResolveCount, shortCircuit: true };
+  if (homewardRules) return { ...resolved, url: resolved.url + '?homeward-gate-fixture=' + homewardResolveCount, shortCircuit: true };
   return /\\/src\\/game\\/systems\\/index\\.ts$/.test(resolved.url) ? { ...resolved, url: resolved.url.replace(/index\\.ts$/, 'browser.ts'), shortCircuit: true } : resolved;
 }
 export async function load(url, context, next) {
   if (/\\/src\\/game\\/profile\\.ts$/.test(url)) return { format: 'module', source: 'export const PLAYS = false;\\nexport const LEFT_OUT = {};\\n', shortCircuit: true };
+  if (url.includes('?homeward-gate-fixture=')) {
+    const sourceUrl = url.slice(0, url.indexOf('?'));
+    const loaded = await next(sourceUrl, context);
+    const source = typeof loaded.source === 'string' ? loaded.source : Buffer.from(loaded.source).toString('utf8');
+    const barrier = [
+      "import { existsSync as __homewardExists, watch as __homewardWatch, writeFileSync as __homewardMark } from 'node:fs';",
+      "import { dirname as __homewardDirname } from 'node:path';",
+      "const __homewardTarget = process.env.HOMEWARD_GATE_BARRIER;",
+      "if (__homewardTarget && !__homewardExists(__homewardTarget)) await new Promise((resolve, reject) => {",
+      "  let watcher;",
+      "  const finish = (error) => { clearTimeout(timer); watcher?.close(); error ? reject(error) : resolve(); };",
+      "  const timer = setTimeout(() => finish(new Error('homeward gate barrier timed out')), 20000);",
+      "  watcher = __homewardWatch(__homewardDirname(__homewardTarget), () => { if (__homewardExists(__homewardTarget)) finish(); });",
+      "  const marker = process.env.HOMEWARD_GATE_EVAL_MARKER; if (marker) __homewardMark(marker, 'evaluation pending');",
+      "  if (__homewardExists(__homewardTarget)) finish();",
+      "});",
+    ].join('\\n') + '\\n';
+    return { ...loaded, source: barrier + source };
+  }
   if (url.includes('?teaching-gate-fixture=')) {
     const sourceUrl = url.slice(0, url.indexOf('?'));
     const loaded = await next(sourceUrl, context);
@@ -125,6 +161,161 @@ const waitForFile = (target, markerKind) => new Promise((resolve, reject) => {
 const awaitRequestMarker = async () => { await waitForFile(input.requestMarker, 'request'); probeTrace('request-seen', { mode: input.mode }); };
 const awaitEvaluationMarker = async () => { await waitForFile(input.evaluationMarker, 'evaluation'); probeTrace('evaluation-waiting', { mode: input.mode }); };
 const releaseGate = () => { writeFileSync(input.release, 'release'); probeTrace('release-created', { mode: input.mode }); };
+if (input.mode?.startsWith('homeward-')) {
+  const { homewardFor, readHomewardTicket } = await import('${url('./homeward-gate.ts')}');
+  const { loadLifeCities } = await import('${url('./cities/lifeCities.ts')}');
+  if (input.mode === 'homeward-idle') {
+    assert.equal(homewardFor(input.resident), null, 'a settled resident does not need route or ticket rules');
+    assert.equal(homewardFor(input.guest), null, 'a guest does not need route or ticket rules');
+    await loadLifeCities(input.resident, [input.resident.estate.city]);
+    await loadLifeCities(input.guest, [input.guest.estate.city]);
+    const { createClient } = await import('${url('../client.ts')}');
+    const storedFor = state => new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state, identity: { name: state.name }, cityId: state.estate.city, ownerId: 'public-idle' })]]);
+    const residentClient = createClient({ storage: { getItem: key => storedFor(input.resident).get(key) ?? null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+    const guestClient = createClient({ storage: { getItem: key => storedFor(input.guest).get(key) ?? null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+    for (const type of ['travel', 'civic.hunt-claim', 'invented-action']) {
+      const pendingAction = { sessionId: 'public-idle', actionId: '1000:11111111-1111-4111-8111-111111111111', cityId: input.resident.estate.city, type, payload: { id: 'library', mode: 'trek' } };
+      const cache = JSON.stringify({ version: 1, state: input.resident, ownerId: 'public-idle', identity: { name: 'Ada' }, cityId: input.resident.estate.city, pendingAction });
+      const pending = createClient({ storage: { getItem: () => cache, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
+      assert.deepEqual(pending.pendingAction, type === 'invented-action' ? null : pendingAction, 'protocol vocabulary survives omitted executable handlers; unknown types remain refused');
+      pending.stop();
+    }
+    assert.equal(viewLife(residentClient.state, { now: input.resident.t, cityId: input.resident.estate.city }).estate.ride.journey, null);
+    assert.equal(viewLife(guestClient.state, { now: input.guest.t, cityId: input.guest.estate.city }).estate.ride.journey, null);
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(existsSync(input.requestMarker), false, 'neither idle client nor its first view requests the homeward rules chunk');
+    residentClient.stop(); guestClient.stop();
+    process.stdout.write('homeward-idle-ok\\n'); process.exit(0);
+  }
+  const raw = input.snapshot;
+  await loadLifeCities(raw, [raw.estate.city]);
+  if (input.mode === 'homeward-retry-connect' || input.mode === 'homeward-newer') {
+    const { createClient } = await import('${url('../client.ts')}');
+    const stored = new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state: raw, identity: { name: 'Ada' }, cityId: raw.estate.city, ownerId: 'public-A', pendingAction: { sessionId: 'public-A', actionId: '1000:11111111-1111-4111-8111-111111111111', cityId: raw.estate.city, type: 'homeward.accept', payload: { quote: input.quote } } })]]);
+    let sessionReads = 0;
+    const client = createClient({ fetch: async path => {
+      if (path === '/api/session') {
+        const actorB = input.mode === 'homeward-newer' && sessionReads++ === 0;
+        return response(200, { session: { id: actorB ? 'public-B' : 'public-A', name: actorB ? 'Bola' : 'Ada', cities: [raw.estate.city] }, serverTime: input.now });
+      }
+      if (path === '/api/life?city=' + raw.estate.city) {
+        if (input.mode === 'homeward-newer' && sessionReads > 1) return response(500, { error: 'internal_error' });
+        return response(200, { state: input.mode === 'homeward-newer' ? input.plain : raw, rev: 8, serverTime: input.now });
+      }
+      throw new Error('unexpected request ' + path);
+    }, now: () => input.now, setTimeout: () => 0, clearTimeout: () => {}, randomUUID: () => '11111111-1111-4111-8111-111111111111', storage: { getItem: key => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) } });
+    assert.equal(client.state.activeAction, null, 'cached ticket stays hidden while rules are pending');
+    assert.ok(client.pendingAction, 'cached retry intent remains attached to the saved actor');
+    if (input.mode === 'homeward-retry-connect') {
+      await assert.rejects(homewardFor(raw), /injected first homeward-rules resolution failure/);
+      assert.equal(existsSync(input.failureMarker), true, 'the first homeward rules import failed deliberately');
+      assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
+      assert.deepEqual(JSON.parse(stored.get('joinallworld-life-v1')).state, raw, 'failed rules loading leaves the original cached ticket untouched');
+      assert.ok(client.pendingAction, 'a failed lazy import does not clear the cached retry intent');
+      const connecting = client.connect();
+      await awaitRequestMarker(); await awaitEvaluationMarker();
+      assert.equal(readFileSync(input.requestMarker, 'utf8'), '2');
+      const heldCache = JSON.parse(stored.get('joinallworld-life-v1'));
+      assert.deepEqual(heldCache.state, raw, 'an unresolved same-owner cache keeps the exact saved ticket');
+      assert.deepEqual(heldCache.pendingAction, client.pendingAction, 'an unresolved import does not replace the retry intent');
+      releaseGate();
+      const connected = await connecting;
+      assert.equal(connected, true, 'the same actor response retries the failed rules load');
+      assert.equal(client.state.activeAction?.kind, 'homeward');
+      assert.deepEqual(client.state.activeAction?.kind === 'homeward' ? client.state.activeAction.ticket : null, raw.activeAction.ticket);
+      assert.ok(client.pendingAction, 'same-owner pending intent survives the retry and accepted snapshot');
+      client.stop(); process.stdout.write('homeward-retry-connect-ok\\n'); process.exit(0);
+    }
+    const waiting = homewardFor(raw); assert.ok(waiting instanceof Promise);
+    await awaitRequestMarker(); await awaitEvaluationMarker();
+    assert.throws(() => readHomewardTicket(raw.activeAction, createLife(input.plain), { now: input.now, cityId: raw.estate.city }), /have not loaded/, 'the lazy reader refuses use before installation');
+    const connected = await client.connect();
+    assert.equal(connected, true, 'actor B response is accepted while actor A cache hydration is pending');
+    assert.equal(client.state.cash, input.plain.cash);
+    assert.equal(client.state.activeAction, null);
+    assert.equal(client.pendingAction, null, 'actor A pending action is cleared on the identity change');
+    assert.equal(await client.connect(), false, 'returning to actor A with a failed authoritative read stays unavailable');
+    assert.equal(client.session?.id, 'public-A');
+    assert.equal(client.snapshotPhase, 'unavailable');
+    releaseGate(); await waiting; await new Promise(resolve => setImmediate(resolve));
+    assert.equal(client.state.cash, input.plain.cash, 'A to B to A cannot revive the original pending actor A snapshot');
+    assert.equal(client.state.activeAction, null);
+    assert.equal(client.pendingAction, null);
+    const fencedCache = JSON.parse(stored.get('joinallworld-life-v1'));
+    assert.equal(fencedCache.state, undefined);
+    assert.equal(fencedCache.ownerId, undefined);
+    client.stop(); process.stdout.write('homeward-newer-ok\\n'); process.exit(0);
+  }
+  const waiting = homewardFor(raw); assert.ok(waiting instanceof Promise, 'a ticket or possible visitor requests rules before reconstruction');
+  if (input.mode === 'homeward-cache' || input.mode === 'homeward-visitor') {
+    const { createClient } = await import('${url('../client.ts')}');
+    const stored = new Map([['joinallworld-life-v1', JSON.stringify({ version: 1, state: raw, identity: { name: 'Ada' }, cityId: raw.estate.city, ownerId: 'public-A' })]]);
+    const client = createClient({ storage: { getItem: key => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) }, setTimeout: () => 0, clearTimeout: () => {} });
+    await awaitRequestMarker(); await awaitEvaluationMarker();
+    assert.equal(client.state.activeAction, null, 'ticket data is not exposed before its reader installs');
+    releaseGate(); await waiting; await new Promise(resolve => setImmediate(resolve));
+    if (input.mode === 'homeward-cache') {
+      assert.equal(client.state.cash, raw.cash);
+      assert.deepEqual(client.state.activeAction?.kind === 'homeward' ? client.state.activeAction.ticket : null, raw.activeAction.ticket);
+      assert.equal(client.state.travel.rideDebt, raw.travel.rideDebt);
+      for (const debt of [-1, '12000', 1.5, Number.MAX_SAFE_INTEGER + 1, 1000001, undefined]) {
+        const corrupt = structuredClone(raw);
+        if (debt === undefined) delete corrupt.travel;
+        else corrupt.travel.rideDebt = debt;
+        const cache = JSON.stringify({ version: 1, state: corrupt, ownerId: 'public-A', identity: { name: 'Ada' }, cityId: raw.estate.city });
+        const stored = new Map([['joinallworld-life-v1', cache]]);
+        const damaged = createClient({ storage: { getItem: key => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) },
+          setTimeout: () => 0, clearTimeout: () => {}, fetch: async path => path === '/api/session'
+            ? response(200, { session: { id: 'public-A', name: 'Ada', cities: [raw.estate.city] }, serverTime: input.now })
+            : response(500, { error: 'internal_error' }) });
+        assert.equal(damaged.snapshotPhase, 'unavailable', 'a retained ticket must not hide corrupt raw loan fields');
+        assert.equal(await damaged.connect(), false);
+        assert.equal(damaged.snapshotPhase, 'unavailable');
+        assert.equal(stored.get('joinallworld-life-v1'), cache);
+        damaged.stop();
+        const pendingAction = { sessionId: 'public-A', actionId: '1000:11111111-1111-4111-8111-111111111111', cityId: raw.estate.city, type: 'homeward.accept', payload: { quote: input.quote } };
+        const goodCache = JSON.stringify({ version: 1, state: raw, ownerId: 'public-A', identity: { name: 'Ada' }, cityId: raw.estate.city, pendingAction });
+        const answeredStore = new Map([['joinallworld-life-v1', goodCache]]);
+        const answered = createClient({ storage: { getItem: key => answeredStore.get(key) ?? null, setItem: (key, value) => answeredStore.set(key, value) },
+          setTimeout: () => 0, clearTimeout: () => {}, fetch: async path => path === '/api/session'
+            ? response(200, { session: { id: 'public-A', name: 'Ada', cities: [raw.estate.city] }, serverTime: input.now })
+            : response(200, { state: corrupt, rev: 9, serverTime: input.now }) });
+        assert.equal(await answered.connect(), false, 'a malformed raw loan in a server answer is never accepted');
+        assert.equal(answeredStore.get('joinallworld-life-v1'), goodCache);
+        assert.equal(answered.state.travel.rideDebt, raw.travel.rideDebt);
+        assert.deepEqual(answered.state.activeAction.ticket, raw.activeAction.ticket);
+        assert.deepEqual(answered.pendingAction, pendingAction);
+        answered.stop();
+      }
+    } else {
+      assert.equal(client.state.onboarding?.done, true, 'legacy state without onboarding was normalized before view');
+      assert.equal(client.state.estate.home, 'maiduguri', 'main home is recovered from the away residence');
+      assert.ok(viewLife(client.state, { now: input.now, cityId: raw.estate.city }).estate.ride.journey, 'the itinerary is available before the first visitor view');
+    }
+    client.stop(); process.stdout.write(input.mode + '-ok\\n'); process.exit(0);
+  }
+  if (input.mode === 'homeward-malformed') {
+    await waiting;
+    const rebuilt = createLife(raw, { now: input.now, cityId: raw.estate.city });
+    assert.equal(rebuilt.activeAction, null, 'the separate untrusted engine import keeps its refusal semantics');
+    assert.equal(rebuilt.cash, raw.cash);
+    assert.equal(readHomewardTicket(raw.activeAction, rebuilt, { now: input.now, cityId: raw.estate.city }), null);
+    const { createClient } = await import('${url('../client.ts')}');
+    const cache = JSON.stringify({ version: 1, state: raw, identity: { name: 'Ada' }, cityId: raw.estate.city, ownerId: 'public-A' });
+    const stored = new Map([['joinallworld-life-v1', cache]]);
+    const client = createClient({ storage: { getItem: key => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) },
+      setTimeout: () => 0, clearTimeout: () => {}, fetch: async path => path === '/api/session'
+        ? response(200, { session: { id: 'public-A', name: 'Ada', cities: [raw.estate.city] }, serverTime: input.now })
+        : response(500, { error: 'internal_error' }) });
+    assert.equal(client.snapshotPhase, 'unavailable', 'a client cannot publish a normalized-away cached ticket');
+    assert.equal(await client.connect(), false);
+    assert.equal(client.snapshotPhase, 'unavailable');
+    assert.equal(stored.get('joinallworld-life-v1'), cache, 'the malformed cached ticket is retained for reconciliation');
+    client.stop();
+    process.stdout.write('homeward-malformed-ok\\n'); process.exit(0);
+  }
+  throw new Error('unexpected homeward mode ' + input.mode);
+}
 if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.mode === 'teaching-retry-connect' || input.mode === 'teaching-switch') {
   const gate = await import('${url('./teaching-gate.ts')}');
   const { createClient } = await import('${url('../client.ts')}');
@@ -249,12 +440,14 @@ const results = [];
 let playing = true;
 try { dispatch(createLife(null), { type: 'cancel' }); } catch { playing = false; }
 const { teachingFor } = await import('${url('./teaching-gate.ts')}');
+const { homewardFor } = await import('${url('./homeward-gate.ts')}');
 for (const { raw, ctx } of input.lives) {
   let refused = null;
   const waiting = campusFor(raw);
   const teachingWaiting = teachingFor(raw);
   if (waiting) { try { createLife(raw, ctx); } catch (error) { refused = error.name; } await waiting; }
   if (teachingWaiting) await teachingWaiting;
+  await homewardFor(raw);
   const state = createLife(raw, ctx);
   const baseView = viewLife(state, ctx);
   const wearablesDeferred = !baseView.onboarding.boutique.some(item => item.kind === 'wearables');
@@ -382,6 +575,56 @@ function lives(): { name: string; raw: unknown; ctx: LifeContextInit }[] {
   return out;
 }
 
+async function homewardBrowserFixtures(): Promise<{ visitor: LifeState; active: LifeState; malformed: LifeState; resident: LifeState; guest: LifeState; legacyVisitor: LifeState; plain: LifeState; quote: string }> {
+  const home = 'maiduguri', destination = 'nairobi';
+  let now = START;
+  await loadCityLinks(); await loadCityContent(home);
+  let state = createLife(null, { now, cityId: home, isNew: true, quickStart: true, seed: 'browser-homeward-fixture' });
+  const context = () => makeContext({ now, cityId: state.estate.city, seed: 'browser-homeward-fixture' });
+  const run = (type: string, payload: Record<string, unknown> = {}) => dispatch(state, { type, payload, actionId: `homeward-browser-${type}-${now}` } as ActionBody, { ...context(), internal: true });
+  run('onboarding.quick-start', { look: DEFAULT_LOOK });
+  run('onboarding.traits', { traits: ['clean-pikin', 'musical'] });
+  run('onboarding.dream', { dream: 'afrobeats-star' });
+  run('onboarding.lottery');
+  assert.equal(run('onboarding.home', { lga: cityRules(home)?.units[0]?.id, via: 'manual' }).code, 'life_started');
+  const resident = structuredClone(state);
+  const outward = planHomewardRoute(home, destination, linksFrom, isOpenCityId);
+  assert.ok(outward, 'fixture uses authored open routes to a real visitor city');
+  const fund = (target: number) => {
+    const difference = target - state.cash;
+    if (difference) {
+      assert.ok(dispatch(state, { type: 'wallet.admin', payload: { op: difference > 0 ? 'credit' : 'debit', amount: Math.abs(difference), reason: 'browser homeward fixture' }, actionId: `homeward-browser-fund-${now}` }, { ...context(), internal: true }).ok);
+      assert.equal(state.ledger.at(-1)?.amount, difference);
+    }
+    assert.equal(state.cash, target);
+  };
+  for (const leg of outward.legs) {
+    await loadCityContent(leg.to);
+    fund(Math.max(state.cash, leg.fare));
+    assert.equal(run('estate.relocate', { to: leg.to, mode: leg.mode }).code, 'departed');
+    now += (leg.seconds + 1) * 1000;
+    advanceLife(state, leg.seconds + 1, context());
+  }
+  fund(0);
+  assert.equal(state.estate.city, destination);
+  const visitor = structuredClone(state);
+  const quote = viewLife(state, context()).estate.ride.journey;
+  assert.ok(quote, 'the full engine supplies a homeward quote');
+  assert.equal(run('homeward.accept', { quote: quote.key }).code, 'departed');
+  assert.equal(state.activeAction?.kind, 'homeward');
+  const active = structuredClone(state);
+  const malformed = structuredClone(active);
+  if (malformed.activeAction?.kind === 'homeward') delete (malformed.activeAction as unknown as Record<string, unknown>).ticket;
+  const legacy = structuredClone(visitor);
+  delete (legacy as unknown as Record<string, unknown>).onboarding;
+  delete (legacy.estate as unknown as Record<string, unknown>).home;
+  const normalizedLegacy = createLife(legacy, { now, cityId: destination });
+  assert.equal(normalizedLegacy.estate.home, home, 'the fixture exercises main-home inference from its away residence');
+  const guest = createLife(null, { now, cityId: destination, isNew: true, quickStart: true, seed: 'browser-homeward-guest' });
+  const plain = createLife({ name: 'Bola', cash: 9876 }, { now, cityId: destination });
+  return { visitor, active, malformed, resident, guest, legacyVisitor: legacy, plain, quote: quote.key };
+}
+
 const withoutCampus = (view: unknown): unknown => Object.fromEntries(Object.entries(view as Record<string, unknown>).filter(([key]) => !CAMPUS_KEYS.includes(key)));
 
 test('the browser engine rebuilds and views every life as the full engine does, and refuses a campus life until the campus rules are loaded', async (t) => {
@@ -473,5 +716,47 @@ test('the read-only browser hydrates, retries and fences a saved authored teachi
     assert.equal(probe(fixture('teaching-switch', { release: switchRelease, requestMarker: switchRequest, evaluationMarker: switchEvaluation }), {
       TEACHING_GATE_BARRIER: switchRelease, TEACHING_GATE_REQUEST_MARKER: switchRequest, TEACHING_GATE_EVAL_MARKER: switchEvaluation,
     }), 'teaching-switch-ok\n');
+  } finally { rmSync(directory, { recursive: true, force: true }); }
+});
+
+
+test('the read-only browser loads homeward route and ticket rules only for relevant lives, before exposing them', async () => {
+  const given = await homewardBrowserFixtures();
+  const directory = mkdtempSync(join(tmpdir(), 'browser-homeward-profile-'));
+  try {
+    const fixture = (mode: string, extra: Record<string, string> = {}) => {
+      const file = join(directory, `${mode}.json`);
+      writeFileSync(file, JSON.stringify({ mode, snapshot: mode === 'homeward-malformed' ? given.malformed : given.active,
+        resident: given.resident, guest: given.guest, plain: given.plain, legacyVisitor: given.legacyVisitor,
+        now: given.active.t, quote: given.quote, ...extra }));
+      return file;
+    };
+    const idleMarker = join(directory, 'idle.request');
+    assert.equal(probe(fixture('homeward-idle', { requestMarker: idleMarker }), { HOMEWARD_GATE_REQUEST_MARKER: idleMarker }), 'homeward-idle-ok\n');
+
+    const cacheRelease = join(directory, 'cache.release'), cacheRequest = join(directory, 'cache.request'), cacheEvaluation = join(directory, 'cache.evaluation');
+    assert.equal(probe(fixture('homeward-cache', { release: cacheRelease, requestMarker: cacheRequest, evaluationMarker: cacheEvaluation }), {
+      HOMEWARD_GATE_BARRIER: cacheRelease, HOMEWARD_GATE_REQUEST_MARKER: cacheRequest, HOMEWARD_GATE_EVAL_MARKER: cacheEvaluation,
+    }), 'homeward-cache-ok\n');
+
+    const visitorRelease = join(directory, 'visitor.release'), visitorRequest = join(directory, 'visitor.request'), visitorEvaluation = join(directory, 'visitor.evaluation');
+    const visitorFile = join(directory, 'homeward-visitor.json');
+    writeFileSync(visitorFile, JSON.stringify({ mode: 'homeward-visitor', snapshot: given.legacyVisitor, now: given.active.t, quote: given.quote,
+      release: visitorRelease, requestMarker: visitorRequest, evaluationMarker: visitorEvaluation }));
+    assert.equal(probe(visitorFile, { HOMEWARD_GATE_BARRIER: visitorRelease, HOMEWARD_GATE_REQUEST_MARKER: visitorRequest, HOMEWARD_GATE_EVAL_MARKER: visitorEvaluation }), 'homeward-visitor-ok\n');
+
+    assert.equal(probe(fixture('homeward-malformed')), 'homeward-malformed-ok\n');
+
+    const failureMarker = join(directory, 'rules-first-import-failed'), retryRequest = join(directory, 'retry.request');
+    const retryRelease = join(directory, 'retry.release'), retryEvaluation = join(directory, 'retry.evaluation');
+    assert.equal(probe(fixture('homeward-retry-connect', { failureMarker, requestMarker: retryRequest, release: retryRelease, evaluationMarker: retryEvaluation }), {
+      HOMEWARD_GATE_FAIL_FIRST: '1', HOMEWARD_GATE_FAIL_MARKER: failureMarker, HOMEWARD_GATE_REQUEST_MARKER: retryRequest,
+      HOMEWARD_GATE_BARRIER: retryRelease, HOMEWARD_GATE_EVAL_MARKER: retryEvaluation,
+    }), 'homeward-retry-connect-ok\n');
+
+    const newerRelease = join(directory, 'newer.release'), newerRequest = join(directory, 'newer.request'), newerEvaluation = join(directory, 'newer.evaluation');
+    assert.equal(probe(fixture('homeward-newer', { release: newerRelease, requestMarker: newerRequest, evaluationMarker: newerEvaluation }), {
+      HOMEWARD_GATE_BARRIER: newerRelease, HOMEWARD_GATE_REQUEST_MARKER: newerRequest, HOMEWARD_GATE_EVAL_MARKER: newerEvaluation,
+    }), 'homeward-newer-ok\n');
   } finally { rmSync(directory, { recursive: true, force: true }); }
 });

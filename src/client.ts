@@ -9,14 +9,27 @@ import { STORAGE_KEY } from './storage-key.ts';
  * without a session, command() refuses, sends nothing and changes nothing — the cached state
  * is shown read-only until the server is reachable again.
  */
-import { createLife, hasAction, isDeparting } from './life.ts';
+import { createLife, isDeparting } from './life.ts';
+import { ACTION_TYPES } from './types/actions.ts';
+import type { ActionType } from './types/actions.ts';
 import { lifeCities, loadLifeCities } from './game/cities/lifeCities.ts';
 import { campusFor } from './game/campus-gate.ts';
 import { teachingFor } from './game/teaching-gate.ts';
-import type { LifeState } from './types/life.ts';
+import { homewardFor, hasHomewardMarker, assertHomewardLiability } from './game/homeward-gate.ts';
+import type { LifeContextInit, LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
 
 export interface City { id: CityId; name: string; region: string }
+class HomewardSnapshotError extends TypeError {}
+function rebuildClientLife(raw: unknown, context: LifeContextInit): LifeState {
+  try { assertHomewardLiability(raw) }
+  catch { throw new HomewardSnapshotError('The saved travel loan could not be read. Preserve it and reconnect to reconcile.') }
+  const state = createLife(raw, context)
+  if (hasHomewardMarker(raw) && state.activeAction?.kind !== 'homeward') {
+    throw new HomewardSnapshotError('The saved travel ticket could not be read. Preserve it and reconnect to reconcile.')
+  }
+  return state
+}
 export function clientCity(id: string): City {
   const city = cityCatalogueEntry(id);
   if (!city?.open) throw new TypeError(`Unknown city ${id}`);
@@ -186,7 +199,8 @@ const IDLE_POLL_MS = 60000;
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
 function pendingIntent(value: unknown): PendingActionIntent | null {
   if (!isRecord(value) || typeof value.sessionId !== 'string' || !value.sessionId || value.sessionId.length > 100 || typeof value.actionId !== 'string'
-    || !/^\d{1,16}:[0-9a-f-]{36}$/.test(value.actionId) || !isCityId(value.cityId) || !hasAction(value.type) || (value.payload !== undefined && !isRecord(value.payload))) return null
+    || !/^\d{1,16}:[0-9a-f-]{36}$/.test(value.actionId) || !isCityId(value.cityId) || typeof value.type !== 'string'
+    || !ACTION_TYPES.includes(value.type as ActionType) || (value.payload !== undefined && !isRecord(value.payload))) return null
   return { sessionId: value.sessionId, actionId: value.actionId as TimedId, cityId: value.cityId, type: value.type as ActionRequest['type'], ...(value.payload === undefined ? {} : { payload: structuredClone(value.payload) }) }
 }
 function canonical(value: unknown): string {
@@ -245,14 +259,21 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let snapshotPhase: SnapshotPhase = saved?.identity ? 'unconfirmed' : 'preview'
   let snapshotGeneration = 0, connectGeneration = 0
   const featureRules = (snapshot: unknown) => {
-    const campus = loadCampus(snapshot), teaching = teachingFor(snapshot)
-    return campus && teaching ? Promise.all([campus, teaching]) : campus || teaching
+    const waiting = [loadCampus(snapshot), teachingFor(snapshot), homewardFor(snapshot)].filter(value => value !== null)
+    return waiting.length > 1 ? Promise.all(waiting) : waiting[0] ?? null
   }
   const savedSnapshotGeneration = snapshotGeneration, savedWaiting = featureRules(saved?.state)
   let cachedStateReady = !savedWaiting
+  let initialState: LifeState
+  try { initialState = rebuildClientLife(savedWaiting ? null : saved?.state, { cityId }) }
+  catch (error) {
+    if (!(error instanceof HomewardSnapshotError)) throw error
+    cachedStateReady = false; snapshotPhase = 'unavailable'
+    initialState = createLife(null, { cityId })
+  }
   const client: Client = {
-    // A saved life waits for any campus or teaching rules it uses; until then the device shows a new one.
-    state: createLife(savedWaiting ? null : saved?.state, { cityId }),
+    // A saved life waits for its private rules; until then the device shows an unavailable preview.
+    state: initialState,
     cityId,
     identity: { name: saved?.identity?.name || cityDefaultName(cityId) },
     hasSavedIdentity: Boolean(saved?.identity),
@@ -273,23 +294,35 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   };
   let pollTimer: unknown = null;
   let identityGeneration = 0;
+  if (!cachedStateReady && !savedWaiting) status('Saved travel could not be read. Reconnect to reconcile; the saved copy is preserved.', true)
   const routeCooldowns = new Map<string, { until: number; attempts: number }>()
   let coreCooldown = { until: 0, attempts: 0 }
   // Rebuild a saved life after its feature rules arrive, unless the server has answered first.
   if (savedWaiting) void savedWaiting.then(() => {
     if (accepted || snapshotGeneration !== savedSnapshotGeneration || snapshotOwner === null || snapshotOwner !== saved?.ownerId || snapshotPhase === 'unavailable') return
     try {
-      const previous = client.state, restored = createLife(saved?.state)
+      const previous = client.state, restored = rebuildClientLife(saved?.state, { cityId })
       cachedStateReady = true; client.state = restored
       if (client.session?.id === snapshotOwner) snapshotPhase = 'available'
       onChange(client.state, previous)
-    } catch { cachedStateReady = false; snapshotPhase = 'unavailable'; onChange(client.state, client.state) }
-  }, () => {});
+    } catch {
+      cachedStateReady = false; snapshotPhase = 'unavailable'
+      status('Saved life could not be read. Reconnect to reconcile; the saved copy is preserved.', true)
+      onChange(client.state, client.state)
+    }
+  }, () => {
+    if (accepted || snapshotGeneration !== savedSnapshotGeneration || snapshotOwner === null || snapshotOwner !== saved?.ownerId) return
+    cachedStateReady = false; snapshotPhase = 'unavailable'
+    status('Saved life rules could not load. Reconnect to retry; the saved copy is preserved.', true)
+    onChange(client.state, client.state)
+  });
 
   function status(text: string, error = false): void { onStatus(text, error); }
   function persist(): boolean {
     try {
       if (!storage) throw Error('storage');
+      // A confirmed actor may still be waiting for cached rules. Never replace that raw cache with the preview.
+      if (!accepted && !cachedStateReady && snapshotOwner && snapshotOwner === saved?.ownerId) return true;
       storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, identity: client.identity, cityId: client.cityId,
         ...(snapshotPhase === 'available' && snapshotOwner ? { state: client.state, ownerId: snapshotOwner } : {}), ...(pendingAction ? { pendingAction } : {}) }));
       if (!client.session) status('Local preview · saved on this device');
@@ -386,7 +419,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!responseCurrent() || overtaken()) return false;
     const stamp = (next as { t?: unknown } | null | undefined)?.t;
     const snapshotTime = typeof stamp === 'number' ? stamp : Number.NaN;
-    const built = createLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
+    const built = rebuildClientLife(next, { now: Number.isFinite(snapshotTime) ? snapshotTime : client.serverNow(), cityId: client.cityId });
     if (!responseCurrent()) return false
     accepted = true; cachedStateReady = true
     snapshotOwner = responseOwner
@@ -535,7 +568,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const ownsIdentityCity = snapshotOwner === response.session.id && !(Array.isArray(held) && held.length === 1 && isCityId(held[0]) && client.state.estate.city !== held[0])
       const ownsSnapshot = ownsIdentityCity && cachedStateReady
       if (ownsSnapshot) snapshotPhase = 'available'
-      else if (ownsIdentityCity) snapshotPhase = 'unconfirmed'
+      else if (ownsIdentityCity) { if (snapshotPhase !== 'unavailable') snapshotPhase = 'unconfirmed' }
       else { snapshotOwner = null; snapshotPhase = 'unavailable'; snapshotGeneration += 1 }
       if (previousIdentity && previousIdentity !== response.session.id) { pendingAction = null; resetIdentityCooldowns(); }
       client.session = response.session; client.hasSavedIdentity = true; client.identity.name = response.session.name; client.ready = false;

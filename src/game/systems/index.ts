@@ -5,11 +5,15 @@
  * build swaps it for browser.ts (vite.config.ts), which omits server-only actions and registers campus stand-ins.
  */
 import { BASE_SYSTEMS } from './base.ts';
+import { installHomewardRules } from '../homeward-gate.ts';
+import * as homewardRules from '../homeward-rules.ts';
 import { registerSystem } from '../registry.ts';
 import livingWorld from './living-world.ts';
 import unilagStudent from '../../campus/unilag/student.ts';
 import unilagCommunity from '../../campus/unilag/games.ts';
 import unilagShuttle from '../../campus/unilag/shuttle.ts';
+
+installHomewardRules(homewardRules);
 
 export const CAMPUS_SYSTEMS = [unilagStudent, unilagCommunity, unilagShuttle];
 registerSystem(livingWorld);

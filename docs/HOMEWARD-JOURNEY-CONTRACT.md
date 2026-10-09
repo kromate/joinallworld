@@ -1,6 +1,6 @@
 # Homeward recovery for visitors
 
-Status: implemented source with focused engine, Node HTTP, SQLite Worker and Vue SSR acceptance. Full combined, rendered, fault-injection and production acceptance remain open. No production activation is authorized by this document alone; WORLD retains the existing coordinated release process.
+Status: implemented source with focused engine, Node HTTP, SQLite Worker and Vue SSR acceptance. Actual disk/SQLite rollback and corrupt-record acceptance now pass; full combined, interactive rendered, timetable-change and production acceptance remain open. No production activation is authorized by this document alone; WORLD retains the existing coordinated release process.
 
 The first-five integration exposed a real recovery gap. Direct-only ride credit cannot take a cashless foreign visitor to a main home without an airport. Lending only the first connection's fare also fails: existing debt prevents the next booking. A fictional direct flight cannot substitute for real links, and the legacy direct-trip invalidation refund must not convert borrowed fares into spending cash.
 

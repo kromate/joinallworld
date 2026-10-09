@@ -10,11 +10,29 @@ import type { JourneyDevice } from './cityJourney.ts'
 
 export const AFRICA_CAPITALS = ['yaounde', 'lome', 'accra', 'nairobi', 'algiers'] as const
 
+export interface JourneyStoredSnapshot {
+  bytes: string
+  session: string
+  effects: string
+  hasReceipt: boolean
+  receipt: string | null
+}
+
 export interface AfricaJourneyHost {
   now(): number
   request(path: string, body?: object, cookie?: string): Promise<Response>
   elapse(device: JourneyDevice, city: string, ms: number): Promise<void>
   restart(): Promise<void>
+  storageFaults: {
+    kinds: readonly ('disk' | 'wallet' | 'receipt')[]
+    failCommit(kind: 'disk' | 'wallet' | 'receipt', device: JourneyDevice, actionId: string): Promise<void>
+    recoverCommit(): Promise<void>
+    inspect(device: JourneyDevice, actionId: string): Promise<JourneyStoredSnapshot>
+    /** Only the issued ticket key is changed; no saved wealth or journey timing is rewritten. */
+    replaceTicketKey(device: JourneyDevice, city: string, key: string): Promise<string>
+    /** Raw corruption fixture; undefined removes only the selected liability field. */
+    replaceLiabilityField(device: JourneyDevice, city: string, field: 'rideDebt' | 'travel', value: unknown): Promise<unknown>
+  }
   /** Test-only credit made through the authenticated admin wallet route. */
   credit(device: JourneyDevice, amount: number, reason: string): Promise<void>
   /** Test-only spending through the same authenticated admin wallet boundary. */
@@ -240,7 +258,49 @@ export async function homewardJourney(host: AfricaJourneyHost): Promise<void> {
     }
 
     const intent = id(host.now()), payload = { quote: quote.key }
-    const accepted = await d.action(device, city, 'homeward.accept', payload, intent)
+    const storedState = (snapshot: JourneyStoredSnapshot) => object(object(object(object(JSON.parse(snapshot.session)).cities)[foreign]).state)
+    const protectedState = (state: Record<string, unknown>) => ({ cash: state.cash, debt: object(state.travel).rideDebt ?? 0,
+      active: state.activeAction, ledger: state.ledger, possessions: possessions(state) })
+    if (foreign === 'nairobi') {
+      const originalStored = await host.storageFaults.inspect(device, intent)
+      assert.equal(originalStored.hasReceipt, false)
+      for (const kind of host.storageFaults.kinds) {
+        const beforeCommit = await host.storageFaults.inspect(device, intent)
+        await host.storageFaults.failCommit(kind, device, intent)
+        try {
+          const failed = await host.request('/api/action', { cityId: city, type: 'homeward.accept', payload, actionId: intent }, device.cookie)
+          assert.equal(failed.status, 503, `${kind}: a failed durable commit cannot acknowledge departure`)
+          assert.equal(object(await failed.json()).error, 'storage_unavailable')
+        } finally { await host.storageFaults.recoverCommit() }
+        const afterAbort = await host.storageFaults.inspect(device, intent)
+        assert.ok(afterAbort.session === beforeCommit.session, `${kind}: failed commit preserves the full session before any clock settlement`)
+        assert.equal(afterAbort.effects, beforeCommit.effects)
+        assert.equal(afterAbort.hasReceipt, false)
+        const assertRolledBack = async () => {
+          const persisted = await host.storageFaults.inspect(device, intent)
+          assert.equal(persisted.hasReceipt, false, `${kind}: an aborted booking has no action receipt`)
+          assert.deepEqual(protectedState(storedState(persisted)), protectedState(storedState(originalStored)))
+          assert.equal(persisted.effects, originalStored.effects, `${kind}: neither loan effect survives the abort`)
+          assert.deepEqual(protectedState(await read()), protectedState(before), `${kind}: live state also rolls back`)
+          assert.deepEqual(await journal(), beforeJournal)
+        }
+        await assertRolledBack()
+        await host.restart()
+        await assertRolledBack()
+      }
+    }
+    let accepted: Record<string, unknown>
+    if (foreign === 'nairobi') {
+      const raced = await Promise.all([
+        d.action(device, city, 'homeward.accept', payload, intent),
+        d.action(device, city, 'homeward.accept', payload, intent),
+      ])
+      assert.deepEqual(raced.map(answer => answer.code), ['departed', 'departed'])
+      assert.equal(raced.filter(answer => answer.duplicate === true).length, 1, 'concurrent identical booking attempts have one original and one duplicate')
+      const originalAnswer = raced.find(answer => answer.duplicate !== true)
+      assert.ok(originalAnswer)
+      accepted = originalAnswer
+    } else accepted = await d.action(device, city, 'homeward.accept', payload, intent)
     assert.equal(accepted.code, 'departed')
     const booked = object(accepted.state)
     assert.deepEqual([booked.cash, object(booked.travel).rideDebt, object(booked.activeAction).kind], [0, quote.totalFare, 'homeward'])
@@ -259,6 +319,85 @@ export async function homewardJourney(host: AfricaJourneyHost): Promise<void> {
       assert.deepEqual((await journal()).filter(entry => String(entry.reason).startsWith('Ride home on credit:')), loanEffects)
     }
     await replay()
+    if (foreign === 'nairobi') {
+      const faults = host.storageFaults
+      assert.equal((await faults.inspect(device, intent)).hasReceipt, true, 'unchanged retry commits its action receipt')
+      const assertCorruptPreserved = async (damaged: JourneyStoredSnapshot): Promise<void> => {
+        const failedIntent = id(host.now())
+        for (const [path, body] of [
+          [`/api/life?city=${foreign}`, undefined],
+          ['/api/action', { cityId: foreign, type: 'homeward.accept', payload, actionId: failedIntent }],
+        ] as const) {
+          const refused = await host.request(path, body, device.cookie)
+          assert.equal(refused.status, 500, 'a corrupt trusted ticket fails without repairing or erasing the saved journey')
+          assert.equal(object(await refused.json()).error, 'internal_error')
+          const preserved = await faults.inspect(device, failedIntent)
+          assert.ok(preserved.bytes === damaged.bytes, 'failed normalization preserves the exact persisted bytes')
+          assert.ok(preserved.session === damaged.session, 'failed normalization preserves every stored session field')
+          assert.equal(preserved.effects, damaged.effects, 'failed normalization cannot issue a refund or erase the loan effects')
+          assert.equal(preserved.hasReceipt, false, 'failed normalization cannot issue a successful action receipt')
+          const originalReceipt = await faults.inspect(device, intent)
+          assert.equal(originalReceipt.hasReceipt, true, 'the original successful receipt is retained')
+          assert.equal(originalReceipt.receipt, damaged.receipt, 'the original successful receipt contents are unchanged')
+        }
+      }
+      const corruptKey = 'fixture-corrupt-homeward-ticket'
+      const originalKey = await faults.replaceTicketKey(device, foreign, corruptKey)
+      assert.equal(originalKey, quote.key)
+      const began = host.now()
+      try {
+        await host.restart()
+        const damaged = await faults.inspect(device, intent)
+        const damagedState = storedState(damaged)
+        assert.deepEqual([damagedState.cash, object(damagedState.travel).rideDebt, object(damagedState.activeAction).kind], [0, quote.totalFare, 'homeward'])
+        assert.equal(object(object(damagedState.activeAction).ticket).key, corruptKey)
+        assert.deepEqual(damagedState.ledger, booked.ledger)
+        assert.deepEqual(possessions(damagedState), possessions(before))
+        await assertCorruptPreserved(damaged)
+      } finally {
+        assert.equal(await faults.replaceTicketKey(device, foreign, originalKey), corruptKey, 'cleanup restores only the controlled ticket key')
+        const downtime = host.now() - began
+        if (downtime > 0) await host.elapse(device, foreign, -downtime)
+      }
+      await replay()
+      const liabilities: readonly { field: 'rideDebt' | 'travel'; value: unknown; label: string }[] = [
+        { field: 'rideDebt', value: -1, label: 'negative debt' },
+        { field: 'rideDebt', value: '12000', label: 'string debt' },
+        { field: 'rideDebt', value: 1.5, label: 'fractional debt' },
+        { field: 'rideDebt', value: Number.MAX_SAFE_INTEGER + 1, label: 'unsafe debt' },
+        { field: 'rideDebt', value: 1_000_001, label: 'debt above one million' },
+        { field: 'travel', value: undefined, label: 'missing travel' },
+      ]
+      for (const damage of liabilities) {
+        const pristine = await faults.inspect(device, intent)
+        const originalField = await faults.replaceLiabilityField(device, foreign, damage.field, damage.value)
+        const began = host.now()
+        try {
+          const damaged = await faults.inspect(device, intent)
+          const damagedState = storedState(damaged), pristineState = storedState(pristine)
+          assert.deepEqual([damagedState.cash, damagedState.ledger, damagedState.activeAction, possessions(damagedState)],
+            [pristineState.cash, pristineState.ledger, pristineState.activeAction, possessions(pristineState)], `${damage.label}: injection changes only the selected liability field`)
+          if (damage.field === 'travel') assert.equal(Object.hasOwn(damagedState, 'travel'), false)
+          else assert.equal(object(damagedState.travel).rideDebt, damage.value)
+          await host.restart()
+          const restarted = await faults.inspect(device, intent)
+          assert.ok(restarted.bytes === damaged.bytes, `${damage.label}: restart preserves the corrupted persisted bytes`)
+          assert.equal(restarted.effects, damaged.effects)
+          assert.equal(restarted.hasReceipt, true)
+          assert.equal(restarted.receipt, pristine.receipt)
+          await assertCorruptPreserved(damaged)
+        } finally {
+          assert.deepEqual(await faults.replaceLiabilityField(device, foreign, damage.field, originalField), damage.value, `${damage.label}: cleanup replaces only its controlled field`)
+          const restored = await faults.inspect(device, intent)
+          assert.deepEqual(storedState(restored), storedState(pristine), `${damage.label}: cleanup restores the exact saved state`)
+          assert.equal(restored.effects, pristine.effects)
+          assert.equal(restored.receipt, pristine.receipt)
+          const downtime = host.now() - began
+          if (downtime > 0) await host.elapse(device, foreign, -downtime)
+        }
+        await replay()
+      }
+    }
     for (const type of ['cancel', 'travel.skip']) {
       const refused = await json(await host.request('/api/action', { cityId: city, type, payload: {}, actionId: id(host.now()) }, device.cookie))
       assert.equal(refused.ok, false, `${type}: an accepted ticket cannot be cancelled or skipped`)

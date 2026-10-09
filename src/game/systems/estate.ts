@@ -105,7 +105,7 @@ import type { CityLinkFrom } from '../../types/content.ts';
 import type { AwayResidence, EstateState, HouseId, HouseStyleField, HouseUpgrade, IntercityAction, LgaId, LgaVia, LifeContext, LifeState, PlotAddress, Residence, WorldCityId } from '../../types/life.ts';
 import type { ActiveKindHandler, NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { EstateView, HouseStyleCard, ResidenceView, RideCreditView } from '../../types/view.ts';
-import { planHomewardRoute } from '../cities/homewardRoute.ts';
+import { planHomeward } from '../homeward-gate.ts';
 import type { HomewardQuote } from '../cities/homewardRoute.ts';
 
 const DAY_MS = 86400000;
@@ -468,7 +468,7 @@ export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | 
 export function homewardOffer(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
   const e = state.estate;
   if (unsettled(state) || state.activeAction || !visitingHere(state) || !e.home || rideDebtOf(state) > 0) return null;
-  const quote = planHomewardRoute(e.city, e.home, linksFrom, id => isOpen(id, ctx));
+  const quote = planHomeward(e.city, e.home, linksFrom, id => isOpen(id, ctx));
   return quote && state.cash < quote.totalFare ? quote : null;
 }
 /** Why a ride on credit cannot start now, or null. */

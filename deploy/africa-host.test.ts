@@ -110,6 +110,72 @@ test('Worker HTTP host: all five capital trips and cashless homeward journeys pr
   }
   const storage = () => current().unsafeGetDurableObjectStorage('joinallworld-africa-journey', 'JoinAllworldState', { name: 'joinallworld-v1' })
   const host: AfricaJourneyHost = {
+    storageFaults: {
+      kinds: ['wallet', 'receipt'],
+      failCommit: async (kind, device, actionId) => {
+        const db = await storage()
+        const player = device.id.replace(/'/g, "''"), intent = actionId.replace(/'/g, "''")
+        if (kind === 'wallet') {
+          await db.exec(`CREATE TRIGGER reject_homeward_wallet BEFORE INSERT ON wallet_effects
+            WHEN NEW.public_id = '${player}' AND NEW.reason = 'Ride home on credit: ticket purchase'
+            BEGIN SELECT RAISE(ABORT, 'injected homeward wallet failure'); END`)
+        } else {
+          assert.equal(kind, 'receipt')
+          await db.exec(`CREATE TRIGGER reject_homeward_receipt BEFORE INSERT ON action_receipts
+            WHEN NEW.sender = '${player}' AND NEW.action_id = '${intent}'
+            BEGIN SELECT RAISE(ABORT, 'injected homeward receipt failure'); END`)
+        }
+      },
+      recoverCommit: async () => {
+        const db = await storage()
+        await db.exec('DROP TRIGGER IF EXISTS reject_homeward_wallet')
+        await db.exec('DROP TRIGGER IF EXISTS reject_homeward_receipt')
+      },
+      inspect: async (device, actionId) => {
+        const db = await storage()
+        const rows = await db.exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
+        assert.equal(rows.length, 1)
+        const session = rows[0]?.value
+        assert.ok(typeof session === 'string')
+        const effects = await db.exec('SELECT * FROM wallet_effects WHERE public_id = ? ORDER BY seq', device.id)
+        const receipts = await db.exec('SELECT value FROM action_receipts WHERE sender = ? AND action_id = ?', device.id, actionId)
+        const receipt = receipts[0]?.value
+        assert.ok(receipt === undefined || typeof receipt === 'string')
+        return { bytes: session, session, effects: JSON.stringify(effects), hasReceipt: receipts.length > 0, receipt: receipt ?? null }
+      },
+      replaceLiabilityField: async (device, city, field, value) => {
+        const db = await storage()
+        const rows = await db.exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
+        assert.equal(rows.length, 1)
+        const stored = rows[0]?.value
+        assert.ok(typeof stored === 'string')
+        const session = object(JSON.parse(stored))
+        const state = object(object(object(session.cities)[city]).state)
+        assert.equal(object(state.activeAction).kind, 'homeward')
+        const target = field === 'travel' ? state : object(state.travel)
+        const previous = target[field]
+        if (value === undefined) delete target[field]
+        else target[field] = value
+        await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), keyOf(device))
+        return previous
+      },
+      replaceTicketKey: async (device, city, key) => {
+        const db = await storage()
+        const rows = await db.exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
+        assert.equal(rows.length, 1)
+        const value = rows[0]?.value
+        assert.ok(typeof value === 'string')
+        const session = object(JSON.parse(value))
+        const state = object(object(object(session.cities)[city]).state)
+        const active = object(state.activeAction)
+        assert.equal(active.kind, 'homeward')
+        const ticket = object(active.ticket), previous = ticket.key
+        assert.ok(typeof previous === 'string')
+        ticket.key = key
+        await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), keyOf(device))
+        return previous
+      },
+    },
     now: () => Date.now(),
     request: (path, body, cookie) => send(path, body, cookie),
     elapse: async (device, city, ms) => {

@@ -1,8 +1,8 @@
-# Current world checkpoint, 9 October 2026 at 22:11 UTC
+# Current world checkpoint, 9 October 2026 at 22:16 UTC
 
 Production has **11 green/open African countries**, independently observed on the
-live map and running exact C1. Generated foreign starter source count is **46**;
-36 remain unadmitted and seven other source-inventory countries lack generated
+live map and running exact C1. Generated foreign starter source count is **49**;
+39 remain unadmitted and four other source-inventory countries lack generated
 starter modules. Nigeria retains its existing implementation. See
 `production-c1-eleven-country-acceptance.json` and `AFRICA-NEXT-COVERAGE.md`.
 
@@ -20,6 +20,12 @@ pinned export compatibility check through local Response streams. It has no
 Node/game/compiler imports and preserves all metadata statuses. No browser,
 actual HTTP transfer, compressed startup savings or new-country admission is
 claimed. See `country-directory-http-reader-acceptance.json`.
+
+The eleventh run stopped after three verified destinations because Moroni's
+bounded source contained no roads/buildings. Its original5,965-byte cache and
+one charged request remain intact; São Tomé was not attempted. See
+`playable-africa-rollout/batches/eleventh-three-partial.json`. No complete-five or
+resume claim is made for this window.
 
 The earlier checkpoints below retain their original dates and evidence scopes.
 

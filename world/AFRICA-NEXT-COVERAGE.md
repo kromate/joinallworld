@@ -1,3 +1,22 @@
+# Latest source coverage, 9 October2026 at22:16UTC
+
+The eleventh selected-five run is **partial**, not complete. Gambia/Banjul,
+Seychelles/Victoria and Mauritius/Port Louis generated and passed source/isolated
+engine checks. Comoros/Moroni's pinned660m sample returned5,965bytes with26nodes,
+one way and zero highway/building ways; the builder refused an empty destination.
+São Tomé was not attempted. No exact-contract resume, duplicate source request,
+cache replacement or ledger reset occurred. The original partial contract/report
+and completed assets are retained in `batches/eleventh-three-partial.json`.
+
+There are now **49 foreign generated sources**, ten admitted and39unadmitted.
+Production remains **11open countries including Nigeria**. Four source-inventory
+countries lack modules: KM,ST,CV,SS. Moroni needs an explicitly versioned bounded
+query revision, preserving its selected identity and original charged request;
+South Sudan needs its pinned source-selection packet. Nigeria's40existingcities
+are unchanged. Country metadata readers are source-only, not runtime admission.
+
+Earlier checkpoints below retain their original scopes, counts and source pins.
+
 # Latest source coverage, 9 October 2026 at 22:06 UTC
 
 The tenth batch completed Niger/Niamey, Burkina Faso/Ouagadougou,

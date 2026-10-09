@@ -1,0 +1,28 @@
+{
+  "status": "prepared-isolated-diagnostic-unpublished-unexecuted",
+  "purpose": "Compare exact shipped GLB bytes across direct fetch+parse and Three FileLoader using production shared-cache/clone/disposal ownership, retaining the exact Response delivered to each fetch-backed consumer.",
+  "assets": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clipPack": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "cases": [
+    "For each asset, concurrent shared-cache reads whose single factory fetches and parseAsyncs the exact bytes; body assets clone twice with production cloneSkinnedBodyScene.",
+    "For each asset, hash reference bytes then concurrent shared-cache reads whose single factory uses GLTFLoader.loadAsync; body assets clone twice with production cloneSkinnedBodyScene.",
+    "Retain exact GLB Response objects returned by fetch (including FileLoader's fetch), reference ArrayBuffers, parsed templates, resolved cache values and clone references until report formation; release actor clone resources before cached template resources."
+  ],
+  "strictGate": "Any failed, canceled, or pending GLB request; HTTP error; runtime exception; or console error fails. No retry, filtering, or cancellation waiver.",
+  "instrumentation": [
+    "Passive fetch start/response and arrayBuffer completion with bodyUsed/byte counts; retain exact Response without cloning or reading stream in observer.",
+    "Passive XHR open/send/readyState/progress/load/loadend/abort/error/timeout plus direct abort-call stack; supplemental because prior CDP evidence showed FileLoader uses fetch here.",
+    "AbortController.abort calls and CDP request initiator, response/data/terminal lifecycle."
+  ],
+  "limitations": [
+    "Exercises the production shared cache and clone helper, but not full loadBody appearance/renderer lifecycle.",
+    "Strong references test persistence under retained ownership; they do not prove garbage collection caused a cancellation.",
+    "No avatar pixels, mobile performance, or gameplay acceptance are measured."
+  ],
+  "workflowBranch": "codex/graphics-glb-loader-cancel-v11",
+  "browserLimits": { "processGroupRssBytes": 2147483648, "wallSeconds": 60, "chrome": "normal Chrome process topology with headless SwiftShader" },
+  "cpuLimits": { "processGroupRssBytes": 230686720, "wallSeconds": 25, "nodeHeapMiB": 96 }
+}

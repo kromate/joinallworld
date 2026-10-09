@@ -105,6 +105,10 @@ jobs:
           server/economy/effects.test.ts
           server/recovery-action-intent.test.ts
           server/salt.test.ts
+          server/economy/history.test.ts
+          server/admin/admin.test.ts
+          server/bonus.test.ts
+          server/ride-credit.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
@@ -117,6 +121,7 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
+          deploy/admin.edge.test.ts deploy/ride-credit.edge.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

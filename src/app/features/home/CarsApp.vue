@@ -26,7 +26,7 @@ const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.va
 const owned = computed(() => ownedReason(offline.value, game.state.value.activeAction))
 const garageOnly = ref(false)
 const listedCars = computed(() => property.value?.cars.filter(car => !garageOnly.value || car.owned) ?? [])
-const driving = computed(() => (property.value?.car ? `Choose Drive on the map and pay ${money(property.value.car.fuel)} of fuel per trip.` : 'Own a car and every trip costs fuel only — no fares.'))
+const driving = computed(() => (property.value?.car ? `Choose Own car on the map and pay ${money(property.value.car.fuel)} of fuel per trip.` : 'Own a car and every trip costs fuel only — no fares.'))
 const buy = (id: CarId): Promise<boolean> => act(`buy:${id}`, () => command('property.car-buy', { id }))
 const use = (id: CarId): Promise<boolean> => act(`use:${id}`, () => command('property.car-use', { id }))
 const sell = (id: CarId): Promise<boolean> => act(`sell:${id}`, () => command('property.car-sell', { id }))

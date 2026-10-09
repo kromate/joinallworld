@@ -34,6 +34,13 @@ try {
       const image = await send('Page.captureScreenshot', { format: 'png' }); writeFileSync(`${out}/${body}-grin-profile.png`, Buffer.from(image.data, 'base64'));
     }
   }
+  await evaluate("window.characterReview.set({body:'woman',expression:'smile',focus:'head',pose:'walk'})");
+  await evaluate("document.querySelector('#play').click()");
+  await wait(4700);
+  const moving = await send('Page.captureScreenshot', { format: 'png' }); writeFileSync(`${out}/woman-smile-moving.png`, Buffer.from(moving.data, 'base64'));
+  await wait(1600);
+  cases.push({ name: 'woman-smile-6-second-play', ...(await evaluate('window.characterReview.snapshot()')) });
+  const settled = await send('Page.captureScreenshot', { format: 'png' }); writeFileSync(`${out}/woman-smile-settled.png`, Buffer.from(settled.data, 'base64'));
   if (errors.length) throw new Error('Browser exceptions');
 } catch (error) { failure = String(error.stack || error); }
 finally {

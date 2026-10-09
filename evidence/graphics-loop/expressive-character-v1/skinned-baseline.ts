@@ -30,7 +30,7 @@ import { avatarProportions, normalizeAvatarAppearance } from '/src/types/avatar.
 import { resolveAvatarWearablesForRenderer } from '/src/game/wardrobe/rules.ts';
 import { createWardrobeRenderer } from './renderer-baseline.ts';
 import type { WardrobePresentation, WardrobeMetrics } from './renderer-baseline.ts';
-import { createAvatarAppearanceController } from '/src/scene/body/appearance.ts';
+import { createAvatarAppearanceController } from './appearance-baseline.ts';
 import { createFootContactController } from '/src/scene/body/foot-contact.ts';
 import { createAnimationPoseCheckpoint } from '/src/scene/body/animation-pose.ts';
 import type { FootContact, FootSolveResult } from '/src/scene/body/foot-contact.ts';

@@ -314,6 +314,7 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   function still(next: BodyPose) {
     const { clip, at } = STILL[next];
     sample(clip, (actions.get(clipFor(clip))?.getClip().duration ?? 0) * at);
+    facialDetail.sample(0);
   }
   function finish() {
     if (!transition) return;
@@ -367,6 +368,7 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       pose = next;
       const { clip } = STILL[next], length = actions.get(clipFor(clip))?.getClip().duration ?? 0;
       if (length) sample(clip, ((Math.max(0, seconds) % length) + length) % length);
+      facialDetail.sample(seconds);
       put();
     },
     enter(animate) { pose = 'idle'; play(animate ? DOOR : undefined); },
@@ -385,6 +387,7 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       transition.time += Math.max(dt, 0);
       if (transition.time >= transition.length) { finish(); return false; }
       sample(transition.clip, transition.time);
+      facialDetail.sample(transition.time);
       put();
       return true;
     },

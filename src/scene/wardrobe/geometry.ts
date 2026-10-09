@@ -542,8 +542,11 @@ function hairCrown(b: ClothBuilder, tint: THREE.Color, weights: Weights, height:
   if (!source || source.isEmpty()) throw new Error('Hair geometry needs source scalp bounds');
   const centreX = (source.min.x + source.max.x) * 0.5;
   const centreZ = (source.min.z + source.max.z) * 0.5;
-  const baseY = source.max.y - 0.002;
-  const topY = baseY + height;
+  // Sink the generated crown into the source buzzcap. The old top-only start left a
+  // visible air gap, making the added volume read as a beret floating over the scalp.
+  const baseY = source.max.y - 0.085;
+  const topY = Math.min(baseY + height, source.max.y + 0.055);
+  height = topY - baseY;
   const rx = Math.max(0.045, (source.max.x - source.min.x) * 0.5 + 0.001);
   const rz = Math.max(0.05, (source.max.z - source.min.z) * 0.5 + 0.001);
   const profile = [
@@ -593,30 +596,30 @@ function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
     b.tube(points, radii, colour, () => weights, 8);
   };
   const addCurls = (count: number, radius: number) => {
-    const crown = hairCrown(b, tint, weights, style === 'afro' ? 0.105 : 0.072);
+    const crown = hairCrown(b, tint, weights, 0.14);
     const lowerCount = Math.ceil(count * 0.58), upperCount = count - lowerCount;
     for (let i = 0; i < lowerCount; i++) {
       const angle = TAU * i / lowerCount + 0.11, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      const centre = crown.point(angle, 0.31).addScaledVector(normal, radius * 0.22);
+      const centre = crown.point(angle, 0.63).addScaledVector(normal, radius * 0.22);
       b.ball(centre, [radius, radius * 0.88, radius], tint, weights, 10, 3);
     }
     for (let i = 0; i < upperCount; i++) {
       const angle = TAU * i / upperCount + Math.PI / upperCount, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      const centre = crown.point(angle, 0.68).addScaledVector(normal, radius * 0.22);
+      const centre = crown.point(angle, 0.88).addScaledVector(normal, radius * 0.22);
       b.ball(centre, [radius * 0.94, radius * 0.86, radius * 0.94], tint, weights, 10, 3);
     }
   };
   switch (style) {
-    case 'curls': addCurls(18, 0.012); break;
-    case 'afro': addCurls(24, 0.015); break;
+    case 'curls': addCurls(24, 0.021); break;
+    case 'afro': addCurls(32, 0.025); break;
     case 'bun': {
       const hair = b.rest.bounds.get('hair'), centreX = hair ? (hair.min.x + hair.max.x) * 0.5 : head.x;
       const centreZ = hair ? (hair.min.z + hair.max.z) * 0.5 : head.z;
       const radiusX = hair ? (hair.max.x - hair.min.x) * 0.5 : 0.09;
       const radiusZ = hair ? (hair.max.z - hair.min.z) * 0.5 : 0.09;
       const top = hair?.max.y ?? head.y + 0.12;
-      const centre = new THREE.Vector3(centreX + radiusX * 0.08, top + 0.045, centreZ - radiusZ * 0.48);
-      const base = new THREE.Vector3(centreX, top - 0.004, centreZ - radiusZ * 0.72);
+      const centre = new THREE.Vector3(centreX + radiusX * 0.08, top + 0.02, centreZ - radiusZ * 0.48);
+      const base = new THREE.Vector3(centreX, top - 0.035, centreZ - radiusZ * 0.72);
       strand(base, base.clone().lerp(centre, 0.55).add(new THREE.Vector3(0, 0.025, -0.018)), centre.clone().add(new THREE.Vector3(0, -0.035, 0)), 0.018);
       b.ball(centre, [0.056, 0.053, 0.055], tint, weights, 12, 6);
       const coil = Array.from({ length: 16 }, (_, i) => {

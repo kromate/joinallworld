@@ -7,9 +7,9 @@ import {
   Vector3,
 } from 'three';
 import type { BufferAttribute } from 'three';
-import { DEFAULT_AVATAR_APPEARANCE, normalizeAvatarAppearance } from '../../types/avatar.ts';
-import type { AvatarAppearance, AvatarAgeAppearance } from '../../types/avatar.ts';
-import type { Expression, Face } from '../avatar-look.ts';
+import { DEFAULT_AVATAR_APPEARANCE, normalizeAvatarAppearance } from '/src/types/avatar.ts';
+import type { AvatarAppearance, AvatarAgeAppearance } from '/src/types/avatar.ts';
+import type { Expression, Face } from '/src/scene/avatar-look.ts';
 
 type Attribute = BufferAttribute | InterleavedBufferAttribute;
 type UnsupportedReason =
@@ -216,8 +216,8 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
     let mouth = 0, mouthSide = 0, mouthVertical = 0;
     if (uv && textureMatrix) {
       const faceUv = new Vector2(uv.getX(index), uv.getY(index)).applyMatrix3(textureMatrix);
-      const du = (faceUv.x - 0.1875) / 0.035;
-      const dv = (faceUv.y - 0.253) / 0.019;
+      const du = (faceUv.x - 0.175) / 0.035;
+      const dv = (faceUv.y - 0.266) / 0.019;
       const radius = Math.hypot(du, dv);
       mouth = (1 - smoothstep(0.7, 1, radius)) * (region.getX(index) >= 0.45 ? 1 : 0);
       mouthSide = Math.max(-1, Math.min(1, du));
@@ -307,8 +307,8 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
       const shapedY = vertex.y + (vertex.y - maxY) * (faceScale - 1) * faceWeight;
       const smile = next.expression === 'smile' ? 1 : 0;
       const grin = next.expression === 'grin' ? 1 : 0;
-      const cornerLift = Math.pow(Math.abs(vertex.mouthSide), 2) * (smile * 0.004 + grin * 0.006) * vertex.mouth;
-      const mouthOpen = grin * Math.sign(-vertex.mouthVertical) * Math.abs(vertex.mouthVertical) * 0.004 * vertex.mouth;
+      const cornerLift = Math.pow(Math.abs(vertex.mouthSide), 2) * (smile * 0.00065 + grin * 0.0014) * vertex.mouth;
+      const mouthOpen = grin * Math.sign(-vertex.mouthVertical) * Math.abs(vertex.mouthVertical) * 0.002 * vertex.mouth;
       const bodyPoint = new Vector3(
         Math.max(minX, Math.min(maxX, vertex.x + Math.sign(vertex.side) * maxWidth * amount * cheekShape)),
         Math.max(minY - 0.025, Math.min(maxY, shapedY - maxDown * amount * (0.55 * jawShape + 0.45 * cheekShape) + cornerLift + mouthOpen)),

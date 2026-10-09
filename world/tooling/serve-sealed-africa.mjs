@@ -5,12 +5,14 @@ import { createRequire } from 'node:module';
 import { constants } from 'node:fs';
 import { open, mkdir, mkdtemp, rm, lstat, unlink, readFile, chmod, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { isAbsolute, join, resolve } from 'node:path';
+import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
+import { assertOwnedGroupGone, checkpointPolicy, validateUpgradeArguments } from './stage-checkpoint-policy.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
-       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted] [--seconds 600] [--retain-store]
+       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted | --upgrade-from EXACT40_SHA] [--seconds 600] [--retain-store]
 
 Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. A new stage gets a fresh SQLite store; --resume-control reopens a safely stopped retained checkpoint on its original port and store. --recover-interrupted additionally permits an unfinished running checkpoint only after both its prior owner and owned process group are absent. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGWINCH restarts the Worker on the same port and store without renewing the stage deadline. The internal deadline stops gracefully; Miniflare's own HUP/INT/TERM exit hooks can interrupt cleanup. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
 
@@ -34,7 +36,7 @@ function argumentsOf(argv) {
       result[flag] = true;
       continue;
     }
-    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds', '--resume-control'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
+    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds', '--resume-control', '--upgrade-from'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
     const value = argv[index + 1];
     if (!value || value.startsWith('--')) throw new Error(`missing value for ${flag}`);
     result[flag] = value;
@@ -49,7 +51,19 @@ function argumentsOf(argv) {
   const resumeControl = result['--resume-control'] ? resolve(result['--resume-control']) : undefined;
   if (resumeControl && resumeControl !== control) throw new Error('--control must be the exact same checkpoint path as --resume-control');
   if (result['--recover-interrupted'] && !resumeControl) throw new Error('--recover-interrupted requires --resume-control');
-  return { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, seconds, retainStore: result['--retain-store'] === true, recoverInterrupted: result['--recover-interrupted'] === true };
+  const args = { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, upgradeFrom: result['--upgrade-from'], seconds, retainStore: result['--retain-store'] === true, recoverInterrupted: result['--recover-interrupted'] === true };
+  validateUpgradeArguments(args);
+  return args;
+}
+
+function isAncestor(source, from, to) {
+  try {
+    execFileSync('git', ['-C', source, 'merge-base', '--is-ancestor', from, to], { stdio: 'ignore', timeout: 5000 });
+    return true;
+  } catch (error) {
+    if (error?.status === 1) return false;
+    throw new Error('could not verify bounded Git ancestry for source upgrade');
+  }
 }
 
 async function within(label, operation, limitMs = REQUEST_LIMIT_MS) {
@@ -63,13 +77,14 @@ async function within(label, operation, limitMs = REQUEST_LIMIT_MS) {
 }
 
 async function writeControl(path, value) {
+  const contents = serializeControl(value);
   const handle = await open(path, 'wx', 0o600);
   let identity;
   try {
     const stat = await handle.stat();
     identity = { dev: stat.dev, ino: stat.ino };
     await handle.chmod(0o600);
-    await handle.writeFile(`${JSON.stringify(value, null, 2)}\n`, { encoding: 'utf8' });
+    await handle.writeFile(contents, { encoding: 'utf8' });
     await handle.sync();
     await handle.close();
     return identity;
@@ -78,6 +93,12 @@ async function writeControl(path, value) {
     if (identity) await removeOwnedControl(path, identity).catch(() => {});
     throw error;
   }
+}
+
+function serializeControl(value) {
+  const contents = `${JSON.stringify(value, null, 2)}\n`;
+  assert.ok(Buffer.byteLength(contents, 'utf8') <= 16 * 1024, 'resume checkpoint exceeds the 16384-byte limit');
+  return contents;
 }
 
 async function writePrivateJson(path, value) {
@@ -98,6 +119,7 @@ async function removeOwnedControl(path, identity) {
 }
 
 async function updateOwnedControl(path, identity, value) {
+  const contents = serializeControl(value);
   assert.equal(typeof constants.O_NOFOLLOW, 'number', 'this platform must support O_NOFOLLOW for checkpoint safety');
   const handle = await open(path, constants.O_RDWR | constants.O_NOFOLLOW);
   try {
@@ -105,7 +127,7 @@ async function updateOwnedControl(path, identity, value) {
     assert.ok(stat.isFile() && stat.dev === identity.dev && stat.ino === identity.ino, 'private control file identity changed; refusing checkpoint update');
     await handle.chmod(0o600);
     await handle.truncate(0);
-    await handle.writeFile(`${JSON.stringify(value, null, 2)}\n`, { encoding: 'utf8' });
+    await handle.writeFile(contents, { encoding: 'utf8' });
     await handle.sync();
   } finally { await handle.close(); }
 }
@@ -154,14 +176,18 @@ function assertPriorOwnerStopped(pid) {
 }
 
 async function validateCheckpoint(args, checked) {
+  const controlParent = dirname(args.resumeControl);
+  const controlParentStat = await lstat(controlParent);
+  assert.ok(controlParentStat.isDirectory() && !controlParentStat.isSymbolicLink(), 'checkpoint parent must be a real directory');
+  assert.equal(controlParentStat.uid, process.getuid(), 'checkpoint parent must be owned by the current user');
+  assert.equal(controlParentStat.mode & 0o777, 0o700, 'checkpoint parent permissions must be 0700');
+  assert.equal(await realpath(controlParent), controlParent, 'checkpoint parent must be canonical');
   const { value: checkpoint, identity } = await readPrivateJson(args.resumeControl, 16 * 1024, 'resume checkpoint');
   assert.ok(isRecord(checkpoint), 'resume checkpoint must be a JSON object');
   assert.equal(checkpoint.schemaVersion, 1, 'unsupported resume checkpoint version');
   if (args.recoverInterrupted) assert.equal(checkpoint.stageStatus, 'running', 'interrupted recovery requires an unfinished running checkpoint');
   else assert.equal(checkpoint.stageStatus, 'stopped', 'only a cleanly stopped stage can be resumed');
-  assert.equal(checkpoint.sourceSha, args.sha, 'resume checkpoint source SHA differs from requested source');
-  assert.equal(checkpoint.packageManifestSourceSha, args.sha, 'resume checkpoint manifest SHA is inconsistent');
-  assert.equal(checkpoint.packageDigest, checked.packageDigest, 'resume checkpoint package digest differs from the verified package');
+  const provenance = checkpointPolicy({ checkpoint, args, packageDigest: checked.packageDigest, packageManifestSourceSha: checked.manifest.sourceSha, isAncestor: (from, to) => isAncestor(args.source, from, to) });
   assert.equal(typeof checkpoint.founderCookieForAdminCredit, 'string');
   assert.ok(checkpoint.founderCookieForAdminCredit.length > 0 && checkpoint.founderCookieForAdminCredit.length <= 4096 && !/[\r\n]/.test(checkpoint.founderCookieForAdminCredit), 'invalid private founder cookie field');
   assert.equal(typeof checkpoint.storagePath, 'string');
@@ -204,8 +230,15 @@ async function validateCheckpoint(args, checked) {
   assert.equal(storageStat.mode & 0o077, 0, 'checkpoint SQLite storage must not be group/world accessible');
   assert.equal(await realpath(checkpoint.storagePath), checkpoint.storagePath, 'checkpoint SQLite storage must be canonical');
   const { value: marker } = await readPrivateJson(checkpoint.storeMarkerPath, 2048, 'store identity marker');
-  assert.deepEqual(marker, { schemaVersion: 1, sourceSha: args.sha, packageDigest: checked.packageDigest, storeId: checkpoint.storeId }, 'store marker does not match the verified source/package checkpoint');
-  return { checkpoint, identity, storagePath: checkpoint.storagePath, folder: parent, port, origin: url.origin };
+  assert.deepEqual(marker, { schemaVersion: 1, ...provenance.marker }, 'store marker does not match the immutable store origin');
+  if (args.upgradeFrom !== undefined) {
+    assert.equal(checkpoint.stageStatus, 'stopped', 'source upgrade requires a cleanly stopped checkpoint');
+    assertOwnedGroupGone(() => {
+      try { process.kill(-checkpoint.ownerChildPid, 0); return true; }
+      catch (error) { if (error?.code === 'ESRCH') return false; throw error; }
+    });
+  }
+  return { checkpoint, identity, provenance, storagePath: checkpoint.storagePath, folder: parent, port, origin: url.origin };
 }
 
 async function main(args) {
@@ -416,6 +449,13 @@ async function main(args) {
       deadline,
       founderCookieForAdminCredit: founderCookie,
     };
+    if (resumed?.provenance.upgraded) {
+      controlState.storeOrigin = resumed.provenance.storeOrigin;
+      controlState.sourceUpgradeHistory = resumed.provenance.sourceUpgradeHistory;
+    } else if (resumed?.checkpoint.storeOrigin !== undefined) {
+      controlState.storeOrigin = resumed.checkpoint.storeOrigin;
+      controlState.sourceUpgradeHistory = resumed.checkpoint.sourceUpgradeHistory;
+    }
     if (resumed) await updateOwnedControl(args.control, controlIdentity, controlState);
     else controlIdentity = await writeControl(args.control, controlState);
     stageStarted = true;

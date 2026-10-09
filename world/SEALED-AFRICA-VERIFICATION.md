@@ -62,6 +62,25 @@ node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
 
 Resume accepts only a mode-0600 checkpoint owned by the current user with `stageStatus: "stopped"`, a dead previous owner PID, matching source and verified package digests, a canonical private store path, matching private store marker, fixed loopback port, and public fixture JWK. It verifies the saved founder cookie through `/api/admin/me` before replacing the checkpoint contents in place with the new PID and finite deadline. It does not create an actor, authenticate again, grant credit, or modify SQLite directly. If startup fails before that verification and control update, the stopped checkpoint and store are preserved for retry. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.
 
+### Explicit checkpoint source upgrade
+
+The launcher can explicitly move a stopped fixture checkpoint to a later source commit while retaining the same SQLite store, port, public JWK, founder cookie, and stage identity. This is a fixture compatibility test only; it does not claim that arbitrary Worker schema changes are compatible with the retained store. The exact current source and package are still checked by the existing verifier. The old SHA must equal the checkpoint's latest source, and Git must confirm it is an ancestor of the supplied current `--sha`. Upgrades require the old owner PID and its owned process group to be absent. `--upgrade-from` cannot be combined with interrupted recovery.
+
+```sh
+node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
+  --source "$RELEASE_SOURCE" \
+  --package "$SEALED_PACKAGE" \
+  --sha "$NEW_SOURCE_SHA" \
+  --tools "$MINIFLARE_TOOLS" \
+  --control "$PRIVATE_STAGE_CONTROL" \
+  --resume-control "$PRIVATE_STAGE_CONTROL" \
+  --upgrade-from "$OLD_CHECKPOINT_SHA" \
+  --seconds 600 \
+  --retain-store
+```
+
+The original store marker remains unchanged. The upgraded private control records its original source and package digest in `storeOrigin`, plus a linked `sourceUpgradeHistory` of at most 16 transitions. Every resume checks that provenance and verifies the marker against the original origin; the latest checkpoint source and package digest remain tied to the exact requested source and verified package. The checkpoint is updated only after Worker startup and the original founder cookie succeeds at `/api/admin/me` with root access. The existing 16 KiB checkpoint limit is unchanged. No additional login, actor, funding, or direct game/store edit occurs.
+
 ### Interrupted native stage recovery
 
 The pinned Miniflare exit hook handles SIGHUP by immediately exiting 129, and SIGINT/SIGTERM by immediately exiting 130/143. The first actual SIGHUP restart therefore terminated the host before its private checkpoint could be marked stopped. Its SQLite save and original funding intent remained present; no restart pass was recorded. SIGWINCH is outside both pinned exit-hook signal sets and is now the owned stage restart command. Use the internal stage deadline for graceful cleanup, with enough time before the outer watchdog for disposal. Signals remain emergency stops and can require explicit interrupted recovery.

@@ -9,6 +9,7 @@ import re
 
 MIB = 1024 * 1024
 FORMAT = "feature-index-binding-v1"
+SHARD_FORMAT = "feature-index-binding-v2"
 MAX_BYTES = 4096
 VERSIONS = {
     "format": FORMAT,
@@ -82,12 +83,11 @@ def _validate(value):
     _integer(value["reservedBytes"], 65536, 512*MIB, "reserved bytes")
     if not limits["databaseBytes"] <= process["fileBytes"] <= value["reservedBytes"]:
         raise ValueError("database/file/declared reservation bounds are contradictory")
-    # This relation alone does not prove WAL/bootstrap/directory worst-case space.
-    # Measured allowance admission remains the guarded opener's responsibility.
+    # This relation is not physical WAL/bootstrap headroom; the opener measures that separately.
 
 
 def encode_index_binding(value):
-    """Validate and encode exact ASCII, sorted-key, compact JSON without newline."""
+    """Encode canonical v1 JSON bytes."""
     _validate(value)
     raw = json.dumps(value, sort_keys=True, ensure_ascii=True, separators=(",", ":"),
                      allow_nan=False).encode("ascii")
@@ -110,7 +110,7 @@ def _nonfinite(_):
 
 
 def decode_index_binding(raw):
-    """Validate bytes before parsing; refuse alternate encodings of the same fields."""
+    """Decode canonical v1 bytes without normalization."""
     if type(raw) is not bytes or not 1 <= len(raw) <= MAX_BYTES:
         raise ValueError("index binding requires bounded immutable bytes")
     try:
@@ -124,4 +124,60 @@ def decode_index_binding(raw):
 
 def index_binding_hash(raw):
     decode_index_binding(raw)
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _shard_pins(value):
+    keys = {"planHash", "shardId", "membershipHash", "baseIndexBindingHash"}
+    if (type(value) is not dict or len(value) != 4
+            or any(type(key) is not str for key in value) or set(value) != keys):
+        raise ValueError("shard binding requires its exact pin fields")
+    pins = {key: value[key] for key in keys}
+    for key, pin in pins.items():
+        _sha(pin, f"shard {key}")
+    return pins
+
+
+def encode_index_shard_binding(base_binding_bytes, shard_pins):
+    """Encode a v2 binding."""
+    base = decode_index_binding(base_binding_bytes)
+    pins = _shard_pins(shard_pins)
+    if pins["baseIndexBindingHash"] != hashlib.sha256(base_binding_bytes).hexdigest():
+        raise ValueError("shard base binding hash differs")
+    value = dict(base)
+    value["format"] = SHARD_FORMAT
+    value["shard"] = pins
+    raw = json.dumps(value, sort_keys=True, ensure_ascii=True, separators=(",", ":"),
+                     allow_nan=False).encode("ascii")
+    if len(raw) > MAX_BYTES:
+        raise ValueError("shard binding exceeds its byte bound")
+    return raw
+
+
+def decode_index_shard_binding(raw):
+    """Decode v2 and verify its v1 base."""
+    if type(raw) is not bytes or not 1 <= len(raw) <= MAX_BYTES:
+        raise ValueError("shard binding requires bounded immutable bytes")
+    try:
+        value = json.loads(raw.decode("ascii"), object_pairs_hook=_pairs, parse_constant=_nonfinite)
+    except (UnicodeError, RecursionError) as error:
+        raise ValueError("shard binding encoding/depth is unsupported") from error
+    _object(value, [*VERSIONS, "source", "toolingManifest", "runtime", "engineLimits",
+                    "processLimits", "reservedBytes", "shard"], "shard binding")
+    if type(value["format"]) is not str or value["format"] != SHARD_FORMAT:
+        raise ValueError("unsupported shard binding format")
+    pins = _shard_pins(value["shard"])
+    base = dict(value)
+    del base["shard"]
+    base["format"] = FORMAT
+    base_raw = encode_index_binding(base)
+    if pins["baseIndexBindingHash"] != hashlib.sha256(base_raw).hexdigest():
+        raise ValueError("shard base binding hash differs")
+    if encode_index_shard_binding(base_raw, pins) != raw:
+        raise ValueError("shard binding is not canonical; no implicit normalization")
+    return value
+
+
+def index_shard_binding_hash(raw):
+    decode_index_shard_binding(raw)
     return hashlib.sha256(raw).hexdigest()

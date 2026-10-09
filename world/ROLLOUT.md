@@ -1,11 +1,12 @@
 # Decisions and repeatable rollout after the first compiler
 
-Latest builder scaling checkpoint —9 October2026: exact19dbfe16/run37893670937
-is terminal SUCCESS:406 tests+3 release-policy checks and World TypeScript.
+Latest builder scaling checkpoint —9 October2026: exactcb562c69/run37895287687
+is terminal SUCCESS:413 tests+3 release-policy checks and World TypeScript.
 Connected campaign audit, read-only evidence and bounded namespace shard planning
 pass, as does opaque atomic batch reservation with actual before/after-commit
-SIGKILL recovery; raw/storage caps are unchanged. Connected plan admission,
-membership-bound child bindings/controller execution and finite global aggregate
+SIGKILL recovery and separate v2 binding codecs; raw/storage caps are unchanged.
+Legacy openers remain v1-only. Connected plan admission, controller/transport
+execution and finite global aggregate
 admission are next. Planner status is explicitly not-admitted/not-compiled;
 country geometry, all specified interruption/corruption fixtures and physical
 phones remain open. Source witness allowlist repaired without wildcard expansion;

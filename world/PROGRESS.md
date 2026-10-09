@@ -1,5 +1,41 @@
 # Implementation checkpoint — 9 October 2026
 
+Latest exact-source diagnostic **37895287687** at
+**cb562c69b9c239cf9294d9c3deaa0ee1541401d0** is terminal **SUCCESS**:
+**413tests+3release-policy=416 distinct checks, plus World TypeScript**.
+Root verified22 downloaded artifact hashes, counts and all four accepted binding
+source blobs. Python269=19audit/11session/77affected/162remaining;
+Node144=25protocol/kernel/58contracts/8SDK-campaign/39legacy campaign-Ledger/
+9planner/5release-source; all zero Node failures/skips and Python OK.
+Raw797134B/source892928B/control1048576B remain unchanged; Python binding8133B
+fits its original8KiB snapshot bucket. See
+[index-shard-binding-acceptance.json](index-shard-binding-acceptance.json).
+
+Separate Python/SDK v2 codecs match one static canonical base933B/hash809e1543
+and shard1272B/hash7f37bcf9. Four exact pins bind plan, shard ID, membership and
+original v1 bytes. V1 bytes/semantics remain unchanged; all legacy codecs and
+session preparation rejectv2. This does not prove actual plan membership or
+allocate any roots. The precedingd1c86de2/run37894893154 failed only the new test
+assertion syntax and dependent World compiler; saved negative artifacts retained,
+no subset promotion. The one-parenthesis correction passes the complete successor.
+
+Accepted atomic source11e4a308 merged reviewed graphics coordination860e0e46 and
+is published on main/world-foundation86c3e715; actual mainCI37894589678 SUCCESS.
+New binding milestone is being committed separately; no runtime/map upload.
+V3 immutable whole-plan controller-record source is prepared in only
+index_controller_record.py/test and frozen in successor26e1442b; actual CI
+discovery/acceptance remains pending. It must pin one operation across all
+original16 lifetime attempts. An existing Luna now prepares bounded ACK-window
+pipe transport inside existing pinned helpers, with no regular plan spool or new
+snapshot files. Full plan/control transport must preserve the full1MiB control
+ceiling and all process/file bounds. No actual batch root admission yet.
+Finite global disk/network/retry accounting, full source/context reconstruction,
+owner/reference compilation, country geometry/streaming, Nigeria integration and
+physical phones remain OPEN. Latest06:51UTC WARNING2/paging(~10.3GBswap): no
+optional localheavy worker/compiler/build/server/browser/upload. GoalACTIVE.
+
+Earlier checkpoint paragraphs below are historical where superseded.
+
 Latest exact-source diagnostic **37893670937** at
 **19dbfe1664c533c1f667badd12eb8934fc02c2f7** is terminal **SUCCESS**:
 **406 tests +3 release-policy checks =409 distinct checks, plus World TypeScript**.

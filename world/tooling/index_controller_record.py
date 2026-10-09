@@ -10,6 +10,7 @@ from index_binding import _nonfinite, _pairs
 
 FORMAT = "feature-index-controller-v1"
 FORMAT_V2 = "feature-index-controller-v2"
+FORMAT_V3 = "feature-index-controller-v3"
 MAX_RECORD_BYTES = 64000
 MAX_ATTEMPTS = 16
 MIB = 1024 * 1024
@@ -20,6 +21,7 @@ MAX_WORKER_PID = 2147483647
 
 _TOP = {"format", "namespace", "runtime", "toolingManifest",
         "sourceConfiguration", "limits", "attempts"}
+_TOP_V3 = _TOP | {"operation"}
 _NAMESPACE = {"device", "inode", "lockDevice", "lockInode", "aggregateBytes"}
 _RUNTIME = {"pythonVersion", "sqliteVersion", "pythonBytes", "pythonSha256"}
 _PIN = {"bytes", "sha256"}
@@ -27,6 +29,7 @@ _LIMITS = {"cpuSeconds", "wallSeconds", "rssBytes", "attempts"}
 _ATTEMPT = {"number", "phase", "workerPid", "snapshotDevice", "snapshotInode",
             "resultSha256"}
 _ATTEMPT_V2 = _ATTEMPT | {"operation"}
+_ATTEMPT_V3 = _ATTEMPT | {"operation"}
 _VERSION = re.compile(r"[0-9]{1,3}(?:\.[0-9]{1,3}){2}", re.ASCII)
 _SHA256 = re.compile(r"[a-f0-9]{64}", re.ASCII)
 
@@ -69,9 +72,29 @@ def _operation(value):
     raise ValueError("unsupported controller operation kind")
 
 
-def _validate_attempt(attempt, expected_number, *, v2):
-    _object(attempt, _ATTEMPT_V2 if v2 else _ATTEMPT, "controller attempt")
-    if v2:
+def _plan_operation(value):
+    _object(value, {"kind", "plan", "baseBinding"}, "controller operation")
+    if type(value["kind"]) is not str or value["kind"] != "admit-plan":
+        raise ValueError("unsupported controller operation kind")
+    plan, base = value["plan"], value["baseBinding"]
+    _object(plan, _PIN, "plan pin")
+    _integer(plan["bytes"], 1, 2*MIB, "plan bytes")
+    _sha(plan["sha256"], "plan")
+    _object(base, _PIN, "base binding pin")
+    _integer(base["bytes"], 1, 4096, "base binding bytes")
+    _sha(base["sha256"], "base binding")
+    return {"kind": "admit-plan", "plan": {"sha256": plan["sha256"], "bytes": plan["bytes"]},
+            "baseBinding": {"sha256": base["sha256"], "bytes": base["bytes"]}}
+
+
+def _validate_attempt(attempt, expected_number, *, v2, v3_operation=None):
+    fields = _ATTEMPT_V3 if v3_operation is not None else _ATTEMPT_V2 if v2 else _ATTEMPT
+    _object(attempt, fields, "controller attempt")
+    if v3_operation is not None:
+        actual = _plan_operation(attempt["operation"])
+        if actual != v3_operation:
+            raise ValueError("attempt operation differs from the immutable controller operation")
+    elif v2:
         _operation(attempt["operation"])
     _integer(attempt["number"], 1, MAX_ATTEMPTS, "attempt number")
     if attempt["number"] != expected_number:
@@ -102,10 +125,12 @@ def _validate_attempt(attempt, expected_number, *, v2):
 
 
 def _validate(value):
-    _object(value, _TOP, "controller record")
-    if type(value["format"]) is not str or value["format"] not in {FORMAT, FORMAT_V2}:
+    v3 = type(value) is dict and value.get("format") == FORMAT_V3
+    _object(value, _TOP_V3 if v3 else _TOP, "controller record")
+    if type(value["format"]) is not str or value["format"] not in {FORMAT, FORMAT_V2, FORMAT_V3}:
         raise ValueError("unsupported controller record format")
     v2 = value["format"] == FORMAT_V2
+    operation = _plan_operation(value["operation"]) if v3 else None
 
     namespace = value["namespace"]
     _object(namespace, _NAMESPACE, "controller namespace")
@@ -137,7 +162,7 @@ def _validate(value):
     if type(attempts) is not list or len(attempts) > limits["attempts"]:
         raise ValueError("controller attempts exceed their immutable bound")
     for number, attempt in enumerate(attempts, 1):
-        _validate_attempt(attempt, number, v2=v2)
+        _validate_attempt(attempt, number, v2=v2, v3_operation=operation)
         if number < len(attempts) and attempt["phase"] != "terminal":
             raise ValueError("every nonlast controller attempt must be terminal")
 
@@ -193,8 +218,13 @@ def start_attempt(record, operation=None):
     if result["format"] == FORMAT:
         if operation is not None:
             raise ValueError("v1 controller records do not accept operation fields")
-    else:
+    elif result["format"] == FORMAT_V2:
         selected = {"kind": "startup", "binding": None} if operation is None else _operation(operation)
+        attempt["operation"] = selected
+    else:
+        selected = _plan_operation(result["operation"] if operation is None else operation)
+        if selected != result["operation"]:
+            raise ValueError("operation differs from the immutable controller header")
         attempt["operation"] = selected
     attempts.append(attempt)
     return result

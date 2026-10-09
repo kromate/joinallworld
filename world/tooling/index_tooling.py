@@ -27,7 +27,6 @@ FILES = tuple(sorted([
     "world/tooling/index_namespace.py",
     "world/tooling/index_registry_worker.py",
     "world/tooling/index_registry_startup.py",
-    "world/tooling/index_registry_lease_witness.py",
     "world/tooling/index_controller_record.py",
     "world/tooling/index_controller_state.py",
     "world/tooling/index_registry_controller.py",

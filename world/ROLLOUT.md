@@ -1,5 +1,14 @@
 # Decisions and repeatable rollout after the first compiler
 
+Latest builder checkpoint — 9 October2026: exact019f9179/run37898985723 is terminal
+SUCCESS with432 tests, three policy checks and World TypeScript. Complete plan
+validation, anonymous bounded transport, immutable controller records and actual
+4096-request/every-binding TS/Python conformance are accepted; source/control caps
+are unchanged. See INDEX-SHARD-PLAN-VALIDATION.md and latest PROGRESS.md. Connected
+batch/root admission with real frozen descriptor evidence and finite global
+accounting remain next. No runtime/map release or whole-world completion claim.
+Older checkpoints below are historical where superseded.
+
 Latest builder scaling checkpoint —9 October2026: exactcb562c69/run37895287687
 is terminal SUCCESS:413 tests+3 release-policy checks and World TypeScript.
 Connected campaign audit, read-only evidence and bounded namespace shard planning

@@ -1,5 +1,82 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **019f917942bdeaa2d5ee6e1950f28389363337d5**, run **37898985723**, is terminal
+**SUCCESS**: **432 tests +3 policy =435 distinct checks, plus World TypeScript**.
+Root verified all 22 artifact hashes, all 14 changed source/test blobs and one
+removed witness. Python284=19audit/11session/77affected/177remaining;
+Node148=27protocol/kernel/58contracts/8actual SDK-campaign/39legacy campaign-Ledger/
+11planner and cross-language/5release-source. No Node failures/skips; every Python
+module group reports OK. The fixed source inventory is 46 inputs after witness
+consolidation; raw797134B/source892928B/control1048576B remain unchanged.
+See [index-shard-plan-validation-acceptance.json](index-shard-plan-validation-acceptance.json)
+and [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md).
+
+Accepted scope: immutable V3 operation records, actual-close proof for exact
+empty/zero native RSS samples, anonymous ACK-window transport of a full 2MiB
+plan, complete Python recomputation and actual TS/Python matching for all4096
+requests/every child binding. All existing actual session/capture/audit/recovery
+checks pass together. No source-bank, SQL charge or root allocation is performed
+by these plan primitives. Before/after-commit atomic charge tests remain intact.
+The v19 negative diagnostics are retained; no passing subset was promoted.
+
+WORLD is synchronized with reviewed coordination-only main **3f1d1806**. This
+milestone is being committed separately; no runtime/map upload. Next freeze and
+verify real campaign/source/context descriptor evidence, introduce explicit
+v2-aware namespace/root/publication paths, then connect a supervised immutable
+batch worker that reserves all entries before any mkdir and recovers the exact
+same-plan root prefix. Existing legacy openers remain v1-only. Finite global
+disk/network/retry accounting, compiled country geometry/streaming, Nigeria
+integration and physical phones remain OPEN. Latest07:21UTC WARNING2/~10.25GB
+swap: no optional localheavy/browser/build/test/server/upload. Full goalACTIVE.
+
+Earlier checkpoints below are historical where superseded.
+
+Unaccepted **019f917942bdeaa2d5ee6e1950f28389363337d5** is published on the existing
+diagnostic branch; actual serial run **37898985723** is in progress. It corrects
+the actual zero/non-zombie RSS close path while preserving parser refusal of
+live-zero samples, native ps/error gating, recorded close timestamps within the
+original one-second sample window, terminal code/pipe proof and all original caps.
+It also fixes the controller fixture's mode-vs-script argument mistake, confines
+fault-worker patching so native RSS sampling is unchanged, and fits descriptor
+fixtures inside their existing 512000-byte envelope. Exact v19 **37898339451** is
+terminal FAILURE; all 22 hashed artifacts and the actual `0 Rs` SDK row are saved
+in `.cache/world-build/evidence/shard-plan-v19-failure.json`. Its 11 actual planner/
+cross-language checks pass, including all 4096 requests and every child binding;
+this is not overall acceptance or permission to promote a passing subset.
+No runtime/map release or Nigeria/game mutation. Full goal remains ACTIVE.
+
+Earlier checkpoints below are historical where superseded.
+
+Current unaccepted controller successor **b72dda4282a20b6260adad3877204b16409b907f**
+in run **37896585189** is terminal **FAILURE**. Root downloaded and hashed all
+22 diagnostic artifacts. The actual SDK/campaign suite passes 8/8 and the raw
+preflight remains 797134B/source892928B/control1048576B; the remaining Python
+suite fails one inherited-pipe fixture because the remembered descendant's full
+argv identity could not be confirmed. The original row was not retained, so
+display-width truncation is a hypothesis. The successor uses full-width `ps`
+with bounded row diagnostics while retaining actual terminal/lease proof before
+scratch cleanup. No subset is promoted. Negative evidence is retained at
+`.cache/world-build/evidence/shard-controller-v18-failure.json`.
+
+Source binding milestone **04628a29** is published and main CI **37896046980**
+passed. WORLD safely adopted coordination-only main **403df951** without changing
+dirty drafts. Complete plan transport and Python semantic recomputation remain
+unaccepted source work. The remote diagnostic now includes actual TS-to-Python
+greedy partition and all-4096-request comparisons, including every child binding;
+none has run yet. Exact next step: finish source review, freeze one coherent
+candidate, then run the full remote suite under unchanged resource limits.
+Candidate **12219815** is now frozen and published to the diagnostic branch;
+actual serial run **37898339451** is in progress. The 46-input consolidation offsets
+the removed witness's 8KiB bucket against registry-worker growth, preserving the
+892928B source and 1048576B control preflight. All local edits remain unaccepted;
+see [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md).
+Actual batch/root admission, global accounting and compiled country detail remain
+open. Latest 07:06 UTC monitor is WARNING2 with approximately 10.2GB swap; no
+optional local heavy worker/compiler/build/server/browser/upload is started.
+Nigeria/game data are unchanged, no new runtime/map release. Goal remains ACTIVE.
+
+Earlier checkpoints below are historical where superseded.
+
 Latest exact-source diagnostic **37895287687** at
 **cb562c69b9c239cf9294d9c3deaa0ee1541401d0** is terminal **SUCCESS**:
 **413tests+3release-policy=416 distinct checks, plus World TypeScript**.

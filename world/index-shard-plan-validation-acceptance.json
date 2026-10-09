@@ -1,0 +1,200 @@
+{
+  "format": "index-shard-plan-validation-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "019f917942bdeaa2d5ee6e1950f28389363337d5",
+  "runId": 37898985723,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37898985723",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-boundary.stderr": 177,
+    "python-regression.stderr": 77,
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11
+  },
+  "nodeTests": {
+    "node-contracts.tap": 58,
+    "shard-plan.tap": 11,
+    "node-audit.tap": 27,
+    "sdk-audit.tap": 8,
+    "campaign-regression.tap": 39,
+    "release-source.tap": 5
+  },
+  "distinctTests": 432,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "fixedSourceInputs": 46,
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "5f7f8cf4c5a8c13307caa09833d0fd830287f5949a2eb1ad12add7e6fa2ce955",
+      "bytes": 8162
+    },
+    "world/index-shard-plan-python.test.ts": {
+      "sha256": "a071301277f553a3b145f8f309d04efd85e4a566098a95e96ebf4309b838c879",
+      "bytes": 5545
+    },
+    "world/feature-index-session.ts": {
+      "sha256": "e846291f81d02994047a2c1287e0fcba98fe56566a8513fb2e69806f2f5591ee",
+      "bytes": 110433
+    },
+    "world/feature-index-session.test.ts": {
+      "sha256": "6da47ef20104c793857ba07e76852b4b51ce322bede65c8a6eec6a8885496cf4",
+      "bytes": 31480
+    },
+    "world/tooling/index_controller_record.py": {
+      "sha256": "6aefe7436758d8ce2e0c35d09243a9f6d406ebe67156af4257ca1b62227b90a5",
+      "bytes": 12405
+    },
+    "world/tooling/test_index_controller_record.py": {
+      "sha256": "c7b06fec6e8f1e9fef24c4764a9282e216bc6a67f56c5103bccbae5367ac8c15",
+      "bytes": 16269
+    },
+    "world/tooling/index_admission_input.py": {
+      "sha256": "3a7ae93c6d417dbd3b65bed6fe609a3f7afedf705034d63562ac03ef474ddd77",
+      "bytes": 8017
+    },
+    "world/tooling/index_admission_worker.py": {
+      "sha256": "e767cb0d73505c285b551f35f7237b3770c6e1cebf07bfe264d4835fb35c4a76",
+      "bytes": 5302
+    },
+    "world/tooling/index_registry_worker.py": {
+      "sha256": "3b4ee6a239c860633b809cf533724d1df844c5a7519d51d889f276c253265225",
+      "bytes": 24557
+    },
+    "world/tooling/index_resource_limits.py": {
+      "sha256": "fe806d050f44d2f0d6b86f5a67ba0040e0522130a33847bc5c75ec55518ac8c2",
+      "bytes": 32725
+    },
+    "world/tooling/index_tooling.py": {
+      "sha256": "e684c376ff7150b1c2350c920579a1f402386a22eab90e754d13e8c4957eb41d",
+      "bytes": 8757
+    },
+    "world/tooling/test_index_process_boundary.py": {
+      "sha256": "3e154b6db0972bd02ff7a6a28aece131dde9ec91515f3f1a13e63325463068df",
+      "bytes": 22464
+    },
+    "world/tooling/test_index_registry_controller.py": {
+      "sha256": "f1369f62a12a068f8fcd1986190b2600be19abe16bc46b8c25f051c72b22fd90",
+      "bytes": 9793
+    },
+    "world/tooling/test_index_registry_worker.py": {
+      "sha256": "02e3f4a4776bb48d026df9066804f6154ada9354ac1ceb5b747e2bf43f3e5f4c",
+      "bytes": 19859
+    }
+  },
+  "removedSourceFiles": [
+    "world/tooling/index_registry_lease_witness.py"
+  ],
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "53c5b5b8eb2fa5844f40672843c9cac897db3b09f39edc4942bb70429415bb3e",
+      "bytes": 10427
+    },
+    "node-audit.tap": {
+      "sha256": "ed78fbc8907e63b6420c944124bc85e6d7f9516e6101f60c2841405953c9b671",
+      "bytes": 7203
+    },
+    "node-contracts.tap": {
+      "sha256": "e23b96dea4fbde0ac6179e5732468509801796ddc3215e755cdf53fe064c3d2b",
+      "bytes": 14350
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "d6663045cf3fca0bcfcab6bb97093a82a6833067eea706bdd2cd92c58da445ed",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "b4e537efaa992aea534563cb8e2770fe5dcdc77dabb331ae25675b3937482269",
+      "bytes": 1437
+    },
+    "python-boundary.stdout": {
+      "sha256": "aedc178c5b752dd2190ed3947238acc17a56fcfdf87bbbbf1d4cf9759a947cca",
+      "bytes": 6828
+    },
+    "python-regression.stderr": {
+      "sha256": "76b27527bbc1cdebc3cb8292f0985f5fed6c95166ed379e4fcdbde77a68e21cf",
+      "bytes": 1133
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "3813781af01738f40288b25d2d21b227fffa910c423aa4a7ef050dc7d30f62b0",
+      "bytes": 888
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "613f8f1fb5874e9ccf32e5ebf93b2671694b9fb7679d674c40c9c9f944657cda",
+      "bytes": 1361
+    },
+    "sdk-audit.tap": {
+      "sha256": "97d1ce7f4d92668aabddbe7be32eb2242d62eba0fed51a598a715da9e33fefa0",
+      "bytes": 2499
+    },
+    "shard-plan.tap": {
+      "sha256": "c4d2b04fcb6588cc257e6312fa3bf5a8e999b23f82ab874232bf04c3bb6f3e3c",
+      "bytes": 3235
+    },
+    "source-sha.txt": {
+      "sha256": "30d6e3cc20da152a1f9691e78aa50a69cbb111d2064e41c394259a4582c037d8",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "acceptedScope": [
+    "Immutable V3 operation codec",
+    "Strict closure proof for native empty orzero-RSS samples",
+    "Full2MiB bounded anonymous ACKpipe transport",
+    "Python complete-plan semantic recomputation",
+    "Actual TS-to-Python4096-request/every-binding conformance",
+    "Existing capture/session/campaign/recovery regressions"
+  ],
+  "notEstablished": [
+    "Connected batch/root admission",
+    "Actual raw/campaign/context descriptor provenance",
+    "Finite global disk/network/retry admission",
+    "Country geometry andstreaming",
+    "Nigeria rendering integration",
+    "Physical-phone performance",
+    "Production runtime deployment"
+  ]
+}

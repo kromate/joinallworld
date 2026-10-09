@@ -1,10 +1,12 @@
 """Pending serial fixtures for retained roots and inherited Node descriptors."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import shutil
 import select
 import selectors
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -18,6 +20,109 @@ from index_writer_lock import index_writer_lease, IndexWriterBusy
 
 class IndexProcessBoundaryTests(unittest.TestCase):
     node = os.environ.get("WORLD_TEST_NODE") or shutil.which("node") or "/missing-node-runtime"
+
+    def _plan_call(self, root, lease, raw, **options):
+        from index_reservations import REGISTRY_ALLOWANCE
+        pin = {"sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
+        config = {"aggregateBytes": REGISTRY_ALLOWANCE+65536,
+                  "pythonVersion": sys.version.split()[0], "sqliteVersion": sqlite3.sqlite_version}
+        return _run_fixed_process(sys.executable, "index-registry-plan-witness", root,
+            file_bytes=4*1024*1024, cpu_seconds=10, wall_seconds=15, heap_mib=64,
+            rss_limit_bytes=384*1024*1024, lease_descriptor=lease.descriptor,
+            registry_configuration=config, _plan_input={"raw": raw, "pin": pin}, **options)
+
+    def test_plan_witness_transports_full_two_mib_without_a_spool_file(self):
+        raw = bytes(range(256))*8192
+        with tempfile.TemporaryDirectory(prefix="allworld-index-plan-fixture-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with index_writer_lease(root) as lease:
+                result = self._plan_call(root, lease, raw)
+            self.assertEqual((result["returnCode"], result["reason"]), (0, "exit"), result["stderr"])
+            report = json.loads(result["stdout"])
+            self.assertEqual(report, {"format": "index-registry-plan-witness-v1", "bytes": len(raw),
+                                      "sha256": hashlib.sha256(raw).hexdigest(), "chunks": 64})
+            self.assertEqual(set(result["scratchFilesBeforeRecovery"]), {"writer.lock"})
+
+    def test_plan_transport_rejects_early_exit_wrong_ack_and_truncation(self):
+        raw = b"P"*65536
+        scripts = {
+            "early": "import os; os._exit(7)",
+            "wrong": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); a=int(os.environ['WORLD_INDEX_PLAN_ACK_DESCRIPTOR']); os.set_blocking(r,True); os.read(r,32768); os.write(a,b'\\0'*8)",
+            "short": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); os.set_blocking(r,True); os.read(r,1); os._exit(0)",
+        }
+        native = subprocess.Popen
+        for mode, code in scripts.items():
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory(prefix="allworld-index-plan-fault-") as temporary:
+                root = Path(temporary).resolve(strict=True); owned = []
+                def launch(_command, **kwargs):
+                    # subprocess.run's RSS sampler shares the subprocess module.
+                    # Replace the fixed worker only, leaving /bin/ps native.
+                    if _command[0] == "/bin/ps":
+                        return native(_command, **kwargs)
+                    process = native([sys.executable, "-I", "-B", "-c", code], **kwargs)
+                    owned.append(process); return process
+                with index_writer_lease(root) as lease, patch("index_resource_limits.subprocess.Popen", side_effect=launch):
+                    result = self._plan_call(root, lease, raw)
+                self.assertEqual(len(owned), 1)
+                self.assertIsNotNone(owned[0].returncode)
+                self.assertNotEqual((result["returnCode"], result["reason"]), (0, "exit"))
+                if mode == "wrong":
+                    self.assertEqual(result["reason"], "ack-invalid")
+
+    def test_plan_selector_setup_failure_reaps_and_closes_owned_pipe_transport(self):
+        native = subprocess.Popen; owned = []; raw = b"S"*32769
+        def launch(*args, **kwargs):
+            process = native(*args, **kwargs); owned.append(process); return process
+        with tempfile.TemporaryDirectory(prefix="allworld-index-plan-setup-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with index_writer_lease(root) as lease, patch("index_resource_limits.subprocess.Popen", side_effect=launch), patch(
+                    "index_resource_limits.selectors.DefaultSelector", side_effect=OSError("injected selector setup failure")):
+                with self.assertRaisesRegex(OSError, "selector setup"):
+                    self._plan_call(root, lease, raw)
+            self.assertEqual(len(owned), 1)
+            self.assertIsNotNone(owned[0].returncode)
+            self.assertTrue(owned[0].stdout.closed and owned[0].stderr.closed)
+
+    def test_second_plan_pipe_allocation_failure_closes_first_pair_before_launch(self):
+        native_pipe = os.pipe; made = []; calls = 0
+        def fail_second():
+            nonlocal calls
+            calls += 1
+            if calls == 2: raise OSError("injected second pipe allocation failure")
+            pair = native_pipe(); made.extend(pair); return pair
+        with tempfile.TemporaryDirectory(prefix="allworld-index-plan-pipe-fail-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with index_writer_lease(root) as lease, patch("os.pipe", side_effect=fail_second), patch(
+                    "index_resource_limits.subprocess.Popen") as launch:
+                with self.assertRaisesRegex(OSError, "second pipe"):
+                    self._plan_call(root, lease, b"bounded")
+            launch.assert_not_called()
+            self.assertEqual(len(made), 2)
+            for descriptor in made:
+                with self.assertRaises(OSError): os.fstat(descriptor)
+
+    def test_unconfirmed_plan_reap_retains_transport_and_bounded_input(self):
+        native = subprocess.Popen; owned = []; raw = b"R"*32768
+        def launch(*args, **kwargs):
+            process = native(*args, **kwargs); owned.append(process); wait = process.wait
+            def timeout(timeout=None):
+                wait(timeout=10); raise subprocess.TimeoutExpired(process.args, timeout)
+            process.wait = timeout; return process
+        with tempfile.TemporaryDirectory(prefix="allworld-index-plan-retain-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            try:
+                with index_writer_lease(root) as lease, patch("index_resource_limits.subprocess.Popen", side_effect=launch), patch(
+                        "index_resource_limits.selectors.DefaultSelector", side_effect=OSError("injected setup failure")):
+                    with self.assertRaises(IndexWorkerUnreaped) as caught:
+                        self._plan_call(root, lease, raw)
+                self.assertEqual(caught.exception.retained_plan_input, raw)
+                self.assertEqual(len(caught.exception.retained_plan_fds), 2)
+                self.assertIsNotNone(owned[0].returncode)
+                self.assertTrue(owned[0].stdout.closed and owned[0].stderr.closed)
+            finally:
+                if "caught" in locals():
+                    for descriptor in caught.exception.retained_plan_fds:
+                        os.close(descriptor)
 
     def test_reaped_leader_with_live_inherited_pipe_is_bounded_and_preserved(self):
         # Inject a real fork into the test launch only. Production fixed workers
@@ -49,19 +154,24 @@ class IndexProcessBoundaryTests(unittest.TestCase):
             if child and child[0] > 2:
                 deadline = time.monotonic()+5
                 while time.monotonic() < deadline:
-                    status = subprocess.run(["/bin/ps", "-o", "pid=,stat=,args=", "-p", str(child[0])], capture_output=True, timeout=1)
+                    # Pipe output can otherwise truncate argv to the default
+                    # display width, making our exact fixture look foreign.
+                    status = subprocess.run(["/bin/ps", "-ww", "-o", "pid=,stat=,args=", "-p", str(child[0])], capture_output=True, timeout=1)
                     if status.returncode == 1 and not status.stdout.strip():
                         confirmed = True; break
                     fields = status.stdout.strip().split(None, 2)
                     if (status.returncode != 0 or len(fields) != 3 or fields[0] != str(child[0]).encode()):
-                        raise RuntimeError(f"fixture descendant pid {child[0]} state unavailable; preserve {root}")
+                        raise RuntimeError(f"fixture descendant pid {child[0]} state unavailable: "
+                                           f"rc={status.returncode}, stdout={status.stdout[:2048]!r}, "
+                                           f"stderr={status.stderr[:256]!r}; preserve {root}")
                     if fields[1].startswith(b"Z"):
                         # The exact known child is terminal, with no executable
                         # body or open descriptors. Reacquire its actual lease
                         # below before cleaning up; never signal a remembered PID.
                         confirmed = True; break
                     if code.encode() not in fields[2]:
-                        raise RuntimeError(f"fixture descendant pid {child[0]} identity unavailable; preserve {root}")
+                        raise RuntimeError(f"fixture descendant pid {child[0]} identity unavailable: "
+                                           f"stdout={status.stdout[:2048]!r}; preserve {root}")
                     time.sleep(0.02)
             if confirmed:
                 with index_writer_lease(root): pass

@@ -15,7 +15,7 @@ from index_binding_publish import publish_index_binding
 from index_namespace import open_index_namespace, namespace_binding
 from index_root import charged_index_root, _binding, _lease
 from index_registry_worker import (_runtime_environment, _private_database, _private_root,
-                                   _read_exact_private, _rss_kib, _EXPECTED_STATS)
+                                   _read_exact_private, _rss_kib, _EXPECTED_STATS, read_plan_stream, _witness_limits)
 
 
 def run_admission(root, budget, namespace_lease, on_boundary=lambda name: None):
@@ -65,7 +65,28 @@ def run_admission(root, budget, namespace_lease, on_boundary=lambda name: None):
     return result
 
 
+def _plan_witness():
+    """Fixed bounded transport witness; never opens SQL or allocates children."""
+    root, _, lease = _runtime_environment()
+    _witness_limits()
+    raw_fd = os.environ.get("WORLD_INDEX_PLAN_DESCRIPTOR")
+    raw_ack = os.environ.get("WORLD_INDEX_PLAN_ACK_DESCRIPTOR")
+    raw_bytes = os.environ.get("WORLD_INDEX_PLAN_BYTES")
+    raw_sha = os.environ.get("WORLD_INDEX_PLAN_SHA256")
+    if (any(type(value) is not str for value in (raw_fd, raw_ack, raw_bytes, raw_sha))
+            or not raw_fd.isdigit() or not raw_ack.isdigit() or not raw_bytes.isdigit()
+            or len(raw_fd) > 10 or len(raw_ack) > 10 or len(raw_bytes) > 7
+            or len(raw_sha) != 64 or any(char not in "0123456789abcdef" for char in raw_sha)):
+        raise ValueError("plan witness requires exact bounded pipe pins")
+    _, report = read_plan_stream(int(raw_fd), int(raw_ack), lease.descriptor,
+                                 {"sha256": raw_sha, "bytes": int(raw_bytes)})
+    print(json.dumps({"format": "index-registry-plan-witness-v1", **report}, sort_keys=True), flush=True)
+    return 0
+
+
 def main():
+    if sys.argv == [sys.argv[0], "--plan"]:
+        return _plan_witness()
     if len(sys.argv) != 1: raise ValueError("admission worker accepts no arguments")
     root, budget, lease = _runtime_environment()
     print(run_admission(root, budget, lease), flush=True)

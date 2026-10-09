@@ -4,7 +4,7 @@ import json
 import unittest
 
 from index_controller_record import (
-    FORMAT, FORMAT_V2, MAX_AGGREGATE_BYTES, MIN_AGGREGATE_BYTES, MAX_INT, MIB,
+    FORMAT, FORMAT_V2, FORMAT_V3, MAX_AGGREGATE_BYTES, MIN_AGGREGATE_BYTES, MAX_INT, MAX_ATTEMPTS, MIB,
     decode_controller_record,
     encode_controller_record, finish_attempt, snapshot_ready, start_attempt,
     worker_started,
@@ -33,6 +33,15 @@ def record(*, attempts=2):
 def record_v2(*, attempts=2):
     value = record(attempts=attempts)
     value["format"] = FORMAT_V2
+    return value
+
+
+def record_v3(*, attempts=2):
+    value = record(attempts=attempts)
+    value["format"] = FORMAT_V3
+    value["operation"] = {"kind": "admit-plan",
+        "plan": {"sha256": "d"*64, "bytes": 2097152},
+        "baseBinding": {"sha256": "e"*64, "bytes": 4096}}
     return value
 
 
@@ -204,6 +213,9 @@ class IndexControllerRecordTests(unittest.TestCase):
         for operation in invalid_operations:
             with self.subTest(operation=operation), self.assertRaises(ValueError):
                 start_attempt(record_v2(), operation=operation)
+        plan_operation = record_v3()["operation"]
+        with self.assertRaises(ValueError):
+            start_attempt(record_v2(), operation=plan_operation)
 
         malformed_attempts = []
         value = start_attempt(record_v2()); del value["attempts"][0]["operation"]
@@ -230,6 +242,74 @@ class IndexControllerRecordTests(unittest.TestCase):
         del v2_without_operation["attempts"][0]["operation"]
         with self.assertRaises(ValueError):
             encode_controller_record(v2_without_operation)
+
+    def test_v3_plan_operation_is_immutable_across_two_attempts_and_roundtrips(self):
+        original = record_v3()
+        operation = copy.deepcopy(original["operation"])
+        first = start_attempt(original)
+        first = finish_attempt(snapshot_ready(first, 7, 8), RESULT)
+        second = start_attempt(first)
+        second = worker_started(snapshot_ready(second, 9, 10), 4321)
+        terminal = finish_attempt(second, RESULT)
+        self.assertEqual(terminal["operation"], operation)
+        self.assertEqual([attempt["operation"] for attempt in terminal["attempts"]], [operation, operation])
+        raw = encode_controller_record(terminal)
+        decoded = decode_controller_record(raw)
+        self.assertEqual(decoded, terminal)
+        self.assertEqual(encode_controller_record(decoded), raw)
+
+    def test_v3_changed_plan_or_base_is_refused_before_and_after_terminal(self):
+        original = record_v3()
+        changed_plan = copy.deepcopy(original["operation"])
+        changed_plan["plan"]["sha256"] = "f"*64
+        with self.assertRaisesRegex(ValueError, "immutable controller header"):
+            start_attempt(original, operation=changed_plan)
+        self.assertEqual(original["attempts"], [])
+        current = finish_attempt(snapshot_ready(start_attempt(original), 1, 2), RESULT)
+        changed_base = copy.deepcopy(original["operation"])
+        changed_base["baseBinding"]["bytes"] -= 1
+        with self.assertRaisesRegex(ValueError, "immutable controller header"):
+            start_attempt(current, operation=changed_base)
+        forged = copy.deepcopy(current)
+        forged["attempts"][0]["operation"]["baseBinding"]["sha256"] = "f"*64
+        with self.assertRaisesRegex(ValueError, "immutable controller operation"):
+            encode_controller_record(forged)
+        forged = copy.deepcopy(current)
+        forged["operation"]["plan"]["sha256"] = "f"*64
+        with self.assertRaisesRegex(ValueError, "immutable controller operation"):
+            encode_controller_record(forged)
+
+    def test_v3_operation_schema_copy_and_lifetime_attempt_limit_are_strict(self):
+        invalid = []
+        for field, value in [("kind", "admit"), ("plan", {"sha256": "d"*64, "bytes": True}),
+                             ("plan", {"sha256": "d"*64, "bytes": 2097153}),
+                             ("baseBinding", {"sha256": "e"*64, "bytes": 4097}),
+                             ("baseBinding", {"sha256": "E"*64, "bytes": 4})]:
+            value_record = record_v3(); value_record["operation"][field] = value; invalid.append(value_record)
+        value = record_v3(); value["operation"]["unknown"] = 1; invalid.append(value)
+        value = record_v3(); del value["operation"]["plan"]; invalid.append(value)
+        value = record_v3(); value["operation"]["plan"]["extra"] = 1; invalid.append(value)
+        value = record_v3(); value["operation"]["baseBinding"]["bytes"] = 0; invalid.append(value)
+        for value in invalid:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                encode_controller_record(value)
+
+        source = record_v3(attempts=MAX_ATTEMPTS)
+        operation = copy.deepcopy(source["operation"])
+        started = start_attempt(source)
+        source["operation"]["baseBinding"]["bytes"] = 1
+        self.assertEqual(started["operation"], operation)
+        self.assertEqual(started["attempts"][0]["operation"], operation)
+        current = started
+        for number in range(MAX_ATTEMPTS):
+            if current["attempts"][-1]["phase"] == "prepared":
+                current = finish_attempt(snapshot_ready(current, number, number+1), RESULT)
+            if len(current["attempts"]) < MAX_ATTEMPTS:
+                current = start_attempt(current)
+        with self.assertRaisesRegex(ValueError, "budget is exhausted"):
+            start_attempt(current)
+        with self.assertRaises(ValueError):
+            decode_controller_record(b"x"*64001)
 
 
 if __name__ == "__main__":

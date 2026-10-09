@@ -5,6 +5,7 @@ FSIZE is per file; RSS is sampled, not a kernel hard total-memory guarantee.
 """
 import argparse
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -36,7 +37,8 @@ WORKERS = {
     "index-registry-startup": HERE / "index_registry_worker.py",
     "index-registry-admit": HERE / "index_admission_worker.py",
     "index-registry-admit-crash": HERE / "index_admission_crash.py",
-    "index-registry-lease-witness": HERE / "index_registry_lease_witness.py",
+    "index-registry-lease-witness": HERE / "index_registry_worker.py",
+    "index-registry-plan-witness": HERE / "index_admission_worker.py",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
@@ -65,6 +67,40 @@ def bounded_integer(value, minimum, maximum, label):
     if type(value) is not int or not minimum <= value <= maximum:
         raise ValueError(f"{label} must be an integer in [{minimum}, {maximum}]")
     return value
+
+
+def _write_plan_chunk(state, raw, size, selector):
+    """Write one bounded window before awaiting its ACK."""
+    start = state.bytesWritten; end = min((state.acksReceived+1)*32768, size)
+    try: count = os.write(state.writeParent, raw[start:end])
+    except (InterruptedError, BlockingIOError): return None
+    except BrokenPipeError: return "input-closed"
+    if count < 1: return "input-closed"
+    state.bytesWritten += count
+    if state.bytesWritten == end:
+        selector.unregister(state.writeParent); state.awaitingAck = True
+    return None
+
+
+def _read_plan_ack(state, size, selector):
+    """Advance one exact ACK/window; tolerate partial bytes and EINTR."""
+    try: data = os.read(state.readParent, 8-len(state.ackBuffer))
+    except (InterruptedError, BlockingIOError): return None
+    if not data:
+        selector.unregister(state.readParent); state.ackEOF = True
+        return None if (state.acksReceived == (size+32767)//32768 and state.writeParent is None and not state.ackBuffer) else "ack-eof"
+    state.ackBuffer.extend(data)
+    if len(state.ackBuffer) < 8: return None
+    sequence = int.from_bytes(state.ackBuffer[:4], "big"); count = int.from_bytes(state.ackBuffer[4:], "big")
+    expected = min(32768, size-state.acksReceived*32768)
+    if len(state.ackBuffer) != 8 or not state.awaitingAck or sequence != state.acksReceived+1 or count != expected:
+        return "ack-invalid"
+    state.acksReceived = sequence; state.ackBuffer.clear(); state.awaitingAck = False
+    if state.bytesWritten == size:
+        from index_admission_input import verify_plan_parent_pipes
+        verify_plan_parent_pipes(state); os.close(state.writeParent); state.writeParent = None
+    else: selector.register(state.writeParent, selectors.EVENT_WRITE, "input")
+    return None
 
 
 def reduced_limit(kind, requested):
@@ -153,7 +189,7 @@ def recovered_witness(root):
 def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
                        wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None,
                        execution_root=None, namespace_descriptor=None, registry_configuration=None,
-                       capture_configuration=None, audit_configuration=None):
+                       capture_configuration=None, audit_configuration=None, _plan_input=None):
     """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
 
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
@@ -170,7 +206,21 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
     admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash"}
-    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker
+    plan_worker = worker == "index-registry-plan-witness"
+    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker or plan_worker
+    if plan_worker != (_plan_input is not None): raise ValueError("plan worker mismatch")
+    plan_raw = plan_pin = None
+    if plan_worker:
+        if type(_plan_input) is not dict: raise ValueError("bad plan input")
+        frozen_input = dict(_plan_input)
+        if set(frozen_input) != {"raw", "pin"} or type(frozen_input["raw"]) is not bytes or type(frozen_input["pin"]) is not dict:
+            raise ValueError("invalid plan input")
+        plan_raw, plan_pin = frozen_input["raw"], dict(frozen_input["pin"])
+        if set(plan_pin) != {"sha256", "bytes"} or not 1 <= len(plan_raw) <= 2*MIB: raise ValueError("invalid plan input")
+        if (type(plan_pin["sha256"]) is not str or not re.fullmatch(r"[a-f0-9]{64}", plan_pin["sha256"])
+                or type(plan_pin["bytes"]) is not int or plan_pin["bytes"] != len(plan_raw) or
+                hashlib.sha256(plan_raw).hexdigest() != plan_pin["sha256"]):
+            raise ValueError("plan pin mismatch")
     if registry_worker:
         from index_namespace import _aggregate
         registry_fields = {"aggregateBytes", "pythonVersion", "sqliteVersion"}
@@ -326,6 +376,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             environment["WORLD_INDEX_BINDING_DESCRIPTOR"] = str(registry_configuration["bindingDescriptor"])
             environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
+        if plan_worker: command.append("--plan")
+        elif worker == "index-registry-lease-witness": command.append("--lease-witness")
     else:
         # The disposable witness is fixed plain JS. Loading the TS transpiler can
         # exceed its 64MiB RSS guard before the baseline SQL table even exists.
@@ -336,6 +388,16 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         command.append(str(script))
     if case is not None:
         command.append(case)
+    plan_pipe = None
+    plan_size = plan_pin["bytes"] if plan_pin else 0
+    if plan_worker:
+        from index_admission_input import create_plan_pipe
+        pp = plan_pipe = create_plan_pipe(lease_descriptor)
+        environment.update({"WORLD_INDEX_PLAN_DESCRIPTOR": str(pp.readChild), "WORLD_INDEX_PLAN_ACK_DESCRIPTOR": str(pp.writeChild),
+            "WORLD_INDEX_PLAN_BYTES": str(plan_pin["bytes"]), "WORLD_INDEX_PLAN_SHA256": plan_pin["sha256"]})
+        inherited += (pp.readChild, pp.writeChild)
+        from index_admission_input import plan_stream_complete
+    pp = plan_pipe
     started = time.monotonic()
     output = {"stdout": bytearray(), "stderr": bytearray()}
     maximum_rss = 0
@@ -344,24 +406,34 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     process = None
     next_rss = started
     inherited_pipe_exit_unconfirmed = False
+    plan_unconfirmed = False
+    preserve_plan = False
     try:
         if SESSION_INTERRUPTION:
             raise IndexSessionInterrupted(SESSION_INTERRUPTION)
         process = subprocess.Popen(command, cwd=execution, env=environment,
                                    stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                    start_new_session=True, preexec_fn=apply_limits, pass_fds=inherited)
+        if pp is not None:
+            os.close(pp.readChild); pp.readChild = None
+            os.close(pp.writeChild); pp.writeChild = None
         selector = selectors.DefaultSelector()
         for name, stream in (("stdout", process.stdout), ("stderr", process.stderr)):
             selector.register(stream, selectors.EVENT_READ, name)
+        if pp is not None:
+            selector.register(pp.readParent, selectors.EVENT_READ, "ack")
+            selector.register(pp.writeParent, selectors.EVENT_WRITE, "input")
         while selector.get_map() or process.poll() is None:
             if SESSION_INTERRUPTION:
                 raise IndexSessionInterrupted(SESSION_INTERRUPTION)
             now = time.monotonic()
             if now - started >= wall_seconds:
-                # A reaped leader does not prove that descendants which inherited
-                # pipes or leases have exited. Never wait indefinitely or reclaim
-                # their state on that weaker evidence.
-                inherited_pipe_exit_unconfirmed = process.poll() is not None and bool(selector.get_map())
+                # Leader exit does not prove descendants holding pipes or leases exited.
+                if process.poll() is not None:
+                    inherited_pipe_exit_unconfirmed = any(
+                        key.data in {"stdout", "stderr"} for key in selector.get_map().values())
+                    plan_unconfirmed = any(
+                        key.data in {"input", "ack"} for key in selector.get_map().values())
                 reason = "wall-limit"
                 break
             if process.poll() is None and now >= next_rss:
@@ -375,8 +447,20 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                     reason = "sampled-RSS-limit"
                     break
                 next_rss = now + 0.1
-            for key, _ in selector.select(0.05):
-                data = os.read(key.fileobj.fileno(), 8192)
+            try: events = selector.select(0.05)
+            except InterruptedError: continue
+            for key, _ in events:
+                if key.data == "input":
+                    failure = _write_plan_chunk(pp, plan_raw, plan_size, selector)
+                    if failure: reason = failure; break
+                    continue
+                if key.data == "ack":
+                    failure = _read_plan_ack(pp, plan_size, selector)
+                    if failure: reason = failure; break
+                    continue
+                try: data = os.read(key.fileobj.fileno(), 8192)
+                except InterruptedError: continue
+                except BlockingIOError: continue
                 if not data:
                     selector.unregister(key.fileobj)
                     continue
@@ -387,42 +471,59 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 output[key.data].extend(data)
             if reason != "exit":
                 break
+        if pp is not None and reason == "exit":
+            if not plan_stream_complete(pp, plan_size): reason = "plan-incomplete"
     finally:
-        # This process group was created exclusively by this call. No generic kill.
+        # Reap this call's group only.
         try:
             try:
                 if process is not None and process.poll() is None:
                     try:
                         os.killpg(process.pid, signal.SIGKILL)
                     except ProcessLookupError:
-                        # The worker may finish between poll and kill. Still reap.
+                        # Reap if it exits after poll.
                         pass
             finally:
                 try:
                     if process is not None:
                         process.wait(timeout=3)
-                    if inherited_pipe_exit_unconfirmed:
-                        raise IndexWorkerUnreaped(process, root, execution, "inherited-pipe-exit-unconfirmed")
+                    if inherited_pipe_exit_unconfirmed or plan_unconfirmed:
+                        error = IndexWorkerUnreaped(process, root, execution,
+                            "inherited-pipe-exit-unconfirmed" if inherited_pipe_exit_unconfirmed else "plan-pipe-unconfirmed")
+                        preserve_plan = pp is not None
+                        if preserve_plan:
+                            error.retained_plan_fds = tuple(fd for fd in (pp.writeParent, pp.readParent) if fd is not None)
+                            error.retained_plan_input = plan_raw
+                        raise error
                 except subprocess.TimeoutExpired as error:
-                    raise IndexWorkerUnreaped(process, root, execution, reason) from error
+                    retained = IndexWorkerUnreaped(process, root, execution, reason)
+                    preserve_plan = pp is not None
+                    if preserve_plan:
+                        retained.retained_plan_fds = tuple(fd for fd in (pp.writeParent, pp.readParent) if fd is not None)
+                        retained.retained_plan_input = plan_raw
+                    raise retained from error
         finally:
-            # Cleanup must not mask IndexWorkerUnreaped: callers retain snapshots
-            # based on that exception, and every owned pipe still needs closing.
+            # Preserve state on unconfirmed reap.
             unwinding = sys.exc_info()[0] is not None
             cleanup_error = None
             handles = ([selector] if selector is not None else [])
             if process is not None:
                 handles.extend([process.stdout, process.stderr])
+            if pp is not None:
+                handles.extend([pp.readChild, pp.writeChild])
+                if not preserve_plan:
+                    handles.extend([pp.writeParent, pp.readParent])
             for handle in handles:
                 try:
-                    handle.close()
+                    if handle is not None:
+                        if hasattr(handle, "close"): handle.close()
+                        else: os.close(handle)
                 except Exception as error:
                     if cleanup_error is None:
                         cleanup_error = error
             if cleanup_error is not None and not unwinding:
                 raise cleanup_error
-    # A caller-owned durable directory may never be silently replaced or followed
-    # through a changed root before inventory/recovery.
+    # Verify the caller-owned root did not change before inventory.
     after = root.lstat()
     if (root.resolve(strict=True) != root or not stat.S_ISDIR(after.st_mode)
             or after.st_uid != root_info.st_uid or stat.S_IMODE(after.st_mode) != 0o700

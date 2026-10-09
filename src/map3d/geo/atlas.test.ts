@@ -214,7 +214,12 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   for (const route of plannedRoutes('lagos')) assert.ok(MORE_REGIONS.includes(world.byId.get(route.to.id)!.name), route.to.id);
   assert.equal(regionStatus('country', 'fr'), 'soon'); assert.equal(regionStatus('country', 'aq'), null); assert.equal(regionEntry('country', 'ng').level, 'nigeria');
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
-  assert.match(regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') }).planned!, /Lagos and Accra/);
+  const ghana = regionInfo({ kind: 'country', id: 'gh' }, { ...context, feature: africa.byId.get('gh') });
+  assert.equal(ghana.planned, null, 'the opened Ghana route is no longer advertised as planned');
+  assert.equal(ghana.city?.id, 'accra');
+  assert.equal(ghana.tag, 'Open');
+  assert.equal(ghana.routes.length, 1, 'the country card offers its real capital flight');
+  assert.equal(ghana.routes[0]?.live, false, 'the host must still authorize departure');
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
   assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['abia', 'adamawa', 'akwa-ibom', 'anambra', 'bauchi']);
 });

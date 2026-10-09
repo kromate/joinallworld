@@ -8,6 +8,7 @@ import type { Batch } from './types.ts';
 import type { LifeState } from '../types/life.ts';
 import { createKit } from './kit.ts';
 import { createBatch } from './build.ts';
+import { plant } from './props.ts';
 import { createWalkGrid, createWalker, createPositionReporter, footprintRecorder, turnTowards, WALK_SPEED, JOG_SPEED } from './movement.ts';
 import type { Walker } from './movement.ts';
 import { createOrbit, followShare, PITCH_MIN, PITCH_MAX } from './camera-controls.ts';
@@ -81,6 +82,47 @@ test('the footprint recorder notes what stands in the way, what is water and whe
   assert.equal(block.length, 5, 'the rug, the awning, the marker and the floor are not obstacles');
 });
 
+test('footprint opt-out keeps wall-part assignment while skipping block and camera-solid records', () => {
+  const recorder = footprintRecorder(createBatch(THREE));
+  recorder.batch.walls({ w: 10, d: 8 });
+  recorder.batch.box(-4.7, 1.5, 0, 0.6, 1.2, 1, '#aabbcc', { footprint: false });
+  const { floor, block, solids } = recorder.shapes();
+  assert.equal(floor, null);
+  assert.deepEqual(block, []);
+  assert.deepEqual(solids, []);
+  const material = new THREE.MeshBasicMaterial();
+  const meshes = recorder.batch.build({ solid: material, glow: material, glass: material }).meshes;
+  assert.deepEqual(meshes.map((mesh) => mesh.userData.part), ['wallLeft'], 'the real primitive still belongs to its wall');
+  for (const mesh of meshes) mesh.geometry.dispose();
+  material.dispose();
+});
+
+test('explicit plant proxies keep old bounds and wall-mounted plants stay wall parts rather than camera solids', () => {
+  const local = footprintRecorder(createBatch(THREE));
+  plant(local.batch, 0, 0, { s: 1 });
+  const localShapes = local.shapes();
+  const hasRect = (actual: readonly number[], expected: readonly number[]) => actual.length === expected.length && actual.every((value, index) => near(value, expected[index]!));
+  for (const expected of [[-0.34, -0.34, 0.34, 0.34], [-0.5, -0.5, 0.5, 0.5], [-0.14, -0.44, 0.54, 0.24]]) {
+    assert.ok(localShapes.block.some((rect) => hasRect(rect, expected)), `old plant obstacle bounds ${expected}`);
+  }
+  for (const expected of [[-0.5, 0.35, -0.5, 0.5, 1.75, 0.5], [-0.14, 1, -0.44, 0.54, 2, 0.24]]) {
+    assert.ok(localShapes.solids.some((solid) => hasRect(solid, expected)), `old plant camera-solid bounds ${expected}`);
+  }
+  const material = new THREE.MeshBasicMaterial();
+  for (const [x, z, part] of [[-10.1, -10.1, 'wallBack'], [-10.1, 0, 'wallLeft']] as const) {
+    const recorder = footprintRecorder(createBatch(THREE));
+    recorder.batch.walls({ w: 20, d: 20 });
+    plant(recorder.batch, x, z, { s: 1 });
+    const { block, solids } = recorder.shapes();
+    assert.equal(block.length, 3, 'the pot and both old canopy proxies remain obstacles');
+    assert.deepEqual(solids, [], 'wall-mounted plant geometry is not also a camera occluder');
+    const meshes = recorder.batch.build({ solid: material, glow: material, glass: material }).meshes;
+    assert.deepEqual(meshes.map((mesh) => mesh.userData.part), [part], 'pot and visual leaves are hidden with their host wall');
+    for (const mesh of meshes) mesh.geometry.dispose();
+  }
+  material.dispose();
+});
+
 test('the walker moves relative to the camera, normalises diagonals, jogs, turns to face its way and slides along walls', () => {
   const grid = createWalkGrid({ bounds: [-10, -10, 10, 10], block: [[2, -10, 3, 10]] });
   const walker = createWalker();
@@ -90,10 +132,10 @@ test('the walker moves relative to the camera, normalises diagonals, jogs, turns
   assert.ok(near(walker.x, 0) && near(walker.z, -WALK_SPEED * 0.5, 1e-3), 'W walks away from the camera');
   assert.ok(Math.abs(turnTowards(walker.ry, Math.PI)) < 0.05, 'the avatar faces where it walks');
   walker.place(0, 0, 0); walker.input(-1, 0); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
-  assert.ok(walker.x < -2 && near(walker.z, 0), 'A walks to the camera’s left');
+  assert.ok(near(walker.x, -WALK_SPEED * 0.5, 1e-3) && near(walker.z, 0), 'A walks to the camera’s left at walking speed');
   // Camera turned a quarter (it now looks along −x): the same keys follow it.
   walker.place(0, 0, 0); walker.input(0, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, Math.PI / 2);
-  assert.ok(walker.x < -2 && near(walker.z, 0, 1e-6), 'forward is always away from the camera');
+  assert.ok(near(walker.x, -WALK_SPEED * 0.5, 1e-3) && near(walker.z, 0, 1e-6), 'forward is always away from the camera at walking speed');
   // Diagonals are no faster than straight lines; jogging is.
   walker.place(0, 0, 0); walker.input(-1, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
   assert.ok(near(Math.hypot(walker.x, walker.z), WALK_SPEED * 0.5, 1e-3), 'diagonal movement is normalised');
@@ -104,7 +146,7 @@ test('the walker moves relative to the camera, normalises diagonals, jogs, turns
   assert.ok(walker.x < 2 && walker.x > 1.2 && walker.blocked, `stopped at the wall (${walker.x.toFixed(2)})`);
   const stuck = walker.x;
   walker.input(1, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
-  assert.ok(near(walker.x, stuck, 0.2) && walker.z < -1, 'slides along the wall');
+  assert.ok(near(walker.x, stuck, 0.2) && near(walker.z, -WALK_SPEED * 0.5 / Math.SQRT2, 1e-3), 'slides along the wall without speeding up');
   // The edge of the floor is a wall too.
   walker.place(0, 9, 0); walker.input(0, -1); for (let i = 0; i < 120; i++) walker.step(1 / 60, 0);
   assert.ok(walker.z <= 10 && walker.z > 9.5, 'cannot leave the floor');

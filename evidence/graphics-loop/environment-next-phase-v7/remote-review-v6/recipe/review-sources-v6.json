@@ -1,0 +1,102 @@
+{
+  "schema": "environment-next-phase-v7-remote-review-source-pins/2",
+  "status": "PRE-REVIEW-SEALED",
+  "limits": {
+    "ownedProcessGroupRssBytes": 2147483648,
+    "nodeOldSpaceMiB": 96,
+    "timeoutSeconds": 60,
+    "maxParallel": 3
+  },
+  "scenes": [
+    "home/day",
+    "home/night",
+    "neighbourhood/day",
+    "neighbourhood/night",
+    "market/day",
+    "market/night",
+    "beach/day",
+    "beach/night"
+  ],
+  "scopes": [
+    "scene-pair-home-neighbourhood",
+    "scene-pair-market-beach",
+    "lifecycle-only"
+  ],
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/README.md",
+      "bytes": 1298,
+      "sha256": "b7d07031f274fa088e317f3dc798cef890a1cddc23a7da9d1d34e9fa4ad2ed47"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/package-selection-v6.mjs",
+      "bytes": 637,
+      "sha256": "8a3f7c45edfaccef317ee3bc5360c568826aeb3a2af1febc4d79b4cd870d93ac"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/result-dir-contract-v6.mjs",
+      "bytes": 1469,
+      "sha256": "ddf7a332445ad19060594ae99fec20f0c1fa7f60ca66054c995fc975f2ee1e3c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/review-render-cdp-v6.mjs",
+      "bytes": 42655,
+      "sha256": "6490418e901b175708aa3ed2c87e27e98a8f7f5144e22e83c099168448788a04"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/run-bounded-linux-render-v6.py",
+      "bytes": 20784,
+      "sha256": "9aec8c6e431011d83334f0645228fb3be8f45b03264d875115c2c8d61c5fec77"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/seal-review-sources-v6.mjs",
+      "bytes": 2114,
+      "sha256": "790ad5badd7aee0db1fee1bae2ae1c5103aa0787cf403be0686dff4e765519bc"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/test-package-selection-v6.mjs",
+      "bytes": 1471,
+      "sha256": "94471daaee8cb79f414cba7e94d2a40473e960535f15a39eeafa6889736785cc"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/test-result-dir-contract-v6.mjs",
+      "bytes": 2002,
+      "sha256": "33fd80ebd0938af18c9556fb64f19c4e999b31ee1e7b20b169845ebb71a9ace2"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/test-review-pin-contract-v6.mjs",
+      "bytes": 1440,
+      "sha256": "3ae1922a6455caa449ea61cc47427ab038ce51c4a77d563c35e1ce257d82e3a9"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/test-runner-contract-v6.py",
+      "bytes": 2343,
+      "sha256": "d4deed78fa91eec2c7fb891adb6d3a579e3e5a5660e198fc61b8fb41ba317c3d"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/recipe/workflow-review-v6.yml",
+      "bytes": 3187,
+      "sha256": "f40c3a9de2e5eb40b8bd65ecefaf8b4fcc4b851cdcf9ef5efaa3d42a6c1214c7"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/remote-control-v6.mjs",
+      "bytes": 4004,
+      "sha256": "440deb446886c10293d5e82d301993dd3e1ce20573c24ae7cb9d57dc0a354f25"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/remote-control-v6.test.mjs",
+      "bytes": 4154,
+      "sha256": "3f86e46c92f72d57693565b2d14c59e4c2cc6b8274e0bff83e002cb6b64fa5ba"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/scope-plan-v6.mjs",
+      "bytes": 2683,
+      "sha256": "3467ae272fbaeff86d8ab0a7afff3818d99a364bb2e32e760e0c706bed0f9864"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/remote-review-v6/scope-plan-v6.test.mjs",
+      "bytes": 2442,
+      "sha256": "0d0269f21b344f45bca15b6e059a1dc999df76b30d4ea285e80c5d102a812c07"
+    }
+  ]
+}

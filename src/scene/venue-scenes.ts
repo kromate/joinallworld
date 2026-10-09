@@ -70,18 +70,26 @@
  *                               a location change and when it is disposed itself)
  */
 import type * as THREE from 'three';
-import { createBatch, kitResources, releaseObjects, GLOW } from './build.ts';
+import { createBatch, kitResources, releaseObjects, withBatchPart, GLOW } from './build.ts';
 import type { Releasable } from './build.ts';
 import type { Kit } from './kit.ts';
 import type { AvatarGroup, Pose } from './characters.ts';
 import type { FootprintRecorder, FootprintShapes, WalkGrid, WalkRect, WalkShape } from './movement.ts';
 import type {
-  Anchor, Batch, Colour, CrowdPerson, Landmark, SceneOptions, Lighting, Mood, RaisedShape, SceneBuilder, SceneCamera, SceneContext, SceneDef, SceneEntrance, SceneEntry,
+  Anchor, Batch, Colour, CrowdPerson, Landmark, SceneOptions, Lighting, RaisedShape, SceneBuilder, SceneCamera, SceneContext, SceneDef, SceneEntrance, SceneEntry,
   SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
 } from './types.ts';
-import { buildAvatar, drawCrowd } from './characters.ts';
+import { buildAvatar, drawCrowd, tagFor } from './characters.ts';
+import { normalizeLook } from './avatar-look.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { captureAuthoredExtras, captureExtraPerson } from './authored-people.ts';
+import type { AuthoredPerson } from './authored-people.ts';
+import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
+import { createCanonicalCrowd } from './body/canonical-crowd.ts';
+import type { CanonicalCrowdSpec } from './body/canonical-crowd.ts';
+import type { BodyPose, SkinnedBody } from './body/skinned.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
-import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
+import { createWalkGrid, footprintRecorder, gaitPhase, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
 import type { GazeState } from './space.ts';
 import { spotMarker, gameTable } from './props.ts';
@@ -89,7 +97,7 @@ import { tablesAt, GAME_LABELS } from '../tables/city-places.ts';
 import { CITY_RULES, DEFAULT_CITY_ID } from '../game/cities/registry.ts';
 import { CLEAR_LOOK, adjustLighting, lookAt, lookKey } from '../game/conditions/look.ts';
 import type { LookConditions } from '../game/conditions/look.ts';
-import { lagosTime } from '../game/clock.ts';
+import { isTimeOfDay as isTime, timeOfDay, lightingFor } from './lighting.ts';
 import * as outdoor from './venues-outdoor.ts';
 import * as social from './venues-social.ts';
 import * as work from './venues-work.ts';
@@ -99,47 +107,8 @@ import { CITY_KINDS, citySceneDef, cityScenesReady, parametricSceneAdapter } fro
 
 export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: [13, 24, 31] };
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
-export const TIMES: readonly TimeOfDay[] = Object.freeze<TimeOfDay[]>(['day', 'dusk', 'night']);
-const isTime = (value: unknown): value is TimeOfDay => TIMES.includes(value as TimeOfDay);
+export { TIMES, LIGHTING, timeOfDay, lightingFor } from './lighting.ts';
 export const MAX_CROWD = 12;
-
-/**
- * Day / dusk / night presets per mood. sky: [horizon, zenith]; hemi: [sky, ground, intensity];
- * sun: [colour, intensity, position]; rim: [colour, intensity] (the host's back light);
- * glow: strength of lit surfaces; lamps: point-light scale.
- *
- * LIT FOR EVERY SKIN TONE. The hemisphere's ground colour is the light that reaches a face from
- * below: it is a warm bounce off sand, laterite or a wooden floor — never dark green or near-black,
- * which is what turned the darkest skin tones into silhouettes. Night keeps a hemisphere of at
- * least 1 and leans on the rim light, so people stay readable against a dark sky; the club keeps
- * its purple but gets a warmer floor bounce for faces.
- */
-export const LIGHTING: Readonly<Record<Mood, Readonly<Record<TimeOfDay, Lighting>>>> = Object.freeze({
-  outdoor: {
-    day: { sky: ['#cfe9f3', '#6fb4e6'], hemi: ['#eaf4ff', '#c9b08a', 1.9], sun: ['#fff0d2', 2.4, [-10, 26, 12]], rim: ['#cfe2ff', 0.7], glow: 0.6, lamps: 0.1 },
-    dusk: { sky: ['#f0b48c', '#5d528f'], hemi: ['#f3cdb6', '#8a6f6a', 1.5], sun: ['#ff9a5c', 1.9, [-22, 11, 7]], rim: ['#c9b6f0', 0.9], glow: 1.05, lamps: 0.8 },
-    night: { sky: ['#243152', '#0b1020'], hemi: ['#9fb4e6', '#3a3550', 1.05], sun: ['#9fb9ea', 0.8, [-12, 25, 8]], rim: ['#bcd0ff', 0.95], glow: 1.3, lamps: 1.6 },
-  },
-  indoor: {
-    day: { sky: ['#d6e9ef', '#8cc0e2'], hemi: ['#fff6ea', '#cdbba6', 2.2], sun: ['#fff1d8', 1.9, [-8, 26, 14]], rim: ['#dfeaff', 0.5], glow: 0.85, lamps: 0.45 },
-    dusk: { sky: ['#e3a37c', '#6f5f95'], hemi: ['#ffe4c7', '#a8937f', 1.9], sun: ['#ffb57c', 1.4, [-18, 14, 10]], rim: ['#d9c8f2', 0.6], glow: 1.05, lamps: 0.85 },
-    night: { sky: ['#232e4a', '#0e1324'], hemi: ['#ecdfc9', '#7a6f78', 1.6], sun: ['#c9d3ee', 0.9, [-12, 25, 8]], rim: ['#c6d4ff', 0.7], glow: 1.2, lamps: 1.1 },
-  },
-  club: {
-    day: { sky: ['#241d3a', '#120f1f'], hemi: ['#b3a2ea', '#4a3550', 1.1], sun: ['#c0b0ff', 0.7, [-10, 26, 10]], rim: ['#ffd9b0', 0.8], glow: 1.2, lamps: 1.05 },
-    dusk: { sky: ['#221b36', '#110e1d'], hemi: ['#a996e2', '#46324c', 1.05], sun: ['#b8a4ff', 0.6, [-10, 26, 10]], rim: ['#ffd9b0', 0.8], glow: 1.3, lamps: 1.15 },
-    night: { sky: ['#1e1833', '#0d0a18'], hemi: ['#a08cdc', '#422f48', 1], sun: ['#b8a4ff', 0.55, [-10, 26, 10]], rim: ['#ffd9b0', 0.85], glow: 1.35, lamps: 1.2 },
-  },
-});
-
-/** Lagos time of day from server ms: day 06:30–17:30, dusk for the hour either side of night. */
-export function timeOfDay(ms: number): TimeOfDay {
-  const { minuteOfDay } = lagosTime(ms);
-  if (minuteOfDay >= 390 && minuteOfDay < 1050) return 'day';
-  if ((minuteOfDay >= 330 && minuteOfDay < 390) || (minuteOfDay >= 1050 && minuteOfDay < 1170)) return 'dusk';
-  return 'night';
-}
-export const lightingFor = (mood: string, time: unknown): Lighting => (LIGHTING[mood as Mood] || LIGHTING.outdoor)[isTime(time) ? time : 'day'];
 
 /** The kinds every city draws with. A kind a city added (CITY_KINDS) arrives with that city's scenes. */
 const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
@@ -292,13 +261,112 @@ export const SPOT_REACH = 1.5;
 export const SPOT_BEHIND = 1.3, SPOT_FRONT = 3.4, SPOT_SIDE = 1.7;
 /** How long another player's figure takes to ease to a newly reported position (seconds), and the jump beyond which it is simply placed. */
 const PEER_EASE: [number, number] = [0.16, 0.42], PEER_JUMP = 7, PEER_PACE = 6;
+const publicBodyId = (id: string): string => `presence:${id}`;
+const CROWD_POSES: Readonly<Record<string, BodyPose>> = { stand: 'idle', relax: 'idle', sit: 'sit', walk: 'walk', jog: 'jog', wave: 'interact', work: 'interact', dance: 'dance' };
+
+/** A rendered, horizontal triangle in venue-local space. */
+interface ContactTriangle { ax: number; az: number; bx: number; bz: number; cx: number; cz: number; y: number }
+const CONTACT_CELL = 1, CONTACT_TOP_EPSILON = 0.004, CONTACT_EDGE_MARGIN = 0.16;
+interface ContactSurfaceQuery {
+  (x: number, z: number, minY: number, maxY: number, exactY?: number): number | null;
+  readonly retainedTriangles: number;
+  readonly cellEntries: number;
+  readonly broadTriangles: number;
+}
+
+/** Index only actual upward-facing solid triangles; the walk description alone is not floor provenance. */
+function contactSurfaceIndex(meshes: readonly THREE.Mesh[], deckHeights: readonly number[]): ContactSurfaceQuery {
+  const cells = new Map<string, ContactTriangle[]>();
+  const broad: ContactTriangle[] = [];
+  let retainedTriangles = 0, cellEntries = 0;
+  const key = (x: number, z: number) => `${Math.floor(x / CONTACT_CELL)},${Math.floor(z / CONTACT_CELL)}`;
+  const insert = (triangle: ContactTriangle) => {
+    const x0 = Math.floor(Math.min(triangle.ax, triangle.bx, triangle.cx) / CONTACT_CELL);
+    const x1 = Math.floor(Math.max(triangle.ax, triangle.bx, triangle.cx) / CONTACT_CELL);
+    const z0 = Math.floor(Math.min(triangle.az, triangle.bz, triangle.cz) / CONTACT_CELL);
+    const z1 = Math.floor(Math.max(triangle.az, triangle.bz, triangle.cz) / CONTACT_CELL);
+    const entries = (x1 - x0 + 1) * (z1 - z0 + 1);
+    retainedTriangles++;
+    // A ground slab can cover hundreds of cells; keep a few such triangles once and test
+    // them from a short fallback list instead of duplicating them into every cell bucket.
+    if (entries > 64) { broad.push(triangle); return; }
+    for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
+      const cell = key(x * CONTACT_CELL, z * CONTACT_CELL), list = cells.get(cell);
+      if (list) list.push(triangle); else cells.set(cell, [triangle]);
+      cellEntries++;
+    }
+  };
+  for (const mesh of meshes) {
+    if (mesh.name !== 'solid' && !mesh.name.startsWith('solid@')) continue;
+    const geometry = mesh.geometry, position = geometry.getAttribute('position'), normal = geometry.getAttribute('normal'), index = geometry.index;
+    if (!position || !normal) continue;
+    const count = index?.count ?? position.count;
+    for (let i = 0; i + 2 < count; i += 3) {
+      const ia = index ? index.getX(i) : i, ib = index ? index.getX(i + 1) : i + 1, ic = index ? index.getX(i + 2) : i + 2;
+      if (normal.getY(ia) < 0.999 || normal.getY(ib) < 0.999 || normal.getY(ic) < 0.999) continue;
+      const ax = position.getX(ia), ay = position.getY(ia), az = position.getZ(ia);
+      const bx = position.getX(ib), by = position.getY(ib), bz = position.getZ(ib);
+      const cx = position.getX(ic), cy = position.getY(ic), cz = position.getZ(ic);
+      if (Math.max(ay, by, cy) - Math.min(ay, by, cy) > CONTACT_TOP_EPSILON) continue;
+      const y = (ay + by + cy) / 3;
+      // Retain only the recorded ground band and explicitly declared deck planes, so table,
+      // seat, roof, and foliage tops never enter the support query.
+      if (!(y >= -0.06 && y <= 0.08) && !deckHeights.some((height) => Math.abs(y - height) <= CONTACT_TOP_EPSILON)) continue;
+      const area = (bx - ax) * (cz - az) - (bz - az) * (cx - ax);
+      if (Math.abs(area) < 1e-7) continue;
+      insert({ ax, az, bx, bz, cx, cz, y });
+    }
+  }
+  const query = (x: number, z: number, minY: number, maxY: number, exactY?: number) => {
+    const candidates = cells.get(key(x, z));
+    let highest = -Infinity;
+    const test = (triangle: ContactTriangle) => {
+      if (triangle.y < minY || triangle.y > maxY || (exactY !== undefined && Math.abs(triangle.y - exactY) > CONTACT_TOP_EPSILON)) return;
+      const area = (triangle.bx - triangle.ax) * (triangle.cz - triangle.az) - (triangle.bz - triangle.az) * (triangle.cx - triangle.ax);
+      const u = ((triangle.bx - x) * (triangle.cz - z) - (triangle.bz - z) * (triangle.cx - x)) / area;
+      const v = ((triangle.cx - x) * (triangle.az - z) - (triangle.cz - z) * (triangle.ax - x)) / area;
+      const w = 1 - u - v;
+      if (u >= -1e-5 && v >= -1e-5 && w >= -1e-5) highest = Math.max(highest, triangle.y);
+    };
+    for (const triangle of candidates ?? []) test(triangle);
+    for (const triangle of broad) test(triangle);
+    return Number.isFinite(highest) ? highest : null;
+  };
+  return Object.assign(query, { retainedTriangles, cellEntries, broadTriangles: broad.length });
+}
+
+function raisedContactTop(shapes: readonly RaisedShape[] | undefined, x: number, z: number): number | null | undefined {
+  if (!shapes?.length) return undefined;
+  let top: number | undefined, atUnsafeEdge = false;
+  for (const shape of shapes) {
+    if (shape.ramp) {
+      const [ax, az, , bx, bz] = shape.ramp, dx = bx - ax, dz = bz - az, span = dx * dx + dz * dz || 1;
+      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / span));
+      if (Math.hypot(x - (ax + dx * t), z - (az + dz * t)) <= Math.max(0, shape.half ?? 0.7) + CONTACT_EDGE_MARGIN) return null;
+      continue;
+    }
+    if (!Number.isFinite(shape.y)) continue;
+    if (shape.rect) {
+      const [x0, z0, x1, z1] = shape.rect, lip = Math.max(0, shape.lip ?? 0);
+      const safe = x > x0 + CONTACT_EDGE_MARGIN && x < x1 - CONTACT_EDGE_MARGIN && z > z0 + CONTACT_EDGE_MARGIN && z < z1 - CONTACT_EDGE_MARGIN;
+      const inTransition = x >= x0 - lip && x <= x1 + lip && z >= z0 - lip && z <= z1 + lip;
+      if (safe) top = Math.max(top ?? -Infinity, shape.y!);
+      else if (inTransition) atUnsafeEdge = true;
+    } else if (shape.disc) {
+      const distance = Math.hypot(x - shape.disc[0], z - shape.disc[1]), radius = shape.disc[2], lip = Math.max(0, shape.lip ?? 0);
+      if (distance < radius - CONTACT_EDGE_MARGIN) top = Math.max(top ?? -Infinity, shape.y!);
+      else if (distance <= radius + lip) atUnsafeEdge = true;
+    }
+  }
+  return atUnsafeEdge ? null : top;
+}
 
 /** One other player's figure: a standing and a walking pose, eased between reported positions. */
 interface Peer {
   id: string; lookKey: string; look: unknown; seed: unknown; group: THREE.Group; shown: AvatarGroup | null;
   x: number; z: number; y: number; ry: number; fromX: number; fromZ: number; toX: number; toZ: number;
-  t: number; span: number; stride: number; top: number; tag: SceneTag; at: ScenePerson; stand: AvatarGroup; walk: AvatarGroup;
-  friend: boolean; gaze: GazeState;
+  t: number; span: number; stride: number; top: number; tag: SceneTag; at: ScenePerson; stand: AvatarGroup | null; walk: AvatarGroup | null;
+  friend: boolean; gaze: GazeState; canonicalStride: number;
 }
 /** Who a placed figure is to the others (src/scene/space.ts tieOf). */
 interface Tied { spot?: string | null; friend?: boolean }
@@ -352,10 +420,54 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const lit = (): Lighting => adjustLighting(lightingFor(mood, view.time), view.weather);
   const hints: Record<string, string> = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
   let layout: SceneLayout | null = null, resolved: Resolved | null = null, live = false, disposed = false, footprints: FootprintShapes | null = null, grid: WalkGrid | null = null, entrance: SceneEntrance | null = null;
+  let renderedContactTop: ReturnType<typeof contactSurfaceIndex> | null = null;
   const staticObjects: Releasable[] = [], actorObjects: Releasable[] = [], markObjects: Releasable[] = [];
   let staticTriangles = 0, actorTriangles = 0, crowdTags: SceneTag[] = [], selfTag: SceneTag | null = null, sky: THREE.Mesh | null = null;
   // Other players who report where they stand: one figure each, eased to every new position.
   const peers = new Map<string, Peer>();
+  let placedPeople: CrowdPerson[] = [], crowdChanged: (() => void) | null = null;
+  // Authored staff/regulars share the same lazy body queue as public people. Their original
+  // geometry stays in independent parts until a body has mounted successfully.
+  const authoredPeople = new Map<string, { person: AuthoredPerson; part: string; meshes: THREE.Mesh[] }>();
+  const authoredRoots = new Map<string, THREE.Group>();
+  let authoredCalls = 0;
+  const authoredScope = JSON.stringify([drawnAs, venue?.id ?? wanted, variantKey]);
+  Object.defineProperty(group.userData, 'authoredPeople', { get: () => {
+    const canonical = [...authoredPeople.keys()].filter(id => canonicalPeople.get(id)).length;
+    return { desired: authoredCalls, captured: authoredPeople.size, canonical, procedural: authoredCalls - canonical,
+      loading: canonicalPeople.loadingId !== null && authoredPeople.has(canonicalPeople.loadingId) ? 1 : 0 };
+  } });
+  const crowdHead = new THREE.Vector3();
+  const appliedGazes = new WeakMap<SkinnedBody, { head: THREE.Object3D; natural: THREE.Quaternion }>();
+  const canonicalPeople = createCanonicalCrowd<SkinnedBody>({
+    yieldBetweenActors: () => new Promise(resolve => setTimeout(resolve, 0)),
+    load: spec => importBody().then(module => module.loadBody(kit, spec.look, spec.seed, spec.scale)).then(body => {
+      if (body.wardrobeError) { const error = body.wardrobeError; body.dispose(); throw new Error(error); }
+      return body;
+    }),
+    place(body, spec) { placeCanonical(body, spec); },
+    mount(body, id) {
+      body.object.name = `venue-person:${id}`;
+      const authored = authoredPeople.get(id);
+      if (!authored) { group.add(body.object); return; }
+      let parent = authoredRoots.get(id);
+      if (!parent) {
+        parent = new THREE.Group(); parent.name = `authored-parent:${id}`;
+        parent.matrixAutoUpdate = false;
+        const { origin: o, xAxis: x, yAxis: y, zAxis: z } = authored.person.parent;
+        parent.matrix.set(x[0], y[0], z[0], o[0], x[1], y[1], z[1], o[1], x[2], y[2], z[2], o[2], 0, 0, 0, 1);
+        authoredRoots.set(id, parent); group.add(parent);
+      }
+      parent.add(body.object);
+    },
+    changed() { if (!disposed) { buildActors(); crowdChanged?.(); } },
+    failed(id, error) {
+      if (disposed) return;
+      // A failed commit may have hidden/released a peer fallback before its callback threw.
+      buildActors(); crowdChanged?.();
+      console.warn(`Canonical venue person ${id} unavailable; retaining its fallback:`, error);
+    },
+  });
   let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
   const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;
@@ -371,11 +483,31 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const tableList: SceneThing[] = [];
 
   function drawStatic() {
-    const recorder = footprintRecorder(createBatch(THREE));
+    const inner = createBatch(THREE), recorder = footprintRecorder(inner);
     const batch = recorder.batch;
     const neutralWorship = options.design && wanted === 'worship' && !options.variant;
-    layout = ((neutralWorship && parametric ? parametric.buildQuietParametricWorship(batch, context) : def.build(batch, context)) || {}) as SceneLayout;
-    if (options.design && parametric) parametric.decorateParametricVenue({ batch, context, layout, footprints: recorder.shapes(), indoor: mood !== 'outdoor' });
+    authoredPeople.clear(); authoredCalls = 0;
+    const ambiguous = new Set<string>();
+    captureAuthoredExtras(batch, (call, drawOriginal) => {
+      authoredCalls++;
+      // Devices that already reject the body keep the original merged, low-draw fallback.
+      if (!bodyAllowed()) return drawOriginal();
+      // The source seed is an authored identity, not a placement/order-derived key. Ambiguous
+      // or nonprimitive identities keep every original figure rather than silently merging it.
+      if (typeof call.seed !== 'string' && !(typeof call.seed === 'number' && Number.isFinite(call.seed))) return drawOriginal();
+      const person = captureExtraPerson(batch, { ...call, key: `${authoredScope}:${JSON.stringify(call.seed)}` });
+      if (ambiguous.has(person.id)) return drawOriginal();
+      if (authoredPeople.has(person.id)) { authoredPeople.delete(person.id); ambiguous.add(person.id); return drawOriginal(); }
+      if (person.local.scale <= 0) return drawOriginal();
+      const part = `authored:${encodeURIComponent(person.id)}`;
+      const drawn = withBatchPart(inner, part, drawOriginal);
+      authoredPeople.set(person.id, { person, part, meshes: [] });
+      return drawn;
+    }, () => {
+      layout = ((neutralWorship && parametric ? parametric.buildQuietParametricWorship(batch, context) : def.build(batch, context)) || {}) as SceneLayout;
+      if (options.design && parametric) parametric.decorateParametricVenue({ batch, context, layout, footprints: recorder.shapes(), indoor: mood !== 'outdoor' });
+    });
+    layout ??= { spots: [], crowd: [] };
     footprints = recorder.shapes();
     layout.spots ||= [];
     layout.crowd ||= [];
@@ -620,22 +752,90 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     return figure;
   }
   function showPeer(peer: Peer, walking: boolean) {
-    const next = walking ? peer.walk : peer.stand;
+    if (canonicalPeople.get(publicBodyId(peer.id))) return;
+    ensurePeerFigures(peer);
+    const next = (walking ? peer.walk : peer.stand)!;
     if (peer.shown === next) return;
     if (peer.shown) peer.shown.visible = false;
     next.visible = true; peer.shown = next;
   }
+  function ensurePeerFigures(peer: Peer) {
+    peer.stand ??= peerFigure(peer, 'stand');
+    peer.walk ??= peerFigure(peer, 'walk');
+    peer.top = peer.stand.userData.top ?? 2.95;
+  }
+  function clearPeerFigures(peer: Peer) {
+    peer.stand?.userData.dispose();
+    if (peer.walk !== peer.stand) peer.walk?.userData.dispose();
+    peer.stand = null; peer.walk = null; peer.shown = null;
+  }
+  function canonicalTop(body: SkinnedBody, floor: number) {
+    const head = body.object.getObjectByName('Head');
+    if (!head) return floor + 2.45 * body.scale;
+    body.object.updateWorldMatrix(true, true);
+    head.getWorldPosition(crowdHead); group.worldToLocal(crowdHead);
+    return crowdHead.y + 0.32 * body.scale;
+  }
+  /** Use the same body, rig and outfit as the creator/self, without owning a frame loop. */
+  function placeCanonical(body: SkinnedBody, spec: CanonicalCrowdSpec) {
+    // A clip need not animate Head. Restore our previous offset explicitly before sampling,
+    // so repeated idle frames cannot compound a glance that the mixer leaves untouched.
+    const previousGaze = appliedGazes.get(body);
+    if (previousGaze) previousGaze.head.quaternion.copy(previousGaze.natural);
+    body.fit(spec.scale);
+    const authored = authoredPeople.get(spec.id)?.person;
+    if (authored) {
+      const { local, appearance } = authored;
+      const pose = CROWD_POSES[appearance.pose] ?? 'idle';
+      body.setPresentation(appearance.sleeping ? 'sleeping' : 'everyday');
+      if (appearance.pose === 'walk' || appearance.pose === 'jog') body.stride((appearance.stride ?? 0) * Math.PI * 2, appearance.pose === 'jog');
+      else body.show(pose, false);
+      body.place(local.x, local.y, local.z, local.ry);
+      if (pose === 'sit') {
+        const height = appearance.appearanceFit ? avatarProportions(normalizeLook(authored.look, authored.seed).appearance).height : 1;
+        body.sitOn(local.x, local.y + appearance.seat * local.scale * height, local.z, local.ry);
+      }
+      return;
+    }
+    const externalId = spec.id.startsWith('presence:') ? spec.id.slice(9) : spec.id;
+    const peer = peers.get(externalId);
+    if (peer) {
+      if (peer.t < 1) body.stride(peer.canonicalStride, false);
+      else body.show('idle', false);
+      body.place(peer.x, peer.y, peer.z, peer.ry);
+      const head = body.object.getObjectByName('Head');
+      if (head) {
+        const gaze = previousGaze?.head === head ? previousGaze : { head, natural: head.quaternion.clone() };
+        gaze.natural.copy(head.quaternion); appliedGazes.set(body, gaze);
+        head.rotation.y += peer.gaze.offset;
+      }
+      return;
+    }
+    const person = placedPeople.find(person => String(person.id) === externalId);
+    const pose = CROWD_POSES[person?.pose ?? 'stand'] ?? 'idle';
+    body.show(pose, false);
+    body.place(spec.x, spec.y, spec.z, spec.ry);
+    if (pose === 'sit') body.sitOn(spec.x, spec.y + (Number.isFinite(person?.seat) ? person!.seat! : 0.6) * spec.scale, spec.z, spec.ry);
+  }
   function placePeer(peer: Peer) {
+    const body = canonicalPeople.get(publicBodyId(peer.id));
+    if (body) clearPeerFigures(peer);
+    else { ensurePeerFigures(peer); showPeer(peer, peer.t < 1 && Math.floor(peer.stride) % 2 === 0); }
     peer.y = walk.heightAt(peer.x, peer.z);
     peer.group.position.set(peer.x, peer.y, peer.z);
     // A glance turns the head and a little of the torso of a rigged figure; a plain figure turns as a whole.
     peer.group.rotation.y = peer.ry + (lookAvatar(peer.stand, peer.gaze.offset) ? 0 : peer.gaze.offset);
     if (peer.walk !== peer.stand) lookAvatar(peer.walk, peer.gaze.offset);
+    peer.group.visible = body === null;
+    if (body) {
+      placeCanonical(body, { id: publicBodyId(peer.id), seed: String(peer.seed), look: peer.look, x: peer.x, y: peer.y, z: peer.z, ry: peer.ry, scale: 1 });
+      peer.top = canonicalTop(body, peer.y) - peer.y;
+    }
     peer.tag.position.x = peer.x; peer.tag.position.y = peer.y + peer.top; peer.tag.position.z = peer.z;
     peer.at.x = peer.x; peer.at.z = peer.z; peer.at.top = peer.y + peer.top;
   }
   function dropPeer(peer: Peer) {
-    peer.stand.userData.dispose(); peer.walk.userData.dispose();
+    clearPeerFigures(peer);
     peer.group.parent?.remove(peer.group);
     peers.delete(peer.id);
   }
@@ -651,9 +851,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       peer = { id, lookKey, look: person.look ?? null, seed: person.seed ?? id, group: holder, shown: null, x: person.x, z: person.z, y: 0, ry: Number.isFinite(person.ry) ? person.ry! : Math.atan2(-person.x, -person.z) || 0,
         fromX: person.x, fromZ: person.z, toX: person.x, toZ: person.z, t: 1, span: 0, stride: 0, top: 2.95,
         tag: { id, name, kind: 'player', text: `@${name}`, marker: 'tag', colour: '#6fb4ff', position: { x: person.x, y: 2.95, z: person.z } },
-        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 }, friend: person.friend === true, gaze: newGaze() } as Peer;
-      peer.stand = peerFigure(peer, 'stand'); peer.walk = peerFigure(peer, 'walk');
-      peer.top = peer.stand.userData.top ?? 2.95;
+        at: { id, kind: 'player', x: person.x, z: person.z, top: 2.95 }, friend: person.friend === true, gaze: newGaze(), canonicalStride: 0, stand: null, walk: null } as Peer;
       showPeer(peer, false);
       group.add(holder);
       peers.set(id, peer);
@@ -663,7 +861,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (peer.tag.name !== name) { peer.tag.name = name; peer.tag.text = `@${name}`; }
     peer.friend = person.friend === true;
     const distance = Math.hypot(person.x - peer.toX, person.z - peer.toZ);
-    if (distance < 0.01) return peer;
+    if (distance < 0.01) { placePeer(peer); return peer; }
     peer.fromX = peer.x; peer.fromZ = peer.z; peer.toX = person.x; peer.toZ = person.z;
     const far = Math.hypot(peer.toX - peer.x, peer.toZ - peer.z);
     if (far > PEER_JUMP) { peer.x = peer.toX; peer.z = peer.toZ; peer.t = 1; showPeer(peer, false); placePeer(peer); return peer; }
@@ -680,7 +878,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       resetGlance(peer);
       peer.t = Math.min(1, peer.t + dt / peer.span);
       const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
+      const wasX = peer.x, wasZ = peer.z;
       peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
+      const body = canonicalPeople.get(publicBodyId(peer.id));
+      if (body) peer.canonicalStride += gaitPhase(Math.hypot(peer.x - wasX, peer.z - wasZ), body.strideScale, false, true);
       const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
       peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
       if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
@@ -718,15 +919,38 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
   function buildActors() {
-    const placed = placeCrowd(view.crowd);
+    const ids = new Set<string>();
+    const placed = placeCrowd(view.crowd).map((person, index) => ({ ...person, id: String(person.id ?? `person-${index}`) }))
+      .filter(person => { if (ids.has(person.id)) return false; ids.add(person.id); return true; });
+    placedPeople = placed;
+    const authoredSpecs: CanonicalCrowdSpec[] = [...authoredPeople.values()].map(({ person }) => {
+      const look = normalizeLook(person.look, person.seed), { local, appearance } = person;
+      // loadBody applies appearance height itself. Compensate only when the authored call
+      // explicitly disabled that fitting; retain its seed-derived complete look.
+      const scale = local.scale / (appearance.appearanceFit ? 1 : avatarProportions(look.appearance).height);
+      return { id: person.id, seed: String(person.seed), look, x: local.x, y: local.y, z: local.z, ry: local.ry, scale };
+    });
+    canonicalPeople.sync([...placed.map(person => ({ id: publicBodyId(person.id), seed: String(person.seed ?? person.id), look: person.look,
+      x: person.x ?? 0, y: person.y ?? walk.heightAt(person.x ?? 0, person.z ?? 0), z: person.z ?? 0, ry: person.ry ?? 0, scale: 1 })), ...authoredSpecs]);
+    for (const [id, authored] of authoredPeople) {
+      const committed = canonicalPeople.get(id) !== null;
+      // Keep the small original geometry owned for failure recovery, but never draw both families.
+      for (const mesh of authored.meshes) mesh.visible = !committed;
+      const parent = authoredRoots.get(id); if (parent) parent.visible = committed;
+    }
     const merged = placed.filter((person) => !person.live);
     // The merged batch holds NPCs and players without a reported position: rebuilt only when THEY change.
-    const key = JSON.stringify(merged);
+    const key = JSON.stringify([merged, merged.map(person => Boolean(canonicalPeople.get(publicBodyId(person.id))))]);
     if (key !== batchKey) {
       batchKey = key;
       releaseObjects(actorObjects);
       const batch = createBatch(THREE);
-      mergedTags = drawCrowd(batch, merged);
+      const fallbacks = drawCrowd(batch, merged.filter(person => !canonicalPeople.get(publicBodyId(person.id))));
+      let fallbackIndex = 0;
+      mergedTags = merged.map((person, index) => {
+        const body = canonicalPeople.get(publicBodyId(person.id));
+        return body ? tagFor(person, index, canonicalTop(body, person.y ?? 0)) : fallbacks[fallbackIndex++]!;
+      });
       const built = batch.build(shared.materials);
       actorTriangles = built.triangles;
       for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
@@ -749,6 +973,23 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (live || disposed) return;
     const built = drawStatic().build(shared.materials);
     staticTriangles = built.triangles;
+    const deckHeights = (layout?.raised || []).flatMap((shape) =>
+      (shape.rect || shape.disc) && Number.isFinite(shape.y) ? [shape.y!] : [],
+    );
+    // Batch.build bakes every primitive/parent transform into its vertices and returns identity
+    // meshes, so these positions are already venue-local and need no scene/group matrix baking.
+    const contact = contactSurfaceIndex(built.meshes, deckHeights);
+    renderedContactTop = contact;
+    group.userData.contactSurfaceIndex = {
+      retainedTriangles: contact.retainedTriangles,
+      cellEntries: contact.cellEntries,
+      broadTriangles: contact.broadTriangles,
+    };
+    const byPart = new Map([...authoredPeople.values()].map(person => [person.part, person]));
+    for (const mesh of built.meshes) {
+      const authored = byPart.get(mesh.userData.part as string);
+      if (authored) { authored.meshes.push(mesh); mesh.userData.authoredPerson = authored.person; }
+    }
     for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); const part = object.userData.part as keyof typeof wallParts | undefined; if (part && wallParts[part]) wallParts[part].push(object); }
     sky = skyDome(kit, shared.materials);
     group.add(sky);
@@ -763,6 +1004,11 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     applyLighting();
   }
   function release() {
+    canonicalPeople.dispose(); crowdChanged = null; placedPeople = [];
+    renderedContactTop = null;
+    delete group.userData.contactSurfaceIndex;
+    for (const parent of authoredRoots.values()) parent.removeFromParent();
+    authoredRoots.clear(); authoredPeople.clear(); authoredCalls = 0;
     for (const peer of [...peers.values()]) dropPeer(peer);
     easing = false; batchKey = null; peopleList = []; mergedTags = [];
     wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
@@ -784,7 +1030,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (driven && pose) { const [name, seat] = pose.split(':'); show(name!, seat === '' ? undefined : Number(seat)); if (selfTag) selfTag.position.y = avatar.position.y + shownFigure!.userData.top; }
   }
 
-  const triangleCount = (object: THREE.Mesh) => (object.geometry?.index ? object.geometry.index.count / 3 : 0);
+  const triangleCount = (object: THREE.Mesh) => {
+    const geometry = object.geometry;
+    if (!geometry) return 0;
+    const count = geometry.index?.count ?? geometry.getAttribute('position')?.count ?? 0;
+    // Canonical clothing masks keep spare source indices, but draw only their visible range.
+    return Math.max(0, Math.min(count - geometry.drawRange.start, geometry.drawRange.count)) / 3;
+  };
   /**
    * WALKING (driven by the host, src/venue-world.ts). Until the host calls walk.drive(true) the scene
    * stands the avatar at its spot by itself, exactly as before; once driven it only reports where
@@ -832,6 +1084,34 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         if (share > 0) height = Math.max(height, at.y * Math.min(1, share));
       }
       return height;
+    },
+    /** Return a target only if a horizontal support face exists in the baked solid geometry. */
+    contactHeightAt(x: number, z: number, expectedY?: number) {
+      if (!Number.isFinite(x) || !Number.isFinite(z) || (expectedY !== undefined && !Number.isFinite(expectedY))) return null;
+      // heightAt() also supplies synthetic ramps around unsupported raised anchors. They are
+      // navigation assists, not rendered support, so reject their entire influence radius.
+      if (raised.some((at) => Math.hypot(x - at.x, z - at.z) < 1.9)) return null;
+      const declared = raisedContactTop(layout?.raised, x, z);
+      if (declared === null) return null;
+      let top: number | null;
+      if (declared !== undefined) {
+        // A deck declaration is necessary but not sufficient: require its exact plane in the
+        // merged solid mesh at this point. This prevents anchors/missing deck art becoming support.
+        if (Math.abs(deckHeight(x, z) - declared) > CONTACT_TOP_EPSILON) return null;
+        top = renderedContactTop?.(x, z, declared - CONTACT_TOP_EPSILON, declared + CONTACT_TOP_EPSILON, declared) ?? null;
+      } else {
+        const floor = footprints?.floor;
+        if (!floor || deckHeight(x, z) > CONTACT_TOP_EPSILON) return null;
+        const [x0, z0, x1, z1] = floor;
+        if (x <= x0 + 0.08 || x >= x1 - 0.08 || z <= z0 + 0.08 || z >= z1 - 0.08) return null;
+        // footprintRecorder's ground-slab rule admits only top faces near y=0. Sample the
+        // actual highest horizontal face in that band; do not substitute navigation heightAt().
+        top = renderedContactTop?.(x, z, -0.06, 0.08) ?? null;
+      }
+      // Raised swing soles are still over this known support; the body solver preserves them.
+      // Only reject a sample buried materially below the surface, where a correction would exceed its envelope.
+      if (top === null || (expectedY !== undefined && expectedY < top - 0.14)) return null;
+      return top + 0.016;
     },
     near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
     goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },
@@ -916,6 +1196,16 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       view.crowd = Array.isArray(people) ? (people as unknown[]).filter((person): person is CrowdPerson => Boolean(person) && typeof person === 'object') : [];
       if (live) buildActors(); else { crowdTags = []; peopleList = []; }
       return crowdTags;
+    },
+    startCrowd(renderer, changed) {
+      if (disposed || !bodyAllowed() || !drawsWebGL2(renderer)) return;
+      crowdChanged = changed;
+      canonicalPeople.start();
+    },
+    get crowdRendering() {
+      const canonical = placedPeople.filter(person => canonicalPeople.get(publicBodyId(String(person.id)))).length;
+      return { desired: placedPeople.length, canonical, procedural: placedPeople.length - canonical,
+        loading: canonicalPeople.loadingId !== null && placedPeople.some(person => publicBodyId(String(person.id)) === canonicalPeople.loadingId) ? 1 : 0 };
     },
     /** True while another player's figure is on its way to a newly reported position. */
     get easing() { return easing; },

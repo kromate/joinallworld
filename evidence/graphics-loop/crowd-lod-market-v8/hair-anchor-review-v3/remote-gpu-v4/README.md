@@ -1,0 +1,9 @@
+# Hair geometry guard v4 diagnostic
+
+This is a separate, diagnostic-only run against the already verified CPU package `37916846692` / `a6674737d1b35e9d217c86d79c8efbf39041ad3d`. It captures one saved male identity with the source hair anchor, source and compact body/wardrobe geometry, and front/profile yaws: four PNGs total. The production sources and the CPU package are unchanged.
+
+The v3 failure wrote two PNGs but threw at the geometry-toggle guard before appending either capture or its operands to the final result. The failed result therefore has no pair metrics. A plausible source-level cause is that `makeRecipe` calls the mesh simplifier for every wardrobe item, including the hair item, with a target of `max(12, floor(sourceTriangles * 0.55))`; the old pair guard nevertheless required source and compact hair triangle counts and raw attribute signatures to be exactly equal. This is a hypothesis, not a finding about the actual failed values.
+
+V4 preserves the exact old equality guard. It writes each shot’s hash, look, camera, hair witness, and recipe hair-map metrics immediately; it then writes the comparison operands before any guard can reject the pair. If the guard fails, all four shots are retained as invalid diagnostic evidence and the process still fails. Nothing converts a mismatched pair into an accepted capture. The helper canonicalizes object-key order only; changed values remain mismatches. Its tests cover key-order equivalence, an attribute hash mismatch, an intentional source/compact triangle difference, and a recipe-provenance mismatch.
+
+The saved inputs are a narrow diagnosis of source-versus-compact geometry only. They do not review candidate hair-anchor mode, all identities, all hair styles, hardware GPU quality, phone performance, or production acceptance. Keep v3 artifacts immutable.

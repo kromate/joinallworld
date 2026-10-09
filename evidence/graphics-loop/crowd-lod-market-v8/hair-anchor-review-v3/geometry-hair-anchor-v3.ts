@@ -1,8 +1,14 @@
 import * as THREE from 'three';
-import type { Look } from '../characters.ts';
-import type { ResolvedAvatarWearableId } from '../../types/avatar.ts';
-import type { AvatarBodyRegion } from '../../game/wardrobe/catalogue.ts';
-import { AVATAR_WEARABLE_CATALOGUE } from '../../game/wardrobe/catalogue.ts';
+import type { Look } from '/src/scene/characters.ts';
+import type { ResolvedAvatarWearableId } from '/src/types/avatar.ts';
+import type { AvatarBodyRegion } from '/src/game/wardrobe/catalogue.ts';
+import { AVATAR_WEARABLE_CATALOGUE } from '/src/game/wardrobe/catalogue.ts';
+
+export type HairAnchorMode = 'source' | 'candidate';
+let hairAnchorMode: HairAnchorMode = 'source';
+let latestHairPlacement: Record<string, unknown> | null = null;
+export function setHairAnchorMode(mode: HairAnchorMode): void { hairAnchorMode = mode; }
+export function getHairPlacementWitness(): Record<string, unknown> | null { return latestHairPlacement; }
 
 export interface ResolvedWardrobeLook {
   readonly look: Pick<Look, 'body' | 'hair' | 'hairColor' | 'outfit' | 'outfitColor' | 'bottomsColor' | 'skin' | 'fabric'>;
@@ -16,6 +22,8 @@ export interface WardrobeGeometry {
   readonly triangles: number;
   readonly itemTriangles: Readonly<Record<string, number>>;
   readonly bytes: number;
+  readonly itemRanges?: Readonly<Record<string, { readonly vertexStart: number; readonly vertexCount: number; readonly indexStart: number; readonly indexCount: number }>>;
+  readonly hairPlacementWitness?: Readonly<Record<string, unknown>>;
 }
 /** Rest positions are captured from inverse bind matrices, never from currently posed bones. */
 export interface WardrobeRestFrame {
@@ -103,6 +111,8 @@ class ClothBuilder {
   private agbadaTorsoPattern = false;
   private agbadaHipY = 0;
   private readonly counts: Record<string, number> = {};
+  private readonly itemRanges: Record<string, { vertexStart: number; vertexCount: number; indexStart: number; indexCount: number }> = {};
+  private hairPlacementWitness: Record<string, unknown> | null = null;
   readonly hides = new Set<AvatarBodyRegion>();
   readonly coverage: { region: AvatarBodyRegion; minY: number; maxY: number }[] = [];
   readonly clothProfiles: (readonly { y: number; rx: number; rz: number; z?: number }[])[] = [];
@@ -159,12 +169,15 @@ class ClothBuilder {
   }
   item(id: string, build: () => void): void {
     const before = this.indices.length;
+    const vertexStart = this.positions.length / 3;
     this.cloth = CLOTH_ITEMS.has(id) || id.startsWith('outfit:') || id === 'hair:gele';
     build();
     const triangles = (this.indices.length - before) / 3;
     if (triangles > 4000) throw new Error(`${id} exceeds the wardrobe item budget`);
     this.counts[id] = triangles;
+    this.itemRanges[id] = { vertexStart, vertexCount: this.positions.length / 3 - vertexStart, indexStart: before, indexCount: this.indices.length - before };
   }
+  recordHairPlacement(witness: Record<string, unknown>): void { this.hairPlacementWitness = witness; }
   vertex(point: THREE.Vector3, colour: THREE.Color, weights: Weights): number {
     const index = this.positions.length / 3;
     const local = point.clone().applyMatrix4(this.rest.meshFromMetres);
@@ -290,9 +303,12 @@ class ClothBuilder {
     geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(this.skinIndices, 4));
     geometry.setAttribute('skinWeight', new THREE.Float32BufferAttribute(this.skinWeights, 4));
     geometry.setIndex(this.indices);
+    geometry.userData.wardrobeItemRanges = this.itemRanges;
+    geometry.userData.hairPlacementWitness = this.hairPlacementWitness;
     geometry.computeVertexNormals(); geometry.computeBoundingSphere();
     const bytes = Object.values(geometry.attributes).reduce((n, attribute) => n + attribute.array.byteLength, 0) + (geometry.index?.array.byteLength ?? 0);
-    return { geometry, hides: this.hides, coverage: this.coverage, triangles, itemTriangles: this.counts, bytes };
+    return { geometry, hides: this.hides, coverage: this.coverage, triangles, itemTriangles: this.counts, bytes,
+      itemRanges: this.itemRanges, hairPlacementWitness: this.hairPlacementWitness ?? undefined };
   }
 }
 
@@ -530,12 +546,35 @@ function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
   if (style === 'lowcut' || style === 'fade') return;
   if (style === 'gele') { headCover(b, 'gele-fan', tint); return; }
   b.hides.add('hair');
-  const head = b.anchor('Head'), top = b.rest.bounds.get('hair')?.max.y ?? head.y + 0.22, weights = b.rigid('Head');
+  const head = b.anchor('Head'), headTop = b.rest.bounds.get('Head')?.max.y ?? head.y + 0.21;
+  const top = b.rest.bounds.get('hair')?.max.y ?? head.y + 0.22, weights = b.rigid('Head');
   b.ball(new THREE.Vector3(0, top - 0.064, -0.024), [0.102, 0.082, 0.103], tint, weights, 10, 3);
   switch (style) {
     case 'curls': b.ball(new THREE.Vector3(0, top - 0.056, -0.025), [0.123, 0.1, 0.12], tint, weights, 12, 4); break;
-    case 'afro': b.ball(new THREE.Vector3(0, top - 0.05, -0.025), [0.162, 0.157, 0.155], tint, weights, 12, 5); break;
-    case 'bun': b.ball(new THREE.Vector3(0, top + 0.07, -0.058), [0.086, 0.09, 0.084], tint, weights); break;
+    case 'afro': {
+      const radius = [0.162, 0.157, 0.155] as const;
+      const center = hairAnchorMode === 'source' ? new THREE.Vector3(0, top - 0.05, -0.025)
+        : new THREE.Vector3(0, headTop + radius[1] - 0.025, -0.025);
+      const headBounds = b.rest.bounds.get('Head');
+      const scalpBounds = b.rest.bounds.get('hair');
+      const witness = { mode: hairAnchorMode, style, headBoneAnchor: head.toArray(), headBounds: headBounds ? { min: headBounds.min.toArray(), max: headBounds.max.toArray() } : null,
+        scalpBounds: scalpBounds ? { min: scalpBounds.min.toArray(), max: scalpBounds.max.toArray() } : null,
+        center: center.toArray(), radii: [...radius], bboxOverlapY: headBounds ? Math.max(0, Math.min(center.y + radius[1], headBounds.max.y) - Math.max(center.y - radius[1], headBounds.min.y)) : null };
+      b.recordHairPlacement(witness); latestHairPlacement = witness;
+      b.ball(center, radius, tint, weights, 12, 5); break;
+    }
+    case 'bun': {
+      const radius = [0.086, 0.09, 0.084] as const;
+      const center = hairAnchorMode === 'source' ? new THREE.Vector3(0, top + 0.07, -0.058)
+        : new THREE.Vector3(0, headTop + 0.03, -0.058);
+      const headBounds = b.rest.bounds.get('Head');
+      const scalpBounds = b.rest.bounds.get('hair');
+      const witness = { mode: hairAnchorMode, style, headBoneAnchor: head.toArray(), headBounds: headBounds ? { min: headBounds.min.toArray(), max: headBounds.max.toArray() } : null,
+        scalpBounds: scalpBounds ? { min: scalpBounds.min.toArray(), max: scalpBounds.max.toArray() } : null,
+        center: center.toArray(), radii: [...radius], bboxOverlapY: headBounds ? Math.max(0, Math.min(center.y + radius[1], headBounds.max.y) - Math.max(center.y - radius[1], headBounds.min.y)) : null };
+      b.recordHairPlacement(witness); latestHairPlacement = witness;
+      b.ball(center, radius, tint, weights); break;
+    }
     case 'ponytail':
       b.tube([new THREE.Vector3(0, top - 0.03, -0.1), new THREE.Vector3(0, head.y + 0.035, -0.18), new THREE.Vector3(0, head.y - 0.15, -0.2)], [0.045, 0.053, 0.032], tint, () => weights, 8); break;
     case 'long':

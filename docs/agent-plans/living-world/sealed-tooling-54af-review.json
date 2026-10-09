@@ -1,0 +1,43 @@
+{
+  "sourceSha": "54af4a2a0366081d7e4e10eca1d49f5586e7b803",
+  "checks": [
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-control-file.mjs",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-control-file.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.mjs",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/sealed-africa-coverage.mjs",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/verify-sealed-africa.mjs",
+      "matches": true
+    }
+  ],
+  "localTests": {
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "node": "24.19.0",
+    "heapMiB": 128,
+    "sharedHeavySlot": true,
+    "terminalExit": 0,
+    "logSha256": "5117ddaf75a13fa82dbd910a0cd986b09f77bf28ee5e9c9da08b6b61beef6377"
+  },
+  "releaseReady": false,
+  "scope": "Root independently checked all6immutable sourcepins and actual17testlog. No Root originalcheckpoint/store/Worker/browser execution; Astra finalreview/currentgame fullCI/seal/native/live remain.",
+  "checkedAt": "2026-10-09T20:13:32.021361+00:00",
+  "sourceVerdict": "Identified9f postrenameidentity/provenance defect closed at source/helpertest level; not actual originalstore upgrade acceptance."
+}

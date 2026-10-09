@@ -148,7 +148,8 @@ def verify_plan_parent_pipes(state):
         if descriptor is None: continue
         info = os.fstat(descriptor); flags = fcntl.fcntl(descriptor, fcntl.F_GETFL)
         identity = (info.st_dev, info.st_ino, info.st_uid, info.st_mode, info.st_nlink, flags)
-        if identity != state.identities[position]: raise ValueError("plan parent pipe changed")
+        if identity != state.identities[position]:
+            raise ValueError(f"plan parent pipe changed: {state.identities[position]} -> {identity}")
 
 
 

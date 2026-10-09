@@ -165,7 +165,6 @@ function makeRetargetedClips(
       hip: 'pelvis',
       scale: 1,
       preserveBoneMatrix: true,
-      preserveBonePositions: true,
     });
     assert(mapped.tracks.length >= 18, `${name} retargeted too few tracks (${mapped.tracks.length})`);
     assert(mapped.tracks.every((track) => track.times.every(Number.isFinite) && track.values.every(Number.isFinite)),

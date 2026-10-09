@@ -38,7 +38,7 @@ const HAIR_TRIANGLE_LIMIT = 7_000;
 const CURL_SIDES = 6;
 const CURL_SEGMENTS = 6;
 
-function component(attribute: THREE.BufferAttribute | THREE.InterleavedBufferAttribute, index: number, axis: 0 | 1 | 2 | 3): number {
+function component(attribute: THREE.BufferAttribute | THREE.InterleavedBufferAttribute, index: number, axis: number): number {
   return axis === 0 ? attribute.getX(index) : axis === 1 ? attribute.getY(index) : axis === 2 ? attribute.getZ(index) : attribute.getW(index);
 }
 
@@ -115,7 +115,7 @@ function bodySurfaceWrapper(source: THREE.BufferGeometry): THREE.BufferGeometry 
   const geometry = new THREE.BufferGeometry();
   geometry.name = 'authored-presentation-body-surface';
   for (const [name, attribute] of Object.entries(source.attributes)) geometry.setAttribute(name, attribute);
-  for (const [name, attributes] of Object.entries(source.morphAttributes)) geometry.morphAttributes[name] = attributes;
+  geometry.morphAttributes = { ...source.morphAttributes };
   geometry.morphTargetsRelative = source.morphTargetsRelative;
   for (const group of source.groups) geometry.addGroup(group.start, group.count, group.materialIndex);
   geometry.setDrawRange(source.drawRange.start, source.drawRange.count);
@@ -134,7 +134,7 @@ function makeSurfaceGeometry(source: THREE.BufferGeometry, faces: readonly Face[
   const geometry = new THREE.BufferGeometry();
   geometry.name = name;
   for (const [key, attribute] of Object.entries(source.attributes)) geometry.setAttribute(key, key === 'position' ? new THREE.Float32BufferAttribute(moved, 3) : attribute);
-  for (const [key, attributes] of Object.entries(source.morphAttributes)) geometry.morphAttributes[key] = attributes;
+  geometry.morphAttributes = { ...source.morphAttributes };
   geometry.morphTargetsRelative = source.morphTargetsRelative;
   const indices = new Uint16Array(faces.length * 3);
   let cursor = 0;
@@ -185,7 +185,7 @@ function largestConnectedSurface(faces: readonly Face[]): Face[] {
   const edges = new Map<string, number[]>();
   for (let faceIndex = 0; faceIndex < faces.length; faceIndex++) {
     const face = faces[faceIndex]!;
-    for (const [a, b] of [[face[0], face[1]], [face[1], face[2]], [face[2], face[0]]]) {
+    for (const [a, b] of [[face[0], face[1]], [face[1], face[2]], [face[2], face[0]]] as const) {
       const key = a < b ? `${a}:${b}` : `${b}:${a}`;
       const owners = edges.get(key);
       if (owners) owners.push(faceIndex); else edges.set(key, [faceIndex]);

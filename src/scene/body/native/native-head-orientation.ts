@@ -7,6 +7,12 @@ export interface NativeHeadOrientationController {
   dispose(): void;
 }
 
+function requireHeadParent(head: THREE.Bone): THREE.Object3D {
+  const parent = head.parent;
+  if (!parent) throw new Error('Head orientation bone mixamorigHead has no parent');
+  return parent;
+}
+
 /** Applies measured source head rotation relative to its corrected rest orientation. */
 export function createNativeHeadOrientationController(
   root: THREE.Object3D,
@@ -15,8 +21,10 @@ export function createNativeHeadOrientationController(
   if (!sourceRestHeadRotation || ![sourceRestHeadRotation.x, sourceRestHeadRotation.y,
     sourceRestHeadRotation.z, sourceRestHeadRotation.w].every(Number.isFinite)
     || sourceRestHeadRotation.lengthSq() < 1e-12) throw new Error('Invalid source rest head rotation');
-  const head = root.getObjectByName('mixamorigHead') as THREE.Bone | null;
-  if (!head?.isBone) throw new Error('Head orientation requires native bone mixamorigHead');
+  const candidate = root.getObjectByName('mixamorigHead');
+  if (!(candidate instanceof THREE.Bone)) throw new Error('Head orientation requires native bone mixamorigHead');
+  const head: THREE.Bone = candidate;
+  const headParent = requireHeadParent(head);
   const bindRotation = head.quaternion.clone();
   root.updateWorldMatrix(true, true);
   const rootWorldInverse = root.getWorldQuaternion(new THREE.Quaternion()).invert();
@@ -40,11 +48,12 @@ export function createNativeHeadOrientationController(
     if (!source || ![source.x, source.y, source.z, source.w].every(Number.isFinite) || source.lengthSq() < 1e-12) {
       throw new Error('Source frame is missing a valid head rotation');
     }
+    if (head.parent !== headParent) throw new Error('Native head orientation bone was reparented');
     // These are root-relative world orientations: the source delta acts on the left.
     sourceDelta.copy(source).multiply(restInverse).normalize();
     desiredRootRotation.copy(sourceDelta).multiply(bindRootRotation).normalize();
     root.getWorldQuaternion(rootWorldInverse).invert();
-    head.parent!.getWorldQuaternion(parentRootRotation).premultiply(rootWorldInverse).normalize();
+    headParent.getWorldQuaternion(parentRootRotation).premultiply(rootWorldInverse).normalize();
     head.quaternion.copy(parentRootRotation.invert().multiply(desiredRootRotation)).normalize();
     head.updateMatrix();
     head.updateWorldMatrix(false, true);

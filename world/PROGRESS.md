@@ -114,8 +114,14 @@ That failed run37985320742 remains recorded. Corrected exact52611 audit379856098
 is terminal SUCCESS on Node22.19 and24 with17 retained-stage checks each, all
 source/engine checks and strict types. Explicit Astra accepted the unchanged
 runtime/caller source at54af; only tests/receipts/progress changed at52611.
-The all-ten seal is now running as [run37986247546](https://github.com/kromate/joinallworld/actions/runs/37986247546),
-with immutable tooling52611 and exact game sourcec1f. Original retained-store
+The first all-ten seal [run37986247546](https://github.com/kromate/joinallworld/actions/runs/37986247546)
+failed after49.316s with tooling52611 and exact game sourcec1f. All21 served assets,
+first-five paid/recovery and second-four paid journeys passed; second-four recovery
+failed on its funding receipt replay. Addis journeys were not reached. The
+HTTP status/code was absent from that assertion; a narrow diagnostic correction
+now validates these before the unchanged duplicate/effect oracle. The canonical
+founder write budget is30/min, but the actual failure response must establish
+the cause. See [sealed-africa-c1-first-failure.json](sealed-africa-c1-first-failure.json). Original retained-store
 upgrade remains pending final full CI, package and native readiness. All ten admitted destinations must appear once
 across the three source-exported journey batches and each must have both map and
 geometry assets. The original actor, store, port, key and funding intent remain

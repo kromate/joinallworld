@@ -179,6 +179,13 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
   const founderMe = object(await (await send('/api/admin/me', undefined, founderCookie)).json());
   assert.equal(founderMe.level, 'root', 'funding uses the authenticated founder boundary');
 
+  const adminReply = async (response, phase) => {
+    const answer = object(await response.json());
+    const safeCode = value => typeof value === 'string' && /^[a-z0-9_]{1,64}$/.test(value) ? value : null;
+    assert.equal(response.status, 200, `admin ${phase} response ${JSON.stringify({ status: response.status, code: safeCode(answer.code), error: safeCode(answer.error) })}`);
+    return answer;
+  };
+
   const keyOf = device => {
     const separator = device.cookie.indexOf('=');
     assert.ok(separator > 0);
@@ -273,24 +280,24 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
     },
     credit: async (device, amount, reason) => {
       const intent = { clientId: `${Date.now()}:${randomUUID()}`, action: 'credit', amount, reason };
-      const answer = object(await (await send(`/api/admin/players/${device.id}/act`, intent, founderCookie)).json());
+      const answer = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'credit');
       assert.equal(answer.code, 'credited', 'synthetic funding is authorized and applied');
-      const replay = object(await (await send(`/api/admin/players/${device.id}/act`, intent, founderCookie)).json());
+      const replay = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'receipt-replay');
       assert.equal(replay.duplicate, true, 'funding receipt replays without a second effect');
       assert.equal(replay.after, answer.after);
     },
     debit: async (device, amount, reason) => {
       const intent = { clientId: `${Date.now()}:${randomUUID()}`, action: 'debit', amount, reason };
       let response = await send(`/api/admin/players/${device.id}/act`, intent, founderCookie);
-      let answer = object(await response.json());
+      let answer = await adminReply(response, 'debit');
       if (answer.code === 'confirmation_required') {
         assert.equal(typeof answer.token, 'string');
         intent.confirm = answer.token;
         response = await send(`/api/admin/players/${device.id}/act`, intent, founderCookie);
-        answer = object(await response.json());
+        answer = await adminReply(response, 'debit-confirmation');
       }
       assert.equal(answer.code, 'debited', 'synthetic spending uses the authenticated admin route');
-      const replay = object(await (await send(`/api/admin/players/${device.id}/act`, intent, founderCookie)).json());
+      const replay = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'receipt-replay');
       assert.equal(replay.duplicate, true, 'spending receipt replays without a second effect');
       assert.equal(replay.after, answer.after);
     },

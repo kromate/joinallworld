@@ -85,7 +85,9 @@ export function readValidatedParcelState(value: unknown): ParcelState | null {
     if (parcel && (value.lastAt < (parcel.terminalAt ?? parcel.collectedAt ?? parcel.offeredAt)
       || ((parcel.status === 'offered' || parcel.status === 'accepted') && value.lastAt >= parcel.expiresAt))) return null
     const state: ParcelState = { version: 1, actor: value.actor, revision: value.revision, generation: value.generation, lastAt: value.lastAt, parcel }
-    if (new TextEncoder().encode(JSON.stringify(state)).byteLength > MAX_PARCEL_RECORD_BYTES) return null
+    // Every canonical string above is an ASCII identifier, key, or enum literal, and numbers stringify as ASCII.
+    // Therefore JSON's UTF-16 code-unit length is also its UTF-8 byte length for this validated record.
+    if (JSON.stringify(state).length > MAX_PARCEL_RECORD_BYTES) return null
     return state
   } catch { return null }
 }

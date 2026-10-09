@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-09T20:38:09.036771+00:00",
+  "sourceState": "Owner draft after frozen diagnostic d4eb7249f24aaef93ddd63e0eceafed348d2dc39; immutable repaired SHA still required.",
+  "sourcePins": [
+    {
+      "path": "world/tooling/verify-sealed-africa.mjs",
+      "bytes": 26477,
+      "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.mjs",
+      "bytes": 2628,
+      "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.test.mjs",
+      "bytes": 2523,
+      "sha256": "714f4a2cb34b7243f14a74a27959cdf6f2deba196f2a8be6bd2641d6451766a7"
+    },
+    {
+      "path": ".github/workflows/africa-rollout-audit-ci.yml",
+      "bytes": 4458,
+      "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
+    }
+  ],
+  "verdict": "Accepted at source for observed canonical synthetic fixture; actual tests, frozen identity and new sealed Worker acceptance pending.",
+  "observedDiagnostic": {
+    "runId": 37987303569,
+    "httpStatus": 429,
+    "error": "rate_limited",
+    "initialCredit": true,
+    "artifactSha256": "cc1f34322e658bfec2fbd5e083be2b9f4de88312a6c55c727c80a02d57a7ad80"
+  },
+  "policy": [
+    "Only observed429/rate_limited",
+    "Frozen canonical30/min RATE",
+    "Exactly one live protected admin-w bucket, count31, 60000ms window",
+    "At most2 waits, each\u226460050ms, remaining global deadline strictly exceeds wait+5000ms",
+    "Caller snapshots/freeze original body; same intent/confirmation/account/origin retried",
+    "Wait uses real wall-clock inside original168-second total budget and175-second outer watchdog",
+    "No limiter row/clock/funding/store reset; financial duplicate/balance/effect oracles retained",
+    "Invalid/multiple/expired/wrong-limit/wrong-response/wrong-timing evidence refuses"
+  ],
+  "tests": {
+    "addedPolicyCases": 4,
+    "existingChecks": 17,
+    "localPasses": 21,
+    "evidenceQualification": "Owner report only; Root has not read the local log or run tests. Remote source/tooling and actual sealed retest pending."
+  },
+  "nativeScope": "Synthetic verifier transport only. Does not authorize access to original private retained store or fake native gameplay clocks.",
+  "sharedRuntimeMutatedByRoot": false
+}

@@ -1,0 +1,166 @@
+{
+  "checkedAt": "2026-10-09T20:33:18.197410+00:00",
+  "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "executed": false,
+  "scope": "Already reserved verified Astra stage window; source-only operator handoff. Root did not play or operate the browser.",
+  "sourcePins": [
+    {
+      "path": "src/app/features/living-world/DrivingApp.vue",
+      "bytes": 64661,
+      "sha256": "1575c5cbf2c50d78ac6a9a3ca0a1ba859ffb3695dfc28d39fdc62dd8eefb9ee1"
+    },
+    {
+      "path": "src/app/features/living-world/drivingScene.ts",
+      "bytes": 21469,
+      "sha256": "3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c"
+    },
+    {
+      "path": "src/app/features/living-world/register.ts",
+      "bytes": 1329,
+      "sha256": "2a1ad929e9fbd77f10f88da088c687f6cd52ed6fb52ab213c716630330ce1168"
+    },
+    {
+      "path": "src/game/living-world/course.ts",
+      "bytes": 597,
+      "sha256": "b2fd2d160ef37e6baa9ef204db2b0911999205909da39c159b2068176f586adb"
+    },
+    {
+      "path": "src/game/living-world/driving.ts",
+      "bytes": 19367,
+      "sha256": "18bf610bc5fe28c7a6274d090628d4edb13f0045fc4c05d006de9f830dab87d4"
+    },
+    {
+      "path": "server/living-world/driving-service.ts",
+      "bytes": 26138,
+      "sha256": "a761b610ec85ffc79528a4883ebaa764f04d620a8bd9273c5cd5802c95631594"
+    },
+    {
+      "path": "server/routes/living-world.ts",
+      "bytes": 4989,
+      "sha256": "5d2840b17d0d0abba4c5afa208296699b34d35a9e24dc2b65d1236c25fa4bd3d"
+    }
+  ],
+  "preconditions": [
+    "Exact full CI, sealed package/tooling and original-store readiness",
+    "Owned server/store/origin/watchdog and verified Astra browser lease",
+    "Normally onboarded actor, actual city/location, no competing active life action",
+    "Working actual 3D scene; fallback status is not driving acceptance"
+  ],
+  "entry": {
+    "panelId": "driving-practice",
+    "visibleName": "Driving school",
+    "placement": "phone/life"
+  },
+  "course": {
+    "id": "district-practice",
+    "version": "1",
+    "speedLimit": 7,
+    "roadWidth": 10,
+    "roadPoints": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        30
+      ],
+      [
+        25,
+        30
+      ],
+      [
+        25,
+        55
+      ]
+    ],
+    "checkpoints": [
+      {
+        "id": "braking",
+        "center": [
+          0,
+          18
+        ],
+        "radius": 3,
+        "stopRequired": true
+      },
+      {
+        "id": "turning",
+        "center": [
+          18,
+          30
+        ],
+        "radius": 3,
+        "stopRequired": false
+      },
+      {
+        "id": "parking",
+        "center": [
+          25,
+          52
+        ],
+        "radius": 3,
+        "stopRequired": true
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "entry",
+      "action": "Open actual Driving school; use Start practice if no retained lesson/pass exists.",
+      "expect": "Loading completes; Getting into the car and door/walk/seat animation visible; controls enable after entry. Preserve any existing lesson/pass."
+    },
+    {
+      "id": "keyboard",
+      "action": "Use WASD/arrows for throttle/brake/steering and release them.",
+      "expect": "Actual motion/server gauges respond, no held input remains after release; elapsed time alone cannot complete checkpoints."
+    },
+    {
+      "id": "responsive-pointer",
+      "action": "At supported320/390 layouts use Analog steering and Hold to accelerate/Hold to brake; release/cancel pointers.",
+      "expect": "Controls fit, remain reachable and affect movement without stuck input or tap interception.",
+      "qualification": "Browser viewport/pointer only; actual physical phone/touch/performance remains separate."
+    },
+    {
+      "id": "checkpoint",
+      "action": "Drive into braking zone, fully stop, then actively steer along route toward turning.",
+      "expect": "Actual server-validated movement/full stop advances checkpoint; timer or crossing required-stop zone alone cannot pass."
+    },
+    {
+      "id": "interruption",
+      "action": "Pause safely on incomplete run, record saved checkpoint/pose, reload normally and reopen school.",
+      "expect": "Same saved journey/checkpoint, zero-speed paused state, neutral controls and no automatic driving."
+    },
+    {
+      "id": "resume",
+      "action": "Use Resume saved lesson explicitly and continue.",
+      "expect": "Controls recover and previous checkpoint remains; uncertain/offline delivery requires Reconnect and check lesson."
+    },
+    {
+      "id": "qualification",
+      "action": "Complete turning/parking normally. After Practice passed, claim simulated qualification/free starter permission once, then reload/reopen.",
+      "expect": "Earned result and qualification/permission persist bound to same journey, with no duplicate reward/charge.",
+      "ifFailed": "Record failure honestly; no set-result/coordinates/time/funding/save injection; bounded normal retry only."
+    },
+    {
+      "id": "boundary",
+      "action": "Read actual qualification and permission text.",
+      "expect": "Simulated qualification is distinct from real licence; free permission does not claim allocated car, mapped driving or delivered stock."
+    }
+  ],
+  "evidenceRequired": [
+    "Exact source/package/origin and actual operator/model receipt",
+    "Named executed/pass/fail/not-reached table",
+    "Source-bound actual permitted-Astra screenshots/observations",
+    "Owner sanitized same-journey checkpoint, qualification/permission before-after witness",
+    "Real wall-clock play; no injected saves/coordinates/results or test-clock advance"
+  ],
+  "programmeStillOpen": [
+    "Mapped physical driver/vehicle/road authority",
+    "Trip checkpoint to parcel custody/restock wages",
+    "Connected barber/earnings/improvement/reload",
+    "Trusted ON active teaching display/choices",
+    "Later civic/career/real-business/live consented Goalmatic",
+    "Multiplayer/interruption and physical-device acceptance"
+  ]
+}

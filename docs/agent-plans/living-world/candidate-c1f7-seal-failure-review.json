@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-09T20:27:42.010279+00:00",
+  "checkedAt": "2026-10-09T20:38:09.036771+00:00",
   "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "toolingSha": "52611b45318ee0f33dc0c6a38e01f32eecb62d85",
   "runId": 37986247546,
@@ -81,7 +81,7 @@
     "verifierCreditLines": "274-279",
     "diagnosticGap": "Replay JSON is asserted without checking HTTP status; undefined duplicate does not distinguish refused request from missing receipt.",
     "rateLimitCandidate": "server/admin/gate.ts applies 30 writes per minute to one account before ctx.once in server/routes/admin.ts. Rotating source IP does not change that key.",
-    "causalStatus": "Inference only; actual returned status/body and failing action context still required.",
+    "causalStatus": "Actual diagnostic proves admin credit HTTP429/rate_limited. Source shows protected admin-w per-account30/min persists in Worker SQLite across same-store restarts; IPv4 addressBucket preserves distinct addresses. No actual missing receipt/duplicate effect established.",
     "limits": "Keep duplicate oracle, actual original store/player/grant, 168-second internal and 175-second outer watchdog, production security limits and once-only reward semantics."
   },
   "ownership": {
@@ -89,7 +89,7 @@
     "sharedRuntime": "Integration",
     "Root": "Read-only source and official evidence review"
   },
-  "next": "Owner diagnoses returned response, makes bounded fixture/runtime repair as appropriate, publishes exact tooling/source pins and retests original sealed coverage; stage/native/release/live gates remain.",
+  "next": "WORLD freezes bounded stored-window walltime pacing and same-intent retry, validates policy+fresh exact sealed Worker; full CI complete. Then actual same-store/native school and travel/save acceptance, WORLD release/live.",
   "programmeRemaining": [
     "Actual staged school/driving interruption and qualification",
     "Trusted ON active teaching display and native choices/retry/reload/once wage",
@@ -101,12 +101,8 @@
   "independentGameCi": {
     "runId": 37984507814,
     "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
-    "requiredJobsPassedAtLastQuery": 11,
-    "pending": [
-      "full-node (22, game)",
-      "full-node (24, host)",
-      "full-node (24, tooling)"
-    ],
+    "requiredJobsPassedAtLastQuery": 14,
+    "pending": [],
     "node24Game": {
       "jobId": 114003432947,
       "tests": 2589,
@@ -117,6 +113,152 @@
       "logBytes": 523599,
       "logSha256": "56f4f1d3d110bc15da31fec215fb92cf292e48ef3ec4084647a10bcbcb218b33"
     },
-    "fullAcceptance": false
+    "fullAcceptance": true,
+    "22": {
+      "jobId": 114003432915,
+      "tests": 2589,
+      "pass": 2588,
+      "fail": 0,
+      "existingSkip": 1,
+      "logBytes": 1260019,
+      "logSha256": "8455572fa68eb8e4742a0238e2f89baebe4b618dd58cab5a7294a098d9589581"
+    },
+    "24-tooling": {
+      "jobId": 114003432835,
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "existingSkip": 0,
+      "logBytes": 176751,
+      "logSha256": "63a15b4d3f820e3ba5f25f35257beb3cb0aba84777fe450b625c9972c91c481c"
+    },
+    "qualification": "All required exact-source CI jobs accepted; sealed/native/production gates remain separate.",
+    "officialJobs": [
+      {
+        "id": 114003432666,
+        "name": "release-policy",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432835,
+        "name": "full-node (24, tooling)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432915,
+        "name": "full-node (22, game)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432922,
+        "name": "full-worker (24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432947,
+        "name": "full-node (24, game)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432986,
+        "name": "full-worker (22)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003432988,
+        "name": "integration-repairs",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433039,
+        "name": "ui-regressions",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433055,
+        "name": "host-acceptance",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433086,
+        "name": "full (24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433151,
+        "name": "full-node (24, host)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433204,
+        "name": "full-node (22, host)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433276,
+        "name": "full (22)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003433907,
+        "name": "typecheck-fast",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 114003433911,
+        "name": "full-node (22, tooling)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114003471245,
+        "name": "build-and-smoke-fast",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "metadataSha256": "506f13c962e95fc8cf72a45a0a928a2ee3e1aeb77a2ef48a8c859c4310599dd7",
+    "node24Host": {
+      "jobId": 114003433151,
+      "tests": 1025,
+      "pass": 1022,
+      "fail": 0,
+      "existingSkip": 3,
+      "logBytes": 328887,
+      "logSha256": "d722631a2667a45e594da53299430d2c8bd2b2d4caf19886f41110b324a2d7c1"
+    }
+  },
+  "diagnosticRun": {
+    "id": 37987303569,
+    "toolingSha": "d4eb7249f24aaef93ddd63e0eceafed348d2dc39",
+    "gameSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "status": "completed",
+    "jobId": 114012392604,
+    "step": "Exercise sealed SQLite Worker and actual Assets",
+    "verifierSha256": "892838f85c709873d74b17141d837b5ab273e8840c6fdd1c458ca34a3ade59dc",
+    "sourceVerdict": "Immutable byte hash matches reviewed diagnostic draft. All financial replies assertHTTP200 with sanitized code before unchanged duplicate/balance assertions. No causal response or pass yet.",
+    "conclusion": "failure",
+    "artifactId": 11643742103,
+    "artifactJsonSha256": "cc1f34322e658bfec2fbd5e083be2b9f4de88312a6c55c727c80a02d57a7ad80",
+    "artifactZipSha256": "c9c0dd52cacff8e1fba311cf310eb547ab5d9c6955dc84fc24187dfedef2cac8",
+    "logSha256": "a7f0b9960762e8601ff9b56bc8099e1bee8de81c0523e58c4d854582abd3d25b",
+    "elapsedMs": 37207,
+    "failure": "admin credit response {\"status\":429,\"code\":null,\"error\":\"rate_limited\"} 429 !== 200 ",
+    "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+    "reachedAddisJourney": false
   }
 }

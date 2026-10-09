@@ -54,6 +54,22 @@ class IndexShardReopenTests(unittest.TestCase):
     def verify(self, namespace, args, lease, expected):
         return controller.verify_terminal_shard_admission(**args,_inherited_lease=lease,_expected=expected)
 
+    def test_actual_plan_pipe_rejects_changed_nonblocking_flags(self):
+        from index_admission_input import create_plan_pipe, verify_plan_parent_pipes
+        with self.prepared() as (namespace,source), index_writer_lease(namespace) as lease:
+            state=create_plan_pipe(lease.descriptor)
+            descriptors=[state.readChild,state.writeParent,state.readParent,state.writeChild]
+            try:
+                verify_plan_parent_pipes(state)
+                os.set_blocking(state.writeParent,True)
+                with self.assertRaisesRegex(ValueError,"pipe changed"):
+                    verify_plan_parent_pipes(state)
+                os.set_blocking(state.writeParent,False)
+                verify_plan_parent_pipes(state)
+                self.assertEqual({entry.name for entry in namespace.iterdir()},{"writer.lock"})
+            finally:
+                for descriptor in descriptors: os.close(descriptor)
+
     def test_two_windows_reopen_same_terminal_batch_without_parent_sql_or_attempts(self):
         with self.prepared() as (namespace,source):
             args=self.arguments(namespace,source)

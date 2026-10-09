@@ -160,6 +160,10 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts world/campaign-worker-leases.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
+      - name: Retain actual macOS anonymous-pipe identities
+        if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
+        run: |
+          "$WORLD_TEST_PYTHON" -c 'import fcntl,json,os,stat; fds=os.pipe(); [os.set_blocking(fd,False) for fd in fds]; print(json.dumps([{"fd":fd,"device":os.fstat(fd).st_dev,"inode":os.fstat(fd).st_ino,"uid":os.fstat(fd).st_uid,"gid":os.fstat(fd).st_gid,"mode":oct(stat.S_IMODE(os.fstat(fd).st_mode)),"links":os.fstat(fd).st_nlink,"fifo":stat.S_ISFIFO(os.fstat(fd).st_mode),"flags":fcntl.fcntl(fd,fcntl.F_GETFL)} for fd in fds])); [os.close(fd) for fd in fds]' > diagnostic-evidence/anonymous-pipe-identities.json
       - name: Actual macOS terminal shard verification without another attempt
         if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
         env:

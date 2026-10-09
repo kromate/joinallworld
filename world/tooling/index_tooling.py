@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import stat
+import sys
 
 from index_binding import _pairs, _nonfinite
 
@@ -199,6 +200,15 @@ def _capture(root, name, expected):
             os.close(file)
         for descriptor in reversed(descriptors):
             os.close(descriptor)
+
+
+
+def _private_plan_pipe(info):
+    """Recognize exact platform anonymous-pipe metadata; flags are checked by caller."""
+    if not stat.S_ISFIFO(info.st_mode) or info.st_uid != os.getuid(): return False
+    if sys.platform == "darwin":
+        return stat.S_IMODE(info.st_mode)==0o660 and info.st_dev==0 and info.st_nlink==0
+    return stat.S_IMODE(info.st_mode)==0o600 and info.st_nlink in {0,1}
 
 
 def _source_pin(root, name, expected):

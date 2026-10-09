@@ -1,0 +1,38 @@
+{
+  "schema": "allworld-market-lod-v8-live-motion-pin-v1",
+  "packageRunId": 37895386433,
+  "packageCommit": "adfca7f69c8fddee260624f4e6c54455304f5f2c",
+  "packageBranch": "codex/graphics-market-lod-v8-cpu-review-v2",
+  "artifactName": "market-lod-v8-cpu-package-v2-37895386433",
+  "packageManifestSha256": "51e40ee3803d1acc3726e3e12062545370347f48c7a26bfdf3739e053094d56d",
+  "sourceManifestSha256": "917ff8630ed47dcc0e997d18fb7584865c9cb8fac19f53a8bc17331b2fc5a17f",
+  "packageStatus": "static-packaging-only-not-visual-or-runtime-acceptance",
+  "builderSha256": "49eddf7eb532f03d5c9a0d5241d60d129e3e97f64bdfc3b651df20640ae5ffd6",
+  "viewerSha256": "18fbd8b444d8b7366e2221e207a4ef4a4bdaec232a3d194bfc30cc6feab9a39d",
+  "inventorySha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b",
+  "actors": [
+    { "id": "graphics-host-crowd-02", "seed": "graphics-host-crowd-02", "family": "male", "body": "man", "outfit": "hoodie" },
+    { "id": "graphics-host-crowd-03", "seed": "graphics-host-crowd-03", "family": "female", "body": "woman", "outfit": "owambe" }
+  ],
+  "captureMatrix": {
+    "modes": ["source", "compact"],
+    "yawsDegrees": [0, 90],
+    "pose": "walk",
+    "minimumLiveElapsedSeconds": 2.4,
+    "capturesPerActor": 4,
+    "expectedPngCount": 8
+  },
+  "limits": {
+    "scope": "diagnostic remote headless Linux Chrome/ANGLE SwiftShader only",
+    "groupRssMiB": 2048,
+    "wallSeconds": 60,
+    "nodeHeapMiB": 96,
+    "doesNotProve": [
+      "hardware GPU fidelity",
+      "mobile performance or battery",
+      "all Market identities or outfits",
+      "timed interaction animation",
+      "production acceptance"
+    ]
+  }
+}

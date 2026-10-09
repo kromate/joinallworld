@@ -142,15 +142,18 @@ jobs:
       - name: Record exact macOS source and runtimes
         id: runtimes
         run: |
-          printf 'WORLD_TEST_PYTHON=%s\n' "$(python -c 'import os,sys; print(os.path.realpath(sys.executable))')" >> "$GITHUB_ENV"
+          python -c 'import hashlib,json,os,pathlib,stat,sys; p=pathlib.Path(sys.executable).resolve(strict=True); s=p.lstat(); print(json.dumps({"path":str(p),"uid":s.st_uid,"gid":s.st_gid,"runnerUid":os.getuid(),"mode":oct(stat.S_IMODE(s.st_mode)),"links":s.st_nlink,"bytes":s.st_size,"device":s.st_dev,"inode":s.st_ino,"sha256":hashlib.file_digest(p.open("rb"),"sha256").hexdigest()}))' > diagnostic-evidence/python-installed-file-identity.json
+          test ! -e "$RUNNER_TEMP/world-lease-python"
+          python -m venv --copies --without-pip "$RUNNER_TEMP/world-lease-python"
+          printf 'WORLD_TEST_PYTHON=%s\n' "$("$RUNNER_TEMP/world-lease-python/bin/python" -c 'import os,sys; print(os.path.realpath(sys.executable))')" >> "$GITHUB_ENV"
           node -p 'JSON.stringify(process.versions)' > diagnostic-evidence/node-runtime.json
-          python -c 'import json,platform,sys; print(json.dumps({"python":sys.version,"platform":platform.platform()}))' > diagnostic-evidence/python-runtime.json
-          python -c 'import json,os,pathlib,stat,sys; p=pathlib.Path(sys.executable).resolve(strict=True); s=p.lstat(); print(json.dumps({"path":str(p),"uid":s.st_uid,"gid":s.st_gid,"runnerUid":os.getuid(),"mode":oct(stat.S_IMODE(s.st_mode)),"links":s.st_nlink,"bytes":s.st_size,"device":s.st_dev,"inode":s.st_ino}))' > diagnostic-evidence/python-file-identity.json
+          "$RUNNER_TEMP/world-lease-python/bin/python" -c 'import json,platform,sys; print(json.dumps({"python":sys.version,"platform":platform.platform(),"prefix":sys.prefix,"basePrefix":sys.base_prefix}))' > diagnostic-evidence/python-runtime.json
+          "$RUNNER_TEMP/world-lease-python/bin/python" -c 'import hashlib,json,os,pathlib,stat,sys; p=pathlib.Path(sys.executable).resolve(strict=True); s=p.lstat(); assert s.st_uid==os.getuid() and s.st_nlink==1 and stat.S_IMODE(s.st_mode)==0o755; print(json.dumps({"path":str(p),"uid":s.st_uid,"gid":s.st_gid,"runnerUid":os.getuid(),"mode":oct(stat.S_IMODE(s.st_mode)),"links":s.st_nlink,"bytes":s.st_size,"device":s.st_dev,"inode":s.st_ino,"sha256":hashlib.file_digest(p.open("rb"),"sha256").hexdigest()}))' > diagnostic-evidence/python-file-identity.json
       - name: Actual macOS inherited flock helper
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
-        run: python -B -m unittest test_campaign_inherited_lease > diagnostic-evidence/python-lease.stdout 2> diagnostic-evidence/python-lease.stderr
+        run: '"$WORLD_TEST_PYTHON" -B -m unittest test_campaign_inherited_lease > diagnostic-evidence/python-lease.stdout 2> diagnostic-evidence/python-lease.stderr'
       - name: Actual macOS Node coordinator and surviving worker
         if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
         env:

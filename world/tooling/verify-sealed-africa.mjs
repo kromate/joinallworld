@@ -7,7 +7,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/verify-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR
 
@@ -46,7 +46,7 @@ function git(source, ...args) {
   return execFileSync('git', ['-C', source, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 5000, maxBuffer: 1024 * 1024 }).trim();
 }
 
-function verifySourceAndPackage({ source, packageRoot, sha }) {
+export function verifySourceAndPackage({ source, packageRoot, sha }) {
   const head = git(source, 'rev-parse', 'HEAD');
   assert.equal(head, sha, 'source HEAD does not equal the requested release SHA');
   assert.equal(git(source, 'status', '--porcelain', '--untracked-files=no'), '', 'source tracked files are not clean');
@@ -386,16 +386,18 @@ async function main(args) {
   }
 }
 
-try {
-  const args = argumentsOf(process.argv.slice(2));
-  if (args.help) process.stdout.write(`${HELP}\n`);
-  else {
-    assert.ok(Number(process.versions.node.split('.')[0]) >= 24, 'run with Node 24 or newer and --experimental-strip-types');
-    await main(args);
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try {
+    const args = argumentsOf(process.argv.slice(2));
+    if (args.help) process.stdout.write(`${HELP}\n`);
+    else {
+      assert.ok(Number(process.versions.node.split('.')[0]) >= 24, 'run with Node 24 or newer and --experimental-strip-types');
+      await main(args);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'invalid invocation';
+    process.stdout.write(`${JSON.stringify({ schemaVersion: 1, status: 'refused', reason: message.slice(0, 320), releaseReady: false })}\n`);
+    process.stderr.write('Sealed Africa verification refused.\n');
+    process.exitCode = 2;
   }
-} catch (error) {
-  const message = error instanceof Error ? error.message : 'invalid invocation';
-  process.stdout.write(`${JSON.stringify({ schemaVersion: 1, status: 'refused', reason: message.slice(0, 320), releaseReady: false })}\n`);
-  process.stderr.write('Sealed Africa verification refused.\n');
-  process.exitCode = 2;
 }

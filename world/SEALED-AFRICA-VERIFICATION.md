@@ -26,3 +26,21 @@ gh workflow run africa-starter-audit-ci.yml --ref codex/world-foundation \
 That workflow builds and seals the same source commit on its existing runner, invokes this verifier, and retains the sealed package and JSON evidence as a workflow artifact. It does not deploy. The remote verification process has a 175-second outer timeout followed by at most five seconds before killing its process group, including any owned Worker child. A timeout fails the job and cannot produce an accepted package artifact. The CLI also bounds requests and Worker disposal; its work deadline is 168 seconds.
 
 This is isolated synthetic verification, not production continuity evidence. The canonical fixtures authenticate a synthetic founder and use the authenticated admin wallet route to fund or set exact-fare test balances; they do not represent ordinary guest progression. For simulation and failure cases, the existing fixture advances time through its isolated SQLite store, installs and removes temporary SQLite fault triggers, and temporarily changes then restores only its synthetic homeward-ticket and liability fields. These changes are confined to the fresh temporary test database. The harness does not inspect or mutate production state, use credentials or cookies from a live service, call a real provider, deploy, or establish physical-phone behavior. It performs no build and makes no package changes. Run it only after the package has been sealed; the verifier itself does not create or modify that package.
+
+## Finite native QA stage
+
+`world/tooling/serve-sealed-africa.mjs` starts the same exact sealed Worker and packaged ASSETS on an ephemeral `127.0.0.1` port with a new temporary SQLite store. It verifies the same clean source SHA and package guard, then creates a synthetic founder guest, loads its Lagos life, signs in through the fixture provider, and confirms the root admin identity using normal HTTP routes. Only the pinned synthetic Firebase key endpoint is answered; all other Worker outbound requests are refused.
+
+The launcher creates a new mode-0600 control file with `wx`; it refuses an existing path and removes its own file on shutdown. This private file contains the loopback stage URL, source and package identities, and the synthetic founder cookie used only for the authenticated admin-credit route. It never prints the cookie. The native operator may create a separate ordinary browser guest, complete onboarding, then use the supplied cookie with the existing `/api/admin/players/<publicId>/act` credit endpoint if the journey needs a funded balance. No save or balance row is edited. The stage shuts down on SIGINT/SIGTERM or at the requested deadline, and removes its temporary SQLite directory and control file.
+
+```sh
+node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
+  --source "$RELEASE_SOURCE" \
+  --package "$SEALED_PACKAGE" \
+  --sha "$SOURCE_SHA" \
+  --tools "$MINIFLARE_TOOLS" \
+  --control "$PRIVATE_STAGE_CONTROL" \
+  --seconds 600
+```
+
+`--control` must be an absolute path that does not already exist. `--seconds` defaults to 600 and is limited to 900. Standard output contains only the stage URL, build ID, source SHA, package digest, and deadline. Keep the control file private and delete any retained copy after native QA. This stage is local synthetic QA; it does not deploy or prove production continuity.

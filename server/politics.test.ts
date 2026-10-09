@@ -18,7 +18,7 @@ test('levies set by a mayor, a governor and a president are added to a stall pur
   const owner = await player('Owner'), buyer = await player('Buyer'), mayor = await player('Mayor'), governor = await player('Governor'), president = await player('President'), weaver = await player('Weaver');
   assert.equal((await post('/api/business/open', { cityId: 'lagos', venue: 'market', type: 'food', name: 'Mama Put', colour: 'gold', icon: '🍲', requestId: f.id() }, owner)).code, 'opened');
   assert.equal((await post('/api/business/stock', { cityId: 'lagos', items: { jollof: 10 }, requestId: f.id() }, owner)).code, 'stocked');
-  assert.equal((await post('/api/business/price', { cityId: 'lagos', prices: { jollof: 701 } }, owner)).code, 'priced');
+  assert.equal((await post('/api/business/price', { cityId: 'lagos', prices: { jollof: 707 } }, owner)).code, 'priced');
   const untaxedMarket = await get('/api/business/venue?city=lagos&venue=market', buyer);
   const untaxedShops = Array.isArray(untaxedMarket.shops) ? untaxedMarket.shops.map(object) : [];
   const untaxedStall = untaxedShops.find((entry) => object(entry.owner).id === owner.id);
@@ -27,7 +27,7 @@ test('levies set by a mayor, a governor and a president are added to a stall pur
   assert.ok(untaxedJollof);
   const untaxedQuote = list(untaxedJollof.quotes).find((entry) => entry.units === 1);
   assert.ok(untaxedQuote);
-  assert.deepEqual([untaxedQuote.total, untaxedQuote.tax], [701, 0]);
+  assert.deepEqual([untaxedQuote.total, untaxedQuote.tax], [707, 0]);
   await get('/api/civic/pulse?city=lagos', mayor); // a city's civic record exists once someone has been through it
   await post('/api/civic/pulse', {}, mayor);
   await elect(mayor, 'city:lagos', QUORUM.city); await elect(governor, 'state:lagos', QUORUM.state); await elect(president, 'nation:ng', QUORUM.nation);
@@ -54,19 +54,21 @@ test('levies set by a mayor, a governor and a president are added to a stall pur
   const item = list(stall.items).find((entry) => entry.id === 'jollof');
   assert.ok(item);
   const quotes = list(item.quotes);
-  const quote = quotes.find((entry) => entry.units === 1);
+  const quote = quotes.find((entry) => entry.units === 3);
   assert.ok(quote);
-  const currentTax = (units: number) => Math.floor(701 * units * 10 / 100) + Math.floor(701 * units * 5 / 100) + Math.floor(701 * units * 15 / 100);
-  assert.deepEqual(quotes.map((entry) => [entry.units, entry.total, entry.tax]), [1, 2, 3].map((units) => [units, 701 * units + currentTax(units), currentTax(units)]), 'each quantity quote rounds the three levies against the combined base amount');
+  const currentTax = (units: number) => Math.floor(707 * units * 10 / 100) + Math.floor(707 * units * 5 / 100) + Math.floor(707 * units * 15 / 100);
+  assert.deepEqual(quotes.map((entry) => [entry.units, entry.total, entry.tax]), [1, 2, 3].map((units) => [units, 707 * units + currentTax(units), currentTax(units)]), 'each quantity quote rounds the three levies against the combined base amount');
   const buyerCashBeforeStale = before;
   const ownerTillBeforeStale = Number(object((await get('/api/business/mine?city=lagos', owner)).mine).till);
-  const staleTax = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 1, expectedPrice: 701, expectedTotal: Number(untaxedQuote.total), requestId: f.id() }, buyer);
+  const staleTax = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 1, expectedPrice: 707, expectedTotal: Number(untaxedQuote.total), requestId: f.id() }, buyer);
   assert.equal(staleTax.code, 'quote_changed', 'a quote is rejected when tax changes even though the menu price stays the same');
   assert.equal((await get('/api/life?city=lagos', buyer)).state?.cash, buyerCashBeforeStale);
   assert.equal(Number(object((await get('/api/business/mine?city=lagos', owner)).mine).till), ownerTillBeforeStale);
-  const bought = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 1, expectedPrice: Number(item.price), expectedTotal: Number(quote.total), requestId: f.id() }, buyer);
+  const bought = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 3, expectedPrice: Number(item.price), expectedTotal: Number(quote.total), requestId: f.id() }, buyer);
   assert.equal(bought.code, 'bought');
   const price = bought.amount ?? 0, city = Math.floor(price * 10 / 100), state = Math.floor(price * 5 / 100), nation = Math.floor(price * 15 / 100);
+  assert.deepEqual([price, city, state, nation], [2121, 212, 106, 318], 'three units settle the combined base amount and separately rounded levies');
+  assert.equal(Number(object((await get('/api/business/mine?city=lagos', owner)).mine).till) - ownerTillBeforeStale, 2121, 'the seller receives the three-unit base amount without the sale levies');
   assert.ok(price > 0 && city > 0 && state > 0 && nation > 0);
   assert.equal(before - (bought.state?.cash ?? 0), price + city + state + nation, 'the buyer pays the price and the three levies');
   assert.ok(bought.state?.ledger.some((line) => line.reason === 'Tax on purchase at Mama Put' && line.amount === -(city + state + nation)));

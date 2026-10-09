@@ -1,0 +1,13 @@
+# Bounded original-launch conversation recheck
+
+Observed 9 October 2026, from 19:59 UTC, in a signed-out browser. Two exact queued posts and the original root were inspected within a 180-second limit. The operator closed the owned tab and released the browser lease. No account or social action occurred. Private conversation captures and contact details are not published.
+
+The [Zodiac branch](https://x.com/Zodiac_ya/status/2105998306551664879) showed an account tag without substantive prose. Its [parent](https://x.com/_TheeTricky/status/2105992948282179835) suggested a bank and group gameplay. Two visible descendants were [brief approval](https://x.com/Ijwannafqck/status/2106000920261841398) and an [emoji reaction](https://x.com/Ijwannafqck/status/2106000840888913976). No additional requirement follows from those reactions. Other descendants remain unverified.
+
+The [author's DM reply](https://x.com/Shalom_HeyEliy/status/2106083797544681880) acknowledged messaging problems under investigation and suggested refreshing and checking connectivity. Its [parent](https://x.com/This_is_Fred/status/2106083107224850476) reported an in-game DM failure; the supplied in-game username is omitted. A [visible descendant](https://x.com/BAdetokunbo/status/2106086067250368894) asked for help with in-game jail. These are historical reports and author commentary, not evidence of a current competitor fix or an Allworld defect.
+
+Seven visible items across those two conversation views were read. Their novelty against the historical corpus has not been deduplicated, so the 739-reply count and 254 scheduled-traversal snapshot are unchanged. Neither view exposed an attachment or truncated-text control for its exact target during this observation. That does not establish complete media or descendant coverage.
+
+The [original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) was readable. No Recent or reply-sort control was exposed in the observed signed-out conversation. No Recent sweep or all-replies expansion occurred. The [four-neighbour follow-up](https://x.com/Shalom_HeyEliy/status/2105553826543493397) still offered media, which was not inspected. All 58 queued image posts remain unresolved by this pass. The other five known branch pages were not visited; Zodiac remains on the continuation list with its bounded observation recorded.
+
+Earlier direct web fetches of the two exact targets returned 403. Anonymous browser access subsequently recovered. Neither an HTTP refusal nor a stable visible article set proves a tree exhausted. The [current queue](lagos-life-original-pending-current.md) remains authoritative; the city queue is unchanged.

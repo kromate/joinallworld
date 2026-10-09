@@ -8,9 +8,13 @@ The named Loading timeline indicator was in Trending during scoped rechecks; sep
 
 A fresh anonymous in-app browser could read the [original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) and the author’s [four-neighbour reply](https://x.com/Shalom_HeyEliy/status/2105553826543493397). The conversation’s all-replies control required login; Recent was not available in that state. Navigating to the reply’s observed photo link produced an ambiguous parent-post preview rather than a verified attachment belonging to that reply. Its image remains unread. No branch, residual or image queue item was removed, and the historical counters above were not updated. The owned tab and bounded browser lease were closed. No account or social actions were performed; raw account/contact details and captures are not published.
 
-## Known untraversed branch pages
+## Bounded conversation recheck — 9 October 2026, 19:59 UTC
 
-1. [Reply branch](https://x.com/Zodiac_ya/status/2105998306551664879)
+The [bounded signed-out browser pass](lagos-life-bounded-recheck-2026-10-09-2000.md) read the Zodiac branch, its parent and two visible descendants, and the author's DM residual, its parent and one visible descendant. Seven items were observed without corpus deduplication. Counts are unchanged. Zodiac's deeper descendants remain unverified, the other five branches were not visited, and all 58 image items remain unread. No Recent control was exposed at the root, so the Recent sweep remains open.
+
+## Known branch pages requiring continued review
+
+1. [Reply branch](https://x.com/Zodiac_ya/status/2105998306551664879) — bounded visible conversation observed at 19:59 UTC; deeper descendants unverified
 2. [Reply branch](https://x.com/badfendibarbie/status/2105992079285403999)
 3. [Reply branch](https://x.com/iGiftGod/status/2106398395757998554)
 4. [Reply branch](https://x.com/Ewo_ma/status/2106002743303258511)
@@ -37,7 +41,7 @@ Observed means a scoped recheck happened; it does not assert all descendants rea
 14. [Residual page](https://x.com/IamnotaNigerian/status/2106076743274467373) — not revisited
 15. [Residual page](https://x.com/u_joseph6/status/2107191617467691509) — not revisited
 16. [Residual page](https://x.com/10psdawg/status/2106080454197793179) — not revisited
-17. [Residual page](https://x.com/Shalom_HeyEliy/status/2106083797544681880) — not revisited
+17. [Residual page](https://x.com/Shalom_HeyEliy/status/2106083797544681880) — bounded visible conversation observed at 19:59 UTC; deeper descendants unverified
 18. [Residual page](https://x.com/cha_nelllll/status/2106200378278617572) — not revisited
 19. [Residual page](https://x.com/iinii_oluwa/status/2105776153915170883) — not revisited
 20. [Residual page](https://x.com/badboylexxy/status/2105778047471206888) — not revisited

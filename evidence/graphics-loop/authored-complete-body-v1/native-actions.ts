@@ -202,17 +202,6 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
     return point(handName).distanceTo(target);
   }
 
-  function setLegDirections(forward: THREE.Vector3, thighForward: number, kneeFlex: number): void {
-    for (const side of ['left', 'right'] as const) {
-      const upper = side === 'left' ? 'mixamorigLeftUpLeg' : 'mixamorigRightUpLeg';
-      const knee = side === 'left' ? 'mixamorigLeftLeg' : 'mixamorigRightLeg';
-      const calf = knee;
-      const foot = side === 'left' ? 'mixamorigLeftFoot' : 'mixamorigRightFoot';
-      aimSegment(upper, knee, DOWN.clone().multiplyScalar(Math.cos(thighForward)).addScaledVector(forward, Math.sin(thighForward)));
-      aimSegment(calf, foot, DOWN.clone().multiplyScalar(Math.cos(kneeFlex)).addScaledVector(forward, -Math.sin(kneeFlex)));
-    }
-  }
-
   function solveLeg(side: 'left' | 'right', target: THREE.Vector3, forward: THREE.Vector3): number {
     const upperName = side === 'left' ? 'mixamorigLeftUpLeg' : 'mixamorigRightUpLeg';
     const kneeName = side === 'left' ? 'mixamorigLeftLeg' : 'mixamorigRightLeg';
@@ -279,10 +268,6 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
       for (const side of ['left', 'right'] as const) {
         const outward = lateral.clone().multiplyScalar(side === 'left' ? -1 : 1);
         handClearance[side] = placeHandOutsideTorso(side, outward);
-      }
-      if (pose === 'walk') {
-        const phase = seconds * Math.PI * 2;
-        setLegDirections(forward, 0.30 * Math.sin(phase), Math.max(0, Math.sin(phase)) * 0.22);
       }
     } else if (pose === 'sit') {
       if (support.kind !== 'seat') throw new Error('Native sit requires seat support');

@@ -1,10 +1,10 @@
 {
   "status": "CPU_CHECKS_PASS_VISUAL_PENDING",
   "sources": {
-    "native-actions.ts": "2c98247435c78f2b8b44b4e8a2698b8b7538df1196a04c4f816b17cd4ad3b6b3",
+    "native-actions.ts": "ff9e2ab0f98400dc855f1b884b7f756ff71b864d207124adb7b9ea1331dfcad5",
     "native-pose.ts": "7683d45bf454987a49705bb4c23ee79b00541403cb3dd69b32a532c0d2307fb1",
-    "authored-presentation.ts": "987672ce92babf0b91432a5dc49ba88d7d53f32dfab3a9bc776e9557c3260ea4",
-    "native-actions-check.mjs": "95804cc3d814e38356f595c8224b7f10c9cd70a7a507e2eb14c375eb7c2e7be9"
+    "authored-presentation.ts": "b7105a12948d52dce6bdde64419b4f88a1b4da0b08fb44501f370a3ec872330a",
+    "native-actions-check.mjs": "23c44e766392475e0baf358400818ad5210744e96ef64b8a00e9089fffa078d5"
   },
   "inputs": {
     "authoredBody": {
@@ -182,26 +182,26 @@
           },
           "feet": {
             "left": [
-              0.11021572183019848,
-              0.07796296371615863,
-              0.041847979226065785
+              0.11036500334739684,
+              0.07796296371615874,
+              0.041848356257925226
             ],
             "right": [
-              -0.11051428486459515,
-              0.07796296371615868,
-              0.04184797922606588
+              -0.11036500334739682,
+              0.07335331030930914,
+              -0.07640274066529484
             ]
           },
           "knees": {
             "left": [
-              0.10991696850034263,
-              0.4550856078592053,
-              0.10099160959931393
+              0.11036500334739684,
+              0.4550856078592054,
+              0.1009927411755106
             ],
             "right": [
-              -0.11081303819445103,
+              -0.11036500334739685,
               0.4550856078592053,
-              0.10099160959931394
+              -0.07640274066529483
             ]
           },
           "handTargetError": {},
@@ -212,39 +212,39 @@
           },
           "footTargetError": {},
           "geometry": {
-            "bodyMinY": -0.004709354045193282,
+            "bodyMinY": -0.004714680025530563,
             "bodyMaxY": 1.7454371899366379,
             "armSurfaceOutsideTorso": {
               "left": 1,
               "right": 1
             },
             "handToBodySupportVertex": {
-              "left": 0.05790013523524032,
-              "right": 0.049128591171665806
+              "left": 0.057919896281738124,
+              "right": 0.04761456778044651
             },
             "footSoleMinY": {
-              "left": -0.0047091434625643885,
-              "right": -0.004709354045193282
+              "left": -0.004714680025530563,
+              "right": 0.004131355703046201
             }
           },
           "bounds": {
-            "minY": -0.004709354045193282,
+            "minY": -0.004714680025530563,
             "maxY": 1.7454371899366379,
             "vertices": 26111,
             "minMesh": "Body",
-            "minVertex": 7081,
+            "minVertex": 14280,
             "minPosition": [
-              -0.11915028204198429,
-              -0.004709354045193282,
-              0.16105007236432953
+              0.11781889649989678,
+              -0.004714680025530563,
+              0.161126511349369
             ],
             "minInfluences": [
               {
-                "bone": "mixamorigRightFoot",
+                "bone": "mixamorigLeftFoot",
                 "weight": 0.5
               },
               {
-                "bone": "mixamorigRightToeBase",
+                "bone": "mixamorigLeftToeBase",
                 "weight": 0.5
               },
               {
@@ -882,6 +882,22 @@
           }
         }
       ],
+      "gait": [
+        {
+          "time": 0.25,
+          "advances": {
+            "left": 0.05439576049401165,
+            "right": -0.11129105539094947
+          }
+        },
+        {
+          "time": 0.75,
+          "advances": {
+            "left": -0.11129105539094947,
+            "right": 0.05439576049401165
+          }
+        }
+      ],
       "femaleArmClearanceSweep": [],
       "presentation": {
         "bodySourceIndexSha256": "4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661",
@@ -890,10 +906,8 @@
         "bodyVisibleTriangles": 20028,
         "hiddenBodyTriangles": 6728,
         "outfitTriangles": 16672,
-        "shirtTriangles": 8692,
-        "trouserTriangles": 7980,
         "hairTriangles": 3344,
-        "overlayDrawCalls": 3,
+        "overlayDrawCalls": 2,
         "bodyMaskIndexBytes": 240336,
         "outfitGeometryBytes": 1366782,
         "copiedMorphs": [
@@ -1072,26 +1086,26 @@
           },
           "feet": {
             "left": [
-              0.11021572183019848,
-              0.07796296371615863,
-              0.041847979226065785
+              0.11036500334739684,
+              0.07796296371615874,
+              0.041848356257925226
             ],
             "right": [
-              -0.11051428486459515,
-              0.07796296371615868,
-              0.04184797922606588
+              -0.11036500334739682,
+              0.07335331030930914,
+              -0.07640274066529484
             ]
           },
           "knees": {
             "left": [
-              0.10991696850034263,
-              0.4550856078592053,
-              0.10099160959931393
+              0.11036500334739684,
+              0.4550856078592054,
+              0.1009927411755106
             ],
             "right": [
-              -0.11081303819445103,
+              -0.11036500334739685,
               0.4550856078592053,
-              0.10099160959931394
+              -0.07640274066529483
             ]
           },
           "handTargetError": {},
@@ -1102,31 +1116,31 @@
           },
           "footTargetError": {},
           "geometry": {
-            "bodyMinY": 0.0018099003220190951,
+            "bodyMinY": 0.0018452854210454506,
             "bodyMaxY": 1.6046031415462494,
             "armSurfaceOutsideTorso": {
               "left": 0.9094843130183916,
               "right": 0.9885376866967697
             },
             "handToBodySupportVertex": {
-              "left": 0.11302240693184833,
-              "right": 0.10114119243168296
+              "left": 0.11302787827667728,
+              "right": 0.10143418507623327
             },
             "footSoleMinY": {
-              "left": 0.0018099003220190951,
-              "right": 0.0018111869603576192
+              "left": 0.0018452854210454506,
+              "right": 0.008575482925965956
             }
           },
           "bounds": {
-            "minY": 0.0018099003220190951,
+            "minY": 0.0018452854210454506,
             "maxY": 1.6046031415462494,
             "vertices": 26111,
             "minMesh": "Body",
             "minVertex": 14127,
             "minPosition": [
-              0.06019491546503618,
-              0.0018099003220190951,
-              0.21662917704200763
+              0.060377051922067895,
+              0.0018452854210454506,
+              0.21665436589995352
             ],
             "minInfluences": [
               {
@@ -1772,6 +1786,22 @@
           }
         }
       ],
+      "gait": [
+        {
+          "time": 0.25,
+          "advances": {
+            "left": 0.05439576049401165,
+            "right": -0.11129105539094947
+          }
+        },
+        {
+          "time": 0.75,
+          "advances": {
+            "left": -0.11129105539094947,
+            "right": 0.05439576049401165
+          }
+        }
+      ],
       "femaleArmClearanceSweep": [
         {
           "clearance": "adaptive-quarter-envelope",
@@ -2026,10 +2056,8 @@
         "bodyVisibleTriangles": 20028,
         "hiddenBodyTriangles": 6728,
         "outfitTriangles": 16672,
-        "shirtTriangles": 8692,
-        "trouserTriangles": 7980,
         "hairTriangles": 3344,
-        "overlayDrawCalls": 3,
+        "overlayDrawCalls": 2,
         "bodyMaskIndexBytes": 240336,
         "outfitGeometryBytes": 1366782,
         "copiedMorphs": [

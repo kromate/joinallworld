@@ -196,6 +196,18 @@ for (const actor of actors) {
       seatBoundsNearSupport, feetBelowPelvis, pelvisClearanceOk,
     } : {}), bounds });
   }
+  const standing = actor.controller.apply(0, 'idle', {kind:'floor'});
+  const bonePoint = name => actor.root.getObjectByName(name).getWorldPosition(new THREE.Vector3());
+  const forward = bonePoint('mixamorigLeftToeBase').sub(bonePoint('mixamorigLeftFoot'))
+    .add(bonePoint('mixamorigRightToeBase').sub(bonePoint('mixamorigRightFoot'))).setY(0).normalize();
+  const gait = [];
+  for (const time of [.25,.75]) {
+    const walking = actor.controller.apply(time,'walk',{kind:'floor'});
+    const advances = Object.fromEntries(['left','right'].map(side => [side,
+      new THREE.Vector3().fromArray(walking.feet[side]).sub(new THREE.Vector3().fromArray(standing.feet[side])).dot(forward)]));
+    assert.ok(advances.left*advances.right < -.0025, `${actor.family}: feet advance in opposing directions at ${time}s`);
+    gait.push({time,advances});
+  }
   let rejectedNoSeat = false, rejectedMissingFloor = false, rejectedUnsupportedPose = false;
   try { actor.controller.apply(0, 'sit', { kind: 'floor' }); } catch { rejectedNoSeat = true; }
   try { actor.controller.apply(0, 'sit', { kind: 'seat', top: 0.55 }); } catch { rejectedMissingFloor = true; }
@@ -215,7 +227,7 @@ for (const actor of actors) {
   actor.controller.restore();
   actor.presentation.dispose();
   assert.equal(actor.body.geometry, sourceGeometry, `${actor.family}: presentation restored owned body geometry`);
-  output.push({ family: actor.family, states, femaleArmClearanceSweep, presentation: actor.presentation.metrics, rejectedNoSeat, rejectedMissingFloor, rejectedUnsupportedPose });
+  output.push({ family: actor.family, states, gait, femaleArmClearanceSweep, presentation: actor.presentation.metrics, rejectedNoSeat, rejectedMissingFloor, rejectedUnsupportedPose });
 }
 assert.deepEqual(sourceBody.skeleton.bones.map(bone => [bone.name, bone.position.toArray(), bone.quaternion.toArray()]), sourceSkeletonSnapshot,
   'source template rig remained immutable');

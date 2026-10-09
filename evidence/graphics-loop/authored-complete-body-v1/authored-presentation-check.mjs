@@ -209,7 +209,7 @@ try {
   const clothingMaterials = Array.isArray(current.clothing.material) ? current.clothing.material : [current.clothing.material];
     const hairMaterial = current.hair.material;
     assert.equal(clothingMaterials.length, 1, 'connected suit uses one palette material and one outfit draw');
-    assert.equal(current.metrics.overlayDrawCalls, 2, 'clothing and hair each contribute one overlay draw');
+    assert.equal(presentations[index].metrics.overlayDrawCalls, 2, 'clothing and hair each contribute one overlay draw');
     assert(current.clothing.material instanceof THREE.MeshStandardMaterial, 'palette material preserves standard lighting');
     assert.equal(current.clothing.geometry.groups.length, 0, 'suit geometry has no material groups');
     assert.equal(current.clothing.geometry.drawRange.start, 0, 'suit draw range begins at source triangle zero');

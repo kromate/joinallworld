@@ -2,8 +2,8 @@
   "status": "PASS",
   "source": {
     "bodyPath": {
-      "sha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
-      "bytes": 2692984
+      "sha256": "9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd",
+      "bytes": 2802528
     },
     "clipPath": {
       "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
@@ -18,16 +18,16 @@
       "bytes": 301657
     },
     "shortPath": {
-      "sha256": "9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c",
+      "sha256": "a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0",
       "bytes": 504432
     },
     "afroPath": {
-      "sha256": "3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9",
-      "bytes": 659460
+      "sha256": "3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474",
+      "bytes": 659456
     }
   },
-  "adapterSourceSha256": "8c551bd8e797fcf4f8eda3cac64960edf09fbc6ced35d2de1a46596685df1cab",
-  "rigSourceSha256": "d2b03ca536c7507a15c211bf5ed41d764a838f2091e5fedeb6f7e11340c92002",
+  "adapterSourceSha256": "b7105a12948d52dce6bdde64419b4f88a1b4da0b08fb44501f370a3ec872330a",
+  "rigSourceSha256": "b0c4c9beb5e6691cbf33efc61fb289f706bac774c99510414d877c527f5e6d78",
   "mode": "Actual hash-pinned GLB geometry/material/skeleton data, image-free decoding after raw pin verification; placeholder 1×1 texture used only to satisfy hair material-map structure. No pixel or rendering claim.",
   "actors": [
     {
@@ -59,7 +59,7 @@
     "fourNormalizedInfluencesPerVertex": true,
     "independentActorSkeletonsAndPoses": true,
     "bodyMaskRestoredOnPresentationDispose": true,
-    "perActorOverlayMaterialsDisposedOnce": true,
+    "perActorPaletteAndHairMaterialsDisposedOnce": true,
     "outfitAndHairGeometryDisposedOnce": true,
     "kitOwnedBodyGeometrySharedUntilKitTeardown": true
   },
@@ -68,5 +68,5 @@
     "Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.",
     "No age/fabric/accessory or mobile performance claim."
   ],
-  "elapsedMs": 383
+  "elapsedMs": 397
 }

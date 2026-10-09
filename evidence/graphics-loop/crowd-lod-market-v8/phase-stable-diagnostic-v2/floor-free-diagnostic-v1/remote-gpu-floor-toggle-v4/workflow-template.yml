@@ -1,0 +1,89 @@
+name: Market floor-reference visibility causal review v4
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-v8-floor-toggle-live-review-v4
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: market-floor-reference-live-v4
+  cancel-in-progress: false
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact review recipe
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 5f9b7e6769fd4f992ffaa075dd6aef736b8a28b934e7123446bd6125e74e8113
+        run: node evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/remote-gpu-floor-toggle-v4/verify-source-snapshot.mjs "$EXPECTED_SOURCE_MANIFEST_SHA256"
+      - name: Verify pinned CPU artifact run provenance
+        id: package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pin=evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/remote-gpu-floor-toggle-v4/artifact-pin.json
+          run_id="$(jq -r .packageRunId "$pin")"
+          expected_branch="$(jq -r .packageBranch "$pin")"
+          expected_commit="$(jq -r .packageCommit "$pin")"
+          test "$run_id" != '__ROOT_TO_PIN_CPU_RUN_ID__'
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}")"
+          test "$(jq -r .id <<<"$run_json")" = "$run_id"
+          test "$(jq -r .head_branch <<<"$run_json")" = "$expected_branch"
+          test "$(jq -r .head_sha <<<"$run_json")" = "$expected_commit"
+          test "$(jq -r .status <<<"$run_json")" = completed
+          test "$(jq -r .conclusion <<<"$run_json")" = success
+          {
+            printf 'PACKAGE_RUN_ID=%s\n' "$run_id"
+            printf 'PACKAGE_BRANCH=%s\n' "$expected_branch"
+            printf 'PACKAGE_COMMIT=%s\n' "$expected_commit"
+            printf 'PACKAGE_ARTIFACT_NAME=%s\n' "$(jq -r .artifactName "$pin")"
+          } >> "$GITHUB_ENV"
+          {
+            printf 'package_run_id=%s\n' "$run_id"
+            printf 'artifact_name=%s\n' "$(jq -r .artifactName "$pin")"
+          } >> "$GITHUB_OUTPUT"
+      - name: Download only the pinned floor-toggle CPU package
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.package.outputs.artifact_name }}
+          run-id: ${{ steps.package.outputs.package_run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/remote-gpu-floor-toggle-v4/downloaded-artifact
+      - name: Install exact CDP client dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Locate the preinstalled Google Chrome launcher
+        run: |
+          set -euo pipefail
+          chrome_path="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$chrome_path"
+          printf 'CHROME_BIN=%s\n' "$chrome_path" >> "$GITHUB_ENV"
+          "$chrome_path" --version
+      - name: Capture exact-pose floor/source/compact visibility comparisons
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 5f9b7e6769fd4f992ffaa075dd6aef736b8a28b934e7123446bd6125e74e8113
+          PACKAGE_RUN_ID: ${{ env.PACKAGE_RUN_ID }}
+          PACKAGE_BRANCH: ${{ env.PACKAGE_BRANCH }}
+          PACKAGE_COMMIT: ${{ env.PACKAGE_COMMIT }}
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/remote-gpu-floor-toggle-v4/run-bounded-linux.py
+      - name: Preserve screenshots and bounded-process receipts on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-floor-reference-live-review-v4-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/remote-gpu-floor-toggle-v4/remote-results/**
+          if-no-files-found: warn

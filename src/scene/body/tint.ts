@@ -1,5 +1,5 @@
 /**
- * How a saved look (src/scene/characters.ts normalizeLook) dresses the skinned body. Pure: no Three.js, no assets, so
+ * How a saved look (src/scene/avatar-look.ts normalizeLook) dresses the skinned body. Pure: no Three.js, no assets, so
  * it is tested on its own (tint.test.ts) and the body material (skinned.ts) only turns its numbers into uniforms.
  *
  * THE MAPPING (docs/ASSETS.md has the table)
@@ -18,7 +18,7 @@
  * OLD SAVES go through normalizeLook like every look: legacy keys (gender, skinTone, hairstyle), named or numbered
  * swatches, missing fields (the seed's) and junk (the seed's, never a throw) all give a body and five colours.
  */
-import { normalizeLook } from '../characters.ts';
+import { normalizeLook } from '../avatar-look.ts';
 import { BODY_MANIFEST } from './manifest.ts';
 import type { BodyKey } from './manifest.ts';
 

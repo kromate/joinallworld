@@ -643,7 +643,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
         if (!isRecord(encoded) || !isRecord(encoded.payload)) throw new TypeError()
         sentPayload = encoded.payload
       }
-    } catch { return { ok: false, code: 'invalid_payload', reason: 'Check the action input and try again.' } }
+    } catch { return { ok: false, code: 'invalid_payload', reason: 'Check the action input.' } }
     if (pendingAction) {
       if (!sameIntent(pendingAction, type, sentPayload, options?.actionId)) return { ok: false, code: 'action_recovery_required', reason: 'Retry the previous action before starting another.' }
       return runPending(pendingAction)
@@ -651,11 +651,11 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     const intent: PendingActionIntent = { sessionId: client.session!.id, actionId: (typeof options?.actionId === 'string' ? options.actionId : client.newId()) as TimedId,
       cityId: client.cityId, type, ...(sentPayload ? { payload: sentPayload } : {}) }
     pendingAction = intent
-    if (!persist()) { pendingAction = null; return { ok: false, code: 'browser_storage_unavailable', reason: 'This action was not sent because its retry information could not be saved.' } }
+    if (!persist()) { pendingAction = null; return { ok: false, code: 'browser_storage_unavailable', reason: 'Could not save retry information. This action was not sent.' } }
     return runPending(intent)
   }
   async function retryPendingAction(): Promise<CommandResult> {
-    return pendingAction ? runPending(pendingAction) : { ok: false, code: 'no_pending_action', reason: 'There is no action waiting to be recovered.' }
+    return pendingAction ? runPending(pendingAction) : { ok: false, code: 'no_pending_action', reason: 'No action to retry.' }
   }
 
   async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {

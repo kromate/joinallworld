@@ -636,13 +636,20 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (client.busy) return { ok: false, code: 'busy' }
     if (waking) { await waking.catch(() => false); if (client.busy) return { ok: false, code: 'busy' } }
     if (!client.online) { const reason = TEXT.paused[client.link] || TEXT.paused.unreachable; status(reason, true); return { ok: false, code: 'offline', reason } }
-    const sentPayload = payload === undefined || payload === null ? undefined : outgoing(type, payload) as Record<string, unknown>
+    let sentPayload: Record<string, unknown> | undefined
+    try {
+      if (payload !== undefined && payload !== null) {
+        const encoded: unknown = JSON.parse(JSON.stringify({ payload: outgoing(type, payload) }))
+        if (!isRecord(encoded) || !isRecord(encoded.payload)) throw new TypeError()
+        sentPayload = encoded.payload
+      }
+    } catch { return { ok: false, code: 'invalid_payload', reason: 'Check the action input and try again.' } }
     if (pendingAction) {
       if (!sameIntent(pendingAction, type, sentPayload, options?.actionId)) return { ok: false, code: 'action_recovery_required', reason: 'Retry the previous action before starting another.' }
       return runPending(pendingAction)
     }
     const intent: PendingActionIntent = { sessionId: client.session!.id, actionId: (typeof options?.actionId === 'string' ? options.actionId : client.newId()) as TimedId,
-      cityId: client.cityId, type, ...(sentPayload ? { payload: structuredClone(sentPayload) } : {}) }
+      cityId: client.cityId, type, ...(sentPayload ? { payload: sentPayload } : {}) }
     pendingAction = intent
     if (!persist()) { pendingAction = null; return { ok: false, code: 'browser_storage_unavailable', reason: 'This action was not sent because its retry information could not be saved.' } }
     return runPending(intent)

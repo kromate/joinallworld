@@ -110,11 +110,12 @@ jobs:
           server/admin/admin.test.ts
           server/bonus.test.ts
           server/ride-credit.test.ts
+          src/client.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
-          --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:'
+          --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:|sim tabs:|Profile:|Goals:'
           src/app/features/panelsA.test.ts
 
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling

@@ -1247,7 +1247,23 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     standInAsked = true;
     if (bodyAllowed() && drawsWebGL2(renderer)) import('./scene/body/stand-in.ts').then((module) => { if (gone) return; standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); }); dressStandIn(); standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false); standIn.move(walker.x, avatarY, walker.z, walker.ry); standIn.start(renderer); }, () => {});
   }
-  function dressStandIn() { standIn?.wear(player.look, player.seed); standIn?.attach(venueFor(cityId, currentLocation!)?.scene?.kind !== 'home' && current?.walk ? { group: current.group, avatar: current.walk.avatar, scale: current.walk.scale } : null); }
+  function dressStandIn() {
+    standIn?.wear(player.look, player.seed);
+    const entry = current, walk = entry?.walk;
+    if (!entry || !walk || venueFor(cityId, currentLocation!)?.scene?.kind === 'home') {
+      standIn?.attach(null); return;
+    }
+    const contactHeightAt = walk.contactHeightAt;
+    standIn?.attach({
+      group: entry.group, avatar: walk.avatar, scale: walk.scale,
+      // Do not correct while navigation or an activity places the figure between supports.
+      contactHeightAt: contactHeightAt ? (x, z, expectedY) => {
+        if (gone || current !== entry || walker.hopping || walk.onStairs || locked || restPose ||
+          afterPose || lastState?.activeAction || entry.easing || standIn?.easing) return null;
+        return contactHeightAt.call(walk, x, z, expectedY);
+      } : undefined,
+    });
+  }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id: string) {

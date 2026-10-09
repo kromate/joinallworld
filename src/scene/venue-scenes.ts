@@ -290,6 +290,109 @@ export const SPOT_REACH = 1.5;
  * on screen — a person is 2.45 tall), SPOT_SIDE to either side.
  */
 export const SPOT_BEHIND = 1.3, SPOT_FRONT = 3.4, SPOT_SIDE = 1.7;
+/** A rendered, horizontal triangle in venue-local space. */
+interface ContactTriangle { ax: number; az: number; bx: number; bz: number; cx: number; cz: number; y: number }
+const CONTACT_CELL = 1, CONTACT_TOP_EPSILON = 0.004, CONTACT_EDGE_MARGIN = 0.16;
+interface ContactSurfaceQuery {
+  (x: number, z: number, minY: number, maxY: number, exactY?: number): number | null;
+  readonly retainedTriangles: number;
+  readonly cellEntries: number;
+  readonly broadTriangles: number;
+}
+
+/** Index only actual upward-facing solid triangles; the walk description alone is not floor provenance. */
+function contactSurfaceIndex(meshes: readonly THREE.Mesh[], deckHeights: readonly number[]): ContactSurfaceQuery {
+  const cells = new Map<string, ContactTriangle[]>();
+  const broad: ContactTriangle[] = [];
+  let retainedTriangles = 0, cellEntries = 0;
+  const key = (x: number, z: number) => `${Math.floor(x / CONTACT_CELL)},${Math.floor(z / CONTACT_CELL)}`;
+  const insert = (triangle: ContactTriangle) => {
+    const x0 = Math.floor(Math.min(triangle.ax, triangle.bx, triangle.cx) / CONTACT_CELL);
+    const x1 = Math.floor(Math.max(triangle.ax, triangle.bx, triangle.cx) / CONTACT_CELL);
+    const z0 = Math.floor(Math.min(triangle.az, triangle.bz, triangle.cz) / CONTACT_CELL);
+    const z1 = Math.floor(Math.max(triangle.az, triangle.bz, triangle.cz) / CONTACT_CELL);
+    const entries = (x1 - x0 + 1) * (z1 - z0 + 1);
+    retainedTriangles++;
+    // A ground slab can cover hundreds of cells; keep a few such triangles once and test
+    // them from a short fallback list instead of duplicating them into every cell bucket.
+    if (entries > 64) { broad.push(triangle); return; }
+    for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
+      const cell = key(x * CONTACT_CELL, z * CONTACT_CELL), list = cells.get(cell);
+      if (list) list.push(triangle); else cells.set(cell, [triangle]);
+      cellEntries++;
+    }
+  };
+  for (const mesh of meshes) {
+    if (mesh.name !== 'solid' && !mesh.name.startsWith('solid@')) continue;
+    const geometry = mesh.geometry, position = geometry.getAttribute('position'), normal = geometry.getAttribute('normal'), index = geometry.index;
+    if (!position || !normal) continue;
+    const count = index?.count ?? position.count;
+    for (let i = 0; i + 2 < count; i += 3) {
+      const ia = index ? index.getX(i) : i, ib = index ? index.getX(i + 1) : i + 1, ic = index ? index.getX(i + 2) : i + 2;
+      if (normal.getY(ia) < 0.999 || normal.getY(ib) < 0.999 || normal.getY(ic) < 0.999) continue;
+      const ax = position.getX(ia), ay = position.getY(ia), az = position.getZ(ia);
+      const bx = position.getX(ib), by = position.getY(ib), bz = position.getZ(ib);
+      const cx = position.getX(ic), cy = position.getY(ic), cz = position.getZ(ic);
+      if (Math.max(ay, by, cy) - Math.min(ay, by, cy) > CONTACT_TOP_EPSILON) continue;
+      const y = (ay + by + cy) / 3;
+      // Retain only the recorded ground band and explicitly declared deck planes, so table,
+      // seat, roof, and foliage tops never enter the support query.
+      if (!(y >= -0.06 && y <= 0.08) && !deckHeights.some((height) => Math.abs(y - height) <= CONTACT_TOP_EPSILON)) continue;
+      const area = (bx - ax) * (cz - az) - (bz - az) * (cx - ax);
+      if (Math.abs(area) < 1e-7) continue;
+      insert({ ax, az, bx, bz, cx, cz, y });
+    }
+  }
+  const query: ContactSurfaceQuery = (x, z, minY, maxY, exactY) => {
+    const candidates = cells.get(key(x, z));
+    let highest = -Infinity;
+    const test = (triangle: ContactTriangle) => {
+      if (triangle.y < minY || triangle.y > maxY || (exactY !== undefined && Math.abs(triangle.y - exactY) > CONTACT_TOP_EPSILON)) return;
+      const area = (triangle.bx - triangle.ax) * (triangle.cz - triangle.az) - (triangle.bz - triangle.az) * (triangle.cx - triangle.ax);
+      const u = ((triangle.bx - x) * (triangle.cz - z) - (triangle.bz - z) * (triangle.cx - x)) / area;
+      const v = ((triangle.cx - x) * (triangle.az - z) - (triangle.cz - z) * (triangle.ax - x)) / area;
+      const w = 1 - u - v;
+      if (u >= -1e-5 && v >= -1e-5 && w >= -1e-5) highest = Math.max(highest, triangle.y);
+    };
+    for (const triangle of candidates ?? []) test(triangle);
+    for (const triangle of broad) test(triangle);
+    return Number.isFinite(highest) ? highest : null;
+  };
+  Object.defineProperties(query, {
+    retainedTriangles: { value: retainedTriangles },
+    cellEntries: { value: cellEntries },
+    broadTriangles: { value: broad.length },
+  });
+  return query;
+}
+
+function raisedContactTop(shapes: readonly RaisedShape[] | undefined, x: number, z: number): number | null | undefined {
+  if (!shapes?.length) return undefined;
+  let top: number | undefined, atUnsafeEdge = false;
+  for (const shape of shapes) {
+    if (shape.ramp) {
+      const [ax, az, , bx, bz] = shape.ramp, dx = bx - ax, dz = bz - az, span = dx * dx + dz * dz || 1;
+      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / span));
+      if (Math.hypot(x - (ax + dx * t), z - (az + dz * t)) <= Math.max(0, shape.half ?? 0.7) + CONTACT_EDGE_MARGIN) return null;
+      continue;
+    }
+    if (!Number.isFinite(shape.y)) continue;
+    if (shape.rect) {
+      const [x0, z0, x1, z1] = shape.rect, lip = Math.max(0, shape.lip ?? 0);
+      const safe = x > x0 + CONTACT_EDGE_MARGIN && x < x1 - CONTACT_EDGE_MARGIN && z > z0 + CONTACT_EDGE_MARGIN && z < z1 - CONTACT_EDGE_MARGIN;
+      const inTransition = x >= x0 - lip && x <= x1 + lip && z >= z0 - lip && z <= z1 + lip;
+      if (safe) top = Math.max(top ?? -Infinity, shape.y!);
+      else if (inTransition) atUnsafeEdge = true;
+    } else if (shape.disc) {
+      const distance = Math.hypot(x - shape.disc[0], z - shape.disc[1]), radius = shape.disc[2], lip = Math.max(0, shape.lip ?? 0);
+      if (distance < radius - CONTACT_EDGE_MARGIN) top = Math.max(top ?? -Infinity, shape.y!);
+      else if (distance <= radius + lip) atUnsafeEdge = true;
+    }
+  }
+  return atUnsafeEdge ? null : top;
+}
+
+
 /** How long another player's figure takes to ease to a newly reported position (seconds), and the jump beyond which it is simply placed. */
 const PEER_EASE: [number, number] = [0.16, 0.42], PEER_JUMP = 7, PEER_PACE = 6;
 
@@ -352,6 +455,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   const lit = (): Lighting => adjustLighting(lightingFor(mood, view.time), view.weather);
   const hints: Record<string, string> = options.anchors && typeof options.anchors === 'object' ? options.anchors : {};
   let layout: SceneLayout | null = null, resolved: Resolved | null = null, live = false, disposed = false, footprints: FootprintShapes | null = null, grid: WalkGrid | null = null, entrance: SceneEntrance | null = null;
+  let renderedContactTop: ReturnType<typeof contactSurfaceIndex> | null = null;
   const staticObjects: Releasable[] = [], actorObjects: Releasable[] = [], markObjects: Releasable[] = [];
   let staticTriangles = 0, actorTriangles = 0, crowdTags: SceneTag[] = [], selfTag: SceneTag | null = null, sky: THREE.Mesh | null = null;
   // Other players who report where they stand: one figure each, eased to every new position.
@@ -749,6 +853,11 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (live || disposed) return;
     const built = drawStatic().build(shared.materials);
     staticTriangles = built.triangles;
+    const deckHeights = (layout?.raised || []).flatMap((shape) =>
+      (shape.rect || shape.disc) && Number.isFinite(shape.y) ? [shape.y!] : [],
+    );
+    // Batch.build bakes parent transforms into vertices; the index is already venue-local.
+    renderedContactTop = contactSurfaceIndex(built.meshes, deckHeights);
     for (const object of [...built.meshes, ...built.lights]) { group.add(object); staticObjects.push(object); const part = object.userData.part as keyof typeof wallParts | undefined; if (part && wallParts[part]) wallParts[part].push(object); }
     sky = skyDome(kit, shared.materials);
     group.add(sky);
@@ -763,6 +872,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     applyLighting();
   }
   function release() {
+    renderedContactTop = null;
     for (const peer of [...peers.values()]) dropPeer(peer);
     easing = false; batchKey = null; peopleList = []; mergedTags = [];
     wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
@@ -832,6 +942,34 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         if (share > 0) height = Math.max(height, at.y * Math.min(1, share));
       }
       return height;
+    },
+    /** Return a target only if a horizontal support face exists in the baked solid geometry. */
+    contactHeightAt(x: number, z: number, expectedY?: number) {
+      if (!Number.isFinite(x) || !Number.isFinite(z) || (expectedY !== undefined && !Number.isFinite(expectedY))) return null;
+      // heightAt() also supplies synthetic ramps around unsupported raised anchors. They are
+      // navigation assists, not rendered support, so reject their entire influence radius.
+      if (raised.some((at) => Math.hypot(x - at.x, z - at.z) < 1.9)) return null;
+      const declared = raisedContactTop(layout?.raised, x, z);
+      if (declared === null) return null;
+      let top: number | null;
+      if (declared !== undefined) {
+        // A deck declaration is necessary but not sufficient: require its exact plane in the
+        // merged solid mesh at this point. This prevents anchors/missing deck art becoming support.
+        if (Math.abs(deckHeight(x, z) - declared) > CONTACT_TOP_EPSILON) return null;
+        top = renderedContactTop?.(x, z, declared - CONTACT_TOP_EPSILON, declared + CONTACT_TOP_EPSILON, declared) ?? null;
+      } else {
+        const floor = footprints?.floor;
+        if (!floor || deckHeight(x, z) > CONTACT_TOP_EPSILON) return null;
+        const [x0, z0, x1, z1] = floor;
+        if (x <= x0 + 0.08 || x >= x1 - 0.08 || z <= z0 + 0.08 || z >= z1 - 0.08) return null;
+        // footprintRecorder's ground-slab rule admits only top faces near y=0. Sample the
+        // actual highest horizontal face in that band; do not substitute navigation heightAt().
+        top = renderedContactTop?.(x, z, -0.06, 0.08) ?? null;
+      }
+      // Raised swing soles are still over this known support; the body solver preserves them.
+      // Only reject a sample buried materially below the surface, where a correction would exceed its envelope.
+      if (top === null || (expectedY !== undefined && expectedY < top - 0.14)) return null;
+      return top + 0.016;
     },
     near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
     goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },

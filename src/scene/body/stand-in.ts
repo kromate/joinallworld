@@ -23,7 +23,33 @@ const SEAT = 0.6;
 export const CLIMB = 0.3;
 
 /** What the stand-in needs of a scene: where it draws, the figure to hide, and the scene's avatar scale. */
-export interface StandInScene { group: THREE.Object3D; avatar: THREE.Object3D; scale: number }
+export interface StandInScene {
+  group: THREE.Object3D;
+  avatar: THREE.Object3D;
+  scale: number;
+  /** Height of a verified support surface, or null when this footprint is unsupported. */
+  contactHeightAt?: (x: number, z: number, expectedY: number) => number | null;
+}
+
+/** Preflight every sampled sole vertex before mutating either leg. */
+export function solveSupportedFeet(body: Pick<SkinnedBody, 'sampleFootContacts' | 'solveFeet' | 'easing' | 'seated'>,
+  contactHeightAt: StandInScene['contactHeightAt']): boolean {
+  if (!contactHeightAt || body.easing || body.seated) return false;
+  const contacts = body.sampleFootContacts();
+  const samples = contacts.flatMap(contact => contact.points ?? [contact]);
+  if (!samples.length) return false;
+  let supportHeight: number | null = null;
+  for (const point of samples) {
+    const height = contactHeightAt(point.x, point.z, point.y);
+    if (height === null || !Number.isFinite(height)) return false;
+    if (supportHeight === null) supportHeight = height;
+    // A flat-support-only target remains stable if the production solver resamples after a leg correction.
+    else if (Math.abs(height - supportHeight) > 0.0005) return false;
+  }
+  if (supportHeight === null) return false;
+  body.solveFeet(() => supportHeight!);
+  return true;
+}
 
 export interface StandIn {
   /** True while a sit-enter / sit-exit / door plays (the host steps it). */
@@ -57,6 +83,12 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
   let look: unknown = null, seed: unknown = null, posed: BodyPose = 'idle', seat = SEAT, at = { x: 0, y: 0, z: 0, ry: 0 };
   // Came into a scene and not yet posed there; the last walking frame (floor height, position) and the slope since.
   let arrived = false, was: { x: number; y: number; z: number } | null = null, climb = 0;
+  let standingIntent = true;
+
+  function solveContacts() {
+    if (!body || !scene || !standingIntent) return;
+    solveSupportedFeet(body, scene.contactHeightAt);
+  }
 
   /** Put the body where the figure is, in its pose. */
   function put() {
@@ -72,6 +104,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     scene.avatar.visible = false;
     body.show(posed, false);
     put();
+    solveContacts();
   }
   function drop() {
     body?.dispose();
@@ -123,6 +156,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     move(x, y, z, ry) { at = { x, y, z, ry }; put(); },
     pose(name, nextSeat, animate) {
       posed = BODY_POSE[name] ?? 'idle';
+      standingIntent = name === 'stand' || name === 'relax';
       seat = Number.isFinite(nextSeat) ? nextSeat! : SEAT;
       const door = arrived && posed === 'idle';
       arrived = false;
@@ -130,16 +164,18 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (door) body.enter(animate);
       else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.seated || posed === 'sit'));
       put();
+      solveContacts();
     },
     gait(phase, jog, y = at.y) {
       const run = was ? Math.hypot(at.x - was.x, at.z - was.z) : 0;
       climb = was && run > 1e-3 ? (y - was.y) / run : 0;
       was = { x: at.x, y, z: at.z };
       posed = jog ? 'jog' : 'walk';
-      if (body) { body.stride(phase, jog, Math.abs(climb) >= CLIMB ? climb : 0); put(); }
+      standingIntent = climb === 0;
+      if (body) { body.stride(phase, jog, Math.abs(climb) >= CLIMB ? climb : 0); put(); solveContacts(); }
     },
-    step(dt) { const more = body?.step(dt) ?? false; put(); return more && Boolean(scene); },
-    settle() { body?.settle(); put(); },
+    step(dt) { const more = body?.step(dt) ?? false; put(); if (!more) solveContacts(); return more && Boolean(scene); },
+    settle() { body?.settle(); put(); solveContacts(); },
     dispose() { gone = true; drop(); scene = null; },
   };
 }

@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v10]
+    branches: [codex/graphics-complete-authored-body-v11]
 permissions:
   contents: read
 jobs:
@@ -30,6 +30,8 @@ jobs:
         run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-check.mjs
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-pose-check.mjs
+          node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-actions-check.mjs
+          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/clothing-palette-check.mjs
           node --max-old-space-size=64 evidence/graphics-loop/authored-complete-body-v1/eye-material-check.mjs
           python3 evidence/graphics-loop/authored-complete-body-v1/authored-clothing/test_export.py
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check.mjs

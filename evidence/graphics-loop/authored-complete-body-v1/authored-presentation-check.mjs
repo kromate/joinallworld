@@ -28,8 +28,6 @@ const pins = {
   afroPath: '3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474',
 };
 const expectedBodyIndex = '4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661';
-const LEG_BONES_DIAG = new Set(['leftupleg', 'rightupleg', 'leftleg', 'rightleg', 'leftfoot', 'rightfoot', 'lefttoebase', 'righttoebase']);
-const normalizeBoneName = (name) => name.toLowerCase().replace(/[^a-z0-9]/g, '');
 const sourceHashes = {};
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const assetBytes = {};
@@ -100,8 +98,9 @@ const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 const parsePinnedImageFree = async (bytes) => nativeParseAsync.call(loader, imageFreeGlb(bytes), '/');
 const [bodyGltf, clipsGltf] = await Promise.all([parsePinnedImageFree(assetBytes.bodyPath), parsePinnedImageFree(assetBytes.clipPath)]);
 const suitDiagnosticGltf = await parsePinnedImageFree(assetBytes.suitPath);
-let suitDiagnostic; suitDiagnosticGltf.scene.traverse((node) => { if (node.isMesh) { const p = node.geometry.getAttribute('position'), i = node.geometry.getAttribute('skinIndex'), w = node.geometry.getAttribute('skinWeight'), ix = node.geometry.getIndex(); const ys = []; const leg = []; for (let v = 0; v < p.count; v++) { ys.push(p.getY(v)); let sum = 0; for (let k = 0; k < 4; k++) { const j = Math.round(i.getComponent(v,k)); const name = normalizeBoneName(node.userData.jointNames?.[j] ?? '').replace(/^mixamorig/, ''); if (LEG_BONES_DIAG.has(name)) sum += w.getComponent(v,k); } leg.push(sum); } let shirt = 0, trousers = 0; for (let t = 0; t < ix.count / 3; t++) { const a=ix.getX(t*3), b=ix.getX(t*3+1), c=ix.getX(t*3+2); const y=(p.getY(a)+p.getY(b)+p.getY(c))/3; const li=(leg[a]+leg[b]+leg[c])/3; if (y < .91 && li >= .12) trousers++; else shirt++; } suitDiagnostic = {name: node.name, count: p.count, triangleCount: ix.count/3, groups: node.geometry.groups, y: [Math.min(...ys), Math.max(...ys)], legInfluenceAfterPrefixRemoval: [Math.min(...leg), Math.max(...leg)], expectedSplitAfterPrefixRemoval: {shirt, trousers}, jointNames: node.userData.jointNames}; } });
-console.log('SUIT_SOURCE_DIAGNOSTIC', JSON.stringify(suitDiagnostic));
+let suitSourceGeometry;
+suitDiagnosticGltf.scene.traverse((node) => { if (node.isMesh) suitSourceGeometry = node.geometry; });
+assert(suitSourceGeometry, 'pinned suit GLB has source geometry');
 let authoredMorphs; bodyGltf.scene.traverse((node) => { if (node.isMesh) authoredMorphs ??= {name: node.name, morphTargets: node.morphTargetDictionary ? Object.keys(node.morphTargetDictionary) : [], positionMorphCount: node.geometry.morphAttributes.position?.length ?? 0}; }); console.log('AUTHORED_BODY_MORPHS', JSON.stringify(authoredMorphs));
 const jointNames = ['pelvis', 'spine_01', 'spine_02', 'spine_03', 'neck_01', 'Head', 'clavicle_l', 'upperarm_l', 'lowerarm_l', 'hand_l', 'clavicle_r', 'upperarm_r', 'lowerarm_r', 'hand_r', 'thigh_l', 'calf_l', 'foot_l', 'ball_l', 'thigh_r', 'calf_r', 'foot_r', 'ball_r'];
 bodyGltf.scene.updateMatrixWorld(true);
@@ -207,9 +206,29 @@ try {
   const materialRefs = [];
   for (let index = 0; index < overlays.length; index++) {
     const actor = actors[index], current = overlays[index];
-    const clothingMaterials = Array.isArray(current.clothing.material) ? current.clothing.material : [current.clothing.material];
+  const clothingMaterials = Array.isArray(current.clothing.material) ? current.clothing.material : [current.clothing.material];
     const hairMaterial = current.hair.material;
-    assert.equal(clothingMaterials.length, 2, 'suit has independent shirt/trouser palette materials');
+    assert.equal(clothingMaterials.length, 1, 'connected suit uses one palette material and one outfit draw');
+    assert.equal(current.metrics.overlayDrawCalls, 2, 'clothing and hair each contribute one overlay draw');
+    assert(current.clothing.material instanceof THREE.MeshStandardMaterial, 'palette material preserves standard lighting');
+    assert.equal(current.clothing.geometry.groups.length, 0, 'suit geometry has no material groups');
+    assert.equal(current.clothing.geometry.drawRange.start, 0, 'suit draw range begins at source triangle zero');
+    assert.equal(current.clothing.geometry.drawRange.count, suitSourceGeometry.getIndex().count, 'suit draw range covers the full source index');
+    assert.deepEqual(current.clothing.geometry.getIndex().array, suitSourceGeometry.getIndex().array,
+      'single-draw suit retains the exact authored triangle order and indices');
+    for (const [name, sourceAttribute] of Object.entries(suitSourceGeometry.attributes)) {
+      if (name === 'skinIndex') continue;
+      assert.deepEqual(current.clothing.geometry.getAttribute(name).array, sourceAttribute.array,
+        `single-draw suit retains authored ${name} bytes`);
+    }
+    for (const [name, sourceAttributes] of Object.entries(suitSourceGeometry.morphAttributes)) {
+      assert.equal(current.clothing.geometry.morphAttributes[name]?.length, sourceAttributes.length,
+        `single-draw suit retains ${name} morph count`);
+      for (let morph = 0; morph < sourceAttributes.length; morph++) {
+        assert.deepEqual(current.clothing.geometry.morphAttributes[name][morph].array, sourceAttributes[morph].array,
+          `single-draw suit retains ${name} morph ${morph} bytes`);
+      }
+    }
     assert(!Array.isArray(hairMaterial), 'hair has one actor material');
     let clothingDisposals = 0, hairDisposals = 0;
     for (const material of clothingMaterials) material.addEventListener('dispose', () => clothingDisposals++);
@@ -244,11 +263,11 @@ try {
   assert.equal(overlays[0].body.geometry, originalGeometry[0], 'first actor body mask restores original source index');
   assert(overlays[1].body.geometry === sharedBodyGeometry, 'disposing first presentation keeps second actor masked');
   assert(overlays[1].clothing.parent && overlays[1].hair.parent, 'first actor disposal leaves second actor overlays attached');
-  assert.deepEqual(materialRefs[0].getDisposals(), [2, 1], 'first actor owns/disposes its overlay materials');
+  assert.deepEqual(materialRefs[0].getDisposals(), [1, 1], 'first actor disposes its palette and hair materials once');
   actors[0].dispose();
   presentations[1].dispose(); presentations[1] = undefined;
   assert.equal(overlays[1].body.geometry, originalGeometry[1], 'second actor body mask restores original source index');
-  assert.deepEqual(materialRefs[1].getDisposals(), [2, 1], 'second actor owns/disposes its overlay materials');
+  assert.deepEqual(materialRefs[1].getDisposals(), [1, 1], 'second actor disposes its palette and hair materials once');
   assert(geometryDisposals.every((counts) => counts.clothing === 1 && counts.hair === 1), 'presentation releases private outfit/hair geometry exactly once');
   actors[1].dispose();
   kit.dispose();
@@ -264,7 +283,7 @@ try {
       nonnegativeWeights: invalidWeights.length === 0,
       exactBodyIndexMask: true, suitAndHairJointIndicesValid: true, fourNormalizedInfluencesPerVertex: true,
       independentActorSkeletonsAndPoses: true, bodyMaskRestoredOnPresentationDispose: true,
-      perActorOverlayMaterialsDisposedOnce: true, outfitAndHairGeometryDisposedOnce: true, kitOwnedBodyGeometrySharedUntilKitTeardown: true,
+      perActorPaletteAndHairMaterialsDisposedOnce: true, outfitAndHairGeometryDisposedOnce: true, kitOwnedBodyGeometrySharedUntilKitTeardown: true,
     },
     limitations: ['The suit and hair rasters are intentionally omitted in this Node CPU check; material color, alpha silhouette and visual fit require the separate rendered review.', 'Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.', 'No age/fabric/accessory or mobile performance claim.'],
     elapsedMs: Math.round(performance.now()),

@@ -77,6 +77,14 @@ function boneSnapshot(actor) {
   actor.object.updateMatrixWorld(true);
   return actor.object.getObjectByName('mixamorigLeftArm').quaternion.toArray();
 }
+function morphValue(mesh, name) {
+  const index = mesh.morphTargetDictionary?.[name];
+  assert(Number.isInteger(index), `${mesh.name} exposes authored ${name}`);
+  return mesh.morphTargetInfluences?.[index] ?? 0;
+}
+function assertMorphNear(mesh, name, expected, message) {
+  assert(Math.abs(morphValue(mesh, name) - expected) < 1e-6, message);
+}
 
 await MeshoptDecoder.ready;
 const authoredBytes = readFileSync(authoredPath);
@@ -139,10 +147,33 @@ assert.deepEqual(actor1AfterOtherWalk, actor1Initial, 'other actor pose is isola
 actors[1].sample(0.91, 'dance');
 const actor1Dance = boneSnapshot(actors[1]);
 assert.notDeepEqual(actor1Dance, actor1Initial, 'dance retarget changes a target bone');
-actors[0].setExpression('grin', 0);
 const bodyA = meshesA.find((mesh) => mesh.name === 'Body');
-const grinIndex = bodyA.morphTargetDictionary.mouthCornersUp;
-assert.ok(bodyA.morphTargetInfluences[grinIndex] > 0.5, 'grin expression applies authored morph');
+const bodyB = meshesB.find((mesh) => mesh.name === 'Body');
+const teethA = meshesA.find((mesh) => mesh.name === 'Teeth');
+const tongueA = meshesA.find((mesh) => mesh.name === 'Tongue');
+const eyesA = meshesA.find((mesh) => mesh.name === 'Eyes');
+const actor1SmileBefore = morphValue(bodyB, 'nativeFacialSmileLeft');
+actors[0].setExpression('grin', 0);
+assertMorphNear(bodyA, 'nativeFacialSmileLeft', 0.9, 'grin applies authored left smile');
+assertMorphNear(bodyA, 'nativeFacialSmileRight', 0.9, 'grin applies authored right smile');
+for (const mesh of [bodyA, teethA, tongueA]) assertMorphNear(mesh, 'nativeFacialJawOpen', 0.18, `${mesh.name} receives synchronized grin jaw-open`);
+assert(!Object.hasOwn(eyesA.morphTargetDictionary, 'nativeFacialJawOpen'), 'jaw-open does not invent an eye-mesh target');
+assertMorphNear(bodyB, 'nativeFacialSmileLeft', actor1SmileBefore, 'actor 0 grin leaves actor 1 expression unchanged');
+actors[0].setExpression('blink', 0.1);
+assertMorphNear(bodyA, 'nativeFacialBlinkLeft', 1, 'blink closes authored left eyelid');
+assertMorphNear(bodyA, 'nativeFacialBlinkRight', 1, 'blink closes authored right eyelid');
+for (const mesh of [bodyA, teethA, tongueA]) assertMorphNear(mesh, 'nativeFacialJawOpen', 0, `${mesh.name} blink resets jaw-open`);
+assertMorphNear(bodyA, 'nativeFacialSmileLeft', 0, 'blink resets smile');
+actors[0].setExpression('talk', 0.37);
+const expectedJaw = 0.12 + 0.28 * (0.5 + 0.5 * Math.sin(0.37 * Math.PI * 4));
+for (const mesh of [bodyA, teethA, tongueA]) assertMorphNear(mesh, 'nativeFacialJawOpen', expectedJaw, `${mesh.name} receives synchronized talk jaw-open`);
+assertMorphNear(bodyA, 'nativeFacialBlinkLeft', 0, 'talk resets blink target');
+assertMorphNear(bodyA, 'nativeFacialSmileLeft', 0, 'talk resets smile target');
+actors[0].setExpression('neutral', 0);
+for (const name of ['nativeFacialBlinkLeft', 'nativeFacialBlinkRight', 'nativeFacialJawOpen', 'nativeFacialSmileLeft', 'nativeFacialSmileRight']) {
+  assertMorphNear(bodyA, name, 0, `neutral resets Body.${name}`);
+}
+for (const mesh of [teethA, tongueA]) assertMorphNear(mesh, 'nativeFacialJawOpen', 0, `neutral resets ${mesh.name}.nativeFacialJawOpen`);
 const sharedGeometry = meshesA[0].geometry;
 const ownedMaterial = meshesA[0].material;
 let materialDisposeEvents = 0, geometryDisposeEvents = 0;
@@ -167,6 +198,7 @@ const report = {
   clips: clipGltf.animations.map((clip) => ({ name: clip.name, duration: clip.duration, tracks: clip.tracks.length })),
   retargeted: actors[0].metrics.retargetedClipNames,
   actors: actors.map((actor) => actor.metrics),
+  expressions: { authoredSmileLeftRight: true, synchronizedGrinJawBodyTeethTongue: true, synchronizedTalkJawBodyTeethTongue: true, authoredBilateralBlinkAndReset: true, neutralReset: true, actorExpressionIsolation: true, eyesReceiveNoJawMorph: true },
   isolation: { actorRoots: true, independentSkeletons: true, independentMaterials: true, sharedGeometry: true, independentWalkAndDance: true, kitTeardownDetachesActors: true },
   caveats: ['CPU-only loader/rig check; no rendered visual acceptance.', 'Authored body material is image-stripped for this bounded test.', 'Look-to-morph values are provisional; skin-color match, wardrobe, hair, accessories and non-adult age variation are not validated.'],
   elapsedMs: Math.round(performance.now()),

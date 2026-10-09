@@ -1,15 +1,15 @@
 {
   "status": "PASS",
   "source": {
-    "authoredSha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
-    "authoredBytes": 2692984,
+    "authoredSha256": "9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd",
+    "authoredBytes": 2802528,
     "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
     "clipPackBytes": 338060
   },
   "template": [
     {
       "name": "Body",
-      "morphs": 34,
+      "morphs": 39,
       "triangles": 26756,
       "joints": 52
     },
@@ -21,13 +21,13 @@
     },
     {
       "name": "Teeth",
-      "morphs": 4,
+      "morphs": 5,
       "triangles": 192,
       "joints": 52
     },
     {
       "name": "Tongue",
-      "morphs": 5,
+      "morphs": 6,
       "triangles": 448,
       "joints": 52
     }
@@ -391,7 +391,12 @@
         "eyeUpperLidDownRight",
         "eyeLowerLidUpLeft",
         "eyeLowerLidUpRight",
-        "jawDrop"
+        "jawDrop",
+        "nativeFacialBlinkLeft",
+        "nativeFacialBlinkRight",
+        "nativeFacialJawOpen",
+        "nativeFacialSmileLeft",
+        "nativeFacialSmileRight"
       ]
     },
     {
@@ -445,10 +450,24 @@
         "eyeUpperLidDownRight",
         "eyeLowerLidUpLeft",
         "eyeLowerLidUpRight",
-        "jawDrop"
+        "jawDrop",
+        "nativeFacialBlinkLeft",
+        "nativeFacialBlinkRight",
+        "nativeFacialJawOpen",
+        "nativeFacialSmileLeft",
+        "nativeFacialSmileRight"
       ]
     }
   ],
+  "expressions": {
+    "authoredSmileLeftRight": true,
+    "synchronizedGrinJawBodyTeethTongue": true,
+    "synchronizedTalkJawBodyTeethTongue": true,
+    "authoredBilateralBlinkAndReset": true,
+    "neutralReset": true,
+    "actorExpressionIsolation": true,
+    "eyesReceiveNoJawMorph": true
+  },
   "isolation": {
     "actorRoots": true,
     "independentSkeletons": true,
@@ -462,5 +481,5 @@
     "Authored body material is image-stripped for this bounded test.",
     "Look-to-morph values are provisional; skin-color match, wardrobe, hair, accessories and non-adult age variation are not validated."
   ],
-  "elapsedMs": 192
+  "elapsedMs": 310
 }

@@ -28,7 +28,7 @@ try {
   const targets = await (await retry(`http://127.0.0.1:${port}/json/list`)).json();
   ws = new WebSocket(targets.find(target => target.type === 'page').webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
-  ws.addEventListener('message', event => { const m = JSON.parse(event.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); if (m.error) p?.reject(new Error(JSON.stringify(m.error))); else p?.resolve(m.result); } else if (m.method === 'Runtime.exceptionThrown') errors.push(m.params.exceptionDetails); else if (m.method === 'Network.requestWillBeSent') requests.set(m.params.requestId, new URL(m.params.request.url).protocol); else if (m.method === 'Network.loadingFinished') network.push({ ...m.params, protocol: requests.get(m.params.requestId) }); });
+  ws.addEventListener('message', event => { const m = JSON.parse(event.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); if (m.error) p?.reject(new Error(JSON.stringify(m.error))); else p?.resolve(m.result); } else if (m.method === 'Runtime.exceptionThrown') errors.push(m.params.exceptionDetails); else if (m.method === 'Runtime.consoleAPICalled' && m.params.type === 'error') errors.push({consoleError:m.params.args}); else if (m.method === 'Network.requestWillBeSent') requests.set(m.params.requestId, new URL(m.params.request.url).protocol); else if (m.method === 'Network.loadingFinished') network.push({ ...m.params, protocol: requests.get(m.params.requestId) }); });
   await send('Runtime.enable'); await send('Page.enable'); await send('Network.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: 1100, height: 780, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: 'http://127.0.0.1:5199' + page });
@@ -62,6 +62,11 @@ try {
         await evaluate(`window.characterReview.sample(${time}, ${angle})`);
         await capture(body + '-' + pose + '-' + frameName);
       }
+    }
+    for (const pose of ['sit','interact','cook','eat','drink']) {
+      await evaluate(`window.characterReview.set(${JSON.stringify({pose,expression:'neutral',focus:'body'})})`);
+      await evaluate('window.characterReview.sample(.4,1.5707963267948966)');
+      await capture(body+'-'+pose+'-profile');
     }
     await evaluate("window.characterReview.set({pose:'idle', focus:'head'})");
     for (const expression of ['neutral', 'grin', 'blink', 'talk']) {

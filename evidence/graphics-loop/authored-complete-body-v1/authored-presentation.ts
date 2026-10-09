@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type { Look } from '../../../src/scene/avatar-look.ts';
+import { createAuthoredClothingPalette } from './clothing-palette.ts';
 import casualSuitUrl from './authored-clothing/out/male_casualsuit01.glb?url';
 import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';
 import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';
@@ -26,8 +27,6 @@ export interface AuthoredPresentationMetrics {
   readonly bodyVisibleTriangles: number;
   readonly hiddenBodyTriangles: number;
   readonly outfitTriangles: number;
-  readonly shirtTriangles: number;
-  readonly trouserTriangles: number;
   readonly hairTriangles: number;
   readonly overlayDrawCalls: number;
   readonly bodyMaskIndexBytes: number;
@@ -62,8 +61,7 @@ interface OutfitTemplate {
 interface OutfitGeometryEntry {
   geometry: THREE.BufferGeometry;
   references: number;
-  shirtTriangles: number;
-  trouserTriangles: number;
+  outfitTriangles: number;
   hairTriangles: number;
   byteLength: number;
 }
@@ -82,7 +80,6 @@ const NORMALIZED_LOOK_COLORS: Readonly<Record<string, string>> = Object.freeze({
   blue: '#3f72c4', green: '#3f9a5a', red: '#c9423a', orange: '#e0822f', violet: '#8055c2',
   pink: '#dd6fa0', teal: '#2f9d98', navy: '#243a66', cream: '#ece2c6', gold: '#d6a83a',
 });
-const LEG_BONES = new Set(['leftupleg', 'rightupleg', 'leftleg', 'rightleg', 'leftfoot', 'rightfoot', 'lefttoebase', 'righttoebase']);
 const SUPPORTED_BODY_MORPHS = new Set(['bodyFeminine', 'bodyMasculine']);
 const CLOTHING_SHAPE_MORPHS = new Set([
   'bodyMuscular', 'bodySofter', 'bodyHeavier', 'bodyThinner', 'heightTaller', 'heightShorter',
@@ -345,36 +342,6 @@ function outfitBoneIndices(outfit: OutfitTemplate, body: THREE.SkinnedMesh): { i
   return { indices, key: indices.join(',') };
 }
 
-function legInfluence(weight: THREE.BufferAttribute | THREE.InterleavedBufferAttribute, indices: THREE.BufferAttribute | THREE.InterleavedBufferAttribute,
-  vertex: number, jointNames: readonly string[]): number {
-  let sum = 0;
-  for (let lane = 0; lane < 4; lane++) {
-    const joint = Math.round(indices.getComponent(vertex, lane));
-    if (LEG_BONES.has(normalizeBoneName(jointNames[joint] ?? ''))) sum += weight.getComponent(vertex, lane);
-  }
-  return sum;
-}
-
-function categorizeOutfitTriangle(
-  geometry: THREE.BufferGeometry,
-  index: THREE.BufferAttribute,
-  skinIndex: THREE.BufferAttribute | THREE.InterleavedBufferAttribute,
-  skinWeight: THREE.BufferAttribute | THREE.InterleavedBufferAttribute,
-  jointNames: readonly string[],
-  triangle: number,
-): 'shirt' | 'trousers' {
-  const position = geometry.getAttribute('position');
-  const offset = triangle * 3;
-  const a = index.getX(offset), b = index.getX(offset + 1), c = index.getX(offset + 2);
-  const centerY = (position.getY(a) + position.getY(b) + position.getY(c)) / 3;
-  const legs = (legInfluence(skinWeight, skinIndex, a, jointNames)
-    + legInfluence(skinWeight, skinIndex, b, jointNames)
-    + legInfluence(skinWeight, skinIndex, c, jointNames)) / 3;
-  // This source suit has no OBJ material groups. The lower leg chain plus its
-  // native waist height keeps full authored triangles intact at the color split.
-  return centerY < 0.91 ? 'trousers' : 'shirt';
-}
-
 function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh): OutfitGeometryEntry {
   const { indices, key } = outfitBoneIndices(outfit, body);
   let entries = outfitGeometryCache.get(outfit.geometry);
@@ -393,29 +360,16 @@ function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh):
   check(sourceIndex.array instanceof Uint16Array || sourceIndex.array instanceof Uint32Array,
     'outfit index must use an unsigned integer array');
   const sourceSkinIndex = source.getAttribute('skinIndex');
-  const sourceSkinWeight = source.getAttribute('skinWeight');
-  check(sourceSkinIndex instanceof THREE.BufferAttribute && sourceSkinWeight instanceof THREE.BufferAttribute,
+  check(sourceSkinIndex instanceof THREE.BufferAttribute,
     'outfit skin attributes must be non-interleaved');
   check(sourceSkinIndex.array instanceof Uint16Array || sourceSkinIndex.array instanceof Uint32Array,
     'outfit joint indices must use an unsigned integer array');
-  const shirt: number[] = [], trousers: number[] = [];
-  let shirtTriangles = 0, trouserTriangles = 0;
-  for (let triangle = 0; triangle < OUTFIT_TRIANGLES; triangle++) {
-    const target = categorizeOutfitTriangle(source, sourceIndex, sourceSkinIndex, sourceSkinWeight, outfit.jointNames, triangle) === 'shirt' ? shirt : trousers;
-    const offset = triangle * 3;
-    target.push(sourceIndex.getX(offset), sourceIndex.getX(offset + 1), sourceIndex.getX(offset + 2));
-    if (target === shirt) shirtTriangles++; else trouserTriangles++;
-  }
-  check(shirtTriangles > 0 && trouserTriangles > 0, 'whole-triangle shirt/trouser split is empty');
   const geometry = source.clone();
   geometry.name = 'authored-casual-suit-remapped';
-  const outputIndices = sourceIndex.array instanceof Uint32Array
-    ? new Uint32Array([...shirt, ...trousers])
-    : new Uint16Array([...shirt, ...trousers]);
-  geometry.setIndex(new THREE.BufferAttribute(outputIndices, 1));
+  // Keep the authored triangle order intact. A single material shades the
+  // connected source garment with a smooth shirt/trouser color transition.
   geometry.clearGroups();
-  geometry.addGroup(0, shirt.length, 0);
-  geometry.addGroup(shirt.length, trousers.length, 1);
+  geometry.setDrawRange(0, sourceIndex.count);
 
   const remappedJoints = sourceSkinIndex.array.slice() as Uint16Array | Uint32Array;
   for (let vertex = 0; vertex < sourceSkinIndex.count; vertex++) {
@@ -429,8 +383,7 @@ function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh):
   const entry: OutfitGeometryEntry = {
     geometry,
     references: 1,
-    shirtTriangles,
-    trouserTriangles,
+    outfitTriangles: sourceIndex.count / 3,
     hairTriangles: 0,
     byteLength: geometryBytes(geometry),
   };
@@ -477,8 +430,7 @@ function acquireHairGeometry(hair: OutfitTemplate, body: THREE.SkinnedMesh): Out
   const entry: OutfitGeometryEntry = {
     geometry,
     references: 1,
-    shirtTriangles: 0,
-    trouserTriangles: 0,
+    outfitTriangles: 0,
     hairTriangles: sourceIndex.count / 3,
     byteLength: geometryBytes(geometry),
   };
@@ -635,8 +587,7 @@ export async function applyAuthoredPresentation(
   ]);
   let entry: OutfitGeometryEntry | undefined;
   let hairEntry: OutfitGeometryEntry | undefined;
-  let shirtMaterial: THREE.MeshStandardMaterial | undefined;
-  let trouserMaterial: THREE.MeshStandardMaterial | undefined;
+  let clothingPalette: ReturnType<typeof createAuthoredClothingPalette> | undefined;
   let hairMaterial: THREE.MeshStandardMaterial | undefined;
   let clothing: THREE.SkinnedMesh | undefined;
   let hair: THREE.SkinnedMesh | undefined;
@@ -645,13 +596,11 @@ export async function applyAuthoredPresentation(
   try {
     entry = acquireOutfitGeometry(template, sourceBody);
     if (hairTemplate) hairEntry = acquireHairGeometry(hairTemplate, sourceBody);
-    shirtMaterial = template.material.clone();
-    trouserMaterial = template.material.clone();
-    shirtMaterial.color.copy(paletteColor(look.outfitColor, 'outfitColor'));
-    trouserMaterial.color.copy(paletteColor(look.bottomsColor, 'bottomsColor'));
-    shirtMaterial.roughness = Math.max(0.68, shirtMaterial.roughness);
-    trouserMaterial.roughness = Math.max(0.72, trouserMaterial.roughness);
-    clothing = createSkinnedSibling(sourceBody, entry.geometry, [shirtMaterial, trouserMaterial], 'Authored casual suit', template.targetNames);
+    clothingPalette = createAuthoredClothingPalette(template.material, {
+      shirt: paletteColor(look.outfitColor, 'outfitColor'),
+      trousers: paletteColor(look.bottomsColor, 'bottomsColor'),
+    });
+    clothing = createSkinnedSibling(sourceBody, entry.geometry, clothingPalette.material, 'Authored casual suit', template.targetNames);
     const copiedMorphs = copyMorphValues(sourceBody, clothing, template.targetNames);
     const previousOnBeforeRender = clothing.onBeforeRender;
     clothing.onBeforeRender = (renderer, scene, camera, geometry, material, group) => {
@@ -678,11 +627,9 @@ export async function applyAuthoredPresentation(
         bodySourceTriangles: BODY_SOURCE_TRIANGLES,
         bodyVisibleTriangles: BODY_SOURCE_TRIANGLES - HIDDEN_BODY_TRIANGLES,
         hiddenBodyTriangles: HIDDEN_BODY_TRIANGLES,
-        outfitTriangles: OUTFIT_TRIANGLES,
-        shirtTriangles: entry.shirtTriangles,
-        trouserTriangles: entry.trouserTriangles,
+        outfitTriangles: entry.outfitTriangles,
         hairTriangles: hairEntry?.hairTriangles ?? 0,
-        overlayDrawCalls: 2 + (hairEntry ? 1 : 0),
+        overlayDrawCalls: 1 + (hairEntry ? 1 : 0),
         bodyMaskIndexBytes: mask.getIndex()!.array.byteLength,
         outfitGeometryBytes: entry.byteLength + (hairEntry?.byteLength ?? 0),
         copiedMorphs: [...new Set(hairEntry ? [...copiedMorphs, ...copiedHairMorphs] : copiedMorphs)],
@@ -695,8 +642,7 @@ export async function applyAuthoredPresentation(
         if (clothing) clothing.parent?.remove(clothing);
         if (hair) hair.parent?.remove(hair);
         if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
-        shirtMaterial?.dispose();
-        trouserMaterial?.dispose();
+        clothingPalette?.dispose();
         hairMaterial?.dispose();
         if (entry) releaseOutfitGeometry(template, entry);
         if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
@@ -706,8 +652,7 @@ export async function applyAuthoredPresentation(
     if (clothing) clothing.parent?.remove(clothing);
     if (hair) hair.parent?.remove(hair);
     if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
-    shirtMaterial?.dispose();
-    trouserMaterial?.dispose();
+    clothingPalette?.dispose();
     hairMaterial?.dispose();
     if (entry) releaseOutfitGeometry(template, entry);
     if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);

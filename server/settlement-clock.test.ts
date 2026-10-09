@@ -21,7 +21,8 @@ function settledUpgradeProbe(clock: { now: number }): RouteModule {
   return (ctx: RouteContext): Record<RouteKey, RouteHandler> => ({
     'POST /api/probe/settled-upgrade': async request => {
       const body = await request.json()
-      if (typeof body.actionId !== 'string') throw ctx.fail(400, 'invalid_probe')
+      const actionId = body.actionId
+      if (typeof actionId !== 'string') throw ctx.fail(400, 'invalid_probe')
       const answer = await ctx.store.transact(db => {
         const session = request.requireSession(db, { renew: true })
         const state = ctx.settle(session, 'lagos')
@@ -30,7 +31,7 @@ function settledUpgradeProbe(clock: { now: number }): RouteModule {
         // The life action must remain part of this settled snapshot.
         clock.now += 750
         const result = ctx.act(state, {
-          type: 'estate.upgrade', cityId: 'lagos', payload: { to: 'bq' }, actionId: body.actionId,
+          type: 'estate.upgrade', cityId: 'lagos', payload: { to: 'bq' }, actionId,
         })
         return {
           settledAt, ok: result.ok, code: result.code,

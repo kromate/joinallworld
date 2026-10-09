@@ -47,7 +47,14 @@ let vite: ViteDevServer
 let app: App
 let checked: typeof import('./money/statementState.ts').checked
 const load = async <T = { default: Component }>(path: string): Promise<T> => await vite.ssrLoadModule(path) as T
-const savedApis: { api: App['game']['client']['api']; fetchJson: App['game']['fetchJson'] }[] = []
+const savedApis: { api: App['game']['client']['api']; clientFetchJson: App['game']['client']['fetchJson'] }[] = []
+const readChecked = () => checked.value
+const setupValue = (setup: Record<string, unknown>, key: string): unknown => Reflect.get(setup, key)
+const commerceCsrf = (setup: Record<string, unknown>): string | null => {
+  const result = setupValue(setup, 'result')
+  if (typeof result !== 'object' || result === null || !('csrf' in result)) return null
+  return typeof result.csrf === 'string' ? result.csrf : null
+}
 
 before(async () => {
   globalThis.fetch = server.fetch
@@ -60,21 +67,19 @@ before(async () => {
   app.game.stop()
 })
 after(async () => {
-  for (const old of savedApis.splice(0).reverse()) { app.game.client.api = old.api; app.game.client.fetchJson = old.api; app.game.fetchJson = old.fetchJson }
+  for (const old of savedApis.splice(0).reverse()) { app.game.client.api = old.api; app.game.client.fetchJson = old.clientFetchJson }
   app?.game.stop(); checked.value = null; await vite?.close(); globalThis.fetch = realFetch
 })
 
 function fakeApi(handler: (path: string, options: ApiOptions | undefined, current: () => boolean) => Promise<object>): void {
-  const old = { api: app.game.client.api, fetchJson: app.game.fetchJson }
+  const old = { api: app.game.client.api, clientFetchJson: app.game.client.fetchJson }
   savedApis.push(old)
-  const api = async <T extends object>(path: string, options?: ApiOptions, responseCurrent?: () => boolean): Promise<T & ApiEnvelope> => {
+  const api: App['game']['client']['api'] = async <T extends object = Record<string, unknown>>(path: string, options?: ApiOptions, responseCurrent?: () => boolean): Promise<T & ApiEnvelope> => {
     const response = await handler(path, options, responseCurrent ?? (() => true))
     if (!(responseCurrent ?? (() => true))()) throw Object.assign(new Error('stale response'), { code: 'stale_identity_response' })
     return response as T & ApiEnvelope
   }
-  app.game.client.api = api as App['game']['client']['api']
-  app.game.client.fetchJson = api as App['game']['client']['fetchJson']
-  app.game.fetchJson = (path, options) => api(path, options)
+  app.game.client.api = api
 }
 
 function mount(component: Component, props: Record<string, unknown> = {}) {
@@ -96,7 +101,7 @@ const callSetup = async (setup: Record<string, unknown>, key: string): Promise<v
   await nextTick()
 }
 const commerceAnswer = (name: string, signedIn = false): CommerceResponse & ApiEnvelope => ({
-  ok: true, code: 'ok', serverTime: 1, enabled: false, signedIn, accountEnabled: true,
+  serverTime: 1, enabled: false, signedIn, accountEnabled: true,
   csrf: `csrf-${name}`, commerce: null, address: null,
 })
 const session = (id: string): OwnSession => ({ id, name: id, cities: ['lagos'] })
@@ -128,8 +133,8 @@ test('Commerce discards an old account load and does not continue its OAuth call
   await Promise.resolve(); await nextTick()
   assert.equal(calls.filter(path => path === '/api/commerce/connect/complete').length, 0, 'stale mount continuation never redeems the callback')
   assert.deepEqual(calls, ['/api/commerce', '/api/commerce'])
-  assert.equal(mounted.setup.result && typeof mounted.setup.result, 'object')
-  assert.equal((mounted.setup.result as CommerceResponse).csrf, 'csrf-new-owner')
+  assert.equal(typeof setupValue(mounted.setup, 'result'), 'object')
+  assert.equal(commerceCsrf(mounted.setup), 'csrf-new-owner')
   mounted.unmount(); app.game.session.value = original
 })
 
@@ -138,18 +143,18 @@ test('Commerce invalidates its response predicate when the panel unmounts', asyn
   const original = app.game.session.value
   app.game.session.value = session('commerce-unmount')
   let resolve: (answer: CommerceResponse & ApiEnvelope) => void = () => {}
-  let current: (() => boolean) | null = null
+  const observed = { current: null as (() => boolean) | null }
   fakeApi((path, _options, isCurrent) => {
     assert.equal(path, '/api/commerce')
-    current = isCurrent
+    observed.current = isCurrent
     return new Promise<CommerceResponse & ApiEnvelope>(done => { resolve = done })
   })
   const mounted = mount(component)
-  await waitFor(() => current !== null)
+  await waitFor(() => observed.current !== null)
   mounted.unmount()
   resolve(commerceAnswer('unmounted', true))
   await Promise.resolve(); await nextTick()
-  assert.equal(current?.(), false, 'the client responseCurrent predicate fails closed after unmount')
+  assert.equal(observed.current?.(), false, 'the client responseCurrent predicate fails closed after unmount')
   app.game.session.value = original
 })
 
@@ -164,20 +169,20 @@ test('Statement verdict expires across city and wallet changes, including an A t
   fakeApi(async (path) => {
     assert.match(path, /^\/api\/support\/statement\?city=lagos$/)
     calls += 1
-    return { ok: true, code: 'ok', serverTime: 1, statement: statementOf(app.game.state.value) }
+    return { serverTime: 1, statement: statementOf(app.game.state.value) }
   })
   const mounted = mount(component)
   await callSetup(mounted.setup, 'check')
   assert.equal(calls, 1)
-  assert.equal(checked.value?.cityId, 'lagos')
+  assert.equal(readChecked()?.cityId, 'lagos')
 
   app.game.cityId.value = 'ibadan'
   await nextTick()
-  assert.equal(checked.value, null, 'changing city clears the prior verdict')
+  assert.equal(readChecked(), null, 'changing city clears the prior verdict')
   app.game.state.value = { ...app.game.state.value, cash: app.game.state.value.cash + 1 }
   app.game.cityId.value = 'lagos'
   await nextTick()
-  assert.equal(checked.value, null, 'returning to the original city does not revive a verdict over a changed wallet')
+  assert.equal(readChecked(), null, 'returning to the original city does not revive a verdict over a changed wallet')
 
   app.game.state.value = originalState; app.game.cityId.value = originalCity; app.game.session.value = originalSession
   mounted.unmount(); checked.value = null
@@ -189,19 +194,19 @@ test('Statement keeps a matching in-memory verdict across panel close/reopen, bu
   app.game.session.value = session('statement-reopen')
   app.game.state.value = { ...originalState, ledger: originalState.ledger.map(line => ({ ...line })), ledgerDays: originalState.ledgerDays.map(day => ({ ...day, by: { ...day.by } })) }
   checked.value = null
-  fakeApi(async () => ({ ok: true, code: 'ok', serverTime: 1, statement: statementOf(app.game.state.value) }))
+  fakeApi(async () => ({ serverTime: 1, statement: statementOf(app.game.state.value) }))
   const first = mount(component)
   await callSetup(first.setup, 'check')
   first.unmount()
   const reopened = mount(component)
   await nextTick()
-  assert.ok(checked.value?.walletFingerprint)
+  assert.ok(readChecked()?.walletFingerprint)
   reopened.unmount()
 
   app.game.state.value = { ...app.game.state.value, cash: app.game.state.value.cash + 1 }
   const afterChange = mount(component)
   await nextTick()
-  assert.equal(checked.value, null)
+  assert.equal(readChecked(), null)
   afterChange.unmount(); app.game.state.value = originalState; app.game.session.value = originalSession; checked.value = null
 })
 
@@ -218,12 +223,12 @@ test('Commerce invalidates deferred loads across same-tick city A to B to A and 
   try {
     await waitFor(() => pending.length === 1)
     pending[0]!.resolve({ ...commerceAnswer('old-city', true), address: { city: 'lagos', lga: 'Ikeja', estate: 1, plot: 1 } })
-    await waitFor(() => mounted.setup.result !== null)
+    await waitFor(() => setupValue(mounted.setup, 'result') !== null)
     mounted.setup.name = 'Private draft from Lagos'
     mounted.setup.adultAndTerms = true
 
     app.game.cityId.value = 'ibadan'
-    assert.equal(mounted.setup.result, null)
+    assert.equal(setupValue(mounted.setup, 'result'), null)
     assert.equal(mounted.setup.name, '')
     assert.equal(mounted.setup.adultAndTerms, false)
     app.game.cityId.value = 'lagos'
@@ -232,10 +237,10 @@ test('Commerce invalidates deferred loads across same-tick city A to B to A and 
     pending[0]!.resolve({ ...commerceAnswer('stale-city', true), address: { city: 'lagos', lga: 'Ikeja', estate: 1, plot: 1 } })
     pending[1]!.resolve({ ...commerceAnswer('middle-city', true), address: { city: 'ibadan', lga: 'Ibadan North', estate: 1, plot: 1 } })
     pending[2]!.resolve(commerceAnswer('current-city', false))
-    await waitFor(() => mounted.setup.result !== null && (mounted.setup.result as CommerceResponse).csrf === 'csrf-current-city')
+    await waitFor(() => commerceCsrf(mounted.setup) === 'csrf-current-city')
     await nextTick()
     assert.deepEqual(pending.map(item => item.current()), [false, false, true])
-    assert.equal((mounted.setup.result as CommerceResponse).csrf, 'csrf-current-city')
+    assert.equal(commerceCsrf(mounted.setup), 'csrf-current-city')
     assert.equal(mounted.setup.name, '')
     assert.equal(mounted.setup.adultAndTerms, false)
   } finally {
@@ -251,29 +256,29 @@ test('Statement ignores a deferred check after same-tick city A to B to A', asyn
   app.game.session.value = session('statement-city-owner'); app.game.cityId.value = 'lagos'
   app.game.state.value = { ...originalState, ledger: originalState.ledger.map(line => ({ ...line })), ledgerDays: originalState.ledgerDays.map(day => ({ ...day, by: { ...day.by } })) }
   checked.value = null
-  let responseCurrent: (() => boolean) | null = null
+  const observed = { responseCurrent: null as (() => boolean) | null }
   let resolve: (response: object) => void = () => {}
   const toasts: string[] = []
   app.game.toast = (message) => { toasts.push(String(message)) }
   fakeApi((path, _options, current) => {
     assert.equal(path, '/api/support/statement?city=lagos')
-    responseCurrent = current
+    observed.responseCurrent = current
     return new Promise<object>(done => { resolve = done })
   })
   const mounted = mount((await load('/src/app/features/money/StatementApp.vue')).default)
   let pendingCheck: Promise<void> | null = null
   try {
     pendingCheck = callSetup(mounted.setup, 'check')
-    await waitFor(() => responseCurrent !== null)
+    await waitFor(() => observed.responseCurrent !== null)
     app.game.cityId.value = 'ibadan'
     app.game.cityId.value = 'lagos'
-    assert.equal(responseCurrent?.(), false, 'synchronous invalidation remembers the intermediate city change')
-    resolve({ ok: true, code: 'ok', serverTime: 1, statement: statementOf(app.game.state.value) })
+    assert.equal(observed.responseCurrent?.(), false, 'synchronous invalidation remembers the intermediate city change')
+    resolve({ serverTime: 1, statement: statementOf(app.game.state.value) })
     await pendingCheck
-    assert.equal(checked.value, null)
+    assert.equal(readChecked(), null)
     assert.deepEqual(toasts, [], 'the stale check does not toast a verdict')
   } finally {
-    resolve({ ok: true, code: 'ok', serverTime: 1, statement: statementOf(app.game.state.value) })
+    resolve({ serverTime: 1, statement: statementOf(app.game.state.value) })
     if (pendingCheck) await pendingCheck.catch(() => {})
     mounted.unmount(); app.game.toast = originalToast
     app.game.state.value = originalState; app.game.cityId.value = originalCity

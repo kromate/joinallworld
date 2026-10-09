@@ -21,6 +21,7 @@ interface FakeCanvas {
   parentElement: unknown; removed: boolean;
   classList: { add(): void };
   setAttribute(name: string, value: string): void;
+  removeAttribute(name: string): void;
   addEventListener(type: string, fn: (event: unknown) => void): void;
   removeEventListener(type: string): void;
   setPointerCapture(): void; releasePointerCapture(): void;
@@ -41,6 +42,7 @@ function fakeCanvas() {
     style: {}, dataset: {}, attributes: {}, parentElement: null, removed: false,
     classList: { add() {} },
     setAttribute(name, value) { canvas.attributes[name] = value; },
+    removeAttribute(name) { delete canvas.attributes[name]; },
     addEventListener(type, fn) { handlers.set(type, fn); },
     removeEventListener(type) { handlers.delete(type); },
     setPointerCapture() {}, releasePointerCapture() {},
@@ -205,6 +207,60 @@ test('a lost context stops drawing and tells the caller; without WebGL the previ
   assert.equal(previewStats.live, before, 'nothing is left alive');
   assert.deepEqual(errors, [], 'no error is logged');
 });
+
+test('an eligible first-use creator loads the canonical body, tracks a changed look, and disposes late results', async () => {
+  const oldNavigator = Object.getOwnPropertyDescriptor(scope, 'navigator');
+  const oldContext = Object.getOwnPropertyDescriptor(scope, 'WebGL2RenderingContext');
+  class FakeWebGL2 {}
+  Object.defineProperty(scope, 'navigator', { configurable: true, value: { hardwareConcurrency: 8, deviceMemory: 8 } });
+  Object.defineProperty(scope, 'WebGL2RenderingContext', { configurable: true, value: FakeWebGL2 });
+  const flush = () => new Promise<void>((resolve) => globalThis.setTimeout(resolve, 0));
+  const makeEligible = (look: unknown, bodyLoader: PreviewOptions['bodyLoader']) => {
+    const { canvas, host } = fakeCanvas(), renderer = stubRenderer(canvas), clock = fakeClock();
+    Object.assign(renderer, { getContext: () => new FakeWebGL2() });
+    const preview = createAvatarPreview(host as unknown as HTMLElement, { look, renderer: renderer as unknown as THREE.WebGLRenderer, bodyLoader, raf: clock.raf, caf: clock.caf, now: clock.now });
+    return { preview, canvas };
+  };
+  try {
+    let resolveBody!: (body: ReturnType<typeof fakeBody>) => void;
+    const worn: { look: unknown; seed: unknown }[] = [];
+    const loaded = new Promise<ReturnType<typeof fakeBody>>((resolve) => { resolveBody = resolve; });
+    const first = makeEligible({ id: 'creator-42', body: 'man' }, async () => loaded);
+    assert.equal(first.canvas.attributes['aria-busy'], 'true', 'the initial character is marked pending');
+    const beforeChange = first.preview.diagnostics().renderCount;
+    first.preview.setLook({ id: 'creator-42', body: 'man', hair: 'afro' });
+    assert.equal(first.preview.diagnostics().renderCount, beforeChange + 1, 'a changed look draws once while its canonical body is pending');
+    await flush();
+    resolveBody(fakeBody((look, seed) => worn.push({ look, seed })));
+    await flush(); await flush();
+    assert.equal(first.canvas.attributes['aria-busy'], undefined, 'busy clears after the body is ready');
+    assert.equal(worn.at(-1)?.seed, 'creator-42', 'the source identity seed is used for the body');
+    assert.deepEqual(worn.at(-1)?.look, normalizeLook({ id: 'creator-42', body: 'man', hair: 'afro' }, 'creator-42'));
+    const unchangedLook = normalizeLook({ body: 'man', hair: 'afro' }, 'creator-42');
+    assert.equal(first.preview.setLook({ ...unchangedLook, seed: 'another-player' }), true, 'the same visible look with a new public identity is applied');
+    assert.equal(worn.at(-1)?.seed, 'another-player');
+    first.preview.dispose();
+
+    let resolveLate!: (body: ReturnType<typeof fakeBody>) => void;
+    const late = makeEligible({ id: 'creator-late', body: 'woman' }, () => new Promise((resolve) => { resolveLate = resolve; }));
+    await flush();
+    late.preview.dispose();
+    let disposedLate = 0;
+    resolveLate(fakeBody(() => {}, () => { disposedLate += 1; }));
+    await flush(); await flush();
+    assert.equal(disposedLate, 1, 'a result arriving after dispose releases its resources');
+  } finally {
+    if (oldNavigator) Object.defineProperty(scope, 'navigator', oldNavigator); else delete scope.navigator;
+    if (oldContext) Object.defineProperty(scope, 'WebGL2RenderingContext', oldContext); else delete scope.WebGL2RenderingContext;
+  }
+});
+
+function fakeBody(wear: (look: unknown, seed: unknown) => void, onDispose: () => void = () => {}) {
+  const object = new THREE.Group();
+  return {
+    object, wear(look: unknown, seed?: unknown) { wear(look, seed); return true; }, place() {}, dispose: onDispose,
+  } as unknown as import('./body/skinned.ts').SkinnedBody;
+}
 
 test('the camera frames the whole Sim at any stage shape', () => {
   const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 60);

@@ -1,0 +1,92 @@
+name: Native idle and home performance feedback V8
+on:
+  push:
+    branches: [codex/graphics-native-release-v8]
+permissions:
+  contents: read
+jobs:
+  office:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Typecheck game source including new native body provider
+        run: npm run typecheck
+      - name: Strict actual office fixture graph
+        if: always()
+        run: node --max-old-space-size=2048 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/fixture.typecheck.json
+      - name: Actual NPC appearance queue and lifecycle regressions
+        if: always()
+        run: node --max-old-space-size=256 --experimental-strip-types --test --test-concurrency=1 src/scene/body/gate.test.ts src/scene/body/body-lifecycle.test.ts src/scene/body/canonical-crowd.test.ts src/scene/crowd-native-appearance.test.ts src/scene/crowd.test.ts src/scene/kit-late-close.test.ts src/scene/body/native/native-expression-controller.test.ts src/scene/venue-contact.test.ts src/scene/body/stand-in.test.ts src/scene/body/native/native-neutral-pose.test.ts
+      - name: Bundle actual game office geometry and actions
+        if: always()
+        run: node --max-old-space-size=256 evidence/graphics-loop/native-game-adoption-v1/bundle-game-fixture.mjs
+      - name: Render actual office player and real social NPC interaction
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py evidence/graphics-loop/native-game-adoption-v1/render-resource.log evidence/graphics-loop/native-game-adoption-v1/render-resource.json node evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-office-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/native-game-adoption-v1/remote-results/
+            evidence/graphics-loop/native-game-adoption-v1/render-resource.*
+          if-no-files-found: warn
+  home:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Strict actual home scene journey graph
+        run: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json
+      - name: Actual saved home activity rules
+        if: always()
+        run: node --max-old-space-size=256 --experimental-strip-types --test --test-concurrency=1 src/game/home.test.ts
+      - name: Exact furniture query versus Three Raycaster regressions
+        if: always()
+        run: node --max-old-space-size=256 --experimental-strip-types --test --test-concurrency=1 src/scene/body/native-static-surface.test.mjs
+      - name: Bundle actual home scene
+        if: always()
+        run: node --max-old-space-size=256 evidence/graphics-loop/native-game-adoption-v1/bundle-home-journey.mjs
+      - name: Capture actual active furniture actions and completion
+        if: always()
+        run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py /tmp/home-render-resources.log /tmp/home-render-resources.json node evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs
+      - name: Require native bodies for both saved home looks
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const path = `evidence/graphics-loop/native-game-adoption-v1/home-journey-results/${process.env.GITHUB_RUN_ID}/home-journey-report.json`;
+          const report = JSON.parse(await readFile(path, 'utf8'));
+          const samples = report.final?.samples ?? {};
+          const required = ['male-casual-standing', 'female-office-standing'];
+          const failures = required.filter((name) => samples[name]?.preparedNativeRigDetected !== true);
+          if (failures.length) throw new Error(`Home native-body gate failed: ${JSON.stringify({ failures, status: report.status })}`);
+          if (report.nativePoseContactAccepted !== true) throw new Error('Home native pose/contact acceptance is still explicitly unverified');
+          if (report.status !== 'diagnostic-pass') throw new Error(`Home journey did not pass its actual scene checks: ${report.status}`);
+          console.log(JSON.stringify({ status: 'both-home-looks-native', looks: required }));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-home-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/native-game-adoption-v1/home-journey-results/
+            /tmp/home-render-resources.*
+          if-no-files-found: warn

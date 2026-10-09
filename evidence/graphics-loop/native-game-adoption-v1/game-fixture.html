@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Lagos office native game slice</title>
+  <style>
+    :root { color: #17232b; background: #edf0ed; font: 15px/1.45 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+    main { max-width: 1500px; margin: auto; padding: 18px; }
+    h1 { font-size: clamp(1.25rem, 2vw, 1.8rem); margin: 0 0 4px; }
+    .lede, .note { color: #52616a; margin: 0 0 14px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 350px); gap: 14px; align-items: start; }
+    .layout > *, .stage-card, aside, .npc-card, .npc-card header > *, #npc-cards, .action-list { min-width: 0; }
+    .stage-card, .panel { background: #fff; border: 1px solid #d4dbd9; border-radius: 12px; box-shadow: 0 4px 18px #16262d10; }
+    .stage-card { overflow: hidden; position: relative; }
+    #game-stage { display: block; width: 100%; height: min(74vh, 740px); min-height: 480px; background: #d6e9ef; }
+    .actor-labels { position: absolute; inset: 12px 12px auto; display: flex; flex-wrap: wrap; gap: 8px; pointer-events: none; }
+    .actor-label { border-radius: 999px; background: #18242bdd; color: #fff; font-size: 12px; letter-spacing: .03em; padding: 6px 10px; }
+    aside { display: grid; gap: 12px; }
+    .panel { padding: 13px; }
+    h2 { font-size: 1rem; margin: 0 0 9px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 7px; }
+    button { background: #f4f7f6; border: 1px solid #c8d2ce; border-radius: 8px; color: #17232b; cursor: pointer; font: inherit; padding: 7px 10px; }
+    button:hover, button:focus-visible { background: #e4efea; outline: 2px solid #3f9a70; }
+    #status { border-left: 3px solid #4c9b72; padding-left: 9px; font-weight: 650; }
+    #status[data-state="failed"] { border-color: #bc493e; color: #8e2920; }
+    #audit { max-height: 32vh; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.45 ui-monospace, monospace; margin: 0; }
+    #npc-cards { display: grid; gap: 8px; }
+    .npc-card { border: 1px solid #e0e5e2; border-radius: 8px; padding: 9px; }
+    .npc-card header { display: flex; justify-content: space-between; gap: 8px; }
+    .npc-card header span { color: #56656d; font-size: 12px; text-align: right; }
+    .npc-card p { margin: 3px 0 7px; color: #56656d; font-size: 12px; overflow-wrap: anywhere; }
+    .action-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .action-list button { font-size: 12px; padding: 4px 7px; }
+    .badge { display: inline-block; margin: 2px; padding: 1px 6px; border-radius: 9px; background: #edf3ef; font-size: 11px; }
+    @media (max-width: 800px) {
+      main { padding: 10px; }
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      #game-stage { height: min(62svh, 600px); min-height: 350px; }
+      #audit { max-height: 22vh; }
+      aside { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 430px) {
+      #game-stage { min-height: 330px; }
+      .panel { padding: 11px; }
+      button { padding: 6px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Lagos office · native character game slice</h1>
+    <p class="lede">Real scene geometry, live life view and NPC action cards, with the existing stand-in and canonical-crowd lifecycle.</p>
+    <div class="layout">
+      <section class="stage-card" aria-label="Full Lagos office scene with player and two authored regulars">
+        <canvas id="game-stage"></canvas>
+        <div class="actor-labels">
+          <span class="actor-label">PLAYER · saved casual look</span>
+          <span class="actor-label">MRS OKAFOR · FRONT DESK</span>
+          <span class="actor-label">DAPO · TEA LOUNGE</span>
+        </div>
+      </section>
+      <aside>
+        <section class="panel"><h2>Scene controls</h2>
+          <div class="controls">
+            <button id="idle" type="button">Idle</button>
+            <button id="walk" type="button">Walk cycle</button>
+            <button id="interact" type="button">Interaction pose</button>
+            <button id="unsupported" type="button">Probe unsupported sit</button>
+          </div>
+          <p class="note">Player interaction is an animation sample; NPC action cards run real life activities. Unsupported sit is tested as a fallback, not claimed as native.</p>
+          <div class="controls">
+            <button id="camera-scene" type="button">Scene view</button>
+            <button id="camera-front" type="button">Front view</button>
+            <button id="camera-profile" type="button">Profile view</button>
+          </div>
+          <p id="status" data-state="loading">Loading actual Lagos life and office scene…</p>
+        </section>
+        <section class="panel"><h2>Actual NPCs and action cards</h2><div id="npc-cards"></div></section>
+        <section class="panel"><h2>Runtime and contact evidence</h2><pre id="audit">Waiting for the real venue queue.</pre></section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./game-fixture.bundle.js"></script>
+  <script type="module">
+    const ready = () => window.nativeGameFixture;
+    for (const [id, action] of [['idle', () => ready()?.setMode('idle')], ['walk', () => ready()?.setMode('walk')],
+      ['interact', () => ready()?.setMode('interact')], ['unsupported', () => ready()?.probeUnsupportedPose()],
+      ['camera-scene', () => ready()?.setCamera('scene')], ['camera-front', () => ready()?.setCamera('front')],
+      ['camera-profile', () => ready()?.setCamera('profile')]]) document.getElementById(id)?.addEventListener('click', action);
+  </script>
+</body>
+</html>

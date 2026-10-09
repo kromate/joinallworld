@@ -15,12 +15,13 @@ import { renderToString } from 'vue/server-renderer'
 import type { AdsResponse, GovResponse, NeighboursResponse, PulseResponse, RadioView, RichListResponse } from '../../../types/civic.ts'
 import type { App } from '../../state/app.ts'
 import type { Civic } from './civicClient.ts'
-import { createFakeServer } from '../../testing/fakeServer.ts'
+import { createFakeServer, memoryStorage } from '../../testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
 // Exercise civic refresh as a real quick-start guest; the server still enforces the normal
 // onboarding action before the first player action.
 const server = createFakeServer({ onboarded: false })
+const realStorage = Reflect.get(globalThis, 'localStorage')
 let vite: ViteDevServer
 let app: App
 let civic: Civic
@@ -43,6 +44,7 @@ const buttonTag = (html: string, label: RegExp | string): string => {
 
 before(async () => {
   globalThis.fetch = server.fetch
+  Reflect.set(globalThis, 'localStorage', memoryStorage())
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
   await cityLoader.loadCityContent('lagos')
@@ -57,7 +59,7 @@ before(async () => {
   assert.deepEqual([quickStart.ok, quickStart.code], [true, 'playing'], 'the ordinary quick-start action confirms this guest before civic actions')
   app.game.stop()
 })
-after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
+after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch; if (realStorage === undefined) Reflect.deleteProperty(globalThis, 'localStorage'); else Reflect.set(globalThis, 'localStorage', realStorage) })
 
 const governor = (patch: Partial<GovResponse> = {}): GovResponse => ({
   city: 'lagos', phase: 'voting', phaseEndsAt: server.now() + 3 * 3600000,

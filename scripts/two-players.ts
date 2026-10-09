@@ -33,6 +33,7 @@ import { fileURLToPath } from 'node:url';
 import { WebSocket } from 'ws';
 import { createServer } from '../server/server.ts';
 import { useSaltSourceForTests } from '../server/life-service.ts';
+import { peerTransferId } from '../server/economy/effects.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { VENUES } from '../src/game/cities/lagos/venues.ts';
 
@@ -524,9 +525,20 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     // ---- nothing that reached a player or was stored for others carries a cookie secret ---------------
     const everything = JSON.stringify(heard);
     for (const who of [ada, bola]) assert.ok(!everything.includes(who.cookie.slice(4)), `${who.name}’s cookie secret never left the server`);
-    const stored = JSON.parse(await readFile(join(dataDir, 'devices.json'), 'utf8'));
+    const stored = JSON.parse(await readFile(join(dataDir, 'devices.json'), 'utf8')) as Database;
     for (const who of [ada, bola]) for (const key of ['social', 'civic']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
-    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version']);
+    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version', 'walletEffects']);
+    const giftTransferId = peerTransferId(ada.id, giftId);
+    const durableGiftEffects = (stored.walletEffects ?? []).filter((effect) => effect.transferId === giftTransferId);
+    assert.equal(durableGiftEffects.length, 2, 'the retried gift has one durable debit and credit effect');
+    const durableGiftSummary = durableGiftEffects.map((effect) => ({ publicId: effect.publicId, cityId: effect.cityId, amount: effect.amount, balanceAfter: effect.balanceAfter, reason: effect.reason }))
+      .sort((a, b) => a.publicId.localeCompare(b.publicId));
+    const expectedGiftSummary = [
+      { publicId: ada.id, cityId: CITY, amount: -1500, balanceAfter: beforeA - 1500, reason: 'Transfer to Bola' },
+      { publicId: bola.id, cityId: CITY, amount: 1500, balanceAfter: beforeB + 1500, reason: 'Transfer from Ada' },
+    ].sort((a, b) => a.publicId.localeCompare(b.publicId));
+    assert.deepEqual(durableGiftSummary, expectedGiftSummary, 'the persisted wallet journal conserves the gift across both players');
+    assert.equal(new Set(durableGiftEffects.map((effect) => effect.operationId)).size, 2, 'each side has its own durable wallet operation');
 
     log(`Two players complete: ${step} steps. Ada ${naira((await life(ada)).cash)}, Bola ${naira((await life(bola)).cash)}.`);
     return { steps: step };

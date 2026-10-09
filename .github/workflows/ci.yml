@@ -132,6 +132,9 @@ jobs:
           server/economy/effects.test.ts
           server/recovery-action-intent.test.ts
           server/salt.test.ts
+          server/settlement-clock.test.ts
+          src/app/features/commerceStatementIdentity.test.ts
+          src/app/features/money/statementModel.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
@@ -209,6 +212,9 @@ jobs:
           src/scene/city-scenes.test.ts
           src/venue-world.test.ts
           server/recovery-receipt-isolation.test.ts
+          server/settlement-clock.test.ts
+          src/app/features/commerceStatementIdentity.test.ts
+          src/app/features/money/statementModel.test.ts
           src/app/features/social/socialComponents.test.ts
           src/ui/npc-mark.test.ts
           src/app/features/campus/campusWalkability.test.ts

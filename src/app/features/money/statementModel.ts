@@ -16,7 +16,14 @@ export const changes = (count: number): string => `${count} change${count === 1 
 
 /** The server's statement and the one drawn from the life agree on the balance, where it started and what moved. */
 export function sameStatement(server: Pick<WalletStatement, 'reconciled' | 'closing' | 'opening' | 'totals'>, mine: Pick<WalletStatement, 'opening' | 'totals'>, cash: number): boolean {
-  return server.reconciled && server.closing === cash && server.opening.balance === mine.opening.balance && server.totals.net === mine.totals.net
+  return server.reconciled
+    && server.closing === cash
+    && server.opening.balance === mine.opening.balance
+    && server.opening.day === mine.opening.day
+    && server.totals.in === mine.totals.in
+    && server.totals.out === mine.totals.out
+    && server.totals.changes === mine.totals.changes
+    && server.totals.net === mine.totals.net
 }
 
 export interface Verdict { cityId: string; ok: boolean; text: string }

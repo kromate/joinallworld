@@ -2,8 +2,10 @@
 import '../../../ui/controls.css'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
+import type { ApiOptions } from '../../../client.ts'
 import { COMMERCE_CATEGORIES } from '../../../types/commerce.ts'
 import type { CommerceCategory, CommerceDirectory, CommerceListing, CommerceResponse } from '../../../types/commerce.ts'
+import type { ApiEnvelope } from '../../../types/protocol.ts'
 import TextField from '../../ui/TextField.vue'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -15,8 +17,16 @@ const { game, shell } = useApp()
 const result = ref<CommerceResponse | null>(null), loading = ref(true), busy = ref(false), error = ref(''), notice = ref('')
 const tab = ref<'mine' | 'explore'>('mine'), editing = ref(false)
 const name = ref(''), description = ref(''), category = ref<CommerceCategory>('food'), serviceArea = ref(''), adultAndTerms = ref(false)
-let browseRevision = 0
-onBeforeUnmount(() => { browseRevision += 1 })
+let generation = 0, mounted = false, gone = false, browseRevision = 0
+interface RequestScope { generation: number; identity: string | null; cityId: string }
+function captureScope(): RequestScope { return { generation, identity: game.session.value?.id ?? null, cityId: game.cityId.value } }
+function current(scope: RequestScope): boolean { return !gone && scope.generation === generation && scope.identity === (game.session.value?.id ?? null) && scope.cityId === game.cityId.value }
+function clearPrivateState(): void {
+  result.value = null; editing.value = false; adultAndTerms.value = false
+  name.value = ''; description.value = ''; category.value = 'food'; serviceArea.value = ''
+  error.value = ''; notice.value = ''; loading.value = false; busy.value = false
+}
+onBeforeUnmount(() => { gone = true; mounted = false; generation += 1; browseRevision += 1 })
 const shops = ref<CommerceListing[]>([]), next = ref<string | null>(null), browseLoading = ref(false), browseError = ref('')
 const shop = computed(() => result.value?.commerce)
 const offline = computed(() => !game.view.value.connected)
@@ -45,60 +55,93 @@ function apply(answer: CommerceResponse): void {
   result.value = answer
   if (!editing.value) resetForm()
 }
+function request<T extends object>(path: string, options: ApiOptions | undefined, scope: RequestScope, responseCurrent: () => boolean = () => true): Promise<T & ApiEnvelope> {
+  return game.client.api<T>(path, options, () => current(scope) && responseCurrent())
+}
 async function load(refresh = false): Promise<void> {
   if (busy.value) return
+  const scope = captureScope()
+  if (!scope.identity) { loading.value = false; return }
   error.value = ''; loading.value = true
-  try { apply(await game.fetchJson<CommerceResponse>(refresh ? '/api/commerce/refresh' : '/api/commerce', refresh ? { method: 'POST', body: { csrf: result.value?.csrf } } : {})) } catch (value) { error.value = failure(value) } finally { loading.value = false }
+  try {
+    const answer = await request<CommerceResponse>(refresh ? '/api/commerce/refresh' : '/api/commerce', refresh ? { method: 'POST', body: { csrf: result.value?.csrf } } : {}, scope)
+    if (current(scope)) apply(answer)
+  } catch (value) { if (current(scope)) error.value = failure(value) } finally { if (current(scope)) loading.value = false }
 }
-async function mutate(path: string, body: Record<string, unknown>): Promise<CommerceResponse | null> {
+async function mutate(path: string, body: Record<string, unknown>, scope = captureScope()): Promise<CommerceResponse | null> {
+  if (!scope.identity || !current(scope)) return null
   if (busy.value || loading.value || offline.value) return null
   busy.value = true; error.value = ''; notice.value = ''
   try {
-    const answer = await game.fetchJson<CommerceResponse>(path, { method: 'POST', body: { ...body, csrf: result.value?.csrf } })
+    const answer = await request<CommerceResponse>(path, { method: 'POST', body: { ...body, csrf: result.value?.csrf } }, scope)
+    if (!current(scope)) return null
     apply(answer)
     return answer
-  } catch (value) { error.value = failure(value); return null } finally { busy.value = false }
+  } catch (value) { if (current(scope)) error.value = failure(value); return null } finally { if (current(scope)) busy.value = false }
 }
 async function save(): Promise<void> {
+  const scope = captureScope()
   const created = !shop.value
-  if (await mutate(created ? '/api/commerce/start' : '/api/commerce/profile', { name: name.value, category: category.value, description: description.value, serviceArea: serviceArea.value, adultAndTerms: adultAndTerms.value })) {
+  if (await mutate(created ? '/api/commerce/start' : '/api/commerce/profile', { name: name.value, category: category.value, description: description.value, serviceArea: serviceArea.value, adultAndTerms: adultAndTerms.value }, scope) && current(scope)) {
     editing.value = false; resetForm(); notice.value = created ? 'Your starter store is saved. Connect Goalmatic to add products and start selling.' : 'Your store details are saved.'
   }
 }
 async function connect(): Promise<void> {
   if (busy.value || loading.value || offline.value) return
+  const scope = captureScope()
+  if (!scope.identity) return
   busy.value = true; error.value = ''
   try {
-    const answer = await game.fetchJson<{ authorizationUrl: string }>('/api/commerce/connect', { method: 'POST', body: { csrf: result.value?.csrf } })
+    const answer = await request<{ authorizationUrl: string }>('/api/commerce/connect', { method: 'POST', body: { csrf: result.value?.csrf } }, scope)
+    if (!current(scope)) return
     const url = new URL(answer.authorizationUrl)
     if (url.protocol !== 'https:' || url.username || url.password) throw new Error('The store connection link is invalid.')
     globalThis.location.assign(url.href)
-  } catch (value) { error.value = failure(value); busy.value = false }
+  } catch (value) { if (current(scope)) error.value = failure(value) } finally { if (current(scope)) busy.value = false }
 }
 async function disconnect(): Promise<void> {
-  if (await mutate('/api/commerce/disconnect', {})) notice.value = 'Your store is disconnected and no longer listed. Your Goalmatic products and orders are kept.'
+  const scope = captureScope()
+  if (await mutate('/api/commerce/disconnect', {}, scope) && current(scope)) notice.value = 'Your store is disconnected and no longer listed. Your Goalmatic products and orders are kept.'
 }
 async function browse(more = false): Promise<void> {
   if (more && (browseLoading.value || !next.value)) return
+  const scope = captureScope()
   const revision = ++browseRevision
   browseLoading.value = true; browseError.value = ''
-  const query = new URLSearchParams({ city: game.cityId.value, ...filter.value })
+  const city = scope.cityId, filters = JSON.stringify(filter.value)
+  const browseCurrent = (): boolean => revision === browseRevision && current(scope) && city === game.cityId.value && filters === JSON.stringify(filter.value)
+  const query = new URLSearchParams({ city, ...filter.value })
   if (more && next.value) query.set('after', next.value)
   try {
-    const answer = await game.fetchJson<CommerceDirectory>(`/api/commerce/directory?${query}`)
-    if (revision !== browseRevision) return
+    const answer = await request<CommerceDirectory>(`/api/commerce/directory?${query}`, {}, scope, browseCurrent)
+    if (!browseCurrent()) return
     shops.value = more ? [...shops.value, ...answer.items] : answer.items; next.value = answer.next
-  } catch (value) { if (revision === browseRevision) browseError.value = failure(value) } finally { if (revision === browseRevision) browseLoading.value = false }
+  } catch (value) { if (browseCurrent()) browseError.value = failure(value) } finally { if (browseCurrent()) browseLoading.value = false }
 }
 watch(tab, value => { if (value === 'explore') void browse() })
-watch(() => [game.cityId.value, filter.value.lga, filter.value.owner], () => { browseRevision += 1; shops.value = []; next.value = null; browseLoading.value = false; browseError.value = ''; if (tab.value === 'explore') void browse() })
+watch([() => game.cityId.value, () => filter.value.lga, () => filter.value.owner], ([city], [previousCity]) => {
+  browseRevision += 1; shops.value = []; next.value = null; browseLoading.value = false; browseError.value = ''
+  if (city !== previousCity) {
+    generation += 1; clearPrivateState()
+    if (mounted && game.session.value?.id) void load()
+  }
+  if (tab.value === 'explore') void browse()
+}, { flush: 'sync' })
+watch(() => game.session.value?.id ?? null, (identity) => {
+  generation += 1; browseRevision += 1
+  clearPrivateState(); shops.value = []; next.value = null; browseLoading.value = false; browseError.value = ''
+  if (mounted && identity) { void load(); if (tab.value === 'explore') void browse() }
+}, { flush: 'sync' })
 onMounted(async () => {
+  mounted = true
+  const scope = captureScope()
   await load()
+  if (!current(scope)) return
   const params = props.params
   if (params && typeof params === 'object' && 'code' in params && 'state' in params && typeof params.code === 'string' && typeof params.state === 'string') {
     if (result.value?.signedIn) {
-      if (await mutate('/api/commerce/connect/complete', { code: params.code, state: params.state })) notice.value = 'Store connected. Review your details, then open it to other players.'
-      clearStoreReturn()
+      if (await mutate('/api/commerce/connect/complete', { code: params.code, state: params.state }, scope) && current(scope)) notice.value = 'Store connected. Review your details, then open it to other players.'
+      if (current(scope)) clearStoreReturn()
     }
   } else if (filter.value.lga || filter.value.owner) tab.value = 'explore'
 })

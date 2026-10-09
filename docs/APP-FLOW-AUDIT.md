@@ -4,6 +4,8 @@
 
 ## Current integration queue
 
+Exact cumulative source `b2a2d38b` passed remote CI [37862623511](https://github.com/kromate/joinallworld/actions/runs/37862623511): typecheck, build/download/smoke, release policy, and **100 existing UI model/component checks (100 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added.
+
 The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
 
 | Slice | Latest runtime checkpoint | Fast CI | Remaining acceptance |

@@ -46,6 +46,7 @@ import type { LivingWorldHttpRoutes } from './living-world.ts'
 import type { LivingWorldBarberRoutes } from './living-world-barber.ts'
 import type { LivingWorldClerkRoutes } from './living-world-clerk.ts'
 import type { LivingWorldJusticeRoutes } from './living-world-justice.ts'
+import type { LivingWorldAssessmentRoutes } from './living-world-assessment.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -267,7 +268,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes, LivingWorldHttpRoutes, LivingWorldBarberRoutes, LivingWorldClerkRoutes, LivingWorldJusticeRoutes {
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes, LivingWorldHttpRoutes, LivingWorldBarberRoutes, LivingWorldClerkRoutes, LivingWorldJusticeRoutes, LivingWorldAssessmentRoutes {
   'GET /api/world/land': { query: { city: CityId }; response: Ok<LandView>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'invalid_city' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' }
   'POST /api/world/land/buy': { body: LandBuyRequest; response: Ok<{ ok: boolean; code: string; duplicate?: true; pending?: true }>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | JsonBodyErrorCode | OnceErrorCode | 'invalid_city' | 'invalid_land_purchase' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' | 'land_pending' | 'not_owned_home' | 'land_price_changed' | 'land_intent_changed' }
 }

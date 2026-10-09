@@ -8,6 +8,8 @@ import { fixture, snapshot } from '../test-fixture.ts'
 import { fakeProvider, makeKey, claimsFor, signToken } from '../accounts/test-tokens.ts'
 import type { FixtureOptions } from '../test-fixture.ts'
 import type { Look } from '../../src/types/life.ts'
+import { PROGRAMMES } from '../../src/campus/unilag/curriculum.ts'
+import type { AssessmentResponse } from '../../src/types/living-world-assessment.ts'
 
 const PROJECT = 'allworld-test-project'
 const ENV = {
@@ -148,6 +150,51 @@ test('justice training receipts survive guest adoption and keep-as-guest deletio
   assert.deepEqual(await readRow(), before)
   const current = await (await a.f.request(path + '?city=lagos', null, guestCookie)).json() as { ok: boolean; revision: number }
   assert.deepEqual([current.ok, current.revision], [true, 1])
+})
+
+test('registered logic-lab progress survives account adoption and keep-as-guest deletion without exposing answers', async t => {
+  const a = await accountHarness(t), guest = await a.guest('Logic learner')
+  // Position/eligibility only: all enrollment and lab progress use production HTTP actions.
+  await a.f.server.store.transact(db => {
+    const session = Object.values(db.sessions).find(row => row.publicId === guest.id)
+    assert.ok(session?.cities.lagos)
+    const life = session.cities.lagos.state
+    life.location = 'unilag'; life.spot = 'senate'; life.skills.coding = Math.max(life.skills.coding, 100)
+  })
+  assert.equal((await a.f.action(guest.cookie, { type: 'unilag.apply', payload: { programme: 'computer' } })).code, 'admitted')
+  assert.equal((await a.f.action(guest.cookie, { type: 'unilag.matriculate' })).code, 'matriculated')
+  const courses = PROGRAMMES.computer.semesters[0]!.courses.map(course => course.id)
+  assert.equal((await a.f.action(guest.cookie, { type: 'unilag.register-semester', payload: { courses } })).code, 'registered')
+  assert.equal((await a.f.action(guest.cookie, { type: 'spot', payload: { id: PROGRAMMES.computer.spot } })).code, 'selected')
+  const path = '/api/living-world/assessment'
+  const begun = await (await a.f.request(path + '/start', { cityId: 'lagos', requestId: a.f.id() }, guest.cookie)).json() as AssessmentResponse
+  assert.equal(begun.ok, true)
+  const input = await (await a.f.request(path + '/step', { cityId: 'lagos', requestId: a.f.id(), expectedRevision: begun.revision,
+    operation: { kind: 'probe', a: false, b: true } }, guest.cookie)).json() as AssessmentResponse
+  assert.deepEqual([input.ok, input.revision, input.assignmentMark], [true, 2, null])
+  const readRow = () => a.f.server.store.read(db => snapshot((db.livingWorld as { assessments: Record<string, Record<string, unknown>> }).assessments[guest.id]!))
+  const before = await readRow()
+  const linked = await a.signIn('UidLogic', guest.cookie)
+  assert.deepEqual([linked.status, linked.body.outcome, linked.body.character?.id], [200, 'linked', guest.id])
+  const adopted = await readRow()
+  assert.equal(adopted.account, accountIdFromStored(await a.stored()))
+  assert.deepEqual(omitAccount(adopted), omitAccount(before), 'same-character adoption changes only the bound owner')
+  const current = await (await a.f.request(path + '?city=lagos', null, linked.cookie)).json() as AssessmentResponse
+  assert.deepEqual([current.ok, current.revision, current.practice, current.assignmentMark], [true, 2, input.practice, null])
+  const exported = await a.proved('/api/account/export', {}, linked.cookie, 'UidLogic')
+  assert.equal(exported.status, 200)
+  const summary = await exported.json() as { livingWorld: { actors: { assessments: unknown }[] } }
+  assert.deepEqual(summary.livingWorld.actors[0]?.assessments, { status: 'present', progress: { courseId: 'cpe-101', attempts: [
+    { semester: 1, startDay: begun.term!.startDay, phase: 'inspect', revision: 2, score: null },
+  ], updatedAt: before.updatedAt } })
+  assert.doesNotMatch(JSON.stringify(summary.livingWorld), /counterexample|initialMask|verificationMask|repairGate|lastOperation|actorId/)
+  const deleted = await a.proved('/api/account/delete', { confirm: 'delete', erase: false }, linked.cookie, 'UidLogic')
+  assert.equal(deleted.status, 200)
+  const cookie = deleted.headers.get('set-cookie')?.split(';')[0] ?? ''
+  assert.ok(cookie)
+  assert.deepEqual(await readRow(), before)
+  const guestCurrent = await (await a.f.request(path + '?city=lagos', null, cookie)).json() as AssessmentResponse
+  assert.deepEqual([guestCurrent.ok, guestCurrent.revision, guestCurrent.practice, guestCurrent.assignmentMark], [true, 2, input.practice, null])
 })
 
 test('guest adoption, parked-character switch, and keep-as-guest deletion retain only the chosen character progress', async t => {

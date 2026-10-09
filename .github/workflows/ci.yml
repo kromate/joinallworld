@@ -171,6 +171,12 @@ jobs:
           src/app/features/living-world/justiceReply.test.ts
           src/app/features/living-world/justiceIdentity.test.ts
           src/campus/unilag/assessment-practice.test.ts
+          server/living-world/assessment-service.test.ts
+          server/living-world/assessment-privacy.test.ts
+          src/app/features/campus/assessmentReply.test.ts
+          src/app/features/campus/assessmentIdentity.test.ts
+          src/campus/unilag/student.test.ts
+          server/chess-table.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
@@ -189,13 +195,15 @@ jobs:
       - name: Existing Worker host and timed-action checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
-          deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
+          deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts deploy/living-world-learning.edge.test.ts
 
   full:
     name: ${{ inputs.focused_living_world && 'evidence-only - full omitted' || format('full ({0})', matrix.node) }}
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      STUCK_DIAGNOSTICS: '1'
     strategy:
       fail-fast: false
       matrix:

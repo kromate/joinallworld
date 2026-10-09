@@ -5,6 +5,7 @@ import { createBarberService } from '../living-world/barber-service.ts'
 import { createStarterRentalService } from '../living-world/rental-service.ts'
 import { createClerkService } from '../living-world/clerk-service.ts'
 import { createJusticePracticeService } from '../living-world/justice-practice-service.ts'
+import { createAssessmentService } from '../living-world/assessment-service.ts'
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts'
 
 export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
@@ -14,7 +15,11 @@ export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, R
   const rental = createStarterRentalService(ctx)
   const clerk = createClerkService(ctx)
   const justice = createJusticePracticeService(ctx)
+  const assessment = createAssessmentService(ctx)
   return {
+    'GET /api/living-world/assessment': async request => ({ body: await assessment.current(request, request.query.get('city')), renew: true }),
+    'POST /api/living-world/assessment/start': async request => ({ body: await assessment.start(request, await request.json()), renew: true }),
+    'POST /api/living-world/assessment/step': async request => ({ body: await assessment.step(request, await request.json()), renew: true }),
     'GET /api/living-world/justice-practice': async request => ({ body: await justice.current(request, request.query.get('city')), renew: true }),
     'POST /api/living-world/justice-practice/start': async request => ({ body: await justice.start(request, await request.json()), renew: true }),
     'POST /api/living-world/justice-practice/step': async request => ({ body: await justice.step(request, await request.json()), renew: true }),

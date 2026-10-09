@@ -335,7 +335,7 @@ function savedFeedback(state: AssessmentPracticeState): string {
     ? 'All four repaired outputs match. Submit to record the assignment.'
     : 'Repaired output recorded. Rerun every remaining input combination.'
   if (code === 'completed') return `Marked ${state.score}/${UNILAG_BETA_RULES.assignmentWeight}.`
-  return ''
+  return 'Select inputs A and B, run a probe, and compare its output with the target table.'
 }
 
 /** Fresh learner-facing projection; authored target is public, hidden gate/answers are not. */

@@ -80,6 +80,23 @@ class CampaignInheritedLeaseTests(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0); self.assertEqual(result.stdout, b"")
             finally: os.close(fd)
 
+    def test_same_description_restores_nonblock_without_releasing_ownership(self):
+        with tempfile.TemporaryDirectory(prefix="world-campaign-lease-") as temp:
+            root = self.root(temp, "root")
+            with index_writer_lease(root) as lease:
+                before = identity(root)
+                flags = fcntl.fcntl(lease.descriptor, fcntl.F_GETFL)
+                self.assertTrue(flags & os.O_NONBLOCK)
+                fcntl.fcntl(lease.descriptor, fcntl.F_SETFL, flags & ~os.O_NONBLOCK)
+                result = run_helper(root, lease.descriptor)
+                self.assertEqual(result.returncode, 0, result.stderr[:1024])
+                self.assertEqual(result.stderr, b"")
+                self.assertTrue(fcntl.fcntl(lease.descriptor, fcntl.F_GETFL) & os.O_NONBLOCK)
+                self.assertEqual(identity(root), before)
+                with self.assertRaises(IndexWriterBusy):
+                    with index_writer_lease(root): pass
+            with index_writer_lease(root): pass
+
     def test_helper_claims_an_unlocked_open_description_and_other_description_sees_busy(self):
         with tempfile.TemporaryDirectory(prefix="world-campaign-lease-") as temp:
             root = self.root(temp, "root")

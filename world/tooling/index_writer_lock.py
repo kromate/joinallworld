@@ -12,11 +12,7 @@ import sys
 
 
 def verify_index_lease_report(child, value):
-    """Check reported root/lock identity after the owned worker has been reaped.
-
-    This validates named private inodes; it does not acquire or prove a flock.
-    The caller must separately validate the report's exact fields and integers.
-    """
+    """Check named inodes after reap, not flock ownership. Caller validates schema."""
     info = child.lstat(); lock = (child/"writer.lock").lstat()
     if (child.resolve(strict=True) != child or not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
             or stat.S_IMODE(info.st_mode) != 0o700
@@ -139,10 +135,12 @@ def _campaign_inherited_lease(argv):
     if (before.st_dev, before.st_ino) != expected[:2]: raise ValueError("root changed")
     lock = root/"writer.lock"; named = lock.lstat(); _lock_file(named); held = os.fstat(6); _lock_file(held)
     flags = fcntl.fcntl(6, fcntl.F_GETFL)
-    if ((flags & os.O_ACCMODE) != os.O_RDWR or not flags & os.O_NONBLOCK
+    if ((flags & os.O_ACCMODE) != os.O_RDWR
             or (held.st_dev, held.st_ino) != expected[2:]
             or (named.st_dev, named.st_ino) != expected[2:]):
         raise ValueError("campaign fd mismatch")
+    # Node22's macOS spawn clears O_NONBLOCK on this shared description.
+    fcntl.fcntl(6, fcntl.F_SETFL, flags | os.O_NONBLOCK)
     digest = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     for kind, cap in ((resource.RLIMIT_CPU, 1), (resource.RLIMIT_FSIZE, 65536)):
         soft, hard = resource.getrlimit(kind)

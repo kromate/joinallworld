@@ -42,6 +42,15 @@ try {
     cases.push({ name, ...snapshot, frameSamples: frames.length });
   }
   for (const body of ['woman', 'man']) {
+    if(process.env.REST_ONLY==='1'){
+      await evaluate(`window.characterReview.set(${JSON.stringify({body,expression:'neutral',pose:'rest',focus:'body'})})`);
+      for(const [label,angle]of [['front',-.2],['profile',Math.PI/2]]){
+        await evaluate(`window.characterReview.sample(0,${angle})`);await capture(body+'-native-rest-'+label);
+      }
+      await evaluate("window.characterReview.set({focus:'head'})");
+      await evaluate('window.characterReview.sample(0,-.2)');await capture(body+'-native-rest-face');
+      continue;
+    }
     await evaluate(`window.characterReview.set(${JSON.stringify({ body, expression: 'grin', pose: 'idle', focus: 'body' })})`);
     for (const [angleName, angle] of [['front', -.2], ['profile', Math.PI / 2]]) {
       await evaluate(`window.characterReview.sample(.4, ${angle})`);
@@ -84,7 +93,7 @@ try {
   }
   await send('Emulation.setDeviceMetricsOverride', {width:390,height:844,deviceScaleFactor:1,mobile:true});
   for (const body of ['woman', 'man']) {
-    await evaluate(`window.characterReview.set(${JSON.stringify({body,expression:'grin',pose:'idle',focus:'body'})})`);
+    await evaluate(`window.characterReview.set(${JSON.stringify({body,expression:'grin',pose:process.env.REST_ONLY==='1'?'rest':'idle',focus:'body'})})`);
     await capture(body + '-390px-body');
     await evaluate("window.characterReview.set({focus:'head'})");
     await capture(body + '-390px-face');

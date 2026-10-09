@@ -64,7 +64,14 @@ function draw(){
   if(state.pose==='walk')baseline?.stride(seconds/1.35*Math.PI*2,false);
   else if(state.pose==='dance')baseline?.sampleUse('dance',seconds);
   else baseline?.show('idle');
-  if(candidate){candidate.object.rotation.y=yaw;candidate.sample(seconds,state.pose as 'idle'|'walk'|'dance');candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);}
+  if(candidate){
+    candidate.object.rotation.y=yaw;
+    if(state.pose==='rest'){
+      const body=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
+      body.skeleton.pose();candidate.object.updateMatrixWorld(true);
+    }else candidate.sample(seconds,state.pose as 'idle'|'walk'|'dance');
+    candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);
+  }
   scenes.forEach((scene,index)=>{
     if(face&&index===1&&candidate){
       candidate.object.updateMatrixWorld(true);

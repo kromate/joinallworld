@@ -186,6 +186,10 @@ jobs:
         if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-concurrency=1 server/social/voice-notes.test.ts
 
+      - name: African capital Node receipts and persisted journeys
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-concurrency=1 server/africa-host.test.ts
+
       - name: Teaching start policy and actual Node rollback receipts
         if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
         run: >-
@@ -209,6 +213,10 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           deploy/business.edge.test.ts deploy/voice-notes.edge.test.ts
+
+      - name: African capital Worker receipts and persisted journeys
+        if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-concurrency=1 deploy/africa-host.test.ts
 
       - name: Living-world Worker persistence and teaching gate-off recovery
         if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}

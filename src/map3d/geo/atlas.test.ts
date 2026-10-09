@@ -155,9 +155,12 @@ test('pick() finds the right region at known places, at every level, through the
 });
 
 test('open versus coming soon is derived from the additive city catalogue', () => {
-  const openStates = [...new Set(cityCatalogue().filter((city) => city.open).map((city) => city.state.id))];
+  const nigeriaCities = cityCatalogue().filter((city) => city.open && (!city.countryISO || city.countryISO === 'ng'));
+  const openStates = [...new Set(nigeriaCities.map((city) => city.state.id))];
   assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)).sort(), openStates.slice().sort());
-  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)), ['ng']);
+  const openForeignCountries = [...new Set(cityCatalogue().filter((city) => city.open && city.countryISO && city.countryISO !== 'ng').map((city) => city.countryISO!))].sort();
+  assert.deepEqual(openForeignCountries, ['cm', 'dz', 'gh', 'ke', 'tg'], 'each open foreign-city catalogue entry admits its country');
+  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['cm', 'dz', 'gh', 'ke', 'ng', 'tg'], 'Nigeria and the five open foreign-city countries are enterable');
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
@@ -297,8 +300,8 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
 
 // ---- the view: a fake renderer and a hand-cranked frame queue, as in ../map3d.test.ts ----
 function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>(), countryDetail }: { reducedMotion?: boolean; width?: number; height?: number; delay?: number; failures?: Set<string>; countryDetail?: CountryDetailService } = {}) {
-  const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0 };
-  const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
+  const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0, routeVisible: false };
+  const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render(scene: THREE.Scene) { calls.render += 1; calls.routeVisible = scene.children.some((object) => object.renderOrder === 9 && object.visible && object instanceof THREE.Mesh && object.geometry.getAttribute('position').count > 0); } };
   const container = { hidden: false, getBoundingClientRect: () => ({ left: 0, top: 0, right: width, bottom: height, width, height }) };
   const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
   const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, countryDetail, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
@@ -455,6 +458,17 @@ test('reduced motion: levels and views cut instead of flying, and a trip is a ma
   atlas.destroy();
 });
 
+test('a cross-border route preview moves to Africa and draws the route there', async () => {
+  const { atlas, calls, settle } = harness({ reducedMotion: true });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    assert.equal(atlas.previewTrip('lagos:accra:air'), true);
+    await settle();
+    assert.equal(atlas.diagnostics().levelId, 'africa');
+    assert.equal(calls.routeVisible, true, 'the preview route is visible over the raised Africa plates');
+  } finally { atlas.destroy(); }
+});
+
 test('travel between cities: the preview plays and ends by itself, and a real trip follows the server\'s timer', async () => {
   const { atlas, calls, run, settle, env } = harness();
   await atlas.ready; atlas.resize(); await settle();
@@ -480,6 +494,34 @@ test('travel between cities: the preview plays and ends by itself, and a real tr
   assert.equal(atlas.diagnostics().trip, null);
   const idle = calls.render; env.now += 5000; assert.equal(run(), 0); assert.equal(calls.render, idle);
   atlas.destroy();
+});
+
+test('cross-border trips use a visible Africa route in both directions while Nigerian domestic trips stay at Nigeria', async () => {
+  const { atlas, calls, run, settle } = harness({ reducedMotion: true });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    assert.equal(atlas.diagnostics().levelId, 'nigeria');
+
+    atlas.setState({ activeAction: { kind: 'intercity', id: 'accra', from: 'lagos', mode: 'air', duration: 3600, remaining: 2400 } });
+    await settle();
+    assert.equal(atlas.diagnostics().levelId, 'africa', 'a Lagos-to-Accra flight needs the cross-border route view');
+    assert.equal(calls.routeVisible, true, 'the active cross-border route is drawn over the raised Africa plates');
+
+    atlas.setState({ activeAction: null }); run();
+    atlas.setCity('accra'); atlas.resize(); await settle();
+    assert.equal(atlas.diagnostics().levelId, 'africa');
+    atlas.setState({ activeAction: { kind: 'intercity', id: 'lagos', from: 'accra', mode: 'air', duration: 3600, remaining: 2400 } });
+    await settle();
+    assert.equal(atlas.diagnostics().levelId, 'africa', 'an Accra-to-Lagos flight stays on the cross-border route view');
+    assert.equal(calls.routeVisible, true, 'the inbound route remains visible on Africa');
+
+    atlas.setState({ activeAction: null }); run();
+    atlas.setCity('lagos'); atlas.resize(); await settle();
+    atlas.setState({ activeAction: { kind: 'intercity', id: 'abuja', from: 'lagos', mode: 'air', duration: 3600, remaining: 2400 } });
+    await settle();
+    assert.equal(atlas.diagnostics().levelId, 'nigeria', 'a Lagos-to-Abuja flight retains the Nigeria view');
+    assert.equal(calls.routeVisible, true, 'the domestic route remains visible on Nigeria');
+  } finally { atlas.destroy(); }
 });
 
 test('picking through the view, and entering: only the open city is entered, after the fly-in', async () => {

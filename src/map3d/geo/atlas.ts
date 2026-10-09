@@ -597,7 +597,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     swap(selectMesh, chosen && !open ? mesh.cap(chosen.feature, chosen.sheet.top(chosen.feature) + 0.007) : null);
     swap(selectLine, chosen && !open ? mesh.ribbons(mesh.ringLines(chosen.feature, chosen.sheet.top(chosen.feature) + 0.008, INK.select, 2.4)).geometry : null);
     const path = routePath(routeShown);
-    swap(routeLine, path && level === NIGERIA ? mesh.ribbons([{ colour: '#ffffff', width: 7, points: pathPoints(path, HEIGHT.state + 0.03) }, { colour: INK.route, width: 4, points: pathPoints(path, HEIGHT.state + 0.032) }]).geometry : null);
+    const routeHeight = level === AFRICA ? HEIGHT.openCountry + 0.03 : HEIGHT.state + 0.03;
+    swap(routeLine, path && (level === NIGERIA || level === AFRICA) ? mesh.ribbons([{ colour: '#ffffff', width: 7, points: pathPoints(path, routeHeight) }, { colour: INK.route, width: 4, points: pathPoints(path, routeHeight + 0.002) }]).geometry : null);
   }
   const authoredRoutes = new Map<string, LinkPath>();
   const pathOf = (link: { a: string; b: string; mode: string }) => authoredRoutes.get(linkId(link)) ?? (link.mode === 'rail' ? null : linkPath(link, cityEntry));
@@ -642,6 +643,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     return state ? { kind: 'state', id: state } : country ? { kind: 'country', id: country } : null;
   };
   const cityLevel = (cityId: string) => countryOf(cityId) === 'ng' ? NIGERIA : AFRICA;
+  const intercityLevel = (from: string, to: string) => [countryOf(from), countryOf(to)].some(country => country !== null && country !== 'ng') ? AFRICA : NIGERIA;
   /** The groups drawn at this level, each with the place it stands at on the screen. */
   function friendBadges(): { key: string; title: string; friends: FriendHere[]; x: number; y: number }[] {
     if (!fits) return [];
@@ -821,8 +823,10 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   function drawMarker() {
     const run = trip || preview;
     if (!ui.marker) return;
-    if (!run || level !== NIGERIA) { ui.marker.hidden = true; return; }
-    const place = tripPoint(run.path, run.line, run.from, run.progress ?? 0), where = screenOf(place.x, HEIGHT.state + 0.05 + place.height, -place.y);
+    if (!run || (level !== NIGERIA && level !== AFRICA)) { ui.marker.hidden = true; return; }
+    const place = tripPoint(run.path, run.line, run.from, run.progress ?? 0);
+    const ground = level === AFRICA ? HEIGHT.openCountry + 0.05 : HEIGHT.state + 0.05;
+    const where = screenOf(place.x, ground + place.height, -place.y);
     ui.marker.hidden = false;
     ui.marker.className = `atlas-marker is-${place.mode === 'air' ? 'air' : 'road'}`;
     if (ui.marker.dataset.mode !== place.mode) { ui.marker.dataset.mode = place.mode; ui.marker.innerHTML = ICON(place.mode === 'air' ? GLYPH.plane : place.mode === 'rail' ? GLYPH.rail : GLYPH.bus); }
@@ -838,10 +842,11 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     if (!link || trip) return false;
     const run = startRun(link, link.a === current || link.b !== current ? link.a : link.b);
     if (!run) return false;
+    const tripLevel = intercityLevel(link.a, link.b);
+    if (level !== tripLevel || (fits && rig.view.distance > fits[tripLevel]!.distance * 1.05)) goLevel(tripLevel);
     routeShown = routeId;
     // With reduced motion there is no animation: the marker is shown half-way along the highlighted route.
     preview = { ...run, start: now(), seconds: link.mode === 'air' ? 4 : 6, progress: reducedMotion ? 0.5 : 0 };
-    if (level !== NIGERIA || rig.view.distance > fits![NIGERIA]!.distance * 1.05) fly(levelView(NIGERIA));
     drawHighlights(); drawSheet(); request();
     return true;
   }
@@ -1379,7 +1384,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       const link = allCityLinks().find((item) => ((item.a === next.from && item.b === next.to) || (item.a === next.to && item.b === next.from)) && item.mode === next.mode);
       if (!link) return;
       const fresh = clock.sync(next, now());
-      if (fresh || !trip) { trip = startRun(link, next.from); preview = null; routeShown = linkId(link); confirming = null; if (selected) select(null); if (level !== NIGERIA && fits) goLevel(NIGERIA); drawHighlights(); }
+      if (fresh || !trip) { trip = startRun(link, next.from); preview = null; routeShown = linkId(link); confirming = null; if (selected) select(null); const tripLevel = intercityLevel(next.from, next.to); if (level !== tripLevel) goLevel(tripLevel); drawHighlights(); }
       if (trip) trip.progress = clock.progress(now());
       request();
     },

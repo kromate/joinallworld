@@ -49,7 +49,7 @@ This constructor remains unwired in production. Independent Astra review must ap
 
 ## Checks and evidence
 
-Use actual Node24, the existing lockfile and dependency runtime. If dependencies are missing, use the existing authorized remote install path. Keep heap1536MiB, heavy1, server1, test concurrency1 and minifier worker1. Serialize heavy checks through the existing repository slot wrapper when applicable. No quota/model hops or higher caps.
+Use actual Node24, the existing lockfile and dependency runtime. If dependencies are missing, use the existing authorized remote install path. Keep heavy1, server1, test concurrency1 and minifier worker1. Start with heap1536MiB. For the full compiler only, Integration has approved one bounded serial4096MiB remote retry after the recorded1536MiB OOM: actual cloud cgroup memory.max34359738368 and cpu.max400000/100000 were read successfully. This uses the existing32GiB/4CPU allocation, with zero extra spending. Record both failure and retry separately; do not change repository compiler configuration, local heap limits, download caps or other checks. This explicit remote compiler exception supersedes the original1536MiB-only handoff for that check. Serialize heavy checks through the existing repository slot wrapper when applicable. No quota/model hops or higher caps.
 
 Focused commands from the exact baseline:
 

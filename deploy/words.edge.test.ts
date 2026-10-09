@@ -134,7 +134,7 @@ async function profileWorkerImport(file: string, folder: string): Promise<Record
     const subprocessMs = Math.round(performance.now() - parentStart);
     const common = { node: process.version, bundle: 'worker.mjs', subprocessMs, status: child.status, signal: child.signal,
       profileWindow: 'whole fresh child, including Node bootstrap; import wall and CPU are reported separately' };
-    if (child.error || child.status !== 0) return { ...common, result: child.error?.code === 'ETIMEDOUT' ? 'timed-out' : 'child-failed' };
+    if (child.error || child.status !== 0) return { ...common, result: recordOf(child.error)?.['code'] === 'ETIMEDOUT' ? 'timed-out' : 'child-failed' };
     let importTiming: Record<string, unknown> | null = null;
     try { importTiming = recordOf(JSON.parse(child.stdout.trim().split('\n').at(-1) ?? '')) }
     catch { /* profile summary remains useful if the child did not emit its small timing record */ }

@@ -1,5 +1,17 @@
 # Living-world implementation checkpoint
 
+## Latest status receipt: 9 October 2026, 02:09 UTC
+
+This receipt supersedes older current/live statements below. Native goal remains ACTIVE. Latest pushed source candidate is `14f345e2d8ed2e7eec02eac2e061a089534047f9` on `codex/living-world`; the isolated worktree also contains uncommitted owned social UI, movement/CSS harness, receipt test and evidence updates. These are preserved and not accepted as tested source.
+
+- Exact [fast CI 37872635591](https://github.com/kromate/joinallworld/actions/runs/37872635591) is terminal: canonical typecheck, build and release policy PASS. Startup size FAIL: 614639 raw / 223004 gzip / 195347 Brotli bytes, gzip 4 bytes over the unchanged 223000 cap. Smoke was SKIPPED; full tests were omitted in this mode. No size waiver or release.
+- Exact [scoped CI 37872191339](https://github.com/kromate/joinallworld/actions/runs/37872191339) is terminal: 174/177 Node tests pass, 3 fail, 0 skipped. Remaining failures are two-player hunt day rollover, browser wearable-view projection parity, and a wall-slide test duration. Worker phase did not execute after Node failure. Passing checks include initial polling, economy simulation, legacy/story save preservation and venue movement scenarios.
+- Earlier exact `27c7b9b6bf18a3af9dc1db67d27a95bb8d6d1dec` [focused CI 37871489953](https://github.com/kromate/joinallworld/actions/runs/37871489953) passes 68 Node and 5 actual Worker SQLite checks with no failures/skips. Clerk evidence includes ordered decisions, pending-step replay, once-only 75 fictional-cash reward, actor isolation and persistence restart. This is not exact-14f UI, staging or live acceptance. Older full Node24 baseline at a9c31385 had 48 failures; full acceptance remains OPEN.
+- Fresh production health reports `joinallworld-a44629b38be751a9ad446051564`, serverTime 1791511731364. Full published source remains `a44629b38be751a9ad446051564704f6c3c6ae1b`; no programme or Goalmatic deployment occurred. Health alone does not prove gameplay/save continuity.
+- Verified root model remains gpt-6.1-sol and the three existing workers gpt-6-luna. WORLD reported all owned resources terminal and publication 0327d072. Root acknowledged GRAPHICS' next finite probe; Root has no local heavy process, browser, server or upload. Latest monitor is WARNING raw2 at 02:06 UTC; existing resource caps remain unchanged.
+- Goalmatic private contracts were inspected earlier; target workspace/installation and exact Goals field/consent mapping remain unavailable. Adapter disabled; no mock is live integration. Full school/rental/mapped-driving/restocking/barber/reload, mobile/multiplayer, real-business and later-career gates remain OPEN.
+- Next bounded action: inspect the exact-14f startup graph for structural headroom, review/execute the pending owned repairs, diagnose hunt day rollover and preserve lazy wearable composition, then rerun relevant exact-source checks. Full regression, independent staging, mobile/interruption/save checks and production release gates remain required.
+
 ## Latest status receipt: 9 October 2026, 01:45 UTC
 
 This receipt supersedes older current/live statements below. Native goal remains ACTIVE. Clean pushed source candidate is `ec313ec0c58c16b889dcfcfd7d66671711d113c6` on `codex/living-world`.

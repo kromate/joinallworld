@@ -1,12 +1,17 @@
 """Prepared serial reservation-engine fixtures; own disposable databases only."""
 from contextlib import contextmanager
 import hashlib
+import multiprocessing
+import os
 from pathlib import Path
+import shutil
 import sqlite3
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
+import index_reservations as reservations_module
 from index_reservations import IndexReservations, REGISTRY_ALLOWANCE, MAX_RESERVATIONS, MIB
 
 
@@ -14,6 +19,43 @@ def binding(value):
     # Opaque synthetic bytes only, not an admitted production index binding.
     raw = value.encode("ascii")
     return hashlib.sha256(raw).hexdigest(), raw
+
+
+def item(value, amount=65536):
+    index_hash, raw = binding(value)
+    return {"indexHash": index_hash, "bindingBytes": raw, "reservedBytes": amount}
+
+
+def _crash_batch_child(database, entries, stage, ready):
+    db = sqlite3.connect(database, isolation_level=None)
+    registry = IndexReservations(db, 64*MIB)
+    if stage == "before-commit":
+        original = reservations_module._record_hash
+        calls = 0
+
+        def pause_after_one(binding_bytes, amount):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                ready.set()
+                time.sleep(20)
+            return original(binding_bytes, amount)
+
+        reservations_module._record_hash = pause_after_one
+    else:
+        original = registry._checkpoint
+        calls = 0
+
+        def pause_after_commit():
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                ready.set()
+                time.sleep(20)
+            return original()
+
+        registry._checkpoint = pause_after_commit
+    registry.reserve_many(entries)
 
 
 @contextmanager
@@ -28,6 +70,185 @@ def fixture():
 
 
 class IndexReservationTests(unittest.TestCase):
+    def test_batch_is_sorted_atomic_and_mixed_replay_does_not_double_charge(self):
+        with fixture() as (db, _):
+            registry = IndexReservations(db, 64*MIB)
+            first, second, third = item("batch-z", MIB), item("batch-a", 2*MIB), item("batch-m", MIB)
+            initial = registry.reserve_many([first, second])
+            self.assertEqual([row["indexHash"] for row in initial], sorted([first["indexHash"], second["indexHash"]]))
+            self.assertTrue(all(not row["replayed"] for row in initial))
+            before = registry.snapshot()
+            mixed = registry.reserve_many([third, second, first])
+            self.assertEqual([row["indexHash"] for row in mixed], sorted([first["indexHash"], second["indexHash"], third["indexHash"]]))
+            self.assertEqual({row["indexHash"]: row["replayed"] for row in mixed}, {
+                first["indexHash"]: True, second["indexHash"]: True, third["indexHash"]: False})
+            self.assertEqual(registry.snapshot()["chargedBytes"], before["chargedBytes"] + third["reservedBytes"])
+            self.assertEqual(registry.reserve(first["indexHash"], first["bindingBytes"], first["reservedBytes"]),
+                {"indexHash": first["indexHash"], "reservedBytes": first["reservedBytes"], "replayed": True})
+            charged = registry.snapshot()
+            replay = registry.reserve_many([first, third, second])
+            self.assertTrue(all(row["replayed"] for row in replay))
+            self.assertEqual(registry.snapshot(), charged)
+            self.assertEqual([row["indexHash"] for row in replay], [row["indexHash"] for row in mixed])
+
+    def test_batch_capacity_or_slot_exhaustion_adds_no_partial_rows(self):
+        with fixture() as (db, _):
+            registry = IndexReservations(db, REGISTRY_ALLOWANCE+2*MIB)
+            baseline = item("batch-baseline", MIB)
+            registry.reserve_many([baseline])
+            before = registry.snapshot()
+            with self.assertRaisesRegex(ValueError, "namespace budget"):
+                registry.reserve_many([item("batch-fits-alone", 65536), item("batch-does-not-fit", MIB)])
+            self.assertEqual(registry.snapshot(), before)
+            self.assertEqual(db.execute("SELECT count(*) FROM reservations").fetchone(), (1,))
+
+        with fixture() as (db, _):
+            registry = IndexReservations(db, 64*MIB)
+            registry.reserve_many([item(f"slot-{number}") for number in range(MAX_RESERVATIONS-1)])
+            before = registry.snapshot()
+            with self.assertRaisesRegex(ValueError, "reservation rows"):
+                registry.reserve_many([item("last-slot-a"), item("last-slot-b")])
+            self.assertEqual(registry.snapshot(), before)
+            self.assertEqual(db.execute("SELECT count(*) FROM reservations").fetchone(), (MAX_RESERVATIONS-1,))
+
+    def test_batch_mismatched_replay_refuses_all_new_entries_and_poisons_writer(self):
+        with fixture() as (db, _):
+            registry = IndexReservations(db, 64*MIB)
+            old = item("fixed-existing", MIB)
+            registry.reserve_many([old])
+            before = registry.snapshot()
+            changed = dict(old, reservedBytes=2*MIB)
+            new = item("must-not-appear", MIB)
+            with self.assertRaisesRegex(ValueError, "resizing/refunds"):
+                registry.reserve_many([new, changed])
+            self.assertEqual(registry.snapshot(), before)
+            self.assertEqual(db.execute("SELECT count(*) FROM reservations").fetchone(), (1,))
+            with self.assertRaisesRegex(RuntimeError, "must reopen"):
+                registry.reserve_many([new])
+
+    def test_batch_preflight_refuses_duplicates_bad_pins_oversize_and_external_transactions(self):
+        with fixture() as (db, _):
+            registry = IndexReservations(db, 64*MIB)
+            good = item("preflight")
+            with self.assertRaisesRegex(ValueError, "duplicate"):
+                registry.reserve_many([good, good])
+            too_many = [item(f"wide-{number}") for number in range(MAX_RESERVATIONS+1)]
+            with self.assertRaisesRegex(ValueError, "1..256"):
+                registry.reserve_many(too_many)
+            with self.assertRaisesRegex(ValueError, "exact fields"):
+                registry.reserve_many([dict(good, extra=True)])
+            bad = dict(good, bindingBytes=bytearray(good["bindingBytes"]))
+            with self.assertRaisesRegex(ValueError, "immutable binding"):
+                registry.reserve_many([bad])
+            bad = dict(good, reservedBytes=True)
+            with self.assertRaisesRegex(ValueError, "declared reservation"):
+                registry.reserve_many([bad])
+            with self.assertRaisesRegex(ValueError, "finite list"):
+                registry.reserve_many(iter([good]))
+            db.execute("BEGIN IMMEDIATE")
+            try:
+                with self.assertRaisesRegex(RuntimeError, "caller transaction is preserved"):
+                    registry.reserve_many([good])
+                self.assertTrue(db.in_transaction)
+                self.assertEqual(db.execute("SELECT count(*) FROM reservations").fetchone(), (0,))
+            finally:
+                db.execute("ROLLBACK")
+            self.assertEqual(registry.snapshot()["reservations"], 0)
+
+    def test_batch_midtransaction_error_rolls_back_every_insert_and_requires_reopen(self):
+        with fixture() as (db, file):
+            registry = IndexReservations(db, 64*MIB)
+            entries = [item("interrupt-a", MIB), item("interrupt-b", MIB)]
+            original = reservations_module._record_hash
+            calls = 0
+
+            def fail_second(binding_bytes, amount):
+                nonlocal calls
+                calls += 1
+                if calls == 2:
+                    raise sqlite3.OperationalError("injected second-row failure")
+                return original(binding_bytes, amount)
+
+            with patch.object(reservations_module, "_record_hash", side_effect=fail_second):
+                with self.assertRaisesRegex(sqlite3.OperationalError, "second-row failure"):
+                    registry.reserve_many(entries)
+            self.assertFalse(db.in_transaction)
+            self.assertEqual(registry.snapshot()["reservations"], 0)
+            self.assertEqual(db.execute("SELECT count(*) FROM reservations").fetchone(), (0,))
+            with self.assertRaisesRegex(RuntimeError, "must reopen"):
+                registry.reserve_many(entries)
+            reopened = sqlite3.connect(file, isolation_level=None)
+            try:
+                self.assertEqual(IndexReservations(reopened, 64*MIB).snapshot()["reservations"], 0)
+            finally:
+                reopened.close()
+
+    def test_batch_postcommit_checkpoint_failure_keeps_every_charge_for_exact_replay(self):
+        with fixture() as (db, file):
+            registry = IndexReservations(db, 64*MIB)
+            entries = [item("checkpoint-a", MIB), item("checkpoint-b", MIB)]
+            original = registry._checkpoint
+            calls = 0
+
+            def fail_after_commit():
+                nonlocal calls
+                calls += 1
+                if calls == 2:
+                    raise sqlite3.OperationalError("injected postcommit checkpoint failure")
+                return original()
+
+            with patch.object(registry, "_checkpoint", side_effect=fail_after_commit):
+                with self.assertRaisesRegex(sqlite3.OperationalError, "postcommit checkpoint"):
+                    registry.reserve_many(entries)
+            self.assertFalse(db.in_transaction)
+            self.assertEqual(registry.snapshot()["heldBytes"], 2*MIB)
+            with self.assertRaisesRegex(RuntimeError, "must reopen"):
+                registry.reserve_many(entries)
+            reopened = sqlite3.connect(file, isolation_level=None)
+            try:
+                resumed = IndexReservations(reopened, 64*MIB)
+                before = resumed.snapshot()
+                self.assertTrue(all(row["replayed"] for row in resumed.reserve_many(entries)))
+                self.assertEqual(resumed.snapshot(), before)
+            finally:
+                reopened.close()
+
+    @unittest.skipUnless(os.name == "posix", "SIGKILL recovery fixture requires POSIX")
+    def test_batch_sigkill_before_and_after_commit_preserves_sqlite_atomicity(self):
+        context = multiprocessing.get_context("fork")
+        entries = [item("crash-a", MIB), item("crash-b", MIB)]
+        for stage, expected in [("before-commit", 0), ("after-commit", 2)]:
+            scratch = Path(tempfile.mkdtemp(prefix="allworld-reservation-crash-"))
+            child = None
+            confirmed_dead = False
+            try:
+                database = scratch / "registry.sqlite"
+                bootstrap = sqlite3.connect(database, isolation_level=None)
+                IndexReservations(bootstrap, 64*MIB)
+                bootstrap.close()
+                ready = context.Event()
+                child = context.Process(target=_crash_batch_child, args=(str(database), entries, stage, ready))
+                child.start()
+                self.assertTrue(ready.wait(5), f"child did not reach {stage}; preserve {scratch}")
+                child.kill()
+                child.join(5)
+                confirmed_dead = not child.is_alive() and child.exitcode is not None
+                self.assertTrue(confirmed_dead, f"crash fixture child termination was not confirmed; preserve {scratch}")
+                recovered_db = sqlite3.connect(database, isolation_level=None)
+                try:
+                    recovered = IndexReservations(recovered_db, 64*MIB)
+                    self.assertEqual(recovered.snapshot()["reservations"], expected)
+                    if expected:
+                        self.assertEqual(recovered.snapshot()["heldBytes"], 2*MIB)
+                finally:
+                    recovered_db.close()
+            finally:
+                if child is not None and child.is_alive():
+                    child.kill()
+                    child.join(5)
+                    confirmed_dead = not child.is_alive() and child.exitcode is not None
+                if confirmed_dead or child is None:
+                    shutil.rmtree(scratch)
     def test_foreign_database_is_refused_without_changing_settings_or_data(self):
         with fixture() as (db, _):
             db.executescript("CREATE TABLE saves(id TEXT); INSERT INTO saves VALUES('preserved');")

@@ -4,7 +4,10 @@ Status: pure codec/planner passes9 targeted cases within successful exact-source
 run37893015341 (399tests+3policy+World TypeScript). See
 [index-shard-plan-acceptance.json](index-shard-plan-acceptance.json). Actual batch
 reservation/admission, global accounting and geometry are not accepted by this
-planner result.
+planner result. The separate opaque reservation primitive now passes actual
+atomic batch/replay/SIGKILL checks in run37893670937; see
+[INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
+That primitive is not connected plan admission or child allocation.
 
 ## Purpose and acceptance boundary
 

@@ -1,5 +1,37 @@
 # Implementation checkpoint — 9 October 2026
 
+Latest exact-source diagnostic **37893670937** at
+**19dbfe1664c533c1f667badd12eb8934fc02c2f7** is terminal **SUCCESS**:
+**406 tests +3 release-policy checks =409 distinct checks, plus World TypeScript**.
+Downloaded22 artifacts verified against exact source, suite counts and unchanged
+raw/storage preflight; see [index-shard-reservation-acceptance.json](index-shard-reservation-acceptance.json).
+Python265 =19audit/11session/77affected/158remaining; Node141 remains
+22protocol/kernel/58contracts/8actual SDK-campaign/39legacy campaign-Ledger/
+9planner/5release-source. Zero Node failures/skips; all Python modules OK.
+
+`reserve_many` atomically charges1..256 opaque immutable bindings under the
+existing fixed17MiB registry base, occupied256-slot and immutable512MiB aggregate
+ceilings. All new rows are checked before insertion. Reordered/mixed replay does
+not double-charge. Actual own-child SIGKILL before commit recovers no new rows;
+after commit it retains all rows and charges. Injected rollback/checkpoint and
+caller-transaction fixtures pass. Failed writers reopen unchanged state; no
+refund, resize, schema migration, replacement namespace or cap increase.
+See [INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
+
+Current accepted builder source99638456 is synchronized to main; actual main
+CI37893548860 is terminal SUCCESS. New atomic batch source is verified and being
+committed separately. No new production runtime/map detail accompanies either.
+Existing Luna now prepares separate explicit version2 child-binding codecs while
+legacy openers remain v1-only, before held batch controller admission and actual
+root creation. Next reconstruct exact physical descriptor/capture/context pins,
+reserve whole frozen batch and recover one immutable operation. Finite global
+disk/network/retry admission, complete cross-shard references/ownership, country
+geometry/streaming, Nigeria integration and physical phones remain OPEN.
+Latest06:30UTC WARNING2/paging: no new optional local worker/compiler/build/server/
+browser/upload; remote validation and bounded source-only work continue. GoalACTIVE.
+
+Earlier checkpoint paragraphs below are historical where superseded.
+
 Latest exact-source diagnostic **37893015341** at
 **efaead4019f4830fc474d453383e14a16dbcc37e** is terminal **SUCCESS**:
 **399 tests +3 release-policy checks =402 distinct checks, plus World TypeScript**.

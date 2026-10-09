@@ -22,6 +22,22 @@ Diagnostic branches only; no graphics runtime main merge or production upload. L
 
 # Allworld agent coordination and phased production releases
 
+## WORLD atomic reservation batch accepted — 9 October 2026
+
+Exact19dbfe16/run37893670937 SUCCESS:406tests+3release-policy+WorldTypeScript;
+root verified22 downloaded artifact hashes, suite counts and exact two reservation
+source blobs. Raw797134B/source892928B/control1048576B remain unchanged. Actual
+before/after-COMMIT own-child SIGKILL, all-or-none capacity, rollback and charged
+replay pass. This is opaque reservation only; frozen plan admission/child roots,
+versioned membership binding, finite global accounting and geometry remain open.
+Accepted predecessor99638456 is synchronized main and its actual mainCI37893548860
+SUCCESS. Atomic batch is being committed separately; no game/runtime/Nigeria edits
+or upload. Existing Luna owns only index_binding.py/test_index_binding.py for
+separate v2 codec, legacy openers remain v1-only pending held controller integration.
+Latest06:30UTC WARNING2 renewed paging: no WORLD optional localheavy/compiler/
+worker/browser/server/upload. Shared heavy1/heap1536/minifier1 and WORLD sole
+production uploader unchanged. Other owners retain their source/runtime lanes.
+
 ## WORLD bounded shard codec and lifecycle checks accepted — 9 October 2026
 
 Exact efaead40/run37893015341 SUCCESS:399tests+3release-policy+WorldTypeScript,

@@ -1,15 +1,17 @@
 # Decisions and repeatable rollout after the first compiler
 
-Latest builder scaling checkpoint —9 October2026: exactefaead40/run37893015341
-is terminal SUCCESS:399 tests+3 release-policy checks and World TypeScript.
+Latest builder scaling checkpoint —9 October2026: exact19dbfe16/run37893670937
+is terminal SUCCESS:406 tests+3 release-policy checks and World TypeScript.
 Connected campaign audit, read-only evidence and bounded namespace shard planning
-pass; raw/storage caps are unchanged. Actual atomic batch reservation,
+pass, as does opaque atomic batch reservation with actual before/after-commit
+SIGKILL recovery; raw/storage caps are unchanged. Connected plan admission,
 membership-bound child bindings/controller execution and finite global aggregate
 admission are next. Planner status is explicitly not-admitted/not-compiled;
 country geometry, all specified interruption/corruption fixtures and physical
 phones remain open. Source witness allowlist repaired without wildcard expansion;
 no production runtime or map detail is released by this builder phase. Read
-PROGRESS.md and INDEX-SHARD-PLAN-SPEC.md; older paragraphs below are historical.
+PROGRESS.md, INDEX-SHARD-RESERVATION-OPERATIONS.md and INDEX-SHARD-PLAN-SPEC.md;
+older paragraphs below are historical.
 
 Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
 on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443

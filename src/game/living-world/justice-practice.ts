@@ -164,10 +164,10 @@ function exactKeys(v: Record<string, unknown>, keys: readonly string[]): boolean
 // so the JSON string length is its UTF-8 byte count as well as its code-unit length.
 function serializedStateBytes(value: unknown): number { return JSON.stringify(value).length }
 function cloneAction(action: JusticePracticeAction): JusticePracticeAction {
-  return action.kind === 'inspect' ? { kind: action.kind, evidenceId: action.evidenceId }
-    : action.kind === 'initial-decision' || action.kind === 'review-decision'
-      ? { kind: action.kind, choiceId: action.choiceId, reasonEvidenceIds: [...action.reasonEvidenceIds] }
-      : { kind: action.kind }
+  if (action.kind === 'inspect') return { kind: action.kind, evidenceId: action.evidenceId }
+  if (action.kind === 'initial-decision') return { kind: action.kind, choiceId: action.choiceId, reasonEvidenceIds: [...action.reasonEvidenceIds] }
+  if (action.kind === 'review-decision') return { kind: action.kind, choiceId: action.choiceId, reasonEvidenceIds: [...action.reasonEvidenceIds] }
+  return { kind: action.kind }
 }
 function validRequestId(value: unknown): value is string { return typeof value === 'string' && /^[A-Za-z0-9:_-]{1,64}$/.test(value) }
 function validEvidenceId(value: unknown): value is JusticeEvidenceId { return typeof value === 'string' && EVIDENCE_IDS.includes(value as JusticeEvidenceId) }

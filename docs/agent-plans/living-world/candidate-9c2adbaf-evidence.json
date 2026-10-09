@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "9c2adbaf957a936c05e65a9cde39ad500c97ff48",
+  "branch": "codex/living-world",
+  "runId": 37887540585,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37887540585",
+  "observedAt": "2026-10-09T05:17:16Z",
+  "status": "completed",
+  "mode": "ui_checks with canonical compiler/build/unchanged budgets/smoke; full release matrix not requested",
+  "jobs": {
+    "releasePolicy": {
+      "jobId": 113680810955,
+      "conclusion": "success"
+    },
+    "uiRegressionLearningWorker": {
+      "jobId": 113680811187,
+      "status": "completed",
+      "step": "Existing app UI model and component checks",
+      "conclusion": "failure",
+      "existingUi": {
+        "tests": 419,
+        "pass": 419,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 94949.804861
+      },
+      "learning": {
+        "tests": 59,
+        "pass": 53,
+        "fail": 6,
+        "skip": 0,
+        "durationMs": 25345.259759,
+        "failures": [
+          "account assessment fixture and three HTTP assessment fixtures: settle_required before actual admission",
+          "repeated verification probe in submit phase returned wrong_step",
+          "fresh terminal submit returned revision_exhausted before already_complete"
+        ],
+        "passedEvidence": [
+          "five chess fixtures including actual terminal-state clock",
+          "three actual compiled assessment SFC lifecycle/identity/retry/quarantine fixtures",
+          "three actual compiled justice SFC lifecycle/identity/retry fixtures",
+          "nine student fixtures including old saved timer compatibility/graduation",
+          "actual justice HTTP, privacy and account adoption"
+        ]
+      },
+      "commerce": "skipped after learning failure",
+      "cityPagination": "skipped after learning failure",
+      "worker": "skipped after learning failure",
+      "logSha256": "78cf759a0ffd6788251bcf672332ff57b27688c7756ee598a5de0e341ac58e72"
+    },
+    "buildBudgetSmoke": {
+      "jobId": 113680811277,
+      "status": "completed",
+      "step": "size:download",
+      "conclusion": "failure",
+      "build": "pass",
+      "budgets": "pass unchanged",
+      "startup": {
+        "raw": 612875,
+        "gzip": 222360,
+        "brotli": 194886
+      },
+      "firstPaintBrotli": 35701,
+      "smoke": {
+        "tests": 15,
+        "pass": 14,
+        "fail": 1,
+        "reason": "six justice/assessment routes missing from HTTP_ROUTE_KEYS"
+      },
+      "logSha256": "05029eb40e036aef21cf089109f52d52d49c3f1d5c240c93cfce8a14981451db"
+    },
+    "canonicalTypecheck": {
+      "jobId": 113680811293,
+      "status": "completed",
+      "step": "typecheck",
+      "conclusion": "failure",
+      "newErrors": 5,
+      "errors": [
+        "justice cloneAction correlated kind/choice union",
+        "incomplete route-key union proof",
+        "justice public reader unknown choice ID",
+        "assessment-state cast lacks strict structural guard",
+        "string lookup into TimedId receipt map"
+      ],
+      "logSha256": "fb74f03fd6330879f61bc85d946b43c82f232782527b4da708dc6377456f26c6"
+    }
+  },
+  "newSource": [
+    "connected CPE-101 production assessment service and lazy campus widget",
+    "new timer refusal with old saved-action completion retained",
+    "actual assessment account-adoption/export/keep-as-guest fixture",
+    "compiled SFC stale actor/unmount/retry/quarantine fixtures",
+    "Worker justice/lab SQLite restart and storage-layout fixtures",
+    "chess fixture authoritative terminal-state acknowledgement",
+    "opt-in stuck preload/subtest diagnostics retaining all samples"
+  ],
+  "reviewFindingsRepaired": [
+    "failed GET could show Ready or an unverified mark",
+    "initial pure feedback was empty and rejected by the client reader",
+    "Worker unsafe inspection option was inside legacy converter",
+    "non-distributive Omit in new fixture operation type",
+    "stale response assertions now await actual API completion"
+  ],
+  "newChecksAtPublication": "unrun",
+  "wholeProgrammeAcceptance": false,
+  "priorFullFailure": "candidate-511e1cf6-evidence.json",
+  "fullRegression": "still required; no unchanged full redispatch",
+  "stagingGameplaySaveContinuity": "not accepted",
+  "routeAuthorized": false,
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "production": {
+    "healthObservedAt": "2026-10-09T05:13:48Z",
+    "ok": true,
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791522828571,
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "gameplaySaveContinuity": "no new acceptance"
+  },
+  "localResourceAdmission": "raw2 WARNING; no local heavy/server/browser/upload",
+  "conclusion": "failure",
+  "exactCandidateAccepted": false,
+  "sourceRepairReview": "Seven-file repair independently reviewed; no blocker found in assessment transition, actual onboarding fixture, bounded mark-object guard or validated receipt lookup. Repairs unrun until new candidate CI."
+}

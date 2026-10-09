@@ -272,12 +272,12 @@ export function stepAssessmentPractice(state: AssessmentPracticeState, actorId: 
       : fail(state, 'request_conflict', 'This request ID was already used for a different lab operation.')
   }
   if (operation.expectedRevision !== state.revision) return fail(state, 'revision_conflict', 'The lab changed. Reload its current step before continuing.')
-  if (state.revision >= MAX_REVISION) return fail(state, 'revision_exhausted', 'This lab reached its safe operation limit.')
   if (state.phase === 'complete') return fail(state, 'already_complete', 'This assessment is already complete.')
+  if (state.revision >= MAX_REVISION) return fail(state, 'revision_exhausted', 'This lab reached its safe operation limit.')
 
   if (operation.kind === 'probe') {
     const index = bitFor(operation.a, operation.b), bit = 1 << index
-    const output = state.phase === 'inspect' ? gateOutput('or', operation.a, operation.b) : state.phase === 'verify' ? gateOutput(state.repairGate!, operation.a, operation.b) : null
+    const output = state.phase === 'inspect' ? gateOutput('or', operation.a, operation.b) : state.phase === 'verify' || state.phase === 'submit' ? gateOutput(state.repairGate!, operation.a, operation.b) : null
     if (output === null) return fail(state, 'wrong_step', state.phase === 'repair' ? 'Inspect the observed counterexample before choosing a repair.' : 'Submit the verified lab result to finish.')
     const observation = { a: operation.a, b: operation.b, output }
     if (state.phase === 'inspect') {

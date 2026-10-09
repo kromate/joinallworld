@@ -154,6 +154,10 @@ test('justice training receipts survive guest adoption and keep-as-guest deletio
 
 test('registered logic-lab progress survives account adoption and keep-as-guest deletion without exposing answers', async t => {
   const a = await accountHarness(t), guest = await a.guest('Logic learner')
+  assert.equal((await a.f.action(guest.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } })).code, 'traits_saved')
+  assert.equal((await a.f.action(guest.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } })).code, 'dream_saved')
+  assert.equal((await a.f.action(guest.cookie, { type: 'onboarding.lottery' })).code, 'rolled')
+  assert.equal((await a.f.action(guest.cookie, { type: 'onboarding.home', payload: { lga: 'ikeja', stay: true } })).code, 'life_started')
   // Position/eligibility only: all enrollment and lab progress use production HTTP actions.
   await a.f.server.store.transact(db => {
     const session = Object.values(db.sessions).find(row => row.publicId === guest.id)

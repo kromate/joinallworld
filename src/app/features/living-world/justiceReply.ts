@@ -60,7 +60,7 @@ function readView(value: unknown): JusticePracticeView | null | undefined {
     if (raw.length !== expected.length) return null
     for (let index = 0; index < raw.length; index++) {
       const item = raw[index]
-      if (!record(item) || !exact(item, ['id', 'label']) || item.id !== expected[index] || !safeText(item.label, 160)) return null
+      if (!record(item) || !exact(item, ['id', 'label']) || typeof item.id !== 'string' || item.id !== expected[index] || !safeText(item.label, 160)) return null
       choices.push({ id: item.id, label: item.label })
     }
     return choices

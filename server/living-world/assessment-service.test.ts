@@ -27,6 +27,10 @@ async function computerStudent(f: Awaited<ReturnType<typeof fixture>>, name: str
   const player = { cookie: (created.headers.get('set-cookie') ?? '').split(';')[0] ?? '', id: body.session?.id ?? '' }
   assert.ok(player.cookie && player.id)
   assert.equal((await f.action(player.cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })).code, 'playing')
+  assert.equal((await f.action(player.cookie, { type: 'onboarding.traits', payload: { traits: ['musical', 'clean-pikin'] } })).code, 'traits_saved')
+  assert.equal((await f.action(player.cookie, { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } })).code, 'dream_saved')
+  assert.equal((await f.action(player.cookie, { type: 'onboarding.lottery' })).code, 'rolled')
+  assert.equal((await f.action(player.cookie, { type: 'onboarding.home', payload: { lga: 'ikeja', stay: true } })).code, 'life_started')
   await f.server.store.transact(db => {
     const session = Object.values(db.sessions).find(row => row.publicId === player.id)
     assert.ok(session?.cities.lagos)

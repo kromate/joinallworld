@@ -499,6 +499,8 @@ export type ServerFrameType = ServerFrame['type']
 export { registeredCityIds } from '../game/cities/registry.ts'
 
 export const HTTP_ROUTE_KEYS = [
+  'GET /api/living-world/assessment', 'POST /api/living-world/assessment/start', 'POST /api/living-world/assessment/step',
+  'GET /api/living-world/justice-practice', 'POST /api/living-world/justice-practice/start', 'POST /api/living-world/justice-practice/step',
   'GET /api/living-world/barber',
   'GET /api/living-world/clerk', 'POST /api/living-world/clerk/start',
   'POST /api/living-world/clerk/step', 'POST /api/living-world/clerk/claim',

@@ -8,7 +8,7 @@ import {
 import { UNILAG_BETA_RULES, programmeOf } from '../../src/campus/unilag/curriculum.ts'
 import type { AssessmentOperation, AssessmentResponse, AssessmentStartRequest, AssessmentStepRequest } from '../../src/types/living-world-assessment.ts'
 import type { ActiveTerm, AssessmentState, UnilagStudentState } from '../../src/types/campus.ts'
-import type { CityId } from '../../src/types/protocol.ts'
+import type { CityId, TimedId } from '../../src/types/protocol.ts'
 import type { LifeState } from '../../src/types/life.ts'
 import type { Db, RouteContext, RouteRequest, SessionRecord } from '../types.ts'
 
@@ -135,6 +135,14 @@ function cityOf(ctx: RouteContext, value: unknown): CityId | null {
   return typeof value === 'string' && ctx.cityIds.some(city => city === value) ? value as CityId : null
 }
 
+/** Keep the actual course object so submission updates it inside the same transaction. */
+function isAssessmentState(value: unknown): value is AssessmentState {
+  if (!isPlainRecord(value) || !exactKeys(value, ['assignment', 'test'])) return false
+  const mark = (score: unknown, cap: number): boolean => score === null
+    || (typeof score === 'number' && Number.isSafeInteger(score) && score >= 0 && score <= cap)
+  return mark(value.assignment, UNILAG_BETA_RULES.assignmentWeight) && mark(value.test, UNILAG_BETA_RULES.examWeight)
+}
+
 /** Reads the current computer-engineering semester-one assessment without creating or normalizing state. */
 function currentTerm(life: LifeState | null): CurrentTerm | null {
   if (!life) return null
@@ -146,10 +154,8 @@ function currentTerm(life: LifeState | null): CurrentTerm | null {
     || !Array.isArray(term.registeredCourses) || !term.registeredCourses.includes(COURSE)) return null
   if (!isPlainRecord(term.assessments)) return null
   const rawAssessment: unknown = term.assessments[COURSE]
-  if (!isPlainRecord(rawAssessment) || !exactKeys(rawAssessment, ['assignment', 'test'])) return null
-  const mark = rawAssessment.assignment
-  if (!(mark === null || (typeof mark === 'number' && Number.isSafeInteger(mark) && mark >= 0 && mark <= UNILAG_BETA_RULES.assignmentWeight))) return null
-  return { term, assessment: rawAssessment as AssessmentState }
+  if (!isAssessmentState(rawAssessment)) return null
+  return { term, assessment: rawAssessment }
 }
 
 function response(
@@ -178,7 +184,8 @@ function recordMatches(row: AssessmentRecord, session: SessionRecord): string | 
 
 function isTermReceiptConflict(error: unknown, session: SessionRecord, requestId: string, startDay: number): boolean {
   if (!isRecord(error) || error.status !== 409 || error.code !== 'client_id_conflict') return false
-  const priorResult = session.once?.[requestId]?.result
+  // Both mutation callers validated this key through ctx.onceId before entering the transaction.
+  const priorResult = session.once?.[requestId as TimedId]?.result
   return isRecord(priorResult) && safeTime(priorResult.startDay) && priorResult.startDay !== startDay
 }
 

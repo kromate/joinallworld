@@ -29,9 +29,11 @@ This is isolated synthetic verification, not production continuity evidence. The
 
 ## Finite native QA stage
 
-`world/tooling/serve-sealed-africa.mjs` starts the same exact sealed Worker and packaged ASSETS on an ephemeral `127.0.0.1` port with a new temporary SQLite store. It verifies the same clean source SHA and package guard, then creates a synthetic founder guest, loads its Lagos life, signs in through the fixture provider, and confirms the root admin identity using normal HTTP routes. Only the pinned synthetic Firebase key endpoint is answered; all other Worker outbound requests are refused.
+`world/tooling/serve-sealed-africa.mjs` starts the same exact sealed Worker and packaged ASSETS on an ephemeral `127.0.0.1` port with a new temporary SQLite store. It verifies the same clean source SHA and package guard, then creates a synthetic founder guest, loads its Lagos life, signs in through the fixture provider, and confirms the root admin identity using normal HTTP routes. Only the pinned synthetic Firebase key endpoint is answered; all other Worker outbound requests are refused. The launcher registers stop and restart signal handlers before starting Miniflare, so an interrupted startup still cleans up its temporary files and listener.
 
-The launcher creates a new mode-0600 control file with `wx`; it refuses an existing path and removes its own file on shutdown. This private file contains the loopback stage URL, source and package identities, and the synthetic founder cookie used only for the authenticated admin-credit route. It never prints the cookie. The native operator may create a separate ordinary browser guest, complete onboarding, then use the supplied cookie with the existing `/api/admin/players/<publicId>/act` credit endpoint if the journey needs a funded balance. No save or balance row is edited. The stage shuts down on SIGINT/SIGTERM or at the requested deadline, and removes its temporary SQLite directory and control file.
+The launcher creates a new mode-0600 control file with `wx`; it refuses an existing path. This private file contains the loopback URL and port, exact source and package identities, child PID, SQLite storage path, stage deadline, and the synthetic founder cookie used only for the authenticated admin-credit route. It never prints the cookie. The native operator may create a separate ordinary browser guest, complete onboarding, then use the supplied cookie with the existing `/api/admin/players/<publicId>/act` credit endpoint if the journey needs a funded balance. No save or balance row is edited.
+
+After readiness, `SIGHUP` serially disposes and restarts the same sealed Worker and ASSETS on the same loopback port with the same SQLite directory. It does not create another identity, reauthenticate, issue another credit, change saved fields or clocks, or reset the original lifetime. An overlapping restart signal is refused. Each completed restart writes sanitized JSON evidence containing the source SHA, package digest, stage URL, `storeReused: true`, and restart count. SIGINT, SIGTERM, or the original deadline stops the stage. By default, the launcher removes both its own control file and temporary store. With `--retain-store`, it retains the store and updates its same owned control file to `stageStatus: "stopped"`; the checkpoint contains synthetic cookies and must stay private, outside Git, and out of public artifacts. The native stage owner is responsible for removing retained files after QA. This tool does not resume retained checkpoints.
 
 ```sh
 node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
@@ -40,7 +42,8 @@ node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
   --sha "$SOURCE_SHA" \
   --tools "$MINIFLARE_TOOLS" \
   --control "$PRIVATE_STAGE_CONTROL" \
-  --seconds 600
+  --seconds 600 \
+  --retain-store
 ```
 
-`--control` must be an absolute path that does not already exist. `--seconds` defaults to 600 and is limited to 900. Standard output contains only the stage URL, build ID, source SHA, package digest, and deadline. Keep the control file private and delete any retained copy after native QA. This stage is local synthetic QA; it does not deploy or prove production continuity.
+`--control` must be an absolute path that does not already exist. `--seconds` defaults to 600 and is limited to 900; a restart does not extend it. `--retain-store` is optional and retains both the SQLite directory and private stopped control checkpoint; without it both are removed. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.

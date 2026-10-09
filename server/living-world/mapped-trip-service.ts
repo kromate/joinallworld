@@ -518,8 +518,9 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
       const fleetRead = readFleet(root)
       if (fleetRead === false) return response(null, 'fleet_quarantined')
       const fleet = fleetRead ?? emptyFleetState()
-      const activeQualification = auth.qualification !== null && auth.qualification !== false ? auth.qualification.qualification : null
-      const activeRental = auth.rental !== null && auth.rental !== false ? auth.rental : null
+      // The currentAuth false-sentinel quarantine was returned above; here only absence remains.
+      const activeQualification = auth.qualification !== null ? auth.qualification.qualification : null
+      const activeRental = auth.rental !== null ? auth.rental : null
       const p = activeRental?.entitlement
       if (!activeQualification || !p) return response(null, 'starter_permission_required')
       const fp = startFingerprint(session.publicId, location, proof, p.issuedAt)
@@ -591,16 +592,17 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
       if (row.location !== location) return response(view(row, proof.route), 'trip_location_changed')
       const fs = readFleet(root)
       if (fs === false || !fs) return response(view(row, proof.route), 'fleet_quarantined')
-      if (resolverClockReversed || now < Math.max(row.createdAt, row.updatedAt, row.lastInputAt) || !proofFresh(proof, now)) {
+      const tripClockReversed = now < Math.max(row.createdAt, row.updatedAt, row.lastInputAt)
+      if (resolverClockReversed || tripClockReversed || !proofFresh(proof, now)) {
         if (row.state.status === 'running' && row.revision < MAX) {
-          const reason = resolverClockReversed || now < Math.max(row.createdAt, row.updatedAt, row.lastInputAt)
+          const reason = resolverClockReversed || tripClockReversed
             ? 'Server clock moved backwards while mapped trip authority was checked.'
             : 'Mapped route evidence expired while trip authority was checked.'
           pauseRecord(row, now, reason)
           writeRows(db, session.publicId, row, fs, ctx)
-          return response(view(row, proof.route), resolverClockReversed ? 'clock_reversed' : 'physical_evidence_stale')
+          return response(view(row, proof.route), resolverClockReversed || tripClockReversed ? 'clock_reversed' : 'physical_evidence_stale')
         }
-        return response(view(row, proof.route), resolverClockReversed ? 'clock_reversed' : 'physical_evidence_stale')
+        return response(view(row, proof.route), resolverClockReversed || tripClockReversed ? 'clock_reversed' : 'physical_evidence_stale')
       }
       const e = fleetEvidence(session.publicId, now, auth, proof)
       if (!e) return response(view(row, proof.route), 'authority_unavailable')

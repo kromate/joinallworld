@@ -28,7 +28,10 @@ const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 /** @typedef {{page: BrowserPage; contextId: string; targetId: string}} BrowserPageContext */
 /** @typedef {{readyState: string; localRoot: boolean; appRoot: boolean; lesson: boolean; lessonChoiceCount: number; progressStatus: boolean; activityLoadFailure: boolean; balance: boolean; characterCreator: boolean; quickStart: boolean; sessionStart: boolean; connectionAlert: boolean; scene: boolean; knownText: Record<string, boolean>}} FailureDomObservation */
 /** @typedef {FailureDomObservation & {runtimeExceptions: number}} FailureObservation */
-/** @typedef {{state: {cash: number; location?: string; spot?: string; onboarding?: {required: boolean; done: boolean}; activeAction?: {teaching?: {stage: string; revision: number; feedback?: string | null}} | null; ledger: Array<{amount: number}>}} LifeResponse */
+/** @typedef {{stage: string; revision: number; feedback?: string | null}} TeachingObservation */
+/** @typedef {{teaching?: TeachingObservation}} ActiveActionObservation */
+/** @typedef {{cash: number; location?: string; spot?: string; onboarding?: {required: boolean; done: boolean}; activeAction?: ActiveActionObservation | null; ledger: Array<{amount: number}>}} LifeStateObservation */
+/** @typedef {{state: LifeStateObservation}} LifeResponse */
 /** @typedef {Awaited<ReturnType<typeof fixture>>} Fixture */
 
 /** @param {unknown} value @returns {value is JsonRecord} */
@@ -114,9 +117,9 @@ function isLifeResponse(value) {
     && (state.spot === undefined || typeof state.spot === 'string')
 }
 
-/** @param {unknown} value @param {string} message @returns {asserts value} */
-function requireCondition(value, message) {
-  if (!value) throw new Error(message)
+/** @param {unknown} condition @param {string} message @returns {asserts condition} */
+function requireCondition(condition, message) {
+  if (!condition) throw new Error(message)
 }
 
 /** @param {unknown} value */
@@ -167,8 +170,8 @@ class DevTools {
         result: readDevToolsResult(decoded.result),
         ...(isRecord(decoded.error) ? { error: decoded.error } : {}),
       }
-      if (packet.id && this.pending.has(packet.id)) {
-        const pending = this.pending.get(packet.id)
+      const pending = packet.id ? this.pending.get(packet.id) : undefined
+      if (packet.id && pending) {
         this.pending.delete(packet.id)
         clearTimeout(pending.timer)
         if (packet.error) pending.reject(new Error(`DevTools command failed: ${pending.method}`))
@@ -289,7 +292,8 @@ class BrowserPage {
     let nextLoader = null
     const removeFrame = this.devtools.on('Page.frameNavigated', (event, eventSession) => {
       if (eventSession !== this.sessionId) return
-      if (event.frame?.id === rootFrame.id && event.frame.loaderId && event.frame.loaderId !== priorLoader) nextLoader = event.frame.loaderId
+      const frame = event.frame
+      if (frame && frame.id === rootFrame.id && frame.loaderId && frame.loaderId !== priorLoader) nextLoader = frame.loaderId
     })
     const removeLifecycle = this.devtools.on('Page.lifecycleEvent', (event, eventSession) => {
       if (eventSession !== this.sessionId) return
@@ -512,7 +516,7 @@ async function setupTeacher(f, name) {
   const created = await f.request('/api/session', { name, onboarding: true })
   requireCondition(created.status === 200, 'fixture could not create an ordinary onboarding session')
   const cookie = created.headers.get('set-cookie')
-  requireCondition(typeof cookie === 'string', 'onboarding session did not issue its fixture cookie')
+  if (typeof cookie !== 'string') throw new Error('onboarding session did not issue its fixture cookie')
   const device = { ...(await created.json()).session, cookie: cookie.split(';')[0] }
   const before = await life(f, device.cookie)
   requireCondition(before.state?.onboarding?.required === true && before.state?.onboarding?.done === false,
@@ -536,8 +540,9 @@ async function setupTeacher(f, name) {
     'fixture teacher did not finish the authored character-creation flow')
   requireCondition(current.state?.location === 'park' && current.state?.spot === 'work',
     'fixture teacher did not remain at the Freedom Park workplace')
-  requireCondition(current.state?.activeAction?.teaching?.stage === 'diagnose', 'server did not create the authored teaching session')
-  return { device, starting: current.state }
+  const teaching = current.state.activeAction?.teaching
+  if (!teaching || teaching.stage !== 'diagnose') throw new Error('server did not create the authored teaching session')
+  return { device, starting: current.state, teaching }
 }
 
 /** @param {import('node:test').TestContext} t @param {string} chromePath */
@@ -707,7 +712,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
     let serverState = (await life(f, desktopTeacher.device.cookie)).state
     requireCondition(serverState.activeAction?.teaching?.stage === 'diagnose'
       && serverState.activeAction.teaching.feedback === 'retry'
-      && serverState.activeAction.teaching.revision === desktopTeacher.starting.activeAction.teaching.revision + 1,
+      && serverState.activeAction.teaching.revision === desktopTeacher.teaching.revision + 1,
     'wrong rendered choice advanced or failed to retain retry feedback')
     requireCondition(serverState.cash === desktopCash, 'wrong teaching choice changed the wage balance')
     f.advance(120_000)

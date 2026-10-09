@@ -180,6 +180,8 @@ export default defineConfig({
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { treeshake: { moduleSideEffects: (id) => !id.endsWith('/src/scene/home-scene.ts') && !/\/src\/game\/wardrobe\/(catalogue|rules|look|view|prices)\.ts$/.test(id) }, input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {
     if (/\/src\/game\/wardrobe\//.test(id)) return undefined
+    // Practice rules are loaded by their screens; leave shared readers to their actual import graph.
+    if (/\/src\/game\/living-world\//.test(id)) return undefined
     if (/\/src\/types\/avatar\.ts$/.test(id)) return 'engine'
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city) return `city-${city[1]}-${city[2]}`
@@ -213,9 +215,7 @@ export default defineConfig({
     if (/node_modules\/three\/examples\/jsm\/(loaders\/GLTFLoader|libs\/meshopt_decoder\.module|utils\/SkeletonUtils)\.js$/.test(id)) return undefined
     if (/node_modules\/three\//.test(id)) return 'three'
     if (/node_modules\/@?vue\/|node_modules\/vue\//.test(id)) return 'vue'
-    // The admin address's page (adminshell.html) is a second entry. The two small account modules both entries use (the state of accounts and the funnel
-    // words) ride in the framework chunk both already load, so the game's first download is the same files it was and the admin page carries nothing of the game.
-    if (/\/src\/app\/features\/account\/(accountLite|accountTrack)\.ts$/.test(id)) return 'vue'
+    // Account metadata and tracking are shared by the lazy game/admin shells, not the loading page.
     // The campus rules are fetched when a life uses the campus (src/game/campus-gate.ts), not with the first page.
     if (/\/src\/campus\/unilag\/(student|games|shuttle|curriculum|walk|layout|register)\.ts$/.test(id)) return 'campus-rules'
     // Plain typed-array code shared by the campus rules and the scenes (never part of the first page): the walk grid included.

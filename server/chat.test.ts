@@ -419,7 +419,7 @@ test('pictures: friends only, stored outside the collection without metadata, se
   assert.equal(seen.headers.get('content-type'), 'image/jpeg');
   assert.equal(seen.headers.get('x-content-type-options'), 'nosniff');
   assert.equal(seen.headers.get('content-disposition'), 'inline');
-  assert.match(defined(seen.headers.get('cache-control')), /^private/);
+  assert.equal(seen.headers.get('cache-control'), 'no-store');
   const body = new Uint8Array(await seen.arrayBuffer());
   assert.equal(sniff(body), 'jpeg'); assert.equal(contains(body, 'Exif'), false); assert.equal(contains(body, 'GPS'), false);
   assert.equal((await fetchImage(image.id, ada)).status, 200);

@@ -291,7 +291,7 @@ function player(seed: string, cityId = 'lagos'): { state: LifeState; act(body: A
 function authoredTeacher(cityId: string, seed: string): { state: LifeState; ctx: LifeContextInit } {
   const teachingJob = jobFor(cityId, 'teaching');
   assert.ok(teachingJob, `${cityId}: teaching is an authored city career`);
-  const context = makeContext({ now: START, cityId, seed });
+  const context = makeContext({ now: START, cityId, seed, interactiveTeachingStarts: true });
   const state = createLife({ t: START, job: 'teaching', location: teachingJob.workplace.venue, spot: teachingJob.workplace.spot,
     career: { city: cityId, auto: false, oriented: true, performance: 50 } }, context);
   state.needs.energy = 100; state.needs.hunger = 100;

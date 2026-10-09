@@ -88,9 +88,9 @@ function heldJob(state: LifeState): JobDefinition {
 const COMMANDS: Record<string, string> = { 'quit-job': 'career.quit', 'set-auto-go': 'career.auto', 'pay-loan': 'economy.pay-loan', 'pay-rent': 'economy.pay-rent', 'open-deposit': 'economy.open-deposit', 'close-deposit': 'economy.close-deposit' };
 
 /** A life with its own clock. `step` settles real seconds; `act` sends one action at the current time. */
-function life(saved: Record<string, unknown> = {}, start = MONDAY_9AM) {
+function life(saved: Record<string, unknown> = {}, start = MONDAY_9AM, options: Pick<LifeContext, 'interactiveTeachingStarts'> = {}) {
   let now = start;
-  const at = (seed = 'step') => makeContext({ now, cityId: 'lagos', seed });
+  const at = (seed = 'step') => makeContext({ now, cityId: 'lagos', seed, ...options });
   const state = createLife({ t: start, ...saved }, at('create'));
   return {
     state,
@@ -206,7 +206,7 @@ test('a track whose workplace is not in this build is listed but cannot be held'
 });
 
 test('apply hires at once; a shift pays once on completion, costs needs, trains the skill and raises performance', () => {
-  const player = life();
+  const player = life({}, MONDAY_9AM, { interactiveTeachingStarts: true });
   const before = player.view().career;
   assert.equal(before.employed, false); assert.match(before.step.text, /tap Apply/); assert.doesNotMatch(before.step.text, /Phone →/, 'the step is shown inside Jobs too, so it names no route'); assert.equal(before.nextShift, null);
   const applied = player.act('apply-job', { id: 'teaching' });
@@ -264,7 +264,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
 });
 
 test('cancelling a shift earns nothing, costs nothing and does not use up the day', () => {
-  const player = life({ job: 'teaching', spot: 'work', career: { performance: 50 } });
+  const player = life({ job: 'teaching', spot: 'work', career: { performance: 50 } }, MONDAY_9AM, { interactiveTeachingStarts: true });
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started');
   player.step(SHIFT_SECONDS - 1);
   assert.equal(player.act('cancel').code, 'cancelled');
@@ -303,7 +303,7 @@ test('day off is explained; the first ever shift may be worked on a day off, lat
 
 test('a shift counts for the day it started, so running past midnight keeps the next day', () => {
   const lateMonday = Date.UTC(2026, 0, 5, 22, 59, 45); // 23:59:45 Lagos
-  const player = life({ job: 'teaching', spot: 'work', career: { performance: 50, oriented: true } }, lateMonday);
+  const player = life({ job: 'teaching', spot: 'work', career: { performance: 50, oriented: true } }, lateMonday, { interactiveTeachingStarts: true });
   const monday = lagosTime(lateMonday).day;
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started');
   player.step(SHIFT_SECONDS);
@@ -826,7 +826,7 @@ test('economy sanitize rebuilds every field from hostile input and cannot be use
 // ---- through the real server ------------------------------------------------------------
 
 test('server: apply, shift, deposit and replayed requests settle exactly once on server time', async (t) => {
-  const f = await fixture(t); const device = await f.device('Ada');
+  const f = await fixture(t, { interactiveTeachingStarts: true }); const device = await f.device('Ada');
   const read = async () => (await (await f.request('/api/life?city=lagos', null, device.cookie)).json()).state;
   const apply = { actionId: `100000:${randomUUID()}`, type: 'apply-job', payload: { id: 'teaching' } };
   const hired = await f.action(device.cookie, apply);

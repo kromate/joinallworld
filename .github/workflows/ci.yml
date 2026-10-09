@@ -242,10 +242,66 @@ jobs:
         run: npm run build
       - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: npm run size:download
+
+  # These complete suites have their own clocks: a preceding compiler/budget failure remains
+  # failed, while it cannot consume the time needed for the independent Node/Worker evidence.
+  full-node:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - id: build
+        run: npm run build
       - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: npm test
-      - id: worker-install
-        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
-        run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
-      - if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
-        run: npm run test:edge
+
+  full-worker:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - run: npm run test:edge
+
+  integration-repairs:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - id: build
+        run: npm run build
+      - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          server/chat.test.ts server/living-world/mapped-trip-service.test.ts
+          server/new-player.test.ts server/two-players.test.ts server/release.test.ts
+          src/app/components.test.ts src/app/entry.test.ts
+          src/app/features/tour/tour.test.ts src/game/browser-profile.test.ts
+          src/game/career.test.ts src/game/cities/allCities.test.ts
+          src/game/economy.test.ts src/game/living-world/vehicle-boarding.test.ts

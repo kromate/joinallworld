@@ -184,7 +184,9 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
     assert.match(html, /<div class="messages panel-fill"/, 'a conversation takes the whole app area')
     assert.match(html, /<h3[^>]*><button[^>]*>Ada &lt;b&gt;bold&lt;\/b&gt;<\/button><small[^>]*>Direct message<\/small>/)
     assert.match(html, /class="is-head bubble"[^>]*>(?:<!--.*?-->)*<span class="bubble-text"[^>]*>(?:<!--.*?-->)*How far\?/)
-    assert.match(html, /class="is-mine is-head bubble"[^>]*>(?:<!--.*?-->)*<span class="bubble-text"[^>]*>(?:<!--.*?-->)*I dey(?:<!--.*?-->)*<\/span><small[^>]*>[^<]*(?:<!--.*?-->)* · Sent/)
+    const sentBubble = html.split('data-seq="2"')[1]?.split('class="bubble-more"')[0] ?? ''
+    assert.match(sentBubble, /class="is-mine is-head bubble"/, 'the sent message retains its own bubble state')
+    assert.ok(text(sentBubble).includes('I dey') && text(sentBubble).includes('· Sent'), 'that message and its delivery state remain visible')
 
     send('dm.ada.me', { conv: 'dm.ada.me' }, 'On my way')
     html = await render(messages)

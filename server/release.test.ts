@@ -21,6 +21,8 @@ test('JavaScript is limited to the service worker, release shims and exact revie
   assert.deepEqual(javascript, ['deploy/cloudflare-worker.js', 'deploy/cloudflare.test.mjs', 'public/sw.js',
     'scripts/check-joinallworld-source.mjs', 'scripts/check-workflows.mjs',
     'scripts/guard-joinallworld-package.mjs', 'scripts/guard-joinallworld-package.test.mjs',
+    // Bounded, typechecked browser QA with isolated synthetic fixtures and native input.
+    'scripts/living-world-browser-qa.mjs',
     // This reviewed test-only native-allocation witness avoids TS-loader RSS at a 64MiB limit.
     'scripts/package-joinallworld.mjs', 'world/tooling/index_resource_witness.mjs']);
 });

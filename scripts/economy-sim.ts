@@ -50,6 +50,7 @@ import { createLife, dispatch, advanceLife, viewLife } from '../src/life.ts';
 import { lagosTime, lagosDayStart, isOpen, minutesUntilOpen } from '../src/game/clock.ts';
 import { blockReason, spotsOf, skillLevel } from '../src/game/api.ts';
 import { VENUES } from '../src/game/cities/lagos/venues.ts';
+import { venueFor } from '../src/game/cities/runtime.ts';
 
 import { JOBS } from '../src/game/content/jobs.ts';
 import { NPCS } from '../src/game/cities/lagos/regulars.ts';
@@ -344,7 +345,7 @@ function gemHunt(player: Player) {
   if (!hunt || hunt.claimed) return;
   for (const gem of hunt.gems) {
     if (gem.found) continue;
-    if (!isOpen(must(VENUES[gem.venue], 'registered venue').hours, player.now) || !player.travel(gem.venue)) continue;
+    if (!isOpen(must(venueFor(player.cityId, gem.venue), 'registered venue').hours, player.now) || !player.travel(gem.venue)) continue;
     if (gem.kind === 'visit') { if (gem.spot && player.state.spot !== gem.spot) player.do('spot', { id: gem.spot }); player.do('civic.hunt-search'); continue; }
     const ctx = makeContext({ now: player.now, cityId: CITY });
     const free = spotsOf(gem.venue, 'lagos').flatMap((spot) => spot.activities.map((def) => ({ spot: spot.id, def })))

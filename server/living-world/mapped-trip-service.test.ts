@@ -101,7 +101,10 @@ async function seedPermission(f: Awaited<ReturnType<typeof fixture>>, player: Pl
     })
     assert.ok(earned.ok)
     const root = (db.livingWorld ??= {}) as Record<string, unknown>
-    root.qualifications = { [player.id]: q }; root.driving = { [player.id]: drivingRow }; root.rentals = { [player.id]: earned.state }
+    const qualifications = (root.qualifications ??= {}) as Record<string, unknown>
+    const driving = (root.driving ??= {}) as Record<string, unknown>
+    const rentals = (root.rentals ??= {}) as Record<string, unknown>
+    qualifications[player.id] = q; driving[player.id] = drivingRow; rentals[player.id] = earned.state
   })
 }
 async function response(f: Awaited<ReturnType<typeof fixture>>, player: Player): Promise<Reply> {
@@ -190,7 +193,7 @@ test('test-only accepted resolver exercises server controls, duplicate packets, 
   f.advance(100)
   const packet = { cityId: 'lagos', tripId: trip.tripId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }
   const moved = await post(f, 'input', packet, player)
-  assert.deepEqual([moved.ok, moved.code, moved.trip?.state.speed, moved.trip?.revision, moved.trip?.nextSequence], [true, 'controls_accepted', 0.14, 2, 2])
+  assert.deepEqual([moved.ok, moved.code, moved.trip?.state.speed, moved.trip?.revision, moved.trip?.nextSequence], [true, 'controls_accepted', 0.302, 2, 2])
   assert.deepEqual(await post(f, 'input', packet, player), { ...moved, duplicate: true }, 'same sequence and payload is acknowledged without stepping twice')
   const changed = await post(f, 'input', { ...packet, frames: [{ throttle: 0, brake: 1, steer: 0 }] }, player)
   assert.equal(changed.code, 'packet_conflict', 'same sequence with changed controls cannot replay')

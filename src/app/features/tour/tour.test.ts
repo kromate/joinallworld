@@ -246,7 +246,7 @@ test('the tour is due once, after landing, and never over anything', () => {
 
 test('the tour keeps the attention ring, the coach line and the settle-in offer quiet, and they resume', () => {
   const attention = here('../hud/useAttention.ts'), chip = here('../life/GoalChip.vue')
-  assert.match(attention, /if \(tour\.active\) \{[^}]*attention\?\.clear\(\)[^}]*return/, 'no ring or bubble while the tour is up')
+  assert.match(attention, /if \(tour\.active \|\| off\.value\) \{[^}]*attention\?\.clear\(\)[^}]*return/, 'no ring or bubble while the tour is up')
   assert.match(attention, /\(\) => tour\.active\]/, 'they are drawn again when it ends')
   assert.match(attention, /if \(tour\.active\) \{ lastCash/, 'the money pill waits too')
   assert.match(chip, /!now\.connected \|\| tour\.active/); assert.match(chip, /!tour\.active\n?/)

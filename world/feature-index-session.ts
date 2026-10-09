@@ -1099,6 +1099,41 @@ function awaitChildClose(child: ChildProcessWithoutNullStreams, timeoutMs: numbe
   });
 }
 
+/** Exact empty ps output is only a possible vanished-row race, never process-death proof by itself. */
+export function isExactEmptyOwnedPythonRssResult(error: { code?: unknown; signal?: unknown; killed?: unknown } | null,
+  stdout: string, stderr: string): boolean {
+  if (stdout !== '' || stderr !== '') return false;
+  if (error === null) return true;
+  return error.code === 1 && error.signal == null && error.killed !== true;
+}
+
+/** Confirms close/exit and all stdio closure before accepting an empty ps row, within its original 1 s sample window. */
+export async function confirmOwnedPythonCloseAfterEmptyRssSample(child: ChildProcessWithoutNullStreams,
+  sampleStartedAtMs: number, closeObservedAt: () => number | undefined = () => undefined): Promise<void> {
+  if (!Number.isSafeInteger(sampleStartedAtMs) || sampleStartedAtMs < 0 || sampleStartedAtMs > Date.now()) {
+    throw new TypeError('RSS sample start time is invalid.');
+  }
+  const deadline = sampleStartedAtMs + 1000;
+  const recordedClose = closeObservedAt();
+  if (recordedClose !== undefined && (!Number.isSafeInteger(recordedClose) || recordedClose > deadline)) {
+    throw new Error('Owned Python close was not observed within the RSS sample deadline.');
+  }
+  const remaining = deadline - Date.now();
+  if (remaining <= 0 && (recordedClose === undefined || child.exitCode === null && child.signalCode === null
+      || !child.stdout.closed || !child.stderr.closed || !child.stdin.destroyed)) {
+    throw new Error('Owned Python close was not confirmed before the RSS sample deadline.');
+  }
+  const terminal = remaining <= 0
+    ? { code: child.exitCode, signal: child.signalCode }
+    : await awaitChildClose(child, remaining);
+  const observedAt = closeObservedAt() ?? Date.now();
+  if (observedAt > deadline || (terminal.code !== 0 && terminal.code !== 1) || terminal.signal !== null
+      || !child.stdout.closed || !child.stderr.closed || !child.stdin.destroyed
+      || child.exitCode !== terminal.code || child.signalCode !== null) {
+    throw new Error('Owned Python close/exit/pipe state is not a confirmed normal or interrupted terminal.');
+  }
+}
+
 /** Parse one bounded `ps -o rss= -o stat=` record. Z/0 is a sampled zombie,
  * not reap proof; process close and pipe closure remain independently required. */
 export function parseOwnedPythonRssSample(output: string): number {
@@ -1115,15 +1150,27 @@ export function parseOwnedPythonRssSample(output: string): number {
   return kib;
 }
 
-function sampleOwnedPythonRssKiB(pid: number): Promise<number> {
+function diagnosticSampleText(value: string): string {
+  return value.slice(0, 256).replace(/[\u0000-\u001f\u007f]/g, ' ');
+}
+
+function sampleOwnedPythonRssKiB(pid: number, child: ChildProcessWithoutNullStreams,
+  closeObservedAt: () => number | undefined): Promise<number | null> {
   return new Promise((resolve, reject) => {
+    const sampleStartedAtMs = Date.now();
     execFile('/bin/ps', ['-p', String(pid), '-o', 'rss=', '-o', 'stat='], {
       encoding: 'utf8', timeout: 1000, maxBuffer: 256, killSignal: 'SIGKILL', shell: false,
       windowsHide: true, env: { PATH: '/usr/bin:/bin' },
     }, (error, stdout, stderr) => {
-      if (error) return reject(new Error('Could not sample the owned Python coordinator RSS.', { cause: error }));
-      try { resolve(parseOwnedPythonRssSample(String(stdout))); }
-      catch (cause) { reject(new Error(`Owned Python RSS sample was unavailable or malformed: ${String(stderr).slice(0, 512)}`, { cause })); }
+      const output = String(stdout), diagnostic = String(stderr);
+      if (isExactEmptyOwnedPythonRssResult(error, output, diagnostic)) {
+        void confirmOwnedPythonCloseAfterEmptyRssSample(child, sampleStartedAtMs, closeObservedAt)
+          .then(() => resolve(null), cause => reject(new Error(`Owned Python empty RSS row lacked in-window close proof; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause })));
+        return;
+      }
+      if (error) return reject(new Error(`Could not sample owned Python coordinator RSS; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause: error }));
+      try { resolve(parseOwnedPythonRssSample(output)); }
+      catch (cause) { reject(new Error(`Owned Python RSS sample was unavailable or malformed; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause })); }
     });
   });
 }
@@ -1220,12 +1267,8 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
     // will begin once the owned ChildProcess exposes it.
     if (!pid) return;
     const sample = (async () => {
-      let kib: number;
-      try { kib = await sampleOwnedPythonRssKiB(pid); }
-      catch (error) {
-        if (child.exitCode !== null || child.signalCode !== null) return;
-        throw error;
-      }
+      const kib = await sampleOwnedPythonRssKiB(pid, child, () => ownedCloseObservedAt);
+      if (kib === null) return;
       if (child.exitCode !== null || child.signalCode !== null) return;
       if (kib * 1024 > MAX_PYTHON_COORDINATOR_RSS) {
         throw new RangeError('Owned Python session coordinator exceeded its 96 MiB RSS ceiling.');
@@ -1253,10 +1296,11 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
   });
   child.stdin.on('error', error => failSession(error));
   let exitInfo: { code: number | null; signal: NodeJS.Signals | null } | undefined;
+  let ownedCloseObservedAt: number | undefined;
   let closeError: Error | undefined;
   // Leave room for the finite session deadline to signal the Python supervisor,
   // reap its nested fixed worker, emit done, and then close its own pipes.
-  const closed = awaitChildClose(child, durationMs + 8_000).then(value => { exitInfo = value; }, error => { closeError = error; });
+  const closed = awaitChildClose(child, durationMs + 8_000).then(value => { exitInfo = value; ownedCloseObservedAt = Date.now(); }, error => { closeError = error; });
   const deadlineTimer = setTimeout(() => failSession(new Error('Feature index session exceeded its finite wall deadline.')), durationMs);
   deadlineTimer.unref();
   const pollPythonRss = () => { void samplePythonRss().catch(recordRssFailure); };

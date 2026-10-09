@@ -193,7 +193,7 @@ const play = PLAYS ? {
       run(state, payload, ctx) {
         const amount = payload?.amount, reason = cleanText(payload?.reason, 56, 'Adjustment')
         if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
-        const context = { now: finite(ctx?.now) ? ctx.now : state.t }
+        const context = { now: finite(ctx?.now) ? ctx.now : state.t, money: ctx?.money }
         if (payload.op === 'credit') {
           if (!credit(state, amount, `Admin credit: ${reason}`, context)) return fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
           // An individual credit is unrestricted unless the admin said otherwise: it can be gifted and spent at players' stalls without the gift rules.
@@ -212,7 +212,7 @@ const play = PLAYS ? {
       run(state, payload, ctx) {
         const amount = payload?.amount, reason = cleanText(payload?.reason, 80, 'Launch bonus')
         if (!validAmount(amount) || amount === 0) return fail(state, 'invalid_amount')
-        return credit(state, amount, reason, { now: finite(ctx?.now) ? ctx.now : state.t }) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
+        return credit(state, amount, reason, { now: finite(ctx?.now) ? ctx.now : state.t, money: ctx?.money }) ? ok(state, 'credited') : fail(state, 'balance_limit', 'That would pass the largest balance a life can hold.')
       } },
   },
   advance(): void {},

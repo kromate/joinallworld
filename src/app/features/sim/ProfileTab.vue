@@ -65,14 +65,19 @@ async function submit(): Promise<void> {
   const mine = current.value
   if (!mine || save.value.disabled) return
   form.pending = true; form.error = ''; focusKey = 'save'
+  let renaming = false
   try {
     const name = mine.name.trim()
-    if (name !== state.value.name) await game.fetchJson('/api/session', { method: 'POST', body: { name } })
+    if (name !== state.value.name) {
+      renaming = true
+      await game.fetchJson('/api/session', { method: 'POST', body: { name } })
+      renaming = false
+    }
     // Also sent when only the name changed: any action returns the state with the new name.
     const result = await command('onboarding.set-look', { look: mine.look })
     if (!result.ok) form.error = result.reason || 'Your look could not be saved. Try again.'
     else { draft.value = null; saved.value = ''; sync(); game.toast('Profile saved.', 'good') }
-  } catch (problem) { form.error = saveFailure(problem) } finally { form.pending = false }
+  } catch (problem) { form.error = renaming ? saveFailure(problem) : 'Your profile could not be saved. Try again.' } finally { form.pending = false }
   redraw()
   void nextTick(() => document.querySelector<HTMLElement>('[data-profile] [data-key="save"]')?.focus({ preventScroll: true }))
 }
@@ -109,6 +114,5 @@ async function submit(): Promise<void> {
 
 <style scoped src="../../../ui/panels/sim.css"></style>
 <style scoped>
-/* The preview stage stays in view while the editor scrolls (sim.css does this for `.sim-profile > .look-view`, which the hosting wrapper sits above). */
-.sim-stage { position: sticky; top: 62px; z-index: 2; background: #fff; box-shadow: 0 0 0 9px #fff, 0 18px 12px -10px #0004; }
+.sim-profile > .look-view.sim-stage { position: static; top: auto; z-index: auto; background: #fff; box-shadow: none; }
 </style>

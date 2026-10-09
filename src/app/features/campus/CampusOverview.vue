@@ -13,7 +13,7 @@ import { at, markOf, onCampus, shuttleReason, title } from './campusModel.ts'
 import { choices, useCampus } from './useCampus.ts'
 
 const { shell } = useApp()
-const { state, view, blocked, act, go } = useCampus()
+const { state, view, blocked, act, go, walkReason } = useCampus()
 const here = computed(() => onCampus(state.value))
 
 // The landmark to walk to: where you stand, until another is chosen. Away from the campus nothing is chosen and the picker is not shown
@@ -22,6 +22,7 @@ const landmarkOf = (spot: string | null | undefined): string => (spot && LANDMAR
 const wanted = ref(landmarkOf(state.value.spot))
 watch(() => state.value.spot, (spot) => { if (spot && LANDMARKS[spot]) wanted.value = spot })
 const walk = (): void => go(wanted.value)
+const wantedReason = computed(() => walkReason(wanted.value))
 
 const place = computed(() => (state.value.spot ? LANDMARKS[state.value.spot] ?? null : null))
 const activities = computed(() => place.value?.activities ?? [])
@@ -46,7 +47,7 @@ const found = computed(() => new Set(state.value.unilagCommunity?.trail ?? []))
           <option v-for="landmark in Object.values(LANDMARKS)" :key="landmark.id" :value="landmark.id">{{ landmark.label }}</option>
         </select>
       </label>
-      <template #extra><button type="button" class="ui-button is-primary" :disabled="!here" @click="walk">Select and walk</button></template>
+      <template #extra><button type="button" class="ui-button is-primary" :disabled="!here || Boolean(wantedReason)" :title="wantedReason || undefined" @click="walk">Select and walk</button><small v-if="wantedReason" class="campus-why">{{ wantedReason }}</small></template>
     </CampusCard>
 
     <CampusCard v-if="!here" icon="📍" heading="Things to do here"><p>Travel to UNILAG to see activities at each landmark.</p></CampusCard>
@@ -85,6 +86,7 @@ const found = computed(() => new Set(state.value.unilagCommunity?.trail ?? []))
         <div><strong>{{ stop.label }}</strong><small>{{ stop.description }}</small></div>
         <span v-if="found.has(stop.id)" class="campus-done">✓ Visited</span>
         <CampusControl v-else-if="at(state, stop.spot)" primary label="Mark visited" :reason="blocked" @press="act('unilag.trail.visit')" />
+        <CampusControl v-else-if="walkReason(stop.spot, stop.label)" label="Walk here" :reason="walkReason(stop.spot, stop.label)" />
         <CampusGo v-else :spot="stop.spot" label="Walk here" />
       </li>
     </ol>

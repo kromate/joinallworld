@@ -1,7 +1,8 @@
 /**
  * OWNER: quick start
- * The quick start's client logic that the FIRST DOWNLOAD needs, as pure functions: no DOM, no storage, no clock, no network —
- * the landing of a link, when to offer settling in, and the funnel. The names, the looks and the draft of the landing
+ * The quick start's first-download logic, as pure functions: no DOM, no storage, no clock, no network —
+ * link parsing, when to offer settling in, and the funnel. Landing banner helpers remain re-exported for compatibility, but their
+ * implementation is fetched with the landing feature. The names, the looks and the draft of the landing
  * screen are ./look-model.js, fetched with that screen (src/ui/panels/groups/landing.js).
  * Everything here takes plain data and returns plain data, so it runs under `node --test`
  * (./model.test.ts). The DOM side is ./entry.js (storage and
@@ -21,13 +22,12 @@ export interface Draft { name: string; look: Look; landedAt: number; nameEdited:
 /** `until`: server time (ms) before which settling in is not offered by itself, because it was offered and set aside. */
 export interface NudgeMemory { count: number; reasons: string[]; day: number | null; until: number | null }
 export interface FunnelSnap { guest: boolean; required: boolean; done: boolean; step: number; activities: number; firstAt: number | null; active: string | null; location: string }
-/** The answer of POST /api/social/join as far as the banner reads it (untrusted: every part may be missing). */
-export interface JoinAnswer { ok?: boolean; code?: string; host?: { name?: string }; venue?: string; /** The city the inviter is in, when it is another one. */ elsewhere?: string }
 /** What the funnel reads of a life's state: the parts of a LifeState it may hold, each possibly missing. */
 export type FunnelSource = { onboarding?: Partial<Pick<OnboardingState, 'stage' | 'done' | 'required' | 'step' | 'activities' | 'firstAt'>>; activeAction?: ActiveAction | null; location?: string } | null | undefined;
 export interface FunnelEvent { name: string; props: Record<string, unknown> }
-export interface JoinBanner { tone: 'good' | 'info'; title: string; text: string; knock: boolean }
-
+/** Link banner helpers stay exported here for existing quick-start consumers. The app's landing loader imports their implementation only on demand. */
+export { GIFT_LINE, joinBanner, linkBanner } from './landingBanners.ts'
+export type { JoinAnswer, JoinBanner } from './landingBanners.ts'
 // ---- the invite landing --------------------------------------------------------------------
 const UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
 /**
@@ -50,32 +50,6 @@ export function linkParts(pathname: unknown, search: unknown): { ref: string | n
   const table = /[?&]table=([a-z0-9-]{1,40})(?:[&#]|$)/.exec(String(search ?? ''));
   return { ref: ref?.[1] ?? null, table: table?.[1] ?? null };
 }
-/**
- * What the banner says for an answer of POST /api/social/join. `gift`: the visitor's life was attached to the sharer's link as a referral just now.
- */
-export function joinBanner(answer: JoinAnswer | null, venueLabel: (venueId: string) => string, { gift = false }: { gift?: boolean } = {}): JoinBanner | null {
-  const banner = joinWords(answer, venueLabel);
-  // The referral rides in the same banner: one message says who was joined and what the link is worth.
-  return banner && gift ? { ...banner, text: `${banner.text} ${GIFT_LINE}` } : banner;
-}
-/** What a visitor who came through a friend's link is told about the gift: it is paid only after real work. */
-export const GIFT_LINE = 'Work a paid shift and you both get a gift.';
-/** The banner for a share link whose owner could not be joined (no `join` answer): it still says whose link it was. */
-export const linkBanner = (name: string): JoinBanner => ({ tone: 'good', title: `You came through ${name}’s link`, text: GIFT_LINE, knock: false });
-function joinWords(answer: JoinAnswer | null, venueLabel: (venueId: string) => string): JoinBanner | null {
-  const name = typeof answer?.host?.name === 'string' && answer.host.name ? answer.host.name : null;
-  if (!answer?.ok || !name) return null;
-  const title = `You’re joining ${name}`;
-  switch (answer.code) {
-    case 'joined': case 'here': return { tone: 'good', title, text: `${name} is at ${venueLabel(answer.venue ?? '')} right now — so are you. Look for their name tag.`, knock: false };
-    case 'at_home': return { tone: 'good', title, text: `${name} is at home. Knock, and they can let you in.`, knock: true };
-    case 'reconnecting': return { tone: 'info', title, text: `${name} is reconnecting. Have a look around; you can knock from Phone → Invite in a moment.`, knock: false };
-    case 'out': if (typeof answer.elsewhere === 'string' && answer.elsewhere) return { tone: 'info', title, text: `${name} is in ${answer.elsewhere.slice(0, 40)} right now — you can travel there once you have settled in. Have a look around here first.`, knock: false };
-      return { tone: 'info', title, text: `${name} is out in the city right now. Have a look around; add them from Phone → People and you will see when they are near.`, knock: false };
-    default: return { tone: 'info', title, text: `${name} is offline right now. Have a look around — their link still works when they are back.`, knock: false };
-  }
-}
-
 // ---- when to offer settling in ---------------------------------------------------------------
 /** The most times the "Make this life yours" sheet opens by itself for one life. Tapping Home, Buy or the goal is not counted. */
 export const NUDGE_CAP = 3;

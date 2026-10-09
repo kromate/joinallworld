@@ -47,6 +47,7 @@ import type { Effects } from '../admin/actions.ts';
 import { announceOf } from '../admin/announce.ts';
 import { linkFeatures } from '../admin/links.ts';
 import { companionService } from '../companion/service.ts';
+import { VOICE_NOTE_LIMITS, VOICE_NOTE_MIME } from '../../src/types/voice-note.ts';
 import { CONTENT_TYPES, PICTURE_LIMITS } from '../social/images.ts';
 import { checkConfirm, issueConfirm } from '../admin/confirm.ts';
 import { limitsOf, maskEmail } from '../admin/config.ts';
@@ -440,6 +441,20 @@ export default function adminRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
     } })),
 
     // Pictures in chat that were reported, hidden or removed: the operator's own service functions (server/social/service.ts) under the admin guard.
+    'GET /api/admin/moderation/voice/:id': async request => {
+      await enter(request);
+      const id = request.params.id ?? '';
+      const found = ctx.voices && VOICE_NOTE_LIMITS.idPattern.test(id) ? await ctx.voices.get(id) : null;
+      if (!found) throw ctx.fail(404, 'unknown_voice');
+      return { file: { bytes: found.bytes, type: VOICE_NOTE_MIME[found.voice.type], cache: 'no-store' } };
+    },
+    'POST /api/admin/moderation/voice/:id/act': pictureWrite((db, admin, body, request) => {
+      const action = body.action, id = request.params.id ?? '';
+      if ((action !== 'remove' && action !== 'restore') || !VOICE_NOTE_LIMITS.idPattern.test(id)) throw ctx.fail(400, 'invalid_action');
+      const result = social.modVoice(db, id, action);
+      if (result.ok) audit(ctx, db, { admin: admin.accountId, adminName: admin.name, action: `voice-${action}`, target: id, targetName: 'voice note', params: { kind: 'voice', action }, summary: `Voice note ${action === 'remove' ? 'removed' : 'restored'}`, reason: '' });
+      return { ...result };
+    }),
     'GET /api/admin/moderation/pictures': read((db) => social.modPictures(db)),
     'GET /api/admin/moderation/pictures/:id': async (request) => {
       await enter(request);

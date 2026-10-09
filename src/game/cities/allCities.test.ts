@@ -3,7 +3,7 @@ import test from 'node:test'
 import { SCENE_TRIANGLES, SCENE_DRAW_CALLS } from '../../budgets.ts'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
@@ -37,8 +37,17 @@ await Promise.all(cityIds.map((id) => loadCityContent(id)))
 
 test('every generated city passes its offline source and output check', () => {
   const authored = new Set(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'port-harcourt', 'abuja', 'kano'])
+  const generated: string[] = []
+  const foreign: string[] = []
   for (const id of cityIds) {
     const directory = join(root, 'src/game/cities', id)
+    const module = cityModule(id)
+    assert.ok(module, `${id}: source check has registered city rules`)
+    if (module.rules.country.id !== 'ng' && module.rules.country.id !== 'nigeria') {
+      for (const source of ['facts.ts', 'geometry.ts']) assert.ok(existsSync(join(directory, source)), `${id}: foreign city requires ${source}`)
+      foreign.push(id)
+      continue
+    }
     if (existsSync(join(directory, 'recipe.ts'))) {
       assert.ok(id === 'sagamu' || authored.has(id), `${id}: new cities must use a facts-only spec, not a legacy recipe`)
     }
@@ -46,9 +55,20 @@ test('every generated city passes its offline source and output check', () => {
       assert.ok(authored.has(id), `${id}: a new city requires a source spec`)
       continue
     }
-    execFileSync(process.execPath, ['--experimental-strip-types', join(root, 'scripts/city/build-city.ts'), id, '--check'], {
-      cwd: root, encoding: 'utf8', timeout: 60_000,
+    generated.push(id)
+  }
+  if (generated.length) execFileSync(process.execPath, ['--experimental-strip-types', join(root, 'scripts/city/build-city.ts'), '--check-batch', ...generated], {
+    cwd: root, encoding: 'utf8', timeout: 60_000,
+  })
+  if (foreign.length) {
+    const python = realpathSync(process.env.WORLD_TEST_PYTHON ?? (existsSync('/usr/bin/python3') ? '/usr/bin/python3' : execFileSync('which', ['python3'], { encoding: 'utf8' }).trim()))
+    const output = execFileSync(python, [join(root, 'scripts/world/build-playable-africa.py'), '--check'], { cwd: root, encoding: 'utf8', timeout: 60_000 })
+    const checked = output.trim().split('\n').map(line => {
+      const row: unknown = JSON.parse(line)
+      assert.ok(row && typeof row === 'object' && 'city' in row && typeof row.city === 'string' && 'status' in row && row.status === 'pinned-assets-match', 'foreign source checker confirms each pinned city')
+      return row.city
     })
+    assert.deepEqual(checked.sort(), foreign.sort(), 'the source checker covers exactly every registered foreign city')
   }
 })
 

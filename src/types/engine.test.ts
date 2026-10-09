@@ -72,7 +72,7 @@ import type {
 } from './content.ts'
 import { ACTIVE_KINDS, LGA_IDS, LIFE_STATE_KEYS, NEED_IDS, SKILL_IDS, SLICE_FIELD_KEYS, SYSTEM_STATE_KEYS } from './life.ts'
 import type {
-  AccessoryId, AccessorySlot, ActiveAction, ActiveKind, ActivityAction, BaseTravelModeId, BodyId, CallAction, CarId, WorldCityId,
+  HomewardJourneyAction, AccessoryId, AccessorySlot, ActiveAction, ActiveKind, ActivityAction, BaseTravelModeId, BodyId, CallAction, CarId, WorldCityId,
   ComingSoonId, CommuteAction, DepositTermId, DreamId, ExpressionId, FabricId, FaceId, FamilyId, HairColourId, HairId, HouseId,
   HouseStyleField, HouseTierId, IntercityAction, JobId, LgaId, LifeContext, LifeContextInit, LifeState, Look, LotteryId,
   MissionTitleId, NeedId, OutfitColourId, OutfitId, PerkId, RoadsideEventId, SkillId, SkinId, SliceBySystem, StarterGoalId,
@@ -306,7 +306,7 @@ const readers = {
 } satisfies { [S in SystemId]?: (state: LifeState) => SliceBySystem[S] }
 
 const inner = {
-  career: ({ career: c }: LifeState) => ({ city: c.city, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
+  career: ({ career: c }: LifeState) => ({ city: c.city, teachingGeneration: c.teachingGeneration, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
   travel: ({ travel: t }: LifeState) => ({ home: t.home, event: t.event, lastTrip: t.lastTrip, visited: t.visited, trips: t.trips, cooldowns: t.cooldowns, funded: t.funded, gigs: t.gigs, eventDays: t.eventDays, skipped: t.skipped }),
   economy: ({ economy: e }: LifeState) => ({ billedWeek: e.billedWeek, started: e.started, rent: e.rent, loan: e.loan, deposits: e.deposits, seq: e.seq, reminded: e.reminded, headsUp: e.headsUp }),
   onboarding: ({ onboarding: o }: LifeState) => ({
@@ -340,6 +340,7 @@ const inner = {
 } satisfies { [K in keyof typeof SLICE_FIELD_KEYS]: (state: LifeState) => LifeState[K] }
 
 const activeReaders = {
+  homeward: (a: HomewardJourneyAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, ticket: a.ticket, legIndex: a.legIndex }),
   activity: (a: ActivityAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining }),
   travel: (a: TravelAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining, mode: a.mode, fare: a.fare }),
   commute: (a: CommuteAction) => ({ kind: a.kind, id: a.id, duration: a.duration, remaining: a.remaining }),
@@ -606,6 +607,23 @@ test('a guest who is playing is refused exactly what needs a home, until it sett
   assert.deepEqual([settled.estate.placed, settled.estate.living, settled.estate.plot?.key, settled.onboarding.guest, settled.missions.locked], [true, 'own', 'ikeja/41/2/6', false, null])
   assert.equal(settled.missions.daily.length, MISSION_REWARDS.daily.slots, 'missions are dealt the moment the life settles in')
   assert.ok(settled.economy.rent === null, 'no rent card in a house of your own')
+})
+
+test('an issued homeward action exposes every declared saved field', () => {
+  const state = onboarded()
+  assert.equal(act(state, 'estate.relocate', { to: 'ibadan', mode: 'road' }, at()).code, 'departed')
+  const seconds = state.activeAction?.duration ?? 0
+  const arrival = MONDAY_9AM + seconds * 1000
+  settle(state, seconds, arrival)
+  const context = at(arrival)
+  if (state.cash) assert.equal(act(state, 'wallet.admin', { op: 'debit', amount: state.cash, reason: 'Homeward typed fixture' }, { ...context, internal: true }).code, 'debited')
+  const quote = view(state, context).estate.ride.journey
+  assert.ok(quote)
+  assert.equal(act(state, 'homeward.accept', { quote: quote.key }, context).code, 'departed')
+  const active = state.activeAction
+  assert.ok(active?.kind === 'homeward')
+  complete(activeReaders.homeward(active), active, 'homeward action')
+  assert.deepEqual([active.id, active.ticket.from, active.ticket.to, active.legIndex], ['lagos', 'ibadan', 'lagos', 0])
 })
 
 test('a trip between cities is the timed action kind intercity', () => {

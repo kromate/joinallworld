@@ -11,6 +11,11 @@ import type { StreetJourney } from '../../../street/types.ts'
 interface NeighbourhoodState { street: WorldStreetResponse | null; home: VisitHomeProjection | null; loading: boolean; error: string; pending: string; homeError: string }
 export const neighbourhood = reactive<NeighbourhoodState>({ street: null, home: null, loading: false, error: '', pending: '', homeError: '' })
 let started = false, streetEpoch = 0, visitEpoch = 0
+let shownVisit = ''
+const acceptedVisitKey = (): string => {
+  const visit = social.me?.visiting
+  return visit ? `${visit.host.id}:${visit.myCapture?.visitId ?? ''}` : ''
+}
 let returnPosition: { x: number; z: number } | null = null
 let cityClient: ReturnType<typeof import('../../../street/client.ts').createStreetClient> | null = null
 let cityEpoch = 0
@@ -93,8 +98,9 @@ export function walkToNeighbour(id: string): void {
 }
 
 async function showVisit(): Promise<void> {
-  const { game, scene, shell } = useApp(), id = social.me?.visiting?.host.id, epoch = ++visitEpoch
+  const { game, scene, shell } = useApp(), id = social.me?.visiting?.host.id, key = acceptedVisitKey(), epoch = ++visitEpoch
   if (!id || !game.connected.value) {
+    if (!id) shownVisit = ''
     const was = neighbourhood.home
     neighbourhood.home = null; neighbourhood.homeError = ''
     scene.venue.value?.setVisitHome(null)
@@ -102,17 +108,18 @@ async function showVisit(): Promise<void> {
     return
   }
   const result = await call<Extract<VisitHomeResult, { ok: true }>>(`/api/social/visit/home?host=${encodeURIComponent(id)}`)
-  if (epoch !== visitEpoch || social.me?.visiting?.host.id !== id) return
+  if (epoch !== visitEpoch || acceptedVisitKey() !== key) return
   if (!result.ok) {
     neighbourhood.home = null; neighbourhood.homeError = result.reason
     scene.venue.value?.setVisitHome(null)
     return
   }
-  if (JSON.stringify(neighbourhood.home) === JSON.stringify(result.home)) return
+  const entering = shownVisit !== key
+  if (!entering && JSON.stringify(neighbourhood.home) === JSON.stringify(result.home)) return
   neighbourhood.home = result.home; neighbourhood.homeError = ''
   if (!returnPosition && result.home.plot && game.state.value.location === 'neighbourhood' && sameStreet(game.state.value.estate.plot, result.home.plot)) returnPosition = { x: rowX(result.home.plot.plot) * STREET_NETWORK_SCALE, z: -5 * STREET_NETWORK_SCALE }
   scene.venue.value?.setVisitHome(result.home)
-  shell.close()
+  if (entering) { shownVisit = key; shell.close(); shell.setMode('venue') }
 }
 
 export async function leaveNeighbour(): Promise<void> {
@@ -137,7 +144,7 @@ export function startNeighbourhood(): void {
     else { streetEpoch++; neighbourhood.street = null; neighbourhood.loading = false; returnPosition = null }
   }, { immediate: true })
   let refresh: ReturnType<typeof setInterval> | undefined
-  watch(() => `${game.connected.value}|${social.me?.visiting?.host.id ?? ''}`, () => {
+  watch(() => `${game.connected.value}|${acceptedVisitKey()}`, () => {
     if (refresh) clearInterval(refresh)
     void showVisit()
     if (social.me?.visiting && game.connected.value) refresh = setInterval(() => { if (!document.hidden) void showVisit() }, 5000)

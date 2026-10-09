@@ -1,0 +1,101 @@
+{
+  "sourceSha": "edaabbfaa841009b03ccd69c2f4126eda718aa73",
+  "runId": "37925045040",
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37925045040",
+  "status": "completed",
+  "conclusion": "failure",
+  "collectedAt": "2026-10-09T12:00:53.746359+00:00",
+  "buildAndUnchangedBudgets": "PASS",
+  "startupBytes": {
+    "raw": 614297,
+    "gzip": 222778,
+    "brotli": 195040
+  },
+  "legacyComparisons": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1213.737217
+  },
+  "browser": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 35576.752478,
+    "receipt": {
+      "result": "failed",
+      "scope": "disposable local Node HTTP fixture; rendered teaching practice only",
+      "sourceSha": "edaabbfaa841009b03ccd69c2f4126eda718aa73",
+      "expectedSha": "edaabbfaa841009b03ccd69c2f4126eda718aa73",
+      "health": {
+        "ok": true,
+        "buildId": "joinallworld-edaabbfaa841009b03ccd69c2f4"
+      },
+      "browser": "Chrome/154.0.8037.97",
+      "node": "v24.19.0",
+      "platform": "linux",
+      "viewportObservations": {},
+      "screenshots": [
+        "teaching-desktop-before.png",
+        "teaching-desktop-reloaded.png",
+        "failure-desktop-complete.png"
+      ],
+      "failureCode": "desktop-complete",
+      "failureObservation": {
+        "readyState": "complete",
+        "localRoot": true,
+        "appRoot": true,
+        "lesson": true,
+        "lessonChoiceCount": 3,
+        "progressStatus": true,
+        "activityLoadFailure": false,
+        "balance": true,
+        "characterCreator": false,
+        "quickStart": false,
+        "sessionStart": false,
+        "connectionAlert": false,
+        "scene": true,
+        "knownText": {
+          "playNow": false,
+          "chooseLook": false,
+          "connectionUnavailable": false,
+          "activityLoading": false,
+          "activityLoadFailure": false,
+          "teaching": true
+        },
+        "runtimeExceptions": 0
+      },
+      "qualification": "no acceptance claim; inspect the test failure and bounded artifacts"
+    }
+  },
+  "artifacts": [
+    {
+      "name": "joinallworld-browser-edaabbfa-all.log",
+      "bytes": 253137,
+      "sha256": "3763875f237003f322db27d0c0fd1c1016bdfdc3e5f1e4fbb268b41e6337d6f3"
+    },
+    {
+      "name": "receipt.json",
+      "bytes": 1059,
+      "sha256": "5254f9ed9938e0f8cf36a0fa350d6eb551a98f493391110772e3e3453a04f3cb"
+    },
+    {
+      "name": "teaching-desktop-before.png",
+      "bytes": 194917,
+      "sha256": "ab1c2ddab3922e60e1d4335ca24c8ac99d6ff8c810a7218edc4798f7bdbe94e2"
+    },
+    {
+      "name": "teaching-desktop-reloaded.png",
+      "bytes": 258145,
+      "sha256": "d316d3f9b481dc4089f4934477c833fb326da8013deee11ec0b737f01c561bbc"
+    },
+    {
+      "name": "failure-desktop-complete.png",
+      "bytes": 202119,
+      "sha256": "3ec011345623d794c2cd7f8fe75f317051e32a73cccad3adb13da3725f5f9ef1"
+    }
+  ],
+  "independentReview": "Sol inspected failure screenshot: visible lesson and focused correct choice, creator absent, diagnose retry still active. Prior steps reached wrong answer/no-time-pay/reload. Native key helper omitted char event; one-line repair pending exact combined-source test. Mobile never reached. No staging/live acceptance."
+}

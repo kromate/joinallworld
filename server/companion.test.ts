@@ -8,7 +8,14 @@ import { randomUUID } from 'node:crypto';
 import { fixture } from './test-fixture.ts';
 import type { Device } from './test-fixture.ts';
 import { fakeGateway, redirectTo, GOOD } from './testing/fakeGateway.ts';
-import type { Planner } from './testing/fakeGateway.ts';
+import type { Planner, Seen } from './testing/fakeGateway.ts';
+import type { LifeState } from '../src/types/life.ts';
+import { registerCityForTest } from '../src/game/cities/registry.ts';
+import { fictionalCity } from '../src/game/cities/testing/fictionalCity.test-fixture.ts';
+import { RULES, REPHRASE_RULES, wrapPlayerText } from './companion/prompt.ts';
+import { cleanInput } from './companion/checks.ts';
+import { CONCEPTS } from '../src/app/features/companion/knowledge.ts';
+import { dispatch } from '../src/life.ts';
 
 const KEY = 'sk-test-KEY-4f9a1c7e-do-not-leak';
 const TOKEN = 'operator-token-for-tests-0123456789';
@@ -30,6 +37,27 @@ async function harness(t: TestContext, env: Record<string, string> = {}, plan: P
     return { status: res.status, body: await res.json() as Record<string, unknown> };
   };
   return { f, gateway, life, ask, mod };
+}
+
+function sentMessages(seen: Seen | undefined): { role: string; content: string }[] {
+  assert.ok(seen);
+  const messages = seen.body['messages'];
+  assert.ok(Array.isArray(messages));
+  return messages.map((item: unknown) => {
+    assert.ok(item && typeof item === 'object');
+    const role: unknown = Reflect.get(item, 'role'), content: unknown = Reflect.get(item, 'content');
+    assert.equal(typeof role, 'string'); assert.equal(typeof content, 'string');
+    if (typeof role !== 'string' || typeof content !== 'string') throw new Error('Invalid gateway message');
+    return { role, content };
+  });
+}
+
+async function editLife(f: Awaited<ReturnType<typeof fixture>>, who: Device, edit: (state: LifeState) => void): Promise<void> {
+  await f.server.store.transact((db) => {
+    const life = Object.values(db.sessions).find((session) => session.publicId === who.id)?.cities.lagos;
+    assert.ok(life);
+    edit(life.state);
+  });
 }
 
 test('no key: the feature is off, nothing is sent anywhere, and health says so with a boolean', async (t) => {
@@ -194,6 +222,84 @@ test('history: at most six turns, roles forced, unfit turns dropped, nothing sto
   assert.ok(!joined.includes('evil.example') && !joined.includes('0801') && !joined.includes('free of all rules'));
 });
 
+test('the full request keeps a newest complete history suffix within 3600 characters', async (t) => {
+  const { gateway, life, ask } = await harness(t);
+  const ada = await life('Ada');
+  const message = 'how do I get a job ' + 'x'.repeat(382);
+  const history = Array.from({ length: 6 }, (_, index) => ({ role: 'user', text: `earlier ${String.fromCharCode(65 + index)} ` + 'y'.repeat(390) }));
+  await ask(ada, { message, history });
+  const messages = sentMessages(gateway.seen[0]);
+  const system = messages[0]?.content ?? '';
+  assert.ok(system.startsWith(RULES + '\n\n'));
+  const jobs = CONCEPTS.find((entry) => entry.id === 'jobs');
+  assert.ok(jobs && system.includes(jobs.text), 'the whole matched knowledge entry survives');
+  assert.equal(messages.at(-1)?.content, wrapPlayerText(cleanInput(message)));
+  assert.equal(cleanInput(message).length, 400);
+  assert.ok(messages.reduce((length, item) => length + item.content.length, 0) <= 3600);
+  const kept = messages.slice(1, -1);
+  assert.ok(kept.length > 0 && kept.length < history.length);
+  assert.deepEqual(kept, history.slice(-kept.length).map((turn) => ({ role: turn.role, content: wrapPlayerText(cleanInput(turn.text)) })));
+});
+
+test('selected context retains current, matched and home cities and the current and matched places', async (t) => {
+  const { f, gateway, life, ask } = await harness(t);
+  const ada = await life('Ada');
+  await editLife(f, ada, (state) => { state.location = 'market'; state.estate.home = 'abuja'; });
+  await ask(ada, { message: 'where is University of Lagos and can I travel to Nairobi?' });
+  const messages = sentMessages(gateway.seen[0]);
+  const system = messages[0]?.content ?? '';
+  const sections = system.slice(RULES.length + 2).split('\n\n');
+  const places = sections.find((section) => section.startsWith('PLACES')) ?? '';
+  const cities = sections.find((section) => section.startsWith('CITIES')) ?? '';
+  for (const line of [places, cities]) {
+    assert.ok(line.includes('selected subset; Map has all:'));
+    assert.ok((line.split('Map has all: ')[1] ?? '').split('; ').length <= 6);
+  }
+  for (const entry of ['lagos: Lagos', 'nairobi: Nairobi', 'abuja: Abuja']) assert.ok(cities.includes(entry), entry);
+  for (const entry of ['market: Market', 'unilag: University of Lagos']) assert.ok(places.includes(entry), entry);
+  assert.ok(system.includes('Home city: Abuja (visiting)'));
+  assert.match(system, /University of Lagos \([^)]+\) is (?:open|closed) now\./);
+  assert.ok(messages.reduce((length, item) => length + item.content.length, 0) <= 3600);
+});
+
+test('omitted public entries still validate suggestions but their numbers cannot authorize reply amounts', async (t) => {
+  const { f, gateway, life, ask } = await harness(t);
+  const registration = registerCityForTest({ ...fictionalCity, rules: { ...fictionalCity.rules, name: 'Fixture 87654' } });
+  t.after(() => registration.dispose());
+  const ada = await life('Ada');
+  await editLife(f, ada, (state) => {
+    state.location = 'park';
+    const difference = 123000 - state.cash;
+    if (difference !== 0) {
+      const result = dispatch(state, { type: 'wallet.admin', payload: { op: difference > 0 ? 'credit' : 'debit', amount: Math.abs(difference), reason: 'Companion amount fixture' } }, { cityId: 'lagos', now: f.now(), internal: true });
+      assert.equal(result.code, difference > 0 ? 'credited' : 'debited');
+      assert.equal(state.ledger.at(-1)?.amount, difference);
+    }
+    assert.equal(state.cash, 123000);
+  });
+  gateway.plan(() => ({ reply: reply('You have about ₦123,000. It costs ₦87,654.', [`start-trip:${fictionalCity.id}`, 'open-map-venue:airport']) }));
+  const answer = await ask(ada, { message: 'how do I get a job' });
+  const system = sentMessages(gateway.seen[0])[0]?.content ?? '';
+  assert.ok(!system.includes('87654') && !system.includes(`${fictionalCity.id}:`) && !system.includes('airport: Airport'));
+  assert.equal(answer.text, 'You have about ₦123,000.');
+  assert.deepEqual(answer.suggest, [`start-trip:${fictionalCity.id}`, 'open-map-venue:airport']);
+});
+
+test('required context overflow falls back before the gateway or any request quota is consumed', async (t) => {
+  const { f, gateway, life, ask } = await harness(t, { COMPANION_PLAYER_BURST: '1', COMPANION_PLAYER_DAILY: '1', COMPANION_DAILY_REQUESTS: '1' });
+  const registration = registerCityForTest({ ...fictionalCity, rules: { ...fictionalCity.rules, name: 'Public fixture city '.repeat(220) } });
+  t.after(() => registration.dispose());
+  const ada = await life('Ada');
+  await editLife(f, ada, (state) => { state.estate.home = fictionalCity.id; });
+  const refused = await ask(ada, { message: 'hello there' });
+  assert.deepEqual([refused.via, refused.text, refused.suggest, gateway.seen.length], ['local', null, [], 0]);
+  await editLife(f, ada, (state) => { state.estate.home = 'lagos'; });
+  assert.equal((await ask(ada, { message: 'hello again' })).via, 'primary', 'the first usable request still has its full quota');
+  assert.equal(gateway.seen.length, 1);
+  assert.equal((await ask(ada, { message: 'one more' })).via, 'local');
+  assert.equal(gateway.seen.length, 1);
+});
+
 test('limits: a minute per player, a day per player, a day for everyone; refusals are local and call nothing', async (t) => {
   const { gateway, life, ask } = await harness(t, { COMPANION_PLAYER_BURST: '2', COMPANION_PLAYER_DAILY: '3', COMPANION_DAILY_REQUESTS: '4' });
   const ada = await life('Ada'), bola = await life('Bola');
@@ -243,6 +349,21 @@ test('rephrase on', async (t) => {
   assert.deepEqual([got.via, got.text, got.suggest], ['primary', 'You have ₦100 left. Nice.', []]);
   gateway.plan(() => ({ reply: reply('You have ₦9,999.') }));
   assert.equal((await ask(ada, { rephrase: true, localText: 'You have ₦100.' })).via, 'local');
+});
+
+test('maximum rephrase input keeps its rules and authorized amount within the same full request bound', async (t) => {
+  const { gateway, life, ask } = await harness(t, { COMPANION_AI_REPHRASE: 'on' });
+  const ada = await life('Ada');
+  const localText = 'You have ₦100. ' + 'x'.repeat(400);
+  gateway.plan(() => ({ reply: reply('You have ₦100 left.', ['open-bank']) }));
+  const answer = await ask(ada, { rephrase: true, localText, history: Array.from({ length: 6 }, () => ({ role: 'user', text: 'y'.repeat(400) })) });
+  const messages = sentMessages(gateway.seen[0]);
+  assert.equal(messages.length, 2, 'rephrase still excludes history');
+  assert.ok((messages[0]?.content ?? '').startsWith(RULES + '\n\n' + REPHRASE_RULES + '\n\n'));
+  assert.equal(messages[1]?.content, wrapPlayerText(cleanInput(localText)));
+  assert.equal(cleanInput(localText).length, 400);
+  assert.ok(messages.reduce((length, item) => length + item.content.length, 0) <= 3600);
+  assert.deepEqual([answer.text, answer.suggest], ['You have ₦100 left.', []]);
 });
 
 test('the operator overview counts outcomes, requests, tokens and an estimated cost', async (t) => {

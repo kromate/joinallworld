@@ -255,7 +255,7 @@ export function lifeAnnouncer(push: (publicId: string, frame: LifeChangedFrame) 
  *     returns { ok, code, state, duplicate: true } without running the action again.
  * Anything else throws, so a route cannot spend without a receipt by accident.
  */
-export function lifeAuthority({ now, receipts, changed }: { now: () => number; receipts: { active(): boolean; action: ContextCore['actionOnce'] }; changed?: LifeChanged }) {
+export function lifeAuthority({ now, receipts, changed, interactiveTeachingStarts = false }: { now: () => number; receipts: { active(): boolean; action: ContextCore['actionOnce'] }; changed?: LifeChanged; interactiveTeachingStarts?: boolean }) {
   // Which stored session a settled life belongs to, so ctx.act can find that player's receipts.
   const ownerOf = new WeakMap<LifeState, SessionRecord>();
   // What a player would see of a character: the outcome of its life in this city, and which city and lives it has.
@@ -281,7 +281,8 @@ export function lifeAuthority({ now, receipts, changed }: { now: () => number; r
   };
   function act(state: LifeState, body: ActBody): ActionOutcome {
     const { stateGuard, ...action } = body;
-    const run = () => applied(state, applyLifeAction(state, action, { now: now(), cityId: action.cityId, actionId: action.actionId, internal: true }), action.actionId);
+    // Keep action-created records valid when the snapshot is rebuilt at its settlement time.
+    const run = () => applied(state, applyLifeAction(state, action, { now: state.t, cityId: action.cityId, actionId: action.actionId, internal: true, interactiveTeachingStarts }), action.actionId);
     if (receipts.active() || (typeof stateGuard === 'string' && stateGuard.trim().length >= 12)) return run();
     const session = ownerOf.get(state);
     if (!session || action.actionId === undefined) throw new Error(`ctx.act(${action.type}) has no receipt: call it inside ctx.once, pass the request's actionId, or state its stateGuard`);
@@ -289,7 +290,7 @@ export function lifeAuthority({ now, receipts, changed }: { now: () => number; r
     return result.duplicate ? { ...result, state } : result;
   }
   /** What POST /api/action runs: a player's own request, with no server authority. */
-  const playerAct = (state: LifeState, body: ActionRequest): ActionOutcome => applied(state, applyLifeAction(state, body, { now: now(), cityId: body.cityId, actionId: body.actionId }), body.actionId);
+  const playerAct = (state: LifeState, body: ActionRequest): ActionOutcome => applied(state, applyLifeAction(state, body, { now: state.t, cityId: body.cityId, actionId: body.actionId, interactiveTeachingStarts }), body.actionId);
   return { settle, act, playerAct };
 }
 

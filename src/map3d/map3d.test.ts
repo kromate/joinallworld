@@ -15,12 +15,13 @@ import { buildTravelVehicle } from '../models/integration/scene-models.ts';
 import { createKit } from '../scene/kit.ts';
 import type { MapRenderer } from './map3d.ts';
 import type * as THREE from 'three';
+import { ACESFilmicToneMapping } from 'three';
 import { LANDMARK_KINDS } from './landmarks.ts';
 import { avatarBox, labelShift, nearPoints, plateFit } from './labels.ts';
 import type { ScreenBox, GroundPoint } from './labels.ts';
 import { lgaAt } from './lga.ts';
 import { fromLocal, ORIGINS } from './geo/frame.ts';
-import { shimmer, createRaw, CITY_TRIANGLE_BUDGET } from './city-build.ts';
+import { shimmer, createRaw, CITY_LIGHT, CITY_TRIANGLE_BUDGET } from './city-build.ts';
 import { CITY_DRAW_CALLS } from '../budgets.ts';
 import { pitchFloor, PITCH_MIN, FLAT_PITCH } from './camera.ts';
 import pack from './cities/lagos.ts';
@@ -43,7 +44,7 @@ test('the region registry preserves the original nine and derives every additive
   const nigeriaCities = citiesOf('nigeria');
   assert.ok(original.every((id, index) => nigeriaCities.some((city) => city.id === id) && (index === 0 || nigeriaCities.findIndex((city) => city.id === original[index - 1]) < nigeriaCities.findIndex((city) => city.id === id))), 'the original map city order is preserved');
   for (const id of original) assert.equal(cityEntry(id)?.status, 'playable', `${id}: original city remains playable`);
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), cityCatalogue().map((city) => [city.id, city.open ? 'playable' : 'soon']));
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), cityCatalogue().filter((city) => !city.countryISO || city.countryISO === 'ng').map((city) => [city.id, city.open ? 'playable' : 'soon']));
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);
@@ -176,7 +177,7 @@ const stub = <T>(value: object): T => value as unknown as T;
 interface FakeContainer { hidden: boolean; appendChild(): void; getBoundingClientRect: () => { width: number; height: number; left: number; top: number } }
 function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 844, travelVehicle = undefined as TravelVehicleBuilder | undefined } = {}) {
   const calls = { render: 0 }, queue: Array<() => void> = [];
-  const renderer = { calls, shadowMap: {}, domElement: {}, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
+  const renderer = { calls, shadowMap: { enabled: false }, toneMapping: 0, toneMappingExposure: 1, outputColorSpace: 0, domElement: {}, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render() { calls.render += 1; } };
   const container: FakeContainer = { hidden: false, appendChild() {}, getBoundingClientRect: () => ({ width, height, left: 0, top: 0 }) };
   const env = { now: 0, hidden: false, due: 0, arrived: 0 };
   const map = createMap3D(stub<HTMLElement>(container), { pack, renderer: stub<MapRenderer>(renderer), reducedMotion, travelVehicle, raf: (fn) => { queue.push(fn as () => void); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden, onTripDue: () => { env.due += 1; } });
@@ -186,6 +187,25 @@ function harness({ reducedMotion = false, home = 'yaba', width = 390, height = 8
   return { map, renderer, container, env, queue, pump, state, count: () => map.diagnostics().renderCount };
 }
 const travelling = (remaining: number, duration = 10, mode = 'danfo', id = 'park') => ({ kind: 'travel', id, duration, remaining, mode, fare: 200 });
+
+test('city rendering cycles day, dusk and night in demand-rendered frames', () => {
+  const h = harness();
+  assert.equal(h.renderer.toneMapping, ACESFilmicToneMapping);
+  assert.ok(h.renderer.toneMappingExposure > 0.9 && h.renderer.toneMappingExposure < 1.25, 'exposure keeps highlights controlled');
+  assert.equal(h.renderer.shadowMap.enabled, false, 'the city does not allocate real-time shadow maps');
+  assert.ok(new Set(Object.values(CITY_LIGHT).map((preset) => preset.water)).size === 3, 'water follows each distinct light preset');
+  h.map.setState(h.state({ t: Date.UTC(2026, 0, 5, 12) })); h.map.resize(); h.pump();
+  assert.equal(h.map.diagnostics().time, 'day');
+  for (const [hour, expected] of [[17, 'dusk'], [22, 'night'], [12, 'day']] as const) {
+    const before = h.count();
+    h.map.setState(h.state({ t: Date.UTC(2026, 0, 5, hour) }));
+    assert.equal(h.pump(), 1, `${expected}: one frame updates the lighting`);
+    assert.equal(h.map.diagnostics().time, expected);
+    assert.equal(h.count(), before + 1);
+    assert.equal(h.queue.length, 0, `${expected}: no animation loop while idle`);
+  }
+  h.map.destroy();
+});
 
 test('a friend\'s trip moves their pin on its own frames without drawing the city again, and the loop ends at the door', () => {
   const h = harness();

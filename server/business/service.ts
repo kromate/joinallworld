@@ -206,13 +206,21 @@ function buildService(ctx: RouteContext) {
   }
   function venueView(db: Db, cityId: CityId, venueId: string, who: PlayerRef | null, life: LifeState | null): VenueShopsResponse {
     const b = peekBusiness(db), venue = businessVenue(cityId, venueId), viewer = who?.id ?? null;
-    const shops = venue ? shopsAt(b, cityId, venueId).map((shop) => shopAt(shop, now(), venue)).filter((shop) => shop.status !== 'closed') : [];
+    const readAt = now(), levies = leviesFor(db, cityId, 'sale', readAt);
+    const shops = venue ? shopsAt(b, cityId, venueId).map((shop) => shopAt(shop, readAt, venue)).filter((shop) => shop.status !== 'closed') : [];
     return {
       city: cityId, venue: venueId, hosts: venue !== null, venueName: venue?.name ?? cityContent(cityId).venues.find((item) => item.id === venueId)?.name ?? venueId,
       stalls: { total: venue?.stalls ?? 0, taken: shops.length }, known: [...(venue?.known ?? [])], hours: venue?.hours ?? BUSINESS.hours,
       types: venue ? BUSINESS_TYPE_IDS.map((id) => typeView(id, venue)) : [],
       // The viewer's own stall first, then by stars; a stall with nothing to sell goes last.
-      shops: shops.map((shop) => card(shop, viewer)).sort((a, z) => Number(z.mine) - Number(a.mine) || Number(z.items.some((item) => item.stock > 0)) - Number(a.items.some((item) => item.stock > 0)) || z.stars - a.stars || a.name.localeCompare(z.name)),
+      shops: shops.map((shop) => {
+        const view = card(shop, viewer);
+        for (const item of view.items) item.quotes = Array.from({ length: BUSINESS.qtyMax }, (_, index) => {
+          const units = index + 1, amount = item.price * units, tax = totalLevy(amount, levies);
+          return { units, tax, total: amount + tax };
+        });
+        return view;
+      }).sort((a, z) => Number(z.mine) - Number(a.mine) || Number(z.items.some((item) => item.stock > 0)) - Number(a.items.some((item) => item.stock > 0)) || z.stars - a.stars || a.name.localeCompare(z.name)),
       mine: myNow(b, viewer, life), bag: bagView(life, cityId),
       wholesale: venue ? tradeGoods().filter((product) => isLocal(product, cityId)).map((product) => productView(product, cityId)) : [],
       limits: LIMITS, openWhy: openWhy(b, venue, who, life), colours: AD_COLOURS,
@@ -444,20 +452,28 @@ function buildService(ctx: RouteContext) {
     buy(db: Db, request: RouteRequest, cityId: CityId, body: Record<string, unknown>) {
       const { session, who, life, b } = enter(db, request, cityId), push: Push = [];
       const shopId = typeof body.shop === 'string' ? body.shop : '';
-      const outcome = ctx.once(db, session, { id: body.requestId, kind: 'business.buy', fingerprint: [cityId, shopId, String(body.product ?? ''), String(body.units ?? '')] }, () => {
+      const fingerprint: unknown[] = [cityId, shopId, String(body.product ?? ''), String(body.units ?? '')];
+      if (body.expectedPrice !== undefined || body.expectedTotal !== undefined) fingerprint.push('quote-v1', body.expectedPrice, body.expectedTotal);
+      const outcome = ctx.once(db, session, { id: body.requestId, kind: 'business.buy', fingerprint }, () => {
         const shop = ownShop(b, shopId);
         if (!shop || shop.city !== cityId) return no('no_such_shop', 'That stall is not here any more.');
-        settle(db, shop, push);
+        const readAt = now(), available = shopAt(shop, readAt, venueOf(shop));
         if (!standsIn(life, shop.city, shop.venue)) return no('not_at_shop', `Go to ${venueOf(shop)?.name ?? 'the market'} to buy from ${shop.name}.`);
         if (who.id !== shop.by.id && blocked(who.id, shop.by.id)) return no('blocked', 'You cannot buy from this stall.');
-        const block = saleBlock(shop, who.id, body.product, body.units);
+        const block = saleBlock(available, who.id, body.product, body.units);
         if (block) return no(block.code, block.reason);
         if (sharedDevice(db, who.id, shop.by.id)) return no('same_device', 'This stall was opened on a device you have used. Buying from your own stalls is not allowed.');
         const product = productOf(shop.type, body.product), units = body.units as number;
         if (!product) return no('unknown_product', 'That is not on this stall’s menu.');
-        const amount = (shop.prices[product.id] ?? product.base) * units, label = productLabel(product, shop.city);
+        const price = shop.prices[product.id] ?? product.base;
+        const amount = price * units, label = productLabel(product, shop.city);
+        const levies = leviesFor(db, cityId, 'sale', readAt), tax = totalLevy(amount, levies);
+        if (!whole(body.expectedPrice) || body.expectedPrice <= 0 || !whole(body.expectedTotal) || body.expectedTotal <= 0) return no('quote_required', 'Refresh this market to see the current price and total, then choose Buy again.');
+        if (body.expectedPrice !== price || body.expectedTotal !== amount + tax) return no('quote_changed', 'The price or tax changed. Review the updated total and choose Buy again.');
         if (addressSpent(shop.by.id, request.ip) + amount > BUSINESS.pairPerDay) return no('pair_limit', `Buyers on your network have spent all that one network may at this stall today (${naira(BUSINESS.pairPerDay)}). Try another stall.`);
-        const levies = leviesFor(db, cityId, 'sale', now()), tax = totalLevy(amount, levies);
+        settle(db, shop, push);
+        const settledBlock = saleBlock(shop, who.id, product.id, units);
+        if (settledBlock) return no(settledBlock.code, settledBlock.reason);
         const paid = act(life, cityId, { op: 'buy', amount, units, label, shop: shop.name, effects: product.effects ?? {}, ...(tax > 0 ? { tax } : {}), ...(product.need ? { need: product.need } : {}), ...(product.mood ? { mood: product.mood } : {}) });
         if (!paid.ok) return refuse(paid);
         payLevies(ctx, db, levies, amount, now(), `${units} × ${label} at ${shop.name}`);

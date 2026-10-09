@@ -60,11 +60,23 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     name: 'business', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-business' },
   }
-  const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+  const create = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+  let worker = create()
   const responses: WorkerResponse[] = []
-  t.after(async () => {
+  let businessWriteProbe = false
+  const stop = async (): Promise<void> => {
     for (const response of responses.splice(0)) if (!response.bodyUsed && response.body && !response.body.locked) await response.body.cancel().catch(() => {})
+    if (businessWriteProbe) {
+      const db = await worker.unsafeGetDurableObjectStorage('business', 'JoinAllworldState', { name: 'joinallworld-v1' }).catch(() => null)
+      if (db) {
+        for (const trigger of ['business_collections_insert', 'business_collections_update', 'business_collections_delete', 'business_parts_insert', 'business_parts_update', 'business_parts_delete', 'business_entries_insert', 'business_entries_update', 'business_entries_delete']) await db.exec(`DROP TRIGGER IF EXISTS test_${trigger}`).catch(() => {})
+        await db.exec('DROP TABLE IF EXISTS test_business_write_probe').catch(() => {})
+      }
+    }
     await deadline(worker.dispose(), 'Worker disposal')
+  }
+  t.after(async () => {
+    await stop()
     await rm(folder, { recursive: true, force: true })
   })
   await deadline(worker.ready, 'Worker startup')
@@ -101,6 +113,15 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
       }
       await writeStoredCollection(execOf(await storage()), 'business', JSON.stringify(business))
     },
+    failPersistence: async (requestId) => {
+      await (await storage()).exec(`CREATE TRIGGER fail_business_receipt BEFORE INSERT ON once_receipts WHEN NEW.id = '${requestId}' BEGIN SELECT RAISE(ABORT, 'injected business receipt failure'); END`)
+    },
+    recoverPersistence: async () => { await (await storage()).exec('DROP TRIGGER fail_business_receipt') },
+    restart: async () => { await stop(); worker = create(); await deadline(worker.ready, 'Worker restart') },
+    hasReceipt: async (device, requestId) => {
+      const rows = await (await storage()).exec('SELECT COUNT(*) AS n FROM once_receipts WHERE sender = (SELECT public_id FROM sessions WHERE secret = ?) AND id = ?', keyOf(device), requestId)
+      return Number(object(rows[0]).n) > 0
+    },
   }
   const result = await businessJourney(host)
   assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true])
@@ -114,13 +135,32 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   const dele = await cookieOf('Dele')
   assert.equal((await host.request('/api/life?city=lagos', undefined, dele.cookie)).status, 200)
   await host.edit(dele, 'lagos', (state) => { state.cash = 50000; state.ledger = []; state.ledgerDays = []; state.location = 'market' })
+  const businessDb = await storage()
+  await businessDb.exec('CREATE TABLE test_business_write_probe (writes INTEGER NOT NULL)')
+  await businessDb.exec('INSERT INTO test_business_write_probe(writes) VALUES(0)')
+  businessWriteProbe = true
+  const collectionNames = "NEW.name IN ('business','root:business')"
+  // Match the same NUL-delimited entry namespace as sqlite-store.ts, excluding other collection names.
+  const partNames = "NEW.name IN ('business','root:business') OR (NEW.name >= ('entry:business' || char(0)) AND NEW.name < ('entry:business' || char(1)))"
+  const entryCollection = "NEW.coll = 'business'"
+  for (const [table, condition, label] of [['collections', collectionNames, 'collections'], ['collection_parts', partNames, 'parts'], ['entries', entryCollection, 'entries']] as const) {
+    for (const operation of ['INSERT', 'UPDATE', 'DELETE'] as const) {
+      const scoped = operation === 'DELETE' ? condition.replaceAll('NEW.', 'OLD.')
+        : operation === 'UPDATE' ? `(${condition}) OR (${condition.replaceAll('NEW.', 'OLD.')})` : condition
+      await businessDb.exec(`CREATE TRIGGER test_business_${label}_${operation.toLowerCase()} AFTER ${operation} ON ${table} WHEN ${scoped} BEGIN UPDATE test_business_write_probe SET writes = writes + 1; END`)
+    }
+  }
+  const businessWrites = async (): Promise<number> => Number(object((await (await storage()).exec('SELECT writes FROM test_business_write_probe'))[0]).writes)
+  const beforeOpenWrites = await businessWrites()
   const opened = object(await (await host.request('/api/business/open', { cityId: 'lagos', venue: 'market', type: 'provisions', name: 'Dele Stores', colour: 'blue', icon: '🧺', requestId: `${JOURNEY_TIME}:11111111-2222-4333-8444-555555555555` }, dele.cookie)).json())
   assert.equal(opened.code, 'opened')
+  assert.ok(await businessWrites() > beforeOpenWrites, 'opening a shop increments the business-row probe')
+  const beforeStockWrites = await businessWrites()
   assert.equal(object(await (await host.request('/api/business/stock', { cityId: 'lagos', items: { bread: 10, zobo: 10 }, requestId: `${JOURNEY_TIME}:11111111-2222-4333-8444-666666666666` }, dele.cookie)).json()).code, 'stocked')
+  assert.ok(await businessWrites() > beforeStockWrites, 'stocking a shop increments the business-row probe')
   await host.age(3 * 3600000)
   const before = JSON.stringify(await stored())
-  const written = async (): Promise<number> => Number(object((await (await storage()).exec('SELECT total_changes() AS n'))[0]).n)
-  const rows = await written()
+  const rows = await businessWrites()
   for (let index = 0; index < 4; index++) {
     const market = object(await (await host.request('/api/business/venue?city=lagos&venue=market', undefined, dele.cookie)).json())
     assert.equal((market.shops as unknown[]).length, 1)
@@ -128,5 +168,5 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     assert.ok(Number(mine.till) > 0, 'the shop a player sees has been selling')
   }
   assert.equal(JSON.stringify(await stored()), before, 'and the stored shop did not move')
-  assert.ok(await written() - rows <= 1, 'eight reads of a shop wrote no shop row')
+  assert.equal(await businessWrites() - rows, 0, 'eight reads of a shop wrote no business collection row')
 })

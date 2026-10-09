@@ -9,6 +9,7 @@ import { VENUES } from '../../game/cities/lagos/venues.ts';
 
 import { xpForLevel } from '../../game/systems/skills.ts';
 import { makeContext } from '../../game/util.ts';
+import { lagosTime } from '../../game/clock.ts';
 import studentSystem, { CAMPUS_JOBS, HOSTEL_STORAGE_LIMIT, MAX_ATTEMPTS, graduationOf } from './student.ts';
 import { UNILAG_VENUE } from './content.ts';
 import { PROGRAMMES, UNILAG_BETA_RULES } from './curriculum.ts';
@@ -105,6 +106,34 @@ function completeTimed(p: Player, type: string, payload: Record<string, unknown>
   assert.equal(p.step(seconds).code, 'completed');
 }
 
+/** An assignment already saved by the previous release must still finish under the new engine. */
+function legacyCpeAction(p: Player) {
+  const time = lagosTime(p.now);
+  return { kind: 'campus-study' as const, id: 'cpe-101', duration: UNILAG_BETA_RULES.assessmentSeconds,
+    remaining: UNILAG_BETA_RULES.assessmentSeconds, task: 'assignment' as const,
+    semester: termOf(p.state).semester, startedDay: time.day, startedMinute: time.minuteOfDay };
+}
+
+test('new cpe-101 assignments require active practice while a saved legacy timer completes exactly once', () => {
+  const p = player(); admitAndRegister(p); p.spot(PROGRAMMES.computer.spot);
+  assert.equal(p.act('unilag.assignment', { course: 'cpe-101', score: 30 }).code, 'interactive_required');
+  assert.equal(p.state.activeAction, null);
+  assert.equal(termOf(p.state).assessments['cpe-101']?.assignment, null);
+  const oldSave = JSON.parse(JSON.stringify(p.state)) as LifeState;
+  oldSave.activeAction = legacyCpeAction(p);
+  const loaded = createLife(oldSave, makeContext({ now: p.now, cityId: 'lagos', seed: 'legacy-assignment-reload' }));
+  assert.equal(loaded.activeAction?.kind, 'campus-study');
+  const cash = loaded.cash;
+  advanceLife(loaded, UNILAG_BETA_RULES.assessmentSeconds,
+    makeContext({ now: p.now + UNILAG_BETA_RULES.assessmentSeconds * 1000, cityId: 'lagos', seed: 'legacy-assignment-complete' }));
+  const mark = termOf(loaded).assessments['cpe-101']?.assignment;
+  assert.ok(typeof mark === 'number' && mark <= UNILAG_BETA_RULES.assignmentWeight);
+  assert.equal(loaded.activeAction, null);
+  advanceLife(loaded, 45, makeContext({ now: p.now + 90_000, cityId: 'lagos', seed: 'legacy-assignment-repeat' }));
+  assert.equal(termOf(loaded).assessments['cpe-101']?.assignment, mark);
+  assert.equal(loaded.cash, cash);
+});
+
 function attendSemester(p: Player, programmeId: ProgrammeId, semesterNumber: number): void {
   const courses = coursesOf(programmeId, semesterNumber);
   assert.equal(p.spot(PROGRAMMES[programmeId].spot).code, 'selected');
@@ -119,7 +148,12 @@ function attendSemester(p: Player, programmeId: ProgrammeId, semesterNumber: num
   }
   p.at(lagosAt(startDay - Math.floor((START + 3600000) / DAY) + 6, 16));
   for (const course of courses) {
-    completeTimed(p, 'unilag.assignment', { course: course.id, score: 30 }, UNILAG_BETA_RULES.assessmentSeconds);
+    if (course.id === 'cpe-101') {
+      // This engine-only graduation fixture covers a pre-release saved assignment;
+      // the registered HTTP lab fixture separately proves new active mark settlement.
+      p.state.activeAction = legacyCpeAction(p);
+      assert.equal(p.step(UNILAG_BETA_RULES.assessmentSeconds).code, 'completed');
+    } else completeTimed(p, 'unilag.assignment', { course: course.id, score: 30 }, UNILAG_BETA_RULES.assessmentSeconds);
     completeTimed(p, 'unilag.test', { course: course.id, score: 50 }, UNILAG_BETA_RULES.assessmentSeconds);
   }
 }

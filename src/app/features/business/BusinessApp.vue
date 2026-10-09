@@ -4,7 +4,7 @@
 // stall). Every rule and number is the server's (docs/BUSINESS.md): this screen shows what /api/business/ answers and
 // sends the player's choices back. A paid request keeps its id until it is applied, so pressing again after a lost
 // answer repeats the SAME request.
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, toRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { BusinessTypeId, BusinessUpgradeId, MyBusinessResponse, MyShop, ShopCard, ShopItem, VenueShopsResponse } from '../../../types/business.ts'
 import { money, plural } from '../../ui/format.ts'
@@ -21,6 +21,7 @@ import { useSection } from '../kit/section.ts'
 import LazyList from '../../ui/LazyList.vue'
 import { chunkedView } from '../../ui/lazyList.ts'
 import { requestSlot } from '../civic/civicCore.ts'
+import { actorDraft } from '../civic/civicDrafts.ts'
 import type { SendResult } from '../civic/civicCore.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { buyWhy, changedPrices, collectWhy, mineKey, minePath, openWhy, orderOf, orderWhy, priceWords, pricesWhy, starMarks, starsLabel, untilWords, venueKey, venuePath } from './businessModel.ts'
@@ -49,12 +50,21 @@ let seen: unknown = null
 watch(() => props.params, (params) => { if (params && params !== seen) { seen = params; if ((params as { venue?: unknown }).venue) tab.value = 'market' } }, { immediate: true })
 
 // What is being chosen, kept while the app is open: an order from the supplier, prices, a new stall.
-const order = reactive<Record<string, number>>({})
-const prices = reactive<Record<string, number>>({})
-const draft = reactive<{ type: BusinessTypeId; name: string; colour: string; icon: string }>({ type: 'food', name: '', colour: 'gold', icon: '' })
-const closing = ref(false)
-const slots = { open: requestSlot(), stock: requestSlot(), collect: requestSlot(), rent: requestSlot(), upgrade: requestSlot(), close: requestSlot(), bag: requestSlot(), buy: requestSlot() }
-watch(mine, (shop) => { for (const product of shop?.products ?? []) if (prices[product.id] === undefined) prices[product.id] = product.price }, { immediate: true })
+const order = actorDraft(() => reactive<Record<string, number>>({}))
+const prices = actorDraft(() => reactive<Record<string, number>>({}))
+const draft = actorDraft(() => reactive<{ type: BusinessTypeId; name: string; colour: string; icon: string }>({ type: 'food', name: '', colour: 'gold', icon: '' }))
+const flow = actorDraft<{ closing: boolean; shopId: string | null }>(() => ({ closing: false, shopId: null }))
+const closing = toRef(flow, 'closing')
+const slots = actorDraft(() => ({ open: requestSlot(), stock: requestSlot(), collect: requestSlot(), rent: requestSlot(), upgrade: requestSlot(), close: requestSlot(), bag: requestSlot(), buy: requestSlot() }))
+watch(mine, (shop) => {
+  if (!shop) return
+  if (shop.id !== flow.shopId) {
+    for (const id of Object.keys(prices)) delete prices[id]
+    for (const id of Object.keys(order)) delete order[id]
+    closing.value = false; flow.shopId = shop.id
+  }
+  for (const product of shop.products) if (prices[product.id] === undefined) prices[product.id] = product.price
+}, { immediate: true })
 const picked = computed(() => stalls.value?.types.find((type) => type.id === draft.type))
 watch(picked, (type) => { if (type && !type.icons.includes(draft.icon)) draft.icon = type.icons[0] ?? '' }, { immediate: true })
 
@@ -94,7 +104,12 @@ async function open(): Promise<void> {
   const result = await paid('open', 'open', '/api/business/open', { venue: here.value, type: draft.type, name: draft.name.trim(), colour: draft.colour, icon: draft.icon }, '')
   if (result.ok) { draft.name = ''; tab.value = 'mine' }
 }
-const buy = (card: ShopCard, item: ShopItem): Promise<SendResult> => paid('buy', `buy:${card.id}:${item.id}`, '/api/business/buy', { shop: card.id, product: item.id, units: 1 }, `${item.label} from ${card.name}.`)
+const quoteOf = (item: ShopItem) => item.quotes?.find((quote) => quote.units === 1)
+async function buy(card: ShopCard, item: ShopItem): Promise<SendResult> {
+  const quote = quoteOf(item)
+  if (!quote) { market.reload(); return { ok: false, code: 'quote_required' } }
+  return paid('buy', `buy:${card.id}:${item.id}`, '/api/business/buy', { shop: card.id, product: item.id, units: 1, expectedPrice: item.price, expectedTotal: quote.total }, `${item.label} from ${card.name}.`)
+}
 async function rate(card: ShopCard, stars: number): Promise<void> { taken(await server.send(`rate:${card.id}`, '/api/business/rate', { shop: card.id, stars }, { success: 'Thanks for rating.' })) }
 async function report(card: ShopCard): Promise<void> { await server.send(`report:${card.id}`, '/api/business/report', { shop: card.id, reason: 'name' }, { success: 'Reported. A moderator will look at it.' }) }
 
@@ -146,11 +161,11 @@ const rules = [
             <ul class="biz-list biz-card">
               <li v-for="product in mine.products" :key="product.id" class="biz-product">
                 <div class="biz-what"><strong>{{ product.label }}</strong><small>{{ product.stock }} in stock · costs {{ money(product.cost) }}{{ product.local ? ' here, where it comes from' : '' }}</small></div>
-                <label class="biz-price">Price<input v-model.number="prices[product.id]" type="number" inputmode="numeric" :min="product.min" :max="product.max" step="10" :disabled="!mine.here" :aria-label="`Price of ${product.label}, ${money(product.min)} to ${money(product.max)}`"><small>{{ priceWords(prices[product.id] ?? product.price, product.base) }}</small></label>
+                <label class="biz-price">Price<input v-model.number="prices[product.id]" type="number" inputmode="numeric" :min="product.min" :max="product.max" step="10" :disabled="!mine.here || server.busy('price')" :aria-label="`Price of ${product.label}, ${money(product.min)} to ${money(product.max)}`"><small>{{ priceWords(prices[product.id] ?? product.price, product.base) }}</small></label>
                 <div class="biz-step" role="group" :aria-label="`Units of ${product.label} to buy`">
-                  <button type="button" :disabled="!mine.here || !(order[product.id] ?? 0)" :aria-label="`Fewer ${product.label}`" @click="step(product.id, -5)">−</button>
+                  <button type="button" :disabled="!mine.here || server.busy('stock') || !(order[product.id] ?? 0)" :aria-label="`Fewer ${product.label}`" @click="step(product.id, -5)">−</button>
                   <output>{{ order[product.id] ?? 0 }}</output>
-                  <button type="button" :disabled="!mine.here" :aria-label="`More ${product.label}`" @click="step(product.id, 5)">+</button>
+                  <button type="button" :disabled="!mine.here || server.busy('stock')" :aria-label="`More ${product.label}`" @click="step(product.id, 5)">+</button>
                 </div>
               </li>
             </ul>
@@ -187,7 +202,7 @@ const rules = [
             <div class="biz-card biz-box">
               <div><small>Closing returns half of what the stall and its upgrades cost, a part of the stock’s cost and the cash box.</small><strong>{{ money(mine.closeRefund) }} back</strong></div>
               <BaseButton v-if="!closing" small variant="danger" @click="closing = true">Close…</BaseButton>
-              <span v-else class="biz-confirm"><CivicAction :working="server.busy('close')" :reason="offline('close') ?? ''" @click="close">Yes, close it</CivicAction><BaseButton small @click="closing = false">Keep it</BaseButton></span>
+              <span v-else class="biz-confirm"><CivicAction :working="server.busy('close')" :reason="offline('close') ?? ''" @click="close">Yes, close it</CivicAction><BaseButton small :disabled="server.busy('close')" @click="closing = false">Keep it</BaseButton></span>
             </div>
           </template>
         </template>
@@ -217,8 +232,9 @@ const rules = [
               </header>
               <ul class="biz-list">
                 <li v-for="item in card.items" :key="item.id">
-                  <div class="biz-what"><strong>{{ item.label }}</strong><small>{{ item.does }} · {{ item.stock > 0 ? `${item.stock} left` : 'sold out' }}</small></div>
-                  <CivicAction primary :working="server.busy(`buy:${card.id}:${item.id}`)" :reason="buyWhy(card, item, wallet)" @click="buy(card, item)">Buy · {{ money(item.price) }}</CivicAction>
+                  <div class="biz-what"><strong>{{ item.label }}</strong><small>{{ item.does }} · {{ item.stock > 0 ? `${item.stock} left` : 'sold out' }}</small><small v-if="quoteOf(item)">Total includes {{ money(quoteOf(item)?.tax ?? 0) }} tax</small></div>
+                  <CivicAction v-if="quoteOf(item)" primary :working="server.busy(`buy:${card.id}:${item.id}`)" :reason="buyWhy(card, { ...item, price: quoteOf(item)?.total ?? item.price }, wallet)" @click="buy(card, item)">Buy · {{ money(quoteOf(item)?.total ?? item.price) }}</CivicAction>
+                  <BaseButton v-else small @click="market.reload">Refresh price</BaseButton>
                 </li>
               </ul>
               <div v-if="card.canRate" class="biz-rate" role="group" :aria-label="`Rate ${card.name}`"><span>Rate your purchase</span><button v-for="stars in 5" :key="stars" type="button" :aria-label="plural(stars, 'star')" @click="rate(card, stars)">★</button></div>
@@ -269,21 +285,22 @@ const rules = [
 :global(.ph.is-wide) .biz-types { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 620px; }
 .biz-note { font-size: 12.5px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-1) 2px !important; }
 .biz-alert { margin: 0 !important; padding: 10px 14px; border-radius: var(--r-md); background: var(--c-red-soft); color: var(--c-red-dark); font-size: 13px !important; line-height: 1.4 !important; font-weight: 600; }
-.biz-card { border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); padding: 12px 14px; }
-.biz-box { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
-.biz-box > div { display: grid; gap: 2px; min-width: 0; }
-.biz-box strong { font-size: var(--t-lead); font-variant-numeric: tabular-nums; }
+.biz-card { min-width: 0; border-radius: var(--r-md); border: 1px solid var(--c-line); background: #fff; padding: 14px; }
+.biz-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.biz-box > div { flex: 1 1 180px; display: grid; gap: 2px; min-width: 0; }
+.biz-box strong { overflow-wrap: anywhere; font-size: var(--t-lead); font-variant-numeric: tabular-nums; }
 .biz-box small, .biz-what small { color: var(--c-muted); font-size: 12px; line-height: 1.35; }
 .biz-box :deep(.civic-action), .biz-list :deep(.civic-action) { flex: none; margin: 0; max-width: 160px; }
 .biz-list { list-style: none; margin: 0; padding: 0; }
 .biz-list.biz-card { padding: 0 14px; }
-.biz-list li { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 13px; min-height: var(--tap); }
+.biz-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 13px; min-height: var(--tap); }
 .biz-list li:last-child { border-bottom: 0; }
-.biz-what { display: grid; gap: 2px; min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.biz-what { display: grid; gap: 2px; min-width: 0; flex: 1 1 130px; overflow-wrap: anywhere; }
 .biz-what strong { font-size: 14px; }
-.biz-product { flex-wrap: wrap; }
-.biz-price { display: grid; gap: 2px; font-size: 11px; font-weight: 600; color: var(--c-muted); margin: 0 !important; }
-.biz-price input { width: 84px; min-height: var(--tap); font-variant-numeric: tabular-nums; }
+.biz-list li.biz-product { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 16px 0; }
+.biz-product > .biz-what { grid-column: 1 / -1; }
+.biz-price { min-width: 0; display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--c-muted); margin: 0 !important; }
+.biz-price input { width: min(100%, 128px); box-sizing: border-box; font-size: 16px; min-height: var(--tap); font-variant-numeric: tabular-nums; }
 .biz-price small { font-weight: 500; }
 .biz-step { display: flex; align-items: center; gap: 4px; }
 .biz-step button { width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--c-fill); font: 700 18px var(--font); cursor: pointer; }
@@ -293,20 +310,20 @@ const rules = [
 .biz-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .biz-actions :deep(.civic-action) { flex: 1 1 140px; display: grid; margin: 0; }
 .biz-owned { font-size: 12px; font-weight: 700; color: var(--c-green-dark); }
-.biz-confirm { display: flex; gap: 6px; align-items: start; }
+.biz-confirm { display: flex; flex-wrap: wrap; gap: 6px; align-items: start; }
 .biz-shops { list-style: none; margin: 0; padding: 0; }
 .biz-shops :deep(.ll-rows) { display: grid; gap: var(--s-3); }
-.biz-shop > header { display: flex; align-items: center; gap: var(--s-3); padding-bottom: 8px; border-bottom: 1px solid var(--c-line); }
+.biz-shop > header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); padding-bottom: 8px; border-bottom: 1px solid var(--c-line); }
 .biz-sign { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-sm); font-size: 22px; box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-link { border: 0; background: none; padding: 0; font: inherit; color: var(--c-green-dark); text-decoration: underline; cursor: pointer; }
-.biz-report { display: block; margin: 6px 0 0 auto; font-size: 11px; color: var(--c-muted); min-height: 24px; }
-.biz-rate { display: flex; align-items: center; gap: 2px; padding-top: 8px; border-top: 1px solid var(--c-line); font-size: 12.5px; font-weight: 600; }
-.biz-rate span { margin-right: auto; }
-.biz-rate button { width: 36px; height: var(--tap); border: 0; background: none; font-size: 22px; color: var(--c-amber, #e8a643); cursor: pointer; }
+.biz-report { display: block; margin: 6px 0 0 auto; font-size: 13px; color: var(--c-muted); min-height: 44px; }
+.biz-rate { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding-top: 8px; border-top: 1px solid var(--c-line); font-size: 12.5px; font-weight: 600; }
+.biz-rate span { flex-basis: 100%; margin-right: auto; }
+.biz-rate button { width: 44px; height: var(--tap); border: 0; background: none; font-size: 22px; color: var(--c-amber, #e8a643); cursor: pointer; }
 .biz-form { display: grid; gap: var(--s-3); }
 .biz-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 !important; }
 .biz-label { display: block; margin: 0 0 5px; font-size: 13px; font-weight: 600; }
-.biz-figures { flex: none; text-align: right; font-size: 11.5px; line-height: 1.4; color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.biz-figures { flex: 1 1 120px; min-width: 0; overflow-wrap: anywhere; text-align: right; font-size: 12px; line-height: 1.4; color: var(--c-muted); font-variant-numeric: tabular-nums; }
 .biz-swatches { display: flex; flex-wrap: wrap; gap: 6px; }
 .biz-swatches button { width: var(--tap); height: var(--tap); border-radius: var(--r-sm); border: 2px solid transparent; cursor: pointer; font-size: 20px; background: var(--c-fill); box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-swatches button[aria-pressed=true] { border-color: var(--c-ink); box-shadow: 0 0 0 2px #fff inset; }

@@ -161,6 +161,9 @@ export interface ActivityAction extends ActiveActionBase {
   choice?: string
   /** Present only for `chargeOn: 'start'` with a price above zero: the naira debited at the start (the adjusted price). */
   paid?: number
+  /** Server-authored teaching session; absent on legacy timed shifts. */
+  teaching?: import('../game/living-world/teaching-state.ts').TeachingPractice
+  teachingGeneration?: number
 }
 
 /** A trip between venues (systems/travel.js). The player is still recorded at the venue they left. */
@@ -202,8 +205,37 @@ export interface IntercityAction extends ActiveActionBase {
   from: WorldCityId
 }
 
+/** One already-accepted city connection; saved tickets keep their original terms if routes change later. */
+export interface HomewardLeg {
+  from: WorldCityId
+  to: WorldCityId
+  mode: CityLinkMode
+  fare: number
+  seconds: number
+}
+
+/** Versioned, accepted itinerary. This is durable ticket data, not a live route quote. */
+export interface HomewardTicket {
+  version: 1
+  from: WorldCityId
+  to: WorldCityId
+  legs: readonly HomewardLeg[]
+  totalFare: number
+  totalSeconds: number
+  key: string
+}
+
+/** One continuous borrowed journey; intermediate cities never become playable stops. */
+export interface HomewardJourneyAction extends ActiveActionBase {
+  kind: 'homeward'
+  id: WorldCityId
+  ticket: HomewardTicket
+  /** Zero-based current leg, derived from elapsed time when a saved ticket is resumed. */
+  legIndex: number
+}
+
 /** The single timed-action slot. Only one runs at a time. The campus kinds ('campus-study', 'campus-game', 'campus-shuttle') are in campus.ts. */
-export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction | CampusActiveAction
+export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction | HomewardJourneyAction | CampusActiveAction
 
 /** Every registered timed-action kind. */
 export type ActiveKind = ActiveAction['kind']
@@ -304,6 +336,8 @@ export interface SkillsSlice {
 
 export interface CareerState {
   city: WorldCityId | null
+  /** Monotonic across cancellation, job changes and city transfers. */
+  teachingGeneration: number
   /** 1-based ladder level in the current track (1 when unemployed or in the starter job). */
   level: number
   /** 0–100 in the current role (may be fractional). */
@@ -1008,8 +1042,9 @@ export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, Needs
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
-  | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
+  | 'economy' | 'property' | 'estate' | 'homeward' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
+  | 'livingWorld'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
@@ -1037,6 +1072,8 @@ export interface SliceBySystem {
   events: EventsSlice
   growth: GrowthSlice
   business: BusinessSlice
+  homeward: Record<never, never>
+  livingWorld: Record<never, never>
   unilagStudent: UnilagStudentSlice
   unilagCommunity: UnilagCommunitySlice
   unilagShuttle: UnilagShuttleSlice
@@ -1076,6 +1113,8 @@ export interface LifeContext {
   internal?: boolean
   /** createLife only: the input is the server's own stored copy, so an invalid saved action may be settled (refunded or charged). */
   trustedSave?: boolean
+  /** Trusted host opt-in for creating new interactive teaching markers; absent/false keeps legacy timed shifts. */
+  interactiveTeachingStarts?: boolean
   /** Server-only collector for exact player-wallet mutations. */
   money?: (effect: MoneyEffect) => void
 }
@@ -1149,6 +1188,7 @@ export const SYSTEM_STATE_KEYS = {
   economy: ['economy'],
   property: ['homeOwned', 'property'],
   estate: ['estate'],
+  homeward: [],
   home: ['home'],
   stories: ['stories'],
   land: [],
@@ -1161,6 +1201,7 @@ export const SYSTEM_STATE_KEYS = {
   events: ['events'],
   growth: ['growth'],
   business: ['business'],
+  livingWorld: [],
   unilagStudent: ['unilagStudent'],
   unilagCommunity: ['unilagCommunity'],
   unilagShuttle: ['unilagShuttle'],
@@ -1171,7 +1212,7 @@ export const SYSTEM_STATE_KEYS = {
  * (`inventory`) is not listed; `needs`/`decay` are keyed by NeedId and `skills` by SkillId.
  */
 export const SLICE_FIELD_KEYS = {
-  career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
+  career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'teachingGeneration', 'transferDay'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'rideDebt', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'headsUp', 'loan', 'reminded', 'rent', 'seq', 'started'],
@@ -1208,4 +1249,4 @@ export const LGA_IDS = [
 export const SKILL_IDS = ['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography'] as const satisfies readonly SkillId[]
 
 /** Every registered timed-action kind, sorted. */
-export const ACTIVE_KINDS = ['activity', 'call', 'campus-game', 'campus-shuttle', 'campus-study', 'commute', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]
+export const ACTIVE_KINDS = ['activity', 'call', 'campus-game', 'campus-shuttle', 'campus-study', 'commute', 'homeward', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]

@@ -1,0 +1,328 @@
+{
+  "sourceSha": "c55156d6bb69646c76ba8ec40cff0bb0eba11c82",
+  "observer": "scripts/living-world-attribution.mjs",
+  "observerReportSha256": "b05dbf6b534bac6188a8fce06f4a78dd69139a5e767c25f13c745587206a3e84",
+  "build": {
+    "exitCode": 0,
+    "seconds": 27.32,
+    "heapMiB": 1536,
+    "minifierWorkers": 1
+  },
+  "narrowNodeTests": {
+    "pass": 13,
+    "fail": 0,
+    "exitCode": 0,
+    "durationMs": 291.840458,
+    "files": [
+      "src/scene/body/stand-in.test.ts",
+      "server/living-world/privacy.test.ts"
+    ],
+    "layer": "fake-body API boundary and plain-object helper units; no physical pose/contact, account route or Worker proof"
+  },
+  "startup": {
+    "city": "lagos",
+    "rawJsBytes": 615756,
+    "rawBudget": 615000,
+    "overRaw": 756,
+    "method": "Sum final emitted JS bytes in observed static chunk imports from index.html script/modulepreload JS plus startApp, city-routes, city-lagos-rules and city-lagos-content roots. No dynamic import, CSS or Brotli/gzip included. Matches existing canonical remote1f raw result; this is not a new local compressed budget run.",
+    "roots": [
+      "assets/app-314e71e4.js",
+      "assets/city-lagos-content-8bffcec7.js",
+      "assets/city-lagos-rules-0d1a0a9e.js",
+      "assets/city-routes-a15b566f.js",
+      "assets/preload-helper-86ad5cfe.js",
+      "assets/startApp-a52bf148.js",
+      "assets/vue-46737487.js"
+    ],
+    "chunks": [
+      {
+        "file": "assets/BaseButton-bd54957d.js",
+        "rawBytes": 638,
+        "imports": [
+          "assets/vue-46737487.js",
+          "assets/app-314e71e4.js"
+        ]
+      },
+      {
+        "file": "assets/GlyphText.vue_vue_type_script_setup_true_lang-1e34f7af.js",
+        "rawBytes": 860,
+        "imports": [
+          "assets/shownOnce-10270c0b.js",
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/SkeletonRows-eff13b36.js",
+        "rawBytes": 465,
+        "imports": [
+          "assets/vue-46737487.js",
+          "assets/app-314e71e4.js"
+        ]
+      },
+      {
+        "file": "assets/app-314e71e4.js",
+        "rawBytes": 8776,
+        "imports": [
+          "assets/preload-helper-86ad5cfe.js",
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/callsLoader-a30609a0.js",
+        "rawBytes": 2256,
+        "imports": [
+          "assets/preload-helper-86ad5cfe.js",
+          "assets/shownOnce-10270c0b.js",
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/city-lagos-content-8bffcec7.js",
+        "rawBytes": 3510,
+        "imports": [
+          "assets/engine-7091c546.js",
+          "assets/city-lagos-regulars-99fa733d.js",
+          "assets/city-lagos-venues-95cd0a61.js"
+        ]
+      },
+      {
+        "file": "assets/city-lagos-regulars-99fa733d.js",
+        "rawBytes": 8137,
+        "imports": [
+          "assets/engine-7091c546.js"
+        ]
+      },
+      {
+        "file": "assets/city-lagos-rules-0d1a0a9e.js",
+        "rawBytes": 3519,
+        "imports": [
+          "assets/preload-helper-86ad5cfe.js",
+          "assets/engine-7091c546.js",
+          "assets/links-1526aaef.js",
+          "assets/slices-5d9c9d4c.js"
+        ]
+      },
+      {
+        "file": "assets/city-lagos-venues-95cd0a61.js",
+        "rawBytes": 52608,
+        "imports": [
+          "assets/engine-7091c546.js"
+        ]
+      },
+      {
+        "file": "assets/city-routes-a15b566f.js",
+        "rawBytes": 3147,
+        "imports": []
+      },
+      {
+        "file": "assets/cityWalkState-6121a0ac.js",
+        "rawBytes": 65,
+        "imports": [
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/connectionReturn-c6a4d1ff.js",
+        "rawBytes": 1016,
+        "imports": []
+      },
+      {
+        "file": "assets/engine-7091c546.js",
+        "rawBytes": 225716,
+        "imports": [
+          "assets/slices-5d9c9d4c.js",
+          "assets/preload-helper-86ad5cfe.js"
+        ]
+      },
+      {
+        "file": "assets/format-d8cf42af.js",
+        "rawBytes": 401,
+        "imports": []
+      },
+      {
+        "file": "assets/links-1526aaef.js",
+        "rawBytes": 1320,
+        "imports": [
+          "assets/engine-7091c546.js"
+        ]
+      },
+      {
+        "file": "assets/preload-helper-86ad5cfe.js",
+        "rawBytes": 1260,
+        "imports": []
+      },
+      {
+        "file": "assets/settingsModel-a565807f.js",
+        "rawBytes": 116,
+        "imports": []
+      },
+      {
+        "file": "assets/shownOnce-10270c0b.js",
+        "rawBytes": 137462,
+        "imports": [
+          "assets/vue-46737487.js",
+          "assets/app-314e71e4.js",
+          "assets/preload-helper-86ad5cfe.js",
+          "assets/engine-7091c546.js",
+          "assets/format-d8cf42af.js"
+        ]
+      },
+      {
+        "file": "assets/slices-5d9c9d4c.js",
+        "rawBytes": 2525,
+        "imports": [
+          "assets/engine-7091c546.js"
+        ]
+      },
+      {
+        "file": "assets/startApp-a52bf148.js",
+        "rawBytes": 72674,
+        "imports": [
+          "assets/preload-helper-86ad5cfe.js",
+          "assets/app-314e71e4.js",
+          "assets/shownOnce-10270c0b.js",
+          "assets/GlyphText.vue_vue_type_script_setup_true_lang-1e34f7af.js",
+          "assets/vue-46737487.js",
+          "assets/useGrowth-0145080b.js",
+          "assets/tourState-b40c2fa9.js",
+          "assets/format-d8cf42af.js",
+          "assets/engine-7091c546.js",
+          "assets/usePulse-682a1a57.js",
+          "assets/callsLoader-a30609a0.js",
+          "assets/BaseButton-bd54957d.js",
+          "assets/settingsModel-a565807f.js",
+          "assets/cityWalkState-6121a0ac.js",
+          "assets/SkeletonRows-eff13b36.js",
+          "assets/connectionReturn-c6a4d1ff.js"
+        ]
+      },
+      {
+        "file": "assets/tourState-b40c2fa9.js",
+        "rawBytes": 215,
+        "imports": [
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/useGrowth-0145080b.js",
+        "rawBytes": 4834,
+        "imports": [
+          "assets/shownOnce-10270c0b.js",
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/usePulse-682a1a57.js",
+        "rawBytes": 3220,
+        "imports": [
+          "assets/vue-46737487.js"
+        ]
+      },
+      {
+        "file": "assets/vue-46737487.js",
+        "rawBytes": 81016,
+        "imports": []
+      }
+    ]
+  },
+  "newFeatureModules": [
+    {
+      "file": "assets/BarberApp-e303d0b1.js",
+      "rawBytes": 26063,
+      "startupStatic": false,
+      "modules": [
+        {
+          "id": "src/app/features/living-world/BarberApp.vue",
+          "renderedLength": 93,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/BarberApp.vue?vue&type=script&setup=true&lang.ts",
+          "renderedLength": 37091,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/BarberApp.vue?vue&type=style&index=0&scoped=3082df27&lang.css",
+          "renderedLength": 0,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/barberReply.ts",
+          "renderedLength": 4497,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/game/living-world/barber-catalogue.ts",
+          "renderedLength": 1827,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/game/living-world/barber.ts",
+          "renderedLength": 5154,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        }
+      ]
+    },
+    {
+      "file": "assets/DrivingApp-52e4aa7b.js",
+      "rawBytes": 28618,
+      "startupStatic": false,
+      "modules": [
+        {
+          "id": "src/app/features/living-world/DrivingApp.vue",
+          "renderedLength": 94,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/DrivingApp.vue?vue&type=script&setup=true&lang.ts",
+          "renderedLength": 37369,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/DrivingApp.vue?vue&type=style&index=0&scoped=d5b6b619&lang.css",
+          "renderedLength": 0,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/app/features/living-world/qualificationReply.ts",
+          "renderedLength": 1439,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        },
+        {
+          "id": "src/game/living-world/driving.ts",
+          "renderedLength": 14743,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        }
+      ]
+    },
+    {
+      "file": "assets/drivingScene-b81b2c11.js",
+      "rawBytes": 10409,
+      "startupStatic": false,
+      "modules": [
+        {
+          "id": "src/app/features/living-world/drivingScene.ts",
+          "renderedLength": 20091,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        }
+      ]
+    },
+    {
+      "file": "assets/shownOnce-10270c0b.js",
+      "rawBytes": 137462,
+      "startupStatic": true,
+      "modules": [
+        {
+          "id": "src/app/features/living-world/register.ts",
+          "renderedLength": 696,
+          "lengthMeaning": "Rollup pre-minifier contribution; not final or compressed byte attribution."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Pre-minifier module renderedLength is not minified/compressed byte attribution.",
+    "Static metadata and generated preload records are candidates; no repaired size gate or live gameplay claimed.",
+    "Initial facade-only module reachability omitted merged facades and was discarded; explicit startup root chunk modules seed the conservative import graph."
+  ]
+}

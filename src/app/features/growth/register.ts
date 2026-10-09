@@ -12,13 +12,14 @@ import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { social } from '../social/useSocial.ts'
 import { notificationLines } from '../messages/messagesModel.ts'
-import { noticeMarks } from '../messages/messagesState.ts'
+import { noticeMarks } from '../messages/messageBadges.ts'
 import { awayCardFor, awayWanted, inboxSlot } from './awayModel.ts'
 import { upcomingEvents } from './rulesBoundary.ts'
 import { eventsBadge, eventsNotifications } from './eventsModel.ts'
 import { sharedGrowth } from './growthShared.ts'
 import { missionsBadge, missionsNotifications } from './missionsModel.ts'
 import { referBadge } from './referModel.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 /** App-icon colours for the growth apps (their glyphs arrive with the Phone). */
 const TINTS = Object.freeze({ missions: '#256b45', events: '#b23a2e', refer: '#2b5fa8', touch: '#6a3fa0' })
@@ -27,30 +28,30 @@ export const missions = definePanel({
   id: 'missions', title: 'Missions', placement: 'phone', order: 11, group: 'life', tint: TINTS.missions,
   badge: (_state, view) => missionsBadge(view),
   notifications: (_state, view) => missionsNotifications(view),
-  component: defineAsyncComponent(() => import('./MissionsApp.vue')),
+  component: defineAsyncComponent(bodyLoader('growth/MissionsApp')),
 })
 
 export const events = definePanel({
   id: 'events', title: 'Events', placement: 'phone', order: 41, group: 'city', tint: TINTS.events,
   badge: (_state, view) => eventsBadge(view),
   notifications: (_state, view) => eventsNotifications(view, view.connected ? upcomingEvents(view.now, 7, view.cityId) : []),
-  component: defineAsyncComponent(() => import('./EventsApp.vue')),
+  component: defineAsyncComponent(bodyLoader('growth/EventsApp')),
 })
 
 export const refer = definePanel({
   id: 'refer', title: 'Bring a friend', short: 'Friends', placement: 'phone', order: 39, group: 'people', tint: TINTS.refer,
   badge: () => referBadge(sharedGrowth.value?.state.hello?.referral),
-  component: defineAsyncComponent(() => import('./ReferApp.vue')),
+  component: defineAsyncComponent(bodyLoader('growth/ReferApp')),
 })
 
 export const touch = definePanel({
   id: 'touch', title: 'Stay in touch', short: 'In touch', placement: 'phone', order: 94, group: 'life', tint: TINTS.touch, live: false,
-  component: defineAsyncComponent(() => import('./TouchApp.vue')),
+  component: defineAsyncComponent(bodyLoader('growth/TouchApp')),
 })
 
 export const shareSheet = definePanel({
   id: 'share-sheet', title: 'Share', icon: 'people', placement: 'modal', live: false,
-  component: defineAsyncComponent(() => import('./ShareSheet.vue')),
+  component: defineAsyncComponent(bodyLoader('growth/ShareSheet')),
 })
 
 export const GROWTH_PANELS: readonly VuePanel[] = [missions, events, refer, touch, shareSheet]

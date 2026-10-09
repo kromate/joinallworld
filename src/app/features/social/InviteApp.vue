@@ -124,7 +124,7 @@ function visit(): void {
     <template v-if="me.visiting">
       <h3 class="ui-section">You are visiting</h3>
       <div class="social-list">
-        <div class="social-row">
+        <div class="social-row is-visit">
           <span class="social-avatar" aria-hidden="true"><GameIcon name="home" inline /></span>
           <div><strong>{{ me.visiting.host.name }}’s house</strong><small>{{ HOST_STATUS[me.visiting.hostStatus] ?? '' }} · {{ me.visiting.guests.length }}/{{ me.visiting.capacity }} guests · {{ roomLine(state.houseRoom, me.visiting.host.id) }}</small></div>
           <span class="social-actions">

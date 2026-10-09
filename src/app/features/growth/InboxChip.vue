@@ -7,7 +7,7 @@ import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { social, start as startSocial } from '../social/useSocial.ts'
 import { unreadChats, unreadUpdates } from '../messages/messagesModel.ts'
-import { noticeMarks } from '../messages/messagesState.ts'
+import { noticeMarks } from '../messages/messageBadges.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { inboxChip } from './awayModel.ts'
 

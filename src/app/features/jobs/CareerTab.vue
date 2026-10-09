@@ -5,7 +5,8 @@
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
 // The work-dilemma card is drawn only while the life has one waiting
 // (view.career.dilemma is its id; the words are a lazy chunk fetched here, src/game/content/dilemmas.ts); a choice sends 'career.dilemma' { choice }.
-import { computed, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, ref, shallowRef, watch } from 'vue'
+import type { ActionPayload } from '../../../types/actions.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { cap, money } from '../../ui/format.ts'
@@ -20,19 +21,28 @@ defineProps<{ params?: unknown }>()
 
 const { game, shell, goTo, command } = useApp()
 const { act, pending } = useAct()
+const TeachingShift = defineAsyncComponent(() => import('./TeachingShift.vue'))
+const teach = (payload: ActionPayload<'career.teach'>): Promise<boolean> => act('teach', () => command('career.teach', payload))
+const cancelTeaching = (): Promise<boolean> => act('cancel-teaching', () => command('cancel'))
 const view = game.view
 const career = computed(() => view.value.career)
 const promotion = computed(() => promotionLine(career.value, cap))
 const offline = computed(() => readOnlyReason(view.value.connected ? null : linkWords(view.value)?.why))
 const waiting = computed(() => career.value.dilemma?.id ?? null)
 const dilemma = shallowRef<DilemmaDefinition | null>(null)
-const askedFor = ref<string | null>(null)
-watch(waiting, async (id) => {
-  askedFor.value = id
-  if (!id) { dilemma.value = null; return }
+const wordsFailed = ref(false)
+const retryWords = ref(0)
+watch([waiting, () => game.session.value?.id, retryWords], async ([id], _previous, onCleanup) => {
+  let current = true
+  onCleanup(() => { current = false })
+  dilemma.value = null
+  wordsFailed.value = false
+  if (!id) return
   const words = (await import('../../../game/content/dilemmas.ts').catch(() => null))?.dilemmaById(id) ?? null
-  if (askedFor.value === id) dilemma.value = words
-}, { immediate: true })
+  if (!current) return
+  dilemma.value = words
+  wordsFailed.value = words === null
+}, { immediate: true, flush: 'sync' })
 const choose = (choice: string): Promise<boolean> => act(`dilemma:${choice}`, () => command('career.dilemma', { choice }))
 function go(venue: string, spot?: string): void { shell.close(); void goTo(venue, spot) }
 </script>
@@ -56,8 +66,13 @@ function go(venue: string, spot?: string): void { shell.close(); void goTo(venue
       <button type="button" class="ui-button" @click="shell.open('jobs')">Jobs: switch or quit</button>
     </div>
     <p v-if="!view.connected" class="ui-why">{{ offline }}</p>
+    <TeachingShift v-if="career.teaching" :generation="career.teaching.generation" :practice="career.teaching.practice" :disabled="pending !== null || !view.connected" @answer="teach" @cancel="cancelTeaching" />
 
-    <section v-if="dilemma" class="ui-card career-card career-dilemma" aria-live="polite">
+    <section v-if="waiting && !dilemma" class="ui-card career-card" role="status">
+      <p>{{ wordsFailed ? 'The work situation could not be loaded. Try again to see your choices.' : 'Loading your work situation…' }}</p>
+      <button v-if="wordsFailed" type="button" class="ui-button" @click="retryWords++">Try again</button>
+    </section>
+    <section v-else-if="dilemma" class="ui-card career-card career-dilemma" aria-live="polite">
       <h3>Something came up</h3>
       <p>{{ dilemma.prompt.en }}</p>
       <p v-if="dilemma.prompt.pcm" class="career-legend">{{ dilemma.prompt.pcm }}<template v-if="dilemma.beta"> (Pidgin wording not yet reviewed)</template></p>

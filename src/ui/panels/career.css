@@ -1,7 +1,8 @@
 /* Career: a Sim tab and a Phone app. Class names are prefixed with the panel id. */
 .career-hero{--hero:var(--app-tint,#0284c7)}
 .career-hero strong{font-size:22px}
-.career-card h3{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-2);margin:0 0 4px!important;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
+.career-card{box-shadow:none;overflow-wrap:anywhere}
+.career-card h3{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--s-2);margin:0 0 4px!important;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;color:var(--c-ink)!important}
 .career-card h3 b{font-size:var(--t-title);font-variant-numeric:tabular-nums}
 .career-schedule{margin:0 0 var(--s-2)!important;font-size:var(--t-body)!important;color:var(--c-green-dark);font-weight:600}
 .career-next{font-size:var(--t-body)!important;margin:4px 0 0!important}

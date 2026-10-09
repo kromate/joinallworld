@@ -104,10 +104,7 @@ test('the page never imports the shop rules or the catalogue: the routes answer 
   walk(join(root, 'game', 'systems'))
   assert.ok(files.length > 200)
   for (const file of files) assert.doesNotMatch(readFileSync(file, 'utf8'), /from '[^']*(business-model|content\/business)\.ts'/, `${file} must not import the shop rules or catalogue`)
-  // The app itself is reached only through the lazy registration.
-  const entry = readFileSync(join(root, 'app', 'features', 'business', 'register.ts'), 'utf8')
-  assert.match(entry, /defineAsyncComponent\(\(\) => import\('\.\/BusinessApp\.vue'\)\)/)
-  assert.doesNotMatch(entry, /businessModel|BusinessApp\.vue'\n?import/)
+  // Actual registered loading is exercised by businessComponents; the emitted graph is checked by entry.test.
 })
 
 test('opening a stall says it once: the game\'s own line is the toast, and the request adds none', () => {

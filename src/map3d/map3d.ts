@@ -150,6 +150,8 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
   const renderer = providedRenderer || new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.shadowMap.enabled = false;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.08;
   renderer.setClearColor(0x000000, 0);
   const canvas = renderer.domElement;
 

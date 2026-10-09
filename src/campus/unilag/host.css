@@ -4,6 +4,8 @@
 .campus-host-tag{position:absolute;max-width:150px;min-height:28px;transform:translate(-50%,-100%);padding:4px 9px;border:1px solid #ffffff8a;border-radius:999px;background:#172c38dc;color:#fff;font:700 11px/1.2 var(--font,system-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 8px #0c172344;pointer-events:auto;cursor:pointer}
 .campus-host-tag.is-landmark{background:#f7f0dbea;color:#553b26;border-color:#fff}
 .campus-host-tag.is-npc{background:#245b43e8;color:#f2fff8}
+.campus-host-tag[data-npc-word]::before{content:attr(data-npc-word);display:inline-block;margin-right:5px;font-size:.85em;font-weight:800;letter-spacing:.04em;color:#d9f4e5}
+@media (pointer:coarse){.campus-host-tag{min-height:44px}}
 .campus-host-tag:focus-visible,.campus-host-control:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .campus-host .campus-host-map{position:absolute;z-index:3;right:14px;top:max(76px,var(--campus-top,76px));width:170px;height:116px;border:1px solid #ffffffba;border-radius:16px;background:#edf0dfdc;box-shadow:0 6px 22px #16282033;pointer-events:none}
 .campus-host-zone{position:absolute;z-index:3;right:22px;top:calc(max(76px,var(--campus-top,76px)) + 8px);max-width:138px;color:#283b32;font:700 10px/1.2 var(--font,system-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}

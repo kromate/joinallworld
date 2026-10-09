@@ -25,6 +25,8 @@ export async function loadGame(): Promise<LoadedGame> {
     // Every referenced city's rules and the current city's content must arrive before reconstruction. A failed download
     // leaves the saved copy untouched, so retrying can never trade homes or money for an empty preview.
     await loadLifeCities(savedState(cached), [initialCity(cached, isCityId)])
+    const { homewardFor } = await import('../game/homeward-gate.ts')
+    await homewardFor(savedState(cached))
   } else await loadCityContent(initialCity(cached, isCityId))
   return import('./startApp.ts')
 }

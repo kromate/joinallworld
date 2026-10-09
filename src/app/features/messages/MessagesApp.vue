@@ -38,7 +38,7 @@ import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import CompanionPin from '../companion/CompanionPin.vue'
-import { noticeMarks, showConversation, takeDraft, ui } from './messagesState.ts'
+import { noticeMarks, resetMessageUi, showConversation, takeDraft, ui } from './messagesState.ts'
 import LazyList from '../../ui/LazyList.vue'
 import { chunkStart, chunkedView, moreShown } from '../../ui/lazyList.ts'
 import { loadMoreChats, loadOlder } from '../social/socialPages.ts'
@@ -133,7 +133,7 @@ const composer = ref<InstanceType<typeof Composer> | null>(null)
 const replying = ref<Message | null>(null)
 const messageAction = ref<{ kind: 'edit' | 'delete' | 'forward'; item: Message } | null>(null)
 watch(() => ui.open, () => { messageAction.value = null })
-watch(() => me.value?.me.id, () => { messageAction.value = null; replying.value = null })
+let actorTurn = 0
 // Of a long conversation only the newest lines are drawn; earlier ones are drawn as the reader scrolls up, and read from the server
 // when the kept lines run out (chunked rendering: a line's height is not known, so there is no fixed window).
 const FIRST_SHOWN = 60, SHOWN_STEP = 40
@@ -147,18 +147,20 @@ const rows = computed(() => threadRows(items.value.slice(hiddenLocal.value), Dat
 const olderMark = ref<HTMLElement | null>(null)
 /** Draw earlier lines, from what is held or, when that has run out, from the server; the reader stays on the line they were reading. */
 async function showEarlier(): Promise<void> {
-  const box = threadBox.value, key = ui.open
+  const box = threadBox.value, key = ui.open, turn = actorTurn
   if (!box || !key || earlier.busy || !hasEarlier.value) return
   earlier.busy = true; earlier.error = ''
   const height = box.scrollHeight, top = box.scrollTop
   if (hiddenLocal.value > 0) shown.value = moreShown(shown.value, items.value.length, SHOWN_STEP)
   else {
     const got = await loadOlder(key)
+    if (turn !== actorTurn) return
     if (ui.open !== key) { earlier.busy = false; return }
     if (!got) earlier.error = 'Couldn’t load earlier messages.'
     else { shown.value += got.added; if (!got.more || !got.added) exhausted.add(key); shell.bump() }
   }
   await nextTick()
+  if (turn !== actorTurn) return
   box.scrollTop = top + (box.scrollHeight - height)
   earlier.busy = false
   // Still near the top (a short page): keep going.
@@ -233,10 +235,11 @@ function sendFromComposer(body: string, extra: { mentions?: { id: string; start:
 // ---- finding a player, groups --------------------------------------------------------------
 const find = reactive<{ text: string; busy: boolean; results: SearchResult[] | null; error: string | null }>({ text: '', busy: false, results: null, error: null })
 async function search(): Promise<void> {
-  const text = find.text.trim()
+  const turn = actorTurn, text = find.text.trim()
   if (text.length < 2) { find.results = null; find.error = 'Type at least two letters of their name.'; return }
   find.busy = true; find.error = null
   const result = await call<{ results: SearchResult[] }>(`/api/social/search?q=${encodeURIComponent(text)}`)
+  if (turn !== actorTurn) return
   find.busy = false
   if (result.ok) find.results = result.results; else { find.results = null; find.error = result.reason }
 }
@@ -257,29 +260,32 @@ const pingFor = (id: string | null | undefined): boolean => pingInstead(id ? me.
 const presenceWord = (id: string | null | undefined): string | null => { const state = presenceOf(id); return state === 'online' ? 'Online now' : state === 'offline' ? 'Offline' : null }
 /** Send money from a chat: the player's card opens with its gift form already showing (the card owns the limits and the one-send client id). */
 async function sendMoneyTo(player: string, name: string): Promise<void> {
+  const turn = actorTurn
   shell.open('person', { player, name })
   // The card clears its forms when it first shows a player, so the form is opened once the card has taken this player.
   for (let tries = 0; tries < 40 && personUi.player !== player; tries += 1) await new Promise((done) => setTimeout(done, 50))
-  if (personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
+  if (turn === actorTurn && personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
 }
 function newGroup(): void { Object.assign(group, { open: true, name: '', members: [], clientId: newClientId() }) }
 // Opened for a new group (the guide's "create a group"): the form opens as soon as the chats are there to pick friends from.
 watch([wantGroup, me], () => { if (wantGroup.value && me.value) { wantGroup.value = false; newGroup() } }, { immediate: true })
 async function createGroup(): Promise<void> {
   if (group.busy) return
+  const turn = actorTurn
   group.busy = true
   // One client id per group form, reused on a retry, so a retry cannot create it twice.
   const result = await perform<{ conv: Conversation }>('/api/social/groups', { name: group.name, members: group.members.map((person) => person.id), clientId: group.clientId }, 'Group created')
+  if (turn !== actorTurn) return
   group.busy = false
   if (result.ok) { group.open = false; openConversation(result.conv.id) }
 }
 function groupLeft(): void { const key = ui.open; if (key) social.threads.delete(key); setOpen(null) }
 /** Remove a chat from my list only: the other person keeps theirs, and it comes back with a new message. */
 async function hideChat(): Promise<void> {
-  const key = ui.open
+  const key = ui.open, turn = actorTurn
   if (!key) return
   const result = await perform(`/api/social/conversations/${encodeURIComponent(key)}/prefs`, { hide: true })
-  if (result.ok) groupLeft()
+  if (turn === actorTurn && result.ok && ui.open === key) groupLeft()
 }
 async function pinChat(on: boolean): Promise<void> { const key = ui.open; if (key) await perform(`/api/social/conversations/${encodeURIComponent(key)}/prefs`, { pin: on }) }
 const chatFilter = ref('')
@@ -287,18 +293,20 @@ const chatList = computed(() => sortChats(filterChats((me.value?.conversations ?
 const showSettings = ref(false)
 const lightbox = ref<Message | null>(null)
 /** The picture button shows where pictures are switched on and the chat takes them: a direct chat with a friend, or a group. */
+const voiceAllowed = computed(() => Boolean(me.value?.limits.voice?.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some(friend => friend.id === partner.value)))))
+async function reportVoice(line: Message): Promise<void> { if (line.voice && ui.open) await perform('/api/social/reports', { conv: ui.open, voice: line.voice.id, reason: 'other' }, 'Voice note reported and hidden for you.') }
 const pictureAllowed = computed(() => Boolean(me.value?.limits.pictures.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some((friend) => friend.id === partner.value))) && !readOnly.value))
-async function pictureSent(result: { conv: Conversation }): Promise<void> {
+async function pictureSent(result: { conv: Pick<Conversation, 'id'> }): Promise<void> {
   const real = result.conv.id
   if (ui.open !== real) setOpen(real)
   await openThread(real)
 }
 async function reportPicture(): Promise<void> {
-  const line = lightbox.value, key = ui.open
+  const line = lightbox.value, key = ui.open, turn = actorTurn
   if (!line?.image || !key) return
   lightbox.value = null
   await perform('/api/social/reports', { conv: key, image: line.image.id, reason: 'other' }, 'Report received. The picture is hidden for you.')
-  void openThread(key)
+  if (turn === actorTurn) void openThread(key)
 }
 /** After the player's own message in a chat, once: "Get a notification when Joy replies?" (never on arrival; the browser's own question comes only after Yes). */
 const askNotify = computed(() => Boolean(ui.open && conv.value && items.value.some((item) => isOutbox(item) || (!isOutbox(item) && item.from?.id === me.value?.me.id)) && !askedAboutNotifications() && growth.state.hello?.consent?.push !== true && growth.state.hello?.consent?.age !== 'minor'))
@@ -324,9 +332,20 @@ function showTab(tab: 'chats' | 'groups' | 'updates'): void {
 }
 watch([() => ui.tab, () => ui.open, me, notices], readUpdates, { immediate: true })
 /** The notice that put the player in a group offers one tap to leave it. */
-async function leaveFromUpdate(key: string): Promise<void> { await perform(`/api/social/groups/${encodeURIComponent(key)}`, { op: 'leave' }, 'You left the group.'); social.threads.delete(key) }
+async function leaveFromUpdate(key: string): Promise<void> { const turn = actorTurn; await perform(`/api/social/groups/${encodeURIComponent(key)}`, { op: 'leave' }, 'You left the group.'); if (turn === actorTurn) social.threads.delete(key) }
 const answerFriend = (from: string, accept: boolean): Promise<unknown> => perform('/api/social/friends/answer', { from, accept, cityId: socialCityId() }, accept ? 'You are now friends' : null)
 const answerBae = (from: string, accept: boolean): Promise<unknown> => perform('/api/social/bae/answer', { from, accept, cityId: socialCityId() })
+
+watch(() => game.session.value?.id ?? null, () => {
+  actorTurn++
+  resetMessageUi(); social.openConv = null
+  messageAction.value = null; replying.value = null; quoted.value = null; lightbox.value = null
+  wantGroup.value = false; finding.value = false; chatFilter.value = ''; showSettings.value = false
+  Object.assign(find, { text: '', busy: false, results: null, error: null })
+  Object.assign(group, { open: false, name: '', members: [], clientId: '', busy: false })
+  earlier.busy = false; earlier.error = ''; exhausted.clear(); shown.value = FIRST_SHOWN
+  fresh.value = 0; atBottom.value = true; seenBefore.value = null
+}, { flush: 'sync' })
 
 onMounted(() => {
   void growth.load() // the footer's WhatsApp link comes with the growth hello (asked for at most every five minutes)
@@ -411,7 +430,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
@@ -425,7 +444,7 @@ defineExpose({
         <footer class="messages-foot">
           <span v-if="readOnly" class="messages-why">{{ readOnly }}</span>
           <MessageAction v-if="messageAction" :key="`${messageAction.kind}:${messageAction.item.id}`" :kind="messageAction.kind" :item="messageAction.item" :conversations="me.conversations" :disabled="Boolean(readOnly)" :max="me.limits.body" @close="messageAction = null" />
-          <Composer ref="composer" :pictures="pictureAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" />
+          <Composer ref="composer" :pictures="pictureAllowed" :voice="voiceAllowed" :target="targetOf(ui.open)" :new-id="newClientId" :conv="ui.open" :members="isGroup && conv?.kind === 'group' ? conv.members : []" :me-id="me.me.id" :admin="conv?.owner === me.me.id" :max="me.limits.body" :disabled="Boolean(readOnly)" :reply="replying" :prefill="ui.prefill" @send="sendFromComposer" @cancel-reply="replying = null" @sent-picture="pictureSent" @sent-voice="pictureSent" />
         </footer>
       </div>
 
@@ -529,7 +548,7 @@ defineExpose({
         <LinkButton v-if="growth.channel.value" :href="growth.channel.value" block class="messages-channel">Follow Allworld on WhatsApp</LinkButton>
       </template>
     </template>
-    <Lightbox v-if="lightbox?.image" :id="lightbox.image.id" :caption="lightbox.body" :from="lightbox.from?.name ?? ''" :mine="lightbox.from?.id === me?.me.id" @close="lightbox = null" @report="reportPicture" />
+    <Lightbox v-if="me && lightbox?.image" :id="lightbox.image.id" :me-id="me.me.id" :caption="lightbox.body" :from="lightbox.from?.name ?? ''" :mine="lightbox.from?.id === me?.me.id" @close="lightbox = null" @report="reportPicture" />
   </div>
 </template>
 

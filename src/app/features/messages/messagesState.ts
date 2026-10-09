@@ -1,7 +1,7 @@
 // The Messages app's own UI state: which tab, which conversation, the draft. It lives outside the
 // component so it survives closing and reopening the phone, as it does in the existing panel.
 import { reactive } from 'vue'
-import { createNoticeMarks } from './messagesModel.ts'
+export { noticeMarks } from './messageBadges.ts'
 
 export const ui = reactive<{
   tab: 'chats' | 'groups' | 'updates'
@@ -16,8 +16,12 @@ export const ui = reactive<{
   manage: boolean
 }>({ tab: 'chats', open: null, openName: null, draft: '', prefill: '', manage: false })
 
-function deviceStorage(): Storage | null { try { return globalThis.localStorage ?? null } catch { return null } }
-export const noticeMarks = createNoticeMarks(deviceStorage())
+/** Device identity replacement must also clear UI held while Messages is closed. */
+export function resetMessageUi(): void {
+  Object.assign(ui, { tab: 'chats', open: null, openName: null, draft: '', prefill: '', manage: false })
+}
+globalThis.window?.addEventListener('jaw:session', resetMessageUi)
+
 
 /** Another conversation (or the list) is on screen: the group list closes and the old draft is not carried over. */
 export function showConversation(key: string | null): void {

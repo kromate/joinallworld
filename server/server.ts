@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
+import { createFileVoices } from './social/voice-files.ts';
 import { createFileImages } from './social/image-files.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
@@ -62,6 +63,8 @@ type ServerTelemetry = ReturnType<typeof createServerTelemetry>;
 export type Connection = WebSocket & WsConnection;
 /** The options of createServer; every one has a default. */
 export interface ServerOptions {
+  /** Trusted host activation only; player requests cannot opt in. */
+  interactiveTeachingStarts?: boolean
   commerceGateway?: CommerceGateway
   streetAssets?: RouteContext['streetAssets']
   dataDir?: string
@@ -153,7 +156,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
 }
 
 export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
-  lazyFlushMs, shardIo,
+  lazyFlushMs, shardIo, interactiveTeachingStarts = false,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
@@ -228,6 +231,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
     const found = sessionOfCookie(db, cookieId(req), now(), bindingOf(req) !== undefined);
     if (!found) return undefined;
+    const expectedActor = req.headers['x-allworld-actor'];
+    if (expectedActor !== undefined && expectedActor !== found.session.publicId) throw fail(409, 'actor_changed');
     if (renew) renewResolved(found, now(), sessionTtlMs);
     return found.session;
   };
@@ -244,7 +249,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
   // One character on several devices: a change a player would see is announced to every socket of that character (host-context.ts lifeAnnouncer).
   const lifeSync = lifeAnnouncer((publicId, frame) => ctx.push(publicId, frame));
-  const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
+  const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note, interactiveTeachingStarts });
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req: IncomingMessage, secret: string | undefined): string | string[] {
@@ -381,7 +386,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (result.file && status < 300) {
           // Bytes a route hands over as they are (a chat picture): private to the caller, never sniffed, shown in the page.
           if (!res.headersSent && !res.destroyed) {
-            res.writeHead(status, { ...apiHeaders(factsOf(req)), 'Content-Type': result.file.type, 'Cache-Control': 'private, max-age=300', 'Content-Disposition': 'inline', 'Content-Length': String(result.file.bytes.length) });
+            res.writeHead(status, { ...apiHeaders(factsOf(req)), 'Content-Type': result.file.type, 'Cache-Control': result.file.cache ?? 'private, max-age=300', 'Content-Disposition': 'inline', 'Content-Length': String(result.file.bytes.length) });
             res.end(Buffer.from(result.file.bytes));
           }
           telemetry.http({ method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId });
@@ -507,7 +512,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, images: createFileImages(join(dataDir, 'chat-images')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

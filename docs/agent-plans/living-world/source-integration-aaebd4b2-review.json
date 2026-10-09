@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "observedAtUtc": "2026-10-09T10:40:15Z",
+  "integrationSha": "aaebd4b2971e8c19d409de46933f530dec238324",
+  "parents": [
+    "f865c8333059613cbaa9206f4423336bc7641c71",
+    "d2c4796993f00387a901f0db4953e471a34f797b"
+  ],
+  "publicMainMergeBase": "134dc94d08f938938e9aa40bb9a39055bfe20bb1",
+  "scope": "WORLD tooling/campaign/index code, tests, diagnostic workflow and coordination/docs; no server/src/deploy/release-policy delta",
+  "independentSourceReview": "Existing Luna release reviewer; no material runtime/provider/release conflict found. Sol reviewed scope, resource caps and production/staging controls. This is source review, not whole candidate acceptance.",
+  "conflictResolution": "docs/AGENT-COORDINATION.md retains both published handoffs; superseded programme and app rows labeled historical; current programme row added.",
+  "worldDiagnostic": {
+    "sourceSha": "3880c17f25509ab13175784d5b1a794923bafa78",
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37915503802",
+    "terminal": "success",
+    "jobs": [
+      "audit",
+      "macos-lease"
+    ],
+    "actualGitComparison": {
+      "referenceSha": "d2c4796993f00387a901f0db4953e471a34f797b",
+      "patterns": [
+        "*.ts",
+        "*.tsx",
+        "*.py",
+        ".github/workflows/*"
+      ],
+      "changedPaths": []
+    },
+    "limitation": "Remaining JSON/docs differences include named acceptance receipts. No runtime/map/upload acceptance."
+  },
+  "mainFastRun": {
+    "sha": "d2c4796993f00387a901f0db4953e471a34f797b",
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37916439330",
+    "terminal": "success"
+  },
+  "currentFrozenProgrammeRun": {
+    "sha": "7aa2470175e3a46cb0a4541348763f6d12ec05f2",
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37917158580",
+    "status": "in_progress",
+    "sourceTestsStarted": [
+      "2026-10-09T10:27:51Z",
+      "2026-10-09T10:27:16Z"
+    ],
+    "acceptanceTransfersToMerge": false
+  },
+  "releaseControlGap": {
+    "existingTarget": "joinallworld-next production Worker/namespace",
+    "previewIsIsolatedStaging": false,
+    "githubProductionEnvironmentMetadataRead": "404; existence/access unresolved, no secret-value read",
+    "repositoryVariableNameRead": "empty list",
+    "existingAuthorizedLocalRelease": "documented checked package and existing authenticated Wrangler, WORLD sole uploader; availability clarification sent"
+  },
+  "newWork": [
+    "Disposable rendered desktop/mobile-emulation browser QA; no local heavy execution",
+    "Strict durable mapped trip/fleet adapter behind unavailable physical gate; no live allocation/motion/reward"
+  ],
+  "accepted": false,
+  "deployed": false,
+  "followup": {
+    "observedAtUtc": "2026-10-09T10:49:00Z",
+    "frozen7aaRun": "terminal failure: both source jobs2519/2515pass/3legacy-migration expectation failures/1originalskip; later waves skipped",
+    "exactMergedSourceAcceptance": "unproven; no transfer",
+    "releaseOwnerReply": "WORLD confirms checked existing authenticated local package route; no separately isolated QA worker/version method established; preview is same production namespace; no deployment requested",
+    "productionHealth": {
+      "observedAtUtc": "2026-10-09T10:54:48Z",
+      "ok": true,
+      "build": "joinallworld-a44629b38be751a9ad446051564",
+      "serverTime": 1791543288188
+    },
+    "goalmaticRefresh": {
+      "devSha": "0533aac3000c038143064b82403db9701140110c",
+      "openPrs": 0,
+      "privateSourcePublished": false,
+      "liveAdapter": "disabled"
+    },
+    "repairDispatch": "Explicit followup_task started QA and mapped-trip repair turns after Root found messages alone do not wake idle agents."
+  }
+}

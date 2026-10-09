@@ -15,10 +15,13 @@ import { renderToString } from 'vue/server-renderer'
 import type { AdsResponse, GovResponse, NeighboursResponse, PulseResponse, RadioView, RichListResponse } from '../../../types/civic.ts'
 import type { App } from '../../state/app.ts'
 import type { Civic } from './civicClient.ts'
-import { createFakeServer } from '../../testing/fakeServer.ts'
+import { createFakeServer, memoryStorage } from '../../testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
-const server = createFakeServer()
+// Exercise civic refresh as a real quick-start guest; the server still enforces the normal
+// onboarding action before the first player action.
+const server = createFakeServer({ onboarded: false })
+const realStorage = Reflect.get(globalThis, 'localStorage')
 let vite: ViteDevServer
 let app: App
 let civic: Civic
@@ -41,6 +44,7 @@ const buttonTag = (html: string, label: RegExp | string): string => {
 
 before(async () => {
   globalThis.fetch = server.fetch
+  Reflect.set(globalThis, 'localStorage', memoryStorage())
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
   await cityLoader.loadCityContent('lagos')
@@ -48,10 +52,14 @@ before(async () => {
   const core = await load<{ sharedStore: { pending: Set<string> } }>('/src/app/features/civic/civicCore.ts')
   pending = core.sharedStore.pending
   civic = (await load<{ useCivic: () => Civic }>('/src/app/features/civic/useCivic.ts')).useCivic()
-  assert.equal(await app.game.connect(), true)
+  assert.equal(await app.game.connect(true), true)
+  const quickStart = await app.game.resend(app.game.newId(), 'onboarding.quick-start', {
+    look: { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'green', bottomsColor: 'navy' },
+  })
+  assert.deepEqual([quickStart.ok, quickStart.code], [true, 'playing'], 'the ordinary quick-start action confirms this guest before civic actions')
   app.game.stop()
 })
-after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
+after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch; if (realStorage === undefined) Reflect.deleteProperty(globalThis, 'localStorage'); else Reflect.set(globalThis, 'localStorage', realStorage) })
 
 const governor = (patch: Partial<GovResponse> = {}): GovResponse => ({
   city: 'lagos', phase: 'voting', phaseEndsAt: server.now() + 3 * 3600000,
@@ -119,14 +127,14 @@ test('Governor: a vote on its way says "Working…" and cannot be pressed again;
   const cityId = app.game.view.value.cityId
   const open = governor({ you: { ...governor().you!, vote: { ok: true, checks: [] } } })
   civic.put(`gov:${cityId}`, open)
-  pending.add('vote:c1')
+  pending.add(JSON.stringify([app.game.cityId.value, 'vote:c1']))
   try {
     const html = await render('GovernorApp')
     const pressed = buttonTag(html, 'Working…')
     assert.match(pressed, /disabled/)
     assert.match(pressed, /aria-busy="true"/)
     assert.match(buttonTag(html, 'Vote for Tolu'), /^<button(?![^>]*disabled)/, 'another candidate can still be chosen')
-  } finally { pending.delete('vote:c1') }
+  } finally { pending.delete(JSON.stringify([app.game.cityId.value, 'vote:c1'])) }
   const { govRefusal } = await load<{ govRefusal: { value: { key: string; code: string; reason: string } | null } }>('/src/app/features/civic/civicDrafts.ts')
   govRefusal.value = { key: `gov:${cityId}`, code: 'address_vote_limit', reason: 'Too many votes from this network.' }
   try {
@@ -186,11 +194,11 @@ test('Neighbours: counts from the server, presence, a way to say hi, and the hid
   assert.ok(buttons(html).includes('Hide my home from the directory'))
   civic.put(`hood:${cityId}`, { ...data, hidden: true })
   assert.ok(buttons(await render('NeighboursApp')).includes('List my home in the directory'))
-  pending.add('prefs')
-  try { assert.ok(buttons(await render('NeighboursApp')).includes('Working…')) } finally { pending.delete('prefs') }
+  pending.add(JSON.stringify([app.game.cityId.value, 'prefs']))
+  try { assert.ok(buttons(await render('NeighboursApp')).includes('Working…')) } finally { pending.delete(JSON.stringify([app.game.cityId.value, 'prefs'])) }
 })
 
-test('Rich List: the podium, the rank and the toggle', async () => {
+test('Rich List: ordered ranks, the player marker and the visibility toggle', async () => {
   const cityId = app.game.view.value.cityId
   const row = (rank: number, name: string, amount: number, you = false) => ({ rank, id: `p${rank}`, name, amount, you })
   const data: RichListResponse = { city: 'lagos', week: 1, size: 10, balances: [row(1, 'Ada', 9000), row(2, 'Bisi', 5000, true), row(3, 'Chi', 4000), row(4, 'Dayo', 3000)], earners: [],
@@ -200,9 +208,20 @@ test('Rich List: the podium, the rank and the toggle', async () => {
   const words = text(html)
   assert.ok(words.includes('You · rank 2 ₦5,000 Earned ₦1,200 this week'))
   assert.ok(words.includes('40 players in') && words.includes('5 online now') && words.includes('90 daily visits'))
-  assert.match(html, /<ol class="richlist-podium"[^>]*>/)
-  assert.ok(words.includes('Bisi (you)'))
-  assert.match(html, /<ol[^>]*class="ui-rows"[^>]*start="4"/)
+  assert.match(html, /<ol class="ranking" aria-label="Top balances"[^>]*>/)
+  const board = html.match(/<ol class="ranking" aria-label="Top balances"[^>]*>([\s\S]*?)<\/ol>/)?.[1] ?? ''
+  const rows = [...board.matchAll(/<li\b([^>]*)>([\s\S]*?)<\/li>/g)]
+  assert.equal(rows.length, 4, 'the accessible ordered list contains the four rows returned')
+  assert.ok(rows.every(([, attrs]) => new Set((attrs?.match(/class="([^"]+)"/)?.[1] ?? '').split(/\s+/)).has('ranking-row')), 'each returned item is a ranking row regardless of class ordering')
+  assert.deepEqual([...board.matchAll(/aria-label="Rank (\d+)"/g)].map(match => Number(match[1])), [1, 2, 3, 4])
+  assert.deepEqual([...board.matchAll(/<strong[^>]*>([^<]+)<\/strong>/g)].map(match => match[1]), ['Ada', 'Bisi', 'Chi', 'Dayo'])
+  const bisiRow = rows.find(([, , content]) => /<strong\b[^>]*>Bisi<\/strong>/.test(content ?? ''))
+  assert.ok(bisiRow, 'the player appears in the ordered board')
+  const bisiClasses = new Set((bisiRow[1]?.match(/class="([^"]+)"/)?.[1] ?? '').split(/\s+/))
+  assert.ok(bisiClasses.has('ranking-row') && bisiClasses.has('is-you'), 'the named player row carries the self marker')
+  assert.match(board, /Bisi<\/strong><small[^>]*>You<\/small>/)
+  assert.ok(words.includes('Top earners this week'))
+  assert.ok(!buttons(html).includes('Show more'), 'four rows do not trigger a continuation when the server page size is ten')
   assert.ok(words.includes('Nobody has earned anything this week yet.'))
   assert.ok(buttons(html).includes('Hide me from the Rich List'))
   civic.put(`rich:${cityId}`, { ...data, you: { ...data.you!, listed: false } })

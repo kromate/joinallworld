@@ -90,6 +90,16 @@ export function regionInfo(ref: RegionRef, { cityId = null, feature = null, curr
   const group = AFRICA_GROUPS[feature?.sub!]?.name ?? CONTINENTS[feature?.c!]?.name ?? null;
   const type = `${TYPES[feature?.k!] || 'Country'}${group ? ` · ${group}` : ''}`;
   if (status === 'open') {
+    const city = entry.city ? cityEntry(entry.city) : null;
+    if (city?.status === 'playable') {
+      const access = cityAccess(city.id, { current, held });
+      const every = current === city.id ? [...new Set(linksFrom(city.id).map(link => link.to))] : [];
+      const others = every.filter(to => isOpenCityId(to));
+      const soon = every.filter(to => !isOpenCityId(to)).map(to => cityName(to) ?? to);
+      return { ...base, type, teaser: city.teaser, city: { id: city.id, name: city.name }, soon, tag: access === 'here' ? 'You are here' : 'Open', tone: access === 'here' ? 'here' : 'open',
+        routes: current && current !== city.id ? routesBetween(current, city.id, routes) : others.flatMap(to => routesBetween(city.id, to, routes)), routesFrom: current && current !== city.id ? fromName : others.length ? city.name : null,
+        action: access === 'here' ? { kind: 'open-city', label: `Enter ${city.name}`, city: city.id } : current ? null : { kind: 'enter-city', label: `Go to ${city.name}`, city: city.id } };
+    }
     return { ...base, type, teaser: entry.teaser || `${name} is open.`, tag: 'Open', tone: 'open', action: entry.level ? { kind: 'zoom', label: `Zoom in to ${name}`, level: entry.level } : null };
   }
   if (status === null) return { ...base, type, teaser: entry.teaser || `${name} is on the map for context.`, tag: 'Not planned', tone: 'none' };

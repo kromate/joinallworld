@@ -188,14 +188,14 @@ interface Bar { colour: Colour; name: string; bot: boolean; you: boolean; pieces
 const bar = (colour: Colour): Bar => {
   const seat = seats.value[seatOfColour(colour)]
   const pieces = sortCaptured(view.value.captured[colour])
-  return { colour, name: sides.value[colour], bot: seat?.bot === true, you: view.value.you === colour, pieces, lead: materialLead(view.value, colour), words: capturedWords(pieces), clock: clockFace(colour), turn: view.value.turn === colour && !over.value }
+  return { colour, name: seat?.bot ? sides.value[colour].replace(/\s*\(bot\)$/i, '') : sides.value[colour], bot: seat?.bot === true, you: view.value.you === colour, pieces, lead: materialLead(view.value, colour), words: capturedWords(pieces), clock: clockFace(colour), turn: view.value.turn === colour && !over.value }
 }
 const topBar = computed(() => bar(top.value))
 const bottomBar = computed(() => bar(bottom.value))
 const pairs = computed(() => pairMoves(view.value.history))
 const lastPly = computed(() => view.value.history.length - 1)
-const status = computed(() => statusText(view.value, sides.value))
-const banner = computed(() => (view.value.over ? overBanner(view.value.over) : ''))
+const status = computed(() => props.state.result?.calledOff ? 'Game called off' : statusText(view.value, sides.value))
+const banner = computed(() => props.state.result?.calledOff ? 'Game called off' : view.value.over ? overBanner(view.value.over) : '')
 const listEl = ref<HTMLElement | null>(null)
 watch(() => view.value.history.length, async () => {
   await nextTick()

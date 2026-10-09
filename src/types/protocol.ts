@@ -42,6 +42,11 @@ import type { CommerceHttpRoutes } from './commerce.ts'
 import type { BusinessHttpRoutes } from './business.ts'
 import type { PoliticsHttpRoutes } from './politics.ts'
 import type { RecordsHttpRoutes } from './records.ts'
+import type { LivingWorldHttpRoutes } from './living-world.ts'
+import type { LivingWorldBarberRoutes } from './living-world-barber.ts'
+import type { LivingWorldClerkRoutes } from './living-world-clerk.ts'
+import type { LivingWorldJusticeRoutes } from './living-world-justice.ts'
+import type { LivingWorldAssessmentRoutes } from './living-world-assessment.ts'
 
 // ---- shared primitives ---------------------------------------------------------------------------
 
@@ -109,8 +114,8 @@ export interface Refusal<Code extends string = string> {
 export type HostErrorCode = 'origin_rejected' | 'rate_limited' | 'not_found' | 'internal_error'
 /** request.json(): 415, 413 (body over 8 KB), 400. */
 export type JsonBodyErrorCode = 'json_required' | 'body_too_large' | 'invalid_json'
-/** request.requireSession(): 401. */
-export type SessionErrorCode = 'device_session_required'
+/** Session resolution: 401 if absent, 409 if the expected actor no longer owns the device session. */
+export type SessionErrorCode = 'device_session_required' | 'actor_changed'
 /** A write that could not be saved was undone: 503 with a `reason` (server/store.ts storageError). */
 export type StorageErrorCode = 'storage_unavailable'
 /** ctx.once / ctx.onceId (server/routes/once.ts): 400, 400, 409, 409, 429, 503. */
@@ -263,7 +268,7 @@ export interface CoreHttpRoutes {
  * telemetry endpoints are added beside them by server/server.ts: growth.ts TelemetryHttpRoutes.)
  */
 export interface HttpRoutes extends CoreHttpRoutes, SocialHttpRoutes, CivicHttpRoutes, SupportHttpRoutes, ModerationHttpRoutes, WorldHttpRoutes,
-  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes {
+  GrowthHttpRoutes, GrowthModerationHttpRoutes, CampusHttpRoutes, AccountHttpRoutes, PingHttpRoutes, VisitHttpRoutes, BusinessHttpRoutes, CommerceHttpRoutes, NoticeHttpRoutes, CompanionHttpRoutes, AdminHttpRoutes, StoreHttpRoutes, PoliticsHttpRoutes, RecordsHttpRoutes, TrustHttpRoutes, RealValueHttpRoutes, StreetHttpRoutes, LivingWorldHttpRoutes, LivingWorldBarberRoutes, LivingWorldClerkRoutes, LivingWorldJusticeRoutes, LivingWorldAssessmentRoutes {
   'GET /api/world/land': { query: { city: CityId }; response: Ok<LandView>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | 'invalid_city' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' }
   'POST /api/world/land/buy': { body: LandBuyRequest; response: Ok<{ ok: boolean; code: string; duplicate?: true; pending?: true }>; errors: HostErrorCode | SessionErrorCode | StorageErrorCode | JsonBodyErrorCode | OnceErrorCode | 'invalid_city' | 'invalid_land_purchase' | 'land_rate_limited' | 'world_unavailable' | 'land_recovery_required' | 'land_pending' | 'not_owned_home' | 'land_price_changed' | 'land_intent_changed' }
 }
@@ -494,6 +499,19 @@ export type ServerFrameType = ServerFrame['type']
 export { registeredCityIds } from '../game/cities/registry.ts'
 
 export const HTTP_ROUTE_KEYS = [
+  'GET /api/living-world/assessment', 'POST /api/living-world/assessment/start', 'POST /api/living-world/assessment/step',
+  'GET /api/living-world/justice-practice', 'POST /api/living-world/justice-practice/start', 'POST /api/living-world/justice-practice/step',
+  'GET /api/living-world/barber',
+  'GET /api/living-world/clerk', 'POST /api/living-world/clerk/start',
+  'POST /api/living-world/clerk/step', 'POST /api/living-world/clerk/claim',
+  'POST /api/living-world/barber/start', 'POST /api/living-world/barber/input',
+  'POST /api/living-world/barber/pause', 'POST /api/living-world/barber/resume',
+  'POST /api/living-world/barber/claim', 'POST /api/living-world/barber/upgrade',
+  'GET /api/living-world/qualification', 'POST /api/living-world/qualification/claim',
+  'GET /api/living-world/rental', 'POST /api/living-world/rental/claim',
+  'GET /api/living-world/driving',
+  'POST /api/living-world/driving/start', 'POST /api/living-world/driving/input',
+  'POST /api/living-world/driving/resume', 'POST /api/living-world/driving/pause', 'POST /api/living-world/driving/restart',
   'POST /api/social/visit/capture-consent',
   'GET /api/world/land',
   'POST /api/world/land/buy',
@@ -541,6 +559,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/conversations/:id/react',
   'POST /api/social/conversations/:id/message',
   'POST /api/social/notify',
+  'POST /api/social/voice',
+  'GET /api/social/voice/:id',
   'POST /api/social/images',
   'GET /api/social/images/:id',
   'GET /api/social/house/:host',
@@ -630,6 +650,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/admin/moderation/content/remove',
   'GET /api/admin/audit',
   'GET /api/admin/tools',
+  'GET /api/admin/moderation/voice/:id',
+  'POST /api/admin/moderation/voice/:id/act',
   'GET /api/admin/moderation/pictures',
   'GET /api/admin/moderation/pictures/:id',
   'POST /api/admin/moderation/pictures/:id/act',

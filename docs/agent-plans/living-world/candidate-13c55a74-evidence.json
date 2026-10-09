@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "13c55a7435b2dfcc77077324104a8cd0023da292",
+  "fastAndUI": {
+    "runId": 37879827853,
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37879827853",
+    "status": "completed",
+    "conclusion": "success",
+    "canonicalCompiler": "pass",
+    "build": "pass",
+    "unchangedDownloadBudgets": "pass",
+    "smoke": "pass",
+    "releasePolicy": "pass",
+    "appUI": {
+      "tests": 296,
+      "pass": 296,
+      "fail": 0,
+      "skip": 0
+    },
+    "shoppingHousingCareer": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skip": 0
+    },
+    "workerHostTimedActions": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skip": 0
+    },
+    "uiLogSha256": "c96c4ade92488c6105b99aaf6ef5b7d7c5e70e47741d7b77ef006dba0f21ac22"
+  },
+  "fullCI": {
+    "runId": 37880140284,
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37880140284",
+    "status": "completed",
+    "observedAt": "2026-10-09T04:03:00Z",
+    "verifiedJobs": [
+      113657708333,
+      113657708538
+    ],
+    "acceptance": "not established; 18 Node24 failures and Node22 provider timeout require diagnosis and repair",
+    "conclusion": "failure",
+    "node24": {
+      "jobId": 113657708333,
+      "conclusion": "failure",
+      "tests": 3376,
+      "pass": 3354,
+      "fail": 18,
+      "skip": 4,
+      "compiler": "pass",
+      "build": "pass",
+      "unchangedDownloadBudgets": "pass",
+      "worker": "skipped after npm test failure",
+      "logSha256": "34ece2a41b3755ad3b93c60f17c23c65d0bc78ac9dc3d9e075ed8b589cebf884"
+    },
+    "node22": {
+      "jobId": 113657708538,
+      "conclusion": "cancelled",
+      "annotation": "The job has exceeded the maximum execution time of 25m0s",
+      "compiler": "pass",
+      "build": "pass",
+      "unchangedDownloadBudgets": "pass",
+      "fullTestAcceptance": "not established; no terminal test counts",
+      "worker": "skipped after timeout",
+      "logSha256": "7fe76752882aee3fa3136f9573e5d07e2e3bb5d9dfefc396546562c59acf8b6d"
+    }
+  },
+  "programmeStagingAndLive": "not accepted",
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "limitations": "UI component/model checks are not mobile/browser gameplay, physical devices, the full connected journey or save-continuity acceptance."
+}

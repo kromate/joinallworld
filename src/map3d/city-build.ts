@@ -132,15 +132,15 @@ const FABRIC_SIZE = 0.6;
 const LOT = PLINTH * LANDMARK_SCALE;
 /** The land around a state map: quiet greys-greens that stay behind the state's own colours. */
 export const CONTEXT_COLOURS = { state: '#dde1d3', country: '#e4dfd0', road: '#c2c3b8' } as const;
-const LAND_COLOURS: Record<LandKind, string> = { mainland: '#bcd596', island: '#c6dca2', estate: '#b2d892', sand: '#f1dfae' };
+const LAND_COLOURS: Record<LandKind, string> = { mainland: '#a9c783', island: '#b8ce91', estate: '#9fc579', sand: '#e8d19c' };
 /** The half-widths of the shallows and of the beach along a true-scale shoreline, in map units (100 m each at the frame's scale). */
 const SHALLOWS = 0.55, BEACH = 0.22;
 const ASPHALT = '#5d626b', TRUNK = '#464a52', TRUNK_KERB = '#f0eadb', KERB = '#e4dfcf', DASH = '#f6f2e2', PATH = '#dcd2b6';
 
 export const CITY_LIGHT: Readonly<Record<TimeOfDay, TimePreset>> = Object.freeze({
-  day: { sky: ['#cfeaf5', '#8fcbe6'], hemi: ['#f4fbff', '#9fb07f', 2.1], sun: ['#fff0d2', 2.5, [-70, 120, 90]], water: '#4faacb', windows: '#56748c', waves: 0.5, shadow: 0.2 },
-  dusk: { sky: ['#f3b184', '#6a5c98'], hemi: ['#f6c9a8', '#5a5370', 1.45], sun: ['#ff9f5f', 1.9, [-130, 46, 40]], water: '#4a79a6', windows: '#ffd9a0', waves: 0.35, shadow: 0.24 },
-  night: { sky: ['#1b2748', '#0a1024'], hemi: ['#9db2e6', '#1c2a44', 1.25], sun: ['#b4c6f5', 1.0, [-60, 110, 60]], water: '#1b3d68', windows: '#ffffff', waves: 0.16, shadow: 0.3 },
+  day: { sky: ['#d7edf3', '#a8cfdd'], hemi: ['#f0f5f1', '#879578', 1.25], sun: ['#ffe3b4', 1.65, [-70, 120, 90]], water: '#347f9b', windows: '#526b7c', waves: 0.34, shadow: 0.26 },
+  dusk: { sky: ['#efaa7c', '#625d87'], hemi: ['#e5b697', '#4e5063', 0.95], sun: ['#ffad70', 1.25, [-130, 46, 40]], water: '#355e80', windows: '#ffd49a', waves: 0.28, shadow: 0.3 },
+  night: { sky: ['#202b4a', '#0b142b'], hemi: ['#9caed7', '#172439', 0.8], sun: ['#a9bde9', 0.65, [-60, 110, 60]], water: '#173653', windows: '#ffffff', waves: 0.14, shadow: 0.34 },
 });
 
 function mulberry(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -414,8 +414,9 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     if (run.length) runs.push(run);
     return runs;
   }
-  // The land around the state: flat, muted, under everything else, with no shore or beach of its own.
-  for (const piece of pack.context?.land ?? []) raw.shape(piece.points, -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
+  // The coastal administrative base is a backdrop, not lagoon/sea fill: keep it below the water plane.
+  // Inland bases retain the regional-ground height; the source outline and every X/Z coordinate stay exact.
+  for (const piece of pack.context?.land ?? []) raw.shape(piece.points, piece.kind === 'base' && pack.inland !== true ? WATER_Y - 0.02 : -0.06, piece.kind === 'country' ? CONTEXT_COLOURS.country : piece.kind === 'base' ? CONTEXT_COLOURS.state : CONTEXT_COLOURS.state, piece.holes);
   // Two sources meet at a border (Natural Earth for the countries, geoBoundaries for the states): a band along every outline closes the gaps between them (the country outlines are coarser, so their band is wider).
   for (const piece of pack.context?.land ?? []) if (piece.kind !== 'base') raw.ribbon([...piece.points, piece.points[0]!].map(([x, z]) => ({ x, y: 0, z })), piece.kind === 'country' ? 60 : 12, -0.07, piece.kind === 'country' ? CONTEXT_COLOURS.country : CONTEXT_COLOURS.state);
   for (const road of pack.context?.roads ?? []) if (road.points.length > 1) raw.ribbon(road.points.map(([x, z]) => ({ x, y: 0, z })), 1.1 * (pack.roadScale ?? 1), -0.02, CONTEXT_COLOURS.road);
@@ -442,14 +443,14 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   }
 
   // ---- character: ground colour of old and planned areas, hills, inland water, railways ------
-  const AREA_COLOURS = { old: '#cdb48c', planned: '#a6cc7c' } as const;
+  const AREA_COLOURS = { old: '#bca681', planned: '#9fc17c' } as const;
   const blob = (x: number, z: number, radius: number, seed: number): [number, number][] => Array.from({ length: 22 }, (_, i) => {
     const angle = (i / 22) * Math.PI * 2, wobble = 0.86 + 0.28 * ((hash(`${pack.id}:blob:${seed}:${i}`) % 100) / 100);
     return [x + Math.cos(angle) * radius * wobble, z + Math.sin(angle) * radius * wobble];
   });
   (pack.areas ?? []).forEach((area, i) => {
     // A wide soft edge: a larger, fainter patch under the main one.
-    raw.shape(blob(area.x, area.z, area.r * 1.18, i), 0.016, area.tone === 'old' ? '#c4c19a' : '#b3d08a');
+    raw.shape(blob(area.x, area.z, area.r * 1.18, i), 0.016, area.tone === 'old' ? '#b5b391' : '#aac584');
     raw.shape(blob(area.x, area.z, area.r, i + 100), 0.019, AREA_COLOURS[area.tone]);
   });
   const hills = pack.relief ?? [];
@@ -647,8 +648,8 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     towers: { gap: 5.0, keep: 0.78, tree: 0.08 },
     villas: { gap: 4.7, keep: 0.74, tree: 0.26 },
   };
-  const WALLS = ['#f3ead6', '#ece0c4', '#f6f0e2', '#e9d9b8', '#efe3d0', '#dfe8ea'], ROOFS = ['#a85c40', '#96483a', '#8d9399', '#b67a45', '#6f8492', '#9b9b8f'];
-  const BLOCKS = ['#e6dcc6', '#d9cdb4', '#cfd8dc', '#e8d6c0', '#d6dfd0', '#f0e4cc'], GLASSY = ['#9fb9c8', '#b7c9d2', '#8fa9bd', '#c9d6da', '#a9bfc0', '#d9d2c0'];
+  const WALLS = ['#e9dfca', '#ded1b7', '#eee7d8', '#ddceb1', '#e7dac7', '#d4dfe0'], ROOFS = ['#9e503b', '#85443a', '#777f85', '#a66c40', '#5e7483', '#898879'];
+  const BLOCKS = ['#d9cfbb', '#cdc2ac', '#bdc9ce', '#d9c9b6', '#c9d2c5', '#e3d8c4'], GLASSY = ['#8daab9', '#a6bbc4', '#7f9eae', '#b7c8cb', '#96b1b2', '#c9c6b8'];
   const inArea = (entry: PackFabric, x: number, z: number) => inBox(x, z, entry.box) && (!entry.circle || Math.hypot(x - entry.circle[0], z - entry.circle[1]) <= entry.circle[2]);
   const houses: HouseItem[] = [], towers: TowerItem[] = [], trees: TreeItem[] = [], palms: TreeItem[] = [];
   for (const area of pack.fabric || []) {

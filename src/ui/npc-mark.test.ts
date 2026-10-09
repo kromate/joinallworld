@@ -37,6 +37,7 @@ test('the venue, home and campus tags say NPC (never "a local") in their label, 
   assert.match(campus, /node\.dataset\.npcWord = NPC_WORD/)
   const css = await readFile(new URL('../campus/unilag/host.css', import.meta.url), 'utf8')
   assert.match(css, /\.campus-host-tag\[data-npc-word\]::before\{content:attr\(data-npc-word\)/)
+  assert.match(css, /@media \(pointer:coarse\)\{\.campus-host-tag\{min-height:44px\}\}/, 'campus host controls meet a 44px touch target on coarse pointers')
 })
 
 test('the engine\'s speech toast marks an NPC\'s line, so a quote cannot read as a player\'s', async () => {

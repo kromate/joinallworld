@@ -20,6 +20,7 @@ const { game, shell, goTo } = useApp()
 const growth = useGrowth()
 const view = game.view
 const state = game.state
+const offline = computed(() => view.value.connected ? null : 'Reconnect to travel, share an event or spray. Calendar downloads still work.')
 const events = computed(() => upcomingEvents(view.value.now, 7, view.value.cityId))
 const live = computed(() => events.value.filter((event) => event.live))
 const later = computed(() => events.value.filter((event) => !event.live))
@@ -36,7 +37,7 @@ function go(event: CalendarOccurrence): void { shell.close(); void goTo(event.ve
 function share(event: CalendarOccurrence): void { void growth.share('event', { event: event.id }) }
 const spraying = ref<number | null>(null)
 async function spray(amount: number): Promise<void> {
-  if (spraying.value !== null) return
+  if (spraying.value !== null || offline.value) return
   spraying.value = amount
   try {
     const result = await game.command('events.spray', { amount })
@@ -57,13 +58,14 @@ function addToCalendar(event: CalendarOccurrence): void {
 
 <template>
   <div class="events">
+    <p v-if="offline" class="gr-note" role="status">{{ offline }}</p>
     <template v-if="live.length">
-      <EventCard v-for="event in live" :key="event.key" :event="event" :now="view.now" :cash="state.cash" :here="hereAt(event)" :attended="attended(event)" :spray="sprayOf(event)" :sharing="growth.state.busy !== null" :spraying="spraying" @go="go(event)" @calendar="addToCalendar(event)" @share="share(event)" @spray="spray" />
+      <EventCard v-for="event in live" :key="event.key" :event="event" :now="view.now" :cash="state.cash" :here="hereAt(event)" :attended="attended(event)" :spray="sprayOf(event)" :offline="offline" :sharing="growth.state.busy !== null" :spraying="spraying" @go="go(event)" @calendar="addToCalendar(event)" @share="share(event)" @spray="spray" />
     </template>
     <EmptyState v-else compact icon="calendar" title="Nothing is on right now" :text="nothingOn(later)" />
     <template v-if="later.length">
       <SectionTitle note="next 7 days">Coming up</SectionTitle>
-      <EventCard v-for="event in later" :key="event.key" :event="event" :now="view.now" :cash="state.cash" :here="hereAt(event)" :attended="attended(event)" :spray="sprayOf(event)" :sharing="growth.state.busy !== null" :spraying="spraying" @go="go(event)" @calendar="addToCalendar(event)" @share="share(event)" @spray="spray" />
+      <EventCard v-for="event in later" :key="event.key" :event="event" :now="view.now" :cash="state.cash" :here="hereAt(event)" :attended="attended(event)" :spray="sprayOf(event)" :offline="offline" :sharing="growth.state.busy !== null" :spraying="spraying" @go="go(event)" @calendar="addToCalendar(event)" @share="share(event)" @spray="spray" />
     </template>
     <template v-if="growth.state.hello?.channel">
       <LinkButton v-if="growth.channel.value" block :href="growth.channel.value">Follow Allworld on WhatsApp</LinkButton>

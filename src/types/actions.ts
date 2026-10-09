@@ -179,6 +179,11 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
   'career.auto': { payload: { on: boolean }; ok: 'auto_set'; fail: 'invalid_setting' }
   /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' while the dilemma kit is not installed. */
   'career.dilemma': { payload: { choice: string }; ok: 'resolved' | 'went_badly'; fail: 'dilemmas_off' | 'no_dilemma' | 'invalid_choice' }
+  'career.teach': {
+    payload: { generation: number; revision: number; stage: import('../game/living-world/teaching-state.ts').TeachingPracticeStage; choice: string }
+    ok: 'answered' | 'retry' | 'shift_completed'
+    fail: import('../game/living-world/teaching-practice.ts').TeachingPracticeCode | 'no_teaching_shift' | 'generation_conflict'
+  }
 
   // -- activities --
   /** Start an activity offered at the current spot. `choice` is required when the activity has `choices`. */
@@ -220,7 +225,7 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
    * choice is free and immediate; later changes wait out LGA_RULES.changeCooldownDays and may cost a
    * levy for dearer land. 'unchanged' (already confirmed there) is a success.
    */
-  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual'; home?: 'buy' | 'main' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged' | 'home_bought' | 'home_moved'; fail: 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' | 'choice_required' | 'home_owned' | 'home_cooldown' | 'ride_debt' }
+  'estate.set-lga': { payload: { lga: LgaId; via?: 'device' | 'manual'; home?: 'buy' | 'main' }; ok: 'lga_set' | 'lga_confirmed' | 'unchanged' | 'home_bought' | 'home_moved'; fail: 'busy' | 'settle_required' | 'invalid_lga' | 'lga_cooldown' | 'upgrade_running' | 'insufficient_funds' | 'choice_required' | 'home_owned' | 'home_cooldown' | 'ride_debt' }
   /** SERVER ONLY: record the plot the server allocated (server/world/service.ts). 'unchanged' (the same plot again) is a success. */
   'estate.assign': { payload: PlotAddress; ok: 'assigned' | 'unchanged'; fail: 'no_place' | 'invalid_plot'; serverOnly: true }
   /** SERVER ONLY: the server freed the plot left behind (`state.estate.old`). Succeeds whether or not the address matched. */
@@ -233,10 +238,12 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
   'estate.move-in': { payload: NoPayload; ok: 'moved_in'; fail: 'busy' | 'already_home' | 'rent_arrears' }
   /** Leave for another city along a CITY_LINKS link (timed action kind 'intercity'). Refused while the destination is not open. */
   'estate.relocate': { payload: { to: WorldCityId; mode: CityLinkMode; credit?: boolean }; ok: 'departed'; fail: 'busy' | RelocateBlockCode }
+  /** Accept the current authoritative quotation to borrow one bounded, continuous route to the unchanged main home. */
+  'homeward.accept': { payload: { quote: string }; ok: 'departed'; fail: 'busy' | 'settle_required' | 'credit_not_offered' | 'ride_debt' | 'insufficient_funds' | 'quote_changed' }
   /** A visitor's room at a guest house: LODGING.fee is charged and Energy and Hygiene are restored. Refused for a life with a home in this city. */
   'estate.lodge': { payload: NoPayload; ok: 'rested'; fail: 'settle_required' | 'has_home' | 'busy' | 'rested' | 'insufficient_funds' }
   /** Name the city the life is in its primary home. It must hold a house here. */
-  'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'no_place' | 'home_cooldown' | 'ride_debt' }
+  'estate.make-home': { payload: NoPayload; ok: 'home_set' | 'unchanged'; fail: 'busy' | 'no_place' | 'home_cooldown' | 'ride_debt' }
   /** The device matched the main home's local government (the position never leaves it): record `{ lga, at }`. Refused unless `lga` is the main home's. */
   'estate.confirm-residence': { payload: { lga: LgaId; ok: true }; ok: 'residence_confirmed'; fail: 'no_home' | 'not_main_home' | 'not_confirmed' }
   /** Switch the location-confirmed badge off: the stored confirmation is deleted. */
@@ -375,6 +382,14 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
     fail: BusinessBlockCode
     serverOnly: true
   }
+
+  /** SERVER ONLY: fixed fictional practice rewards or owned clipper upgrade, checked atomically by their services. */
+  'living-world.server': {
+    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' } | { op: 'clerk-reward' } | { op: 'npc-restock-wage' }
+    ok: 'barber_rewarded' | 'barber_tool_upgraded' | 'clerk_rewarded' | 'npc_restock_wage_paid'
+    fail: 'invalid_barber_action' | 'invalid_clerk_action' | 'invalid_npc_restock_action' | 'balance_limit' | 'insufficient_funds'
+    serverOnly: true
+  }
 }
 
 /** The operations 'business.server' accepts (systems/business.ts). */
@@ -416,7 +431,7 @@ export type ActionVetoCode = 'onboarding_required' | 'settle_required'
 export type InboundActionType = 'social.server' | 'growth.referral' | 'growth.table-result'
 
 /** Actions a guest of the quick start cannot run until it has settled in. ('travel' only when the destination is Home.) */
-export type SettledOnlyActionType = Extract<ActionType, `home.${string}` | `estate.${string}` | 'property.house-move' | 'travel'> | GuestCampusActionType
+export type SettledOnlyActionType = Extract<ActionType, `home.${string}` | `estate.${string}` | 'property.house-move' | 'travel' | 'homeward.accept'> | GuestCampusActionType
 
 /** Codes dispatch() can return for action `T` without the handler having run. */
 export type DispatchRefusalCode<T extends ActionType = ActionType> =
@@ -458,13 +473,14 @@ export type ActionBody<T extends ActionType = ActionType> = {
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
-  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
+  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'career.teach',
   'activity', 'spot', 'activity.admin',
   'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
   'property.house-move', 'property.car-buy', 'property.car-use', 'property.car-sell',
   'estate.set-lga', 'estate.assign', 'estate.released', 'estate.style', 'estate.upgrade', 'estate.move-in', 'estate.relocate', 'estate.lodge', 'estate.make-home',
   'estate.confirm-residence', 'estate.unconfirm-residence',
+  'homeward.accept',
   'home.door', 'home.furniture-buy', 'home.furniture-move', 'home.furniture-sell', 'home.furniture-store', 'home.furniture-place',
   'home.grocery-buy', 'home.kitchen-unpack', 'home.refuel',
   'stories.save', 'stories.remove', 'stories.publish', 'stories.start', 'stories.next', 'stories.end',
@@ -479,6 +495,7 @@ export const ACTION_TYPES = [
   'events.spray',
   'growth.table-result', 'growth.referral',
   'business.server',
+  'living-world.server',
   // the campus: unilagStudent, unilagCommunity, unilagShuttle (campus.ts)
   ...CAMPUS_ACTION_TYPES,
 ] as const satisfies readonly ActionType[]
@@ -487,7 +504,7 @@ export const ACTION_TYPES = [
 export const SERVER_ONLY_ACTIONS = [
   'estate.land-pay', 'street.place',
   'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
+  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'living-world.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */

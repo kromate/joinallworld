@@ -88,6 +88,7 @@ import { TRAVEL_MODES, ALL_MODES, BASE_MODE_IDS, DEFAULT_MODE, FARE_BANDS, BAND_
 import { EVENTS, EVENT_TTL_SECONDS, ACTIVITY_OUTCOMES } from '../content/events.ts';
 import { skipOffer, skipTrip } from '../trip-skip.ts';
 import { cleanRideDebt, isReliefActivity, reliefActivities, reliefBlock, repayRide, settleRideDebt } from '../relief.ts';
+import { assertHomewardLiability } from '../homeward-gate.ts';
 
 const MAP_WIDTH = 1000, MAP_HEIGHT = 700;
 const MAX_COOLDOWNS = 80;
@@ -395,6 +396,7 @@ function cleanCooldowns(value: unknown, city: string, now: number): Record<strin
 // ---- state ------------------------------------------------------------------------------
 
 function sanitize(input: SavedInput, state: LifeState, ctx: LifeContext): void {
+  if (ctx.trustedSave === true) assertHomewardLiability(input);
   const saved = isRecord(input.travel) ? input.travel : {};
   const now = finite(ctx?.now) ? ctx.now : state.t;
   const event = isRecord(saved.event) && isEventId(saved.event.id) && finite(saved.event.at) ? { id: saved.event.id, at: saved.event.at } : null;

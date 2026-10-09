@@ -82,10 +82,18 @@ async function loadDaily(): Promise<void> {
   failure.value = refusalWords(undefined, (result as { reason?: string }).reason); status.value = 'error'
 }
 async function loadPractice(): Promise<void> {
-  const words = await import('../../../words/guess.ts')
-  target = words.answerAt(Math.floor(Math.random() * words.ANSWER_COUNT))
-  rows.value = []; draft.value = ''; answer.value = ''; status.value = 'playing'; no.value = 0; message.value = ''
+  status.value = 'loading'
+  failure.value = ''
+  try {
+    const words = await import('../../../words/guess.ts')
+    target = words.answerAt(Math.floor(Math.random() * words.ANSWER_COUNT))
+    rows.value = []; draft.value = ''; answer.value = ''; status.value = 'playing'; no.value = 0; message.value = ''
+  } catch {
+    failure.value = 'Practice words could not be loaded. Reload the game to try again.'
+    status.value = 'error'
+  }
 }
+function reloadPractice(): void { window.location.reload() }
 
 async function submit(): Promise<void> {
   if (busy.value || done.value) return
@@ -121,7 +129,7 @@ async function submit(): Promise<void> {
 }
 
 function press(key: string): void {
-  if (done.value || status.value !== 'playing') return
+  if (busy.value || done.value || status.value !== 'playing') return
   if (key === 'enter') void submit()
   else if (key === 'back') draft.value = backspace(draft.value)
   else draft.value = typeLetter(draft.value, key)
@@ -137,7 +145,7 @@ function onKey(event: KeyboardEvent): void {
   if (key) { event.preventDefault(); event.stopImmediatePropagation(); press(key) }
 }
 function toggleHard(): void {
-  if (rows.value.length) return
+  if (busy.value || rows.value.length) return
   hard.value = !hard.value
   try { localStorage.setItem(HARD_KEY, hard.value ? '1' : '0') } catch { /* private mode */ }
 }
@@ -164,16 +172,17 @@ defineExpose({ press })
 
 <template>
   <div class="oro" :data-mode="mode">
-    <p v-if="status === 'loading'" class="oro-note" role="status">Fetching today’s puzzle…</p>
+    <p v-if="status === 'loading'" class="oro-note" role="status">{{ mode === 'daily' ? 'Fetching today’s puzzle…' : 'Loading a practice word…' }}</p>
     <template v-else-if="status === 'error'">
       <p class="oro-note" role="alert">{{ failure || 'The puzzle could not be loaded.' }}</p>
-      <BaseButton @click="loadDaily">Try again</BaseButton>
+      <BaseButton v-if="mode === 'daily'" @click="loadDaily">Try again</BaseButton>
+      <BaseButton v-else variant="primary" @click="reloadPractice">Reload game</BaseButton>
     </template>
     <template v-else>
       <header class="oro-head">
         <b>{{ mode === 'daily' ? `Oro #${no}` : 'Oro practice' }}</b>
         <label class="oro-hard" :class="{ 'is-locked': rows.length > 0 }">
-          <input type="checkbox" :checked="hard" :disabled="rows.length > 0 || done" @change="toggleHard"> Hard mode
+          <input type="checkbox" :checked="hard" :disabled="busy || rows.length > 0 || done" @change="toggleHard"> Hard mode
         </label>
       </header>
       <div class="oro-grid" :class="{ 'is-shaking': shake }" role="grid" aria-label="Your guesses">
@@ -181,7 +190,7 @@ defineExpose({ press })
           <span v-for="(tile, c) in row" :key="c" class="oro-tile" role="gridcell" :class="[tile.mark ? `is-${tile.mark}` : '', { 'has-letter': tile.letter, 'is-live': tile.live }]" :style="{ '--d': `${c * 120}ms` }" :aria-label="tileLabel(tile.letter, tile.mark)">{{ tile.letter }}</span>
         </div>
       </div>
-      <p class="oro-msg" role="status" aria-live="polite">{{ message }}</p>
+      <p class="oro-msg" role="status" aria-live="polite">{{ busy ? 'Checking your guess…' : message }}</p>
 
       <section v-if="done" class="oro-result" :class="{ 'is-won': status === 'won' }" aria-label="Result">
         <h3>{{ status === 'won' ? (solvedIn === 1 ? 'First try!' : `Solved in ${solvedIn}`) : 'Not this time' }}</h3>
@@ -209,9 +218,9 @@ defineExpose({ press })
       </section>
       <div v-else class="oro-keys" role="group" aria-label="Keyboard">
         <div v-for="(line, i) in KEY_ROWS" :key="line" class="oro-keyrow">
-          <button v-if="i === 2" type="button" class="oro-key is-wide" @click="press('enter')">Enter</button>
-          <button v-for="letter in line" :key="letter" type="button" class="oro-key" :class="states[letter] ? `is-${states[letter]}` : ''" :aria-label="`${letter}${states[letter] ? `, ${states[letter] === 'c' ? 'in the right place' : states[letter] === 'p' ? 'in the word' : 'not in the word'}` : ''}`" @click="press(letter)">{{ letter }}</button>
-          <button v-if="i === 2" type="button" class="oro-key is-wide" aria-label="Delete" @click="press('back')">⌫</button>
+          <button v-if="i === 2" type="button" class="oro-key is-wide" :disabled="busy" @click="press('enter')">Enter</button>
+          <button v-for="letter in line" :key="letter" type="button" class="oro-key" :disabled="busy" :class="states[letter] ? `is-${states[letter]}` : ''" :aria-label="`${letter}${states[letter] ? `, ${states[letter] === 'c' ? 'in the right place' : states[letter] === 'p' ? 'in the word' : 'not in the word'}` : ''}`" @click="press(letter)">{{ letter }}</button>
+          <button v-if="i === 2" type="button" class="oro-key is-wide" aria-label="Delete" :disabled="busy" @click="press('back')">⌫</button>
         </div>
       </div>
       <HowItWorks id="oro-rules" :rules="ORO_RULES" label="How to play Oro" />
@@ -223,16 +232,16 @@ defineExpose({ press })
 .oro { display: grid; gap: 10px; justify-items: center; }
 .oro > * { max-width: 100%; }
 .oro-note { font-size: 13px; color: var(--c-muted); text-align: center; }
-.oro-head { display: flex; width: min(100%, 340px); justify-content: space-between; align-items: center; font-size: 15px; }
-.oro-hard { font-size: 12px; color: var(--c-muted); display: inline-flex; gap: 6px; align-items: center; min-height: 32px; }
+.oro-head { display: flex; flex-wrap: wrap; gap: 8px; width: min(100%, 340px); justify-content: space-between; align-items: center; font-size: 15px; }
+.oro-hard { font-size: 12px; color: var(--c-muted); display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
 .oro-hard.is-locked { opacity: .6; }
 .oro-grid { display: grid; gap: 5px; width: min(100%, 300px); }
 .oro-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
 .oro-tile { aspect-ratio: 1; display: grid; place-items: center; border: 2px solid #c9ccd4; border-radius: 6px; font-size: clamp(22px, 8vw, 30px); font-weight: 800; text-transform: uppercase; background: #fff; color: #20232c; }
 .oro-tile.has-letter { border-color: #7d828f; }
 .oro-tile.is-live.has-letter { animation: oro-pop 120ms ease-out; }
-.oro-tile.is-c { background: #3d9a5d; border-color: #3d9a5d; color: #fff; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
-.oro-tile.is-p { background: #d7a62b; border-color: #d7a62b; color: #fff; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
+.oro-tile.is-c { background: #237448; border-color: #237448; color: #fff; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
+.oro-tile.is-p { background: #d7a62b; border-color: #d7a62b; color: #3d310e; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
 .oro-tile.is-a { background: #6f7480; border-color: #6f7480; color: #fff; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
 .oro-grid.is-shaking { animation: oro-shake 400ms; }
 .oro-msg { min-height: 20px; margin: 0; font-size: 13px; font-weight: 700; text-align: center; color: #9a3b2c; }
@@ -241,21 +250,22 @@ defineExpose({ press })
 .oro-key { flex: 1 1 0; min-width: 0; height: 52px; border: 0; border-radius: 7px; background: #d9dce3; color: #20232c; font: inherit; font-weight: 700; font-size: 15px; text-transform: uppercase; cursor: pointer; padding: 0; }
 .oro-key.is-wide { flex: 1.6 1 0; font-size: 12px; }
 .oro-key:focus-visible { outline: 3px solid #1f6feb; outline-offset: 1px; }
-.oro-key.is-c { background: #3d9a5d; color: #fff; }
-.oro-key.is-p { background: #d7a62b; color: #fff; }
+.oro-key:disabled { opacity: .6; cursor: wait; }
+.oro-key.is-c { background: #237448; color: #fff; }
+.oro-key.is-p { background: #d7a62b; color: #3d310e; }
 .oro-key.is-a { background: #6f7480; color: #fff; }
-.oro-result { width: min(100%, 340px); background: #fff; border-radius: 16px; box-shadow: var(--e-1), var(--ring); padding: 14px; display: grid; gap: 8px; }
+.oro-result { min-width: 0; width: min(100%, 340px); background: #fff; border: 1px solid var(--c-line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; overflow-wrap: anywhere; }
 .oro-result.is-won { background: var(--c-green-soft); }
 .oro-result h3 { margin: 0; font-size: 17px; }
 .oro-result p { margin: 0; font-size: 13px; }
 .oro-answer { letter-spacing: 2px; }
-.oro-stats { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 0; padding: 0; text-align: center; }
+.oro-stats { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: 0; padding: 0; text-align: center; }
 .oro-stats b { display: block; font-size: 20px; }
 .oro-stats small { font-size: 11px; color: var(--c-muted); }
 .oro-dist { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
 .oro-dist li { display: grid; grid-template-columns: 14px 1fr; gap: 6px; align-items: center; font-size: 12px; }
 .oro-dist i { display: block; min-width: 18px; background: #6f7480; color: #fff; font-style: normal; text-align: right; padding: 1px 6px; border-radius: 3px; }
-.oro-dist i.is-this { background: #3d9a5d; }
+.oro-dist i.is-this { background: #237448; }
 .oro-next { color: var(--c-muted); }
 .oro-share { margin: 0; font: inherit; font-size: 18px; line-height: 1.25; white-space: pre-wrap; text-align: center; }
 @keyframes oro-pop { from { transform: scale(.88); } to { transform: scale(1); } }

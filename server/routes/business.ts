@@ -26,7 +26,7 @@
  *   POST /api/business/bag/stock   { cityId, requestId }
  *   POST /api/business/bag/return  { cityId, requestId }
  *        each → { ok, code, reason?, duplicate?, state, city, mine, bag, limits }
- *   POST /api/business/buy         { cityId, shop, product, units, requestId } → { ok, code, reason?, duplicate?, state, market }
+ *   POST /api/business/buy         { cityId, shop, product, units, expectedPrice, expectedTotal, requestId } → { ok, code, reason?, duplicate?, state, market }
  *   POST /api/business/rate        { cityId, shop, stars }                     → { ok, code, reason?, market }
  *   POST /api/business/report      { cityId, shop, reason: 'name' | 'scam' | 'other' } → { ok, code, reason? }
  */

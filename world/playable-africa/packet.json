@@ -256,18 +256,6 @@
       "source": "dca60279d60aed40466daa752ee7c295b9229502",
       "url": "https://github.com/kromate/joinallworld/actions/runs/37939357327",
       "status": "PASS Node22/24 assets,16engine/map/content cases and strict types. Browser bundle follow-up adds separate per-city content wrappers; exact new source requires fresh audit."
-    },
-    "tableRepair": {
-      "scope": "One explicitly fictional, stable city-prefixed two-seat chess table at the existing recreation venue; real table registry lookup and derived-table deduplication verified. Preserve existing playable-city table gate. No source geometry, arrival, Nigeria IDs, database, or gameplay prices changed.",
-      "localRuntimeCases": 17,
-      "localResult": "PASS 17/17 at256MiB",
-      "remoteAudit": "pending exact repair audit"
-    },
-    "marketCastRepair": {
-      "scope": "20 uniquely named fictional game characters, preserving every NPC ID/role/point. Stable fictional market supplier uses shared defaults, city-named game menu plate and no local-product discounts/specialty claims; original prices unchanged.",
-      "localRuntimeCases": 18,
-      "localResult": "PASS18/18 at256MiB including actual registered businessVenue/productLabel/productCost getters",
-      "remoteAudit": "pending exact repair audit"
     }
   },
   "preservation": [
@@ -309,5 +297,21 @@
       "world/playable-africa/nairobi-sources.json",
       "world/playable-africa/yaounde-sources.json"
     ]
+  },
+  "integrationTableRepair": {
+    "source": "7e386204bed5cdd57c4fb7f3a2ac9f8b5e7f48c1",
+    "scope": "One explicitly fictional stable city-prefixed two-seat chess table at each existing starter recreation venue. Retains the all-playable-city table gate and derived-table deduplication. No geometry, arrivals, Nigerian IDs, saves or prices changed.",
+    "ownerLocalRuntimeCases": 17,
+    "ownerLocalResult": "Owner-reported PASS 17/17 at256MiB; combined source needs exact verification.",
+    "combinedAcceptance": "Pending exact combined source CI and permitted browser table journeys."
+  },
+  "integrationMarketCastRepair": {
+    "source": "a1bde30373211528bb66bc4d88cddabdb7dcb30e",
+    "scope": "Fictional neutral starter names preserving NPC IDs, positions and biographies; stable fictional game-market metadata and city-labelled game plate, default shared prices and no origin discounts.",
+    "ownerSourceAudit": {
+      "url": "https://github.com/kromate/joinallworld/actions/runs/37949851877",
+      "status": "Owner-reported Node22/24 asset pins,18 source/runtime cases and strict types pass."
+    },
+    "combinedAcceptance": "Pending exact combined source checks and actual permitted business/character journeys."
   }
 }

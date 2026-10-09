@@ -305,6 +305,21 @@ test('a founder with 5,000 friends: a small record, a bounded overview, pages th
   const zed = await w.founder();
   const real = await w.player('Ada');
   const many = 5000, simulated: string[] = [];
+  const readStats = f.server.store.stats?.bind(f.server.store);
+  assert.ok(readStats, 'the actual Node fixture exposes store counters for this profile');
+  let measuredAt = performance.now();
+  let measuredStats = readStats();
+  const measure = (stage: string): void => {
+    const current = readStats();
+    const previous = new Map(Object.entries(measuredStats));
+    const counters = Object.fromEntries(Object.entries(current).flatMap(([key, value]) => {
+      const before = previous.get(key);
+      return typeof value === 'number' && typeof before === 'number' ? [[key, value - before]] : [];
+    }));
+    const now = performance.now();
+    t.diagnostic(JSON.stringify({ profile: 'founder-5000-pagination', stage, elapsedMs: now - measuredAt, counters }));
+    measuredAt = now; measuredStats = current;
+  };
   await w.edit((db) => {
     const players = must(db.social).players;
     for (let i = 0; i < many; i++) {
@@ -314,12 +329,14 @@ test('a founder with 5,000 friends: a small record, a bounded overview, pages th
       players[id] = record;
     }
   });
+  measure('seed-one-transaction');
   const res = await f.request('/api/social/me', null, zed.cookie);
   const text = await res.text(), overview = JSON.parse(text) as Reply;
   assert.equal(overview.friends.length, FOUNDER_PAGE);
   assert.equal(overview.friendsMore?.total, many + 1);
   assert.ok(text.length < 20000, `the founder’s overview is ${text.length} characters`);
   assert.deepEqual(ids(overview.friends).slice(0, 2), [simulated[many - 1], simulated[many - 2]], 'newest first');
+  measure('first-overview');
 
   // Every page is FOUNDER_PAGE long, nobody is listed twice, and the pages end.
   const seen = new Set(ids(overview.friends));
@@ -335,6 +352,7 @@ test('a founder with 5,000 friends: a small record, a bounded overview, pages th
   }
   assert.equal(seen.size, many + 1);
   assert.equal(seen.has(real.id), true);
+  measure('remaining-100-pages');
   // The cursor is validated, and nobody else has pages.
   assert.equal((await w.get('/api/social/friends?after=x', zed)).error, 'invalid_cursor');
   assert.deepEqual([(await w.get(`/api/social/friends?after=1:${zed.id}`, real)).friends, (await w.me(real)).friendsMore], [[], undefined]);

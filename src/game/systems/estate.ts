@@ -105,6 +105,8 @@ import type { CityLinkFrom } from '../../types/content.ts';
 import type { AwayResidence, EstateState, HouseId, HouseStyleField, HouseUpgrade, IntercityAction, LgaId, LgaVia, LifeContext, LifeState, PlotAddress, Residence, WorldCityId } from '../../types/life.ts';
 import type { ActiveKindHandler, NoticeKind, SavedInput, SystemDefinition } from '../../types/registry.ts';
 import type { EstateView, HouseStyleCard, ResidenceView, RideCreditView } from '../../types/view.ts';
+import { planHomeward } from '../homeward-gate.ts';
+import type { HomewardQuote } from '../cities/homewardRoute.ts';
 
 const DAY_MS = 86400000;
 const SETTLE_FIRST = 'Settle in first (tap the "Settle in" goal): then you can travel between cities.';
@@ -236,6 +238,7 @@ function moveMainBlock(state: LifeState, now: number): { code: 'home_owned' | 'h
 // ---- actions ---------------------------------------------------------------------------------
 
 function setLga(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  if (state.activeAction?.kind === 'homeward') return fail(state, 'busy', 'Arrive home before changing your homes.');
   const e = state.estate, now = nowOf(state, ctx);
   // Chosen when the life settles in, not before: a life still being created belongs nowhere yet.
   if (unsettled(state)) return fail(state, 'settle_required', `Settle in first: your ${cityUnit(state.estate.city)} is chosen when you settle in (tap the "Settle in" goal), and your free house comes with it.`);
@@ -390,6 +393,7 @@ function lodge(state: LifeState, _payload: Record<string, unknown>, ctx: LifeCon
 }
 /** 'estate.make-home': the city the life is in becomes its primary home. It must hold a house here. */
 function makeHome(state: LifeState, _payload: Record<string, unknown>, ctx: LifeContext) {
+  if (state.activeAction?.kind === 'homeward') return fail(state, 'busy', 'Arrive home before changing your homes.');
   const e = state.estate, name = cityRules(e.city)?.name ?? e.city;
   if (!hasPlace(state)) return fail(state, 'no_place', `You have no house in ${name}. Choose ${cityUnitArticle(e.city)} here to move (Home → Move here).`);
   if (e.home === e.city) return ok(state, 'unchanged');
@@ -452,13 +456,30 @@ export function relocateBlock(state: LifeState, to: unknown, mode: unknown, ctx?
  * The ride a visitor could take on credit: the cheapest open link from here to the MAIN home, when cash does not cover it. Null for
  * anyone else (a resident, a guest, someone with no home, someone who can pay), and while a ride debt stands.
  */
-export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
+function directCreditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
   const e = state.estate, home = e.home;
   if (!visitingHere(state) || !home || rideDebtOf(state) > 0) return null;
   if (!isOpen(home, ctx)) return null;
   const links = linksFrom(e.city).filter((item) => item.to === home && !routeUnavailable(item)).sort((a, b) => a.fare - b.fare || a.seconds - b.seconds);
   const cheapest = links[0];
   return cheapest && state.cash < cheapest.fare ? cheapest : null;
+}
+export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
+  const link = directCreditLink(state, ctx);
+  if (!link) return null;
+  const quote = homewardQuote(state, ctx);
+  return quote && state.cash >= quote.totalFare ? null : link;
+}
+/** A current full itinerary before loan eligibility; it grants no money or travel authority. */
+export function homewardQuote(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
+  const e = state.estate;
+  if (unsettled(state) || state.activeAction || !visitingHere(state) || !e.home || rideDebtOf(state) > 0) return null;
+  return planHomeward(e.city, e.home, linksFrom, id => isOpen(id, ctx));
+}
+/** A quoted recovery loan only when the cheapest whole itinerary cannot be paid. */
+export function homewardOffer(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
+  const quote = homewardQuote(state, ctx);
+  return quote && state.cash < quote.totalFare ? quote : null;
 }
 /** Why a ride on credit cannot start now, or null. */
 function creditBlock(state: LifeState, to: unknown, mode: unknown, ctx: LifeContext): { code: RelocateBlockCode; reason: string } | null {
@@ -605,8 +626,9 @@ function residenceView(state: LifeState, now: number): ResidenceView | null {
 }
 
 function rideView(state: LifeState, ctx: LifeContext): RideCreditView {
-  const link = state.activeAction ? null : creditLink(state, ctx);
-  return { debt: rideDebtOf(state), offer: link ? { to: link.to, mode: link.mode, fare: link.fare } : null };
+  const quote = homewardQuote(state, ctx);
+  const link = state.activeAction || (quote && state.cash >= quote.totalFare) ? null : directCreditLink(state, ctx);
+  return { debt: rideDebtOf(state), offer: link ? { to: link.to, mode: link.mode, fare: link.fare } : null, journey: quote && state.cash < quote.totalFare ? quote : null };
 }
 
 /**

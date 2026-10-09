@@ -345,7 +345,7 @@ export async function runNewPlayer({ log = console.log, saltPrefix = SALT_PREFIX
     assert.match(must(meta('og:title')), /Ada/); assert.match(must(meta('og:title')), /Whot/);
     assert.ok(must(meta('og:description')).length > 20);
     assert.deepEqual([meta('og:type'), meta('og:site_name'), meta('og:url'), meta('og:image'), meta('twitter:card'), meta('twitter:image')],
-      ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.png`, 'summary_large_image', `${ORIGIN}/og/allworld.png`]);
+      ['website', 'Allworld', `${ORIGIN}/s/${code}`, `${ORIGIN}/og/allworld.jpg`, 'summary_large_image', `${ORIGIN}/og/allworld.jpg`]);
     const target = must(must(/<meta http-equiv="refresh" content="0;url=([^"]+)"/.exec(html))[1]).replaceAll('&amp;', '&');
     assert.equal(target, `/?join=${ada.id}&ref=${code}&table=${TABLE}`);
     assert.ok(html.includes(`href="${target.replaceAll('&', '&amp;')}"`), 'and an ordinary link for a person');

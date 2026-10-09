@@ -6,6 +6,7 @@ import type { PlayerRef } from '../../../types/protocol.ts'
 import { SHORTCODES } from './emojiData.ts'
 
 const DAY = 86400000
+export const messageLength = (text: string): number => Array.from(text.trim()).length
 const isOutbox = (item: ThreadItem): item is OutboxEntry => 'status' in item
 const itemTime = (item: ThreadItem): number => item.at
 const itemSender = (item: ThreadItem): string => (isOutbox(item) ? 'me' : item.sys ? 'sys' : item.from?.id ?? 'sys')
@@ -108,11 +109,12 @@ export function shortcodes(text: string): string { return text.replace(/:([a-z0-
 // ---- drafts, pins, search ---------------------------------------------------------------------------------------------
 export const DRAFTS_KEY = 'joinallworld-chat-drafts'
 /** What was being typed in each conversation, kept on this device only (a draft is not sent anywhere). At most 30, oldest dropped. */
-export function createDrafts(storage: Pick<Storage, 'getItem' | 'setItem'> | null) {
+export function createDrafts(storage: Pick<Storage, 'getItem' | 'setItem'> | null, actor: string) {
+  const storageKey = `${DRAFTS_KEY}:${actor}`
   let kept: Record<string, string> | null = null
   const load = (): Record<string, string> => {
     if (kept) return kept
-    try { const saved: unknown = JSON.parse(storage?.getItem(DRAFTS_KEY) ?? 'null'); kept = saved && typeof saved === 'object' && !Array.isArray(saved) ? { ...(saved as Record<string, string>) } : {} } catch { kept = {} }
+    try { const saved: unknown = JSON.parse(storage?.getItem(storageKey) ?? 'null'); kept = saved && typeof saved === 'object' && !Array.isArray(saved) ? { ...(saved as Record<string, string>) } : {} } catch { kept = {} }
     return kept
   }
   return {
@@ -122,7 +124,7 @@ export function createDrafts(storage: Pick<Storage, 'getItem' | 'setItem'> | nul
       if (text) { delete all[conv]; all[conv] = text } else delete all[conv]
       const keys = Object.keys(all)
       for (const old of keys.slice(0, Math.max(0, keys.length - 30))) delete all[old]
-      try { storage?.setItem(DRAFTS_KEY, JSON.stringify(all)) } catch { /* kept for this visit only */ }
+      try { storage?.setItem(storageKey, JSON.stringify(all)) } catch { /* kept for this visit only */ }
     },
   }
 }

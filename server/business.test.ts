@@ -5,11 +5,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { fixture } from './test-fixture.ts';
+import { fixture, flakyDisk } from './test-fixture.ts';
+import { createServer } from './server.ts';
+import { createOnce } from './routes/once.ts';
 import { businessJourney } from './testing/businessJourney.ts';
 import { JOURNEY_TIME } from './testing/cityJourney.ts';
 import { loadCityContent } from '../src/game/cities/registry.ts';
 import { BUSINESS } from '../src/game/content/business.ts';
+import type { TimedId } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
 import type { Database } from './types.ts';
 
@@ -45,23 +48,68 @@ async function harness(t: Parameters<typeof fixture>[0], options: Parameters<typ
   }
   const open = (device: Device, extra: object = {}) => post('/api/business/open', { cityId: 'lagos', venue: 'market', type: 'food', name: 'Mama Put', colour: 'gold', icon: '🍲', requestId: f.id(), ...extra }, device);
   const stock = (device: Device, items: object) => post('/api/business/stock', { cityId: 'lagos', items, requestId: f.id() }, device);
-  const buy = (device: Device, shop: string, product = 'jollof', units = 1, headers: Record<string, string> = {}) => post('/api/business/buy', { cityId: 'lagos', shop, product, units, requestId: f.id() }, device, headers);
+  const buyQuotes = new Map<string, { expectedPrice: number; expectedTotal: number }>();
+  const buy = async (device: Device, shop: string, product = 'jollof', units = 1, headers: Record<string, string> = {}, requestId = f.id()) => {
+    const body: Record<string, unknown> = { cityId: 'lagos', shop, product, units, requestId };
+    if (typeof shop === 'string' && product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
+      let quoted = buyQuotes.get(requestId);
+      if (!quoted) {
+        const venue = await get('/api/business/venue?city=lagos&venue=market', device);
+        const stalls = Array.isArray(venue.shops) ? venue.shops.map(object) : [];
+        const stall = stalls.find((entry) => entry.id === shop || object(entry.owner).id === shop);
+        const item = stall && Array.isArray(stall.items) ? stall.items.map(object).find((entry) => entry.id === product) : undefined;
+        const quotes = item && Array.isArray(item.quotes) ? item.quotes.map(object) : [];
+        const quote = quotes.find((entry) => entry.units === units);
+        if (item && quote) {
+          quoted = { expectedPrice: Number(item.price), expectedTotal: Number(quote.total) };
+          buyQuotes.set(requestId, quoted);
+        }
+      }
+      if (quoted) Object.assign(body, quoted);
+    }
+    return post('/api/business/buy', body, device, headers);
+  };
   const database = async (): Promise<Database> => { await f.flush(); return JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as Database; };
   return { f, post, get, edit, trader, open, stock, buy, database };
 }
 
 test('a shop from opening to winding up, on the Node host', { timeout: 60000 }, async (t) => {
-  const f = await fixture(t);
+  const disk = flakyDisk();
+  const f = await fixture(t, { disk });
   f.advance(JOURNEY_TIME - f.now());
-  const result = await businessJourney({
-    now: f.now,
-    request: (path, body, cookie) => f.request(path, body, cookie),
-    elapse: async (_device, _city, ms) => { f.advance(ms); },
-    edit: async (device, city, change) => { await f.server.store.transact((db) => { const state = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)]?.cities[city as 'lagos']?.state; assert.ok(state); change(state as unknown as Record<string, unknown>); }); },
-    age: async (ms) => { f.advance(ms); },
-  });
-  assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true]);
-  assert.ok(result.collected > 1400);
+  let server = f.server, base = f.base;
+  try {
+    const result = await businessJourney({
+      now: f.now,
+      request: async (path, body, cookie) => fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) }),
+      elapse: async (_device, _city, ms) => { f.advance(ms); },
+      edit: async (device, city, change) => { await server.store.transact((db) => { const state = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)]?.cities[city as 'lagos']?.state; assert.ok(state); change(state as unknown as Record<string, unknown>); }); },
+      age: async (ms) => { f.advance(ms); },
+      failPersistence: async () => { disk.fail = 'ENOSPC'; },
+      recoverPersistence: async () => { disk.fail = null; },
+      restart: async () => {
+        await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+        await server.store.close?.();
+        server = await createServer({ dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000 });
+        server.listen(0, '127.0.0.1');
+        await new Promise<void>((resolve, reject) => { server.once('listening', resolve); server.once('error', reject); });
+        const address = server.address();
+        if (!address || typeof address === 'string') throw new Error('Restarted server has no TCP address');
+        base = `http://127.0.0.1:${address.port}`;
+      },
+      hasReceipt: async (device, requestId) => server.store.read((db) => {
+        const session = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)];
+        return Object.hasOwn(session?.once ?? {}, requestId);
+      }),
+    });
+    assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true]);
+    assert.ok(result.collected > 1400);
+  } finally {
+    if (server.listening) {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      await server.store.close?.().catch(() => {});
+    }
+  }
 });
 
 test('routes: under /api/business, guarded by the host, strict about input, and nothing personal without a session', async (t) => {
@@ -88,7 +136,7 @@ test('routes: under /api/business, guarded by the host, strict about input, and 
 });
 
 test('the owner must stand at the market to open, stock, price and upgrade; a buyer must stand there to buy', async (t) => {
-  const { f, post, edit, trader, open, stock, buy } = await harness(t);
+  const { f, post, get, edit, trader, open, stock, buy } = await harness(t);
   const ada = await trader('Ada'), bola = await trader('Bola');
   await edit(ada, (state) => { state.location = 'home'; });
   assert.deepEqual([(await open(ada)).code, (await open(ada)).reason], ['cannot_open', 'Go to Market to rent a stall there.']);
@@ -107,7 +155,32 @@ test('the owner must stand at the market to open, stock, price and upgrade; a bu
   await edit(bola, (state) => { state.location = 'park'; });
   assert.equal((await buy(bola, ada.id)).code, 'not_at_shop');
   await edit(bola, (state) => { state.location = 'market'; });
-  assert.equal((await buy(bola, ada.id)).code, 'bought');
+  const requestId = f.id();
+  const buyerBefore = Number((await get('/api/life?city=lagos', bola)).state?.cash);
+  const sellerBefore = Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till);
+  const first = await buy(bola, ada.id, 'jollof', 1, {}, requestId);
+  assert.equal(first.code, 'bought');
+  assert.equal(buyerBefore - Number(first.state?.cash), 600);
+  assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600);
+  // Rebuild this real purchase's receipt through the historical four-field createOnce contract.
+  const legacyRequestId = await f.server.store.transact((db) => {
+    const session = db.sessions[bola.cookie.slice(4)];
+    assert.ok(session);
+    const savedId = Object.keys(session.once ?? {}).find((id): id is TimedId => id === requestId);
+    assert.ok(savedId);
+    const saved = session.once?.[savedId];
+    assert.ok(saved);
+    assert.equal(saved.result.ok, true);
+    delete session.once![savedId];
+    const result = { ...saved.result, ok: true };
+    createOnce({ now: f.now, windowMs: DAY }).once(db, session, {
+      id: savedId, kind: 'business.buy', fingerprint: ['lagos', ada.id, 'jollof', '1'],
+    }, () => result);
+    return savedId;
+  });
+  const replay = await post('/api/business/buy', { cityId: 'lagos', shop: ada.id, product: 'jollof', units: 1, requestId: legacyRequestId }, bola);
+  assert.deepEqual([replay.code, replay.duplicate, replay.state?.cash], ['bought', true, first.state?.cash]);
+  assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600, 'the historical replay does not credit the seller twice');
 });
 
 test('upgrades, rent ahead and closing by choice: each charged once, and closing returns less than was put in', async (t) => {

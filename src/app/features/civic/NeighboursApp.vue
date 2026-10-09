@@ -29,6 +29,7 @@ const { item, reload } = useLoaded<NeighboursResponse>({ key: () => hoodKey(view
 const data = computed(() => item.value.data)
 const groups = computed(() => data.value?.districts.filter((group) => group.count > 0) ?? [])
 const confirmed = useConfirmedOnly(() => groups.value.flatMap((group) => group.homes.map((home) => home.id)))
+const visibleGroups = computed(() => groups.value.map((group) => ({ ...group, homes: group.homes.filter((home) => confirmed.keep(home.id)), loaded: group.homes.length, ids: group.homes.map((home) => home.id) })))
 const unset = computed(() => data.value?.districts.some((group) => group.id === 'unknown') ?? false)
 
 async function toggle(): Promise<void> {
@@ -45,21 +46,22 @@ function hi(player: { id: string; name: string }): void {
   <div class="neighbours">
     <CivicStatus :item="item" @retry="reload" />
     <template v-if="data">
-      <header class="directory-summary"><div><h3>{{ view.city.name }} neighbours</h3><p>{{ count(data.total) }} homes · {{ count(data.online) }} online now</p><small v-if="data.hidden">Your home is hidden</small></div><AppArtwork app="neighbours" /></header>
+      <header class="directory-summary"><div><h3>{{ view.city.name }} neighbours</h3><p>{{ count(data.total) }} homes · {{ count(data.online) }} online now</p><small v-if="confirmed.on.value">City totals before filtering</small><small v-if="data.hidden">Your home is hidden</small></div><AppArtwork app="neighbours" /></header>
       <CivicStale :item="item" />
       <label v-if="groups.length" class="civic-note"><input v-model="confirmed.on.value" type="checkbox" data-confirmed-filter> Location-confirmed only</label>
       <template v-if="groups.length">
-        <template v-for="group in groups" :key="group.id">
-          <SectionTitle :note="`${count(group.count)} home${group.count === 1 ? '' : 's'}${group.count ? ` · ${count(group.online)} online` : ''}`">{{ group.label }}</SectionTitle>
+        <template v-for="group in visibleGroups" :key="group.id">
+          <SectionTitle :note="confirmed.on.value ? `${count(group.homes.length)} confirmed in first ${count(group.loaded)} home${group.loaded === 1 ? '' : 's'}` : `${count(group.count)} home${group.count === 1 ? '' : 's'}${group.count ? ` · ${count(group.online)} online` : ''}`">{{ group.label }}</SectionTitle>
           <ul v-if="group.homes.length" class="ui-rows">
-            <li v-for="home in group.homes.filter((entry) => confirmed.keep(entry.id))" :key="home.id" class="ui-row" :class="{ 'is-you': home.you }">
+            <li v-for="home in group.homes" :key="home.id" class="ui-row" :class="{ 'is-you': home.you }">
               <CivicAvatar :name="home.name" :seed="home.id"><i class="social-dot" :class="{ 'is-on': home.online }" /></CivicAvatar>
               <span class="ui-row-body"><b>{{ home.name }}{{ home.you ? ' (you)' : '' }}</b><ResidentBadge :id="home.id" /><small>{{ home.online ? 'Online now' : 'Not online' }}</small></span>
               <span v-if="!home.you" class="ui-row-end"><BaseButton small :aria-label="`Say hi to ${home.name}`" @click="hi(home)">Say hi</BaseButton></span>
             </li>
           </ul>
-          <MoreRows v-if="group.count - group.homes.length > 0" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.homes.map((home) => home.id)" :label="`Show everyone in ${group.label}`" @hi="hi" />
-          <p v-if="group.count - group.homes.length > 0" class="civic-note">{{ count(group.count - group.homes.length) }} more not listed (hidden or beyond the list limit).</p>
+          <p v-if="confirmed.on.value && !group.homes.length" class="civic-note" role="status">{{ confirmed.checking.value ? 'Checking location-confirmed badges…' : 'No location-confirmed homes in these loaded results.' }}</p>
+          <MoreRows v-if="group.count - group.loaded > 0" :key="`${view.cityId}:${group.id}:${group.ids.join(',')}`" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.ids" :confirmed-only="confirmed.on.value" :label="confirmed.on.value ? `Check more homes in ${group.label}` : `Show everyone in ${group.label}`" @hi="hi" />
+          <p v-if="group.count - group.loaded > 0" class="civic-note">{{ count(group.count - group.loaded) }} more not listed (hidden or beyond the list limit).</p>
         </template>
       </template>
       <p v-else class="civic-note">Nobody has checked in yet.</p>

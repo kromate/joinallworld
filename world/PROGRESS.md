@@ -56,8 +56,13 @@ are released. Live production cards/quotes are being inspected read-only because
 the browser contains an existing player's session. No real-player money is spent.
 
 Next release phase: admit the next five already sourced African starters through
-Integration on synchronized main. Fifteen later starters have source packets, but
-are not yet playable in production. Remaining African geometry, deeper cities,
+Integration on synchronized main. Twenty later starters now have source assets, but
+are not yet playable in production. The newest source batch adds Dar es Salaam,
+Brazzaville, Kinshasa, Antananarivo and Lilongwe with 1,384 retained footprints and
+349 roads from 12,861,241 source bytes. All five cached-source and isolated engine
+checks passed serially before synchronization; exact post-merge remote checks
+remain required. Earlier Three.js metadata and Git mmap failures are retained as
+environment failures. No dependency install or primary-checkout edit was used. Remaining African geometry, deeper cities,
 regional conditions, unattended global execution and physical-device performance
 remain in the full active world objective.
 
@@ -74,8 +79,8 @@ not a frozen release acceptance.
 All 45 first-five packet files and both selected airport-desk files now match the
 exact frozen `3af17a01` candidate. The reusable check in
 [SOURCE-PACKET-HANDOFF.md](SOURCE-PACKET-HANDOFF.md) has ten isolated CLI tests;
-its output always keeps `releaseReady: false`. Twenty starter cities retain
-source assets across four batches. At WORLD source
+its output always keeps `releaseReady: false`. Twenty-five foreign starter cities retain
+source assets across five batches. At WORLD source
 `3bfd549ec3d784da30cfe8a650b4bd3dbba3b50f`, the
 [first-five audit](https://github.com/kromate/joinallworld/actions/runs/37963180060)
 and [ten-city rollout audit](https://github.com/kromate/joinallworld/actions/runs/37963180253)

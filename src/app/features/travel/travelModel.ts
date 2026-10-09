@@ -1,4 +1,5 @@
 import { civicTitle, civicOffice, cityUnit } from '../../../game/cities/terminology.ts'
+import { cityCatalogueEntry } from '../../../game/cities/registry.ts'
 // Getting around without a DOM: the one place that decides what a trip costs, why Go is off, what
 // the trip bar says, which places the Map lists and what each Ride row offers. It is the typed
 // port of src/ui/panels/world-ui.js (the helpers the Map card and the Ride app shared, so the two
@@ -106,6 +107,7 @@ export function goBlock(state: TravelState, view: TravelPanelView, destination: 
       code: trip ? 'travelling' : 'busy', label: trip ? 'Already travelling' : 'Busy',
       fix: locked ? null : { kind: 'cancel', label: trip ? 'Cancel that trip' : `Cancel ${name || 'it'}` },
       reason: trip ? `You are already on the way${name ? ` to ${name}` : ''}. Arrive first, or cancel that trip (its fare is not refunded) and then travel here.`
+        : active.kind === 'activity' && active.teaching ? 'Finish teaching the learner, or cancel the shift before travelling.'
         : `You are busy${name ? `: ${name}` : ''} (${Math.ceil(active.remaining ?? 0)}s left). ${locked ? 'It cannot be cancelled — wait for it to finish, then travel.' : 'Wait for it to finish, or cancel it and then travel.'}`,
     }
   }
@@ -119,18 +121,24 @@ export interface TripMode { id: string; label: string; icon?: string | null }
 export const INTERCITY_MODES: Readonly<Record<string, TripMode>> = { road: { id: 'danfo', label: 'Bus', icon: '🚌' }, rail: { id: 'rail', label: 'Train', icon: '🚆' }, air: { id: 'air', label: 'Flight', icon: '✈️' } }
 
 // ---- the levels of the Map: the city, its country, the world ------------------------------------
-/** One step of the bar at the top of the Map: World › Africa › Nigeria › the city the player is in. */
-export interface MapLevel { id: 'world' | 'africa' | 'nigeria' | 'city'; label: string; /** The atlas level it opens (widest first), or null for the city map. */ atlas: number | null; current: boolean }
+/** One step of the bar at the top of the Map: World › Africa › the home country › the city. */
+export interface MapLevel { id: 'world' | 'africa' | 'nigeria' | 'country' | 'city'; label: string; /** The atlas level it opens (widest first), or null for the city map. */ atlas: number | null; current: boolean }
 /**
- * The bar's steps. `layer` is what the Map shows ('city' or the atlas); on the atlas the level in view is `atlasLevel`
- * (the atlas draws its own bar there, so this is what the city map shows and what the keyboard reads).
+ * The bar's steps. `layer` is what the Map shows ('city' or the atlas); on the atlas the level in view is `atlasLevel`.
  */
-export function mapLevels(cityName: string, layer: 'city' | 'world', atlasLevel = 2): MapLevel[] {
-  const wide = (['world', 'africa', 'nigeria'] as const).map((id, index): MapLevel => ({ id, label: id === 'world' ? 'World' : id === 'africa' ? 'Africa' : 'Nigeria', atlas: index, current: layer === 'world' && atlasLevel === index }))
+export function mapLevels(cityName: string, layer: 'city' | 'world', atlasLevel = 2, cityId?: string): MapLevel[] {
+  const catalogue = cityCatalogueEntry(cityId)
+  const foreign = Boolean(catalogue?.countryISO && catalogue.countryISO !== 'ng')
+  const country = foreign ? catalogue?.countryName || catalogue?.countryISO?.toUpperCase() || 'Country' : 'Nigeria'
+  const wide: MapLevel[] = [
+    { id: 'world', label: 'World', atlas: 0, current: layer === 'world' && atlasLevel === 0 },
+    { id: 'africa', label: 'Africa', atlas: 1, current: layer === 'world' && atlasLevel === 1 && !foreign },
+    { id: foreign ? 'country' : 'nigeria', label: country, atlas: foreign ? 1 : 2, current: layer === 'world' && atlasLevel === (foreign ? 1 : 2) },
+  ]
   return [...wide, { id: 'city', label: cityName, atlas: null, current: layer === 'city' }]
 }
 /** "World › Africa › Nigeria › Lagos": where the player is, as words. */
-export const mapCrumbText = (cityName: string): string => mapLevels(cityName, 'city').map((level) => level.label).join(' › ')
+export const mapCrumbText = (cityName: string, cityId?: string): string => mapLevels(cityName, 'city', 2, cityId).map((level) => level.label).join(' › ')
 export interface TripInfo {
   from: { id: string; label: string }
   to: { id: string; label: string }
@@ -158,6 +166,17 @@ export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel
       mode: INTERCITY_MODES[active.mode] ?? { id: 'unknown', label: 'On the way' }, fare: Number.isFinite(active.fare) ? active.fare : null, commute: false,
       remaining, duration, fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), locked: true,
       rule: `You are on the way to ${cityName(active.id)}. The trip has left, so it cannot be cancelled.`,
+    }
+  }
+  if (active?.kind === 'homeward') {
+    const leg = active.ticket.legs[active.legIndex]
+    if (!leg) return null
+    const duration = active.duration || 1, remaining = Math.max(0, active.remaining)
+    return {
+      from: { id: leg.from, label: cityName(leg.from) }, to: { id: leg.to, label: cityName(leg.to) },
+      mode: INTERCITY_MODES[leg.mode] ?? { id: 'unknown', label: 'On the way' }, fare: leg.fare, commute: false, remaining, duration,
+      fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), locked: true,
+      rule: `Connection ${active.legIndex + 1} of ${active.ticket.legs.length} to your original home in ${cityName(active.ticket.to)}. The whole ${money(active.ticket.totalFare)} ticket is borrowed. No cancelling, skipping or intermediate stops.`,
     }
   }
   if (!active || (active.kind !== 'travel' && active.kind !== 'commute')) return null

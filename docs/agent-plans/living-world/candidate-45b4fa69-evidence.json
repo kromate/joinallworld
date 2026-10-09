@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "45b4fa69458a2d0f0ac7936c02f8875b0be54e8d",
+  "branch": "codex/living-world",
+  "runId": 37888045596,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37888045596",
+  "observedAt": "2026-10-09T05:24:19Z",
+  "status": "completed",
+  "mode": "ui_checks with canonical compiler/build/budgets/smoke; full checks still required",
+  "jobs": {
+    "canonicalTypecheck": {
+      "jobId": 113682396345,
+      "status": "completed",
+      "conclusion": "failure",
+      "newErrors": 1,
+      "error": "justice-practice.ts260 TS18046 value.inspectedEvidenceIds unknown inside callback; existed in9c firstlog and was missed by extraction",
+      "logSha256": "e6fd07b0107989cdfdd4ae1d3d51a230484e583e4ded32f0443d5035b3c16346"
+    },
+    "releasePolicy": {
+      "jobId": 113682396595,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "buildBudgetSmoke": {
+      "jobId": 113682396606,
+      "status": "completed",
+      "conclusion": "success",
+      "build": "pass",
+      "budgets": "pass unchanged",
+      "startup": {
+        "raw": 612875,
+        "gzip": 222378,
+        "brotli": 194887
+      },
+      "firstPaintBrotli": 35697,
+      "smoke": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "skip": 0
+      },
+      "logSha256": "975b40be6ee020ce6852efe416a810e116b5cf3f38b2ba741896db978bcb548b"
+    },
+    "uiLearningWorker": {
+      "jobId": 113682396651,
+      "status": "completed",
+      "conclusion": "success",
+      "groups": {
+        "existingUi": {
+          "tests": 419,
+          "pass": 419,
+          "fail": 0,
+          "skip": 0,
+          "durationMs": 97740.650269
+        },
+        "activeLearning": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "skip": 0,
+          "durationMs": 26566.758624
+        },
+        "commerceCareer": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "skip": 0,
+          "durationMs": 3434.036053
+        },
+        "cityPagination": {
+          "tests": 29,
+          "pass": 29,
+          "fail": 0,
+          "skip": 0,
+          "durationMs": 70873.030549
+        },
+        "actualWorker": {
+          "tests": 4,
+          "pass": 4,
+          "fail": 0,
+          "skip": 0,
+          "durationMs": 13567.114512
+        }
+      },
+      "workerLearning": {
+        "justiceRestartLayoutMs": 3583.170796,
+        "registeredAssessmentRestartLayoutMs": 4017.810238,
+        "scope": "production HTTP ordered justice/lab, same-revision races, durable same-ID retries, once-only mark, shadow/entries/legacy persistence; fixture position/eligibility only; no cash/provider I/O"
+      },
+      "logSha256": "298c52baf9ae83a267599ff4853f6064c04bc69ca8308ecefc0c58addd233ca3"
+    }
+  },
+  "priorExactEvidence": "candidate-9c2adbaf-evidence.json",
+  "sourceReview": "assessment repair independently reviewed; no blocker; all gates preserved",
+  "checksAtPublication": "repairs unrun",
+  "fullRegression": "required; prior511 failed/timeout; retain complete sample coverage and provider25minute cap",
+  "stagingGameplaySaveContinuity": "not accepted",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "productionSourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "routeAuthorized": false,
+  "wholeProgrammeAcceptance": false,
+  "supersedeWhileLive": false,
+  "conclusion": "failure",
+  "exactCandidateAccepted": false,
+  "remainingRepair": "Capture the current validated evidence array via the every callback array parameter rather than reopening an unknown property; ordering assertions retained. Source prepared; exact compiler/full unrun."
+}

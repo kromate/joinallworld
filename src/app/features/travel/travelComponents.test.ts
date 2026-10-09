@@ -12,6 +12,7 @@ import { renderToString } from 'vue/server-renderer'
 import type { LifeState } from '../../../types/life.ts'
 import type { App } from '../../state/app.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
+import { playableCityIds } from '../../../game/cities/registry.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
 const server = createFakeServer()
@@ -100,13 +101,13 @@ test('the Map overview: the handle, the filters, the layers and every place with
   assert.ok(words.includes('You are here'))
   // The world is one tap from the Map: the level bar is on the city map itself, not at the end of the list.
   assert.match(html, /<nav class="map-levels level-menu" aria-label="Map level\. You are in World › Africa › Nigeria › [^"]+">/)
-  assert.match(html, /<button[^>]*data-map-level="world"[^>]*title="World map · 40 cities open"/)
+  assert.match(html, new RegExp(`<button[^>]*data-map-level="world"[^>]*title="World map · ${playableCityIds().length} cities open"`))
   assert.equal((html.match(/data-tour="map-world"/g) ?? []).length, 1, 'the tour points at the one chip')
   assert.deepEqual([...html.matchAll(/data-map-level="([a-z]+)"/g)].map((match) => match[1]), ['world', 'africa', 'nigeria', 'city'])
   assert.match(html, /<button[^>]*data-map-level="city"[^>]*aria-current="true"/, 'the level in view is marked')
   assert.doesNotMatch(html.slice(html.indexOf('id="map-list"')), /World map/, 'no second entry hidden at the end of the list')
   assert.match(html, /<svg class="ui-glyph"/, 'places and layers are drawn with glyphs')
-  assert.doesNotMatch(html, /\p{Extended_Pictographic}/u, 'never the content emoji')
+  assert.doesNotMatch(html.replace('© OpenStreetMap contributors', 'OpenStreetMap contributors'), /\p{Extended_Pictographic}/u, 'places and layers use glyphs; the source copyright mark is attribution')
 })
 
 test('the Map overview: a filter narrows the list to its category, and Home is on every one', async () => {
@@ -303,7 +304,7 @@ test('your own house: a life without a place is sent to choose; a life with one 
     const html = await render(path)
     const words = text(html)
     assert.match(html, /<section class="world-card" data-my-house/)
-    assert.ok(words.includes(estate.tier.label) && words.includes('Look') && words.includes('Bigger houses'))
+    assert.ok(words.includes(estate.tier.label) && words.includes('Look') && words.includes('Upgrade your house') && words.includes('Choose a bigger home.'))
     for (const field of ['Roof shape', 'Walls', 'Roof colour', 'Door', 'Windows', 'Fence', 'Yard', 'Name sign']) assert.ok(words.includes(field), field)
     assert.match(html, /role="img" aria-label="[^"]+"/)
     assert.match(html, /<button[^>]*class="[^"]*is-chosen[^"]*"[^>]*aria-pressed="true"[^>]*disabled/, 'the look you have is not pressable')

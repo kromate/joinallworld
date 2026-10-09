@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "3e173080506d659ced0b0dc466dd7e308e8d5848",
+  "branch": "codex/living-world",
+  "runId": 37888565489,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37888565489",
+  "observedAt": "2026-10-09T06:02:06Z",
+  "status": "completed",
+  "mode": "full_checks complete Node22/24 plus Worker",
+  "jobs": {
+    "node22": {
+      "jobId": 113684050711,
+      "status": "completed",
+      "step": "terminal",
+      "edge": "completed",
+      "conclusion": "cancelled",
+      "typecheck": "completed",
+      "build": "completed",
+      "downloadBudgets": "completed",
+      "nodeTests": "completed",
+      "typecheckConclusion": "success",
+      "buildConclusion": "success",
+      "downloadBudgetsConclusion": "success",
+      "nodeTestsConclusion": "cancelled",
+      "edgeConclusion": "skipped",
+      "log": {
+        "path": "/tmp/joinallworld-3e173080-node22.log",
+        "bytes": 1327404,
+        "sha256": "0e0cfa0d78b49ff9f0f95eb111d7722ae9bb2a1fcf411ed4ab6e8bf4808e6dc8"
+      },
+      "providerAnnotation": "The job has exceeded the maximum execution time of 25m0s",
+      "nodeSummary": null
+    },
+    "node24": {
+      "jobId": 113684051026,
+      "status": "completed",
+      "step": "terminal",
+      "edge": "completed",
+      "conclusion": "cancelled",
+      "typecheck": "completed",
+      "build": "completed",
+      "downloadBudgets": "completed",
+      "nodeTests": "completed",
+      "typecheckConclusion": "success",
+      "buildConclusion": "success",
+      "downloadBudgetsConclusion": "success",
+      "nodeTestsConclusion": "success",
+      "edgeConclusion": "cancelled",
+      "log": {
+        "path": "/tmp/joinallworld-3e173080-node24.log",
+        "bytes": 651206,
+        "sha256": "48388e69c2706efc79f364e605cd6cc68d4014ea1c8fb037026a73ba9c7c2f0a"
+      },
+      "providerAnnotation": "The job has exceeded the maximum execution time of 25m0s",
+      "nodeSummary": {
+        "tests": 3439,
+        "pass": 3435,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 4,
+        "durationMs": 1124700.305804,
+        "skipScope": "four existing design-conflict skips; no newly omitted cases"
+      }
+    },
+    "releasePolicy": {
+      "jobId": 113684050963,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  },
+  "priorScopedExact": "candidate-45b4fa69-evidence.json",
+  "priorScopedPasses": {
+    "ui": 419,
+    "activeLearning": 59,
+    "commerceCareer": 9,
+    "cityPagination": 29,
+    "actualWorker": 4,
+    "smoke": 15
+  },
+  "priorCompiler": "one original TS18046 repaired by source3e; exact full Node22/24 compiler now SUCCESS",
+  "priorFullFailure": "candidate-511e1cf6-evidence.json",
+  "timeoutDiagnosis": "Both job annotations report maximum execution time of 25m0s. Node24 whole npm suite succeeded before Worker cancellation; Node22 cancelled during synchronous city sampling without a whole-suite summary.",
+  "providerTimeoutMinutes": 25,
+  "matrixFailFast": false,
+  "unchangedCoverageAndBudgets": true,
+  "supersedeWhileLive": false,
+  "stagingGameplaySaveContinuity": "not accepted",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "productionSourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "routeAuthorized": false,
+  "wholeProgrammeAcceptance": false,
+  "nextAction": "Review/test exhaustive source-server partition runner and integrate mandatory serial waves for both Node versions plus Worker, preserving canonical coverage and existing provider/resource/size limits. Dispatch fresh exact candidate only after source review.",
+  "conclusion": "cancelled",
+  "productionHealth": {
+    "observedAt": "2026-10-09T06:02:06Z",
+    "ok": true,
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791525726761,
+    "claimScope": "health only; no new gameplay or save continuity"
+  }
+}

@@ -14,6 +14,7 @@ import DebtPay from '../relief/DebtPay.vue'
 import LgaCard from '../world/LgaCard.vue'
 import { linkWords } from './travelBoundary.ts'
 import { visitorHome } from './visitorModel.ts'
+import HomewardOffer from './HomewardOffer.vue'
 
 defineProps<{ params?: unknown }>()
 const { game, shell, command, showMapLayer } = useApp()
@@ -27,6 +28,7 @@ const choosing = ref<'buy' | 'main' | null>(null)
 const rest = (): Promise<boolean> => act('lodge', () => command('estate.lodge'))
 /** The ride home on credit asks once, because it is a debt. */
 const askCredit = ref(false)
+watch(() => JSON.stringify([game.session.value?.id, game.state.value.estate.city, estate.value.ride.offer]), () => { askCredit.value = false }, { flush: 'sync' })
 async function rideOnCredit(): Promise<void> {
   const offer = estate.value.ride.offer
   if (!offer) return
@@ -56,7 +58,8 @@ watch(model, (now, was) => { const open = shell.sheet.value; if (was && !now && 
       <p v-if="model.rest.why" class="ui-why">{{ model.rest.why }}</p>
       <p v-else class="ui-note">A bed and a bath: Energy and Hygiene are restored at once.</p>
       <button v-if="model.home" type="button" class="ui-button is-block" data-visitor="home" @click="goHome"><GameIcon inline name="globe" /><span>{{ model.home.label }}</span></button>
-      <template v-if="estate.ride.offer">
+      <HomewardOffer v-if="estate.ride.journey" :quote="estate.ride.journey" @done="shell.closeSheet()" />
+      <template v-else-if="estate.ride.offer">
         <button type="button" class="ui-button is-block" data-visitor="credit" :disabled="pending !== null || Boolean(offline)" @click="rideOnCredit"><GameIcon inline name="bus" /><span>{{ askCredit ? 'Yes: ride home and owe it' : `Ride home on credit · ${money(estate.ride.offer.fare)} owed` }}</span></button>
         <p class="ui-note">{{ askCredit ? `You will owe ${money(estate.ride.offer.fare)}. It comes out of what you earn, half of each. No skipping the trip.` : 'Cannot pay the fare? It is advanced and you repay it from your earnings.' }}</p>
       </template>

@@ -1,12 +1,13 @@
 // The civic client of this page, wired to the application, and the helpers every civic screen
 // uses: when to fetch, and why a control is off. Components import this; the badge of the
-// Governor app and the registration do not (they need only civicCore.ts, which pulls in no
+// Governor badge and the registration do not (they need only civicBadges.ts, which pulls in no
 // application code, so the entry chunk stays small).
-import { computed, onMounted, watch } from 'vue'
+import { computed, effectScope, onMounted, watch } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import type { CivicEntry } from './civicCore.ts'
+import { civicActor, sharedStore } from './civicCore.ts'
 import { createCivic } from './civicClient.ts'
 import type { Civic } from './civicClient.ts'
 
@@ -15,12 +16,14 @@ let shared: Civic | null = null
 export function useCivic(): Civic {
   if (!shared) {
     const { game, api } = useApp()
+    effectScope(true).run(() => watch(() => game.session.value?.id ?? null, (actor) => civicActor(sharedStore, actor), { immediate: true, flush: 'sync' }))
     shared = createCivic({
       fetchJson: game.fetchJson,
       refresh: () => game.command('civic.refresh'),
       newId: game.newId,
       toast: game.toast,
       connected: () => game.connected.value,
+      actor: () => game.session.value?.id ?? null,
       cityId: () => game.cityId.value,
       linkWhy: () => linkWords(game.view.value)?.why ?? 'Not connected.',
       // The city map and the chips that are not converted yet draw the same listings.
@@ -63,7 +66,7 @@ export function useLoaded<T>(spec: LoadSpec<T>): { item: ComputedRef<CivicEntry<
   const item = computed(() => civic.entry<T>(spec.key()))
   const run = (force = false): void => { if (spec.when && !spec.when()) return; void civic.load<T>(spec.key(), spec.path(), { maxAge: spec.maxAge, force, after: spec.after }) }
   onMounted(() => run())
-  watch([() => spec.key(), () => spec.path(), () => game.connected.value, () => spec.when?.() ?? true], () => run())
+  watch([() => spec.key(), () => spec.path(), () => game.session.value?.id, () => game.connected.value, () => spec.when?.() ?? true], () => run())
   if (spec.live) watch(game.state, () => run())
   return { item, reload: () => run(true) }
 }

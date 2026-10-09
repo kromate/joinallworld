@@ -226,8 +226,9 @@ import storageMod from './storage-mod.ts';
 import trust from './trust.ts';
 import realValue from './real-value.ts';
 import street from './street.ts';
+import livingWorld from './living-world.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, land, growth, growthMod, campus, pulse, ping, visit, business, commerce, businessMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust, realValue, street];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, land, growth, growthMod, campus, pulse, ping, visit, business, commerce, businessMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust, realValue, street, livingWorld];
 const KEY = /^(GET|POST|PUT|PATCH|DELETE) (\/api\/[A-Za-z0-9\-_/:.]+)$/;
 
 /**

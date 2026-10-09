@@ -4,8 +4,9 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const TABLES_PANELS: readonly VuePanel[] = [
-  definePanel({ id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: '#1f8a86', component: defineAsyncComponent(() => import('./TablesApp.vue')) }),
+  definePanel({ id: 'tables', title: 'Tables', placement: 'phone', order: 43, group: 'city', tint: '#1f8a86', component: defineAsyncComponent(bodyLoader('tables/TablesApp')) }),
   definePanel({ id: 'tables-chip', title: 'Table here', icon: 'tables', placement: 'hud', order: 25, component: defineAsyncComponent(() => import('./TablesChip.vue')) }),
 ]

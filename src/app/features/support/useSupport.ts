@@ -17,5 +17,7 @@ export function useSupport(): Support {
     onLoaded(reports) { noteReports(reports); if (reports.length) noteFiled(); markReportsRead(); shell.bump() },
     onFiled: noteFiled,
   })
-  return shared
+  const support = shared
+  support.setIdentity(game.session.value?.id ?? null)
+  return support
 }

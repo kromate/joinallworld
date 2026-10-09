@@ -248,6 +248,12 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
     },
     setState(next: AdapterState | null) {
       state = next;
+      if (!disposed && next?.location === 'home' && currentLocation !== 'home') {
+        currentLocation = 'home';
+        crowd = [];
+        build(currentLocation);
+        return;
+      }
       // The player is in another city now. With its scenes here the venue host changes city by itself; without them it is
       // put away until they are (the same while another city's scenes were being waited for).
       if (!disposed && kind !== 'campus' && currentLocation !== 'city-street' && !campus(currentLocation)) {

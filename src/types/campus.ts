@@ -239,7 +239,7 @@ export interface SemesterRecord {
   scholarshipAwarded: boolean
 }
 
-/** A course's two assessments: null until done, then the score the server rolled. */
+/** A course's two assessments: null until done, then the score derived by the server. */
 export interface AssessmentState {
   assignment: number | null
   test: number | null
@@ -492,8 +492,8 @@ export interface CampusActionMap {
   }
   /** At the programme's spot, in the course's slot or the night class (timed action kind 'campus-study'). */
   'unilag.lecture': { payload: { course: CourseId }; ok: 'started'; fail: StudyFail | 'semester_closed' | 'study_limit' | 'lecture_closed' }
-  /** Once per course per semester (kind 'campus-study'). */
-  'unilag.assignment': { payload: { course: CourseId }; ok: 'started'; fail: StudyFail | 'already_completed' }
+  /** Once per course per semester; CPE-101 uses the active logic lab, other assignments use 'campus-study'. */
+  'unilag.assignment': { payload: { course: CourseId }; ok: 'started'; fail: StudyFail | 'already_completed' | 'interactive_required' }
   /** Once per course per semester (kind 'campus-study'); every test must be done before the semester closes. */
   'unilag.test': { payload: { course: CourseId }; ok: 'started'; fail: StudyFail | 'already_completed' }
   /**

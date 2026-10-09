@@ -31,6 +31,7 @@ import { createWardrobeRenderer } from '../wardrobe/renderer.ts';
 import type { WardrobePresentation, WardrobeMetrics } from '../wardrobe/renderer.ts';
 import { createAvatarAppearanceController } from './appearance.ts';
 import { createFootContactController } from './foot-contact.ts';
+import { createAnimationPoseCheckpoint } from './animation-pose.ts';
 import type { FootContact, FootSolveResult } from './foot-contact.ts';
 import type { BodyTint } from './tint.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from './poses.ts';
@@ -193,6 +194,8 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   const mixer = new T.AnimationMixer(gltf.scene);
   const actions = new Map(clips.map((clip) => [clip.name, mixer.clipAction(clip)]));
   let active: THREE.AnimationAction | null = null, scale = 1, pose: BodyPose = 'idle';
+  // Restore the raw clip pose before sampling; cached mixer writes cannot undo external IK.
+  const mixerPose = createAnimationPoseCheckpoint(skinned.skeleton.bones);
   let strideClimb = 0;
   // A running transition: the clip, how far in, and the pose it ends in.
   type Placement = { x: number; y: number; z: number; ry: number };
@@ -224,9 +227,11 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   function sample(name: string, time: number) {
     const action = actions.get(clipFor(name));
     if (!action) return;
+    mixerPose.restore();
     if (action !== active) { active?.stop(); action.play(); active = action; }
     action.time = Math.min(Math.max(time, 0), action.getClip().duration);
     mixer.update(0);
+    mixerPose.capture(); // before transition blending and external foot correction
     if (blendFrom && transition) {
       const t = Math.min(1, transition.time / CROSSFADE), eased = t * t * (3 - 2 * t);
       skinned.skeleton.bones.forEach((bone, index) => {

@@ -33,6 +33,8 @@ async function visitor(cash: number, body: () => Promise<void>, debt = 0): Promi
   state.needs.energy = 80
   state.location = 'pleasure-park'
   if (debt) state.travel.rideDebt = debt
+  const gate = await load<typeof import('../../../game/homeward-gate.ts')>('/src/game/homeward-gate.ts')
+  await gate.homewardFor(state)
   app.game.state.value = state
   app.game.cityId.value = 'port-harcourt'
   try { await body() } finally { app.game.state.value = before; app.game.cityId.value = cityBefore }
@@ -54,6 +56,9 @@ test('the card: a small chip in the HUD, the options in a card of their own, the
   // Fine, at home: nothing on screen.
   assert.equal(text(await render('/src/app/features/relief/ReliefCard.vue')), '')
   await visitor(2800, async () => {
+    const quote = app.game.view.value.estate.ride.journey
+    assert.ok(quote)
+    assert.deepEqual([quote.from, quote.to, quote.totalFare, quote.legs], ['port-harcourt', 'lagos', 12000, [{ from: 'port-harcourt', to: 'lagos', mode: 'road', fare: 12000, seconds: 53 }]])
     const html = await render('/src/app/features/relief/ReliefCard.vue')
     const words = text(html)
     assert.match(html, /<button type="button" class="relief-chip"[^>]*>.*?Short of money — see what you can do/s)
@@ -64,9 +69,12 @@ test('the card: a small chip in the HUD, the options in a card of their own, the
     assert.deepEqual(order, ['odd-job', 'credit-ride', 'friend'])
     assert.ok(words.includes('Paid work, any hour: ₦350 a job.'))
     assert.ok(words.includes('Ride home on credit to Lagos'))
-    assert.ok(words.includes('₦12,000 is advanced for the ticket; half of each earning repays it.'), 'the amount and the repayment rule, in one line')
+    assert.ok(words.includes('₦12,000 is advanced for the whole ticket; half of each earning repays it.'), 'the amount and the repayment rule, in one line')
     assert.match(html, /aria-label="Close"/)
-    assert.equal((html.match(/class="relief-go"/g) ?? []).length, 3)
+    const rows = [...html.matchAll(/<li\b[^>]*data-relief="([a-z-]+)"[^>]*>([\s\S]*?)(?=<li\b[^>]*data-relief=|<\/ul>)/g)]
+    assert.equal((html.match(/class="relief-go"/g) ?? []).length, 2, 'odd job and friend retain their ordinary buttons')
+    for (const id of ['odd-job', 'friend']) assert.match(rows.find(row => row[1] === id)?.[2] ?? '', /<button\b[^>]*class="relief-go"/)
+    assert.match(rows.find(row => row[1] === 'credit-ride')?.[2] ?? '', /<button\b[^>]*data-visitor="credit"/)
   })
   // With the fare in hand and fed, nothing.
   await visitor(20000, async () => { assert.equal(text(await render('/src/app/features/relief/ReliefCard.vue')), '') })
@@ -116,7 +124,7 @@ test('a row that cannot be done now shows the reason in minutes and hours and ha
     assert.ok(words.includes('Again in 3 h 45 min') && !words.includes('224m'))
     assert.deepEqual([...html.matchAll(/data-relief="([a-z-]+)"/g)].map((match) => match[1]), ['friend', 'odd-job'], 'what works comes first')
     assert.equal((html.match(/class="relief-go"/g) ?? []).length, 1, 'only the row that works has a button')
-    assert.match(html, /class="relief-off">Not now</)
+    assert.match(html, /class="relief-off"[^>]*>Not now</)
   })
 })
 
@@ -148,8 +156,9 @@ test('the visitor sheet offers the ride on credit, labelled, below the way home'
   await visitor(2800, async () => {
     const html = await render('/src/app/features/travel/VisitorHome.vue')
     assert.match(html, /data-visitor="credit".*?<span[^>]*>Ride home on credit · ₦12,000 owed<\/span>/)
+    assert.ok(html.includes('data-visitor="home"'), 'the ordinary home navigation stays available')
     assert.ok(html.indexOf('data-visitor="home"') < html.indexOf('data-visitor="credit"'), 'below the way home')
-    assert.ok(text(html).includes('It is advanced and you repay it from your earnings'))
+    assert.ok(text(html).includes('Half of each earning repays it. Your original home stays yours.'))
   })
   await visitor(30000, async () => { assert.ok(!text(await render('/src/app/features/travel/VisitorHome.vue')).includes('on credit')) })
 })

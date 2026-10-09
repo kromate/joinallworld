@@ -193,6 +193,9 @@ export interface DilemmaView {
 }
 
 export interface CareerView {
+  /** Whether the trusted host will create new interactive teaching markers for this view’s actions. */
+  interactiveTeachingStarts: boolean
+  teaching: { generation: number; practice: import('../game/living-world/teaching-state.ts').TeachingPractice } | null
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
   /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it until a dilemma comes up). */
@@ -679,12 +682,15 @@ export interface EstateView {
 }
 
 export interface RideCreditView {
+  /** A fully quoted continuous ticket; direct legacy offers retain their original shape. */
+  journey?: import('../game/cities/homewardRoute.ts').HomewardQuote | null
   /** Naira still owed for a ride home taken on credit (0 when nothing is). */
   debt: number
   offer: { to: WorldCityId; mode: CityLinkMode; fare: number } | null
 }
 /** One thing a stuck player can do right now. `venue` is where it is done (null: anywhere); `here` says they are already there. */
 export interface ReliefAction {
+  journey?: import('../game/cities/homewardRoute.ts').HomewardQuote
   id: 'odd-job' | 'bench' | 'tap' | 'clinic' | 'credit-ride' | 'friend' | 'cash-box' | 'repay'
   label: string
   detail: string
@@ -1169,9 +1175,9 @@ export const VIEW_FIELD_KEYS = {
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [
-    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
+    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'interactiveTeachingStarts', 'isTrack', 'job', 'jobs', 'label', 'level',
     'levels', 'next', 'nextShift', 'pay', 'performance', 'role', 'rules', 'schedule', 'shift', 'shifts', 'step', 'today',
-    'topOfLadder', 'weeklyPay', 'workplace',
+    'teaching', 'topOfLadder', 'weeklyPay', 'workplace',
   ],
   activities: ['active', 'cards', 'spot', 'spots'],
   travel: ['active', 'cooldowns', 'defaultMode', 'destinations', 'duration', 'event', 'gigs', 'gigsHere', 'home', 'modes', 'skip', 'trips', 'visited'],

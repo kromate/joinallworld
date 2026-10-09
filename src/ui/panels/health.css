@@ -1,6 +1,7 @@
 /* Health app and HUD chip. Classes are prefixed health-. */
-.health-status{display:flex;gap:14px;align-items:center;margin-bottom:var(--s-2);padding:16px;border-radius:var(--r-lg);background:#176c4a;color:#fff;box-shadow:var(--e-1)}
+.health-status{display:flex;gap:14px;align-items:center;margin-bottom:var(--s-2);padding:16px;border-radius:var(--r-lg);background:#176c4a;color:#fff}
 .health-status>span{flex:none;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#ffffff33;font-size:30px;line-height:1}
+.health-status>div{min-width:0;overflow-wrap:anywhere}
 .health-status h3{margin:0 0 2px!important;font-size:19px!important;letter-spacing:0!important;text-transform:none!important;color:#fff!important}
 .health-status p{margin:0!important;font-size:13px!important;line-height:1.4!important;opacity:.95}
 .health-status.is-rundown{background:#87520b}
@@ -8,11 +9,11 @@
 .health-feelings{margin:0 0 var(--s-3)}
 .health-risk .ui-bar{display:block;margin:6px 0}
 .ui-bar.is-low i{background:#d9822b}
-.health-advice{list-style:none;margin:0 0 var(--s-2);padding:var(--s-3) var(--s-4);border-radius:var(--r-md);background:#fff;box-shadow:var(--e-1),var(--ring);display:grid;gap:8px;font-size:13px;line-height:1.4}
+.health-advice{list-style:none;margin:0 0 var(--s-2);padding:var(--s-3) var(--s-4);border-radius:var(--r-md);background:#fff;border:1px solid var(--c-line);display:grid;gap:8px;font-size:13px;line-height:1.4}
 .health-advice li{position:relative;padding-left:20px}
 .health-advice li::before{content:'';position:absolute;left:2px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--app-tint,var(--c-green))}
 .health-cures .ui-row{align-items:flex-start}
-.health-cures .ui-row-body>b{white-space:normal}
+.health-cures .ui-row-body>b{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline;white-space:normal}
 .health-cures .ui-button{justify-self:start;margin-top:6px}
 .health-here{font-size:12px;font-weight:600;color:var(--c-green-dark);margin-top:4px}
 .health-chip{display:flex;align-items:center;gap:8px;width:100%;min-height:var(--tap);padding:8px 12px;border-radius:var(--r-chip);background:var(--c-surface);border:1px solid #fff!important;box-shadow:var(--e-2);text-align:left;font-size:12px}

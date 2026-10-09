@@ -16,7 +16,7 @@ TUNING.botDelayMs = 0; // the computer answers at once
 
 type State = Omit<TableStateFrame, 'view'> & { view: ChessView; result: { text: string; calledOff: boolean; winners: number[]; mine: { won: boolean; human: boolean; counted: boolean } | null } };
 interface Frame { type: string; repeat?: boolean; [field: string]: unknown }
-interface Peer { who: Device; ws: TestSocket['ws']; state: State; errors: { code: string; reason?: string }[]; all: Frame[]; waiting: (() => void)[] }
+interface Peer { who: Device; ws: TestSocket['ws']; state: State; errors: { code: string; reason?: string }[]; all: Frame[]; waiting: (() => void)[]; stateWaiters: { test(state: State): boolean; resolve(): void }[] }
 const TABLE = 'park-chess';
 
 async function harness(t: TestContext) {
@@ -25,11 +25,17 @@ async function harness(t: TestContext) {
   const post = async <T extends object = object>(path: string, body: unknown, who: Device) => json<T>(await f.request(path, body, who.cookie));
   async function connect(who: Device): Promise<Peer> {
     const sock = await f.socket(who);
-    const peer: Peer = { who, ws: sock.ws, state: null as unknown as State, errors: [], all: [], waiting: [] }; // `state` is set by the first table-state frame
+    const peer: Peer = { who, ws: sock.ws, state: null as unknown as State, errors: [], all: [], waiting: [], stateWaiters: [] }; // `state` is set by the first table-state frame
     sock.ws.on('message', (data) => {
       const message: Frame = JSON.parse(data.toString());
       peer.all.push(message);
-      if (message.type === 'table-state') peer.state = message as unknown as State;
+      if (message.type === 'table-state') {
+        peer.state = message as unknown as State;
+        for (let i = peer.stateWaiters.length - 1; i >= 0; i--) {
+          const waiter = peer.stateWaiters[i];
+          if (waiter?.test(peer.state)) { peer.stateWaiters.splice(i, 1); waiter.resolve(); }
+        }
+      }
       if (message.type === 'error') peer.errors.push(message as unknown as Peer['errors'][number]);
       if (message.type === 'tables') for (const done of peer.waiting.splice(0)) done();
     });
@@ -44,11 +50,25 @@ async function harness(t: TestContext) {
   const send = (peer: Peer, type: string, body: Record<string, unknown> = {}) => peer.ws.send(JSON.stringify({ type, cityId: 'lagos', table: TABLE, ...body }));
   const settled = (peer: Peer) => new Promise<void>((done) => { peer.waiting.push(done); peer.ws.send(JSON.stringify({ type: 'table-list', cityId: 'lagos', venue: 'park' })); });
   const all = async (...peers: Peer[]) => { for (const peer of peers) await settled(peer); };
+  /** Wait for the authoritative table-state broadcast, with a timeout only to fail a broken test. */
+  const stateUntil = (peer: Peer, predicate: (state: State) => boolean): Promise<void> => {
+    if (peer.state && predicate(peer.state)) return Promise.resolve();
+    return new Promise<void>((resolve, reject) => {
+      let timeout: ReturnType<typeof setTimeout>;
+      const waiter = { test: predicate, resolve: () => { clearTimeout(timeout); resolve(); } };
+      timeout = setTimeout(() => {
+        const index = peer.stateWaiters.indexOf(waiter);
+        if (index >= 0) peer.stateWaiters.splice(index, 1);
+        reject(new Error('Table state broadcast did not arrive'));
+      }, 2000);
+      peer.stateWaiters.push(waiter);
+    });
+  };
   const act = async (peer: Peer, type: string, body?: Record<string, unknown>, ...others: Peer[]): Promise<State> => { send(peer, type, body); await all(peer, ...others); return peer.state; };
   /** Play a move written as "e2e4" (promotion "e7e8q") for the peer whose turn it is. */
   const play = (peer: Peer, text: string, ...others: Peer[]) => act(peer, 'table-move', { n: peer.state.n, move: { t: 'move', from: text.slice(0, 2), to: text.slice(2, 4), ...(text[4] ? { promo: text[4] } : {}) } }, ...others);
   const claim = (peer: Peer) => post<{ results: { game: string; won: boolean; code: string }[] }>('/api/growth/tables/claim', { cityId: 'lagos' }, peer.who);
-  return { f, post, player, connect, send, settled, all, act, play, claim };
+  return { f, post, player, connect, send, settled, all, stateUntil, act, play, claim };
 }
 
 test('chess: two players play to checkmate; each sees the board, only the mover sees legal moves, a watcher cannot move, and a win is paid once', async (t) => {
@@ -94,7 +114,7 @@ test('chess: two players play to checkmate; each sees the board, only the mover 
 });
 
 test('chess: resign and a draw offer are made out of turn, a draw needs the other player, and the clock is the table’s own', async (t) => {
-  const { f, act, play, player, all, claim } = await harness(t);
+  const { f, act, play, player, all, stateUntil, claim } = await harness(t);
   const ada = await player('Ada'), bola = await player('Bola');
   await act(ada, 'table-sit', {}); await act(bola, 'table-sit', {}, ada);
   await act(ada, 'table-options', { options: { clock: '5+3', colour: 'black' } }, bola);
@@ -118,10 +138,17 @@ test('chess: resign and a draw offer are made out of turn, a draw needs the othe
   await play(ada, 'b8c6', bola);
   await play(bola, 'f1c4', ada);
   // Time passes on Ada’s clock: she is to move and does not. She has 5 minutes and the 3 seconds each of her two moves earned.
-  const tick = async (ms: number) => { f.advance(ms); f.server.beat(); await new Promise((done) => setTimeout(done, 20)); await all(ada, bola); };
+  const tick = async (ms: number, waitForFinish = false) => {
+    // A non-expired pump checks the clock synchronously. For expiration, wait for the state frame
+    // that is broadcast only after finish() commits the result, rather than sleeping a guessed interval.
+    const finished = waitForFinish ? stateUntil(ada, state => state.cityId === 'lagos' && state.table.id === TABLE && state.table.status === 'over' && state.result !== null) : null;
+    f.advance(ms); f.server.beat();
+    if (finished) await finished;
+    await all(ada, bola);
+  };
   await tick(305000);
   assert.equal(ada.state.table.status, 'playing');
-  await tick(2000);
+  await tick(2000, true);
   assert.deepEqual([ada.state.table.status, ada.state.result.winners], ['over', [1]]);
   assert.match(ada.state.result.text, /time/i);
   // Both had really played twice, so it counts.

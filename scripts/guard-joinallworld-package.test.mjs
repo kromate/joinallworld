@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { checkPackage, expectedConfig } from './guard-joinallworld-package.mjs';
 import { checkSource } from './check-joinallworld-source.mjs';
-import { checkWorkflow, parseYaml } from './check-workflows.mjs';
+import { checkWorkflow, nodePinProblems, parseYaml } from './check-workflows.mjs';
 const sha = 'a'.repeat(40);
 function fixture(t) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), 'joinallworld-package-test-')));
@@ -76,6 +76,19 @@ test('workflow permits only the fixed guarded command', () => {
   assert.ok(checkWorkflow('joinallworld-release.yml', noMain).some(x => x.includes('limited to refs/heads/main')));
   const suffix = structuredClone(workflow); suffix.jobs.deploy.steps.at(-1).run += '; arbitrary-command';
   assert.ok(checkWorkflow('joinallworld-release.yml', suffix).some(x => x.includes('not the guarded deploy')));
+});
+
+test('release Node pins meet the minimum numerically and still require exact supported versions', () => {
+  assert.deepEqual(nodePinProblems('>=22.18.0', ['22.18.0', '22.18.1', '22.19.0', '24.19.0']), []);
+  for (const pin of ['22.17.99', '22.18', '24', '24.x', '24.19.0-beta.1', '>=24.19.0', '024.19.0', '24.19.0 ', null, undefined, 24]) {
+    assert.ok(nodePinProblems('>=22.18.0', [pin]).length > 0, String(pin));
+  }
+  assert.ok(nodePinProblems('>=22.18.1', ['22.18.0']).length > 0);
+  assert.ok(nodePinProblems('>=22.18.0', ['21.99.99']).length > 0);
+  assert.ok(nodePinProblems('>=22.18.0', []).length > 0);
+  for (const engine of ['22.18.0', '>=22.18', '>=22.18.0 <25', '>=22.18.0-beta', undefined]) {
+    assert.ok(nodePinProblems(engine, ['24.19.0']).length > 0, String(engine));
+  }
 });
 
 test('source gate rejects unmerged and foreign-repository revisions', t => {

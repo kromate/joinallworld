@@ -5,7 +5,7 @@ import { advanceLife, createLife, dispatch, viewLife } from '../life.ts'
 import { DEFAULT_LOOK } from './content/traits.ts'
 import { BENCH, ODD_JOBS, ODD_JOBS_CASH_BELOW, RIDE_CREDIT, TAP } from './content/relief.ts'
 import { LODGING } from './content/world.ts'
-import { allCityLinks, cityRules, linksFrom, loadCityContent, playableCityIds } from './cities/registry.ts'
+import { allCityLinks, cityRules, isOpenCityId, linksFrom, loadCityContent, playableCityIds } from './cities/registry.ts'
 import { publicArrivalVenue } from './cities/runtime.ts'
 import { findActivity } from './api.ts'
 import { statementOf } from './wallet-statement.ts'
@@ -13,6 +13,9 @@ import { helpOf, helpStep } from '../app/features/relief/reliefHelp.ts'
 import { rideDebtText } from './relief.ts'
 import { makeContext } from './util.ts'
 import { DECAY_FLOOR } from './systems/needs.ts'
+import { bookablePath, seedWallet } from './stuckSearch.ts'
+import { MAX_HOMEWARD_LEGS, planHomewardRoute } from './cities/homewardRoute.ts'
+import { routeUnavailable } from './cities/routeAvailability.ts'
 import type { LifeContextInit, LifeState } from '../types/life.ts'
 
 await Promise.all(playableCityIds().map(loadCityContent))
@@ -33,12 +36,21 @@ function life(home = 'lagos', seed = 'relief') {
   const view = () => viewLife(state, context(state))
   const arrival = () => { wait((state.activeAction?.remaining ?? 0) + 1) }
   /** Visit a city with money, then spend down to `cash`. */
-  const visit = (city: string, cash: number, mode = 'road'): void => {
-    state.cash = 1_000_000
-    assert.equal(run('estate.relocate', { to: city, mode }).code, 'departed')
-    arrival()
+  const visit = (city: string, cash: number): void => {
+    const homeBefore = state.estate.home
+    for (const leg of bookablePath(state.estate.city, city)) {
+      seedWallet(state, leg.fare, context(state))
+      const before = state.cash
+      assert.equal(run('estate.relocate', { to: leg.to, mode: leg.mode }).code, 'departed')
+      assert.equal(state.cash, before - leg.fare)
+      assert.equal(state.ledger.at(-1)?.amount, -leg.fare)
+      arrival()
+      assert.equal(state.estate.city, leg.to)
+      assert.equal(state.activeAction, null)
+    }
     assert.equal(state.estate.city, city)
-    state.cash = cash
+    assert.equal(state.estate.home, homeBefore)
+    seedWallet(state, cash, context(state))
   }
   const at = (hour: number, day = 6): void => { now = Date.UTC(2026, 0, day, hour); state.t = now }
   const doActivity = (id: string, venue: string): { ok: boolean; code: string } => {
@@ -55,7 +67,6 @@ const ctx = (l: ReturnType<typeof life>) => makeContext({ cityId: l.state.estate
 const help = (l: ReturnType<typeof life>) => helpOf(l.state, ctx(l))
 const FRIEND = '11111111-2222-3333-4444-555555555555'
 const collect = (l: ReturnType<typeof life>, amount: number) => l.run('business.server', { op: 'collect', amount, sales: 0, name: 'Stall' }, { internal: true })
-const homeFare = (from: string, to: string): number => Math.min(...linksFrom(from).filter((link) => link.to === to).map((link) => link.fare))
 
 test('the owner\'s case: a visitor in Port Harcourt with ₦2,800 is offered the ride home on credit, at the cheapest fare', () => {
   const l = life()
@@ -104,6 +115,24 @@ test('limits of the ride on credit: main home only, only when cash is short, one
   assert.match(String(refused.reason), /You owe ₦12,000 for your ride home/)
   assert.ok(l.view().estate.links.filter((link) => link.open && link.status !== 'coming').every((link) => /You owe/.test(link.blocked ?? '')), 'every open link says why')
   assert.equal(l.run('estate.relocate', { to: 'ibadan', mode: 'road', credit: true }).code, 'ride_debt')
+  for (const cash of [251999, 252000, 265000, 289999, 290000]) {
+    const foreign = life()
+    foreign.visit('algiers', cash)
+    const quote = planHomewardRoute('algiers', 'lagos', linksFrom, isOpenCityId)
+    assert.ok(quote)
+    assert.deepEqual([quote.totalFare, quote.totalSeconds, quote.legs.map(leg => [leg.from, leg.to, leg.fare])], [252000, 86, [['algiers', 'birnin-kebbi', 236000], ['birnin-kebbi', 'lagos', 16000]]])
+    if (cash < quote.totalFare) {
+      assert.equal(foreign.view().estate.ride.journey?.totalFare, quote.totalFare)
+      assert.ok(help(foreign)?.line.includes('₦252,000'))
+    } else {
+      assert.equal(help(foreign), null, 'a complete affordable route is not a short-of-money situation')
+      assert.equal(foreign.view().estate.ride.offer, null)
+      assert.equal(foreign.view().estate.ride.journey, null)
+      const before = structuredClone(foreign.state)
+      assert.equal(foreign.run('estate.relocate', { to: 'lagos', mode: 'air', credit: true }).code, 'credit_not_offered')
+      assert.deepEqual([foreign.state.cash, foreign.state.travel, foreign.state.activeAction, foreign.state.ledger, foreign.state.estate], [before.cash, before.travel, before.activeAction, before.ledger, before.estate], 'refusal writes no loan, debit, movement or home change')
+    }
+  }
 })
 
 test('a guest who has not settled in cannot travel between cities, on credit or not', () => {
@@ -120,11 +149,29 @@ test('a guest who has not settled in cannot travel between cities, on credit or 
   assert.equal(state.estate.city, 'lagos')
 })
 
-test('a visitor whose home is anywhere can always get home: every pair of open cities has a road, and the home is open', () => {
+test('every pair of open cities has a bounded homeward quote using actual bookable connections', () => {
   const open = playableCityIds()
   for (const a of open) for (const b of open) {
     if (a === b) continue
-    assert.ok(linksFrom(a).some((link) => link.to === b && link.mode === 'road' && link.status !== 'coming'), `${a} to ${b} has an open road`)
+    const quote = planHomewardRoute(a, b, linksFrom, isOpenCityId)
+    assert.ok(quote, `${a} to ${b}: a full route home`)
+    assert.deepEqual([quote.from, quote.to], [a, b])
+    assert.ok(quote.legs.length > 0 && quote.legs.length <= MAX_HOMEWARD_LEGS && quote.legs.length <= 4)
+    assert.ok(quote.totalFare > 0 && quote.totalFare <= RIDE_CREDIT.max && quote.totalFare <= 1_000_000)
+    assert.equal(quote.totalFare, quote.legs.reduce((sum, leg) => sum + leg.fare, 0))
+    assert.equal(quote.totalSeconds, quote.legs.reduce((sum, leg) => sum + leg.seconds, 0))
+    let from = a
+    const visited = new Set([a])
+    for (const leg of quote.legs) {
+      assert.equal(leg.from, from)
+      assert.ok(!visited.has(leg.to), 'no cycle in a quoted journey')
+      assert.ok(isOpenCityId(leg.to))
+      assert.ok(linksFrom(from).some((link) => link.to === leg.to && link.mode === leg.mode
+        && link.fare === leg.fare && link.seconds === leg.seconds && !routeUnavailable(link)), `${from} to ${leg.to}: actual bookable leg`)
+      visited.add(leg.to)
+      from = leg.to
+    }
+    assert.equal(from, b)
     assert.equal(cityRules(b)?.status, 'open')
   }
   assert.ok(allCityLinks().length > 0)
@@ -325,7 +372,10 @@ test('"What you can do now": offered when stuck-ish, with the first step the odd
   assert.equal(card.title, 'What you can do now')
   assert.deepEqual(card.actions.map((action) => action.id), ['odd-job', 'credit-ride', 'friend'])
   assert.ok(card.actions.every((action) => action.blocked === null), JSON.stringify(card.actions.map((a) => [a.id, a.blocked])))
-  assert.equal(card.actions[1]!.to, 'lagos')
+  const route = card.actions[1]!.journey
+  assert.ok(route)
+  assert.equal(route.to, 'lagos')
+  assert.deepEqual(route, l.view().estate.ride.journey, 'help uses the same complete quoted ticket as Home')
   assert.match(card.key, /port-harcourt/)
   // The one goal line under the needs bars points at the same first step.
   const step = helpStep(l.state, ctx(l))

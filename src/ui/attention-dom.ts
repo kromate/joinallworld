@@ -82,12 +82,25 @@ export function createAttention({ root, dialog }: { root?: ParentNode; dialog?: 
     const node = find(at), size = view();
     const pill = doc.createElement('p');
     pill.className = `attn-cue is-${kind}`; pill.setAttribute('aria-hidden', 'true');
-    let arrow = '';
-    if (node) { const box = node.getBoundingClientRect(); arrow = ` ${wayTo({ x: size.width / 2, y: size.height * 0.4 }, { x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 }).arrow}`; }
-    pill.textContent = `${text}${arrow}`;
+    pill.textContent = node ? `${text} →` : text;
     layer.querySelector('.attn-cue')?.remove();
     if (layer.parentNode !== home()) home().append(layer);
     layer.append(pill);
+    if (node) {
+      const box = node.getBoundingClientRect(), gap = 12, frame = layer.getBoundingClientRect();
+      const scale = frame.width / layer.offsetWidth || 1;
+      const left = box.left - gap * 2, right = size.width - box.right - gap * 2;
+      const beside = Math.max(left, right) >= 120;
+      pill.style.width = `${Math.min(380, beside ? Math.max(left, right) : size.width - gap * 2) / scale}px`;
+      const bounds = { width: pill.offsetWidth * scale, height: pill.offsetHeight * scale };
+      let x = (box.left + box.right) / 2, y = box.top - gap - bounds.height / 2;
+      if (beside) { x = left >= right ? box.left - gap - bounds.width / 2 : box.right + gap + bounds.width / 2; y = (box.top + box.bottom) / 2; }
+      else if (y < gap + bounds.height / 2) y = box.bottom + gap + bounds.height / 2;
+      x = clampTo(x, gap + bounds.width / 2, size.width - gap - bounds.width / 2);
+      y = clampTo(y, gap + bounds.height / 2, size.height - gap - bounds.height / 2);
+      pill.style.left = `${Math.round((x - frame.left) / scale)}px`; pill.style.top = `${Math.round((y - frame.top) / scale)}px`;
+      pill.textContent = `${text} ${wayTo({ x, y }, { x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 }).arrow}`;
+    }
     pill.addEventListener('animationend', (event) => { if (event.animationName === 'attn-cue' || event.animationName === 'attn-cue-still') pill.remove(); });
     // The place it happened answers too: one flash of its outline.
     if (node && !reduced()) { node.classList.remove('is-noted'); void node.offsetWidth; node.classList.add('is-noted'); node.addEventListener('animationend', () => node.classList.remove('is-noted'), { once: true }); }

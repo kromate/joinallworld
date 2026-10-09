@@ -13,8 +13,9 @@ import type { AvatarGroup, Pose } from './characters.ts';
 import { createBatch, releaseObjects, sceneMaterials } from './build.ts';
 import type { Kit } from './kit.ts';
 import { createWalkGrid } from './movement.ts';
+import { lightingFor, timeOfDay } from './lighting.ts';
 import type { WalkRect } from './movement.ts';
-import type { SceneCamera, ScenePerson, SceneTag } from './types.ts';
+import type { SceneCamera, ScenePerson, SceneTag, TimeOfDay } from './types.ts';
 import { ROW_HALF_WIDTH, ROW_PITCH, rowX, streetRow } from '../game/neighbourhood-space.ts';
 import { plotOf } from '../game/home-layout.ts';
 
@@ -79,6 +80,7 @@ const finite = (value: unknown): value is number => typeof value === 'number' &&
 const tierFloors = (tier: HouseTierId): number => plotOf(HOUSE_DESIGNS[tier].grid, true).floors;
 
 export function buildNeighbourhoodScene(kit: Kit): HostScene {
+  let streetTime: TimeOfDay = 'day';
   const { THREE } = kit, group = new THREE.Group(), scenery = new THREE.Group();
   group.add(scenery);
   const avatar: AvatarGroup = buildAvatar(kit, null, { rig: true, seed: 'neighbourhood-player', marker: 'crown' });
@@ -237,7 +239,10 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     heightAt() { return 0; }, near() { return false; }, goal() { return false; },
   };
   return {
-    group, camera: CAMERA, background: '#9cc4d2', sky: ['#d2e0d6', '#8eb8c4'], ground: '#7f9a71', walk,
+    group, camera: CAMERA, ground: '#7f9a71', walk,
+    get background() { return lightingFor('outdoor', streetTime).sky[0]; },
+    get sky() { return lightingFor('outdoor', streetTime).sky; },
+    lighting() { return lightingFor('outdoor', streetTime); },
     get homeDoor() { return { ...HOME_DOOR, x: ownX() }; },
     streetGate: { x: 81, z: 0, ry: Math.PI / 2 },
     setStreet(next) {
@@ -271,8 +276,11 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
       return changed;
     },
     update(state: LifeState) {
+      const nextTime = finite(state.t) ? timeOfDay(state.t) : streetTime;
+      const timeChanged = nextTime !== streetTime;
+      streetTime = nextTime;
       const next = JSON.stringify([state.estate.style, state.estate.tier, state.estate.living, state.estate.plot]);
-      if (next === signature) return false;
+      if (next === signature) return timeChanged;
       signature = next; currentStyle = state.estate.style; ownFloors = state.estate.living === 'own' ? tierFloors(state.estate.tier) : 1;
       if (state.estate.plot) anchor = state.estate.plot.plot;
       grid = makeGrid(); render(); return true;

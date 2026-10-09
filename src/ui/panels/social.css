@@ -16,6 +16,11 @@
 .social-row small{color:var(--c-muted);font-size:12px}
 .social-row.is-ask{flex-wrap:wrap}
 .social-row.is-ask .social-actions{flex:1 1 100%!important;padding-left:52px}
+.social-row.is-visit{flex-wrap:wrap;align-items:flex-start}
+.social-row.is-visit>div{flex:1 1 160px}
+.social-row.is-visit strong,.social-row.is-visit small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+.social-row.is-visit .social-actions{flex:1 1 100%!important}
+.social-row.is-visit .social-actions button{flex:1 1 100px}
 .social-row.is-ask /* .social-btn is the kit's secondary button (controls.css) under an older name */
 .social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-pill);padding:0 16px;min-height:var(--tap);font:600 14px var(--font);cursor:pointer}
 button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:52px}
@@ -29,7 +34,7 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .social-presence.is-reconnecting{color:var(--c-amber-dark);font-weight:600}
 .social-actions{display:flex;flex-wrap:wrap;gap:6px;flex:none!important}
 .social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-sm);padding:8px 14px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer}
-.social-btn.is-primary{background:var(--app-tint,var(--c-green-dark));color:#fff}.social-btn.is-danger{background:var(--c-red-soft);color:var(--c-red-dark)}
+.social-btn.is-primary{background:var(--c-green-dark);background:color-mix(in srgb,var(--app-tint,var(--c-green-dark)) 45%,#000);color:#fff}.social-btn.is-danger{background:var(--c-red-soft);color:var(--c-red-dark)}
 .social-btn:disabled{opacity:.5;cursor:not-allowed}
 .social-why{display:block;font-size:12px;line-height:1.4;color:var(--c-red);margin-top:2px}
 .social-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;margin:8px 0}

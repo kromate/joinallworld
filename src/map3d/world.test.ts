@@ -15,7 +15,7 @@ import type { EstateLayout } from './estates.ts';
 import { createHouses, DETAIL_BUDGET } from './houses.ts';
 import { HOUSES_DRAW_CALLS } from '../budgets.ts';
 import { createWorldData, ESTATES_KEPT } from './world-data.ts';
-import { COUNTRIES, cityEntry } from './regions.ts';
+import { COUNTRIES, citiesOf, cityEntry, countryList, regionEntry, stateOfCity } from './regions.ts';
 import { COMING_SOON } from '../game/content/venues.ts';
 import { VENUES } from '../game/cities/lagos/venues.ts';
 import { allCityLinks, cityCatalogue, cityCatalogueEntry, loadCityLinks } from '../game/cities/registry.ts';
@@ -203,14 +203,29 @@ test('the maps fetch only what is in view: one summary with a version stamp, one
 });
 
 test('open and coming-soon cities share the live registry and canonical links', () => {
+  const nigeria = cityCatalogue().filter((city) => !city.countryISO || city.countryISO === 'ng');
   for (const id of Object.keys(COUNTRIES.nigeria.cities)) assert.ok(cityEntry(id), `${id} is on the country map`);
   for (const link of allCityLinks()) assert.ok(cityEntry(link.a) && cityEntry(link.b));
-  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), cityCatalogue().filter((city) => city.open).map((city) => city.id));
+  assert.deepEqual(Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'playable').map((item) => item.id), nigeria.filter((city) => city.open).map((city) => city.id));
   const soon = Object.values(COUNTRIES.nigeria.cities).filter((item) => item.status === 'soon');
-  assert.deepEqual(soon.map((item) => item.id), cityCatalogue().filter((city) => !city.open).map((city) => city.id));
+  assert.deepEqual(soon.map((item) => item.id), nigeria.filter((city) => !city.open).map((city) => city.id));
   for (const item of soon) { const city = cityCatalogueEntry(item.id); assert.ok(city, 'registered city'); assert.equal(city.open, false); }
   const kaduna = cityCatalogueEntry('kaduna');
   if (kaduna && !kaduna.open) { assert.equal(cityEntry('kaduna')?.preview?.length, 3); assert.ok(allCityLinks().some((link) => link.a === 'kaduna' || link.b === 'kaduna')); }
+  const foreign = [['cm', 'yaounde'], ['tg', 'lome'], ['gh', 'accra'], ['ke', 'nairobi'], ['dz', 'algiers']] as const;
+  assert.deepEqual(countryList().map(country => country.id).sort(), ['nigeria', ...foreign.map(([iso]) => iso)].sort());
+  for (const [iso, capital] of foreign) {
+    assert.equal(cityCatalogueEntry(capital)?.countryISO, iso, `${capital}: catalogue country`);
+    assert.equal(cityEntry(capital)?.country, iso, `${capital}: map country`);
+    assert.deepEqual(citiesOf(iso).map(city => [city.id, city.status]), [[capital, 'playable']]);
+    assert.equal(Object.hasOwn(COUNTRIES.nigeria.cities, capital), false, `${capital}: not a Nigeria city`);
+    assert.equal(stateOfCity(capital), null, `${capital}: no Nigeria state level`);
+    const country = regionEntry('country', iso);
+    assert.equal(country.status, 'open', `${iso}: playable country`);
+    assert.equal(country.city, capital, `${iso}: country entry opens its capital`);
+  }
+  assert.equal(stateOfCity('lagos'), 'lagos');
+  assert.equal(regionEntry('country', 'ng').level, 'nigeria');
   // The atlas shows a route's Travel button only when the server would let it leave; otherwise it says why (src/map3d/geo).
   const atlas = readFileSync(new URL('./geo/atlas.ts', import.meta.url), 'utf8'), info = readFileSync(new URL('./geo/info.ts', import.meta.url), 'utf8');
   assert.match(atlas, /data-atlas-travel=/); assert.match(info, /is not open yet, so nothing leaves for it/);

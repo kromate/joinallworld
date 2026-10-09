@@ -23,7 +23,41 @@ const SEAT = 0.6;
 export const CLIMB = 0.3;
 
 /** What the stand-in needs of a scene: where it draws, the figure to hide, and the scene's avatar scale. */
-export interface StandInScene { group: THREE.Object3D; avatar: THREE.Object3D; scale: number }
+export interface StandInScene {
+  group: THREE.Object3D;
+  avatar: THREE.Object3D;
+  scale: number;
+  /** Height of a verified support surface, or null when this footprint is unsupported. */
+  contactHeightAt?: (x: number, z: number, expectedY: number) => number | null;
+}
+
+/** Preflight every sampled sole vertex before mutating either leg. */
+export function solveSupportedFeet(body: Pick<SkinnedBody, 'sampleFootContacts' | 'solveFeet' | 'easing' | 'seated'>,
+  contactHeightAt: StandInScene['contactHeightAt']): boolean {
+  if (!contactHeightAt || body.easing || body.seated) return false;
+  const contacts = body.sampleFootContacts();
+  if (!contacts.length) return false;
+  const targets = new Map<string, number>();
+  for (const contact of contacts) {
+    const points = contact.points ?? [contact];
+    if (!points.length) return false;
+    let highest: number | null = null;
+    for (const point of points) {
+      const height = contactHeightAt(point.x, point.z, point.y);
+      if (height === null || !Number.isFinite(height)) return false;
+      highest = highest === null ? height : Math.max(highest, height);
+    }
+    if (highest === null) return false;
+    // The solver resamples points after each leg fit. A per-side fixed target remains stable,
+    // while selecting the highest supported point keeps the sole from clipping through paving.
+    const previous = targets.get(contact.side);
+    if (previous !== undefined && Math.abs(previous - highest) > 0.0005) return false;
+    targets.set(contact.side, highest);
+  }
+  if (targets.size !== 2) return false;
+  body.solveFeet((point) => targets.get(point.side) ?? Number.NaN);
+  return true;
+}
 
 export interface StandIn {
   /** True while a sit-enter / sit-exit / door plays (the host steps it). */
@@ -39,6 +73,10 @@ export interface StandIn {
   start(renderer: { getContext?: () => unknown } | null | undefined): void;
   wear(look: unknown, seed: unknown): void;
   move(x: number, y: number, z: number, ry: number): void;
+  /** Set the floor destination used when a seated body gets up; its current seat remains unchanged. */
+  standingAt(x: number, y: number, z: number, ry: number): void;
+  /** Discard a pending seated exit destination without repositioning the resting body. */
+  clearStandingDestination(): void;
   pose(name: string, seat: number | undefined, animate: boolean): void;
   /** One walking frame at the stride phase; `y` the floor height under the walker (the stairs clips on a slope). */
   gait(phase: number, jog: boolean, y?: number): void;
@@ -47,23 +85,36 @@ export interface StandIn {
   dispose(): void;
 }
 
+type BodyLoader = (kit: Kit, look: unknown, seed: unknown, sceneScale: number) => Promise<SkinnedBody>;
+
 /**
  * onReady: the body came in (or went) on its own, between frames — draw one. allowed: the device check (tests pass
  * false or a fake device; the default reads navigator).
  */
-export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed()): StandIn {
+export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed(), load?: BodyLoader): StandIn {
   const headAt = new kit.THREE.Vector3();
   let body: SkinnedBody | null = null, loading = false, failed = !allowed, gone = false, scene: StandInScene | null = null;
   let look: unknown = null, seed: unknown = null, posed: BodyPose = 'idle', seat = SEAT, at = { x: 0, y: 0, z: 0, ry: 0 };
+  let standingDestination: typeof at | null = null;
   // Came into a scene and not yet posed there; the last walking frame (floor height, position) and the slope since.
   let arrived = false, was: { x: number; y: number; z: number } | null = null, climb = 0;
+  let standingIntent = true;
+
+  function solveContacts() {
+    if (!body || !scene || !standingIntent) return;
+    solveSupportedFeet(body, scene.contactHeightAt);
+  }
 
   /** Put the body where the figure is, in its pose. */
   function put() {
     if (!body) return;
-    if (posed === 'sit' || body.seated) body.sitOn(at.x, at.y + seat * (scene?.scale ?? 1), at.z, at.ry);
+    if (posed === 'sit' || body.seated) {
+      if (standingDestination) body.place(standingDestination.x, standingDestination.y, standingDestination.z, standingDestination.ry);
+      body.sitOn(at.x, at.y + seat * (scene?.scale ?? 1), at.z, at.ry);
+    }
     else body.place(at.x, at.y, at.z, at.ry);
   }
+  function clearStandingDestination() { standingDestination = null; }
   /** Show the body in the scene in place of the figure, or (no scene, no body) give the figure back. */
   function mount() {
     if (!body || !scene) { body?.object.removeFromParent(); if (scene) scene.avatar.visible = true; return; }
@@ -72,6 +123,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     scene.avatar.visible = false;
     body.show(posed, false);
     put();
+    solveContacts();
   }
   function drop() {
     body?.dispose();
@@ -93,6 +145,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (scene) scene.avatar.visible = true;
       body?.object.removeFromParent();
       scene = next;
+      clearStandingDestination();
       arrived = Boolean(next);
       was = null; climb = 0;
       mount();
@@ -102,7 +155,8 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (!drawsWebGL2(renderer)) { failed = true; return; }
       loading = true;
       setTimeout(() => {
-        importBody().then((module) => module.loadBody(kit, look, seed, scene?.scale ?? 1)).then((loaded) => {
+        const request = load ? load(kit, look, seed, scene?.scale ?? 1) : importBody().then((module) => module.loadBody(kit, look, seed, scene?.scale ?? 1));
+        request.then((loaded) => {
           loading = false;
           if (gone) { loaded.dispose(); return; }
           // The look changed while it loaded: recolour, or (the other body file) fetch again after the next frame.
@@ -121,8 +175,11 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (body && !body.wear(look, seed)) { drop(); onReady(); }
     },
     move(x, y, z, ry) { at = { x, y, z, ry }; put(); },
+    standingAt(x, y, z, ry) { standingDestination = { x, y, z, ry }; put(); },
+    clearStandingDestination,
     pose(name, nextSeat, animate) {
       posed = BODY_POSE[name] ?? 'idle';
+      standingIntent = name === 'stand' || name === 'relax';
       seat = Number.isFinite(nextSeat) ? nextSeat! : SEAT;
       const door = arrived && posed === 'idle';
       arrived = false;
@@ -130,16 +187,19 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (door) body.enter(animate);
       else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.seated || posed === 'sit'));
       put();
+      solveContacts();
     },
     gait(phase, jog, y = at.y) {
+      clearStandingDestination();
       const run = was ? Math.hypot(at.x - was.x, at.z - was.z) : 0;
       climb = was && run > 1e-3 ? (y - was.y) / run : 0;
       was = { x: at.x, y, z: at.z };
       posed = jog ? 'jog' : 'walk';
-      if (body) { body.stride(phase, jog, Math.abs(climb) >= CLIMB ? climb : 0); put(); }
+      standingIntent = climb === 0;
+      if (body) { body.stride(phase, jog, Math.abs(climb) >= CLIMB ? climb : 0); put(); solveContacts(); }
     },
-    step(dt) { const more = body?.step(dt) ?? false; put(); return more && Boolean(scene); },
-    settle() { body?.settle(); put(); },
-    dispose() { gone = true; drop(); scene = null; },
+    step(dt) { const more = body?.step(dt) ?? false; put(); if (!more) solveContacts(); return more && Boolean(scene); },
+    settle() { body?.settle(); put(); solveContacts(); },
+    dispose() { gone = true; clearStandingDestination(); drop(); scene = null; },
   };
 }

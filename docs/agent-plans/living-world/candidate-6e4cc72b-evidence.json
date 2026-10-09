@@ -1,0 +1,79 @@
+{
+  "sourceSha": "6e4cc72bde9ca6465dfc88781e6838045af29082",
+  "observedAtUtc": "2026-10-09T08:48:06Z",
+  "runId": 37905568408,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37905568408",
+  "status": "completed",
+  "conclusion": "failure",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "typecheck-fast": "failure",
+    "build-and-smoke-fast": "failure",
+    "ui-regressions": "failure"
+  },
+  "compilerDiagnostics": [
+    {
+      "file": "src/ui/attention.ts",
+      "line": 99,
+      "code": "TS2339",
+      "reason": "StepContext activeAction lacks teaching; explicit optional field repair pending"
+    },
+    {
+      "file": "src/types/engine.test.ts",
+      "line": 123,
+      "code": "TS2344",
+      "reason": "Slice field list missing teachingGeneration; repaired by 149f7a14, not tested at this SHA"
+    },
+    {
+      "file": "src/types/engine.test.ts",
+      "line": 309,
+      "code": "TS2322",
+      "reason": "Explicit career reader missing teachingGeneration; fixture repair pending"
+    }
+  ],
+  "ui": {
+    "tests": 429,
+    "pass": 428,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 111017.130227,
+    "failure": "server/economy/effects.test.ts line56: manually seeded untrusted Teaching timer is correctly dropped; real authored-shift fixture repair pending",
+    "passed": "new teaching ActionProgress SSR and four narrow teaching UI model cases; no browser or viewport proof"
+  },
+  "orderedLaterUiSteps": "active learning/HTTP, shopping/career, city and Worker-host steps skipped after UI failure",
+  "build": "success",
+  "download": {
+    "result": "failure",
+    "startupRaw": 616183,
+    "startupRawCap": 615000,
+    "startupGzip": 223489,
+    "startupGzipCap": 223000,
+    "startupBrotli": 195716,
+    "startupBrotliCap": 195600,
+    "firstPaintBrotli": 35694,
+    "firstPaintBrotliCap": 36800
+  },
+  "smoke": "skipped after download failure",
+  "startupObserver": {
+    "artifactId": 11604446572,
+    "file": "startup-attribution-6e4cc72b.json.gz",
+    "cleanSource": true,
+    "lessonWordsModule": "absent from automatic startup",
+    "strictStateParser": "eager in slices-a685b497.js",
+    "qualification": "module rendered length is pre-minifier evidence, not exclusive compressed attribution"
+  },
+  "repair": "conditional read-only strict parser load before cached/server snapshot sanitation; preserve playing-host direct validation, retry, identity/generation guards and unchanged limits",
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false
+  },
+  "remaining": [
+    "replacement exact-SHA compiler/build/download/UI/HTTP/browser-profile checks",
+    "full22/24 source/server/Worker checks",
+    "actual desktop/mobile/solo/multiplayer/interrupted gameplay",
+    "complete mapped first journey",
+    "exact-SHA staging and live save observation",
+    "Goalmatic consented target and typed contract"
+  ]
+}

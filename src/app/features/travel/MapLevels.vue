@@ -12,7 +12,9 @@ import type { MapLevel } from './travelModel.ts'
 
 const { game, showMapLayer } = useApp()
 const cityName = computed(() => game.view.value.city?.name ?? 'City')
-const levels = computed(() => mapLevels(cityName.value, 'city'))
+const cityId = computed(() => game.cityId.value)
+const levels = computed(() => mapLevels(cityName.value, 'city', 2, cityId.value))
+const levelLabels = computed(() => levels.value.map(level => level.label).join(', '))
 const openCities = playableCityIds().length
 
 /** Only the current level shows, as one chip; it opens the whole trail as a small list. */
@@ -21,7 +23,10 @@ const root = ref<HTMLElement | null>(null)
 const chip = ref<HTMLButtonElement | null>(null)
 function go(level: MapLevel): void {
   open.value = false
-  if (level.atlas !== null) showMapLayer('world', { level: level.atlas })
+  if (level.atlas !== null) {
+    if (level.id === 'country') showMapLayer('world', { level: 1, city: cityId.value })
+    else showMapLayer('world', { level: level.atlas })
+  }
 }
 const away = (event: Event): void => { if (open.value && event.target instanceof Node && !root.value?.contains(event.target)) open.value = false }
 const escape = (event: KeyboardEvent): void => { if (open.value && event.key === 'Escape') { open.value = false; event.stopPropagation(); chip.value?.focus() } }
@@ -40,8 +45,8 @@ onBeforeUnmount(() => { document.removeEventListener('pointerdown', away); docum
 </script>
 
 <template>
-  <nav ref="root" class="map-levels level-menu" :aria-label="`Map level. You are in ${mapCrumbText(cityName)}`" :data-open="open || undefined" @keydown="arrows">
-    <button ref="chip" type="button" class="map-levels-cur level-menu-cur" data-tour="map-world" :aria-expanded="open" aria-controls="map-levels-list" :aria-label="`Map level: ${cityName}. Show World, Africa and Nigeria`" @click="open = !open"><GameIcon inline name="globe" /><span>{{ cityName }}</span><GameIcon inline name="chevron-down" /></button>
+  <nav ref="root" class="map-levels level-menu" :aria-label="`Map level. You are in ${mapCrumbText(cityName, cityId)}`" :data-open="open || undefined" @keydown="arrows">
+    <button ref="chip" type="button" class="map-levels-cur level-menu-cur" data-tour="map-world" :aria-expanded="open" aria-controls="map-levels-list" :aria-label="`Map level: ${cityName}. Show ${levelLabels}`" @click="open = !open"><GameIcon inline name="globe" /><span>{{ cityName }}</span><GameIcon inline name="chevron-down" /></button>
     <ol id="map-levels-list">
       <li v-for="level in levels" :key="level.id" :data-level="level.id">
         <button

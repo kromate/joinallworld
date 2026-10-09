@@ -64,9 +64,18 @@ export function advanceActive(state: LifeState, dt: number, ctx: LifeContext): E
   const active = state.activeAction;
   if (!active) return 'idle';
   const handler = activeHandler(active.kind);
+  if (handler?.waitsForInput?.(state, active, ctx)) return 'advanced';
   handler?.tick?.(state, active, Math.min(dt, active.remaining), ctx);
   active.remaining = Math.max(0, active.remaining - dt);
   if (active.remaining > 0) return 'advanced';
+  return completeActive(state, ctx);
+}
+
+/** Server rules complete a validated interactive action through the same completion boundary. */
+export function completeActive(state: LifeState, ctx: LifeContext): 'idle' | 'completed' {
+  const active = state.activeAction;
+  if (!active) return 'idle';
+  const handler = activeHandler(active.kind);
   state.activeAction = null;
   const from = state.location;
   handler?.complete(state, active, ctx);

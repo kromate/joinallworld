@@ -1,4 +1,6 @@
 import { contentFor, jobFor, publicArrivalVenue, venuesFor, venueFor } from '../cities/runtime.ts';
+import { readTeachingPractice } from '../living-world/teaching-state.ts';
+import { readTeachingSnapshot } from '../teaching-gate.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Generic data-driven activity engine. Venue spots, job shifts and home furniture all run
@@ -309,13 +311,24 @@ const shown = {
     const def = entry ? resolve(entry.def, value.choice) : null;
     if (!entry || !def || entry.venue !== state.location || def.unavailable || value.duration !== def.duration
       || (def.requiresJob && state.job !== def.requiresJob)) return null;
+    const marked = Object.hasOwn(value, 'teaching') || Object.hasOwn(value, 'teachingGeneration');
+    let teaching: ReturnType<typeof readTeachingPractice> = null;
+    if (marked) {
+      teaching = PLAYS ? readTeachingPractice(value.teaching) : readTeachingSnapshot(value.teaching);
+      // A read-only browser can show its cached server session; only playing hosts import reward authority.
+      if (PLAYS && ctx.trustedSave !== true || def.careerTrack !== 'teaching' || !teaching || teaching.stage === 'complete'
+        || !safeCount(value.teachingGeneration) || value.teachingGeneration < 1
+        || value.teachingGeneration !== state.career.teachingGeneration || entry.spot !== state.spot) return null;
+    } else if (def.careerTrack === 'teaching' && PLAYS && ctx.trustedSave !== true) return null;
     // What was charged at the start is the ADJUSTED price (modify 'activity.cost'), which may be
     // above the listed one. The server's own save (ctx.trustedSave) is believed as written — the
     // price may have changed since the player paid. Any other input is cut down to the limit.
     const paid = def.chargeOn === 'start' && safeCount(value.paid) && value.paid > 0
       ? (ctx?.trustedSave === true ? value.paid : Math.min(value.paid, paidLimit(state, def, ctx))) : 0;
-    return { ...(def.choice ? { choice: def.choice } : {}), ...(paid ? { paid } : {}) };
+    return { ...(def.choice ? { choice: def.choice } : {}), ...(paid ? { paid } : {}),
+      ...(teaching ? { teaching, teachingGeneration: value.teachingGeneration as number } : {}) };
   },
+  waitsForInput(_state: LifeState, action: ActivityAction) { return Object.hasOwn(action, 'teaching'); },
 };
 /**
  * What becomes of a running activity: only a host that plays lives settles, ends or stops one, so the browser's build leaves

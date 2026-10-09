@@ -8,11 +8,14 @@
  */
 import { advanceLife, createLife, dispatch, viewLife } from '../life.ts';
 import { DEFAULT_LOOK } from './content/traits.ts';
-import { cityRules, linksFrom } from './cities/registry.ts';
+import { cityRules, isOpenCityId, linksFrom } from './cities/registry.ts';
 import { jobFor, venuesFor } from './cities/runtime.ts';
 import { arrive, blockReason, spotsOf } from './api.ts';
 import { isReliefActivity } from './relief.ts';
-import type { ActivityDefinition } from '../types/content.ts';
+import { planHomewardRoute } from './cities/homewardRoute.ts';
+import { routeUnavailable } from './cities/routeAvailability.ts';
+import { LEDGER_LIMIT } from './systems/wallet.ts';
+import type { ActivityDefinition, CityLinkFrom } from '../types/content.ts';
 import type { LifeContextInit, LifeState } from '../types/life.ts';
 
 export const NEEDS_OK = 25;
@@ -54,6 +57,39 @@ const copy = (state: LifeState): LifeState => JSON.parse(JSON.stringify(state)) 
 const templates = new Map<string, LifeState>();
 export const START_SAMPLE = Date.UTC(2026, 0, 5, 9);
 
+/** Test setup follows existing bookable edges; it never supplies a synthetic road. */
+export function bookablePath(from: string, to: string): readonly CityLinkFrom[] {
+  const queue: { city: string; path: readonly CityLinkFrom[] }[] = [{ city: from, path: [] }];
+  const seen = new Set([from]);
+  for (const item of queue) {
+    if (item.city === to) return item.path;
+    const links = [...linksFrom(item.city)].filter((link) => !routeUnavailable(link) && isOpenCityId(link.to)
+      && Number.isSafeInteger(link.fare) && link.fare > 0 && Number.isSafeInteger(link.seconds) && link.seconds > 0)
+      .sort((a, b) => Number(b.mode === 'road') - Number(a.mode === 'road') || a.fare - b.fare || a.to.localeCompare(b.to));
+    for (const link of links) {
+      if (seen.has(link.to)) continue;
+      seen.add(link.to);
+      queue.push({ city: link.to, path: [...item.path, link] });
+    }
+  }
+  throw new Error(`No bookable setup path from ${from} to ${to}`);
+}
+
+/** Controlled fixture funding and spending are ordinary internal wallet entries, never earnings. */
+export function seedWallet(state: LifeState, cash: number, context: LifeContextInit): void {
+  if (!Number.isSafeInteger(cash) || cash < 0 || (state.travel.rideDebt ?? 0) > 0) throw new Error('Invalid debt-free wallet seed');
+  const delta = cash - state.cash;
+  if (!delta) return;
+  const op = delta > 0 ? 'credit' : 'debit';
+  const before = state.ledger.length;
+  const result = dispatch(state, { type: 'wallet.admin', payload: { op, amount: Math.abs(delta), reason: 'Journey fixture setup' } }, { ...context, internal: true });
+  const line = state.ledger.at(-1);
+  if (!result.ok || state.cash !== cash || state.ledger.length !== Math.min(LEDGER_LIMIT, before + 1)
+    || !line || line.amount !== delta || line.balance !== cash || line.reason !== `Admin ${op}: Journey fixture setup`) {
+    throw new Error(`Wallet setup did not settle exactly: ${result.code}`);
+  }
+}
+
 function build(home: string, city: string): LifeState {
   const key = `${home}>${city}`;
   const known = templates.get(key);
@@ -68,13 +104,19 @@ function build(home: string, city: string): LifeState {
   run('onboarding.lottery', {});
   const started = run('onboarding.home', { lga: cityRules(home)!.units[0]!.id, via: 'manual' });
   if (started.code !== 'life_started') throw new Error(`could not start a life in ${home}: ${started.code}`);
-  if (city !== home) {
-    state.cash = 1_000_000;
-    const sent = run('estate.relocate', { to: city, mode: linksFrom(home).find((link) => link.to === city && link.mode === 'road')?.mode ?? linksFrom(home).find((link) => link.to === city)?.mode });
-    if (sent.code !== 'departed') throw new Error(`no way from ${home} to ${city}: ${sent.code}`);
-    now += ((state.activeAction?.remaining ?? 0) + 1) * 1000;
-    advanceLife(state, (state.activeAction?.remaining ?? 0) + 1, at(state));
+  for (const leg of bookablePath(home, city)) {
+    seedWallet(state, leg.fare, at(state));
+    const before = state.cash;
+    const sent = run('estate.relocate', { to: leg.to, mode: leg.mode });
+    if (sent.code !== 'departed' || state.cash !== before - leg.fare || state.ledger.at(-1)?.amount !== -leg.fare) {
+      throw new Error(`Setup departure did not settle its actual fare: ${state.estate.city} to ${leg.to}: ${sent.code}`);
+    }
+    const seconds = (state.activeAction?.remaining ?? 0) + 1;
+    now += seconds * 1000;
+    advanceLife(state, seconds, at(state));
+    if (state.estate.city !== leg.to || state.activeAction) throw new Error(`Setup did not arrive in ${leg.to}`);
   }
+  if (state.estate.home !== home) throw new Error('Setup changed the original main home');
   state.t = START_SAMPLE;
   templates.set(key, copy(state));
   return state;
@@ -88,9 +130,6 @@ export function playOut(sample: Sample, { nets = true } = {}): Outcome {
   const state = build(sample.home, sample.city);
   let now = sample.now;
   state.t = now;
-  state.cash = sample.cash;
-  state.needs.hunger = sample.hunger;
-  state.needs.energy = sample.energy;
   const trail: string[] = [];
   const at = (): LifeContextInit => ({ cityId: state.estate.city, now, seed: `play-${sample.cash}-${sample.now}` });
   const run = (type: string, payload: object = {}) => dispatch(state, { type, payload } as never, at());
@@ -101,19 +140,28 @@ export function playOut(sample: Sample, { nets = true } = {}): Outcome {
     Object.assign(state.career, { city: sample.home, level: 1, performance: 50 });
   }
   if (sample.midTrip !== undefined && sample.city !== sample.home) {
-    // A visitor on the way home with nothing left: the trip runs out and they arrive.
-    state.activeAction = { kind: 'intercity', id: sample.home, duration: 40, remaining: sample.midTrip, mode: 'road', fare: 12000, from: sample.city };
-    trail.push(`on a trip, ${sample.midTrip}s left`);
+    // Start part-way through a genuinely paid connection; subsequent connections still have to be earned or accepted.
+    const leg = bookablePath(sample.city, sample.home)[0];
+    if (!leg) throw new Error('A mid-trip visitor needs a real first connection');
+    const remaining = Math.min(sample.midTrip, leg.seconds);
+    const elapsed = leg.seconds - remaining;
+    now -= elapsed * 1000;
+    state.t = now;
+    seedWallet(state, leg.fare, at());
+    const sent = run('estate.relocate', { to: leg.to, mode: leg.mode });
+    if (sent.code !== 'departed' || state.cash !== 0 || state.ledger.at(-1)?.amount !== -leg.fare) throw new Error(`Mid-trip setup refused: ${sent.code}`);
+    if (elapsed > 0) wait(elapsed);
+    if (!state.activeAction || state.activeAction.remaining !== remaining || state.estate.city !== sample.city) throw new Error('Mid-trip setup completed too early');
+    trail.push(`on ${leg.mode} to ${leg.to}, ${remaining}s left`);
   }
+  seedWallet(state, sample.cash, at());
+  state.needs.hunger = sample.hunger;
+  state.needs.energy = sample.energy;
   const visitor = sample.city !== sample.home;
   const start = state.cash;
   let earned = false, needsOk = state.needs.hunger >= NEEDS_OK && state.needs.energy >= NEEDS_OK, reachedHome = !visitor;
   const finished = (): boolean => needsOk && earned && reachedHome;
 
-  const cheapestHome = (): number | null => {
-    const fares = linksFrom(state.estate.city).filter((link) => link.to === state.estate.home && link.status !== 'coming').map((link) => link.fare);
-    return fares.length ? Math.min(...fares) : null;
-  };
   const candidates = (): Candidate[] => {
     const city = state.estate.city, found: Candidate[] = [];
     for (const venue of venuesFor(city)) {
@@ -149,17 +197,34 @@ export function playOut(sample: Sample, { nets = true } = {}): Outcome {
   for (let step = 0; step < MAX_STEPS && now < limit && !finished(); step++) {
     if (state.activeAction) { wait(state.activeAction.remaining + 1); look(); continue; }
     if (visitor && state.estate.city !== sample.home) {
-      const fare = cheapestHome();
       const here = viewLife(state, at()).estate;
-      if (fare !== null && state.cash >= fare && !here.ride.debt) {
-        const link = linksFrom(state.estate.city).filter((item) => item.to === state.estate.home && item.fare === fare)[0]!;
-        const sent = run('estate.relocate', { to: link.to, mode: link.mode });
-        if (sent.ok) { trail.push(`paid ${fare} home`); continue; }
-        trail.push(`fare home refused: ${sent.code}`);
-      } else if (nets && here.ride.offer) {
-        const sent = run('estate.relocate', { to: here.ride.offer.to, mode: here.ride.offer.mode, credit: true });
-        if (sent.ok) { trail.push('ride home on credit'); continue; }
-        trail.push(`credit refused: ${sent.code}`);
+      if (nets && here.ride.journey) {
+        const quote = here.ride.journey, before = state.cash;
+        const sent = run('homeward.accept', { quote: quote.key });
+        if (sent.ok) {
+          const advance = state.ledger.at(-2), ticket = state.ledger.at(-1);
+          if (state.cash !== before || state.travel.rideDebt !== quote.totalFare || !state.activeAction
+            || advance?.amount !== quote.totalFare || advance.balance !== before + quote.totalFare
+            || ticket?.amount !== -quote.totalFare || ticket.balance !== before) throw new Error('Homeward loan did not settle as one cash-neutral ticket');
+          trail.push('accepted the full ride home on credit'); continue;
+        }
+        trail.push(`homeward journey refused: ${sent.code}`);
+      } else {
+        const route = planHomewardRoute(state.estate.city, sample.home, linksFrom, isOpenCityId);
+        const leg = route?.legs[0];
+        if (route && leg && state.cash >= route.totalFare && !here.ride.debt) {
+          const before = state.cash;
+          const sent = run('estate.relocate', { to: leg.to, mode: leg.mode });
+          if (sent.ok) {
+            if (state.cash !== before - leg.fare || state.ledger.at(-1)?.amount !== -leg.fare) throw new Error('Paid recovery fare did not settle exactly');
+            trail.push(`paid ${leg.fare} towards home via ${leg.to}`); continue;
+          }
+          trail.push(`fare home refused: ${sent.code}`);
+        } else if (nets && !here.ride.journey && here.ride.offer) {
+          const sent = run('estate.relocate', { to: here.ride.offer.to, mode: here.ride.offer.mode, credit: true });
+          if (sent.ok) { trail.push('ride home on credit'); continue; }
+          trail.push(`credit refused: ${sent.code}`);
+        }
       }
     }
     const all = candidates();

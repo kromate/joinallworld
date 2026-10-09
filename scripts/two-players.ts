@@ -36,7 +36,9 @@ import { useSaltSourceForTests } from '../server/life-service.ts';
 import { createLife, viewLife } from '../src/life.ts';
 import { VENUES } from '../src/game/cities/lagos/venues.ts';
 
-import { NPCS } from '../src/game/cities/lagos/regulars.ts';
+import { venueFor } from '../src/game/cities/runtime.ts';
+import { spotsOf, blockReason } from '../src/game/api.ts';
+import { makeContext } from '../src/game/util.ts';
 
 import { EVENTS } from '../src/game/content/events.ts';
 import { isOpen, minutesUntilOpen, lagosTime } from '../src/game/clock.ts';
@@ -416,21 +418,24 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
       hunter = await life(bola);
       const left = huntOf(hunter).gems.filter((gem) => !gem.found);
       if (!left.length) break;
-      let gem = left.find((item) => isOpen(must(VENUES[item.venue], 'registered venue').hours, time));
+      let gem = left.find((item) => isOpen(must(venueFor(CITY, item.venue), 'registered venue').hours, time));
       if (!gem) {
-        gem = left.reduce((best, item) => (minutesUntilOpen(must(VENUES[item.venue], 'registered venue').hours, time) < minutesUntilOpen(must(VENUES[best.venue], 'registered venue').hours, time) ? item : best));
+        gem = left.reduce((best, item) => (minutesUntilOpen(must(venueFor(CITY, item.venue), 'registered venue').hours, time) < minutesUntilOpen(must(venueFor(CITY, best.venue), 'registered venue').hours, time) ? item : best));
         assert.equal((await act(bola, 'travel', { id: gem.venue, mode: 'trek' })).code, 'closed');
-        wait(minutesUntilOpen(must(VENUES[gem.venue], 'registered venue').hours, time) * 60000);
+        wait(minutesUntilOpen(must(venueFor(CITY, gem.venue), 'registered venue').hours, time) * 60000);
       }
       if (hunter.location !== gem.venue) hunter = await travel(bola, gem.venue, 'danfo');
       const index = huntOf(hunter).gems.findIndex((item) => item.venue === gem.venue && item.kind === gem.kind && item.spot === gem.spot);
       if (!must(huntOf(hunter).gems[index]).found) {
         if (gem.kind === 'activity') {
           assert.equal((await act(bola, 'civic.hunt-search')).code, 'activity_needed');
-          const regular = must(Object.values(NPCS).find((npc) => npc.venue === gem.venue));
-          await ok(bola, 'spot', { id: 'people' }, 'selected');
-          const hello = await ok(bola, 'activity', { id: `npc-${regular.id}-hello` }, 'started');
-          wait(must(hello.activeAction).duration * 1000);
+          const context = makeContext({ now: time, cityId: CITY });
+          const available = must(spotsOf(gem.venue, CITY).flatMap((spot) => spot.activities.map((activity) => ({ spot: spot.id, activity })))
+            .filter(({ activity }) => !activity.choices && !activity.requiresJob && (activity.cost ?? 0) === 0 && (activity.reward ?? 0) === 0
+              && !blockReason(hunter, activity, gem.venue, context)).sort((a, b) => a.activity.duration - b.activity.duration)[0], 'available free activity');
+          if (hunter.spot !== available.spot) await ok(bola, 'spot', { id: available.spot }, 'selected');
+          const started = await ok(bola, 'activity', { id: available.activity.id }, 'started');
+          wait(must(started.activeAction).duration * 1000);
         } else {
           if (gem.spot && hunter.spot !== gem.spot) await ok(bola, 'spot', { id: gem.spot }, 'selected');
           await ok(bola, 'civic.hunt-search', undefined, 'found');
@@ -450,7 +455,7 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     assert.equal((await act(bola, 'civic.hunt-claim')).code, 'already_claimed');
     const counter = await get<PulseBody>(`/api/civic/pulse?city=${CITY}`, bola);
     assert.deepEqual([counter.hunt.found >= 3, counter.hunt.claims], [true, 1]);
-    say('Tuesday: Bola finds all three gems and claims the prize', `${huntOf(hunter).gems.map((gem) => must(VENUES[gem.venue], 'registered venue').label).join(', ')} · +₦3,000 once (${naira(hunter.cash)})`);
+    say('Tuesday: Bola finds all three gems and claims the prize', `${huntOf(hunter).gems.map((gem) => must(venueFor(CITY, gem.venue), 'registered venue').label).join(', ')} · +₦3,000 once (${naira(hunter.cash)})`);
 
     // ---- 9. Thursday: Bola votes at the Polling Unit -------------------------------------------------
     goTo(at(8, 9));
@@ -501,8 +506,8 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const everything = JSON.stringify(heard);
     for (const who of [ada, bola]) assert.ok(!everything.includes(who.cookie.slice(4)), `${who.name}’s cookie secret never left the server`);
     const stored = JSON.parse(await readFile(join(dataDir, 'devices.json'), 'utf8'));
-    for (const who of [ada, bola]) for (const key of ['social', 'civic']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
-    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version']);
+    for (const who of [ada, bola]) for (const key of ['social', 'civic', 'walletEffects']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
+    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version', 'walletEffects']);
 
     log(`Two players complete: ${step} steps. Ada ${naira((await life(ada)).cash)}, Bola ${naira((await life(bola)).cash)}.`);
     return { steps: step };

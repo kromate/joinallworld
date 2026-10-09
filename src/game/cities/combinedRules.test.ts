@@ -44,7 +44,19 @@ function route(from: string, to: string): { to: string; mode: string }[] {
 
 test('skipping a trip between cities: on every route of every open city the price is the timetable’s, at most half the fare, charged once, and it falls as the trip goes on', () => {
   const life = settled('every-route'), { state } = life
-  state.cash = 50_000_000
+  const initialCash = state.cash
+  let fixtureFunding = 0
+  const fundingReason = 'Route fixture funding'
+  const fund = (minimum: number): void => {
+    if (state.cash >= minimum) return
+    const amount = minimum - state.cash
+    assert.equal(life.run('wallet.admin', { op: 'credit', amount, reason: fundingReason }, { internal: true }).code, 'credited')
+    assert.equal(state.cash, minimum)
+    assert.equal(state.ledger.at(-1)?.amount, amount)
+    assert.equal(state.ledger.at(-1)?.reason, `Admin credit: ${fundingReason}`)
+    fixtureFunding += amount
+  }
+  fund(50_000_000)
   const go = (to: string, mode: string): void => { assert.equal(life.run('estate.relocate', { to, mode }).code, 'departed', `${state.estate.city} → ${to} by ${mode}`); life.wait((state.activeAction?.remaining ?? 0) + 1); assert.equal(state.estate.city, to) }
   // The one free skip is used first, on the first leg: every route after it is priced.
   assert.equal(life.run('estate.relocate', { to: 'ibadan', mode: 'road' }).code, 'departed')
@@ -56,7 +68,13 @@ test('skipping a trip between cities: on every route of every open city the pric
   assert.equal(routes.length, 2 * allCityLinks().filter((link) => OPEN.includes(link.a) && OPEN.includes(link.b) && link.status !== 'coming').length, 'both directions of every running link between open cities')
   let flights = 0
   for (const link of routes) {
-    for (const step of route(state.estate.city, link.from)) go(step.to, step.mode)
+    for (const step of route(state.estate.city, link.from)) {
+      const fare = linksFrom(state.estate.city).find(candidate => candidate.to === step.to && candidate.mode === step.mode)?.fare
+      assert.equal(typeof fare, 'number', `${state.estate.city} → ${step.to} has a bookable fare`)
+      fund(fare!)
+      go(step.to, step.mode)
+    }
+    fund(link.fare + tripSkipFee('intercity', link.seconds, link.fare))
     const before = state.cash, what = `${link.from} → ${link.to} by ${link.mode}`
     assert.equal(life.run('estate.relocate', { to: link.to, mode: link.mode }).code, 'departed', what)
     assert.equal(state.cash, before - link.fare, `${what}: the fare`)
@@ -78,8 +96,11 @@ test('skipping a trip between cities: on every route of every open city the pric
     if (link.mode === 'air') flights += 1
   }
   assert.ok(flights >= 8, `the flights of the newer cities are among them (${flights} flown)`)
-  // Nothing was ever paid back: every line of the wallet since the start is a fare or a skip.
-  assert.ok(state.ledger.every((line) => line.amount <= 0 || /^(Start cash|Goal:|Welcome|.*starter)/i.test(line.reason)), JSON.stringify(state.ledger.filter((line) => line.amount > 0).map((line) => line.reason)))
+  // Fare/skip settlement creates no cash. Only explicit fixture funding and normal starting awards are faucets.
+  const fundingLines = state.ledger.filter(line => line.reason === `Admin credit: ${fundingReason}`)
+  // The ledger is bounded, so each funding operation is verified when applied above; retained grants remain labelled.
+  assert.ok(fixtureFunding >= Math.max(0, 50_000_000 - initialCash) && fundingLines.every(line => line.amount > 0))
+  assert.ok(state.ledger.every((line) => line.amount <= 0 || line.reason === `Admin credit: ${fundingReason}` || /^(Start cash|Goal:|Welcome|.*starter)/i.test(line.reason)), JSON.stringify(state.ledger.filter((line) => line.amount > 0).map((line) => line.reason)))
 })
 
 test('inside a city a new trip is never long enough to sell a skip: the cap on local trips is below the shortest trip that can be skipped', () => {

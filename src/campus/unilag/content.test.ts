@@ -1,14 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ANCHORS } from './layout.ts';
+import { ANCHORS, UNMAPPED_LANDMARKS } from './layout.ts';
 import { CAMPUS_NPCS, DISCOVERY_TRAIL, shareLabel, UI_LINKS, UNILAG_VENUE } from './content.ts';
 
 const NEEDS = new Set(['hunger', 'energy', 'fun', 'social', 'hygiene', 'bladder']);
 const SKILLS = new Set(['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography']);
 
-test('UNILAG content covers every finalized layout anchor', () => {
+test('UNILAG content distinguishes mapped anchors, explicitly unmapped landmarks and the nonspatial people spot', () => {
   assert.equal(UNILAG_VENUE.id, 'unilag');
-  assert.deepEqual(Object.keys(UNILAG_VENUE.spots).sort(), Object.keys(ANCHORS).sort());
+  const spotIds = new Set(Object.keys(UNILAG_VENUE.spots));
+  const anchorIds = new Set(Object.keys(ANCHORS));
+  const unmappedIds = new Set<string>(UNMAPPED_LANDMARKS);
+  assert.equal(unmappedIds.size, UNMAPPED_LANDMARKS.length, 'unmapped landmark ids are unique');
+  assert.ok(spotIds.has('people') && !anchorIds.has('people'), 'people is a general social spot, not a coordinate');
+  for (const id of anchorIds) assert.ok(spotIds.has(id), `${id}: mapped anchor has matching venue content`);
+  for (const id of unmappedIds) {
+    assert.ok(spotIds.has(id), `${id}: unmapped landmark remains available as venue content`);
+    assert.ok(!anchorIds.has(id), `${id}: no coordinate is invented while its map feature is unavailable`);
+  }
+  assert.deepEqual([...spotIds].filter((id) => !anchorIds.has(id) && id !== 'people').sort(), [...unmappedIds].sort(), 'every physical spot is either mapped or explicitly unmapped');
   for (const [id, item] of Object.entries(UNILAG_VENUE.spots)) {
     assert.equal(item.id, id);
     assert.ok(item.label && item.caption);
@@ -46,4 +56,3 @@ test('NPCs and discovery trail point at real campus spots', () => {
   assert.equal(UI_LINKS.bank.target, 'phone://bank');
   assert.equal(shareLabel(DISCOVERY_TRAIL[0]), 'Share Enter through Main Gate');
 });
-

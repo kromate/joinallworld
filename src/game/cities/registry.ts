@@ -85,6 +85,7 @@ const catalogueOfModule = (module: CityModule): CityCatalogueEntry => Object.fre
   id: module.id,
   name: module.rules.name,
   state: Object.freeze({ id: module.rules.state.id, name: module.rules.state.name }),
+  ...(module.rules.country.id !== 'ng' && module.rules.country.id !== 'nigeria' ? { countryISO: module.rules.country.id, countryName: module.rules.country.name } : {}),
   lon: module.rules.atlas.lon,
   lat: module.rules.atlas.lat,
   open: module.rules.status === 'open',
@@ -161,7 +162,7 @@ export function allCityLinks(): readonly CityLink[] {
     if (existing && !sameLink(existing, link)) throw new Error(`Conflicting fixtures city link ${key}`)
     fixtureLinks.set(key, link); merged.set(key, link)
   }
-  const open = CITY_CATALOGUE.filter((city) => city.open).map((city) => ({ id: city.id, name: city.name, lon: city.lon, lat: city.lat, airport: city.airport, countryId: 'ng' }))
+  const open = CITY_CATALOGUE.filter((city) => city.open).map((city) => ({ id: city.id, name: city.name, lon: city.lon, lat: city.lat, airport: city.airport, countryId: city.countryISO ?? 'ng' }))
   for (const link of generateCityLinks(open, [...merged.values()])) merged.set(linkKey(link), link)
   return linkCache = Object.freeze([...merged.values()])
 }

@@ -36,34 +36,46 @@ const { game, shell } = useApp()
 const view = game.view
 const wallet = computed(() => view.value.wallet)
 const summary = computed(() => statementOf(game.state.value))
+// The statement is derived from bounded, server-owned wallet history. Keep the verdict tied to
+// that exact summary so another wallet change in the same city cannot leave an old check current.
+const walletFingerprint = computed(() => JSON.stringify(summary.value))
 const days = computed(() => summary.value.days.slice().reverse())
 const since = computed(() => (summary.value.opening.day === null ? 'before your first change' : `at the start of ${dayLabel(summary.value.opening.day)}`))
-const verdict = computed<Verdict | null>(() => (checked.value && checked.value.cityId === view.value.cityId ? checked.value : null))
+const verdict = computed<Verdict | null>(() => (checked.value && checked.value.identity === game.session.value?.id && checked.value.cityId === view.value.cityId && checked.value.walletFingerprint === walletFingerprint.value ? checked.value : null))
 const offline = computed(() => (view.value.connected ? null : `${linkWords(view.value)?.why ?? ''} This check needs the server.`))
 const busy = ref(false)
+let checkRevision = 0
+watch([() => game.session.value?.id, () => view.value.cityId, walletFingerprint], () => {
+  checkRevision += 1; busy.value = false
+  if (checked.value && (checked.value.identity !== game.session.value?.id || checked.value.cityId !== view.value.cityId || checked.value.walletFingerprint !== walletFingerprint.value)) checked.value = null
+}, { immediate: true, flush: 'sync' })
 // The wallet keeps a long log: it is drawn forty lines at a time as the reader goes down it.
 const lines = chunkedView(() => wallet.value.ledger)
 const historyRevision = ref(0)
 const historyControl = createStatementHistory(after => game.fetchJson<WalletHistoryResponse>(`/api/support/history?after=${after}`), () => { historyRevision.value += 1 })
 const recorded = computed(() => { void historyRevision.value; return { ...historyControl.state } })
 watch(() => game.session.value?.id ?? '', id => historyControl.setIdentity(id), { immediate: true })
-onUnmounted(() => historyControl.destroy())
+onUnmounted(() => { checkRevision += 1; historyControl.destroy() })
 const loadHistory = (): Promise<boolean> => historyControl.load(recorded.value.loaded ? recorded.value.next ?? 0 : 0)
 
 async function check(): Promise<void> {
-  if (busy.value) return
-  const cityId = view.value.cityId
+  const identity = game.session.value?.id
+  if (busy.value || !identity) return
+  const cityId = view.value.cityId, fingerprint = walletFingerprint.value, revision = ++checkRevision
+  const current = (): boolean => revision === checkRevision && identity === game.session.value?.id && cityId === view.value.cityId && fingerprint === walletFingerprint.value
   busy.value = true
   try {
-    const reply = await game.fetchJson<{ statement: WalletStatement }>(`/api/support/statement?city=${encodeURIComponent(cityId)}`)
+    const reply = await game.client.api<{ statement: WalletStatement }>(`/api/support/statement?city=${encodeURIComponent(cityId)}`, {}, current)
+    if (!current()) return
     const server = reply.statement, mine = summary.value
-    checked.value = verdictOf(cityId, server, sameStatement(server, mine, game.state.value.cash))
+    checked.value = { ...verdictOf(cityId, server, sameStatement(server, mine, game.state.value.cash)), identity, walletFingerprint: fingerprint }
   } catch (error) {
-    checked.value = failedVerdict(cityId, error instanceof Object && 'status' in error ? error.status : undefined)
-  } finally { busy.value = false }
+    if (!current()) return
+    checked.value = { ...failedVerdict(cityId, error instanceof Object && 'status' in error ? error.status : undefined), identity, walletFingerprint: fingerprint }
+  } finally { if (revision === checkRevision) busy.value = false }
   // The answer is also a toast, like every other action taken inside a sheet; the line under the button stays.
   const done = checked.value
-  if (done) game.toast(done.ok ? 'The server’s statement agrees with this one.' : done.text, done.ok ? 'good' : 'error')
+  if (current() && done) game.toast(done.ok ? 'The server’s statement agrees with this one.' : done.text, done.ok ? 'good' : 'error')
 }
 </script>
 

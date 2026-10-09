@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import VoiceComposer from './VoiceComposer.vue'
 // The message box: grows to four lines, keeps a draft per conversation on this device, offers an @ picker in groups, an emoji
 // picker, :shortcodes:, and the quoted message being answered.
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import EmojiPicker from './EmojiPicker.vue'
-import { composerLines, createDrafts, insertMention, liveMentions, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
+import { composerLines, createDrafts, insertMention, liveMentions, messageLength, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
 import type { Picked } from './messagesText.ts'
 import type { Message, SendMessageResult } from '../../../types/social.ts'
 import { preparePicture, uploadBody } from './pictureModel.ts'
@@ -24,59 +25,98 @@ const props = defineProps<{
   prefill: string
   /** Pictures may be sent here (switched on, and a chat that takes them): the picture button shows. */
   pictures: boolean
+  voice?: boolean
   /** Who a picture goes to. */
   target: { to: string } | { conv: string }
   newId: () => string
 }>()
-const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
+const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentVoice: [result: { conv: { id: string } }]; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
 
-const drafts = createDrafts((() => { try { return globalThis.localStorage ?? null } catch { return null } })())
+const storage = (() => { try { return globalThis.localStorage ?? null } catch { return null } })()
+const actorDrafts = new Map<string, ReturnType<typeof createDrafts>>()
+function draftsFor(actor: string): ReturnType<typeof createDrafts> {
+  let found = actorDrafts.get(actor)
+  if (!found) { found = createDrafts(storage, actor); actorDrafts.set(actor, found) }
+  return found
+}
+let draftActor = props.meId, draftConversation = props.conv, drafts = draftsFor(draftActor)
 const text = ref('')
 const caret = ref(0)
 const field = ref<HTMLTextAreaElement | null>(null)
 const picked = ref<Picked[]>([])
 const emoji = ref(false)
 const active = ref(0)
+const count = computed(() => messageLength(text.value))
+const tooLong = computed(() => count.value > props.max)
+const limitId = computed(() => `message-limit-${props.conv}`)
 // ---- a picture: choose, see it, send it (with progress), try again
 const fileInput = ref<HTMLInputElement | null>(null)
 const photo = ref<{ ready: Ready; caption: string; clientId: string; busy: boolean; progress: number; error: string | null } | null>(null)
+let photoGeneration = 0, uploading: XMLHttpRequest | null = null
+function photoScope() {
+  const generation = photoGeneration, actor = props.meId, conv = props.conv
+  return { actor, current: () => generation === photoGeneration && actor === props.meId && conv === props.conv }
+}
 async function chosen(): Promise<void> {
   const file = fileInput.value?.files?.[0]
   if (fileInput.value) fileInput.value.value = ''
-  if (!file) return
-  photo.value = null
+  if (!file || props.disabled) return
+  dismissPhoto()
+  const scope = photoScope()
   const made = await preparePicture(file)
+  if (!scope.current()) { if (made.ok) URL.revokeObjectURL(made.ready.url); return }
   photo.value = made.ok ? { ready: made.ready, caption: '', clientId: props.newId(), busy: false, progress: 0, error: null } : { ready: { blob: file, type: 'image/jpeg', width: 1, height: 1, url: '' }, caption: '', clientId: '', busy: false, progress: 0, error: made.reason }
 }
-function dismissPhoto(): void { if (photo.value?.ready.url) URL.revokeObjectURL(photo.value.ready.url); photo.value = null }
+function dismissPhoto(): void {
+  photoGeneration++
+  uploading?.abort(); uploading = null
+  if (photo.value?.ready.url) URL.revokeObjectURL(photo.value.ready.url)
+  photo.value = null
+}
+onBeforeUnmount(dismissPhoto)
 async function sendPhoto(): Promise<void> {
   const current = photo.value
-  if (!current || current.busy || !current.clientId) return
+  if (!current || current.busy || !current.clientId || props.disabled || !props.meId) return
+  const scope = photoScope(), target = { ...props.target }, replyTo = props.reply?.seq
   current.busy = true; current.error = null; current.progress = 0
-  const body = await uploadBody({ target: props.target, clientId: current.clientId, ready: current.ready, caption: current.caption.trim(), ...(props.reply ? { replyTo: props.reply.seq } : {}) })
-  // XMLHttpRequest, because a fetch cannot say how much of the upload has gone.
-  const outcome = await new Promise<{ ok: true; result: Extract<SendMessageResult, { ok: true }> } | { ok: false; reason: string }>((done) => {
-    const request = new XMLHttpRequest()
-    request.open('POST', '/api/social/images')
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.upload.onprogress = (event) => { if (event.lengthComputable) current.progress = Math.round(100 * event.loaded / event.total) }
-    request.onerror = () => done({ ok: false, reason: 'Connection lost. Nothing was sent; try again.' })
-    request.ontimeout = request.onerror
-    request.timeout = 60000
-    request.onload = () => {
-      let answer: { ok?: boolean; reason?: string; error?: string } = {}
-      try { answer = JSON.parse(request.responseText) as typeof answer } catch { /* a page that is not ours */ }
-      if (request.status === 200 && answer.ok === true) done({ ok: true, result: answer as Extract<SendMessageResult, { ok: true }> })
-      else done({ ok: false, reason: answer.reason ?? (request.status === 413 ? 'That picture is too big to send.' : request.status === 429 ? 'Too many requests. Wait a minute and try again.' : 'The picture was not sent. Try again.') })
-    }
-    request.send(body)
-  })
-  current.busy = false
-  if (outcome.ok) { emit('sentPicture', outcome.result); emit('cancelReply'); dismissPhoto() } else current.error = outcome.reason
+  try {
+    const body = await uploadBody({ target, clientId: current.clientId, ready: current.ready, caption: current.caption.trim(), ...(replyTo ? { replyTo } : {}) })
+    if (!scope.current()) return
+    // XMLHttpRequest reports upload progress; the actor header binds the write to this draft's character.
+    const outcome = await new Promise<{ ok: true; result: Extract<SendMessageResult, { ok: true }> } | { ok: false; reason: string }>((done) => {
+      const request = new XMLHttpRequest()
+      uploading = request
+      request.open('POST', '/api/social/images')
+      request.setRequestHeader('Content-Type', 'application/json')
+      request.setRequestHeader('X-Allworld-Actor', scope.actor)
+      request.upload.onprogress = (event) => { if (scope.current() && event.lengthComputable) current.progress = Math.round(100 * event.loaded / event.total) }
+      request.onerror = () => done({ ok: false, reason: 'Delivery is not confirmed. Retry this picture to avoid sending it twice.' })
+      request.ontimeout = request.onerror
+      request.onabort = () => done({ ok: false, reason: 'Picture upload cancelled.' })
+      request.timeout = 60000
+      request.onload = () => {
+        let answer: { ok?: boolean; reason?: string; error?: string } = {}
+        try { answer = JSON.parse(request.responseText) as typeof answer } catch { /* a page that is not ours */ }
+        if (request.status === 200 && answer.ok === true) done({ ok: true, result: answer as Extract<SendMessageResult, { ok: true }> })
+        else done({ ok: false, reason: answer.reason ?? (request.status === 413 ? 'That picture is too big to send.' : request.status === 429 ? 'Too many requests. Wait a minute and try again.' : 'The picture was not sent. Try again.') })
+      }
+      request.send(body)
+    })
+    if (!scope.current()) return
+    if (outcome.ok) { emit('sentPicture', outcome.result); emit('cancelReply'); dismissPhoto() } else current.error = outcome.reason
+  } catch { if (scope.current()) current.error = 'Delivery is not confirmed. Retry this picture to avoid sending it twice.' }
+  finally { if (scope.current()) { current.busy = false; uploading = null } }
 }
 
-watch(() => props.conv, () => { text.value = props.prefill || drafts.get(props.conv); picked.value = []; emoji.value = false; void nextTick(grow) }, { immediate: true })
-watch(text, (value) => drafts.set(props.conv, value))
+watch([() => props.meId, () => props.conv], ([actor, conv], previous) => {
+  const changedActor = previous?.[0] !== undefined && previous[0] !== actor
+  dismissPhoto()
+  draftActor = actor; draftConversation = conv; drafts = draftsFor(actor)
+  text.value = (!changedActor && props.prefill) || drafts.get(conv)
+  picked.value = []; emoji.value = false; caret.value = 0
+  void nextTick(grow)
+}, { immediate: true, flush: 'sync' })
+watch(text, (value) => drafts.set(draftConversation, value), { flush: 'sync' })
 
 const query = computed(() => (props.members.length ? mentionQuery(text.value, caret.value) : null))
 const choices = computed(() => (query.value ? mentionChoices(props.members, props.meId, query.value.query, props.admin).slice(0, 8) : []))
@@ -113,7 +153,7 @@ function insertEmoji(char: string): void {
 }
 function submit(): void {
   const body = text.value.trim()
-  if (!body || props.disabled) return
+  if (!body || props.disabled || tooLong.value) return
   // Only the mentions still written in the text go along; the server checks each against the group.
   const mentions = props.members.length ? liveMentions(text.value.trimStart(), picked.value) : []
   emit('send', body, { ...(mentions.length ? { mentions } : {}), ...(props.reply ? { replyTo: props.reply.seq } : {}) })
@@ -156,22 +196,26 @@ const lines = computed(() => composerLines(text.value))
         </span>
       </div>
     </div>
+    <VoiceComposer v-if="voice" :target="target" :conv="conv" :me-id="meId" :disabled="disabled || Boolean(photo)" :new-id="newId" :reply-to="reply?.seq" @sent="(result) => { emit('sentVoice', result); emit('cancelReply') }" />
     <EmojiPicker v-if="emoji" class="composer-emoji" @pick="insertEmoji" />
     <form class="composer-form" @submit.prevent="submit">
       <input v-if="pictures" ref="fileInput" type="file" accept="image/*" class="composer-file" aria-label="Choose a picture" tabindex="-1" @change="chosen">
       <button v-if="pictures" type="button" class="composer-side" aria-label="Send a picture" title="Send a picture" :disabled="disabled" @click="fileInput?.click()">📷</button>
       <button type="button" class="composer-side" :aria-pressed="emoji" aria-label="Emoji" :disabled="disabled" @click="emoji = !emoji">☺</button>
-      <textarea ref="field" v-model="text" name="body" :rows="lines" :maxlength="max * 2" autocomplete="off" enterkeyhint="send" placeholder="Message" aria-label="Message" :disabled="disabled" @input="onInput" @keydown="onKey" @keyup="track" @click="track" @focus="emoji = false" />
-      <button type="submit" class="composer-send" aria-label="Send" title="Send" :disabled="disabled || !text.trim()"><GameIcon name="earn" :size="22" /></button>
+      <textarea ref="field" v-model="text" name="body" :rows="lines" :maxlength="max * 2" autocomplete="off" enterkeyhint="send" placeholder="Message" aria-label="Message" :aria-describedby="limitId" :aria-invalid="tooLong || undefined" :disabled="disabled" @input="onInput" @keydown="onKey" @keyup="track" @click="track" @focus="emoji = false" />
+      <button type="submit" class="composer-send" aria-label="Send" :title="tooLong ? `Shorten your message to ${max} characters.` : 'Send'" :disabled="disabled || !count || tooLong"><GameIcon name="earn" :size="22" /></button>
     </form>
+    <p :id="limitId" class="composer-count" :class="{ 'is-over': tooLong }" :role="tooLong ? 'alert' : undefined">{{ tooLong ? `Remove ${count - max} characters to send.` : `${count} / ${max} characters` }}</p>
   </div>
 </template>
 
 <style scoped>
-.composer { position: relative; display: grid; gap: 6px; }
-.composer-form { display: flex; align-items: flex-end; gap: 8px; margin: 0; }
+.composer { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; max-width: 100%; gap: 6px; }
+.composer-form { display: flex; min-width: 0; width: 100%; align-items: flex-end; gap: 8px; margin: 0; }
 /* The id selectors beat the panel-wide textarea rule (controls.css), which makes every textarea 96px tall. */
-.composer-form textarea, #life-dialog .composer-form textarea, .life-ui .composer-form textarea { flex: 1; width: auto; min-width: 0; box-sizing: border-box; min-height: var(--tap); max-height: 108px; resize: none; padding: 11px 16px; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-fill); font: 400 15px/22px var(--font); overflow-y: auto; }
+.composer-form textarea, #life-dialog .composer-form textarea, .life-ui .composer-form textarea { flex: 1; width: auto; min-width: 0; box-sizing: border-box; min-height: var(--tap); max-height: 108px; resize: none; padding: 11px 16px; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-fill); font: 400 16px/22px var(--font); overflow-y: auto; }
+.composer-count { margin: 0; font-size: 12px; line-height: 1.4; color: var(--c-muted); text-align: right; }
+.composer-count.is-over { color: var(--c-red-dark); }
 .composer-send, .composer-side { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border: 0; border-radius: 10px; cursor: pointer; }
 .composer-send { background: #176347; color: #fff; }
 .composer-side { background: var(--c-fill); font-size: 22px; }

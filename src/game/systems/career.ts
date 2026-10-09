@@ -1,4 +1,6 @@
 import { jobsFor, jobFor, venueFor } from '../cities/runtime.ts';
+import { newTeachingPractice, answerTeachingPractice } from '../living-world/teaching-practice.ts';
+import { completeActive } from './core.ts';
 import { cachedCityContent, cityModule } from '../cities/registry.ts';
 /**
  * OWNER: career
@@ -135,7 +137,7 @@ const trackOf = (id: JobId, cityId: string): TrackJobDefinition => {
   return job;
 };
 const rung = (job: TrackJobDefinition, level: number): LadderRung => ladderRung(job, clamp(level, 1, job.ladder.length) - 1);
-const freshCareer = (): CareerState => ({ city: null, level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
+const freshCareer = (): CareerState => ({ city: null, teachingGeneration: 0, level: 1, performance: 0, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
 const dayIndex = (value: unknown): number | null => (Number.isSafeInteger(value) ? (value as number) : null); // isSafeInteger proved the number
 
 /** "Mon–Fri" for a consecutive run (weeks start on Monday and may wrap to Sunday), else a list. */
@@ -316,14 +318,17 @@ function setAuto(state: LifeState, payload: Record<string, unknown>) {
 function nextStep(state: LifeState, ctx: LifeContext, job: JobDefinition | null, status: ShiftStatus): CareerStep {
   if (!job) return { kind: 'apply', text: 'Pick a job and tap Apply. Applying is free and you can work your first shift the same day.' };
   const shift = job.shift, place = placeName(job, ctx), pay = payOf(state, job);
-  if (status.code === 'working') return { kind: 'wait', text: `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
+  if (status.code === 'working') return { kind: 'wait', text: state.activeAction?.kind === 'activity' && state.activeAction.teaching
+    ? `Teach the learner in Career to finish your shift and earn ${naira(pay)}. Cancelling earns nothing.`
+    : `Shift in progress: ${naira(pay)} arrives when it finishes. Cancelling earns nothing.` };
   if (state.activeAction?.kind === 'commute') return { kind: 'wait', text: `On your way to ${place}. Open the ${spotName(job, ctx.cityId)} spot when you arrive.` };
   if (!status.canWork) return { kind: 'wait', text: status.text };
   const short = shortNeeds(state, job);
   if (short.length) {
     return { kind: 'home', venue: 'home', text: `Before your shift you need ${short.map(([need, minimum]) => `${cap(need)} ${minimum}+ (you have ${Math.floor(state.needs[need])})`).join(' and ')}. Eat and rest at Home first.` };
   }
-  const facts = `It takes ${shift.duration} seconds and pays ${naira(pay)}.`;
+  const facts = job.id === 'teaching' && ctx.interactiveTeachingStarts === true ? `Diagnose, explain and check the learner’s answer to earn ${naira(pay)}.`
+    : `It takes ${shift.duration} seconds and pays ${naira(pay)}.`;
   if (state.activeAction) return { kind: 'wait', text: `Finish what you are doing, then go to ${place} for today’s shift. ${facts}` };
   const opening = workplaceOpening(job, state, ctx);
   if (state.location !== job.workplace.venue && !opening.open) {
@@ -388,6 +393,27 @@ function answerDilemma(state: LifeState, payload: Record<string, unknown>, ctx: 
 /** The waiting dilemma for the Career screen (its id: the words are fetched by the card, src/game/content/dilemmas.ts); null when none. */
 const dilemmaView = (state: LifeState): DilemmaView | null => { const pending = state.career.dilemmas?.pending; return pending ? { id: pending.id } : null; };
 
+function teach(state: LifeState, payload: Record<string, unknown>, ctx: LifeContext) {
+  const keys = Reflect.ownKeys(payload);
+  if (keys.length !== 4 || keys.some(key => typeof key !== 'string' || !['generation', 'revision', 'stage', 'choice'].includes(key)))
+    return fail(state, 'invalid_request');
+  const action = state.activeAction, job = jobOf(state.job, state.career.city ?? state.estate.city);
+  if (!job || job.id !== 'teaching' || state.career.city !== ctx.cityId || state.location !== job.workplace.venue
+    || state.spot !== job.workplace.spot || action?.kind !== 'activity' || action.id !== job.shift.id || !action.teaching)
+    return fail(state, 'no_teaching_shift');
+  if (!safeCount(payload.generation) || payload.generation < 1 || payload.generation !== action.teachingGeneration
+    || action.teachingGeneration !== state.career.teachingGeneration) return fail(state, 'generation_conflict');
+  const result = answerTeachingPractice(action.teaching, { revision: payload.revision, stage: payload.stage, choice: payload.choice });
+  if (!result.ok || !result.state) return fail(state, result.code);
+  action.teaching = result.state;
+  if (result.state.stage === 'complete') {
+    completeActive(state, ctx);
+    return ok(state, 'shift_completed');
+  }
+  state.message = result.code === 'retry' ? 'Try another explanation. Keep the wholes equal in size.' : 'Continue teaching the learner in Career.';
+  return ok(state, result.code === 'retry' ? 'retry' : 'answered');
+}
+
 /**
  * What only a host that plays the game runs: player actions, settling time and event listeners. The browser reads lives, it never plays them,
  * so its build leaves this out (PLAYS is false there: src/game/profile.ts).
@@ -399,10 +425,16 @@ const play = PLAYS ? {
     'career.quit': quit,
     'career.auto': setAuto,
     'career.dilemma': answerDilemma,
+    'career.teach': teach,
   },
   on: {
     'activity.started'(state, { def }, ctx) {
       if (def?.careerTrack) state.career.shiftStartDay = lagosTime(nowOf(state, ctx)).day;
+      if (def?.careerTrack === 'teaching' && ctx.interactiveTeachingStarts === true && state.activeAction?.kind === 'activity') {
+        state.career.teachingGeneration += 1;
+        state.activeAction.teachingGeneration = state.career.teachingGeneration;
+        state.activeAction.teaching = newTeachingPractice();
+      }
     },
     'action.cancelled'(state, { kind, id }) {
       if (kind === 'activity' && jobOf(state.job, state.career.city ?? state.estate.city)?.shift.id === id) state.career.shiftStartDay = null;
@@ -448,6 +480,8 @@ export default {
     const held = job ?? canonicalJobOf(state.job);
     const career = freshCareer();
     career.city = state.job ? jobCity : null;
+    career.teachingGeneration = safeCount(saved.teachingGeneration) ? saved.teachingGeneration
+      : Object.hasOwn(saved, 'teachingGeneration') ? Number.MAX_SAFE_INTEGER : 0;
     if (held?.track) {
       career.level = finite(saved.level) && Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= held.ladder.length ? saved.level : 1;
       career.performance = finite(saved.performance) ? clamp(saved.performance) : START_PERFORMANCE;
@@ -487,6 +521,8 @@ export default {
     'activity.block'(value, state, { def }, ctx) {
       if (value || !def?.requiresJob) return value;
       if (state.completedShifts >= Number.MAX_SAFE_INTEGER) return { code: 'balance_limit', reason: 'Your shift count has reached its supported limit.' };
+      if (def.careerTrack === 'teaching' && state.career.teachingGeneration >= Number.MAX_SAFE_INTEGER)
+        return { code: 'balance_limit', reason: 'Your teaching session count has reached its supported limit.' };
       if (!state.career.city || state.career.city !== ctx.cityId) {
         return { code: 'no_job', reason: 'Your job is in another city. Apply for its local equivalent to work here.' };
       }
@@ -506,6 +542,9 @@ export default {
     const pay = job ? payOf(state, job) : 0;
     return {
       job, // legacy field: the raw catalogue entry
+      interactiveTeachingStarts: ctx.interactiveTeachingStarts === true,
+      teaching: state.activeAction?.kind === 'activity' && state.activeAction.teaching && state.activeAction.teachingGeneration
+        ? { generation: state.activeAction.teachingGeneration, practice: { ...state.activeAction.teaching } } : null,
       ...(state.career.dilemmas ? { dilemma: dilemmaView(state) } : {}),
       completedShifts: state.completedShifts,
       employed: Boolean(shown),

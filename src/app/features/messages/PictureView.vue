@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // A picture in a bubble: the right shape from the start (no jump when it loads), blurred until tapped when it is from a new friend or
 // a friend's first, and plain words instead when it expired, is hidden pending review, was reported by you, or is switched off for you.
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { pictureUrl } from './pictureModel.ts'
 import type { PictureView } from '../../../types/social.ts'
 
-const props = defineProps<{ image: PictureView }>()
+const props = defineProps<{ image: PictureView; meId?: string }>()
 const emit = defineEmits<{ open: [] }>()
 const revealed = ref(false)
 const state = ref<'loading' | 'ready' | 'failed'>('loading')
@@ -15,13 +15,14 @@ const blurred = computed(() => props.image.blur === true && !revealed.value)
 const shape = computed(() => ({ aspectRatio: `${props.image.width} / ${props.image.height}`, width: `${Math.min(240, props.image.width)}px` }))
 function tap(): void { if (blurred.value) revealed.value = true; else emit('open') }
 function retry(): void { state.value = 'loading'; tries.value += 1 }
+watch([() => props.image.id, () => props.meId], () => { revealed.value = false; state.value = 'loading'; tries.value = 0 }, { flush: 'sync' })
 </script>
 
 <template>
   <div v-if="image.state" class="pic is-gone" role="img" :aria-label="words[image.state]">{{ words[image.state] }}</div>
   <div v-else class="pic" :style="shape">
     <button type="button" class="pic-hit" :aria-label="blurred ? 'Show picture' : 'Open picture'" @click="tap">
-      <img :key="tries" :src="`${pictureUrl(image.id)}${tries ? `?try=${tries}` : ''}`" alt="Picture" decoding="async" loading="lazy" :class="{ 'is-blurred': blurred, 'is-loading': state === 'loading' }" :width="image.width" :height="image.height" @load="state = 'ready'" @error="state = 'failed'">
+      <img :key="`${meId}:${image.id}:${tries}`" :src="`${pictureUrl(image.id, meId)}${tries ? `${meId ? '&' : '?'}try=${tries}` : ''}`" alt="Picture" decoding="async" loading="lazy" :class="{ 'is-blurred': blurred, 'is-loading': state === 'loading' }" :width="image.width" :height="image.height" @load="state = 'ready'" @error="state = 'failed'">
       <span v-if="blurred && state === 'ready'" class="pic-cover">Tap to show</span>
     </button>
     <span v-if="state === 'loading'" class="pic-note" role="status">Loading…</span>

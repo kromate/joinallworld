@@ -4,7 +4,7 @@
 import type { ActionMap, ActionType, PlayerActionType } from '../../types/actions.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { CityId, OwnSession } from '../../types/protocol.ts'
-import type { ChangeCause, LifeHint, PendingActionIntent, SnapshotPhase } from '../../client.ts'
+import type { Api, ChangeCause, LifeHint, PendingActionIntent, SnapshotPhase } from '../../client.ts'
 export type { ChangeCause, LifeHint, PendingActionIntent, SnapshotPhase }
 
 /**
@@ -108,7 +108,7 @@ export interface GameClient {
   serverNow(): number
   /** A retry key for an exactly-once write: `<server ms>:<uuid>`. One per thing the player does; reuse it on a retry. */
   newId(): string
-  api: FetchJson
+  api: Api
   fetchJson: FetchJson
   connect(createNew?: boolean, startCity?: string): Promise<boolean>
   /**

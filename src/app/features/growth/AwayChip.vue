@@ -9,7 +9,7 @@ import { computed, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { social } from '../social/useSocial.ts'
 import { notificationLines } from '../messages/messagesModel.ts'
-import { noticeMarks } from '../messages/messagesState.ts'
+import { noticeMarks } from '../messages/messageBadges.ts'
 import { awayCardFor, awayWanted } from './awayModel.ts'
 import { useGrowth } from './useGrowth.ts'
 

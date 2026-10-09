@@ -1,0 +1,9 @@
+# Proposed Worker failed-final-write recovery fixture
+
+Status: **unapplied proposal; no test or runtime verification**. Patch target: `34a898df`.
+
+The patch extends the existing public teaching Worker/SQLite fixture. It adds Miniflare's typed `unsafeGetDurableObjectStorage` test accessor, enables `unsafeInspectDurableObjects` for that test Worker, and uses the existing `joinallworld-v1` Durable Object over the fixture's temporary persistent directory. It does not write lesson, balance, progress, or receipt state directly.
+
+After the player reaches the final authored answer, a test-only SQLite trigger rejects insertion of the stable teaching wage effect (`amount = 3000`, `reason = 'Teaching shift'`). The same public final-action intent must return HTTP 503 `storage_unavailable`. The fixture then reloads via `/api/life` and compares the still-active lesson and its final-stage data, cash, completed shifts, career shifts/performance, and wage ledger count against the pre-attempt state. A bounded query confirms no action receipt was persisted for that failed intent. The trigger is dropped in `finally`; two concurrent retries of the exact same intent must both complete, with exactly one nonduplicate and one duplicate result, preserving the existing once-race coverage. Existing post-restart balance/ledger/replay assertions remain in place.
+
+The injected failure is isolated to the wage-effect insert and occurs inside the real SQLite transaction, so it is intended to prove rollback of the session update, action receipt, and wage together. It does not emulate hardware loss, Cloudflare production backup/restore, arbitrary corrupt-save repair, or a live deployment. The test remains unrun and should only be applied after the fixture compiles against the pinned Miniflare API and the Worker confirms the trigger can be installed on its active SQLite store.

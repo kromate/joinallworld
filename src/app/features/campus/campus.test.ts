@@ -44,7 +44,7 @@ let original: typeof app.game.state.value
 
 before(async () => {
   globalThis.fetch = server.fetch
-  vite = await createServer({ root, configFile: `${root}vite.config.js`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
   await cityLoader.loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
@@ -301,6 +301,57 @@ test('on the campus: where you are, what can be done there with its duration and
   assert.ok((picker.match(/<option/g) ?? []).length >= 8, 'the picker lists the landmarks of the campus')
   assert.match(picker, /<option value="library" selected>University Library<\/option>/, 'and starts on where the player stands')
   assert.equal(EMOJI.test(html), false)
+})
+
+test('unmapped trail places stay visible, but Find New Hall is clearly not walkable on the current map', async () => {
+  stand({ location: 'unilag', spot: 'library', activeAction: null })
+  const html = await campusApp()
+  const words = text(html)
+  assert.ok(words.includes('Discovery trail · 0/8'))
+  assert.ok(words.includes('Find New Hall'), 'the authored trail stop is retained')
+  assert.match(html, /<button[^>]*disabled[^>]*title="The current campus map has no walkable anchor for Find New Hall\."[^>]*>Walk here<\/button>/)
+  assert.ok(words.includes('The current campus map has no walkable anchor for Find New Hall.'))
+  assert.ok(words.includes('Find Student Union'), 'other authored content remains available')
+})
+
+test('an allocated Fagunwa room is preserved and its unmapped room walk explains the limitation', async () => {
+  store.choices.tab = 'residence'
+  stand({ location: 'unilag', spot: 'library', activeAction: null, unilagStudent: student({ hostel: {
+    allocations: [{ semester: 1, attempt: 1, hall: 'fagunwa', room: 17 }], storage: { rice: 2 },
+  } }) })
+  const html = await campusApp()
+  const words = text(html)
+  assert.ok(words.includes('Fagunwa Hall · room 17'))
+  assert.ok(words.includes('This room is the active allocation for semester 1, attempt 1.'))
+  assert.ok(words.includes('Rice ×2'), 'the saved room storage remains visible')
+  assert.match(html, /<button[^>]*disabled[^>]*title="The current campus map has no walkable anchor for Fagunwa Hall\."[^>]*>Go to my room<\/button>/)
+  assert.ok(words.includes('The current campus map has no walkable anchor for Fagunwa Hall.'))
+})
+
+test('useCampus refuses an unmapped walk before closing the phone, and delegates mapped walks unchanged', async () => {
+  const { useCampus } = await load<typeof import('./useCampus.ts')>('/src/app/features/campus/useCampus.ts')
+  const close = app.shell.close, goTo = app.goTo, toast = app.game.toast
+  let closes = 0
+  const routes: Array<[string, string | undefined]> = []
+  const messages: Array<[unknown, unknown]> = []
+  app.shell.close = () => { closes += 1 }
+  app.goTo = async (venue, spot) => { routes.push([venue, spot]) }
+  app.game.toast = (message, kind) => { messages.push([message, kind]) }
+  try {
+    const campus = useCampus()
+    campus.go('cafeteria')
+    assert.equal(closes, 0)
+    assert.deepEqual(routes, [])
+    assert.deepEqual(messages, [['The current campus map has no walkable anchor for Cafeteria.', 'error']])
+
+    campus.go('library')
+    assert.equal(closes, 1)
+    assert.deepEqual(routes, [['unilag', 'library']])
+  } finally {
+    app.shell.close = close
+    app.goTo = goTo
+    app.game.toast = toast
+  }
 })
 
 test('a current action stops every start, with the one reason beside it', async () => {

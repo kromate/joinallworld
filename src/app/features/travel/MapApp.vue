@@ -73,6 +73,7 @@ function syncMap(): void {
   // Opened for a place (the Home tab, a goal chip, "Go to work", a pin): highlight it on the city map too.
   const wanted = asMapParams(props.params)?.destination
   if (wanted && wanted === mapUi.destination) detail.selected = mapUi.destination
+  else if (wanted === null && mapUi.destination === null) detail.selected = null
   // The panel changed shape (list opened or closed, a card came or went): the map re-fits around it.
   const layout = layoutKey({ layer: mapUi.layer, destination: mapUi.destination, listOpen: isListOpen(), layersOn: LAYERS.filter((layer) => layers[layer.id]).length, tripping: Boolean(trip.value) })
   if (layout !== seen.layout) { seen.layout = layout; detail.layout = true }
@@ -107,6 +108,10 @@ defineExpose({ keys })
     <!-- One column: the level bar above, the docked panel below it, so no state of the panel can slide under the bar. A trip bar is not docked. -->
     <div class="map-dock">
       <MapLevels />
+      <p class="map-data-credit" aria-label="Map data sources">
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a>
+        <a href="https://github.com/kromate/joinallworld/tree/a4c14a1e225404cd2cfe1d8d74ee5c2a2b516b4e/src/game/cities" target="_blank" rel="noopener noreferrer">Source data</a>
+      </p>
       <template v-if="!trip?.locked">
         <VenueCard v-if="item" :item="item" />
         <MapOverview v-else-if="!trip" />

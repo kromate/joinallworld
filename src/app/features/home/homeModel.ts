@@ -28,7 +28,7 @@ export const buyReason = (car: Pick<CarCard, 'blocked'>, offline: string): strin
 export const quicker = (speed: number): number => Math.round((1 - speed) * 100)
 
 export const carsRules = (resaleRate: number): string[] => [
-  'An owned car adds Drive to every trip: you pay its fuel instead of a fare, and it gets you there quicker.',
+  'An owned car adds Own car to the travel choices: you pay its fuel instead of a fare, and it gets you there quicker.',
   'You can own several vehicles and choose which one you drive.',
   `Selling returns ${Math.round(resaleRate * 100)}% of the list price — the amount is on each Sell button.`,
   'Prices are set per vehicle. Vehicle names, fuel costs and speeds are provisional and may change.',

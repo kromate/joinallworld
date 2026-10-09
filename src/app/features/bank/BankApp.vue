@@ -61,7 +61,8 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
     <ReliefLink />
     <section class="bank-wallet" aria-label="Your game wallet"><div class="bank-wallet-top"><span>Your game wallet</span><AppArtwork app="bank" /></div><strong>{{ money(state.cash) }}</strong><div class="bank-wallet-note">
       <template v-if="bills.due">
-        Due every Saturday: <b>{{ money(economy.weeklyBills) }}</b> · next {{ economy.nextDueLabel }}.
+        Usual weekly bills: <b>{{ money(economy.weeklyBills) }}</b> · next billing date {{ economy.nextDueLabel }}.
+        <template v-if="loan && loan.prepaid > 0 && !loan.cleared"> {{ loan.nextCollection }}</template>
         <template v-if="bills.tail === 'pay'"> Your job pays up to {{ money(career.weeklyPay) }} a week.</template>
         <template v-else-if="bills.tail === 'no-job'"> You have no job yet — open Jobs to start earning.</template>
       </template>
@@ -129,7 +130,7 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
     </ListRows>
 
     <SectionTitle :note="ledger.length ? `last ${ledger.length}, newest first` : ''">Recent transactions</SectionTitle>
-    <ListRows v-if="ledger.length" as="ul" label="Recent transactions">
+    <ListRows v-if="ledger.length" class="bank-ledger" as="ul" label="Recent transactions">
       <ListRow v-for="(entry, index) in ledger" :key="`${entry.at}:${index}`" as="li" :title="entry.reason" :sub="`${formatClock(entry.at)} · balance ${money(entry.balance)}`">
         <template #icon><RowMark round :tone="entry.amount < 0 ? 'out' : 'in'"><GameIcon :name="entry.amount < 0 ? 'spend' : 'earn'" /></RowMark></template>
         <template #end><span :class="entry.amount < 0 ? 'bank-out' : 'bank-in'">{{ signedMoney(entry.amount) }}</span></template>
@@ -146,18 +147,19 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
 .bank-wallet > strong { display: block; margin: 14px 0 16px; font-size: 36px; line-height: 1.1; letter-spacing: -.025em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .bank-wallet-note { font-size: 13px; line-height: 1.5; color: #d6eee7; border-top: 1px solid #3e626c; padding-top: 12px; }
 
-.bank-quick { display: flex; gap: var(--s-2); margin: 0 0 var(--s-3); }
-.bank-quick > * { flex: 1; padding: 10px 8px; background: #fff; box-shadow: var(--ring); }
+.bank { overflow-wrap: anywhere; }
+.bank-quick { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0 0 var(--s-3); }
+.bank-quick > * { flex: 1 1 100px; padding: 10px 8px; background: #fff; border: 1px solid var(--c-line); }
 /* Rent and loan: stacked on a phone, side by side when the phone is expanded on a desktop. */
 .bank-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); margin: 0 0 var(--s-2); align-items: start; }
 :global(.ph.is-wide) .bank-cards { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.bank-card { margin: 0; padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); font-size: var(--t-body); line-height: 1.45; }
-.bank-card.is-warning { box-shadow: var(--e-1), inset 0 0 0 1.5px var(--c-amber); background: #fffaf0; }
-.bank-card header { display: flex; align-items: center; gap: 10px; margin: 0 0 var(--s-2); }
-.bank-card header > div { flex: 1; min-width: 0; font-size: 15px; }
+.bank-card { min-width: 0; margin: 0; padding: var(--s-3) var(--s-4) var(--s-4); border: 1px solid var(--c-line); border-radius: var(--r-md); background: #fff; box-shadow: none; font-size: var(--t-body); line-height: 1.45; }
+.bank-card.is-warning { border-color: var(--c-amber); background: #fffaf0; }
+.bank-card header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 var(--s-2); }
+.bank-card header > div { flex: 1 1 110px; min-width: 0; font-size: 15px; }
 .bank-card header b { font-weight: 700; }
-.bank-card header small { display: block; font-size: 12px; font-weight: 500; color: var(--c-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bank-card header > strong { flex: none; text-align: right; font-size: var(--t-title); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.bank-card header small { display: block; font-size: 12px; font-weight: 500; color: var(--c-muted); }
+.bank-card header > strong { flex: 0 1 auto; max-width: 100%; margin-left: auto; text-align: right; font-size: var(--t-title); font-variant-numeric: tabular-nums; }
 .bank-card-mark { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--c-fill); font-size: 19px; }
 .bank-line { margin: 5px 0; }
 .bank-warning { margin: 5px 0; padding: 8px 10px; border-radius: var(--r-sm); background: var(--c-red-soft); color: var(--c-red-dark); font-weight: 600; }
@@ -172,4 +174,8 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
 .bank-locked small { display: block; font-size: 11px; font-weight: 500; color: var(--c-muted); }
 .bank-in { color: var(--c-green-dark); }
 .bank-out { color: var(--c-red); }
+.bank-ledger :deep(.list-row) { flex-wrap: wrap; }
+.bank-ledger :deep(.list-row-body) { flex: 1 1 120px; }
+.bank-ledger :deep(.list-row-body > b), .bank-ledger :deep(.list-row-body > small) { white-space: normal; overflow: visible; }
+.bank-ledger :deep(.list-row-end) { flex: 0 1 auto; max-width: 100%; margin-left: auto; }
 </style>

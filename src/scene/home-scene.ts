@@ -74,6 +74,7 @@ import type { Pose } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
 import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
+import { lightingFor, timeOfDay } from './lighting.ts';
 import { createObjectSequence } from './smart-objects/sequence.ts';
 import { createUseProps } from './smart-objects/props.ts';
 import { createHingedHomeDoor } from './smart-objects/door.ts';
@@ -90,7 +91,7 @@ import { planOf, wallsOf, bumpsOf, railsOf, flightAt, stairwellOf, routeOf, slab
 import type { HousePlan, PlanStairs, PlanWall } from '../game/home-plan.ts';
 import type * as THREE from 'three';
 import type { Kit } from './kit.ts';
-import type { Batch, Colour, SceneCamera, Vec3 } from './types.ts';
+import type { Batch, Colour, SceneCamera, TimeOfDay, Vec3 } from './types.ts';
 import type { WalkGrid, WalkPoint, WalkRect } from './movement.ts';
 import type { FurnitureDefinition } from '../types/content.ts';
 import type { HouseStyle, LifeState, PlacedItem } from '../types/life.ts';
@@ -326,6 +327,8 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   group.add(glow);
 
   let palette: HomePalette = ROOM_PALETTE, grid = 0, owned = false, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
+  let homeTime: TimeOfDay = 'day';
+  glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
   let plot: Plot = plotOf(1), plan: HousePlan = planOf(plot);
   // The floor the avatar stands on, and the floors drawn (0 … shownFloor): the ones above are lifted off.
   let level = 0, shownFloor = 0, restFloor = 0, lastAt = { x: NaN, z: NaN };
@@ -979,9 +982,9 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   return {
     group,
     get homeDoor() { const x = along(0), z = along(doorSlot(grid)); return { x, y: 0.03, z, ry: -Math.PI / 2, direction: 'outside' as const, ...route(0, x, z) }; },
-    background: '#c9d6cf',
-    // [horizon, zenith]: a soft morning haze rather than a flat fill; the host grades between them.
-    sky: ['#c9d6cf', '#8fb0b4'] as [Colour, Colour],
+    get background() { return lightingFor('indoor', homeTime).sky[0]; },
+    get sky() { return lightingFor('indoor', homeTime).sky; },
+    lighting() { return lightingFor('indoor', homeTime); },
     ground: '#7f8f7c',
     /** The whole house in view: a bigger plot steps the camera back in proportion. */
     get camera(): SceneCamera {
@@ -991,9 +994,13 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     update(state: LifeState) {
       if (state.activeAction || (doorVisual && !doorDone)) cancelDoor();
       const first = lastState === null;
+      const nextTime = Number.isFinite(state.t) ? timeOfDay(state.t) : homeTime;
+      const timeChanged = nextTime !== homeTime;
+      homeTime = nextTime;
+      if (timeChanged) glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
       lastState = state;
       const room = refresh(state);
-      const changed = refreshPeople(state) || room || first || undrawn;
+      const changed = refreshPeople(state) || room || first || undrawn || timeChanged;
       undrawn = false;
       return changed;
     },

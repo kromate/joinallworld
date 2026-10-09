@@ -136,8 +136,9 @@ export const keyedSeed = (salt: string, seed: unknown): string => `k|${sha256Hex
  */
 export function makeContext(input: LifeContextInit & { cityId: string }): LifeContext {
   if (!input || typeof input.cityId !== 'string') throw new TypeError('A registered city context is required');
-  const { now = 0, cityId, seed = '', salt, ...rest } = input;
+  const { now = 0, cityId, seed = '', salt, interactiveTeachingStarts, ...rest } = input;
   if (!isCityId(cityId)) throw new TypeError(`Unknown city context: ${cityId}`);
   const text = `${cityId}|${seed}`;
-  return { now, cityId, rng: makeRng(typeof salt === 'string' && salt ? keyedSeed(salt, text) : text), ...rest };
+  return { now, cityId, rng: makeRng(typeof salt === 'string' && salt ? keyedSeed(salt, text) : text), ...rest,
+    ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}) };
 }

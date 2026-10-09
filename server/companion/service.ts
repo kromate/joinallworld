@@ -15,13 +15,14 @@ import { validateSuggest } from '../../src/app/features/companion/suggest.ts';
 import { characterCity } from '../character.ts';
 import { screenText } from '../moderation/text.ts';
 import { ask, companionConfig, type ChatMessage, type CompanionConfig, type Usage } from './gateway.ts';
-import { buildContext, type Built } from './context.ts';
+import { buildContext, expandContext, type Built } from './context.ts';
 import { amountsIn, checkReply, cleanInput, parseModelReply, MAX_INPUT } from './checks.ts';
 import { systemPrompt, wrapPlayerText } from './prompt.ts';
 import type { RouteContext, RouteRequest } from '../types.ts';
 
 export const DAY_MS = 86400000;
 export const HISTORY_TURNS = 6;
+export const MAX_REQUEST_CHARACTERS = 3600;
 export const OUTCOMES = ['primary', 'fallback', 'local', 'filtered', 'quota', 'skipped'] as const;
 export type Outcome = typeof OUTCOMES[number];
 export type Via = 'primary' | 'fallback' | 'local' | 'filtered';
@@ -103,21 +104,38 @@ function build(ctx: RouteContext) {
     });
     const { id, built } = prepared;
 
+    const current: ChatMessage = { role: 'user', content: wrapPlayerText(message) };
+    let spare = MAX_REQUEST_CHARACTERS - systemPrompt(built.sections, rephrase).length - current.content.length;
+    if (spare < 0) { count('skipped'); return answer('local', null, [], extra); }
+
+    const requiredNumbers = new Set(built.numbers);
+    if (rephrase) for (const amount of amountsIn(message)) requiredNumbers.add(amount);
+    const candidates = rephrase ? [] : history(body['history'], requiredNumbers);
+    const turns: ChatMessage[] = [];
+    for (const turn of candidates.reverse()) {
+      if (turn.content.length > spare) break;
+      turns.unshift(turn);
+      spare -= turn.content.length;
+    }
+    const packed = expandContext(built, spare);
+    const numbers = new Set(packed.numbers);
+    if (rephrase) for (const amount of amountsIn(message)) numbers.add(amount);
+    const messages: ChatMessage[] = [{ role: 'system', content: systemPrompt(packed.sections, rephrase) }, ...turns, current];
+    if (messages.reduce((length, item) => length + item.content.length, 0) > MAX_REQUEST_CHARACTERS) {
+      count('skipped'); return answer('local', null, [], extra);
+    }
+
     // Limits: a minute per player (memory), then a day per player and a day for everybody (stored on the Worker). Refused: no row is written.
     if (!ctx.allow(`companion:burst:${id}`, settings.playerBurst, 60000)
       || (ctx.peek ? !ctx.peek('companion:day:all', settings.dailyRequests) : false)
       || !ctx.allow(`companion:day:${id}`, settings.playerDaily, DAY_MS)
       || !ctx.allow('companion:day:all', settings.dailyRequests, DAY_MS)) { count('quota'); return answer('local', null, [], extra); }
 
-    const numbers = new Set(built.numbers);
-    if (rephrase) for (const amount of amountsIn(message)) numbers.add(amount);
-    const turns = rephrase ? [] : history(body['history'], numbers);
-    const messages: ChatMessage[] = [{ role: 'system', content: systemPrompt(built.sections, rephrase) }, ...turns, { role: 'user', content: wrapPlayerText(message) }];
     const sent = estimateTokens(messages.map((item) => item.content).join(' '));
     day().requests++;
     const result = await ask((url, init) => ctx.fetch(url, init), settings, messages, gatewayUser(id));
     for (const attempt of result.attempts) if (attempt.ok) tokens(attempt.usage, sent, estimateTokens(attempt.text)); else tokens(null, sent, 0);
-    return finish(result, built, numbers, rephrase, extra);
+    return finish(result, packed, numbers, rephrase, extra);
   }
 
   function finish(result: Awaited<ReturnType<typeof ask>>, built: Built, numbers: ReadonlySet<string>, rephrase: boolean, extra: { turnId?: string }): AskAnswer {

@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { loadCityContent } from '../src/game/cities/registry.ts';
 import { ASSEMBLY, QUORUM } from '../src/game/content/politics.ts';
-import { DAY, harness } from './testing/politicsHarness.ts';
+import { DAY, harness, object } from './testing/politicsHarness.ts';
 import type { Device } from './testing/politicsHarness.ts';
 
 await Promise.all(['lagos', 'ibadan'].map(loadCityContent));
@@ -73,7 +73,17 @@ test('a bill goes through proposal, votes and the law, and the law changes what 
   assert.equal((await post('/api/business/open', { cityId: 'lagos', venue: 'market', type: 'food', name: 'Mama Put', colour: 'gold', icon: '🍲', requestId: f.id() }, owner)).code, 'opened');
   assert.equal((await post('/api/business/stock', { cityId: 'lagos', items: { jollof: 5 }, requestId: f.id() }, owner)).code, 'stocked');
   const before = (await get('/api/life?city=lagos', buyer)).state?.cash ?? 0;
-  const bought = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 1, requestId: f.id() }, buyer);
+  const market = await get('/api/business/venue?city=lagos&venue=market', buyer);
+  const stalls = Array.isArray(market.shops) ? market.shops.map(object) : [];
+  const stall = stalls.find((entry) => object(entry.owner).id === owner.id);
+  assert.ok(stall);
+  const items = Array.isArray(stall.items) ? stall.items.map(object) : [];
+  const item = items.find((entry) => entry.id === 'jollof');
+  assert.ok(item);
+  const quotes = Array.isArray(item.quotes) ? item.quotes.map(object) : [];
+  const quote = quotes.find((entry) => entry.units === 1);
+  assert.ok(quote);
+  const bought = await post('/api/business/buy', { cityId: 'lagos', shop: owner.id, product: 'jollof', units: 1, expectedPrice: Number(item.price), expectedTotal: Number(quote.total), requestId: f.id() }, buyer);
   assert.equal(bought.code, 'bought');
   assert.equal(before - (bought.state?.cash ?? 0), (bought.amount ?? 0) + Math.floor((bought.amount ?? 0) * 5 / 100), 'the buyer pays the price and the law’s tax');
 

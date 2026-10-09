@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "298e5337e636e562bbf7453ff7058ec90e857be3",
+  "runId": 37883026758,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37883026758",
+  "observedAt": "2026-10-09T04:19:00Z",
+  "status": "completed",
+  "conclusion": "failure",
+  "compiler": "pass",
+  "buildUnchangedBudgetsSmokePolicy": "pass",
+  "expandedUI": {
+    "tests": 411,
+    "pass": 410,
+    "fail": 1,
+    "actualSfcLifecyclePass": 4
+  },
+  "failure": {
+    "route": "main-gate -> dli-building",
+    "road": "osm-way-217949998",
+    "segment": [
+      [
+        49.47,
+        15.47
+      ],
+      [
+        47.97,
+        53.96
+      ]
+    ],
+    "building": "osm-way-707240019",
+    "clearanceMeters": 0.9721770753043164,
+    "halfWidthMeters": 3
+  },
+  "commerceAndWorker": "skipped after UI failure",
+  "full": "omitted, remains required",
+  "stagingGameplaySaveContinuity": "not accepted",
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0
+}

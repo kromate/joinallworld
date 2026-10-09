@@ -1,4 +1,4 @@
-import { knownCityIds, cityRules, cityCatalogueEntry, loadCityMap, catalogueCitiesInState } from '../game/cities/registry.ts';
+import { knownCityIds, cityRules, cityCatalogue, cityCatalogueEntry, loadCityMap, catalogueCitiesInState } from '../game/cities/registry.ts';
 /**
  * OWNER: world
  * Region registry: country → cities. Everything the country map (src/world-map.ts) and the 3D
@@ -66,7 +66,11 @@ const cityDescriptor = (id: string): CityEntry | null => {
     ...((rules?.atlas.preview ?? catalogue.preview) ? { preview: rules?.atlas.preview ?? catalogue.preview } : !catalogue.open ? { preview: [] } : {}),
     pack: catalogue.open ? async () => (await loadCityMap(id)).loadScene() : null };
 };
-const nigeriaCities = (): Readonly<Record<string, CityEntry>> => Object.fromEntries(knownCityIds().flatMap(id => { const city = cityDescriptor(id); return city ? [[id, city]] : []; }));
+const nigeriaCities = (): Readonly<Record<string, CityEntry>> => Object.fromEntries(knownCityIds().flatMap(id => {
+  const catalogue = cityCatalogueEntry(id);
+  if (catalogue?.countryISO && catalogue.countryISO !== 'ng') return [];
+  const city = cityDescriptor(id); return city ? [[id, city]] : [];
+}));
 
 export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
   nigeria: {
@@ -87,11 +91,25 @@ export const COUNTRIES: Readonly<Record<CountryId, Country>> = Object.freeze({
 /** Countries not in the game yet, named so the country picker can say what is planned. */
 export const MORE_REGIONS: readonly string[] = Object.freeze(['More Nigerian states', 'Ghana', 'Kenya', 'South Africa', 'United Kingdom']);
 
-export const countryList = () => Object.values(COUNTRIES);
-export const citiesOf = (countryId: string) => countryId === 'nigeria' ? Object.values(nigeriaCities()) : [];
+const foreignCountries = (): Country[] => {
+  const grouped = new Map<string, { name: string; cities: Record<string, CityEntry> }>();
+  for (const catalogue of cityCatalogue()) {
+    if (!catalogue.countryISO || catalogue.countryISO === 'ng') continue;
+    const city = cityDescriptor(catalogue.id);
+    if (!city) continue;
+    const group = grouped.get(catalogue.countryISO) ?? { name: catalogue.countryName ?? catalogue.countryISO.toUpperCase(), cities: {} };
+    group.cities[city.id] = city; grouped.set(catalogue.countryISO, group);
+  }
+  return [...grouped].map(([id, group]): Country => ({ id, name: group.name, status: 'playable', outline: [], rivers: [], cities: group.cities }));
+};
+export const countryList = () => [COUNTRIES.nigeria, ...foreignCountries()];
+export const citiesOf = (countryId: string) => countryId === 'nigeria' || countryId === 'ng'
+  ? Object.values(nigeriaCities())
+  : Object.values(foreignCountries().find(country => country.id === countryId)?.cities ?? {});
 export function cityEntry(cityId: string): CityRecord | null {
-  const city = cityDescriptor(cityId), country = COUNTRIES.nigeria;
-  return city ? { ...city, country: country.id, countryName: country.name } : null;
+  const city = cityDescriptor(cityId), catalogue = cityCatalogueEntry(cityId);
+  if (!city || !catalogue) return null;
+  return { ...city, country: catalogue.countryISO && catalogue.countryISO !== 'ng' ? catalogue.countryISO : COUNTRIES.nigeria.id, countryName: catalogue.countryName ?? COUNTRIES.nigeria.name };
 }
 export const isPlayable = (cityId: string) => cityEntry(cityId)?.status === 'playable';
 /** Does this city have a 3D pack? Without one the city map falls back to the 2D schematic. */
@@ -240,19 +258,26 @@ export function regionEntry(kind: RegionKind, id: string): RegionInfo {
     const cities = catalogueCitiesInState(id), open = cities.find(city => city.open), city = open ?? cities[0];
     return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : city ? 'planned' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
   }
+  if (kind === 'country' && id !== 'ng') {
+    const open = cityCatalogue().find(city => city.countryISO === id && city.open);
+    if (open) return { ...entry, status: 'open', city: open.id, teaser: entry?.teaser ?? `${open.countryName ?? id} is open through ${open.name}.` };
+  }
   return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
 }
 export const regionStatus = (kind: RegionKind, id: string) => regionEntry(kind, id).status;
 /** Only an open region can be entered. For a state that means its city; for a country, its states level. */
 export const canEnter = (kind: RegionKind, id: string) => regionStatus(kind, id) === 'open';
 /** The state a city lies in, or null. */
-export const stateOfCity = (cityId: string) => cityCatalogueEntry(cityId)?.state.id ?? null;
+export const stateOfCity = (cityId: string) => {
+  const city = cityCatalogueEntry(cityId);
+  return city && (!city.countryISO || city.countryISO === 'ng') ? city.state.id : null;
+};
 /** Planned routes between countries: from the open city to the hub of every country marked `planned`. */
 export interface PlannedRoute { id: string; from: Hub & { id: string }; to: Hub & { id: string }; mode: 'air' }
 export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {
   const from = cityEntry(fromCity);
   if (!from) return [];
-  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => entry.status === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
+  return Object.entries(WORLD_COUNTRIES).filter(([id, entry]) => regionStatus('country', id) === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
 }
 
 /** Longitude/latitude → flat map units for one country: x east, y south, the country fitted into `width`. */

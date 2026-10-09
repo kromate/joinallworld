@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "75ad421adc6d1eb455c9f7a258bc63e315ce5955",
+  "observedAt": "2026-10-09T05:49:15Z",
+  "scope": "internal unregistered fictional NPC stock helper; not mapped delivery, wallet, HTTP or Worker acceptance",
+  "sourceFiles": {
+    "server/living-world/npc-inventory.ts": "a21da952c8c5ef371d66dc7681a9e995695faa82b2ae5d489a331682bc4a30e3",
+    "server/living-world/npc-inventory.test.ts": "7491b28ce06d4c1e8cfaf3263216422d7fdbd0dcadb6c9062a7c9b1ae3620717"
+  },
+  "localNode24": {
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 56.5925,
+    "log": "/tmp/joinallworld-npc-inventory-final.log",
+    "logSha256": "e84a9ac060bb1e6fcd04cf96c67bbffb7448e0935d747938b01c94e4ebd31834",
+    "resources": {
+      "exitCode": 0,
+      "elapsedSeconds": 0.373,
+      "peakSampledGroupRssBytes": 91570176,
+      "heapMiB": 128,
+      "groupRssLimitMiB": 220,
+      "wallLimitSeconds": 15,
+      "stopReason": null,
+      "log": "/tmp/joinallworld-npc-inventory-final.log"
+    }
+  },
+  "earlierObservedFailure": {
+    "tests": 7,
+    "pass": 0,
+    "fail": 7,
+    "cause": "fixture builder returned ParcelState but 18 callers still accessed .state; Root repaired return-shape use, preserved real parcel transitions",
+    "logSha256": "227f39e1ead027e9151bd6c93cdc8054b7f914d9bc60fbc28ffb059ef39b824f"
+  },
+  "priorRetest": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skip": 0,
+    "logSha256": "204fe5b5bc9192a1419a4ad71caea1919f27e3737227674a7e1eca66eee3721c"
+  },
+  "review": {
+    "implementation": "verified gpt-6-luna/high luna_goalmatic",
+    "integrator": "verified gpt-6.1-sol/high Sol",
+    "independentReviewer": "verified gpt-6-luna/high luna_driving",
+    "findingsRepaired": [
+      "missing fingerprint call arguments",
+      "missing per-actor settlement accounting witness",
+      "impossible CAS/capacity baseline fixtures"
+    ],
+    "recheck": "no remaining helper-level blockers; bounded scope only"
+  },
+  "limits": {
+    "inventoryBytes": 98304,
+    "actorRows": 20,
+    "stockUnits": 60,
+    "quantityPerDelivery": 3,
+    "deliveriesBeforeFull": 20,
+    "fictionalGameCashEffect": 120,
+    "realMoney": false,
+    "consumptionImplemented": false
+  },
+  "activationOpen": [
+    "pinned mapped stop and actual server fleet/stopped-pose authority",
+    "registered parcel service writes declared envelope",
+    "atomic custody/stock/fixed game wage/receipt plus durable storage failure rollback",
+    "account adoption and privacy/erasure preserving replay invariants",
+    "authored stock demand/consumption migration",
+    "full exact compiler/Node/Worker and device/staging/save/live observation"
+  ],
+  "registered": false,
+  "routeAuthorized": false,
+  "productionDeployed": false,
+  "fullRun75ad": "not dispatched; preserve existing live3e run37888565489"
+}

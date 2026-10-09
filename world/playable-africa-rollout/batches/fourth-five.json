@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "base": "be3067cb28847702769ed3f266b3103e03cb12dd",
+  "scope": "Fourth batch of African starter source only. OUT the first-five release; no shared registry, atlas, game database or deployed flags changed.",
+  "destinationIds": [
+    "gaborone",
+    "windhoek",
+    "harare",
+    "maputo",
+    "luanda"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 992,
+    "roads": 474,
+    "extent": "Five bounded central OSM samples, estimated building silhouettes, country land and pinned airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "gaborone",
+      "countryIso2": "BW",
+      "osmSha256": "35d780e43dbc41db7a75f66b79bb81bb0cadf7460ecfd9fa45788734b58e16af",
+      "sourceBytes": 462774,
+      "retained": {
+        "buildings": 248,
+        "roads": 32
+      }
+    },
+    {
+      "city": "windhoek",
+      "countryIso2": "NA",
+      "osmSha256": "6fde5bf742ef22d79a340bc9af3b2b8dae0790c00828f372a68718693d2d0c88",
+      "sourceBytes": 1027024,
+      "retained": {
+        "buildings": 188,
+        "roads": 147
+      }
+    },
+    {
+      "city": "harare",
+      "countryIso2": "ZW",
+      "osmSha256": "6335164adc25cf2a73e91fbc05010ea1125b93c2c5d2981224b99f976f07cbbb",
+      "sourceBytes": 377972,
+      "retained": {
+        "buildings": 144,
+        "roads": 37
+      }
+    },
+    {
+      "city": "maputo",
+      "countryIso2": "MZ",
+      "osmSha256": "5e24dd8f3c64c37b648726cfbf17de4f7fcd9324900e7d63ea541684afae206b",
+      "sourceBytes": 1478903,
+      "retained": {
+        "buildings": 350,
+        "roads": 98
+      }
+    },
+    {
+      "city": "luanda",
+      "countryIso2": "AO",
+      "osmSha256": "53584560807d687473133db8dbb69bc99cfe3193d12dfb1d9f52f30fd3e95163",
+      "sourceBytes": 474121,
+      "retained": {
+        "buildings": 62,
+        "roads": 160
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/africa-rollout-audit-ci.yml",
+      "bytes": 2728,
+      "sha256": "253c526bcdcee08763861581cacddff03a5d46781901faba3641d4d1b9161c20"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 19344,
+      "sha256": "f44a61eaf32962b458c0eedc2ecf64c4f92ff8c4bf778964c48fd3140c2c40fa"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/playable-africa-rollout/generation.md",
+      "bytes": 3469,
+      "sha256": "944e7ccb12f467bd0a35a6d04aaa4f01630667e8adbc9835ca76260ff1006092"
+    },
+    {
+      "path": "world/playable-africa-rollout/batches/fourth-five.md",
+      "bytes": 1857,
+      "sha256": "bea3f61121296a49fb91a5c9c1e8abf71b037c54ba431f31d626043dd1609fb9"
+    },
+    {
+      "path": "src/game/cities/gaborone/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/gaborone/facts.ts",
+      "bytes": 1482,
+      "sha256": "f3a51b86194f82f27bd37ecc0dbdc9ad482cae7ef60e784926e90ce7b3cb61dc"
+    },
+    {
+      "path": "src/game/cities/gaborone/geometry.ts",
+      "bytes": 73512,
+      "sha256": "f258630567ee343f9d4c856516d9af844b6821f14e9b8a2c08c05d12227474ea"
+    },
+    {
+      "path": "src/game/cities/gaborone/index.ts",
+      "bytes": 259,
+      "sha256": "df7421684f87635352de64a4705d30a608db21ae3aabd093b65c3a8e9441116c"
+    },
+    {
+      "path": "src/game/cities/gaborone/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/gaborone.json",
+      "bytes": 3510,
+      "sha256": "6ec590ce942ca4716ec99a110626d31e16b0d435b6c979492f29e2e7fc4ea135"
+    },
+    {
+      "path": "src/game/cities/windhoek/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/windhoek/facts.ts",
+      "bytes": 1456,
+      "sha256": "76f9e4ce8f643c77a348a21a58682c6a3d76ef91ed16abf3ee57b5c6bcb0999d"
+    },
+    {
+      "path": "src/game/cities/windhoek/geometry.ts",
+      "bytes": 87422,
+      "sha256": "8318d43789a2ea70d513e0b67f06eb36ca320f2f3fb61061757753cf2369eabf"
+    },
+    {
+      "path": "src/game/cities/windhoek/index.ts",
+      "bytes": 259,
+      "sha256": "f76156c2336fd53c5c4b1ae98cfdac79c8d83fab9f38a50fe1d3fc0e838f56a8"
+    },
+    {
+      "path": "src/game/cities/windhoek/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/windhoek.json",
+      "bytes": 3490,
+      "sha256": "c400d0d68fc824d7ac38cfd3c1a813ad18196b4b569de23a5b0ee84e08786ae2"
+    },
+    {
+      "path": "src/game/cities/harare/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/harare/facts.ts",
+      "bytes": 1478,
+      "sha256": "019d0681d9062dec0263289ee80fe9fb71da04be97c5b2717ba835aab2ef357b"
+    },
+    {
+      "path": "src/game/cities/harare/geometry.ts",
+      "bytes": 50650,
+      "sha256": "4031b43211a0d87fe50815e8efb37d29b60b59d8fc31747adfe25dace51c0183"
+    },
+    {
+      "path": "src/game/cities/harare/index.ts",
+      "bytes": 257,
+      "sha256": "43759bd4d14393fb31bb3628ca492e9c22a3875af0262f2975aeaf151f446267"
+    },
+    {
+      "path": "src/game/cities/harare/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/harare.json",
+      "bytes": 3507,
+      "sha256": "766fc25216bfc8dfa53392a5c9d7235838f728bbefecbe4c7f94ae6ec4d0ea81"
+    },
+    {
+      "path": "src/game/cities/maputo/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/maputo/facts.ts",
+      "bytes": 1455,
+      "sha256": "f3efb1e750302a81b3db5511e47b177384339e8d88fb5989e5196b421814f03c"
+    },
+    {
+      "path": "src/game/cities/maputo/geometry.ts",
+      "bytes": 96246,
+      "sha256": "a52b872d6dbd3bf949cd57448693d9755379e719fc27688367eea17b42f5310f"
+    },
+    {
+      "path": "src/game/cities/maputo/index.ts",
+      "bytes": 257,
+      "sha256": "1f9d89c57bd1787023d9acad7648226b4c8a07d162c665b88b9bd92ea017ef7c"
+    },
+    {
+      "path": "src/game/cities/maputo/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/maputo.json",
+      "bytes": 3493,
+      "sha256": "3dd7f7f185c1b91ab40dcaf3346478d544d1a35f73482b8c76b1579af763c554"
+    },
+    {
+      "path": "src/game/cities/luanda/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/luanda/facts.ts",
+      "bytes": 1464,
+      "sha256": "e5182c5d73682762c6759bd5f2deb36a44ed6bd18ea111bd577dfec6705adfdf"
+    },
+    {
+      "path": "src/game/cities/luanda/geometry.ts",
+      "bytes": 52536,
+      "sha256": "34e8dd58bbb904941f0c1699f9fbadab6236c241fdb89616b2af832497724f24"
+    },
+    {
+      "path": "src/game/cities/luanda/index.ts",
+      "bytes": 257,
+      "sha256": "37807867556642cf8426ac803eab2f177c569dea93ff0746d7577453d51c2c1e"
+    },
+    {
+      "path": "src/game/cities/luanda/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/luanda.json",
+      "bytes": 3496,
+      "sha256": "1bbf2537fc6aa2d7857f9246523db077e5544f1c2cf2c8442f4578e6b3242295"
+    }
+  ],
+  "validation": {
+    "localSourcePins": "PASS each full cached-source/assets check and actual dynamic CI tracked-source step across10rollout cities",
+    "localEngine": "Not run to avoid shared heavy stage overlap",
+    "remoteEngineAndStrictTypes": "Pending exact serial per-city checks on Node22.19/24",
+    "combinedHostBrowserBudgetProduction": "Not admitted or verified"
+  },
+  "dependencyNotes": [
+    "Shared destination factory14ed559c supplies beta flight, meals, market, tables, NPCs and lazy content/maps.",
+    "OurAirports names/points are pinned dataset references, not current official operations, aviation ARPs or commercial schedules. Windhoek uses Eros and Luanda Quatro de Fevereiro from that inventory.",
+    "Original acquisition budgets, immutable source hashes and request ledgers preserved. Later registry admission requires an independent tested adapter."
+  ]
+}

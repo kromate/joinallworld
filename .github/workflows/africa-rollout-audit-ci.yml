@@ -4,15 +4,10 @@ on:
   push:
     branches: [codex/world-foundation]
     paths:
-      - 'src/game/cities/africa/**'
-      - 'scripts/world/build-playable-africa.py'
-      - 'src/game/cities/cairo/**'
-      - 'src/game/cities/rabat/**'
-      - 'src/game/cities/kigali/**'
-      - 'src/game/cities/kampala/**'
-      - 'src/game/cities/lusaka/**'
+      - 'src/game/cities/**'
       - 'world/playable-africa-rollout/**'
       - 'scripts/world/build-africa-starters.py'
+      - 'scripts/world/build-playable-africa.py'
       - 'scripts/world/verify-playable-destination.ts'
       - '.github/workflows/africa-rollout-audit-ci.yml'
 permissions:
@@ -33,16 +28,37 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Tracked generated assets and source identities
-        run: python3 scripts/world/build-africa-starters.py --country EG --country MA --country RW --country UG --country ZM --check-assets
+        run: |
+          python3 - <<'PYTHON'
+          import json, re, subprocess
+          from pathlib import Path
+          receipts = sorted(Path('world/playable-africa-rollout/receipts').glob('*.json'))
+          if not receipts:
+              raise SystemExit('No authored rollout receipts')
+          cities = []
+          for path in receipts:
+              row = json.loads(path.read_text())
+              if not re.fullmatch(r'[A-Z]{2}', row['countryIso2']) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', row['cityId']):
+                  raise SystemExit('Invalid receipt identity: ' + str(path))
+              if path.stem != row['cityId'] or row['cityId'] in cities:
+                  raise SystemExit('Changed or duplicated receipt identity: ' + str(path))
+              subprocess.run(['python3', 'scripts/world/build-africa-starters.py', '--country', row['countryIso2'], '--check-assets'], check=True)
+              cities.append(row['cityId'])
+          Path('rollout-city-list.txt').write_text('\n'.join(cities) + '\n')
+          PYTHON
       - name: Verify each city before the next
         env:
           NODE_OPTIONS: --max-old-space-size=512
         run: |
-          for city in cairo rabat kigali kampala lusaka
+          while IFS= read -r city
           do
             node --experimental-strip-types scripts/world/verify-playable-destination.ts "$city"
-          done
-      - name: Strict city and verifier types
+          done < rollout-city-list.txt
+      - name: Strict city and verifier types, one city at a time
         env:
           NODE_OPTIONS: --max-old-space-size=1536
-        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node scripts/world/verify-playable-destination.ts src/game/cities/cairo/*.ts src/game/cities/rabat/*.ts src/game/cities/kigali/*.ts src/game/cities/kampala/*.ts src/game/cities/lusaka/*.ts
+        run: |
+          while IFS= read -r city
+          do
+            node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node scripts/world/verify-playable-destination.ts src/game/cities/"$city"/*.ts
+          done < rollout-city-list.txt

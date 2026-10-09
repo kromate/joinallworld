@@ -2356,3 +2356,23 @@ real flight-service evidence; no runtime prototype is claimed by that document.
 21:09UTC concrete progress: normally onboarded B is uniquely bound to the same original SQLite store, distinct from A, with76000 birth cash and its13-object Mainland home. Existing reviewed restricted funding witness changed only exactc1/d1dd/B-capital constants. Baseline/fund/same-intent replay all terminal0; one canonical2000000 credit produces2076000, one founder receipt/wallet effect/ledger credit, and replay has no second effect. Home/inventory/ownership remain unchanged. The original A grant receipt is still identical; current A cash366500 in lagos. This is fictional local fixture funding, not production, and B native journeys/reload/final conservation remain pending. See native-c1-second-actor-funding-acceptance.json. Previous goal turn is progress because these authoritative financial effects and proofs completed, not merely a status restatement. Production remains6.
 
 21:18UTC progress: actual first finite stage73098 exited0 and checkpointed; oldprocessgroup53386 is absent. The SAMEc1/d1dd/originalport/store/A/B was reopened in owned95184/59842 until21:26:55.732, preserving sevencontrolfields and no new actors/grants/intents. Native A fourfareeffects plus normal500reward conserve596000→366500, old12wallet/28action/founderreceipts and possessions retained. B sixfareeffects match exact217k/401k/332k roundtrips and conserve76000+2000000−1900000=176000; final sourcewitness66166 terminal0 verifies allbidirectional receiptfingerprints/ledger/effects/homeownership/originalgrant. Nativeoperator final/rendering scope remains pending. Actual separate livingWorld.driving[originalA] checkpointIndex1,paused,pending,speed0 survives restart; initialfinance school:null queried the wrong domain and is qualified, not evidence of loss. No qualification/physicalphone/fullworld/prod11 claim. Production originalsynthetic BEFOREcheck passed21:14:32 on3af.
+
+
+21:36UTC production release progress: accepted C1 package d1ddc9e4 uploaded
+unchanged, owned59661 terminal0 at21:30:06UTC, version
+c844916f-0ffb-49f1-9c26-ccc6d2ec9469. Initial27395 filesystem-read timeout
+ended before Wrangler network output; its failure remains recorded. The bounded
+same-package retry succeeded without changing source, bindings or credentials.
+Authenticated provider read6105 at21:30:32 confirms100% adoption and the same
+namespace/eleven secret bindings. Frontend C1 assets were observed21:32:18;
+public backend initially retained3af until actual C1 adoption21:35:32.
+Original production synthetic continuity68750 terminal0 at21:35:43 proves
+the same identity, nine stable fields and original same-ID duplicate receipt.
+No production grant, new actor or paid flight was performed. Deployed registry
+now opens eleven countries: Nigeria, Cameroon, Togo, Ghana, Kenya, Algeria,
+Benin, Côte d’Ivoire, Senegal, South Africa and Ethiopia. Actual production
+eleven-open browser map/cards evidence is still pending. Both native windows
+are stopped, original store checkpointed, uploader exited, no local server.
+Root report records exact receipts under .cache/world-build/evidence.
+The remaining generated sources are not playable admission; full goal remains
+active and the next reserved runtime window belongs to LIVING.

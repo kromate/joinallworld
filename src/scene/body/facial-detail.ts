@@ -3,8 +3,7 @@ import type { Look } from '../avatar-look.ts';
 import type { BodyKey } from './manifest.ts';
 import { EYE_SOCKETS } from './face-shader.ts';
 
-interface FacePalette { skin: THREE.Color; brow: THREE.Color; lip: THREE.Color }
-type Surface = 'skin' | 'brow' | 'lip' | 'white' | 'iris' | 'pupil' | 'glint' | 'mouth';
+type Surface = 'skin' | 'brow' | 'white' | 'iris' | 'pupil' | 'glint';
 type Shape = 'neutral' | 'smile' | 'grin' | 'blink';
 export interface FacialDetail {
   readonly object: THREE.SkinnedMesh;
@@ -55,25 +54,24 @@ function atlasPoint(base: THREE.SkinnedMesh, target: THREE.Vector2): THREE.Vecto
   return result.applyMatrix4(base.matrix);
 }
 
-/** One draw call, one shared skeleton, no downloaded assets: modeled eyes, lids, brows and expressive lips. */
+/** One draw call, one shared skeleton, no downloaded assets: modeled eyes, lids and expressive brows. */
 export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: Look): FacialDetail {
   base.updateMatrix();
   const fromMetres = base.matrix.clone().invert();
   const head = base.skeleton.bones.findIndex(bone => bone.name === 'Head');
   if (head < 0) throw new Error('Facial detail requires the Head joint');
   const eyes = [atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].left)), atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].right))];
-  const mouth = atlasPoint(base, new THREE.Vector2(0.175, 0.253));
-  mouth.x = (eyes[0]!.x + eyes[1]!.x) * 0.5;
   const surfaces: Surface[] = [], indices: number[] = [];
+  let topologyBuilt = false;
   let buildingShape: Shape = 'neutral';
   let vertices: number[] = [];
   const vertex = (point: THREE.Vector3, surface: Surface): number => {
     const i = vertices.length / 3;
     point.applyMatrix4(fromMetres); vertices.push(point.x, point.y, point.z);
-    if (buildingShape === 'neutral') surfaces.push(surface);
+    if (buildingShape === 'neutral' && !topologyBuilt) surfaces.push(surface);
     return i;
   };
-  const triangle = (a: number, b: number, c: number) => { if (buildingShape === 'neutral') indices.push(a, b, c); };
+  const triangle = (a: number, b: number, c: number) => { if (buildingShape === 'neutral' && !topologyBuilt) indices.push(a, b, c); };
   // Concentric rings produce smooth rounded surfaces and stable topology for every expression.
   const disc = (center: THREE.Vector3, rx: number, ry: number, depth: number, surface: Surface, rings = 3) => {
     const middle = vertex(center.clone().add(new THREE.Vector3(0, 0, depth)), surface);
@@ -119,7 +117,8 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
     }
     return new Float32Array(vertices);
   }
-  const neutral = build('neutral'), smile = build('smile'), grin = build('grin'), blink = build('blink');
+  const neutral = build('neutral'); topologyBuilt = true;
+  const smile = build('smile'), grin = build('grin'), blink = build('blink');
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.BufferAttribute(neutral, 3));
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(new Float32Array(surfaces.length * 3), 3));
@@ -130,17 +129,31 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
   const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.48, metalness: 0, side: THREE.DoubleSide });
   const object = new THREE.SkinnedMesh(geometry, material);
   object.name = 'avatar-facial-detail';
-  object.userData.anchors = { eyes: eyes.map(point => point.toArray()), mouth: mouth.toArray() };
+  object.userData.anchors = { eyes: eyes.map(point => point.toArray()) };
   object.position.copy(base.position); object.quaternion.copy(base.quaternion); object.scale.copy(base.scale);
   object.matrix.copy(base.matrix); object.matrixAutoUpdate = base.matrixAutoUpdate;
   object.bindMode = base.bindMode; object.bind(base.skeleton, base.bindMatrix); object.frustumCulled = false;
   base.parent?.add(object);
   let expression: Look['expression'] = 'neutral', sleeping = false, disposed = false;
+  const fitKey = (value: Look) => JSON.stringify([value.face, value.appearance?.ageAppearance]);
+  let fitted = fitKey(look);
   function wear(next: Look) {
+    if (fitKey(next) !== fitted) {
+      eyes[0]!.copy(atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].left)));
+      eyes[1]!.copy(atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].right)));
+      const position = geometry.getAttribute('position');
+      for (const [i, value] of build('neutral').entries()) position.array[i] = value;
+      position.needsUpdate = true;
+      for (const [i, shape] of (['smile', 'grin', 'blink'] as const).entries()) {
+        const attribute = geometry.morphAttributes.position?.[i];
+        if (attribute) { for (const [at, value] of build(shape).entries()) attribute.array[at] = value; attribute.needsUpdate = true; }
+      }
+      geometry.computeVertexNormals();
+      fitted = fitKey(next);
+    }
     expression = next.expression;
     const skin = new THREE.Color(next.skin);
-    const palette: FacePalette = { skin, brow: new THREE.Color(next.hairColor).multiplyScalar(0.6), lip: skin.clone().lerp(new THREE.Color('#8c4544'), 0.35).multiplyScalar(0.8) };
-    const colors: Record<Surface, THREE.Color> = { ...palette, white: new THREE.Color('#eee9dd'), iris: new THREE.Color('#67412b'), pupil: new THREE.Color('#100c0a'), glint: new THREE.Color('#ffffff'), mouth: new THREE.Color('#311519') };
+    const colors: Record<Surface, THREE.Color> = { skin, brow: new THREE.Color(next.hairColor).multiplyScalar(0.6), white: new THREE.Color('#eee9dd'), iris: new THREE.Color('#67412b'), pupil: new THREE.Color('#100c0a'), glint: new THREE.Color('#ffffff') };
     const attribute = geometry.getAttribute('color');
     surfaces.forEach((surface, i) => { const color = colors[surface]; attribute.setXYZ(i, color.r, color.g, color.b); });
     attribute.needsUpdate = true;

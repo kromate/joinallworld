@@ -601,17 +601,17 @@ function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
     for (let i = 0; i < lowerCount; i++) {
       const angle = TAU * i / lowerCount + 0.11, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
       const centre = crown.point(angle, 0.63).addScaledVector(normal, radius * 0.22);
-      b.ball(centre, [radius, radius * 0.88, radius], tint, weights, 10, 3);
+      b.ball(centre, [radius, radius * 0.88, radius], tint, weights, 10, 4);
     }
     for (let i = 0; i < upperCount; i++) {
       const angle = TAU * i / upperCount + Math.PI / upperCount, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
       const centre = crown.point(angle, 0.88).addScaledVector(normal, radius * 0.22);
-      b.ball(centre, [radius * 0.94, radius * 0.86, radius * 0.94], tint, weights, 10, 3);
+      b.ball(centre, [radius * 0.94, radius * 0.86, radius * 0.94], tint, weights, 10, 4);
     }
   };
   switch (style) {
-    case 'curls': addCurls(24, 0.021); break;
-    case 'afro': addCurls(32, 0.025); break;
+    case 'curls': addCurls(18, 0.022); break;
+    case 'afro': addCurls(24, 0.027); break;
     case 'bun': {
       const hair = b.rest.bounds.get('hair'), centreX = hair ? (hair.min.x + hair.max.x) * 0.5 : head.x;
       const centreZ = hair ? (hair.min.z + hair.max.z) * 0.5 : head.z;

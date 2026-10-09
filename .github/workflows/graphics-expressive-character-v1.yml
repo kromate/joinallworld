@@ -1,7 +1,7 @@
 name: Expressive character visible prototype
 on:
   push:
-    branches: [codex/graphics-expressive-character-v5]
+    branches: [codex/graphics-expressive-character-v6]
 permissions:
   contents: read
 jobs:
@@ -24,7 +24,7 @@ jobs:
       - name: Check existing appearance and wardrobe contracts
         run: node --test src/scene/body/appearance.test.ts src/scene/wardrobe/geometry.test.ts
       - name: Check character TypeScript
-        run: node --max-old-space-size=768 node_modules/vue-tsc/bin/vue-tsc.js --noEmit --pretty false -p tsconfig/client.json
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/expressive-character-v1/typecheck.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:

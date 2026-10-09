@@ -251,13 +251,13 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   object.add(clonedScene);
   // Garment rest fitting must see the untouched asset before age-face geometry changes.
   const wardrobe = createWardrobeRenderer(skinned, kit.matte);
-  const facialDetail = createFacialDetail(skinned, key, read);
   const appearanceMade = createAvatarAppearanceController(skinned);
   const footContact = createFootContactController(object, skinned, wardrobe.object);
   let appearance = normalizeAvatarAppearance(read.appearance);
   let proportions = avatarProportions(appearance), sceneFit = sceneScale;
   wardrobe.wear({ look: read, ids: resolveAvatarWearablesForRenderer(read) });
   if (appearanceMade.ok) appearanceMade.controller.apply(appearance, read.face, read.expression);
+  const facialDetail = createFacialDetail(skinned, key, read);
   const mixer = new T.AnimationMixer(clonedScene);
   const actions = new Map(clips.map((clip) => [clip.name, mixer.clipAction(clip)]));
   let active: THREE.AnimationAction | null = null, scale = 1, pose: BodyPose = 'idle';

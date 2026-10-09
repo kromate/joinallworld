@@ -115,6 +115,62 @@
       "sha256": "754edb4338fc57c5782d5bfee8aef01aa3beba43616423acd52bd89801e67370",
       "bytes": 257358,
       "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-ui-regressions.log"
+    },
+    {
+      "name": "joinallworld-3af-full22.log",
+      "sha256": "6a4e1a6d494d2ea8c4f23217178188377f2f83a1135a7f70bde0f4d14c89859f",
+      "bytes": 173815,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-full22.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-full24.log",
+      "sha256": "d23f6df5cbcebb1ef3bc0f3b54c99e1beaf78dc159124a2dfeb215238846ad19",
+      "bytes": 174372,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-full24.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-host-acceptance.log",
+      "sha256": "405ce7c115fee7b496057dbf8ee1e4a1b1f6d27bd4bd3d636b2338e57f762c36",
+      "bytes": 42975,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-host-acceptance.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-integration-repairs.log",
+      "sha256": "67cb81d3606959dd52dbee5515b6cb2cd4ff0f8c3d5dfdcaf844499efe3f8dd0",
+      "bytes": 196518,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-integration-repairs.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-worker22.log",
+      "sha256": "78aa0d1f420ac7445d1069c75514e505df7e9a52dcb4570c251b31099b532cd9",
+      "bytes": 269449,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-worker22.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-worker24.log",
+      "sha256": "8dff6d12e783eb3e8660593e4447655af55cc3014ef41854a90096d4381dc24f",
+      "bytes": 215285,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-worker24.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-node22-host.log",
+      "sha256": "c7d7bd0367e24908fe03d34bb856920bf70b36c91c052c624fc3e803306616c6",
+      "bytes": 626992,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-node22-host.log",
+      "source": "Official completed exact3af GitHub job log"
+    },
+    {
+      "name": "joinallworld-3af-node22-tooling.log",
+      "sha256": "6c0eea42887b9bb0cdcd86fe0544296aaad18e00f58d6085c10b7a6fc1cc2003",
+      "bytes": 181408,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-node22-tooling.log",
+      "source": "Official completed exact3af GitHub job log"
     }
   ],
   "next": "Observe same live exactCI37970635606, repair concrete new failures if any, verifiedAstra native/exact isolatedstage/save acceptance then WORLDrelease/live before usercutoff.",
@@ -137,22 +193,22 @@
     "conclusion": "",
     "jobs": [
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956050776,
         "name": "host-acceptance",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956050954,
         "name": "full-worker (24)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956050957,
         "name": "full (24)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "conclusion": "success",
@@ -161,10 +217,10 @@
         "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051021,
         "name": "full-worker (22)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "conclusion": "",
@@ -179,16 +235,16 @@
         "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051041,
         "name": "full (22)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051087,
         "name": "integration-repairs",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "conclusion": "",
@@ -203,22 +259,22 @@
         "status": "queued"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051209,
         "name": "full-node (22, host)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "conclusion": "",
         "id": 113956051248,
         "name": "full-node (24, game)",
-        "status": "queued"
+        "status": "in_progress"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051404,
         "name": "full-node (22, tooling)",
-        "status": "queued"
+        "status": "completed"
       },
       {
         "conclusion": "skipped",
@@ -235,7 +291,7 @@
     ],
     "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
     "status": "queued",
-    "observedAt": "2026-10-09T18:07:42.365161+00:00",
+    "observedAt": "2026-10-09T18:19:00.564060+00:00",
     "uiGroups": [
       {
         "tests": 436,
@@ -273,6 +329,123 @@
         "durationMs": 2752.792683
       }
     ],
-    "qualification": "Distinct scoped CI groups retained separately, no aggregate full/native/UI gameplay acceptance. Fullrun incomplete; fast-mode skipped jobs expected."
+    "qualification": "Distinct scoped CI groups retained separately, no aggregate full/native/UI gameplay acceptance. Fullrun incomplete; fast-mode skipped jobs expected.",
+    "integrationRepairResult": {
+      "tests": 134,
+      "pass": 134,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 249221.600495
+    },
+    "hostGroups": [
+      {
+        "tests": 89,
+        "pass": 89,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 19418.716882
+      },
+      {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 1505.965575
+      },
+      {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 4042.909709
+      },
+      {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 2490.039688
+      },
+      {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 11350.093056
+      },
+      {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 5278.35206
+      },
+      {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 26726.346817
+      },
+      {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 101017.682896
+      }
+    ],
+    "workerResults": {
+      "22": {
+        "tests": 154,
+        "pass": 154,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 546716.900085
+      },
+      "24": {
+        "tests": 154,
+        "pass": 154,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 432044.884087
+      }
+    },
+    "node22HostResult": {
+      "tests": 1023,
+      "pass": 1020,
+      "fail": 0,
+      "existingSkip": 3,
+      "durationMs": 343970.588777
+    },
+    "node22ToolingResult": {
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 6117.213626
+    }
+  },
+  "startup": {
+    "source": "Official completed full22/full24 job logs at exact3af",
+    "raw": 611402,
+    "gzip": 221884,
+    "brotli": 194866,
+    "caps": {
+      "raw": 615000,
+      "gzip": 223000,
+      "brotli": 195600
+    },
+    "headroom": {
+      "raw": 3598,
+      "gzip": 1116,
+      "brotli": 734
+    },
+    "cities": 45,
+    "largest": "lagos",
+    "firstPaintBrotli": 35705,
+    "firstPaintCap": 36800,
+    "result": "PASS both Node versions; unchanged caps",
+    "qualification": "Compiled download evidence; not physical-phone gameplay/performance or full release acceptance"
   }
 }

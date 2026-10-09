@@ -1,10 +1,10 @@
-import type { CityModule, CityMapPack } from '../../../types/content.ts'
+import type { CityModule, CityMapPack, CityContent } from '../../../types/content.ts'
 import { validateDestinationFacts } from './types.ts'
 import type { DestinationFacts, DestinationMapLoader } from './types.ts'
 import { buildDestinationRules } from './rules.ts'
 
 /** Construct compact rules immediately and defer prose and sourced map geometry until requested. */
-export function createDestinationModule(facts: DestinationFacts, loadMap: DestinationMapLoader): CityModule<string, string, string, string, string> {
+export function createDestinationModule(facts: DestinationFacts, loadMap: DestinationMapLoader, loadContent?: () => Promise<CityContent>): CityModule<string, string, string, string, string> {
   const valid = validateDestinationFacts(facts)
   const rules = buildDestinationRules(valid)
   let pendingMap: Promise<CityMapPack<string, string>> | null = null
@@ -22,7 +22,7 @@ export function createDestinationModule(facts: DestinationFacts, loadMap: Destin
   return Object.freeze({
     id: valid.id,
     rules,
-    loadContent: async () => (await import('./content.ts')).buildDestinationContent(valid),
+    loadContent: loadContent ?? (async () => (await import('./contentBuilder.ts')).buildDestinationContent(valid)),
     loadMap: loadValidatedMap,
   })
 }

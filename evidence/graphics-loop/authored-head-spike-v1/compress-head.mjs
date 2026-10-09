@@ -3,7 +3,7 @@ import { MeshoptEncoder } from 'meshoptimizer';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 await Promise.all([MeshoptEncoder.ready, MeshoptDecoder.ready]);
 const root='evidence/graphics-loop/authored-head-spike-v1/generated/';
-const input=readFileSync(root+'expressive-head.glb');
+const input=readFileSync(process.argv[2] ?? root+'expressive-head.glb');
 const jsonLength=input.readUInt32LE(12),gltf=JSON.parse(input.subarray(20,20+jsonLength));
 const bin=input.subarray(28+jsonLength),chunks=[];
 let compressedLength=0,fallbackLength=0,verified=0;

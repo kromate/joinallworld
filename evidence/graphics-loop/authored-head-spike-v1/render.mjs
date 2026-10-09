@@ -8,7 +8,7 @@ const server = spawn(process.execPath, ['--max-old-space-size=192', 'evidence/gr
 const chrome = spawn(process.env.CHROME_BIN || '/usr/bin/google-chrome', ['--headless=new', '--no-sandbox', '--renderer-process-limit=1', '--disable-extensions', '--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--no-first-run', '--no-default-browser-check', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: ['ignore', 'inherit', 'inherit'] });
 let chromeError = null;
 chrome.on('error', error => { chromeError = error; });
-let ws, id = 0; const pending = new Map(), errors = [], network = [], cases = [];
+let ws, id = 0; const pending = new Map(), errors = [], network = [], requests = new Map(), cases = [];
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 async function retry(url) { for (let i = 0; i < 100; i++) { try { const r = await fetch(url); if (r.ok) return r; } catch {} await wait(100); } throw new Error(`Timeout: ${url}`); }
 function send(method, params = {}) { return new Promise((resolve, reject) => { const key = ++id; pending.set(key, { resolve, reject }); ws.send(JSON.stringify({ id: key, method, params })); setTimeout(() => { if (pending.has(key)) { pending.delete(key); reject(new Error(`CDP timeout ${method}`)); } }, 20000).unref(); }); }
@@ -28,7 +28,7 @@ try {
   const targets = await (await retry(`http://127.0.0.1:${port}/json/list`)).json();
   ws = new WebSocket(targets.find(target => target.type === 'page').webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
-  ws.addEventListener('message', event => { const m = JSON.parse(event.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); if (m.error) p?.reject(new Error(JSON.stringify(m.error))); else p?.resolve(m.result); } else if (m.method === 'Runtime.exceptionThrown') errors.push(m.params.exceptionDetails); else if (m.method === 'Network.loadingFinished') network.push(m.params); });
+  ws.addEventListener('message', event => { const m = JSON.parse(event.data); if (m.id) { const p = pending.get(m.id); pending.delete(m.id); if (m.error) p?.reject(new Error(JSON.stringify(m.error))); else p?.resolve(m.result); } else if (m.method === 'Runtime.exceptionThrown') errors.push(m.params.exceptionDetails); else if (m.method === 'Network.requestWillBeSent') requests.set(m.params.requestId, new URL(m.params.request.url).protocol); else if (m.method === 'Network.loadingFinished') network.push({ ...m.params, protocol: requests.get(m.params.requestId) }); });
   await send('Runtime.enable'); await send('Page.enable'); await send('Network.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: 1100, height: 780, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: 'http://127.0.0.1:5197' + page });
@@ -55,6 +55,6 @@ try {
 finally {
   ws?.close(); for (const process of [chrome, server]) { process.kill('SIGTERM'); await Promise.race([new Promise(resolve => process.once('exit', resolve)), wait(1000)]); if (process.exitCode === null) process.kill('SIGKILL'); }
   rmSync(profile, { recursive: true, force: true });
-  writeFileSync(`${out}/review.json`, JSON.stringify({ commit: process.env.GITHUB_SHA, status: failure ? 'failed' : 'captured-awaiting-visual-review', failure, cases, errors, encodedTransferBytes: network.reduce((sum, item) => sum + item.encodedDataLength, 0), caveat: 'Remote SwiftShader developer preview; timings and dev transfers are not mobile/release measurements.', cleanup: 'Owned browser/server terminated and profile removed' }, null, 2));
+  writeFileSync(`${out}/review.json`, JSON.stringify({ commit: process.env.GITHUB_SHA, status: failure ? 'failed' : 'captured-awaiting-visual-review', failure, cases, errors, httpEncodedTransferBytes: network.filter(item => item.protocol === 'http:' || item.protocol === 'https:').reduce((sum, item) => sum + item.encodedDataLength, 0), inlineDataDecodedBytes: network.filter(item => item.protocol === 'data:').reduce((sum, item) => sum + item.encodedDataLength, 0), caveat: 'Remote SwiftShader developer preview; timings and dev transfers are not mobile/release measurements.', cleanup: 'Owned browser/server terminated and profile removed' }, null, 2));
 }
 if (failure) throw new Error(failure);

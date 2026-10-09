@@ -1,0 +1,31 @@
+// Seal compiler outputs and the single-copy finalizer immediately before packaging.
+import { readFile, writeFile } from 'node:fs/promises'
+import path from 'node:path'
+import { here, hashFile, outDir, root, sha } from './phase-common-v6.mjs'
+
+const pinsBytes = await readFile(path.join(here, 'source-pins-v6.json'))
+const pins = JSON.parse(pinsBytes)
+const compiledBytes = await readFile(path.join(here, 'compile-v6-record.json'))
+const compiled = JSON.parse(compiledBytes)
+if (pins.schema !== 'environment-next-phase-v6-source-pins/3' || pins.status !== 'PREBUILD_SEALED') throw new Error('v6 source pins are not sealed')
+if (compiled.schema !== 'environment-next-phase-v6-compiled-record/2' || compiled.status !== 'COMPILED_DIAGNOSTIC_AWAITING_SINGLE_PUBLIC_COPY') throw new Error('v6 compile record missing or invalid')
+if (compiled.sourcePinsSha256 !== sha(pinsBytes) || compiled.importClosureVerified !== true) throw new Error('Compile/source pin or runtime closure receipt mismatch')
+const files = []
+for (const relative of [
+  'evidence/graphics-loop/environment-next-phase-v6/source-pins-v6.json',
+  'evidence/graphics-loop/environment-next-phase-v6/compile-v6-record.json',
+  'evidence/graphics-loop/environment-next-phase-v6/package-recipe-v2/finalize-package-v6.mjs',
+  'evidence/graphics-loop/environment-next-phase-v6/package-recipe-v2/seal-finalizer-v6.mjs',
+]) files.push({ path: relative, sha256: await hashFile(path.join(root, relative)) })
+const outputs = []
+for (const item of compiled.outputs) {
+  const actual = await hashFile(path.join(outDir, ...item.path.split('/')))
+  if (actual !== item.sha256) throw new Error(`Compiled output changed before finalizer seal: ${item.path}`)
+  outputs.push({ path: `evidence/graphics-loop/environment-next-phase-v6/static-v6/${item.path}`, sha256: actual, bytes: item.bytes })
+}
+files.push(...outputs)
+files.sort((a, b) => a.path.localeCompare(b.path))
+const record = { schema: 'environment-next-phase-v6-finalizer-pins/3', status: 'PRE_FINALIZATION_SEALED', createdAt: new Date().toISOString(), files }
+const bytes = Buffer.from(`${JSON.stringify(record, null, 2)}\n`)
+await writeFile(path.join(here, 'finalizer-pins-v6.json'), bytes)
+process.stdout.write(JSON.stringify({ status: record.status, files: files.length, compiledOutputs: outputs.length, sha256: sha(bytes) }) + '\n')

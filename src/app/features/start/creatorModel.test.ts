@@ -2,6 +2,7 @@
 // the server actions that settle a life (only what the server does not hold yet, in the order it needs).
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { reactive } from 'vue'
 import { DEFAULT_LOOK } from '../../../game/content/traits.ts'
 import { FOCUS_CHOICES, defaultSpirit, focusForField, focusForTab, nextLabel, previousStep, progressOf, pushHistory, settlePlan, startStep, stepBlocked, stepsFor } from './creatorModel.ts'
 import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
@@ -66,6 +67,22 @@ test('the settle plan sends only what the server does not hold, in order, and th
   assert.deepEqual(settlePlan({ saved: held, draft })?.map((action) => action.type), ['onboarding.home'])
   assert.equal(settlePlan({ saved, draft: { ...draft, area: undefined } }), null)
   assert.equal(settlePlan({ saved, draft: { ...draft, dream: null } }), null)
+})
+
+test('settling a reactive creator draft sends an independent, cloneable look including nested customisation', () => {
+  const draft = reactive({
+    look: { ...look, hair: 'afro', accessories: ['glasses'], wearables: ['neck-scarf'], appearance: { height: 'tall', build: 'slim', ageAppearance: 'adult' } } as typeof look,
+    traits: ['hustler', 'foodie'] as never[], dream: 'lekki-landlord' as never,
+    area: { lga: 'surulere', via: 'manual' as const },
+  })
+  const plan = settlePlan({ saved: { ...saved, step: 0 }, draft })!
+  const sent = structuredClone(plan[0]!.payload)
+  assert.deepEqual(sent.look, JSON.parse(JSON.stringify(draft.look)))
+  draft.look.accessories!.push('glasses')
+  draft.look.appearance!.height = 'short'
+  draft.look.hair = 'lowcut'
+  assert.deepEqual(plan[0]!.payload, sent, 'later edits cannot change a prepared server action')
+  for (const action of plan) assert.doesNotThrow(() => structuredClone(action.payload))
 })
 
 test('places are data: the open city is found, the others are coming and have no local governments to choose', () => {

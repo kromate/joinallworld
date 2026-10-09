@@ -1,0 +1,74 @@
+# Inactive template; root publishes this workflow on its isolated review branch.
+name: Environment v6 actual-host diagnostic review v4 for package run 37899632982
+on:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v6-render-review-v4
+permissions:
+  actions: read
+  contents: read
+concurrency:
+  group: environment-v6-render-review-${{ github.run_id }}
+  cancel-in-progress: false
+jobs:
+  render:
+    name: ${{ matrix.scope }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        scope:
+          - scene-pair-home-neighbourhood
+          - scene-pair-market-beach
+          - lifecycle-only
+    steps:
+      - name: Checkout exact render-recipe branch commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify staged workflow and recipe pins
+        run: |
+          cmp evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/workflow-review-v4.yml .github/workflows/graphics-environment-next-phase-v6-render-review-v4.yml
+          test -f evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/review-sources-v4.json
+      - name: Set up Node 22 for CDP and locked ws dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install exact render-branch dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Download the exact exactly selected v2 CPU package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-whole-slice-v6-package-v2-37899632982
+          run-id: 37899632982
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/package-input
+      - name: Record runner Chrome launcher identity
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          CHROME_REAL="$(readlink -f "$CHROME_PATH")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Review one bounded scene pair or lifecycle scope
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          REVIEW_SCOPE: ${{ matrix.scope }}
+        run: >-
+          python3 evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/run-bounded-linux-render-v4.py
+          browser $(sha256sum evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/review-sources-v4.json | cut -d' ' -f1)
+          37899632982 03986c2a778e6e191bec905a493de251c45baa11 ${{ matrix.scope }}
+      - name: Upload per-scope screenshots, progress receipts, and resource record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-v6-render-review-v4-${{ github.run_id }}-${{ matrix.scope }}
+          path: evidence/graphics-loop/environment-next-phase-v6/remote-review-v4/recipe/remote-results/${{ github.run_id }}-${{ matrix.scope }}/
+          if-no-files-found: warn
+          retention-days: 14

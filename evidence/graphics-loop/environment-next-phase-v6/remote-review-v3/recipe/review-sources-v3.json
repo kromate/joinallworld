@@ -1,0 +1,97 @@
+{
+  "schema": "environment-next-phase-v6-remote-review-source-pins/1",
+  "status": "PRE-REVIEW-SEALED",
+  "limits": {
+    "ownedProcessGroupRssBytes": 2147483648,
+    "nodeOldSpaceMiB": 96,
+    "timeoutSeconds": 60,
+    "maxParallel": 3
+  },
+  "scenes": [
+    "home/day",
+    "home/night",
+    "neighbourhood/day",
+    "neighbourhood/night",
+    "market/day",
+    "market/night",
+    "beach/day",
+    "beach/night"
+  ],
+  "scopes": [
+    "scene-pair-home-neighbourhood",
+    "scene-pair-market-beach",
+    "lifecycle-only"
+  ],
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/README.md",
+      "bytes": 2482,
+      "sha256": "6a669743d02aecfa577d968ac2c96afee1c4531df88cfb03801050c08697972b"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/package-selection-v3.mjs",
+      "bytes": 637,
+      "sha256": "e7bee08b4e783ba4b833d684eb177098181a700d930fd5bcb66e0f74dc4b1f93"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/result-dir-contract-v3.mjs",
+      "bytes": 1469,
+      "sha256": "ddf7a332445ad19060594ae99fec20f0c1fa7f60ca66054c995fc975f2ee1e3c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/review-render-cdp-v3.mjs",
+      "bytes": 42106,
+      "sha256": "17274a7085cdfaa1f6f41073de47bb9254a16bd8db92c69c37e4884e067245e0"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/run-bounded-linux-render-v3.py",
+      "bytes": 20992,
+      "sha256": "73bd40bc5fcc9aeaf374179ee976be3fb03c2fdab2008296b2f1a53e08170be0"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/seal-review-sources-v3.mjs",
+      "bytes": 2069,
+      "sha256": "b3bf663f7ed8a2058ee52a8cdd78eaf2889388beb48695aea633617c923a6b6f"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/test-package-selection-v3.mjs",
+      "bytes": 1471,
+      "sha256": "fe52725a84c8e3583875c8ffddc9fb8e7230cab51d7a349f8887033de3b4503e"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/test-result-dir-contract-v3.mjs",
+      "bytes": 2002,
+      "sha256": "a254c35dceb061da4ecf4b606cf7134ef083db752079a72a897ba682754021ab"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/test-runner-contract-v3.py",
+      "bytes": 2343,
+      "sha256": "571c6a41855ca26ba354ea95acba606b5f18a744c33a9370a40954aff06f1bbe"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/recipe/workflow-review-v3.yml",
+      "bytes": 3282,
+      "sha256": "f7afc873b904be2be32561031be0eb490e0fccb4ca9c2da6173de02148f2b41b"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/remote-control-v3.mjs",
+      "bytes": 3305,
+      "sha256": "1305ea2ed9ccf03ed01320acc4e41c00864ebf3c8e74f911a58dfd8286fd252d"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/remote-control-v3.test.mjs",
+      "bytes": 2397,
+      "sha256": "2d99ce03e345e7cd2ffb56f366093f530a8fdc140c416015d47d031d64f0d01a"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/scope-plan-v3.mjs",
+      "bytes": 2683,
+      "sha256": "3467ae272fbaeff86d8ab0a7afff3818d99a364bb2e32e760e0c706bed0f9864"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v6/remote-review-v3/scope-plan-v3.test.mjs",
+      "bytes": 2442,
+      "sha256": "93f4cdbd62c91487d1b7913975c1893a248802a3c8fd611a4da30aaaba170282"
+    }
+  ]
+}

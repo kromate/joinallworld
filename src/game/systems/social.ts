@@ -483,6 +483,7 @@ function npcSummary(state: LifeState, npc: NpcDefinition, day: number, ctx: Life
   const left = Math.max(0, DAILY_INTERACTIONS - usedToday(rel, day));
   return {
     id: npc.id, name: npc.name, role: npc.role, emoji: npc.emoji, npc: true, beta: Boolean(npc.beta), at: npc.at ?? null,
+    ...(npc.look && { look: npc.look }),
     quote: npc.quotes[(day + npc.id.length) % npc.quotes.length] ?? '', // the index is in range
     points, tier: tierAt(index).id, tierLabel: tierAt(index).label, next: next ? { label: next.label, min: next.min } : null, left,
     blocked: left ? null : `${npc.name} has heard enough from you today. Come back tomorrow.`,

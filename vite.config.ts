@@ -7,6 +7,17 @@ import type { Plugin } from 'vite';
 const wantMaps = process.env.SOURCEMAPS === '1';
 const MAPS_DIR = 'dist-maps';
 
+/** Keep the early-script explanations in source, but omit their leading comments from delivered HTML. */
+function inlineScriptNotes(): Plugin {
+  return {
+    name: 'allworld:inline-script-notes',
+    apply: 'build',
+    transformIndexHtml(html) {
+      return html.replace(/(<script>\s*)\/\*[\s\S]*?\*\//g, '$1');
+    },
+  };
+}
+
 /** With SOURCEMAPS=1: move every .map out of the build output into dist-maps/, keeping its path under dist/ (dist/assets/x.js.map -> dist-maps/assets/x.js.map). */
 function moveMaps(): Plugin {
   let outDir = '';
@@ -149,7 +160,7 @@ function lazyCityLoaders(): Plugin {
 
 export default defineConfig({
   // The page is a Vue 3 + TypeScript application: index.html → src/app/main.ts (docs/MIGRATION-VUE-TS.md).
-  plugins: [browserSystems(), skipSpecValidation(), leaveOutProvenance(), lazyCityLoaders(), vue(), ...(wantMaps ? [moveMaps()] : [])],
+  plugins: [browserSystems(), skipSpecValidation(), leaveOutProvenance(), lazyCityLoaders(), inlineScriptNotes(), vue(), ...(wantMaps ? [moveMaps()] : [])],
   // Every shipped component uses Composition API; omit the unused Options API runtime.
   define: { __VUE_OPTIONS_API__: false },
   server: {

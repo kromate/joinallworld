@@ -265,7 +265,7 @@ class IndexAuditControllerTests(unittest.TestCase):
                 root = admitted.lease.root
                 original = self._original_state(root)
                 request_inputs = self._audit_inputs(captures, synthetic)
-                report = audit_capture_index(admitted, source[0], source[1], source[2],
+                report = audit_capture_index(admitted, str(source[0]), source[1], source[2],
                     self.node, request_inputs, attempt_limit=4)
                 result = report["audit"]["result"]
                 self.assertEqual(report["audit"]["format"], "feature-index-audit-worker-v1")

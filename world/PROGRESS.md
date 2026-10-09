@@ -1,5 +1,20 @@
 # Implementation checkpoint — 9 October 2026
 
+Run37887178336 at58e695cd is terminal failure with complete retained artifacts:
+19 protocol/kernel and19 actual controller/recovery tests pass,77 affected
+registry/capture/ingestion regressions pass, and World TypeScript passes.
+Python held sessions have one error among11 methods and the actual Node SDK
+audit fails with `'str' object has no attribute 'lstat'`: JSON supplies repository
+paths as text but the audit passed that text to `_capture`, which requires Path.
+Source now converts via Path before existing canonical/no-follow verification,
+matching the capture controller. The actual controller fixture explicitly uses
+the string form; session assertion now preserves a bounded audit error rather
+than obscuring it behind KeyError. These changes need a fresh remote run.
+Verified artifact sourceSHA58e695cd, Node22.19.0/SQLite3.50.4 and
+Python3.12.14/SQLite3.45.1; remote Python SQLite differs from local3.53.1 and is
+independently pinned by each fixture. Raw six-copy and storage preflight passed.
+No production publication or campaign-membership qualification is inferred.
+
 Successor37886998309 at1b56590b is terminal failure:19 protocol/kernel tests
 pass again; controller18 methods finish with four publication-subcase errors.
 The actual retained nonempty/zero-feature, committed-WAL, corruption, copy

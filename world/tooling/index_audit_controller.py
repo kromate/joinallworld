@@ -883,6 +883,7 @@ def audit_capture_index(admitted, repository_root, manifest_bytes, source_config
             or config["reservedBytes"] != admitted.reserved_bytes):
         raise ValueError("audit root, binding or paired namespace differs")
     _binding(root, admitted.binding_bytes)
+    repository_root = Path(repository_root)
     verify_index_tooling(repository_root, manifest_bytes, config["toolingManifest"])
     manifest = decode_tooling_manifest(manifest_bytes, config["toolingManifest"])
     source_pin = config["source"]["configuration"]

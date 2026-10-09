@@ -152,6 +152,7 @@ class IndexCaptureSessionTests(unittest.TestCase):
             first = self.run_session(line(init) + b"".join(line(job) for job in jobs) + frames + line({"format": "feature-index-session-close-v1"}))
             self.assertEqual(first.returncode, 0, first.stderr.decode("utf-8", "replace"))
             messages = [json.loads(raw) for raw in first.stdout.splitlines()]
+            self.assertIn("report", messages[-2], messages[-2])
             report = messages[-2]["report"]
             self.assertEqual(report["audit"]["result"]["counts"]["rawFeatures"], 2283)
             self.assertEqual(report["audit"]["result"]["counts"]["requiredObservations"], 2)

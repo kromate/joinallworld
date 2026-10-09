@@ -1,6 +1,6 @@
 {
   "candidateSha": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
-  "observedAt": "2026-10-09T13:14:13.968334+00:00",
+  "observedAt": "2026-10-09T13:32:09.220472+00:00",
   "runId": 37934158511,
   "url": "https://github.com/kromate/joinallworld/actions/runs/37934158511",
   "overallStatus": "completed",
@@ -113,7 +113,16 @@
       "actual": 195370,
       "cap": 195600
     },
-    "status": "PASS at this exact SHA on both Node versions"
+    "status": "PASS at this exact SHA on both Node versions",
+    "firstPaintGzip": {
+      "actual": 35517,
+      "cap": 37000
+    },
+    "firstPaintBrotli": {
+      "actual": 35691,
+      "cap": 36800,
+      "scope": "HTML, stylesheet and JS; distinct from raw first-paint JS"
+    }
   },
   "remainingSourceRepairs": [
     {

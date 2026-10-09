@@ -51,6 +51,13 @@ assert.equal(teachingFor({ activeAction: kindGetter }), null);
 const teachingGetter = { kind: 'activity' };
 Object.defineProperty(teachingGetter, 'teaching', { enumerable: true, get() { getterCalls++; return valid; } });
 assert.equal(teachingFor({ activeAction: teachingGetter }), null);
+const hiddenMarker = { kind: 'activity' };
+Object.defineProperty(hiddenMarker, 'teaching', { value: valid });
+assert.equal(teachingFor({ activeAction: hiddenMarker }), null);
+const hostileProxy = new Proxy({ activeAction: { kind: 'activity', teaching: valid } }, {
+  getPrototypeOf() { throw new Error('hostile prototype trap'); }
+});
+assert.equal(teachingFor(hostileProxy), null);
 assert.equal(getterCalls, 0);
 const generationOnly = { activeAction: { kind: 'activity', teachingGeneration: 1 } };
 const first = teachingFor(generationOnly), second = teachingFor(generationOnly);

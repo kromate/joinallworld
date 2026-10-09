@@ -163,7 +163,8 @@ export function refineRigidFootwear(
       continue;
     }
     const calfWeight = isLeft ? leftCalf : rightCalf;
-    diagnostic.calfToFootBins[Math.min(4, Math.floor(calfWeight / Math.max(isLeft ? left : right, 1e-6) * 2))]++;
+    const calfBin = Math.min(4, Math.floor(calfWeight / Math.max(isLeft ? left : right, 1e-6) * 2));
+    diagnostic.calfToFootBins[calfBin] = (diagnostic.calfToFootBins[calfBin] ?? 0) + 1;
     // A calf blend is expected around the shoe ankle. The geometric plane is what protects
     // the sock: anything above it is retained byte-for-byte. Only foot-side ambiguity makes
     // the lower shell unsafe to rigidify.

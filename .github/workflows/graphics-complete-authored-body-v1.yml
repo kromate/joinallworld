@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v23]
+    branches: [codex/graphics-complete-authored-body-v24]
 permissions:
   contents: read
 jobs:
@@ -28,8 +28,10 @@ jobs:
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body-check.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-family-rig-correction-check.mjs
       - name: Check complete character TypeScript
+        if: always()
         run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/typecheck.json
       - name: Check authored rig and resource ownership
+        if: always()
         run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-check.mjs > /tmp/rig-check.log
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-pose-check.mjs > /tmp/native-pose-check.log
@@ -39,31 +41,52 @@ jobs:
           python3 evidence/graphics-loop/authored-complete-body-v1/authored-clothing/test_export.py
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check.mjs
       - name: Check native hands footwear skin and hair palette
+        if: always()
         run: |
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-hand-pose-check.mjs > /tmp/native-hand-check.log
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-footwear/presentation-check.mjs > /tmp/footwear-check.log
           node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/skin-material-check.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/hair-palette-check.mjs
       - name: Check native look bridge and runtime resource contracts
+        if: always()
         run: |
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-look-bridge-check.mjs > /tmp/look-bridge.log
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/runtime-facade-check.mjs > /tmp/runtime-facade.log
           node --max-old-space-size=24 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/assets-cache-check.mjs
       - name: Check office masks curls and native source clips
+        if: always()
         run: |
           OFFICE_CHECK=1 node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check.mjs
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/body-mask-union-check.mjs
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-curl-hair-check.mjs
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-clip-solver-check.mjs
       - name: Check rigid footwear and actual prepared player NPC factory
+        if: always()
         run: |
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rigid-footwear-check.mjs
           node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-runtime.typecheck.json
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-factory.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-factory-check.mjs
       - name: Compare sparse contact against full indexed geometry
+        if: always()
         continue-on-error: true
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check.mjs
+      - name: Audit exact source wrist articulation
+        if: always()
+        run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-orientation-check.mjs
+      - name: Check and build actual prepared actor playground
+        if: always()
+        run: |
+          node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-viewer.typecheck.json
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-viewer.mjs
+      - name: Render actual shared Kit player NPC factory
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          mkdir -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}/resources.log evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}/resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/render-prepared-viewer.mjs
       - name: Build complete human comparison
         if: always()
         run: node --max-old-space-size=384 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
@@ -88,4 +111,6 @@ jobs:
             evidence/graphics-loop/authored-complete-body-v1/native-rigid-footwear-check-result.json
             evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check-result.json
             evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/*result.json
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/
+            evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/*result.json
           if-no-files-found: error

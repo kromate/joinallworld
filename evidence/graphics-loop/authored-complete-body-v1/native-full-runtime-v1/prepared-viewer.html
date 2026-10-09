@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Prepared native character review</title>
+  <style>
+    :root { color: #18242b; background: #edf0ed; font: 14px/1.45 system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+    main { width: min(1440px, 100%); margin: 0 auto; padding: 18px 22px 24px; }
+    header { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 14px; }
+    h1 { font-size: clamp(22px, 3vw, 34px); line-height: 1.1; margin: 0; letter-spacing: -.025em; }
+    .sub { color: #5d6b6c; margin: 6px 0 0; }
+    #status { padding: 8px 12px; border-radius: 999px; background: #dde8df; color: #315b40; font-weight: 650; }
+    #status[data-state="loading"] { background: #f5ebd1; color: #705322; }
+    #status[data-state="error"] { background: #f4d8d4; color: #8a3029; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 14px; align-items: start; }
+    .stage-card, .panel { background: #fff; border: 1px solid #d8dedb; border-radius: 13px; overflow: hidden; box-shadow: 0 5px 22px #283a4010; }
+    #stage { display: block; width: 100%; height: min(70vh, 720px); min-height: 460px; }
+    .actor-labels { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e3e7e3; }
+    .actor-label { text-align: center; padding: 12px; color: #405255; font-weight: 650; }
+    .actor-label + .actor-label { border-left: 1px solid #e3e7e3; }
+    aside { display: grid; gap: 12px; }
+    .panel { padding: 14px; }
+    h2 { margin: 0 0 9px; font-size: 15px; }
+    .buttons { display: grid; gap: 8px; }
+    button { font: inherit; text-align: left; border: 1px solid #cfd8d3; background: #f8faf8; color: #213237; border-radius: 8px; padding: 9px 11px; cursor: pointer; }
+    button:hover { background: #edf4ef; border-color: #8ea99a; }
+    button:focus-visible { outline: 3px solid #75a7d2; outline-offset: 1px; }
+    #metrics, #events, #limitations { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 235px; overflow: auto; color: #405052; }
+    #events[data-kind="error"] { color: #a12821; }
+    #limitations { max-height: none; font: 12px/1.5 system-ui, sans-serif; }
+    .note { color: #657273; font-size: 12px; margin: 8px 0 0; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } aside { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { main { padding: 12px; } header { display: block; } #status { display: inline-block; margin-top: 10px; } #stage { height: 58vh; min-height: 360px; } aside { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><h1>Prepared native character review</h1><p class="sub">Two actors, one Kit, authored outfits and animation clips</p></div>
+      <div id="status" data-state="loading" role="status" aria-live="polite">Preparing actors…</div>
+    </header>
+    <div class="layout">
+      <section class="stage-card" aria-label="Three dimensional actor review">
+        <canvas id="stage" aria-label="Male player and female NPC in the same scene"></canvas>
+        <div class="actor-labels"><div class="actor-label">PLAYER · casual · low cut</div><div class="actor-label">NPC · office · afro</div></div>
+      </section>
+      <aside>
+        <section class="panel"><h2>Review actions</h2><div class="buttons">
+          <button id="walk-toggle" type="button">Toggle player walk / idle</button>
+          <button id="interact" type="button">Sample player/NPC interaction animation</button>
+          <button id="npc-change" type="button">Change NPC face and colors</button>
+          <button id="expression-toggle" type="button">Toggle NPC expression cycle</button>
+          <button id="lie-probe" type="button">Probe lie pose and show contact limits</button>
+          <button id="sample-now" type="button">Capture current metrics</button>
+        </div><p class="note">The interaction button samples the authored interaction clips; it does not claim prop contact. Failures remain visible in the event log.</p></section>
+        <section class="panel"><h2>Current metrics</h2><pre id="metrics">Waiting for the prepared factory.</pre></section>
+        <section class="panel"><h2>Known support limits</h2><pre id="limitations">Female footwear has a source-fit warning. Seat and prone contact are diagnostic only; stair foot residuals may remain unresolved.</pre></section>
+        <section class="panel"><h2>Events and errors</h2><pre id="events">No actions yet.</pre></section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./prepared-viewer.bundle.js"></script>
+</body>
+</html>

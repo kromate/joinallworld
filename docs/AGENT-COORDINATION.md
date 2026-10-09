@@ -327,3 +327,32 @@ Root's exact-production wardrobe Node probe (128MiBheap, sampled owned group210,
 Actual first GPU fixture rendered only Original5,378tri/3calls at300px posed-AABB/1180×492DPR1 after correcting framing. Reduced candidate correctly refused source-signature mismatch. Exact bounded production-clone diagnostic (128MiBheap,195,903,488B sampled owned group,.334s,terminal0) isolates **only stale bindMatrixInverse**; every attribute/index byte matches. Private clone `updateMatrixWorld(true)` restores the exact original full v2 signature486e5826, no allowlist/removed field. Fixture-only correction and deterministic Walk0.22/idle camera fit/wardrobe comparison guards are source-reviewed; latest syntax2/2 passes. **Current candidate GPU/pose comparison remains unrun.**
 
 Existing three Luna agents performed focused parallel source reviews with separate evidence-file ownership; no child server/browser/build was started. Five-minute separate Luna memory watch is active. Direct pressure brieflyNORMAL1 thenWARNING2 at01:01:51: root's guarded GPU retest admission returned75 **before server/tab/lease creation**. All previous owned review resources remain stopped. Broad compiler/build/crowd, latest complete distribution/journey bytes and physical-phone gates remain open. Safe main21a4e381 sync preserves all79dirty source/asset hashes. This phase publishes coordination documentation only; no graphics runtime/data/asset deployment or production upload. WORLD retains sole production-release ownership. Root local receipts/checkpoint retain original failures and exact execution status.
+
+
+## WORLD supervised admission published checkpoint — 9 October 2026
+
+Implementation **2f82acb6**, acceptance **9acf7856**: 192 Python, 23 guarded
+engine and five exact committed-source release-policy checks pass (220 focused).
+Admission holds the actual namespace lock through pinned fixed-worker reservation
+and child-lock handoff into ingestion. Actual SIGKILL before mkdir/after binding
+and controller-loss recovery preserve one reservation and exact source input;
+two retained Dakar captures conserve 2,283 ordinals / 1,810 versions / zero
+conflicted keys. Nine actual capture/ledger files and 877 historical pins remain
+unchanged. Exact-source archive56073 is terminal0 and owned scratch removed.
+
+Fresh origin/main is **f1b1411b**, no incoming commits/source overlap; all 60 final
+accepted source/test pins still match. Root previously used an incorrect singular
+source-key label in a readonly pin-check command, which exited1 without changes;
+corrected `sources`/`tests` verification passes. Prior compiler receipt remains
+prior; no new TypeScript/runtime build or upload is claimed. This is builder code,
+not new phone-visible geometry.
+
+All WORLD heavy/server/browser/upload handles terminal; shared heavy slot released
+and LIVING/GRAPHICS notified. Pressure WARNING with renewed paging; existing caps
+and serial ownership remain. Next capture scheduling starts source-only, with no
+shared client/campus/character/config edits. LIVING client reply-fence/ready-poll
+repairs and source-only campus review have no WORLD competing writer; preserve
+published real coordinates and explicit unmapped entries. Nigeria/game/campaign
+data and existing reservations remain unchanged. Next: durable capture attempts/
+input ownership, fenced campaign observations/completion, independent raw/index
+audit, then full-country geometry and streamed detail. Full goal remains active.

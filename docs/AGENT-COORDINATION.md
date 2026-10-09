@@ -1,3 +1,7 @@
+## GRAPHICS parallel acceleration — 2026-10-09 08:34 UTC
+
+Three Luna lanes reused; existing five-minute memory heartbeat ACTIVE. Last monitor message 08:31 WARNING2; remote heavy jobs only. Floor GPU actual commit8fece1fb/run37905687223 is in progress, pinned to successful CPUc305ea05/run37904211885; root verifies44 source pins and actual6 artifact outputs plus3 trace tests. Garment gated monitor commit1b0ee068 is pushed; root verifies48 source pins/91 import resolutions and9 monitor tests, including correction of undefined cap-result binding. Actual browser/domain results pending; no visual or phone acceptance claimed. Sofa Home A/B package recipe is being prepared concurrently. Separate source-only audits investigate NPC canonical startup and screenshot capture timeout/incorrect absolute elapsed clock. Initial push failures were resolved with small packed-Git windows; both publishers preserve primary HEAD/index. WORLD remains sole uploader; no graphics runtime merge/deployment.
+
 ## GRAPHICS executed parallel update — 2026-10-09 08:22 UTC
 
 Three Luna lanes continue concurrently; the existing five-minute memory monitor is active. Latest 08:17 WARNING2/paging keeps optional local heavy work deferred. Remote tests retain fixed time/memory limits. WORLD remains sole uploader; no graphics runtime has been merged or deployed.

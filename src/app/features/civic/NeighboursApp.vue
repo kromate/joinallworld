@@ -51,7 +51,7 @@ function hi(player: { id: string; name: string }): void {
       <label v-if="groups.length" class="civic-note"><input v-model="confirmed.on.value" type="checkbox" data-confirmed-filter> Location-confirmed only</label>
       <template v-if="groups.length">
         <template v-for="group in visibleGroups" :key="group.id">
-          <SectionTitle :note="confirmed.on.value ? `${count(group.homes.length)} confirmed in first ${count(group.loaded)} homes` : `${count(group.count)} home${group.count === 1 ? '' : 's'}${group.count ? ` · ${count(group.online)} online` : ''}`">{{ group.label }}</SectionTitle>
+          <SectionTitle :note="confirmed.on.value ? `${count(group.homes.length)} confirmed in first ${count(group.loaded)} home${group.loaded === 1 ? '' : 's'}` : `${count(group.count)} home${group.count === 1 ? '' : 's'}${group.count ? ` · ${count(group.online)} online` : ''}`">{{ group.label }}</SectionTitle>
           <ul v-if="group.homes.length" class="ui-rows">
             <li v-for="home in group.homes" :key="home.id" class="ui-row" :class="{ 'is-you': home.you }">
               <CivicAvatar :name="home.name" :seed="home.id"><i class="social-dot" :class="{ 'is-on': home.online }" /></CivicAvatar>
@@ -60,7 +60,7 @@ function hi(player: { id: string; name: string }): void {
             </li>
           </ul>
           <p v-if="confirmed.on.value && !group.homes.length" class="civic-note" role="status">{{ confirmed.checking.value ? 'Checking location-confirmed badges…' : 'No location-confirmed homes in these loaded results.' }}</p>
-          <MoreRows v-if="group.count - group.loaded > 0" :key="`${view.cityId}:${group.id}`" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.ids" :confirmed-only="confirmed.on.value" :label="confirmed.on.value ? `Check more homes in ${group.label}` : `Show everyone in ${group.label}`" @hi="hi" />
+          <MoreRows v-if="group.count - group.loaded > 0" :key="`${view.cityId}:${group.id}:${group.ids.join(',')}`" :path="`/api/civic/neighbours?city=${encodeURIComponent(view.cityId)}&district=${encodeURIComponent(group.id)}`" kind="homes" :shown="group.ids" :confirmed-only="confirmed.on.value" :label="confirmed.on.value ? `Check more homes in ${group.label}` : `Show everyone in ${group.label}`" @hi="hi" />
           <p v-if="group.count - group.loaded > 0" class="civic-note">{{ count(group.count - group.loaded) }} more not listed (hidden or beyond the list limit).</p>
         </template>
       </template>

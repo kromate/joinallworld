@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The rest of a long civic list, read a page at a time once the reader asks for it (docs/LISTS.md): the homes of one district of the
 // directory, or the rich list below its top. The first rows are drawn by the screen itself; this continues them.
-import { computed, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { NeighbourHome, RichRow } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
@@ -10,7 +10,8 @@ import LazyList from '../../ui/LazyList.vue'
 import { createLazyList } from '../../ui/lazyList.ts'
 import type { Fetched } from '../../ui/lazyList.ts'
 import CivicAvatar from './CivicAvatar.vue'
-import { useConfirmedOnly } from '../locate/confirmedFilter.ts'
+import { badgeCache } from '../locate/badgeFeed.ts'
+import { useBadges } from '../locate/useBadges.ts'
 
 type Row = (NeighbourHome | RichRow) & { id: string }
 const props = defineProps<{
@@ -40,9 +41,15 @@ const list = createLazyList<Row>({
     } catch { return { ok: false, reason: 'Could not load.' } }
   },
 })
-const confirmed = useConfirmedOnly(() => list.items.value.map((row) => row.id))
-watch(() => props.confirmedOnly, (on) => { confirmed.on.value = Boolean(on) }, { immediate: true })
-const rows = computed(() => list.items.value.filter((row) => confirmed.keep(row.id)))
+let releases: (() => void)[] = []
+const releaseBadges = (): void => { for (const release of releases) release(); releases = [] }
+watch(() => [props.confirmedOnly, list.items.value.map((row) => row.id).join(',')], () => {
+  releaseBadges()
+  if (props.confirmedOnly) releases = list.items.value.map((row) => useBadges().want(row.id))
+}, { flush: 'post' })
+onBeforeUnmount(releaseBadges)
+const checking = computed(() => props.confirmedOnly && list.items.value.some((row) => !(row.id in badgeCache)))
+const rows = computed(() => list.items.value.filter((row) => !props.confirmedOnly || Boolean(badgeCache[row.id])))
 function show(): void { open.value = true; void list.reset() }
 </script>
 
@@ -61,7 +68,7 @@ function show(): void { open.value = true; void list.reset() }
     </template>
   </LazyList>
   <template v-if="open && confirmedOnly">
-    <p class="filter-note" role="status">{{ confirmed.checking.value ? 'Checking location-confirmed badges…' : `${rows.length} confirmed in ${list.items.value.length} additional loaded homes.` }}</p>
+    <p class="filter-note" role="status">{{ checking ? 'Checking location-confirmed badges…' : `${rows.length} confirmed in ${list.items.value.length} additional loaded home${list.items.value.length === 1 ? '' : 's'}.` }}</p>
     <BaseButton v-if="list.hasMore.value && !list.error.value" small :disabled="list.loading.value" @click="list.loadMore()">{{ list.loading.value ? 'Loading homes…' : 'Check next page of homes' }}</BaseButton>
   </template>
 </template>

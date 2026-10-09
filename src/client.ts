@@ -617,7 +617,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
           if (!responseCurrent() || (recoveryError as ApiError).code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
           lost(recoveryError as ApiError);
         }
-        return { ok: false, code: 'city_moved', reason: error.reason ?? 'Your character moved. Review its current city before trying again.' };
+        return { ok: false, code: 'city_moved', reason: error.reason ?? 'Your character moved. Check its city, then retry.' };
       }
       if (error.code === 'action_expired' || error.code === 'action_id_conflict') {
         const refreshed = await refresh(undefined, 'own', responseCurrent, intent.sessionId)
@@ -627,7 +627,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       }
       if (error.status !== undefined && error.status >= 400 && error.status < 500 && ['invalid_action', 'invalid_payload', 'invalid_action_id'].includes(error.code ?? '')) clearPending(intent, generation)
       if (error.code === 'storage_unavailable') return { ok: false, code: error.code, reason: error.reason || TEXT.notSaving };
-      if (error.code === 'server_busy' || error.status === 429) { schedule(); return { ok: false, code: error.code || 'rate_limited', reason: error.reason || 'The server is busy. Wait a moment before trying again.' } }
+      if (error.code === 'server_busy' || error.status === 429) { schedule(); return { ok: false, code: error.code || 'rate_limited', reason: error.reason || 'Server busy. Try again shortly.' } }
       if (error.status === 401) expired(); else lost(error);
       return { ok: false, code: error.code || 'network', reason: error.reason || error.message };
     } finally { if (generation === identityGeneration) { client.busy = false; void catchUp(); } }

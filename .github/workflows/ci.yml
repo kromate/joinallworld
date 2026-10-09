@@ -302,6 +302,11 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           server/living-world/rental-service.test.ts
+          server/living-world/npc-inventory.test.ts
+          server/living-world/restock-service.test.ts
+          server/living-world/restock-wage.test.ts
+          server/living-world/restock-privacy.test.ts
+          server/living-world/restock-account.test.ts
           server/living-world/privacy.test.ts
           server/living-world/account-lifecycle.test.ts
           src/game/living-world/clerk.test.ts

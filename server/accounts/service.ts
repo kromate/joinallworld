@@ -40,7 +40,7 @@ import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
 import { eraseRealValue, exportRealValue } from '../real-value/privacy.ts';
-import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount, rebindClerkAccount, rebindJusticePracticeAccount, rebindAssessmentAccount } from '../living-world/privacy.ts';
+import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount, rebindClerkAccount, rebindJusticePracticeAccount, rebindAssessmentAccount, rebindParcelAccount } from '../living-world/privacy.ts';
 import type { LivingWorldPrivacyExport } from '../living-world/privacy.ts';
 
 /** Browsers one account may be signed in on; the one unused longest makes room. */
@@ -144,7 +144,7 @@ function privacyMap(value: unknown): value is Record<string, unknown> {
   return prototype === Object.prototype || prototype === null;
 }
 /** Missing practice rows are a no-op; a present row/map must pass its strict same-owner check. */
-function hasPracticeProgressRow(db: Db, publicId: string, slice: 'barber' | 'clerk' | 'justicePractice' | 'assessments'): boolean {
+function hasPracticeProgressRow(db: Db, publicId: string, slice: 'barber' | 'clerk' | 'justicePractice' | 'assessments' | 'parcels'): boolean {
   try {
     if (!privacyPublicId(publicId)) throw new Error('invalid actor id');
     if (!Object.hasOwn(db, 'livingWorld')) return false;
@@ -160,14 +160,14 @@ function hasPracticeProgressRow(db: Db, publicId: string, slice: 'barber' | 'cle
   }
 }
 function rebindBarberProgress(db: Db, publicId: string, expectedOwner: string | null, nextOwner: string | null): void {
-  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount], ['justicePractice', rebindJusticePracticeAccount], ['assessments', rebindAssessmentAccount]] as const) {
+  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount], ['justicePractice', rebindJusticePracticeAccount], ['assessments', rebindAssessmentAccount], ['parcels', rebindParcelAccount]] as const) {
     if (!hasPracticeProgressRow(db, publicId, slice)) continue;
     if (!rebind(db, publicId, expectedOwner, nextOwner)) throw new Error('privacy-rebind-unavailable');
   }
 }
 /** An ownerless active archive is trusted only through account.publicId; its practice rows may be legacy guest-bound or already account-bound. */
 function rebindLegacyActiveBarberProgress(db: Db, publicId: string, owner: string): void {
-  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount], ['justicePractice', rebindJusticePracticeAccount], ['assessments', rebindAssessmentAccount]] as const) {
+  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount], ['justicePractice', rebindJusticePracticeAccount], ['assessments', rebindAssessmentAccount], ['parcels', rebindParcelAccount]] as const) {
     if (!hasPracticeProgressRow(db, publicId, slice)) continue;
     if (!rebind(db, publicId, owner, owner) && !rebind(db, publicId, null, owner)) throw new Error('privacy-rebind-unavailable');
   }
@@ -518,9 +518,9 @@ export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { ident
   if (!livingWorldIds) throw new Error('privacy-erasure-unavailable');
   const retainedId = !input.erase && mine?.account === account.id && privacyPublicId(mine.publicId) ? mine.publicId : null;
   if (retainedId) rebindBarberProgress(db, retainedId, account.id, null);
-  if (input.erase) eraseLivingWorldProgress(db, livingWorldIds);
+  if (input.erase) eraseLivingWorldProgress(db, livingWorldIds, account.id);
   else {
-    eraseLivingWorldProgress(db, livingWorldIds.filter(id => id !== retainedId));
+    eraseLivingWorldProgress(db, livingWorldIds.filter(id => id !== retainedId), account.id);
   }
   eraseRealValue(db, publicIds);
   if (db.social) for (const id of publicIds) if (input.erase || id !== account.publicId) clearPlayerFamily(db.social.players, id);

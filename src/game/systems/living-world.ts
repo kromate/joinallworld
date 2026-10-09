@@ -3,6 +3,7 @@ import { LEFT_OUT, PLAYS } from '../profile.ts'
 import { canCredit, credit, debit } from './wallet.ts'
 import { repayFromEarnings } from '../relief.ts'
 import { barberLesson, BARBER_STARTER_TOOL_COST, type BarberLessonId } from '../living-world/barber-catalogue.ts'
+import { NPC_RESTOCK_POLICY } from '../living-world/restock-policy.ts'
 import { fail, ok } from '../util.ts'
 import type { LifeState } from '../../types/life.ts'
 import type { SystemDefinition, TypedActionHandler } from '../../types/registry.ts'
@@ -14,6 +15,17 @@ const exactKeys = (value: Record<string, unknown>, keys: readonly string[]): boo
 
 /** The accompanying actor-bound terminal practice row and ctx.once receipt own the once-only rule. */
 const serverAction: TypedActionHandler<'living-world.server'> = (state, payload, ctx) => {
+  if (payload.op === 'npc-restock-wage') {
+    if (!exactKeys(payload, ['op'])) return fail(state, 'invalid_npc_restock_action')
+    const wage = NPC_RESTOCK_POLICY.wage
+    if (!Number.isSafeInteger(state.social.earned) || state.social.earned < 0 || !canCredit(state, wage))
+      return fail(state, 'balance_limit')
+    if (!credit(state, wage, 'Fictional NPC restock delivery wage', ctx)) return fail(state, 'balance_limit')
+    // Match activity earnings: paid work counts toward earned-work limits, bounded at safe integer.
+    state.social.earned = Math.min(Number.MAX_SAFE_INTEGER, state.social.earned + wage)
+    repayFromEarnings(state, wage, ctx)
+    return ok(state, 'npc_restock_wage_paid')
+  }
   if (payload.op === 'clerk-reward') {
     if (!exactKeys(payload, ['op'])) return fail(state, 'invalid_clerk_action')
     // The service's actor-bound terminal row and once receipt are committed with this fixed reward.

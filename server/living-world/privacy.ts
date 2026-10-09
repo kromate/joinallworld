@@ -6,9 +6,10 @@ import { readValidatedStarterRentalRecord } from './rental-service.ts'
 import { readValidatedClerkRecord } from './clerk-service.ts'
 import { readValidatedJusticePracticeRecord } from './justice-practice-service.ts'
 import { readValidatedAssessmentRecord } from './assessment-service.ts'
+import { eraseNpcRestockProgress, readNpcRestockActorSummary, readValidatedNpcParcelEnvelope } from './npc-inventory.ts'
 import type { Db } from '../types.ts'
 
-const SLICES = ['driving', 'qualifications', 'barber', 'rentals', 'clerk', 'justicePractice', 'assessments'] as const
+const SLICES = ['driving', 'qualifications', 'barber', 'rentals', 'clerk', 'justicePractice', 'assessments', 'parcels'] as const
 const MAX_OWNED_ACTORS = 6
 const identifier = (value: unknown): value is string => typeof value === 'string' && value.length > 0 && value.length <= 100 && /^[\w:-]+$/.test(value)
 const record = (value: unknown): value is Record<string, unknown> => {
@@ -79,6 +80,12 @@ export interface LivingWorldPrivacyExport {
       trainingComplete: boolean
       updatedAt: number
     }>
+    delivery?: Slice<{
+      revision: number
+      generation: number
+      status: string
+      restock: { settlements: number; generation: number; deliveredAt: number } | null
+    }>
     assessments?: Slice<{
       courseId: 'cpe-101'
       attempts: { semester: 1; startDay: number; phase: string; revision: number; score: number | null }[]
@@ -110,6 +117,8 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
   const hasJustice = record(root) && Object.hasOwn(root, 'justicePractice')
   const assessmentRows = sliceRows(root, 'assessments')
   const hasAssessments = record(root) && Object.hasOwn(root, 'assessments')
+  const parcelRows = sliceRows(root, 'parcels')
+  const hasDelivery = record(root) && (Object.hasOwn(root, 'parcels') || Object.hasOwn(root, 'npcInventory'))
   return {
     version: 1,
     actors: ids.map((publicId) => {
@@ -142,6 +151,7 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
         : foundBarberRow
       return {
         publicId,
+        ...(hasDelivery ? { delivery: deliverySummary(db, parcelRows, publicId, expectedAccount) } : {}),
         driving: drivingRow.status !== 'present' ? drivingRow : { status: 'present', progress: {
           status: drivingRow.row.state.status,
           assessment: drivingRow.row.state.assessment,
@@ -182,6 +192,36 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
       }
     }),
   }
+}
+
+/** Account authority supplies proven character IDs; parcel identities and fingerprints never enter exports. */
+function deliverySummary(db: Db, rows: Rows, publicId: string, owner: string | null): Slice<{
+  revision: number; generation: number; status: string
+  restock: { settlements: number; generation: number; deliveredAt: number } | null
+}> {
+  const found = lookup(rows, publicId, (value, actor) => readValidatedNpcParcelEnvelope(value, actor, owner))
+  const restock = readNpcRestockActorSummary(db, publicId)
+  if (found.status === 'quarantined' || restock === false) return { status: 'quarantined' }
+  if (found.status === 'empty') return restock === null ? { status: 'empty' } : { status: 'quarantined' }
+  return { status: 'present', progress: {
+    revision: found.row.revision, generation: found.row.generation,
+    status: found.row.parcel?.status ?? 'empty', restock,
+  } }
+}
+
+/** Preserve the same character's parcel and reward generation while account authority rebinds ownership. */
+export function rebindParcelAccount(db: Db, publicId: string, expectedOwner: string | null, nextOwner: string | null): boolean {
+  if (!identifier(publicId) || !ownerId(expectedOwner) || !ownerId(nextOwner)) return false
+  try {
+    const rows = sliceRows(livingWorldRoot(db), 'parcels')
+    if (!record(rows) || !Object.hasOwn(rows, publicId)) return false
+    const stored: unknown = rows[publicId]
+    if (!record(stored) || !readValidatedNpcParcelEnvelope(stored, publicId, expectedOwner)) return false
+    const descriptor = Object.getOwnPropertyDescriptor(stored, 'account')
+    if (!descriptor || !('value' in descriptor) || (!descriptor.writable && !descriptor.configurable)) return false
+    Object.defineProperty(stored, 'account', { ...descriptor, value: nextOwner })
+    return true
+  } catch { return false }
 }
 
 /** Same-character account changes only: preserve every validated barber field except its account owner. */
@@ -251,7 +291,7 @@ export function rebindAssessmentAccount(db: Db, publicId: string, expectedOwner:
 }
 
 /** Explicit erasure helper. It deletes only supplied IDs from existing, well-formed known maps. */
-export function eraseLivingWorldProgress(db: Db, ownedPublicIds: readonly string[]): void {
+export function eraseLivingWorldProgress(db: Db, ownedPublicIds: readonly string[], expectedAccount?: string | null): void {
   const ids = actorIds(ownedPublicIds)
   if (!ids) throw new TypeError('Privacy erasure requires bounded proven-owned character IDs.')
   if (ids.length === 0) return
@@ -265,7 +305,17 @@ export function eraseLivingWorldProgress(db: Db, ownedPublicIds: readonly string
     for (const slice of SLICES) {
       const rows = sliceRows(root, slice)
       if (rows === false) throw erasureUnavailable()
+      if (record(rows)) for (const publicId of ids) {
+        const descriptor = Object.getOwnPropertyDescriptor(rows, publicId)
+        if (descriptor && !descriptor.configurable) throw erasureUnavailable()
+      }
       maps.push(rows)
+    }
+    // This removes parcel and watermark together, preserving anonymous inventory accounting.
+    // It preflights every delivery mutation; the enclosing account transaction owns rollback.
+    if (record(root) && (Object.hasOwn(root, 'parcels') || Object.hasOwn(root, 'npcInventory'))) {
+      if (expectedAccount === undefined || !ownerId(expectedAccount)) throw erasureUnavailable()
+      eraseNpcRestockProgress(db, ids, expectedAccount)
     }
   } catch {
     throw erasureUnavailable()

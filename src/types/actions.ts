@@ -378,9 +378,9 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
 
   /** SERVER ONLY: fixed fictional practice rewards or owned clipper upgrade, checked atomically by their services. */
   'living-world.server': {
-    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' } | { op: 'clerk-reward' }
-    ok: 'barber_rewarded' | 'barber_tool_upgraded' | 'clerk_rewarded'
-    fail: 'invalid_barber_action' | 'invalid_clerk_action' | 'balance_limit' | 'insufficient_funds'
+    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' } | { op: 'clerk-reward' } | { op: 'npc-restock-wage' }
+    ok: 'barber_rewarded' | 'barber_tool_upgraded' | 'clerk_rewarded' | 'npc_restock_wage_paid'
+    fail: 'invalid_barber_action' | 'invalid_clerk_action' | 'invalid_npc_restock_action' | 'balance_limit' | 'insufficient_funds'
     serverOnly: true
   }
 }

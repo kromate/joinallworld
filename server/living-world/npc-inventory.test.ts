@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { acceptParcel, cancelParcel, collectParcel, deliverParcel, emptyParcelState, offerParcel } from '../../src/game/living-world/parcel.ts'
 import type { ParcelState, TrustedParcelPose, TrustedParcelRecipient, TrustedParcelTrip } from '../../src/game/living-world/parcel.ts'
-import { NPC_RESTOCK_POLICY, readValidatedNpcParcelEnvelope, settleNpcInventoryRestock } from './npc-inventory.ts'
+import { NPC_RESTOCK_POLICY, eraseNpcRestockProgress, readNpcInventoryView, readNpcRestockActorSummary, readValidatedNpcParcelEnvelope, settleNpcInventoryRestock } from './npc-inventory.ts'
 import type { Db } from '../types.ts'
 
 const actor = 'guest-1'
@@ -92,14 +92,118 @@ test('a persisted delivered fixed-term parcel updates only the fictional NPC out
   assert.equal(Object.isFrozen(result.effect), true)
   assert.equal(Object.isFrozen(result.effect.stock), true)
   assert.deepEqual((db.livingWorld as { npcInventory: unknown }).npcInventory, {
-    version: 1,
+    version: 2,
     outlet: { id: NPC_RESTOCK_POLICY.outletId, cityId: 'lagos', product: 'water', capacity: 60, stock: 3, revision: 1 },
+    erasedSettlements: 0,
     delivered: { [actor]: { settlements: 1, generation: 1, parcelId: 'parcel-1', deliveredAt: 4_000, parcelFingerprint: fingerprint(parcel) } },
   })
   assert.deepEqual(db.business, beforeBusiness, 'NPC stock never enters a player shop or its closure cashout')
   assert.deepEqual(db.sessions, { 'session-fixture': { publicId: actor, cash: 250, ledger: [], social: { earned: 17 } } },
     'the helper does not touch a session wallet, ledger, or earned-work total')
   assert.equal('walletEffects' in db, false)
+  assert.deepEqual(readNpcInventoryView(db), { revision: 1, stock: 3 })
+  assert.deepEqual(readNpcRestockActorSummary(db, actor), { settlements: 1, generation: 1, deliveredAt: 4_000 })
+})
+
+test('validated v1 inventory stays v1 on reads and no-op retries, then migrates on successful restock', () => {
+  const first = delivered(1, 4_000, { actor })
+  const db = dbWithParcel(first)
+  assert.equal(settleNpcInventoryRestock(db, actor, account, 0).code, 'restocked')
+  const current = (db.livingWorld as { npcInventory: { outlet: unknown; delivered: unknown } }).npcInventory
+  ;(db.livingWorld as { npcInventory: unknown }).npcInventory = { version: 1, outlet: snapshot(current.outlet), delivered: snapshot(current.delivered) }
+  const v1 = snapshot((db.livingWorld as { npcInventory: unknown }).npcInventory)
+  assert.deepEqual(readNpcInventoryView(db), { revision: 1, stock: 3 })
+  assert.deepEqual(readNpcRestockActorSummary(db, actor), { settlements: 1, generation: 1, deliveredAt: 4_000 })
+  assert.deepEqual(settleNpcInventoryRestock(db, actor, account, 0), { ok: true, code: 'already_restocked', duplicate: true })
+  assert.deepEqual((db.livingWorld as { npcInventory: unknown }).npcInventory, v1, 'a valid v1 no-op read does not silently rewrite storage')
+
+  const next = delivered(2, 5_000, { parcelId: 'parcel-2' })
+  ;(db.livingWorld as { parcels: Record<string, unknown> }).parcels[actor] = { v: 1, publicId: actor, account, state: next }
+  assert.equal(settleNpcInventoryRestock(db, actor, account, 1).code, 'restocked')
+  const migrated = (db.livingWorld as { npcInventory: { version: number; erasedSettlements: number; outlet: { revision: number; stock: number } } }).npcInventory
+  assert.deepEqual([migrated.version, migrated.erasedSettlements, migrated.outlet.revision, migrated.outlet.stock], [2, 0, 2, 6])
+})
+
+test('privacy erasure removes actor parcel and watermark while preserving shared stock and anonymous settlement count', () => {
+  const db = dbWithParcel(delivered(1, 4_000, { actor }))
+  assert.equal(settleNpcInventoryRestock(db, actor, account, 0).code, 'restocked')
+  const rows = (db.livingWorld as { parcels: Record<string, unknown> }).parcels
+  for (const [who, at] of [['guest-2', 4_100], ['guest-3', 4_200]] as const) {
+    rows[who] = { v: 1, publicId: who, account, state: delivered(1, at, { actor: who }) }
+    assert.equal(settleNpcInventoryRestock(db, who, account, who === 'guest-2' ? 1 : 2).code, 'restocked')
+  }
+  const before = (db.livingWorld as { npcInventory: { outlet: unknown; delivered: Record<string, unknown> } }).npcInventory
+  const outletBefore = snapshot(before.outlet)
+  assert.deepEqual(readNpcRestockActorSummary(db, actor), { settlements: 1, generation: 1, deliveredAt: 4_000 })
+  eraseNpcRestockProgress(db, [actor, 'guest-2'], account)
+
+  const living = db.livingWorld as { npcInventory: { version: number; erasedSettlements: number; outlet: unknown; delivered: Record<string, unknown> }; parcels: Record<string, unknown> }
+  assert.deepEqual(living.npcInventory.outlet, outletBefore, 'privacy erasure does not alter outlet stock or revision')
+  assert.deepEqual([living.npcInventory.version, living.npcInventory.erasedSettlements], [2, 2])
+  assert.deepEqual(Object.keys(living.npcInventory.delivered), ['guest-3'])
+  assert.deepEqual(Object.keys(living.parcels).sort(), ['guest-3'])
+  assert.deepEqual(readNpcRestockActorSummary(db, actor), null)
+  assert.deepEqual(readNpcRestockActorSummary(db, 'guest-2'), null)
+  assert.deepEqual(readNpcRestockActorSummary(db, 'guest-3'), { settlements: 1, generation: 1, deliveredAt: 4_200 })
+  assert.equal(JSON.stringify(living.npcInventory).includes(actor), false, 'the erased actor is not retained in the shared inventory record')
+  assert.deepEqual(readNpcInventoryView(db), { revision: 3, stock: 9 })
+  const nextActor = 'guest-4'
+  ;(living.parcels as Record<string, unknown>)[nextActor] = { v: 1, publicId: nextActor, account, state: delivered(1, 4_300, { actor: nextActor }) }
+  assert.equal(settleNpcInventoryRestock(db, nextActor, account, 3).code, 'restocked')
+  const afterNext = (db.livingWorld as { npcInventory: { version: number; erasedSettlements: number; outlet: { revision: number; stock: number }; delivered: Record<string, { settlements: number }> } }).npcInventory
+  assert.deepEqual([afterNext.version, afterNext.erasedSettlements, afterNext.outlet.revision, afterNext.outlet.stock,
+    Object.values(afterNext.delivered).reduce((sum, row) => sum + row.settlements, afterNext.erasedSettlements)], [2, 2, 4, 12, 4])
+})
+
+test('erasing a watermark from validated v1 migrates it and preserves revision with an anonymous count', () => {
+  const db = dbWithParcel(delivered())
+  assert.equal(settleNpcInventoryRestock(db, actor, account, 0).code, 'restocked')
+  const current = (db.livingWorld as { npcInventory: { outlet: unknown; delivered: unknown } }).npcInventory
+  ;(db.livingWorld as { npcInventory: unknown }).npcInventory = { version: 1, outlet: snapshot(current.outlet), delivered: snapshot(current.delivered) }
+  const legacy = snapshot((db.livingWorld as { npcInventory: unknown }).npcInventory)
+  assert.deepEqual(readNpcInventoryView(db), { revision: 1, stock: 3 })
+  assert.deepEqual((db.livingWorld as { npcInventory: unknown }).npcInventory, legacy)
+  eraseNpcRestockProgress(db, [actor], account)
+  const inventory = (db.livingWorld as { npcInventory: { version: number; erasedSettlements: number; outlet: { revision: number; stock: number }; delivered: Record<string, unknown> } }).npcInventory
+  assert.deepEqual([inventory.version, inventory.erasedSettlements, inventory.outlet.revision, inventory.outlet.stock, Object.keys(inventory.delivered)], [2, 1, 1, 3, []])
+  assert.equal(Object.hasOwn((db.livingWorld as { parcels: Record<string, unknown> }).parcels, actor), false)
+})
+
+test('erasure preflights all supplied IDs and quarantined/frozen rows before mutating any actor', () => {
+  const db = dbWithParcel(delivered())
+  assert.throws(() => eraseNpcRestockProgress(db, [actor, actor], account), /Invalid NPC restock erasure actors/)
+  assert.throws(() => eraseNpcRestockProgress(db, Array.from({ length: 7 }, (_, i) => `guest-${i}`), account), /Invalid NPC restock erasure actors/)
+  const future = dbWithParcel(delivered())
+  ;(future.livingWorld as { npcInventory: unknown }).npcInventory = { version: 3, outlet: {}, delivered: {}, erasedSettlements: 0 }
+  const futureBefore = snapshot(future.livingWorld)
+  assert.throws(() => eraseNpcRestockProgress(future, [actor], account), /NPC inventory is quarantined/)
+  assert.deepEqual(future.livingWorld, futureBefore)
+  assert.equal(readNpcRestockActorSummary(future, actor), false)
+
+  const first = dbWithParcel(delivered())
+  const secondActor = 'guest-2'
+  ;(first.livingWorld as { parcels: Record<string, unknown> }).parcels[secondActor] = {
+    v: 1, publicId: secondActor, account, state: delivered(1, 4_100, { actor: secondActor }),
+  }
+  assert.equal(settleNpcInventoryRestock(first, actor, account, 0).code, 'restocked')
+  const prior = snapshot(first.livingWorld)
+  assert.throws(() => eraseNpcRestockProgress(first, [actor, secondActor], 'different-account'), /NPC parcel row is quarantined/)
+  assert.deepEqual(first.livingWorld, prior, 'an envelope for a different owner aborts the whole batch before mutation')
+  Object.freeze((first.livingWorld as { parcels: Record<string, unknown> }).parcels[secondActor])
+  Object.defineProperty((first.livingWorld as { parcels: Record<string, unknown> }).parcels, secondActor, { configurable: false })
+  assert.throws(() => eraseNpcRestockProgress(first, [actor, secondActor], account), /NPC parcel row is quarantined/)
+  assert.deepEqual(first.livingWorld, prior, 'a later bad descriptor prevents earlier actor erasure')
+
+  const inconsistent = dbWithParcel(delivered())
+  assert.equal(settleNpcInventoryRestock(inconsistent, actor, account, 0).code, 'restocked')
+  ;(inconsistent.livingWorld as { parcels: Record<string, { state: ParcelState }> }).parcels[actor]!.state = delivered(1, 4_000, { parcelId: 'changed-same-generation' })
+  const inconsistentBefore = snapshot(inconsistent.livingWorld)
+  assert.throws(() => eraseNpcRestockProgress(inconsistent, [actor], account), /NPC parcel watermark does not match/)
+  assert.deepEqual(inconsistent.livingWorld, inconsistentBefore)
+  ;(inconsistent.livingWorld as { parcels: Record<string, { state: ParcelState }> }).parcels[actor]!.state = delivered(2, 5_000, { parcelId: 'valid-newer-generation' })
+  eraseNpcRestockProgress(inconsistent, [actor], account)
+  assert.deepEqual(readNpcInventoryView(inconsistent), { revision: 1, stock: 3 }, 'a newer unpaid parcel and its older paid watermark are erased together')
+  assert.equal(readNpcRestockActorSummary(inconsistent, actor), null)
 })
 
 test('same parcel retries and replaced old generations cannot restock again; changed same-generation content conflicts', () => {
@@ -159,6 +263,13 @@ test('stale server-side inventory revision refuses without changing outlet or wa
 test('only the persisted actor/account-bound envelope and authored delivered terms are eligible', () => {
   const good = delivered()
   assert.deepEqual(readValidatedNpcParcelEnvelope({ v: 1, publicId: actor, account, state: good }, actor, account), good)
+  const empty = emptyParcelState(actor)
+  assert.deepEqual(readValidatedNpcParcelEnvelope({ v: 1, publicId: actor, account, state: empty }, actor, account), empty,
+    'the privacy/export reader accepts an actor-bound canonical empty state')
+  const emptyDb = dbWithParcel(empty)
+  const emptyBefore = snapshot(emptyDb.livingWorld)
+  assert.equal(settleNpcInventoryRestock(emptyDb, actor, account, 0).code, 'parcel_not_delivered')
+  assert.deepEqual(emptyDb.livingWorld, emptyBefore)
   for (const envelope of [
     { v: 2, publicId: actor, account, state: good },
     { v: 1, publicId: 'guest-other', account, state: good },
@@ -270,7 +381,7 @@ test('finite stock capacity, watermark clock and inconsistent or future rows fai
   assert.equal(settleNpcInventoryRestock(reversed, actor, account, 1).code, 'clock_reversed')
 
   const future = dbWithParcel(source)
-  ;(future.livingWorld as { npcInventory: unknown }).npcInventory = { version: 2, outlet: {}, delivered: {} }
+  ;(future.livingWorld as { npcInventory: unknown }).npcInventory = { version: 3, outlet: {}, delivered: {}, erasedSettlements: 0 }
   const futureBefore = snapshot(future.livingWorld)
   assert.equal(settleNpcInventoryRestock(future, actor, account, 0).code, 'inventory_quarantined')
   assert.deepEqual(future.livingWorld, futureBefore)

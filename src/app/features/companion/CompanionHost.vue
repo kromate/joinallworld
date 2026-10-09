@@ -75,7 +75,7 @@ const style = computed(() => ({ left: `${pos.x}px`, top: `${pos.y}px`, width: `$
 
 // ---- the stage ------------------------------------------------------------------------------------------------------------
 async function start(): Promise<void> {
-  if (stage || starting || !mounted || !floating.value || document.hidden || !canvas.value) return
+  if (stage || starting || !mounted || !webgl.value || !floating.value || document.hidden || !canvas.value) return
   const target = canvas.value
   const pending = createStage(target, size.value, reduced.value)
   starting = pending

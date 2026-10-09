@@ -1,6 +1,6 @@
 {
   "candidateSha": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
-  "observedAt": "2026-10-09T13:11:51.965215+00:00",
+  "observedAt": "2026-10-09T13:14:13.968334+00:00",
   "runId": 37934158511,
   "url": "https://github.com/kromate/joinallworld/actions/runs/37934158511",
   "overallStatus": "in_progress",
@@ -31,8 +31,28 @@
     },
     "full-node (22)": "live, no final result",
     "full-node (24)": "live, no final result",
-    "full-worker (22)": "live; missing dist prerequisite means real asset acceptance invalid",
-    "full-worker (24)": "live; missing dist prerequisite means real asset acceptance invalid"
+    "full-worker (22)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 153,
+      "passed": 148,
+      "failed": 5,
+      "skipped": 0,
+      "durationMs": 360374.270613,
+      "acceptance": false,
+      "failureScopes": "Four built-asset/header/journey failures in missing-dist partition; one stale image cache-header expectation. Source repairs must retest real assets."
+    },
+    "full-worker (24)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 153,
+      "passed": 148,
+      "failed": 5,
+      "skipped": 0,
+      "durationMs": 437689.124405,
+      "acceptance": false,
+      "failureScopes": "Four built-asset/header/journey failures in missing-dist partition; one stale image cache-header expectation. Source repairs must retest real assets."
+    }
   },
   "hostScopes": {
     "teachingNode": {
@@ -103,6 +123,14 @@
     {
       "path": "/tmp/joinallworld-consolidated-26dbc-focused.log",
       "sha256": "4630243868670ddd6ba09a7faeddfb14cc7c17c7a5575e5ce35ffbfb502faaa9"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-26dbc-worker22.log",
+      "sha256": "ef56a0bcdc51edc92a2b493d3702f4b006c21310905869b166bb3bf672fca080"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-26dbc-worker24.log",
+      "sha256": "564a9f4800a6f159d2ed3507ed78d834e91fd1d97d34474cfe0154d882343086"
     }
   ],
   "broaderAcceptance": "Native desktop/mobile, physical driving, full journeys, staging/recovery, live save continuity and Goalmatic integration unaccepted",

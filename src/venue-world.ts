@@ -99,6 +99,7 @@ import { createSceneControls } from './scene/controls.ts';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
 import { buildHomeScene } from './scene/home-scene.ts';
 import { bodyAllowed, drawsWebGL2 } from './scene/body/gate.ts';
+import { createRetryableStartup } from './scene/body/startup-gate.ts';
 import type { StandIn } from './scene/body/stand-in.ts';
 import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
@@ -218,6 +219,7 @@ export interface HostScene {
   lighting?(): LightPreset
   setPlayer?(player: Partial<PlayerLook>): boolean
   setCrowd?(people: unknown): unknown
+  startCrowd?(renderer: { getContext?: () => unknown }, changed: () => void): void
   readonly easing?: boolean
   readonly bodyShown?: boolean
   stepCrowd?(dt: number): boolean
@@ -401,7 +403,8 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   const lights = createHostLights(THREE, scene, { shadowMap: tier.shadowMap });
   // The skinned body in place of the player's procedural figure in a venue (scene/body/stand-in.ts, fetched after the
   // first frame on a device the gate allows; home has its own). Null until then, and for good without one.
-  let standIn: StandIn | null = null, standInAsked = false, gone = false;
+  let standIn: StandIn | null = null, gone = false;
+  const standInStartup = createRetryableStartup({ cooldownMs: 2_000 });
   // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
   const sky = createSky(THREE), ground = createGround(THREE);
   scene.background = sky.texture;
@@ -1242,10 +1245,29 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
   // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
-  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz); renderer.render(scene, camera); renderCount += 1; projectTags(); if (!standInAsked) fetchStandIn(); else standIn?.start(renderer); }
+  function crowdReady() { if (gone) return; readTags(); if (!loop.running) renderScene(); }
+  function renderScene() {
+    if (container.hidden === true) return;
+    lookIn(); aimGhost();
+    lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz);
+    renderer.render(scene, camera); renderCount += 1; projectTags();
+    if (standIn) standIn.start(renderer); else fetchStandIn();
+    // The scene owns its own device/WebGL eligibility guard. Do not make venue NPC loading wait
+    // for the local body import: one failed or delayed player-body request must not freeze the crowd.
+    current?.startCrowd?.(renderer, crowdReady);
+  }
   function fetchStandIn() {
-    standInAsked = true;
-    if (bodyAllowed() && drawsWebGL2(renderer)) import('./scene/body/stand-in.ts').then((module) => { if (gone) return; standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); }); dressStandIn(); standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false); standIn.move(walker.x, avatarY, walker.z, walker.ry); standIn.start(renderer); }, () => {});
+    standInStartup.start(bodyAllowed() && drawsWebGL2(renderer),
+      () => import('./scene/body/stand-in.ts'),
+      module => {
+        if (gone) return;
+        standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); });
+        dressStandIn();
+        standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false);
+        standIn.move(walker.x, avatarY, walker.z, walker.ry);
+        standIn.start(renderer);
+      },
+      error => console.warn('Skinned body module unavailable; keeping the drawn avatar:', error));
   }
   function dressStandIn() { standIn?.wear(player.look, player.seed); standIn?.attach(venueFor(cityId, currentLocation!)?.scene?.kind !== 'home' && current?.walk ? { group: current.group, avatar: current.walk.avatar, scale: current.walk.scale } : null); }
 
@@ -1489,7 +1511,8 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     /** Where the avatar stands right now, in presence units: { x, z, location } — what onMove reports while it moves. */
     position() { const k = presenceScale(); return { x: Math.round(walker.x * k * 100) / 100, z: Math.round(walker.z * k * 100) / 100, location: currentLocation }; },
     dispose() {
-      gone = true; loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+      if (gone) return;
+      gone = true; standInStartup.dispose(); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
       win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);

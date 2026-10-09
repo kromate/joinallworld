@@ -1,0 +1,47 @@
+name: Office source corner chart diagnostic
+on:
+  push:
+    branches:
+      - codex/graphics-office-source-corner-chart-v3
+permissions:
+  contents: read
+concurrency:
+  group: office-source-corner-chart-v3-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        body: [man, woman]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: a2ce94c37995d48b7ca32edfacaae66d5c5232b10e5eb2622e8680ee32d426c8
+        run: >-
+          node evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/remote-reviewed-v1/verify-snapshot.mjs
+          "$EXPECTED_SNAPSHOT_SHA256"
+      - run: npm ci --no-audit --no-fund
+      - name: Probe one family under fixed 220 MiB RSS / 20 second guard
+        env:
+          EXPECTED_SNAPSHOT_SHA256: a2ce94c37995d48b7ca32edfacaae66d5c5232b10e5eb2622e8680ee32d426c8
+        run: >-
+          python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/remote-reviewed-v1/run-bounded-linux.py
+          "${{ matrix.body }}"
+          "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/remote-reviewed-v1/remote-results/${{ matrix.body }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-source-corner-chart-v3-${{ matrix.body }}-${{ github.run_id }}
+          path: evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/remote-reviewed-v1/remote-results/${{ matrix.body }}*
+          if-no-files-found: warn
+          retention-days: 14

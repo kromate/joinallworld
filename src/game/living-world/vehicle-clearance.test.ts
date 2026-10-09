@@ -2,6 +2,10 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
+import * as THREE from 'three'
+import { buildVehicle, poseVehicle } from '../../models/vehicles/index.ts'
+import { attachSedanInterior } from '../../models/vehicles/sedan-interior.ts'
+import { SEDAN_BOARDING_DESCRIPTOR } from './vehicle-boarding.ts'
 import {
   inspectSedanRoadFootprint,
   SEDAN_CLEARANCE_SOURCE,
@@ -43,6 +47,49 @@ test('Marina left-lane pose fits the closed sedan only; door and boarding scope 
   assert.ok(result.geometry!.vehicleHalfWidth >= 1.302, 'steered/spinning wheels are enclosed by a conservative sphere')
   assert.ok(result.geometry!.vehicleHalfLength >= 2.246, 'full body overhang is included')
   assert.ok(result.geometry!.doorSweepRadius >= Math.hypot(0.11, 0.94), 'door sweep radius comes from the full authored clipping box')
+})
+
+test('the active street sedan uses its own measured envelope and cannot reuse map-detail provenance', () => {
+  const car = buildVehicle('sedan', { detail: 'street' })
+  try {
+    attachSedanInterior(car)
+    const geometry = inspectSedanRoadFootprint(input).geometry
+    assert.ok(geometry)
+    const activeEnvelope = SEDAN_BOARDING_DESCRIPTOR.sedan.conservativeStaticEnvelope
+    let exceedsMapLength = false
+    for (const steering of [-0.65, 0, 0.65]) {
+      for (let spoke = 0; spoke < 8; spoke++) {
+        poseVehicle(car, { door: 0, steering, distance: 2 * Math.PI * 0.37 * spoke / 8 })
+        car.object3D.updateMatrixWorld(true)
+        // Rotated local AABB corners overstate wheel-cylinder extents; inspect actual mesh vertices.
+        const box = new THREE.Box3()
+        const point = new THREE.Vector3(), instance = new THREE.Matrix4(), transform = new THREE.Matrix4()
+        const inverseRoot = car.object3D.matrixWorld.clone().invert()
+        car.object3D.traverse(object => {
+          if (!(object instanceof THREE.Mesh)) return
+          const positions = object.geometry.getAttribute('position')
+          const instances = object instanceof THREE.InstancedMesh ? object.count : 1
+          for (let index = 0; index < instances; index++) {
+            transform.copy(inverseRoot).multiply(object.matrixWorld)
+            if (object instanceof THREE.InstancedMesh) { object.getMatrixAt(index, instance); transform.multiply(instance) }
+            for (let vertex = 0; vertex < positions.count; vertex++) {
+              point.fromBufferAttribute(positions, vertex).applyMatrix4(transform)
+              box.expandByPoint(point)
+            }
+          }
+        })
+        const halfWidth = Math.max(Math.abs(box.min.x), Math.abs(box.max.x))
+        const halfLength = Math.max(Math.abs(box.min.z), Math.abs(box.max.z))
+        assert.ok(halfWidth <= activeEnvelope.halfWidth)
+        assert.ok(halfLength <= activeEnvelope.halfLength)
+        exceedsMapLength ||= halfLength > geometry.vehicleHalfLength
+      }
+    }
+    assert.equal(exceedsMapLength, true, 'street trim has an actual overhang beyond the map-detail bound')
+    assert.equal(inspectSedanRoadFootprint({ ...input, provenance: { ...provenance, detail: 'street' } }).code, 'unsupported_provenance')
+    assert.equal(inspectSedanRoadFootprint(input).routeAuthorized, false,
+      'finite visual envelope witnesses do not establish continuous movement or actor clearance')
+  } finally { car.userData.dispose() }
 })
 
 test('closed-footprint edge equality is accepted only at the declared margin', () => {

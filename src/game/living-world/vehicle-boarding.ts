@@ -14,7 +14,7 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
       'src/models/vehicles/sedan-interior.ts': 'fee4c0f203868acd4bc99a47a05918c66163ffddc40451cd39bb012bd4b14059',
       'src/models/vehicles/index.ts': '7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19',
       'src/models/vehicles/geometry.ts': '4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885',
-      'src/game/living-world/vehicle-clearance.ts': '61753ce829d9a202772ed6e3f1644828da33450255fbe26c4da11a2effc33d5f',
+      'src/game/living-world/vehicle-clearance.ts': '8396fafd672d4cd8d0d710a0166fc59160cd3a609b12e620b5cf8b461c4e5e1b',
       'src/app/features/living-world/drivingScene.ts': '41381b92f248655081eab1ac9215dec97ffaa442206e45122dc37f5a63d25156',
       'src/scene/body/stand-in.ts': '55c39f33f08d43a0ac7f7ab1766522e1ef48ddfb4c7aced20cd762fd57156098',
       'src/scene/body/skinned.ts': 'ee2ec68e2a707c5b8976aa1e28f085129f84142e466fd622d09b51633bbf197a',
@@ -34,7 +34,8 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
     detail: 'street',
     geometryBudget: Object.freeze({ triangles: 814, triangleLimit: 1500, drawCalls: 8 }),
     bodyShell: Object.freeze({ width: 1.9, length: 4.35, height: 1.58 }),
-    conservativeStaticEnvelope: Object.freeze({ halfWidth: 1.302, halfLength: 2.246 }),
+    // Street trim includes a rear plate reaching z=-2.27; the map-detail envelope is shorter.
+    conservativeStaticEnvelope: Object.freeze({ halfWidth: 1.302, halfLength: 2.271 }),
     driverAnchor: Object.freeze({ x: -0.437, y: 0.74, z: 0.42 }),
     driverSeatAnchor: 'anchors.driver; anchors.seats[0] is the passenger seat',
     cabin: Object.freeze({

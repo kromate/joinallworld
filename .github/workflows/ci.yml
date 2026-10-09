@@ -264,6 +264,7 @@ jobs:
     timeout-minutes: 25
     env:
       NODE_OPTIONS: --max-old-space-size=1536
+      STUCK_DIAGNOSTICS: '1'
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -288,6 +289,7 @@ jobs:
     timeout-minutes: 8
     env:
       NODE_OPTIONS: --max-old-space-size=1536
+      STUCK_DIAGNOSTICS: '1'
     steps:
       - name: Refuse ambiguous evidence mode
         if: inputs.full_checks || inputs.startup_report || inputs.ui_checks
@@ -350,10 +352,13 @@ jobs:
           src/models/vehicles/sedan-interior.test.ts
           src/models/vehicles/vehicles.test.ts
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
-      - name: Actual Worker SQLite permission, account and restart checks
+      - name: Actual Worker SQLite permission, account, restart and scoped startup diagnostics
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           deploy/living-world-rental.edge.test.ts
           deploy/living-world-account.edge.test.ts
           deploy/living-world-restart.edge.test.ts
           deploy/living-world-clerk.edge.test.ts
+          deploy/sqlite-entries.test.ts
+          deploy/business.edge.test.ts
+          deploy/words.edge.test.ts

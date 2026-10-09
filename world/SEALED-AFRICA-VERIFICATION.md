@@ -31,9 +31,9 @@ This is isolated synthetic verification, not production continuity evidence. The
 
 `world/tooling/serve-sealed-africa.mjs` starts the same exact sealed Worker and packaged ASSETS on an ephemeral `127.0.0.1` port with a new temporary SQLite store. It verifies the same clean source SHA and package guard, then creates a synthetic founder guest, loads its Lagos life, signs in through the fixture provider, and confirms the root admin identity using normal HTTP routes. Only the pinned synthetic Firebase key endpoint is answered; all other Worker outbound requests are refused. The launcher registers stop and restart signal handlers before starting Miniflare, so an interrupted startup still cleans up its temporary files and listener.
 
-The launcher creates a new mode-0600 control file with `wx`; it refuses an existing path. This private file contains the loopback URL and port, exact source and package identities, child PID, SQLite storage path, stage deadline, and the synthetic founder cookie used only for the authenticated admin-credit route. It never prints the cookie. The native operator may create a separate ordinary browser guest, complete onboarding, then use the supplied cookie with the existing `/api/admin/players/<publicId>/act` credit endpoint if the journey needs a funded balance. No save or balance row is edited.
+The launcher creates a new mode-0600 control file with `wx`; it refuses an existing path. This private file contains the loopback URL and port, exact source and package identities, owner PID, SQLite storage path and marker, stage deadline, public synthetic-provider JWK, and synthetic founder cookie for the authenticated admin-credit route. It never prints the cookie or persists the private signing key. The native operator may create a separate ordinary browser guest, complete onboarding, then use the supplied cookie with the existing `/api/admin/players/<publicId>/act` credit endpoint if the journey needs a funded balance. No save or balance row is edited.
 
-After readiness, `SIGHUP` serially disposes and restarts the same sealed Worker and ASSETS on the same loopback port with the same SQLite directory. It does not create another identity, reauthenticate, issue another credit, change saved fields or clocks, or reset the original lifetime. An overlapping restart signal is refused. Each completed restart writes sanitized JSON evidence containing the source SHA, package digest, stage URL, `storeReused: true`, and restart count. SIGINT, SIGTERM, or the original deadline stops the stage. By default, the launcher removes both its own control file and temporary store. With `--retain-store`, it retains the store and updates its same owned control file to `stageStatus: "stopped"`; the checkpoint contains synthetic cookies and must stay private, outside Git, and out of public artifacts. The native stage owner is responsible for removing retained files after QA. This tool does not resume retained checkpoints.
+After readiness, `SIGHUP` serially disposes and restarts the same sealed Worker and ASSETS on the same loopback port with the same SQLite directory. It does not create another identity, reauthenticate, issue another credit, change saved fields or clocks, or reset the original lifetime. An overlapping restart signal is refused. Each completed restart writes sanitized JSON evidence containing the source SHA, package digest, stage URL, `storeReused: true`, and restart count. SIGINT, SIGTERM, or the original deadline stops the stage. By default, the launcher removes both its own control file and temporary store. With `--retain-store`, it retains the store and updates its same owned control file to `stageStatus: "stopped"`; the checkpoint contains synthetic cookies and must stay private, outside Git, and out of public artifacts. The native stage owner is responsible for removing retained files after QA.
 
 ```sh
 node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
@@ -46,4 +46,18 @@ node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
   --retain-store
 ```
 
-`--control` must be an absolute path that does not already exist. `--seconds` defaults to 600 and is limited to 900; a restart does not extend it. `--retain-store` is optional and retains both the SQLite directory and private stopped control checkpoint; without it both are removed. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.
+For a new stage, `--control` must be an absolute path that does not already exist. `--seconds` defaults to 600 and is limited to 900; a signal restart does not extend it. `--retain-store` retains the SQLite directory and private stopped checkpoint; without it both are removed. To resume a retained checkpoint, pass its exact path as both `--control` and `--resume-control`:
+
+```sh
+node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
+  --source "$RELEASE_SOURCE" \
+  --package "$SEALED_PACKAGE" \
+  --sha "$SOURCE_SHA" \
+  --tools "$MINIFLARE_TOOLS" \
+  --control "$PRIVATE_STAGE_CONTROL" \
+  --resume-control "$PRIVATE_STAGE_CONTROL" \
+  --seconds 600 \
+  --retain-store
+```
+
+Resume accepts only a mode-0600 checkpoint owned by the current user with `stageStatus: "stopped"`, a dead previous owner PID, matching source and verified package digests, a canonical private store path, matching private store marker, fixed loopback port, and public fixture JWK. It verifies the saved founder cookie through `/api/admin/me` before replacing the checkpoint contents in place with the new PID and finite deadline. It does not create an actor, authenticate again, grant credit, or modify SQLite directly. If startup fails before that verification and control update, the stopped checkpoint and store are preserved for retry. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.

@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { constants } from 'node:fs';
-import { open, mkdtemp, rm, lstat, unlink, readFile, chmod } from 'node:fs/promises';
+import { open, mkdir, mkdtemp, rm, lstat, unlink, readFile, chmod, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
+       node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--seconds 600] [--retain-store]
 
-Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener with a fresh SQLite store. Writes the synthetic founder admin cookie to an exclusive mode-0600 control file for the authorized native journey only. SIGHUP restarts the Worker on the same port and store without renewing the stage deadline. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
+Starts the exact sealed Worker bytes and packaged ASSETS on a finite 127.0.0.1 Miniflare listener. A new stage gets a fresh SQLite store; --resume-control reopens only a safely stopped retained checkpoint on its original port and store. The private mode-0600 control contains the synthetic founder admin cookie for the authorized native journey only. SIGHUP restarts the Worker on the same port and store without renewing the stage deadline. By default the control and store are removed at shutdown; --retain-store saves a private stopped checkpoint.
 
 This is a local synthetic staging fixture, not production continuity, deployment, or release approval.`;
 const SOURCE_SHA = /^[a-f0-9]{40}$/;
@@ -33,18 +34,21 @@ function argumentsOf(argv) {
       result[flag] = true;
       continue;
     }
-    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
+    if (!['--source', '--package', '--sha', '--tools', '--control', '--seconds', '--resume-control'].includes(flag) || Object.hasOwn(result, flag)) throw new Error(`unknown or duplicate argument: ${flag}`);
     const value = argv[index + 1];
     if (!value || value.startsWith('--')) throw new Error(`missing value for ${flag}`);
     result[flag] = value;
     index += 1;
   }
   for (const flag of ['--source', '--package', '--sha', '--tools', '--control']) if (!result[flag]) throw new Error(`missing ${flag}`);
-  for (const flag of ['--source', '--package', '--tools', '--control']) if (!isAbsolute(result[flag])) throw new Error(`${flag} must be absolute`);
+  for (const flag of ['--source', '--package', '--tools', '--control', ...(result['--resume-control'] ? ['--resume-control'] : [])]) if (!isAbsolute(result[flag])) throw new Error(`${flag} must be absolute`);
   if (!SOURCE_SHA.test(result['--sha'])) throw new Error('--sha must be exactly 40 lowercase hexadecimal characters');
   const seconds = result['--seconds'] === undefined ? 600 : Number(result['--seconds']);
   if (!Number.isInteger(seconds) || seconds < 1 || seconds > 900) throw new Error('--seconds must be an integer from 1 to 900');
-  return { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control: resolve(result['--control']), seconds, retainStore: result['--retain-store'] === true };
+  const control = resolve(result['--control']);
+  const resumeControl = result['--resume-control'] ? resolve(result['--resume-control']) : undefined;
+  if (resumeControl && resumeControl !== control) throw new Error('--control must be the exact same checkpoint path as --resume-control');
+  return { source: resolve(result['--source']), packageRoot: resolve(result['--package']), sha: result['--sha'], tools: resolve(result['--tools']), control, resumeControl, seconds, retainStore: result['--retain-store'] === true };
 }
 
 async function within(label, operation, limitMs = REQUEST_LIMIT_MS) {
@@ -75,6 +79,15 @@ async function writeControl(path, value) {
   }
 }
 
+async function writePrivateJson(path, value) {
+  const handle = await open(path, 'wx', 0o600);
+  try {
+    await handle.chmod(0o600);
+    await handle.writeFile(`${JSON.stringify(value)}\n`, { encoding: 'utf8' });
+    await handle.sync();
+  } finally { await handle.close(); }
+}
+
 async function removeOwnedControl(path, identity) {
   if (!identity) return;
   try {
@@ -96,6 +109,93 @@ async function updateOwnedControl(path, identity, value) {
   } finally { await handle.close(); }
 }
 
+async function readPrivateJson(path, maxBytes, description) {
+  assert.equal(typeof constants.O_NOFOLLOW, 'number', 'this platform must support O_NOFOLLOW for private checkpoint safety');
+  const handle = await open(path, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try {
+    const stat = await handle.stat();
+    assert.ok(stat.isFile(), `${description} must be a regular file`);
+    assert.equal(stat.uid, process.getuid(), `${description} must be owned by the current user`);
+    assert.equal(stat.mode & 0o777, 0o600, `${description} permissions must be 0600`);
+    assert.ok(stat.size <= maxBytes, `${description} exceeds the ${maxBytes}-byte limit`);
+    const bytes = Buffer.alloc(maxBytes + 1);
+    let length = 0;
+    while (length < bytes.length) {
+      const { bytesRead } = await handle.read(bytes, length, bytes.length - length, length);
+      if (!bytesRead) break;
+      length += bytesRead;
+    }
+    assert.ok(length <= maxBytes, `${description} exceeds the ${maxBytes}-byte limit`);
+    const value = JSON.parse(bytes.subarray(0, length).toString('utf8'));
+    return { value, identity: { dev: stat.dev, ino: stat.ino } };
+  } finally { await handle.close(); }
+}
+
+function assertPublicFixtureJwk(value) {
+  assert.ok(isRecord(value), 'checkpoint is missing the synthetic fixture provider public JWK');
+  assert.deepEqual(Object.keys(value).sort(), ['alg', 'e', 'kid', 'kty', 'n', 'use'], 'checkpoint must contain only public JWK fields');
+  assert.deepEqual([value.kty, value.alg, value.use], ['RSA', 'RS256', 'sig']);
+  for (const field of ['e', 'kid', 'n']) assert.ok(typeof value[field] === 'string' && value[field].length > 0 && value[field].length <= 4096, `invalid public JWK field ${field}`);
+  return value;
+}
+
+function assertPriorOwnerStopped(pid) {
+  assert.ok(Number.isSafeInteger(pid) && pid > 0, 'checkpoint owner PID is invalid');
+  try {
+    process.kill(pid, 0);
+    assert.fail('checkpoint owner process is still live; refusing resume');
+  } catch (error) {
+    if (error?.code === 'ESRCH') return;
+    if (error?.code === 'EPERM') assert.fail('checkpoint owner process is still live; refusing resume');
+    if (error?.code === 'ERR_ASSERTION') throw error;
+    throw error;
+  }
+}
+
+async function validateCheckpoint(args, checked) {
+  const { value: checkpoint, identity } = await readPrivateJson(args.resumeControl, 16 * 1024, 'resume checkpoint');
+  assert.ok(isRecord(checkpoint), 'resume checkpoint must be a JSON object');
+  assert.equal(checkpoint.schemaVersion, 1, 'unsupported resume checkpoint version');
+  assert.equal(checkpoint.stageStatus, 'stopped', 'only a cleanly stopped stage can be resumed');
+  assert.equal(checkpoint.sourceSha, args.sha, 'resume checkpoint source SHA differs from requested source');
+  assert.equal(checkpoint.packageManifestSourceSha, args.sha, 'resume checkpoint manifest SHA is inconsistent');
+  assert.equal(checkpoint.packageDigest, checked.packageDigest, 'resume checkpoint package digest differs from the verified package');
+  assert.equal(typeof checkpoint.founderCookieForAdminCredit, 'string');
+  assert.ok(checkpoint.founderCookieForAdminCredit.length > 0 && checkpoint.founderCookieForAdminCredit.length <= 4096 && !/[\r\n]/.test(checkpoint.founderCookieForAdminCredit), 'invalid private founder cookie field');
+  assert.equal(typeof checkpoint.storagePath, 'string');
+  assert.equal(typeof checkpoint.storeMarkerPath, 'string');
+  assert.ok(typeof checkpoint.storeId === 'string' && /^[0-9a-f-]{36}$/.test(checkpoint.storeId), 'invalid store identity');
+  assertPublicFixtureJwk(checkpoint.fixtureProviderJwk);
+  assertPriorOwnerStopped(checkpoint.ownerChildPid);
+  assert.ok(Number.isSafeInteger(checkpoint.restartCount) && checkpoint.restartCount >= 0, 'invalid checkpoint restart count');
+  assert.ok(typeof checkpoint.deadline === 'string' && Number.isFinite(Date.parse(checkpoint.deadline)), 'invalid prior stage deadline');
+  const url = new URL(checkpoint.stageUrl);
+  assert.equal(url.protocol, 'http:');
+  assert.equal(url.hostname, '127.0.0.1');
+  assert.equal(url.pathname, '/');
+  assert.equal(url.search, '');
+  assert.equal(url.hash, '');
+  const port = Number(checkpoint.port);
+  assert.ok(Number.isSafeInteger(port) && port > 0 && Number(url.port) === port, 'checkpoint stage URL must contain its fixed port');
+  assert.equal(url.origin, checkpoint.stageUrl, 'checkpoint stage URL must be a canonical origin');
+  const parent = resolve(checkpoint.storagePath, '..');
+  assert.equal(checkpoint.storagePath, join(parent, 'sqlite'), 'checkpoint storage directory must be the expected private child');
+  assert.equal(checkpoint.storeMarkerPath, join(parent, 'store-marker.json'), 'checkpoint store marker path is invalid');
+  const parentStat = await lstat(parent);
+  assert.ok(parentStat.isDirectory() && !parentStat.isSymbolicLink(), 'checkpoint store parent must be a real directory');
+  assert.equal(parentStat.uid, process.getuid(), 'checkpoint store parent must be owned by the current user');
+  assert.equal(parentStat.mode & 0o777, 0o700, 'checkpoint store parent permissions must be 0700');
+  assert.equal(await realpath(parent), parent, 'checkpoint store parent must be canonical');
+  const storageStat = await lstat(checkpoint.storagePath);
+  assert.ok(storageStat.isDirectory() && !storageStat.isSymbolicLink(), 'checkpoint SQLite storage must be a real directory');
+  assert.equal(storageStat.uid, process.getuid(), 'checkpoint SQLite storage must be owned by the current user');
+  assert.equal(storageStat.mode & 0o077, 0, 'checkpoint SQLite storage must not be group/world accessible');
+  assert.equal(await realpath(checkpoint.storagePath), checkpoint.storagePath, 'checkpoint SQLite storage must be canonical');
+  const { value: marker } = await readPrivateJson(checkpoint.storeMarkerPath, 2048, 'store identity marker');
+  assert.deepEqual(marker, { schemaVersion: 1, sourceSha: args.sha, packageDigest: checked.packageDigest, storeId: checkpoint.storeId }, 'store marker does not match the verified source/package checkpoint');
+  return { checkpoint, identity, storagePath: checkpoint.storagePath, folder: parent, port, origin: url.origin };
+}
+
 async function main(args) {
   assert.ok(Number(process.versions.node.split('.')[0]) >= 24, 'run with Node 24 or newer and --experimental-strip-types');
   const checked = verifySourceAndPackage(args);
@@ -108,22 +208,36 @@ async function main(args) {
     import(pathToFileURL(join(args.source, 'server/accounts/test-tokens.ts')).href),
     import(pathToFileURL(join(args.source, 'server/accounts/token.ts')).href),
   ]);
-  const key = await within('synthetic provider key generation', testTokens.makeKey('africa-native-stage-test-key'));
-  const folder = await mkdtemp(join(tmpdir(), 'joinallworld-sealed-africa-stage-'));
-  await chmod(folder, 0o700);
-  const storagePath = join(folder, 'sqlite');
+  const resumed = args.resumeControl ? await validateCheckpoint(args, checked) : undefined;
+  const key = resumed ? undefined : await within('synthetic provider key generation', testTokens.makeKey('africa-native-stage-test-key'));
+  const fixtureProviderJwk = resumed?.checkpoint.fixtureProviderJwk ?? key?.jwk;
+  assertPublicFixtureJwk(fixtureProviderJwk);
+  let folder = resumed?.folder ?? await mkdtemp(join(tmpdir(), 'joinallworld-sealed-africa-stage-'));
+  if (!resumed) {
+    await chmod(folder, 0o700);
+    folder = await realpath(folder);
+  }
+  const storagePath = resumed?.storagePath ?? join(folder, 'sqlite');
+  if (!resumed) {
+    await mkdir(storagePath, { mode: 0o700 });
+    await chmod(storagePath, 0o700);
+  }
+  const storeId = resumed?.checkpoint.storeId ?? randomUUID();
+  const storeMarkerPath = resumed?.checkpoint.storeMarkerPath ?? join(folder, 'store-marker.json');
+  if (!resumed) await writePrivateJson(storeMarkerPath, { schemaVersion: 1, sourceSha: args.sha, packageDigest: checked.packageDigest, storeId });
   const responseBodies = new Set();
   let worker;
-  let controlIdentity;
+  let controlIdentity = resumed?.identity;
   let controlState;
   let deadlineTimer;
   let resolveFinished;
   let restartTask;
-  let restartCount = 0;
+  let restartCount = resumed?.checkpoint.restartCount ?? 0;
   let boundPort;
   let origin;
   let deadlineAt;
   let stageReady = false;
+  let stageStarted = false;
   let restarting = false;
   let stopRequested = false;
   const requestControllers = new Set();
@@ -207,15 +321,15 @@ async function main(args) {
         routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
       outboundService: async request => {
         const url = new URL(request.url);
-        if (url.href.split('?')[0] === tokenModule.TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } });
+        if (url.href.split('?')[0] === tokenModule.TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [fixtureProviderJwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } });
         throw new Error('sealed Africa staging refuses every non-fixture outbound request');
       },
       handleStructuredLogs: () => {},
     };
-    worker = makeWorker(0);
+    worker = makeWorker(resumed?.port ?? 0);
     const ready = await within('Miniflare startup', worker.ready);
     ensureStarting();
-    const stageUrl = assertLoopbackReady(ready);
+    const stageUrl = assertLoopbackReady(ready, resumed?.port);
     origin = stageUrl.origin;
     boundPort = Number(stageUrl.port);
     const ips = { next: 0 };
@@ -242,30 +356,37 @@ async function main(args) {
       assert.equal(response.status, 200, `${label} returned ${response.status}`);
       return object(await within(`${label} response body`, response.json()));
     };
-    const guest = await send('/api/session', { name: 'Africa native staging founder' });
-    ensureStarting();
-    const guestCookie = guest.headers.get('set-cookie')?.split(';')[0];
-    assert.ok(guestCookie, 'synthetic founder guest cookie');
-    await guest.body?.cancel().catch(() => {});
-    await json('founder guest life', await send('/api/life?city=lagos', undefined, guestCookie));
-    ensureStarting();
-    const account = await json('founder account state', await send('/api/account', undefined, guestCookie));
-    ensureStarting();
-    const idToken = await testTokens.signToken(key, testTokens.claimsFor(PROJECT, Date.now(), {
-      subject: 'AfricaFixtureFounder', email: FOUNDER, n: 1,
-    }));
-    const signedIn = await send('/api/account/sign-in', { csrf: account.csrf, idToken }, guestCookie);
-    ensureStarting();
-    const founderCookie = signedIn.headers.get('set-cookie')?.split(';')[0];
-    assert.ok(signedIn.status === 200 && founderCookie, 'synthetic founder authentication succeeds');
-    await signedIn.body?.cancel().catch(() => {});
+    let founderCookie;
+    if (resumed) {
+      founderCookie = resumed.checkpoint.founderCookieForAdminCredit;
+    } else {
+      const guest = await send('/api/session', { name: 'Africa native staging founder' });
+      ensureStarting();
+      const guestCookie = guest.headers.get('set-cookie')?.split(';')[0];
+      assert.ok(guestCookie, 'synthetic founder guest cookie');
+      await guest.body?.cancel().catch(() => {});
+      await json('founder guest life', await send('/api/life?city=lagos', undefined, guestCookie));
+      ensureStarting();
+      const account = await json('founder account state', await send('/api/account', undefined, guestCookie));
+      ensureStarting();
+      assert.ok(key, 'fresh stage signing key is available');
+      const idToken = await testTokens.signToken(key, testTokens.claimsFor(PROJECT, Date.now(), {
+        subject: 'AfricaFixtureFounder', email: FOUNDER, n: 1,
+      }));
+      const signedIn = await send('/api/account/sign-in', { csrf: account.csrf, idToken }, guestCookie);
+      ensureStarting();
+      const authenticatedFounderCookie = signedIn.headers.get('set-cookie')?.split(';')[0];
+      assert.ok(signedIn.status === 200 && authenticatedFounderCookie, 'synthetic founder authentication succeeds');
+      await signedIn.body?.cancel().catch(() => {});
+      founderCookie = authenticatedFounderCookie;
+    }
     const root = await json('founder admin identity', await send('/api/admin/me', undefined, founderCookie));
     ensureStarting();
     assert.equal(root.level, 'root', 'control cookie belongs to the synthetic founder admin');
 
     deadlineAt = Date.now() + args.seconds * 1000;
     const deadline = new Date(deadlineAt).toISOString();
-    controlIdentity = await writeControl(args.control, {
+    controlState = {
       schemaVersion: 1,
       stageStatus: 'running',
       stageUrl: origin,
@@ -275,12 +396,16 @@ async function main(args) {
       packageManifestSourceSha: checked.manifest.sourceSha,
       ownerChildPid: process.pid,
       storagePath,
+      storeMarkerPath,
+      storeId,
+      fixtureProviderJwk,
+      restartCount,
       deadline,
       founderCookieForAdminCredit: founderCookie,
-    });
-    controlState = { schemaVersion: 1, stageStatus: 'running', stageUrl: origin, port: boundPort, sourceSha: args.sha,
-      packageDigest: checked.packageDigest, packageManifestSourceSha: checked.manifest.sourceSha,
-      ownerChildPid: process.pid, storagePath, deadline, founderCookieForAdminCredit: founderCookie };
+    };
+    if (resumed) await updateOwnedControl(args.control, controlIdentity, controlState);
+    else controlIdentity = await writeControl(args.control, controlState);
+    stageStarted = true;
     stageReady = true;
     process.stdout.write(`${JSON.stringify({ stageUrl: origin, buildId: `joinallworld-${args.sha}`, sourceSha: args.sha, packageDigest: checked.packageDigest, deadline })}\n`);
     deadlineTimer = setTimeout(() => onStop('deadline'), args.seconds * 1000);
@@ -292,10 +417,10 @@ async function main(args) {
     if (restartTask) await restartTask.catch(() => {});
     await cancelUnusedBodies();
     try { await dispose(); } catch { cleanupFailed = true; }
-    retainFolder = args.retainStore && Boolean(controlIdentity);
+    retainFolder = (args.retainStore && Boolean(controlIdentity)) || Boolean(resumed && !stageStarted);
     if (retainFolder) {
       try {
-        await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
+        if (stageStarted) await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
       } catch { cleanupFailed = true; }
     } else {
       try { await removeOwnedControl(args.control, controlIdentity); } catch { cleanupFailed = true; }

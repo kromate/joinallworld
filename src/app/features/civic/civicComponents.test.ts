@@ -209,11 +209,16 @@ test('Rich List: ordered ranks, the player marker and the visibility toggle', as
   assert.ok(words.includes('You · rank 2 ₦5,000 Earned ₦1,200 this week'))
   assert.ok(words.includes('40 players in') && words.includes('5 online now') && words.includes('90 daily visits'))
   assert.match(html, /<ol class="ranking" aria-label="Top balances"[^>]*>/)
-  assert.match(html, /<li[^>]*class="ranking-row is-you"/)
-  assert.equal([...html.matchAll(/class="ranking-row(?:\s|\")/g)].length, 4, 'the accessible ordered list contains the four rows returned')
   const board = html.match(/<ol class="ranking" aria-label="Top balances"[^>]*>([\s\S]*?)<\/ol>/)?.[1] ?? ''
+  const rows = [...board.matchAll(/<li\b([^>]*)>([\s\S]*?)<\/li>/g)]
+  assert.equal(rows.length, 4, 'the accessible ordered list contains the four rows returned')
+  assert.ok(rows.every(([, attrs]) => new Set((attrs?.match(/class="([^"]+)"/)?.[1] ?? '').split(/\s+/)).has('ranking-row')), 'each returned item is a ranking row regardless of class ordering')
   assert.deepEqual([...board.matchAll(/aria-label="Rank (\d+)"/g)].map(match => Number(match[1])), [1, 2, 3, 4])
   assert.deepEqual([...board.matchAll(/<strong[^>]*>([^<]+)<\/strong>/g)].map(match => match[1]), ['Ada', 'Bisi', 'Chi', 'Dayo'])
+  const bisiRow = rows.find(([, , content]) => /<strong\b[^>]*>Bisi<\/strong>/.test(content ?? ''))
+  assert.ok(bisiRow, 'the player appears in the ordered board')
+  const bisiClasses = new Set((bisiRow[1]?.match(/class="([^"]+)"/)?.[1] ?? '').split(/\s+/))
+  assert.ok(bisiClasses.has('ranking-row') && bisiClasses.has('is-you'), 'the named player row carries the self marker')
   assert.match(board, /Bisi<\/strong><small[^>]*>You<\/small>/)
   assert.ok(words.includes('Top earners this week'))
   assert.ok(!buttons(html).includes('Show more'), 'four rows do not trigger a continuation when the server page size is ten')

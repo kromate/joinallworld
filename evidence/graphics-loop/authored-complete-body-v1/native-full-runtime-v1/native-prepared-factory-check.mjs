@@ -132,7 +132,15 @@ try {
     assert.equal(raisedSoles.length, 2);
     assert.ok(raisedSoles.every(({ y }) => Math.abs(y - reachablePlane) < 0.004), `${actor.preparedMetrics.bodyKey}: left and right soles reach the raised plane`);
 
-    const unreachablePlane = reachablePlane + 0.5;
+    const unreachablePlane = reachablePlane + 4;
+    const upperLeg = actor.object.getObjectByName('mixamorigLeftUpLeg');
+    const lowerLeg = actor.object.getObjectByName('mixamorigLeftLeg');
+    const ankle = actor.object.getObjectByName('mixamorigLeftFoot');
+    const hipPoint = upperLeg.getWorldPosition(new THREE.Vector3());
+    const kneePoint = lowerLeg.getWorldPosition(new THREE.Vector3());
+    const anklePoint = ankle.getWorldPosition(new THREE.Vector3());
+    const legReach = hipPoint.distanceTo(kneePoint) + kneePoint.distanceTo(anklePoint);
+    assert.ok(unreachablePlane > hipPoint.y + legReach + 1, 'negative floor is above measured complete leg reach');
     const unreachable = actor.solveFeet(() => unreachablePlane);
     assert.equal(unreachable.limited, true, `${actor.preparedMetrics.bodyKey}: unreachable support is reported as limited`);
     assert.ok(unreachable.maxError > 0.004, `${actor.preparedMetrics.bodyKey}: limited support reports its residual`);

@@ -1,5 +1,13 @@
 # Decisions and repeatable rollout after the first compiler
 
+9 October 2026: supervised full-plan admission is accepted on exact ab0589e67,
+run37905609552:467 tests, three policy checks and World TypeScript. Actual
+SIGKILL/recovery and 4096-request/16-shard admission retain the original limits.
+See INDEX-SHARD-BATCH-OPERATIONS.md. Next integrate bounded authority-gated child
+capture/audit sessions and same-campaign global namespace charges, then compile
+and stream real country geometry. No runtime release or phone acceptance is
+claimed. Earlier checkpoints below are historical where superseded.
+
 Latest builder checkpoint — 9 October2026: exact019f9179/run37898985723 is terminal
 SUCCESS with432 tests, three policy checks and World TypeScript. Complete plan
 validation, anonymous bounded transport, immutable controller records and actual

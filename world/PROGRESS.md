@@ -1,5 +1,40 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **ab0589e67db3d8dfc8f79733f180753204b67c5b**, run **37905609552**, is
+terminal **SUCCESS**: **467 tests +3 policy =470 distinct checks**, plus World
+TypeScript. Python311=19audit/11session/88affected/193remaining; Node156 unchanged.
+All22 retained artifacts,12 changed source/workflow blobs and45 fixed runtime
+source inputs were verified against that exact source. See
+[index-shard-batch-admission-acceptance.json](index-shard-batch-admission-acceptance.json)
+and [INDEX-SHARD-BATCH-OPERATIONS.md](INDEX-SHARD-BATCH-OPERATIONS.md).
+
+Accepted scope now includes actual full-plan supervised V3 dispatch, one atomic
+reservation before child allocation, deterministic root-prefix publication,
+reaped-worker receipts, three actual SIGKILL boundaries and same-plan recovery.
+The actual maximum-request test admits4096 structural requests into16 shards
+with parent SQL forbidden and original96MiB worker RSS limit. These are disposable
+structural plans, not4096 real captures or country coverage. Source allowance is
+892928B and registry control1048576B; original caps remain unchanged.
+
+Previous source milestone is on main **8592ddf3**, whose CI37904886890 passed
+fastbuild/smoke/typecheck/policy with fullSKIPPED. Fresh main **0f422973** adds
+only reviewed coordination documentation. This checkpoint accompanies the
+verified batch source integration; no runtime/map upload accompanies it.
+Production remains APPUIa446/version64ed.
+
+Next implement a privately verified no-parent-SQL batch-to-child lease handoff,
+then explicit V2 bootstrap/capture/ingest/audit sessions and full campaign source
+membership. Keep256capture/600s session limits and16batch-controller attempts;
+a4096-request plan requires a separately bounded multi-session lifecycle.
+Finite global charges in the original campaign must precede another namespace.
+Geometry/streaming, Nigeria adapter/rendering, rights, connected journeys and
+physical-phone acceptance remain OPEN. Current08:42UTC memoryNORMAL1 is initial
+recovery after WARNING2; optional local heavy starts remain deferred until stable.
+WORLD has no local heavy/browser/build/test/server/upload. Full goalACTIVE.
+Earlier checkpoints below are historical where superseded.
+
+# Implementation checkpoint — 9 October 2026
+
 Exact **2597acb7892042cc0d2a3f32ad9fe48912679991**, run **37903828130**, is
 terminal **SUCCESS**: **457 tests +3 policy =460 distinct checks**, plus World
 TypeScript. Python301=19audit/11session/78affected/193remaining;

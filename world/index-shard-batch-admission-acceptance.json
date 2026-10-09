@@ -1,0 +1,186 @@
+{
+  "format": "index-shard-batch-admission-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "ab0589e67db3d8dfc8f79733f180753204b67c5b",
+  "runId": 37905609552,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37905609552",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-boundary.stderr": 193,
+    "python-regression.stderr": 88,
+    "python-session.stderr": 11
+  },
+  "nodeTests": {
+    "campaign-regression.tap": 39,
+    "node-audit.tap": 27,
+    "node-contracts.tap": 58,
+    "release-source.tap": 5,
+    "sdk-audit.tap": 11,
+    "shard-plan.tap": 16
+  },
+  "distinctTests": 467,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "fixedSourceInputs": 45,
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "592d5915b841e1b3c8b803bd2a183ba61cd8563e9bdd79fc559066007ee6b48c",
+      "bytes": 8310
+    },
+    "world/tooling/index_admission_input.py": {
+      "sha256": "7f84c27bb57ab74d04d497db49a05bb486ebc964797d9a75d845ff550ac73ff6",
+      "bytes": 8159
+    },
+    "world/tooling/index_admission_worker.py": {
+      "sha256": "fbbb3cb753fb3896a9c6c29d5a27d19770b4f7f42bb1244ec50ae9fd7e2fc5b1",
+      "bytes": 16376
+    },
+    "world/tooling/index_controller_record.py": {
+      "sha256": "b3caaf2bc7808d1ac3c5ee2afcbbdb8969b32273f925db380f77bbcb78d94591",
+      "bytes": 13211
+    },
+    "world/tooling/index_registry_controller.py": {
+      "sha256": "cb26bf141af61ceaf5cd151d3b39e74e4592a96dccf6aa5a8811fd6c6d3909b6",
+      "bytes": 15401
+    },
+    "world/tooling/index_registry_startup.py": {
+      "sha256": "1dcc0d1c62ea2c38a4671ee32586dd25d2d4511b10b5a0e821c7bc1b7417c815",
+      "bytes": 16030
+    },
+    "world/tooling/index_resource_limits.py": {
+      "sha256": "c82ea92d101527b7b5dd3052f699530ca789a083a1cd3d6289e3a3fd83a22ce5",
+      "bytes": 32016
+    },
+    "world/tooling/index_tooling.py": {
+      "sha256": "c0a9d8c0eb40e07e67d2cd7790bab87490e930c373611e7af1769f97a877f5a8",
+      "bytes": 10390
+    },
+    "world/tooling/index_writer_lock.py": {
+      "sha256": "56e1645e23d4173c891936f8dfb93c3e5aa6851035699342b5b60da363746ad3",
+      "bytes": 4700
+    },
+    "world/tooling/test_index_shard_admission_worker.py": {
+      "sha256": "37b112ef1d9efd3cc38315d1d303dbb5026aef377c0b787b7847445353437acb",
+      "bytes": 6907
+    },
+    "world/tooling/test_index_shard_controller.py": {
+      "sha256": "f8506347b300c1cb7bcb6fe9aa93c687f78aef7aa778f37a52506d91766865ae",
+      "bytes": 9375
+    },
+    "world/tooling/test_index_shard_startup.py": {
+      "sha256": "4ee660ef6d18b6fa007c67e70b4e153f4c4da14be0bcbdc9dd419f3c9f3591ba",
+      "bytes": 3786
+    }
+  },
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "8d39e074f1704c1ea097f013876a8ba5e937b94d7a38598cdb86aec30a69e837",
+      "bytes": 10432
+    },
+    "node-audit.tap": {
+      "sha256": "f442427f02fab4b7d289f09a57f1a67c969ab70873972810ec13da369628150f",
+      "bytes": 7199
+    },
+    "node-contracts.tap": {
+      "sha256": "edd931cf78db432d1dc28ef242fb346efb1493a565ec20826bb3c2fb5fea4014",
+      "bytes": 14353
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "5ed8e85abe72238d637cfe76405919e084731b5b3aedc19f154a61f6b2b20e41",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "3adc56f73695dd37d33f69a44513625beb9e403c42af2b3fa83e6e9a79580f94",
+      "bytes": 1453
+    },
+    "python-boundary.stdout": {
+      "sha256": "fa521a3df0bf47ade430690649d76373d9837afd9726f04824dadb983ea91d29",
+      "bytes": 6828
+    },
+    "python-regression.stderr": {
+      "sha256": "182abc988122af841e418ba60d55ca91868e8df2570abe8af94cf3545ebca9fa",
+      "bytes": 1231
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "794de431557051ba5de84efe666bd6f46351930ca56fd871c2bcf26c0a2b8219",
+      "bytes": 890
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "33c4fe4fd048bc3364376327e28f1108974d605d681684aab32ef70705c4602f",
+      "bytes": 1357
+    },
+    "sdk-audit.tap": {
+      "sha256": "9d2ea911c860ce94451b294638e3cae875f9c9cfe147a2970e024be28624f975",
+      "bytes": 3313
+    },
+    "shard-plan.tap": {
+      "sha256": "acda1850fdc5fc484971b1b694e036ff93f755d5ce5f5bbb4429dae4c695cb69",
+      "bytes": 4638
+    },
+    "source-sha.txt": {
+      "sha256": "135720901cb79e81441912bd683591c35b931c95b23dfb86e0a532731dcb6e29",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "acceptedScope": [
+    "One guarded worker atomically reserves the full frozen plan before creating its deterministic child-root prefix.",
+    "Actual V3 controller/startup dispatch with parent SQL forbidden, exact terminal receipt and immutable plan/source/base pins.",
+    "Actual SIGKILL before charge, after full charge and after first published root; same-plan recovery preserves durable charges and root identities.",
+    "Actual 4096-request plan admitted into 16 child roots under original CPU/wall/RSS limits.",
+    "Changed coherent plan and exhausted attempts refuse without changing original state; legacy V1 paths remain unchanged."
+  ],
+  "limitations": [
+    "Structural admission uses disposable synthetic plans; the 4096-request case does not capture or compile 4096 real sources.",
+    "Source-derived plan snapshots are not privately branded campaign completion proof.",
+    "Authority-gated shard capture/bootstrap/ingest/audit sessions and exact full source/context union are not yet integrated.",
+    "Finite cumulative global namespace budgets are not yet implemented; no additional namespace rollout authorized by this receipt.",
+    "No country geometry, runtime release, phone validation or Nigeria data change is claimed."
+  ]
+}

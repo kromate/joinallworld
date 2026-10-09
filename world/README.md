@@ -1,5 +1,13 @@
 # Independent world-data builder
 
+Latest supervised batch milestone passes **467 tests, three policy checks and
+World TypeScript**, exact ab0589e67/run37905609552. It atomically charges complete
+plans, publishes their roots and recovers actual interrupted workers, including
+an actual 4,096-request/16-shard admission. See
+[INDEX-SHARD-BATCH-OPERATIONS.md](INDEX-SHARD-BATCH-OPERATIONS.md). Shard capture/audit
+integration, finite global budgets and country geometry remain next. This phase
+adds no production map detail. Earlier checkpoints are historical.
+
 Latest source-plan milestone passes **457 tests, three policy checks and World
 TypeScript**, exact2597acb7/run37903828130. It derives bounded plans from every
 verified captured campaign leaf and refuses missing/corrupt source state. See

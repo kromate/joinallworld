@@ -1,0 +1,42 @@
+{
+  "status": "unapplied source proposal",
+  "base_commit": "3d5b2005387c420aec5c028c81a457d8e4906b56",
+  "target_file": "scripts/living-world-browser-qa.mjs",
+  "base_sha256": "98f03ee2c4c2c07b77f4bc13e060552bffbd8ae6b55727b5fdcc3a9973ae4c09",
+  "proposed_sha256": "6b4cc61e6d0bae70b52970e84846cd063e48aba09b90dc5a1ef8fe0aa9df9d4e",
+  "patch_file": "browser-qa-native-scroll.patch",
+  "patch_sha256": "4459f06abffc54e6898793a336162aedab6372145df8e3e05a21f158b5f1ee1b",
+  "checks": {
+    "node_check": "PASS: node --check on temporary proposed helper only",
+    "git_apply_check": "PASS: against temporary scripts/ helper extracted from the exact base commit",
+    "browser_or_fixture_execution": "NOT RUN by assignment"
+  },
+  "changes": [
+    "Replace simultaneous visibility of every choice with per-target bounded reachability through native CDP wheel/touch input; each target is capped at 12 gestures and each viewport at 96, with no-progress refusal.",
+    "Use direction-specific touch start points and four interpolated native touchMove events; wait for rendered frames after wheel/touch input.",
+    "Check fixed classroom text, stage title, prompt, choices and cancel separately. Text ranges must remain clipped-visible and hit-test to their target; stage identity is rechecked between prompt and selected-control observations.",
+    "Aggregate More cue visibility and overlap against clipped-visible question/context bounds during reachability checks; absent cue remains notObserved.",
+    "Count only same-session GET /api/life?city=lagos responses with HTTP 200, completed body and expected unchanged cash/stage/revision; then verify rendered focus and scroller offset remain after two frames.",
+    "Keep receipt projections bounded to booleans/numbers and existing gameplay/reload evidence; no response bodies or private state are written to artifacts."
+  ],
+  "limits": [
+    "The refresh check proves a successful unchanged server response followed by retained rendered focus/scroll; it does not claim internal client acceptance.",
+    "No browser, server, fixture, build or full test execution; this packet is not rendered acceptance evidence.",
+    "Native scrolling, visible target reachability, More cue placement and refresh preservation require the next exact-SHA remote browser run."
+  ],
+  "independent_root_review": {
+    "reviewer": "Sol",
+    "status": "source proposal accepted for Integration application; runtime acceptance unrun",
+    "checks": [
+      "current helper baseline SHA256 unchanged",
+      "only one runtime target in unapplied patch",
+      "patch and proposed helper SHA256 match",
+      "temporary git apply --check passed",
+      "temporary applied bytes equal proposed bytes",
+      "Node syntax passed",
+      "direction-aware native touch, bounded/no-progress reachability, range hit-test occlusion, immediate clipped cue-overlap refusal and failure flag retention reviewed",
+      "same-session HTTP200 unchanged-state response observation has explicitly limited acceptance claim"
+    ],
+    "compiler_and_browser": "UNRUN; Integration must verify final assembled SHA; Astra is next browser operator"
+  }
+}

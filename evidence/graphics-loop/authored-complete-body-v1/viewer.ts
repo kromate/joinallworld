@@ -4,6 +4,7 @@ import { normalizeLook } from '../../../src/scene/avatar-look.ts';
 import { loadBody } from '../expressive-character-v1/skinned-baseline.ts';
 import type { SkinnedBody } from '../../../src/scene/body/skinned.ts';
 import { loadCompleteCharacter } from './rig.ts';
+import { applyNativeFamilyRigCorrection } from './native-family-rig-correction.ts';
 import { applyAuthoredPresentation } from './authored-presentation.ts';
 import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
@@ -43,6 +44,7 @@ const scenes=kits.map(()=>{
 const camera=new THREE.PerspectiveCamera(28,1,.05,40);
 let baseline:SkinnedBody|null=null;
 let candidate:Awaited<ReturnType<typeof loadCompleteCharacter>>|null=null;
+let familyRig:ReturnType<typeof applyNativeFamilyRigCorrection>|null=null;
 let presentation:Awaited<ReturnType<typeof applyAuthoredPresentation>>|null=null;
 let eyes:ReturnType<typeof applyAuthoredEyeMaterial>|null=null;
 let skin:Awaited<ReturnType<typeof applySkinMaterial>>|null=null;
@@ -138,19 +140,20 @@ async function set(next:Partial<typeof state>){
   const seed='complete-authored-human';
   const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:state.outfit,fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body||previous.outfit!==state.outfit){
-    const ticket=++generation;curls?.dispose();curls=null;clipSolver?.dispose();clipSolver=null;sampler?.dispose();sampler=null;hands?.dispose();footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
+    const ticket=++generation;curls?.dispose();curls=null;clipSolver?.dispose();clipSolver=null;sampler?.dispose();sampler=null;hands?.dispose();footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();familyRig?.dispose();familyRig=null;candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
+    const loadedFamilyRig=applyNativeFamilyRigCorrection(loaded[1].object);
     const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin,kits[1]!);
-    if(ticket!==generation){loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
+    if(ticket!==generation){loadedSkin.dispose();loadedFamilyRig.dispose();loaded.forEach(body=>body.dispose());return;}
     const loadedPresentation=await applyAuthoredPresentation(loaded[1].object,look,{additionalBodyHideSets:[{
       asset:shoeHideMap.asset,bodySourceTriangleCount:shoeHideMap.bodySourceTriangleCount,
       triangleIds:shoeHideMap.sourceBodyTriangleIds,
     }]});
-    if(ticket!==generation){loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
+    if(ticket!==generation){loadedPresentation.dispose();loadedSkin.dispose();loadedFamilyRig.dispose();loaded.forEach(body=>body.dispose());return;}
     const loadedShoes=await applyAuthoredFootwear(loaded[1].object);
-    if(ticket!==generation){loadedShoes.dispose();loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
-    baseline=loaded[0];candidate=loaded[1];skin=loadedSkin;footwear=loadedShoes;
+    if(ticket!==generation){loadedShoes.dispose();loadedPresentation.dispose();loadedSkin.dispose();loadedFamilyRig.dispose();loaded.forEach(body=>body.dispose());return;}
+    baseline=loaded[0];candidate=loaded[1];familyRig=loadedFamilyRig;skin=loadedSkin;footwear=loadedShoes;
     presentation=loadedPresentation;
     eyes=applyAuthoredEyeMaterial(candidate.object);
     const nativeBody=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
@@ -178,5 +181,5 @@ let drag:number|null=null;
 canvas.addEventListener('pointerdown',event=>{drag=event.clientX;canvas.setPointerCapture(event.pointerId);});
 canvas.addEventListener('pointermove',event=>{if(drag===null)return;yaw+=(event.clientX-drag)*.012;drag=event.clientX;draw();});
 for(const type of['pointerup','pointercancel'])canvas.addEventListener(type,()=>{drag=null;});window.addEventListener('resize',draw);
-Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,footwear:footwear?.metrics,curls:curls?.metrics,clip:clipSnapshot,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
+Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,familyRig:familyRig?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,footwear:footwear?.metrics,curls:curls?.metrics,clip:clipSnapshot,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
 await set({});Object.assign(window,{characterReady:true});

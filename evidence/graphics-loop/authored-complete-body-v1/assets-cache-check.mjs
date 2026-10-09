@@ -11,7 +11,7 @@ const sourcePath = path.join(directory, 'assets.ts');
 const temporaryPath = path.join(directory, 'assets-runtime-check.ts');
 let source = readFileSync(sourcePath, 'utf8');
 const replacements = [
-  ["import authoredUrl from './parametric-base-facial.glb?url';", "const authoredUrl = 'https://test.invalid/body.glb';"],
+  ["import authoredUrl from './authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb?url';", "const authoredUrl = 'https://test.invalid/body.glb';"],
   ["import { BODY_FILES } from '../../../src/scene/body/files.ts';", "const BODY_FILES = { clips: 'https://test.invalid/motion.glb' } as const;"],
 ];
 for (const [before, after] of replacements) {

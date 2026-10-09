@@ -348,14 +348,14 @@ def remaining(deadline):
 
 
 def builder_command(python, root, country, mode, juba):
-    command = [python, "-I", str(root / BUILDER), "--country", country, mode]
+    command = [python, "-I", "-B", str(root / BUILDER), "--country", country, mode]
     if juba:
         command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
     return command
 
 
 def make_plans(root, python, countries, juba, deadline, execute):
-    command = [python, "-I", str(root / BUILDER)]
+    command = [python, "-I", "-B", str(root / BUILDER)]
     for country in countries:
         command.extend(["--country", country])
     command.append("--plan")
@@ -606,7 +606,7 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
                 if acquire:
                     command = builder_command(python, root, country, "--acquire", juba)
                 else:
-                    command = [python, "-I", str(root / BUILDER), "--country", country]
+                    command = [python, "-I", "-B", str(root / BUILDER), "--country", country]
                     if juba:
                         command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
                 result = execute(command, cwd=root, timeout=remaining(deadline))
@@ -705,7 +705,7 @@ def supervise(args, raw_argv):
     if "--python" not in forwarded:
         forwarded.extend(["--python", python])
     command = [node, "--experimental-strip-types", str(root / SLOT), "heavy", "--wait-ms", "0", "--",
-               python, "-I", str(root / RUNNER), "--_inside-slot", *forwarded]
+               python, "-I", "-B", str(root / RUNNER), "--_inside-slot", *forwarded]
     process = subprocess.Popen(command, cwd=root, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE, start_new_session=True)
     seconds = args.seconds or MAX_SECONDS

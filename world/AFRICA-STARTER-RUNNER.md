@@ -14,7 +14,7 @@ python3 world/tooling/run_africa_starters.py \
   --max-reserved-bytes 41943040
 ```
 
-The defaults are 600 seconds, five countries, and 40 MiB of potential source reservation. Each uncached country reserves the existing generator's 8 MiB request allowance before the run begins. A request attempt stays owned by the generator's original per-city cache and ledger. The runner never clears or retries a spent request. It invokes generation, `--check`, then `verify-playable-destination.ts` for each city before advancing. The verifier runs with a 256 MiB Node heap. Child output capture is bounded. The runner terminates and reaps its owned process group if the finite outer deadline expires, including grandchildren that outlive the process-group leader.
+The defaults are 600 seconds, five countries, and 40 MiB of potential source reservation. Each uncached country reserves the existing generator's 8 MiB request allowance before the run begins. A request attempt stays owned by the generator's original per-city cache and ledger. The runner never clears or retries a spent request. It invokes generation, `--check`, then `verify-playable-destination.ts` for each city before advancing. The verifier runs with a 256 MiB Node heap. Every Python child runs with `-I -B`, so importing the generator cannot create an untracked source bytecode file before the frozen-tree check. Child output capture is bounded. The runner terminates and reaps its owned process group if the finite outer deadline expires, including grandchildren that outlive the process-group leader.
 
 Resume only the exact frozen contract; its country selection and budgets cannot be changed:
 

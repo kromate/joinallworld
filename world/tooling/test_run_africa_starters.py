@@ -26,7 +26,7 @@ class FixtureCampaign:
     def __call__(self, command, *, cwd, timeout, env=None):
         self.assert_timeout(timeout)
         values = [str(item) for item in command]
-        if runner.BUILDER in values[2]:
+        if any(value.endswith(runner.BUILDER) for value in values):
             countries = [values[index + 1] for index, value in enumerate(values) if value == "--country"]
             mode = next((value for value in ("--plan", "--acquire", "--check") if value in values), "generate")
             if mode == "--plan":

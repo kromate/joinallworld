@@ -210,13 +210,26 @@ try {
       assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: crossfade is followed by actual-shoe floor solving`);
       directionActor.settle();
       const phases = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
+      const contactSolves = [];
       for (const phase of phases) {
         directionActor.stride(phase, false, 0);
         contacts = directionActor.sampleFootContacts();
         assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: direction walk phase ${phase} has no sole below floor`);
-        const planted = directionActor.solveFeet(() => 0);
+        // stride() already runs the strict actual-shoe solve inside the pose port.
+        // The host also solves each sampled pose; repeated calls must be idempotent
+        // and retain the same real-shoe contact result.
+        const planted = directionActor.lastDirectionContactSolve;
+        assert.ok(planted, `${family}: direction walk phase ${phase} recorded its internal actual-shoe solve`);
         assert.equal(planted.limited, false, `${family}: actual shoe contacts reach the flat floor at phase ${phase}`);
         assert.ok(planted.maxError <= 0.004, `${family}: planted shoe residual at phase ${phase} is <=4 mm`);
+        const repeated = directionActor.solveFeet(() => 0);
+        const repeatedContacts = directionActor.sampleFootContacts();
+        assert.equal(repeated.limited, false, `${family}: repeated host solve remains supported at phase ${phase}`);
+        assert.ok(repeated.maxError <= 0.004, `${family}: repeated host solve residual at phase ${phase} is <=4 mm`);
+        assert.ok(Math.abs(repeated.maxError - planted.maxError) <= 1e-6 && repeated.corrected === planted.corrected,
+          `${family}: repeated host solve result is stable at phase ${phase}`);
+        assert.ok(repeatedContacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: repeated host solve leaves no shoe below floor at phase ${phase}`);
+        contactSolves.push({ phase, initial: { ...planted }, repeated: { ...repeated } });
       }
       parent.position.set(0.31, 0.12, -0.21); parent.rotation.set(0, 0.42, 0); parent.scale.setScalar(1.04);
       parent.add(directionActor.object);
@@ -225,6 +238,13 @@ try {
       const raised = directionActor.sampleFootContacts();
       assert.ok(Math.abs(Math.min(...raised.map(({ y }) => y)) - 0.04) <= 0.004,
         `${family}: direction floor is host-derived under translated/scaled/yaw parent`);
+      const parentFloor = (0.04 - parent.position.y) / parent.scale.y;
+      const raisedFirst = directionActor.solveFeet(() => parentFloor);
+      const raisedSecond = directionActor.solveFeet(() => parentFloor);
+      assert.equal(raisedFirst.limited, false, `${family}: transformed-parent first host solve is supported`);
+      assert.equal(raisedSecond.limited, false, `${family}: transformed-parent repeated host solve is supported`);
+      assert.ok(raisedSecond.maxError <= 0.004 && Math.abs(raisedSecond.maxError - raisedFirst.maxError) <= 1e-6,
+        `${family}: transformed-parent repeated solve is stable within 4 mm`);
       parent.remove(directionActor.object);
       directionActor.place(0, 0, 0, 0); directionActor.show('idle', false);
       directionActor.show('interact', false);
@@ -237,7 +257,7 @@ try {
         `${family}: stairs remain an explicit hard refusal in direction mode`);
       assert.throws(() => directionActor.show('sit', false), /requires verified furniture\/body support/,
         `${family}: seated pose remains an explicit hard refusal in direction mode`);
-      directionCoverage.push({ family, mode: directionActor.preparedMetrics.retargetMode, walkPhases: phases,
+      directionCoverage.push({ family, mode: directionActor.preparedMetrics.retargetMode, walkPhases: phases, contactSolves,
         floorPoseCoverage: ['idle', 'walk', 'interact', 'cook', 'eat', 'drink'], unsupported: ['stairs', 'sit', 'lie', 'soak', 'wash'] });
     } finally {
       directionActor.dispose();

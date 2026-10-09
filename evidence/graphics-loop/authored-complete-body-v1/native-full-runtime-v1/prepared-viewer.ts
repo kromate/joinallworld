@@ -256,14 +256,14 @@ const reviewApi = {
 
 async function prepareActors() {
   try {
-    const player = await prepareNativeSkinnedBody({ kit, seed: seeds.player, look: playerLook, sceneScale: 1 });
+    const player = await prepareNativeSkinnedBody({ kit, seed: seeds.player, look: playerLook, sceneScale: 1, retargetMode: 'directions' });
     actors.set('player', player);
     player.object.name = 'Prepared male player';
     player.place(-0.78, 0, 0, 0);
     player.object.traverse((node) => { if (node instanceof THREE.Mesh) { node.castShadow = true; node.receiveShadow = true; } });
     scene.add(player.object);
 
-    const npc = await prepareNativeSkinnedBody({ kit, seed: seeds.npc, look: npcLook, sceneScale: 1 });
+    const npc = await prepareNativeSkinnedBody({ kit, seed: seeds.npc, look: npcLook, sceneScale: 1, retargetMode: 'directions' });
     actors.set('npc', npc);
     npc.object.name = 'Prepared female NPC';
     npc.place(0.78, 0, 0, 0);

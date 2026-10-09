@@ -29,6 +29,7 @@ const sourceColor = source.color.clone();
 const sourceMap = source.map;
 const sourceRoughness = source.roughness;
 const sourceMetalness = source.metalness;
+const sourceSide = source.side;
 const first = createAuthoredClothingPalette(source, { shirt: '#cb674d', trousers: '#36594a' });
 const second = createAuthoredClothingPalette(source, { shirt: '#284f93', trousers: '#d2a83d' });
 assert.notEqual(first.material, source);
@@ -38,6 +39,9 @@ assert.equal(first.material.map, null, 'plain-fabric palette retained the source
 assert.equal(second.material.map, null, 'second actor retained the source color artwork');
 assert.equal(first.material.vertexColors, false, 'plain-fabric palette retained baked vertex colors');
 assert.equal(second.material.vertexColors, false, 'second palette retained baked vertex colors');
+assert.equal(first.material.side, THREE.DoubleSide, 'open-shell plain cloth must render interior-facing fragments');
+assert.equal(second.material.side, THREE.DoubleSide, 'each actor gets the same two-sided shell treatment');
+assert.equal(source.side, sourceSide, 'palette setup mutated the shared source material side');
 assert.equal(source.map, sourceMap, 'palette setup detached or mutated the shared source map');
 assert.equal(first.material.roughness, sourceRoughness, 'solid palette discarded authored roughness');
 assert.equal(first.material.metalness, sourceMetalness, 'solid palette discarded authored PBR metalness');
@@ -80,6 +84,7 @@ originalTexture.addEventListener('dispose', () => { textureDisposed = true; });
 const solidPalette = createAuthoredClothingPalette(mappedMaterial, { shirt: '#ba6750', trousers: '#334d68' });
 assert.equal(solidPalette.material.map, null, 'mapped source was not removed from the palette clone');
 assert.equal(solidPalette.material.vertexColors, false, 'vertex color multiplication was not disabled');
+assert.equal(solidPalette.material.side, THREE.DoubleSide, 'generic open-shell cloth source is two-sided only on its private clone');
 assert.equal(mappedMaterial.map, originalTexture, 'palette detached the shared source texture');
 assert.equal(solidPalette.material.roughness, mappedRoughness, 'map detachment discarded authored roughness');
 let firstDisposed = false, secondDisposed = false, sourceDisposed = false;
@@ -102,6 +107,8 @@ console.log(JSON.stringify({
   sourceMapPreserved: source.map === sourceMap,
   paletteMapDetached: first.material.map === null && second.material.map === null && solidPalette.material.map === null,
   vertexColorMultiplicationDisabled: !first.material.vertexColors && !second.material.vertexColors && !solidPalette.material.vertexColors,
+  openShellsDoubleSided: first.material.side === THREE.DoubleSide && second.material.side === THREE.DoubleSide && solidPalette.material.side === THREE.DoubleSide,
+  sharedSourceSidePreserved: source.side === sourceSide,
   roughnessRetained: first.material.roughness === sourceRoughness,
   shaderMarkers: [AUTHORED_CLOTHING_PALETTE_CONTRACT.vertexMarker, AUTHORED_CLOTHING_PALETTE_CONTRACT.fragmentMarker],
   centerYMetres: AUTHORED_CLOTHING_PALETTE_CONTRACT.centerYMetres,

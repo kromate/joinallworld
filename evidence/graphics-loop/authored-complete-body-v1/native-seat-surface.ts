@@ -81,7 +81,7 @@ function getRelevantBoneIndices(mesh: THREE.SkinnedMesh): readonly number[] {
 
 function rootLocalBonePosition(root: THREE.Object3D, name: string, inverseRoot: THREE.Matrix4): THREE.Vector3 {
   let found: THREE.Bone | undefined;
-  root.traverse((node) => { if (node.isBone && node.name === name) found = node as THREE.Bone; });
+  root.traverse((node) => { if (node instanceof THREE.Bone && node.name === name) found = node; });
   if (!found) fail(`actor is missing ${name}`);
   return found.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot);
 }

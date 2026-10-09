@@ -47,7 +47,9 @@ function asLinearColor(value: THREE.ColorRepresentation): THREE.Color {
  * over a 2 mm band centered at authored rest-local Y=0.91 m. The neutral asset's
  * baked color map is intentionally removed on this plain-fabric path, since
  * multiplying that map by the palette reintroduces unrelated orange/black patches.
- * Roughness and normal settings remain sourced from the authored PBR material.
+ * Roughness and normal settings remain sourced from the authored PBR material. The
+ * clothing is an open shell, so the private plain-cloth clone renders both sides
+ * to avoid backface-culling fragments as elbows and cuffs bend.
  * No vertices, indices, skinning, morphs, or body masks are changed.
  */
 export function createAuthoredClothingPalette(
@@ -66,6 +68,7 @@ export function createAuthoredClothingPalette(
   // dispose/mutate the shared map or geometry attribute.
   material.map = null;
   material.vertexColors = false;
+  material.side = THREE.DoubleSide;
   material.color.setRGB(1, 1, 1);
   const previousOnBeforeCompile = material.onBeforeCompile;
   material.onBeforeCompile = (shader, renderer) => {

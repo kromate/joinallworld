@@ -32,22 +32,33 @@ assert.equal(calls.length, successful.passes.length);
 assert.deepEqual(successful.hipWorld, [seatTopWorld[0], successful.passes.at(-1).hipWorldY, seatTopWorld[2]]);
 
 for (const mode of ['feet-unreachable', 'seat-nonconvergent']) {
-  let hipY = seatTopWorld[1];
+  let solverPasses = 0;
+  let refusal;
   assert.throws(() => solveNativeSeatPose({
     frame, seatTopWorld, floorY: 0.03,
     solver: { applyFrame(actualFrame, support) {
       assert.equal(actualFrame, frame);
-      hipY = support.hipWorld[1];
+      solverPasses++;
       return { clipName: 'sit', support, supportStatus: 'seat-anchored-contact-unverified',
         seatFeetStatus: mode === 'feet-unreachable' ? 'unreachable' : 'supported',
         contactMinY: 0, footSoleMinY: { left: 0, right: 0 }, reach: {} };
     } },
     surface: { sample() {
-      return mode === 'feet-unreachable'
-        ? { minY: seatTopWorld[1], maxY: seatTopWorld[1] + 0.1 }
-        : { minY: hipY - 0.006, maxY: hipY + 0.1 };
+        return mode === 'feet-unreachable'
+          ? { minY: seatTopWorld[1], maxY: seatTopWorld[1] + 0.1 }
+        : { minY: seatTopWorld[1] - 0.006, maxY: seatTopWorld[1] + 0.1 };
     } },
-  }), NativeSeatPoseError, `${mode} must be a hard refusal`);
+  }), (error) => {
+    assert.ok(error instanceof NativeSeatPoseError);
+    refusal = error;
+    return true;
+  }, `${mode} must be a hard refusal`);
+  assert.equal(refusal.passes.length, 3, `${mode} records all bounded attempts`);
+  assert.equal(solverPasses, 3, `${mode} performs exactly the configured maximum attempts`);
+  if (mode === 'seat-nonconvergent') {
+    assert.ok(refusal.passes.every((pass) => Math.abs(pass.residualY - 0.006) < 1e-12),
+      'nonconvergent fixture maintains a fixed 6 mm residual despite hip corrections');
+  }
 }
 assert.throws(() => solveNativeSeatPose({ frame, seatTopWorld: [0, Number.NaN, 0], floorY: 0,
   solver: { applyFrame() { throw new Error('must not reach solver'); } }, surface: { sample() { return { minY: 0, maxY: 0 }; } } }), /finite world-space/);

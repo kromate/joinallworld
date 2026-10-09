@@ -55,6 +55,8 @@ export interface NativePreparedMetrics {
 
 export interface NativePreparedSkinnedBody extends SkinnedBody {
   readonly preparedMetrics: NativePreparedMetrics;
+  /** Result of the most recent direction-mode pose's internal authored-shoe solve. */
+  readonly lastDirectionContactSolve: FootSolveResult | null;
 }
 
 const BONE_ALIASES = Object.freeze({
@@ -372,10 +374,34 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
+  const contactBones = ['mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigRightUpLeg', 'mixamorigRightLeg']
+    .map((name) => bones.get(name))
+    .filter((bone): bone is THREE.Bone => Boolean(bone));
+  if (contactBones.length !== 4) throw new Error('Native authored contact checkpoint lacks thigh/calf bones');
+  const contactBaseline = contactBones.map((bone) => ({ bone, position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), scale: new THREE.Vector3() }));
+  let contactBaselineReady = false;
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;
+  function captureContactBaseline(): void {
+    for (const saved of contactBaseline) {
+      saved.position.copy(saved.bone.position);
+      saved.quaternion.copy(saved.bone.quaternion);
+      saved.scale.copy(saved.bone.scale);
+    }
+    contactBaselineReady = true;
+  }
+  function restoreContactBaseline(): boolean {
+    if (!contactBaselineReady) return false;
+    for (const saved of contactBaseline) {
+      saved.bone.position.copy(saved.position);
+      saved.bone.quaternion.copy(saved.quaternion);
+      saved.bone.scale.copy(saved.scale);
+    }
+    updateActorWorld(root);
+    return true;
+  }
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
       if (frame.clipName !== resolveClip(context.clip)) return false;
@@ -411,9 +437,9 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
         if (directionRetargeter && (result.limited || result.maxError > 0.004)) {
           throw new Error(`Native direction ${context.pose} shoe contact failed (${result.maxError} m, limited=${result.limited})`);
         }
+        if (directionRetargeter) onDirectionContactSolve(result);
         return result;
       };
-      if (directionRetargeter) solveAuthoredContacts();
       const crossfading = Boolean(blend && blend.clip === context.clip);
       if (crossfading && blend) {
         const amount = THREE.MathUtils.smoothstep(context.seconds, 0, blend.fade);
@@ -424,10 +450,11 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
         }
         updateActorWorld(root);
       }
-      // Crossfade changes leg transforms after the source solver has applied
-      // its contact correction. Re-solve against the same host support so the
-      // final blended pose, rather than the pre-blend pose, owns floor contact.
-      if (!directionRetargeter || crossfading) solveAuthoredContacts();
+      // Keep an immutable pre-contact leg pose for host calls to solveFeet().
+      // Each solve must start from the sampled/crossfaded animation pose, not
+      // from a prior IK result, so repeated host solving is deterministic.
+      captureContactBaseline();
+      solveAuthoredContacts();
       wrists.apply(frame);
       hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);
       return true;
@@ -438,6 +465,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       blend = { clip, fade: Math.max(0.001, crossfadeSeconds), from };
     },
     endTransition(): void { blend = null; },
+    restoreContactBaseline,
     restore(): void { directionRetargeter?.restore(); solver.restore(); blend = null; },
   };
 }
@@ -591,7 +619,8 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
         return sampler!.sampleClip(actual, seconds, 'clamp');
       },
     };
-    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, hands, wrists, resolveClip);
+    let lastDirectionContactSolve: FootSolveResult | null = null;
+    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, hands, wrists, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,
@@ -670,7 +699,13 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       get wardrobeError() { return native.wardrobeError; },
       setPresentation(value) { return native.setPresentation(value); },
       sampleFootContacts() { return native.sampleFootContacts(); },
-      solveFeet(heightAt) { return native.solveFeet(heightAt); },
+      solveFeet(heightAt) {
+        posePort.restoreContactBaseline();
+        let solved = native.solveFeet(heightAt);
+        for (let pass = 0; pass < 2 && solved.limited && solved.maxError > 0.002; pass++) solved = native.solveFeet(heightAt);
+        if (directionRetargeter) lastDirectionContactSolve = solved;
+        return solved;
+      },
       get easing() { return native.easing; },
       get pose() { return native.pose; },
       get seated() { return native.seated; },
@@ -687,6 +722,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       wear(look: unknown, nextSeed?: unknown) { return native.wear(look, nextSeed); },
       dispose() { native.dispose(); },
       preparedMetrics,
+      get lastDirectionContactSolve() { return lastDirectionContactSolve; },
     } satisfies NativePreparedSkinnedBody;
     // A second compile-time assignment is intentional: this catches legacy callers' exact interface drift.
     const legacyAssignable: SkinnedBody = result;

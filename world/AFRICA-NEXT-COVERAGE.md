@@ -1,3 +1,23 @@
+# Latest source coverage, 9 October 2026 at 22:06 UTC
+
+The tenth batch completed Niger/Niamey, Burkina Faso/Ouagadougou,
+Guinea-Bissau/Bissau, Mauritania/Nouakchott and Equatorial Guinea/Malabo.
+Initial execution took12.213s; exact-contract resume took2.541s. All15 source
+and request files remained byte-identical; five isolated source/engine checks
+passed. Independent retained/land vertex checks found zero outside declared
+bounds. Packet: `playable-africa-rollout/batches/tenth-five.json`.
+
+There are now **46 foreign generated starter sources**, ten admitted and
+**36 unadmitted**. Production remains **11 open countries including Nigeria**.
+Seven remaining source-inventory countries lack modules: GM,SC,MU,KM,ST,CV,SS.
+South Sudan requires its explicit pinned source-selection packet. The source
+inventory has54 sovereign countries; the game atlas has56 entries. Nigeria's
+original40-city implementation remains unchanged. No runtime or provider upload
+was performed for this batch. Initial metadata prototype acceptance remains
+pinned to its earlier36-foreign-source checkpoint.
+
+Earlier checkpoints below retain their original counts and source pins.
+
 # Latest source coverage, 9 October 2026 at 22:03 UTC
 
 The ninth batch completed Chad/N'Djamena, Eswatini/Mbabane,

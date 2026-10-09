@@ -1,8 +1,8 @@
-# Current world checkpoint, 9 October 2026 at 22:03 UTC
+# Current world checkpoint, 9 October 2026 at 22:06 UTC
 
 Production has **11 green/open African countries**, independently observed on the
-live map and running exact C1. Generated foreign starter source count is **41**;
-31 remain unadmitted and 12 other source-inventory countries lack generated
+live map and running exact C1. Generated foreign starter source count is **46**;
+36 remain unadmitted and seven other source-inventory countries lack generated
 starter modules. Nigeria retains its existing implementation. See
 `production-c1-eleven-country-acceptance.json` and `AFRICA-NEXT-COVERAGE.md`.
 

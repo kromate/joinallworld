@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "base": "92d6db68f61e803370b7d0ae8e822685933b0399",
+  "scope": "Tenth source-only batch: five bounded African starter samples. Actual serial acquisition and exact-contract resume passed; no runtime, native, hosted, production, physical-phone or whole-city acceptance.",
+  "destinationIds": [
+    "niamey",
+    "ouagadougou",
+    "bissau",
+    "nouakchott",
+    "malabo"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1146,
+    "roads": 364,
+    "sourceBytes": 3404398,
+    "extent": "Bounded central OSM samples and selected airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "niamey",
+      "country": "NE",
+      "sourceBytes": 1294350,
+      "roads": 101,
+      "buildings": 350,
+      "retainedVertices": 2557,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        2.09971,
+        13.4695,
+        2.19561,
+        13.533652
+      ]
+    },
+    {
+      "city": "ouagadougou",
+      "country": "BF",
+      "sourceBytes": 836656,
+      "roads": 78,
+      "buildings": 228,
+      "retainedVertices": 1838,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        -1.54167,
+        12.3412,
+        -1.50042,
+        12.387262
+      ]
+    },
+    {
+      "city": "bissau",
+      "country": "GW",
+      "sourceBytes": 394164,
+      "roads": 16,
+      "buildings": 315,
+      "retainedVertices": 1874,
+      "landVertices": 7,
+      "outsideBounds": 0,
+      "bounds": [
+        -15.665596,
+        11.850024,
+        -15.583361,
+        11.906262
+      ]
+    },
+    {
+      "city": "nouakchott",
+      "country": "MR",
+      "sourceBytes": 466951,
+      "roads": 122,
+      "buildings": 157,
+      "retainedVertices": 1803,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        -15.99034,
+        18.071427,
+        -15.957722,
+        18.322
+      ]
+    },
+    {
+      "city": "malabo",
+      "country": "GQ",
+      "sourceBytes": 412277,
+      "roads": 47,
+      "buildings": 96,
+      "retainedVertices": 964,
+      "landVertices": 12,
+      "outsideBounds": 0,
+      "bounds": [
+        8.69672,
+        3.735015,
+        8.798278,
+        3.76727
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/cities/niamey/facts.ts",
+      "bytes": 1448,
+      "sha256": "dbe13c90671088997c88cc429e91ccc75707b99c325c37883d4c64645d212165"
+    },
+    {
+      "path": "src/game/cities/niamey/geometry.ts",
+      "bytes": 91656,
+      "sha256": "4b6b87dafc30d314fcbb318ef01e5af35b38fc5fda8f5d13b2bf056eabd5f63f"
+    },
+    {
+      "path": "src/game/cities/niamey/index.ts",
+      "bytes": 257,
+      "sha256": "77d937c998bb633a9065021df37b4d9b8df0d162b5fe7dcff188fee4dab84580"
+    },
+    {
+      "path": "src/game/cities/niamey/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/niamey/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/niamey.json",
+      "bytes": 3473,
+      "sha256": "f2604c321ec8037c49de768c4df9c16be3ea62fb74d9d6a7fe9dffbadde92077"
+    },
+    {
+      "path": "src/game/cities/ouagadougou/facts.ts",
+      "bytes": 1487,
+      "sha256": "9e5a39b65811e516ba512c45d35dd0506315559f7a1698fcd1acfe1ee3686ea8"
+    },
+    {
+      "path": "src/game/cities/ouagadougou/geometry.ts",
+      "bytes": 66175,
+      "sha256": "00c8658621bff5f2585d183868c50f345f36d76197a19f1e6ba6ea24729244f7"
+    },
+    {
+      "path": "src/game/cities/ouagadougou/index.ts",
+      "bytes": 262,
+      "sha256": "455c0c0a771e939a6cca774c8170360e8624a2ceda272fc2a7fdfc2b4773e5c2"
+    },
+    {
+      "path": "src/game/cities/ouagadougou/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/ouagadougou/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/ouagadougou.json",
+      "bytes": 3514,
+      "sha256": "9ce307880e8eb314ec4d7456c39f603de687d4f31e6e5b31babc20f760a119ba"
+    },
+    {
+      "path": "src/game/cities/bissau/facts.ts",
+      "bytes": 1480,
+      "sha256": "1cb961e4b9479eaa6e769ed5c47b0b510f921253fdbe5e9ed83029a3c2100578"
+    },
+    {
+      "path": "src/game/cities/bissau/geometry.ts",
+      "bytes": 70916,
+      "sha256": "d1c831f1a859b666e50a218679f86792605f032e8f7b1915b077adf9ea0fd4f0"
+    },
+    {
+      "path": "src/game/cities/bissau/index.ts",
+      "bytes": 257,
+      "sha256": "f7f5f46b07e08090a406fe60053563bed551e2bcac0fe614302fbfe4d7887702"
+    },
+    {
+      "path": "src/game/cities/bissau/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/bissau/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/bissau.json",
+      "bytes": 3515,
+      "sha256": "263f40f5bcd0c9a6149c1092ee85278b01c25db9e7c2405bddc47ac2a6af47e2"
+    },
+    {
+      "path": "src/game/cities/nouakchott/facts.ts",
+      "bytes": 1490,
+      "sha256": "249985ba8ab14497a3c5d8a54275846843658839964b5f07a0eeec61b52717c6"
+    },
+    {
+      "path": "src/game/cities/nouakchott/geometry.ts",
+      "bytes": 67007,
+      "sha256": "c8698ba23c23aa05d9a4b779e8b54fc372fd9a4bc9ce1c0e00dfdafeb25892bb"
+    },
+    {
+      "path": "src/game/cities/nouakchott/index.ts",
+      "bytes": 261,
+      "sha256": "b16d6d8d4cae05083e163c1f2ca3a60779c5d48e6f40914a93b64fac44ab4968"
+    },
+    {
+      "path": "src/game/cities/nouakchott/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/nouakchott/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/nouakchott.json",
+      "bytes": 3529,
+      "sha256": "8f7f06e62d6a0eca2d5e1e1dd0f94955c03507f3cf1fb5332bbabc6dc07a2fe5"
+    },
+    {
+      "path": "src/game/cities/malabo/facts.ts",
+      "bytes": 1454,
+      "sha256": "b5dd77235841118667fa80cf35304015a5b526e83593e7a7adb1b73dfb02568a"
+    },
+    {
+      "path": "src/game/cities/malabo/geometry.ts",
+      "bytes": 31825,
+      "sha256": "62b4a5960983778c4ab3d3c8c678db8d09dc23af319228e6e5267b114ff2fca3"
+    },
+    {
+      "path": "src/game/cities/malabo/index.ts",
+      "bytes": 257,
+      "sha256": "bba2802ca00d67166e890bbacc5cba77fb00cf218b8904b4bdb941ef279b6621"
+    },
+    {
+      "path": "src/game/cities/malabo/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/malabo/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/malabo.json",
+      "bytes": 3476,
+      "sha256": "e08b3dfd9f1daa7efbd9bb6cba9cab583e19760194ffb9a28410fc12af701350"
+    },
+    {
+      "path": "scripts/agent-slot.ts",
+      "bytes": 14218,
+      "sha256": "873fcf993506655018cffff78fc37b9dce92410ffba184bd92360aa9a77bb566"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/tooling/atomic_starter_publication.py",
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43555,
+      "sha256": "af8d2348113de428109ff6abe4a44b9fea777dd39041965c44e0265cf385f3bb"
+    }
+  ],
+  "validation": {
+    "contractSha256": "bdaa5cc26612cdb4486b19111513b9c1efc0258058f9d70fd76f740c3dc6dab6",
+    "status": "complete",
+    "actualSerialRun": true,
+    "actualExactContractResume": true,
+    "windows": [
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 12.213,
+        "finishedAt": "2026-10-09T22:04:30Z",
+        "startedAt": "2026-10-09T22:04:18Z"
+      },
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 2.541,
+        "finishedAt": "2026-10-09T22:04:42Z",
+        "startedAt": "2026-10-09T22:04:40Z"
+      }
+    ],
+    "allFiveSourceAndIsolatedEngineVerified": true,
+    "fifteenSourceAndRequestFilesUnchanged": true,
+    "allRetainedAndLandCoordinatesWithinBounds": true,
+    "auditPath": ".cache/world-build/evidence/africa-tenth-resume-audit.json",
+    "auditSha256": "56861742820d7bd1aeb81cc20ccd30a229925b15d99557fb004b4ace88574aa9",
+    "contractPath": ".cache/world-build/playable-africa-runs/bdaa5cc26612cdb4486b19111513b9c1efc0258058f9d70fd76f740c3dc6dab6/contract.json",
+    "contractFileSha256": "8c039efca5da1287962dc350eda1fc7d478a8ee2ece029f74399b3ed09ec7530",
+    "reportPath": ".cache/world-build/playable-africa-runs/bdaa5cc26612cdb4486b19111513b9c1efc0258058f9d70fd76f740c3dc6dab6/report.json",
+    "reportSha256": "d56a48356d29701c9a146dd1081379089dd2e8128a40ed2c24467eca40596886",
+    "maxCountries": 5,
+    "maxPotentialReservationBytes": 41943040,
+    "secondsPerWindow": 60
+  },
+  "limitations": [
+    "Natural Earth city/capital labels can be stale.",
+    "OurAirports records do not certify current operations, routes or official ARPs.",
+    "Unmeasured building heights are estimates and visitor venues are fictional gameplay content.",
+    "Shared runtime catalogue/routes remain deployed C1; these modules alone do not open countries."
+  ]
+}

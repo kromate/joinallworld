@@ -1,0 +1,57 @@
+name: NPC startup-fix v2 corrected-entry CPU package
+
+on:
+  push:
+    branches:
+      - codex/graphics-environment-npc-startup-fix-v3-package-v3
+
+permissions:
+  contents: read
+
+concurrency:
+  group: environment-npc-startup-fix-v3-package-v3-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run reviewed serial split compilation and one-copy finalization
+        run: python3 evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/run-bounded-linux-package-v2.py
+
+      - name: Upload v7 source pins, phase receipts, static routes, and bounded result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-npc-startup-fix-v3-package-v3-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/source-pins-npc-v2.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/source-precompile-v7.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/source-postcompile-v7.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/vendor-v7-record.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/addons-v7-record.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/app-v7-record.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/compile-v7-record.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/static-npc-v2/**
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/static-fixture-npc-v2/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/finalizer-pins-v7.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/finalization-v7-observed.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/review-host-v7-staged.json
+            evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14

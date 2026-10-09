@@ -1,0 +1,67 @@
+{
+  "schema": "environment-npc-v1-entry-mismatch-witness/1",
+  "sourceRunId": "37911271949",
+  "sourceCommit": "0da02ca0f0e0c4350f2754615f58b2dcd6eaed37",
+  "htmlPath": "static-npc-v1/index.html",
+  "htmlBytes": 6319,
+  "htmlSha256": "7eb23066dcf3f0362b95d4001cba5bb17203e4c6785fede9922b249dc226fccb",
+  "htmlModuleTag": "<script type=\"module\" src=\"./app/viewer.js\"></script>",
+  "manifestPath": "static-npc-v1/build-manifest.json",
+  "manifestBytes": 3651556,
+  "manifestSha256": "cfbe9edd8e6f0a4fec998e2584245512b7a5b10a4e66724ea04dd4aa4e8d3e30",
+  "compiledEntry": {
+    "path": "app/viewer-npc-v1.js",
+    "bytes": 1697314,
+    "sha256": "f5270d9e1ad0420b008b02150b4d1e6c165b8be69b3ca6fdd449fb5b215f492b"
+  },
+  "conclusion": "Actual v1 HTML module URL does not resolve to the actual compiled output path; the package must fail before publication/hosting.",
+  "actualEvidence": {
+    "artifactRunId": "37911271949",
+    "cpuSourceCommit": "0da02ca0f0e0c4350f2754615f58b2dcd6eaed37",
+    "indexPath": "static-npc-v1/index.html",
+    "indexBytes": 6319,
+    "indexSha256": "7eb23066dcf3f0362b95d4001cba5bb17203e4c6785fede9922b249dc226fccb",
+    "manifestPath": "static-npc-v1/build-manifest.json",
+    "manifestBytes": 3651556,
+    "manifestSha256": "cfbe9edd8e6f0a4fec998e2584245512b7a5b10a4e66724ea04dd4aa4e8d3e30"
+  },
+  "actualManifestImportMap": {
+    "three": "./vendor/three.module.js",
+    "three/examples/jsm/libs/meshopt_decoder.module.js": "./vendor/addons/libs/meshopt_decoder.module.js",
+    "three/examples/jsm/loaders/GLTFLoader.js": "./vendor/addons/loaders/GLTFLoader.js",
+    "three/examples/jsm/utils/BufferGeometryUtils.js": "./vendor/addons/utils/BufferGeometryUtils.js",
+    "three/examples/jsm/utils/SkeletonUtils.js": "./vendor/addons/utils/SkeletonUtils.js"
+  },
+  "actualManifestRouteOutputs": [
+    {
+      "path": "app/viewer-npc-v1.js",
+      "bytes": 1697314,
+      "sha256": "f5270d9e1ad0420b008b02150b4d1e6c165b8be69b3ca6fdd449fb5b215f492b"
+    },
+    {
+      "path": "vendor/addons/libs/meshopt_decoder.module.js",
+      "bytes": 25249,
+      "sha256": "59b8a7fbefeba961fbd468d98fc315918723f147da6d4f69eb68bb0abc67ec96"
+    },
+    {
+      "path": "vendor/addons/loaders/GLTFLoader.js",
+      "bytes": 103044,
+      "sha256": "33588af380ffa6834e97ea41b113604479c951bf7d874233db727b5191468fb7"
+    },
+    {
+      "path": "vendor/addons/utils/BufferGeometryUtils.js",
+      "bytes": 28374,
+      "sha256": "bfe950793398c1eec825c64e63101ffe98d1777f9aef8ae574f979d227693cd8"
+    },
+    {
+      "path": "vendor/addons/utils/SkeletonUtils.js",
+      "bytes": 8432,
+      "sha256": "9c767cf2f5be9f554a316ab36e7503e25c6bc064318b7a08903d16cf0b8e5576"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "bytes": 559711,
+      "sha256": "ea626a6427b8f8e3cec860230175c3f1914e2335d382f9e43fd4cd0ffaf9c6ce"
+    }
+  ]
+}

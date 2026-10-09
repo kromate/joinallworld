@@ -1,0 +1,220 @@
+{
+  "schema": "environment-next-phase-v7-npc-cpu-package-v3-publication-inputs/1",
+  "status": "SOURCE_ONLY_ADDITIVE_PUBLICATION_INPUTS_NOT_BUILT",
+  "parentCpuCommit": "0da02ca0f0e0c4350f2754615f58b2dcd6eaed37",
+  "failedV1Run": "37911271949",
+  "failure": "Actual v1 package index.html requests ./app/viewer.js but manifest contains app/viewer-npc-v1.js; v2 corrects HTML to the compiler-emitted hashed entry without aliasing.",
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/README.md",
+      "bytes": 744,
+      "sha256": "da4897ca92d20c996d281557d8b81f8aef1ae9e2999c4beea7621fbf6a6ed445"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/README.md",
+      "bytes": 1301,
+      "sha256": "04b35a979821a3ab8fd440309fe324e3f54025279a9daa0330a473a0cd0aff0c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/REMOTE-REVIEW-NOTES.md",
+      "bytes": 1242,
+      "sha256": "5490489b78993b3521c1cde6ac113ce53cac6dbaf57bbd3af109d839a3d51049"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/actual-v1-entry-witness.json",
+      "bytes": 2851,
+      "sha256": "697a5995c6dad39e97780b8a38dbb8796d10a9a309795b6ce0256ceca341ce73"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/compile-addons-v7.mjs",
+      "bytes": 3362,
+      "sha256": "31658e1324baa5b2b54a636dabedc4a6f7bc10a6bb1d5bcf7c96e79ffd54abe2"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/compile-app-v7.mjs",
+      "bytes": 12172,
+      "sha256": "62e3e52de69a88955d5a0df545f707572a9167a8e8790d031f60c17c1bd5b318"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/compile-vendor-v7.mjs",
+      "bytes": 2865,
+      "sha256": "0b593fe2802deb6039586421d3d7449fff99097d66a8c340a226242d28996928"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/finalize-package-v7.mjs",
+      "bytes": 8141,
+      "sha256": "d7a10514685bd4c7c8fc98e40413f183b01c2a96dd33f6b1acc3c6d018e9c9a1"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/html-entry-contract-npc-v2.mjs",
+      "bytes": 5649,
+      "sha256": "bca54c3f507d6583f85417c774c76cedf485efe4913f8f4afb9f6a1ca3450a46"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/html-entry-contract-npc-v2.test.mjs",
+      "bytes": 3503,
+      "sha256": "8a1fdab1e3d7f2e397a47d43bcbb538fb35f6b442ab88770e08ed9f7dcd39d38"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/phase-common-v7.mjs",
+      "bytes": 1925,
+      "sha256": "ac492744f4bc470992a8479a49ac3611f5ed35265479076034310efcefb89c25"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/prepare-review-host-v7.mjs",
+      "bytes": 2726,
+      "sha256": "53f5e03b3d1839c3af5007a94d4aaa3f71cfce80a25a00e269465806fa5c7006"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/run-bounded-linux-package-v2.py",
+      "bytes": 14543,
+      "sha256": "52bbeefb8ff418b6b5335640de0314be49969da14b9773c09a9d43f19c66aa93"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/seal-compiled-output-v7.mjs",
+      "bytes": 6983,
+      "sha256": "dccd93db48f1f02e8ef3c39d0a3eaca03684ccf526fdf6846e19cca21a4a4533"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/seal-finalizer-v7.mjs",
+      "bytes": 2603,
+      "sha256": "a6b2ad01b0059d47335d2df469e5a685d9a298e440cdc6d6e692563acd1b985a"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/seal-source-pins-v7.mjs",
+      "bytes": 6557,
+      "sha256": "769eedcb7f309d72efb673042f5b900f3f43c9b2b4fabda3449f8239ded35176"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/serve-review-host-v7.py",
+      "bytes": 14674,
+      "sha256": "9cb07cba26d92901f34112b62f9214fe14668ee9ff2e4643264fcf5c99cfb74c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/verify-actual-package.py",
+      "bytes": 5166,
+      "sha256": "5edc5f0887d3ea77e157ee19b1b790e35775587b086f30f7623de24baabd9496"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/verify-source-pins-v7.mjs",
+      "bytes": 1899,
+      "sha256": "037f8015940b54bda65d3a1208ead566d1936b80824e6c298704e2977cc893d4"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/workflow-package-v2.yml",
+      "bytes": 2677,
+      "sha256": "12c045f6f7263b9c9ca22ce0576fb5983294d19d7ae2af014f90f0dd6f71dc8c"
+    }
+  ],
+  "frozenV1Inputs": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/root-local-integration.json",
+      "bytes": 734,
+      "sha256": "ef7b2a61a87a1889957e0ce7006662fe1007c4f50271d17ec77468f730290385"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/root-integrated-startup-tests.json",
+      "bytes": 323,
+      "sha256": "7075e3348261c52c4f91eba5f4a806465f5a347ed395c4868889cc4370f0a850"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/root-integrated-startup-tests.log",
+      "bytes": 1134,
+      "sha256": "1f84739a98360cc71c8871db2d50a2b4e15faa452d25ef1a4dcf883833076739"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-build.ts",
+      "bytes": 15331,
+      "sha256": "f855faf42e824195c7f2bab31886d31730d9fa8ef7b8b2f3e28cb9c2049ee1f1"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-home-scene.ts",
+      "bytes": 90127,
+      "sha256": "81439f8017a4f083e446874627a3253a8ffd86869c565f83a18479fa85e85b04"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-neighbourhood-scene.ts",
+      "bytes": 30412,
+      "sha256": "382e15151ba17a11b6203ca93e8acbc90125daa517178b2a00a12d841a857501"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-venue-scenes.ts",
+      "bytes": 81892,
+      "sha256": "e66e15829a1c0def86053c4ca9bd96f352021615fee9d294e01bd88611c01a02"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-world.ts",
+      "bytes": 103185,
+      "sha256": "e07bd950da62f56fabe0a454b3e8682b52fa041effb027fb1448003eecdddbcc"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/readiness-protocol-v6.mjs",
+      "bytes": 3362,
+      "sha256": "aab0a55ebcc098b162b218521e35afc770e4fcb08aa25add04053689b6f41e38"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/readiness-protocol-v6.d.mts",
+      "bytes": 1685,
+      "sha256": "0719bb2c0a039f0c982d2a446a251a28cdef1c78b4c0502edf4e8ee1f7f34a3a"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/readiness-protocol-v6.test.mjs",
+      "bytes": 3986,
+      "sha256": "abafe358adaf9108524bc90fc626a88b365e450f3533d1d0f505c7276caa2ef3"
+    },
+    {
+      "path": "src/venue-world.ts",
+      "bytes": 103524,
+      "sha256": "837e64cf31ab499f72732f4d3e76c5a278815206a8c741ff50280a13968cbc59"
+    },
+    {
+      "path": "src/scene/body/startup-gate.ts",
+      "bytes": 1279,
+      "sha256": "f3e4021b278ddf00f3b7f6fcf1134c1e705091c6bce823d8038ab5a0a97b829e"
+    },
+    {
+      "path": "src/scene/body/startup-gate.test.ts",
+      "bytes": 3172,
+      "sha256": "b19d25826b962e5fd34d3e01aa0226bb3f00e91c5afc12c9c7d386ad8e109d7c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/index-npc-v1.html",
+      "bytes": 5871,
+      "sha256": "1f8d55619a4e44895605594ff1965c25ce87f80d366046fc19e2ad07044926d4"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/viewer-npc-v1.ts",
+      "bytes": 40550,
+      "sha256": "8eb1fee9fae87bbbf8d38893f01f02d2553cde9f296f3b65b8b51715faa5a0de"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/downloaded-37911271949/source-pins-npc-v1.json",
+      "bytes": 1645971,
+      "sha256": "a09ae72bb74ff945317129d4fd5533b1695c4db21733a3f099f28cd6d9f8c719"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/downloaded-37911271949/app-v7-record.json",
+      "bytes": 117933,
+      "sha256": "ff018056bc3b5e70dfe6412ce113dc1e7e10756cebd6b61f3a593583928467c4"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/downloaded-37911271949/static-npc-v1/index.html",
+      "bytes": 6319,
+      "sha256": "7eb23066dcf3f0362b95d4001cba5bb17203e4c6785fede9922b249dc226fccb"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/downloaded-37911271949/static-npc-v1/build-manifest.json",
+      "bytes": 3651556,
+      "sha256": "cfbe9edd8e6f0a4fec998e2584245512b7a5b10a4e66724ea04dd4aa4e8d3e30"
+    }
+  ],
+  "excludes": [
+    "node_modules",
+    "remote-results",
+    "downloaded artifacts except explicitly hashed v1 evidence rows above",
+    "generated source pin manifest",
+    "static build outputs",
+    "copied v1 render/controller duplicates; source seal references original v1 recipe paths"
+  ],
+  "rootAdditionalFix": "Derive stylesheet from emitted entry cssBundle metadata; validate every stylesheet target in compiler/finalizer/host, reject missing aliased CSS filename. v2 untouched."
+}

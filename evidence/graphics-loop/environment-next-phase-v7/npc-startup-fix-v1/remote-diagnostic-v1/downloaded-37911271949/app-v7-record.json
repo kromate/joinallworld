@@ -1,0 +1,3396 @@
+{
+  "schema": "environment-next-phase-v7-app-record/1",
+  "status": "APPLICATION_COMPILED",
+  "sourcePinsSha256": "a09ae72bb74ff945317129d4fd5533b1695c4db21733a3f099f28cd6d9f8c719",
+  "consumedInputs": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-build.ts",
+      "sha256": "f855faf42e824195c7f2bab31886d31730d9fa8ef7b8b2f3e28cb9c2049ee1f1"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-home-scene.ts",
+      "sha256": "81439f8017a4f083e446874627a3253a8ffd86869c565f83a18479fa85e85b04"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-neighbourhood-scene.ts",
+      "sha256": "382e15151ba17a11b6203ca93e8acbc90125daa517178b2a00a12d841a857501"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-venue-scenes.ts",
+      "sha256": "e66e15829a1c0def86053c4ca9bd96f352021615fee9d294e01bd88611c01a02"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/candidate-world.ts",
+      "sha256": "e07bd950da62f56fabe0a454b3e8682b52fa041effb027fb1448003eecdddbcc"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/viewer-npc-v1.ts",
+      "sha256": "8eb1fee9fae87bbbf8d38893f01f02d2553cde9f296f3b65b8b51715faa5a0de"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/readiness-protocol-v6.mjs",
+      "sha256": "aab0a55ebcc098b162b218521e35afc770e4fcb08aa25add04053689b6f41e38"
+    },
+    {
+      "path": "src/budgets.ts",
+      "sha256": "998b98cd1d1d2be509eb50fa32bd53551c56aa2409098374a56a1db39bed07a2"
+    },
+    {
+      "path": "src/campus/unilag/content.ts",
+      "sha256": "91998660fdcee0be20f7cc0074b4f7750ca34f54313620f445a14d100966094b"
+    },
+    {
+      "path": "src/campus/unilag/curriculum.ts",
+      "sha256": "de22c69acdf95720f11d99ffe233f77bec90936c63ac47c56fd6674095884174"
+    },
+    {
+      "path": "src/campus/unilag/games.ts",
+      "sha256": "f4839685cef6ceaa84631781300f7a0ce94414735230d56e1f6db7e0c44d808f"
+    },
+    {
+      "path": "src/campus/unilag/geo.ts",
+      "sha256": "0192b72561bc15182545c5da70397ec7987c2e14692c70fcffa1d0279dfba72d"
+    },
+    {
+      "path": "src/campus/unilag/landscape.ts",
+      "sha256": "79d921c270896f14234237fef40b6f5c0a27b42dc1839d3696a7b6f06fb9faaa"
+    },
+    {
+      "path": "src/campus/unilag/layout.ts",
+      "sha256": "860078f7bde1b8eb9221f5f095af03e22c6e804977274794ccb446a26f61a448"
+    },
+    {
+      "path": "src/campus/unilag/map.generated.ts",
+      "sha256": "14fcb5e7ad0c88a805096c55783cba6a7212beaac2857e9d8c7c975c6ea17594"
+    },
+    {
+      "path": "src/campus/unilag/navigation.ts",
+      "sha256": "c950e372b28e47541967e59df44b3015dc18f66b71483984710203af3392e249"
+    },
+    {
+      "path": "src/campus/unilag/shuttle.ts",
+      "sha256": "dceb0c857a57387ae669be5b9bbe3566a692157895eaad98021291b32b5254ef"
+    },
+    {
+      "path": "src/campus/unilag/slices.ts",
+      "sha256": "635c749a6a156ddf175b0c63792e9c691b0ce0e502788af62208c0ab132bbc91"
+    },
+    {
+      "path": "src/campus/unilag/spot-names.ts",
+      "sha256": "0d4be477ed8f4fc3b6815603457762cf69304b6b5621143d4916887f24a39ccd"
+    },
+    {
+      "path": "src/campus/unilag/student.ts",
+      "sha256": "bd8e4b51ef6bb713a7fe5cad209a9b5b5596e46e483734ac9b62748f7e330753"
+    },
+    {
+      "path": "src/campus/unilag/trail.ts",
+      "sha256": "e9bd108163378b299b26558af731dfd5786e3554db7b0c3dbd02707bb8878fd9"
+    },
+    {
+      "path": "src/campus/unilag/volunteer.ts",
+      "sha256": "f92e46457e7c8583f8d4a8438a9672a15b97db443a36313eab02868f6b73201b"
+    },
+    {
+      "path": "src/campus/unilag/walk.ts",
+      "sha256": "f9d5acd0db9c92415334aa878e2c50c281912b34d8283dd91dff998bdc9db1c6"
+    },
+    {
+      "path": "src/game/api.ts",
+      "sha256": "d45cb476436749d2c92aaec90b7452c083b9c0087acef28116eae231c91f67d3"
+    },
+    {
+      "path": "src/game/calendar.ts",
+      "sha256": "e6731e64c2aea901e30bb4366259d01e79472a31cb01fbd98d461db39f7bfc7d"
+    },
+    {
+      "path": "src/game/character-effects.ts",
+      "sha256": "456715cb2e1539c2dabd19d5b8ea18546b4815c9c98ebcc8e716e29449020d2b"
+    },
+    {
+      "path": "src/game/cities/abakaliki/content.ts",
+      "sha256": "2a2e3e7c0c43829e66f5d95297358f2f287c7062a6a98889b37f012e58049cb8"
+    },
+    {
+      "path": "src/game/cities/abakaliki/geography.ts",
+      "sha256": "f9c1e5896e006b08bc03629afe0d7903ee9bf76f724e24f789682ebdc3edd64b"
+    },
+    {
+      "path": "src/game/cities/abakaliki/index.ts",
+      "sha256": "6e1cc05b063c4713eac610fc09df81a4b64d69c52d374ca6346e30d33864117e"
+    },
+    {
+      "path": "src/game/cities/abakaliki/map.ts",
+      "sha256": "3a1acb249d66741cac64bb51830b4ceec3d3f68385eb86381d9f7f3548f232ef"
+    },
+    {
+      "path": "src/game/cities/abakaliki/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/abakaliki/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/abakaliki/spec.ts",
+      "sha256": "a9d8ff1061541e26fc5108d5af484feb85cb90e2570657d0cdaf995bcc4232c4"
+    },
+    {
+      "path": "src/game/cities/abeokuta/content.ts",
+      "sha256": "dde01a79998c23a108e26eff5fd1b68445c755cd907a64a4e53a5cffa689bb50"
+    },
+    {
+      "path": "src/game/cities/abeokuta/index.ts",
+      "sha256": "3206af018f69d8ce811ffdca11609d8a2e1ebc109a42269fbeadbf93b3ef17fd"
+    },
+    {
+      "path": "src/game/cities/abeokuta/map.ts",
+      "sha256": "74d3f3426439897848013f82685e8e094f6133e288ec0eeab48ea7a78ed76cd1"
+    },
+    {
+      "path": "src/game/cities/abeokuta/rail.ts",
+      "sha256": "edcf4851f880e2da6e0be485159919119d9b15831485091a4560880a3b527ef9"
+    },
+    {
+      "path": "src/game/cities/abeokuta/rules.ts",
+      "sha256": "0ae625d6f441b624d7e5885576ba17e08a2b7ba04146e979a59f4f9bbd879563"
+    },
+    {
+      "path": "src/game/cities/abuja/content.ts",
+      "sha256": "b8440ebe249f3790262165f4513f3222bd36538152527bbec0a26a0672033842"
+    },
+    {
+      "path": "src/game/cities/abuja/descriptions.ts",
+      "sha256": "b373244e12a817d0675abd1c5c91f060ebaf7110d9349df79bf5ea8e22b02cd2"
+    },
+    {
+      "path": "src/game/cities/abuja/geometry.ts",
+      "sha256": "a06993c9f0b58ca6dba9deab9f81c95451e3d2cc91b0e78d6b3de107b26d55d6"
+    },
+    {
+      "path": "src/game/cities/abuja/index.ts",
+      "sha256": "af141adcf4021e8afaf544273b333b92ca378fdbc310b36d17317ca71a27bbb9"
+    },
+    {
+      "path": "src/game/cities/abuja/landmarks.ts",
+      "sha256": "a93ca538c679246eb5cd06186fe240b3126d2c1bf8ae990ce46a30d595e55478"
+    },
+    {
+      "path": "src/game/cities/abuja/links.ts",
+      "sha256": "542a33e2c89f51fd22ba19f81f7b1af2a0eb3bba59ca4b89001d9dad8662e4da"
+    },
+    {
+      "path": "src/game/cities/abuja/map.ts",
+      "sha256": "a09896e22327ccca7c3c62997bce0d292b6f6abacaced3f7553a0b096da4b84c"
+    },
+    {
+      "path": "src/game/cities/abuja/rules.ts",
+      "sha256": "207fd0f9ba6534ae2e4feffcb493aea9943f0a9c9a446b5fdbd402078d483aef"
+    },
+    {
+      "path": "src/game/cities/abuja/scenery.ts",
+      "sha256": "313759f9e0775cf1c729de7d3de5907c7def46a5d84cd1a2517d333833620edb"
+    },
+    {
+      "path": "src/game/cities/abuja/scenes.ts",
+      "sha256": "efcc9c34c513e3627ef588ea373db8abda2a157c9544d8f2d7767e143eef7c15"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/content.ts",
+      "sha256": "e0640e3043c3231de98f6b49de4579877b164a32e299da47f4a9e556d6e72f65"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/geography.ts",
+      "sha256": "9ba3bdbe6a76cdfd712699db4a9bdb7a061776be8536343ec62a1f5269382667"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/index.ts",
+      "sha256": "1a7e1a3c1da7ad35724913c01048901bd09b637b7b62de965cd7bc46f92c6a75"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/map.ts",
+      "sha256": "a2203cc953c323d2fa2fd0bc48abdb0b22722ca59843d98c1ec94552c4df2425"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/ado-ekiti/spec.ts",
+      "sha256": "adad97aba1bd8277dff77f260b3921535ca1bb34043bac7bdb691f7853c9189e"
+    },
+    {
+      "path": "src/game/cities/akure/content.ts",
+      "sha256": "8195c1a2b44faf47fe41988520867f740cdb81c2b66979d13337494037d5cf6d"
+    },
+    {
+      "path": "src/game/cities/akure/geography.ts",
+      "sha256": "36c77becef7589a6af5dc190fcef9b5d405c121afd0435eb2495ce71c236ed77"
+    },
+    {
+      "path": "src/game/cities/akure/index.ts",
+      "sha256": "47f0d20352e9fc93d98fc113bc91e1244e1a7f8c15ebccda5bc0754f01b7c4aa"
+    },
+    {
+      "path": "src/game/cities/akure/map.ts",
+      "sha256": "036651f895f2e1f63ff9ec001b0609b02e2831f65fb6fe349f149fd4c0feabc8"
+    },
+    {
+      "path": "src/game/cities/akure/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/akure/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/akure/spec.ts",
+      "sha256": "decb1c34c22e9297fb53fb7ec22142c74071440979f77ff352e3c1d904cac2dc"
+    },
+    {
+      "path": "src/game/cities/asaba/content.ts",
+      "sha256": "184818c4bb67f3aa4716f767d2de2f57ee637fccc37441d74b9ebb6c1ad00350"
+    },
+    {
+      "path": "src/game/cities/asaba/geography.ts",
+      "sha256": "3ad2ad106443a88b3535d0e2a2f4bd899d4a6da3dad8461f72178a0d827b955e"
+    },
+    {
+      "path": "src/game/cities/asaba/index.ts",
+      "sha256": "b5403f75f5f6a50840727fbc95f4dad54d244181a327986dfc5dc5ae12a69281"
+    },
+    {
+      "path": "src/game/cities/asaba/map.ts",
+      "sha256": "ac81bedebd4ab45946d49f4d00bdd42c77821429bd50611965951406afe37531"
+    },
+    {
+      "path": "src/game/cities/asaba/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/asaba/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/asaba/spec.ts",
+      "sha256": "a706e2c0bc2dc59744a41ed7de11dd19cd566ef7b345489bf8eb6cd40cbc161a"
+    },
+    {
+      "path": "src/game/cities/awka/content.ts",
+      "sha256": "098439d3aca72b6b41893f1a975b993061f8716e212d37b4591370ea4ef3074f"
+    },
+    {
+      "path": "src/game/cities/awka/geography.ts",
+      "sha256": "5f1f01128d58407ad2dea1a6b87bf1526d9a1959bf6a30f599c1ba603469a608"
+    },
+    {
+      "path": "src/game/cities/awka/index.ts",
+      "sha256": "36670773b10bfc1a26d7d7a2388bb4023ff233c8b00674f753a3b80bc66e0320"
+    },
+    {
+      "path": "src/game/cities/awka/map.ts",
+      "sha256": "f842db4d569def837642a13623a5cf9810cb6b5da1a14973534cef05cbc1bc03"
+    },
+    {
+      "path": "src/game/cities/awka/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/awka/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/awka/spec.ts",
+      "sha256": "68eb2f0094778d3b27b3b3af9ba3cc2a57ff6e8d275a510d9d890bbceaa45695"
+    },
+    {
+      "path": "src/game/cities/bauchi/content.ts",
+      "sha256": "52657c0b64fc17e6e88ee5dc4353ff29c3b81342a59b39491ceb2766b4978bb9"
+    },
+    {
+      "path": "src/game/cities/bauchi/geography.ts",
+      "sha256": "5fff2e213ebba6ac3e6315acf9ef0d20bc2b3349909c9282f50f03dec4d5bc13"
+    },
+    {
+      "path": "src/game/cities/bauchi/index.ts",
+      "sha256": "0481fb97894d3d4b056a4d6fe6cedbc086f66fcdb67f295926026ee7b89b582f"
+    },
+    {
+      "path": "src/game/cities/bauchi/map.ts",
+      "sha256": "e86b2e79080ded1a77d0234d4b40efc497fb18d482435e16d51ef31b83306936"
+    },
+    {
+      "path": "src/game/cities/bauchi/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/bauchi/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/bauchi/spec.ts",
+      "sha256": "25e10ed402a5e1d969189a7e7ce5266cca5fd058b90b0bfcc3780434aa9e36e6"
+    },
+    {
+      "path": "src/game/cities/benin-city/content.ts",
+      "sha256": "32172a545b5e8b11f6a912d2b22b80c2312568b0cb1a99be9ab5c0ac976fd233"
+    },
+    {
+      "path": "src/game/cities/benin-city/geography.ts",
+      "sha256": "6a1c7ce4ef00d781224fb7a0251482f933c53975b4f46276ec3d31e90c1cec82"
+    },
+    {
+      "path": "src/game/cities/benin-city/index.ts",
+      "sha256": "9b6a688acdf3cc4a29d3144ed0933e29ba3f61a0bc42fa1c6455cc693dfee557"
+    },
+    {
+      "path": "src/game/cities/benin-city/map.ts",
+      "sha256": "abada535e78f2b53f13d16a85fb41a2b17e65afc8f81ee47131876b661a839fe"
+    },
+    {
+      "path": "src/game/cities/benin-city/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/benin-city/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/benin-city/spec.ts",
+      "sha256": "cd1e4c719bcc0c08cc5f7a857e8b6103eeb0c669c78ed5d9366086a8ef0b20a4"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/content.ts",
+      "sha256": "302e4f3c5c0320b5c8b869d098119bb354e9ea41de9f998b0bafaa2d9afb2666"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/geography.ts",
+      "sha256": "88fce35a4c7a6a7d6fa9e3d7b8996dd267974701c9b418305b6c46146fd81c81"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/index.ts",
+      "sha256": "86923bb4edb44d1bd97aee885655378a3f1e20ab44bacbd189dd2a37ae100450"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/map.ts",
+      "sha256": "17ac30468a50d3398c818c0e2b0643282440da855dcb6c3a8bddde9542dc326d"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/birnin-kebbi/spec.ts",
+      "sha256": "70e86c077fb692f0696207ef60970a702561e4b4c046188509b05e7394d41273"
+    },
+    {
+      "path": "src/game/cities/calabar/content.ts",
+      "sha256": "0b2c9c22ff0623ccbc3c566c1880a1bfa2266f091f551ba54f67d1f08845f023"
+    },
+    {
+      "path": "src/game/cities/calabar/geography.ts",
+      "sha256": "ddb0edf60b78bdf37878958a873707ec28d392d8f2c38700b54de8f8ffc6e7be"
+    },
+    {
+      "path": "src/game/cities/calabar/index.ts",
+      "sha256": "ae9f90bed7d002e84608e2c11917ecb5c912da2ae41e41d69299324eb917db1e"
+    },
+    {
+      "path": "src/game/cities/calabar/map.ts",
+      "sha256": "d301702dab7f5feb809f01a9be1ba63da3a589b3f8b01ecb93f9f9baba0d9da7"
+    },
+    {
+      "path": "src/game/cities/calabar/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/calabar/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/calabar/spec.ts",
+      "sha256": "9a91efa991b93a2f827cf563b68b8216b80112fce2e06812b0a367e62d6a53d6"
+    },
+    {
+      "path": "src/game/cities/catalogue.generated.ts",
+      "sha256": "4a220121f9b3e0fc0954728c8f61b5e360292095984c8abe59a6971b5b6a3381"
+    },
+    {
+      "path": "src/game/cities/catalogue.ts",
+      "sha256": "722d09ddcd62dedcc424feb9638d622cbd4cac36a9f49f5676d2e25e0adfb937"
+    },
+    {
+      "path": "src/game/cities/characterContent.ts",
+      "sha256": "4d4511dc99271ef2c11a3c8464b668fb8e0e86b50124504176710edd488d1722"
+    },
+    {
+      "path": "src/game/cities/contentBuilder.ts",
+      "sha256": "12a451def9e37c99c936dc7d8fd510f33e297cdf8c35847f325ff23bfb2d445e"
+    },
+    {
+      "path": "src/game/cities/country.ts",
+      "sha256": "2579f192bf54bed34859618246abe6e8cd4b1eb5b7f11be3aa5fa782accbb77f"
+    },
+    {
+      "path": "src/game/cities/damaturu/content.ts",
+      "sha256": "a753cc1a1de4c66329bfebbbac61d61b8aa066fe3cc2d7cbd14e36855e87cda1"
+    },
+    {
+      "path": "src/game/cities/damaturu/geography.ts",
+      "sha256": "61d674aa593aaecb89ead508531e0a21340740eb035d7e94b8320654322a541a"
+    },
+    {
+      "path": "src/game/cities/damaturu/index.ts",
+      "sha256": "fc75ec3768992ac101be5876fa564d64e4f9e6fcd7690b3848b69593a965c08f"
+    },
+    {
+      "path": "src/game/cities/damaturu/map.ts",
+      "sha256": "6320a4c900e1ae7b72d04138be2d66c603594ccc337759e727a24a3462547e6e"
+    },
+    {
+      "path": "src/game/cities/damaturu/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/damaturu/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/damaturu/spec.ts",
+      "sha256": "ffcff597953f28b7b37e0153f1729b638eb2186657c86f28b8919f8f30ee76f7"
+    },
+    {
+      "path": "src/game/cities/dutse/content.ts",
+      "sha256": "f6dc57dc0434a483f25be76d477fc6d9afaf270d3046ce35081afa0abc1669c3"
+    },
+    {
+      "path": "src/game/cities/dutse/geography.ts",
+      "sha256": "d13f2b976ad5b440a628631bce177aa8277e0ade6f66851882592af779800b32"
+    },
+    {
+      "path": "src/game/cities/dutse/index.ts",
+      "sha256": "db7878782a4fd16c7fe06f207f1ab9542a0f4eb288c37e62b4c5d7e6efee7300"
+    },
+    {
+      "path": "src/game/cities/dutse/map.ts",
+      "sha256": "6158ddbcfc770532d3ced3eb366cf3ffbf7aa9fcffb378974a7750558d7124cf"
+    },
+    {
+      "path": "src/game/cities/dutse/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/dutse/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/dutse/spec.ts",
+      "sha256": "46d9738fa52e6fc19cc638922a32958a38663c950783c8b0fc3517436d0ae092"
+    },
+    {
+      "path": "src/game/cities/enugu/content.ts",
+      "sha256": "cd79525fbb894639eb1163ffd962e4ad995e3ea43d6fd0f6df251a4f11d43746"
+    },
+    {
+      "path": "src/game/cities/enugu/geography.ts",
+      "sha256": "a613973b166852ea199008656b55fad64f1acada227c53b55d03a623add537d9"
+    },
+    {
+      "path": "src/game/cities/enugu/index.ts",
+      "sha256": "50e93348ec0e763ea1c8aa68620785ef6aaa90df6efd6a22d9cf2b9ad60feddb"
+    },
+    {
+      "path": "src/game/cities/enugu/map.ts",
+      "sha256": "69d3bb4d6b1f0983b1d8525834be314e1d2904fe458466f79f34456a628b3886"
+    },
+    {
+      "path": "src/game/cities/enugu/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/enugu/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/enugu/spec.ts",
+      "sha256": "9a0d8095db0bb21e34e597fee9be085686dcddb5e10de730446ff8b00fdbae5d"
+    },
+    {
+      "path": "src/game/cities/formula/careers.ts",
+      "sha256": "073da08637686719f0871c1c1ea53b1f344c9806eff5df012d9d2149a3167146"
+    },
+    {
+      "path": "src/game/cities/formula/content.ts",
+      "sha256": "af741aa3ccb5d250e7a534817841ecfa3a454f0f9b9183cd24e667b7bf53e982"
+    },
+    {
+      "path": "src/game/cities/formula/geometry.ts",
+      "sha256": "8b20dccbf823555dd4626e4cac0142a1e725bb123a8f2ebf2eaefc9a246fab75"
+    },
+    {
+      "path": "src/game/cities/formula/legacy.ts",
+      "sha256": "2b4f2954389bf253ad1d2fa3a67a9f76e110e328e145bcaa1965af83b2ed97e9"
+    },
+    {
+      "path": "src/game/cities/formula/rules.ts",
+      "sha256": "48a5b4b5dbefb3bb38462187892f7cdb71370a2eb95f2ccf94cb5e1fe833b0fa"
+    },
+    {
+      "path": "src/game/cities/formula/scenes.ts",
+      "sha256": "0e7cf7682164843081486597fd916e7bbd6c681dc33f5ffca3a9a1ea817f9914"
+    },
+    {
+      "path": "src/game/cities/generatedLinks.ts",
+      "sha256": "3860ff242e16bf482f8a26d6e53a528787f8f0d47404b8207e138f4c0816eb2a"
+    },
+    {
+      "path": "src/game/cities/gombe/content.ts",
+      "sha256": "3deeb09de75db546f443250410d65e7ad291d927739c1133d35b51154103df88"
+    },
+    {
+      "path": "src/game/cities/gombe/geography.ts",
+      "sha256": "1a002913d755c961c4e783837aa01c365315b192b25396894b256b7a9c4740b3"
+    },
+    {
+      "path": "src/game/cities/gombe/index.ts",
+      "sha256": "3f50d442258fea723bb9d0763f51c6d1067bd0aa5fd0f21b5584f42a23d8fb9a"
+    },
+    {
+      "path": "src/game/cities/gombe/map.ts",
+      "sha256": "50646a2b798c0159d0df1ad005e3b5395aa8b7e0dcd0193d7b504f4c4ba0d666"
+    },
+    {
+      "path": "src/game/cities/gombe/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/gombe/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/gombe/spec.ts",
+      "sha256": "154e47e08f282150de9eaefd7e3fd85a363a4f0059e59d29dcef751280935e76"
+    },
+    {
+      "path": "src/game/cities/gusau/content.ts",
+      "sha256": "a13e15338083cf7dd7d2b467e8353c181032af882ad8cfc1ccdfe26907bf12b4"
+    },
+    {
+      "path": "src/game/cities/gusau/geography.ts",
+      "sha256": "8e235eb8e4e8590627ab0b4a77fc75ddd9231bb07be60098234934f5d10797bf"
+    },
+    {
+      "path": "src/game/cities/gusau/index.ts",
+      "sha256": "a48ad7c357d585489862ac5d4fd7d332e25a786b51acd00e5153f71236c73138"
+    },
+    {
+      "path": "src/game/cities/gusau/map.ts",
+      "sha256": "ec1739a9d170e7664bbd9d72864a9d261f6db5eaa7e38347eeddc32dc05331c2"
+    },
+    {
+      "path": "src/game/cities/gusau/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/gusau/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/gusau/spec.ts",
+      "sha256": "f513f0ab8cc834540ba23adaa0c1066b72a341351bff8c4aca8005c31ad3dce5"
+    },
+    {
+      "path": "src/game/cities/housingRuntime.ts",
+      "sha256": "513ff7b4e13138e468fdc96d674a8749d132501032ab7632f50c34fe53fff6fd"
+    },
+    {
+      "path": "src/game/cities/ibadan/character.ts",
+      "sha256": "971a65b109a2957c7fe6bbbac22ca734d1c0bbc24f7787b357d52a8e27084a77"
+    },
+    {
+      "path": "src/game/cities/ibadan/content.ts",
+      "sha256": "5be6afaefb1df27891366f0958d0136a3141f9b162083b7c27c418e86246f02c"
+    },
+    {
+      "path": "src/game/cities/ibadan/descriptions.ts",
+      "sha256": "710c6437e3585770cb6a5597c2473881dbd1bb4bbfd0d6e30dfdde32821649d2"
+    },
+    {
+      "path": "src/game/cities/ibadan/index.ts",
+      "sha256": "70547591f8f64710cc98f68cc467c7537432ff8793523119c778e0724bb393f0"
+    },
+    {
+      "path": "src/game/cities/ibadan/landmarks.ts",
+      "sha256": "68fd61127fdb94e1decf4d34e4deb5985f84bc874ac58f6597c864f3aa330073"
+    },
+    {
+      "path": "src/game/cities/ibadan/map.ts",
+      "sha256": "665efe452ba92a62dcbbc7ccf6e310b50c09ce8e715fbf12ca59273660f5bd19"
+    },
+    {
+      "path": "src/game/cities/ibadan/rail.ts",
+      "sha256": "76309e3ba7844f56452e826ab7806f87206fb2d0bab78d3425e1ba99ac47e43b"
+    },
+    {
+      "path": "src/game/cities/ibadan/roads.ts",
+      "sha256": "00cc8014fe063548d50fb15b1f6bfc652a070c6d867563ca434f3906889e0748"
+    },
+    {
+      "path": "src/game/cities/ibadan/rules.ts",
+      "sha256": "4c4d4d6932cf8da1e4864e36898e7ea71f65e9f39f978e75411bafa8802b6df5"
+    },
+    {
+      "path": "src/game/cities/ibadan/water.ts",
+      "sha256": "1d79a8dfca4a368ee0b077c132ecd3d72c5aac47fc2103ac46b8012d8e86698b"
+    },
+    {
+      "path": "src/game/cities/ijebu-ode/content.ts",
+      "sha256": "2750088a5ff11be8a3f0506d1fb8e9453e7e989f92efd2e027f74fe6deea1e85"
+    },
+    {
+      "path": "src/game/cities/ijebu-ode/index.ts",
+      "sha256": "44a19fa1578d7afa13ec436e7d73c48b5560a5cd3cfa814050c08792d5e2beea"
+    },
+    {
+      "path": "src/game/cities/ijebu-ode/map.ts",
+      "sha256": "9893359536dec37d02cb786ee5c61a6c22f5f207a936447ca2bb791d0493a94a"
+    },
+    {
+      "path": "src/game/cities/ijebu-ode/rules.ts",
+      "sha256": "ac1fe4f12f61dc25e8062c17d03e3cfc9cc6324393f1ffaeb463da2f748390fe"
+    },
+    {
+      "path": "src/game/cities/ilorin/content.ts",
+      "sha256": "2cb5f18357bebc71177a9bb8e1db40220402a191115641b76bc74eb477fb6f91"
+    },
+    {
+      "path": "src/game/cities/ilorin/geography.ts",
+      "sha256": "7981015440a9f6c1466914dae984e6ac56108ba57327ec07da15c89a57ab1419"
+    },
+    {
+      "path": "src/game/cities/ilorin/index.ts",
+      "sha256": "b57e5cd590edae6cfde0e42fca73ff150e70fd626cafd3fa9b2d5c3e9035230d"
+    },
+    {
+      "path": "src/game/cities/ilorin/map.ts",
+      "sha256": "ed8022dc8495e5a1008baa68ae238b7ecc372b21a4dbd107a8d0a51801a6af9f"
+    },
+    {
+      "path": "src/game/cities/ilorin/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/ilorin/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/ilorin/spec.ts",
+      "sha256": "f61fe063e0871b496e0557802eb0ad96386d748c9e4d5b046d44d48044a1da51"
+    },
+    {
+      "path": "src/game/cities/jalingo/content.ts",
+      "sha256": "6fbedfee26c5e099e688cbd7a2e0d5f091a067baa85289fdcba35210b7cfef8c"
+    },
+    {
+      "path": "src/game/cities/jalingo/geography.ts",
+      "sha256": "84173df942888a49e64793148a44d3181920398a551820e84512253760198cfa"
+    },
+    {
+      "path": "src/game/cities/jalingo/index.ts",
+      "sha256": "3a206e72b93efa69d47d884d6eb003afc88f6dffedc921f985a123d0aabfa05e"
+    },
+    {
+      "path": "src/game/cities/jalingo/map.ts",
+      "sha256": "1c09cdc800ea07c3d58a72acbeba7ca264add7d73ab412c8e5fcf7914f9f5d95"
+    },
+    {
+      "path": "src/game/cities/jalingo/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/jalingo/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/jalingo/spec.ts",
+      "sha256": "48e9f6a0141aff66107725929265be0676817049100302542d8b5fd21eb68470"
+    },
+    {
+      "path": "src/game/cities/jos/content.ts",
+      "sha256": "e38418f2f884e178e3855abfb186e605b9b9573842d8de327c08376302a987b4"
+    },
+    {
+      "path": "src/game/cities/jos/geography.ts",
+      "sha256": "084a4f3eb0b726355191be158253695211cbbbd3665a5d7b04d5c1c234a7fdcd"
+    },
+    {
+      "path": "src/game/cities/jos/index.ts",
+      "sha256": "a93baabe212494a0d9104668493b32745b6ec0672e4325bba8e8286aaad1ffb4"
+    },
+    {
+      "path": "src/game/cities/jos/map.ts",
+      "sha256": "196a403389ce253e2948eaf4fad7470ac7885609dc00a131568763d163877c3e"
+    },
+    {
+      "path": "src/game/cities/jos/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/jos/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/jos/spec.ts",
+      "sha256": "04d5ee708324da62cf4d438241e0af1a3b1599e90fa746e9ec46b8c0f63f07c8"
+    },
+    {
+      "path": "src/game/cities/kaduna/content.ts",
+      "sha256": "08f223add6c22cbf249d66db4f172f549124091dbad5c9026f1bb425ccb4c928"
+    },
+    {
+      "path": "src/game/cities/kaduna/geography.ts",
+      "sha256": "0ea300eaa82c5d03384d3c87b05dc44b5561765223c7cfbc960658e7f2d4f4ca"
+    },
+    {
+      "path": "src/game/cities/kaduna/index.ts",
+      "sha256": "397e129730c93f7cb179167fa1cd5eb5f9878fadb8152bb14340839c02c53dd6"
+    },
+    {
+      "path": "src/game/cities/kaduna/map.ts",
+      "sha256": "0277c6d341dd332c894cdd01001ffe00045dcecf36e93b8c4fd1d8d4988b7eb8"
+    },
+    {
+      "path": "src/game/cities/kaduna/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/kaduna/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/kaduna/spec.ts",
+      "sha256": "e1d0714679e4e92e2e3978db8d89a01980e125f9be410cb6c74b052a2d225a30"
+    },
+    {
+      "path": "src/game/cities/kano/content.ts",
+      "sha256": "e5ca6b5db450bc5337f5e52e151b463d7b229bb755de1731d96a139d8efbfd25"
+    },
+    {
+      "path": "src/game/cities/kano/descriptions.ts",
+      "sha256": "a7bf441ccb636764f6324bef9b70023ff76f70e912255a4f9b2d2f73024f5e28"
+    },
+    {
+      "path": "src/game/cities/kano/geometry.ts",
+      "sha256": "00665343f1a472867e0c72e0e07bd6862d691231f5b114378c068b4c7632c0ed"
+    },
+    {
+      "path": "src/game/cities/kano/index.ts",
+      "sha256": "15e48737aef3febbea67e302e28a68542efaddf9d89054c5ba1c1621d5105e33"
+    },
+    {
+      "path": "src/game/cities/kano/landmarks.ts",
+      "sha256": "12b236d9a1a4745eed89e3bb9f6e588827102b00c72fd3306726150d27458b6a"
+    },
+    {
+      "path": "src/game/cities/kano/links.ts",
+      "sha256": "07354e2d3c76dd3a987252ce4026c825cd8e4b112b19c54c912dcb45efd0f814"
+    },
+    {
+      "path": "src/game/cities/kano/map.ts",
+      "sha256": "91b3e9cb5d31cfecff328a80c7360ca7f7c10a2dd764e919e830e3eb0c940c3a"
+    },
+    {
+      "path": "src/game/cities/kano/rules.ts",
+      "sha256": "a0f57a1974386338858cfd12a83f004e98940eab33dfb50ef5cb870a22826d9c"
+    },
+    {
+      "path": "src/game/cities/kano/scenery.ts",
+      "sha256": "d7575eaddc207e6fb50689ab3d5231c57b416bbb4d76578cf0e94959612c8aa1"
+    },
+    {
+      "path": "src/game/cities/kano/scenes.ts",
+      "sha256": "78d5799812d022f78f6a42a4bea43d39c36b6d0316478bd0ac85138d081c2ca4"
+    },
+    {
+      "path": "src/game/cities/katsina/content.ts",
+      "sha256": "34edf19cff62e928d92e8adc6cf4377c080f4de6ea59808894b82384866016af"
+    },
+    {
+      "path": "src/game/cities/katsina/geography.ts",
+      "sha256": "e36dce8a7744546ee07a1362ac4a05bf8ce7d727de2004b46575535be573fe5f"
+    },
+    {
+      "path": "src/game/cities/katsina/index.ts",
+      "sha256": "6dd6610c9ac37b81ceaf634488cb7cfe956dd6b74cda65341a67d7c3d24e8fcb"
+    },
+    {
+      "path": "src/game/cities/katsina/map.ts",
+      "sha256": "d26adc87cbe2b66507b819a5ee66cf01d1a251b8311aa2f5301aa9e770957d6a"
+    },
+    {
+      "path": "src/game/cities/katsina/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/katsina/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/katsina/spec.ts",
+      "sha256": "c6f0c09483c320d1120669ff1d90a185298d793067014736dc794fb4b1a30bf4"
+    },
+    {
+      "path": "src/game/cities/lafia/content.ts",
+      "sha256": "bc6a97c1685453ca2db6dd2c7b41811d981bbc6e8da12415e6d7e26e557858a2"
+    },
+    {
+      "path": "src/game/cities/lafia/geography.ts",
+      "sha256": "896166c39ce363745b04cc78467244ea77622e7d32dfcdb688f120158d2c301f"
+    },
+    {
+      "path": "src/game/cities/lafia/index.ts",
+      "sha256": "cea484391f523b7eaa40eff6d0fe63ece041789b11a7c7935ab6d71c4d10f64a"
+    },
+    {
+      "path": "src/game/cities/lafia/map.ts",
+      "sha256": "da3d1ee0955e187f4700bcfcd9d7294baf23cdbe2eb2fe4cc31c1e5eba664d0e"
+    },
+    {
+      "path": "src/game/cities/lafia/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/lafia/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/lafia/spec.ts",
+      "sha256": "c7cb9ee7052fcff1d8ee274f16ec32e18edfdc5160d375f190a1616c78c6b95b"
+    },
+    {
+      "path": "src/game/cities/lagos/content.ts",
+      "sha256": "cefaa1bb0f99327c2f81e1b85e570ddaceac6198c1c13cd9a476ed05d4a8c1b4"
+    },
+    {
+      "path": "src/game/cities/lagos/descriptions.ts",
+      "sha256": "e3f1057628df0fd2abfe79fc9314e992e78dad10dc497d054a08fdb670744051"
+    },
+    {
+      "path": "src/game/cities/lagos/index.ts",
+      "sha256": "3e4ce952a377d3879e76774e68074a1ddc71296a560393144233f9df1187d4f3"
+    },
+    {
+      "path": "src/game/cities/lagos/localUnits.ts",
+      "sha256": "f4c85985dfe7f0d20fc2478b6208d34b3d18c38a7ee01c37282b2f67bc757ffe"
+    },
+    {
+      "path": "src/game/cities/lagos/map.ts",
+      "sha256": "bb480362926de7e15645e797cb9c418bf11f6d462e28b48237dcf04bb46bda75"
+    },
+    {
+      "path": "src/game/cities/lagos/regulars.ts",
+      "sha256": "e3ac8db8887c130a3f20f331f33ecd9255f668d442b0e82415e6a6df1b2213ef"
+    },
+    {
+      "path": "src/game/cities/lagos/rules.ts",
+      "sha256": "05b87e0988f7701b627fbd0b0b2d243d437d28d9cee065e63a5ea77ebde3eb35"
+    },
+    {
+      "path": "src/game/cities/lagos/venues.ts",
+      "sha256": "b38d58238a0692d0b1124ebc55758dd070f8e9179f28853e4110b63a6700cde9"
+    },
+    {
+      "path": "src/game/cities/links.ts",
+      "sha256": "7a03520b6617844bc82bce3835e21f979622cbd0925bef3a059645e105994176"
+    },
+    {
+      "path": "src/game/cities/loaders.generated.ts",
+      "sha256": "c4675caccc62f00a06a016d70f8b81f04f49674efbf38c2b3ed55a985281de87"
+    },
+    {
+      "path": "src/game/cities/lokoja/content.ts",
+      "sha256": "e671069da1077450af7050a67c1c2b5836c89754ad5bdaf484349df6b1555bbd"
+    },
+    {
+      "path": "src/game/cities/lokoja/geography.ts",
+      "sha256": "f3f6ed146c26eb046d9ca96a7110f1a02b8f904200cc12865be9cca60ef407d9"
+    },
+    {
+      "path": "src/game/cities/lokoja/index.ts",
+      "sha256": "c4fbfde786de31a8535103c0623dab3175e27c2643ba22a41da13c248e2283c9"
+    },
+    {
+      "path": "src/game/cities/lokoja/map.ts",
+      "sha256": "bdb6ab8053544ca55f77a22f09b021453a136c2e512b53eb51d833eb963a9386"
+    },
+    {
+      "path": "src/game/cities/lokoja/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/lokoja/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/lokoja/spec.ts",
+      "sha256": "3e0738469db24e4d4d8f52f0ad9a1dd08dd47b9571eb1f935869bbb934992944"
+    },
+    {
+      "path": "src/game/cities/maiduguri/content.ts",
+      "sha256": "9b90b9c46d41debc82c0889c5154e318b775252e1dcc44ac799fa8ffe9bfd038"
+    },
+    {
+      "path": "src/game/cities/maiduguri/geography.ts",
+      "sha256": "2fe692ef65f4c2cd7f357d391501760834d9ce0bf884e5643e875746713df33d"
+    },
+    {
+      "path": "src/game/cities/maiduguri/index.ts",
+      "sha256": "a66ef99882ceb43e148cd65c1feb7d9bc6a0b4de763cd8a8391e166fa57ac34a"
+    },
+    {
+      "path": "src/game/cities/maiduguri/map.ts",
+      "sha256": "5a6e7dda90d050f5c356d68ce4761290dbe03cd7aca4373dbc4eb1eeb9d4d652"
+    },
+    {
+      "path": "src/game/cities/maiduguri/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/maiduguri/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/maiduguri/spec.ts",
+      "sha256": "6b29ed038abb9c8162698a387c64745ef1a75f919cc9bc5de24a39547d04537b"
+    },
+    {
+      "path": "src/game/cities/makurdi/content.ts",
+      "sha256": "19cd99404b1d7ba227cec8b92f59b85cd3707eae4164f9186280eb3e8225280f"
+    },
+    {
+      "path": "src/game/cities/makurdi/geography.ts",
+      "sha256": "051e93b16e4bb8924badc44dada6a3568438e5b124cf9609b7bc04a92fc1ab1e"
+    },
+    {
+      "path": "src/game/cities/makurdi/index.ts",
+      "sha256": "0d6a91129d51e5659752516cd53da8bb5b7574754ffe5d7fc7e5fbe4789144b9"
+    },
+    {
+      "path": "src/game/cities/makurdi/map.ts",
+      "sha256": "137390c903eea978baa7858f82220a7273f8a3a38176b1ffd1275ab9bf3ab065"
+    },
+    {
+      "path": "src/game/cities/makurdi/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/makurdi/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/makurdi/spec.ts",
+      "sha256": "b28dbf07fd9f72d3ef808b3a9ce17148cc1d42cc151f08c4749816cc98e59d1f"
+    },
+    {
+      "path": "src/game/cities/minna/content.ts",
+      "sha256": "66a16251c1d636e75164c26f372a7860fbcbe1cab1af977d38520f8ce13e724a"
+    },
+    {
+      "path": "src/game/cities/minna/geography.ts",
+      "sha256": "688e9328d05f462d54d81c41025ed9b29d5566718b454594b30a221ae043f86e"
+    },
+    {
+      "path": "src/game/cities/minna/index.ts",
+      "sha256": "2bebd3b819a374603dd725eae4de7aaf571f9cb6595077c7500459c2e2cefd9f"
+    },
+    {
+      "path": "src/game/cities/minna/map.ts",
+      "sha256": "7575d0318b152775ba94d5074337a0d23e3eccaa9d3dde8d6b587ff3bfe0c4a4"
+    },
+    {
+      "path": "src/game/cities/minna/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/minna/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/minna/spec.ts",
+      "sha256": "0f19e9d421ccd97aacdbf7a43039aa1d42893a900c8330ebdc84e3ec8a248948"
+    },
+    {
+      "path": "src/game/cities/ogun/character.ts",
+      "sha256": "5b7fbf707a1621d064d1f2e5c1f2f711192a8b1a379e6f6143482f3687d663b5"
+    },
+    {
+      "path": "src/game/cities/ogun/contentBuilder.ts",
+      "sha256": "fc7efb15cef82c31ecfe1bb3655c01a643e023b17eabc3e3a5e227e1f3dd0e91"
+    },
+    {
+      "path": "src/game/cities/ogun/landmarks.ts",
+      "sha256": "fb262bfbc627c33b89ec2374dd580c3c7925e46a04858169642dc4dba2c0a01e"
+    },
+    {
+      "path": "src/game/cities/ogun/links.ts",
+      "sha256": "48110f5bc13b83a690ca031d0fb35fbc4bbc358ffe3685eb7c332c4565cc29a0"
+    },
+    {
+      "path": "src/game/cities/ogun/mapOverview.ts",
+      "sha256": "eba5ede0d627ae15dd949313b98306f0c6b48cf9d46c76bec54ac6e8732b6f3d"
+    },
+    {
+      "path": "src/game/cities/ogun/roads.ts",
+      "sha256": "0aa528415848181e8015d8db48e70888da7342b3a008566c4dc6fec6e9debecb"
+    },
+    {
+      "path": "src/game/cities/ogun/rules.ts",
+      "sha256": "6a46bfc1ed1d5c6a866445a1351072f84767bfac0c9a800bc075c9d6e3d25a16"
+    },
+    {
+      "path": "src/game/cities/ogun/scene.ts",
+      "sha256": "734513b8da22239fb9fcf31510a8a8585be21e35cd072f3a15ee3265e68d280c"
+    },
+    {
+      "path": "src/game/cities/ogun/water.ts",
+      "sha256": "a84402fa773519d081cf0e820af1a474f233d57ba4f63883dcc7ffce9c2ebef7"
+    },
+    {
+      "path": "src/game/cities/osogbo/content.ts",
+      "sha256": "670af835243f3645f28734a9a64019db9eddecf2276623a4b0ee4a429ca1d4b4"
+    },
+    {
+      "path": "src/game/cities/osogbo/geography.ts",
+      "sha256": "60e8d2a874338d66906619de096ea385f54cc7c44d81afccd4b71d17e98dcd20"
+    },
+    {
+      "path": "src/game/cities/osogbo/index.ts",
+      "sha256": "0ef1b4122574b4b516de6e799b6527d971d554054b9e6c5361d257aaadf43494"
+    },
+    {
+      "path": "src/game/cities/osogbo/map.ts",
+      "sha256": "7a7e96c7f4e70e3fa7c892dae7de2b0548d23159d8d7e2053ada1514aa4e6fc2"
+    },
+    {
+      "path": "src/game/cities/osogbo/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/osogbo/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/osogbo/spec.ts",
+      "sha256": "b09e4aad194026aaa9f2ee65322d7594032c55f2aa2a6d3d26f7603b82affea5"
+    },
+    {
+      "path": "src/game/cities/ota/content.ts",
+      "sha256": "75c289bf3c23b10eb6cdca3ce5224ce586622723b91ee32ac2b24f41263dd634"
+    },
+    {
+      "path": "src/game/cities/ota/index.ts",
+      "sha256": "f826a53d2e93a52a699afe86448d6f3fc459aad868bc43c6e5e6142f2f0a79c6"
+    },
+    {
+      "path": "src/game/cities/ota/map.ts",
+      "sha256": "6774c70f8d200dc4255d58aa4ef85d9c42f50d90baad771bad0773b493c51c90"
+    },
+    {
+      "path": "src/game/cities/ota/rules.ts",
+      "sha256": "648d4e7f0a24f19d445a1e4671cc37b6517f27b21d3178286395e095eae195e3"
+    },
+    {
+      "path": "src/game/cities/owerri/content.ts",
+      "sha256": "a06a05a3514e8ce6efe5b09626784111e2127c81ff2d7d29cc6df813f59eaa30"
+    },
+    {
+      "path": "src/game/cities/owerri/geography.ts",
+      "sha256": "51c2e543596d6615c57c2ec40a5bfea71385c8cb25cfadadc6bba2a0f3340eae"
+    },
+    {
+      "path": "src/game/cities/owerri/index.ts",
+      "sha256": "33a9eac41e6e094868d17a3080c2ed9c52f0800aea29ed7c2d5e3c8c1edb219c"
+    },
+    {
+      "path": "src/game/cities/owerri/map.ts",
+      "sha256": "7f5276172c467f1ba8d5169867f3404dbca587cfebfaafb22f5e3f2c9eaf5d15"
+    },
+    {
+      "path": "src/game/cities/owerri/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/owerri/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/owerri/spec.ts",
+      "sha256": "980a42f73b472ea99c43035fccb857816a2577278a811b3ea374537bd1bd5f46"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/content.ts",
+      "sha256": "f18e98046fa09ea109f55bd73ba90def850cd5bc108ececceea6963503e3195f"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/descriptions.ts",
+      "sha256": "e369c7858bd68ee5209f54f1a7c423b50ac1ae963e5aae000ab1be699f4c54a1"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/geometry.ts",
+      "sha256": "5d6ff5c8d593d7b8cb2b5b8b13267489a844ec9bf77e0ac41d048c953f84077d"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/index.ts",
+      "sha256": "5cb53341d747c68ec0e1dfac3791b4dbc3eccfacd5768c51dd2b2f4ba9433980"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/landmarks.ts",
+      "sha256": "b24f483f7646a90841cb8ff1394a72fc3bc925fabffeb3d839b24234cd31f5eb"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/links.ts",
+      "sha256": "9098fe4b1818f6cb48b16f272f830b58e738815135d08ff2b22175e5e0390613"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/map.ts",
+      "sha256": "f1131ecb1c4e1ffe65b98c13f4de8ddbfaf222e7c1a43d0770a9b4dcb740e2f1"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/roads.ts",
+      "sha256": "bfe043b9dd8fb0cf0d08ebeb964dcd3189bbc07f9161abf04f4d452d283ea78b"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/rules.ts",
+      "sha256": "5bc5973adbef62ba9836efb17f682f879d962e9c4c138179e380b9324d4112f8"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/scenery.ts",
+      "sha256": "6987f5cb7a2bb486337a25c69d31864f21e566a21059dbb619ae35f7673a2398"
+    },
+    {
+      "path": "src/game/cities/port-harcourt/scenes.ts",
+      "sha256": "add41e96fa54f786e61da6a9998aebb9c9da2a2d5ad25ac1c499ecc6aa7420dd"
+    },
+    {
+      "path": "src/game/cities/references.ts",
+      "sha256": "762390470ff2212d09337596a3f0346d50247f7485b46404403068715a2165e7"
+    },
+    {
+      "path": "src/game/cities/registry.ts",
+      "sha256": "323f1dd7bdf322ffa2783b6eabb7aec5bed2accf60e4a07439b1348d17b7ce71"
+    },
+    {
+      "path": "src/game/cities/routeAvailability.ts",
+      "sha256": "8028fcef6fbabff32bd9a542d88691e1e546c98cca651d8b35c74e122f6ef75c"
+    },
+    {
+      "path": "src/game/cities/routes.generated.ts",
+      "sha256": "5e50985c898306ea12fb3a28f7c62eb7d4d48ff2e5289901b9a3233cd878c59b"
+    },
+    {
+      "path": "src/game/cities/runtime.ts",
+      "sha256": "e85b67b5927a419be203d568c5ca79e6e55cd9965fbd81758490bebce3f9987a"
+    },
+    {
+      "path": "src/game/cities/sagamu/content.ts",
+      "sha256": "90de404b9784159de640a8448e7973a8eef267238468f30ee44b1a351cc82950"
+    },
+    {
+      "path": "src/game/cities/sagamu/index.ts",
+      "sha256": "949a94dfe54259c63ac20387606cd1ab89996a268e83b31bb462c801303a71eb"
+    },
+    {
+      "path": "src/game/cities/sagamu/map.ts",
+      "sha256": "f928217048b54eda3b5c164ccf36b42cde223878dc5fd2141acd764d41e5db3d"
+    },
+    {
+      "path": "src/game/cities/sagamu/recipe.ts",
+      "sha256": "3979bef21c3f26d40407ec2cee6d92d94162b66b9de8fad9530f7aef0564143c"
+    },
+    {
+      "path": "src/game/cities/sagamu/rules.ts",
+      "sha256": "ae4b43a039771bafeb865d3ba1e1cc42c649a91c0f166d8c7c4524906aa31e2a"
+    },
+    {
+      "path": "src/game/cities/sokoto/content.ts",
+      "sha256": "bfcdc3428a62319530f1042d30d1a8231278ff248b911bc73d97d5d3013db829"
+    },
+    {
+      "path": "src/game/cities/sokoto/geography.ts",
+      "sha256": "35a6d8a06556aa26daaade144a25684e57e9191ff43dccb6b3d498baead2fbdc"
+    },
+    {
+      "path": "src/game/cities/sokoto/index.ts",
+      "sha256": "ada2a03a70c5688b5b0ccb3803b4eb8968603d8b592c4e5cd4dc19da937efa33"
+    },
+    {
+      "path": "src/game/cities/sokoto/map.ts",
+      "sha256": "205a616ae73fc3f21dc5bd4f0fec7a3eeb3920583884ff93e190c6c5bad82fc9"
+    },
+    {
+      "path": "src/game/cities/sokoto/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/sokoto/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/sokoto/spec.ts",
+      "sha256": "d034a591e3a581f1edd672636af16cf192bbbc40cd62f6cf6ad9ccff78d789ad"
+    },
+    {
+      "path": "src/game/cities/spec.ts",
+      "sha256": "e4798c195bc638993b249b7a3a8552ad79da199d2fb5e57242b448021a44cd97"
+    },
+    {
+      "path": "src/game/cities/specValidation.ts",
+      "sha256": "8d35892de8b9784b4e9057f3cceb54f4a6af41265176c5b77222275929bcf384"
+    },
+    {
+      "path": "src/game/cities/terminology.ts",
+      "sha256": "f6e48770ab9f8488a4fec1bae2a388806b49f75324850f05dccd9e9c709bc954"
+    },
+    {
+      "path": "src/game/cities/umuahia/content.ts",
+      "sha256": "0d9d3242da4549f3a83f478180d7c7fac1cbaf586d253071babec4f31a0d8c96"
+    },
+    {
+      "path": "src/game/cities/umuahia/geography.ts",
+      "sha256": "49a9b33fd35d0992b1ec95d6a5d016071fa60618f053d89ea402d6fbb45010ea"
+    },
+    {
+      "path": "src/game/cities/umuahia/index.ts",
+      "sha256": "f7c7809a420a01095fc883c2b5476e24d3dad359ca5eaca3cd5484245763d20f"
+    },
+    {
+      "path": "src/game/cities/umuahia/map.ts",
+      "sha256": "f7fb6df907f656d130d322427b5dc4d587ef6a2b9cd893c539d384e15a99aa30"
+    },
+    {
+      "path": "src/game/cities/umuahia/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/umuahia/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/umuahia/spec.ts",
+      "sha256": "51906d01636aa7f966e77ca51cfdeb6b90c7b44e4d89ff088402d5c6909e6267"
+    },
+    {
+      "path": "src/game/cities/uyo/content.ts",
+      "sha256": "1453da26ad9f1b758f571d0e78a6e5f1a1fee564a07c50acc83bb6c1926bb4be"
+    },
+    {
+      "path": "src/game/cities/uyo/geography.ts",
+      "sha256": "8f9d5c8779bd5fa33b69404b926669fbea363eae7445b61cf17cfcb51898be1c"
+    },
+    {
+      "path": "src/game/cities/uyo/index.ts",
+      "sha256": "9d5ff78ea8a48e3d8d43fc97dd8913cc49df959c614fde30d72965c641a424d1"
+    },
+    {
+      "path": "src/game/cities/uyo/map.ts",
+      "sha256": "bd52807357ac90d89e4be04879f63e62619eed88d7c1dcd2c1b9dd1a2a31745c"
+    },
+    {
+      "path": "src/game/cities/uyo/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/uyo/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/uyo/spec.ts",
+      "sha256": "2865d38847e9fea0011e74c50f5a9b8c659fa011c76c094aa21b591568612d0a"
+    },
+    {
+      "path": "src/game/cities/yenagoa/content.ts",
+      "sha256": "7f91bd1959ad4877f91d0f824faf78fad41b3b480c6c8ae1f4b9616009f1e6b7"
+    },
+    {
+      "path": "src/game/cities/yenagoa/geography.ts",
+      "sha256": "7c4393d4935edffbe502ac71b36feda4572970ba551f39086879d4a84f7a284d"
+    },
+    {
+      "path": "src/game/cities/yenagoa/index.ts",
+      "sha256": "38daf197e114fdfe3f8b9d2a8c486d32872505ff1092e2e1f29bce8e33d74bd1"
+    },
+    {
+      "path": "src/game/cities/yenagoa/map.ts",
+      "sha256": "26777d266c8bbc360e2473f83cd9b35ed28cf2eb4c257ed4899a6fc707af6fdc"
+    },
+    {
+      "path": "src/game/cities/yenagoa/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/yenagoa/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/yenagoa/spec.ts",
+      "sha256": "40b3696ee825aa40cc07a17b938a12e32bae5f62fd2e2f7b75460b7a30f5ac21"
+    },
+    {
+      "path": "src/game/cities/yola/content.ts",
+      "sha256": "d3ea3239225908a29ffe935231a9cbb215e8c3c26e10c03d3ccf0ed43c8bc6e6"
+    },
+    {
+      "path": "src/game/cities/yola/geography.ts",
+      "sha256": "bcf992a3d63a3fa498da273af8d88d7dca8b441ff043c8941c2f8d56cf0f1158"
+    },
+    {
+      "path": "src/game/cities/yola/index.ts",
+      "sha256": "6a29e97c18c9e986b8bc38b6ccdde0118052a4b6c278d67c579749226d314ae1"
+    },
+    {
+      "path": "src/game/cities/yola/map.ts",
+      "sha256": "e9974b7ce002c815dbb3fd16148e1a0f4c550622d45373142b13cd69857c081a"
+    },
+    {
+      "path": "src/game/cities/yola/rules.ts",
+      "sha256": "0f1a696140c5ce892bd264b10acfa7464121b3620cfe450d59adcfeef395b50d"
+    },
+    {
+      "path": "src/game/cities/yola/scenes.ts",
+      "sha256": "5ebc5c90666c48475e1bf92374c0dd17a24af69143dc1daf47b1c1f32ece74e8"
+    },
+    {
+      "path": "src/game/cities/yola/spec.ts",
+      "sha256": "e0018b912762f59d497ae70a686c10a81601f558dea1184d2e21320048c9c1f2"
+    },
+    {
+      "path": "src/game/clock.ts",
+      "sha256": "8d9540396068eae38b4fb99102664f7f8abe33f7b80232a598883adbb9e81ad3"
+    },
+    {
+      "path": "src/game/conditions/billing-words.ts",
+      "sha256": "9f4cd88f5acba7b2026304cf5c21def94dc6e90e192a93645dbbec489875818f"
+    },
+    {
+      "path": "src/game/conditions/conditions.ts",
+      "sha256": "fed42df4780f8c33184f180f4e171c6bd10c147411762d21b03940d61cf613bd"
+    },
+    {
+      "path": "src/game/conditions/generator.ts",
+      "sha256": "c3d5f5de323026f7c2c2276b5320e314fd93bda4d4d60fe9307605a0a7375004"
+    },
+    {
+      "path": "src/game/conditions/grid.ts",
+      "sha256": "506e9f808fc73020852140c668139561cd582bf23c9a1d429afb8f50f1af31da"
+    },
+    {
+      "path": "src/game/conditions/look.ts",
+      "sha256": "44ff06b58b87c7f580338401244a934c22a9a9a3e27472708ed937c2ae095511"
+    },
+    {
+      "path": "src/game/conditions/pack.ts",
+      "sha256": "af04bbe080cc143bb33a2de51a94620b71b4f613d0f9a85750133fefc1e9d6ac"
+    },
+    {
+      "path": "src/game/conditions/power-words.ts",
+      "sha256": "b19609f303570259b1cce8535ddd7045e9b730356bee07b052b22f78ff3ab7cd"
+    },
+    {
+      "path": "src/game/conditions/power.ts",
+      "sha256": "0b78fe00743aa5b95f02f51ab8570420ee34827f91cd0a1298bb0a3e5f63b9e7"
+    },
+    {
+      "path": "src/game/conditions/rush.ts",
+      "sha256": "2d229687ed3d6e656e160f25b589feba28419497e3705f3b7a7320448aaa68ce"
+    },
+    {
+      "path": "src/game/conditions/slot.ts",
+      "sha256": "9dbc0fc83659599751c307ef311fcc29dab8c92a7924d71ff8e8cb26acf9da01"
+    },
+    {
+      "path": "src/game/content/business-limits.ts",
+      "sha256": "93d708bc0c3a6b77e69a676e746861c8b4f4b47cf2dd87f072a91e8151114aff"
+    },
+    {
+      "path": "src/game/content/calendar.ts",
+      "sha256": "b75172a5a8e974096786c55ebc04ecb24965751423a810c1926957452d0f93ed"
+    },
+    {
+      "path": "src/game/content/career-ids.ts",
+      "sha256": "bac48485510121283856a99e154fe40c626d616e6ff9c6aab5819e0c52cd9b83"
+    },
+    {
+      "path": "src/game/content/cars.ts",
+      "sha256": "de4ae8b8f2e5eb0b31cf306fccf18cb91e17731e1c8015350d3e7b6976d27495"
+    },
+    {
+      "path": "src/game/content/civic-ads.ts",
+      "sha256": "10bd9be677f7ffc76ecf40e3427699e5562f098933de23c48e257378c8564fe8"
+    },
+    {
+      "path": "src/game/content/civic.ts",
+      "sha256": "cca43fe730aab05204b4982f66da401884be8744e5d75dd933b5c030a4acaf8a"
+    },
+    {
+      "path": "src/game/content/events.ts",
+      "sha256": "f17ed80631cf3f55f8c816e8f85706769945b3939d2a100041fb16a1a48f419f"
+    },
+    {
+      "path": "src/game/content/food.ts",
+      "sha256": "1e43ea7b88496e0e9407aee3bdc8a11ffa5744cd417a449564493c28e173326c"
+    },
+    {
+      "path": "src/game/content/furniture.ts",
+      "sha256": "ca0fd127c340e7d10bc493020b83c87dcf09ee23ecdbfe2a6756109753bd04d5"
+    },
+    {
+      "path": "src/game/content/goals.ts",
+      "sha256": "8ca02ff6fde2c46fef40990d1c94a1a428c2d78093c8fe0a3b4f2379e386e5b4"
+    },
+    {
+      "path": "src/game/content/growth.ts",
+      "sha256": "dce36c6f3f4176794415648f1c7e7de6924db90a4bbd2e0d0371b325599e504f"
+    },
+    {
+      "path": "src/game/content/health.ts",
+      "sha256": "fdd9e2af661e001d9f6e364712dda5d0fe91ffc99830f89421ae9d65c9eeb4cd"
+    },
+    {
+      "path": "src/game/content/housing.ts",
+      "sha256": "31f383933c1ac41dd65b52b8b52e365f5232ce367506dc525f55ee3a51240494"
+    },
+    {
+      "path": "src/game/content/jobs.ts",
+      "sha256": "61fb35edfc220903398cb9c56ecfefa43020a57c43b919a9f2a75ea848125fa5"
+    },
+    {
+      "path": "src/game/content/missions.ts",
+      "sha256": "63503924217a2c823011a0f32bc705e094d204c5e4c59e5b420a8f332bf1f92c"
+    },
+    {
+      "path": "src/game/content/npcs.ts",
+      "sha256": "7790b25f181102dbbbe457eee3573a172a32b4935da25fbb8bf0dc7bb8cf1134"
+    },
+    {
+      "path": "src/game/content/politics-core.ts",
+      "sha256": "6af72f29bd9067e1217335a4b157135978deb070ac00a188d0202fdd0f2aa443"
+    },
+    {
+      "path": "src/game/content/relief.ts",
+      "sha256": "bc7b59a9251e4c83a0cc53b3402a5d1a948b48b118d9e12b946e59f832b781fa"
+    },
+    {
+      "path": "src/game/content/traits.ts",
+      "sha256": "58eaab5d196b53d1fb04bd4249bf1304e541e35f462d0c7114b5a7d7de4add97"
+    },
+    {
+      "path": "src/game/content/travel.ts",
+      "sha256": "5f8f5a5c659d07da0c0ce0a0d50d609c88a74b616acb5312b2adad8b80d82f1f"
+    },
+    {
+      "path": "src/game/content/venues-transport.ts",
+      "sha256": "f20a07b3bb2e790149c16eda5e3987903c8fa3bf5aacaa94ed2d3ebebb0678d1"
+    },
+    {
+      "path": "src/game/content/venues.ts",
+      "sha256": "9d77b54b1a93b9ed648fee2065681afff920b7a7466df8f36cdc4401e2d03744"
+    },
+    {
+      "path": "src/game/content/world.ts",
+      "sha256": "7b5afe74d0ae3f5e2ad8ce694307212886e4dc3fb9285c50d85306dfe531c30b"
+    },
+    {
+      "path": "src/game/dilemma-book.ts",
+      "sha256": "2b1955195c178a49404c3b2352c2fb845fbcc3ba04bd5338535ca34cf535cfdd"
+    },
+    {
+      "path": "src/game/features.ts",
+      "sha256": "a76b48a796d46e0cae0ffeffe1738ccb5fe28bdc6b1b97baedcbb68a894b9391"
+    },
+    {
+      "path": "src/game/home-layout.ts",
+      "sha256": "0a43cf3de4f46cc66204d30a1273a8dee0f5d1d99656fc5269d061fac93056d4"
+    },
+    {
+      "path": "src/game/home-plan.ts",
+      "sha256": "7c40c33cd986101eb2ebcdf45de753d3933dbeca80376e4bbd8c412cf152dffa"
+    },
+    {
+      "path": "src/game/land.ts",
+      "sha256": "fbda806d0add9e60d8de6736fd6c7ceef065ecbcc2dc963ed203eb9bc7b9e2a6"
+    },
+    {
+      "path": "src/game/memory/facts.ts",
+      "sha256": "b3f8b664d39af30da482e7079f80b726818ffefecd0eb48f53213baf6842ab91"
+    },
+    {
+      "path": "src/game/memory/lines.ts",
+      "sha256": "cc25c9ed271bede4b38b977f3bdd0892ec8577fc0a8e21d8f1bab89c4831b0a3"
+    },
+    {
+      "path": "src/game/memory/mind.ts",
+      "sha256": "2f30daa889db70f7ecdca39f592957573d7445eddc2439ffc833ee2cd44b5961"
+    },
+    {
+      "path": "src/game/neighbourhood-space.ts",
+      "sha256": "e96333b8e2d2762e0c19b62b8a1e5047f8d02dbd053ed32aab8ff67354eeef2e"
+    },
+    {
+      "path": "src/game/profile.ts",
+      "sha256": "82c0d6676a1d2c38157ff323295c5048923c66610467c08bb4b45b78c3f48bf7"
+    },
+    {
+      "path": "src/game/registry.ts",
+      "sha256": "297ba2aaf32a8fa08ec48b736b236836692cc9f8a61147a2d0278688ebbd0334"
+    },
+    {
+      "path": "src/game/relief.ts",
+      "sha256": "e163f3a9b4d826631a9ae323497f244b66567f6f62730df8df85ae454db999a6"
+    },
+    {
+      "path": "src/game/residence.ts",
+      "sha256": "b7353aa3466b3b1287568744227ad3a87c6e74e8b653030ca2ea03948a441c87"
+    },
+    {
+      "path": "src/game/routines-hook.ts",
+      "sha256": "71b2b1cc0825f9ce7c12397fc9135f1a565b12680f8adb27b8d86016c297bcfc"
+    },
+    {
+      "path": "src/game/stories/model.ts",
+      "sha256": "17a263b53bc2f9ceff4eb564b4ec60de37eeb6cb82a692c329a878915cc96713"
+    },
+    {
+      "path": "src/game/systems/activities.ts",
+      "sha256": "d679eb38c8470070215e9b041bf0cd4e6007a5a38e7cd3677e6c662f0158d8ce"
+    },
+    {
+      "path": "src/game/systems/base.ts",
+      "sha256": "14b760754c1e9d41fa9df492dca96c8de7f8ea5ea3f21889e4c2708147b52fda"
+    },
+    {
+      "path": "src/game/systems/business.ts",
+      "sha256": "16a7223ba4c608d49866e4fbd87136f4c037f8b72581614d83c77671f47ad00a"
+    },
+    {
+      "path": "src/game/systems/career.ts",
+      "sha256": "f9811236afd95d2f5ef56d3a905fc5f44118637b015408a3020872e2591ae5ce"
+    },
+    {
+      "path": "src/game/systems/civic.ts",
+      "sha256": "0649a9cbb562cec28647548bb862dad898ae4a8ae5f3fdbb6f6b44aaca034436"
+    },
+    {
+      "path": "src/game/systems/core.ts",
+      "sha256": "804d1732a1ffd9c176c3011c620d026c02c79c722ca80ebbc5fe3574378cc362"
+    },
+    {
+      "path": "src/game/systems/economy.ts",
+      "sha256": "36a78b85576ee36449cb252c6405e6baadd998bfb300f21e235f5bd01c750b6d"
+    },
+    {
+      "path": "src/game/systems/estate.ts",
+      "sha256": "23a7777ae31fea297f4c8f39050557046ad4bdea1021e6c2c6a035602dd163cd"
+    },
+    {
+      "path": "src/game/systems/events.ts",
+      "sha256": "ab169b6797c4046c3658849525520ea62aea912e8d115d0a304d4b235cebe401"
+    },
+    {
+      "path": "src/game/systems/goals.ts",
+      "sha256": "718776e7e7d7b5734aeb8182b90d70a7ba0890758cae1c23371f577429612f2c"
+    },
+    {
+      "path": "src/game/systems/growth.ts",
+      "sha256": "dc103d49d36bb32152db96d1c965a290ac1467562952abc5bec023349d25edd5"
+    },
+    {
+      "path": "src/game/systems/health.ts",
+      "sha256": "39b0562105d23eb4b50ce3fa05785a5e54c5e0a10a4828b6de8a95f76db983bb"
+    },
+    {
+      "path": "src/game/systems/home.ts",
+      "sha256": "2a9e4c3609b27218518bc2c3cd5b5aa6fcda2fb8cfe3ea130b862d4cfe7585b2"
+    },
+    {
+      "path": "src/game/systems/index.ts",
+      "sha256": "d7ecc45cd2ee1879c92dde45617a240d1042aaee8e7b5f69407e2ca034c45e2c"
+    },
+    {
+      "path": "src/game/systems/inventory.ts",
+      "sha256": "d76c94408ecdffbfd677a74a3973f9e5fa288befab84a3ff6888695596f78503"
+    },
+    {
+      "path": "src/game/systems/land.ts",
+      "sha256": "f2bd559bafe97a9a8c7653489428fab2840dbc4ccea89536eeae219c467c53f9"
+    },
+    {
+      "path": "src/game/systems/missions.ts",
+      "sha256": "2459954ce800f3de638a21335c22639b61b174bd2b0185d52b1392fe3d0f362f"
+    },
+    {
+      "path": "src/game/systems/needs.ts",
+      "sha256": "8c87403238c6354e8c965f1b09cce70b2880896e0f313c6120bdfc030ad1318a"
+    },
+    {
+      "path": "src/game/systems/onboarding.ts",
+      "sha256": "0e848c4cf621434842632b5bc7568db10095bd77a142abed6b20b3fb1b890453"
+    },
+    {
+      "path": "src/game/systems/property.ts",
+      "sha256": "858c6f46e9ce8f8b870c4fabd726bf17054d07748ed1300d23b87a7dbf3fa5f1"
+    },
+    {
+      "path": "src/game/systems/skills.ts",
+      "sha256": "50de65a93a62e4017c441aed4b0f9cf35c9e05b8f30da0369bf88f1799f41552"
+    },
+    {
+      "path": "src/game/systems/social.ts",
+      "sha256": "74e4ab56700ea4455f144598718d67119961ed7d9af510d2aa7998728c6a9b8f"
+    },
+    {
+      "path": "src/game/systems/stories.ts",
+      "sha256": "113964758ffa2cf117cdeab13d5b4fd9f50120dc5b083cde811dd85a15d024c0"
+    },
+    {
+      "path": "src/game/systems/street.ts",
+      "sha256": "db67a25f0d894ae4863126a58c0e362c3d447effef3beeffdf63eadf73069176"
+    },
+    {
+      "path": "src/game/systems/travel.ts",
+      "sha256": "f6e2ea91a8ae3680f85f321c531836dcb12ffe5d968f622bea986f4781f8a7af"
+    },
+    {
+      "path": "src/game/systems/wallet.ts",
+      "sha256": "dcd5d36c0d4d06833d4820ce174a3c50fa635d104e6075bae4b568318333a45c"
+    },
+    {
+      "path": "src/game/trip-skip.ts",
+      "sha256": "5c1c67af3ccb1092c9459cd3982def7a705c11bd4f70ec19d1cf2f1a3ca73416"
+    },
+    {
+      "path": "src/game/util.ts",
+      "sha256": "a5e1d10ec1ca6fb327074d5bae1fa23e86a697c3f7c00aba2fa2d2b5e87a073c"
+    },
+    {
+      "path": "src/game/wardrobe/catalogue.ts",
+      "sha256": "d353e15e8817a9d6ee6990a003e553cdce957badcba98942ce6a23e4e4539d84"
+    },
+    {
+      "path": "src/game/wardrobe/look.ts",
+      "sha256": "7bb221f98da1316076e56f7c61cbacd881a52ec29b1913eebdb97256dbd4fc08"
+    },
+    {
+      "path": "src/game/wardrobe/prices.ts",
+      "sha256": "5ffdd39e21089099da26d353d2a8918690a6ebf04b0eb443d3f7c12e54129df1"
+    },
+    {
+      "path": "src/game/wardrobe/rules.ts",
+      "sha256": "1f8bcbd76da268032f0f33dccf8318d218086679cb4aaf384581ec1f7854780d"
+    },
+    {
+      "path": "src/game/wardrobe/view.ts",
+      "sha256": "0cd1a7c303efa6e21f8dba5a955c3e2893f2688667553639bcea71e40abcc671"
+    },
+    {
+      "path": "src/game/world-time.ts",
+      "sha256": "a394fbaf7813d85156b31113056619ef7da0f9bdcb104567f1d56b89e8e402a2"
+    },
+    {
+      "path": "src/geo/frame.ts",
+      "sha256": "e2c1ce1a7696f6285b67118936122bf24bcb25d657fbc911db19ef40eaf2d24f"
+    },
+    {
+      "path": "src/life.ts",
+      "sha256": "0ee34f654d4fc1a5ab0829fb67e3c55c5f8ec8aac79f605ebf31a29dfce9bc32"
+    },
+    {
+      "path": "src/map3d/cities/lagos.ts",
+      "sha256": "21015c805d2fc83fac609c619c05eacf46350b07b0e9798fb92d5e95e9cf2e88"
+    },
+    {
+      "path": "src/map3d/cities/module.ts",
+      "sha256": "2fc05ba010328a23c378fefa60f884a2c438d3c46c92eb2def3116696fd4cda4"
+    },
+    {
+      "path": "src/map3d/context.ts",
+      "sha256": "c8f8f16e865040ffff028aa6ef94c509990061d91ae2672af1f19f400e9f8732"
+    },
+    {
+      "path": "src/map3d/geo/data/abakaliki.formula.ts",
+      "sha256": "ce70a5a6e005cbf07ff7eba8f655d11e9c24eeb541d8ea25c08ae6aae3004cf7"
+    },
+    {
+      "path": "src/map3d/geo/data/ado-ekiti.formula.ts",
+      "sha256": "0219df081a27b77cce1edd5143948e538fbec9eff018309a7ba163b60618a290"
+    },
+    {
+      "path": "src/map3d/geo/data/akure.formula.ts",
+      "sha256": "e60718cb5c8cc474782e04b9c2e2fcca540cd44cae7359872d9c0951fd55cad0"
+    },
+    {
+      "path": "src/map3d/geo/data/asaba.formula.ts",
+      "sha256": "318cb1d90d5648af58b24a83b0826da60fcf23d4051e520e6d9f0e9c7f2736bf"
+    },
+    {
+      "path": "src/map3d/geo/data/awka.formula.ts",
+      "sha256": "4c446dfc88f25fd39a803970b134b1d8c7b20163c026a389abcfa0df345832f9"
+    },
+    {
+      "path": "src/map3d/geo/data/bauchi.formula.ts",
+      "sha256": "fa684d97e7bb7e765629784dd5af434a1c542b338ec8ee02650a81af900e0bcd"
+    },
+    {
+      "path": "src/map3d/geo/data/benin-city.formula.ts",
+      "sha256": "36f5f297ebcb8ee74a8dd87c9b6942c73fb28f10b6437958f408fd9519bac5f2"
+    },
+    {
+      "path": "src/map3d/geo/data/birnin-kebbi.formula.ts",
+      "sha256": "eb83dce7308f183b710f2db5d1e6c4514e351317c7959866dfaa4ad283a34d65"
+    },
+    {
+      "path": "src/map3d/geo/data/calabar.formula.ts",
+      "sha256": "f33c1ff46a6f59ab16069164a0006ec40096d34c5259da0a174af64958320bce"
+    },
+    {
+      "path": "src/map3d/geo/data/damaturu.formula.ts",
+      "sha256": "edb5f4f04b48b99e11ae6ff55eb1b48a371bddac64a7c00ecd00179474e30f8e"
+    },
+    {
+      "path": "src/map3d/geo/data/dutse.formula.ts",
+      "sha256": "14d7131d25b673c1b85f94b3f6141eaaf8885235c0345c58e43d6f0985901ab6"
+    },
+    {
+      "path": "src/map3d/geo/data/enugu.formula.ts",
+      "sha256": "839cf73239c011130a34197ee4730936bad6848bd6ebee740068d053b8bd8807"
+    },
+    {
+      "path": "src/map3d/geo/data/fct.ts",
+      "sha256": "faf1709d2fe894db6b5b673fabc35bfc5874e4f8e87a9514084743e4bb5809a2"
+    },
+    {
+      "path": "src/map3d/geo/data/gombe.formula.ts",
+      "sha256": "908c23e794af2875376f0d9b641d4d9d2fc5cbf52aee05621c33760e94ca5512"
+    },
+    {
+      "path": "src/map3d/geo/data/gusau.formula.ts",
+      "sha256": "2eaf7bc01afff2c897a1d53be37fe43b91a8895a29051a086e54872ca1dce6f4"
+    },
+    {
+      "path": "src/map3d/geo/data/ilorin.formula.ts",
+      "sha256": "a720209b64bd66c8ec55f3381fbdafead65d0670687ed9fa9be3ee83af99510f"
+    },
+    {
+      "path": "src/map3d/geo/data/jalingo.formula.ts",
+      "sha256": "73a9043cf1ae611e150e1108a7e27c6d037c096a98cfbc8e5cb6687a14c96e64"
+    },
+    {
+      "path": "src/map3d/geo/data/jos.formula.ts",
+      "sha256": "a1fe6c0591d0501c2e10b0d472aeb29ca91d920ddf81d8c910276cae046eab30"
+    },
+    {
+      "path": "src/map3d/geo/data/kaduna.formula.ts",
+      "sha256": "0046586833ee7dbc703a922f65ee36ef0c36ce4566080285373382255c92a42d"
+    },
+    {
+      "path": "src/map3d/geo/data/kano-wall.ts",
+      "sha256": "6bb2771f1df539a1ae0f580e579bcff3f3bd89b1e85c412b7af6dcf4cd71b414"
+    },
+    {
+      "path": "src/map3d/geo/data/kano.ts",
+      "sha256": "5a3522b383fdb60dcc810b0f32c0d174bda115e7f2029d5fbe11b5941f8aa66f"
+    },
+    {
+      "path": "src/map3d/geo/data/katsina.formula.ts",
+      "sha256": "a19845e583594403a393c31b470b7d1c71212e1ec60e654ece278cd20208820d"
+    },
+    {
+      "path": "src/map3d/geo/data/lafia.formula.ts",
+      "sha256": "88910f824d889a2e06988f9184e97334de55d5d02f0fa3d2c8260a0a3e9941bf"
+    },
+    {
+      "path": "src/map3d/geo/data/lagos.ts",
+      "sha256": "e65bb768f638d863576bf64dc800fb4823777def95813e4ed8171678ec7ac1f9"
+    },
+    {
+      "path": "src/map3d/geo/data/lokoja.formula.ts",
+      "sha256": "8139569cf7c7e79f958f872500569bbc3a2a3d4d2633e4de1acd0930d75798d3"
+    },
+    {
+      "path": "src/map3d/geo/data/maiduguri.formula.ts",
+      "sha256": "fe43f8c02b5f28546a3688ac2307d32ad25789439af1f809e8885b2e0422eee5"
+    },
+    {
+      "path": "src/map3d/geo/data/makurdi.formula.ts",
+      "sha256": "a8d7010153c196a09b3a406432830ca048ef0a58fab8b34f29644e2e9a8b7a7b"
+    },
+    {
+      "path": "src/map3d/geo/data/minna.formula.ts",
+      "sha256": "b16216a2df0a1202d7cf83d4292fcd00e3dc2ced0ce2f72d45dd41a9182ff008"
+    },
+    {
+      "path": "src/map3d/geo/data/nigeria.ts",
+      "sha256": "520de3ab26ef6e098e0360f027152c9557837f7dcddf5eb04afac8b747a466b7"
+    },
+    {
+      "path": "src/map3d/geo/data/ogun.ts",
+      "sha256": "fbc424c8eeb848705630127c37cc946b33d8bb06b2d94387a29f524ac1395b37"
+    },
+    {
+      "path": "src/map3d/geo/data/osogbo.formula.ts",
+      "sha256": "4d01e026ab6db5fb8ce3a7af8f872c110a511528d99f9413cc9e0a52e146889a"
+    },
+    {
+      "path": "src/map3d/geo/data/owerri.formula.ts",
+      "sha256": "6a14faf903f401b1bc5b36d57fc2e9c524e3c655b9fa1431f5864ce2f8cfe268"
+    },
+    {
+      "path": "src/map3d/geo/data/oyo.ts",
+      "sha256": "773854fd9f66f2aa9f0bdecee554e90a82b55adb59617eb6e785decb547692cd"
+    },
+    {
+      "path": "src/map3d/geo/data/rivers.ts",
+      "sha256": "9e0c592a3640a1ba75adef8c99a8e00fd906ad25116e0f9ff62c988683ba7e08"
+    },
+    {
+      "path": "src/map3d/geo/data/sokoto.formula.ts",
+      "sha256": "ae53cac1b357757c5f68e22dfe9b956d2b911ea45a8c447c350cf6b295b6f9ab"
+    },
+    {
+      "path": "src/map3d/geo/data/umuahia.formula.ts",
+      "sha256": "59a871b892f12ff130bb352eeee7aa24b174505b0da5da8886c171233f4616b2"
+    },
+    {
+      "path": "src/map3d/geo/data/uyo.formula.ts",
+      "sha256": "05b883e9c672344f5136c01ea70e77d5600d77256794900c957bacecdbc748af"
+    },
+    {
+      "path": "src/map3d/geo/data/yenagoa.formula.ts",
+      "sha256": "fbb9476b583537d5129a97ae0f8ae8ac47def055e54f53038c41e281a4d9ee6e"
+    },
+    {
+      "path": "src/map3d/geo/data/yola.formula.ts",
+      "sha256": "34d03428ebbab800dd7b7c388723749809491fc225b9406a4dc9206b60ab0e74"
+    },
+    {
+      "path": "src/map3d/geo/frame.ts",
+      "sha256": "55c80ea3abf7f176522f7ac321c5e386613940f6988eec1ee05e5b4db3905327"
+    },
+    {
+      "path": "src/map3d/geo/lagos-shapes.ts",
+      "sha256": "bf3af4346d3bfe7b2266c98b0aaa37b37d6030fffad26cf960042b3118d6bd84"
+    },
+    {
+      "path": "src/map3d/geo/topo.ts",
+      "sha256": "68dc7fd68bb6f8511807dde42cb3618e9061e9354bda4fbc80f3b1e53db04592"
+    },
+    {
+      "path": "src/map3d/lga.ts",
+      "sha256": "2c59500788aae6caa76754e0bd404cb8500a5b664c81ddb75cceb36a5b8d4f57"
+    },
+    {
+      "path": "src/map3d/relief.ts",
+      "sha256": "ac48ed58299b661b036ef2147a29f0bd74d8df9b363a1581e321768157acb690"
+    },
+    {
+      "path": "src/map3d/roads.ts",
+      "sha256": "7783d7cf76a3d387bc82ac1230015313e104150b69b02460f21fe1f0859dafe3"
+    },
+    {
+      "path": "src/scene/authored-people.ts",
+      "sha256": "9381b7e804c441e97a79990bc5a57358c8d615aa342d1afafc049c73376af013"
+    },
+    {
+      "path": "src/scene/avatar-look.ts",
+      "sha256": "cf65f259386708d80be763e0a068e1e767433a73978fd30a2fbf7b2bbd80c257"
+    },
+    {
+      "path": "src/scene/avatar-rig.ts",
+      "sha256": "3547f6dd5e1272c3e977ce0a432f48b742e48ff9cea2bb645f2b6b9f251cbfd6"
+    },
+    {
+      "path": "src/scene/body/animation-pose.ts",
+      "sha256": "24498791f072471bfc81bd1f01b41d8807c411fbc54b17e91a70d9fccd6dfb6b"
+    },
+    {
+      "path": "src/scene/body/appearance.ts",
+      "sha256": "8aa5fcbaeb04f8609f8921659444d80aa64295c76c77b9cf813fb947548d8b91"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-female.glb",
+      "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-male.glb",
+      "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686"
+    },
+    {
+      "path": "src/scene/body/assets/clip-pack.glb",
+      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+    },
+    {
+      "path": "src/scene/body/canonical-crowd.ts",
+      "sha256": "496944e4b94af1b502daf17f577043b3b835df3712ca36cacd20be8e6bad3a10"
+    },
+    {
+      "path": "src/scene/body/face-shader.ts",
+      "sha256": "344ede555027388dad22ef30680c620ffccf4b407a12373ad8a88807d09bd368"
+    },
+    {
+      "path": "src/scene/body/files.ts",
+      "sha256": "8bb40d928867aedd689db2c855cb8c666761b89313de649354902f8bdffb1d5c"
+    },
+    {
+      "path": "src/scene/body/foot-contact.ts",
+      "sha256": "6f98bb61fde23e51016148d06136fcb0b46b0b9d5c03cefc73c7ad47745df8c6"
+    },
+    {
+      "path": "src/scene/body/gate.ts",
+      "sha256": "0217b20637f77717a1fda754bd465a8ca47b4028cdef70ad68c227785e101204"
+    },
+    {
+      "path": "src/scene/body/manifest.ts",
+      "sha256": "8f53bf4cffe93e45bbea62c9b728e32ed2ebbb676e060a1e6fb2776673a75af3"
+    },
+    {
+      "path": "src/scene/body/poses.ts",
+      "sha256": "7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e"
+    },
+    {
+      "path": "src/scene/body/shared-resource-cache.ts",
+      "sha256": "c6b8828689b11d5c228665be2a84e9cfae37f64ae71de0da37358bf1060967b4"
+    },
+    {
+      "path": "src/scene/body/skinned.ts",
+      "sha256": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb"
+    },
+    {
+      "path": "src/scene/body/stand-in.ts",
+      "sha256": "826d8eac3b48e24b2abb898ae73e45f250ddcdeeeb6bd8d5bd856890ca597608"
+    },
+    {
+      "path": "src/scene/body/startup-gate.ts",
+      "sha256": "f3e4021b278ddf00f3b7f6fcf1134c1e705091c6bce823d8038ab5a0a97b829e"
+    },
+    {
+      "path": "src/scene/body/tint.ts",
+      "sha256": "7f00fffa5d35c878ff9d26c988d0d0542ae5f24ca14e3b1caf045fed1d67960f"
+    },
+    {
+      "path": "src/scene/build.ts",
+      "sha256": "02249a6dde42e9c2b0ecff24fac440dd055b91645b3b5b9ca3b314965e5da84d"
+    },
+    {
+      "path": "src/scene/camera-collision.ts",
+      "sha256": "f0de4c96ce475a00efb2871a17839bdbe6dbb1cc0c6c61d861d66ffa02cd3d8f"
+    },
+    {
+      "path": "src/scene/camera-controls.ts",
+      "sha256": "040040e13977ae62170af58519387c420f5a049c350170234268e84147146b76"
+    },
+    {
+      "path": "src/scene/characters.ts",
+      "sha256": "abf273d014427e7b0e805af97dfe6d6a1db456be5f14a66d9f55c8c98ed44b7e"
+    },
+    {
+      "path": "src/scene/city-scenes.ts",
+      "sha256": "1eaa59908d99a4f45983a5d01680693e2b38019721f63bf71afc482f753fb90e"
+    },
+    {
+      "path": "src/scene/controls.ts",
+      "sha256": "3750ea695a810ecee403213becd68d310f53c00fa841f084a737e436e7303bcb"
+    },
+    {
+      "path": "src/scene/gesture.ts",
+      "sha256": "e3ad7fb0e76350e39e25abe5a07dc89f816ce8b20a6650c8f0906276c7b3d228"
+    },
+    {
+      "path": "src/scene/home-scene.ts",
+      "sha256": "2ec633a024f2e3c86f42c4a204c465207cbde121f12a18898819183babbc447f"
+    },
+    {
+      "path": "src/scene/kit.ts",
+      "sha256": "c1d88627e7c4c7a9418c28f3e716215465e6c9fced1c4b85c5e44a4c751b064a"
+    },
+    {
+      "path": "src/scene/lighting.ts",
+      "sha256": "53e435a7eea766b804f9922b4ff07d4308033700c7d649209f6b750f5bc26d22"
+    },
+    {
+      "path": "src/scene/look.ts",
+      "sha256": "9edbc3ebb6f909b0da696a12ee781d418afe95286e6d7a543b898c57a2bffc79"
+    },
+    {
+      "path": "src/scene/motion-loop.ts",
+      "sha256": "a83e490f8cf7083cb60e88fd00b1f2d27cd69ace8896db03606cdaa74b04f357"
+    },
+    {
+      "path": "src/scene/movement.ts",
+      "sha256": "49ca098d1a3ba005e4aa0981aa44ec27e062fa1872b1f0e99b503ba8060e71a9"
+    },
+    {
+      "path": "src/scene/neighbourhood-scene.ts",
+      "sha256": "9a3ec62adfb308ae60e48d1d9865d1bc911f4ac318d7a70720b880b3d4d62df5"
+    },
+    {
+      "path": "src/scene/parametric-venue.ts",
+      "sha256": "3a83bb23ab489dd91802ad2346e3b0382965cc7cc4f608b0d74af0e111db2d49"
+    },
+    {
+      "path": "src/scene/props.ts",
+      "sha256": "39a6d8080d6382fb61cd363ca933d8c39b3b908f75cf5fe2c7b1f056f08b16df"
+    },
+    {
+      "path": "src/scene/reward.ts",
+      "sha256": "23add16d6079c5c7e134020d643711e32ce25af1c806264508f9dd46b8f06de1"
+    },
+    {
+      "path": "src/scene/smart-objects/door.ts",
+      "sha256": "0984d8c3dd2097eab0bd187ab25c43aab372f0879c57de2211df78f2f541a3ec"
+    },
+    {
+      "path": "src/scene/smart-objects/props.ts",
+      "sha256": "5e694a2b89750058c1e2633180222754e440c0e1e603a253db80e0eb566d20dd"
+    },
+    {
+      "path": "src/scene/smart-objects/sequence.ts",
+      "sha256": "d875aa8fe8405d0b2df81ac0f5f9dfdb480b39db57ce2da9322be4dc7c33cde7"
+    },
+    {
+      "path": "src/scene/space.ts",
+      "sha256": "1a116b8f239fe3c77099ad58256e9546d7cb447073ff19e90b6a419d4f796e51"
+    },
+    {
+      "path": "src/scene/tag-layout.ts",
+      "sha256": "a7a25536f7535cecbc4b09c033678f79e75916e79e770aec18ab7817b051854a"
+    },
+    {
+      "path": "src/scene/venue-scenes.ts",
+      "sha256": "34c85df02988feaed4255d5a6e869cba4a0b13c16a5328e26656c51f6a87e0aa"
+    },
+    {
+      "path": "src/scene/venues-civic.ts",
+      "sha256": "df141e17eeb826cb903207db3762177874fe51792057b727bcd317c03dcb39ed"
+    },
+    {
+      "path": "src/scene/venues-common.ts",
+      "sha256": "95f555ec87806edac82cffc2f7a73b44fe6fe31c631954c8bcdf068043f0adef"
+    },
+    {
+      "path": "src/scene/venues-fct-b.ts",
+      "sha256": "a9bdea05b509809de35a7a4b7261870ff3bb105dd50e616154acb25b44230352"
+    },
+    {
+      "path": "src/scene/venues-fct.ts",
+      "sha256": "24e18a6e7137763dcfb504bcefbc4f1a3f9d693178a5668cb4fd1f15fa90fd6a"
+    },
+    {
+      "path": "src/scene/venues-ibadan-a.ts",
+      "sha256": "73d58cc30a69bf74a47e7524c19a76bcf8b6a565cc5b059907084b37a90a2b03"
+    },
+    {
+      "path": "src/scene/venues-ibadan-b.ts",
+      "sha256": "e289700e4406408fdb49b3c4dc8dfc0884e26530bae16ab662d713dfb82449d0"
+    },
+    {
+      "path": "src/scene/venues-kano-b.ts",
+      "sha256": "c8caaeaeef38237c89424be9e28807f81d82e42a656c458a94f349ae5ea789ad"
+    },
+    {
+      "path": "src/scene/venues-kano.ts",
+      "sha256": "c6d33fdf10d77eec8920fd95ac68ea11590fde9eb202f972b31d20cb449dd095"
+    },
+    {
+      "path": "src/scene/venues-ogun-a.ts",
+      "sha256": "3c7153b78f9753420aef893deb836b9e4ed77f16aa478f4b689b46ba70883c24"
+    },
+    {
+      "path": "src/scene/venues-ogun-b.ts",
+      "sha256": "3c350856b9936261a9c2a9193f0bad6a6190f421398f11848b5940c38829e26d"
+    },
+    {
+      "path": "src/scene/venues-outdoor.ts",
+      "sha256": "8722a4d49970a494b90379b2f47117d517663c3aa0088a555b86a43e9a336681"
+    },
+    {
+      "path": "src/scene/venues-rivers-b.ts",
+      "sha256": "1896e3dd965bd9c520ff0679aee34ce474819f5944cc2ac55f40f7e2d09d8500"
+    },
+    {
+      "path": "src/scene/venues-rivers.ts",
+      "sha256": "13bfeca773f4e13eb3702e95a124dea8c66f049ba753523018f97b53437b11b3"
+    },
+    {
+      "path": "src/scene/venues-social.ts",
+      "sha256": "a8315ca2211de38ffdb7d33e231bae033b2f65d0ca86e69ea330bda4081f4003"
+    },
+    {
+      "path": "src/scene/venues-transport.ts",
+      "sha256": "9d38e127fca8762f83e31fd9b0bf04f9a96f43e4add0ac24023dd1ac97ea7397"
+    },
+    {
+      "path": "src/scene/venues-work.ts",
+      "sha256": "09ea016ab52930b7ff0fab9b835bb205792e38e96847f381e4086dbb8d1304b4"
+    },
+    {
+      "path": "src/scene/walk-grid.ts",
+      "sha256": "941c0210de6b4585546b416cd29c987e6703b1c9208adeb3e79bf456b737ff29"
+    },
+    {
+      "path": "src/scene/wardrobe/geometry.ts",
+      "sha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec"
+    },
+    {
+      "path": "src/scene/wardrobe/renderer.ts",
+      "sha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da"
+    },
+    {
+      "path": "src/tables/city-places.ts",
+      "sha256": "ef91464951e29b5ee789834f45d05e81c39bf85d9b8b56da1f43f0702e1e9f17"
+    },
+    {
+      "path": "src/tables/derive.ts",
+      "sha256": "62e9ca11927f1fa8d16a06c89c6dc27d148f4338a9b67599be5d5e5f77ca6fdc"
+    },
+    {
+      "path": "src/tables/places.ts",
+      "sha256": "bb4ab7b7b578da134a1ea8a91afe5e84ee7d9f92e1bc349acc580b6c903b7fee"
+    },
+    {
+      "path": "src/types/avatar.ts",
+      "sha256": "612d9ccf82dbd32a06926ca79dc837bbc3179ffa11ddb8ec45a9f312ec76eb6d"
+    },
+    {
+      "path": "src/ui/dom.ts",
+      "sha256": "3440801887f96fbb291fb0bbce49ab11d8e468c4cf80e2d0a641c6dcf9fb4447"
+    },
+    {
+      "path": "src/ui/icon-map.ts",
+      "sha256": "063d72f20c99506f2d7c86fe3ab62f09d85adb036068f353ac5ebfacbf28bde1"
+    },
+    {
+      "path": "src/ui/inputMode.ts",
+      "sha256": "2361eaefe7fbd56012cccdb57308beb456e7a2f1f3e026569dc74d842ef65044"
+    },
+    {
+      "path": "src/ui/keys.ts",
+      "sha256": "155e9c7aa43531db3200863efc158958027618c538053428396e73946449b1d3"
+    },
+    {
+      "path": "src/ui/npc-mark.ts",
+      "sha256": "8b75b0d32ec8b5e3b972dd4f36fb8a4969c4ed06e66aacbcb2fc4078bf8a6881"
+    },
+    {
+      "path": "src/ui/phone/icons.ts",
+      "sha256": "c57f40ac70f13862565f5e6efd9b287c2883b0b273495003d49a408f52352b47"
+    },
+    {
+      "path": "src/venue-world.ts",
+      "sha256": "837e64cf31ab499f72732f4d3e76c5a278815206a8c741ff50280a13968cbc59"
+    }
+  ],
+  "externalSpecifiers": [
+    "three",
+    "three/examples/jsm/libs/meshopt_decoder.module.js",
+    "three/examples/jsm/loaders/GLTFLoader.js",
+    "three/examples/jsm/utils/BufferGeometryUtils.js",
+    "three/examples/jsm/utils/SkeletonUtils.js"
+  ],
+  "importMap": {
+    "imports": {
+      "three": "./vendor/three.module.js",
+      "three/examples/jsm/libs/meshopt_decoder.module.js": "./vendor/addons/libs/meshopt_decoder.module.js",
+      "three/examples/jsm/loaders/GLTFLoader.js": "./vendor/addons/loaders/GLTFLoader.js",
+      "three/examples/jsm/utils/BufferGeometryUtils.js": "./vendor/addons/utils/BufferGeometryUtils.js",
+      "three/examples/jsm/utils/SkeletonUtils.js": "./vendor/addons/utils/SkeletonUtils.js"
+    }
+  },
+  "importClosureVerified": true,
+  "importReferenceCount": 1143,
+  "cssReferenceCount": 0,
+  "cityMapSourceCount": 40,
+  "cityMapChunkCount": 40,
+  "applicationMetafileInputCount": 548,
+  "applicationMetafileOutputCount": 227,
+  "outputs": [
+    {
+      "path": "chunks/parametric-venue-BMH3RQBU.js",
+      "bytes": 6791,
+      "sha256": "60304b59488c34b45c4523488c5c85274b6027697c5976aab10f35849dd6311e"
+    },
+    {
+      "path": "assets/base-body-male-M7EPTVJF.glb",
+      "bytes": 133756,
+      "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686"
+    },
+    {
+      "path": "assets/base-body-female-FCFDQK6E.glb",
+      "bytes": 132296,
+      "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c"
+    },
+    {
+      "path": "assets/clip-pack-MH5ZQFHK.glb",
+      "bytes": 338060,
+      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+    },
+    {
+      "path": "chunks/skinned-IRILLT5M.js",
+      "bytes": 98004,
+      "sha256": "254f8aa922da3fb26c5e03623e569bd7cc9f11027d61565eca8efb3415740a4b"
+    },
+    {
+      "path": "chunks/stand-in-ELA674XY.js",
+      "bytes": 5743,
+      "sha256": "b59d42cef9e54eb85b585b25d939574bfc51a27e358bbb95d6c744b03814e2a0"
+    },
+    {
+      "path": "chunks/routes.generated-ZH5FMEUB.js",
+      "bytes": 5283,
+      "sha256": "8a2fbf603ad084be2accb815dfadd45bfdf67baef36562445a3b68c94a8ea0f9"
+    },
+    {
+      "path": "chunks/venues-ibadan-a-GDPCPXNT.js",
+      "bytes": 19314,
+      "sha256": "8a063608912e43c63edea1735af65ecdf36f2edc0d45883c94f4e843bbb4b43d"
+    },
+    {
+      "path": "chunks/venues-ibadan-b-UGIMLQCY.js",
+      "bytes": 45148,
+      "sha256": "32562167ecc4b07ca8681a67c019707d83866cfe921faf6498d928c733bf254e"
+    },
+    {
+      "path": "chunks/venues-ogun-a-KR74ENT4.js",
+      "bytes": 52384,
+      "sha256": "0dcdd19710074360ae9fb343f2ba51306eb8d792ad816e08487c8a398a265aeb"
+    },
+    {
+      "path": "chunks/venues-ogun-b-VMVEYJM7.js",
+      "bytes": 88834,
+      "sha256": "3575ad07cb5d28f96275b6a8e1f8592c7de4f5dd51a80e65bd3cc1c091061393"
+    },
+    {
+      "path": "chunks/venues-rivers-FCHHWDGQ.js",
+      "bytes": 111444,
+      "sha256": "93f8b847e87bc5956a56106e31bb96447dcacfe404411acf2af6c6e6ae866930"
+    },
+    {
+      "path": "chunks/venues-fct-NPOCYGFK.js",
+      "bytes": 105447,
+      "sha256": "4a25d37807e7271f24e0ae44c2d7cf1953d0b33e9ff7d54f0e427a82b000e133"
+    },
+    {
+      "path": "chunks/venues-kano-NBQIJOYZ.js",
+      "bytes": 101796,
+      "sha256": "f5241af2eeb24697242f504ef287f59e3dd8108e635aa0e4582a66384770ad0c"
+    },
+    {
+      "path": "chunks/chunk-WYKD242Z.js",
+      "bytes": 4651,
+      "sha256": "7c3520ebe4cc95e7889bc28afdaf564e700ad7238206c3cbba4c8b4feb840d30"
+    },
+    {
+      "path": "chunks/map-747NXFHY.js",
+      "bytes": 70394,
+      "sha256": "6393d7b1b60ce99946d96bfb26a8de85c98fcddc7283a07b3049c7c977e80644"
+    },
+    {
+      "path": "chunks/bauchi-R7ZMN326.js",
+      "bytes": 595,
+      "sha256": "49009b32aca2309b5cdc1b9f26d3c7cf4c256cbb4e4a117b01230fac6b8ac70f"
+    },
+    {
+      "path": "chunks/content-IBGHSOO5.js",
+      "bytes": 8038,
+      "sha256": "61a2d8550c9d79d444dfcee18edad7c6a83ff644bb199ae6fbbcc474453bb500"
+    },
+    {
+      "path": "chunks/map-G3LVEKFJ.js",
+      "bytes": 74686,
+      "sha256": "7762538afd05d0e0224d7497d3a36aced511be748738662418911c204731e31e"
+    },
+    {
+      "path": "chunks/makurdi-5GW7FDR3.js",
+      "bytes": 597,
+      "sha256": "a1d21600c518e41f85204297212dc2e2b48ee5ab297f0bb78ce915423af7bd03"
+    },
+    {
+      "path": "chunks/chunk-O7QHWWGW.js",
+      "bytes": 14387,
+      "sha256": "c553d83cce37046a9160b157aef58c46426a3010a4abfa15ce9a9c204e36c37b"
+    },
+    {
+      "path": "chunks/content-35GGNBKT.js",
+      "bytes": 7883,
+      "sha256": "44e9ee2a97e9d20c9754fa3fd27ff639996314a9eec19752370664010ecdb4e5"
+    },
+    {
+      "path": "chunks/map-V4WQVM3W.js",
+      "bytes": 39356,
+      "sha256": "2d0ac892a121e131fadda82d518a48fd6807153292d77ef7b038d88b580dc803"
+    },
+    {
+      "path": "chunks/abakaliki-3T677CAN.js",
+      "bytes": 601,
+      "sha256": "a76f1ad4040161baec2b14d94b97f0e9cda594ec286873264a8109028b51ee04"
+    },
+    {
+      "path": "chunks/chunk-WWRHO3I2.js",
+      "bytes": 14426,
+      "sha256": "a861b5d8f4a32823852b7d104574e48df4e78ca8eb6a5a957b276064c6628802"
+    },
+    {
+      "path": "chunks/birnin-kebbi-FJZ6XYMT.js",
+      "bytes": 607,
+      "sha256": "4e49ca7bd468755cd0cf6810b1090fdcf9fdf8aeb3aa34657011a7cf1b1ac0cf"
+    },
+    {
+      "path": "chunks/content-HJ5GBUJC.js",
+      "bytes": 8673,
+      "sha256": "1db757a5f9b10ad5ae61d5cf8b08ea3147ef63044daaf2fe4072227f8d957007"
+    },
+    {
+      "path": "chunks/map-HO6Q223R.js",
+      "bytes": 38190,
+      "sha256": "22f178750a3833e1193a691a4d634c2158b3fdc06e07211cf0ed6151341eb03d"
+    },
+    {
+      "path": "chunks/gusau-3YYWX4Q5.js",
+      "bytes": 593,
+      "sha256": "e55cf6b339c13da14f532d3b7bc20df8e6e818b704706a9b80f1ef3622b063d0"
+    },
+    {
+      "path": "chunks/chunk-DZ67TPGU.js",
+      "bytes": 16123,
+      "sha256": "5ef7759d5f33a820c013431f15ccda8c01ef6b6a497c25377c4ee9b129f7079a"
+    },
+    {
+      "path": "chunks/content-JOOSOCNZ.js",
+      "bytes": 9635,
+      "sha256": "a88f4b2e9e9b586e736ac61ca4ce1cbf15437de848d3cab6d13c89af0c290573"
+    },
+    {
+      "path": "chunks/map-7MRVJROQ.js",
+      "bytes": 26201,
+      "sha256": "f3d7cfdec8b1c4510a6ed499dc4d9cf70c9eee57929ba16e861bead736753ec8"
+    },
+    {
+      "path": "chunks/dutse-BI5H34DG.js",
+      "bytes": 593,
+      "sha256": "d60d832ab52b2a2f3e4379d138178d2c4d34b81f98e2a17ba4f4c54c20f5bdb4"
+    },
+    {
+      "path": "chunks/chunk-WOJTJAKT.js",
+      "bytes": 17198,
+      "sha256": "04221214709e67711e67bb1a35a136e452d69b263976e9e53efa2fc04939bb55"
+    },
+    {
+      "path": "chunks/content-JLRPPI2D.js",
+      "bytes": 13599,
+      "sha256": "2e6717113795e4cbd12c7fcb5e5ff2d1f6345f2f22f3e01a7fe9f99ce12b880d"
+    },
+    {
+      "path": "chunks/chunk-EVSOY4MY.js",
+      "bytes": 20818,
+      "sha256": "bf48fdbb3100dd21e424a0a3927294dd4abe3e0abc75d77924a6fbfc7d431208"
+    },
+    {
+      "path": "chunks/content-JWPK4LHV.js",
+      "bytes": 13522,
+      "sha256": "9613ba7890709754eb33dfd063df89a314b3a52b7ea326abf86feab26593208c"
+    },
+    {
+      "path": "chunks/map-6ZLUCKA2.js",
+      "bytes": 32206,
+      "sha256": "2ef46d6beb8c41e4f1f17a0fccac386943c74a18622dacefedae01f63436c13a"
+    },
+    {
+      "path": "chunks/katsina-PPJBDSJM.js",
+      "bytes": 597,
+      "sha256": "bfbc35c00042f2ec2c5d6990fc39d4b25979280b00a26260866416fc9b6e5a8a"
+    },
+    {
+      "path": "chunks/chunk-EGAMKKLB.js",
+      "bytes": 20372,
+      "sha256": "99fb57accfa3a6b936fda36c34058a0de3f50513f76bc31bc829710fee8b411b"
+    },
+    {
+      "path": "chunks/content-YS7VOMCQ.js",
+      "bytes": 11329,
+      "sha256": "754d5b9ee5da4915ba4a8d23a04b16eb7136403326b33f32840ed82391409094"
+    },
+    {
+      "path": "chunks/map-VYXJWQRQ.js",
+      "bytes": 25094,
+      "sha256": "18cc2ed4622312b420420a275c3fd618d79a9e4a953e95055aff33834f547360"
+    },
+    {
+      "path": "chunks/sokoto-NVMYTOTC.js",
+      "bytes": 595,
+      "sha256": "be2f49a03ac894542a97ff138d2c83cf01e95975c9f582fb78c7b391de5b0b4f"
+    },
+    {
+      "path": "chunks/chunk-GCN7SOCJ.js",
+      "bytes": 18703,
+      "sha256": "cf19b790a27479645757cc17a827ef0101e4e1985efa1a29b4585260b8d9d199"
+    },
+    {
+      "path": "chunks/content-KA3ZS7HY.js",
+      "bytes": 9903,
+      "sha256": "400e8aba7a02f6a2f31bca0bd00c502504f0232eab11aa752a28550f6cc57c79"
+    },
+    {
+      "path": "chunks/map-R37CVKIC.js",
+      "bytes": 24250,
+      "sha256": "074603130a92490421e9f758628b2293bc2e8e62a8ab088ae1e27b78d37dab7d"
+    },
+    {
+      "path": "chunks/chunk-OZD4Q3AI.js",
+      "bytes": 18480,
+      "sha256": "e9ace04e4818563a5ae799c62abdfcc4db4658087918e0d22837d7edaef0e61f"
+    },
+    {
+      "path": "chunks/map-I54YQ3ID.js",
+      "bytes": 130751,
+      "sha256": "0e5066fcb5bb2217fabd245e4ec2970bb4abd1ae686418a653b9d98a9ccea9cf"
+    },
+    {
+      "path": "chunks/lokoja-F7HGUGFR.js",
+      "bytes": 595,
+      "sha256": "e8d95ee257ccf8e0f95f79fdc1fdd2341e643c51f1a99ee6404e1d18673d520b"
+    },
+    {
+      "path": "chunks/content-AOVQQ4II.js",
+      "bytes": 12048,
+      "sha256": "d8b1ffd74471c32a1f26362a9da5cf062d75d5091abcc830cc5c1035af3a52d7"
+    },
+    {
+      "path": "chunks/map-BJ6U4KQ6.js",
+      "bytes": 84460,
+      "sha256": "096ce155a2f00e432a0ef64af43d9401c5b18476a010f29bb16498f4d0e14d59"
+    },
+    {
+      "path": "chunks/jos-DEP3UFTW.js",
+      "bytes": 589,
+      "sha256": "c5972b2073ec60b39c141c9af07507ba60ece3e74c7d34a783526b31ae1d1a76"
+    },
+    {
+      "path": "chunks/chunk-G4VC3EXS.js",
+      "bytes": 18445,
+      "sha256": "e522406029333e1bab265915010aa219825d41a526a6815cb0f5670b16319d53"
+    },
+    {
+      "path": "chunks/content-BRT4TEMT.js",
+      "bytes": 6905,
+      "sha256": "ef7c346073f36139f9f3590960f3a85190212af0dcf1340a0f7398153466dec2"
+    },
+    {
+      "path": "chunks/map-OQHYOESE.js",
+      "bytes": 41860,
+      "sha256": "dca6bf2252535e714073c6bcad2e46a385fbfd219b57cd78faa00682e8f12e3a"
+    },
+    {
+      "path": "chunks/lafia-GG4VX6JD.js",
+      "bytes": 593,
+      "sha256": "1e7529bae5a7f26c0733751fd76628820291f7a810d7412b2da2d583cbdd3712"
+    },
+    {
+      "path": "chunks/chunk-Z6I3KQ4N.js",
+      "bytes": 13070,
+      "sha256": "a7e35e74d07a8adcb384d86e70a4ac6cc9df96d701b7676830fb79cce146acbc"
+    },
+    {
+      "path": "chunks/akure-I77TFUPE.js",
+      "bytes": 593,
+      "sha256": "a66389f3651e65ae964170b4e36ed5fe90183a6d0e439d95a220ddae9cd1c670"
+    },
+    {
+      "path": "chunks/content-7X5CIYAW.js",
+      "bytes": 7327,
+      "sha256": "2f6807e0a923baf3466ee4da2320e52f51e06176c2c42efa0ae32f585e81f393"
+    },
+    {
+      "path": "chunks/map-EX5JKVNV.js",
+      "bytes": 25498,
+      "sha256": "0ccf87e9e0f643186d243084b3e9508bcb274a5459243e784ae3284a6e0ca671"
+    },
+    {
+      "path": "chunks/ado-ekiti-EC5KN263.js",
+      "bytes": 601,
+      "sha256": "7a1178baad10740c5fd27dd0265af970f34e88fee63764d82147b576da4a3f75"
+    },
+    {
+      "path": "chunks/chunk-4WRFLJCY.js",
+      "bytes": 12744,
+      "sha256": "d69e1ceea91600fcb9255ab62d190b33c36c0df0e9878ff0b44b0bb223aae012"
+    },
+    {
+      "path": "chunks/content-DLGZLAYH.js",
+      "bytes": 6786,
+      "sha256": "e1d6885fcadbeecb5aa4b04cddf821d058361df96b8189bb5bd9a50f8225bf51"
+    },
+    {
+      "path": "chunks/map-67NFFO4K.js",
+      "bytes": 74682,
+      "sha256": "aa91e0f66f85a7d657d7dd9636a114199082ee670fe36c0e900ce29d58ed2125"
+    },
+    {
+      "path": "chunks/asaba-HWAZ5LFD.js",
+      "bytes": 593,
+      "sha256": "ab08eeacd9f0878a7c1f323cbcfc0739880bdbfa146dbab9fc1129d0354ff4af"
+    },
+    {
+      "path": "chunks/chunk-GTWN2A7R.js",
+      "bytes": 14583,
+      "sha256": "911f6475b6725fc94815f5a927820512b6fa329460440f8d5e47260f96d0f27b"
+    },
+    {
+      "path": "chunks/content-3E5TVTO3.js",
+      "bytes": 7332,
+      "sha256": "3783dca625a4be7afd54d4fc95aba5d5ecee26b2e12fef53e066224d82ea283c"
+    },
+    {
+      "path": "chunks/chunk-XFDZMUQ7.js",
+      "bytes": 12670,
+      "sha256": "6b3c158a896f1fb2c7d57b7df2d5c1d00f52d5632ac911c11201566e7543237f"
+    },
+    {
+      "path": "chunks/content-LGVGWGGN.js",
+      "bytes": 7367,
+      "sha256": "ea2a80349d1f49f1a00531c9db67b3cb731a48ed8fae9e76709ccd85eca5f79e"
+    },
+    {
+      "path": "chunks/map-FSTAJIKU.js",
+      "bytes": 29518,
+      "sha256": "670e071f10ac6c88232d27769c3c43980771ed4ce375cace4e451672eea88632"
+    },
+    {
+      "path": "chunks/damaturu-EUCUMTQX.js",
+      "bytes": 599,
+      "sha256": "2a19959fc510279141e61942df1256983e522c0503560fdac65fb75abc301464"
+    },
+    {
+      "path": "chunks/chunk-B65MNHLP.js",
+      "bytes": 14066,
+      "sha256": "64c53ac663ba20e705172129dbeb5e15180df64d1d7e4cfcee8efd793bb68e40"
+    },
+    {
+      "path": "chunks/content-IOL2ALIW.js",
+      "bytes": 7666,
+      "sha256": "ae7df72faa0cb4e22d2c9df72281b38f81080850288190357d3b51645350ce39"
+    },
+    {
+      "path": "chunks/map-3CKYKKYS.js",
+      "bytes": 17877,
+      "sha256": "68e7dae872d6b324749b27d09d61ce8d5473c67487cace6f9005f3188aaa48d5"
+    },
+    {
+      "path": "chunks/jalingo-U2SYG2Z7.js",
+      "bytes": 597,
+      "sha256": "d04a58903c343b2c1c83de18960ad729be36ced76a74987ff38712ec5ec537fc"
+    },
+    {
+      "path": "chunks/chunk-7C3NPAAK.js",
+      "bytes": 13883,
+      "sha256": "fd5b1a6df8b4e414a2363ca1996579d9a0a6bb01f90dc344587dd35436dd0dff"
+    },
+    {
+      "path": "chunks/content-MN7MXKXK.js",
+      "bytes": 8490,
+      "sha256": "0a5874c1748873a628ef1ae876553236f0a6f7ec9c6a41efc000d8a77ea561f3"
+    },
+    {
+      "path": "chunks/map-T4U2YMVM.js",
+      "bytes": 46100,
+      "sha256": "72e145745e2f2d2f41826880980078cd9de4878096f54bf3589e028e9eb25d33"
+    },
+    {
+      "path": "chunks/chunk-BOEMSZQL.js",
+      "bytes": 14521,
+      "sha256": "b1cf276f90a0e74c7326ab43e26bc96d124e790c1384aacac0f6f98f5568c94a"
+    },
+    {
+      "path": "chunks/map-ESCPSHD6.js",
+      "bytes": 53522,
+      "sha256": "4c6e4f08a2039b378260470efc472b02a17871de63e1e5b8bc971a84d90860ca"
+    },
+    {
+      "path": "chunks/ilorin-UATFJU3P.js",
+      "bytes": 595,
+      "sha256": "c928dd411fc032563096f8c9c36834b529bc4a9c02fbceb444af489e01c0c627"
+    },
+    {
+      "path": "chunks/content-PJ2X4RZV.js",
+      "bytes": 7843,
+      "sha256": "d83c5b62f460d2b85e5cadc367d69ac885d85d2ada4067e6d3b5e87f254d4a6c"
+    },
+    {
+      "path": "chunks/map-K6C2SUMS.js",
+      "bytes": 81449,
+      "sha256": "bcb2ed5abe1d33ece59c321ee240bfd772bf3bac72eb7a0c954aab1f6d6f8cd4"
+    },
+    {
+      "path": "chunks/minna-2J2QHAT5.js",
+      "bytes": 593,
+      "sha256": "83e5294f1c41ddea5d0052796cf7d09bf42f48e72ebd7e23f6c5f786fe2d6263"
+    },
+    {
+      "path": "chunks/chunk-QDBEKNKD.js",
+      "bytes": 13402,
+      "sha256": "209559a20b189dda00ce0fccd53b01982da639f67ad7b6b18e276ce1dbe185e1"
+    },
+    {
+      "path": "chunks/content-AG36XKM5.js",
+      "bytes": 8934,
+      "sha256": "58f4627f84f5146eae2a6850b63c61409d307c09b1093a18524355f55021f684"
+    },
+    {
+      "path": "chunks/map-UDM3XSYF.js",
+      "bytes": 28905,
+      "sha256": "b954dc61532fab9ab83434cbb82a166ff4c62f264bd4736264220bdaca40e72f"
+    },
+    {
+      "path": "chunks/osogbo-KF77T3TW.js",
+      "bytes": 595,
+      "sha256": "ca4b64510952cb03293138c1410acb201e4f1599cc8fbbfaea39df1ff5f84994"
+    },
+    {
+      "path": "chunks/chunk-KKV65V6V.js",
+      "bytes": 14867,
+      "sha256": "2deea38aedf78ef78f2ad1280b12ffeebf63901f8271e79ffd48f5c851074bde"
+    },
+    {
+      "path": "chunks/maiduguri-4HV6Z7Y6.js",
+      "bytes": 601,
+      "sha256": "610e0cff89fff4fac4a923155a1e5f4fddb66187a91f15762b51df47065abf13"
+    },
+    {
+      "path": "chunks/content-NVJDGQZ4.js",
+      "bytes": 10912,
+      "sha256": "b9a261a8a0db62b68bacb48976b397339a247ec78fad80cd293e8897af832337"
+    },
+    {
+      "path": "chunks/map-KR6B7JHF.js",
+      "bytes": 21774,
+      "sha256": "78599665c7211f69c8ed9e36b832da9da062d936ee9f6bad1f1e56875c3ac265"
+    },
+    {
+      "path": "chunks/gombe-P3EVIXR2.js",
+      "bytes": 593,
+      "sha256": "aa38bfd7858ccf307195c4ba2b3b0b808c28de2e675530e3444ba10bf3d352e2"
+    },
+    {
+      "path": "chunks/chunk-K4QBXN2K.js",
+      "bytes": 16847,
+      "sha256": "0a4ab6b6e47d61c5f8d0cb3cc981de16423b446e4f2376589af1af89ed352b9b"
+    },
+    {
+      "path": "chunks/content-LXPEFQG4.js",
+      "bytes": 10519,
+      "sha256": "a45a9ff80958fc93fcf2707995b95e9d105e89f74a24e018798d0dc57017343c"
+    },
+    {
+      "path": "chunks/map-Z6MUF6S7.js",
+      "bytes": 63693,
+      "sha256": "1dc158b17c07760883c2179b864f538fd865921ae880a1e2e4e8c332c2c729de"
+    },
+    {
+      "path": "chunks/yola-4J53ST6B.js",
+      "bytes": 591,
+      "sha256": "b4c255cd9e07b6ebf9b6ff3b17e520c3ad13bfad49623f66ab4a6f4528cffc48"
+    },
+    {
+      "path": "chunks/chunk-3K743KFW.js",
+      "bytes": 16932,
+      "sha256": "9e9c2de9898962d94d10ec469042fedd3de5e8d92480047ccc9a63a6d9dd8778"
+    },
+    {
+      "path": "chunks/content-RAGZCRX3.js",
+      "bytes": 9400,
+      "sha256": "b2c8bcac51b4bf0ba8ab2a29e33b2c30609af0bca7eb1fddb2c2c8467aa13310"
+    },
+    {
+      "path": "chunks/chunk-XF3NLKGV.js",
+      "bytes": 15643,
+      "sha256": "dc5d5305e04f2e6765e6e4f347e2caa3e60f5f7cf1afaa66a1842112f0cbbe5f"
+    },
+    {
+      "path": "chunks/content-ZMVFSAMK.js",
+      "bytes": 12473,
+      "sha256": "c3b64bef5cba4e4faaea87062370c4675e96bff6b429ee05f08239bf87d73ce6"
+    },
+    {
+      "path": "chunks/map-JID5FGH4.js",
+      "bytes": 23724,
+      "sha256": "0d26aa520c4f5eeaf7c2f43b87cab89f458174e50535dcaa9767f72ffd8d9f41"
+    },
+    {
+      "path": "chunks/awka-CYLKXUK4.js",
+      "bytes": 591,
+      "sha256": "2087ff1cf358f40266122186884f60414bbfc376dcc98b4f64fbdc1d86dbee8a"
+    },
+    {
+      "path": "chunks/chunk-M2FTMC6Y.js",
+      "bytes": 19653,
+      "sha256": "4e77c4e117af4e5a10928db08a37fdf2a7361011966d7880f11d3d06b98d67c2"
+    },
+    {
+      "path": "chunks/content-CTOI2WVQ.js",
+      "bytes": 10370,
+      "sha256": "c3ed12229491121382203941b723e2859f8e972047f2db6a2821f9a19577db3d"
+    },
+    {
+      "path": "chunks/map-WTG4VLC6.js",
+      "bytes": 104137,
+      "sha256": "b07c7b489ccf5b6d4e9da1d56cb86e750fd862115b88fd2fde22966734fe11c5"
+    },
+    {
+      "path": "chunks/kaduna-PKZRUMFS.js",
+      "bytes": 595,
+      "sha256": "4d6fdb725b1ce1a21fc9eef9d2c410ffc824908b66f95c29183745c4805818e3"
+    },
+    {
+      "path": "chunks/chunk-KNRQFMAF.js",
+      "bytes": 16614,
+      "sha256": "da15e54b18c6e637df0e5dd1db2b3f2bb5dffdb2f0bcc0c3688f7a840bcb2e33"
+    },
+    {
+      "path": "chunks/content-VPGZLP2O.js",
+      "bytes": 10972,
+      "sha256": "5948ce9733f071dc62c3c55165e0d51035105a7a6c43db93ec7542283503c28d"
+    },
+    {
+      "path": "chunks/map-GBDXFMIB.js",
+      "bytes": 61294,
+      "sha256": "a3e92b7faba0ed96200fd3c7494c77be0a28382dcb95c99346bbdbdb5d820258"
+    },
+    {
+      "path": "chunks/chunk-DPJXMKHQ.js",
+      "bytes": 17593,
+      "sha256": "18aba4ba457c40010333cee40bbe92e1cbe70ebdfbfca21022409f357863a34d"
+    },
+    {
+      "path": "chunks/map-6PZTAK4L.js",
+      "bytes": 30183,
+      "sha256": "fa143e99c835950661d70df3e0106e0848b9d2e98e1f93fd5aff42afedc62fcf"
+    },
+    {
+      "path": "chunks/umuahia-ECWYFLSV.js",
+      "bytes": 597,
+      "sha256": "1b2a2c13b86428616dd20c97160a0ca72bc7c75b06b77684173f8fb3fd4d8f3a"
+    },
+    {
+      "path": "chunks/content-PPPEKJ7P.js",
+      "bytes": 14141,
+      "sha256": "e3463ea86b78d023b32d1978bc7c24f2d51bf32bd4a8fb946d21800b84b75e44"
+    },
+    {
+      "path": "chunks/map-B2NEVPHM.js",
+      "bytes": 69778,
+      "sha256": "25c633f92cecb4b663f2fc329ed021d7692020cf900432eb3df41dccce57e9ea"
+    },
+    {
+      "path": "chunks/owerri-J3QHCUY5.js",
+      "bytes": 595,
+      "sha256": "9902c5b2c8d39221491e58a2428b5924b5dca765d0048d25a3e901013577df83"
+    },
+    {
+      "path": "chunks/chunk-22S23WB4.js",
+      "bytes": 21568,
+      "sha256": "4539721eab6f36f3ecd6ec1d50c95b6c97ed1305f33c8ff0d8257ba2d11b73b8"
+    },
+    {
+      "path": "chunks/content-G4D5TTGG.js",
+      "bytes": 15006,
+      "sha256": "ed71901a606950dc6eb744b3d107e077ca2becdb7c71add8d77b4c3d8d1af82c"
+    },
+    {
+      "path": "chunks/map-XCBNEH7K.js",
+      "bytes": 100037,
+      "sha256": "ff3178477eadd4bb093b58aad8df73848e4084b81cdb0b8bcf3fe0e8203f875e"
+    },
+    {
+      "path": "chunks/yenagoa-MDWSOUKM.js",
+      "bytes": 597,
+      "sha256": "93e8b9ac7e8dd04201e9be4fe94c4c8f5f4a87481d135335d920179f37c89fca"
+    },
+    {
+      "path": "chunks/chunk-ZE4OWRQW.js",
+      "bytes": 21523,
+      "sha256": "914104b1425453c42d3c00ee3404de2984be3d92be021168800d863eab233bd7"
+    },
+    {
+      "path": "chunks/benin-city-XOI5KRGA.js",
+      "bytes": 603,
+      "sha256": "9c6633c4609caf6477571db63bf301761e522432f20d9023e780f4fd1e98e9fc"
+    },
+    {
+      "path": "chunks/content-N6AOXN3P.js",
+      "bytes": 10700,
+      "sha256": "f319cdde59c7cf6b11b794eae44be9a1235ea832de2b983c8230a00a67d217ad"
+    },
+    {
+      "path": "chunks/map-KIFNNPRK.js",
+      "bytes": 45670,
+      "sha256": "f1ecabc613daf5f3fa2be7d5b3fe2c01ec91f133cce2fc73bd7edc36ab97e6c1"
+    },
+    {
+      "path": "chunks/calabar-VRAIERS2.js",
+      "bytes": 597,
+      "sha256": "4cb9faf1eef282a368c76592f87745ced3270e8d99f3057bd1bf92e67b66cb44"
+    },
+    {
+      "path": "chunks/chunk-PS2LUCOG.js",
+      "bytes": 22538,
+      "sha256": "c258c8f951d58bc6253b4ddd7c2a5a55ba4ef35f93ddd0cbf59e3a6d96f31a8c"
+    },
+    {
+      "path": "chunks/content-ALFMOVNI.js",
+      "bytes": 8694,
+      "sha256": "97e7102f3ef74bae49fbaa4b7394facdcb748cb51861059d01dd1951a9b0c950"
+    },
+    {
+      "path": "chunks/map-WM3UAY3J.js",
+      "bytes": 40471,
+      "sha256": "7cf144148802152c6438f93cb1a5d8207a6a32449b0e36600d701d6f864e15f9"
+    },
+    {
+      "path": "chunks/uyo-6IZTPCFS.js",
+      "bytes": 589,
+      "sha256": "4f7d2f76f014554e194f5f4bd9aa6c7e11d09414d0c64ec591ba7ba26ebb7930"
+    },
+    {
+      "path": "chunks/chunk-FU2KTO7M.js",
+      "bytes": 16274,
+      "sha256": "dbc21bd3cd5efd36fd916d198568ba85bd001c931841b7f9e2779926d769610c"
+    },
+    {
+      "path": "chunks/content-FG4SH5AQ.js",
+      "bytes": 12529,
+      "sha256": "d0e25487c73afdb93676efba4722e97344fe2b47cb2555c63e8146d801a41e8a"
+    },
+    {
+      "path": "chunks/chunk-ED4XYDDA.js",
+      "bytes": 20853,
+      "sha256": "ab70b70170b356995010f4e0db71b5674f4b62c0496c24ef2a8d4316d872dff2"
+    },
+    {
+      "path": "chunks/scenery-5CGDYOR2.js",
+      "bytes": 1163,
+      "sha256": "748f828c5732ed43088bff558f867ec55c36ddbfbdeb15556155ade65011b04b"
+    },
+    {
+      "path": "chunks/map-RS3SVJOF.js",
+      "bytes": 23146,
+      "sha256": "e321fc0d6ac501f9ec657f88f4d824b8a078980b66d56e9c4647135afcd83754"
+    },
+    {
+      "path": "chunks/chunk-XSJD6JBS.js",
+      "bytes": 202041,
+      "sha256": "878d0b5293b810a29ca9a154474bfa178083c287595d5cf25186959d5839e8f0"
+    },
+    {
+      "path": "chunks/kano-Q37JY6EB.js",
+      "bytes": 488,
+      "sha256": "8e4a9c7eb2b3d61c0bd691bbb8244bb0f112f46db143e638a1d01f62026f32d3"
+    },
+    {
+      "path": "chunks/content-KLYZF7DM.js",
+      "bytes": 10701,
+      "sha256": "972fa046b9d6a61f258f6e6c871bc4b890ad29e2ef1503c13d88f3ae5ef2dbc0"
+    },
+    {
+      "path": "chunks/map-QRMWQBOQ.js",
+      "bytes": 67903,
+      "sha256": "ded165eaa3289c1f1e37fed375dcb52a84cea947b2bc571e57a107824099851a"
+    },
+    {
+      "path": "chunks/enugu-UOI5GK3Y.js",
+      "bytes": 593,
+      "sha256": "be0ab70480b3b76ae558a82162794d111909191a8cebfdf79a72b5b3d7ff94ca"
+    },
+    {
+      "path": "chunks/chunk-FDRXSLP7.js",
+      "bytes": 3306,
+      "sha256": "c873622938194934c67ee065276842a2235b5ef7151cf4e49ceebd8b54dfb4e2"
+    },
+    {
+      "path": "chunks/chunk-UZ4KAETL.js",
+      "bytes": 18445,
+      "sha256": "e6978808620c5843e3d48808a9e3362fffe95e10c4d75fc71f12d7ceec779efa"
+    },
+    {
+      "path": "chunks/content-5JWRT3Z5.js",
+      "bytes": 10633,
+      "sha256": "a73a4e0d07d375d003aa741bc8d45d3643d41c3666ed3bb7a90abf2223f068a0"
+    },
+    {
+      "path": "chunks/chunk-CFI24PTB.js",
+      "bytes": 14532,
+      "sha256": "7965cc859e534b3208a4f2de1f5f35b3eee1ededc7f425131789b96f3141b2c7"
+    },
+    {
+      "path": "chunks/chunk-KQ4CCGOK.js",
+      "bytes": 1783,
+      "sha256": "8961b9ee4601582addae11283d5ea2ce594c46f34d49639a8e5a6ad7ba7a49e7"
+    },
+    {
+      "path": "chunks/map-OF5CFIPG.js",
+      "bytes": 64940,
+      "sha256": "d4fe0fe42b22fdff8c5e2d4a5b0459ee35edfa7543b0374d13b8120ed6f2ddb8"
+    },
+    {
+      "path": "chunks/chunk-75UEKE7A.js",
+      "bytes": 1764,
+      "sha256": "161771b3dc2e9454ec42685ff57c2b9e8dde9e926f9fa7d5fd80ea02d835f995"
+    },
+    {
+      "path": "chunks/chunk-LDWMAFQX.js",
+      "bytes": 19215,
+      "sha256": "e883c6788295ae3af8fe75705d61ba1cce9af579c46a9b485a41fbd5c279ab5c"
+    },
+    {
+      "path": "chunks/chunk-4GALXTGU.js",
+      "bytes": 15274,
+      "sha256": "06c386c1f72fc6992f0361c72e1ffe2f7f838c5f36055f0a2a75f3a0113c825f"
+    },
+    {
+      "path": "chunks/content-X3K364J3.js",
+      "bytes": 13225,
+      "sha256": "be17076c017653033a88b74497d3dd1e1e862c62371319f96dfb71e95d284c9f"
+    },
+    {
+      "path": "chunks/map-MOFABJY5.js",
+      "bytes": 1135,
+      "sha256": "37349a9c7ae895f0b01c95227ccd513733a8bcd221900a1eda6d9477e2af35c2"
+    },
+    {
+      "path": "chunks/ijebu-ode-R3PLZX2M.js",
+      "bytes": 619,
+      "sha256": "3388ae9cd682abe6cf546dd93ddcc728fa267701dea5789a22202fd612574467"
+    },
+    {
+      "path": "chunks/chunk-QXBDUSXK.js",
+      "bytes": 1611,
+      "sha256": "9e3d32ee7a24dcacdec7bcda7484b45720c5e6a75e49a076fd9861e33610a41d"
+    },
+    {
+      "path": "chunks/content-XWYB7KYC.js",
+      "bytes": 406,
+      "sha256": "1d375ba589fd4c7fa9a2c1190adeb9aac7c1cc0886ad23ccbb76c598cbf3b0a3"
+    },
+    {
+      "path": "chunks/map-UZHQFWBU.js",
+      "bytes": 1340,
+      "sha256": "fc031daa56da5639a2cd213adc01e72b2c05f5d9b9668ab90743e6284e314ae1"
+    },
+    {
+      "path": "chunks/rules-F7YO4HYW.js",
+      "bytes": 453,
+      "sha256": "6db940c4f97dbf667e7363b5d7ce42c681b3ee80e811e4f50dae29019b149b88"
+    },
+    {
+      "path": "chunks/sagamu-VM7YOGCC.js",
+      "bytes": 732,
+      "sha256": "6a31d5a25ca1660293d16eef71c0b4282a7941a68aea062146a8aad3d47bc9b6"
+    },
+    {
+      "path": "chunks/chunk-ZVNTDPJ6.js",
+      "bytes": 1130,
+      "sha256": "49a770f2c86bc31c1a93f7e01a722c4f86a805f578e871056c5aa96f42abcdce"
+    },
+    {
+      "path": "chunks/chunk-L76P3VTZ.js",
+      "bytes": 15821,
+      "sha256": "7dcbd615bcf0546e13d6cf9445d3dcead49609f9ef4ba40eb40822439868a0b2"
+    },
+    {
+      "path": "chunks/content-5ZEZJIDM.js",
+      "bytes": 48393,
+      "sha256": "37a8674e216869f49c61f4c53b8e90e0cf577ca1795a7df8f6e1fc779bf6abd2"
+    },
+    {
+      "path": "chunks/chunk-KE6A3W6W.js",
+      "bytes": 5273,
+      "sha256": "8e1007db14baa4ce7ef09e25f7cf801f7c1da3e8804c7cb94f87cca3f4046b44"
+    },
+    {
+      "path": "chunks/content-K2KTLGP7.js",
+      "bytes": 13271,
+      "sha256": "49c0e02de03cc4ed5f4aa10909ae504c0a99d47360d5e5d319cdafeb44b8b1f4"
+    },
+    {
+      "path": "chunks/rail-FCBOEGLZ.js",
+      "bytes": 189,
+      "sha256": "b76ab1defe663805f3e46dc3637aa98973721955feba8a7f19808c7948b0de36"
+    },
+    {
+      "path": "chunks/scene-2NTI7OPS.js",
+      "bytes": 223,
+      "sha256": "0b903d40efafd6d68fa12b104c700ea0be93139023fed07b38aac0e2a104ad9e"
+    },
+    {
+      "path": "chunks/chunk-JSN577WL.js",
+      "bytes": 57482,
+      "sha256": "0b9861671fafaac35c5071c3fc290c8d1cc92e7989d826bdf14d54a2d96cd0a6"
+    },
+    {
+      "path": "chunks/chunk-PRXEWDX6.js",
+      "bytes": 1335,
+      "sha256": "11c68e3cbea5127db35b05613e71382b6f3c7ebf4bb5ee13a516757289e32ef2"
+    },
+    {
+      "path": "chunks/map-XFN3765Y.js",
+      "bytes": 1117,
+      "sha256": "275d8af95b5e2905e15e10232d8a62b4a61f17c7f4d6024c38319b0e44be696a"
+    },
+    {
+      "path": "chunks/abeokuta-3AZEYY6N.js",
+      "bytes": 696,
+      "sha256": "a9adcf2fc9009869f6000523813fb51ff957e6ca2e3ac0b1a048d47f0dc3855c"
+    },
+    {
+      "path": "chunks/chunk-4UGHBOIT.js",
+      "bytes": 2087,
+      "sha256": "4c1e0888a54461521a87955bfb6622f7d6351b99dfe561e4e538e4cea79f75bd"
+    },
+    {
+      "path": "chunks/content-Z3RKWUZ6.js",
+      "bytes": 12736,
+      "sha256": "768f606328d2b045dbaa48b9dec084aea70cbad009e659353d3203cf88fcef9e"
+    },
+    {
+      "path": "chunks/chunk-5IGNLF2Z.js",
+      "bytes": 1756,
+      "sha256": "5bbc412525e182bafa1b60fabe6f915a68b21003fd29a25460ff4b05707d62a5"
+    },
+    {
+      "path": "chunks/map-7Z4BKSPT.js",
+      "bytes": 1047,
+      "sha256": "b21525476bb4bec26e0322a7831c263c8ba0fa249f73e41063b66ebe5100ab48"
+    },
+    {
+      "path": "chunks/chunk-IO6BCULW.js",
+      "bytes": 26543,
+      "sha256": "bc99103b719ccc07917751bd58797427a6ebc345fcfca9735fb0cabfbe0d467d"
+    },
+    {
+      "path": "chunks/ota-VIHTSOB2.js",
+      "bytes": 543,
+      "sha256": "ccb3b69ce85110ef712ac01a37b1dcabc263c42f5c82f47e04a9a3129e44ecb8"
+    },
+    {
+      "path": "chunks/chunk-L5KR7UX4.js",
+      "bytes": 1417,
+      "sha256": "324a9c4be7dc712302dff6e03cd5aca2fd86fbe921cb407344b50340f812bc6d"
+    },
+    {
+      "path": "chunks/chunk-4GPWRZ56.js",
+      "bytes": 487,
+      "sha256": "9bf6c4193d0c74b82c5c3bded7e88d86605547a83570de4b378bdad4235fde54"
+    },
+    {
+      "path": "chunks/scenery-AD3WFDQ3.js",
+      "bytes": 1139,
+      "sha256": "a7db78627ed65524827817f6c90600247acf55e15fbb0e87013fefe8d1e31941"
+    },
+    {
+      "path": "chunks/map-PKNFXU2L.js",
+      "bytes": 14394,
+      "sha256": "60381290c171052a6bff1062a17aa3602c1f5083a880f44afa3f125f0723453e"
+    },
+    {
+      "path": "chunks/chunk-WOUFJ457.js",
+      "bytes": 126667,
+      "sha256": "d5d463cb7e1f861d29db410ec4878d7d727dc378ecf2dfa486a8668c13315ffa"
+    },
+    {
+      "path": "chunks/abuja-VZQXCPEX.js",
+      "bytes": 583,
+      "sha256": "6bf1788220529143feb9afb1686355678e2d100675a3b0c702331e3a5239a8ac"
+    },
+    {
+      "path": "chunks/content-3XNPFJXQ.js",
+      "bytes": 29935,
+      "sha256": "416f1d5a4bff83543c4ee8f87266f31f036b16c61a45cb99ea87d34c94f08040"
+    },
+    {
+      "path": "chunks/scenery-NZGD2MLT.js",
+      "bytes": 1676,
+      "sha256": "268a2cb9c38a4b394084736ad4136fc6350dea01da25119ee2d1ebcdaec295d2"
+    },
+    {
+      "path": "chunks/roads-NOBKQCB3.js",
+      "bytes": 24990,
+      "sha256": "bdfb081dae161c11f70fced1cc10371d6459fc551abf9364dfd4f0c241d8676c"
+    },
+    {
+      "path": "chunks/map-KAVLGNBJ.js",
+      "bytes": 691114,
+      "sha256": "0a66ae1a446896f8c1b048853b527d116f12db5184f1361e6662757a82ac238a"
+    },
+    {
+      "path": "chunks/port-harcourt-FUGKG3KU.js",
+      "bytes": 611,
+      "sha256": "5403c34d73946d97e6cc5fe8e0de6597cf0e3e755003692ba4f51c144d2f9c40"
+    },
+    {
+      "path": "chunks/chunk-OFLNTWLH.js",
+      "bytes": 3470,
+      "sha256": "e2a4695520eae5b85e64c4720fdec68df5342a2791b95d8053ad8eae0dd42141"
+    },
+    {
+      "path": "chunks/content-23GIPBJ7.js",
+      "bytes": 37264,
+      "sha256": "4fabcb7dad20a1f05b90478c22c18cba598775bc6d366c4cd35df3ca8253eb85"
+    },
+    {
+      "path": "chunks/module-5UMGYXPT.js",
+      "bytes": 10437,
+      "sha256": "5e71f531348b6dc931df4d7ec3bd5ee1fbc27cab9a0f92d7404dca671339b11d"
+    },
+    {
+      "path": "chunks/chunk-WU7XBPMZ.js",
+      "bytes": 568,
+      "sha256": "fde24b07504a8b2688bab8420ea8793f6a8e5f2464cf1fca1d25be4b6f084479"
+    },
+    {
+      "path": "chunks/roads-PFYDNJF6.js",
+      "bytes": 33242,
+      "sha256": "4a4b1f1bbab8624f440849f1db81d49f1faf1e73c9da2bc0fdf13e8497cd6c72"
+    },
+    {
+      "path": "chunks/character-I3WEAAUR.js",
+      "bytes": 4255,
+      "sha256": "a6e5138fcd3beaf1de0b1afdb54912894616c7b31272df601a9b130d2714afd2"
+    },
+    {
+      "path": "chunks/map-JMTW3DLK.js",
+      "bytes": 23145,
+      "sha256": "a50cc7f3f9d988e71fdd351bd3c2ab3881630fd7fe75193fe993dda071134f6a"
+    },
+    {
+      "path": "chunks/rail-WMQ62GZ4.js",
+      "bytes": 635,
+      "sha256": "16822531b9405bd3219bbc3099a9c3453be8415e8eccf7e57155794087f00800"
+    },
+    {
+      "path": "chunks/chunk-D5JW2VQH.js",
+      "bytes": 10315,
+      "sha256": "87df00d35a5caf79d724ba45fa89ff7a5794643b89ed8f88fbb1095ad29b7d08"
+    },
+    {
+      "path": "chunks/ibadan-4ZX7WS7W.js",
+      "bytes": 369,
+      "sha256": "9a72972c16217c20f8b58105a6b25b5330388b3797b0b9c9c3075a651618ee62"
+    },
+    {
+      "path": "chunks/chunk-56W52MK5.js",
+      "bytes": 431,
+      "sha256": "82afe548fb49a604b54ea096a3eb9445ff5c270d5eb57b41c18e8ae6274fe594"
+    },
+    {
+      "path": "chunks/chunk-PBAS4FDW.js",
+      "bytes": 4078,
+      "sha256": "5c070308e85f6f693fcf090277a99ddaf0811292e10d19e47897b9a40799b1cb"
+    },
+    {
+      "path": "chunks/content-4N76I7D3.js",
+      "bytes": 46731,
+      "sha256": "59be7cf089d008f8a9a31f72ca4c507f32b6d9cba0f964f666802e456a71c3ed"
+    },
+    {
+      "path": "chunks/chunk-YCUQDBKN.js",
+      "bytes": 5565,
+      "sha256": "fdc91b1a67eff146fa5b7406d970d7f1ad7a0dccc341ffa67dcd6180999bd402"
+    },
+    {
+      "path": "chunks/chunk-XQQNF2HF.js",
+      "bytes": 11145,
+      "sha256": "2ace561f193b64d54288ef29b133d21703640e53530fadafc41220afd9703ea0"
+    },
+    {
+      "path": "app/viewer-npc-v1.js",
+      "bytes": 1697314,
+      "sha256": "f5270d9e1ad0420b008b02150b4d1e6c165b8be69b3ca6fdd449fb5b215f492b"
+    },
+    {
+      "path": "chunks/chunk-4PPHKTW5.js",
+      "bytes": 960,
+      "sha256": "9e1266f42d772d02bf77d7dbf2fd7c705c77c71e796f717456b108dd46638dc6"
+    },
+    {
+      "path": "chunks/chunk-3Y7JW7PB.js",
+      "bytes": 110969,
+      "sha256": "70a32e213b4cd3b9f7a6910af80e27e5f603970002419190c4589fe66f7fa308"
+    },
+    {
+      "path": "chunks/chunk-3FKB2EOX.js",
+      "bytes": 24930,
+      "sha256": "100ebbf104794353e7dc3630cb2c46760faef1685ba23540170d204ade2798bf"
+    },
+    {
+      "path": "chunks/chunk-A5PNVLPY.js",
+      "bytes": 14923,
+      "sha256": "382a25c60a231f5ad15a14a414e990a3e823c1aed0f21d48f9660b83faff0261"
+    },
+    {
+      "path": "chunks/content-TAIV2IK3.js",
+      "bytes": 102681,
+      "sha256": "57fb7eeebe0ea1a4e6eac56c65b93572eb08b047b0d2c4df3042a10354bbf429"
+    },
+    {
+      "path": "chunks/chunk-U5P57XCR.js",
+      "bytes": 19948,
+      "sha256": "1fa7c4acafbcea9cd44af64026d80dcdabfe8cdf8dd004e33f90b5f49eca32b1"
+    },
+    {
+      "path": "chunks/chunk-OEOGX2AJ.js",
+      "bytes": 8540,
+      "sha256": "c57d3563991d6646fe7ffe379e10e5336145fe77c248eca8986f48bbf56ea1f8"
+    },
+    {
+      "path": "chunks/lagos-KWSCGYK6.js",
+      "bytes": 67,
+      "sha256": "3c3520ac5dcc87490152d35269c2c41b6c61d8ae5cdf7e80e76df7bbcdec381a"
+    },
+    {
+      "path": "chunks/topo-X2AXCR3M.js",
+      "bytes": 279,
+      "sha256": "dc72431a3717150868b355ddd9f5e7fabba7f08759fa2ec30c809e498d69b95e"
+    },
+    {
+      "path": "chunks/lagos-shapes-IZIU5NYS.js",
+      "bytes": 139,
+      "sha256": "456b2e51183c76904f80a7d8e0ba8343ac34cf78697640c188172f61c889fe31"
+    },
+    {
+      "path": "chunks/lagos-2ROUAAEP.js",
+      "bytes": 21106,
+      "sha256": "dc31246a7b22adccae474c1dbe68463749633221a7342aa8786047a3e5cc0f0c"
+    },
+    {
+      "path": "chunks/chunk-AVWV4OY3.js",
+      "bytes": 45038,
+      "sha256": "3bb7f76b586ea0fa7601985fb7a4b9571872a536da5bbfc7e5fce75af3af599b"
+    },
+    {
+      "path": "chunks/chunk-Q4XHK3AC.js",
+      "bytes": 1990,
+      "sha256": "4384ce2ca77aba094e9fddad523f2750af6ad67170e0000bffce7145c4c7510b"
+    },
+    {
+      "path": "chunks/chunk-75435ONO.js",
+      "bytes": 16376,
+      "sha256": "fae5d74b94ef24330a313c7594f24709a1d5f975f30f094a684c40acd13e053a"
+    },
+    {
+      "path": "chunks/chunk-V6W2677F.js",
+      "bytes": 772,
+      "sha256": "016486df2559cc9ba020ce16a453aea95c336026187f91297f7aa3eaa7e7c8c8"
+    },
+    {
+      "path": "chunks/chunk-KCO6KSTB.js",
+      "bytes": 12674,
+      "sha256": "390c1066a63787300622095f329bc4577106ce17fdb841449bc24f64feebcf55"
+    },
+    {
+      "path": "chunks/chunk-KJXNIQ6R.js",
+      "bytes": 3950,
+      "sha256": "d4981021b92dd975bea23361b074a0074025828f8d3f2bf56be3e028d65ecb10"
+    },
+    {
+      "path": "chunks/map-JRJTAWN5.js",
+      "bytes": 1186,
+      "sha256": "b77b425bd9d653977068a423d99d5a0709b283fa303573d752a82e8970d1b5c5"
+    },
+    {
+      "path": "chunks/lagos-PRCVS2E7.js",
+      "bytes": 2330,
+      "sha256": "66d87cd8314a631b282fa8d2fddb956b2ca224794db182e1654e6c115c545afa"
+    },
+    {
+      "path": "chunks/chunk-4HIBPCAM.js",
+      "bytes": 1609,
+      "sha256": "d58811212fcae236a4280ec2738d1239c0bd710e944b6fd0068c3968bbd6a621"
+    },
+    {
+      "path": "chunks/chunk-5KPHFUW4.js",
+      "bytes": 1723,
+      "sha256": "fe290d148999f9fbfa32d767ef6f8c2feceaef7b9750f580effb4be0b23dbc94"
+    },
+    {
+      "path": "chunks/chunk-TVWSGSNH.js",
+      "bytes": 113,
+      "sha256": "488775061c86b1c6e877ba055e2eca7974252b454694ffcc2d80f7bac2b6d55e"
+    },
+    {
+      "path": "chunks/chunk-UUY6XIIB.js",
+      "bytes": 283,
+      "sha256": "ebd6b0b6b8cab21554b93e1ae878e378aca1bb7ec80649a15fd36ee49b15506f"
+    },
+    {
+      "path": "chunks/chunk-ACCQ73LS.js",
+      "bytes": 4503,
+      "sha256": "b40ee8a15129e5b917a1c6365e2bea6eeb8507cce13d869b1fa658dc2945e761"
+    },
+    {
+      "path": "chunks/chunk-5M26EWKE.js",
+      "bytes": 1643,
+      "sha256": "52ce5f71fc88f08d9066254f82bb5c22edfa0001ef4871085e18d29ce049be3f"
+    },
+    {
+      "path": "chunks/chunk-VLQWIL2I.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "chunks/chunk-GT222SFT.js",
+      "bytes": 1072,
+      "sha256": "1f26f370010d66d19a53b765bddfea528a821ae1a5467b85948808855f5eb740"
+    },
+    {
+      "path": "index.html",
+      "bytes": 6319,
+      "sha256": "7eb23066dcf3f0362b95d4001cba5bb17203e4c6785fede9922b249dc226fccb"
+    }
+  ],
+  "verifiedDependencyOutputs": [
+    {
+      "path": "vendor/three.core.js",
+      "bytes": 1077926,
+      "sha256": "ede4f1e46427e1efc48c76b9bfa7636015ad296f772c184dbe5ee2c0684d5d81"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "bytes": 559711,
+      "sha256": "ea626a6427b8f8e3cec860230175c3f1914e2335d382f9e43fd4cd0ffaf9c6ce"
+    },
+    {
+      "path": "vendor/addons/utils/BufferGeometryUtils.js",
+      "bytes": 28374,
+      "sha256": "bfe950793398c1eec825c64e63101ffe98d1777f9aef8ae574f979d227693cd8"
+    },
+    {
+      "path": "vendor/addons/utils/SkeletonUtils.js",
+      "bytes": 8432,
+      "sha256": "9c767cf2f5be9f554a316ab36e7503e25c6bc064318b7a08903d16cf0b8e5576"
+    },
+    {
+      "path": "vendor/addons/loaders/GLTFLoader.js",
+      "bytes": 103044,
+      "sha256": "33588af380ffa6834e97ea41b113604479c951bf7d874233db727b5191468fb7"
+    },
+    {
+      "path": "vendor/addons/libs/meshopt_decoder.module.js",
+      "bytes": 25249,
+      "sha256": "59b8a7fbefeba961fbd468d98fc315918723f147da6d4f69eb68bb0abc67ec96"
+    }
+  ]
+}

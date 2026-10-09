@@ -1,0 +1,6 @@
+The prior v1 CPU recipe pinned all active production source and local startup-fix integration/test receipts. Its paired v1 renderer recipe selects a pinned CPU run and refuses mismatched package commit or artifact name; it remains frozen and is not a reviewed renderer for this v2 CPU artifact. Market and Beach targets are captured only after the current host readiness ticket, canonical avatar, requested twelve canonical public actors, no fallback/loading counts, complete authored-person canonical counts where provided, two animation frames, and live canvas/layout checks all pass. No render or mobile acceptance is implied by source sealing alone.
+
+
+## v2 source correction
+
+The v1 package failed before browser startup because its HTML requested a non-emitted `./app/viewer.js`; the actual manifest contains `app/viewer-npc-v1.js`. v2 keeps the v1 viewer and runtime unchanged, derives the entry output from the esbuild metafile, and verifies the HTML URL against hashed compiled outputs in compiler, finalizer, and host. `html-entry-contract-npc-v2.test.mjs` rejects the recorded actual v1 mismatch and validates the exact emitted route. This is a source-prepared fix only until the parent publishes and runs the bounded CPU package.

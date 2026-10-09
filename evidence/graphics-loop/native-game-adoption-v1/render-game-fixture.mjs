@@ -142,6 +142,11 @@ try {
   const profileView = await capture('profile-angle');
   await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setMode('idle')");
   const playerCloseIdle = await capture('player-close-idle', 300);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-back'); window.nativeGameFixture.setMode('idle')");
+  const playerBackControl = await capture('player-close-back-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-profile'); window.nativeGameFixture.setMode('idle')");
+  const playerProfileControl = await capture('player-close-profile-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setMode('idle')");
   await evaluate("window.nativeGameFixture.setMode('interact')");
   const playerCloseInteract = await capture('player-close-interact', 300);
   await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setWalkPhase(Math.PI / 2)");
@@ -161,6 +166,9 @@ try {
   const interact = await capture('interaction-pose', 700);
   await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close'); window.nativeGameFixture.setMode('idle')");
   const mrsIdle = await capture('mrs-okafor-close-idle', 250);
+  await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close-back'); window.nativeGameFixture.setMode('idle')");
+  const mrsBackControl = await capture('mrs-okafor-close-back-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close'); window.nativeGameFixture.setMode('idle')");
   await evaluate("document.querySelector('#npc-action-mrs-okafor-hello')?.click()");
   const mrsInteract = await capture('mrs-okafor-close-interact', 100);
   let npcInteraction = null;
@@ -174,6 +182,9 @@ try {
   const npcAction = await capture('mrs-okafor-close-completed-idle', 250);
   await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
   const dapoIdle = await capture('dapo-close-idle', 250);
+  await evaluate("window.nativeGameFixture.setCamera('dapo-close-back')");
+  const dapoBackControl = await capture('dapo-close-back-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
   await evaluate("[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()");
   const dapoInteract = await capture('dapo-close-interact', 100);
   let dapoInteraction = null;
@@ -212,6 +223,9 @@ try {
     nativePlayerThroughStandIn: ready.player?.prepared === true && ready.player?.authoredRig === true && ready.player?.standInShown === true,
     sameCreatorSeedAndSavedLook: ready.player?.seed === 'creator-fixture-same-seed-v1' && ready.player?.look?.outfit === 'casual',
     walkSample: walk.snapshot.player?.pose === 'walk' && walk.snapshot.player?.walkFrames > 0,
+    closeupReportsActualBodyPose: playerCloseIdle.snapshot.player?.pose === 'idle'
+      && playerCloseInteract.snapshot.player?.pose === 'interact'
+      && walkA.snapshot.player?.pose === 'walk' && walkB.snapshot.player?.pose === 'walk',
     deterministicWalkPhases: walkPhaseEvidence.phaseA.pose === 'walk' && walkPhaseEvidence.phaseB.pose === 'walk'
       && walkPhaseEvidence.phaseA.frames < walkPhaseEvidence.phaseB.frames
       && JSON.stringify(walkPhaseEvidence.phaseA.root) !== JSON.stringify(walkPhaseEvidence.phaseB.root)
@@ -223,6 +237,8 @@ try {
         && sample.renderEvidence?.actorPixelContrast >= 24),
     closeupsSavedDirectCanvasPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.canvasScreenshot?.bytes > 0),
+    cameraSideControlsSaved: [playerBackControl, playerProfileControl, mrsBackControl, dapoBackControl]
+      .every((sample) => sample.canvasScreenshot?.bytes > 0 && sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -236,7 +252,7 @@ try {
       && mobile.snapshot?.viewport?.layoutColumns === 1 && mobile.snapshot?.viewport?.scrollWidth <= mobile.snapshot?.viewport?.width,
     dapoRealActivityCompleted: dapoInteraction?.npcId === 'dapo' && dapoInteraction?.completed === true
       && dapoInteraction?.npcPoseDuringInteraction === 'interact' && dapoInteraction?.npcPoseAfterCompletion === 'idle',
-    snapshotsHaveNoRuntimeErrors: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
+    snapshotsHaveNoRuntimeErrors: [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsBackControl, mrsInteract, npcAction, dapoIdle, dapoBackControl, dapoInteract, dapoCompleted, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
       && afterUnsupported.errors?.length === 0,
     teardownReleasesActorsAndContext: disposal?.playerUnmounted === true && disposal?.noCanonicalActorsRemain === true
       && disposal?.rendererContextLost === true && disposalAgain?.crowdAfter?.canonical === 0
@@ -260,8 +276,9 @@ try {
     afterUnsupported,
     disposal,
     consoleErrors: pageErrors,
-    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence, canvasScreenshot }) => ({
+    screenshots: [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsBackControl, mrsInteract, npcAction, dapoIdle, dapoBackControl, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence, canvasScreenshot }) => ({
       name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose,
+      requestedMode: snapshot.player?.requestedMode,
       cameraActorFrame: snapshot.cameraActorFrame, renderEvidence: { drawCalls: renderEvidence?.drawCalls,
         triangles: renderEvidence?.triangles, actorPixel: renderEvidence?.actorPixel,
         backgroundPixel: renderEvidence?.backgroundPixel, actorPixelContrast: renderEvidence?.actorPixelContrast },

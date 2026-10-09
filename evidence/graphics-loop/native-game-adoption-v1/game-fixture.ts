@@ -41,7 +41,8 @@ interface CameraActorFrame {
   ndc: { minX: number; maxX: number; minY: number; maxY: number };
   allCornersInFrustum: boolean;
   wholeActorVisible: boolean;
-  frontFacingDot: number;
+  cameraAxisDot: number;
+  selectedCameraSide: 'face-candidate' | 'back-control' | 'profile-control';
   visibilityRay: { clearLine: boolean; firstActorHit: { name: string; distance: number } | null;
     nearestOccluder: { name: string; distance: number } | null };
 }
@@ -98,6 +99,21 @@ function nativeMeshEvidence(root: THREE.Object3D | null): { meshes: string[]; mo
   };
 }
 
+function nativeJawWeights(root: THREE.Object3D | null): Record<string, number | null> {
+  const weights: Record<string, number | null> = {};
+  for (const name of ['Body', 'Teeth', 'Tongue']) {
+    const mesh = root?.getObjectByName(name) as (THREE.Mesh & { morphTargetDictionary?: Record<string, number>; morphTargetInfluences?: number[] }) | undefined;
+    const index = mesh?.morphTargetDictionary?.nativeFacialJawOpen;
+    weights[name] = Number.isInteger(index) && index! >= 0 ? mesh?.morphTargetInfluences?.[index!] ?? null : null;
+  }
+  return weights;
+}
+
+function jawSynchronized(weights: Record<string, number | null>): boolean {
+  return ['Body', 'Teeth', 'Tongue'].every((name) => typeof weights[name] === 'number'
+    && Math.abs(weights[name]! - (weights.Body ?? 0)) < 1e-6);
+}
+
 function createFixture() {
   const canvas = required<HTMLCanvasElement>('#game-stage');
   const status = required<HTMLElement>('#status');
@@ -118,6 +134,7 @@ function createFixture() {
   let readyState: FixtureSnapshot['readyState'] = 'loading';
   let stage = 'Loading Lagos office game slice';
   let currentCamera = 'scene';
+  function isCloseCamera(name = currentCamera) { return /-(?:close)(?:-(?:back|profile))?$/.test(name); }
   let closeCameraActor: THREE.Object3D | null = null;
   let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null };
   let unsupportedProbe: Record<string, unknown> | null = null;
@@ -177,7 +194,7 @@ function createFixture() {
   function draw() {
     if (disposed || !entry) return;
     resize();
-    if (closeCameraActor && currentCamera.endsWith('-close')) placeCloseCamera(closeCameraActor);
+    if (closeCameraActor && isCloseCamera()) placeCloseCamera(closeCameraActor);
     entry.look(camera.position.x, camera.position.z);
     renderer.render(world, camera);
     if (closeCameraActor && currentCamera.endsWith('-close')) closeCameraRay = measureCloseCameraRay(closeCameraActor);
@@ -186,14 +203,20 @@ function createFixture() {
   function placeCloseCamera(actor: THREE.Object3D) {
     actor.updateWorldMatrix(true, true);
     const origin = actor.getWorldPosition(new THREE.Vector3());
-    // The authored character's face points along local -Z; getWorldDirection() follows +Z.
-    const front = actor.getWorldDirection(new THREE.Vector3()).setY(0).negate().normalize();
+    // V6 pixels showed that the previous -getWorldDirection candidate captured the actors' backs.
+    // Use the opposite azimuth as the face candidate, while retaining explicit back/profile controls.
+    const faceCandidate = actor.getWorldDirection(new THREE.Vector3()).setY(0).normalize();
+    const side = currentCamera.endsWith('-back') ? 'back-control'
+      : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate';
+    const viewAxis = side === 'back-control' ? faceCandidate.clone().negate()
+      : side === 'profile-control' ? new THREE.Vector3(-faceCandidate.z, 0, faceCandidate.x)
+        : faceCandidate;
     const bounds = new THREE.Box3().setFromObject(actor);
     const target = bounds.getCenter(new THREE.Vector3());
     target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
     camera.fov = 48;
     camera.updateProjectionMatrix();
-    camera.position.copy(origin).addScaledVector(front, 3.8);
+    camera.position.copy(origin).addScaledVector(viewAxis, 3.8);
     camera.position.y = bounds.min.y + 1.4;
     camera.lookAt(target);
   }
@@ -214,7 +237,7 @@ function createFixture() {
     const minX = Math.min(...corners.map((point) => point.x)), maxX = Math.max(...corners.map((point) => point.x));
     const minY = Math.min(...corners.map((point) => point.y)), maxY = Math.max(...corners.map((point) => point.y));
     const allCornersInFrustum = corners.every((point) => point.z > -1 && point.z < 1);
-    const front = actor.getWorldDirection(new THREE.Vector3()).setY(0).negate().normalize();
+    const actorAxis = actor.getWorldDirection(new THREE.Vector3()).setY(0).normalize();
     const toCamera = camera.position.clone().sub(actor.getWorldPosition(new THREE.Vector3())).setY(0).normalize();
     return { actorOrigin: actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number],
       headPosition: headPosition ?? null,
@@ -223,7 +246,9 @@ function createFixture() {
       ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
       wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96
         && closeCameraRay.clearLine,
-      frontFacingDot: front.dot(toCamera), visibilityRay: closeCameraRay };
+      cameraAxisDot: actorAxis.dot(toCamera),
+      selectedCameraSide: currentCamera.endsWith('-back') ? 'back-control'
+        : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate', visibilityRay: closeCameraRay };
   }
 
   function measureCloseCameraRay(actor: THREE.Object3D): CameraActorFrame['visibilityRay'] {
@@ -357,6 +382,7 @@ function createFixture() {
     const offered = npc?.actions.find((action) => action.activity === activityId);
     if (!npc || !offered) throw new Error(`The current life view does not offer ${activityId} for ${npcId}`);
     const beforeRelationship = beforeView.relationships.find((person) => person.id === npcId);
+    const jawBefore = nativeJawWeights(entry?.group.getObjectByName(`canonical-crowd:npc:${npcId}`) ?? null);
     const started = dispatch(lifeState, { type: 'activity', id: activityId }, ctx);
     if (!started.ok || started.code !== 'started') {
       interaction = { npcId, activityId, started: { ok: started.ok, code: started.code, reason: started.reason ?? null }, completed: false };
@@ -366,11 +392,23 @@ function createFixture() {
     }
     entry?.update(lifeState);
     const npcPoseDuringInteraction = inspectNpc(npcId).gamePose;
+    const talkLoopStarted = Boolean(entry?.easing);
     interaction = { npcId, activityId, label: offered.label, started: { ok: started.ok, code: started.code }, completed: false,
-      npcPoseDuringInteraction, npcPoseAfterCompletion: null, npcPoseLifecyclePass: false };
+      npcPoseDuringInteraction, npcPoseAfterCompletion: null, npcPoseLifecyclePass: false, talkLoopStarted };
     stage = `${offered.label} with ${npc.name}`;
     updateDom(); draw();
-    await new Promise<void>((resolve) => window.setTimeout(resolve, 1100));
+    const jawPeak = { Body: 0, Teeth: 0, Tongue: 0 };
+    let talkLoopFrames = 0, talkLoopSynchronized = true;
+    for (let frame = 0; frame < 34 && entry?.easing; frame += 1) {
+      if (!entry) break;
+      entry.stepCrowd(1 / 30);
+      const weights = nativeJawWeights(entry.group.getObjectByName(`canonical-crowd:npc:${npcId}`));
+      talkLoopSynchronized &&= jawSynchronized(weights);
+      for (const name of ['Body', 'Teeth', 'Tongue'] as const) jawPeak[name] = Math.max(jawPeak[name], weights[name] ?? 0);
+      talkLoopFrames += 1;
+      draw();
+      await new Promise<void>((resolve) => window.setTimeout(resolve, 33));
+    }
     draw();
     const completed = advanceLife(lifeState, offered.duration, {
       cityId: 'lagos', now: lifeState.t + offered.duration * 1000,
@@ -378,6 +416,9 @@ function createFixture() {
     });
     entry?.update(lifeState);
     const npcPoseAfterCompletion = inspectNpc(npcId).gamePose;
+    const jawAfter = nativeJawWeights(entry?.group.getObjectByName(`canonical-crowd:npc:${npcId}`) ?? null);
+    const jawRestored = ['Body', 'Teeth', 'Tongue'].every((name) => typeof jawBefore[name] === 'number'
+      && Math.abs(jawAfter[name]! - jawBefore[name]!) < 1e-6);
     const afterView = viewLife(lifeState, { cityId: 'lagos', now: lifeState.t, seed: `office-fixture-view:${npcId}:${now}` }).social;
     regulars = afterView.here;
     const afterNpc = afterView.here.find((person) => person.id === npcId);
@@ -399,6 +440,7 @@ function createFixture() {
       npcPoseDuringInteraction,
       npcPoseAfterCompletion,
       npcPoseLifecyclePass: npcPoseDuringInteraction === 'interact' && npcPoseAfterCompletion === 'idle',
+      talkLoopStarted, talkLoopFrames, jawBefore, jawPeak, jawAfter, talkLoopSynchronized, jawRestored,
     };
     stage = `${offered.label} completed with ${npc.name}`;
     renderNpcCards(afterView.here.filter((person) => person.id === 'mrs-okafor' || person.id === 'dapo'));
@@ -408,9 +450,9 @@ function createFixture() {
 
   function setCamera(name: string) {
     currentCamera = name;
-    closeCameraActor = name === 'player-close' ? actors.get('player')?.body.object ?? null
-      : name === 'mrs-okafor-close' ? entry?.group.getObjectByName('canonical-crowd:npc:mrs-okafor') ?? null
-        : name === 'dapo-close' ? entry?.group.getObjectByName('canonical-crowd:npc:dapo') ?? null : null;
+    closeCameraActor = name.startsWith('player-close') ? actors.get('player')?.body.object ?? null
+      : name.startsWith('mrs-okafor-close') ? entry?.group.getObjectByName('canonical-crowd:npc:mrs-okafor') ?? null
+        : name.startsWith('dapo-close') ? entry?.group.getObjectByName('canonical-crowd:npc:dapo') ?? null : null;
     if (closeCameraActor) placeCloseCamera(closeCameraActor);
     else {
       camera.fov = 39;
@@ -485,7 +527,7 @@ function createFixture() {
     }
     let canvasPng = '';
     let canvasPngError = '';
-    if (actor && currentCamera.endsWith('-close')) {
+    if (actor && isCloseCamera()) {
       try { canvasPng = renderer.domElement.toDataURL('image/png').split(',')[1] ?? ''; }
       catch (error) { canvasPngError = error instanceof Error ? error.message : String(error); }
     }
@@ -517,7 +559,8 @@ function createFixture() {
   function inspectNpc(npcId: string) {
     const canonicalName = `canonical-crowd:npc:${npcId}`;
     const root = entry?.group.getObjectByName(canonicalName) ?? null;
-    return { ...nativeMeshEvidence(root), mounted: Boolean(root), gamePose: root?.userData.nativeGameNpcPose ?? null };
+    return { ...nativeMeshEvidence(root), mounted: Boolean(root), gamePose: root?.userData.nativeGameNpcPose ?? null,
+      jaw: nativeJawWeights(root) };
   }
 
   function snapshot(): FixtureSnapshot {

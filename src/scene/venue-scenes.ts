@@ -85,6 +85,7 @@ import { normalizeLook } from './characters.ts';
 import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
 import type { SkinnedBody } from './body/skinned.ts';
 import { createCanonicalCrowd, type CanonicalCrowdSpec } from './body/canonical-crowd.ts';
+import { createNativeExpressionController, type NativeExpressionController } from './body/native/native-expression-controller.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
@@ -371,7 +372,7 @@ interface Tied { spot?: string | null; friend?: boolean }
 type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
-interface CanonicalVenueActor { readonly body: SkinnedBody; dispose(): void }
+interface CanonicalVenueActor { readonly body: SkinnedBody; readonly talk: NativeExpressionController; dispose(): void }
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
@@ -429,13 +430,21 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   function nativeNpcPose(id: string): 'idle' | 'interact' {
     return id.startsWith('npc:') && activeNpcActivity?.startsWith(`npc-${id.slice(4)}-`) ? 'interact' : 'idle';
   }
+  function syncNativeTalk(actor: CanonicalVenueActor, pose: 'idle' | 'interact') {
+    const active = actor.talk.snapshot().active;
+    if (pose === 'interact' && !active) actor.talk.startTalk();
+    else if (pose === 'idle' && active) actor.talk.stop();
+  }
   let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
   const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
     async load(spec) {
       // Keep the provider and its model/clip dependencies behind the first-frame capability gate.
       const { loadGameBody } = await import('./body/provider.ts');
       const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', poses: ['idle', 'walk', 'interact'] });
-      return { body, dispose() { body.object.removeFromParent(); body.dispose(); } };
+      let talk: NativeExpressionController;
+      try { talk = createNativeExpressionController(body.object); }
+      catch (error) { body.object.removeFromParent(); body.dispose(); throw error; }
+      return { body, talk, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
     },
     place(actor, spec) {
       actor.body.fit(spec.scale);
@@ -443,6 +452,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       actor.body.show(pose, false);
       actor.body.place(spec.x, spec.y, spec.z, spec.ry);
       actor.body.object.userData.nativeGameNpcPose = pose;
+      syncNativeTalk(actor, pose);
     },
     mount(actor, id) {
       actor.body.object.name = `canonical-crowd:${id}`;
@@ -771,23 +781,32 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   /** Advance every figure that is on its way. Returns true while any still is; moves transforms only. */
   function stepCrowd(dt: number) {
-    if (!easing) return false;
     let more = false;
-    for (const peer of peers.values()) {
-      if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
-      resetGlance(peer);
-      peer.t = Math.min(1, peer.t + dt / peer.span);
-      const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
-      peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
-      const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
-      peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
-      if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
-      peer.stride += dt * 6.5;
-      if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
-      placePeer(peer);
+    if (easing) {
+      for (const peer of peers.values()) {
+        if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
+        resetGlance(peer);
+        peer.t = Math.min(1, peer.t + dt / peer.span);
+        const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
+        peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
+        const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
+        peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
+        if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
+        peer.stride += dt * 6.5;
+        if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
+        placePeer(peer);
+      }
+      easing = more;
     }
-    easing = more;
-    return more;
+    // NPC jaw motion shares the host's existing bounded crowd motion loop. It exists only while
+    // an admitted native NPC has an active interaction, so idle venues request no extra frames.
+    for (const person of placedCrowd) {
+      const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+      if (!actor || !actor.talk.snapshot().active) continue;
+      actor.talk.step(dt);
+      more = true;
+    }
+    return more || easing;
   }
   /** Put every figure where it is going, at once (reduced motion, or no frame loop). */
   function settleCrowd() {
@@ -797,6 +816,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer);
     }
     easing = false;
+    for (const person of placedCrowd) {
+      const actor = canonicalCrowd.get(String(person.id ?? ''));
+      if (actor?.talk.snapshot().active) actor.talk.stop();
+    }
   }
   /** Someone standing still looks at the player when they come close, then looks away (src/scene/space.ts). True while still turning. */
   function stepGlance(peer: Peer, dt: number) {
@@ -1098,7 +1121,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       return crowdTags;
     },
     /** True while another player's figure is on its way to a newly reported position. */
-    get easing() { return easing; },
+    get easing() { return easing || placedCrowd.some((person) => canonicalCrowd.get(String(person.id ?? ''))?.talk.snapshot().active === true); },
     stepCrowd, settleCrowd,
     /** The camera is at (x, z): hide whichever wall it has gone behind, with what hangs on it. */
     look(x: number, z: number) {
@@ -1161,6 +1184,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
           const pose = nativeNpcPose(id);
           actor.body.show(pose, false);
           actor.body.object.userData.nativeGameNpcPose = pose;
+          syncNativeTalk(actor, pose);
         }
       }
       return changed || actors || npcPoseChanged;

@@ -59,7 +59,7 @@ test('prepared bounds preserve scalar full-width results for every generated map
 })
 
 test('the compiled index is an immutable validated snapshot and invalid geometry fails closed', () => {
-  const source: MetreRing[] = [[[0, 0], [2, 0], [2, 2], [0, 2]]]
+  const source: [number, number][][] = [[[0, 0], [2, 0], [2, 2], [0, 2]]]
   const index = indexRoadBuildings(source)
   assert.ok(index)
   source[0]![0] = [-100, -100]

@@ -521,7 +521,12 @@ async function setupTeacher(f, name) {
   if (!isRecord(sessionAnswer) || !isRecord(sessionAnswer.session) || typeof sessionAnswer.session.id !== 'string') {
     throw new Error('onboarding response did not identify the fixture session')
   }
-  const device = { id: sessionAnswer.session.id, cookie: cookie.split(';')[0] }
+  const sessionCookie = cookie.split(';', 1)[0]
+  const separator = sessionCookie?.indexOf('=') ?? -1
+  if (!sessionCookie || separator <= 0 || separator === sessionCookie.length - 1) {
+    throw new Error('onboarding session cookie had an unsupported shape')
+  }
+  const device = { id: sessionAnswer.session.id, cookie: sessionCookie }
   const before = await life(f, device.cookie)
   requireCondition(before.state?.onboarding?.required === true && before.state?.onboarding?.done === false,
     'fixture teacher did not begin in the authored character-creation flow')

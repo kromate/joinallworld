@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T13:33:15.189099+00:00",
+  "updatedAt": "2026-10-09T13:42:23.611485+00:00",
   "branch": "codex/allworld-consolidated-delivery",
   "assemblyOwner": "Integration",
   "uploadOwner": "WORLD",
@@ -1198,25 +1198,40 @@
     "reason": "Full implemented cross-owner lineage received, not blanket runtime acceptance. Preserve reviewed UI, Business quote and host actor/private-media fences during assembly."
   },
   "latestSourceEvidence": {
-    "sha": "c199ac0db0a34d976d097b176e41b7e78cb7c07b",
-    "ci": "https://github.com/kromate/joinallworld/actions/runs/37929205877",
-    "conclusion": "failure",
-    "passed": {
-      "businessCivicClientNode": 87,
-      "teachingNode": 12,
-      "existingWorker": 6,
-      "businessWorker": 1,
-      "livingWorker": 10,
-      "UI": 432
+    "sha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+    "ci": "https://github.com/kromate/joinallworld/actions/runs/37937692605",
+    "compiler": "14TS2345 all optional extracted QA cookie; actual nonempty pair boundary repair prepared, zero baseline retained",
+    "build": "passed Node22/24",
+    "startup": {
+      "raw": 614732,
+      "gzip": 222955,
+      "brotli": 195413,
+      "firstPaintBrotli": 35689,
+      "loadingRaw": 91174
     },
-    "failed": [
-      "Compiler:SheetHostconditionalref,mappedtri-state/null/fixtures,newQAJavaScripttypes",
-      "UI:1positiveinteractive teachingfixturemissingoptin",
-      "VoiceNode+Worker:groupfriends_onlyafterblock/unblockremovedfriendship"
+    "focused": {
+      "tests": 133,
+      "pass": 133,
+      "fail": 0,
+      "skip": 0
+    },
+    "hostPerStep": [
+      88,
+      3,
+      12,
+      6,
+      2,
+      10
     ],
-    "full": "Node22/24compilerfailedbeforebuild/budget/fulltests",
-    "startup": "c199notmeasured; prior49c615427rawexcessretained;capsunchanged",
-    "nextRepairs": "ExplicitShallowRef;tri-stateguards+stabletripIDs;typedCDP/observationboundaries;positivefixtureoptin;newconsentingfriendinvitation;outsiderrefusalactorfits6uploadcap;08d030c2actualWorkerfailedwagewriteproofappliedunrun."
+    "uiPolicy": "passed scoped jobs; overlapping counts not added",
+    "fullNodeWorker": "original live handles retained; no terminal full acceptance yet",
+    "nativeTeachingQa": {
+      "run": 37938109323,
+      "source": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
+      "operator": "LIVING verified gpt-6-astra/medium",
+      "state": "live; NodeOFF separate from renderedON"
+    },
+    "runtimeDeltaInNextRepair": "none; QA cookie boundary and public evidence only"
   },
   "teachingStartPolicy": {
     "newStarts": "disabled by default",
@@ -1368,5 +1383,13 @@
     },
     "browserProduction": "pending; no pixel/provider acceptance"
   },
-  "nativeTeachingQaPolicy": "Owner-reviewed one-minute Node defaultOFF gate added; distinct from trustedON rendered journey, no OFF browser claim"
+  "nativeTeachingQaPolicy": "Owner-reviewed one-minute Node defaultOFF gate added; distinct from trustedON rendered journey, no OFF browser claim",
+  "nextCountryPacket": {
+    "owner": "WORLD",
+    "source": "f2b9c9ab44919c3db34577130e8beaa42fee27c0",
+    "phase": "First five capital starter cells, directly after consolidated release",
+    "manifest": "world/playable-africa/packet.json",
+    "assembly": "not applied to current candidate; Integration sole shared writer",
+    "acceptance": "Owner reports16 source/engine checks; exact combined/browser/save/production gates still required"
+  }
 }

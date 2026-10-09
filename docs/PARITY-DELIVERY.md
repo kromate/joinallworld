@@ -1,5 +1,13 @@
 # Combined reliability and feature-parity delivery
 
+## Exact combined budgets and focused repair acceptance — 9 October 2026, 13:41 UTC
+
+Exact `b598b08b8d8e7d563b97de4600ddeb759dfa2396` [CI37937692605](https://github.com/kromate/joinallworld/actions/runs/37937692605) passes builds and unchanged canonical download limits on Node22/24: loading91174raw, first-paint35689Brotli, startup614732raw/222955gzip/195413Brotli over40cities. The focused repair selection is133/133,0skip. Host per-step88/3/12/6/2/10 and UI/policy jobs pass. Complete Node/Worker suites remain live; no full acceptance is inferred from the scoped jobs.
+
+The only compiler diagnostics are14TS2345 errors in the browser QA helper: the extracted cookie array element remains optional under unchecked-index protection. The helper now checks a nonempty first name/value pair before constructing the device, retaining validated session JSON and authored onboarding. This is QA source only; game, Node and Worker runtime bytes are unchanged fromb598. No type baseline, cast suppression, check, budget or permission is waived. The original full suites and native teaching QA retain their handles. The repaired final source still needs exact compiler/build/download and browser/provider acceptance.
+
+The first five African capitals are queued as WORLD’s separately frozen additive packetf2b9c9ab after this consolidated release. Their source/engine proof and primary-source manifests do not certify production admission or browser journeys; no new destination is assembled into this checkpoint.
+
 ## City-response race repair — 9 October 2026, 13:34 UTC
 
 Astra reproduced a same-actor city rollback on62a7 runtime with one bounded Node24 test: a delayed Lagos `city_moved` refusal arrived after a newer Ibadan revision had been accepted, reset the client city to Lagos and caused the next read to request the wrong city. The accepted state and persisted city stayed Ibadan. The replacement-identity variant was already protected. The three-line runtime repair restores from the current sanitized life’s city in both failure branches, rather than an earlier captured city. Server revision rules, pending action IDs and identity guards stay unchanged. The one regression checks current actor/city/state/revision, persisted data and next request. Actual affected validation passes43/43,0skip in1472.244ms under Node24,128MiB heap and an external45second limit. It is source/Node proof; final compiled/browser/production gates remain open.

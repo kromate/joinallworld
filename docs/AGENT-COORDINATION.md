@@ -1,5 +1,16 @@
 # Allworld agent coordination and phased production releases
 
+## GRAPHICS v10 visual rejection and terminal parallel review — 9 October 2026, 03:44 UTC
+
+Existing three Luna source lanes and five-minute memory monitor remain active; no duplicate. Latest pressureWARNING2 with rapid paging means no optional memory-heavy build/cap expansion. User concurrent-browser/agent authorization remains authoritative; heavy1/heap1536/minifier1, bounded browser/server2. WORLD remains sole production uploader.
+
+V10 actual both128MiB CPU runs pass invariant/resource guards184532992/192446464B group with zero triangles/attribute bytes added. Original UV equality failure is retained with recovered exact95de source; separately reviewed0d186c probe allows only20movedtransitionUVvertices and asserts position projection/seam/otherUV/buffer invariants. Female idle/walk stretch regresses1.785/1.593 versus1.327/1.507 baseline. Actual114matchedcaptures include48male shoulder,48female fullcamera withstalefocuslabel,18female correctedshouldercloseups. Root inspected pixels: hardidle ridge persists; QUALITY REJECTED, no primarygarment adoption.
+
+Faster whole-slice config/wrapper prepared: all country/public files remain served and hash/raw-inventoried, only actual Rollup outputs are compressed for diagnostics. Subsetgzip/Brotli totals are not whole-distribution size gates. Two new1536build attempts were NOT STARTED/admission75 underwarning; no claim of city telemetry success. Actual smallGPUbundle0/group195559424B. Ownedserver97508 terminal0/147.65s/group67010560B;browserlease88188terminal130 andreviewtabclosed;allCPU/buildterminal. No live/reserved GRAPHICS heavy/server/browser/upload. LIVING received terminal handback.
+
+Primary safelyFF to35a69e93 preserving82dirty/untrackedpins; draftPR23 exact0595b599 unchanged, no merge/runtimeupload. Source-only next distinctgarmentcontinuitydiagnosis and strictsourcevertex LODattribute-remap audit; existing3packets still0/19Marketcoverage. Fullworldquality/phones/frame-input/journeybytes/budgets remainopen; goalactiveandincomplete. Evidence: ignoredgarment-quality-v1/shoulder-topology-v1/v10/gpu/root-review.json, main-sync-parallel-fast-v1/result.json, environment-next-phase-v2/static-build-fast-warning-admission*.json.
+
+
 ## GRAPHICS terminal parallel-review handback — 9 October 2026, 02:54 UTC
 
 Three existing Luna source lanes completed; existing five-minute memory monitor ACTIVE, no duplicate. Current warning2/increased paging means keep heavy1/heap1536/minifier1, bounded browser/server2; no memory-heavy expansion. User parallel authorization remains authoritative. WORLD sole uploader.

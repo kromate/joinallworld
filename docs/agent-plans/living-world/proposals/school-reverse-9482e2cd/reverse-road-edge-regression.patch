@@ -1,0 +1,27 @@
+--- a/src/game/living-world/driving.test.ts
++++ b/src/game/living-world/driving.test.ts
+@@ -166,6 +166,24 @@
+   assert.equal(result.speed, 0)
+   assert.match(result.feedback, /left the road/)
+ })
++test('a car stopped at a road edge can make a server-stepped reverse move without a pivot or snap', () => {
++  const narrow: DrivingRoute = { ...COURSE, roads: [[{ x: 0, z: 0 }, { x: 0, z: 12 }]],
++    checkpoints: [{ id: 'end', center: { x: 0, z: 10 }, radius: 1, stopRequired: true }], roadWidth: 2 }
++  const edge: DrivingState = { ...createDriving(narrow), position: { x: 1.64, z: 5 }, heading: Math.PI / 2, speed: 0 }
++  const forward = stepDriving(edge, { throttle: 1, brake: 0, steer: 0 }, narrow).state
++  assert.deepEqual(forward.position, edge.position)
++  assert.equal(forward.speed, 0)
++  assert.equal(forward.status, 'running')
++  const reverse = stepDriving(edge, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, narrow).state
++  assert.equal(reverse.status, 'running')
++  assert.ok(reverse.speed > 0)
++  assert.equal(Object.hasOwn(reverse, 'gear'), true, 'the reverse direction is explicit in the versioned state')
++  assert.ok(reverse.position.x < edge.position.x, 'the server computed a backward move along the current heading')
++  assert.equal(reverse.heading, edge.heading)
++  assert.equal(reverse.checkpointIndex, 0)
++  assert.equal(reverse.assessment, 'pending')
++  assert.equal(reverse.score, edge.score, 'reverse movement grants no score or assessment progress')
++})
+ test('swept road checks reject a sub-step off-road gap between disconnected polylines', () => {
+   const gap: DrivingRoute = { ...COURSE, roads: [[{ x: -10, z: 1.65 }, { x: 0, z: 1.65 }], [{ x: 1.6, z: -1.65 }, { x: 10, z: -1.65 }]], checkpoints: [{ id: 'nearby', center: { x: 0, z: 0 }, radius: 3, stopRequired: false }], roadWidth: 2 }
+   const state: DrivingState = { ...createDriving(gap), position: { x: 0, z: 0 }, heading: Math.PI / 2, speed: 16, checkpointEntry: 'blocked' }

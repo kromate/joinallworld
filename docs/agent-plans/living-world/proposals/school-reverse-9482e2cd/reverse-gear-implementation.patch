@@ -1,0 +1,484 @@
+--- a/src/game/living-world/driving.ts
++++ b/src/game/living-world/driving.ts
+@@ -9,7 +9,11 @@
+   throttle: number
+   brake: number
+   steer: number
+-}
++  /** Optional for old clients. Omitted means forward; reverse must be requested explicitly. */
++  gear?: DrivingGear
++}
++
++export type DrivingGear = 'forward' | 'reverse'
+ 
+ export interface DrivingPoint { x: number; z: number }
+ export interface DrivingCheckpoint {
+@@ -35,7 +39,10 @@
+   routeVersion: string
+   position: DrivingPoint
+   heading: number
++  /** Nonnegative metres per second; gear identifies the direction of travel. */
+   speed: number
++  /** Absent only in legacy v1 saves, whose motion is always forward. */
++  gear?: DrivingGear
+   checkpointIndex: number
+   /** `blocked` requires exit before entry; `entered` applies only to a stop checkpoint. */
+   checkpointEntry: CheckpointEntry
+@@ -49,6 +56,8 @@
+ 
+ const STEP_SECONDS = 0.1
+ const MAX_SPEED = 16
++const MAX_REVERSE_SPEED = 3
++const MAX_LEGACY_SAVED_SPEED = 20
+ const MAX_SCORE = 100
+ const ROAD_MARGIN = 0.65
+ const STOP_SPEED = 0.35
+@@ -59,9 +68,13 @@
+ const MAX_CHECKPOINTS = 64
+ const MAX_ROUTE_WIDTH = 40
+ const MAX_ROUTE_SPEED = 40
+-const MAX_SAVED_SPEED = 20
+-const INPUT_KEYS = ['brake', 'steer', 'throttle']
++const INPUT_KEYS = ['brake', 'gear', 'steer', 'throttle']
++const LEGACY_INPUT_KEYS = ['brake', 'steer', 'throttle']
+ const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
++function exactKeys(value: Record<string, unknown>, keys: readonly string[]): boolean {
++  const own = Reflect.ownKeys(value)
++  return own.length === keys.length && own.every((key) => typeof key === 'string' && keys.includes(key))
++}
+ const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
+ const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n))
+ const wrapHeading = (heading: number) => ((heading + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI
+@@ -171,10 +184,13 @@
+ function validInput(value: unknown): value is DrivingInput {
+   if (!record(value)) return false
+   const keys = Reflect.ownKeys(value)
+-  if (keys.length !== 3 || keys.some((key) => typeof key !== 'string' || !INPUT_KEYS.includes(key))) return false
++  const legacy = keys.length === LEGACY_INPUT_KEYS.length && keys.every((key) => typeof key === 'string' && LEGACY_INPUT_KEYS.includes(key))
++  const geared = keys.length === INPUT_KEYS.length && keys.every((key) => typeof key === 'string' && INPUT_KEYS.includes(key))
++  if (!legacy && !geared) return false
+   return finite(value.throttle) && value.throttle >= 0 && value.throttle <= 1
+     && finite(value.brake) && value.brake >= 0 && value.brake <= 1
+     && finite(value.steer) && value.steer >= -1 && value.steer <= 1
++    && (!Object.hasOwn(value, 'gear') || value.gear === 'forward' || value.gear === 'reverse')
+ }
+ 
+ /** One fixed 100 ms simulation step. There is deliberately no client duration or position argument. */
+@@ -185,7 +201,7 @@
+   }
+   // State comes from the server-owned save pipeline. Sanitize it before any physics step;
+   // the network contract must never accept a client-submitted state or position.
+-  const loaded = readDrivingStateChecked(state, route, false)
++  const loaded = readDrivingStateChecked(state, route, false, state.gear === undefined ? 1 : 2)
+   if (loaded.status !== 'running') return { state: loaded, feedback: loaded.feedback }
+   if (!validInput(input)) {
+     const paused = pauseDriving(loaded, 'Controls were invalid; the vehicle is safely stopped.')
+@@ -194,21 +210,36 @@
+ 
+   const next = copyState(loaded)
+   const oldPosition = next.position
+-  const acceleration = input.throttle * 3.2 - input.brake * 8 - 0.18
+-  next.speed = clamp(next.speed + acceleration * STEP_SECONDS, 0, MAX_SPEED)
++  const requestedGear: DrivingGear = input.gear ?? 'forward'
++  const currentGear: DrivingGear = loaded.gear ?? 'forward'
++  const stateIsVersioned = loaded.gear !== undefined || input.gear !== undefined
++  // Gear is a selected direction; speed stays nonnegative. A direction change brakes the
++  // current motion to zero first, then stores the requested gear for the following step.
++  const changingDirection = next.speed > 0 && currentGear !== requestedGear
++  if (changingDirection) {
++    next.speed = Math.max(0, next.speed - 8 * STEP_SECONDS)
++    if (next.speed === 0 && stateIsVersioned) next.gear = requestedGear
++  } else {
++    if (stateIsVersioned) next.gear = requestedGear
++    const acceleration = input.throttle * 3.2 - input.brake * 8 - 0.18
++    const speedCap = requestedGear === 'reverse' ? MAX_REVERSE_SPEED : MAX_SPEED
++    next.speed = clamp(next.speed + acceleration * STEP_SECONDS, 0, speedCap)
++  }
++  const direction = (next.gear ?? 'forward') === 'reverse' ? -1 : 1
+   const speedFeedback = next.speed > route.speedLimit ? 'Slow down: you exceeded the speed limit.' : ''
+   if (speedFeedback && state.speed <= route.speedLimit) next.score = Math.max(0, next.score - 8)
+ 
+   // Bicycle-style steering: the faster the car moves, the wider a turn becomes.
+   const wheelAngle = input.steer * 0.62
+-  const yawRate = next.speed * Math.tan(wheelAngle) / 2.6
++  const yawRate = direction * next.speed * Math.tan(wheelAngle) / 2.6
+   next.heading = wrapHeading(next.heading + yawRate * STEP_SECONDS)
+-  const candidate = { x: oldPosition.x + Math.sin(next.heading) * next.speed * STEP_SECONDS, z: oldPosition.z + Math.cos(next.heading) * next.speed * STEP_SECONDS }
+-  let feedback = speedFeedback || 'Follow the road and reach each checkpoint in order.'
++  const candidate = { x: oldPosition.x + Math.sin(next.heading) * next.speed * STEP_SECONDS * direction, z: oldPosition.z + Math.cos(next.heading) * next.speed * STEP_SECONDS * direction }
++  let feedback = speedFeedback || (changingDirection ? 'Braking to a stop before changing direction.' : 'Follow the road and reach each checkpoint in order.')
+   if (!sweptOnRoad(oldPosition, candidate, route)) {
+     // Stop at the last server-known safe point. Snapping to a nearest road could teleport
+     // across a gap onto an unrelated/disconnected road polyline.
+-    next.position = oldPosition; next.speed = 0; next.score = Math.max(0, next.score - 25); next.stopDwellMs = 0
++    // Keep the last accepted heading too: a rejected turn cannot pivot the vehicle in place.
++    next.position = oldPosition; next.heading = loaded.heading; next.speed = 0; next.score = Math.max(0, next.score - 25); next.stopDwellMs = 0
+     feedback = 'You left the road. The car has stopped; steer back along the route.'
+   } else next.position = candidate
+ 
+@@ -221,20 +252,29 @@
+       // make a fresh approach on a later fixed frame.
+       next.stopDwellMs = 0
+       if (!isInside) { next.checkpointEntry = 'armed'; feedback = 'Leave this checkpoint zone, then enter it to record it.' }
++    } else if (requestedGear === 'reverse' && next.checkpointEntry === 'entered') {
++      // Choosing reverse cancels dwell immediately, even while the car brakes before the shift.
++      next.checkpointEntry = isInside ? 'blocked' : 'armed'; next.stopDwellMs = 0
+     } else if (next.checkpointEntry === 'entered') {
+       if (!checkpoint.stopRequired || !isInside) {
+         next.checkpointEntry = 'armed'; next.stopDwellMs = 0
+-      } else if (next.speed <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
++      } else if (Math.abs(next.speed) <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
+       else next.stopDwellMs = 0
+       if (checkpoint.stopRequired && next.stopDwellMs >= STOP_DWELL_MS) {
+         next.checkpointIndex++; next.stopDwellMs = 0; next.checkpointEntry = entryAt(next.position, route, next.checkpointIndex)
+         feedback = 'Full stop recorded. Continue to the next checkpoint.'
+       }
+-    } else if (!wasInside && swept) {
++    } else if (direction < 0 && next.checkpointEntry === 'armed' && !wasInside && swept) {
++      // Reverse motion cannot record progress. If it enters the active zone, require the
++      // driver to leave it before a later forward approach; this also keeps saves valid.
++      if (isInside) next.checkpointEntry = 'blocked'
++      next.stopDwellMs = 0
++      feedback = 'Reverse cannot record a checkpoint; leave the zone and approach forward.'
++    } else if (direction > 0 && !wasInside && swept) {
+       if (checkpoint.stopRequired) {
+         if (isInside) {
+           next.checkpointEntry = 'entered'
+-          if (next.speed <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
++          if (Math.abs(next.speed) <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
+           else feedback = 'Stop inside this checkpoint before continuing.'
+         } else feedback = 'Stop inside this checkpoint before continuing.'
+       } else {
+@@ -258,6 +298,7 @@
+   if (paused.status === 'running') paused.status = 'paused'
+   if (paused.checkpointEntry === 'entered') paused.checkpointEntry = 'blocked'
+   paused.speed = 0; paused.stopDwellMs = 0; paused.feedback = feedback
++  if (paused.gear !== undefined) paused.gear = 'forward'
+   return paused
+ }
+ 
+@@ -266,35 +307,44 @@
+  * A live save always reloads paused at zero speed with no held controls or partial stop dwell;
+  * only a later authenticated server resume action may make it active again.
+  */
+-export function readDrivingState(value: unknown, route: DrivingRoute): DrivingState {
+-  return readDrivingStateChecked(value, route, true)
++export function readDrivingState(value: unknown, route: DrivingRoute, version?: 1 | 2): DrivingState {
++  return readDrivingStateChecked(value, route, true, version ?? 1)
+ }
+ 
+ /** Strict, non-stepping validation of a server-owned record. Invalid data is rejected so
+  * its caller can quarantine the original save rather than overwrite it with a new lesson.
+  * Live state is preserved; this function is never proof of client-submitted progress.
+  */
+-export function readValidatedDrivingState(value: unknown, route: DrivingRoute): DrivingState | null {
+-  return validateDrivingState(value, route, false)
+-}
+-
+-function readDrivingStateChecked(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState {
+-  return validateDrivingState(value, route, pauseOnLoad) ?? safePaused(route,
++export function readValidatedDrivingState(value: unknown, route: DrivingRoute, version?: 1 | 2): DrivingState | null {
++  return validateDrivingState(value, route, false, version ?? 1)
++}
++
++function readDrivingStateChecked(value: unknown, route: DrivingRoute, pauseOnLoad: boolean, version?: 1 | 2): DrivingState {
++  return validateDrivingState(value, route, pauseOnLoad, version) ?? safePaused(route,
+     validRoute(route) && record(value) && (value.routeId !== route.id || value.routeVersion !== route.version)
+       ? 'The route changed; start a new lesson after review.'
+       : 'Saved lesson data was invalid; the vehicle is safely stopped.')
+ }
+ 
+-function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState | null {
++function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: boolean, version?: 1 | 2): DrivingState | null {
+   if (!validRoute(route) || !record(value)) return null
++  const stateVersion = version ?? 1
++  const stateKeys = ['routeId', 'routeVersion', 'position', 'heading', 'speed', 'checkpointIndex', 'checkpointEntry', 'stopDwellMs', 'score', 'status', 'assessment', 'feedback']
++  if (stateVersion === 2) stateKeys.push('gear')
++  if (!exactKeys(value, stateKeys)) return null
+   if (value.routeId !== route.id || value.routeVersion !== route.version) return null
+   const point = value.position
+-  if (!validPoint(point) || !finite(value.heading) || Math.abs(value.heading) > Math.PI * 1_000 || !finite(value.speed) || value.speed < 0 || value.speed > MAX_SAVED_SPEED
++  const gearValid = stateVersion === 1 ? !Object.hasOwn(value, 'gear') : value.gear === 'forward' || value.gear === 'reverse'
++  const speedCap = stateVersion === 1 ? MAX_LEGACY_SAVED_SPEED : value.gear === 'reverse' ? MAX_REVERSE_SPEED : MAX_SPEED
++  if (!gearValid || !validPoint(point) || !finite(value.heading) || Math.abs(value.heading) > Math.PI * 1_000 || !finite(value.speed) || value.speed < 0 || value.speed > speedCap
+     || !Number.isInteger(value.checkpointIndex) || (value.checkpointIndex as number) < 0 || (value.checkpointIndex as number) > route.checkpoints.length
+     || typeof value.checkpointEntry !== 'string' || !['blocked', 'armed', 'entered'].includes(value.checkpointEntry)
+     || !finite(value.stopDwellMs) || value.stopDwellMs < 0 || value.stopDwellMs >= STOP_DWELL_MS || !finite(value.score) || value.score < 0 || value.score > MAX_SCORE
+     || typeof value.status !== 'string' || !['running', 'paused', 'complete'].includes(value.status)
+     || typeof value.assessment !== 'string' || !['pending', 'passed', 'failed'].includes(value.assessment)
++    || (value.checkpointEntry === 'entered' && stateVersion === 2 && value.gear === 'reverse')
++    || (stateVersion === 2 && value.status === 'paused' && value.gear !== 'forward')
++    || (stateVersion === 2 && value.status === 'complete' && value.gear !== 'forward')
+     || typeof value.feedback !== 'string' || value.feedback.length > 160) return null
+   if (value.status === 'paused' && (value.speed !== 0 || value.stopDwellMs !== 0)) return null
+   const position = { x: point.x, z: point.z }
+@@ -313,9 +363,11 @@
+     return null
+   }
+   if (savedStatus === 'complete') return { routeId: route.id, routeVersion: route.version, position, heading: wrapHeading(value.heading), speed: 0,
++    ...(stateVersion === 2 ? { gear: value.gear as DrivingGear } : {}),
+     checkpointIndex, checkpointEntry: 'blocked', stopDwellMs: 0, score: value.score, status: 'complete', assessment: value.assessment as DrivingAssessment, feedback: value.feedback }
+   const reloadEntry = pauseOnLoad ? entryAt(position, route, checkpointIndex) : entry
+   return { routeId: route.id, routeVersion: route.version, position, heading: wrapHeading(value.heading), speed: pauseOnLoad || savedStatus === 'paused' ? 0 : value.speed,
++    ...(stateVersion === 2 ? { gear: pauseOnLoad || savedStatus === 'paused' ? 'forward' as const : value.gear as DrivingGear } : {}),
+     checkpointIndex, checkpointEntry: reloadEntry, stopDwellMs: pauseOnLoad || savedStatus === 'paused' ? 0 : value.stopDwellMs, score: value.score,
+     status: pauseOnLoad ? 'paused' : savedStatus, assessment: 'pending',
+     feedback: pauseOnLoad ? 'Lesson paused after reload; resume through the server before driving.' : value.feedback }
+--- a/src/game/living-world/driving.test.ts
++++ b/src/game/living-world/driving.test.ts
+@@ -184,6 +184,122 @@
+   assert.equal(reverse.assessment, 'pending')
+   assert.equal(reverse.score, edge.score, 'reverse movement grants no score or assessment progress')
+ })
++test('reverse entry into an armed checkpoint is blocked, retained and usable on the next frame', () => {
++  const course: DrivingRoute = { ...COURSE, roads: [[{ x: 0, z: 0 }, { x: 0, z: 12 }]],
++    checkpoints: [{ id: 'target', center: { x: 0, z: 2 }, radius: 1, stopRequired: false }], roadWidth: 10 }
++  const outside: DrivingState = { ...createDriving(course), position: { x: 0, z: 3.1 }, heading: 0,
++    speed: 3, gear: 'reverse', checkpointEntry: 'armed', checkpointIndex: 0 }
++  const crossed = stepDriving(outside, { throttle: 0, brake: 0, steer: 0, gear: 'reverse' }, course).state
++  assert.ok(Math.hypot(crossed.position.x, crossed.position.z - 2) < 1, 'the reverse step enters the active zone')
++  assert.equal(crossed.checkpointIndex, 0, 'reverse never awards the checkpoint')
++  assert.equal(crossed.checkpointEntry, 'blocked')
++  assert.equal(crossed.stopDwellMs, 0)
++  const retained = readValidatedDrivingState(JSON.parse(JSON.stringify(crossed)), course, 2)
++  assert.ok(retained, 'the reverse-entered state survives the strict v2 reader')
++  assert.equal(retained.checkpointIndex, 0)
++  assert.equal(retained.checkpointEntry, 'blocked')
++  const next = stepDriving(retained, { throttle: 0, brake: 0, steer: 0, gear: 'reverse' }, course).state
++  assert.equal(next.status, 'running', 'the retained blocked state remains usable on the next server frame')
++  assert.equal(next.checkpointIndex, 0)
++  assert.equal(next.stopDwellMs, 0)
++  let leaving = next
++  for (let i = 0; i < 12 && leaving.checkpointEntry === 'blocked'; i++) leaving = stepDriving(leaving,
++    { throttle: 0, brake: 0, steer: 0, gear: 'reverse' }, course).state
++  assert.equal(leaving.checkpointEntry, 'armed', 'reverse exit rearms but never awards the checkpoint')
++  assert.equal(leaving.checkpointIndex, 0)
++})
++
++test('continued reverse motion stays on the road and cannot award a checkpoint', () => {
++  const narrow: DrivingRoute = { ...COURSE, roads: [[{ x: 0, z: 0 }, { x: 0, z: 12 }]],
++    checkpoints: [{ id: 'end', center: { x: 0, z: 10 }, radius: 1, stopRequired: true }], roadWidth: 2 }
++  const edge: DrivingState = { ...createDriving(narrow), position: { x: 1.64, z: 5 }, heading: Math.PI / 2, speed: 0 }
++  let reverse = stepDriving(edge, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, narrow).state
++  for (let i = 0; i < 12; i++) reverse = stepDriving(reverse, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, narrow).state
++  assert.ok(Math.abs(reverse.position.x) < Math.abs(edge.position.x), 'the swept path remains inside the road corridor while backing away')
++  assert.ok(reverse.speed <= 3, 'the v2 reverse cap remains manoeuvring speed')
++  assert.equal(readValidatedDrivingState(reverse, narrow, 2)?.speed, reverse.speed, 'v2 reverse speed remains a nonnegative magnitude')
++  assert.equal(reverse.gear, 'reverse')
++  assert.equal(reverse.checkpointIndex, 0, 'reverse cannot award checkpoint progress')
++  assert.equal(reverse.assessment, 'pending')
++  assert.equal(reverse.heading, edge.heading, 'straight reverse does not invent a heading pivot')
++})
++test('direction changes brake to zero before reverse travel and reverse steering yaw is signed', () => {
++  const moving: DrivingState = { ...createDriving(COURSE), position: { x: 0, z: 4 }, speed: 1 }
++  const braking = stepDriving(moving, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, COURSE).state
++  assert.ok(braking.speed > 0 && braking.speed < moving.speed)
++  assert.ok(braking.position.z > moving.position.z, 'the car continues forward while braking; velocity never flips')
++  const stopped = stepDriving(braking, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, COURSE).state
++  assert.equal(stopped.speed, 0)
++  assert.equal(stopped.position.z, braking.position.z)
++  const backing = stepDriving(stopped, { throttle: 1, brake: 0, steer: 1, gear: 'reverse' }, COURSE).state
++  assert.ok(backing.speed > 0)
++  assert.equal(backing.gear, 'reverse')
++  assert.ok(backing.position.z < stopped.position.z)
++  assert.ok(backing.heading < 0, 'reverse steers with the opposite bicycle yaw')
++  assert.ok(backing.speed <= 3, 'reverse is capped at 3 m/s for low-speed manoeuvring')
++
++  let movingReverse: DrivingState = { ...createDriving(COURSE), position: { x: 0, z: 4 }, heading: 0 }
++  for (let i = 0; i < 8; i++) movingReverse = stepDriving(movingReverse,
++    { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, COURSE).state
++  const shiftForward = stepDriving(movingReverse, { throttle: 1, brake: 0, steer: 0, gear: 'forward' }, COURSE).state
++  assert.equal(shiftForward.gear, 'reverse', 'forward request cannot flip a moving reverse vehicle')
++  assert.ok(shiftForward.speed < movingReverse.speed && shiftForward.speed > 0)
++  assert.ok(shiftForward.position.z < movingReverse.position.z, 'it continues backing while braking')
++  let settled = shiftForward
++  for (let i = 0; i < 5 && settled.gear !== 'forward'; i++) settled = stepDriving(settled,
++    { throttle: 1, brake: 0, steer: 0, gear: 'forward' }, COURSE).state
++  assert.deepEqual([settled.speed, settled.gear], [0, 'forward'], 'the v2 gear changes only at rest')
++  const forwardAgain = stepDriving(settled, { throttle: 1, brake: 0, steer: 0, gear: 'forward' }, COURSE).state
++  assert.ok(forwardAgain.speed > 0 && forwardAgain.position.z > settled.position.z)
++})
++test('requesting reverse cancels partial stop dwell and requires a fresh forward entry', () => {
++  const stopCourse: DrivingRoute = { ...COURSE, checkpoints: [
++    { id: 'stop', center: { x: 0, z: 2 }, radius: 1, stopRequired: true },
++  ] }
++  const almostDone: DrivingState = { ...createDriving(stopCourse), position: { x: 0, z: 2 }, checkpointEntry: 'entered', stopDwellMs: 900 }
++  const reversed = stepDriving(almostDone, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, stopCourse).state
++  assert.deepEqual([reversed.checkpointIndex, reversed.checkpointEntry, reversed.stopDwellMs, reversed.gear], [0, 'blocked', 0, 'reverse'])
++  assert.equal(reversed.assessment, 'pending')
++  let exiting = reversed
++  for (let i = 0; i < 12 && exiting.checkpointEntry === 'blocked'; i++) exiting = stepDriving(exiting,
++    { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, stopCourse).state
++  assert.equal(exiting.checkpointEntry, 'armed', 'the driver must exit the zone before it can be approached again')
++  assert.equal(exiting.checkpointIndex, 0)
++})
++test('legacy frames stay forward-compatible and malformed reverse selectors fail closed', () => {
++  const start = createDriving(COURSE)
++  const legacy = stepDriving(start, { throttle: 1, brake: 0, steer: 0 }, COURSE).state
++  const explicitForward = stepDriving(start, { throttle: 1, brake: 0, steer: 0, gear: 'forward' }, COURSE).state
++  assert.equal(Object.hasOwn(legacy, 'gear'), false, 'legacy control and state shapes remain unchanged')
++  assert.deepEqual({ ...legacy, gear: 'forward' }, explicitForward)
++  assert.equal(readValidatedDrivingState(legacy, COURSE, 1)?.gear, undefined, 'strict v1 reads remain forward-only')
++  assert.equal(readValidatedDrivingState({ ...legacy, speed: 20 }, COURSE, 1)?.speed, 20, 'the v1 reader preserves its original saved-speed bound')
++  for (const controls of [
++    { throttle: 1, brake: 0, steer: 0, gear: 'park' },
++    { throttle: 1, brake: 0, steer: 0, gear: undefined },
++    { throttle: 1, brake: 0, steer: 0, gear: 'reverse', position: { x: 0, z: 1000 } },
++  ]) assert.equal(stepDriving(start, controls, COURSE).state.status, 'paused')
++  const liveReverse = stepDriving(start, { throttle: 1, brake: 0, steer: 0, gear: 'reverse' }, COURSE).state
++  assert.ok(liveReverse.speed > 0 && liveReverse.speed <= 3)
++  assert.equal(readValidatedDrivingState(liveReverse, COURSE), null, 'the default strict reader remains v1 for unrelated consumers')
++  const restored = readDrivingState(JSON.parse(JSON.stringify(liveReverse)), COURSE, 2)
++  assert.deepEqual([restored.status, restored.speed, restored.gear], ['paused', 0, 'forward'], 'v2 reload clears motion and defaults gear before explicit resume')
++  assert.equal(readValidatedDrivingState({ ...legacy, gear: 'reverse' }, COURSE, 1), null, 'v1 cannot silently acquire reverse fields')
++  assert.equal(readValidatedDrivingState(liveReverse, COURSE, 1), null, 'v1 reader rejects v2 state shapes')
++  assert.equal(readValidatedDrivingState({ ...liveReverse, speed: 3.01 }, COURSE, 2), null, 'reverse above its bound is quarantined')
++  assert.equal(readValidatedDrivingState({ ...liveReverse, speed: -0.1 }, COURSE, 2), null, 'v2 speed remains a nonnegative magnitude')
++  assert.equal(readValidatedDrivingState({ ...liveReverse, gear: undefined }, COURSE, 2), null, 'v2 requires a strict gear field')
++})
++test('rejected forward steering stops without changing the last accepted heading', () => {
++  const narrow: DrivingRoute = { ...COURSE, roads: [[{ x: 0, z: 0 }, { x: 0, z: 12 }]],
++    checkpoints: [{ id: 'end', center: { x: 0, z: 10 }, radius: 1, stopRequired: true }], roadWidth: 2 }
++  const edge: DrivingState = { ...createDriving(narrow), position: { x: 1.64, z: 5 }, heading: Math.PI / 2, speed: 1 }
++  const rejected = stepDriving(edge, { throttle: 0, brake: 0, steer: 1 }, narrow).state
++  assert.deepEqual(rejected.position, edge.position)
++  assert.equal(rejected.speed, 0)
++  assert.equal(rejected.heading, edge.heading)
++  assert.equal(rejected.score, edge.score - 25, 'the existing off-road penalty is not forgiven')
++})
+ test('swept road checks reject a sub-step off-road gap between disconnected polylines', () => {
+   const gap: DrivingRoute = { ...COURSE, roads: [[{ x: -10, z: 1.65 }, { x: 0, z: 1.65 }], [{ x: 1.6, z: -1.65 }, { x: 10, z: -1.65 }]], checkpoints: [{ id: 'nearby', center: { x: 0, z: 0 }, radius: 3, stopRequired: false }], roadWidth: 2 }
+   const state: DrivingState = { ...createDriving(gap), position: { x: 0, z: 0 }, heading: Math.PI / 2, speed: 16, checkpointEntry: 'blocked' }
+--- a/server/living-world/driving-service.ts
++++ b/server/living-world/driving-service.ts
+@@ -21,7 +21,7 @@
+ 
+ type PacketReceipt = { sequence: number; fingerprint: string; code: string }
+ type DrivingRecord = {
+-  v: 1; publicId: string; journeyId: string; cityId: CityId; location: string
++  v: 1 | 2; publicId: string; journeyId: string; cityId: CityId; location: string
+   createdAt: number; updatedAt: number; lastInputAt: number; creditMs: number
+   revision: number; nextSequence: number; state: DrivingState; lastPacket: PacketReceipt | null
+ }
+@@ -50,7 +50,7 @@
+ /** Storage reader is intentionally strict. Invalid rows are refused, never silently reset. */
+ function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
+   const recordKeys = ['v', 'publicId', 'journeyId', 'cityId', 'location', 'createdAt', 'updatedAt', 'lastInputAt', 'creditMs', 'revision', 'nextSequence', 'state', 'lastPacket']
+-  if (!isRecord(value) || !exactKeys(value, recordKeys) || value.v !== 1 || value.publicId !== publicId || !identifier(value.journeyId)
++  if (!isRecord(value) || !exactKeys(value, recordKeys) || (value.v !== 1 && value.v !== 2) || value.publicId !== publicId || !identifier(value.journeyId)
+     || typeof value.cityId !== 'string' || !identifier(value.location) || !safeTime(value.createdAt)
+     || !safeTime(value.updatedAt) || !safeTime(value.lastInputAt) || !Number.isInteger(value.creditMs)
+     || (value.creditMs as number) < 0 || (value.creditMs as number) >= MAX_CREDIT_MS
+@@ -64,8 +64,9 @@
+     || (value.nextSequence as number) > (value.revision as number)
+     || (value.lastPacket === null ? value.nextSequence !== 1 : (value.lastPacket as PacketReceipt).sequence !== (value.nextSequence as number) - 1)) return null
+   const stateKeys = ['routeId', 'routeVersion', 'position', 'heading', 'speed', 'checkpointIndex', 'checkpointEntry', 'stopDwellMs', 'score', 'status', 'assessment', 'feedback']
++  if (value.v === 2) stateKeys.push('gear')
+   if (!isRecord(value.state) || !exactKeys(value.state, stateKeys)) return null
+-  const state = readValidatedDrivingState(value.state, PRACTICE_COURSE)
++  const state = readValidatedDrivingState(value.state, PRACTICE_COURSE, value.v)
+   if (!state) return null
+   // A completed assessment is recorded only by the accepted packet that completed it.
+   // This prevents a corrupt/fabricated terminal save from being treated as a retryable run.
+@@ -108,6 +109,9 @@
+   row.creditMs = 0; row.lastInputAt = at; row.updatedAt = at; row.revision++
+ }
+ function writeRecord(records: Record<string, unknown>, row: DrivingRecord, ctx: RouteContext): void {
++  // v1 keeps its exact historical state shape. Only an explicit gear choice upgrades this
++  // driving record to v2; no global save schema or unrelated world state changes.
++  row.v = Object.hasOwn(row.state, 'gear') ? 2 : 1
+   const encoded = JSON.stringify(row)
+   if (utf8Size(encoded) > MAX_RECORD_BYTES) throw ctx.fail(507, 'driving_record_too_large')
+   records[row.publicId] = row
+@@ -120,10 +124,13 @@
+   return own.length === keys.length && own.every((key) => typeof key === 'string' && keys.includes(key))
+ }
+ function inputFrame(value: unknown): value is DrivingInput {
+-  return isRecord(value) && exactKeys(value, ['throttle', 'brake', 'steer'])
++  const legacyKeys = ['throttle', 'brake', 'steer']
++  const gearedKeys = [...legacyKeys, 'gear']
++  return isRecord(value) && (exactKeys(value, legacyKeys) || exactKeys(value, gearedKeys))
+     && typeof value.throttle === 'number' && Number.isFinite(value.throttle) && value.throttle >= 0 && value.throttle <= 1
+     && typeof value.brake === 'number' && Number.isFinite(value.brake) && value.brake >= 0 && value.brake <= 1
+     && typeof value.steer === 'number' && Number.isFinite(value.steer) && value.steer >= -1 && value.steer <= 1
++    && (!Object.hasOwn(value, 'gear') || value.gear === 'forward' || value.gear === 'reverse')
+ }
+ function lifecycle(value: unknown, includeJourney: boolean): value is DrivingLifecycleRequest {
+   if (!isRecord(value) || !exactKeys(value, includeJourney ? ['cityId', 'requestId', 'journeyId', 'revision'] : ['cityId', 'requestId'])) return false
+--- a/server/living-world/driving-service.test.ts
++++ b/server/living-world/driving-service.test.ts
+@@ -71,6 +71,74 @@
+   const resumed = await post(f, `${drivingPath}/resume`, { cityId: 'lagos', requestId: id(f), journeyId: session.journeyId, revision: boot.session!.revision }, player.cookie)
+   assert.deepEqual([resumed.ok, resumed.code, resumed.session?.state.status, resumed.session?.revision], [true, 'resumed', 'running', 4])
+   assert.deepEqual([await cash(f, player.cookie), await ledger(f, player.id)], [0, beforeLedger])
++})
++
++test('legacy forward packets remain valid and reverse requests brake before a saved backward step', async t => {
++  const f = await livingFixture(t)
++  const player = await onboard(f)
++  const start = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
++  const journey = start.session!
++  f.advance(100)
++  const legacy = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 1,
++    frames: [{ throttle: 1, brake: 0, steer: 0 }] }
++  const forward = await post(f, `${drivingPath}/input`, legacy, player.cookie)
++  assert.deepEqual([forward.ok, forward.session?.state.speed > 0, forward.session?.state.position.z > journey.state.position.z], [true, true, true])
++  const legacyRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id])
++  assert.equal(legacyRow.v, 1, 'old three-field controls retain the strict v1 save format')
++  const replay = await post(f, `${drivingPath}/input`, legacy, player.cookie)
++  assert.deepEqual([replay.ok, replay.duplicate, replay.session?.revision], [true, true, forward.session?.revision])
++
++  const reverse = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 2,
++    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'reverse' }] }
++  f.advance(100)
++  const stopped = await post(f, `${drivingPath}/input`, reverse, player.cookie)
++  assert.deepEqual([stopped.ok, stopped.session?.state.speed, stopped.session?.state.position], [true, 0, forward.session?.state.position],
++    'requesting the opposite direction brakes to zero without flipping velocity')
++  const reverseReplay = await post(f, `${drivingPath}/input`, reverse, player.cookie)
++  assert.deepEqual([reverseReplay.ok, reverseReplay.duplicate, reverseReplay.session?.revision], [true, true, stopped.session.revision])
++  const changedGearRetry = await post(f, `${drivingPath}/input`, { ...reverse,
++    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
++  assert.deepEqual([changedGearRetry.ok, changedGearRetry.code, changedGearRetry.session?.revision], [false, 'packet_conflict', stopped.session.revision])
++  f.advance(100)
++  const backing = await post(f, `${drivingPath}/input`, { ...reverse, sequence: 3 }, player.cookie)
++  assert.ok(backing.ok && backing.session)
++  assert.ok(backing.session.state.speed > 0 && backing.session.state.speed <= 3)
++  assert.equal(backing.session.state.gear, 'reverse')
++  assert.ok(backing.session.state.position.z < stopped.session!.state.position.z, 'the server computes backward movement from accepted controls')
++  const reverseRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number; state: { speed: number; gear?: string } }> }).driving[player.id])
++  assert.deepEqual([reverseRow.v, reverseRow.state.speed > 0, reverseRow.state.gear], [2, true, 'reverse'], 'reverse motion upgrades only the driving row to its explicit v2 contract')
++
++  const loaded = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
++  assert.deepEqual([loaded.ok, loaded.session?.state.status, loaded.session?.state.speed, loaded.session?.state.gear, loaded.session?.state.position],
++    [true, 'paused', 0, 'forward', backing.session.state.position], 'v2 reload pauses at the accepted position with a forward default and no carried motion')
++
++  const before = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
++  const malformed = await f.request(`${drivingPath}/input`, { cityId: 'lagos', journeyId: journey.journeyId, sequence: 4,
++    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'park' }] }, player.cookie)
++  assert.deepEqual([malformed.status, (await malformed.json() as { error: string }).error], [400, 'invalid_driving_packet'])
++  const after = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
++  assert.deepEqual(after, before, 'unknown gear values do not mutate the saved journey')
++
++  await f.server.store.transact(db => {
++    const row = (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id]!
++    row.v = 1
++  })
++  const mismatchedV1 = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
++  const v1Refusal = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
++  assert.deepEqual([v1Refusal.ok, v1Refusal.code], [false, 'invalid_saved_journey'], 'v1 never accepts a v2 state shape')
++  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), mismatchedV1,
++    'strict version refusal preserves the source row')
++
++  await f.server.store.transact(db => {
++    const row = (db.livingWorld as { driving: Record<string, { v: number; state: Record<string, unknown> }> }).driving[player.id]!
++    row.v = 2
++    delete row.state.gear
++  })
++  const incompleteV2 = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
++  const v2Refusal = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
++  assert.deepEqual([v2Refusal.ok, v2Refusal.code], [false, 'invalid_saved_journey'], 'v2 requires its explicit gear field')
++  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), incompleteV2,
++    'strict v2 refusal quarantines without rewriting the original row')
+ })
+ 
+ test('only a held quick-start is blocked; confirmed guests and legacy lives remain eligible', async t => {

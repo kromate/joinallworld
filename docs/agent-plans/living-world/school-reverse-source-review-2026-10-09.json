@@ -1,0 +1,75 @@
+{
+  "observedAt": "2026-10-09T23:04:28.276043+00:00",
+  "candidateSource": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "decision": "MODIFY_NO_SHARED_ADOPTION",
+  "proposalManifestCandidateModuleSha256": "d43b2e218a370acaa49489dfb43786005d901c30f05c170014405fb45f756a4a",
+  "implementationPatchSha256": "2d3d51f72417ae46d571e9924bea31dff7156340e0d0cc7e1a9a56d22b6c66fd",
+  "findings": [
+    {
+      "path": "src/game/living-world/driving.ts",
+      "line": 324,
+      "issue": "exactKeys is called but has no definition or import; candidate cannot execute validation."
+    },
+    {
+      "path": "src/game/living-world/driving.ts",
+      "line": 269,
+      "issue": "Reverse entry into an armed checkpoint leaves armed plus inside, rejected by entryConsistent on the next frame/read. Must block without reward, then require exit and forward re-entry."
+    },
+    {
+      "path": "reverse-road-edge-regression.patch",
+      "issue": "First regression still expects negative speed from superseded design; implementation changes assertions instead of preserving the accepted magnitude-and-gear contract."
+    }
+  ],
+  "execution": "No Root runtime/test/compiler run. Existing verified Luna correcting isolated source and mechanically generated patches.",
+  "migrationBoundary": "Per-driving-record v2 provisionally appropriate; strict canonical v1 rows retained. Enablement requires independent Astra migration review and tested compatible rollback reader, not data reset.",
+  "modelMetadata": {
+    "root": {
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "at": "2026-10-09T23:02:17.699Z"
+    },
+    "driving": {
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "at": "2026-10-09T23:03:36.538Z"
+    },
+    "journeys": {
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "at": "2026-10-09T23:03:45.075Z"
+    }
+  },
+  "latestObservedAt": "2026-10-09T23:06:20.549030+00:00",
+  "latestDecision": "SOURCE_FINDINGS_CORRECTED_QUALIFIED_FOR_ISOLATED_EXECUTION_ONLY",
+  "correctedManifestSha256": "f34dcaff8e648ab98a8afc64121ccb21d29d9b094f6ef1e3b2aa30e3dd813a8c",
+  "correctedImplementationPatchSha256": "9482e2cdff947f726298040ee32c6102623277ee67ca1d05c84955999901f1d7",
+  "correctedTestFirstPatchSha256": "1eec18cb72ebfb2c89f73501a3e30026515503eec01e91515dec3c991661e0ce",
+  "correctedCandidateFiles": {
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "a60386b1b60ee2ad6fde6b0451b068b91dcc56a8949525a7d808ab7806fd4a6f",
+    "server/living-world/driving-service.ts": "e059779890db10ae757e553e279cf29096088b8ddda50319428d7fdd38e4c837",
+    "server/living-world/driving-service.test.ts": "766ae32e94682de304c3f5aa4f0e8ef123e352917b031045d4a6a9b973c0429b"
+  },
+  "independentApply": {
+    "exactBaseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "allFiveSnapshotBaseAndResultBytesVerified": true,
+    "modifiedPaths": 4,
+    "unchangedClosurePath": "src/types/living-world.ts",
+    "bothSequentialApplyCheckAndApply": 0,
+    "rootExecutedTests": false
+  },
+  "correctedFindings": [
+    "Scoped exactKeys helper defined",
+    "Reverse entry into active target becomes blocked with zero dwell; explicit retained-reader and next-step assertions authored",
+    "Primary regression byte-identical across test-first and candidate, nonnegative magnitude and explicit direction"
+  ],
+  "publicPacket": "proposals/school-reverse-9482e2cd/",
+  "remaining": [
+    "Actual red baseline failure and focused green execution",
+    "Independent Astra migration review and tested v1/v2 rollback reader before enablement",
+    "Client keyboard/touch selector and canonical gear display",
+    "Exact candidate compiler/size/native controls/reload/qualification/live gates",
+    "Original native control cause remains unproven; original score0 must remain unchanged"
+  ]
+}

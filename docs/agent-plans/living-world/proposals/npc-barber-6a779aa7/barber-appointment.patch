@@ -1,0 +1,414 @@
+diff --git a/src/game/living-world/barber-appointment.ts b/src/game/living-world/barber-appointment.ts
+new file mode 100644
+--- /dev/null
++++ b/src/game/living-world/barber-appointment.ts
+@@ -0,0 +1,264 @@
++/**
++ * Proposal-only pure domain for one fictional NPC barber appointment.
++ * A host must construct consent, current appearance and practice evidence from trusted server state
++ * inside the same durable transaction. This module does not authenticate, persist, pay or render.
++ */
++import { APPEARANCE } from '../content/traits.ts'
++import { barberLesson, BARBER_CATALOGUE_VERSION } from './barber-catalogue.ts'
++import { readValidatedBarberPractice, type BarberPracticeState } from './barber.ts'
++import type { Look } from '../../types/life.ts'
++
++export const APPOINTMENT_CUSTOMER_ID = 'npc-barber-customer-practice-v1'
++export const APPOINTMENT_STYLE_ID = 'man-low-cut-v1'
++/** Sol-approved proposal value only; not enabled until the appointment/appearance transaction is integrated. */
++export const NPC_APPOINTMENT_GAME_PAYMENT = 80
++const BASIC_PLAN = barberLesson('basic')!.plan
++const VERSION = 1 as const
++const MAX_BYTES = 4096
++const ID = /^[\w:-]{1,100}$/
++const REQUIRED_LOOK_KEYS = ['body', 'hair', 'outfit', 'fabric', 'skin', 'hairColor', 'outfitColor', 'bottomsColor'] as const
++const OPTIONAL_LOOK_KEYS = ['accessories', 'face', 'expression'] as const
++const LOOK_KEYS = [...REQUIRED_LOOK_KEYS, ...OPTIONAL_LOOK_KEYS]
++const STATUS = ['offered', 'active', 'cancelled', 'completed'] as const
++const CANCEL_REASONS = ['declined', 'revoked', 'departed', 'disconnected', 'expired', 'appearance_changed'] as const
++
++export type AppointmentStatus = typeof STATUS[number]
++export type AppointmentCancelReason = typeof CANCEL_REASONS[number]
++export interface BarberAppointmentTerms {
++  customerId: typeof APPOINTMENT_CUSTOMER_ID
++  body: 'man'
++  styleId: typeof APPOINTMENT_STYLE_ID
++  catalogueVersion: typeof BARBER_CATALOGUE_VERSION
++  appearanceFingerprint: string
++  beforeLook: Look
++  approvedLook: Look
++  gamePrice: typeof NPC_APPOINTMENT_GAME_PAYMENT
++  issuedAt: number
++  expiresAt: number
++  consentGeneration: number
++  consentedAt: number
++}
++export interface BarberAppointmentResult {
++  styleId: typeof APPOINTMENT_STYLE_ID
++  look: Look
++  committedAt: number
++  gamePrice: number
++}
++export interface BarberAppointmentState {
++  version: typeof VERSION
++  appointmentId: string
++  actorId: string
++  revision: number
++  status: AppointmentStatus
++  terms: BarberAppointmentTerms
++  sessionId: string | null
++  acceptedAt: number | null
++  updatedAt: number
++  cancelReason: AppointmentCancelReason | null
++  result: BarberAppointmentResult | null
++}
++export interface AppointmentEffect {
++  readonly actorId: string
++  readonly customerId: typeof APPOINTMENT_CUSTOMER_ID
++  readonly styleId: typeof APPOINTMENT_STYLE_ID
++  readonly expectedAppearanceFingerprint: string
++  readonly appearance: Readonly<Look>
++  readonly gameCashCredit: number
++}
++export interface AppointmentResult {
++  ok: boolean
++  code: 'offered' | 'accepted' | 'cancelled' | 'completed' | 'already_completed' | 'invalid' | 'revision_conflict' | 'clock_reversed' | 'expired' | 'appearance_changed' | 'practice_incomplete' | 'revision_exhausted'
++  state: BarberAppointmentState | null
++  effect: AppointmentEffect | null
++}
++
++const isRecord = (value: unknown): value is Record<string, unknown> => {
++  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false
++  try {
++    const proto = Object.getPrototypeOf(value)
++    if (proto !== Object.prototype && proto !== null) return false
++    return Reflect.ownKeys(value).every(key => typeof key === 'string' && Object.getOwnPropertyDescriptor(value, key)?.get === undefined
++      && Object.getOwnPropertyDescriptor(value, key)?.set === undefined)
++  } catch { return false }
++}
++const exact = (value: Record<string, unknown>, keys: readonly string[]): boolean => {
++  const own = Reflect.ownKeys(value)
++  return own.length === keys.length && own.every(key => typeof key === 'string' && keys.includes(key))
++}
++const safeTime = (value: unknown): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0
++const safeRevision = (value: unknown): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 1
++const isOneOf = <T extends string>(values: readonly T[], value: unknown): value is T => typeof value === 'string' && (values as readonly string[]).includes(value)
++const nextRevision = (state: BarberAppointmentState): number | null => Number.isSafeInteger(state.revision + 1) ? state.revision + 1 : null
++const validId = (value: unknown): value is string => typeof value === 'string' && ID.test(value)
++
++function readLook(value: unknown): Look | null { try { return readLookUnchecked(value) } catch { return null } }
++function readLookUnchecked(value: unknown): Look | null {
++  if (!isRecord(value) || !REQUIRED_LOOK_KEYS.every(key => Object.hasOwn(value, key))) return null
++  const keys = Reflect.ownKeys(value)
++  if (keys.some(key => typeof key !== 'string' || !LOOK_KEYS.includes(key as typeof LOOK_KEYS[number]))) return null
++  if (value.body !== 'man' || typeof value.hair !== 'string' || !isOneOf([...APPEARANCE.hair.man, ...APPEARANCE.extra.hair.man], value.hair)
++    || typeof value.outfit !== 'string' || !isOneOf([...APPEARANCE.outfits.man, ...APPEARANCE.extra.outfits.man], value.outfit)
++    || typeof value.fabric !== 'string' || !isOneOf(APPEARANCE.fabrics, value.fabric)
++    || typeof value.skin !== 'string' || !APPEARANCE.skin.some(item => item.id === value.skin)
++    || typeof value.hairColor !== 'string' || !APPEARANCE.hairColours.some(item => item.id === value.hairColor)
++    || typeof value.outfitColor !== 'string' || !APPEARANCE.outfitColours.some(item => item.id === value.outfitColor)
++    || typeof value.bottomsColor !== 'string' || !APPEARANCE.outfitColours.some(item => item.id === value.bottomsColor)) return null
++  if (Object.hasOwn(value, 'face') && (typeof value.face !== 'string' || !isOneOf(APPEARANCE.faces, value.face))) return null
++  if (Object.hasOwn(value, 'expression') && (typeof value.expression !== 'string' || !isOneOf(APPEARANCE.expressions, value.expression))) return null
++  let accessories: Look['accessories']
++  if (Object.hasOwn(value, 'accessories')) {
++    const raw = value.accessories
++    if (!Array.isArray(raw) || Object.getPrototypeOf(raw) !== Array.prototype || raw.length > APPEARANCE.accessoryLimit) return null
++    const keys = Reflect.ownKeys(raw)
++    if (keys.length !== raw.length + 1 || !keys.includes('length') || keys.some(key => key !== 'length' && (typeof key !== 'string' || !/^(0|[1-9]\d*)$/.test(key)))) return null
++    const slots = new Set<string>(), ids = new Set<string>(), parsed: NonNullable<Look['accessories']> = []
++    for (let index = 0; index < raw.length; index++) {
++      const descriptor = Object.getOwnPropertyDescriptor(raw, String(index))
++      if (!descriptor || !('value' in descriptor) || typeof descriptor.value !== 'string') return null
++      const id = descriptor.value, item = APPEARANCE.accessories.find(candidate => candidate.id === id)
++      if (!item || slots.has(item.slot) || ids.has(id)) return null
++      slots.add(item.slot); ids.add(id); parsed.push(id as NonNullable<Look['accessories']>[number])
++    }
++    accessories = parsed
++  }
++  return {
++    body: 'man', hair: value.hair as Look['hair'], outfit: value.outfit as Look['outfit'], fabric: value.fabric as Look['fabric'],
++    skin: value.skin as Look['skin'], hairColor: value.hairColor as Look['hairColor'], outfitColor: value.outfitColor as Look['outfitColor'],
++    bottomsColor: value.bottomsColor as Look['bottomsColor'],
++    ...(accessories ? { accessories } : {}), ...(typeof value.face === 'string' ? { face: value.face as Look['face'] } : {}),
++    ...(typeof value.expression === 'string' ? { expression: value.expression as Look['expression'] } : {}),
++  }
++}
++function fingerprint(look: Look): string {
++  return JSON.stringify({ body: look.body, hair: look.hair, outfit: look.outfit, fabric: look.fabric, skin: look.skin,
++    hairColor: look.hairColor, outfitColor: look.outfitColor, bottomsColor: look.bottomsColor,
++    accessories: look.accessories ? [...look.accessories].sort() : null, face: look.face ?? null, expression: look.expression ?? null })
++}
++function cloneLook(look: Look): Look { return { ...look, ...(look.accessories ? { accessories: [...look.accessories] } : {}) } }
++function freezeLook(look: Look): Readonly<Look> { const copy = cloneLook(look); if (copy.accessories) Object.freeze(copy.accessories); return Object.freeze(copy) }
++function cloneState(state: BarberAppointmentState): BarberAppointmentState {
++  return { ...state, terms: { ...state.terms, beforeLook: cloneLook(state.terms.beforeLook), approvedLook: cloneLook(state.terms.approvedLook) },
++    ...(state.result ? { result: { ...state.result, look: cloneLook(state.result.look) } } : {}) }
++}
++function validTerms(value: unknown): value is BarberAppointmentTerms {
++  if (!isRecord(value) || !exact(value, ['customerId', 'body', 'styleId', 'catalogueVersion', 'appearanceFingerprint', 'beforeLook', 'approvedLook',
++    'gamePrice', 'issuedAt', 'expiresAt', 'consentGeneration', 'consentedAt'])) return false
++  const before = readLook(value.beforeLook), approved = readLook(value.approvedLook)
++  if (!before || !approved || before.hair === 'low-cut' || approved.hair !== 'low-cut' || before.body !== 'man'
++    || !isOneOf([...APPEARANCE.hair.man, ...APPEARANCE.extra.hair.man], 'low-cut')
++    || value.customerId !== APPOINTMENT_CUSTOMER_ID || value.body !== 'man' || value.styleId !== APPOINTMENT_STYLE_ID
++    || value.catalogueVersion !== BARBER_CATALOGUE_VERSION || value.appearanceFingerprint !== fingerprint(before)
++    || JSON.stringify(approved) !== JSON.stringify({ ...before, hair: 'low-cut' }) || value.gamePrice !== NPC_APPOINTMENT_GAME_PAYMENT
++    || !safeTime(value.issuedAt) || !safeTime(value.expiresAt) || value.expiresAt <= value.issuedAt
++    || !safeTime(value.consentedAt) || value.consentedAt > value.issuedAt || !safeRevision(value.consentGeneration)) return false
++  return true
++}
++
++/** Creates one server-authored, already-consented NPC offer. The caller must source consent and price from approved server policy. */
++export function createConsentedBarberAppointment(input: {
++  appointmentId: string; actorId: string; currentLook: unknown; issuedAt: number; expiresAt: number; consentGeneration: number; consentedAt: number
++}): BarberAppointmentState | null {
++  try {
++    const beforeLook = readLook(input.currentLook)
++    if (!validId(input.appointmentId) || !validId(input.actorId) || !beforeLook || beforeLook.hair === 'low-cut'
++      || !safeTime(input.issuedAt) || !safeTime(input.expiresAt) || input.expiresAt <= input.issuedAt
++      || !safeTime(input.consentedAt) || input.consentedAt > input.issuedAt || !safeRevision(input.consentGeneration)) return null
++    const approvedLook = { ...beforeLook, hair: 'low-cut' as Look['hair'] }
++    const terms: BarberAppointmentTerms = { customerId: APPOINTMENT_CUSTOMER_ID, body: 'man', styleId: APPOINTMENT_STYLE_ID,
++      catalogueVersion: BARBER_CATALOGUE_VERSION, appearanceFingerprint: fingerprint(beforeLook), beforeLook, approvedLook,
++      gamePrice: NPC_APPOINTMENT_GAME_PAYMENT, issuedAt: input.issuedAt, expiresAt: input.expiresAt, consentGeneration: input.consentGeneration, consentedAt: input.consentedAt }
++    const state: BarberAppointmentState = { version: VERSION, appointmentId: input.appointmentId, actorId: input.actorId, revision: 1,
++      status: 'offered', terms, sessionId: null, acceptedAt: null, updatedAt: input.issuedAt, cancelReason: null, result: null }
++    return stateSize(state) <= MAX_BYTES ? state : null
++  } catch { return null }
++}
++function stateSize(state: BarberAppointmentState): number { return JSON.stringify(state).length }
++
++/** Strict reader; callers quarantine invalid saved rows unchanged. */
++export function readBarberAppointment(value: unknown, actorId: string): BarberAppointmentState | null {
++  try {
++    if (!validId(actorId) || !isRecord(value) || !exact(value, ['version', 'appointmentId', 'actorId', 'revision', 'status', 'terms', 'sessionId', 'acceptedAt', 'updatedAt', 'cancelReason', 'result'])
++      || value.version !== VERSION || !validId(value.appointmentId) || value.actorId !== actorId || !safeRevision(value.revision)
++      || !STATUS.includes(value.status as AppointmentStatus) || !validTerms(value.terms) || (value.sessionId !== null && !validId(value.sessionId))
++      || (value.acceptedAt !== null && (!safeTime(value.acceptedAt) || value.acceptedAt < value.terms.issuedAt
++        || value.acceptedAt >= value.terms.expiresAt || !safeTime(value.updatedAt) || value.updatedAt < value.acceptedAt))
++      || !safeTime(value.updatedAt) || value.updatedAt < value.terms.issuedAt
++      || (value.cancelReason !== null && !CANCEL_REASONS.includes(value.cancelReason as AppointmentCancelReason))) return null
++    if (value.status === 'offered' && (value.sessionId !== null || value.acceptedAt !== null || value.updatedAt !== value.terms.issuedAt || value.cancelReason !== null || value.result !== null)) return null
++    if (value.status === 'active' && (value.sessionId === null || value.acceptedAt === null || value.acceptedAt < value.terms.issuedAt
++      || value.acceptedAt >= value.terms.expiresAt || value.updatedAt < value.acceptedAt || value.cancelReason !== null || value.result !== null)) return null
++    if (value.status === 'cancelled' && (value.cancelReason === null || value.result !== null
++      || (value.sessionId === null) !== (value.acceptedAt === null)
++      || (value.acceptedAt !== null && (value.acceptedAt < value.terms.issuedAt || value.acceptedAt >= value.terms.expiresAt || value.updatedAt < value.acceptedAt))
++      || (value.cancelReason === 'expired' ? value.updatedAt < value.terms.expiresAt : value.updatedAt >= value.terms.expiresAt))) return null
++    if (value.status === 'completed' && (value.sessionId === null || value.cancelReason !== null || !isRecord(value.result)
++      || !exact(value.result, ['styleId', 'look', 'committedAt', 'gamePrice']) || value.result.styleId !== APPOINTMENT_STYLE_ID
++      || !readLook(value.result.look) || fingerprint(readLook(value.result.look)!) !== fingerprint(value.terms.approvedLook) || !safeTime(value.result.committedAt)
++      || value.acceptedAt === null || value.result.committedAt < value.acceptedAt || value.result.committedAt >= value.terms.expiresAt
++      || value.updatedAt !== value.result.committedAt || value.result.gamePrice !== value.terms.gamePrice)) return null
++    if (stateSize(value as unknown as BarberAppointmentState) > MAX_BYTES) return null
++    return cloneState(value as unknown as BarberAppointmentState)
++  } catch { return null }
++}
++
++const refused = (state: BarberAppointmentState | null, code: AppointmentResult['code']): AppointmentResult => ({ ok: false, code, state: state ? cloneState(state) : null, effect: null })
++const advanced = (state: BarberAppointmentState, status: AppointmentStatus, patch: Partial<BarberAppointmentState> = {}): BarberAppointmentState | null => {
++  const revision = nextRevision(state)
++  return revision === null ? null : { ...cloneState(state), ...patch, revision, status }
++}
++
++export function acceptBarberAppointment(stateInput: unknown, actorId: string, expectedRevision: number, currentLook: unknown,
++  consentGeneration: number, now: number, sessionId: string): AppointmentResult {
++  const state = readBarberAppointment(stateInput, actorId)
++  if (!state) return refused(null, 'invalid')
++  if (expectedRevision !== state.revision) return refused(state, 'revision_conflict')
++  if (state.status !== 'offered' || !validId(sessionId) || !safeTime(now)) return refused(state, 'invalid')
++  if (now < state.updatedAt) return refused(state, 'clock_reversed')
++  if (now >= state.terms.expiresAt) return cancelBarberAppointment(state, actorId, expectedRevision, 'expired', now)
++  const look = readLook(currentLook)
++  if (!look || fingerprint(look) !== state.terms.appearanceFingerprint) return cancelBarberAppointment(state, actorId, expectedRevision, 'appearance_changed', now)
++  if (consentGeneration !== state.terms.consentGeneration) return cancelBarberAppointment(state, actorId, expectedRevision, 'revoked', now)
++  const next = advanced(state, 'active', { sessionId, acceptedAt: now, updatedAt: now })
++  return next ? { ok: true, code: 'accepted', state: next, effect: null } : refused(state, 'revision_exhausted')
++}
++
++/** Trusted adapter reason only; never pass a client-selected cancellation cause. */
++export function cancelBarberAppointment(stateInput: unknown, actorId: string, expectedRevision: number, reason: AppointmentCancelReason, now: number): AppointmentResult {
++  const state = readBarberAppointment(stateInput, actorId)
++  if (!state) return refused(null, 'invalid')
++  if (state.revision !== expectedRevision) return refused(state, 'revision_conflict')
++  if (!CANCEL_REASONS.includes(reason) || !safeTime(now)) return refused(state, 'invalid')
++  if (state.status === 'completed') return refused(state, 'already_completed')
++  if (state.status === 'cancelled') return { ok: true, code: 'cancelled', state, effect: null }
++  if (now < state.updatedAt) return refused(state, 'clock_reversed')
++  if (reason === 'expired' ? now < state.terms.expiresAt : now >= state.terms.expiresAt) return refused(state, 'invalid')
++  const next = advanced(state, 'cancelled', { cancelReason: reason, sessionId: state.sessionId, updatedAt: now })
++  return next ? { ok: true, code: 'cancelled', state: next, effect: null } : refused(state, 'revision_exhausted')
++}
++
++export function finishBarberAppointment(stateInput: unknown, evidence: {
++  actorId: string; expectedRevision: number; sessionId: string; now: number; currentLook: unknown; consentGeneration: number;
++  customerPresent: boolean; practiceSessionId: string; practice: unknown
++}): AppointmentResult {
++  const state = readBarberAppointment(stateInput, evidence.actorId)
++  if (!state) return refused(null, 'invalid')
++  if (state.revision !== evidence.expectedRevision) return refused(state, 'revision_conflict')
++  if (state.status === 'completed') return { ok: true, code: 'already_completed', state, effect: null }
++  if (state.status !== 'active' || state.sessionId !== evidence.sessionId || evidence.practiceSessionId !== state.sessionId
++    || !safeTime(evidence.now) || typeof evidence.customerPresent !== 'boolean') return refused(state, 'invalid')
++  if (evidence.now < state.updatedAt) return refused(state, 'clock_reversed')
++  const current = readLook(evidence.currentLook)
++  const invalidReason: AppointmentCancelReason | null = evidence.now >= state.terms.expiresAt ? 'expired'
++    : evidence.consentGeneration !== state.terms.consentGeneration ? 'revoked'
++      : !evidence.customerPresent ? 'departed'
++        : !current || fingerprint(current) !== state.terms.appearanceFingerprint ? 'appearance_changed' : null
++  if (invalidReason) return cancelBarberAppointment(state, evidence.actorId, state.revision, invalidReason, evidence.now)
++  const practice = readValidatedBarberPractice(evidence.practice, BASIC_PLAN)
++  if (!practice || practice.status !== 'complete' || practice.plan.styleId !== state.terms.styleId) return refused(state, 'practice_incomplete')
++  const result: BarberAppointmentResult = { styleId: state.terms.styleId, look: cloneLook(state.terms.approvedLook), committedAt: evidence.now, gamePrice: state.terms.gamePrice }
++  const next = advanced(state, 'completed', { result, updatedAt: evidence.now })
++  if (!next) return refused(state, 'revision_exhausted')
++  const effect: AppointmentEffect = Object.freeze({ actorId: state.actorId, customerId: state.terms.customerId, styleId: state.terms.styleId,
++    expectedAppearanceFingerprint: state.terms.appearanceFingerprint, appearance: freezeLook(state.terms.approvedLook), gameCashCredit: state.terms.gamePrice })
++  return { ok: true, code: 'completed', state: next, effect }
++}
+
+diff --git a/src/game/living-world/barber-appointment.test.ts b/src/game/living-world/barber-appointment.test.ts
+new file mode 100644
+--- /dev/null
++++ b/src/game/living-world/barber-appointment.test.ts
+@@ -0,0 +1,139 @@
++import test from 'node:test'
++import assert from 'node:assert/strict'
++import { APPEARANCE } from '../content/traits.ts'
++import { barberLesson } from './barber-catalogue.ts'
++import { readValidatedBarberPractice, startBarberPractice, stepBarberPractice, type BarberPracticeState } from './barber.ts'
++import { acceptBarberAppointment, cancelBarberAppointment, createConsentedBarberAppointment, finishBarberAppointment,
++  readBarberAppointment, APPOINTMENT_CUSTOMER_ID, APPOINTMENT_STYLE_ID, NPC_APPOINTMENT_GAME_PAYMENT } from './barber-appointment.ts'
++
++// The proposed 80 payment is policy-only until a server route/wallet/appearance transaction is integrated.
++const ACTOR = 'fixture-actor', SESSION = 'fixture-session'
++const look = { body: 'man', hair: 'curls', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' } as const
++const offer = () => createConsentedBarberAppointment({ appointmentId: 'appointment-1', actorId: ACTOR, currentLook: look,
++  issuedAt: 100, expiresAt: 10_000, consentGeneration: 1, consentedAt: 90 })
++const active = () => {
++  const offered = offer(); assert.ok(offered)
++  const accepted = acceptBarberAppointment(offered, ACTOR, offered.revision, look, 1, 101, SESSION)
++  assert.ok(accepted.ok && accepted.state)
++  assert.deepEqual(readBarberAppointment(accepted.state, ACTOR), accepted.state)
++  return accepted.state
++}
++function completePractice(): BarberPracticeState {
++  let state = startBarberPractice(barberLesson('basic')!.plan)
++  assert.ok(state)
++  for (const [tool, point] of [
++    ['comb', [0.25, 0.4]], ['comb', [0.4, 0.4]], ['comb', [0.55, 0.4]],
++    ['clippers', [0.25, 0.68]], ['clippers', [0.4, 0.68]], ['clippers', [0.55, 0.68]],
++    ['brush', [0.4, 0.42]], ['brush', [0.55, 0.42]], ['brush', [0.7, 0.42]],
++  ] as const) {
++    const next = stepBarberPractice(state, { tool, x: point[0], y: point[1], pressed: true }, barberLesson('basic')!.plan)
++    assert.ok(next.state); state = next.state
++  }
++  assert.equal(state.status, 'complete')
++  return state
++}
++
++test('only the existing body-compatible low-cut style is approved and the full before-look is fingerprinted', () => {
++  assert.ok(APPEARANCE.hair.man.includes('low-cut'))
++  const state = offer(); assert.ok(state)
++  assert.equal(state.terms.customerId, APPOINTMENT_CUSTOMER_ID)
++  assert.equal(state.terms.styleId, APPOINTMENT_STYLE_ID)
++  assert.equal(state.terms.gamePrice, NPC_APPOINTMENT_GAME_PAYMENT)
++  assert.equal(state.terms.approvedLook.hair, 'low-cut')
++  assert.equal(state.terms.approvedLook.outfit, look.outfit)
++  assert.equal(createConsentedBarberAppointment({ appointmentId: 'x', actorId: ACTOR, currentLook: { ...look, body: 'woman' },
++    issuedAt: 100, expiresAt: 200, consentGeneration: 1, consentedAt: 90 }), null)
++  assert.equal(createConsentedBarberAppointment({ appointmentId: 'x', actorId: ACTOR, currentLook: { ...look, hair: 'low-cut' },
++    issuedAt: 100, expiresAt: 200, consentGeneration: 1, consentedAt: 90 }), null)
++  assert.equal(createConsentedBarberAppointment({ appointmentId: 'x', actorId: ACTOR, currentLook: { ...look, accessories: ['glasses', 'sunglasses'] },
++    issuedAt: 100, expiresAt: 200, consentGeneration: 1, consentedAt: 90 }), null, 'look validation follows onboarding’s one-accessory-per-slot rule')
++})
++
++test('strict reload retains the offer unchanged and rejects extra, accessor, future, and impossible terminal fields', () => {
++  const state = offer(); assert.ok(state)
++  assert.deepEqual(readBarberAppointment(JSON.parse(JSON.stringify(state)), ACTOR), state)
++  assert.equal(readBarberAppointment({ ...state, passed: true }, ACTOR), null)
++  assert.equal(readBarberAppointment({ ...state, version: 2 }, ACTOR), null)
++  const accessor = { ...state }; Object.defineProperty(accessor, 'status', { get: () => 'offered' })
++  assert.equal(readBarberAppointment(accessor, ACTOR), null)
++  assert.equal(readBarberAppointment({ ...state, status: 'completed', result: null }, ACTOR), null)
++  assert.equal(readBarberAppointment(state, 'another-actor'), null)
++})
++
++test('acceptance is revision-, appearance-, consent-generation-, and expiry-bound', () => {
++  const state = offer(); assert.ok(state)
++  assert.equal(acceptBarberAppointment(state, ACTOR, state.revision + 1, look, 1, 101, SESSION).code, 'revision_conflict')
++  const altered = { ...look, outfitColor: 'red' }
++  assert.equal(acceptBarberAppointment(state, ACTOR, state.revision, altered, 1, 101, SESSION).state?.status, 'cancelled')
++  assert.equal(acceptBarberAppointment(state, ACTOR, state.revision, look, 2, 101, SESSION).state?.cancelReason, 'revoked')
++  assert.equal(acceptBarberAppointment(state, ACTOR, state.revision, look, 1, state.terms.expiresAt, SESSION).state?.cancelReason, 'expired')
++})
++
++test('the pure domain requires incomplete practice evidence; provenance remains a host responsibility', () => {
++  const state = active(), partial = startBarberPractice(barberLesson('basic')!.plan); assert.ok(partial)
++  const noWork = finishBarberAppointment(state, { actorId: ACTOR, expectedRevision: state.revision, sessionId: SESSION, now: 102,
++    currentLook: look, consentGeneration: 1, customerPresent: true, practiceSessionId: SESSION, practice: partial })
++  assert.deepEqual([noWork.code, noWork.effect, noWork.state?.status], ['practice_incomplete', null, 'active'])
++  const terminalShape = { ...partial, status: 'complete' as const, objectiveIndex: partial.plan.objectives.length }
++  assert.equal(readValidatedBarberPractice(terminalShape, barberLesson('basic')!.plan)?.status, 'complete',
++    'a structurally valid terminal save is not proof of origin; the HTTP adapter must read only its actor-bound persisted practice row, never request JSON')
++})
++
++test('valid active strokes produce one immutable appointment effect; a retained terminal row never emits it again', () => {
++  const state = active(), finished = finishBarberAppointment(state, { actorId: ACTOR, expectedRevision: state.revision, sessionId: SESSION, now: 200,
++    currentLook: look, consentGeneration: 1, customerPresent: true, practiceSessionId: SESSION, practice: completePractice() })
++  assert.ok(finished.ok && finished.state && finished.effect)
++  assert.deepEqual([finished.state.status, finished.state.result?.styleId, finished.effect.gameCashCredit], ['completed', APPOINTMENT_STYLE_ID, NPC_APPOINTMENT_GAME_PAYMENT])
++  assert.ok(Object.isFrozen(finished.effect) && Object.isFrozen(finished.effect.appearance))
++  if (finished.effect.appearance.accessories) assert.ok(Object.isFrozen(finished.effect.appearance.accessories))
++  const replay = finishBarberAppointment(finished.state, { actorId: ACTOR, expectedRevision: finished.state.revision, sessionId: SESSION, now: 201,
++    currentLook: finished.state.result!.look, consentGeneration: 1, customerPresent: true, practiceSessionId: SESSION, practice: completePractice() })
++  assert.deepEqual([replay.code, replay.effect, replay.state?.result], ['already_completed', null, finished.state.result])
++})
++
++test('revocation, disappearance, expiry, or changed complete appearance cancel before settlement', () => {
++  const scenarios = [
++    { currentLook: look, consentGeneration: 2, now: 200, customerPresent: true, reason: 'revoked' },
++    { currentLook: look, consentGeneration: 1, now: 200, customerPresent: false, reason: 'departed' },
++    { currentLook: look, consentGeneration: 1, now: 10_000, customerPresent: true, reason: 'expired' },
++    { currentLook: { ...look, outfitColor: 'red' }, consentGeneration: 1, now: 200, customerPresent: true, reason: 'appearance_changed' },
++  ] as const
++  for (const scenario of scenarios) {
++    const state = active()
++    const result = finishBarberAppointment(state, { actorId: ACTOR, expectedRevision: state.revision, sessionId: SESSION, now: scenario.now,
++      currentLook: scenario.currentLook, consentGeneration: scenario.consentGeneration, customerPresent: scenario.customerPresent,
++      practiceSessionId: SESSION, practice: completePractice() })
++    assert.deepEqual([result.state?.status, result.state?.cancelReason, result.effect], ['cancelled', scenario.reason, null])
++  }
++  const activeState = active()
++  assert.equal(cancelBarberAppointment(activeState, ACTOR, activeState.revision, 'disconnected', 102).effect, null)
++})
++
++
++test('every successful transition round-trips and refuses backwards trusted time', () => {
++  const offered = offer(); assert.ok(offered)
++  assert.deepEqual(readBarberAppointment(offered, ACTOR), offered)
++  assert.equal(acceptBarberAppointment(offered, ACTOR, offered.revision, look, 1, 99, SESSION).code, 'clock_reversed')
++  const accepted = acceptBarberAppointment(offered, ACTOR, offered.revision, look, 1, 101, SESSION)
++  assert.ok(accepted.ok && accepted.state)
++  assert.deepEqual(readBarberAppointment(accepted.state, ACTOR), accepted.state)
++  const rollbackFinish = finishBarberAppointment(accepted.state, { actorId: ACTOR, expectedRevision: accepted.state.revision, sessionId: SESSION,
++    now: 100, currentLook: look, consentGeneration: 1, customerPresent: true, practiceSessionId: SESSION, practice: completePractice() })
++  assert.equal(rollbackFinish.code, 'clock_reversed')
++  assert.equal(rollbackFinish.effect, null)
++  const rollbackCancel = cancelBarberAppointment(accepted.state, ACTOR, accepted.state.revision, 'declined', 100)
++  assert.equal(rollbackCancel.code, 'clock_reversed')
++  assert.equal(rollbackCancel.effect, null)
++  const cancelled = cancelBarberAppointment(accepted.state, ACTOR, accepted.state.revision, 'declined', 102)
++  assert.ok(cancelled.ok && cancelled.state)
++  assert.deepEqual(readBarberAppointment(cancelled.state, ACTOR), cancelled.state)
++  const finished = finishBarberAppointment(accepted.state, { actorId: ACTOR, expectedRevision: accepted.state.revision, sessionId: SESSION,
++    now: 200, currentLook: look, consentGeneration: 1, customerPresent: true, practiceSessionId: SESSION, practice: completePractice() })
++  assert.ok(finished.ok && finished.state)
++  assert.deepEqual(readBarberAppointment(finished.state, ACTOR), finished.state)
++  assert.equal(readBarberAppointment({ ...finished.state, acceptedAt: offered.terms.issuedAt - 1 }, ACTOR), null,
++    'a completed record cannot place acceptance before offer issuance')
++  const invalidReason = Reflect.apply(cancelBarberAppointment, undefined, [accepted.state, ACTOR, accepted.state.revision, 'not-a-reason', 102]) as { code: string; effect: unknown }
++  assert.equal(invalidReason.code, 'invalid')
++  assert.equal(invalidReason.effect, null)
++})

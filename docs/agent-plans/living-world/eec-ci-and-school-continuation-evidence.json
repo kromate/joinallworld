@@ -1,0 +1,423 @@
+{
+  "observedAt": "2026-10-09T23:04:28.276043+00:00",
+  "candidateSource": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "ciRun": 37998929401,
+  "ciUrl": "https://github.com/kromate/joinallworld/actions/runs/37998929401",
+  "decision": "EXACT_FULL_CI_ACCEPTED_NATIVE_STAGE_AND_RELEASE_OPEN",
+  "jobs": [
+    {
+      "id": 114051950167,
+      "node": "22",
+      "logBytes": 178671,
+      "logSha256": "5181283abd859b5bd7899b4df09724734226d28ed5047fec1b2875eb1349b12f",
+      "sourcePrinted": true,
+      "typecheck": {
+        "projects": 5,
+        "errors": 0,
+        "baselinedJavaScript": 0
+      },
+      "budgets": {
+        "LOADING_RAW": {
+          "bytes": 91469,
+          "cap": 92000
+        },
+        "LOADING_GZIP": {
+          "bytes": 35573,
+          "cap": 37000
+        },
+        "FIRST_PAINT_BROTLI": {
+          "bytes": 35699,
+          "cap": 36800
+        },
+        "STARTUP_RAW": {
+          "bytes": 614094,
+          "cap": 615000
+        },
+        "STARTUP_GZIP": {
+          "bytes": 222684,
+          "cap": 223000
+        },
+        "STARTUP_BROTLI": {
+          "bytes": 195571,
+          "cap": 195600
+        },
+        "SCENE_HOST_RAW": {
+          "bytes": 177152,
+          "cap": 192000
+        },
+        "SCENE_HOST_GZIP": {
+          "bytes": 66032,
+          "cap": 71000
+        },
+        "BASE_BODY_BROTLI": {
+          "bytes": 138098,
+          "cap": 300000
+        },
+        "CLIP_PACK_BROTLI": {
+          "bytes": 55111,
+          "cap": 200000
+        }
+      },
+      "buildSeconds": 52.68,
+      "conclusion": "success",
+      "notApplicable": [
+        "WARDROBE_ITEM_BROTLI",
+        "STREET_TILE_BROTLI"
+      ]
+    },
+    {
+      "id": 114051950324,
+      "node": "24",
+      "logBytes": 179301,
+      "logSha256": "66979814a9404c35dc59b21bda423db185531f38ceb9cd6d412c2c8c5c2c06bc",
+      "sourcePrinted": true,
+      "typecheck": {
+        "projects": 5,
+        "errors": 0,
+        "baselinedJavaScript": 0
+      },
+      "budgets": {
+        "LOADING_RAW": {
+          "bytes": 91469,
+          "cap": 92000
+        },
+        "LOADING_GZIP": {
+          "bytes": 35573,
+          "cap": 37000
+        },
+        "FIRST_PAINT_BROTLI": {
+          "bytes": 35699,
+          "cap": 36800
+        },
+        "STARTUP_RAW": {
+          "bytes": 614094,
+          "cap": 615000
+        },
+        "STARTUP_GZIP": {
+          "bytes": 222684,
+          "cap": 223000
+        },
+        "STARTUP_BROTLI": {
+          "bytes": 195571,
+          "cap": 195600
+        },
+        "SCENE_HOST_RAW": {
+          "bytes": 177152,
+          "cap": 192000
+        },
+        "SCENE_HOST_GZIP": {
+          "bytes": 66032,
+          "cap": 71000
+        },
+        "BASE_BODY_BROTLI": {
+          "bytes": 138098,
+          "cap": 300000
+        },
+        "CLIP_PACK_BROTLI": {
+          "bytes": 55111,
+          "cap": 200000
+        }
+      },
+      "buildSeconds": 46.05,
+      "conclusion": "success",
+      "notApplicable": [
+        "WARDROBE_ITEM_BROTLI",
+        "STREET_TILE_BROTLI"
+      ]
+    }
+  ],
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "productionTeaching": "OFF",
+  "remaining": [
+    "ON active teaching native and OFF issued reader",
+    "independent frozen release review and prospective live observation",
+    "school recovery/parking/qualification and complete original programme"
+  ],
+  "ui": {
+    "jobId": 114051950261,
+    "logBytes": 264121,
+    "logSha256": "502daa5bf267343c51d5becd67d19db40805c0080d83c4095699a9035618cc4d",
+    "groupsNotSummed": [
+      {
+        "tests": 446,
+        "pass": 446,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 57742.921549
+      },
+      {
+        "tests": 46,
+        "pass": 46,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 9975.915509
+      },
+      {
+        "tests": 90,
+        "pass": 90,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 29787.728613
+      },
+      {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 11272.394672
+      },
+      {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 4244.457157
+      }
+    ],
+    "limitation": "Source/API UI regressions do not replace native play, phone or multiplayer acceptance."
+  },
+  "school": {
+    "source": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+    "receiptSha256": "e71538c07c991f2a9681e42e4f97159de0858c7c44021510675114b0164f1016",
+    "operatorReceiptSha256": "5a46c86f95c7edad1d8c21fed1c45e5d4dfc5a3395e31e1d5f6b300e124219ce",
+    "decision": "CHECKPOINT_PRESERVED_NOT_PASSED",
+    "initial": {
+      "checkpoint": "3 of 3",
+      "assessment": "pending",
+      "paused": true,
+      "speedKmh": 0,
+      "zoneDistanceM": 27.5
+    },
+    "final": {
+      "checkpoint": "3 of 3",
+      "assessment": "pending",
+      "paused": true,
+      "speedKmh": 0,
+      "zoneDistanceM": 28.3,
+      "qualification": "not earned",
+      "starterPermission": "still requires passed qualification; not claimed"
+    },
+    "stageExitCode": 0,
+    "childGone": true,
+    "storeRetained": true,
+    "sameOriginalSevenFields": true,
+    "limitations": [
+      "The observed recovery attempt did not regain the road; this is a reproducible symptom, not a confirmed root-cause diagnosis.",
+      "No pass, parking dwell, starter once receipt, physical touch or real-device claim.",
+      "No fresh money/home canonical DB proof in this window; visible balance/home matched prior screen."
+    ],
+    "minimalDiagnostic": {
+      "observedAt": "2026-10-09T22:45:46.423148+00:00",
+      "receiptSha256": "3231724f27b1391bd654f43219a67f34fb307a48e7b4faffbf3e333ced3a7c3b",
+      "driving": {
+        "courseId": "district-practice",
+        "courseVersion": "1",
+        "checkpointIndex": 2,
+        "position": {
+          "x": -1.5130892310888941,
+          "z": 35.439339601278434
+        },
+        "heading": -1.3931110523793535,
+        "speed": 0,
+        "score": 0,
+        "status": "paused",
+        "assessment": "pending",
+        "nextSequence": 1031,
+        "lastAcceptedPacketSequence": 1030,
+        "lastAcceptedPacketCode": "controls_accepted",
+        "revision": 1038,
+        "lastInputAt": 1791584980391,
+        "updatedAt": 1791584980391
+      },
+      "identityLimitation": "Original stage/operator checkpoint and one unique retained course agree; exact actor UUID not exposed or independently compared in this diagnostic. Initial entries-table/name join found zero because C1 keeps livingWorld in collection JSON.",
+      "readOnly": true,
+      "passThreshold": 70,
+      "decision": "The unique matching retained row has score0; recovery cannot legitimately award a passed assessment. No score restoration permitted."
+    }
+  },
+  "recoveryServiceAcceptance": {
+    "baseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "packetPatchSha256": "fae9081ecae2bbab730d97e7ac3a20fa023f5e8f68af1e7224c19972b2178a09",
+    "resultFileSha256": "b376af770f583b39718c0f6ce789f2ebe137b41db8447d97b5340e92ad30f9d8",
+    "completeFileByteEquality": true,
+    "ownerExecutionSession": 56312,
+    "ownerReportedNode": "24",
+    "exitCode": 0,
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1726.953041,
+    "logBytes": 245,
+    "logSha256": "aed44f6b06ceaca00ce489ffaa66beb2b4c9a91bc6149ad51f2936db7da74927",
+    "scope": "Naturally initialized isolated actor, server control course to final checkpoint, public pause/GET/resume then passed finish, public cash/ledger unchanged. Synthetic server clock and route-following controller; not retained score0 actor, native controls, cold SQLite restart or production qualification.",
+    "failedTransportPreserved": {
+      "v2PatchSha256": "a077c6d101613271824c3d11c8403958f6374feedb2b60acc24d5be56affc8e4",
+      "actualOutcome": "Owner execution terminal1 at TS syntax parse; no gameplay test ran. Incomplete manual hunk omitted trailing assertions/closing lines. Root regenerated complete patch with byte equality."
+    }
+  },
+  "terminalCi": {
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "requiredPassed": 14,
+    "expectedFastSkipped": 2,
+    "metadataSha256": "8a14be867c3ef0a7a7abcfece14f764932d8bebe4c5ec2483ef8d55fbc88243b",
+    "jobs": [
+      {
+        "id": 114051949992,
+        "name": "host-acceptance",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950111,
+        "name": "full-worker (22)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950167,
+        "name": "full (22)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950182,
+        "name": "integration-repairs",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950207,
+        "name": "release-policy",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950235,
+        "name": "full-worker (24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950261,
+        "name": "ui-regressions",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950282,
+        "name": "full-node (24, tooling)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950295,
+        "name": "full-node (22, host)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950298,
+        "name": "full-node (22, game)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950324,
+        "name": "full (24)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950327,
+        "name": "full-node (24, host)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950399,
+        "name": "full-node (22, tooling)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051950481,
+        "name": "full-node (24, game)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 114051951610,
+        "name": "build-and-smoke-fast",
+        "status": "completed",
+        "conclusion": "skipped"
+      },
+      {
+        "id": 114051951794,
+        "name": "typecheck-fast",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ]
+  },
+  "additionalOfficialLogs": {
+    "host24": {
+      "jobId": 114051950327,
+      "logBytes": 329615,
+      "logSha256": "01b7806dac81c7a8c8516effdda2993e82fadc217b9292eabb631112d2576171",
+      "summary": {
+        "tests": 1030,
+        "pass": 1027,
+        "fail": 0,
+        "skipped": 3
+      },
+      "conclusion": "success"
+    },
+    "worker24": {
+      "jobId": 114051950235,
+      "logBytes": 220659,
+      "logSha256": "d117620579427a33656219d6b161f69f85ad655dcb6a1bba49895ad919ecc677",
+      "summary": {
+        "tests": 157,
+        "pass": 157,
+        "fail": 0,
+        "skipped": 0
+      },
+      "conclusion": "success",
+      "scope": "Real Worker restart coverage includes active lesson, authored answers, once receipt and completed shift; not native browser acceptance."
+    },
+    "game24": {
+      "jobId": 114051950481,
+      "logBytes": 526891,
+      "logSha256": "ff7861c19ead940c26f41b367dd2a456bc44b649acf673bb7e6964a08862cb54",
+      "summary": {
+        "tests": 2610,
+        "pass": 2609,
+        "fail": 0,
+        "skipped": 1
+      },
+      "conclusion": "success"
+    }
+  },
+  "npcBarberPureAcceptance": {
+    "baseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "manifestSha256": "7ec9a8fa1dbf9881e743ab71e586ea3730ca635ba7eddfad9f2479d222a6143b",
+    "patchSha256": "6a779aa7cb8cf406243d776ba24a3d168a9bbba9fe208bd84e650b179b7b1066",
+    "node": 24,
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 110.736875,
+    "logSha256": "e66b83ca26d1bfdcfa0c920dd1c42ebb831186cdc4fb6571c29de99eef99c762",
+    "scope": "Pure domain only; no host provenance, durable money settlement, NPC appearance rendering, native interaction or deployment accepted."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "baseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "scope": "versioned reverse-control proposal only; no shared source changes",
+  "testFirstPatch": {
+    "file": "reverse-road-edge-regression.patch",
+    "sha256": "1eec18cb72ebfb2c89f73501a3e30026515503eec01e91515dec3c991661e0ce",
+    "applyCheck": 0
+  },
+  "implementationPatch": {
+    "file": "reverse-gear-implementation.patch",
+    "sha256": "9482e2cdff947f726298040ee32c6102623277ee67ca1d05c84955999901f1d7",
+    "applyCheckAfterTestFirst": 0,
+    "apply": 0
+  },
+  "candidateFiles": {
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "a60386b1b60ee2ad6fde6b0451b068b91dcc56a8949525a7d808ab7806fd4a6f",
+    "server/living-world/driving-service.ts": "e059779890db10ae757e553e279cf29096088b8ddda50319428d7fdd38e4c837",
+    "server/living-world/driving-service.test.ts": "766ae32e94682de304c3f5aa4f0e8ef123e352917b031045d4a6a9b973c0429b"
+  },
+  "sequentialCandidateByteEquality": true,
+  "redAndCandidatePrimaryRegressionIdentical": true,
+  "testsExecuted": false,
+  "buildExecuted": false,
+  "browserOrNativeAcceptance": false,
+  "notes": [
+    "The test-first failure was not executed; the baseline strict reader rejects the gear field.",
+    "The implementation is a candidate; exactKeys and reverse checkpoint-entry state handling were repaired after source review.",
+    "Reverse entry into an armed checkpoint never awards progress; an inside endpoint becomes blocked until exit, with zero dwell, and remains valid through strict v2 read and next step.",
+    "The exact native cause and journey UUID remain unproven.",
+    "The observed retained checkpoint score is 0 below the 70-point threshold; reverse must not forgive it, so this mechanic alone cannot earn qualification on that row.",
+    "Deployment enablement requires independent migration review and a tested compatible rollback reader image; this packet does not approve activation.",
+    "The generic pure reader defaults to strict v1; only the driving service opts into the v2 record reader."
+  ]
+}

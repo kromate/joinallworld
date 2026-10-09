@@ -1,0 +1,69 @@
+{
+  "baseline": {
+    "commit": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "checkout": "/Users/anthonyakpan/Desktop/allworld-integration"
+  },
+  "status": "unapplied proposal only; Integration checkout unchanged; tests/compiler/build/server/browser not run",
+  "proposal_policy": {
+    "customer": "proposal-only fictional ID; actual NPC instance and renderer authority require GRAPHICS approval",
+    "styleId": "man-low-cut-v1 is an existing body-compatible catalogue hair ID and mannequin plan; NPC model compatibility remains unapproved",
+    "gameCashPayment": 80,
+    "limit": "one version-1 appointment per actor, permanent terminal row, NPC reservation/CAS; no issuance or settlement is live"
+  },
+  "trust_chronology": "Persist acceptedAt/updatedAt and enforce monotonic server time. Pure BarberPractice reader validates state shape/plan, not provenance. Host must ignore public practice/result fields and read a fresh actor-bound appointment session, distinct from an already claimed mannequin lesson.",
+  "superseded_v1": {
+    "module_sha256": "42ce15e50a27aec4a1ffd7ebaa161728bf5d6b3a8c540d2cd04d97f859178254",
+    "test_sha256": "a0f020f959c7308a398e8b1520714d82a97a002f7a00e1537b62dde8486d7abd",
+    "patch_sha256": "ca25351d303220ee60758c9db3601e738d05bda49eda7209214001163790a2db",
+    "reason": "replaced after chronology/cancellation validation review and pure-vs-host provenance correction"
+  },
+  "pinned_source_blobs": {
+    "docs/agent-plans/living-world/DESIGN.md": "254304238d544f22d81ff8d5e2769574b06848d9",
+    "docs/agent-plans/living-world/CONTRACTS.md": "1bcd44e33cf576d60f0cfe5bf0809692390e5bba",
+    "src/game/living-world/barber.ts": "1a1878b9c65b01caff36f65f691c1772bbedb2fb",
+    "src/game/living-world/barber-catalogue.ts": "d813e3aa987fe0576711f426c7cc1e4f77519031",
+    "src/game/content/traits.ts": "a833c9a20586ec53acf274483162daf228b97b3c",
+    "src/game/systems/onboarding.ts": "b70ab72316785f0f1728214fa8b11ec5f78de8a4",
+    "src/game/systems/living-world.ts": "726830d6a7e727725877f61c5305410792ad76cd",
+    "server/living-world/barber-service.ts": "4794d11188af0f7f5e24f8825dcf57d33c0b02e8",
+    "server/living-world/barber-service.test.ts": "0d1caed1f8b06172d7c9d98b3fede0e1ce2925c1",
+    "server/routes/living-world.ts": "74382eb92d095432a9b902eb4a8b707d6af49169",
+    "server/keyed.ts": "a9c69e449c4cdd2f8a6aa021b82055bbecec4f34",
+    "server/living-world/privacy.ts": "7847956b512091bb8a41b1576650e88418903d2d",
+    "server/accounts/service.ts": "ffe185b3fea653ba0a56dbb8e3b2575f8462737e",
+    "src/app/features/living-world/BarberApp.vue": "b546869d0986b866f56546ff4a2da0ccc00147f1",
+    "server/living-world/restock-service.ts": "31e3b203f7fb3450fc97579d7bfd48ba15780a57",
+    "server/living-world/rental-service.ts": "09a12e80197314509d3260127e8dc7088c940c89"
+  },
+  "proposal_artifacts": {
+    "barber-appointment.patch": {
+      "sha256": "6a779aa7cb8cf406243d776ba24a3d168a9bbba9fe208bd84e650b179b7b1066",
+      "bytes": 31084
+    },
+    "proposal.md": {
+      "sha256": "f8ddf2371f2b560bec710734dd93833560f4b2e03c9d4c2a23ba4f9a9322995c",
+      "bytes": 7915
+    },
+    "src/game/living-world/barber-appointment.ts": {
+      "sha256": "97b69c34994277eeefb3e65c541f026dc1da6f434f8400388bdbf8508bac5d95",
+      "bytes": 19755
+    },
+    "src/game/living-world/barber-appointment.test.ts": {
+      "sha256": "b00ca3ac883b70190df39d58c9b8475845b991e11b04e67afa0b58e27e6e28c4",
+      "bytes": 10498
+    }
+  },
+  "remaining_gates": [
+    "GRAPHICS approval of NPC identity, model-compatible style, and durable appearance read/write/render authority",
+    "server-derived consent/presence/revocation generation and one-customer reservation",
+    "Sol-owned keyed row, route/protocol, account privacy lifecycle and same-transaction appearance+fixed80 wallet action",
+    "host HTTP tests for forged fields, distinct fresh appointment session vs mannequin claim, same/new request IDs, cross-actor races, rollback, Node/Worker restart and account lifecycle",
+    "native client/browser proof; no current rendered NPC or live economy acceptance"
+  ],
+  "chronology": "Persist acceptedAt and updatedAt. Reader requires acceptedAt within [issuedAt, expiresAt), and updatedAt >= acceptedAt in every accepted/cancelled/completed state; each operation enforces monotonic trusted time. Corrupt-completed chronology fixture added, unrun.",
+  "last_review_correction": {
+    "source_sha256": "97b69c34994277eeefb3e65c541f026dc1da6f434f8400388bdbf8508bac5d95",
+    "test_sha256": "b00ca3ac883b70190df39d58c9b8475845b991e11b04e67afa0b58e27e6e28c4",
+    "change": "completed records cannot backdate acceptedAt before issuedAt"
+  }
+}

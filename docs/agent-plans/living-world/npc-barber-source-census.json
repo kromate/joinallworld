@@ -1,0 +1,80 @@
+{
+  "baseline": {
+    "repository": "/Users/anthonyakpan/Desktop/allworld-integration",
+    "commit": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "purpose": "read-only source seam census"
+  },
+  "sourcePins": {
+    "server/living-world/barber-service.ts": "4794d11188af0f7f5e24f8825dcf57d33c0b02e8",
+    "server/living-world/barber-service.test.ts": "0d1caed1f8b06172d7c9d98b3fede0e1ce2925c1",
+    "src/app/features/living-world/BarberApp.vue": "b546869d0986b866f56546ff4a2da0ccc00147f1",
+    "src/app/features/living-world/barberReply.ts": "2078902b86e074e3fc139e4b248ef354de695203",
+    "src/types/living-world-barber.ts": "be6986469e23d9944061cfb7b36d50227467ae7f",
+    "src/game/living-world/barber-catalogue.ts": "d813e3aa987fe0576711f426c7cc1e4f77519031",
+    "src/game/living-world/barber.ts": "1a1878b9c65b01caff36f65f691c1772bbedb2fb",
+    "src/game/cities/lagos/regulars.ts": "5757dfbe53c28208503d5041fcf2653376e1c73e",
+    "src/game/systems/social.ts": "fdcd9cda16583d3fe07b94a07852cc954e79120f",
+    "src/scene/crowd.ts": "3e31eb098bf0e216db0201215259325e541af31b",
+    "src/scene/venue-scenes.ts": "e14035777a3467e6fab59be6861001307e9632ba",
+    "src/scene/characters.ts": "3f455a23fd5ffea4994ee6627083c65cb1f2e1df",
+    "src/app/state/app.ts": "edee33d622e6169e3ac8601a8a6c2d285af0c2ba",
+    "src/types/content.ts": "0c3a6f16ad595965833fd9552bfcf9c8cac22af5",
+    "server/living-world/privacy.ts": "7847956b512091bb8a41b1576650e88418903d2d",
+    "server/accounts/service.ts": "ffe185b3fea653ba0a56dbb8e3b2575f8462737e"
+  },
+  "callableSeams": [
+    {
+      "path": "server/living-world/barber-service.ts",
+      "exports": "createBarberService(ctx) -> { current, start, input, pause, resume, claim, upgrade }; readValidatedBarberRecord(value, publicId)",
+      "relevantLines": [23, 32, 48, 56, 145, 151, 155, 167, 172, 199, 201, 245, 246, 293, 294, 333, 399]
+    },
+    {
+      "path": "src/types/living-world-barber.ts",
+      "exports": "BarberResultView { lessonId, styleId, earnedAt }; BarberResponse; existing lesson/control/lifecycle/claim/upgrade request contracts",
+      "relevantLines": [6, 32, 36, 43]
+    },
+    {
+      "path": "src/app/features/living-world/barberReply.ts",
+      "exports": "readBarberReply(unknown): BarberApiReply | null",
+      "relevantLines": [31, 73]
+    },
+    {
+      "path": "src/scene/crowd.ts",
+      "exports": "crowdList(input): CrowdEntry[]; CrowdEntry.look is renderer-facing but only players currently receive a look",
+      "relevantLines": [27, 50, 54, 74]
+    },
+    {
+      "path": "src/scene/venue-scenes.ts",
+      "exports": "SceneEntry.setCrowd(people); rebuilds merged static crowd from changed entries",
+      "relevantLines": [780, 800, 1009, 1012]
+    },
+    {
+      "path": "src/scene/characters.ts",
+      "exports": "drawCrowd(batch, people) -> tags; forwards person.look to drawAvatar",
+      "relevantLines": [1627, 1635]
+    }
+  ],
+  "findings": {
+    "currentBarberResult": "Mannequin-only: fixed lesson resultStyleId/look; look is stored privately, omitted from result response; the UI confirms only mannequin style/earnedAt.",
+    "namedNpcAppearanceWriteOrReservation": false,
+    "existingRendererCanDrawLook": true,
+    "currentSocialNpcLookTransport": false,
+    "atomicNpcAppointment": false,
+    "targetNpcConsentDefined": false,
+    "targetStyleApproved": false,
+    "proposedNpcSettlementAmount": "80 fictional game cash is a requested/proposed policy; source only proves basic mannequin lesson payout 80. Not an active NPC payment."
+  },
+  "privacy": {
+    "actorBarberSlice": "livingWorld.barber[publicId]",
+    "includedInAccountLifecycle": true,
+    "rebind": "validated same-character barber row changes only account owner",
+    "erase": "known actor rows removed on explicit erase; retained active actor row owner is rebound to guest on erase:false",
+    "proposedSharedNpcAppearance": "must be separate public world state from private actor consent/terminal receipt; no existing schema or implementation"
+  },
+  "verification": {
+    "testsRun": false,
+    "compilerRun": false,
+    "runtimeOrBrowserRun": false,
+    "currentGraphicsWorktreeUsedAsApprovalEvidence": false
+  }
+}

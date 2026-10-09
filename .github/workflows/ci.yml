@@ -124,7 +124,7 @@ jobs:
 
       - name: Existing scene adapter and atlas checks
         run: >-
-          node --experimental-strip-types --import ./scripts/node-scene-css.mjs
+          node --experimental-strip-types --import ./scripts/node-scene-css.ts
           --test --test-concurrency=1
           src/scene/city-scenes.test.ts src/map3d/geo/atlas.test.ts
 

@@ -31,7 +31,8 @@ test('the home scene imports only the gate; the body module is a dynamic import 
   const strip = (code: string) => code.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
   const home = strip(readFileSync(new URL('../home-scene.ts', import.meta.url), 'utf8'));
   const fromBody = [...home.matchAll(/^\s*import\s+(type\s+)?[^'";]*?from\s+['"](\.\/body\/[^'"]+)['"]/gm)].map((match) => `${match[1] ? 'type ' : ''}${match[2]}`);
-  assert.deepEqual(fromBody.sort(), ['./body/gate.ts', 'type ./body/skinned.ts']);
+  assert.deepEqual(fromBody.filter((entry) => !entry.startsWith('type ')), ['./body/gate.ts'], 'only the device gate is imported at runtime; support descriptors are erased types');
+  assert.ok(fromBody.includes('type ./body/skinned.ts'));
   assert.doesNotMatch(home, /import\(/, 'no dynamic import in the scene itself');
   const gate = strip(readFileSync(new URL('./gate.ts', import.meta.url), 'utf8'));
   assert.doesNotMatch(gate, /^\s*import\s/m, 'gate.ts has no static imports');

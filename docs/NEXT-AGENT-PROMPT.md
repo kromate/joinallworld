@@ -4,10 +4,13 @@ Continue Allworld from this handoff. Finish integration, the remaining verified 
 
 Repository: https://github.com/kromate/joinallworld
 Delivery branch: codex/allworld-integrated-preview
+Confirmed pushed handoff commit: 74016671 (9 October 2026 snapshot). Fetch the latest branch and verify any later changes before relying on old evidence.
 Verified runtime: b9de1ab7599565c8925759ebb512bf75ee7db682
 Exact passing CI: https://github.com/kromate/joinallworld/actions/runs/37909238070
 Integrated local checkout: /Users/anthonyakpan/.codex/worktrees/neighbourhood-life/JoinAllworld
-The dirty /Users/anthonyakpan/Desktop/JoinAllworld checkout is user-owned; do not reset or deploy it. If working on another system, fetch the delivery branch into a clean checkout.
+The dirty /Users/anthonyakpan/Desktop/JoinAllworld checkout is user-owned; do not reset or deploy it. If working on another system, clone https://github.com/kromate/joinallworld.git with branch codex/allworld-integrated-preview, or fetch that branch into an existing repository without resetting dirty changes. Mac paths above are historical context, not required paths on your new machine. Use Node24 and the pinned lockfile/deployment tooling. GitHub/provider authentication must be available securely on the new machine; local logins do not transfer through Git.
+
+All committed source, handoff docs, safe screenshots and public research queues are on GitHub. Private /tmp captures, QA databases/actors, credentials and local browser state are not. Create fresh isolated disposable test actors/stores on the new machine. Never recreate old cash values by editing production saves or raw saved JSON. Where funding is needed, use controlled local actual transaction/wallet/effect/receipt paths or normal game actions. If credentials/private artifacts are missing, identify the exact limitation and continue independent source work; do not fabricate evidence or switch the production target.
 
 Read these first:
 - docs/APP-UI-INTEGRATION-HANDOFF.md: exact source/checkpoint inventory and release gates.
@@ -19,6 +22,10 @@ Read these first:
 - Fresh main docs/AGENT-COORDINATION.md, docs/DEPLOYMENT-HANDOFF.md and deploy/README.md.
 
 Apply governing AGENTS.md and technical-autopilot/model-routing guidance. Use bounded cheaper source workers when available; Astra owns interactive browser/computer work and consequential money/privacy decisions. A known provider quota failure is not fixed by model roulette. Give workers disjoint file ownership. Heavy local concurrency1, heap1536MiB, Vite minifier maxWorkers1; use scripts/agent-slot.ts and current coordination rules. Preserve unrelated processes and user tabs. No paid upgrades or new production database/namespace.
+
+Design requirements apply throughout: use frontend-design, web-design-guidelines and principle-exhaust-the-design-space where available under governing skill instructions. Research real app references. Keep phone app icons rendered3D artwork, not substitute SVG line icons. Make interiors/cards/headers/forms readable and accessible, with distinct useful colors; remove dull gradients, blur and unnecessary shadows. Preserve improved OG/favicon/share artwork and the playful lightweight colorful loading background. The loader may use SVG drawings, but phone app icons remain3D raster artwork. Keep unnecessary decorative animation off the loading screen. Preserve guest-first onboarding and consenting real-player Family replacement. Fix any reproduced incidental mobile spacing/overflow/contrast/interaction glitch while testing, then continue.
+
+Work through finite verified milestones. Do not declare the programme complete or stop just because one milestone passes. Distinguish current implementation, local acceptance, integration, provider acceptance and live production. External blocks require exact evidence and continuation of independent work, not repeated identical retries.
 
 1. Integrate and deliver the completed UI work first.
 
@@ -63,6 +70,8 @@ Every unit needs authoritative types, readable accessible UI, proper forms/cards
 
 5. Finish primary-source research without exaggerating coverage.
 
+Original user-linked chat announcement: https://x.com/Shalom_HeyEliy/status/2108119951014055940
+Author: https://x.com/Shalom_HeyEliy
 Original launch: https://x.com/Shalom_HeyEliy/status/2105541070486470749
 Final capture739 observed replies/254 scheduled traversals,6 new branch pages,58 image-status posts,28 residual URLs with13 scoped observations/15 not revisited. The named Loading timeline was Trending in scoped observations; unnamed conversation indicators are separate. Stable articles or counters do not establish tree exhaustion. Root sort options Relevant, Recent, Likes; no Recent sweep was performed. Continue known queues, then inspect Recent and remaining relevant announcements under the original read-only research scope.
 

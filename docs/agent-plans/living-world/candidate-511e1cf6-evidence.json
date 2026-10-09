@@ -3,23 +3,31 @@
   "sourceSha": "511e1cf6e1e19110e09372d56075b28da64c8439",
   "runId": 37884258018,
   "url": "https://github.com/kromate/joinallworld/actions/runs/37884258018",
-  "observedAt": "2026-10-09T04:33:04Z",
+  "observedAt": "2026-10-09T04:38:00Z",
   "status": "in_progress",
   "fullNode24": {
     "jobId": 113670600410,
     "status": "in_progress",
-    "step": "typecheck"
+    "step": "npm test",
+    "compiler": "pass",
+    "build": "pass",
+    "unchangedDownloadBudgets": "pass",
+    "edge": "pending"
   },
   "fullNode22": {
     "jobId": 113670600761,
     "status": "in_progress",
-    "step": "typecheck"
+    "step": "npm test",
+    "compiler": "pass",
+    "build": "pass",
+    "unchangedDownloadBudgets": "pass",
+    "edge": "pending"
   },
   "releasePolicy": "pass",
   "providerTimeoutMinutes": 25,
   "supersedeWhileLive": false,
   "priorScopedEvidence": "candidate-615638dc-evidence.json",
-  "exactCompilerFullWorker": "pending",
+  "exactCompilerFullWorker": "canonical compiler/build/size pass both22/24; full npm test live and edge pending",
   "stagingGameplaySaveContinuity": "not accepted",
   "routeAuthorized": false,
   "programmeDeployments": 0,

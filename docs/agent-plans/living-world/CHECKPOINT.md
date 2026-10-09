@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Current full gate and next active-learning batch — 9 October 2026, 04:38 UTC
+
+Exact511e1cf6 [full CI37884258018](https://github.com/kromate/joinallworld/actions/runs/37884258018) remains verified LIVE. Both Node22 and Node24 now PASS canonical compiler/build/unchanged download budgets and are running full npm test; Worker stages pending. This supersedes the compiler-pending statements in04:33. Preserve the same run handle; no superseding dispatch. No staging or programme/Goalmatic production deployment occurred; production remains healthy a44629b3, not gameplay/save acceptance.
+
+Selected next [active-learning batch](active-learning-batch.md) follows actual source audits: live multiplayer justice already has active decisions but lacks guided NPC evidence/review practice; existing cpe-101 assignments finish after45seconds with a random server mark. Luna driving owns only new justice-practice pure module/test, Luna integration owns only its new server service/test, and Luna journeys owns only new campus assessment-practice module/test. Sol owns shared contract/routes/privacy/account/save/UI integration and releases. These modules are unregistered/unaccepted work; no new law privilege, case publication or cash effect. Preserve completed/old saved campus actions and existing justice operations. Root local intensive resources remain absent; current warning/swap churn defers new memory-heavy work. Whole programme/phase/A1–A10 requirements remain OPEN.
+
+Next: collect exact511 terminalfull/Worker evidence and measured22 pagination data; review workers' bounded source handoffs, resolve campus shared-path ownership before integration, implement connected UI/persistence/compatibility, then test actual mobile/desktop/staging/save journeys and release through existing controls. Native goal stays ACTIVE; saved records do not execute after runtime stops.
+
 ## Latest verified status — 9 October 2026, 04:33 UTC
 
 This supersedes older current/live statements below. Prior goal turn made progress by publishing1e0f95df and collecting exact298 CI. This turn made progress through reviewed runtime5b7657e5, mapped connector/scene regression evidence, city batching, actual pagination measurements and exact full dispatch. Native goal remains ACTIVE; no programme or Goalmatic deployment.

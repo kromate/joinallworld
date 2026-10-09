@@ -10,4 +10,9 @@ export const FOREIGN_ADMITTED_CITIES = Object.freeze([
   Object.freeze({ id: "cape-town", countryISO: "za" }),
   Object.freeze({ id: "cotonou", countryISO: "bj" }),
   Object.freeze({ id: "dakar", countryISO: "sn" }),
+  Object.freeze({ id: "cairo", countryISO: "eg" }),
+  Object.freeze({ id: "rabat", countryISO: "ma" }),
+  Object.freeze({ id: "kigali", countryISO: "rw" }),
+  Object.freeze({ id: "kampala", countryISO: "ug" }),
+  Object.freeze({ id: "lusaka", countryISO: "zm" }),
 ] as const)

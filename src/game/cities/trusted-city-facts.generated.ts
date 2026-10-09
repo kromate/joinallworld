@@ -14,6 +14,11 @@ const FOREIGN_TRUSTED_CITY_FACTS = [
   ["cape-town","Cape Town","foreign","za",18.433042,-33.918065,1],
   ["cotonou","Cotonou","foreign","bj",2.404355,6.36298,1],
   ["dakar","Dakar","foreign","sn",-17.475076,14.717778,1],
+  ["cairo","Cairo","foreign","eg",31.248022,30.051906,1],
+  ["rabat","Rabat","foreign","ma",-6.836408,34.025307,1],
+  ["kigali","Kigali","foreign","rw",30.058586,-1.951644,1],
+  ["kampala","Kampala","foreign","ug",32.581378,0.318605,1],
+  ["lusaka","Lusaka","foreign","zm",28.281382,-15.414698,1],
 ] satisfies readonly TrustedCityFactsRow[]
 
 export const TRUSTED_CITY_FACTS_ROWS: readonly TrustedCityFactsRow[] = Object.freeze([

@@ -1,5 +1,15 @@
 # Living-world implementation checkpoint
 
+## Latest status — 9 October 2026, 09:50 UTC
+
+Native goal remains ACTIVE. Published source HEAD is **3205c7f6eff72b0ff1c10e611084e2d332f4dd9b**. Its browser barrier repair no longer requires an optional watch-event filename, and adds bounded diagnostics without changing assertions or watchdogs. The previous timeout's cause remains unproven. Source review and syntax checks passed; execution acceptance is pending. [Exact CI37913845078](https://github.com/kromate/joinallworld/actions/runs/37913845078) was dispatched and verified QUEUED at this exact SHA, with fast/UI/startup checks enabled and full checks disabled. Earlier cae89d3c remains terminal FAIL: 432/432 UI and 15/15 smoke pass, learning105/106 with one browser barrier timeout; byte caps pass. Full9b evidence applies only to that older baseline.
+
+Luna driving handed off only new mapped-sweep.ts and mapped-sweep.test.ts: analytical closed-sedan support checks and conservative static-building checks. Tests are unrun, files uncommitted, and independent Luna review is now assigned. They never authorize boarding or routes. Preserve six older untracked receipts and all primary work.
+
+Fresh 09:50 UTC production health remains ok=true, build **joinallworld-a44629b38be751a9ad446051564**, serverTime1791539413720. No programme or Goalmatic staging/deployment. Earlier live Ayo/reload/390-pixel viewport evidence remains qualified current-production evidence; the connected first journey, physical mobile/multiplayer, candidate staging, compatible saves and release observation gates remain open. Goalmatic live adapter remains disabled pending real target/schema/consent contracts.
+
+09:47 memory monitor reports WARNING2 and continuing swap churn; causation is unconfirmed. Optional local heavy starts remain paused; no process/tab intervention. Next bounded action: collect exact3205 CI results and diagnose any remaining failure using actual trace evidence, then review and remotely validate the handed-off mapped sweep. Full candidate checks and exact-SHA staging follow only after preceding checks pass. This checkpoint does not execute while the runtime is stopped.
+
 ## Current checkpoint — 9 October 2026, 09:36 UTC
 
 Native goal ACTIVE/unbounded. The preceding status-only turn was no progress; authoritative follow-up revalidated the available source handoff and live state, then completed independent review, published repairs, collected changed-source CI and played the actual production mission. Previously verified Sol gpt-6.1-sol/high and the three existing gpt-6-luna/high workers retain their assignments. Sol alone integrates/releases; WORLD alone owns the shared uploader. The isolated codex/living-world worktree preserves primary source/assets/saves and six older untracked evidence files.

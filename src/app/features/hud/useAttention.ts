@@ -13,6 +13,7 @@ import { useApp } from '../../state/app.ts'
 import { COACH_KEY, coachHints } from './coachModel.ts'
 import { tour } from '../tour/tourState.ts'
 import { mapUi } from '../travel/travelState.ts'
+import { social } from '../social/useSocial.ts'
 
 /** How many times each situational pointer has been acted on (it retires after a few: attention.ts TAPER). */
 export const SEEN_KEY = 'joinallworld-hints-seen'
@@ -25,7 +26,7 @@ function readSeen(): Record<string, number> {
 
 export function useAttention() {
   const { game, shell } = useApp()
-  const off = computed(() => !coachHints.value)
+  const off = computed(() => !coachHints.value || Boolean(social.me?.visiting))
   const step = shallowRef<NextStep | null>(null)
   let attention: Attention | null = null
   let lastClick: (Point & { at: number }) | null = null
@@ -52,8 +53,9 @@ export function useAttention() {
   }
   /** After the DOM the ring points into has been drawn (the venue panel, or the phone once it is open). */
   function point(): void {
+    for (const node of document.querySelectorAll('#life-dialog .is-coach')) node.classList.remove('is-coach')
     // The walkthrough is talking: no ring, no bubble, and nothing counted as acted on. They come back when it ends.
-    if (tour.active) { for (const node of document.querySelectorAll('#life-dialog .is-coach')) node.classList.remove('is-coach'); attention?.clear(); step.value = null; return }
+    if (tour.active || off.value) { attention?.clear(); step.value = null; stepId = ''; return }
     const next = evaluate()
     // A step that was showing and is now gone (or replaced) was acted on: count it, so the situational pointers taper off.
     if (stepId && stepId !== 'goal' && stepId !== next?.id) {
@@ -62,7 +64,6 @@ export function useAttention() {
     }
     stepId = next?.id ?? ''
     step.value = next
-    for (const node of document.querySelectorAll('#life-dialog .is-coach')) node.classList.remove('is-coach')
     if (!attention) return
     const coach = next?.id === 'goal' && next.bubble
     const recent = lastClick && Date.now() - lastClick.at < 6000 ? lastClick : null

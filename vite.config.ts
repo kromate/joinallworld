@@ -172,11 +172,10 @@ export default defineConfig({
   // Three.js is one 700 kB chunk on purpose (fetched by the scene, never part of the first load): the size warning starts above it.
   build: {
     chunkSizeWarningLimit: 800,
-    // Terser, two passes: the same program in about 3% fewer gzip bytes than the default esbuild minifier, for every chunk (the startup
-    // is the part that has a budget). It only compresses and renames; it does not change what the code does.
+    // Three compression passes keep startup within its download budget; one worker bounds build memory.
     minify: 'terser',
     // Keep one minifier worker on the shared development computer as well as one outer build lease.
-    terserOptions: { maxWorkers: 1, compress: { passes: 2 }, format: { comments: false } },
+    terserOptions: { maxWorkers: 1, compress: { passes: 3 }, format: { comments: false } },
     modulePreload: { polyfill: false },
     sourcemap: wantMaps ? 'hidden' : false,
     rollupOptions: { treeshake: { moduleSideEffects: (id) => !id.endsWith('/src/scene/home-scene.ts') && !/\/src\/game\/wardrobe\/(catalogue|rules|look|view|prices)\.ts$/.test(id) }, input: { app: 'index.html', adminshell: 'adminshell.html' }, output: { hashCharacters: 'hex', onlyExplicitManualChunks: true, manualChunks(id) {

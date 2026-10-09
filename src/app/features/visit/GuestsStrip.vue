@@ -43,15 +43,15 @@ async function setCaptureConsent(allow: boolean): Promise<void> {
     <h3 class="ui-section">Guests<small>{{ house.guests.length }}/{{ house.capacity }}</small></h3>
     <p v-if="!host" class="social-note">You are visiting {{ house.host.name }}’s home.</p>
     <div v-if="!host && house.myCapture" class="guest-capture" data-visit="capture-consent">
-      <strong>Silent scene video</strong>
-      <p>Allow {{ house.host.name }} to save a silent video of the room for up to 30 seconds. It stays on their device. This permission ends when your visit does.</p>
+      <strong>Photos and silent scene video</strong>
+      <p>Allow {{ house.host.name }} to save photos and silent videos of this room. Each clip lasts up to 30 seconds. Files stay on their device. This permission ends when your visit does.</p>
       <button class="ui-button is-block" type="button" :aria-pressed="house.myCapture.allowed" :disabled="captureBusy" @click="setCaptureConsent(!house.myCapture.allowed)">
         {{ captureBusy ? 'Saving…' : house.myCapture.allowed ? 'Revoke recording permission' : 'Allow recording for this visit' }}
       </button>
       <p v-if="captureError" class="social-note" role="alert">{{ captureError }}</p>
     </div>
     <p v-if="host && house.guests.length" class="social-note" role="status" data-visit="capture-status">
-      {{ house.capture?.ready ? 'Every guest has allowed a silent scene recording.' : 'Scene recording stays paused until every guest allows it.' }}
+      {{ house.capture?.ready ? 'Every guest has allowed photos and silent scene recording.' : 'Photos and scene recording stay paused until every guest allows them.' }}
     </p>
     <div v-if="host && !house.guests.length" class="social-note">Nobody is inside.</div>
     <div v-if="host ? house.guests.length : others.length" class="social-list">

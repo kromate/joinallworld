@@ -1,5 +1,14 @@
 # Decisions and repeatable rollout after the first compiler
 
+Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
+on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443
+is in progress, not accepted. It uses six exact pinned raw copies and fixed
+Node22.19.0/Python3.12.14 runtime selection. The current small suite passes32;
+these checks do not replace actual worker/session/SDK/compiler acceptance.
+No main/runtime publication or new map detail accompanies this diagnostic.
+Keep the same-Ledger campaign gate, global shards, compiled country streaming,
+Nigeria renderer integration and phone proof open. See latest PROGRESS.md.
+
 Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
 frozen query membership and live-token completion are implemented.228 Python +43
 Node tests and full World TypeScript pass. Implementationa75c59af also passes

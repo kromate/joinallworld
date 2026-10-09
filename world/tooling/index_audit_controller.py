@@ -723,7 +723,9 @@ def _original_pins(root, maximum, database_maximum=None):
     if result["bootstrap.sqlite"] is None and any(result[name] is not None for name in
             ("bootstrap.sqlite-wal", "bootstrap.sqlite-shm")):
         raise ValueError("orphan retained bootstrap sidecar is preserved")
-    for name in ("binding.json", "reservation.json", "writer.lock"):
+    # Reservations live in the namespace registry, not a per-index JSON file.
+    # Preserve optional legacy metadata above; require actual root controls here.
+    for name in ("binding.json", "writer.lock"):
         if result[name] is None:
             raise ValueError(f"immutable index state {name} is missing")
     return result

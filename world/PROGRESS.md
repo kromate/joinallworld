@@ -1,5 +1,45 @@
 # Implementation checkpoint — 9 October 2026
 
+Diagnostic37886772443 is now terminal **failure**, not release acceptance.
+Its19 protocol/kernel tests passed; actual controller17 tests produced14 errors
+(including publication subcases), all before audit launch because `_original_pins`
+incorrectly required per-index `reservation.json`. Real reservations are in the
+namespace's `reservations.sqlite`; root metadata is optional and still pinned
+when present. Source now requires actual binding/writer controls and preserves
+optional metadata appearance/mutation checks. Eight no-worker codec/file checks
+pass after this correction (root-controls-v2, terminal863144 exit0); the v1
+fixture failure from a noncanonical macOS temporary path is retained. Remote
+artifacts are retained in `.cache/world-build/evidence/remote-audit-37886772443`.
+The worker/session/SDK/regression/compiler steps after the failed controller
+were skipped, not passing. A corrected successor diagnostic is required.
+
+Remote diagnostic validation is now actually running: GitHub run
+**37886772443**, exact draft commit **a63871d16d8e710a452f23d20718679f8dc2fa3b**
+on `codex/world-index-audit-diagnostic`:
+https://github.com/kromate/joinallworld/actions/runs/37886772443.
+The separate candidate contains exactly36 WORLD-owned paths, including six
+byte-identical pinned raw extract/receipt copies (797,134B), their attribution
+and manifest, and a serial non-deploying CI workflow. Candidate blob hashes and
+all six raw pins were verified before publication. The WORLD worktree HEAD and
+index remain unchanged; unknown drafts and the deployment node_modules symlink
+were excluded. This is diagnostic source publication, not main/runtime
+acceptance or a production release. No test pass is inferred from dispatch.
+
+The latest small suite is **32 distinct passing checks**, terminaleee2ab exit0,
+0.462s unittest,55,230,464B maxRSS: the prior30 plus two portable input-path
+checks. An existing raw cache file always takes precedence and corruption fails;
+only an absent original uses the exact verified fixture, without creating cache
+state. Receipt: `feature-index-audit-small-v6`. Packaged pins and Python fixture
+compilation passed preparation-v2; Ruby parsed the workflow. The earlier PyYAML
+preparation failure is retained, with no dependency installed to bypass it.
+The SDK retained-Dakar fixture now explicitly admits both buildings and roads.
+Actual worker/session/SDK/typecheck results remain pending. Earlier small counts
+below are historical subsets. Local pressure remains WARNING2 (~10.2GB swap),
+all WORLD subagents are terminal, and heavy local tests remain deferred.
+The next gate is actual remote validation and repair, then the still-unimplemented
+same-Ledger campaign audit gate and bounded global country compilation/streaming.
+The whole-world goal remains incomplete; Nigeria/game data are unchanged.
+
 Source review corrections now bound the audit SDK caller clone before framing:
 array count is checked before traversal; cloning has100,000-node/512,000-ASCII-byte/
 depth48 ceilings, incremental string/key escaping charges and individual field

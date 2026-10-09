@@ -26,7 +26,7 @@ from test_index_ingest import inputs, pin, retained_input_path
 from index_controller_state import _publish_bytes as _publish_bytes_real
 from index_audit_controller import _copy_file as _copy_file_real
 from index_audit_controller import _capture_set, _json, _result_bytes, _result_prefix, _decode_result
-from index_audit_controller import _encode_record, _anchor, _read_record
+from index_audit_controller import _encode_record, _anchor, _read_record, _original_pins, _verify_original
 from index_writer_lock import index_writer_lease
 from index_tooling import decode_tooling_manifest, encode_tooling_manifest
 from index_registry_controller import _copy_snapshot as _copy_registry_real
@@ -35,6 +35,29 @@ from index_controller_state import footprint as controller_footprint
 
 class IndexAuditCodecTests(unittest.TestCase):
     """Small file/codec checks; no Node workers or SQLite connections."""
+    def test_original_controls_match_real_root_and_preserve_optional_metadata(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve(strict=True)
+            for name, raw in (("features.sqlite", b"x"*4096), ("binding.json", b"{}"),
+                              ("writer.lock", b"")):
+                (root/name).write_bytes(raw); (root/name).chmod(0o600)
+            original = _original_pins(root, 8192)
+            self.assertIsNone(original["reservation.json"])
+            _verify_original(root, original, 8192)
+            legacy = root/"reservation.json"
+            legacy.write_bytes(b"{}"); legacy.chmod(0o600)
+            with self.assertRaisesRegex(ValueError, "reservation.json appeared"):
+                _verify_original(root, original, 8192)
+            original = _original_pins(root, 8192)
+            legacy.write_bytes(b"[]")
+            with self.assertRaisesRegex(ValueError, "reservation.json changed"):
+                _verify_original(root, original, 8192)
+            for name in ("binding.json", "writer.lock"):
+                saved = (root/name).read_bytes(); (root/name).unlink()
+                with self.assertRaisesRegex(ValueError, "immutable index state"):
+                    _original_pins(root, 8192)
+                (root/name).write_bytes(saved); (root/name).chmod(0o600)
+
     def test_descriptor_overflow_drains_bounded_frames_then_reports_error_without_a_worker(self):
         capture = inputs()[0]; expected = capture[2]
         audit = dict(count=2, attemptLimit=1, jobs={expected["requestHash"]: []}, captures=[],

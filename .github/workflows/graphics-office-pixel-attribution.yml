@@ -1,67 +1,47 @@
-{
-  "status": "source-prepared-not-executed",
-  "purpose": "exact page pixel to raw Body source face and live blouse ray depth",
-  "sourceBodyIndexSha256": "4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661",
-  "files": [
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/office-pixel-attribution-v1.ts",
-      "sha256": "f9e25955262852bdf1fcc0d7bd8efba9b3a2d5c3204eef8b5034a11732e8ceca",
-      "bytes": 16874
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/office-pixel-attribution-v1.html",
-      "sha256": "2c4c65afd0bb056c472909b3c2863961fb221c017ad1004f58c4d9a405de4cd7",
-      "bytes": 2721
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/bundle-office-pixel-attribution.mjs",
-      "sha256": "548759ed64f80da80f19a644563994a6b9559eeb86cf3226d0ba4b77e667fa58",
-      "bytes": 2135
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/office-pixel-attribution.typecheck.json",
-      "sha256": "0487fb5893ee86d033abf5cd3e94f1f75fec44383c76bde542ace3cfe44b46d7",
-      "bytes": 285
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-factory-v29.ts",
-      "sha256": "ecf30896371cdf65317894e5f2add34eb7679f0f8b9c5f72210457159f38f5e2",
-      "bytes": 40738
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
-      "sha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
-      "bytes": 1600800
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/verify-office-pixel-attribution-pins.mjs",
-      "sha256": "304d8f4be1091f7abfe287eef7e0d282ef59067f01949ad04cfb61ac9c665422",
-      "bytes": 2141
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/workflow-office-pixel-attribution-v2.yml",
-      "sha256": "ad42f472f7d4cf1fb6136bbb258089231422bc01ce4f0f27903f25ffc38f2169",
-      "bytes": 2805
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/render-office-pixel-attribution-v2.mjs",
-      "sha256": "f2f29ec3d5ac522c4120f3d1a0d8d5a2915d0802ce13b9eebee98c00c1268243",
-      "bytes": 10813
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/office-pixel-attribution-v2.typecheck.json",
-      "sha256": "0487fb5893ee86d033abf5cd3e94f1f75fec44383c76bde542ace3cfe44b46d7",
-      "bytes": 285
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/verify-office-pixel-attribution-pins-v2.mjs",
-      "sha256": "59b797196e925d9afb94ee7d9af641f15ad6ce89666e63d3563050cfbf9347cb",
-      "bytes": 2144
-    }
-  ],
-  "limitations": [
-    "One female office idle/front screen ray only",
-    "No body mask candidate is installed",
-    "No visual acceptance or production source change"
-  ]
-}
+name: Office patch exact pixel attribution
+on:
+  push:
+    branches: [codex/graphics-office-pixel-attribution-v3]
+permissions:
+  contents: read
+jobs:
+  office-pixel-attribution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare pinned generated human source
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Verify pinned diagnostic inputs
+        run: node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/verify-office-pixel-attribution-pins-v2.mjs
+      - name: Typecheck isolated exact-pixel fixture
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/office-pixel-attribution-v2.typecheck.json
+      - name: Bundle exact-pixel fixture
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/bundle-office-pixel-attribution.mjs
+      - name: Render one exact source-index and garment-depth ray
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/office-pixel-attribution-resources.log /tmp/office-pixel-attribution-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/render-office-pixel-attribution-v2.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-pixel-attribution-v2-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/office-pixel-attribution-v2-${{ github.run_id }}/
+            /tmp/office-pixel-attribution-resources.log
+            /tmp/office-pixel-attribution-resources.json
+          if-no-files-found: error

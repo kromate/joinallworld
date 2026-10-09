@@ -1,0 +1,114 @@
+{
+  "candidateSha": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
+  "observedAt": "2026-10-09T13:11:51.965215+00:00",
+  "runId": 37934158511,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37934158511",
+  "overallStatus": "in_progress",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "host-acceptance": "success",
+    "ui-regressions": "success",
+    "full (22)": {
+      "conclusion": "failure",
+      "compiler": "failure",
+      "build": "success",
+      "downloadBudgets": "success"
+    },
+    "full (24)": {
+      "conclusion": "failure",
+      "compiler": "failure",
+      "build": "success",
+      "downloadBudgets": "success"
+    },
+    "integration-repairs": {
+      "conclusion": "failure",
+      "tests": 133,
+      "passed": 131,
+      "failed": 2,
+      "skipped": 0,
+      "durationMs": 261706.330384
+    },
+    "full-node (22)": "live, no final result",
+    "full-node (24)": "live, no final result",
+    "full-worker (22)": "live; missing dist prerequisite means real asset acceptance invalid",
+    "full-worker (24)": "live; missing dist prerequisite means real asset acceptance invalid"
+  },
+  "hostScopes": {
+    "teachingNode": {
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 1522.882659
+    },
+    "livingWorker": {
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 90800.04019
+    }
+  },
+  "downloadBudgets": {
+    "firstPaintJs": {
+      "actual": 91174,
+      "cap": 92000
+    },
+    "startupRaw": {
+      "actual": 614707,
+      "cap": 615000
+    },
+    "startupGzip": {
+      "actual": 222946,
+      "cap": 223000
+    },
+    "startupBrotli": {
+      "actual": 195370,
+      "cap": 195600
+    },
+    "status": "PASS at this exact SHA on both Node versions"
+  },
+  "remainingSourceRepairs": [
+    {
+      "path": "scripts/living-world-browser-qa.mjs",
+      "publishedFailure": "TS2571 line520, unknown session response",
+      "workingRepair": "Explicit record/session/id validators; source-reviewed, not retested"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "publishedFailure": "Worker partition does not build required dist assets",
+      "workingRepair": "Integration added exact-source npm build before exhaustive edge tests; no acceptance transfer"
+    },
+    {
+      "path": "server/living-world/mapped-trip-service.test.ts",
+      "publishedFailure": "Deep equality0.302 vs actual0.30200000000000005",
+      "requestedRepair": "Retain exact status/cursor checks and tight numeric tolerance; no simulation change"
+    },
+    {
+      "path": "scripts/two-players.ts",
+      "publishedFailure": "Expected root database keys omit real new walletEffects collection",
+      "requestedRepair": "Preserve complete-key and accounting/continuity checks with legitimate additive collection"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/tmp/joinallworld-consolidated-host-26dbc3e1.log",
+      "sha256": "dac17c5cce560f703908a3f3b8c0a946046cbe2f4f52233ab5199c229576ce40"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-26dbc-node24-gates.log",
+      "sha256": "7374a5ca880c6335634a0538c3af538b3e22a87da4096cb8b1191ecf403312b8"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-26dbc-focused.log",
+      "sha256": "4630243868670ddd6ba09a7faeddfb14cc7c17c7a5575e5ce35ffbfb502faaa9"
+    }
+  ],
+  "broaderAcceptance": "Native desktop/mobile, physical driving, full journeys, staging/recovery, live save continuity and Goalmatic integration unaccepted",
+  "production": {
+    "observedAt": "2026-10-09T13:04:01Z",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "releasedByProgramme": false
+  }
+}

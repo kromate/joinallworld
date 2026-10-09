@@ -1,27 +1,44 @@
 {
   "candidateSha": "9152bbbf5852b131d7ecd127b80196d8497de5fc",
-  "observedAt": "2026-10-09T12:46:26.727673+00:00",
+  "observedAt": "2026-10-09T13:07:23.646563+00:00",
   "runId": 37930419206,
   "url": "https://github.com/kromate/joinallworld/actions/runs/37930419206",
-  "overallStatus": "in_progress",
+  "overallStatus": "completed",
   "accepted": false,
   "jobs": {
     "release-policy": "success",
     "host-acceptance": "success",
     "ui-regressions": "success",
     "full (22)": {
-      "status": "in_progress",
+      "status": "completed",
       "typecheck": "failure",
       "build": "success",
       "size:download": "failure",
-      "npm test": "in_progress"
+      "npm test": "cancelled before final summary",
+      "conclusion": "cancelled",
+      "logSha256": "43bc500084141c698cf09aca0086c26e15bd3c51db295f4af452141146aac765",
+      "logPath": "/tmp/joinallworld-consolidated-9152-node22.log",
+      "compilerDetail": "8 TS18048 diagnostics in browser QA; baseline 0",
+      "Worker": "not reached"
     },
     "full (24)": {
-      "status": "in_progress",
+      "status": "completed",
       "typecheck": "failure",
       "build": "success",
       "size:download": "failure",
-      "npm test": "in_progress"
+      "npm test": "failure",
+      "conclusion": "cancelled",
+      "logSha256": "e0ebb8a79c9df712d5f63eda905a62fe8d9aae22a83634c1ed245a8a77711793",
+      "logPath": "/tmp/joinallworld-consolidated-9152-node24.log",
+      "compilerDetail": "8 TS18048 diagnostics in browser QA; baseline 0",
+      "npmSummary": {
+        "tests": 3564,
+        "passed": 3540,
+        "failed": 20,
+        "skipped": 4,
+        "durationMs": 1090237.500191
+      },
+      "Worker": "started but incomplete when 25-minute job ended"
     }
   },
   "hostEvidence": {
@@ -58,5 +75,32 @@
     "build": "joinallworld-a44629b38be751a9ad446051564",
     "changedByThisProgramme": false
   },
-  "ownership": "Integration exclusively assembles shared source; WORLD uploads. Root reviews and records evidence."
+  "ownership": "Integration exclusively assembles shared source; WORLD uploads. Root reviews and records evidence.",
+  "firstObservedAt": "2026-10-09T12:46:26.727673+00:00",
+  "overallConclusion": "cancelled",
+  "downloadBudgets": {
+    "firstPaintJs": {
+      "actual": 92016,
+      "cap": 92000
+    },
+    "startupRaw": {
+      "actual": 645060,
+      "cap": 615000
+    },
+    "startupGzip": {
+      "actual": 233641,
+      "cap": 223000
+    },
+    "startupBrotli": {
+      "actual": 204615,
+      "cap": 195600
+    },
+    "source": "actual full CI download-budget logs on both Node versions; caps unchanged"
+  },
+  "nextCandidate": {
+    "sha": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
+    "run": 37934158511,
+    "status": "in_progress; fresh exact run required, no prior pass transferred",
+    "knownIssue": "Worker partition lacks real dist build prerequisite; Integration acknowledged and fixed working source for next frozen candidate."
+  }
 }

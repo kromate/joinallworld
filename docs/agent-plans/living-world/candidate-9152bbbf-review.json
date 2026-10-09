@@ -1,0 +1,75 @@
+{
+  "observedAt": "2026-10-09T13:07:23.646563+00:00",
+  "reviewedPublishedBase": "9152bbbf5852b131d7ecd127b80196d8497de5fc",
+  "subsequentCandidate": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
+  "level": "independent source review and actual CI log review; no Root test/build/browser run",
+  "reviewedScopes": [
+    "Mapped null/false quarantine, captured IDs and post-await lease/time/authority fences",
+    "Native browser CDP mouse/keyDown-char-keyUp/touch, main-frame load fencing, onboarding, unobscured controls, exact SHA and bounded receipt",
+    "Positive teaching unit/Node/browser fixture opt-ins with original accounting/cancel/midnight/replay assertions retained",
+    "Disabled boarding authority and hash witnesses matching current source",
+    "Full CI split preserves exhaustive Node and Worker test globs; each Worker runner requires built dist assets"
+  ],
+  "findings": [
+    {
+      "area": "Message component fixture",
+      "finding": "Aggregate page text weakened message-to-delivery-status relationship",
+      "disposition": "Integration scoped body/status to data-seq=2 in 26dbc; source-reviewed, runtime retest pending"
+    },
+    {
+      "area": "Worker CI partition",
+      "finding": "26dbc full-worker lacks npm build while real Worker fixtures consume ../dist",
+      "disposition": "Integration acknowledged and added working-source prerequisite; not yet frozen/tested at observation"
+    }
+  ],
+  "mappedBlobsAt9152": {
+    "service": "617d9d9f0a1ce4bb5c2be42aed64245947e8e703",
+    "test": "e42f0582343677caf16c9cf487a54f8a878dbe96"
+  },
+  "qaBlobAt9152": "55f7bdcae4acd620caae4822f7802acd9f6646f5",
+  "models": [
+    {
+      "role": "Sol",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "turnContextAt": "2026-10-09T12:47:33.593Z"
+    },
+    {
+      "role": "luna_journeys",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "turnContextAt": "2026-10-09T12:50:16.543Z"
+    },
+    {
+      "role": "luna_driving",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "turnContextAt": "2026-10-09T12:50:48.286Z"
+    },
+    {
+      "role": "luna_goalmatic",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "turnContextAt": "2026-10-09T12:55:59.122Z"
+    }
+  ],
+  "modelVerification": "Actual parent/path-bound session_meta and turn_context, not worker names",
+  "goalmaticRead": {
+    "privateDevSha": "0533aac3000c038143064b82403db9701140110c",
+    "independentTreeRead": {
+      "entries": 2857,
+      "truncated": false
+    },
+    "catalogBlob": "eb8da2ac27ccb2d0cc4c48607393863bf913f75b",
+    "scope": "Existing authorized private repository source/metadata reads only. No user records, credentials, operation probes, source copying or deployments.",
+    "result": "Generic idempotent creation and bounded update/delete/hierarchy building blocks are reusable candidates. No verified Goals milestone-create schema/default mapping or selected target account/workspace/installation/table/scope. Stable projection/reconciliation and consent/revoke queue behavior remain required.",
+    "activation": "disabled"
+  },
+  "startupObserver": {
+    "source": "9152bbbf5852b131d7ecd127b80196d8497de5fc",
+    "path": "/tmp/allworld-9152-startup-attribution.json",
+    "sha256": "7d668c2846a2117cfb7662d46cec2c5160c52ad8340dfda9c9c2121514031413",
+    "review": "Observed lazy driving/depot/clearance/barber modules in engine chunk despite not needed by startup. Module byte estimates are attribution diagnostics, not exact compressed contribution. Teaching actual graph/readers/guards retained. Integration sole build owner.",
+    "acceptance": false
+  }
+}

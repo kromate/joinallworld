@@ -1,0 +1,16 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 25970 in /workspace/remote-verification/repositories/world-5dd7ae41: npm run build (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 25970 in /workspace/remote-verification/repositories/world-5dd7ae41: npm run build (3m))
+
+> joinallworld@0.1.0 pretypecheck
+> npm run -s preflight
+
+
+> joinallworld@0.1.0 typecheck
+> node --experimental-strip-types scripts/typecheck.ts --serial
+
+Typecheck clean: 5 projects, 0 errors in .ts and .vue, 0 baselined in existing JavaScript.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

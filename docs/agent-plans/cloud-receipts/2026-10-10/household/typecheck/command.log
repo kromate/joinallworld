@@ -1,0 +1,48 @@
+
+> joinallworld@0.1.0 pretypecheck
+> npm run -s preflight
+
+
+> joinallworld@0.1.0 typecheck
+> node --experimental-strip-types scripts/typecheck.ts --serial
+
+engine: compiler exited 2 without readable TypeScript diagnostics
+client: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[19626:0x25d13000]    24689 ms: Scavenge (interleaved) 1525.2 (1539.2) -> 1522.0 (1539.4) MB, pooled: 1 MB, 13.46 / 0.00 ms  (average mu = 0.219, current mu = 0.139) allocation failure; 
+[19626:0x25d13000]    25250 ms: Mark-Compact (reduce) 1525.7 (1540.2) -> 1522.9 (1533.7) MB, pooled: 0 MB, 419.52 / 0.00 ms  (+ 113.1 ms in 23 steps since start of marking, biggest step 25.6 ms, walltime since start of marking 547 ms) (average mu = 0.182,
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xef66c2  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xef69ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xf076ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0xf0ba60  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x199e0d1  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+server: compiler exited 2 without readable TypeScript diagnostics
+worker: compiler exited 2 without readable TypeScript diagnostics
+test: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[19893:0x32221000]    13810 ms: Scavenge (interleaved) 1519.0 (1536.8) -> 1518.6 (1541.5) MB, pooled: 0 MB, 4.98 / 0.00 ms  (average mu = 0.400, current mu = 0.164) allocation failure; 
+[19893:0x32221000]    14363 ms: Mark-Compact 1522.0 (1541.8) -> 1517.2 (1544.5) MB, pooled: 0 MB, 548.55 / 0.00 ms  (average mu = 0.250, current mu = 0.039) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xf07ffc  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xedd4b3  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xeb2fc0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0x13aa8b8  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x1ab39b6  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+
+Typecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.

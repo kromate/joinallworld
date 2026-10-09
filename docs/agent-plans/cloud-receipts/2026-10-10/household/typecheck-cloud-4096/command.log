@@ -1,0 +1,15 @@
+
+> joinallworld@0.1.0 pretypecheck
+> npm run -s preflight
+
+
+> joinallworld@0.1.0 typecheck
+> node --experimental-strip-types scripts/typecheck.ts --serial
+
+engine: compiler exited 2 without readable TypeScript diagnostics
+client: compiler exited 2 without readable TypeScript diagnostics
+server: compiler exited 2 without readable TypeScript diagnostics
+worker: compiler exited 2 without readable TypeScript diagnostics
+test: compiler exited 2 without readable TypeScript diagnostics
+
+Typecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.

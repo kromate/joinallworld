@@ -1,0 +1,21 @@
+
+> joinallworld@0.1.0 test:smoke
+> node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+
+✔ server/release.test.ts (133.231688ms)
+✔ src/app/entry.test.ts (960.667446ms)
+✖ src/types/protocol.test.ts (1027.820353ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2130.505073
+
+✖ failing tests:
+
+test at src/types/protocol.test.ts:1:1
+✖ src/types/protocol.test.ts (1027.820353ms)
+  'test failed'

@@ -1,0 +1,28 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 25309 in /workspace/remote-verification/repositories/worker-living-driving: node --max-old-space-size=1536 --experimental-strip-types --test --test-concurrency=1 src/app/features/living-world/practiceIdentity.test.ts (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 25309 in /workspace/remote-verification/repositories/worker-living-driving: node --max-old-space-size=1536 --experimental-strip-types --test --test-concurrency=1 src/app/features/living-world/practiceIdentity.test.ts (4m))
+✔ validates the 40-row Nigeria prefix and exact ordered foreign allowlist (1.861585ms)
+✔ rejects a changed historical baseline pin (0.429432ms)
+✔ rejects C1 reordering, country mutation, and unreviewed extensions (0.498576ms)
+✔ accepts only a declared, source-pinned extension after the unchanged C1 prefix (1.618961ms)
+✔ accepts multiple source-packet-pinned cities in one foreign country shard (0.807728ms)
+✔ country shards reject non-catalogue metadata and preserve all 40 Nigeria rows (0.501951ms)
+✔ keeps Nigeria static and cold, then lazily loads and caches a verified foreign shard (28.125567ms)
+✔ supports an eleventh foreign row and multiple admitted cities in one country (3.278634ms)
+✔ prunes typed catalogue rows with the raw-shard LRU and reloads an evicted country (3.647616ms)
+✔ rejects unadmitted IDs, duplicate requests, and an index with extra countries (2.024088ms)
+✔ refuses a foreign admission list whose ordered digest differs from the descriptor (0.643001ms)
+✔ requires a non-empty bounded foreign admission instead of treating Nigeria as a directory fallback (0.286519ms)
+▶ does not publish a shard with a missing, extra, cross-country, or non-finite city row
+  ✔ extra ID (1.191422ms)
+  ✔ wrong country (1.425191ms)
+  ✔ non-finite coordinate (7.560188ms)
+✔ does not publish a shard with a missing, extra, cross-country, or non-finite city row (11.498638ms)
+✔ rejects a hash-valid extra shard row when the index declares the admitted count (2.337986ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 252.255067

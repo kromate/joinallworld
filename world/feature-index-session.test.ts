@@ -5,11 +5,24 @@ import { featureIndexObservationPin } from './feature-index.ts';
 import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import { parseFeatureIndexSessionLine, validateFeatureIndexSessionDone, validateFeatureIndexSessionReady,
   validateFeatureIndexSessionResult, prepareFeatureIndexSessionConfiguration, prepareFeatureIndexSessionAudit,
-  validateFeatureIndexSessionAuditResult, parseOwnedPythonRssSample } from './feature-index-session.ts';
+  validateFeatureIndexSessionAuditResult, parseOwnedPythonRssSample,
+  prepareFeatureIndexShardBinding, validateFeatureIndexShardBinding } from './feature-index-session.ts';
 import { assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest } from './feature-index-session.ts';
 
 const hash = 'a'.repeat(64);
 const indexHash = 'b'.repeat(64);
+const staticV1Binding = Buffer.from([
+  '{"captureVersion":"overture-pinned-capture-v1","engineLimits":{"captures":8,"databaseBytes":4194304,',
+  '"observations":16,"occurrences":4000,"versions":3000},"engineVersion":"complete-feature-index-v1",',
+  '"format":"feature-index-binding-v1","identityVersion":"overture-complete-feature-owner-v1",',
+  '"processLimits":{"cpuSeconds":10,"fileBytes":4194304,"heapMiB":256,"rssBytes":402653184,"wallSeconds":15},',
+  '"reservedBytes":33554432,"runtime":{"nodeBytes":167772160,"nodeSha256":"', 'd'.repeat(64),
+  '","nodeVersion":"v22.19.0","sqliteVersion":"3.50.4"},"source":{"configuration":{"bytes":1297,"sha256":"',
+  'a'.repeat(64), '"},"layers":["buildings","roads"],"provider":"overture","release":"2026-01-21.0"},',
+  '"sourceCompiler":"world-source-compiler-v2","toolingManifest":{"bytes":2000,"sha256":"', 'b'.repeat(64), '"}}',
+].join(''), 'ascii');
+const staticShardPins = () => ({ planHash: 'c'.repeat(64), shardId: 'd'.repeat(64), membershipHash: 'e'.repeat(64),
+  baseIndexBindingHash: sha256(staticV1Binding) });
 
 test('owned Python RSS parser accepts only a bounded one-row sample and permits zero only for zombie state', () => {
   assert.equal(parseOwnedPythonRssSample('1234 S\n'), 1234);
@@ -156,6 +169,9 @@ test('prepared session configuration freezes binding identity and returns defens
     repositoryRoot: '/workspace/repo', manifestBytes: manifest, sourceConfiguration, bindingBytes: binding };
 
   const prepared = prepareFeatureIndexSessionConfiguration(config);
+  const shardBinding = prepareFeatureIndexShardBinding(binding, { planHash: hash, shardId: 'b'.repeat(64),
+    membershipHash: 'c'.repeat(64), baseIndexBindingHash: sha256(binding) });
+  assert.throws(() => prepareFeatureIndexSessionConfiguration({ ...config, bindingBytes: shardBinding.bytes }), /binding fields differ/i);
   const pinnedHash = sha256(binding);
   assert.equal(prepared.indexHash, pinnedHash);
   const invalidProvider = JSON.parse(binding.toString('utf8')) as Record<string, unknown>;
@@ -174,6 +190,65 @@ test('prepared session configuration freezes binding identity and returns defens
   assert.equal(sha256(prepared.bindingBytes), pinnedHash);
   assert.equal(prepareFeatureIndexSessionConfiguration(prepared), prepared);
   assert.equal(prepared.pythonExecutable, config.pythonExecutable);
+});
+
+test('v2 shard binding matches the static Python-canonical v1 fixture, four pins, and golden wire digest', () => {
+  const pins = staticShardPins();
+  const base = Buffer.from(staticV1Binding);
+  const encoded = prepareFeatureIndexShardBinding(base, pins);
+  const shardJson = `{"baseIndexBindingHash":"${pins.baseIndexBindingHash}","membershipHash":"${pins.membershipHash}","planHash":"${pins.planHash}","shardId":"${pins.shardId}"}`;
+  const goldenText = staticV1Binding.toString('ascii')
+    .replace('"format":"feature-index-binding-v1"', '"format":"feature-index-binding-v2"')
+    .replace(',"source":', `,"shard":${shardJson},"source":`);
+  const golden = Buffer.from(goldenText, 'ascii');
+  assert.deepEqual(encoded.bytes, golden);
+  assert.equal(encoded.indexHash, sha256(golden));
+  assert.equal(pins.baseIndexBindingHash, '809e15436e4348618c91f21a228cbccfdf9827d5d42559690e7a30d84ba2c418');
+  assert.equal(encoded.indexHash, '7f37bcf935126aa36331b9144d976d5ec590618fd526beb6485554b337bfd09f');
+  const decoded = validateFeatureIndexShardBinding(encoded.bytes);
+  assert.deepEqual(decoded.baseBindingBytes, staticV1Binding);
+  assert.deepEqual(decoded.shardPins, pins);
+  assert.equal(sha256(decoded.baseBindingBytes), pins.baseIndexBindingHash);
+});
+
+test('v2 shard helpers copy base bytes and pins without changing legacy v1 inputs', () => {
+  const original = Buffer.from(staticV1Binding), pins = staticShardPins();
+  const before = Buffer.from(original), pinsBefore = { ...pins };
+  const encoded = prepareFeatureIndexShardBinding(original, pins);
+  original[0] = original[0]! ^ 1;
+  pins.planHash = hash;
+  assert.deepEqual(before, staticV1Binding);
+  const checked = validateFeatureIndexShardBinding(encoded.bytes);
+  assert.deepEqual(checked.baseBindingBytes, before);
+  assert.deepEqual(checked.shardPins, pinsBefore);
+  checked.baseBindingBytes[0] = checked.baseBindingBytes[0]! ^ 1;
+  checked.shardPins.shardId = hash;
+  const checkedAgain = validateFeatureIndexShardBinding(encoded.bytes);
+  assert.deepEqual(checkedAgain.baseBindingBytes, before);
+  assert.deepEqual(checkedAgain.shardPins, pinsBefore);
+});
+
+test('v2 shard binding refuses malformed pins, changed base identity, wrong versions, noncanonical bytes, and accessors', () => {
+  const pins = staticShardPins();
+  assert.throws(() => prepareFeatureIndexShardBinding(staticV1Binding, { ...pins, baseIndexBindingHash: hash }), /base binding hash/i);
+  assert.throws(() => prepareFeatureIndexShardBinding(staticV1Binding, { ...pins, surprise: true }), /fields differ/i);
+  assert.throws(() => prepareFeatureIndexShardBinding(staticV1Binding, { ...pins, shardId: true }), /lowercase SHA/i);
+  let called = false;
+  const accessor = { ...pins };
+  Object.defineProperty(accessor, 'planHash', { enumerable: true, get() { called = true; return pins.planHash; } });
+  assert.throws(() => prepareFeatureIndexShardBinding(staticV1Binding, accessor), /enumerable data properties/i);
+  assert.equal(called, false);
+
+  const encoded = prepareFeatureIndexShardBinding(staticV1Binding, pins);
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.concat([Buffer.from(encoded.bytes), Buffer.from('\n')]))), /ASCII bytes|canonical JSON/i);
+  const parsed = JSON.parse(Buffer.from(encoded.bytes).toString('ascii')) as Record<string, unknown>;
+  const wrongVersion = { ...parsed, engineVersion: 'complete-feature-index-v2' };
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.from(canonicalJson(wrongVersion), 'ascii')), /versions differ/i);
+  const changedBasePin = { ...parsed, shard: { ...(parsed.shard as object), baseIndexBindingHash: 'f'.repeat(64) } };
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.from(canonicalJson(changedBasePin), 'ascii')), /base binding hash differs/i);
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.from(canonicalJson({ ...parsed, unknown: true }), 'ascii')), /fields differ/i);
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.from(canonicalJson({ ...parsed,
+    shard: { ...(parsed.shard as object), extra: true } }), 'ascii')), /fields differ/i);
 });
 
 test('audit preparation freezes caller data, requires sorted distinct membership, and sorts observation pins', () => {

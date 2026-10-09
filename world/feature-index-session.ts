@@ -429,6 +429,74 @@ function validateBinding(value: Record<string, unknown>): PythonBinding {
       nodeSha256: sha(runtime.nodeSha256, 'Node executable hash') }, reservedBytes };
 }
 
+export interface FeatureIndexShardBindingPins {
+  planHash: string;
+  shardId: string;
+  membershipHash: string;
+  baseIndexBindingHash: string;
+}
+export interface ValidatedFeatureIndexShardBinding {
+  baseBindingBytes: Uint8Array;
+  shardPins: FeatureIndexShardBindingPins;
+}
+
+const SHARD_BINDING_FORMAT = 'feature-index-binding-v2';
+const BINDING_FIELDS = ['format', 'engineVersion', 'identityVersion', 'captureVersion', 'sourceCompiler', 'source',
+  'toolingManifest', 'runtime', 'engineLimits', 'processLimits', 'reservedBytes'] as const;
+const SHARD_PIN_FIELDS = ['planHash', 'shardId', 'membershipHash', 'baseIndexBindingHash'] as const;
+
+function privateBindingBytes(value: unknown, label: string): Buffer {
+  if (!(value instanceof Uint8Array) || (typeof SharedArrayBuffer !== 'undefined' && value.buffer instanceof SharedArrayBuffer)
+      || value.byteLength < 1 || value.byteLength > 4096) throw new TypeError(`${label} must be bounded unshared bytes.`);
+  const copy = Buffer.from(value);
+  if (copy.some(byte => byte > 0x7f || byte === 0x0a || byte === 0x0d)) throw new TypeError(`${label} must use canonical ASCII bytes without a newline.`);
+  return copy;
+}
+
+function checkedShardPins(value: unknown): FeatureIndexShardBindingPins {
+  const pins = exactObject(value, SHARD_PIN_FIELDS, 'Shard binding pins');
+  return { planHash: sha(pins.planHash, 'Shard plan hash'), shardId: sha(pins.shardId, 'Shard ID'),
+    membershipHash: sha(pins.membershipHash, 'Shard membership hash'),
+    baseIndexBindingHash: sha(pins.baseIndexBindingHash, 'Base index binding hash') };
+}
+
+function canonicalBindingBytes(value: Record<string, unknown>, label: string): Buffer {
+  const encoded = Buffer.from(canonicalJson(value), 'ascii');
+  if (encoded.byteLength < 1 || encoded.byteLength > 4096 || encoded.some(byte => byte > 0x7f || byte === 0x0a || byte === 0x0d)) {
+    throw new RangeError(`${label} exceeds its canonical ASCII byte bound.`);
+  }
+  return encoded;
+}
+
+/** Builds a planning-only v2 shard identity around an unchanged, semantically valid v1 binding. */
+export function prepareFeatureIndexShardBinding(baseBindingBytes: Uint8Array, shardPinsValue: unknown): { bytes: Uint8Array; indexHash: string } {
+  const baseBytes = privateBindingBytes(baseBindingBytes, 'Base index binding');
+  const base = decodeCanonical(baseBytes, 'Base index binding');
+  validateBinding(base); // The admission/session configuration path remains v1-only.
+  const shardPins = checkedShardPins(shardPinsValue);
+  if (shardPins.baseIndexBindingHash !== sha256(baseBytes)) throw new Error('Shard base binding hash differs from the exact v1 bytes.');
+  const value = { ...base, format: SHARD_BINDING_FORMAT, shard: shardPins };
+  const bytes = canonicalBindingBytes(value, 'Shard binding');
+  return { bytes: Buffer.from(bytes), indexHash: sha256(bytes) };
+}
+
+/** Validates v2 and returns defensive copies of its exact canonical v1 base and four shard pins. */
+export function validateFeatureIndexShardBinding(bytesValue: Uint8Array): ValidatedFeatureIndexShardBinding {
+  const bytes = privateBindingBytes(bytesValue, 'Shard binding');
+  const parsed = decodeCanonical(bytes, 'Shard binding');
+  exactObject(parsed, [...BINDING_FIELDS, 'shard'], 'Shard binding');
+  if (parsed.format !== SHARD_BINDING_FORMAT) throw new TypeError('Shard binding format differs from the fixed v2 contract.');
+  const shardPins = checkedShardPins(parsed.shard);
+  const base: Record<string, unknown> = { ...parsed, format: 'feature-index-binding-v1' };
+  delete base.shard;
+  validateBinding(base);
+  const baseBytes = canonicalBindingBytes(base, 'Reconstructed v1 base binding');
+  if (shardPins.baseIndexBindingHash !== sha256(baseBytes)) throw new Error('Shard base binding hash differs from the reconstructed v1 bytes.');
+  const expected = canonicalBindingBytes({ ...base, format: SHARD_BINDING_FORMAT, shard: shardPins }, 'Shard binding');
+  if (!expected.equals(bytes)) throw new TypeError('Shard binding is not the exact canonical v2 encoding.');
+  return { baseBindingBytes: Buffer.from(baseBytes), shardPins: { ...shardPins } };
+}
+
 function decodeManifest(bytes: Uint8Array, expected: CaptureBytePin): Record<string, unknown> {
   if (bytes.byteLength !== expected.bytes || sha256(bytes) !== expected.sha256) throw new Error('Tooling manifest bytes differ from the binding pin.');
   const value = parseCaptureJson(bytes, { bytes: 64_000, nodes: 10_000, depth: 16 });

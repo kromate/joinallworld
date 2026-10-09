@@ -356,3 +356,12 @@ published real coordinates and explicit unmapped entries. Nigeria/game/campaign
 data and existing reservations remain unchanged. Next: durable capture attempts/
 input ownership, fenced campaign observations/completion, independent raw/index
 audit, then full-country geometry and streamed detail. Full goal remains active.
+
+
+## GRAPHICS parallel implementation and actual sleeve review — 9 October 2026, 02:05 UTC
+
+Three Luna tracks completed local standing-contact, venue-support and sleeve-comparison work. Narrow standing helper checks pass 9/9; actual baked venue support checks pass 3/3 after retained setup/control failures were repaired. Root's optional host resolver wiring remains local and requires real-rig/integrated host review; canonical NPC support is separate. No current graphics runtime is published or deployed.
+
+The exact pinned slot CLI now has a type-erased JS execution package: five filtered existing regressions pass, locks/caps/signals unchanged; seven other wrapper tests remain unrun. Real sleeve CPU comparison terminates0 at 184,926,208 B owned-group RSS under the unchanged220MiB cap. The old nested-TypeScript cap failures remain recorded. Actual GPU review saved32 untouched matched PNGs with valid source/comparison guards and advancing walk/reach clips. Radius-only changes retain shoulder seams and blocky collars, so the candidate is unaccepted. No mobile/frame/journey-byte acceptance follows from these checks.
+
+GRAPHICS owned resources were terminal01:59:13 UTC: 11 process groups absent,5184 released, owned Chrome1412593847 closed; user5191 preserved. WORLD now owns finite sequential checks, LIVING queued after terminal handoff. Three new source-only Luna reviews have separate evidence ownership (shoulder topology, real-contact probe, host/venue support). Five-minute memory monitor remains active; NORMAL1 recovery02:01:25 still had high paging, so heavy concurrency/caps remain unchanged. Primary safely adopted f7e7e149 with all80 dirty/untracked hashes preserved. Evidence/checkpoint: local ignored graphics-loop receipts and docs/GRAPHICS-EXECUTION-CHECKPOINT.md; physical-phone and whole-game quality gates remain open.

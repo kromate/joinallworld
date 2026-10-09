@@ -96,7 +96,7 @@ export async function runVoiceJourney(host: VoiceJourneyHost): Promise<void> {
   if (!inspected.ok) throw new Error(`Synthetic WebM/Opus fixture was rejected: ${inspected.reason}`)
   const encoded = Buffer.from(bytes).toString('base64'), clientId = host.id()
   const beforeRefusedSends = await host.voiceCount()
-  const strangerSend = await host.json('/api/social/voice', { to: eve.id, clientId: host.id(), data: encoded }, ada)
+  const strangerSend = await host.json('/api/social/voice', { to: ada.id, clientId: host.id(), data: encoded }, eve)
   assert.equal(strangerSend.code, 'voice_refused', 'a nonfriend cannot receive a voice note')
   assert.equal(await host.voiceCount(), beforeRefusedSends, 'a refused nonfriend send leaves no stored bytes')
   assert.equal((await host.json('/api/social/prefs', { voiceNotes: 'nobody' }, bola)).code, 'saved')
@@ -150,6 +150,8 @@ export async function runVoiceJourney(host: VoiceJourneyHost): Promise<void> {
   assert.equal((await host.media(`/api/social/voice/${directId}`, bola)).status, 404, 'a block revokes reads immediately')
   assert.equal((await host.json('/api/social/unblock', { id: ada.id }, bola)).code, 'unblocked')
   assert.equal((await host.media(`/api/social/voice/${directId}`, bola)).status, 200)
+  // Unblocking restores communication, but friendship needs another consenting invitation.
+  await friend(ada, bola)
 
   const group = await host.json('/api/social/groups', { name: 'Voice Check', members: [bola.id, chi.id, dayo.id], clientId: host.id() }, ada)
   assert.equal(group.code, 'created')

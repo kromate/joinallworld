@@ -76,7 +76,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm run build
+      - id: build
+        run: npm run build
       - name: Existing app UI model and component checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
@@ -125,12 +126,14 @@ jobs:
           src/app/features/social/socialClient.test.ts
 
       - name: Existing scene adapter and atlas checks
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --import ./scripts/node-scene-css.ts
           --test --test-concurrency=1
           src/scene/city-scenes.test.ts src/map3d/geo/atlas.test.ts
 
       - name: Existing map renderer, water and startup checks
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --import ./scripts/node-scene-css.ts
           --test --test-concurrency=1
@@ -143,6 +146,7 @@ jobs:
           src/models/vehicles/vehicles.test.ts
 
       - name: Existing directory and public discovery components
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           --test-name-pattern='Neighbours:|People:|Contacts: found players'
@@ -150,6 +154,7 @@ jobs:
           src/app/features/social/socialComponents.test.ts
 
       - name: Existing shopping, housing and career checks
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:|sim tabs:|Profile:|Goals:'
@@ -228,11 +233,19 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-      - run: npm ci --no-audit --no-fund
+      - id: root-install
+        run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
-      - run: npm run build
-      - run: npm run size:download
-      - run: npm test
-      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
-      - run: npm run test:edge
+      - id: build
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
+        run: npm run build
+      - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run size:download
+      - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm test
+      - id: worker-install
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
+        run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
+        run: npm run test:edge

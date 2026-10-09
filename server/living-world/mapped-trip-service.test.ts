@@ -3,7 +3,7 @@ import test from 'node:test'
 import { fixture, flakyDisk, snapshot } from '../test-fixture.ts'
 import { ROUTE_MODULES } from '../routes/index.ts'
 import type { RouteContext, RouteHandler, RouteKey, RouteModule } from '../types.ts'
-import type { MappedMotionVerifier, MappedPhysicalResolver } from './mapped-trip-service.ts'
+import type { MappedMotionVerifier, MappedPhysicalResolver, VerifiedMappedMotion } from './mapped-trip-service.ts'
 import { createMappedTripService, eraseMappedTripForOwner, readMappedTripForOwner } from './mapped-trip-service.ts'
 import { createDriving, readValidatedDrivingState } from '../../src/game/living-world/driving.ts'
 import type { DrivingRoute, DrivingState } from '../../src/game/living-world/driving.ts'
@@ -42,7 +42,7 @@ function testResolver(current = availability): MappedPhysicalResolver {
     },
   })
 }
-const testMotionVerifier: MappedMotionVerifier = input => ({ kind: 'verified-server-motion', actor: input.actor, cityId: input.cityId,
+const testMotionVerifier = (input: Parameters<MappedMotionVerifier>[0]): VerifiedMappedMotion => ({ kind: 'verified-server-motion', actor: input.actor, cityId: input.cityId,
   location: input.location, tripId: input.tripId, fleetUnitId: input.fleetUnitId, leaseGeneration: input.leaseGeneration,
   leaseStartRevision: input.leaseStartRevision, fleetRevision: input.fleetRevision,
   routeId: input.route.id, routeVersion: input.route.version,
@@ -157,7 +157,7 @@ test('an oversized per-actor map is quarantined before current, start, or erasur
   const f = await setup(t, testResolver()), player = await onboard(f)
   await seedPermission(f, player)
   await f.server.store.transact(db => {
-    const rows = Object.fromEntries(Array.from({ length: 1025 }, (_, index) => [`actor-${index}`, { v: 77, tripId: `future-${index}` }]))
+    const rows: Record<string, unknown> = Object.fromEntries(Array.from({ length: 1025 }, (_, index) => [`actor-${index}`, { v: 77, tripId: `future-${index}` }]))
     rows[player.id] = { v: 1, publicId: player.id, tripId: 'owned-row' }
     ;(db.livingWorld as Record<string, unknown>).mappedTrips = rows
   })
@@ -209,7 +209,7 @@ test('test-only accepted resolver exercises server controls, duplicate packets, 
   const recovery = await post(f, 'recover', { cityId: 'lagos', requestId: f.id(), tripId: trip.tripId, revision: reloaded.trip!.revision }, player)
   assert.deepEqual([recovery.ok, recovery.code, recovery.trip?.state.status, recovery.trip?.recovery], [true, 'recovery_required', 'paused', true])
   const owner = readMappedTripForOwner(await f.server.store.read(db => db), player.id)
-  assert.equal(owner && owner !== false ? owner.tripId : null, trip.tripId)
+  assert.equal(owner !== null && owner !== false ? owner.tripId : null, trip.tripId)
   assert.equal(eraseMappedTripForOwner(await f.server.store.read(db => db), player.id), false, 'the shared fleet schema retains the actor lease, so erasure fails closed')
   assert.equal(readMappedTripForOwner(await f.server.store.read(db => db), 'someone-else'), null, 'the helper never lists another actor’s fleet record')
 })

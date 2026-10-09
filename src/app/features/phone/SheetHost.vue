@@ -11,7 +11,7 @@
 // The dialog keeps the id `life-dialog`: existing panels and the phone's stylesheet are written
 // against it. It goes when the last of them is converted.
 import { computed, onBeforeUnmount, ref, shallowRef, watch } from 'vue'
-import type { Component } from 'vue'
+import type { Component, ShallowRef } from 'vue'
 import '../../../ui/controls.css' // the fields, selects and buttons every sheet's panel uses (a panel that does not import it itself would be unstyled until one that does has loaded)
 import { useApp } from '../../state/app.ts'
 import BaseSheet from '../../ui/BaseSheet.vue'
@@ -22,7 +22,7 @@ const inPhone = shell.inPhone
 const panel = computed(() => (sheet.value?.kind === 'panel' ? shell.byId.get(sheet.value.id) ?? null : null))
 const lock = computed(() => { void game.view.value; return sheet.value ? shell.lockOf() : null })
 const body = ref<{ back(): boolean } | null>(null)
-const renderer = shallowRef<Component | null>(null)
+const renderer: ShallowRef<Component | null> = shallowRef(null)
 const failed = ref(false)
 let loading: Promise<void> | null = null
 let gone = false

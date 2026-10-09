@@ -14,6 +14,10 @@ interface WorkerHost {
   ready: Promise<URL>
   dispose(): Promise<void>
   dispatchFetch(url: string, init?: RequestInit): Promise<Response>
+  unsafeGetDurableObjectStorage(script: string, name: string, id: { name: string }): Promise<StoredObject>
+}
+interface StoredObject {
+  exec(sql: string, ...values: (string | number | null)[]): Promise<Record<string, unknown>[]>
 }
 interface WorkerTools {
   Miniflare: new (options: Record<string, unknown>) => WorkerHost
@@ -42,8 +46,12 @@ async function fixture(t: TestContext) {
       compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
       durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'teaching-fixture', FOUNDER_EMAIL_SHA256: '',
         ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: '1' } : {}) },
-      serviceBindings: { ASSETS: () => new Response('asset') } }), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} })
+      serviceBindings: { ASSETS: () => new Response('asset') } }), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
     await worker.ready
+  }
+  async function storage(): Promise<StoredObject> {
+    assert.ok(worker)
+    return worker.unsafeGetDurableObjectStorage('joinallworld-teaching', 'JoinAllworldState', { name: 'joinallworld-v1' })
   }
   async function request(path: string, cookie = '', body?: object): Promise<Response> {
     assert.ok(worker)
@@ -74,7 +82,7 @@ async function fixture(t: TestContext) {
     assert.equal(response.status, 200)
     return (await response.json() as { state: LifeState }).state
   }
-  return { start, player, action, life }
+  return { start, player, action, life, storage }
 }
 
 function activeTeaching(state: LifeState) {
@@ -132,6 +140,25 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   }
   const beforeFinal = await h.life(cookie)
   const finalIntent = answerBody(beforeFinal, 'one-fifth')
+  const db = await h.storage()
+  await db.exec(`CREATE TRIGGER test_reject_teaching_wage BEFORE INSERT ON wallet_effects
+    WHEN NEW.amount = 3000 AND NEW.reason = 'Teaching shift'
+    BEGIN SELECT RAISE(ABORT, 'teaching wage write injected'); END`)
+  let failed: TeachingReply
+  try { failed = await h.action(cookie, finalIntent) }
+  finally { await db.exec('DROP TRIGGER IF EXISTS test_reject_teaching_wage') }
+  assert.deepEqual([failed.status, failed.error], [503, 'storage_unavailable'])
+  const afterFailure = await h.life(cookie), failedAction = activeTeaching(afterFailure)
+  assert.deepEqual([failedAction.teaching, failedAction.teachingGeneration, afterFailure.cash,
+    afterFailure.completedShifts, afterFailure.career.shifts, afterFailure.career.performance,
+    afterFailure.skills.charisma, afterFailure.career.teachingGeneration,
+    afterFailure.ledger.filter(row => row.amount === 3000).length],
+    [beforeFinal.activeAction && beforeFinal.activeAction.kind === 'activity' ? beforeFinal.activeAction.teaching : null,
+      generation, beforeFinal.cash, beforeFinal.completedShifts, beforeFinal.career.shifts, beforeFinal.career.performance,
+      beforeFinal.skills.charisma, generation, beforeFinal.ledger.filter(row => row.amount === 3000).length])
+  const receipts = await db.exec('SELECT COUNT(*) AS count FROM action_receipts WHERE action_id = ?', finalIntent.actionId)
+  assert.equal(receipts[0]?.['count'], 0, 'the failed transaction did not retain the action receipt')
+
   const [one, duplicate] = await Promise.all([h.action(cookie, finalIntent), h.action(cookie, finalIntent)])
   assert.deepEqual([one.status, one.code, duplicate.status, duplicate.code, [one.duplicate, duplicate.duplicate].filter(Boolean).length],
     [200, 'shift_completed', 200, 'shift_completed', 1])

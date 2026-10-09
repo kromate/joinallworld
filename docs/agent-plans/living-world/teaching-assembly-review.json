@@ -1,0 +1,104 @@
+{
+  "reviewedAt": "2026-10-09T12:14:26.221550+00:00",
+  "assemblyHead": "49c6afc93acd55c24cf3567698ca9526b4795e23",
+  "qualification": "Observed uncommitted assembly source; per-file hashes bind this read-only review, not an accepted candidate SHA. No tests/build/browser run. Integration sole writer.",
+  "ownedPublishedPacket": "34a898dfecdc0dcd34f6ebc75df649f3228f7e80",
+  "previousTurn": "progress:34a898df opt-in/recovery packet published and submitted",
+  "files": {
+    "server/server.ts": "c3b7fb310c3f45c56ef4049e3f0e7d01cb1ba9dc92013e40494b4c0f6353f26c",
+    "server/host-context.ts": "a17e6d27d37c0e60a91ffb739476a360164439d2ac39d5f17c2479f8785a4ab4",
+    "server/life-service.ts": "f4801b7f35a48a3abebc10837a95f65620bbbfd499478664fffc8d06c7cb3818",
+    "deploy/cloudflare-worker.ts": "a36e7587f98f7a0e13a1861d9eec37910c669f2c7151018e90d5d6ba34187093",
+    "src/game/util.ts": "470428fd0b875ea9e78790eb2969547ff9fa7062fe9c9dbe4db06d16670e8557",
+    "src/game/systems/career.ts": "6985be923e3b1a4d51de17dcf928cd54e7b757051c8178da080f2acd39412473",
+    "src/game/systems/activities.ts": "a22bdbba4ba4a936fa6abd14abfda7f2672d7364e22ab898a438ac6957feb98a",
+    "src/game/systems/core.ts": "7d1209fee18835a1d98b71407d8fc5fafd5322a3161fd32678b41813063fa25b",
+    "src/app/state/game.ts": "4502912aab6c6ab451838d99703b33ba8627f862a97c9467de71bf652082f7ad",
+    "src/game/teaching-career.test.ts": "7cb2060aaef584b539da536d9646d55ab1d3c574d51f2089ff64158be7328944",
+    "src/game/teaching-start-policy.test.ts": "2eebf92e1da6249646344aa3ce847dc5f447ae69a3d5115f08b7e80ed4acafdb",
+    "server/teaching-career.test.ts": "96b3314f0b91fdce69eae87ead11a1de7dc295b56d437df36a04d001c8c61598",
+    "scripts/living-world-browser-qa.mjs": "7b6b88c09432b73b5af5af131de55ed70c341fb3a3081098b13e2fd38cb41536",
+    "deploy/living-world-teaching.edge.test.ts": "872b74d9a12d1bd85a10e7b334dced6dabdd003c803266fba4cff550fadd1b8f",
+    ".github/workflows/ci.yml": "894f3ca8d75ffe6d40743b860ef4090e137b48f1c666d05d61f618bdc9be34f6",
+    "wrangler.jsonc": "07db03f1124627e7b8604b8889578cbc89708905ccbdf3a37f892eb54956216e"
+  },
+  "findings": [
+    {
+      "result": "source-aligned",
+      "evidence": "Node options defaultfalse; lifeAuthority trusted player/internal act contexts pass flag; Worker literalenv===1; makeContext preserves only literaltrue. No requestpayload opt-in."
+    },
+    {
+      "result": "source-aligned",
+      "evidence": "Saved marked restoration and time guard remain unconditional; tests initialON/twoSQLite restartsOFF; positiveNode/browserfixtures explicitoptiontrue."
+    },
+    {
+      "result": "not-a-bug",
+      "evidence": "Settlement advance has no new-startflag but career automatic behavior only commutes and arrival asks user tostartshift; no automatic lesson-start route requires change."
+    },
+    {
+      "result": "missing-evidence",
+      "evidence": "Current focused CI contains no explicit teaching engine/Node/Worker steps. Canonical full globs discover all, but priorfull skipped. Exact execution required."
+    },
+    {
+      "result": "open-activation-requirement",
+      "evidence": "Local client view lacks server-owned informationalcapability; positiveinteractivecaption notaccepted. OFFbaseline caption honest."
+    }
+  ],
+  "requiredFiles": [
+    "src/game/teaching-career.test.ts",
+    "src/game/teaching-start-policy.test.ts",
+    "server/teaching-career.test.ts",
+    "deploy/living-world-teaching.edge.test.ts"
+  ],
+  "next": "Integration publishes complete frozen candidate and runs exact compiler/budgets/focused teaching/full/nativebrowser/recovery checks. No separate rootCI restart.",
+  "sourceAccounting": {
+    "inventoryRuntimePaths": 277,
+    "missingIntendedPaths": [],
+    "qualification": "Presence check only; imported/shared source semantics require independent exact-candidate review."
+  },
+  "nextMissingEvidenceProposal": "Unapplied bounded final Worker-write failure proposal using temporary test-only SQLite trigger; no actual candidate mutation/startup/test at this point.",
+  "verifiedRuntimeModels": [
+    {
+      "role": "Sol",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "recordedAt": "2026-10-09T12:12:19.293Z"
+    },
+    {
+      "role": "/root/luna_journeys",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "recordedAt": "2026-10-09T12:06:24.925Z"
+    },
+    {
+      "role": "/root/luna_goalmatic",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "recordedAt": "2026-10-09T12:04:09.292Z"
+    },
+    {
+      "role": "/root/luna_driving",
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "recordedAt": "2026-10-09T12:16:48.256Z"
+    }
+  ],
+  "modelEvidence": "Actual session turn_context model/effort; worker session_meta parent/path match current root. Bounded metadata read, no worker-name inference.",
+  "exactCandidateExecution": {
+    "sha": "c199ac0db0a34d976d097b176e41b7e78cb7c07b",
+    "runId": "37929205877",
+    "conclusion": "failure",
+    "teachingNode": "12/12PASS0skip",
+    "livingWorker": "10/10PASS0skip, including actual gate-off teaching SQLite restart",
+    "qualification": "Only named scoped passes, full compiler/UI/voice fail. Earlier uncommitted hashes are historical source review; execution receipt binds c199."
+  },
+  "failedWriteProposal": {
+    "status": "unapplied/unrun, independently source reviewed",
+    "files": [
+      "teaching-worker-write-failure.patch",
+      "teaching-worker-write-failure.md"
+    ],
+    "checks": "apply-check PASS against34a; preserves concurrent exact-intent race, initialON/twoOFF restarts, static verified wage reason",
+    "qualification": "Trigger SQL abort intended actual rollback; not durability-barrier/production backup/corruption evidence"
+  }
+}

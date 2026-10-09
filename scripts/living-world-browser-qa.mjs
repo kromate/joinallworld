@@ -17,10 +17,109 @@ const CHROME = process.env.CHROME
 const OUTPUT = resolve(process.env.LW_QA_OUTPUT_DIR || `${tmpdir()}/living-world-teaching-qa-${process.pid}`)
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 
+/** @typedef {Record<string, unknown>} JsonRecord */
+/** @typedef {JsonRecord & {request?: {url?: string}; requestId?: string; errorReason?: string; url?: string; frame?: {id?: string; loaderId?: string}; frameId?: string; name?: string; loaderId?: string}} DevToolsEvent */
+/** @typedef {JsonRecord & {data?: string; product?: string; browserContextId?: string; targetId?: string; sessionId?: string; frameTree?: {frame?: {id?: string; loaderId?: string}}; errorText?: string; loaderId?: string; exceptionDetails?: object; result?: {value?: unknown}}} DevToolsResult */
+/** @typedef {{resolve: (value: DevToolsResult) => void; reject: (reason: Error) => void; timer: ReturnType<typeof setTimeout>; method: string}} PendingCommand */
+/** @typedef {(event: DevToolsEvent, sessionId?: string) => void} DevToolsListener */
+/** @typedef {{x: number; y: number; width: number; height: number}} BrowserPoint */
+/** @typedef {{width: number; scrollWidth: number; buttons: Array<{width: number; height: number}>}} ViewportObservation */
+/** @typedef {{cash: number; stage?: string; retry?: boolean; noTeaching?: boolean}} RenderExpectation */
+/** @typedef {{page: BrowserPage; contextId: string; targetId: string}} BrowserPageContext */
+/** @typedef {{readyState: string; localRoot: boolean; appRoot: boolean; lesson: boolean; lessonChoiceCount: number; progressStatus: boolean; activityLoadFailure: boolean; balance: boolean; characterCreator: boolean; quickStart: boolean; sessionStart: boolean; connectionAlert: boolean; scene: boolean; knownText: Record<string, boolean>}} FailureDomObservation */
+/** @typedef {FailureDomObservation & {runtimeExceptions: number}} FailureObservation */
+/** @typedef {{state: {cash: number; location?: string; spot?: string; onboarding?: {required: boolean; done: boolean}; activeAction?: {teaching?: {stage: string; revision: number; feedback?: string | null}} | null; ledger: Array<{amount: number}>}} LifeResponse */
+/** @typedef {Awaited<ReturnType<typeof fixture>>} Fixture */
+
+/** @param {unknown} value @returns {value is JsonRecord} */
+function isRecord(value) { return typeof value === 'object' && value !== null && !Array.isArray(value) }
+
+/** @param {unknown} value @returns {DevToolsEvent} */
+function readDevToolsEvent(value) {
+  if (!isRecord(value)) return {}
+  const request = isRecord(value.request) && typeof value.request.url === 'string' ? { url: value.request.url } : undefined
+  const frame = isRecord(value.frame) ? {
+    ...(typeof value.frame.id === 'string' ? { id: value.frame.id } : {}),
+    ...(typeof value.frame.loaderId === 'string' ? { loaderId: value.frame.loaderId } : {}),
+  } : undefined
+  return {
+    ...(request ? { request } : {}),
+    ...(typeof value.requestId === 'string' ? { requestId: value.requestId } : {}),
+    ...(typeof value.errorReason === 'string' ? { errorReason: value.errorReason } : {}),
+    ...(typeof value.url === 'string' ? { url: value.url } : {}),
+    ...(frame ? { frame } : {}),
+    ...(typeof value.frameId === 'string' ? { frameId: value.frameId } : {}),
+    ...(typeof value.name === 'string' ? { name: value.name } : {}),
+    ...(typeof value.loaderId === 'string' ? { loaderId: value.loaderId } : {}),
+  }
+}
+
+/** @param {unknown} value @returns {DevToolsResult} */
+function readDevToolsResult(value) {
+  if (!isRecord(value)) return {}
+  /** @type {DevToolsResult['frameTree']} */
+  let frameTree
+  if (isRecord(value.frameTree) && isRecord(value.frameTree.frame)) {
+    frameTree = { frame: {
+      ...(typeof value.frameTree.frame.id === 'string' ? { id: value.frameTree.frame.id } : {}),
+      ...(typeof value.frameTree.frame.loaderId === 'string' ? { loaderId: value.frameTree.frame.loaderId } : {}),
+    } }
+  }
+  const result = isRecord(value.result) && Object.hasOwn(value.result, 'value') ? { value: value.result.value } : undefined
+  return {
+    ...(typeof value.data === 'string' ? { data: value.data } : {}),
+    ...(typeof value.product === 'string' ? { product: value.product } : {}),
+    ...(typeof value.browserContextId === 'string' ? { browserContextId: value.browserContextId } : {}),
+    ...(typeof value.targetId === 'string' ? { targetId: value.targetId } : {}),
+    ...(typeof value.sessionId === 'string' ? { sessionId: value.sessionId } : {}),
+    ...(frameTree ? { frameTree } : {}),
+    ...(typeof value.errorText === 'string' ? { errorText: value.errorText } : {}),
+    ...(typeof value.loaderId === 'string' ? { loaderId: value.loaderId } : {}),
+    ...(isRecord(value.exceptionDetails) ? { exceptionDetails: value.exceptionDetails } : {}),
+    ...(result ? { result } : {}),
+  }
+}
+
+/** @param {unknown} value @returns {value is FailureDomObservation} */
+function isFailureDomObservation(value) {
+  if (!isRecord(value) || !isRecord(value.knownText)) return false
+  const booleanKeys = ['localRoot', 'appRoot', 'lesson', 'progressStatus', 'activityLoadFailure', 'balance', 'characterCreator', 'quickStart', 'sessionStart', 'connectionAlert', 'scene']
+  return typeof value.readyState === 'string' && typeof value.lessonChoiceCount === 'number'
+    && booleanKeys.every(key => typeof value[key] === 'boolean')
+    && Object.values(value.knownText).every((item) => typeof item === 'boolean')
+}
+
+/** @param {unknown} value @returns {value is ViewportObservation} */
+function isViewportObservation(value) {
+  return isRecord(value) && typeof value.width === 'number' && Number.isFinite(value.width)
+    && typeof value.scrollWidth === 'number' && Number.isFinite(value.scrollWidth)
+    && Array.isArray(value.buttons) && value.buttons.every((button) => isRecord(button)
+      && typeof button.width === 'number' && Number.isFinite(button.width)
+      && typeof button.height === 'number' && Number.isFinite(button.height))
+}
+
+/** @param {unknown} value @returns {value is LifeResponse} */
+function isLifeResponse(value) {
+  if (!isRecord(value) || !isRecord(value.state) || typeof value.state.cash !== 'number' || !Array.isArray(value.state.ledger)
+    || !value.state.ledger.every((row) => isRecord(row) && typeof row.amount === 'number')) return false
+  const state = value.state
+  if (state.onboarding !== undefined && (!isRecord(state.onboarding) || typeof state.onboarding.required !== 'boolean' || typeof state.onboarding.done !== 'boolean')) return false
+  if (state.activeAction !== undefined && state.activeAction !== null) {
+    if (!isRecord(state.activeAction)) return false
+    const teaching = state.activeAction.teaching
+      if (teaching !== undefined && (!isRecord(teaching) || typeof teaching.stage !== 'string' || typeof teaching.revision !== 'number'
+      || (teaching.feedback !== undefined && teaching.feedback !== null && typeof teaching.feedback !== 'string'))) return false
+  }
+  return (state.location === undefined || typeof state.location === 'string')
+    && (state.spot === undefined || typeof state.spot === 'string')
+}
+
+/** @param {unknown} value @param {string} message @returns {asserts value} */
 function requireCondition(value, message) {
   if (!value) throw new Error(message)
 }
 
+/** @param {unknown} value */
 async function writeReceipt(value) {
   const text = `${JSON.stringify(value)}\n`
   requireCondition(Buffer.byteLength(text) <= 8192, 'bounded QA receipt exceeded its size limit')
@@ -29,12 +128,14 @@ async function writeReceipt(value) {
   await rename(temporary, resolve(OUTPUT, 'receipt.json'))
 }
 
+/** @param {string} cookie */
 function parseCookie(cookie) {
   const split = cookie.indexOf('=')
   requireCondition(split > 0, 'fixture session cookie shape was unsupported')
   return { name: cookie.slice(0, split), value: cookie.slice(split + 1) }
 }
 
+/** @param {string} value @param {string} origin */
 function isFixtureOrigin(value, origin) {
   try {
     const candidate = new URL(value)
@@ -45,14 +146,27 @@ function isFixtureOrigin(value, origin) {
 }
 
 class DevTools {
+  /** @param {string} url */
   constructor(url) {
     this.socket = new WebSocket(url, { maxPayload: 8 * 1024 * 1024 })
     this.nextId = 0
+    /** @type {Map<number, PendingCommand>} */
     this.pending = new Map()
+    /** @type {Map<string, Set<DevToolsListener>>} */
     this.listeners = new Map()
     this.socket.on('message', raw => {
-      let packet
-      try { packet = JSON.parse(raw.toString()) } catch { return }
+      /** @type {unknown} */
+      let decoded
+      try { decoded = JSON.parse(raw.toString()) } catch { return }
+      if (!isRecord(decoded)) return
+      const packet = {
+        ...(typeof decoded.id === 'number' ? { id: decoded.id } : {}),
+        ...(typeof decoded.method === 'string' ? { method: decoded.method } : {}),
+        ...(typeof decoded.sessionId === 'string' ? { sessionId: decoded.sessionId } : {}),
+        params: readDevToolsEvent(decoded.params),
+        result: readDevToolsResult(decoded.result),
+        ...(isRecord(decoded.error) ? { error: decoded.error } : {}),
+      }
       if (packet.id && this.pending.has(packet.id)) {
         const pending = this.pending.get(packet.id)
         this.pending.delete(packet.id)
@@ -61,6 +175,7 @@ class DevTools {
         else pending.resolve(packet.result || {})
         return
       }
+      if (typeof packet.method !== 'string') return
       for (const listener of this.listeners.get(packet.method) || []) listener(packet.params || {}, packet.sessionId)
     })
     this.socket.on('error', () => {})
@@ -68,6 +183,7 @@ class DevTools {
 
   async open() { await once(this.socket, 'open') }
 
+  /** @param {string} method @param {Record<string, unknown>} [params] @param {string} [sessionId] @returns {Promise<DevToolsResult>} */
   send(method, params = {}, sessionId) {
     const id = ++this.nextId
     return new Promise((resolvePromise, reject) => {
@@ -80,6 +196,7 @@ class DevTools {
     })
   }
 
+  /** @param {string} method @param {DevToolsListener} listener */
   on(method, listener) {
     const set = this.listeners.get(method) || new Set()
     set.add(listener)
@@ -91,16 +208,26 @@ class DevTools {
 }
 
 class BrowserPage {
+  /** @param {DevTools} devtools @param {string} sessionId @param {string} origin */
   constructor(devtools, sessionId, origin) {
     this.devtools = devtools
     this.sessionId = sessionId
     this.origin = origin
+    /** @type {(() => void) | null} */
     this.unlisten = null
+    /** @type {(() => void) | null} */
+    this.unlistenNetwork = null
+    /** @type {(() => void) | null} */
+    this.unlistenSocket = null
+    /** @type {(() => void) | null} */
+    this.unlistenException = null
     this.exceptionCount = 0
   }
 
+  /** @param {string} cookie @param {boolean} mobile @param {() => void} noteExternalRequest */
   async initialize(cookie, mobile, noteExternalRequest) {
     const sessionId = this.sessionId
+    /** @param {string} method @param {Record<string, unknown>} [params] */
     const send = (method, params = {}) => this.devtools.send(method, params, sessionId)
     await send('Page.enable')
     await send('Runtime.enable')
@@ -111,16 +238,16 @@ class BrowserPage {
     await send('Fetch.enable', { patterns: [{ urlPattern: '*' }] })
     this.unlisten = this.devtools.on('Fetch.requestPaused', (event, eventSession) => {
       if (eventSession !== sessionId) return
-      const sameOrigin = isFixtureOrigin(event.request.url, this.origin)
+      const sameOrigin = typeof event.request?.url === 'string' && isFixtureOrigin(event.request.url, this.origin)
       if (!sameOrigin) noteExternalRequest()
       void send(sameOrigin ? 'Fetch.continueRequest' : 'Fetch.failRequest',
         sameOrigin ? { requestId: event.requestId } : { requestId: event.requestId, errorReason: 'BlockedByClient' }).catch(() => {})
     })
     this.unlistenNetwork = this.devtools.on('Network.requestWillBeSent', event => {
-      if (!isFixtureOrigin(event.request.url, this.origin)) noteExternalRequest()
+      if (typeof event.request?.url !== 'string' || !isFixtureOrigin(event.request.url, this.origin)) noteExternalRequest()
     })
     this.unlistenSocket = this.devtools.on('Network.webSocketCreated', event => {
-      if (!isFixtureOrigin(event.url, this.origin)) noteExternalRequest()
+      if (typeof event.url !== 'string' || !isFixtureOrigin(event.url, this.origin)) noteExternalRequest()
     })
     await send('Network.setCookie', {
       ...parseCookie(cookie), url: this.origin, path: '/', httpOnly: true, sameSite: 'Lax', secure: false,
@@ -139,6 +266,7 @@ class BrowserPage {
     }
   }
 
+  /** @param {string} url */
   async navigate(url) {
     requireCondition(new URL(url).origin === this.origin, 'refusing navigation outside the disposable fixture origin')
     await this.waitForDocument(() => this.devtools.send('Page.navigate', { url }, this.sessionId))
@@ -148,7 +276,9 @@ class BrowserPage {
     await this.waitForDocument(() => this.devtools.send('Page.reload', { ignoreCache: true }, this.sessionId))
   }
 
+  /** @param {() => Promise<DevToolsResult>} startNavigation */
   async waitForDocument(startNavigation) {
+    /** @param {string} method @param {Record<string, unknown>} [params] */
     const send = (method, params = {}) => this.devtools.send(method, params, this.sessionId)
     await send('Page.setLifecycleEventsEnabled', { enabled: true })
     const tree = await send('Page.getFrameTree')
@@ -181,6 +311,7 @@ class BrowserPage {
     }
   }
 
+  /** @param {string} expression @returns {Promise<unknown>} */
   async evaluate(expression) {
     const result = await this.devtools.send('Runtime.evaluate', {
       expression, returnByValue: true, awaitPromise: true, userGesture: false,
@@ -189,6 +320,7 @@ class BrowserPage {
     return result.result?.value
   }
 
+  /** @param {string} expression @param {string} message @param {number} [timeout] */
   async wait(expression, message, timeout = PAGE_WAIT_MS) {
     const stop = Date.now() + timeout
     while (Date.now() < stop) {
@@ -198,11 +330,13 @@ class BrowserPage {
     throw new Error(message)
   }
 
+  /** @param {string} label */
   async waitChoice(label) {
     const encoded = JSON.stringify(label)
     await this.wait(`[...document.querySelectorAll('.teaching-shift__choice')].some(node => node.textContent.trim() === ${encoded})`, 'expected next teaching choice did not render')
   }
 
+  /** @param {RenderExpectation} expectation @param {string} message */
   async waitRendered({ cash, stage, retry = false, noTeaching = false }, message) {
     const expectedCash = JSON.stringify(money(cash))
     const expectedStage = stage === undefined ? 'null' : JSON.stringify(stage)
@@ -227,6 +361,7 @@ class BrowserPage {
     })()`, message)
   }
 
+  /** @param {string} name */
   async screenshot(name) {
     const result = await this.devtools.send('Page.captureScreenshot', {
       format: 'png', fromSurface: true, captureBeyondViewport: false,
@@ -236,6 +371,7 @@ class BrowserPage {
     await writeFile(resolve(OUTPUT, name), bytes)
   }
 
+  /** @returns {Promise<FailureObservation>} */
   async failureObservation() {
     const dom = await this.evaluate(`(() => {
       const visible = (selector) => [...document.querySelectorAll(selector)].some((node) => {
@@ -268,9 +404,11 @@ class BrowserPage {
         },
       };
     })()`)
+    requireCondition(isFailureDomObservation(dom), 'browser failure observation had an unsupported shape')
     return { ...dom, runtimeExceptions: this.exceptionCount }
   }
 
+  /** @param {string} label @returns {Promise<BrowserPoint>} */
   async rect(label) {
     const encoded = JSON.stringify(label)
     const value = await this.evaluate(`(() => {
@@ -284,27 +422,36 @@ class BrowserPage {
       if (!top || (top !== button && !button.contains(top))) return null;
       return {x:r.x+r.width/2,y:r.y+r.height/2,width:r.width,height:r.height};
     })()`)
-    requireCondition(value && Number.isFinite(value.x) && Number.isFinite(value.y), 'expected rendered lesson choice was not available')
-    return value
+    requireCondition(isRecord(value) && typeof value.x === 'number' && Number.isFinite(value.x)
+      && typeof value.y === 'number' && Number.isFinite(value.y)
+      && typeof value.width === 'number' && Number.isFinite(value.width)
+      && typeof value.height === 'number' && Number.isFinite(value.height), 'expected rendered lesson choice was not available')
+    return { x: value.x, y: value.y, width: value.width, height: value.height }
   }
 
+  /** @param {string} label */
   async click(label) {
     const point = await this.rect(label)
+    /** @param {string} method @param {Record<string, unknown>} params */
     const send = (method, params) => this.devtools.send(method, params, this.sessionId)
     await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: point.x, y: point.y })
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1 })
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1 })
   }
 
+  /** @param {string} label */
   async touch(label) {
     const point = await this.rect(label)
+    /** @param {string} method @param {Record<string, unknown>} params */
     const send = (method, params) => this.devtools.send(method, params, this.sessionId)
     await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: point.x, y: point.y, id: 1 }] })
     await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] })
   }
 
+  /** @param {string} label */
   async key(label) {
     const encoded = JSON.stringify(label)
+    /** @param {string} type @param {string} key @param {string} code @param {number} vk */
     const send = (type, key, code, vk) => this.devtools.send('Input.dispatchKeyEvent', {
       type, key, code, windowsVirtualKeyCode: vk, nativeVirtualKeyCode: vk,
       ...(key === 'Enter' && type === 'char' ? { text: '\r', unmodifiedText: '\r' } : {}),
@@ -333,11 +480,13 @@ class BrowserPage {
   }
 
   async viewport() {
-    return await this.evaluate(`(() => {
+    const value = await this.evaluate(`(() => {
       const root=document.documentElement;
       const buttons=[...document.querySelectorAll('.teaching-shift__choice')].map(b=>{const r=b.getBoundingClientRect();return {width:Math.round(r.width),height:Math.round(r.height)}});
       return {width:root.clientWidth,scrollWidth:root.scrollWidth,buttons};
     })()`)
+    requireCondition(isViewportObservation(value), 'browser viewport observation had an unsupported shape')
+    return value
   }
 
   dispose() {
@@ -349,12 +498,16 @@ class BrowserPage {
   }
 }
 
+/** @param {Fixture} f @param {string} cookie @returns {Promise<LifeResponse>} */
 async function life(f, cookie) {
   const response = await f.request('/api/life?city=lagos', undefined, cookie)
   requireCondition(response.status === 200, 'fixture life read failed')
-  return await response.json()
+  const value = await response.json()
+  requireCondition(isLifeResponse(value), 'fixture life response had an unsupported shape')
+  return value
 }
 
+/** @param {Fixture} f @param {string} name */
 async function setupTeacher(f, name) {
   const created = await f.request('/api/session', { name, onboarding: true })
   requireCondition(created.status === 200, 'fixture could not create an ordinary onboarding session')
@@ -387,6 +540,7 @@ async function setupTeacher(f, name) {
   return { device, starting: current.state }
 }
 
+/** @param {import('node:test').TestContext} t @param {string} chromePath */
 async function startBrowser(t, chromePath) {
   const profile = await mkdtemp(`${tmpdir()}/living-world-teaching-chrome-`)
   const child = spawn(chromePath, [
@@ -402,7 +556,9 @@ async function startBrowser(t, chromePath) {
     if (closed) return
     closed = true
     for (const signal of ['SIGTERM', 'SIGKILL']) {
-      try { process.kill(process.platform === 'win32' ? child.pid : -child.pid, signal) } catch {}
+      if (typeof child.pid === 'number') {
+        try { process.kill(process.platform === 'win32' ? child.pid : -child.pid, signal) } catch {}
+      }
       await Promise.race([once(child, 'exit').catch(() => {}), delay(signal === 'SIGTERM' ? 1500 : 500)])
       if (child.exitCode !== null || child.signalCode !== null) break
     }
@@ -416,20 +572,28 @@ async function startBrowser(t, chromePath) {
   while (Date.now() < markerEnd) {
     try {
       const lines = (await readFile(marker, 'utf8')).trim().split('\n')
-      if (lines.length >= 2 && /^\d+$/.test(lines[0])) {
-        const browser = new DevTools(`ws://127.0.0.1:${lines[0]}${lines[1]}`)
+      const port = lines[0], browserPath = lines[1]
+      if (typeof port === 'string' && typeof browserPath === 'string' && lines.length >= 2 && /^\d+$/.test(port)) {
+        const browser = new DevTools(`ws://127.0.0.1:${port}${browserPath}`)
         await browser.open()
         t.after(() => browser.close())
         const version = await browser.send('Browser.getVersion')
         return {
           browser,
           version: String(version.product || 'unknown').slice(0, 80),
+          /** @param {string} origin @param {string} cookie @param {boolean} mobile @param {(page: BrowserPage) => Promise<void> | void} [onInitialFailure] @returns {Promise<BrowserPageContext>} */
           async page(origin, cookie, mobile, onInitialFailure) {
             const context = await browser.send('Target.createBrowserContext', { disposeOnDetach: true })
-            active.add(context.browserContextId)
-            const target = await browser.send('Target.createTarget', { url: 'about:blank', browserContextId: context.browserContextId })
-            const attached = await browser.send('Target.attachToTarget', { targetId: target.targetId, flatten: true })
-            const page = new BrowserPage(browser, attached.sessionId, origin)
+            const contextId = context.browserContextId
+            requireCondition(typeof contextId === 'string' && contextId.length > 0, 'DevTools did not return an isolated browser context identity')
+            active.add(contextId)
+            const target = await browser.send('Target.createTarget', { url: 'about:blank', browserContextId: contextId })
+            const targetId = target.targetId
+            requireCondition(typeof targetId === 'string' && targetId.length > 0, 'DevTools did not return the isolated page identity')
+            const attached = await browser.send('Target.attachToTarget', { targetId, flatten: true })
+            const sessionId = attached.sessionId
+            requireCondition(typeof sessionId === 'string' && sessionId.length > 0, 'DevTools did not return the isolated page session')
+            const page = new BrowserPage(browser, sessionId, origin)
             try {
               await page.initialize(cookie, mobile, () => { externalRequests += 1 })
               await page.navigate(`${origin}/`)
@@ -437,8 +601,9 @@ async function startBrowser(t, chromePath) {
               await onInitialFailure?.(page)
               throw error
             }
-            return { page, contextId: context.browserContextId, targetId: target.targetId }
+            return { page, contextId, targetId }
           },
+          /** @param {BrowserPageContext} page */
           async closePage(page) {
             page.page.dispose()
             await browser.send('Target.closeTarget', { targetId: page.targetId }).catch(() => {})
@@ -464,16 +629,21 @@ async function startBrowser(t, chromePath) {
   throw new Error('Chrome DevTools did not become ready within the startup limit')
 }
 
-test('rendered teaching practice survives interruption and settles one wage on desktop and 390px touch', { timeout: LIMIT_MS }, async t => {
+test('rendered teaching practice survives interruption and settles one wage on desktop and 390px touch', { timeout: LIMIT_MS }, async (/** @type {import('node:test').TestContext} */ t) => {
   let sha = 'unavailable'
   let expectedSha = process.env.LW_QA_SOURCE_SHA || 'missing'
+  /** @type {{ok: boolean; buildId: string} | null} */
   let healthReceipt = null
   let browserVersion = 'unreported'
   let phase = 'preflight'
+  /** @type {Record<string, ViewportObservation>} */
   const measurements = {}
+  /** @type {string[]} */
   const screenshots = []
+  /** @type {FailureObservation | {runtimeExceptions: number} | null} */
   let failureObservation = null
   let failureScreenshotWritten = false
+  /** @param {BrowserPage} page */
   const captureFailure = async (page) => {
     if (failureObservation) return
     failureObservation = await page.failureObservation().catch(() => ({ runtimeExceptions: page.exceptionCount }))
@@ -502,7 +672,10 @@ test('rendered teaching practice survives interruption and settles one wage on d
   const f = await fixture(t, { distDir: resolve(root, 'dist'), sessionTtlMs: 30 * 60_000, buildId: `joinallworld-${sha}`, interactiveTeachingStarts: true })
   const healthResponse = await fetch(`${f.base}/api/health`)
   requireCondition(healthResponse.status === 200, 'fixture health endpoint failed')
-  const health = await healthResponse.json()
+  const healthBody = await healthResponse.json()
+  requireCondition(isRecord(healthBody) && typeof healthBody.ok === 'boolean'
+    && (healthBody.build === undefined || typeof healthBody.build === 'string'), 'fixture health response had an unsupported shape')
+  const health = healthBody
   requireCondition(health.ok === true, 'fixture health response was not ready')
   const expectedBuildId = `joinallworld-${sha}`.slice(0, 40)
   requireCondition(health.build === expectedBuildId, 'fixture build identity did not match the exact source SHA')

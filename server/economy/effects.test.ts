@@ -44,7 +44,7 @@ test('a real completed shift counts and displays only cash the wallet actually c
   await loadCityContent('lagos')
   const job = JOBS.teaching, shift = job.shift, now = Date.UTC(2026, 0, 5, 8)
   const running = (cash: number) => {
-    const context = makeContext({ now, cityId: 'lagos', seed: `shift-${cash}` })
+    const context = makeContext({ now, cityId: 'lagos', seed: `shift-${cash}`, interactiveTeachingStarts: true })
     const state = createLife({ t: now, cash: 5000, job: job.id, location: job.workplace.venue, spot: job.workplace.spot }, context)
     const started = dispatch(state, { type: 'activity', payload: { id: shift.id } }, context)
     assert.equal(started.ok, true)

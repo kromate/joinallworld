@@ -164,7 +164,7 @@ function readAuth(db: Db, actor: string): Auth {
 }
 function authMatches(auth: Auth, actor: string, city: string, now: number): boolean {
   const q = auth.qualification, e = auth.evidence, r = auth.rental
-  return Boolean(q && q !== false && e && e !== false && r && r !== false
+  return Boolean(q !== null && q !== false && e !== null && e !== false && r !== null && r !== false
     && q.publicId === actor && q.cityId === city && q.qualification.id === QUALIFICATION && q.qualification.version === 1
     && q.courseId === 'district-practice' && q.courseVersion === '1' && q.qualification.status === 'active'
     && e.journeyId === q.qualification.evidenceJourneyId && e.cityId === city && e.location !== ''
@@ -237,8 +237,8 @@ function verifiedMotion(value: unknown, expected: MotionExpectation): value is V
 }
 function fleetEvidence(actor: string, at: number, auth: Auth, proof: AcceptedMappedPhysicalEvidence): TrustedFleetEvidence | null {
   const witnessed = authMatches(auth, actor, CITY, at)
-  const qualification = auth.qualification && auth.qualification !== false ? auth.qualification.qualification : null
-  const permission = auth.rental && auth.rental !== false ? auth.rental.entitlement : null
+  const qualification = auth.qualification !== null && auth.qualification !== false ? auth.qualification.qualification : null
+  const permission = auth.rental !== null && auth.rental !== false ? auth.rental.entitlement : null
   // Missing/revoked account permissions may only invalidate custody; they can never start or move a trip.
   const q = qualification ?? { id: QUALIFICATION, version: 1, status: 'revoked' as const }
   const p = permission ?? { actor, resourceId: RESOURCE, scope: 'district-driving', qualificationId: QUALIFICATION, qualificationVersion: 1, issuedAt: 0, status: 'revoked' as const }
@@ -396,8 +396,8 @@ function startFingerprint(actor: string, location: string, proof: AcceptedMapped
 export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhysicalResolver, motionVerifier?: MappedMotionVerifier) {
   async function resolve(db: Db, session: SessionRecord, location: string, at: number, auth: Auth, tripId: string | null) {
     if (!resolver || !motionVerifier) return null
-    const qualification = auth.qualification && auth.qualification !== false ? auth.qualification.qualification : null
-    const permission = auth.rental && auth.rental !== false ? auth.rental.entitlement : null
+    const qualification = auth.qualification !== null && auth.qualification !== false ? auth.qualification.qualification : null
+    const permission = auth.rental !== null && auth.rental !== false ? auth.rental.entitlement : null
     let raw: unknown
     try {
       raw = await resolver({ db, session, cityId: CITY, location, at,
@@ -518,8 +518,8 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
       const fleetRead = readFleet(root)
       if (fleetRead === false) return response(null, 'fleet_quarantined')
       const fleet = fleetRead ?? emptyFleetState()
-      const activeQualification = auth.qualification && auth.qualification !== false ? auth.qualification.qualification : null
-      const activeRental = auth.rental && auth.rental !== false ? auth.rental : null
+      const activeQualification = auth.qualification !== null && auth.qualification !== false ? auth.qualification.qualification : null
+      const activeRental = auth.rental !== null && auth.rental !== false ? auth.rental : null
       const p = activeRental?.entitlement
       if (!activeQualification || !p) return response(null, 'starter_permission_required')
       const fp = startFingerprint(session.publicId, location, proof, p.issuedAt)
@@ -580,6 +580,7 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
       auth = currentAuth
       let row = readTrip(raw, session.publicId, proof)
       if (!row) return response(null, 'mapped_trip_quarantined')
+      const tripId = row.tripId, fleetUnitId = row.fleetUnitId
       if (row.status === 'returned') {
         const fingerprint = JSON.stringify([city, parsed.tripId, parsed.sequence, parsed.frames]), prior = row.lastPacket
         if (prior?.sequence === parsed.sequence) return prior.fingerprint === fingerprint
@@ -621,9 +622,9 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
       }
       if (!revalidated.ok) return response(view(row, proof.route), revalidated.code)
       if (row.status !== 'active' || row.state.status !== 'running') return response(view(row, proof.route), row.status === 'recovery' ? 'recovery_required' : 'trip_paused')
-      const leasedUnit = fs.units.find(unit => unit.id === row.fleetUnitId)
+      const leasedUnit = fs.units.find(unit => unit.id === fleetUnitId)
       const lease = leasedUnit?.lease
-      if (!lease || lease.tripId !== row.tripId || lease.actor !== session.publicId || lease.status !== 'active')
+      if (!lease || lease.tripId !== tripId || lease.actor !== session.publicId || lease.status !== 'active')
         return response(view(row, proof.route), 'fleet_lease_mismatch')
       if (row.revision >= MAX || row.nextSequence >= MAX) return response(view(row, proof.route), 'counter_exhausted')
       const elapsed = now - row.lastInputAt
@@ -665,10 +666,10 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
           sweepAccepted = false; sweepFailureCode = 'authority_quarantined'; break
         }
         const latestFleet = readFleet(world(db))
-        if (!latestFleet || latestFleet === false) { sweepAccepted = false; sweepFailureCode = 'fleet_quarantined'; break }
-        const latestUnit = latestFleet.units.find(unit => unit.id === row.fleetUnitId)
+        if (latestFleet === false || latestFleet === null) { sweepAccepted = false; sweepFailureCode = 'fleet_quarantined'; break }
+        const latestUnit = latestFleet.units.find(unit => unit.id === fleetUnitId)
         const latestLease = latestUnit?.lease
-        if (latestFleet.revision !== fs.revision || !latestLease || latestLease.tripId !== row.tripId
+        if (latestFleet.revision !== fs.revision || !latestLease || latestLease.tripId !== tripId
           || latestLease.actor !== session.publicId || latestLease.generation !== lease.generation
           || latestLease.startRevision !== lease.startRevision || latestLease.status !== 'active') {
           sweepAccepted = false; sweepFailureCode = 'fleet_revision_conflict'; break
@@ -797,7 +798,7 @@ export function createMappedTripService(ctx: RouteContext, resolver?: MappedPhys
         return { ok: true, code: target === 'paused' ? 'paused' : 'resumed' }
       })
       const latestRaw = readOwnerTrip(world(db), session.publicId)
-      const latest = latestRaw && latestRaw !== false ? readTrip(latestRaw, session.publicId, proof) : null
+      const latest = latestRaw !== null && latestRaw !== false ? readTrip(latestRaw, session.publicId, proof) : null
       return response(latest ? view(latest, proof.route) : null, String(result.code ?? 'transition_refused'), result.ok === true,
         undefined, 'duplicate' in result && result.duplicate === true)
     })

@@ -1,0 +1,74 @@
+{
+  "sourceSha": "c199ac0db0a34d976d097b176e41b7e78cb7c07b",
+  "runId": "37929205877",
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37929205877",
+  "collectedAt": "2026-10-09T12:26:47.218657+00:00",
+  "status": "completed",
+  "conclusion": "failure",
+  "scopedEvidence": {
+    "teachingEngineNode": {
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 1393.922257,
+      "scope": "New-start policy; positive engine; actual Node race/failed-final-save receipts"
+    },
+    "livingWorker": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 89521.860853,
+      "files": 8,
+      "teachingRestartCaseDurationMs": 2370.076731,
+      "scope": "Actual Miniflare/SQLite ON start and two OFF restarts, wrong answer/time guard, concurrent once wage, terminal receipt replay, fresh OFF markerless start. New SQL failed-final-Worker-write proposal NOT included."
+    },
+    "ui": {
+      "tests": 433,
+      "pass": 432,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 55987.623513,
+      "failure": "server/economy/effects.test.ts43 positive teaching fixture omitted trusted opt-in"
+    },
+    "voiceNode": {
+      "tests": 3,
+      "pass": 2,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 828.793591
+    },
+    "businessVoiceWorker": {
+      "tests": 2,
+      "pass": 1,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 2965.788408
+    }
+  },
+  "compiler": {
+    "node22": "FAIL",
+    "node24": "FAIL",
+    "files": [
+      "server/living-world/mapped-trip-service.ts",
+      "server/living-world/mapped-trip-service.test.ts",
+      "scripts/living-world-browser-qa.mjs",
+      "src/app/features/phone/SheetHost.vue"
+    ],
+    "qualification": "Actual errors preserved; no baseline suppression or transfer of scoped runtime passes to compiler acceptance."
+  },
+  "releasePolicy": "PASS",
+  "fullBuildBudgetSourceServerWorker": "Not reached after compiler failures",
+  "browserStagingProduction": "UNVERIFIED/not deployed",
+  "artifacts": {
+    "allLogBytes": 457212,
+    "allLogSha256": "46d68b10baa32dddff36371b9eda926ace8ff23d48eaee7af20290532f507a20"
+  },
+  "repairOwnership": {
+    "mappedAndBrowserQa": "Integration assigned exclusive assembly Luna writers; Root duplicate assignments immediately interrupted, no runtime file delta in Root checkout",
+    "SheetHost": "Integration Astra",
+    "economyPositiveOptinAndVoiceFixture": "Integration parent"
+  },
+  "sourceReviewedRepairs": "Explicit null/false guards preserve quarantine; stable validated trip/fleet ids avoid callback null assertions; typed verifier fixtures preserve invalid input cases; economy start context explicitly opt-in without reward assertion changes; SheetHost explicit ShallowRef declaration without runtime change. Retest pending."
+}

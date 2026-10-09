@@ -95,6 +95,14 @@ try {
       await evaluate(`window.characterReview.sample(${sourceClip==='lie-down'?2.0:.5},1.5707963267948966)`);
       await capture(body+'-source-'+sourceClip+'-profile');
     }
+    for(const wristMode of ['rest','source']){
+      await evaluate(`window.characterReview.set(${JSON.stringify({wristMode,outfit:'casual',motionMode:'sourceclip',focus:'body',expression:'neutral'})})`);
+      for(const sourceClip of ['cook','eat','drink']){
+        await evaluate(`window.characterReview.set(${JSON.stringify({sourceClip})})`);
+        await evaluate('window.characterReview.sample(.5,1.5707963267948966)');
+        await capture(body+'-wrist-'+wristMode+'-'+sourceClip+'-profile');
+      }
+    }
     for(const footMode of ['source','rigid']){
       await evaluate(`window.characterReview.set(${JSON.stringify({footMode,outfit:'casual',motionMode:'actions',expression:'neutral',focus:'body'})})`);
       for(const pose of ['idle','walk','sit']){

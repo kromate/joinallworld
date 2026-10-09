@@ -73,36 +73,59 @@ function setFamily(root, family) {
 }
 function rootState(root) { return { position: root.position.toArray(), quaternion: root.quaternion.toArray(), scale: root.scale.toArray() }; }
 const SEAT_BONE_NAMES = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigRightUpLeg'];
-function fullSeatRegionOracle(root, meshes, minimumRelevantWeight = 0.15) {
+function independentSeatRegionSelection(root, meshes, region, minimumRelevantWeight = 0.15) {
   root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
-  const point = new THREE.Vector3(), perMesh = [];
-  let minY = Infinity, maxY = -Infinity, indexedRegionVertices = 0;
+  for (const mesh of meshes) mesh.skeleton.update();
+  const inverseRoot = root.matrixWorld.clone().invert();
+  const hipWorld = root.getObjectByName('mixamorigHips').getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot);
+  const forward = new THREE.Vector3(...region.forwardLocal), lateral = new THREE.Vector3(...region.lateralLocal);
+  const position = new THREE.Vector3(), result = [];
   for (const mesh of meshes) {
     const index = mesh.geometry.index, indices = mesh.geometry.getAttribute('skinIndex'), weights = mesh.geometry.getAttribute('skinWeight');
     assert(index && indices && weights, `${mesh.name} oracle inputs`);
-    const relevant = new Set(SEAT_BONE_NAMES.map((name) => {
+    const support = Object.fromEntries(SEAT_BONE_NAMES.map((name) => {
       const found = mesh.skeleton.bones.findIndex((bone) => bone.name === name);
-      assert(found >= 0, `${mesh.name} has ${name}`); return found;
+      assert(found >= 0, `${mesh.name} has ${name}`); return [name, found];
     }));
     const start = Math.max(0, mesh.geometry.drawRange.start ?? 0);
     const count = Number.isFinite(mesh.geometry.drawRange.count) ? mesh.geometry.drawRange.count : index.count;
     const end = Math.min(index.count, start + count), used = new Set();
     for (let i = start; i < end; i++) used.add(index.getX(i));
-    let meshMin = Infinity, meshMax = -Infinity, regionCount = 0;
+    const selected = [];
     for (const vertex of used) {
-      let relevantWeight = 0;
-      for (let channel = 0; channel < 4; channel++) if (relevant.has(indices.getComponent(vertex, channel))) {
-        relevantWeight += weights.getComponent(vertex, channel);
+      let hipWeight = 0, leftWeight = 0, rightWeight = 0;
+      for (let channel = 0; channel < 4; channel++) {
+        const bone = indices.getComponent(vertex, channel), weight = weights.getComponent(vertex, channel);
+        if (bone === support.mixamorigHips) hipWeight += weight;
+        else if (bone === support.mixamorigLeftUpLeg) leftWeight += weight;
+        else if (bone === support.mixamorigRightUpLeg) rightWeight += weight;
       }
-      if (relevantWeight < minimumRelevantWeight) continue;
+      if (hipWeight < minimumRelevantWeight || hipWeight < leftWeight + rightWeight) continue;
+      mesh.getVertexPosition(vertex, position); position.applyMatrix4(mesh.matrixWorld).applyMatrix4(inverseRoot).sub(hipWorld);
+      const rearward = -position.dot(forward), lateralOffset = Math.abs(position.dot(lateral));
+      if (rearward >= region.rearwardAtLeast && lateralOffset <= region.lateralAbsAtMost
+        && position.y >= region.verticalFromHip[0] && position.y <= region.verticalFromHip[1]) selected.push(vertex);
+    }
+    result.push({ mesh, vertices: Uint32Array.from(selected), indexedVertices: used.size });
+  }
+  return result;
+}
+function fullSeatRegionOracle(root, regionSamples) {
+  root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+  const point = new THREE.Vector3(), perMesh = [];
+  let minY = Infinity, maxY = -Infinity, indexedRegionVertices = 0;
+  for (const { mesh, vertices, indexedVertices } of regionSamples) {
+    let meshMin = Infinity, meshMax = -Infinity;
+    for (const vertex of vertices) {
       mesh.getVertexPosition(vertex, point); mesh.localToWorld(point);
       assert(Number.isFinite(point.y), `${mesh.name}/${vertex} oracle result finite`);
-      meshMin = Math.min(meshMin, point.y); meshMax = Math.max(meshMax, point.y); regionCount++;
+      meshMin = Math.min(meshMin, point.y); meshMax = Math.max(meshMax, point.y);
     }
-    assert(regionCount > 0, `${mesh.name} full oracle found seat-region vertices`);
-    perMesh.push({ name: mesh.name, indexedVertices: used.size, seatRegionVertices: regionCount, minY: meshMin, maxY: meshMax });
-    indexedRegionVertices += regionCount; minY = Math.min(minY, meshMin); maxY = Math.max(maxY, meshMax);
+    if (!vertices.length) { perMesh.push({ name: mesh.name, indexedVertices, seatRegionVertices: 0, minY: null, maxY: null }); continue; }
+    perMesh.push({ name: mesh.name, indexedVertices, seatRegionVertices: vertices.length, minY: meshMin, maxY: meshMax });
+    indexedRegionVertices += vertices.length; minY = Math.min(minY, meshMin); maxY = Math.max(maxY, meshMax);
   }
+  assert(Number.isFinite(minY) && Number.isFinite(maxY), 'full seat region oracle found indexed pelvis vertices');
   return { minY, maxY, indexedRegionVertices, perMesh };
 }
 function imageFreeJson(input) { return imageFreeGlb(input); }
@@ -190,6 +213,11 @@ try {
       assert(body && garment, `${key} visible production Body and authored outfit`);
       const seatMeshes = [body, garment];
       seatProbe = createNativeSeatSurfaceProbe(root, seatMeshes);
+      const oracleRegion = independentSeatRegionSelection(root, seatMeshes, seatProbe.metrics.posteriorRegion,
+        seatProbe.metrics.minimumRelevantWeight);
+      const oracleCountByMesh = Object.fromEntries(oracleRegion.map(({ mesh, vertices }) => [mesh.name, vertices.length]));
+      assert.deepEqual(oracleCountByMesh, seatProbe.metrics.candidateVerticesByMesh,
+        `${key}: independent complete-index region selection matches cached candidate membership`);
       solver = createNativeClipSolver(root, { sourceRest: sourceSampler.restLandmarks, footSurface: footwear.object, bodySurfaceMeshes: [...seatMeshes, footwear.object] });
       const duration = sourceSampler.durations.get('sit');
       const phaseRows = [];
@@ -200,12 +228,12 @@ try {
         const anchored = solver.applyFrame(frame, { kind: 'seat-anchor', hipWorld: [0, SEAT_TOP, 0], floorY: FLOOR_Y });
         const applyMs = performance.now() - applyStart;
         const before = seatProbe.sample();
-        const beforeOracle = fullSeatRegionOracle(root, seatMeshes);
+        const beforeOracle = fullSeatRegionOracle(root, oracleRegion);
         assert(Math.abs(before.minY - beforeOracle.minY) <= 1e-7, `${key}/${phase}: cached seat min matches independent full region oracle before adjustment`);
         const requestedPelvisDelta = seatAnchorDelta(SEAT_TOP, before.minY);
         const corrected = solver.applyFrame(frame, { kind: 'seat-anchor', hipWorld: [0, SEAT_TOP + requestedPelvisDelta, 0], floorY: FLOOR_Y });
         const after = seatProbe.sample();
-        const afterOracle = fullSeatRegionOracle(root, seatMeshes);
+        const afterOracle = fullSeatRegionOracle(root, oracleRegion);
         assert(Math.abs(after.minY - afterOracle.minY) <= 1e-7, `${key}/${phase}: cached seat min matches independent full region oracle after adjustment`);
         const row = { phase, seconds, anchoredHipY: SEAT_TOP, supportStatus: anchored.supportStatus,
           feetStatus: anchored.seatFeetStatus ?? null, seatRegionBefore: before, fullRegionOracleBefore: beforeOracle, requestedPelvisDelta,
@@ -252,8 +280,10 @@ const result = {
     clipSolver: sha(readFileSync(path.join(here, 'native-clip-solver.ts'))),
     seatSurface: sha(readFileSync(path.join(here, 'native-seat-surface.ts'))),
     presentation: sha(readFileSync(presentationPath)), footwear: sha(readFileSync(footwearPath)) },
-  supportDefinition: { boneNames: ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigRightUpLeg'], relevantWeightAtLeast: 0.15,
-    maxCachedVertices: 4096, meshes: 'visible indexed Body + one selected authored outfit; excludes shoes, feet/lower legs and hair' },
+  supportDefinition: { supportBone: 'mixamorigHips', minimumHipsWeight: 0.15,
+    dominance: 'hips weight must be at least the combined left/right proximal-thigh weight',
+    envelope: 'posterior to the measured foot-to-toe forward axis, within pelvis-width and hip-to-knee derived vertical bounds',
+    maxCachedVertices: 4096, meshes: 'currently indexed Body + one selected authored outfit; empty hidden Body region is permitted; excludes shoes, lower legs and hair' },
   cases, failures,
   limitations: ['No renderer/browser image or mobile performance claim.',
     'The virtual seat top is a diagnostic input, not an actual game chair measurement.',

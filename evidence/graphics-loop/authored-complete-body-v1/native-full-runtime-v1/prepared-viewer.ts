@@ -338,7 +338,7 @@ function frame(now: number) {
           currentNpcLook = next;
         }
         if (playerWalking && now > interactUntil) {
-          player.stride(phase, false);
+          player.stride(phase * Math.PI * 2, false);
           player.place(-0.78 + Math.sin(phase * Math.PI * 2) * 0.18, 0, 0, 0);
         }
         player.step(dt);

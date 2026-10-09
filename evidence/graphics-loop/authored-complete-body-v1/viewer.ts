@@ -15,6 +15,7 @@ import shoeHideMap from './authored-footwear/out/shoes01-body-hide-map.json';
 import { createNativeHandPoseController } from './native-hand-pose.ts';
 import { NativeCurlHairFactory, type NativeCurlHairLease, NATIVE_CURL_HAIR_SOURCE_SHA256 } from './native-curl-hair.ts';
 import { createNativeSourceLandmarkSampler } from './native-source-sampler.ts';
+import { createNativeWristOrientationController } from './native-wrist-orientation/native-wrist-controller.ts';
 import { createNativeClipSolver, type NativeClipApplyResult } from './native-clip-solver.ts';
 import { createNativeActionController, type NativeActionPose, type NativeActionSnapshot } from './native-actions.ts';
 
@@ -67,7 +68,8 @@ let curls:NativeCurlHairLease|null=null;
 let sampler:ReturnType<typeof createNativeSourceLandmarkSampler>|null=null;
 let clipSolver:ReturnType<typeof createNativeClipSolver>|null=null;
 let clipSnapshot:NativeClipApplyResult|null=null;
-let state={footMode:'source',outfit:'casual',motionMode:'actions',sourceClip:'jog',body:'woman',expression:'grin',pose:'idle',focus:'body',hairMode:'source'};
+let wrists:ReturnType<typeof createNativeWristOrientationController>|null=null;
+let state={wristMode:'rest',footMode:'source',outfit:'casual',motionMode:'actions',sourceClip:'jog',body:'woman',expression:'grin',pose:'idle',focus:'body',hairMode:'source'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
 function fitAuthoredHeight(object:THREE.Group){
@@ -97,6 +99,7 @@ function draw(){
     if(state.motionMode==='sourceclip'&&sampler&&clipSolver){
       const frame=sampler.sampleClip(state.sourceClip,seconds,['lie-down','get-up','sit-enter','sit-exit','door','home-door'].includes(state.sourceClip)?'clamp':'loop');
       clipSnapshot=clipSolver.applyFrame(frame,state.sourceClip==='lie-down'?{kind:'body-surface',surfaceY:0}:state.sourceClip==='sit'?{kind:'seat-anchor',hipWorld:[0,.55*candidate.object.scale.y+candidate.object.position.y,0],floorY:0}:{kind:'flat-feet',floorY:0});
+      if(state.wristMode==='source')wrists?.apply(frame);
     }else if(state.pose==='rest'){
       const body=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
       body.skeleton.pose();candidate.object.updateMatrixWorld(true);
@@ -119,7 +122,8 @@ function draw(){
       material.transparent=!cutout;material.depthWrite=cutout;material.alphaTest=alphaTest;
       material.forceSinglePass=state.hairMode!=='source';
     }
-    hands?.apply(state.pose==='walk'?'walk':['cook','eat','drink'].includes(state.pose)?'grip':'relaxed',seconds);
+    const handPose=state.motionMode==='sourceclip'?state.sourceClip:state.pose;
+    hands?.apply(handPose==='walk'||handPose==='jog'?'walk':['cook','eat','drink'].includes(handPose)?'grip':'relaxed',seconds);
     candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);
   }
   scenes.forEach((scene,index)=>{
@@ -138,11 +142,11 @@ function draw(){
 }
 async function set(next:Partial<typeof state>){
   const previous=state;state={...state,...next};
-  for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip','footMode']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
+  for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip','footMode','wristMode']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
   const seed='complete-authored-human';
   const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:state.outfit,fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body||previous.outfit!==state.outfit||previous.footMode!==state.footMode){
-    const ticket=++generation;curls?.dispose();curls=null;clipSolver?.dispose();clipSolver=null;sampler?.dispose();sampler=null;hands?.dispose();rigidFootwear?.dispose();rigidFootwear=null;footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();familyRig?.dispose();familyRig=null;candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
+    const ticket=++generation;wrists?.dispose();wrists=null;curls?.dispose();curls=null;clipSolver?.dispose();clipSolver=null;sampler?.dispose();sampler=null;hands?.dispose();rigidFootwear?.dispose();rigidFootwear=null;footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();familyRig?.dispose();familyRig=null;candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
     const loadedFamilyRig=applyNativeFamilyRigCorrection(loaded[1].object);
@@ -164,6 +168,7 @@ async function set(next:Partial<typeof state>){
     const motionSource=await authoredKit.authoredCharacterAssets.loadMotionRig();
     if(ticket!==generation)return;
     sampler=createNativeSourceLandmarkSampler(motionSource.root.clone(true),motionSource.clips);
+    wrists=createNativeWristOrientationController(candidate.object,sampler.restWristRotations);
     const surfaceMeshes:THREE.SkinnedMesh[]=[];candidate.object.traverse(node=>{const mesh=node as THREE.SkinnedMesh;if(mesh.isSkinnedMesh&&(mesh.name==='Body'||mesh.name==='Authored casual suit'||mesh.name.startsWith('Authored office')||mesh===loadedShoes.object))surfaceMeshes.push(mesh);});
     clipSolver=createNativeClipSolver(candidate.object,{sourceRest:sampler.restLandmarks,footSurface:loadedShoes.object,bodySurfaceMeshes:surfaceMeshes});
     const guide=candidate.object.getObjectByName('Authored hair afro01') as THREE.SkinnedMesh|undefined;
@@ -175,7 +180,7 @@ async function set(next:Partial<typeof state>){
   }else baseline!.wear(look,seed);
   seconds=0;draw();
 }
-for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip','footMode']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
+for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip','footMode','wristMode']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
 document.querySelector('#turn')!.addEventListener('click',()=>{yaw+=Math.PI/2;draw();});
 document.querySelector('#play')!.addEventListener('click',()=>{
   if(running)return;running=true;frames=[];const start=performance.now();

@@ -2,13 +2,25 @@ import * as THREE from 'three';
 import type { NativeSourceFrame, NativeSourceJoint, SourceLandmarks } from './native-source-pose.ts';
 
 export type LegacyPoseClip = 'jog' | 'dance' | 'lie-down';
+export type NativeSourceWristSide = 'left' | 'right';
+export interface NativeSourceWristRotations {
+  readonly forearm: Readonly<Record<NativeSourceWristSide, THREE.Quaternion>>;
+  readonly hand: Readonly<Record<NativeSourceWristSide, THREE.Quaternion>>;
+}
+/** Source frame subtype; the base positional frame interface remains unchanged. */
+export interface NativeWristSourceFrame extends NativeSourceFrame {
+  /** Mutable, sampler-owned values. Consume before requesting another sample. */
+  readonly wristRotations: NativeSourceWristRotations;
+}
 export interface NativeSourceLandmarkSampler {
   readonly restLandmarks: SourceLandmarks;
+  /** Root-relative rest quaternions for the source forearm and hand bones. */
+  readonly restWristRotations: NativeSourceWristRotations;
   readonly durations: ReadonlyMap<string, number>;
   /** Reuses one mixer, its actions and one mutable frame object; consume before the next sample. */
-  sample(clipName: LegacyPoseClip, seconds: number): NativeSourceFrame;
+  sample(clipName: LegacyPoseClip, seconds: number): NativeWristSourceFrame;
   /** Samples any exact clip-pack name; caller must explicitly choose looping or clamping. */
-  sampleClip(clipName: string, seconds: number, timeMode: 'loop' | 'clamp'): NativeSourceFrame;
+  sampleClip(clipName: string, seconds: number, timeMode: 'loop' | 'clamp'): NativeWristSourceFrame;
   dispose(): void;
 }
 
@@ -52,6 +64,8 @@ export function createNativeSourceLandmarkSampler(
   let activeAction: THREE.AnimationAction | undefined;
   const inverseRoot = new THREE.Matrix4();
   const position = new THREE.Vector3();
+  const targetRootRotation = new THREE.Quaternion();
+  const targetNodeRotation = new THREE.Quaternion();
   let disposed = false;
 
   const mutableLandmarks = Object.fromEntries(Object.keys(SOURCE_NAMES).map((joint) => [joint, [0, 0, 0]])) as Record<NativeSourceJoint, [number, number, number]>;
@@ -62,9 +76,32 @@ export function createNativeSourceLandmarkSampler(
     return [joint, p.toArray()];
   })) as Record<NativeSourceJoint, [number, number, number]>;
   const restLandmarks = Object.freeze(restLandmarksMutable) as SourceLandmarks;
-  const frame: NativeSourceFrame = {
+  const wristNodes = {
+    left: { forearm: joints.get('LeftForeArm')!, hand: joints.get('LeftHand')! },
+    right: { forearm: joints.get('RightForeArm')!, hand: joints.get('RightHand')! },
+  };
+  function rootRelativeRotation(node: THREE.Object3D, target: THREE.Quaternion): THREE.Quaternion {
+    sourceRoot.getWorldQuaternion(targetRootRotation).invert();
+    node.getWorldQuaternion(targetNodeRotation);
+    return target.copy(targetRootRotation).multiply(targetNodeRotation).normalize();
+  }
+  const restWristRotations: NativeSourceWristRotations = Object.freeze({
+    forearm: Object.freeze({ left: new THREE.Quaternion(), right: new THREE.Quaternion() }),
+    hand: Object.freeze({ left: new THREE.Quaternion(), right: new THREE.Quaternion() }),
+  });
+  sourceRoot.updateWorldMatrix(true, true);
+  for (const side of ['left', 'right'] as const) {
+    rootRelativeRotation(wristNodes[side].forearm, restWristRotations.forearm[side]);
+    rootRelativeRotation(wristNodes[side].hand, restWristRotations.hand[side]);
+  }
+  const mutableWristRotations: NativeSourceWristRotations = {
+    forearm: { left: new THREE.Quaternion(), right: new THREE.Quaternion() },
+    hand: { left: new THREE.Quaternion(), right: new THREE.Quaternion() },
+  };
+  const frame: NativeWristSourceFrame = {
     clipName: '', duration: 0,
     landmarks: mutableLandmarks as SourceLandmarks,
+    wristRotations: mutableWristRotations,
   };
 
   function restoreNodes(): void {
@@ -74,7 +111,7 @@ export function createNativeSourceLandmarkSampler(
     sourceRoot.updateWorldMatrix(true, true);
   }
 
-  function sampleClip(clipName: string, seconds: number, timeMode: 'loop' | 'clamp'): NativeSourceFrame {
+  function sampleClip(clipName: string, seconds: number, timeMode: 'loop' | 'clamp'): NativeWristSourceFrame {
     if (disposed) throw new Error('Native source landmark sampler is disposed');
     if (timeMode !== 'loop' && timeMode !== 'clamp') throw new Error(`Unsupported source clip time mode ${String(timeMode)}`);
     const clip = clipMap.get(clipName), action = actions.get(clipName);
@@ -95,14 +132,19 @@ export function createNativeSourceLandmarkSampler(
       const target = mutableLandmarks[joint];
       target[0] = position.x; target[1] = position.y; target[2] = position.z;
     }
+    for (const side of ['left', 'right'] as const) {
+      rootRelativeRotation(wristNodes[side].forearm, mutableWristRotations.forearm[side]);
+      rootRelativeRotation(wristNodes[side].hand, mutableWristRotations.hand[side]);
+    }
     return Object.assign(frame, { clipName, duration: clip.duration });
   }
-  function sample(clipName: LegacyPoseClip, seconds: number): NativeSourceFrame {
+  function sample(clipName: LegacyPoseClip, seconds: number): NativeWristSourceFrame {
     return sampleClip(clipName, seconds, clipName === 'lie-down' ? 'clamp' : 'loop');
   }
 
   return {
     restLandmarks,
+    restWristRotations,
     durations: new Map([...clipMap].map(([name, clip]) => [name, clip.duration])),
     sample,
     sampleClip,

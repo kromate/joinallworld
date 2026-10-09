@@ -42,8 +42,10 @@ await new Promise((resolve, reject) => { server.once('listening', resolve); serv
 const port = server.address().port;
 const profile = await mkdtemp(path.join(os.tmpdir(), 'native-prepared-review-'));
 const chromeArgs = [
-  '--headless=new', '--no-sandbox', '--disable-dev-shm-usage', '--remote-debugging-port=0', '--remote-allow-origins=*',
-  '--enable-webgl', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--use-gl=angle', '--use-angle=swiftshader-webgl',
+  '--headless=new', '--no-sandbox', '--renderer-process-limit=1', '--disable-extensions', '--disable-background-networking',
+  '--disable-dev-shm-usage', '--disable-gpu-sandbox', '--remote-debugging-port=0', '--remote-allow-origins=*',
+  '--enable-webgl', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--use-gl=angle', '--use-angle=swiftshader',
+  '--no-first-run', '--no-default-browser-check',
   '--window-size=1440,1120', `--user-data-dir=${profile}`, 'about:blank',
 ];
 const chrome = spawn(chromeBin, chromeArgs, { stdio: ['ignore', 'ignore', 'pipe'] });
@@ -57,7 +59,7 @@ const consoleErrors = [];
 
 async function readDebugPort() {
   const file = path.join(profile, 'DevToolsActivePort');
-  for (let attempt = 0; attempt < 100; attempt++) {
+  for (let attempt = 0; attempt < 300; attempt++) {
     try { return Number((await readFile(file, 'utf8')).split('\n')[0]); }
     catch { if (chrome.exitCode !== null) throw new Error(`Chrome exited early (${chrome.exitCode}): ${chromeStderr}`); await delay(100); }
   }

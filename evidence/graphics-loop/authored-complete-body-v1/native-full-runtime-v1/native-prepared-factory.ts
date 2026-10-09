@@ -14,11 +14,13 @@ import { applyNativeFamilyRigCorrection, type NativeFamilyRigCorrection } from '
 import { applySkinMaterial } from '../skin-material.ts';
 import { applyAuthoredPresentation, type AuthoredPresentation } from '../authored-presentation.ts';
 import { applyAuthoredEyeMaterial } from '../eye-material.ts';
+import { createNativeHandPoseController } from '../native-hand-pose.ts';
+import { createNativeWristOrientationController } from '../native-wrist-orientation/native-wrist-controller.ts';
 import { applyAuthoredFootwear, type AuthoredFootwear } from '../authored-footwear/presentation.ts';
 import shoeHideMap from '../authored-footwear/out/shoes01-body-hide-map.json';
 import { createAuthoredLookBridge } from '../authored-look-bridge.ts';
-import { createNativeSourceLandmarkSampler, type NativeSourceLandmarkSampler } from '../native-source-sampler.ts';
-import { createNativeClipSolver, type NativeClipSolver, type NativeClipSupport, type NativeSourceFrame } from '../native-clip-solver.ts';
+import { createNativeSourceLandmarkSampler, type NativeSourceLandmarkSampler, type NativeWristSourceFrame } from '../native-source-sampler.ts';
+import { createNativeClipSolver, type NativeClipSolver, type NativeClipSupport } from '../native-clip-solver.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from '../../../../src/scene/body/poses.ts';
 
 export interface NativePreparedFactoryOptions {
@@ -366,12 +368,12 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, contacts: ReturnType<typeof createAuthoredFootContacts>, resolveClip: (name: string) => string) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;
   return {
-    apply(frame: NativeSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
+    apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
       if (frame.clipName !== resolveClip(context.clip)) return false;
       const applied = solver.applyFrame(frame, worldSupport(root, context.support));
       if (applied.supportStatus !== 'feet-supported') {
@@ -401,6 +403,8 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
           contactResult = contacts.solve(heightAt);
         }
       }
+      wrists.apply(frame);
+      hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);
       return true;
     },
     beginTransition(clip: string, _from: NativePlacement, crossfadeSeconds: number): void {
@@ -436,6 +440,8 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let sampler: NativeSourceLandmarkSampler | undefined;
   let solver: NativeClipSolver | undefined;
   let contacts: ReturnType<typeof createAuthoredFootContacts> | undefined;
+  let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
+  let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
   let actorDisposed = false;
   let unregisterFactoryClose: (() => boolean) | undefined;
   const clean = (errors: unknown[] = []): void => {
@@ -444,6 +450,8 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     const actions: (() => void)[] = [
       () => contacts?.dispose(),
       () => sampler?.dispose(),
+      () => hands?.dispose(),
+      () => wrists?.dispose(),
       () => solver?.dispose(),
       () => footwear?.dispose(),
       () => presentation?.dispose(),
@@ -497,6 +505,8 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     const motion = await characterKit.authoredCharacterAssets.loadMotionRig();
     checkKit();
     sampler = createNativeSourceLandmarkSampler(motion.root.clone(true), motion.clips);
+    hands = createNativeHandPoseController(character.object);
+    wrists = createNativeWristOrientationController(character.object, sampler.restWristRotations);
     solver = createNativeClipSolver(character.object, { sourceRest: sampler.restLandmarks, footSurface: footwear.object });
     const bounds = solver.measureBodyBounds();
     const standingHeight = bounds.bodyMaxY - bounds.bodyMinY;
@@ -542,13 +552,13 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     const source = {
       has(name: string): boolean { return sampler!.durations.has(resolveClip(name)); },
       duration(name: string): number { return sampler!.durations.get(resolveClip(name)) ?? NaN; },
-      sample(name: string, seconds: number): NativeSourceFrame | null {
+      sample(name: string, seconds: number): NativeWristSourceFrame | null {
         const actual = resolveClip(name);
         if (!sampler!.durations.has(actual)) return null;
         return sampler!.sampleClip(actual, seconds, 'clamp');
       },
     };
-    const posePort = createPosePort(character.object, sampler, solver, contacts, resolveClip);
+    const posePort = createPosePort(character.object, sampler, solver, contacts, hands, wrists, resolveClip);
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,

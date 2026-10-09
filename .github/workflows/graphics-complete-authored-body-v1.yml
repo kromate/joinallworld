@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v25]
+    branches: [codex/graphics-complete-authored-body-v26]
 permissions:
   contents: read
 jobs:
@@ -35,11 +35,13 @@ jobs:
         run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-check.mjs > /tmp/rig-check.log
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-pose-check.mjs > /tmp/native-pose-check.log
-          node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-actions-check.mjs > /tmp/native-actions-check.log
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/clothing-palette-check.mjs
           node --max-old-space-size=64 evidence/graphics-loop/authored-complete-body-v1/eye-material-check.mjs
           python3 evidence/graphics-loop/authored-complete-body-v1/authored-clothing/test_export.py
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check.mjs
+      - name: Check corrected family manual gait diagnostic
+        if: always()
+        run: node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-actions-check.mjs
       - name: Check native hands footwear skin and hair palette
         if: always()
         run: |
@@ -60,22 +62,30 @@ jobs:
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/body-mask-union-check.mjs
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-curl-hair-check.mjs
           node --max-old-space-size=48 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-clip-solver-check.mjs
-      - name: Check rigid footwear and actual prepared player NPC factory
+      - name: Check rigid footwear
+        if: always()
+        run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rigid-footwear-check.mjs
+      - name: Check strict actual prepared player NPC factory
         if: always()
         run: |
-          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rigid-footwear-check.mjs
           node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-runtime.typecheck.json
+      - name: Check actual prepared player NPC factory independently
+        if: always()
+        run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-factory.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-factory-check.mjs
       - name: Compare sparse contact against full indexed geometry
         if: always()
-        continue-on-error: true
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check.mjs
-      - name: Audit seat surface and alternate source direction retarget
+      - name: Audit posterior pelvis seat surface
         if: always()
-        run: |
-          node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-seat-surface-check.mjs
-          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-direction-retarget-check.mjs
+        run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-seat-surface-check.mjs
+      - name: Audit alternate source direction retarget independently
+        if: always()
+        run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-direction-retarget-check.mjs
+      - name: Check actual native wrist controller placement and ownership
+        if: always()
+        run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-controller-check.mjs
       - name: Audit exact source wrist articulation
         if: always()
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-orientation-check.mjs

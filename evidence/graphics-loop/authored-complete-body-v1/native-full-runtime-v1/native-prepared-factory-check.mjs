@@ -149,7 +149,9 @@ try {
   assert.equal(player.wear(savedLook('woman', 'casual', 'afro'), 'player-seed'), false, 'family change requires a new prepared actor');
   assert.equal(captureBones(player.object), beforeReject, 'family rejection is mutation-free');
 
-  const sourceBones = player.object.getObjectByName('Body').skeleton.bones;
+  // Moving/posing the player must preserve the other actor sharing its Kit.
+  // The player's own pose is intentionally changed by show('idle') below.
+  const sourceBones = npc.object.getObjectByName('Body').skeleton.bones;
   const restSignature = sourceBones.map((bone) => [bone.name, ...bone.position.toArray(), ...bone.quaternion.toArray()]);
   const parent = new THREE.Group();
   parent.position.set(2.4, 0.3, -1.8);
@@ -164,7 +166,7 @@ try {
   assert.equal(transformedContacts.length, 2, 'sole contacts remain available under transformed parent placement');
   assert.ok(transformedContacts.every((contact) => [contact.x, contact.y, contact.z].every(Number.isFinite)));
   assert.ok(Math.abs(Math.min(...transformedContacts.map(({ y }) => y)) - 0.3) < 0.004, 'pose sampling applies the current parent-local placement before solving contacts');
-  assert.deepEqual(sourceBones.map((bone) => [bone.name, ...bone.position.toArray(), ...bone.quaternion.toArray()]), restSignature);
+  assert.deepEqual(sourceBones.map((bone) => [bone.name, ...bone.position.toArray(), ...bone.quaternion.toArray()]), restSignature, 'placing and reposing the player leaves the NPC skeleton unchanged');
   parent.remove(player.object);
 
   outcome = {

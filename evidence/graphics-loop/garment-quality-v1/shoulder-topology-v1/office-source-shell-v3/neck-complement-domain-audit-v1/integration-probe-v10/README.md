@@ -1,0 +1,7 @@
+# GLB loader cancellation diagnostic (v10)
+
+This isolated remote diagnostic compares the same SHA-pinned shipped male, female, and clip GLBs through `fetch` + `GLTFLoader.parseAsync` and through `GLTFLoader.loadAsync` (Three's `FileLoader`). It also runs two concurrent male `loadAsync` calls to distinguish ordinary loading from duplicate in-flight behavior. The fixture records CDP request initiator/redirect/response/data/finish/failure details and monkey-patches both `AbortController.abort` and `XMLHttpRequest.abort` to retain call stacks, active case, and request URL where available.
+
+All failed or pending GLB requests remain fatal. Each path verifies the served asset hash. The extra FileLoader reference fetch occurs **before** its loader request, so it cannot hide a FileLoader terminal event. This does not reproduce production template-cache ownership, avatar disposal, or renderer behavior; it is a causal loader comparison only. A pass would not establish why the earlier production fixture received `ERR_ABORTED`, nor would it justify waiving that failure.
+
+The remote runner retains the existing build and synthetic gates (220 MiB process-group RSS / 25 seconds each) and browser gate (2 GiB / 60 seconds). It uses isolated Linux headless Chrome with SwiftShader and single-process diagnostic flags; those settings are not a browser or phone performance benchmark. No local build/browser/test was run for this v10 preparation. The original v9 and all earlier remote receipts remain unchanged.

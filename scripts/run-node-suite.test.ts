@@ -122,8 +122,9 @@ interface SuiteJob {
   if: string
   'timeout-minutes': number
   'continue-on-error'?: unknown
+  env: { NODE_OPTIONS: string }
   strategy: { matrix: { node: number[] }; 'fail-fast': boolean; 'max-parallel': number }
-  steps: Array<{ run?: string; 'continue-on-error'?: unknown }>
+  steps: Array<{ run?: string; env?: { NODE_OPTIONS?: string }; 'continue-on-error'?: unknown }>
 }
 test('full CI requires both exhaustive partitions and Worker coverage in bounded successive waves', () => {
   const workflow = readFileSync(new URL('../.github/workflows/ci.yml', import.meta.url), 'utf8')
@@ -142,6 +143,7 @@ test('full CI requires both exhaustive partitions and Worker coverage in bounded
     assert.deepEqual(job.strategy.matrix.node, [22, 24])
     assert.equal(job.strategy['fail-fast'], false)
     assert.equal(job.strategy['max-parallel'], 2)
+    assert.equal(job.env.NODE_OPTIONS, '--max-old-space-size=1536')
     assert.equal(job['continue-on-error'], undefined)
     const commands = job.steps.map(step => step.run).filter((command): command is string => typeof command === 'string')
     const testIndex = commands.findIndex((command: string) => command.startsWith('node --experimental-strip-types scripts/run-node-suite.ts') || command === 'npm run test:edge')
@@ -158,4 +160,9 @@ test('full CI requires both exhaustive partitions and Worker coverage in bounded
     assert.equal(commands.at(-1), `node --experimental-strip-types scripts/run-node-suite.ts ${partition}`)
   }
   assert.equal(worker.steps.at(-1)?.run, 'npm run test:edge')
+  const source = jobs.full
+  assert.ok(source)
+  assert.equal(source.steps.find(step => step.run === 'npm run typecheck')?.env?.NODE_OPTIONS, '')
+  const testConfig = JSON.parse(readFileSync(new URL('../tsconfig/test.json', import.meta.url), 'utf8')) as { include: string[] }
+  assert.ok(testConfig.include.includes('../scripts/run-node-suite.test.ts'))
 })

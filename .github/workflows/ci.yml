@@ -218,6 +218,10 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
+        # Preserve the previously passing remote compiler settings. The game/test heap cap
+        # below is not the compiler's existing limit; local compilers still require their slot.
+        env:
+          NODE_OPTIONS: ''
       # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
       - run: npm run build
       - run: npm run size:download

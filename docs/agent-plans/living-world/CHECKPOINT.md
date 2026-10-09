@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Corrected candidate and independent staging-tool failure review - 2026-10-09T20:08:01.879242+00:00
+
+Previousgoalturn madeprogress: source-pinnedphysical handoff and exact801UI failure/tax arithmetic review published2847a6a5 (push1488exit0). Thisturn independently confirms clean correctedc1f7c1f7; only2tests+3docs changed, runtime801unchanged. Finalatlas38/0fail/0skip log4d44 read/hashed; combined41ownerpass qualified, counts overlap. Test nowexplicitlyrefusesJohannesburg whileCapeTown opensZA. ExactfullCI37984507814 actualjobs running/policyPASS; no transferredfullacceptance. [Review](candidate-c1f7c1f7-review.json).
+
+ReadfrozenWORLD9f source/caller/tests andsanitized16pass receipt2d535c09. Verified actualAstra metadata20:03:34 gpt6astra/medium parentIntegration; independent source reviewMODIFY. Afterrename sync failure loses newidentity incaller450-452; finalcleanupuses oldinode/provenance orleavesrunningcheckpoint. Root confirmedsource andrelayedprecisegate, no privatecontrol/store/credentials/browser/stage read orwrites. [Toolreview](sealed-tooling-9f-source-review.json). Retainstore/fulltenasset/batch/source-policy acceptedat source; owner3dirtyrepairfiles notfrozen/accepted, originalstageupgradepending.
+
+Integration reserved actualnormal stagedschool keyboard/touch/entry/pause/reload/pass/qualification verification in nextacceptedcurrentpackage window; unexecuted. Currentproduction3af unchanged, newstartsOFF, mappedhost/parcel-restock/laterbusiness/liveGoal unfinished. Nextowner postrenamefault repair/fullCI/seal/Astra stage/WORLDrelease/live. GoalACTIVE; zeroextraspend andverified05UTCcutoff unchanged.
+
 ## Replacement exact run and source-only fixture review - 2026-10-09T20:02:35.093447+00:00
 
 Root b3d6f0d0 push87301 terminal0/published. Prior cd18 CI37982009828 endedCANCELLED,10requiredPASS/4Nodepartitions cancelled; no fullacceptance. Replacement fullCI37983496643 is exactly80122 and has actual live jobs. Policy/hostacceptance PASS; completedUI114000013204 FAIL. Root downloaded its official log once (90590 terminal0), SHA63121709 and identified sole staleplanned-country expectation213, actualLondon versusexpectedJohannesburg/London. Source regions277 derivescountryopen correctly fromCapeTown. Owner's test-only repair retainsLondon and adds explicitZAopen/cape-town assertions. No Rootduplicate tests or weakened runtimegate.

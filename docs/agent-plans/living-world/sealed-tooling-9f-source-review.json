@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-09T20:08:01.879242+00:00",
+  "sourceSha": "9f4906443676e659763605dfee844cd097a0e019",
+  "sourcePins": [
+    {
+      "path": "world/tooling/stage-control-file.mjs",
+      "sha256": "2adfbec8754f2e24861ed4690d244e0aa2de974c7084512698fdec00d9311500",
+      "bytes": 3895
+    },
+    {
+      "path": "world/tooling/stage-control-file.test.mjs",
+      "sha256": "d3fe286a958cc20f5ddc3d238112449384b4b91dc306414acc2866569545240a",
+      "bytes": 3088
+    },
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "sha256": "4c1ceb7328a341c8966952385dd5d56d07769bd552de98c3db4a9ff54eba2a93",
+      "bytes": 28433
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.mjs",
+      "sha256": "2975f3f67c71c01b279d4de3adbd942180dd443b9ca2e5c818cec002866622ff",
+      "bytes": 5359
+    },
+    {
+      "path": "world/tooling/sealed-africa-coverage.mjs",
+      "sha256": "43e6ba953cfc97056e143cedc4038522e066fa25da4418ba34ec1458b01efb8e",
+      "bytes": 2977
+    }
+  ],
+  "rootScope": "Source/test/receipt review only. No original private checkpoint/store/credentials/browser or stage read/write/execution.",
+  "astraModelReceipt": {
+    "thread": "01a121e9-f5d0-74f0-9c96-a4cdf6d9b4e5",
+    "parent": "01a12069-9bd0-7eb1-bfe9-150d8af9cd46",
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "metadataAt": "2026-10-09T20:03:34.836Z"
+  },
+  "ownerLocalReceiptSha256": "2d535c098724c546593824855cf6254c28826af9fbd1ee6aa2d37f3e0b0406e8",
+  "ownerTests": {
+    "node": "24.19.0",
+    "pass": 16,
+    "fail": 0,
+    "skip": 0,
+    "scope": "isolated provenance policy, actual local checkpoint file operations, batch and asset coverage",
+    "logSha256": "e87d614bc3da368760cef0e537a109e7cd20cbe302cf3f4dab18699a70e1fcc0"
+  },
+  "localScope": "16policy/file/coverage checks. No after-rename fault/callerpath test at9f. Owner states no actualstage/originalcheckpoint mutation; Root didnotindependently inspect privatevalues.",
+  "acceptedAtSource": [
+    "Random same-private-directory wx0600 temp, fullwrite/fsync/close, original and temp inode checks, atomicrename/directorysync on success.",
+    "Prepublication failure retains original bytes and cleans only owned temporary; staleidentity/oversize/intervening replacement tests.",
+    "Upgrade requiresretainstore, stoppedcheckpoint/deadowner, ancestor/exactsource/package/manifest and immutable originalmarker/linkedhistory<=16.",
+    "Exactten destination selection, no duplicates or silentnonlegacy fallback; onehashed map andgeometry percity plusHTML; original168/175second verifiercaps retained."
+  ],
+  "requiredCorrection": {
+    "code": "postrename-identity-and-provenance",
+    "callee": "stage-control-file.mjs publishes newinode then directorysync/replacement verification can throw without returning it.",
+    "caller": "serve-sealed-africa.mjs450-452 updates controlIdentity/stageStarted onlyafter successfulreturn. Latercleanup can leave runningpublishedcheckpoint or attempt stale oldidentity/source provenance.",
+    "acceptance": [
+      "Propagate publication/new-ownedinode without contents/credentials on afterrename failure.",
+      "Caller retains newlypublished controlState/provenance/identity beforeboundeddispose/finalcheckpoint, never announcesready afterdurabilityfailure.",
+      "Preservestore/newcheckpoint on cleanupfailure, no automaticoldsource rollback/deletion.",
+      "Bounded injected postsync/postrename error and callerpath tests; frozen repairSHA/hash and actualterminalresults."
+    ]
+  },
+  "originalStoreLaunchAccepted": false,
+  "ownerCurrent": "Three dirty repairfiles; no frozen newsource or executed repair result inspected."
+}

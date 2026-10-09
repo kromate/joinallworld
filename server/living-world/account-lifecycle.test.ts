@@ -507,3 +507,32 @@ test('character-bound starter permission survives adoption and parking; account 
   assert.deepEqual(await rows(), { [bola.id]: before[bola.id], [other.id]: before[other.id] },
     'discarded parked character is erased; retained guest and unrelated actor preserve their exact permissions')
 })
+
+test('active clerk decisions survive actual guest adoption and keep-as-guest deletion without a new reward', async t => {
+  const a = await accountHarness(t), guest = await a.guest('Clerk')
+  const path = '/api/living-world/clerk'
+  const begun = await (await a.f.request(path + '/start', { cityId: 'lagos', requestId: a.f.id() }, guest.cookie)).json() as { ok: boolean; revision: number }
+  assert.equal(begun.ok, true)
+  const input = await (await a.f.request(path + '/step', { cityId: 'lagos', requestId: a.f.id(), revision: begun.revision,
+    stepId: 'inspect_receipt', evidenceId: 'receipt' }, guest.cookie)).json() as { ok: boolean; revision: number }
+  assert.equal(input.ok, true)
+  const readRow = () => a.f.server.store.read(db => snapshot((db.livingWorld as { clerk: Record<string, Record<string, unknown>> }).clerk[guest.id]!))
+  const before = await readRow()
+  const linked = await a.signIn('UidClerk', guest.cookie)
+  assert.deepEqual([linked.status, linked.body.outcome, linked.body.character?.id], [200, 'linked', guest.id])
+  const adopted = await readRow()
+  assert.equal(adopted.account, accountIdFromStored(await a.stored()))
+  assert.deepEqual(omitAccount(adopted), omitAccount(before))
+  const exported = await a.proved('/api/account/export', {}, linked.cookie, 'UidClerk')
+  assert.equal(exported.status, 200)
+  const summary = await exported.json() as { livingWorld: { actors: { clerk: unknown }[] } }
+  assert.deepEqual(summary.livingWorld.actors[0]?.clerk, { status: 'present', progress: { scenarioVersion: 1,
+    step: 'inspect_dispatch', revision: 1, claimed: false, updatedAt: before.updatedAt } })
+  const deleted = await a.proved('/api/account/delete', { confirm: 'delete', erase: false }, linked.cookie, 'UidClerk')
+  assert.equal(deleted.status, 200)
+  const guestCookie = deleted.headers.get('set-cookie')?.split(';')[0] ?? ''
+  assert.ok(guestCookie)
+  assert.deepEqual(await readRow(), before)
+  const current = await (await a.f.request(path + '?city=lagos', null, guestCookie)).json() as { ok: boolean; revision: number; claimed: boolean }
+  assert.deepEqual([current.ok, current.revision, current.claimed], [true, 1, false])
+})

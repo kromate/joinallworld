@@ -40,7 +40,7 @@ import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
 import { eraseRealValue, exportRealValue } from '../real-value/privacy.ts';
-import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount } from '../living-world/privacy.ts';
+import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount, rebindClerkAccount } from '../living-world/privacy.ts';
 import type { LivingWorldPrivacyExport } from '../living-world/privacy.ts';
 
 /** Browsers one account may be signed in on; the one unused longest makes room. */
@@ -143,31 +143,34 @@ function privacyMap(value: unknown): value is Record<string, unknown> {
   const prototype = Object.getPrototypeOf(value);
   return prototype === Object.prototype || prototype === null;
 }
-/** Missing barber rows are a no-op; a present row/map must pass the privacy helper's strict same-owner check. */
-function hasBarberProgressRow(db: Db, publicId: string): boolean {
+/** Missing practice rows are a no-op; a present row/map must pass its strict same-owner check. */
+function hasPracticeProgressRow(db: Db, publicId: string, slice: 'barber' | 'clerk'): boolean {
   try {
     if (!privacyPublicId(publicId)) throw new Error('invalid actor id');
     if (!Object.hasOwn(db, 'livingWorld')) return false;
     const root: unknown = Reflect.get(db, 'livingWorld');
     if (root === undefined) return false;
     if (!privacyMap(root)) throw new Error('malformed living-world root');
-    if (!Object.hasOwn(root, 'barber')) return false;
-    const rows: unknown = Reflect.get(root, 'barber');
-    if (!privacyMap(rows)) throw new Error('malformed barber rows');
+    if (!Object.hasOwn(root, slice)) return false;
+    const rows: unknown = Reflect.get(root, slice);
+    if (!privacyMap(rows)) throw new Error('malformed practice rows');
     return Object.hasOwn(rows, publicId);
   } catch {
     throw new Error('privacy-rebind-unavailable');
   }
 }
 function rebindBarberProgress(db: Db, publicId: string, expectedOwner: string | null, nextOwner: string | null): void {
-  if (!hasBarberProgressRow(db, publicId)) return;
-  if (!rebindBarberAccount(db, publicId, expectedOwner, nextOwner)) throw new Error('privacy-rebind-unavailable');
+  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount]] as const) {
+    if (!hasPracticeProgressRow(db, publicId, slice)) continue;
+    if (!rebind(db, publicId, expectedOwner, nextOwner)) throw new Error('privacy-rebind-unavailable');
+  }
 }
-/** An ownerless active archive is trusted only through account.publicId; its barber row may be legacy guest-bound or already account-bound. */
+/** An ownerless active archive is trusted only through account.publicId; its practice rows may be legacy guest-bound or already account-bound. */
 function rebindLegacyActiveBarberProgress(db: Db, publicId: string, owner: string): void {
-  if (!hasBarberProgressRow(db, publicId)) return;
-  if (rebindBarberAccount(db, publicId, owner, owner) || rebindBarberAccount(db, publicId, null, owner)) return;
-  throw new Error('privacy-rebind-unavailable');
+  for (const [slice, rebind] of [['barber', rebindBarberAccount], ['clerk', rebindClerkAccount]] as const) {
+    if (!hasPracticeProgressRow(db, publicId, slice)) continue;
+    if (!rebind(db, publicId, owner, owner) && !rebind(db, publicId, null, owner)) throw new Error('privacy-rebind-unavailable');
+  }
 }
 /** Only the active session and parked archive entries still owned by this account prove a living-world actor id. */
 function privacyActorIds(db: Db, account: AccountRecord, active: SessionRecord | undefined): string[] {

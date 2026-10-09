@@ -3,6 +3,7 @@ import { createDrivingService, readDrivingQualificationEvidence } from '../livin
 import { createQualificationService } from '../living-world/qualification-service.ts'
 import { createBarberService } from '../living-world/barber-service.ts'
 import { createStarterRentalService } from '../living-world/rental-service.ts'
+import { createClerkService } from '../living-world/clerk-service.ts'
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts'
 
 export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
@@ -10,7 +11,12 @@ export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, R
   const qualification = createQualificationService(ctx, readDrivingQualificationEvidence)
   const barber = createBarberService(ctx)
   const rental = createStarterRentalService(ctx)
+  const clerk = createClerkService(ctx)
   return {
+    'GET /api/living-world/clerk': async request => ({ body: await clerk.current(request, request.query.get('city')), renew: true }),
+    'POST /api/living-world/clerk/start': async request => ({ body: await clerk.start(request, await request.json()), renew: true }),
+    'POST /api/living-world/clerk/step': async request => ({ body: await clerk.step(request, await request.json()), renew: true }),
+    'POST /api/living-world/clerk/claim': async request => ({ body: await clerk.claim(request, await request.json()), renew: true }),
     'GET /api/living-world/rental': async request => ({ body: await rental.current(request, request.query.get('city')), renew: true }),
     'POST /api/living-world/rental/claim': async request => ({ body: await rental.claim(request, await request.json()), renew: true }),
     'GET /api/living-world/barber': async request => ({ body: await barber.current(request, request.query.get('city')), renew: true }),

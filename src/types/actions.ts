@@ -376,11 +376,11 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
     serverOnly: true
   }
 
-  /** SERVER ONLY: fixed mannequin result/reward or owned clipper upgrade, checked atomically by the apprenticeship service. */
+  /** SERVER ONLY: fixed fictional practice rewards or owned clipper upgrade, checked atomically by their services. */
   'living-world.server': {
-    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' }
-    ok: 'barber_rewarded' | 'barber_tool_upgraded'
-    fail: 'invalid_barber_action' | 'balance_limit' | 'insufficient_funds'
+    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' } | { op: 'clerk-reward' }
+    ok: 'barber_rewarded' | 'barber_tool_upgraded' | 'clerk_rewarded'
+    fail: 'invalid_barber_action' | 'invalid_clerk_action' | 'balance_limit' | 'insufficient_funds'
     serverOnly: true
   }
 }

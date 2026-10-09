@@ -12,8 +12,15 @@ const exactKeys = (value: Record<string, unknown>, keys: readonly string[]): boo
   return own.length === keys.length && own.every(key => typeof key === 'string' && keys.includes(key))
 }
 
-/** The accompanying db.livingWorld.barber terminal row and ctx.once receipt own the once-only rule. */
+/** The accompanying actor-bound terminal practice row and ctx.once receipt own the once-only rule. */
 const serverAction: TypedActionHandler<'living-world.server'> = (state, payload, ctx) => {
+  if (payload.op === 'clerk-reward') {
+    if (!exactKeys(payload, ['op'])) return fail(state, 'invalid_clerk_action')
+    // The service's actor-bound terminal row and once receipt are committed with this fixed reward.
+    if (!canCredit(state, 75) || !credit(state, 75, 'Fictional clerk practice: reconciled handoff', ctx)) return fail(state, 'balance_limit')
+    repayFromEarnings(state, 75, ctx)
+    return ok(state, 'clerk_rewarded')
+  }
   if (payload.op === 'barber-reward') {
     if (!exactKeys(payload, ['op', 'lessonId']) || (payload.lessonId !== 'basic' && payload.lessonId !== 'advanced')) return fail(state, 'invalid_barber_action')
     const lessonId = payload.lessonId as BarberLessonId, lesson = barberLesson(lessonId)!
@@ -33,7 +40,7 @@ const serverAction: TypedActionHandler<'living-world.server'> = (state, payload,
 }
 
 const play = PLAYS ? {
-  actions: { 'living-world.server': { serverOnly: true as const, run: serverAction, refusal: 'Barber apprenticeship changes are confirmed by the server. Nothing was changed.' } },
+  actions: { 'living-world.server': { serverOnly: true as const, run: serverAction, refusal: 'Practice rewards and upgrades are confirmed by the server. Nothing was changed.' } },
 } : LEFT_OUT
 
 export default {

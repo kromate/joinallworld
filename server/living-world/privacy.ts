@@ -3,9 +3,10 @@ import { readValidatedBarberRecord } from './barber-service.ts'
 import { readValidatedDrivingRecord } from './driving-service.ts'
 import { readValidatedQualificationRecord } from './qualification-service.ts'
 import { readValidatedStarterRentalRecord } from './rental-service.ts'
+import { readValidatedClerkRecord } from './clerk-service.ts'
 import type { Db } from '../types.ts'
 
-const SLICES = ['driving', 'qualifications', 'barber', 'rentals'] as const
+const SLICES = ['driving', 'qualifications', 'barber', 'rentals', 'clerk'] as const
 const MAX_OWNED_ACTORS = 6
 const identifier = (value: unknown): value is string => typeof value === 'string' && value.length > 0 && value.length <= 100 && /^[\w:-]+$/.test(value)
 const record = (value: unknown): value is Record<string, unknown> => {
@@ -62,6 +63,13 @@ export interface LivingWorldPrivacyExport {
       issuedAt: number
       revision: number
     }>
+    clerk?: Slice<{
+      scenarioVersion: 1
+      step: string
+      revision: number
+      claimed: boolean
+      updatedAt: number
+    }>
   }[]
 }
 
@@ -82,6 +90,8 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
   const qualificationRows = sliceRows(root, 'qualifications')
   const barberRows = sliceRows(root, 'barber')
   const rentalRows = sliceRows(root, 'rentals')
+  const clerkRows = sliceRows(root, 'clerk')
+  const hasClerk = record(root) && Object.hasOwn(root, 'clerk')
   return {
     version: 1,
     actors: ids.map((publicId) => {
@@ -89,6 +99,9 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
       const qualificationRow = lookup(qualificationRows, publicId, readValidatedQualificationRecord)
       const foundBarberRow = lookup(barberRows, publicId, readValidatedBarberRecord)
       const rentalRow = lookup(rentalRows, publicId, readValidatedStarterRentalRecord)
+      const foundClerk = lookup(clerkRows, publicId, readValidatedClerkRecord)
+      const clerkRow = foundClerk.status === 'present' && foundClerk.row.account !== expectedAccount
+        ? { status: 'quarantined' as const } : foundClerk
       const rental = rentalRow.status !== 'present' ? rentalRow : rentalRow.row.entitlement === null
         ? { status: 'quarantined' as const }
         : { status: 'present' as const, progress: {
@@ -127,6 +140,10 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
         } },
         barber: barberRow.status !== 'present' ? barberRow : { status: 'present', progress: barberSummary(barberRow.row) },
         starterRental: rental,
+        ...(hasClerk ? { clerk: clerkRow.status !== 'present' ? clerkRow : { status: 'present' as const, progress: {
+          scenarioVersion: 1 as const, step: clerkRow.row.practice.step,
+          revision: clerkRow.row.practice.revision, claimed: clerkRow.row.claimed, updatedAt: clerkRow.row.updatedAt,
+        } } } : {}),
       }
     }),
   }
@@ -148,6 +165,22 @@ export function rebindBarberAccount(db: Db, publicId: string, expectedOwner: str
   } catch {
     return false
   }
+}
+
+/** Preserve the same character's validated exercise and reward receipt across account ownership changes. */
+export function rebindClerkAccount(db: Db, publicId: string, expectedOwner: string | null, nextOwner: string | null): boolean {
+  if (!identifier(publicId) || !ownerId(expectedOwner) || !ownerId(nextOwner)) return false
+  try {
+    const rows = sliceRows(livingWorldRoot(db), 'clerk')
+    if (!record(rows) || !Object.hasOwn(rows, publicId)) return false
+    const stored: unknown = rows[publicId]
+    const validated = readValidatedClerkRecord(stored, publicId)
+    if (!validated || validated.account !== expectedOwner || !record(stored)) return false
+    const descriptor = Object.getOwnPropertyDescriptor(stored, 'account')
+    if (!descriptor || !('value' in descriptor) || (!descriptor.writable && !descriptor.configurable)) return false
+    Object.defineProperty(stored, 'account', { ...descriptor, value: nextOwner })
+    return true
+  } catch { return false }
 }
 
 /** Explicit erasure helper. It deletes only supplied IDs from existing, well-formed known maps. */

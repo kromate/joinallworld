@@ -13,4 +13,5 @@ const practicePanel = (id: PracticePanelId, title: string, icon: string, order: 
 
 export const drivingPractice = practicePanel('driving-practice', 'Driving school', '🚗', 34.5)
 export const barberPractice = practicePanel('barber-practice', 'Barber practice', '✂️', 34.6)
-export const LIVING_WORLD_PANELS: readonly VuePanel[] = [drivingPractice, barberPractice]
+export const clerkPractice = practicePanel('clerk-practice', 'Clerk practice', '📋', 34.7)
+export const LIVING_WORLD_PANELS: readonly VuePanel[] = [drivingPractice, barberPractice, clerkPractice]

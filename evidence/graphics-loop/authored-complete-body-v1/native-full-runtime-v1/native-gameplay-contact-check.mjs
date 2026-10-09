@@ -168,7 +168,7 @@ try {
       },
     });
     actors.push(actor); chairParent.add(actor.object); actor.place(0, 0, 0, 0);
-    for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable/i);
+    for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable|requires an actual matching/i);
     assert.equal(actor.pose, 'idle');
     assert.throws(() => actor.show('sit', false), /seat support|actual seat/i, `${family}: sit refuses before a chair is attached`);
     assert.equal(actor.pose, 'idle', `${family}: refused sit does not mutate pose state`);
@@ -200,7 +200,7 @@ try {
       const contacts = assertSolesOnFloor(actor, (point) => parentYAt(chairParent, stairSurfaceMeshes, point.x, point.z, point.y + 3), `${family}/stairs ${climb > 0 ? 'up' : 'down'}@${phase}`);
       assert.equal(contacts.length, 2);
     }
-    for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable/i, `${family}: ${unsupported} remains refused`);
+    for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable|requires an actual matching/i, `${family}: ${unsupported} remains refused`);
     familyResults.push({ family, furniture: Object.keys(furniture), stairPhases,
       stairFixture: { sceneScale: (10 / 12) * 0.72, plan: 'owned duplex grid12, flight x7/y14/w6/h2/dir1', travelAxis: 'X', yaw: 'direction * pi/2', family: '3af17a0 home-scene stairsOf', treads: stairs.count, runPerTread: stairs.run, risePerTread: stairs.rise },
       sourceClips: actor.preparedMetrics.sourceClipCount,

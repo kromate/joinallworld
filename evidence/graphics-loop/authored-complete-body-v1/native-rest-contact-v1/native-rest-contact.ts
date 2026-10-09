@@ -94,7 +94,8 @@ function visibleInTree(mesh: THREE.Object3D): boolean {
 export function validateNativeRestPropSurface(surface: NativeRestPropSurface): void {
   if (!surface || typeof surface.id !== 'string' || !surface.id.trim()) fail('host prop id is required');
   if (surface.pose !== 'lie' && surface.pose !== 'soak' && surface.pose !== 'wash') fail('unknown resting pose');
-  if (!PROP_FOR_POSE[surface.pose].includes(surface.prop)) fail(`${surface.prop} cannot support ${surface.pose}`);
+  const allowedProps: readonly NativeRestProp[] = PROP_FOR_POSE[surface.pose];
+  if (!allowedProps.includes(surface.prop)) fail(`${surface.prop} cannot support ${surface.pose}`);
   if (typeof surface.surfaceYAt !== 'function') fail(`${surface.id} has no actual prop-surface query`);
   if (surface.pose === 'wash' && (surface.prop !== 'shower' || !surface.headZone
     || typeof surface.headZone.contains !== 'function')) fail('wash requires an actual shower surface and head-zone query');

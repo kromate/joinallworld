@@ -371,7 +371,9 @@ test('source-derived shard plan rejects missing denominator rows and corrupt ret
     const ledgerPath = path.join(campaignRoot, campaign.id, 'ledger.sqlite');
     if (defect === 'missing-row') deleteJob(ledgerPath, sourceJobId(campaign));
     else {
-      const capture = row(ledgerPath, sourceJobId(campaign))?.result as { plan: { input: { path: string } } };
+      const stored = row(ledgerPath, sourceJobId(campaign));
+      assert.equal(typeof stored?.result, 'string', 'SQLite fixture stores the captured result as JSON');
+      const capture = JSON.parse(stored!.result as string) as { plan: { input: { path: string } } };
       await appendFile(capture.plan.input.path, 'changed');
     }
     const before = await snapshotTree(path.join(campaignRoot, campaign.id));

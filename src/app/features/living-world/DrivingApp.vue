@@ -14,6 +14,7 @@ const cityId = computed(() => game.view.value.cityId)
 const contextKey = computed(() => JSON.stringify([cityId.value, game.state.value.location, game.view.value.session?.id ?? '']))
 const canvas = ref<HTMLCanvasElement | null>(null)
 const viewTarget = ref<HTMLDivElement | null>(null)
+const steeringWheel = ref<HTMLDivElement | null>(null)
 const route = ref<DrivingRoute | null>(null)
 const session = ref<DrivingSessionView | null>(null)
 const serverState = ref<DrivingState | null>(null)
@@ -31,10 +32,12 @@ type TouchControl = keyof DrivingInput | 'left' | 'right'
 const touch = new Map<number, TouchControl>()
 const keys = new Set<string>()
 const held = ref<DrivingInput>({ throttle: 0, brake: 0, steer: 0 })
+const wheelSteer = ref(0)
 const scene = ref<DrivingScene | null>(null)
 const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')
 let generation = 0, mounted = false, disposed = false, controlInFlight = false
 let pauseAfterControl: { prior: DrivingSessionView; latest?: DrivingSessionView } | null = null
+let wheelGesture: { pointerId: number; startX: number; initialSteer: number; target: HTMLElement } | null = null
 let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
 let qualificationRequest = 0
@@ -119,6 +122,8 @@ const practiceLabel = 'Authored simulated practice course · not a mapped public
 function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
 function clearHeld(): void {
   keys.clear(); touch.clear(); held.value = { throttle: 0, brake: 0, steer: 0 }
+  const gesture = wheelGesture; wheelGesture = null; wheelSteer.value = 0
+  if (gesture?.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
   scene.value?.setInput(held.value)
   pendingFrames = []
   if (sampleTimer) window.clearInterval(sampleTimer); if (flushTimer) window.clearInterval(flushTimer)
@@ -130,8 +135,37 @@ function updateHeld(): void {
   const right = keys.has('ArrowRight') || keys.has('d') || values.includes('right')
   const throttle = keys.has('ArrowUp') || keys.has('w') || values.includes('throttle')
   const brake = keys.has('ArrowDown') || keys.has('s') || values.includes('brake')
-  held.value = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: Number(right) - Number(left) }
+  const buttonSteering = Number(right) - Number(left)
+  const manualSteering = keys.has('ArrowLeft') || keys.has('a') || keys.has('ArrowRight') || keys.has('d') || values.includes('left') || values.includes('right')
+  held.value = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: manualSteering ? buttonSteering : wheelSteer.value }
   scene.value?.setInput(held.value)
+}
+function steeringDown(event: PointerEvent): void {
+  if (!active.value || wheelGesture || event.button !== 0 || !Number.isFinite(event.clientX)) return
+  const target = event.currentTarget as HTMLElement
+  try { target.setPointerCapture(event.pointerId) } catch { return }
+  wheelGesture = { pointerId: event.pointerId, startX: event.clientX, initialSteer: held.value.steer, target }
+  wheelSteer.value = held.value.steer
+  target.focus({ preventScroll: true })
+  updateHeld()
+}
+function steeringMove(event: PointerEvent): void {
+  const gesture = wheelGesture
+  if (!active.value || !gesture || gesture.pointerId !== event.pointerId || !Number.isFinite(event.clientX)) return
+  wheelSteer.value = Math.max(-1, Math.min(1, gesture.initialSteer + (event.clientX - gesture.startX) / 64))
+  updateHeld()
+}
+function steeringUp(event: PointerEvent): void {
+  const gesture = wheelGesture
+  if (!gesture || gesture.pointerId !== event.pointerId) return
+  wheelGesture = null; wheelSteer.value = 0
+  if (gesture.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
+  updateHeld()
+}
+function steeringFocusOut(): void {
+  const gesture = wheelGesture; wheelGesture = null; wheelSteer.value = 0
+  if (gesture?.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
+  updateHeld()
 }
 function applyResponse(answer: DrivingResponse, token: number, key: string, origin: ResponseOrigin = { kind: 'load' }): boolean {
   if (!responseCurrent(token, key)) return false
@@ -482,9 +516,23 @@ async function sendFrames(): Promise<void> {
 
 function onKey(event: KeyboardEvent, down: boolean): void {
   const key = event.key.length === 1 ? event.key.toLowerCase() : event.key
+  const released = !down && keys.delete(key)
+  if (released) updateHeld()
+  const sliderKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'Escape']
+  if (event.target === steeringWheel.value && sliderKeys.includes(key)) {
+    if (event.ctrlKey || event.metaKey || event.altKey) return
+    event.preventDefault(); event.stopPropagation()
+    if (!down || !active.value) return
+    if (key === 'Home') wheelSteer.value = -1
+    else if (key === 'End') wheelSteer.value = 1
+    else if (key === 'Escape') wheelSteer.value = 0
+    else wheelSteer.value = Math.max(-1, Math.min(1, wheelSteer.value + (key === 'ArrowRight' || key === 'ArrowUp' ? 0.1 : -0.1)))
+    updateHeld()
+    return
+  }
   if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'w', 'a', 's', 'd'].includes(key)) return
   if (!down) {
-    if (keys.delete(key)) { updateHeld(); event.preventDefault(); event.stopPropagation() }
+    if (released) { event.preventDefault(); event.stopPropagation() }
     return
   }
   if (!active.value) return
@@ -570,12 +618,22 @@ onBeforeUnmount(() => {
     <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
       <div class="wheel-controls" aria-label="Steering">
         <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
+        <div class="steering-control">
+          <span class="steering-readout">Steering: {{ Math.round(held.steer * 100) }}%</span>
+          <div ref="steeringWheel" class="steering-wheel" role="slider" aria-label="Analog steering" aria-describedby="steering-help" :aria-valuemin="-100" :aria-valuemax="100" :aria-valuenow="Math.round(held.steer * 100)" :aria-valuetext="`Requested steering ${Math.round(held.steer * 100)} percent`" :aria-disabled="!active" :tabindex="active ? 0 : -1" :style="{ '--wheel-rotation': `${held.steer * 110}deg` }" @pointerdown.prevent.stop="steeringDown" @pointermove.prevent.stop="steeringMove" @pointerup="steeringUp" @pointercancel="steeringUp" @lostpointercapture="steeringUp" @focusout="steeringFocusOut">
+            <svg viewBox="0 0 88 88" aria-hidden="true">
+              <circle cx="44" cy="44" r="32" class="wheel-rim" />
+              <circle cx="44" cy="44" r="8" class="wheel-hub" />
+              <path d="M44 36V14M38 47 20 61M50 47 68 61" class="wheel-spoke" />
+            </svg>
+          </div>
+        </div>
         <button type="button" aria-label="Steer right" :disabled="!active" @pointerdown.prevent="touchDown('right', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">→</button>
       </div>
       <button type="button" class="drive-control throttle" aria-label="Hold to accelerate" :disabled="!active" @pointerdown.prevent="touchDown('throttle', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Throttle</button>
       <button type="button" class="drive-control brake" aria-label="Hold to brake" :disabled="!active" @pointerdown.prevent="touchDown('brake', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">Brake</button>
     </section>
-    <p class="control-help">Keyboard: WASD or arrow keys. On touch screens, hold the steering, throttle and brake controls. The course is fictional and for practice only.</p>
+    <p id="steering-help" class="control-help">Keyboard: WASD or arrow keys. Drag the steering wheel horizontally, or focus it and use arrow keys for 10% steps, Home/End for full lock, and Escape to center. On touch screens, hold the steering, throttle and brake controls. The course is fictional and for practice only.</p>
     <section class="lesson-status" aria-live="polite">
       <strong>{{ complete ? (assessment === 'passed' ? 'Practice passed' : 'Practice needs another try') : boarding ? 'Getting into the car' : active ? 'Lesson in progress' : session ? 'Saved lesson' : 'Ready to practise' }}</strong>
       <p>{{ feedback }}</p>
@@ -641,12 +699,22 @@ onBeforeUnmount(() => {
 .restart-actions button.secondary { background: #e7edf0; color: #25323a; }
 button:disabled { opacity: .48; }
 .controls { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 10px; }
-.wheel-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }
+.wheel-controls { display: grid; grid-template-columns: 44px 88px 44px; justify-content: center; align-items: center; gap: 8px; grid-column: 1 / -1; }
 .wheel-controls button { font-size: 21px; }
+.wheel-controls > button { width: 44px; min-width: 44px; padding: 0; }
+.steering-control { display: grid; justify-items: center; gap: 3px; }
+.steering-readout { font-size: 11px; font-variant-numeric: tabular-nums; line-height: 1.1; white-space: nowrap; }
+.steering-wheel { width: 88px; height: 88px; touch-action: none; user-select: none; cursor: grab; border-radius: 50%; outline-offset: 2px; }
+.steering-wheel:active { cursor: grabbing; }
+.steering-wheel:focus-visible { outline: 3px solid #f1b83a; }
+.steering-wheel svg { display: block; width: 100%; height: 100%; overflow: visible; transform: rotate(var(--wheel-rotation)); transition: transform 60ms linear; }
+.wheel-rim { fill: #26343c; stroke: #122027; stroke-width: 5; }
+.wheel-hub { fill: #cbd6da; stroke: #122027; stroke-width: 2; }
+.wheel-spoke { fill: none; stroke: #122027; stroke-width: 5; stroke-linecap: round; }
 .controls .drive-control { min-height: 58px; }
 .controls .throttle { background: #26764e; }
 .controls .brake { background: #a33e3a; }
 @media (min-width: 720px) { .driving-app { max-width: 780px; margin: auto; } .driving-view { height: 390px; } .controls { grid-template-columns: 1fr 1fr 1fr; } .wheel-controls { grid-column: auto; } }
 @media (max-height: 430px) and (min-width: 481px) { .driving-view { height: clamp(120px, 35vh, 180px); height: clamp(120px, 35svh, 180px); min-height: 120px; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } .steering-wheel svg { transition: none; } }
 </style>

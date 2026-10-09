@@ -1,0 +1,46 @@
+name: Actor sampler v4 focused diagnostic
+
+on:
+  push:
+    branches: [codex/graphics-actor-sampler-v4]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: graphics-actor-sampler-v4-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  production-adapter-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Verify exact source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 42dfbe1ab5cb1af9716d63ea358661085c44b90bc8d0392284a3b708b73b0b29
+        run: node evidence/graphics-loop/actor-volume-boarding-slice-v4/remote-ci-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify executable import closure
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 42dfbe1ab5cb1af9716d63ea358661085c44b90bc8d0392284a3b708b73b0b29
+        run: node evidence/graphics-loop/actor-volume-boarding-slice-v4/remote-ci-v1/verify-import-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run one production-adapter test under bounded process group
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 42dfbe1ab5cb1af9716d63ea358661085c44b90bc8d0392284a3b708b73b0b29
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/actor-volume-boarding-slice-v4/remote-ci-v1/run-bounded-linux.py test
+      - name: Upload focused test receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actor-sampler-v4-${{ github.run_id }}
+          path: evidence/graphics-loop/actor-volume-boarding-slice-v4/remote-ci-v1/remote-results/${{ github.run_id }}/
+          if-no-files-found: warn
+          retention-days: 14

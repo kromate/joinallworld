@@ -1,0 +1,42 @@
+{
+  "schema": "allworld-actor-sampler-v4-node-runtime-closure-v1",
+  "entrypoint": "evidence/graphics-loop/actor-volume-boarding-slice-v4/sample-actor-geometry.test.ts",
+  "runtimeSourceFiles": [
+    "evidence/graphics-loop/actor-volume-boarding-slice-v4/sample-actor-geometry.ts",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v4/sample-actor-geometry.test.ts",
+    "src/game/wardrobe/catalogue.ts",
+    "src/game/wardrobe/rules.ts",
+    "src/scene/avatar-look.ts",
+    "src/scene/body/appearance.ts",
+    "src/scene/body/foot-contact.ts",
+    "src/scene/body/shared-resource-cache.ts",
+    "src/scene/build.ts",
+    "src/scene/wardrobe/geometry.ts",
+    "src/scene/wardrobe/renderer.ts",
+    "src/types/avatar.ts"
+  ],
+  "typeOnlyResolutions": [
+    "src/scene/body/skinned.ts",
+    "src/scene/characters.ts",
+    "src/scene/kit.ts",
+    "src/scene/types.ts"
+  ],
+  "testAssets": [
+    "src/scene/body/assets/base-body-female.glb",
+    "src/scene/body/assets/base-body-male.glb",
+    "src/scene/body/assets/clip-pack.glb"
+  ],
+  "packageLockFiles": ["package.json", "package-lock.json"],
+  "thirdPartyRuntime": [
+    "three",
+    "three/examples/jsm/loaders/GLTFLoader.js",
+    "three/examples/jsm/libs/meshopt_decoder.module.js",
+    "three/examples/jsm/utils/SkeletonUtils.js"
+  ],
+  "execution": "Node 24 --experimental-strip-types --test --test-concurrency=1; exact command and process-group caps are in README.md",
+  "claimsNotMade": [
+    "No boardability or clearance certification.",
+    "No runtime integration or gameplay behavior change.",
+    "No test has been executed during preparation."
+  ]
+}

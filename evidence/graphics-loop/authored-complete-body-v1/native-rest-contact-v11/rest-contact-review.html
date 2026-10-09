@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prepared body rest-contact review</title>
+    <style>
+      :root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) 330px; height: 100vh; background: #d7e2e6; color: #17202a; }
+      #stage { display: block; width: 100%; height: 100%; min-width: 0; }
+      aside { overflow: auto; padding: 16px; background: #f7f5ef; border-left: 1px solid #aeb6b5; }
+      h1 { margin: 0 0 12px; font-size: 18px; }
+      label { display: block; margin: 12px 0 4px; font-weight: 650; }
+      select, button { width: 100%; min-height: 36px; margin: 3px 0; padding: 6px 8px; font: inherit; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+      pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #e9ece9; padding: 10px; min-height: 80px; }
+      #status[data-state="error"] { color: #a32626; }
+      small { color: #59636b; }
+    </style>
+  </head>
+  <body>
+    <canvas id="stage" aria-label="Prepared GLB rest pose and source home prop geometry"></canvas>
+    <aside>
+      <h1>Prepared body · prop contact</h1>
+      <div id="status" data-state="loading">Loading source GLB and clips…</div>
+      <label for="family">Body family</label>
+      <select id="family"><option value="man">Man · casual</option><option value="woman">Woman · office</option></select>
+      <label for="prop">Home SHAPES prop</label>
+      <select id="prop"><option value="bed">Bed · lie</option><option value="mat">Mat · lie</option><option value="tub">Tub · soak</option><option value="shower">Shower · wash</option></select>
+      <label for="pose">Body pose · 15-pose union</label>
+      <select id="pose">
+        <option>idle</option><option>walk</option><option>jog</option><option>sit</option><option>interact</option><option>dance</option>
+        <option>lie</option><option>soak</option><option>wash</option><option>bucket</option><option>cook</option><option>cookLow</option>
+        <option>eat</option><option>drink</option><option>homeDoor</option>
+      </select>
+      <div class="row"><button id="show">Show pose</button><button id="loop">Loop source clip</button></div>
+      <label>View</label>
+      <div class="row"><button data-yaw="0">Front</button><button data-yaw="90">Side</button></div>
+      <div class="row"><button data-yaw="180">Back</button><button data-yaw="45">Quarter</button></div>
+      <label>Host lifecycle</label>
+      <div class="row"><button id="exit">Rest → idle</button><button id="snapshot">Snapshot</button></div>
+      <small>Prop surfaces use raycasts against actual mirrored source geometry. Rest contact is sampled, not whole-mesh collision proof.</small>
+      <pre id="metrics"></pre>
+      <pre id="events"></pre>
+    </aside>
+    <script type="module" src="/evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v11/rest-contact-review.bundle.js"></script>
+  </body>
+</html>

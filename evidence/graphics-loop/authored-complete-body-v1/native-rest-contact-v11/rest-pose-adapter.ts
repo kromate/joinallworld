@@ -1,0 +1,570 @@
+import * as THREE from 'three';
+import type { FootContact } from '../../../../src/scene/body/foot-contact.ts';
+import {
+  type NativeRestContactProbe,
+  type NativeRestContactMeasure,
+  type NativeRestPose,
+  type NativeRestPropSurface,
+  validateNativeRestPropSurface,
+} from './native-rest-contact.ts';
+
+export type { NativeRestPose } from './native-rest-contact.ts';
+
+/** The prop must be registered by the host before it asks the body to enter a rest pose. */
+export interface NativePropRestSupport {
+  readonly kind: 'prop-rest';
+  readonly surface: NativeRestPropSurface;
+  /** World-space floor used only for safe upright entry/exit frames. */
+  readonly transitionFloorY?: number;
+}
+
+export interface NativeRestPoseResult {
+  readonly pose: NativeRestPose;
+  readonly propId: string;
+  readonly phase: 'still' | 'transition';
+  readonly transitionValidated: boolean;
+  readonly hipsWorldCorrection: number;
+  readonly rootWorldCorrection: number;
+  readonly rootWorldCorrectionXZ?: readonly [number, number];
+  readonly measurement: NativeRestContactMeasure;
+}
+
+export interface NativeRestPoseAdapter {
+  readonly activePropId: string | null;
+  register(support: NativePropRestSupport): () => void;
+  /** Call after the exact mapped source frame and host placement have been applied; the callback may be a no-op when a pose port already consumed that frame. */
+  apply(
+    pose: NativeRestPose,
+    support: NativePropRestSupport,
+    applyMappedSourceFrame: () => void,
+    sampleParentLocalContacts: () => readonly FootContact[],
+    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => void,
+    phase?: 'still' | 'transition',
+    anchorBlend?: number,
+  ): NativeRestPoseResult;
+  dispose(): void;
+}
+
+const CONTACT_GAP_METRES = 0.018;
+// Aim inside the accepted contact interval so float rounding cannot leave an
+// otherwise valid sampled region a few nanometres beyond the 18 mm boundary.
+const CONTACT_TARGET_GAP_METRES = 0.0165;
+const MAX_PENETRATION_METRES = 0.004;
+const MAX_REST_ROOT_SHIFT_METRES = 0.35;
+const MAX_LIE_SPINE_ALIGNMENT_DEGREES = 12;
+const MAX_LIE_NECK_ALIGNMENT_DEGREES = 25;
+const MAX_LIE_HIPS_TILT_DEGREES = 90;
+
+function worldContacts(root: THREE.Object3D, contacts: readonly FootContact[]): readonly FootContact[] {
+  root.updateWorldMatrix(true, false);
+  const parent = root.parent;
+  if (parent) parent.updateWorldMatrix(true, false);
+  const transform = parent?.matrixWorld;
+  if (!transform) return contacts;
+  return contacts.map((contact) => {
+    const point = new THREE.Vector3(contact.x, contact.y, contact.z).applyMatrix4(transform);
+    const points = contact.points?.map((sample) => {
+      const world = new THREE.Vector3(sample.x, sample.y, sample.z).applyMatrix4(transform);
+      return Object.freeze({ ...sample, x: world.x, y: world.y, z: world.z });
+    });
+    return Object.freeze({ ...contact, x: point.x, y: point.y, z: point.z,
+      ...(points ? { points: Object.freeze(points) } : {}) });
+  });
+}
+
+function requiredRegions(pose: NativeRestPose, measure: NativeRestContactMeasure): readonly number[] {
+  switch (pose) {
+    case 'lie': return [measure.regions['pelvis-back'].minimumGap, measure.regions['torso-back'].minimumGap];
+    case 'soak': return [measure.regions['pelvis-back'].minimumGap];
+    case 'wash': return [];
+  }
+}
+
+function correctionInterval(pose: NativeRestPose, measure: NativeRestContactMeasure): readonly [number, number] | null {
+  const gaps = requiredRegions(pose, measure);
+  if (!gaps.length) return [0, 0];
+  if (gaps.some((gap) => !Number.isFinite(gap))) throw new Error(`Native ${pose} has no measured posterior prop contact`);
+  const noPenetrationGaps = pose === 'lie'
+    ? [...gaps, measure.regions['head-back'].minimumGap]
+    : gaps;
+  if (noPenetrationGaps.some((gap) => !Number.isFinite(gap))) throw new Error(`Native ${pose} has no finite posterior clearance witness`);
+  // A single pelvis translation can work only when all required sampled regions share a
+  // non-penetrating contact interval. This rejects incompatible bed/tub profiles rather than
+  // moving the actor until one region looks good while another cuts through the prop.
+  const minimumShift = Math.max(...noPenetrationGaps.map((gap) => -MAX_PENETRATION_METRES - gap));
+  const maximumShift = Math.min(...gaps.map((gap) => CONTACT_TARGET_GAP_METRES - gap));
+  return minimumShift <= maximumShift ? [minimumShift, maximumShift] : null;
+}
+
+function lieBackInterval(measure: NativeRestContactMeasure): readonly [number, number] | null {
+  const gaps = [measure.regions['pelvis-back'].minimumGap, measure.regions['torso-back'].minimumGap];
+  if (gaps.some((gap) => !Number.isFinite(gap))) return null;
+  const minimumShift = Math.max(...gaps.map((gap) => -MAX_PENETRATION_METRES - gap));
+  const maximumShift = Math.min(...gaps.map((gap) => CONTACT_TARGET_GAP_METRES - gap));
+  return minimumShift <= maximumShift ? [minimumShift, maximumShift] : null;
+}
+
+function rootCorrectionFor(pose: NativeRestPose, measure: NativeRestContactMeasure): number | null {
+  const interval = correctionInterval(pose, measure);
+  if (!interval) return null;
+  return THREE.MathUtils.clamp(0, interval[0], interval[1]);
+}
+
+function washHeadCorrection(
+  root: THREE.Group,
+  surface: NativeRestPropSurface,
+  blend: number,
+  sampleContacts: () => readonly FootContact[],
+  requireHeadZone: boolean,
+  probe: NativeRestContactProbe,
+): readonly [number, number] {
+  const zone = surface.headZone;
+  const anchor = zone?.anchorWorld?.();
+  const head = root.getObjectByName('mixamorigHead');
+  if (!zone || !anchor || !(head instanceof THREE.Bone)) {
+    throw new Error('Native wash requires an exact host showerhead world anchor and mapped head bone');
+  }
+  if (!anchor.every(Number.isFinite)) throw new Error('Native wash showerhead anchor is non-finite');
+  root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+  const initialHead = head.getWorldPosition(new THREE.Vector3());
+  const fullDx = anchor[0] - initialHead.x, fullDz = anchor[2] - initialHead.z;
+  if (Math.hypot(fullDx, fullDz) > MAX_REST_ROOT_SHIFT_METRES) {
+    throw new Error(`Native wash head anchor correction is outside measured bounds: ${JSON.stringify([fullDx, fullDz])}`);
+  }
+  const rootStart = root.getWorldPosition(new THREE.Vector3());
+  const startLocal = root.position.clone();
+  function setFraction(fraction: number): void {
+    const target = rootStart.clone();
+    target.x += fullDx * fraction; target.z += fullDz * fraction;
+    if (root.parent) {
+      root.parent.updateWorldMatrix(true, false);
+      root.parent.worldToLocal(target);
+    }
+    root.position.copy(target);
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+  }
+  function feasible(fraction: number, needZone: boolean): boolean {
+    setFraction(fraction);
+    const result = probe.sample(surface, worldContacts(root, sampleContacts()));
+    if (needZone && result.headInZone !== true) return false;
+    if (result.footGaps.left.sampled === 0 || result.footGaps.right.sampled === 0
+      || result.footGaps.left.minimumGap < -MAX_PENETRATION_METRES
+      || result.footGaps.right.minimumGap < -MAX_PENETRATION_METRES) return false;
+    const world = worldContacts(root, sampleContacts());
+    return world.every((contact) => surface.surfaceYAt(contact.x, contact.z) !== null);
+  }
+  const maximumFraction = blend;
+  const samples = Math.max(1, Math.ceil(maximumFraction * 128));
+  let lastSafe = 0;
+  let selected: number | null = null;
+  let preceding = 0;
+  for (let index = 0; index <= samples; index++) {
+    const fraction = maximumFraction * index / samples;
+    const safe = feasible(fraction, false);
+    if (!safe) continue;
+    lastSafe = fraction;
+    if (feasible(fraction, true)) { selected = fraction; preceding = index ? maximumFraction * (index - 1) / samples : 0; break; }
+  }
+  if (selected === null) {
+    if (requireHeadZone) {
+      root.position.copy(startLocal); root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+      throw new Error(`Native wash cannot place the mapped head inside the source zone without losing actual shower-foot support (safeFraction=${lastSafe}, blend=${blend})`);
+    }
+    // Early transition frames may not have reached the source zone yet. Move only as
+    // far as sampled foot support remains complete, then let the next frame continue.
+    selected = lastSafe;
+  } else {
+    let low = preceding, high = selected;
+    for (let step = 0; step < 16 && high - low > 1e-5; step++) {
+      const middle = (low + high) * 0.5;
+      if (feasible(middle, true)) high = middle; else low = middle;
+    }
+    selected = high;
+    const directionLength = Math.hypot(fullDx, fullDz);
+    const insetFraction = directionLength > 0 ? Math.min(maximumFraction - selected, 0.002 / directionLength) : 0;
+    if (insetFraction > 0 && feasible(selected + insetFraction, true)) selected += insetFraction;
+    else if (requireHeadZone && insetFraction > 0) {
+      root.position.copy(startLocal); root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+      throw new Error('Native wash head-zone placement has no 2 mm inward margin with complete shower-foot support');
+    }
+  }
+  setFraction(selected);
+  const end = root.getWorldPosition(new THREE.Vector3());
+  return Object.freeze([end.x - rootStart.x, end.z - rootStart.z] as const);
+}
+
+/**
+ * Applies a measured prop anchor after a named source frame is mapped. The returned world-Y
+ * anchor is re-applied by the runtime when it restores host placement on the next frame; bone
+ * translations remain the exact mapped source pose. This is sampled regional contact evidence,
+ * not whole-mesh collision proof.
+ */
+export function createNativeRestPoseAdapter(
+  root: THREE.Group,
+  hips: THREE.Bone,
+  probe: NativeRestContactProbe,
+): NativeRestPoseAdapter {
+  if (!hips.isBone || !hips.parent || root.getObjectById(hips.id) !== hips) {
+    throw new Error('Native rest adapter requires the actor-owned Hips bone');
+  }
+  if (!hips.parent) throw new Error('Native rest adapter requires a movable Hips bone');
+  let active: NativeRestPropSurface | null = null;
+  let disposed = false;
+
+  function mappedFrameWitness(): Readonly<Record<string, unknown>> {
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    const names = ['mixamorigHips', 'mixamorigSpine', 'mixamorigSpine1', 'mixamorigSpine2', 'mixamorigNeck', 'mixamorigHead'];
+    const bones = Object.fromEntries(names.map((name) => {
+      const bone = root.getObjectByName(name);
+      if (!(bone instanceof THREE.Bone)) return [name, null];
+      const world = bone.getWorldPosition(new THREE.Vector3());
+      return [name, Object.freeze({ local: Object.freeze(bone.position.toArray()), world: Object.freeze(world.toArray()), quaternion: Object.freeze(bone.quaternion.toArray()) })];
+    }));
+    const rootWorld = root.getWorldPosition(new THREE.Vector3());
+    const hipsWorld = hips.getWorldPosition(new THREE.Vector3());
+    return Object.freeze({ rootLocal: Object.freeze(root.position.toArray()), rootWorld: Object.freeze(rootWorld.toArray()),
+      rootQuaternion: Object.freeze(root.getWorldQuaternion(new THREE.Quaternion()).toArray()),
+      hipsLocal: Object.freeze(hips.position.toArray()), hipsWorld: Object.freeze(hipsWorld.toArray()), bones });
+  }
+
+  function evidence(surface: NativeRestPropSurface, measure: NativeRestContactMeasure, mappedFrame: Readonly<Record<string, unknown>>, correction: number) {
+    return JSON.stringify({ propId: surface.id, pose: surface.pose, mappedFrame, rootWorldCorrection: correction, measurement: measure });
+  }
+
+  function shiftRootWorldY(delta: number): void {
+    if (!Number.isFinite(delta) || Math.abs(delta) > MAX_REST_ROOT_SHIFT_METRES) {
+      throw new Error(`Native rest root anchor correction is outside measured bounds: ${delta}`);
+    }
+    root.updateWorldMatrix(true, false);
+    root.updateMatrixWorld(true);
+    const world = root.getWorldPosition(new THREE.Vector3());
+    world.y += delta;
+    if (root.parent) {
+      root.parent.updateWorldMatrix(true, false);
+      root.parent.worldToLocal(world);
+    }
+    root.position.copy(world);
+    root.updateWorldMatrix(true, false);
+    root.updateMatrixWorld(true);
+  }
+
+  function alignFeetToProp(
+    surface: NativeRestPropSurface,
+    sampleContacts: () => readonly FootContact[],
+    maximumShift: number,
+  ): readonly [number, number] {
+    if (!Number.isFinite(maximumShift) || maximumShift < 0 || maximumShift > MAX_REST_ROOT_SHIFT_METRES) {
+      throw new Error('Native prop foot alignment has an invalid measured shift bound');
+    }
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    const rootStart = root.getWorldPosition(new THREE.Vector3());
+    const localStart = root.position.clone();
+    const parent = root.parent;
+    function setOffset(dx: number, dz: number): void {
+      const target = rootStart.clone().add(new THREE.Vector3(dx, 0, dz));
+      if (parent) {
+        parent.updateWorldMatrix(true, false);
+        parent.worldToLocal(target);
+      }
+      root.position.copy(target);
+      root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    }
+    function supported(dx: number, dz: number): boolean {
+      setOffset(dx, dz);
+      const contacts = worldContacts(root, sampleContacts());
+      const sides = new Set(contacts.map((contact) => contact.side));
+      return sides.has('left') && sides.has('right') && contacts.every((contact) => {
+        const y = surface.surfaceYAt(contact.x, contact.z);
+        return y !== null && Number.isFinite(y);
+      });
+    }
+    const step = 0.04;
+    const cells = Math.floor(maximumShift / step);
+    const candidates: Array<readonly [number, number]> = [];
+    for (let x = -cells; x <= cells; x++) for (let z = -cells; z <= cells; z++) {
+      const dx = x * step, dz = z * step;
+      if (Math.hypot(dx, dz) <= maximumShift + 1e-9) candidates.push([dx, dz]);
+    }
+    candidates.sort((a, b) => a[0] ** 2 + a[1] ** 2 - b[0] ** 2 - b[1] ** 2);
+    let selected: readonly [number, number] | null = null;
+    for (const candidate of candidates) {
+      if (supported(candidate[0], candidate[1])) { selected = candidate; break; }
+    }
+    if (selected) {
+      let resolution = step * 0.5;
+      for (let pass = 0; pass < 3; pass++, resolution *= 0.5) {
+        const around = [-1, 0, 1].flatMap((x) => [-1, 0, 1].map((z) => [selected![0] + x * resolution, selected![1] + z * resolution] as const))
+          .filter(([x, z]) => Math.hypot(x, z) <= maximumShift + 1e-9)
+          .sort((a, b) => a[0] ** 2 + a[1] ** 2 - b[0] ** 2 - b[1] ** 2);
+        const refined = around.find(([x, z]) => supported(x, z));
+        if (refined) selected = refined;
+      }
+    }
+    if (!selected) {
+      root.position.copy(localStart); root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+      throw new Error(`Native ${surface.pose} cannot place both actual shoe contact centers over the measured prop surface within ${maximumShift} m`);
+    }
+    setOffset(selected[0], selected[1]);
+    const end = root.getWorldPosition(new THREE.Vector3());
+    return Object.freeze([end.x - rootStart.x, end.z - rootStart.z] as const);
+  }
+
+  function alignLieSpine(
+    surface: NativeRestPropSurface,
+    sampleContacts: () => readonly FootContact[],
+    initial: NativeRestContactMeasure,
+    blend = 1,
+  ): NativeRestContactMeasure {
+    if (correctionInterval('lie', initial)) return initial;
+    const spine = root.getObjectByName('mixamorigSpine');
+    const neck = root.getObjectByName('mixamorigNeck');
+    if (!(spine instanceof THREE.Bone) || !spine.parent || !(neck instanceof THREE.Bone) || !neck.parent) {
+      throw new Error('Native lie needs mapped spine and neck bones for measured alignment');
+    }
+    const originalSpine = spine.quaternion.clone();
+    const originalNeck = neck.quaternion.clone();
+    const rootRight = new THREE.Vector3(1, 0, 0).applyQuaternion(root.getWorldQuaternion(new THREE.Quaternion())).normalize();
+    const signedSteps = (maximumDegrees: number): number[] => [0, ...Array.from({ length: maximumDegrees * 4 }, (_, index) => {
+      const magnitude = Math.ceil((index + 1) / 2) * 0.25;
+      return index % 2 === 0 ? magnitude : -magnitude;
+    })].filter((angle) => Math.abs(angle) <= maximumDegrees);
+    function setWorldBend(bone: THREE.Bone, original: THREE.Quaternion, angleDegrees: number): void {
+      const parentQ = bone.parent!.getWorldQuaternion(new THREE.Quaternion());
+      const localDelta = parentQ.clone().invert()
+        .multiply(new THREE.Quaternion().setFromAxisAngle(rootRight, angleDegrees * Math.PI / 180))
+        .multiply(parentQ);
+      bone.quaternion.copy(localDelta.multiply(original)).normalize();
+      root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    }
+
+    for (const spineAngle of signedSteps(MAX_LIE_SPINE_ALIGNMENT_DEGREES)) {
+      spine.quaternion.copy(originalSpine);
+      neck.quaternion.copy(originalNeck);
+      setWorldBend(spine, originalSpine, spineAngle * blend);
+      const spineMeasure = measure(surface, sampleContacts);
+      if (!lieBackInterval(spineMeasure)) continue;
+      if (correctionInterval('lie', spineMeasure)) return spineMeasure;
+      for (const neckAngle of signedSteps(MAX_LIE_NECK_ALIGNMENT_DEGREES)) {
+        neck.quaternion.copy(originalNeck);
+        setWorldBend(neck, originalNeck, neckAngle * blend);
+        const combined = measure(surface, sampleContacts);
+        if (correctionInterval('lie', combined)) return combined;
+      }
+    }
+    spine.quaternion.copy(originalSpine);
+    neck.quaternion.copy(originalNeck);
+    // Some released source clips map to an upright torso even for the named lie pose.
+    // A pelvis/torso translation then cannot close the measured bed interval: the pelvis
+    // is already inside the mattress while the torso and head remain far above it. Test a
+    // whole-skeleton tilt at the Hips joint (the root of the articulated rig) before
+    // rejecting. This preserves the actor root/yaw and every segment length; subsequent
+    // measurements still enforce pelvis, torso, head-clearance and penetration limits.
+    const originalHips = hips.quaternion.clone();
+    const availableTilt = MAX_LIE_HIPS_TILT_DEGREES * blend;
+    const tiltAngles = [0, ...Array.from({ length: MAX_LIE_HIPS_TILT_DEGREES * 2 }, (_, index) => {
+      const magnitude = Math.floor(index / 2) + 1;
+      return index % 2 === 0 ? magnitude : -magnitude;
+    }).filter((angle) => Math.abs(angle) <= availableTilt)];
+    const localLateral = new THREE.Vector3(1, 0, 0);
+    const coarseAngles = (maximum: number, step: number): number[] => {
+      const values = [0];
+      for (let angle = step; angle <= maximum; angle += step) values.push(angle, -angle);
+      if (values.every((value) => Math.abs(value) < maximum)) values.push(maximum, -maximum);
+      return values;
+    };
+    for (const angle of tiltAngles) {
+      hips.quaternion.copy(originalHips).multiply(new THREE.Quaternion().setFromAxisAngle(localLateral, angle * Math.PI / 180)).normalize();
+      spine.quaternion.copy(originalSpine);
+      neck.quaternion.copy(originalNeck);
+      root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+      const candidate = measure(surface, sampleContacts);
+      if (correctionInterval('lie', candidate)) return candidate;
+      if (!lieBackInterval(candidate)) continue;
+      // At a usable pelvis/torso tilt, search small measured spine/neck adjustments
+      // to clear the actual pillow/headboard without losing the shared back-contact band.
+      for (const spineAngle of coarseAngles(MAX_LIE_SPINE_ALIGNMENT_DEGREES, 2)) {
+        spine.quaternion.copy(originalSpine);
+        neck.quaternion.copy(originalNeck);
+        setWorldBend(spine, originalSpine, spineAngle);
+        for (const neckAngle of coarseAngles(MAX_LIE_NECK_ALIGNMENT_DEGREES, 2)) {
+          neck.quaternion.copy(originalNeck);
+          setWorldBend(neck, originalNeck, neckAngle);
+          const combined = measure(surface, sampleContacts);
+          if (correctionInterval('lie', combined)) return combined;
+        }
+      }
+    }
+    hips.quaternion.copy(originalHips);
+    spine.quaternion.copy(originalSpine);
+    neck.quaternion.copy(originalNeck);
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    if (blend < 1) return measure(surface, sampleContacts);
+    throw new Error(`Native lie cannot fit pelvis/torso contact plus head clearance using combined spine (${MAX_LIE_SPINE_ALIGNMENT_DEGREES}°), neck (${MAX_LIE_NECK_ALIGNMENT_DEGREES}°), and Hips-root tilt (${MAX_LIE_HIPS_TILT_DEGREES}°) alignment`);
+  }
+
+  function measure(surface: NativeRestPropSurface, sampleContacts: () => readonly FootContact[]): NativeRestContactMeasure {
+    return probe.sample(surface, worldContacts(root, sampleContacts()));
+  }
+
+  return {
+    get activePropId() { return active?.id ?? null; },
+    register(support) {
+      if (disposed) throw new Error('Native rest adapter is disposed');
+      validateNativeRestPropSurface(support.surface);
+      const previous = active;
+      active = support.surface;
+      let registered = true;
+      return () => {
+        if (!registered) return;
+        registered = false;
+        if (active === support.surface) active = previous;
+      };
+    },
+    apply(pose, support, applyMappedSourceFrame, sampleParentLocalContacts, solveHostFeet, phase = 'still', anchorBlend = 1) {
+      if (disposed) throw new Error('Native rest adapter is disposed');
+      validateNativeRestPropSurface(support.surface);
+      if (support.surface.pose !== pose) throw new Error(`Native ${pose} request does not match registered ${support.surface.pose} prop support`);
+      if (active !== support.surface) throw new Error('Native rest prop must be registered before the pose is requested');
+      if (typeof applyMappedSourceFrame !== 'function') throw new Error('Native rest pose requires a mapped source-frame application');
+      if (typeof sampleParentLocalContacts !== 'function') throw new Error('Native rest pose requires fresh foot-contact samples');
+      if (!Number.isFinite(anchorBlend) || anchorBlend < 0 || anchorBlend > 1) throw new Error('Native rest anchor blend must be between zero and one');
+      if (support.surface.pose === 'soak' || support.surface.pose === 'wash') {
+        if (!solveHostFeet) throw new Error(`Native ${support.surface.pose} requires the actual host foot-surface solver`);
+      }
+
+      applyMappedSourceFrame();
+      const mappedFrame = mappedFrameWitness();
+      if (phase === 'transition') {
+        const floorY = support.transitionFloorY;
+        if (!Number.isFinite(floorY)) throw new Error(`Native ${pose} transition requires a finite world floor; evidence=${JSON.stringify({ propId: support.surface.id, pose })}`);
+        let measurement = measure(support.surface, sampleParentLocalContacts);
+        root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+        const hipWorld = hips.getWorldPosition(new THREE.Vector3());
+        const head = root.getObjectByName('mixamorigHead');
+        if (!(head instanceof THREE.Bone)) throw new Error(`Native ${pose} transition requires the mapped head bone`);
+        const headWorld = head.getWorldPosition(new THREE.Vector3());
+        const actorScale = root.getWorldScale(new THREE.Vector3()).y;
+        const upright = headWorld.y - hipWorld.y > Math.max(0.25, actorScale * 0.55);
+        let appliedRootCorrection = 0;
+        let appliedRootCorrectionXZ: readonly [number, number] | undefined;
+        // A bed/tub/shower anchor is meaningful only once the mapped body has reached the
+        // corresponding rest posture. Early upright entry frames are validated against the
+        // actual floor; they must not be translated onto the prop before the source pose arrives.
+        const propContactPhase = pose === 'lie' ? !upright
+          : pose === 'soak' ? !upright && anchorBlend >= 0.75 : anchorBlend >= 0.75;
+        if (upright) {
+          solveHostFeet?.(support.surface, floorY!);
+          measurement = measure(support.surface, sampleParentLocalContacts);
+          if (pose === 'lie' && measurement.regions['pelvis-back'].sampled > 0) {
+            // Foot IK may lower the pelvis after a root-only correction. Iterate the
+            // measured body clearance and floor solver to a 1 mm interior target rather
+            // than lifting once and accepting a newly reintroduced mattress penetration.
+            for (let pass = 0; pass < 6 && measurement.regions['pelvis-back'].minimumGap < -0.003; pass++) {
+              const lift = -0.003 - measurement.regions['pelvis-back'].minimumGap;
+              if (Math.abs(appliedRootCorrection + lift) > MAX_REST_ROOT_SHIFT_METRES) {
+                throw new Error(`Native lie upright entry exceeds its measured root correction bound (${appliedRootCorrection + lift} m)`);
+              }
+              shiftRootWorldY(lift);
+              appliedRootCorrection += lift;
+              solveHostFeet?.(support.surface, floorY!);
+              measurement = measure(support.surface, sampleParentLocalContacts);
+            }
+            if (measurement.regions['pelvis-back'].minimumGap < -MAX_PENETRATION_METRES) {
+              throw new Error(`Native lie upright entry still penetrates the pelvis after bounded floor/contact iterations; evidence=${evidence(support.surface, measurement, mappedFrame, appliedRootCorrection)}`);
+            }
+          }
+        }
+        if (propContactPhase) {
+          if (pose === 'soak') {
+            appliedRootCorrectionXZ = alignFeetToProp(support.surface, sampleParentLocalContacts, MAX_REST_ROOT_SHIFT_METRES);
+            solveHostFeet?.(support.surface, floorY!);
+            measurement = measure(support.surface, sampleParentLocalContacts);
+          } else if (pose === 'wash') {
+            appliedRootCorrectionXZ = washHeadCorrection(root, support.surface, anchorBlend,
+              sampleParentLocalContacts, false, probe);
+            solveHostFeet?.(support.surface, floorY!);
+            measurement = measure(support.surface, sampleParentLocalContacts);
+          }
+          if (pose === 'lie' && anchorBlend > 0 && !correctionInterval('lie', measurement)) {
+            measurement = alignLieSpine(support.surface, sampleParentLocalContacts, measurement, anchorBlend);
+          }
+          const anchor = rootCorrectionFor(pose, measurement);
+          const rootCorrection = anchor === null ? 0 : anchor * anchorBlend;
+          if (Math.abs(rootCorrection) > 0.0002) {
+            shiftRootWorldY(rootCorrection);
+            if (pose === 'soak' || pose === 'wash' || upright) solveHostFeet?.(support.surface, upright ? floorY! : undefined);
+            measurement = measure(support.surface, sampleParentLocalContacts);
+          }
+          const contactGaps = [measurement.regions['pelvis-back'], measurement.regions['torso-back'], measurement.regions['head-back']]
+            .filter((region) => region.sampled > 0)
+            .flatMap((region) => [region.minimumGap]);
+          if (contactGaps.some((gap) => !Number.isFinite(gap) || gap < -MAX_PENETRATION_METRES)) {
+            throw new Error(`Native ${pose} transition penetrates its prop; evidence=${evidence(support.surface, measurement, mappedFrame, rootCorrection)}`);
+          }
+          appliedRootCorrection += rootCorrection;
+        }
+        const contacts = worldContacts(root, sampleParentLocalContacts()).flatMap((contact) => contact.points ?? [contact]);
+        const footGaps = upright ? contacts.map((contact) => contact.y - floorY!) : [];
+        if (footGaps.some((gap) => !Number.isFinite(gap) || gap < -MAX_PENETRATION_METRES)) {
+          throw new Error(`Native ${pose} transition penetrates the floor; footGaps=${JSON.stringify(footGaps)}; evidence=${evidence(support.surface, measurement, mappedFrame, appliedRootCorrection)}`);
+        }
+        if (upright && !footGaps.some((gap) => Math.abs(gap) <= MAX_PENETRATION_METRES)) {
+          throw new Error(`Native ${pose} upright transition has no planted foot; footGaps=${JSON.stringify(footGaps)}; hip=${hipWorld.toArray()}; head=${headWorld.toArray()}; evidence=${evidence(support.surface, measurement, mappedFrame, appliedRootCorrection)}`);
+        }
+        return Object.freeze({ pose, propId: support.surface.id, phase, transitionValidated: true,
+          hipsWorldCorrection: 0, rootWorldCorrection: appliedRootCorrection,
+          ...(appliedRootCorrectionXZ ? { rootWorldCorrectionXZ: appliedRootCorrectionXZ } : {}), measurement });
+      }
+      let appliedRootCorrectionXZ: readonly [number, number] | undefined;
+      let measurement = measure(support.surface, sampleParentLocalContacts);
+      let rootCorrection = 0;
+      if (pose === 'soak') {
+        appliedRootCorrectionXZ = alignFeetToProp(support.surface, sampleParentLocalContacts, MAX_REST_ROOT_SHIFT_METRES);
+      }
+      if (pose === 'wash') {
+        solveHostFeet?.(support.surface);
+        appliedRootCorrectionXZ = washHeadCorrection(root, support.surface, 1,
+          sampleParentLocalContacts, true, probe);
+        solveHostFeet?.(support.surface);
+        measurement = measure(support.surface, sampleParentLocalContacts);
+      } else if (pose === 'soak') {
+        let settled = false;
+        for (let pass = 0; pass < 6; pass++) {
+          solveHostFeet?.(support.surface);
+          measurement = measure(support.surface, sampleParentLocalContacts);
+          const shift = rootCorrectionFor('soak', measurement);
+          if (shift === null) throw new Error(`Native soak source pose cannot align its measured pelvis to the tub; evidence=${evidence(support.surface, measurement, mappedFrame, rootCorrection)}`);
+          if (Math.abs(shift) <= 0.0002) { settled = true; break; }
+          shiftRootWorldY(shift);
+          rootCorrection += shift;
+        }
+        if (!settled) {
+          solveHostFeet?.(support.surface);
+          measurement = measure(support.surface, sampleParentLocalContacts);
+          const remaining = rootCorrectionFor('soak', measurement);
+          if (remaining === null || Math.abs(remaining) > 0.004) {
+            throw new Error(`Native soak contact did not settle inside its unchanged posterior interval; remaining=${remaining}; evidence=${evidence(support.surface, measurement, mappedFrame, rootCorrection)}`);
+          }
+        }
+        measurement = measure(support.surface, sampleParentLocalContacts);
+      } else {
+        measurement = measure(support.surface, sampleParentLocalContacts);
+      }
+      if (pose === 'lie') {
+        if (!correctionInterval('lie', measurement)) measurement = alignLieSpine(support.surface, sampleParentLocalContacts, measurement, 1);
+        const shift = rootCorrectionFor('lie', measurement);
+        if (shift === null) throw new Error(`Native lie source pose cannot be aligned to both measured posterior regions; evidence=${evidence(support.surface, measurement, mappedFrame, 0)}`);
+        if (Math.abs(shift) > 0.0002) {
+          shiftRootWorldY(shift);
+          rootCorrection += shift;
+          measurement = measure(support.surface, sampleParentLocalContacts);
+        }
+      }
+      if (!measurement.supported) throw new Error(`Native ${pose} contact failed: ${measurement.reason ?? 'host surface is not supported'}; evidence=${evidence(support.surface, measurement, mappedFrame, rootCorrection)}`);
+      return Object.freeze({ pose, propId: support.surface.id, phase, transitionValidated: false,
+        hipsWorldCorrection: 0, rootWorldCorrection: rootCorrection,
+        ...(appliedRootCorrectionXZ ? { rootWorldCorrectionXZ: appliedRootCorrectionXZ } : {}), measurement });
+    },
+    dispose() { disposed = true; active = null; },
+  };
+}

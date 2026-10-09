@@ -1,0 +1,3892 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Source-only candidate inventory for remaining African sovereign countries; candidates for future city-specific data contracts, not playability or live-state claims.",
+  "generatedBy": "scripts/world/build-africa-rollout-inventory.py",
+  "airportSelectionPolicy": "For each candidate Natural Earth Admin-0 capital, choose the nearest great-circle OurAirports point whose exact iso_country matches the country and whose type is medium_airport or large_airport and scheduled_service=yes. This is a dataset candidate only; it does not assert current operations, airline routes, official ARP, or airport playable geometry.",
+  "timezoneSelectionPolicy": "Use local IANA tz database zone.tab; among entries tagged with exact country ISO, choose the nearest listed coordinate to the chosen Natural Earth city. If no valid entry exists, retain null and explicit gap.",
+  "scopeExclusions": [
+    {
+      "iso2": "BJ",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "CI",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "CM",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "DZ",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "ET",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "GH",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "KE",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "NG",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "SN",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "TG",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    },
+    {
+      "iso2": "ZA",
+      "reason": "explicitly excluded from this remaining-Africa batch (Nigeria or frozen wave one/two)"
+    }
+  ],
+  "candidateCountryCount": 43,
+  "isoMismatchCandidateCount": 0,
+  "missingCityCount": 0,
+  "missingAirportCandidateCount": 0,
+  "sourceFiles": [
+    {
+      "label": "Natural Earth 10m populated places",
+      "sourceId": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+      "path": ".cache/world-build/settlement-source-cache/42132340ed32bed7cf7be4b52f15d451eb81f235ceea042871e3b10f0117fc99.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_populated_places.geojson",
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "bytes": 19359003,
+      "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
+    },
+    {
+      "label": "Natural Earth 10m admin0 countries",
+      "sourceId": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19",
+      "path": ".cache/world-build/country-source-cache/e51c4d047ed2867b34faea4e17c102ead4f3fee558a84a942619ee2cb1abdceb.geojson",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_10m_admin_0_countries.geojson",
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "bytes": 13287234,
+      "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255"
+    },
+    {
+      "label": "OurAirports airports.csv",
+      "sourceId": "ourairports-airports-56abe495bb3afcf8b5d8f01feec0f46ba4fd753f",
+      "sourceUrl": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/56abe495bb3afcf8b5d8f01feec0f46ba4fd753f/airports.csv",
+      "repository": "https://github.com/davidmegginson/ourairports-data",
+      "pinnedCommit": "56abe495bb3afcf8b5d8f01feec0f46ba4fd753f",
+      "filePath": "airports.csv",
+      "bytes": 12743186,
+      "sha256": "0673f846680d703dd4ff81b6c1f557ddf09eb73df164c3ea98623fdd72545333",
+      "gitBlobSha1": "6bcd9664541c67c40477750a9617940865c506a0",
+      "license": "Public domain (OurAirports data terms); repository license is Unlicense",
+      "licenseUrl": "https://ourairports.com/data/",
+      "localCachePath": ".cache/world-build/airport-source-cache/0673f846680d703dd4ff81b6c1f557ddf09eb73df164c3ea98623fdd72545333.csv"
+    },
+    {
+      "label": "IANA tz database zone.tab from local host",
+      "path": ".cache/world-build/timezone-source-cache/4d8e389e5f4b0ec0466d5b14f42e5dfb0308c4376165fcf478339afd9ddcb00c.tab",
+      "sha256": "4d8e389e5f4b0ec0466d5b14f42e5dfb0308c4376165fcf478339afd9ddcb00c",
+      "bytes": 18818
+    },
+    {
+      "label": "UNSD Standard Country or Area Codes for Statistical Use (M49) overview",
+      "sourceUrl": "https://unstats.un.org/unsd/methodology/m49/overview/",
+      "primaryPublisher": "United Nations Statistics Division",
+      "usedFor": "African regional-membership overrides only for Mauritius (MU, M49 480) and Seychelles (SC, M49 690)",
+      "sourceHash": null,
+      "sourceHashStatus": "not captured; source consulted as a live primary HTML page"
+    }
+  ],
+  "countries": [
+    {
+      "country": "South Sudan",
+      "iso2": "SS",
+      "admin0A3": "SDS",
+      "countryId": "country:natural-earth:NE_ID%3A1159321235",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SS",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        24.121556,
+        3.490202,
+        35.920835,
+        12.216155
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321235",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/880f1f80bc2ad0736b8b7447a5448b2ab2ac12b923f49de831f295a177ff10e3.json",
+        "outlineIndexSha256": "880f1f80bc2ad0736b8b7447a5448b2ab2ac12b923f49de831f295a177ff10e3",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1158,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/04e11f2d505ffddab1af7b40de54afe5523409a6f8809cf5db72c7353d8bb07c.json",
+            "sha256": "04e11f2d505ffddab1af7b40de54afe5523409a6f8809cf5db72c7353d8bb07c",
+            "bytes": 24260,
+            "polygonCount": 1,
+            "coordinatePositions": 1158
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Juba",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149449",
+        "coordinatesWgs84": [
+          31.580026,
+          4.829975
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "SS",
+        "admin0A3": "SSD",
+        "admin0A3MatchesAdmin0Country": false,
+        "admin0NameFromPlaceRecord": "South Sudan",
+        "timezoneFromPlaceRecord": "Africa/Khartoum",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": null,
+        "pointAssetStatus": "not found in existing selected-place output; coordinates retained from pinned source only"
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Juba",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 4.6,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3247",
+        "name": "Juba International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SS",
+        "isoRegion": "SS-EC",
+        "iata": "JUB",
+        "icao": "HJJJ",
+        "coordinatesWgs84": [
+          31.601101,
+          4.87201
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HJJJ/",
+        "distanceFromChosenCityKm": 5.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [
+        "no selected-place output asset for this city point",
+        "chosen place ADM0_A3 differs from country ADM0_A3 despite exact ISO_A2 match; verify join before contract"
+      ],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Somalia",
+      "iso2": "SO",
+      "admin0A3": "SOM",
+      "countryId": "country:natural-earth:NE_ID%3A1159321261",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SO",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        40.965385,
+        -1.696303,
+        51.417038,
+        11.989119
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321261",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/695bd0312e0ce6ee7954eaa6d03bc0ea49b30fc26f95181ebc4d8dd59e6d91dc.json",
+        "outlineIndexSha256": "695bd0312e0ce6ee7954eaa6d03bc0ea49b30fc26f95181ebc4d8dd59e6d91dc",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 668,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/41be207d36a038ed0af0472245464f6ee673f2b539f8e47ef761fea34e3ec444.json",
+            "sha256": "41be207d36a038ed0af0472245464f6ee673f2b539f8e47ef761fea34e3ec444",
+            "bytes": 14248,
+            "polygonCount": 1,
+            "coordinatePositions": 668
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Mogadishu",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150715",
+        "coordinatesWgs84": [
+          45.364732,
+          2.068627
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "SO",
+        "admin0A3": "SOM",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Somalia",
+        "timezoneFromPlaceRecord": "Africa/Mogadishu",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/3beac2c267b2fcb85d437c222d13c869181d5451a9fe3c7336f0e9956950c6dd.json",
+        "pointAssetSha256": "3beac2c267b2fcb85d437c222d13c869181d5451a9fe3c7336f0e9956950c6dd",
+        "countryEmittedPlaceCount": 25
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Mogadishu",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "31899",
+        "name": "Aden Adde International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SO",
+        "isoRegion": "SO-BN",
+        "iata": "MGQ",
+        "icao": "HCMM",
+        "coordinatesWgs84": [
+          45.304699,
+          2.01444
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HCMM/",
+        "distanceFromChosenCityKm": 9.0,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Malawi",
+      "iso2": "MW",
+      "admin0A3": "MWI",
+      "countryId": "country:natural-earth:NE_ID%3A1159321081",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MW",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        32.663308,
+        -17.135335,
+        35.904299,
+        -9.381235
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321081",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/67285d586646bfab1972f38990634ce02263f640031aa203a0b8dcf9437a9b2b.json",
+        "outlineIndexSha256": "67285d586646bfab1972f38990634ce02263f640031aa203a0b8dcf9437a9b2b",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 815,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/9027bd6cdf7c3a60acc5ef00ac3bed6ddfe88d011a0cc4b59a64b2f0b2ae9027.json",
+            "sha256": "9027bd6cdf7c3a60acc5ef00ac3bed6ddfe88d011a0cc4b59a64b2f0b2ae9027",
+            "bytes": 18462,
+            "polygonCount": 3,
+            "coordinatePositions": 815
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Lilongwe",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150907",
+        "coordinatesWgs84": [
+          33.783302,
+          -13.983295
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "MW",
+        "admin0A3": "MWI",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Malawi",
+        "timezoneFromPlaceRecord": "Africa/Blantyre",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/f22a3b9995e479f01a09ccb27255184124173ce52af2100000441f6403207ada.json",
+        "pointAssetSha256": "f22a3b9995e479f01a09ccb27255184124173ce52af2100000441f6403207ada",
+        "countryEmittedPlaceCount": 20
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Blantyre",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 239.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3018",
+        "name": "Kamuzu International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MW",
+        "isoRegion": "MW-LI",
+        "iata": "LLW",
+        "icao": "FWKI",
+        "coordinatesWgs84": [
+          33.780998,
+          -13.7894
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FWKI/",
+        "distanceFromChosenCityKm": 21.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "United Republic of Tanzania",
+      "iso2": "TZ",
+      "admin0A3": "TZA",
+      "countryId": "country:natural-earth:NE_ID%3A1159321337",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "TZ",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        29.321032,
+        -11.731272,
+        40.449392,
+        -0.98583
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321337",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/7e2ac12eb65d2cd274d518044b8edb2347d6a129694abada1657162dc228a8cb.json",
+        "outlineIndexSha256": "7e2ac12eb65d2cd274d518044b8edb2347d6a129694abada1657162dc228a8cb",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 7,
+        "coordinatePositions": 1762,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/16b277a840e447deb13cac1d21d1106c3206eacff233e668e08907ab8147202b.json",
+            "sha256": "16b277a840e447deb13cac1d21d1106c3206eacff233e668e08907ab8147202b",
+            "bytes": 38837,
+            "polygonCount": 7,
+            "coordinatePositions": 1762
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Dar es Salaam",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151305",
+        "coordinatesWgs84": [
+          39.266396,
+          -6.798067
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "iso2": "TZ",
+        "admin0A3": "TZA",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Tanzania",
+        "timezoneFromPlaceRecord": "Africa/Dar_es_Salaam",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/be6c85bea98362a744cb9dbdd36138489bf4a7be8a3f18bc4f19d21407361274.json",
+        "pointAssetSha256": "be6c85bea98362a744cb9dbdd36138489bf4a7be8a3f18bc4f19d21407361274",
+        "countryEmittedPlaceCount": 59
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Dar_es_Salaam",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.9,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3251",
+        "name": "Julius Nyerere International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "TZ",
+        "isoRegion": "TZ-02",
+        "iata": "DAR",
+        "icao": "HTDA",
+        "coordinatesWgs84": [
+          39.207288,
+          -6.873499
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HTDA/",
+        "distanceFromChosenCityKm": 10.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Morocco",
+      "iso2": "MA",
+      "admin0A3": "MAR",
+      "countryId": "country:natural-earth:NE_ID%3A1159321035",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MA",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -17.013743,
+        21.419971,
+        -1.031999,
+        35.926519
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321035",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/0b5eed77d729fb8bdb32c2efa768a2031926ca76635d484c16605c4f2c2b7f5d.json",
+        "outlineIndexSha256": "0b5eed77d729fb8bdb32c2efa768a2031926ca76635d484c16605c4f2c2b7f5d",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1019,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/f3b65f6a3928be5974fbaecc0b96c35d2647151654e725eed2f6e78bae60c9a5.json",
+            "sha256": "f3b65f6a3928be5974fbaecc0b96c35d2647151654e725eed2f6e78bae60c9a5",
+            "bytes": 22661,
+            "polygonCount": 1,
+            "coordinatePositions": 1019
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Rabat",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150673",
+        "coordinatesWgs84": [
+          -6.836408,
+          34.025307
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "MA",
+        "admin0A3": "MAR",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Morocco",
+        "timezoneFromPlaceRecord": "Africa/Casablanca",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/129bac5c2306aad49d9a655d93e0f1aa50e24fae5897ee3ff1701739a6bea4bd.json",
+        "pointAssetSha256": "129bac5c2306aad49d9a655d93e0f1aa50e24fae5897ee3ff1701739a6bea4bd",
+        "countryEmittedPlaceCount": 26
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Casablanca",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 80.6,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3109",
+        "name": "Rabat-Salé Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MA",
+        "isoRegion": "MA-04",
+        "iata": "RBA",
+        "icao": "GMME",
+        "coordinatesWgs84": [
+          -6.75152,
+          34.051498
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GMME/",
+        "distanceFromChosenCityKm": 8.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Republic of the Congo",
+      "iso2": "CG",
+      "admin0A3": "COG",
+      "countryId": "country:natural-earth:NE_ID%3A1159320515",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "CG",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        11.114016,
+        -5.019631,
+        18.642407,
+        3.708276
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320515",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/b7eb242728946747e0a397f39ae52d77770f01eb8bf7cd3f53d6d88eee5f9d72.json",
+        "outlineIndexSha256": "b7eb242728946747e0a397f39ae52d77770f01eb8bf7cd3f53d6d88eee5f9d72",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1345,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/c217b3b11c793682753d11dd4b81fffd0f4d491f2fdaa4e24ba729b2e2bafaf4.json",
+            "sha256": "c217b3b11c793682753d11dd4b81fffd0f4d491f2fdaa4e24ba729b2e2bafaf4",
+            "bytes": 28778,
+            "polygonCount": 1,
+            "coordinatePositions": 1345
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Brazzaville",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150993",
+        "coordinatesWgs84": [
+          15.282744,
+          -4.25724
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "CG",
+        "admin0A3": "COG",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Congo (Brazzaville)",
+        "timezoneFromPlaceRecord": "Africa/Brazzaville",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/2f7ffb70a7e655927daeaab39947412446b0e10a5d3c5090a51ed0fb31507168.json",
+        "pointAssetSha256": "2f7ffb70a7e655927daeaab39947412446b0e10a5d3c5090a51ed0fb31507168",
+        "countryEmittedPlaceCount": 17
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Brazzaville",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2868",
+        "name": "Maya-Maya International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "CG",
+        "isoRegion": "CG-12",
+        "iata": "BZV",
+        "icao": "FCBB",
+        "coordinatesWgs84": [
+          15.253,
+          -4.2517
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FCBB/",
+        "distanceFromChosenCityKm": 3.4,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Democratic Republic of the Congo",
+      "iso2": "CD",
+      "admin0A3": "COD",
+      "countryId": "country:natural-earth:NE_ID%3A1159320513",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "CD",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        12.210541,
+        -13.458351,
+        31.280447,
+        5.37528
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320513",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/6dc5b62b7c3691a8249dd6efde6e92051c2e1d18079d2e8f5e5f80adcbb655e2.json",
+        "outlineIndexSha256": "6dc5b62b7c3691a8249dd6efde6e92051c2e1d18079d2e8f5e5f80adcbb655e2",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 2868,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/fa25ab12712f1dd4156f69fad48a45d00448a92e9d35b37fd9e870284d71c3bc.json",
+            "sha256": "fa25ab12712f1dd4156f69fad48a45d00448a92e9d35b37fd9e870284d71c3bc",
+            "bytes": 62063,
+            "polygonCount": 2,
+            "coordinatePositions": 2868
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Kinshasa",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151539",
+        "coordinatesWgs84": [
+          15.313026,
+          -4.327778
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 1,
+        "iso2": "CD",
+        "admin0A3": "COD",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Congo (Kinshasa)",
+        "timezoneFromPlaceRecord": "Africa/Kinshasa",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/180c6b9fdee887fe9025e6fef8f92680ecdeddef5669d93d48d739bb83f3f963.json",
+        "pointAssetSha256": "180c6b9fdee887fe9025e6fef8f92680ecdeddef5669d93d48d739bb83f3f963",
+        "countryEmittedPlaceCount": 88
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Kinshasa",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 3.4,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3040",
+        "name": "Ndjili International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "CD",
+        "isoRegion": "CD-KN",
+        "iata": "FIH",
+        "icao": "FZAA",
+        "coordinatesWgs84": [
+          15.4446,
+          -4.38575
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FZAA/",
+        "distanceFromChosenCityKm": 15.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Namibia",
+      "iso2": "NA",
+      "admin0A3": "NAM",
+      "countryId": "country:natural-earth:NE_ID%3A1159321085",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "NA",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        11.717621,
+        -28.959368,
+        25.259781,
+        -16.951057
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321085",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/23bb493ff7359aa4e9870bb993e70a72975d5e50e0c353b310ab69cc63c9e3f8.json",
+        "outlineIndexSha256": "23bb493ff7359aa4e9870bb993e70a72975d5e50e0c353b310ab69cc63c9e3f8",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1183,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/c80e58b54259376f1b517efaa01040447af0cd65f14b339267182918226ee5e5.json",
+            "sha256": "c80e58b54259376f1b517efaa01040447af0cd65f14b339267182918226ee5e5",
+            "bytes": 26998,
+            "polygonCount": 1,
+            "coordinatePositions": 1183
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Windhoek",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150785",
+        "coordinatesWgs84": [
+          17.083546,
+          -22.570006
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "NA",
+        "admin0A3": "NAM",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Namibia",
+        "timezoneFromPlaceRecord": "Africa/Windhoek",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/72c43b403244699f55fda9b48da4547735428c0f71cccb13b6dc333aa03d0768.json",
+        "pointAssetSha256": "72c43b403244699f55fda9b48da4547735428c0f71cccb13b6dc333aa03d0768",
+        "countryEmittedPlaceCount": 27
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Windhoek",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.7,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3038",
+        "name": "Eros Airport",
+        "type": "medium_airport",
+        "scheduledService": true,
+        "isoCountry": "NA",
+        "isoRegion": "NA-KH",
+        "iata": "ERS",
+        "icao": "FYWE",
+        "coordinatesWgs84": [
+          17.079002,
+          -22.60492
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FYWE/",
+        "distanceFromChosenCityKm": 3.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Libya",
+      "iso2": "LY",
+      "admin0A3": "LBY",
+      "countryId": "country:natural-earth:NE_ID%3A1159321017",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "LY",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        9.286544,
+        19.496124,
+        25.156261,
+        33.181225
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321017",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/69bd822f621d04097591779960412d8df2b02bd06bb9c122147cf83c8c209ea8.json",
+        "outlineIndexSha256": "69bd822f621d04097591779960412d8df2b02bd06bb9c122147cf83c8c209ea8",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 660,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/57d3a233c039ee402d07d15cb4110ff9928d10ad58f177987c8c85c704bff2de.json",
+            "sha256": "57d3a233c039ee402d07d15cb4110ff9928d10ad58f177987c8c85c704bff2de",
+            "bytes": 14387,
+            "polygonCount": 1,
+            "coordinatePositions": 660
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Tripoli",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151415",
+        "coordinatesWgs84": [
+          13.180012,
+          32.8925
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "iso2": "LY",
+        "admin0A3": "LBY",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Libya",
+        "timezoneFromPlaceRecord": null,
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/d04e51063a3bea76ed13a09f6bf39657b0c13c1d1ec12c3d0119635a694c05c4.json",
+        "pointAssetSha256": "d04e51063a3bea76ed13a09f6bf39657b0c13c1d1ec12c3d0119635a694c05c4",
+        "countryEmittedPlaceCount": 35
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Tripoli",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.9,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3224",
+        "name": "Mitiga International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "LY",
+        "isoRegion": "LY-TB",
+        "iata": "MJI",
+        "icao": "HLLM",
+        "coordinatesWgs84": [
+          13.287878,
+          32.89177
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HLLM/",
+        "distanceFromChosenCityKm": 10.1,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Tunisia",
+      "iso2": "TN",
+      "admin0A3": "TUN",
+      "countryId": "country:natural-earth:NE_ID%3A1159321327",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "TN",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        7.479832,
+        30.228905,
+        11.564131,
+        37.345201
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321327",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e658dcae55734aa4a23df5fed4509f08da36ef9bb6bd56c7f595ba965ed9af37.json",
+        "outlineIndexSha256": "e658dcae55734aa4a23df5fed4509f08da36ef9bb6bd56c7f595ba965ed9af37",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 4,
+        "coordinatePositions": 700,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/1e893208fa6a718f9c6e62bb314860a8152b68887cdba7e143970c29ed27ddc5.json",
+            "sha256": "1e893208fa6a718f9c6e62bb314860a8152b68887cdba7e143970c29ed27ddc5",
+            "bytes": 15055,
+            "polygonCount": 4,
+            "coordinatePositions": 700
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Tunis",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150537",
+        "coordinatesWgs84": [
+          10.179678,
+          36.802778
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "TN",
+        "admin0A3": "TUN",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Tunisia",
+        "timezoneFromPlaceRecord": "Africa/Tunis",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/74c7355f5501cf7b3b0c84102d9e88b01ec68d9a8c150685c0fc3537e780fb68.json",
+        "pointAssetSha256": "74c7355f5501cf7b3b0c84102d9e88b01ec68d9a8c150685c0fc3537e780fb68",
+        "countryEmittedPlaceCount": 26
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Tunis",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.4,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2133",
+        "name": "Tunis Carthage International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "TN",
+        "isoRegion": "TN-11",
+        "iata": "TUN",
+        "icao": "DTTA",
+        "coordinatesWgs84": [
+          10.2272,
+          36.851002
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/DTTA/",
+        "distanceFromChosenCityKm": 6.8,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Zambia",
+      "iso2": "ZM",
+      "admin0A3": "ZMB",
+      "countryId": "country:natural-earth:NE_ID%3A1159321439",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "ZM",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        21.979878,
+        -18.069232,
+        33.674203,
+        -8.194124
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321439",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/99fad64ed32ea10b18b82f856bc565d4ed8a4dbfe2abafbb51c0f9f5e5a6195b.json",
+        "outlineIndexSha256": "99fad64ed32ea10b18b82f856bc565d4ed8a4dbfe2abafbb51c0f9f5e5a6195b",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1508,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/4116bff07cdc3ab713cbe2b3e008d13b0bdf41c357147ce272966f62e78cf288.json",
+            "sha256": "4116bff07cdc3ab713cbe2b3e008d13b0bdf41c357147ce272966f62e78cf288",
+            "bytes": 34214,
+            "polygonCount": 1,
+            "coordinatePositions": 1508
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Lusaka",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150571",
+        "coordinatesWgs84": [
+          28.281382,
+          -15.414698
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "ZM",
+        "admin0A3": "ZMB",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Zambia",
+        "timezoneFromPlaceRecord": "Africa/Lusaka",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/4a3038587bf2cd0ff1f7d61927e59adad6d5129d3383d9aea1423d1d5f9c8aa6.json",
+        "pointAssetSha256": "4a3038587bf2cd0ff1f7d61927e59adad6d5129d3383d9aea1423d1d5f9c8aa6",
+        "countryEmittedPlaceCount": 34
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Lusaka",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2894",
+        "name": "Kenneth Kaunda International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "ZM",
+        "isoRegion": "ZM-09",
+        "iata": "LUN",
+        "icao": "FLKK",
+        "coordinatesWgs84": [
+          28.452722,
+          -15.330833
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FLLS/",
+        "distanceFromChosenCityKm": 20.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Sierra Leone",
+      "iso2": "SL",
+      "admin0A3": "SLE",
+      "countryId": "country:natural-earth:NE_ID%3A1159321251",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SL",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -13.301096,
+        6.91942,
+        -10.282236,
+        9.996006
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321251",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/7de139b82bd19956011041fee7d928bdaa6a941e604ecb5dad7cb0bd338e49d5.json",
+        "outlineIndexSha256": "7de139b82bd19956011041fee7d928bdaa6a941e604ecb5dad7cb0bd338e49d5",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 695,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/6627200f7f7298f60615a7ef304b17f0db4c5732ceaaf04fc276aa01ca877b45.json",
+            "sha256": "6627200f7f7298f60615a7ef304b17f0db4c5732ceaaf04fc276aa01ca877b45",
+            "bytes": 15159,
+            "polygonCount": 2,
+            "coordinatePositions": 695
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Freetown",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150625",
+        "coordinatesWgs84": [
+          -13.236162,
+          8.471957
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "SL",
+        "admin0A3": "SLE",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Sierra Leone",
+        "timezoneFromPlaceRecord": "Africa/Freetown",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/b891d78898e7f337cd59f4c6786d982dedefdb4c6878f473ea7f14cbb577f929.json",
+        "pointAssetSha256": "b891d78898e7f337cd59f4c6786d982dedefdb4c6878f473ea7f14cbb577f929",
+        "countryEmittedPlaceCount": 5
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Freetown",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 3.5,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3095",
+        "name": "Lungi International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SL",
+        "isoRegion": "SL-N",
+        "iata": "FNA",
+        "icao": "GFLL",
+        "coordinatesWgs84": [
+          -13.1955,
+          8.61644
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GFLL/",
+        "distanceFromChosenCityKm": 16.7,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Guinea",
+      "iso2": "GN",
+      "admin0A3": "GIN",
+      "countryId": "country:natural-earth:NE_ID%3A1159320795",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "GN",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -15.081125,
+        7.190208,
+        -7.662447,
+        12.673388
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320795",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/717f4de10389644bb8bc0c5174ca942d84f35a73dfc47f5391e74e819cb47cdf.json",
+        "outlineIndexSha256": "717f4de10389644bb8bc0c5174ca942d84f35a73dfc47f5391e74e819cb47cdf",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1628,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/32f63aac2424396b299caed3c69405b39832bc829de6b053522f0ebfe16bcbfe.json",
+            "sha256": "32f63aac2424396b299caed3c69405b39832bc829de6b053522f0ebfe16bcbfe",
+            "bytes": 35733,
+            "polygonCount": 1,
+            "coordinatePositions": 1628
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Conakry",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150997",
+        "coordinatesWgs84": [
+          -13.682181,
+          9.533469
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "GN",
+        "admin0A3": "GIN",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Guinea",
+        "timezoneFromPlaceRecord": "Africa/Conakry",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/3fa300072987b614a9e20205f3ab26139a646732d1aa5d8321090cc5c940fb66.json",
+        "pointAssetSha256": "3fa300072987b614a9e20205f3ab26139a646732d1aa5d8321090cc5c940fb66",
+        "countryEmittedPlaceCount": 29
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Conakry",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 4.2,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3146",
+        "name": "Ahmed Sékou Touré International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "GN",
+        "isoRegion": "GN-C",
+        "iata": "CKY",
+        "icao": "GUCY",
+        "coordinatesWgs84": [
+          -13.612,
+          9.57689
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GUCY/",
+        "distanceFromChosenCityKm": 9.1,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Liberia",
+      "iso2": "LR",
+      "admin0A3": "LBR",
+      "countryId": "country:natural-earth:NE_ID%3A1159321015",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "LR",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -11.476186,
+        4.347235,
+        -7.384118,
+        8.565396
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321015",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/94f13859c83e22e7020f27a829544b54a90e5f0a587c99814a445393c74bfdf1.json",
+        "outlineIndexSha256": "94f13859c83e22e7020f27a829544b54a90e5f0a587c99814a445393c74bfdf1",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 698,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/1d59eb05291a0d1685b0a707dbe2168a1be95987573bf3e8a5ff4cb50492f282.json",
+            "sha256": "1d59eb05291a0d1685b0a707dbe2168a1be95987573bf3e8a5ff4cb50492f282",
+            "bytes": 14685,
+            "polygonCount": 1,
+            "coordinatePositions": 698
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Monrovia",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151311",
+        "coordinatesWgs84": [
+          -10.79966,
+          6.314582
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "iso2": "LR",
+        "admin0A3": "LBR",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Liberia",
+        "timezoneFromPlaceRecord": "Africa/Monrovia",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/41a32df6e8a04e606a2ccfc0b95d58b9994f31854b1f8cbbc9705305cef13b13.json",
+        "pointAssetSha256": "41a32df6e8a04e606a2ccfc0b95d58b9994f31854b1f8cbbc9705305cef13b13",
+        "countryEmittedPlaceCount": 13
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Monrovia",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 2.4,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3098",
+        "name": "Spriggs Payne Airport",
+        "type": "medium_airport",
+        "scheduledService": true,
+        "isoCountry": "LR",
+        "isoRegion": "LR-MO",
+        "iata": "MLW",
+        "icao": "GLMR",
+        "coordinatesWgs84": [
+          -10.7587,
+          6.28906
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GLMR/",
+        "distanceFromChosenCityKm": 5.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Central African Republic",
+      "iso2": "CF",
+      "admin0A3": "CAF",
+      "countryId": "country:natural-earth:NE_ID%3A1159320463",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "CF",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        14.387266,
+        2.236454,
+        27.441301,
+        11.000828
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320463",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e0439311ffb95275fd23938443614aac46f026fe18dd02f0adfb13c7590d3e95.json",
+        "outlineIndexSha256": "e0439311ffb95275fd23938443614aac46f026fe18dd02f0adfb13c7590d3e95",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1792,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/b88820992c7008f9ec5838ddc0b233b9f27eb63b92bb5f1d22087822cdfbb218.json",
+            "sha256": "b88820992c7008f9ec5838ddc0b233b9f27eb63b92bb5f1d22087822cdfbb218",
+            "bytes": 37404,
+            "polygonCount": 1,
+            "coordinatePositions": 1792
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Bangui",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151111",
+        "coordinatesWgs84": [
+          18.558288,
+          4.366644
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "CF",
+        "admin0A3": "CAF",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Central African Republic",
+        "timezoneFromPlaceRecord": "Africa/Bangui",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/de6eb0ebe692f0dae03eecf7f3d641f6a9bab832d46b4c906712d85a36e853d5.json",
+        "pointAssetSha256": "de6eb0ebe692f0dae03eecf7f3d641f6a9bab832d46b4c906712d85a36e853d5",
+        "countryEmittedPlaceCount": 21
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Bangui",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 2.8,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2873",
+        "name": "Bangui M'Poko International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "CF",
+        "isoRegion": "CF-MP",
+        "iata": "BGF",
+        "icao": "FEFF",
+        "coordinatesWgs84": [
+          18.518801,
+          4.39848
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FEFF/",
+        "distanceFromChosenCityKm": 5.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Sudan",
+      "iso2": "SD",
+      "admin0A3": "SDN",
+      "countryId": "country:natural-earth:NE_ID%3A1159321229",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SD",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        21.809449,
+        8.681642,
+        38.603852,
+        22.226965
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321229",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/75c46de973bcf30d4bf8511c100f1822aaddeb350c3421ba3841f0290d862009.json",
+        "outlineIndexSha256": "75c46de973bcf30d4bf8511c100f1822aaddeb350c3421ba3841f0290d862009",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 1178,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/df30db73102f247cde74eb35f4556073062920bd00bdb42eb54e60c0b402e082.json",
+            "sha256": "df30db73102f247cde74eb35f4556073062920bd00bdb42eb54e60c0b402e082",
+            "bytes": 25559,
+            "polygonCount": 2,
+            "coordinatePositions": 1178
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Khartoum",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151275",
+        "coordinatesWgs84": [
+          32.532233,
+          15.590024
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "iso2": "SD",
+        "admin0A3": "SDN",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Sudan",
+        "timezoneFromPlaceRecord": "Africa/Khartoum",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/eb3081b2c1b3054336a433d313d65754d3f885b84d4124a9e02a26e2dc927f1a.json",
+        "pointAssetSha256": "eb3081b2c1b3054336a433d313d65754d3f885b84d4124a9e02a26e2dc927f1a",
+        "countryEmittedPlaceCount": 30
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Khartoum",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3249",
+        "name": "Khartoum International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SD",
+        "isoRegion": "SD-03",
+        "iata": "KRT",
+        "icao": "HSSK",
+        "coordinatesWgs84": [
+          32.5532,
+          15.5895
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HSSK/",
+        "distanceFromChosenCityKm": 2.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Djibouti",
+      "iso2": "DJ",
+      "admin0A3": "DJI",
+      "countryId": "country:natural-earth:NE_ID%3A1159320541",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "DJ",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        41.74911,
+        10.929825,
+        43.418712,
+        12.707913
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320541",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/8240b7581b74b5c87b451026a5da1b31a8b0cf853d85a210e662f415456108d5.json",
+        "outlineIndexSha256": "8240b7581b74b5c87b451026a5da1b31a8b0cf853d85a210e662f415456108d5",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 209,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/1499132265140580a671deb523e2a90f654a2339de918abbeb173683a3b25f38.json",
+            "sha256": "1499132265140580a671deb523e2a90f654a2339de918abbeb173683a3b25f38",
+            "bytes": 4616,
+            "polygonCount": 1,
+            "coordinatePositions": 209
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Djibouti",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149869",
+        "coordinatesWgs84": [
+          43.148002,
+          11.595014
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "DJ",
+        "admin0A3": "DJI",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Djibouti",
+        "timezoneFromPlaceRecord": "Africa/Djibouti",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/e78abffecd1f19aeecae29a49e54f267fde6b1c754c4c8dc54854c87b2da45be.json",
+        "pointAssetSha256": "e78abffecd1f19aeecae29a49e54f267fde6b1c754c4c8dc54854c87b2da45be",
+        "countryEmittedPlaceCount": 5
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Djibouti",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.6,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3174",
+        "name": "Djibouti-Ambouli Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "DJ",
+        "isoRegion": "DJ-DJ",
+        "iata": "JIB",
+        "icao": "HDAM",
+        "coordinatesWgs84": [
+          43.1595,
+          11.5473
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HDAM/",
+        "distanceFromChosenCityKm": 5.5,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Eritrea",
+      "iso2": "ER",
+      "admin0A3": "ERI",
+      "countryId": "country:natural-earth:NE_ID%3A1159320581",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "ER",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        36.423647,
+        12.360022,
+        43.123871,
+        18.004828
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320581",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/2ea2d9cd92c457b6f3701ed14f7536189011ad70cd21af3b15f2cd2d7fa44990.json",
+        "outlineIndexSha256": "2ea2d9cd92c457b6f3701ed14f7536189011ad70cd21af3b15f2cd2d7fa44990",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 1010,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/8e0ab970c43740d483a20062cff0779e42316c4538f4f31f8d608a02b6f45bca.json",
+            "sha256": "8e0ab970c43740d483a20062cff0779e42316c4538f4f31f8d608a02b6f45bca",
+            "bytes": 22037,
+            "polygonCount": 3,
+            "coordinatePositions": 1010
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Asmara",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150873",
+        "coordinatesWgs84": [
+          38.933324,
+          15.333339
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "ER",
+        "admin0A3": "ERI",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Eritrea",
+        "timezoneFromPlaceRecord": "Africa/Asmara",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/6668d18643cebb0c57649e4d443c48922c6bdc4f50c955e64a71fe6e018ef8d5.json",
+        "pointAssetSha256": "6668d18643cebb0c57649e4d443c48922c6bdc4f50c955e64a71fe6e018ef8d5",
+        "countryEmittedPlaceCount": 7
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Asmara",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 5.4,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3202",
+        "name": "Asmara International Airport",
+        "type": "medium_airport",
+        "scheduledService": true,
+        "isoCountry": "ER",
+        "isoRegion": "ER-SK",
+        "iata": "ASM",
+        "icao": "HHAS",
+        "coordinatesWgs84": [
+          38.910702,
+          15.2919
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HHAS/",
+        "distanceFromChosenCityKm": 5.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Mali",
+      "iso2": "ML",
+      "admin0A3": "MLI",
+      "countryId": "country:natural-earth:NE_ID%3A1159321063",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "ML",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -12.26413,
+        10.140054,
+        4.235638,
+        24.995065
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321063",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/05567ad1eea14d2763b76ed23669ae78d86b1fa2ec001e5d5036b85765317bec.json",
+        "outlineIndexSha256": "05567ad1eea14d2763b76ed23669ae78d86b1fa2ec001e5d5036b85765317bec",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1747,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/0327d9502415ef28bcfd19ef088472c27b8a9fb31dc3293fa0316774de886872.json",
+            "sha256": "0327d9502415ef28bcfd19ef088472c27b8a9fb31dc3293fa0316774de886872",
+            "bytes": 38300,
+            "polygonCount": 1,
+            "coordinatePositions": 1747
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Bamako",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150945",
+        "coordinatesWgs84": [
+          -8.001985,
+          12.65196
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "ML",
+        "admin0A3": "MLI",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Mali",
+        "timezoneFromPlaceRecord": "Africa/Bamako",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/3a4ed8ff8f5aa2e76c22eab4600ef7eeaa5118381078af9a75b769e1db53037d.json",
+        "pointAssetSha256": "3a4ed8ff8f5aa2e76c22eab4600ef7eeaa5118381078af9a75b769e1db53037d",
+        "countryEmittedPlaceCount": 30
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Bamako",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3066",
+        "name": "Modibo Keita International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "ML",
+        "isoRegion": "ML-2",
+        "iata": "BKO",
+        "icao": "GABS",
+        "coordinatesWgs84": [
+          -7.94994,
+          12.5335
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GABS/",
+        "distanceFromChosenCityKm": 14.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Angola",
+      "iso2": "AO",
+      "admin0A3": "AGO",
+      "countryId": "country:natural-earth:NE_ID%3A1159320323",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "AO",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        11.669394,
+        -18.031405,
+        24.061714,
+        -4.391204
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320323",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/7d4a099b1115d5f51424f48baba7973c6d9fe0daa701f8e1d0460617fa16d62c.json",
+        "outlineIndexSha256": "7d4a099b1115d5f51424f48baba7973c6d9fe0daa701f8e1d0460617fa16d62c",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 1643,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/c7116babd886494dd23492c67629b613e76f7fc3ef48ac8423f68c8527da9ac5.json",
+            "sha256": "c7116babd886494dd23492c67629b613e76f7fc3ef48ac8423f68c8527da9ac5",
+            "bytes": 36722,
+            "polygonCount": 3,
+            "coordinatePositions": 1643
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Luanda",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151469",
+        "coordinatesWgs84": [
+          13.232481,
+          -8.83634
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "iso2": "AO",
+        "admin0A3": "AGO",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Angola",
+        "timezoneFromPlaceRecord": "Africa/Luanda",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/4e76ffdf5fb6beeaa13e17074dd3a9174a14dea178c34dff48425fd11bda8dc0.json",
+        "pointAssetSha256": "4e76ffdf5fb6beeaa13e17074dd3a9174a14dea178c34dff48425fd11bda8dc0",
+        "countryEmittedPlaceCount": 49
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Luanda",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 4.0,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2942",
+        "name": "Quatro de Fevereiro International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "AO",
+        "isoRegion": "AO-LUA",
+        "iata": "LAD",
+        "icao": "FNLU",
+        "coordinatesWgs84": [
+          13.2312,
+          -8.85837
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FNLU/",
+        "distanceFromChosenCityKm": 2.5,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Botswana",
+      "iso2": "BW",
+      "admin0A3": "BWA",
+      "countryId": "country:natural-earth:NE_ID%3A1159320461",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "BW",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        19.978346,
+        -26.891794,
+        29.350074,
+        -17.781808
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320461",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/54530a9564e0608f1215251b24501230ba3ec42d19edbe8bb1e250d92923edb4.json",
+        "outlineIndexSha256": "54530a9564e0608f1215251b24501230ba3ec42d19edbe8bb1e250d92923edb4",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 956,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/a1e8c973ab00ede42ee54fe8e8726b3d15e919c8264e143d728de937b06272d5.json",
+            "sha256": "a1e8c973ab00ede42ee54fe8e8726b3d15e919c8264e143d728de937b06272d5",
+            "bytes": 21836,
+            "polygonCount": 1,
+            "coordinatePositions": 956
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Gaborone",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151153",
+        "coordinatesWgs84": [
+          25.911948,
+          -24.646314
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "BW",
+        "admin0A3": "BWA",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Botswana",
+        "timezoneFromPlaceRecord": "Africa/Gaborone",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/8fbf0d42c4396c444acb80d22bcc095bbd914ec958df9dc40679a86090aec752.json",
+        "pointAssetSha256": "8fbf0d42c4396c444acb80d22bcc095bbd914ec958df9dc40679a86090aec752",
+        "countryEmittedPlaceCount": 20
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Gaborone",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.6,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2864",
+        "name": "Sir Seretse Khama International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "BW",
+        "isoRegion": "BW-GA",
+        "iata": "GBE",
+        "icao": "FBSK",
+        "coordinatesWgs84": [
+          25.9182,
+          -24.555201
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FBSK/",
+        "distanceFromChosenCityKm": 10.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Zimbabwe",
+      "iso2": "ZW",
+      "admin0A3": "ZWE",
+      "countryId": "country:natural-earth:NE_ID%3A1159321441",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "ZW",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        25.21937,
+        -22.39734,
+        33.042768,
+        -15.614808
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321441",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/906eededd98f5b30dc6481ae7ad9235a7203c4c5c0b72a2dd25bbf9ad91cbdfd.json",
+        "outlineIndexSha256": "906eededd98f5b30dc6481ae7ad9235a7203c4c5c0b72a2dd25bbf9ad91cbdfd",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 766,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/120dbdca7229252e5bcaa299e20c38fe2f0e689a0ea78c6da932805cb575cc95.json",
+            "sha256": "120dbdca7229252e5bcaa299e20c38fe2f0e689a0ea78c6da932805cb575cc95",
+            "bytes": 17490,
+            "polygonCount": 1,
+            "coordinatePositions": 766
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Harare",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150573",
+        "coordinatesWgs84": [
+          31.042764,
+          -17.815844
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "ZW",
+        "admin0A3": "ZWE",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Zimbabwe",
+        "timezoneFromPlaceRecord": "Africa/Harare",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/7cfd2ced53fc8431a62cfee1ba03886fc455382eee6de5f39745e94d746aa282.json",
+        "pointAssetSha256": "7cfd2ced53fc8431a62cfee1ba03886fc455382eee6de5f39745e94d746aa282",
+        "countryEmittedPlaceCount": 20
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Harare",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 2.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3005",
+        "name": "Robert Gabriel Mugabe International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "ZW",
+        "isoRegion": "ZW-HA",
+        "iata": "HRE",
+        "icao": "FVRG",
+        "coordinatesWgs84": [
+          31.0928,
+          -17.931801
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FVHA/",
+        "distanceFromChosenCityKm": 13.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Chad",
+      "iso2": "TD",
+      "admin0A3": "TCD",
+      "countryId": "country:natural-earth:NE_ID%3A1159321301",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "TD",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        13.449184,
+        7.455567,
+        23.984406,
+        23.44472
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321301",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e12c0208f13543bf076b662e27da92296fe3b98cba079ba24093dcb964816d5b.json",
+        "outlineIndexSha256": "e12c0208f13543bf076b662e27da92296fe3b98cba079ba24093dcb964816d5b",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1216,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/cb3058b87c7f79d913b83daa1de18971723ae247958064aec6d020bb70754f11.json",
+            "sha256": "cb3058b87c7f79d913b83daa1de18971723ae247958064aec6d020bb70754f11",
+            "bytes": 26118,
+            "polygonCount": 1,
+            "coordinatePositions": 1216
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "N'Djamena",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150863",
+        "coordinatesWgs84": [
+          15.047202,
+          12.115042
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "TD",
+        "admin0A3": "TCD",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Chad",
+        "timezoneFromPlaceRecord": "Africa/Ndjamena",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/ce67c103afd97822142858a2117bf752295e29d413a4e2d22a7c053bdf318ab2.json",
+        "pointAssetSha256": "ce67c103afd97822142858a2117bf752295e29d413a4e2d22a7c053bdf318ab2",
+        "countryEmittedPlaceCount": 19
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Ndjamena",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.4,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2998",
+        "name": "N'Djamena International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "TD",
+        "isoRegion": "TD-ND",
+        "iata": "NDJ",
+        "icao": "FTTJ",
+        "coordinatesWgs84": [
+          15.034,
+          12.1337
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FTTJ/",
+        "distanceFromChosenCityKm": 2.5,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Mozambique",
+      "iso2": "MZ",
+      "admin0A3": "MOZ",
+      "countryId": "country:natural-earth:NE_ID%3A1159321073",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MZ",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        30.213845,
+        -26.860272,
+        40.847992,
+        -10.469008
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321073",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/85f4ef8c5adfbc82b2083f35e63aee5aa2b1f02f4393e83986da6d319d067c28.json",
+        "outlineIndexSha256": "85f4ef8c5adfbc82b2083f35e63aee5aa2b1f02f4393e83986da6d319d067c28",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 4,
+        "coordinatePositions": 2335,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/2c141aa7d99a5742b2e0faea311843dc8516a1f23c0651beefcca0b086c7ffa2.json",
+            "sha256": "2c141aa7d99a5742b2e0faea311843dc8516a1f23c0651beefcca0b086c7ffa2",
+            "bytes": 53260,
+            "polygonCount": 4,
+            "coordinatePositions": 2335
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Maputo",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150683",
+        "coordinatesWgs84": [
+          32.587217,
+          -25.953332
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "MZ",
+        "admin0A3": "MOZ",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Mozambique",
+        "timezoneFromPlaceRecord": "Africa/Maputo",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/20bc4c5efc1b9cf83c230f19146d1444810696e92730603db9f314db17dc5412.json",
+        "pointAssetSha256": "20bc4c5efc1b9cf83c230f19146d1444810696e92730603db9f314db17dc5412",
+        "countryEmittedPlaceCount": 34
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Maputo",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.5,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2975",
+        "name": "Maputo Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MZ",
+        "isoRegion": "MZ-MPM",
+        "iata": "MPM",
+        "icao": "FQMA",
+        "coordinatesWgs84": [
+          32.572601,
+          -25.920799
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FQMA/",
+        "distanceFromChosenCityKm": 3.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "eSwatini",
+      "iso2": "SZ",
+      "admin0A3": "SWZ",
+      "countryId": "country:natural-earth:NE_ID%3A1159321289",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SZ",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        30.782906,
+        -27.316264,
+        32.117398,
+        -25.735999
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321289",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/eb43777fcd71ef32b2f86fb9a2b8588bd5322b257d827ea14fe1ceeae2723121.json",
+        "outlineIndexSha256": "eb43777fcd71ef32b2f86fb9a2b8588bd5322b257d827ea14fe1ceeae2723121",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 85,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/2f498cd7048be8197c76e2bdbaac9bb045db252748de624c57817b873d6899d6.json",
+            "sha256": "2f498cd7048be8197c76e2bdbaac9bb045db252748de624c57817b873d6899d6",
+            "bytes": 1980,
+            "polygonCount": 1,
+            "coordinatePositions": 85
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Mbabane",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149413",
+        "coordinatesWgs84": [
+          31.133335,
+          -26.316651
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "SZ",
+        "admin0A3": "SWZ",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "eSwatini",
+        "timezoneFromPlaceRecord": "Africa/Mbabane",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/08961e9494295a375ce42706125fbd189e8fa89701e2c129750bdb9be8b99b78.json",
+        "pointAssetSha256": "08961e9494295a375ce42706125fbd189e8fa89701e2c129750bdb9be8b99b78",
+        "countryEmittedPlaceCount": 7
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Mbabane",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 3.8,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "308033",
+        "name": "King Mswati III International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SZ",
+        "isoRegion": "SZ-LU",
+        "iata": "SHO",
+        "icao": "FDSK",
+        "coordinatesWgs84": [
+          31.716944,
+          -26.358611
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FDSK/",
+        "distanceFromChosenCityKm": 58.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Burundi",
+      "iso2": "BI",
+      "admin0A3": "BDI",
+      "countryId": "country:natural-earth:NE_ID%3A1159320387",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "BI",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        28.986892,
+        -4.463344,
+        30.833962,
+        -2.303062
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320387",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/37b10691a1c221029f9a22906224d95235fc15fab518c17711fb15c6ad50db1d.json",
+        "outlineIndexSha256": "37b10691a1c221029f9a22906224d95235fc15fab518c17711fb15c6ad50db1d",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 307,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/cb500d60c4749def85002771d411f8fcc471d9a802f379bb4ec2a86319f189cd.json",
+            "sha256": "cb500d60c4749def85002771d411f8fcc471d9a802f379bb4ec2a86319f189cd",
+            "bytes": 6715,
+            "polygonCount": 1,
+            "coordinatePositions": 307
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Bujumbura",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150427",
+        "coordinatesWgs84": [
+          29.360006,
+          -3.376087
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "BI",
+        "admin0A3": "BDI",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Burundi",
+        "timezoneFromPlaceRecord": "Africa/Bujumbura",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/4ba89f26e9e51477b6189c7941f2e9d3e01e41c352bc6a6da81849287a7af2f2.json",
+        "pointAssetSha256": "4ba89f26e9e51477b6189c7941f2e9d3e01e41c352bc6a6da81849287a7af2f2",
+        "countryEmittedPlaceCount": 14
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Bujumbura",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3170",
+        "name": "Bujumbura Melchior Ndadaye International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "BI",
+        "isoRegion": "BI-BM",
+        "iata": "BJM",
+        "icao": "HBBA",
+        "coordinatesWgs84": [
+          29.318501,
+          -3.32402
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HBBA/",
+        "distanceFromChosenCityKm": 7.4,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Rwanda",
+      "iso2": "RW",
+      "admin0A3": "RWA",
+      "countryId": "country:natural-earth:NE_ID%3A1159321219",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "RW",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        28.857236,
+        -2.826855,
+        30.887809,
+        -1.058694
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321219",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/df00b392aa31425d8143ad33abde461185c0e5806d5468d9c50552a461d2b1b7.json",
+        "outlineIndexSha256": "df00b392aa31425d8143ad33abde461185c0e5806d5468d9c50552a461d2b1b7",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 321,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/da4fbd64547bb75189383f81227532ff6e015f5acfe4a15400c18b7d7d8f7d59.json",
+            "sha256": "da4fbd64547bb75189383f81227532ff6e015f5acfe4a15400c18b7d7d8f7d59",
+            "bytes": 7027,
+            "polygonCount": 1,
+            "coordinatePositions": 321
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Kigali",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149385",
+        "coordinatesWgs84": [
+          30.058586,
+          -1.951644
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "RW",
+        "admin0A3": "RWA",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Rwanda",
+        "timezoneFromPlaceRecord": "Africa/Kigali",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/964a8dd4935325006e49af10b37ec674da4814977e93657ab9632a2843a12f97.json",
+        "pointAssetSha256": "964a8dd4935325006e49af10b37ec674da4814977e93657ab9632a2843a12f97",
+        "countryEmittedPlaceCount": 11
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Kigali",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.9,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3237",
+        "name": "Kigali International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "RW",
+        "isoRegion": "RW-01",
+        "iata": "KGL",
+        "icao": "HRYR",
+        "coordinatesWgs84": [
+          30.1395,
+          -1.96863
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HRYR/",
+        "distanceFromChosenCityKm": 9.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Uganda",
+      "iso2": "UG",
+      "admin0A3": "UGA",
+      "countryId": "country:natural-earth:NE_ID%3A1159321343",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "UG",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        29.54846,
+        -1.475206,
+        35.006473,
+        4.219692
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321343",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/840d254df08721a8dc5955f6db7b8088cd3225ed1091d580b7834108682d9d67.json",
+        "outlineIndexSha256": "840d254df08721a8dc5955f6db7b8088cd3225ed1091d580b7834108682d9d67",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 611,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/78d4633fa6893e16547d9c36d6eddf2ff7e9f96216f12185f2333afc2dd6a0e0.json",
+            "sha256": "78d4633fa6893e16547d9c36d6eddf2ff7e9f96216f12185f2333afc2dd6a0e0",
+            "bytes": 12897,
+            "polygonCount": 1,
+            "coordinatePositions": 611
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Kampala",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150593",
+        "coordinatesWgs84": [
+          32.581378,
+          0.318605
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "UG",
+        "admin0A3": "UGA",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Uganda",
+        "timezoneFromPlaceRecord": "Africa/Kampala",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/d17c5ec02104b4f384afc3f0821483bd91b8d87fbe5d938171fa101d8b06ae02.json",
+        "pointAssetSha256": "d17c5ec02104b4f384afc3f0821483bd91b8d87fbe5d938171fa101d8b06ae02",
+        "countryEmittedPlaceCount": 43
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Kampala",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 18.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3263",
+        "name": "Entebbe International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "UG",
+        "isoRegion": "UG-C",
+        "iata": "EBB",
+        "icao": "HUEN",
+        "coordinatesWgs84": [
+          32.443501,
+          0.042386
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HUEN/",
+        "distanceFromChosenCityKm": 34.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Lesotho",
+      "iso2": "LS",
+      "admin0A3": "LSO",
+      "countryId": "country:natural-earth:NE_ID%3A1159321027",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "LS",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        27.002155,
+        -30.658799,
+        29.435908,
+        -28.570761
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321027",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/19d42786ed93b356d0b79e27458174d052281783ef0f003ade37ae87d2d055e3.json",
+        "outlineIndexSha256": "19d42786ed93b356d0b79e27458174d052281783ef0f003ade37ae87d2d055e3",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 324,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/4f05e638afeb875fd5a2474f9291e8bb8f347481b9493bed9e5267bbaed9ca58.json",
+            "sha256": "4f05e638afeb875fd5a2474f9291e8bb8f347481b9493bed9e5267bbaed9ca58",
+            "bytes": 7435,
+            "polygonCount": 1,
+            "coordinatePositions": 324
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Maseru",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150831",
+        "coordinatesWgs84": [
+          27.483273,
+          -29.316674
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "LS",
+        "admin0A3": "LSO",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Lesotho",
+        "timezoneFromPlaceRecord": "Africa/Maseru",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/fe410b672fb8291adcb0c736b71d253395eee861618645651bef60e6dc630e64.json",
+        "pointAssetSha256": "fe410b672fb8291adcb0c736b71d253395eee861618645651bef60e6dc630e64",
+        "countryEmittedPlaceCount": 8
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Maseru",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 16.8,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3022",
+        "name": "Moshoeshoe I International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "LS",
+        "isoRegion": "LS-A",
+        "iata": "MSU",
+        "icao": "FXMM",
+        "coordinatesWgs84": [
+          27.554456,
+          -29.456277
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FXMM/",
+        "distanceFromChosenCityKm": 17.0,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Gabon",
+      "iso2": "GA",
+      "admin0A3": "GAB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320693",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "GA",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        8.695567,
+        -3.936856,
+        14.498991,
+        2.322495
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320693",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/b5c553d10155695feb23e2994ebcb245c89e8b8a75e9360dbfe92adfbdf9910c.json",
+        "outlineIndexSha256": "b5c553d10155695feb23e2994ebcb245c89e8b8a75e9360dbfe92adfbdf9910c",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 1462,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/d5fe30a0eca454403c066a3b1781d7ca1d66495ec84a5fb49731d76d4dc588d5.json",
+            "sha256": "d5fe30a0eca454403c066a3b1781d7ca1d66495ec84a5fb49731d76d4dc588d5",
+            "bytes": 30707,
+            "polygonCount": 3,
+            "coordinatePositions": 1462
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Libreville",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150913",
+        "coordinatesWgs84": [
+          9.457965,
+          0.385389
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "GA",
+        "admin0A3": "GAB",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Gabon",
+        "timezoneFromPlaceRecord": "Africa/Libreville",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/48159dde4e98e95a1a0ca2e937d575eb718d13923937e4a75ae25670031270fe.json",
+        "pointAssetSha256": "48159dde4e98e95a1a0ca2e937d575eb718d13923937e4a75ae25670031270fe",
+        "countryEmittedPlaceCount": 20
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Libreville",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.9,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2966",
+        "name": "Libreville Leon M'ba International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "GA",
+        "isoRegion": "GA-1",
+        "iata": "LBV",
+        "icao": "FOOL",
+        "coordinatesWgs84": [
+          9.41214,
+          0.458951
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FOOL/",
+        "distanceFromChosenCityKm": 9.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Niger",
+      "iso2": "NE",
+      "admin0A3": "NER",
+      "countryId": "country:natural-earth:NE_ID%3A1159321087",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "NE",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        0.152941,
+        11.695773,
+        15.970322,
+        23.517351
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321087",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/90b81de1be5b242e47df644f7473b3ec8d5adc0c87a62df26c4d7c9adfc52f75.json",
+        "outlineIndexSha256": "90b81de1be5b242e47df644f7473b3ec8d5adc0c87a62df26c4d7c9adfc52f75",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1042,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/90423f425f807f38fdc619b946d5cc9008be988f29e60f0bd386645348761641.json",
+            "sha256": "90423f425f807f38fdc619b946d5cc9008be988f29e60f0bd386645348761641",
+            "bytes": 22129,
+            "polygonCount": 1,
+            "coordinatePositions": 1042
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Niamey",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150605",
+        "coordinatesWgs84": [
+          2.11471,
+          13.518652
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "NE",
+        "admin0A3": "NER",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Niger",
+        "timezoneFromPlaceRecord": "Africa/Niamey",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/cff37823ef761e8a62fc6a6929e44c56da40fbbaa59748b39bfe390c45bbace1.json",
+        "pointAssetSha256": "cff37823ef761e8a62fc6a6929e44c56da40fbbaa59748b39bfe390c45bbace1",
+        "countryEmittedPlaceCount": 16
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Niamey",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2125",
+        "name": "Diori Hamani International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "NE",
+        "isoRegion": "NE-8",
+        "iata": "NIM",
+        "icao": "DRRN",
+        "coordinatesWgs84": [
+          2.18361,
+          13.4815
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/DRRN/",
+        "distanceFromChosenCityKm": 8.5,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Burkina Faso",
+      "iso2": "BF",
+      "admin0A3": "BFA",
+      "countryId": "country:natural-earth:NE_ID%3A1159320405",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "BF",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -5.522578,
+        9.391883,
+        2.390169,
+        15.079908
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320405",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/4a35f11951e4fa8433389afd0ce63c582e54f877f9f6481245f4ea2ee11a9e23.json",
+        "outlineIndexSha256": "4a35f11951e4fa8433389afd0ce63c582e54f877f9f6481245f4ea2ee11a9e23",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1110,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/227927905b7bc06ae8416a3a6da0583a3f5f229ac4410be4a206af53ee6ccb2a.json",
+            "sha256": "227927905b7bc06ae8416a3a6da0583a3f5f229ac4410be4a206af53ee6ccb2a",
+            "bytes": 23686,
+            "polygonCount": 1,
+            "coordinatePositions": 1110
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Ouagadougou",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151173",
+        "coordinatesWgs84": [
+          -1.52667,
+          12.372262
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "BF",
+        "admin0A3": "BFA",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Burkina Faso",
+        "timezoneFromPlaceRecord": "Africa/Ouagadougou",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/3905e4bb170005481309414f1e6dd3fe0d77597f0b83dddb217c6d90ef20a5f5.json",
+        "pointAssetSha256": "3905e4bb170005481309414f1e6dd3fe0d77597f0b83dddb217c6d90ef20a5f5",
+        "countryEmittedPlaceCount": 32
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Ouagadougou",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 1.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2088",
+        "name": "Ouagadougou Thomas Sankara International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "BF",
+        "isoRegion": "BF-KAD",
+        "iata": "OUA",
+        "icao": "DFFD",
+        "coordinatesWgs84": [
+          -1.51242,
+          12.3532
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/DFFD/",
+        "distanceFromChosenCityKm": 2.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Guinea-Bissau",
+      "iso2": "GW",
+      "admin0A3": "GNB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320799",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "GW",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -16.728437,
+        10.927639,
+        -13.660712,
+        12.679434
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320799",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e808644db79e7db1f39a14283ef7ca32b7fe8a799b81a82a5e9e3b4e6a458863.json",
+        "outlineIndexSha256": "e808644db79e7db1f39a14283ef7ca32b7fe8a799b81a82a5e9e3b4e6a458863",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 13,
+        "coordinatePositions": 1282,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/722fda7ef6c68290d353523297660dd67db1e53b57d5daf88dee39413765bd53.json",
+            "sha256": "722fda7ef6c68290d353523297660dd67db1e53b57d5daf88dee39413765bd53",
+            "bytes": 29320,
+            "polygonCount": 13,
+            "coordinatePositions": 1282
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Bissau",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150803",
+        "coordinatesWgs84": [
+          -15.598361,
+          11.865024
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "GW",
+        "admin0A3": "GNB",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Guinea Bissau",
+        "timezoneFromPlaceRecord": "Africa/Bissau",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/293c8b5dc33791b1501a392b75bf739d996a48bed061e1ec6c90467ea0f79b83.json",
+        "pointAssetSha256": "293c8b5dc33791b1501a392b75bf739d996a48bed061e1ec6c90467ea0f79b83",
+        "countryEmittedPlaceCount": 8
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Bissau",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 2.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3097",
+        "name": "Osvaldo Vieira International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "GW",
+        "isoRegion": "GW-BS",
+        "iata": "OXB",
+        "icao": "GGOV",
+        "coordinatesWgs84": [
+          -15.653596,
+          11.894262
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GGOV/",
+        "distanceFromChosenCityKm": 6.8,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Egypt",
+      "iso2": "EG",
+      "admin0A3": "EGY",
+      "countryId": "country:natural-earth:NE_ID%3A1159320575",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "EG",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        24.688343,
+        21.994369,
+        36.899181,
+        31.65648
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320575",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/fabde725ea40c759bfb16fd44d0957750560b37196d0664ef19e484542a186ab.json",
+        "outlineIndexSha256": "fabde725ea40c759bfb16fd44d0957750560b37196d0664ef19e484542a186ab",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 8,
+        "coordinatePositions": 1934,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/8dbe6dd4b87d9cc80ac3a2773347cd8dd4c7a80ff3dc580de2406c7d9a0379b0.json",
+            "sha256": "8dbe6dd4b87d9cc80ac3a2773347cd8dd4c7a80ff3dc580de2406c7d9a0379b0",
+            "bytes": 42192,
+            "polygonCount": 8,
+            "coordinatePositions": 1934
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Cairo",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151603",
+        "coordinatesWgs84": [
+          31.248022,
+          30.051906
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 0,
+        "iso2": "EG",
+        "admin0A3": "EGY",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Egypt",
+        "timezoneFromPlaceRecord": "Africa/Cairo",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/8302017fd937d2839153efce9aacb9934b7568c6e255fa1e2d2ec9f72dd23e2c.json",
+        "pointAssetSha256": "8302017fd937d2839153efce9aacb9934b7568c6e255fa1e2d2ec9f72dd23e2c",
+        "countryEmittedPlaceCount": 42
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Cairo",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3183",
+        "name": "Cairo International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "EG",
+        "isoRegion": "EG-C",
+        "iata": "CAI",
+        "icao": "HECA",
+        "coordinatesWgs84": [
+          31.396694,
+          30.111534
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/HECA/",
+        "distanceFromChosenCityKm": 15.8,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Mauritania",
+      "iso2": "MR",
+      "admin0A3": "MRT",
+      "countryId": "country:natural-earth:NE_ID%3A1159321075",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MR",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -17.081175,
+        14.734399,
+        -4.821613,
+        27.285416
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321075",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/68399b28a4840eb395ae6e881df925bb562631619be98afaab5748b45bef8a8e.json",
+        "outlineIndexSha256": "68399b28a4840eb395ae6e881df925bb562631619be98afaab5748b45bef8a8e",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 5,
+        "coordinatePositions": 1146,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/1ef1a11c1666694deb1bca0bf77def31454bc70f09943a3e2ce5b6e6443533b7.json",
+            "sha256": "1ef1a11c1666694deb1bca0bf77def31454bc70f09943a3e2ce5b6e6443533b7",
+            "bytes": 25923,
+            "polygonCount": 5,
+            "coordinatePositions": 1146
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Nouakchott",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150943",
+        "coordinatesWgs84": [
+          -15.97534,
+          18.086427
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "MR",
+        "admin0A3": "MRT",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Mauritania",
+        "timezoneFromPlaceRecord": "Africa/Nouakchott",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/4924204368d248b86b4ae74b79d1794844b938e22220aea68200b467997e59de.json",
+        "pointAssetSha256": "4924204368d248b86b4ae74b79d1794844b938e22220aea68200b467997e59de",
+        "countryEmittedPlaceCount": 20
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Nouakchott",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 3.1,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "323315",
+        "name": "Nouakchott–Oumtounsy International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MR",
+        "isoRegion": "MR-NKC",
+        "iata": "NKC",
+        "icao": "GQNO",
+        "coordinatesWgs84": [
+          -15.969722,
+          18.31
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GQNO/",
+        "distanceFromChosenCityKm": 24.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Equatorial Guinea",
+      "iso2": "GQ",
+      "admin0A3": "GNQ",
+      "countryId": "country:natural-earth:NE_ID%3A1159320801",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "GQ",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        5.61199,
+        -1.475681,
+        11.336341,
+        3.772406
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320801",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/0170e5530e48be69eb00233b9d149c45aeb1393e0f34175346e251656fcb0b1f.json",
+        "outlineIndexSha256": "0170e5530e48be69eb00233b9d149c45aeb1393e0f34175346e251656fcb0b1f",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 251,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/ba2d7b588c1e57c4aa038a046766a1a46db17c01a32733321c8924ee0da50da3.json",
+            "sha256": "ba2d7b588c1e57c4aa038a046766a1a46db17c01a32733321c8924ee0da50da3",
+            "bytes": 5056,
+            "polygonCount": 3,
+            "coordinatePositions": 251
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Malabo",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150867",
+        "coordinatesWgs84": [
+          8.783278,
+          3.750015
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "GQ",
+        "admin0A3": "GNQ",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Equatorial Guinea",
+        "timezoneFromPlaceRecord": "Africa/Malabo",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/976373f064539d3189b5f0f3591097f98083c1a2e35b84a125938f41fa92ebae.json",
+        "pointAssetSha256": "976373f064539d3189b5f0f3591097f98083c1a2e35b84a125938f41fa92ebae",
+        "countryEmittedPlaceCount": 6
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Malabo",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.0,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2876",
+        "name": "Malabo International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "GQ",
+        "isoRegion": "GQ-BN",
+        "iata": "SSG",
+        "icao": "FGSL",
+        "coordinatesWgs84": [
+          8.70872,
+          3.75527
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FGSL/",
+        "distanceFromChosenCityKm": 8.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Gambia",
+      "iso2": "GM",
+      "admin0A3": "GMB",
+      "countryId": "country:natural-earth:NE_ID%3A1159320797",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "GM",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -16.829701,
+        13.065009,
+        -13.818713,
+        13.819984
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320797",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e8002cf5774a9fbb1f4c967c13e27531723a387f4af386bc26d498b6a7d30cc5.json",
+        "outlineIndexSha256": "e8002cf5774a9fbb1f4c967c13e27531723a387f4af386bc26d498b6a7d30cc5",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 406,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/ddfaf8f8702413cfab951ab97fb5e8c78747d016a78f552fae3821fcaf204e67.json",
+            "sha256": "ddfaf8f8702413cfab951ab97fb5e8c78747d016a78f552fae3821fcaf204e67",
+            "bytes": 9294,
+            "polygonCount": 1,
+            "coordinatePositions": 406
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Banjul",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149997",
+        "coordinatesWgs84": [
+          -16.591701,
+          13.453876
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "GM",
+        "admin0A3": "GMB",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "The Gambia",
+        "timezoneFromPlaceRecord": "Africa/Banjul",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/b7563577525c9406c757982b0c6950e7f984dca85cac555407232f0466b0bcc0.json",
+        "pointAssetSha256": "b7563577525c9406c757982b0c6950e7f984dca85cac555407232f0466b0bcc0",
+        "countryEmittedPlaceCount": 7
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Banjul",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 6.5,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3076",
+        "name": "Banjul International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "GM",
+        "isoRegion": "GM-W",
+        "iata": "BJL",
+        "icao": "GBYD",
+        "coordinatesWgs84": [
+          -16.652201,
+          13.338
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GBYD/",
+        "distanceFromChosenCityKm": 14.5,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Madagascar",
+      "iso2": "MG",
+      "admin0A3": "MDG",
+      "countryId": "country:natural-earth:NE_ID%3A1159321051",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MG",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        43.222911,
+        -25.598565,
+        50.503917,
+        -11.943617
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321051",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/61271d4b1fc16f0d84bfdf17af4cf2e21886fa6e4ac962f966a48323aacda5e8.json",
+        "outlineIndexSha256": "61271d4b1fc16f0d84bfdf17af4cf2e21886fa6e4ac962f966a48323aacda5e8",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 1649,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/ba3ef70293fa98aec9dfed159fef3ee40c1660199253c3b6fb3b1a52beba393f.json",
+            "sha256": "ba3ef70293fa98aec9dfed159fef3ee40c1660199253c3b6fb3b1a52beba393f",
+            "bytes": 37609,
+            "polygonCount": 3,
+            "coordinatePositions": 1649
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Antananarivo",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150835",
+        "coordinatesWgs84": [
+          47.514678,
+          -18.914691
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "MG",
+        "admin0A3": "MDG",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Madagascar",
+        "timezoneFromPlaceRecord": "Indian/Antananarivo",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/58dad8da07563fd2ca9c7a3d0018e54a9ce2713dbd22738390e3c247300b68ef.json",
+        "pointAssetSha256": "58dad8da07563fd2ca9c7a3d0018e54a9ce2713dbd22738390e3c247300b68ef",
+        "countryEmittedPlaceCount": 28
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Indian/Antananarivo",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.3,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2908",
+        "name": "Ivato International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MG",
+        "isoRegion": "MG-T",
+        "iata": "TNR",
+        "icao": "FMMI",
+        "coordinatesWgs84": [
+          47.478802,
+          -18.7969
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FMMI/",
+        "distanceFromChosenCityKm": 13.6,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Seychelles",
+      "iso2": "SC",
+      "admin0A3": "SYC",
+      "countryId": "country:natural-earth:NE_ID%3A1159321291",
+      "naturalEarthContinentOriginal": "Seven seas (open ocean)",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "UN M49 region override",
+        "subregion": "Eastern Africa",
+        "subregionCode": "014",
+        "m49Code": "690",
+        "sourceUrl": "https://unstats.un.org/unsd/methodology/m49/overview/",
+        "evidence": "UNSD M49 overview lists Seychelles (SC) under Africa / Eastern Africa; Natural Earth CONTINENT is preserved separately and not rewritten.",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": true
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "SC",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        46.207367,
+        -9.755548,
+        56.287446,
+        -3.791111
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321291",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/2e42c77e1b4fce09d5d7138946e64c6e20238284f7dd934ce9e3ff537bac278c.json",
+        "outlineIndexSha256": "2e42c77e1b4fce09d5d7138946e64c6e20238284f7dd934ce9e3ff537bac278c",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 26,
+        "coordinatePositions": 330,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/829060be43133876683ecaccc8f99ba60e10adbe0862a78af26953780dfe734f.json",
+            "sha256": "829060be43133876683ecaccc8f99ba60e10adbe0862a78af26953780dfe734f",
+            "bytes": 7323,
+            "polygonCount": 26,
+            "coordinatePositions": 330
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Victoria",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151191",
+        "coordinatesWgs84": [
+          55.44999,
+          -4.616632
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "SC",
+        "admin0A3": "SYC",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Seychelles",
+        "timezoneFromPlaceRecord": "Indian/Mahe",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/e00fb57524d252c28a953c130006d7b53ae9a0807f4d8a10e0f4020d325d0845.json",
+        "pointAssetSha256": "e00fb57524d252c28a953c130006d7b53ae9a0807f4d8a10e0f4020d325d0845",
+        "countryEmittedPlaceCount": 1
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Indian/Mahe",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 5.9,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2993",
+        "name": "Seychelles International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "SC",
+        "isoRegion": "SC-20",
+        "iata": "SEZ",
+        "icao": "FSIA",
+        "coordinatesWgs84": [
+          55.521801,
+          -4.67434
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FSIA/",
+        "distanceFromChosenCityKm": 10.2,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Mauritius",
+      "iso2": "MU",
+      "admin0A3": "MUS",
+      "countryId": "country:natural-earth:NE_ID%3A1159321079",
+      "naturalEarthContinentOriginal": "Seven seas (open ocean)",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "UN M49 region override",
+        "subregion": "Eastern Africa",
+        "subregionCode": "014",
+        "m49Code": "480",
+        "sourceUrl": "https://unstats.un.org/unsd/methodology/m49/overview/",
+        "evidence": "UNSD M49 overview lists Mauritius (MU) under Africa / Eastern Africa; Natural Earth CONTINENT is preserved separately and not rewritten.",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": true
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "MU",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        56.524181,
+        -20.517348,
+        63.493907,
+        -10.323907
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321079",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/1ede4a473eb009b868202976aeb946692524688c59d4bdd2a6d844eceb0f5a5f.json",
+        "outlineIndexSha256": "1ede4a473eb009b868202976aeb946692524688c59d4bdd2a6d844eceb0f5a5f",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 113,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/c9baa63e6ea142519f7186dcc68d6a92d370495c4f43463e90c686d144c76ae6.json",
+            "sha256": "c9baa63e6ea142519f7186dcc68d6a92d370495c4f43463e90c686d144c76ae6",
+            "bytes": 2631,
+            "polygonCount": 3,
+            "coordinatePositions": 113
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Port Louis",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150443",
+        "coordinatesWgs84": [
+          57.499994,
+          -20.166639
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 4,
+        "iso2": "MU",
+        "admin0A3": "MUS",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Mauritius",
+        "timezoneFromPlaceRecord": "Indian/Mauritius",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/b608db59dbac95493eec4f39a1a69eab9047fb8597bd6fe4ae4f1a0e881417f1.json",
+        "pointAssetSha256": "b608db59dbac95493eec4f39a1a69eab9047fb8597bd6fe4ae4f1a0e881417f1",
+        "countryEmittedPlaceCount": 2
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Indian/Mauritius",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.0,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2878",
+        "name": "Sir Seewoosagur Ramgoolam International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "MU",
+        "isoRegion": "MU-GP",
+        "iata": "MRU",
+        "icao": "FIMP",
+        "coordinatesWgs84": [
+          57.683601,
+          -20.430201
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FIMP/",
+        "distanceFromChosenCityKm": 35.0,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Comoros",
+      "iso2": "KM",
+      "admin0A3": "COM",
+      "countryId": "country:natural-earth:NE_ID%3A1159320521",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "KM",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        43.213227,
+        -12.380304,
+        44.529063,
+        -11.361261
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320521",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/722b011bb351603483a51cc0e5838cb620123adf66964a174081c5c7e6cca211.json",
+        "outlineIndexSha256": "722b011bb351603483a51cc0e5838cb620123adf66964a174081c5c7e6cca211",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 127,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/38e9bf9a2920e5c3ae98a564807802db711a0337b651689873be7913a1852d37.json",
+            "sha256": "38e9bf9a2920e5c3ae98a564807802db711a0337b651689873be7913a1852d37",
+            "bytes": 2940,
+            "polygonCount": 3,
+            "coordinatePositions": 127
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Moroni",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159149083",
+        "coordinatesWgs84": [
+          43.240244,
+          -11.704158
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 6,
+        "iso2": "KM",
+        "admin0A3": "COM",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Comoros",
+        "timezoneFromPlaceRecord": "Indian/Comoro",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/29b5dd8cfae103afef9436751691ed8fbe7f5554a2710e3294342b9ccbeeb43e.json",
+        "pointAssetSha256": "29b5dd8cfae103afef9436751691ed8fbe7f5554a2710e3294342b9ccbeeb43e",
+        "countryEmittedPlaceCount": 1
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Indian/Comoro",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 3.7,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2901",
+        "name": "Prince Said Ibrahim International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "KM",
+        "isoRegion": "KM-G",
+        "iata": "HAH",
+        "icao": "FMCH",
+        "coordinatesWgs84": [
+          43.2719,
+          -11.5337
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FMCH/",
+        "distanceFromChosenCityKm": 19.3,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "São Tomé and Principe",
+      "iso2": "ST",
+      "admin0A3": "STP",
+      "countryId": "country:natural-earth:NE_ID%3A1159321273",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "ST",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        6.461681,
+        0.024115,
+        7.462738,
+        1.699774
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321273",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/8470e1da32eb8d54fab65a6090d0f4b3d7512e4d257fa1159de385fad8edc884.json",
+        "outlineIndexSha256": "8470e1da32eb8d54fab65a6090d0f4b3d7512e4d257fa1159de385fad8edc884",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 96,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/79d8c0dd6e217f5c339e7ec87abc3c95266cfe6d321cc3420f4d8e53756099ef.json",
+            "sha256": "79d8c0dd6e217f5c339e7ec87abc3c95266cfe6d321cc3420f4d8e53756099ef",
+            "bytes": 1946,
+            "polygonCount": 2,
+            "coordinatePositions": 96
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "São Tomé",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151195",
+        "coordinatesWgs84": [
+          6.72965,
+          0.337466
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "ST",
+        "admin0A3": "STP",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Sao Tome and Principe",
+        "timezoneFromPlaceRecord": "America/Fortaleza",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/fda21ce5fd9310ecc978d0439da44daf0bd3cc20d6c02b62246c6fbff34afe21.json",
+        "pointAssetSha256": "fda21ce5fd9310ecc978d0439da44daf0bd3cc20d6c02b62246c6fbff34afe21",
+        "countryEmittedPlaceCount": 2
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Africa/Sao_Tome",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.6,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "2969",
+        "name": "São Tomé International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "ST",
+        "isoRegion": "ST-01",
+        "iata": "TMS",
+        "icao": "FPST",
+        "coordinatesWgs84": [
+          6.71215,
+          0.378175
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/FPST/",
+        "distanceFromChosenCityKm": 4.9,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    },
+    {
+      "country": "Cabo Verde",
+      "iso2": "CV",
+      "admin0A3": "CPV",
+      "countryId": "country:natural-earth:NE_ID%3A1159320523",
+      "naturalEarthContinentOriginal": "Africa",
+      "regionMembership": {
+        "region": "Africa",
+        "classification": "Natural Earth admin0 CONTINENT",
+        "sourceRelease": "ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceValue": "Africa",
+        "overridesNaturalEarthContinentForRolloutScopeOnly": false
+      },
+      "naturalEarthType": "Sovereign country",
+      "iso2Eh": "CV",
+      "isoIdentityStatus": "Natural Earth ISO_A2 and ISO_A2_EH agree",
+      "countryBoundsWgs84": [
+        -25.360422,
+        14.803941,
+        -22.666575,
+        17.196601
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320523",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/17694c640756aa25b04aa74fe041abb709aed7ae3cd98e01bfd36da0274d4dd5.json",
+        "outlineIndexSha256": "17694c640756aa25b04aa74fe041abb709aed7ae3cd98e01bfd36da0274d4dd5",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 11,
+        "coordinatePositions": 433,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/8bdbd35a1f4121055d0014bfc0135466dbd33afda77de6cb6cbb9c6409721ddb.json",
+            "sha256": "8bdbd35a1f4121055d0014bfc0135466dbd33afda77de6cb6cbb9c6409721ddb",
+            "bytes": 9934,
+            "polygonCount": 11,
+            "coordinatePositions": 433
+          }
+        ]
+      },
+      "chosenCity": {
+        "name": "Praia",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151205",
+        "coordinatesWgs84": [
+          -23.516689,
+          14.916698
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "iso2": "CV",
+        "admin0A3": "CPV",
+        "admin0A3MatchesAdmin0Country": true,
+        "admin0NameFromPlaceRecord": "Cape Verde",
+        "timezoneFromPlaceRecord": "Atlantic/Cape_Verde",
+        "capitalClassificationMayBeStale": true,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/fc0e66f74ad284a2ce21f5fa75a823a44efa036d2dc812ac73e3e2d83671b533.json",
+        "pointAssetSha256": "fc0e66f74ad284a2ce21f5fa75a823a44efa036d2dc812ac73e3e2d83671b533",
+        "countryEmittedPlaceCount": 2
+      },
+      "cityTimezone": {
+        "ianaTimezone": "Atlantic/Cape_Verde",
+        "status": "nearest zone.tab coordinate in matching ISO country",
+        "nearestZoneTabPointDistanceKm": 0.0,
+        "source": "system zone.tab"
+      },
+      "staleSourceCaveat": "Natural Earth place/capital class and city coordinates reflect pinned release ca96624a; source classification is not current official designation and must be verified before a city contract.",
+      "airportCandidate": {
+        "id": "3153",
+        "name": "Nelson Mandela International Airport",
+        "type": "large_airport",
+        "scheduledService": true,
+        "isoCountry": "CV",
+        "isoRegion": "CV-S",
+        "iata": "RAI",
+        "icao": "GVNP",
+        "coordinatesWgs84": [
+          -23.484728,
+          14.941126
+        ],
+        "sourceRecordUrl": "https://ourairports.com/airports/GVNP/",
+        "distanceFromChosenCityKm": 4.4,
+        "selection": "nearest same-ISO airport where OurAirports type is medium_airport or large_airport and scheduled_service=yes",
+        "coordinateEvidence": "OurAirports published airport point, not an aviation-authority ARP; not independently verified as runway/terminal/official reference point"
+      },
+      "gaps": [],
+      "airportCountryIsoMatched": true
+    }
+  ],
+  "unresolvedOrNoIsoAdmin0Records": [
+    {
+      "name": "Somaliland",
+      "iso2": "-99",
+      "iso2Eh": "-99",
+      "type": "Sovereign country",
+      "sovereignName": "Somaliland",
+      "gap": "Natural Earth indeterminate or no usable ISO_A2; not aliased to another country"
+    },
+    {
+      "name": "Western Sahara",
+      "iso2": "EH",
+      "iso2Eh": "EH",
+      "type": "Indeterminate",
+      "sovereignName": "Western Sahara",
+      "gap": "Natural Earth indeterminate or no usable ISO_A2; not aliased to another country"
+    },
+    {
+      "name": "Bir Tawil",
+      "iso2": "-99",
+      "iso2Eh": "-99",
+      "type": "Indeterminate",
+      "sovereignName": "Bir Tawil",
+      "gap": "Natural Earth indeterminate or no usable ISO_A2; not aliased to another country"
+    }
+  ],
+  "nonSovereignAfricanAdmin0RecordsExcluded": [],
+  "notes": [
+    "Mauritius (MU) and Seychelles (SC) are included using UN M49 membership under Africa / Eastern Africa (M49 country codes 480 and 690). Their original Natural Earth CONTINENT value, Seven seas (open ocean), remains visible on each row; this is a rollout-scope override only, not a geography rewrite.",
+    "Natural Earth TYPE=Sovereign country and its own ISO_A2 define candidate country rows. Features with no usable ISO and other African territory/dependency rows are listed separately; no territory is silently merged into a neighboring state.",
+    "Natural Earth capital labels may be stale or incomplete (for example countries with multiple capital functions); verify each city’s current role before authoring a city contract.",
+    "A matching OurAirports airport row only means the pinned dataset labels a same-country medium/large airport as scheduled-service. It does not prove actual current routes, operations, status, or that the point is an official airport reference point.",
+    "No country is marked green, live, citywide complete, or playable by this inventory. It contains no newly acquired map data or map coverage samples."
+  ]
+}

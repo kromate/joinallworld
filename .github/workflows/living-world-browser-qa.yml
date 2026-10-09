@@ -1,0 +1,71 @@
+name: Living-world browser QA
+
+on:
+  push:
+    branches: ['codex/living-world-browser-qa-*']
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact reviewed commit including this diagnostic
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: living-world-browser-qa
+  cancel-in-progress: false
+
+jobs:
+  rendered-journey:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the exact diagnostic candidate
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.source_sha || github.sha }}
+          persist-credentials: false
+      - name: Refuse moving or mismatched source
+        env:
+          LW_QA_SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
+        run: |
+          node -e 'if (!/^[a-f0-9]{40}$/.test(process.argv[1])) process.exit(1)' "$LW_QA_SOURCE_SHA"
+          test "$(git rev-parse HEAD)" = "$LW_QA_SOURCE_SHA"
+          test "$GITHUB_SHA" = "$LW_QA_SOURCE_SHA"
+          test "$GITHUB_REPOSITORY" = "kromate/joinallworld"
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.19.0
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build candidate and check unchanged download budgets
+        timeout-minutes: 3
+        run: |
+          npm run build
+          npm run size:download
+      - name: Verify complete legacy-save migration comparisons
+        timeout-minutes: 1
+        run: node --experimental-strip-types --test --test-concurrency=1 src/game/cities/legacyLife.test.ts src/game/cities/liveBuildLife.test.ts
+      - name: Play disposable server journeys in the actual browser
+        timeout-minutes: 3
+        env:
+          LW_QA_SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
+          LW_QA_OUTPUT_DIR: ${{ runner.temp }}/living-world-browser-qa
+          NODE_OPTIONS: --max-old-space-size=512
+        run: |
+          export CHROME="$(command -v google-chrome)"
+          test -x "$CHROME"
+          node --experimental-strip-types scripts/living-world-browser-qa.mjs
+      - name: Preserve bounded public-safe observations
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: living-world-browser-qa-${{ inputs.source_sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/living-world-browser-qa/receipt.json
+            ${{ runner.temp }}/living-world-browser-qa/*.png
+          if-no-files-found: error
+          retention-days: 30

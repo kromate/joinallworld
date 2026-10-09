@@ -1,0 +1,8 @@
+import { createHash } from 'node:crypto';
+import { lstat, readFile } from 'node:fs/promises';
+import path from 'node:path';
+
+const expected=process.argv[2];if(!/^[a-f0-9]{64}$/.test(expected??''))throw new Error('Pass pinned snapshot manifest SHA-256');
+const root=process.cwd(),manifestPath='evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/snapshot-files-reviewed.json',bytes=await readFile(manifestPath),actual=createHash('sha256').update(bytes).digest('hex');if(actual!==expected)throw new Error(`Snapshot manifest mismatch: expected ${expected}, got ${actual}`);
+const manifest=JSON.parse(bytes.toString('utf8'));if(manifest.schema!=='allworld-office-expanded-shell-v2'||!Array.isArray(manifest.files)||manifest.files.length<12)throw new Error('Unexpected source snapshot shape');const seen=new Set();for(const entry of manifest.files){if(typeof entry.path!=='string'||!/^[a-f0-9]{64}$/.test(entry.sha256))throw new Error('Malformed snapshot entry');const target=path.resolve(root,entry.path),relative=path.relative(root,target);if(relative.startsWith('..')||path.isAbsolute(relative))throw new Error(`Snapshot path escapes checkout: ${entry.path}`);if(seen.has(entry.path))throw new Error(`Duplicate snapshot path: ${entry.path}`);seen.add(entry.path);const info=await lstat(target);if(!info.isFile()||info.isSymbolicLink())throw new Error(`Not a regular file: ${entry.path}`);const hash=createHash('sha256').update(await readFile(target)).digest('hex');if(hash!==entry.sha256)throw new Error(`Snapshot mismatch: ${entry.path}`);}
+console.log(`verified snapshot ${actual} (${manifest.files.length} pinned files)`);

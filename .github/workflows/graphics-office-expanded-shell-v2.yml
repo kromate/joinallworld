@@ -1,0 +1,51 @@
+name: Office expanded source-shell diagnostic
+
+on:
+  push:
+    branches:
+      - codex/graphics-office-expanded-shell-v2
+
+permissions:
+  contents: read
+
+concurrency:
+  group: office-expanded-shell-v2-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        body: [man, woman]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: d96ec8a93e76d5758d88beb7ef3bc3fda616b4a062789fa17f84b6600c7bd171
+        run: >-
+          node evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/verify-snapshot-reviewed.mjs
+          "$EXPECTED_SNAPSHOT_SHA256"
+      - run: npm ci --no-audit --no-fund
+      - name: Run one-family probe under fixed 220 MiB / 20 second group guard
+        env:
+          EXPECTED_SNAPSHOT_SHA256: d96ec8a93e76d5758d88beb7ef3bc3fda616b4a062789fa17f84b6600c7bd171
+        run: >-
+          python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/run-bounded-linux-reviewed.py
+          "${{ matrix.body }}"
+          "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/remote-results/${{ matrix.body }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-expanded-shell-v2-${{ matrix.body }}-${{ github.run_id }}
+          path: evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v2/remote-results/${{ matrix.body }}*
+          if-no-files-found: warn
+          retention-days: 14

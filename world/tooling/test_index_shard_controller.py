@@ -9,6 +9,7 @@ import index_registry_controller as controller
 import index_registry_startup as startup
 import test_index_admission as admission_fixture
 from index_controller_record import FORMAT_V3, decode_controller_record
+from index_binding import decode_index_binding, encode_index_binding
 from index_controller_state import RECORD, EXECUTION, RECLAIM, REGISTRY
 from index_root import prepare_index_shard_plan_authority, planned_index_reservations
 from index_reservations import REGISTRY_ALLOWANCE
@@ -122,6 +123,34 @@ class IndexShardControllerTests(unittest.TestCase):
                 self.assertEqual((namespace/RECORD).read_bytes(), record)
                 self.assertEqual(self.charges(namespace), rows)
                 self.assertEqual(self.identities(namespace, args), identities)
+
+    def test_actual_maximum_request_plan_admits_every_shard_with_original_guard_caps(self):
+        with self.prepared() as (namespace, source):
+            args = self.arguments(namespace, source)
+            base = decode_index_binding(args["_binding_bytes"])
+            base["processLimits"]["fileBytes"] = MIB
+            base["engineLimits"]["databaseBytes"] = MIB
+            base["engineLimits"]["captures"] = 256
+            base["engineLimits"]["observations"] = 256
+            base["reservedBytes"] = 16*MIB
+            binding = encode_index_binding(base)
+            requests = [{"requestHash":f"{i:064x}", "captureInputHash":f"{i+4096:064x}",
+                "requiredObservationSetHash":f"{i+8192:064x}", "requiredObservationCount":1,
+                "auditDescriptorBytes":100} for i in range(1,4097)]
+            raw, plan_pin, _, plan = planner_fixture(binding,
+                {"aggregateBytes":512*MIB, "maxCaptures":256, "descriptorBytes":100000}, requests)
+            self.assertEqual(plan["requestCount"], 4096)
+            self.assertEqual(len(plan["shards"]), 16)
+            args.update(aggregate_bytes=512*MIB, _binding_bytes=binding,
+                        _plan_input={"raw":raw,"pin":plan_pin})
+            with patch("sqlite3.connect", side_effect=AssertionError("parent SQL forbidden")):
+                result = controller.restartable_registry_startup(**args)
+            self.assertEqual(result["registry"]["shardAdmission"]["shards"], 16)
+            self.assertEqual(result["registry"]["shardAdmission"]["planHash"], plan_pin["sha256"])
+            self.assertEqual(result["registry"]["stats"]["chargedBytes"], REGISTRY_ALLOWANCE + 256*MIB)
+            self.assertEqual(len(self.charges(namespace)), 16)
+            self.assertEqual(len(self.identities(namespace, args)), 16)
+            self.assertLessEqual(result["registry"]["maximumRssKiB"]*1024, args.get("rss_limit_bytes",96*MIB))
 
 
 if __name__ == "__main__": unittest.main()

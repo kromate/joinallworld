@@ -120,7 +120,7 @@ async function disposeWithin(worker, limitMs = LIMITS.disposeMs) {
   } finally { if (timer) clearTimeout(timer); }
 }
 
-async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker, setWorker, within, responseBodies, remainingMs, adminRate, evidence }) {
+async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker, setWorker, within, responseBodies, remainingMs, adminGate, evidence }) {
   const { makeKey, claimsFor, signToken } = await currentWorker.testTokens;
   const { TOKEN_KEYS_URL } = currentWorker.tokenModule;
   const key = await within('synthetic test signing key', makeKey('africa-sealed-package-fixture'), LIMITS.startMs);
@@ -135,6 +135,7 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
   let worker = make();
   setWorker(() => worker);
   await within('Miniflare startup', worker.ready, LIMITS.startMs);
+  const founderIp = '198.51.100.251';
   let address = 0;
   const ips = () => `198.51.100.${(address++ % 250) + 1}`;
   const cancelUnusedBodies = async () => {
@@ -143,7 +144,7 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
     }
     responseBodies.clear();
   };
-  const send = async (path, body, cookie) => {
+  const send = async (path, body, cookie, fixedIp) => {
     const active = currentWorker.getWorker();
     const budget = Math.min(LIMITS.requestMs, remainingMs());
     assert.ok(budget > 0, 'verification exceeded its 168-second total deadline');
@@ -151,7 +152,7 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
     let timedOut = false;
     const dispatch = active.dispatchFetch(ORIGIN + path, {
       method: body ? 'POST' : 'GET', signal: controller.signal,
-      headers: { origin: ORIGIN, 'cf-connecting-ip': ips(), ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
+      headers: { origin: ORIGIN, 'cf-connecting-ip': fixedIp ?? (path.startsWith('/api/admin/') ? founderIp : ips()), ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
       ...(body ? { body: JSON.stringify(body) } : {}),
     }).then(async response => {
       responseBodies.add(response);
@@ -163,17 +164,17 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
       return await Promise.race([dispatch, new Promise((_, reject) => { timer = setTimeout(() => { timedOut = true; controller.abort(); reject(new Error(`Worker ${path} timed out`)); }, budget); })]);
     } finally { if (timer) clearTimeout(timer); }
   };
-  const founderGuest = await send('/api/session', { name: 'Africa fixture founder' });
+  const founderGuest = await send('/api/session', { name: 'Africa fixture founder' }, undefined, founderIp);
   assert.equal(founderGuest.status, 200);
   const guestCookie = founderGuest.headers.get('set-cookie')?.split(';')[0];
   assert.ok(guestCookie, 'test founder session cookie');
-  const initialLife = await send('/api/life?city=lagos', undefined, guestCookie);
+  const initialLife = await send('/api/life?city=lagos', undefined, guestCookie, founderIp);
   assert.equal(initialLife.status, 200, 'the founder guest lifecycle starts in Lagos before sign-in');
-  const accountResponse = await send('/api/account', undefined, guestCookie);
+  const accountResponse = await send('/api/account', undefined, guestCookie, founderIp);
   assert.equal(accountResponse.status, 200);
   const accountState = object(await accountResponse.json());
   const idToken = await signToken(key, claimsFor(PROJECT, Date.now(), { subject: 'AfricaFixtureFounder', email: FOUNDER, n: ++minted.count }));
-  const signedIn = await send('/api/account/sign-in', { csrf: accountState.csrf, idToken }, guestCookie);
+  const signedIn = await send('/api/account/sign-in', { csrf: accountState.csrf, idToken }, guestCookie, founderIp);
   assert.equal(signedIn.status, 200);
   const founderCookie = signedIn.headers.get('set-cookie')?.split(';')[0];
   assert.ok(founderCookie, 'test founder authentication cookie');
@@ -185,16 +186,32 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
     const fixedIntent = Object.freeze(JSON.parse(encodedIntent));
     const safeCode = value => typeof value === 'string' && /^[a-z0-9_]{1,64}$/.test(value) ? value : null;
     while (true) {
-      const response = await send(path, fixedIntent, founderCookie);
+      const response = await send(path, fixedIntent, founderCookie, founderIp);
       const answer = object(await response.json());
       if (response.status === 429 && (answer.code === 'rate_limited' || answer.error === 'rate_limited')) {
         const db = await storage();
-        const bucketRows = await db.exec("SELECT count,started_at,expires_at FROM rate_limits_protected WHERE key LIKE 'admin-w:%' LIMIT 2");
+        const founderSecret = founderCookie.slice(founderCookie.indexOf('=') + 1);
+        const founderRows = await db.exec(`SELECT d.account_id,d.expires_at,a.value AS account,s.value AS session
+          FROM account_devices d JOIN accounts a ON a.id = d.account_id
+          JOIN sessions s ON s.public_id = a.public_id WHERE d.secret = ? LIMIT 2`, founderSecret);
+        assert.equal(founderRows.length, 1, 'the authenticated founder binding resolves one stored account and life');
+        const founderRow = object(founderRows[0]);
+        let account, session;
+        try { account = object(JSON.parse(founderRow.account)); session = object(JSON.parse(founderRow.session)); }
+        catch { throw new Error('stored founder account or life JSON is invalid'); }
+        assert.equal(typeof founderRow.account_id, 'string', 'stored founder account id is available');
+        assert.ok(account.id === founderRow.account_id, 'stored founder account agrees with its device binding');
+        assert.ok(account.email === FOUNDER, 'stored founder account retains the authenticated fixture email');
+        assert.ok(session.account === account.id, 'stored founder life belongs to the authenticated account');
+        assert.ok(session.publicId === account.publicId, 'stored founder life agrees with the account public identity');
+        assert.ok(adminGate.shortRef(account.id) === founderMe.ref, 'stored account matches the authenticated admin response');
+        assert.ok(founderRow.expires_at > Date.now(), 'authenticated founder device binding is still live');
+        const bucketRows = await db.exec('SELECT count,started_at,expires_at FROM rate_limits_protected WHERE key = ? LIMIT 2', `admin-w:${account.id}`);
         const decision = sealedAdminRateWaitPolicy({ response: { status: response.status, code: answer.code, error: answer.error },
-          bucketRows, rate: adminRate, nowMs: Date.now(), remainingMs: remainingMs(), waitsAlready: evidence.adminRateWaits.length });
+          bucketRows, rate: adminGate.RATE, nowMs: Date.now(), remainingMs: remainingMs(), waitsAlready: evidence.adminRateWaits.length });
         assert.equal(decision.ok, true, `admin ${phase} rate wait refused: ${decision.reason ?? 'invalid evidence'}`);
         evidence.adminRateWaits.push({ ...decision.evidence, phase, delayMs: decision.delayMs,
-          intentSha256: sha256(encodedIntent), sameIntentRetried: true });
+          intentSha256: sha256(encodedIntent), sameIntentRetried: true, sameAdminAddress: true, authenticatedFounderBucket: true });
         await within('actual admin write-window expiry', new Promise(resolveWait => setTimeout(resolveWait, decision.delayMs)), decision.delayMs + 1000);
         continue;
       }
@@ -369,7 +386,7 @@ async function main(args) {
     evidence.coveredCities = [...allCities];
     const control = { testTokens, tokenModule, getWorker: () => workerGetter(), setWorker: null };
     control.setWorker = getter => { workerGetter = getter; };
-    fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs, adminRate: adminGate.RATE, evidence });
+    fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs, adminGate, evidence });
     evidence.outcomes.push({ check: 'sealed-worker-start-and-sqlite', status: 'passed' });
     currentCheck = 'packaged-assets';
     assert.equal(typeof hostContext.absolutePreviewImage, 'function', 'canonical HTML preview transform is unavailable');

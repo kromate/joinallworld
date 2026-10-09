@@ -131,7 +131,13 @@ and guide behavior, save continuity and final release gates remain required.
 
 The verifier correction waits for the actual protected account bucket to expire,
 then retries the exact serialized request with the same founder and clientId.
-It reads one live stored bucket with count31 and the canonical60000ms window,
+The first source review requested changes because retries rotated the simulated
+address and the bucket scan did not prove founder ownership. The corrected caller
+uses one fixed founder/admin address across lifecycle, confirmation and replay,
+resolves the exact live authenticated device/account/life, checks its canonical
+admin reference and reads only that account's protected key. Ordinary journey
+fixtures still rotate their simulated addresses and are separately qualified.
+It reads the live stored bucket with count31 and the canonical60000ms window,
 requires the frozen30-write limit, permits at most two waits and preserves the
 original168s/175s bounds. Unknown or malformed evidence is refused. No SQL,
 clock, account, limiter, funding intent or original retained store is reset.
@@ -141,6 +147,9 @@ See [sealed-admin-rate-source-acceptance.json](sealed-admin-rate-source-acceptan
 This is source acceptance; a fresh actual all-ten Worker seal is still required.
 Previous status-only turn made no goal progress; this continuation completes the
 caller correction and meaningful validation rather than repeating status.
+[AFRICA-NEXT-COVERAGE.md](AFRICA-NEXT-COVERAGE.md) identifies the next five
+source candidates and distinguishes26 generated starters from the live six-country
+map; no pre-run packet or acquisition success is invented.
 
 The same bounded runner acquired and compiled Conakry, Guinea, on source52611.
 One 8 MiB reservation covers 925,069 actual OpenStreetMap source bytes. The city

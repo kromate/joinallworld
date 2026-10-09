@@ -1,6 +1,6 @@
 {
   "format": "sealed-admin-rate-source-acceptance-v1",
-  "checkedAt": "2026-10-09T20:37:32.650230+00:00",
+  "checkedAt": "2026-10-09T20:42:05.759809+00:00",
   "gameSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
   "diagnosticRunId": 37987303569,
@@ -12,8 +12,8 @@
   "sourcePins": [
     {
       "path": "world/tooling/verify-sealed-africa.mjs",
-      "bytes": 26477,
-      "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
+      "bytes": 28276,
+      "sha256": "41209efdf36d1e345370356ba889a84344b4fc0ae6bbb32582c1a94e9488a573"
     },
     {
       "path": "world/tooling/sealed-admin-rate-policy.mjs",
@@ -39,7 +39,8 @@
     "skipped": 0,
     "exitCode": 0,
     "heapMiB": 128,
-    "logSha256": "23fffd50abb3fe6a73737c1c5960ec78ee89cb9638ccde713a449a2beee0c34e"
+    "logSha256": "f4f1ba13d99949d4095dff50d650e57d4208a97513f8274c9a7612f48e908398",
+    "scope": "Retained checkpoint, coverage and pure wait policy. These tests do not certify the new actual Worker account lookup or request transport."
   },
   "workflowPolicyChecks": 3,
   "canonicalCause": "Authenticated admin account write limiter applies before receipt replay and persists through SQLite restart. Diagnostic HTTP429/error rate_limited proves a limiter refusal, not a missing receipt or duplicate wallet effect.",
@@ -54,11 +55,45 @@
     "verifierTotalMs": 168000,
     "outerTimeoutSeconds": 175,
     "sameSerializedIntent": true,
-    "duplicateAndBalanceOraclePreserved": true
+    "duplicateAndBalanceOraclePreserved": true,
+    "sameAdminAddress": true,
+    "authenticatedFounderBucket": true,
+    "ordinaryFixtureAddresses": "Existing ordinary journey fixture retains rotating simulated addresses; this is not fixed-address ordinary-client acceptance."
   },
   "runtimeVerified": false,
   "originalRetainedCheckpointMutated": false,
   "productionMutation": false,
   "releaseReady": false,
-  "nextAction": "Freeze and independently review these source pins; execute a fresh all-ten sealed Worker run on exact game c1f. No prior failure or source test is a sealed runtime pass."
+  "nextAction": "Freeze and independently review these source pins; execute a fresh all-ten sealed Worker run on exact game c1f. No prior failure or source test is a sealed runtime pass.",
+  "priorReview": {
+    "toolingSha": "7ea9353108d064dddd5b079a6f19863dda00ea8e",
+    "decision": "modify",
+    "findings": [
+      "Admin retry used a fresh simulated IP on each attempt. Bind one founder/admin address across lifecycle, confirmation and replay.",
+      "The sole admin-w LIKE row did not prove authenticated founder ownership. Resolve exact live founder binding/account/life and query the exact protected key."
+    ],
+    "previousSourcePins": [
+      {
+        "path": "world/tooling/verify-sealed-africa.mjs",
+        "bytes": 28276,
+        "sha256": "41209efdf36d1e345370356ba889a84344b4fc0ae6bbb32582c1a94e9488a573"
+      },
+      {
+        "path": "world/tooling/sealed-admin-rate-policy.mjs",
+        "bytes": 2628,
+        "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+      },
+      {
+        "path": "world/tooling/sealed-admin-rate-policy.test.mjs",
+        "bytes": 2523,
+        "sha256": "714f4a2cb34b7243f14a74a27959cdf6f2deba196f2a8be6bd2641d6451766a7"
+      },
+      {
+        "path": ".github/workflows/africa-rollout-audit-ci.yml",
+        "bytes": 4458,
+        "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
+      }
+    ],
+    "sealedRunDispatched": false
+  }
 }

@@ -1,7 +1,7 @@
 name: Active female office torso clothing diagnostic
 on:
   push:
-    branches: [codex/graphics-torso-clothing-v1]
+    branches: [codex/graphics-torso-clothing-v2]
 permissions:
   contents: read
 jobs:
@@ -17,6 +17,7 @@ jobs:
       - name: Prepare pinned source assets
         run: |
           python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
       - name: Probe actual direction-mode office actor clothing

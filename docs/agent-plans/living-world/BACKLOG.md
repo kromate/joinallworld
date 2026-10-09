@@ -1,3 +1,5 @@
+Latest CI update 2026-10-09T20:02:35.093447+00:00: prior cd18 run37982009828 is TERMINAL CANCELLED with four Node partitions incomplete. Replacement exact80122 fullCI37983496643 has live jobs and a completed UI failure at stale planned-country expectation213. Integration owns two uncommitted test-only repairs, including a stronger multi-unit tax fixture; no executed repair or new frozen SHA yet. [Exact diagnostic](candidate-80122bfb-source-review.json). Earlier live cd18 labels below are historical.
+
 # Current programme state - 2026-10-09T19:58:14.692580+00:00
 
 Production3af is deployed; the retained synthetic9field/duplicate-receipt check passes. The first five-country milestone is qualified and does not close the programme.

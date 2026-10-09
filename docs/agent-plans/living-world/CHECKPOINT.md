@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Replacement exact run and source-only fixture review - 2026-10-09T20:02:35.093447+00:00
+
+Root b3d6f0d0 push87301 terminal0/published. Prior cd18 CI37982009828 endedCANCELLED,10requiredPASS/4Nodepartitions cancelled; no fullacceptance. Replacement fullCI37983496643 is exactly80122 and has actual live jobs. Policy/hostacceptance PASS; completedUI114000013204 FAIL. Root downloaded its official log once (90590 terminal0), SHA63121709 and identified sole staleplanned-country expectation213, actualLondon versusexpectedJohannesburg/London. Source regions277 derivescountryopen correctly fromCapeTown. Owner's test-only repair retainsLondon and adds explicitZAopen/cape-town assertions. No Rootduplicate tests or weakened runtimegate.
+
+Owner additionally strengthens fictionalBusiness multiunit tax fixture:707×3=2121, separate levies212+106+318=636, buyertotal2757/sellerbase2121; wrongperunitmultiplier633 nowdiffers, unlikeold701fixture630=630. Root independentlychecked source/arithmetic only, nothost execution. Owner2dirtytestfiles/no new frozenSHA. [Current evidence](candidate-80122bfb-source-review.json). Fullchanged-source gates continue; never transfer80122 passes torepair.
+
+Currentpublic19:59:49 remainsexact3af; no newRoot/WORLD deployment. FullgoalACTIVE, trustedONteaching andsource-pinnedphysical/restock originalrequirementsnext. Zeroextraspend/human05UTCcutoff preserved. Next ownerexecutesboundedfixturecases, freezesrepairSHA/fullgates, thenAstra stage/WORLDrelease/live; no restartofconfirmedlivejobs byRoot.
+
 ## Resume original physical journey and current combined candidate - 2026-10-09T19:58:14.692580+00:00
 
 Previous turn was an accountability/status response with no gameplay implementation. This turn produced a source-pinned two-gap physical handoff after an existing verified gpt-6-luna/high audit: mapped-trip private resolver/motion authority is absent and routes remain unregistered; trip completion does not produce parcel custody/restock. Root independently reviewed actual callbacks, closed boarding flags, production routes and once-only stock/wage transaction. [Bounded next work](physical-journey-next-boundary.json). No runtime writer or fake physical authority introduced.

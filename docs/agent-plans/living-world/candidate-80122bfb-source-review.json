@@ -86,13 +86,14 @@
     "run": 37982009828,
     "requiredJobsPassed": 10,
     "remaining": [
-      "Node22 game",
-      "Node24 game",
-      "Node24 host",
-      "Node24 tooling"
+      "Node22 game cancelled",
+      "Node24 game cancelled",
+      "Node24 host cancelled",
+      "Node24 tooling cancelled"
     ],
-    "status": "Specific exact-head jobs are live/queued; no failed required jobs at last official read.",
-    "notTransferred": true
+    "status": "TERMINAL CANCELLED",
+    "notTransferred": true,
+    "cancelledPartitions": 4
   },
   "ownerReportsQualified": [
     "All 960 previous endpoint/mode route terms retain their complete terms. This is not a cross-version saved-ticket host proof.",
@@ -107,5 +108,72 @@
   ],
   "currentProduction": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
   "releaseAccepted": false,
-  "teacherStartsProduction": "OFF"
+  "teacherStartsProduction": "OFF",
+  "currentCi": {
+    "checkedAt": "2026-10-09T20:02:35.093447+00:00",
+    "run": 37983496643,
+    "sha": "80122bfb1ef8c3638b4e5968ff5073120ddd77a7",
+    "overall": "queued/live remaining jobs; not terminal",
+    "completed": {
+      "policy": "PASS",
+      "hostAcceptance": "PASS",
+      "uiRegressions": "FAIL"
+    },
+    "uiJob": 114000013204,
+    "officialLogSha256": "6312170991eea1dfbedecf5f238b422e810a08297f50ffccecf010c4a1b26967",
+    "uiGroups": [
+      {
+        "scope": "app models/components",
+        "pass": 439,
+        "fail": 0,
+        "skip": 0
+      },
+      {
+        "scope": "scene/atlas",
+        "pass": 45,
+        "fail": 1,
+        "skip": 0
+      },
+      {
+        "scope": "map/body/vehicle",
+        "pass": 90,
+        "fail": 0,
+        "skip": 0
+      },
+      {
+        "scope": "social",
+        "pass": 5,
+        "fail": 0,
+        "skip": 0
+      },
+      {
+        "scope": "panels",
+        "pass": 11,
+        "fail": 0,
+        "skip": 0
+      }
+    ],
+    "failure": "atlas.test.ts213 expected planned country hubs Johannesburg/London; actual London because CapeTown makesZA open.",
+    "sourceDiagnosis": "regions.ts277 filters by current country status; the country is open through cape-town. Test-only correction explicitly asserts ZA open and city cape-town. Original failure retained.",
+    "ownerRepair": "Integration owns dirty src/map3d/geo/atlas.test.ts and server/politics.test.ts. No frozen repair SHA or executed repair result yet."
+  },
+  "businessFixtureReview": {
+    "scope": "Source-only arithmetic comparison of Integration owned pending test repair; no host execution",
+    "oldUnitBase": 701,
+    "units": 3,
+    "oldCombinedTax": 630,
+    "oldTaxMultipliedFromUnit": 630,
+    "newUnitBase": 707,
+    "newSubtotal": 2121,
+    "levies": [
+      212,
+      106,
+      318
+    ],
+    "newCombinedTax": 636,
+    "wrongMultipliedUnitTax": 633,
+    "buyerTotal": 2757,
+    "sellerBase": 2121,
+    "meaning": "New fixture distinguishes subtotal rounding from multiplying individually rounded unit levies. Runtime unchanged, execution required."
+  }
 }

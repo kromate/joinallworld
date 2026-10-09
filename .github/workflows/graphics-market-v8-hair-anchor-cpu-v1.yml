@@ -1,0 +1,48 @@
+name: Market hair-anchor A/B CPU package v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-v8-hair-anchor-cpu-v1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-hair-anchor-cpu-v1
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify closure, explicit pins, snapshot, and current file bytes agree
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 0c6be366ea664b3f32a4f7c0d3f093f3255e02bca6ff99ec3b69a2be1f096973
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-ci-reviewed-v1/verify-input-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify source/candidate hair-witness contract
+        run: node --test evidence/graphics-loop/parallel-execution-2026-10-09/remote-publication-0945/hair-anchor-numeric.test.mjs
+      - name: Install exact package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package under the pinned 220 MiB / 25 second process-group guard
+        env:
+          EXPECTED_BRANCH: codex/graphics-market-v8-hair-anchor-cpu-v1
+          EXPECTED_SNAPSHOT_SHA256: 0c6be366ea664b3f32a4f7c0d3f093f3255e02bca6ff99ec3b69a2be1f096973
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-ci-reviewed-v1/run-bounded-linux.py
+      - name: Preserve package and bounded-process receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-hair-anchor-cpu-package-v1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-ci-reviewed-v1/static-fixture-market-hair-anchor-v2/**
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-ci-reviewed-v1/remote-results/**
+          if-no-files-found: warn

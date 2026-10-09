@@ -1,3 +1,32 @@
+# Next five-country candidate checkpoint, 9 October 2026 at 23:51 UTC
+
+A proposed runtime admission now appends Cairo/Egypt, Rabat/Morocco,
+Kigali/Rwanda, Kampala/Uganda and Lusaka/Zambia to the unchanged 50-row C1
+prefix. All 30 city asset/receipt pins match the preserved third-five packet.
+The canonical runtime manifest remains unchanged. The proposal has 55 rows,
+15 foreign cities, and SHA8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f.
+See playable-africa-rollout/proposals/third-five-runtime-admission.json and
+third-five-runtime-source-audit.json. Remote generation, caller integration,
+engine/compiler/budget and complete native journeys are still required before
+these countries can turn green. No new runtime activation is claimed.
+
+An independent asset comparison found that older fourth-five Gaborone and
+fifth-five Dar packet pins no longer match their corrected facts/geometry and
+receipts. Preserve those historical packets and create reviewed corrected
+source packets before admitting those two cities. Do not waive the pin checks.
+
+The remote multi-city country fixture d173b2c4 was inspected and its isolated
+23-line change cherry-picked as473cab1f. The remote receipt reports 17 named
+passes, zero failures/skips and the unchanged trusted-facts pin. This verifies
+the focused seam only. Shared runtime caller/compiler acceptance stays open.
+
+Actual original actor ON continuation reached CHECK revision5/generation1 and
+survived reload. Read-only after comparisons preserve both actors' nine named
+protected fields, identity fields and every old receipt row; no wallet effect
+or completed shift was added. The entire old school record remains unchanged.
+The running stage50155 retains its internal23:54:44.306 deadline. OFF final
+answer/wage/replay acceptance follows only after clean terminal/store proof.
+
 # Remote source handoff checkpoint, 9 October 2026 at 23:43 UTC
 
 Production remains C1 with eleven open countries. A fresh fetch of origin/main

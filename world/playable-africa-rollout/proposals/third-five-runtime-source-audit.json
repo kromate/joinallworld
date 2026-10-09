@@ -1,0 +1,74 @@
+{
+  "observedAt": "2026-10-09T23:50:51.502254+00:00",
+  "baselineRows": 50,
+  "candidateRows": 55,
+  "foreignRows": 15,
+  "candidateManifestSha256": "8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f",
+  "foreignAllowlistSha256": "c882a0975ab7ec6d5f538c44ccf2447d50d159068f1daab877d026a81b9fbe91",
+  "sourcePacket": {
+    "path": "world/playable-africa-rollout/batches/third-five.json",
+    "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+  },
+  "cities": [
+    {
+      "id": "cairo",
+      "name": "Cairo",
+      "countryISO": "EG",
+      "countryName": "Egypt",
+      "assetAndReceiptPinsMatched": 6,
+      "kept": {
+        "buildings": 131,
+        "roads": 160
+      }
+    },
+    {
+      "id": "rabat",
+      "name": "Rabat",
+      "countryISO": "MA",
+      "countryName": "Morocco",
+      "assetAndReceiptPinsMatched": 6,
+      "kept": {
+        "buildings": 341,
+        "roads": 160
+      }
+    },
+    {
+      "id": "kigali",
+      "name": "Kigali",
+      "countryISO": "RW",
+      "countryName": "Rwanda",
+      "assetAndReceiptPinsMatched": 6,
+      "kept": {
+        "buildings": 350,
+        "roads": 70
+      }
+    },
+    {
+      "id": "kampala",
+      "name": "Kampala",
+      "countryISO": "UG",
+      "countryName": "Uganda",
+      "assetAndReceiptPinsMatched": 6,
+      "kept": {
+        "buildings": 264,
+        "roads": 160
+      }
+    },
+    {
+      "id": "lusaka",
+      "name": "Lusaka",
+      "countryISO": "ZM",
+      "countryName": "Zambia",
+      "assetAndReceiptPinsMatched": 6,
+      "kept": {
+        "buildings": 228,
+        "roads": 96
+      }
+    }
+  ],
+  "scope": "Exactfivecities/30asset-and-receipt pins compared. Canonicalruntime admission unchanged. No generator execution, caller/engine/compiler/budget/native orproduction acceptance.",
+  "otherPacketExceptions": [
+    "fifth-five Dar facts/geometry/receipt pins superseded",
+    "fourth-five Gaborone facts/geometry/receipt pins superseded"
+  ]
+}

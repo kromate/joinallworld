@@ -298,6 +298,10 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - name: Compile typed sources for scoped fixture evidence
+        run: npm run typecheck
+        env:
+          NODE_OPTIONS: ''
       - name: Programme authority, continuity and scoped regression checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1

@@ -203,6 +203,11 @@ def _capture(root, name, expected):
 
 
 
+def _plan_pipe_flags(flags):
+    """Darwin F_GETFL exposes kernel FWASWRITTEN history after pipe writes."""
+    return flags & ~0x10000 if sys.platform == "darwin" else flags
+
+
 def _private_plan_pipe(info):
     """Recognize exact platform anonymous-pipe metadata; flags are checked by caller."""
     if not stat.S_ISFIFO(info.st_mode) or info.st_uid != os.getuid(): return False

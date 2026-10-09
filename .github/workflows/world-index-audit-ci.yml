@@ -163,7 +163,24 @@ jobs:
       - name: Retain actual macOS anonymous-pipe identities
         if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
         run: |
-          "$WORLD_TEST_PYTHON" -c 'import fcntl,json,os,stat; fds=os.pipe(); [os.set_blocking(fd,False) for fd in fds]; print(json.dumps([{"fd":fd,"device":os.fstat(fd).st_dev,"inode":os.fstat(fd).st_ino,"uid":os.fstat(fd).st_uid,"gid":os.fstat(fd).st_gid,"mode":oct(stat.S_IMODE(os.fstat(fd).st_mode)),"links":os.fstat(fd).st_nlink,"fifo":stat.S_ISFIFO(os.fstat(fd).st_mode),"flags":fcntl.fcntl(fd,fcntl.F_GETFL)} for fd in fds])); [os.close(fd) for fd in fds]' > diagnostic-evidence/anonymous-pipe-identities.json
+          "$WORLD_TEST_PYTHON" - <<'PY' > diagnostic-evidence/anonymous-pipe-identities.json
+          import fcntl,json,os,stat
+          fds=os.pipe()
+          def identities():
+              return [{"fd":fd,"device":os.fstat(fd).st_dev,"inode":os.fstat(fd).st_ino,
+                  "uid":os.fstat(fd).st_uid,"mode":oct(stat.S_IMODE(os.fstat(fd).st_mode)),
+                  "links":os.fstat(fd).st_nlink,"fifo":stat.S_ISFIFO(os.fstat(fd).st_mode),
+                  "flags":fcntl.fcntl(fd,fcntl.F_GETFL)} for fd in fds]
+          try:
+              for fd in fds: os.set_blocking(fd,False)
+              before=identities()
+              if os.write(fds[1],b"x")!=1: raise RuntimeError("short diagnostic write")
+              returned=os.read(fds[0],1)
+              if returned!=b"x": raise RuntimeError("diagnostic pipe bytes differ")
+              print(json.dumps({"before":before,"after":identities(),"returnedHex":returned.hex()}))
+          finally:
+              for fd in fds: os.close(fd)
+          PY
       - name: Actual macOS terminal shard verification without another attempt
         if: ${{ !cancelled() && steps.runtimes.outcome == 'success' }}
         env:

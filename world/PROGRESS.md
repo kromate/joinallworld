@@ -77,6 +77,15 @@ not an unattended acquisition/campaign scheduler. Global playable detail, condit
 terrain upgrades, Nigeria rendering integration and phone-visible production detail
 remain incomplete. Exact committed-source policy/main sync follows this checkpoint.
 
+Implementationc38bac6193452a13b3c7a537bdddabfa5d63e7c0 passes5 exact-clean-source
+release policy checks, terminal87754 exit0:133,843,934logical bytes,
+140,369,920archive bytes/8,565members, below256MiB/10,000member caps. Free-space,
+regular-file/directory and data-filter checks pass; owned archive/checkout removed,
+actual caches preserved. Receipt `feature-index-persistent-clean-policy-v1.*`.
+This is **195 focused checks**, not a game build, country coverage or production
+artifact release. Fresh fetched716da1de changes only coordination docs relative
+to21a4e381; no foreign runtime changes are adopted by this synchronization.
+
 ## Supervised registry startup and controller-death witness — focused acceptance
 
 The preceding status-only turn was **no progress**. This continuation inspected

@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import resource
 import selectors
+import shutil
 import signal
 import stat
 import subprocess
@@ -24,9 +25,23 @@ WORKERS = {
     "index-engine-tests": HERE.parent / "feature-index.test.ts",
     "index-engine-capacity": HERE / "profile_feature_index.ts",
     "lease-witness": HERE / "index_lease_witness.ts",
+    "index-engine-bootstrap": HERE / "index_bootstrap.ts",
+    "index-bootstrap-crash": HERE / "index_bootstrap_crash.ts",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
+BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
 MIB = 1024 * 1024
+
+
+class IndexWorkerUnreaped(RuntimeError):
+    """Guard failed to confirm exit; preserve roots and retain the actual handle."""
+    def __init__(self, process, root, execution_root, reason):
+        self.process = process
+        self.root = Path(root)
+        self.execution_root = Path(execution_root)
+        self.reason = reason
+        super().__init__(f"index worker pid {process.pid} was not confirmed terminal; "
+                         f"preserve {self.root} and execution {self.execution_root}")
 
 
 def bounded_integer(value, minimum, maximum, label):
@@ -85,13 +100,15 @@ def recovered_witness(root):
 
 
 def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
-                       wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None):
+                       wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None,
+                       execution_root=None):
     """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
 
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
     ownership. This is not a public durable opener or aggregate-budget admission.
     """
-    if worker not in WORKERS or (worker != "witness" and case is not None) or (worker == "witness" and case not in CASES):
+    allowed_cases = CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash" else {None}
+    if worker not in WORKERS or case not in allowed_cases:
         raise ValueError("only a registered worker and its fixed cases are accepted")
     bounded_integer(file_bytes, 65536, 64*MIB, "file bytes")
     bounded_integer(cpu_seconds, 1, 60, "CPU seconds")
@@ -122,6 +139,16 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     if not node.is_file() or not os.access(node, os.X_OK):
         raise ValueError("Node executable must be an executable regular file")
     script = WORKERS[worker]
+    execution = HERE.parent.parent
+    if execution_root is not None:
+        execution = Path(execution_root)
+        if not execution.is_absolute() or execution.resolve(strict=True) != execution:
+            raise ValueError("execution snapshot must remain canonical")
+        info = execution.lstat()
+        if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+                or stat.S_IMODE(info.st_mode) != 0o700):
+            raise ValueError("execution snapshot must remain owned and private")
+        script = execution/script.relative_to(HERE.parent.parent)
     if script.is_symlink() or not script.is_file() or script.resolve(strict=True) != script:
         raise ValueError("registered worker path is unsafe")
     limits = {resource.RLIMIT_FSIZE: reduced_limit(resource.RLIMIT_FSIZE, file_bytes),
@@ -145,7 +172,7 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     if case is not None:
         command.append(case)
     started = time.monotonic()
-    process = subprocess.Popen(command, cwd=HERE.parent.parent, env=environment,
+    process = subprocess.Popen(command, cwd=execution, env=environment,
                                stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                start_new_session=True, preexec_fn=apply_limits, pass_fds=inherited)
     output = {"stdout": bytearray(), "stderr": bytearray()}
@@ -186,16 +213,23 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 break
     finally:
         # This process group was created exclusively by this call. No generic kill.
-        if process.poll() is None:
+        try:
             try:
-                os.killpg(process.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                # The worker may finish between poll and kill. Still wait/reap it.
-                pass
-        process.wait(timeout=3)
-        selector.close()
-        process.stdout.close()
-        process.stderr.close()
+                if process.poll() is None:
+                    try:
+                        os.killpg(process.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        # The worker may finish between poll and kill. Still reap.
+                        pass
+            finally:
+                try:
+                    process.wait(timeout=3)
+                except subprocess.TimeoutExpired as error:
+                    raise IndexWorkerUnreaped(process, root, execution, reason) from error
+        finally:
+            selector.close()
+            process.stdout.close()
+            process.stderr.close()
     # A caller-owned durable directory may never be silently replaced or followed
     # through a changed root before inventory/recovery.
     after = root.lstat()
@@ -224,13 +258,20 @@ def run_worker(node, worker, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
                wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB):
     # Public experiment runner owns disposal. The private process boundary does
     # not delete its caller's root, enabling future durable crash/replay wiring.
-    with tempfile.TemporaryDirectory(prefix="allworld-index-guard-") as temporary:
-        root = Path(temporary).resolve(strict=True)
+    root = Path(tempfile.mkdtemp(prefix="allworld-index-guard-")).resolve(strict=True)
+    preserve = False
+    try:
         result = _run_fixed_process(node, worker, root, case=case, file_bytes=file_bytes,
                                     cpu_seconds=cpu_seconds, wall_seconds=wall_seconds,
                                     heap_mib=heap_mib, rss_limit_bytes=rss_limit_bytes)
         if worker == "witness":
             result["recovery"] = recovered_witness(root)
+    except IndexWorkerUnreaped:
+        preserve = True
+        raise
+    finally:
+        if not preserve:
+            shutil.rmtree(root)
     if root.exists():
         raise RuntimeError("owned disposable scratch was not removed")
     result["scratchRemovedAfterReturn"] = True
@@ -241,7 +282,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--node", required=True)
     parser.add_argument("--worker", choices=WORKERS, required=True)
-    parser.add_argument("--case", choices=sorted(CASES))
+    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES))
     parser.add_argument("--file-bytes", type=int, default=4*MIB)
     parser.add_argument("--cpu-seconds", type=int, default=10)
     parser.add_argument("--wall-seconds", type=int, default=15)

@@ -38,14 +38,16 @@ class IndexStorageFootprintTests(unittest.TestCase):
                 second = index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
                 self.assertEqual(second["files"]["features.sqlite-wal"]["logicalBytes"], 0)
 
-    def test_orphan_wal_is_rejected_and_preserved(self):
-        with tempfile.TemporaryDirectory(prefix="allworld-index-footprint-fixture-") as temporary:
-            root = Path(temporary).resolve(strict=True)
-            with index_writer_lease(root) as lease:
-                wal = put(root, "features.sqlite-wal", b"preserve unclassified fixture")
-                with self.assertRaisesRegex(ValueError, "orphan"):
-                    index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
-                self.assertEqual(wal.read_bytes(), b"preserve unclassified fixture")
+    def test_orphan_sidecars_are_rejected_and_preserved(self):
+        for base in ["features.sqlite", "bootstrap.sqlite"]:
+            for ending in ["-wal", "-shm", "-journal"]:
+                with tempfile.TemporaryDirectory(prefix="allworld-index-footprint-fixture-") as temporary:
+                    root = Path(temporary).resolve(strict=True)
+                    with index_writer_lease(root) as lease:
+                        sidecar = put(root, base+ending, b"preserve unclassified fixture")
+                        with self.assertRaisesRegex(ValueError, "orphan"):
+                            index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
+                        self.assertEqual(sidecar.read_bytes(), b"preserve unclassified fixture")
 
     def test_unknown_state_is_not_deleted_or_silently_excluded(self):
         with tempfile.TemporaryDirectory(prefix="allworld-index-footprint-fixture-") as temporary:

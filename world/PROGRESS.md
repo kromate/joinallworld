@@ -1,5 +1,81 @@
 # Implementation checkpoint — 9 October 2026
 
+## Frozen execution and atomic engine startup — focused acceptance
+
+Previous goal turn was **progress**:67da9429 implemented/reviewed/published charged
+roots and binding publication, with71 pinned Python checks. This continuation adds
+the next functional startup layer, using one narrow source-only Luna assignment
+for the execution snapshot and root integration/review for the fixed Node worker.
+
+**103 Python checks,23 engine checks and World TypeScript pass** on the current
+source. Python terminal27120 exit0:11.782s unittest/11.89s process,186,384,384B maxRSS.
+Compiler terminal80214 exit0 at384MiB heap:3.33s/456,261,632B maxRSS, empty stdout.
+Fixed engine guard terminal0:23/23, own scratch removed. Earlier11/99/100-case and
+first compiler receipts precede final additions and are retained as historical.
+The first103-case run failed one injected wait test because its fixture prefix
+violated the fixed witness's root contract; corrected prefix passes targeted1/1
+and final103/103. Failed receiptv3 is retained, not relabeled successful.
+
+The snapshot copies only26 pinned tooling files plus the fixed source configuration
+into a private disposable tree (dirs0700/files0400), using bounded no-follow reads,
+hash/size/inode checks and final re-verification. Mutation of the original fixture
+after copying cannot change the actual executed worker. The supervisor verifies the
+actual Node binary before/after its fixed process and source/tool pins before launch.
+It charges live snapshot blocks alongside index files and checks a conservative
+four-file-plus2MiB candidate allowance, not a measured worldwide quota.
+
+The Node worker requires the inherited permanent root lease, exact SHA-named binding,
+actual engine/identity/capture/compiler constants, Node/SQLite versions and pinned
+configuration bytes/release before opening SQL. It initializes only bootstrap.sqlite,
+verifies schema/counts/integrity, checkpoints/closes SQLite, fsyncs the file, renames
+to features.sqlite under its cooperative lease and fsyncs the directory. Final replay
+requires an initialized application/version; it cannot initialize an empty final path.
+Foreign data, mixed staging/final files and orphan sidecars remain preserved/refused.
+Engine admission now also refuses empty databases carrying a foreign user_version.
+
+Actual Node22.19.0/SQLite3.50.4 startup workers are SIGKILLed at four fixed boundaries:
+empty staged file, schema checkpoint with connection still open, before rename and
+after rename before directory fsync. The guard confirms terminal -9/SIGKILL before
+snapshot cleanup/root reopen. All four recover through the ordinary fixed worker,
+keeping the original database inode and one immutable charge, with zero fabricated
+rows. Fixed rollback-journal names are now bounded/inventoried beside WAL/SHM and
+must have their main file; no manual sidecar deletion is performed. These checks
+do not certify power loss, interrupted capture transactions or controller death.
+
+Luna final review found a reap-timeout lifecycle edge. Guard now raises
+IndexWorkerUnreaped with actual process/root/execution handles when its bounded
+wait cannot confirm exit; snapshot and public experiment runner preserve their
+owned temporary trees. Pipes/selectors still close, and caller-owned database/root
+is never disposed. Three added fixtures cover snapshot/runner preservation and
+guard handle/pipe lifetime. The injected wait fixture first reaps its actual owned
+child then reports timeout, so it leaves no real orphan and does not claim to
+reproduce an OS worker stuck in uninterruptible I/O. Actual timeout recovery and
+persistent handle supervision remain a required controller gate.
+
+Final26-input verification:244,662source bytes, manifest3,233bytes,
+SHAd10d78490e0da65fea16d2307a0af438fd60544c999caea26b218cde500dcc48.
+The actual copied tree charges294,912bytes and is removed on confirmed return;
+earlier243,375byte/7c44260b manifest predates the reap fix. Cached Dakar
+replay remains2 captures/2,283ordinals/1,810versions/473duplicates/0conflicts/network,
+2,908,160DB/0WAL/32,768SHM bytes, with0 network. Final engine/capacity receiptsv2
+cover the updated guard; previous timingsv1 remain historical.
+
+Final receipts under `.cache/world-build/evidence/`:
+`feature-index-bootstrap-python-v4.{stdout,stderr}`,
+`feature-index-bootstrap-typecheck-v2.{stdout,stderr}`,
+`feature-index-bootstrap-{engine,capacity}-v2.{json,stderr}`,
+`feature-index-bootstrap-tooling-manifest-v2.json`, and
+`feature-index-bootstrap-source-acceptance-v2.json`. The acceptance records exact
+source/test/evidence pins and asserts the actual counts and cached source hash.
+
+All fixtures use only disposable sources/namespaces/databases. No actual source
+reservation, builder namespace, campaign, Nigeria/game data or production changed.
+All owned check processes and Luna review are terminal. Memory fluctuated between
+WARNING/NORMAL; WORLD started no browser/server/acquisition/runtime build or cap increase.
+Next: canonical registry/process supervision, measured pressure/ingestion crash and
+controller recovery, fenced existing campaign integration, independent raw/index
+conservation, then country compilation/streaming and verified production detail.
+
 ## Charged root and binding publication — focused acceptance
 
 The previous status-report turn was **no progress**: it inspected state but made

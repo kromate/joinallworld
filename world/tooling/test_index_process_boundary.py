@@ -3,11 +3,12 @@ import json
 import os
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from index_resource_limits import _run_fixed_process
+from index_resource_limits import _run_fixed_process, run_worker, IndexWorkerUnreaped
 from index_writer_lock import index_writer_lease
 
 
@@ -64,6 +65,54 @@ class IndexProcessBoundaryTests(unittest.TestCase):
             alias = root / "alias"; alias.symlink_to(root, target_is_directory=True)
             with self.assertRaisesRegex(ValueError, "canonical"):
                 _run_fixed_process(self.node, "lease-witness", alias)
+
+    def test_injected_wait_timeout_retains_handle_and_closes_guard_pipes(self):
+        # Reap the actual owned worker before injecting the unconfirmed status;
+        # this exercises preservation without leaving an actual orphan behind.
+        native_launch = subprocess.Popen
+        owned = []
+
+        def launch(*args, **kwargs):
+            process = native_launch(*args, **kwargs); owned.append(process)
+            native_wait = process.wait
+
+            def reported_timeout(timeout=None):
+                native_wait(timeout=10)
+                raise subprocess.TimeoutExpired(process.args, timeout)
+
+            process.wait = reported_timeout
+            return process
+
+        with tempfile.TemporaryDirectory(prefix="allworld-index-guard-reap-fixture-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with patch("index_resource_limits.subprocess.Popen", side_effect=launch):
+                # Avoid patching the ps subprocess used for RSS measurement.
+                with patch("index_resource_limits.rss_bytes", return_value=1024*1024):
+                    with self.assertRaises(IndexWorkerUnreaped) as caught:
+                        _run_fixed_process(self.node, "witness", root, case="wall-limit", wall_seconds=1)
+            self.assertIs(caught.exception.process, owned[0])
+            self.assertEqual(caught.exception.root, root)
+            self.assertEqual(owned[0].returncode, -9)
+            self.assertTrue(owned[0].stdout.closed and owned[0].stderr.closed)
+            self.assertTrue(root.exists())
+
+    def test_disposable_runner_preserves_scratch_on_unconfirmed_reap(self):
+        class Handle:
+            pid = 123
+        retained = []
+
+        def unconfirmed(node, worker, root, **kwargs):
+            retained.append(root)
+            raise IndexWorkerUnreaped(Handle(), root, root, "injected wait timeout")
+
+        try:
+            with patch("index_resource_limits._run_fixed_process", side_effect=unconfirmed):
+                with self.assertRaises(IndexWorkerUnreaped) as caught:
+                    run_worker(self.node, "lease-witness")
+            self.assertEqual(caught.exception.root, retained[0])
+            self.assertTrue(retained[0].exists())
+        finally:
+            for root in retained: shutil.rmtree(root)
 
 
 if __name__ == "__main__":

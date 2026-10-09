@@ -1,5 +1,12 @@
 # Compact feature-index engine — focused acceptance
 
+Frozen execution and atomic SQL startup now pass **103 Python/23 engine checks and
+World TypeScript**, including four actual Node SIGKILL startup/reopen boundaries.
+This supersedes pending startup statements below, while the complete supervised
+registry opener, capture/controller crash, measured quotas, campaign hook and raw
+audit remain open. Current tooling declaration has26 files; older22/20 receipts
+remain tied to their original source. See PROGRESS.md for final source/evidence pins.
+
 Charged-directory/binding publication passes **71 focused Python checks**, including
 11 root/9 publication cases and actual abrupt binding-worker exits at three boundaries.
 Read-only22-input tooling verification passes. This does not initialize the actual
@@ -117,6 +124,52 @@ remains a required promotion gate. Schema recognition/counts are not a corruptio
 or physical-device performance certificate.
 
 ## Resources and unresolved integration
+
+### Focused frozen execution and atomic engine startup
+
+`verified_execution_snapshot` verifies actual canonical manifest/configuration
+pins, reads only fixed26 inputs plus world/acquisition-sources.json through bounded
+no-follow descriptors, and copies them to an owned private temporary tree outside
+the repository. Directories are0700 and files0400; hashes/sizes/stable inodes and
+the exact path inventory are rechecked. Logical/allocated file and directory blocks
+are charged. Caller must reap all workers before leaving the scope; cleanup then
+removes only that owned snapshot. If the guard cannot confirm exit after its bounded
+wait, IndexWorkerUnreaped retains the actual process/root/execution handles and both
+snapshot/public experiment runner preserve their owned trees. Pipes/selectors still
+close. Persistent unresolved-process supervision remains a controller requirement.
+Readonly mode and cooperative ownership are not
+OS immutability against an uncooperative process owned by the same user.
+
+`bootstrap_index` requires its actual ChargedIndexRoot, verifies the Node executable
+by bounded SHA/size/inode reads before and after execution, and compares tool/source
+pins to the canonical binding before SQL. A conservative live allowance includes
+four per-file ceilings (database/WAL/SHM/rollback journal), snapshot blocks and2MiB
+metadata/directory margin; this remains a candidate, not measured global capacity.
+The private guard launches only the registered fixed worker from that verified
+snapshot with inherited permanent lease and binding CPU/file/wall/V8/sampled-RSS
+limits. Failed workers are reaped before inventory/snapshot disposal; database/WAL
+state is preserved. This path does not create/supervise the namespace registry.
+
+The Node worker verifies the root, lease, canonical binding SHA, actual version
+constants, Node/SQLite versions and source bytes/provider/release before SQL. Full
+capture/request/source-policy reconstruction still occurs at later ingest admission.
+Only bootstrap.sqlite may initialize. Final features.sqlite must already carry the
+engine application ID/version; schema/limits are verified by the engine. Staging
+must have zero data rows. Integrity/foreign-key checks and strict engine checkpoint
+precede close; sidecars must disappear through normal SQLite close before file fsync,
+cooperative atomic rename and directory fsync. It refuses unknown, mixed, foreign
+or orphan state without manually deleting/truncating files. Final replay preserves
+the database inode. Registry admission and campaign completion remain external.
+
+Fixed crash witness is distinct from the ordinary bootstrap API and accepts only
+four named startup boundaries. Actual SIGKILL with the same NodeSQLite3.50.4 runtime
+at empty-file/schema-checkpointed/before-rename/after-rename preserves the stage/final
+inode and one charge through ordinary recovery. Schema-checkpointed is an open
+native connection after the schema transaction/checkpoint, not a killed ingestion
+transaction. This is not power-loss, partial-capture or controller-death proof.
+Five snapshot fixtures and nine bootstrap fixtures pass within the103 Python total,
+including injected unconfirmed-reap preservation without leaving a real orphan.
+The engine adds an empty foreign-user_version preservation regression (23 total).
 
 ### Focused charge-before-create directory admission
 

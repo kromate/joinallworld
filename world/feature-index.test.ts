@@ -66,6 +66,14 @@ test('a foreign table resembling an internal SQLite name cannot bypass database 
   assert.equal(db.prepare('PRAGMA journal_mode').get()!.journal_mode, mode);
   assert.equal(db.prepare('SELECT id FROM sqliteXforeign').get()!.id, 'preserved');
 }));
+test('an empty database with a foreign user version is preserved before settings change', () => fixture(db => {
+  db.exec('PRAGMA user_version=42');
+  const mode = db.prepare('PRAGMA journal_mode').get()!.journal_mode;
+  assert.throws(() => new FeatureIndex(db, limits), /not an empty or recognized/);
+  assert.equal(db.prepare('PRAGMA user_version').get()!.user_version, 42);
+  assert.equal(db.prepare('PRAGMA journal_mode').get()!.journal_mode, mode);
+  assert.equal(db.prepare('PRAGMA application_id').get()!.application_id, 0);
+}));
 test('creates a bounded file-backed format with actual durability/foreign keys and zero rows', () => fixture(db => {
   const index = new FeatureIndex(db, limits); assert.deepEqual(index.stats(), zero);
   assert.equal(db.prepare('PRAGMA journal_mode').get()!.journal_mode, 'wal');

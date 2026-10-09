@@ -25,6 +25,10 @@ FILES = tuple(sorted([
     "world/tooling/index_binding.py", "world/tooling/index_tooling.py",
     "world/tooling/index_root.py",
     "world/tooling/index_binding_publish.py",
+    "world/tooling/index_execution_snapshot.py",
+    "world/tooling/index_bootstrap.py",
+    "world/tooling/index_bootstrap.ts",
+    "world/tooling/index_bootstrap_crash.ts",
     "world/tooling/index_lease_witness.ts",
 ]))
 

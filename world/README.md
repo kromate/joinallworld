@@ -1,10 +1,19 @@
 # Independent world-data builder
 
+Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
+checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries
+preserves one charge and the database inode. Fixed26-input snapshots are verified,
+private, readonly and removed after the worker is reaped; an unconfirmed reap preserves
+them and exposes the process handle. Cached real-source replay
+still conserves2,283ordinals/1,810versions with0 network. This is startup acceptance;
+registry supervision, capture/controller crash recovery, measured quotas, campaign
+fencing, independent raw audit and country rollout remain required.
+
 Charged directory/binding publication now passes **71 isolated Python checks**,
 including three actual abrupt binding-worker exits and recovery without a second
 storage charge. It reserves before allocation and refuses foreign/unreserved state;
-actual registry opening, source verification and atomic database bootstrap remain next.
-Read-only22-input tooling verification also passes; older20-file receipts below apply to73.
+actual registry opening/process supervision remains next. The22-input verification
+below is retained historical evidence; the current declaration has26 inputs.
 New browser/agent concurrency is authorized with memory monitoring; heavy checks
 remain capped and defer while the monitor reports warning/critical pressure.
 

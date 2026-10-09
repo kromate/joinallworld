@@ -127,9 +127,10 @@ export class FeatureIndex {
     }
     this.#db = database; this.#limits = { ...limits };
     const app = database.prepare('PRAGMA application_id').get()!.application_id;
+    const version = database.prepare('PRAGMA user_version').get()!.user_version;
     const objects = Number(database.prepare("SELECT COUNT(*) n FROM sqlite_schema WHERE name NOT GLOB 'sqlite_*'").get()!.n);
     // Refuse unrelated databases before changing their journal/settings/schema.
-    if (objects ? app !== APPLICATION_ID : app !== 0) throw new Error('SQLite connection is not an empty or recognized feature index.');
+    if (objects ? app !== APPLICATION_ID : app !== 0 || version !== 0) throw new Error('SQLite connection is not an empty or recognized feature index.');
     if (objects) this.#verifySchema();
     const pageSize = Number(database.prepare('PRAGMA page_size').get()!.page_size);
     if (pageSize !== 4096) throw new Error('Feature index requires its fixed 4096-byte page size.');

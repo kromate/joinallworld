@@ -11,7 +11,8 @@ from index_writer_lock import IndexWriterLease
 
 MIB = 1024 * 1024
 DATABASE_FILES = frozenset({"features.sqlite", "features.sqlite-wal", "features.sqlite-shm",
-                            "bootstrap.sqlite", "bootstrap.sqlite-wal", "bootstrap.sqlite-shm"})
+                            "features.sqlite-journal", "bootstrap.sqlite", "bootstrap.sqlite-wal",
+                            "bootstrap.sqlite-shm", "bootstrap.sqlite-journal"})
 METADATA_FILES = frozenset({"binding.json", "binding.pending", "reservation.json", "bootstrap.json"})
 KNOWN_FILES = DATABASE_FILES | METADATA_FILES | {"writer.lock", "audit.json"}
 
@@ -60,7 +61,7 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
         if len(names) > len(KNOWN_FILES) or any(name not in KNOWN_FILES for name in names):
             raise ValueError("unknown index state is preserved; explicit recovery is required")
         for database in ["features.sqlite", "bootstrap.sqlite"]:
-            if database not in names and any(database + ending in names for ending in ["-wal", "-shm"]):
+            if database not in names and any(database + ending in names for ending in ["-wal", "-shm", "-journal"]):
                 raise ValueError("orphan index sidecar is preserved; explicit recovery is required")
         for name in sorted(names):
             descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)

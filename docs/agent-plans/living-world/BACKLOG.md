@@ -1,11 +1,11 @@
 # Living-world ranked backlog
 
-## Current priority — 9 October 2026, 07:36 UTC
+## Current priority — 9 October 2026, 07:43 UTC
 
-Source **7c203d256e417ac0f8b23f3ff9698a17418a6edd** published; exact [scoped CI](https://github.com/kromate/joinallworld/actions/runs/37899822721) IN PROGRESS. Full aaea CI is terminal failure on three Worker cases per Node version. Production remainsa44629b38be751a9ad446051564704f6c3c6ae1b; all phase exits/A1–A10 OPEN.
+Source **eebe8989e166745436328dbf2d1d9ed840cd0078** published; exact [scoped CI](https://github.com/kromate/joinallworld/actions/runs/37900259396) IN PROGRESS: policy/compiler PASS, HTTP/regressions running, Worker pending.7c failed only fixture attribute typing; repaired3400. Reviewed WORLD4e merged as builder-only with diagnostic source-pin equivalence preserved. Production remainsa44629b38be751a9ad446051564704f6c3c6ae1b; all phase exits/A1–A10 OPEN.
 
 1. Finish changed-candidate compiler, actual HTTP account/replay/erase and Worker physical-write/SQLite checks; use failure-only CPU profile to repair the actual400ms startup breach. Preserve canonical full22/24 coverage, size/provider/resource limits.
-2. Review public WORLD4e source before integration; refresh exact candidate full/build/download evidence. Current active car990tri/8draw and18 CPU checks pass, but new download/GPU/mobile evidence remains missing.
+2. Refresh exact integrated candidate full/build/download evidence; WORLD4e is reviewed and integrated. Current active car990tri/8draw and18 CPU checks pass, but new download/GPU/mobile evidence remains missing.
 3. Connect trusted mapped fleet/stop/custody producer and stock consumption, then active boarding with published actor/wardrobe fit and continuous collision/support proof. Seeded HTTP fixtures do not prove mapped gameplay.
 4. Play actual desktop/mobile, solo/multiplayer and interrupted/reloaded saves; independently review exact staging SHA; deploy accepted phase through existing controls and verify live observation/saves. WORLD retains sole shared uploader.
 5. Preserve Goalmatic contract lane: actual private access works, consented target/schema/create-upsert/revocation/observation contracts missing. Disabled adapter remains labelled. Continue evidence-backed active education, professions, civic and real-business journeys after supported slices.

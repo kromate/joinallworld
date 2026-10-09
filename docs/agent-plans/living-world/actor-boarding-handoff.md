@@ -10,6 +10,12 @@ The body manifest supplies hashes, nominal heights, bone/triangle counts and cli
 
 The fictional depot apron is authored flat gameplay support, distinguished from surveyed terrain. Its coarse street ground mask indicates support presence, not continuous height. Do not turn a clear diagnostic into live route authority.
 
+## Published diagnostic review — 9 October 2026, 07:43 UTC
+
+GRAPHICS published8fdb1407fdcaa6813a1314d98bc2403c01348514 (`codex/graphics-actor-sampler-v5`), helper `evidence/graphics-loop/actor-volume-boarding-slice-v5/sample-actor-geometry.ts`. Root verified actualCI37899816419 SUCCESS at that exactSHA. Earlier preparation text saying unrun is historical. GRAPHICS reports5/5 actual production GLB/appearance/walk/wardrobe and independent parent-to-world sole checks; Sol/Luna source review confirms useful instantaneous geometry shape, without runtime integration or swept/seat clearance.
+
+Adapter gaps: immutable identity binds only root matrix and may be reused after same-root pose/look changes; mint a same-turn pose/look/phase generation and evaluated bone/matrix snapshot. Shader SHA/cache-key inputs are host assertions; bind a private trusted registry to actual reviewed production callbacks/source. Wire actual FootContact body.parent frame (the helper accepts a supplied frame), require sole state ready separately from geometry ready, and bound vertex/triangle/time work with event-bound sampling. Entry/sit/exit/easing and fallback coverage remain missing. Graphics acknowledged these gaps and keeps source ownership; shared controller interface discussion precedes copying anything into runtime. canBoard and route authority remain false.
+
 ## Exclusive work and acceptance
 
 GRAPHICS confirmed no published envelope/boarding/contact contract. Its open draft PR23 at0595b599371f4b93663a00754af2ae1e25d2a116 is standing-foot support only, unintegrated; dirty primary contact work is not a reusable published contract. Primary dirty body/assets/scene work is preserved. Root alone integrates shared driving/route authority.

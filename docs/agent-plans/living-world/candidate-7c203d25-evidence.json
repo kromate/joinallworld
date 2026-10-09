@@ -1,9 +1,9 @@
 {
   "sourceSha": "7c203d256e417ac0f8b23f3ff9698a17418a6edd",
-  "observedAtUtc": "2026-10-09T07:35:00Z",
+  "observedAtUtc": "2026-10-09T07:43:00Z",
   "runId": 37899822721,
   "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37899822721",
-  "status": "in_progress",
+  "status": "completed",
   "accepted": false,
   "localSteering": {
     "tests": 18,
@@ -65,5 +65,14 @@
     "desktop/mobile/solo/multiplayer/interruption/save",
     "exact-SHA staging and live observation",
     "consented Goalmatic target and stable projection contract"
-  ]
+  ],
+  "conclusion": "failure",
+  "compiler": {
+    "conclusion": "failure",
+    "diagnostics": 14,
+    "code": "TS2345",
+    "cause": "vertices fixture accepts BufferAttribute only; getAttribute returns BufferAttribute|InterleavedBufferAttribute",
+    "repairCommit": "3400ce46"
+  },
+  "httpAndWorker": "skipped"
 }

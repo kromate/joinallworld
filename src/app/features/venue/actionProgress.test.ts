@@ -16,13 +16,14 @@ const fake = createFakeServer()
 let vite: ViteDevServer
 let app: App
 let bar: Component
+let rendererTransforms = 0
 const realFetch = globalThis.fetch
 const load = async <T = { default: Component }>(path: string): Promise<T> => await vite.ssrLoadModule(path) as T
 const html = (): Promise<string> => renderToString(createSSRApp({ render: () => h(bar) }))
 
 before(async () => {
   globalThis.fetch = fake.fetch
-  vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
+  vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] }, plugins: [{ name: 'observe-progress-boundary', transform(_code, id) { if (id.endsWith('/RunningActionProgress.vue')) rendererTransforms++ } }] })
   await (await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')).loadCityContent('lagos')
   app = (await load<{ useApp: () => App }>('/src/app/state/app.ts')).useApp()
   assert.equal(await app.game.connect(), true)
@@ -33,9 +34,17 @@ after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = re
 
 const run = (action: Record<string, unknown>): void => { app.game.state.value = { ...app.game.state.value, activeAction: { duration: 20, remaining: 10, ...action } } as typeof app.game.state.value }
 
+test('an idle player renders no controls and does not load the running renderer', async () => {
+  app.game.state.value = { ...app.game.state.value, activeAction: null }
+  const out = await html()
+  assert.ok(!/Current activity|Loading current activity|Try loading activity|<button|<progress/.test(out))
+  assert.equal(rendererTransforms, 0, 'idle SSR never requests the running SFC')
+})
+
 test('a trip between cities shows the rule and no Cancel button', async () => {
   run({ kind: 'intercity', id: 'ibadan' })
   const out = await html()
+  assert.ok(rendererTransforms > 0, 'an active action loads the real running renderer')
   assert.match(out, /This cannot be cancelled once started\./)
   assert.ok(!/Cancel<\/button>/.test(out), 'no Cancel to press')
   // The one thing to press is the way to arrive now.

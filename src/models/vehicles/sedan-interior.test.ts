@@ -14,7 +14,7 @@ function near(actual: number, expected: number, epsilon = 1e-6): void {
   assert.ok(Math.abs(actual - expected) <= epsilon, `${actual} differs from ${expected}`)
 }
 
-function vertices(attribute: THREE.BufferAttribute, start: number, count: number): number[] {
+function vertices(attribute: THREE.BufferAttribute | THREE.InterleavedBufferAttribute, start: number, count: number): number[] {
   const result: number[] = []
   for (let i = start; i < start + count; i += 1) result.push(attribute.getX(i), attribute.getY(i), attribute.getZ(i))
   return result

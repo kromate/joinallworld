@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "3e173080506d659ced0b0dc466dd7e308e8d5848",
+  "branch": "codex/living-world",
+  "runId": 37888565489,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37888565489",
+  "observedAt": "2026-10-09T05:27:15Z",
+  "status": "in_progress",
+  "mode": "full_checks complete Node22/24 plus Worker",
+  "jobs": {
+    "node22": {
+      "jobId": 113684050711,
+      "status": "in_progress",
+      "step": "typecheck",
+      "edge": "pending"
+    },
+    "node24": {
+      "jobId": 113684051026,
+      "status": "in_progress",
+      "step": "typecheck",
+      "edge": "pending"
+    },
+    "releasePolicy": {
+      "jobId": 113684050963,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  },
+  "priorScopedExact": "candidate-45b4fa69-evidence.json",
+  "priorScopedPasses": {
+    "ui": 419,
+    "activeLearning": 59,
+    "commerceCareer": 9,
+    "cityPagination": 29,
+    "actualWorker": 4,
+    "smoke": 15
+  },
+  "priorCompiler": "one original TS18046 evidence-array narrowing; source3e callback array fix; no exact new compiler pass yet",
+  "priorFullFailure": "candidate-511e1cf6-evidence.json",
+  "timeoutDiagnosis": "opt-in synchronous city preload and subtest start/end/sample counts; no assumption that stuck caused prior timeout",
+  "providerTimeoutMinutes": 25,
+  "matrixFailFast": false,
+  "unchangedCoverageAndBudgets": true,
+  "supersedeWhileLive": false,
+  "stagingGameplaySaveContinuity": "not accepted",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "productionSourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "routeAuthorized": false,
+  "wholeProgrammeAcceptance": false,
+  "nextAction": "Retain full process handle to terminal; diagnose/repair actual failures, then current main review/integration, admitted device/staging/save and release/live gates."
+}

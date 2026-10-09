@@ -192,8 +192,9 @@ test('the browser engine rebuilds and views every life as the full engine does, 
       loaded ||= uses;
       const holdsCampusState = CAMPUS_SLICES.some((key) => !isFreshSlice(key, (life.raw as Record<string, unknown> | null)?.[key]));
       assert.equal(result.refused, holdsCampusState && !loadedBefore ? 'CampusNotLoaded' : null, `${life.name}: a stand-in refuses what only the campus rules can rebuild`);
-      // Once the campus rules have been fetched (by an earlier life) every later view carries the campus views too.
-      if (loaded) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
+      // The first campus life is refused before its lazy rules load, so that view must still omit campus data.
+      // Only later lives have the rules available before the view is rebuilt.
+      if (loadedBefore) assert.deepEqual(result.view, fullView, `${life.name}: the view`);
       else assert.deepEqual(result.view, withoutCampus(fullView), `${life.name}: the view (the campus views arrive with the campus rules)`);
     });
     t.diagnostic(`${given.length} lives, ${given.filter((life) => needsCampusRules(life.raw)).length} using the campus, ${given.filter((life) => life.ctx.cityId === FICTIONAL_CITY_ID).length} in the test city`);

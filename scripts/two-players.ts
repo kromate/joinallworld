@@ -427,8 +427,17 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
       if (!must(huntOf(hunter).gems[index]).found) {
         if (gem.kind === 'activity') {
           assert.equal((await act(bola, 'civic.hunt-search')).code, 'activity_needed');
-          const regular = must(Object.values(NPCS).find((npc) => npc.venue === gem.venue));
-          await ok(bola, 'spot', { id: 'people' }, 'selected');
+          hunter = await ok(bola, 'spot', { id: 'people' }, 'selected');
+          // Regulars follow authored daily routines. Wait on the controlled world clock for a present regular instead of
+          // assuming the first cast member is available; the server still makes the final presence decision on the action.
+          let regular = view(hunter).social.here.map((person) => NPCS[person.id]).find((npc) => npc?.venue === gem.venue);
+          for (let quarter = 0; !regular && quarter < 96 && huntOf(hunter).day === huntDay; quarter++) {
+            wait(15 * 60 * 1000);
+            if (lagosTime(time).day !== huntDay) break;
+            hunter = await life(bola);
+            regular = view(hunter).social.here.map((person) => NPCS[person.id]).find((npc) => npc?.venue === gem.venue);
+          }
+          assert.ok(regular, `a regular is present at ${gem.venue} before this Lagos day ends`);
           const hello = await ok(bola, 'activity', { id: `npc-${regular.id}-hello` }, 'started');
           wait(must(hello.activeAction).duration * 1000);
         } else {

@@ -228,9 +228,11 @@ test('RELEASE GATE: idle → zero frames; walking → frames; after arrival → 
     // A key is held: frames, one render each, and the avatar moves away from the camera.
     bench.key('walk-up');
     assert.equal(world.diagnostics().loop.running, true);
-    assert.equal(bench.pump(30), 30, 'walking: a frame every tick');
+    // At WALK_SPEED 1.82, 30 frames (0.5 s) allow at most 0.91 m; the >1.5 m
+    // displacement check needs a 60-frame (1 s) hold, allowing at most 1.82 m.
+    assert.equal(bench.pump(60), 60, 'walking: a frame every tick');
     const walking = world.diagnostics();
-    assert.equal(walking.renderCount, idle.renderCount + 30, 'walking: exactly one render per frame');
+    assert.equal(walking.renderCount, idle.renderCount + 60, 'walking: exactly one render per frame');
     assert.ok(walking.avatar.moving && walking.avatar.mode === 'keys');
     assert.ok(walking.avatar.z < idle.avatar.z - 1.5, `W moved the avatar away from the camera (${idle.avatar.z} → ${walking.avatar.z})`);
     // Released: the avatar stops, the camera finishes easing after it, and the loop ends by itself.
@@ -352,7 +354,9 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
   try {
     const { world } = bench;
     world.setState(PARK);
-    const hold = (action: string, frames = 10, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
+    // Ten 16 ms frames produced only 0.35 m in CI; hold 24 frames (0.384 s)
+    // so the unchanged >0.6 m direction checks have room at WALK_SPEED 1.82.
+    const hold = (action: string, frames = 24, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
     // The park camera looks from the front right (+x, +z): away is −x −z, the camera's right is +x −z.
     const yaw = world.diagnostics().camera.yaw;
     const away = [-Math.sin(yaw), -Math.cos(yaw)], right = [Math.cos(yaw), -Math.sin(yaw)];
@@ -368,7 +372,7 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
     world.walkTo(6, 4); bench.pump(2000);
     const walk = hold('walk-up');
     world.walkTo(6, 4); bench.pump(2000);
-    const jog = hold('walk-up', 10, true);
+    const jog = hold('walk-up', 24, true);
     assert.ok(Math.hypot(jog.dx, jog.dz) > Math.hypot(walk.dx, walk.dz) * 1.5, 'Shift jogs');
     // Rotate the camera: the same key follows the camera.
     bench.send('pointerdown', { clientX: 400, clientY: 300 }); bench.send('pointermove', { clientX: 150, clientY: 300 }); bench.send('pointerup', {});
@@ -552,7 +556,9 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     assert.equal(spawn.camera.limits.azimuth, null, 'the camera may orbit all the way round the room');
     assert.deepEqual(spawn.walls, { back: true, left: true }, 'from the composed view both walls are behind the room and showing');
     assert.ok(spawn.avatar.x < -4, 'the avatar appears by the door');
-    bench.key('walk-right'); bench.pump(30); bench.keyUp('walk-right'); bench.pump(400);
+    // A home tile is 10/8 = 1.25 m and its walk scale is 1.25 * 0.72 = 0.9.
+    // At 16 ms/frame, 30 frames cover at most 0.786 m; 32 cover 0.839 m for >0.8.
+    bench.key('walk-right'); bench.pump(32); bench.keyUp('walk-right'); bench.pump(400);
     const moved = world.diagnostics().avatar;
     assert.ok(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) > 0.8, 'walks in the room');
     assert.equal(world.diagnostics().loop.running, false);

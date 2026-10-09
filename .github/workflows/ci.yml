@@ -126,7 +126,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: HTTP authority, account continuity, privacy and reply checks
+      - name: Programme authority, continuity and scoped regression checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           server/living-world/rental-service.test.ts
@@ -136,6 +136,17 @@ jobs:
           server/living-world/clerk-service.test.ts
           server/living-world/clerk-privacy.test.ts
           src/app/features/living-world/clerkReply.test.ts
+          src/client.test.ts
+          src/campus/unilag/client.integration.test.ts
+          server/new-player.test.ts
+          server/two-players.test.ts
+          src/game/economy.test.ts
+          src/game/browser-profile.test.ts
+          src/game/character.test.ts
+          src/game/cities/legacyLife.test.ts
+          src/game/cities/liveBuildLife.test.ts
+          src/scene/movement.test.ts
+          src/venue-world.test.ts
           src/app/features/living-world/rentalReply.test.ts
           src/game/living-world/parcel.test.ts
           src/game/living-world/fleet.test.ts

@@ -89,10 +89,12 @@ test('the walker moves relative to the camera, normalises diagonals, jogs, turns
   walker.input(0, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
   assert.ok(near(walker.x, 0) && near(walker.z, -WALK_SPEED * 0.5, 1e-3), 'W walks away from the camera');
   assert.ok(Math.abs(turnTowards(walker.ry, Math.PI)) < 0.05, 'the avatar faces where it walks');
-  walker.place(0, 0, 0); walker.input(-1, 0); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
+  // At WALK_SPEED 1.82, a 30-frame (0.5 s) hold can cover only 0.91 m;
+  // hold for 75 frames (1.25 s, at most 2.275 m) for the existing >2 m assertion.
+  walker.place(0, 0, 0); walker.input(-1, 0); for (let i = 0; i < 75; i++) walker.step(1 / 60, 0);
   assert.ok(walker.x < -2 && near(walker.z, 0), 'A walks to the camera’s left');
   // Camera turned a quarter (it now looks along −x): the same keys follow it.
-  walker.place(0, 0, 0); walker.input(0, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, Math.PI / 2);
+  walker.place(0, 0, 0); walker.input(0, 1); for (let i = 0; i < 75; i++) walker.step(1 / 60, Math.PI / 2);
   assert.ok(walker.x < -2 && near(walker.z, 0, 1e-6), 'forward is always away from the camera');
   // Diagonals are no faster than straight lines; jogging is.
   walker.place(0, 0, 0); walker.input(-1, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);

@@ -538,6 +538,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const first = await fetchCurrentLife(client.cityId, current);
       if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id))) return false
       client.ready = true; client.link = 'online';
+      // Initial accept() runs before readiness; start visible polling once the connection is usable.
+      schedule();
       holdCity(client.cityId);
       status('Connected · progress saved');
       return true;

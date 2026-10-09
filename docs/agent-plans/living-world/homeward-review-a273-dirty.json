@@ -1,0 +1,132 @@
+{
+  "recordedAt": "2026-10-09T16:09:45.751813+00:00",
+  "previousTurnClassification": "no progress: user status report; this continuation revalidated current state and produced new actionable review findings",
+  "basePublishedSha": "a2730cacb05c494baf6d443467efee8d78d4b8c5",
+  "sourceState": "unpublished owner edits; hashes below are review snapshot, not exact test-source binding or release acceptance",
+  "sourceHashes": {
+    "src/game/systems/homeward.ts": "431699b127be00194ce7e2d91e6ed0d74bea3acff6d4a94e00b748ccc9dfb05d",
+    "src/game/homeward.test.ts": "38c4aae8207403d9fa2b0da789510fdbe5a5c0293c322ec3985daee7cc30eb53",
+    "src/game/systems/goals.ts": "218bfc8eae80aed4ffaf546a73fd9814c04054396fc99622bdb497f1604bd1a2",
+    "src/game/systems/estate.ts": "5e7dcb7804ba1677d6dea8e5347fd1608e3e9bad52d9fce60623ab0713d5d0c2",
+    "src/game/systems/wallet.ts": "bdbb8946be389b4ce8ba7ee2249b9fece88af486c61248cae02456c50f8127d5",
+    "src/game/registry.ts": "297ba2aaf32a8fa08ec48b736b236836692cc9f8a61147a2d0278688ebbd0334",
+    "src/app/features/travel/HomewardOffer.vue": "3db6730095d75c1167e1d9b0fb4347e4723fc80d1bf55f865f5136b410a6a013",
+    "src/app/features/travel/VisitorHome.vue": "77a678209e0b731806d0772737a9ea619991fb8fb0d1450a360da5d74c832552",
+    "src/app/features/relief/ReliefActions.vue": "66733b8ebbcdf8ac3d449c0d33f4393c1e478bdc94e978fcc60994d73212fb09",
+    "src/app/features/venue/RunningActionProgress.vue": "f3255c341839c30c0cf1e45aaf6f6766a258a1dbe611b27d496c025e7ed7dbeb",
+    "src/app/App.vue": "1e4d0b2013bf5eb18ca43c9e009579fb054048ceadd71fe67f31266c271bbe8b"
+  },
+  "engineChecks": {
+    "tests": 41,
+    "pass": 41,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 2754.339417,
+    "runtime": "Node24.19.0, heap256MiB, concurrency1",
+    "log": "/tmp/allworld-homeward-engine-repair.log",
+    "logSha256": "cd750c3e98f657f2a6e137d34e3bbd7d87d9399a7a94afd5996a38efc8e6feda",
+    "ownerCommandId": "exec-eb084ca2-f00f-4adb-a92d-8565e64a6c94",
+    "ownerCommandExitCode": 0,
+    "covers": {
+      "planner": 8,
+      "airport": 1,
+      "homeward": 6,
+      "engineTypes": 26
+    },
+    "doesNotProve": [
+      "server actionOnce and stored-row rollback",
+      "Node/Worker HTTP restart",
+      "native mobile/desktop readability",
+      "startup budgets",
+      "whole candidate acceptance"
+    ]
+  },
+  "broaderRecovery": {
+    "session": 29924,
+    "observedLivePids": [
+      14765,
+      14776,
+      14844
+    ],
+    "observedAt": "2026-10-09T16:04:32Z",
+    "partialFailure": "What you can do now help fixture expects legacy direct-trip offer",
+    "state": "terminal failed, live handles absent at subsequent observation",
+    "tests": 58,
+    "pass": 57,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 277965.65575,
+    "log": "/tmp/allworld-homeward-recovery-all.log",
+    "logSha256": "e2615ff73acfbd806ff390d8d3c07631320457048a670455205489a71dcc9240",
+    "passedScope": "45 city samples, existing3000 normal states and negative-control loops; does not establish all possible states or HTTP authority",
+    "fixtureRepair": "Original direct to assertion migrated to journey. First replacement wrongly expected absent ReliefAction.type/payload; owner corrected to actual journey contract. Retest still pending."
+  },
+  "findings": [
+    {
+      "priority": "P0",
+      "id": "homeward-transient-net-worth-reward",
+      "state": "actual Node24 reproduced, unaccepted; Integration preparing repair",
+      "path": "homeward.accept credit -> wallet.record -> registry.emit synchronous -> goals.handle -> checkDream before ticket debit/setRideDebt",
+      "acceptance": "Near-threshold fictional net worth cannot complete dream or grant permanent reward from borrowed advance; ordinary earned progress and formal/ride liabilities preserved."
+    },
+    {
+      "priority": "P1",
+      "id": "legacy-direct-credit-consent-drift",
+      "state": "source-confirmed in VisitorHome and ReliefActions fallback branches",
+      "acceptance": "Actor/city/destination/mode/fare changes require fresh consent; no client consent implies server fare-race safety without a binding contract; retain accepted legacy readers/receipts."
+    },
+    {
+      "priority": "P1",
+      "id": "uncertain-original-ticket-terms",
+      "state": "replay retains original intent; UI hides terms yet asks to check them",
+      "acceptance": "Display exact validated held terms or explicitly say they are unavailable and reconcile the original request before new booking."
+    },
+    {
+      "priority": "P1",
+      "id": "trusted-server-ticket-preservation",
+      "state": "engine reconstruction passes; server transaction/restart proof pending owner private acceptance patch",
+      "acceptance": "Same intent/restart pays once; malformed trusted ticket rejects before persisted row replacement in Node and Worker."
+    },
+    {
+      "priority": "P1",
+      "id": "mobile-current-connection",
+      "state": "source current leg and no-cancel fixed; inherited nowrap can truncate meaningful information",
+      "acceptance": "Native mobile shows leg number, destination and controls without obstruction."
+    }
+  ],
+  "startupReview": {
+    "patchSha256": "7a100eee5ea727898703f42af79dfc01bc0018ca8a227014d956e89e54ddf65c",
+    "applyCheck": "pass against current App.vue",
+    "status": "unapplied, savings unmeasured",
+    "risk": "4270 added source bytes versus4001 historical pre-minifier rendered units removed; incomparable units and compression/chunk dependencies prohibit a savings claim",
+    "nextOptionalBoundary": "ToastStack pure renderer only when eager toasts queue nonempty; keep controller/timers/audio/queue/current readable fallback/Teleport host eager",
+    "rejectedAsNewBoundaries": "Calls/Ping/Notice/Tour and Sheet/Venue bodies are already lazy; eager listeners must not be lost"
+  },
+  "models": {
+    "luna_driving": "parent-bound session latest16:00:23 gpt-6-luna/high",
+    "luna_journeys": "parent-bound session latest16:00:31 gpt-6-luna/high"
+  },
+  "release": {
+    "programmeDeployed": false,
+    "goalmaticDeployed": false,
+    "lastHealth": "2026-10-09T15:59:12Z",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "healthIsGameplayProof": false
+  },
+  "remaining": "Full phases1-5/A1-A10, physical journey, real-business and live Goalmatic remain open.",
+  "wealthReproduction": {
+    "state": "actual owner Node24 reproduction failed",
+    "tests": 27,
+    "pass": 25,
+    "fail": 2,
+    "skipped": 0,
+    "log": "/tmp/allworld-homeward-wealth-reproduction.log",
+    "logSha256": "f75f6de86cfe80600a3f6ce181641a01cafdf16c2e698c813839d67d484b31ef",
+    "runtimeFailure": "temporary loan advance completed wealth dream: actualtrue/expectedfalse",
+    "otherFailure": "Root suggested nonexistent ReliefAction.type/payload assertion; owner corrected fixture to real journey contract",
+    "solCorrection": "Incorrect fixture-shape assumption acknowledged; no runtime source change by Root. Acceptance uses actual ReliefAction.journey rather than invented fields.",
+    "durationMs": 7658.440459
+  },
+  "regressionProposal": "Luna stopped and removed duplicate temp case after seeing owner already authored it; no duplicate/shared source edits",
+  "reviewCaution": "A direct reason-only checkDream suppression can miss nested progressChain reward wallet events while cash is temporarily elevated. Preserve observer semantics and standing formula; evaluate paired final-wallet observability or scoped nested-event-safe treatment."
+}

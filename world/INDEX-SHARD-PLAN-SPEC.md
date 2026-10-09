@@ -85,6 +85,21 @@ plan must fail that original pin.
 
 ## Required runtime admission follow-up
 
+The separately accepted v2 binding codec represents `shardId` as a SHA-256
+fingerprint, not the planner's prefixed display identifier. Derive it by hashing
+the ASCII bytes of the complete `shard-NNN-<hash>` ID. Its `membershipHash` is
+SHA-256 of the canonical ordered `shard.requestHashes` array; `planHash` is the
+hash of the complete canonical plan, and `baseIndexBindingHash` is the hash of
+the unchanged canonical v1 bytes. The plan's global `membershipSha256` instead
+hashes the full ordered request objects. These different hashes must not be
+interchanged or derived by stripping an ID prefix. The Python runtime validator
+must recompute every partition and identifier before deriving reservations.
+Its admission contract rejects empty plans and checks base source/tooling pins
+and physical reservation headroom in addition to the pure planner's bounds.
+The runtime validator and bounded transport pass the complete exact-source
+run37898985723; see [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md).
+These primitives do not execute admission.
+
 Prepared descriptor sizes and envelope overhead are frozen planning allowances,
 not evidence that the real worker input fits. Before admission, reconstruct exact
 capture expectations, raw byte pins and canonical contexts; recompute ASCII/base64

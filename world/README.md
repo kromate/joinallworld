@@ -1,5 +1,15 @@
 # Independent world-data builder
 
+Latest complete-plan transport/semantic-validation milestone passes **432 tests,
+three policy checks and World TypeScript** on exact source019f9179/run37898985723.
+See [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md) and its acceptance
+receipt. A complete 2MiB plan transfers within the unchanged limits; actual
+TS/Python comparison covers all4096 requests and every derived binding. Source
+consolidation retains the original1MiB control ceiling. Connected batch/root
+admission and finite global accounting remain next, followed by country geometry,
+streaming and gameplay/rendering integration. No new runtime/map detail is released
+by this source phase. Older checkpoint paragraphs below are historical.
+
 Current campaign audit/session integration, bounded shard-plan codec, atomic
 opaque reservations and separate v2 binding codecs pass413 tests, three
 release-policy checks and World TypeScript on exact sourcecb562c69/run37895287687.

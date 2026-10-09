@@ -1,12 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { EventEmitter } from 'node:events';
 import { canonicalJson, sha256 } from './pack.ts';
 import { featureIndexObservationPin } from './feature-index.ts';
 import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import { parseFeatureIndexSessionLine, validateFeatureIndexSessionDone, validateFeatureIndexSessionReady,
   validateFeatureIndexSessionResult, prepareFeatureIndexSessionConfiguration, prepareFeatureIndexSessionAudit,
   validateFeatureIndexSessionAuditResult, parseOwnedPythonRssSample,
-  prepareFeatureIndexShardBinding, validateFeatureIndexShardBinding } from './feature-index-session.ts';
+  prepareFeatureIndexShardBinding, validateFeatureIndexShardBinding,
+  isExactEmptyOwnedPythonRssResult, isZeroOwnedPythonRssCandidate,
+  isOwnedPythonZeroRssResult,
+  confirmOwnedPythonCloseAfterEmptyRssSample } from './feature-index-session.ts';
 import { assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest } from './feature-index-session.ts';
 
 const hash = 'a'.repeat(64);
@@ -29,13 +33,102 @@ test('owned Python RSS parser accepts only a bounded one-row sample and permits 
   assert.equal(parseOwnedPythonRssSample('0 Z+'), 0);
   assert.equal(parseOwnedPythonRssSample('0 Zs+\n'), 0);
   assert.throws(() => parseOwnedPythonRssSample('0 S'), /zombie/i);
+  assert.equal(isZeroOwnedPythonRssCandidate('0 Rs '), true);
+  assert.equal(isZeroOwnedPythonRssCandidate('0 Z'), false);
+  assert.equal(isZeroOwnedPythonRssCandidate('1 Rs'), false);
+  assert.equal(isZeroOwnedPythonRssCandidate('0 ?'), false);
+  assert.equal(isZeroOwnedPythonRssCandidate(`${'0'.repeat(257)} R`), false);
+  assert.equal(isOwnedPythonZeroRssResult(null, '0 Rs ', ''), true);
+  assert.equal(isOwnedPythonZeroRssResult({ code: 2, signal: null }, '0 Rs ', ''), false);
+  assert.equal(isOwnedPythonZeroRssResult({ code: 1, signal: 'SIGKILL' }, '0 Rs ', ''), false);
+  assert.equal(isOwnedPythonZeroRssResult({ code: 1, signal: null, killed: true }, '0 Rs ', ''), false);
+  assert.equal(isOwnedPythonZeroRssResult(null, '0 Rs ', 'ps warning'), false);
+  assert.equal(isOwnedPythonZeroRssResult(null, '1 Rs ', ''), false);
   assert.throws(() => parseOwnedPythonRssSample('-1 Z'), /malformed/i);
   assert.throws(() => parseOwnedPythonRssSample('9007199254740992 R'), /integer bound/i);
   assert.throws(() => parseOwnedPythonRssSample('12 R\n13 S\n'), /one process row/i);
+  assert.throws(() => parseOwnedPythonRssSample(''), /malformed/i);
+  assert.throws(() => parseOwnedPythonRssSample('   '), /malformed/i);
   assert.throws(() => parseOwnedPythonRssSample('12 ?'), /malformed/i);
   assert.throws(() => parseOwnedPythonRssSample('0 Zgarbage'), /malformed/i);
   assert.throws(() => parseOwnedPythonRssSample('12 R0'), /malformed/i);
   assert.throws(() => parseOwnedPythonRssSample(`${'9'.repeat(257)} Z`), /output bound/i);
+});
+
+test('only exact empty ps output with success or native exit one is a missing-row candidate', () => {
+  assert.equal(isExactEmptyOwnedPythonRssResult(null, '', ''), true);
+  assert.equal(isExactEmptyOwnedPythonRssResult({ code: 1, signal: null }, '', ''), true);
+  assert.equal(isExactEmptyOwnedPythonRssResult({ code: 2, signal: null }, '', ''), false);
+  assert.equal(isExactEmptyOwnedPythonRssResult({ code: 1, signal: 'SIGKILL' }, '', ''), false);
+  assert.equal(isExactEmptyOwnedPythonRssResult({ code: 1, signal: null, killed: true }, '', ''), false);
+  assert.equal(isExactEmptyOwnedPythonRssResult(null, ' ', ''), false);
+  assert.equal(isExactEmptyOwnedPythonRssResult(null, '', 'ps warning'), false);
+});
+
+function fakeOwnedChild() {
+  const events = new EventEmitter();
+  const stdout = Object.assign(new EventEmitter(), { closed: false });
+  const stderr = Object.assign(new EventEmitter(), { closed: false });
+  const stdin = Object.assign(new EventEmitter(), { destroyed: false });
+  const state = { exitCode: null as number | null, signalCode: null as NodeJS.Signals | null };
+  Object.defineProperties(events, {
+    pid: { value: 4321, enumerable: true },
+    exitCode: { get: () => state.exitCode, enumerable: true },
+    signalCode: { get: () => state.signalCode, enumerable: true },
+    stdout: { value: stdout, enumerable: true }, stderr: { value: stderr, enumerable: true }, stdin: { value: stdin, enumerable: true },
+  });
+  const child = events as never;
+  let closedAt: number | undefined;
+  return {
+    child,
+    closedAt: () => closedAt,
+    close(code: number | null, signal: NodeJS.Signals | null = null, closePipes = true) {
+      state.exitCode = code; state.signalCode = signal;
+      if (closePipes) { stdout.closed = true; stderr.closed = true; stdin.destroyed = true; }
+      closedAt = Date.now(); events.emit('close', code, signal);
+    },
+  };
+}
+
+test('empty RSS row waits for owned ChildProcess close and rejects a child that never closes within the original sample deadline', async () => {
+  const delayed = fakeOwnedChild();
+  const started = Date.now();
+  assert.equal(isZeroOwnedPythonRssCandidate('0 Rs '), true);
+  assert.throws(() => parseOwnedPythonRssSample('0 Rs '), /zombie/i);
+  setTimeout(() => delayed.close(0), 20);
+  await confirmOwnedPythonCloseAfterEmptyRssSample(delayed.child, started, delayed.closedAt);
+
+  const interrupted = fakeOwnedChild();
+  const interruptedStarted = Date.now();
+  interrupted.close(1);
+  await confirmOwnedPythonCloseAfterEmptyRssSample(interrupted.child, interruptedStarted, interrupted.closedAt);
+
+  for (const [code, signal, closePipes, expected] of [
+    [2, null, true, /normal or interrupted terminal/i],
+    [null, 'SIGTERM', true, /normal or interrupted terminal/i],
+    [0, null, false, /normal or interrupted terminal/i],
+  ] as const) {
+    const invalid = fakeOwnedChild();
+    const invalidStarted = Date.now();
+    setTimeout(() => invalid.close(code, signal, closePipes), 1);
+    await assert.rejects(confirmOwnedPythonCloseAfterEmptyRssSample(invalid.child, invalidStarted, invalid.closedAt), expected);
+  }
+
+  const late = fakeOwnedChild();
+  const lateStarted = Date.now() - 1001;
+  late.close(0);
+  await assert.rejects(confirmOwnedPythonCloseAfterEmptyRssSample(late.child, lateStarted, late.closedAt), /sample deadline/i);
+
+  const noTimestamp = fakeOwnedChild();
+  const noTimestampStarted = Date.now();
+  setTimeout(() => noTimestamp.close(0), 1);
+  await assert.rejects(confirmOwnedPythonCloseAfterEmptyRssSample(noTimestamp.child, noTimestampStarted), /timestamp/i);
+
+  const never = fakeOwnedChild();
+  const keeper = setTimeout(() => {}, 100);
+  try {
+    await assert.rejects(confirmOwnedPythonCloseAfterEmptyRssSample(never.child, Date.now() - 990, never.closedAt), /deadline/i);
+  } finally { clearTimeout(keeper); }
 });
 
 test('pure report parsing and matching hash-shaped JSON cannot create an actual audit proof', () => {

@@ -9,6 +9,7 @@ import { WebSocket } from 'ws'
 import test from 'node:test'
 import { fixture } from '../server/test-fixture.ts'
 import { money } from '../src/app/ui/format.ts'
+import { DEFAULT_LOOK } from '../src/game/content/traits.ts'
 
 const LIMIT_MS = 120_000
 const PAGE_WAIT_MS = 12_000
@@ -212,7 +213,17 @@ class BrowserPage {
       const wallet=document.querySelector('.hud-cash');
       const lesson=document.querySelector('.teaching-shift');
       const rect=wallet?.getBoundingClientRect();
-      return Boolean(wallet && wallet.textContent.trim() === ${expectedCash} && rect?.width > 0 && rect?.height > 0${requireNoTeaching}${requireStage}${requireRetry});
+      const visible=(node) => {
+        if (!node) return false;
+        const r=node.getBoundingClientRect(), s=getComputedStyle(node);
+        if (r.width <= 0 || r.height <= 0 || s.display === 'none' || s.visibility !== 'visible' || Number(s.opacity) <= 0
+          || r.left < 0 || r.top < 0 || r.right > innerWidth || r.bottom > innerHeight) return false;
+        const top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+        return Boolean(top && (top === node || node.contains(top)));
+      };
+      const choices=lesson ? [...lesson.querySelectorAll('.teaching-shift__choice')] : [];
+      const controlsReady=!lesson || (choices.length === 3 && choices.every(visible));
+      return Boolean(wallet && wallet.textContent.trim() === ${expectedCash} && visible(wallet) && controlsReady${requireNoTeaching}${requireStage}${requireRetry});
     })()`, message)
   }
 
@@ -238,9 +249,11 @@ class BrowserPage {
         localRoot: location.origin === ${JSON.stringify(this.origin)} && location.pathname === '/',
         appRoot: visible('#life-overlay'),
         lesson: visible('.teaching-shift'),
+        lessonChoiceCount: Math.min(3, document.querySelectorAll('.teaching-shift__choice').length),
         progressStatus: visible('[role="status"]'),
         activityLoadFailure: visible('.life-progress-load-error'),
         balance: visible('.hud-cash'),
+        characterCreator: visible('.cr-panel'),
         quickStart: visible('[data-key="play-now"], [data-qs="play"]'),
         sessionStart: visible('[data-session-new]'),
         connectionAlert: visible('[role="alert"]'),
@@ -264,6 +277,11 @@ class BrowserPage {
       const button = [...document.querySelectorAll('.teaching-shift__choice')].find(node => node.textContent.trim() === ${encoded});
       if (!button || button.disabled) return null;
       const r = button.getBoundingClientRect();
+      const style=getComputedStyle(button);
+      if (r.width <= 0 || r.height <= 0 || r.left < 0 || r.top < 0 || r.right > innerWidth || r.bottom > innerHeight
+        || style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) <= 0) return null;
+      const top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+      if (!top || (top !== button && !button.contains(top))) return null;
       return {x:r.x+r.width/2,y:r.y+r.height/2,width:r.width,height:r.height};
     })()`)
     requireCondition(value && Number.isFinite(value.x) && Number.isFinite(value.y), 'expected rendered lesson choice was not available')
@@ -293,7 +311,15 @@ class BrowserPage {
     }, this.sessionId)
     let focused = false
     for (let index = 0; index < 180; index++) {
-      if (await this.evaluate(`document.activeElement?.matches('.teaching-shift__choice') && document.activeElement.textContent.trim() === ${encoded}`)) {
+      if (await this.evaluate(`(() => {
+        const node=document.activeElement;
+        if (!node?.matches('.teaching-shift__choice') || node.textContent.trim() !== ${encoded}) return false;
+        const r=node.getBoundingClientRect(), s=getComputedStyle(node);
+        if (r.width <= 0 || r.height <= 0 || r.left < 0 || r.top < 0 || r.right > innerWidth || r.bottom > innerHeight
+          || s.display === 'none' || s.visibility !== 'visible' || Number(s.opacity) <= 0) return false;
+        const top=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+        return Boolean(top && (top === node || node.contains(top)));
+      })()`)) {
         focused = true
         break
       }
@@ -329,16 +355,33 @@ async function life(f, cookie) {
 }
 
 async function setupTeacher(f, name) {
-  const device = await f.device(name)
+  const created = await f.request('/api/session', { name, onboarding: true })
+  requireCondition(created.status === 200, 'fixture could not create an ordinary onboarding session')
+  const cookie = created.headers.get('set-cookie')
+  requireCondition(typeof cookie === 'string', 'onboarding session did not issue its fixture cookie')
+  const device = { ...(await created.json()).session, cookie: cookie.split(';')[0] }
+  const before = await life(f, device.cookie)
+  requireCondition(before.state?.onboarding?.required === true && before.state?.onboarding?.done === false,
+    'fixture teacher did not begin in the authored character-creation flow')
+  requireCondition(before.state?.location === 'park', 'new Lagos fixture teacher did not arrive at Freedom Park')
   for (const action of [
+    { type: 'onboarding.look', payload: { look: DEFAULT_LOOK } },
+    { type: 'onboarding.traits', payload: { traits: ['clean-pikin', 'musical'] } },
+    { type: 'onboarding.dream', payload: { dream: 'afrobeats-star' } },
+    { type: 'onboarding.lottery', payload: {} },
+    { type: 'onboarding.home', payload: { lga: 'ikeja', via: 'manual', stay: true } },
     { type: 'apply-job', payload: { id: 'teaching' } },
     { type: 'spot', payload: { id: 'work' } },
     { type: 'activity', payload: { id: 'teaching-shift' } },
   ]) {
     const outcome = await f.action(device.cookie, action)
-    requireCondition(outcome.ok === true, 'authored teaching activity setup was refused')
+    requireCondition(outcome.ok === true, `authored onboarding or teaching setup was refused (${action.type})`)
   }
   const current = await life(f, device.cookie)
+  requireCondition(current.state?.onboarding?.required === false && current.state?.onboarding?.done === true,
+    'fixture teacher did not finish the authored character-creation flow')
+  requireCondition(current.state?.location === 'park' && current.state?.spot === 'work',
+    'fixture teacher did not remain at the Freedom Park workplace')
   requireCondition(current.state?.activeAction?.teaching?.stage === 'diagnose', 'server did not create the authored teaching session')
   return { device, starting: current.state }
 }
@@ -429,6 +472,19 @@ test('rendered teaching practice survives interruption and settles one wage on d
   const measurements = {}
   const screenshots = []
   let failureObservation = null
+  let failureScreenshotWritten = false
+  const captureFailure = async (page) => {
+    if (failureObservation) return
+    failureObservation = await page.failureObservation().catch(() => ({ runtimeExceptions: page.exceptionCount }))
+    if (failureScreenshotWritten) return
+    failureScreenshotWritten = true
+    const safePhase = /^[a-z0-9-]{1,48}$/.test(phase) ? phase : 'unknown'
+    const name = `failure-${safePhase}.png`
+    try {
+      await page.screenshot(name)
+      if (!screenshots.includes(name)) screenshots.push(name)
+    } catch { /* static receipt diagnostics remain useful without a capture */ }
+  }
   try {
   requireCondition(Boolean(process.env.LW_QA_OUTPUT_DIR), 'set LW_QA_OUTPUT_DIR to a disposable artifact directory')
   const relativeOutput = resolve(OUTPUT).startsWith(`${root}/`) || resolve(OUTPUT) === root
@@ -462,14 +518,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
   const browser = await startBrowser(t, CHROME)
   browserVersion = browser.version
   phase = 'desktop-render'
-  const captureDesktopFailure = async (page) => {
-    failureObservation = await page.failureObservation().catch(() => ({ runtimeExceptions: page.exceptionCount }))
-    try {
-      await page.screenshot('failure-desktop-render.png')
-      if (!screenshots.includes('failure-desktop-render.png')) screenshots.push('failure-desktop-render.png')
-    } catch { /* a bounded static diagnostic remains useful if the surface cannot be captured */ }
-  }
-  const appPage = await browser.page(f.base, desktopTeacher.device.cookie, false, captureDesktopFailure)
+  const appPage = await browser.page(f.base, desktopTeacher.device.cookie, false, captureFailure)
   try {
     await appPage.page.wait("document.querySelector('.teaching-shift') !== null", 'the rendered Teaching controls did not appear')
     await appPage.page.waitRendered({ cash: desktopCash, stage: '1 · Notice the learner’s idea' }, 'desktop app hydration did not show the active lesson and server balance')
@@ -527,7 +576,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
     'completed desktop reload duplicated or lost the terminal wage')
     measurements.desktop = desktopView
   } catch (error) {
-    if (phase === 'desktop-render') await captureDesktopFailure(appPage.page)
+    await captureFailure(appPage.page)
     throw error
   } finally {
     await browser.closePage(appPage)
@@ -539,7 +588,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
     && unchangedMobile.activeAction?.teaching?.stage === 'diagnose', 'desktop actor changed the independent mobile teacher')
 
   phase = 'mobile-render'
-  const mobilePage = await browser.page(f.base, mobileTeacher.device.cookie, true)
+  const mobilePage = await browser.page(f.base, mobileTeacher.device.cookie, true, captureFailure)
   try {
     await mobilePage.page.waitRendered({ cash: mobileBefore.cash, stage: '1 · Notice the learner’s idea' }, 'mobile app hydration did not show the active lesson and server balance')
     await mobilePage.page.screenshot('teaching-mobile-before.png')
@@ -577,6 +626,9 @@ test('rendered teaching practice survives interruption and settles one wage on d
     const afterReload = (await life(f, mobileTeacher.device.cookie)).state
     requireCondition(afterReload.activeAction === null && afterReload.cash === mobileState.cash
       && afterReload.ledger.filter(row => row.amount === 3000).length === 1, 'mobile completed reload duplicated the wage')
+  } catch (error) {
+    await captureFailure(mobilePage.page)
+    throw error
   } finally {
     await browser.closePage(mobilePage)
     await browser.close()

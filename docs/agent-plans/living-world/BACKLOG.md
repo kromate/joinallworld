@@ -1,12 +1,12 @@
 # Living-world ranked backlog
 
-## Current finite repair batch - 2026-10-09T15:14:00Z
+## Current finite repair batch - 2026-10-09T15:56:00Z
 
 Exact c42 is terminal FAILURE; owner source3c is untested. [Evidence](candidate-c42a06b5-evidence.json), [source review and acceptance criteria](candidate-c42a06b5-review.json). Integration owns runtime/test/contract assembly; WORLD owns geography packet and release upload; Root and two verified Luna lanes have only read-only diagnosis ownership.
 
 1. Repair actual foreign multi-hop recovery. Prove a cashless visitor with a nonairport original home can recover through real routes, including interrupted hub/reload/restart, without stacked debt, invented roads, home loss or duplicate credits/rewards. Astra reviews authority before acceptance.
 2. Clear exact compiler/startup/provider gates. Keep all three download caps and25-minute limits unchanged, use measured emitted graph attribution, and complete exhaustive Node22/24 checks. Preserve the official cancelled c42 handle; no unchanged retries or dropped cases.
-3. Repair current-route airport caption, fictional NPC names and bounded relevant companion input. Preserve saved IDs, privacy instructions and the existing input limit. Keep available/preview semantics and authentic fictional/real-business boundaries.
+3. Adopted scoped milestonea273 now repairs fictional NPC names and bounded relevant companion input; separate airport caption owner CIbe3067 passes. Preserve IDs/privacy/limits and verify these together on the next final SHA. Root-reviewed conditional Community/Link renderer patch is handed off; startup savings remain unmeasured.
 4. Repair direct-road fixture setup with actual multi-hop paths and isolated fixture fare funding. Retain every-city table/cast/relief coverage, exact fares/skips/ledgers, topology and dead-end proofs; preserve generic foreign meal fallback without inventing cuisine.
 5. Freeze the accepted changed candidate, independently review native desktop/mobile and ordinary OFF Worker staged journeys/recovery, seal and deploy through WORLD, then verify exact live build/gameplay/save continuity. Continue teaching activation and queued physical journey phases after this accepted unit.
 

@@ -1,14 +1,14 @@
 # Phases, tests and release sessions
 
-## Current exact-source acceptance - 2026-10-09T15:14:00Z
+## Current exact-source acceptance - 2026-10-09T15:56:00Z
 
-Candidate `c42a06b5fc4442cea748afeb132027524174dbd3` is terminal FAILURE. [Exact receipt](candidate-c42a06b5-evidence.json) and [independent review](candidate-c42a06b5-review.json) supersede older current/live statements. Both full Workers154/154pass, UI/host partitions pass; fullNode24 has13failures/4existing skips; fullNode22 exceeds the unchanged25-minute limit and lacks a full summary. Compiler and three startup budgets fail. Owner repairs `3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6` are source-reviewed only.
+Candidate `c42a06b5fc4442cea748afeb132027524174dbd3` is terminal FAILURE. [Exact receipt](candidate-c42a06b5-evidence.json) and [independent review](candidate-c42a06b5-review.json) supersede older current/live statements. Both full Workers154/154pass, UI/host partitions pass; fullNode24 has13failures/4existing skips; fullNode22 exceeds the unchanged25-minute limit and lacks a full summary. Compiler and three startup budgets fail. Integration published `a2730cacb05c494baf6d443467efee8d78d4b8c5` with scoped companion/content/real-route passes, corrected planner8/8 and package guards18/18. The original49/48/1failed focused receipt is retained; overlapping repair counts are separate. [Current scoped review](candidate-a2730cac-review.json). Compiler, startup caps, exhaustive partitioned Node/Worker, native/staging/release gates for final changed source remain unaccepted.
 
 | Unit | Evidence at named source | Release state | Remaining acceptance |
 | --- | --- | --- | --- |
 | Active teaching and compatible reader | c42 teaching Node12/12 and Worker10/10 scoped passes; corrected native helper source reviewed | New starts OFF; unreleased | Exact compiler/caps/full checks, readable native desktop/mobile, compatible recovery and live observations |
-| First five African capitals | c42 Node/Worker flight/reload/return cases pass; 3c fictional chess tables retain every-city gate | Unreleased | Real zero-cash multi-hop return, current caption/NPC content, all-city relief, native journeys and sealed staging |
-| Mobile download and provider limits | c42 first-paint passes; startup raw/gzip/Brotli fail; Node22 times out | Unaccepted | Measured startup graph, actual reduction and complete exhaustive checks under unchanged limits |
+| First five African capitals | c42 Node/Worker flight/reload/return cases pass; 3c fictional chess tables retain every-city gate | Unreleased | Issued-ticket/once-only zero-cash multi-hop recovery, all-city relief, native journeys and sealed staging; current content/planner scoped passes at a273 |
+| Mobile download and provider limits | c42 first-paint passes; startup raw/gzip/Brotli fail; Node22 times out | Unaccepted | Measured3c2 graph retained; conditional UI patch source handoff awaits whole-candidate byte measurement, with unchanged caps and complete exhaustive checks |
 | Physical connected journey and later careers/business | Existing bounded foundations and independent handoffs only | Disabled/queued | Full school/licence/rental/animated entry/driving/restocking/barber/earnings/improvement/reload and later programme criteria |
 | Goalmatic | Published private contracts inspected; disabled/mock lane | No live integration | Consented target workspace/install, actual Goals schema, event/reconciliation/revocation contracts and live verification |
 

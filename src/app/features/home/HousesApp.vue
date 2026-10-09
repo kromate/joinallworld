@@ -28,11 +28,12 @@ const { act, pending } = useAct()
 const view = game.view
 const cash = computed(() => game.state.value.cash)
 const property = computed(() => view.value.property)
+const guest = computed(() => view.value.onboarding.guest)
 /** A city with no rental flats offers none: the rent section is left out instead of showing an empty ladder. */
 const rentals = computed(() => Object.keys(property.value?.houses ?? {}).length > 0)
 const next = computed(() => (property.value ? nextHouse(property.value) : undefined))
 const progress = computed(() => (next.value ? savedPercent(cash.value, next.value.moveIn) : 100))
-const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.value)?.short ?? ''} — moving needs the server`))
+const moveBlocked = computed(() => (!view.value.connected ? `${linkWords(view.value)?.short ?? ''} — moving needs the server` : guest.value ? 'Settle in before renting a home.' : ''))
 /** Where a city is not Lagos, the first room of its own ladder is the one named. */
 const smallest = computed(() => (game.state.value.estate.city === 'lagos' ? undefined : property.value?.houses[0]?.label.toLowerCase()))
 const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command('property.house-move', { id }))
@@ -53,9 +54,10 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
     <template v-if="rentals">
     <h3 class="ui-section">Homes to rent</h3>
     <section class="ui-hero houses-hero">
-      <small>{{ next ? 'Next step up' : 'Top of the ladder' }}</small>
-      <strong>{{ next ? `${next.label}, ${next.district}` : 'The grandest house in the city' }}</strong>
-      <template v-if="next">
+      <small>{{ guest ? 'Browse homes' : next ? 'Next step up' : 'Top of the ladder' }}</small>
+      <strong>{{ guest ? 'A place of your own' : next ? `${next.label}, ${next.district}` : 'The grandest house in the city' }}</strong>
+      <p v-if="guest">Settle in for your free starter house. You can move to a rental afterwards.</p>
+      <template v-else-if="next">
         <div class="houses-progress" role="meter" aria-label="Saved towards the move" aria-valuemin="0" aria-valuemax="100" :aria-valuenow="progress"><i :style="{ width: `${progress}%` }" /></div>
         <p>{{ next.affordable ? 'You can afford the move.' : `${money(next.moveIn - cash)} to go · you have ${money(cash)}` }}</p>
       </template>
@@ -64,13 +66,13 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
     <p class="ui-note houses-note">Moving in costs {{ MOVE_IN_WEEKS }} weeks of rent up front. Rent is then due every Saturday.</p>
     <HowItWorks id="houses-rules" page label="How moving works" :rules="housesRules(MOVE_IN_WEEKS, smallest)" />
     <div class="houses-list">
-      <CatalogueCard v-for="(house, tier) in property.houses" :key="house.id" :title="house.label" :subtitle="house.district" :selected="house.current">
+      <CatalogueCard v-for="(house, tier) in property.houses" :key="house.id" :title="house.label" :subtitle="house.district" :selected="house.current && !guest">
         <template #media><HouseArt :tier="tier" :grid="house.grid" /></template>
-        <template #status><span v-if="house.current" class="ui-chip is-good">Your home</span><span v-else-if="house.tag" class="ui-chip">{{ house.tag }}</span></template>
+        <template #status><span v-if="house.current && !guest" class="ui-chip is-good">Your home</span><span v-else-if="house.tag" class="ui-chip">{{ house.tag }}</span></template>
         <p class="houses-description">{{ house.description }}</p>
         <dl class="houses-specs"><div><dt>Move-in cost</dt><dd>{{ money(house.moveIn) }}</dd></div><div><dt>Weekly rent</dt><dd>{{ money(house.rent) }}</dd></div><div><dt>Room size</dt><dd>{{ house.grid }} × {{ house.grid }}</dd></div></dl>
-        <template v-if="!house.current" #actions><BaseButton variant="primary" :reason="moveReason(house, offline)" :disabled="pending !== null" @click="move(house.id)">Move in for {{ money(house.moveIn) }}</BaseButton></template>
-        <template v-if="!house.current && moveReason(house, offline)" #note><p class="ui-why">{{ moveReason(house, offline) }}</p></template>
+        <template v-if="!house.current || guest" #actions><BaseButton variant="primary" :reason="moveBlocked || moveReason(house, '')" :disabled="pending !== null" @click="move(house.id)">{{ pending === `move:${house.id}` ? 'Moving…' : `Move in for ${money(house.moveIn)}` }}</BaseButton></template>
+        <template v-if="(!house.current || guest) && (moveBlocked || moveReason(house, ''))" #note><p class="ui-why">{{ moveBlocked || moveReason(house, '') }}</p></template>
       </CatalogueCard>
     </div>
     </template>

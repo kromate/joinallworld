@@ -80,6 +80,7 @@ onMounted(() => openFromParams(props.params))
 watch(() => props.params, openFromParams)
 
 function back(): void {
+  wantBots.value = 0
   if (leavesOnBack(t.value.state)) tables.leave()
   tables.closeTable()
 }

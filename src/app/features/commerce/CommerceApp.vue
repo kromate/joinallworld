@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import '../../../ui/controls.css'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { COMMERCE_CATEGORIES } from '../../../types/commerce.ts'
 import type { CommerceCategory, CommerceDirectory, CommerceListing, CommerceResponse } from '../../../types/commerce.ts'
+import TextField from '../../ui/TextField.vue'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { addressLabel } from '../world/worldContent.ts'
@@ -14,6 +15,8 @@ const { game, shell } = useApp()
 const result = ref<CommerceResponse | null>(null), loading = ref(true), busy = ref(false), error = ref(''), notice = ref('')
 const tab = ref<'mine' | 'explore'>('mine'), editing = ref(false)
 const name = ref(''), description = ref(''), category = ref<CommerceCategory>('food'), serviceArea = ref(''), adultAndTerms = ref(false)
+let browseRevision = 0
+onBeforeUnmount(() => { browseRevision += 1 })
 const shops = ref<CommerceListing[]>([]), next = ref<string | null>(null), browseLoading = ref(false), browseError = ref('')
 const shop = computed(() => result.value?.commerce)
 const offline = computed(() => !game.view.value.connected)
@@ -31,16 +34,24 @@ const money = (amount: number, currency = 'NGN'): string => new Intl.NumberForma
 const categoryName = (id: CommerceCategory): string => COMMERCE_CATEGORIES.find(item => item.id === id)?.name ?? 'Shop'
 const checkedAt = computed(() => shop.value?.observedAt ? new Date(shop.value.observedAt).toLocaleString('en-NG', { dateStyle: 'medium', timeStyle: 'short' }) : '')
 
+function resetForm(): void {
+  const saved = shop.value
+  name.value = saved?.name ?? ''; description.value = saved?.description ?? ''
+  category.value = saved?.category ?? 'food'; serviceArea.value = saved?.serviceArea ?? ''
+}
+function editStore(): void { resetForm(); editing.value = true }
+function cancelEdit(): void { resetForm(); editing.value = false }
 function apply(answer: CommerceResponse): void {
   result.value = answer
-  if (answer.commerce && !editing.value) { name.value = answer.commerce.name; description.value = answer.commerce.description; category.value = answer.commerce.category; serviceArea.value = answer.commerce.serviceArea }
+  if (!editing.value) resetForm()
 }
 async function load(refresh = false): Promise<void> {
+  if (busy.value) return
   error.value = ''; loading.value = true
   try { apply(await game.fetchJson<CommerceResponse>(refresh ? '/api/commerce/refresh' : '/api/commerce', refresh ? { method: 'POST', body: { csrf: result.value?.csrf } } : {})) } catch (value) { error.value = failure(value) } finally { loading.value = false }
 }
 async function mutate(path: string, body: Record<string, unknown>): Promise<CommerceResponse | null> {
-  if (busy.value || offline.value) return null
+  if (busy.value || loading.value || offline.value) return null
   busy.value = true; error.value = ''; notice.value = ''
   try {
     const answer = await game.fetchJson<CommerceResponse>(path, { method: 'POST', body: { ...body, csrf: result.value?.csrf } })
@@ -51,11 +62,11 @@ async function mutate(path: string, body: Record<string, unknown>): Promise<Comm
 async function save(): Promise<void> {
   const created = !shop.value
   if (await mutate(created ? '/api/commerce/start' : '/api/commerce/profile', { name: name.value, category: category.value, description: description.value, serviceArea: serviceArea.value, adultAndTerms: adultAndTerms.value })) {
-    editing.value = false; notice.value = created ? 'Your starter store is saved. Connect Goalmatic to add products and start selling.' : 'Your store details are saved.'
+    editing.value = false; resetForm(); notice.value = created ? 'Your starter store is saved. Connect Goalmatic to add products and start selling.' : 'Your store details are saved.'
   }
 }
 async function connect(): Promise<void> {
-  if (busy.value || offline.value) return
+  if (busy.value || loading.value || offline.value) return
   busy.value = true; error.value = ''
   try {
     const answer = await game.fetchJson<{ authorizationUrl: string }>('/api/commerce/connect', { method: 'POST', body: { csrf: result.value?.csrf } })
@@ -68,17 +79,19 @@ async function disconnect(): Promise<void> {
   if (await mutate('/api/commerce/disconnect', {})) notice.value = 'Your store is disconnected and no longer listed. Your Goalmatic products and orders are kept.'
 }
 async function browse(more = false): Promise<void> {
-  if (browseLoading.value) return
+  if (more && (browseLoading.value || !next.value)) return
+  const revision = ++browseRevision
   browseLoading.value = true; browseError.value = ''
   const query = new URLSearchParams({ city: game.cityId.value, ...filter.value })
   if (more && next.value) query.set('after', next.value)
   try {
     const answer = await game.fetchJson<CommerceDirectory>(`/api/commerce/directory?${query}`)
+    if (revision !== browseRevision) return
     shops.value = more ? [...shops.value, ...answer.items] : answer.items; next.value = answer.next
-  } catch (value) { browseError.value = failure(value) } finally { browseLoading.value = false }
+  } catch (value) { if (revision === browseRevision) browseError.value = failure(value) } finally { if (revision === browseRevision) browseLoading.value = false }
 }
 watch(tab, value => { if (value === 'explore') void browse() })
-watch(() => game.cityId.value, () => { shops.value = []; next.value = null; if (tab.value === 'explore') void browse() })
+watch(() => [game.cityId.value, filter.value.lga, filter.value.owner], () => { browseRevision += 1; shops.value = []; next.value = null; browseLoading.value = false; browseError.value = ''; if (tab.value === 'explore') void browse() })
 onMounted(async () => {
   await load()
   const params = props.params
@@ -122,28 +135,28 @@ onMounted(async () => {
           <span v-if="shop" class="commerce-status">{{ shop.published ? 'Open in Allworld' : 'Not listed yet' }}</span>
         </header>
         <form v-if="!shop || editing" class="commerce-form" @submit.prevent="save">
-          <label>Store name<input v-model="name" required maxlength="60" autocomplete="organization" placeholder="What will your customers call it?"></label>
-          <label>What do you sell?<select v-model="category"><option v-for="item in COMMERCE_CATEGORIES" :key="item.id" :value="item.id">{{ item.name }}</option></select></label>
-          <label>About your store<textarea v-model="description" maxlength="300" rows="3" placeholder="Tell visitors what they can find here." /></label>
-          <label>Real delivery or pickup area<input v-model="serviceArea" required maxlength="160" placeholder="For example, Yaba pickup and Lagos delivery"></label>
+          <TextField id="store-name" v-model="name" label="Store name" required :maxlength="60" autocomplete="organization" placeholder="What will your customers call it?" :disabled="busy" />
+          <label>What do you sell?<select v-model="category" :disabled="busy"><option v-for="item in COMMERCE_CATEGORIES" :key="item.id" :value="item.id">{{ item.name }}</option></select></label>
+          <label>About your store<textarea v-model="description" :disabled="busy" maxlength="300" rows="3" placeholder="Tell visitors what they can find here." /></label>
+          <TextField id="store-service-area" v-model="serviceArea" label="Real delivery or pickup area" required :maxlength="160" placeholder="For example, Yaba pickup and Lagos delivery" :disabled="busy" />
           <p class="ui-note">Your virtual address and your real delivery area can be different. You handle products, delivery, returns and customer support.</p>
-          <label v-if="!shop" class="commerce-check"><input v-model="adultAndTerms" type="checkbox" required><span>I am at least 18 and will fulfill the products I offer.</span></label>
-          <div class="ui-cluster"><button class="ui-button is-primary" type="submit" :disabled="busy || offline">{{ busy ? 'Saving…' : shop ? 'Save details' : 'Create starter store' }}</button><button v-if="shop" class="ui-button" type="button" @click="editing = false">Cancel</button></div>
+          <label v-if="!shop" class="commerce-check"><input v-model="adultAndTerms" :disabled="busy" type="checkbox" required><span>I am at least 18 and will fulfill the products I offer.</span></label>
+          <div class="ui-cluster"><button class="ui-button is-primary" type="submit" :disabled="busy || loading || offline">{{ busy ? 'Saving…' : shop ? 'Save details' : 'Create starter store' }}</button><button v-if="shop" class="ui-button" type="button" :disabled="busy" @click="cancelEdit">Cancel</button></div>
           <p v-if="!shop" class="ui-note">Free during the pilot. Opening a store does not spend your game money.</p>
         </form>
         <template v-else>
           <p>{{ shop.description || categoryName(shop.category) }}</p>
           <p class="ui-note">Delivery or pickup: {{ shop.serviceArea }}</p>
-          <button class="ui-button is-small" type="button" @click="editing = true">Edit store details</button>
+          <button class="ui-button is-small" type="button" :disabled="busy || loading" @click="editStore">Edit store details</button>
           <section v-if="!connected" class="commerce-connection">
             <h3>{{ shop.connection === 'expired' ? 'Reconnect your store' : 'Bring your products to Allworld' }}</h3>
             <p>Continue to Goalmatic to create or select your store, add products, and connect Paystack or BACH. Your existing account and products stay together.</p>
-            <button class="ui-button is-primary" type="button" :disabled="!result.enabled || busy || offline" @click="connect">{{ busy ? 'Connecting…' : 'Continue with Goalmatic' }}</button>
+            <button class="ui-button is-primary" type="button" :disabled="!result.enabled || busy || loading || offline" @click="connect">{{ busy ? 'Connecting…' : 'Continue with Goalmatic' }}</button>
             <p v-if="!result.enabled" class="ui-note">Commerce connections are not available on this server yet. Your store draft is saved.</p>
           </section>
           <template v-else>
             <section class="commerce-earnings" aria-labelledby="earnings-heading">
-              <div class="commerce-section-title"><h3 id="earnings-heading">Real store earnings</h3><button class="ui-button is-small" type="button" :disabled="loading || offline" @click="load(true)">{{ loading ? 'Checking…' : 'Refresh' }}</button></div>
+              <div class="commerce-section-title"><h3 id="earnings-heading">Real store earnings</h3><button class="ui-button is-small" type="button" :disabled="loading || busy || offline" @click="load(true)">{{ loading ? 'Checking…' : 'Refresh' }}</button></div>
               <p v-if="result.connectionError" class="ui-error" role="status">{{ result.connectionError }}</p>
               <dl v-if="details" class="commerce-totals"><div><dt>Net sales collected</dt><dd>{{ money(details.summary.collectedMinor, details.summary.currency) }}</dd></div><div><dt>Refunded</dt><dd>{{ money(details.summary.refundedMinor, details.summary.currency) }}</dd></div><div><dt>Orders awaiting payment</dt><dd>{{ details.summary.pendingOrderCount }}</dd></div></dl>
               <p v-else class="ui-note">Refresh to check the latest figures from your store.</p>
@@ -155,8 +168,8 @@ onMounted(async () => {
               <p class="commerce-caption">No deposits, player transfers, staking or betting.</p>
             </section>
             <div class="commerce-actions"><a v-if="details?.managementUrl" class="ui-button" :href="details.managementUrl" target="_blank" rel="noopener noreferrer">Manage products and orders ↗</a><a v-if="shop.storefrontUrl" class="ui-button" :href="shop.storefrontUrl" target="_blank" rel="noopener noreferrer">Visit storefront ↗</a></div>
-            <button class="ui-button is-block" type="button" :disabled="busy || offline" @click="mutate('/api/commerce/publish', { published: !shop.published })">{{ busy ? 'Saving…' : shop.published ? 'Pause my Allworld listing' : 'Open to other players' }}</button>
-            <details class="commerce-disconnect"><summary>Disconnect store</summary><p>This removes your Allworld listing and its access to earnings. Your Goalmatic store, products and orders remain.</p><button class="ui-button" type="button" :disabled="busy || offline" @click="disconnect">Disconnect and hide listing</button></details>
+            <button class="ui-button is-block" type="button" :disabled="busy || loading || offline" @click="mutate('/api/commerce/publish', { published: !shop.published })">{{ busy ? 'Saving…' : shop.published ? 'Pause my Allworld listing' : 'Open to other players' }}</button>
+            <details class="commerce-disconnect"><summary>Disconnect store</summary><p>This removes your Allworld listing and its access to earnings. Your Goalmatic store, products and orders remain.</p><button class="ui-button" type="button" :disabled="busy || loading || offline" @click="disconnect">Disconnect and hide listing</button></details>
           </template>
         </template>
       </template>
@@ -174,7 +187,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.commerce-app { display: grid; gap: 18px; color: var(--c-ink, #202b36); }
+.commerce-app { min-width: 0; overflow-wrap: anywhere; display: grid; gap: 18px; color: var(--c-ink, #202b36); }
 .commerce-tabs { display: flex; border-bottom: 1px solid var(--c-line, #d9dfe3); gap: 8px; }
 .commerce-tabs button { min-height: 44px; flex: 1; border: 0; background: none; color: inherit; font: inherit; padding: 10px; border-bottom: 3px solid transparent; }
 .commerce-tabs button[aria-pressed="true"] { border-bottom-color: #85411e; font-weight: 700; }
@@ -186,18 +199,19 @@ onMounted(async () => {
 .commerce-status { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; }
 .commerce-form, .commerce-connection { display: grid; gap: 16px; }
 .commerce-form label { display: grid; gap: 6px; font-weight: 600; font-size: 13px; }
-.commerce-form input:not([type="checkbox"]), .commerce-form select, .commerce-form textarea { width: 100%; box-sizing: border-box; border: 1px solid #9ca8b2; border-radius: 8px; padding: 11px 12px; min-height: 44px; font: inherit; background: #fff; color: #202b36; }
+.commerce-form input:not([type="checkbox"]):not(.app-field-input), .commerce-form select, .commerce-form textarea { width: 100%; box-sizing: border-box; border: 1px solid #9ca8b2; border-radius: 8px; padding: 11px 12px; min-height: 44px; font: inherit; background: #fff; color: #202b36; }
 .commerce-form input::placeholder, .commerce-form textarea::placeholder { color: #606c76; }
 .commerce-form .commerce-check { display: flex; align-items: flex-start; gap: 10px; font-weight: 400; }
 .commerce-check input { width: 20px; height: 20px; accent-color: #85411e; flex-shrink: 0; }
 .commerce-connection, .commerce-earnings { border-top: 1px solid #d9dfe3; padding-top: 22px; margin-top: 6px; }
 .commerce-earnings { display: grid; gap: 14px; }
-.commerce-section-title { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.commerce-section-title { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
 .commerce-section-title h2 { font-size: 18px; }
 .commerce-totals { margin: 0; display: grid; gap: 12px; }
-.commerce-totals div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+.commerce-totals div { display: grid; min-width: 0; gap: 5px; padding: 14px; border-radius: 12px; background: #f1f5f8; }
 .commerce-totals dt { font-size: 13px; }
-.commerce-totals dd { margin: 0; font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.commerce-totals dd { margin: 0; font-size: clamp(22px, 6vw, 30px); line-height: 1.2; font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.commerce-actions > * { max-width: 100%; white-space: normal; text-align: center; }
 .commerce-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .commerce-app a.ui-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; text-decoration: none; box-sizing: border-box; }
 .commerce-notice { color: #195a3b; background: #edf8f1; padding: 12px; border-radius: 8px; }
@@ -205,7 +219,7 @@ onMounted(async () => {
 .commerce-disconnect summary { cursor: pointer; padding: 12px 0; }
 .commerce-disconnect p { margin-bottom: 12px; }
 .commerce-list { list-style: none; margin: 18px 0; padding: 0; display: grid; gap: 24px; }
-.commerce-list li { display: grid; gap: 8px; padding-bottom: 20px; border-bottom: 1px solid #d9dfe3; }
+.commerce-list li { min-width: 0; display: grid; gap: 8px; padding-bottom: 20px; border-bottom: 1px solid #d9dfe3; }
 .commerce-list small { color: #52606c; line-height: 1.4; }
 .commerce-empty { padding: 28px 0; }
 .commerce-app :focus-visible { outline: 3px solid #85411e; outline-offset: 3px; }

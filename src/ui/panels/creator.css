@@ -269,3 +269,21 @@
 .cr-choices .cr-link{min-height:36px}
 @container cr (max-height:900px){.cr-foot:has(.cr-choices) .cr-fine{display:none}}
 @container cr (max-width:639px){.cr-root:has(.cr-choices){--cr-stage-h:36cqh}}
+
+/* Settling from a phone app uses the app's frame and available height. */
+.cr-host.is-embedded{height:100%;min-width:0;min-height:0}
+.cr-host.is-embedded .cr-root{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);padding:0;background:#fff;overflow:clip}
+.cr-host.is-embedded .cr-root[data-step=look]{grid-template-rows:clamp(160px,28cqh,220px) minmax(0,1fr)}
+.cr-host.is-embedded .cr-stage-col{background:#e8eef8;border-bottom:1px solid var(--cr-line)}
+.cr-host.is-embedded .cr-brand,.cr-host.is-embedded .cr-floor{display:none}
+.cr-host.is-embedded .cr-panel{margin:0;border-radius:0;box-shadow:none;max-width:none;width:100%;height:auto;zoom:1;align-self:stretch;overflow:clip}
+.cr-host.is-embedded .cr-head{padding:12px 16px 0}
+.cr-host.is-embedded .cr-progress span{display:none}
+.cr-host.is-embedded .cr-progress li>button,.cr-host.is-embedded .cr-progress li>.cr-prog-item{min-height:18px}
+.cr-host.is-embedded .cr-scroll{padding:16px;scroll-padding:16px}
+.cr-host.is-embedded .cr-banner{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:12px;overflow-wrap:anywhere}
+.cr-host.is-embedded .cr-foot{padding:12px 16px max(24px,env(safe-area-inset-bottom));box-shadow:none}
+.cr-host.is-embedded .cr-actions{flex-wrap:wrap}
+.cr-host.is-embedded .cr-btn{min-width:0;white-space:normal;padding:10px 14px;overflow-wrap:anywhere}
+.cr-host.is-embedded .cr-cards{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr))}
+.cr-host.is-embedded .cr-cards.is-areas,.cr-host.is-embedded .cr-cards.is-rows{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}

@@ -9,7 +9,7 @@ import { callStore } from '../calls/callState.ts'
 import { tour } from '../tour/tourState.ts'
 import { social } from '../social/useSocial.ts'
 import { announceUi } from '../announce/announceStore.ts'
-import { hintsOn } from '../sim/settingsModel.ts'
+import { coachHints } from '../hud/coachModel.ts'
 import CompanionFace from './CompanionFace.vue'
 import { COMPANION_NAME } from './identity.ts'
 import { createMemory, readPrefs, writePrefs } from './memory.ts'
@@ -45,7 +45,7 @@ const reduced = ref(reducedQuery?.matches === true)
 // ---- whether and where it shows ----------------------------------------------------------------------------------------
 const settled = computed(() => game.connected.value && game.view.value.onboarding?.required !== true)
 const callUp = computed(() => callStore.view.phase !== 'idle' || callStore.confirm !== null)
-const effective = computed<CompanionMode>(() => (prefs.mode === 'off' ? 'off' : hintsOn(ls) ? prefs.mode : 'quiet'))
+const effective = computed<CompanionMode>(() => (prefs.mode === 'off' ? 'off' : coachHints.value ? prefs.mode : 'quiet'))
 const shown = computed(() => settled.value && prefs.mode !== 'off' && !callUp.value)
 const size = ref(window.innerWidth <= 480 ? 92 : 124)
 const pos = reactive({ x: 8, y: 400 })

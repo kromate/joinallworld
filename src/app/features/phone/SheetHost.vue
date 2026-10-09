@@ -31,7 +31,7 @@ const lock = computed(() => { void game.view.value; return sheet.value ? shell.l
 const phone = ref<InstanceType<typeof PhoneDeviceType> | null>(null)
 const content = ref<HTMLElement | null>(null)
 /** A panel that takes the whole screen (the character creator): no app bar, no lock note, no corner button. */
-const fullscreen = computed(() => panel.value?.fullscreen === true)
+const fullscreen = computed(() => !inPhone.value && panel.value?.fullscreen === true)
 
 function onClose(by: 'escape' | 'backdrop' | 'button'): void {
   if (by === 'escape') {

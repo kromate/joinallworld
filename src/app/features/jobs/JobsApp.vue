@@ -83,14 +83,14 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
       <div v-if="ask === 'quit'" class="ui-confirm">
         <p>Quit {{ career.label }}? You lose your level and performance in it. You can apply again later and start from the first role.</p>
         <div>
-          <button type="button" class="ui-button is-danger" :disabled="career.busy || !view.connected || wait" @click="quit()">Yes, quit</button>
-          <button type="button" class="ui-button" @click="asking = null">Keep my job</button>
+          <button type="button" class="ui-button is-danger" :disabled="career.busy || !view.connected || wait" @click="quit()">{{ pending === 'quit' ? 'Quitting…' : 'Yes, quit' }}</button>
+          <button type="button" class="ui-button" :disabled="wait" @click="asking = null">Keep my job</button>
         </div>
         <p v-if="career.busy" class="ui-why">Finish or cancel your current action before quitting.</p>
       </div>
       <button v-else type="button" class="jobs-link" @click="asking = 'quit'">Quit this job</button>
     </template>
-    <header v-else class="jobs-intro"><h3>Find your next role</h3><p>{{ career.step.text }}</p></header>
+    <header v-else class="jobs-intro"><h3>No job yet</h3><p><strong>Find work today</strong><br>{{ career.step.text }}</p></header>
 
     <HowItWorks id="jobs-rules" page label="How work works" :rules="rules" />
     <h3 class="ui-section" data-section="list">{{ career.employed ? 'Other jobs' : 'Pick a job' }}</h3>
@@ -119,12 +119,12 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
             <button type="button" class="ui-button" disabled :title="control.why">{{ control.label }}</button>
             <p class="ui-why">{{ control.why }}</p>
           </template>
-          <button v-else-if="control.kind === 'apply'" type="button" class="ui-button is-primary" :disabled="wait" @click="apply(job.id)">Apply — free, hired at once</button>
+          <button v-else-if="control.kind === 'apply'" type="button" class="ui-button is-primary" :disabled="wait" @click="apply(job.id)">{{ pending === `apply:${job.id}` ? 'Applying…' : 'Apply — free, hired at once' }}</button>
           <div v-else-if="control.kind === 'confirm'" class="ui-confirm">
             <p>{{ control.warning }}</p>
             <div>
-              <button type="button" class="ui-button is-primary" :disabled="wait" @click="switchTo(job.id)">Confirm switch</button>
-              <button type="button" class="ui-button" @click="asking = null">Keep current job</button>
+              <button type="button" class="ui-button is-primary" :disabled="wait" @click="switchTo(job.id)">{{ pending === `switch:${job.id}` ? 'Switching…' : 'Confirm switch' }}</button>
+              <button type="button" class="ui-button" :disabled="wait" @click="asking = null">Keep current job</button>
             </div>
           </div>
           <button v-else-if="control.kind === 'transfer'" type="button" class="ui-button is-primary" :disabled="wait" @click="apply(job.id)">{{ control.label }} — free, keeps your level</button>

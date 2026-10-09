@@ -245,6 +245,6 @@ defineExpose({
 
 <style scoped>
 /* A Vue app that wants the whole app area (a chat: its own header, a scrolling thread, a pinned composer) marks its root `panel-fill`. */
-.ph-appbody:has(> :deep(.panel-fill)) { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.ph-appbody:has(> :deep(.panel-fill)) { display: flex; flex-direction: column; padding: 0; overflow: clip; }
 .ph-appbody > :deep(.panel-fill) { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 </style>

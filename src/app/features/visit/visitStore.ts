@@ -65,9 +65,11 @@ export async function makeLink(options: { hours?: number; max?: number; open?: b
   await loadLinks()
   return { link: done.link, reason: null }
 }
-export async function endLink(id: string): Promise<void> {
+export async function endLink(id: string): Promise<string | null> {
   const done = await call<Extract<LinkEndResult, { ok: true }>>('/api/social/visit/link/end', { id })
-  if (done.ok) await loadLinks()
+  if (!done.ok) return done.reason
+  await loadLinks()
+  return null
 }
 
 /** A house link opened by someone with or without a session: is it good, and whose home is it? */

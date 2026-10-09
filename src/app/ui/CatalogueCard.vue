@@ -17,8 +17,8 @@ defineProps<{ title: string; subtitle?: string; selected?: boolean }>()
 .catalogue-card.is-selected { border-color: #176347; }
 .catalogue-media { overflow: hidden; background: #edf1f5; }
 .catalogue-body { display: grid; gap: 16px; padding: 18px; }
-.catalogue-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.catalogue-heading > div { min-width: 0; }
+.catalogue-heading { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; overflow-wrap: anywhere; }
+.catalogue-heading > div { flex: 1 1 160px; min-width: 0; }
 .catalogue-heading h3 { margin: 0; font-size: 20px; font-weight: 750; line-height: 1.25; letter-spacing: -.02em; color: var(--c-ink); }
 .catalogue-heading p { margin: 5px 0 0; font-size: 14px; line-height: 1.45; color: var(--c-muted); }
 .catalogue-actions { display: flex; flex-wrap: wrap; gap: 10px; }

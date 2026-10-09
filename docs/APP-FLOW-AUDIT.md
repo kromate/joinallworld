@@ -2,6 +2,33 @@
 
 8 October 2026. Reopened by the user after the first app-interior release. The previous 41-app entry-screen sweep was insufficient evidence for complete app behavior. This is the current acceptance plan; do not mark the whole UI programme complete based on shared CSS or an app opening.
 
+## Current integration queue
+
+Exact cumulative source `42d26271` passed remote CI [37871730141](https://github.com/kromate/joinallworld/actions/runs/37871730141): typecheck, build/download/smoke, release policy, **201 existing UI/start/table model/component checks and 9 existing shopping/housing/career checks (210 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
+
+The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
+
+| Slice | Latest runtime checkpoint | Fast CI | Remaining acceptance |
+|---|---|---|---|
+| Store / Invest | c5f4c4cb | 37850351246 passed | Delayed directory/filter responses, cancel/save normalization, deposit actions, narrow layouts |
+| Business | 8129ed4f | 37851320078 passed | Stock/price pending edits, different-shop draft reset, mobile rows |
+| Home visiting / manual copy | 80e48a8b | 37853252819 passed | Refused/pending operations, native-share cancellation, clipboard denial, link wrapping |
+| Report / Statement identity guards | 9d1d488f | 37856165507 passed | Delayed cross-character responses, draft/retry identity, statement context, focused model checks |
+| Notification settings | 14e802de | 37856727022 passed | Paused selector, refused preference rollback, keyboard and mobile behavior |
+| Chat privacy | b29031f6 | 37857267550 passed | Delayed/refused toggles and cross-device settings |
+| Older-character Settings | ce4d861e | 37859045285 passed | Delayed identity changes, switch retries and reconnect |
+| Shared hints | e524bf55 | 37860276621 passed | Storage denial, all consumers, dismiss/reopen/reload and manual versus automatic tours |
+| Events / public records | 75ca35a9 | 37861362311 passed | Filter races, pagination/retry, offline calendar/actions and narrow cards |
+| Groceries batch / Health layout | d03eb8c9 | 37864614906 passed, including 103 existing UI checks | Partial orders, identity/close/reopen/lost-reply races, fuel offers and narrow layouts |
+| Career choices / catalogue wrapping / Bank records | 3b394f4b | 37867392052 passed, including 109 existing UI checks | Navigation and Jobs apply/switch/quit/reload accepted locally; delayed dilemma/retry, enlarged text and funded property actions remain |
+| Embedded settling / focus scrolling / guest rental labels | 19e3e77f | 37869331514 passed, including 156 existing UI/start checks | Home320, Ready/Look390 and desktop, Face zoom and new landing accepted locally; physical-device and production acceptance remain |
+| Game controls / contrast / failed-module recovery / chess copy | 42d26271 | 37871730141 passed, including 210 existing UI/start/table checks | Oro practice/play/result/reload recovery, chess AI/move/leave, Weave recall and Penalties turns accepted locally; pending-guess fault and full multiplayer/production remain |
+| Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
+
+Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
+
+The original public-source feature and player-request research is now preserved under [research/SOURCE-ARCHIVE.md](research/SOURCE-ARCHIVE.md). Its Allworld gap columns describe the older checkout and require current-source reconciliation. The archive retains the original non-exhaustive reply-coverage boundary.
+
 ## Required scope
 
 | Area | Required implementation and states | Evidence required | Current state |
@@ -9,7 +36,7 @@
 | Shared controls | Owned foreground/background pairs for default, hover, selected, loading and disabled buttons; labeled reusable fields with clear, help and error states | Computed colors and keyboard behavior in real consumers | BaseButton selected variant and TextField implemented locally |
 | Boutique | Distinct shop presentation, usable card spacing, actual try-on preview, reset, purchase, wear/take-off, insufficient funds, offline, pending | Exercise preview/reset and real purchase/equip using an isolated QA life; verify selected-button contrast | White-on-white root cause fixed locally; flow verification pending |
 | Cars | Rendered vehicle artwork, catalogue and garage views, clear price/fuel/speed, buy/drive/sell, ownership and disabled reasons | Buy a vehicle on funded QA life, drive it, reopen/reload, sell; verify balances and state | Shared catalogue cards and original vehicle atlas implemented locally |
-| Houses | Property cards with meaningful hierarchy/artwork; own home versus rentals; rent/move cost; move/upgrade/furniture links; unavailable/insufficient funds | Complete a QA move and check home, balance, rent and reload; verify all cross-app links | Pending |
+| Houses | Property cards with meaningful hierarchy/artwork; own home versus rentals; rent/move cost; move/upgrade/furniture links; unavailable/insufficient funds | Complete a QA move and check home, balance, rent and reload; verify all cross-app links | Shared catalogue/artwork implemented; wrapping and pending labels at 3b394f4b; funded move acceptance remains open |
 | Jobs | Reusable search field, clear/filter/empty states, role disclosure, apply, current job, switch confirmation, quit, pending/offline | Search/clear/filter and actual QA apply/switch/quit; verify salary and role state | Search component extracted locally; action coverage pending |
 | Family | NPC roles can be replaced by consenting real players; invitation, accept/decline, unlink/restore NPC; genuine message/call entry points | Two synthetic users complete invitation/acceptance and unlink; declined/blocked/removed users gain no role/access | Deployed at a44629b3; see final release receipt |
 | Other app screens | Nested screens, forms and conditional states across Messages, Bank, Invest, Statement, business/store, civic/politics, household/land/street, games, travel, settings, support and onboarding | Per-screen action/state ledger. Privileged, external-provider and permission-dependent flows must be explicitly separated | Entry-screen sweep exists; deeper coverage remains open |
@@ -102,3 +129,137 @@ Final compiled 320px check: opening the invitation picker moved focus to family-
 ## Production acceptance
 
 Family shipped in source a44629b38be751a9ad446051564704f6c3c6ae1b / provider64ed8462-6c2b-4c42-8d19-266bc93708e5. Public build, saved identities/balances/receipts, live Family consent/unlink/non-resurrecting retry, actual production UI and exact asset bytes verified. The final receipt is in PARITY-DELIVERY.md. Earlier local/unverified checkpoints above are historical and superseded for this phase; the all-app audit remains open.
+
+## Next local slice: Store and Invest
+
+Source inspection found that Store's in-flight directory guard skipped the replacement fetch after a city switch, then allowed the old city's response into the new view. Directory requests now carry a generation; city/owner/LGA changes invalidate old responses and fetch the current selection. Pagination stays single-flight. Unmount invalidates pending reads. This change is not yet runtime-verified.
+
+Store earnings now stack each label above its amount, with wrapping headings/actions/addresses. Invest amount choices have a larger intrinsic width and wrap; term returns and deposit headings wrap instead of squeezing, supporting narrow screens and large values. Removed Invest card shadows. These are local source changes awaiting the next serialized verification turn; not part of the accepted a44629b3 release. Required checks: stale city/filter response, pagination, empty/error/retry; 320/390px layouts with large amounts; game-deposit open/early-close/maturity and unchanged ledger results. Real provider actions remain separate from game-money QA.
+
+Store name/service-area now use the shared TextField with native required and length limits retained; the component gained those explicit input props. Invest confirmation actions now use BaseButton and cannot dismiss/switch while a close request is pending. Verification must cover those consumer states before deployment.
+
+Store editor source review found that Cancel retained abandoned field values and profile refresh could overlap writes. Cancel/edit now restore saved fields; successful saves adopt normalized server values. Store writes/connect are blocked while profile loading, refresh is blocked while writing, and edit/cancel controls cannot race an in-flight save. Required verification includes cancel/reopen, normalized save response and delayed refresh/save ordering. Not yet executed or deployed.
+
+## Store/Invest handoff contract
+
+The human requested pushed implementation slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. This slice changes CommerceApp.vue, InvestApp.vue, TextField.vue and invest.css only; it does not alter schemas, balances, payment providers or save migration. Source whitespace checks pass. Runtime/browser checks remain outstanding; remote CI is requested on the exact pushed branch.
+
+Acceptance for the integration agent:
+- Delay directory response A, change city/owner/LGA to B, resolve B then A: only B remains. Repeat with pagination and errors.
+- Edit store fields, cancel/reopen: saved values return. Save normalized values: reopen shows the server values. Refresh and save/connect cannot overlap.
+- Verify required/max-length validation for Store fields and existing Jobs/Family TextField consumers.
+- At 320/390px and enlarged text, inspect large earnings, deposit amounts/returns, long addresses and action wrapping.
+- In disposable game data, open and close a deposit, check pending/insufficient/offline states and ledger continuity. Real commerce/provider consent or money movement needs its own authorized verification.
+- Preserve the existing release namespace, saves, immutable assets and the voice-note stash. Merge against fresh main and report exact-source checks before deployment.
+
+### Business stock and action layout handoff
+
+Business stock rows previously let the price field and quantity stepper consume most of a narrow row, leaving the product label squeezed. Product description now gets a full-width row, with price and quantity grouped below. Cash/rent/action rows, confirmation controls, shop headers and ratings wrap. Price fields use 16px text, rating/report controls have 44px targets, and redundant card shadows were removed. No stock/price/cashbox API logic changed. Requires browser checks at 320/390px, long labels/large balances and pending/offline control states before acceptance.
+
+Business controls now freeze stock quantities while a stock purchase is pending and price fields while a price save is pending, preventing success handling from discarding edits made during the request. A different shop id clears the previous shop's price/quantity draft; same-shop refreshes preserve unfinished edits. Close confirmation cannot be dismissed during its request. Verify delayed requests and close/reopen with overlapping product ids. These remain source-level changes awaiting exact-commit CI and browser acceptance.
+
+Store/Invest exact commit c5f4c4cb0b85449c0aed61ed0ba66d1a78e98ee1 passed remote CI (typecheck-fast, build/download/smoke-fast and release policy): https://github.com/kromate/joinallworld/actions/runs/37850351246. The full suite was not requested by this workflow. Browser/interaction acceptance remains outstanding and is explicitly delegated in the human's push-and-integrate workflow.
+
+### Home visitor controls handoff
+
+Business commit8129ed4f5e345d01d3c244765df01880ddc8eea2 passed remote CI37851320078 (type/build/download/smoke/policy).
+
+Home visitor controls now prevent overlapping invite/link/door actions, freeze affected choices while pending, and display refusal reasons for closing a door, ending a visit and revoking a link. endLink now returns its refusal instead of silently discarding it. Native-share cancellation no longer falls through to copying the link; failed clipboard copy gets an error tone. Existing door permissions and backend payloads are unchanged. Link rows wrap, search/number/select controls have 44px targets with 16px input text, and house-style swatches have 44px targets.
+
+Acceptance for integration: delay each operation, verify repeated clicks do not launch concurrent requests; exercise offline/refused/successful door/end/revoke states; cancel native sharing and confirm clipboard stays unchanged; test 320/390px with long guest names and link actions. Preserve current guest permissions, invitation expiry and save state. This is pending UI protection, not a claim of new server-side retry identity after an ambiguous network failure. Real outbound shares must use synthetic QA recipients or explicit user authorization.
+
+Home-link copy fallback now has a visible read-only URL field that selects its value on focus. This makes the existing “select the link and copy it yourself” failure instruction actionable without changing link permissions or automatically sharing it. Verify with clipboard permission denied.
+
+### Report and Statement context handoff
+
+Report cache/draft/receipt state is now bound to the current character. Identity changes reset it and invalidate old in-flight responses; on reopening, the shared model checks its owner before exposing cached data. Same-character drafts remain across closing/reopening. Sending disables form edits, and the model also preserves any newer draft rather than clearing it when an older send completes. Unchanged retries reuse their id; changed city/category/text obtains a new id. Component completion feedback is suppressed after unmount/character change.
+
+Statement check results now retain their character identity as well as city. Character/city changes and unmount invalidate pending checks, preventing old results/toasts from appearing in a new context. This changes no wallet arithmetic or stored ledger. Report cards use flatter surfaces and 16px fields; statement summaries and daily/group rows wrap for large amounts.
+
+Acceptance: two identities with delayed report load/send and statement responses, same-account reopening, changed vs unchanged retry bodies, drafts edited during pending submit, 320/390px long report IDs/moderator replies/large balances. Existing model tests and exact-source CI are required; browser acceptance is still delegated. No support report may be submitted to real moderators solely for UI testing—use an isolated fixture.
+
+Report/Statement first CI37854522963 passed type checking but failed the raw startup cap by 9 bytes (615,009 vs615,000); smoke was not reached. The statement verdict and character identity were consolidated into one atomic stored value, removing the extra shared reactive allocation. A corrected exact-source run is required; the limit was not changed.
+
+CI37855349242 still measured615,009 startup bytes, disproving the earlier allocation explanation. The report helper was the only source caller introducing Vue getCurrentScope. Its identity watcher moved into ReportApp's component scope; useSupport still binds the cached model to identity synchronously before returning it. This preserves cleanup/identity behavior without the new runtime export. Corrected CI must confirm the measurement; no budget change.
+
+### Notification settings handoff
+
+The pause select previously selected value `on` without a matching option, producing a blank control for an active pause. It now has a readable current-pause option and expiry in device time. Preference writes serialize, show saving/error feedback, and use a temporary displayed value which returns to server preferences on refusal; this also corrects native checkbox state after a failed save. The test-notification button guards repeated calls. Controls use 44px targets and a 16px select. Verify paused/resume/change-duration, delayed success/refusal, checkbox rollback and narrow layout using synthetic notification devices. Existing consent/setup and notification-delivery rules are unchanged.
+
+Corrected Report/Statement commit9d1d488fed07c5d8b299d2ec188c96491df0e5f4 passed exact remote CI37856165507, including typecheck, build/download/smoke and release policy. Removing the component-scope query import resolved the startup gate without changing caps. Identity/draft/race browser scenarios remain required for integration acceptance.
+
+### Chat privacy controls handoff
+
+Notification commit14e802dea7459487e0e00a74a5235c60d8d159b2 passed exact CI37856727022. Chat group/mention/introduction preferences now use serialized writes, pending/error feedback and temporary displayed choices that revert to server preferences on refusal. Controls have 44px label targets, and long explanations wrap. Backend permission semantics and default values are unchanged. Integration acceptance: delayed success/refusal, rapid toggles, keyboard focus, cross-device refresh and 320px layout; use synthetic accounts.
+
+Chat privacy commitb29031f6 passed exact remote CI37857267550 (type/build/download/smoke/policy). Voice source is now available to the integration agent as checkpointb193bd77 on codex/voice-notes-checkpoint; see VOICE-NOTES-WIP.md for the older-base warning and remaining acceptance. The UI integration branch and production saves were not altered by checkpoint export.
+
+### Settings older-character list handoff
+
+Account lifecycle service ownership stays with the other agent. Settings now binds its older-character listing/error responses to the current character and request generation, invalidating them on identity changes/unmount. Changing identity clears the displayed list and old switch receipt map before loading the new scope. Switching feedback is suppressed when its initiating context has gone; existing switchLegacy server/receipt behavior is unchanged. Loading/switching/offline states are visible and disable conflicting controls. Older-character rows wrap; wallpaper tiles use a larger minimum width and 12px labels. Verify delayed list/switch responses, failed switch retry identity, account/guest transitions, reopening, and 320px layout on disposable characters. No actual account switch is performed by source inspection.
+
+The older-character list also reloads when the connection returns, covering a successful character switch whose identity arrives before the connection is ready. Failed-switch receipt ids remain intact across same-character reconnects.
+
+Settings audit still open: hints persistence currently uses optional storage writes, so a null storage object can skip the write without a warning; the shared warning promises tab-lifetime behavior that all readers do not implement consistently. HUD attention, companion quiet mode and tour gating read this setting through different paths. A complete fix must preserve the same in-memory choice across those consumers and every writer, including the coach dismiss action, without raising startup budgets. Do not mark all Settings behavior complete from the older-character patch.
+
+### Shared hints preference handoff
+
+Settings ce4d861e passed exact CI37859045285. Hints now have one reactive per-tab value initialized from storage. Settings, HUD attention, companion quiet mode and tour eligibility consume it; coach dismiss updates it too. This removes the legacy event/read mismatch and keeps the choice consistent when storage is blocked. Settings now warns for a null storage object as well as a thrown write, and clears stale warnings after a successful change. Existing storage key/default are retained; other tabs take the saved value on reload, with no claim of new cross-tab synchronization. Acceptance: toggle/dismiss/reopen, blocked storage, reload with persisted values, companion quiet mode and auto-tour eligibility; manual tour behavior and startup caps must remain intact.
+
+The hints storage-failure wording explicitly says reload or close, matching an in-memory page preference rather than promising persistence across a reload.
+
+### Events and public-record controls handoff
+
+Hints exacte524bf55 passed CI37860276621. Public-record reads now have request generations: replacing a filter starts a current request, clears old-filter rows and ignores late prior responses. Leaving/unmounting invalidates the request. Loading, retry and pressed-filter state are visible; paginated reads remain single-flight. Records seals/check arithmetic and civic write APIs are unchanged.
+
+Events expose an offline explanation and disable travel/share/spray while preserving the local calendar download. Event action/spray groups wrap with larger text and flatter cards. Civic ledger/officer rows wrap, filter targets are44px, and redundant outer shadows were removed. Acceptance: delayed filter A→B and pagination/error/retry, leaving/reopening records, long titles/large amounts at320/390px, offline calendar export and blocked online actions, normal event travel/share/spray in disposable data. No real-world political action or external share was performed.
+
+### Runnable remote UI regression gate
+
+CI now has an opt-in `ui_checks` workflow-dispatch input. It builds the selected ref and runs existing UI model/component suites serially on the remote runner; default CI behavior and permissions remain unchanged. This gives the integration agent executable evidence while local resource ownership is elsewhere. It adds no new test expectations and does not replace real browser acceptance. Invoke with `gh workflow run ci.yml --repo kromate/joinallworld --ref codex/allworld-integrated-preview -f full_checks=false -f ui_checks=true`.
+
+### Groceries batch and Health layout handoff
+
+Groceries previously read its mutable basket throughout an asynchronous order, while quantity/Clear controls remained editable; it could also issue another batch action after leaving the screen. The batch now uses a quantity snapshot, locks controls during purchases, stops starting new actions after unmount/city/character changes, and subtracts only confirmed quantities. A character-bound shared pending state prevents reopening the app from launching a concurrent purchase; generation checks keep old completions from unlocking another character's operation. Closing the screen does not undo an already accepted purchase. Existing command/receipt and inventory/wallet rules are unchanged.
+
+Groceries price labels and uses wrap, cards have a larger minimum width, and the basket toolbar wraps. Health status and cure-price rows wrap and redundant card shadows are removed; the game's health rules are unchanged. Required acceptance: delayed/partial/refused orders, Clear/stepper during pending, close/reopen, city changes, A→B→A transitions, lost replies/recovery receipt, refuel versus grocery concurrency, and 320/390px long prices. Use disposable characters and check both inventory and ledger. Baseline CI does not prove these new race scenarios.
+
+The generator quick-buy now offers up to five litres bounded by both tank room and current game cash. Previously it enabled a five-litre purchase when only one litre was affordable. The displayed quantity/price now matches the sent amount; no game price changed. Include zero-cash, one-to-four affordable litres and a nearly full tank in acceptance.
+
+Exact grocery/health candidated03eb8c9016c9c52b1423681ae8a596ee9997bbb passed remote CI37864614906: typecheck, production build/download/smoke, release policy, 100 existing UI model/component checks and 3 targeted existing Groceries/Health checks (103 passed,0 failed). This does not replace the new purchase-race acceptance scenarios above.
+
+### Career, property and Bank follow-through, 9 October
+
+Runtime3b394f4b follows c26c1437. Career clears the previous dilemma synchronously when its id or character changes; watcher cleanup rejects old lazy-load results after replacement/unmount. Loading/refusal states expose a retry. Jobs headings, pay, filters and schedule chips wrap. Catalogue titles/status, house/car specifications and showroom controls no longer rely on unbounded intrinsic widths. Jobs apply/switch/quit and property move/buy/use/sell show pending labels; confirmations stay locked while sending.
+
+Bank wraps bill names/amounts and quick links, removes bill shadows, and shows complete transaction reasons and balance text. Wallet, payment commands, action receipts, prices and stored saves are unchanged by this unit.
+
+Exact CI37866893652 passed type/build/download/smoke/policy but failed two newly included existing markup checks: the Jobs empty-state introduction and CarArt image label. The introduction now explains the unemployed state and next action; the artwork keeps a truthful drawing/3D description. No test expectations were changed. Corrected exact CI37867392052 passed all gates, 100 existing UI checks and9 existing shopping/housing/career checks (109 pass,0 fail). Logs: /tmp/allworld-bank-career-ui-ci.log. These are remote automated gates, not full browser or production acceptance.
+
+### Verified phone settling repair, 9 October
+
+Runtime19e3e77f includes b528d3dd and the focus-scroll correction. A phone-hosted fullscreen panel no longer applies the outer fullscreen dialog styles. Embedded settling uses the phone frame, removes the green backdrop/nested panel padding/shadow, and only mounts the avatar stage for Look. The form owns its scrolling; the phone viewport, creator root and panel use overflow:clip so native focus/scrollIntoView cannot move them. New step headings receive focus after the transition completes. Guest rental cards no longer claim Your home, and all guest move controls explain the existing settlement requirement. Gameplay commands, prices, wallet receipts and saves are unchanged.
+
+Astra browser acceptance used two disposable actors on an isolated5196 backend. Jobs search/open filter/details, apply, switch, quit, navigation and reload passed. Boutique preview/reset/selected contrast passed; settlement then Braids purchase3500 produced Wearing and a matching Bank debit/balance72500, retained on reload; free Low cut wear also passed. Houses/Cars costs, shortfalls and empty garage were inspected. Guest/settled Houses labels and controls now agree with actual settlement state. Home320 and Ready→Look390 retain outer scrollTop0; the new heading is focused, preview and footer remain visible. Face zoom increased 3D render count4→25 and visibly enlarged the character. Fresh desktop landing retained its fullscreen preview, name field and footer. Messages list and Lumo layout were inspected without sending messages.
+
+Early cross-app navigation failures disappeared after fresh reload and were dev-HMR artifacts. The initially suspected Face no-op was disproved by the frozen-source comparison. No unrelated shell or camera rewrite was made.
+
+Reviewable synthetic screenshots: [Home320](qa-screens/app-ui-2026-10-09/home-sealed-320.jpg), [Look body390](qa-screens/app-ui-2026-10-09/look-body-sealed-390.jpg), [Look Face390](qa-screens/app-ui-2026-10-09/look-face-sealed-390.jpg), [new desktop landing](qa-screens/app-ui-2026-10-09/fresh-landing-final-desktop.jpg). Original report: /tmp/allworld-app-ui-evidence/acceptance-notes.md. All owned tabs, server and browser leases were closed; shared slots were verified free. The user requested quick reversible spacing/glitch repairs discovered during continued testing, including adjacent screens.
+
+Exact final CI37869331514 passed type/build/download/smoke/release policy and156 existing UI/start checks. Startup remains614846raw/222895gzip, within unchanged615000/223000 caps. New onboarding/model/component invocation was added to the opt-in UI job; no test expectations were changed. Public health independently returned a44629b3 via curl after this source-only phase; there was no production upload.
+
+Open acceptance remains funded car buy/use/sell, rental move/receipt/reload, offline Boutique, delayed promotion dilemmas, ordinary player-chat viewport, enlarged text, physical-device performance and fresh-main integration/production checks. This closes the named local spacing/guest-label milestone; it does not close all apps or the full parity roadmap.
+
+### Home move and game action acceptance, 9 October
+
+The isolated settled actor moved to Face-me-I-face-you, Mushin for the displayed7200. Cash72500→65300, Bank debit7200 and rent2400/week agreed; totalweekly14400 includes the existing12000 loan instalment. Safe before/after backend snapshots retained the exact owned-home object, all13 placed pieces and empty storage. Owned Plot1/Street1/Estate1 in LagosIsland and free return-home option remained. Reload retained65300. No production data or real provider was used.
+
+At320/390, Oro practice accepted on-screen and physical guesses, showed short-word refusal, solved result and Another word. Chess Easy AI started, e2 exposed legal e3/e4, e4 received Nc6; Weave AI allowed placement, refused an undersized first word, and Recall restored rack7. Penalties shot/keeper turns produced1-1 with another turn. Attempts to sit at a second table while seated were refused correctly. Native Chrome handled leave confirmations; the CUA tab-dialog timeout/stale tracking was a tool issue.
+
+Runtime42d26271 includes f462c9d8 and122bae7d. Oro amber uses dark ink and green uses a darker fill; actual computed pairs give about5.70/5.73 contrast. Header/hard-mode target and result/link wrapping are improved, card shadows removed. Keyboard/hard mode freeze while checking a guess. Practice module failure now has a clear error and explicit Reload game. Fault blocking the dictionary proved the original same-module Try again remained stuck after unblocking; the explicit reload cleared that failure, reopened Practice and accepted/scored a guess while retaining actor65300 and owned home. Daily fetch errors retain normal Try again.
+
+Chess normalizes an existing server bot suffix before rendering one marker. It preserves a marker for bot names that have none, satisfying the existing component check without changing its expectation. Called-off status follows the server result; generic forfeit wording does not blame the opponent. Deferred bot-start intent clears on Back. No scoring, payout, rating or wallet rule changed.
+
+CI37871093988 and37871486790 passed type/build/download/smoke/policy but failed the existing suffix check for an unsuffixed bot name. Corrected exact CI37871730141 passed all gates and210 existing UI/start/table checks. Startup614846raw/222924gzip stays within unchanged615000/223000 caps. No new test expectations. Evidence: /tmp/allworld-app-ui-evidence/game-actions-notes.md and /tmp/allworld-games-final-ci.log. Reviewed [recovered Oro](qa-screens/app-ui-2026-10-09/oro-recovered-122bae-320.jpg), [marked key colors](qa-screens/app-ui-2026-10-09/oro-marked-final-320.jpg), [single bot marker](qa-screens/app-ui-2026-10-09/chess-header-42d262-320.jpg).
+
+All owned network blocks, tabs, server and leases were cleaned up; shared slots free. Open: pending-guess delay fault, full multiplayer/match endings, free return-home action, paid car transitions, physical devices and integrated production acceptance. Source/automated/local browser proofs remain distinct from deployment.

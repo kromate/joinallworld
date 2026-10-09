@@ -11,6 +11,11 @@ on:
         required: true
         type: boolean
         default: false
+      ui_checks:
+        description: Run published app UI regressions alongside canonical fast checks; full release checks still required
+        required: false
+        type: boolean
+        default: false
       focused_living_world:
         description: Synthetic living-world HTTP and Worker evidence only; does not satisfy release CI
         required: false
@@ -85,6 +90,61 @@ jobs:
       - run: npm run size:download
       - run: npm run test:smoke
 
+  ui-regressions:
+    if: github.event_name == 'workflow_dispatch' && inputs.ui_checks && !inputs.focused_living_world && !inputs.full_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Existing app UI model and component checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          src/app/features/models.test.ts
+          src/app/features/support/supportPanel.test.ts
+          src/app/features/money/statementHistory.test.ts
+          src/app/features/business/business.test.ts
+          src/app/features/business/businessComponents.test.ts
+          src/app/features/visit/visit.test.ts
+          src/app/features/growth/growth.test.ts
+          src/app/features/growth/components.test.ts
+          src/app/features/politics/politicsModel.test.ts
+          src/app/features/politics/politicsComponents.test.ts
+          src/app/features/messages/notifyModel.test.ts
+          src/app/features/messages/messagesComponents.test.ts
+          src/app/features/sim/soundSettingsModel.test.ts
+          src/app/features/start/creatorModel.test.ts
+          src/app/features/start/startModels.test.ts
+          src/app/features/start/startComponents.test.ts
+          src/app/features/tables/tablesModel.test.ts
+          src/app/features/tables/tablesComponents.test.ts
+          src/app/features/tables/chessModel.test.ts
+          src/app/features/tables/chessBoard.test.ts
+          src/app/features/tables/weaveModel.test.ts
+          src/app/features/tables/weaveBoard.test.ts
+          server/economy/effects.test.ts
+          server/recovery-action-intent.test.ts
+          server/salt.test.ts
+
+      - name: Existing shopping, housing and career checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:'
+          src/app/features/panelsA.test.ts
+
+      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - name: Existing Worker host and timed-action checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
+
   full:
     name: ${{ inputs.focused_living_world && 'evidence-only - full omitted' || format('full ({0})', matrix.node) }}
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
@@ -118,7 +178,7 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=1536
     steps:
       - name: Refuse ambiguous evidence mode
-        if: inputs.full_checks || inputs.startup_report
+        if: inputs.full_checks || inputs.startup_report || inputs.ui_checks
         run: exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

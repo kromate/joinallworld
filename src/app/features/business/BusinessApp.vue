@@ -54,7 +54,16 @@ const prices = reactive<Record<string, number>>({})
 const draft = reactive<{ type: BusinessTypeId; name: string; colour: string; icon: string }>({ type: 'food', name: '', colour: 'gold', icon: '' })
 const closing = ref(false)
 const slots = { open: requestSlot(), stock: requestSlot(), collect: requestSlot(), rent: requestSlot(), upgrade: requestSlot(), close: requestSlot(), bag: requestSlot(), buy: requestSlot() }
-watch(mine, (shop) => { for (const product of shop?.products ?? []) if (prices[product.id] === undefined) prices[product.id] = product.price }, { immediate: true })
+let formShopId: string | null = null
+watch(mine, (shop) => {
+  if (!shop) return
+  if (shop.id !== formShopId) {
+    for (const id of Object.keys(prices)) delete prices[id]
+    for (const id of Object.keys(order)) delete order[id]
+    closing.value = false; formShopId = shop.id
+  }
+  for (const product of shop.products) if (prices[product.id] === undefined) prices[product.id] = product.price
+}, { immediate: true })
 const picked = computed(() => stalls.value?.types.find((type) => type.id === draft.type))
 watch(picked, (type) => { if (type && !type.icons.includes(draft.icon)) draft.icon = type.icons[0] ?? '' }, { immediate: true })
 
@@ -146,11 +155,11 @@ const rules = [
             <ul class="biz-list biz-card">
               <li v-for="product in mine.products" :key="product.id" class="biz-product">
                 <div class="biz-what"><strong>{{ product.label }}</strong><small>{{ product.stock }} in stock · costs {{ money(product.cost) }}{{ product.local ? ' here, where it comes from' : '' }}</small></div>
-                <label class="biz-price">Price<input v-model.number="prices[product.id]" type="number" inputmode="numeric" :min="product.min" :max="product.max" step="10" :disabled="!mine.here" :aria-label="`Price of ${product.label}, ${money(product.min)} to ${money(product.max)}`"><small>{{ priceWords(prices[product.id] ?? product.price, product.base) }}</small></label>
+                <label class="biz-price">Price<input v-model.number="prices[product.id]" type="number" inputmode="numeric" :min="product.min" :max="product.max" step="10" :disabled="!mine.here || server.busy('price')" :aria-label="`Price of ${product.label}, ${money(product.min)} to ${money(product.max)}`"><small>{{ priceWords(prices[product.id] ?? product.price, product.base) }}</small></label>
                 <div class="biz-step" role="group" :aria-label="`Units of ${product.label} to buy`">
-                  <button type="button" :disabled="!mine.here || !(order[product.id] ?? 0)" :aria-label="`Fewer ${product.label}`" @click="step(product.id, -5)">−</button>
+                  <button type="button" :disabled="!mine.here || server.busy('stock') || !(order[product.id] ?? 0)" :aria-label="`Fewer ${product.label}`" @click="step(product.id, -5)">−</button>
                   <output>{{ order[product.id] ?? 0 }}</output>
-                  <button type="button" :disabled="!mine.here" :aria-label="`More ${product.label}`" @click="step(product.id, 5)">+</button>
+                  <button type="button" :disabled="!mine.here || server.busy('stock')" :aria-label="`More ${product.label}`" @click="step(product.id, 5)">+</button>
                 </div>
               </li>
             </ul>
@@ -187,7 +196,7 @@ const rules = [
             <div class="biz-card biz-box">
               <div><small>Closing returns half of what the stall and its upgrades cost, a part of the stock’s cost and the cash box.</small><strong>{{ money(mine.closeRefund) }} back</strong></div>
               <BaseButton v-if="!closing" small variant="danger" @click="closing = true">Close…</BaseButton>
-              <span v-else class="biz-confirm"><CivicAction :working="server.busy('close')" :reason="offline('close') ?? ''" @click="close">Yes, close it</CivicAction><BaseButton small @click="closing = false">Keep it</BaseButton></span>
+              <span v-else class="biz-confirm"><CivicAction :working="server.busy('close')" :reason="offline('close') ?? ''" @click="close">Yes, close it</CivicAction><BaseButton small :disabled="server.busy('close')" @click="closing = false">Keep it</BaseButton></span>
             </div>
           </template>
         </template>
@@ -269,21 +278,22 @@ const rules = [
 :global(.ph.is-wide) .biz-types { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 620px; }
 .biz-note { font-size: 12.5px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-1) 2px !important; }
 .biz-alert { margin: 0 !important; padding: 10px 14px; border-radius: var(--r-md); background: var(--c-red-soft); color: var(--c-red-dark); font-size: 13px !important; line-height: 1.4 !important; font-weight: 600; }
-.biz-card { border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); padding: 12px 14px; }
-.biz-box { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
-.biz-box > div { display: grid; gap: 2px; min-width: 0; }
-.biz-box strong { font-size: var(--t-lead); font-variant-numeric: tabular-nums; }
+.biz-card { min-width: 0; border-radius: var(--r-md); border: 1px solid var(--c-line); background: #fff; padding: 14px; }
+.biz-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.biz-box > div { flex: 1 1 180px; display: grid; gap: 2px; min-width: 0; }
+.biz-box strong { overflow-wrap: anywhere; font-size: var(--t-lead); font-variant-numeric: tabular-nums; }
 .biz-box small, .biz-what small { color: var(--c-muted); font-size: 12px; line-height: 1.35; }
 .biz-box :deep(.civic-action), .biz-list :deep(.civic-action) { flex: none; margin: 0; max-width: 160px; }
 .biz-list { list-style: none; margin: 0; padding: 0; }
 .biz-list.biz-card { padding: 0 14px; }
-.biz-list li { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 13px; min-height: var(--tap); }
+.biz-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 13px; min-height: var(--tap); }
 .biz-list li:last-child { border-bottom: 0; }
-.biz-what { display: grid; gap: 2px; min-width: 0; flex: 1; overflow-wrap: anywhere; }
+.biz-what { display: grid; gap: 2px; min-width: 0; flex: 1 1 130px; overflow-wrap: anywhere; }
 .biz-what strong { font-size: 14px; }
-.biz-product { flex-wrap: wrap; }
-.biz-price { display: grid; gap: 2px; font-size: 11px; font-weight: 600; color: var(--c-muted); margin: 0 !important; }
-.biz-price input { width: 84px; min-height: var(--tap); font-variant-numeric: tabular-nums; }
+.biz-list li.biz-product { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 16px 0; }
+.biz-product > .biz-what { grid-column: 1 / -1; }
+.biz-price { min-width: 0; display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--c-muted); margin: 0 !important; }
+.biz-price input { width: min(100%, 128px); box-sizing: border-box; font-size: 16px; min-height: var(--tap); font-variant-numeric: tabular-nums; }
 .biz-price small { font-weight: 500; }
 .biz-step { display: flex; align-items: center; gap: 4px; }
 .biz-step button { width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--c-fill); font: 700 18px var(--font); cursor: pointer; }
@@ -293,20 +303,20 @@ const rules = [
 .biz-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .biz-actions :deep(.civic-action) { flex: 1 1 140px; display: grid; margin: 0; }
 .biz-owned { font-size: 12px; font-weight: 700; color: var(--c-green-dark); }
-.biz-confirm { display: flex; gap: 6px; align-items: start; }
+.biz-confirm { display: flex; flex-wrap: wrap; gap: 6px; align-items: start; }
 .biz-shops { list-style: none; margin: 0; padding: 0; }
 .biz-shops :deep(.ll-rows) { display: grid; gap: var(--s-3); }
-.biz-shop > header { display: flex; align-items: center; gap: var(--s-3); padding-bottom: 8px; border-bottom: 1px solid var(--c-line); }
+.biz-shop > header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); padding-bottom: 8px; border-bottom: 1px solid var(--c-line); }
 .biz-sign { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-sm); font-size: 22px; box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-link { border: 0; background: none; padding: 0; font: inherit; color: var(--c-green-dark); text-decoration: underline; cursor: pointer; }
-.biz-report { display: block; margin: 6px 0 0 auto; font-size: 11px; color: var(--c-muted); min-height: 24px; }
-.biz-rate { display: flex; align-items: center; gap: 2px; padding-top: 8px; border-top: 1px solid var(--c-line); font-size: 12.5px; font-weight: 600; }
-.biz-rate span { margin-right: auto; }
-.biz-rate button { width: 36px; height: var(--tap); border: 0; background: none; font-size: 22px; color: var(--c-amber, #e8a643); cursor: pointer; }
+.biz-report { display: block; margin: 6px 0 0 auto; font-size: 13px; color: var(--c-muted); min-height: 44px; }
+.biz-rate { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding-top: 8px; border-top: 1px solid var(--c-line); font-size: 12.5px; font-weight: 600; }
+.biz-rate span { flex-basis: 100%; margin-right: auto; }
+.biz-rate button { width: 44px; height: var(--tap); border: 0; background: none; font-size: 22px; color: var(--c-amber, #e8a643); cursor: pointer; }
 .biz-form { display: grid; gap: var(--s-3); }
 .biz-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 !important; }
 .biz-label { display: block; margin: 0 0 5px; font-size: 13px; font-weight: 600; }
-.biz-figures { flex: none; text-align: right; font-size: 11.5px; line-height: 1.4; color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.biz-figures { flex: 1 1 120px; min-width: 0; overflow-wrap: anywhere; text-align: right; font-size: 12px; line-height: 1.4; color: var(--c-muted); font-variant-numeric: tabular-nums; }
 .biz-swatches { display: flex; flex-wrap: wrap; gap: 6px; }
 .biz-swatches button { width: var(--tap); height: var(--tap); border-radius: var(--r-sm); border: 2px solid transparent; cursor: pointer; font-size: 20px; background: var(--c-fill); box-shadow: inset 0 0 0 1px #0000001a; }
 .biz-swatches button[aria-pressed=true] { border-color: var(--c-ink); box-shadow: 0 0 0 2px #fff inset; }

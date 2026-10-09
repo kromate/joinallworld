@@ -152,7 +152,7 @@ export function overBanner(over: NonNullable<ChessView['over']>): string {
     case 'agreed': return 'Draw agreed'
     case 'resign': return 'Resigned'
     case 'time': return 'Out of time'
-    case 'forfeit': return 'Opponent left'
+    case 'forfeit': return 'A player left'
     default: return over.draw ? 'Draw' : 'Game over'
   }
 }

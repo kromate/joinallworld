@@ -12,12 +12,16 @@ from unittest.mock import patch
 
 from index_namespace import (
     MAX_AGGREGATE_BYTES, MIN_AGGREGATE_BYTES, namespace_binding,
-    open_index_namespace,
+    open_index_namespace, open_index_shard_namespace,
 )
+from index_binding import decode_index_binding
 from index_reservations import DATABASE_BYTES, MIB
-from index_root import charged_index_root
-from index_writer_lock import index_writer_lease
+from index_root import (charged_index_root, prepare_index_shard_plan_authority,
+                        planned_index_reservations, precharged_index_shard_root)
+from index_binding_publish import publish_index_shard_binding
+from index_writer_lock import index_writer_lease, IndexWriterBusy
 from test_index_root import binding
+from test_index_registry_worker import planner_fixture
 
 
 class IndexNamespaceTests(unittest.TestCase):
@@ -34,6 +38,17 @@ class IndexNamespaceTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
         resource.setrlimit(resource.RLIMIT_FSIZE, self.saved_fsize)
+
+    def _shard_authority(self, *, aggregate=128*MIB, max_captures=1):
+        raw, pin, base, _ = planner_fixture(policy_changes={
+            "aggregateBytes": aggregate, "maxCaptures": max_captures,
+        })
+        return prepare_index_shard_plan_authority(raw, pin, base), base
+
+    @staticmethod
+    def _reservation_rows(entries):
+        return [{"indexHash": key, "bindingBytes": raw, "reservedBytes": amount}
+                for key, raw, amount in entries]
 
     def test_initialization_and_exact_reopen_keep_metadata_database_inode_and_budget(self):
         budget = 64 * MIB
@@ -343,6 +358,205 @@ raise RuntimeError("fixture failed to exit at its boundary")
             with open_index_namespace(self.root, 64 * MIB):
                 pass
         self.assertTrue(path.exists())
+
+    def test_shard_namespace_atomically_charges_and_reopens_exact_v2_children(self):
+        authority, _ = self._shard_authority()
+        entries = planned_index_reservations(authority)
+        self.assertEqual(len(entries), 2)
+        published = {}
+        with index_writer_lease(self.root) as inherited:
+            with open_index_shard_namespace(self.root, authority, inherited_lease=inherited) as opened:
+                self.assertEqual(opened.registry.snapshot()["reservations"], 0)
+                receipts = opened.registry.reserve_many(self._reservation_rows(entries))
+                self.assertTrue(all(not receipt["replayed"] for receipt in receipts))
+                self.assertEqual(opened.registry.snapshot()["chargedBytes"],
+                    17*MIB + sum(amount for _, _, amount in entries))
+                for key, _, _ in entries:
+                    with precharged_index_shard_root(opened.lease, opened.registry, authority, key) as child:
+                        report = publish_index_shard_binding(child, authority)
+                        target = child.lease.root / "binding.json"
+                        self.assertFalse(report["replayed"])
+                        self.assertEqual(target.read_bytes(), child.binding_bytes)
+                        published[key] = (child.lease.inode, target.stat().st_ino,
+                                           target.read_bytes())
+            with self.assertRaises(IndexWriterBusy):
+                with index_writer_lease(self.root):
+                    pass
+            os.fstat(inherited.descriptor)
+        with open_index_shard_namespace(self.root, authority) as reopened:
+            self.assertTrue(reopened.replayed)
+            self.assertEqual(reopened.registry.snapshot()["reservations"], 2)
+            for key, _, _ in entries:
+                with precharged_index_shard_root(reopened.lease, reopened.registry, authority, key) as child:
+                    report = publish_index_shard_binding(child, authority)
+                    target = child.lease.root / "binding.json"
+                    self.assertTrue(report["replayed"])
+                    self.assertEqual((child.lease.inode, target.stat().st_ino, target.read_bytes()),
+                                     published[key])
+
+    def test_legacy_namespace_opener_still_rejects_v2_plan_rows(self):
+        authority, _ = self._shard_authority()
+        entries = planned_index_reservations(authority)
+        with open_index_shard_namespace(self.root, authority) as opened:
+            opened.registry.reserve_many(self._reservation_rows(entries))
+        database = self.root / "reservations.sqlite"
+        uri = "file:" + str(database) + "?mode=ro"
+        connection = sqlite3.connect(uri, uri=True)
+        try:
+            before = connection.execute(
+                "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+        finally:
+            connection.close()
+        with self.assertRaises(ValueError):
+            with open_index_namespace(self.root, authority.aggregate_bytes):
+                self.fail("legacy opener yielded a V2 registry")
+        connection = sqlite3.connect(uri, uri=True)
+        try:
+            after = connection.execute(
+                "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+        finally:
+            connection.close()
+        self.assertEqual(after, before)
+
+    def test_plan_opener_preserves_partial_foreign_and_wrong_amount_rows(self):
+        authority, _ = self._shard_authority()
+        entries = planned_index_reservations(authority)
+        self.assertEqual(len(entries), 2)
+        foreign = binding("f")
+        cases = {
+            "partial": self._reservation_rows(entries[:1]),
+            "foreign": [{"indexHash": hashlib.sha256(foreign).hexdigest(),
+                         "bindingBytes": foreign, "reservedBytes": 32*MIB}],
+            "wrong-amount": [{"indexHash": entries[0][0], "bindingBytes": entries[0][1],
+                              "reservedBytes": entries[0][2] + 1}],
+        }
+        for name, rows in cases.items():
+            root = self.parent / f"namespace-{name}"
+            root.mkdir(mode=0o700)
+            os.chmod(root, 0o700)
+            with open_index_namespace(root, authority.aggregate_bytes):
+                pass
+            if name == "foreign":
+                with open_index_namespace(root, authority.aggregate_bytes) as opened:
+                    opened.registry.reserve_many(rows)
+            else:
+                with self.assertRaises(ValueError):
+                    with open_index_namespace(root, authority.aggregate_bytes) as opened:
+                        opened.registry.reserve_many(rows)
+            database = root / "reservations.sqlite"
+            uri = "file:" + str(database) + "?mode=ro"
+            connection = sqlite3.connect(uri, uri=True)
+            try:
+                before = connection.execute(
+                    "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+            finally:
+                connection.close()
+            names = set(path.name for path in root.iterdir())
+            with self.subTest(case=name), self.assertRaises(ValueError):
+                with open_index_shard_namespace(root, authority):
+                    self.fail("partial or foreign rows reached the body")
+            connection = sqlite3.connect(uri, uri=True)
+            try:
+                after = connection.execute(
+                    "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+            finally:
+                connection.close()
+            self.assertEqual(after, before)
+            self.assertEqual(set(path.name for path in root.iterdir()), names)
+
+    def test_shard_opener_accepts_only_the_exact_optional_base_row(self):
+        authority, base_bytes = self._shard_authority(aggregate=128*MIB)
+        entries = planned_index_reservations(authority)
+        base = decode_index_binding(base_bytes)
+        with open_index_namespace(self.root, authority.aggregate_bytes) as opened:
+            opened.registry.reserve(hashlib.sha256(base_bytes).hexdigest(), base_bytes,
+                                    base["reservedBytes"])
+        with open_index_shard_namespace(self.root, authority) as opened:
+            self.assertEqual(opened.registry.snapshot()["reservations"], 1)
+            opened.registry.reserve_many(self._reservation_rows(entries))
+        self.assertEqual(len(entries), 2)
+
+        wrong_root = self.parent / "namespace-base-wrong"
+        wrong_root.mkdir(mode=0o700)
+        os.chmod(wrong_root, 0o700)
+        wrong_amount = base["reservedBytes"] + 1
+        with self.assertRaises(ValueError):
+            with open_index_namespace(wrong_root, 128*MIB) as opened:
+                opened.registry.reserve_many([{
+                    "indexHash": hashlib.sha256(base_bytes).hexdigest(),
+                    "bindingBytes": base_bytes,
+                    "reservedBytes": wrong_amount,
+                }])
+        wrong_database = wrong_root / "reservations.sqlite"
+        wrong_uri = "file:" + str(wrong_database) + "?mode=ro"
+        connection = sqlite3.connect(wrong_uri, uri=True)
+        try:
+            before = connection.execute(
+                "SELECT hash,binding,reserved_bytes FROM reservations").fetchall()
+        finally:
+            connection.close()
+        with self.assertRaises(ValueError):
+            with open_index_shard_namespace(wrong_root, authority):
+                self.fail("wrong base amount reached the body")
+        connection = sqlite3.connect(wrong_uri, uri=True)
+        try:
+            after = connection.execute(
+                "SELECT hash,binding,reserved_bytes FROM reservations").fetchall()
+        finally:
+            connection.close()
+        self.assertEqual(after, before)
+
+    def test_shard_namespace_aggregate_mismatch_refuses_without_rewriting_state(self):
+        authority, _ = self._shard_authority(aggregate=128*MIB)
+        root = self.parent / "namespace-other-budget"
+        root.mkdir(mode=0o700)
+        os.chmod(root, 0o700)
+        with open_index_namespace(root, 129*MIB):
+            pass
+        metadata = (root / "namespace.json").read_bytes()
+        inode = (root / "reservations.sqlite").stat().st_ino
+        with self.assertRaises(ValueError):
+            with open_index_shard_namespace(root, authority):
+                self.fail("different aggregate reached the body")
+        self.assertEqual((root / "namespace.json").read_bytes(), metadata)
+        self.assertEqual((root / "reservations.sqlite").stat().st_ino, inode)
+
+    def test_successful_empty_or_base_only_shard_context_must_not_skip_full_batch(self):
+        authority, base_bytes = self._shard_authority(aggregate=128*MIB)
+        base = decode_index_binding(base_bytes)
+        cases = ("empty", "base-only")
+        for case in cases:
+            root = self.parent / f"namespace-unsettled-{case}"
+            root.mkdir(mode=0o700)
+            os.chmod(root, 0o700)
+            if case == "base-only":
+                with open_index_namespace(root, authority.aggregate_bytes) as opened:
+                    opened.registry.reserve(hashlib.sha256(base_bytes).hexdigest(), base_bytes,
+                                            base["reservedBytes"])
+            before_metadata = root / "namespace.json"
+            before_rows = []
+            if before_metadata.exists():
+                connection = sqlite3.connect("file:" + str(root / "reservations.sqlite") + "?mode=ro", uri=True)
+                try:
+                    before_rows = connection.execute(
+                        "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+                finally:
+                    connection.close()
+                metadata_bytes = before_metadata.read_bytes()
+            else:
+                metadata_bytes = None
+            with self.subTest(state=case), self.assertRaises(ValueError):
+                with open_index_shard_namespace(root, authority):
+                    pass
+            self.assertEqual(before_metadata.read_bytes(),
+                             metadata_bytes if metadata_bytes is not None else namespace_binding(authority.aggregate_bytes))
+            connection = sqlite3.connect("file:" + str(root / "reservations.sqlite") + "?mode=ro", uri=True)
+            try:
+                after_rows = connection.execute(
+                    "SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash").fetchall()
+            finally:
+                connection.close()
+            self.assertEqual(after_rows, before_rows)
 
 
 if __name__ == "__main__":

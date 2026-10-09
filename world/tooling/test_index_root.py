@@ -192,7 +192,7 @@ class IndexRootTests(unittest.TestCase):
         self.assertEqual(decode_planned_index_binding(base, authority)["format"], VERSIONS["format"])
         self.assertEqual(decode_planned_index_binding(entries[0][1], authority)["format"], "feature-index-binding-v2")
         with self.assertRaisesRegex(ValueError, "exact member"):
-            decode_planned_index_binding(binding("z"), authority)
+            decode_planned_index_binding(binding("f"), authority)
         with self.assertRaises(TypeError):
             planned_index_reservations(object())
 

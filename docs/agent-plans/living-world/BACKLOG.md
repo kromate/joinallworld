@@ -1,16 +1,16 @@
 # Living-world ranked backlog
 
-## Current finite repair batch - 9 October 2026
+## Current finite acceptance batch - 9 October 2026
 
-Latest published Integration source2a34897c4ba781fda70cdab6d4496dbd591b3117. Actual scoped readiness130/130 and overlapping profile12/12 pass. Previous f54 official compiler/policy/build pass, startup caps fail, full suites skip. Latest2a local startup623535raw/225784gzip/197564Brotli remains over8535/2784/1964. [Qualified receipt](candidate-2a34897-review.json). These checks do not accept the full candidate or the complete programme.
+Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48. ExactCI37966065099 compiler/build/download Node22/24 PASS, unchanged startup611290/221851/194883 across45cities. Policy/host/UI/integration-repairs PASS, latter134/134. [Exact qualified receipt](candidate-5e12d3a5-review.json). Remaining corpus/Workers and native/staging/release still unaccepted. Original byte/parser/failure receipts retained.
 
-1. Integration owns the current unopened-panel-loader split. Independent source comparison confirms all55 mappings preserve their original bodies and metadata, with direct initial HUD/start loaders retained. Resolve the new shared import's blank failure UI and verify catalogue/body rejection and player recovery. [Exact source review](panel-loader-source-review.json). No test/build/browser result is inferred from source.
-2. Latest owner dirty loader artifact actually passes all45 startup closures:610476raw/221594gzip/194663Brotli, with no eager body catalogue. Registered-panel focused57/57pass0skip. Preserve these scoped receipts; after visible failure recovery changes, freeze the exact source and remeasure relevant caps. Keep compatible readers, NPC/controllers, consent and progression behavior. No limit/minifier/heap/provider waiver or unchanged retries.
-3. Freeze changed SHA; complete exhaustive Node22/24/Worker/host/UI gates. Add actual unadjusted downtime and changed-route original-ticket recovery beyond existing scoped corruption/rollback/concurrency proofs.
-4. Verify native desktop/mobile ordinary OFF and active lesson/foreign recovery journeys, exact isolated staging and compatible save continuity. WORLD deploys accepted source and verifies live journey/saves/observation thresholds.
-5. Continue teaching activation and queued physical school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload after consolidation. Complete boarding authority remains unavailable; sampled geometry and closed PR23 are not acceptance. Continue later education/civic/simulated careers/business and consented Goalmatic phases.
+1. Observe existing exactCI37966065099 Node22/24 game/host/tooling and Worker corpus jobs to completion; diagnose concrete failures, preserve provider limits and do not restart live jobs. Completed compiler/download jobs do not certify corpus completion.
+2. Obtain actual verified Astra reactive/native failure/retry/reload, same selected panel/params/attrs/key hooks, mobile/desktop ordinary OFF and active lesson/country journeys. Branded recovery source and55 original body mappings are reviewed, actual SSR blank red retained; no SSR interactive proof claimed.
+3. Verify isolated exact Worker/assets staging, unadjusted elapsed downtime, changed-route original issued terms, compatible saves, consent and once-only money/rewards. Historical scoped130+overlap12 and local57/15 are not whole-source acceptance.
+4. WORLD releases only accepted source through existing controls; verify actual live build, full agreed journey, save continuity and observation thresholds.
+5. Continue teaching activation and complete physical school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload after consolidation, then later education/civic/simulated careers/real businesses and live consented Goalmatic. Complete boarding authority and selected Goals schema remain unresolved independently.
 
-Integration is sole shared writer; WORLD uploader. Productiona446 health-only; no programme release. Goalmatic target/schema question remains independent with disabled/mock adapter. Phase0 discovery only accepted; phases1-5/A1-A10 OPEN. Native goal ACTIVE; saved records do not execute while stopped. Older entries below remain historical.
+Integration sole assembler/test writer; WORLD uploader. Lastproductiona446health only, no programme release. Native goal ACTIVE, phase0 discovery only accepted; phases1-5/A1-A10 OPEN. Saved records do not run while stopped. Older entries historical.
 
 ## Current verified evidence and next batch - 2026-10-09T14:37:39Z
 

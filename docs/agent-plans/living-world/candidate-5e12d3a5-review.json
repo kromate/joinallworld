@@ -1,0 +1,417 @@
+{
+  "observedAt": "2026-10-09T17:33:31.989935+00:00",
+  "candidate": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
+  "accepted": false,
+  "programmeReleased": false,
+  "source": "Published Integration candidate independently verified; runtime clean at observation.",
+  "ci": {
+    "id": 37966065099,
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37966065099",
+    "headSha": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
+    "status": "queued",
+    "conclusion": "",
+    "jobs": [
+      {
+        "id": 113940600899,
+        "name": "release-policy",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": []
+      },
+      {
+        "id": 113940601191,
+        "name": "full-worker (24)",
+        "status": "in_progress",
+        "conclusion": "",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601198,
+        "name": "integration-repairs",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601208,
+        "name": "host-acceptance",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": []
+      },
+      {
+        "id": 113940601335,
+        "name": "full (22)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run typecheck",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run size:download",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601344,
+        "name": "full (24)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run typecheck",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run size:download",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601397,
+        "name": "full-worker (22)",
+        "status": "in_progress",
+        "conclusion": "",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601404,
+        "name": "full-node (24, game)",
+        "status": "in_progress",
+        "conclusion": "",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "pending",
+            "conclusion": ""
+          }
+        ]
+      },
+      {
+        "id": 113940601415,
+        "name": "full-node (22, game)",
+        "status": "in_progress",
+        "conclusion": "",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601439,
+        "name": "ui-regressions",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601443,
+        "name": "full-node (22, tooling)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601450,
+        "name": "full-node (22, host)",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Run npm run build",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 113940601481,
+        "name": "full-node (24, tooling)",
+        "status": "queued",
+        "conclusion": "",
+        "steps": []
+      },
+      {
+        "id": 113940601675,
+        "name": "full-node (24, host)",
+        "status": "queued",
+        "conclusion": "",
+        "steps": []
+      },
+      {
+        "id": 113940602905,
+        "name": "build-and-smoke-fast",
+        "status": "completed",
+        "conclusion": "skipped",
+        "steps": []
+      },
+      {
+        "id": 113940603365,
+        "name": "typecheck-fast",
+        "status": "completed",
+        "conclusion": "skipped",
+        "steps": []
+      }
+    ]
+  },
+  "startup": {
+    "bytes": [
+      611290,
+      221851,
+      194883
+    ],
+    "caps": [
+      615000,
+      223000,
+      195600
+    ],
+    "cities": 45,
+    "qualification": "Official exact-candidate Node22 and Node24 download logs independently retained; each passes unchanged limits."
+  },
+  "localSmoke": {
+    "tests": 15,
+    "pass": 15,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 2061.958667,
+    "qualification": "Corrected parser against actual recovery artifact; preserve original72/71/1 and first incorrect decimal repair. Do not aggregate overlapping scopes."
+  },
+  "sourceReview": {
+    "originalBodyMappings": 55,
+    "metadataDrift": 0,
+    "recovery": "Narrow branded import failure catch, clear refs/key hook while failed, selected panel/params/attrs retained, explicit retry/reload. Normal child runtime errors still propagate.",
+    "parser": "Actual first fix changed5.55198 to50.55198; corrected whole-array numeric boundary independently verified on positive/negative/quoted controls; actual final smoke passes."
+  },
+  "browserOperator": {
+    "parentThread": "01a12069-9bd0-7eb1-bfe9-150d8af9cd46",
+    "sessionId": "01a120d5-cd85-72a1-997f-4981b1369dee",
+    "path": "/root/astra_acceptance",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "metadataTime": "2026-10-09T17:25:18.976Z",
+    "qualification": "Actual parent-bound runtime model verified. No browser acceptance inferred from assignment or session activity."
+  },
+  "production": {
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "qualification": "Last health evidence only; Root current Python public read returned403. Owner health JSON with serverTime1791566566236 archived; no deployment/live gameplay/save acceptance."
+  },
+  "remaining": [
+    "Complete all exact Node22/24 game/host/tooling and Worker corpus jobs",
+    "Actual reactive/native catalogue/body failure then user retry/reload",
+    "Native desktop/mobile lesson/country gameplay and saved-progress observations",
+    "Exact isolated Worker/assets staging, unadjusted downtime and changed-route issued-term continuity",
+    "WORLD accepted release, live version/journey/save verification and observation",
+    "Full physical connected driving journey and later programme phases; live consented Goalmatic"
+  ],
+  "logs": {
+    "allworld-panel-loader-fault-before.log": {
+      "sha256": "d5390c4692644f8771307ea1209d9ee2d5240197d17d34eca00d08b60f2d413e",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/d5390c469264-allworld-panel-loader-fault-before.log"
+    },
+    "allworld-panel-loader-recovery-final.log": {
+      "sha256": "1fc00acbc3443af92344e8942b7c78dcb30ca54f0165dbb99c67d667c0a42dba",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/1fc00acbc344-allworld-panel-loader-recovery-final.log"
+    },
+    "allworld-panel-loader-smoke-repair.log": {
+      "sha256": "6b969c25745cd4fc406bc11e832240ffd5d101f1331e83ec6a0f48e622397672",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/6b969c25745c-allworld-panel-loader-smoke-repair.log"
+    },
+    "allworld-panel-loader-smoke-final.log": {
+      "sha256": "462181db9429c29101e8c11471ec9485e57639c33c680e0d8874ef7170dc36c3",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/462181db9429-allworld-panel-loader-smoke-final.log"
+    },
+    "allworld-panel-loader-recovery-build.log": {
+      "sha256": "debc85ff31299b9760702319b80f3237f2e20b5150834e873eb74a784d77e842",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/debc85ff3129-allworld-panel-loader-recovery-build.log"
+    },
+    "allworld-panel-loader-recovery-budget.json": {
+      "sha256": "a590ea1d8ad411f3a491bcbdf707ed3b9ccf20c80554c8da4f2d354046b42ecd",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/a590ea1d8ad4-allworld-panel-loader-recovery-budget.json"
+    },
+    "allworld-panel-loader-production-health.json": {
+      "sha256": "b68e84a24cd963d420fb1cb23c8bdf8efeab69cbdda0c74283513810a9410d48",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/b68e84a24cd9-allworld-panel-loader-production-health.json"
+    },
+    "joinallworld-5e12-host-acceptance.log": {
+      "sha256": "865e7fd98a3e57812b6671dddb39998796a961fa493a5e682a64d95c7bf4b4cd",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/865e7fd98a3e-joinallworld-5e12-host-acceptance.log",
+      "summaryGroups": [
+        {
+          "tests": 89,
+          "pass": 89,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 20980.648057
+        },
+        {
+          "tests": 3,
+          "pass": 3,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 1053.281723
+        },
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 3325.947022
+        },
+        {
+          "tests": 12,
+          "pass": 12,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 1730.907414
+        },
+        {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 8721.52561
+        },
+        {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 3577.247166
+        },
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 17683.195962
+        },
+        {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 90957.261995
+        }
+      ]
+    },
+    "joinallworld-5e12-ui-regressions.log": {
+      "sha256": "8a2f3836359915bc26288ed0ddccccc49339a901e571fe37975bba7525d2ddda",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/8a2f38363599-joinallworld-5e12-ui-regressions.log",
+      "summaryGroups": [
+        {
+          "tests": 436,
+          "pass": 436,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 57390.05412
+        },
+        {
+          "tests": 43,
+          "pass": 43,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 9253.726493
+        },
+        {
+          "tests": 90,
+          "pass": 90,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 30269.529673
+        },
+        {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 11503.27989
+        },
+        {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 4174.731202
+        }
+      ]
+    },
+    "joinallworld-5e12-integration-repairs.log": {
+      "sha256": "bf0fe601edf97912b7441320e1a18039250dac77377f28f08b0d97e4ee4a069f",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/bf0fe601edf9-joinallworld-5e12-integration-repairs.log",
+      "summaryGroups": [
+        {
+          "tests": 134,
+          "pass": 134,
+          "fail": 0,
+          "skipped": 0,
+          "duration_ms": 286158.610265
+        }
+      ]
+    },
+    "joinallworld-5e12-full22.log": {
+      "sha256": "5749d59e6007ab0683be1efad4cc6c2aa52f2cf8e1b1b74f0b08d632f935bd41",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/5749d59e6007-joinallworld-5e12-full22.log",
+      "summaryGroups": []
+    },
+    "joinallworld-5e12-full24.log": {
+      "sha256": "b55310b111dc4334177511f82b704ff90eeeb1a3a286c6bce34d3ff6d500e1ea",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/b55310b111dc-joinallworld-5e12-full24.log",
+      "summaryGroups": []
+    },
+    "joinallworld-5e12-current-ci.json": {
+      "sha256": "9714cf839bb16f5903c819ba8412c9ffa00175bd1b5b7e0be37973b911b2eeb1",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/9714cf839bb1-joinallworld-5e12-current-ci.json"
+    }
+  }
+}

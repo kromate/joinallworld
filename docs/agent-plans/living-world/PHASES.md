@@ -2,13 +2,13 @@
 
 ## Current exact-source acceptance - 9 October 2026
 
-Published Integration2a34897c4ba781fda70cdab6d4496dbd591b3117 remains unaccepted. [Measured candidate evidence](candidate-2a34897-review.json), [current dirty panel-loader source review](panel-loader-source-review.json). Source review is not execution or release evidence.
+Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted. [Exact current CI/source evidence](candidate-5e12d3a5-review.json); historical [panel-loader review](panel-loader-source-review.json). Compiler/build/download22/24 and policy/host/UI/integration-repairs jobs PASS. Remaining corpus/Worker/native/staging gates remain open.
 
 | Unit | Evidence | Release state | Remaining acceptance |
 | --- | --- | --- | --- |
 | Active teaching/compatible reader | Historical engine/host/native functional receipts; scoped latest readiness130/130 | New starts OFF; unreleased | Exact full gates, readable desktop/mobile, staged/live save continuity, activation |
 | Five capitals/cashless return | Scoped actual Node/SQLite corruption, atomic failure, concurrent once-only and restart passes within130; overlapping profile12/12 | Unreleased | Unadjusted downtime, changed-route original terms, exact full/native/staging/live proofs |
-| Download/provider limits | Historicalf54/2a cap failure retained; current dirty loader local artifact610476/221594/194663 within unchangedcaps across45 closures, focused57/57pass | Local diagnostic pass; unaccepted release | Visible catalogue/body-failure recovery; freeze changed source and recheck exact compiler/caps/full suites plus native/staging |
+| Download/provider limits | Exact5e12 official Node22/24 compiler/build/download PASS611290/221851/194883 across45closures; local15smokePASS; original failures retained | Exact compiler/size gates pass; release unaccepted | Complete corpus/Workers and actual native retry/reload, gameplay and staging/save continuity |
 | Physical journey/later careers/business | Bounded foundations; sampled actor geometry lacks continuous boarding authority | Disabled/queued | Complete school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload and later programme |
 | Goalmatic | Private published contracts inspected | Disabled/mock | Selected consented workspace/install/Goals schema, events/reconciliation/revocation and live verification |
 

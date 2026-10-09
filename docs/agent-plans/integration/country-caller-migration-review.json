@@ -1,0 +1,72 @@
+{
+  "status": "source_review_complete_unimplemented",
+  "deadlineContext": "09:00 Africa/Lagos, 10 October 2026 / 08:00 UTC",
+  "integrationBase": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "worldHeadObserved": "473cab1fb178f78ba3fc37d2ba7753bbc4636641",
+  "trustedProjectionCommit": "5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf",
+  "trustedProjectionSha256": "ee772a4546dce84d7df11767d0d3d10bc6c67e4bc5888ebd8d76380fa9732600",
+  "admission": {
+    "cities": 50,
+    "nigeria": 40,
+    "foreign": 10,
+    "countries": 11,
+    "newCountries": 0
+  },
+  "recordedRouteTerms": {
+    "authored": 34,
+    "generated": 1053,
+    "total": 1087,
+    "combinedIntegrationVerified": false
+  },
+  "packetPins": {
+    "nigeria-catalogue.generated.ts": "f5e4a694fce5daca5823b0838b0ddad04a161362c56695d6969dbc65e572f2cb",
+    "foreign-admission.generated.ts": "c1d3b64555cc7bce02b35bfd073b3f045982c2bd50d0e54934d18338d1c73f20",
+    "foreign-loaders.generated.ts": "f8ec4a18a58cb4cb238fcf049308b8233ffaffe8e484b7bd0129c9381d965426",
+    "country-directory.generated.ts": "c7d3777f7f29abb2c802c4f09bcea6d0a0e889858f50e8bb21e5d96f57f96f91",
+    "countryDirectory.ts": "847cd1eebabf1bdfd6238ab3bca9996b27d4186a9ed3611d172b7035da413f1f",
+    "countryDirectoryHttp.ts": "9782dde677adf5d3f70b8a93e912dac048443c77238bfa83cf6c939b32fb9dcd"
+  },
+  "decision": "Use trusted facts for synchronous admission, names and route inputs; use an environment-selected provider for full catalogue metadata; HTTP is verified transport only.",
+  "ownedIntegrationFiles": [
+    "src/game/cities/catalogue.ts",
+    "src/game/cities/registry.ts",
+    "src/game/cities/catalogue-provider.ts",
+    "src/game/cities/catalogue-provider.browser.ts",
+    "src/app/features/start/placesModel.ts",
+    "src/app/features/start/StepHome.vue",
+    "src/map3d/regions.ts",
+    "src/map3d/geo/atlas.ts",
+    "vite.config.ts"
+  ],
+  "readOnlyCallers": [
+    "src/client.ts",
+    "src/game/cities/lifeCities.ts",
+    "src/app/bootstrap.ts",
+    "src/app/features/start/warmLanding.ts",
+    "server/**"
+  ],
+  "gates": [
+    "ordered trusted facts and exact eec allCityLinks parity",
+    "focused existing registry, links, paths, bootstrap, client, start, regions and atlas suites",
+    "npm run typecheck:slot",
+    "npm run build:slot",
+    "npm run size:download with unchanged budgets and startup import audit",
+    "npm run test:smoke with txt assets only",
+    "isolated Nigeria and one-foreign-city native save/travel continuity",
+    "browser request audit for zero Nigeria requests and selected-country-only foreign reads"
+  ],
+  "stopConditions": [
+    "route parity changes",
+    "server full catalogue changes",
+    "automatic Lagos country HTTP appears",
+    "implementation needs a source file outside the whitelist"
+  ],
+  "rootRevalidation": {
+    "worldHead": "bb6b779dc648c5d492d6b6db22361962153eb2c5",
+    "matchedProjectionAndPacketSourceHashes": 7,
+    "status": "scope_approved_for_remote_implementation_only",
+    "newAdmission": "separate 55-row proposal; never silently change this 50-row migration baseline",
+    "localRuntimeChanged": false,
+    "productionChanged": false
+  }
+}

@@ -63,9 +63,9 @@ function meshBox(parent, name, size, center) {
 }
 function makeSourceHomeStairs(parent) {
   // Mirrors `stairsOf` in 3af17a0 home-scene.ts: ROOM=10, WALL_HEIGHT=3.4,
-  // AVATAR_SCALE=.72, flight {x:0,y:0,w:6,h:2,dir:1}, tile=1.
-  const flight = { x: 0, y: 0, w: 6, h: 2, dir: 1 };
-  const room = 10, wallHeight = 3.4, tile = 1, avatarScale = 0.72;
+  // AVATAR_SCALE=.72, actual owned duplex grid12 flight {x:7,y:14,w:6,h:2,dir:1}, tile=10/12.
+  const flight = { x: 7, y: 14, w: 6, h: 2, dir: 1 };
+  const room = 10, wallHeight = 3.4, tile = room / 12, avatarScale = 0.72;
   const edge = (index) => -room / 2 + index * tile;
   const count = Math.max(flight.w * 2, Math.ceil(wallHeight / (0.18 * tile * avatarScale * 2.45 / 1.81)));
   const run = flight.w * tile / count, rise = wallHeight / count;
@@ -154,7 +154,9 @@ try {
       return { kind: 'seat-anchor', hipWorld: [local.x, hipWorld.y, local.z], seatTopY: topWorldY, floorY: floorWorldY };
     }
     const stairs = makeSourceHomeStairs(chairParent);
-    const stairSurfaceMeshes = [...stairs.meshes, ...floorMeshes];
+    // Exact duplex ground footprint: plot.w18, plot.d16, tileROOM/grid12.
+    const stairFloor = meshBox(chairParent, 'duplex-floor', [18 * (10 / 12), 0.1, 16 * (10 / 12)], [-5 + 9 * (10 / 12), -0.034, -5 + 8 * (10 / 12)]);
+    const stairSurfaceMeshes = [...stairs.meshes, stairFloor];
     const missingStairSamples = [];
     const actor = await prepareNativeSkinnedBody({
       kit, seed: `contact-${family}`, look: savedLook(family, family === 'woman' ? 'office' : 'casual'), sceneScale: 1,
@@ -186,7 +188,7 @@ try {
     assert.equal(actor.pose, 'idle', `${family}: failed seat contact rolls back the public pose`);
     assert.equal(actor.seated, false, `${family}: failed seat contact never reports seated`);
     const stairPhases = [0.18, 0.42, 0.68, 0.91];
-    actor.fit(0.72); // Exact home AVATAR_SCALE; stairs travel along the flight's X axis.
+    actor.fit((10 / 12) * 0.72); // Exact duplex tile * AVATAR_SCALE; stairs travel along the flight's X axis.
     for (const climb of [1, -1]) for (let index = 0; index < stairPhases.length; index++) {
       const step = climb > 0 ? index * 4 : (stairPhases.length - 1 - index) * 4;
       const x = stairs.xStart + (step + 0.5) * stairs.run;
@@ -200,7 +202,7 @@ try {
     }
     for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable/i, `${family}: ${unsupported} remains refused`);
     familyResults.push({ family, furniture: Object.keys(furniture), stairPhases,
-      stairFixture: { sceneScale: 0.72, travelAxis: 'X', yaw: 'direction * pi/2', family: '3af17a0 home-scene stairsOf', treads: stairs.count, runPerTread: stairs.run, risePerTread: stairs.rise },
+      stairFixture: { sceneScale: (10 / 12) * 0.72, plan: 'owned duplex grid12, flight x7/y14/w6/h2/dir1', travelAxis: 'X', yaw: 'direction * pi/2', family: '3af17a0 home-scene stairsOf', treads: stairs.count, runPerTread: stairs.run, risePerTread: stairs.rise },
       sourceClips: actor.preparedMetrics.sourceClipCount,
       bodyTriangles: actor.preparedMetrics.authoredBodyTriangles, clothingTriangles: actor.preparedMetrics.clothingTriangles,
       shoeTriangles: actor.preparedMetrics.shoeTriangles, seatSurfaceContract: 'posterior body+visible clothing converged <=1mm; both shoes supported',
@@ -213,7 +215,7 @@ try {
     assert.throws(() => noContactActor.stride(0.3, false, 0.18), /stair.*contact/i, `${family}: stairs without a host query are refused`);
     assert.equal(noContactActor.pose, 'idle');
     noContactActor.dispose(); actors.pop();
-    for (const object of [officeChair, homeChair, impossibleChair, ...stairs.meshes, floor]) {
+    for (const object of [officeChair, homeChair, impossibleChair, ...stairs.meshes, stairFloor, floor]) {
       chairParent.remove(object); object.geometry.dispose(); object.material.dispose();
     }
     kit.dispose(); kits.pop();

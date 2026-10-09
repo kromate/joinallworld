@@ -1,0 +1,165 @@
+{
+  "format": "world-starter-extent-independent-audit-v1",
+  "checkedAt": "2026-10-09T21:39:45.892588+00:00",
+  "status": "passed",
+  "importsCompilerOrRevisionPublisher": false,
+  "networkRequests": 0,
+  "cities": [
+    {
+      "country": "SO",
+      "city": "mogadishu",
+      "revisionId": "88ecfb4aa49ef51be84c671404e506d3bfb2f07966ec48455d3f01f8dcdc19e1",
+      "beforeBounds": [
+        45.292699,
+        2.00244,
+        45.379732,
+        2.083627
+      ],
+      "afterBounds": [
+        45.292699,
+        2.00244,
+        45.379732,
+        2.0867873
+      ],
+      "beforeOutsideVertices": 37,
+      "afterOutsideVertices": 0,
+      "buildings": 350,
+      "roads": 53,
+      "retainedVertices": 3199,
+      "completeRoadAndBuildingCoordinatesUnchanged": true,
+      "sourceAndRequestLedgerUnchanged": true,
+      "planSha256": "bfca2eeecdfca4d1af47e89e0021f586a71c64e6d9c4ceb4d09147e8066af52a",
+      "beforeReceiptSha256": "da9a559ac7048b8b3a155eb986d224643e00bbc818f81e63867d2475920fef6b",
+      "afterReceiptSha256": "585625f37eb1657935bf6c8097cac7470c726c913c9d6e52125f1a2590722da7",
+      "resumePassed": true
+    },
+    {
+      "country": "TZ",
+      "city": "dar",
+      "revisionId": "3dc07d449f9cd84903aaf17ce69521f24abe38d3467a7e5aeee94b7428d3e668",
+      "beforeBounds": [
+        39.195288,
+        -6.885499,
+        39.281396,
+        -6.783067
+      ],
+      "afterBounds": [
+        39.195288,
+        -6.885499,
+        39.281396,
+        -6.7772828
+      ],
+      "beforeOutsideVertices": 64,
+      "afterOutsideVertices": 0,
+      "buildings": 350,
+      "roads": 154,
+      "retainedVertices": 4997,
+      "completeRoadAndBuildingCoordinatesUnchanged": true,
+      "sourceAndRequestLedgerUnchanged": true,
+      "planSha256": "1adc220b697c71e2eb781b17915320aa428700ecc17716f91e9d249d6a1e0907",
+      "beforeReceiptSha256": "580d24acc89453ae2971f8de5b2a6d6c40229a3d5d6f3b3e1061b3a2cefc57f6",
+      "afterReceiptSha256": "3ec5b56473e9020470e83937320a56e3b5f7f06db76079b9ca291958aaf4a469",
+      "resumePassed": true
+    },
+    {
+      "country": "BW",
+      "city": "gaborone",
+      "revisionId": "bc7f95881b073b32b39e63c77a68cf1a448e1b70acbb100441b8d2190e968513",
+      "beforeBounds": [
+        25.896948,
+        -24.661314,
+        25.9302,
+        -24.543201
+      ],
+      "afterBounds": [
+        25.896948,
+        -24.6634568,
+        25.9302,
+        -24.543201
+      ],
+      "beforeOutsideVertices": 11,
+      "afterOutsideVertices": 0,
+      "buildings": 248,
+      "roads": 32,
+      "retainedVertices": 2130,
+      "completeRoadAndBuildingCoordinatesUnchanged": true,
+      "sourceAndRequestLedgerUnchanged": true,
+      "planSha256": "0b7f56a3b7dbb18c4cd3eda005097b3236cc8676e9a27d22a3d75540311a2f28",
+      "beforeReceiptSha256": "6ec590ce942ca4716ec99a110626d31e16b0d435b6c979492f29e2e7fc4ea135",
+      "afterReceiptSha256": "3710fc6fb91a7aa112b2ed40ed8368b57b02674bdf667621b283edb4b401685a",
+      "resumePassed": true
+    }
+  ],
+  "limitations": [
+    "Clipped land checked for coordinate containment, not an independent GIS/topology equivalence proof.",
+    "No runtime registration, rendering, flight or production acceptance is inferred."
+  ],
+  "engineVerification": {
+    "format": "world-current-starter-engine-verification-v1",
+    "checkedAt": "2026-10-09T21:40:44.728193+00:00",
+    "status": "passed",
+    "elapsedSeconds": 3.814,
+    "scope": "isolated in-process city map/content and flight/save lifecycle; not hosted/native/production",
+    "verifierSha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae",
+    "cities": [
+      {
+        "city": "mogadishu",
+        "status": "verified",
+        "roads": 53,
+        "buildingBoxes": 700,
+        "logSha256": "fb92920ba8d32d579b4ae0416364bc71d756e2f8326de8506982f08cbfb54d39"
+      },
+      {
+        "city": "dar",
+        "status": "verified",
+        "roads": 154,
+        "buildingBoxes": 700,
+        "logSha256": "eb5f38c653764b2b112224282086fef4590678202af0bf8a76271004c2aba998"
+      },
+      {
+        "city": "gaborone",
+        "status": "verified",
+        "roads": 32,
+        "buildingBoxes": 496,
+        "logSha256": "08bdb8630904e3ca4b47bf889657c128d9ba9a07aecf17703e4a37f6c729766d"
+      },
+      {
+        "city": "tripoli",
+        "status": "verified",
+        "roads": 146,
+        "buildingBoxes": 700,
+        "logSha256": "a539b7b3af439fb86a83fc464967e236d75bab3ab611921b5570cfa0f897e619"
+      },
+      {
+        "city": "tunis",
+        "status": "verified",
+        "roads": 148,
+        "buildingBoxes": 130,
+        "logSha256": "c541d97727e8c780e3b021c6ac2d0f21ab626f68e8ca620a17f471afee389223"
+      },
+      {
+        "city": "freetown",
+        "status": "verified",
+        "roads": 85,
+        "buildingBoxes": 700,
+        "logSha256": "12bcd780b506450345b339a95b846c399b7c2ee65dbdd43290001d1655f088ac"
+      },
+      {
+        "city": "monrovia",
+        "status": "verified",
+        "roads": 30,
+        "buildingBoxes": 700,
+        "logSha256": "5958d8d96869acc5f4aebb013bc8e11ed9792444f0ff25cc05214f0046a674a7"
+      }
+    ]
+  },
+  "auditSourceSha256": "c686a570b415f3de387f29d61b2935a757fb42840a96fda0996ccadf80f1807a",
+  "revisionToolVersion": "v1",
+  "revisionToolSha256": "7f591b1d1837afa608b93d09aee8be79179727a0cb021c64793f38383a596a37",
+  "sourceReview": {
+    "reviewer": "/root/destination_adapter",
+    "missingTransitiveCompilerPin": "v1 revisionId omits build-playable-africa.py; prospective full dependency pin fix pending. Actual coordinate/source fidelity proved independently by this audit.",
+    "compilerCurrentSha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+  },
+  "registeredInProduction": false
+}

@@ -30,7 +30,7 @@ export const FACTS = {
     39.195288,
     -6.885499,
     39.281396,
-    -6.783067
+    -6.7772828
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates. Published bounds include complete retained OSM feature coordinates and expand by at most 0.02 degrees beyond the initial settlement/airport bounds."
 } satisfies DestinationFacts

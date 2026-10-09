@@ -28,9 +28,9 @@ export const FACTS = {
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
     25.896948,
-    -24.661314,
+    -24.6634568,
     25.9302,
     -24.543201
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates. Published bounds include complete retained OSM feature coordinates and expand by at most 0.02 degrees beyond the initial settlement/airport bounds."
 } satisfies DestinationFacts

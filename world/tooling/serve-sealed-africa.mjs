@@ -10,6 +10,7 @@ import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
 import { assertOwnedGroupGone, checkpointPolicy, validateUpgradeArguments } from './stage-checkpoint-policy.mjs';
+import { replacePrivateControl } from './stage-control-file.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
        node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted | --upgrade-from EXACT40_SHA] [--seconds 600] [--retain-store]
@@ -119,17 +120,7 @@ async function removeOwnedControl(path, identity) {
 }
 
 async function updateOwnedControl(path, identity, value) {
-  const contents = serializeControl(value);
-  assert.equal(typeof constants.O_NOFOLLOW, 'number', 'this platform must support O_NOFOLLOW for checkpoint safety');
-  const handle = await open(path, constants.O_RDWR | constants.O_NOFOLLOW);
-  try {
-    const stat = await handle.stat();
-    assert.ok(stat.isFile() && stat.dev === identity.dev && stat.ino === identity.ino, 'private control file identity changed; refusing checkpoint update');
-    await handle.chmod(0o600);
-    await handle.truncate(0);
-    await handle.writeFile(contents, { encoding: 'utf8' });
-    await handle.sync();
-  } finally { await handle.close(); }
+  return replacePrivateControl(path, identity, serializeControl(value));
 }
 
 async function readPrivateJson(path, maxBytes, description) {
@@ -456,7 +447,7 @@ async function main(args) {
       controlState.storeOrigin = resumed.checkpoint.storeOrigin;
       controlState.sourceUpgradeHistory = resumed.checkpoint.sourceUpgradeHistory;
     }
-    if (resumed) await updateOwnedControl(args.control, controlIdentity, controlState);
+    if (resumed) controlIdentity = await updateOwnedControl(args.control, controlIdentity, controlState);
     else controlIdentity = await writeControl(args.control, controlState);
     stageStarted = true;
     stageReady = true;
@@ -473,8 +464,8 @@ async function main(args) {
     retainFolder = (args.retainStore && Boolean(controlIdentity)) || Boolean(resumed && !stageStarted);
     if (retainFolder) {
       try {
-        if (stageStarted) await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
-        else if (resumed && cleanupFailed) await updateOwnedControl(args.control, controlIdentity, {
+        if (stageStarted) controlIdentity = await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
+        else if (resumed && cleanupFailed) controlIdentity = await updateOwnedControl(args.control, controlIdentity, {
           ...resumed.checkpoint, stageStatus: 'cleanup_failed', ownerChildPid: process.pid,
           stoppedAt: new Date().toISOString(),
         });

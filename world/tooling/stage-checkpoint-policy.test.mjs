@@ -8,7 +8,7 @@ const base = (sourceSha = a, packageDigest = da, extras = {}) => ({
   schemaVersion: 1, stageStatus: 'stopped', sourceSha, packageDigest,
   packageManifestSourceSha: sourceSha, storeId: '12345678-1234-1234-1234-123456789abc', ...extras,
 });
-const args = (sha = a, extras = {}) => ({ sha, resumeControl: '/private/checkpoint', recoverInterrupted: false, ...extras });
+const args = (sha = a, extras = {}) => ({ sha, resumeControl: '/private/checkpoint', recoverInterrupted: false, retainStore: true, ...extras });
 const policy = (checkpoint, requested, digest, ancestry = () => true) => checkpointPolicy({
   checkpoint, args: requested, packageDigest: digest, packageManifestSourceSha: requested.sha, isAncestor: ancestry,
 });
@@ -55,7 +55,8 @@ test('upgrade requires exact prior source, a different digest-consistent target,
 test('upgrade flags reject missing resume and interrupted recovery', () => {
   assert.throws(() => validateUpgradeArguments({ upgradeFrom: a, recoverInterrupted: false }), /requires --resume-control/);
   assert.throws(() => validateUpgradeArguments({ upgradeFrom: a, resumeControl: 'x', recoverInterrupted: true }), /cannot be combined/);
-  assert.throws(() => validateUpgradeArguments({ upgradeFrom: 'bad', resumeControl: 'x', recoverInterrupted: false }), /exactly 40/);
+  assert.throws(() => validateUpgradeArguments({ upgradeFrom: a, resumeControl: 'x', recoverInterrupted: false, retainStore: false }), /requires --retain-store/);
+  assert.throws(() => validateUpgradeArguments({ upgradeFrom: 'bad', resumeControl: 'x', recoverInterrupted: false, retainStore: true }), /exactly 40/);
 });
 
 test('source upgrade requires an absent prior process group', () => {

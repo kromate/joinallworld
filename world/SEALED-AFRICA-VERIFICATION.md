@@ -60,11 +60,11 @@ node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
   --retain-store
 ```
 
-Resume accepts only a mode-0600 checkpoint owned by the current user with `stageStatus: "stopped"`, a dead previous owner PID, matching source and verified package digests, a canonical private store path, matching private store marker, fixed loopback port, and public fixture JWK. It verifies the saved founder cookie through `/api/admin/me` before replacing the checkpoint contents in place with the new PID and finite deadline. It does not create an actor, authenticate again, grant credit, or modify SQLite directly. If startup fails before that verification and control update, the stopped checkpoint and store are preserved for retry. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.
+Resume accepts only a mode-0600 checkpoint owned by the current user inside a canonical current-user-owned mode-0700 directory, with `stageStatus: "stopped"`, a dead previous owner PID, matching source and verified package digests, a canonical private store path, matching private store marker, fixed loopback port, and public fixture JWK. It verifies the saved founder cookie through `/api/admin/me` before atomically replacing the checkpoint with the new PID and finite deadline. It does not create an actor, authenticate again, grant credit, or modify SQLite directly. If startup fails before that verification and control update, the stopped checkpoint and store are preserved for retry. Standard output contains only the stage URL, build ID, source SHA, package digest, deadline, sanitized restart evidence, and (when retained) the storage path. This stage is local synthetic QA; it does not deploy or prove production continuity.
 
 ### Explicit checkpoint source upgrade
 
-The launcher can explicitly move a stopped fixture checkpoint to a later source commit while retaining the same SQLite store, port, public JWK, founder cookie, and stage identity. This is a fixture compatibility test only; it does not claim that arbitrary Worker schema changes are compatible with the retained store. The exact current source and package are still checked by the existing verifier. The old SHA must equal the checkpoint's latest source, and Git must confirm it is an ancestor of the supplied current `--sha`. Upgrades require the old owner PID and its owned process group to be absent. `--upgrade-from` cannot be combined with interrupted recovery.
+The launcher can explicitly move a stopped fixture checkpoint to a later source commit while retaining the same SQLite store, port, public JWK, founder cookie, and stage identity. This is a fixture compatibility test only; it does not claim that arbitrary Worker schema changes are compatible with the retained store. The exact current source and package are still checked by the existing verifier. The old SHA must equal the checkpoint's latest source, and Git must confirm it is an ancestor of the supplied current `--sha`. Upgrades require `--retain-store`, the old owner PID, and its owned process group to be absent. `--upgrade-from` cannot be combined with interrupted recovery.
 
 ```sh
 node --experimental-strip-types world/tooling/serve-sealed-africa.mjs \
@@ -86,3 +86,22 @@ The original store marker remains unchanged. The upgraded private control record
 The pinned Miniflare exit hook handles SIGHUP by immediately exiting 129, and SIGINT/SIGTERM by immediately exiting 130/143. The first actual SIGHUP restart therefore terminated the host before its private checkpoint could be marked stopped. Its SQLite save and original funding intent remained present; no restart pass was recorded. SIGWINCH is outside both pinned exit-hook signal sets and is now the owned stage restart command. Use the internal stage deadline for graceful cleanup, with enough time before the outer watchdog for disposal. Signals remain emergency stops and can require explicit interrupted recovery.
 
 For an unfinished checkpoint still marked running, `--resume-control` refuses by default. After independently confirming the watchdog process group is gone, pass `--recover-interrupted` alongside it. The helper requires both the old owner PID and the old owned process group to be absent, as well as all existing source, package, marker, private-file and original-cookie checks. It never accepts cleanup_failed checkpoints. It reopens the same port/store/player/key and performs no new login, grant, clock or save edit. A failed recovery with unsuccessful disposal marks cleanup_failed and prevents another automatic recovery. This mode assumes the documented watchdog launched the helper as the leader of its own process group.
+
+### Full ten-destination sealed coverage
+
+The verifier reads `AFRICA_DESTINATION_BATCHES` from the exact game source and
+checks the admitted ten-city union and three ordered journey batches. It verifies
+HTML and both map and geometry chunks for every selected city, 21 served assets
+in total, then calls both canonical journey fixtures for each batch. Each air
+journey retains the source fixture's separate normal actor and one canonical
+2,000,000 credit with duplicate-receipt checks. Existing cashless homeward,
+storage-fault and restart fixture behavior is unchanged. The aggregate internal
+168-second and outer 175-second limits remain unchanged. The inspected legacy
+source `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28` alone may use its exact
+`AFRICA_CAPITALS` first-five export without the newer batches. A missing or changed
+batch export on another source fails rather than silently falling back.
+
+The local policy/file/coverage suite passes 16 checks. It covers pre-rename failure,
+oversized checkpoint refusal, stale replacement identity, strict retention and
+provenance, missing/duplicate asset chunks and batch completeness. These are
+isolated tests, not actual retained-store Worker or browser upgrade acceptance.

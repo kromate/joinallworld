@@ -15,6 +15,11 @@ on:
       - 'world/tooling/stage-checkpoint-policy.mjs'
       - 'world/tooling/stage-checkpoint-policy.test.mjs'
       - 'world/tooling/serve-sealed-africa.mjs'
+      - 'world/tooling/stage-control-file.mjs'
+      - 'world/tooling/stage-control-file.test.mjs'
+      - 'world/tooling/sealed-africa-coverage.mjs'
+      - 'world/tooling/sealed-africa-coverage.test.mjs'
+      - 'world/tooling/verify-sealed-africa.mjs'
       - 'scripts/world/build-playable-africa.py'
       - 'scripts/world/verify-playable-destination.ts'
       - '.github/workflows/africa-rollout-audit-ci.yml'
@@ -42,7 +47,7 @@ jobs:
       - name: Retained stage source upgrade policy
         env:
           NODE_OPTIONS: --max-old-space-size=128
-        run: node --test --test-concurrency=1 world/tooling/stage-checkpoint-policy.test.mjs
+        run: node --test --test-concurrency=1 world/tooling/stage-checkpoint-policy.test.mjs world/tooling/stage-control-file.test.mjs world/tooling/sealed-africa-coverage.test.mjs
       - name: Tracked generated assets and source identities
         run: |
           python3 - <<'PYTHON'

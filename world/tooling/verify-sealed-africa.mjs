@@ -8,16 +8,16 @@ import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { selectAfricaBatches, selectedAssets } from './sealed-africa-coverage.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/verify-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR
 
-Checks a sealed release package against a clean tracked source checkout, runs the exact packaged Worker bytes with packaged ASSETS and an isolated SQLite Durable Object in Miniflare, and drives the canonical first-five and homeward journey fixtures.
+Checks a sealed release package against a clean tracked source checkout, runs the exact packaged Worker bytes with packaged ASSETS and an isolated SQLite Durable Object in Miniflare, and drives every source-exported Africa destination batch and homeward fixture. The inspected legacy source SHA is limited to its original first-five fixture.
 
 This is a local synthetic fixture check. It does not establish production continuity, ordinary guest funding, physical-device behavior, deployment, or release approval.`;
 const SOURCE_SHA = /^[a-f0-9]{40}$/;
 const HASH = /^[a-f0-9]{64}$/;
 const LIMITS = Object.freeze({ totalMs: 168_000, requestMs: 12_000, startMs: 20_000, restartMs: 15_000, disposeMs: 10_000 });
-const FIRST_FIVE = Object.freeze(['yaounde', 'lome', 'accra', 'nairobi', 'algiers']);
 const ORIGIN = 'https://sealed-africa-journey.test';
 const FOUNDER = 'africa-founder@example.test';
 const PROJECT = 'allworld-africa-worker-test';
@@ -69,21 +69,8 @@ export function verifySourceAndPackage({ source, packageRoot, sha }) {
   return { manifest, files, packageDigest: checked };
 }
 
-function citySceneAssets(files) {
-  const selected = [];
-  for (const city of FIRST_FIVE) {
-    for (const kind of ['map', 'geometry']) {
-      const pattern = new RegExp(`^assets/assets/city-${city}-${kind}-[a-f0-9]{8}\\.js$`);
-      const matches = [...files.values()].filter(entry => pattern.test(entry.path));
-      assert.equal(matches.length, 1, `package must contain exactly one content-addressed ${kind} chunk for ${city}`);
-      selected.push(matches[0]);
-    }
-  }
-  return selected;
-}
-
-async function checkPackagedAssets(send, packageRoot, files, evidence, within, absolutePreviewImage) {
-  const toCheck = [files.get('assets/index.html'), ...citySceneAssets(files)];
+async function checkPackagedAssets(send, packageRoot, selected, evidence, within, absolutePreviewImage) {
+  const toCheck = selected.entries;
   for (const entry of toCheck) {
     assert.ok(entry, 'asset record is missing from package manifest');
     const url = entry.path === 'assets/index.html' ? '/' : `/${entry.path.replace(/^assets\//, '')}`;
@@ -352,20 +339,27 @@ async function main(args) {
       import(sourceUrl('server/accounts/token.ts')),
       import(sourceUrl('server/host-context.ts')),
     ]), LIMITS.startMs);
+    const batches = selectAfricaBatches(journeys.AFRICA_DESTINATION_BATCHES, args.sha, journeys.AFRICA_CAPITALS);
+    const allCities = batches.flatMap(batch => batch.cities);
+    const selected = selectedAssets(checked.files, allCities);
+    evidence.destinationBatches = batches.map(batch => ({ name: batch.name, cities: [...batch.cities] }));
+    evidence.coveredCities = [...allCities];
     const control = { testTokens, tokenModule, getWorker: () => workerGetter(), setWorker: null };
     control.setWorker = getter => { workerGetter = getter; };
     fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs });
     evidence.outcomes.push({ check: 'sealed-worker-start-and-sqlite', status: 'passed' });
     currentCheck = 'packaged-assets';
     assert.equal(typeof hostContext.absolutePreviewImage, 'function', 'canonical HTML preview transform is unavailable');
-    await checkPackagedAssets(fixture.send, args.packageRoot, checked.files, evidence, within, hostContext.absolutePreviewImage);
-    evidence.outcomes.push({ check: 'packaged-assets', status: 'passed', count: evidence.assets.length, cities: [...FIRST_FIVE] });
-    currentCheck = 'first-five-air-travel-save-reload-meal-return';
-    await within('first-five journey', journeys.africaJourney(fixture.host), 145_000);
-    evidence.outcomes.push({ check: 'first-five-air-travel-save-reload-meal-return', status: 'passed' });
-    currentCheck = 'homeward-route-and-save-recovery';
-    await within('homeward journey', journeys.homewardJourney(fixture.host), 145_000);
-    evidence.outcomes.push({ check: 'homeward-route-and-save-recovery', status: 'passed' });
+    await checkPackagedAssets(fixture.send, args.packageRoot, selected, evidence, within, hostContext.absolutePreviewImage);
+    evidence.outcomes.push({ check: 'packaged-assets-all-destinations', status: 'passed', count: evidence.assets.length, cities: [...allCities] });
+    for (const batch of batches) {
+      currentCheck = `air-travel-save-reload-meal-return-${batch.name}`;
+      await within(`${batch.name} Africa journey`, journeys.africaJourney(fixture.host, batch.cities), 145_000);
+      evidence.outcomes.push({ check: currentCheck, status: 'passed', cities: [...batch.cities] });
+      currentCheck = `homeward-route-and-save-recovery-${batch.name}`;
+      await within(`${batch.name} homeward journey`, journeys.homewardJourney(fixture.host, batch.cities), 145_000);
+      evidence.outcomes.push({ check: currentCheck, status: 'passed', cities: [...batch.cities] });
+    }
     evidence.outcomes.push({ check: 'sqlite-restart', status: 'passed' });
     evidence.elapsedMs = Date.now() - startedAt;
   } catch (error) {

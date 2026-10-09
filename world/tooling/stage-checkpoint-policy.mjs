@@ -22,6 +22,7 @@ export function validateUpgradeArguments(args) {
   if (args.upgradeFrom !== undefined) {
     assert.ok(args.resumeControl, '--upgrade-from requires --resume-control');
     assert.equal(args.recoverInterrupted, false, '--upgrade-from cannot be combined with --recover-interrupted');
+    assert.equal(args.retainStore, true, '--upgrade-from requires --retain-store');
     assert.ok(SHA.test(args.upgradeFrom), '--upgrade-from must be exactly 40 lowercase hexadecimal characters');
   }
 }

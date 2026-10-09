@@ -4,7 +4,7 @@
 
 ## Current integration queue
 
-Exact cumulative source `b2a2d38b` passed remote CI [37862623511](https://github.com/kromate/joinallworld/actions/runs/37862623511): typecheck, build/download/smoke, release policy, and **100 existing UI model/component checks (100 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added.
+Exact cumulative source `3b394f4b` passed remote CI [37867392052](https://github.com/kromate/joinallworld/actions/runs/37867392052): typecheck, build/download/smoke, release policy, **100 existing UI model/component checks and 9 existing shopping/housing/career checks (109 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
 
 The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
 
@@ -20,9 +20,12 @@ The human requested pushed slices for the agent on the other system to integrate
 | Shared hints | e524bf55 | 37860276621 passed | Storage denial, all consumers, dismiss/reopen/reload and manual versus automatic tours |
 | Events / public records | 75ca35a9 | 37861362311 passed | Filter races, pagination/retry, offline calendar/actions and narrow cards |
 | Groceries batch / Health layout | d03eb8c9 | 37864614906 passed, including 103 existing UI checks | Partial orders, identity/close/reopen/lost-reply races, fuel offers and narrow layouts |
+| Career choices / catalogue wrapping / Bank records | 3b394f4b | 37867392052 passed, including 109 existing UI checks | Browser navigation after reload, delayed dilemma/retry, enlarged text and actual funded property actions |
 | Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
 
 Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
+
+The original public-source feature and player-request research is now preserved under [research/SOURCE-ARCHIVE.md](research/SOURCE-ARCHIVE.md). Its Allworld gap columns describe the older checkout and require current-source reconciliation. The archive retains the original non-exhaustive reply-coverage boundary.
 
 ## Required scope
 
@@ -31,7 +34,7 @@ Production acceptance in this thread is still the separately recorded a44629b3 p
 | Shared controls | Owned foreground/background pairs for default, hover, selected, loading and disabled buttons; labeled reusable fields with clear, help and error states | Computed colors and keyboard behavior in real consumers | BaseButton selected variant and TextField implemented locally |
 | Boutique | Distinct shop presentation, usable card spacing, actual try-on preview, reset, purchase, wear/take-off, insufficient funds, offline, pending | Exercise preview/reset and real purchase/equip using an isolated QA life; verify selected-button contrast | White-on-white root cause fixed locally; flow verification pending |
 | Cars | Rendered vehicle artwork, catalogue and garage views, clear price/fuel/speed, buy/drive/sell, ownership and disabled reasons | Buy a vehicle on funded QA life, drive it, reopen/reload, sell; verify balances and state | Shared catalogue cards and original vehicle atlas implemented locally |
-| Houses | Property cards with meaningful hierarchy/artwork; own home versus rentals; rent/move cost; move/upgrade/furniture links; unavailable/insufficient funds | Complete a QA move and check home, balance, rent and reload; verify all cross-app links | Pending |
+| Houses | Property cards with meaningful hierarchy/artwork; own home versus rentals; rent/move cost; move/upgrade/furniture links; unavailable/insufficient funds | Complete a QA move and check home, balance, rent and reload; verify all cross-app links | Shared catalogue/artwork implemented; wrapping and pending labels at 3b394f4b; funded move acceptance remains open |
 | Jobs | Reusable search field, clear/filter/empty states, role disclosure, apply, current job, switch confirmation, quit, pending/offline | Search/clear/filter and actual QA apply/switch/quit; verify salary and role state | Search component extracted locally; action coverage pending |
 | Family | NPC roles can be replaced by consenting real players; invitation, accept/decline, unlink/restore NPC; genuine message/call entry points | Two synthetic users complete invitation/acceptance and unlink; declined/blocked/removed users gain no role/access | Deployed at a44629b3; see final release receipt |
 | Other app screens | Nested screens, forms and conditional states across Messages, Bank, Invest, Statement, business/store, civic/politics, household/land/street, games, travel, settings, support and onboarding | Per-screen action/state ledger. Privileged, external-provider and permission-dependent flows must be explicitly separated | Entry-screen sweep exists; deeper coverage remains open |
@@ -222,3 +225,11 @@ Groceries price labels and uses wrap, cards have a larger minimum width, and the
 The generator quick-buy now offers up to five litres bounded by both tank room and current game cash. Previously it enabled a five-litre purchase when only one litre was affordable. The displayed quantity/price now matches the sent amount; no game price changed. Include zero-cash, one-to-four affordable litres and a nearly full tank in acceptance.
 
 Exact grocery/health candidated03eb8c9016c9c52b1423681ae8a596ee9997bbb passed remote CI37864614906: typecheck, production build/download/smoke, release policy, 100 existing UI model/component checks and 3 targeted existing Groceries/Health checks (103 passed,0 failed). This does not replace the new purchase-race acceptance scenarios above.
+
+### Career, property and Bank follow-through, 9 October
+
+Runtime3b394f4b follows c26c1437. Career clears the previous dilemma synchronously when its id or character changes; watcher cleanup rejects old lazy-load results after replacement/unmount. Loading/refusal states expose a retry. Jobs headings, pay, filters and schedule chips wrap. Catalogue titles/status, house/car specifications and showroom controls no longer rely on unbounded intrinsic widths. Jobs apply/switch/quit and property move/buy/use/sell show pending labels; confirmations stay locked while sending.
+
+Bank wraps bill names/amounts and quick links, removes bill shadows, and shows complete transaction reasons and balance text. Wallet, payment commands, action receipts, prices and stored saves are unchanged by this unit.
+
+Exact CI37866893652 passed type/build/download/smoke/policy but failed two newly included existing markup checks: the Jobs empty-state introduction and CarArt image label. The introduction now explains the unemployed state and next action; the artwork keeps a truthful drawing/3D description. No test expectations were changed. Corrected exact CI37867392052 passed all gates, 100 existing UI checks and9 existing shopping/housing/career checks (109 pass,0 fail). Logs: /tmp/allworld-bank-career-ui-ci.log. These are remote automated gates, not full browser or production acceptance.

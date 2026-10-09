@@ -38,7 +38,7 @@ export function drawsWebGL2(renderer: { getContext?: () => unknown } | null | un
 export const bodyImports = { count: 0 };
 
 /** Fetch the body module. The only way the game reaches it. */
-export function importBody(): Promise<typeof import('./skinned.ts')> {
+export function importBody(): Promise<typeof import('./provider.ts')> {
   bodyImports.count += 1;
-  return import('./skinned.ts');
+  return import('./provider.ts');
 }

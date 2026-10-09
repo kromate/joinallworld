@@ -18,7 +18,7 @@ try {
   const page = process.env.STATIC_PREVIEW === '1' ? '/character-preview.html' : '/evidence/graphics-loop/authored-head-spike-v1/index.html';
   await retry('http://127.0.0.1:5197' + page);
   const portFile = path.join(profile, 'DevToolsActivePort');
-  for (let i = 0; i < 100 && !existsSync(portFile); i++) {
+  for (let i = 0; i < 300 && !existsSync(portFile); i++) {
     if (chromeError) throw chromeError;
     if (chrome.exitCode !== null) throw new Error(`Chrome exited ${chrome.exitCode}`);
     await wait(100);

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T13:20:12.747221+00:00",
+  "updatedAt": "2026-10-09T13:33:15.189099+00:00",
   "branch": "codex/allworld-consolidated-delivery",
   "assemblyOwner": "Integration",
   "uploadOwner": "WORLD",
@@ -1335,8 +1335,38 @@
       "fail": 5,
       "skip": 0
     },
-    "node22And24": "live; retain actual handles until terminal",
+    "node22And24": {
+      "each": {
+        "tests": 3577,
+        "pass": 3571,
+        "fail": 2,
+        "skip": 4
+      },
+      "node22DurationMs": 973653.42665,
+      "node24DurationMs": 1295218.448521,
+      "terminal": "failure; only fixed precision/schema fixtures; no timeout/cancel",
+      "existingSkipReasons": "Old incompatible timed receipt expiry, shared receipt store, lazy rollback and gradual activity contracts"
+    },
     "preparedFiveFileRepair": "QA response narrowing; floating precision; exact walletEffects schema/secret checks; private media no-store; full Worker build prerequisite",
     "production": "unchanged a446; no new upload or post-release proof"
-  }
+  },
+  "latestPushedRepair": "62a7dc382f56dd6c40aa4e1e27acfc57f8eb4956",
+  "cityResponseReview": {
+    "reproducedOn": "62a7dc382f56dd6c40aa4e1e27acfc57f8eb4956",
+    "symptom": "Delayed same-actor city_moved refusal restores old client city after newer authoritative state; next request uses wrong city",
+    "repair": "Both switchCity failure paths use current sanitized state.estate.city; captured previousCity removed",
+    "identity": "Replacement-actor variant remains fenced; server revision rules unchanged",
+    "local": {
+      "node": "24.19.0",
+      "heapMiB": 128,
+      "externalLimitSeconds": 45,
+      "tests": 43,
+      "pass": 43,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 1472.244
+    },
+    "browserProduction": "pending; no pixel/provider acceptance"
+  },
+  "nativeTeachingQaPolicy": "Owner-reviewed one-minute Node defaultOFF gate added; distinct from trustedON rendered journey, no OFF browser claim"
 }

@@ -691,7 +691,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (typeof id !== 'string' || !isCityId(id)) return { ok: false, code: 'invalid_city' };
     if (client.state.activeAction) return { ok: false, code: 'busy', reason: 'Complete or cancel your current action before switching cities.' };
     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
-    const scope = lifeScope(), previousCity = client.cityId
+    const scope = lifeScope()
     try {
       await loadCityContent(id);
       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
@@ -700,13 +700,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       await loadedSnapshot(data, scope.current);
       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       client.cityId = id as CityId;
-      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner))) { if (scope.current()) client.cityId = previousCity; return { ok: false, code: 'stale_identity_response' }; }
+      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner))) { if (scope.current()) client.cityId = client.state.estate.city as CityId; return { ok: false, code: 'stale_identity_response' }; }
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };
     } catch (e) {
       const error = e as ApiError;
       if (!scope.current() || error.code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
-      client.cityId = previousCity
+      client.cityId = client.state.estate.city as CityId
       if (error.status === 401) expired(); else status(error.message, true);
       return { ok: false, code: error.code || 'network', reason: error.message };
     }

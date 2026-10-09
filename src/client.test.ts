@@ -171,6 +171,59 @@ test('pending action is identity-bound, ambiguous server errors keep it, and bro
   await noStore.connect();assert.equal((await noStore.command('cancel')).code,'browser_storage_unavailable');assert.equal(actions,0)
 })
 
+test('a delayed city-switch refusal cannot roll back a newer authoritative city or actor', async () => {
+  const observed = [];
+  for (const replaceActor of [false, true]) {
+    const lagos = createLife({ name: 'Ada' });
+    const ibadan = createLife({ ...lagos, estate: { ...lagos.estate, city: 'ibadan' }, location: 'agodi-gardens' }, { cityId: 'ibadan' });
+    const replacement = createLife({ name: 'Bola', cash: 7777 });
+    const memory = new Map<string, string>(), paths: string[] = [];
+    let actor = 'public-1', moved = false, held = false;
+    let release: () => void = () => {}, started: () => void = () => {};
+    const delayed = new Promise<void>(resolve => { release = resolve; });
+    const waiting = new Promise<void>(resolve => { started = resolve; });
+    const client = createClient({
+      now: () => 1000, setTimeout: () => 0, clearTimeout: () => {},
+      storage: { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) },
+      fetch: async (path, options) => {
+        paths.push(path);
+        if (path === '/api/session') return json(200, { session: { id: actor, name: actor === 'public-1' ? 'Ada' : 'Bola', cities: ['lagos'] }, serverTime: 1000 });
+        assert.equal(new Headers(options.headers).get('X-Allworld-Actor'), actor);
+        if (actor === 'public-2') return json(200, { state: replacement, rev: 1003, serverTime: 1000 });
+        if (path === '/api/life?city=ibadan' && !held) {
+          held = true;
+          // This refusal was produced while the character was still in Lagos; its JSON arrives later.
+          return { ok: false, status: 409, json: async () => { started(); await delayed; return { error: 'city_moved', city: 'lagos', reason: 'Your character is in Lagos. Open that city to carry on.', serverTime: 1000 }; } };
+        }
+        if (moved && path === '/api/life?city=lagos') return json(409, { error: 'city_moved', city: 'ibadan', reason: 'Your character is in Ibadan. Open that city to carry on.', serverTime: 1000 });
+        return json(200, { state: moved ? ibadan : lagos, rev: moved ? 1002 : 1000, serverTime: 1000 });
+      },
+    });
+    assert.equal(await client.connect(), true);
+    const switching = client.switchCity('ibadan');
+    await waiting;
+    // Another device completes travel before this device's next current-life read.
+    moved = true;
+    assert.equal(await client.refresh(), true);
+    assert.deepEqual([client.cityId, client.state.estate.city, client.revision], ['ibadan', 'ibadan', 1002]);
+    if (replaceActor) { actor = 'public-2'; assert.equal(await client.connect(), true); }
+    release();
+    const result = await switching;
+    assert.equal(result.ok, false);
+    if (replaceActor) assert.equal(result.code, 'stale_identity_response');
+    const saved = JSON.parse(memory.get(STORAGE_KEY) ?? '{}');
+    const current = [client.session?.id, client.cityId, client.state.estate.city, client.revision, client.state.cash, saved.ownerId, saved.cityId, saved.state?.cash];
+    const nextRead = paths.length;
+    await client.refresh();
+    observed.push({ replaceActor, current, nextRead: paths[nextRead] });
+    client.stop();
+  }
+  assert.deepEqual(observed, [
+    { replaceActor: false, current: ['public-1', 'ibadan', 'ibadan', 1002, 5000, 'public-1', 'ibadan', 5000], nextRead: '/api/life?city=ibadan' },
+    { replaceActor: true, current: ['public-2', 'lagos', 'lagos', 1003, 7777, 'public-2', 'lagos', 7777], nextRead: '/api/life?city=lagos' },
+  ]);
+});
+
 test('a stored moved-city action outcome follows the authoritative life and clears the uncertain intent', async () => {
   const lagos=createLife({name:'Ada'}),ibadan=createLife({...lagos,location:'park',message:'You are in Ibadan.',estate:{...lagos.estate,city:'ibadan'}},{cityId:'ibadan'})
   const base={version:1,state:lagos,identity:{name:'Ada'},cityId:'lagos',pendingAction:{sessionId:'public-1',actionId:'1000:11111111-1111-4111-8111-111111111111',cityId:'lagos',type:'cancel'}}

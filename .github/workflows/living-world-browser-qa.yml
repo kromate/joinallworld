@@ -49,6 +49,9 @@ jobs:
       - name: Verify complete legacy-save migration comparisons
         timeout-minutes: 1
         run: node --experimental-strip-types --test --test-concurrency=1 src/game/cities/legacyLife.test.ts src/game/cities/liveBuildLife.test.ts
+      - name: Verify trusted default-OFF start policy in Node (not rendered acceptance)
+        timeout-minutes: 1
+        run: node --experimental-strip-types --test --test-concurrency=1 src/game/teaching-start-policy.test.ts
       - name: Play disposable server journeys in the actual browser
         timeout-minutes: 3
         env:

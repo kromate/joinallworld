@@ -182,6 +182,8 @@ export interface LightPreset {
   hemi: readonly [Colour, Colour, number]
   sun: readonly [Colour, number, Vec3]
   rim?: readonly [Colour, number]
+  /** Brightness of the existing shared emissive surfaces; default 1. */
+  glow?: number
 }
 /** Where a scene rests the avatar (walk.rest()): its spot, the seat of a running activity, the way out. */
 export interface HostRest {
@@ -269,7 +271,7 @@ export interface VenueWorld {
  * light from behind the scene as the camera sees it, which separates dark hair and shoulders from
  * the wall or the night behind them; it casts no shadow.
  */
-export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
+export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7], glow: 1 });
 const DEFAULT_BACKGROUND = '#182a25';
 
 /**
@@ -289,6 +291,7 @@ export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shado
   rim.castShadow = false;
   rim.position.set(-14, 12, -18);
   scene.add(hemi, sun, rim, rim.target);
+  let disposed = false;
   return {
     hemi, sun, rim,
     apply(preset?: Partial<LightPreset> | null) {
@@ -305,6 +308,14 @@ export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shado
       rim.position.set(x + ux * 16 - uz * 7, y + 11, z + uz * 16 + ux * 7);
       rim.target.position.set(x, y, z);
       rim.target.updateMatrixWorld?.();
+    },
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      // Renderer teardown does not own light shadow targets. Release them while its
+      // render-target dispose listeners can still free the GPU allocations.
+      sun.dispose(); rim.dispose();
+      scene.remove(hemi, sun, rim, rim.target);
     },
   };
 }
@@ -1286,7 +1297,11 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   }
   /** Take the lighting and clear colour the current scene asks for. */
   function applyLook() {
-    lights.apply(current?.lighting?.());
+    const preset = current?.lighting?.();
+    lights.apply(preset);
+    // Shared meshes take the active scene's glow, including Home and the street.
+    // No private material or extra rendering pass is needed for a clock change.
+    sceneMaterials(kit).glow.color.setScalar(typeof preset?.glow === 'number' && Number.isFinite(preset.glow) && preset.glow >= 0 ? preset.glow : HOST_LIGHTING.glow);
     background = current?.background || DEFAULT_BACKGROUND;
     renderer.setClearColor(background);
     // sky: [horizon, zenith]. A scene that names only a background gets a gentle rise from it.
@@ -1433,7 +1448,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       if (!venueFor(cityId, id) || id === currentLocation) return false;
       if (prepared && prepared !== id && prepared !== currentLocation) { const old = built.get(prepared); if (old) { old.dispose?.(); scene.remove(old.group); built.delete(prepared); } }
       prepared = id;
-      sceneFor(id);
+      // Venue construction sets the kit's shared glow material. Preparing a hidden
+      // destination must not change the light of the scene the player still sees.
+      try { sceneFor(id); }
+      finally { applyLook(); }
       return true;
     },
     diagnostics() {
@@ -1522,6 +1540,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       built.clear();
       sky.dispose(); ground.dispose();
       kit.dispose();
+      lights.dispose();
       renderer.dispose();
       renderer.domElement.remove?.();
       tagLayer?.remove();

@@ -377,6 +377,7 @@ function addWheels(context: VehicleContext, positions: ReadonlyArray<Vec3>, radi
 function addDoor(context: VehicleContext, options: {
   x: number; y: number; z: number; width: number; height: number; depth: number;
   color: THREE.ColorRepresentation; mode?: 'hinge' | 'slide' | 'lift'; amount?: number; hinge?: 'front' | 'rear';
+  panels?: ColoredGeometry[];
 }): void {
   const mode = options.mode || 'hinge';
   const amount = options.amount === undefined ? PI * 0.55 : options.amount;
@@ -385,8 +386,13 @@ function addDoor(context: VehicleContext, options: {
   pivot.name = 'door-root';
   pivot.position.set(options.x, options.y, options.z + (mode === 'hinge' ? hingeOffset : 0));
   context.body.add(pivot);
-  const geometry = new THREE.BoxGeometry(options.width, options.height, options.depth);
-  const door = mesh(context, geometry, material(context, options.color), pivot, 'door-panel');
+  const geometry = options.panels ? mergeColored(options.panels) : new THREE.BoxGeometry(options.width, options.height, options.depth);
+  if (options.panels) geometry.translate(-options.x, -options.y, -options.z);
+  const doorMaterial = options.panels
+    ? new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.68, metalness: 0.04, side: THREE.DoubleSide })
+    : material(context, options.color);
+  if (options.panels) context.materials.push(doorMaterial);
+  const door = mesh(context, geometry, doorMaterial, pivot, 'door-panel');
   if (mode === 'hinge') door.position.z = -hingeOffset;
   const doorAnchor = anchor('door', 0, -options.height * 0.36, mode === 'hinge' ? -hingeOffset : 0, 0);
   pivot.add(doorAnchor);
@@ -527,10 +533,142 @@ function slopedWindscreen(target: ColoredGeometry[], width: number, lower: Point
   box(target, 0, centerY, centerZ, width, height, 0.045, color, { rx: angle });
 }
 
+/** Remove authored coplanar diagonals before clipping, so map doors do not multiply triangles. */
+function carPanelFaces(geometry: THREE.BufferGeometry): Vec3[][] {
+  const groups: { normal: THREE.Vector3; plane: number; triangles: Vec3[][]; edges: Map<string, readonly [Vec3, Vec3]> }[] = [];
+  const positions = geometry.getAttribute('position'), indices = geometry.index;
+  const count = indices?.count ?? positions.count, key = (point: Vec3) => point.join(',');
+  for (let index = 0; index < count; index += 3) {
+    const points = [0, 1, 2].map((offset): Vec3 => {
+      const vertex = indices?.getX(index + offset) ?? index + offset;
+      return [positions.getX(vertex), positions.getY(vertex), positions.getZ(vertex)];
+    });
+    const a = points[0]!, b = points[1]!, c = points[2]!;
+    const normal = new THREE.Vector3(b[0] - a[0], b[1] - a[1], b[2] - a[2])
+      .cross(new THREE.Vector3(c[0] - a[0], c[1] - a[1], c[2] - a[2]));
+    if (normal.lengthSq() <= 1e-20) continue;
+    normal.normalize();
+    const plane = normal.dot(new THREE.Vector3(...a));
+    let group = groups.find(face => face.normal.distanceToSquared(normal) < 1e-10 && Math.abs(face.plane - plane) < 1e-5);
+    if (!group) { group = { normal, plane, triangles: [], edges: new Map() }; groups.push(group); }
+    group.triangles.push(points);
+    for (const [start, end] of [[a, b], [b, c], [c, a]] as const) {
+      const forward = key(start) + '|' + key(end), reverse = key(end) + '|' + key(start);
+      if (group.edges.has(reverse)) group.edges.delete(reverse); else group.edges.set(forward, [start, end]);
+    }
+  }
+  const result: Vec3[][] = [];
+  for (const group of groups) {
+    const pending = [...group.edges.values()], polygons: Vec3[][] = [];
+    let valid = true;
+    while (pending.length && valid) {
+      const edge = pending.shift()!, polygon = [edge[0]];
+      let end = edge[1];
+      while (key(end) !== key(polygon[0]!)) {
+        polygon.push(end);
+        const next = pending.findIndex(item => key(item[0]) === key(end));
+        if (next < 0) { valid = false; break; }
+        end = pending.splice(next, 1)[0]![1];
+      }
+      polygons.push(polygon);
+    }
+    // Current car primitives have simple face boundaries. Keep original triangles if a future primitive does not.
+    result.push(...(valid ? polygons : group.triangles));
+  }
+  return result;
+}
+
+/** Clip one face without changing its winding. Used only during car construction. */
+function clipCarPanel(polygon: readonly Vec3[], axis: 0 | 1 | 2, boundary: number, lesser: boolean, inclusive = true): Vec3[] {
+  const result: Vec3[] = [];
+  let previous = polygon.at(-1);
+  if (!previous) return result;
+  const contains = (point: Vec3) => lesser
+    ? inclusive ? point[axis] <= boundary : point[axis] < boundary
+    : inclusive ? point[axis] >= boundary : point[axis] > boundary;
+  let previousInside = contains(previous);
+  for (const current of polygon) {
+    const inside = contains(current);
+    if (inside !== previousInside) {
+      const fraction = (boundary - previous[axis]) / (current[axis] - previous[axis]);
+      result.push([
+        previous[0] + fraction * (current[0] - previous[0]),
+        previous[1] + fraction * (current[1] - previous[1]),
+        previous[2] + fraction * (current[2] - previous[2]),
+      ]);
+    }
+    if (inside) result.push(current);
+    previous = current;
+    previousInside = inside;
+  }
+  return result;
+}
+
+/** Partition authored side/trim surfaces: retain the exterior and hinge the aperture's panels. */
+function splitCarDoorPanels(context: VehicleContext, source: ColoredGeometry[], width: number, top: number): ColoredGeometry[] {
+  const moving: ColoredGeometry[] = [];
+  // Keep the opposite side, roof, sill and body core. Include the driver's glass/handle thickness.
+  const planes: readonly (readonly [0 | 1 | 2, number, boolean])[] = [
+    [0, -width / 2 - 0.12, false], [0, -width / 2 + 0.06, true],
+    [1, 0.49, false], [1, Math.fround(top), true], [2, -0.05, false], [2, 0.89, true],
+  ];
+  const triangles = (polygon: readonly Vec3[], target: number[]) => {
+    const first = polygon[0];
+    if (!first) return;
+    const normal = new THREE.Vector3();
+    for (let index = 1; index + 1 < polygon.length && normal.lengthSq() <= 1e-20; index += 1) {
+      normal.crossVectors(new THREE.Vector3(...polygon[index]!).sub(new THREE.Vector3(...first)),
+        new THREE.Vector3(...polygon[index + 1]!).sub(new THREE.Vector3(...first)));
+    }
+    if (normal.lengthSq() <= 1e-20) return;
+    const axis = Math.abs(normal.x) >= Math.abs(normal.y) && Math.abs(normal.x) >= Math.abs(normal.z) ? 0
+      : Math.abs(normal.y) >= Math.abs(normal.z) ? 1 : 2;
+    const contour = polygon.map(point => axis === 0 ? new THREE.Vector2(point[1], point[2])
+      : axis === 1 ? new THREE.Vector2(point[0], point[2]) : new THREE.Vector2(point[0], point[1]));
+    for (const face of THREE.ShapeUtils.triangulateShape(contour, [])) {
+      const a = polygon[face[0]!]!, b = polygon[face[1]!]!, c = polygon[face[2]!]!;
+      const cross = new THREE.Vector3(...b).sub(new THREE.Vector3(...a)).cross(new THREE.Vector3(...c).sub(new THREE.Vector3(...a)));
+      if (cross.lengthSq() <= 1e-20) continue;
+      if (cross.dot(normal) < 0) target.push(...a, ...c, ...b); else target.push(...a, ...b, ...c);
+    }
+  };
+  const emit = (positions: number[], color: THREE.Color, target: ColoredGeometry[]) => {
+    if (!positions.length) return;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.computeVertexNormals();
+    target.push({ geometry, color });
+  };
+  for (const [partIndex, part] of source.entries()) {
+    const retained: number[] = [], hinged: number[] = [];
+    for (const face of carPanelFaces(part.geometry)) {
+      // The first primitive is the closed body profile. Only its driver-side cap is a door surface;
+      // its roof, hood, sill and opposite cap stay whole rather than splitting their edge strips.
+      if (partIndex === 0 && !face.every(point => Math.abs(point[0] + width / 2) < 1e-5)) {
+        triangles(face, retained); continue;
+      }
+      let inside = face;
+      // Outside pieces are disjoint; only the surviving inside reaches the next plane.
+      for (const [axis, boundary, lesser] of planes) {
+        triangles(clipCarPanel(inside, axis, boundary, !lesser, false), retained);
+        inside = clipCarPanel(inside, axis, boundary, lesser);
+        if (!inside.length) break;
+      }
+      triangles(inside, hinged);
+    }
+    emit(retained, part.color, context.staticGeometry);
+    emit(hinged, part.color, moving);
+    part.geometry.dispose();
+  }
+  source.length = 0;
+  return moving;
+}
+
 function buildCar(context: VehicleContext, width: number, length: number, height: number, bodyColor: THREE.ColorRepresentation, style: 'sedan' | 'hatchback' | 'suv' | 'cab'): void {
   const front = length / 2;
   const rear = -length / 2;
   const sill = 0.45;
+  const sidePanels: ColoredGeometry[] = [];
   const roof = style === 'suv' ? height : height - 0.05;
   const profile: Profile = style === 'hatchback'
     ? [[rear, sill], [front, sill], [front - 0.08, 0.78], [front - 0.38, 0.96], [front - 1.14, 1.08], [front - 1.5, roof], [rear + 0.5, roof], [rear - 0.04, 0.84]]
@@ -539,7 +677,7 @@ function buildCar(context: VehicleContext, width: number, length: number, height
       : style === 'cab'
         ? [[rear, sill], [front, sill], [front - 0.06, 0.84], [front - 0.62, 1.02], [front - 1.05, roof], [rear + 0.72, roof], [rear + 0.38, 0.96], [rear - 0.04, 0.8]]
         : [[rear, sill], [front, sill], [front - 0.06, 0.78], [front - 0.42, 0.94], [front - 1.12, 1.05], [front - 1.48, roof], [rear + 1.0, roof], [rear + 0.62, 0.96], [rear + 0.34, 0.76]];
-  profilePrism(context.staticGeometry, profile, width, bodyColor);
+  profilePrism(sidePanels, profile, width, bodyColor);
   if (context.detail !== 'map') box(context.staticGeometry, 0, 0.36, 0, width * 0.95, 0.22, length * 0.9, BLACK);
   const cabinFront = style === 'suv' ? front - 1.02 : style === 'hatchback' ? front - 1.14 : style === 'cab' ? front - 1.02 : front - 1.18;
   const cabinRear = style === 'suv' ? rear + 0.3 : style === 'hatchback' ? rear + 0.48 : style === 'cab' ? rear + 0.7 : rear + 0.82;
@@ -549,15 +687,20 @@ function buildCar(context: VehicleContext, width: number, length: number, height
   const windowHeight = style === 'suv' ? 0.62 : 0.5;
   const sideX = width / 2 + 0.016;
   if (context.detail === 'map') {
-    for (const side of [-1, 1]) box(context.staticGeometry, side * sideX, windowY, cabinZ, 0.04, windowHeight, cabinLength * 0.88, GLASS);
+    // At map scale glass needs its silhouette and outward face, not six opaque box faces.
+    for (const side of [-1, 1]) {
+      const geometry = new THREE.PlaneGeometry(cabinLength * 0.88, windowHeight);
+      geometry.rotateY(side * PI / 2); geometry.translate(side * sideX, windowY, cabinZ);
+      sidePanels.push({ geometry, color: new THREE.Color(GLASS) });
+    }
   } else {
     const pillarZ = cabinZ + (style === 'hatchback' ? 0.05 : 0.02);
     const frontDepth = cabinFront - pillarZ - 0.07;
     const rearDepth = pillarZ - cabinRear - 0.07;
     for (const side of [-1, 1]) {
-      box(context.staticGeometry, side * sideX, windowY, pillarZ + frontDepth / 2 + 0.035, 0.04, windowHeight, frontDepth, DARK_GLASS);
-      box(context.staticGeometry, side * sideX, windowY, cabinRear + rearDepth / 2 + 0.035, 0.04, windowHeight, rearDepth, GLASS);
-      box(context.staticGeometry, side * (width / 2 + 0.025), windowY, pillarZ, 0.055, windowHeight + 0.08, 0.1, bodyColor);
+      box(sidePanels, side * sideX, windowY, pillarZ + frontDepth / 2 + 0.035, 0.04, windowHeight, frontDepth, DARK_GLASS);
+      box(sidePanels, side * sideX, windowY, cabinRear + rearDepth / 2 + 0.035, 0.04, windowHeight, rearDepth, GLASS);
+      box(sidePanels, side * (width / 2 + 0.025), windowY, pillarZ, 0.055, windowHeight + 0.08, 0.1, bodyColor);
     }
   }
   const windscreenLower: Point = style === 'suv'
@@ -580,18 +723,18 @@ function buildCar(context: VehicleContext, width: number, length: number, height
   if (style === 'cab') {
     box(context.staticGeometry, 0, roof + 0.12, cabinZ, 0.62, 0.2, 0.28, '#f5d022');
     if (context.detail !== 'map') {
-      box(context.staticGeometry, -width / 2 - 0.012, 0.72, 0, 0.035, 0.16, length * 0.72, BLACK);
-      box(context.staticGeometry, width / 2 + 0.012, 0.72, 0, 0.035, 0.16, length * 0.72, BLACK);
+      box(sidePanels, -width / 2 - 0.012, 0.72, 0, 0.035, 0.16, length * 0.72, BLACK);
+      box(sidePanels, width / 2 + 0.012, 0.72, 0, 0.035, 0.16, length * 0.72, BLACK);
     }
   }
   if (context.quality.trim) {
     const shoulder = new THREE.Color(bodyColor).offsetHSL(0, 0, -0.09);
-    box(context.staticGeometry, 0, roof + 0.025, cabinZ, width * 0.88, 0.08, cabinLength * 0.82, bodyColor);
+    box(sidePanels, 0, roof + 0.025, cabinZ, width * 0.88, 0.08, cabinLength * 0.82, bodyColor);
     box(context.staticGeometry, 0, windowY, cabinRear - 0.012, width * 0.84, windowHeight * 0.92, 0.05, GLASS, { rx: 0.22 });
     for (const side of [-1, 1]) {
-      box(context.staticGeometry, side * (width / 2 + 0.045), 0.94, 0, 0.06, 0.09, length * 0.76, shoulder);
-      box(context.staticGeometry, side * (width / 2 + 0.052), 0.88, cabinZ, 0.065, 0.68, 0.035, BLACK);
-      box(context.staticGeometry, side * (width / 2 + 0.058), 0.91, cabinZ + 0.22, 0.075, 0.07, 0.28, CHROME);
+      box(sidePanels, side * (width / 2 + 0.045), 0.94, 0, 0.06, 0.09, length * 0.76, shoulder);
+      box(sidePanels, side * (width / 2 + 0.052), 0.88, cabinZ, 0.065, 0.68, 0.035, BLACK);
+      box(sidePanels, side * (width / 2 + 0.058), 0.91, side < 0 ? 0.12 : cabinZ + 0.22, 0.075, 0.07, 0.28, CHROME);
       torus(context.staticGeometry, side * (width / 2 + 0.035), 0.39, front - 0.78, style === 'suv' ? 0.49 : 0.43, 0.055, shoulder, { radialSegments: context.detail === 'showcase' ? 4 : 3, tubularSegments: context.detail === 'showcase' ? 12 : 8, arc: PI, ry: PI / 2 });
       torus(context.staticGeometry, side * (width / 2 + 0.035), 0.39, rear + 0.74, style === 'suv' ? 0.49 : 0.43, 0.055, shoulder, { radialSegments: context.detail === 'showcase' ? 4 : 3, tubularSegments: context.detail === 'showcase' ? 12 : 8, arc: PI, ry: PI / 2 });
     }
@@ -601,7 +744,9 @@ function buildCar(context: VehicleContext, width: number, length: number, height
     [-width * 0.48, 0.39, front - 0.78], [width * 0.48, 0.39, front - 0.78],
     [-width * 0.48, 0.39, rear + 0.74], [width * 0.48, 0.39, rear + 0.74],
   ], style === 'suv' ? 0.43 : 0.37, 0.24, new Set([0, 1]));
-  addDoor(context, { x: width / 2 + 0.01, y: 0.93, z: -0.42, width: 0.08, height: 0.88, depth: 0.94, color: bodyColor, amount: -PI * 0.55 });
+  // Road cars face +Z and the driver sits on -X. The existing helper's `rear` option
+  // selects its +Z pivot, which is the physical front hinge here. Open outward on -X.
+  addDoor(context, { x: -width / 2 - 0.01, y: 0.93, z: 0.42, width: 0.08, height: 0.88, depth: 0.94, color: bodyColor, hinge: 'rear', amount: PI * 0.55, panels: splitCarDoorPanels(context, sidePanels, width, roof - 0.05) });
   addRoadLights(context, { width, frontZ: front + 0.035, rearZ: rear - 0.035, y: 0.7 });
   placeDriver(context, -width * 0.23, 0.74, 0.42);
   addSeat(context, width * 0.23, 0.74, 0.42);

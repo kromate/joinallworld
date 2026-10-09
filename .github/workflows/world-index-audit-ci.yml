@@ -69,7 +69,7 @@ jobs:
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
-        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest test_index_shard_startup test_index_shard_admission_worker test_index_shard_controller test_index_shard_handoff > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
+        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest test_index_shard_startup test_index_shard_admission_worker test_index_shard_controller test_index_shard_handoff test_campaign_inherited_lease > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
       - name: Remaining process, bootstrap, lease and recovery regression checks
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
@@ -91,6 +91,11 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 world/index-shard-plan.test.ts world/index-shard-plan-python.test.ts world/index-shard-evidence.test.ts > diagnostic-evidence/shard-plan.tap 2>&1
+      - name: Actual campaign lease inheritance and complete bounded windows
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts world/index-shard-window.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
       - name: Exact reviewed JavaScript and public-release source boundary
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
@@ -111,6 +116,46 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: world-index-audit-${{ github.sha }}
+          path: diagnostic-evidence/
+          retention-days: 7
+          if-no-files-found: error
+
+  macos-lease:
+    needs: audit
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.19.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.14'
+      - name: Record exact macOS source and runtimes
+        run: |
+          mkdir -p diagnostic-evidence
+          printf 'WORLD_TEST_PYTHON=%s\n' "$(python -c 'import os,sys; print(os.path.realpath(sys.executable))')" >> "$GITHUB_ENV"
+          git rev-parse HEAD > diagnostic-evidence/source-sha.txt
+          node -p 'JSON.stringify(process.versions)' > diagnostic-evidence/node-runtime.json
+          python -c 'import json,platform,sys; print(json.dumps({"python":sys.version,"platform":platform.platform()}))' > diagnostic-evidence/python-runtime.json
+      - name: Actual macOS inherited flock helper
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest test_campaign_inherited_lease > diagnostic-evidence/python-lease.stdout 2> diagnostic-evidence/python-lease.stderr
+      - name: Actual macOS Node coordinator and surviving worker
+        if: ${{ !cancelled() }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign-lease.test.ts > diagnostic-evidence/campaign-lease.tap 2>&1
+      - name: Retain exact macOS lease diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: world-campaign-lease-macos-${{ github.sha }}
           path: diagnostic-evidence/
           retention-days: 7
           if-no-files-found: error

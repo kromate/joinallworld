@@ -8,7 +8,7 @@ import { applyAuthoredPresentation } from './authored-presentation.ts';
 import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
 import { applySkinMaterial } from './skin-material.ts';
-import { createNativeActionController, type NativeActionPose } from './native-actions.ts';
+import { createNativeActionController, type NativeActionPose, type NativeActionSnapshot } from './native-actions.ts';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
@@ -41,7 +41,7 @@ let presentation:Awaited<ReturnType<typeof applyAuthoredPresentation>>|null=null
 let eyes:ReturnType<typeof applyAuthoredEyeMaterial>|null=null;
 let skin:Awaited<ReturnType<typeof applySkinMaterial>>|null=null;
 let nativePose:ReturnType<typeof createNativeActionController>|null=null;
-let actionSnapshot:ReturnType<NonNullable<typeof nativePose>['apply']>|null=null;
+let actionSnapshot:NativeActionSnapshot|null=null;
 const seatFixture=new THREE.Group();
 const seatMaterial=new THREE.MeshStandardMaterial({color:'#795a42',roughness:.8});
 const seatSurface=new THREE.Mesh(new THREE.BoxGeometry(.55,.06,.52),seatMaterial);

@@ -285,6 +285,7 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
         setLegDirections(forward, 0.30 * Math.sin(phase), Math.max(0, Math.sin(phase)) * 0.22);
       }
     } else if (pose === 'sit') {
+      if (support.kind !== 'seat') throw new Error('Native sit requires seat support');
       const hip = bones.get('mixamorigHips')!;
       hip.position.y = support.top + 0.10;
       root.updateMatrixWorld(true);

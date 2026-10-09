@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v11]
+    branches: [codex/graphics-complete-authored-body-v12]
 permissions:
   contents: read
 jobs:
@@ -22,8 +22,6 @@ jobs:
           python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
       - name: Bake pinned authored facial units
         run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
-      - name: Build complete human comparison
-        run: node --max-old-space-size=192 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
       - name: Check complete character TypeScript
         run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/typecheck.json
       - name: Check authored rig and resource ownership
@@ -35,6 +33,8 @@ jobs:
           node --max-old-space-size=64 evidence/graphics-loop/authored-complete-body-v1/eye-material-check.mjs
           python3 evidence/graphics-loop/authored-complete-body-v1/authored-clothing/test_export.py
           node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check.mjs
+      - name: Build complete human comparison
+        run: node --max-old-space-size=192 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
       - name: Capture real whole-body poses and expressions
         env:
           STATIC_PREVIEW: 1

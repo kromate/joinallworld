@@ -13,6 +13,7 @@ import {
   deriveFeatureIndexShardWindows,
   validateFeatureIndexShardWindows,
   type FeatureIndexShardCaptureOperation,
+  type FeatureIndexShardAuditOperation,
 } from './index-shard-window.ts';
 
 const hash = (value: string): string => sha256(value);
@@ -133,7 +134,7 @@ test('each audit window names one exact shard partition and preserves full plan 
   assert.equal(audits.length, encoded.plan.shards.length);
   for (const audit of audits) {
     assert.equal(audit.operations.length, 1);
-    const operation = audit.operations[0] as { shardId: string; members: Array<Record<string, unknown>> };
+    const operation = audit.operations[0] as FeatureIndexShardAuditOperation;
     const shard = encoded.plan.shards.find(item => item.id === operation.shardId)!;
     assert.deepEqual(operation.members.map(member => member.requestHash), shard.requestHashes);
     for (const member of operation.members) {
@@ -174,7 +175,7 @@ test('validation checks the externally pinned whole plan and rejects omitted, re
   assert.throws(() => validateFeatureIndexShardWindows(editedContext, encoded.plan, encoded.hash), /differs from deterministic/i);
 
   const forgedLimit = mutable(windows);
-  forgedLimit.limits.captureCallsPerWindow = 128;
+  Object.assign(forgedLimit.limits, { captureCallsPerWindow: 128 });
   assert.throws(() => validateFeatureIndexShardWindows(forgedLimit, encoded.plan, encoded.hash), /resource metadata/i);
 
   const extraSchema = mutable(windows) as unknown as Record<string, unknown>;

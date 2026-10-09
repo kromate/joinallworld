@@ -168,6 +168,7 @@ test('a Node coordinator SIGKILL cannot release a surviving worker inherited lea
       cwd: root, shell: false, detached: true, stdio: ['ignore', 'pipe', 'pipe'],
     });
     coordinatorClosed = once(coordinator, 'close') as Promise<[number | null, NodeJS.Signals | null]>;
+    const ownedCoordinator = coordinator;
     let stdout = '';
     coordinator.stdout?.setEncoding('utf8');
     coordinator.stdout?.on('data', (chunk: string) => { stdout += chunk; });
@@ -181,7 +182,7 @@ test('a Node coordinator SIGKILL cannot release a surviving worker inherited lea
         reject(error);
       };
       timeout = setTimeout(() => fail(new Error('coordinator did not launch inherited worker')), 5000);
-      coordinator.stdout?.on('data', () => {
+      ownedCoordinator.stdout?.on('data', () => {
         if (!stdout.includes('\n')) return;
         const line = stdout.split('\n')[0];
         if (!line) return;
@@ -195,8 +196,8 @@ test('a Node coordinator SIGKILL cannot release a surviving worker inherited lea
           resolve();
         } catch (error) { fail(error instanceof Error ? error : new Error('invalid coordinator ready frame')); }
       });
-      coordinator.once('error', fail);
-      coordinator.once('close', () => fail(new Error('coordinator exited before worker readiness')));
+      ownedCoordinator.once('error', fail);
+      ownedCoordinator.once('close', () => fail(new Error('coordinator exited before worker readiness')));
     });
     await ready;
     assert.ok(workerPid > 0);

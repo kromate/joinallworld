@@ -1,5 +1,9 @@
 # Mapped driving actor and boarding handoff
 
+## Published v7 refresh - 2026-10-09T17:52:40.161003+00:00
+
+Exact published5d11705334ad54f92208d7f4b693a4faf8a500ac still grants canBoard:false and routeAuthorized:false. Independent official run37924609534/job113800437246 is terminalFAIL:2tests/1pass/1fail/0skip. Actual loadBody returned null at the pinned-skinned-actor assertion before full provenance acceptance. Recorded0.489s and190091264B stay within25s/230686720B; cleanup/source-unchanged true. This is not resource exhaustion, no passing geometry/boarding proof inferred. [Exact qualified receipt](actor-v7-published-review.json). Official small artifact retained privately, GRAPHICS received specific evidence. Physical runtime implementation remains queued behind consolidation; no shared edits or activation.
+
 Source-only audit at candidate `615638dcb98c7dd5746bc7a5bc44d6a31a8ea4fd`, 9 October 2026. Luna driving inspected the published isolated source; Sol checked the anchors and contact API. No local pose/contact rendering or continuous actor-volume verification occurred. The mapped route remains disabled.
 
 The sedan has source-derived conservative horizontal body/wheel and rotating-door bounds. Those do not prove actor clearance. The current depot diagnostic labels its actor radius0.8m and height2.1m as assumptions, and marks actor integration unverified. Retain those qualifications.

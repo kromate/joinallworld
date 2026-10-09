@@ -1,0 +1,50 @@
+{
+  "observedAt": "2026-10-09T17:52:40.161003+00:00",
+  "sourceSha": "5d11705334ad54f92208d7f4b693a4faf8a500ac",
+  "branch": "codex/actor-volume-boarding-v7-actual-host-review-v2",
+  "run": 37924609534,
+  "job": 113800437246,
+  "conclusion": "failure",
+  "officialArtifactId": 11613466296,
+  "artifactBytes": 4086,
+  "testResult": {
+    "tests": 2,
+    "pass": 1,
+    "fail": 1,
+    "skipped": 0,
+    "failingAssertion": "production loadBody returned a pinned skinned actor",
+    "actual": null,
+    "location": "actual-host-adapter.test.ts:94"
+  },
+  "boundedReceipt": {
+    "status": "completed",
+    "childExitCode": 1,
+    "elapsedSeconds": 0.489,
+    "peakProcessGroupRssBytes": 190091264,
+    "rssLimitBytes": 230686720,
+    "wallLimitSeconds": 25,
+    "cleanupVerified": true,
+    "sourceUnchanged": true,
+    "snapshotSha256": "d1d9eed18d3011d58d9dde1dfc05f892335637d4efd07922c46442a6c08ba838"
+  },
+  "archivedFiles": [
+    {
+      "name": "test.log",
+      "sha256": "8217024454de94c987a77abf6f1821fa48fef71637ed786718d35decaa36d40c"
+    },
+    {
+      "name": "test.receipt.json",
+      "sha256": "41ca094aff7985c5f4e929e8c1c70592715da650516d65420c42a27f81742982"
+    }
+  ],
+  "authority": {
+    "canBoard": false,
+    "routeAuthorized": false
+  },
+  "limitations": [
+    "No successful actual-host skinned actor acceptance",
+    "No GPU or continuous door/seat/exit/clothing clearance proof",
+    "No runtime merge, registration, boarding or driving activation"
+  ],
+  "next": "Preserve GRAPHICS source; queued LIVING physical phase needs successful actual-host loading/provenance followed by complete continuous boarding and authoritative driving evidence; consolidation remains active first."
+}

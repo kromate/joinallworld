@@ -151,7 +151,7 @@ async function run(): Promise<void> {
       landmarkIdlePoseAndSolveStages: report.modes.landmarks?.poseAfterShow === 'idle' && completeStages(report.modes.landmarks),
       bothLegsAndSolesSampledAtEveryStage: (['directions', 'landmarks'] as const).every((name) => report.modes[name]?.stages.every((stage) =>
         Boolean(stage.legs.left && stage.legs.right && stage.shoeContacts.some((contact) => contact.side === 'left')
-          && stage.shoeContacts.some((contact) => contact.side === 'right'))),
+          && stage.shoeContacts.some((contact) => contact.side === 'right')))),
       finiteStageMeasurements: (['directions', 'landmarks'] as const).every((name) => report.modes[name]?.stages.every((stage) =>
         [...Object.values(stage.legs).flatMap((leg) => [...leg.thighToCalf, ...leg.calfToFoot, ...leg.footToToe]),
           ...stage.shoeContacts.flatMap((contact) => [contact.x, contact.y, contact.z,

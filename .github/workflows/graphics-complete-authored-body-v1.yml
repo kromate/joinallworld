@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v3]
+    branches: [codex/graphics-complete-authored-body-v4]
 permissions:
   contents: read
 jobs:
@@ -29,7 +29,7 @@ jobs:
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-check.mjs
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-posture-check.mjs
           node --max-old-space-size=64 evidence/graphics-loop/authored-complete-body-v1/eye-material-check.mjs
-          node --max-old-space-size=128 --test evidence/graphics-loop/authored-complete-body-v1/presentation.test.ts
+          python3 evidence/graphics-loop/authored-complete-body-v1/authored-clothing/test_export.py
       - name: Capture real whole-body poses and expressions
         env:
           STATIC_PREVIEW: 1

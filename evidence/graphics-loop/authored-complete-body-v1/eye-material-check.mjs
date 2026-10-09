@@ -36,7 +36,7 @@ const shader = {
 eyes.material.onBeforeCompile(shader, {});
 for (const marker of ['attribute vec2 uv;', 'vAuthoredEyeUv = uv;']) if (!shader.vertexShader.includes(marker)) throw new Error(`Vertex shader patch missing: ${marker}`);
 if ((shader.vertexShader.match(/attribute vec2 uv;/g) ?? []).length !== 1) throw new Error('Vertex shader declares uv more than once');
-for (const marker of ['authoredEyeA', 'authoredEyeB', 'authoredLimbal', 'authoredIris', 'authoredPupil', 'smoothstep(0.125, 0.155, eyeRadius)']) if (!shader.fragmentShader.includes(marker)) throw new Error(`Fragment shader patch missing: ${marker}`);
+for (const marker of ['authoredEyeA', 'authoredEyeB', 'authoredLimbal', 'authoredIris', 'authoredPupil', 'float pupilMask']) if (!shader.fragmentShader.includes(marker)) throw new Error(`Fragment shader patch missing: ${marker}`);
 for (const key of ['authoredEyeA', 'authoredEyeB', 'authoredLimbal', 'authoredIris', 'authoredIrisLight', 'authoredPupil']) if (!shader.uniforms[key]) throw new Error(`Shader uniform missing: ${key}`);
 result.dispose();
 if (eyes.material !== originalMaterial || eyes.geometry !== geometry || eyes.geometry.index !== index) throw new Error('Disposal did not restore the source material and geometry');

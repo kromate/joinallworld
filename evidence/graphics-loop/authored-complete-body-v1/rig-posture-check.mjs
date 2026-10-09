@@ -84,11 +84,28 @@ function posture(actor) {
   const leftFoot = point('mixamorigLeftFoot'), rightFoot = point('mixamorigRightFoot');
   const leftHand = point('mixamorigLeftHand'), rightHand = point('mixamorigRightHand');
   const leftShoulder = point('mixamorigLeftShoulder'), rightShoulder = point('mixamorigRightShoulder');
+  let bodyMinY = Infinity, bodyMaxY = -Infinity;
+  actor.object.traverse((node) => {
+    const mesh = node;
+    if (!mesh.isSkinnedMesh || mesh.name !== 'Body') return;
+    const vertex = new THREE.Vector3();
+    const count = mesh.geometry.getAttribute('position').count;
+    for (let index = 0; index < count; index++) {
+      mesh.getVertexPosition(index, vertex);
+      mesh.localToWorld(vertex);
+      bodyMinY = Math.min(bodyMinY, vertex.y); bodyMaxY = Math.max(bodyMaxY, vertex.y);
+    }
+  });
   return {
     headAboveHips: head.y - hips.y,
     hipsAboveFeet: Math.min(hips.y - leftFoot.y, hips.y - rightFoot.y),
     leftHandBelowShoulder: leftShoulder.y - leftHand.y,
     rightHandBelowShoulder: rightShoulder.y - rightHand.y,
+    leftHandFromHips: leftHand.clone().sub(hips).toArray(),
+    rightHandFromHips: rightHand.clone().sub(hips).toArray(),
+    leftArmLength: leftShoulder.distanceTo(leftHand),
+    rightArmLength: rightShoulder.distanceTo(rightHand),
+    bodyMinY, bodyMaxY,
     head: head.toArray(), hips: hips.toArray(), leftFoot: leftFoot.toArray(), rightFoot: rightFoot.toArray(),
     leftHand: leftHand.toArray(), rightHand: rightHand.toArray(),
   };
@@ -124,6 +141,28 @@ function makeKit() {
 }
 
 const kit = makeKit();
+const sourceMixer = new THREE.AnimationMixer(sourceRig.root);
+let activeSourcePose = null;
+function sourcePosture(seconds, pose) {
+  if (activeSourcePose !== pose) {
+    for (const clip of clipGltf.animations) sourceMixer.clipAction(clip).stop();
+    sourceMixer.clipAction(clipGltf.animations.find((clip) => clip.name === pose)).reset().play();
+    activeSourcePose = pose;
+  }
+  const clip = clipGltf.animations.find((candidate) => candidate.name === pose);
+  sourceMixer.setTime(clip.duration > 0 ? seconds % clip.duration : 0);
+  sourceRig.root.updateMatrixWorld(true);
+  const point = (name) => sourceRig.root.getObjectByName(name).getWorldPosition(new THREE.Vector3());
+  const hips = point('pelvis'), head = point('Head'), leftHand = point('hand_l'), rightHand = point('hand_r');
+  const leftShoulder = point('clavicle_l'), rightShoulder = point('clavicle_r');
+  return {
+    height: head.y - hips.y,
+    leftHandForward: Math.abs(leftHand.z - hips.z),
+    rightHandForward: Math.abs(rightHand.z - hips.z),
+    leftArmLength: leftShoulder.distanceTo(leftHand),
+    rightArmLength: rightShoulder.distanceTo(rightHand),
+  };
+}
 const looks = [
   { body: 'man', face: 'oval', expression: 'neutral', skin: '#7a4a2c', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
   { body: 'woman', face: 'round', expression: 'smile', skin: '#c98e62', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
@@ -139,10 +178,21 @@ for (const [actorIndex, actor] of actors.entries()) {
     for (const seconds of times) {
       actor.sample(seconds, pose);
       const measured = posture(actor);
-      postureSamples.push({ actorIndex, body: looks[actorIndex].body, pose, seconds, ...measured });
+      const sourceMeasured = sourcePosture(seconds, pose);
+      const targetHeight = measured.headAboveHips;
+      const sourceScale = targetHeight / sourceMeasured.height;
+      const leftForwardTolerance = Math.abs(measured.leftArmLength - sourceMeasured.leftArmLength * sourceScale) + targetHeight * 0.025;
+      const rightForwardTolerance = Math.abs(measured.rightArmLength - sourceMeasured.rightArmLength * sourceScale) + targetHeight * 0.025;
+      const leftForwardError = Math.abs(Math.abs(measured.leftHandFromHips[2]) - sourceMeasured.leftHandForward * sourceScale);
+      const rightForwardError = Math.abs(Math.abs(measured.rightHandFromHips[2]) - sourceMeasured.rightHandForward * sourceScale);
+      postureSamples.push({ actorIndex, body: looks[actorIndex].body, pose, seconds, ...measured, sourceMeasured, sourceScale, leftForwardError, rightForwardError });
       assert(measured.headAboveHips > 0.3, `${looks[actorIndex].body} ${pose}@${seconds}: head must stay above hips`);
       assert(measured.hipsAboveFeet > 0.35, `${looks[actorIndex].body} ${pose}@${seconds}: legs must extend below hips`);
       assert(Math.abs(measured.hips[2]) < 0.2, `${looks[actorIndex].body} ${pose}@${seconds}: hip drifted out of the authored Y-up ground plane`);
+      assert(measured.bodyMinY >= -0.04 && measured.bodyMinY <= 0.02,
+        `${looks[actorIndex].body} ${pose}@${seconds}: deformed body surface left the authored floor band (${measured.bodyMinY})`);
+      assert(leftForwardError <= leftForwardTolerance && rightForwardError <= rightForwardTolerance,
+        `${looks[actorIndex].body} ${pose}@${seconds}: hand-forward error L/R ${leftForwardError}/${rightForwardError} exceeds arm-length-scaled tolerances ${leftForwardTolerance}/${rightForwardTolerance}`);
       assert(measured.leftHandBelowShoulder > -0.05 && measured.rightHandBelowShoulder > -0.05,
         `${looks[actorIndex].body} ${pose}@${seconds}: hands must not rise above shoulders`);
     }

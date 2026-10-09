@@ -62,9 +62,25 @@ try {
     }
     await evaluate("window.characterReview.set({expression:'talk',pose:'walk',focus:'body'})");
     await evaluate('window.characterReview.sample(0,-.2)');
+    await evaluate(`(() => {
+      const stream=document.querySelector('#canvas').captureStream(24);
+      const chunks=[];
+      const recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp8',videoBitsPerSecond:1000000});
+      recorder.addEventListener('dataavailable',event=>{if(event.data.size)chunks.push(event.data);});
+      window.motionRecording={stream,recorder,chunks};recorder.start();
+    })()`);
     await evaluate("document.querySelector('#play').click()"); await wait(2100);
     await capture(body + '-moving-walk-talk');
     await wait(4200); await capture(body + '-six-second-play');
+    const video=await evaluate(`new Promise((resolve,reject)=>{
+      const {stream,recorder,chunks}=window.motionRecording;
+      recorder.addEventListener('stop',()=>{
+        stream.getTracks().forEach(track=>track.stop());
+        const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.onerror=reject;
+        reader.readAsDataURL(new Blob(chunks,{type:'video/webm'}));window.motionRecording=null;
+      },{once:true});recorder.stop();
+    })`);
+    writeFileSync(`${out}/${body}-walk-talk.webm`,Buffer.from(video,'base64'));
   }
   await send('Emulation.setDeviceMetricsOverride', {width:390,height:844,deviceScaleFactor:1,mobile:true});
   for (const body of ['woman', 'man']) {

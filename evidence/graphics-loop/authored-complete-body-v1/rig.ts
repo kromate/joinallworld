@@ -73,6 +73,25 @@ const BODY_JOINT_MAP: Readonly<Record<string, string>> = Object.freeze({
   mixamorigRightFoot: 'foot_r',
   mixamorigRightToeBase: 'ball_r',
 });
+const JOINT_DIRECTION_PAIRS = [
+  ['mixamorigHips', 'mixamorigSpine', 'pelvis', 'spine_01'],
+  ['mixamorigSpine', 'mixamorigSpine1', 'spine_01', 'spine_02'],
+  ['mixamorigSpine1', 'mixamorigSpine2', 'spine_02', 'spine_03'],
+  ['mixamorigSpine2', 'mixamorigNeck', 'spine_03', 'neck_01'],
+  ['mixamorigNeck', 'mixamorigHead', 'neck_01', 'Head'],
+  ['mixamorigLeftShoulder', 'mixamorigLeftArm', 'clavicle_l', 'upperarm_l'],
+  ['mixamorigLeftArm', 'mixamorigLeftForeArm', 'upperarm_l', 'lowerarm_l'],
+  ['mixamorigLeftForeArm', 'mixamorigLeftHand', 'lowerarm_l', 'hand_l'],
+  ['mixamorigRightShoulder', 'mixamorigRightArm', 'clavicle_r', 'upperarm_r'],
+  ['mixamorigRightArm', 'mixamorigRightForeArm', 'upperarm_r', 'lowerarm_r'],
+  ['mixamorigRightForeArm', 'mixamorigRightHand', 'lowerarm_r', 'hand_r'],
+  ['mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'thigh_l', 'calf_l'],
+  ['mixamorigLeftLeg', 'mixamorigLeftFoot', 'calf_l', 'foot_l'],
+  ['mixamorigLeftFoot', 'mixamorigLeftToeBase', 'foot_l', 'ball_l'],
+  ['mixamorigRightUpLeg', 'mixamorigRightLeg', 'thigh_r', 'calf_r'],
+  ['mixamorigRightLeg', 'mixamorigRightFoot', 'calf_r', 'foot_r'],
+  ['mixamorigRightFoot', 'mixamorigRightToeBase', 'foot_r', 'ball_r'],
+] as const;
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Complete authored character: ${message}`);
@@ -163,12 +182,26 @@ function makeRetargetedClips(
   const targetRestLocal = new Map<THREE.Object3D, THREE.Quaternion>();
   const targetRestPosition = new Map<THREE.Object3D, THREE.Vector3>();
   const sourceRestWorld = new Map<string, THREE.Quaternion>();
+  const axisAlignment = new Map<string, THREE.Quaternion>();
   for (const [targetName, sourceName] of Object.entries(BODY_JOINT_MAP)) {
     const targetBone = targetBones.get(targetName);
     const sourceBone = sourceBones.get(sourceName);
     assert(targetBone && sourceBone, `motion mapping is missing ${targetName}/${sourceName}`);
     targetRestWorld.set(targetName, targetBone.getWorldQuaternion(new THREE.Quaternion()));
     sourceRestWorld.set(sourceName, sourceBone.getWorldQuaternion(new THREE.Quaternion()));
+  }
+  for (const [targetParent, targetChild, sourceParent, sourceChild] of JOINT_DIRECTION_PAIRS) {
+    const targetFrom = targetBones.get(targetParent)!;
+    const targetTo = targetBones.get(targetChild)!;
+    const sourceFrom = sourceBones.get(sourceParent)!;
+    const sourceTo = sourceBones.get(sourceChild)!;
+    const targetDirection = targetTo.getWorldPosition(new THREE.Vector3())
+      .sub(targetFrom.getWorldPosition(new THREE.Vector3())).normalize();
+    const sourceDirection = sourceTo.getWorldPosition(new THREE.Vector3())
+      .sub(sourceFrom.getWorldPosition(new THREE.Vector3())).normalize();
+    assert(targetDirection.lengthSq() > 0.9 && sourceDirection.lengthSq() > 0.9,
+      `retarget direction is degenerate for ${targetParent}/${sourceParent}`);
+    axisAlignment.set(targetParent, new THREE.Quaternion().setFromUnitVectors(sourceDirection, targetDirection));
   }
   reference.traverse((node) => {
     targetRestLocal.set(node, node.quaternion.clone());
@@ -229,7 +262,10 @@ function makeRetargetedClips(
         sourceBone.getWorldQuaternion(qCurrent);
         qSourceRestInverse.copy(sourceRestWorld.get(sourceName)!).invert();
         worldDelta.copy(qCurrent).multiply(qSourceRestInverse);
-        qDelta.copy(worldDelta);
+        const alignment = axisAlignment.get(targetName);
+        if (alignment) {
+          qDelta.copy(alignment).multiply(worldDelta).multiply(alignment.clone().invert());
+        } else qDelta.copy(worldDelta);
         qTarget.copy(qDelta).multiply(targetRestWorld.get(targetName)!);
         desiredWorld.set(targetBone, qTarget.clone());
       }

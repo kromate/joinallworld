@@ -1,0 +1,181 @@
+{
+  "assetRepository": "https://github.com/s20220526/makehuman-assets",
+  "assetCommit": "8cf9645b975a98eea056b140df11a1d278da0d10",
+  "assetCommitTreeSha": "0850e8949d5d7a6eeb8140dbc9f9b053b6deec91",
+  "assetPackPage": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+  "license": {
+    "name": "CC0 1.0",
+    "repositoryFile": "source/LICENSE.txt",
+    "bytes": 7048,
+    "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "gitBlob": "0e259d42c996742e9e3cba14c677129b2c1b6311"
+  },
+  "baseMesh": {
+    "name": "hm08",
+    "url": "https://raw.githubusercontent.com/nirholas/three.ws/ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd/avatar-sources/anny/3dobjs/base.obj",
+    "provenance": "three.ws Anny base OBJ; same pinned source validated by skin-assets/uv-proof.json"
+  },
+  "anchorCompatibility": {
+    "baseObjSha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "baseObjBytes": 1749303,
+    "anchorGroup": "body",
+    "baseObjPositionCount": 19158,
+    "bodyGroupPositionIndexRange": [
+      0,
+      13379
+    ],
+    "bodyGroupPositionCount": 13380,
+    "bodyFaceCount": 13378,
+    "bodyFaceSizes": {
+      "4": 13378
+    },
+    "assets": {
+      "afro01": {
+        "mapRows": 2196,
+        "anchorIndexRange": [
+          0,
+          12367
+        ],
+        "allAnchorIndicesInBodyGroup": true,
+        "mappingTriplesMatchingBodyQuadTriangleSupport": 2182,
+        "mappingTriplesTotal": 2196,
+        "nonmatchingTriples": 14
+      },
+      "short02": {
+        "mapRows": 1755,
+        "anchorIndexRange": [
+          204,
+          12366
+        ],
+        "allAnchorIndicesInBodyGroup": true,
+        "mappingTriplesMatchingBodyQuadTriangleSupport": 1755,
+        "mappingTriplesTotal": 1755,
+        "nonmatchingTriples": 0
+      }
+    }
+  },
+  "authoredGlbUvCrosscheck": {
+    "expectedSourceUvCount": 14517,
+    "actualGlbUvCount": 14517,
+    "maxAbsoluteFloatError": 2.9800415024539006e-08,
+    "passes": true
+  },
+  "assets": {
+    "afro01": {
+      "assetPackLicense": "CC0 1.0",
+      "tags": [
+        "Afro"
+      ],
+      "basemesh": "hm08",
+      "objCounts": {
+        "vertices": 2196,
+        "uvs": 2238,
+        "normals": 0,
+        "faces": 1096,
+        "triangleEquivalent": 2192
+      },
+      "objTopology": {
+        "uniqueUndirectedEdges": 2950,
+        "boundaryEdges": 1516,
+        "nonManifoldEdges": 0,
+        "connectedComponents": 342,
+        "isolatedVertices": 0
+      },
+      "mhcloMapRows": 2196,
+      "deleteVertsDirective": false,
+      "textureReferenceNotDownloaded": "afro_diffuse.png",
+      "files": {
+        "obj": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/afro01/afro01.obj",
+          "path": "source/afro01.obj",
+          "bytes": 130040,
+          "sha256": "8344fffef15120a05a89219f31184ca2958537223fa885c885137ad1e97edcb8",
+          "gitBlob": "6761cf10529561306e12bb8c1e32374c2864642c"
+        },
+        "mhclo": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/afro01/afro01.mhclo",
+          "path": "source/afro01.mhclo",
+          "bytes": 149574,
+          "sha256": "9977bd4507e2dd1408504b7a39a6f585ffa2d3ba3aa40ad4bdc2844884bbebb5",
+          "gitBlob": "f99df0b4b6da7559634fb52de1db4d423e3110bc"
+        },
+        "mhmat": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/afro01/afro01.mhmat",
+          "path": "source/afro01.mhmat",
+          "bytes": 1030,
+          "sha256": "6da1c6778df2450b135009274ed0145dc2dffbc5d8e287fc1d4c69ba539b483c",
+          "gitBlob": "04edb01a8c3b89dd8cb64a436ce01d10fe47794f"
+        }
+      },
+      "mhcloMappingWeightSumRange": [
+        0.9999899999999999,
+        1.00001
+      ],
+      "mhcloOffsetCoordinateNote": "MHCLO stores Y-up/Z-depth offsets; converter must use MakeHuman convention or the documented Y/Z conversion.",
+      "fitScaleHints": {
+        "x_scale": "5399 11998 1.7412",
+        "y_scale": "791 881 2.7409",
+        "z_scale": "962 5320 2.2613"
+      }
+    },
+    "short02": {
+      "assetPackLicense": "CC0 1.0",
+      "tags": [
+        "Short",
+        "Male"
+      ],
+      "basemesh": "hm08",
+      "objCounts": {
+        "vertices": 1755,
+        "uvs": 2061,
+        "normals": 0,
+        "faces": 1672,
+        "triangleEquivalent": 3344
+      },
+      "objTopology": {
+        "uniqueUndirectedEdges": 3426,
+        "boundaryEdges": 164,
+        "nonManifoldEdges": 0,
+        "connectedComponents": 1,
+        "isolatedVertices": 0
+      },
+      "mhcloMapRows": 1755,
+      "deleteVertsDirective": false,
+      "textureReferenceNotDownloaded": "short02_diffuse.png",
+      "files": {
+        "obj": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/short02/short02.obj",
+          "path": "source/short02.obj",
+          "bytes": 139742,
+          "sha256": "48f979114adfa712165a69cc55c45a70831af1fb3cba8e2a89120f0c87407b64",
+          "gitBlob": "dec7bb465c41de5d5adb67dd954825724aecf0cc"
+        },
+        "mhclo": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/short02/short02.mhclo",
+          "path": "source/short02.mhclo",
+          "bytes": 119240,
+          "sha256": "625736cdb73e6d094df6e5a2df18f371781f1d2cd37b0ae15795c5d7051c3ec2",
+          "gitBlob": "ef71336b19a43660b3ae7d7a49cb3c5e197c8d13"
+        },
+        "mhmat": {
+          "url": "https://raw.githubusercontent.com/s20220526/makehuman-assets/8cf9645b975a98eea056b140df11a1d278da0d10/base/hair/short02/short02.mhmat",
+          "path": "source/short02.mhmat",
+          "bytes": 1323,
+          "sha256": "2ed04c8aad9c1a35d858ca72091525d32b1da3b61b5a031634dd528fd8530f6d",
+          "gitBlob": "f2ddc8e4156d7ec55297f5e0ba58563a76308849"
+        }
+      },
+      "mhcloMappingWeightSumRange": [
+        0.9999899999999999,
+        1.00001
+      ],
+      "mhcloOffsetCoordinateNote": "MHCLO stores Y-up/Z-depth offsets; converter must use MakeHuman convention or the documented Y/Z conversion.",
+      "fitScaleHints": {
+        "x_scale": "5399 11998 1.4340",
+        "y_scale": "791 881 2.4098",
+        "z_scale": "962 5320 2.0001"
+      }
+    }
+  },
+  "scope": "Pinned source inputs only. No MHCLO conversion, visual review, runtime integration, texture transfer, or bun asset is claimed."
+}

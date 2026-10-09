@@ -1,0 +1,174 @@
+{
+  "schema": "joinallworld.authored-accessory.v1",
+  "asset": "afro01",
+  "assetKind": "hair",
+  "sourcePins": {
+    "body": "ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd",
+    "asset": "8cf9645b975a98eea056b140df11a1d278da0d10",
+    "textureSha256": "dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb",
+    "textureBytes": 4817185,
+    "lfsPointerSha256": "f558e275ba7fe28b213ad12e462ab8f63fd6a6de2f42497e7b7509c9ff91269f",
+    "lfsPointer": [
+      "version https://git-lfs.github.com/spec/v1",
+      "oid sha256:dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb",
+      "size 4817185"
+    ]
+  },
+  "sourceMesh": "hm08 base.obj group body; source OBJ quad order; each quad fans to two triangles",
+  "deleteSemantics": "MHCLO has no delete_verts directive; no body faces are hidden.",
+  "bodyHideSourceFaceIds": [],
+  "bodyHideSourceTriangleIds": [],
+  "bodyHideVertexIds": [],
+  "bodySourceFaceCount": 13378,
+  "bodySourceTriangleCount": 26756,
+  "removedBodyFaces": 0,
+  "removedBodyTriangles": 0,
+  "garmentAuthoredVertexCount": 2196,
+  "garmentSplitVertexCount": 2276,
+  "garmentTriangleCount": 2192,
+  "anchors": {
+    "rows": 2196,
+    "uniqueSourceIds": 528,
+    "sourceIndexMin": 0,
+    "sourceIndexMax": 12367,
+    "sourceGroup": "body",
+    "sourceGroupRanges": [
+      [
+        0,
+        13379
+      ]
+    ],
+    "allRowsInExpectedGroup": true,
+    "helperTightsOnly": false,
+    "nearestNeighborFallback": false,
+    "mappingTriplesMatchingBodyQuadTriangleSupport": 2182,
+    "mappingTriplesTotal": 2196,
+    "nonmatchingBodyTriangleSupportRowIds": [
+      887,
+      1086,
+      1295,
+      1375,
+      1383,
+      1434,
+      1456,
+      1563,
+      1762,
+      1971,
+      2051,
+      2059,
+      2110,
+      2132
+    ],
+    "glbAttributes": {
+      "_MH_SOURCE_VERTEX": "original afro01.obj v index, repeated only for OBJ UV seams",
+      "_MH_ANCHOR_VERTICES": "MHCLO's three original hm08 source vertex indices",
+      "_MH_ANCHOR_BARYCENTRICS": "the exact three MHCLO barycentric weights"
+    }
+  },
+  "weights": {
+    "source": "pinned weights.mixamo.json",
+    "bones": 52,
+    "unweightedAnchorCount": 0,
+    "maxInfluences": 4,
+    "allNormalized": true,
+    "jointNamesOrder": [
+      "mixamorig:Head",
+      "mixamorig:Hips",
+      "mixamorig:LeftArm",
+      "mixamorig:LeftFoot",
+      "mixamorig:LeftForeArm",
+      "mixamorig:LeftHand",
+      "mixamorig:LeftHandIndex1",
+      "mixamorig:LeftHandIndex2",
+      "mixamorig:LeftHandIndex3",
+      "mixamorig:LeftHandMiddle1",
+      "mixamorig:LeftHandMiddle2",
+      "mixamorig:LeftHandMiddle3",
+      "mixamorig:LeftHandPinky1",
+      "mixamorig:LeftHandPinky2",
+      "mixamorig:LeftHandPinky3",
+      "mixamorig:LeftHandRing1",
+      "mixamorig:LeftHandRing2",
+      "mixamorig:LeftHandRing3",
+      "mixamorig:LeftHandThumb1",
+      "mixamorig:LeftHandThumb2",
+      "mixamorig:LeftHandThumb3",
+      "mixamorig:LeftLeg",
+      "mixamorig:LeftShoulder",
+      "mixamorig:LeftToeBase",
+      "mixamorig:LeftUpLeg",
+      "mixamorig:Neck",
+      "mixamorig:RightArm",
+      "mixamorig:RightFoot",
+      "mixamorig:RightForeArm",
+      "mixamorig:RightHand",
+      "mixamorig:RightHandIndex1",
+      "mixamorig:RightHandIndex2",
+      "mixamorig:RightHandIndex3",
+      "mixamorig:RightHandMiddle1",
+      "mixamorig:RightHandMiddle2",
+      "mixamorig:RightHandMiddle3",
+      "mixamorig:RightHandPinky1",
+      "mixamorig:RightHandPinky2",
+      "mixamorig:RightHandPinky3",
+      "mixamorig:RightHandRing1",
+      "mixamorig:RightHandRing2",
+      "mixamorig:RightHandRing3",
+      "mixamorig:RightHandThumb1",
+      "mixamorig:RightHandThumb2",
+      "mixamorig:RightHandThumb3",
+      "mixamorig:RightLeg",
+      "mixamorig:RightShoulder",
+      "mixamorig:RightToeBase",
+      "mixamorig:RightUpLeg",
+      "mixamorig:Spine",
+      "mixamorig:Spine1",
+      "mixamorig:Spine2"
+    ]
+  },
+  "morphs": [
+    "bodyFeminine",
+    "bodyMasculine"
+  ],
+  "morphRecipe": "The exact upstream builder's 1/3 African + 1/3 Asian + 1/3 Caucasian young target for each sex; garment deltas are mapped target shape minus mapped neutral shape, including MHCLO axis-reference scaling per shape.",
+  "coordinates": {
+    "source": "MakeHuman Y-up, +Z-facing",
+    "output": "metres, Y-up, +Z-facing; x/y/z * 0.1 and joint-ground centroid subtracted from Y"
+  },
+  "maleFitErrorSourceUnits": {
+    "mean": 0.7255497921268614,
+    "p95": 0.8307134905844217,
+    "max": 0.8646579970047223
+  },
+  "sourceFitErrorByBodyShapeUnits": {
+    "neutral": {
+      "mean": 0.027866386296881672,
+      "p95": 0.05469464336717691,
+      "max": 0.06641801964247601
+    },
+    "bodyFeminine": {
+      "mean": 0.7055271277261467,
+      "p95": 0.8405649863087579,
+      "max": 0.8977047930277677
+    },
+    "bodyMasculine": {
+      "mean": 0.7255497921268614,
+      "p95": 0.8307134905844217,
+      "max": 0.8646579970047223
+    }
+  },
+  "renderAcceptance": "not performed; this is source-space/export evidence only",
+  "material": {
+    "mhmat": "afro01.mhmat",
+    "diffuseTexture": "afro_diffuse.png",
+    "pngWidthHeight": [
+      2048,
+      2048
+    ],
+    "pngBitDepth": 8,
+    "pngColorType": "RGBA",
+    "alphaMode": "BLEND",
+    "textureColorSpace": "sRGB"
+  },
+  "generatedGlb": "/Users/anthonyakpan/Desktop/joinallworld/evidence/graphics-loop/authored-complete-body-v1/authored-hair/out/afro01.glb"
+}

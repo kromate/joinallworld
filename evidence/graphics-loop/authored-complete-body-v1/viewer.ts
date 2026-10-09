@@ -4,7 +4,7 @@ import { normalizeLook } from '../../../src/scene/avatar-look.ts';
 import { loadBody } from '../expressive-character-v1/skinned-baseline.ts';
 import type { SkinnedBody } from '../../../src/scene/body/skinned.ts';
 import { loadCompleteCharacter } from './rig.ts';
-import { applyCharacterPresentation } from './presentation.ts';
+import { applyAuthoredPresentation } from './authored-presentation.ts';
 import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
 import { applySkinMaterial } from './skin-material.ts';
@@ -24,7 +24,7 @@ shadowContext.fillStyle=shadowGradient;shadowContext.fillRect(0,0,64,64);
 const shadowTexture=new THREE.CanvasTexture(shadowCanvas);
 const scenes=kits.map(()=>{
   const scene=new THREE.Scene(); scene.add(new THREE.HemisphereLight('#fff0db','#7a7972',2));
-  const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshBasicMaterial({color:'#ebe2d4'}));
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshBasicMaterial({color:'#ebe2d4',toneMapped:false}));
   ground.rotation.x=-Math.PI/2;ground.position.y=-.025;scene.add(ground);
   const contact=new THREE.Mesh(new THREE.PlaneGeometry(1.4,1.1),new THREE.MeshBasicMaterial({map:shadowTexture,transparent:true,depthWrite:false}));
   contact.rotation.x=-Math.PI/2;contact.position.y=-.01;scene.add(contact);
@@ -36,12 +36,24 @@ const scenes=kits.map(()=>{
 const camera=new THREE.PerspectiveCamera(28,1,.05,40);
 let baseline:SkinnedBody|null=null;
 let candidate:Awaited<ReturnType<typeof loadCompleteCharacter>>|null=null;
-let presentation:ReturnType<typeof applyCharacterPresentation>|null=null;
+let presentation:Awaited<ReturnType<typeof applyAuthoredPresentation>>|null=null;
 let eyes:ReturnType<typeof applyAuthoredEyeMaterial>|null=null;
 let skin:Awaited<ReturnType<typeof applySkinMaterial>>|null=null;
 let state={body:'woman',expression:'grin',pose:'idle',focus:'body'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
+function fitAuthoredHeight(object:THREE.Group){
+  object.updateMatrixWorld(true);
+  const body=object.getObjectByName('Body') as THREE.SkinnedMesh;
+  body.skeleton.update();
+  const point=new THREE.Vector3(),bounds=new THREE.Box3();
+  for(let vertex=0;vertex<body.geometry.getAttribute('position').count;vertex++){
+    body.getVertexPosition(vertex,point);body.localToWorld(point);bounds.expandByPoint(point);
+  }
+  const height=bounds.max.y-bounds.min.y;
+  if(!Number.isFinite(height)||height<1||height>2.5)throw new Error(`Invalid authored standing height ${height}`);
+  const scale=2.45/height;object.scale.setScalar(scale);object.position.y=-bounds.min.y*scale;
+}
 function draw(){
   const width=canvas.clientWidth,height=canvas.clientHeight;
   renderer.setSize(width,height,false);camera.aspect=width/2/height;
@@ -54,6 +66,14 @@ function draw(){
   else baseline?.show('idle');
   if(candidate){candidate.object.rotation.y=yaw;candidate.sample(seconds,state.pose as 'idle'|'walk'|'dance');candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);}
   scenes.forEach((scene,index)=>{
+    if(face&&index===1&&candidate){
+      candidate.object.updateMatrixWorld(true);
+      const eye=candidate.object.getObjectByName('Eyes') as THREE.SkinnedMesh;
+      eye.skeleton.update();const first=new THREE.Vector3(),second=new THREE.Vector3();
+      eye.getVertexPosition(0,first);eye.localToWorld(first);eye.getVertexPosition(80,second);eye.localToWorld(second);
+      const faceCenter=(first.y+second.y)/2-.055*candidate.object.scale.y;
+      camera.position.set(0,faceCenter+.02,distance);camera.lookAt(0,faceCenter,0);camera.updateMatrixWorld();
+    }else{camera.position.set(0,target+(face?.02:.12),distance);camera.lookAt(0,target,0);camera.updateMatrixWorld();}
     renderer.setViewport(index*Math.floor(width/2),0,Math.floor(width/2),height);renderer.setScissor(index*Math.floor(width/2),0,Math.floor(width/2),height);
     const start=performance.now();renderer.render(scene,camera);frames.push(performance.now()-start);if(frames.length>600)frames.shift();
   });
@@ -63,17 +83,19 @@ async function set(next:Partial<typeof state>){
   const previous=state;state={...state,...next};
   for(const key of['body','expression','pose','focus']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
   const seed='complete-authored-human';
-  const look=normalizeLook({body:state.body,hair:state.body==='woman'?'bun':'curls',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
+  const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body){
     const ticket=++generation;skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
     const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin);
     if(ticket!==generation){loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
+    const loadedPresentation=await applyAuthoredPresentation(loaded[1].object,look);
+    if(ticket!==generation){loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
     baseline=loaded[0];candidate=loaded[1];skin=loadedSkin;
-    presentation=applyCharacterPresentation(candidate.object,look);
+    presentation=loadedPresentation;
     eyes=applyAuthoredEyeMaterial(candidate.object);
-    candidate.object.scale.setScalar(2.45/1.6675);
+    fitAuthoredHeight(candidate.object);
     scenes[0]!.add(baseline.object);scenes[1]!.add(candidate.object);
   }else baseline!.wear(look,seed);
   seconds=0;draw();

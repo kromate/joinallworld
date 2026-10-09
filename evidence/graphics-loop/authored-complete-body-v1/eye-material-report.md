@@ -21,3 +21,7 @@ node --max-old-space-size=64 --experimental-strip-types evidence/graphics-loop/a
 ## Limits
 
 The authored eye has only 140 triangles per eye, so iris detail is limited to smooth procedural bands and restrained angular grain. This does not add catchlights or authored eyelid makeup. The iris diameter uses 0.58 of the UV shell diameter, with pupil diameter about 0.30 of the shell diameter; final scale, orientation, highlights, and appearance in the project's remote renderer still need visual review. No browser, build, render, or user-facing acceptance was run as part of this spike.
+
+## Actual v3 image rejection and correction
+
+Remote run 37944333253 compiled the shader, but root rejected both face images because the masks covered the exposed eye with pupil/iris. A bounded actual GLB position/UV scan found the front 2.69mm ring has normalized UV radius .033 and the front 5.7mm ring .066. The prior full-shell mask radius .34 was inappropriate: the UV shell includes the back of the eye, while the visible front surface occupies only a small part of that domain. V2 masks use iris radius .065–.074, limbal .074–.081 and pupil .023–.030. These match measured front rings and still need fresh rendered review. The earlier full-shell diameter statement is superseded.

@@ -80,9 +80,10 @@ vec2 eyeB = (vAuthoredEyeUv - authoredEyeB.xy) / authoredEyeB.zw;
 float useA = step(dot(eyeA, eyeA), dot(eyeB, eyeB));
 vec2 eyeUv = mix(eyeB, eyeA, useA);
 float eyeRadius = length(eyeUv);
-float limbalMask = 1.0 - smoothstep(0.34, 0.39, eyeRadius);
-float irisMask = 1.0 - smoothstep(0.29, 0.34, eyeRadius);
-float pupilMask = 1.0 - smoothstep(0.125, 0.155, eyeRadius);
+// The front 5.7mm ring has UV radius .066; .34 covered the entire visible eye.
+float limbalMask = 1.0 - smoothstep(0.074, 0.081, eyeRadius);
+float irisMask = 1.0 - smoothstep(0.065, 0.074, eyeRadius);
+float pupilMask = 1.0 - smoothstep(0.023, 0.030, eyeRadius);
 float irisGrain = 0.5 + 0.5 * sin(atan(eyeUv.y, eyeUv.x) * 18.0 + eyeRadius * 95.0);
 vec3 irisColor = mix(authoredIris, authoredIrisLight, irisGrain * 0.36);
 diffuseColor.rgb = mix(diffuseColor.rgb, authoredLimbal, limbalMask);
@@ -95,7 +96,7 @@ diffuseColor.rgb = mix(diffuseColor.rgb, authoredPupil, pupilMask);`);
     shader.uniforms.authoredIrisLight = { value: IRIS_LIGHT };
     shader.uniforms.authoredPupil = { value: PUPIL };
   };
-  material.customProgramCacheKey = () => `${previousKey()}|authored-eye-uv-v1`;
+  material.customProgramCacheKey = () => `${previousKey()}|authored-eye-uv-v2`;
   mesh.material = material;
   let disposed = false;
   return {

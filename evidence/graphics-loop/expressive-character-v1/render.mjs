@@ -4,8 +4,8 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 const out = 'evidence/graphics-loop/expressive-character-v1/results'; mkdirSync(out, { recursive: true });
 const profile = mkdtempSync(path.join(tmpdir(), 'allworld-face-'));
-const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', '5197', '--strictPort'], { stdio: ['ignore', 'inherit', 'inherit'] });
-const chrome = spawn(process.env.CHROME_BIN || '/usr/bin/google-chrome', ['--headless=new', '--no-sandbox', '--no-zygote', '--single-process', '--renderer-process-limit=1', '--disable-extensions', '--disable-background-networking', '--disable-dev-shm-usage', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--remote-debugging-port=9297', `--user-data-dir=${profile}`, 'about:blank'], { stdio: ['ignore', 'inherit', 'inherit'] });
+const server = spawn(process.execPath, ['--max-old-space-size=192', 'evidence/graphics-loop/expressive-character-v1/serve.mjs'], { stdio: ['ignore', 'inherit', 'inherit'] });
+const chrome = spawn(process.env.CHROME_BIN || '/usr/bin/google-chrome', ['--headless=new', '--no-sandbox', '--renderer-process-limit=1', '--disable-extensions', '--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader', '--no-first-run', '--no-default-browser-check', '--remote-debugging-port=9297', `--user-data-dir=${profile}`, 'about:blank'], { stdio: ['ignore', 'inherit', 'inherit'] });
 let ws, id = 0; const pending = new Map(), errors = [], network = [], cases = [];
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 async function retry(url) { for (let i = 0; i < 100; i++) { try { const r = await fetch(url); if (r.ok) return r; } catch {} await wait(100); } throw new Error(`Timeout: ${url}`); }

@@ -305,10 +305,12 @@ test('a founder with 5,000 friends: a small record, a bounded overview, pages th
   const zed = await w.founder();
   const real = await w.player('Ada');
   const many = 5000, simulated: string[] = [];
+  const readStats = f.server.store.stats?.bind(f.server.store);
+  assert.ok(readStats, 'the actual Node fixture exposes store counters for this profile');
   let measuredAt = performance.now();
-  let measuredStats = f.server.store.stats();
+  let measuredStats = readStats();
   const measure = (stage: string): void => {
-    const current = f.server.store.stats();
+    const current = readStats();
     const previous = new Map(Object.entries(measuredStats));
     const counters = Object.fromEntries(Object.entries(current).flatMap(([key, value]) => {
       const before = previous.get(key);

@@ -80,6 +80,12 @@ import type {
   SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
 } from './types.ts';
 import { buildAvatar, drawCrowd } from './characters.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { normalizeLook } from './characters.ts';
+import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
+import type { SkinnedBody } from './body/skinned.ts';
+import { createCanonicalCrowd, type CanonicalCrowdSpec } from './body/canonical-crowd.ts';
+import type { NativeExpressionController } from './body/native/native-expression-controller.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
@@ -101,6 +107,8 @@ export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: 
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
 export { TIMES, LIGHTING, timeOfDay, lightingFor } from './lighting.ts';
 export const MAX_CROWD = 12;
+/** Initial authored NPC allowance; public crowd population remains unchanged. */
+export const MAX_NATIVE_NPCS = 2;
 
 /** The kinds every city draws with. A kind a city added (CITY_KINDS) arrives with that city's scenes. */
 const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
@@ -364,6 +372,7 @@ interface Tied { spot?: string | null; friend?: boolean }
 type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
+interface CanonicalVenueActor { readonly body: SkinnedBody; readonly talk: NativeExpressionController; dispose(): void }
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
@@ -417,6 +426,54 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   // Other players who report where they stand: one figure each, eased to every new position.
   const peers = new Map<string, Peer>();
   let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
+  let activeNpcActivity: string | null = null;
+  function nativeNpcPose(id: string): 'idle' | 'interact' {
+    return id.startsWith('npc:') && activeNpcActivity?.startsWith(`npc-${id.slice(4)}-`) ? 'interact' : 'idle';
+  }
+  function syncNativeTalk(actor: CanonicalVenueActor, pose: 'idle' | 'interact') {
+    const active = actor.talk.snapshot().active;
+    if (pose === 'interact' && !active) actor.talk.startTalk();
+    else if (pose === 'idle' && active) actor.talk.stop();
+  }
+  let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
+  const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
+    async load(spec) {
+      // Keep the provider and its model/clip dependencies behind the first-frame capability gate.
+      const { loadGameBody } = await import('./body/provider.ts');
+      const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', role: 'npc', poses: ['idle', 'walk', 'interact'] });
+      const preparedNative = 'preparedMetrics' in body;
+      body.object.userData.nativeGameProviderEvidence = {
+        role: 'npc', preparedNative, representation: preparedNative ? 'native-prepared' : 'legacy-fallback',
+        requestedLifecyclePoses: ['idle', 'walk', 'interact'],
+      };
+      let talk: NativeExpressionController;
+      try {
+        // Expression code stays behind the same renderer-gated, demand-loaded NPC path as its body.
+        const { createNativeExpressionController } = await import('./body/native/native-expression-controller.ts');
+        talk = createNativeExpressionController(body.object);
+      }
+      catch (error) { body.object.removeFromParent(); body.dispose(); throw error; }
+      return { body, talk, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
+    },
+    place(actor, spec) {
+      actor.body.fit(spec.scale);
+      const pose = nativeNpcPose(spec.id);
+      actor.body.show(pose, false);
+      actor.body.place(spec.x, spec.y, spec.z, spec.ry);
+      actor.body.object.userData.nativeGameNpcPose = pose;
+      syncNativeTalk(actor, pose);
+    },
+    mount(actor, id) {
+      actor.body.object.name = `canonical-crowd:${id}`;
+      group.add(actor.body.object);
+    },
+    changed() {
+      rebuildActorBatch();
+      notifyCrowdChanged?.();
+    },
+    failed(id, error) { console.warn(`Canonical crowd actor ${id} unavailable; keeping its procedural figure:`, error); },
+    yieldBetweenActors: () => new Promise<void>((resolve) => setTimeout(resolve, 0)),
+  });
   const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;
   // The ground direction from the scene's centre towards its own camera: "in front of" a marker.
@@ -733,23 +790,32 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   /** Advance every figure that is on its way. Returns true while any still is; moves transforms only. */
   function stepCrowd(dt: number) {
-    if (!easing) return false;
     let more = false;
-    for (const peer of peers.values()) {
-      if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
-      resetGlance(peer);
-      peer.t = Math.min(1, peer.t + dt / peer.span);
-      const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
-      peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
-      const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
-      peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
-      if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
-      peer.stride += dt * 6.5;
-      if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
-      placePeer(peer);
+    if (easing) {
+      for (const peer of peers.values()) {
+        if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
+        resetGlance(peer);
+        peer.t = Math.min(1, peer.t + dt / peer.span);
+        const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
+        peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
+        const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
+        peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
+        if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
+        peer.stride += dt * 6.5;
+        if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
+        placePeer(peer);
+      }
+      easing = more;
     }
-    easing = more;
-    return more;
+    // NPC jaw motion shares the host's existing bounded crowd motion loop. It exists only while
+    // an admitted native NPC has an active interaction, so idle venues request no extra frames.
+    for (const person of placedCrowd) {
+      const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+      if (!actor || !actor.talk.snapshot().active) continue;
+      actor.talk.step(dt);
+      more = true;
+    }
+    return more || easing;
   }
   /** Put every figure where it is going, at once (reduced motion, or no frame loop). */
   function settleCrowd() {
@@ -759,6 +825,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer);
     }
     easing = false;
+    for (const person of placedCrowd) {
+      const actor = canonicalCrowd.get(String(person.id ?? ''));
+      if (actor?.talk.snapshot().active) actor.talk.stop();
+    }
   }
   /** Someone standing still looks at the player when they come close, then looks away (src/scene/space.ts). True while still turning. */
   function stepGlance(peer: Peer, dt: number) {
@@ -777,20 +847,53 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (easing || !driven || !peers.size) return;
     for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
-  function buildActors() {
-    const placed = placeCrowd(view.crowd);
+  function supportsCanonicalStaticPose(person: CrowdPerson): boolean {
+    return person.pose === undefined || person.pose === null || person.pose === 'stand';
+  }
+  function canonicalSpec(person: CrowdPerson, index: number): CanonicalCrowdSpec {
+    const id = String(person.id ?? `person-${index}`), seed = String(person.seed ?? person.id ?? person.name ?? id);
+    return { id, look: person.look ?? null, seed, x: person.x ?? 0, y: person.y ?? 0, z: person.z ?? 0, ry: person.ry ?? 0, scale: 1 };
+  }
+  function canonicalTag(person: CrowdPerson, index: number, useCanonicalHead = true): SceneTag {
+    const kind = person.kind === 'npc' || person.kind === 'self' ? person.kind : 'player';
+    const name = String(person.name ?? person.id ?? ''), id = String(person.id ?? `person-${index}`);
+    const look = normalizeLook(person.look, person.seed ?? id);
+    const top = (person.y ?? 0) + 2.95 * avatarProportions(look.appearance).height;
+    const body = useCanonicalHead ? canonicalCrowd.get(id)?.body : undefined;
+    const head = body?.object.getObjectByName('Head');
+    if (body && head) {
+      body.object.updateWorldMatrix(true, false);
+      body.object.updateMatrixWorld(true);
+      const point = new THREE.Vector3();
+      head.getWorldPosition(point);
+      point.y += body.scale * 0.32;
+      return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+        marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+        colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+        position: { x: person.x ?? 0, y: point.y, z: person.z ?? 0 } };
+    }
+    return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+      marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+      colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+      position: { x: person.x ?? 0, y: top, z: person.z ?? 0 } };
+  }
+  function rebuildActorBatch() {
+    const placed = placedCrowd;
     const merged = placed.filter((person) => !person.live);
-    // The merged batch holds NPCs and players without a reported position: rebuilt only when THEY change.
-    const key = JSON.stringify(merged);
+    const fallback = merged.filter((person, index) => !supportsCanonicalStaticPose(person) || !canonicalCrowd.get(String(person.id ?? `person-${index}`)));
+    // Keep the procedural member visible until its own canonical body is committed; do not hide a whole merged crowd batch.
+    const key = JSON.stringify(fallback);
     if (key !== batchKey) {
       batchKey = key;
-      releaseObjects(actorObjects);
       const batch = createBatch(THREE);
-      mergedTags = drawCrowd(batch, merged);
+      drawCrowd(batch, fallback);
       const built = batch.build(shared.materials);
+      releaseObjects(actorObjects);
       actorTriangles = built.triangles;
       for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
     }
+    mergedTags = merged.map((person, index) => canonicalCrowd.get(String(person.id ?? `person-${index}`))
+      ? canonicalTag(person, index) : canonicalTag(person, index, false));
     const kept = new Set();
     for (const person of placed) if (person.live) kept.add(syncPeer(person as LivePerson).id);
     for (const peer of [...peers.values()]) if (!kept.has(peer.id)) dropPeer(peer);
@@ -798,6 +901,20 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     let next = 0;
     crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id))!.tag : mergedTags[next++])).filter((tag): tag is SceneTag => Boolean(tag));
     peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id)!.at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
+  }
+  function buildActors() {
+    placedCrowd = placeCrowd(view.crowd);
+    canonicalCrowd.sync(placedCrowd.flatMap((person, index) => {
+      if (person.live || person.kind !== 'npc' || !person.look || !supportsCanonicalStaticPose(person)) return [];
+      return [canonicalSpec(person, index)];
+    }).slice(0, MAX_NATIVE_NPCS));
+    rebuildActorBatch();
+  }
+  function startCrowd(renderer: { getContext?: () => unknown }, changed: () => void) {
+    notifyCrowdChanged = changed;
+    if (crowdGateRejected) return;
+    if (!bodyAllowed() || !drawsWebGL2(renderer)) { crowdGateRejected = true; return; }
+    canonicalCrowd.start();
   }
   function applyLighting() {
     const preset = lit();
@@ -829,6 +946,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   function release() {
     renderedContactTop = null;
+    canonicalCrowd.dispose();
     for (const peer of [...peers.values()]) dropPeer(peer);
     easing = false; batchKey = null; peopleList = []; mergedTags = [];
     wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
@@ -1012,7 +1130,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       return crowdTags;
     },
     /** True while another player's figure is on its way to a newly reported position. */
-    get easing() { return easing; },
+    get easing() { return easing || placedCrowd.some((person) => canonicalCrowd.get(String(person.id ?? ''))?.talk.snapshot().active === true); },
     stepCrowd, settleCrowd,
     /** The camera is at (x, z): hide whichever wall it has gone behind, with what hangs on it. */
     look(x: number, z: number) {
@@ -1061,8 +1179,24 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         const pose = !active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'busy';
         if (pose !== view.pose) { view.pose = pose; actors = true; }
       }
-      if (live) { if (dressed) redress(); if (actors) settle(); if (changed) applyLighting(); }
-      return changed || actors;
+      const nextNpcActivity = here && state.activeAction?.kind === 'activity' && typeof state.activeAction.id === 'string'
+        ? state.activeAction.id : null;
+      const npcPoseChanged = activeNpcActivity !== nextNpcActivity;
+      activeNpcActivity = nextNpcActivity;
+      if (live) {
+        if (dressed) redress();
+        if (actors) settle();
+        if (changed) applyLighting();
+        if (npcPoseChanged) for (const person of placedCrowd) {
+          const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+          if (!actor) continue;
+          const pose = nativeNpcPose(id);
+          actor.body.show(pose, false);
+          actor.body.object.userData.nativeGameNpcPose = pose;
+          syncNativeTalk(actor, pose);
+        }
+      }
+      return changed || actors || npcPoseChanged;
     },
     dispose() {
       if (disposed) return;
@@ -1071,6 +1205,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       shared.disposers.delete(entry.dispose);
       group.parent?.remove(group);
     },
+  };
+  // HostScene already calls this optional seam after its first rendered, capability-gated frame.
+  // Keep the extra diagnostics off SceneEntry's stable public type in this source-only packet.
+  Object.assign(entry, { startCrowd });
+  group.userData.canonicalCrowdCounts = () => {
+    const counts = canonicalCrowd.counts, staticCount = placedCrowd.filter((person) => !person.live).length;
+    return { ...counts, static: staticCount, procedural: staticCount - counts.canonical };
   };
   shared.disposers.add(entry.dispose);
   realise();

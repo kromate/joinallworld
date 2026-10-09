@@ -1,15 +1,30 @@
 {
   "sourceSha": "eebe8989e166745436328dbf2d1d9ed840cd0078",
-  "observedAtUtc": "2026-10-09T07:42:16Z",
+  "observedAtUtc": "2026-10-09T07:48:00Z",
   "runId": 37900259396,
   "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37900259396",
-  "status": "in_progress",
+  "status": "completed",
   "accepted": false,
   "jobs": {
     "release-policy": "success",
     "compiler": "success",
-    "programme-http-regressions": "in_progress",
-    "worker": "pending"
+    "programme-http-regressions": {
+      "conclusion": "success",
+      "tests": 337,
+      "pass": 335,
+      "fail": 0,
+      "skipped": 2,
+      "qualification": "Original missing-dist skips in focused mode; full exact build/coverage remains required"
+    },
+    "worker": {
+      "conclusion": "failure",
+      "tests": 20,
+      "pass": 19,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 64304.956084,
+      "soleFailure": "Worker import814.248921ms >= unchanged400ms"
+    }
   },
   "steeringEvidence": {
     "sourceSha": "7c203d256e417ac0f8b23f3ff9698a17418a6edd",
@@ -17,7 +32,7 @@
     "pass": 18,
     "fail": 0,
     "skip": 0,
-    "qualification": "Runtime geometry unchanged by3400 fixture type fix or WORLD merge; integrated scoped remote still pending"
+    "qualification": "18 localCPU checks plus exact integrated337-case scoped wave passed; GPU/device/boarding not established"
   },
   "worldMerge": {
     "sourceSha": "4e0bbda9b656d99ea55b55a71d032116341a2f2b",
@@ -25,20 +40,145 @@
     "diagnosticRunId": 37898985723,
     "actualDiagnosticSha": "019f917942bdeaa2d5ee6e1950f28389363337d5",
     "matchingRecordedChangedSourcePins": 14,
-    "qualification": "Source equivalence, not an exact4e diagnostic or full integrated gate"
+    "qualification": "Source equivalence, not an exact4e diagnostic or full integrated gate",
+    "exactFastRun": {
+      "runId": 37899475081,
+      "sourceSha": "4e0bbda9b656d99ea55b55a71d032116341a2f2b",
+      "conclusion": "success",
+      "full": "skipped"
+    }
   },
   "production": {
     "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
     "programmeDeployment": false
   },
   "remaining": [
-    "HTTP lifecycle/replay/erase",
-    "Worker physical-write/SQLite/startup profile",
+    "Worker import performance",
     "full22/24/build/download",
     "real device/multiplayer/interrupted saves",
     "trusted mapped delivery and consumption",
     "continuous actor/boarding proof",
     "exact-SHA staging/live observation",
     "consented Goalmatic target/schema/projection"
-  ]
+  ],
+  "conclusion": "failure",
+  "workerStartupProfile": {
+    "node": "v24.21.0",
+    "bundle": "worker.mjs",
+    "subprocessMs": 980,
+    "status": 0,
+    "signal": null,
+    "profileWindow": "whole fresh child, including Node bootstrap; import wall and CPU are reported separately",
+    "import": {
+      "wallMs": 924.721064,
+      "userMicros": 944846,
+      "systemMicros": 82014,
+      "node": "v24.21.0"
+    },
+    "profileBytes": 27970,
+    "profile": "ok",
+    "sampleCount": 875,
+    "sampledCpuMicros": 943512,
+    "phases": {
+      "bundle-function": 67921,
+      "bundle-top-level": 675567,
+      "node-runtime": 4396,
+      "other-runtime": 116683,
+      "parse-or-compile": 78945
+    },
+    "topSelfTime": [
+      {
+        "functionName": "(anonymous)",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 373,
+        "sampledHits": 375,
+        "deltaMicros": 398557,
+        "phase": "bundle-top-level"
+      },
+      {
+        "functionName": "(anonymous)",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 157,
+        "sampledHits": 158,
+        "deltaMicros": 167827,
+        "phase": "bundle-top-level"
+      },
+      {
+        "functionName": "(garbage collector)",
+        "source": "<external>",
+        "line": null,
+        "hitCount": 91,
+        "sampledHits": 91,
+        "deltaMicros": 97625,
+        "phase": "other-runtime"
+      },
+      {
+        "functionName": "compileSourceTextModule",
+        "source": "node:internal/modules/esm/utils",
+        "line": null,
+        "hitCount": 71,
+        "sampledHits": 71,
+        "deltaMicros": 75747,
+        "phase": "parse-or-compile"
+      },
+      {
+        "functionName": "(anonymous)",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 53,
+        "sampledHits": 53,
+        "deltaMicros": 56042,
+        "phase": "bundle-top-level"
+      },
+      {
+        "functionName": "(anonymous)",
+        "source": "worker.mjs",
+        "line": 1,
+        "hitCount": 34,
+        "sampledHits": 34,
+        "deltaMicros": 36354,
+        "phase": "bundle-top-level"
+      },
+      {
+        "functionName": "roadCorridorClear",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 20,
+        "sampledHits": 20,
+        "deltaMicros": 21455,
+        "phase": "bundle-function"
+      },
+      {
+        "functionName": "pointInRing",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 20,
+        "sampledHits": 20,
+        "deltaMicros": 21394,
+        "phase": "bundle-function"
+      },
+      {
+        "functionName": "(anonymous)",
+        "source": "worker.mjs",
+        "line": 78,
+        "hitCount": 12,
+        "sampledHits": 13,
+        "deltaMicros": 14630,
+        "phase": "bundle-top-level"
+      },
+      {
+        "functionName": "(program)",
+        "source": "<external>",
+        "line": null,
+        "hitCount": 2,
+        "sampledHits": 3,
+        "deltaMicros": 13724,
+        "phase": "other-runtime"
+      }
+    ]
+  },
+  "logSha256": "f8a9ebfd827d81c1fd43ed7403600abd8ab14ced60b6692460eac7c6541eb931",
+  "logPath": "/tmp/joinallworld-eebe8989-scoped.log"
 }

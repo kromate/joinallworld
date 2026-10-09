@@ -1,0 +1,113 @@
+{
+  "sourceSha": "3b6cd7512577c8888082d301859dd507739ffb1b",
+  "observedAtUtc": "2026-10-09T08:04:00Z",
+  "accepted": false,
+  "scoped": {
+    "runId": 37901822907,
+    "status": "completed",
+    "conclusion": "failure",
+    "cause": "TS2542 deliberately mutated fixture declared readonlyMetreRing; repaired3c068b07",
+    "httpAndWorker": "skipped"
+  },
+  "fastUI": {
+    "runId": 37902041343,
+    "status": "completed",
+    "conclusion": "failure",
+    "cause": "same test-only compiler diagnostic",
+    "build": "success",
+    "download": "success",
+    "smoke": {
+      "tests": 15,
+      "pass": 15,
+      "skipped": 0
+    },
+    "ui": {
+      "tests": 422,
+      "pass": 422,
+      "skipped": 0
+    },
+    "activeLearning": {
+      "tests": 59,
+      "pass": 59,
+      "skipped": 0
+    },
+    "commerceCareer": {
+      "tests": 9,
+      "pass": 9,
+      "skipped": 0
+    },
+    "cityPagination": {
+      "tests": 29,
+      "pass": 29,
+      "skipped": 0
+    },
+    "workerHost": {
+      "tests": 4,
+      "pass": 4,
+      "skipped": 0
+    }
+  },
+  "downloadBudget": {
+    "firstPaintBrotli": 35692,
+    "firstPaintBrotliCap": 36800,
+    "startupRaw": 612875,
+    "startupRawCap": 615000,
+    "startupGzip": 222353,
+    "startupGzipCap": 223000,
+    "startupBrotli": 194819,
+    "startupBrotliCap": 195600,
+    "startupBrotliHeadroom": 781,
+    "closureClean": true,
+    "drivingSceneOrInteriorInAutomaticStartup": false,
+    "qualification": "Emitted static closure only; no device/render/gameplay proof"
+  },
+  "observerArtifactId": 11602967871,
+  "observerSha256": "a7a2bbd95982496a9477da317cc7d2dfc2b0eeb4ec9cfa2ac082f7296052e0eb",
+  "observer": "startup-attribution-3b6cd751.json.gz",
+  "localCorridor": {
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0,
+    "segments": 1417,
+    "clear": 1342,
+    "blocked": 75,
+    "durationMs": 104.925625,
+    "resource": {
+      "exitCode": 0,
+      "elapsedSeconds": 0.432682125,
+      "sampledOwnedGroupPeakBytes": 179421184,
+      "heapMiB": 128,
+      "sampledGroupLimitMiB": 220,
+      "wallSeconds": 15,
+      "stopped": null,
+      "command": [
+        "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--max-old-space-size=128",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--wait-ms",
+        "0",
+        "--",
+        "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--max-old-space-size=128",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "--test-timeout=5000",
+        "src/campus/unilag/shuttle-clearance.test.ts"
+      ]
+    }
+  },
+  "qualifications": [
+    "Allorderedshuttle stop-pairs and fullwidth building/connector assertions pass in UIjob; positive/sparse/overflow guards retained",
+    "No Worker import acceptance for thisSHA",
+    "No full22/24, physical device/boarding, staging or live-save acceptance"
+  ],
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false
+  }
+}

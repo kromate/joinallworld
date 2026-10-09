@@ -1,0 +1,58 @@
+{
+  "sourceSha": "3c068b078e872aeb10cac083b441b6816e7b5b3a",
+  "observedAtUtc": "2026-10-09T08:13:00Z",
+  "runId": 37902144988,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37902144988",
+  "status": "completed",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "compiler": "success",
+    "http-regression": "success",
+    "worker": "success"
+  },
+  "runtimeEquivalentPrior": {
+    "sourceSha": "3b6cd7512577c8888082d301859dd507739ffb1b",
+    "difference": "one fixture type declaration only; no runtime source changed",
+    "evidence": "candidate-3b6cd751-evidence.json",
+    "qualification": "Prior partialsource/size/UIproof, not exact3c whole/full/staging acceptance"
+  },
+  "remaining": [
+    "full22/24 source/server/Worker and exactcandidate build/download",
+    "device/mobile/solo/multiplayer/interrupted saves",
+    "trustedmapped delivery and consumption",
+    "continuousactor/boarding proof",
+    "exactSHAstaging/liveobservation",
+    "Goalmatic consentedtarget/schema/projection"
+  ],
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false,
+    "observedAtUtc": "2026-10-09T08:13:01Z",
+    "healthOk": true
+  },
+  "conclusion": "success",
+  "scopedEvidence": {
+    "node": {
+      "tests": 342,
+      "pass": 340,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 2,
+      "skipQualification": "original missing-dist cases",
+      "durationMs": 252146.5253
+    },
+    "worker": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 55845.312403,
+      "importMs": 273.0,
+      "importCapMs": 400,
+      "rawBytes": 4745478,
+      "gzipBytes": 1791379
+    },
+    "qualification": "Exact scoped CI passed; full programme, staging and production acceptance remain open."
+  }
+}

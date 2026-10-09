@@ -1,11 +1,11 @@
 # Living-world ranked backlog
 
-## Current priority — 9 October 2026, 07:43 UTC
+## Current priority — 9 October 2026, 08:13 UTC
 
-Source **eebe8989e166745436328dbf2d1d9ed840cd0078** published; exact [scoped CI](https://github.com/kromate/joinallworld/actions/runs/37900259396) IN PROGRESS: policy/compiler PASS, HTTP/regressions running, Worker pending.7c failed only fixture attribute typing; repaired3400. Reviewed WORLD4e merged as builder-only with diagnostic source-pin equivalence preserved. Production remainsa44629b38be751a9ad446051564704f6c3c6ae1b; all phase exits/A1–A10 OPEN.
+Source **3c068b078e872aeb10cac083b441b6816e7b5b3a** published; exact [scopedCI](https://github.com/kromate/joinallworld/actions/runs/37902144988) TERMINAL SUCCESS: policy/compiler PASS,342Node tests/340pass/2original skips/zero failures and20Worker checks PASS; wholeWorker273.0ms<400ms. Precomputebounds source3b has5/5 localCPU checks,1417segment parity and422UI/59learning/9commerce/29city/4Workerhost/15smoke passes with unchangedsize caps; whole3b run failed only fixturetype, repaired3c. Baselineeebe account/SQLite/business-write fixes pass, the prior814ms Workerimport failure is repaired and accepted within exact3c scoped CI. Productiona446 remains; allphase exits/A1–A10 OPEN.
 
-1. Finish changed-candidate compiler, actual HTTP account/replay/erase and Worker physical-write/SQLite checks; use failure-only CPU profile to repair the actual400ms startup breach. Preserve canonical full22/24 coverage, size/provider/resource limits.
-2. Refresh exact integrated candidate full/build/download evidence; WORLD4e is reviewed and integrated. Current active car990tri/8draw and18 CPU checks pass, but new download/GPU/mobile evidence remains missing.
+1. Scoped3c CI is accepted within its scope; retain the exact evidence. Refresh full22/24 on a finite integrated candidate, without unchanged retries or cap increases. Sourceeebe HTTP/lifecycle/SQLite/business-write passes are scoped, not productionjourney proof.
+2. Review/integrate publicWORLD134 builder-onlydelta, then refresh exactcandidate full22/24/build/download evidence; current4e is reviewed/integrated. Activecar990tri/8draw and18CPU checks pass;3b download/cleanstartup observer passes with781Bheadroom. Exactlatestcandidate/GPU/mobile evidence remains required.
 3. Connect trusted mapped fleet/stop/custody producer and stock consumption, then active boarding with published actor/wardrobe fit and continuous collision/support proof. Seeded HTTP fixtures do not prove mapped gameplay.
 4. Play actual desktop/mobile, solo/multiplayer and interrupted/reloaded saves; independently review exact staging SHA; deploy accepted phase through existing controls and verify live observation/saves. WORLD retains sole shared uploader.
 5. Preserve Goalmatic contract lane: actual private access works, consented target/schema/create-upsert/revocation/observation contracts missing. Disabled adapter remains labelled. Continue evidence-backed active education, professions, civic and real-business journeys after supported slices.

@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T18:39:18.774650+00:00",
+  "observedAt": "2026-10-09T18:54:32.506525+00:00",
   "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
   "verifierSha": "63f03be2d3c046ed86f87d3132a6568999e303bf",
   "verifierRun": 37971328269,
@@ -145,7 +145,8 @@
     "independentProof": "ps PID81573 live and unauthenticated API health ok=true, canonical build joinallworld-3af17a01b8bd406bfb830ca0d2e",
     "nativeGameplay": "Not yet independently accepted; actual Integration Astra operator owns UI",
     "privateControl": "Root did not read control/cookie/SQLite or execute funding",
-    "sameStoreResume": "Prepared/source-reviewed; actual runtime proof pending"
+    "sameStoreResume": "Prepared/source-reviewed; actual runtime proof pending",
+    "status": "Original81573 terminal129, recovered86054 subsequently terminal0 owner-reported atinternaldeadline; no current running handle claimed"
   },
   "nativePlanReview": {
     "path": "/tmp/allworld-first-five-native-plan.md",
@@ -172,6 +173,41 @@
       "pid": 81573,
       "time": "2026-10-09T18:42:13Z",
       "live": true
-    }
+    },
+    "runtimeOwnerReported": "Integration reports normal onboarding/home storage, controlled funding and duplicate retry without second credit now passed; Root has not read raw private receipt/SQL rows."
+  },
+  "nativeLifecycleReview": {
+    "originalHelperSha": "2947dbd327d979492e3f83b3fa6b57b75979d91c",
+    "originalHelperPid": 81573,
+    "originalExecSession": 40497,
+    "restartAttemptAt": "2026-10-09T18:43:04.772Z",
+    "originalConclusion": "Owner reports actualterminal129; Root independently observedPIDabsent",
+    "withdrawnEvidence": "WORLD initially reported restart success before dependentprobe inspection, then explicitly corrected it; no restartPASS retained",
+    "independentCauseSource": "Actual pinned deploy/tooling/node_modules/miniflare/dist/src/index.js lines79023-79073: HUP/INT/TERM exit hooks synchronously process.exit129/130/143, interrupting async restart/finally",
+    "repairSha": "bdd0f3e3030d88c01990563059c215103d337a71",
+    "repairRemoteEqualsLocal": true,
+    "sourceReview": [
+      "SIGWINCH restart outside explicit Miniflare exit signal set; detached owned session avoids controlling-terminal resize; actual restart runtime remains unproven",
+      "Explicit recover-interrupted requires resume path and runningcheckpoint, oldPID and entireoldownedPG absent; cleanup_failed remains refused",
+      "Same source/package/controlinode/private marker/canonicalstore/originalport/JWK/cookie checks preserved; no manualmetadata/SQL/clock/grant edit",
+      "Internal clean shutdown must precede fixed outer watchdog; forced safety termination remains honestly interrupted"
+    ],
+    "recoveryActual": {
+      "helperPid": 86054,
+      "execSession": 55019,
+      "sameOrigin": "http://127.0.0.1:59773",
+      "independentHealthObservedAt": "2026-10-09T18:51:13Z",
+      "healthOk": true,
+      "healthBuild": "joinallworld-3af17a01b8bd406bfb830ca0d2e",
+      "internalDeadline": "2026-10-09T18:51:35.863Z",
+      "originalDeadline": "2026-10-09T18:51:54.094Z",
+      "deadlineExtended": false,
+      "terminalOwnerReportedAt": "2026-10-09T18:51:35.933Z",
+      "terminalOwnerReportedExit": 0,
+      "checkpointOwnerReported": "stopped, same store/player/intent retained",
+      "rootObservedAfterDeadline": "PID86054 absent; no Root checkpoint/cookie/store read"
+    },
+    "nativeOwnerReportedProgress": "FirstCameroon booked/arrived; normal onboarding/storage/funding/replay passed. Remaining native country table and same-identity post-recovery/unadjusted downtime receipts pending.",
+    "next": "WORLD/Integration coordinate one next finite900s/internal880 samecheckpoint window when actual Astra ready; no new guest/funding or competing local runtime"
   }
 }

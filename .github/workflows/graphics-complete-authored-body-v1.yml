@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v2]
+    branches: [codex/graphics-complete-authored-body-v3]
 permissions:
   contents: read
 jobs:
@@ -27,6 +27,8 @@ jobs:
       - name: Check authored rig and resource ownership
         run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-check.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/rig-posture-check.mjs
+          node --max-old-space-size=64 evidence/graphics-loop/authored-complete-body-v1/eye-material-check.mjs
           node --max-old-space-size=128 --test evidence/graphics-loop/authored-complete-body-v1/presentation.test.ts
       - name: Capture real whole-body poses and expressions
         env:
@@ -43,4 +45,5 @@ jobs:
             evidence/graphics-loop/authored-complete-body-v1/results/
             evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.report.json
             evidence/graphics-loop/authored-complete-body-v1/rig-check-result.json
+            evidence/graphics-loop/authored-complete-body-v1/rig-posture-check-result.json
           if-no-files-found: error

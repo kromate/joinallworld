@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import { clone as cloneSkinnedHierarchy, retargetClip } from 'three/examples/jsm/utils/SkeletonUtils.js';
+import { QuaternionKeyframeTrack, VectorKeyframeTrack } from 'three';
+import { clone as cloneSkinnedHierarchy } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import { normalizeLook } from '../../../src/scene/avatar-look.ts';
 import type { Look } from '../../../src/scene/avatar-look.ts';
-import { bodyTint } from '../../../src/scene/body/tint.ts';
 import type { Kit } from '../../../src/scene/kit.ts';
 import { normalizeAvatarAppearance } from '../../../src/types/avatar.ts';
 
@@ -107,15 +107,14 @@ function setMorph(mesh: THREE.SkinnedMesh, name: string, value: number): void {
   if (Number.isInteger(index) && influences && index! >= 0 && index! < influences.length) influences[index!] = value;
 }
 
-function materialsForActor(meshes: readonly THREE.SkinnedMesh[], look: Look, seed: unknown): THREE.Material[] {
-  const tint = bodyTint(look, seed);
+function materialsForActor(meshes: readonly THREE.SkinnedMesh[], look: Look): THREE.Material[] {
   const owned: THREE.Material[] = [];
   for (const mesh of meshes) {
     const source = mesh.material;
     const cloned = meshMaterials(mesh).map((material) => {
       const next = material.clone();
       if (mesh.name === 'Body' && 'color' in next && next.color instanceof THREE.Color) {
-        next.color.multiply(new THREE.Color().setRGB(tint.skin[0], tint.skin[1], tint.skin[2]));
+        next.color.set(look.skin);
       }
       owned.push(next);
       return next;
@@ -153,19 +152,114 @@ function makeRetargetedClips(
   const target = referenceMeshes.find((mesh) => mesh.name === 'Body')!;
   const byName = new Map(clips.map((clip) => [clip.name, clip]));
   const result = new Map<CompleteCharacterPose, THREE.AnimationClip>();
+  const targetBones = new Map(referenceMeshes[0]!.skeleton.bones.map((bone) => [bone.name, bone]));
+  const sourceBones = new Map(sourceRig.skeleton.bones.map((bone) => [bone.name, bone]));
+  const sourceRestLocal = new Map<THREE.Object3D, { position: THREE.Vector3; quaternion: THREE.Quaternion; scale: THREE.Vector3 }>();
+  sourceRig.skeleton.bones.forEach((bone) => sourceRestLocal.set(bone, {
+    position: bone.position.clone(), quaternion: bone.quaternion.clone(), scale: bone.scale.clone(),
+  }));
+  sourceRig.updateMatrixWorld(true);
+  const targetRestWorld = new Map<string, THREE.Quaternion>();
+  const targetRestLocal = new Map<THREE.Object3D, THREE.Quaternion>();
+  const targetRestPosition = new Map<THREE.Object3D, THREE.Vector3>();
+  const sourceRestWorld = new Map<string, THREE.Quaternion>();
+  for (const [targetName, sourceName] of Object.entries(BODY_JOINT_MAP)) {
+    const targetBone = targetBones.get(targetName);
+    const sourceBone = sourceBones.get(sourceName);
+    assert(targetBone && sourceBone, `motion mapping is missing ${targetName}/${sourceName}`);
+    targetRestWorld.set(targetName, targetBone.getWorldQuaternion(new THREE.Quaternion()));
+    sourceRestWorld.set(sourceName, sourceBone.getWorldQuaternion(new THREE.Quaternion()));
+  }
+  reference.traverse((node) => {
+    targetRestLocal.set(node, node.quaternion.clone());
+    targetRestPosition.set(node, node.position.clone());
+  });
+  // The clip pack stores some joints in a Z-up local frame, but its armature parent converts them
+  // into the same Y-up world frame as the authored body. Read those original transforms directly:
+  // Skeleton.pose() is invalid for this unskinned source hierarchy because its root bones have
+  // non-bone parents, and it double-applies that parent transform.
+  const desiredWorld = new Map<THREE.Object3D, THREE.Quaternion>();
+  const restWorldForUnmapped = new Map<THREE.Object3D, THREE.Quaternion>();
+  reference.updateMatrixWorld(true);
+  reference.traverse((node) => restWorldForUnmapped.set(node, node.getWorldQuaternion(new THREE.Quaternion())));
+  const parentDesiredWorld = (node: THREE.Object3D): THREE.Quaternion => {
+    const direct = desiredWorld.get(node);
+    if (direct) return direct;
+    if (!node.parent) return restWorldForUnmapped.get(node)!.clone();
+    return parentDesiredWorld(node.parent).multiply(targetRestLocal.get(node)!);
+  };
   for (const name of ['idle', 'walk', 'dance'] as const) {
     const sourceClip = byName.get(name);
     assert(sourceClip, `clip pack is missing ${name}`);
-    sourceRig.skeleton.pose();
+    for (const [bone, rest] of sourceRestLocal) {
+      bone.position.copy(rest.position); bone.quaternion.copy(rest.quaternion); bone.scale.copy(rest.scale);
+    }
     sourceRig.updateMatrixWorld(true);
     target.skeleton.pose();
     reference.updateMatrixWorld(true);
-    const mapped = retargetClip(target, sourceRig, sourceClip, {
-      names: { ...BODY_JOINT_MAP },
-      hip: 'pelvis',
-      scale: 1,
-      preserveBoneMatrix: true,
-    });
+    const fps = Math.max(...sourceClip.tracks.map((track) => track.times.length)) / sourceClip.duration;
+    const sampleCount = Math.max(2, Math.round(sourceClip.duration * fps));
+    const times = Float32Array.from({ length: sampleCount }, (_, index) => sourceClip.duration * index / (sampleCount - 1));
+    const sourceMixer = new THREE.AnimationMixer(sourceRig);
+    sourceMixer.clipAction(sourceClip).play();
+    const mappedTracks: THREE.KeyframeTrack[] = [];
+    const sourceToTargetName = new Map(Object.entries(BODY_JOINT_MAP).map(([targetName, sourceName]) => [sourceName, targetName]));
+    const qDelta = new THREE.Quaternion();
+    const qCurrent = new THREE.Quaternion();
+    const qTarget = new THREE.Quaternion();
+    const qParent = new THREE.Quaternion();
+    const qLocal = new THREE.Quaternion();
+    const qSourceRestInverse = new THREE.Quaternion();
+    const worldDelta = new THREE.Quaternion();
+    const worldPosition = new THREE.Vector3();
+    const sourceRestPosition = new THREE.Vector3();
+    const pelvisSource = sourceBones.get('pelvis')!;
+    sourceRestPosition.copy(pelvisSource.getWorldPosition(new THREE.Vector3()));
+    const hipValues = new Float32Array(sampleCount * 3);
+    const quaternionValues = new Map<string, Float32Array>();
+    for (const targetName of Object.keys(BODY_JOINT_MAP)) quaternionValues.set(targetName, new Float32Array(sampleCount * 4));
+    for (let frame = 0; frame < sampleCount; frame++) {
+      const time = times[frame]!;
+      sourceMixer.setTime(time);
+      sourceRig.updateMatrixWorld(true);
+      desiredWorld.clear();
+      for (const [targetName, sourceName] of Object.entries(BODY_JOINT_MAP)) {
+        const sourceBone = sourceBones.get(sourceName)!;
+        const targetBone = targetBones.get(targetName)!;
+        sourceBone.getWorldQuaternion(qCurrent);
+        qSourceRestInverse.copy(sourceRestWorld.get(sourceName)!).invert();
+        worldDelta.copy(qCurrent).multiply(qSourceRestInverse);
+        qDelta.copy(worldDelta);
+        qTarget.copy(qDelta).multiply(targetRestWorld.get(targetName)!);
+        desiredWorld.set(targetBone, qTarget.clone());
+      }
+      for (const targetName of Object.keys(BODY_JOINT_MAP)) {
+        const targetBone = targetBones.get(targetName)!;
+        qParent.copy(parentDesiredWorld(targetBone.parent!)).invert();
+        qLocal.copy(qParent).multiply(desiredWorld.get(targetBone)!);
+        qLocal.toArray(quaternionValues.get(targetName)!, frame * 4);
+      }
+      const sourceHipPosition = pelvisSource.getWorldPosition(worldPosition);
+      const hipDelta = sourceHipPosition.sub(sourceRestPosition);
+      const targetHip = targetBones.get('mixamorigHips')!;
+      const parentWorld = targetHip.parent!;
+      const parentQ = parentDesiredWorld(parentWorld).invert();
+      const localDelta = hipDelta.applyQuaternion(parentQ);
+      const restHipLocal = targetRestPosition.get(targetHip)!;
+      hipValues[frame * 3] = restHipLocal.x + localDelta.x;
+      hipValues[frame * 3 + 1] = restHipLocal.y + localDelta.y;
+      hipValues[frame * 3 + 2] = restHipLocal.z + localDelta.z;
+    }
+    sourceMixer.stopAllAction();
+    sourceMixer.uncacheRoot(sourceRig);
+    for (const [bone, rest] of sourceRestLocal) {
+      bone.position.copy(rest.position); bone.quaternion.copy(rest.quaternion); bone.scale.copy(rest.scale);
+    }
+    for (const [sourceName, targetName] of sourceToTargetName) {
+      mappedTracks.push(new QuaternionKeyframeTrack(`${targetName}.quaternion`, times, quaternionValues.get(targetName)!));
+    }
+    mappedTracks.push(new VectorKeyframeTrack('mixamorigHips.position', times, hipValues));
+    const mapped = new THREE.AnimationClip(name, sourceClip.duration, mappedTracks);
     assert(mapped.tracks.length >= 18, `${name} retargeted too few tracks (${mapped.tracks.length})`);
     assert(mapped.tracks.every((track) => track.times.every(Number.isFinite) && track.values.every(Number.isFinite)),
       `${name} retarget produced nonfinite keyframes`);
@@ -215,7 +309,7 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
   let unregisterKitDispose: (() => boolean) | null = null;
   let cleanupActor: (() => void) | null = null;
   try {
-    ownedMaterials.push(...materialsForActor(meshes, normalized, seed));
+    ownedMaterials.push(...materialsForActor(meshes, normalized));
     const staticMorph = staticMorphValues(normalized);
     for (const mesh of meshes) {
       const dictionary = mesh.morphTargetDictionary ?? {};

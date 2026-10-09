@@ -1,5 +1,41 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **87dff05f7f6f0babc0c65aa15ab5662889b107ad**, run **37901132435**, is
+terminal **SUCCESS**: **448 tests +3 policy =451 distinct checks**, plus World
+TypeScript. Python300=19audit/11session/77affected/193remaining; Node148 unchanged.
+Root verified all 22 artifact hashes and six changed source/test blobs. All Node
+fail/skip/cancel/todo counts are zero; every Python group reports OK. The 46-file
+source inventory retains rounded892928B/control1048576B and raw797134B.
+See [INDEX-SHARD-ROOT-OPERATIONS.md](INDEX-SHARD-ROOT-OPERATIONS.md) and
+[index-shard-root-acceptance.json](index-shard-root-acceptance.json).
+
+Accepted structural scope: frozen plan authority, explicit V2 namespace opener,
+complete exact per-row SQL charge verification before mkdir and after yield,
+precharged root materialization and paired-lease binding publication. The two
+V2 children actually publish and reopen with exact bytes/stable inodes; legacy
+V1 defaults still refuse V2. Negative v21 evidence remains retained: its only
+failure constructed an invalid SHA fixture before the intended assertion;
+valid foreign bytes repaired that fixture, without changing the implementation.
+No passing subset was promoted. These primitives are not real campaign/source
+provenance, supervised batch dispatch, actual V2 interrupted-controller recovery,
+compiled country coverage or a runtime/map release.
+
+Latest reviewed main is4e0bbda9 (fresh fetch: no incoming commits). Source-derived
+planning is now in existing Luna source-only lanes: verified campaign leaves
+before index completion, exact ASCII expectation/context/descriptor charges,
+128000-byte wire frames and conservative actual512000-byte envelope wrapper.
+Their draft is UNTESTED and excluded from this accepted milestone. Next validate
+that producer, connect full-plan fixed-worker/controller dispatch and deterministic
+root-prefix recovery, then shard capture/audit/geometry streaming. Finite global
+admission must precede expansion beyond the first namespace. Nigeria integration,
+rights, physical phones and the whole-world objective remain OPEN.
+
+Latest memory07:41UTC: NORMAL1 kernel recovery, but elevated paging/~10.42GBswap.
+No WORLD local heavy/browser/build/test/server/upload; serial remote validation.
+Full goalACTIVE. Earlier checkpoints below are historical where superseded.
+
+# Implementation checkpoint — 9 October 2026
+
 Exact **019f917942bdeaa2d5ee6e1950f28389363337d5**, run **37898985723**, is terminal
 **SUCCESS**: **432 tests +3 policy =435 distinct checks, plus World TypeScript**.
 Root verified all 22 artifact hashes, all 14 changed source/test blobs and one
@@ -19,15 +55,25 @@ checks pass together. No source-bank, SQL charge or root allocation is performed
 by these plan primitives. Before/after-commit atomic charge tests remain intact.
 The v19 negative diagnostics are retained; no passing subset was promoted.
 
-WORLD is synchronized with reviewed coordination-only main **3f1d1806**. This
-milestone is being committed separately; no runtime/map upload. Next freeze and
+WORLD adopted reviewed coordination-only main **3f1d1806** and published this
+source milestone as **4e0bbda9** on main/world-foundation. Actual main CI
+**37899475081** is terminal SUCCESS (release-policy, fast build/smoke and typecheck;
+full job skipped). No runtime/map upload. Exact diagnostic **fc218cf740188a389b58a9500fc959b4077736a3**,
+run **37900652554**, is in progress for the structural authority/precharged v2
+root path. It compares every SQL reservation with the frozen complete plan before
+mkdir and after yield, including per-row amount changes that preserve the total.
+This source is not accepted yet. Existing Luna lanes separately implement explicit
+v2 namespace opening and binding publication; no local workers or tests run.
+Next freeze and
 verify real campaign/source/context descriptor evidence, introduce explicit
 v2-aware namespace/root/publication paths, then connect a supervised immutable
 batch worker that reserves all entries before any mkdir and recovers the exact
 same-plan root prefix. Existing legacy openers remain v1-only. Finite global
 disk/network/retry accounting, compiled country geometry/streaming, Nigeria
-integration and physical phones remain OPEN. Latest07:21UTC WARNING2/~10.25GB
-swap: no optional localheavy/browser/build/test/server/upload. Full goalACTIVE.
+integration and physical phones remain OPEN. Latest07:41UTC kernel pressure is
+NORMAL1, but paging remains elevated and swap is ~10.42GB. Defer optional new
+local heavy/browser/build/test/server/upload; use serial remote validation.
+Full goalACTIVE.
 
 Earlier checkpoints below are historical where superseded.
 

@@ -1,3 +1,15 @@
+## GRAPHICS — 9 October 2026, 07:55 UTC
+
+Three GPT-6 Luna lanes are active concurrently: identity/motion, garment closure, and environment readiness. Existing five-minute memory heartbeat is active. Latest 07:51 sample is normal pressure with zero new swapouts in the interval; accumulated swap remains about 10.35 GB. Heavy browser/build work remains on remote runners with bounded memory/time and cleanup checks. WORLD remains sole production uploader.
+
+Executed successes: actor sampler v5, exact 8fdb1407 / run 37899816419, passes all five production-geometry adapter tests (including both shipped bodies, walk, wardrobe, mask restore and parent-frame soles). This is an instantaneous geometry proposal, not boarding clearance or a trusted production host API. Office coverage exact 48207de3 / run 37898547753 numerically measures the remaining neck gap: 274 male source faces (0.061739 m²), 770 female (0.086753 m²). Separate exact complement and matched actual-GLB fixture are prepared; rendering/cost acceptance pending. Environment package exact 03986c2a / run 37899632982 passes: root verified 5,626 output hashes and 5,392 public files; diagnostic package size is not a production budget certificate.
+
+Actual motion exact 351e9f90 / run 37900483443 produces ten images and four matched source/compact pairs with exact paused-phase preservation. It still FAILS: root image review finds the lower legs hidden by a horizontal region, and a female GLB request aborts after a 200 response. Previous floor diagnosis was not sufficient; lane is checking actual packaged viewer, draw order, layout and load trace. No full-body visual acceptance.
+
+Environment render exact 8b42d6ef / run 37900583388 FAILS all three scopes. Home day/night captures are available; neighbourhood readiness timed out and its screenshot is invalid. Final durable telemetry shows movement/easing stopped but the normal render loop still running: the fixture incorrectly treats an active idle render loop as movement, requiring a newly compiled viewer correction. Market/beach and lifecycle timed out in a seven-second CDP command despite completed scene content. Causal controller correction is being prepared under the existing overall sixty-second cap. Market public/authored people are procedural, so canonical character quality remains blocked independently.
+
+Primary graphics runtime is not merged or deployed. Existing mixed drafts are preserved; primary HEAD 3f1d1806, observed main 4e0bbda9. Whole-game quality, physical-phone performance, release bytes, scene lifecycle and production integration remain open. Goal active and incomplete.
+
 ## GRAPHICS — 9 October 2026, 07:18 UTC
 
 Three Luna lanes run concurrently; five-minute memory heartbeat is ACTIVE. Kernel pressure WARNING, continued paging: no local heavy browser/build workers. WORLD remains sole production uploader; no graphics runtime accepted or deployed.

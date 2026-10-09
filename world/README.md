@@ -1,5 +1,14 @@
 # Independent world-data builder
 
+Latest planned namespace/root/publication checkpoint passes **448 tests, three
+policy checks and World TypeScript**, exact87dff05f/run37901132435. Explicit V2
+storage primitives require the complete frozen batch charge before allocating
+children; both published bindings reopen exactly. Source/control caps and V1
+defaults remain unchanged. See [INDEX-SHARD-ROOT-OPERATIONS.md](INDEX-SHARD-ROOT-OPERATIONS.md).
+Real source-derived planning, supervised batch dispatch/recovery and finite global
+admission remain next; this builder phase adds no production map detail.
+
+
 Latest complete-plan transport/semantic-validation milestone passes **432 tests,
 three policy checks and World TypeScript** on exact source019f9179/run37898985723.
 See [INDEX-SHARD-PLAN-VALIDATION.md](INDEX-SHARD-PLAN-VALIDATION.md) and its acceptance

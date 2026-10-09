@@ -128,8 +128,12 @@ The existing Python v1 codecs and SDK session preparation still reject v2;
 no legacy namespace, root or session opener is unlocked by this pure result.
 The other three pins are not independently reconstructed from live plan or
 source membership by these codecs. Actual held admission must do that before
-allocating roots. New v3 immutable controller-record source is a separate
-unaccepted candidate; pure transitions alone do not launch a batch worker.
+allocating roots. The v3 immutable controller-record codec is accepted in
+run37898985723, with the source published as4e0bbda9. It binds the exact plan and
+unchanged V1 base pins; pure transitions alone do not launch a batch worker or
+establish the source/context evidence needed by that worker. Any additional
+durable operation fields require an explicit new version, not a silent change
+to this accepted codec.
 Batch reservation must charge the complete finite plan before creating children,
 with one durable bounded operation identity and interruption recovery. Preserve
 all already charged attempts/bytes and unknown state. Test real reservation and

@@ -45,6 +45,7 @@ _SHARD_HANDOFF_SEAL = object()
 
 @dataclass(frozen=True, eq=False)
 class IndexShardHandoff:
+    """Local lease handoff receipt; it proves no source coverage or ingestion."""
     root: Path
     identity: tuple
     namespace_lease: IndexWriterLease

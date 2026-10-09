@@ -209,9 +209,10 @@ def _mint_shard_handoff(root, lease, authority, summary, record, anchor, operati
     if read_private(root/RECORD) != record or read_private(root/REGISTRY, 4096) != anchor:
         raise ValueError("durable controller record or registry anchor changed before handoff")
     from index_admission_worker import shard_admission_summary
-    if shard_admission_summary(root, authority) != summary:
-        raise ValueError("complete plan roots differ from the worker report")
+    expected_summary = shard_admission_summary(root, authority)
     packed = json.dumps(summary, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+    if packed != json.dumps(expected_summary, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii"):
+        raise ValueError("complete plan roots differ from the worker report")
     value = IndexShardHandoff(root, (info.st_dev, info.st_ino, lock.st_dev, lock.st_ino),
         lease, authority, packed, hashlib.sha256(record).hexdigest(),
         hashlib.sha256(anchor).hexdigest(), _SHARD_HANDOFF_SEAL)

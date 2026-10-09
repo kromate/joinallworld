@@ -4,8 +4,9 @@ Implementation **a75c59af** passes five exact committed-source release-policy
 checks (terminal87705,3.81s,96,043,008B maxRSS), for **276 distinct checks plus
 World TypeScript**. Clean archive140,830,720B/8,592members fits256MiB/10,000members;
 owned scratch is removed. All accepted source/test pins remain unchanged. Receipt:
-`campaign-index-final-acceptance-v1.json`. Source publication is next; no runtime
-upload or country geometry is inferred.
+`campaign-index-final-acceptance-v1.json`. Implementation and acceptance94d95a88 are published on main (push47980
+terminal0; fresh fetch60520,0ahead/0behind). No runtime upload or country geometry
+is inferred. All WORLD heavy/browser/server resources handed back terminal.
 
 ## Campaign source indexing implemented — 9 October 2026
 
@@ -54,11 +55,16 @@ Overflow remains visible and cannot be bypassed with unlimited new namespaces.
 Compiled and playable coverage remain unchanged. Read
 [CAMPAIGN-FEATURE-INDEX-OPERATIONS.md](CAMPAIGN-FEATURE-INDEX-OPERATIONS.md).
 
-Next: commit and verify the exact source policy; implement independent raw/index
+Next: implement independent raw/index
 conservation and crossing-feature ownership; deterministic globally admitted
 bounded shards and operator materials; compile/publish/stream country geometry;
 measure real nonempty country throughput and phone performance. Global conditions,
 terrain and protected Nigeria rendering integration remain full-goal requirements.
+One narrow Luna source review produced FEATURE-INDEX-AUDIT-SPEC.md; root corrected
+failed-attempt observation requirements, fixed-memory relational comparison,
+immutable binding/quota handling and explicit charged WAL-aware private snapshots.
+The specification is unimplemented; next build the fixed audit worker/controller
+and bounded campaign gate, with actual retained and separate corruption fixtures.
 The previous sections below are historical where superseded by this checkpoint.
 
 ## Atomic capture observations and separate scheduler claims

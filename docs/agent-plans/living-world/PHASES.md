@@ -20,7 +20,7 @@ Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted
 | Physical journey/later careers/business | Bounded foundations; published v7 actual-host2/1pass/1fail; actor geometry lacks continuous boarding authority | Disabled/queued | Complete school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload and later programme |
 | Goalmatic | Private published contracts inspected | Disabled/mock | Selected consented workspace/install/Goals schema, events/reconciliation/revocation and live verification |
 
-Phase0 accepted only at discovery baseline. Phases1-5/A1-A10 remain OPEN at full scope. Integration alone assembles; WORLD alone uploads. Productiona446 health-only; no programme release. No limit waiver, removed behavioral check or incompatible save repair. Native goal ACTIVE; records do not execute while stopped.
+Phase0 accepted only at discovery baseline. Phases1-5/A1-A10 remain OPEN at full scope. Integration alone assembles; WORLD alone uploads. WORLDexact3afupload reportedterminal0; Rootpublic3afhealth/3assetadoption verified19:19:59. Livegameplay/save/once-receipt/observation acceptance remainsopen. No limit waiver, removed behavioral check or incompatible save repair. Native goal ACTIVE; records do not execute while stopped.
 
 ## Current verified evidence and next batch - 2026-10-09T14:37:39Z
 

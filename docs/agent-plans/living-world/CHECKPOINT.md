@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Exact candidate uploaded; public adoption verified - 2026-10-09T19:19:59.047327+00:00
+
+WORLD reports originalupload39946 terminal0/provider90ba4ff2prefix/536assetuploads. Followup48983 exited2 atoldpublicbuild assertion, thenmissingprovider-after script whosecreationdidnotrun; thiswasnotuploadfailure. Root suppliedprecisediagnosis andno automaticretry/rollback/newactor advice. Sourcehealthmetadatacomesfromenv/contextBUILD_ID; do notsubstituteitforcompiledfingerprint. ActualRootpublicread19:19:59 nowexact3af/relay/AItrue and3Accra JSasset bytes/hashes matchsealedmanifest. [Independent readback](production-3af-public-adoption.json). SystemPythonurllib403 retained; existingcurl worked withnoUA/authoverride. NoRootprovidercredentials/config/upload/UI operation.
+
+GitHubmain independently3af. Lastverifiedpublicproductionbuild nowjoinallworld-3af17a01b8bd406bfb830ca0d2e; originalproduction save/identity/once-receipt andactualAstra livegameplay/observationchecks remainpending. FullproviderID/terminalcleanup/offlineoperator table requested. Exact14CIpasses, funded5native roundtrips/final22check receipt07d76433 and30fieldrestart comparisonc2741a35 retained. Nextfinish productioncontinuity/native observations, then separatelyONteaching andfullphysical/later/business/liveGoalmatic. FullgoalACTIVE, zeroextraspend/cutoff05UTC unchanged.
+
 ## Actual furniture source handoff - 2026-10-09T19:13:02.669484+00:00
 
 GRAPHICS requested actualchair/bed/worktop/door contracts for itsnewbody. One existingRoot worker completedboundedread-only inventory; actuallatestparentbound metadata independently confirmsgpt-6-luna/high. Root verifiedfrozen3af sourceblobs and concretegeometry/formulas, corrected decorativevenue slab versus realopening and preservedexactseatedoffsetformula. [Finite fixture source handoff](furniture-support-source-handoff.json) has5boundedinstances and explicittransforms/poseanchorversusmesh contact distinctions. Beddeclared0.56 differsfrommattress0.52/blanket0.575/pillow0.63; currentclipoffsetscannottransfer tonewbody. Renderedcontact/continuousclearance/generationproof stillrequired. No sharedruntime edit/tests/build/GPU/browser or newcurrentreleasegate; GRAPHICS ownsadoptionpacket.

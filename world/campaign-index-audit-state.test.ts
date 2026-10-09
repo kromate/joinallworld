@@ -1,5 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, realpathSync, rmSync, statSync, existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { Ledger } from './ledger.ts';
 import { canonicalJson, sha256 } from './pack.ts';
 import {
   CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
@@ -14,6 +18,69 @@ const frozen: CampaignIndexAuditFrozenInput = {
   completeCaptureSetSha256: h('1'), requiredObservationSetSha256: h('2'), auditInputSha256: h('3'),
   auditFormat: FEATURE_INDEX_AUDIT_FORMAT,
 };
+
+function ledgerFixture(run: (ledger: Ledger, filename: string) => void): void {
+  const root = realpathSync(mkdtempSync(path.join(tmpdir(), 'world-audit-fence-fixture-')));
+  const filename = path.join(root, 'ledger.sqlite');
+  const ledger = new Ledger(filename, { databaseBytes: 1024 * 1024 });
+  try { run(ledger, filename); }
+  finally { ledger.close(); rmSync(root, { recursive: true }); }
+}
+
+function originalLedgerFiles(filename: string): unknown[] {
+  return [filename, `${filename}-wal`, `${filename}-shm`].map(file => {
+    if (!existsSync(file)) return null;
+    const info = statSync(file);
+    return [info.dev, info.ino, info.size, info.mtimeMs, info.ctimeMs, sha256(readFileSync(file))];
+  });
+}
+
+test('actual disposable Ledger fences the exact audit kind and preserves source progress during readonly inspection', () => {
+  ledgerFixture((ledger, filename) => {
+    ledger.enqueue({ id: 'synthetic-source', kind: 'campaign-grid-query', inputHash: h('9'),
+      payload: { scope: 'synthetic source only' }, maxAttempts: 1 });
+    const source = ledger.claim('source', 0, 10, { kind: 'campaign-grid-query' });
+    assert.ok(source);
+    assert.equal(ledger.complete(source.id, source.token, 1, { status: 'synthetic-completed' }), true);
+    const sourceBefore = ledger.list().find(row => row.id === source.id);
+    const descriptor = campaignIndexAuditJob(frozen, 2);
+    ledger.enqueue(descriptor);
+    assert.equal(ledger.claim('query', 2, 10, { kind: 'campaign-grid-query' }), null);
+    assert.equal(ledger.claim('index', 2, 10, { kind: 'campaign-index-capture' }), null);
+    const first = ledger.claim('audit', 2, 10, { kind: CAMPAIGN_INDEX_AUDIT_KIND });
+    assert.ok(first); assert.equal(first.id, descriptor.id);
+    assert.equal(ledger.heartbeat(first.id, first.token, 5, 10), true);
+    assert.equal(ledger.complete(first.id, first.token, 15, { status: 'synthetic-result' }), false);
+    const second = ledger.claim('audit-resume', 15, 10, { kind: CAMPAIGN_INDEX_AUDIT_KIND });
+    assert.ok(second); assert.equal(second.attempt, 2); assert.notEqual(second.token, first.token);
+    const incomplete = buildCampaignIndexAuditCompletion(frozen, syntheticReport(), 2);
+    assert.equal(ledger.complete(first.id, first.token, 16, incomplete), false);
+    assert.equal(ledger.complete(second.id, second.token, 16, incomplete), true);
+    const before = originalLedgerFiles(filename);
+    const inspected = Ledger.readOnlyList(filename);
+    assert.deepEqual(originalLedgerFiles(filename), before);
+    assert.equal(inspected.find(row => row.id === descriptor.id)?.status, 'completed');
+    assert.deepEqual(inspected.find(row => row.id === descriptor.id)?.result, incomplete);
+    assert.equal(incomplete.status, 'audit-incomplete');
+    assert.deepEqual(ledger.list().find(row => row.id === source.id), sourceBefore);
+  });
+});
+
+test('actual disposable Ledger refuses changed final membership and preserves exhausted audit attempts', () => {
+  ledgerFixture(ledger => {
+    const descriptor = campaignIndexAuditJob(frozen, 2);
+    ledger.enqueue(descriptor);
+    assert.throws(() => ledger.enqueue(campaignIndexAuditJob({ ...frozen, completeCaptureSetSha256: h('8') }, 2)), /different payload/);
+    const first = ledger.claim('audit', 0, 1, { kind: CAMPAIGN_INDEX_AUDIT_KIND });
+    const second = ledger.claim('audit-resume', 1, 1, { kind: CAMPAIGN_INDEX_AUDIT_KIND });
+    assert.ok(first); assert.ok(second); assert.equal(second.attempt, 2);
+    assert.equal(ledger.claim('audit-exhausted', 2, 1, { kind: CAMPAIGN_INDEX_AUDIT_KIND }), null);
+    ledger.enqueue(descriptor);
+    assert.equal(ledger.claim('audit-reenqueue', 3, 1, { kind: CAMPAIGN_INDEX_AUDIT_KIND }), null);
+    const rows = ledger.list();
+    assert.equal(rows.length, 1); assert.equal(rows[0]!.status, 'failed'); assert.equal(rows[0]!.attempt, 2);
+  });
+});
 
 function syntheticReport(input = frozen, overrides: Record<string, unknown> = {}): Record<string, unknown> {
   return {

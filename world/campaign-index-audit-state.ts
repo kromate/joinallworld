@@ -143,7 +143,7 @@ function freezeInput(value: CampaignIndexAuditFrozenInput): CampaignIndexAuditFr
     auditInputSha256: hash(copy.auditInputSha256, 'Audit logical input hash'), auditFormat: copy.auditFormat,
   };
   if (frozen.auditFormat !== FEATURE_INDEX_AUDIT_FORMAT) throw new TypeError('Audit format differs from the fixed raw-index audit contract.');
-  return frozen;
+  return { ...frozen, auditFormat: FEATURE_INDEX_AUDIT_FORMAT };
 }
 
 /** Deterministic single-ID audit job. A changed final membership conflicts at the same Ledger ID. */

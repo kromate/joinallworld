@@ -1,5 +1,13 @@
 # Independent world-data builder
 
+Current retained-index audit/session path passes127 distinct checks plus World
+TypeScript on exact remote source115593ad. See
+[FEATURE-INDEX-AUDIT-OPERATIONS.md](FEATURE-INDEX-AUDIT-OPERATIONS.md) and latest
+[PROGRESS.md](PROGRESS.md). Wider boundary regressions and the draft single-ID
+campaign audit contract are under validation. Full same-Ledger audit fencing,
+global shards/country geometry, rendering integration and phone proof remain
+open; no gameplay or Nigeria data changed. Counts below are historical stages.
+
 Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
 checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries
 preserves one charge and the database inode. Fixed26-input snapshots are verified,

@@ -1,5 +1,19 @@
 # Implementation checkpoint — 9 October 2026
 
+Run37887812856 at6576a9a5 is terminal failure solely at World TypeScript:
+the new frozen-input helper validated auditFormat but returned a property still
+typed unknown (TS2322). All258 Python tests (19 audit/11 session/77 regression/
+151 remaining boundary),74 Node tests (19 audit/one real SDK/54 contracts) and
+three release-workflow policy checks passed:335 checks, compiler not accepted.
+The helper now returns the validated literal format. Root added two disposable
+actual-Ledger fixtures: exact-kind audit claims, heartbeat/live-token versus stale
+completion, changed final membership at the same ID, finite exhausted attempts
+without reset, and read-only inspection conserving source result and DB/WAL/SHM
+identity/bytes. Their result is explicitly synthetic and audit-incomplete; they
+do not establish actual campaign/source membership or runtime integration.
+These new fixtures and the compiler correction require a fresh diagnostic.
+All previous negative artifacts remain retained. See audit operations for scope.
+
 Run37887462988 at115593ad is terminal **SUCCESS**. Actual artifacts match the
 source revision:19 protocol/kernel,19 controller/recovery,11 held Python session,
 one real Node→Python retained-Dakar audit and77 affected regression tests all

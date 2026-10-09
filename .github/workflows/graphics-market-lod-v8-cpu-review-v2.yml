@@ -1,0 +1,47 @@
+name: Market LOD v8 bounded CPU package v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-lod-v8-cpu-review-v2
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v8-cpu-package-v2-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact v2 recipe snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 917ff8630ed47dcc0e997d18fb7584865c9cb8fac19f53a8bc17331b2fc5a17f
+        run: node evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v2/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify complete runtime and direct type import closure
+        run: node evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v2/verify-import-closure.mjs
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build v2 package under bounded process group
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 917ff8630ed47dcc0e997d18fb7584865c9cb8fac19f53a8bc17331b2fc5a17f
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v2/run-bounded-linux.py
+      - name: Preserve package and receipt on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v8-cpu-package-v2-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v2/static-fixture-market-gpu-v8-v2/**
+            evidence/graphics-loop/crowd-lod-market-v8/remote-ci-reviewed-v2/remote-results/**
+          if-no-files-found: warn

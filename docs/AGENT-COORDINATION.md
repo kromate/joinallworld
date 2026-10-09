@@ -365,3 +365,36 @@ Three Luna tracks completed local standing-contact, venue-support and sleeve-com
 The exact pinned slot CLI now has a type-erased JS execution package: five filtered existing regressions pass, locks/caps/signals unchanged; seven other wrapper tests remain unrun. Real sleeve CPU comparison terminates0 at 184,926,208 B owned-group RSS under the unchanged220MiB cap. The old nested-TypeScript cap failures remain recorded. Actual GPU review saved32 untouched matched PNGs with valid source/comparison guards and advancing walk/reach clips. Radius-only changes retain shoulder seams and blocky collars, so the candidate is unaccepted. No mobile/frame/journey-byte acceptance follows from these checks.
 
 GRAPHICS owned resources were terminal01:59:13 UTC: 11 process groups absent,5184 released, owned Chrome1412593847 closed; user5191 preserved. WORLD now owns finite sequential checks, LIVING queued after terminal handoff. Three new source-only Luna reviews have separate evidence ownership (shoulder topology, real-contact probe, host/venue support). Five-minute memory monitor remains active; NORMAL1 recovery02:01:25 still had high paging, so heavy concurrency/caps remain unchanged. Primary safely adopted f7e7e149 with all80 dirty/untracked hashes preserved. Evidence/checkpoint: local ignored graphics-loop receipts and docs/GRAPHICS-EXECUTION-CHECKPOINT.md; physical-phone and whole-game quality gates remain open.
+
+
+## WORLD durable capture ownership published checkpoint — 9 October 2026
+
+Implementation **a35bec9e**, acceptance **be301e9f**, clean merge **d03af6af**
+integrate coordination-only main **325f9f4f** (two incoming docs commits).
+All **237 focused checks** pass:209 Python,23 guarded engine,five exact source
+release policy, plus fresh full World TypeScript. All67 final source/test pins
+remain unchanged after merge. Compiler85656 terminal0 used existing384MiB heap,
+461,783,040B maxRSS; no new game build/runtime upload is inferred. Source archive
+82844 terminal0 is bounded and its owned temporary checkout is removed.
+
+Durable per-request attempts bind raw expectations/paths before fixed launch;
+256 request/eight-attempt/512000-byte record ceilings fit original index storage.
+One source-pinned persistent execution slot/explicit current owner survives
+controller death; same-lease reuse is refused after unconfirmed worker exit.
+Actual controller SIGKILL before ingestion and after COMMIT/live nonempty WAL
+keeps both inherited locks/input. Fresh admission blocks while worker lives,
+then new real leases replay473 ordinals with two retained charges, no old PID
+supplied to recovery. Actual two-Dakar replay conserves2,283 ordinals/1,810
+versions/zero conflicts; one reservation/same registry and feature DB inodes.
+Nine actual capture/ledger files and all877 historical pins remain unchanged.
+Failed fixture receipts remain recorded; final acceptance counts unique tests.
+
+All WORLD heavy/server/browser/upload handles are terminal. GRAPHICS explicitly
+handed off real review groups before checks; LIVING is queued for next finite
+local turn. Returning shared resources now. Pressure alternatingNORMAL/WARNING
+with active paging: no cap/concurrency expansion. Source builder only; no actual
+acquisition/campaign/output/Nigeria/game writes or new phone-visible map detail.
+Next frozen campaign membership/atomic observations/live-token completion, then
+independent raw/index audit and full-country streamed geometry. Capture attempts
+are not the scheduler; existing campaign Ledger remains authoritative. Full
+unattended world/Nigeria integration/terrain/conditions/phone goal stays active.

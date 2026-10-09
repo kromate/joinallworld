@@ -1,0 +1,119 @@
+{
+  "format": "world-native-c1-five-country-acceptance-v1",
+  "checkedAt": "2026-10-09T21:23:42.899572+00:00",
+  "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "decision": "accepted scoped five new destinations, ten normal UI flight legs",
+  "operator": {
+    "model": "gpt-6-astra",
+    "agent": "/root/astra_native",
+    "parent": "/root",
+    "provenance": "explicit parent-bound spawn"
+  },
+  "operatorArtifact": {
+    "path": "/private/tmp/allworld-c1-native-b4EHaq/native-c1-acceptance.json",
+    "bytes": 5784,
+    "sha256": "4b0313458fb18e579e86e9489ad287c6ab6bd30c89d39b2e0a8a3d184c1dd594"
+  },
+  "journeys": [
+    {
+      "actor": "A",
+      "destination": "Cotonou",
+      "eachWayFare": 29000,
+      "eachWaySeconds": 12,
+      "legs": 2,
+      "arrivalAndReturn": "normal UI booking and real wall-clock arrival; original Lagos home return"
+    },
+    {
+      "actor": "A",
+      "destination": "Abidjan",
+      "eachWayFare": 86000,
+      "eachWaySeconds": 20,
+      "legs": 2,
+      "arrivalAndReturn": "normal UI booking and real wall-clock arrival; original Lagos home return"
+    },
+    {
+      "actor": "B",
+      "destination": "Dakar",
+      "eachWayFare": 217000,
+      "eachWaySeconds": 20,
+      "legs": 2,
+      "arrivalAndReturn": "normal UI booking and real wall-clock arrival; original Lagos home return"
+    },
+    {
+      "actor": "B",
+      "destination": "Cape Town",
+      "eachWayFare": 401000,
+      "eachWaySeconds": 20,
+      "legs": 2,
+      "arrivalAndReturn": "normal UI booking and real wall-clock arrival; original Lagos home return"
+    },
+    {
+      "actor": "B",
+      "destination": "Addis Ababa",
+      "eachWayFare": 332000,
+      "eachWaySeconds": 20,
+      "legs": 2,
+      "arrivalAndReturn": "normal UI booking and real wall-clock arrival; original Lagos home return"
+    }
+  ],
+  "totalLegs": 10,
+  "totalFares": 2130000,
+  "originalA": {
+    "beforeCash": 596000,
+    "normalReward": 500,
+    "newGrant": 0,
+    "afterCash": 366500,
+    "originalHomeStorageAndPriorReceiptsPreserved": true,
+    "financeReceipt": "world/native-c1-original-two-country-finance.json"
+  },
+  "normalB": {
+    "birthCash": 76000,
+    "oneRestrictedCanonicalGrant": 2000000,
+    "sameIntentReplayWithoutSecondEffect": true,
+    "afterCash": 176000,
+    "originalHomeInventoryOwnershipPreserved": true,
+    "financeReceipt": "world/native-c1-three-country-finance.json"
+  },
+  "mapGuide": {
+    "openCountries": 11,
+    "viewports": "390x844 and320x720 checked; desktop also observed",
+    "overlay": "unowned100x partlycoversflightduration, preserved; unobstructed mobile acceptance not claimed",
+    "guide": "floating Lumo absentmap/presenthome; retainedchat opened and existingOpenMap navigated correctly; no provider prompt"
+  },
+  "school": {
+    "actor": "A",
+    "cost": 0,
+    "rendered": "3D car and entry animation observed",
+    "keyboard": "W/A/D plus S brake drove and advanced full-stop checkpoint1 and pass-through checkpoint2",
+    "final": "paused checkpoint3of3, assessmentpending,0.0km/h,steering0%,27.5m finaltargetdistance",
+    "reload": "same final paused checkpoint/gauges retained",
+    "qualification": "not earned, not claimed",
+    "pointer": "accessible steering End changed100%; held pointer attempt had no confirmed gauge change; pointer acceptance unproven",
+    "limit": "bounded operator attempt ended without restart or injected pose/result/time/packets"
+  },
+  "notProven": [
+    "native mounted A-B-A identity switch",
+    "physical iPhone/Safari/touch",
+    "native200%zoom",
+    "reduced-motion/background/fallback lifecycle",
+    "school finalparking/pass/qualification",
+    "all-country localwalk/meals",
+    "issued old-to-new in-flight source-upgrade continuity"
+  ],
+  "preexistingGoalIssue": {
+    "classification": "nonblocking preexisting 3af/c1 unchanged here/freeactivity predicate vs home guidance; prospective fix separate source phase",
+    "rewardTreatment": "earned500 and its original effect/receipt preserved, included in final A cash"
+  },
+  "browserCleanup": {
+    "window1": "Chrome1412594326closed,viewportreset,lease39714terminal130; IAB2markedhandoff onlybetweenwindows",
+    "final": "owned Chrome1412594330 andIAB2closed; lease66241terminal130; no activeviewportoverride; unrelatedtabs/processes untouched",
+    "state": "both actors, cookies in their original browser origins, store, originalgrants and pausedschool preserved"
+  },
+  "stageCleanup": {
+    "status": "95184 still live, finite checkpoint deadline21:26:55.732; before upload must inspect actual terminal/control/group/retainedstore"
+  },
+  "fullGoalComplete": false,
+  "productionUploaded": false,
+  "productionCountries": 6
+}

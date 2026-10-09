@@ -20,6 +20,7 @@ function boundedError(error: unknown): string {
   let message = error instanceof Error ? error.message : String(error);
   message = message.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, ' ').trim();
   if (!message) message = 'campaign index audit failed';
+  message = message.slice(0, MAX_FAILURE_BYTES);
   while (Buffer.byteLength(message, 'utf8') > MAX_FAILURE_BYTES) message = message.slice(0, -1);
   return message;
 }
@@ -129,7 +130,7 @@ export async function runCampaignIndexAuditPhase(context: {
   const inputs = context.inputs;
 
   const currentLease = (): boolean => {
-    if (!live || !claim || Date.now() >= context.deadline) { live = false; return false; }
+    if (!live || !claim || context.signal?.aborted || Date.now() >= context.deadline) { live = false; return false; }
     try {
       const retained = ledger.heartbeat(claim.id, claim.token, Date.now(), leaseMs);
       if (!retained) live = false;

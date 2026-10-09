@@ -27,10 +27,9 @@
  * of them run: the final state is drawn once. diagnostics().renderCount proves it
  * (src/scene/avatar-preview.test.ts).
  *
- * SKINNED BODY: once a world scene has fetched the skinned body (scene/body/gate.ts; never before the game is ready, so
- * character creation at first run adds no bytes), the preview shows that body in the look instead of the drawn
- * figure — the figure seen here is the figure walked about. Without WebGL2, on a device the gate refuses, or if it fails,
- * the drawn figure stays.
+ * SKINNED BODY: an eligible creator preview requests the same skinned family used by gameplay. The device/WebGL2 gates
+ * keep it off unsupported or data-saving devices. A neutral pending stage avoids presenting a different person while
+ * that first canonical body loads; genuine failures use the procedural fallback.
  *
  * ONE CONTEXT: creating a preview disposes the previous one, so at most one preview WebGL
  * context is alive (previewStats.live). A lost context stops drawing and calls onLost, so the
@@ -43,7 +42,7 @@ import { avatarProportions } from '../types/avatar.ts';
 import { buildAvatar, normalizeLook } from './characters.ts';
 import type { AvatarGroup } from './characters.ts';
 import type { ThreeModule } from './types.ts';
-import { bodyAllowed, bodyImports, drawsWebGL2, importBody } from './body/gate.ts';
+import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
 import type { SkinnedBody } from './body/skinned.ts';
 
 export const ANIMATION_LIMIT_MS = 600;
@@ -65,6 +64,8 @@ export interface PreviewOptions {
   onSpin?: () => void;
   onLost?: () => void;
   renderer?: THREE.WebGLRenderer;
+  /** Deterministic body-loading seam used by lifecycle tests; production callers leave this unset. */
+  bodyLoader?: (look: unknown, seed: unknown, scale: number) => Promise<SkinnedBody>;
   raf?: (fn: () => void) => number;
   caf?: (id: number) => void;
   now?: () => number;
@@ -198,27 +199,64 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   let size = { width: 0, height: 0 }, frameId = 0;
   const tweens = new Map<string, Tween>(); // name → { start, duration, step(t, dt) → false to stop early, last }
   let previewProportions = avatarProportions(undefined);
-  let body: SkinnedBody | null = null, bodyLook: unknown = null, bodyLoading = false, bodyFailed = !bodyAllowed();
+  let body: SkinnedBody | null = null, bodyLook: unknown = null, bodySeed: unknown = 'joinallworld';
+  let bodyLoading = false, bodyFailed = !bodyAllowed() || !drawsWebGL2(renderer);
 
-  /** Wear the look on the skinned body (see the header), fetching it once the world already has; else keep the drawn figure. */
-  function dress(look: unknown) {
-    bodyLook = look;
-    previewProportions = avatarProportions(normalizeLook(look, 'preview').appearance);
-    if (body && !body.wear(look, 'preview')) { body.dispose(); body = null; }
-    if (body) { if (avatar) avatar.visible = false; return; }
-    if (bodyLoading || bodyFailed || !bodyImports.count) return;
-    if (!drawsWebGL2(renderer)) { bodyFailed = true; return; }
+  function pending(value: boolean) {
+    if (value) canvas.setAttribute?.('aria-busy', 'true');
+    else canvas.removeAttribute?.('aria-busy');
+  }
+
+  /** Keep one in-flight request; if its body family became stale, load the latest descriptor next. */
+  function loadCanonicalBody() {
+    if (bodyLoading || bodyFailed || disposed) return;
+    if (!drawsWebGL2(renderer)) { bodyFailed = true; if (avatar) avatar.visible = true; pending(false); render(); return; }
     bodyLoading = true;
-    importBody().then((module) => module.loadBody(kit, look, 'preview', 1)).then((loaded) => {
+    pending(true);
+    Promise.resolve().then(() => options.bodyLoader
+      ? options.bodyLoader(bodyLook, bodySeed, 1)
+      : importBody().then((provider) => provider.loadGameBody(kit, bodyLook, bodySeed, 1, { scene: 'creator', role: 'player', poses: provider.PLAYER_BODY_POSES }))).then((loaded) => {
       bodyLoading = false;
       if (disposed) { loaded.dispose(); return; }
-      if (!loaded.wear(bodyLook, 'preview')) { loaded.dispose(); dress(bodyLook); return; }
+      if (!loaded.wear(bodyLook, bodySeed)) {
+        loaded.dispose();
+        loadCanonicalBody();
+        return;
+      }
+      const previous = body;
       body = loaded;
-      turntable.add(body.object);
-      body.place(0, 0, 0, 0);
+      turntable.add(loaded.object);
+      loaded.place(0, 0, 0, 0);
+      loaded.object.visible = true;
       if (avatar) avatar.visible = false;
+      previous?.dispose();
+      pending(false);
       render();
-    }).catch((error: unknown) => { bodyLoading = false; bodyFailed = true; console.warn('Skinned body unavailable; keeping the drawn figure:', error); });
+    }).catch((error: unknown) => {
+      bodyLoading = false; bodyFailed = true;
+      body?.dispose(); body = null;
+      if (avatar) avatar.visible = true;
+      pending(false);
+      console.warn('Skinned body unavailable; keeping the drawn figure:', error);
+      render();
+    });
+  }
+
+  /** Apply the already-normalized descriptor to the preview and gameplay body family. */
+  function dress(look: unknown, seed: unknown) {
+    bodyLook = look;
+    bodySeed = seed;
+    previewProportions = avatarProportions((look as ReturnType<typeof normalizeLook>).appearance);
+    if (body?.wear(look, seed)) {
+      if (avatar) avatar.visible = false;
+      body.object.visible = true;
+      pending(false);
+      return;
+    }
+    if (body) body.object.visible = false;
+    if (bodyFailed) { if (avatar) avatar.visible = true; pending(false); return; }
+    if (avatar) avatar.visible = false;
+    loadCanonicalBody();
   }
 
   function frame() {
@@ -275,13 +313,16 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
   }
   function setLook(look: unknown, { react = false }: { react?: boolean } = {}): boolean {
     if (disposed) return false;
-    const key = JSON.stringify(look ?? null);
+    const source = look && typeof look === 'object' ? look as Record<string, unknown> : {};
+    const seed = source.seed ?? source.id ?? 'joinallworld';
+    const canonical = normalizeLook(look, seed);
+    const key = JSON.stringify([seed, canonical]);
     if (key === lookKey) return false;
     lookKey = key;
     avatar?.userData.dispose();
-    avatar = buildAvatar(kit, look, { detail: 'high', pose: 'relax', seed: 'preview' });
+    avatar = buildAvatar(kit, canonical, { detail: 'high', pose: 'relax', seed });
     turntable.add(avatar);
-    dress(look);
+    dress(canonical, seed);
     if (react && !reduced) {
       // A small turn and settle, so a change is felt as well as seen.
       animate('react', 420, (t: number) => { turntable.userData.swing = Math.sin(t * Math.PI) * (1 - t) * 0.55; turntable.position.y = Math.sin(t * Math.PI) * 0.035; });

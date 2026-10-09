@@ -19,7 +19,7 @@ export interface StageHandle {
   /** False once the stage has left the page. */
   connected(): boolean
 }
-export interface PreviewRequest { stage: StageHandle; look: SceneLook; focus: PreviewFocus; label: string; /** Pixels at the bottom of the stage kept clear of the character. */ inset?: number }
+export interface PreviewRequest { stage: StageHandle; look: SceneLook & { readonly seed?: string }; focus: PreviewFocus; label: string; /** Pixels at the bottom of the stage kept clear of the character. */ inset?: number }
 
 type AvatarModule = typeof import('../../../scene/avatar-preview.ts')
 let scene3d: AvatarModule | null = null

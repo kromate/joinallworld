@@ -121,6 +121,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     body.fit(scene.scale);
     if (body.object.parent !== scene.group) scene.group.add(body.object);
     scene.avatar.visible = false;
+    put();
     body.show(posed, false);
     put();
     solveContacts();
@@ -155,7 +156,9 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (!drawsWebGL2(renderer)) { failed = true; return; }
       loading = true;
       setTimeout(() => {
-        const request = load ? load(kit, look, seed, scene?.scale ?? 1) : importBody().then((module) => module.loadBody(kit, look, seed, scene?.scale ?? 1));
+        const request = load ? load(kit, look, seed, scene?.scale ?? 1) : importBody().then((module) => module.loadGameBody(kit, look, seed, scene?.scale ?? 1, {
+          scene: 'venue', role: 'player', poses: module.PLAYER_BODY_POSES, nativeSupport: module.createStandInNativeSupport(() => scene),
+        }));
         request.then((loaded) => {
           loading = false;
           if (gone) { loaded.dispose(); return; }
@@ -184,6 +187,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       const door = arrived && posed === 'idle';
       arrived = false;
       if (!body) return;
+      put(); // Register the live seat before sampling a contact-supported pose.
       if (door) body.enter(animate);
       else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.seated || posed === 'sit'));
       put();
